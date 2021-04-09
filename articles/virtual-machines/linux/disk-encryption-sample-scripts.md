@@ -2,18 +2,19 @@
 title: Azure Disk Encryption のサンプル スクリプト
 description: この記事は、Linux VM 用の Microsoft Azure Disk Encryption に関する付録です。
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: d178ae39d3af6b39047501f0bc47acbc6e792f48
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: f11677d9ebc31f1c1f7cc6332b07b69f8e35ad52
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911496"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102561179"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>Linux VM 用の Azure Disk Encryption のサンプル スクリプト
 

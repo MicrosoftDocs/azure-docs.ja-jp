@@ -2,19 +2,20 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 8b8ea25e57d4e8b2d9361499659176cc9b9f3434
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 730a26ac4b068e533382b354574592c40213a3e7
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428756"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617857"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[仮想マシンに対して Azure Backup を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F013e242c-8828-4970-87b3-ab247555486d) |Azure Backup を有効にして、Azure Virtual Machines を保護します。 Azure Backup は、Azure 向けの安全で費用対効果の高いデータ保護ソリューションです。 |AuditIfNotExists、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachines_EnableAzureBackup_Audit.json) |
+|[Azure Recovery Services コンテナーではプライベート リンクを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdeeddb44-9f94-4903-9fa0-081d524406e3) |Azure Private Link を使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークを Azure サービスに接続できます。 Private Link プラットフォームでは、Azure のバックボーン ネットワークを介してコンシューマーとサービスの間の接続が処理されます。 プライベート エンドポイントを Azure Recovery Services コンテナーにマッピングすることにより、データ漏えいのリスクが軽減されます。 プライベート リンクの詳細については、[https://aka.ms/AB-PrivateEndpoints](https://aka.ms/AB-PrivateEndpoints) を参照してください。 |Audit、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/RecoveryServices_PrivateEndpoint_Audit.json) |
 |[指定したタグを持つ VM に対して、既定のポリシーを使用して、新しい復旧サービス コンテナーへのバックアップを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83644c87-93dd-49fe-bf9f-6aff8fd0834e) |仮想マシンと同じ場所およびリソース グループに復旧サービス コンテナーをデプロイして、すべての仮想マシンにバックアップを適用します。 組織内の異なるアプリケーション チームに別個のリソース グループが割り当てられていて、独自のバックアップと復元を管理する必要がある場合は、これを行うと便利です。 割り当てのスコープを制御するために、指定したタグを含む仮想マシンを必要に応じて含めることができます。 [https://aka.ms/AzureVMAppCentricBackupIncludeTag](https://aka.ms/AzureVMAppCentricBackupIncludeTag) をご覧ください。 |deployIfNotExists |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachineApplicationCentricBackup_Backup_Deploy_WithTag.json) |
 |[指定したタグを持つ VM に対して、同じ場所の既存の復旧サービス コンテナーへのバックアップを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F345fa903-145c-4fe1-8bcd-93ec2adccde8) |すべての仮想マシンを仮想マシンと同じ場所およびサブスクリプション内の既存の中央復旧サービス コンテナーにバックアップして、それらのマシンにバックアップを適用します。 組織に、サブスクリプション内のすべてのリソースのバックアップを管理する中央のチームがある場合は、これを行うと便利です。 割り当てのスコープを制御するために、指定したタグを含む仮想マシンを必要に応じて含めることができます。 [https://aka.ms/AzureVMCentralBackupIncludeTag](https://aka.ms/AzureVMCentralBackupIncludeTag) をご覧ください。 |deployIfNotExists、auditIfNotExists、disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachineWithTag_Backup_Deploy.json) |
 |[指定したタグがない VM に対して、既定のポリシーを使用して、新しい復旧サービス コンテナーへのバックアップを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F98d0b9f8-fd90-49c9-88e2-d3baf3b0dd86) |仮想マシンと同じ場所およびリソース グループに復旧サービス コンテナーをデプロイして、すべての仮想マシンにバックアップを適用します。 組織内の異なるアプリケーション チームに別個のリソース グループが割り当てられていて、独自のバックアップと復元を管理する必要がある場合は、これを行うと便利です。 割り当てのスコープを制御するために、指定したタグを含む仮想マシンを必要に応じて除外することができます。 [https://aka.ms/AzureVMAppCentricBackupExcludeTag](https://aka.ms/AzureVMAppCentricBackupExcludeTag) をご覧ください。 |deployIfNotExists |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachineApplicationCentricBackup_Backup_Deploy_WithOutTag.json) |

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
 ms.openlocfilehash: 28abb9f09e3bca2522b959c6a9b890de5320b17a
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98567434"
 ---
 # <a name="connect-your-infoblox-nios-to-azure-sentinel"></a>Infoblox NIOS を Azure Sentinel に接続する

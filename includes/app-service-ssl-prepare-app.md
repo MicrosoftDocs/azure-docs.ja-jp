@@ -9,10 +9,10 @@ ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 8b3c1992a1cff18390f9d1332103e0650af418e2
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97347729"
 ---
 ## <a name="prepare-your-web-app"></a>Web アプリの準備

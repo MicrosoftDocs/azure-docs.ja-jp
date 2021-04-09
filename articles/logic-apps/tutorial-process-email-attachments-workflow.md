@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
 ms.openlocfilehash: bd1715dc0a3767bc5826154616bbdc97c7b61dd3
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99576365"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>チュートリアル:Azure Logic Apps、Azure Functions、Azure Storage を使用してメール処理のタスクを自動化する
@@ -57,7 +57,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
 1. ストレージ コンテナーを作成する前に、Azure portal の **[基本]** タブで次の設定の [ストレージ アカウントを作成](../storage/common/storage-account-create.md)します。
 
-   | 設定 | 値 | [説明] |
+   | 設定 | 値 | 説明 |
    |---------|-------|-------------|
    | **サブスクリプション** | <*Azure サブスクリプション名*> | Azure サブスクリプションの名前 |  
    | **リソース グループ** | <*Azure-resource-group*> | [Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前。関連するリソースをまとめて管理する目的で使われます。 この例では、"LA-Tutorial-RG" を使用します。 <p>**注:** リソース グループは、特定のリージョン内に存在します。 このチュートリアルで使う項目が、一部のリージョンでは利用できない場合もありますが、可能な限り同じリージョンを使うようにしてください。 |
@@ -238,7 +238,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
    ![ロジック アプリに関する情報の入力](./media/tutorial-process-email-attachments-workflow/create-logic-app-settings.png)
 
-   | 設定 | 値 | [説明] |
+   | 設定 | 値 | 説明 |
    | ------- | ----- | ----------- |
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | 先ほど使用したものと同じ Azure サブスクリプション |
    | **リソース グループ** | LA-Tutorial-RG | 先ほど使用したものと同じ Azure リソース グループ |

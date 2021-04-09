@@ -5,10 +5,10 @@ ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.openlocfilehash: bfaee324f3e46f64fd4ad0d8b7e1240331b56c27
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92093652"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>クイック スタート: ARM テンプレートを使用して BLOB ストレージ イベントを Web エンドポイントにルーティングする
@@ -56,7 +56,7 @@ BLOB ストレージのイベントをサブスクライブする前に、イベ
 
     [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-event-grid-subscription-and-storage%2Fazuredeploy.json)
 
-2. **エンドポイント**を指定するには、Web アプリの URL を入力し、ホーム ページの URL に `api/updates` を追加します。
+2. **エンドポイント** を指定するには、Web アプリの URL を入力し、ホーム ページの URL に `api/updates` を追加します。
 3. **[購入]** を選択してテンプレートをデプロイします。
 
   テンプレートをデプロイするために、ここでは Azure portal を使用します。 Azure PowerShell、Azure CLI、および REST API を使用することもできます。 他のデプロイ方法については、「[テンプレートのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)」を参照してください。

@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 83d8c04765bf9aecc9029cdc8d12461231d191f2
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97795957"
 ---
 # <a name="manage-your-personal-application-preferences"></a>アプリケーションのユーザー設定を管理する

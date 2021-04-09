@@ -8,10 +8,10 @@ author: mksuni
 ms.author: sumuth
 ms.date: 09/21/2020
 ms.openlocfilehash: 413f5fc1f6579102b62042c1470816470c2e1449
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92546553"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>Azure Database for PostgreSQL - Single Server への接続とクエリの概要
@@ -23,7 +23,7 @@ ms.locfileid: "92546553"
 | クイック スタート | 説明 |
 |---|---|
 |[pgadmin](https://www.pgadmin.org/)|pgadmin を使用してサーバーに接続すると、データベース オブジェクトの作成、保守、および使用が簡単になります。|
-|[Azure Cloud Shell の psql](quickstart-create-server-database-azure-cli.md#connect-to-the-azure-database-for-postgresql-server-by-using-psql)|この記事では、 [Azure Cloud Shell](../cloud-shell/overview.md) で [**psql**](https://www.postgresql.org/docs/current/static/app-psql.html) を実行してサーバーに接続し、ステートメントを実行してデータベース内のデータを照会、挿入、更新、削除する方法について説明します。開発環境にインストールされている場合は、 **psql** を実行できます。|
+|[Azure Cloud Shell の psql](quickstart-create-server-database-azure-cli.md#connect-to-the-azure-database-for-postgresql-server-by-using-psql)|この記事では、[Azure Cloud Shell](../cloud-shell/overview.md) で [**psql**](https://www.postgresql.org/docs/current/static/app-psql.html) を実行してサーバーに接続し、ステートメントを実行してデータベース内のデータを照会、挿入、更新、削除する方法について説明します。開発環境にインストールされている場合は、**psql** を実行できます。|
 |[PostgreSQL と VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)|Azure Databases extension for VS Code (プレビュー) を使用すると、scrapbooks と高度な Intellisense を使用して、ローカルとクラウドの両方で PostgreSQL サーバーを参照し、クエリを実行できます。 |
 |[PHP](connect-php.md)|このクイック スタートでは、PHP を使ってプログラムを作成してデータベースに接続し、データベース オブジェクトを使ってデータに対してクエリを実行する方法について説明します。|
 |[Java](connect-java.md)|このクイック スタートでは、Java を使ってデータベースに接続した後、データベース オブジェクトを使ってデータに対してクエリを実行する方法について説明します。|

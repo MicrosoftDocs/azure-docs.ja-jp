@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e41f372cd0105896765d5a267456b6bda767dd4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87798428"
 ---
 # <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でカタログ作成者にアクセス ガバナンスを委任する
@@ -43,7 +43,7 @@ ms.locfileid: "87798428"
 
     ![カタログ作成者を追加するための設定](./media/entitlement-management-delegate-catalog/settings-delegate.png)
 
-1. **[Delegate entitlement management]\(エンタイトルメント管理の委任\)** セクションで、 **[Add catalog creators]\(カタログ作成者の追加\)** をクリックし、このエンタイトルメント管理ロールを委任するユーザーまたはグループを選択します。
+1. **[Delegate entitlement management]\(エンタイトルメント管理の委任\)** セクションで、**[Add catalog creators]\(カタログ作成者の追加\)** をクリックし、このエンタイトルメント管理ロールを委任するユーザーまたはグループを選択します。
 
 1. **[選択]** をクリックします。
 
@@ -55,7 +55,7 @@ ms.locfileid: "87798428"
 
 **事前に必要なロール:** グローバル管理者またはユーザー管理者
 
-1. Azure portal で **[Azure Active Directory]** をクリックし、 **[ユーザー]** をクリックします。
+1. Azure portal で **[Azure Active Directory]** をクリックし、**[ユーザー]** をクリックします。
 
 1. 左側のメニューで **[ユーザー設定]** をクリックします。
 

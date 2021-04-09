@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: f6d9645e614730d2eb5fad8bca30486e9afef618
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98878343"
 ---
 # <a name="azcopy-make"></a>azcopy make
@@ -40,7 +40,7 @@ azcopy make [resourceURL] [flags]
 azcopy make "https://[account-name].[blob,file,dfs].core.windows.net/[top-level-resource-name]"
 ```
 
-## <a name="options"></a>オプション
+## <a name="options"></a>Options
 
 |オプション|説明|
 |--|--|

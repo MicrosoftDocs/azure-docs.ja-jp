@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 08/14/2019
 ms.author: chrimo
 ms.openlocfilehash: 5f3749be36f5f035e49fcb862f92180e4902101f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88010142"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>セッション ホスト仮想マシンに Windows ライセンスを適用する

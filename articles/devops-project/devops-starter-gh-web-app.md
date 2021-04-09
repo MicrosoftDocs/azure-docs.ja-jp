@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 author: ninallam
 ms.openlocfilehash: 4caac943df33177728997c74c9ec812105efd62c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97588779"
 ---
 # <a name="tutorial-deploy-nodejs-app-to-azure-web-app-using-devops-starter-for-github-actions"></a>チュートリアル:GitHub Actions 用 DevOps Starter を使用して Node.js アプリを Azure Web アプリにデプロイする
@@ -128,25 +128,25 @@ Azure Application Insights を使うと、アプリケーションのパフォ�
 
    ![[Application Insights] ウィンドウ](_img/azure-devops-project-github/appinsights.png) 
 
-1. **[時間の範囲]** を選択し、**[過去 1 時間]** を選択します。 結果をフィルター処理するには、**[更新]** を選択します。 これで、過去 60 分間のすべてのアクティビティが表示されます。 
+1. **[時間の範囲]** を選択し、 **[過去 1 時間]** を選択します。 結果をフィルター処理するには、 **[更新]** を選択します。 これで、過去 60 分間のすべてのアクティビティが表示されます。 
     
-1. 時間の範囲を終了するには、**[x]** を選択します。
+1. 時間の範囲を終了するには、 **[x]** を選択します。
 
-1. **[アラート]** を選択し、**[メトリック アラートの追加]** を選択します。 
+1. **[アラート]** を選択し、 **[メトリック アラートの追加]** を選択します。 
 
 1. アラートの名前を入力します。
 
 1. **[メトリック]** ドロップダウン リストで、さまざまなアラート メトリックを確認します。 既定のアラートの対象は、**1 秒を超えるサーバー応答時間** です。 アプリの監視機能を向上させるためにさまざまなアラートを簡単に構成できます。
 
-1. **[Notify via Email owners, contributors, and readers]\(電子メール、所有者、共同作成者、および閲覧者による通知\)** チェック ボックスをオンにします。 必要に応じて、アラートが表示されたときに、Azure ロジック アプリを実行することによって追加のアクションを実行できます。
+1. **[Notify via Email owners, contributors, and readers]\(電子メール、所有者、共同作成者、および閲覧者による通知\)** チェック ボックスをオンにします。 必要に応じて、アラートが表示されたときに、Azure Logic Apps を実行することによって追加のアクションを実行できます。
 
 1. **[OK]** を選択してアラートを作成します。 しばらくして、アラートがダッシュボードにアクティブとして表示されます。 
 
-1. **[アラート]** 領域を終了し、**[Application Insights]** ウィンドウに戻ります。
+1. **[アラート]** 領域を終了し、 **[Application Insights]** ウィンドウに戻ります。
 
-1. **[可用性]** を選択し、**[テストの追加]** を選択します。 
+1. **[可用性]** を選択し、 **[テストの追加]** を選択します。 
 
-1. テスト名を入力し、**[作成]** を選択します。 アプリケーションの可用性を確認する簡単な ping テストが作成されます。 数分後にテスト結果が使用可能になり、Application Insights ダッシュボードに可用性の状態が表示されます。
+1. テスト名を入力し、 **[作成]** を選択します。 アプリケーションの可用性を確認する簡単な ping テストが作成されます。 数分後にテスト結果が使用可能になり、Application Insights ダッシュボードに可用性の状態が表示されます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 02/04/2021
 ms.author: b-juche
 ms.openlocfilehash: 1c20190ba1a997ef85f4023a54ecea3c2a77ae53
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102183830"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>手動 QoS 容量プールを管理する

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
 ms.openlocfilehash: f11693b34048b11c02668e086561b9a6521a5213
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98121527"
 ---
 # <a name="visualize-data"></a>データの視覚化
@@ -230,6 +230,6 @@ Azure Synapse Analytics と Power BI は密に統合されるため、データ 
 Azure Synapse Analytics では、さまざまなワークスペース計算エンジンが、Spark プールとサーバーレス SQL プールの間でデータベースとテーブルを共有できます。 [共有メタデータ モデル](../metadata/overview.md)を使用すると、SQL オンデマンドにより Apache Spark テーブルに対してクエリを実行することができます。 完了したら、SQL オンデマンド エンドポイントを Power BI に接続することで、同期された Spark テーブルに対するクエリを容易に実行できるようになります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Spark SQL DW コネクタを設定する方法の詳細については、次を参照してください。[Synapse SQL コネクタ](./spark/../synapse-spark-sql-pool-import-export.md)
 - 既定のライブラリを確認します: [Azure Synapse Analytics ランタイム](../spark/apache-spark-version-support.md)

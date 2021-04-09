@@ -9,10 +9,10 @@ ms.date: 04/24/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 24d6b475964e4bf7745495e9c41d0e89bb76f7e9
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93341290"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Bulk Executor library からAzure Cosmos DB .NET V3 SDK のBulkサポートに移行する
@@ -40,17 +40,17 @@ SDK にはドキュメントまたは操作のリストを入力パラメータ�
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkImport":::
 
-一括 *アップデート* （ [BulkExecutor.BulkImportAsync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)の使用と同様）を実行したい場合は、項目の値を更新してから`ReplaceItemAsync`メソッドを同時に起動する必要があります。 次に例を示します。
+一括 *アップデート*（[BulkExecutor.BulkImportAsync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)の使用と同様）を実行したい場合は、項目の値を更新してから`ReplaceItemAsync`メソッドを同時に起動する必要があります。 次に例を示します。
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkUpdate":::
 
-一括 *削除* （ [BulkExecutor.BulkDeleteAsync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)の使用と同様）を実行したい場合は、`DeleteItemAsync`を `id`および各項目のパーテーションキーと同時に起動する必要があります。 次に例を示します。
+一括 *削除*（[BulkExecutor.BulkDeleteAsync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)の使用と同様）を実行したい場合は、`DeleteItemAsync`を `id`および各項目のパーテーションキーと同時に起動する必要があります。 次に例を示します。
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkDelete":::
 
 ## <a name="capture-task-result-state"></a>タスクの結果の状態をCaptureします
 
-以前のコード例では、タスクの同時実行リストを作成し、各タスクで `CaptureOperationResponse` メソッドを呼び出しました。 このメソッドは、エラーや [リクエストユニットの使用](request-units.md)の追跡を行うことによって、 *BulkExecutorとしての* 要求した応答スキーマを維持することを可能にする拡張機能です。
+以前のコード例では、タスクの同時実行リストを作成し、各タスクで `CaptureOperationResponse` メソッドを呼び出しました。 このメソッドは、エラーや [リクエストユニットの使用](request-units.md)の追跡を行うことによって、*BulkExecutorとしての* 要求した応答スキーマを維持することを可能にする拡張機能です。
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="CaptureOperationResult":::
 

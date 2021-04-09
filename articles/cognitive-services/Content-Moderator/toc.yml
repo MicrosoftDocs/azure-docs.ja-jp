@@ -5,33 +5,31 @@
   items:
     - name: Content Moderator とは
       href: overview.md
+    - name: 言語のサポート
+      href: language-support.md
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
       expanded: true
     - name: 新機能
       href: whats-new.md
 - name: クイックスタート
   items:
-    - name: Web 上で Content Moderator を試す
-      href: quick-start.md
     - name: クライアント ライブラリまたは REST API を使用する
       href: client-libraries.md
-- name: チュートリアル
+    - name: Web ベースの UI の使用
+      href: quick-start.md
+- name: サンプル
   items:
-    - name: eコマース イメージをモデレートする
-      href: ecommerce-retail-catalog-moderation.md
-    - name: Facebook コンテンツのモデレート
-      href: facebook-post-moderation.md
-- name: 概念
-  items:
-    - name: 画像のモデレート
-      href: image-moderation-api.md
-    - name: テキストのモデレート
-      href: text-moderation-api.md
-    - name: ビデオのモデレート
-      href: video-moderation-human-review.md
-    - name: レビュー ツール
-      href: Review-Tool-User-Guide/human-in-the-loop.md
-    - name: レビュー、ワークフロー、ジョブ
-      href: review-api.md
+    - name: サンプル ブラウザー
+      href: /samples/browse/?terms=content+moderator
+    - name: .NET SDK のサンプル
+      href: samples-dotnet.md
+    - name: Python SDK のサンプル
+      href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples'
+    - name: Node.js SDK のサンプル
+      href: 'https://github.com/Azure-Samples/cognitive-services-node-sdk-samples'
+    - name: C# での REST API のサンプル
+      href: samples-rest.md
 - name: 操作方法ガイド
   items:
     - name: コンテンツの調整
@@ -80,47 +78,53 @@
       href: Review-Tool-User-Guide/Configure.md
     - name: アカウント データのエクスポートまたは削除
       href: ./export-delete-data.md
+    - name: Content Moderator のカスタマイズ
+      items:
+        - name: レビュー、ワークフロー、ジョブ
+          href: review-api.md
+- name: 概念
+  items:
+    - name: 画像のモデレート
+      href: image-moderation-api.md
+    - name: テキストのモデレート
+      href: text-moderation-api.md
+    - name: ビデオのモデレート
+      href: video-moderation-human-review.md
+    - name: レビュー ツール
+      href: Review-Tool-User-Guide/human-in-the-loop.md
+- name: チュートリアル
+  items:
+    - name: eコマース イメージをモデレートする
+      href: ecommerce-retail-catalog-moderation.md
+    - name: Facebook コンテンツのモデレート
+      href: facebook-post-moderation.md
 - name: リファレンス
   items:
-    - name: Content Moderator API
+    - name: Content Moderator REST API
       href: api-reference.md
-    - name: SDK
-      items:
-        - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/client/contentmoderator
-        - name: Java
-          href: /java/api/overview/azure/cognitiveservices/client/contentmoderator
-        - name: Node.js
-          href: /javascript/api/@azure/cognitiveservices-contentmoderator/
-        - name: Python
-          href: /python/api/overview/azure/cognitiveservices/contentmoderator
-        - name: Go
-          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator'
+    - name: .NET
+      href: /dotnet/api/overview/azure/cognitiveservices/client/contentmoderator
+    - name: Java
+      href: /java/api/overview/azure/cognitiveservices/client/contentmoderator
+    - name: Node.js
+      href: /javascript/api/@azure/cognitiveservices-contentmoderator/
+    - name: Python
+      href: /python/api/overview/azure/cognitiveservices/contentmoderator
+    - name: Go
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator'
 - name: リソース
   items:
-    - name: サポートとヘルプのオプション
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
-    - name: サンプル
-      items:
-        - name: .NET SDK のサンプル
-          href: samples-dotnet.md
-        - name: Python SDK のサンプル
-          href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples'
-        - name: Node.js SDK のサンプル
-          href: 'https://github.com/Azure-Samples/cognitive-services-node-sdk-samples'
-        - name: C# での REST API のサンプル
-          href: samples-rest.md
-        - name: その他の Azure のサンプル
-          href: /samples/browse/?products=azure&term=content-moderator
     - name: Azure ウェビナー シリーズ
       href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
-    - name: 料金と制限
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
-    - name: 言語のサポート
-      href: language-support.md
-    - name: リージョン別の提供状況
+    - name: リージョンのサポート
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Azure のロードマップ
+    - name: Microsoft Learn モジュール
+      href: /learn/browse/?terms=content+moderator
+    - name: サポートとヘルプのオプション
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
+    - name: Azure Government とグローバル Azure
+      href: ../../azure-government/compare-azure-government-global-azure.md
+    - name: Azure の更新情報
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

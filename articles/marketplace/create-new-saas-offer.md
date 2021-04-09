@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: f689993ce56a1125a1d1de8f65ce05d01f776ea9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93130070"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースでの SaaS オファーの作成方法
@@ -31,7 +31,7 @@ ms.locfileid: "93130070"
 
    :::image type="content" source="media/new-offer-saas.png" alt-text="左側のナビゲーション メニューと新しいオファーの一覧を示しています。":::
 
-1. **[新しいオファー]** ダイアログ ボックスで、 **[オファー ID]** を入力します。 この ID は、コマーシャル マーケットプレースの一覧と Azure Resource Manager テンプレートの URL に表示されます (該当する場合)。 たとえば、このボックスに「 **test-offer-1** 」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
+1. **[新しいオファー]** ダイアログ ボックスで、 **[オファー ID]** を入力します。 この ID は、コマーシャル マーケットプレースの一覧と Azure Resource Manager テンプレートの URL に表示されます (該当する場合)。 たとえば、このボックスに「**test-offer-1**」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
    + アカウント内の各オファーには、一意のオファー ID が必要です。
    + 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。
    + **[作成]** を選択した後で、オファー ID を変更することはできません。
@@ -44,13 +44,13 @@ ms.locfileid: "93130070"
 
 ## <a name="configure-your-saas-offer-setup-details"></a>SaaS オファーのセットアップの詳細を構成する
 
-**[オファーのセットアップ]** タブの **[セットアップの詳細]** で、Microsoft を通じてオファーを販売するか、取引を個別に管理するかを選択します。 Microsoft を通じて販売されるオファーは " _取引可能オファー_ " と呼ばれます。これは、Microsoft が発行元の代わりにソフトウェア ライセンス費用に対する金銭のやり取りを円滑に進めることを意味します。 これらのオプションの詳細については、「[リスト オプション](plan-saas-offer.md#listing-options)」と「[公開オプションを選定する](determine-your-listing-type.md)」を参照してください。
+**[オファーのセットアップ]** タブの **[セットアップの詳細]** で、Microsoft を通じてオファーを販売するか、取引を個別に管理するかを選択します。 Microsoft を通じて販売されるオファーは "_取引可能オファー_" と呼ばれます。これは、Microsoft が発行元の代わりにソフトウェア ライセンス費用に対する金銭のやり取りを円滑に進めることを意味します。 これらのオプションの詳細については、「[リスト オプション](plan-saas-offer.md#listing-options)」と「[公開オプションを選定する](determine-your-listing-type.md)」を参照してください。
 
 1. Microsoft を通じて販売し、取引を円滑に進めるには、 **[はい]** を選択します。 「[体験版を有効にする](#enable-a-test-drive-optional)」に進みます。
 
 1. コマーシャル マーケットプレースを通じてオファーを一覧表示し、取引を個別に処理するには、 **[いいえ]** を選択し、次のいずれかの操作を行います。
-   + オファーの無料サブスクリプションを提供するには、 **[今すぐ入手 (無料)]** を選択します。 次に、表示される **[オファーの URL]** ボックスに、顧客が [Azure Active Directory (Azure AD) を使用したワンクリック認証](azure-ad-saas.md)で試用版を入手できる ( *http* または *https* で始まる) URL を入力します。 たとえば、「 `https://contoso.com/saas-app` 」のように入力します。
-   + 30 日間の無料試用版を提供するには、 **[無料試用版]** を選択し、表示される **[試用版 URL]** ボックスに、顧客が [Azure Active Directory (Azure AD) を使用したワンクリック認証](azure-ad-saas.md)で試用版を入手できる ( *http* または *https* で始まる) URL を入力します。 たとえば、「 `https://contoso.com/trial/saas-app` 」のように入力します。
+   + オファーの無料サブスクリプションを提供するには、 **[今すぐ入手 (無料)]** を選択します。 次に、表示される **[オファーの URL]** ボックスに、顧客が [Azure Active Directory (Azure AD) を使用したワンクリック認証](azure-ad-saas.md)で試用版を入手できる (*http* または *https* で始まる) URL を入力します。 たとえば、「 `https://contoso.com/saas-app` 」のように入力します。
+   + 30 日間の無料試用版を提供するには、 **[無料試用版]** を選択し、表示される **[試用版 URL]** ボックスに、顧客が [Azure Active Directory (Azure AD) を使用したワンクリック認証](azure-ad-saas.md)で試用版を入手できる (*http* または *https* で始まる) URL を入力します。 たとえば、「 `https://contoso.com/trial/saas-app` 」のように入力します。
    + 潜在顧客からオファーの購入について連絡を受けるには、 **[問い合わせ]** を選択します。
 
 ### <a name="enable-a-test-drive-optional"></a>体験版を有効にする (省略可能)

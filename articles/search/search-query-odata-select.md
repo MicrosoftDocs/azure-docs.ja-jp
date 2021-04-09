@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 54b6ae227fc4b3b951717799660543c02874dda0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88919660"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での OData $select 構文
 
- [OData **$select** パラメーター](query-odata-filter-orderby-syntax.md)を使用すると、Azure Cognitive Search の検索結果に含めるフィールドを選択できます。 この記事では、 **$select** の構文について詳しく説明します。 検索結果を表示するときに **$select** を使用する方法に関するより一般的な情報については、「[Azure Cognitive Search での検索結果の操作方法](search-pagination-page-layout.md)」を参照してください。
+ [OData **$select** パラメーター](query-odata-filter-orderby-syntax.md)を使用すると、Azure Cognitive Search の検索結果に含めるフィールドを選択できます。 この記事では、**$select** の構文について詳しく説明します。 検索結果を表示するときに **$select** を使用する方法に関するより一般的な情報については、「[Azure Cognitive Search での検索結果の操作方法](search-pagination-page-layout.md)」を参照してください。
 
 ## <a name="syntax"></a>構文
 
@@ -112,7 +112,7 @@ field_path ::= identifier('/'identifier)*
 }
 ```
 
-## <a name="next-steps"></a>次のステップ  
+## <a name="next-steps"></a>次の手順  
 
 - [Azure Cognitive Search での検索結果の操作方法](search-pagination-page-layout.md)
 - [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)

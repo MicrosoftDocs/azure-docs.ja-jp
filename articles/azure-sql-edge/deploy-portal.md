@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 5d7d232ada814d5d3c30e7b012c6289f847d641f
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93395089"
 ---
 # <a name="deploy-azure-sql-edge"></a>Azure SQL Edge のデプロイ 
@@ -132,7 +132,7 @@ Azure Marketplace は、アプリケーションとサービスのオンライ�
    > [!TIP]    
    > コマンド ラインでパスワードを省略すると、入力を求められます。
 
-3. 成功すると、 **sqlcmd** コマンド プロンプト `1>` が表示されます。
+3. 成功すると、**sqlcmd** コマンド プロンプト `1>` が表示されます。
 
 ## <a name="create-and-query-data"></a>データの作成とクエリ
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: f836b47c0ede7956438f4730dc951a877cb653e7
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92459460"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-joinme"></a>チュートリアル: Azure Active Directory と join.me の統合
@@ -41,7 +41,7 @@ join.me と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* join.me では、 **IDP** によって開始される SSO がサポートされます
+* join.me では、**IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-joinme-from-the-gallery"></a>ギャラリーからの join.me の追加
 
@@ -61,13 +61,13 @@ Azure AD への join.me の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **join.me** 」と入力し、結果パネルで **join.me** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**join.me**」と入力し、結果パネルで **join.me** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の join.me](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、join.me で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、join.me で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと join.me 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 join.me で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ join.me で Azure AD のシングル サインオンを構成してテストす�
 
 join.me で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **join.me** アプリケーション統合ページで、 **[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **join.me** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -107,7 +107,7 @@ join.me で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="configure-joinme-single-sign-on"></a>join.me のシングル サインオンの構成
 
-**join.me** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [join.me サポート チーム](https://help.join.me/s/?language)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**join.me** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [join.me サポート チーム](https://help.join.me/s/?language)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -125,9 +125,9 @@ join.me で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -138,7 +138,7 @@ join.me で Azure AD シングル サインオンを構成するには、次の�
 
 このセクションでは、Britta Simon に join.me へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[join.me]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[join.me]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

@@ -8,13 +8,13 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: bfe150a45c70bc5bed18f8e929c9567905cd38f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86171603"
 ---
-# <a name="tutorial-forward-events-to-event-grid-cloud"></a>チュートリアル:イベントを Event Grid クラウドに転送する
+# <a name="tutorial-forward-events-to-event-grid-cloud"></a>チュートリアル: イベントを Event Grid クラウドに転送する
 
 この記事では、Azure クラウドの Event Grid にエッジ イベントを転送するために必要なすべての手順について説明します。 このようなことが必要になる理由としては、以下が考えられます。
 
@@ -38,7 +38,7 @@ ms.locfileid: "86171603"
 
 * **TopicUrl**: `https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
 * **TopicName**: `testegcloudtopic`
-* **SasKey**:トピックの **AccessKey** でわかります。 **key1** を使用します。
+* **SasKey**: トピックの **AccessKey** でわかります。 **key1** を使用します。
 
 ## <a name="create-event-grid-topic-at-the-edge"></a>エッジで Event Grid トピックを作成する
 
@@ -200,4 +200,4 @@ ms.locfileid: "86171603"
 * Azure Event Grid on IoT Edge の使用に伴う問題のトラブルシューティングについては、[トラブルシューティング ガイド](troubleshoot.md)を参照してください。
 * この[チュートリアル](forward-events-iothub.md)に従って、イベントを IoTHub に転送します
 * この[チュートリアル](pub-sub-events-webhook-cloud.md)に従って、イベントをクラウドの Webhook に転送します
-* [エッジでのトピックとサブスクリプションの監視](monitor-topics-subscriptions.md)
+* [Edge でのトピックとサブスクリプションの監視](monitor-topics-subscriptions.md)

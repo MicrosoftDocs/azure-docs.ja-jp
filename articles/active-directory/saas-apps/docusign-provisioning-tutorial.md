@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: dc3f307a21b746981a84b1c0747c4b22c448541f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 71f95b08584a46fccb0975cd9285150573ac02d4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349907"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102218521"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>チュートリアル:DocuSign を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -97,7 +97,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
 * Docusign でユーザーのロールまたはアクセス許可プロファイルをプロビジョニングするには、属性マッピングで [switch](../app-provisioning/functions-for-customizing-application-data.md#switch) と [singleAppRoleAssignment](../app-provisioning/functions-for-customizing-application-data.md#singleapproleassignment) 関数を使用する式を使用します。 たとえば、次の式では、Azure AD でユーザーに "DS Admin" ロールが割り当てられている場合、ID "8032066" がプロビジョニングされます。 ユーザーに Azure AD 側でロールが割り当てられていない場合、アクセス許可プロファイルはプロビジョニングされません。 DocuSign [ポータル](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles)から ID を取得できます。
 
-Switch(SingleAppRoleAssignment([appRoleAssignments])," ", "8032066", "DS Admin")
+Switch(SingleAppRoleAssignment([appRoleAssignments])," ", "DS Admin", "8032066")
 
 
 ## <a name="additional-resources"></a>その他のリソース

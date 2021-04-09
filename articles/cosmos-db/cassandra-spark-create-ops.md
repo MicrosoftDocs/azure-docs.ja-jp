@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
 ms.openlocfilehash: 3ec44d20b763a98683d9b947c94ad6be75180113
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93092255"
 ---
 # <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Spark から Azure Cosmos DB Cassandra API にデータを作成/挿入する
@@ -139,7 +139,7 @@ select * from books;
 
 Azure Cosmos DB Cassandra API テーブルにデータを挿入したら、次の記事に進み、Cosmos DB Cassandra API に保存されているデータでその他の操作を実行します。
  
-* [操作を読み取る](cassandra-spark-read-ops.md)
+* [操作を読み取ります。](cassandra-spark-read-ops.md)
 * [操作を Upsert する](cassandra-spark-upsert-ops.md)
 * [操作を削除する](cassandra-spark-delete-ops.md)
 * [集計操作](cassandra-spark-aggregation-ops.md)

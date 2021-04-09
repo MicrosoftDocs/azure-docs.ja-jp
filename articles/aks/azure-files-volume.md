@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) 上で複数の同時実行ポッド
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: a6e28464df2ff9c9dcc7734a127cc00f887e08dd
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 4e009c5de2e24c1b0bd94fb4c11b0c52a3bc378d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246963"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102609075"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上で Azure ファイル共有を含むボリュームを手動で作成して使用する
 
@@ -67,7 +67,8 @@ Kubernetes には、前の手順で作成されたファイル共有にアクセ
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
 ```
 
-## <a name="mount-the-file-share-as-a-volume"></a>ファイル共有をボリュームとしてマウントする
+## <a name="mount-file-share-as-an-inline-volume"></a>ファイル共有をインライン ボリュームとしてマウントする
+> 注: 1.18.15、1.19.7、1.20.2、1.21.0 以降、インライン `azureFile` ボリューム内のシークレット名前空間は、`default` 名前空間としてのみ設定できます。異なるシークレット名前空間を指定するには、代わりに次の永続ボリュームの例を使用してください。
 
 Azure ファイル共有をポッドにマウントするには、コンテナーの指定でボリュームを構成します。次の内容で、`azure-files-pod.yaml` という名前の新しいファイルを作成します。 ファイル共有の名前またはシークレット名を変更した場合は、*shareName* と *secretName* を更新します。 必要な場合は、`mountPath` を更新します。これはファイル共有がポッドにマウントされているパスです。 Windows Server コンテナーの場合、 *'D:'* などの Windows パス規則を使用して *mountPath* を指定します。
 
@@ -131,9 +132,10 @@ Volumes:
 [...]
 ```
 
-## <a name="mount-options"></a>マウント オプション
+## <a name="mount-file-share-as-an-persistent-volume"></a>ファイル共有を永続ボリュームとしてマウントする
+ - マウント オプション
 
-Kubernetes バージョン 1.9.1 以降の場合、*fileMode* と *dirMode* の既定値は *0755* です。 Kubernetes バージョン 1.8.5 以降のクラスターを使い、永続ボリューム オブジェクトを静的に作成する場合は、*PersistentVolume* オブジェクトに対してマウント オプションを指定する必要があります。 次の例では、*0777* が設定されます。
+Kubernetes バージョン 1.15 以降の場合、*fileMode* と *dirMode* の既定値は *0777* です。 次の例では、*PersistentVolume* オブジェクトに対して *0755* を設定します。
 
 ```yaml
 apiVersion: v1
@@ -147,18 +149,17 @@ spec:
     - ReadWriteMany
   azureFile:
     secretName: azure-secret
+    secretNamespace: default
     shareName: aksshare
     readOnly: false
   mountOptions:
-  - dir_mode=0777
-  - file_mode=0777
+  - dir_mode=0755
+  - file_mode=0755
   - uid=1000
   - gid=1000
   - mfsymlinks
   - nobrl
 ```
-
-バージョン 1.8.0 - 1.8.4 のクラスターを使用している場合は、*runAsUser* の値を *0* に設定してセキュリティ コンテキストを指定できます。 ポッドのセキュリティ コンテキストについて詳しくは、[セキュリティ コンテキストの構成][kubernetes-security-context]に関するページを参照してください。
 
 マウント オプションを更新するには、*PersistentVolume* を使用して *azurefile-mount-options-pv.yaml* ファイルを作成します。 次に例を示します。
 

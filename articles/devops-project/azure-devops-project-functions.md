@@ -10,10 +10,10 @@ ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3277fefb5615fd492b2859b741ef8e6f991eaf23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91355476"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>DevOps Starter を使用して Azure Functions にデプロイする
@@ -73,7 +73,7 @@ DevOps Starter によって、Azure Pipelines に CI/CD パイプラインが作
 
    このすべてが完了すると、Azure DevOps Starter ダッシュボードが Azure portal に表示されます。 DevOps Starter ダッシュボードには、Azure portal の **[すべてのリソース]** から直接移動することもできます。
 
-   このダッシュボードでは、Azure DevOps コード リポジトリ、CI/CD パイプライン、および Azure 関数が可視化されます。 Azure DevOps パイプラインで追加の CI/CD オプションを構成できます。 右側で、表示する**関数アプリ**を選択します。
+   このダッシュボードでは、Azure DevOps コード リポジトリ、CI/CD パイプライン、および Azure 関数が可視化されます。 Azure DevOps パイプラインで追加の CI/CD オプションを構成できます。 右側で、表示する **関数アプリ** を選択します。
 
 ## <a name="examine-the-function-app"></a>関数アプリを調べる
 
@@ -140,19 +140,19 @@ DevOps Starter では、Azure DevOps 組織から Azure サブスクリプショ
 
 1. リポジトリには、作成プロセスで選択したアプリケーションの言語に基づいて、**SampleFunctionApp** というコードが既に含まれています。 **Application/SampleFunctionApp/Function1.cs** ファイルを開きます。
 
-1. **[編集]** を選択した後、**31 行目**を変更します。 たとえば、「**Hello there!Welcome to Azure Functions using DevOps Starter**」に更新します
+1. **[編集]** を選択した後、**31 行目** を変更します。 たとえば、「**Hello there!Welcome to Azure Functions using DevOps Starter**」に更新します
 
 1. 右上の **[コミット]** を選択し、もう一度 **[コミット]** を選択して、変更をプッシュします。
 
 1. **Application/SampleFunctionApp.Test/Function1TestRunner.cs** ファイルを開きます。 
 
-1. **[編集]** を選択した後、**21 行目**を変更します。 たとえば、「**Hello there!Welcome to Azure Functions using Azure DevOps Starter**」に更新します。
+1. **[編集]** を選択した後、**21 行目** を変更します。 たとえば、「**Hello there!Welcome to Azure Functions using Azure DevOps Starter**」に更新します。
 
      しばらくすると Azure DevOps でビルドが開始され、リリースが実行されて、変更がデプロイされます。 DevOps Starter ダッシュボードで、またはブラウザーで Azure DevOps 組織を使用して、ビルドの状態を監視します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-作成した関連リソースが必要なくなったら、削除してかまいません。 DevOps Starter ダッシュボードで**削除**機能を使用します。
+作成した関連リソースが必要なくなったら、削除してかまいません。 DevOps Starter ダッシュボードで **削除** 機能を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9abf389eb7f8862440f860c53a0dbd8b10315c67
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: d33634c08b85ad633fdad3f709b2b2182571d7de
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558149"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034763"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins のツイン モデルについて
 
@@ -65,7 +65,7 @@ Azure Digital Twins モデルのプロパティとテレメトリの違いは次
 
 そのため、Azure Digital Twins でモデルを設計する際は、ほとんどの場合 **プロパティ** を使用して、ツインをモデル化することになると考えられます。 これにより、バッキング ストレージが得られ、データ フィールドの読み取りとクエリを行うことができます。
 
-多くの場合、テレメトリとプロパティは連携して、デバイスからのデータのイングレスを処理します。 Azure Digital Twins へのすべてのイングレスは [API](how-to-use-apis-sdks.md) を通じて行われるため、通常はイングレス関数を使用してデバイスからテレメトリまたはプロパティのイベントを読み取り、それに応じて ADT でプロパティを設定します。 
+多くの場合、テレメトリとプロパティは連携して、デバイスからのデータのイングレスを処理します。 Azure Digital Twins へのすべてのイングレスは [API](how-to-use-apis-sdks.md) を通じて行われるため、通常はイングレス関数を使用してデバイスからテレメトリまたはプロパティのイベントを読み取り、それに応じて Azure Digital Twins でプロパティを設定します。 
 
 Azure Digital Twins API からテレメトリ イベントを発行することもできます。 他のテレメトリと同様に、これは存続期間の短いイベントであり、リスナーによる処理が必要です。
 
@@ -154,7 +154,7 @@ _**Azure Digital Twins にモデルをアップロードするには**_
 
 _**モデルを視覚化するには**_
 
-Azure Digital Twins インスタンスにモデルをアップロードした後、[**ADT Model Visualizer**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer) を使用して、Azure Digital Twins インスタンスでモデルを表示できます。これには、継承やモデルのリレーションシップも含まれます。 このサンプルは、現在ドラフト状態です。 弊社は、デジタル ツインの開発コミュニティに対して、このサンプルを拡張して寄与するように奨励しています。 
+Azure Digital Twins インスタンスにモデルをアップロードした後、[**Azure Digital Twins Model Visualizer**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer) を使用して、Azure Digital Twins インスタンスでモデルを表示できます。これには、継承やモデルのリレーションシップも含まれます。 このサンプルは、現在ドラフト状態です。 弊社は、デジタル ツインの開発コミュニティに対して、このサンプルを拡張して寄与するように奨励しています。 
 
 ## <a name="next-steps"></a>次のステップ
 

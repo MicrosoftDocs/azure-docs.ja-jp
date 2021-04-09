@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
 ms.openlocfilehash: 3db1c8bfc3a11151342589af0873d88e3d90c6a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91825628"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>内部 VNET 内の API Management と Application Gateway の統合
@@ -81,7 +81,7 @@ API Management サービスは、内部モードで仮想ネットワーク内�
 
 ## <a name="exposing-the-developer-portal-externally-through-application-gateway"></a>Application Gateway を使用して外部から開発者ポータルを公開する
 
-このガイドでは、Application Gateway を使用して**開発者ポータル**を外部の対象ユーザーにも公開します。 開発者ポータルのリスナー、プローブ、設定、およびルールを作成するには、追加の手順が必要です。 詳細はすべて、それぞれの手順で示されます。
+このガイドでは、Application Gateway を使用して **開発者ポータル** を外部の対象ユーザーにも公開します。 開発者ポータルのリスナー、プローブ、設定、およびルールを作成するには、追加の手順が必要です。 詳細はすべて、それぞれの手順で示されます。
 
 > [!WARNING]
 > Azure AD またはサード パーティの認証を使用している場合は、Application Gateway で [cookie ベースのセッション アフィニティ](../application-gateway/features.md#session-affinity)機能を有効にしてください。

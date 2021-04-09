@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: f33b72a25fc748f8320be8903903f817914733aa
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 9da83746cdaf693922b88841cd9c0fac432611c9
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455689"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870842"
 ---
 # <a name="text-to-speech-rest-api"></a>Text to Speech REST API
 
@@ -107,20 +107,7 @@ Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 
 ```json
 [
-  {
-    "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
-    "DisplayName": "Hoda",
-    "LocalName": "هدى",
-    "ShortName": "ar-EG-Hoda",
-    "Gender": "Female",
-    "Locale": "ar-EG",
-    "SampleRateHertz": "16000",
-    "VoiceType": "Standard",
-    "Status": "GA"
-  },
 
-...
-      
     {
     "Name": "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)",
     "DisplayName": "Aria",
@@ -140,9 +127,9 @@ Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
     "VoiceType": "Neural",
     "Status": "GA"
   },
-  
+
   ...
-    
+
      {
     "Name": "Microsoft Server Speech Text to Speech Voice (ga-IE, OrlaNeural)",
     "DisplayName": "Orla",
@@ -154,9 +141,9 @@ Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
     "VoiceType": "Neural",
     "Status": "Preview"
   },
-  
+
   ...
-    
+
    {
     "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, YunxiNeural)",
     "DisplayName": "Yunxi",
@@ -181,6 +168,21 @@ Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
   },
 
     ...
+
+   {
+    "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
+    "DisplayName": "Hoda",
+    "LocalName": "هدى",
+    "ShortName": "ar-EG-Hoda",
+    "Gender": "Female",
+    "Locale": "ar-EG",
+    "SampleRateHertz": "16000",
+    "VoiceType": "Standard",
+    "Status": "GA"
+  },
+
+...
+
 ]
 ```
 
@@ -232,10 +234,12 @@ audio-24khz-160kbitrate-mono-mp3    audio-24khz-96kbitrate-mono-mp3
 audio-24khz-48kbitrate-mono-mp3     ogg-24khz-16bit-mono-opus
 raw-48khz-16bit-mono-pcm            riff-48khz-16bit-mono-pcm
 audio-48khz-96kbitrate-mono-mp3     audio-48khz-192kbitrate-mono-mp3
+webm-16khz-16bit-mono-opus          webm-24khz-16bit-mono-opus
 ```
 
 > [!NOTE]
-> 選択した音声と出力形式のビット レートが異なる場合、オーディオは必要に応じて再サンプリングされます。 ogg-24khz-16bit-mono-opus は [OPUS コーデック](https://opus-codec.org/downloads/)でデコードできます
+> 選択した音声と出力形式のビット レートが異なる場合、オーディオは必要に応じて再サンプリングされます。
+> ogg-24khz-16bit-mono-opus は [OPUS コーデック](https://opus-codec.org/downloads/)でデコードできます
 
 ### <a name="request-body"></a>要求本文
 

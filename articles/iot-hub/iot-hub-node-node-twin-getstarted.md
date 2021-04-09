@@ -10,10 +10,10 @@ ms.date: 08/26/2019
 ms.author: elioda
 ms.custom: mqtt, devx-track-js
 ms.openlocfilehash: 65ced3812072bd2650fc36bbb7a7b0f3f75e0def
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91336787"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>デバイス ツインの使用 (Node.js)
@@ -135,7 +135,7 @@ ms.locfileid: "91336787"
 
     前のコードは 2 つのクエリを実行します。1 つ目では、**Redmond43** 工場にあるデバイスのデバイス ツインのみを選択し、2 つ目のクエリで携帯ネットワーク経由で接続しているデバイスのみを選択するよう絞り込みます。
 
-    コードで**クエリ** オブジェクトが作成されると、2 番目のパラメーターで返されるドキュメントの最大数が指定されます。 **query** オブジェクトには、**nextAsTwin** メソッドを複数回呼び出してすべての結果を取得する際に使用できる **hasMoreResults** のブール型プロパティが含まれます。 **next** というメソッドは、集計クエリの結果など、デバイス ツインではない結果で使用できます。
+    コードで **クエリ** オブジェクトが作成されると、2 番目のパラメーターで返されるドキュメントの最大数が指定されます。 **query** オブジェクトには、**nextAsTwin** メソッドを複数回呼び出してすべての結果を取得する際に使用できる **hasMoreResults** のブール型プロパティが含まれます。 **next** というメソッドは、集計クエリの結果など、デバイス ツインではない結果で使用できます。
 
 6. 以下を使用してアプリケーションを実行します。
 
@@ -165,7 +165,7 @@ ms.locfileid: "91336787"
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-3. テキスト エディターを使用して、**reportconnectivity** フォルダーに新しい**ReportConnectivity.js** ファイルを作成します。
+3. テキスト エディターを使用して、**reportconnectivity** フォルダーに新しい **ReportConnectivity.js** ファイルを作成します。
 
 4. 次のコードを **ReportConnectivity.js** ファイルに追加します。 `{device connection string}` を、「[IoT ハブに新しいデバイスを登録する](#register-a-new-device-in-the-iot-hub)」で **myDeviceId** デバイス ID を作成するときにコピーしておいたデバイス接続文字列に置き換えます。
 

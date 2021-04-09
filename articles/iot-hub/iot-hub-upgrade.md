@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
 ms.openlocfilehash: 96c3a7b2cfda23f173f4caeff4fb7a92b1ddc438
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "61440235"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>IoT Hub のアップグレード方法
@@ -41,11 +41,11 @@ IoT ソリューションの成長と共に、Azure IoT Hub をスケールア�
 
    ![価格とスケール](./media/iot-hub-upgrade/pricing-scale.png)
 
-3. Hub のレベルを変更するには、 **[価格とスケール レベル]** を選択します。 新しいレベルを選択し、 **[選択]** をクリックします。
+3. Hub のレベルを変更するには、**[価格とスケール レベル]** を選択します。 新しいレベルを選択し、**[選択]** をクリックします。
 
    ![価格とスケール ティア](./media/iot-hub-upgrade/select-tier.png)
 
-4. Hub のユニット数を変更するには、 **[IoT Hub ユニット]** の下に新しい値を入力します。
+4. Hub のユニット数を変更するには、**[IoT Hub ユニット]** の下に新しい値を入力します。
 
 5. **[保存]** を選択して変更を保存します。
 

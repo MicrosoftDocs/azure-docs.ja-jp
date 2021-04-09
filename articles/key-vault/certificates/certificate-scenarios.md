@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 85f17897c0e3089a2d2bc5b172e98fa24e8085ff
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94920442"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 証明書の概要

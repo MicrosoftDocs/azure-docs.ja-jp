@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: 1f80da4014d4b6b27155db17d32800e54b51f40d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: f02edf8e192f4d32f8bd2583d46bbb17c86d2049
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258067"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102454806"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Azure Virtual WAN ハブでネットワーク仮想アプライアンスを作成する方法 (プレビュー)
 
@@ -22,6 +22,8 @@ ms.locfileid: "99258067"
 この記事のステップは、Virtual WAN ハブで **Barracuda CloudGen WAN** ネットワーク仮想アプライアンスを作成する際に役立ちます。 この演習を完了するには、開始する前に、Barracuda Cloud Premise Device (CPE) と、ハブにデプロイする Barracuda CloudGen WAN アプライアンスのライセンスが必要です。
 
 Azure Virtual WAN 内の **Cisco SD-WAN** のデプロイに関するドキュメントについては、「[Cisco Cloud OnRamp for Multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701)」を参照してください。 
+
+Azure Virtual WAN 内の **VMware SD-WAN** のデプロイ ドキュメントの場合 - 「[Deployment Guide for VMware SD-WAN in Virtual WAN Hub](https://kb.vmware.com/s/article/82746)」 (仮想 WAN ハブの VMware SD-WAN 向けデプロイ ガイド) を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

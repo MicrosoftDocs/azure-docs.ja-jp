@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: ce713167272c9e97754fdf6f6d065519aaea3d15
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: d7dd7105ddb0d6503faefb996b84c0e53a62ce49
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421177"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104655378"
 ---
 # <a name="train-wide--deep-recommender"></a>ワイドかつディープなレコメンダーのトレーニング
 この記事では、Azure Machine Learning デザイナーで **ワイドかつディープなレコメンダーのトレーニング** モジュールを使用して、推奨モデルをトレーニングする方法について説明します。 このモジュールは、Google によって提案されているワイド & ディープ ラーニング (Wide & Deep Learning) に基づいています。
@@ -136,6 +136,10 @@ ms.locfileid: "93421177"
      バッチ正規化は、ネットワーク トレーニング中の内部的な共変量シフトの問題を軽減するための手法です。 これは一般に、ネットワークの速度、パフォーマンス、および安定性を向上させるのに役立ちます。 
 
 17.  パイプラインを実行します。
+
+## <a name="results"></a>結果
+
+パイプラインの実行が完了した後、モデルをスコアリングに使用するには、[ワイドかつディープなレコメンダーのトレーニング](train-wide-and-deep-recommender.md)を [ワイドかつディープなレコメンダーのスコア付け](score-wide-and-deep-recommender.md)に接続し、新しい入力例の値を予測します。
 
 ##  <a name="technical-notes"></a>テクニカル ノート
 

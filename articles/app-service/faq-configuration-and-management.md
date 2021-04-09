@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 843e11e7f2df404a6bf1866da7b383ee9d1097de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100574788"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
@@ -113,7 +113,7 @@ HTTP 応答からヘッダーを削除するには、サイトの web.config フ
 
 現時点では、Azure App Service の Web Apps の機能は PCI データ セキュリティ標準 (DSS) バージョン 3.0 レベル 1 に準拠しています。 PCI DSS バージョン 3.1 には今後準拠する予定です。 最新標準の採用をどのように進めるかについての計画は既に進行中です。
 
-PCI DSS バージョン 3.1 の証明書は、トランスポート層セキュリティ (TLS) 1.0 を無効にする必要があります。 現時点では、TLS 1.0 を無効にすることは、ほとんどの App Service プランの選択肢ではありません。 ただし、App Service 環境を使用しているまたはワークロードを App Service 環境に移行を許容したい場合、環境の制御範囲を拡大できます。 Azure サポートに連絡して TLS 1.0 を無効にする必要があります。 近い将来、これらの設定をユーザーがアクセスできるようにする予定です。
+PCI DSS バージョン 3.1 の証明書は、トランスポート層セキュリティ (TLS) 1.0 を無効にする必要があります。 現時点では、TLS 1.0 を無効にすることは、ほとんどの App Service プランの選択肢ではありません。 ただし、App Service Environment を使用しているまたはワークロードを App Service Environment に移行を許容したい場合、環境の制御範囲を拡大できます。 Azure サポートに連絡して TLS 1.0 を無効にする必要があります。 近い将来、これらの設定をユーザーがアクセスできるようにする予定です。
 
 詳細については、[PCI 標準 3.0 と 3.1 との Microsoft Azure App Service Web アプリのコンプライアンス対応](https://support.microsoft.com/help/3124528)に関するページを参照してください。
 
@@ -158,7 +158,7 @@ URL 書き換え規則を追加するには、関連する構成エントリを�
 * 動的 IP 制限を有効にします。 動的 IP 制限を有効にする方法については、「[IP and domain restrictions for Azure websites](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/)」(Azure Web サイトの IP とドメインの制限) を参照してください。
 * モジュールのセキュリティを有効にします。 モジュールのセキュリティを有効にする方法については、「[ModSecurity web application firewall on Azure websites](https://azure.microsoft.com/blog/modsecurity-for-azure-websites/)」(Azure Web サイトの ModSecurity Web アプリケーション ファイアウォール) を参照してください。
 
-App Service 環境を使用する場合は、[Barracuda ファイル](https://azure.microsoft.com/blog/configuring-barracuda-web-application-firewall-for-azure-app-service-environment/)を使用できます。
+App Service Environment を使用する場合は、[Barracuda ファイル](https://azure.microsoft.com/blog/configuring-barracuda-web-application-firewall-for-azure-app-service-environment/)を使用できます。
 
 ## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>App Service Web アプリ内のポートをブロックする方法は?
 

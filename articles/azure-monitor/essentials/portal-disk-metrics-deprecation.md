@@ -7,10 +7,10 @@ author: albecker1
 ms.author: albecker
 ms.date: 03/12/2020
 ms.openlocfilehash: 607ccacbfff86decaecaad0a869c8c0fe7500680
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033403"
 ---
 # <a name="disk-metrics-deprecation-in-the-azure-portal"></a>Azure portal でのディスク メトリックの非推奨

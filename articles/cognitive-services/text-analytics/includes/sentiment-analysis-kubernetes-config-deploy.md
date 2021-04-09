@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: ca8d4d725ff25687d1005ddab1964316a147c730
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017872"
 ---
 ### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>感情分析コンテナーを AKS クラスターにデプロイする

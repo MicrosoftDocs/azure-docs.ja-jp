@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 10444974cf31b95fccd2d11aef20bfd57fab7939
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: a6a993fdf4fd266afb9459fedd13412d8796e0a5
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275276"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611506"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OAuth 2.0 承認コード フロー
 
@@ -24,7 +24,7 @@ OAuth 2.0 認証コード付与を利用して、デバイスにインストー�
 
 OAuth 2.0 承認コード フローは、 [OAuth 2.0 仕様のセクション 4.1](https://tools.ietf.org/html/rfc6749)で規定されています。 Web アプリケーション、シングルページ アプリケーション、ネイティブにインストールされるアプリケーションを含め、多くの[アプリケーションの種類](application-types.md)で認証と承認を行う際にこのフローを利用できます。 OAuth 2.0 承認コード フローを利用して、[承認サーバー](protocols-overview.md)で保護されているリソースにアクセスするために使用できる、アプリケーション用のアクセス トークンと更新トークンを安全に取得できます。  クライアントは、更新トークンを使用して、アクセス トークンの期限が切れた後 (通常は 1 時間後)、新しいアクセス (および更新) トークンを取得できます。
 
-この記事では、 **パブリック クライアント** の OAuth 2.0 承認コード フローに重点を置いて説明します。 パブリック クライアントとは、秘密のパスワードの整合性を守る目的で信頼できないクライアント アプリケーションのことです。 これには、シングルページ アプリケーション、モバイル アプリ、デスクトップ アプリケーションなど、サーバー上で実行されない事実上すべてのアプリが該当します。
+この記事では、**パブリック クライアント** の OAuth 2.0 承認コード フローに重点を置いて説明します。 パブリック クライアントとは、秘密のパスワードの整合性を守る目的で信頼できないクライアント アプリケーションのことです。 これには、シングルページ アプリケーション、モバイル アプリ、デスクトップ アプリケーションなど、サーバー上で実行されない事実上すべてのアプリが該当します。
 
 > [!NOTE]
 > Azure AD B2C を利用して Web アプリに ID 管理を追加するには、OAuth 2.0 ではなく、[OpenID Connect](openid-connect.md) を使用してください。
@@ -39,7 +39,7 @@ Azure AD B2C は、単純な認証と承認以上のことができるように�
 
 ## <a name="redirect-uri-setup-required-for-single-page-apps"></a>シングル ページ アプリに必要なリダイレクト URI セットアップ
 
-シングル ページ アプリケーションの承認コード フローでは、追加のセットアップが必要です。  [シングルページ アプリケーションの作成](tutorial-register-spa.md)手順に従って、CORS に対して有効としてリダイレクト URI を正しくマークします。 既存のリダイレクト URI を更新して CORS を有効にするために、 **[アプリの登録]** の **[認証]** タブの [Web] セクションにある移行プロンプトをクリックできます。あるいは、 **アプリの登録のマニフェスト エディター** を開き、`replyUrlsWithType` セクションでリダイレクト URI の `type` フィールドを `spa` に設定します。
+シングル ページ アプリケーションの承認コード フローでは、追加のセットアップが必要です。  [シングルページ アプリケーションの作成](tutorial-register-spa.md)手順に従って、CORS に対して有効としてリダイレクト URI を正しくマークします。 既存のリダイレクト URI を更新して CORS を有効にするために、 **[アプリの登録]** の **[認証]** タブの [Web] セクションにある移行プロンプトをクリックできます。あるいは、**アプリの登録のマニフェスト エディター** を開き、`replyUrlsWithType` セクションでリダイレクト URI の `type` フィールドを `spa` に設定します。
 
 `spa` のリダイレクトの種類は、暗黙的なフローと下位互換性があります。 トークンを取得するために暗黙的なフローを現在使用しているアプリは、問題なく `spa` のリダイレクト URI の種類に移行し、暗黙的なフローを引き続き使用することができます。
 
@@ -72,6 +72,9 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | prompt |省略可能 |ユーザーとの必要な対話の種類。 現在、有効な値は `login` のみです。この場合ユーザーは要求時に、その資格情報を入力する必要があります。 シングル サインオンは作用しません。 |
 | code_challenge  | 推奨/必須 | PKCE (Proof Key for Code Exchange) を使用して承認コード付与をセキュリティ保護するために使用されます。 `code_challenge_method` が含まれている場合は必須です。 詳細については、「[PKCE RFC](https://tools.ietf.org/html/rfc7636)」を参照してください。 これは、すべての種類のアプリケーション (ネイティブ アプリ、SPA、Web アプリなどの機密クライアント) で推奨されるようになりました。 | 
 | `code_challenge_method` | 推奨/必須 | `code_challenge` パラメーターの `code_verifier` をエンコードするために使用されるメソッド。 これは `S256` である *べき* ですが、何らかの理由によってクライアントで SHA256 がサポートされない場合、仕様では `plain` の使用が許可されています。 <br/><br/>除外されていると、`code_challenge` が含まれている場合、`code_challenge` はプレーンテキストであると見なされます。 Microsoft ID プラットフォームは `plain` と `S256` の両方をサポートします。 詳細については、「[PKCE RFC](https://tools.ietf.org/html/rfc7636)」を参照してください。 これは、[承認コード フローを使用するシングル ページ アプリ](tutorial-register-spa.md)には必須です。|
+| login_hint | いいえ| サインインページのサインイン名フィールドに事前に入力するために使用できます。 詳細については、「[サインイン名を事前入力する](direct-signin.md#prepopulate-the-sign-in-name)」を参照してください。  |
+| domain_hint | いいえ| サインインに使用する必要があるソーシャル ID プロバイダーに関するヒントを Azure AD B2C に提供します。 有効な値が含まれている場合、ユーザーは直接 ID プロバイダーのサインイン ページに移動します。  詳細については、「[サインインをソーシャル プロバイダーにリダイレクトする](direct-signin.md#redirect-sign-in-to-a-social-provider)」を参照してください。 |
+| カスタム パラメーター | いいえ| [カスタムポリシー](custom-policy-overview.md)で使用できるカスタム パラメーター。 例: [動的なカスタム ページ コンテンツ URI](customize-ui-with-html.md?pivots=b2c-custom-policy#configure-dynamic-custom-page-content-uri)、または[キー値要求リゾルバー](claim-resolver-overview.md#oauth2-key-value-parameters)。 |
 
 この時点で、ユーザーはユーザー フローのワークフローを完了するよう求められます。 ユーザー名とパスワードを入力したり、ソーシャル ID でサインインしたり、ディレクトリにサインアップしたりするなど、いくつかの手順が必要なことがあります。 ユーザー アクションは、ユーザー フローがどのように定義されているかによって異なります。
 
@@ -193,7 +196,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 | client_secret | はい (Web アプリの場合) | [Azure portal](https://portal.azure.com/) で生成されたアプリケーション シークレット。 クライアントが安全にクライアント シークレットを格納できる Web アプリのシナリオでは、このフローでクライアント シークレットが使用されます。 ネイティブ アプリ (パブリック クライアント) のシナリオでは、クライアント シークレットは安全に保存できないため、この呼び出しでは使用されません。 クライアント シークレットを使用する場合は、定期的に変更してください。 |
 | grant_type |必須 |付与の種類。 この段階の承認コード フローでは、付与の種類には `refresh_token` を指定する必要があります。 |
 | scope |推奨 |スコープのスペース区切りリスト。 1 つのスコープ値が、要求されている両方のアクセス許可を Azure AD に示します。 クライアント ID をスコープとして使用することは、同じクライアント ID で表される、独自のサービスまたは Web API に対して使用できるアクセス トークンをアプリが必要とすることを示します。  `offline_access` スコープは、アプリがリソースに長時間アクセスするには更新トークンが必要になることを示します。  Azure AD B2C に ID トークンを要求するために、`openid` スコープを使用することもできます。 |
-| redirect_uri |省略可能 |承認コードを受け取った、アプリケーションのリダイレクト URI。 |
+| redirect_uri |オプション |承認コードを受け取った、アプリケーションのリダイレクト URI。 |
 | refresh_token |必須 |フローの第 2 段階で取得した元の更新トークン。 |
 
 正常なトークン応答は次のようになります。

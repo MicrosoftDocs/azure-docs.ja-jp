@@ -5,10 +5,10 @@ ms.date: 01/22/2021
 ms.topic: overview
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: 9843b824c62e0f9919d7a71a717d9aad03dcbd9c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100590848"
 ---
 # <a name="what-are-azure-management-groups"></a>Azure 管理グループとは

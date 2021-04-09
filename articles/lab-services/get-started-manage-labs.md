@@ -4,10 +4,10 @@ description: この記事では、Azure Lab Services の使用を開始する方
 ms.topic: article
 ms.date: 11/18/2020
 ms.openlocfilehash: d260ace7d7819c3ca2db96d6c4984bf834e170da
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98165044"
 ---
 # <a name="get-started-with-lab-services"></a>Lab Services の概要 

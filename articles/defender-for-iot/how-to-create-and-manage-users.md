@@ -1,18 +1,14 @@
 ---
 title: ユーザーの作成と管理
 description: センサーとオンプレミス管理コンソールのユーザーを作成および管理します。 ユーザーには、管理者、セキュリティ アナリスト、または読み取り専用ユーザーのロールを割り当てることができます。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
-ms.date: 1/3/2021
+ms.date: 03/03/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: fd0c7b74bea979737644824f93b4dce7a2364b99
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 2afc3cb2b9cfc0ac6b75c98198d9f0965b6dc04c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522344"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779020"
 ---
 # <a name="about-defender-for-iot-console-users"></a>About Defender for IoT コンソール ユーザーについて
 
@@ -162,7 +158,7 @@ Active Directory と統合するようにセンサーまたはオンプレミス
 
 ### <a name="active-directory-and-defender-for-iot-permissions"></a>Active Directory および Defender for IoT のアクセス許可
 
-ここで定義した Active Directory グループに、特定のアクセス許可レベルを関連付けることができます。 たとえば、特定の Active Directory グループを構成し、RO アクセス許可をそのグループ内のすべてのユーザーに割り当てます。 詳細については、「[ユーザーの作成および管理](how-to-create-and-manage-users.md)」を参照してください。
+ここで定義した Active Directory グループに、特定のアクセス許可レベルを関連付けることができます。 たとえば、特定の Active Directory グループを構成し、Read Only アクセス許可をそのグループ内のすべてのユーザーに割り当てます。
 
 Active Directory を構成するには:
 
@@ -170,11 +166,11 @@ Active Directory を構成するには:
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-system-settings-v2.png" alt-text="Active Directory のシステム設定を表示します。":::
 
-1. **[システム設定]** ペインで、 **[Active Directory]** を選択します。
+2. **[システム設定]** ペインで、 **[Active Directory]** を選択します。
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-configurations-v2.png" alt-text="Active Directory 構成を編集します。":::
 
-1. **[Edit Active Directory Configuration]\(Active Directory 構成の編集\)** ダイアログ ボックスで、 **[Active Directory Integration Enabled]\(Active Directory 統合の有効化\)**  >  **[保存]** を選択します。 **[Edit Active Directory Configuration]\(Active Directory 構成の編集\)** ダイアログ ボックスが展開され、Active Directory を構成するためのパラメーターを入力できるようになります。
+3. **[Edit Active Directory Configuration]\(Active Directory 構成の編集\)** ダイアログ ボックスで、 **[Active Directory Integration Enabled]\(Active Directory 統合の有効化\)**  >  **[保存]** を選択します。 **[Edit Active Directory Configuration]\(Active Directory 構成の編集\)** ダイアログ ボックスが展開され、Active Directory を構成するためのパラメーターを入力できるようになります。
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-integration-enabled-v2.png" alt-text="Active Directory を構成するためのパラメーターを入力します。":::
 
@@ -183,7 +179,7 @@ Active Directory を構成するには:
     > - すべての Active Directory パラメーターには、小文字のみを使用します。 Active Directory の構成で大文字が使用されている場合でも、小文字を使用します。
     > - 同じドメインに対して、LDAP と LDAPS の両方を構成することはできません。 ただし、別のドメインに対しては、これらの両方を同時に使用できます。
 
-1. 次の Active Directory サーバーのパラメーターを設定します。
+4. 次の Active Directory サーバーのパラメーターを設定します。
 
    | サーバー パラメーター | [説明] |
    |--|--|
@@ -193,11 +189,15 @@ Active Directory を構成するには:
    | Active Directory グループ | LDAP サーバーの Active Directory の構成で定義されているグループ名を入力します。 |
    | 信頼されたドメイン | 信頼されたドメインを追加するには、信頼されたドメインのドメイン名と接続の種類を追加します。 <br />信頼されたドメインは、[ユーザー] の下で定義されたユーザーに対してのみ構成できます。 |
 
+#### <a name="activedirectory-groups-for-the-on-premises-management-console"></a>オンプレミス管理コンソール用の ActiveDirectory グループ
+
+オンプレミス管理コンソール ユーザーの Active Directory グループを作成する場合は、Active Directory グループごとにアクセス グループ ルールを作成する必要があります。 Active Directory ユーザー グループのアクセス グループ ルールが存在しない場合、オンプレミス管理コンソールの Active Directory 資格情報は機能しません。 「[グローバル アクセス制御の定義](how-to-define-global-user-access-control.md)」を参照してください。
+
 1. **[保存]** を選択します。
 
-1. 信頼されたサーバーを追加するには、 **[サーバーの追加]** を選択し、別のサーバーを構成します。
+2. 信頼されたサーバーを追加するには、 **[サーバーの追加]** を選択し、別のサーバーを構成します。
 
-## <a name="resetting-a-users-password-for-the-sensor-or-on-premises-management-console"></a>センサーまたはオンプレミスの管理コンソールのユーザー パスワードをリセットする
+## <a name="resetting-passwords"></a>パスワードのリセット
 
 ### <a name="cyberx-or-support-user"></a>CyberX またはサポート ユーザー
 
@@ -207,7 +207,7 @@ CyberX またはサポート ユーザーのパスワードをリセットする
 
 1. Defender for IoT のサインイン画面で、 **[パスワードの復元]** オプションを選択します。 **[パスワードの復元]** 画面が開きます。
 
-1. **CyberX** または **サポート** を選択し、一意の識別子をコピーします。
+1. **[CyberX]** または **[サポート]** を選択し、一意識別子をコピーします。
 
 1. Azure portal に移動し、 **[Sites and Sensors]\(サイトとセンサー\)** を選択します。  
 
@@ -217,7 +217,7 @@ CyberX またはサポート ユーザーのパスワードをリセットする
 
    :::image type="content" source="media/password-recovery-images/recover-button.png" alt-text="オンプレミス管理を復元するボタンを選択して、復元ファイルをダウンロードします。":::
 
-1. **[パスワードの復元]** 画面で受信した一意の識別子を入力し、 **[復元]** を選択します。 `password_recovery.zip` ファイルがダウンロードされます。
+1. **[パスワードの復元]** 画面で受信した一意識別子を入力し、 **[復元]** を選択します。 `password_recovery.zip` ファイルがダウンロードされます。
 
     > [!NOTE]
     > パスワードの復元ファイルは変更しないでください。 これは署名されたファイルであり、改ざんすると機能しません。
@@ -265,7 +265,7 @@ CyberX またはサポート ユーザーのパスワードをリセットする
 
 1. **[更新]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="see-also"></a>関連項目
 
 [センサーをアクティブにしてセットアップする](how-to-activate-and-set-up-your-sensor.md)
 [オンプレミス管理コンソールをアクティブにしてセットアップする](how-to-activate-and-set-up-your-on-premises-management-console.md)

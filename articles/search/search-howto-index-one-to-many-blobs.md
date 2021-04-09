@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.openlocfilehash: ea22b3cff8a0303c4e6698db4090df0f5ed2153a
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99430982"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>BLOB のインデックス作成して複数の検索ドキュメントを生成する

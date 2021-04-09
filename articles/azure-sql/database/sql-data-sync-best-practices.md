@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: 59e28e4a3d630aac0954802e8777058c00261006
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ee15bfaa1d69e2e5047e7d24986f8e4e7d5b8b31
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791445"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180243"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Azure SQL データ同期のベスト プラクティス 
 
@@ -27,7 +27,7 @@ ms.locfileid: "92791445"
 SQL データ同期の概要については、[Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベース間でのデータの同期](sql-data-sync-data-sql-server-sql-database.md)に関する記事を参照してください。
 
 > [!IMPORTANT]
-> 現時点では、Azure SQL データ同期で Azure SQL Managed Instance はサポート **されていません** 。
+> 現時点では、Azure SQL データ同期で Azure SQL Managed Instance はサポート **されていません**。
 
 ## <a name="security-and-reliability"></a><a name="security-and-reliability"></a>セキュリティと信頼性
 
@@ -41,16 +41,20 @@ SQL データ同期の概要については、[Azure SQL データ同期を使�
 
 ### <a name="database-accounts-with-least-required-privileges"></a>最低限必要な特権が付与されたデータベース アカウント
 
--   **同期のセットアップ** 。 テーブルの作成/変更、データベースの変更、プロシージャの作成、スキーマの選択/変更、ユーザー定義型の作成。
+-   **同期のセットアップ**。 テーブルの作成/変更、データベースの変更、プロシージャの作成、スキーマの選択/変更、ユーザー定義型の作成。
 
--   **継続的な同期** 。同期の対象として選択したテーブルと同期メタデータおよび追跡テーブルでの選択/挿入/更新/削除、サービスによって作成されたストアド プロシージャに対する実行アクセス許可、ユーザー定義テーブル型に対する実行アクセス許可。
+-   **継続的な同期**。同期の対象として選択したテーブルと同期メタデータおよび追跡テーブルでの選択/挿入/更新/削除、サービスによって作成されたストアド プロシージャに対する実行アクセス許可、ユーザー定義テーブル型に対する実行アクセス許可。
 
--   **プロビジョニング解除** 。 同期に含まれるテーブルでの変更、同期メタデータ テーブルでの選択/削除、同期追跡テーブル、ストアド プロシージャ、およびユーザー定義型の制御。
+-   **プロビジョニング解除**。 同期に含まれるテーブルでの変更、同期メタデータ テーブルでの選択/削除、同期追跡テーブル、ストアド プロシージャ、およびユーザー定義型の制御。
 
 Azure SQL Database では、単一の資格情報セットのみをサポートしています。 この制約内でこれらのタスクを行うため、次のオプションを検討してください。
 
 -   フェーズごとに資格情報を変更します (たとえば、セットアップには *credentials1* を使用し、継続的な同期には *credentials2* を使用します)。  
 -   資格情報のアクセス許可を変更します (つまり、同期の設定後にアクセス許可を変更します)。
+
+### <a name="auditing"></a>監査
+
+同期グループ内のデータベース レベルで監査を有効にすることをお勧めします。 
 
 ## <a name="setup"></a>セットアップ
 

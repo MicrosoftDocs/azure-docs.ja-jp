@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/05/2021
 ms.author: jeedes
 ms.openlocfilehash: d723bf1ce82e6d443dfa55dda7d33a3a9bfc16b6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101647019"
 ---
 # <a name="tutorial-integrate-secret-server-on-premises-with-azure-active-directory"></a>チュートリアル:Secret Server (On-Premises) と Azure Active Directory の統合

@@ -8,14 +8,16 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 56696f138fbf58993e990e263d2fa8e490672bb6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 11279c552cb599c24b72473d6574175450ca7ab0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106299"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200846"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Windows 上で、仮想 TPM を使用するシミュレートされた IoT Edge デバイスを作成し、プロビジョニングする
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.yml) を使用して、Edge に対応していないデバイスと同じように自動プロビジョニングできます。 自動プロビジョニングの処理に慣れていない場合は、[プロビジョニング](../iot-dps/about-iot-dps.md#provisioning-process)の概要を読んでから先に進んでください。
 
@@ -54,14 +56,14 @@ Device Provisioning Service を実行した後、概要ページから **[ID ス
 
 Windows 開発マシン上でシミュレートされた TPM デバイスを作成します。 デバイスの **登録 ID** と **保証キー** を取得し、それらを使用して DPS に個別の登録エントリを作成します。
 
-DPS 内に登録を作成するときに、 **デバイス ツインの初期状態** を宣言する機会があります。 デバイス ツインでは、ソリューションで必要な任意のメトリック (リージョン、環境、場所、デバイスの種類など) によってデバイスをグループ化するためのタグを設定できます。 これらのタグは、[自動展開](how-to-deploy-at-scale.md)を作成するために使用されます。
+DPS 内に登録を作成するときに、**デバイス ツインの初期状態** を宣言する機会があります。 デバイス ツインでは、ソリューションで必要な任意のメトリック (リージョン、環境、場所、デバイスの種類など) によってデバイスをグループ化するためのタグを設定できます。 これらのタグは、[自動展開](how-to-deploy-at-scale.md)を作成するために使用されます。
 
 シミュレートされたデバイスの作成に使用する SDK の言語を選択し、個々の登録を作成するまでの手順に従います。
 
 個々の登録を作成するときに、 **[True]** を選択して、Windows 開発用マシンでシミュレートされている TPM デバイスが **IoT Edge デバイス** であることを宣言します。
 
 > [!TIP]
-> Azure CLI では、 [登録](/cli/azure/ext/azure-iot/iot/dps/enrollment)または [登録グループ](/cli/azure/ext/azure-iot/iot/dps/enrollment-group)を作成し、 **Edge 対応** フラグを使用して、デバイスまたはデバイスのグループが IoT Edge デバイスであることを指定できます。
+> Azure CLI では、[登録](/cli/azure/ext/azure-iot/iot/dps/enrollment)または [登録グループ](/cli/azure/ext/azure-iot/iot/dps/enrollment-group)を作成し、**Edge 対応** フラグを使用して、デバイスまたはデバイスのグループが IoT Edge デバイスであることを指定できます。
 
 シミュレートされたデバイスと個々の登録ガイド:
 
@@ -71,7 +73,7 @@ DPS 内に登録を作成するときに、 **デバイス ツインの初期状
 * [Node.js](../iot-dps/quick-create-simulated-device-tpm-node.md)
 * [Python](../iot-dps/quick-create-simulated-device-tpm-python.md)
 
-個別登録を作成したら、 **登録 ID** の値を保存します。 この値は、IoT Edge ランタイムを構成するときに使用します。
+個別登録を作成したら、**登録 ID** の値を保存します。 この値は、IoT Edge ランタイムを構成するときに使用します。
 
 ## <a name="install-the-iot-edge-runtime"></a>IoT Edge ランタイムをインストールする
 

@@ -1,8 +1,8 @@
 ---
 title: SQL Server から SQL Managed Instance:パフォーマンス分析
 description: SQL Server データベースを Azure SQL Managed Instance に移行するときにパフォーマンス ベースラインを作成して比較する方法について学習します。
-ms.service: sql-database
-ms.subservice: migration
+ms.service: sql-managed-instance
+ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mokabiru
 ms.date: 11/06/2020
-ms.openlocfilehash: 2b6f9bef445cc07a3aa00377b41010a536855935
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 28eedd3a22a0a5adc6e9a37c9e0f0fa0214a4e47
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358862"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103564441"
 ---
 # <a name="migration-performance-sql-server-to-sql-managed-instance-performance-analysis"></a>移行のパフォーマンス: SQL Server から SQL Managed Instance の場合のパフォーマンス分析
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]

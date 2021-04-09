@@ -4,16 +4,16 @@ description: この記事では、ラボ アカウントでの VM の自動シ�
 ms.topic: article
 ms.date: 08/17/2020
 ms.openlocfilehash: c0a147a81aaed88313a1b9aa4b0754d9a3badcb5
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91650036"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab-account"></a>ラボ アカウント用に VM の自動シャットダウンを構成する
 
-自動シャットダウンによる複数のコスト制御機能を有効にして、仮想マシンがアクティブに使用されていないときの追加コストを事前に防ぐことができます。 次の 3 つの自動シャットダウンおよび切断機能を組み合わせると、ユーザーが誤って仮想マシンを実行状態のまま放置するケースのほとんどを捕捉できます。
- 
+自動シャットダウンによる複数のコスト制御機能を有効にして、仮想マシンがアクティブに使用されていないときの追加コストを事前に防ぐことができます。 次の 3 つの自動シャットダウンおよび切断機能を組み合わせると、ユーザーが誤って仮想マシンを実行状態のまま放置するケースのほとんどをキャッチできます。
+ 
 - OS によってアイドル状態と見なされた仮想マシンから、ユーザーを自動的に切断する。
 - ユーザーが切断したときに、仮想マシンを自動的にシャットダウンする。
 - 起動したがユーザーが接続しない仮想マシンを自動的にシャットダウンする。

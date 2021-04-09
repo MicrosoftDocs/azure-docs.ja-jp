@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.author: sharrai
 ms.openlocfilehash: 9ffe7a3158b1de6828350947dcf81ef41d08708d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87421843"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Azure Site Recovery を使用したカスタマー マネージド サイト間での (VMM による) ディザスター リカバリーの廃止
@@ -36,13 +36,13 @@ Site Recovery を使用する System Center Virtual Machine Manager (SCVMM) に�
 
 シナリオが非推奨になったときに DR 戦略に影響が出ないようにするためにお客様が選択可能な代替手段を次に示します。 
 
-- オプション 1 (推奨):[DR ターゲットとして Azure の使用を開始する](hyper-v-vmm-azure-tutorial.md)ことを選択します。
+- オプション 1 (推奨): [DR ターゲットとして Azure の使用を開始する](hyper-v-vmm-azure-tutorial.md)ことを選択します。
 
 
-- オプション 2:サイト間レプリケーションを、基本的な [Hyper-Hyper-V レプリカ ソリューション](/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica)を使用して続行することを選択します。ただし、Azure portal で Azure Site Recovery を使用して DR 構成を管理することはできません。 
+- オプション 2: サイト間レプリケーションを、基本的な [Hyper-Hyper-V レプリカ ソリューション](/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica)を使用して続行することを選択します。ただし、Azure portal で Azure Site Recovery を使用して DR 構成を管理することはできません。 
 
 
-## <a name="remediation-steps"></a>修復手順
+## <a name="remediation-steps"></a>修復ステップ
 
 オプション 1 を選択する場合は、次のステップを実行してください。
 
@@ -53,14 +53,14 @@ Site Recovery を使用する System Center Virtual Machine Manager (SCVMM) に�
 3. VM のレプリケーションを有効にするために、[Azure リソースを準備](tutorial-prepare-azure-for-hyperv.md)します。
 4. [オンプレミスの Hyper-V を準備する](hyper-v-prepare-on-premises-tutorial.md)
 5. [VMM クラウド内の VM のレプリケーションを設定する](hyper-v-vmm-azure-tutorial.md)
-6. 省略可能ですが、実施することをお勧めします。[DR ドリルを実行する](tutorial-dr-drill-azure.md)
+6. 省略可能だが推奨: [DR ドリルを実行する](tutorial-dr-drill-azure.md)
 
 Hyper-V レプリカを使用するオプション 2 を選択する場合は、次の手順を実行してください。
 
 1. **[保護されているアイテム]**  >  **[レプリケートされたアイテム]** で、マシンを右クリックして **[レプリケーションの無効化]** をクリックします。
-2. **[レプリケーションの無効化]** で、 **[削除]** を選択します。
+2. **[レプリケーションの無効化]** で、**[削除]** を選択します。
 
-    これを使用すると、レプリケートされたアイテムが Azure Site Recovery から削除されます (請求は停止されます)。 オンプレミスの仮想マシン上のレプリケーション構成はクリーンアップ**されません**。 
+    これを使用すると、レプリケートされたアイテムが Azure Site Recovery から削除されます (請求は停止されます)。 オンプレミスの仮想マシン上のレプリケーション構成はクリーンアップ **されません**。 
 
 ## <a name="next-steps"></a>次のステップ
 廃止に備えた計画を立て、ご自身のインフラストラクチャとビジネスに最適な代替オプションを選択します。 これに関してご質問がある場合は、Microsoft サポートまでお問い合わせください

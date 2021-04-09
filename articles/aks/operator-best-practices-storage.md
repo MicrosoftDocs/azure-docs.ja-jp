@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 722fe393ad7637be20360463a4c3b6234224a036
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88653972"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) のストレージとバックアップに関するベスト プラクティス
@@ -49,7 +49,7 @@ Azure Files と Azure ディスクは両方とも、以下の Standard と Premi
 
 ### <a name="create-and-use-storage-classes-to-define-application-needs"></a>アプリケーションのニーズを定義するためにストレージ クラスを作成して使用する
 
-使用するストレージの種類は、Kubernetes の*ストレージ クラス*を使って定義します。 その後、ストレージ クラスはポッドまたはデプロイの仕様で参照されます。 これらの定義を組み合わせて適切なストレージを作成し、それをポッドに接続します。 詳細については、[AKS のストレージ クラス][aks-concepts-storage-classes]に関するページを参照してください。
+使用するストレージの種類は、Kubernetes の *ストレージ クラス* を使って定義します。 その後、ストレージ クラスはポッドまたはデプロイの仕様で参照されます。 これらの定義を組み合わせて適切なストレージを作成し、それをポッドに接続します。 詳細については、[AKS のストレージ クラス][aks-concepts-storage-classes]に関するページを参照してください。
 
 ## <a name="size-the-nodes-for-storage-needs"></a>ストレージのニーズに合わせてノードのサイズを設定する
 

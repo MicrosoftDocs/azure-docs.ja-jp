@@ -1,36 +1,26 @@
 ---
-title: Azure RTOS 用のセキュリティ モジュールの組み込みアラーム、カスタム可能アラーム、および推奨事項
-description: Azure IoT セキュリティ モジュール - RTOS を使用したセキュリティ アラートと推奨される修復方法について説明します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
+title: Azure RTOS 用の Defender-IoT-micro-agent の組み込みアラーム、カスタム可能アラーム、および推奨事項
+description: Azure IoT Defender-IoT-micro-agent - RTOS を使用したセキュリティ アラートと推奨される修復方法について説明します。
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/07/2020
-ms.author: mlottner
-ms.openlocfilehash: cf4924f8a9b97487e64e12ab80df92f2b2a81de2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfbd411617a0b80f4857e08f9803b34b80b873d4
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931458"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784681"
 ---
-# <a name="security-module-for-azure-rtos-security-alerts-and-recommendations-preview"></a>Azure RTOS 用のセキュリティ モジュールのセキュリティ アラートと推奨事項 (プレビュー)
+# <a name="defender-iot-micro-agent-for-azure-rtos-security-alerts-and-recommendations-preview"></a>Azure RTOS 用の Defender-IoT-micro-agent のセキュリティ アラートと推奨事項 (プレビュ)
 
-Azure RTOS 用のセキュリティ モジュールでは、高度な分析と脅威インテリジェンスを使用して IoT ソリューションを継続的に分析し、潜在的な悪意のあるアクティビティと疑わしいシステムの変更に関するアラートを受け取ることができます。 さらに、期待されるデバイスの動作とベースラインの知識に基づいて、カスタム アラートを作成できます。
+Azure RTOS 用の Defender-IoT-micro-agent を使用すると、高度な分析と脅威インテリジェンスを使用して IoT ソリューションを継続的に分析し、潜在的な悪意のあるアクティビティと疑わしいシステムの変更に関するアラートを受け取ることができます。 さらに、期待されるデバイスの動作とベースラインの知識に基づいて、カスタム アラートを作成できます。
 
-Azure RTOS 用のセキュリティ モジュールでは、アラートは侵害の可能性のインジケーターとして機能し、調査して修復する必要があります。 Azure RTOS 用のセキュリティ モジュールでは、推奨事項によって、修復と更新の対象となる脆弱なセキュリティ態勢が識別されます。 
+Azure RTOS 用の Defender-IoT-micro-agent のアラートは侵害の可能性のインジケーターとして機能し、調査して修復する必要があります。 Azure RTOS 用の Defender-IoT-micro-agent では、推奨事項によって、修復と更新の対象となる脆弱なセキュリティ態勢が識別されます。 
 
 この記事では、既定の範囲に基づいてトリガーされる組み込みアラートと推奨事項に加え、想定される動作やベースラインの動作に基づく独自の値でカスタマイズ可能なものの一覧を示します。 
 
-Defender for IoT サービスでのアラートのカスタマイズのしくみの詳細については、[カスタマイズ可能なアラート](concept-customizable-security-alerts.md)に関する記事を参照してください。 Azure RTOS 用のセキュリティ モジュールの使用時にカスタマイズするために使用できる特定のアラートと推奨事項について、以下の表で詳しく説明します。 
+Defender for IoT サービスでのアラートのカスタマイズのしくみの詳細については、[カスタマイズ可能なアラート](concept-customizable-security-alerts.md)に関する記事を参照してください。 Azure RTOS 用の Defender-IoT-micro-agent の使用時にカスタマイズするために使用できる特定のアラートと推奨事項について、以下の表で詳しく説明します。 
 
-## <a name="security-module-for-azure-rtos-supported-security-alerts"></a>Azure RTOS 用のセキュリティ モジュールでサポートされるセキュリティ アラート
+## <a name="defender-iot-micro-agent-for-azure-rtos-supported-security-alerts"></a>Azure RTOS 用の Defender-IoT-micro-agent でサポートされるセキュリティ アラート
 
 ### <a name="device-related-security-alerts"></a>デバイス関連のセキュリティ アラート
 
@@ -53,7 +43,7 @@ Defender for IoT サービスでのアラートのカスタマイズのしくみ
 |削除された証明書    | IoT Hub からの証明書の削除が検出されました        |
 |新しい証明書     |  IoT Hub への新しい証明書の追加が検出されました       |
 
-## <a name="security-module-for-azure-rtos-supported-customizable-alerts"></a>Azure RTOS 用のセキュリティ モジュールでサポートされるカスタマイズ可能なアラート
+## <a name="defender-iot-micro-agent-for-azure-rtos-supported-customizable-alerts"></a>Azure RTOS 用の Defender-IoT-micro-agent でサポートされるカスタマイズ可能アラート
 
 ### <a name="device-related-customizable-alerts"></a>デバイス関連のカスタマイズ可能アラート
 
@@ -75,7 +65,7 @@ Defender for IoT サービスでのアラートのカスタマイズのしくみ
 |ツイン モジュールへの更新     |  ツイン モジュールへの更新の数が許容範囲外です       |
 |許可されていない操作    |  許可されていない操作の回数が許容範囲外です       |
 
-## <a name="security-module-for-azure-rtos-supported-recommendations"></a>Azure RTOS 用のセキュリティ モジュールでサポートされている推奨事項
+## <a name="defender-iot-micro-agent-for-azure-rtos-supported-recommendations"></a>Azure RTOS 用の Defender-IoT-micro-agent でサポートされる推奨事項
 
 ### <a name="device-related-recommendations"></a>デバイス関連の推奨事項
 
@@ -97,6 +87,6 @@ Defender for IoT サービスでのアラートのカスタマイズのしくみ
 
 ## <a name="next-steps"></a>次の手順
 
-- [クイック スタート: Azure RTOS 用のセキュリティ モジュール](quickstart-azure-rtos-security-module.md)
-- [Azure RTOS 用のセキュリティ モジュールの構成とカスタマイズを行う](how-to-azure-rtos-security-module.md)
-- 「[Azure RTOS 用のセキュリティ モジュール API](azure-rtos-security-module-api.md)」を参照します。
+- [クイックスタート: Azure RTOS 用の Defender-IoT-micro-agent](quickstart-azure-rtos-security-module.md)
+- [Azure RTOS 用の Defender-IoT-micro-agent を構成およびカスタマイズする](how-to-azure-rtos-security-module.md)
+- [Azure RTOS 用の Defender-IoT-micro-agent の API](azure-rtos-security-module-api.md) を参照する

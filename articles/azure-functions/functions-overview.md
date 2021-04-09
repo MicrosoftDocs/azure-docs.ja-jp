@@ -8,10 +8,10 @@ ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: 41b627259d84539c868f95eb3cf33db5dbdab52c
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97862406"
 ---
 # <a name="introduction-to-azure-functions"></a>Azure Functions の概要

@@ -10,10 +10,10 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 ms.openlocfilehash: 0a54d0c85902915d2ee62acd8a1d38b8db8b221c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92536047"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Azure Portal を使用して IoT Hub を作成する
@@ -62,7 +62,7 @@ IoT Hub に対して設定できるプロパティをいくつか以下に示し
 
 特定のアクセス許可によって付与されるアクセスの詳細については、[IoT Hub のアクセス許可に関するセクション](./iot-hub-devguide-security.md#iot-hub-permissions)を参照してください。
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>IoT Hub に新しいデバイスを登録する
+## <a name="register-a-new-device-in-the-iot-hub"></a>IoT ハブに新しいデバイスを登録する
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 

@@ -5,14 +5,14 @@ author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/19/2020
+ms.date: 03/12/2021
 ms.author: jlian
-ms.openlocfilehash: 6f83421d4ee56d56875e13ffbdd8ac9dbbf4b6bb
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2a76cede4bc72da9f30564f98ab9bb84028680f7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656365"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581492"
 ---
 # <a name="use-ip-filters"></a>IP フィルターの使用
 

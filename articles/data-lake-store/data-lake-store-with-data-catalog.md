@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 02544489816f5711ca6e599c2bce03737c747934
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92106622"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Azure Data Catalog に Azure Data Lake Storage Gen1 のデータを登録する
@@ -20,7 +20,7 @@ ms.locfileid: "92106622"
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* Data Lake Storage Gen1 の**有効な Azure サブスクリプション**。 [手順](data-lake-store-get-started-portal.md)を参照してください。
+* Data Lake Storage Gen1 の **有効な Azure サブスクリプション**。 [手順](data-lake-store-get-started-portal.md)を参照してください。
 * **Data Lake Storage Gen1 アカウント**。 「[Azure portal で Azure Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。 このチュートリアルでは、**datacatalogstore** という Data Lake Storage Gen1 アカウントを作成してください。
 
     アカウントを作成したら、サンプル データ セットをアップロードします。 このチュートリアルでは、 **Azure Data Lake Git リポジトリ** の [AmbulanceData](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/)フォルダーにあるすべての .csv ファイルをアップロードします。 [Azure Storage Explorer](https://storageexplorer.com/)などのさまざまなクライアントを使用して、BLOB コンテナーにデータをアップロードすることができます。

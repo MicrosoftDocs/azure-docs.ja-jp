@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 9a20db58846ca48afb4fb256adae58e1fccdff3a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 15df9b38abe35fe3eefad2fa160e1c1f16fe7aa7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875738"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102439461"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -58,14 +58,22 @@ Storage Explorer を使用すると、Azure リソースに接続するために
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>管理レイヤーのアクセス許可を取得できない場合、管理者からは何が必要でしょうか?
 
-BLOB コンテナーまたはキューにアクセスする場合、Azure 資格情報を利用してそれらのリソースにアタッチできます。
+BLOB コンテナー、ADLS Gen2 コンテナーまたはディレクトリ、またはキューにアクセスする場合、Azure 資格情報を利用してそれらのリソースにアタッチできます。
 
 1. [接続] ダイアログを開きます。
-2. [Add a resource via Azure Active Directory (Azure AD)]\(Azure Active Directory (Azure AD) を使用してリソースを追加する\) を選択します。 [次へ] を選択します。
-3. アタッチしているリソースに関連付けられているユーザー アカウントとテナントを選択します。 [次へ] を選択します。
-4. リソースの種類を選択し、リソースの URL を入力し、接続の一意の表示名を入力します。 [次へ]、[接続] の順に選択します。
+1. 接続先のリソースの種類を選択します。
+1. **[Azure Active Directory (Azure AD) を使用してサインインする]** を選択します。 **[次へ]** を選択します。
+1. アタッチしているリソースに関連付けられているユーザー アカウントとテナントを選択します。 **[次へ]** を選択します。
+1. リソースの URL を入力し、接続の一意の表示名を入力します。 **[次へ]** 、 **[接続]** の順に選択します。
 
-その他のリソースの種類については現在、Azure RBAC 関連のソリューションはありません。 回避策として、SAS URI を要求して[リソースにアタッチ](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#use-a-shared-access-signature-uri)することができます。
+その他のリソースの種類については現在、Azure RBAC 関連のソリューションはありません。 回避策として、SAS URL を要求し、次の手順に従ってリソースにアタッチすることができます。
+
+1. [接続] ダイアログを開きます。
+1. 接続先のリソースの種類を選択します。
+1. **[Shared Access Signature (SAS)]** を選択します。 **[次へ]** を選択します。
+1. 受け取った SAS URL を入力し、接続の一意の表示名を入力します。 **[次へ]** 、 **[接続]** の順に選択します。
+ 
+リソースへのアタッチの詳細については、「[個々のリソースにアタッチする](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#attach-to-an-individual-resource)」を参照してください。
 
 ### <a name="recommended-azure-built-in-roles"></a>推奨される Azure 組み込みロール
 
@@ -150,7 +158,7 @@ macOS のキーチェーンは、Storage Explorer 認証ライブラリの問題
 
     ![南京錠アイコン](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
 
-5. Storage Explorer を開きます。
+5. ストレージ エクスプローラーを開きます。
 6. "サービス ハブがキーチェーンへのアクセスを要求しています" というようなメッセージが表示されます。 Mac 管理者アカウントのパスワードを入力し、 **[常に許可]** ( **[常に許可]** が使用できない場合は **[許可]** ) を選択します。
 7. サインインを試します。
 

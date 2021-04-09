@@ -4,12 +4,12 @@ description: Apache Ambari Web UI を使用して、Apache Pig を構成およ�
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 690cfc66d0f08e63ac6ef1d21b6722fed59eca14
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 43159360342063af1682a984db037ae286721411
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98939019"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871165"
 ---
 # <a name="optimize-apache-pig-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight で Apache Ambari を使用して Apache Pig を最適化する
 
@@ -23,7 +23,7 @@ Ambari Web UI から Apache Pig プロパティを変更して、Pig クエリ�
 
 1. ウィンドウの右上の **[Save]\(保存\)** をクリックして新しい値を保存します。 一部のプロパティでは、サービスの再起動が必要な場合があります。
 
-    ![Advanced Apache pig プロパティ](./media/optimize-pig-ambari/advanced-pig-properties.png)
+    :::image type="content" source="./media/optimize-pig-ambari/advanced-pig-properties.png" alt-text="Advanced Apache pig プロパティ" border="true":::
 
 > [!NOTE]  
 > セッション レベルの設定によって、`pig.properties` ファイルのプロパティ値がオーバーライドされます。

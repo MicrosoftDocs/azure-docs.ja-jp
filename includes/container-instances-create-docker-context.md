@@ -9,10 +9,10 @@ ms.date: 08/13/2020
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 3221c4f3e196cf1573bd7c0424fa3b4530c0b2ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90708268"
 ---
 ## <a name="create-azure-context"></a>Azure コンテキストを作成する
@@ -32,7 +32,7 @@ docker login azure
 docker context create aci myacicontext
 ```
 
-プロンプトが表示されたら、Azure サブスクリプション ID を選択してから、既存のリソース グループを選択するか、**新しいリソース グループを作成**します。 新しいリソース グループを選択すると、システムによって生成された名前で作成されます。 Azure のコンテナー インスタンスは、すべての Azure リソースと同様に、リソース グループにデプロイする必要があります。 リソース グループを使用すると、関連する Azure リソースを整理して管理できます。
+プロンプトが表示されたら、Azure サブスクリプション ID を選択してから、既存のリソース グループを選択するか、**新しいリソース グループを作成** します。 新しいリソース グループを選択すると、システムによって生成された名前で作成されます。 Azure のコンテナー インスタンスは、すべての Azure リソースと同様に、リソース グループにデプロイする必要があります。 リソース グループを使用すると、関連する Azure リソースを整理して管理できます。
 
 
 `docker context ls` を実行して、Docker コンテキストに ACI コンテキストを追加したことを確認します。

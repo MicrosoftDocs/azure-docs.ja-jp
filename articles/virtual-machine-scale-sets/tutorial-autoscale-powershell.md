@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurepowershell
 ms.openlocfilehash: 8ee124f866a5241620671ff84c24f3713f62efe1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89078471"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して仮想マシン スケール セットを自動的にスケールする
@@ -192,7 +192,7 @@ mstsc /v 52.168.121.216:50001
 - **[OK]** を選択して、 *[お勧めのセキュリティ、プライバシー、互換性の設定を使う]* のプロンプトを受け入れます
 - アドレス バーに「 *http://download.sysinternals.com/files/CPUSTRES.zip* 」と入力します。
 - Internet Explorer の強化されたセキュリティ構成が有効になっているので、 **[追加]** を選択し、 *http://download.sysinternals.com* ドメインを信頼できるサイトの一覧に追加します。
-- ファイルのダウンロードのプロンプトが表示されたら、 **[開く]** を選択し、*CPUSTRES.EXE* ツールを選択して**実行**します。
+- ファイルのダウンロードのプロンプトが表示されたら、 **[開く]** を選択し、*CPUSTRES.EXE* ツールを選択して **実行** します。
 
 ある程度の CPU 負荷を生成するために、2 つのスレッドの **[Active]\(アクティブ\)** チェック ボックスをオンにします。 両方のスレッドの **[Activity]\(アクティビティ\)** ドロップダウン メニューから *[Maximum]\(最大\)* を選択します。 タスク マネージャーを開き、VM の CPU 負荷が 100% になっていることを確認できます。
 
@@ -204,7 +204,7 @@ mstsc /v 52.168.121.216:50001
 mstsc /v 52.168.121.216:50002
 ```
 
-2 番目の VM インスタンスにログインしたら、前の手順を繰り返して *CPUSTRES.EXE* をダウンロードして実行します。 再び、2 つの**アクティブ** スレッドを起動し、アクティビティを *[Maximum]\(最大\)* に設定します。
+2 番目の VM インスタンスにログインしたら、前の手順を繰り返して *CPUSTRES.EXE* をダウンロードして実行します。 再び、2 つの **アクティブ** スレッドを起動し、アクティビティを *[Maximum]\(最大\)* に設定します。
 
 **CPU Stress** ツールが実行し続けるように、両方のリモート デスクトップ接続セッションを開いたままにします。
 

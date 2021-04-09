@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 317b530fbaa34ca5689bb505126892e4eba06bd9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92674807"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database のセキュリティを geo リストアやフェールオーバー用に構成し、管理する
@@ -82,7 +82,7 @@ WHERE [type_desc] = 'SQL_USER'
 ```
 
 > [!NOTE]
-> **INFORMATION_SCHEMA** ユーザーと **sys** ユーザーの SID は *NULL* で、 **ゲスト** SID は **0x00** です。 データベースの作成者が **DbManager** のメンバーではなくサーバー管理者だった場合、 **dbo** SID は *0x01060000000001648000000000048454* で始まることがあります。
+> **INFORMATION_SCHEMA** ユーザーと **sys** ユーザーの SID は *NULL* で、**ゲスト** SID は **0x00** です。 データベースの作成者が **DbManager** のメンバーではなくサーバー管理者だった場合、**dbo** SID は *0x01060000000001648000000000048454* で始まることがあります。
 
 #### <a name="3-create-the-logins-on-the-target-server"></a>3.ターゲット サーバーへのログインを作成する
 

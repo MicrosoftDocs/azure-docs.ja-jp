@@ -8,10 +8,10 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 4b86d0c189bcf0687a703f2338188df2090feaf0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368028"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーの容量とスケーリングを計画する
@@ -28,7 +28,7 @@ Site Recovery Deployment Planner では、互換および非互換の VM、VM �
 
 コンポーネント | 詳細
 --- | ---
-**レプリケーション** | **日次変化率の上限** :保護されたマシンが使用できるプロセス サーバーは 1 つだけです。 1 台のプロセス サーバーでは、1 日あたり最大 2 TB の変化率を処理できます。 したがって、保護されたマシンでサポートされるデータの日次変化率の上限は 2 TB になります。<br /><br /> **最大スループット** :レプリケートされたマシンは、Azure の 1 つのストレージ アカウントに属することができます。 Standard Azure Storage アカウントでは、1 秒間に最大 20,000 要求を処理できます。 ソース マシン全体の 1 秒あたりの入出力操作 (IOPS) 数を、20,000 以下に制限することをお勧めします。 たとえば、5 個のディスクが搭載されたソース マシンで、各ディスクから 120 IOPS (8K サイズ) が生成される場合、Azure 内のディスクごとの IOPS 制限は 500 になります。 (必要なストレージ アカウントの数は、ソース マシンの合計 IOPS を 20000 で割った値です。)
+**レプリケーション** | **日次変更率の上限**: 保護されたマシンが使用できるプロセス サーバーは 1 つだけです。 1 台のプロセス サーバーでは、1 日あたり最大 2 TB の変化率を処理できます。 したがって、保護されたマシンでサポートされるデータの日次変化率の上限は 2 TB になります。<br /><br /> **最大スループット**: レプリケートされたマシンは、Azure の 1 つのストレージ アカウントに属することができます。 Standard Azure Storage アカウントでは、1 秒間に最大 20,000 要求を処理できます。 ソース マシン全体の 1 秒あたりの入出力操作 (IOPS) 数を、20,000 以下に制限することをお勧めします。 たとえば、5 個のディスクが搭載されたソース マシンで、各ディスクから 120 IOPS (8K サイズ) が生成される場合、Azure 内のディスクごとの IOPS 制限は 500 になります。 (必要なストレージ アカウントの数は、ソース マシンの合計 IOPS を 20000 で割った値です。)
 **構成サーバー** | 構成サーバーは、保護されたマシンで実行されているすべてのワークロードの日次変更率容量を処理できる必要があります。 構成マシンには、Azure Storage にデータを継続的にレプリケートできる十分な帯域幅が必要です。<br /><br /> ベスト プラクティスとして、保護対象のマシンと同じネットワークおよび LAN セグメントに構成サーバーを配置します。 構成サーバーを別のネットワークに配置することもできますが、保護対象のマシンにはレイヤー 3 のネットワーク可視性が必要です。<br /><br /> 構成サーバーのサイズの推奨事項を次のセクションの表に示します。
 **プロセス サーバー** | 最初のプロセス サーバーは、構成サーバーに既定でインストールされます。 追加のプロセス サーバーをデプロイして環境を拡張できます。 <br /><br /> プロセス サーバーは、保護対象のマシンからレプリケーション データを受け取ります。 プロセス サーバーでは、キャッシュ、圧縮、暗号化によってデータが最適化されます。 その後、プロセス サーバーはデータを Azure に送信します。 プロセス サーバー マシンには、これらのタスクを実行できる十分なリソースが必要です。<br /><br /> プロセス サーバーは、ディスクベースのキャッシュを使用します。 ネットワークのボトルネックや障害が発生した場合に、格納されているデータの変更を処理できるように、600 GB 以上のキャッシュ ディスクを別に使用します。
 
@@ -36,7 +36,7 @@ Site Recovery Deployment Planner では、互換および非互換の VM、VM �
 
 ワークロードを保護するために、組み込みのプロセス サーバーを使用する構成サーバーでは、次の構成に基づいて、最大 200 台まで仮想マシンを処理できます。
 
-CPU | メモリ | キャッシュ ディスク サイズ | データ変化率 | 保護対象のマシン
+CPU | メモリ | キャッシュ ディスク サイズ | データ変化率 | 保護対象コンピューター
 --- | --- | --- | --- | ---
 8 vCPU (2 ソケット * 4 コア \@ 2.5 GHz) | 16 GB | 300 GB | 500 GB 以下 | 100 台未満のマシンのレプリケートに使用する。
 12 vCPU (2 ソケット * 6 コア \@ 2.5 GHz) | 18 GB | 600 GB | 501 GB ～ 1 TB | 100 ～ 150 台のマシンのレプリケートに使用する。
@@ -62,7 +62,7 @@ CPU | メモリ | キャッシュ ディスク サイズ | データ変化率 | 
 * スケールアウト プロセス サーバーを使用するように、保護対象の仮想マシンを構成します。
 * 各保護対象ソース マシンは、それぞれ 100 GB のディスクを 3 個備えています。
 
-追加のプロセス サーバー | キャッシュ ディスク サイズ | データ変化率 | 保護対象のマシン
+追加のプロセス サーバー | キャッシュ ディスク サイズ | データ変化率 | 保護対象コンピューター
 --- | --- | --- | ---
 4 vCPU (2 ソケット * 2 コア \@ 2.5 GHz)、8 GB メモリ | 300 GB | 250 GB 以下 | 85 台以下のマシンのレプリケートに使用する。
 8 vCPU (2 ソケット * 4 コア \@ 2.5 GHz)、12 GB メモリ | 600 GB | 251 GB ～ 1 TB | 86 ～ 150 台のマシンのレプリケートに使用する。
@@ -77,14 +77,14 @@ CPU | メモリ | キャッシュ ディスク サイズ | データ変化率 | 
 
 [Site Recovery Deployment Planner](site-recovery-deployment-planner.md) を使用して、レプリケーションに必要な帯域幅 (初期レプリケーションと差分) を計算した後、次の 2 つのオプションを使用してレプリケーションに使用する帯域幅の量を制御できます。
 
-* **帯域幅を調整する** : Azure にレプリケートされる VMware トラフィックは、特定のプロセス サーバーを経由します。 プロセス サーバーとして実行されているマシンの帯域幅を調整できます。
-* **帯域幅に影響を与える** : レジストリ キーをいくつか使用して、レプリケーションに使用される帯域幅に影響を与えることができます。
+* **帯域幅を調整する**: Azure にレプリケートされる VMware トラフィックは、特定のプロセス サーバーを経由します。 プロセス サーバーとして実行されているマシンの帯域幅を調整できます。
+* **帯域幅に影響を与える**: レジストリ キーをいくつか使用して、レプリケーションに使用される帯域幅に影響を与えることができます。
   * **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** レジストリ値は、ディスクのデータ転送 (初期レプリケーションまたは差分レプリケーション) に使用されるスレッドの数を指定します。 値を大きくすると、レプリケーションに使用されるネットワーク帯域幅が増加します。
   * **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** レジストリ値は、フェールバック時にデータ転送に使用されるスレッドの数を指定します。
 
 ### <a name="throttle-bandwidth"></a>帯域幅のスロットル
 
-1. プロセス サーバーとして使用するマシンで、Azure Backup MMC スナップインを開きます。 既定では、デスクトップ上または次のフォルダー内で Backup のショートカットを使用できます:C:\Program Files\Microsoft Azure Recovery Services Agent\bin。
+1. プロセス サーバーとして使用するマシンで、Azure Backup MMC スナップインを開きます。 既定では、Backup のショートカットが、デスクトップまたはフォルダー C:\Program Files\Microsoft Azure Recovery Services Agent\bin で使用できます。
 2. スナップインで **[プロパティの変更]** を選択します。
 
     ![プロパティを変更する Azure Backup MMC スナップイン オプションのスクリーンショット](./media/site-recovery-vmware-to-azure/throttle1.png)
@@ -104,9 +104,9 @@ Set-OBMachineSetting -WorkDay $mon, $tue -StartWorkHour "9:00:00" -EndWorkHour "
 
 ### <a name="alter-the-network-bandwidth-for-a-vm"></a>VM のネットワーク帯域幅を変更する
 
-1. VM のレジストリで、 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication** に移動します。
-   * レプリケートするディスクで帯域幅のトラフィックを変更するには、 **UploadThreadsPerVM** の値を変更します。 存在しない場合はキーを作成します。
-   * Azure からのフェールバックのトラフィックの帯域幅を変更するには、 **DownloadThreadsPerVM** の値を変更します。
+1. VM のレジストリで、**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication** に移動します。
+   * レプリケートするディスクで帯域幅のトラフィックを変更するには、**UploadThreadsPerVM** の値を変更します。 存在しない場合はキーを作成します。
+   * Azure からのフェールバックのトラフィックの帯域幅を変更するには、**DownloadThreadsPerVM** の値を変更します。
 2. 各キーの既定値は **4** です。 "プロビジョニング超過" 状態のネットワークの場合、このレジストリ キーを既定値から変更する必要があります。 使用できる最大値は **32** です。 トラフィックを監視して値を最適化できます。
 
 ## <a name="set-up-the-site-recovery-infrastructure-to-protect-more-than-500-vms"></a>500 台を超える VM を保護するために Site Recovery インフラストラクチャを設定する
@@ -122,14 +122,14 @@ Site Recovery インフラストラクチャを設定する前に、その環境
 
 ## <a name="deploy-additional-process-servers"></a>追加のプロセス サーバーをデプロイする
 
-ソース マシンが 200 台を超えるデプロイ、または合計日次変化率が 2 TB を超えるデプロイでスケールアウトする場合は、トラフィック ボリュームに対応するためにプロセス サーバーを追加する必要があります。 9\.24 バージョンで製品を拡張し、スケールアウト プロセス サーバーをセットアップするときの[プロセス サーバーのアラート](vmware-physical-azure-monitor-process-server.md#process-server-alerts)を備えました。 [プロセス サーバーをセットアップして、](vmware-azure-set-up-process-server-scale.md)新しいソース マシンを保護するかまたは[負荷を分散させます](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load)。
+ソース マシンが 200 台を超えるデプロイ、または合計日次変化率が 2 TB を超えるデプロイでスケールアウトする場合は、トラフィック ボリュームに対応するためにプロセス サーバーを追加する必要があります。 9.24 バージョンで製品を拡張し、スケールアウト プロセス サーバーをセットアップするときの[プロセス サーバーのアラート](vmware-physical-azure-monitor-process-server.md#process-server-alerts)を備えました。 [プロセス サーバーをセットアップして、](vmware-azure-set-up-process-server-scale.md)新しいソース マシンを保護するかまたは[負荷を分散させます](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load)。
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>マシンを移行して新しいプロセス サーバーを使用する
 
-1. **[設定]**  >  **[Site Recovery servers]\(Site Recovery サーバー\)** を選択します。 構成サーバーを選択して、 **[プロセス サーバー]** を展開します。
+1. **[設定]**  >  **[Site Recovery servers]\(Site Recovery サーバー\)** を選択します。 構成サーバーを選択して、**[プロセス サーバー]** を展開します。
 
     ![プロセス サーバー ダイアログ ボックスのスクリーンショット](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
-2. 現在使用中のプロセス サーバーを右クリックし、 **[切り替え]** を選択します。
+2. 現在使用中のプロセス サーバーを右クリックし、**[切り替え]** を選択します。
 
     ![構成サーバー ダイアログ ボックスのスクリーンショット](./media/site-recovery-vmware-to-azure/migrate-ps3.png)
 3. **[ターゲット プロセス サーバーの選択]** で、使用する新しいプロセス サーバーを選択します。 サーバーが処理する仮想マシンを選択します。 サーバーに関する情報を取得するには、情報アイコンを選択します。 負荷の決定に役立つように、選択された各仮想マシンを新しいプロセス サーバーにレプリケートするために必要な平均容量が表示されます。 チェック マークを選択して、新しいプロセス サーバーへのレプリケーションを開始します。
@@ -147,23 +147,23 @@ Linux ベースの仮想マシン用にマスター ターゲット サーバー
 Windows ベースの仮想マシン用にマスター ターゲット サーバーを追加するには:
 
 1. **[Recovery Services コンテナー]**  >  **[Site Recovery インフラストラクチャ]**  >  **[構成サーバー]** の順に移動します。
-2. 必要な構成サーバーを選択し、 **[マスター ターゲット サーバー]** を選択します。
+2. 必要な構成サーバーを選択し、**[マスター ターゲット サーバー]** を選択します。
 
     ![マスター ターゲット サーバーの追加ボタンを示すスクリーンショット](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
 3. 統合セットアップ ファイルをダウンロードし、VM 上でファイルを実行して、マスター ターゲット サーバーを設定します。
 4. **[Install master target]\(マスター ターゲットをインストールする\)**  >  **[次へ]** の順に選択します。
 
     ![マスター ターゲットのインストール オプションの選択を示すスクリーンショット](media/site-recovery-plan-capacity-vmware/choose-MT.PNG)
-5. 既定のインストール場所を選択し、 **[インストール]** を選択します。
+5. 既定のインストール場所を選択し、**[インストール]** を選択します。
 
      ![既定のインストール場所を示すスクリーンショット](media/site-recovery-plan-capacity-vmware/MT-installation.PNG)
-6. 構成サーバーにマスター ターゲットを登録するには、 **[Proceed to Configuration]\(構成に進む\)** を選択します。
+6. 構成サーバーにマスター ターゲットを登録するには、**[Proceed to Configuration]\(構成に進む\)** を選択します。
 
     ![構成を続けるボタンを示すスクリーンショット](media/site-recovery-plan-capacity-vmware/MT-proceed-configuration.PNG)
 7. 構成サーバーの IP アドレスとパスフレーズを入力します。 パスフレーズの生成方法については、「[構成サーバーのパスフレーズを生成する](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)」をご覧ください。 
 
     ![構成サーバーの IP アドレスとパスフレーズを入力する場所を示すスクリーンショット](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
-8. **[登録]** を選択します。 登録が終わったら、 **[完了]** を選択します。
+8. **[登録]** を選択します。 登録が終わったら、**[完了]** を選択します。
 
 登録が正常に終わると、Azure portal の **[Recovery Services コンテナー]**  >  **[Site Recovery Infrastructure]\(Site Recovery インフラストラクチャ\)**  >  **[構成サーバー]** で、構成サーバーのマスター ターゲット サーバーの一覧に、サーバーが表示されます。
 

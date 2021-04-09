@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f945699256b4de9bd87ee4ab7500268302e93089
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: b13cc6f8bb50a3c9ec3cae519db387f9f32c950d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880171"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102615280"
 ---
 # <a name="security-control-secure-configuration"></a>セキュリティ コントロールセキュリティで保護された構成
 
@@ -30,7 +30,7 @@ ms.locfileid: "98880171"
 
 また、ご利用の Azure リソース用の安全な構成基準として Azure Security Center からの推奨事項を使用することもできます。
 
-- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias)
 
 - [チュートリアル:コンプライアンスを強制するポリシーの作成と管理](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -100,7 +100,7 @@ Azure コンピューティング リソースに対する脆弱性評価の実�
 
 カスタム Azure ポリシー、Azure Resource Manager テンプレート、Desired State Configuration スクリプトなどのコードを安全に格納して管理するには、Azure DevOps を使用します。 Azure DevOps で管理するリソースにアクセスするには、Azure Active Directory (Azure AD) で定義された (Azure DevOps に統合されている場合)、または Active Directory で定義された (TFS に統合されている場合) 特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与したり、そのアクセス許可を拒否したりできます。
 
-- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow)
 
 - [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 
@@ -114,7 +114,7 @@ Azure コンピューティング リソースに対する脆弱性評価の実�
 
 - [Azure RBAC について](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-- [コンテナー レジストリの Azure RBAC について](../../container-registry/container-registry-roles.md)
+- [コンテナー レジストリの Azure RBAC を理解する](../../container-registry/container-registry-roles.md)
 
 - [Azure RBAC を構成する方法](../../role-based-access-control/quickstart-assign-role-user-portal.md)
 

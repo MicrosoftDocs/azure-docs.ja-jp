@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 03/12/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a881dee50195fe4995c77d793b4f4b75091d20b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bad8ae86827144269e816a6c2e01d6af3f4d88ac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231114"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103225420"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Azure Monitor での Azure AD サインイン ログ スキーマを解釈する
 
@@ -143,31 +143,33 @@ ms.locfileid: "89231114"
 
 ## <a name="field-descriptions"></a>フィールドの説明
 
-| フィールド名 | 説明 |
-|------------|-------------|
-| Time | 日付と時刻 (UTC)。 |
-| ResourceId | この値はマップされていないため、このフィールドを無視しても問題ありません。  |
-| OperationName | サインインの場合、この値は常に *Sign-in activity* です。 |
-| OperationVersion | クライアントによって要求された REST API のバージョン。 |
-| カテゴリ | サインインの場合、この値は常に *SignIn* です。 | 
-| TenantId | ログに関連付けられたテナント GUID。 |
-| ResultType | サインイン操作の結果は、*Success* または *Failure* です。 | 
-| ResultSignature | サインイン操作にエラーがある場合は、そのエラー コードが含まれます。 |
-| ResultDescription | サインイン操作のエラーの説明を指定します。 |
+| フィールド名 | Key | 説明 |
+| --- | --- | --- | 
+| Time |  - | 日付と時刻 (UTC)。 |
+| ResourceId | - | この値はマップされていないため、このフィールドを無視しても問題ありません。  |
+| OperationName | - | サインインの場合、この値は常に *Sign-in activity* です。 |
+| OperationVersion | - | クライアントによって要求された REST API のバージョン。 |
+| カテゴリ | - | サインインの場合、この値は常に *SignIn* です。 | 
+| TenantId | - | ログに関連付けられたテナント GUID。 |
+| ResultType | - | サインイン操作の結果は、*Success* または *Failure* です。 | 
+| ResultSignature | - | サインイン操作にエラーがある場合は、そのエラー コードが含まれます。 |
+| ResultDescription | 該当なしまたは空白 | サインイン操作のエラーの説明を指定します。 |
 | riskDetail | riskDetail | 危険なユーザー、サインイン、リスク検出の特定の状態の背後にある "理由" を提供します。 値には `none`、`adminGeneratedTemporaryPassword`、`userPerformedSecuredPasswordChange`、`userPerformedSecuredPasswordReset`、`adminConfirmedSigninSafe`、`aiConfirmedSigninSafe`、`userPassedMFADrivenByRiskBasedPolicy`、`adminDismissedAllRiskForUser`、`adminConfirmedSigninCompromised`、`unknownFutureValue` があります。 値 `none` は、ユーザーまたはサインインに対してこれまで何のアクションも行われていないことを意味します。 <br>**注:** このプロパティの詳細には Azure AD Premium P2 ライセンスが必要です。 その他のライセンスからは、値 `hidden` が返されます。 |
 | riskEventTypes | riskEventTypes | サインインに関連するリスク検出の種類。 値には `unlikelyTravel`、`anonymizedIPAddress`、`maliciousIPAddress`、`unfamiliarFeatures`、`malwareInfectedIPAddress`、`suspiciousIPAddress`、`leakedCredentials`、`investigationsThreatIntelligence`、`generic`、`unknownFutureValue` があります。 |
+| authProcessingDetails | Azure AD アプリ認証ライブラリ | ファミリ、ライブラリ、およびプラットフォームの情報が次の形式で含まれています: "Family: ADAL Library: ADAL.JS 1.0.0 Platform: JS" |
+| authProcessingDetails | IsCAEToken | 値は True または False |
 | riskLevelAggregated | riskLevel | 集計リスク レベル。 値には `none`、`low`、`medium`、`high`、`hidden`、`unknownFutureValue` があります。 値 `hidden` は、Azure AD Identity Protection に対してユーザーまたはサインインが有効にされなかったことを意味します。 **注:** このプロパティの詳細は、Azure AD Premium P2 のお客様のみが利用できます。 その他の顧客には、`hidden` が返されます。 |
 | riskLevelDuringSignIn | riskLevel | サインイン中のリスク レベル。 値には `none`、`low`、`medium`、`high`、`hidden`、`unknownFutureValue` があります。 値 `hidden` は、Azure AD Identity Protection に対してユーザーまたはサインインが有効にされなかったことを意味します。 **注:** このプロパティの詳細は、Azure AD Premium P2 のお客様のみが利用できます。 その他の顧客には、`hidden` が返されます。 |
 | riskState | riskState | 危険なユーザー、サインイン、リスク検出の状態を報告します。 値には、`none`、`confirmedSafe`、`remediated`、`dismissed`、`atRisk`、`confirmedCompromised`、`unknownFutureValue` があります。 |
-| DurationMs |  この値はマップされていないため、このフィールドを無視しても問題ありません。 |
-| CallerIpAddress | 要求を行ったクライアントの IP アドレス。 | 
-| CorrelationId | クライアントから渡される省略可能な GUID。 この値は、クライアント側の操作をサーバー側の操作と関連付けるために役立ちます。また、複数のサービスにまたがるログをトレースする場合に便利です。 |
-| ID | 要求を行ったときに提示されたトークンからの ID。 ユーザー アカウント、システム アカウント、またはサービス プリンシパルです。 |
-| Level | メッセージの種類を指定します。 監査の場合は常に *Informational* です。 |
-| 場所 | サインイン アクティビティの場所を指定します。 |
-| Properties | サインインに関連付けられたすべてのプロパティを一覧表示します。詳しくは、[Microsoft Graph API リファレンス](/graph/api/resources/signin?view=graph-rest-beta)をご覧ください。 読みやすくするため、このスキーマではサインイン リソースと同じ属性名を使用しています。
+| DurationMs | - | この値はマップされていないため、このフィールドを無視しても問題ありません。 |
+| CallerIpAddress | - | 要求を行ったクライアントの IP アドレス。 | 
+| CorrelationId | - | クライアントから渡される省略可能な GUID。 この値は、クライアント側の操作をサーバー側の操作と関連付けるために役立ちます。また、複数のサービスにまたがるログをトレースする場合に便利です。 |
+| ID | - | 要求を行ったときに提示されたトークンからの ID。 ユーザー アカウント、システム アカウント、またはサービス プリンシパルです。 |
+| Level | - | メッセージの種類を指定します。 監査の場合は常に *Informational* です。 |
+| 場所 | - | サインイン アクティビティの場所を指定します。 |
+| Properties | - | サインインに関連付けられたすべてのプロパティを一覧表示します。|
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor で監査ログのスキーマを解釈する](reference-azure-monitor-audit-log-schema.md)
-* [Azure でのプラットフォーム ログの詳細について読む](../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure でのプラットフォーム ログの詳細について読む](../../azure-monitor/essentials/platform-logs-overview.md)

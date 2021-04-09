@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: jeedes
 ms.openlocfilehash: c2875afe597bd111f091ee1e4a53265154ca66b3
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92516823"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta4-global-hr"></a>チュートリアル:Azure Active Directory と Meta4 Global HR の統合
@@ -43,7 +43,7 @@ Azure AD と Meta4 Global HR の統合を構成するには、次のものが必
 
 
 
-* Meta4 Global HR では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Meta4 Global HR では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 
 
@@ -65,13 +65,13 @@ Azure AD への Meta4 Global HR の統合を構成するには、ギャラリー
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Meta4 Global HR** 」と入力し、結果パネルで **[Meta4 Global HR]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Meta4 Global HR**」と入力し、結果パネルで **[Meta4 Global HR]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果一覧の Meta4 Global HR](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Meta4 Global HR で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Meta4 Global HR で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Meta4 Global HR 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Meta4 Global HR で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -150,7 +150,7 @@ Meta4 Global HR との Azure AD シングル サインオンを構成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

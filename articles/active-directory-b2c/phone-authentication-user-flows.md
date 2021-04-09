@@ -12,10 +12,10 @@ ms.date: 02/01/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: dd21c1dca0dd54331780ba98f9c53d5b99d6b4e9
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100557221"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-for-user-flows-preview"></a>ユーザー フローの電話でのサインアップとサインインを設定する (プレビュー)
@@ -131,7 +131,7 @@ ms.locfileid: "100557221"
 
 1. **[ポリシー]**  >  **[ユーザー フロー]** を選択して、作成したユーザー フローを選択します。 ユーザー フローの [概要] ページで、 **[ユーザー フローを実行します]** を選択します。
 
-2. **[アプリケーション]** については、手順 1 で登録した Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+2. **[アプリケーション]** で、手順 1. で登録した Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
 
 3. **[ユーザー フローを実行します]** を選択し、次の動作を確認します。
 

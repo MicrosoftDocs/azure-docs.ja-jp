@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4077146292db1266d5dbc51cc577f952b2bff191
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85357513"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>AD DS アカウント パスワードの変更
@@ -40,7 +40,7 @@ AD DS アカウントとは、Azure AD Connect でオンプレミスの Active D
 
 2. **[コネクタ]** タブに移動します。
 
-3. パスワードが変更された AD DS アカウントに対応する **AD コネクタ**を選択します。
+3. パスワードが変更された AD DS アカウントに対応する **AD コネクタ** を選択します。
 
 4. **[アクション]** の **[プロパティ]** を選択します。
 
@@ -55,6 +55,6 @@ AD DS アカウントとは、Azure AD Connect でオンプレミスの Active D
 ## <a name="next-steps"></a>次のステップ
 **概要トピック**
 
-* [Azure AD Connect sync: 同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
 
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)

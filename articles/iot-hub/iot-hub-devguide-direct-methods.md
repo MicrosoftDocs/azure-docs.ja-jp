@@ -13,10 +13,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: b75e859fc1237bc88bee464cef423b7289810fa8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92147803"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
@@ -27,7 +27,7 @@ IoT Hub には、クラウドからデバイス上のダイレクト メソッ�
 
 各デバイス メソッドは、1 つのデバイスをターゲットとします。 「[複数デバイスでのジョブをスケジュール設定する](iot-hub-devguide-jobs.md)」では、複数のデバイス上のダイレクト メソッドを呼び出し、接続されていないデバイスに対するメソッドの呼び出しをスケジュール設定する方法を紹介しています。
 
-IoT Hub で**サービス接続**のアクセス許可を持っていれば、誰でもデバイスでメソッドを呼び出すことができます。
+IoT Hub で **サービス接続** のアクセス許可を持っていれば、誰でもデバイスでメソッドを呼び出すことができます。
 
 ダイレクト メソッドは要求/応答型パターンに従うメソッドであり、結果をすぐに確認する必要がある通信向けです。 たとえばデバイスを対話式で制御する (例: ファンをオンにする) ときに使用されます。
 
@@ -55,7 +55,7 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 
 デバイスでのダイレクト メソッドの呼び出しは HTTPS 呼び出しであり、次で構成されます。
 
-* [API バージョン](/rest/api/iothub/service/devices/invokemethod)が適合するデバイスに固有の*要求の URI*:
+* [API バージョン](/rest/api/iothub/service/devices/invokemethod)が適合するデバイスに固有の *要求の URI*:
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30

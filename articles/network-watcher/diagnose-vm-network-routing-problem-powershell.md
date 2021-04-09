@@ -18,10 +18,10 @@ ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: ''
 ms.openlocfilehash: 6569a99ec851da478151665921e7689e1c3488f1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020213"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>仮想マシンのネットワーク ルーティングに関する問題を診断する - Azure PowerShell
@@ -131,7 +131,7 @@ Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
      Active Default {172.16.0.0/12}         None        {}              
 ```
 
-前の出力からわかるように、**AddressPrefix** が **0.0.0.0/0** であるルートでは、**インターネット** の次ホップを持つ他のルート アドレス プレフィックス内のアドレスを送信先としていないすべてのトラフィックがルーティングされます。 出力でもわかるように、アドレス 172.31.0.100 を含む、172.16.0.0/12 プレフィックスへの既定のルートがあるにも関わらず、 **[nextHopType]** は **[なし]** になっています。 Azure では、172.16.0.0/12 への既定のルートを作成しますが、理由がない限り次ホップの種類は指定しません。 たとえば、仮想ネットワークのアドレス空間に 172.16.0.0/12 アドレス範囲を追加した場合は、ルートの **[nextHopType]** を **[仮想ネットワーク]** に変更します。 **[nextHopType]** として **[仮想ネットワーク]** にチェック マークが表示されます。
+前の出力からわかるように、**AddressPrefix** が **0.0.0.0/0** であるルートでは、**インターネット** の次ホップを持つ他のルート アドレス プレフィックス内のアドレスを送信先としていないすべてのトラフィックがルーティングされます。 出力でもわかるように、アドレス 172.31.0.100 を含む、172.16.0.0/12 プレフィックスへの既定のルートがあるにも関わらず、**[nextHopType]** は **[なし]** になっています。 Azure では、172.16.0.0/12 への既定のルートを作成しますが、理由がない限り次ホップの種類は指定しません。 たとえば、仮想ネットワークのアドレス空間に 172.16.0.0/12 アドレス範囲を追加した場合は、ルートの **[nextHopType]** を **[仮想ネットワーク]** に変更します。 **[nextHopType]** として **[仮想ネットワーク]** にチェック マークが表示されます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

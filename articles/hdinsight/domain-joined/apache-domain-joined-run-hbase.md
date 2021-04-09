@@ -4,12 +4,12 @@ description: チュートリアル - Enterprise セキュリティ パッケー�
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: deefda126602e9b276b74752330a14cc3eb2aa95
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a18e0b252facb4f00d9ba5c9b6bfe9fe6aefe1ef
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933722"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867000"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache HBase ポリシーを構成する
 
@@ -86,7 +86,7 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
     scan 'Customers'
     ```
 
-    ![HDInsight Hadoop HBase シェルの出力](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png" alt-text="HDInsight Hadoop HBase シェルの出力" border="true":::
 
 ## <a name="create-ranger-policies"></a>Ranger ポリシーの作成
 
@@ -94,11 +94,11 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
 
 1. **Ranger 管理 UI** を開きます。 **HBase** の下にある **[\<ClusterName>_hbase]** をクリックします。
 
-   ![HDInsight Apache Ranger 管理 UI](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png" alt-text="HDInsight Apache Ranger 管理 UI" border="true":::
 
 2. **[List of Policies]\(ポリシーの一覧\)** 画面に、このクラスター用に作成されたすべての Ranger ポリシーが表示されます。 構成済みポリシーが 1 つリストされる場合があります。 **[Add New Policy]\(新しいポリシーの追加\)** をクリックします。
 
-    ![Apache Ranger HBase ポリシーの一覧](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png" alt-text="Apache Ranger HBase ポリシーの一覧" border="true":::
 
 3. **[Create Policy]\(ポリシーの作成\)** 画面で、次の値を入力します。
 
@@ -117,7 +117,7 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
    * `*` は、文字が 0 回以上出現することを示します。
    * `?` は、1 文字を示します。
 
-   ![sales 用の Apache Ranger ポリシーを作成する](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png" alt-text="sales 用の Apache Ranger ポリシーを作成する" border="true":::
 
    >[!NOTE]
    >**[ユーザーの選択]** にドメイン ユーザーが自動的に設定されない場合は、Ranger が Azure AD と同期されるまでしばらく待ってください。
@@ -136,7 +136,7 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
    |ユーザーの選択  | marketing_user1 |
    |アクセス許可  | Read |
 
-   ![marketing 用の Apache Ranger ポリシーを作成する](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png" alt-text="marketing 用の Apache Ranger ポリシーを作成する" border="true":::  
 
 6. **[Add]** をクリックしてポリシーを保存します。
 
@@ -226,7 +226,7 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
 
 1. Ranger UI から監査アクセス イベントを表示します。
 
-   ![HDInsight Ranger UI ポリシーの監査](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png" alt-text="HDInsight Ranger UI ポリシーの監査" border="true":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

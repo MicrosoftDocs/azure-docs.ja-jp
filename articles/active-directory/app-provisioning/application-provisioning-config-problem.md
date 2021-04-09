@@ -12,10 +12,10 @@ ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: asteen
 ms.openlocfilehash: 651bc199a43881add7faa00a9d1cf78000de6944
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99256274"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングの構成に関する問題
@@ -30,7 +30,7 @@ ms.locfileid: "99256274"
 
 -   **プロビジョニング ログ (プレビュー)** - [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)には、プロビジョニング サービスによって実行されたすべての操作が記録されます。これには、プロビジョニングの対象となる割り当て済みのユーザーを Azure AD で照会する操作が含まれます。 システム間でユーザー オブジェクトを比較しながら、これらのユーザーが存在するかどうかを対象となるアプリで照会できます。 その後、比較に基づいて、対象のシステムのユーザー アカウントを追加または更新するか、無効にします。 Azure portal で、 **[Azure Active Directory]** &gt; **[エンタープライズ アプリ]** &gt; **[プロビジョニング ログ (プレビュー)]** ( **[アクティビティ]** セクション内) を順に選択して、プロビジョニング ログにアクセスできます。
 
--   **現在の状態** - 指定したアプリで実行された最新のプロビジョニングの概要は、 **[Azure Active Directory] &gt; [エンタープライズ アプリ] &gt; \[アプリケーション名\] &gt; [プロビジョニング]** セクションで確認できます。これは画面下部のサービス設定の下にあります。 [現在の状態] セクションには、プロビジョニング サイクルによってユーザー アカウントのプロビジョニングが開始されたかどうかが表示されます。 サイクルの進行状況を監視して、プロビジョニング済みのユーザーとグループの数を確認したり、作成されたロールの数を確認したりすることができます。 エラーが発生した場合、詳細はプロビジョニング ログから見つけることができます (../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。
+-   **現在の状態** - 指定したアプリで実行された最新のプロビジョニングの概要は、**[Azure Active Directory] &gt; [エンタープライズ アプリ] &gt; \[アプリケーション名\] &gt; [プロビジョニング]** セクションで確認できます。これは画面下部のサービス設定の下にあります。 [現在の状態] セクションには、プロビジョニング サイクルによってユーザー アカウントのプロビジョニングが開始されたかどうかが表示されます。 サイクルの進行状況を監視して、プロビジョニング済みのユーザーとグループの数を確認したり、作成されたロールの数を確認したりすることができます。 エラーが発生した場合、詳細はプロビジョニング ログから見つけることができます (../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。
 
 ## <a name="general-problem-areas-with-provisioning-to-consider"></a>プロビジョニングに関して考慮すべき一般的問題
 

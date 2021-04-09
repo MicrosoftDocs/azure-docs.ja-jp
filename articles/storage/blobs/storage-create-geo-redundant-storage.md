@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 04/16/2020
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc, devx-track-python, devx-track-js, devx-track-csharp
 ms.subservice: blobs
-ms.openlocfilehash: dfb7e7c7c93a8af2b59f6d3d7049e2c14b8f382a
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 0d597f0742cfc43f1c7fb38568b2a2bbda352beb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611051"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049340"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>チュートリアル:Blob Storage を使用して高可用性アプリケーションを作成する
 
@@ -39,18 +39,30 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルを完了するには、以下が必要です。
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 * **Azure 開発** ワークロードと共に [Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールします。
 
   ![Azure 開発 ([Web & Cloud]\(Web とクラウド\) 以下)](media/storage-create-geo-redundant-storage/workloads.png)
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
 * [Python](https://www.python.org/downloads/) のインストール
 * [Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python) をダウンロードしてインストールします。
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 * [Node.js](https://nodejs.org) をインストールします。
 
@@ -85,7 +97,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 [サンプル プロジェクトをダウンロード](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip)し、storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.zip ファイルを抽出 (解凍) します。 [git](https://git-scm.com/) を使って、アプリケーションのコピーを開発環境にダウンロードすることもできます。 サンプル プロジェクトにはコンソール アプリケーションが含まれています。
 
@@ -93,7 +109,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
 [サンプル プロジェクトをダウンロード](https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs/archive/master.zip)し、storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.zip ファイルを抽出 (解凍) します。 [git](https://git-scm.com/) を使って、アプリケーションのコピーを開発環境にダウンロードすることもできます。 サンプル プロジェクトには基本的な Python アプリケーションが含まれています。
 
@@ -101,7 +121,11 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 [サンプル プロジェクトをダウンロード](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs)して、ファイルを解凍します。 [git](https://git-scm.com/) を使って、アプリケーションのコピーを開発環境にダウンロードすることもできます。 サンプル プロジェクトには基本的な Node.js アプリケーションが含まれています。
 
@@ -113,7 +137,11 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 ## <a name="configure-the-sample"></a>サンプルの構成
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 アプリケーションでは、ストレージ アカウントの接続文字列を指定する必要があります。 アプリケーションが実行されているローカル コンピューターの環境変数内に、この接続文字列を格納することができます。 環境変数を作成するオペレーティング システムに応じて、以下の例のいずれかに従います。
 
@@ -131,7 +159,11 @@ export storageconnectionstring=<yourconnectionstring>
 setx storageconnectionstring "<yourconnectionstring>"
 ```
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
 アプリケーションには、実際のストレージ アカウントの資格情報を指定する必要があります。 この情報は、アプリケーションが実行されているローカル コンピューターの環境変数に格納することができます。 環境変数を作成するオペレーティング システムに応じて、以下のいずれかの例に従います。
 
@@ -151,7 +183,11 @@ setx accountname "<youraccountname>"
 setx accountkey "<youraccountkey>"
 ```
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 このサンプルを実行するには、実際のストレージ アカウントの資格情報を `.env.example` ファイルに追加し、その名前を `.env` に変更する必要があります。
 
@@ -168,7 +204,11 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 ## <a name="run-the-console-application"></a>コンソール アプリケーションを実行する
 
-# <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Visual Studio で **F5** キーを押すか **[スタート]** を選択してアプリケーションのデバッグを開始します。 構成に応じて、不足している NuGet パッケージが Visual Studio で自動的に復元されます。詳細については、[パッケージの復元によるパッケージのインストールと再インストール](/nuget/consume-packages/package-restore#package-restore-overview)に関するセクションを参照してください。
 
@@ -178,7 +218,11 @@ Visual Studio で **F5** キーを押すか **[スタート]** を選択して�
 
 このサンプル コードで、`Program.cs` ファイルの `RunCircuitBreakerAsync` タスクは、[DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) メソッドを使用してストレージ アカウントからイメージをダウンロードするために使用されます。 そのダウンロードの前に、[OperationContext](/dotnet/api/microsoft.azure.cosmos.table.operationcontext) が定義されています。 操作コンテキストにイベント ハンドラーが定義され、ダウンロードが正常に完了したとき、またはダウンロードが失敗して再試行する場合に呼び出されます。
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
 ターミナルまたはコマンド プロンプトでアプリケーションを実行するには、**circuitbreaker.py** ディレクトリに移動して「`python circuitbreaker.py`」と入力します。 アプリケーションは、ソリューションの **HelloWorld.png** イメージをストレージ アカウントにアップロードします。 アプリケーションは、イメージがセカンダリ RA-GZRS エンドポイントにレプリケートされたことを確認します。 次に、イメージのダウンロードを開始し、最大 999 回試行します。 各読み取りは **P** または **S** で表されます。この **P** はプライマリ エンドポイント、**S** はセカンダリ エンドポイントを示します。
 
@@ -190,7 +234,11 @@ Visual Studio で **F5** キーを押すか **[スタート]** を選択して�
 
 ダウンロードの前に、サービス オブジェクトの [retry_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient) と [response_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient) 関数が定義されています。 これらの関数に定義されているイベント ハンドラーが、ダウンロードが正常に完了したとき、またはダウンロードが失敗して再試行する場合に呼び出されます。
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 サンプルを実行するには、コマンド プロンプトを開いてサンプル フォルダーに移動し、「`node index.js`」と入力します。
 
@@ -221,7 +269,11 @@ Deleted container newcontainer1550799840726
 
 ## <a name="understand-the-sample-code"></a>サンプル コードを理解する
 
-### <a name="net"></a>[.NET](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ### <a name="retry-event-handler"></a>イベント ハンドラーを再試行する
 
@@ -272,7 +324,11 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-### <a name="python"></a>[Python](#tab/python)
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
 ### <a name="retry-event-handler"></a>イベント ハンドラーを再試行する
 
@@ -315,7 +371,11 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-### <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v12"></a>[Node.js v12](#tab/nodejs)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="nodejs-v11"></a>[Node.js v11](#tab/nodejs11)
 
 Node.js V10 SDK では、コールバック ハンドラーは不要です。 代わりにこのサンプルでは、再試行オプションとセカンダリ エンドポイントを含むパイプラインを作成しています。 これによりアプリケーションは、プライマリ パイプラインで必要なデータに到達できなかった場合でも、自動的にセカンダリ パイプラインに切り替えることができます。
 

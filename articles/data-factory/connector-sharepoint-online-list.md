@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 3f05c90ba3c7e6b47009cbb597c56dac8a01427a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f8074b69b97a6ef96837e73a1082d2deb67084d9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393430"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177863"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Azure Data Factory を使用して SharePoint Online リストからデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -232,6 +232,9 @@ SharePoint Online からファイルをコピーするには、**Web アクテ�
         - **要求メソッド**:GET
         - **追加のヘッダー**: 次の式を使用します。`@{concat('Authorization: Bearer ', activity('<Web-activity-name>').output.access_token)}`。ここで、アップストリームの Web アクティビティによって生成されたベアラー トークンが authorization ヘッダーとして使用されます。 Web アクティビティ名を置き換えてください。
     - コピー アクティビティのシンクを通常どおりに構成します。
+
+> [!NOTE]
+> Azure AD アプリケーションに SharePoint Online に対する `FullControl` アクセス許可がある場合でも、IRM が有効になっているドキュメント ライブラリからファイルをコピーすることはできません。
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 

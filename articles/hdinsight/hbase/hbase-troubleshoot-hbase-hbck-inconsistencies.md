@@ -5,17 +5,17 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/08/2019
 ms.openlocfilehash: cbe4231bbecdf279c637cd334336437a020188d4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98936994"
 ---
 # <a name="scenario-hbase-hbck-command-returns-inconsistencies-in-azure-hdinsight"></a>シナリオ: Azure HDInsight で `hbase hbck` コマンドから不一致が返される
 
 この記事では、Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策について説明します。
 
-## <a name="issue-region-is-not-in-hbasemeta"></a>問題点:リージョンが `hbase:meta` に存在しない
+## <a name="issue-region-is-not-in-hbasemeta"></a>問題: リージョンが `hbase:meta` に存在しない
 
 リージョン xxx は HDFS 上にありますが、`hbase:meta` に登録されておらず、どのリージョン サーバーにもデプロイされていません。
 
@@ -23,7 +23,7 @@ ms.locfileid: "98936994"
 
 状況に応じて異なります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 1. 次を実行してメタ テーブルを修正します。
 
@@ -38,7 +38,7 @@ ms.locfileid: "98936994"
     ```
 ---
 
-## <a name="issue-region-is-offline"></a>問題点:リージョンがオフライン
+## <a name="issue-region-is-offline"></a>問題: リージョンがオフライン
 
 リージョン xxx は、どの RegionServer にもデプロイされていません。 これは、リージョンは `hbase:meta` 内にありますがオフラインであることを意味します。
 
@@ -46,7 +46,7 @@ ms.locfileid: "98936994"
 
 状況に応じて異なります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 次を実行してリージョンをオンラインにします。
 
@@ -56,13 +56,13 @@ hbase hbck -ignorePreCheckPermission –fixAssignment
 
 ---
 
-## <a name="issue-regions-have-the-same-startend-keys"></a>問題点:リージョンの開始/終了キーが同じである
+## <a name="issue-regions-have-the-same-startend-keys"></a>問題: リージョンの開始/終了キーが同じである
 
 ### <a name="cause"></a>原因
 
 状況に応じて異なります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 これらの重複するリージョンを手動でマージします。 HBase HMaster Web UI テーブル セクションに移動し、問題が発生しているテーブル リンクを選択します。 このテーブルに属している各リージョンの開始キー/終了キーが表示されます。 次に、これらの重複するリージョンをマージします。 HBase シェルで`merge_region 'xxxxxxxx','yyyyyyy', true` を実行します。 次に例を示します。
 
@@ -78,7 +78,7 @@ RegionC, startkey:010, endkey:080.
 
 ---
 
-## <a name="issue-cant-load-regioninfo"></a>問題点:`.regioninfo` を読み込めない
+## <a name="issue-cant-load-regioninfo"></a>問題: `.regioninfo` を読み込めない
 
 リージョン `/hbase/data/default/tablex/regiony` の `.regioninfo` を読み込めません。
 
@@ -86,7 +86,7 @@ RegionC, startkey:010, endkey:080.
 
 最も可能性の高い原因は、RegionServer のクラッシュ時または VM の再起動時のリージョンの部分的な削除です。 現時点で Azure Storage はフラットな BLOB ファイル システムであり、一部のファイル操作はアトミックではありません。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 以下の残りのファイルとフォルダーを手動でクリーンアップします。
 

@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 8ed21d8689bf5340c1bde0a7f782bb8614f7cf11
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ecf115b7ce902fcd8b50f0eca32ffda6ef47e068
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700203"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102618476"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Azure Cloud Services (延長サポート) について
 
@@ -57,7 +57,7 @@ Cloud Services (延長サポート) をデプロイするには、サービス�
 
 ## <a name="migration-to-azure-resource-manager"></a>Azure Resource Manager への移行
 
-Cloud Services (延長サポート) には、[Azure Service Manager](/powershell/azure/servicemanagement/overview?preserve-view=true&view=azuresmps-4.0.0) から [Azure Resource Manager](../azure-resource-manager/management/overview.md) に移行するための 2 つのパスが用意されています。 
+Cloud Services (延長サポート) には、[Azure Service Manager](/powershell/azure/servicemanagement/overview) から [Azure Resource Manager](../azure-resource-manager/management/overview.md) に移行するための 2 つのパスが用意されています。 
 1) 顧客は、クラウド サービスを Azure Resource Manager に直接デプロイした後、Azure Service Manager で古いクラウド サービスを削除します。 
 2) インプレース移行では、Cloud Services (クラシック) を最小限のダウンタイムで、またはダウンタイムなしで Cloud Services (延長サポート) に移行する機能がサポートされています。 
 

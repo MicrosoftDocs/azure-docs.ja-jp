@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.openlocfilehash: 68c211608cfceedaa9d13a595be6d1e5de17f1d5
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94845008"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>マッピング データ フロー内の列パターンを使用する

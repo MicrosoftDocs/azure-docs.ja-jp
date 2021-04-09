@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: troubleshooting
 ms.date: 08/01/2019
-ms.openlocfilehash: 84bd14f8ae18527b4f6e9d8509a12555baec8771
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 201a7d1fce00323ef3f8eec1bdd415c4064d49ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68879554"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674990"
 ---
 # <a name="troubleshooting-azure-data-catalog"></a>Azure Data Catalog のトラブルシューティング
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 この記事では、Azure Data Catalog リソースのトラブルシューティングに関する一般的な考慮事項について説明します。 
 

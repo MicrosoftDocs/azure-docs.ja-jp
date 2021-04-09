@@ -7,10 +7,10 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/08/2020
 ms.openlocfilehash: 6c23e59a8845ee4bc77d0fe05df8b97e656a102a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100597903"
 ---
 # <a name="resource-manager-template-samples-for-creating-application-insights-resources"></a>Application Insights リソースを作成するための Resource Manager テンプレートのサンプル

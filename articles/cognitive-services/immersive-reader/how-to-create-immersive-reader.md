@@ -7,15 +7,15 @@ author: rwaller
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 2503355a24a7452ca1ff9886a80f2956897889c4
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 369905ed5ee0ce9a93ec2be879b5e40114b0a380
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630397"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048665"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>イマーシブ リーダー リソースを作成して Azure Active Directory 認証を構成する
 
@@ -198,7 +198,7 @@ ms.locfileid: "98630397"
 ## <a name="next-steps"></a>次のステップ
 
 * [Node.js クイックスタート](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)で、Node.js とイマーシブ リーダー SDK を使用して他にできることを確認する
-* [Android チュートリアル](./tutorial-android.md)を参照して、Android 用の Java または Kotlin を使用してイマーシブ リーダー SDK で他にできることを確認する
-* [iOS チュートリアル](./tutorial-ios.md)を参照して、iOS 用の Swift を使用してイマーシブ リーダー SDK で他にできることを確認する
-* [Python チュートリアル](./tutorial-python.md)で、Python と Immersive Reader SDK を使用して他にできることを確認する
+* [Android チュートリアル](./how-to-launch-immersive-reader.md)を参照して、Android 用の Java または Kotlin を使用してイマーシブ リーダー SDK で他にできることを確認する
+* [iOS チュートリアル](./how-to-launch-immersive-reader.md)を参照して、iOS 用の Swift を使用してイマーシブ リーダー SDK で他にできることを確認する
+* [Python チュートリアル](./how-to-launch-immersive-reader.md)で、Python と Immersive Reader SDK を使用して他にできることを確認する
 * [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) と [Immersive Reader SDK リファレンス](./reference.md)を探索する

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
 ms.openlocfilehash: 2be4bc92dde278b054bd04f412f937440027ece7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74671661"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>送信 IP アドレスの変更に備える方法
@@ -35,7 +35,7 @@ ms.locfileid: "74671661"
 
 1.  アプリが関数アプリの場合、「[Function app outbound IP addresses](../azure-functions/ip-addresses.md#find-outbound-ip-addresses)」(関数アプリの送信 IP アドレス) を参照してください。
 
-4.  **[設定]** ヘッダーの下で、左側のナビゲーションにある **[プロパティ]** をクリックし、 **[送信 IP アドレス]** というラベルの付いたセクションを見つけます。
+4.  **[設定]** ヘッダーの下で、左側のナビゲーションにある **[プロパティ]** をクリックし、**[送信 IP アドレス]** というラベルの付いたセクションを見つけます。
 
 5. IP アドレスをコピーして、フィルターや許可リストなどの送信トラフィックの特別な処理に追加します。 リスト内の既存の IP アドレスは削除しないでください。
 

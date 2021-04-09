@@ -1,18 +1,14 @@
 ---
 title: センサー アクティビティを追跡する
 description: イベント タイムラインには、アラートとアラート管理アクション、ネットワーク イベント、ユーザーのサインインやユーザーの削除などのユーザー操作を含む、ネットワークで検出されたアクティビティのタイムラインが表示されます。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/10/2020
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: b8a7679521096cf3d98e8f55748eb0398fdc4ab8
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 195908001fbd247ed2e0fa007bc8dcd5ebf28e60
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523602"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781621"
 ---
 # <a name="track-sensor-activity"></a>センサー アクティビティを追跡する
 
@@ -89,6 +85,6 @@ ms.locfileid: "100523602"
     
       PCAP ファイルには、イベントの正確なパラメーターを特定するのに役立つ技術情報が含まれています。 PCAP ファイルは、オープン ソースのアプリケーションである Wireshark などのネットワーク プロトコル アナライザーを使用して分析することができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
 [アラートを表示する](how-to-view-alerts.md)

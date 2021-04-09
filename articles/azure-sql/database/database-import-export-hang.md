@@ -11,10 +11,10 @@ ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
 ms.openlocfilehash: e69bba858ccf62f1b3a3b45b08771ddba71f11cf
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92671391"
 ---
 # <a name="azure-sql-database-and-managed-instance-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Azure SQL Database および Managed Instance の Import/Export サービスで、データベースのインポートまたはエクスポートに時間がかかる

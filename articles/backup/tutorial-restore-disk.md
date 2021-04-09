@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 999682c9bf4a4d70d886f0e85cede99f215aa046
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97694717"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Azure CLI を使用した VM の復元
@@ -72,7 +72,7 @@ az backup recoverypoint list \
         --sku Standard_LRS
     ```
 
-2. [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) を使用して、復旧ポイントからディスクを復元します。 *mystorageaccount* は、前述のコマンドで作成したストレージ アカウントの名前に置き換えます。 *myRecoveryPointName* は、前述の [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) コマンドから出力を取得した復旧ポイント名に置き換えます。" ***マネージド ディスクの復元先となるターゲット リソース グループも指定します** _"。
+2. [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) を使用して、復旧ポイントからディスクを復元します。 *mystorageaccount* は、前述のコマンドで作成したストレージ アカウントの名前に置き換えます。 *myRecoveryPointName* は、前述の [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) コマンドから出力を取得した復旧ポイント名に置き換えます。 ***マネージド ディスクの復元先となるターゲット リソース グループも指定します***。
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -86,7 +86,7 @@ az backup recoverypoint list \
     ```
 
     > [!WARNING]
-    > _ *target-resource-group** を指定しないと、マネージド ディスクは、指定したストレージ アカウントにアンマネージド ディスクとして復元されます。 ディスク全体の復元にかかる時間は、指定したストレージ アカウントに依存するため、これは復元時間に大きく影響します。 target-resource-group パラメーターが指定されている場合にのみ、インスタント リストアのベネフィットが得られます。 マネージド ディスクをアンマネージドとして復元する場合は、次に示すように、**target-resource-group** パラメーターを指定せず、**restore-as-unmanaged-disk** パラメーターを代わりに指定してください。 このパラメーターは、az 3.4.0 以降で利用できます。
+    > **target-resource-group** を指定しないと、マネージド ディスクは、指定したストレージ アカウントにアンマネージド ディスクとして復元されます。 ディスク全体の復元にかかる時間は、指定したストレージ アカウントに依存するため、これは復元時間に大きく影響します。 target-resource-group パラメーターが指定されている場合にのみ、インスタント リストアのベネフィットが得られます。 マネージド ディスクをアンマネージドとして復元する場合は、次に示すように、**target-resource-group** パラメーターを指定せず、**restore-as-unmanaged-disk** パラメーターを代わりに指定してください。 このパラメーターは、az 3.4.0 以降で利用できます。
 
     ```azurecli-interactive
     az backup restore restore-disks \

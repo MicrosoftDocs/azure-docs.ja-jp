@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6dda65be98934ce90e985b241078ae8019afb7e0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 292a244a4804f97e8622d6841c33b153af373290
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361266"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489170"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して SAML ID プロバイダーとして AD FS を追加する
 
@@ -34,7 +34,7 @@ ms.locfileid: "100361266"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-この記事では、Azure Active Directory B2C (Azure AD B2C) で[カスタム ポリシー](custom-policy-overview.md)を使用して AD FS ユーザー アカウントのサインインを有効にする方法について説明します。 サインインを有効にするには、[SAML ID プロバイダー技術プロファイル](saml-identity-provider-technical-profile.md)をカスタム ポリシーに追加します。
+この記事では、Azure Active Directory B2C (Azure AD B2C) で[カスタム ポリシー](custom-policy-overview.md)を使用して AD FS ユーザー アカウントのサインインを有効にする方法について説明します。 サインインを有効にするには、[SAML ID プロバイダー](identity-provider-generic-saml.md)をカスタム ポリシーに追加します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -62,7 +62,7 @@ ms.locfileid: "100361266"
 
 ユーザーが AD FS アカウントを使用してサインインするようにするには、そのアカウントを Azure AD B2C がエンドポイント経由で通信できる相手のクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
 
-AD FS アカウントをクレーム プロバイダーとして定義するには、そのアカウントをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。 詳しくは、[SAML ID プロバイダー技術プロファイルの定義](saml-identity-provider-technical-profile.md)に関するページをご覧ください。
+AD FS アカウントをクレーム プロバイダーとして定義するには、そのアカウントをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。 詳細については、[SAML ID プロバイダーの定義](identity-provider-generic-saml.md)に関するページをご覧ください。
 
 1. *TrustFrameworkExtensions.xml* を開きます。
 1. **ClaimsProviders** 要素を見つけます。 存在しない場合は、それをルート要素の下に追加します。
@@ -71,10 +71,10 @@ AD FS アカウントをクレーム プロバイダーとして定義するに�
     ```xml
     <ClaimsProvider>
       <Domain>contoso.com</Domain>
-      <DisplayName>Contoso AD FS</DisplayName>
+      <DisplayName>Contoso</DisplayName>
       <TechnicalProfiles>
         <TechnicalProfile Id="Contoso-SAML2">
-          <DisplayName>Contoso AD FS</DisplayName>
+          <DisplayName>Contoso</DisplayName>
           <Description>Login with your AD FS account</Description>
           <Protocol Name="SAML2"/>
           <Metadata>
@@ -156,9 +156,16 @@ Azure AD B2C で ID プロバイダーとして AD FS を使用するには、Az
 https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
+[カスタム ドメイン](custom-domain.md)を使用する場合は、次の形式を使用します。
+
+```
+https://your-domain-name/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
+```
+
 次の値を置き換えます。
 
-- **your-tenant** は、実際のテナント名 (your-tenant.onmicrosoft.com など) に置き換えます。
+- **your-tenant-name** を実際のテナント名 (your-tenant.onmicrosoft.com など) に。
+- **your-domain-name** を実際のカスタム ドメイン名 (login.contoso.com) に。
 - **your-policy** は、実際のポリシー名に置き換えます。 たとえば、「B2C_1A_signup_signin_adfs」とします。
 - **your-technical-profile** は、お使いの SAML ID プロバイダー技術プロファイルの名前に置き換えます。 たとえば、「Contoso-SAML2」とします。
 
@@ -199,8 +206,10 @@ https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-poli
 1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。
 1. **[アプリケーション]** には、[前に登録した](tutorial-register-applications.md) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
 1. **[今すぐ実行]** ボタンを選択します。
+1. サインアップまたはサインイン ページで、 **[Contoso AD FS]** を選択して Contoso AD FS ID プロバイダーでサインインします。
 
 サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
+
 ## <a name="troubleshooting-ad-fs-service"></a>AD FS サービスのトラブルシューティング  
 
 AD FS は、Windows アプリケーション ログを使用するように構成されています。 Azure AD B2C でカスタム ポリシーを使用して SAML ID プロバイダーとして AD FS を設定するときに問題が発生した場合は、次のように AD FS イベント ログを確認してください。
@@ -217,7 +226,7 @@ AD FS は、Windows アプリケーション ログを使用するように構�
 
 #### <a name="option-1-set-the-signature-algorithm-in-azure-ad-b2c"></a>オプション 1: Azure AD B2C で署名アルゴリズムを設定する  
 
-Azure AD B2C で SAML 要求に署名する方法を構成できます。 [XmlSignatureAlgorithm](saml-identity-provider-technical-profile.md#metadata) メタデータは、SAML 要求の `SigAlg` パラメーター (クエリ文字列または post パラメーター) の値を制御します。 次の例では、`rsa-sha256` 署名アルゴリズムを使用するように Azure AD B2C を構成します。
+Azure AD B2C で SAML 要求に署名する方法を構成できます。 [XmlSignatureAlgorithm](identity-provider-generic-saml.md) メタデータは、SAML 要求の `SigAlg` パラメーター (クエリ文字列または post パラメーター) の値を制御します。 次の例では、`rsa-sha256` 署名アルゴリズムを使用するように Azure AD B2C を構成します。
 
 ```xml
 <Metadata>

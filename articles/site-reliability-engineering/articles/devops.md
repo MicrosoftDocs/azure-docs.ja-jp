@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/14/2020
 ms.author: dnb
 ms.openlocfilehash: 62872443c386c45d9821053dc901ad8e0055b74f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92674279"
 ---
 # <a name="frequently-asked-questions-whats-the-relationship-between-sre-and-devops"></a>よく寄せられる質問:SRE と DevOps の関係について教えてください。
@@ -30,7 +30,7 @@ SRE と DevOps は両方とも、次のような課題に対応するために�
 
 どちらの運用プラクティスでも、監視または観測、自動化、ドキュメント化、共同作業ソフトウェア開発ツールなど、これらの課題を扱う重要な主題に対応することを重視しています。
 
-SRE と DevOps 間では、ツールと作業分野がかなり重複しています。 『 _The Site Reliability Workbook (サイト信頼性のワークブック)_ 』に記載されているように、"SRE では DevOps と同じ正当性を信じていますが、その根拠はやや異なっています"。
+SRE と DevOps 間では、ツールと作業分野がかなり重複しています。 『_The Site Reliability Workbook (サイト信頼性のワークブック)_ 』に記載されているように、"SRE では DevOps と同じ正当性を信じていますが、その根拠はやや異なっています"。
 
 ## <a name="three-different-ways-to-compare-the-two-operations-practices"></a>3 つの異なる方法で 2 つの運用プラクティスを比較する
 
@@ -38,7 +38,7 @@ SRE と DevOps の類似点は明白です。 本当に興味深いのは、両�
 
 ### <a name="class-sre-implements-interface-devops"></a>"クラス SRE ではインターフェイス DevOps を実装している"
 
-[リソース ブックの一覧](../resources/books.md)に示されている『 _The Site Reliability Workbook (サイトの信頼性ワークブック)_ 』では、最初の章で SRE と DevOps について議論しています。 その章では、"class SRE implements interface DevOps (クラス SRE ではインターフェイス DevOps を実装している)" というフレーズが、サブタイトルとして使用されています。 これは、(開発者を対象としたフレーズを使用して) SRE を DevOps 理念の具体的な実装と見なせることを示唆しています。 章の中で指摘されているように、運用プラクティスについては SRE ではかなり踏み込んで規定していますが、「DevOps では、詳細なレベルで運用を実践する方法に対しては、どちらかと言えば消極的です」。 そのため、両者の関係についての質問に対して考えられる 1 つの回答は、SRE は想定される多数の DevOps 実装の 1 つと見なすことができるということです。
+[リソース ブックの一覧](../resources/books.md)に示されている『_The Site Reliability Workbook (サイトの信頼性ワークブック)_ 』では、最初の章で SRE と DevOps について議論しています。 その章では、"class SRE implements interface DevOps (クラス SRE ではインターフェイス DevOps を実装している)" というフレーズが、サブタイトルとして使用されています。 これは、(開発者を対象としたフレーズを使用して) SRE を DevOps 理念の具体的な実装と見なせることを示唆しています。 章の中で指摘されているように、運用プラクティスについては SRE ではかなり踏み込んで規定していますが、「DevOps では、詳細なレベルで運用を実践する方法に対しては、どちらかと言えば消極的です」。 そのため、両者の関係についての質問に対して考えられる 1 つの回答は、SRE は想定される多数の DevOps 実装の 1 つと見なすことができるということです。
 
 ### <a name="sre-is-to-reliability-as-devops-is-to-delivery"></a>SRE にとっての信頼性は DevOps にとってのデリバリー
 
@@ -60,7 +60,7 @@ DevOps のこの定義を、[Azure DevOps リソース センター](/azure/devo
 
 ### <a name="direction-of-attention"></a>関心の方向性
 
-この回答は、 [リソース ブックの一覧](../resources/books.md)に示されている『 _Seeking SRE (SRE の探求)_ 』へのトーマス・リモンチェリ氏による寄稿から引用され、少しわかりやすく言い換えられています。 同氏は、「DevOps の技術者は、状況に応じて実稼働環境の運用責任を伴うソフトウェア開発ライフサイクル パイプラインを大きく重視しているが、SRE では、状況に応じて SDLC パイプラインの責任を伴う実稼働環境の運用を重視している」と記しています。
+この回答は、[リソース ブックの一覧](../resources/books.md)に示されている『_Seeking SRE (SRE の探求)_ 』へのトーマス・リモンチェリ氏による寄稿から引用され、少しわかりやすく言い換えられています。 同氏は、「DevOps の技術者は、状況に応じて実稼働環境の運用責任を伴うソフトウェア開発ライフサイクル パイプラインを大きく重視しているが、SRE では、状況に応じて SDLC パイプラインの責任を伴う実稼働環境の運用を重視している」と記しています。
 
 しかし、さらに重要なのは、同氏が、一方はソフトウェア開発プロセスを始点とし、他方は実稼働環境の運用作業を始点とする図を作成していることです。 2 つは、開発者からコードを取得するために構築された通常のパイプラインで結ばれており、必要なテスト数や段階を通して改善が行われた後、実稼働環境へそのコードが移動されます。
 

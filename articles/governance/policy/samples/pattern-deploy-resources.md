@@ -4,10 +4,10 @@ description: この Azure Policy パターンでは、deployIfNotExists ポリ�
 ms.date: 08/17/2020
 ms.topic: sample
 ms.openlocfilehash: 0a9eec54954b8963f38b3f19a0d0cabffe1092e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89649981"
 ---
 # <a name="azure-policy-pattern-deploy-resources"></a>Azure Policy パターン: リソースをデプロイする
@@ -38,7 +38,7 @@ ms.locfileid: "89649981"
 
 ポリシー定義の **deployment** の部分には、次の 3 つの主要コンポーネントを定義する **properties** ブロックがあります。
 
-- **mode** - このプロパティでは、テンプレートの[デプロイ モード](../../../azure-resource-manager/templates/deployment-modes.md)を設定します。
+- **mode** - このプロパティでは、テンプレートの [デプロイ モード](../../../azure-resource-manager/templates/deployment-modes.md)を設定します。
 
 - **template** - このプロパティにはテンプレート自体が含まれます。 この例では、**location** テンプレート パラメーターにより、新しい Network Watcher リソースの場所が設定されます。
 

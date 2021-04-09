@@ -2,13 +2,13 @@
 title: Azure Event Grid イベントのイベント ハンドラーとして Azure の関数を使用する
 description: Azure Functions 内で作成されてホストされる関数を、Event Grid イベントのイベント ハンドラーとして使用する方法について説明します。
 ms.topic: conceptual
-ms.date: 09/18/2020
-ms.openlocfilehash: beddc35f2dd8db974492d14aec27ce754a74737c
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.date: 03/15/2021
+ms.openlocfilehash: f547b09fe7e62eb3fa9e02bd17298a936350f871
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632514"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103496543"
 ---
 # <a name="use-a-function-as-an-event-handler-for-event-grid-events"></a>Event Grid イベントのイベント ハンドラーとして関数を使用する
 
@@ -79,6 +79,9 @@ Azure Resource Manager テンプレートで **maxEventsPerBatch** と **preferr
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 コマンドレット [New-AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription) または [Update-AzEventGridSubscription](/powershell/module/az.eventgrid/update-azeventgridsubscription) でパラメーター `-MaxEventsPerBatch` または `-PreferredBatchSizeInKiloBytes` を使用して、バッチ関連の設定を構成できます。
+
+> [!NOTE]
+> Event Grid トリガーを使用すると、Event Grid サービスではターゲットの Azure 関数のクライアント シークレットがフェッチされ、それを使用して Azure 関数にイベントが配信されます。 Azure Active Directory アプリケーションを使用して Azure 関数を保護する場合、一般的な Web hook アプローチを実行して、HTTP トリガーを使用する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 サポートされているイベント ハンドラーの一覧については、「[イベント ハンドラー](event-handlers.md)」を参照してください。

@@ -3,7 +3,7 @@ title: Azure Media Services REST 呼び出し用の Postman 環境のインポ�
 description: このトピックでは、Azure Media Services REST 呼び出し用の Postman 環境の定義を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 2ccc765a3fb0063d92382edcec260808183f27a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 5b1705fb2b3b1b69f79158747827d764f1bef4f0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89259253"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103007845"
 ---
 # <a name="import-the-postman-environment"></a>Postman 環境のインポート
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: pankopon
 ms.openlocfilehash: ba531164e024f96d3bdd23912f3f6e90275edda4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "83589739"
 ---
 # <a name="configure-rhelcentos-7-for-speech-sdk"></a>Speech SDK 用に RHEL/CentOS 7 を構成する

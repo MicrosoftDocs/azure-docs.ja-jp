@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
 ms.openlocfilehash: a34881901fd8642fff9ac37512cd2ef260ad9d1c
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98954220"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる
@@ -289,7 +289,7 @@ Workday から Active Directory へのユーザー プロビジョニングを�
      | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v##.# | はい |
 
       > [!NOTE]
-     > URL にバージョン情報が指定されていない場合、アプリでは Workday Web Services (WWS) v21.1 が使用され、アプリに付属している既定の XPATH API 式の変更は必要ありません。 特定の WWS API バージョンを使用するには、URL の中にバージョン番号を指定します <br>
+     > URL にバージョン情報が指定されていない場合、アプリでは Workday Web Services (WWS) v21.1 が使用され、アプリに付属している既定の XPATH API 式の変更は必要ありません。 特定の WWS API バージョンを使用するには、URL の中にバージョン番号を指定します。 <br>
      > 例: `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v34.0` <br>
      > <br> WWS API v30.0 以降を使用する場合は、プロビジョニング ジョブを有効にする前に、「[構成の管理](#managing-your-configuration)」セクションおよび [Workday 属性のリファレンス](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)を参照して、 **[属性マッピング] -> [詳細オプション] -> [Edit attribute list for Workday]\(Workday の属性リストの編集\)** の下にある **[XPATH API 式]** を更新してください。  
 
@@ -336,7 +336,7 @@ Workday から Active Directory へのユーザー プロビジョニングを�
       * 演算子:IS NOT NULL
 
    > [!TIP]
-   > 初めてプロビジョニング アプリを構成するときは、属性マッピングと式をテストして検証し、目的の結果が得られていることを確認する必要があります。 Microsoft は、Workday の少数のテスト ユーザーを使用してマッピングをテストするために、[オンデマンド プロビジョニング](../app-provisioning/provision-on-demand.md)と **[ソース オブジェクト スコープ]** の[スコープ フィルター](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)を使用することをお勧めします。 マッピングが機能していることを確認したら、フィルターを削除するか、徐々に拡張してより多くのユーザーを含めることができます。
+   > 初めてプロビジョニング アプリを構成するときは、属性マッピングと式をテストして検証し、目的の結果が得られていることを確認する必要があります。 Microsoft は、Workday の少数のテスト ユーザーを使用してマッピングをテストするために、[オンデマンド プロビジョニング](../app-provisioning/provision-on-demand.md)と **[ソース オブジェクト スコープ]** の [スコープ フィルター](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)を使用することをお勧めします。 マッピングが機能していることを確認したら、フィルターを削除するか、徐々に拡張してより多くのユーザーを含めることができます。
 
    > [!CAUTION] 
    > プロビジョニング エンジンの既定の動作では、スコープ外に出るユーザーが無効化または削除されます。 これはご使用の Workday と AD の統合には望ましくない場合があります。 この既定の動作をオーバーライドするには、「[スコープ外に出るユーザー アカウントの削除をスキップする](../app-provisioning/skip-out-of-scope-deletions.md)」の記事を参照してください。

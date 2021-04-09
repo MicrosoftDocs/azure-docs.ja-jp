@@ -13,10 +13,10 @@ ms.author: sasapopo
 ms.reviewer: sstein, bonova
 ms.date: 10/08/2020
 ms.openlocfilehash: f9d5528746a85668677ab122d98e954bd39cd163
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92790731"
 ---
 # <a name="use-server-trust-groups-to-set-up-and-manage-trust-between-sql-managed-instances"></a>サーバー信頼グループを使用して SQL マネージド インスタンス間の信頼を設定および管理する
@@ -42,11 +42,11 @@ ms.locfileid: "92790731"
 
 4. サーバー信頼グループの構成ページで、 **[新しいグループ]** アイコンを選択します。
 
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-new-group.png" alt-text="サーバー信頼グループ":::
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-new-group.png" alt-text="新しいグループ":::
 
 5. **[SQL trust groups]\(SQL 信頼グループ\)** の作成ブレードで、 **[グループ名]** を設定します。 これは、グループ メンバーが存在するすべてのリージョンで一意である必要があります。 **[Trust scope]\(信頼スコープ\)** は、サーバー信頼グループで有効になっているクロスインスタンス シナリオの種類を定義します。 プレビューでは、適用可能な唯一の信頼スコープは **[分散トランザクション]** であるため、事前に選択されており、変更することができません。 すべての **[グループ メンバー]** は同じ **[サブスクリプション]** に属している必要がありますが、異なるリソース グループに属することができます。 **[リソース グループ]** と **[SQL Server / instance]\(SQL Server/インスタンス\)** を選択して、グループのメンバーになる Azure SQL Managed Instance を選択します。
 
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-blade.png" alt-text="サーバー信頼グループ":::
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-blade.png" alt-text="サーバー信頼グループの作成ブレード":::
 
 6. すべての必須フィールドにデータが入力されたら、 **[保存]** をクリックします。
 
@@ -59,11 +59,11 @@ ms.locfileid: "92790731"
 2. 信頼グループに属している Managed Instance に移動します。
 3. **[セキュリティ]** の設定で、 **[SQL trust groups]\(SQL 信頼グループ\)** タブを選択します。
 4. 削除する信頼グループを選択します。
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-select.png" alt-text="サーバー信頼グループ":::
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-select.png" alt-text="サーバー信頼グループの選択":::
 5. **[グループの削除]** をクリックします。
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete.png" alt-text="サーバー信頼グループ":::
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete.png" alt-text="サーバー信頼グループの削除":::
 6. サーバー信頼グループ名を入力して削除を確認し、 **[削除]** をクリックします。
-   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete-confirm.png" alt-text="サーバー信頼グループ":::
+   :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete-confirm.png" alt-text="サーバー信頼グループの削除の確認":::
 
 > [!NOTE]
 > サーバー信頼グループを削除しても、2 つの Managed Instance 間の信頼がすぐに削除されない場合があります。 信頼の削除は、Managed Instance の[フェールオーバー](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover)を呼び出すことによって適用できます。 この最新の更新プログラムに関する「[既知の問題](../database/doc-changes-updates-release-notes.md?tabs=managed-instance#known-issues)」を確認してください。

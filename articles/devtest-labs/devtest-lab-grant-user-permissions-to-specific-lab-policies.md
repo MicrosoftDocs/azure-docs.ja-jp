@@ -4,10 +4,10 @@ description: 各ユーザーのニーズに基づいて DevTest ラボの特定�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 976862476d25e4e9a4933d8a5319eec9d77ca39b
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92328472"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>特定のラボ ポリシーに対するアクセス許可をユーザーに付与する
@@ -19,7 +19,7 @@ ms.locfileid: "92328472"
 
 DevTest ラボでは、ポリシーは、リソースの種類の 1 つであり、Azure RBAC の操作 **Microsoft.DevTestLab/labs/policySets/policies/** を可能にするものです。 各ラボ ポリシーはこの種類のポリシー リソースのリソースであり、Azure ロールにスコープとして割り当てることができます。
 
-たとえば、 **許可される VM サイズ** ポリシーに対する読み取り/書き込みアクセス許可をユーザーに付与するには、 **Microsoft.DevTestLab/labs/policySets/policies/** アクションを扱うカスタム ロールを作成し、 **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab** スコープ内でこのカスタム ロールに適切なユーザーを割り当てます。
+たとえば、**許可される VM サイズ** ポリシーに対する読み取り/書き込みアクセス許可をユーザーに付与するには、**Microsoft.DevTestLab/labs/policySets/policies/** アクションを扱うカスタム ロールを作成し、**Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab** スコープ内でこのカスタム ロールに適切なユーザーを割り当てます。
 
 Azure RBAC でのカスタム ロールの詳細については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
 
@@ -53,7 +53,7 @@ $policyRoleDef = (New-AzRoleDefinition -Role $policyRoleDef)
 ```
 
 ## <a name="assigning-permissions-to-a-user-for-a-specific-policy-using-custom-roles"></a>カスタム ロールを使用して特定のポリシーに対しユーザーにアクセス許可を割り当てる
-カスタム ロールを定義すると、ユーザーにカスタム ロールを割り当てられるようになります。 カスタム ロールをユーザーに割り当てるには、まず、そのユーザーを表す **ObjectId** を取得する必要があります。 そのためには、 **Get-AzADUser** コマンドレットを使用します。
+カスタム ロールを定義すると、ユーザーにカスタム ロールを割り当てられるようになります。 カスタム ロールをユーザーに割り当てるには、まず、そのユーザーを表す **ObjectId** を取得する必要があります。 そのためには、**Get-AzADUser** コマンドレットを使用します。
 
 次の例では、 **SomeUser** ユーザーの *ObjectId* は 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 です。
 
@@ -65,7 +65,7 @@ DisplayName                    Type                           ObjectId
 someuser@hotmail.com                                          05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3
 ```
 
-ユーザーの **ObjectId** とカスタム ロール名を取得したら、 **New-AzRoleAssignment** コマンドレットを使用してユーザーにそのロールを割り当てることができます。
+ユーザーの **ObjectId** とカスタム ロール名を取得したら、**New-AzRoleAssignment** コマンドレットを使用してユーザーにそのロールを割り当てることができます。
 
 ```azurepowershell
 PS C:\>New-AzRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/default/policies/AllowedVmSizesInLab

@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: apimpm
 ms.openlocfilehash: acb121bb00df481c926ebed9594bf0fe1b9b17ed
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100546637"
 ---
 # <a name="tutorial-use-revisions-to-make-non-breaking-api-changes-safely"></a>チュートリアル:リビジョンを使用して互換性に影響しない API の変更を安全に行う

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 8a03637352762646b0f209263769dbdb1ff14b21
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 8688d278c40ba34b7c4344a73cb4717f3fd71368
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102562624"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600073"
 ---
 # <a name="use-site-recovery-to-migrate-to-premium-storage"></a>Site Recovery を使用して Premium Storage に移行する
 
@@ -197,7 +197,7 @@ Site Recovery では、Premium Storage 対応の VM と同じか類似の種類�
    * クラシック デプロイ モデルを使用して作成された VM の場合: Azure portal で可用性セットに VM を追加します。 詳細な手順については、「[既存の仮想マシンを可用性セットに追加する](/previous-versions/azure/virtual-machines/linux/classic/configure-availability-classic)」を参照してください。
    * Resource Manager デプロイ モデルを使用して作成された VM の場合: VM の構成を保存し、可用性セット内の VM をいったん削除してから再作成します。 これを行うには、[Azure Resource Manager VM 可用性セットの設定](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)スクリプトを使用します。 このスクリプトを実行する前に、制限を確認し、ダウンタイムを計画します。
 
-2. **以前の VM とディスクを削除します**。 Premium ディスクとソース ディスクの間に一貫性があり、新しい VM がソース VM と同じように動作することを確認します。 Azure Portal でソース ストレージ アカウントから VM を削除したうえで、ディスクを削除します。 VM を削除してもディスクが削除されない問題が発生した場合は、「[Troubleshoot storage resource deletion errors](../troubleshooting/storage-resource-deletion-errors.md)」(ストレージのリソースを削除するときに生じるエラーのトラブルシューティング) を参照してください。
+2. **以前の VM とディスクを削除します**。 Premium ディスクとソース ディスクの間に一貫性があり、新しい VM がソース VM と同じように動作することを確認します。 Azure Portal でソース ストレージ アカウントから VM を削除したうえで、ディスクを削除します。 VM を削除してもディスクが削除されない問題が発生した場合は、「[Troubleshoot storage resource deletion errors](/troubleshoot/azure/virtual-machines/storage-resource-deletion-errors)」(ストレージのリソースを削除するときに生じるエラーのトラブルシューティング) を参照してください。
 
 3. **Azure Site Recovery インフラストラクチャをクリーンアップします**。 Site Recovery が不要になったら、インフラストラクチャをクリーンアップすることができます。 レプリケートされた項目、構成サーバー、回復ポリシーを削除してから、Azure Site Recovery コンテナーを削除します。
 

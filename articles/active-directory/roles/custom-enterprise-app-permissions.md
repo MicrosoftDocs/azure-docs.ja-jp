@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 110da0a12336415d9d9c781e24684d7e2af8bc9d
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: d2159540c688a63082efb792fd4d261062ef65d9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741657"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103466795"
 ---
 # <a name="enterprise-application-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory のカスタム ロールに対するエンタープライズ アプリケーションのアクセス許可
 
@@ -166,7 +166,7 @@ microsoft.directory/servicePrincipals/synchronization/standard/read | サービ�
 microsoft.directory/servicePrincipals/synchronizationSchema/manage | サービス プリンシパル リソースのスキーマ同期の側面をすべて管理します。
 microsoft.directory/provisioningLogs/allProperties/read | プロビジョニング ログのすべてのプロパティを読み取ります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure portal、Azure AD PowerShell、および Graph API を使用してカスタム ロールを作成する](custom-create.md)
-- [カスタム ロールの割り当てを表示する](custom-view-assignments.md)
+- [ロールの割り当てを一覧表示する](view-assignments.md)

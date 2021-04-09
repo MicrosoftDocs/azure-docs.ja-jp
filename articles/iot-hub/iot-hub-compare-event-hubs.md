@@ -14,15 +14,15 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
 ms.openlocfilehash: 56bb179c50862f09f1b789c359db97976017bbb5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92142758"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT デバイスを Azure に接続する: IoT Hub と Event Hubs
 
-Azure では、データとクラウドの機能をつなぐ助けとなるように、さまざまな種類の接続と通信のために特に開発されたサービスを提供しています。 Azure IoT Hub と Azure Event Hubs はどちらも、大量のデータを取り込み、ビジネス情報分析のためにそのデータを処理または保存できるクラウド サービスです。 2 つのサービスは、どちらも少ない待ち時間と高い信頼性でデータの取り込みをサポートするという点で類似していますが、異なる目的のために設計されています。 IoT Hub が、IoT デバイスを Azure クラウドに接続するという固有の要件に対応するために開発されたのに対して、Event Hubs は、ビッグ データのストリーミング用に設計されました。 マイクロソフトでは、Azure IoT Hub を使用して IoT デバイスを Azure に接続することをお勧めしています。
+Azure では、データとクラウドの機能をつなぐ助けとなるように、さまざまな種類の接続と通信のために特に開発されたサービスを提供しています。 Azure IoT Hub と Azure Event Hubs はどちらも、大量のデータを取り込み、そのデータを処理または格納してビジネス上の分析情報を得ることができるクラウド サービスです。 この 2 つのサービスは、短い待ち時間と高い信頼性を備えたデータの取り込みをサポートしている点では同様ですが、異なる目的のために設計されています。 IoT Hub が、IoT デバイスを Azure クラウドに接続するという固有の要件に対応するために開発されたのに対して、Event Hubs は、ビッグ データのストリーミング用に設計されました。 マイクロソフトでは、Azure IoT Hub を使用して IoT デバイスを Azure に接続することをお勧めしています。
 
 Azure IoT Hub は、IoT デバイスを接続してデータを収集し、ビジネスの分析情報と自動化を推進するためのクラウド ゲートウェイです。 さらに、IoT Hub には、デバイスとバックエンド システム間のリレーションシップを強化する機能が含まれています。 双方向通信機能は、デバイスからデータを受信している間でも、デバイスにコマンドとポリシーを返送できることを意味します。 たとえば、cloud-to-device メッセージングを使用して、プロパティを更新したりデバイス管理操作を起動したりします。 cloud-to-device 通信では、Azure IoT Edge を使ってクラウド インテリジェンスをエッジ デバイスに送信することも可能です。 IoT Hub によって提供されるデバイス レベルの一意の ID は、潜在的な攻撃からの IoT ソリューションのセキュリティ保護を強化する助けになります。 
 
@@ -39,7 +39,7 @@ Azure IoT Hub は、IoT デバイスを接続してデータを収集し、ビ�
 | プロトコル: MQTT、MQTT over webSockets | ![○][checkmark] | ![○][checkmark] |  |
 | デバイスごとの ID | ![○][checkmark] | ![○][checkmark] |  |
 | 複数デバイスからのファイルのアップロード | ![○][checkmark] | ![○][checkmark] |  |
-| Device Provisioning Service | ![○][checkmark] | ![○][checkmark] |  |
+| デバイス プロビジョニング サービス | ![○][checkmark] | ![○][checkmark] |  |
 | クラウドからデバイスへのメッセージ | ![○][checkmark] |  |  |
 | デバイス ツインとデバイス管理 | ![○][checkmark] |  |  |
 | デバイス ストリーム (プレビュー) | ![○][checkmark] |  |  |

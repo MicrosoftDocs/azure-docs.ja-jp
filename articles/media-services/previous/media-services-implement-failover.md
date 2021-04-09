@@ -3,7 +3,7 @@ title: Azure Media Services でのフェールオーバー ストリーミング
 description: この記事では、Azure Media Services を使用してフェールオーバー ストリーミング シナリオを実装する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68cd107b2606643d712c4de94b6d1a82e8ee614a
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1636e49099851337d82494ebe168b8ec5194fa20
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657262"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103011937"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Media Services v2 でフェールオーバー ストリーミングを実装する
 
@@ -56,7 +56,7 @@ ms.locfileid: "97657262"
 ## <a name="prerequisites"></a>前提条件
 
 * 新規または既存の Azure サブスクリプションで作成した 2 つの Media Services アカウント。 「[Media Services アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。
-* オペレーティング システム:Windows 7、Windows 2008 R2、または Windows 8。
+* オペレーティング システム: Windows 7、Windows Server 2008 R2、Windows 8。
 * .NET Framework 4.5 または .NET Framework 4。
 * Visual Studio 2010 SP1 以降のバージョン (Professional、Premium、Ultimate、または Express)。
 
@@ -65,9 +65,9 @@ ms.locfileid: "97657262"
 このセクションでは、C# コンソール アプリケーション プロジェクトを作成、設定できます。
 
 1. Visual Studio を使用すると、C# コンソール アプリケーション プロジェクトを含む新しいソリューションを作成できます。 名前に「**HandleRedundancyForOnDemandStreaming**」と入力し、 **[OK]** をクリックします。
-2. **HandleRedundancyForOnDemandStreaming.csproj** プロジェクト ファイルと同じレベルに **SupportFiles** フォルダーを作成します。 **SupportFiles** フォルダーの下に **OutputFiles** と **MP4Files** フォルダーを作成します。 .mp4 ファイルを **MP4Files** フォルダーにコピーします (この例では、**ignite.mp4** ファイルを使用します)。 
+2. **HandleRedundancyForOnDemandStreaming.csproj** プロジェクト ファイルと同じレベルに **SupportFiles** フォルダーを作成します。 **SupportFiles** フォルダーの下に **OutputFiles** と **MP4Files** フォルダーを作成します。 .mp4 ファイルを **MP4Files** フォルダーにコピーします  (この例では、**ignite.mp4** ファイルを使用します)。 
 3. **NuGet** を使用して Media Services 関連の DLL への参照を追加します。 **Visual Studio のメイン メニュー** で、 **[ツール]** 、 **[NuGet パッケージ マネージャー]** 、 **[パッケージ マネージャー コンソール]** の順に選択します。 コンソール ウィンドウで「**Install-Package windowsazure.mediaservices**」と入力し、Enter キーを押します。
-4. このプロジェクト (System.Configuration、System.Runtime.Serialization および System.Web) (System.Runtime.Serialization および System.Web) に必要なその他の参照を追加します。
+4. このプロジェクト (System.Runtime.Serialization および System.Web) に必要なその他の参照を追加します。
 5. **Programs.cs** ファイルに既定で追加された **using** ステートメントを次の内容に置き換えます。
 
 ```csharp

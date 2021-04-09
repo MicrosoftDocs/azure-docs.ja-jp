@@ -3,7 +3,7 @@ title: エンコード ユニットの追加によるメディア処理のスケ
 description: この記事では、Azure Media Services .NET を使用してエンコード ユニットを追加する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 33f7625a-966a-4f06-bc09-bccd6e2a42b5
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: milangada
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2d5e6305de1852dad3a08c110cb2fc5a58a31049
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6feb28858271f11bef0933a352f86d7545ee5bd3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96009197"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103014079"
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>.NET SDK を使用してエンコードを拡張する方法
 

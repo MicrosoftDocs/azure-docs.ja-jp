@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
 ms.openlocfilehash: d0c45626016049424c8028eea7ffbd7f281e9012
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91744153"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Azure Data Box のサポート チケットを開く
@@ -33,7 +33,7 @@ ms.locfileid: "91744153"
 2. **[新しいサポート要求]** で、 **[基本]** を選択します。 **[基本]** で次の手順を実行します。
 
     1. **[問題の種類]** ドロップダウン リストで **[技術]** を選択します。
-    2. **サブスクリプション**を選択します。
+    2. **サブスクリプション** を選択します。
     3. **[サービス]** の **[すべてのサービス]** をオンにします。 ドロップダウン リストから、 **[Data Box]** を選びます。 
     4. **[サポート プラン]** を指定します。
     5. **[次へ]** をクリックします。

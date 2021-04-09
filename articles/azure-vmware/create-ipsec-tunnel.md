@@ -3,12 +3,12 @@ title: Azure VMware Solution への IPSec トンネルを作成する
 description: Virtual WAN ハブを作成して、Azure VMware Solution への IPSec トンネルを確立する方法について説明します。
 ms.topic: how-to
 ms.date: 10/02/2020
-ms.openlocfilehash: 9f869f04bf165f4791f13c626b63257ea98a7ca9
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 21df674862b65ef6573a8a3fcfd7538b1053f04e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506449"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103491848"
 ---
 # <a name="create-an-ipsec-tunnel-into-azure-vmware-solution"></a>Azure VMware Solution への IPSec トンネルを作成する
 
@@ -38,8 +38,7 @@ Azure Virtual ハブには、Azure VMware Solution ExpressRoute ゲートウェ�
    | **名前** |   |
    | **Type** | **[Standard]** を選択します。これにより、VPN ゲートウェイのトラフィック以外も許可されます。  |
 
-
-    :::image type="content" source="media/create-ipsec-tunnel/create-wan.png" alt-text="Azure portal の [WAN の作成] ページを示すスクリーンショット。":::
+   :::image type="content" source="media/create-ipsec-tunnel/create-wan.png" alt-text="Azure portal の [WAN の作成] ページを示すスクリーンショット。":::
 
 3. Azure portal で、前の手順で作成した仮想 WAN を選択し、 **[仮想ハブの作成]** を選択し、必要なフィールドを入力して、 **[次へ: サイト間]** を選択します。 
 
@@ -49,7 +48,7 @@ Azure Virtual ハブには、Azure VMware Solution ExpressRoute ゲートウェ�
    | **名前** |    |
    | **ハブのプライベート アドレス空間** | `/24` (最小) を使用してサブネットを入力します。  |
 
-    :::image type="content" source="media/create-ipsec-tunnel/create-virtual-hub.png" alt-text="[仮想ハブを作成する] ページを示すスクリーンショット。":::
+   :::image type="content" source="media/create-ipsec-tunnel/create-virtual-hub.png" alt-text="[仮想ハブを作成する] ページを示すスクリーンショット。":::
 
 4. **[サイト対サイト]** タブで、 **[ゲートウェイ スケール ユニット]** ドロップダウンから合計スループットを設定して、サイト間ゲートウェイを定義します。 
 
@@ -69,8 +68,7 @@ Azure Virtual ハブには、Azure VMware Solution ExpressRoute ゲートウェ�
 
 2. 仮想ハブの **[概要]** で、 **[接続]**  >  **[VPN (Site-to-site)]\(VPN (サイト間)\)** を選択し、 **[VPN サイトの新規作成]** を選択します。
 
-
-    :::image type="content" source="media/create-ipsec-tunnel/create-vpn-site-basics.png" alt-text="[VPN (Site-to-site)]\(VPN (サイト間)\) と [VPN サイトの新規作成] が選択されている仮想ハブの [概要] ページのスクリーンショット。":::  
+   :::image type="content" source="media/create-ipsec-tunnel/create-vpn-site-basics.png" alt-text="[VPN (Site-to-site)]\(VPN (サイト間)\) と [VPN サイトの新規作成] が選択されている仮想ハブの [概要] ページのスクリーンショット。":::  
  
 3. **[基本]** タブで、必要なフィールドを入力し、 **[次へ: リンク]** を選択します。 
 
@@ -89,48 +87,54 @@ Azure Virtual ハブには、Azure VMware Solution ExpressRoute ゲートウェ�
 
 このセクションは、ポリシーベースの VPN にのみ適用されます。 ポリシーベース (または静的なルートベース) の VPN 設定は、ほとんどの場合、オンプレミスの VPN デバイスの機能によって決まります。 オンプレミスと Azure VMware Solution のネットワークを指定する必要があります。 Azure Virtual WAN ハブを使用する Azure VMware Solution の場合、"*任意*" のネットワークを選択することはできません。 そうではなく、関連するすべてのオンプレミスおよび Azure VMware Solution Virtual WAN ハブの範囲を指定する必要があります。 このようなハブの範囲は、ポリシーベースの VPN トンネル オンプレミス エンドポイントの暗号化ドメインを指定するために使用されます。 Azure VMware Solution 側では、ポリシーベースのトラフィック セレクター インジケーターを有効にすることのみが必要です。 
 
-1. Azure portal で、Virtual WAN ハブ サイトに移動します。 **[接続]** で、 **[VPN (Site to site)]\(VPN (サイト間)\)** を選択します。
+1. Azure portal で、お使いの仮想 WAN ハブ サイトに移動します。 **[接続]** の **[VPN (Site to site)]\(VPN (サイト間)\)** を選択します。
 
-2. VPN サイト名を選択して、右端の省略記号 (...) を選択し、 **[このハブへの VPN 接続の編集]** を選択します。
+2. VPN サイト名、右端の省略記号 (...)、 **[このハブへの VPN 接続の編集]** の順に選択します。
  
-    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png" alt-text="[このハブへの VPN 接続の編集] にアクセスするために選択された省略記号を示している Azure の仮想 WAN ハブ サイト用のページのスクリーンショット。" lightbox="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png":::
+   :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png" alt-text="[このハブへの VPN 接続の編集] にアクセスするために選択された省略記号を示している Azure の仮想 WAN ハブ サイト用のページのスクリーンショット。" lightbox="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png":::
 
 3. VPN サイトとハブ間の接続を編集し、 **[保存]** を選択します。
    - インターネット プロトコル セキュリティ (IPSec) で **[カスタム]** を選択します。
    - ポリシーベースのトラフィック セレクターを使用して **[有効にする]** を選択します
    - **[IKE フェーズ 1]** と **[IKE フェーズ 2 (ipsec)]** の詳細を指定します。 
  
-    :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-connection.png" alt-text="[VPN 接続を編集する] ページのスクリーンショット。"::: 
+   :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-connection.png" alt-text="[VPN 接続を編集する] ページのスクリーンショット。"::: 
  
-    ポリシーベースの暗号化ドメインの一部であるトラフィック セレクターまたはサブネットは、次のようになります。
+   ポリシーベースの暗号化ドメインの一部であるトラフィック セレクターまたはサブネットは、次のようになります。
     
-    - 仮想 WAN ハブ /24
-    - Azure VMware Solution のプライベート クラウド /22
-    - 接続されている Azure 仮想ネットワーク (存在する場合)
+   - 仮想 WAN ハブ /24
+   - Azure VMware Solution のプライベート クラウド /22
+   - 接続されている Azure 仮想ネットワーク (存在する場合)
 
 ## <a name="connect-your-vpn-site-to-the-hub"></a>VPN サイトをハブに接続する
 
-1. VPN サイト名の横にあるチェックボックスをオンにして (前述の **VPN (サイト間)** のスクリーンショットを参照してください)、 **[VPN サイトの接続]** を選択します。 **[事前共有キー]** フィールドに、オンプレミス エンドポイントに対して以前に定義したキーを入力します。 以前に定義したキーがない場合は、このフィールドを空白のままにすると、キーが自動的に生成されます。 
+1. VPN サイト名を選択して、 **[VPN サイトの接続]** を選択します。 
+1. **[事前共有キー]** フィールドに、オンプレミス エンドポイントに対して以前に定義したキーを入力します。 
+
+   >[!TIP]
+   >以前に定義したキーがない場合は、このフィールドは空白のままでかまいません。 キーが自動的に生成されます。 
  
-    ハブにファイアウォールを展開していて、それがそのトンネルを介した接続の次ホップである場合にのみ、 **[既定のルートを伝達する]** を有効にします。
+   >[!IMPORTANT]
+   >ハブにファイアウォールを展開していて、それがそのトンネルを介した接続の次ホップである場合にのみ、 **[既定のルートを伝達する]** を有効にします。
 
-    **[接続]** を選択します。 接続状態画面には、トンネル作成の状態が表示されます。
+1. **[接続]** を選択します。 接続状態画面にトンネル作成の状態が表示されます。
 
-2. 仮想 WAN の概要に移動します。 VPN サイト ページを開き、VPN 構成ファイルをダウンロードして、オンプレミスのエンドポイントに適用します。  
+2. Virtual WAN 概要に移動し、VPN サイト ページを開いて、オンプレミス エンドポイントの VPN 構成ファイルをダウンロードします。  
 
-3. 次に、Azure VMware Solution ExpressRoute に修正プログラムを適用して Virtual WAN ハブに展開します (この手順を実行するには、最初にプライベート クラウドを作成する必要があります)。
+3. Virtual WAN ハブで Azure VMware Solution ExpressRoute に修正プログラムを適用します。 この手順を実行するには、最初にプライベート クラウドを作成する必要があります。
 
-    Azure VMware Solution プライベート クラウドの **[接続]** セクションに移動します。 **[ExpressRoute]** タブで、 **[+ Request an authorization key]\(認可キーを要求する\)** を選択します。 名前を指定し、 **[作成]** を選択します (キーの作成には約 30 秒かかることがあります)。ExpressRoute ID と承認キーをコピーします。 
+   [!INCLUDE [request-authorization-key](includes/request-authorization-key.md)]
 
-    :::image type="content" source="media/create-ipsec-tunnel/express-route-connectivity.png" alt-text="プライベート クラウドの [接続] ページの[ExpressRoute] タブで [Request an authorization key]\(認可キーを要求する\) が選択されているスクリーンショット。":::
+4. Virtual WAN ハブで Azure VMware Solution と VPN ゲートウェイをリンクします。 
+   1. Azure portal で、以前に作成した仮想 WAN を開きます。 
+   1. 作成した Virtual WAN ハブを選択し、左側のペインで **[ExpressRoute]** を選択します。 
+   1. **[+ 認可キーを利用する]** を選択します。
 
-    > [!NOTE]
-    > 承認キーはしばらくすると消えるため、表示されたらすぐにコピーしてください。
+      :::image type="content" source="media/create-ipsec-tunnel/redeem-authorization-key.png" alt-text="プライベート クラウドの [ExpressRoute] ページで [認可キーを利用する] が選択されているスクリーンショット。":::
 
-4. 次に、Virtual WAN ハブで Azure VMware Solution と VPN ゲートウェイをリンクします。 Azure portal で、以前に作成した仮想 WAN を開きます。 作成した Virtual WAN ハブを選択し、左側のペインで **[ExpressRoute]** を選択します。 **[+ 認可キーを利用する]** を選択します。
+   1. 承認キーを [承認キー] フィールドに貼り付けます。
+   1. ExpressRoute ID を **[ピア回線の URI]** フィールドに貼り付けます。 
+   1. **[この ExpressRoute 回線をハブに自動的に関連付けます]** を選択します。 
+   1. **[追加]** を選択してリンクを確立します。 
 
-    :::image type="content" source="media/create-ipsec-tunnel/redeem-authorization-key.png" alt-text="プライベート クラウドの [ExpressRoute] ページで [認可キーを利用する] が選択されているスクリーンショット。":::
-
-    [承認キー] フィールドに承認キーを、 **[ピア回線の URI]** フィールドに ExpressRoute ID を貼り付けます。 必ず **[この ExpressRoute 回線をハブに自動的に関連付けます]** をオンにしてください。 **[追加]** を選択してリンクを確立します。 
-
-5. 接続をテストするには、[NSX-T セグメントを作成](./tutorial-nsx-t-network-segment.md)し、ネットワーク上に VM をプロビジョニングします。 オンプレミスと Azure VMware Solution の両方のエンドポイントに ping を実行してテストします。
+5. 接続をテストするために、[NSX-T セグメントを作成](./tutorial-nsx-t-network-segment.md)してネットワーク上に VM をプロビジョニングします。 オンプレミスと Azure VMware Solution の両方のエンドポイントに ping を実行します。

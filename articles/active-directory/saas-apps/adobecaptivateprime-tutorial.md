@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 63bbec6de8f122178289cc313e5d938e3b926af2
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97673242"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>チュートリアル: Azure Active Directory と Adobe Captivate Prime
@@ -61,7 +61,7 @@ Azure AD への Adobe Captivate Prime の統合を構成するには、ギャラ
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Adobe Captivate Prime**」と入力し、結果パネルで **Adobe Captivate Prime** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Adobe Captivate Prime**」と入力し、結果パネルで **Adobe Captivate Prime** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Adobe Captivate Prime](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ Adobe Captivate Prime での Azure AD シングル サインオンを構成し�
 
 Adobe Captivate Prime との Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Adobe Captivate Prime** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Adobe Captivate Prime** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -156,7 +156,7 @@ Adobe Captivate Prime との Azure AD シングル サインオンを構成す�
 
 このセクションでは、Britta Simon に Adobe Captivate Prime へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Adobe Captivate Prime]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Adobe Captivate Prime]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

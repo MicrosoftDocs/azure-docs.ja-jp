@@ -9,10 +9,10 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 8c5c0c8f649e7cbab2c16688717de1aaabfb93c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75474113"
 ---
 この参照では、Azure Storage のスケーラビリティおよびパフォーマンスのターゲットについて説明されています。 ここで示すスケーラビリティおよびパフォーマンスのターゲットは、ハイエンドのターゲットですが、達成可能です。 いかなる場合でも、ストレージ アカウントで達成される要求レートおよび帯域幅は、格納されたオブジェクトのサイズ、使用されているアクセス パターン、およびアプリケーションで実行されているワークロードの種類によって異なります。

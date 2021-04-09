@@ -4,10 +4,10 @@ description: この記事では Azure PowerShell モジュールを使用して�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: b6439deb2b86c2ea5b50fe3bdbad89a0875b2acc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88065745"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>PowerShell モジュールで Service Bus リソースを管理する
@@ -18,11 +18,11 @@ Azure Resource Manager テンプレートでも Service Bus エンティティ�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>[前提条件]
 
 開始する前に、次の前提条件を満たす必要があります。
 
-* Azure サブスクリプション。 サブスクリプションの入手方法の詳細については、[購入オプション][purchase options]、[メンバー オファー][member offers]、または[無料アカウント][free account]に関するページを参照してください。
+* Azure サブスクリプション。 サブスクリプションの入手方法の詳細については、[購入オプション][purchase options]、[メンバー オファー][member offers]、または[無料アカウント][free account]に関するページをご覧ください。
 * Azure PowerShell を搭載するコンピューター 手順については、「[Azure PowerShell コマンドレットの使用開始](/powershell/azure/get-started-azureps)」をご覧ください。
 * PowerShell スクリプト、NuGet パッケージ、.NET Framework の一般的理解。
 

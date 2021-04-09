@@ -10,10 +10,10 @@ ms.custom: include file
 ms.topic: include
 ms.date: 08/24/2020
 ms.openlocfilehash: 70b636b7bb508b71475a7464983b091d5d10e0e1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96027481"
 ---
  また、Azure Machine Learning コンピューティング クラスターによって、[マネージド ID](../articles/active-directory/managed-identities-azure-resources/overview.md) がサポートされ、コードに資格情報を含めることなく、Azure リソースへのアクセスが認証されます。 マネージド ID には、次の 2 種類があります。

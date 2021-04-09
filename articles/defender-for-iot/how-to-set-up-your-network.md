@@ -1,18 +1,14 @@
 ---
 title: ネットワークをセットアップする
 description: ネットワークが Azure Defender for IoT アプライアンスと連携するように正しく設定するために必要なソリューションのアーキテクチャ、ネットワークの準備、前提条件、およびその他の情報について説明します。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
-ms.date: 01/03/2021
+ms.date: 02/18/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 4ceedf4d05c6f92e5c32da95f8b54fc6c95de01c
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: ed75995b7cbc3b051d77942698a5d0d948e6eef0
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526512"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781808"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Azure Defender for IoT のネットワーク設定について
 

@@ -3,12 +3,12 @@ title: Service Fabric クラスターでの X.509 証明書ベースの認証
 description: Service Fabric クラスターでの証明書ベースの認証と、証明書関連の問題を検出、軽減、および修正する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 8af0246e0e576f9877c4c5e3b1f1a4314ae29827
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 2d94e5cc78afbabde38eb38e0c4f89381bd67167
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901251"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729693"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>Service Fabric クラスターでの X.509 証明書ベースの認証
 
@@ -182,7 +182,7 @@ Service Fabric クラスターのセキュリティ設定では、原則とし�
 
 前述のように、証明書検証には、常に証明書のチェーンの構築と評価という意味が含まれます。 CA によって発行された証明書の場合、この明らかにシンプルな OS API 呼び出しでは通常、発行元 PKI のさまざまなエンドポイントへのいくつかの送信呼び出し、応答のキャッシュなどを必要とします。 Service Fabric クラスターでの証明書検証呼び出しの普及により、PKI のエンドポイントでの何らかの問題によって、クラスターの可用性が低下したり、完全な機能停止が発生したりする可能性があります。 送信呼び出しを抑制することはできません (この詳細については、下記の FAQ のセクションを参照してください) が、次の設定を使用して、CRL 呼び出しの失敗によって発生する検証エラーをマスクすることができます。
 
-  * CrlCheckingFlag - 'Security' セクションで、UINT に変換される文字列。 この設定の値は、Service Fabric によって、チェーン構築の動作を変更して、証明書チェーンの状態エラーをマスクするために使用されます。これは、'dwFlags' パラメーターとして Win32 CryptoAPI [CertGetCertificateChain](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) 呼び出しに渡され、この関数で受け入れられる任意の有効なフラグの組み合わせに設定できます。 0 の値によって、Service Fabric ランタイムで信頼状態エラーを強制的に無視させますが、これは推奨されません。その使用によってセキュリティが著しく侵害されることがあるためです。 既定値は 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT) です。
+  * CrlCheckingFlag - "Security" セクションで、UINT に変換される文字列。 この設定の値は、Service Fabric によって、チェーン構築の動作を変更して、証明書チェーンの状態エラーをマスクするために使用されます。これは、'dwFlags' パラメーターとして Win32 CryptoAPI [CertGetCertificateChain](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) 呼び出しに渡され、この関数で受け入れられる任意の有効なフラグの組み合わせに設定できます。 0 の値によって、Service Fabric ランタイムで信頼状態エラーを強制的に無視させますが、これは推奨されません。その使用によってセキュリティが著しく侵害されることがあるためです。 既定値は 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT) です。
 
   使用するタイミング: 完全に形成されていないか、証明書をサポートするための適切な公開キー インフラストラクチャがない自己署名証明書または開発者証明書を使用したローカル テストの場合。 エアギャップ環境で、PKI 間の移行時に軽減策として使用することもできます。
 
@@ -197,7 +197,7 @@ Service Fabric クラスターのセキュリティ設定では、原則とし�
     </Section>
   ```
 
-  * IgnoreCrlOfflineError - 'Security' セクションの下の、'false' の既定値のブール値。 "失効オフライン" チェーン構築エラー状態 (または、後続のチェーン ポリシー検証エラー状態) を抑制するためのショートカットを表します。
+  * IgnoreCrlOfflineError - "Security" セクションの下の、'false' の既定値のブール値。 "失効オフライン" チェーン構築エラー状態 (または、後続のチェーン ポリシー検証エラー状態) を抑制するためのショートカットを表します。
 
   使用するタイミング: 適切な PKI で裏付けされていない開発者証明書を使用したローカル テスト。 エアギャップ環境での軽減策として、または PKI にアクセスできないことがわかっている場合に使用します。
 
@@ -208,7 +208,7 @@ Service Fabric クラスターのセキュリティ設定では、原則とし�
     </Section>
   ```
 
-  その他の注目すべき設定 (すべて 'Security' セクション下):
+  その他の注目すべき設定 (すべて "Security" セクション下):
   * AcceptExpiredPinnedClusterCertificate - 拇印ベースの証明書検証専用のセクションで説明しました。期限切れの自己署名クラスター証明書の受け入れを許可します。 
   * CertificateExpirySafetyMargin - 証明書の NotAfter タイムスタンプ前の、その間に証明書が期限切れになるリスクがあると見なされる分単位で表される間隔。 Service Fabric では、クラスター証明書が監視され、それらの残りの可用性に関する正常性レポートが定期的に発行されます。 "安全" 間隔内で、これらの正常性レポートは "警告" 状態に昇格されます。 既定値は 30 日です。
   * CertificateHealthReportingInterval - クラスター証明書の残りの有効期間に関する正常性レポートの頻度を制御します。 レポートは、この間隔あたり 1 回だけ発行されます。 値は秒単位で表され、既定値は 8 時間です。

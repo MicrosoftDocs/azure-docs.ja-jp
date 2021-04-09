@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/23/2021
 ms.author: alkemper
 ms.openlocfilehash: 7d343e07414dd1c3f9786c1684eb6f14d5f45e51
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101718184"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Azure Pipelines を使用して App Configuration に設定をプッシュする

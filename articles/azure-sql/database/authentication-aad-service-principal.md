@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 02/11/2021
-ms.openlocfilehash: 15cc935457f76fb1d2fe4e8d699db831ebacc357
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 68267cdedd2f0b64549791866e8750cf42928ab4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181756"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103201242"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure SQL での Azure Active Directory のサービス プリンシパル
 
@@ -52,7 +52,7 @@ Azure AD アプリケーションの代わりに T-SQL コマンド `CREATE USER
 
 Azure AD アプリケーションの代わりに SQL Database と Azure Synapse で Azure AD オブジェクトを作成できるようにするには、次の設定が必要となります。
 
-1. サーバー ID を割り当てます。 割り当てられたサーバー ID はマネージド システム ID (MSI) を表します。 現時点では、Azure SQL のサーバー ID ではユーザー マネージド ID (UMI) がサポートされていません。
+1. サーバー ID を割り当てます。 割り当てられたサーバー ID は Managed Service Identity (MSI) を表します。 現時点では、Azure SQL のサーバー ID ではユーザー マネージド ID (UMI) がサポートされていません。
     - 新しい Azure SQL 論理サーバーの場合は、次の PowerShell コマンドを実行します。
     
     ```powershell

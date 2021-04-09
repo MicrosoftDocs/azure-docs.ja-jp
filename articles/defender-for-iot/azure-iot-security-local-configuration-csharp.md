@@ -1,25 +1,15 @@
 ---
 title: Defender for IoT セキュリティ エージェントのローカル構成 (C#)
 description: Defender for IoT セキュリティ サービスのセキュリティ エージェントの C# ローカル構成ファイルについて説明します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: elazark
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/08/2020
-ms.author: v-ekrieg
-ms.openlocfilehash: 13c16407481d4fa6f7d468a73051cc4945e6314e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42cf7f129005f057a9d51ce2e09db735e825f476
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851235"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784783"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>ローカル構成ファイル (C# エージェント) について
 
@@ -84,7 +74,7 @@ Windows の場合:
 
 | 構成名 | 指定できる値 | 詳細 |
 |:-----------|:---------------|:--------|
-| moduleName | string | セキュリティ モジュール ID の名前。 この名前は、デバイスのモジュール ID 名に対応している必要があります。 |
+| moduleName | string | Defender-IoT-micro-agent ID の名前。 この名前は、デバイスのモジュール ID 名に対応している必要があります。 |
 | deviceId | string | デバイスの ID (Azure IoT Hub に登録されているもの)。 |
 | schedulerInterval | TimeSpan 文字列 | 内部スケジューラの間隔。 |
 | gatewayHostname | string | Azure Iot Hub のホスト名。 通常 <my-hub>.azure-devices.net |
@@ -132,7 +122,7 @@ Windows の場合:
 ## <a name="next-steps"></a>次のステップ
 
 - Defender for IoT サービスの[概要](overview.md)を確認する
-- Defender for IoT の[アーキテクチャ](architecture.md)を確認する
+- Defender for IoT の[アーキテクチャ](architecture.md)を確認します
 - Defender for IoT [サービス](quickstart-onboard-iot-hub.md)を有効にする
 - Defender for IoT サービスの [FAQ](resources-frequently-asked-questions.md) を確認する
 - [未加工のセキュリティ データ](how-to-security-data-access.md)にアクセスする方法を学習します

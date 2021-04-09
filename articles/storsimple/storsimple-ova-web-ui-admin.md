@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: 6bea9c9b7807ffb32b6071c968d3186965477009
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96000931"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>Web UI を使用した StorSimple Virtual Array の管理
@@ -84,7 +84,7 @@ StorSimple Manager サービスに最初のデバイスを登録すると、サ�
 2. ページの下部にある **[シャット ダウン]** をクリックします。
    
     ![デバイスのシャットダウン 1](./media/storsimple-ova-web-ui-admin/image36.png)
-3. デバイスをシャットダウンすると、実行中のすべての IO が中断され、ダウンタイムが発生することを示す警告が表示されます。 操作を完了するには、チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-ova-web-ui-admin/image3.png)。
+3. デバイスをシャットダウンすると、実行中のすべての IO が中断され、ダウンタイムが発生することを示す警告が表示されます。 操作を完了するには、チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-ova-web-ui-admin/image3.png).
    
     ![デバイスのシャットダウンの警告](./media/storsimple-ova-web-ui-admin/image37.png)
    
@@ -99,7 +99,7 @@ StorSimple Manager サービスに最初のデバイスを登録すると、サ�
 2. ページの下部にある **[再起動]** をクリックします。
    
     ![デバイスの再起動](./media/storsimple-ova-web-ui-admin/image36.png)
-3. デバイスを再起動すると、実行中のすべての IO が中断され、ダウンタイムが発生することを示す警告が表示されます。 操作を完了するには、チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-ova-web-ui-admin/image3.png)。
+3. デバイスを再起動すると、実行中のすべての IO が中断され、ダウンタイムが発生することを示す警告が表示されます。 操作を完了するには、チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-ova-web-ui-admin/image3.png).
    
     ![再起動の警告](./media/storsimple-ova-web-ui-admin/image37.png)
    

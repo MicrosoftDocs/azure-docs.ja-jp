@@ -7,16 +7,16 @@ ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: ec26f021ffa581b0713973904c97349df83a08ef
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91930273"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>チュートリアル:Azure portal を使用してアプリ グループを管理する
 
 >[!IMPORTANT]
->これは、Azure Resource Manager Windows Virtual Desktop オブジェクトを使用する Windows Virtual Desktop を対象としたコンテンツです。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[この記事](./virtual-desktop-fall-2019/manage-app-groups-2019.md)を参照してください。
+>これは、Azure Resource Manager Windows Virtual Desktop オブジェクトを使用する Windows Virtual Desktop を対象としたコンテンツです。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/manage-app-groups-2019.md)を参照してください。
 
 Windows Virtual Desktop の新しいホスト プール向けに作成される既定のアプリ グループには、完全なデスクトップも公開されています。 加えて、ホスト プールには RemoteApp アプリケーション グループ (複数可) を作成することができます。 このチュートリアルに沿って作業すれば、RemoteApp アプリ グループを作成して、独自のスタート メニュー アプリを公開することができます。
 
@@ -45,7 +45,7 @@ Azure portal または PowerShell を使用してホスト プールとセッシ
 
 4. **[基本]** タブで、アプリ グループを作成する **[サブスクリプション]** と **[リソース グループ]** を選択します。 既存のリソース グループを選択せずに、新しいリソース グループを選択することもできます。
 
-5. ドロップダウン メニューから、アプリケーション グループに関連付ける**ホスト プール**を選択します。
+5. ドロップダウン メニューから、アプリケーション グループに関連付ける **ホスト プール** を選択します。
 
     >[!NOTE]
     >アプリケーション グループに関連付けるホスト プールを選択する必要があります。 アプリ グループには、セッション ホストから提供されるアプリまたはデスクトップがまとめられ、セッション ホストはホスト プールに属しています。 アプリ グループには、その作成時にホスト プールを関連付ける必要があります。

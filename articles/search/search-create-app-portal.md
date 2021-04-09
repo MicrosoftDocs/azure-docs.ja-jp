@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 01/23/2021
 ms.openlocfilehash: 590afe4c396942c5179826cd831908e37f48c3e4
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98745752"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>クイック スタート:ポータルでデモ アプリを作成する (Azure Cognitive Search)

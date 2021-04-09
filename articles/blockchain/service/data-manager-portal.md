@@ -5,10 +5,10 @@ ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: a151c28d31bf0bb7f21185fb161315d42f9563d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85200683"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Azure portal を使用してブロックチェーン データ マネージャーを構成する
@@ -88,7 +88,7 @@ Blockchain Data Manager には、スマート コントラクトのデプロイ�
 
     バイトコードがクリップボードにコピーされます。
 
-1. **バイトコード**値を JSON ファイルとして保存します。 たとえば、*bytecode.json* です。 このファイルは、後の手順で使用します。
+1. **バイトコード** 値を JSON ファイルとして保存します。 たとえば、*bytecode.json* です。 このファイルは、後の手順で使用します。
 
 次の例は、VS Code エディターで開いている *abi.json* ファイルと *bytecode.json* ファイルを示しています。 ファイルは次のようになります。
 
@@ -137,7 +137,7 @@ Blockchain Data Manager では、アプリケーションの追加時に、コ�
 ### <a name="add-application-to-instance"></a>インスタンスへのアプリケーションの追加
 
 1. インスタンスの一覧から、Blockchain Data Manager インスタンスを選択します。
-1. **ブロックチェーン アプリケーション**を選択します。
+1. **ブロックチェーン アプリケーション** を選択します。
 1. **[追加]** を選択します。
 
     ![ブロックチェーン アプリケーションを追加する](./media/data-manager-portal/add-application.png)

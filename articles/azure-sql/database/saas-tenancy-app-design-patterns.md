@@ -11,10 +11,10 @@ ms.reviewer: ''
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
 ms.openlocfilehash: 8a13c641d50a68d9661b4aa6caf8effb82d53dd7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92793230"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>マルチテナント SaaS データベース テナント パターン
@@ -26,11 +26,11 @@ ms.locfileid: "92793230"
 
 ## <a name="a-saas-concepts-and-terminology"></a>A. SaaS の概念と用語
 
-サービスとしてのソフトウェア (SaaS) モデルでは、ソフトウェア会社は " *ライセンス* " を販売しません。 代わりに、各顧客は会社にレンタル料金を支払って、会社の " *テナント* " になります。
+サービスとしてのソフトウェア (SaaS) モデルでは、ソフトウェア会社は "*ライセンス*" を販売しません。 代わりに、各顧客は会社にレンタル料金を支払って、会社の "*テナント*" になります。
 
 レンタル料金の支払いと引き換えに、各テナントは、SaaS アプリケーションのコンポーネントにアクセスし、データを SaaS システムに保存できるようになります。
 
-" *テナント モデル* " という用語は、テナントが保存するデータの編成方法を指します。
+"*テナント モデル*" という用語は、テナントが保存するデータの編成方法を指します。
 
 - *シングル テナント:* &nbsp;各データベースには、1 つのテナントからのデータだけが格納されます。
 - *マルチテナント:* &nbsp;各データベースには、複数の異なるテナントからのデータが (データのプライバシーを保護するメカニズムを使って) 格納されます。

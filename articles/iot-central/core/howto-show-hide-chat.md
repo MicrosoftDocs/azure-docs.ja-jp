@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: f290395f4bd7afccace5067a97e63dda553f183c
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91999717"
 ---
 # <a name="toggle-live-chat"></a>ライブ チャットの切り替え
@@ -24,7 +24,7 @@ ms.locfileid: "91999717"
 
 ## <a name="chat-with-us"></a>担当者とチャットする
 
-テクニカル サポートを利用するには、IoT Central アプリケーションを起動して **[Chat with us]** (担当者とチャットする) を選択します。
+テクニカル サポートを利用するには、IoT Central アプリケーションを起動して [**Chat with us**] (担当者とチャットする) を選択します。
 
 ![担当者とチャットする](media/howto-show-hide-chat/chat-with-us.png)
 
@@ -34,13 +34,13 @@ ms.locfileid: "91999717"
 
 ## <a name="hide-chat"></a>チャットの非表示
 
-チャットを非表示にするには、 **[ヘルプ]** パネルで **[Hide Chat]** (チャットの非表示) を選択します。
+チャットを非表示にするには、[**ヘルプ**] パネルで [**Hide Chat**] (チャットの非表示) を選択します。
 
  ![チャットの非表示](media/howto-show-hide-chat/hide-chat.png)
 
 ## <a name="enable-chat"></a>チャットの有効化
 
-チャットを表示するには、 **[ヘルプ]** パネルで **[Show Chat]** (チャットの表示) を選択します。
+チャットを表示するには、[**ヘルプ**] パネルで [**Show Chat**] (チャットの表示) を選択します。
 
  ![チャットの表示](media/howto-show-hide-chat/show-chat.png)
 
@@ -49,4 +49,4 @@ ms.locfileid: "91999717"
 ここでは、Azure IoT Central でライブチャットを切り替える方法について説明しました。推奨される次の手順は以下のとおりです。
 
 > [!div class="nextstepaction"]
-> [ダッシュボードにタイルを追加する](howto-add-tiles-to-your-dashboard.md)
+> [ダッシュボードへのタイルの追加](howto-add-tiles-to-your-dashboard.md)

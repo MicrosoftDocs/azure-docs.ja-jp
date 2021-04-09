@@ -4,10 +4,10 @@ description: Azure ディスク バックアップ ソリューションにつ�
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.openlocfilehash: 4db2a5f3f02322f18fcf9203c3560905cde86996
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98915510"
 ---
 # <a name="overview-of-azure-disk-backup-in-preview"></a>Azure ディスク バックアップ (プレビュー) の概要

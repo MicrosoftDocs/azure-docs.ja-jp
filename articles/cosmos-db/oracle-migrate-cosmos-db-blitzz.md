@@ -9,10 +9,10 @@ ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 15bcd0c54fc5f6614f4d1925759704309048acae
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93336443"
 ---
 # <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Blitzz を使用して Oracle から Azure Cosmos DB Cassandra API アカウントにデータを移行する
@@ -102,7 +102,7 @@ Blitzz の移行ソリューションでは、段階的なアプローチに従�
 
    移行の完了後、スループットを下げる必要があります。 格納されたデータの量と各操作に必要な RU に基づいて、データの移行後に必要なスループットを見積もることができます。 必要な RU の見積もり方法の詳細については、「[コンテナーとデータベースのスループットのプロビジョニング](set-throughput.md)」と「[Azure Cosmos DB Capacity Planner を使用して RU/秒を見積もる](estimate-ru-with-capacity-planner.md)」の記事を参照してください。
 
-1. **[接続文字列]** ウィンドウで、ご利用の Azure Cosmos アカウントの **コンタクト ポイント、ポート、ユーザー名** 、および **プライマリ パスワード** を取得します。 これらの値は構成ファイルで使用します。
+1. **[接続文字列]** ウィンドウで、ご利用の Azure Cosmos アカウントの **コンタクト ポイント、ポート、ユーザー名**、および **プライマリ パスワード** を取得します。 これらの値は構成ファイルで使用します。
 
 1. CLI ターミナルから、移行先データベースの構成を設定します。 **`vi conf/conn/cosmosdb.yml`** コマンドを使用して構成ファイルを開き、ホスト URI、ポート番号、ユーザー名、パスワードなどの必要なパラメーターから成るコンマ区切りリストを追加します。 構成ファイルの内容の例を次に示します。
 
@@ -119,7 +119,7 @@ Blitzz の移行ソリューションでは、段階的なアプローチに従�
    use-ssl: false
    ```
 
-1. 次に、Blitzz を使用してデータを移行します。 Blitzz replicant は、 **フル** または **スナップショット** モードで実行できます。
+1. 次に、Blitzz を使用してデータを移行します。 Blitzz replicant は、**フル** または **スナップショット** モードで実行できます。
 
    * **フル モード** - このモードでは、replicant が移行後も実行され続け、ソースの Oracle システムでの変更を待機します。 変更が検出されると、ターゲットの Azure Cosmos アカウントにリアルタイムでレプリケートされます。
 

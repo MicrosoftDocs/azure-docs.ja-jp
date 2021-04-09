@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.openlocfilehash: 94bbb9bb683f40d44d6649802b66bda6feeee218
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100375274"
 ---
 # <a name="configure-virtual-network-support-for-a-premium-azure-cache-for-redis-instance"></a>Premium Azure Cache for Redis インスタンスに対する仮想ネットワーク サポートの構成

@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/28/2021
+ms.date: 03/09/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8635e3590d4196e407dfc591a55ee240806358ed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 82445ce7c1ebfc365459bbeba7e04d660221eaf2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691520"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551656"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -58,6 +58,11 @@ SQL Database 監査を使用して、以下を行うことができます。
 
 - "*サーバー監査が有効*" な場合は、"*常にデータベースに適用*" されます。 データベース監査設定に関係なく、データベースが監査されます。
 
+- Log Analytics ワークスペースまたはイベント ハブの保存先に対し、監査ポリシーがデータベース レベルで定義されている場合、次の操作ではソース データベースレベルの監査ポリシーが維持されません。
+    - [データベース コピー](database-copy.md)
+    - [ポイントインタイム リストア](recovery-using-backups.md)
+    - [Geo レプリケーション](active-geo-replication-overview.md) (セカンダリ データベースにはデータベースレベルの監査はありません)
+
 - サーバー上だけでなく、データベース上でも監査を有効にした場合であっても、サーバーの監査の設定がオーバーライドされたり変更されたりすることは "*ありません*"。 どちらの監査も並行して存在します。 つまり、データベースは並行して 2 回監査されることになります (1 回はサーバー ポリシー、もう 1 回はデータベース ポリシーによって監査されます)。
 
    > [!NOTE]
@@ -94,7 +99,8 @@ Azure SQL Database および Azure Synapse の監査では、監査レコード�
 以下のセクションでは、Azure Portal を使用した監査の構成について説明します。
 
   > [!NOTE]
-  > 一時停止している専用 SQL プールで監査を有効にすることはできません。 監査を有効にするには、専用 SQL プールの一時停止を解除します。 専用 SQL プールの詳細については、[こちら](../..//synapse-analytics/sql/best-practices-sql-pool.md)を参照してください。
+  > - 一時停止している専用 SQL プールで監査を有効にすることはできません。 監査を有効にするには、専用 SQL プールの一時停止を解除します。 専用 SQL プールの詳細については、[こちら](../..//synapse-analytics/sql/best-practices-sql-pool.md)を参照してください。
+  > - Azure portal または PowerShell コマンドレットを使用して、監査が Log Analytics ワークスペースまたはハブの送信先に対して構成されている場合、[診断設定](../../azure-monitor/essentials/diagnostic-settings.md)は "SQLSecurityAuditEvents" カテゴリが有効の状態で作成されます。
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 2. **[SQL データベース]** ウィンドウまたは **[SQL サーバー]** ウィンドウの [セキュリティ] 見出しの下にある **[監査]** に移動します。
@@ -104,18 +110,18 @@ Azure SQL Database および Azure Synapse の監査では、監査レコード�
 
 4. データベース レベルで監査を有効にする場合は、 **[監査]** を  **[ON]\(オン\)** に切り替えます。 サーバーの監査が有効になっている場合、データベース構成監査とサーバー監査が並行して存在します。
 
-5. 監査ログを書き込む場所を構成するときに、複数のオプションから選択できます。 ログは、Azure ストレージ アカウント、Log Analytics ワークスペース (プレビュー) (Azure Monitor ログで使用)、イベント ハブ (プレビュー) (イベント ハブで使用) に書き込むことができます。 これらのオプションは組み合わせて構成でき、それぞれの場所に監査ログが書き込まれます。
+5. 監査ログを書き込む場所を構成するときに、複数のオプションから選択できます。 ログは、Azure ストレージ アカウント、Log Analytics ワークスペース (Azure Monitor ログで使用)、イベント ハブ (イベント ハブで使用) に書き込むことができます。 これらのオプションは組み合わせて構成でき、それぞれの場所に監査ログが書き込まれます。
   
    ![ストレージ オプション](./media/auditing-overview/auditing-select-destination.png)
 
-### <a name="auditing-of-microsoft-support-operations-preview"></a><a id="auditing-of-microsoft-support-operations"></a>Microsoft サポートの操作の監査 (プレビュー)
+### <a name="auditing-of-microsoft-support-operations"></a><a id="auditing-of-microsoft-support-operations"></a>Microsoft サポート操作の監査
 
-Azure SQL Server に対する Microsoft サポートの操作の監査 (プレビュー) を使用すると、サポート リクエスト時に Microsoft サポートのエンジニアがサーバーにアクセスする必要がある場合に、彼らの操作を監査することができます。 監査に伴い、この機能を使用することで、従業員の透明性が増し、異常検出、トレンドの視覚化、データ損失防止が可能になります。
+Azure SQL Server に対する Microsoft サポートの操作の監査では、サポート リクエスト時に Microsoft サポートのエンジニアがサーバーにアクセスする必要がある場合に、彼らの操作を監査することができます。 監査に伴い、この機能を使用することで、従業員の透明性が増し、異常検出、トレンドの視覚化、データ損失防止が可能になります。
 
-Microsoft サポートの操作の監査 (プレビュー) を有効にするには、 **[Azure SQL Server]** ウィンドウの [セキュリティ] 見出しの **[監査]** に移動して、 **[Auditing of Microsoft support operations (Preview)]\(Microsoft サポートの操作の監査 (プレビュー)\)** を **[オン]** に切り替えます。
+Microsoft サポートの操作の監査を有効にするには、 **[Azure SQL Server]** ウィンドウの [セキュリティ] 見出しの **[監査]** に移動して、 **[Microsoft サポート操作の監査]** を **[オン]** に切り替えます。
 
   > [!IMPORTANT]
-  > Microsoft サポートの操作の監査 (プレビュー) は、ストレージ アカウントの保存先をサポートしていません。 この機能を有効にするには、Log Analytics ワークスペースまたは Event Hub の保存先を構成する必要があります。
+  > Microsoft サポートの操作の監査では、ストレージ アカウントの保存先はサポートされていません。 この機能を有効にするには、Log Analytics ワークスペースまたは Event Hub の保存先を構成する必要があります。
 
 ![Microsoft サポートの操作のスクリーンショット](./media/auditing-overview/support-operations.png)
 
@@ -137,7 +143,7 @@ AzureDiagnostics
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Log Analytics 保存先への監査
   
-Log Analytics ワークスペースへの監査ログの書き込みを構成するには、 **[Log Analytics (プレビュー)]** を選択して **[Log Analytics の詳細]** を開きます。 ログが書き込まれる Log Analytics ワークスペースを選択または作成し、 **[OK]** をクリックします。
+Log Analytics ワークスペースへの監査ログの書き込みを構成するには、 **[Log Analytics]** を選択して **[Log Analytics の詳細]** を開きます。 ログが書き込まれる Log Analytics ワークスペースを選択または作成し、 **[OK]** をクリックします。
 
    ![Log Analytics ワークスペース](./media/auditing-overview/auditing_select_oms.png)
 
@@ -145,7 +151,7 @@ Azure Log Analytics ワークスペースの詳細については、「[Azure Mo
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>イベント ハブ保存先への監査
 
-イベント ハブへの監査ログの書き込みを構成するには、 **[イベント ハブ (プレビュー)]** を選択し、 **[イベント ハブの詳細]** を開きます。 ログが書き込まれるイベント ハブを選択し、 **[OK]** をクリックします。 イベント ハブがお使いのデータベースおよびサーバーと同じリージョンにあることを確認します。
+イベント ハブへの監査ログの書き込みを構成するには、 **[イベント ハブ]** を選択して、 **[イベント ハブの詳細]** を開きます。 ログが書き込まれるイベント ハブを選択し、 **[OK]** をクリックします。 イベント ハブがお使いのデータベースおよびサーバーと同じリージョンにあることを確認します。
 
    ![イベント ハブ](./media/auditing-overview/auditing_select_event_hub.png)
 
@@ -278,8 +284,8 @@ WHERE 句のサポートによってフィルタリングを強化した拡張�
 
 ### <a name="using-azure-cli"></a>Azure CLI の使用
 
-- [サーバーの監査ポリシーを管理する](/cli/azure/sql/server/audit-policy?view=azure-cli-latest)
-- [データベースの監査ポリシーを管理する](/cli/azure/sql/db/audit-policy?view=azure-cli-latest)
+- [サーバーの監査ポリシーを管理する](/cli/azure/sql/server/audit-policy)
+- [データベースの監査ポリシーを管理する](/cli/azure/sql/db/audit-policy)
 
 ### <a name="using-azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレートを作成する
 

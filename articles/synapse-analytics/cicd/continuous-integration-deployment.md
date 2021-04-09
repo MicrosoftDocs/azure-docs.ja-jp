@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 5f82e8b7359b90d5127e2c20a2b89cc5ad739a56
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: de3738573bb9bb6f045a45d290c74ba9e6902a5e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99624761"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103561959"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse ワークスペースの継続的インテグレーションとデリバリー
 
@@ -125,6 +125,140 @@ Azure Synapse ワークスペースでは、継続的インテグレーション
 すべての変更を保存したら、 **[リリースの作成]** を選択してリリースを手動で作成できます。 リリースの作成を自動化するには、[Azure DevOps のリリース トリガー](/azure/devops/pipelines/release/triggers)に関するページを参照してください。
 
    ![[Create release]\(リリースの作成\) の選択](media/release-creation-manually.png)
+
+## <a name="use-custom-parameters-of-the-workspace-template"></a>ワークスペース テンプレートのカスタム パラメーターを使用する 
+
+自動化された CI/CD を使用していて、デプロイ中にいくつかのプロパティを変更したいものの、プロパティが既定でパラメーター化されていないことがあります。 この場合は、既定のパラメーター テンプレートをオーバーライドできます。
+
+既定のパラメーター テンプレートをオーバーライドするには、git コラボレーション ブランチのルート フォルダーに **template-parameters-definition.json** という名前のファイルをカスタム パラメーター テンプレートとして作成する必要があります。 正確なファイル名を使用する必要があります。 コラボレーション ブランチから発行すると、Synapse ワークスペースでは、このファイルを読み取り、その構成を利用してパラメーターが生成されます。 ファイルが見つからない場合は、既定のパラメーター テンプレートが使用されます。
+
+### <a name="custom-parameter-syntax"></a>カスタムのパラメーター構文
+
+カスタム パラメーター ファイルを作成するためのガイドラインを次に示します。
+
+* 関連するエンティティ型の下にプロパティ パスを入力します。
+* プロパティ名を `*` に設定すると、その下 (再帰的にではなく、最初のレベルまでのみ) にあるすべてのプロパティをパラメーター化することを指示します。 また、この構成に例外を指定することもできます。
+* プロパティの値を文字列として設定すると、プロパティをパラメーター化することを指示します。 「`<action>:<name>:<stype>`」の形式を使用します。
+   *  `<action>` には、次のいずれかの文字を指定できます。
+      * `=` は、パラメーターの既定値として現在の値を保持することを意味します。
+      * `-` は、パラメーターの既定値を保持しないことを意味します。
+      * `|` は、接続文字列またはキーに対する Azure Key Vault からのシークレットの特殊なケースです。
+   * `<name>` は、パラメーターの名前です。 空白の場合は、プロパティの名前になります。 値が `-` 文字で始まる場合、名前は短縮されます。 たとえば、`AzureStorage1_properties_typeProperties_connectionString` は `AzureStorage1_connectionString` に短縮されます。
+   * `<stype>` は、パラメーターの型です。 `<stype>` が空白の場合、既定の型は `string` です。 サポートされる値は `string`、`securestring`、`int`、`bool`、`object`、`secureobject`、および `array` です。
+* ファイルに配列を指定すると、テンプレート内の一致するプロパティが配列であることを指示します。 Synapse では、指定された定義を使用して、配列内のすべてのオブジェクトを反復処理します。 2 番目のオブジェクトである文字列は、各反復処理のパラメーターの名前として使用されるプロパティ名です。
+* 定義をリソース インスタンスに固有にすることはできません。 定義はその型のすべてのリソースに適用されます。
+* 既定では、Key Vault シークレットなどのセキュリティで保護されたすべての文字列と、接続文字列、キー、トークンなどのセキュリティで保護された文字列がパラメーター化されます。
+
+### <a name="parameter-template-definition-samples"></a>パラメーター テンプレート定義のサンプル 
+
+ここに、パラメーター テンプレート定義の例を示します。
+
+```json
+{
+"Microsoft.Synapse/workspaces/notebooks": {
+        "properties":{
+            "bigDataPool":{
+                "referenceName": "="
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/sqlscripts": {
+     "properties": {
+         "content":{
+             "currentConnection":{
+                    "*":"-"
+                 }
+            } 
+        }
+    },
+    "Microsoft.Synapse/workspaces/pipelines": {
+        "properties": {
+            "activities": [{
+                 "typeProperties": {
+                    "waitTimeInSeconds": "-::int",
+                    "headers": "=::object"
+                }
+            }]
+        }
+    },
+    "Microsoft.Synapse/workspaces/integrationRuntimes": {
+        "properties": {
+            "typeProperties": {
+                "*": "="
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/triggers": {
+        "properties": {
+            "typeProperties": {
+                "recurrence": {
+                    "*": "=",
+                    "interval": "=:triggerSuffix:int",
+                    "frequency": "=:-freq"
+                },
+                "maxConcurrency": "="
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/linkedServices": {
+        "*": {
+            "properties": {
+                "typeProperties": {
+                     "*": "="
+                }
+            }
+        },
+        "AzureDataLakeStore": {
+            "properties": {
+                "typeProperties": {
+                    "dataLakeStoreUri": "="
+                }
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/datasets": {
+        "properties": {
+            "typeProperties": {
+                "*": "="
+            }
+        }
+    }
+}
+```
+ここでは、前のテンプレートがどのように構築されるかについて、リソースの種類別に説明します。
+
+#### <a name="notebooks"></a>ノートブック 
+
+* パス `properties/bigDataPool/referenceName` 内のすべてのプロパティは、既定値を使用してパラメーター化されます。 各ノートブック ファイルに対して、アタッチされた Spark プールをパラメーター化できます。 
+
+#### <a name="sql-scripts"></a>SQL スクリプト 
+
+* パス `properties/content/currentConnection` 内のプロパティ (poolName および databaseName) は、テンプレートに既定値を指定せずに文字列としてパラメーター化されます。 
+
+#### <a name="pipelines"></a>パイプライン
+
+* パス `activities/typeProperties/waitTimeInSeconds` 内のすべてのプロパティがパラメーター化されます。 `waitTimeInSeconds` という名前のコードレベルのプロパティを持つパイプライン内のアクティビティ (たとえば、`Wait` アクティビティ) はすべて、既定の名前を使用して数値としてパラメーター化されます。 ただし、Resource Manager テンプレートにその既定値はありません。 これは Resource Manager デプロイ時に必須の入力になります。
+* 同様に、 (たとえば `Web` アクティビティ内の) `headers` というプロパティ は、型 `object` (Object) でパラメーター化されます。 これは、ソース ファクトリの値と同じ値である既定値を保持します。
+
+#### <a name="integrationruntimes"></a>IntegrationRuntimes
+
+* パス `typeProperties` の下にあるすべてのプロパティは、それぞれの既定値を使用してパラメーター化されます。 たとえば、`IntegrationRuntimes` 型のプロパティの下には `computeProperties` と `ssisProperties` という 2 つのプロパティがあります。 両方のプロパティの型は、それぞれの既定の値と型 (Object) で作成されます。
+
+#### <a name="triggers"></a>トリガー
+
+* `typeProperties` の下では、2 つのプロパティがパラメーター化されます。 1 つ目は `maxConcurrency` で、既定値を持つように指定されていて、型は `string` です。 既定のパラメーター名 `<entityName>_properties_typeProperties_maxConcurrency` を持ちます。
+* `recurrence` プロパティもパラメーター化されます。 その下にあるそのレベルのすべてのプロパティは、既定の値とパラメーター名を持つ文字列としてパラメーター化されるよう指定されます。 例外は、型 `int` としてパラメーター化される `interval` プロパティです。 パラメーター名の末尾には `<entityName>_properties_typeProperties_recurrence_triggerSuffix` が付きます。 同様に、`freq` プロパティは文字列であり、文字列としてパラメーター化されます。 ただし、`freq` プロパティは既定値なしでパラメーター化されます。 名前は短縮され、サフィックスが付けられます。 たとえば、「 `<entityName>_freq` 」のように入力します。
+
+#### <a name="linkedservices"></a>LinkedServices
+
+* リンクされたサービスは一意です。 リンクされたサービスとデータセットにはさまざまな型があるため、型固有のカスタマイズを行うことができます。 この例では、型 `AzureDataLakeStore` のすべてのリンクされたサービスに対して、特定のテンプレートが適用されます。 他のすべての場合 (`*` を使用)、別のテンプレートが適用されます。
+* `connectionString` プロパティは、`securestring` 値としてパラメーター化されます。 既定値はありません。 これには、末尾に `connectionString` が付く、短縮されたパラメーター名が付けられます。
+* プロパティ `secretAccessKey` は (たとえば、Amazon S3 のリンクされたサービスでは) `AzureKeyVaultSecret` になることがあります。 Azure Key Vault シークレットとして自動的にパラメーター化され、構成済みのキー コンテナーからフェッチされます。 キー コンテナー自体もパラメーター化できます。
+
+#### <a name="datasets"></a>データセット
+
+* データセットに型固有のカスタマイズを使用できますが、\* レベルの構成を明示的に指定しなくても構成を指定できます。 前の例では、`typeProperties` の下にあるすべてのデータセット プロパティがパラメーター化されます。
+
 
 ## <a name="best-practices-for-cicd"></a>CI/CD のベスト プラクティス
 

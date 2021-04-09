@@ -10,10 +10,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: b36ea25180c31fef199aaacb10e46b3caa20f807
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98878377"
 ---
 # <a name="azcopy-load-clfs"></a>azcopy load clfs
@@ -51,7 +51,7 @@ azcopy load clfs [local dir] [container URL] [flags]
 
 ## <a name="examples"></a>例
 
-SAS を使用する 1 つのコンテナーにディレクトリ全体を CLFS 形式で読み込む:
+ディレクトリ全体を CLFS 形式で SAS を含むコンテナーに読み込みます。
 
 ```azcopy
 azcopy load clfs "/path/to/dir" "https://[account].blob.core.windows.net/[container]?[SAS]" --state-path="/path/to/state/path"

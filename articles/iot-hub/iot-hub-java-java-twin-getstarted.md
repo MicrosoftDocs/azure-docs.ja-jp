@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: 68908b7d62b8211c202262112831d5d2b523f594
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 53a82ba545fa1709d1b79f3ff6b18f1817736bb7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146956"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102217858"
 ---
 # <a name="get-started-with-device-twins-java"></a>デバイス ツインの概要 (Java)
 
@@ -31,7 +31,7 @@ ms.locfileid: "92146956"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java SE Development Kit 8](/java/azure/jdk/?view=azure-java-stable)。 JDK 8 のダウンロードを利用するには、「**長期サポート**」の「**Java 8**」を選択します。
+* [Java SE Development Kit 8](/java/azure/jdk/)。 JDK 8 のダウンロードを利用するには、「**長期サポート**」の「**Java 8**」を選択します。
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -241,7 +241,7 @@ ms.locfileid: "92146956"
     > [!NOTE]
     > [Maven 検索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-device-client** の最新バージョンを確認できます。
 
-4. **dependencies** ノードに、次の依存関係を追加します。 この依存関係によって、Apache [SLF4J](https://www.slf4j.org/) ログ記録ファサード用の NOP が構成され、ログ記録を実装するためにデバイス クライアント SDK によって使用されます。 この構成は省略可能ですが、省略した場合、アプリの実行時にコンソールに警告が表示される可能性があります。 デバイス クライアント SDK でのログ記録の詳細については、*Samples for the Azure IoT device SDK for Java* readme ファイルに含まれている[ログ記録](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging)を参照してください。
+4. **dependencies** ノードに、次の依存関係を追加します。 この依存関係によって、Apache [SLF4J](https://www.slf4j.org/) ログ記録ファサード用の NOP が構成され、ログ記録を実装するためにデバイス クライアント SDK によって使用されます。 この構成は省略可能ですが、省略した場合、アプリの実行時にコンソールに警告が表示される可能性があります。 デバイス クライアント SDK でのログ記録の詳細については、*Samples for the Azure IoT device SDK for Java* readme ファイルに含まれている [ログ記録](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging)を参照してください。
 
     ```xml
     <dependency>

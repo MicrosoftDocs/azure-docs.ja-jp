@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor で Log Analytics エージェントを使用して Syslog データ ソースを収集する
 description: Syslog は、Linux に共通のイベント ログ プロトコルです。 この記事では、Log Analytics の Syslog メッセージの収集を構成する方法と作成されるレコードの詳細について説明します。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: 0d9804d088e1f193e0adf1fa26adbbe5d3680097
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: e82e74f4cd325444221bbd2e1c060b7cd2f5c6c7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729200"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036735"
 ---
 # <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>Log Analytics エージェントを使用して Syslog データ ソースを収集する
 Syslog は、Linux に共通のイベント ログ プロトコルです。 アプリケーションは、ローカル コンピューターへの保存または Syslog コレクターへの配信が可能なメッセージを送信します。 Linux 用 Log Analytics エージェントがインストールされている場合は、エージェントにメッセージを転送するローカル Syslog デーモンが構成されます。 エージェントは Azure Monitor にメッセージを送信し、そこで対応するレコードが作成されます。  
@@ -48,11 +47,11 @@ Syslog コレクターでは、次のファシリティがサポートされて�
 Linux 用 Log Analytics エージェントは、構成で指定されているファシリティと重大度のイベントだけを収集します。 Azure Portal を通じて、または Linux エージェントで構成ファイルを管理することによって、Syslog を構成できます。
 
 ### <a name="configure-syslog-in-the-azure-portal"></a>Azure Portal での Syslog の構成
-Log Analytics ワークスペースで [[詳細設定] の [データ] メニュー](../agents/agent-data-sources.md#configuring-data-sources)から Syslog を構成します。 この構成は、各 Linux エージェントの構成ファイルに配信されます。
+Log Analytics ワークスペースの [[エージェント構成] メニュー](../agents/agent-data-sources.md#configuring-data-sources)から Syslog を構成します。 この構成は、各 Linux エージェントの構成ファイルに配信されます。
 
-新しい機能を追加するには、まず **[下の構成をコンピューターに適用する]** オプションを選択し、その名前を入力して、**[+]** をクリックします。 各ファシリティについて、選択した重大度のメッセージのみが収集されます。  各ファシリティで収集する重大度のチェック ボックスをオンにします。 メッセージをフィルター処理するための追加条件を指定することはできません。
+**[Add facility]\(ファシリティの追加\)** をクリックして新しいファシリティを追加できます。 各ファシリティについて、選択した重大度のメッセージのみが収集されます。  各ファシリティで収集する重大度のチェック ボックスをオンにします。 メッセージをフィルター処理するための追加条件を指定することはできません。
 
-![Configure Syslog](media/data-sources-syslog/configure.png)
+[![Configure Syslog](media/data-sources-syslog/configure.png)](media/data-sources-syslog/configure.png#lightbox)
 
 既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。 各 Linux エージェントで Syslog を手動で構成する場合は、*[下の構成をコンピューターに適用する]* チェック ボックスをオフにします。
 

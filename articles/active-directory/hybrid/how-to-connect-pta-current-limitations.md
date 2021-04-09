@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:パススルー認証 - 現在の制限事項 | Microsoft Docs
+title: 'Azure AD Connect: パススルー認証 - 現在の制限事項 | Microsoft Docs'
 description: この記事では、Azure Active Directory (Azure AD) パススルー認証の現在の制限事項について説明します
 services: active-directory
 keywords: Azure AD Connect パススルー認証, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e9c4489f59f72e4d0b5c7a0b911da188eb0828c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89280198"
 ---
-# <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory パススルー認証:現在の制限
+# <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory パススルー認証: 現在の制限事項
 
 >[!IMPORTANT]
 >Azure Active Directory (Azure AD) のパススルー認証は無料の機能で、使用するために Azure AD の有料エディションは必要ありません。 パススルー認証は、Azure AD のワールドワイド インスタンスでのみ使用できます。[Microsoft Azure Germany クラウド](https://www.microsoft.de/cloud-deutschland)や [Microsoft Azure Government クラウド](https://azure.microsoft.com/features/gov/)では使用できません。
@@ -34,7 +34,7 @@ ms.locfileid: "89280198"
 
 - Web ブラウザー ベースのアプリケーションへのユーザー サインイン。
 - Exchange ActiveSync、EAS、SMTP、POP、IMAP などの従来のプロトコルを使用した Outlook クライアントへのユーザー サインイン。
-- [先進認証](https://www.microsoft.com/en-us/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview)をサポートする旧 Office クライアント アプリケーションと Office アプリケーションへのユーザー サインイン:Office 2013 および 2016 バージョン。
+- [先進認証](https://www.microsoft.com/en-us/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview)をサポートする旧 Office クライアント アプリケーションと Office アプリケーションへのユーザー サインイン: Office 2013 および 2016 バージョン。
 - PowerShell バージョン 1.0 など、旧プロトコル アプリケーションへのユーザー サインイン。
 - Azure AD の Windows 10 デバイスへの参加。
 - Multi-Factor Authentication のアプリ パスワード。

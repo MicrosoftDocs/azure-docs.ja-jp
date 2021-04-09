@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure FXT Edge Filer クラスターにストレージを追加する
+title: 'チュートリアル: Azure FXT Edge Filer クラスターにストレージを追加する'
 description: バックエンド ストレージとクライアント側の擬似名前空間を Azure FXT Edge Filer 用に構成する方法
 author: ekpgh
 ms.author: rohogue
@@ -7,13 +7,13 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 7d10c6c1ce440b2ffe964dc78379ef3ab108e78e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92217526"
 ---
-# <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>チュートリアル:バックエンド ストレージを追加して仮想名前空間を構成する
+# <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>チュートリアル: バックエンド ストレージを追加して仮想名前空間を構成する
 
 このチュートリアルでは、キャッシュ用のバックエッジ ストレージを追加する方法と、クライアント側の仮想ファイル システムをセットアップする方法について説明します。
 
@@ -30,7 +30,7 @@ ms.locfileid: "92217526"
 
 ## <a name="about-back-end-storage"></a>バックエンド ストレージについて
 
-Azure FXT Edge Filer クラスターでは、*コア ファイラー*定義を使用して、バックエンド ストレージ システムを FXT クラスターにリンクします。
+Azure FXT Edge Filer クラスターでは、*コア ファイラー* 定義を使用して、バックエンド ストレージ システムを FXT クラスターにリンクします。
 
 Azure FXT Edge Filer は複数の一般的な NAS ハードウェア システムと互換性があり、Azure Blob または他のクラウド ストレージの空のコンテナーを使用できます。
 
@@ -56,7 +56,7 @@ Azure FXT Edge Filer は複数の一般的な NAS ハードウェア システ�
 
 ## <a name="add-a-core-filer"></a>コア ファイラーを追加する
 
-**[Core Filer] \(コア ファイラー\)**  >  **[Manage Core Filers] \(コア ファイラーの管理\)** 設定ページにある **[作成]** ボタンをクリックしてコア ファイラーを定義しします。
+**[Core Filer] \(コア ファイラー\)** > **[Manage Core Filers] \(コア ファイラーの管理\)** 設定ページにある **[作成]** ボタンをクリックしてコア ファイラーを定義しします。
 
 ![[Manage Core Filers] (コア ファイラーの管理) ページで、コア ファイラーの一覧の上にある作成ボタンをクリック](media/fxt-cluster-config/create-core-filer-button.png)
 
@@ -82,7 +82,7 @@ Azure FXT Edge Filer は複数の一般的な NAS ハードウェア システ�
   
   このクラスターに対してクラウドのアクセス資格情報を追加済みの場合、一覧に表示されます。 **[クラスター]**  >  **[Cloud Credentials] \(クラウドの資格情報\)** 設定ページで資格情報を更新および追加します。
 
-ウィザードですべての必要な設定を入力したら、 **[Add Filer] \(ファイラーの追加\)** ボタンをクリックして変更内容を送信します。
+ウィザードですべての必要な設定を入力したら、**[Add Filer] \(ファイラーの追加\)** ボタンをクリックして変更内容を送信します。
 
 しばらくすると、ストレージ システムが **[ダッシュボード]** でコア ファイラーの一覧に表示され、コア ファイラーの設定ページからアクセスできるようになります。
 
@@ -92,7 +92,7 @@ Azure FXT Edge Filer は複数の一般的な NAS ハードウェア システ�
 
 ## <a name="configure-the-namespace"></a>名前空間を構成する
 
-Azure FXT Edge Filer クラスターは、*クラスター名前空間*と呼ばれる仮想ファイル システムを作成します。これは、さまざまなバックエンド システムに格納されているデータへのクライアント アクセスを簡素化します。 クライアントは仮想パスを使用してファイルを要求するので、クライアントのワークフローを変更しなくてもストレージ システムを追加または交換できます。
+Azure FXT Edge Filer クラスターは、*クラスター名前空間* と呼ばれる仮想ファイル システムを作成します。これは、さまざまなバックエンド システムに格納されているデータへのクライアント アクセスを簡素化します。 クライアントは仮想パスを使用してファイルを要求するので、クライアントのワークフローを変更しなくてもストレージ システムを追加または交換できます。
 
 クラスター名前空間を使用すると、クラウドと NAS の各ストレージ システムを同じようなファイル構造で表現することもできます。
 
@@ -136,7 +136,7 @@ VServer は、クライアントと、クラスターのコア ファイラー�
 
 ### <a name="create-a-junction"></a>ジャンクションを作成する
 
-*ジャンクション*は、バックエンド ストレージのパスを、クライアントが認識できる名前空間にマップします。
+*ジャンクション* は、バックエンド ストレージのパスを、クライアントが認識できる名前空間にマップします。
 
 このシステムを使用すれば、複数のコア ファイラーからのストレージを 1 つの仮想パスに収容できるため、クライアント マウント ポイントで使用されるパスを単純化し、シームレスに容量を拡張することができます。
 
@@ -156,7 +156,7 @@ VServer とコア ファイラーの両方が揃ったら、コア ファイラ�
 
 詳細については、クラスター構成ガイドにある、[コア ファイラーのエクスポートのアクセス制御](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/export_rules_overview.html)に関するページをお読みください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ストレージを追加し、クライアント側の名前空間を構成した後、クラスターの初期セットアップを完了します。 
 

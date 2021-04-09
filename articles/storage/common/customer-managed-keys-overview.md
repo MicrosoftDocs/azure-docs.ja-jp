@@ -5,27 +5,30 @@ description: 独自の暗号化キーを使用して、ストレージ アカウ
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/15/2020
+ms.date: 03/09/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 9afce964652d2bedbe105a8a750a93d2f37eef85
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 358be21a1f7f13c0c0ce1bf0e57dda53174216b2
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179033"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102517533"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Azure Storage の暗号化のためのカスタマー マネージド キー
 
 独自の暗号化キーを使用して、ストレージ アカウントのデータを保護できます。 カスタマー マネージド キーを指定すると、データを暗号化するキーへのアクセスを保護および制御するために、そのキーが使用されます。 カスタマー マネージド キーを使用すると、アクセス制御をより柔軟に管理できます。
 
-カスタマー マネージド キーを格納するには、Azure Key Vault または Azure Key Vault Managed Hardware Security Model (HSM) (プレビュー) のいずれかを使用する必要があります。 独自のキーを作成してキー コンテナーまたはマネージド HSM に格納することも、Azure Key Vault API を使ってキーを生成することもできます。 ストレージ アカウントとキー コンテナーまたはマネージド HSM は同じリージョンで同じ Azure Active Directory (Azure AD) テナント内に存在する必要がありますが、サブスクリプションは異なっていてもかまいません。
+カスタマー マネージド キーを格納するには、Azure Key Vault または Azure Key Vault Managed Hardware Security Module (HSM) (プレビュー) のいずれかを使用する必要があります。 独自のキーを作成してキー コンテナーまたはマネージド HSM に格納することも、Azure Key Vault API を使ってキーを生成することもできます。 ストレージ アカウントとキー コンテナーまたはマネージド HSM は同じリージョンで同じ Azure Active Directory (Azure AD) テナント内に存在する必要がありますが、サブスクリプションは異なっていてもかまいません。
 
 Azure Key Vault の詳細については、「[Azure Key Vault とは](../../key-vault/general/overview.md)」をご覧ください。
 
-> [!NOTE]
+> [!IMPORTANT]
+>
+> Azure Key Vault Managed HSM に格納されているカスタマー マネージド キーによる暗号化は、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+>
 > Azure Key Vault と Azure Key Vault Managed HSM では、構成用に同じ API と管理インターフェイスがサポートされています。
 
 ## <a name="about-customer-managed-keys"></a>カスタマー マネージド キーの概要

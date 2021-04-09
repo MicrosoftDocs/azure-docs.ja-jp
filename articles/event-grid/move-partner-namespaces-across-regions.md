@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/20/2020
 ms.openlocfilehash: 6783db6b9bb1c7d48b308234a179925d6f30e281
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89082212"
 ---
 # <a name="move-azure-event-grid-partner-namespaces-to-another-region"></a>Azure Event Grid のパートナー名前空間を別のリージョンに移動する
@@ -16,13 +16,13 @@ ms.locfileid: "89082212"
 
 この記事で説明する手順の概要を次に示します。 
 
-- **パートナー名前空間リソースを Azure Resource Manager テンプレートにエクスポート**します。 テンプレート内のイベント チャネル リソースの定義を削除します。 イベント チャネルには、お客様が所有するパートナー トピックの Azure Resource Manager ID への参照が含まれている場合があります。 そのため、ターゲット リージョンでテンプレートを使用して作成することはできません。  
-- **テンプレートを使用して、パートナー名前空間をターゲット リージョンにデプロイ**します。 次に、ターゲット リージョンの新しいパートナー名前空間にイベント チャネルを作成します。 
-- **移動を完了する**には、ソース リージョンからパートナー名前空間を削除します。 
+- **パートナー名前空間リソースを Azure Resource Manager テンプレートにエクスポート** します。 テンプレート内のイベント チャネル リソースの定義を削除します。 イベント チャネルには、お客様が所有するパートナー トピックの Azure Resource Manager ID への参照が含まれている場合があります。 そのため、ターゲット リージョンでテンプレートを使用して作成することはできません。  
+- **テンプレートを使用して、パートナー名前空間をターゲット リージョンにデプロイ** します。 次に、ターゲット リージョンの新しいパートナー名前空間にイベント チャネルを作成します。 
+- **移動を完了する** には、ソース リージョンからパートナー名前空間を削除します。 
 
     > [!NOTE]
-    > - お客様はパートナー トピックを直接作成することはできないため、**パートナー トピック**を Azure Resource Manager テンプレートにエクスポートすることはサポートされていません。 
-    > - **パートナー登録**はグローバル リソースであるため (特定の地域に関連付けられていません)、あるリージョンから別のリージョンに移動することはできません。 
+    > - お客様はパートナー トピックを直接作成することはできないため、**パートナー トピック** を Azure Resource Manager テンプレートにエクスポートすることはサポートされていません。 
+    > - **パートナー登録** はグローバル リソースであるため (特定の地域に関連付けられていません)、あるリージョンから別のリージョンに移動することはできません。 
 
 ## <a name="prerequisites"></a>前提条件
 - ターゲット リージョンで Event Grid サービスを使用できることを確認します。 「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)」を参照してください。
@@ -32,7 +32,7 @@ ms.locfileid: "89082212"
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 上部の検索バーに「**Event Grid のパートナー名前空間**」と入力し、結果一覧から **[Event Grid のパートナー名前空間]** を選択します。 
-3. Resource Manager テンプレートにエクスポートする**パートナー名前空間**を選択します。 
+3. Resource Manager テンプレートにエクスポートする **パートナー名前空間** を選択します。 
 4. **[Event Grid のパートナー名前空間]** ページで、左側のメニューの **[設定]** にある **[テンプレートのエクスポート]** を選択し、ツール バーの **[ダウンロード]** を選択します。 
 
     :::image type="content" source="./media/move-partner-namespaces-across-regions/download-template.png" alt-text="[テンプレートのエクスポート] -> [ダウンロード]" lightbox="./media/move-partner-namespaces-across-regions/download-template.png":::   
@@ -64,8 +64,8 @@ ms.locfileid: "89082212"
 6. **[ファイルの読み込み]** を選択し、手順に従って、前のセクションでダウンロードした **template.json** ファイルを読み込みます。
 7. **[保存]** を選択してテンプレートを保存します。 
 8. **[カスタム デプロイ]** ページで、次の手順を行います。 
-    1. Azure **サブスクリプション**を選択します。 
-    1. ターゲット リージョンの既存の**リソース グループ**を選択するか、新しく作成します。 
+    1. Azure **サブスクリプション** を選択します。 
+    1. ターゲット リージョンの既存の **リソース グループ** を選択するか、新しく作成します。 
     1. **[場所]** で、ターゲット リージョンを選択します。 既存のリソース グループを選択した場合、この設定は読み取り専用になります。 
     1. **[パートナー名前空間名]** に、新しいパートナー名前空間の名前を入力します。 
     1. パートナー登録の外部 ID に、`/subscriptions/<Azure subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.EventGrid/partnerRegistrations/<Partner registration name>` という形式でパートナー登録のリソース ID を入力します。

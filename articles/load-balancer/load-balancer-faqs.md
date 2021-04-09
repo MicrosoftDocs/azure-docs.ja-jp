@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
 ms.openlocfilehash: 3752a36d22f879b95b02bd49436be78212fe56a2
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99576043"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Load Balancer に関してよく寄せられる質問

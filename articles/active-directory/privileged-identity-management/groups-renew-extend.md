@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0cfbb0be22dee4550050d6af10314f3a3bb1f583
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87505619"
 ---
 # <a name="extend-or-renew-privileged-access-group-assignments-preview-in-privileged-identity-management"></a>Privileged Identity Management で特権アクセス グループの割り当て (プレビュー) を延長または更新する
@@ -76,13 +76,13 @@ Privileged Identity Management から、期限切れになる特権アクセス 
 
 ![[要求元の理由]、[割り当ての種類]、[開始時刻]、[終了時刻]、および [理由] を含むグループの割り当て要求の承認](media/groups-renew-extend/group-assignment-extend-admin-approve-reason.png)
 
-リソース管理者は、グループの割り当ての延長を求める要求を承認するとき、新しい開始日、終了日、および割り当ての種類を選択できます。 管理者が特定のタスク を完了するためのアクセス制限 を指定する (たとえば 1 日だけ延長する) 場合は、割り当ての種類の変更が必要になることがあります。 この例では、管理者は、割り当ての種類を**有資格**から**アクティブ**に変更できます。 つまり、アクティブ化の必要がないアクセスを要求者に提供できます。
+リソース管理者は、グループの割り当ての延長を求める要求を承認するとき、新しい開始日、終了日、および割り当ての種類を選択できます。 管理者が特定のタスク を完了するためのアクセス制限 を指定する (たとえば 1 日だけ延長する) 場合は、割り当ての種類の変更が必要になることがあります。 この例では、管理者は、割り当ての種類を **有資格** から **アクティブ** に変更できます。 つまり、アクティブ化の必要がないアクセスを要求者に提供できます。
 
 ### <a name="admin-initiated-extension"></a>管理者による延長
 
 グループに割り当てられているユーザーがグループの割り当ての延長を要求しない場合、管理者がユーザーの代わりに割り当てを延長できます。 管理者によるグループの割り当ての延長には承認は必要ありませんが、割り当てが延長された後に他のすべての管理者に通知が送信されます。
 
-グループの割り当てを延長するには、Privileged Identity Management の割り当てビューを参照します。 延長する必要がある割り当てを探します。 そして、[アクション] 列の**延長**をクリックします。
+グループの割り当てを延長するには、Privileged Identity Management の割り当てビューを参照します。 延長する必要がある割り当てを探します。 そして、[アクション] 列の **延長** をクリックします。
 
 ![延長するためのリンクが付いた対象グループ割り当てが一覧表示されている [割り当て] ページ](media/groups-renew-extend/group-assignment-extend-admin-approve.png)
 
@@ -96,7 +96,7 @@ Privileged Identity Management から、期限切れになる特権アクセス 
 
 ![[自分のロール] ページ - [Expired assignments]\(期限切れの割り当て\) タブ](media/groups-renew-extend/groups-renew-from-my-roles.png)
 
-割り当ての一覧には、**対象の割り当て**が既定で表示されます。 [対象] と [アクティブ] の割り当てを切り替えるには、ドロップダウン メニューを使用します。
+割り当ての一覧には、**対象の割り当て** が既定で表示されます。 [対象] と [アクティブ] の割り当てを切り替えるには、ドロップダウン メニューを使用します。
 
 一覧のいずれかのグループの割り当ての更新を要求するには、 **[更新]** アクションを選択します。 そして、要求の理由を入力します。 詳しい理由または業務上の正当な理由を加えて延長期間を入力すると、リソース管理者が承認するか拒否するかを決定する際に役立ちます。
 

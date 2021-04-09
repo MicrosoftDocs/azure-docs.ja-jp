@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
 ms.openlocfilehash: c74324ebeeefeed361c0557c45a280a411effa22
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97693328"
 ---
 # <a name="tutorial-explore-resource-sets-details-schemas-and-classifications-in-azure-purview-preview"></a>チュートリアル:Azure Purview (プレビュー) でリソース セット、詳細、スキーマ、分類を考察する

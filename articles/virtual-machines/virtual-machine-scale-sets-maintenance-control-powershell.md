@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
 ms.openlocfilehash: d8acab17e9d8dfc078b46f6a279cc671a70b0a50
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91974840"
 ---
 # <a name="preview-maintenance-control-for-os-image-upgrades-on-azure-virtual-machine-scale-sets-using-powershell"></a>プレビュー:PowerShell を使用して Azure 仮想マシン スケール セットで OS イメージをアップグレードするためのメンテナンス コントロール
@@ -40,7 +40,7 @@ Install-Module -Name Az.Maintenance
 
 ローカルにインストールする場合は、管理者として PowerShell プロンプトを開いてください。
 
-*信頼されていないリポジトリ*からインストールするかどうかを確認するメッセージが表示される場合もあります。 モジュールをインストールするには、`Y` を入力するか、 **[すべてはい]** を選択します。
+*信頼されていないリポジトリ* からインストールするかどうかを確認するメッセージが表示される場合もあります。 モジュールをインストールするには、`Y` を入力するか、 **[すべてはい]** を選択します。
 
 ## <a name="connect-to-an-azure-account"></a>Azure アカウントに接続する
 
@@ -81,7 +81,7 @@ $config = New-AzMaintenanceConfiguration `
 ```
 
 > [!IMPORTANT]
-> メンテナンスの**期間**は、*5 時間*以上である必要があります。 メンテナンスの**繰り返し**は *Day* に設定する必要があります。
+> メンテナンスの **期間** は、*5 時間* 以上である必要があります。 メンテナンスの **繰り返し** は *Day* に設定する必要があります。
 
 `-MaintenanceScope OSImage` を使用すると、そのメンテナンス構成がゲスト OS に対する更新をコントロールするために確実に使用されているかを確認できます。
 

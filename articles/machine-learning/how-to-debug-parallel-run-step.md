@@ -12,10 +12,10 @@ ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
 ms.openlocfilehash: b5511c8ecc33238e0409b5ee4c1c7a11adddeac5
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102522157"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>ParallelRunStep のトラブルシューティング

@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 31a454c93ad5192f387306a8ec557c4e4d3ae991
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93395293"
 ---
 # <a name="deploy-an-azure-sql-edge-container-in-kubernetes"></a>Kubernetes で Azure SQL Edge コンテナーをデプロイする
@@ -108,7 +108,7 @@ Kubernetes クラスターで、[永続ボリューム](https://kubernetes.io/do
          storage: 8Gi
    ```
 
-   ファイルを保存します (例: **pvc.yaml** )。
+   ファイルを保存します (例: **pvc.yaml**)。
 
 2. Kubernetes で永続ボリューム要求を作成します。
 
@@ -241,7 +241,7 @@ spec:
    >[!NOTE]
    >`LoadBalancer` サービスの種類を使うことにより、Azure SQL Edge インスタンスにポート 1433 で (インターネットを経由して) リモート アクセスできるようになります。
 
-   ファイルを保存します (例: **sqledgedeploy.yaml** )。
+   ファイルを保存します (例: **sqledgedeploy.yaml**)。
 
 2. 配置を作成します。
 

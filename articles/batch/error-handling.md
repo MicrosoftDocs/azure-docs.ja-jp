@@ -4,10 +4,10 @@ description: Batch サービスのワークフローでのエラー処理につ�
 ms.topic: article
 ms.date: 05/15/2020
 ms.openlocfilehash: 3bd460598dae08fa18415e1c9865249f3ca4c9c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85964279"
 ---
 # <a name="error-handling-and-detection-in-azure-batch"></a>Azure Batch でのエラー処理と検出
@@ -55,7 +55,7 @@ REST API、Batch サービス、ジョブ タスク/スケジュールのエラ�
 
 ### <a name="constraint-errors"></a>制約エラー
 
-ジョブまたはタスクの最大実行期間を指定する制約である *maxWallClockTime*を設定することができます。 これは、処理に失敗したタスクを終了させる場合に便利です。
+ジョブまたはタスクの最大実行期間を指定する制約である *maxWallClockTime* を設定することができます。 これは、処理に失敗したタスクを終了させる場合に便利です。
 
 最大実行時間を超過したタスクは "*完了*" としてマークされますが、終了コードは `0xC000013A` に設定され、*schedulingError* フィールドは `{ category:"ServerError", code="TaskEnded"}` としてマークされます。
 

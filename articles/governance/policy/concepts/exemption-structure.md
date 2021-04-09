@@ -4,10 +4,10 @@ description: Azure Policy でイニシアティブまたは定義の評価から
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: e6ced56c1dc65ca68998c5c58d3e985b63873e0b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91950178"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure Policy 適用除外の構造
@@ -15,7 +15,7 @@ ms.locfileid: "91950178"
 Azure Policy 適用除外 (プレビュー) 機能は、イニシアティブや定義の評価からリソースの階層または個々のリソースを "_除外_" する目的で使用します。 "_除外_" されたリソースは、全体的なコンプライアンスには考慮されますが、評価の対象にはできず、また一時的な特別承認の対象にすることもできません。 詳細については、「[Azure Policy でのスコープについて](./scope.md)」を参照してください。 Azure Policy の適用除外は、[Resource Manager モード](./definition-structure.md#resource-manager-modes)でのみ機能し、[リソース プロバイダー モード](./definition-structure.md#resource-provider-modes)では機能しません。
 
 > [!IMPORTANT]
-> この機能は、**プレビュー**期間中は無料です。 価格の詳細については、「[Azure Policy の価格](https://azure.microsoft.com/pricing/details/azure-policy/)」を参照してください。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+> この機能は、**プレビュー** 期間中は無料です。 価格の詳細については、「[Azure Policy の価格](https://azure.microsoft.com/pricing/details/azure-policy/)」を参照してください。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ポリシー適用除外を作成するには、JSON を使用します。 ポリシー適用除外には、以下のものに対する要素が含まれています。
 
@@ -30,7 +30,7 @@ Azure Policy 適用除外 (プレビュー) 機能は、イニシアティブや
 > [!NOTE]
 > ポリシー適用除外は、その対象となる個々のリソースまたはリソース階層上の子オブジェクトとして作成されるため、ターゲットは適用除外の定義には含まれません。
 
-たとえば、次の JSON は、`resourceShouldBeCompliantInit` という名前のイニシアティブ割り当てに対するリソースの**特別承認**カテゴリのポリシー適用除外を示しています。 リソースは、イニシアティブ内の 2 つのポリシー定義からのみ "_適用除外_" されます。`customOrgPolicy` カスタム ポリシー定義 (reference `requiredTags`) と "Allowed locations" 組み込みポリシー定義 (ID: `e56962a6-4747-49cd-b67b-bf8b01975c4c`、reference `allowedLocations`) です。
+たとえば、次の JSON は、`resourceShouldBeCompliantInit` という名前のイニシアティブ割り当てに対するリソースの **特別承認** カテゴリのポリシー適用除外を示しています。 リソースは、イニシアティブ内の 2 つのポリシー定義からのみ "_適用除外_" されます。`customOrgPolicy` カスタム ポリシー定義 (reference `requiredTags`) と "Allowed locations" 組み込みポリシー定義 (ID: `e56962a6-4747-49cd-b67b-bf8b01975c4c`、reference `allowedLocations`) です。
 
 ```json
 {
@@ -88,7 +88,7 @@ Azure Policy 適用除外 (プレビュー) 機能は、イニシアティブや
 
 ## <a name="metadata"></a>Metadata
 
-関連した情報を格納するために必要な子プロパティは、**メタデータ** プロパティを使用して作成できます。 上の例の **requestedBy**、**approvedBy**、**approvedOn**、**ticketRef** の各プロパティには、適用除外の要求者、承認者、承認日、要求の内部的な追跡チケットに関する情報を提供するユーザー値が格納されています。 これらの**メタデータ** プロパティを例に挙げましたが、必須ではなく、また**メタデータ**はこれらの子プロパティに限定されません。
+関連した情報を格納するために必要な子プロパティは、**メタデータ** プロパティを使用して作成できます。 上の例の **requestedBy**、**approvedBy**、**approvedOn**、**ticketRef** の各プロパティには、適用除外の要求者、承認者、承認日、要求の内部的な追跡チケットに関する情報を提供するユーザー値が格納されています。 これらの **メタデータ** プロパティを例に挙げましたが、必須ではなく、また **メタデータ** はこれらの子プロパティに限定されません。
 
 ## <a name="policy-assignment-id"></a>ポリシーの割り当て ID
 

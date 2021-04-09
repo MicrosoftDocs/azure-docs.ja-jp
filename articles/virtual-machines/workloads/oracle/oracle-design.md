@@ -10,10 +10,10 @@ ms.date: 12/17/2020
 ms.author: kegorman
 ms.reviewer: tigorman
 ms.openlocfilehash: 6e59d0065dfa74979bf3bbc72458bda516e3b641
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101669987"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure での Oracle データベースの設計と実装

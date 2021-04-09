@@ -4,10 +4,10 @@ description: この記事では、Azure Event Grid のイベント ハンドラ�
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.openlocfilehash: 98d7a4a0dee6c355ec340668bef7d8b306f97496
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98633122"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>イベンド ハンドラーへのイベント配信の認証 (Azure Event Grid)

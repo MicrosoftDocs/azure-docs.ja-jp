@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: d9624fd899649f4e54c5bd509ed5961b862632dd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 66faa2b3e6d24c264e2fe26ab42eeaffd48384f6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581580"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732838"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>カスタマーマネージド キーを使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
 
@@ -60,7 +60,7 @@ Key Vault に格納されているカスタマーマネージド キーを使用
 Key Vault を構成するための要件を以下に示します。
 
 * Key Vault と Azure Database for PostgreSQL 単一サーバーは、同じ Azure Active Directory (Azure AD) テナントに属している必要があります。 テナント間の Key Vault とサーバーの対話はサポートされていません。 後で Key Vault リソースを移動する場合は、データ暗号化を再構成する必要があります。
-* Key Vault には、"削除されたコンテナーを保持する日数" として 90 日が設定されている必要があります。 既存の Key Vault にこれより小さい数値が構成されている場合、作成後に変更することはできないため、新しい Key Vault を作成する必要があります。
+* キー コンテナーには、"削除されたコンテナーを保持する日数" として 90 日が設定されている必要があります。 既存の Key Vault にこれより小さい数値が構成されている場合、作成後に変更することはできないため、新しい Key Vault を作成する必要があります。
 * キー (または Key Vault) を誤って削除した場合のデータ損失から保護するには、Key Vault で論理的な削除機能を有効にします。 論理的に削除されたリソースは 90 日間保持されます (その間にユーザーが復旧または消去した場合を除く)。 復旧と消去のアクションには、Key Vault のアクセス ポリシーに関連付けられた独自のアクセス許可があります。 論理的な削除機能は既定ではオフになっていますが、PowerShell または Azure CLI を介して有効にすることができます (Azure portal を介して有効にできないことに注意してください)。 
 * 消去保護を有効にして、削除されたコンテナーおよびコンテナー オブジェクトに必須の保持期間を適用します。
 * Azure Database for PostgreSQL 単一サーバーに対し、その一意のマネージド ID を使用して、get、wrapKey、unwrapKey のアクセス許可による Key Vault へのアクセスの権限を付与します。 Azure portal では、PostgreSQL 単一サーバーでのデータ暗号化を有効にすると、一意のサービス ID が自動的に作成されます。 Azure portal を使用する場合の詳細な手順については、「[Azure portal を使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化](howto-data-encryption-portal.md)」を参照してください。

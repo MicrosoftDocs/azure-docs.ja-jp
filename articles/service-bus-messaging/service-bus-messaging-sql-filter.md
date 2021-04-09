@@ -3,12 +3,12 @@ title: Azure Service Bus サブスクリプション ルール SQL フィルタ�
 description: この記事では、SQL フィルターの文法について詳しく説明します。 SQL フィルターでは、SQL-92 標準のサブセットがサポートされます。
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 810d17d458de79c851b6f1ada4556a231bfd20eb
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 022f6cb1d698a10dc216db8d41c172691f7535ab
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742983"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652943"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>サブスクリプション ルールの SQL フィルター構文
 
@@ -269,8 +269,8 @@ Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ �
   
 -   算術演算子 (`+`、`-`、`*`、`/`、`%` など) は、データ型の上位変換および暗黙的な変換で C# 演算子の結合と同じセマンティクスに従います。
 
-
-[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
+## <a name="examples"></a>例
+例については、[Service Bus フィルターの例](service-bus-filter-examples.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

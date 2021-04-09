@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: cephalin
 ms.openlocfilehash: 0fccb1ed092190f88d197c9bf2cd17678a4d1731
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83649031"
 ---
 Azure VM、ストレージ、ネットワーク接続、Web フレームワーク、管理、統合機能を含む App Service のプラットフォーム コンポーネントは、積極的に保護され、強化されています。 App Service は、徹底したコンプライアンス チェックを継続的に行い、以下の点を確認しています。

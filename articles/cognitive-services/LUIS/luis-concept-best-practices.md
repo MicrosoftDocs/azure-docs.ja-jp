@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
 ms.openlocfilehash: 2f6ed85416cc5d7c3c2baba2b2cfe489e301d7e5
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98788487"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Language Understanding (LUIS) アプリをビルドするためのベスト プラクティス

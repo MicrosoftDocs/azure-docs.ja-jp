@@ -7,13 +7,13 @@ ms.date: 02/28/2020
 ms.author: gopalv
 ms.custom: devx-track-python, devx-track-azurepowershell
 ms.openlocfilehash: 8891c29e5d8d06df6292d06ec06e5e57fb9880e7
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422843"
 ---
-# <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>チュートリアル:PyTorch を使用して事前トレーニング済みの画像分類モデルを Azure Functions にデプロイする
+# <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>チュートリアル: PyTorch を使用して事前トレーニング済みの画像分類モデルを Azure Functions にデプロイする
 
 この記事では、Python、PyTorch、および Azure Functions を使用して、内容に基づいて画像を分類するための事前トレーニング済みのモデルを読み込む方法を学習します。 すべての作業をローカルで行い、クラウドで Azure リソースを作成しないため、このチュートリアルを完了するのにコストは一切かかりません。
 
@@ -104,18 +104,18 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     func init --worker-runtime python
     ```
 
-    初期化後、 *start* フォルダーにはプロジェクト用の各種ファイルが格納されます。たとえば、 [local.settings.json](functions-run-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
+    初期化後、*start* フォルダーにはプロジェクト用の各種ファイルが格納されます。たとえば、[local.settings.json](functions-run-local.md#local-settings-file) や [host.json](functions-host-json.md) といった名前の構成ファイルです。 *local.settings.json* には Azure からダウンロードしたシークレットを含めることができるため、このファイルは既定で *.gitignore* ファイルによってソース管理から除外されます。
 
     > [!TIP]
     > 関数プロジェクトは特定のランタイムに関連付けられているので、プロジェクト内の関数はすべて同じ言語で記述する必要があります。
 
-1. 次のコマンドを使用して、関数を自分のプロジェクトに追加します。ここで、`--name` 引数は関数の一意の名前で、`--template` 引数は関数のトリガーを指定するものです。 `func new` によって、関数と同じ名前のサブフォルダーが作成されます。ここには、プロジェクト用に選択した言語に適したコード ファイルと、 *function.json* という名前の構成ファイルが含まれます。
+1. 次のコマンドを使用して、関数を自分のプロジェクトに追加します。ここで、`--name` 引数は関数の一意の名前で、`--template` 引数は関数のトリガーを指定するものです。 `func new` によって、関数と同じ名前のサブフォルダーが作成されます。ここには、プロジェクト用に選択した言語に適したコード ファイルと、*function.json* という名前の構成ファイルが含まれます。
 
     ```
     func new --name classify --template "HTTP trigger"
     ```
 
-    このコマンドによって、関数の名前 ( *classify* ) と同じ名前のフォルダーが作成されます。 このフォルダーには 2 つのファイルが格納されています。1 つは関数コードが含まれている *\_\_init\_\_.py* で、もう 1 つは関数のトリガーとその入出力バインドを記述した *function.json* です。 これらのファイルのコンテンツの詳細については、Python クイックスタートの「[ファイルの内容を確認する](./create-first-function-cli-python.md#optional-examine-the-file-contents)」を参照してください。
+    このコマンドによって、関数の名前 (*classify*) と同じ名前のフォルダーが作成されます。 このフォルダーには 2 つのファイルが格納されています。1 つは関数コードが含まれている *\_\_init\_\_.py* で、もう 1 つは関数のトリガーとその入出力バインドを記述した *function.json* です。 これらのファイルのコンテンツの詳細については、Python クイックスタートの「[ファイルの内容を確認する](./create-first-function-cli-python.md#optional-examine-the-file-contents)」を参照してください。
 
 
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する
@@ -128,7 +128,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
 
 1. 出力に `classify` エンドポイントが表示されるのを確認したら、URL ```http://localhost:7071/api/classify?name=Azure``` に移動します。 "Hello Azure!" というメッセージが、 出力として表示されます。
 
-1. **Ctrl** + **C** キーを使用してホストを停止します。
+1. **Ctrl** - **C** キーを使用してホストを停止します。
 
 
 ## <a name="import-the-pytorch-model-and-add-helper-code"></a>PyTorch モデルをインポートしてヘルパー コードを追加する
@@ -160,7 +160,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
 
     ---
 
-1. *classify* フォルダーに *predict.py* と *labels.txt* という名前のファイルが含まれていることを確認します。 含まれていない場合は、 *start* フォルダーでコマンドを実行したことを確認してください。
+1. *classify* フォルダーに *predict.py* と *labels.txt* という名前のファイルが含まれていることを確認します。 含まれていない場合は、*start* フォルダーでコマンドを実行したことを確認してください。
 
 1. テキスト エディターで *start/requirements.txt* を開き、次のように、ヘルパー コードで必要とされる依存関係を追加します。
 
@@ -172,7 +172,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     torchvision==0.6.0+cpu
     ```
 
-1. *requirements.txt* を保存し、 *start* フォルダーから次のコマンドを実行して、依存関係をインストールします。
+1. *requirements.txt* を保存し、*start* フォルダーから次のコマンドを実行して、依存関係をインストールします。
 
 
     ```
@@ -181,7 +181,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
 
 インストールには数分かかる場合があります。その間に、次のセクションに進んで関数の変更を行うことができます。
 > [!TIP]
-> >Windows では、"Could not install packages due to an EnvironmentError: [Errno 2] No such file or directory: (EnvironmentError: [Errno 2] が原因でパッケージをインストールできませんでした。ファイルまたはディレクトリがありません:)" の後に、 *sharded_mutable_dense_hashtable.cpython-37.pyc* のようなファイルへの長いパス名が続くエラーが表示されることがあります。 通常、このエラーはフォルダー パスが長くなりすぎることが原因で発生します。 この場合は、レジストリ キー `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem@LongPathsEnabled` を `1` に設定して、長いパスを有効にします。 または、Python インタープリターがインストールされている場所を確認します。 その場所へのパスが長い場合は、短いパスのフォルダーに再インストールしてみてください。
+> >Windows では、"Could not install packages due to an EnvironmentError: [Errno 2] No such file or directory: (EnvironmentError: [Errno 2] が原因でパッケージをインストールできませんでした。ファイルまたはディレクトリがありません:)" の後に、*sharded_mutable_dense_hashtable.cpython-37.pyc* のようなファイルへの長いパス名が続くエラーが表示されることがあります。 通常、このエラーはフォルダー パスが長くなりすぎることが原因で発生します。 この場合は、レジストリ キー `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem@LongPathsEnabled` を `1` に設定して、長いパスを有効にします。 または、Python インタープリターがインストールされている場所を確認します。 その場所へのパスが長い場合は、短いパスのフォルダーに再インストールしてみてください。
 
 ## <a name="update-the-function-to-run-predictions"></a>予測を実行するよう関数を更新する
 
@@ -252,7 +252,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
 
     ![完成したプロジェクトのスクリーンショット](media/machine-learning-pytorch/screenshot.png)
 
-    画像の URL を送信したときにブラウザーからエラーがレポートされる場合は、関数アプリを実行しているターミナルを確認します。 "No module found 'PIL' (モジュールが見つかりません 'PIL')" のようなエラーが表示される場合は、前に作成した仮想環境をアクティブにする前に、 *start* フォルダーで関数アプリを起動した可能性があります。 引き続きエラーが発生する場合は、仮想環境をアクティブにして `pip install -r requirements.txt` を再度実行し、エラーを探します。
+    画像の URL を送信したときにブラウザーからエラーがレポートされる場合は、関数アプリを実行しているターミナルを確認します。 "No module found 'PIL' (モジュールが見つかりません 'PIL')" のようなエラーが表示される場合は、前に作成した仮想環境をアクティブにする前に、*start* フォルダーで関数アプリを起動した可能性があります。 引き続きエラーが発生する場合は、仮想環境をアクティブにして `pip install -r requirements.txt` を再度実行し、エラーを探します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

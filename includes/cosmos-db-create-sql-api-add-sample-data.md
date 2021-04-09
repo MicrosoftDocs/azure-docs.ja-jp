@@ -9,15 +9,15 @@ ms.date: 08/07/2019
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: f80efbac256871af073354f23317c447d6a85f1e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "70020168"
 ---
 これで、データ エクスプローラーを使用して、新しいコンテナーにデータを追加できます。
 
-1. **データ エクスプローラー**で、**Tasks** データベースを展開し、**Items** コンテナーを展開します。 **[項目]** を選択し、 **[新しい項目]** を選択します。
+1. **データ エクスプローラー** で、**Tasks** データベースを展開し、**Items** コンテナーを展開します。 **[項目]** を選択し、**[新しい項目]** を選択します。
 
    ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-new-document.png)
   
@@ -33,7 +33,7 @@ ms.locfileid: "70020168"
      }
      ```
 
-3. json を **[ドキュメント]** タブに追加したら、 **[保存]** を選択します。
+3. json を **[ドキュメント]** タブに追加したら、**[保存]** を選択します。
 
     ![json データをコピーし、Azure portal のデータ エクスプローラーで [保存] を選択する](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-save-document.png)
 

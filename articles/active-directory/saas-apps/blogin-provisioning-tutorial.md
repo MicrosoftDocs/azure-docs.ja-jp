@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: Zhchia
 ms.openlocfilehash: 5d75aeb4771d49266e6cb09286b026054319591b
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97674244"
 ---
 # <a name="tutorial-configure-blogin-for-automatic-user-provisioning"></a>チュートリアル:BlogIn を構成し、自動ユーザー プロビジョニングに対応させる

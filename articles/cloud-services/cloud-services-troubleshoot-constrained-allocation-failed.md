@@ -8,10 +8,10 @@ ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.openlocfilehash: 346e7eb77039ab80e6f9dffb8ea8360198040504
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101738287"
 ---
 # <a name="troubleshoot-constrainedallocationfailed-when-deploying-a-cloud-service-classic-to-azure"></a>Azure にクラウド サービス (クラシック) をデプロイするときの ConstrainedAllocationFailed のトラブルシューティング

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 46e911ad6bdf5a478d46e425f8700740ece56c6e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96452673"
 ---
 # <a name="load-data-into-storage-environments-for-analytics"></a>分析用のストレージ環境にデータを読み込む

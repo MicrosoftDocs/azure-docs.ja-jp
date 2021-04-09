@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 86d0a336a7d3f5d12ed8e53de802616f839f9eba
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91756820"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>クイック スタート:Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする
@@ -28,7 +28,7 @@ Azure Key Vault Managed HSM は、フル マネージド、高可用性、シン
 
 * Microsoft Azure サブスクリプション。 サブスクリプションがない場合でも、[無料試用版](https://azure.microsoft.com/pricing/free-trial)にサインアップできます。
 * Azure CLI バージョン 2.12.0 以降。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
-* サブスクリプション内のマネージド HSM。 「[クイック スタート:Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする](quick-create-cli.md)」を参照して、マネージド HSM をプロビジョニングしてアクティブにします。
+* お使いのサブスクリプション内のマネージド HSM。 「[クイック スタート:Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする](quick-create-cli.md)」を参照して、マネージド HSM をプロビジョニングしてアクティブにします。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -63,7 +63,7 @@ Managed HSM リソースを作成するには、次の入力を指定する必�
 - Azure の場所。
 - 初期管理者のリスト。
 
-次の例では、**ContosoMHSM** という名前の HSM を、リソース グループ **ContosoResourceGroup** に作成して、**米国東部 2** に配置し、**現在サインインしているユーザー**を唯一の管理者としています。
+次の例では、**ContosoMHSM** という名前の HSM を、リソース グループ **ContosoResourceGroup** に作成して、**米国東部 2** に配置し、**現在サインインしているユーザー** を唯一の管理者としています。
 
 ```azurecli-interactive
 oid=$(az ad signed-in-user show --query objectId -o tsv)
@@ -76,9 +76,9 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 このコマンドの出力は、作成した Managed HSM のプロパティを示します。 最も重要な 2 つのプロパティは、次のとおりです。
 
 * **name**:この例では、名前は ContosoMHSM です。 この名前を他の Key Vault コマンドに使用できます。
-* **hsmUri**: この例では、URI は "https://contosohsm.managedhsm.azure.net" です。 REST API から HSM を使用するアプリケーションは、この URI を使用する必要があります。
+* **hsmUri**: この例では、URI は "https://contosohsm.managedhsm.azure.net" です。 REST API から HSM を使用するアプリケーションでは、この URI を使用する必要があります。
 
-これで、お使いの Azure アカウントは、この Managed HSM 上ですべての操作を実行できるようになりました。 現在のところ、誰も承認されていません。
+これで、お使いの Azure アカウントは、このマネージド HSM に対して任意の操作を実行できるようになりました。 現在のところ、誰も承認されていません。
 
 ### <a name="activate-your-managed-hsm"></a>マネージド HSM をアクティブにする
 

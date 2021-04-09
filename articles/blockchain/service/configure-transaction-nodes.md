@@ -4,12 +4,12 @@ description: Azure Blockchain Service のトランザクション ノードを�
 ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 50f9b2aa0f5e1a1b1095b6c799ce0706b6e541de
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0b659fa9f15cd41e9e55de526747d470046cafa4
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150873"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091260"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure Blockchain Service のトランザクション ノードを構成する
 
@@ -75,7 +75,7 @@ Azure Blockchain Service のトランザクション ノード エンドポイ�
 
 1. **[保存]** を選択して、ロールの割り当てを追加します。
 
-Azure AD アクセス制御の詳細については、[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)方法に関するページを参照してください
+Azure AD アクセス制御の詳細については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください
 
 Azure AD 認証を使って接続する方法について詳しくは、[AAD 認証を使用したノードへの接続](configure-aad.md)に関する記事をご覧ください。
 

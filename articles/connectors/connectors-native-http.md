@@ -3,16 +3,16 @@ title: HTTP または HTTPS を使用してサービス エンドポイントを
 description: Azure Logic Apps からサービス エンドポイントに送信 HTTP または HTTPS 要求を送信します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 02/18/2021
 tags: connectors
-ms.openlocfilehash: f2835bda8ac7242b7a3ea4ea63401f26b9c8e426
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: dab5b755347e46d8d509e8014bba8f496ca9c900
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062997"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719442"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Azure Logic Apps から HTTP または HTTPS でサービス エンドポイントを呼び出す
 
@@ -249,8 +249,8 @@ HTTP トリガーまたはアクションにこれらのヘッダーが含まれ
 
 * `Accept-*` ヘッダー (`Accept-version` を除く)
 * `Allow`
-* `Content-Disposition`、`Content-Encoding`、および `Content-Type` を除く `Content-*` ヘッダー (POST と PUT 操作を使用する場合。ただし GET 操作については含まれない)
-* `Cookie`
+* `Content-*` ヘッダー (`Content-Disposition`、`Content-Encoding`、および `Content-Type` を除く)。これらは、POST 操作と PUT 操作を使用するときには受け入れられます。 ただし、GET 操作を使用する場合、これらのヘッダーは Logic Apps によって削除されます。
+* `Cookie` ヘッダー。ただし、**Cookie** プロパティを使用して指定した値は、Logic Apps によって受け入れられます。
 * `Expires`
 * `Host`
 * `Last-Modified`

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/16/2021
 ms.author: victorh
 ms.openlocfilehash: 3d56fc73faeb0d48ba7e5b21449c61d6213afa40
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100549484"
 ---
 # <a name="azure-firewall-premium-preview-in-the-azure-portal"></a>Azure portal での Azure Firewall Premium プレビュー
@@ -24,7 +24,7 @@ ms.locfileid: "100549484"
 
 - **TLS 検査** - アウトバウンド トラフィックを復号化し、データを処理し、その後にデータを暗号化して宛先に送信します。
 - **IDPS** - ネットワーク侵入検出と防止システム (IDPS) を使用すると、ネットワーク アクティビティを監視して悪意のあるアクティビティがないか確認し、このアクティビティに関する情報をログに記録し、それを報告して、任意でそのブロックを試みることができます。
-- **URL フィルタリング** - Azure Firewall の FQDN フィルタリング機能を拡張して URL 全体が考慮対象になるようにします。 たとえば、`www.contoso.com` の代わりに `www.contoso.com/a/c` とします。
+- **URL フィルタリング** - Azure Firewall の FQDN フィルタリング機能を拡張して URL 全体が考慮対象になるようにします。 たとえば、`www.contoso.com` の代わりに `www.contoso.com/a/c` となります。
 - **Web カテゴリ** - 管理者は、ギャンブルの Web サイトやソーシャル メディアの Web サイトといった Web サイト カテゴリへのユーザーのアクセスを許可または禁止できます。
 
 詳細については、「[Azure Firewall Premium の機能](premium-features.md)」を参照してください。

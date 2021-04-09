@@ -9,10 +9,10 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/6/2019
 ms.openlocfilehash: eb844790ac0ae97c281f6d2d7022bee559f545cd
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93331932"
 ---
 # <a name="quickstart-use-go-language-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:Go 言語を使用して Azure Database for PostgreSQL - Single Server に接続してデータを照会する
@@ -80,7 +80,7 @@ ms.locfileid: "93331932"
 Azure Database for PostgreSQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したサーバー (例: **mydemoserver** ) を検索します。
+2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したサーバー (例: **mydemoserver**) を検索します。
 3. サーバー名をクリックします。
 4. サーバーの **[概要]** パネルから、 **[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
  :::image type="content" source="./media/connect-go/1-connection-string.png" alt-text="Azure Database for PostgreSQL サーバーの名前":::
@@ -94,7 +94,7 @@ Azure Database for PostgreSQL に接続するために必要な接続情報を�
 6. または、コードをネイティブ アプリケーションとしてビルドするには、`go build createtable.go` を実行し、`createtable.exe` を起動してアプリケーションを実行します。
 
 ## <a name="connect-and-create-a-table"></a>接続とテーブルの作成
-接続し、 **CREATE TABLE** SQL ステートメントでテーブルを作成してから、 **INSERT INTO** SQL ステートメントでそのテーブルに行を追加するには、次のコードを使用します。
+接続し、**CREATE TABLE** SQL ステートメントでテーブルを作成してから、**INSERT INTO** SQL ステートメントでそのテーブルに行を追加するには、次のコードを使用します。
 
 このコードでは、3 つのパッケージをインポートします。[sql パッケージ](https://golang.org/pkg/database/sql/)、PostgreSQL サーバーと通信するためのドライバーである [pq パッケージ](https://godoc.org/github.com/lib/pq)、コマンド ラインで入力と出力を表示するための [fmt パッケージ](https://golang.org/pkg/fmt/)です。
 
@@ -160,7 +160,7 @@ func main() {
 ```
 
 ## <a name="read-data"></a>データの読み取り
-接続し、 **SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
+接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
 このコードでは、3 つのパッケージをインポートします。[sql パッケージ](https://golang.org/pkg/database/sql/)、PostgreSQL サーバーと通信するためのドライバーである [pq パッケージ](https://godoc.org/github.com/lib/pq)、コマンド ラインで入力と出力を表示するための [fmt パッケージ](https://golang.org/pkg/fmt/)です。
 
@@ -228,7 +228,7 @@ func main() {
 ```
 
 ## <a name="update-data"></a>データの更新
-接続し、 **UPDATE** SQL ステートメントを使用してデータを更新するには、次のコードを使用します。
+接続し、**UPDATE** SQL ステートメントを使用してデータを更新するには、次のコードを使用します。
 
 このコードでは、3 つのパッケージをインポートします。[sql パッケージ](https://golang.org/pkg/database/sql/)、Postgres サーバーと通信するためのドライバーである [pq パッケージ](https://godoc.org/github.com/lib/pq)、コマンド ラインで入力と出力を表示するための [fmt パッケージ](https://golang.org/pkg/fmt/)です。
 
@@ -281,7 +281,7 @@ func main() {
 ```
 
 ## <a name="delete-data"></a>データの削除
-接続し、 **DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 
+接続し、**DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 
 
 このコードでは、3 つのパッケージをインポートします。[sql パッケージ](https://golang.org/pkg/database/sql/)、Postgres サーバーと通信するためのドライバーである [pq パッケージ](https://godoc.org/github.com/lib/pq)、コマンド ラインで入力と出力を表示するための [fmt パッケージ](https://golang.org/pkg/fmt/)です。
 

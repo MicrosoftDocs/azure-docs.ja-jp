@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/16/2019
 ms.openlocfilehash: 34d296e51f25c492d7f66347a2e2b190c39e83f1
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94594132"
 ---
 # <a name="use-powershell-to-add-a-database-to-a-failover-group"></a>PowerShell を使用してフェールオーバー グループにデータベースを追加する
@@ -46,7 +46,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | Notes |
+| command | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | サーバーを作成します。 |

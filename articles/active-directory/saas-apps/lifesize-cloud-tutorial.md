@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
 ms.openlocfilehash: 483377d0376a5a98d822392af1fa2d84ad8498e0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92458593"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>チュートリアル: Azure Active Directory と Lifesize Cloud の統合
@@ -44,9 +44,9 @@ Lifesize Cloud と Azure AD の統合を構成するには、次のものが必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Lifesize Cloud では、 **SP** によって開始される SSO がサポートされます
+* Lifesize Cloud では、**SP** によって開始される SSO がサポートされます
 
-* Lifesize Cloud では、 **自動化された** ユーザー プロビジョニングがサポートされます
+* Lifesize Cloud では、**自動化された** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-lifesize-cloud-from-the-gallery"></a>ギャラリーからの Lifesize Cloud の追加
 
@@ -66,13 +66,13 @@ Azure AD への Lifesize Cloud の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Lifesize Cloud** 」と入力し、結果パネルで **[Lifesize Cloud]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Lifesize Cloud**」と入力し、結果パネルで **[Lifesize Cloud]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リスト内の Lifesize Cloud](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Lifesize Cloud で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Lifesize Cloud で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Lifesize Cloud の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Lifesize Cloud での Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -184,9 +184,9 @@ Lifesize Cloud との Azure AD シングル サインオンを構成するには
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

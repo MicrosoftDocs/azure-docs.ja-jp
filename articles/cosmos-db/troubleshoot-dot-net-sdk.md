@@ -3,18 +3,18 @@ title: Azure Cosmos DB .NET SDK の使用時の問題を診断しトラブルシ
 description: クライアント側のログや他のサード パーティ製ツールなどの機能を使って、.NET SDK 使用時の Azure Cosmos DB の問題を特定、診断、およびトラブルシューティングします。
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 02/05/2021
+ms.date: 03/05/2021
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 04813b9d70557314e619fded5294644f5f6fadf5
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 1f7548b355353eb77419f4d1760b40ba02eeddda
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831248"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102442198"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Azure Cosmos DB .NET SDK の使用時の問題を診断しトラブルシューティングする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -91,14 +91,49 @@ SDK での再試行が可能な場合、すべての IO エラーで Cosmos DB S
 * [Azure VM にパブリック IP](../load-balancer/troubleshoot-outbound-connection.md#assignilpip) を割り当てます。
 
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>長いネットワーク待ち時間
-長いネットワーク待ち時間を識別するには、V2 SDK では[診断文字列](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?preserve-view=true&view=azure-dotnet)、V3 SDK では[診断](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics)を使用します。
+長いネットワーク待ち時間を識別するには、V2 SDK では[診断文字列](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring)、V3 SDK では[診断](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics)を使用します。
 
-[タイムアウト](troubleshoot-dot-net-sdk-request-timeout.md)が存在せず、`ResponseTime` と `RequestStartTime` の差に長い待ち時間が明らかに存在する単一の要求が診断で示される場合、次のようになります (この例では >300 ミリ秒)。
+[タイムアウト](troubleshoot-dot-net-sdk-request-timeout.md)がない場合、待ち時間が長いことが明らかな単一要求が診断に表示されます。
+
+# <a name="v3-sdk"></a>[V3 SDK](#tab/diagnostics-v3)
+
+診断は `ResponseMessage`、`ItemResponse`、`FeedResponse` または`CosmosException` から `Diagnostics` プロパティによって取得できます。
+
+```csharp
+ItemResponse<MyItem> response = await container.CreateItemAsync<MyItem>(item);
+Console.WriteLine(response.Diagnostics.ToString());
+```
+
+診断のネットワーク インタラクションの例:
+
+```json
+{
+    "name": "Microsoft.Azure.Documents.ServerStoreModel Transport Request",
+    "id": "0e026cca-15d3-4cf6-bb07-48be02e1e82e",
+    "component": "Transport",
+    "start time": "12: 58: 20: 032",
+    "duration in milliseconds": 1638.5957
+}
+```
+
+`duration in milliseconds` は待ち時間を示すことになります。
+
+# <a name="v2-sdk"></a>[V2 SDK](#tab/diagnostics-v2)
+
+`RequestDiagnosticsString` プロパティを利用し、[直接モード](sql-sdk-connection-modes.md)でクライアントが構成されるとき、診断が利用できます。
+
+```csharp
+ResourceResponse<Document> response = await client.ReadDocumentAsync(documentLink, new RequestOptions() { PartitionKey = new PartitionKey(partitionKey) });
+Console.WriteLine(response.RequestDiagnosticsString);
+```
+
+また、待ち時間は `ResponseTime` と `RequestStartTime` の差に基づきます。
 
 ```bash
 RequestStartTime: 2020-03-09T22:44:49.5373624Z, RequestEndTime: 2020-03-09T22:44:49.9279906Z,  Number of regions attempted:1
 ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: rntbd://..., ...
 ```
+--- 
 
 この待ち時間には、以下のような複数の原因が考えられます。
 

@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
 ms.openlocfilehash: 148c4828309738a18dbda5fd35ea634e8384bfde
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92792108"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>スケールアウトされたクラウド データベース全体をレポートする (プレビュー)
@@ -163,7 +163,7 @@ DISTRIBUTION 句は、このテーブルに使用するデータ分散を指定�
 2. **REPLICATED** は、テーブルの同一のコピーが各データベースに存在することを意味します。 データベース間でレプリカが同じであることを自分で確認する必要があります。
 3. **ROUND\_ROBIN** は、テーブルがアプリケーションに依存する分散方法を使用して、行方向にパーティション分割されることを意味します。
 
-**データ層参照** : 外部テーブル DDL では、外部データ ソースが参照されます。 外部データ ソースは、データ層のすべてのデータベースを見つけるために必要な情報を外部テーブルに提供するシャード マップを指定します。
+**データ層参照**: 外部テーブル DDL では、外部データ ソースが参照されます。 外部データ ソースは、データ層のすべてのデータベースを見つけるために必要な情報を外部テーブルに提供するシャード マップを指定します。
 
 ### <a name="security-considerations"></a>セキュリティに関する考慮事項
 

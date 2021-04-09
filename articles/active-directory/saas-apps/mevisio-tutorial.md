@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/05/2020
 ms.author: jeedes
 ms.openlocfilehash: bf85e28a096e1eb0de429a12def4a350971a315a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94363801"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mevisio"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Mevisio の統合

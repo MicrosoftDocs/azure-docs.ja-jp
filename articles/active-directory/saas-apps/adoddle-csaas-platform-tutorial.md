@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Adoddle cSaas Platform の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Adoddle cSaas Platform の統合 | Microsoft Docs'
 description: Azure Active Directory と Adoddle cSaas Platform の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 5554ec4521a126a2c2e823b707fe42d9983b5d8e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97671660"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adoddle-csaas-platform"></a>チュートリアル:Azure Active Directory と Adoddle cSaas Platform の統合
+# <a name="tutorial-azure-active-directory-integration-with-adoddle-csaas-platform"></a>チュートリアル: Azure Active Directory と Adoddle cSaas Platform の統合
 
 このチュートリアルでは、Adoddle cSaas Platform と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Adoddle cSaas Platform と Azure AD の統合には、次の利点があります。
@@ -63,7 +63,7 @@ Azure AD への Adoddle cSaas Platform の統合を構成するには、ギャ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Adoddle cSaas Platform**」と入力して、結果パネルで **[Adoddle cSaas Platform]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Adoddle cSaas Platform**」と入力して、結果パネルで **[Adoddle cSaas Platform]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Adoddle cSaas Platform](common/search-new-app.png)
 
@@ -87,7 +87,7 @@ Adoddle cSaas Platform で Azure AD のシングル サインオンを構成し�
 
 Adoddle cSaas Platform で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Adoddle cSaas Platform** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Adoddle cSaas Platform** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -150,7 +150,7 @@ Adoddle cSaas Platform で Azure AD シングル サインオンを構成する�
 
 このセクションでは、Britta Simon に Adoddle cSaas Platform へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Adoddle cSaas Platform]** の順に選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Adoddle cSaas Platform]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/14/2019
 ms.author: terrylan
 ms.openlocfilehash: 14ff56c32fb1fb6ef2fef862e50277e8ef3e5b81
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94412886"
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>サイバーセキュリティの Microsoft サービス

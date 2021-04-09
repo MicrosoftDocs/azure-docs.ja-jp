@@ -3,14 +3,14 @@ title: Azure Automation Update Management の概要
 description: この記事では、Windows および Linux マシンの更新プログラムを実装する Update Management 機能について概要を説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 01/22/2021
+ms.date: 03/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6e312d354a25113a764bca5e9492909d22af9873
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 0a79be9d879e9ccb7ae4583d0674cf2bb23aafa4
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007739"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485675"
 ---
 # <a name="update-management-overview"></a>Update Management の概要
 
@@ -30,7 +30,7 @@ Update Management をデプロイしてマシンを管理できるようにす�
 
 Update Management で管理されるマシンでは、評価の実行と更新のデプロイは次に依存します。
 
-* Windows または Linux 用の [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)
+* Windows または Linux 用の [Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md)
 * PowerShell Desired State Configuration (DSC) (Linux の場合)
 * Automation Hybrid Runbook Worker (マシンで Update Management を有効にすると自動的にインストールされます)
 * Microsoft Update または [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) (WSUS) (Windows マシンの場合)
@@ -53,7 +53,7 @@ Update Management では、同期先として構成されたソースに基づ�
 
 スケジュールされたデプロイを作成することで、更新が必要なマシンへのソフトウェア更新プログラムのデプロイとインストールを実行できます。 Windows マシンの場合、オプションに分類されている更新プログラムはデプロイの範囲に含まれません。 デプロイの範囲には、必須の更新プログラムのみが含まれています。
 
-スケジュールされたデプロイでは、適用可能な更新プログラムを受け取るターゲット マシンが定義されます。 これを行うには、特定のマシンを明示的に指定するか、特定のマシン セットのログ検索 (または指定した条件に基づいて動的に Azure VM を選択する [Azure クエリ](query-logs.md)) に基づいて[コンピューター グループ](../../azure-monitor/platform/computer-groups.md)を選択します。 これらのグループは、Update Management を有効にするために構成を受け取るコンピューターのターゲット設定を制御するために使用される[スコープ構成](../../azure-monitor/insights/solution-targeting.md)とは異なります。 これにより、更新プログラムのコンプライアンスを実行および報告したり、承認された必要な更新プログラムをインストールしたりできなくなります。
+スケジュールされたデプロイでは、適用可能な更新プログラムを受け取るターゲット マシンが定義されます。 これを行うには、特定のマシンを明示的に指定するか、特定のマシン セットのログ検索 (または指定した条件に基づいて動的に Azure VM を選択する [Azure クエリ](query-logs.md)) に基づいて[コンピューター グループ](../../azure-monitor/logs/computer-groups.md)を選択します。 これらのグループは、Update Management を有効にするために構成を受け取るコンピューターのターゲット設定を制御するために使用される[スコープ構成](../../azure-monitor/insights/solution-targeting.md)とは異なります。 これにより、更新プログラムのコンプライアンスを実行および報告したり、承認された必要な更新プログラムをインストールしたりできなくなります。
 
 デプロイを定義するときに、更新プログラムをインストールできる期間を承認および設定するスケジュールも指定します。 この期間は、メンテナンス期間と呼ばれます。 再起動が必要な場合、適切な再起動オプションを選択していれば、再起動のために 20 分間のメンテナンス期間が予約されます。 パッチ適用に予想よりも時間がかかり、メンテナンス期間の残りが 20 分を切った場合、再起動は行われません。
 
@@ -78,11 +78,11 @@ Update Management では、同期先として構成されたソースに基づ�
 |Windows Server 2008 R2 (RTM および SP1 Standard)| Update Management では、このオペレーティング システムの評価および修正プログラムの適用がサポートされます。 Windows Server 2008 R2 では、[Hybrid Runbook Worker](../automation-windows-hrw-install.md) がサポートされています。 |
 |CentOS 6 および 7 (x64)      | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。 分類に基づく修正プログラムでは、CentOS の RTM リリースには含まれていないセキュリティ データを返すための `yum` が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux の更新プログラムの分類](view-update-assessments.md#linux)に関する記事を参照してください。          |
 |Red Hat Enterprise 6 および 7 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |
-|SUSE Linux Enterprise Server 12 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |
+|SUSE Linux Enterprise Server 12、15、および 15.1 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。 SUSE 15.x の場合、マシンには Python 3 が必要です。      |
 |Ubuntu 14.04 LTS、16.04 LTS、および 18.04 LTS (x64)      |Linux エージェントでは、更新リポジトリへのアクセス権が必要です。         |
 
 > [!NOTE]
-> Azure 仮想マシン スケール セットは、Update Management を使用して管理できます。 Update Management は、基本イメージではなくインスタンス自体で動作します。 すべての VM インスタンスを一度に更新しないように、段階的に更新をスケジュールする必要があります。 仮想マシン スケールセットのノードを追加するには、「[Azure 以外のマシンを Change Tracking とインベントリに追加する](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory)」の手順に従ってください。
+> Update Management では、Azure 仮想マシン スケール セット内のすべてのインスタンスで更新管理を安全に自動化することをサポートしていません。 [OS イメージの自動アップグレード](../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)は、スケール セットで OS イメージのアップグレードを管理するために推奨される方法です。
 
 ### <a name="unsupported-operating-systems"></a>サポートされていないオペレーティング システム
 
@@ -107,7 +107,7 @@ Update Management では、同期先として構成されたソースに基づ�
 
 WSUS サーバーと通信するように Windows エージェントを構成するか、Microsoft Update へのアクセスが必要です。 ハイブリッド マシンの場合は、最初にマシンを [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)に接続し、次に Azure Policy を使用して [Windows Azure Arc マシンに Log Analytics エージェントをデプロイする](../../governance/policy/samples/built-in-policies.md#monitoring)組み込みポリシーを割り当てることにより、Windows 用の Log Analytics エージェントをインストールすることをお勧めします。 また、Azure Monitor for VMs を使用してマシンの監視も行う場合は、代わりに [Azure Monitor for VMs を有効にする](../../governance/policy/samples/built-in-initiatives.md#monitoring)イニシアティブを使用します。
 
-Microsoft Endpoint Configuration Manager は、Update Management と組み合わせて使用できます。 統合シナリオの詳細については、「[Update Management を使用して、Microsoft Endpoint Configuration Manager クライアントに更新プログラムを展開する](mecmintegration.md)」を参照してください。 Configuration Manager 環境のサイトによって管理されている Windows サーバーでは、[Windows 用の Log Analytics エージェント](../../azure-monitor/platform/agent-windows.md)が必要です。
+Microsoft Endpoint Configuration Manager は、Update Management と組み合わせて使用できます。 統合シナリオの詳細については、「[Update Management を使用して、Microsoft Endpoint Configuration Manager クライアントに更新プログラムを展開する](mecmintegration.md)」を参照してください。 Configuration Manager 環境のサイトによって管理されている Windows サーバーでは、[Windows 用の Log Analytics エージェント](../../azure-monitor/agents/agent-windows.md)が必要です。
 
 既定では、Azure Marketplace からデプロイされた Windows VM は、Windows Update Service から自動更新を受信するように設定されています。 Windows VM をワークスペースに追加しても、この動作は変わりません。 Update Management を使用して更新プログラムを能動的に管理しない場合は、既定の動作 (更新プログラムが自動的に適用される) が適用されます。
 
@@ -147,7 +147,7 @@ Update Management と Hybrid Runbook Worker グループ メンバーシップ�
 
 ### <a name="management-packs"></a>管理パック
 
-Operations Manager 管理グループが [Log Analytics ワークスペースに接続](../../azure-monitor/platform/om-agents.md)されている場合は、以下の管理パックが Operations Manager にインストールされます。 これらの管理パックは、直接接続されている Windows マシン上の Update Management にもインストールされます。 これらの管理パックを構成または管理する必要はありません。
+Operations Manager 管理グループが [Log Analytics ワークスペースに接続](../../azure-monitor/agents/om-agents.md)されている場合は、以下の管理パックが Operations Manager にインストールされます。 これらの管理パックは、直接接続されている Windows マシン上の Update Management にもインストールされます。 これらの管理パックを構成または管理する必要はありません。
 
 * Microsoft System Center Advisor 更新プログラム評価インテリジェンス パック (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
@@ -156,7 +156,7 @@ Operations Manager 管理グループが [Log Analytics ワークスペースに
 > [!NOTE]
 > ログ データを収集するように管理グループに構成されたエージェントを使用して Log Analytics ワークスペースに接続される Operations Manager 1807 または 2019 管理グループがある場合、**Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** 規則でパラメーター `IsAutoRegistrationEnabled` をオーバーライドして True に設定する必要があります。
 
-管理パックの更新プログラムの詳細については、[Azure Monitor ログへの Operations Manager の接続](../../azure-monitor/platform/om-agents.md)に関する記事を参照してください。
+管理パックの更新プログラムの詳細については、[Azure Monitor ログへの Operations Manager の接続](../../azure-monitor/agents/om-agents.md)に関する記事を参照してください。
 
 > [!NOTE]
 > Log Analytics エージェントを使用して Update Management でマシンを完全に管理するには、Windows 用の Log Analytics エージェント、または Linux 用 Log Analytics エージェントに更新する必要があります。 エージェントを更新する方法については、[Operations Manager エージェントのアップグレード方法](/system-center/scom/deploy-upgrade-agents)に関する記事を参照してください。 Operations Manager を使用する環境では、System Center Operations Manager 2012 R2 UR 14 以降を実行している必要があります。
@@ -181,7 +181,7 @@ Update Management では、次のルールを使用して、管理対象のマ�
 
 * 各 Linux マシン - Update Management では 1 時間ごとにスキャンが行われます。
 
-Update Management を使用しているマシンでの Azure Monitor ログによる平均データ使用量は、1 か月あたり約 25 MB です。 この値は概数にすぎず、環境によって異なることがあります。 正確な使用量を把握するために、環境を監視することをお勧めします。 Azure Monitor ログのデータ使用量を分析する方法の詳細については、[使用量とコストの管理](../../azure-monitor/platform/manage-cost-storage.md)に関するページを参照してください。
+Update Management を使用しているマシンでの Azure Monitor ログによる平均データ使用量は、1 か月あたり約 25 MB です。 この値は概数にすぎず、環境によって異なることがあります。 正確な使用量を把握するために、環境を監視することをお勧めします。 Azure Monitor ログのデータ使用量を分析する方法の詳細については、[使用量とコストの管理](../../azure-monitor/logs/manage-cost-storage.md)に関するページを参照してください。
 
 ## <a name="network-planning"></a><a name="ports"></a>ネットワークの計画
 
@@ -193,7 +193,7 @@ Red Hat Linux マシンで必要なエンドポイントについては、「[RH
 
 Hybrid Runbook Worker で必要なポートの詳細については、「[Hybrid Runbook Worker の Update Management アドレス](../automation-hybrid-runbook-worker.md#update-management-addresses-for-hybrid-runbook-worker)」をご覧ください。
 
-インターネットに接続するネットワーク上のマシンが IT セキュリティ ポリシーで許可されていない場合、[Log Analytics ゲートウェイ](../../azure-monitor/platform/gateway.md)を設定し、マシンをゲートウェイ経由で Azure Automation および Azure Monitor に接続するように構成できます。
+インターネットに接続するネットワーク上のマシンが IT セキュリティ ポリシーで許可されていない場合、[Log Analytics ゲートウェイ](../../azure-monitor/agents/gateway.md)を設定し、マシンをゲートウェイ経由で Azure Automation および Azure Monitor に接続するように構成できます。
 
 ## <a name="update-classifications"></a>更新プログラムの分類
 

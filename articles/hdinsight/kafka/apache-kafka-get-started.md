@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 102bb1a7bf1bd3cb799d52ce13045e01a2a34297
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: acb497b2f0111d36650ec415c8f1f580d116b55e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505258"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863294"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
 
@@ -36,7 +36,7 @@ HDInsight で Apache Kafka クラスターを作成するには、次の手順�
 
 1. 上部のメニューで、 **[+ リソースの作成]** を選択します。
 
-    ![Azure portal での HDInsight リソースの作成](./media/apache-kafka-get-started/azure-portal-create-resource.png)
+    :::image type="content" source="./media/apache-kafka-get-started/azure-portal-create-resource.png" alt-text="Azure portal での HDInsight リソースの作成" border="true":::
 
 1. **[分析]**  >  **[Azure HDInsight]** の順に選択して **[HDInsight クラスターの作成]** ページに移動します。
 
@@ -54,7 +54,7 @@ HDInsight で Apache Kafka クラスターを作成するには、次の手順�
     |Secure Shell (SSH) ユーザー名 | 既定のユーザー名は **sshuser** です。  SSH ユーザー名に別の名前を指定できます。 |
     |SSH にクラスター ログイン パスワードを使用する| クラスター ログイン ユーザーに指定したのと同じパスワードを SSH ユーザーに使用する場合は、このチェック ボックスをオンにします。|
 
-   ![Azure portal でのクラスター作成の基本](./media/apache-kafka-get-started/azure-portal-cluster-basics.png)
+   :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-basics.png" alt-text="Azure portal でのクラスター作成の基本" border="true":::
 
     各 Azure リージョン (場所) は "_障害ドメイン_" を提供します。 障害ドメインとは、Azure データ センター内にある基になるハードウェアの論理的なグループです。 各障害ドメインは、一般的な電源とネットワーク スイッチを共有します。 HDInsight クラスター内のノードを実装する仮想マシンと管理ディスクは、これらの障害ドメインに分散されます。 このアーキテクチャにより、物理的なハードウェア障害の潜在的な影響が制限されます。
 
@@ -71,7 +71,7 @@ HDInsight で Apache Kafka クラスターを作成するには、次の手順�
     |プライマリ ストレージ アカウント|ドロップダウン リストを使用して既存のストレージ アカウントを選択するか、または **[新規作成]** を選択します。 新しいアカウントの作成時には、名前の長さは 3 から 24 文字とし、数字と小文字のみを使用できます|
     |コンテナー|自動入力されている値を使用します。|
 
-    ![HDInsight Linux の使用。クラスターのストレージの値の指定](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "HDInsight クラスターを作成するためのストレージの値の指定")
+    :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-storage.png " alt-text="HDInsight Linux の使用。クラスターのストレージの値の指定" border="true":::
 
     **[セキュリティとネットワーク]** タブを選択します。
 
@@ -79,7 +79,7 @@ HDInsight で Apache Kafka クラスターを作成するには、次の手順�
 
    クラスターを仮想ネットワークに接続したい場合は、 **[仮想ネットワーク]** ボックスの一覧からいずれかの仮想ネットワークを選択します。
 
-   ![仮想ネットワークにクラスターを追加する](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png)
+   :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png" alt-text="仮想ネットワークにクラスターを追加する" border="true":::
 
     **[Configuration + pricing]\(構成と価格\)** タブを選択します。
 
@@ -87,13 +87,13 @@ HDInsight で Apache Kafka クラスターを作成するには、次の手順�
 
     **[Standard disks per worker node]\(ワーカー ノードごとの標準ディスク数\)** は、HDInsight における Apache Kafka のスケーラビリティを構成する項目です。 HDInsight 上の Apache Kafka は、クラスターの仮想マシンのローカル ディスクを使って、データを保存します。 Apache Kafka は I/O が多いため、[Azure Managed Disks](../../virtual-machines/managed-disks-overview.md) を使ってノードごとに高いスループットと多くの記憶域を提供します。 マネージド ディスクの種類は、__Standard__ (HDD) または __Premium__ (SSD) です。 ディスクの種類は、ワーカー ノード (Apache Kafka ブローカー) によって使われる VM のサイズによって異なります。 DS および GS シリーズの VM では、Premium ディスクが自動的に使われます。 他の種類の VM はすべて Standard を使います。
 
-   ![Apache Kafka のクラスター サイズの設定](./media/apache-kafka-get-started/azure-portal-cluster-configuration-pricing-kafka.png)
+   :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-configuration-pricing-kafka.png" alt-text="Apache Kafka のクラスター サイズの設定" border="true":::
 
     **[確認および作成]** タブを選択します。
 
 1. クラスターの構成を確認します。 正しくない設定があれば変更します。 最後に、 **[作成]** を選択してクラスターを作成します。
 
-    ![Kafka クラスター構成の概要](./media/apache-kafka-get-started/azure-portal-cluster-review-create-kafka.png)
+    :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-review-create-kafka.png" alt-text="Kafka クラスター構成の概要" border="true":::
 
     クラスターの作成には最大で 20 分かかります。
 

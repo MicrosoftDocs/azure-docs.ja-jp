@@ -5,10 +5,10 @@ ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: f89da9fc146d753442f2a8c8aa38861e66c9a3d9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97934376"
 ---
 # <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>Azure DevOps からデプロイされる関数を Azure で作成する
@@ -38,7 +38,7 @@ ms.locfileid: "97934376"
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、ストレージ アカウント、Function App、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | 関数アプリに必要なストレージ アカウントを作成します。 |

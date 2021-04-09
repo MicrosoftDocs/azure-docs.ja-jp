@@ -1,6 +1,6 @@
 ---
 title: DB2 から SQL Database:移行ガイド
-description: このガイドに従って、DB2 データベースを Azure SQL Database に移行します。
+description: このガイドでは、SQL Server Migration Assistant for DB2 (SSMA for DB2) を使用して、DB2 データベースを Azure SQL Database に移行する方法について説明します。
 ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 3e216c4aeb8d1206011ff9cca2d80900c23b2399
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 917390b43a772cbb9374c560fc3a65cfa7278839
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356346"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103563948"
 ---
 # <a name="migration-guide-db2-to-sql-database"></a>移行ガイド:DB2 から SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -142,9 +142,6 @@ SQL Server Migration Assistant (SSMA) を使用して評価を作成します。
 1. **テスト環境を設定する**: テスト環境には、ソース データベースとターゲット データベースのコピーが含まれている必要があります。 必ずテスト環境を分離してください。
 1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行してから、結果を分析します。
 1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行し、結果を分析して比較します。
-
-   > [!NOTE]
-   > 移行後の検証テストの開発と実行を支援するために、パートナーの [QuerySurge](https://www.querysurge.com/company/partners/microsoft) から入手できる Data Quality Solution を検討してください。 
 
 
 ## <a name="leverage-advanced-features"></a>高度な機能を活用する 

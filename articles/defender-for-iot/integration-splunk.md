@@ -1,19 +1,14 @@
 ---
 title: Splunk の統合について
-titleSuffix: Azure Defender for IoT
 description: OT ネットワークのセキュリティと回復性への可視性がないことに対処するため、Defender for IoT により、Defender for IoT、IIoT、および Splunk 用 ICS 脅威監視アプリケーションが開発されました。これは、IT と OT セキュリティに対する統一されたアプローチを可能にする、Defender for IoT と Splunk の間のネイティブ統合です。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/4/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 91d877d644b4b5ca7231f5f81f9163a0fd3cbe25
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 28bdc6deaac09d795c45460bb211126a105b80c8
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556987"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785922"
 ---
 # <a name="defender-for-iot-and-ics-threat-monitoring-application-for-splunk"></a>Defender for IoT と Splunk 用 ICS 脅威監視アプリケーション
 
@@ -158,7 +153,7 @@ Defender for IoT の "*転送ルール*" を使用して、アラート情報を
     | **重大度の選択** | 転送するインシデントの最小セキュリティ レベル。 たとえば、マイナーを選択すると、マイナー アラートおよびこの重大度レベルよりも上のすべてのアラートが転送されます。 |
     | **プロトコル** | 既定では、すべてのプロトコルが選択されます。 特定のプロトコルを選択するには、 **[Specific]\(特定\)** を選択し、このルールを適用するプロトコルを選択します。 |
     | **エンジン** | 既定では、すべてのセキュリティ エンジンが含まれます。 このルールを適用する特定のセキュリティ エンジンを選択するには、 **[Specific]\(特定\)** を選択して、エンジンを選択します。 |
-    | **システム通知** | センサーのオンラインまたはオフラインの状態を転送します。 このオプションは、Central Manager にログインしている場合にのみ使用できます。 |                                            |
+    | **システム通知** | センサーのオンラインまたはオフラインの状態を転送します。 このオプションは、Central Manager にログインしている場合にのみ使用できます。 |
 
 1. Splunk に資産情報を送信するよう Defender for IoT に指示するには、 **[Action]\(アクション\)** を選択してから、 **[Send to Splunk Server]\(Splunk サーバーに送信\)** を選択します。
 
@@ -177,4 +172,4 @@ Defender for IoT の "*転送ルール*" を使用して、アラート情報を
 
 ## <a name="next-steps"></a>次の手順
 
-[アラート情報を転送する](how-to-forward-alert-information-to-partners.md)方法を確認する。
+[アラート情報を転送する](how-to-forward-alert-information-to-partners.md)方法を学習します。

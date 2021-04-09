@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2c610eb8fe6caf308117fa7adfc6e2f2a35c6352
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91325897"
 ---
 # <a name="tls-12-enforcement-for-azure-ad-connect"></a>Azure AD Connect に対する TLS 1.2 の強制

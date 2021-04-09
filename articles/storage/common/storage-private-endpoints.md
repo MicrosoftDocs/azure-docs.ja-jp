@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 7af2e6794d0d2f37c342a86b2f36b94c9601cc7e
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 4ee0b71b63735d8417c11cba8d2a551c8da8b47f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617257"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564290"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Azure Storage のプライベート エンドポイントを使用する
 
@@ -49,9 +49,13 @@ VNet 内のアプリケーションは、プライベート エンドポイン�
 > [!NOTE]
 > ストレージ アカウント間で BLOB をコピーする場合、クライアントは、両方のアカウントへのネットワーク アクセスを持っている必要があります。 そのため、1 つのアカウント (送信元または送信先) にのみプライベート リンクを使用する場合は、クライアントが他のアカウントへのネットワーク アクセスを持っていることをご確認ください。 ネットワーク アクセスを構成するその他の方法の詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](storage-network-security.md?toc=/azure/storage/blobs/toc.json)」を参照してください。 
 
-### <a name="private-endpoints-for-azure-storage"></a>Azure Storage のプライベート エンドポイント
+<a id="private-endpoints-for-azure-storage"></a>
 
-プライベート エンドポイントを作成するときは、ストレージ アカウントと、その接続先のストレージ サービスを指定する必要があります。 アクセスする必要があるストレージ アカウント内のストレージ サービス (つまり、[BLOB](../blobs/storage-blobs-overview.md)、[Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)、[Files](../files/storage-files-introduction.md)、[キュー](../queues/storage-queues-introduction.md)、[Table](../tables/table-storage-overview.md)、または[静的な Web サイト](../blobs/storage-blob-static-website.md)) ごとに別々のプライベート エンドポイントが必要です。
+## <a name="creating-a-private-endpoint"></a>プライベート エンドポイントの作成
+
+プライベート エンドポイントを作成するときは、ストレージ アカウントと、その接続先のストレージ サービスを指定する必要があります。 
+
+アクセスする必要があるストレージ リソースごとに (つまり、[BLOB](../blobs/storage-blobs-overview.md)、[Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)、[Files](../files/storage-files-introduction.md)、[キュー](../queues/storage-queues-introduction.md)、[Table](../tables/table-storage-overview.md)、または[静的な Web サイト](../blobs/storage-blob-static-website.md)) 別々のプライベート エンドポイントが必要です。 Data Lake Storage Gen2 ストレージ リソース用にプライベート エンドポイントを作成する場合は、BLOB ストレージ リソース用にも作成する必要があります。 これは、Data Lake Storage Gen2 エンドポイントをターゲットとする操作が、BLOB エンドポイントにリダイレクトされる可能性があるためです。 両方のリソースにプライベート エンドポイントを作成することによって、操作が正常に完了するようにします。
 
 > [!TIP]
 > RA-GRS アカウントでの読み取りパフォーマンスを向上させるために、ストレージ サービスのセカンダリ インスタンスに対して別個のプライベート エンドポイントを作成します。
@@ -66,24 +70,26 @@ geo 冗長ストレージ向けに構成されているストレージ アカウ
 - [Azure CLI を使用してプライベート エンドポイントを作成する](../../private-link/create-private-endpoint-cli.md)
 - [Azure PowerShell を使用してプライベート エンドポイントを作成する](../../private-link/create-private-endpoint-powershell.md)
 
-### <a name="connecting-to-private-endpoints"></a>プライベート エンドポイントへの接続
+<a id="connecting-to-private-endpoints"></a>
+
+## <a name="connecting-to-a-private-endpoint"></a>プライベート エンドポイントへの接続
 
 プライベート エンドポイントを使用する VNet 上のクライアントは、パブリック エンドポイントに接続するクライアントと同じ接続文字列をストレージ アカウントに対して使用する必要があります。 プライベート リンク経由の VNet からストレージ アカウントへの接続を自動的にルーティングするために、DNS 解決に依存しています。
 
 > [!IMPORTANT]
-> プライベート エンドポイントを利用しない場合と同じ接続文字列を使用して、プライベート エンドポイントを利用してストレージ アカウントに接続します。 "*privatelink*" サブドメイン URL を使用してストレージ アカウントに接続しないでください。
+> プライベート エンドポイントを利用しない場合と同じ接続文字列を使用して、プライベート エンドポイントを利用してストレージ アカウントに接続します。 `privatelink` サブドメイン URL を使用してストレージ アカウントに接続しないでください。
 
 既定では、VNet に接続されている[プライベート DNS ゾーン](../../dns/private-dns-overview.md)が作成され、プライベート エンドポイントに必要な更新も行われます。 ただし、独自の DNS サーバーを使用している場合は、DNS 構成に追加の変更が必要になることがあります。 以下の [DNS の変更](#dns-changes-for-private-endpoints)に関するセクションで、プライベート エンドポイントに必要な更新について説明しています。
 
 ## <a name="dns-changes-for-private-endpoints"></a>プライベート エンドポイントの DNS の変更
 
-プライベート エンドポイントを作成すると、ストレージ アカウントの DNS CNAME リソース レコードは、プレフィックス "*privatelink*" を持つサブドメイン内のエイリアスに更新されます。 既定では、"*privatelink*" サブドメインに対応する [プライベート DNS ゾーン](../../dns/private-dns-overview.md)も作成されます。これには、プライベート エンドポイントの DNS A リソース レコードが含まれます。
+プライベート エンドポイントを作成すると、ストレージ アカウントの DNS CNAME リソース レコードは、プレフィックス `privatelink` を持つサブドメイン内のエイリアスに更新されます。 既定で、`privatelink` サブドメインに対応する[プライベート DNS ゾーン](../../dns/private-dns-overview.md)も作成されます。これには、プライベート エンドポイントの DNS A リソース レコードが含まれます。
 
 プライベート エンドポイントを持つ VNet の外部からストレージ エンドポイント URL を解決すると、ストレージ サービスのパブリック エンドポイントに解決されます。 プライベート エンドポイントをホストしている VNet から解決されると、ストレージ エンドポイント URL はプライベート エンドポイントの IP アドレスに解決されます。
 
 上の図の例のように、プライベート エンドポイントをホストしている VNet の外部から解決されると、ストレージ アカウント "StorageAccountA" の DNS リソース レコードは次のようになります。
 
-| 名前                                                  | Type  | 値                                                 |
+| 名前                                                  | 種類  | 値                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
@@ -93,7 +99,7 @@ geo 冗長ストレージ向けに構成されているストレージ アカウ
 
 StorageAccountA の DNS リソース レコードは、プライベート エンドポイントをホストしている VNet 内のクライアントによって解決されると、次のようになります。
 
-| 名前                                                  | Type  | 値                                                 |
+| 名前                                                  | 種類  | 値                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
@@ -103,7 +109,7 @@ StorageAccountA の DNS リソース レコードは、プライベート エン
 ネットワーク上でカスタム DNS サーバーを使用している場合、クライアントで、ストレージ アカウント エンドポイントの FQDN をプライベート エンドポイントの IP アドレスに解決できる必要があります。 プライベート リンク サブドメインを VNet のプライベート DNS ゾーンに委任するように DNS サーバーを構成するか、プライベート エンドポイントの IP アドレスを使用して "*StorageAccountA.privatelink.blob.core.windows.net*" の A レコードを構成する必要があります。
 
 > [!TIP]
-> カスタムまたはオンプレミスの DNS サーバーを使用している場合は、"privatelink" サブドメインのストレージ アカウント名をプライベート エンドポイントの IP アドレスに解決するように DNS サーバーを構成する必要があります。 これを行うには、VNet のプライベート DNS ゾーンに "privatelink" サブドメインを委任するか、DNS サーバーで DNS ゾーンを構成し、DNS A レコードを追加します。
+> カスタムまたはオンプレミスの DNS サーバーを使用している場合は、`privatelink` サブドメインのストレージ アカウント名をプライベート エンドポイントの IP アドレスに解決するように DNS サーバーを構成する必要があります。 これを行うには、VNet のプライベート DNS ゾーンに `privatelink` サブドメインを委任するか、DNS サーバー上で DNS ゾーンを構成し、DNS A レコードを追加します。
 
 ストレージ サービスのプライベート エンドポイントに推奨される DNS ゾーン名は次のとおりです。
 
@@ -137,7 +143,7 @@ Azure Storage のプライベート エンドポイントに関する以下の�
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>プライベート エンドポイントがあるサブネットのネットワーク セキュリティ グループ規則
 
-現在、プライベート エンドポイントの[ネットワーク セキュリティ グループ](../../virtual-network/network-security-groups-overview.md) (NSG) 規則とユーザー定義ルートを構成することはできません。 プライベート エンドポイントをホストするサブネットに適用された NSG 規則は、プライベート エンドポイント以外の他のエンドポイント (NIC など) にしか適用されません。 この問題の限定的な回避策として、ソース サブネットでプライベート エンドポイントのアクセス規則を実装できます。ただし、この方法では、管理オーバーヘッドが高くなる可能性があります。
+現在、プライベート エンドポイントの[ネットワーク セキュリティ グループ](../../virtual-network/network-security-groups-overview.md) (NSG) 規則とユーザー定義ルートを構成することはできません。 プライベート エンドポイントをホストするサブネットに適用される NSG 規則は、プライベート エンドポイントに適用されません。 これらは、他のエンドポイント (ネットワーク インターフェイス コントローラーなど) にのみ適用されます。 この問題の限定的な回避策として、ソース サブネットでプライベート エンドポイントのアクセス規則を実装できます。ただし、この方法では、管理オーバーヘッドが高くなる可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 

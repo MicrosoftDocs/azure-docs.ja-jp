@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 37d9bd78a80ac52d2a790537bf47e33807720349
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85202961"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
@@ -35,7 +35,7 @@ ms.locfileid: "85202961"
 
 **ClaimsTransformation** 要素には、次の属性が含まれています。
 
-| 属性 |Required | 説明 |
+| 属性 |必須 | 説明 |
 | --------- |-------- | ----------- |
 | Id |はい | 要求変換を一意に識別するために使用される識別子。 識別子は、ポリシー内の他の XML 要素から参照されます。 |
 | TransformationMethod | はい | 要求変換で使用する変換メソッド。 各要求変換は、独自の値を持ちます。 使用可能な値の完全なリストについては、[要求変換の参照](#claims-transformations-reference)を確認してください。 |
@@ -77,7 +77,7 @@ ms.locfileid: "85202961"
 
 **InputClaim** 要素には、次の属性が含まれています。
 
-| 属性 |Required | Description |
+| 属性 |必須 | Description |
 | --------- | ----------- | ----------- |
 | ClaimTypeReferenceId |はい | ポリシー内の ClaimsSchema セクションに既に定義されている ClaimType への参照。 |
 | TransformationClaimType |はい | 変換要求の種類を参照する識別子。 各要求変換は、独自の値を持ちます。 使用可能な値の完全なリストについては、[要求変換の参照](#claims-transformations-reference)を確認してください。 |
@@ -92,7 +92,7 @@ ms.locfileid: "85202961"
 
 #### <a name="inputparameter"></a>InputParameter
 
-| 属性 | Required |説明 |
+| 属性 | 必須 |説明 |
 | --------- | ----------- |----------- |
 | Id | はい | 要求変換メソッドのパラメーターへの参照である識別子。 各要求変換メソッドは、独自の値を持ちます。 使用可能な値の完全なリストについては、要求変換の表を参照してください。 |
 | DataType | はい | カスタム ポリシー XML スキーマの DataType エミュレーションに従った、文字列、ブール値、Int、または DateTime などの、パラメーターのデータ型。 この型は、算術演算を正しく行うために使用されます。 各要求変換は、独自の値を持ちます。 使用可能な値の完全なリストについては、[要求変換の参照](#claims-transformations-reference)を確認してください。 |
@@ -110,7 +110,7 @@ ms.locfileid: "85202961"
 
 **OutputClaim** 要素には、次の属性が含まれています。
 
-| 属性 |Required | Description |
+| 属性 |必須 | Description |
 | --------- | ----------- |----------- |
 | ClaimTypeReferenceId | はい | ポリシー内の ClaimsSchema セクションに既に定義されている ClaimType への参照。
 | TransformationClaimType | はい | 変換要求の種類を参照する識別子。 各要求変換は、独自の値を持ちます。 使用可能な値の完全なリストについては、[要求変換の参照](#claims-transformations-reference)を確認してください。 |

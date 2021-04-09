@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 612ba18ba71a22ad6c346b26008e688195c1d1e4
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92746583"
 ---
 # <a name="create-a-storage-account-with-infrastructure-encryption-enabled-for-double-encryption-of-data"></a>データの二重暗号化のためにインフラストラクチャ暗号化を有効にしてストレージ アカウントを作成する
@@ -181,7 +181,7 @@ Azure portal でストレージ アカウントのインフラストラクチャ
 1. Azure Portal のストレージ アカウントに移動します。
 1. **[設定]** で、 **[暗号化]** を選択します。
 
-    :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="アカウントを作成するときにインフラストラクチャ暗号化を有効にする方法を示すスクリーンショット":::
+    :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="[アカウント] でインフラストラクチャ暗号化が有効なことを確認する方法を示すスクリーンショット":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

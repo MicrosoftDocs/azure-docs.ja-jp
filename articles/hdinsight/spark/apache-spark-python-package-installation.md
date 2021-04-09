@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 8fbbe137ece7aac2dd2196c5ebec435e118297ad
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c3f912b4f4c2e78c44425f489927cee185b3d312
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929812"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868717"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>スクリプト アクションを使用して Azure HDInsight で Python 環境を安全に管理する
 
@@ -104,7 +104,7 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
 
     1. Ambari UI を開き、[Spark2] ページの [Configs]\(構成\) タブに移動します。
 
-        ![Ambari を使用して Spark と Livy の構成を変更する](./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png" alt-text="Ambari を使用して Spark と Livy の構成を変更する" border="true":::
 
     2. [Advanced livy2] を展開し、下のステートメントを末尾に追加します。 仮想環境を別のプレフィックスを使用してインストールした場合は、パスを適宜変更します。
 
@@ -113,7 +113,7 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
         export PYSPARK_DRIVER_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         ```
 
-        ![Ambari を使用して Livy 構成を変更する](./media/apache-spark-python-package-installation/ambari-livy-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-livy-config.png" alt-text="Ambari を使用して Livy 構成を変更する" border="true":::
 
     3. [Advanced spark2-env] を展開し、末尾にある既存の export PYSPARK_PYTHON ステートメントを置き換えます。 仮想環境を別のプレフィックスを使用してインストールした場合は、パスを適宜変更します。
 
@@ -121,11 +121,11 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
         export PYSPARK_PYTHON=${PYSPARK_PYTHON:-/usr/bin/anaconda/envs/py35new/bin/python}
         ```
 
-        ![Ambari を通して Spark 構成を変更する](./media/apache-spark-python-package-installation/ambari-spark-config.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-spark-config.png" alt-text="Ambari を通して Spark 構成を変更する" border="true":::
 
     4. 変更を保存し、影響を受けるサービスを再起動します。 これらの変更では、Spark2 サービスを再起動する必要があります。 Ambari UI によって、再起動が必要であることを示すリマインダーが表示されます。[再起動] をクリックして、影響を受けるすべてのサービスを再起動します。
 
-        ![Restart services](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        :::image type="content" source="./media/apache-spark-python-package-installation/ambari-restart-services.png" alt-text="Restart services" border="true":::
 
     5. Spark セッションに 2 つのプロパティを設定して、ジョブが更新された spark 構成 (`spark.yarn.appMasterEnv.PYSPARK_PYTHON` と `spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON`) を指すようにします。 
 
@@ -153,7 +153,7 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
 
     次のコードを実行して、Jupyter Notebook の Python 環境を再確認できます。
 
-    ![Jupyter Notebook の Python のバージョンを確認する](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
+    :::image type="content" source="./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png" alt-text="Jupyter Notebook の Python のバージョンを確認する" border="true":::
 
 ## <a name="known-issue"></a>既知の問題
 

@@ -16,10 +16,10 @@ ms.custom:
 - devx-track-js
 - devx-track-azurecli
 ms.openlocfilehash: 3fc257ff192ccb1bb05b233c6ac802696ece0054
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99575723"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>チュートリアル:デバイス ファームウェアの更新プロセスを実装する
@@ -102,7 +102,7 @@ az iot hub device-identity connection-string show --device-id MyFirmwareUpdateDe
 
 ## <a name="start-the-firmware-update"></a>ファームウェアの更新を開始する
 
-**デバイスの種類** として "chiller" のタグが付けられたすべてのデバイスでファームウェア更新プロセスを開始するには、バックエンド アプリケーションで[自動デバイス管理構成](iot-hub-automatic-device-management.md#create-a-configuration)を作成します。 このセクションでは、次の方法について説明します。
+**デバイスの種類** として "chiller" のタグが付けられたすべてのデバイスでファームウェア更新プロセスを開始するには、バックエンド アプリケーションで [自動デバイス管理構成](iot-hub-automatic-device-management.md#create-a-configuration)を作成します。 このセクションでは、次の方法について説明します。
 
 * バックエンド アプリケーションから構成を作成する。
 * 完了するまでジョブを監視する。

@@ -6,10 +6,10 @@ ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
 ms.openlocfilehash: 977cd79de629670cef526f072340f8897fa6446e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92316497"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric のサポート オプション
@@ -47,7 +47,7 @@ Microsoft では、Service Fabric の問題を報告するための GitHub リ�
 
 ### <a name="github-repo"></a>GitHub のリポジトリ 
 
-Azure Service Fabric の問題は、[Service Fabric GitHub](https://github.com/microsoft/service-fabric/issues) で報告してください。 このリポジトリは、Azure Service Fabric に関連する問題の報告と追跡に加え、機能に関する小さな要求を行うためのものです。 **稼働中のサイトの問題を報告するのに、この手段を使用しないでください** 。
+Azure Service Fabric の問題は、[Service Fabric GitHub](https://github.com/microsoft/service-fabric/issues) で報告してください。 このリポジトリは、Azure Service Fabric に関連する問題の報告と追跡に加え、機能に関する小さな要求を行うためのものです。 **稼働中のサイトの問題を報告するのに、この手段を使用しないでください**。
 
 ### <a name="stackoverflow-and-msdn-forums"></a>StackOverflow と MSDN フォーラム
 

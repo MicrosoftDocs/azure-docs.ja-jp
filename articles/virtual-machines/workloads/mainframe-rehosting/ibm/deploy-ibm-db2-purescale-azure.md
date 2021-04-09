@@ -3,15 +3,16 @@ title: Azure 上に IBM DB2 pureScale をデプロイする
 description: 最近、z/OS 上で実行される IBM DB2 環境から Azure 上の IBM DB2 pureScale に企業が移行する際に、あるアーキテクチャの例が使用されています。ここでは、そのアーキテクチャの例をデプロイする方法について説明します。
 author: njray
 ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 481816ca0c1fecfee9396f6cc40582695b0952f2
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 33ff6174d7e5107076dda177731c9daec7e57266
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102550197"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956147"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Azure 上に IBM DB2 pureScale をデプロイする
 
@@ -19,7 +20,7 @@ ms.locfileid: "102550197"
 
 移行の際に使用される手順に従うには、GitHub 上の [Db2onAzure](https://aka.ms/db2onazure) リポジトリ内にあるインストール スクリプトをご覧ください。 これらのスクリプトは、一般的な中規模サイズのオンライン トランザクション処理 (OLTP) ワークロード用のアーキテクチャに基づきます。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 このアーキテクチャをデプロイするには、GitHub 上の [DB2onAzure](https://aka.ms/db2onazure) リポジトリ内にある deploy.sh スクリプトをダウンロードして実行します。
 

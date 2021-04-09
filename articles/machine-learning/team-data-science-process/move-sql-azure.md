@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 42bac2df7abe00be8c0e6ffddcc9bef7ef28ba9d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93309532"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Azure Machine Learning 用にデータを Azure SQL Database に移動する
@@ -34,12 +34,12 @@ Machine Learning 用に SQL Server にデータを移動するためのオプシ
 ## <a name="prerequisites"></a><a name="prereqs"></a>前提条件
 ここに記載されている手順には次のものが必要です。
 
-* **Azure サブスクリプション** 。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-* **Azure ストレージ アカウント** 。 このチュートリアルでは、データの格納に Azure ストレージ アカウントを使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」を参照してください。 ストレージ アカウントを作成したら、ストレージへのアクセスに使用するアカウント キーを取得する必要があります。 「[ストレージ アカウント アクセス キーを管理する](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
+* **Azure サブスクリプション**。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+* **Azure ストレージ アカウント**。 このチュートリアルでは、データの格納に Azure ストレージ アカウントを使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../../storage/common/storage-account-create.md) 」を参照してください。 ストレージ アカウントを作成したら、ストレージへのアクセスに使用するアカウント キーを取得する必要があります。 「[ストレージ アカウント アクセス キーを管理する](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
 * **Azure SQL Database** へのアクセス権。 Azure SQL Database をセットアップする必要がある場合、Azure SQL Database の新しいインスタンスをプロビジョニングする方法については、 [Microsoft Azure SQL Database の概要](../../azure-sql/database/single-database-create-quickstart.md) に関する記事をご覧ください。
 * **Azure PowerShell** がローカルにインストールされ構成されていること。 手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/)」を参照してください。
 
-**Data** :移行プロセスは、 [NYC タクシー データセット](https://chriswhong.com/open-data/foil_nyc_taxi/)を使用して説明されています。 NYC タクシー データセットには乗車データと料金についての情報が含まれています。このデータセットは Azure Blob Storage の[NYC タクシー データ](https://www.andresmh.com/nyctaxitrips/)で入手できます。 これらのファイルのサンプルと説明は、「 [NYC タクシー乗車データセットの説明](sql-walkthrough.md#dataset)」にあります。
+**Data**:移行プロセスは、[NYC タクシー データセット](https://chriswhong.com/open-data/foil_nyc_taxi/)を使用して説明されています。 NYC タクシー データセットには乗車データと料金についての情報が含まれています。このデータセットは Azure Blob Storage の[NYC タクシー データ](https://www.andresmh.com/nyctaxitrips/)で入手できます。 これらのファイルのサンプルと説明は、「 [NYC タクシー乗車データセットの説明](sql-walkthrough.md#dataset)」にあります。
 
 ここで説明されている手順は、自身のデータに適用することも、NYC タクシー データセットを使用してこの手順に従って行うこともできます。 NYC タクシー データセットをご利用の SQL Server データベースにアップロードするには、「[SQL Server データベースにデータを一括インポートする](sql-walkthrough.md#dbload)」に記載されている手順に従います。
 
@@ -47,10 +47,10 @@ Machine Learning 用に SQL Server にデータを移動するためのオプシ
 フラット ファイル (CSV 形式または TSV 形式) のデータは、一括挿入 SQL クエリを使用して Azure SQL Database に移動できます。
 
 ### <a name="bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a> 一括挿入 SQL クエリ
-一括挿入 SQL クエリを使用する手順は、フラット ファイル ソースから Azure VM 上の SQL Server にデータを移動する指示と似ています。 詳細については、「[一括挿入 SQL クエリ](move-sql-server-virtual-machine.md#insert-tables-bulkquery)」をご覧ください。
+一括挿入 SQL クエリを使用する手順は、フラット ファイル ソースから Azure VM 上の SQL Server にデータを移動する指示と似ています。 詳細については、「 [一括挿入 SQL クエリ](move-sql-server-virtual-machine.md#insert-tables-bulkquery)」をご覧ください。
 
-## <a name="moving-data-from-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a> SQL Server から Azure SQL Database へのデータの移動
-ソース データが SQL Server に保存されている場合は、さまざまな方法で Azure SQL Database にデータを移動できます。
+## <a name="moving-data-from-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a> SQL Server から Azure SQL データベースへのデータの移動
+ソース データが SQL Server に保存されている場合は、さまざまな方法で Azure SQL データベースにデータを移動できます。
 
 1. [フラット ファイルへのエクスポート](#export-flat-file)
 2. [SQL Database 移行ウィザード](#insert-tables-bcp)
@@ -69,7 +69,6 @@ SQL Database 移行ウィザードを使用する手順は、「[SQL Database �
 データベースのバックアップと復元を使用する手順は、「[データベースのバックアップと復元](move-sql-server-virtual-machine.md#sql-backup)」の一連の指示と似ています。
 
 ### <a name="azure-data-factory"></a><a name="adf"></a>Azure Data Factory
-Azure Data Factory (ADF) を使用して Azure SQL Database にデータを移動する方法については、[Azure Data Factory を使用して SQL Server から SQL Azure にデータを移動する](move-sql-azure-adf.md)方法に関するトピックを参照してください。 このトピックでは、ADF を使用して SQL Server データベースから Azure Blob Storage 経由で Azure SQL Database に
-データを移動する方法が示されています。
+Azure Data Factory (ADF) を使用して Azure SQL データベースにデータを移動する方法については、[Azure Data Factory を使用して SQL Server から SQL Azure にデータを移動する](move-sql-azure-adf.md)方法に関するトピックを参照してください。 このトピックでは、ADF を使用して SQL Server データベースから Azure Blob Storage 経由で Azure SQL データベースにデータを移動する方法が示されています。
 
 ハイブリッドのオンプレミスとクラウドのソースを使用してデータを継続的に移行する必要がある場合は、ADF の使用を検討してください。  ADF は、データの変換が必要な場合や、移行中に新しいビジネス ロジックが必要な場合にも役立ちます。 ADF では、定期的にデータの移動を管理するシンプルな JSON スクリプトを使用して、ジョブのスケジュールと監視ができます。 ADF には他にも、複雑な操作のサポートなどの機能があります。

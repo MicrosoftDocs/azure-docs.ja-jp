@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: makromer
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8818d4db489cef8203ae515c18c61e215d577033
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 9cd3fc9353c684ec6617761616b958477ca83ee3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387617"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183643"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Azure Synapse Analytics と Azure Data Factory のデータ統合
 
@@ -36,6 +36,7 @@ Azure Synapse Analytics の Synapse パイプラインやデータ フローな�
 | **Git リポジトリの統合** | Git 統合 | ✓ | ✓ |
 | **Monitoring**           | データ フローについての Spark ジョブの監視 | ✗ | ✓<br>"<small>*Synapse Spark プールを活用する*" |
 |                          | Azure Monitor との統合 | ✓ | ✗ |
+| **系列** | Purview へのパイプラインの系列データの公開をサポート  | ✓ | ✗ |  
 
 > [!Note]
 > **Time to Live** は Azure Integration Runtime の設定で、これを使用すると、データ フロー実行後の一定期間、Spark クラスターで "*ウォーム状態を維持*" することができます。

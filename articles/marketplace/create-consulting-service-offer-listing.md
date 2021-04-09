@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.openlocfilehash: 2476d60cacc9690c24d7d3d2f7e21f04c6811500
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92754287"
 ---
 # <a name="how-to-configure-your-consulting-service-offer-listing-details"></a>コンサルティング サービス オファー登録情報の詳細を構成する方法
@@ -29,7 +29,7 @@ ms.locfileid: "92754287"
 1.  **[名前]** ボックスには、 **[新しいオファー]** ダイアログ ボックスで以前に入力した名前が事前に入力されますが、これはいつでも変更できます。 この名前は、オンライン ストアでオファー登録情報のタイトルとして表示されます。
 
     > [!IMPORTANT]
-    > このオファー名は、「 *名前: 期間 + 種類* 」という形式にする必要があります。 詳細については、[「Offer listing details」(オファー登録情報の詳細)](./plan-consulting-service-offer.md#offer-listing-details) を参照してください。
+    > このオファー名は、「*名前: 期間 + 種類*」という形式にする必要があります。 詳細については、[「Offer listing details」(オファー登録情報の詳細)](./plan-consulting-service-offer.md#offer-listing-details) を参照してください。
 
 2. **[検索結果の概要]** ボックスに、オファーの目的または目標を 200 文字以下で入力します。
 3. **[説明]** フィールドに、コンサルティング サービス オファーの説明を入力します。 HTML タグを使用して説明の書式を設定できます。 このボックスには、HTML のタグとスペースを含めて、最大 2,000 文字のテキストを入力できます。 HTML 書式設定の詳細については、[オファー説明でサポートされている HTML タグ](./supported-html-tags.md)に関する記事をご覧ください。
@@ -51,7 +51,7 @@ ms.locfileid: "92754287"
 
 ### <a name="add-logos"></a>ロゴを追加する
 
-**[ロゴ]** で、 **大** (216 x 216 ～ 350 x 350 ピクセル) のロゴを PNG 形式でアップロードします。 パートナー センターでは、 **小** (48 x 48) サイズのロゴが自動的に作成されます。このロゴは後で置き換えることができます。
+**[ロゴ]** で、**大** (216 x 216 ～ 350 x 350 ピクセル) のロゴを PNG 形式でアップロードします。 パートナー センターでは、**小** (48 x 48) サイズのロゴが自動的に作成されます。このロゴは後で置き換えることができます。
 
 オンライン ストアのさまざまな場所で、次の 2 つのサイズのロゴが使用されます。
 

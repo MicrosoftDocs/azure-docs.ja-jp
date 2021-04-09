@@ -4,10 +4,10 @@ description: このチュートリアルでは、Service Fabric マネージド 
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.openlocfilehash: 769bcb339b2cc1419c7a3d92d0f08130029a9f95
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98785433"
 ---
 # <a name="tutorial-scale-out-a-service-fabric-managed-cluster-preview"></a>チュートリアル:Service Fabric マネージド クラスターをスケールアウトする (プレビュー)
@@ -27,7 +27,7 @@ ms.locfileid: "98785433"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Service Fabric マネージド クラスター ("[*マネージド クラスターのデプロイ*](tutorial-managed-cluster-deploy.md)" に関するページを参照)。
+* Service Fabric マネージド クラスター ([*マネージド クラスターのデプロイ*](tutorial-managed-cluster-deploy.md) に関するページを参照)。
 * [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps#azservicefabric) 以降 (「[*Azure PowerShell のインストール*](/powershell/azure/install-az-ps)」を参照)。
 
 ## <a name="scale-a-service-fabric-managed-cluster"></a>Service Fabric マネージド クラスターをスケーリングする

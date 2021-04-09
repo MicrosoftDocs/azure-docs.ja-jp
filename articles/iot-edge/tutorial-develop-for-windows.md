@@ -9,18 +9,23 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: e46105f5889f4925be9873fd8613021fe5e8ac2d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: b5ff515f5a6d25285009f6579570aa3afa5a711f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920770"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103463359"
 ---
-# <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>チュートリアル:Windows デバイス用の IoT Edge モジュールを開発する
+# <a name="tutorial-develop-iot-edge-modules-using-windows-containers"></a>チュートリアル: Windows コンテナーを使用して IoT Edge モジュールを開発する
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Visual Studio を使用して、コードを開発し、IoT Edge を実行している Windows デバイスにデプロイします。
 
-クイックスタートでは、Windows 仮想マシンを使用して IoT Edge デバイスを作成し、Azure Marketplace から事前構成済みのモジュールをデプロイしました。 このチュートリアルでは、独自のコードを開発して IoT Edge デバイスにデプロイするために必要なことを順を追って説明します。 このチュートリアルは、特定のプログラミング言語や Azure サービスをより詳細に説明する他のチュートリアルにとって有用な前提条件です。
+>[!NOTE]
+>IoT Edge 1.1 LTS は、Windows コンテナーをサポートする最後のリリース チャネルです。 バージョン 1.2 以降では、Windows コンテナーはサポートされません。 Windows デバイスで IoT Edge を実行するには、[IoT Edge for Linux on Windows](iot-edge-for-linux-on-windows.md) の使用またはこちらへの移行を検討してください。
+
+このチュートリアルでは、独自のコードを開発して IoT Edge デバイスにデプロイするために必要なことを順を追って説明します。 このチュートリアルは、特定のプログラミング言語や Azure サービスをより詳細に説明する他のチュートリアルにとって有用な前提条件です。
 
 このチュートリアルでは、**C# モジュールの Windows デバイスへの** デプロイ例を使用します。 この例が選択された理由は、最も一般的な開発シナリオだからです。 異なる言語での開発に関心がある場合や、Azure サービスをモジュールとしてデプロイする予定の場合でも、このチュートリアルは開発ツールの学習に役立ちます。 開発の概念を理解したら、使用する言語や Azure サービスを選択して、詳細に進むことができます。
 
@@ -44,8 +49,8 @@ Visual Studio を使用して、コードを開発し、IoT Edge を実行して
 
 Window 上の Azure IoT Edge デバイス:
 
-* 開発マシンでは IoT Edge を実行せず、代わりに別個のデバイスを使用することをお勧めします。 開発マシンと IoT Edge デバイスのこの区別は、実際のデプロイ シナリオをより正確に反映し、異なる概念を区別するのに役立ちます。
-* 2 台目のデバイスを使用できない場合は、クイックスタートの記事を使用して、[Windows 仮想マシン](quickstart.md)によって Azure で IoT Edge デバイスを作成してください。
+* [Windows コンテナーを使用して Azure IoT Edge をインストールし、管理します](how-to-install-iot-edge-windows-on-windows.md)。
+* 可能であれば、開発マシンでは IoT Edge を実行せず、代わりに別のデバイスを使用することをお勧めします。 開発マシンと IoT Edge デバイスのこの区別は、実際のデプロイ シナリオをより正確に反映し、異なる概念を区別するのに役立ちます。
 
 クラウド リソース:
 

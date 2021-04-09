@@ -7,12 +7,12 @@ ms.date: 01/22/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4012c7417345678717800f4fdede95947e00b828
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 374ddaa088fba9ae7035f170562e06b7f07eae47
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756730"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709378"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>セキュリティ スコアからのリソースと推奨事項の除外 
 
@@ -26,7 +26,7 @@ Azure Security Center でセキュリティに関する推奨事項を調査す�
 
 - **リソースを除外** して、将来、問題のあるリソースと共に一覧に表示されないようにします。セキュリティ スコアには影響しません。 リソースは適用外として表示され、その理由は "除外" として、選択した特定の正当な理由と共に示されます。
 
-- **サブスクリプションまたは管理グループを除外** して、推奨事項がセキュリティ スコアに影響を与えないようにします。サブスクリプションまたは管理グループには今後表示されません。 これは、既存のリソースと、今後作成するすべてのリソースに関連します。 推奨事項は、選択したスコープに対して選択した特定の理由でマークされます。
+- **サブスクリプションまたは管理グループを除外** して、推奨事項がセキュリティ スコアに影響を与えないようにします。サブスクリプションまたは管理グループには今後表示されません。 これは、既存のリソースと、今後作成するすべてのリソースに関係してきます。 推奨事項は、選択したスコープに対して選択した特定の理由でマークされます。
 
 ## <a name="availability"></a>可用性
 
@@ -110,9 +110,9 @@ Azure Security Center でセキュリティに関する推奨事項を調査す�
 
 ユーザーがこの機能をどのように使用しているかを追跡するために、Logic App Playbook をデプロイする Azure Resource Manager (ARM) テンプレートと、除外の作成時に通知するために必要なすべての API 接続を作成しました。
 
-- プレイブックの詳細については [Tech Community ブログ](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580)のこの投稿を参照してください。
+- プレイブックの詳細については、テクニカル コミュニティのブログ投稿「[How to keep track of Resource Exemptions in Azure Security Center (Azure Security Center でリソースの除外を追跡する方法)](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580)」を参照してください
 - ARM テンプレートは、[Azure Security Center GitHub リポジトリ](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation/Notify-ResourceExemption)にあります。
-- [ここ](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json)をクリックして、必要なすべてのコンポーネントをデプロイできます 
+- 必要なすべてのコンポーネントをデプロイするには、[こちらの自動化されたプロセス](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json)を使用してください
 
 
 ## <a name="find-recommendations-with-exemptions-using-azure-resource-graph"></a>Azure Resource Graph を使用して除外対象の推奨事項を検索する

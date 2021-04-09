@@ -1,5 +1,5 @@
 ---
-title: Azure VPN Gateway:ポイント対サイトのクライアント証明書のインストール
+title: 'Azure VPN Gateway: ポイント対サイトのクライアント証明書のインストール'
 description: P2S 証明書認証用のクライアント証明書のインストール - Windows、Mac、Linux
 services: vpn-gateway
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: 8c4d37f67d89ad1b7973a85fb6c2a9f7e818a028
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89421664"
 ---
 # <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>P2S 証明書認証接続用のクライアント証明書のインストール

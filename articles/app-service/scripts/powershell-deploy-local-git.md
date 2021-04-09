@@ -1,5 +1,5 @@
 ---
-title: PowerShell:ローカル Git リポジトリからデプロイする
+title: 'PowerShell: ローカル Git リポジトリからデプロイする'
 description: Azure PowerShell を使用して App Service のデプロイと管理を自動化する方法について説明します。 このサンプルでは、ローカル Git リポジトリからコードをデプロイする方法を紹介しています。
 tags: azure-service-management
 ms.assetid: 5a927f23-8e70-45fd-9aae-980d4e7a007d
@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 03d2f2d3928393f8a251640a03d82b5963140141
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89070294"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>Web アプリを作成してローカル Git リポジトリからコードをデプロイする
@@ -37,7 +37,7 @@ Remove-AzResourceGroup -Name $webappname -Force
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | 必要なリソース グループと App Service グループと共に Web アプリを作成します。 現在のディレクトリに Git リポジトリが含まれている場合は、`azure` リモートも追加してください。 |
 

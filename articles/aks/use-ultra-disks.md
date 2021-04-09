@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターで Ultra Disks を�
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: d66b806adb7285e0ce2a21d8fe9254b3dbe89bcb
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: c743162ed3f75386287e050443e82069e797ced9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178849"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102502571"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Azure Kubernetes Service での Azure Ultra Disks の使用 (プレビュー)
 
@@ -84,7 +84,7 @@ Ultra Disks のサポートを使用せずにクラスターを作成する場�
 
 ## <a name="enable-ultra-disks-on-an-existing-cluster"></a>既存のクラスターでの Ultra Disks の有効化
 
-新しいノード プールを Ultra Disks がサポートされるクラスターに追加することによって、既存のクラスターで Ultra Disks を有効にできます。 `--aks-custom-headers` フラグを使用して、ホストベースの暗号化を使用するように新しいノード プールを構成します。
+新しいノード プールを Ultra Disks がサポートされるクラスターに追加することによって、既存のクラスターで Ultra Disks を有効にできます。 `--aks-custom-headers` フラグを使用して、Ultra ディスクを使用するように新しいノード プールを構成します。
 
 ```azurecli
 az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true

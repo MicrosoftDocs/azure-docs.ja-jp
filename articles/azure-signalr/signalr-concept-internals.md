@@ -8,10 +8,10 @@ ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: afb63b76666f47217f9c19376d81aa4ed73991bf
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98572563"
 ---
 # <a name="azure-signalr-service-internals"></a>Azure SignalR Service の内部

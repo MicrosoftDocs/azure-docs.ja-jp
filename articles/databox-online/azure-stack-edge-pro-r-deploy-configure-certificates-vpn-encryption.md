@@ -10,10 +10,10 @@ ms.date: 10/19/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro R so I can use it to transfer data to Azure.
 ms.openlocfilehash: abea192f209b968c6842e985620c067c93990687
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100548150"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-r"></a>チュートリアル:Azure Stack Edge Pro R 用の証明書を構成する
@@ -110,15 +110,15 @@ ms.locfileid: "100548150"
     1. [VPN] ページで **[構成]** を選択します。
     2. **[VPN の構成]** ブレードで、次の操作を行います。
 
-    - **[VPN 設定]** を有効にします。
+    - **[VPN の設定]** を有効にします。
     - **VPN 共有シークレット** を指定します。 これは、Azure VPN 接続オブジェクトの作成時に指定した共有キーです。
     - **VPN ゲートウェイ IP** アドレスを指定します。 これは、Azure ローカル ネットワーク ゲートウェイの IP アドレスです。
-    - **[PFS グループ]** で、 **[なし]** を選択します。 
-    - **[DH グループ]** で、 **[Group2]** を選択します。
+    - **PFS グループ** の場合は、 **[なし]** を選択します。 
+    - **DH グループ** の場合は、 **[Group2]** を選択します。
     - **[IPsec integrity method]\(IPsec 整合性方式\)** で、 **[SHA256]** を選択します。
     - **[IPsec cipher transform constants]\(IPsec 暗号化変換定数\)** で、 **[GCMAES256]** を選択します。
     - **[IPsec authentication transform constants]\(IPsec 認証変換定数\)** で、 **[GCMAES256]** を選択します。
-    - **[IKE encryption method]\(IKE 暗号化方式\)** で、 **[AES256]** を選択します。
+    - **IKE 暗号化の方法** の場合は、 **[AES256]** を選択します。
     - **[適用]** を選択します。
 
         ![構成用ローカル UI 2](./media/azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption/configure-vpn-local-ui-2.png)

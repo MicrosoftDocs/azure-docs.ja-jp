@@ -16,10 +16,10 @@ ms.date: 12/10/2020
 ms.author: jodowns
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f2d844054e3744aafa01f43ded354a5b5d9f8b4b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98732100"
 ---
 # <a name="assign-a-managed-identity-access-to-an-application-role-using-powershell"></a>PowerShell を使用してマネージド ID アクセスをアプリケーション ロールに割り当てる

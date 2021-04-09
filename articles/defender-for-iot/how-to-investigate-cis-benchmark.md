@@ -1,19 +1,14 @@
 ---
 title: CIS ベンチマークの推奨事項を調査する
-titleSuffix: Azure Defender for IoT
 description: OS ベースラインの推奨事項に基づいて、基本的および高度な調査を行います。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/21/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 2f68ebedb229f7295bc9c5dcc3b3349808970e8c
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 01ca6e1fecddff9800872a3e5495a5cac578a74f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809619"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782029"
 ---
 # <a name="investigate-os-baseline-based-on-cis-benchmark-recommendation"></a>OS ベースライン (CIS ベンチマークに基づく) の推奨事項を調査する 
 

@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 05/19/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0a80e289a6fbb8dfe9b725eaa1ef9e114d2896fd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 129a718175fdda80d4d6852e3d3b4cea609da64d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691384"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103492416"
 ---
 # <a name="metrics-overview"></a>メトリックの概要
 

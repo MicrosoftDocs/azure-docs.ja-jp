@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
 ms.openlocfilehash: c906d37a01f0fca2d4114e8ba07078fc46eec88b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93131175"
 ---
 # <a name="cloud-solution-provider-program"></a>クラウド ソリューション プロバイダー プログラム
@@ -64,7 +64,7 @@ ms.locfileid: "93131175"
 
 ![CSP の選択メニュー](media/marketplace-publishers-guide/csp-pop-up-module.png)
 
-**国** 、 **コンピテンシー** 、 **スキル** などの検索フィルターを適用できます。
+**国**、**コンピテンシー**、**スキル** などの検索フィルターを適用できます。
 
 ![パートナー検索に対する国/地域、コンピテンシー、スキルのフィルター](media/marketplace-publishers-guide/csp-add-resellers.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "93131175"
 
 既に発行されているオファーの CSP の一覧を更新する場合は、新しいパートナーを追加し、 **[Sync CSP audience]\(CSP の対象を同期する\)** を選択します。
 
-承認されたパートナーの一覧が既に作成されているオファーがあり、別のオファーで同じ一覧を使用する場合は、 **インポート/エクスポート** を使用します。 CSP の一覧があるオファーに移動し、 **[CSP のエクスポート]** を選択します。 機能によって作成された .csv ファイルを、別のオファーにインポートできます。
+承認されたパートナーの一覧が既に作成されているオファーがあり、別のオファーで同じ一覧を使用する場合は、**インポート/エクスポート** を使用します。 CSP の一覧があるオファーに移動し、 **[CSP のエクスポート]** を選択します。 機能によって作成された .csv ファイルを、別のオファーにインポートできます。
 
 #### <a name="option-3-no-partners-in-the-csp-program"></a>オプション 3:CSP プログラムでパートナーはいません
 
@@ -108,7 +108,7 @@ CSP プログラムのパートナーが製品を顧客に販売していない�
 3. **[Select a category that best describe the issue]\(問題の説明として最も適切なカテゴリを選択してください\)** で、オファーを示すカテゴリを選択します。
 4. **[Select a problem that best describes the issue]\(問題の説明として最も適切な問題を選択してください\)** で、 **[Update existing offer]\(既存のオファーの更新\)** を選択します。
 5. **[次へ]** を選択して **問題の詳細ページ** に移動し、問題の詳細を入力します。
-6. 問題のタイトルを " **Deauthorize CSP** " (CSP の承認を取り消す) とし、残りの必要なセクションを入力します。
+6. 問題のタイトルを "**Deauthorize CSP**" (CSP の承認を取り消す) とし、残りの必要なセクションを入力します。
 
 ## <a name="navigate-between-options"></a>オプション間の移動
 
@@ -127,7 +127,7 @@ CSP プログラムのパートナーが製品を顧客に販売していない�
 3. **[Select a category that best describe the issue]\(問題の説明として最も適切なカテゴリを選択してください\)** で、オファーを示すカテゴリを選択します。
 4. **[Select a problem that best describes the issue]\(問題の説明として最も適切な問題を選択してください\)** で、 **[Update existing offer]\(既存のオファーの更新\)** を選択します。
 5. **[次へ]** を選択して **問題の詳細ページ** に移動し、問題の詳細を入力します。
-6. 問題のタイトルを " **Deauthorize CSP** " (CSP の承認を取り消す) とし、残りの必要なセクションを入力します。
+6. 問題のタイトルを "**Deauthorize CSP**" (CSP の承認を取り消す) とし、残りの必要なセクションを入力します。
 
 > [!NOTE]
 > オプション 2 に移動しようとしていて、CSP プログラムのパートナーが既に顧客にオファーを再販している場合、そのパートナーは既定で既に承認済みパートナーの一覧に登録されています。  
@@ -145,7 +145,7 @@ CSP プログラムのパートナーが製品を顧客に販売していない�
 3. **[Select a category that best describe the issue]\(問題の説明として最も適切なカテゴリを選択してください\)** で、オファーを示すカテゴリを選択します。
 4. **[Select a problem that best describes the issue]\(問題の説明として最も適切な問題を選択してください\)** で、 **[Update existing offer]\(既存のオファーの更新\)** を選択します。
 5. **[次へ]** を選択して **問題の詳細ページ** に移動し、問題の詳細を入力します。
-6. 問題のタイトルを " **Deauthorize CSP** " (CSP の承認を取り消す) とし、残りの必要なセクションを入力します。
+6. 問題のタイトルを "**Deauthorize CSP**" (CSP の承認を取り消す) とし、残りの必要なセクションを入力します。
 
  現在のオファーが **オプション 2: 選択した CSP プログラムの特定のパートナー** で、移動先が **オプション 3: CSP プログラムでパートナーはいません** である場合は、以前に承認した CSP プログラムのパートナーが最終顧客にオファーを再販していない場合にのみ、そのオプションに移動できます。 次の手順を使用してリクエストを作成します。
 
@@ -158,7 +158,7 @@ CSP プログラムのパートナーが製品を顧客に販売していない�
 3. **[Select a category that best describe the issue]\(問題の説明として最も適切なカテゴリを選択してください\)** で、オファーを示すカテゴリを選択します。
 4. **[Select a problem that best describes the issue]\(問題の説明として最も適切な問題を選択してください\)** で、 **[Update existing offer]\(既存のオファーの更新\)** を選択します。
 5. **[次へ]** を選択して **問題の詳細ページ** に移動し、問題の詳細を入力します。
-6. 問題のタイトルを " **Deauthorize CSP** " (CSP の承認を取り消す) とし、残りの必要なセクションを入力します。
+6. 問題のタイトルを "**Deauthorize CSP**" (CSP の承認を取り消す) とし、残りの必要なセクションを入力します。
 
 ### <a name="navigate-from-option-3-no-partners-in-the-csp-program"></a>移動元がオプション 3: CSP プログラムでパートナーはいません
 

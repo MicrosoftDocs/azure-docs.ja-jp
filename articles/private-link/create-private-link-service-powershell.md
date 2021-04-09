@@ -1,20 +1,20 @@
 ---
 title: 'クイックスタート: Azure PowerShell を使用して Azure プライベート リンク サービスを作成する'
-description: Azure PowerShell を使用して Azure プライベート リンク サービスを作成する方法について説明します。
+description: このクイックスタートでは、Azure PowerShell を使用して Azure Private Link サービスを作成する方法について説明します
 services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 01/24/2021
 ms.author: allensu
-ms.openlocfilehash: 4780bc573796581438b8d331b1d1d9421a65414f
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 366be37135808a6d3d5cc1a277e2de3e3d6da8ae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653246"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102566404"
 ---
-# <a name="create-a-private-link-service-using-azure-powershell"></a>Azure PowerShell を使用してプライベート リンク サービスを作成する
+# <a name="quickstart-create-a-private-link-service-using-azure-powershell"></a>クイックスタート: Azure PowerShell を使用して Private Link サービスを作成する
 
 自分のサービスを参照する Private Link サービスを作成してみましょう。  Private Link には、Azure Standard Load Balancer の背後にデプロイされたサービスやリソースへのアクセス権を付与することができます。  サービスのユーザーは、各自の仮想ネットワークからプライベートにアクセスすることができます
 

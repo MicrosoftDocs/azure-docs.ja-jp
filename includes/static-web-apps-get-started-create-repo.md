@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/13/2020
 ms.author: cshoe
 ms.openlocfilehash: 06a54456a076ae425866c1fa502bd97c505e41c6
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96356445"
 ---
 ## <a name="create-a-repository"></a>リポジトリを作成する

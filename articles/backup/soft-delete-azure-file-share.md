@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 02/02/2020
 ms.custom: references_regions
 ms.openlocfilehash: 52a116320e07c25d4ee7f00b8063ca15faeb8560
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89179914"
 ---
 # <a name="accidental-delete-protection-for-azure-file-shares-using-azure-backup"></a>Azure Backup を使用して Azure ファイル共有を誤削除から保護する

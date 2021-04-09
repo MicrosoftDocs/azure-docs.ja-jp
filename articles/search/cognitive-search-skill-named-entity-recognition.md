@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8dc18af933a4570112beb025c1fb9163abafffff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e598f16c6b441cf986c7ac82d67c037f75be8982
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935944"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102547443"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>名前付きエンティティの認識コグニティブ スキル
 
@@ -150,10 +150,10 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
 ```
 
 
-## <a name="error-cases"></a>エラーになる場合
-ドキュメントの言語コードがサポートされていない場合、エラーが返され、エンティティは抽出されません。
+## <a name="warning-cases"></a>警告のケース
+ドキュメントの言語コードがサポートされていない場合、警告が返され、エンティティは抽出されません。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

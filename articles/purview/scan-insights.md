@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
 ms.openlocfilehash: 7807659a30127f39bb79ad99bdb733c12eb1d25d
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100548687"
 ---
 # <a name="scan-insights-on-your-data-in-azure-purview"></a>Azure Purview 内のデータに関するスキャンの分析情報

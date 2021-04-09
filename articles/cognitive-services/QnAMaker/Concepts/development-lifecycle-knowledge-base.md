@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.openlocfilehash: e52e7151bc30a19bd6f6041d52effdd799a87c99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91776971"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker におけるナレッジ ベースのライフサイクル
@@ -32,7 +32,7 @@ QnA Maker ナレッジ ベース (KB) エンドポイントでは、KB のコン
 
 
 * **低い信頼度スコアを修正するには**: 別の質問を追加します。
-* **クエリから誤って[既定の応答](../How-to/change-default-answer.md)が返された場合**: 正しい質問に新しい回答を追加します。
+* **クエリから誤って [既定の応答](../How-to/change-default-answer.md)が返された場合**: 正しい質問に新しい回答を追加します。
 
 結果に満足するまで、このテストと更新の短いループが続きます。 [ナレッジ ベースのテスト](../How-To/test-knowledge-base.md)方法を確認してください。
 
@@ -48,7 +48,7 @@ QnA Maker ナレッジ ベース (KB) エンドポイントでは、KB のコン
 ```
 
 ## <a name="publish-the-knowledge-base"></a>ナレッジ ベースの公開
-ナレッジ ベースのテストが完了したら、それを公開することができます。 公開時に、テスト済みのナレッジ ベースの最新バージョンが、**公開済み**のナレッジ ベースを表す専用の Azure Cognitive Search インデックスにプッシュされます。 また、アプリケーションやチャット ボットで呼び出すことができるエンドポイントが作成されます。
+ナレッジ ベースのテストが完了したら、それを公開することができます。 公開時に、テスト済みのナレッジ ベースの最新バージョンが、**公開済み** のナレッジ ベースを表す専用の Azure Cognitive Search インデックスにプッシュされます。 また、アプリケーションやチャット ボットで呼び出すことができるエンドポイントが作成されます。
 
 ナレッジ ベースのテスト バージョンにその他の変更を加えても、公開操作により、公開されたバージョンは影響を受けません。 公開されたバージョンは、実稼働アプリケーションに存在する場合があります。
 

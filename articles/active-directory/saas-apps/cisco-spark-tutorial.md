@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 49e92c485c1a6a66dfb12b3c7a91f29939851d82
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ad6d5308638b112afe2b51c4e149f876651e429d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456106"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104592525"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco Webex の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "92456106"
 * Cisco Webex にアクセスする Azure AD ユーザーを制御します。
 * ユーザーが自分の Azure AD アカウントを使用して Cisco Webex に自動的にサインインできるようにします。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,26 +37,25 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Cisco Webex では、 **SP** Initiated SSO がサポートされます。
-* Cisco Webex では、 **自動化された** ユーザー プロビジョニングがサポートされます。
-* Cisco Webex を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* Cisco Webex では、**SP** Initiated SSO がサポートされます。
+* Cisco Webex では、[**自動化されたユーザー プロビジョニング**](./cisco-webex-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>ギャラリーからの Cisco Webex の追加
 
 Azure AD への Cisco Webex の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Cisco Webex を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Cisco Webex** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Cisco Webex**」と入力します。
 1. 結果パネルで **[Cisco Webex]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-cisco-webex"></a>Cisco Webex の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-cisco-webex"></a>Cisco Webex の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Cisco Webex に対する Azure AD SSO を構成してテストします。 SSO が機能するために、Azure AD ユーザーと Cisco Webex の関連ユーザーの間で、リンク関係を確立する必要があります。
 
-Cisco Webex で Azure AD SSO を構成してテストするには、次の構成要素を完了する必要があります。
+Cisco Webex に対する Azure AD SSO を構成してテストするには、次の手順を実行します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -71,7 +68,7 @@ Cisco Webex で Azure AD SSO を構成してテストするには、次の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Cisco Webex** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **Cisco Webex** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
 
@@ -80,13 +77,13 @@ Cisco Webex で Azure AD SSO を構成してテストするには、次の構成
 4. **[基本的な SAML 構成]** セクションで、ダウンロードした **サービス プロバイダー メタデータ ファイル** をアップロードし、次の手順を実行してアプリケーションを構成します。
 
     >[!Note]
-    >サービス プロバイダーのメタデータ ファイルは、このチュートリアルで後述する「 **Cisco Webex の構成** 」セクションで取得します。 
+    >サービス プロバイダーのメタデータ ファイルは、このチュートリアルで後述する「**Cisco Webex の構成**」セクションで取得します。 
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
     b. **フォルダー ロゴ** をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
-    c. サービス プロバイダー メタデータ ファイルのアップロードが正常に完了すると、次のように、 **識別子** と **応答 URL** の値が **[基本的な SAML 構成]** セクションに自動的に入力されます。
+    c. サービス プロバイダー メタデータ ファイルのアップロードが正常に完了すると、次のように、**識別子** と **応答 URL** の値が **[基本的な SAML 構成]** セクションに自動的に入力されます。
 
     **[サインオン URL]** テキストボックスに、SP メタデータ ファイルのアップロードによって自動入力される **[応答 URL]** の値を貼り付けます。
 
@@ -100,13 +97,13 @@ Cisco Webex で Azure AD SSO を構成してテストするには、次の構成
     | ---------------|--------- |
     | uid | user.userprincipalname |
 
+    > [!NOTE]
+    >  既定では、ソース属性の値が userpricipalname にマップされます。 これは、user.mail か user.onpremiseuserprincipalname のほか、Webex の設定に基づく任意の値に変更することができます。
+
+
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードしてコンピューターに保存します。
 
    ![証明書のダウンロードのリンク](common/metadataxml.png)
-
-1. **[Cisco Webex のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
-
-   ![構成 URL のコピー](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -127,82 +124,80 @@ Cisco Webex で Azure AD SSO を構成してテストするには、次の構成
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[Cisco Webex]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
-1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-cisco-webex"></a>Cisco Webex の構成
 
-1. Cisco Webex 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
+1. 管理者の資格情報を使用して Cisco Webex にサインインします。
 
-    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+1. **[Organization Settings]\(組織の設定\)** を選択し、 **[認証]** セクションの **[変更]** をクリックします。
 
-2. ブラウザーに拡張機能を追加した後、 **[Cisco Webex のセットアップ]** をクリックすると、Cisco Webex アプリケーションに移動します。 そこから、管理者の資格情報を入力して Cisco Webex にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 8 が自動化されます。
-
-    ![セットアップの構成](common/setup-sso.png)
-
-3. Cisco Webex を手動で設定する場合は、完全な管理者権限を備えた資格情報を使って [Cisco Cloud Collaboration Management](https://admin.ciscospark.com/) にサインインします。
-
-4. **[設定]** を選択し、 **[認証]** セクションの下で **[変更]** をクリックします。
-
-    ![スクリーンショットは、[変更] を選択できる [Authentication Settings]\(認証設定\) を示しています。](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
+    ![スクリーンショットは、[変更] を選択できる [Authentication Settings]\(認証設定\) を示しています。](./media/cisco-spark-tutorial/organization-settings.png)
   
-5. **[Integrate a 3rd-party identity provider.(Advanced)] \(サード パーティの ID プロバイダーを統合する。(詳細))** を選択して、次の画面に移動します。
+1. **[Integrate a 3rd-party identity provider.(Advanced)]\(サード パーティの ID プロバイダーを統合する。(詳細)\)** を選択して、 **[Next]\(次へ\)** をクリックします。
 
-6. **[Import Idp Metadata] \(Idp メタデータのインポート)** ページで、ページ上に Azure AD メタデータ ファイルをドラッグ アンド ドロップするか、ファイルのブラウザー オプションを使用して Azure AD メタデータ ファイルを見つけてアップロードします。 次に、 **[Require certificate signed by a certificate authority in Metadata (more secure)(証明機関の署名付き証明書がメタデータに必要 (高セキュリティ))]** を選択し、 **[Next (次へ)]** をクリックします。
+    ![サード パーティの ID プロバイダーの統合を示すスクリーンショット。](./media/cisco-spark-tutorial/enterprise-settings.png)
 
-    ![スクリーンショットは、[Import Idp Metadata] \(IdP メタデータのインポート) ページを示しています。](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
+1. **[Download Metadata File]\(メタデータ ファイルのダウンロード\)** をクリックして **サービス プロバイダー メタデータ ファイル** をダウンロードし、それを自分のコンピューターに保存して、 **[Next]\(次へ\)** をクリックします。
 
-7. **[Test SSO Connection (SSO 接続のテスト)]** を選択し、ブラウザーの新しいタブが開いたら、サインインして Azure AD で認証します。
+    ![サービス プロバイダー メタデータ ファイルを示すスクリーンショット。](./media/cisco-spark-tutorial/sp-metadata.png)
 
-8. ブラウザーの **[Cisco Cloud Collaboration Management]** タブに戻ります。テストが成功した場合は、 **[This test was successful.Enable Single Sign-On option] \(このテストは正常に完了しました。シングル サインオン オプションを有効にします)** を選択して、 **[次へ]** をクリックします。
+1. **[file browser]\(ファイル ブラウザー\)** オプションをクリックして Azure AD メタデータ ファイルを検索、アップロードします。 次に、 **[Require certificate signed by a certificate authority in Metadata (more secure)(証明機関の署名付き証明書がメタデータに必要 (高セキュリティ))]** を選択し、 **[Next (次へ)]** をクリックします。
+
+    ![スクリーンショットは、[Import Idp Metadata] \(IdP メタデータのインポート) ページを示しています。](./media/cisco-spark-tutorial/idp-metadata.png)
+
+1. **[Test SSO Connection (SSO 接続のテスト)]** を選択し、ブラウザーの新しいタブが開いたら、サインインして Azure AD で認証します。
+
+1. ブラウザーの **[Cisco Cloud Collaboration Management]** タブに戻ります。テストが成功した場合は、 **[This test was successful.Enable Single Sign-On option] \(このテストは正常に完了しました。シングル サインオン オプションを有効にします)** を選択して、 **[次へ]** をクリックします。
+
+1. **[保存]** をクリックします。
+
+> [!NOTE]
+> Cisco Webex の構成方法について詳しくは、[こちら](https://help.webex.com/WBX000022701/How-Do-I-Configure-Microsoft-Azure-Active-Directory-Integration-with-Cisco-Webex-Through-Site-Administration#:~:text=In%20the%20Azure%20portal%2C%20select,in%20the%20Add%20Assignment%20dialog)のページを参照してください。
 
 ### <a name="create-cisco-webex-test-user"></a>Cisco Webex のテスト ユーザーの作成
 
-このセクションでは、Cisco Webex で B.Simon というユーザーを作成します。 このセクションでは、Cisco Webex で B.Simon というユーザーを作成します。
+このセクションでは、B.Simon というユーザーが Cisco Webex に作成されます。このアプリケーションは自動ユーザー プロビジョニングをサポートしているため、ビジネス ルールに基づく自動プロビジョニングと自動プロビジョニング解除が可能です。  可能な限り自動プロビジョニングを使用することをお勧めします。 [Cisco Webex](./cisco-webex-provisioning-tutorial.md) の自動プロビジョニングを有効にする方法をご覧ください。
 
-1. 完全な管理者権限を備えた資格情報を使って [Cisco Cloud Collaboration Management](https://admin.ciscospark.com/) にアクセスします。
+ユーザーを手動で作成する必要がある場合は、次の手順を実行します。
+
+1. 管理者の資格情報を使用して Cisco Webex にサインインします。
 
 2. **[Users]\(ユーザー\)** と **[Manage Users ]\(ユーザーの管理\)** を順にクリックします。
    
-    ![スクリーンショットは、[Manage Users ]\(ユーザーの管理\) を設定できる [Users]\(ユーザー\) ページを示しています。](./media/cisco-spark-tutorial/tutorial-cisco-spark-12.png) 
+    ![スクリーンショットは、[Manage Users ]\(ユーザーの管理\) を設定できる [Users]\(ユーザー\) ページを示しています。](./media/cisco-spark-tutorial/user-1.png) 
 
-3. **[Manage User (ユーザーの管理)]** ウィンドウで、 **[Manually add or modify users (ユーザーを手動で追加または変更)]** を選択し、 **[Next (次へ)]** をクリックします。
+3. **[Manage Users]\(ユーザーの管理\)** ウィンドウで **[Manually Add or Modify Users]\(ユーザーを手動で追加または変更\)** を選択します。
+
+    ![[Users]\(ユーザー\) ページのスクリーンショット。[Manage Users]\(ユーザーの管理\) で [Manually Add or Modify Users]\(ユーザーを手動で追加または変更\) を選択することができます。](./media/cisco-spark-tutorial/user-2.png)
 
 4. **[Names and Email address (名前と電子メール アドレス)]** を選択します。 次のようにテキスト ボックスに入力します。
 
-    ![スクリーンショットは、ユーザーを手動で追加または変更できる [Manage User]\(ユーザーの管理\) ダイアログ ボックスを示しています。](./media/cisco-spark-tutorial/tutorial-cisco-spark-13.png) 
+    ![スクリーンショットは、ユーザーを手動で追加または変更できる [Manage User]\(ユーザーの管理\) ダイアログ ボックスを示しています。](./media/cisco-spark-tutorial/user-3.png) 
 
-    a. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (この例では **B** )。
+    a. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (この例では **B**)。
 
-    b. **[姓]** ボックスに、ユーザーの姓を入力します (この例では **Simon** )。
+    b. **[姓]** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
     c. **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (b.simon@contoso.com など) を入力します。
 
 5. プラス記号をクリックして、B.Simon を追加します。 次に、 **[次へ]** をクリックします。
 
-6. **[Add Services for Users (ユーザーのサービスを追加)]** ウィンドウで、 **[Save (保存)]** をクリックしてから **[Finish (完了)]** をクリックします。
+6. **[Add Services for Users]\(ユーザーのサービスを追加\)** ウィンドウで **[Add Users]\(ユーザーの追加\)** をクリックし、 **[Finish]\(完了\)** をクリックします。
 
 ## <a name="test-sso"></a>SSO のテスト
 
-アクセス パネルで [Cisco Webex] タイルを選択すると、SSO を設定した Cisco Webex に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-## <a name="additional-resources"></a>その他のリソース
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Cisco Webex のサインオン URL にリダイレクトされます。 
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* Cisco Webex のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Cisco Webex] タイルをクリックすると、Cisco Webex のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
-- [Azure AD で Cisco Webex を試す](https://aad.portal.azure.com)
+## <a name="next-steps"></a>次のステップ
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
-
-- [高度な可視性と制御によって Cisco Webex を保護する方法](/cloud-app-security/protect-webex)
+Cisco Webex を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

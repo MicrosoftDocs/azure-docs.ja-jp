@@ -8,10 +8,10 @@ ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74184249"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Azure Internet Analyzer の FAQ (プレビュー)
@@ -26,7 +26,7 @@ ms.locfileid: "74184249"
 2. **[サブスクリプション]** ページに移動します。
 3. Internet Analyzer の使用を計画している Azure サブスクリプションをクリックします。
 4. サブスクリプションの **[リソース プロバイダー]** 設定に移動します。
-5. **[Microsoft.Network]** を検索し、 **[登録]** (または **[再登録]** ) ボタンをクリックします。
+5. **[Microsoft.Network]** を検索し、**[登録]** (または **[再登録]**) ボタンをクリックします。
 ![アクセス要求](./media/ia-faq/request-preview-access.png)
 
 6. アクセス要求の作成に使用された電子メール アドレスと Azure サブスクリプション ID を提供することによって[承認を要求します](https://aka.ms/internetAnalyzerContact)。
@@ -103,6 +103,6 @@ Internet Analyzer は、エンドユーザーのパフォーマンスを理解�
 
 Azure には[強力なセキュリティ プロセスがあり、広範囲のコンプライアンス標準を満たします](https://azure.microsoft.com/support/trust-center/)。 あなたとあなたが指名したチームだけがあなたのデータにアクセスできます。 Microsoft のスタッフには、特定の状況下でのみ、あなたに通知した上で限られたアクセスが与えられます。 これは、転送中および保存時に暗号化されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 詳細については、[Internet Analyzer の概要](internet-analyzer-overview.md)に関する記事を参照してください。

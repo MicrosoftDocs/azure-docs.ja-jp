@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
 ms.openlocfilehash: d71cfa6ba52052e4b68175be84934c8b4294ed25
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101660534"
 ---
 # <a name="azure-percept-dk-onboarding-experience-troubleshooting-guide"></a>Azure Percept DK のオンボーディング エクスペリエンスのトラブルシューティング ガイド

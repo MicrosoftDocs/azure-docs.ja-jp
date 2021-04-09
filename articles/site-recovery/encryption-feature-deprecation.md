@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: sharrai
 ms.openlocfilehash: 5860928d71c0e7431190908d5df5d7496e8ffb17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89426318"
 ---
 # <a name="deprecation-of-site-recovery-data-encryption-feature"></a>Site Recovery のデータ暗号化機能の廃止
@@ -22,14 +22,14 @@ ms.locfileid: "89426318"
 ## <a name="deprecation-information"></a>廃止情報
 
 
-Site Recovery データ暗号化機能は、レプリケートされたデータがセキュリティ上の脅威から保護されることを保証するため、Hyper-V VM を保護するお客様のために提供されました。 この機能は、**2022 年 4 月 30 日**に廃止になります。 これは、[Storage Service Encryption](../storage/common/storage-service-encryption.md) (SSE) を使用する、より高度な[保存時の暗号化](https://azure.microsoft.com/blog/azure-site-recovery-encryption-at-rest/)機能に置き換えられています。 SSE を使用すると、データは暗号化されてからストレージに保存され、取得時に復号化されます。また、Azure へのフェールオーバー時に、VM は暗号化されたストレージ アカウントから実行されるため、目標復旧時間 (RTO) が向上します。
+Site Recovery データ暗号化機能は、レプリケートされたデータがセキュリティ上の脅威から保護されることを保証するため、Hyper-V VM を保護するお客様のために提供されました。 この機能は、**2022 年 4 月 30 日** に廃止になります。 これは、[Storage Service Encryption](../storage/common/storage-service-encryption.md) (SSE) を使用する、より高度な[保存時の暗号化](https://azure.microsoft.com/blog/azure-site-recovery-encryption-at-rest/)機能に置き換えられています。 SSE を使用すると、データは暗号化されてからストレージに保存され、取得時に復号化されます。また、Azure へのフェールオーバー時に、VM は暗号化されたストレージ アカウントから実行されるため、目標復旧時間 (RTO) が向上します。
 
 この機能を使用している既存のお客様には、廃止の詳細と修復の手順が記載された通知が送られています。 
 
 
 ## <a name="what-are-the-implications"></a>どのような影響がありますか?
 
-**2022 年 4 月 30 日**を過ぎると、廃止された暗号化機能を引き続き使用しているすべての VM で、フェールオーバーを実行できなくなります。 
+**2022 年 4 月 30 日** を過ぎると、廃止された暗号化機能を引き続き使用しているすべての VM で、フェールオーバーを実行できなくなります。 
 
 ## <a name="required-action"></a>必要なアクション
 正常なフェールオーバー操作とレプリケーションを続行するには、次の手順に従います。

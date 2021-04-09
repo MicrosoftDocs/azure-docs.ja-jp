@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 43cd03e8f4a66d18adc33c943481002ff7b326d3
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: fd4ad1443f466a78abfc569d5f52f6bdeff2d5be
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813209"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048886"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>通知とバックアップのために Azure Storage を統合する
 
@@ -29,6 +29,7 @@ Custom Vision プロジェクトを Azure Blob Storage キューと統合して�
 
 - Azure の Custom Vision リソース。 それがない場合は、Azure portal に移動し、[新しい Custom Vision リソースを作成してください](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true)。 現在、この機能では、Cognitive Services リソース (オール イン ワン キー) はサポートされていません。
 - BLOB コンテナーがある Azure ストレージ アカウント。 このステップに関してヘルプが必要な場合は、[Azure Storage ラボの演習 1](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) に従ってください。
+* [PowerShell バージョン 6.0 以降](/powershell/scripting/install/installing-powershell-core-on-windows)、または同様のコマンド ライン アプリケーション。
 
 ## <a name="set-up-azure-storage-integration"></a>Azure ストレージの統合をセットアップする
 

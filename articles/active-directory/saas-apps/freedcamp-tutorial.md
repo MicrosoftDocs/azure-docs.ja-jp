@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 19378251408d55868ed844a5505ae48ece55dc3b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92451497"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>チュートリアル:Freedcamp と Azure Active Directory の統合
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Freedcamp では、 **SP Initiated SSO と IDP Initiated SSO** をサポートしています。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Freedcamp では、**SP Initiated SSO と IDP Initiated SSO** をサポートしています。
 
 ## <a name="adding-freedcamp-from-the-gallery"></a>ギャラリーからの Freedcamp の追加
 
@@ -47,8 +47,8 @@ Freedcamp を Azure AD に統合するには、管理している SaaS アプリ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで検索ボックスに「 **Freedcamp** 」と入力します。
-1. 結果パネルから「 **Freedcamp** 」を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+1. **[ギャラリーから追加する]** セクションで検索ボックスに「**Freedcamp**」と入力します。
+1. 結果パネルから「**Freedcamp**」を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 

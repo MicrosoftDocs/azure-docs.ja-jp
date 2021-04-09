@@ -1,17 +1,17 @@
 ---
 title: 低速クエリ ログにアクセスする - Azure portal - Azure Database for MySQL
 description: この記事では、Azure portal から Azure Database for MySQL の低速クエリ ログを構成し、それにアクセスする方法について説明します。
-author: savjani
-ms.author: pariks
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
-ms.date: 4/13/2020
-ms.openlocfilehash: 5ad4ffa99a7af592e3e93e53673d254956807c40
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 3/15/2021
+ms.openlocfilehash: 91569780aa71861e07c7e96bec5eac879642760d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541625"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103496220"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Azure portal で低速クエリ ログを構成してアクセスする
 
@@ -23,7 +23,7 @@ Azure portal から [Azure Database for MySQL の低速クエリ ログ](concept
 ## <a name="configure-logging"></a>ログの構成
 MySQL の低速クエリ ログへのアクセスを構成します。 
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 2. Azure Database for MySQL サーバーを選択します。
 
@@ -34,11 +34,13 @@ MySQL の低速クエリ ログへのアクセスを構成します。
 
 5. **slow_query_log** を **[オン]** にします。
 
-6. **log_output** を使用して、ログの出力先を選択します。 ログをローカル ストレージと Azure Monitor 診断ログの両方に送信するには、 **[ファイル]** を選択します。 
+6. **log_output** を使用して、ログの出力先を選択します。 ログをローカル ストレージと Azure Monitor 診断ログの両方に送信するには、 **[ファイル]** を選択します。
 
-7. 必要なその他のすべてのパラメーターを変更します。 
+7. 低速クエリ ログ ファイルで収集されるクエリには、クエリ時間しきい値を表す "long_query_time" を設定することを検討してください。long_query_time の最小値と既定値は、それぞれ 0 と 10 です。
 
-8. **[保存]** を選択します。 
+8. 管理ステートメントをログに記録する場合、log_slow_admin_statements など、その他のパラメーターを調整します。 既定では、管理ステートメントはログに記録されません。参照にインデックスを使用しないクエリも同様です。 
+
+9. **[保存]** を選択します。 
 
    :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="低速クエリ ログのパラメーターと保存のスクリーンショット。":::
 
@@ -70,17 +72,17 @@ MySQL の低速クエリ ログへのアクセスを構成します。
 
    :::image type="content" source="./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png" alt-text="[診断設定] のオプションのスクリーンショット":::
 
-1. 診断設定の名前を指定します。
+2. 診断設定の名前を指定します。
 
-1. どのデータ シンク (ストレージ アカウント、イベント ハブ、Log Analytics ワークスペース) に低速クエリ ログを送信するか指定します。
+3. どのデータ シンク (ストレージ アカウント、イベント ハブ、Log Analytics ワークスペース) に低速クエリ ログを送信するか指定します。
 
-1. ログの種類として **[MySqlSlowLogs]** を選択します。
+4. ログの種類として **[MySqlSlowLogs]** を選択します。
 :::image type="content" source="./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png" alt-text="診断設定構成オプションのスクリーンショット":::
 
-1. 低速クエリ ログをパイプするようにデータ シンクを設定した後、 **[保存]** を選択します。
+5. 低速クエリ ログをパイプするようにデータ シンクを設定した後、 **[保存]** を選択します。
 :::image type="content" source="./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png" alt-text="[保存] が強調して示されている診断設定構成オプションのスクリーンショット":::
 
-1. 構成したデータ シンクを調べて低速クエリ ログにアクセスします。 ログが表示されるまでに最大で 10 分かかる可能性があります。
+6. 構成したデータ シンクを調べて低速クエリ ログにアクセスします。 ログが表示されるまでに最大で 10 分かかる可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 - [CLI での低速クエリ ログへのアクセス](howto-configure-server-logs-in-cli.md)に関する記事を参照して、プログラムで低速クエリ ログをダウンロードする方法について学習します。

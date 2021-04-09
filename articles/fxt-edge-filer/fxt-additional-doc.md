@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: 6be5e9bda27ddff157eda10bbb695dfacaecda7a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92342265"
 ---
 # <a name="additional-documentation-for-azure-fxt-edge-filer"></a>Azure FXT Edge Filer に関するその他のドキュメント

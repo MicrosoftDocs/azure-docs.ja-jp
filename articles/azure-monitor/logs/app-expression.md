@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
 ms.openlocfilehash: 235a6bf4a0dd9afcac8751067b2eac3ddb37c0cd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031244"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor クエリでの app() 式

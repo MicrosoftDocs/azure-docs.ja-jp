@@ -12,12 +12,12 @@ ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a7e9e523d3aae7cf1444c048c023ca1d85fde41f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 41336d59d51685d5daf78a1809ce6c0df2cd6124
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98952234"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781315"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph を使用して Azure AD B2C を管理する
 
@@ -137,6 +137,14 @@ Azure AD B2C で提供されているディレクトリには、ユーザーご�
 - [監査ログの一覧表示](/graph/api/directoryaudit-list)
 
 Azure AD B2C 監査ログにアクセスする方法の詳細については、「[Azure AD B2C 監査ログにアクセスする](view-audit-logs.md)」を参照してください。
+
+## <a name="conditional-access"></a>条件付きアクセス
+
+- [すべての条件付きアクセス ポリシーの一覧](/graph/api/conditionalaccessroot-list-policies?view=graph-rest-beta&tabs=http)
+- [条件付きアクセス ポリシーのプロパティとリレーションシップを読む](/graph/api/conditionalaccesspolicy-get)
+- [新しい条件付きアクセス ポリシーを作成する](/graph/api/resources/application)
+- [条件付きアクセス ポリシーを更新する](/graph/api/conditionalaccesspolicy-update)
+- [条件付きアクセス ポリシーを削除する](/graph/api/conditionalaccesspolicy-delete)
 
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>コード サンプル:プログラムによってユーザー アカウントを管理する方法
 

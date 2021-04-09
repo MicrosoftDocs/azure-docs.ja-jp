@@ -4,10 +4,10 @@ description: オンプレミスまたはクラウドにある Windows Server が
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.openlocfilehash: 41af655be07ccae2b66e75f5bfe87629cdb54924
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98785686"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Server で実行されるスタンドアロン クラスターの作成

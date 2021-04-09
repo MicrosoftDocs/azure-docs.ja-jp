@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-azurecli
 ms.date: 11/29/2019
-ms.openlocfilehash: 55c19ee9b23d43b0f9988363405d76fa16949ec9
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2160cfcd1f12f5effe7bb182eb665f85fec863af
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946038"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863396"
 ---
 # <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する
 
@@ -21,13 +21,13 @@ HDInsight クラスターの課金は、クラスターが作成されると開�
 
 ## <a name="azure-portal"></a>Azure portal
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. 左側メニューから、 **[すべてのサービス]**  >  **[分析]**  >  **[HDInsight クラスター]** に移動し、クラスターを選択します。
 
-3. 既定のビューから、 **[削除]** アイコンを選択します。 クラスターを削除するプロンプトに従います。
+3. 既定のビューから、[**削除**] アイコンを選択します。 クラスターを削除するプロンプトに従います。
 
-    ![HDInsight クラスター削除ボタン](./media/hdinsight-delete-cluster/hdinsight-delete-cluster.png)
+    :::image type="content" source="./media/hdinsight-delete-cluster/hdinsight-delete-cluster.png" alt-text="HDInsight クラスター削除ボタン":::
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

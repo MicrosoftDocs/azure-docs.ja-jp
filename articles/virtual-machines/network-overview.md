@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 723b556a2e5fd1fae32d50a382c99025ad726bff
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 20cc67d5c6436d7c0f44071509e13af324a88eea
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977359"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "100578862"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Azure における仮想ネットワークと仮想マシン 
 
@@ -135,10 +135,10 @@ VM と VNet を計画する際は、必ず NSG の[計画](../virtual-network/vi
 
 | Method | 説明 |
 | ------ | ----------- |
-| Azure portal |  [Azure Portal を使用して VM へのインターネット トラフィックを負荷分散](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)できます。 |
-| [Azure PowerShell](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md) | 以前作成したパブリック IP アドレスの識別子を指定するために、 **-PublicIpAddress** パラメーターを使用して [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) を実行します。 [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) を使用してバックエンド アドレス プールの構成を作成します。 [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) を使用して、作成済みのフロントエンド IP 構成に関連付けられた受信 NAT 規則を作成します。 [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) を使用して必要なプローブを作成します。 [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) を使用してロード バランサーの構成を作成します。 [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) を使用してロード バランサーを作成します。|
+| Azure portal |  [Azure Portal を使用して VM へのインターネット トラフィックを負荷分散](../load-balancer/quickstart-load-balancer-standard-public-portal.md)できます。 |
+| [Azure PowerShell](../load-balancer/quickstart-load-balancer-standard-public-powershell.md) | 以前作成したパブリック IP アドレスの識別子を指定するために、 **-PublicIpAddress** パラメーターを使用して [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) を実行します。 [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) を使用してバックエンド アドレス プールの構成を作成します。 [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) を使用して、作成済みのフロントエンド IP 構成に関連付けられた受信 NAT 規則を作成します。 [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) を使用して必要なプローブを作成します。 [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) を使用してロード バランサーの構成を作成します。 [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) を使用してロード バランサーを作成します。|
 | [Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md) | [az network lb create](/cli/azure/network/lb) を使用してロード バランサーの初期構成を作成します。 [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip) を使用して、以前作成したパブリック IP アドレスを追加します。 [az network lb address-pool create](/cli/azure/network/lb/address-pool) を使用して、バックエンド アドレス プールの構成を追加します。 [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule) を使用して NAT 規則を追加します。 [az network lb rule create](/cli/azure/network/lb/rule) を使用してロード バランサー規則を追加します。 [az network lb probe create](/cli/azure/network/lb/probe) を使用してプローブを追加します。 |
-| [テンプレート](../load-balancer/quickstart-load-balancer-standard-public-template.md) | テンプレートを使用したロード バランサーのデプロイについては、[ロード バランサーでの 2 つの VM の作成とそのロード バランサーでの NAT 規則の構成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create)に関するページをガイドとして使用してください。 |
+| [テンプレート](../load-balancer/quickstart-load-balancer-standard-public-template.md) | テンプレートを使用したロード バランサーのデプロイについては、[ロード バランサーでの 3 つの VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create) に関するページをガイドとして使用してください。 |
     
 次の表に、内部ロード バランサーの作成に使用できる方法の一覧を示します。
 
@@ -147,7 +147,7 @@ VM と VNet を計画する際は、必ず NSG の[計画](../virtual-network/vi
 | Azure portal | [Azure portal のロード バランサーを使用して内部トラフィックを負荷分散](../load-balancer/quickstart-load-balancer-standard-internal-portal.md)できます。 |
 | [Azure PowerShell](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md) | ネットワーク サブネットのプライベート IP アドレスを指定するために、 **-PrivateIpAddress** パラメーターを使用して [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) を実行します。 [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) を使用してバックエンド アドレス プールの構成を作成します。 [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) を使用して、作成済みのフロントエンド IP 構成に関連付けられた受信 NAT 規則を作成します。 [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) を使用して必要なプローブを作成します。 [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) を使用してロード バランサーの構成を作成します。 [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) を使用してロード バランサーを作成します。|
 | [Azure CLI](../load-balancer/quickstart-load-balancer-standard-internal-cli.md) | [az network lb create](/cli/azure/network/lb) コマンドを使用してロード バランサーの初期構成を作成します。 プライベート IP アドレスを定義するために、 **--private-ip-address** パラメーターを使用して [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip) を実行します。 [az network lb address-pool create](/cli/azure/network/lb/address-pool) を使用して、バックエンド アドレス プールの構成を追加します。 [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule) を使用して NAT 規則を追加します。 [az network lb rule create](/cli/azure/network/lb/rule) を使用してロード バランサー規則を追加します。 [az network lb probe create](/cli/azure/network/lb/probe) を使用してプローブを追加します。|
-| [テンプレート](../load-balancer/quickstart-load-balancer-standard-internal-template.md) | テンプレートを使用したロード バランサーのデプロイについては、[ロード バランサーでの 2 つの VM の作成とそのロード バランサーでの NAT 規則の構成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer)に関するページをガイドとして使用してください。 |
+| [テンプレート](../load-balancer/quickstart-load-balancer-standard-internal-template.md) | テンプレートを使用したロード バランサーのデプロイについては、[ロード バランサーでの 2 つの VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer) に関するページをガイドとして使用してください。 |
 
 ### <a name="virtual-machine-scale-sets"></a>仮想マシン スケール セット
 

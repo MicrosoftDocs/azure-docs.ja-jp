@@ -4,16 +4,16 @@ description: この記事では、azcopy copy コマンドに関する参照情�
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 03/08/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: c4e85195ace0a24aa11d4a03b8f429f2714399b0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: c676b92fd07c6e444aa22f25c48fdb1b1957ca7a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879158"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103493766"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -31,6 +31,7 @@ ms.locfileid: "98879158"
   - Azure Files (SAS) -> Azure Files (SAS)
   - Azure Files (SAS) -> Azure BLOB (SAS または OAuth 認証)
   - アマゾン ウェブ サービス (AWS) S3 (アクセス キー) -> Azure ブロック BLOB (SAS または OAuth 認証)
+  - Google Cloud Storage (サービス アカウント キー) -> Azure ブロック Blob (SAS または OAuth 認証) [プレビュー]
 
 詳細については、この記事の「例」のセクションを参照してください。
 
@@ -229,6 +230,36 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 - キーと値は URL でエンコードされ、キーと値のペアはアンパサンド ('&') で区切られます
     
 - BLOB にタグを設定するときに、SAS に追加のアクセス許可 (タグ用に 't') があります。これがないと、サービスから認可エラーが返されます。
+
+サービス アカウント キーと SAS トークンを使用して、Google Cloud Storage から Blob Storage に 1 つのオブジェクトをコピーします。 最初に、Google Cloud Storage ソースの環境変数 GOOGLE_APPLICATION_CREDENTIALS を設定します。
+  
+```azcopy
+azcopy cp "https://storage.cloud.google.com/[bucket]/[object]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
+```
+
+サービス アカウント キーと SAS トークンを使用して、Google Cloud Storage から Blob Storage にディレクトリ全体をコピーします。 最初に、Google Cloud Storage ソースの環境変数 GOOGLE_APPLICATION_CREDENTIALS を設定します。
+ 
+```azcopy
+  - azcopy cp "https://storage.cloud.google.com/[bucket]/[folder]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
+```
+
+サービス アカウント キーと SAS トークンを使用して、Google Cloud Storage から Blob Storage にバケット全体をコピーします。 最初に、Google Cloud Storage ソースの環境変数 GOOGLE_APPLICATION_CREDENTIALS を設定します。
+
+```azcopy 
+azcopy cp "https://storage.cloud.google.com/[bucket]" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
+
+サービス アカウント キーと SAS トークンを使用して、Google Cloud Storage から Blob Storage にすべてのバケットをコピーします。 最初に、GCS ソースの環境変数 GOOGLE_APPLICATION_CREDENTIALS と GOOGLE_CLOUD_PROJECT =<プロジェクト ID> を設定します。
+
+```azcopy
+  - azcopy cp "https://storage.cloud.google.com/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
+
+Google Cloud Storage のバケット名にワイルドカード記号 (*) を指定し、サービス アカウント キーと宛先の SAS トークンを使用して、バケットのサブセットをコピーします。 最初に、Google Cloud Storage ソースの環境変数 GOOGLE_APPLICATION_CREDENTIALS と GOOGLE_CLOUD_PROJECT =<プロジェクト ID> を設定します。
+ 
+```azcopy
+azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
 
 ## <a name="options"></a>Options
 

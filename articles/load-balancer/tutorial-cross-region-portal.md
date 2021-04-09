@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: 7fc964abf7e6832341ad8b1ad55711b3a9993506
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c16123fae63b89eff57b5c91864d9a947e01b386
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712515"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104576919"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してリージョン間 Azure ロード バランサーを作成する
 
@@ -41,7 +41,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
 
-Azure プレビュー ポータルに[サインイン](https://preview.portal.azure.com)します。
+Azure portal に[サインイン](https://portal.azure.com)します。
 
 ## <a name="create-cross-region-load-balancer"></a>リージョン間ロード バランサーを作成する
 
@@ -200,9 +200,6 @@ Azure プレビュー ポータルに[サインイン](https://preview.portal.az
 * 負荷分散規則を作成しました。
 * ロード バランサーをテストしました。
 
-リージョン間ロード バランサーの詳細については、「[リージョン間ロード バランサー (プレビュー)](cross-region-overview.md)」を参照してください。
-
-
-次の記事に進み、以下の方法を学習してください。
+リージョン間ロード バランサーの詳細については、次を参照してください。
 > [!div class="nextstepaction"]
-> [可用性ゾーン間での VM の負荷分散](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+> [リージョン間ロード バランサー (プレビュー)](cross-region-overview.md)

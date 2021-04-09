@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
 ms.openlocfilehash: 7dc8aac730fdf46cab47a3297b8c001cb0b8e314
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99226407"
 ---
 # <a name="test-vm-network-latency"></a>VM ネットワークの待ち時間のテスト
@@ -46,7 +46,7 @@ Ping などのその他の一般的な接続ツールでは、待機時間を測
 待機時間は、次の 2 つの異なるツールオプションを使用して測定できます。
 
 * Windows ベースのシステムの場合: [latte.exe (Windows)](https://github.com/microsoft/latte/releases/download/v0/latte.exe)
-* Linux ベースのシステムの場合:[SockPerf (Linux)](https://github.com/mellanox/sockperf)
+* Linux ベースのシステムの場合: [SockPerf (linux)](https://github.com/mellanox/sockperf)
 
 これらのツールを使用すると、アプリケーションによって使用されておらず、パフォーマンスに影響を与えない ICMP (Ping) や他の種類のパケットではなく、TCP または UDP ペイロードの配信時間だけが測定されます。
 
@@ -111,7 +111,7 @@ netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protoc
     latte -c -a <Receiver IP address>:<port> -i <iterations>
     ```
 
-    結果として得られるコマンドは、これが *クライアント* (*送信側*) であることを示す &nbsp; *-c* が追加されている点を除き、受信側と同じです。
+    結果として得られるコマンドは、これが *クライアント* (*送信側*) であることを示す &nbsp;*-c* が追加されている点を除き、受信側と同じです。
 
     `latte -c -a 10.0.0.4:5005 -i 65100`
 

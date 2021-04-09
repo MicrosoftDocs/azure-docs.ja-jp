@@ -8,10 +8,10 @@ author: sakthi-vetrivel
 ms.author: suvetriv
 keywords: aro、openshift、az aro、red hat、cli
 ms.openlocfilehash: 742da12bd3a10cd1f541e9c43f654cfe7df04340
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101720887"
 ---
 # <a name="upgrade-an-azure-red-hat-openshift-aro-cluster"></a>Azure Red Hat OpenShift (ARO) クラスターをアップグレードする

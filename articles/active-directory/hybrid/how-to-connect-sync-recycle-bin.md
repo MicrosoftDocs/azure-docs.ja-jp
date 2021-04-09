@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 12073a75cd248c9226c7ce5ecc21b64617823b32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89279637"
 ---
 # <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect 同期: AD のごみ箱の有効化
@@ -44,6 +44,6 @@ Azure AD に同期される、オンプレミスの Active Directory 向けの A
 ## <a name="next-steps"></a>次のステップ
 **概要トピック**
 
-* [Azure AD Connect sync: 同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
 
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)

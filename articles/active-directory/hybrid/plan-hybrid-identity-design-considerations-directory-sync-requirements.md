@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 500d226fcb60646becc49144f206dcb0dee49bd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89278396"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>ディレクトリ同期要件の決定
@@ -75,5 +75,5 @@ ms.locfileid: "89278396"
 ## <a name="next-steps"></a>次のステップ
 [多要素認証要件の決定](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 [設計上の考慮事項の概要](plan-hybrid-identity-design-considerations-overview.md)

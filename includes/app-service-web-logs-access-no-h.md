@@ -7,12 +7,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/27/2019
 ms.author: cephalin
-ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 7803ac9009af1657e7f162d656898492a694e28f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.custom: include file
+ms.openlocfilehash: e6c4b07d01a4992e22107cb7d524646f439c37c6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95997932"
 ---
 App Service のアプリケーション コード内から生成されたコンソール ログにアクセスするには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行して、診断ログを有効にします。

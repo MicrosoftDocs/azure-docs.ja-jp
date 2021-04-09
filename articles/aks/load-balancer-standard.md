@@ -8,10 +8,10 @@ ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
 ms.openlocfilehash: e37c5a748a8e99f49e3535946268427139bbbf44
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102184425"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でパブリック Standard Load Balancer を使用する

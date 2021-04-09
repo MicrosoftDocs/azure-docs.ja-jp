@@ -4,10 +4,10 @@ description: この記事では、Azure Service Bus メッセージの重複を�
 ms.topic: article
 ms.date: 01/13/2021
 ms.openlocfilehash: 527c2dea34b02733907372b6e75a40a5ef5fc289
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101711927"
 ---
 # <a name="duplicate-detection"></a>重複検出
@@ -48,7 +48,7 @@ ID のアプリケーションによる制御は、アプリケーションが *
 
 プログラム上では、フル フレームワーク .NET API の [QueueDescription.requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) プロパティにフラグを設定します。 Azure Resource Manager API では、値は [queueProperties.requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) プロパティで設定されます。
 
-重複検出時間の履歴は、既定では、キューとトピックで 10 秒に設定され、最小値は 20 秒、最大値は 7 分です。 この設定は、Azure ポータルの [キューおよびトピックのプロパティ] ウィンドウで変更することができます。
+重複検出時間の履歴は、既定では、キューとトピックで 10 分に設定され、最小値は 20 秒、最大値は 7 日です。 この設定は、Azure ポータルの [キューおよびトピックのプロパティ] ウィンドウで変更することができます。
 
 ![Service Bus 機能のスクリーンショット。[プロパティ] 設定が強調表示され、[重複データ検出の履歴] オプションが赤の枠線で囲まれています。][2]
 

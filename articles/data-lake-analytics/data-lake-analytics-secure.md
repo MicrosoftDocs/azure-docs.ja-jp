@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 05/30/2018
 ms.openlocfilehash: 52bdd80dba1d5de150f403199fbd5c14d188a410
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92220144"
 ---
 # <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics のジョブ情報へのユーザー アクセスを構成します。 
@@ -22,7 +22,7 @@ Azure Data Lake Analytics では、複数のユーザー アカウントまた�
 
 ## <a name="configure-user-access-to-job-information"></a>ジョブ情報へのユーザー アクセスを構成します
 
-**ユーザー追加ウィザード**を使用して、フォルダーに ACL を構成することができます。 詳細については、「[新しいユーザーの追加](data-lake-analytics-manage-use-portal.md#add-a-new-user)」を参照してください。
+**ユーザー追加ウィザード** を使用して、フォルダーに ACL を構成することができます。 詳細については、「[新しいユーザーの追加](data-lake-analytics-manage-use-portal.md#add-a-new-user)」を参照してください。
 
 さらにきめ細かく制御する必要がある場合、またはアクセス許可のスクリプトを作成する必要がある場合、次のようにしてフォルダーをセキュリティ保護します。
 
@@ -42,4 +42,4 @@ Azure Data Lake Analytics では、複数のユーザー アカウントまた�
    - /system/jobservice/jobs/Usql/2018/05/25/11/01/b074bd7a-1448-d879-9d75-f562b101bd3d
 
 ## <a name="next-steps"></a>次のステップ
-[新しいユーザーの追加](data-lake-analytics-manage-use-portal.md#add-a-new-user)
+[新しいユーザーを追加する](data-lake-analytics-manage-use-portal.md#add-a-new-user)

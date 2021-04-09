@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 12/11/2020
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 6ceeb3d31652c04eb9a69c1c8bb4b114e6f38d52
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97347744"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Azure App Service に対する TLS 相互認証の構成

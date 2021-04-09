@@ -10,10 +10,10 @@ ms.date: 08/06/2019
 ms.author: alkohli
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 96a6692524eca3a2845d648ab3df2932d00ce823
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91951147"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-with-azure-stack-edge-pro"></a>Azure Stack Edge Pro を使用してファイルを移動する C# IoT Edge モジュールを開発する
@@ -50,7 +50,7 @@ Azure Stack Edge Pro デバイスでは、IoT Edge モジュールをデプロ�
 
     - デバイスには、関連付けられた IoT Hub リソースもある。
     - デバイスで Edge コンピューティング ロールが構成されている。
-    詳細については、Azure Stack Edge Pro での「[コンピューティングの構成](azure-stack-edge-deploy-configure-compute.md#configure-compute)」をご覧ください。
+    詳細については、Azure Stack Edge Pro での「[コンピューティングの構成](azure-stack-edge-deploy-configure-compute.md#configure-compute)」を参照してください。
 
 - 次の開発リソース。
 
@@ -68,9 +68,9 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 2. **[Create a resource] (リソースの作成) > [コンテナー] > [Container Registry]** を選択します。 **Create** をクリックしてください。
 3. 次を指定します。
 
-   1. 5 - 50 文字の英数字を含む、Azure 内で一意の**レジストリ名**。
+   1. 5 - 50 文字の英数字を含む、Azure 内で一意の **レジストリ名**。
    2. **[サブスクリプション]** を選択します。
-   3. 新しい**リソース グループ**を作成するか、既存のリソース グループを選択します。
+   3. 新しい **リソース グループ** を作成するか、既存のリソース グループを選択します。
    4. **[場所]** を選択します。 この場所は、Azure Stack Edge リソースと関連付けられているのと同じ場所にすることをお勧めします。
    5. **[管理者ユーザー]** を **[有効]** に切り替えます。
    6. SKU を **[Basic]** に設定します。
@@ -82,7 +82,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
     ![アクセス キーを取得する](./media/azure-stack-edge-create-iot-edge-module/get-access-keys-1.png)
  
-6. **ログイン サーバー**、**ユーザー名**、および**パスワード**の値をコピーします。 これらの値は、後で Docker イメージをレジストリに発行し、レジストリの資格情報を Azure IoT Edge ランタイムに追加する際に使用します。
+6. **ログイン サーバー**、**ユーザー名**、および **パスワード** の値をコピーします。 これらの値は、後で Docker イメージをレジストリに発行し、レジストリの資格情報を Azure IoT Edge ランタイムに追加する際に使用します。
 
 
 ## <a name="create-an-iot-edge-module-project"></a>IoT Edge モジュール プロジェクトを作成する
@@ -160,7 +160,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
     }
     ```
 
-5. **Init メソッド**では、コードによって **ModuleClient** オブジェクトが作成され、構成されます。 このオブジェクトにより、モジュールは MQTT プロトコルを使用してローカルの Azure IoT Edge ランタイムに接続し、メッセージを送受信することができます。 Init メソッドで使用される接続文字列は、IoT Edge ランタイムによってモジュールに提供されます。 コードによって、IoT Edge ハブから **input1** エンドポイントを介してメッセージを受信するための FileCopy コールバックが登録されます。 **Init メソッド**を次のコードに置き換えます。
+5. **Init メソッド** では、コードによって **ModuleClient** オブジェクトが作成され、構成されます。 このオブジェクトにより、モジュールは MQTT プロトコルを使用してローカルの Azure IoT Edge ランタイムに接続し、メッセージを送受信することができます。 Init メソッドで使用される接続文字列は、IoT Edge ランタイムによってモジュールに提供されます。 コードによって、IoT Edge ハブから **input1** エンドポイントを介してメッセージを受信するための FileCopy コールバックが登録されます。 **Init メソッド** を次のコードに置き換えます。
 
     ```
     /// <summary>
@@ -182,7 +182,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
     }
     ```
 
-6. **PipeMessage メソッド**のコードを削除し、その代わりに **FileCopy** のコードを挿入します。
+6. **PipeMessage メソッド** のコードを削除し、その代わりに **FileCopy** のコードを挿入します。
 
     ```
         /// <summary>
@@ -278,4 +278,4 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Stack Edge Pro でこのモジュールをデプロイして実行するには、「[モジュールの追加](azure-stack-edge-deploy-configure-compute.md#add-a-module)」の手順をご覧ください。
+Azure Stack Edge Pro でこのモジュールをデプロイして実行するには、「[モジュールの追加](azure-stack-edge-deploy-configure-compute.md#add-a-module)」の手順を参照してください。

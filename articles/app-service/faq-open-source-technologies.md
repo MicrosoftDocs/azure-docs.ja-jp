@@ -10,10 +10,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18, devx-track-python
 ms.openlocfilehash: 36dfbf0fda060a8f273fee64098d6234b575088c
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97831841"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure の Web アプリのオープン ソース テクノロジに関する FAQ

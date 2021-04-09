@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
 ms.openlocfilehash: e0e60ee346d20113b2ec7970390d9874522cc770
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87847314"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>オンプレミスのマシンを Azure に移行する
@@ -19,7 +19,7 @@ ms.locfileid: "87847314"
 
 ## <a name="migrate-with-azure-migrate"></a>Azure Migrate を使用した移行
 
-マシンは、[Azure Migrate](../migrate/migrate-services-overview.md) サービスを使用して Azure に移行することをお勧めします。 Azure Migrate は、サーバーの移行専用に設計されています。 Azure Migrate は、オンプレミスのマシンの検出、評価、および Azure への移行を行うための中心的なハブを提供します。
+マシンを Azure に移行する際は、[Azure Migrate](../migrate/migrate-services-overview.md) サービスを使用することをお勧めします。 Azure Migrate は、サーバーの移行専用に設計されています。 Azure Migrate は、オンプレミスのマシンの検出、評価、および Azure への移行を行うための中心的なハブを提供します。
 
 Azure Migrate で移行する場合は、次のリンクを参照してください。
 

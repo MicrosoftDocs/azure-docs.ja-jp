@@ -12,13 +12,13 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8be878cf40967356d68e9be0765e898c81b5ba0a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93314628"
 ---
-# <a name="process-data-in-sql-server-virtual-machine-on-azure"></a><a name="heading"></a>Azure の SQL Server 仮想マシンでデータを処理する
+# <a name="process-data-in-sql-server-virtual-machine-on-azure"></a><a name="heading"></a>Azure の SQL Server Virtual Machine でデータを処理する
 このドキュメントでは、Azure の SQL Server VM に保存されたデータを探索し、データの特徴を生成する方法について説明します。 この目標は、SQL を使用してデータをラングリングするか、Python などのプログラミング言語を使用して達成できます。
 
 > [!NOTE]
@@ -43,7 +43,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 1. 1 日ごとの所見の数を取得する
    
     `SELECT CONVERT(date, <date_columnname>) as date, count(*) as c from <tablename> group by CONVERT(date, <date_columnname>)` 
-2. カテゴリ列内のレベルを取得する
+2. カテゴリ列内のレベルを取得する 
    
     `select  distinct <column_name> from <databasename>`
 3. 2 つのカテゴリ列の組み合わせ内のレベルの数を取得する 

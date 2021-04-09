@@ -5,30 +5,30 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, sneshaf, pinath, logicappspm
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: a90f75db6961ea06b1cf9c2958556c1c2ef24805
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/22/2021
+ms.openlocfilehash: f2b4e09ec9b50bb6993c89d90b0f33c0c905cbf0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380136"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699098"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Power Automate からフローをエクスポートして Azure Logic Apps にデプロイする
 
-> 2020 年 10 月以降に作成されたフローでは、Power Automate からエクスポートして Azure Logic Apps にデプロイすることはできなくなりました。
-
 フローの機能を拡張するために、そのフローを [Power Automate](https://flow.microsoft.com) から [Azure Logic Apps](../logic-apps/logic-apps-overview.md) に移行することができます。 フローをロジック アプリの Azure Resource Manager テンプレートとしてエクスポートし、そのロジック アプリ テンプレートを Azure リソース グループにデプロイした後、Logic App Designer でそのロジック アプリを開くことができます。
 
-> [!NOTE]
-> すべての Power Automate コネクタが Azure Logic Apps で使用できるわけではありません。 Azure Logic Apps に同等のコネクタを持つ Power Automate フローのみを移行できます。 たとえば、Button トリガー、Approval コネクタ、および Notification コネクタは Power Automate に固有です。 現時点では、Power Automate の OpenAPI ベースのフローは、ロジック アプリ テンプレートとしてエクスポートおよびデプロイではサポートされていません。
->
-> * Logic Apps に同等のコネクタを持たない Power Automate コネクタを見つけるには、[Power Automate コネクタ](/connectors/connector-reference/connector-reference-powerautomate-connectors)に関する記事を参照してください。
->
-> * Power Automate に同等のコネクタを持たない Logic Apps コネクタを見つけるには、[Logic Apps コネクタ](/connectors/connector-reference/connector-reference-logicapps-connectors)に関する記事を参照してください。
+> [!IMPORTANT]
+> 2020 年 8 月以降に作成された Power Automate フローについては、Logic Apps へのエクスポートは利用できません。 2020 年 10 月に、Power Automate では [OpenAPI 2.0 プロトコル](https://swagger.io/specification/v2/)での新しいフロー作成が標準化されました。 このプロトコルに基づく新しいフローは Logic Apps ワークフローと互換性がないため、これらのフローを Logic Apps にエクスポートすることはできなくなりました。 代わりに、これらのフローに対応した[ロジック アプリ](quickstart-create-first-logic-app-workflow.md)を手動で作成する必要があります。
+
+すべての Power Automate コネクタが Azure Logic Apps で使用できるわけではありません。 Azure Logic Apps に同等のコネクタを持つ Power Automate フローのみを移行できます。 たとえば、Button トリガー、Approval コネクタ、および Notification コネクタは Power Automate に固有です。 
+
+* Logic Apps に同等のコネクタを持たない Power Automate コネクタを見つけるには、[Power Automate コネクタ](/connectors/connector-reference/connector-reference-powerautomate-connectors)に関する記事を参照してください。
+
+* Power Automate に同等のコネクタを持たない Logic Apps コネクタを見つけるには、[Logic Apps コネクタ](/connectors/connector-reference/connector-reference-logicapps-connectors)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+* Azure アカウントとサブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 * Power Automate からエクスポートするフロー
 

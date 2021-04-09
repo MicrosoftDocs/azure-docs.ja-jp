@@ -5,15 +5,15 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 09/10/2020
+ms.date: 02/17/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 12cc2de6cd1a8e9ddf40b358c94b720b8b2cf594
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 646495597565bbb033ac3adaa15f3754f33e8fd6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920445"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "100634169"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Azure Defender のアラートの抑制
 
@@ -60,9 +60,7 @@ Azure portal で直接ルールを作成するには:
 
 1. Security Center の [セキュリティ アラート] ページから:
 
-    - 今後表示される必要のない特定のアラートを見つけて、そのアラートの省略記号メニュー (...) から **[Create suppression rule]\(抑制ルールの作成\)** を選択します。
-
-        [![**[Create suppression rule]\(抑制ルールの作成\)** オプション](media/alerts-suppression-rules/auto-dismiss-future-option.png)](media/alerts-suppression-rules/auto-dismiss-future-option.png#lightbox)
+    - 今後表示しない特定のアラートを選択し、詳細ウィンドウで **[アクションの実行]** を選択します。
 
     - または、ページの上部にある **[抑制ルール]** リンクを選択し、[抑制ルール] ページで **[新しい抑制ルールの作成]** を選択します。
 
@@ -85,7 +83,7 @@ Azure portal で直接ルールを作成するには:
 1. ルールを保存します。 
 
 
-## <a name="edit-a-suppression-rules"></a>抑制ルールを編集する
+## <a name="edit-a-suppression-rule"></a>抑制ルールを編集する
 
 作成したルールを編集する場合は、[抑制ルール] ページを使用します。
 
@@ -106,20 +104,6 @@ Azure portal で直接ルールを作成するには:
 1. 1 つのルールを削除する場合は、そのルールの省略記号メニュー (...) を開き、 **[削除]** を選択します。
 1. 複数のルールを削除する場合は、削除するルールのチェック ボックスを選択し、 **[削除]** を選択します。
     ![1 つまたは複数の抑制ルールの削除](media/alerts-suppression-rules/delete-multiple-alerts.png)
-
-## <a name="view-suppressed-alerts"></a>抑制されたアラートを表示する
-
-有効にした抑制ルールと一致するアラートは、引き続き生成されますが、その状態は **[dismissed]\(無視\)** に設定されます。 その状態は、Azure portal でも確認できますが、Security Center の [セキュリティ アラート] にアクセスして確認することもできます。 
-
-> [!TIP]
-> [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) では、抑制されたアラートのインシデントは作成されません。 他の SIEM の場合は、そのアラートの状態 ([dismissed]\(無視\)) を使用すれば、抑制されたアラートをフィルター処理できます。
-
-作成したルールに従って無視されたアラートを表示するには、Security Center のフィルターを使用します。
-
-* Security Center の [セキュリティ アラート] ページから、フィルター オプションを開き、 **[Dismissed]\(無視\)** を選択します。  
-
-   [![無視されたアラートの表示](media/alerts-suppression-rules/view-dismissed-alerts.png)](media/alerts-suppression-rules/view-dismissed-alerts.png#lightbox)
-
 
 ## <a name="create-and-manage-suppression-rules-with-the-api"></a>API を使用して抑制ルールの作成および管理を行う
 

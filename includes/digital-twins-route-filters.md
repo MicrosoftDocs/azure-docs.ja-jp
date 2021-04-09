@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 12/04/2020
 ms.author: baanders
 ms.openlocfilehash: d93f484e318c10489eb1db3e9c65c6e0c7479c90
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98859870"
 ---
 | フィルター名 | 説明 | フィルター テキスト スキーマ | サポート状況の値 | 

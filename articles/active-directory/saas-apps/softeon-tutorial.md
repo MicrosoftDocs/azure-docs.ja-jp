@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 32ad2c46a63e7cc8b84015cf99dfc95c5f5f4f13
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92514862"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-softeon-wms"></a>チュートリアル: Azure Active Directory と Softeon WMS の統合
@@ -41,8 +41,8 @@ Softeon WMS と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Softeon WMS では、 **SP** によって開始される SSO がサポートされます
-* Softeon WMS では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Softeon WMS では、**SP** によって開始される SSO がサポートされます
+* Softeon WMS では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-softeon-wms-from-the-gallery"></a>ギャラリーからの Softeon WMS の追加
 
@@ -62,13 +62,13 @@ Azure AD への Softeon WMS の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Softeon WMS** 」と入力し、結果パネルで **[Softeon WMS]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Softeon WMS**」と入力し、結果パネルで **[Softeon WMS]** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果一覧の Softeon WMS](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Softeon WMS で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Softeon WMS で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Softeon WMS 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Softeon WMS で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -86,7 +86,7 @@ Softeon WMS で Azure AD のシングル サインオンを構成してテスト
 
 Softeon WMS で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Softeon WMS** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Softeon WMS** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -143,7 +143,7 @@ Softeon WMS で Azure AD シングル サインオンを構成するには、次
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -156,7 +156,7 @@ Softeon WMS で Azure AD シングル サインオンを構成するには、次
 
 このセクションでは、Britta Simon に Softeon WMS へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Softeon WMS]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Softeon WMS]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

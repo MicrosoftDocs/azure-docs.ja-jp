@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 4eb689b17df8236a00b5914912d1927804944f25
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 52aaa11278e5bb523594936c75d6810c1638fa7e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009417"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674939"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でデータ ソースを検出する方法
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 ## <a name="introduction"></a>はじめに
 
@@ -33,7 +35,7 @@ Data Catalog での検出では、検索とフィルター処理という 2 つ�
 
 既定の自由テキストの検索は単純かつ直観的ですが、Data Catalog の検索構文を使用して検索結果をより細かく制御することもできます。 Data Catalog 検索では、次の手法をサポートしています。
 
-| 手法 | 用途 | 例 |
+| 手法 | vmmblue_2 | 例 |
 | --- | --- | --- |
 | 基本的な検索 |1 つまたは複数の検索語句を使用した基本的な検索です。 いずれかのプロパティが指定した 1 つまたは複数の語句と一致するすべての資産が返されます。 |`sales data` |
 | プロパティ スコープ |検索語句が指定したプロパティと一致するデータ ソースのみを返します。 |`name:finance` |
@@ -48,11 +50,11 @@ Data Catalog の検索の詳細については、[Azure Data Catalog](/rest/api/
 検索結果を表示すると、指定した検索語句 (データ資産名、説明、タグなど) と一致して表示されるプロパティは強調表示されます。これにより、特定の検索によって特定のデータ資産が返された理由を容易に識別できます。
 
 > [!NOTE]
-> 検索結果の強調表示をオフにするには、Data Catalog ポータルで **[強調表示]** を切り替えます。
+> 検索結果の強調表示をオフにするには、Data Catalog ポータルで [**強調表示**] を切り替えます。
 
 検索結果を表示する場合に、結果の強調表示が有効になっていても、データ資産が含まれる理由が必ずしも明確になっているとは限りません。 既定ではすべてのプロパティが検索されるため、列レベルのプロパティでの一致により、データ資産が返される可能性があります。 また、複数のユーザーが独自のタグおよび説明を使用して登録済みのデータ資産に注釈を付けることができるので、検索結果の一覧にすべてのメタデータが表示されるとは限りません。
 
-既定のタイル ビューでは、検索結果に表示される各タイルに **[検索語句の一致を表示]** アイコンが含まれます。このアイコンを使用することで、一致した数および一致場所を迅速に表示し、必要に応じてジャンプすることができます。
+既定のタイル ビューでは、検索結果に表示される各タイルに [**検索語句の一致を表示**] アイコンが含まれます。このアイコンを使用することで、一致した数および一致場所を迅速に表示し、必要に応じてジャンプすることができます。
 
  ![Azure Data Catalog ポータルでの検索語句の強調表示と検索結果](./media/data-catalog-how-to-discover/search-matches.png)
 

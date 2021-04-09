@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/04/2021
 ms.author: trbye
 ms.openlocfilehash: 4ec9c847158c9b8a1160cb6f4510912ed83a9fae
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98947123"
 ---
 まず、`KeywordRecognitionModel` を返す `FromFile()` 静的関数を使用して、キーワード モデル ファイルを読み込みます。 Speech Studio からダウンロードした `.table` ファイルへのパスを使用します。 また、既定のマイクを使用して `AudioConfig` を作成し、オーディオ構成を使用して新しい `KeywordRecognizer` をインスタンス化します。

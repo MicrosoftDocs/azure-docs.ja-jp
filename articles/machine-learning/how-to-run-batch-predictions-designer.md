@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 09/09/2020
+ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 2ef125f65e13f7a9fa756553b1de148d4849babc
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: dda47d3ff561d4d57045dbb28f8c411e193086d5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553948"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101657380"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーを使用してバッチ予測を実行する
 
@@ -144,6 +144,22 @@ REST 呼び出しを行うには、OAuth 2.0 ベアラー型認証ヘッダー�
 エンドポイントの **[Published pipelines]\(発行済みパイプライン\)** タブで新しい既定のパイプラインを設定することもできます。
 
 ![[発行済みパイプライン] ページで規定のパイプラインを設定する](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
+
+## <a name="limitations"></a>制限事項
+
+トレーニング パイプラインに何らかの変更を加える場合は、トレーニング パイプラインを再送信し、推論パイプラインを **更新** して、推論パイプラインを再度実行する必要があります。
+
+推論パイプラインではモデルのみが更新され、データ変換は更新されないことに注意してください。
+
+更新された変換を推論パイプラインで使用するには、変換モジュールの変換出力をデータセットとして登録する必要があります。
+
+![変換データセットの登録方法を示すスクリーンショット](./media/how-to-run-batch-predictions-designer/register-transformation-dataset.png)
+
+次に、推論パイプラインの **TD-** モジュールを、登録したデータセットに手動で置き換えます。
+
+![変換モジュールの置換方法を示すスクリーンショット](./media/how-to-run-batch-predictions-designer/replace-td-module-batch-inference-pipeline.png)
+
+その後、更新されたモデルおよび変換と共に推論パイプラインを送信し、公開できます。
 
 ## <a name="next-steps"></a>次のステップ
 

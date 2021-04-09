@@ -14,16 +14,16 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 310dd82f9a5f7f98fbca720b48212b7963e25a63
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: f56f8ac42f0db3d2cd27453cd023a2e869b0cde0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551506"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103466084"
 ---
 # <a name="roles-for-microsoft-365-services-in-azure-active-directory"></a>Azure Active Directory の Microsoft 365 サービスのロール
 
-Microsoft 365 のすべての製品は、Azure Active Directory (Azure AD) の管理者ロールで管理できます。 一部の製品では、その製品に固有の追加のロールも提供されます。 各製品でサポートされるロールについては、次の表を参照してください。 委任の問題に関する一般的な説明については、[Azure Active Directory でのロールの委任計画](concept-delegation.md)に関するページを参照してください。
+Microsoft 365 のすべての製品は、Azure Active Directory (Azure AD) の管理者ロールで管理できます。 一部の製品では、その製品に固有の追加のロールも提供されます。 各製品でサポートされるロールについては、次の表を参照してください。 ロール セキュリティの計画のガイドラインについては、「[Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](security-planning.md)」を参照してください。
 
 ## <a name="where-to-find-content"></a>コンテンツの参照先
 

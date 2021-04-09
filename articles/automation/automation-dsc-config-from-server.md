@@ -11,10 +11,10 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 8f376fb383e50a39f0f12d45cf9b5ae47ad6fcbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86186505"
 ---
 # <a name="create-configurations-from-existing-servers"></a>既存のサーバーから構成を作成する
@@ -22,7 +22,7 @@ ms.locfileid: "86186505"
 > 適用先:Windows PowerShell 5.1
 
 既存のサーバーから構成を作成するのは、困難な作業になることがあります。
-*すべての*設定ではなく、気になる設定だけが必要な場合があります。
+*すべての* 設定ではなく、気になる設定だけが必要な場合があります。
 それでも、構成を正常に適用するためには、どのような順序で設定を適用する必要があるかを知っている必要があります。
 
 > [!NOTE]

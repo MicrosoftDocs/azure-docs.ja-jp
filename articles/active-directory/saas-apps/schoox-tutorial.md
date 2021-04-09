@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
 ms.openlocfilehash: a2f6560a3828672bfafc46bb793c21060d52d71b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92669458"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-schoox"></a>チュートリアル: Azure Active Directory と Schoox の統合
@@ -41,7 +41,7 @@ Schoox と Azure AD の統合を構成するには、次のものが必要です
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Schoox では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Schoox では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-schoox-from-the-gallery"></a>ギャラリーからの Schoox の追加
 
@@ -61,13 +61,13 @@ Azure AD への Schoox の統合を構成するには、ギャラリーから管
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Schoox** 」と入力し、結果パネルで **[Schoox]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Schoox**」と入力し、結果パネルで **[Schoox]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Schoox](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Schoox で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Schoox で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Schoox 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Schoox で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ Schoox で Azure AD のシングル サインオンを構成してテストす�
 
 Schoox で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Schoox** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Schoox** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -146,9 +146,9 @@ Schoox で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -159,7 +159,7 @@ Schoox で Azure AD シングル サインオンを構成するには、次の�
 
 このセクションでは、Britta Simon に Schoox へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Schoox]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Schoox]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

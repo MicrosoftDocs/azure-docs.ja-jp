@@ -9,14 +9,16 @@ ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: d50ff37c3d29ae8e9e25d8759ef3c55787a58047
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 468f1b91d6c6157cd2af6de9599bad7f43c1ad8f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043002"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103492559"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge セキュリティ マネージャー
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Azure IoT Edge セキュリティ マネージャーは、セキュア シリコン ハードウェアを抽象化することによって IoT Edge デバイスとそのすべてのコンポーネントを保護するための、適切に境界付けられたセキュリティ コアです。 セキュリティ マネージャーはセキュリティ強化の中心点であり、相手先ブランド製造 (OEM) にテクノロジの統合ポイントを提供します。
 

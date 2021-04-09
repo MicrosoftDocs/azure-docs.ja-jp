@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 25190075bdd13bd4b75dd82c97ee06ee60f4c26c
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743187"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-an-azure-cloud-service-classic"></a>Azure クラウド サービス (クラシック) のスタートアップ タスクを構成して実行する方法

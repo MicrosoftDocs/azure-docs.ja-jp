@@ -7,10 +7,10 @@ ms.date: 01/27/2020
 ms.topic: how-to
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
 ms.openlocfilehash: 5db3e538a64e275313e1e0ab01f6cc6350eabb77
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96745436"
 ---
 # <a name="standard-quota-increase-limits-by-vm-series"></a>標準クォータ: VM シリーズでの制限の引き上げ
@@ -64,7 +64,7 @@ Spot VM vCPU の制限の引き上げの詳細については、「[スポット
 
    ![クォータの種類を選択する](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-1. **次へ:ソリューション** を選択して **問題の詳細** を開きます。 **[詳細の指定]** を選択して、追加情報を入力します。
+1. **ソリューション** を選択して **問題の詳細** を開きます。 **[詳細の指定]** を選択して、追加情報を入力します。
 
    ![[詳細の指定] リンク](./media/resource-manager-core-quotas-request/provide-details-link.png)
 

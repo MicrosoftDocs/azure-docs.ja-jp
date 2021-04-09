@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
 ms.openlocfilehash: efbb8a9ca0d475939d7713fa6a6a4a8245aead90
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92457063"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bizagi-for-digital-process-automation"></a>チュートリアル:Azure Active Directory のシングル サインオン (SSO) と Bizagi for Digital Process Automation の統合
@@ -41,7 +41,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、Automation サービスまたはサーバーを使用して、Bizagi プロジェクトで Azure AD SSO を構成し、テストします。
 
-* Bizagi for Digital Process Automation では、 **SP** initiated SSO がサポートされます
+* Bizagi for Digital Process Automation では、**SP** initiated SSO がサポートされます
 * Bizagi for Digital Process Automation を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-bizagi-for-digital-process-automation-from-the-gallery"></a>ギャラリーからの Bizagi for Digital Process Automation の追加
@@ -52,7 +52,7 @@ Azure AD への Bizagi for Digital Process Automation の統合を構成する�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Bizagi for Digital Process Automation** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Bizagi for Digital Process Automation**」と入力します。
 1. 結果のパネルから **[Bizagi for Digital Process Automation]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-bizagi-for-digital-process-automation"></a>Bizagi for Digital Process Automation の Azure AD シングル サインオンの構成とテスト
@@ -130,7 +130,7 @@ Bizagi for Digital Process Automation に対する Azure AD SSO を構成して�
 
 ## <a name="configure-bizagi-for-digital-process-automation-sso"></a>Bizagi for Digital Process Automation SSO の構成
 
-**Bizagi for Digital Process Automation** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Bizagi for Digital Process Automation サポート チーム](mailto:jarvein.rivera@bizagi.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Bizagi for Digital Process Automation** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Bizagi for Digital Process Automation サポート チーム](mailto:jarvein.rivera@bizagi.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-bizagi-for-digital-process-automation-test-user"></a>Bizagi for Digital Process Automation テスト ユーザーの作成
 

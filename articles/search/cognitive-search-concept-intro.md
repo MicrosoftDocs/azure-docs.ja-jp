@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 09e7a39a2d97626dd01a00fdaef9bc4d711d557b
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.custom: references_regions
+ms.openlocfilehash: 22d7c1bbe03d8b3c0e3b6026c9bac039f0651548
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828084"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037253"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメント
 
@@ -23,15 +24,26 @@ AI エンリッチメントは、画像、BLOB、その他の構造化されて�
 
 組み込みのスキルは、次のカテゴリに分類されます。 
 
-+ **自然言語処理**スキルには、[エンティティ認識](cognitive-search-skill-entity-recognition.md)、[言語検出](cognitive-search-skill-language-detection.md)、[キー フレーズ抽出](cognitive-search-skill-keyphrases.md)、テキスト操作、[センチメント検出](cognitive-search-skill-sentiment.md)、[PII 検出](cognitive-search-skill-pii-detection.md)が含まれます。 これらのスキルによって、構造化されていないテキストが、インデックスで検索可能およびフィルター可能なフィールドとしてマップされます。
++ **自然言語処理** スキルには、[エンティティ認識](cognitive-search-skill-entity-recognition.md)、[言語検出](cognitive-search-skill-language-detection.md)、[キー フレーズ抽出](cognitive-search-skill-keyphrases.md)、テキスト操作、[センチメント検出](cognitive-search-skill-sentiment.md)、[PII 検出](cognitive-search-skill-pii-detection.md)が含まれます。 これらのスキルによって、構造化されていないテキストが、インデックスで検索可能およびフィルター可能なフィールドとしてマップされます。
 
-+ **画像処理**スキルには、[光学式文字認識 (OCR)](cognitive-search-skill-ocr.md) および[ビジュアル フィーチャー](cognitive-search-skill-image-analysis.md)の特定 (例: 顔検出、画像の解釈、画像の認識 (有名な人やランドマーク)、画像の向きなどの属性) が含まれます。 これらのスキルによって、画像コンテンツのテキスト表現が作成され、Azure Cognitive Search のクエリ機能を使用して検索できるようになります。
++ **画像処理** スキルには、[光学式文字認識 (OCR)](cognitive-search-skill-ocr.md) および [ビジュアル フィーチャー](cognitive-search-skill-image-analysis.md)の特定 (例: 顔検出、画像の解釈、画像の認識 (有名な人やランドマーク)、画像の向きなどの属性) が含まれます。 これらのスキルによって、画像コンテンツのテキスト表現が作成され、Azure Cognitive Search のクエリ機能を使用して検索できるようになります。
 
 ![エンリッチメント パイプラインの図](./media/cognitive-search-intro/cogsearch-architecture.png "エンリッチメント パイプラインの概要")
 
 Azure Cognitive Search の組み込みのスキルは、Cognitive Services APIs の事前トレーニング済み機械学習モデル ([Computer Vision](../cognitive-services/computer-vision/index.yml) と[テキスト分析](../cognitive-services/text-analytics/overview.md)) に基づいています。 コンテンツの処理中にこれらのリソースを活用する場合は、Cognitive Services リソースをアタッチできます。
 
 自然言語および画像処理はデータ インジェスト フェーズで適用され、結果は Azure Cognitive Search における検索可能なインデックス内のドキュメントの構成の一部になります。 データは Azure データ セットとして調達され、必要な[組み込みのスキル](cognitive-search-predefined-skills.md)を使用してインデックス パイプライン経由でプッシュされます。  
+
+## <a name="feature-availability"></a>使用可能な機能
+
+AI エンリッチメントは、Azure Cognitive Services も利用できるリージョンでご利用いただけます。  AI エンリッチメントを現在ご利用いただけるかどうかは、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=search)ページでご確認いただけます。  AI エンリッチメントは、以下のリージョンを除き、サポートされているすべてのリージョンでご利用いただけます。
+
++ オーストラリア南東部
++ 中国北部 2
++ ノルウェー東部
++ ドイツ中西部
+
+お使いの検索サービスがこれらのリージョンに置かれている場合、スキルセットを作成したり、使用したりできませんが、その他の検索サービス機能はすべてご利用いただけます。また、完全サポートされています。
 
 ## <a name="when-to-use-ai-enrichment"></a>どのような場合に AI エンリッチメントを使用するか
 
@@ -73,7 +85,7 @@ Azure Cognitive Search の組み込みのスキルは、Cognitive Services APIs 
 
 ### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>手順 2:認知スキルとエンリッチメント フェーズ
 
-エンリッチメントは、アトミック操作を実行する "*コグニティブ スキル*" を使用して実行されます。 たとえば、PDF を解析した後、エンティティの認識、言語検出、またはキー フレーズ抽出を適用して、ソースではネイティブで使用できない新しいフィールドをインデックスで生成できます。 パイプラインで使用される技術を総称して*スキルセット*と呼びます。  
+エンリッチメントは、アトミック操作を実行する "*コグニティブ スキル*" を使用して実行されます。 たとえば、PDF を解析した後、エンティティの認識、言語検出、またはキー フレーズ抽出を適用して、ソースではネイティブで使用できない新しいフィールドをインデックスで生成できます。 パイプラインで使用される技術を総称して *スキルセット* と呼びます。  
 
 ![エンリッチメント フェーズ](./media/cognitive-search-intro/enrichment-phase-blowup.png "エンリッチメント フェーズ")
 

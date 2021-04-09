@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10f179ab1bf328a2132c9206580dfa58efb80f1b
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 02cd3f54823b80ae201316fee29c02616b9d8502
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741923"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103012039"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>Privileged Identity Management を使用してグループにロールを割り当てる
 
@@ -48,14 +48,14 @@ ms.locfileid: "98741923"
 Azure AD #PowerShell モジュールをインストールするには、次のコマンドレットを使用します。
 
 ```powershell
-install-module azureadpreview
-import-module azureadpreview
+Install-Module -Name AzureADPreview
+Import-Module -Name AzureADPreview
 ```
 
 モジュールを使用する準備ができているかどうかを確認するには、次のコマンドレットを使用します。
 
 ```powershell
-get-module azureadpreview
+Get-Module -Name AzureADPreview
 ```
 
 ### <a name="assign-a-group-as-an-eligible-member-of-a-role"></a>ロールの有資格メンバーとしてグループを割り当てる
@@ -70,34 +70,21 @@ Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId aadRoles -Schedule $sc
 
 ## <a name="using-microsoft-graph-api"></a>Microsoft Graph API の使用
 
-```powershell
+```http
 POST
-https://graph.microsoft.com/beta/privilegedAccess/aadroles/roleAssignmentRequests  
-
+https://graph.microsoft.com/beta/privilegedAccess/aadroles/roleAssignmentRequests
 {
-
  "roleDefinitionId": {roleDefinitionId},
-
  "resourceId": {tenantId},
-
  "subjectId": {GroupId},
-
  "assignmentState": "Eligible",
-
  "type": "AdminAdd",
-
  "reason": "reason string",
-
  "schedule": {
-
    "startDateTime": {DateTime},
-
    "endDateTime": {DateTime},
-
    "type": "Once"
-
  }
-
 }
 ```
 

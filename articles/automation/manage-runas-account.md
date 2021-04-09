@@ -5,12 +5,12 @@ services: automation
 ms.subservice: ''
 ms.date: 01/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: f9e99318c526bb935d0e035fdbf59874249390da
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: f170fc948f136f4f46634e7ae2645ed2eb357afa
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050941"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101096461"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Azure Automation の実行アカウントを管理する
 
@@ -64,10 +64,10 @@ Azure Automation では、1 つのサブスクリプションから 1 つの Aut
 
 ロールの割り当てを追加する方法の詳細な手順については、使用する方法に応じて、次に関する記事を参照してください。
 
-* [Azure portal から Azure ロールの割り当てを追加する](../role-based-access-control/role-assignments-portal.md)
-* [Azure PowerShell を使用して Azure ロールの割り当てを追加する](../role-based-access-control/role-assignments-powershell.md)
-* [Azure CLI を使用して Azure ロールの割り当てを追加する](../role-based-access-control/role-assignments-cli.md)
-* [REST API を使用して Azure ロールの割り当てを追加する](..//role-based-access-control/role-assignments-rest.md)
+* [Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)
+* [Azure PowerShell を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-powershell.md)
+* [Azure CLI を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-cli.md)
+* [REST API を使用して Azure ロールを割り当てる](..//role-based-access-control/role-assignments-rest.md)
 
 実行アカウントをロールに割り当てた後、Runbook で `Set-AzContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"` を指定して、使用するサブスクリプションのコンテキストを設定します。 詳細については、「[Set-AzContext](/powershell/module/az.accounts/set-azcontext)」を参照してください。
 

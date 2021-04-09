@@ -7,10 +7,10 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.openlocfilehash: ea153b1927a337be29c2eb69e2417cc250abf5e8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94366053"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>Azure Logic Apps で調整の問題 (429 - "要求が多すぎます" エラー) を処理する
@@ -45,7 +45,7 @@ Azure Logic Apps サービスには、独自の[スループット制限](../log
 
 * 同時に実行できるロジック アプリ インスタンスの数を制限します。
 
-  既定では、ロジック アプリのトリガー条件が同時に複数回満たされた場合、ロジック アプリの複数のトリガー インスタンスが同時に (つまり " *並列して* ") 実行されます。 この動作は、先行するワークフロー インスタンスが実行を完了する前に個々のトリガー インスタンスが開始されることを意味します。
+  既定では、ロジック アプリのトリガー条件が同時に複数回満たされた場合、ロジック アプリの複数のトリガー インスタンスが同時に (つまり "*並列して*") 実行されます。 この動作は、先行するワークフロー インスタンスが実行を完了する前に個々のトリガー インスタンスが開始されることを意味します。
 
   同時に実行できるトリガー インスタンスの既定数は[無制限](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits)ですが、[トリガーのコンカレンシー設定をオンにする](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)ことでこの数を制限できます。また、必要に応じて、既定値以外の制限を選択できます。
 
@@ -55,13 +55,13 @@ Azure Logic Apps サービスには、独自の[スループット制限](../log
 
 * トリガーの配列のデバッチ ("分割") 動作を無効にします。
 
-  処理する残りのワークフロー アクションの配列がトリガーから返される場合、トリガーの [ **[分割]** 設定](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)によって配列項目が分割され、各配列項目のワークフロー インスタンスが開始され、 [ **[分割] 制限**](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits)を上限として複数の同時実行が効率的にトリガーされます。 調整を制御するには、 **[分割]** 動作をオフにし、呼び出しごとに 1 つの項目を処理するのではなく、ロジック アプリから 1 回の呼び出しで配列全体を処理するようにします。
+  処理する残りのワークフロー アクションの配列がトリガーから返される場合、トリガーの [ **[分割]** 設定](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)によって配列項目が分割され、各配列項目のワークフロー インスタンスが開始され、[ **[分割] 制限**](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits)を上限として複数の同時実行が効率的にトリガーされます。 調整を制御するには、 **[分割]** 動作をオフにし、呼び出しごとに 1 つの項目を処理するのではなく、ロジック アプリから 1 回の呼び出しで配列全体を処理するようにします。
 
 * アクションを小さなロジック アプリにリファクタリングします。
 
   前述のように、ロジック アプリは [5 分間で実行できるアクションの既定数](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)に制限されています。 [高スループット モード](../logic-apps/logic-apps-limits-and-config.md#run-high-throughput-mode)を有効にするとこの制限を引き上げることができますが、各ロジック アプリで実行されるアクションの数が制限を超えないようにロジック アプリのアクションを小さなロジック アプリに分割するかどうかを検討することもできます。 このように、1 つのロジック アプリ リソースの負荷を軽減し、複数のロジック アプリに負荷を分散します。 このソリューションは、大規模なデータ セットを処理するアクションや、同時に実行されるアクション、ループ反復、または各ループ反復内のアクションがアクション実行の制限を超えるほど多くなるアクションに適しています。
 
-  たとえば、このロジック アプリでは、SQL Server データベースからテーブルを取得するためのすべての作業を実行し、各テーブルから行を取得します。 **For each** ループは各テーブルで同時に反復されるため、 **Get rows** アクションから各テーブルの行が返されます。 こうしたテーブルのデータ量によっては、これらのアクションがアクション実行の制限を超える可能性があります。
+  たとえば、このロジック アプリでは、SQL Server データベースからテーブルを取得するためのすべての作業を実行し、各テーブルから行を取得します。 **For each** ループは各テーブルで同時に反復されるため、**Get rows** アクションから各テーブルの行が返されます。 こうしたテーブルのデータ量によっては、これらのアクションがアクション実行の制限を超える可能性があります。
 
   ![リファクタリング "前" のロジック アプリ](./media/handle-throttling-problems-429-errors/refactor-logic-app-before-version.png)
 
@@ -87,7 +87,7 @@ HTTP などの一部のトリガーとアクションには、[再試行ポリ�
 
 再試行履歴にはエラー情報が含まれていますが、コネクタの調整と[接続先の調整](#destination-throttling)を区別できないことがあります。 このような場合は、必要に応じて応答の詳細を確認するか、いくつかの調整間隔の計算を実行してソースを特定します。
 
-グローバルなマルチテナント Azure Logic Apps サービスのロジック アプリの場合、" *接続* " レベルで調整が行われます。 そのため、たとえば、[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) で実行されているロジック アプリの場合、グローバルなマルチテナント Logic Apps サービスで実行されるため、ISE 以外の接続でも調整が行われます。 ただし、ISE コネクタによって作成された ISE 接続は、ISE で実行されるため、調整されません。
+グローバルなマルチテナント Azure Logic Apps サービスのロジック アプリの場合、"*接続*" レベルで調整が行われます。 そのため、たとえば、[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) で実行されているロジック アプリの場合、グローバルなマルチテナント Logic Apps サービスで実行されるため、ISE 以外の接続でも調整が行われます。 ただし、ISE コネクタによって作成された ISE 接続は、ISE で実行されるため、調整されません。
 
 このレベルで調整を処理するには、次の選択肢があります。
 
@@ -97,11 +97,11 @@ HTTP などの一部のトリガーとアクションには、[再試行ポリ�
 
   たとえば、ロジック アプリで SQL Server データベースからテーブルを取得し、各テーブルから行を取得するとします。 処理する必要がある行数に基づいて、複数の接続と複数の **For each** ループを使用して、処理のために行の総数を少数のセットに分割できます。 このシナリオでは、2 つの **For each** ループを使用して、行の総数を半分に分割します。 最初の **For each** ループでは、前半を取得する式を使用します。 もう 1 つの **For each** ループでは、後半を取得する別の式を使用します。次に例を示します。<p>
 
-    * 式 1:`take()` 関数を使用してコレクションの前部を取得します。 詳細については、 [ **`take()`** 関数](workflow-definition-language-functions-reference.md#take)に関するページを参照してください。
+    * 式 1:`take()` 関数を使用してコレクションの前部を取得します。 詳細については、[ **`take()`** 関数](workflow-definition-language-functions-reference.md#take)に関するページを参照してください。
 
       `@take(collection-or-array-name, div(length(collection-or-array-name), 2))`
 
-    * 式 2:`skip()` 関数を使用してコレクションの前部を削除し、他のすべてのアイテムを返します。 詳細については、 [ **`skip()`** 関数](workflow-definition-language-functions-reference.md#skip)に関するページを参照してください。
+    * 式 2:`skip()` 関数を使用してコレクションの前部を削除し、他のすべてのアイテムを返します。 詳細については、[ **`skip()`** 関数](workflow-definition-language-functions-reference.md#skip)に関するページを参照してください。
 
       `@skip(collection-or-array-name, div(length(collection-or-array-name), 2))`
 

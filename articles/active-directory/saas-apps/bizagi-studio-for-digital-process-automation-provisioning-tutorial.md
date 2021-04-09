@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
 ms.openlocfilehash: 72e021f47bb8db4dedf0e434d0d94bb2118a4c00
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98728163"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Bizagi Studio for Digital Process Automation を構成する

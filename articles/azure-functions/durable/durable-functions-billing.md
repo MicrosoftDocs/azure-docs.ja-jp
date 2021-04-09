@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 2ec1b080c195a47caafd0120240b5fb61ede062b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97932284"
 ---
 # <a name="durable-functions-billing"></a>Durable Functions の課金

@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c506c87ad5901754175f18e6b50bc6ed46a3c19
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98246912"
 ---
 # <a name="azure-ad-connect-group-writeback"></a>Azure AD Connect のグループの書き戻し

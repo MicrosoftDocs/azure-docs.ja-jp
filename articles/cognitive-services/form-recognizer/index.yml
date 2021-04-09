@@ -8,15 +8,15 @@ metadata:
   ms.service: cognitive-services
   ms.subservice: forms-recognizer
   ms.topic: landing-page
-  author: PatrickFarley
-  ms.author: pafarley
+  author: laujan
+  ms.author: lajanuar
   ms.date: 09/05/2019
-  ms.openlocfilehash: 6aecdb69a390dd5dfd43a541b29437c0feebf53d
-  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.openlocfilehash: 955de3dc1510d86ac0f1d3aa80dc4fb208d914f7
+  ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102503064"
+  ms.lasthandoff: 03/15/2021
+  ms.locfileid: "103467155"
 landingContent:
 - title: Form Recognizer について
   linkLists:
@@ -138,8 +138,8 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Form Recognizer API v2.0
-      url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm
+    - text: Form Recognizer API v2.1 preview.3
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm
     - text: .NET SDK
       url: /dotnet/api/overview/azure/ai.formrecognizer-readme
     - text: Python SDK

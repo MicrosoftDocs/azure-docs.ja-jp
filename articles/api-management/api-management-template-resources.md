@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84689989"
 ---
 # <a name="azure-api-management-template-resources"></a>Azure API Management テンプレート リソース
@@ -113,22 +113,22 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="apisstrings"></a><a name="ApisStrings"></a> ApisStrings  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
 |PageTitleApis|API|  
   
 ###  <a name="appdetailsstrings"></a><a name="AppDetailsStrings"></a> AppDetailsStrings  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
 |WebApplicationsDetailsTitle|Application preview (アプリケーションのプレビュー)|  
-|WebApplicationsRequirementsHeader|必要条件|  
+|WebApplicationsRequirementsHeader|要件|  
 |WebApplicationsScreenshotAlt|Screenshot|  
 |WebApplicationsScreenshotsHeader|Screenshots (スクリーンショット)|  
   
 ###  <a name="applicationliststrings"></a><a name="ApplicationListStrings"></a> ApplicationListStrings  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
 |WebDevelopersAppDeleteConfirmation|Are you sure that you want to remove application? (アプリケーションを削除しますか?)|  
 |WebDevelopersAppNotPublished|Not published (未発行)|  
@@ -138,19 +138,19 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |WebDevelopersAppTableStateHeader|State|  
 |WebDevelopersEditLink|[編集]|  
 |WebDevelopersRegisterAppLink|アプリケーションを登録する|  
-|WebDevelopersRemoveLink|[削除]|  
-|WebDevelopersSubmitLink|[送信]|  
+|WebDevelopersRemoveLink|削除|  
+|WebDevelopersSubmitLink|送信|  
 |WebDevelopersYourApplicationsHeader|ご利用のアプリケーションへの応用|  
   
 ###  <a name="appstrings"></a><a name="AppStrings"></a> AppStrings  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
 |WebApplicationsHeader|アプリケーション|  
   
 ###  <a name="commonresources"></a><a name="CommonResources"></a> CommonResources  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
 |NoItemsToDisplay|該当するものが見つかりません。|  
 |GeneralExceptionMessage|Something is not right. (問題があります。) It could be a temporary glitch or a bug. (一時的な障害またはバグである可能性があります。) Please, try again. (もう一度実行してください。)|  
@@ -161,17 +161,17 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="commonstrings"></a><a name="CommonStrings"></a> CommonStrings  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
-|ButtonLabelCancel|Cancel|  
+|ButtonLabelCancel|キャンセル|  
 |ButtonLabelSave|保存|  
 |GeneralExceptionMessage|Something is not right. (問題があります。) It could be a temporary glitch or a bug. (一時的な障害またはバグである可能性があります。) Please, try again. (もう一度実行してください。)|  
 |NoItemsToDisplay|There are no items to display. (表示する項目がありません。)|  
-|PagerButtonLabelFirst|First (先頭へ)|  
-|PagerButtonLabelLast|Last (最後へ)|  
-|PagerButtonLabelNext|Next|  
+|PagerButtonLabelFirst|First|  
+|PagerButtonLabelLast|末尾|  
+|PagerButtonLabelNext| ボタンをクリックします。|  
 |PagerButtonLabelPrevious|Prev (前へ)|  
-|PagerLabelPageNOfM|ページ {0} / {1}|  
+|PagerLabelPageNOfM|{0}/{1} ページ|  
 |PasswordTooShort|The Password is too short (パスワードが短すぎます)|  
 |EmailAsPassword|Do not use your email as your password (メール アドレスをパスワードとして使用しないでください)|  
 |PasswordSameAsUserName|Your password cannot contain your username (パスワードにユーザー名を含めることはできません)|  
@@ -179,13 +179,13 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |PasswordTooManyRepetitions|Too many repetitions (繰り返しが多すぎます)|  
 |PasswordSequenceFound|Your password contains sequences (パスワードにシーケンスが含まれています)|  
 |PagerLabelPageSize|Page size (ページ サイズ)|  
-|CurtainLabelLoading|Loading... (読み込んでいます...)|  
+|CurtainLabelLoading|読み込んでいます...|  
 |TablePlaceholderNothingToDisplay|There is no data for the selected period and scope (選択した期間とスコープのデータがありません)|  
 |ButtonLabelClose|閉じる|  
   
 ###  <a name="documentation"></a><a name="Documentation"></a> Documentation  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
 |WebDocumentationInvalidHeaderErrorMessage|Invalid header '{0}' (ヘッダー '{0}' が無効です)|  
 |WebDocumentationInvalidRequestErrorMessage|Invalid Request URL (要求 URL が無効です)|  
@@ -302,8 +302,8 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |OAuth2UnsupportedTokenType|Token type '{0}' is not supporetd. (トークンの種類 '{0}' はサポートされていません。)|  
 |OAuth2InvalidState|Invalid response from authorization server (承認サーバーからの応答が無効です)|  
 |OAuth2GrantType_AuthorizationCode|Authorization code (承認コード)|  
-|OAuth2GrantType_Implicit|Implicit|  
-|OAuth2GrantType_ClientCredentials|クライアントの資格情報|  
+|OAuth2GrantType_Implicit|暗黙|  
+|OAuth2GrantType_ClientCredentials|クライアント資格情報|  
 |OAuth2GrantType_ResourceOwnerPassword|Resource owner password (リソース所有者のパスワード)|  
 |WebDocumentation302Code|302 Found (302 検出)|  
 |WebDocumentation400Code|400 (Bad request) (400 (無効な要求))|  
@@ -325,15 +325,15 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |SectionHeadingRequestBody|要求本文|  
 |SectionHeadingRequestParameters|要求パラメーター|  
 |SectionHeadingRequestUrl|要求 URL|  
-|SectionHeadingResponse|Response|  
+|SectionHeadingResponse|応答|  
 |SectionHeadingRequestHeaders|要求ヘッダー|  
-|FormLabelSubtextOptional|省略可能|  
+|FormLabelSubtextOptional|オプション|  
 |SectionHeadingCodeSamples|コード サンプル|  
 |TextblockOpenidConnectHeaderDescription|OpenID Connect ID token obtained from <i\>{0}</i\>. (OpenID Connect ID トークンを <i>{0}</i> から取得しました。) Supported grant types: <i\>{1}</i\>. (サポートされている付与タイプ: <i>{0}</i>。)|  
   
 ###  <a name="errorpagestrings"></a><a name="ErrorPageStrings"></a> ErrorPageStrings  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
 |LinkLabelBack|戻る|  
 |LinkLabelHomePage|home page|  
@@ -351,7 +351,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="issuesstrings"></a><a name="IssuesStrings"></a> IssuesStrings  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
 |WebIssuesIndexTitle|発行|  
 |WebIssuesNoActiveSubscriptions|You have no active subscriptions. (アクティブなサブスクリプションがありません。) You need to subscribe for a product to report an issue. (問題を報告するには、製品をサブスクライブする必要があります。)|  
@@ -362,7 +362,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="notfoundstrings"></a><a name="NotFoundStrings"></a> NotFoundStrings  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
 |LinkLabelHomePage|home page|  
 |LinkLabelSendUsEmail|Send us an e-mail (電子メールを送信する)|  
@@ -377,12 +377,12 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="productdetailsstrings"></a><a name="ProductDetailsStrings"></a> ProductDetailsStrings  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
 |WebProductsAgreement|By subscribing to {0} Product, I agree to the `<a data-toggle='modal' href='#legal-terms'\>Terms of Use</a\>`. ({0} 製品をサブスクライブすることで、使用条件に同意します。)|  
-|WebProductsLegalTermsLink|使用条件|  
-|WebProductsSubscribeButton|購入|  
-|WebProductsUsageLimitsHeader|Usage limits (使用状況の制限)|  
+|WebProductsLegalTermsLink|利用条件|  
+|WebProductsSubscribeButton|購読|  
+|WebProductsUsageLimitsHeader|使用制限|  
 |WebProductsYouAreNotSubscribed|You are subscribed to this product. (この製品をサブスクライブしています。)|  
 |WebProductsYouRequestedSubscription|You requested subscription to this product. (この製品に対するサブスクリプションを要求しました。)|  
 |ErrorYouNeedToAgreeWithLegalTerms|You must agree to the Terms of Use before you can proceed. (続行する前に、使用条件に同意する必要があります。)|  
@@ -399,13 +399,13 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="productsstrings"></a><a name="ProductsStrings"></a> ProductsStrings  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
 |PageTitleProducts|製品|  
   
 ###  <a name="providerinfostrings"></a><a name="ProviderInfoStrings"></a> ProviderInfoStrings  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
 |TextboxExternalIdentitiesDisabled|Sign in is disabled by the administrators at the moment. (サインインは、現在、管理者によって無効になっています。)|  
 |TextboxExternalIdentitiesSigninInvitation|Alternatively, sign in with (次のアカウントでサインインすることもできます)|  
@@ -413,7 +413,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="signinresources"></a><a name="SigninResources"></a> SigninResources  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
 |PrincipalNotFound|Principal is not found or signature is invalid (プリンシパルが見つからないか、署名が無効です)|  
 |ErrorSsoAuthenticationFailed|SSO authentication failed (SSO 認証に失敗しました)|  
@@ -423,7 +423,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |ValidationErrorSpecificEmailInvalid|Email '{0}' is invalid (電子メールは '{0}' 無効です)|  
 |ValidationErrorPasswordInvalid|Password is invalid. (パスワードが無効です。) Please correct the errors and try again. (エラーを修正してやり直してください。)|  
 |PropertyTooShort|{0} is too short ({0} が短すぎます)|  
-|WebAuthenticationAddresserEmailInvalidErrorMessage|Invalid email address. (無効なメール アドレスです。)|  
+|WebAuthenticationAddresserEmailInvalidErrorMessage|電子メール アドレスが無効です。|  
 |ValidationMessageNewPasswordConfirmationRequired|新しいパスワードの確認入力|  
 |ValidationErrorPasswordConfirmationRequired|Confirm password is empty (確認入力パスワードが空です)|  
 |WebAuthenticationEmailChangeNotice|Change confirmation email is on the way to {0}. (変更の確認メールは {0} に送信中です。) Please follow instructions within it to confirm your new email address. (メールに記載されている説明に従って、新しいメール アドレスを確認してください。) If the email does not arrive to your inbox in the next few minutes, please check your junk email folder. (数分経過しても受信箱にメールが届かない場合、迷惑メールのフォルダーを確認してください。)|  
@@ -433,7 +433,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |ValidationErrorEmailAlreadyExists|Email already exist (メール アドレスは既に存在します)|  
 |ValidationErrorEmailInvalid|Invalid e-mail address (メール アドレスが無効です)|  
 |TextboxLabelEmail|Email|  
-|ValidationErrorEmailRequired|Email is required. (メール アドレスは必須です。)|  
+|ValidationErrorEmailRequired|電子メール アドレスは必須です。|  
 |WebAuthenticationErrorNoticeHeader|エラー|  
 |WebAuthenticationFieldLengthErrorMessage|{0} must be a maximum length of {1} ({0} は最大長 {0} である必要があります)|  
 |TextboxLabelEmailFirstName|名|  
@@ -456,10 +456,10 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |WebAuthenticationPasswordChangedNotice|Your password was successfully updated (パスワードは正常に更新されました)|  
 |WebAuthenticationPasswordChangedNoticeTitle|Password updated (パスワードが更新されました)|  
 |WebAuthenticationPasswordCompareErrorMessage|Passwords don't match (パスワードが一致しません)|  
-|WebAuthenticationPasswordConfirmLabel|[パスワードの確認入力]|  
+|WebAuthenticationPasswordConfirmLabel|パスワードの確認|  
 |ValidationErrorPasswordInvalidDetailed|Password is too weak. (パスワードが脆弱すぎます。)|  
 |WebAuthenticationPasswordLabel|Password|  
-|ValidationErrorPasswordRequired|Password is required. (パスワードが必要です。)|  
+|ValidationErrorPasswordRequired|パスワードが必要です。|  
 |WebAuthenticationPasswordResetSendNotice|Change password confirmation email is on the way to {0}. (パスワードの変更確認メールは {0} に送信中です。) Please follow the instructions within the email to continue your password change process. (メールに記載されている指示に従って、パスワードの変更プロセスを続行してください。)|  
 |WebAuthenticationPasswordResetSendNoticeHeader|Your password reset request was successfully processed (パスワードのリセット要求が正常に処理されました)|  
 |WebAuthenticationPasswordResetSendNoticeTitle|Password reset requested (パスワードのリセットが要求されました)|  
@@ -477,7 +477,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |ButtonLabelChangePassword|パスワードの変更|  
 |ButtonLabelChangeAccountInfo|Change account information (アカウント情報の変更)|  
 |ButtonLabelCloseAccount|Close account (アカウントの削除)|  
-|WebAuthenticationInvalidCaptchaErrorMessage|Text entered doesn't match text on the picture. (入力されたテキストが、画像のテキストと一致しません。) 再試行してください。|  
+|WebAuthenticationInvalidCaptchaErrorMessage|Text entered doesn't match text on the picture. (入力されたテキストが、画像のテキストと一致しません。) もう一度やり直してください。|  
 |ValidationErrorCredentialsInvalid|Email or password is invalid. (メール アドレスまたはパスワードが無効です。) Please correct the errors and try again. (エラーを修正してやり直してください。)|  
 |WebAuthenticationRequestIsNotValid|Request is not valid (要求は無効です)|  
 |WebAuthenticationUserIsNotConfirm|Please confirm your registration before attempting to sign in. (サインインする前に登録を確認してください。)|  
@@ -504,12 +504,12 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |WebAuthenticationNoAadTenantConfigured|No Azure Active Directory tenant configured for the service. (Azure Active Directory テナントはサービス用に構成されていません。)|  
 |CheckboxLabelUserRegistrationTermsConsentRequired|I agree to the `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use</a\>`. (使用条件に同意します。)|  
 |TextblockUserRegistrationTermsProvided|Please review `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use.</a\>` (使用条件を確認してください。)|  
-|DialogHeadingTermsOfUse|使用条件|  
+|DialogHeadingTermsOfUse|利用条件|  
 |ValidationMessageConsentNotAccepted|You must agree to the Terms of Use before you can proceed. (続行する前に、使用条件に同意する必要があります。)|  
   
 ###  <a name="signinstrings"></a><a name="SigninStrings"></a> SigninStrings  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
 |WebAuthenticationForgotPassword|パスワードを忘れた場合|  
 |WebAuthenticationIfAdministrator|If you are an Administrator you must sign in `<a href="{0}"\>here</a\>`. (管理者である場合は、ここでサインインする必要があります。)|  
@@ -521,7 +521,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="signupstrings"></a><a name="SignupStrings"></a> SignupStrings  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
 |PageTitleSignup|サインアップ|  
 |WebAuthenticationAlreadyAMember|Already a member? (既にメンバーの場合)|  
@@ -531,7 +531,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="subscriptionliststrings"></a><a name="SubscriptionListStrings"></a> SubscriptionListStrings  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
 |SubscriptionCancelConfirmation|Are you sure that you want to cancel this subscription? (このサブスクリプションを取り消しますか?)|  
 |SubscriptionRenewConfirmation|Are you sure that you want to renew this subscription? (このサブスクリプションを更新しますか?)|  
@@ -554,10 +554,10 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="subscriptionstrings"></a><a name="SubscriptionStrings"></a> SubscriptionStrings  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
 |SectionHeadingCloseAccount|Looking to close your account? (アカウントを削除する場合)|  
-|PageTitleDeveloperProfile|プロファイル|  
+|PageTitleDeveloperProfile|[プロファイル]|  
 |ButtonLabelHideKey|非表示|  
 |ButtonLabelRegenerateKey|再生成|  
 |InformationMessageKeyWasRegenerated|Are you sure that you want to regenerate this key? (このキーを再生成しますか?)|  
@@ -565,14 +565,14 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="updateprofilestrings"></a><a name="UpdateProfileStrings"></a> UpdateProfileStrings  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
 |ButtonLabelUpdateProfile|プロファイルの更新|  
 |PageTitleUpdateProfile|Update account information (アカウント情報の更新)|  
   
 ###  <a name="userprofile"></a><a name="UserProfile"></a> UserProfile  
   
-|名前|Text|  
+|名前|テキスト|  
 |----------|----------|  
 |ButtonLabelChangeAccountInfo|Change account information (アカウント情報の変更)|  
 |ButtonLabelChangePassword|パスワードの変更|  

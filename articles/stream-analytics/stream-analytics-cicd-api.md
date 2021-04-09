@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: 3c3f776ad0996fa0b7422f0fca2d899a35e853d1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98016135"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>API を使用して IoT Edge 上に Stream Analytics 向けの CI/CD を実装する
@@ -54,7 +54,7 @@ echo $response
  
 Stream Analytics ジョブを作成するには、Stream Analytics API を使用して PUT メソッドを呼び出します。
 
-|方法|要求 URL|
+|Method|要求 URL|
 |------|-----------|
 |PUT|`https://management.azure.com/subscriptions/{\**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview`|
  
@@ -141,7 +141,7 @@ JSON での要求本文の例:
  
 IoT Edge で Stream Analytics ジョブを発行するには、Edge Package Publish API を使用して POST メソッドを呼び出します。
 
-|方法|要求 URL|
+|Method|要求 URL|
 |------|-----------|
 |POST|`https://management.azure.com/subscriptions/{\**subscriptionid**}/resourceGroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**jobname**}/publishedgepackage?api-version=2017-04-01-preview`|
 

@@ -11,10 +11,10 @@ ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
 ms.openlocfilehash: 709c85bed4a028c6c168c79cd9fffd6b7b40cb68
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100008045"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>解釈可能性: 自動機械学習のモデルの説明 (プレビュー)
@@ -25,7 +25,7 @@ ms.locfileid: "100008045"
 
 1\.0.85 より後のすべての SDK バージョンは、既定で `model_explainability=True` となります。 SDK バージョン 1.0.85 以前のバージョンでは、モデルの解釈可能性を使用するために、ユーザーは `AutoMLConfig` オブジェクトに `model_explainability=True` を設定する必要があります。 
 
-この記事では、次の方法について説明します。
+この記事では、次のことについて説明します。
 
 - 最良のモデルまたは任意のモデルのトレーニング中の解釈可能性を実行する。
 - データや説明のパターンを確認するのに役立つ視覚化を有効にする。

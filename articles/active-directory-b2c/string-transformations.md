@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/03/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4e74c33a18baff3e1cb39328ce265f16975ef1b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 85574b7d33af6d9abfe25f5af4d811255f08ce4b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994844"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102452239"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
@@ -149,6 +149,42 @@ ms.locfileid: "95994844"
     - **value**:Contoso terms of service...
 - 出力要求:
     - **createdClaim**:TOS ClaimType には「Contoso サービス利用規約...」の値が含まれています。
+
+## <a name="copyclaimifpredicatematch"></a>CopyClaimIfPredicateMatch
+
+入力要求の値が出力要求の述語と一致する場合は、要求の値を別の値にコピーします。 
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | string | コピーする要求の種類。 |
+| OutputClaim | outputClaim | string | この要求変換が呼び出された後に生成される要求の種類。 入力要求の値は、この要求の述語に対してチェックされます。 |
+
+次の例では、signInName が電話番号の場合にのみ、signInName 要求の値が phoneNumber 要求にコピーされます。 完全なサンプルについては、[電話番号または電子メールによるサインイン](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/blob/master/scenarios/phone-number-passwordless/Phone_Email_Base.xml)に関するスターター パック ポリシーを参照してください。
+
+```xml
+<ClaimsTransformation Id="SetPhoneNumberIfPredicateMatch" TransformationMethod="CopyClaimIfPredicateMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="signInName" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example-1"></a>例 1
+
+- 入力要求:
+    - **inputClaim**: bob@contoso.com
+- 出力要求:
+    - **outputclaim**: 出力要求は元の値から変更されません。
+
+### <a name="example-2"></a>例 2
+
+- 入力要求:
+    - **inputClaim**: +11234567890
+- 出力要求:
+    - **outputClaim**: +11234567890
 
 ## <a name="compareclaims"></a>CompareClaims
 
@@ -290,6 +326,77 @@ ms.locfileid: "95994844"
     - **outputClaim**:OTP_853
 
 
+## <a name="formatlocalizedstring"></a>FormatLocalizedString
+
+指定されたローカライズ済み書式指定文字列に従って、複数の要求の書式を設定します。 この変換では､C# の `String.Format` メソッドを使用します。
+
+
+| Item | TransformationClaimType | データ型 | Notes |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaims |  |string | 文字列形式 {0}、{1}、{2} パラメーターとして機能する一連の入力要求。 |
+| InputParameter | stringFormatId | string |  [ローカライズされた文字列](localization.md)の `StringId`。   |
+| OutputClaim | outputClaim | string | この要求変換が呼び出された後に生成される ClaimType。 |
+
+> [!NOTE]
+> 文字列形式の最大許容サイズは 4000 です。
+
+FormatLocalizedString 要求変換を使用するには:
+
+1. [ローカライズ文字列](localization.md)を定義し、それを[セルフアサート技術プロファイル](self-asserted-technical-profile.md)に関連付けます。
+1. `LocalizedString` 要素の `ElementType` は `FormatLocalizedStringTransformationClaimType` に設定する必要があります。
+1. `StringId` は、ユーザーが定義する一意識別子であり、後ほど要求変換 `stringFormatId` で使用します。
+1. 要求変換で、ローカライズされた文字列を使用して設定される要求の一覧を指定します。 次に、`stringFormatId` を ローカライズされた文字列要素の `StringId` に設定します。 
+1. [セルフアサート技術プロファイル](self-asserted-technical-profile.md)、または[表示コントロール](display-controls.md)の入力または出力要求変換で、要求変換への参照を付けます。
+
+
+次の例では、アカウントが既にディレクトリに存在する場合にエラー メッセージが生成されます。 この例では、英語 (既定値) とスペイン語のローカライズされた文字列が定義されます。
+
+```xml
+<Localization Enabled="true">
+  <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+    <SupportedLanguage>en</SupportedLanguage>
+    <SupportedLanguage>es</SupportedLanguage>
+   </SupportedLanguages>
+
+  <LocalizedResources Id="api.localaccountsignup.en">
+    <LocalizedStrings>
+      <LocalizedString ElementType="FormatLocalizedStringTransformationClaimType" StringId="ResponseMessge_EmailExists">The email '{0}' is already an account in this organization. Click Next to sign in with that account.</LocalizedString>
+      </LocalizedStrings>
+    </LocalizedResources>
+  <LocalizedResources Id="api.localaccountsignup.es">
+    <LocalizedStrings>
+      <LocalizedString ElementType="FormatLocalizedStringTransformationClaimType" StringId="ResponseMessge_EmailExists">Este correo electrónico "{0}" ya es una cuenta de esta organización. Haga clic en Siguiente para iniciar sesión con esa cuenta.</LocalizedString>
+    </LocalizedStrings>
+  </LocalizedResources>
+</Localization>
+```
+
+要求変換では、ローカライズされた文字列に基づいて応答メッセージが作成されます。 メッセージには、ローカライズされた文字列 *ResponseMessge_EmailExists* に埋め込まれているユーザーのメールアドレスが含まれます。
+
+```xml
+<ClaimsTransformation Id="SetResponseMessageForEmailAlreadyExists" TransformationMethod="FormatLocalizedString">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="stringFormatId" DataType="string" Value="ResponseMessge_EmailExists" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>例
+
+- 入力要求:
+    - **inputClaim**: sarah@contoso.com
+- 入力パラメーター:
+    - **stringFormat**: ResponseMessge_EmailExists
+- 出力要求:
+  - **Outputclaim**: 電子メール 'sarah@contoso.com' は既にこの組織のアカウントです。 [次へ] をクリックして、そのアカウントでサインインします。
+
+
 ## <a name="formatstringclaim"></a>FormatStringClaim
 
 指定された書式設定文字列に従って要求の書式を設定します。 この変換では､C# の `String.Format` メソッドを使用します。
@@ -299,6 +406,9 @@ ms.locfileid: "95994844"
 | InputClaim | inputClaim |string |文字列形式 {0} パラメーターとして機能する ClaimType。 |
 | InputParameter | stringFormat | string | {0} パラメーターを含む文字列の形式。 この入力パラメーターは、[文字列要求変換式](string-transformations.md#string-claim-transformations-expressions)をサポートします。  |
 | OutputClaim | outputClaim | string | この要求変換が呼び出された後に生成される ClaimType。 |
+
+> [!NOTE]
+> 文字列形式の最大許容サイズは 4000 です。
 
 この要求変換を使用して 1 つのパラメーター {0} を持つ任意の文字列の書式を設定します。 次の例では、**userPrincipalName** を作成します。 `Facebook-OAUTH` などのすべてのソーシャル ID プロバイダーの技術プロファイルは、**CreateUserPrincipalName** を呼び出して **userPrincipalName** を生成します。
 
@@ -335,6 +445,9 @@ ms.locfileid: "95994844"
 | InputClaim | inputClaim | string | 文字列形式 {1} パラメーターとして機能する ClaimType。 |
 | InputParameter | stringFormat | string | {0} および {1} パラメーターを含む文字列の形式。 この入力パラメーターは、[文字列要求変換式](string-transformations.md#string-claim-transformations-expressions)をサポートします。   |
 | OutputClaim | outputClaim | string | この要求変換が呼び出された後に生成される ClaimType。 |
+
+> [!NOTE]
+> 文字列形式の最大許容サイズは 4000 です。
 
 この要求変換を使用して 2 つのパラメーター {0} および {1} を持つ任意の文字列の書式を設定します。 次の例では、指定した形式で **displayName** を作成します。
 

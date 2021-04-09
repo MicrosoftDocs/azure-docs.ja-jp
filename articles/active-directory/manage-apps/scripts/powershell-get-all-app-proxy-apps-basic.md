@@ -12,10 +12,10 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 0a5ee23a16c10a579c9b39ce3589028603ea7a3c
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102550622"
 ---
 # <a name="get-all-application-proxy-apps-and-list-basic-information"></a>すべてのアプリケーション プロキシ アプリを取得し、基本情報を一覧表示する

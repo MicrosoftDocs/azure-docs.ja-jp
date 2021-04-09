@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 11/05/2020
 ms.custom: mvc
 ms.openlocfilehash: c7cd1898f27f3b7255009efb40f6bcc8938dbf9e
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93395652"
 ---
 # <a name="tutorial-run-a-disaster-recovery-drill-for-azure-vms"></a>チュートリアル:Azure VM のディザスター リカバリー訓練を実行する

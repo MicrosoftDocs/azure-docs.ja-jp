@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Clarizen の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Clarizen の統合 | Microsoft Docs'
 description: Azure Active Directory と Clarizen の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.openlocfilehash: 38b2ff6909dae15ff0f836316d5d12140ecc331a
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97672953"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>チュートリアル:Azure Active Directory と Clarizen の統合
+# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>チュートリアル: Azure Active Directory と Clarizen の統合
 
 このチュートリアルでは、Clarizen と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Clarizen と Azure AD の統合には、次の利点があります。
@@ -61,7 +61,7 @@ Azure AD への Clarizen の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Clarizen**」と入力し、結果ウィンドウで **[Clarizen]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Clarizen**」と入力し、結果ウィンドウで **[Clarizen]** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果一覧の Clarizen](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ Clarizen で Azure AD のシングル サインオンを構成してテストす
 
 Clarizen で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Clarizen** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Clarizen** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -126,7 +126,7 @@ Clarizen で Azure AD シングル サインオンを構成するには、次の
 
 1. 別の Web ブラウザー ウィンドウで、Clarizen 企業サイトに管理者としてサインインします。
 
-1. 自分のユーザー名をクリックし、 **[Settings (設定)]** をクリックします。
+1. 自分のユーザー名をクリックし、**[Settings (設定)]** をクリックします。
 
     ![ユーザー名の下にある [設定] のクリック](./media/clarizen-tutorial/tutorial_clarizen_001.png "設定")
 
@@ -140,13 +140,13 @@ Clarizen で Azure AD シングル サインオンを構成するには、次の
 
     a. **[Enable Federated Authentication (フェデレーション認証を有効にする)]** をオンにします。
 
-    b. **[アップロード]** をクリックして、ダウンロードした証明書をアップロードします。
+    b. [**Upload**] をクリックして、ダウンロードした証明書をアップロードします。
 
     c. **[Sign-in URL]\(サインイン URL\)** ボックスに、Azure AD アプリケーション構成ウィンドウの **[ログイン URL]** の値を入力します。
 
     d. **[Sign-out URL]\(サインアウト URL\)** ボックスに、Azure AD アプリケーション構成ウィンドウの **[ログアウト URL]** の値を入力します。
 
-    e. **[POST を使用]** を選択します。
+    e. [**Use POST**] を選択します。
 
     f. **[保存]** をクリックします。
 
@@ -179,7 +179,7 @@ Clarizen で Azure AD シングル サインオンを構成するには、次の
 
 このセクションでは、Britta Simon に Clarizen へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Clarizen]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Clarizen]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -211,11 +211,11 @@ Clarizen への Azure AD ユーザーのサインインを有効にするには�
 
 1. Clarizen 企業サイトに管理者としてサインインします。
 
-2. **[ユーザー]** をクリックします。
+2. **[People]\(ユーザー\)** をクリックします。
 
     ![[ユーザー] のクリック](./media/clarizen-tutorial/create_aaduser_001.png "ユーザー")
 
-3. **[ユーザーの招待]** をクリックします。
+3. [**Invite User**] をクリックします。
 
     ![[ユーザーの招待] ボタン](./media/clarizen-tutorial/create_aaduser_002.png "ユーザーの招待")
 

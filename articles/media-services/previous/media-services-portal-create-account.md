@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 34546e74c9d066af20ece834275732d55b8d6277
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 53f0063d1458c218324d867c1942ae0e044f10d0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695460"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103011920"
 ---
 # <a name="create-a-media-services-account-using-the-azure-portal"></a>Azure Portal を使用して Media Services アカウントを作成する
 

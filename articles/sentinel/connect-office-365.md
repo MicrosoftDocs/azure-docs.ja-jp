@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
 ms.openlocfilehash: 05848eb2761284669e659b3875e96acdfa71f90f
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98632184"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>Azure Sentinel に Office 365 のログを接続する

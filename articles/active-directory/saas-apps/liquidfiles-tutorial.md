@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: b9ca860043d5c4a492908aa45bf0a89ab368d50f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92458474"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-liquidfiles"></a>チュートリアル: Azure Active Directory と LiquidFiles の統合
@@ -41,7 +41,7 @@ LiquidFiles と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* LiquidFiles では、 **SP** によって開始される SSO がサポートされます
+* LiquidFiles では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-liquidfiles-from-the-gallery"></a>ギャラリーからの LiquidFiles の追加
 
@@ -61,13 +61,13 @@ Azure AD への LiquidFiles の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **LiquidFiles** 」と入力し、結果パネルで **[LiquidFiles]** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**LiquidFiles**」と入力し、結果パネルで **[LiquidFiles]** を選び、**[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果一覧の LiquidFiles](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、LiquidFiles で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、LiquidFiles で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと LiquidFiles 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 LiquidFiles で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ LiquidFiles で Azure AD のシングル サインオンを構成してテスト
 
 LiquidFiles で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **LiquidFiles** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **LiquidFiles** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -132,13 +132,13 @@ LiquidFiles で Azure AD シングル サインオンを構成するには、次
 
 1. LiquidFiles 企業サイトに管理者としてサインオンします。
 
-1. メニューから **[Admin]\(管理\) > [Configuration]\(構成\)** をクリックし、 **[Single Sign-On]\(シングル サインオン\)** をクリックします。
+1. メニューから **[Admin]\(管理\) > [Configuration]\(構成\)** をクリックし、**[Single Sign-On]\(シングル サインオン\)** をクリックします。
 
 1. **[Single Sign-On Configuration]\(シングル サインオンの構成\)** ページで、次の手順を実行します。
 
     ![Configure single sign-on](./media/liquidfiles-tutorial/tutorial_single_01.png)
 
-    a. **[Single Sign On Method]\(シングル サインオンの方法\)** として、 **[SAML 2]** を選びます。
+    a. **[Single Sign On Method]\(シングル サインオンの方法\)** として、**[SAML 2]** を選びます。
 
     b. **[IDP Login URL]\(IDP ログイン URL\)** テキスト ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
@@ -168,7 +168,7 @@ LiquidFiles で Azure AD シングル サインオンを構成するには、次
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -180,7 +180,7 @@ LiquidFiles で Azure AD シングル サインオンを構成するには、次
 
 このセクションでは、Britta Simon に LiquidFiles へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[LiquidFiles]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[LiquidFiles]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

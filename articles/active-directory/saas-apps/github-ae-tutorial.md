@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 1d66396b2d97a7f33158f91025f5735c7714cd65
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 537378ef11333bd8942a61ab2bbb4e8a251c2b59
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221053"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103196871"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-ae"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GitHub AE の統合
 
@@ -101,9 +101,9 @@ GitHub AE で Azure AD SSO を構成してテストするには、次の構成�
 
 1. **[グループの選択]** をクリックし、この要求を含める **グループ** を検索します。このグループのメンバーは、GHAE の管理者である必要があります。
 
-1. **[ソース]** で **[属性]** を選択し、 **[値]** に「**true**」と入力します。 
+1. **[ソース]** に **[属性]** を選択し、 **[値]** に引用符なしで「**true**」と入力します。 
 
-10. **[保存]** をクリックします。
+1. **[保存]** をクリックします。
 
     ![要求を管理する](./media/github-ae-tutorial/administrator.png)
 
@@ -112,7 +112,7 @@ GitHub AE で Azure AD SSO を構成してテストするには、次の構成�
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/certificateBase64.png)
+    ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
 1. **[GitHub AE のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 

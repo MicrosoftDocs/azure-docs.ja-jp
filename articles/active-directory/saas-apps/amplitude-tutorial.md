@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 889fa9b026b741cef438791daf136e0da7cecc24
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92318671"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amplitude"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Amplitude の統合
@@ -129,7 +129,7 @@ Amplitude に対する Azure AD SSO を構成してテストするには、次�
 
 ## <a name="configure-amplitude-sso"></a>Amplitude SSO の構成
 
-1. Amplitude 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. Amplitude 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -151,7 +151,7 @@ Amplitude に対する Azure AD SSO を構成してテストするには、次�
 
     ![このスクリーンショットは、この手順で説明されている値が表示された状態の [Setup Single Sign-On]\(シングル サインオンの設定\) セクションを示しています。](./media/amplitude-tutorial/configure3.png)
 
-    a. Azure Portal からダウンロードした**メタデータ XML** をメモ帳で開き、内容を **[Microsoft Azure Active Directory Metadata]\(Microsoft Azure Active Directory のメタデータ\)** テキストボックスに貼り付けます。
+    a. Azure Portal からダウンロードした **メタデータ XML** をメモ帳で開き、内容を **[Microsoft Azure Active Directory Metadata]\(Microsoft Azure Active Directory のメタデータ\)** テキストボックスに貼り付けます。
 
     b. **[Reply URL (ACS)]\(応答 URL (ACS)\)** の値をコピーして Azure portal 上の **[基本的な SAML 構成]** にある **[応答 URL]** テキスト ボックスに貼り付けます。
 

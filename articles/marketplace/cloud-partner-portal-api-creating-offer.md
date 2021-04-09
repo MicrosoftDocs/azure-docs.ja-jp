@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/29/2020
 ms.openlocfilehash: dba47073a6676b17c091af048f583ca3e7712999
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87420228"
 ---
 # <a name="create-or-modify-an-offer"></a>オファーを作成または変更する
@@ -34,7 +34,7 @@ ms.locfileid: "87420228"
 
 ## <a name="header"></a>ヘッダー
 
-|  **Name**        |  **Value**               |
+|  **名前**        |  **Value**               |
 |  ---------       |  ----------              | 
 | Content-Type     | `application/json`       |
 | 承認    | `Bearer YOUR_TOKEN`      |
@@ -287,14 +287,14 @@ ms.locfileid: "87420228"
 
 | カテゴリ | SaaS のキー | Azure アプリのキー | 仮想マシン、コンテナー、コンテナー アプリ、IoT Edge モジュール、コア仮想マシンのキー |
 | --- | --- | --- | --- |
-| ***Analytics*** | ***analytics*** | ***analytics-azure-apps*** | ***analytics-amp*** |
+| ***分析** _ | _*_analytics_*_ | _*_analytics-azure-apps_*_ | _ *_analytics-amp_** |
 | データの分析情報 | data-insights | data-insights | data-insights |
 | データ分析 | data-analytics | data-analytics | data-analytics |
 | ビッグ データ | big-data | bigData | big-data |
 | 予測分析 | predictive-analytics | predictive-analytics | predictive-analytics |
 | リアルタイム/ストリーミング分析 | real-time-streaming-analytics | real-time-streaming-analytics | real-time-streaming-analytics |
 | その他 | その他 | other-analytics | その他 |
-| ***AI + 機械学習*** | ***ArtificialIntelligence*** | ***ai-plus-machine-learning*** | ***ai-plus-machine-learning*** |
+| ***AI + 機械学習** _ | _*_ArtificialIntelligence_*_ | _*_ai-plus-machine-learning_*_ | _ *_ai-plus-machine-learning_** |
 | Bot Service | bot-services | bot-services | bot-services |
 | Cognitive Services | cognitive-services | cognitive-services | cognitive-services |
 | ML Service | ml-service | ml-service | ml-service |
@@ -305,83 +305,83 @@ ms.locfileid: "87420228"
 | ナレッジ マイニング | knowledge-mining | knowledge-mining | knowledge-mining |
 | ML 操作 | ml-operations | ml-operations | ml-operations |
 | その他 | other-AI-plus-machine-learning | その他 | その他 |
-| ***ブロックチェーン*** | ***blockchain*** | ***blockchain*** | ***blockchain*** |
+| ***ブロックチェーン** _ | _*_blockchain_*_ | _*_blockchain_*_ | _ *_blockchain_** |
 | アプリのアクセラレータ | app-accelerators | app-accelerators | app-accelerators |
 | 単一ノード台帳 | single-node-ledger | single-node-ledger | single-node-ledger |
 | マルチノード台帳 | multi-node-ledger | multi-node-ledger | multi-node-ledger |
 | ツール | ツール | ツール | ツール |
 | その他 | その他 | その他 | その他 |
-| ***Compute*** | ***compute-saas*** | ***compute-azure-apps*** | ***compute*** |
+| ***コンピューティング** _ | _*_compute-saas_*_ | _*_compute-azure-apps_*_ | _ *_compute_** |
 | アプリケーション インフラストラクチャ | appInfra | appInfrastructure | application-infrastructure |
 | オペレーティング システム | clientOS | clientOS | operating-systems |
 | キャッシュ | cache | cache | cache |
 | その他 | other-compute | other-compute | その他 |
-| ***Containers*** | ***containers*** | ***containers*** | ***containers*** |
+| ***コンテナー** _ | _*_containers_*_ | _*_containers_*_ | _ *_containers_** |
 | コンテナー アプリ | container-apps | container-apps | container-apps |
 | コンテナー イメージ | container-images | container-images | container-images |
 | コンテナーの使用開始 | get-started-with-containers | get-started-with-containers | get-started-with-containers |
 | その他 | その他 | その他 | その他 |
-| ***データベース*** | ***databases-saas*** | ***database*** | ***databases*** |
+| ***データベース** _ | _*_databases-saas_*_ | _*_database_*_ | _ *_databases_** |
 | NoSQL データベース | nosql-databases | nosql-databases | nosql-databases |
 | リレーショナル データベース | relational-databases | relational-databases | relational-databases |
 | 台帳/ブロックチェーン データベース | ledger-blockchain-databases | ledger-blockchain-databases | ledger-blockchain-databases |
 | データ レイク | data-lakes | data-lakes | data-lakes |
 | データ ウェアハウス (data warehouse) | data-warehouse | data-warehouse | data-warehouse |
 | その他 | other-databases | other-databases | その他 |
-| ***開発者ツール*** | ***developer-tools-saas*** | ***developer-tools-azure-apps*** | ***developer-tools*** |
+| ***開発者ツール** _ | _*_developer-tools-saas_*_ | _*_developer-tools-azure-apps_*_ | _ *_developer-tools_** |
 | ツール | tools-developer-tools | tools-developer-tools | tools-developer-tools |
 | スクリプト | スクリプト | スクリプト | スクリプト |
 | 開発者サービス | devService | devService | developer-service |
 | その他 | other-developer-tools | other-developer-tools | その他 |
-| ***DevOps*** | ***devops*** | ***devops*** | ***devops*** |
+| ***DevOps** _ | _*_devops_*_ | _*_devops_*_ | _ *_devops_** |
 | その他 | その他 | その他 | その他 |
-| ***ID*** | ***identity*** | ***identity*** | ***identity*** |
+| ***ID** _ | _*_identity_*_ | _*_identity_*_ | _ *_identity_** |
 | アクセス管理 | access-management | access-management | access-management |
 | その他 | その他 | その他 | その他 |
-| ***統合*** | ***integration*** | ***integration*** | ***integration*** |
+| ***統合** _ | _*_integration_*_ | _*_integration_*_ | _ *_integration_** |
 | メッセージング | messaging | messaging | messaging |
 | その他 | その他 | その他 | その他 |
-| ***モノのインターネット (IoT)*** | ***IoT*** | ***internet-of-things-azure-apps*** | ***internet-of-things*** |
+| ***モノのインターネット** _ | _*_IoT_*_ | _*_internet-of-things-azure-apps_*_ | _ *_internet-of-things_** |
 | IoT コア サービス | 該当なし | iot-core-services | iot-core-services |
 | IoT Edge のモジュール | 該当なし | iot-edge-modules | iot-edge-modules |
 | IoT ソリューション | iot-solutions | iot-solutions | iot-solutions |
 | データ分析 & ビジュアル化 | data-analytics-and-visualization | data-analytics-and-visualization | data-analytics-and-visualization |
 | IoT 接続 | iot-connectivity | iot-connectivity | iot-connectivity |
 | その他 | other-internet-of-things | other-internet-of-things | その他 |
-| ***IT と管理ツール*** | ***ITandAdministration*** | ***it-and-management-tools-azure-apps*** | ***it-and-management-tools*** |
+| ***IT と管理ツール** _ | _*_ITandAdministration_*_ | _*_it-and-management-tools-azure-apps_*_ | _ *_it-and-management-tools_** |
 | 管理ソリューション | management-solutions | management-solutions | management-solutions |
 | ビジネス アプリケーション | businessApplication | businessApplication | business-applications |
 | その他 | other-it-management-tools | other-it-management-tools | その他 |
-| ***監視と診断*** | ***monitoring-and-diagnostics*** | ***monitoring-and-diagnostics*** | ***monitoring-and-diagnostics*** |
+| ***監視と診断** _ | _*_monitoring-and-diagnostics_*_ | _*_monitoring-and-diagnostics_*_ | _ *_monitoring-and-diagnostics_** |
 | その他 | その他 | その他 | その他 |
-| ***メディア*** | ***media*** | ***media*** | ***media*** |
+| ***メディア** _ | _*_media_*_ | _*_media_*_ | _ *_media_** |
 | Media Services | media-services | media-services | media-services |
 | Content Protection | content-protection | content-protection | content-protection |
 | ライブ & オンデマンド ストリーミング | live-and-on-demand-streaming | live-and-on-demand-streaming | live-and-on-demand-streaming |
 | その他 | その他 | その他 | その他 |
-| ***移行*** | ***migration*** | ***migration*** | ***migration*** |
+| ***移行** _ | _*_migration_*_ | _*_migration_*_ | _ *_migration_** |
 | データ移行 | data-migration | data-migration | data-migration |
 | その他 | その他 | その他 | その他 |
-| ***複合現実*** | ***mixed-reality*** | ***mixed-reality*** | ***mixed-reality*** |
+| ***複合現実** _ | _*_mixed-reality_*_ | _*_mixed-reality_*_ | _ *_mixed-reality_** |
 | その他 | その他 | その他 | その他 |
-| ***ネットワーク*** | ***networking*** | ***networking*** | ***networking*** |
+| ***ネットワーク** _ | _*_networking_*_ | _*_networking_*_ | _ *_networking_** |
 | アプライアンス マネージャー | appliance-managers | appliance-managers | appliance-managers |
 | 接続 | 接続 | 接続 | 接続 |
 | ファイアウォール | ファイアウォール | ファイアウォール | ファイアウォール |
 | ロード バランサー | load-balancers | load-balancers | load-balancers |
 | その他 | その他 | その他 | その他 |
-| ***Security*** | ***セキュリティ*** | ***セキュリティ*** | ***セキュリティ*** |
+| ***セキュリティ** _ | _*_security_*_ | _*_security_*_ | _ *_security_** |
 | ID 管理とアクセス管理 | identity-and-access-management | identity-and-access-management | identity-and-access-management |
 | 脅威の防止 | threat-protection | threat-protection | threat-protection |
 | Information Protection | information-protection | information-protection | information-protection |
 | その他 | その他 | その他 | その他 |
-| ***Storage*** | ***storage-saas*** | ***storage-azure-apps*** | ***storage*** |
+| ***ストレージ** _ | _*_storage-saas_*_ | _*_storage-azure-apps_*_ | _ *_storage_** |
 | バックアップ & 復旧 | バックアップ (backup) | バックアップ (backup) | backup-and-recovery |
 | エンタープライズ ハイブリッド ストレージ | enterprise-hybrid-storage | enterprise-hybrid-storage | enterprise-hybrid-storage |
 | ファイル共有 | file-sharing | file-sharing | file-sharing |
 | データ ライフサイクル管理 | data-lifecycle-management | data-lifecycle-management | data-lifecycle-management |
 | その他 | other-storage | other-storage | その他 |
-| ***Web*** | ***web*** | ***web*** | ***web*** |
+| ***Web** _ | _*_web_*_ | _*_web_*_ | _ *_web_** |
 | ブログ & CMS | blogs-and-cmss | blogs-and-cmss | blogs-and-cmss |
 | スターター Web Apps | starter-web-apps | starter-web-apps | starter-web-apps |
 | E コマース | ecommerce | ecommerce | ecommerce |
@@ -396,48 +396,48 @@ ms.locfileid: "87420228"
 
 | カテゴリ | SaaS のキー | Dynamics 365 business central、Dynamics 365 for customer engagement、Dynamics 365 for operation のキー | PowerBI アプリのキー |
 | --- | --- | --- | --- |
-| ***Analytics*** | ***analytics*** | ***Analytics*** | ***Analytics*** |
+| ***分析** _ | _*_analytics_*_ | _*_Analytics_*_ | _ *_Analytics_** |
 | 高度な分析 | advanced-analytics | advanced-analytics | advanced-analytics |
 | ビジュアル化 & レポート | visualization-reporting | visualization-reporting | visualization-reporting |
 | その他 | その他 | other-analytics | other-analytics |
-| ***AI + 機械学習*** | ***ArtificialIntelligence*** | ***ai-plus-machine-learning-dynamics*** | ***ai-plus-machine-learning-appsource*** |
+| ***AI + 機械学習** _ | _*_ArtificialIntelligence_*_ | _*_ai-plus-machine-learning-dynamics_*_ | _ *_ai-plus-machine-learning-appsource_** |
 | ビジネス用 AI | ai-for-business | ai-for-business | ai-for-business |
 | ボット アプリ | bot-apps | bot-apps | bot-apps |
 | その他 | other-AI-plus-machine-learning | other-AI-plus-machine-learning | other-AI-plus-machine-learning |
-| ***コラボレーション*** | ***コラボレーション*** | ***コラボレーション*** | ***collaboration*** |
+| ***コラボレーション** _ | _*_コラボレーション_*_ | _*_コラボレーション_*_ | _ *_collaboration_** |
 | 連絡 & ユーザー | contact-people | contact-people | contact-and-people |
 | 会議の管理 | meeting-management | meeting-management | meeting-management |
 | サイトの設計 & 管理 | site-design-management | site-design-management | site-design-and-management |
 | タスク & プロジェクト管理 | task-project-management | task-project-management | task-and-project-management |
 | 音声 & ビデオ会議 | voice-video-conferencing | voice-video-conferencing | voice-and-video-conferencing |
 | その他 | other-collaboration | other-collaboration | その他 |
-| ***コンプライアンス & 法律*** | ***compliance*** | ***compliance*** | ***compliance-and-legal*** |
+| ***コンプライアンス & 法律** _ | _*_compliance_*_ | _*_compliance_*_ | _ *_compliance-and-legal_** |
 | 税金 & 監査 | tax-audit | tax-audit | tax-and-audit |
 | 法的情報 | 法的情報 | 法的情報 | legal |
 | データ、ガバナンス、プライバシー | data-governance-privacy | data-governance-privacy | data-governance-and-privacy |
 | 正常性 & 安全性 | health-safety | health-safety | health-and-safety |
 | その他 | other-compliance-legal | other-compliance-legal | その他 |
-| ***カスタマー サービス*** | ***CustomerService*** | ***CustomerService*** | ***customer-service*** |
+| ***カスタマー サービス** _ | _*_CustomerService_*_ | _*_CustomerService_*_ | _ *_customer-service_** |
 | Contact Center | contact-center | contact-center | contact-center |
 | 対面サービス | face-to-face-service | face-to-face-service | face-to-face-service |
 | バック オフィス & 従業員サービス | back-office-employee-service | back-office-employee-service | back-office-and-employee-service |
 | ナレッジ & ケース管理 | knowledge-case-management | knowledge-case-management | knowledge-and-case-management |
 | ソーシャル メディア & オムニチャネル エンゲージメント | social-media-omnichannel-engagement | social-media-omnichannel-engagement | social-media-and-omnichannel-engagement |
 | その他 | other-customer-service | other-customer-service | その他 |
-| ***ファイナンス*** | ***ファイナンス*** | ***ファイナンス*** | ***finance*** |
+| ***ファイナンス** _ | _*_Finance_*_ | _*_Finance_*_ | _ *_finance_** |
 | 会計 | 経理 | 経理 | 経理 |
 | アセット管理 | asset-management | asset-management | asset-management |
 | 分析、統合、レポート | analytics-consolidation-reporting | analytics-consolidation-reporting | analytics-consolidation-and-reporting |
 | クレジット & コレクション | credit-collections | credit-collections | credit-and-collections |
 | コンプライアンス & リスク管理 | compliance-risk-management | compliance-risk-management | compliance-and-risk-management |
 | その他 | other-finance | other-finance | その他 |
-| ***人事*** | ***HumanResources*** | ***HumanResources*** | ***human-resources*** |
+| ***人事** _ | _*_HumanResources_*_ | _*_HumanResources_*_ | _ *_human-resources_** |
 | 人材獲得 | talent-acquisition | talent-acquisition | talent-acquisition |
 | 人材管理 | talent-management | talent-management | talent-management |
 | HR 操作 | hr-operations | hr-operations | hr-operations |
 | 人員の計画 & 分析 | workforce-planning-analytics | workforce-planning-analytics | workforce-planning-and-analytics |
 | その他 | other-human-resources | other-human-resources | その他 |
-| ***モノのインターネット (IoT)*** | ***IoT*** | ***internet-of-things-dynamics*** | ***internet-of-things-appsource*** |
+| ***モノのインターネット** _ | _*_IoT_*_ | _*_internet-of-things-dynamics_*_ | _ *_internet-of-things-appsource_** |
 | アセット管理 & 操作 | asset-management-operations | asset-management-operations | asset-management-and-operations |
 | 接続された製品 | connected-products | connected-products | connected-products |
 | インテリジェント サプライ チェーン | intelligent-supply-chain | intelligent-supply-chain | intelligent-supply-chain |
@@ -447,11 +447,11 @@ ms.locfileid: "87420228"
 | スマート インフラストラクチャ & リソース | smart-infrastructure-resources | smart-infrastructure-resources | smart-infrastructure-and-resources |
 | 車両 & モビリティ | vehicles-mobility | vehicles-mobility | vehicles-and-mobility |
 | その他 | other-internet-of-things | other-internet-of-things | その他 |
-| ***IT と管理ツール*** | ***ITandAdministration*** | ***ITandAdministration*** | ***it-and-management-tools*** |
+| ***IT と管理ツール** _ | _*_ITandAdministration_*_ | _*_ITandAdministration_*_ | _ *_it-and-management-tools_** |
 | 管理ソリューション | management-solutions | management-solutions | management-solutions |
 | ビジネス アプリケーション | businessApplication | businessApplication | business-applications |
 | その他 | other-it-management-tools | other-it-management-tools | その他 |
-| ***マーケティング*** | ***マーケティング*** | ***マーケティング*** | ***marketing*** |
+| ***マーケティング** _ | _*_マーケティング_*_ | _*_マーケティング_*_ | _ *_marketing_** |
 | 広告 | advertisement | advertisement | advertisement |
 | Analytics | analytics-marketing | analytics-marketing | analytics-marketing |
 | キャンペーン管理 & 自動化 | campaign-management-automation | campaign-management-automation | campaign-management-and-automation |
@@ -460,7 +460,7 @@ ms.locfileid: "87420228"
 | 調査 & 分析 | research-analytics | research-analytics | research-and-analysis |
 | ソーシャル メディア | social-media | social-media | social-media |
 | その他 | other-marketing | other-marketing | その他 |
-| ***運営とサプライ チェーン*** | ***OperationsSupplyChain*** | ***OperationsSupplyChain*** | ***operations-and-supply-chain*** |
+| ***運営とサプライ チェーン** _ | _*_OperationsSupplyChain_*_ | _*_OperationsSupplyChain_*_ | _ *_operations-and-supply-chain_** |
 | アセット & 運用管理 | asset-production-management | asset-production-management | asset-and-production-management |
 | 需要予測 | demand-forecasting | demand-forecasting | demand-forecasting |
 | 情報管理 & 接続 | information-management-connectivity | information-management-connectivity | information-management-and-connectivity |
@@ -469,7 +469,7 @@ ms.locfileid: "87420228"
 | 販売 & 注文管理 | sales-order-management | sales-order-management | sales-and-order-management |
 | 輸送 & ウェアハウス管理 | transportation-warehouse-management | transportation-warehouse-management | transportation-and-warehouse-management |
 | その他 | other-operations-supply-chain | other-operations-supply-chain | その他 |
-| ***生産性*** | ***生産性*** | ***生産性*** | ***productivity*** |
+| ***生産性** _ | _*_生産性_*_ | _*_生産性_*_ | _ *_productivity_** |
 | コンテンツの作成 & 管理 | content-creation-management | content-creation-management | content-creation-and-management |
 | 言語 & 翻訳 | language-translation | language-translation | language-and-translation |
 | ドキュメントの管理 | document-management | document-management | document-management |
@@ -477,7 +477,7 @@ ms.locfileid: "87420228"
 | 検索 & リファレンス | search-reference | search-reference | search-and-reference |
 | その他 | other-productivity | other-productivity | その他 |
 | ゲーミフィケーション | Gamification | Gamification | gamification |
-| ***営業*** | ***営業*** | ***営業*** | ***営業*** |
+| ***営業** _ | _*_売上_*_ | _*_売上_*_ | _ *_Sales_** |
 | テレセールス | telesales | telesales | telesales |
 | 構成、価格設定、見積もり (CPQ) | configure-price-quote | configure-price-quote | configure-price-quote |
 | 契約管理 | contract-management | contract-management | contract-management |
@@ -486,7 +486,7 @@ ms.locfileid: "87420228"
 | ビジネス データ エンリッチメント | business-data-enrichment | business-data-enrichment | business-data-enrichment |
 | 販売機能 | sales-enablement | sales-enablement | sales-enablement |
 | その他 | other-sales | other-sales | other-sales |
-| ***位置情報*** | ***geolocation*** | ***geolocation*** | ***geolocation*** |
+| ***位置情報** _ | _*_geolocation_*_ | _*_geolocation_*_ | _ *_geolocation_** |
 | マップ | maps | maps | maps |
 | ニュース & 天気 | news-and-weather | news-and-weather | news-and-weather |
 | その他 | other-geolocation | other-geolocation | other-geolocation |
@@ -494,54 +494,54 @@ ms.locfileid: "87420228"
 
 ### <a name="microsoft-appsource-industries"></a>Microsoft AppSource の業界
 
-これらの業界とその各キーは、SaaS、PowerBI アプリ、Dynamics 365 business central、Dynamics 365 for customer engagement、および Dynamics 365 for operation のプランの種類に適用されます。 太字の斜体の項目 (***自動車***など) はカテゴリで、標準テキストの項目 (AutomotiveL2 など) はその下のサブカテゴリです。 スペーシングまたは大文字小文字を変更せずに、正確なキー値を使用してください。
+これらの業界とその各キーは、SaaS、PowerBI アプリ、Dynamics 365 business central、Dynamics 365 for customer engagement、および Dynamics 365 for operation のプランの種類に適用されます。 太字の斜体の項目 (***自動車*** など) はカテゴリで、標準テキストの項目 (AutomotiveL2 など) はその下のサブカテゴリです。 スペーシングまたは大文字小文字を変更せずに、正確なキー値を使用してください。
 
 | 業界 | SaaS、Dynamics 365 business central、Dynamics 365 for customer engagement、Dynamics 365 for operation のキー | PowerBI アプリのキー |
 | --- | --- | --- |
-| ***自動車*** | ***自動車*** | ***automotive*** |
+| ***自動車** _ | _*_自動車_*_ | _ *_automotive_** |
 | 自動車 | AutomotiveL2 | AutomotiveL2 |
-| ***農業*** | ***農業*** | ***agriculture*** |
+| ***農業** _ | _*_農業_*_ | _ *_agriculture_** |
 | その他 - 区分なし | Agriculture\_OtherUnsegmented | other-unsegmented |
-| ***Distribution*** | ***Distribution*** | ***distribution*** |
+| ***流通** _ | _*_Distribution_*_ | _ *_distribution_** |
 | 卸売 | 卸売 | wholesale |
 | 小包の発送 | ParcelAndPackageShipping | parcel-and-package-shipping |
-| ***Education*** | ***Education*** | ***education*** |
+| ***教育** _ | _*_Education_*_ | _ *_education_** |
 | 高等教育 | HigherEducation | higher-education |
 | 初等、中等教育/K-12 | PrimaryAndSecondaryEducationK12 | primary-and-secondary-education |
 | 図書館と美術館 | LibrariesAndMuseums | libraries-and-museums |
-| ***金融サービス*** | ***FinancialServices*** | ***financial-services*** |
+| ***金融サービス** _ | _*_FinancialServices_*_ | _ *_financial-services_** |
 | 銀行と証券 | BankingAndCapitalMarkets | banking-and-capital-markets |
 | 保険 | 保険 | insurance |
-| ***政府*** | ***政府*** | ***government*** |
+| ***政府** _ | _*_Government_*_ | _ *_government_** |
 | 防衛とインテリジェンス | DefenseAndIntelligence | defense-and-intelligence |
 | 公安と司法 | PublicSafetyAndJustice | public-safety-and-justice |
 | 民間政府 | CivilianGovernment | civilian-government |
-| ***医療*** | ***HealthCareandLifeSciences*** | ***healthcare*** |
+| ***医療** _ | _*_HealthCareandLifeSciences_*_ | _ *_healthcare_** |
 | 医療保険 | HealthPayor | health-payor |
 | 医療サービス | HealthProvider | health-provider |
 | 製薬 | 製薬 | pharmaceuticals |
-| ***製造 & リソース*** | ***Manufacturing*** | ***manufacturing-and-resources*** |
+| ***製造 & リソース** _ | _*_製造_*_ | _ *_manufacturing-and-resources_** |
 | 化学と農薬 | ChemicalAndAgrochemical | chemical-and-agrochemical |
 | ディスクリート型製造業 | DiscreteManufacturing | discrete-manufacturing |
 | エネルギー | エネルギー | energy |
-| ***小売 & 一般消費財*** | ***RetailandConsumerGoods*** | ***retail-and-consumer-goods*** |
+| ***小売 & 一般消費財** _ | _*_RetailandConsumerGoods_*_ | _ *_retail-and-consumer-goods_** |
 | 消費財 | ConsumerGoods | consumer-goods |
 | 小売 | 小売 | retailers |
-| ***メディア & 通信*** | ***MediaAndCommunications*** | ***media-and-communications*** |
+| ***メディア & 通信** _ | _*_MediaAndCommunications_*_ | _ *_media-and-communications_** |
 | メディアと娯楽 | MediaandEntertainment | media-and-entertainment |
 | 遠距離通信 | 遠距離通信 | telecommunications |
-| ***プロフェッショナル サービス*** | ***ProfessionalServices*** | ***professional-services*** |
+| ***プロフェッショナル サービス** _ | _*_ProfessionalServices_*_ | _ *_professional-services_** |
 | 法的情報 | 法的情報 | legal |
 | パートナー専門サービス業 | PartnerProfessionalServices | partner-professional-services |
-| ***建築 & 建設*** | ***ArchitectureAndConstruction*** | ***architecture-and-construction*** |
+| ***建築 & 建設** _ | _*_ArchitectureAndConstruction_*_ | _ *_architecture-and-construction_** |
 | その他 - 区分なし | ArchitectureAndConstruction\_OtherUnsegmented | other-unsegmented |
-| ***接客と旅行*** | ***HospitalityandTravel*** | ***hospitality-and-travel*** |
+| ***接客と旅行** _ | _*_HospitalityandTravel_*_ | _ *_hospitality-and-travel_** |
 |    ホテルとレジャー | HotelsAndLeisure | hotels-and-leisure |
 | 旅行と輸送 | TravelAndTransportation | travel-and-transportation |
 | レストランと食品サービス | RestaurantsAndFoodServices | restaurants-and-food-services |
-| ***その他の公共セクター産業*** | ***OtherPublicSectorIndustries*** | ***other-public-sector-industries*** |
+| ***その他の公共セクター産業** _ | _*_OtherPublicSectorIndustries_*_ | _ *_other-public-sector-industries_** |
 | 林業と漁業 | ForestryAndFishing | forestry-and-fishing |
 | 非利益 | Nonprofits | nonprofits |
-| ***不動産*** | ***RealEstate*** | ***real-estate*** |
+| ***不動産** _ | _*_RealEstate_*_ | _ *_real-estate_** |
 | その他 - 区分なし | RealEstate\_OtherUnsegmented | other-unsegmented |
 |||

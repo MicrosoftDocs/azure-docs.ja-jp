@@ -12,10 +12,10 @@ ms.topic: reference
 ms.workload: identity
 ms.author: marsma
 ms.openlocfilehash: 56e6d859293b91a56252372574f59c8dcc2cd80e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101687330"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft ID プラットフォームに関するドキュメント:新機能

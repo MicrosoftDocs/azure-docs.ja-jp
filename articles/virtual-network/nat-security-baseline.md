@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 887648526c8da5fc829abe48911fd6785c3d856f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 501d5b17358501f17d17e8884ceec0bcbbb2ab1c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576608"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102612407"
 ---
 # <a name="azure-security-baseline-for-virtual-network-nat"></a>Virtual Network NAT 用の Azure セキュリティ ベースライン
 
@@ -218,7 +218,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**:カスタム Azure Policy 定義、Azure Resource Manager テンプレート、Desired State Configuration スクリプトなどのコードを安全に格納して管理するには、Azure DevOps を使用します。 Azure DevOps で管理するリソースにアクセスするには、Azure Active Directory (Azure AD) で定義された (Azure DevOps に統合されている場合)、または Active Directory で定義された (TFS に統合されている場合) 特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与したり、そのアクセス許可を拒否したりできます。 
 
-- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops) 
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow) 
 
 - [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 

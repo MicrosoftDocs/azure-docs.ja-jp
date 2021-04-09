@@ -4,10 +4,10 @@ description: Azure Backup サービスで仮想マシンの復旧ポイントを
 ms.topic: conceptual
 ms.date: 11/08/2020
 ms.openlocfilehash: 256df693aba0f799c24bcba6defe846e5c37ccaa
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94428504"
 ---
 # <a name="manage-recovery-points"></a>復旧ポイントの管理

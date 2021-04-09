@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 891991fa938ad3dcfacae6d02e40efd6d6e9689e
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: eb6d82019cccd1da327461cb0a0635aea4f3647f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97386852"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174973"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する
 
@@ -112,7 +112,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 ## <a name="metadata"></a>Metadata
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | ServiceUrl | はい | REST API エンドポイントの URL。 |
 | AuthenticationType | はい | RESTful 要求プロバイダーにより実行されている認証の種類。 指定できる値: `None`、`Basic`、`Bearer`、`ClientCertificate`、または `ApiKeyHeader`。 <br /><ul><li>`None` の値は、REST API が匿名であることを示します。 </li><li>`Basic` の値は、REST API が HTTP 基本認証で保護されていることを示します。 Azure AD B2C などの検証されたユーザーのみが API にアクセスできます。 </li><li>`ClientCertificate` の (推奨) 値は、REST API がクライアント証明書認証を使用してアクセスを制限していることを示します。 Azure AD B2C などの適切な証明書を持つサービスのみが、ご利用の API にアクセスできます。 </li><li>`Bearer` 値は、REST API ではクライアント OAuth2 ベアラー トークンを使用してアクセスが制限されることを示します。 </li><li>`ApiKeyHeader` 値は、REST API が API キーの HTTP ヘッダー (*x-functions-key* など) で保護されていることを示します。 </li></ul> |
@@ -225,6 +225,9 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 | --------- | -------- | ----------- |
 | HTTP ヘッダーの名前 (`x-functions-key`、`x-api-key` など)。 | はい | 認証に使用されるキー。 |
 
+> [!NOTE]
+> 現時点で Azure AD B2C が認証でサポートするのは、1 つの HTTP ヘッダーのみです。 RESTful 呼び出しでクライアント ID やクライアント シークレットなどの複数のヘッダーが必要な場合は、何らかの方法で要求をプロキシ経由にする必要があります。
+
 ```xml
 <TechnicalProfile Id="REST-API-SignUp">
   <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
@@ -290,4 +293,3 @@ RESTful 技術プロファイルの使用例については、次の記事を参
 - [チュートリアル:ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する](custom-policy-rest-api-claims-validation.md)
 - [チュートリアル:Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する](custom-policy-rest-api-claims-validation.md)
 - [REST API サービスをセキュリティで保護する](secure-rest-api.md)
-

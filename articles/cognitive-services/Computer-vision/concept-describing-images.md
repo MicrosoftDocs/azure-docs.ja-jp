@@ -12,10 +12,10 @@ ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 4fd328dad3544697ba1f4896f7383be857b097a5
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96530665"
 ---
 # <a name="describe-images-with-human-readable-language"></a>人間が判読できる言語で画像を説明する

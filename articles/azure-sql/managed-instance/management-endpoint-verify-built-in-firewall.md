@@ -12,10 +12,10 @@ ms.author: srbozovi
 ms.reviewer: sstein
 ms.date: 12/04/2018
 ms.openlocfilehash: d8d46518415dc56e2792ef090b0be654d538426f
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96853273"
 ---
 # <a name="verify-the-azure-sql-managed-instance-built-in-firewall"></a>Azure SQL Managed Instance のビルトイン ファイアウォールを検証する

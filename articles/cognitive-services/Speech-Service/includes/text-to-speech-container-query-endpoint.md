@@ -8,26 +8,26 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 7e5ea8dcddce31a414d983d14fba483eb388d5d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a29244745b154aa81997813fcf4e1457f599270
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334679"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103622324"
 ---
 コンテナーには、[REST ベースのエンドポイント API](../rest-text-to-speech.md) が用意されています。 各種のプラットフォーム、フレームワーク、言語向けに、多数の[サンプル ソース コード プロジェクト](https://github.com/Azure-Samples/Cognitive-Speech-TTS)が提供されています。
 
-標準またはニューラルのテキスト読み上げコンテナーでは、ダウンロードしたイメージ タグのロケールと音声を使用することになります。 たとえば、`latest` タグをダウンロードした場合、既定のロケールは `en-US` で、音声は `AriaRUS` になります。 そのうえで、`{VOICE_NAME}` 引数は [`en-US-AriaRUS`](../language-support.md#standard-voices) となります。 次のサンプル SSML をご覧ください。
+標準またはニューラルのテキスト読み上げコンテナーでは、ダウンロードしたイメージ タグのロケールと音声を使用することになります。 たとえば、`latest` タグをダウンロードした場合、既定のロケールは `en-US` で、音声は `AriaNeural` になります。 そのうえで、`{VOICE_NAME}` 引数は [`en-US-AriaNeural`](../language-support.md#neural-voices) となります。 次のサンプル SSML をご覧ください。
 
 ```xml
 <speak version="1.0" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-AriaNeural">
         This text will get converted into synthesized speech.
     </voice>
 </speak>
 ```
 
-ただし、"*カスタムのテキスト読み上げ*" では、[カスタム音声ポータル](https://aka.ms/custom-voice-portal)から**音声やモデル**を取得する必要があります。 カスタム モデル名は、音声名と同義です。 **[トレーニング]** ページに移動し、`{VOICE_NAME}` 引数として使用する**音声やモデル**をコピーします。
+ただし、"*カスタムのテキスト読み上げ*" では、[カスタム音声ポータル](https://aka.ms/custom-voice-portal)から **音声やモデル** を取得する必要があります。 カスタム モデル名は、音声名と同義です。 **[トレーニング]** ページに移動し、`{VOICE_NAME}` 引数として使用する **音声やモデル** をコピーします。
 <br><br>
 :::image type="content" source="../media/custom-voice/custom-voice-model-voice-name.png" alt-text="カスタム音声モデル - 音声名":::
 

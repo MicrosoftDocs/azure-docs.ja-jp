@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 8bdf637ab773e90a5eac42bcaa443cf6741db636
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 6a6f782768db12c2ce75f5cf1e66100222f24446
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696015"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101095204"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Azure App Service 向けの Node.js アプリを構成する
 
@@ -342,6 +342,19 @@ if (req.secure) {
 
 ::: zone-end
 
+
+::: zone pivot="platform-linux"
+
+## <a name="monitor-with-application-insights"></a>Application Insights での監視
+
+Application Insights を使用すると、コードを変更することなく、アプリケーションのパフォーマンス、例外、使用状況を監視できます。 App Insights エージェントをアタッチするには、ポータルで自分の Web アプリにアクセスし、 **[設定]** で **[Application Insights]** を選択してから、 **[Turn on Application Insights]\(Application Insights を有効にする\)** を選択します。 次に、既存の App Insights リソースを選択するか、新しいものを作成します。 最後に、下部にある **[適用]** を選択します。 PowerShell を使用して Web アプリをインストルメント化するには、[これらの手順](../azure-monitor/app/azure-web-apps.md?tabs=netcore#enabling-through-powershell)を参照してください。
+
+このエージェントは、サーバー側の Node.js アプリケーションを監視します。 クライアント側の JavaScript を監視するには、[JavaScript SDK をプロジェクトに追加します](../azure-monitor/app/javascript.md)。 
+
+詳細については、[Application Insights の拡張機能のリリース ノート](../azure-monitor/app/web-app-extension-release-notes.md)を参照してください。
+
+::: zone-end
+
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 動作中の Node.js アプリが App Service で異なる動作をしたり、エラーが発生した場合は、次のことを試してください。
@@ -370,4 +383,3 @@ if (req.secure) {
 > [App Service Linux の FAQ](faq-app-service-linux.md)
 
 ::: zone-end
-

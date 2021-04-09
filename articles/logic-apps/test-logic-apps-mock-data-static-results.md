@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: 711d753203aeaeba50cea692053a37fcab2e9c7b
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93027705"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>静的な結果を設定してモック データでロジック アプリをテストする

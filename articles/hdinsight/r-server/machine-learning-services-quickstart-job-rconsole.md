@@ -1,18 +1,18 @@
 ---
-title: クイック スタート:ML サービスと R コンソールでの R スクリプト - Azure HDInsight
+title: 'クイックスタート: ML サービスと R コンソールでの R スクリプト - Azure HDInsight'
 description: このクイックスタートでは、R コンソールを使用して Azure HDInsight で ML サービス クラスターに対して R スクリプトを実行します。
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/19/2019
 ms.custom: mvc
 ms.openlocfilehash: eac6fd14acfe12a0f505419a229bb78e423706d1
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98935734"
 ---
-# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>クイック スタート:R コンソールを使用して Azure HDInsight で ML サービス クラスターに対して R スクリプトを実行する
+# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>クイックスタート: R コンソールを使用して Azure HDInsight で ML サービス クラスターに対して R スクリプトを実行する
 
 Azure HDInsight 上の ML Services により、R スクリプトで Apache Spark と Apache Hadoop MapReduce を使用して、分散計算を実行できます。 ML Services では、コンピューティング コンテキストを設定することによって呼び出しの実行方法が制御されます。 クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利な場所です。 エッジ ノードでは、エッジ ノード サーバーのコア間で、RevoScaleR の並列化された分散関数を実行できます。 また、RevoScaleR の Hadoop Map Reduce または Apache Spark コンピューティング コンテキストを使用して、クラスターのノード間でこれらの関数を実行することもできます。
 
@@ -20,7 +20,7 @@ Azure HDInsight 上の ML Services により、R スクリプトで Apache Spark
 
 ## <a name="prerequisites"></a>前提条件
 
-* HDInsight 上の ML Services クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照し、 **[クラスターの種類]** で **[ML Services]** を選択してください。
+* HDInsight 上の ML Services クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照し、**[クラスターの種類]** で **[ML Services]** を選択してください。
 
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
@@ -147,7 +147,7 @@ Azure HDInsight 上の ML Services により、R スクリプトで Apache Spark
     
       ---
     
-      Signif. codes:  0 ‘**_’ 0.001 ‘_*’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+      Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
     
       Condition number of final variance-covariance matrix: 11904202
       Number of iterations: 7

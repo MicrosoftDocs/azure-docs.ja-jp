@@ -8,10 +8,10 @@ services: web-application-firewall
 ms.date: 09/05/2019
 ms.author: victorh
 ms.openlocfilehash: 158bfe30bf48ee420be8efb9ff32fff0e555d9e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "79475826"
 ---
 #  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Azure Front Door での Web アプリケーション ファイアウォールのカスタム規則
@@ -39,10 +39,10 @@ Front Door で Azure Web アプリケーション ファイアウォール (WAF)
     - RequestUri
     - RequestHeader
     - RequestBody
-    - Cookie
+    - クッキー
   - **演算子:**
     - Any: 一致する規則がない場合の既定のアクションを定義するためによく使用されます。 Any はすべての演算子と一致します。
-    - Equal
+    - 等しい
     - Contains
     - LessThan: サイズの制約
     - GreaterThan: サイズの制約
@@ -64,9 +64,9 @@ Front Door で Azure Web アプリケーション ファイアウォール (WAF)
     - コールアウトと埋め込みコード
     - アトミック グループ化と所有の量指定子
 
-  - **Negate (否定) [省略可能]:** 条件の結果を否定する必要がある場合は、"*否定*" 条件を true に設定できます。
+  - **否定 [省略可能]:** 条件の結果を否定する必要がある場合は、"*否定*" 条件を true に設定できます。
       
-  - **Transform (変換) [省略可能]:** 一致が試行される前に実行する変換の名前の文字列の一覧。 次の変換を指定できます。
+  - **変換 [省略可能]:** 一致が試行される前に実行する変換の名前の文字列の一覧。 次の変換を指定できます。
      - 大文字 
      - 小文字
      - Trim

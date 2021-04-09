@@ -1,7 +1,7 @@
 ---
 title: Media Encoder Standard (MES) 用のタスク プリセット | Microsoft Docs
 description: このトピックでは、Media Encoder Standard (MES) 用のサービスが定義されたサンプル プリセットの概要を説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: johndeu
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: aa0514834d1619bbbae4501fe6b1af16d7964ff7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 74e557aa02f5ab83828262209653bf8a78fdd2d0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261477"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103011648"
 ---
 # <a name="sample-presets-for-media-encoder-standard-mes"></a>Media Encoder Standard (MES) 用のタスク プリセット
 

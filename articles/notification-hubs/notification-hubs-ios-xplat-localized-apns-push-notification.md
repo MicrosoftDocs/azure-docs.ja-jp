@@ -17,13 +17,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: a78d3a76e2b13a120e9e744e181c95bfcb330f27
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92313911"
 ---
-# <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して iOS にローカライズされたプッシュ通知を送信する
+# <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>チュートリアル: Azure Notification Hubs を使用して、ローカライズしたプッシュ通知を iOS に送信する
 
 > [!div class="op_single_selector"]
 > * [Windows ストア C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
@@ -34,7 +34,7 @@ ms.locfileid: "92313911"
 このシナリオは次の 2 つに分けられます。
 
 * iOS アプリケーションで、クライアント デバイスが言語を指定し、さまざまなニュース速報カテゴリを購読できるようになります。
-* バックエンドは、Azure Notification Hubs の**タグ**および**テンプレート**機能を使用して通知をブロードキャストします。
+* バックエンドは、Azure Notification Hubs の **タグ** および **テンプレート** 機能を使用して通知をブロードキャストします。
 
 このチュートリアルでは、次の手順を実行します。
 
@@ -46,7 +46,7 @@ ms.locfileid: "92313911"
 
 ## <a name="overview"></a>概要
 
-「[Notification Hubs を使用したニュース速報の送信]」では、**タグ**を使用してさまざまなニュース カテゴリの通知にサブスクライブするアプリを構築しました。 しかし、多くのアプリケーションは複数の市場をターゲットとしており、ローカライズが必要です。 つまり、通知自体の内容をローカライズし、適切な一連のデバイスに配信する必要があります。 このチュートリアルでは、Notification Hubs の**テンプレート**機能を使用して、ローカライズしたニュース速報通知を簡単に配信する方法を示します。
+「[Notification Hubs を使用したニュース速報の送信]」では、**タグ** を使用してさまざまなニュース カテゴリの通知にサブスクライブするアプリを構築しました。 しかし、多くのアプリケーションは複数の市場をターゲットとしており、ローカライズが必要です。 つまり、通知自体の内容をローカライズし、適切な一連のデバイスに配信する必要があります。 このチュートリアルでは、Notification Hubs の **テンプレート** 機能を使用して、ローカライズしたニュース速報通知を簡単に配信する方法を示します。
 
 > [!NOTE]
 > ローカライズした通知を送信する方法の 1 つに、各タグの複数のバージョンを作成する方法があります。 たとえば、英語、フランス語、および標準中国語をサポートするには、世界のニュースに関して "world_en"、"world_fr"、"world_ch" の 3 種類のタグが必要になります。 次に、これらの各タグに世界のニュースのローカライズ版を送信する必要があります。 このトピックでは、テンプレートを使用してタグの急増を回避したり、複数のメッセージを送信しなくても済むようにしたりします。
@@ -82,7 +82,7 @@ ms.locfileid: "92313911"
 
 このセクションでは、ローカライズしたニュース速報をテンプレートを使用して送信するために、トピック「[Notification Hubs を使用したニュース速報の送信]」で作成したニュース速報アプリを変更します。
 
-`MainStoryboard_iPhone.storyboard` に、3 つの言語のセグメント付きコントロールを追加します ([英語]、[フランス語]、および [標準中国語])。
+`MainStoryboard_iPhone.storyboard` で、英語、フランス語、標準中国語の 3 つの言語を含む Segmented Control を追加します。
 
 ![iOS UI のストーリーボードの作成][13]
 

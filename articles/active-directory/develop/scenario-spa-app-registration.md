@@ -13,10 +13,10 @@ ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
 ms.openlocfilehash: 9366bb5b2bb5820245ec1b699bbf2ddda0dd9f9d
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100103177"
 ---
 # <a name="single-page-application-app-registration"></a>シングルページ アプリケーション：アプリの登録

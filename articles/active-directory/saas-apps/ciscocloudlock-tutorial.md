@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と The Cloud Security Fabric の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と The Cloud Security Fabric の統合 | Microsoft Docs'
 description: Azure Active Directory と The Cloud Security Fabric の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 7025b948615efcf6ace3ca0fb6a2daecdd75c702
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456039"
 ---
-# <a name="tutorial-integrate-the-cloud-security-fabric-with-azure-active-directory"></a>チュートリアル:The Cloud Security Fabric と Azure Active Directory の統合
+# <a name="tutorial-integrate-the-cloud-security-fabric-with-azure-active-directory"></a>チュートリアル: The Cloud Security Fabric と Azure Active Directory の統合
 
 このチュートリアルでは、The Cloud Security Fabric と Azure Active Directory (Azure AD) を統合する方法について説明します。 The Cloud Security Fabric と Azure AD を統合すると、次のことができます。
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* The Cloud Security Fabric では、 **SP** Initiated SSO がサポートされます
+* The Cloud Security Fabric では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-the-cloud-security-fabric-from-the-gallery"></a>ギャラリーからの The Cloud Security Fabric の追加
 
@@ -49,7 +49,7 @@ The Cloud Security Fabric の Azure AD への統合を構成するには、ギ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **The Cloud Security Fabric** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**The Cloud Security Fabric**」と入力します。
 1. 結果のパネルから **[The Cloud Security Fabric]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -70,7 +70,7 @@ The Cloud Security Fabric に対する Azure AD SSO を構成してテストす�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **The Cloud Security Fabric** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **The Cloud Security Fabric** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
 
@@ -78,7 +78,7 @@ The Cloud Security Fabric に対する Azure AD SSO を構成してテストす�
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** ボックスに、次の URL を入力します。
+    a. **[サインオン URL]** ボックスに URL として「」と入力します。
 
       ```http
       https://platform.cloudlock.com

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: e1099f271291c6d86610237454e08e06b5fe48c7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92522157"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>チュートリアル: Azure Active Directory と Humanity の統合
@@ -41,7 +41,7 @@ Humanity と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Humanity では、 **SP** Initiated SSO がサポートされます
+* Humanity では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-humanity-from-the-gallery"></a>ギャラリーからの Humanity の追加
 
@@ -61,13 +61,13 @@ Azure AD への Humanity の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Humanity** 」と入力し、結果パネルで **[Humanity]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Humanity**」と入力し、結果パネルで **[Humanity]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Humanity](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Humanity で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Humanity で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Humanity 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Humanity で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
@@ -124,7 +124,7 @@ Humanity で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="configure-humanity-single-sign-on"></a>Humanity のシングル サインオンの構成
 
-1. 別の Web ブラウザー ウィンドウで、 **Humanity** 企業サイトに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、**Humanity** 企業サイトに管理者としてログインします。
 
 2. 上部のメニューで **[Admin]** をクリックします。
 
@@ -165,9 +165,9 @@ Humanity で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -224,7 +224,7 @@ Azure AD ユーザーが Humanity にログインできるようにするには�
 
     ![[Save Employees]\(従業員の保存\)](./media/shiftplanning-tutorial/iC786625.png "[Save Employees]")
 
-    a. プロビジョニングする有効な Azure AD アカウントの **姓** 、 **名** 、 **電子メール アドレス** を、対応するテキスト ボックスに入力します。
+    a. プロビジョニングする有効な Azure AD アカウントの **姓**、**名**、**電子メール アドレス** を、対応するテキスト ボックスに入力します。
 
     b. **[Save Employees]** をクリックします。
 

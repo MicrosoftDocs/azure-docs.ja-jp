@@ -11,10 +11,10 @@ author: luisquintanilla
 ms.date: 01/26/2021
 ms.custom: responsible-ml
 ms.openlocfilehash: 276c91ad7fb5b09dbe18d989741f0f54b8b0eb09
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101659683"
 ---
 # <a name="mitigate-unfairness-in-machine-learning-models-preview"></a>機械学習モデルでの不公平性を軽減する (プレビュー)

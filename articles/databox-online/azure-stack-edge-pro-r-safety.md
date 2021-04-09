@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: alkohli
 ms.openlocfilehash: dacc9ecc28ffa482b60d1e48735fe3620b5b7558
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100363068"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Azure Stack Edge Pro R の安全性のための指示

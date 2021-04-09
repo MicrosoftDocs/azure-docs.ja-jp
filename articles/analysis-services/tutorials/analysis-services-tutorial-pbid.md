@@ -8,10 +8,10 @@ ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: 46805427e6d00e858cf869eef68bf68549f57fb9
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92018119"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>チュートリアル: Power BI Desktop を使用して接続する
@@ -26,7 +26,7 @@ ms.locfileid: "92018119"
 ## <a name="prerequisites"></a>前提条件
 
 - [adventureworks サンプル モデル データベースをサーバーに追加](../analysis-services-create-sample-model.md)します。
-- adventureworks サンプル モデル データベースへの[*読み取り*](../analysis-services-server-admins.md)アクセス許可を付与します。
+- adventureworks サンプル モデル データベースへの [*読み取り*](../analysis-services-server-admins.md)アクセス許可を付与します。
 - [最新の Power BI Desktop をインストールします](https://powerbi.microsoft.com/desktop)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする

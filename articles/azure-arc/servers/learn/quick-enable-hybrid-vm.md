@@ -3,14 +3,14 @@ title: Azure Arc 対応サーバーにハイブリッド マシンを接続す�
 description: Azure Arc 対応サーバーにハイブリッド マシンを接続して登録する方法について説明します。
 ms.topic: quickstart
 ms.date: 12/15/2020
-ms.openlocfilehash: 68869854cbfcf6d7297137e6239b2229a20c04a1
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: c52b8d1f7098a7a2a88a9770a3b768b7fea31775
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516783"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101646828"
 ---
-# <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>クイックスタート: Azure Arc 対応サーバーにハイブリッド マシンを接続する
+# <a name="quickstart-connect-hybrid-machines-with-azure-arc-enabled-servers"></a>クイックスタート: Azure Arc 対応サーバーにハイブリッド マシンを接続する
 
 [Azure Arc 対応サーバー](../overview.md)を使用すると、オンプレミス、エッジ、マルチクラウドの垣根を越え、それらの環境でホストされている Windows マシンや Linux マシンを管理することができます。 このクイックスタートでは、Azure の外部でホストされた Windows マシンまたは Linux マシンを Arc 対応サーバーで管理できるよう、それらのマシンに Connected Machine エージェントをデプロイして構成します。
 

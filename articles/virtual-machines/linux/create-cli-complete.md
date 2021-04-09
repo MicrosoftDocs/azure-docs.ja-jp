@@ -2,16 +2,17 @@
 title: Azure CLI を使用して Linux 環境を作成する
 description: Azure CLI を使用して、ストレージ、Linux VM、仮想ネットワークとサブネット、ロード バランサー、NIC、パブリック IP、ネットワーク セキュリティ グループすべてを新しく作成します。
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 5992fb20fc8b86d4a0094a8fe5ed6cb6eb03754d
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: ff86651d56abe090ca08c508a220362f9a011a3f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704471"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102554702"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Azure CLI を使用した完全な Linux 仮想マシンの作成
 必要なサポート リソースすべてを既定値で作成する単一の Azure CLI コマンドを使用すると、Azure で仮想マシン (VM) を短時間で作成することができます。 仮想ネットワーク、パブリック IP アドレス、ネットワーク セキュリティ グループの規則などのリソースが自動的に作成されます。 実稼働用に環境をより細かく制御する場合は、こうしたリソースを先に作成してから、作成したリソースに VM を追加します。 この記事では、VM の作成方法、および各サポート リソースを 1 つずつ作成する方法を説明します。
@@ -434,7 +435,7 @@ az network nic create \
 
 更新ドメインは、仮想マシンと、同時に再起動できる基礎となる物理ハードウェアのグループを示しています。 計画済みメンテナンスの際には、更新ドメインの再起動は逐次的には行われませんが、一度に再起動される更新ドメインは 1 つだけになります。
 
-Azure では、VM を可用性セットに配置すると障害ドメインと更新ドメイン間で自動的に分散されます。 詳細については、[VM の可用性管理](../manage-availability.md)に関する記事を参照してください。
+Azure では、VM を可用性セットに配置すると障害ドメインと更新ドメイン間で自動的に分散されます。 詳細については、[VM の可用性管理](../availability.md)に関する記事を参照してください。
 
 [az vm availability-set create](/cli/azure/vm/availability-set) で、VM の可用性セットを作成します。 次の例では、*myAvailabilitySet* という名前の可用性セットを作成します。
 

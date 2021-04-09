@@ -3,12 +3,12 @@ title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 8cb3e12c48adf1273c58f4914e34590e21b9d3cc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6fa8e2d9fb2270d53d8c0419ac7b4d88d79f30fd
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378300"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425704"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -46,7 +46,7 @@ Application Insights の接続文字列。 次の場合は、`APPINSIGHTS_INSTRU
 
 既定では、[Functions プロキシ](functions-proxies.md)は、ショートカットを使用して、同じ関数アプリ内の関数にプロキシから直接 API 呼び出しを送信します。 このショートカットは、新しい HTTP 要求を作成する代わりに使用されます。 この設定を使用すると、そのショートカット動作を無効にすることができます。
 
-|Key|値|説明|
+|Key|[値]|説明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|ローカル関数アプリ内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接送信されません。 代わりに、要求は、関数アプリの HTTP フロントエンドに戻されます。|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|ローカル関数アプリ内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接転送されます。 これが既定値です。 |
@@ -55,7 +55,7 @@ Application Insights の接続文字列。 次の場合は、`APPINSIGHTS_INSTRU
 
 この設定は、文字 `%2F` がバックエンド URL に挿入されたときにこれをルート パラメーターでスラッシュとしてデコードするかどうかを制御します。 
 
-|Key|値|説明|
+|Key|[値]|説明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|エンコードされたスラッシュを含むルート パラメーターがデコードされます。 |
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|すべてのルート パラメーターは変更されずに渡されます。これは既定の動作です。 |
@@ -80,7 +80,7 @@ Application Insights の接続文字列。 次の場合は、`APPINSIGHTS_INSTRU
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-Functions ランタイムのバージョン 2.x 以降では、ランタイム環境に基づいてアプリの動作を構成します。 この値は、[初期化中に読み取られます](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43)。 `AZURE_FUNCTIONS_ENVIRONMENT` は任意の値に設定することができますが、次の [3 つの値](/dotnet/api/microsoft.aspnetcore.hosting.environmentname)がサポートされています。[Development](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development)、[Staging](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)、[Production](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production)。 `AZURE_FUNCTIONS_ENVIRONMENT` が設定されていない場合、既定では、ローカル環境では `Development` になり、Azure では `Production` になります。 この設定は、ランタイム環境を設定するために、`ASPNETCORE_ENVIRONMENT` の代わりに使用する必要があります。 
+Functions ランタイムのバージョン 2.x 以降では、ランタイム環境に基づいてアプリの動作を構成します。 この値は初期化時に読み取られ、任意の値に設定できます。 ランタイムによって受け入れられるのは、`Development`、`Staging`、および `Production` の値のみです。 Azure での実行時にこのアプリケーション設定が存在しない場合、環境は `Production` と見なされます。 Azure のランタイム環境を `Production` 以外のものに変更する必要がある場合は、`ASPNETCORE_ENVIRONMENT` の代わりにこの設定を使用します。 ローカル コンピューターで実行している場合は、Azure Functions Core Tools により `AZURE_FUNCTIONS_ENVIRONMENT` が `Development` に設定されます。local.settings.json ファイルでこれをオーバーライドすることはできません。 詳細については、「[環境別の起動のクラスとメソッド](/aspnet/core/fundamentals/environments#environment-based-startup-class-and-methods)」を参照してください。
 
 ## <a name="azurefunctionsjobhost__"></a>AzureFunctionsJobHost__\*
 
@@ -159,11 +159,11 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 ## <a name="functions_extension_version"></a>FUNCTIONS\_EXTENSION\_VERSION
 
-この関数アプリで使用する Functions ランタイムのバージョンです。 メジャー バージョンのチルダ (例: "~2") は、そのメジャー バージョンの最新バージョンを使用することを意味します。 同じメジャー バージョンの新しいバージョンが使用できる場合、それらは関数アプリに自動的にインストールされています。 特定のバージョンにアプリを固定するには、完全なバージョン番号 (例: "2.0.12345") を使用します。 既定値は "~2" です。 `~1` の値は、アプリをバージョン 1.x のランタイムに固定します。
+関数アプリをホストする Functions ランタイムのバージョンです。 メジャー バージョンのチルダ (`~`) は、そのメジャー バージョンの最新バージョンを使用することを意味します (例: "~3")。 同じメジャー バージョンの新しいバージョンが使用できる場合、それらは関数アプリに自動的にインストールされています。 特定のバージョンにアプリを固定するには、完全なバージョン番号 (例: "3.0.12345") を使用します。 既定値は "~3" です。 `~1` の値は、アプリをバージョン 1.x のランタイムに固定します。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](functions-versions.md)」をご覧ください。
 
 |Key|値の例|
 |---|------------|
-|FUNCTIONS\_EXTENSION\_VERSION|~2|
+|FUNCTIONS\_EXTENSION\_VERSION|~3|
 
 ## <a name="functions_v2_compatibility_mode"></a>FUNCTIONS\_V2\_COMPATIBILITY\_MODE
 

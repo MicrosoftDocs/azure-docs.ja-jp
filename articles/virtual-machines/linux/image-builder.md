@@ -10,10 +10,10 @@ ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: danis
 ms.openlocfilehash: 6ae7e384aa5d70b688b7fe4c6d4140e886b789f1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101694293"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery-by-using-azure-cli"></a>プレビュー:Azure CLI を使用して Linux イメージを作成し Shared Image Gallery に配布する

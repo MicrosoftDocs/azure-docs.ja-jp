@@ -9,10 +9,10 @@ ms.date: 01/12/2021
 ms.author: duau
 ms.custom: include file
 ms.openlocfilehash: 6f8ed3381f056238bdbb24fe52c5f859afef7d03
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98147652"
 ---
 | リソース | 制限 |

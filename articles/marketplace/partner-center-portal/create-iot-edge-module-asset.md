@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 04/03/2020
 ms.openlocfilehash: aca27b89a3b92b410fa560c8b4bd7eb3d4e0a935
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93346776"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>IoT Edge モジュールの技術アセットの準備
@@ -39,14 +39,14 @@ IoT Edge でサポートされているすべてのレベル 1 プラットフ�
 
 - [GitHub Manifest-tool](https://github.com/estesp/manifest-tool) でビルドされたマニフェスト タグである最新のタグとバージョン タグ (1.0.1 など) を指定します。
 
-- [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)でオファーの一覧タブを使用し、「 **有用なリンク** 」セクションのリンクを [Azure IoT Edge 認定デバイス カタログ](https://catalog.azureiotsolutions.com/alldevices?filters={%2218%22:[%221%22]}/)に追加します。
+- [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)でオファーの一覧タブを使用し、「**有用なリンク**」セクションのリンクを [Azure IoT Edge 認定デバイス カタログ](https://catalog.azureiotsolutions.com/alldevices?filters={%2218%22:[%221%22]}/)に追加します。
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>IoT Edge によってサポートされるレベル 1 プラットフォームのサブセット
 
 お使いになっているモジュールは、IoT Edge でサポートされているレベル 1 のプラットフォーム ([Azure IoT Edge サポート](../../iot-edge/support.md)に記録されているもの) のサブセットを少なくとも 1 つサポートする必要があります。 このプラットフォーム オプションを使用するモジュールは、以下のことが必要です。
 
 - 複数のプラットフォームがサポートされている場合は、GitHub の [manifest-tool](https://github.com/estesp/manifest-tool) でビルドされたマニフェスト タグである最新のタグとバージョン タグ (1.0.1 など) を指定します。 マニフェスト タグは、1 つのプラットフォームのみがサポートされている場合は省略できます。
-- [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)でオファーの一覧タブを使用し、「 **有用なリンク** 」セクションのリンクを [Azure IoT Edge 認定デバイス カタログ](https://catalog.azureiotsolutions.com/)から少なくとも 1 つの IoT Edge デバイスに追加します。
+- [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)でオファーの一覧タブを使用し、「**有用なリンク**」セクションのリンクを [Azure IoT Edge 認定デバイス カタログ](https://catalog.azureiotsolutions.com/)から少なくとも 1 つの IoT Edge デバイスに追加します。
 
 :::image type="content" source="media/iot-edge-module-technical-assets-offer-listing.png" alt-text="これは、パートナー センター内の「オファーの一覧」セクションのイメージです":::
 
@@ -66,11 +66,11 @@ IoT Edge でサポートされているすべてのレベル 1 プラットフ�
 
 ### <a name="configuration"></a>構成
 
-モジュールには、IoT Edge デバイスへのデプロイをできるだけ簡単にするための既定の構成設定を含める必要があります。 この情報は、 [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)のプランの「 **技術的構成** 」ページで指定できます。 コンテナーには、edgeHub や IoT Hub と通信できるようにするため、IoT Edge モジュール SDK が含まれることもあります。
+モジュールには、IoT Edge デバイスへのデプロイをできるだけ簡単にするための既定の構成設定を含める必要があります。 この情報は、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)のプランの「**技術的構成**」ページで指定できます。 コンテナーには、edgeHub や IoT Hub と通信できるようにするため、IoT Edge モジュール SDK が含まれることもあります。
 
 #### <a name="default-configuration"></a>既定の構成
 
-IoT Edge モジュールは、 [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)の計画の「 **技術的構成** 」ページで指定された既定の設定で開始できなくてはなりません。 次の既定の設定を使用できます。
+IoT Edge モジュールは、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)の計画の「**技術的構成**」ページで指定された既定の設定で開始できなくてはなりません。 次の既定の設定を使用できます。
 
 - 既定の **ルート**
 - 既定の **モジュール ツインの必要なプロパティ**
@@ -85,7 +85,7 @@ ServerIPAddress = <MY_SERVER_IP_ADDRESS>
 
 #### <a name="configuration-documentation"></a>構成に関するドキュメント
 
-IoT Edge モジュールのすべての構成設定を明確に文書化する必要があります。 たとえば、ルート、ツインが必要なプロパティ、環境変数、createOptions などを使用する方法を文書化する必要があります。 ドキュメントへのリンクを指定するか、ドキュメントをオファーまたはプランの説明の一部に含める必要があります。 この情報は、 [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)の **オファーの一覧** と **計画の一覧** ページに記載できます。
+IoT Edge モジュールのすべての構成設定を明確に文書化する必要があります。 たとえば、ルート、ツインが必要なプロパティ、環境変数、createOptions などを使用する方法を文書化する必要があります。 ドキュメントへのリンクを指定するか、ドキュメントをオファーまたはプランの説明の一部に含める必要があります。 この情報は、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)の **オファーの一覧** と **計画の一覧** ページに記載できます。
 
 #### <a name="tags-and-versioning"></a>タグとバージョン管理
 

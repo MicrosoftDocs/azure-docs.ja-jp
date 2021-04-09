@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: a8199039ea803d5919e168edccaaa03c18985725
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87921029"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>チュートリアル:NFS 経由で Azure Data Box Heavy にデータをコピーする
@@ -142,7 +142,7 @@ Linux ホスト コンピューターを使用している場合は、Robocopy �
      16 並列コピーから始めて、使用可能なリソースに応じてスレッドの数を増やすことをお勧めします。
 
 > [!IMPORTANT]
-> Linux ファイルの種類のうち、シンボリック リンク、文字ファイル、ブロック ファイル、ソケット、パイプはサポートされていません。 これらのファイルの種類を使用すると、**発送準備**手順でエラーが発生します。
+> Linux ファイルの種類のうち、シンボリック リンク、文字ファイル、ブロック ファイル、ソケット、パイプはサポートされていません。 これらのファイルの種類を使用すると、**発送準備** 手順でエラーが発生します。
 
 コピー先フォルダーを開いて、コピー済みのファイルを表示し、確認します。 コピー処理中にエラーが発生した場合は、トラブルシューティングのためにエラー ファイルをダウンロードします。 詳細については、[データを Data Box Heavy にコピーしている間のエラー ログの表](data-box-logs.md#view-error-log-during-data-copy)に関するページを参照してください。 データ コピー中のエラーの詳細な一覧については、[Data Box Heavy の問題のトラブルシューティング](data-box-troubleshoot.md)に関するページを参照してください。
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: duau
 ms.openlocfilehash: e402a87ae441ed98a9da93f8b9e347c38c48126f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89398819"
 ---
 # <a name="whats-new-in-azure-front-door"></a>Azure Front Door の新着情報

@@ -10,15 +10,15 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: a96be6d4da3d292b2e9881652aad28f318ccee8a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92107574"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio ダッシュボード
 
-[Azure Data Studio](/sql/azure-data-studio/what-is) では、Azure Arc リソースに関する情報を表示するために、Azure portal と同様のエクスペリエンスが提供されます。  これらのビューは**ダッシュボード**と呼ばれ、レイアウトとオプションは、Azure portal 内の特定のリソースについて見られるものと似ていますが、Azure に接続できない場合に環境内の情報がローカルに表示される柔軟性があります。
+[Azure Data Studio](/sql/azure-data-studio/what-is) では、Azure Arc リソースに関する情報を表示するために、Azure portal と同様のエクスペリエンスが提供されます。  これらのビューは **ダッシュボード** と呼ばれ、レイアウトとオプションは、Azure portal 内の特定のリソースについて見られるものと似ていますが、Azure に接続できない場合に環境内の情報がローカルに表示される柔軟性があります。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 

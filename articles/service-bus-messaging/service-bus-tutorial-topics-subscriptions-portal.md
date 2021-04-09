@@ -6,12 +6,12 @@ ms.author: spelluru
 ms.date: 10/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2c8d107c6de4965472c3fb04ff626841fb1f6ea
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: d0a94f346f9d3cf7a05a1ca6e1b37d4d008f3e75
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95810738"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179665"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>チュートリアル: Azure Portal とトピック/サブスクリプションを使用して在庫を更新する
 
@@ -97,7 +97,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-不要になったら、名前空間とキューを削除します。 これを行うには、ポータルでこれらのリソースを選択し、 **[削除]** をクリックします。
+不要になったら、名前空間とトピックを削除します。 これを行うには、ポータルでこれらのリソースを選択し、 **[削除]** をクリックします。
 
 ## <a name="understand-the-sample-code"></a>サンプル コードを理解する
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: f9b50c831b435a6189a9b9e4d79a934a2661b033
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 77a8e208e463b8ab20d563421d447813b1ce84ee
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570407"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772554"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel のアクセス許可
 
@@ -42,6 +42,8 @@ Azure Sentinel 専用の組み込みロールが 3 つあります。
 
 - [Azure Sentinel 共同作成者](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)では、上記に加え、ブック、分析ルール、その他の Azure Sentinel リソースの作成と編集を行うことができます。
 
+- [Azure Sentinel Automation 共同作成者](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)は、プレイブックに自動化ルールを追加することを Azure Sentinel に許可します。 これはユーザー アカウント用ではありません。
+
 > [!NOTE]
 >
 > - 最適な結果を得るには、これらのロールを、Azure Sentinel ワークスペースが含まれる **リソース グループ** に割り当てる必要があります。 Azure Sentinel をサポートするためにデプロイされるすべてのリソースを同じリソース グループに配置する必要があるため、このようにすると、それらのリソースにロールが適用されます。
@@ -54,7 +56,7 @@ Azure Sentinel 専用の組み込みロールが 3 つあります。
 
 - プレイブックを使用して脅威への対応を自動化する
 
-    Azure Sentinel では、自動化された脅威の対応に **プレイブック** を使用します。 プレイブックは、**Azure Logic Apps** に基づいて構築されている、別の Azure リソースです。 セキュリティ運用チームの特定のメンバーに、セキュリティ オーケストレーション、自動化、および対応 (SOAR) の操作に Logic Apps を使用する権能を割り当てることができます。 [Logic App 共同作成者](../role-based-access-control/built-in-roles.md#logic-app-contributor)または [Logic App オペレーター](../role-based-access-control/built-in-roles.md#logic-app-operator) ロールを使用して、プレイブックを使用するための明示的なアクセス許可を割り当てることができます。
+    Azure Sentinel では、自動化された脅威の対応に **プレイブック** を使用します。 プレイブックは、**Azure Logic Apps** に基づいて構築されている、別の Azure リソースです。 セキュリティ運用チームの特定のメンバーに、セキュリティ オーケストレーション、自動化、および対応 (SOAR) の操作に Logic Apps を使用する権能を割り当てることができます。 [Logic App 共同作成者](../role-based-access-control/built-in-roles.md#logic-app-contributor)ロールを使用して、プレイブックを使用するための明示的なアクセス許可を割り当てることができます。
 
 - Azure Sentinel にデータ ソースを接続する
 
@@ -89,12 +91,19 @@ Azure Sentinel 固有の Azure ロールの割り当てでは、Azure および 
 
 ## <a name="custom-roles-and-advanced-azure-rbac"></a>カスタム ロールと高度な Azure RBAC
 
-- Azure 組み込みロールの使用に加え、またはその代わりに、Azure Sentinel の Azure カスタム ロールを作成することができます。 Azure Sentinel の Azure カスタム ロールは、[Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) および [Azure Log Analytics リソース](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)に対する特定のアクセス許可に基づいて、他の[Azure カスタム ロール](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)を作成する場合と同じ方法で作成されます。
+- **カスタム ロール**。 Azure 組み込みロールの使用に加え、またはその代わりに、Azure Sentinel の Azure カスタム ロールを作成することができます。 Azure Sentinel の Azure カスタム ロールは、[Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) および [Azure Log Analytics リソース](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)に対する特定のアクセス許可に基づいて、他の[Azure カスタム ロール](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)を作成する場合と同じ方法で作成されます。
 
-- Azure Sentinel ワークスペースのデータに対して、Log Analytics の高度な Azure ロールベースのアクセス制御を使用できます。 これには、データ型ベースの Azure RBAC とリソース中心の Azure RBAC の両方が含まれます。 Log Analytics ロールの詳細については、[Azure Monitor でのログ データとワークスペースの管理](../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions)に関する記事を参照してください。
+- **Log Analytics RBAC**。 Azure Sentinel ワークスペースのデータに対して、Log Analytics の高度な Azure ロールベースのアクセス制御を使用できます。 これには、データ型ベースの Azure RBAC とリソースコンテキストの Azure RBAC の両方が含まれます。 詳細については、次を参照してください。
+
+    - [Azure Monitor でログ データとワークスペースを管理する](../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions)
+
+    - [Azure Sentinel のリソースコンテキストの RBAC](resource-context-rbac.md)
+    - [テーブルレベルの RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043)
+
+    リソースコンテキスト RBAC とテーブルレベル RBAC は、Azure Sentinel を丸ごと利用できる許可を与えることなく、Azure Sentinel ワークスペースに含まれる特定のデータへのアクセスを許可する 2 つの手法です。
 
 ## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、Azure Sentinel ユーザーのロールと、各ロールでユーザーが実行できる操作について学習しました。
 
-* [Azure Sentinel ブログ](https://aka.ms/azuresentinelblog)。 Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+Azure のセキュリティとコンプライアンスに関するブログ記事は、[Azure Sentinel ブログ](https://aka.ms/azuresentinelblog)で見つかります。

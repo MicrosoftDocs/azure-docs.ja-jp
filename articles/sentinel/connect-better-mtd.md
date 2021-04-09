@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/12/2021
 ms.author: yelevin
 ms.openlocfilehash: 4828e31b9d15f101740c158ee62c90c95673c9a7
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98541512"
 ---
 # <a name="connect-your-better-mobile-threat-defense-mtd-to-azure-sentinel"></a>BETTER Mobile Threat Defense (MTD) を Azure Sentinel に接続する

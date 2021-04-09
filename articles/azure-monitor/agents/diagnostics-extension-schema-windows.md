@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
 ms.openlocfilehash: 70b27fec07d074dadb413d1debb098e23b4d33b3
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102428730"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows Diagnostics 拡張機能のスキーマ
@@ -269,7 +269,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 |---------------|----------|-----------------|  
 |**name**|string|シンク名を特定する文字列。|  
 
-|要素|種類|説明|  
+|要素|Type|説明|  
 |-------------|----------|-----------------|  
 |**Application Insights**|string|データを Application Insights に送信するときにのみ使用されます。 アクセス先のアクティブな Application Insights アカウントのインストルメンテーション キーが含まれます。|  
 |**Channels**|string|追加フィルタリングごとに 1 つ|  
@@ -281,7 +281,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 
  シンクを通過するログ データのストリームのフィルターを定義します。  
 
-|要素|種類|説明|  
+|要素|Type|説明|  
 |-------------|----------|-----------------|  
 |**Channel**|string|このページの他の場所の説明を参照してください。|  
 

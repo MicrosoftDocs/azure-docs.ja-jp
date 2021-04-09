@@ -6,19 +6,19 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 46d8fe6427b2a3e7811719792ac4bf67ddbcc3c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 746f15d2d712f4b571d3f27e3535c69f5f4f9732
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90932470"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732770"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Azure portal を使用した Azure Database for PostgreSQL - フレキシブル サーバーの仮想ネットワークの作成と管理
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL - フレキシブル サーバーはプレビュー段階です
 
-Azure Database for PostgreSQL - フレキシブル サーバーでは、ご利用のフレキシブル サーバーに接続するために、2 種類の相互に排他的なネットワーク接続方法がサポートされています。 次の 2 つのオプションがあります。
+Azure Database for PostgreSQL - フレキシブル サーバーでは、フレキシブル サーバーに接続するために、同時に使用できないネットワーク接続方法が 2 種類サポートされています。 次の 2 つのオプションがあります。
 
 * パブリック アクセス (許可された IP アドレス)
 * プライベート アクセス (VNet 統合)
@@ -33,7 +33,14 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、ご利�
     > [!Note]
     > 仮想ネットワークとサブネットは、ご利用のフレキシブル サーバーと同じリージョンおよびサブスクリプション内に存在する必要があります。
 
--  **Microsoft.DBforPostgreSQL/flexibleServers** に[サブネットを委任](../../virtual-network/manage-subnet-delegation.md#delegate-a-subnet-to-an-azure-service)すること。 この委任は、Azure Database for PostgreSQL フレキシブル サーバーのみがそのサブネットを使用できることを意味します。 委任されたサブネットに他の Azure リソースの種類を含めることはできません。
+-  **Microsoft.DBforPostgreSQL/flexibleServers** に [サブネットを委任](../../virtual-network/manage-subnet-delegation.md#delegate-a-subnet-to-an-azure-service)すること。 この委任は、Azure Database for PostgreSQL フレキシブル サーバーのみがそのサブネットを使用できることを意味します。 委任されたサブネットに他の Azure リソースの種類を含めることはできません。
+-  フレキシブル サーバーに委任されたサブネット用に、`Microsoft.Storage` をサービス エンドポイントに追加します。 これは、次の手順を実行することで行われます。
+     1. 仮想ネットワーク ページにアクセスします。
+     2. フレキシブル サーバーのデプロイを計画している VNET を選択します。
+     3. フレキシブル サーバー用に委任されているサブネットを選択します。
+     4. プルアウト画面の **[サービス エンドポイント]** で、ドロップダウンから `Microsoft.storage` を選択します。
+     5. 変更を保存します。
+
 
 ## <a name="create-azure-database-for-postgresql---flexible-server-in-an-already-existing-virtual-network"></a>Azure Database for PostgreSQL - フレキシブル サーバーを既存の仮想ネットワーク内に作成する
 
@@ -49,6 +56,6 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、ご利�
 >[!Note]
 > フレキシブル サーバーを仮想ネットワークとサブネットにデプロイした後は、パブリック アクセス (許可された IP アドレス) に移動することはできません。
 ## <a name="next-steps"></a>次のステップ
-- [Azure CLI を使用して Azure Database for PostgreSQL - フレキシブル サーバーの仮想ネットワークを作成し、管理する](./how-to-manage-virtual-network-cli.md)。
+- [Azure CLI を使用して Azure Database for PostgreSQL - フレキシブル サーバー仮想ネットワークを作成し、管理する](./how-to-manage-virtual-network-cli.md)。
 - [Azure Database for PostgreSQL - フレキシブル サーバーのネットワーク](./concepts-networking.md)の詳細を確認する
 - [Azure Database for PostgreSQL - フレキシブル サーバー仮想ネットワーク](./concepts-networking.md#private-access-vnet-integration)の詳細を理解する。

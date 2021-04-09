@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 704763e8e6e7c5336d0ed3e1c28791fb96c77aba
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/01/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97844942"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>カスタム エンティティの参照認知スキル (プレビュー)

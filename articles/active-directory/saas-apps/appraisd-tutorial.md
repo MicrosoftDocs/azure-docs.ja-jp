@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 79db0a7bb769d6138bfeeb4e765621a1cffb4d14
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92457862"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>チュートリアル:Appraisd と Azure Active Directory の統合
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Appraisd では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Appraisd では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
 
 ## <a name="adding-appraisd-from-the-gallery"></a>ギャラリーから Appraisd を追加する
 
@@ -47,7 +47,7 @@ Azure AD への Appraisd の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Appraisd** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Appraisd**」と入力します。
 1. 結果のパネルから **[Appraisd]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -84,7 +84,7 @@ Appraisd に対する Azure AD SSO を構成してテストするには、次の
     > [!NOTE]
     > このチュートリアルで後述する Appraisd SSO の [Configuration]\(構成\) ページで、実際の [Sign-on URL]\(サインオン URL\) と [Relay State]\(リレー状態\) の値を取得します。
 
-1. Appraisd アプリケーションは、特定の形式の SAML アサーションを使用するため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 Appraisd アプリケーションでは、 **nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. Appraisd アプリケーションは、特定の形式の SAML アサーションを使用するため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 Appraisd アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![このスクリーンショットは、[編集] アイコンが強調表示された状態の [ユーザー属性] ペインを示しています。](common/edit-attribute.png)
 
@@ -184,9 +184,9 @@ Azure AD ユーザーが Appraisd にサインインできるようにするに�
 
     ![このスクリーンショットは、[Add a new user]\(新しいユーザーの追加\) ページを示しています。](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
 
-    a. **[First name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Britta** )。
+    a. **[First name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Britta**)。
 
-    b. **[Last name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **simon** )。
+    b. **[Last name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **simon**)。
 
     c. **[電子メール]** ボックスに、ユーザーのメール アドレスを入力します (例: `B. Simon@contoso.com`)。
 

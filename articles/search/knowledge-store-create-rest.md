@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/18/2020
 ms.openlocfilehash: 6af9b8f97d622ae10cfdbcaa8ca50abb42ec7332
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94889056"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>REST と Postman を使用してナレッジ ストアを作成する
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Blob service ページを開き、*hotel-reviews* という名前のコンテナーを作成します。
 
-1. **[Upload]** をクリックします。
+1. **[アップロード]** をクリックします。
 
     ![データをアップロードする](media/knowledge-store-create-portal/upload-command-bar.png "ホテルのレビューをアップロードする")
 
@@ -50,7 +50,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Azure Blob コンテナーを作成する](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Azure Blob コンテナーを作成する")
 
-1. このリソースはほぼ完成ですが、これらのページから離れる前に、左側のナビゲーション ウィンドウのリンクを使用して **[Access Keys]\(アクセス キー\)** ページを開きます。 Blob ストレージからデータを取得するために接続文字列を取得します。 接続文字列は次の例のようになります。`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
+1. このリソースはほぼ完成ですが、これらのページから離れる前に、左側のナビゲーション ウィンドウのリンクを使用して **[アクセス キー]** ページを開きます。 Blob ストレージからデータを取得するために接続文字列を取得します。 接続文字列は次の例のようになります。`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
 1. 引き続きポータルで、Azure Cognitive Search に切り替えます。 [新しいサービスを作成](search-create-service-portal.md)するか、[既存のサービスを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)します。 この演習では、無料のサービスを使用できます。
 
@@ -63,21 +63,21 @@ Postman をインストールして設定します。
 1. [Postman コレクション ソース コード](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json)をダウンロードします。
 1. **[File]\(ファイル\)**  >  **[Import]\(インポート\)** を選択して、ソース コードを Postman にインポートします。
 1. **[Collections]\(コレクション\)** タブを選択し、 **[...]** (省略記号) ボタンを選択します。
-1. **[Edit]\(編集\)** を選択します。 
+1. **[編集]** を選択します。 
    
    ![ナビゲーションを示す Postman アプリ](media/knowledge-store-create-rest/postman-edit-menu.png "Postman の [Edit]\(編集\) メニューに移動する")
 1. **[Edit]\(編集\)** ダイアログ ボックスで、 **[Variables]\(変数\)** タブを選択します。 
 
 **[Variables]\(変数\)** タブには、二重中かっこ内で特定の変数が出現するたびに、Postman でスワップされる値を追加できます。 たとえば、Postman によって、記号 `{{admin-key}}` は `admin-key` に設定した現在の値に置き換えられます。 Postman では、URL、ヘッダー、要求本文などの置き換えが行われます。 
 
-`admin-key` の値を取得するには、Azure Cognitive Search サービスに移動し、 **[Keys]\(キー\)** タブを選択します。`search-service-name` および `storage-account-name` を「[サービスを作成する](#create-services-and-load-data)」で選択した値に変更します。 ストレージ アカウントの **[Access Keys]\(アクセス キー\)** タブの値を使用して `storage-connection-string` を設定します。その他の値は既定値のままにしておくことができます。
+`admin-key` の値を取得するには、Azure Cognitive Search サービスに移動し、 **[キー]** タブを選択します。`search-service-name` および `storage-account-name` を「[サービスを作成する](#create-services-and-load-data)」で選択した値に変更します。 ストレージ アカウントの **[アクセス キー]** タブの値を使用して `storage-connection-string` を設定します。その他の値は既定値のままにしておくことができます。
 
 ![Postman アプリの [variables]\(変数\) タブ](media/knowledge-store-create-rest/postman-variables-window.png "Postman の [variables]\(変数\) ウィンドウ")
 
 
 | 変数    | 情報の入手元 |
 |-------------|-----------------|
-| `admin-key` | Azure Cognitive Search サービスの **[Keys]\(キー\)** ページ上。  |
+| `admin-key` | Azure Cognitive Search サービスの **[キー]** ページ上。  |
 | `api-version` | **2020-06-30** のままにします。 |
 | `datasource-name` | **hotel-reviews-ds** のままにします。 | 
 | `indexer-name` | **hotel-reviews-ixr** のままにします。 | 
@@ -109,7 +109,7 @@ Postman をインストールして設定します。
 
 強化の検索、フィルター処理、および適用時に関心のあるデータを表すために、Azure Cognitive Search インデックスを作成します。 PUT 要求を `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}` に発行して、インデックスを作成します。 Postman では、二重中かっこで囲まれた記号 (`{{search-service-name}}`、`{{index-name}}`、`{{api-version}}` など) は「[Postman を構成する](#configure-postman)」で設定した値に置き換えられます。 別のツールを使用して REST コマンドを発行する場合は、これらの変数を自分で置き換える必要があります。
 
-要求の本文で自分の Azure Cognitive Search インデックスの構造を設定します。 Postman で、`api-key` および `Content-type` ヘッダーを設定した後、要求の **[Body]\(本文\)** ウィンドウに移動します。 次の JSON が表示されます。 そうでない場合は、 **[Raw]**  >  **[JSON (application/json)]** を選択し、本文として次のコードを貼り付けます。
+要求の本文で自分の Azure Cognitive Search インデックスの構造を設定します。 Postman で、`api-key` および `Content-type` ヘッダーを設定した後、要求の **[本文]** ウィンドウに移動します。 次の JSON が表示されます。 そうでない場合は、 **[未加工]**  >  **[JSON (application/json)]** を選択し、本文として次のコードを貼り付けます。
 
 ```JSON
 {
@@ -146,7 +146,7 @@ Postman をインストールして設定します。
 
 このインデックス定義は、ユーザーに提示したいデータ (ホテルの名前、レビューの内容、日付)、検索メタデータ、AI 強化データ (センチメント、キーフレーズ、言語) の組み合わせです。
 
-**[送信]** を選択して PUT 要求を発行します。 状態 `201 - Created` が表示されます。 別の状態が表示される場合は、 **[Body]\(本文\)** ウィンドウでエラー メッセージを含む JSON 応答を探します。 
+**[送信]** を選択して PUT 要求を発行します。 状態 `201 - Created` が表示されます。 別の状態が表示される場合は、 **[本文]** ウィンドウでエラー メッセージを含む JSON 応答を探します。 
 
 ## <a name="create-the-datasource"></a>データソースを作成する
 
@@ -341,7 +341,7 @@ Postman で、 **[Create Datasource]\(データソースの作成\)** 要求、 
 
 ## <a name="run-the-indexer"></a>インデクサーを実行する 
 
-Azure portal で、Azure Cognitive Search サービスの **[Overview]\(概要\)** ページに移動します。 **[Indexers]\(インデクサー\)** タブを選択し、 **[hotels-reviews-ixr]** を選択します。 インデクサーがまだ実行されていない場合は、 **[Run]\(実行\)** を選択します。 インデックス作成タスクによって、言語認識に関連する警告が発生する場合があります。 このデータには、コグニティブ スキルでまだサポートされていない言語で記述されたレビューがいくつか含まれています。 
+Azure portal で、Azure Cognitive Search サービスの **[概要]** ページに移動します。 **[インデクサー]** タブを選択し、 **[hotels-reviews-ixr]** を選択します。 インデクサーがまだ実行されていない場合は、 **[実行]** を選択します。 インデックス作成タスクによって、言語認識に関連する警告が発生する場合があります。 このデータには、コグニティブ スキルでまだサポートされていない言語で記述されたレビューがいくつか含まれています。 
 
 ## <a name="next-steps"></a>次のステップ
 

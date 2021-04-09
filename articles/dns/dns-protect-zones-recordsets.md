@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: 2280d6243f468708269569cd24cb8c7a3e2a8191
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 85aaf40237b6b6687c54d4b036f280805c98e7b2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202299"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102618969"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS ゾーンとレコードを保護する方法
 
@@ -202,7 +202,7 @@ Azure Resource Manager は、別のタイプのセキュリティ制御をサポ
 
 ![Azure Portal を使用したゾーン レベルのリソース ロック](./media/dns-protect-zones-recordsets/locks1.png)
 
-ゾーン レベルのリソース ロックは、[Azure PowerShell](/powershell/module/az.resources/new-azresourcelock?view=latest) を使用して作成することもできます。
+ゾーン レベルのリソース ロックは、[Azure PowerShell](/powershell/module/az.resources/new-azresourcelock) を使用して作成することもできます。
 
 ```azurepowershell
 # Lock a DNS zone

@@ -6,10 +6,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 07/22/2019
 ms.openlocfilehash: e9897c7ba14e6190698cf10792a94acc759699d4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98940183"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Apache Spark 機械学習パイプラインを作成する
@@ -28,7 +28,7 @@ Machine Learning (ML) パイプラインは、複数の Machine Learning アル�
 
 この例では、ML パイプラインの実際の用途を示すために、HDInsight クラスター用の既定の (Azure Storage または Data Lake Storage のいずれかの) ストレージに事前に読み込まれて出荷されるサンプルの `HVAC.csv` データ ファイルを使用しています。 このファイルの内容を表示するには、`/HdiSamples/HdiSamples/SensorSampleData/hvac` ディレクトリに移動します。 `HVAC.csv` には、さまざまなビル内の HVAC (*暖房、換気、および空調*) システムのターゲット温度と実際の温度の両方を含む一連の時間が含まれています。 目標は、データ上のモデルをトレーニングし、特定のビルの予測温度を生成することです。
 
-次のコードは、次の処理を実行します。
+コード例を次に示します。
 
 1. `LabeledDocument` を定義します。これは、`BuildingID`、`SystemInfo` (システムの識別子と経過時間)、および `label` (ビルが暑すぎる場合は 1.0、それ以外の場合は 0.0) を格納します。
 2. 1 行のデータを取得し、ターゲット温度と実際の温度を比較することによってビルが "暑い" かどうかを判定するカスタム パーサー関数 `parseDocument` を作成します。
@@ -129,6 +129,6 @@ only showing top 20 rows
 
 これで、`model` オブジェクトを使用して予測を行うことができます。 この Machine Learning アプリケーションの完全なサンプルと、それを実行するための詳細な手順については、「[Build Apache Spark machine learning applications on Azure HDInsight (Azure HDInsight で Apache Spark Machine Learning アプリケーションを構築する)](apache-spark-ipython-notebook-machine-learning.md)」を参照してください。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Scala および Azure 上の Apache Spark を使用したデータ サイエンス](../../machine-learning/team-data-science-process/scala-walkthrough.md)

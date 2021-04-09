@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 33672e90406b94a1b5788803911c072cdc2577f7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 785c87e8136430557af819cd8c7ab1db8f54c060
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186390"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102507723"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集:Azure プラットフォームにおけるクラウド用語の辞書
 
@@ -41,7 +41,7 @@ Web サイトまたは Web アプリケーション、Web API、または[モバ
 
 ## <a name="availability-set"></a>可用性セット
 アプリケーションの冗長性と信頼性を提供するために、ひとまとまりで管理される仮想マシンのコレクション。 可用性セットを利用していれば、計画済みまたは計画外メンテナンスの間にも、少なくとも 1 つの仮想マシンを使用できます。  
-「[Windows 仮想マシンの可用性の管理](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」と「[Linux 仮想マシンの可用性管理](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
+「[Windows 仮想マシンの可用性の管理](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」と「[Linux 仮想マシンの可用性管理](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
 
 ## <a name="azure-classic-deployment-model"></a><a name="classic-model"></a>Azure クラシック デプロイ モデル
 Azure でリソースをデプロイするときに使われる 2 つの [デプロイ モデル](./azure-resource-manager/management/deployment-models.md) のうちの 1 つ (新しいモデルは Azure Resource Manager です)。 Azure サービスには、Resource Manager デプロイ モデルだけをサポートするもの、クラシック デプロイ モデルだけをサポートするもの、その両方をサポートするものがあります。 各 Azure サービスでサポートされるモデルについては、該当するドキュメントをご覧ください。
@@ -58,7 +58,7 @@ Microsoft Azure でリソースをデプロイするために使用される 2 �
 
 ## <a name="fault-domain"></a>障害ドメイン
 同時にエラーになる可能性のある可用性セット内の仮想マシンのコレクション。 その一例が、共通の電源とネットワーク スイッチを使用する、ラック内のマシンのグループです。 Azure では、可用性セット内の仮想マシンは自動的に複数の障害ドメインに分散されます。  
-「[Windows 仮想マシンの可用性の管理](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」または「[Linux 仮想マシンの可用性管理](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。  
+「[Windows 仮想マシンの可用性の管理](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」または「[Linux 仮想マシンの可用性管理](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。  
 
 ## <a name="geo"></a>geo
 データが存在する定義済みの境界。通常は複数のリージョンが含まれます。 この境界は国境を越えることもあり、税法の影響を受けます。 どの geo にも少なくとも 1 つのリージョンがあります。 geo の例として、アジア太平洋や日本が挙げられます。 *地理的な場所* とも呼ばれます。  
@@ -135,7 +135,7 @@ Azure サービスを入手する権利を与える、お客様と Microsoft の
 
 ## <a name="update-domain"></a>ドメインの更新
 同時に更新される可用性セット内の仮想マシンのコレクション。 同じ更新ドメイン内の仮想マシンは、計画的なメンテナンス中に同時に再起動されます。 Azure では、複数の更新ドメインを同時に再起動することはありません。 このドメインは、アップグレード ドメインとも呼ばれています。  
-「[Windows 仮想マシンの可用性の管理](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」と「[Linux 仮想マシンの可用性管理](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
+「[Windows 仮想マシンの可用性の管理](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」と「[Linux 仮想マシンの可用性管理](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
 
 ## <a name="virtual-machine"></a><a name="vm"></a>仮想マシン
 オペレーティング システムを実行する物理コンピューターのソフトウェア実装。 同じハードウェアで複数の仮想マシンを同時に実行できます。 Azure では、さまざまなサイズの仮想マシンを利用できます。  

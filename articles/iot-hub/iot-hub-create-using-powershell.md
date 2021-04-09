@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
 ms.openlocfilehash: da021e3ba0fd93a182ea76a1ba4b7042b325aacc
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92142375"
 ---
 # <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>New-AzIotHub コマンドレットを使用して IoT ハブを作成する
@@ -41,7 +41,7 @@ Login-AzAccount
 
 IoT Hub をデプロイするためのリソース グループが必要です。 既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。
 
-お使いの IoT ハブ用のリソース グループを作成するには、[New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) コマンドを使用します。 この例では、**米国東部**リージョンに **MyIoTRG1** というリソース グループを作成しています。
+お使いの IoT ハブ用のリソース グループを作成するには、[New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) コマンドを使用します。 この例では、**米国東部** リージョンに **MyIoTRG1** というリソース グループを作成しています。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
@@ -49,7 +49,7 @@ New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-前の手順で作成したリソース グループに IoT ハブを作成するには、[New-AzIotHub](/powershell/module/az.IotHub/New-azIotHub) コマンドを使用します。 この例では、**米国東部**リージョンに **MyTestIoTHub** という **S1** ハブを作成しています。
+前の手順で作成したリソース グループに IoT ハブを作成するには、[New-AzIotHub](/powershell/module/az.IotHub/New-azIotHub) コマンドを使用します。 この例では、**米国東部** リージョンに **MyTestIoTHub** という **S1** ハブを作成しています。
 
 ```azurepowershell-interactive
 New-AzIotHub `

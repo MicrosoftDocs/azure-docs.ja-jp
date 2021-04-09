@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 06bebcb7369f6604fc79c1d3d0a4a6afa8b0a1da
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97896313"
 ---
 # <a name="create-and-manage-vlanssubnets-for-your-private-clouds"></a>プライベート クラウドの VLAN/サブネットを作成して管理する
@@ -47,7 +47,7 @@ vSphere で分散ポート グループを作成するには、<a href="https://
 
 ## <a name="select-a-firewall-table"></a>ファイアウォール テーブルの選択
 
-ファイアウォールのテーブルと関連ルールは、 **[ネットワーク] の [Firewall Tables]\(ファイアウォール テーブル\)** ページで定義されます。 プライベート クラウドの VLAN/サブネットに適用するファイアウォール テーブルを選択するには、 **[VLANs/Subnets]\(VLAN/サブネット\)** ページで **[Firewall table attachment]\(ファイアウォール テーブル接続\)** をクリックします。 ファイアウォール テーブルの設定方法とルールの定義方法については、「[ファイアウォール テーブル](firewall.md)」を参照してください。
+ファイアウォールのテーブルと関連ルールは、**[ネットワーク] の [Firewall Tables]\(ファイアウォール テーブル\)** ページで定義されます。 プライベート クラウドの VLAN/サブネットに適用するファイアウォール テーブルを選択するには、**[VLANs/Subnets]\(VLAN/サブネット\)** ページで **[Firewall table attachment]\(ファイアウォール テーブル接続\)** をクリックします。 ファイアウォール テーブルの設定方法とルールの定義方法については、「[ファイアウォール テーブル](firewall.md)」を参照してください。
 
 ![ファイアウォール テーブルのリンク](media/vlan-subnet-firewall-link.png)
 
@@ -56,8 +56,8 @@ vSphere で分散ポート グループを作成するには、<a href="https://
 
 ## <a name="edit-a-vlansubnet"></a>VLAN/サブネットの編集
 
-VLAN/サブネットの設定を編集するには、 **[VLANs/Subnets]\(VLAN/サブネット\)** ページでそれを選択し、 **[編集]** アイコンをクリックします。 変更を加え、 **[送信]** をクリックします。
+VLAN/サブネットの設定を編集するには、**[VLANs/Subnets]\(VLAN/サブネット\)** ページでそれを選択し、**[編集]** アイコンをクリックします。 変更を加え、**[送信]** をクリックします。
 
 ## <a name="delete-a-vlansubnet"></a>VLAN/サブネットの削除
 
-VLAN/サブネットを削除するには、 **[VLANs/Subnets]\(VLAN/サブネット\)** ページでそれを選択し、 **[削除]** アイコンをクリックします。 **[削除]** をクリックして確定します。
+VLAN/サブネットを削除するには、**[VLANs/Subnets]\(VLAN/サブネット\)** ページでそれを選択し、**[削除]** アイコンをクリックします。 **[削除]** をクリックして確定します。

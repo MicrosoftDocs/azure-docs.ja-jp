@@ -4,10 +4,10 @@ description: この記事では、ベース (カスタム イメージ、Marketp
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: f012a8c59a8e938334c3e1abc4c7b3ccd0e48d3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91308896"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs 数式の管理
@@ -39,11 +39,11 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
     ![数式の追加](./media/devtest-lab-create-formulas/add-formula.png)
 6. **[ベースの選択]** ページで、数式を作成する際のベース (カスタム イメージ、Marketplace イメージ、または Shared Image Gallery イメージ) を選択します。
 
-    :::image type="content" source="./media/devtest-lab-create-formulas/select-base.png" alt-text="基本イメージを選択する&quot;:::
+    :::image type="content" source="./media/devtest-lab-create-formulas/select-base.png" alt-text="基本イメージを選択する":::
 1. **[Create formula]\(数式の作成\)** ページの **[Basic Settings]\(基本設定\)** タブで、次の値を指定します。
    
     * **Formula name** (数式の名前) - 数式の名前を入力します。 この値は、VM を作成するときに基本イメージの一覧に表示されます。 入力した名前は検証され、有効でない場合は有効な名前の要件を示すメッセージが表示されます。
-    - 必要に応じて、数式の**説明**を入力します。 
+    - 必要に応じて、数式の **説明** を入力します。 
     * **ユーザー名** - 管理者特権を付与するユーザー名を入力します。
     * **パスワード** - 指定されたユーザーに使用するシークレット (パスワード) に関連付けられている値を入力、またはドロップダウン リストから選択します。 キー コンテナーにシークレットを保存し、ラボ リソースの作成時に使用する方法については、[Azure Key Vault にシークレットを格納する](devtest-lab-store-secrets-in-key-vault.md)方法に関する記事を参照してください。
 
@@ -58,7 +58,7 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
     - **サブネット** - サブネットを変更するには、 **[サブネットの変更]** を選択します。 
     - **IP アドレス構成** -パブリック IP アドレス、プライベート IP アドレス、または共有 IP アドレスが必要かどうかを指定します。 共有 IP アドレスの詳細については、[Azure DevTest Labs の共有 IP アドレスに関する説明](./devtest-lab-shared-ip.md)をご覧ください。
     - **有効期限日時** - このフィールドを編集することはできません。 
-    - **このコンピューターを要求可能にする** - コンピューターを &quot;要求可能" にすると、作成時に所有権が割り当てられません。 代わりに、ラボ ユーザーが、ラボのページでコンピューターの所有権を取得 ("要求") できるようになります。  
+    - **このコンピューターを要求可能にする** - コンピューターを "要求可能" にすると、作成時に所有権が割り当てられません。 代わりに、ラボ ユーザーが、ラボのページでコンピューターの所有権を取得 ("要求") できるようになります。  
 
         ![[数式の作成 (再利用可能なベース)] ページの [詳細設定] を示すスクリーンショット。](./media/devtest-lab-create-formulas/advanced-settings.png)
     - ベースとして Shared Image Gallery イメージを選択した場合は、ベースとして使用するイメージのバージョンをギャラリーから選択できる **[イメージ バージョン]** フィールドも表示されます。 

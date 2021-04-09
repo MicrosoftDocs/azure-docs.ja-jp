@@ -12,10 +12,10 @@ ms.date: 01/06/2020
 ms.author: nitinme
 ms.custom: devx-track-js
 ms.openlocfilehash: 02901e6b4a75257b2cda8dee84dbe3438dc15c18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91332374"
 ---
 # <a name="how-to-set-the-cookie-policy-for-the-immersive-reader"></a>イマーシブ リーダーの Cookie ポリシーを設定する方法

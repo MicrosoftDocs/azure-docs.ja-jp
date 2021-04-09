@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/07/2021
+ms.date: 03/08/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: d8f4693fd6e1e443dd44aa745f338efd00282983
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 750b7a8367d46434f48626268a0eb37c9edddfb1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102438252"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102633540"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-pro-gpu-device"></a>チュートリアル:Azure Stack Edge Pro GPU デバイスにコンピューティングを構成する
 
@@ -52,7 +52,7 @@ Kubernetes クラスターにアクセスするようにクライアントを構
 1. デバイスのローカル Web UI で **[デバイス]** ページに移動します。
 2. **[Device endpoints]\(デバイスのエンドポイント\)** で、 **[Kubernetes API service]\(Kubernetes API サービス\)** エンドポイントをコピーします。 このエンドポイントは `https://compute.<device-name>.<DNS-domain>[Kubernetes-cluster-IP-address]` という形式の文字列です。 
 
-    ![ローカル UI の [デバイス] ページ](./media/azure-stack-edge-j-series-create-kubernetes-cluster/device-kubernetes-endpoint-1.png)
+    ![ローカル UI の [デバイス] ページ](./media/azure-stack-edge-gpu-create-kubernetes-cluster/device-kubernetes-endpoint-1.png)
 
 3. エンドポイント文字列を保存します。 後でクライアントを構成し、kubectl 経由で Kubernetes クラスターにアクセスするときにこのエンドポイント文字列を使用します。
 

@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 02/18/2021
 ms.author: crtreasu
 ms.openlocfilehash: 51c617e15cd72c15c7ba58522e87fbb73f51b1eb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102044703"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタートを実行するには、以下が必要です。
 
-* お使いの環境内の物理オブジェクトとその 3D モデル (CAD またはスキャン済みのいずれか)。
+* ご利用環境にある対象物と、その 3D モデル (CAD またはスキャン済みのいずれか)。
 * 以下がインストールされている Windows マシン。
   * <a href="https://git-scm.com" target="_blank">Git for Windows</a>
   * **ユニバーサル Windows プラットフォーム開発** ワークロードを含む <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> と **Windows 10 SDK (10.0.18362.0 以降)** コンポーネント

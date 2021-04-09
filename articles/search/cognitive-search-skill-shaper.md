@@ -9,29 +9,29 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 81eb0e60befc544a6c3bee8f04e901b6a5e472bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85560818"
 ---
 # <a name="shaper-cognitive-skill"></a>Shaper コグニティブ スキル
 
-**Shaper** スキルは、複数の入力を、エンリッチメント パイプラインの後の部分で参照できる[複合型](search-howto-complex-data-types.md)に統合します。 **Shaper** スキルでは、基本的に、構造を作成し、その構造のメンバーの名前を定義して、各メンバーに値を割り当てることができます。 統合されたフィールドが検索のシナリオで役立つ例として、姓と名を組み合わせて 1 つの構造体にする、市と県を組み合わせて 1 つの構造体にする、名前と誕生日を組み合わせて 1 つの構造体にする、などの操作を行って一意の ID を確立することが挙げられます。
+**Shaper** スキルは、複数の入力を、エンリッチメント パイプラインの後の部分で参照できる [複合型](search-howto-complex-data-types.md)に統合します。 **Shaper** スキルでは、基本的に、構造を作成し、その構造のメンバーの名前を定義して、各メンバーに値を割り当てることができます。 統合されたフィールドが検索のシナリオで役立つ例として、姓と名を組み合わせて 1 つの構造体にする、市と県を組み合わせて 1 つの構造体にする、名前と誕生日を組み合わせて 1 つの構造体にする、などの操作を行って一意の ID を確立することが挙げられます。
 
-さらに、[シナリオ 3](#nested-complex-types) で示されている **Shaper** スキルにより、オプションの "*sourceContext*" プロパティが入力に追加されます。 *source* および *sourceContext* プロパティは相互に排他的です。 入力がスキルのコンテキストにある場合は、単に *source* を使用します。 入力がスキル コンテキストとは*別の*コンテキストにある場合は、*sourceContext* を使用します。 *sourceContext* には、特定の要素がソースとして扱われる入れ子の入力を定義する必要があります。 
+さらに、[シナリオ 3](#nested-complex-types) で示されている **Shaper** スキルにより、オプションの "*sourceContext*" プロパティが入力に追加されます。 *source* および *sourceContext* プロパティは相互に排他的です。 入力がスキルのコンテキストにある場合は、単に *source* を使用します。 入力がスキル コンテキストとは *別の* コンテキストにある場合は、*sourceContext* を使用します。 *sourceContext* には、特定の要素がソースとして扱われる入れ子の入力を定義する必要があります。 
 
 出力の名前は常に "output" です。 内部的には、パイプラインでは別の名前をマップできます (下の例では "analyzedText") が、**Shaper** スキル自体は、応答内で "output" を返します。 これは、エンリッチメントしたドキュメントのデバッグ中に名前付けの不一致に気付いた場合や、カスタム スキルを構築し、応答を自身で作成している場合に重要なことがあります。
 
 > [!NOTE]
-> **Shaper** スキルは Cognitive Services API にバインドされていないため、使用に対しては課金されません。 ただし、1 日あたりの毎日のエンリッチメントの数を少数に制限する**無料**リソースのオプションをオーバーライドするには、引き続き [Cognitive Services リソースをアタッチ](cognitive-search-attach-cognitive-services.md)する必要があります。
+> **Shaper** スキルは Cognitive Services API にバインドされていないため、使用に対しては課金されません。 ただし、1 日あたりの毎日のエンリッチメントの数を少数に制限する **無料** リソースのオプションをオーバーライドするには、引き続き [Cognitive Services リソースをアタッチ](cognitive-search-attach-cognitive-services.md)する必要があります。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill
 
 ## <a name="scenario-1-complex-types"></a>シナリオ 1: 複合型
 
-*analyzedText* という名前の構造を作成し、それに 2 つのメンバーがあって、それぞれが *text* と *sentiment* という名前だとします。 インデックス内では、マルチパートの検索可能フィールドは*複合型*と呼ばれ、通常は、それにマップする対応した複合構造をソース データが備えている場合に作成されます。
+*analyzedText* という名前の構造を作成し、それに 2 つのメンバーがあって、それぞれが *text* と *sentiment* という名前だとします。 インデックス内では、マルチパートの検索可能フィールドは *複合型* と呼ばれ、通常は、それにマップする対応した複合構造をソース データが備えている場合に作成されます。
 
 ただし、複合型を作成するための別の方法として、**Shaper** スキルを利用することもできます。 このスキルをスキルセットに含めることで、スキルセット処理中のメモリ内操作において、入れ子になった構造を持つデータ シェイプを出力できます。その後、それをインデックス内の複合型にマップできます。 
 

@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.openlocfilehash: 8b1815e7598410cd709572d93082d5dee5e0b0fb
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97369244"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Azure カスタム ロールを作成する

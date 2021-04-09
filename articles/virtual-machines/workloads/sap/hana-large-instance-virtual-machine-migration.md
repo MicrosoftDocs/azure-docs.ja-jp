@@ -6,20 +6,19 @@ documentationcenter: ''
 author: bentrin
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25eae9f9ba0e28a5aa069972c8c7d5eb2877545f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cd1cfb0cc8e1868e78b4d284d1b1f4e7e85aa318
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967688"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677037"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>SAP HANA on Azure Large Instance の Azure Virtual Machines への移行
 この記事では、Azure Large Instance で使用できるデプロイ シナリオと、移行時のダウンタイムが最小になる計画と移行の方法について説明します
@@ -28,7 +27,7 @@ ms.locfileid: "94967688"
 2016 年 9 月の Azure Large Instances for SAP HANA (HLI) の発表以降、多くのお客様が、このハードウェアをメモリ内コンピューティング プラットフォーム用のサービス内容として導入されています。  近年では、Azure VM のサイズ拡張機能と HANA スケールアウト デプロイのサポートの組み合わせは、ほとんどの企業ユーザーが求める ERP データベース容量を超えています。  SAP HANA ワークロードを物理サーバーから Azure VM への移行に関心を持たれるお客様が増えています。
 このガイドは、構成の詳細な手順に関するドキュメントではありません。 ここでは、一般的なデプロイ モデルについて説明し、計画と移行に関するアドバイスを提供します。  目的は、移行のダウンタイムを最小限に抑えるために必要な考慮事項を示すことです。
 
-## <a name="assumptions"></a>前提条件
+## <a name="assumptions"></a>外部からの影響
 この記事は以下を前提としています。
 - 検討対象となるのは、ソフトウェアの大規模なアップグレードや修正を必要としない、Hana Large Instance (HLI) から Azure VM への同種の HANA データベース コンピューティング サービスの移行だけです。 このようなマイナーな更新には、関連する SAP ノートでサポート対象として明示されている、より新しい OS バージョンや HANA バージョンの使用が含まれます。 
 - 更新とアップグレードのすべてのアクティビティが、移行の前または後に行われる必要があります。  たとえば、SAP HANA MCOS の MDC デプロイへの変換などです。 
@@ -50,15 +49,15 @@ ms.locfileid: "94967688"
 
 | シナリオ ID | HLI シナリオ | そのまま VM に移行できるか? | 注記 |
 | --- | --- | --- | --- |
-| 1 | [1 つの SID を持つ単一ノード](./hana-supported-scenario.md#single-node-with-one-sid) | はい | - |
+| 1 | [SID が 1 つの単一ノード](./hana-supported-scenario.md#single-node-with-one-sid) | はい | - |
 | 2 | [MCOS の単一ノード](./hana-supported-scenario.md#single-node-mcos) | はい | - |
 | 3 | [ストレージ レプリケーションを使用する DR を備えた単一ノード](./hana-supported-scenario.md#single-node-with-dr-using-storage-replication) | いいえ | ストレージ レプリケーションは、Azure 仮想プラットフォームでは使用できません。現在の DR ソリューションを、HSR またはバックアップと復元のいずれかに変更します |
 | 4 | [ストレージ レプリケーションを使用する DR (多目的) を備えた単一ノード](./hana-supported-scenario.md#single-node-with-dr-multipurpose-using-storage-replication) | いいえ | ストレージ レプリケーションは、Azure 仮想プラットフォームでは使用できません。現在の DR ソリューションを、HSR またはバックアップと復元のいずれかに変更します |
-| 5 | [高可用性のための STONITH を使用する HSR](./hana-supported-scenario.md#hsr-with-stonith-for-high-availability) | はい | ターゲット VM に対して構成済みの SBD はありません。  STONITH ソリューションを選択してデプロイします。  可能なオプション: Azure フェンス エージェント ([RHEL](./high-availability-guide-rhel-pacemaker.md) と [SLES](./high-availability-guide-suse-pacemaker.md) の両方についてサポートされます)、SBD |
+| 5 | [HSR と STONITH を使用した高可用性](./hana-supported-scenario.md#hsr-with-stonith-for-high-availability) | はい | ターゲット VM に対して構成済みの SBD はありません。  STONITH ソリューションを選択してデプロイします。  使用可能なオプション: Azure フェンス エージェント ([RHEL](./high-availability-guide-rhel-pacemaker.md) と [SLES](./high-availability-guide-suse-pacemaker.md) の両方でサポートされます)、SBD |
 | 6 | [HSR による HA、ストレージ レプリケーションによる DR](./hana-supported-scenario.md#high-availability-with-hsr-and-dr-with-storage-replication) | いいえ | DR のためのストレージ レプリケーションを、HSR またはバックアップと復元のいずれかに置き換えます |
 | 7 | [ホストの自動フェールオーバー (1+1)](./hana-supported-scenario.md#host-auto-failover-11) | はい | Azure VM での共有ストレージには ANF を使用します |
-| 8 | [スタンバイのあるスケールアウト](./hana-supported-scenario.md#scale-out-with-standby) | はい | ストレージに対してのみ ANF を使用する M128s、M416s、M416ms の VM での BW/4HANA |
-| 9 | [スタンバイのないスケールアウト](./hana-supported-scenario.md#scale-out-without-standby) | はい | M128s、M416s、M416ms の VM での BW/4HANA (ストレージ用に ANF を使用する場合と、使用しない場合) |
+| 8 | [スタンバイありのスケールアウト](./hana-supported-scenario.md#scale-out-with-standby) | はい | ストレージに対してのみ ANF を使用する M128s、M416s、M416ms の VM での BW/4HANA |
+| 9 | [スタンバイなしのスケールアウト](./hana-supported-scenario.md#scale-out-without-standby) | はい | M128s、M416s、M416ms の VM での BW/4HANA (ストレージ用に ANF を使用する場合と、使用しない場合) |
 | 10 | [ストレージ レプリケーションを使用しする DR を備えたスケールアウト](./hana-supported-scenario.md#scale-out-with-dr-using-storage-replication) | いいえ | DR のためのストレージ レプリケーションを、HSR またはバックアップと復元のいずれかに置き換えます |
 | 11 | [HSR を使用する DR を備えた単一ノード](./hana-supported-scenario.md#single-node-with-dr-using-hsr) | はい | - |
 | 12 | [単一ノードの HSR から DR (コスト最適化)](./hana-supported-scenario.md#single-node-hsr-to-dr-cost-optimized) | はい | - |
@@ -76,14 +75,14 @@ HLI サーバーをオンボードするときは、Microsoft のサービス管
 ### <a name="allow-network-connectivity-for-new-vms-and-or-virtual-network"></a>新しい VM と仮想ネットワークにネットワーク接続できるようにする 
 お客様の HLI デプロイでは、「[SAP HANA (L インスタンス) のネットワーク アーキテクチャ](./hana-network-architecture.md)」で説明されている情報に基づいて、ネットワークが設定されています。 また、ネットワーク トラフィックのルーティングは、「Azure でのルーティング」で説明されている方法で行われます。
 - 移行ターゲットとしての新しい VM の設定では、HLI に接続するためのアクセス許可が既にある IP アドレス範囲を持つ既存の仮想ネットワークに VM を配置する場合は、接続をそれ以上更新する必要はありません
-- 新しい Azure VM を新しい Microsoft Azure 仮想ネットワーク (別のリージョンに存在していてもかまいません) に配置し、既存の仮想ネットワークとピアリングする場合は、元の HLI プロビジョニングの ExpressRoute サービス キーとリソース ID を使用して、この新しい仮想ネットワーク IP 範囲にアクセスできます。  Microsoft のサービス管理と協力して、仮想ネットワークが HLI に接続できるようにします。  注:アプリケーション層とデータベース層の間のネットワーク待機時間を最小限にするには、アプリケーション層とデータベース層の両方を同じ仮想ネットワーク上に配置する必要があります。  
+- 新しい Azure VM を新しい Microsoft Azure 仮想ネットワーク (別のリージョンに存在していてもかまいません) に配置し、既存の仮想ネットワークとピアリングする場合は、元の HLI プロビジョニングの ExpressRoute サービス キーとリソース ID を使用して、この新しい仮想ネットワーク IP 範囲にアクセスできます。  Microsoft のサービス管理と協力して、仮想ネットワークが HLI に接続できるようにします。  注: アプリケーションとデータベース層の間のネットワーク待機時間を最小限にするには、アプリケーションとデータベース層の両方を同じ仮想ネットワーク上に配置する必要があります。  
 
 ### <a name="existing-app-layer-availability-set-availability-zones-and-proximity-placement-group-ppg"></a>既存のアプリ層可用性セット、Availability Zones、近接通信配置グループ (PPG)
 現在のデプロイ モデルは、特定のサービス レベル目標を達成するために行われています。  この移動では、ターゲット インフラストラクチャが設定されている目標を満たすか、それを超えることが保証されます。  
 おそらく、お客様の SAP アプリケーション サーバーは可用性セットに配置されているでしょう。  現在のデプロイ サービス レベルが十分であり 
 - ターゲット VM で HLI 論理名のホスト名が想定されている場合、SAP プロファイルを更新することなく、VM の IP が指されているドメイン ネーム サービス (DNS) のアドレス解決が更新されます。
 - PPG を使用していない場合は、すべてのアプリケーション サーバーと DB サーバーを同じゾーンに配置して、ネットワーク待機時間を最小限に抑えるようにしてください。
-- PPG を使用している場合は、このドキュメントの次のセクションを参照してください: 「移行先の計画」の「可用性セット、Availability Zones、近接通信配置グループ」。
+- PPG を使用している場合は、こちらのドキュメントを参照してください: 「移行先の計画、可用性セット、Availability Zones、近接通信配置グループ(PPG)」。
 
 ### <a name="storage-replication-discontinuance-process-if-used"></a>ストレージ レプリケーション停止プロセス (使用されている場合)
 ストレージ レプリケーションが DR ソリューションとして使用されている場合は、SAP アプリケーションをシャットダウンした後で、それを終了 (スケジュール解除) する必要があります。  さらに、最新の SAP HANA カタログ、ログ ファイル、およびデータ バックアップが、リモート DR HLI ストレージ ボリュームにレプリケートされています。  これは、物理サーバーから Azure VM への移行の間に障害が発生した場合の予防措置として行われます。
@@ -110,7 +109,7 @@ SAP ランドスケープ内のシステムの監視とアラート通知の送�
 ### <a name="virtual-network"></a>仮想ネットワーク 
 お客様は、新しい HANA データベースを既存の仮想ネットワークで実行するか、新しい仮想ネットワークを作成するかを、選択する必要があります。  主な決定要因は、SAP ランドスケープの現在のネットワーク レイアウトです。  また、インフラストラクチャが 1 つのゾーンから 2 つのゾーンになり、PPG を使用している場合は、アーキテクチャの変更が必要になります。 詳しくは、「[SAP アプリケーションで最適なネットワーク待ち時間を実現するための Azure 近接通信配置グループ](./sap-proximity-placement-scenarios.md)」をご覧ください。   
 
-### <a name="security"></a>Security
+### <a name="security"></a>セキュリティ
 新しい SAP HANA VM のデプロイに新規と既存どちらの仮想ネットワークとサブネットを使用するかにかかわらず、保護を必要とする新しいビジネス クリティカルなサービスを表します。  会社の情報セキュリティ ポリシーに準拠しているアクセス制御を評価し、この新しいサービスのクラスに対してデプロイする必要があります。
 
 ### <a name="vm-sizing-recommendation"></a>VM のサイズ設定に関する推奨事項
@@ -131,7 +130,7 @@ HLI では、ディザスター リカバリーの既定のオプションとし
 
 ### <a name="backup-strategy"></a>バックアップ戦略
 多くのお客様は既に、HLI の SAP HANA 用にサードパーティ製のバックアップ ソリューションを使用しています。  その場合は、VM と HANA データベースに追加の保護を構成するだけで十分です。  移行後にコンピューターを使用しなくなる場合、現在行われている HLI バックアップ ジョブのスケジュールを解除できます。
-現在、VM 上の SAP HANA に対する Azure Backup は一般提供されています。  詳細については次のリンクを参照してください: Azure VM での SAP HANA バックアップの[バックアップ](../../../backup/backup-azure-sap-hana-database.md)、[復元](../../../backup/sap-hana-db-restore.md)、[管理](../../../backup/sap-hana-db-manage.md)。
+現在、VM 上の SAP HANA に対する Azure Backup は一般提供されています。  こちらのリンクで、Azure VM での SAP HANA の[バックアップ](../../../backup/backup-azure-sap-hana-database.md)、[復元](../../../backup/sap-hana-db-restore.md)、[管理](../../../backup/sap-hana-db-manage.md)に関する詳細情報を参照してください。
 
 ### <a name="dr-strategy"></a>DR 戦略
 サービス レベルの目標が長い復旧時間への対応である場合、BLOB ストレージへの簡単なバックアップと、インプレースまたは新規 VM への復元は、最もシンプルでコストのかからない DR 戦略です。  
@@ -185,7 +184,7 @@ DB サーバーが SAP システムの中心と見なされます。  すべて�
 ### <a name="decommissioning-the-hli"></a>HLI の使用停止
 HANA DB から Azure VM への移行が成功した後、HLI DB で運用ビジネス トランザクションが確実に実行されないようにします。  ただし、ローカル バックアップの保有期間だけ HLI を実行させておくことは、必要な場合に迅速に復旧するための安全な方法です。  その後でのみ、HLI ブレードの使用を停止する必要があります。  お客様は、Microsoft の担当者に連絡して、Microsoft との HLI コミットメントの契約を終了する必要があります。
 
-### <a name="remove-any-proxy-ex-iptables-bigip-configured-for-hli"></a>HLI 用に構成されたプロキシを削除する (例: Iptable、BIGIP) 
+### <a name="remove-any-proxy-ex-iptables-bigip-configured-for-hli"></a>HLI 用に構成されたプロキシ (例: Iptables、BIGIP) を削除する 
 IPTable のようなプロキシ サービスを使用して HLI との間のオンプレミス トラフィックをルーティングしている場合、VM への移行が成功した後、サービスは不要になります。  ただし、HLI ブレードがまだスタンバイになっている限り、この接続サービスを保持する必要があります。  HLI ブレードの使用を完全に停止した後でのみ、サービスをシャットダウンします。
 
 ### <a name="remove-global-reach-for-hli"></a>HLI の Global Reach の削除 

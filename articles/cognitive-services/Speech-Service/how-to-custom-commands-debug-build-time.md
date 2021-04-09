@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.openlocfilehash: aeb90e8e064c44f4d17f920261ed58310f0e55f0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95025703"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>カスタム コマンド アプリケーションの作成時にエラーをデバッグする
@@ -98,4 +98,4 @@ LUIS 予測リソースをご利用のアプリケーションに割り当てて
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [GitHub 上のサンプルを参照してください](https://aka.ms/speech/cc-samples)
+> [GitHub のサンプルを参照](https://aka.ms/speech/cc-samples)

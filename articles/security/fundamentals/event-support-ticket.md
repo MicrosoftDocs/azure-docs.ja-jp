@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/13/2017
 ms.author: terrylan
 ms.openlocfilehash: fc5899fe5aca4bbaa9250cf41b240816e2cbedb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80548588"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>セキュリティ イベント サポート チケットをログに記録する方法
@@ -32,7 +32,7 @@ ms.locfileid: "80548588"
 
     i. どんな問題および/または脆弱性ですか。
 
-    ii. 脆弱性の場合は、CVE (mitre.org) または入力済みの CVSS3 v3 計算ツール (https://www.first.org/cvss/calculator/3.0) ) を提供してください。
+    ii. 脆弱性の場合は、CVE (mitre.org) または入力済みの CVSS3 v3 計算ツール (https://www.first.org/cvss/calculator/3.0)) を提供してください。
 
     iii. 解決策または軽減策はありますか。 はいの場合は、修復の手順をご提供ください。
 
@@ -43,7 +43,7 @@ ms.locfileid: "80548588"
     - 問題について Microsoft に確認する必要がある場合は、すべてのやり取りに確認番号を使用してください。
     - また、問題に関する進捗はいつでも確認できます。
 
-5. 次に行われる処理。 問題と重大度に応じて、次の手順が行われることがあります。
+5. 次に行うこと 問題と重大度に応じて、次の手順が行われることがあります。
 
     - 評価結果をご連絡します。 結果によってはお客様のサービスを削除したり、変更をお願いしたりする場合があります。 その際にはサービスの中断による顧客への影響を最小限に抑えられるよう、お客様と連携します。
     - Microsoft はお客様との共通の顧客のために、連携してインシデント/脆弱性の影響を軽減できるようお手伝いします。

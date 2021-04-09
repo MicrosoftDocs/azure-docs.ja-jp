@@ -11,10 +11,10 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
 ms.openlocfilehash: 33ac44f4910c858dd4d5cfc9d4288ce4970f7f4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87501986"
 ---
 # <a name="use-cli-to-backup-an-azure-sql-single-database-to-an-azure-storage-container"></a>CLI を使用して Azure SQL の単一データベースを Azure Storage コンテナーにバックアップする

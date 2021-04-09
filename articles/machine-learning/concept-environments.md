@@ -10,10 +10,10 @@ ms.author: larryfr
 author: BlackMist
 ms.date: 11/16/2020
 ms.openlocfilehash: 648dbe6b8d275c832f219cb6f3119ac0bc518a54
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102508471"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Azure Machine Learning 環境とは?

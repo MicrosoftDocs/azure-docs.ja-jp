@@ -6,13 +6,13 @@ ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
-ms.date: 12/01/2020
-ms.openlocfilehash: f778a55c206e012884b44c1fea0a63e2de6b481a
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.date: 02/22/2020
+ms.openlocfilehash: 5285d5b2c7cbe6845fb6043fa1096f94254602e7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693341"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677843"
 ---
 # <a name="tutorial-navigate-the-azure-purview-preview-home-page-and-search-for-an-asset"></a>チュートリアル:Azure Purview (プレビュー) ホーム ページを閲覧して資産を検索する
 
@@ -45,7 +45,7 @@ ms.locfileid: "97693341"
 
 1. Azure portal で Azure Purview リソースに移動し、 **[Open Purview Studio]\(Purview Studio を開く\)** を選択します。 Purview Studio のホーム ページに自動的に移動します。
 
-   ホーム ページの上部には、カタログの名前とカタログの分析結果一式が表示されます。 そこには、ユーザー数、データ資産の数、用語集の用語の数が表示されます。 サマリーを見ると、合計 200 を超える資産と 113 件の用語集の用語が存在していることがわかります。 この数は、組織がスキャンを実行し、Azure Purview に用語を追加するにつれて更新されます。
+   ホーム ページの上部には、カタログの名前とカタログの分析結果一式が表示されます。 ソース数、データ資産の数、用語集の用語の数が表示されます。 サマリーを見ると、合計 200 を超える資産と 113 件の用語集の用語が存在していることがわかります。 この数は、組織がスキャンを実行し、Azure Purview に用語を追加するにつれて更新されます。
 
    :::image type="content" source="./media/tutorial-asset-search/purview-home-page.png" alt-text="Azure Purview ホーム ページのスクリーンショット。":::
 

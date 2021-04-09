@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/02/2020
 ms.openlocfilehash: e16cc8934407a5c54c84fd045c99e28116e656c9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93310437"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack を使用して B2B AS2 メッセージを受信して確認する
@@ -109,7 +109,7 @@ ms.locfileid: "93310437"
 
 ## <a name="add-response-action-for-message-receipt-notification"></a>メッセージ受信通知の応答アクションを追加する
 
-メッセージを受信したことを取引先に通知するには、 **応答** アクションを使用して、AS2 メッセージ処理通知 (MDN) を含む応答を返すことができます。 このアクションを **AS2 デコード** アクションの直後に追加すると、AS2 デコード アクションが失敗した場合、ロジック アプリは処理を続行しません。
+メッセージを受信したことを取引先に通知するには、**応答** アクションを使用して、AS2 メッセージ処理通知 (MDN) を含む応答を返すことができます。 このアクションを **AS2 デコード** アクションの直後に追加すると、AS2 デコード アクションが失敗した場合、ロジック アプリは処理を続行しません。
 
 1. **[AS2 デコード]** アクションで、 **[新しいステップ]** を選択します。
 
@@ -129,7 +129,7 @@ ms.locfileid: "93310437"
 
    ![条件が追加された条件図形を示すスクリーンショット。](./media/logic-apps-enterprise-integration-b2b/expression-for-evaluating-condition.png)
 
-1. 次に、 **AS2 デコード** アクションが成功したかどうかを返す応答を指定します。
+1. 次に、**AS2 デコード** アクションが成功したかどうかを返す応答を指定します。
 
    1. **AS2 デコード** アクションが成功した場合については、 **[true の場合]** 図形で、 **[アクションの追加]** を選択します。 **[アクションを選択してください]** の下にある検索ボックスに、「`response`」と入力して、 **[応答]** を選択します。
 
@@ -155,7 +155,7 @@ ms.locfileid: "93310437"
 
 ## <a name="add-decode-x12-message-action"></a>X12 メッセージのデコード アクションを追加する
 
-1. 次に、 **X12 メッセージのデコード** アクションを追加します。 **[応答]** アクションで、 **[アクションの追加]** を選択します。
+1. 次に、**X12 メッセージのデコード** アクションを追加します。 **[応答]** アクションで、 **[アクションの追加]** を選択します。
 
 1. **[アクションを選択してください]** の下にある検索ボックスに、「`x12 decode`」と入力して、 **[X12 メッセージのデコード]** を選択します。
 

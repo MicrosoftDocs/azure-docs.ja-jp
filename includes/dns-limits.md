@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: rohink
 ms.openlocfilehash: 7011b92485c56187021c9043ba84bc85e448a98f
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94329589"
 ---
 **パブリック DNS ゾーン**

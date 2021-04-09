@@ -7,12 +7,12 @@ ms.date: 02/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 0878686e203960a0b7f33c19cc64e82319997684
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 83d0215ebca9d60d61937cb20bb82c7ccb30aac1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590456"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100629"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Azure Defender for Kubernetes の概要
 
@@ -29,7 +29,7 @@ Kubernetes クラスターの脅威を検出するには、**Azure Defender for 
 |側面|詳細|
 |----|:----|
 |リリース状態:|一般提供 (GA)|
-|価格:|**Azure Defender for Kubernetes** の課金については、[価格に関するページ](security-center-pricing.md)をご覧ください。|
+|価格:|**Azure Defender for Kubernetes** の課金については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください|
 |必要なロールとアクセス許可:|**セキュリティ管理者** はアラートを無視できます。<br>**セキュリティ閲覧者** は、結果を表示できます。|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
@@ -79,7 +79,7 @@ Azure Defender で AKS ノードを監視するには、それらのノードで
 この記事では、Azure Defender for Kubernetes など、Security Center の Kubernetes 保護について説明しました。 
 
 > [!div class="nextstepaction"]
-> [Azure Defender を有効にする](security-center-pricing.md#enable-azure-defender)
+> [Azure Defender を有効にする](enable-azure-defender.md)
 
 関連資料については、次の記事をご覧ください。 
 

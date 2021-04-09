@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f8210428e772241134b57ac4fccb5b1549e04483
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: ab1da88899ba2b90e303da107631e3878b3a8b58
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617274"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102635877"
 ---
 # <a name="synchronize-with-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy v10 を使用して Azure Blob Storage と同期する
 
@@ -33,7 +33,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 > [!NOTE] 
 > この記事の例では、Azure Active Directory (Azure AD) を使用して認証資格情報を指定していることを前提としています。
 >
-> SAS トークンを使用して BLOB データへのアクセスを承認する場合、各 AzCopy コマンドのリソース URL の先頭にそのトークンを追加できます。 たとえば、「`'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.ken>'`」などです。
+> SAS トークンを使用して BLOB データへのアクセスを承認する場合、各 AzCopy コマンドのリソース URL の先頭にそのトークンを追加できます。 (例: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`)。
 
 ## <a name="guidelines"></a>ガイドライン
 
@@ -101,11 +101,11 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 |パターンに基づいてファイルを除外します。|**--exclude-path**|
 |同期に関連するログ エントリの詳細レベルを指定します。|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
 
-完全な一覧については、[オプション](storage-ref-azcopy-sync.md#options)を参照してください。
+完全な一覧については、「[オプション](storage-ref-azcopy-sync.md#options)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-以下の記事にサンプルがあります。
+他の例については、次の記事を参照してください。
 
 - [例:アップロード](storage-use-azcopy-blobs-upload.md)
 - [例:ダウンロード](storage-use-azcopy-blobs-download.md)」をご覧ください

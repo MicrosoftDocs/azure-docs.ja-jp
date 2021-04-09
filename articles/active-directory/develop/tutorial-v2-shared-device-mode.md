@@ -14,10 +14,10 @@ ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 6a173ed4dae9237d8aae991c943817ed70246eea
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101649057"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>チュートリアル:Android アプリケーションで共有デバイス モードを使用する

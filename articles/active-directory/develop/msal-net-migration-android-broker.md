@@ -13,10 +13,10 @@ ms.author: aiwang
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 01af0e620ecb100839f7b1101e5ff9fcfc874eea
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92206671"
 ---
 # <a name="migrate-android-applications-that-use-a-broker-from-adalnet-to-msalnet"></a>ブローカーを使用する Android アプリケーションを ADAL.NET から MSAL.NET に移行する

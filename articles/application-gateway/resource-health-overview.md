@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
 ms.openlocfilehash: 7e30a93f8270cfaf8910130cc1e2633bb80c2b8e
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93397174"
 ---
 # <a name="azure-application-gateway-resource-health-overview"></a>Azure Application Gateway の Resource Health の概要
@@ -27,11 +27,11 @@ Application Gateway の正常性状態は、次のいずれかの状態として
 
 ## <a name="available"></a>利用可能
 
-**[使用可能]** 状態は、サービスにおいて、リソースの正常性に影響するイベントが一切検出されていないことを意味します。 ゲートウェイが過去 24 時間以内に予定外のダウンタイムから回復した場合は、 **最近解決された** ことを示す通知が表示されます。
+**[使用可能]** 状態は、サービスにおいて、リソースの正常性に影響するイベントが一切検出されていないことを意味します。 ゲートウェイが過去 24 時間以内に予定外のダウンタイムから回復した場合は、**最近解決された** ことを示す通知が表示されます。
 
 ![[使用可能] 正常性状態](media/resource-health-overview/available-full.png)
 
-## <a name="unavailable"></a>利用不可
+## <a name="unavailable"></a>使用不可
 
 **[使用不可]** 状態は、サービスにおいて、ゲートウェイの正常性に影響を与える継続中のイベント (プラットフォームまたはプラットフォーム以外のイベント) が検出されたことを意味します。
 
@@ -49,7 +49,7 @@ Resource Health は、イベントと復旧プロセスについてさらに詳�
 
 ゲートウェイが想定したとおりに実行されている場合、状態は数分後に **[使用可能]** に変わります。
 
-問題が発生している場合、 **[不明]** 正常性状態は、プラットフォーム内のイベントによってゲートウェイが影響を受けていることを示唆している可能性があります。
+問題が発生している場合、**[不明]** 正常性状態は、プラットフォーム内のイベントによってゲートウェイが影響を受けていることを示唆している可能性があります。
 
 ![[不明] 状態](media/resource-health-overview/unknown.png)
 

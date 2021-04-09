@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: allensu
 ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81259930"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN の Standard ルール エンジンの一致条件
@@ -238,7 +238,7 @@ String | [標準の演算子一覧](#standard-operator-list) | String、Int | �
 - 次の値より大きくない
 - 次の値以上ではない
 
-*より小さい*または*以上*のような数値演算子の場合、比較は長さに基づいて行われます。 この場合、一致条件の値は、比較する長さと同じ整数である必要があります。 
+*より小さい* または *以上* のような数値演算子の場合、比較は長さに基づいて行われます。 この場合、一致条件の値は、比較する長さと同じ整数である必要があります。 
 
 ## <a name="next-steps"></a>次のステップ
 

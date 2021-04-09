@@ -3,13 +3,13 @@ title: プライベート Azure Kubernetes Service クラスターを作成す�
 description: プライベート Azure Kubernetes Service (AKS) クラスターの作成方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 7/17/2020
-ms.openlocfilehash: f0c74c1b3715fd3f5c83c3a9231009e622b87927
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 3/5/2021
+ms.openlocfilehash: 21d839df04c868d2c21932f96a6b72a32b0404e5
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181229"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771857"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
@@ -70,19 +70,26 @@ az aks create \
 
 次のパラメーターを使用してプライベート DNS ゾーンを構成できます。
 
-1. 既定値は "System" です。 --private-dns-zone 引数を省略すると、AKS によって、ノード リソース グループにプライベート DNS ゾーンが作成されます。
-2. "None" は、AKS によってプライベート DNS ゾーンが作成されないことを意味します。  この場合、独自の DNS サーバーを使用し、プライベート FQDN の DNS 解決を構成する必要があります。  DNS 解決を構成しない場合、エージェント ノード内でのみ DNS の解決が可能になり、デプロイ後にクラスターの問題が発生します。
-3. "Custom private dns zone name" は、Azure グローバル クラウドの形式 (`privatelink.<region>.azmk8s.io`) である必要があります。 そのプライベート DNS ゾーンのリソース ID が必要になります。  さらに、少なくともカスタム プライベート DNS ゾーンに対する `private dns zone contributor` ロールを持つユーザー割り当て ID またはサービス プリンシパルが必要です。
+- 既定値は "System" です。 --private-dns-zone 引数を省略すると、AKS によって、ノード リソース グループにプライベート DNS ゾーンが作成されます。
+- "None" は、AKS によってプライベート DNS ゾーンが作成されないことを意味します。  この場合、独自の DNS サーバーを使用し、プライベート FQDN の DNS 解決を構成する必要があります。  DNS 解決を構成しない場合、エージェント ノード内でのみ DNS の解決が可能になり、デプロイ後にクラスターの問題が発生します。 
+- "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" では、Azure グローバル クラウド用に `privatelink.<region>.azmk8s.io` の形式でプライベート DNS ゾーンを作成する必要があります。 そのプライベート DNS ゾーンのリソース ID は、後で必要になります。  さらに、少なくとも `private dns zone contributor` および `vnet contributor` ロールを持つユーザー割り当て ID またはサービス プリンシパルも必要になります。
+- "fqdn-subdomain" は、サブドメインの機能を `privatelink.<region>.azmk8s.io` に提供するためにのみ、"CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" と共に使用できます。
 
 ### <a name="prerequisites"></a>前提条件
 
-* AKS プレビュー バージョン 0.4.71 以降
+* AKS プレビュー バージョン 0.5.3 以降
 * API バージョン 2020-11-01 以降
 
 ### <a name="create-a-private-aks-cluster-with-private-dns-zone-preview"></a>プライベート DNS ゾーンがあるプライベート AKS クラスターを作成する (プレビュー)
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [none|system|custom private dns zone ResourceId]
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [system|none]
+```
+
+### <a name="create-a-private-aks-cluster-with-a-custom-private-dns-zone-preview"></a>カスタム プライベート DNS ゾーンがあるプライベート AKS クラスターを作成する (プレビュー)
+
+```azurecli-interactive
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId> --fqdn-subdomain <subdomain-name>
 ```
 ## <a name="options-for-connecting-to-the-private-cluster"></a>プライベート クラスターに接続するための選択肢
 
@@ -142,5 +149,5 @@ AKS クラスターと同じ VNET に VM を作成するのが最も簡単な方
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
 [azure-bastion]: ../bastion/tutorial-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
-[devops-agents]: /azure/devops/pipelines/agents/agents?view=azure-devops
+[devops-agents]: /azure/devops/pipelines/agents/agents
 [availability-zones]: availability-zones.md

@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-js
 ms.openlocfilehash: c96f674b64401250d45542d0f59f13654cf37caa
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97802526"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi の Azure IoT Hub への接続 (Node.js)
@@ -125,7 +125,7 @@ microSD カードに Raspbian イメージをインストールするための�
 
    ![[Raspbian Preferences] (Raspbian 設定)メニュー](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
-4. **[Interfaces]** (インターフェイス) タブで、 **[I2C]** と **[SSH]** を **[Enable]** (有効) に設定し、 **[OK]** をクリックします。 物理センサーがなく、シミュレートされたセンサー データを使用する場合は、この手順は省略可能です。
+4. **[Interfaces]** (インターフェイス) タブで、**[I2C]** と **[SSH]** を **[Enable]** (有効) に設定し、**[OK]** をクリックします。 物理センサーがなく、シミュレートされたセンサー データを使用する場合は、この手順は省略可能です。
 
    ![I2C と SSH を Raspberry Pi で有効にする](./media/iot-hub-raspberry-pi-kit-node-get-started/2-enable-i2c-ssh-on-raspberry-pi.png)
 
@@ -232,7 +232,7 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 
    **センサーがない** 場合は、`simulatedData` 値を `true` に設定し、シミュレートされたセンサー データをサンプル アプリケーションで作成して使用します。
 
-   *注意事項: このチュートリアルで使用する i2c アドレスは、既定では 0x77 です。構成によっては、0x76 になることもあります。 i2c エラーが発生した場合は、値を 118 に変更し、その動作が適切かどうかを確認してください。センサーによって使用されているアドレスを確認するには、raspberry pi 上のシェルで `sudo i2cdetect -y 1` を実行します*
+   *注: このチュートリアルで使用する i2c アドレスは、既定では 0x77 です。構成によっては、0x76 になることもあります。 i2c エラーが発生した場合は、値を 118 に変更し、その動作が適切かどうかを確認してください。センサーによって使用されているアドレスを確認するには、raspberry pi 上のシェルで `sudo i2cdetect -y 1` を実行します*
 
 2. Ctrl + O キー、Enter キー、Ctrl + X キーの順に押し、保存して終了します。
 

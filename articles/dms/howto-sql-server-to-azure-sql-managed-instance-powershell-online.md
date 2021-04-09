@@ -13,10 +13,10 @@ ms.custom: ''
 ms.topic: how-to
 ms.date: 12/16/2020
 ms.openlocfilehash: 7f09db2e1f98d48e91dfea2642969ff4ca360967
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98697743"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-online-with-powershell--azure-database-migration-service"></a>PowerShell と Azure Database Migration Service を使用して SQL Server から SQL Managed Instance にオンラインで移行する

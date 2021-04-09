@@ -1,34 +1,32 @@
 ---
-title: 従量制課金に対する異常検出 | Azure Marketplace
+title: パートナー センターで従量制課金の異常を管理する | Azure Marketplace
 description: 従量制課金に対する自動の異常検出によって、ご自身の顧客がコマーシャル マーケットプレースのオファーの従量制課金使用量に応じて正しく請求されるようにする方法について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 1/09/2021
+ms.date: 2/18/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: d4fb88854359dcd6e383b47d2a8ce4e9c91f867a
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1ff6262a75261c575082f3fc48d588c868ad0b51
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989220"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092513"
 ---
-# <a name="anomaly-detection-for-metered-billing"></a>従量制課金に対する異常検出
+# <a name="manage-metered-billing-anomalies-in-partner-center"></a>パートナー センターで従量制課金の異常を管理する
 
-この記事では、従量制課金使用量に応じて顧客に正しく請求できるようにするための、マーケットプレースの測定サービスと、関連する自動化された異常検出機能について詳しく説明します。 現在、従量制課金オプションは、[サービスとしてのソフトウェア](plan-saas-offer.md) (SaaS) オファーと、マネージド アプリケーション プランを提供する [Azure アプリケーション](plan-azure-application-offer.md#types-of-plans)に対して使用できます。 このオプションを使用すると、パートナーはコマーシャル マーケットプレース プログラムで標準以外の単位に応じて課金されるオファーを作成できます。
+現在、カスタムの従量制課金オプションは、[サービスとしてのソフトウェア](plan-saas-offer.md) (SaaS) オファーと、マネージド アプリケーション プランを提供する [Azure アプリケーション](plan-azure-application-offer.md#types-of-plans)に対して使用できます。
 
-SaaS およびマネージド アプリケーション用にカスタム メーターを配置しているパートナーの場合、パートナー センターで特定の "_カスタム メーター_" についての "_超過分イベント_" の異常として、予想される利用行動からの逸脱が表示されることがあります。 このリスクを軽減するために、パートナー センターには機械学習アルゴリズムを適用した異常検出サービスが使用されており、正常な従量制課金の動作を識別し、従量制課金使用量を分析することで、最小限のユーザー操作で異常が検出されます。 パートナー センターには、報告された使用量が予想される使用量を超えている場合は発行元に通知することを目的に、従量制課金使用量のデータセットに対して "_異常検出モデル_" が使用されています。
+従量制課金オプションを使用して、標準以外のユニットに基づく使用量の請求を可能にするコマーシャル マーケット プレース プログラムでオファーを作成する場合は、顧客が予想よりも多くのサービスを使用した際にそれを検知する必要があります。
 
-## <a name="usability-experience"></a>ユーザビリティ エクスペリエンス
+## <a name="use-the-anomaly-detection-feature"></a>異常検出機能を使用する
 
 Microsoft は、Microsoft からお客様への請求の前に SaaS または Azure マネージド アプリケーション オファーの顧客の超過分使用量を報告することをパートナーに委任しています。 間違った使用量が報告された場合、顧客が間違った請求書を受け取る可能性があり、Microsoft とパートナーの両方の信頼性が損なわれることになります。
 
-これを軽減するために、SaaS アプリと Azure アプリケーションのマネージド アプリケーション プランの両方に対して自動の異常検出機能が用意されています。 この機能は、従量制課金に備えて使用量を事前に監視し、予想される範囲内での使用量の予想値を予測する、機械学習モデルです。 使用量が想定される範囲外の場合は異常として扱われ、パートナー センターのコマーシャル マーケットプレース プログラムの [オファーの概要] ページにアラート通知が表示されます。
+顧客が正しく請求されるようにするには、SaaS アプリおよび Azure アプリケーションで管理された両方のアプリケーション プランに対して、**異常検出** 機能を使用します。 この機能は、従量制課金に対して使用量を監視し、予想される範囲内での使用量の予想値を予測します。 使用量が想定される範囲外の場合は予想外 (異常) として扱われ、パートナー センターのコマーシャル マーケットプレース プログラムの [オファーの概要] ページにアラート通知が表示されます。 設定したカスタム メーター ディメンションごとに、顧客の使用量を毎日追跡できます。
 
-超過分の使用量は機械学習モデルで毎日分析されます。 発行元は、各オファーのカスタム測定ディメンションについて、顧客の超過分の使用量に対して報告されたすべての異常を確認できます。
-
-### <a name="view-and-manage-metered-usage-anomalies"></a>従量制課金使用量の異常の表示と管理
+## <a name="view-and-manage-metered-usage-anomalies"></a>従量制課金使用量の異常の表示と管理
 
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
 1. 左側のナビゲーション メニューで、 **[コマーシャル マーケットプレース]**  >  **[分析]** の順に選択します。
@@ -82,3 +80,4 @@ Microsoft は、Microsoft からお客様への請求の前に SaaS または Az
 ## <a name="see-also"></a>関連項目
 - [コマーシャル マーケットプレースの測定サービスを使用した SaaS の従量制課金](./partner-center-portal/saas-metered-billing.md)
 - [マネージド アプリケーションの従量制課金](./partner-center-portal/azure-app-metered-billing.md)
+- [従量制課金に対する異常検出サービス](./partner-center-portal/anomaly-detection-service-for-metered-billing.md)

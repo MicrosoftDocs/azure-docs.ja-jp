@@ -4,10 +4,10 @@ description: Azure Functions のストレージ要件と、格納済みデータ
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.openlocfilehash: c4ffb622482585e35337caf8e43b69e0f3b0385c
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100517265"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions のストレージに関する考慮事項

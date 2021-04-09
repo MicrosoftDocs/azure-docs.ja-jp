@@ -4,10 +4,10 @@ description: コンテナー グループを構成するために Azure Containe
 ms.topic: article
 ms.date: 07/06/2020
 ms.openlocfilehash: d0ec8d13eebba1c60f5a52f8c43bdd8b90eeb913
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87084762"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>YAML リファレンス: Azure Container Instances
@@ -210,30 +210,30 @@ properties: # Properties of container group
 
 ### <a name="imageregistrycredential-object"></a>ImageRegistryCredential オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  server | string | はい | "http" や "https" などのプロトコルを除いた Docker イメージ レジストリ サーバー。 |
 |  username | string | はい | プライベート レジストリのユーザー名。 |
-|  password | 文字列 | No | プライベート レジストリのパスワード。 |
+|  password | string | いいえ | プライベート レジストリのパスワード。 |
 
 
 
 
 ### <a name="ipaddress-object"></a>IpAddress オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  ports | array | はい | コンテナー グループで公開されているポートのリスト。 - [Port オブジェクト](#port-object) |
 |  type | enum | はい | IP がパブリック インターネットまたはプライベート VNET に公開されているかどうかを指定します。 - Public または Private |
-|  ip | 文字列 | No | パブリック インターネットに公開されている IP。 |
-|  dnsNameLabel | string | No | IP の DNS 名ラベル。 |
+|  ip | string | いいえ | パブリック インターネットに公開されている IP。 |
+|  dnsNameLabel | string | いいえ | IP の DNS 名ラベル。 |
 
 
 
 
 ### <a name="volume-object"></a>Volume オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  name | string | はい | ボリュームの名前。 |
 |  azureFile | object | いいえ | Azure File ボリューム。 - [AzureFileVolume オブジェクト](#azurefilevolume-object) |
@@ -246,7 +246,7 @@ properties: # Properties of container group
 
 ### <a name="containergroupdiagnostics-object"></a>ContainerGroupDiagnostics オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  logAnalytics | object | いいえ | コンテナー グループの Log Analytics 情報。 - [LogAnalytics オブジェクト](#loganalytics-object) |
 
@@ -255,7 +255,7 @@ properties: # Properties of container group
 
 ### <a name="containergroupnetworkprofile-object"></a>ContainerGroupNetworkProfile オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  id | string | はい | ネットワーク プロファイルの識別子。 |
 
@@ -264,16 +264,16 @@ properties: # Properties of container group
 
 ### <a name="dnsconfiguration-object"></a>DnsConfiguration オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  nameServers | array | はい | コンテナー グループの DNS サーバー。 - string |
-|  searchDomains | 文字列 | No | コンテナー グループ内のホスト名参照用の DNS 検索ドメイン。 |
-|  options | 文字列 | No | コンテナー グループの DNS オプション。 |
+|  searchDomains | string | いいえ | コンテナー グループ内のホスト名参照用の DNS 検索ドメイン。 |
+|  options | string | いいえ | コンテナー グループの DNS オプション。 |
 
 
 ### <a name="encryptionproperties-object"></a>EncryptionProperties オブジェクト
 
-| 名前  | 種類  | 必須  | 値 |
+| 名前  | Type  | 必須  | 値 |
 |  ---- | ---- | ---- | ---- |
 | vaultBaseUrl  | string    | はい   | keyvault のベース url。 |
 | keyName   | string    | はい   | 暗号化キーの名前。 |
@@ -281,7 +281,7 @@ properties: # Properties of container group
 
 ### <a name="initcontainerdefinition-object"></a>InitContainerDefinition オブジェクト
 
-| 名前  | 種類  | 必須  | 値 |
+| 名前  | Type  | 必須  | 値 |
 |  ---- | ---- | ---- | ---- |
 | name  | string |  はい | init コンテナーの名前。 |
 | properties    | object    | はい   | init コンテナーのプロパティ。 - [InitContainerPropertiesDefinition オブジェクト](#initcontainerpropertiesdefinition-object)
@@ -289,7 +289,7 @@ properties: # Properties of container group
 
 ### <a name="containerproperties-object"></a>ContainerProperties オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  image | string | はい | コンテナー インスタンスの作成に使用されるイメージの名前。 |
 |  command | array | いいえ | コンテナー インスタンス内で実行する exec 形式のコマンド。 - string |
@@ -305,7 +305,7 @@ properties: # Properties of container group
 
 ### <a name="port-object"></a>Port オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  protocol | enum | いいえ | ポートに関連付けられているプロトコル。 - TCP または UDP |
 |  port | 整数 (integer) | はい | ポート番号。 |
@@ -315,29 +315,29 @@ properties: # Properties of container group
 
 ### <a name="azurefilevolume-object"></a>AzureFileVolume オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  shareName | string | はい | ボリュームとしてマウントされる Azure ファイル共有の名前。 |
 |  readOnly | boolean | いいえ | ボリュームとしてマウントされている Azure ファイル共有が読み取り専用かどうかを示すフラグ。 |
 |  storageAccountName | string | はい | Azure ファイル共有が含まれているストレージ アカウントの名前。 |
-|  storageAccountKey | 文字列 | No | Azure ファイル共有にアクセスするために使用されるストレージ アカウント アクセス キー。 |
+|  storageAccountKey | string | いいえ | Azure ファイル共有にアクセスするために使用されるストレージ アカウント アクセス キー。 |
 
 
 
 
 ### <a name="gitrepovolume-object"></a>GitRepoVolume オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
-|  directory | 文字列 | No | ターゲット ディレクトリの名前。 ".." が含まれていたり、".." で始まっていたりすることはできません。  "." を指定した場合、ボリューム ディレクトリは Git リポジトリになります。  それ以外の場合、指定すると、ボリュームの指定された名前のサブディレクトリに Git リポジトリが含まれます。 |
+|  directory | string | いいえ | ターゲット ディレクトリの名前。 ".." が含まれていたり、".." で始まっていたりすることはできません。  "." を指定した場合、ボリューム ディレクトリは Git リポジトリになります。  それ以外の場合、指定すると、ボリュームの指定された名前のサブディレクトリに Git リポジトリが含まれます。 |
 |  repository | string | はい | リポジトリの URL |
-|  revision | string | No | 指定されたリビジョンのコミット ハッシュ。 |
+|  revision | string | いいえ | 指定されたリビジョンのコミット ハッシュ。 |
 
 
 
 ### <a name="loganalytics-object"></a>LogAnalytics オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  workspaceId | string | はい | Log Analytics のワークスペース ID |
 |  workspaceKey | string | はい | Log Analytics のワークスペース キー |
@@ -347,16 +347,16 @@ properties: # Properties of container group
 
 ### <a name="initcontainerpropertiesdefinition-object"></a>InitContainerPropertiesDefinition オブジェクト
 
-| 名前  | 種類  | 必須  | 値 |
+| 名前  | Type  | 必須  | 値 |
 |  ---- | ---- | ---- | ---- |
-| image | 文字列    | No    | init コンテナーのイメージ。 |
+| image | string    | No    | init コンテナーのイメージ。 |
 | command   | array | いいえ    | init コンテナー内で実行する exec 形式のコマンド。 - string |
 | environmentVariables | array  | いいえ |Init コンテナーで設定する環境変数。 - [EnvironmentVariable オブジェクト](#environmentvariable-object)
 | volumeMounts |array   | いいえ    | ボリューム マウントは、init コンテナーで使用できます。 - [VolumeMount オブジェクト](#volumemount-object)
 
 ### <a name="containerport-object"></a>ContainerPort オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  protocol | enum | いいえ | ポートに関連付けられているプロトコル。 - TCP または UDP |
 |  port | 整数 (integer) | はい | コンテナー グループ内で公開されているポート番号。 |
@@ -366,18 +366,18 @@ properties: # Properties of container group
 
 ### <a name="environmentvariable-object"></a>EnvironmentVariable オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  name | string | はい | 環境変数の名前。 |
-|  value | 文字列 | No | 環境変数の値。 |
-|  secureValue | 文字列 | No | セキュリティで保護された環境変数の値。 |
+|  value | string | いいえ | 環境変数の値。 |
+|  secureValue | string | いいえ | セキュリティで保護された環境変数の値。 |
 
 
 
 
 ### <a name="resourcerequirements-object"></a>ResourceRequirements オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  requests | object | はい | このコンテナー インスタンスのリソース要求。 - [ResourceRequests オブジェクト](#resourcerequests-object) |
 |  制限 | object | いいえ | このコンテナー インスタンスのリソース制限。 - [ResourceLimits オブジェクト](#resourcelimits-object) |
@@ -413,7 +413,7 @@ properties: # Properties of container group
 
 ### <a name="resourcerequests-object"></a>ResourceRequests オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  memoryInGB | number | はい | このコンテナー インスタンスのメモリ要求 (GB 単位)。 |
 |  cpu | number | はい | このコンテナー インスタンスの CPU 要求。 |
@@ -424,7 +424,7 @@ properties: # Properties of container group
 
 ### <a name="resourcelimits-object"></a>ResourceLimits オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  memoryInGB | number | いいえ | このコンテナー インスタンスのメモリ制限 (GB 単位)。 |
 |  cpu | number | いいえ | このコンテナー インスタンスの CPU 制限。 |
@@ -435,7 +435,7 @@ properties: # Properties of container group
 
 ### <a name="containerexec-object"></a>ContainerExec オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  command | array | いいえ | コンテナー内で実行するコマンド。 - string |
 
@@ -444,9 +444,9 @@ properties: # Properties of container group
 
 ### <a name="containerhttpget-object"></a>ContainerHttpGet オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
-|  path | string | No | プローブするパス。 |
+|  path | string | いいえ | プローブするパス。 |
 |  port | 整数 (integer) | はい | プローブするポート番号。 |
 |  scheme | enum | いいえ | スキーム。 - http または https |
 
@@ -455,7 +455,7 @@ properties: # Properties of container group
 
 ### <a name="gpuresource-object"></a>GpuResource オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  count | 整数 (integer) | はい | GPU リソースの数。 |
 |  sku | enum | はい | GPU リソースの SKU。 - K80、P100、V100 |

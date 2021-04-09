@@ -4,10 +4,10 @@ description: Azure Backup Server を使用して SharePoint データをバッ�
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.openlocfilehash: 837aabf739431eebaa6406770620329fe6345eb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89375399"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>MABS を使用して SharePoint ファームを Azure にバックアップする
@@ -40,7 +40,7 @@ SharePoint ファームを Azure にバックアップする前に、確認す�
 
 * SharePoint データベースを SQL Server データ ソースとして保護することはできません。 ファームのバックアップから個々のデータベースを回復することができます。
 
-* MABS が**ローカル システム**として実行されている状態で、SQL Server データベースをバックアップする場合は、SQL Server のアカウントに対する sysadmin 特権が必要になることに注意してください。 バックアップする SQL Server NT AUTHORITY\SYSTEM を **sysadmin** に設定してください。
+* MABS が **ローカル システム** として実行されている状態で、SQL Server データベースをバックアップする場合は、SQL Server のアカウントに対する sysadmin 特権が必要になることに注意してください。 バックアップする SQL Server NT AUTHORITY\SYSTEM を **sysadmin** に設定してください。
 
 * MABS フォルダーが存在するボリュームには、ファーム内の 1,000 万項目ごとに 2 GB 以上の容量が必要です。 この容量はカタログ生成のために必要です。 MABS を使用して特定の項目 (サイト コレクション、サイト、リスト、ドキュメント ライブラリ、フォルダー、個々のドキュメント、およびリスト項目) の回復を実行できるようにするために、カタログ生成では各コンテンツ データベース内に含まれる URL のリストが作成されます。 MABS 管理者コンソールの回復タスク領域の [回復可能な項目] ウィンドウで、URL の一覧を確認できます。
 
@@ -133,7 +133,7 @@ SharePoint ファームをバックアップするには、ConfigureSharePoint.e
 次の例では、 *Recovering SharePoint item* が誤って削除され、回復する必要があります。
 ![MABS の SharePoint 保護 4](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection5.png)
 
-1. **MABS 管理者コンソール**を開きます。 MABS によって保護されているすべての SharePoint ファームが、 **[保護]** タブに表示されます。
+1. **MABS 管理者コンソール** を開きます。 MABS によって保護されているすべての SharePoint ファームが、 **[保護]** タブに表示されます。
 
     ![MABS の SharePoint 保護 3](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection4.png)
 2. アイテムの回復を始めるには、 **[回復]** タブを選択します。
@@ -143,10 +143,10 @@ SharePoint ファームをバックアップするには、ConfigureSharePoint.e
 
     ![MABS の SharePoint 保護 6](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection7.png)
 4. 検索結果から適切な回復ポイントを選択し、アイテムを右クリックして、 **[回復]** を選択します。
-5. さまざまな回復ポイントを参照して、回復するデータベースまたはアイテムを選択できます。 **日付、回復時刻**の順に選択した後、正しい**データベース、SharePoint ファーム、回復ポイント、アイテム**を順番に選択します。
+5. さまざまな回復ポイントを参照して、回復するデータベースまたはアイテムを選択できます。 **日付、回復時刻** の順に選択した後、正しい **データベース、SharePoint ファーム、回復ポイント、アイテム** を順番に選択します。
 
     ![MABS の SharePoint 保護 7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. アイテムを右クリックして **[回復]** を選択し、**回復ウィザード**を開きます。 **[次へ]** を選択します。
+6. アイテムを右クリックして **[回復]** を選択し、**回復ウィザード** を開きます。 **[次へ]** を選択します。
 
     ![回復の選択の確認](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
 7. 実行する回復の種類を選択し、 **[次へ]** を選択します。
@@ -181,7 +181,7 @@ SharePoint ファームをバックアップするには、ConfigureSharePoint.e
 11. 概要情報を確認し、 **[回復]** を選択してファイルの回復を開始します。
 
     ![回復の概要](./media/backup-azure-backup-sharepoint/recovery-summary.png)
-12. **MABS 管理者コンソール**の **[監視]** タブを選択して、回復の**状態**を確認できます。
+12. **MABS 管理者コンソール** の **[監視]** タブを選択して、回復の **状態** を確認できます。
 
     ![回復の状態](./media/backup-azure-backup-sharepoint/recovery-monitoring.png)
 

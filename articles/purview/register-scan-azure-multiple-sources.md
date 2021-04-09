@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/26/2021
 ms.openlocfilehash: 098f62365971fd634001706ab99fd414a6b25056
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102123566"
 ---
 # <a name="register-and-scan-azure-multiple-sources"></a>Azure の複数のソースを登録してスキャンする

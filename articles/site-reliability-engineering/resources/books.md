@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/08/2020
 ms.author: dnb
 ms.openlocfilehash: 46956afc0962b9f0c868b491cd198dbdb9e3f30f
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91873049"
 ---
 # <a name="site-reliability-engineering-sre-books"></a>サイト信頼性エンジニアリング (SRE) に関する書籍

@@ -1,25 +1,19 @@
 ---
 title: Linux に対する Azure Disk Encryption
 description: 仮想マシン拡張機能を使用して、Linux 用 Azure Disk Encryption を仮想マシンにデプロイします。
-services: virtual-machines-linux
-documentationcenter: ''
-author: ejarvi
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
-ms.date: 03/19/2020
+ms.service: virtual-machines
+ms.subservice: disks
+author: ejarvi
 ms.author: ejarvi
-ms.openlocfilehash: 61f8fd3d671bbd66d2dc5656e9a467b06798d280
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.date: 03/19/2020
+ms.collection: linux
+ms.openlocfilehash: 7c79391e3459804a4b5ce72c2230d17af3269641
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968419"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566262"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Linux 用 Azure Disk Encryption (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -44,7 +38,7 @@ Azure Disk Encryption (ADE) 用の拡張スキーマには、次の 2 つのバ�
 
 ターゲット スキーマを選択するには、`typeHandlerVersion` プロパティを、使用するスキーマのバージョンと同じ値に設定する必要があります。
 
-### <a name="schema-v11-no-aad-recommended"></a>スキーマ v1.1:AAD なし (推奨)
+### <a name="schema-v11-no-aad-recommended"></a>スキーマ v1.1: AAD なし (推奨)
 
 v1.1 スキーマは推奨されており、Azure Active Directory (AAD) のプロパティを必要としません。
 
@@ -77,7 +71,7 @@ v1.1 スキーマは推奨されており、Azure Active Directory (AAD) のプ�
 
 ### <a name="schema-v01-with-aad"></a>スキーマ v0.1: AAD を含む 
 
-0\.1 スキーマでは、`AADClientID` と、`AADClientSecret` または `AADClientCertificate` のいずれかを必要とします。
+0.1 スキーマでは、`AADClientID` と、`AADClientSecret` または `AADClientCertificate` のいずれかを必要とします。
 
 `AADClientSecret`の使用
 
@@ -154,7 +148,7 @@ v1.1 スキーマは推奨されており、Azure Active Directory (AAD) のプ�
 | (省略可能) (0.1 スキーマ) パスフレーズ | password | string |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON 辞書 |
 | EncryptionOperation | EnableEncryption、EnableEncryptionFormatAll | string | 
-| (省略可能 - 既定の RSA-OAEP) KeyEncryptionAlgorithm | 'RSA-OAEP'、'RSA-OAEP-256'、'RSA1_5' | string |
+| (省略可能 - 既定値 RSA-OAEP) KeyEncryptionAlgorithm | 'RSA-OAEP'、'RSA-OAEP-256'、'RSA1_5' | string |
 | KeyVaultURL | url | string |
 | KeyVaultResourceId | url | string |
 | (省略可能) KeyEncryptionKeyURL | url | string |

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c4ed5dfee80c33009874361ae6b4d23ec00bc26
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: cadba181ea7d6a12ca64c78f3c7c58654d5f756f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573332"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102500810"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -95,6 +95,7 @@ Windows デスクトップ オペレーティング システムを実行して�
 Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azure AD 登録済み](overview.md#getting-devices-in-azure-ad)である場合、デバイスは、Hybrid Azure AD 参加済みでかつ Azure AD に登録済みの二重状態になる可能性があります。 このシナリオに自動的に対処するには、(KB4489894 が適用された) Windows 10 1803 以上にアップグレードすることをお勧めします。 1803 より前のリリースでは、Hybrid Azure AD 参加を有効にする前に、Azure AD の登録済み状態を手動で削除する必要があります。 1803 以降のリリースでは、この二重状態を回避するために次の変更が行われています。
 
 - "<i>デバイスが Hybrid Azure AD 参加済みになり、同じユーザーがログインした後</i>"、ユーザーの既存の Azure AD 登録済み状態は自動的に削除されます。 たとえば、ユーザー A がデバイスに Azure AD 登録済み状態を持っている場合は、ユーザー A がデバイスにログインしたときにのみ、ユーザー A の二重状態はクリーンアップされます。 同じデバイスに複数のユーザーがいる場合、それらのユーザーがログインすると、二重状態は個別にクリーンアップされます。 Azure AD の登録済み状態が削除されるだけでなく、Windows 10 では、登録が自動登録を介して Azure AD 登録の一部として行われた場合に、Intune またはその他の MDM からもデバイスの登録が解除されます。
+- デバイス上のすべてのローカル アカウントの Azure AD 登録済みの状態は、この変更による影響を受けません。 これは、ドメイン アカウントにのみ適用されます。 そのため、ローカル アカウントの Azure AD 登録済みの状態は、ユーザーがドメイン ユーザーではないため、ユーザーのログオン後でも自動的には削除されません。 
 - 次のレジストリ値を HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin に追加すると、ドメイン参加済みデバイスが Azure AD 登録済みになることを防ぐことができます:"BlockAADWorkplaceJoin"=dword:00000001。
 - Windows 10 1803 では、Windows Hello for Business が構成されている場合、ユーザーは、二重状態のクリーンアップ後に Windows Hello for Business を再設定する必要があります。この問題は KB4512509 で解決されています
 
@@ -170,7 +171,7 @@ Hybrid Azure AD 参加は、UPN がルーティング可能かどうかに応じ
 | ----- | ----- | ----- | ----- |
 | ルーティング可能 | フェデレーション | 1703 リリースから | 一般公開 |
 | ルーティング不可能 | フェデレーション | 1803 リリースから | 一般公開 |
-| ルーティング可能 | マネージド | 1803 リリースから | 一般公開されており、Windows ロック画面の Azure AD SSPR はサポートされていません。 |
+| ルーティング可能 | マネージド | 1803 リリースから | 一般公開されており、Windows ロック画面の Azure AD SSPR はサポートされていません。 オンプレミスの UPN は、Azure AD の `onPremisesUserPrincipalName` 属性に同期する必要があります |
 | ルーティング不可能 | マネージド | サポートされていません | |
 
 ## <a name="next-steps"></a>次のステップ

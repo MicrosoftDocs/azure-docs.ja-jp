@@ -9,10 +9,10 @@ ms.devlang: cpp
 ms.topic: quickstart
 ms.date: 5/26/2020
 ms.openlocfilehash: e8b2842300e43a9de88cc0b9b3ae9ce6cd754612
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94535845"
 ---
 # <a name="quickstart-use-connectorc-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Connector/C++ を使用して Azure Database for MySQL に接続してデータを照会する

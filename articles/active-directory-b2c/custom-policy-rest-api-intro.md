@@ -12,10 +12,10 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: bc2b72779460c2b7e3999204ace50ca57388b9a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89594188"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>REST API 要求交換の Azure AD B2C カスタム ポリシーへの統合

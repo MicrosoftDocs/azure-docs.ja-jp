@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 11/23/2020
-ms.openlocfilehash: b785a6b73f595072f5d723bad8c119ddc4dc0f11
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 5d69aacb6e3f25e3414aa446c4c5ae7852cabdfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100636335"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720904"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Azure Red Hat OpenShift (ARO) のネットワークの概念
 

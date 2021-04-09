@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mbullwin
 ms.openlocfilehash: c175a52259e9cfe5b4d03ce0279bbe24d16a48ae
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94363716"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Anomaly Detector コンテナーを構成する
@@ -41,7 +41,7 @@ ms.locfileid: "94363716"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 構成設定
 
-`ApiKey` 設定では、コンテナーの課金情報を追跡するために使用される Azure リソース キーを指定します。 ApiKey の値を指定する必要があります。また、その値は、 [`Billing`](#billing-configuration-setting) 構成設定に指定された _Anomaly Detector_ リソースの有効なキーであることが必要です。
+`ApiKey` 設定では、コンテナーの課金情報を追跡するために使用される Azure リソース キーを指定します。 ApiKey の値を指定する必要があります。また、その値は、[`Billing`](#billing-configuration-setting) 構成設定に指定された _Anomaly Detector_ リソースの有効なキーであることが必要です。
 
 この設定は次の場所で確認できます。
 
@@ -91,14 +91,14 @@ Anomaly Detector コンテナーでは、トレーニングやサービスのデ
 |省略可能| 名前 | データ型 | 説明 |
 |-------|------|-----------|-------------|
 |禁止| `Input` | String | Anomaly Detector コンテナーでは、これは使用されません。|
-|省略可能| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
+|オプション| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>docker run コマンドの例 
 
 以下の例では、`docker run` コマンドの記述方法と使用方法を示す構成設定が使用されています。  コンテナーは一度実行すると、お客様が[停止](anomaly-detector-container-howto.md#stop-the-container)するまで動作し続けます。
 
-* **行連結文字** : 以降のセクションの Docker コマンドには、Bash シェルの行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。 たとえば、Windows の行連結文字はキャレット (`^`) です。 バック スラッシュをキャレットで置き換えます。 
-* **引数の順序** : Docker コンテナーについて高度な知識がある場合を除き、引数の順序は変更しないでください。
+* **行連結文字**: 以降のセクションの Docker コマンドには、Bash シェルの行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。 たとえば、Windows の行連結文字はキャレット (`^`) です。 バック スラッシュをキャレットで置き換えます。 
+* **引数の順序**: Docker コンテナーについて高度な知識がある場合を除き、引数の順序は変更しないでください。
 
 中かっこ `{}` の中の値を独自の値で置き換えます。
 

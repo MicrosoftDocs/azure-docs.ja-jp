@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 2c91a59e57613934c946e3cd56089b330893a51a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86260338"
 ---
 # <a name="sfctl-mesh-secret"></a>sfctl mesh secret
@@ -17,7 +17,7 @@ ms.locfileid: "86260338"
 
 ## <a name="commands"></a>コマンド
 
-|command|説明|
+|コマンド|説明|
 | --- | --- |
 | delete | シークレット リソースを削除します。 |
 | list | すべてのシークレット リソースを一覧表示します。 |

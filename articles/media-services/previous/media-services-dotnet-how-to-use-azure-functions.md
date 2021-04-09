@@ -3,7 +3,7 @@ title: Media Services を使用する Azure 関数の開発
 description: このトピックでは、Media Services を使用する Azure 関数を Azure Portal で開発する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 51bdcb01-1846-4e1f-bd90-70020ab471b0
@@ -12,21 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 520ad8f68e0f995ea05456ebcf6de4c1ba3f9418
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: ef8e3a2e733247f713fe0240cb8ef6069803fcb7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030307"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103013960"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Media Services を使用する Azure 関数の開発
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-この記事では、Media Services を使用した Azure Functions の作成方法について説明しています。 この記事で定義されている Azure Function は、新しい MP4 ファイルの **input** という名前付きストレージ アカウント コンテナーを監視します。 ストレージ コンテナーにファイルを削除すると、BLOB トリガーは関数を実行します。 Azure Functions について確認するには、**Azure Functions** のセクションで[概要](../../azure-functions/functions-overview.md)およびその他のトピックを参照してください。
+この記事では、Media Services を使用した Azure Functions の作成方法について説明しています。 この記事で定義されている Azure Function は、新しい MP4 ファイルの **input** という名前付きストレージ アカウント コンテナーを監視します。 ストレージ コンテナーにファイルを削除すると、BLOB トリガーは関数を実行します。 Azure Functions について確認するには、**Azure Functions** のセクションで [概要](../../azure-functions/functions-overview.md)およびその他のトピックを参照してください。
 
 Azure Media Services を使用する既存の Azure 関数を探してデプロイするには、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) をチェックアウトしてください。 このリポジトリには、Media Services を使ったサンプルが格納されています。Blob Storage から直接コンテンツを取り込んだり、エンコードしたり、Blob Storage にコンテンツを書き戻したりする処理に関連するワークフローの例が紹介されています。 また、webhook と Azure キューを介してジョブの通知を監視するサンプルも含まれています。 さらに、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) リポジトリの例に基づいて関数をデプロイすることもできます。 関数をデプロイするには、 **[Azure に配置する]** を押します。
 

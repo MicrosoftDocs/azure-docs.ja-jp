@@ -5,12 +5,12 @@ author: ofirmanor
 ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
-ms.openlocfilehash: d65fa03a183c15022535debee6476844192ec6bf
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 08ac23fbb29829bf2a7a46e41f9a7f646ad97915
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037848"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586320"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Azure Monitor のアラートの問題のトラブルシューティング
 
@@ -21,7 +21,7 @@ Azure Monitor のアラートは、監視データで重要な状態が見つか
 予想どおりに始動しない場合も含め、アラートに関する問題については、以下の記事を参照してください。 Azure portal では、"始動した" アラートを確認できます。
 
 - [Microsoft Azure の Azure Monitor メトリック アラートのトラブルシューティング](alerts-troubleshoot-metric.md)  
-- [Microsoft Azure の Azure Monitor ログ アラートのトラブルシューティング](alerts-troubleshoot-metric.md)
+- [Microsoft Azure の Azure Monitor ログ アラートのトラブルシューティング](alerts-troubleshoot-log.md)
 
 Azure portal に従って意図どおりにアラートが始動しても適切に通知されない場合、残りの記事の情報を利用し、その問題を解決してください。
 

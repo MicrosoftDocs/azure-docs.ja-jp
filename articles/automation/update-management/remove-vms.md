@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 ms.custom: mvc
 ms.openlocfilehash: d0399aed9be8d81abb2aa55190225570ddcc1a4e
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97913194"
 ---
 # <a name="remove-vms-from-update-management"></a>Update Management から VM を削除する

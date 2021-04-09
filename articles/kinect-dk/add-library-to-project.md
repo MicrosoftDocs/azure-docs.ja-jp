@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect、Azure、センサー、SDK、Visual Studio 2017、Visual Studio 2019、NuGet
 ms.openlocfilehash: fd71f0d327b8c828cc9ddac5810757cccdffbcea
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94359614"
 ---
 # <a name="add-azure-kinect-library-to-your-visual-studio-project"></a>Azure Kinect ライブラリを Visual Studio プロジェクトに追加する

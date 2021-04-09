@@ -5,14 +5,14 @@ author: alkohli
 ms.assetid: 169c639b-1124-46a5-ae69-ba9695525b77
 ms.service: storsimple
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: af48e1f415e0ca0b1027d277f70c3f0f1a11e687
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 6d7d8c37d0e7ffacb3221a4f30a96ef6cccda819
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526767"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104674446"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple Virtual Array の概要
 

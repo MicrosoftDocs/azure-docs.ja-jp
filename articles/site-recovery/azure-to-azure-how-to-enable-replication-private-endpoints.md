@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/14/2020
 ms.custom: references_regions
 ms.openlocfilehash: 86f18be73966cb07489630191420b846622e45b8
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98629829"
 ---
 # <a name="replicate-machines-with-private-endpoints"></a>プライベート エンドポイントを使用してマシンをレプリケートする

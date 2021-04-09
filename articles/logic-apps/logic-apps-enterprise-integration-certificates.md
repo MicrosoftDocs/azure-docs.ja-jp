@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
 ms.openlocfilehash: 03fc17c0d071cef4c8de92c6b50d60d961d18aef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91565261"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>証明書を使用して B2B メッセージのセキュリティを強化する
@@ -26,7 +26,7 @@ B2B 通信の機密性を確保する必要がある場合は、統合アカウ�
 
 * [パブリック証明書](https://en.wikipedia.org/wiki/Public_key_certificate): これはパブリック インターネットの[証明機関 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) から購入する必要がありますが、キーは必要ありません。 
 
-* プライベート証明書または[*自己署名証明書*](https://en.wikipedia.org/wiki/Self-signed_certificate): これはお客様自身が作成して発行する必要がありますが、やはり秘密キーは不要です。 
+* プライベート証明書または [*自己署名証明書*](https://en.wikipedia.org/wiki/Self-signed_certificate): これはお客様自身が作成して発行する必要がありますが、やはり秘密キーは不要です。 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -64,7 +64,7 @@ B2B 機能を備えたロジック アプリで "*プライベート証明書*" 
 作成した[契約](logic-apps-enterprise-integration-agreements.md)でプロパティを定義した後は、証明書を使って B2B メッセージをセキュリティ保護できるようになります。
 
 > [!NOTE]
-> プライベート証明書の場合、メッセージの署名と暗号化のために [AS2 契約](logic-apps-enterprise-integration-as2.md)の**送信と受信**の設定に表示される、対応するパブリック証明書を追加する必要があります。
+> プライベート証明書の場合、メッセージの署名と暗号化のために [AS2 契約](logic-apps-enterprise-integration-as2.md)の **送信と受信** の設定に表示される、対応するパブリック証明書を追加する必要があります。
 
 1. [Azure Key Vault に秘密キーを追加](../key-vault/certificates/certificate-scenarios.md#import-a-certificate)し、 **[キー名]** を指定します。
    

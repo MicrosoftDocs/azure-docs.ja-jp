@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: d14b96843b489b28fc7d83348e39638272c06da5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6ef11e9c7907f57b3b8de0a042e1035bce638cf4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942760"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863277"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka を用いた Apache Spark ストリーミング (DStream) の例
 
@@ -28,7 +28,7 @@ ms.locfileid: "98942760"
 
 HDInsight 上の Apache Kafka では、パブリック インターネット経由の Kafka ブローカーへのアクセスは提供されません。 Kafka と通信するすべてのものは、Kafka クラスター内のノードと同じ Azure 仮想ネットワークに存在している必要があります。 この例では、Kafka クラスターと Spark クラスターの両方を Azure 仮想ネットワーク内に配置します。 次の図に、クラスター間の通信フローを示します。
 
-![Azure 仮想ネットワークにおける Spark クラスターと Kafka クラスターの図](./media/hdinsight-apache-spark-with-kafka/apache-spark-kafka-vnet.png)
+:::image type="content" source="./media/hdinsight-apache-spark-with-kafka/apache-spark-kafka-vnet.png" alt-text="Azure 仮想ネットワークにおける Spark クラスターと Kafka クラスターの図" border="false":::
 
 > [!NOTE]  
 > Kafka 自体は仮想ネットワーク内の通信に制限されていますが、クラスターの SSH や Ambari などの他のサービスにはインターネット経由でアクセスすることができます。 HDInsight で使用できるパブリック ポートの詳細については、「[HDInsight で使用されるポートと URI](hdinsight-hadoop-port-settings-for-services.md)」を参照してください。
@@ -37,28 +37,28 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
 1. 次のボタンを使用して Azure にサインインし、Azure Portal でテンプレートを開きます。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Azure Resource Manager テンプレートは、 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** にあります。
+   Azure Resource Manager テンプレートは、 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** にあります。
 
-    > [!WARNING]  
-    > HDInsight で Kafka の可用性を保証するには、クラスターに少なくとも 3 つのワーカー ノードが必要です。 このテンプレートは、3 つのワーカー ノードが含まれる Kafka クラスターを作成します。
+   > [!WARNING]
+   > HDInsight で Kafka の可用性を保証するには、クラスターに少なくとも 3 つのワーカー ノードが必要です。 このテンプレートは、3 つのワーカー ノードが含まれる Kafka クラスターを作成します。
 
-    このテンプレートは、Kafka と Spark の両方の HDInsight 3.6 クラスターを作成します。
+   このテンプレートは、Kafka と Spark の両方の HDInsight 3.6 クラスターを作成します。
 
 1. 以下の情報を使用して、 **[カスタム デプロイ]** セクションに各エントリを入力します。
 
-    |プロパティ |値 |
-    |---|---|
-    |Resource group|グループを作成するか、または既存のグループを選択します。|
-    |Location|地理的に近い場所を選択します。|
-    |Base Cluster Name (ベース クラスター名)|この値は、Spark クラスターと Kafka クラスターのベース名として使用されます。 たとえば、「**hdistreaming**」と入力すると、__spark-hdistreaming__ という名前の Spark クラスターと、**kafka-hdistreaming** という名前の Kafka クラスターが作成されます。|
-    |[Cluster Login User Name]\(クラスター ログイン ユーザー名\)|Spark クラスターと Kafka クラスターの管理者のユーザー名。|
-    |[クラスター ログイン パスワード]|Spark クラスターと Kafka クラスターの管理者のユーザー パスワード。|
-    |[SSH ユーザー名]|Spark クラスターと Kafka クラスターの作成に使用する SSH ユーザー。|
-    |[SSH パスワード]|Spark クラスターと Kafka クラスター用の SSH ユーザーのパスワード。|
+   |プロパティ |値 |
+   |---|---|
+   |Resource group|グループを作成するか、または既存のグループを選択します。|
+   |Location|地理的に近い場所を選択します。|
+   |Base Cluster Name (ベース クラスター名)|この値は、Spark クラスターと Kafka クラスターのベース名として使用されます。 たとえば、「**hdistreaming**」と入力すると、__spark-hdistreaming__ という名前の Spark クラスターと、**kafka-hdistreaming** という名前の Kafka クラスターが作成されます。|
+   |[Cluster Login User Name]\(クラスター ログイン ユーザー名\)|Spark クラスターと Kafka クラスターの管理者のユーザー名。|
+   |[クラスター ログイン パスワード]|Spark クラスターと Kafka クラスターの管理者のユーザー パスワード。|
+   |[SSH ユーザー名]|Spark クラスターと Kafka クラスターの作成に使用する SSH ユーザー。|
+   |[SSH パスワード]|Spark クラスターと Kafka クラスター用の SSH ユーザーのパスワード。|
 
-    ![HDInsight カスタム デプロイ パラメーター](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
+   :::image type="content" source="./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png" alt-text="HDInsight カスタム デプロイ パラメーター":::
 
 1. **使用条件** を読み、 **[上記の使用条件に同意する]** をオンにします。
 
@@ -66,7 +66,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
 リソースが作成されると、概要ページが表示されます。
 
-![vnet とクラスターのリソース グループ概要](./media/hdinsight-apache-spark-with-kafka/hdinsight-group-blade.png)
+:::image type="content" source="./media/hdinsight-apache-spark-with-kafka/hdinsight-group-blade.png" alt-text="vnet とクラスターのリソース グループ概要":::
 
 > [!IMPORTANT]  
 > 各 HDInsight クラスターの名前が **spark-BASENAME** および **kafka-BASENAME** であることに注目してください。BASENAME はテンプレートで指定した名前です。 これらの名前は、後の手順でクラスターに接続するときに使用します。

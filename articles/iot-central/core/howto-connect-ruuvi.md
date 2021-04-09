@@ -11,10 +11,10 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 7cf0d31895eaeaa41c23f9f07664b27bed1d3126
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96006389"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>RuuviTag センサーを Azure IoT Central アプリケーションに接続する
@@ -45,10 +45,10 @@ RuuviTag センサーをお使いの Azure IoT Central アプリケーション 
 
 RuuviTag デバイス テンプレートを追加するには:
 
-1. 左ウィンドウの **[Device Templates]\(デバイス テンプレート\)** タブに移動し、 _[+ 新規] を選択します。![新しいデバイス テンプレートを作成する](./media/howto-connect-ruuvi/devicetemplate-new.png) このページには、"*_新しいカスタム テンプレートを作成する_*"_ ためのオプション、または _"*_構成済みデバイス テンプレートを使用_*"_ するためのオプションが示されています
+1. 左ウィンドウの **[デバイス テンプレート]** タブに移動し、 _[+ New] を選択します。![新しいデバイス テンプレートを作成する](./media/howto-connect-ruuvi/devicetemplate-new.png) このページでは、"***カスタム テンプレートを作成**_" するためのオプション、または "_ *_構成済みデバイス テンプレートを使用_**" するためのオプションについて説明しています
 1. 次に示すように、構成済みデバイス テンプレートの一覧から RuuviTag デバイス テンプレートを選択します。![RuuviTag デバイス テンプレートを選択する](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
-1. _*_[Next: Customize]\(次へ: カスタマイズ\)_*_ を選択して、次の手順に進みます。
-1. 次の画面で、_*_[Create]\(作成\)_*_ を選択して、C500 デバイス テンプレートをお使いの IoT Central アプリケーションにオンボードします。
+1. ***カスタマイズ*** を選択して、次の手順に進みます。
+1. 次の画面で、***[作成]*** を選択して、C500 デバイス テンプレートをお使いの IoT Central アプリケーションにオンボードします。
 
 ## <a name="connect-a-ruuvitag-sensor"></a>RuuviTag センサーを接続する
 
@@ -68,7 +68,7 @@ RuuviTag デバイス テンプレートを追加するには:
 
 シミュレートされた RuuviTag を作成するには:
 
-1. **[Devices]\(デバイス\) > [RuuviTag]** の順に選択します。
+1. **[デバイス] > [RuuviTag]** の順に選択します。
 1. **[+新規]** を選択します。
 1. 一意の **デバイス ID** と、わかりやすい **デバイス名** を指定します。  
 1. **シミュレートされた** 設定を有効にします。

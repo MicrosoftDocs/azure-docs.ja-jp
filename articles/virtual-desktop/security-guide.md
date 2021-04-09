@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cfc980fdabdb9c6e7085088db12754243f133d89
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ddbd4b798d37498af92cec40af6a80a88115fab
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581394"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014895"
 ---
 # <a name="security-best-practices"></a>セキュリティの運用方法
 
@@ -117,7 +117,6 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnab
 >[!NOTE]
 >プレビュー期間中、この機能は Windows 10 エンドポイントからの完全なデスクトップ接続のみでサポートされます。
 
-
 ### <a name="enable-endpoint-protection"></a>Endpoint Protection を有効にする
 
 既知の悪意のあるソフトウェアからデプロイを保護するには、すべてのセッション ホストで Endpoint Protection を有効にすることをお勧めします。 Windows Defender ウイルス対策、またはサードパーティ製のプログラムを使用できます。 詳細については、[VDI 環境への Windows Defender ウイルス対策の展開ガイド](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus)に関するページを参照してください。
@@ -169,6 +168,52 @@ FSLogix などのプロファイル ソリューションや、VHD ファイル�
 - ユーザーがローカルおよびリモートのファイル システムにアクセスする場合は、制限付きアクセス許可を付与します。 ローカルおよびリモートのファイル システムが最小限の特権でアクセス制御リストを使用するようにすることで、アクセス許可を制限できます。 こうすると、ユーザーは必要なものにのみアクセスでき、重要なリソースを変更または削除することはできません。
 
 - 不要なソフトウェアがセッション ホストで実行されないようにします。 セッション ホストのセキュリティを強化するために App Locker を有効にできます。これにより、許可したアプリのみをホストで実行できるようになります。
+
+## <a name="windows-virtual-desktop-support-for-trusted-launch"></a>Windows Virtual Desktop でのトラステッド起動のサポート
+
+トラステッド起動とは、ルートキット、ブート キット、カーネルレベルのマルウェアなどの攻撃ベクトルによる "スタックの最下部" の脅威から保護することを目的として強化されたセキュリティ機能を提供するものであり、Gen2 Azure VM で利用できます。 トラステッド起動の強化されたセキュリティ機能を以下に示します。これらはすべて、Windows Virtual Desktop でサポートされています。 トラステッド起動の詳細については、「[Azure 仮想マシン用のトラステッド起動 (プレビュー)](../virtual-machines/trusted-launch.md)」を参照してください。
+
+### <a name="secure-boot"></a>セキュア ブート
+
+セキュア ブートとは、プラットフォーム ファームウェアでサポートされるモードであり、マルウェアベースのルートキットおよびブート キットからファームウェアを保護するためのものです。 このモードでは、署名された OS とドライバーでのみコンピューターを起動することができます。 
+
+### <a name="monitor-boot-integrity-using-remote-attestation"></a>リモート構成証明を使用してブート整合性を監視する
+
+リモート構成証明は、使用している VM の正常性を確認するための優れた方法です。 リモート構成証明によって、メジャーブート レコードが存在すること、本物であること、仮想トラステッドプラットフォームモジュール (vTPM) から取得されたものであることが確認されます。 正常性チェックとして、プラットフォームが正しく起動されたという確実性が暗号化されて提供されます。 
+
+### <a name="vtpm"></a>vTPM
+
+vTPM は、ハードウェアのトラステッド プラットフォーム モジュール (TPM) の仮想化バージョンであり、VM ごとに TPM の仮想インスタンスがあります。 vTPM により、VM のブート チェーン全体 (UEFI、OS、システム、ドライバー) の整合性測定を実行することで、リモート構成証明が有効になります。 
+
+ご利用の VM 上では、vTPM を有効にしてリモート構成証明を使用することをお勧めします。 vTPM を有効にすると、フルボリューム暗号化を行って保存データを保護する BitLocker 機能を有効にすることもできます。 vTPM を使用するいずれの機能でも、特定の VM にシークレットがバインドされます。 プールされたシナリオでユーザーが Windows Virtual Desktop サービスに接続した場合に、ユーザーをホスト プール内の任意の VM にリダイレクトすることができます。 機能の設計方法によっては、これが影響を及ぼす可能性があります。
+
+>[!NOTE]
+>FSLogix プロファイル データを格納している特定のディスクを暗号化する場合は、BitLocker を使用しないでください。
+
+### <a name="virtualization-based-security"></a>仮想化ベースのセキュリティ
+
+仮想化ベースのセキュリティ (VBS) では、ハイパーバイザーを使用して、OS からアクセスできないセキュリティで保護されたメモリ領域が作成され、分離されます。 ハイパーバイザーで保護されたコード整合性 (HVCI) でも Windows Defender Credential Guard でも、VBS を使用して、脆弱性からの保護を強化できます。 
+
+#### <a name="hypervisor-protected-code-integrity"></a>ハイパーバイザーで保護されたコード整合性
+
+HVCI は、VBS を使用することで、悪意のあるまたは検証されていないコードの注入や実行から Windows カーネルモード プロセスを保護する、システムの強力な軽減策です。
+
+#### <a name="windows-defender-credential-guard"></a>Windows Defender Credential Guard
+
+Windows Defender Credential Guard では、VBS を使用してシークレットを分離および保護することで、特権のあるシステム ソフトウェアからのみそれらにアクセスできるようにすることができます。 これにより、それらのシークレットへの不正アクセスや、Pass-the-Hash 攻撃などの資格情報の盗難攻撃が防止されます。
+
+### <a name="deploy-trusted-launch-in-your-windows-virtual-desktop-environment"></a>Windows Virtual Desktop 環境でのトラステッド起動をデプロイする
+
+現在、Windows Virtual Desktop では、ホスト プールのセットアップ プロセス中におけるトラステッド起動の自動構成はサポートされていません。 Windows Virtual Desktop 環境でトラステッド起動を使用するには、トラステッド起動を通常どおりにデプロイしてから、目的のホスト プールに手動で仮想マシンを追加する必要があります。
+
+## <a name="nested-virtualization"></a>入れ子になった仮想化
+
+次のオペレーティング システムでは、入れ子になった仮想化を Windows Virtual Desktop 上で実行することがサポートされています。
+
+- Windows Server 2016
+- Windows Server 2019
+- Windows 10 Enterprise
+- Windows 10 Enterprise マルチセッション
 
 ## <a name="next-steps"></a>次のステップ
 

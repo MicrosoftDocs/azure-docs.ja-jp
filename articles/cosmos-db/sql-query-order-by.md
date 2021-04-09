@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: tisande
 ms.openlocfilehash: 887dc13eb5e351688718d2a221e69499557b23e5
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93338301"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での ORDER BY 句
@@ -81,7 +81,7 @@ ORDER BY <sort_specification>
     ]
 ```
 
-次のクエリは、家族 `id` をその項目の作成日の順序で取得します。 項目 `creationDate` は、 *エポック時間* 、つまり、1970 年 1 月 1 日からの経過時間を秒で表す数字です。
+次のクエリは、家族 `id` をその項目の作成日の順序で取得します。 項目 `creationDate` は、*エポック時間*、つまり、1970 年 1 月 1 日からの経過時間を秒で表す数字です。
 
 ```sql
     SELECT f.id, f.creationDate

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metang
 ms.openlocfilehash: f2f5c8193454a3b7fa6be1cea7a1236b613d6c8f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "92636529"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Immersive Reader JavaScript SDK リファレンス (v1.1)
@@ -314,7 +314,7 @@ Default value: "text/plain"
 | onExit | 機能 | イマーシブ リーダーが終了したときに実行されます。 |
 | allowFullscreen | Boolean | 全画面表示を切り替える機能 (既定値は true)。 |
 | hideExitButton | Boolean | イマーシブ リーダーの終了ボタンの矢印を非表示にするかどうか (既定値は false)。 イマーシブ リーダーを終了するための代替メカニズム (モバイル ツール バーの戻る矢印など) がある場合にのみ、これを true にする必要があります。 |
-| cookiePolicy | [CookiePolicy](#cookiepolicy-options) | イマーシブ リーダーでの Cookie の使用の設定 (既定値は *CookiePolicy.Disable* )。 EU の Cookie コンプライアンス ポリシーに従って必要なユーザーの同意を取得するのは、ホスト アプリケーションの責任となります。 「[CookiePolicy のオプション](#cookiepolicy-options)」を参照してください。 |
+| cookiePolicy | [CookiePolicy](#cookiepolicy-options) | イマーシブ リーダーでの Cookie の使用の設定 (既定値は *CookiePolicy.Disable*)。 EU の Cookie コンプライアンス ポリシーに従って必要なユーザーの同意を取得するのは、ホスト アプリケーションの責任となります。 「[CookiePolicy のオプション](#cookiepolicy-options)」を参照してください。 |
 | disableFirstRun | Boolean | 最初の実行のエクスペリエンスを無効にします。 |
 | readAloudOptions | [ReadAloudOptions](#readaloudoptions) | 音声読み上げを構成するためのオプション。 |
 | translationOptions | [TranslationOptions](#translationoptions) | 翻訳を構成するためのオプション。 |
@@ -354,7 +354,7 @@ Default value: null
 ##### `preferences`
 
 > [!CAUTION]
-> **重要** イマーシブ リーダー アプリケーションとの間で送受信される `-preferences` の文字列の値を、プログラムで変更しようとしないでください。予期しない動作が発生し、顧客のユーザー エクスペリエンスが低下する可能性があります。 ホスト アプリケーションによって `-preferences` 文字列にカスタム値を割り当てたり、これを操作したりしないでください。 `-preferences` 文字列オプションを使用する場合は、`-onPreferencesChanged` コールバック オプションから返された正確な値のみを使用してください。
+> **重要** イマーシブ リーダー アプリケーションとの間で送受信される `-preferences` の文字列の値を、プログラムで変更しようとしないでください。予期しない動作が発生し、顧客のユーザー エクスペリエンスが低下する可能性があります。 ホスト アプリケーションによってカスタム値を割り当てたり、`-preferences` 文字列を操作したりしないでください。 `-preferences` 文字列オプションを使用する場合は、`-onPreferencesChanged` コールバック オプションから返された正確な値のみを使用してください。
 
 ```Parameters
 Type: String
@@ -487,7 +487,7 @@ Values available: "Calibri", "Sitka", "ComicSans"
 enum CookiePolicy { Disable, Enable }
 ```
 
-**以下の設定は、情報の提供のみを目的としています** 。 イマーシブ リーダーの設定 (またはユーザーの個人設定) は、Cookie に格納されます。 この *cookiePolicy* オプションを使用すると、EU の Cookie コンプライアンス法に準拠するため、Cookie の使用が既定で **無効** になります。 Cookie を再度有効にし、イマーシブ リーダーのユーザー個人設定の既定の機能を元に戻す必要がある場合は、Web サイトまたはアプリケーションでユーザーから Cookie を有効にする適切な同意を得たことを確認する必要があります。 その後、イマーシブ リーダーで Cookie を再び有効にするには、イマーシブ リーダーを起動するときに、 *cookiePolicy* オプションを明示的に *CookiePolicy.Enable* に設定する必要があります。 次の表では、 *cookiePolicy* オプションが有効になっている場合に、イマーシブ リーダーによって Cookie に格納される設定を示します。
+**以下の設定は、情報の提供のみを目的としています**。 イマーシブ リーダーの設定 (またはユーザーの個人設定) は、Cookie に格納されます。 この *cookiePolicy* オプションを使用すると、EU の Cookie コンプライアンス法に準拠するため、Cookie の使用が既定で **無効** になります。 Cookie を再度有効にし、イマーシブ リーダーのユーザー個人設定の既定の機能を元に戻す必要がある場合は、Web サイトまたはアプリケーションでユーザーから Cookie を有効にする適切な同意を得たことを確認する必要があります。 その後、イマーシブ リーダーで Cookie を再び有効にするには、イマーシブ リーダーを起動するときに、*cookiePolicy* オプションを明示的に *CookiePolicy.Enable* に設定する必要があります。 次の表では、*cookiePolicy* オプションが有効になっている場合に、イマーシブ リーダーによって Cookie に格納される設定を示します。
 
 #### <a name="settings-parameters"></a>設定のパラメーター
 

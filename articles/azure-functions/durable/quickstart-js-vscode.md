@@ -7,10 +7,10 @@ ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
 ms.custom: devx-track-js
 ms.openlocfilehash: f8ffa90ba0f1ac32d4691165fabf3d8eb9fb7605
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91335451"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>JavaScript で最初の Durable Functions を作成する
@@ -74,7 +74,7 @@ Node.js 関数アプリで Durable Functions を使用して作業するには�
 
 * "*オーケストレーター関数*" - 他の関数を調整するワークフローを記述します。
 * "*アクティビティ関数*" - オーケストレーター関数によって呼び出され、作業を実行し、必要に応じて値を返します。
-* *クライアント関数* - オーケストレーター関数を開始する通常の Azure 関数。 この例では、HTTP によってトリガーされる関数を使用しています。
+* *クライアント関数* - オーケストレーター関数を開始する通常の Azure Functions。 この例では、HTTP によってトリガーされる関数を使用しています。
 
 ### <a name="orchestrator-function"></a>オーケストレーター関数
 
@@ -128,7 +128,7 @@ Node.js 関数アプリで Durable Functions を使用して作業するには�
 
 Azure Functions Core Tools を使用すると、ローカルの開発用コンピューター上で Azure Functions プロジェクトを実行できます。 Visual Studio Code から初めて関数を起動すると、これらのツールをインストールするよう求めるメッセージが表示されます。
 
-1. 関数をテストするには、`Hello` アクティビティ関数のコード (*Hello/index.js*) にブレークポイントを設定します。 F5 キーを押すか、コマンド パレットから `Debug: Start Debugging` を選択して、関数アプリ プロジェクトを開始します。 Core Tools からの出力が**ターミナル** パネルに表示されます。
+1. 関数をテストするには、`Hello` アクティビティ関数のコード (*Hello/index.js*) にブレークポイントを設定します。 F5 キーを押すか、コマンド パレットから `Debug: Start Debugging` を選択して、関数アプリ プロジェクトを開始します。 Core Tools からの出力が **ターミナル** パネルに表示されます。
 
     > [!NOTE]
     > デバッグについて詳しくは、[Durable Functions の診断](durable-functions-diagnostics.md#debugging)に関する記事をご覧ください。
@@ -176,7 +176,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
     }
     ```
 
-1. デバッグを停止するには、VS Code で **Shift キーを押しながら F5 キー**を押します。
+1. デバッグを停止するには、VS Code で **Shift キーを押しながら F5 キー** を押します。
 
 関数がローカル コンピューター上で正常に動作することを確認したら、プロジェクトを Azure に発行します。
 
@@ -186,7 +186,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 ## <a name="test-your-function-in-azure"></a>Azure で関数をテストする
 
-1. **出力**パネルから HTTP トリガーの URL をコピーします。 HTTP によってトリガーされる関数を呼び出す URL は、次の形式である必要があります: `http://<functionappname>.azurewebsites.net/api/orchestrators/HelloOrchestrator`
+1. **出力** パネルから HTTP トリガーの URL をコピーします。 HTTP によってトリガーされる関数を呼び出す URL は、次の形式である必要があります: `http://<functionappname>.azurewebsites.net/api/orchestrators/HelloOrchestrator`
 
 2. HTTP 要求のこの新しい URL をブラウザーのアドレス バーに貼り付けます。 以前の発行済みアプリの使用時と同じ状態応答を受け取るはずです。
 

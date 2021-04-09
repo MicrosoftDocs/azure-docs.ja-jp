@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/16/2020
 ms.author: victorh
 ms.openlocfilehash: 9579d0da3347bdd4ecc627662cee42f909cbfaf7
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92132773"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure CDN の WAF ポリシーを作成する
@@ -22,7 +22,7 @@ ms.locfileid: "92132773"
 
 > [!div class="checklist"]
 > * WAF ポリシーを作成する
-> * CDN エンドポイントに関連付ける。 WAF ポリシーを関連付けることができるのは、 **Azure CDN Standard from Microsoft** SKU でホストされたエンドポイントだけです。
+> * CDN エンドポイントに関連付ける。 WAF ポリシーを関連付けることができるのは、**Azure CDN Standard from Microsoft** SKU でホストされたエンドポイントだけです。
 > * WAF 規則を構成する
 
 ## <a name="prerequisites"></a>前提条件
@@ -33,7 +33,7 @@ ms.locfileid: "92132773"
 
 まず、ポータルを使用して、マネージド既定のルール セット (DRS) を持つ基本の WAF ポリシーを作成します。
 
-1. 画面の左上で **[リソースの作成]** を選択し、 **WAF** を検索して、 **[Web アプリケーション ファイアウォール]** を選択して、 **[作成]** を選択します。
+1. 画面の左上で **[リソースの作成]** を選択し、**WAF** を検索して、 **[Web アプリケーション ファイアウォール]** を選択して、 **[作成]** を選択します。
 2. **[Create a WAF policy]\(WAF ポリシーの作成\)** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[確認と作成]** を選択します。
 
     | 設定                 | 値                                              |
@@ -60,29 +60,29 @@ ms.locfileid: "92132773"
 
 ### <a name="change-mode"></a>モードを変更する
 
-既定では、WAF ポリシーを作成するとその WAF ポリシーは " *検出* " モードになります。 " *検出* " モードでは、WAF で要求がブロックされることはありません。 代わりに、WAF ルールに一致する要求が WAF ログに記録されます。
+既定では、WAF ポリシーを作成するとその WAF ポリシーは "*検出*" モードになります。 "*検出*" モードでは、WAF で要求がブロックされることはありません。 代わりに、WAF ルールに一致する要求が WAF ログに記録されます。
 
 WAF の動作を確認するには、モードの設定を *[検出]* から *[防止]* に変更できます。 *防止* モードでは、既定の規則セット (DRS) で定義されている規則に一致する要求はブロックされ、WAF ログに記録されます。
 
- :::image type="content" source="../media/waf-cdn-create-portal/policy.png" alt-text="[Create a W A F policy]\(W A F ポリシーの作成\) ページのスクリーンショット。[確認と作成] ボタンのほか、各種設定の入力値が表示されています。" border="false":::
+ :::image type="content" source="../media/waf-cdn-create-portal/policy.png" alt-text="[ポリシー設定] セクションのスクリーンショット。[モード] トグルが [防止] に設定されています。" border="false":::
 
 ### <a name="custom-rules"></a>カスタム規則
 
-カスタム ルールを作成するには、 **[カスタム ルール]** セクションの下の **[カスタム ルールの追加]** を選択します。 これで、カスタム ルールの構成ページが開きます。 カスタム ルールには、 **一致ルール** と **レート制限ルール** の 2 種類があります。
+カスタム ルールを作成するには、 **[カスタム ルール]** セクションの下の **[カスタム ルールの追加]** を選択します。 これで、カスタム ルールの構成ページが開きます。 カスタム ルールには、**一致ルール** と **レート制限ルール** の 2 種類があります。
 
 次のスクリーンショットは、クエリ文字列に **blockme** という値が含まれている場合に要求をブロックするカスタム一致ルールを示しています。
 
-:::image type="content" source="../media/waf-cdn-create-portal/custommatch.png" alt-text="[Create a W A F policy]\(W A F ポリシーの作成\) ページのスクリーンショット。[確認と作成] ボタンのほか、各種設定の入力値が表示されています。" border="false":::
+:::image type="content" source="../media/waf-cdn-create-portal/custommatch.png" alt-text="カスタム ルールの構成ページのスクリーンショット。QueryString 変数に blockme という値が含まれているかどうかを調べるルールの設定が表示されています。" border="false":::
 
 レート制限ルールには、次の例に示すように、 **[レート制限の期間]** と **[レート制限のしきい値 (要求数)]** という 2 つの追加フィールドが必要です。
 
-:::image type="content" source="../media/waf-cdn-create-portal/customrate.png" alt-text="[Create a W A F policy]\(W A F ポリシーの作成\) ページのスクリーンショット。[確認と作成] ボタンのほか、各種設定の入力値が表示されています。" border="false":::
+:::image type="content" source="../media/waf-cdn-create-portal/customrate.png" alt-text="レート制限ルールの構成ページのスクリーンショット。[レート制限の期間] リスト ボックスと [レート制限のしきい値 (要求数)] ボックスが表示されています。" border="false":::
 
 ### <a name="default-rule-set-drs"></a>既定の規則セット (DRS)
 
 Azure で管理される既定の規則セットは既定で有効になります。 ルール グループ内の個々のルールを無効にするには、そのルール グループ内のルールを展開し、ルール番号の前のチェック ボックスをオンにして、上のタブの **[無効]** を選択します。 規則セット内の個々の規則のアクションの種類を変更するには、規則番号の前にあるチェック ボックスをオンにして、上のタブの **[Change action]\(アクションの変更\)** を選択します。
 
- :::image type="content" source="../media/waf-cdn-create-portal/managed2.png" alt-text="[Create a W A F policy]\(W A F ポリシーの作成\) ページのスクリーンショット。[確認と作成] ボタンのほか、各種設定の入力値が表示されています。" border="false":::
+ :::image type="content" source="../media/waf-cdn-create-portal/managed2.png" alt-text="[Managed rules]\(管理されているルール\) ページのスクリーンショット。ルール セット、ルール グループ、ルールのほか、[有効]、[無効]、[アクションを変更する] の各ボタンが表示されています。1 つのルールのチェック ボックスがオンになっています。" border="false":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

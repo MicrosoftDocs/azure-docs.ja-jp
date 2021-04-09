@@ -12,10 +12,10 @@ ms.date: 01/23/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5e44e2e1eb37e808e60134a6fba5051552e84029
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85389345"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>Azure AD B2C での Cookie の定義
@@ -26,7 +26,7 @@ ms.locfileid: "85389345"
 
 Microsoft Azure AD B2C サービスは、SameSite ブラウザー構成と互換性があります。これには、`SameSite=None` と、`Secure` 属性のサポートが含まれます。
 
-サイトへのアクセスを保護するために、Web ブラウザーでは、新しい "既定でセキュリティ保護" モデルが導入されます。このモデルでは、特に指定のない場合、すべての Cookie を外部アクセスから保護していることが前提になります。 この変更が最初に実装されるのは Chrome ブラウザーであり、[2020 年 2 月の Chrome 80](https://www.chromium.org/updates/same-site) から実装されます。 Chrome での変更に向けた準備の詳細については、「[Developers: Get Ready for New SameSite=None; Secure Cookie Settings](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html)」(開発者へ: 新しい SameSite=None; セキュア Cookie 設定に備えよ) という Chromium ブログの記事を参照してください。
+サイトへのアクセスを保護するために、Web ブラウザーでは、新しい "既定でセキュリティ保護" モデルが導入されます。このモデルでは、特に指定のない場合、すべての Cookie を外部アクセスから保護していることが前提になります。 この変更が最初に実装されるのは Chrome ブラウザーであり、[2020 年 2 月の Chrome 80](https://www.chromium.org/updates/same-site) から実装されます。 Chrome での変更の準備の詳細については、「[開発者: 新しい SameSite=None のセキュア Cookie 設定に備えよう](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html)」 という Chromium ブログを参照してください。
 
 開発者は、新しい Cookie 設定 `SameSite=None` を使用して、クロスサイト アクセス用の Cookie を指定する必要があります。 `SameSite=None` 属性が存在する場合は、追加の `Secure` 属性を使用して、クロスサイト Cookie には HTTPS 接続経由でしかアクセスできないようにする必要があります。 Azure AD B2C を使用するアプリケーションをはじめ、すべてのアプリケーションを検証およびテストします。
 
@@ -35,7 +35,7 @@ Microsoft Azure AD B2C サービスは、SameSite ブラウザー構成と互換
 * [Chrome ブラウザーにおける SameSite Cookie の変更の処理](../active-directory/develop/howto-handle-samesite-cookie-changes-chrome-browser.md)
 * [Chrome バージョン 80 以降のお客様の Web サイトと Microsoft のサービスおよび製品への影響](https://support.microsoft.com/help/4522904/potential-disruption-to-customer-websites-in-latest-chrome)
 
-## <a name="cookies"></a>Cookie
+## <a name="cookies"></a>クッキー
 
 次の表では、Azure AD B2C で使われる Cookie の一覧を示します。
 

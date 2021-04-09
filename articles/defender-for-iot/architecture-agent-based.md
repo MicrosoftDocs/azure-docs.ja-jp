@@ -1,24 +1,14 @@
 ---
 title: エージェントベースのソリューション アーキテクチャ
 description: Azure Defender for IoT のエージェントベースのアーキテクチャと情報フローについて説明します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 1/25/2021
-ms.author: shhazam
-ms.openlocfilehash: 51b1f639ada01eda06bdf6c938eef7dce2a379fc
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: b04e8fa6225aef9f3c228a44631f117fedffccff
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448610"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784885"
 ---
 # <a name="agent-based-solution-for-device-builders"></a>デバイス ビルダー向けのエージェントベースのソリューション
 

@@ -12,18 +12,19 @@ ms.date: 12/10/2019
 ms.author: kenwith
 ms.reviewer: celested
 ms.openlocfilehash: a6cbabe35b223020528d1cf48aa9e0ef9b9f7c05
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99256121"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>スコープ外に出るユーザー アカウントの削除をスキップする
 
 既定では、Azure AD プロビジョニング エンジンは、スコープ外に出るユーザーを論理的に削除または無効化します。 ただし、Workday to AD User Inbound Provisioning などの特定のシナリオでは、この動作が予期されていない場合があり、この既定の動作をオーバーライドしたいことがあります。  
 
-この記事では、Microsoft Graph API と Microsoft Graph API エクスプローラーを使用して、スコープ外に出るアカウントの処理を制御するフラグ ***SkipOutOfScopeDeletions** _ を設定する方法について説明します。 _ ***SkipOutOfScopeDeletions** _ が 0 (false) に設定されている場合、スコープ外に出たアカウントはターゲットで無効になります。
-_ ***SkipOutOfScopeDeletions** _ が 1 (true) に設定されている場合、スコープ外に出たアカウントはターゲットで無効になりません。 このフラグは、"プロビジョニング アプリ" のレベルで設定され、Graph API を使用して構成できます。 
+この記事では、Microsoft Graph API と Microsoft Graph API エクスプローラーを使用して、スコープ外に出るアカウントの処理を制御するフラグ ***SkipOutOfScopeDeletions*** を設定する方法について説明します。 
+* ***SkipOutOfScopeDeletions*** が 0 (false) に設定されている場合、スコープ外に出たアカウントはターゲットで無効になります。
+* ***SkipOutOfScopeDeletions** _ が 1 (true) に設定されている場合、スコープ外に出たアカウントはターゲットで無効になりません。 このフラグは、"プロビジョニング アプリ" のレベルで設定され、Graph API を使用して構成できます。 
 
 この構成は *Workday to Active Directory User Provisioning* アプリで広く使用されているため、次の手順には Workday アプリケーションのスクリーンショットが含まれています。 ただし、この構成は *他のすべてのアプリ* (ServiceNow、Salesforce、Dropbox など) でも使用できます。
 
@@ -68,9 +69,9 @@ Microsoft Graph Explorer で、[servicePrincipalId] を「[手順 1](#step-1-ret
 
 ## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>手順 4:SkipOutOfScopeDeletions フラグを使用して、シークレット エンドポイントを更新します
 
-Graph エクスプローラーで下のコマンドを実行して、**_SkipOutOfScopeDeletions_* _ フラグを使用してシークレット エンドポイントを更新します。 
+Graph エクスプローラーで次のコマンドを実行して、***SkipOutOfScopeDeletions*** フラグを使用してシークレット エンドポイントを更新します。 
 
-下の URL で、[servicePrincipalId] を [手順 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) で抽出した _ *ServicePrincipalId** に置き換えます。 
+以下の URL で、[servicePrincipalId] を [手順 1.](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) で抽出した **ServicePrincipalId** に置き換えます。 
 
 ```http
    PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets

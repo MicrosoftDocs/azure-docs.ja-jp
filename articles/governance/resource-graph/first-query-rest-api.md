@@ -4,10 +4,10 @@ description: このクイックスタートでは、手順に従い、REST API �
 ms.date: 01/27/2021
 ms.topic: quickstart
 ms.openlocfilehash: 670ceba95d937be278c44c34704cb844eead480d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98920073"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>クイック スタート:REST API を使用して自分の初めて Resource Graph クエリを実行する

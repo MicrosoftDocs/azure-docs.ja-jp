@@ -1,24 +1,14 @@
 ---
 title: ベースラインとカスタム チェック
 description: Azure Defender for IoT のベースラインの概念について説明します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/07/2019
-ms.author: mlottner
-ms.openlocfilehash: 04fe87cd69efc4c064b8fbdc596a5f9e187abbb1
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 1b8b9d62918e40262da6b3df48d0fece842e050f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102242"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779360"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>Azure Defender for IoT のベースラインとカスタム チェック
 
@@ -42,7 +32,7 @@ ms.locfileid: "100102242"
 
 1. **ベースラインのカスタム チェック** ファイルをデバイスにアップロードします。
 
-1. ベースライン プロパティをセキュリティ モジュールに追加し、 **[保存]** をクリックします。
+1. ベースライン プロパティを Defender-IoT-micro-agent に追加し、 **[保存]** をクリックします。
 
 ### <a name="baseline-custom-check-file-example"></a>ベースラインのカスタム チェック ファイルの例
 

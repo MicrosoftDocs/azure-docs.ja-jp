@@ -80,7 +80,7 @@
     - name: Graph API
       items:
         - name: デバイス ID API
-          href: /graph/api/resources/device?view=graph-rest-1.0
+          href: /graph/api/resources/device
 - name: リソース
   items:
     - name: Azure フィードバック フォーラム

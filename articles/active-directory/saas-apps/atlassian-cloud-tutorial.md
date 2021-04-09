@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/02/2020
 ms.author: jeedes
 ms.openlocfilehash: fe83a012cac68f705bc9fabc7748f5a7c7c61bbb
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94330571"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>チュートリアル:Atlassian Cloud と Azure Active Directory の統合
@@ -41,7 +41,7 @@ ms.locfileid: "94330571"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 
 
-* Atlassian Cloud では、 **SP と IDP** によって開始される SSO がサポートされます
+* Atlassian Cloud では、**SP と IDP** によって開始される SSO がサポートされます
 * Atlassian Cloud では、[自動化されたユーザー プロビジョニングとプロビジョニング解除](atlassian-cloud-provisioning-tutorial.md)がサポートされます
 
 ## <a name="adding-atlassian-cloud-from-the-gallery"></a>ギャラリーからの Atlassian Cloud の追加
@@ -52,7 +52,7 @@ Azure AD への Atlassian Cloud の統合を構成するには、ギャラリー
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Atlassian Cloud** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Atlassian Cloud**」と入力します。
 1. 結果のパネルから **[Atlassian Cloud]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
@@ -166,7 +166,7 @@ Atlassian Cloud に対して Azure AD SSO を構成してテストするには�
 
       ![属性と要求](./media/atlassian-cloud-tutorial/user-attributes-and-claims.png)
       
-      b. Atlassian Cloud では、 **nameidentifier** ( **一意のユーザー ID** ) がユーザーのメール ( **user.email** ) にマップされると想定されています。 **[ソース属性]** を編集して、「 **user.mail** 」に変更してください。 要求に対する変更を保存します。
+      b. Atlassian Cloud では、**nameidentifier** (**一意のユーザー ID**) がユーザーのメール (**user.email**) にマップされると想定されています。 **[ソース属性]** を編集して、「**user.mail**」に変更してください。 要求に対する変更を保存します。
 
       ![一意のユーザー ID](./media/atlassian-cloud-tutorial/unique-user-identifier.png)
       
@@ -180,7 +180,7 @@ Atlassian Cloud に対して Azure AD SSO を構成してテストするには�
 
       ![画像 3](./media/atlassian-cloud-tutorial/email-address.png)
          
-      b. Microsoft 365 ライセンスのない Azure AD テナントに作成されたユーザーについては、 **user.mail** 属性が Azure によって事前設定されません。そのようなユーザーのメールは、 **userprincipalname** 属性に格納されます。 Atlassian Cloud では、 **nameidentifier** ( **一意のユーザー ID** ) がユーザーのメール ( **user.userprincipalname** ) にマップされると想定されています。  **[ソース属性]** を編集して、「 **user.userprincipalname** 」に変更してください。 要求に対する変更を保存します。
+      b. Microsoft 365 ライセンスのない Azure AD テナントに作成されたユーザーについては、**user.mail** 属性が Azure によって事前設定されません。そのようなユーザーのメールは、**userprincipalname** 属性に格納されます。 Atlassian Cloud では、**nameidentifier** (**一意のユーザー ID**) がユーザーのメール (**user.userprincipalname**) にマップされると想定されています。  **[ソース属性]** を編集して、「**user.userprincipalname**」に変更してください。 要求に対する変更を保存します。
 
       ![メールの設定](./media/atlassian-cloud-tutorial/set-email.png)
          

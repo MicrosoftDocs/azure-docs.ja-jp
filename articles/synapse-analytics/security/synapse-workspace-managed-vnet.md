@@ -9,10 +9,10 @@ ms.date: 01/18/2021
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: f55251932c8aa8f632bd3b498943ac722f006dee
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98569915"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network"></a>Azure Synapse Analytics のマネージド仮想ネットワーク

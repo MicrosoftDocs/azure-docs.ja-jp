@@ -4,10 +4,10 @@ description: このクイックスタートでは、手順に従って Azure CLI
 ms.date: 02/05/2021
 ms.topic: quickstart
 ms.openlocfilehash: ec1b010771790339a13777624f04c7bd2db01f11
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99594385"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Resource Graph 共有クエリを作成する

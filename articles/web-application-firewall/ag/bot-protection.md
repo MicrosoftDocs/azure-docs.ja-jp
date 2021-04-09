@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 10/31/2019
 ms.author: victorh
 ms.openlocfilehash: 89c863e85d9eab27a47bc1bf7b98cd1c8d89e900
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "73511524"
 ---
 # <a name="configure-bot-protection-for-web-application-firewall-on-azure-application-gateway-preview"></a>Azure Application Gateway での Web アプリケーション ファイアウォールのボット保護を構成する (プレビュー)
@@ -29,7 +29,7 @@ ms.locfileid: "73511524"
 
 ## <a name="enable-bot-protection-rule-set"></a>ボット保護規則セットを有効にする
 
-1. 以前に作成した **[Basic]\(基本\)** ポリシー ページの **[Settings]\(設定\)** で、 **[Rules]\(規則\)** を選択します。  
+1. 以前に作成した **[Basic]\(基本\)** ポリシー ページの **[Settings]\(設定\)** で、**[Rules]\(規則\)** を選択します。  
 
 2. 詳細ページで、 **[Manage rules]\(規則の管理\)**   セクションのドロップダウン メニューから、ボット保護規則のチェック ボックスをオンにし、 **[Save]\(保存\)** を選択します。
 

@@ -7,16 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, センサー, SDK, 深度, RGB, 内部, 外部, 同期, デイジー チェーン, フェーズ オフセット
-ms.openlocfilehash: 914a29882277c11c388d3f81f0b1fe827fc2f156
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce0c72d3d708d5696a9775b3885f278f0c23cac1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85276704"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102034314"
 ---
 # <a name="capture-azure-kinect-device-synchronization"></a>Azure Kinect デバイスの同期をキャプチャする
 
-Azure Kinect ハードウェアは、カラー画像と深度画像のキャプチャ時間を整合させることができます。 同じデバイス上のカメラ間の整合は**内部同期**です。 接続されている複数のデバイスにまたがるキャプチャ時間の整合は**外部同期**です。
+Azure Kinect ハードウェアは、カラー画像と深度画像のキャプチャ時間を整合させることができます。 同じデバイス上のカメラ間の整合は **内部同期** です。 接続されている複数のデバイスにまたがるキャプチャ時間の整合は **外部同期** です。 マイク配列は、カラーおよび深度カメラとは関係なく動作します。
 
 ## <a name="device-internal-synchronization"></a>デバイスの内部同期
 
@@ -26,7 +26,7 @@ Azure Kinect ハードウェアは、カラー画像と深度画像のキャプ�
 
 ハードウェアの設定については、[外部同期の設定](https://support.microsoft.com/help/4494429/sync-multiple-azure-kinect-dk-devices)に関するページを参照してください。
 
-接続されている各デバイスのソフトウェアは、**マスター**または**下位**モードで動作するように構成されている必要があります。 この設定は、[k4a_device_configuration_t](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__device__configuration__t.html) で構成されます。
+接続されている各デバイスのソフトウェアは、**マスター** または **下位** モードで動作するように構成されている必要があります。 この設定は、[k4a_device_configuration_t](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__device__configuration__t.html) で構成されます。
 
 外部同期を使用している場合は、タイムスタンプを正しく整合させるために、下位カメラを常にマスターの前に起動する必要があります。
 

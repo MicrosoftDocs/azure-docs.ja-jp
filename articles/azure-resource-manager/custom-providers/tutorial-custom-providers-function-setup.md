@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 55554678047faeedd16b78dea61a42d50fd59491
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98737322"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>Azure カスタム プロバイダー用の Azure Functions を設定する
@@ -42,7 +42,7 @@ Azure Table Storage のバインディングをインストールするには、
 カスタム プロバイダーの RESTful 要求メソッドを含むように Azure 関数を設定するには、次の手順に従います。
 
 1. HttpTrigger の **[統合]** タブに移動します。
-1. **[選択した HTTP メソッド]** で、 **[GET]** 、 **[POST]** 、 **[DELETE]** 、 **[PUT]** を選択します。
+1. **[選択した HTTP メソッド]** で、**[GET]**、**[POST]**、**[DELETE]**、**[PUT]** を選択します。
 
 ![HTTP メソッドを示すカスタム プロバイダーの概要](./media/create-custom-provider/azure-functions-http-methods.png)
 
@@ -79,4 +79,4 @@ Azure Table Storage のバインディングをインストールするには、
 
 このチュートリアルでは、Azure カスタム プロバイダーのエンドポイントとして機能するように Azure 関数アプリを設定しました。
 
-RESTful カスタム プロバイダー エンドポイントを作成する方法については、「[チュートリアル: RESTful カスタム プロバイダーのエンドポイントを作成する](./tutorial-custom-providers-function-authoring.md)」を参照してください。
+RESTful カスタム プロバイダー エンドポイントを作成する方法については、[RESTful カスタム プロバイダー エンドポイントの作成のチュートリアル](./tutorial-custom-providers-function-authoring.md)に関する記事をご覧ください。

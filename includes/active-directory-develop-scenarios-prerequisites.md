@@ -11,10 +11,10 @@ ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 79952ad04df4780e1b30eb9cf5c7a35f49cc34c2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91257073"
 ---
 OAuth 2.0 と OpenID Connect を使用した ID およびアクセス管理 (IAM) を初めて使用する場合、または Microsoft ID プラットフォームの IAM を初めて使用する場合は、次の一連の記事をお読みください。

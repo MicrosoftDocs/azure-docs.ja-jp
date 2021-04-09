@@ -10,10 +10,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 01/04/2021
 ms.openlocfilehash: 48a0c3484b6cbeac4d71d3fbf383bb1c14466a9d
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97897333"
 ---
 # <a name="supported-publisher-countries-and-regions"></a>サポートされている発行元の国と地域

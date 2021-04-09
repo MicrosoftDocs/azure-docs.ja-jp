@@ -4,18 +4,18 @@ description: Azure SQL Database のプールされたデータベースに対し
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: sqldbrb=1, devx-track-azurecli
+ms.custom: sqldbrb=1
 ms.devlang: azurecli
 ms.topic: sample
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 7933273d02d3c1332d0d012ab6c22a59ed880640
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8d0860cc5a4ee60cbf60d7b55789c518049dfb90
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92742657"
 ---
 # <a name="use-cli-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>Azure SQL Database のプールされたデータベースに対して CLI を使用してアクティブ geo レプリケーションを構成する
@@ -42,7 +42,7 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
-リソース グループと、それに関連付けられているすべてのリソースを削除するには、次のコマンドを使用します。
+次のコマンドを使用して、リソース グループと、それに関連付けられているすべてのリソースを削除します。
 
 ```azurecli-interactive
 az group delete --name $resource
@@ -53,7 +53,7 @@ az group delete --name $secondaryResource
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | 説明 |
+| command | 説明 |
 |---|---|
 | [az sql elastic-pool](/cli/azure/sql/elastic-pool) | エラスティック プールのコマンド。 |
 | [az sql db replica](/cli/azure/sql/db/replica) | データベースのレプリケーション コマンド。 |

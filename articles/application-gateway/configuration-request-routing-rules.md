@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: 047ce9b33836e2c23a37b1383942323d7c382485
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93397537"
 ---
 # <a name="application-gateway-request-routing-rules"></a>Application Gateway 要求ルーティング規則
 
-Azure portal を使用してアプリケーション ゲートウェイを作成するときに、既定の規則 ( *rule1* ) を作成します。 この規則によって、既定のリスナー ( *appGatewayHttpListener* ) が既定のバックエンド プール ( *appGatewayBackendPool* ) と既定のバックエンド HTTP 設定 ( *appGatewayBackendHttpSettings* ) にバインドされます。 ゲートウェイを作成した後で、既定の規則の設定の編集や新しい規則の作成を行うことができます。
+Azure portal を使用してアプリケーション ゲートウェイを作成するときに、既定の規則 (*rule1*) を作成します。 この規則によって、既定のリスナー (*appGatewayHttpListener*) が既定のバックエンド プール (*appGatewayBackendPool*) と既定のバックエンド HTTP 設定 (*appGatewayBackendHttpSettings*) にバインドされます。 ゲートウェイを作成した後で、既定の規則の設定の編集や新しい規則の作成を行うことができます。
 
 ## <a name="rule-type"></a>規則の種類
 
-新しい規則を作成するときは、 [" *基本* " または " *パス ベース* "](./application-gateway-components.md#request-routing-rules) を選択します。
+新しい規則を作成するときは、["*基本*" または "*パス ベース*"](./application-gateway-components.md#request-routing-rules) を選択します。
 
 - 関連付けられたリスナー (例: *blog <i></i>.contoso.com/\*)* に対するすべての要求を 1 つのバックエンド プールに転送する場合は、基本を選択します。
 - 特定の URL パスからの要求を特定のバックエンド プールにルーティングする場合は、パス ベースを選択します。 パスのパターンは URL のパスのみに適用され、クエリ パラメーターには適用されません。
@@ -31,7 +31,7 @@ v1 SKU と v2 SKU の場合、着信要求のパターン マッチングは、�
 
 ## <a name="associated-listener"></a>関連付けられたリスナー
 
-リスナーに関連付けられた " *要求のルーティング規則* " が評価されて、要求のルーティング先のバックエンド プールを決定できるように、リスナーを規則に関連付けます。
+リスナーに関連付けられた "*要求のルーティング規則*" が評価されて、要求のルーティング先のバックエンド プールを決定できるように、リスナーを規則に関連付けます。
 
 ## <a name="associated-back-end-pool"></a>関連付けられたバックエンド プール
 
@@ -51,13 +51,13 @@ v1 SKU と v2 SKU の場合、着信要求のパターン マッチングは、�
 
 ## <a name="redirection-setting"></a>リダイレクト設定
 
-基本規則でリダイレクトが構成されている場合、関連付けられているリスナーのすべての要求はターゲットにリダイレクトされます。 これは " *グローバル* " なリダイレクトです。 パスベースの規則に対してリダイレクトが構成されている場合は、特定のサイト領域内の要求のみがリダイレクトされます。 たとえば、 */cart/\** で示されるショッピング カート領域です。 これが *パスベース* のリダイレクトです。
+基本規則でリダイレクトが構成されている場合、関連付けられているリスナーのすべての要求はターゲットにリダイレクトされます。 これは "*グローバル*" なリダイレクトです。 パスベースの規則に対してリダイレクトが構成されている場合は、特定のサイト領域内の要求のみがリダイレクトされます。 たとえば、 */cart/\** で示されるショッピング カート領域です。 これが *パスベース* のリダイレクトです。
 
 リダイレクトの詳細については、「[Application Gateway のリダイレクトの概要](redirect-overview.md)」を参照してください。
 
 ### <a name="redirection-type"></a>リダイレクトの種類
 
-必要なリダイレクトの種類を選択します。 *Permanent(301)* 、 *Temporary(307)* 、 *Found(302)* 、または *See other(303)* があります。
+必要なリダイレクトの種類を選択します。*Permanent(301)* 、*Temporary(307)* 、*Found(302)* 、または *See other(303)* があります。
 
 ### <a name="redirection-target"></a>リダイレクト ターゲット
 

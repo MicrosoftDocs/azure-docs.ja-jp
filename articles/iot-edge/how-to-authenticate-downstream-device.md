@@ -8,14 +8,16 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13ac18abd0a557d02435c3805e1ab86bcbf1ff84
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c799e38092c5983b4ad0e3daea6aae99934c7302
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391985"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200878"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Azure IoT Hub に対するダウンストリーム デバイスの認証を行う
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 透過的なゲートウェイのシナリオでは、ダウンストリーム デバイス (リーフ デバイスや子デバイスとも呼ばれます) には、他のデバイスと同じように IoT Hub での ID が必要です。 この記事では、IoT Hub にダウンストリーム デバイスを認証するためのオプションについて説明し、ゲートウェイ接続を宣言する方法を示します。
 
@@ -35,7 +37,7 @@ Azure IoT Hub Device Provisioning Service (DPS) を使用したダウンスト�
 
 X.509 認証を使用している場合は、ダウンストリーム デバイス用の証明書を生成します。 同じルート CA 証明書と、透過的なゲートウェイの記事に使用した証明書生成スクリプトを再度使用できるようにします。
 
-この記事では、いくつかの時点で *ゲートウェイ ホスト名* を参照します。 ゲートウェイ ホスト名は、IoT Edge ゲートウェイ デバイス上の config.yaml ファイルの **hostname** パラメーターで宣言されます。 これはダウンストリーム デバイスの接続文字列で参照されます。 ゲートウェイ ホスト名は、DNS またはダウンストリーム デバイス上の host ファイル エントリのどちらかを使用して IP アドレスに解決できる必要があります。
+この記事では、いくつかの時点で *ゲートウェイ ホスト名* を参照します。 ゲートウェイ ホスト名は、IoT Edge ゲートウェイ デバイス上の構成ファイルの **hostname** パラメーターで宣言されます。 これはダウンストリーム デバイスの接続文字列で参照されます。 ゲートウェイ ホスト名は、DNS またはダウンストリーム デバイス上の host ファイル エントリのどちらかを使用して IP アドレスに解決できる必要があります。
 
 ## <a name="register-device-with-iot-hub"></a>IoT Hub でデバイスを登録する
 
@@ -192,7 +194,7 @@ az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway 
 * 認証方法。対称キーまたは X.509 証明書
   * 対称キー認証を使用する場合、プライマリまたはセカンダリ キー `SharedAccessKey={key}` を指定します。
   * X.509 証明書認証を使用する場合、フラグ `x509=true` を指定します。
-* デバイスが経由して接続するゲートウェイ デバイス。 IoT Edge ゲートウェイ デバイスの config.yaml ファイルからの **hostname** 値を指定します: `GatewayHostName={gateway hostname}`
+* デバイスが経由して接続するゲートウェイ デバイス。 IoT Edge ゲートウェイ デバイスの構成ファイルからの **hostname** 値を指定します: `GatewayHostName={gateway hostname}`
 
 すべてがそろった完全な接続文字列は、次のようになります。
 

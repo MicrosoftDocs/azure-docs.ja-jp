@@ -4,10 +4,10 @@ description: クラスルーム ラボの登録、自分がアクセスできる
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.openlocfilehash: 6d5585082473a363df5f25f331475536544ae828
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96433140"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボにアクセスする方法

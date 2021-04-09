@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 2fb1a8c3e583a4bdc88f2b61844e9bcb16dc7cdf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c3142fd41830487453a3cc980a87cdca72cf7213
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367199"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094136"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの課金所有権を別のアカウントに譲渡する
 
@@ -66,7 +66,7 @@ Visual Studio と Microsoft Partner Network のサブスクリプションでは
 
 Azure サブスクリプションの課金所有権を受け取った場合は、以下の手順を確認することをお勧めします。
 
-1. サービス管理者、共同管理者、Azure ロールの割り当てを確認して更新します。 詳細については、「[Azure サブスクリプション管理者を追加または変更する](add-change-subscription-administrator.md)」と「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+1. サービス管理者、共同管理者、Azure ロールの割り当てを確認して更新します。 詳細については、「[Azure サブスクリプション管理者を追加または変更する](add-change-subscription-administrator.md)」と「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 1. このサブスクリプションのサービスに関連付けられている以下の資格情報を更新します。
    1. サブスクリプションのリソースに対する管理者権限をユーザーに付与する管理証明書。 詳細については、「 [Azure の管理証明書の作成とアップロード](../../cloud-services/cloud-services-certs-create.md) を参照してください。
    1. Storage などのサービス用のアクセス キー。 詳細については、「[Azure ストレージ アカウントについて](../../storage/common/storage-account-create.md)」を参照してください。
@@ -126,4 +126,4 @@ Azure アカウントと Azure サブスクリプションを作成した元の�
 
 ## <a name="next-steps"></a>次のステップ
 
-- サービス管理者、共同管理者、Azure ロールの割り当てを確認して更新します。 詳細については、「[Azure サブスクリプション管理者を追加または変更する](add-change-subscription-administrator.md)」と「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+- サービス管理者、共同管理者、Azure ロールの割り当てを確認して更新します。 詳細については、「[Azure サブスクリプション管理者を追加または変更する](add-change-subscription-administrator.md)」と「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。

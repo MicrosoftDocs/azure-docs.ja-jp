@@ -5,12 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 8742b590af89954cb8480e5282827bcd5228673b
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: aec23c28e075dd38fa65f1315f9abd9e21cdc9cb
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095828"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951472"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Azure でマイクロサービスを予測どおりにデプロイする
 このチュートリアルでは、[Azure App Service](https://azure.microsoft.com/services/app-service/) の[マイクロサービス](https://en.wikipedia.org/wiki/Microservices)で構成されるアプリケーションを、JSON リソース グループ テンプレートと PowerShell スクリプトを使用して、1 つのユニットとして予測どおりにプロビジョニングしてデプロイする方法を示します。 
@@ -45,7 +45,7 @@ Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モ
 この[プレビュー ツール](https://resources.azure.com)を使用して、サブスクリプション内のすべてのリソース グループの JSON 定義と個々のリソースを調べることができます。 このツールでは、リソースの JSON 定義の編集、リソースの階層全体の削除、新しいリソースの作成を実行できます。  このツールですぐに利用できる情報は、特定の種類のリソースに設定する必要のあるプロパティ、適切な値などを示すため、テンプレートの作成に非常に役立ちます。[Azure Portal](https://portal.azure.com/) でリソース グループを作成し、エクスプローラー ツールで JSON 定義を調べてリソース グループのテンプレート化に利用できます。
 
 ### <a name="deploy-to-azure-button"></a>[Azure にデプロイ] ボタン
-ソース管理に GitHub を使用する場合、README.MD に [[Azure にデプロイ]](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-to-azure-button) ボタンを配置できます。これにより、設定することなく Azure にデプロイする UI が実現します。 任意の単純なアプリでこの処理が可能ですが、これを拡張すると、リポジトリのルートに azuredeploy.json ファイルを配置することでリソース グループ全体をデプロイできるようになります。 この JSON ファイルは、リソース グループ テンプレートを含んでおり、[Azure にデプロイ] ボタンでリソース グループを作成するために使用されます。 例については、このチュートリアルで使用する [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) サンプルを参照してください。
+ソース管理に GitHub を使用する場合、README.MD に [[Azure にデプロイ]](../azure-resource-manager/templates/deploy-to-azure-button.md) ボタンを配置できます。これにより、設定することなく Azure にデプロイする UI が実現します。 任意の単純なアプリでこの処理が可能ですが、これを拡張すると、リポジトリのルートに azuredeploy.json ファイルを配置することでリソース グループ全体をデプロイできるようになります。 この JSON ファイルは、リソース グループ テンプレートを含んでおり、[Azure にデプロイ] ボタンでリソース グループを作成するために使用されます。 例については、このチュートリアルで使用する [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) サンプルを参照してください。
 
 ## <a name="get-the-sample-resource-group-template"></a>リソース グループ テンプレートのサンプルを入手する
 それでは早速本題に入りましょう。

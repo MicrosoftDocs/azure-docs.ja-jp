@@ -10,10 +10,10 @@ ms.date: 04/09/2019
 ms.author: wesmc
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 024dbf6518748a4048873de4eb54a53f9d9a6362
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94954326"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service のアクセスを制御する
@@ -33,7 +33,7 @@ ms.locfileid: "94954326"
 
 次の方法で[アクセス許可](#device-provisioning-service-permissions)を付与できます。
 
-* **共有アクセス承認ポリシー**。 共有アクセス ポリシーにより、[アクセス許可](#device-provisioning-service-permissions)を自由に組み合わせて付与できます。 ポリシーは、[Azure portal][lnk-management-portal] 上で定義することも、[Device Provisioning Service REST API][lnk-resource-provider-apis] を使用してプログラムから定義することもできます。 新しく作成されたプロビジョニング サービスには、次の既定のポリシーがあります。
+* **共有アクセス承認ポリシー**。 共有アクセス ポリシーにより、[アクセス許可](#device-provisioning-service-permissions)を自由に組み合わせて付与できます。 ポリシーは、[Azure Portal][lnk-management-portal] で定義することも、[Device Provisioning Service REST API][lnk-resource-provider-apis] を使用してプログラムで定義することもできます。 新しく作成されたプロビジョニング サービスには、次の既定のポリシーがあります。
 
 * **provisioningserviceowner**: すべてのアクセス許可を持つポリシー。
 
@@ -42,7 +42,7 @@ ms.locfileid: "94954326"
 
 ## <a name="authentication"></a>認証
 
-Azure IoT Hub Device Provisioning Service では、共有アクセス ポリシーに対してトークンを確認することにより、エンドポイントへのアクセスを許可します。 対称キーなどのセキュリティの資格情報がネットワーク上で送信されることはありません。
+Azure IoT Hub Device Provisioning Service では、共有アクセス ポリシーに対してトークンを確認することにより、エンドポイントへのアクセスを許可します。 対称キーなどのセキュリティ資格情報がネットワーク上で送信されることはありません。
 
 > [!NOTE]
 > Device Provisioning Service のリソースプロバイダーは、[Azure Resource Manager][lnk-azure-resource-manager] のすべてのプロバイダーと同様、Azure のサブスクリプションによりセキュリティで保護されています。
@@ -62,7 +62,7 @@ SharedAccessSignature sr =
 
 ## <a name="security-tokens"></a>セキュリティ トークン
 
-Device Provisioning Service では、サービスの認証にセキュリティ トークンを使用することにより、ネットワーク経由でのキーの送信を回避します。 さらに、セキュリティ トークンには、有効期間とスコープの制限があります。 [Azure IoT Device Provisioning Service SDK][lnk-sdks] を使用すると、特別な構成を行うことなく自動的にトークンを生成できます。 一部のシナリオでは、セキュリティ トークンを自分で生成して直接使用する必要があります。 このようなシナリオには、HTTP のサーフェスの直接使用が含まれます。
+Device Provisioning Service では、サービスの認証にセキュリティ トークンを使用することにより、ネットワーク経由でのキーの送信を回避します。 さらに、セキュリティ トークンには、有効期間とスコープの制限があります。 [Azure IoT Device Provisioning Service SDK][lnk-sdks] を使用すると、特別な構成を行うことなく自動でトークンを生成できます。 一部のシナリオでは、セキュリティ トークンを自分で生成して直接使用する必要があります。 このようなシナリオには、HTTP のサーフェスの直接使用が含まれます。
 
 ### <a name="security-token-structure"></a>セキュリティ トークンの構造
 
@@ -78,7 +78,7 @@ Device Provisioning Service では、サービスの認証にセキュリティ 
 
 | 値 | 説明 |
 | --- | --- |
-| {signature} |HMAC-SHA256 署名文字列 (形式: `{URL-encoded-resourceURI} + "\n" + expiry`)。 **重要**: キーは base64 からデコードされ、HMAC-SHA256 計算を実行するためのキーとして使用されます。|
+| {signature} |HMAC-SHA256 署名文字列 (形式: `{URL-encoded-resourceURI} + "\n" + expiry`)。 **重要**:キーは base64 からデコードされ、HMAC-SHA256 計算を実行するためのキーとして使用されます。|
 | {expiry} |1970 年 1 月 1 日の 00 時 00 分 00 秒 UTC からのエポック秒で表される UTF8 文字列。 |
 | {URL-encoded-resourceURI} | 小文字のリソース URI の小文字の URL エンコード。 IoT Device Provisioning Service のホスト名 (プロトコルなし) で始まる、このトークンを使用してアクセスできるエンドポイントの (セグメント単位の) URI プレフィックス。 たとえば、「 `mydps.azure-devices-provisioning.net` 」のように入力します。 |
 | {policyName} |このトークンの参照先となる共有アクセス ポリシーの名前。 |
@@ -178,7 +178,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 次の表は、IoT Device Provisioning Service へのアクセス制御に使用できるアクセス許可の一覧です。
 
-| 権限 | メモ |
+| 権限 | Notes |
 | --- | --- |
 | **ServiceConfig** |サービス構成を変更するためのアクセス権を付与します。 <br/>このアクセス許可はバックエンドのクラウド サービスによって使用されます。 |
 | **EnrollmentRead** |デバイスの登録および登録グループの読み取りアクセスを許可します。 <br/>このアクセス許可はバックエンドのクラウド サービスによって使用されます。 |

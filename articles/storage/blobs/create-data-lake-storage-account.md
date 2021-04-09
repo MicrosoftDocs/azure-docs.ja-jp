@@ -9,10 +9,10 @@ ms.service: storage
 ms.reviewer: stewu
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: 712f1dc0679ee49791831e782fb68c39a757870a
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98624339"
 ---
 # <a name="create-a-storage-account-to-use-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で使用するストレージ アカウントを作成する

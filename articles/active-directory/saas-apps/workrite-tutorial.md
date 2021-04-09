@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: c522f5f194adae793f0676b24f95abc98dd89010
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92520149"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workrite"></a>チュートリアル: Azure Active Directory と Workrite の統合
@@ -41,7 +41,7 @@ Azure AD と Workrite の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Workrite では、 **SP** によって開始される SSO がサポートされます
+* Workrite では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-workrite-from-the-gallery"></a>ギャラリーからの Workrite の追加
 
@@ -61,13 +61,13 @@ Azure AD への Workrite の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Workrite** 」と入力し、結果ウィンドウで **[Workrite]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Workrite**」と入力し、結果ウィンドウで **[Workrite]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Workrite](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Workrite で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Workrite で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Workrite 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Workrite で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 
 Workrite で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Workrite** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Workrite** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -140,7 +140,7 @@ Workrite で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -152,7 +152,7 @@ Workrite で Azure AD シングル サインオンを構成するには、次の
 
 このセクションでは、Britta Simon に Workrite へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Workrite]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Workrite]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -190,7 +190,7 @@ Workrite で Azure AD シングル サインオンを構成するには、次の
    
     ![[ユーザーの作成] セクション][401]
 
-4. **[Create User]** ダイアログで、次の手順に従います。
+4. [**ユーザーの作成**] ダイアログ ボックスで、次の手順を実行します。
    
     ![ユーザー ダイアログの作成][402]
     

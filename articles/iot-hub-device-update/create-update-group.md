@@ -7,10 +7,10 @@ ms.date: 2/17/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
 ms.openlocfilehash: a0894047db1ed7687a1a0f5f87fc4020ddf7c694
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101678635"
 ---
 # <a name="create-device-groups-in-device-update-for-iot-hub"></a>Device Update for IoT Hub でデバイス グループを作成する

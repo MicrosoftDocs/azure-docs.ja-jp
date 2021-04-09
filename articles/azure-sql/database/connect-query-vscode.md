@@ -14,10 +14,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: f823b6d04a217328fe2e825e64906460cd9cbae9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92672490"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>クイック スタート:Visual Studio Code を使って接続し、クエリを実行する 
@@ -29,7 +29,7 @@ ms.locfileid: "92672490"
 
 - Azure SQL Database または Azure SQL Managed Instance のデータベース。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
 
-  | アクション | Azure SQL Database | Azure SQL Managed Instance |
+  | アクション | Azure SQL データベース | Azure SQL Managed Instance |
   |:--- |:--- |:---|
   | 作成| [ポータル](single-database-create-quickstart.md) | [ポータル](../managed-instance/instance-create-quickstart.md) |
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |

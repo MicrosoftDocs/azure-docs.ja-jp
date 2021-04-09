@@ -9,10 +9,10 @@ ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: 04654672cc5806465ec9f75b695772dcb2037eab
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102564137"
 ---
 # <a name="verify-encryption-status-for-linux"></a>Linux の暗号化の状態を確認する 

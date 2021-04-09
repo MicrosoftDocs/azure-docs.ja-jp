@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: carmonm
 ms.openlocfilehash: e2cd8ee4095db235215a2beaa68975e819b474c1
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102560686"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する

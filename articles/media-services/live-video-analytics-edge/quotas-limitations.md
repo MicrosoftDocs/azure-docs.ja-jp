@@ -4,10 +4,10 @@ description: この記事では、Live Video Analytics on IoT Edge のクォー�
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.openlocfilehash: 68c7b91bb1051348b5a8e52f841d443894f0a632
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97400526"
 ---
 # <a name="quotas-and-limitations"></a>クォータと制限

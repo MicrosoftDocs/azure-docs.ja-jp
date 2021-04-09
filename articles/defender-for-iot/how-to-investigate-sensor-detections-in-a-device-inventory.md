@@ -1,18 +1,14 @@
 ---
 title: 特定のセンサーによって検出されたデバイスに関する分析情報を得る
 description: デバイス インベントリには、センサーで検出された広範なデバイス属性が表示されます。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 9dc6849c1b2ad5daa6142e894e36f351663ff9bd
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 4daec83f44a545d7837a7e73e847f56b1f5770e7
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523993"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782097"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>デバイス インベントリのセンサー検出を調査する
 
@@ -30,7 +26,7 @@ ms.locfileid: "100523993"
 
 デバイス インベントリ テーブルには、次の属性が表示されます。
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 |--|--|
 | 名前 | センサーによって検出された、またはユーザーが入力したデバイスの名前。 |
 | Type | センサーによって決定された、またはユーザーが入力したデバイスの種類。 |
@@ -223,7 +219,7 @@ CSV ファイルをエクスポートするには、次の操作を行います�
 
 - デバイス インベントリの右上のメニューで、:::image type="icon" source="media/how-to-work-with-asset-inventory-information/csv-excel-export-icon.png" border="false"::: を選択します。 CSV レポートが生成され、ダウンロードされます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
 [デバイス インベントリのすべてのエンタープライズ センサー検出を調査する](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
 

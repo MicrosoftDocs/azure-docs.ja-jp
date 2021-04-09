@@ -7,10 +7,10 @@ ms.date: 12/21/2020
 ms.topic: conceptual
 ms.service: cache
 ms.openlocfilehash: 0a0809076367356739dfeadcf8dd63f88866a987
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99056972"
 ---
 # <a name="azure-cache-for-redis-event-grid-overview"></a>Azure Cache for Redis Event Grid の概要 

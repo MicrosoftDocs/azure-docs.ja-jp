@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e181b90219f340a29e818801ee2b53f1ccbd9c23
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: d84c5fff41a7f00405c29ab4b4921ed2e28bdfde
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660286"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104580098"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C:よく寄せられる質問 (FAQ)
 
@@ -82,7 +82,10 @@ Azure ポータルの左側にあるメニューの [Azure AD B2C] を開く前�
 1. **[名前]** フィールドを変更します。
 1. ページの上部にある **[保存]** をクリックします。
 
-現在、電子メールの送信元フィールドを変更する方法はありません。
+現在、電子メールの "From:" フィールドを変更することはできません。
+
+> [!TIP]
+> Azure AD B2C の[カスタム ポリシー](custom-policy-overview.md)では、ユーザーに送信される電子メール Azure AD B2C (電子メールの "From:" フィールドを含む) をカスタマイズできます。 カスタム メール確認では、[Mailjet](custom-email-mailjet.md)、[SendGrid](custom-email-sendgrid.md)、[SparkPost](https://sparkpost.com) といったサードパーティの電子メール プロバイダーを使用する必要があります。
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>既存のユーザー名、パスワード、およびプロファイルを自分のデータベースから Azure AD B2C に移行するにはどのようにすればいいですか。
 
@@ -100,7 +103,7 @@ Azure AD B2C のローカル アカウントのパスワード ユーザー フ�
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>アプリで Azure AD B2C ページを iFrame 内で開くことはできますか。
 
-いいえ。セキュリティ上の理由から、Azure AD B2C ページを iFrame 内で開くことはできません。 このサービスは、iFrame を禁止するためにブラウザーと通信します。 一般のセキュリティ コミュニティと OAUTH2 仕様では、ID エクスペリエンスに iFrame を使用しないことを推奨しています。これは、クリックジャッキングの危険があるためです。
+この機能はパブリック プレビュー段階にあります。 詳細については、「[埋め込みサインイン エクスペリエンス](https://docs.microsoft.com/azure/active-directory-b2c/embedded-login)」を参照してください。
 
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Azure AD B2C は Microsoft Dynamics のような CRM システムと連携しますか。
 
@@ -128,7 +131,7 @@ Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには�
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Azure AD B2C によって提供されているサインアップおよびサインイン ページで独自の URL を使用できますか。 たとえば、URL を contoso.b2clogin.com から login.contoso.com に変更できますか。
 
-現時点では連携しません。 この機能は検討中です。 Azure Portal の **[ドメイン]** タブでドメインを確認しても、この目的は達成できません。 ただし、b2clogin.com では[ニュートラルな最上位ドメイン](b2clogin.md)が提供されているため、マイクロソフトに言及することなく外部の表示を実装できます。
+この機能は、パブリック プレビューで使用できます。 詳細については、[Azure AD B2C カスタムドメインに関するページ](https://docs.microsoft.com/azure/active-directory-b2c/custom-domain?pivots=b2c-user-flow)を参照してください。
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Azure AD B2C テナントを削除する方法はありますか。
 
@@ -142,13 +145,13 @@ Azure AD B2C テナントを削除するには、次の手順に従います。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. Azure AD B2C テナント内のすべての **ユーザー フロー (ポリシー)** を削除します。
+1. Azure AD B2C テナントの **ID プロバイダー** をすべて削除します。
 1. **[アプリの登録]** 、 **[すべてのアプリケーション]** タブの順に選択します。
 1. 登録したすべてのアプリケーションを削除します。
 1. **b2c-extensions-app** を削除します。
 1. **[管理]** にある **[ユーザー]** を選択します。
 1. 各ユーザーを順に選択します (ただし、現在サインインに使用している *サブスクリプション管理者* ユーザーは除きます)。 ページ下部の **[削除]** を選択し、確認を求められたら **[はい]** を選択します。
 1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
-1. **[管理]** の下で **[ユーザー設定]** を選択します。
 1. **[管理]** の下で、 **[プロパティ]** を選択します。
 1. **[Azure リソースのアクセス管理]** の下で **[はい]** を選択した後、 **[保存]** を選択します。
 1. Azure portal からサインアウトした後に、もう一度サインインして、ご自分のアクセス権を更新します。

@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: be87d2af698bb71573952943b5ddc3f0910a3333
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85838750"
 ---
-| レベル | 無料 | Basic | Standard |
+| レベル | Free | Basic | Standard |
 | --- | --- | --- | --- |
 | API 呼び出し |500,000 |ユニットあたり 150 万 |ユニットあたり 1,500 万 |
 | アクティブなデバイス |500 |無制限 |無制限 |
@@ -22,7 +22,7 @@ ms.locfileid: "85838750"
 | スケジュールされたジョブ |制限あり |Included |Included |
 | Azure SQL Database (必須) <br/>追加の容量には標準料金が適用される |20 MB が含まれる |20 MB が含まれる |20 MB が含まれる |
 | CPU の使用率 |1 日あたり 60 分 |無制限 |無制限 |
-| 送信データ転送 |1 日あたり 165 MB (日ごとのロールオーバー) |Included |Included |
+| 送信データの転送 |1 日あたり 165 MB (日ごとのロールオーバー) |Included |Included |
 
 制限と価格の詳細については、[Azure Mobile Services の価格](https://azure.microsoft.com/pricing/details/mobile-services/)に関するページを参照してください。 
 

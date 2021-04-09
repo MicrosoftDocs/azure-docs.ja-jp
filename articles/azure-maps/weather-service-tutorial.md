@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
 ms.openlocfilehash: 276dd5b7eba33081c5131eba722df91d8685adff
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98678165"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks (Python) を使用して天気予報データにセンサー データを結合する

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 8a00cf11edfea2e732a18a392d465525b38ea45f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92520853"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>チュートリアル: Azure Active Directory と Picturepark の統合
@@ -41,7 +41,7 @@ Picturepark と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Picturepark では、 **SP** によって開始される SSO がサポートされます
+* Picturepark では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-picturepark-from-the-gallery"></a>ギャラリーからの Picturepark の追加
 
@@ -61,13 +61,13 @@ Azure AD への Picturepark の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Picturepark** 」と入力し、結果パネルで **Picturepark** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Picturepark**」と入力し、結果パネルで **Picturepark** を選び、**[追加]** ボタンをクリックして、アプリケーションを追加します。
 
      ![結果リストの Picturepark](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Picturepark で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Picturepark で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Picturepark 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Picturepark で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ Picturepark で Azure AD のシングル サインオンを構成してテスト
 
 Picturepark で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Picturepark** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Picturepark** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -137,15 +137,15 @@ Picturepark で Azure AD シングル サインオンを構成するには、次
 
 1. 別の Web ブラウザーのウィンドウで、Picturepark 企業サイトに管理者としてサインインします。
 
-2. 上部にあるツールバーで **[Administrative tools]** 、 **[Management Console]** の順にクリックします。
+2. 画面上部のツール バーで、[**管理ツール**]、[**管理コンソール**] の順にクリックします。
    
     ![[Management Console]](./media/picturepark-tutorial/ic795062.png "[Management Console]")
 
-3. **[Authentication]** 、 **[Identity providers]** の順にクリックします。
+3. [**認証**]、[**ID プロバイダー**] の順にクリックします。
    
     ![認証](./media/picturepark-tutorial/ic795063.png "認証")
 
-4. **[Identity provider configuration]** セクションで、次の手順に従います。
+4. [**ID プロバイダーの構成**] セクションで、次の手順を実行します。
    
     ![[Identity provider configuration]](./media/picturepark-tutorial/ic795064.png "[Identity provider configuration]")
    
@@ -153,17 +153,17 @@ Picturepark で Azure AD シングル サインオンを構成するには、次
   
     b. 構成の名前を入力します。
    
-    c. **[Set as default]** を選びます。
+    c. [**既定として設定**] を選択します。
    
     d. **[発行者 URI]** テキストボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
    
-    e. **[Trusted Issuer Thumb Print]\(信頼された発行者の拇印\)** ボックスに、 **[SAML 署名証明書]** セクションからコピーした **拇印** の値を貼り付けます。 
+    e. **[Trusted Issuer Thumb Print]\(信頼された発行者の拇印\)** ボックスに、**[SAML 署名証明書]** セクションからコピーした **拇印** の値を貼り付けます。 
 
-5. **[JoinDefaultUsersGroup]** をクリックします。
+5. [**JoinDefaultUsersGroup**] をクリックします。
 
 6. **[Claim]\(要求\)** ボックスで **[Emailaddress]\(電子メール アドレス\)** 属性を設定するには、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力して **[Save]\(保存\)** をクリックします。
 
-      ![構成](./media/picturepark-tutorial/ic795065.png "構成")
+      ![Configuration](./media/picturepark-tutorial/ic795065.png "構成")
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -181,7 +181,7 @@ Picturepark で Azure AD シングル サインオンを構成するには、次
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -193,7 +193,7 @@ Picturepark で Azure AD シングル サインオンを構成するには、次
 
 このセクションでは、Britta Simon に Picturepark へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Picturepark]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Picturepark]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -223,13 +223,13 @@ Azure AD ユーザーが Picturepark にサインインできるようにする�
 
 1. **Picturepark** テナントにサインインします。
 
-1. 上部にあるツールバーで **[Administrative tools]** 、 **[Users]** の順にクリックします。
+1. 画面上部のツール バーで、[**管理ツール**]、[**ユーザー**] の順にクリックします。
    
     ![ユーザー](./media/picturepark-tutorial/ic795067.png "ユーザー")
 
-1. **[Users overview]** タブで、 **[New]** をクリックします。
+1. [**ユーザーの概要**] タブで、[**新規**] をクリックします。
    
-    ![[User management]](./media/picturepark-tutorial/ic795068.png "[ユーザー管理]")
+    ![ユーザー管理](./media/picturepark-tutorial/ic795068.png "[ユーザー管理]")
 
 1. **[Create User]\(ユーザーの作成\)** ダイアログで、プロビジョニングする有効な Azure Active Directory ユーザーを次の手順で設定します。
    
@@ -239,9 +239,9 @@ Azure AD ユーザーが Picturepark にサインインできるようにする�
    
     b. **[Password]\(パスワード\)** および **[Confirm Password]\(確認パスワード\)** ボックスに、BrittaSimon の **パスワード** を入力します。 
    
-    c. **[First Name]\(名\)** ボックスに、ユーザーの **名** を「 **Britta** 」と入力します。 
+    c. **[First Name]\(名\)** ボックスに、ユーザーの **名** を「**Britta**」と入力します。 
    
-    d. **[Last Name]\(姓\)** ボックスに、ユーザーの **姓** を「 **Simon** 」と入力します。
+    d. **[Last Name]\(姓\)** ボックスに、ユーザーの **姓** を「**Simon**」と入力します。
    
     e. **[Company]\(会社\)** ボックスに、ユーザーの **会社名** を入力します。 
    

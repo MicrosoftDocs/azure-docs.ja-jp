@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: conceptual
-ms.date: 02/17/2021
+ms.date: 03/02/2021
 ms.author: alkohli
 ms.custom: references_regions
-ms.openlocfilehash: 7212fc4113c1de0a7aee4c6c02e8fa65f9828680
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 88aedb7daa375ae6b4a9107dceed1d25ed72ed92
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724831"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039106"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk:よく寄せられる質問
 
@@ -55,7 +55,7 @@ A. 1 台につき 8 TB の容量 (使用可能な容量は 7 TB) のディスク
 A.  Data Box Disk が現在使用できる場所については、「[利用可能なリージョン](data-box-disk-overview.md#region-availability)」を参照してください。  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Q. Data Box Disk では、どのリージョンにデータを保存できますか?
-A. Data Box Disk は、米国内のすべてのリージョン、カナダ、オーストラリア、西ヨーロッパ、北ヨーロッパ、韓国、日本でサポートされます。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。
+A. Data Box Disk は、米国、カナダ、EU、英国、オーストラリア、シンガポール、インド、中国、香港、日本、韓国、南アフリカ内のすべてのリージョンでサポートされています。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。
 
 ### <a name="q-how-can-i-import-source-data-present-at-my-location-in-one-countryregion-to-an-azure-region-in-a-different-country"></a>Q. ある国/地域の場所にあるソース データを別の国の Azure リージョンにインポートする方法はありますか?
 A. Data Box Disk は配送先と同じ国/地域内でのデータ インジェストのみをサポートし、国境を越えることはありません。 欧州連合 (EU) 域内の注文は唯一の例外であり、EU のどの国にも、また EU のどの国/地域からも Data Box Disks を配送できます。
@@ -199,7 +199,7 @@ A.  コピー処理は、次の方法で高速化できます。
 - その VM のディスクにファイルをコピーします。
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box-disks"></a>Q. Data Box Disk で複数のストレージ アカウントを使用することはできますか?
-A.  いいえ。 現在 Data Box Disk でサポートされているストレージ アカウントは 1 つだけです (汎用またはクラシック)。 ホット BLOB とクール BLOB の両方がサポートされています。 現在、米国、西ヨーロッパ、北ヨーロッパの Azure パブリック クラウドのストレージ アカウントのみがサポートされます。
+A.  いいえ。 現在 Data Box Disk でサポートされているストレージ アカウントは 1 つだけです (汎用またはクラシック)。 ホット BLOB とクール BLOB の両方がサポートされています。
 
 ### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>Q. 自分のデータに使用できる Data Box Disk 用ツールセットには何が含まれていますか。
 A. Data Box Disk で使用できるツールセットには、次の 3 つのツールが含まれています。

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: a8ceb3df68ebe42f83c70ed62327bf59c0dfc225
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92359817"
 ---
 # <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
@@ -49,7 +49,7 @@ Azure Site Recovery サービスに構成サーバーを登録するには、Azu
       ![Azure AD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
-> Active Directory フェデレーション サービス (AD FS) は *サポートされていません* 。 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) で管理されているアカウントを使用します。
+> Active Directory フェデレーション サービス (AD FS) は *サポートされていません*。 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) で管理されているアカウントを使用します。
 
 ## <a name="download-the-template"></a>テンプレートをダウンロードする
 
@@ -112,7 +112,7 @@ Azure Site Recovery サービスに構成サーバーを登録するには、Azu
 ### <a name="configure-settings"></a>設定の構成
 
 1. 構成サーバー管理ウィザードで、 **[接続の設定]** を選びます。 ドロップダウン ボックスから、最初に、モビリティ サービスの検出とソース マシンへのプッシュ インストールのために組み込みプロセス サーバーが使用する NIC を選択します。 次に、構成サーバーが Azure との接続に使用する NIC を選択します。 **[保存]** を選択します。 構成後、この設定を変更することはできません。 構成サーバーの IP アドレスは変更しないでください。 構成サーバーに割り当てられている IP が DHCP IP ではなく静的 IP であることを確認してください。
-2. **[Select Recovery Services vault]\(Recovery Services コンテナーの選択\)** で、「 [構成サーバーを Azure Site Recovery サービスに登録する](#register-the-configuration-server-with-azure-site-recovery-services)」の手順 6 で使用した資格情報で Microsoft Azure にサインインします。
+2. **[Select Recovery Services vault]\(Recovery Services コンテナーの選択\)** で、「[構成サーバーを Azure Site Recovery サービスに登録する](#register-the-configuration-server-with-azure-site-recovery-services)」の手順 6 で使用した資格情報で Microsoft Azure にサインインします。
 3. サインインした後、Azure サブスクリプションと、関連するリソース グループおよびコンテナーを選びます。
 
     > [!NOTE]
@@ -123,7 +123,7 @@ Azure Site Recovery サービスに構成サーバーを登録するには、Azu
 
     |シナリオ   |実行する手順  |
     |---------|---------|
-    |MySQL を手動でダウンロードしてインストールできますか?     |  はい。 MySQL アプリケーションをダウンロードし、 **C:\Temp\ASRSetup** フォルダー内に配置してから手動でインストールします。 使用条件に同意し、 **[ダウンロードしてインストール]** を選択すると、ポータルに *[Already installed]\(インストール済み\)* と表示されます。 次の手順に進むことができます。       |
+    |MySQL を手動でダウンロードしてインストールできますか?     |  はい。 MySQL アプリケーションをダウンロードし、**C:\Temp\ASRSetup** フォルダー内に配置してから手動でインストールします。 使用条件に同意し、 **[ダウンロードしてインストール]** を選択すると、ポータルに *[Already installed]\(インストール済み\)* と表示されます。 次の手順に進むことができます。       |
     |オンラインでの MySQL のダウンロードを回避することはできますか?     |   はい。 MySQL インストーラー アプリケーションを **C:\Temp\ASRSetup** フォルダーに配置します。 使用条件に同意し、 **[ダウンロードしてインストール]** を選択すると、追加したインストーラーを使用してポータルによってアプリケーションがインストールされます。 インストールが終了したら、次の手順に進みます。    |
     |Azure Site Recovery を使用して MySQL をダウンロードおよびインストールしたい    |  使用許諾契約書に同意し、 **[ダウンロードしてインストール]** を選択します。 インストールが終了したら、次の手順に進みます。       |
 

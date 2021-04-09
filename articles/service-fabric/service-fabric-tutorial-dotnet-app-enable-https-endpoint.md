@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: c675f8ece8369bcfc0055343221ac82aea59dec1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91326237"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>チュートリアル:Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する
@@ -41,7 +41,7 @@ ms.locfileid: "91326237"
 このチュートリアルを開始する前に
 
 * Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
-* [Visual Studio 2019](https://www.visualstudio.com/) のバージョン 16.5 以降をインストールし、**Azure の開発**ワークロードと **ASP.NET と Web 開発**ワークロードをインストールします。
+* [Visual Studio 2019](https://www.visualstudio.com/) のバージョン 16.5 以降をインストールし、**Azure の開発** ワークロードと **ASP.NET と Web 開発** ワークロードをインストールします。
 * [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>証明書を取得する、または開発用の自己署名証明書を作成する
@@ -68,7 +68,7 @@ Thumbprint                                Subject
 
 ## <a name="define-an-https-endpoint-in-the-service-manifest"></a>サービス マニフェストに HTTPS エンドポイントを定義する
 
-Visual Studio を**管理者**として起動し、投票ソリューションを開きます。 ソリューション エクスプローラーで、*VotingWeb/PackageRoot/ServiceManifest.xml* を開きます。 サービス マニフェストは、サービス エンドポイントを定義します。  **Endpoints** セクションを見つけ、既存の "ServiceEndpoint" エンドポイントを編集します。  名前を "EndpointHttps" に変更し、プロトコルを *https*、種類を *Input*、ポートを *443* に設定します。  変更を保存します。
+Visual Studio を **管理者** として起動し、投票ソリューションを開きます。 ソリューション エクスプローラーで、*VotingWeb/PackageRoot/ServiceManifest.xml* を開きます。 サービス マニフェストは、サービス エンドポイントを定義します。  **Endpoints** セクションを見つけ、既存の "ServiceEndpoint" エンドポイントを編集します。  名前を "EndpointHttps" に変更し、プロトコルを *https*、種類を *Input*、ポートを *443* に設定します。  変更を保存します。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -188,7 +188,7 @@ private X509Certificate2 FindMatchingCertificateBySubject(string subjectCommonNa
 
 ## <a name="grant-network-service-access-to-the-certificates-private-key"></a>証明書の秘密キーへのアクセスを "ネットワーク サービス" に許可する
 
-前の手順で、証明書を開発用コンピューターの `Cert:\LocalMachine\My` ストアにインポートしました。  ここで、サービスを実行しているアカウント (既定では "ネットワーク サービス") に証明書の秘密キーへのアクセス権を明示的に与える必要があります。 この手順は (certlm.msc ツールを使用して) 手動で行うことができますが、サービス マニフェストの **SetupEntryPoint** に[スタートアップ スクリプトを構成](service-fabric-run-script-at-service-startup.md)して自動的に PowerShell スクリプトを実行することをお勧めします。
+前の手順で、証明書を開発用コンピューターの `Cert:\LocalMachine\My` ストアにインポートしました。  ここで、サービスを実行しているアカウント (既定では "ネットワーク サービス") に証明書の秘密キーへのアクセス権を明示的に与える必要があります。 この手順は (certlm.msc ツールを使用して) 手動で行うことができますが、サービス マニフェストの **SetupEntryPoint** に [スタートアップ スクリプトを構成](service-fabric-run-script-at-service-startup.md)して自動的に PowerShell スクリプトを実行することをお勧めします。
 
 >[!NOTE]
 > Service Fabric は、拇印またはサブジェクトの共通名によるエンドポイント証明書の宣言をサポートしています。 その場合、ランタイムは、バインドを設定し、サービスが実行されている ID への証明書の秘密キーを ACL に登録します。 また、ランタイムは、証明書の変更や更新を監視し、対応する秘密キーをそれに応じて ACL に再登録します。

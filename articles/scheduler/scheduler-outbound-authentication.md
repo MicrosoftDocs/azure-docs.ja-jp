@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
 ms.openlocfilehash: 0a8d79af9f45731971cb1be1f39fc193f9d0f0d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80878971"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Azure Scheduler の送信認証
@@ -27,7 +27,7 @@ Azure Scheduler ジョブは、他の Azure サービス、Salesforce.com、Face
 Scheduler では、これらの認証モデルがサポートされています。 
 
 * *クライアント証明書* SSL/TLS クライアント証明書を使用する際の認証
-* *基本*認証
+* *基本* 認証
 * *Active Directory OAuth* 認証
 
 ## <a name="add-or-remove-authentication"></a>認証の追加または削除

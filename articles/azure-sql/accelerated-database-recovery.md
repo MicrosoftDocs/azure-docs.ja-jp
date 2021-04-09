@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/19/2020
 ms.openlocfilehash: bd1b33b2f6b1b0e0bf94639b3991b6507a89f5a9
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97400796"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Azure SQL の高速データベース復旧パターン 

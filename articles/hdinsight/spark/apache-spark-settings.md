@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 148ba2ce256b11b623bf28cf7723dbb0cce60830
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 25ff8611cc988c9777b52a313cfd74d4ee0a638c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929757"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870298"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark の設定を構成する
 
@@ -18,7 +18,7 @@ HDInsight Spark クラスターには、Apache Spark ライブラリのインス
 
 既定の HDInsight Apache Spark クラスターには、3 つの Apache ZooKeeper ノード、2 つのヘッド ノード、および 1 つ以上のワーカー ノードが含まれています。
 
-![Spark HDInsight のアーキテクチャ](./media/apache-spark-settings/spark-hdinsight-arch.png)
+:::image type="content" source="./media/apache-spark-settings/spark-hdinsight-arch.png" alt-text="Spark HDInsight のアーキテクチャ" border="false":::
 
 HDInsight クラスター内のノードの VM の数と VM のサイズも、Spark の構成に影響します。 HDInsight の構成が既定値ではない場合は、通常、Spark の構成にも既定ではない値が必要です。 HDInsight Spark クラスターを作成するときに、各コンポーネントの推奨される VM サイズが表示されます。 現在、Azure に対する[メモリ最適化された Linux VM のサイズ](../../virtual-machines/sizes-memory.md)は、D12 v2 以上です。
 
@@ -59,7 +59,7 @@ Apache Ambari Web UI に、主要なクラスター リソースの使用状況�
 
 Apache Spark の構成値を見るには、 **[Config History]\(構成履歴\)** を選び、 **[Spark2]** を選びます。  **[Configs]\(構成\)** タブを選び、サービス一覧の `Spark` (または、バージョンによっては `Spark2`) を選びます。  クラスターの構成値の一覧が表示されます。
 
-![Spark の構成](./media/apache-spark-settings/spark-configurations.png)
+:::image type="content" source="./media/apache-spark-settings/spark-configurations.png" alt-text="Spark の構成" border="true":::
 
 個別の Spark 構成値を表示および変更するには、タイトルに "spark" が含まれるリンクを選びます。  Spark の構成は、以下のカテゴリのカスタム構成値と詳細構成値の両方が含まれます。
 
@@ -78,7 +78,7 @@ Apache Spark の構成値を見るには、 **[Config History]\(構成履歴\)**
 
 次の図では、主要な Spark オブジェクトであるドライバー プログラムとそれに関連する Spark コンテキスト、およびクラスター マネージャーとその *n* 個のワーカー ノードが示されています。  各ワーカー ノードには、Executor、キャッシュ、および *n* 個のタスク インスタンスが含まれます。
 
-![クラスター オブジェクト](./media/apache-spark-settings/hdi-spark-architecture.png)
+:::image type="content" source="./media/apache-spark-settings/hdi-spark-architecture.png" alt-text="クラスター オブジェクト" border="false":::
 
 Spark ジョブはワーカーのリソース (具体的にはメモリ) を使うため、ワーカー ノードの Executor 用に Spark 構成値を調整するのが一般的です。
 
@@ -89,7 +89,7 @@ Spark ジョブはワーカーのリソース (具体的にはメモリ) を使�
 
 Spark Executor で使われるリソースに関するもう 1 つの情報ソースは、Spark アプリケーション UI です。  UI では、 **[Executor]** に、構成と消費されたリソースの概要ビューと詳細ビューが表示されます。  クラスター全体または特定のジョブ実行のセットのどちらの Executor 値を変更するかを決定します。
 
-![Spark Executor](./media/apache-spark-settings/apache-spark-executors.png)
+:::image type="content" source="./media/apache-spark-settings/apache-spark-executors.png" alt-text="Spark Executor" border="true":::
 
 または、Ambari REST API を使って、プログラムで HDInsight と Spark クラスターの構成設定を確認することもできます。  詳細については、[GitHub の Apache Ambari API リファレンス](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を参照してください。
 
@@ -103,7 +103,7 @@ Spark のワークロードによっては、既定以外の Spark 構成のほ�
 
 構成値が異なる 2 つのワーカー ノードの例を次に示します。
 
-![2 ノード構成](./media/apache-spark-settings/executor-configuration.png)
+:::image type="content" source="./media/apache-spark-settings/executor-configuration.png" alt-text="2 ノード構成" border="false":::
 
 次の一覧では、Spark Executor の主要なメモリ パラメーターを示します。
 
@@ -116,7 +116,7 @@ Spark のワークロードによっては、既定以外の Spark 構成のほ�
 
 YARN は、各 Spark ノード上のコンテナーで使われる最大合計メモリを制御します。 次の図では、YARN 構成オブジェクトと Spark オブジェクトの間のノードごとの関係を示します。
 
-![YARN の Spark メモリの管理](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
+:::image type="content" source="./media/apache-spark-settings/hdi-yarn-spark-memory.png" alt-text="YARN の Spark メモリの管理" border="false":::
 
 ## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter Notebook で実行されているアプリケーションのパラメーターを変更する
 

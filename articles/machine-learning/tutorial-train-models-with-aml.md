@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 3191987ea2d110487321beb0b11428f446f2b7a6
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 85dea807ee09338e7f0e9e388f6b196fd3beef33
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503880"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588666"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>チュートリアル:MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする 
 
@@ -91,6 +91,9 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 ws = Workspace.from_config()
 print(ws.name, ws.location, ws.resource_group, sep='\t')
 ```
+
+>[!NOTE]
+> 次のコードを初めて実行するときに、ワークスペースに対する認証を求められる場合があります。 画面に表示される手順に従って操作します。
 
 ### <a name="create-an-experiment"></a>実験の作成
 

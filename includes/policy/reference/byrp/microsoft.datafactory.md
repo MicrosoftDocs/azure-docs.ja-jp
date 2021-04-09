@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 637a8ab934c1a0858da480064f73fb0170c3db5c
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: a4aafd7dc1608bc2e19be2aec804e6cd7b2c7092
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102432428"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612637"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -21,3 +21,4 @@ ms.locfileid: "102432428"
 |[Azure Data Factory のリンク サービスでは、システム割り当てマネージド ID 認証を使用する必要がある (サポートされている場合)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff78ccdb4-7bf4-4106-8647-270491d2978a) |リンク サービスを介してデータ ストアと通信するときに、システム割り当てマネージド ID を使用すると、パスワードや接続文字列などの安全性の低い資格情報の使用を回避できます。 |Audit、Deny、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/LinkedService_All_Auth_Audit_except_MSI.json) |
 |[Azure Data Factory では、ソース管理に Git リポジトリを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F77d40665-3120-4348-b539-3192ec808307) |変更の追跡、コラボレーション、継続的インテグレーション、デプロイなどの機能を利用するために、データ ファクトリでソース管理を有効にします。 |Audit、Deny、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/Factory_None_GIT_Audit.json) |
 |[Azure Data Factory のパブリック ネットワーク アクセスを無効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1cf164be-6819-4a50-b8fa-4bcaa4f98fb6) |パブリック ネットワーク アクセス プロパティを無効にすると、Azure Data Factory へのアクセスがプライベート エンドポイントのみに制限されるため、セキュリティが強化されます。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/DataFactory_PublicNetworkAccess_Audit.json) |
+|[Azure Data Factory 上の SQL Server Integration Services 統合ランタイムでは仮想ネットワークに参加する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0088bc63-6dee-4a9c-9d29-91cfdc848952) |Azure Virtual Network のデプロイでは、Azure Data Factory 上の SQL Server Integration Services 統合ランタイムのための強化されたセキュリティと分離、サブネット、アクセス制御ポリシーなど、アクセスをさらに制限するための機能を提供します。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/SSISIR_JoinVirtualNetwork_Audit.json) |

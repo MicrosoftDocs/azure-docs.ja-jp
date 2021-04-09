@@ -4,10 +4,10 @@ description: 仮想ネットワーク内にコンテナー グループを作成
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: 0131780fdb04a71837d5ae9bf5498bf2bd499f8a
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98035055"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>コンテナー グループの静的 IP アドレスの公開

@@ -6,10 +6,10 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 2ad1645e55dcaa9a5b6461a9972c2922d5e32ebc
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94693207"
 ---
 # <a name="texconv---texture-conversion-tool"></a>TexConv - テクスチャ変換ツール

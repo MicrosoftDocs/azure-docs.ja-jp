@@ -8,10 +8,10 @@ ms.date: 1/25/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 2545915edf9e39b63100a2bb16bd34fa6777675c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100473463"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-portal"></a>Private Link を使用してプライベート アクセスを有効にする (プレビュー):Azure portal

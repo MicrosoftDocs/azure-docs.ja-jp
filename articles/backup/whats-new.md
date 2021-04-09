@@ -3,12 +3,12 @@ title: Azure Backup の新着情報
 description: Azure Backup の新機能について説明しています。
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 5343ec2ae04853492abbaace2432cf94c9fb5a07
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 48c8c189d956c4003d24511a54975fe86a982832
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762378"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095716"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure Backup の新着情報
 
@@ -18,6 +18,11 @@ Azure Backup は常に改善が行われ、Azure でのデータの保護を強�
 
 ## <a name="updates-summary"></a>更新の概要
 
+- 2021 年 3 月
+  - [バックアップ センターの一般提供開始](#backup-center-is-now-generally-available)
+  - [Azure Backup のアーカイブ層のサポート (プレビュー)](#archive-tier-support-for-azure-backup-in-preview)
+- 2021 年 2 月
+  - [Azure BLOB のバックアップ (プレビュー)](#backup-for-azure-blobs-in-preview)
 - 2021 年 1 月
   - [Azure ディスク バックアップ (プレビュー)](#azure-disk-backup-in-preview)
   - [カスタマー マネージド キーを使用した保存時の暗号化 (一般提供)](#encryption-at-rest-using-customer-managed-keys)
@@ -35,9 +40,29 @@ Azure Backup は常に改善が行われ、Azure でのデータの保護を強�
   - [バックアップ データ用のゾーン冗長ストレージ (ZRS) (プレビュー段階)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Azure VM での SQL Server および SAP HANA ワークロードの論理的な削除](#soft-delete-for-sql-server-and-sap-hana-workloads)
 
+## <a name="backup-center-is-now-generally-available"></a>バックアップ センターの一般提供開始
+
+バックアップ センターは、1 つの中央コンソールからバックアップ管理を検出、管理、監視、操作、最適化できるようにすることで、データ保護の管理を容易にします。
+
+詳細については、「[バックアップ センターの概要](backup-center-overview.md)」を参照してください。
+
+## <a name="archive-tier-support-for-azure-backup-in-preview"></a>Azure Backup のアーカイブ層のサポート (プレビュー)
+
+Azure Backup で、Azure 仮想マシンと Azure 仮想マシンの SQL Server にアーカイブ層を利用できるようになったため、長期保存のバックアップのコストを削減できるようになりました。
+
+詳細については、「[アーカイブ層のサポート (プレビュー)](archive-tier-support.md)」を参照してください。
+
+## <a name="backup-for-azure-blobs-in-preview"></a>Azure BLOB のバックアップ (プレビュー)
+
+BLOB の運用バックアップは、管理されたローカル データ保護ソリューションです。これを使用すると、破損、BLOB の削除、誤ったストレージ アカウントの削除などのさまざまなデータ損失のシナリオからブロック BLOB を保護できます。 データはソース ストレージ アカウント自体にローカルに格納され、必要に応じて選択した時点に復旧できます。 これにより、BLOB を保護するためのシンプルで安全かつコスト効率の高い手段が提供されます。
+
+BLOB の運用バックアップは、他のバックアップ管理機能の中でも特にバックアップ センターと統合され、大規模なバックアップを管理、監視、運用、分析するための単一のウィンドウを提供します。
+
+詳細については、「[Azure BLOB の運用バックアップの概要 (プレビュー)](blob-backup-overview.md)」を参照してください。
+
 ## <a name="azure-disk-backup-in-preview"></a>Azure ディスク バックアップ (プレビュー)
 
-Azure ディスク バックアップは、スナップショットの定期的な作成を自動化し、バックアップ ポリシーを使用して構成された期間にわたってそのスナップショットを保持することで [Azure マネージド ディスク](../virtual-machines/managed-disks-overview.md)のスナップショット ライフサイクル管理を提供する、ターンキー ソリューションを提供します。 インフラストラクチャ コストなしでディスク スナップショットを管理でき、カスタム スクリプトも管理費用も必要ありません。 これは、1 日に複数回のバックアップをサポートする[増分スナップショット](../virtual-machines/disks-incremental-snapshots.md)を使用してマネージド ディスクの特定時点のバックアップを作成する、クラッシュ整合性バックアップ ソリューションです。 また、エージェントレスのソリューションでもあり、運用アプリケーションのパフォーマンスに影響しません。 実行中の Azure 仮想マシンに OS とデータ ディスク (共有ディスクを含む) が現在接続されているかどうかにかかわらず、この両方のバックアップと復元がサポートされます。
+Azure ディスク バックアップは、スナップショットの定期的な作成を自動化し、バックアップ ポリシーを使用して構成された期間にわたってそのスナップショットを保持することで [Azure マネージド ディスク](../virtual-machines/managed-disks-overview.md)のスナップショット ライフサイクル管理を提供する、ターンキー ソリューションを提供します。 インフラストラクチャ コストなしでディスク スナップショットを管理でき、カスタム スクリプトも管理費用も必要ありません。 これは、1 日に複数のバックアップをサポートする[増分スナップショット](../virtual-machines/disks-incremental-snapshots.md)を使用してマネージド ディスクの特定時点のバックアップを作成する、クラッシュ整合性バックアップ ソリューションです。 また、エージェントレスのソリューションでもあり、運用アプリケーションのパフォーマンスに影響しません。 実行中の Azure 仮想マシンに OS とデータ ディスク (共有ディスクを含む) が現在接続されているかどうかにかかわらず、この両方のバックアップと復元がサポートされます。
 
 詳細については、「[Azure ディスク バックアップ (プレビュー)](disk-backup-overview.md)」を参照してください。
 

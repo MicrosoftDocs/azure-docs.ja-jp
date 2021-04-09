@@ -12,10 +12,10 @@ ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 92ab043d4fccbe0764e361eac6f71ef69a5963cb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98939865"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Windows の音声アシスタントの実装

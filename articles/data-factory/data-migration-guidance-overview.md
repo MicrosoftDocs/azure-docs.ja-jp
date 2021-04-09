@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/30/2019
 ms.openlocfilehash: 4e7421cb8ea4b0c14e4f4b59a688cdb1afe7d462
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100367709"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Azure Data Factory を使用してデータ レイクまたはデータ ウェアハウスから Azure にデータを移行する
@@ -33,7 +33,7 @@ Azure Data Factory では、データ レイク移行の場合はペタバイト
   - Azure Data Factory では従量課金制が使用されるため、Azure へのデータ移行を実行するために実際に使用した時間に対してのみ料金がかかります。  
 - Azure Data Factory では 1 回限りの履歴読み込みとスケジュールされた増分読み込みの両方を実行できます。
 - Azure Data Factory では Azure 統合ランタイム (IR) を使用し、パブリックにアクセスできるデータ レイクとウェアハウス エンドポイント間でデータを移動します。 また、Azure Virtual Network (VNet) の内側またはファイアウォールの背後にあるデータ レイクとウェアハウス エンドポイントのデータ移動にセルフホステッド IR を使用することもできます。
-- Azure Data Factory はエンタープライズクラスのセキュリティを備えています。セキュリティで保護されたサービス間の統合には Windows インストーラー (MSI) またはサービス ID を使用できます。また、資格情報の管理には Azure Key Vault を使用できます。
+- Azure Data Factory はエンタープライズ レベルのセキュリティを備えています。Windows インストーラー (MSI) またはサービス ID を使用してサービス間の統合をセキュリティで保護することも、Azure Key Vault を利用して資格情報を管理することもできます。
 - Azure Data Factory は、コードを使用しない作成エクスペリエンスと、豊富な組み込みの監視ダッシュボードを提供します。  
 
 ## <a name="online-vs-offline-data-migration"></a>オンラインとオフラインのデータ移行
@@ -43,7 +43,7 @@ Azure Data Factory は、ネットワーク (インターネット、ER、また
 オンラインとオフラインの移行方法のいずれかを選択する際には、次の 3 つの重要な考慮事項があります。  
 
 - 移行するデータのサイズ
-- ネットワーク帯域幅
+- ネットワークの帯域幅
 - 移行期間
 
 たとえば、2 週間 (*移行期間*) 以内に Azure Data Factory を使用してデータ移行を完了する予定があるとします。 次の表のピンク色と青色の分かれ目に注目してください。 各列の一番下にあるピンク色のセルは、移行期間が 2 週間に最も近く、2 週間未満であるデータ サイズ/ネットワーク帯域幅のペアを示します (青色のセルのサイズ/帯域幅のペアは、2 週間を超えるオンライン移行期間を示します)。 

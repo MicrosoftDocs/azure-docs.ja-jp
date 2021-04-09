@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: c13c4410852d97f0bf4548578f40a5cc560804d7
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94874595"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Application Gateway イングレス コントローラーを使用して AKS クラスターでの複数の名前空間のサポートを有効にする
@@ -38,7 +38,7 @@ AGIC のバージョン 0.7 では、`default` 名前空間が Helm 構成内の
   - [ARM](../azure-resource-manager/management/overview.md) 経由で、関連付けられている Application Gateway に構成を適用する
 
 ## <a name="conflicting-configurations"></a>競合する構成
-複数の名前空間が設定された[イングレス リソース](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)では、単一の Application Gateway に対して競合する構成を作成するように、AGIC に指示することができます (たとえば、同じドメインを要求する 2 つのイングレス)。
+複数の名前空間が設定された[イングレス リソース](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)では、単一の Application Gateway に対して競合する構成を作成するように、AGIC に指示することができます  (たとえば、同じドメインを要求する 2 つのイングレス)。
 
 階層の最上位では、**リスナー** (IP アドレス、ポート、およびホスト) と **ルーティング規則** (バインディング リスナー、バックエンド プール、および HTTP 設定) は、複数の名前空間/イングレスによって作成および共有することができます。
 

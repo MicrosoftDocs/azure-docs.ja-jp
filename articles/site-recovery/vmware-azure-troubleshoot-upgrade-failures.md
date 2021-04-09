@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
 ms.openlocfilehash: 5a6e4b415a9fe8ea80a84e415879df9d2f359478
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84434372"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Microsoft Azure Site Recovery プロバイダーのアップグレード エラーのトラブルシューティング
@@ -74,7 +74,7 @@ Microsoft Azure Site Recovery Provider (DRA) をアップグレードすると�
 これはレジストリ キーのパラメーターの null 値に起因する可能性があります。 この問題を解決するには -
 
 1. レジストリ エディター (regedit.exe) を開始し、HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4 ブランチを開きます。
-1. "InstallDirectory" キー値を調べます。 null の場合、現在のインストール ディレクトリ値を追加します。
+1. "InstallDirectory" キー値を調べます。  null の場合、現在のインストール ディレクトリ値を追加します。
 1. 同様に、レジストリ エディターで HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5 ブランチを開きます。
 1. "InstallDirectory" キー値を調べ、現在のインストール ディレクトリ値を追加します。
 1. 統合セットアップ インストーラを再実行します。

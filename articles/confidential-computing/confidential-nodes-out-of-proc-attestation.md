@@ -1,19 +1,19 @@
 ---
-title: Azure の Intel SGX クォート ヘルパー デーモンセットによるアウトプロセス構成証明のサポート
+title: Azure の Intel SGX クォート ヘルパー デーモンセットによるアウトプロセス構成証明のサポート (プレビュー)
 description: SGX アプリケーションのプロセス外でクォートを生成するためのデーモンセット。 この記事では、コンテナー内で実行される機密性の高いワークロードに対し、アウトプロセス構成証明機能がどのように提供されるかについて説明します。
 ms.service: container-service
 author: agowdamsft
 ms.topic: overview
-ms.date: 9/22/2020
+ms.date: 2/12/2021
 ms.author: amgowda
-ms.openlocfilehash: b79b3b40f3fbfe7d70550db3aaf7b365aa455e89
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 5d872032ea5b4e08c3f436dd3bfc202786d8514d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564159"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102553257"
 ---
-# <a name="platform-software-management-with-sgx-quote-helper-daemon-set"></a>SGX クォート ヘルパー デーモン セットによるプラットフォーム ソフトウェア管理
+# <a name="platform-software-management-with-sgx-quote-helper-daemon-set-preview"></a>SGX クォート ヘルパー デーモン セットによるプラットフォーム ソフトウェア管理 (プレビュー)
 
 リモート構成証明を実行する[エンクレーブ アプリケーション](confidential-computing-enclaves.md)は、生成されたクォートを必要とします。 このクォートによって、アプリケーションの ID と状態、そしてエンクレーブが実行されている環境の暗号による証明が得られます。 クォートを生成するためには、Intel の Platform Software Components (PSW) に含まれる信頼のおけるソフトウェア コンポーネントが必要です。
 
@@ -27,6 +27,13 @@ ms.locfileid: "94564159"
 Open Enclave SDK を使用して作成された SGX アプリケーションには、既定でインプロセス構成証明モードが使用されます。 SGX ベースのアプリケーションはアウトプロセスに対応していますが、そのためには、アプリケーションの外部で、Architectural Enclave Service Manager (AESM) などの必須コンポーネントを別途ホストして公開する必要があります。
 
 この機能を利用することを **強くお勧め** します。Intel プラットフォームの更新時や DCAP ドライバーの更新時のエンクレーブ アプリのアップタイムが向上します。
+
+AKS クラスターでこの機能を有効にするには、コンフィデンシャル コンピューティング アドオンを有効にするときに、CLI に対する add --enable-sgxquotehelper コマンドを変更してください。 CLI の詳細な手順は[こちら](confidential-nodes-aks-get-started.md)にあります。 
+
+```azurecli-interactive
+# Create a new AKS cluster with system node pool with Confidential Computing addon enabled and SGX Quote Helper
+az aks create -g myResourceGroup --name myAKSCluster --generate-ssh-keys --enable-addon confcom --enable-sgxquotehelper
+```
 
 ## <a name="why-and-what-are-the-benefits-of-out-of-proc"></a>アウトプロセスを使用する理由と利点
 

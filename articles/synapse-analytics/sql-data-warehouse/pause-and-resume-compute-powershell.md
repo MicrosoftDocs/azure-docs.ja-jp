@@ -1,33 +1,33 @@
 ---
-title: クイックスタート:Azure PowerShell を使用して Synapse SQL プールのコンピューティングを一時停止、再開する
-description: Azure PowerShell を使用して、Synapse SQL プール (データ ウェアハウス) を一時停止および再開できます。 コンピューティング リソース。
+title: 'クイックスタート: Azure PowerShell を使用して専用 SQL プール (以前の SQL DW) のコンピューティングを一時停止、再開する'
+description: Azure PowerShell を使用して、専用 SQL プール (以前の SQL DW) を一時停止および再開できます。 コンピューティング リソース。
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 03/20/2019
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-azurepowershell
-ms.openlocfilehash: 6022974b80a7f691edc9b9a11b972035b203187c
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 74c30a843ef5edd54c7cd19f3fd49acfe782f488
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121041"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602181"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Synapse SQL プールのコンピューティングを一時停止、再開する
+# <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>クイックスタート: Azure PowerShell を使用して専用 SQL プール (以前の SQL DW) のコンピューティングを一時停止、再開する
 
-Azure PowerShell を使用して、Synapse SQL プール (データ ウェアハウス) コンピューティング リソースを一時停止および再開できます。
+Azure PowerShell を使用して、専用 SQL プール (以前の SQL DW) のコンピューティング リソースを一時停止および再開できます。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-このクイックスタートでは、一時停止して再開できる SQL プールが既に用意されていることを前提とします。 作成する必要がある場合は、[ポータルでの作成と接続](create-data-warehouse-portal.md)に関する記事に従って、**mySampleDataWarehouse** という名前の SQL プールを作成してください。
+このクイックスタートでは、一時停止および再開できる専用 SQL プール (以前の SQL DW) が既にあることを前提としています。 作成する必要がある場合は、[ポータルでの作成と接続](create-data-warehouse-portal.md)に関する記事に従って、**mySampleDataWarehouse** という名前の専用 SQL プール (以前の SQL DW) を作成することができます。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
@@ -49,11 +49,11 @@ Get-AzSubscription
 Set-AzContext -SubscriptionName "MySubscription"
 ```
 
-## <a name="look-up-sql-pool-information"></a>SQL プールの情報を検索する
+## <a name="look-up-dedicated-sql-pool-formerly-sql-dw-information"></a>専用 SQL プール (以前の SQL DW) 情報を参照する
 
-一時停止して再開する予定の SQL プールのデータベース名、サーバー名、リソース グループを見つけます。
+一時停止して再開する予定の専用 SQL プール (以前の SQL DW) のデータベース名、サーバー名、リソース グループを見つけます。
 
-次の手順に従って、SQL プールの場所の情報を検索します。
+専用 SQL プール (以前の SQL DW) の場所の情報を検索するには、こちらの手順に従います。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. Azure portal の左側のページで **[Azure Synapse Analytics (以前の SQL DW)]** をクリックします。
@@ -61,7 +61,7 @@ Set-AzContext -SubscriptionName "MySubscription"
 
     ![サーバー名とリソース グループ](./media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-1. SQL プールの名前 (データベース名) を書き留めます。 サーバー名とリソース グループも書き留めます。
+1. 専用 SQL プール (以前の SQL DW) の名前を書き留めます。これはデータベース名です。 サーバー名とリソース グループも書き留めます。
 1. PowerShell コマンドレットで使用するのは、サーバー名の最初の部分のみです。 前の図では、サーバーの完全名は sqlpoolservername.database.windows.net です。 PowerShell コマンドレットでは、サーバー名として **sqlpoolservername** を使用します。
 
 ## <a name="pause-compute"></a>コンピューティングの一時停止
@@ -75,7 +75,7 @@ Set-AzContext -SubscriptionName "MySubscription"
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
-–ServerName "nsqlpoolservername" –DatabaseName "mySampleDataWarehouse"
+–ServerName "sqlpoolservername" –DatabaseName "mySampleDataWarehouse"
 ```
 
 次の例では、$database オブジェクトにデータベースを取り込みます。 オブジェクトは [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) にパイプ処理されます。 結果は、オブジェクト resultDatabase に格納されます。 最後のコマンドは結果を表示します。
@@ -107,7 +107,7 @@ $resultDatabase
 
 ## <a name="check-status-of-your-sql-pool-operation"></a>SQL プールの操作の状態の確認
 
-SQL プールの状態を確認するには、[Get-AzSqlDatabaseActivity](/powershell/module/az.sql/Get-AzSqlDatabaseActivity?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) コマンドレットを使用します。
+専用 SQL プール (以前の SQL DW) の状態を確認するには、[Get-AzSqlDatabaseActivity](/powershell/module/az.sql/Get-AzSqlDatabaseActivity?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) コマンドレットを使用します。
 
 ```Powershell
 Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"
@@ -115,7 +115,7 @@ Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlp
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-データ ウェアハウス ユニットと SQL プールに格納されているデータに対して課金されます。 これらのコンピューティングとストレージのリソースは別々に請求されます。
+データ ウェアハウス ユニットと専用 SQL プール (以前の SQL DW) に格納されているデータに対して課金されます。 これらのコンピューティングとストレージのリソースは別々に請求されます。
 
 - データをストレージ内に保持する場合は、コンピューティングを一時停止します。
 - それ以上課金されないようにする場合は、SQL プールを削除できます。
@@ -136,4 +136,4 @@ Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlp
 
 ## <a name="next-steps"></a>次のステップ
 
-SQL プールに関する理解をさらに深めるために、[SQL プールへのデータの読み込み](./load-data-from-azure-blob-storage-using-copy.md)に関する記事に進んでください。 コンピューティング機能の管理の詳細については、[コンピューティングの管理の概要](sql-data-warehouse-manage-compute-overview.md)に関する記事を参照してください。
+SQL プールに関する理解をさらに深めるために、[専用 SQL プール (以前の SQL DW) へのデータの読み込み](./load-data-from-azure-blob-storage-using-copy.md)に関する記事に進んでください。 コンピューティング機能の管理の詳細については、[コンピューティングの管理の概要](sql-data-warehouse-manage-compute-overview.md)に関する記事を参照してください。

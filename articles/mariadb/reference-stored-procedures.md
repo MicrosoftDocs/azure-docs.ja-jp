@@ -3,14 +3,14 @@ title: 管理ストアド プロシージャ - Azure Database for MariaDB
 description: データイン レプリケーションの構成、タイムゾーンの設定、クエリの終了を行う場合に役立つ Azure Database for MriaDB のストアド プロシージャについて説明します。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 8df6c1d6bd00743be4a56b3bfa7e5416848eb62c
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 103bba37f5574185f10f5c4e28e66268da0c7f39
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98664633"
 ---
 # <a name="azure-database-for-mariadb-management-stored-procedures"></a>Azure Database for MariaDB の管理ストアド プロシージャ

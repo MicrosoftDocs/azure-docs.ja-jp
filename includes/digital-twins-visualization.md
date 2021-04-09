@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 7/10/2020
 ms.author: baanders
 ms.openlocfilehash: 37bccbcd92f627fd45a7f786725afe5b2e475f3c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94533883"
 ---
 ## <a name="visualization"></a>グラフ

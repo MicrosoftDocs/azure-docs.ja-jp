@@ -1,20 +1,99 @@
-- name: Computer Vision API のドキュメント
+- name: Computer Vision のドキュメント
   href: index.yml
 - name: 概要
   expanded: true
   items:
     - name: Computer Vision とは
       href: overview.md
-    - name: 新機能
+    - name: 言語のサポート
+      href: language-support.md
+    - name: 料金と制限
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
+    - name: 新着情報
       href: whats-new.md
-- name: クイックスタート
+    - name: Computer Vision FAQ
+      href: FAQ.md
+- name: Computer Vision クイックスタート
+  href: quickstarts-sdk/client-library.md
+- name: サンプル
   items:
-    - name: クライアント ライブラリまたは REST API の使用
-      href: quickstarts-sdk/client-library.md
-- name: チュートリアル
+    - name: 画像処理アプリの探索
+      href: Tutorials/CSharpTutorial.md
+    - name: Computer Vision の他のサンプル
+      href: /samples/browse/?products=azure&terms=computer-vision
+- name: AI の責任ある使用
   items:
-    - name: 画像のメタデータを生成する
-      href: Tutorials/storage-lab-tutorial.md
+    - name: 空間分析
+      items:
+        - name: 透明性に関するメモ
+          items:
+            - name: 空間分析のユース ケース
+              href: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=/azure/cognitive-services/computer-vision/context/context
+            - name: 特性と制限
+              href: /legal/cognitive-services/computer-vision/accuracy-and-limitations?context=/azure/cognitive-services/computer-vision/context/context
+        - name: 統合と責任ある使用
+          items:
+            - name: AI デプロイでの責任ある使用
+              href: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=/azure/cognitive-services/computer-vision/context/context
+            - name: 開示設計のガイドライン
+              href: /legal/cognitive-services/computer-vision/disclosure-design?context=/azure/cognitive-services/computer-vision/context/context
+            - name: リサーチの分析情報
+              href: /legal/cognitive-services/computer-vision/research-insights?context=/azure/cognitive-services/computer-vision/context/context
+        - name: データ、プライバシー、セキュリティ
+          href: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=/azure/cognitive-services/computer-vision/context/context
+- name: 操作方法ガイド
+  items:
+    - name: Computer Vision API を呼び出す
+      href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
+    - name: リアルタイムでビデオを分析する
+      href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
+    - name: 仮想ネットワークの構成方法
+      href: ../cognitive-services-virtual-networks.md?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
+    - name: Read 2.x から Read 3.x へのアップグレード
+      href: upgrade-api-versions.md
+    - name: AAD 認証の構成方法
+      href: ../authentication.md?tabs=powershell%3fcontext%3d%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
+    - name: カスタマー マネージド キーの使用方法
+      href: ../encryption/cognitive-services-encryption-keys-portal.md?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
+    - name: Computer Vision をデプロイする
+      items:
+        - name: Containers
+          items:
+            - name: Cognitive Services コンテナーのドキュメント
+              href: ../containers/index.yml
+            - name: API コンテナーの読み取り
+              items:
+                - name: コンテナーのインストールと実行
+                  href: computer-vision-how-to-install-containers.md
+                  displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
+                - name: コンテナーを構成する
+                  href: computer-vision-resource-container-config.md
+                - name: 読み取りコンテナーの v3 への移行
+                  href: read-container-migration-guide.md
+                  displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
+                - name: Kubernetes と Helm での使用
+                  href: deploy-computer-vision-on-premises.md
+                  displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
+                - name: Container Instances の使用
+                  maintainContext: true
+                  href: ../containers/azure-container-instance-recipe.md
+                  displayName: 'container instances, container, containers, images'
+            - name: 空間分析コンテナー
+              items:
+                - name: 空間分析の概要
+                  href: intro-to-spatial-analysis-public-preview.md
+                - name: ホスト マシンをセットアップしてコンテナーを実行する
+                  href: spatial-analysis-container.md
+                - name: 操作を構成する
+                  href: spatial-analysis-operations.md
+                - name: 人数カウント Web アプリをデプロイする
+                  href: Spatial-analysis-web-app.md
+                - name: ロギングおよびトラブルシューティング
+                  href: spatial-analysis-logging.md
+                - name: ゾーンとラインの配置
+                  href: spatial-analysis-zone-line-placement.md
+                - name: カメラの配置
+                  href: spatial-analysis-camera-placement.md
 - name: 概念
   items:
     - name: 光学式文字認識 (OCR)
@@ -27,6 +106,8 @@
       href: concept-tagging-images.md
     - name: 画像の分類
       href: concept-categorizing-images.md
+    - name: カテゴリの分類
+      href: Category-Taxonomy.md
     - name: 画像の説明
       href: concept-describing-images.md
     - name: 顔検出
@@ -41,118 +122,43 @@
       href: concept-generating-thumbnails.md
     - name: 成人向けコンテンツの検出
       href: concept-detecting-adult-content.md
-- name: AI の責任ある使用
+- name: チュートリアル
   items:
-    - name: 空間分析
-      items:
-        - name: 透明性に関するメモ
-          items:
-            - name: 空間分析のユース ケース
-              href: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-            - name: 特性と制限
-              href: /legal/cognitive-services/computer-vision/accuracy-and-limitations?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-        - name: 統合と責任ある使用
-          items:
-            - name: AI デプロイでの責任ある使用
-              href: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-            - name: 開示設計のガイドライン
-              href: /legal/cognitive-services/computer-vision/disclosure-design?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-            - name: リサーチの分析情報
-              href: /legal/cognitive-services/computer-vision/research-insights?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-        - name: データ、プライバシー、セキュリティ
-          href: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-- name: Containers
-  items:
-    - name: API コンテナーの読み取り
-      items:
-        - name: コンテナーのインストールと実行
-          href: computer-vision-how-to-install-containers.md
-          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
-        - name: コンテナーを構成する
-          href: computer-vision-resource-container-config.md
-        - name: 読み取りコンテナーの v3 への移行
-          href: read-container-migration-guide.md
-          displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
-        - name: Kubernetes と Helm での使用
-          href: deploy-computer-vision-on-premises.md
-          displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
-        - name: Container Instances の使用
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
-          displayName: 'container instances, container, containers, images'
-    - name: 空間分析コンテナー
-      items:
-        - name: 空間分析の概要
-          href: intro-to-spatial-analysis-public-preview.md
-        - name: ホスト マシンをセットアップしてコンテナーを実行する
-          href: spatial-analysis-container.md
-        - name: 操作を構成する
-          href: spatial-analysis-operations.md
-        - name: 人数カウント Web アプリをデプロイする
-          href: Spatial-analysis-web-app.md
-        - name: ロギングおよびトラブルシューティング
-          href: spatial-analysis-logging.md
-        - name: ゾーンとラインの配置
-          href: spatial-analysis-zone-line-placement.md
-        - name: カメラの配置
-          href: spatial-analysis-camera-placement.md
-    - name: Cognitive Services コンテナーのドキュメント
-      href: ../containers/index.yml
-- name: 操作方法ガイド
-  items:
-    - name: Computer Vision API を呼び出す
-      href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
-    - name: リアルタイムでビデオを分析する
-      href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
+    - name: 画像のメタデータを生成する
+      href: Tutorials/storage-lab-tutorial.md
 - name: リファレンス
   items:
+    - name: Computer Vision REST API v3.2 プレビュー
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
+    - name: Computer Vision REST API v3.1
+      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
+    - name: Computer Vision REST API v2.1
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
+    - name: Computer Vision REST API v1.0
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
+    - name: .NET
+      href: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
+    - name: Node.js
+      href: /javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest
+    - name: Python
+      href: /python/api/overview/azure/cognitiveservices/computervision?view=azure-python
+    - name: Go
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision'
+    - name: Java
+      href: /java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
     - name: Azure CLI
-      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
+      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
     - name: Azure PowerShell
       href: /powershell/module/azurerm.cognitiveservices/
-    - name: Computer Vision API v3.2 プレビュー
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
-    - name: Computer Vision API v3.1
-      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
-    - name: Computer Vision API v2.1
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
-    - name: Computer Vision API v1.0
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
-    - name: SDK
-      items:
-        - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/client/computervision
-        - name: Node.js
-          href: /javascript/api/@azure/cognitiveservices-computervision/
-        - name: Python
-          href: /python/api/overview/azure/cognitiveservices/computervision
-        - name: Go
-          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision'
-        - name: Java
-          href: /java/api/overview/azure/cognitiveservices/client/computervision
 - name: リソース
   items:
-    - name: サポートとヘルプのオプション
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
-    - name: サンプル
-      items:
-        - name: 画像処理アプリの探索
-          href: Tutorials/CSharpTutorial.md
-        - name: Computer Vision の他のサンプル
-          href: /samples/browse/?products=azure&terms=computer-vision
-    - name: よく寄せられる質問
-      href: FAQ.md
-    - name: カテゴリの分類
-      href: Category-Taxonomy.md
-    - name: 言語のサポート
-      href: language-support.md
-    - name: 料金と制限
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: リージョン別の提供状況
+    - name: リージョンのサポート
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Learn モジュール
+      href: /learn/paths/explore-computer-vision-microsoft-azure/
+    - name: サポートとヘルプ
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Read 2.x から Read 3.x へのアップグレード
-      href: upgrade-api-versions.md
+    - name: Azure の更新情報
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

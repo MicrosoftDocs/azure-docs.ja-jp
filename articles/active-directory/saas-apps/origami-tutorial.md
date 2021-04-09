@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 02c79e8385c7a7e9d60a3dcbed603ca94cb1dc43
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92522269"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>チュートリアル: Azure Active Directory と Origami の統合
@@ -41,7 +41,7 @@ Azure AD と Origami の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Origami では、 **SP** によって開始される SSO がサポートされます
+* Origami では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-origami-from-the-gallery"></a>ギャラリーからの Origami の追加
 
@@ -61,13 +61,13 @@ Azure AD への Origami の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Origami** 」と入力し、結果ウィンドウで **[Origami]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Origami**」と入力し、結果ウィンドウで **[Origami]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Origami](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Origami で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Origami で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Origami 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Origami で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -158,7 +158,7 @@ Origami で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -215,15 +215,15 @@ Origami で Azure AD シングル サインオンを構成するには、次の�
    
     ![[新規ユーザーの追加] ダイアログのスクリーンショット。[ユーザー名]、[名]、[姓] テキスト ボックスが強調表示されています。](./media/origami-tutorial/tutorial_origami_56.png)
 
-    a. **[ユーザー名]** テキスト ボックスに、ユーザーのメール アドレス ( **brittasimon\@contoso.com** など) を入力します。
+    a. **[ユーザー名]** テキスト ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
 
     b. **[パスワード]** ボックスに、パスワードを入力します。
 
     c. **[パスワードの確認]** ボックスに、パスワードを再度入力します。
 
-    d. **[名]** ボックスに、ユーザーの名前を入力します (この例では **Britta** )。
+    d. **[名]** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
 
-    e. **[姓]** ボックスに、ユーザーの姓を入力します (この例では **Simon** )。
+    e. **[姓]** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
     f. **[保存]** をクリックします。
    

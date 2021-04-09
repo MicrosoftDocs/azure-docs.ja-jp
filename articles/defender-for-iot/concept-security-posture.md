@@ -1,19 +1,14 @@
 ---
 title: セキュリティ体制 - CIS ベンチマーク
-titleSuffix: Azure Defender for IoT
 description: Defender for IoT マイクロ エージェントを使用して、セキュリティのコンプライアンスと体制を改善します。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: conceptual
-ms.service: azure
-ms.openlocfilehash: 8a3062d50d30c99ea2322bbff037a6f61e7b7b4c
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 574d1fe7415bf655c94d4076659e90c203cff1ba
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809664"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784545"
 ---
 # <a name="security-posture--cis-benchmark"></a>セキュリティ体制 - CIS ベンチマーク 
 

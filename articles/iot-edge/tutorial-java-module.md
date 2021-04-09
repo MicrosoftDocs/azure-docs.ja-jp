@@ -12,16 +12,18 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 51b7f6e814a9fad286a934466daeb1ffced225c1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3f24f38db7704557894d866b789890763f9e1316
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968062"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103463257"
 ---
-# <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の Java IoT Edge モジュールを開発する
+# <a name="tutorial-develop-a-java-iot-edge-module-using-linux-containers"></a>チュートリアル: Linux コンテナーを使用して Java の IoT Edge モジュールを開発する
 
-Azure IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、センサー データをフィルター処理する IoT Edge モジュールを作成および展開する方法について説明します。 [Linux](quickstart-linux.md) でシミュレートされたデバイスに Azure IoT Edge をデプロイするクイック スタートで作成した、シミュレートされた IoT Edge デバイスを使用します。 このチュートリアルでは、以下の内容を学習します。
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+
+Azure IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、センサー データをフィルター処理する IoT Edge モジュールを作成および展開する方法について説明します。 シミュレートされたデバイスに Azure IoT Edge をデプロイするクイック スタートの記事で作成した、シミュレートされた IoT Edge デバイスを使用します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 >
@@ -36,7 +38,7 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、**Visual Studio Code** を使用して **Java** でモジュールを開発し、それを **Linux デバイス** にデプロイする方法について説明します。 IoT Edge では、Windows デバイス用の Java モジュールはサポートされていません。
+このチュートリアルでは、**Visual Studio Code** を使用して **Java** でモジュールを開発し、それを IoT Edge デバイスにデプロイする方法について説明します。 IoT Edge では、Windows コンテナーとして構築された Java モジュールはサポートされていません。
 
 次の表を使用し、Java モジュールを開発してデプロイする際のオプションをご確認ください。
 
@@ -48,15 +50,15 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 このチュートリアルを開始する前に、前のチュートリアルを完了して、Linux コンテナー開発用の開発環境を設定しておく必要があります。[Linux デバイス用の IoT Edge モジュールを開発する](tutorial-develop-for-linux.md)。 これらのチュートリアルのいずれかを完了すると、次の前提条件が満たされます。
 
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
-* [Azure IoT Edge を実行している Linux デバイス](quickstart-linux.md)
+* Azure IoT Edge を実行しているデバイス。 クイックスタートを使用して、[Linux デバイス](quickstart-linux.md)または [Windows デバイス](quickstart.md)を設定できます。
 * コンテナー レジストリ ([Azure Container Registry](../container-registry/index.yml) など)。
 * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して構成された [Visual Studio Code](https://code.visualstudio.com/)。
 * Linux コンテナーを実行するように構成された [Docker CE](https://docs.docker.com/install/)。
 
-Java で IoT Edge モジュールを開発するには、開発マシンに次の追加の前提条件をインストールします。 
+Java で IoT Edge モジュールを開発するには、開発マシンに次の追加の前提条件をインストールします。
 
 * Visual Studio Code 向け [Java 拡張機能パック](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)。
-* [Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK インストールを指すように [`JAVA_HOME` 環境変数を設定](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)します)。
+* [Java SE Development Kit 11](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK インストールを指すように [`JAVA_HOME` 環境変数を設定](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)します)。
 * [Maven](https://maven.apache.org/)
 
    >[!TIP]

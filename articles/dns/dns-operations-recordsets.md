@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: rohink
 ms.openlocfilehash: f4e713f54ab4702b21763dc9fc6c7b606f94a945
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96011593"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Azure PowerShell を使用して Azure DNS のレコードおよびレコード セットを管理する
@@ -228,7 +228,7 @@ $recordsets = Get-AzDnsRecordSet -Zone $zone
     Set-AzDnsRecordSet -RecordSet $rs
     ```
 
-`Set-AzDnsRecordSet` を使用すると、Azure DNS 内の既存のレコード セット (およびそれに含まれるすべてのレコード) が、指定したレコード セットに "*置き換えられます*"。 同時変更が上書きされないように [ETag チェック](dns-zones-records.md#etags)が使用されます。 オプションの `-Overwrite` スイッチを使用すると、これらのチェックを抑制できます。
+ を使用すると、Azure DNS 内の既存のレコード セット (およびそれに含まれるすべてのレコード) が、指定したレコード セットに "`Set-AzDnsRecordSet` *置き換えられます*"。 同時変更が上書きされないように [ETag チェック](dns-zones-records.md#etags)が使用されます。 オプションの `-Overwrite` スイッチを使用すると、これらのチェックを抑制できます。
 
 一連の操作は "*パイプ*" することもできます。つまり、レコード セット オブジェクトをパラメーターとして渡すのではなく、パイプを使用して渡すことができます。
 

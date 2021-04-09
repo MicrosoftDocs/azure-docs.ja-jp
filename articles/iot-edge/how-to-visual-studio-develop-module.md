@@ -8,14 +8,16 @@ ms.author: kgremban
 ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 2ae6d46198d979f91de5bf31d389f75961b4ab88
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6e5b5c021eb6a83de9ecfb31757855065b70c290
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437169"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103196975"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio 2019 を使用して Azure IoT Edge 用のモジュールを開発してデバッグする
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 ビジネス ロジックを Azure IoT Edge のモジュールにすることができます。 この記事では、主なツールとして Visual Studio 2019 を使用してモジュールを開発してデバッグする方法を示します。
 
@@ -218,7 +220,7 @@ C# モジュールの場合、**IotEdgeModule1** プロジェクトは .NET Core
 
 1. **ソリューション エクスプローラー** で **AzureIoTEdgeApp1** を右クリックし、 **[Build and Push IoT Edge Modules]\(IoT Edge モジュールをビルドしてプッシュする\)** を選択して、各モジュールの Docker イメージをビルドしてプッシュします。
 
-## <a name="deploy-the-solution"></a>ソリューションのデプロイ
+## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
 IoT Edge デバイスの設定に使用したクイック スタートの記事では、Azure portal を使用してモジュールをデプロイしました。 Visual Studio の Cloud Explorer を使用してモジュールをデプロイすることもできます。 実際のシナリオに合わせて既に配置マニフェスト (`deployment.json` ファイル) の準備が完了しているため、デプロイを受け取るデバイスを選択するだけで済みます。
 

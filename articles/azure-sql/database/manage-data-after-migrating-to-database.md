@@ -13,10 +13,10 @@ ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: b34ac24cb26bf5db4a49a5ad5b531deb252f4695
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96446112"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>クラウドの新しい DBA – 移行後の Azure SQL Database の管理

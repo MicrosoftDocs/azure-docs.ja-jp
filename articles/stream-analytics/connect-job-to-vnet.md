@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/04/2021
 ms.custom: devx-track-js
 ms.openlocfilehash: 4701cb4122b4196b08b2a427b34d49c7784b91a7
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98878241"
 ---
 # <a name="connect-stream-analytics-jobs-to-resources-in-an-azure-virtual-network-vnet"></a>Azure Virtual Network (VNet) のリソースへの Stream Analytics ジョブの接続

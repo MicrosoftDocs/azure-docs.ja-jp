@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
 ms.openlocfilehash: 4bb7458d4258dffb074d663e5cf712c7a0245cc7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96022328"
 ---
 # <a name="verify-traffic-manager-settings"></a>Traffic Manager の設定の検証
@@ -33,7 +33,7 @@ DNS 名がプロファイル内のエンドポイントの IP アドレスに解
 
 1. 管理者として、コマンド プロンプトまたは Windows PowerShell プロンプトを開きます。
 2. 「`ipconfig /flushdns`」と入力して、DNS リゾルバー キャッシュをフラッシュします。
-3. 「`nslookup <your Traffic Manager domain name>`. たとえば、次のコマンドは、プレフィックスが *myapp.contoso* のドメインを確認します。
+3. 「`nslookup <your Traffic Manager domain name>`」と入力します。 たとえば、次のコマンドは、プレフィックスが *myapp.contoso* のドメインを確認します。
 
     ```powershell
     nslookup myapp.contoso.trafficmanager.net

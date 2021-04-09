@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 3ad9d7963da3719773afb4a39fc882ba0dddbf85
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92520253"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>チュートリアル: Azure Active Directory と Wingspan eTMF の統合
@@ -41,7 +41,7 @@ Azure AD と Wingspan eTMF の統合を構成するには、次の項目が必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Wingspan eTMF では、 **SP** によって開始される SSO がサポートされます
+* Wingspan eTMF では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-wingspan-etmf-from-the-gallery"></a>ギャラリーからの Wingspan eTMF の追加
 
@@ -61,13 +61,13 @@ Azure AD への Wingspan eTMF の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 結果ボックスに「 **Wingspan eTMF** 」と入力し、結果パネルで **[Wingspan eTMF]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 結果ボックスに「**Wingspan eTMF**」と入力し、結果パネルで **[Wingspan eTMF]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Wingspan eTMF](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** という名前のテスト ユーザーに基づいて、Wingspan eTMF で Azure AD シングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** という名前のテスト ユーザーに基づいて、Wingspan eTMF で Azure AD シングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Wingspan eTMF 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Wingspan eTMF で Azure AD シングル サインオンを構成およびテストするには、次の構成要素を完了する必要があります。
@@ -144,7 +144,7 @@ Wingspan eTMF で Azure AD シングル サインオンを構成するには、�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

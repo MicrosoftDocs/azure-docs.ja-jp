@@ -9,12 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 7d59ca60c7f90c227885927086511bd1f8ac7ca1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b46cf3a742158a3347b43a1e9bc6d62d0b2160d4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185842"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104773693"
 ---
 # <a name="encryption-of-secure-assets-in-azure-automation"></a>Azure Automation でのセキュリティで保護された資産の暗号化
 
@@ -141,18 +141,21 @@ PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000
 要求本文:
 
 ```json
- {
+{
+    "identity": {
+    "type": "SystemAssigned"
+    },
     "properties": {
-      "encryption": {
-        "keySource": "Microsoft.Keyvault",
-        "keyvaultProperties": {
-          "keyName": "sample-vault-key",
-          "keyvaultUri": "https://sample-vault-key12.vault.azure.net",
-          "keyVersion": "7c73556c521340209371eaf623cc099d"
+        "encryption": {
+            "keySource": "Microsoft.Keyvault",
+            "keyvaultProperties": {
+                "keyName": "sample-vault-key",
+                "keyvaultUri": "https://sample-vault-key12.vault.azure.net",
+                "keyVersion": "7c73556c521340209371eaf623cc099d"
+            }
         }
-      }
     }
-  }
+}
 ```
 
 応答のサンプル

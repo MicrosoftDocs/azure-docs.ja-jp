@@ -11,10 +11,10 @@ ms.subservice: pipeline
 ms.topic: tutorial
 ms.date: 12/31/2020
 ms.openlocfilehash: 2ea7c3c440fcf95e4512464333efe8461788bceb
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98219404"
 ---
 # <a name="integrate-with-pipelines"></a>パイプラインと統合する

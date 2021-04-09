@@ -4,10 +4,10 @@ description: GNS3 でネットワークの授業を行うために Azure Lab Ser
 ms.topic: article
 ms.date: 01/19/2021
 ms.openlocfilehash: dec5dea13d5a89536a06da45fc57d33881a9b3ad
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99499395"
 ---
 # <a name="set-up-a-lab-to-teach-a-networking-class"></a>ネットワーク クラスの授業を行うためのラボを設定する 

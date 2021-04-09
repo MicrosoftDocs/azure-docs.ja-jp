@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.custom: contperf-fy21q1
 ms.date: 06/21/2019
 ms.openlocfilehash: 7884f8baa24180fcb94f77a45c3457ba62d3f351
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98018141"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブのアラートを設定する

@@ -1,20 +1,20 @@
 ---
 title: 管理テナントでの委任変更を監視する
 description: 顧客テナントから管理テナントへの委任アクティビティを監視する方法について説明します。
-ms.date: 01/27/2021
+ms.date: 02/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 3bf6cc044d807d0c830b15c6d9c9a6d507f1a54f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8bd9e89039c114f3d1088df44198fe00c69bbf82
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593134"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199055"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>管理テナントでの委任変更を監視する
 
 お客様はサービス プロバイダーとして、[Azure Lighthouse](../overview.md) を通して顧客のサブスクリプションまたはリソース グループがご利用のテナントに委任された日時、または以前に委任されているリソースが削除された日時を確認することが必要な場合があります。
 
-管理テナントでは、[Azure アクティビ ティログ](../../azure-monitor/essentials/platform-logs-overview.md)によって委任アクティビティがテナント レベルで追跡されます。 このログに記録されるアクティビティには、すべての顧客テナントに対する委任の追加または削除が含まれます。
+管理テナントでは、[Azure アクティビ ティログ](../../azure-monitor/essentials/platform-logs-overview.md)によって委任アクティビティがテナント レベルで追跡されます。 このログに記録されるアクティビティには、顧客テナントに対する委任の追加または削除が含まれます。
 
 このトピックでは、お客様のテナント (お客様のすべての顧客を対象とする) への委任アクティビティを監視するために必要なアクセス許可について説明します。 また、このデータに対してクエリを実行してレポートするための方法の 1 つを示すサンプル スクリプトも示します。
 

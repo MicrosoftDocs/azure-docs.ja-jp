@@ -6,30 +6,30 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 1a3f2ae4829c7f4ae41d31e2a2fc35d79adf3d4c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 772602a11878276da3b81b84e7f4016997375077
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596709"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183065"
 ---
 # <a name="set-up-dependency-visualization"></a>依存関係の視覚化を設定する
 
-この記事では、Azure Migrate:Server Assessment でエージェントベースの依存関係の分析を設定する方法について説明します。 [依存関係の分析](concepts-dependency-visualization.md)は、評価や Azure への移行を行うマシン間の依存関係を特定し、理解するために役立ちます。
+この記事では、Azure Migrate: Server Assessment でエージェントベースの依存関係の分析を設定する方法について説明します。 [依存関係の分析](concepts-dependency-visualization.md)は、評価や Azure への移行を行うマシン間の依存関係を特定し、理解するために役立ちます。
 
 ## <a name="before-you-start"></a>開始する前に
 
 - 次のエージェントベースの依存関係分析のサポートとデプロイの要件を確認します。
     - [VMware VM](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agent-based)
     - [物理サーバー](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
-    - [Hyper-V VM](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)。
+    - [Hyper-V VM](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)
 - 以下を実行します。
     - Azure Migrate プロジェクトがあること。 ない場合は、今すぐ[作成](./create-manage-projects.md)します。
-    - Azure Migrate:Server Assessment ツールがプロジェクトに[追加](how-to-assess.md)されていることを確認すること。
-    - オンプレミスのマシンを検出するための [Azure Migrate アプライアンス](migrate-appliance.md)を設定すること。 アプライアンスは、オンプレミス マシンを検出して、Azure Migrate:Server Assessment にメタデータとパフォーマンス データを送信します。 次に対してアプライアンスを設定します。
-        - [VMware](how-to-set-up-appliance-vmware.md) VM。
-        - [Hyper-V](how-to-set-up-appliance-hyper-v.md) VM。
-        - [物理サーバー](how-to-set-up-appliance-physical.md)。
+    - Azure Migrate: Server Assessment ツールがプロジェクトに[追加](how-to-assess.md)されていることを確認します。
+    - オンプレミスのマシンを検出するための [Azure Migrate アプライアンス](migrate-appliance.md)を設定すること。 アプライアンスでオンプレミスのマシンが検出されて、メタデータとパフォーマンス データが Azure Migrate: Server Assessment を使用して作成する方法について説明します。 次に対してアプライアンスを設定します。
+        - [VMware](how-to-set-up-appliance-vmware.md) VM
+        - [Hyper-V VM](how-to-set-up-appliance-hyper-v.md)
+        - [物理サーバー](how-to-set-up-appliance-physical.md)
 - 依存関係の視覚化を利用するには、[Log Analytics ワークスペース](../azure-monitor/logs/manage-access.md)を Azure Migrate プロジェクトに関連付けます。
     - Azure Migrate アプライアンスを設定して Azure Migrate プロジェクトでマシンが検出された後にのみ、ワークスペースをアタッチできます。
     - ワークスペースが、Azure Migrate プロジェクトを含むサブスクリプション内にあることを確認します。

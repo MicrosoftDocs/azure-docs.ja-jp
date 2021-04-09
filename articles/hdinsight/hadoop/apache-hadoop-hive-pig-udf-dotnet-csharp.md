@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
-ms.openlocfilehash: 97b23a2b9e3b95a5ea0efcd27d0ec185b1c456f1
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b5682ff58ad827f5a165342f11f03fb49bbe6d2d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946547"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867884"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop の Apache Hive と Apache Pig で C# のユーザー定義関数を使用する
 
@@ -53,7 +53,7 @@ Apache Hive UDF の C# プロジェクトを作成するには、次のように
 
 2. **[新しいプロジェクトの作成]** を選択します。
 
-3. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** テンプレート (C# バージョン) を選択します。 **[次へ]** を選択します。
+3. **[新しいプロジェクトの作成]** ウィンドウで、**[コンソール アプリ (.NET Framework)]** テンプレート (C# バージョン) を選択します。 次に、**[次へ]** を選択します。
 
 4. **[新しいプロジェクトを構成します]** ウィンドウで、*HiveCSharp* の **プロジェクト名** を入力し、新しいプロジェクトを保存する **場所** に移動または場所を作成します。 **[作成]** を選択します。
 
@@ -120,7 +120,7 @@ Apache Hive UDF の C# プロジェクトを作成するには、次のように
 
 2. **[開始]** ウィンドウで、 **[新しいプロジェクトの作成]** を選択します。
 
-3. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** テンプレート (C# バージョン) を選択します。 **[次へ]** を選択します。
+3. **[新しいプロジェクトの作成]** ウィンドウで、**[コンソール アプリ (.NET Framework)]** テンプレート (C# バージョン) を選択します。 次に、**[次へ]** を選択します。
 
 4. **[新しいプロジェクトを構成します]** ウィンドウで、*PigUDF* の **プロジェクト名** を入力し、新しいプロジェクトを保存する **場所** に移動または場所を作成します。 **[作成]** を選択します。
 
@@ -167,13 +167,13 @@ Apache Hive UDF の C# プロジェクトを作成するには、次のように
 
 1. Visual Studio で、 **[表示]**  >  **[サーバー エクスプローラー]** の順に移動します。
 
-1. **[サーバー エクスプローラー]** で、 **[Azure]** を右クリックし、 **[Microsoft Azure サブスクリプションへの接続]** を選択し、サインイン処理を完了します。
+1. **[サーバー エクスプローラー]** で、**[Azure]** を右クリックし、**[Microsoft Azure サブスクリプションへの接続]** を選択し、サインイン処理を完了します。
 
 1. このアプリケーションをデプロイする HDInsight クラスターを展開します。 エントリとテキスト **(既定のストレージ アカウント)** が一覧表示されます。
 
-    ![既定のストレージ アカウント、HDInsight クラスター、サーバー エクスプローラー](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
+    :::image type="content" source="./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png" alt-text="既定のストレージ アカウント、HDInsight クラスター、サーバー エクスプローラー" border="true":::
 
-    * このエントリを展開できる場合は、クラスターの既定のストレージとして **Azure ストレージ アカウント** を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、 **[(既定のコンテナー)]** をダブルクリックします。
+    * このエントリを展開できる場合は、クラスターの既定のストレージとして **Azure ストレージ アカウント** を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、**[(既定のコンテナー)]** をダブルクリックします。
 
     * このエントリを展開できない場合は、クラスターの既定のストレージとして **Azure Data Lake Storage** を使用します。 クラスターの既定のストレージにファイルを表示するには、 **(既定のストレージ アカウント)** エントリをダブルクリックします。
 
@@ -181,11 +181,11 @@ Apache Hive UDF の C# プロジェクトを作成するには、次のように
 
     * **Azure ストレージ アカウント** を使用している場合は、 **[BLOB のアップロード]** アイコンを選択します。
 
-        ![新しいプロジェクトの HDInsight アップロード アイコン](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
+        :::image type="content" source="./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png" alt-text="新しいプロジェクトの HDInsight アップロード アイコン" border="true":::
 
         **[新しいファイルのアップロード]** ダイアログ ボックスの **[ファイル名]** で、 **[参照]** を選択します。 **[BLOB のアップロード]** ダイアログ ボックスで、*HiveCSharp* プロジェクトの *bin\debug* フォルダーに移動し、*HiveCSharp.exe* ファイルを選択します。 最後に、 **[開く]** を選択し、 **[OK]** を選択してアップロードを完了します。
 
-    * **Azure Data Lake Storage** を使用している場合は、ファイルの一覧の空の領域を右クリックし、 **[アップロード]** を選択します。 最後に、*HiveCSharp.exe* ファイルを選び、 **[OK]** を選択します。
+    * **Azure Data Lake Storage** を使用している場合は、ファイルの一覧の空の領域を右クリックし、**[アップロード]** を選択します。 最後に、*HiveCSharp.exe* ファイルを選び、**[OK]** を選択します。
 
     *HiveCSharp.exe* のアップロードが完了したら、*PigUDF.exe* ファイルのアップロード プロセスを繰り返します。
 
@@ -195,9 +195,9 @@ Hive UDF アプリケーションを使用する Hive クエリを実行でき�
 
 1. Visual Studio で、 **[表示]**  >  **[サーバー エクスプローラー]** の順に移動します。
 
-2. **[Azure]** を展開して、 **[HDInsight]** を展開します。
+2. **[Azure]** を展開して、**[HDInsight]** を展開します。
 
-3. *HiveCSharp* アプリケーションをデプロイしたクラスターを右クリックし、 **[Write a Hive Query]** を選択します。
+3. *HiveCSharp* アプリケーションをデプロイしたクラスターを右クリックし、**[Write a Hive Query]** を選択します。
 
 4. Hive クエリには、次のテキストを使用します。
 
@@ -221,9 +221,9 @@ Hive UDF アプリケーションを使用する Hive クエリを実行でき�
 
     このクエリは、`hivesampletable` から `clientid`、`devicemake`、`devicemodel` の各フィールドを選択し、*HiveCSharp.exe* アプリケーションに選択したフィールドを渡します。 クエリはアプリケーションが 3 つのフィールドを返すことを想定し、これは `clientid`、`phoneLabel`、`phoneHash` として格納されます。 このクエリでは、既定のストレージ コンテナーのルートで *HiveCSharp.exe* が見つかることを想定しています。
 
-5. 既定の **[対話型]** を **[バッチ]** に切り替えてから、 **[送信]** を選択して、ジョブを HDInsight クラスターに送信します。 **[Hive ジョブの概要]** ウィンドウが開きます。
+5. 既定の **[対話型]** を **[バッチ]** に切り替えてから、**[送信]** を選択して、ジョブを HDInsight クラスターに送信します。 **[Hive ジョブの概要]** ウィンドウが開きます。
 
-6. **[更新]** を選択し、 **[ジョブの状態]** が **[完了]** に変わるまで概要を更新します。 ジョブの出力を表示するには、 **[ジョブの出力]** を選択します。
+6. **[更新]** を選択し、**[ジョブの状態]** が **[完了]** に変わるまで概要を更新します。 ジョブの出力を表示するには、**[ジョブの出力]** を選択します。
 
 ## <a name="run-an-apache-pig-job"></a>Apache Pig ジョブを実行する
 

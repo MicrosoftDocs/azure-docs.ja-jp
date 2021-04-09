@@ -3,16 +3,16 @@ title: データ パイプラインを監視および管理する - Azure
 description: 監視と管理アプリを使用して Azure のデータ ファクトリとパイプラインを監視および管理する方法について説明します。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: be11f742eb99d25cb0e41a3dd0888d62417837dd
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3a9eb73aab381f90ae51300bff1250348916c2ab
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380374"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779598"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]

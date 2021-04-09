@@ -8,14 +8,16 @@ ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ef3f09648e0d9101d07c6d8941ee7f79ae97b2b8
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 9248c9578d94b000c04c82b33eeeb089e55a26ef
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048034"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103200307"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure Portal から Azure IoT Edge モジュールをデプロイする
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 ビジネス ロジックで IoT Edge モジュールを作成したら、それらをデバイスにデプロイしてエッジで動作させます。 連携してデータを収集および処理する複数のモジュールがある場合は、一度にそのすべてをデプロイし、それらを接続するルーティング規則を宣言できます。
 
@@ -32,7 +34,7 @@ ms.locfileid: "92048034"
 
 配置マニフェストは、デプロイするモジュール、モジュール間でのデータ フロー、およびモジュール ツインの目的のプロパティを記述した JSON ドキュメントです。 配置マニフェストのしくみとその作成方法について詳しくは、「[IoT Edge モジュールをどのように使用、構成、および再利用できるかを理解する](module-composition.md)」をご覧ください。
 
-Azure Portal には、JSON ドキュメントを手動で作成する代わりに配置マニフェストを作成する手順を示すウィザードがあります。 3 つのステップがあります。**モジュールの追加**、**ルートの指定**、および**デプロイの確認**。
+Azure Portal には、JSON ドキュメントを手動で作成する代わりに配置マニフェストを作成する手順を示すウィザードがあります。 3 つのステップがあります。**モジュールの追加**、**ルートの指定**、および **デプロイの確認**。
 
 >[!NOTE]
 >この記事の手順は、IoT Edge エージェントとハブの最新のスキーマ バージョンに合わせています。 スキーマ バージョン 1.1 は IoT Edge バージョン 1.0.10 と共にリリースされ、モジュールの起動順序機能とルートの優先順位付け機能を使用可能にします。
@@ -90,7 +92,7 @@ Azure Marketplace および IoT Hub から、IoT Edge モジュールをデプ�
 
 ### <a name="deploy-from-azure-marketplace"></a>Azure Marketplace からデプロイする
 
-Marketplace の IoT Edge モジュールを調べて、必要なモジュールを見つけたら、**作成** または**今すぐ取得する**を選択してデプロイできます。 デプロイウィザードの手順を続行します。これは、選択した IoT Edge モジュールによって異なります：
+Marketplace の IoT Edge モジュールを調べて、必要なモジュールを見つけたら、**作成** または **今すぐ取得する** を選択してデプロイできます。 デプロイウィザードの手順を続行します。これは、選択した IoT Edge モジュールによって異なります：
 
 1. **[続行]** を選択して、プロバイダーの使用条件とプライバシー ポリシーを確認します。 最初に連絡先情報を提供する必要があります。
 1. お使いのサブスクリプションと、ターゲット デバイスをアタッチする IoT ハブを選択します。

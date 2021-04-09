@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 24a834c87fe34d90dec5961bb3f8d376c6e5e62d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100373217"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>クイック スタート:Azure Maps を使用して対話形式の検索マップを作成する

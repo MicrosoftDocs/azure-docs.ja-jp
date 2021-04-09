@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: b6745ed879f02a341027417b54eb459b5bfed705
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: ed11b0bb00a571fb4cefc51a708432baef88184d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762946"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104613075"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>チュートリアル:Azure Stack Edge Mini R の配置を準備する
 
@@ -84,6 +84,8 @@ Azure Stack Edge Mini R デバイスを配置するには、次の順序どお�
 
 物理デバイスを管理する既存の Azure Stack Edge リソースがある場合は、この手順をスキップして、「[アクティブ化キーの取得](#get-the-activation-key)」に進みます。
 
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
 Azure Stack Edge リソースを作成するには、Azure portal で次の手順を実行します。
 
 1. Microsoft Azure 資格情報を使用し、Azure portal にサインインします。URL は [https://portal.azure.com](https://portal.azure.com) です。
@@ -151,6 +153,51 @@ Microsoft は受け取った注文を確認し、発送の詳細と共にお客�
 > 一度に複数の注文を作成したい場合や既存の注文を複製したい場合は、[「Azure サンプル」のスクリプト](https://github.com/Azure-Samples/azure-stack-edge-order)をご利用ください。 詳細については、Readme ファイルを参照してください。
 
 注文処理の間に問題が発生した場合は、[注文の問題のトラブルシューティング](azure-stack-edge-troubleshoot-ordering.md)に関する記事を参照してください。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+必要に応じて、Azure CLI の環境を準備します。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Azure Stack Edge リソースを作成するには、Azure CLI で次のコマンドを実行します。
+
+1. [az group create](/cli/azure/group#az_group_create) コマンドを使用してリソース グループを作成するか、既存のリソース グループを使用します。
+
+   ```azurecli
+   az group create --name myasepgpu1 --location eastus
+   ```
+
+1. デバイスを作成するには、[az databoxedge device create](/cli/azure/databoxedge/device#az_databoxedge_device_create) コマンドを使用します。
+
+   ```azurecli
+   az databoxedge device create --resource-group myasepgpu1 \
+      --device-name myasegpu1 --location eastus --sku EdgeMR_Mini
+   ```
+
+   デバイスをデプロイする地理的リージョンに最も近い場所を選択します。 このリージョンには、デバイス管理用のメタデータのみが格納されます。 実際のデータは、任意のストレージ アカウントに格納できます。
+
+   Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関するページを参照してください。 Azure Government を使用している場合は、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」に記載されているすべての政府機関向けリージョンを選択できます。
+
+1. 注文を作成するには、[az databoxedge order create](/cli/azure/databoxedge/order#az_databoxedge_order_create) コマンドを実行します。
+
+   ```azurecli
+   az databoxedge order create --resource-group myasepgpu1 \
+      --device-name myasegpu1 --company-name "Contoso" \
+      --address-line1 "1020 Enterprise Way" --city "Sunnyvale" \
+      --state "California" --country "United States" --postal-code 94089 \
+      --contact-person "Gus Poland" --email-list gus@contoso.com --phone 4085555555
+   ```
+
+リソースの作成には数分かかります。 [Az databoxedge order show](/cli/azure/databoxedge/order#az_databoxedge_order_show) コマンドを実行して、注文を確認します。
+
+```azurecli
+az databoxedge order show --resource-group myasepgpu1 --device-name myasegpu1 
+```
+
+注文が行われたら、Microsoft は注文を確認し、発送の詳細が記載されたメールをお客様に送信します。
+
+---
 
 ## <a name="get-the-activation-key"></a>アクティブ化キーの取得
 

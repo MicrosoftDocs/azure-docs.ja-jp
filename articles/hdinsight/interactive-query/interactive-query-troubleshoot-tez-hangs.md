@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/09/2019
 ms.openlocfilehash: 56c68c26ae953034283031e2427b7a4afadee94e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98935934"
 ---
-# <a name="scenario-apache-tez-application-hangs-in-azure-hdinsight"></a>シナリオ:Azure HDInsight で Apache Tez アプリケーションがハングする
+# <a name="scenario-apache-tez-application-hangs-in-azure-hdinsight"></a>シナリオ: Azure HDInsight で Apache Tez アプリケーションがハングする
 
 この記事では、Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策について説明します。
 
@@ -23,7 +23,7 @@ Apache Hive ジョブを送信した後、Tez ビューでジョブの状態は 
 
 送信されたジョブ数が多すぎます。長い Yarn キューです。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
 クラスターをスケールアップするか、Yarn キューがドレインされるまで待機します。
 

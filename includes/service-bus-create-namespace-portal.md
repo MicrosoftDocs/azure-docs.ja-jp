@@ -9,10 +9,10 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: d2c309340155bc626d4da94d74aee9be51bde510
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90606202"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Azure Portal での名前空間の作成
@@ -25,21 +25,21 @@ Azure の Service Bus メッセージング エンティティを使用するに
 
     ![[リソースの作成] -> [統合] -> [Service Bus]](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
 3. **[名前空間の作成]** ダイアログで、次の手順を実行します。 
-    1. **名前空間の名前**を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。 名前空間の名前付け規則の一覧については、[名前空間の作成の REST API](/rest/api/servicebus/create-namespace) に関する記事を参照してください。
+    1. **名前空間の名前** を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。 名前空間の名前付け規則の一覧については、[名前空間の作成の REST API](/rest/api/servicebus/create-namespace) に関する記事を参照してください。
     2. 名前空間の価格レベル (Basic、Standard、Premium) を選択します。 [トピックとサブスクリプション](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)を使用する場合は、Standard または Premium を選択してください。 Basic 価格レベルでは、トピック/サブスクリプションはサポートされていません。
     3. **Premium** 価格レベルを選択した場合は、次の手順を実行します。 
-        1. **メッセージング ユニット**の数を指定します。 Premium レベルでは、各ワークロードが分離した状態で実行されるように、CPU とメモリのレベルでリソースが分離されます。 このリソースのコンテナーをメッセージング ユニットと呼びます。 Premium 名前空間には、少なくとも 1 つのメッセージング ユニットがあります。 Service Bus の Premium 名前空間ごとに、1 個、2 個、または 4 個のメッセージング ユニットを選択できます。 詳細については、[Service Bus の Premium メッセージング](../articles/service-bus-messaging/service-bus-premium-messaging.md)に関するページをご覧ください。
-        2. 名前空間を**ゾーン冗長**にするかどうかを指定します。 ゾーン冗長により、追加コストなしで 1 つのリージョン内の可用性ゾーンをまたいでレプリカを配置することで、可用性を高めることができます。 詳細については、[Azure の Availability Zones](../articles/availability-zones/az-overview.md) に関するページをご覧ください。
+        1. **メッセージング ユニット** の数を指定します。 Premium レベルでは、各ワークロードが分離した状態で実行されるように、CPU とメモリのレベルでリソースが分離されます。 このリソースのコンテナーをメッセージング ユニットと呼びます。 Premium 名前空間には、少なくとも 1 つのメッセージング ユニットがあります。 Service Bus の Premium 名前空間ごとに、1 個、2 個、または 4 個のメッセージング ユニットを選択できます。 詳細については、[Service Bus の Premium メッセージング](../articles/service-bus-messaging/service-bus-premium-messaging.md)に関するページをご覧ください。
+        2. 名前空間を **ゾーン冗長** にするかどうかを指定します。 ゾーン冗長により、追加コストなしで 1 つのリージョン内の可用性ゾーンをまたいでレプリカを配置することで、可用性を高めることができます。 詳細については、[Azure の Availability Zones](../articles/availability-zones/az-overview.md) に関するページをご覧ください。
     4. **[サブスクリプション]** で、名前空間を作成する Azure サブスクリプションを選択します。
     5. **[リソース グループ]** で、名前空間を追加する既存のリソース グループを選択するか、新しいリソース グループを作成します。      
     6. **[場所]** で、名前空間をホストするリージョンを選択します。
     7. **［作成］** を選択します これで、システムによってサービス名前空間が作成され、有効になります。 システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
    
         ![[名前空間の作成]](./media/service-bus-create-namespace-portal/create-namespace.png)
-4. Service Bus 名前空間が正常にデプロイされていることを確認します。 通知を確認するには、ツール バーの**ベルのアイコン (アラート)** を選択します。 次の図に示すように、通知内の**リソース グループの名前**を選択します。 Service Bus 名前空間を含むリソース グループが表示されます。
+4. Service Bus 名前空間が正常にデプロイされていることを確認します。 通知を確認するには、ツール バーの **ベルのアイコン (アラート)** を選択します。 次の図に示すように、通知内の **リソース グループの名前** を選択します。 Service Bus 名前空間を含むリソース グループが表示されます。
 
     ![デプロイのアラート](./media/service-bus-create-namespace-portal/deployment-alert.png)
-5. このリソース グループの **[リソース グループ]** ページで、**Service Bus 名前空間**を選択します。 
+5. このリソース グループの **[リソース グループ]** ページで、**Service Bus 名前空間** を選択します。 
 
     ![[リソース グループ] ページ - Service Bus 名前空間を選択する](./media/service-bus-create-namespace-portal/resource-group-select-service-bus.png)
 6. Service Bus 名前空間のホーム ページが表示されます。 

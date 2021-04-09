@@ -9,10 +9,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: bf01df2307796831dee602dad30455a4922ef90b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98873190"
 ---
 | リソース | 説明|

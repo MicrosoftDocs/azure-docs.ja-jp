@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: 9363a2dacd91d3868e69e47381eea528e358935c
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 724b94a44ae289063bbb1c6ebf53b38c0a617b88
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845460"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799329"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 
@@ -44,7 +44,7 @@ LUIS が理解する発話の言語を次に示します。
 | 韓国語 |`ko-KR` |✔|-|-|キー フレーズのみ|
 | マラーティー語 | `mr-IN`|-|-|-|-|
 | ポルトガル語 (ブラジル) |`pt-BR` |✔| ✔ |✔ |一部のサブカルチャのみ|
-| スペイン語 (メキシコ)|`es-MX` |-|-|✔|✔|
+| スペイン語 (メキシコ)|`es-MX` |-|✔|✔|✔|
 | スペイン語 (スペイン) |`es-ES` |✔| ✔ |✔|✔|
 | タミル語 | `ta-IN`|-|-|-|-|
 | テルグ語 | `te-IN`|-|-|-|-|

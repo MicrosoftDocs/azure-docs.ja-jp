@@ -8,10 +8,10 @@ ms.author: philmea
 ms.date: 11/19/2020
 ms.topic: how-to
 ms.openlocfilehash: 19d8738790b5634b9de989fa94edac6a542f85f4
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94917343"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでのジョブの作成と実行

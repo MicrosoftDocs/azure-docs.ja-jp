@@ -9,10 +9,10 @@ ms.date: 03/04/2019
 ms.author: zhshang
 ms.custom: devx-track-java
 ms.openlocfilehash: 62f31d8426e86cc20e957f3a47b30109dee0a634
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96185676"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>クイック スタート:Java を使用した Azure Functions と SignalR Service によるチャット ルームの作成

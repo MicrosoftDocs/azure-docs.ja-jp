@@ -7,10 +7,10 @@ ms.date: 01/30/2021
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 71bd7d38727d99c05a15c54e5141c613960d9050
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99220821"
 ---
 # <a name="deploy-the-rd-gateway-role-in-windows-virtual-desktop-preview"></a>Windows Virtual Desktop で RD ゲートウェイ ロールをデプロイする (プレビュー)

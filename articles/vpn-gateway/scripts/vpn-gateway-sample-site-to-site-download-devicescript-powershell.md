@@ -10,10 +10,10 @@ ms.topic: sample
 ms.date: 01/09/2020
 ms.author: yushwang
 ms.openlocfilehash: 283ddb12e497c242f1843840fe1f1ff208712626
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88031712"
 ---
 # <a name="download-vpn-device-template-using-powershell"></a>PowerShell を使用して VPN デバイス テンプレートをダウンロードする
@@ -48,7 +48,7 @@ Remove-AzResourceGroup -Name TestRG1
 
 このスクリプトでは、以下のコマンドを実行してデプロイを作成します。 表内の各項目は、コマンドごとのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | メモ |
 |---|---|
 | [Get-AzVirtualNetworkGatewaySupportedVpnDevice](/powershell/module/az.network/Get-azVirtualNetworkGatewaySupportedVpnDevice) | 利用可能なすべての VPN デバイスのモデルとバージョンを一覧表示します。 |
 | [Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript](/powershell/module/az.network/Get-azVirtualNetworkGatewayConnectionVpnDeviceConfigScript) | 接続の構成テンプレートをダウンロードします。 |

@@ -9,16 +9,16 @@ ms.date: 01/29/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: f1d254eecc41ebef690b4fc9f8294bee5a368ae4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a5d1d6af68fcbd6a5822b2652ee79c464d02241f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570021"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103200762"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics のログ
 
-Storage Analytics は、ストレージ サービスに対する要求の成功と失敗についての詳細な情報をログに記録します。 この情報を使って個々の要求を監視したり、ストレージ サービスに関する問題を診断したりできます。 要求は、ベスト エフォートでログに記録されます。
+Storage Analytics は、ストレージ サービスに対する要求の成功と失敗についての詳細な情報をログに記録します。 この情報を使って個々の要求を監視したり、ストレージ サービスに関する問題を診断したりできます。 要求は、ベスト エフォートでログに記録されます。 これは、ほとんどの要求ではログ レコードが生成されますが、Storage Analytics ログの完全性と適時性は保証されないことを意味します。 
 
 > [!NOTE]
 > Microsoft では、Storage Analytics ログの代わりに、Azure Monitor の Azure Storage ログを使用することをお勧めしています。 Azure Monitor の Azure Storage ログはパブリック プレビュー段階にあり、すべてのパブリック クラウド リージョンでプレビュー テスト用に使用できます。 このプレビューでは、BLOB (Azure Data Lake Storage Gen2 を含む)、ファイル、キュー、およびテーブルに対してログが有効になります。 詳細については、以下のいずれかの記事をお読みください。
@@ -26,7 +26,7 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 > - [Azure Blob Storage の監視](../blobs/monitor-blob-storage.md)
 > - [Azure Files の監視](../files/storage-files-monitoring.md)
 > - [Azure Queue Storage の監視](../queues/monitor-queue-storage.md)
-> - [Azure Table Storage の監視](../tables/monitor-table-storage.md)
+> - [Azure Table ストレージの監視](../tables/monitor-table-storage.md)
 
  既定では、お使いのストレージ アカウントで Storage Analytics のログは有効になっていません。 これは、[Azure portal](https://portal.azure.com/) で、または PowerShell や Azure CLI を使用して有効にすることができます。 ステップ バイ ステップ ガイダンスについては、「[Azure Storage Analytics ログを有効にして管理する (クラシック)](manage-storage-analytics-logs.md)」を参照してください。 
 

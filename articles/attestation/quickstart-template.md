@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: mbaldwin
 ms.date: 10/16/2020
 ms.openlocfilehash: 8c56a37ebcc799b0170785666212eb4e3b00a5f0
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92144967"
 ---
 # <a name="quickstart-create-an-azure-attestation-provider-with-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Attestation プロバイダーを作成する
@@ -51,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     - **[Attestation Provider Name]\(構成証明プロバイダー名\)** : Azure Attestation プロバイダーの名前を選択します。
     - **[場所]** :場所を選択します。 たとえば **[米国中部]** です。
-    - **タグ** :場所を選択します。 たとえば **[米国中部]** です。
+    - **タグ**:場所を選択します。 たとえば **[米国中部]** です。
 
 1. **[購入]** を選択します。 構成証明リソースが正常にデプロイされると、通知が表示されます。
 

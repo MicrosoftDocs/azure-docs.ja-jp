@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/18/2019
-ms.openlocfilehash: e14784459a3c7733af274197507b76341d68477e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d78b629e90903c58b98de86f425f0c1225d90997
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946895"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867051"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Kafka と Azure Cosmos DB で Apache Spark 構造化ストリーミングを使用する
 
@@ -31,7 +31,7 @@ Spark 構造化ストリーミングは、Spark SQL に組み込まれたスト�
 
 HDInsight 上の Apache Kafka では、パブリック インターネット経由の Kafka ブローカーへのアクセスは提供されません。 Kafka と通信するすべてのものは、Kafka クラスター内のノードと同じ Azure 仮想ネットワークに存在している必要があります。 この例では、Kafka クラスターと Spark クラスターの両方を Azure 仮想ネットワーク内に配置します。 次の図に、クラスター間の通信フローを示します。
 
-![Azure 仮想ネットワークにおける Spark クラスターと Kafka クラスターの図](./media/apache-kafka-spark-structured-streaming-cosmosdb/apache-spark-kafka-vnet.png)
+:::image type="content" source="./media/apache-kafka-spark-structured-streaming-cosmosdb/apache-spark-kafka-vnet.png" alt-text="Azure 仮想ネットワークにおける Spark クラスターと Kafka クラスターの図" border="false":::
 
 > [!NOTE]  
 > Kafka サービスは、仮想ネットワーク内の通信に制限されます。 SSH や Ambari など、クラスター上の他のサービスは、インターネット経由でアクセスできます。 HDInsight で使用できるパブリック ポートの詳細については、「[HDInsight で使用されるポートと URI](hdinsight-hadoop-port-settings-for-services.md)」を参照してください。
@@ -73,7 +73,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
     |SSH ユーザー名|Spark クラスターと Kafka クラスターの作成に使用する SSH ユーザー。|
     |SSH パスワード|Spark クラスターと Kafka クラスター用の SSH ユーザーのパスワード。|
 
-    ![HDInsight のカスタム デプロイ値](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
+    :::image type="content" source="./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png" alt-text="HDInsight のカスタム デプロイ値":::
 
 1. **使用条件** を読み、 **[上記の使用条件に同意する]** をオンにします。
 

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: radeltch
 ms.openlocfilehash: 6f2268ae9a86978e9266ea0e35411727b238d4b4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101671641"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続
@@ -90,7 +90,7 @@ VM からの発信呼び出しにアクセスできるパブリック エンド�
 
 1. Load Balancer の作成  
    1. [Azure portal](https://portal.azure.com) で、[すべてのリソース]、[追加] の順にクリックして、**Load Balancer** を検索します  
-   1. **[作成]** 
+   1. **[作成]** をクリックします。 
    1. ロード バランサーの名前を「**MyPublicILB**」に設定します  
    1. 種類として **[パブリック]** を選択し、SKU として **[Standard]** を選択します  
    1. **[パブリック IP アドレスの作成]** を選択し、名前として「**MyPublicILBFrondEndIP**」と指定します  

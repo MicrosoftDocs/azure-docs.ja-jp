@@ -10,10 +10,10 @@ ms.date: 04/20/2020
 ms.author: dech
 ms.custom: devx-track-js
 ms.openlocfilehash: 1115d7bb0d6857aa39f246743df54a6cf3fd3676
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93098661"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>チュートリアル:JavaScript SDK を使用して、Azure Cosmos DB SQL API データを管理するための Node.js コンソール アプリを構築する
@@ -90,21 +90,21 @@ ms.locfileid: "93098661"
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/config.js":::
 
-   エンドポイントとキーの詳細については、 [Azure portal](https://portal.azure.com) の **[キー]** ペインを参照してください。
+   エンドポイントとキーの詳細については、[Azure portal](https://portal.azure.com) の **[キー]** ペインを参照してください。
 
    :::image type="content" source="media/sql-api-nodejs-get-started/node-js-tutorial-keys.png" alt-text="Azure portal からキーを取得するスクリーンショット":::
 
-JavaScript SDK では、" *コンテナー* " と " *項目* " という一般的な用語を使用しています。 コンテナーは、コレクション、グラフ、またはテーブルを表します。 項目は、ドキュメント、エッジ/頂点、行など、コンテナー内の内容を表します。 前のコード スニペットでは、`module.exports = config;` コードを使用して config オブジェクトをエクスポートし、 *app.js* ファイル内で参照できるようにしています。
+JavaScript SDK では、"*コンテナー*" と "*項目*" という一般的な用語を使用しています。 コンテナーは、コレクション、グラフ、またはテーブルを表します。 項目は、ドキュメント、エッジ/頂点、行など、コンテナー内の内容を表します。 前のコード スニペットでは、`module.exports = config;` コードを使用して config オブジェクトをエクスポートし、*app.js* ファイル内で参照できるようにしています。
 
 ## <a name="create-a-database-and-a-container"></a>データベースとコンテナーを作成する
 
 1. 使い慣れたテキスト エディターで *databaseContext.js* ファイルを開きます。
 
-1. 次のコードをコピーし、 *databaseContext.js* ファイルに貼り付けます。 このコードでは、Azure Cosmos アカウントに "Tasks" データベースと "Items" コンテナーがまだ存在しない場合に、これらを作成する関数を定義しています。
+1. 次のコードをコピーし、*databaseContext.js* ファイルに貼り付けます。 このコードでは、Azure Cosmos アカウントに "Tasks" データベースと "Items" コンテナーがまだ存在しない場合に、これらを作成する関数を定義しています。
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/data/databaseContext.js" id="createDatabaseAndContainer":::
 
-   データベースは、コンテナーに分割された項目の論理上のコンテナーです。 データベースは、 **Databases** クラスの `createIfNotExists` または create 関数を使用して作成します。 コンテナーは、項目 (SQL API の場合は JSON ドキュメント) で構成されます。 コンテナーは、 **Containers** クラスの `createIfNotExists` または create 関数を使用して作成します。 コンテナーを作成したら、データを格納してクエリを実行できます。
+   データベースは、コンテナーに分割された項目の論理上のコンテナーです。 データベースは、**Databases** クラスの `createIfNotExists` または create 関数を使用して作成します。 コンテナーは、項目 (SQL API の場合は JSON ドキュメント) で構成されます。 コンテナーは、**Containers** クラスの `createIfNotExists` または create 関数を使用して作成します。 コンテナーを作成したら、データを格納してクエリを実行できます。
 
    > [!WARNING]
    > コンテナーを作成すると、料金に影響があります。 かかる料金については、[料金ページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
@@ -152,13 +152,13 @@ Azure Cosmos DB では、各コンテナーに格納された JSON 項目に対�
 
 ## <a name="update-an-item"></a><a id="ReplaceItem"></a>項目を更新する
 
-Azure Cosmos DB は、項目の内容の置換をサポートしています。 次のコードをコピーして、 *app.js* ファイルに貼り付けます。 このコードは、コンテナーから項目を取得し、 *isComplete* フィールドを true に更新します。
+Azure Cosmos DB は、項目の内容の置換をサポートしています。 次のコードをコピーして、*app.js* ファイルに貼り付けます。 このコードは、コンテナーから項目を取得し、*isComplete* フィールドを true に更新します。
 
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="UpdateItem":::
 
 ## <a name="delete-an-item"></a><a id="DeleteItem"></a>項目を削除する
 
-Azure Cosmos DB は、JSON 項目の削除をサポートします。 次のコードは、ID で項目を取得し、削除する方法を示しています。 次のコードをコピーして、 *app.js* ファイルに貼り付けます。
+Azure Cosmos DB は、JSON 項目の削除をサポートします。 次のコードは、ID で項目を取得し、削除する方法を示しています。 次のコードをコピーして、*app.js* ファイルに貼り付けます。
 
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="DeleteItem":::
 

@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev , devx-track-azurepowershell
 ms.topic: how-to
 ms.tgt_pltfrm: multiple
-ms.date: 06/26/2020
+ms.date: 02/22/2021
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: b07679c6dd5e03131fde1439213783893971a088
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: b27af53d615fa9c0c46699a52a004098dc46b7b2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581824"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688537"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>方法:Azure PowerShell を使用して資格情報でのサービス プリンシパルを作成する
 
@@ -72,7 +72,7 @@ New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $sp.Applic
 
 **ResourceGroupName** パラメーターを使用して、特定のリソース グループにロールの割り当てをスコープできます。 **ResourceType** と **ResourceName** パラメーターを使用して、特定のリソースをスコープすることもできます。 
 
-**Windows 10 または Windows Server 2016 を持っていない** 場合は、Microsoft スクリプト センターから [Self-signed certificate generator](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) をダウンロードします。 ダウンロードしたファイルを展開し、必要なコマンドレットをインポートします。
+**Windows 10 または Windows Server 2016 がない** 場合は、PKI ソリューションから [New-SelfSignedCertificateEx コマンドレット](https://www.pkisolutions.com/tools/pspki/New-SelfSignedCertificateEx/) をダウンロードしてください。 ダウンロードしたファイルを展開し、必要なコマンドレットをインポートします。
 
 ```powershell
 # Only run if you could not use New-SelfSignedCertificate

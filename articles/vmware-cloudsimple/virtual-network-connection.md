@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 3fedfbe55fd8ea3d2b4cc910df631e40bc74e210
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97899067"
 ---
 # <a name="connect-azure-virtual-network-to-cloudsimple-using-expressroute"></a>ExpressRoute を使用して Azure 仮想ネットワークを CloudSimple に接続する
@@ -23,16 +23,16 @@ ms.locfileid: "97899067"
 
 プライベート クラウドと Azure 仮想ネットワーク間の ExpressRoute 接続には承認キーが必要です。 キーを取得するには、<a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">サポート</a>にチケットを申請します。  リクエストには次の情報を使用します。
 
-* 問題の種類:**テクニカル**
-* サブスクリプション:**CloudSimple サービスがデプロイされるサブスクリプションを選択する**
-* サービス:**VMware Solution by CloudSimple**
-* 問題の種類:**サービス リクエスト**
-* 問題のサブタイプ:**Azure VNET 接続の承認キー**
-* 件名:**Azure VNET 接続の承認キーのリクエスト**
+* 問題の種類: **技術**
+* サブスクリプション: **CloudSimple サービスがデプロイされるサブスクリプションを選択する**
+* サービス: **VMware Solution by CloudSimple**
+* 問題の種類: **サービス要求**
+* 問題のサブタイプ: **Azure VNET 接続の承認キー**
+* 件名: **Azure VNET 接続の承認キーのリクエスト**
 
 ## <a name="get-peering-information-from-cloudsimple-portal"></a>CloudSimple ポータルからピアリング情報を取得する
 
-接続を設定するには、Azure 仮想ネットワークと CloudSimple 環境の間に接続を確立する必要があります。  この手順の一部として、ピア回線の URI と承認キーを指定する必要があります。 [CloudSimple ポータル](access-cloudsimple-portal.md)から URI と承認キーを取得します。  サイド メニューの **[ネットワーク]** を選択し、 **[Azure Network Connection]\(Azure のネットワーク接続\)** を選択します。 または、サイド メニューの **[アカウント]** を選択し、 **[Azure network connection]\(Azure のネットワーク接続\)** を選択します。
+接続を設定するには、Azure 仮想ネットワークと CloudSimple 環境の間に接続を確立する必要があります。  この手順の一部として、ピア回線の URI と承認キーを指定する必要があります。 [CloudSimple ポータル](access-cloudsimple-portal.md)から URI と承認キーを取得します。  サイド メニューの **[ネットワーク]** を選択し、**[Azure Network Connection]\(Azure のネットワーク接続\)** を選択します。 または、サイド メニューの **[アカウント]** を選択し、**[Azure network connection]\(Azure のネットワーク接続\)** を選択します。
 
 "*コピー*" アイコンを使用して、各リージョンのピア サーキット URI と承認キーをコピーします。 接続する CloudSimple リージョンごとに、次のことを行います。
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: bbd3e5774c6effa45888f6e59874d29f3b55b45f
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 60371888dbc4f0cbc33f1ad1b2a685dbb071c01a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545583"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670706"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Azure Cognitive Search のパフォーマンスのためのスケーリング
 
@@ -91,7 +91,7 @@ ms.locfileid: "100545583"
 
 ### <a name="availability-zones"></a>可用性ゾーン
 
-[Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) は、リージョンのデータ センターを個別の物理的な場所のグループに分割することで、同じリージョン内で高可用性を実現します。 Cognitive Search の場合、個々のレプリカがゾーン割り当ての単位です。 検索サービスは 1 つのリージョン内で実行され、そのレプリカは異なるゾーンで実行されます。
+[Availability Zones](../availability-zones/az-overview.md) は、リージョンのデータ センターを個別の物理的な場所のグループに分割することで、同じリージョン内で高可用性を実現します。 Cognitive Search の場合、個々のレプリカがゾーン割り当ての単位です。 検索サービスは 1 つのリージョン内で実行され、そのレプリカは異なるゾーンで実行されます。
 
 検索サービスに 2 つ以上のレプリカを追加することで、Azure Cognitive Search で Availability Zones を利用することができます。 各レプリカは、リージョン内の異なる可用性ゾーンに配置されます。 Availability Zones よりも多くのレプリカがある場合、レプリカは Availability Zones 全体に可能な限り均等に配布されます。
 
@@ -100,6 +100,7 @@ ms.locfileid: "100545583"
 + オーストラリア東部 (2021 年 1 月 30 日以降に作成)
 + カナダ中部 (2021 年 1 月 30 日以降に作成)
 + 米国中部 (2020 年 12 月 4 日以降に作成)
++ 米国東部 (2021 年 1 月 27 日以降に作成)
 + 米国東部 2 (2021 年 1 月 30 日以降に作成)
 + フランス中部 (2020 年 10 月 23 日以降に作成)
 + 東日本 (2021 年 1 月 30 日以降に作成)

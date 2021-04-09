@@ -10,10 +10,10 @@ ms.date: 03/26/2019
 ms.author: chrande
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 5a793eb69b344e361679759e46db47c78885831e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93360957"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>クイック スタート:Java SDK と Azure Cosmos DB Gremlin API を使ってグラフ データベースを作成する
@@ -72,11 +72,11 @@ ms.locfileid: "93360957"
 
 この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-information)」に進んでください。
 
-以降のスニペットはすべて、 *C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted\Program.java* ファイルから取得されます。
+以降のスニペットはすべて、*C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted\Program.java* ファイルから取得されます。
 
 この Java コンソール アプリは、OSS [Apache TinkerPop](https://tinkerpop.apache.org/) ドライバーで [Gremlin API](graph-introduction.md) データベースを使用します。 
 
-- Gremlin `Client` は、 *C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\remote.yaml* ファイルの構成から初期化されます。
+- Gremlin `Client` は、*C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\remote.yaml* ファイルの構成から初期化されます。
 
     ```java
     cluster = Cluster.build(new File("src/remote.yaml")).create();
@@ -168,7 +168,7 @@ ms.locfileid: "93360957"
 
 今度はデータ エクスプローラーに戻って、グラフに追加された頂点を確認し、さらにデータ ポイントを追加してみましょう。
 
-1. Azure portal の Azure Cosmos DB アカウントで **[データ エクスプローラー]** を選択し、 **sample-graph** を展開して **[グラフ]** 、 **[フィルターの適用]** の順に選択します。 
+1. Azure portal の Azure Cosmos DB アカウントで **[データ エクスプローラー]** を選択し、**sample-graph** を展開して **[グラフ]** 、 **[フィルターの適用]** の順に選択します。 
 
    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png" alt-text="A P I から選択された [グラフ] と、[フィルターの適用] オプションを示すスクリーンショット。":::
 
@@ -180,7 +180,7 @@ ms.locfileid: "93360957"
 
    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="[New Vertex]\(新しい頂点\) ペインを示すスクリーンショット。ここで値を入力できます。":::
 
-4. ラベル ボックスに「 *person* 」と入力します。
+4. ラベル ボックスに「*person*」と入力します。
 
 5. **[プロパティの追加]** を選択して、次の各プロパティを追加します。 グラフ内の person ごとに一意のプロパティを作成できることに注目してください。 必須のキーは id のみです。
 
@@ -197,7 +197,7 @@ ms.locfileid: "93360957"
 
 7. もう一度 **[New Vertex]\(新しい頂点\)** を選択して、新しいユーザーを追加します。 
 
-8. 「 *person* 」というラベルを入力します。
+8. 「*person*」というラベルを入力します。
 
 9. **[プロパティの追加]** を選択し、次の各プロパティを追加します。
 
@@ -217,7 +217,7 @@ ms.locfileid: "93360957"
 
     :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png" alt-text="グラフ内の頂点のターゲットを変更する - Azure CosmosDB":::
 
-13. **[Target]\(ターゲット\)** ボックスに「 *rakesh* 」と入力し、 **[Edge label]\(辺ラベル\)** ボックスに「 *knows* 」と入力し、チェック ボックスを選択します。
+13. **[Target]\(ターゲット\)** ボックスに「*rakesh*」と入力し、 **[Edge label]\(辺ラベル\)** ボックスに「*knows*」と入力し、チェック ボックスを選択します。
 
     :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png" alt-text="データ エクスプローラーで接続を追加する - Azure CosmosDB":::
 

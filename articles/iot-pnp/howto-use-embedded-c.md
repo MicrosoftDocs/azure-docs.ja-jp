@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: d61ca10612a0935f8483745d164835d7498280c0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92042815"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>制約のあるデバイスに IoT プラグ アンド プレイを実装する
 
-*制約のあるデバイス*向けの開発を行っている場合、[埋め込み C IoT 用の Azure SDK クライアント ライブラリ](https://aka.ms/embeddedcsdk)または [Azure RTOS](/azure/rtos/overview-rtos) を使用して、IoT プラグ アンド プレイを使用できます。 この記事には、これらの制約のあるシナリオに向けたリンクとリソースが含まれています。
+*制約のあるデバイス* 向けの開発を行っている場合、[埋め込み C IoT 用の Azure SDK クライアント ライブラリ](https://aka.ms/embeddedcsdk)または [Azure RTOS](/azure/rtos/overview-rtos) を使用して、IoT プラグ アンド プレイを使用できます。 この記事には、これらの制約のあるシナリオに向けたリンクとリソースが含まれています。
 
 ## <a name="use-the-sdk-for-embedded-c"></a>埋め込み C 用の Azure SDK を使用する
 

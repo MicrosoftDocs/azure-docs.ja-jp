@@ -1,21 +1,16 @@
 ---
-title: イベントの集計
-titleSuffix: Azure Defender for IoT
+title: イベントの集計 (プレビュー)
 description: Defender for IoT セキュリティ エージェントにより、ローカル デバイスからデータとシステム イベントを収集し、処理と分析を行うためにこのデータを Azure クラウドに送信します。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: conceptual
-ms.service: azure
-ms.openlocfilehash: 53811c20330d96b279eeb24e1aa90248b60fcb32
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: c0280e97549009a1e4911c072a7a8ec052684b4e
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120047"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779326"
 ---
-# <a name="event-aggregation"></a>イベントの集計 
+# <a name="event-aggregation-preview"></a>イベントの集計 (プレビュー)
 
 Defender for IoT セキュリティ エージェントにより、ローカル デバイスからデータとシステム イベントを収集し、処理と分析を行うためにこのデータを Azure クラウドに送信します。 Defender for IoT マクロ エージェントは、新しいプロセスなどのさまざまな種類のデバイス イベントとすべての新しい接続イベントを収集します。 新しいプロセスと新しい接続イベントの両方がデバイス上で 1 秒以内に頻繁に発生する可能性があります。 この機能は、包括的なセキュリティを実現するために重要ですが、セキュリティ エージェントが送信するメッセージの数は、IoT Hub のクォータとコストの上限に短期間で達するか、それを超える可能性があります。 ただし、これらのイベントには、デバイスの保護に不可欠な重要なセキュリティ情報が含まれています。 
 

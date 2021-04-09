@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
 ms.openlocfilehash: 5206565b85d1551e5e551f1dfe75d28c93bc53f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90898206"
 ---
 # <a name="summarize-data"></a>データの集計
@@ -57,7 +57,7 @@ Summarize Data (データの要約) モジュールを使用して、入力テ�
 |**Mean (平均値)**|すべての列値の平均値|
 |**Mean Deviation (平均偏差)**|列値の平均偏差|
 |**1st Quartile (第 1 四分位数)**|第 1 四分位数の値|
-|**Median (中央値)**|中央の列値|
+|**中央値**|中央の列値|
 |**3rd Quartile (第 3 四分位数)**|第 3 四分位数の値|
 |**モード**|列値のモード|
 |**Range**|最大値と最小値の間の値の数を表す整数|

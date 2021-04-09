@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/30/2020
 ms.openlocfilehash: 95275e68d0c7674caf4dd2b20f5586db5193fd03
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99054062"
 ---
 # <a name="tutorial-create-schedule-based-and-recurring-automation-workflows-with-azure-logic-apps"></a>チュートリアル:Azure Logic Apps を使用して、スケジュールに基づいて定期的に実行される自動化ワークフローを作成する
@@ -43,7 +43,7 @@ ms.locfileid: "99054062"
 
 * ルートの移動時間を取得するために Bing Maps API のアクセス キーが必要となります。 このキーを取得するには、[Bing 地図のキーを取得する方法](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key)に関するページの手順に従ってください。
 
-* ロジック アプリが特定の IP アドレスへのトラフィックを制限するファイアウォールを経由して通信する必要がある場合、そのファイアウォールは、Logic Apps サービスまたはロジック アプリが存在する Azure リージョンのランタイムが使用する [インバウンド](logic-apps-limits-and-config.md#inbound)と [アウトバウンド](logic-apps-limits-and-config.md#outbound)の IP アドレスの "*両方*" のアクセスを許可する必要があります。 また、ロジック アプリが Office 365 Outlook コネクタや SQL コネクタなどの [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)を使用している場合、または [カスタム コネクタ](/connectors/custom-connectors/)を使用している場合、そのファイアウォールでは、ロジック アプリの Azure リージョン内の "*すべて*" の[マネージド コネクタ アウトバウンド IP アドレス](logic-apps-limits-and-config.md#outbound)へのアクセスを許可する必要もあります。
+* ロジック アプリが特定の IP アドレスへのトラフィックを制限するファイアウォールを経由して通信する必要がある場合、そのファイアウォールは、Logic Apps サービスまたはロジック アプリが存在する Azure リージョンのランタイムが使用する [インバウンド](logic-apps-limits-and-config.md#inbound)と [アウトバウンド](logic-apps-limits-and-config.md#outbound)の IP アドレスの "*両方*" のアクセスを許可する必要があります。 また、ロジック アプリが Office 365 Outlook コネクタや SQL コネクタなどの [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)を使用している場合、または [カスタム コネクタ](/connectors/custom-connectors/)を使用している場合、そのファイアウォールでは、ロジック アプリの Azure リージョン内の "*すべて*" の [マネージド コネクタ アウトバウンド IP アドレス](logic-apps-limits-and-config.md#outbound)へのアクセスを許可する必要もあります。
 
 ## <a name="create-your-logic-app"></a>ロジック アプリを作成する
 
@@ -57,7 +57,7 @@ ms.locfileid: "99054062"
 
    ![ロジック アプリの作成ペインと新しいロジック アプリに設定する情報を示すスクリーンショット。](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
-   | プロパティ | 値 | [説明] |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **サブスクリプション** | <*Azure サブスクリプション名*> | Azure サブスクリプション名。 この例では、`Pay-As-You-Go` を使用します。 |
    | **リソース グループ** | LA-TravelTime-RG | [Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前。関連するリソースの整理に使用します。 この例では、`LA-TravelTime-RG` という名前の新しいリソース グループを作成します。 |

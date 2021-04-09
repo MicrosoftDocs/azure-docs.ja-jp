@@ -6,20 +6,20 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: a25658677e436edf4d001599bb4981f527016596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84697444"
 ---
 # <a name="azure-functions-http-output-bindings"></a>Azure Functions での HTTP 出力バインド
 
-HTTP 要求送信者に応答するには、HTTP 出力バインドを使用します。 このバインドには、HTTP トリガーが必要です。このバインドを使用すると、トリガーの要求に関連付けられている応答をカスタマイズすることができます。
+HTTP 要求送信者に応答するには、HTTP 出力バインドを使用します。 このバインディングには、HTTP トリガーが必要です。このバインディングを使用すると、トリガーの要求に関連付けられている応答をカスタマイズできます。
 
 HTTP によってトリガーされる関数の既定の戻り値は次のとおりです。
 
 - Functions 2.x 以降は、本文が空の `HTTP 204 No Content`
-- Functions 1.x では、本文が空の `HTTP 200 OK`
+- Functions 1.x は、本文が空の `HTTP 200 OK`
 
 ## <a name="configuration"></a>構成
 

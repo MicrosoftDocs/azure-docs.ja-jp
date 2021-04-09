@@ -1,24 +1,14 @@
 ---
 title: セキュリティ エージェント
 description: IoT デバイスでの Azure Defender for IoT セキュリティ サービス エージェントについて理解を深め、構成、デプロイ、および使用を開始します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 1/24/2021
-ms.author: shhazam
-ms.openlocfilehash: a40b64dd3b8f898c961863c1d78a2a56642c44b9
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: a1d74de9824b9e825f87754da21070d4e7f1ee33
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521613"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783491"
 ---
 # <a name="get-started-with-azure-defender-for-iot-device-micro-agents"></a>Azure Defender for IoT デバイス マイクロ エージェントの使用を開始する
 
@@ -44,6 +34,7 @@ Defenders for IoT セキュリティ エージェントでは、デバイスの�
 
 ## <a name="next-steps"></a>次のステップ
 
-[ソリューション](quickstart-configure-your-solution.md)を構成する
-[セキュリティ モジュールを作成する](quickstart-create-security-twin.md)[カスタム アラートを構成する](quickstart-create-custom-alerts.md)
-[セキュリティ エージェントをデプロイする](how-to-deploy-agent.md)
+- [ソリューションを構成する](quickstart-configure-your-solution.md)
+- [Defender-IoT-micro-agent の作成](quickstart-create-security-twin.md)
+- [カスタム アラートを構成する](quickstart-create-custom-alerts.md)
+- [セキュリティ エージェントをデプロイする](how-to-deploy-agent.md)

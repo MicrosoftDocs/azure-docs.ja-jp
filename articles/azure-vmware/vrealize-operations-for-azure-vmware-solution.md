@@ -3,12 +3,12 @@ title: Azure VMware Solution 向け vRealize Operations の設定
 description: Azure VMware Solution のプライベート クラウド向けに vRealize Operations を設定する方法について説明します。
 ms.topic: how-to
 ms.date: 01/26/2021
-ms.openlocfilehash: 3d2617f893c34fde6a154f9f93b5bda520c5a91a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8015bb61a7401b4c97807e0256e06d4967c39026
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738431"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802490"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>Azure VMware Solution 向け vRealize Operations の設定
 
@@ -61,7 +61,7 @@ vRealize Operations 機能を Azure VMware Solution プライベート クラウ
 
 ## <a name="known-limitations"></a>既知の制限事項
 
-- Azure VMware Solution の **cloudadmin\@vsphere.local** ユーザーは、[特権が制限されています](concepts-role-based-access-control.md)。  Azure VMware Solution 上の仮想マシン (VM) では、VMware ツールを使用したゲスト内のメモリ コレクションはサポートされません。  この場合、アクティブで消費されたメモリの利用は引き続き機能します。
+- Azure VMware Solution の **cloudadmin\@vsphere.local** ユーザーは、[特権が制限されています](concepts-identity.md)。  Azure VMware Solution 上の仮想マシン (VM) では、VMware ツールを使用したゲスト内のメモリ コレクションはサポートされません。  この場合、アクティブで消費されたメモリの利用は引き続き機能します。
 - Azure VMware Solution により DRS 設定などのクラスター構成が管理されるため、ホスト ベースのビジネスの目的でのワークロードの最適化は機能しません。
 - SDDC 内のクラスターをまたぐ配置向けの、クラスター ベースのビジネスの目的を使用するワークロードの最適化は、vRealize Operations Manager 8.0 以降で完全にサポートされています。 ただし、ワークロードの最適化では、リソース プールは認識されず、VM はクラスター レベルに配置されます。 ユーザーはこれを、Azure VMware Solution の vCenter Server インターフェイスで手動で修正できます。
 - Azure VMware Solution の vCenter Server 資格情報を使用して、vRealize Operations Manager にサインインすることはできません。 

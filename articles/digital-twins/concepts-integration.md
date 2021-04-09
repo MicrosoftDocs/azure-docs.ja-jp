@@ -8,10 +8,10 @@ ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 118b02ab694d27dbe4e13cbfa1a617a56b052772
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "92043070"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Azure Digital Twins を他のサービスと統合する
@@ -34,7 +34,7 @@ Azure Digital Twins は、[IoT Hub](../iot-hub/about-iot-hub.md)、[Logic Apps](
 
 ## <a name="data-egress-services"></a>データ エグレス サービス
 
-Azure Digital Twins は、接続されている**エンドポイント**にデータを送信できます。 サポートされるエンドポイントは次のとおりです。
+Azure Digital Twins は、接続されている **エンドポイント** にデータを送信できます。 サポートされるエンドポイントは次のとおりです。
 * [イベント ハブ](../event-hubs/event-hubs-about.md)
 * [Event Grid](../event-grid/overview.md)
 * [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)

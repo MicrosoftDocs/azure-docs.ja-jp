@@ -1,22 +1,22 @@
 ---
 title: 準拠していないリソースを修復する
 description: このガイドでは、Azure Policy のポリシーに準拠していないリソースを修復する手順を説明します。
-ms.date: 10/05/2020
+ms.date: 02/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 76d2e57c1b5df965c81c88506ff2c2f70b2cb1f8
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e567bedf48393a36215c1ac3f3d11f467ae7badd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876330"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742230"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Policy を使って準拠していないリソースを修復する
 
-**deployIfNotExists** や **modify** に準拠していないリソースは､**修復**を使って準拠状態にすることができます。 修復は､既存のリソースに割り当てられているポリシーの **deployIfNotExists** 効果や**変更操作**を実行するように Azure Policy に指示することによって実行されます。その割り当てが、管理グループ、サブスクリプション、リソース グループ、または個々のリソースのいずれに対するものかは関係ありません。 この記事では、Azure Policy による修復を理解して実行するために必要な手順を示します。
+**deployIfNotExists** や **modify** に準拠していないリソースは､**修復** を使って準拠状態にすることができます。 修復は､既存のリソースおよびサブスクリプションに割り当てられているポリシーの **deployIfNotExists** 効果や **変更操作** を実行するように Azure Policy に指示することによって実行されます。その割り当てが、管理グループ、サブスクリプション、リソース グループ、または個々のリソースのいずれに対するものかは関係ありません。 この記事では、Azure Policy による修復を理解して実行するために必要な手順を示します。
 
 ## <a name="how-remediation-security-works"></a>修復のセキュリティの仕組み
 
-**deployIfNotExists** ポリシー定義にあるテンプレートを実行するとき､Azure Policy では[マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) が使用されます｡
+**deployIfNotExists** ポリシー定義にあるテンプレートを実行するとき､Azure Policy では [マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) が使用されます｡
 マネージド ID は Azure Policy によって各割り当てに対して作成されますが、どのようなロールをマネージド ID に付与するかについての詳細が必要です。 マネージド ID にロールが存在しない場合、そのポリシーまたはイニシアチブの割り当て中にエラーが表示されます。 ポータルを使用している場合、割り当てが開始されると、Azure Policy によって、示されているロールが自動的にマネージド ID に付与されます。 SDK を使用している場合、マネージド ID にロールを手動で付与する必要があります。 マネージド ID の "_場所_" は、Azure Policy による操作に影響を与えません。
 
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="マネージド ID に対して定義されたアクセス許可がない deployIfNotExists ポリシーのスクリーンショット。" border="false":::
@@ -104,7 +104,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. マネージド ID がある割り当てを見つけて、その名前を選択します。
 
-1. 編集ページで**割り当て ID** を見つけます｡ 割り当て ID は以下のような ID です。
+1. 編集ページで **割り当て ID** を見つけます｡ 割り当て ID は以下のような ID です。
 
    ```output
    /subscriptions/{subscriptionId}/resourceGroups/PolicyTarget/providers/Microsoft.Authorization/policyAssignments/2802056bfc094dfb95d4d7a5
@@ -114,7 +114,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. ロールの定義で手動で追加する必要があるリソース､またはリソースの親コンテナー (リソース グループ、サブスクリプション、管理グループ) に移動します。
 
-1. リソース ページにある**アクセス制御 (IAM)** のリンクを選択して、アクセス制御ページの上部にある **[+ Add role assignment]\(+ ロール割り当ての追加\)** を選択します。
+1. リソース ページにある **アクセス制御 (IAM)** のリンクを選択して、アクセス制御ページの上部にある **[+ Add role assignment]\(+ ロール割り当ての追加\)** を選択します。
 
 1. ポリシー定義から､ **roleDefinitionIds** に一致するロールを選択します｡
    **Assign access to** は ''Azure AD user, group, or application という既定値の設定のままにします｡ **[選択]** ボックスで、前の手順で見つけた割り当てリソース ID の部分を貼り付けるか､入力します。 検索が完了したら、同じ名前のオブジェクトを選択することで ID を選択し､ **[保存]** を選択します。
@@ -123,42 +123,43 @@ if ($roleDefinitionIds.Count -gt 0)
 
 ### <a name="create-a-remediation-task-through-portal"></a>ポータルを通じて修復タスクを作成する
 
-評価では､**deployIfNotExists** または **modify** 効果を持つポリシー割り当てによって､準拠していないリソースがあるかどうかが判定されます。 準拠していないリソースが見つかった場合は、**修復**ページにその詳細が表示されます。 準拠していないリソースがあるポリシーの一覧には、**修復タスク** をトリガーするオプションがあります｡ このオプションは､**deployIfNotExists** テンプレートまたは **modify** 操作からデプロイを作成するものです。
+評価では､**deployIfNotExists** または **modify** 効果を持つポリシー割り当てによって､準拠していないリソースまたはサブスクリプションがあるかどうかが判定されます。 準拠していないリソースまたはサブスクリプションが見つかった場合は、**修復** ページにその詳細が表示されます。 準拠していないリソースまたはサブスクリプションがあるポリシーの一覧には、**修復タスク** をトリガーするオプションがあります｡
+このオプションは､**deployIfNotExists** テンプレートまたは **modify** 操作からデプロイを作成するものです。
 
 **修復タスク** を作成するには､次の手順に従います。
 
 1. Azure portal で **[すべてのサービス]** を選択し、「**Policy**」を検索して選択することで、Azure Policy サービスを起動します。
 
-   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="マネージド ID に対して定義されたアクセス許可がない deployIfNotExists ポリシーのスクリーンショット。" border="false":::
+   :::image type="content" source="../media/remediate-resources/search-policy.png" alt-text="[すべてのサービス] で「Policy」 を検索している様子を示すスクリーンショット。" border="false":::
 
 1. Azure Policy ページの左側にある **[修復]** を選択します。
 
-   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="マネージド ID に対して定義されたアクセス許可がない deployIfNotExists ポリシーのスクリーンショット。" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-remediation.png" alt-text="[Policy] ページの修復ノードのスクリーンショット。" border="false":::
 
-1. **deployIfNotExists** および **modify** のポリシー割り当てのうち、準拠していないリソースがあるものはすべて､ **[修復するポリシー]** タブとデータ テーブルに含まれます。 準拠していないリソースがあるポリシーを選択します。 **新しい修復タスク**ページが開きます。
+1. **deployIfNotExists** および **modify** のポリシー割り当てのうち、準拠していないリソースがあるものはすべて､ **[修復するポリシー]** タブとデータ テーブルに含まれます。 準拠していないリソースがあるポリシーを選択します。 **新しい修復タスク** ページが開きます。
 
    > [!NOTE]
    > **[修復タスク]** ページは、 **[コンプライアンス]** ページからポリシーを見つけて選択し、 **[修復タスクの作成]** ボタンを選択して開くこともできます。
 
 1. **[New remediation task]\(新しい修復タスク\)** ページで **[Scope]\(スコープ\)** 省略記号ボタンを使って、ポリシーが割り当てられている子リソースを選択することで、修復するリソースをフィルター処理します (個々のリソース オブジェクトまでフィルター可能)。 また、 **[場所]** ドロップダウンを使って､リソースをさらにフィルター処理することもできます｡ 表に示されたリソースのみ修復されます。
 
-   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="マネージド ID に対して定義されたアクセス許可がない deployIfNotExists ポリシーのスクリーンショット。" border="false":::
+   :::image type="content" source="../media/remediate-resources/select-resources.png" alt-text="修復ノードと、修復するリソースのグリッドのスクリーンショット。" border="false":::
 
 1. リソースのフィルター処理を終えたら、 **[修復]** を選択して、修復タスクを開始します。 **[修復タスク]** タブに対するポリシー コンプライアンス ページが開いて、タスクの進行状況が表示されます。 修復タスクによって作成されたデプロイが、すぐに開始されます。
 
-   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="マネージド ID に対して定義されたアクセス許可がない deployIfNotExists ポリシーのスクリーンショット。" border="false":::
+   :::image type="content" source="../media/remediate-resources/task-progress.png" alt-text="[修復タスク] タブと、既存の修復タスクの進行状況を示すスクリーンショット。" border="false":::
 
 1. ポリシー コンプライアンス ページの **[修復タスク]** を選択すると､進行状況の詳細が表示されます｡ 修復されているリソースの一覧と共に、タスクに使用されたフィルターが表示されます。
 
 1. **[修復タスク]** ページで、リソースを右クリックして、修復タスクのデプロイまたはリソースのいずれかを表示します。 行の末尾にある **[関連イベント]** を選択すると､エラー メッセージなどの詳細が表示されます｡
 
-   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="マネージド ID に対して定義されたアクセス許可がない deployIfNotExists ポリシーのスクリーンショット。" border="false":::
+   :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="[修復タスク] タブのリソースのコンテキスト メニューを示すスクリーンショット。" border="false":::
 
 **[修復タスク]** を使ってデプロイされたリソースは、ポリシー コンプライアンス ページの **[デプロイされたリソース]** タブに追加されます。
 
 ### <a name="create-a-remediation-task-through-azure-cli"></a>Azure CLI を通じて修復タスクを作成する
 
-Azure CLI を使用して**修復タスク** を作成するには、`az policy remediation` コマンドを使用します。 `{subscriptionId}` をサブスクリプション ID に置き換え、`{myAssignmentId}` を **deployIfNotExists** または **modify** のポリシー割り当て ID に置き換えます。
+Azure CLI を使用して **修復タスク** を作成するには、`az policy remediation` コマンドを使用します。 `{subscriptionId}` をサブスクリプション ID に置き換え、`{myAssignmentId}` を **deployIfNotExists** または **modify** のポリシー割り当て ID に置き換えます。
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -171,7 +172,7 @@ az policy remediation create --name myRemediation --policy-assignment '/subscrip
 
 ### <a name="create-a-remediation-task-through-azure-powershell"></a>Azure PowerShell を通じて修復タスクを作成する
 
-Azure PowerShell を使用して**修復タスク** を作成するには、`Start-AzPolicyRemediation` コマンドを使用します。 `{subscriptionId}` をサブスクリプション ID に置き換え、`{myAssignmentId}` を **deployIfNotExists** または **modify** のポリシー割り当て ID に置き換えます。
+Azure PowerShell を使用して **修復タスク** を作成するには、`Start-AzPolicyRemediation` コマンドを使用します。 `{subscriptionId}` をサブスクリプション ID に置き換え、`{myAssignmentId}` を **deployIfNotExists** または **modify** のポリシー割り当て ID に置き換えます。
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell

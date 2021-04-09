@@ -8,10 +8,10 @@ ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 2d34641fdecfe334e84347efe1a2f64482cae74b
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93040257"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web アプリケーション ファイアウォールの要求サイズの制限と除外リスト
@@ -38,11 +38,11 @@ WAF の除外リストを使用すると、WAF の評価から特定の要求属
 
 次に、サポートされている一致条件演算子を示します。
 
-- **Equals** :この演算子は完全一致の場合に使用されます。 たとえば、 **bearerToken** という名前のヘッダーを選択した場合は、 **bearerToken** として設定されるセレクターで equals 演算子を使用します。
-- **Starts with** :この演算子は指定したセレクター値で始まるすべてのフィールドと一致します。
-- **Ends with** :この演算子は指定したセレクター値で終わるすべての要求フィールドと一致します。
-- **Contains** :この演算子は指定したセレクター値を含むすべての要求フィールドと一致します。
-- **Equals any** :この演算子は、すべての要求フィールドと一致します。 * はセレクター値になります。
+- **Equals**:この演算子は完全一致の場合に使用されます。 たとえば、**bearerToken** という名前のヘッダーを選択した場合は、**bearerToken** として設定されるセレクターで equals 演算子を使用します。
+- **Starts with**:この演算子は指定したセレクター値で始まるすべてのフィールドと一致します。
+- **Ends with**:この演算子は指定したセレクター値で終わるすべての要求フィールドと一致します。
+- **Contains**:この演算子は指定したセレクター値を含むすべての要求フィールドと一致します。
+- **Equals any**:この演算子は、すべての要求フィールドと一致します。 * はセレクター値になります。
 
 すべての場合に、照合で大文字と小文字は区別されず、正規表現はセレクターとして使用できません。
 

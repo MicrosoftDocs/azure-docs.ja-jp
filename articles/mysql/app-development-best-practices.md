@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: afe14bc03f0d12e56e1512aeb788a77c64151b58
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7f98e14c2eae133941f3fc87247a427198ebcdc2
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547250"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102611965"
 ---
 # <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>Azure Database for MySQL を使用してアプリケーションを構築するためのベスト プラクティス 
 
@@ -76,7 +76,7 @@ Azure portal を使用して、MySQL サーバーの[パスワードをリセッ
 ## <a name="database-deployment"></a>データベースのデプロイ 
 
 ### <a name="configure-an-azure-database-for-mysql-task-in-your-cicd-deployment-pipeline"></a>CI/CD デプロイ パイプラインで MySQL タスク用に Azure データベースを構成する
-場合によっては、変更をデータベースにデプロイする必要があります。 このような場合、[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) を使用して、継続的インテグレーション (CI) および継続的デリバリー (CD) を使用でき、[MySQL サーバー](/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment?view=azure-devops&preserve-view=true)のタスクを使用して、データベースに対してカスタム スクリプトを実行すると、これを更新することができます。
+場合によっては、変更をデータベースにデプロイする必要があります。 このような場合、[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) を使用して、継続的インテグレーション (CI) および継続的デリバリー (CD) を使用でき、[MySQL サーバー](/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment)のタスクを使用して、データベースに対してカスタム スクリプトを実行すると、これを更新することができます。
 
 ### <a name="use-an-effective-process-for-manual-database-deployment"></a>データベースの手動デプロイに効果的なプロセスを使用する 
 手動でデータベースをデプロイする場合、ダウンタイムを最小限に抑えるか、デプロイが失敗するリスクを低減するために、次の手順に従ってください。 

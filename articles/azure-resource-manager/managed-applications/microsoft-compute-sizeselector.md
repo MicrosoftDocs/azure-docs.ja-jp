@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: d6408f8c08694ae681d302ae35f5778894091733
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87063651"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft.Compute.SizeSelector UI 要素
@@ -72,7 +72,7 @@ ms.locfileid: "87063651"
 - `constraints.allowedSizes` と `constraints.excludedSizes` は両方ともオプションとして使用できますが、同時に使用することはできません。 使用可能なサイズの一覧は、[サブスクリプションの使用可能な仮想マシン サイズを一覧表示する操作](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region)を呼び出すことで決定できます。 `constraints.allowedSizes` で指定されていないサイズはすべて非表示となり、`constraints.excludedSizes` で指定されていないサイズはすべて表示されます。
 - `osPlatform` は指定する必要があり、**Windows** と **Linux** のいずれかを使用できます。 これは、仮想マシンのハードウェア コストの決定に使用されます。
 - `imageReference` はファーストパーティのイメージでは省略されますが、サードパーティのイメージでは指定されます。 これは、仮想マシンのソフトウェア コストの決定に使用されます。
-- `count` は適切な乗数を要素に設定するために使用されます。 **2** などの静的な値のほか、他の要素からの `[steps('step1').vmCount]` などの動的な値もサポートします。 既定値は **1**です。
+- `count` は適切な乗数を要素に設定するために使用されます。 **2** などの静的な値のほか、他の要素からの `[steps('step1').vmCount]` などの動的な値もサポートします。 既定値は **1** です。
 - `numAvailabilityZonesRequired` には、1、2、または 3 を指定できます。
 - 既定では、`hideDiskTypeFilter` は **false** です。 ディスク の種類のフィルターを使用すると、ディスクの種類をすべて表示することも、SSD のみを表示することもできます。
 

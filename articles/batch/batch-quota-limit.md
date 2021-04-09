@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/28/2021
 ms.custom: seodec18
 ms.openlocfilehash: 433272c76b9ff27d9cad542cf65a8ec0d8fc0378
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99052382"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限

@@ -8,10 +8,10 @@ ms.date: 01/15/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 52e491c88d3483f21aa74f1a9f176246033bee3c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735794"
 ---
 # <a name="create-an-incremental-snapshot-for-managed-disks"></a>マネージド ディスクの増分スナップショットの作成

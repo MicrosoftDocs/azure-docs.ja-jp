@@ -9,10 +9,10 @@ ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-js
 ms.openlocfilehash: db6bb5c204bfe79b9d7470f651081aa4f4dcf2ed
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97932709"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-javascript-version-4"></a>クイックスタート: JavaScript 用 Azure Key Vault キー クライアント ライブラリ (バージョン 4)

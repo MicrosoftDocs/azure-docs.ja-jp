@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: chrpap
 ms.openlocfilehash: ede999bee9ce1a4a9dd10652a2c52a840d5b24be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88163579"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>Service Fabric ノード タイプを削除する方法

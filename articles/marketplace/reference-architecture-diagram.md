@@ -3,16 +3,17 @@ title: 参照アーキテクチャ図 | Azure Marketplace
 description: Microsoft コマーシャル マーケットプレース内のプランの参照アーキテクチャ図を作成する方法。
 author: mingshen-ms
 ms.author: mingshen
+ms.reviewer: stmummer
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 02/18/2021
-ms.openlocfilehash: 0331bdd8f928b52e56a709fdadbc95892d437cf4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 66e4d498ff7584188d680e35c89c6f10cc43c9cb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743648"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604493"
 ---
 # <a name="reference-architecture-diagram"></a>参照アーキテクチャ図
 

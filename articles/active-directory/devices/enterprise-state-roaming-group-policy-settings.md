@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab24b3113f9dc69b8f3907037e228ba212a03106
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85252935"
 ---
 # <a name="group-policy-and-mdm-settings"></a>グループ ポリシーと MDM の設定
@@ -26,24 +26,24 @@ ms.locfileid: "85252935"
 利用可能なポリシー設定を以下の表で説明します。
 
 > [!NOTE]
-> この記事は、2015 年 7 月に Windows 10 で提供が開始された Microsoft Edge レガシ HTML ベースのブラウザーに適用されます。 この記事は、2020 年 1 月 15 日にリリースされた新しい Microsoft Edge Chromium ベースのブラウザーには適用されません。 新しい Microsoft Edge の同期動作の詳細については、「[Microsoft Edge の同期](/deployedge/microsoft-edge-enterprise-sync)」を参照してください。
+> この記事は、2015年7月に Windows 10 で起動された Microsoft Edge レガシ HTML ベースのブラウザーに適用されます。 この記事は、2020 年 1 月 15 日にリリースされた新しい Microsoft Edge Chromium ベースのブラウザーには適用されません。 新しい Microsoft Edge の同期動作の詳細については、「[Microsoft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)」を参照してください。
 
 ## <a name="mdm-settings"></a>MDM の設定
 
 MDM のポリシー設定は、Windows 10 と Windows 10 Mobile の両方に適用されます。  Windows 10 Mobile のサポートは、ユーザーの OneDrive アカウントによる Microsoft アカウント ベースのローミングに対してのみ存在します。 Azure AD ベースの同期用にサポートされているデバイスの詳細については、「[デバイスとエンドポイント](enterprise-state-roaming-windows-settings-reference.md)」を参照してください。
 
-| Name | 説明 |
+| 名前 | 説明 |
 | --- | --- |
 | Microsoft アカウントの接続を許可 |デバイスの Microsoft アカウントを使った認証をユーザーに許可します。 |
 | ユーザー設定の同期を許可 |Windows の設定データとアプリ データのローミングをユーザーに許可します。このポリシーを無効にすると、モバイル デバイスでの同期とバックアップが無効になります |
 
-## <a name="group-policy-settings"></a>グループ ポリシーの設定
+## <a name="group-policy-settings"></a>グループ ポリシー設定
 
 グループ ポリシーの設定は、Active Directory ドメインに参加している Windows 10 デバイスに適用されます。 以下の表には、同期設定の管理用に見えるものの、実際には Windows 10 の Enterprise State Roaming では正しく機能しない既存の設定も記載されています。こうした設定には "使用しないでください" と記されています。
 
 これらの設定は `Computer Configuration > Administrative Templates > Windows Components > Sync your settings` にあります 
 
-| Name | 説明 |
+| 名前 | 説明 |
 | --- | --- |
 | アカウント: Microsoft アカウントをブロックします |このコンピューターにユーザーが新しい Microsoft アカウントを追加できないようにするポリシー設定です。 |
 | 同期しない |ユーザーが Windows の設定データとアプリ データをローミングできないようにします。 |

@@ -8,14 +8,17 @@ ms.date: 02/16/2021
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0881363a3f13f0ddf34157a1fffe6c26d0c0b692
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+monikerRange: =iotedge-2018-06
+ms.openlocfilehash: fe04615e234eaf5b006a80e6f584905626c637ba
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122852"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489487"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>IoT Edge for Linux on Windows 用の PowerShell スクリプト
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 IoT Edge for Linux on Windows 仮想マシンのデプロイ、プロビジョニング、状態取得のための PowerShell スクリプトについて説明します。
 

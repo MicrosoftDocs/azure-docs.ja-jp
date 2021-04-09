@@ -3,7 +3,7 @@ title: Media Encoder Standard を使用してビットレート ラダーを自�
 description: このトピックでは、Media Encoder Standard (MES) を使用して、入力解像度とビットレートに基づいてビットレート ラダーを自動生成する方法を説明します。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
-ms.openlocfilehash: 0309579a674533ebd056c8493b149cc78beef607
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 6ea28d61cc142c3191d591721b92e08d651c7ed5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89254071"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103014402"
 ---
 #  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Media Encoder Standard を使用してビットレート ラダーを自動生成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "89254071"
 
 ### <a name="encoding-for-streaming-only"></a>ストリーミング専用エンコード
 
-ストリーミング配信のみを想定しているソース ビデオをエンコードする場合は、エンコード タスクの作成時に "アダプティブ ストリーミング" プリセットを使用します。 **アダプティブ ストリーミング** プリセットを使用するときは、MES エンコーダーの判断によってビットレート ラダーの上限が設定されます。 ただし、使用されるレイヤーの数と解像度はサービスによって決まるため、ユーザーがエンコード コストを制御することはできません。 この記事の終わりでは、**アダプティブ ストリーミング**プリセットを使用したエンコードの結果として、MES によって生成された出力レイヤーの例を確認できます。 出力アセットには、オーディオとビデオがインターリーブされていない MP4 ファイルが含まれます。
+ストリーミング配信のみを想定しているソース ビデオをエンコードする場合は、エンコード タスクの作成時に "アダプティブ ストリーミング" プリセットを使用します。 **アダプティブ ストリーミング** プリセットを使用するときは、MES エンコーダーの判断によってビットレート ラダーの上限が設定されます。 ただし、使用されるレイヤーの数と解像度はサービスによって決まるため、ユーザーがエンコード コストを制御することはできません。 この記事の終わりでは、**アダプティブ ストリーミング** プリセットを使用したエンコードの結果として、MES によって生成された出力レイヤーの例を確認できます。 出力アセットには、オーディオとビデオがインターリーブされていない MP4 ファイルが含まれます。
 
 ### <a name="encoding-for-streaming-and-progressive-download"></a>ストリーミングとプログレッシブ ダウンロード用のエンコード
 

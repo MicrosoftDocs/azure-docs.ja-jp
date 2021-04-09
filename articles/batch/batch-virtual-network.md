@@ -2,14 +2,14 @@
 title: 仮想ネットワークでプールをプロビジョニングする
 description: コンピューティング ノードがネットワーク内の他の VM (ファイル サーバーなど) と安全に通信できるように、Azure 仮想ネットワークで Batch プールを作成する方法。
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 03/15/2021
 ms.custom: seodec18
-ms.openlocfilehash: bedb0cbd826e2891560320ed11c0ba28e07f8e88
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: d6e5de75164e098fc95f6c086d9f98a652dcee4a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165758"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103561917"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>仮想ネットワーク内に Azure Batch プールを作成する
 

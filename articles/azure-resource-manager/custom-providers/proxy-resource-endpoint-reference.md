@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 46b38686b39836f3d4bfb80686d514f932a79bf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75649199"
 ---
 # <a name="custom-resource-proxy-reference"></a>カスタム リソースのプロキシのリファレンス
@@ -42,7 +42,7 @@ ms.locfileid: "75649199"
 
 ## <a name="building-proxy-resource-endpoint"></a>プロキシ リソース エンドポイントの構築
 
-"プロキシ" リソース **エンドポイント**を実装する**エンドポイント**では、Azure で新しい API 向けに要求と応答を処理する必要があります。 この場合、**resourceType** により、シングル リソース上で CRUD を実行するための `PUT`、`GET`、`DELETE` 用、そしてすべての既存リソースを取得するための `GET` 用に、新しい Azure リソース API が生成されます。
+"プロキシ" リソース **エンドポイント** を実装する **エンドポイント** では、Azure で新しい API 向けに要求と応答を処理する必要があります。 この場合、**resourceType** により、シングル リソース上で CRUD を実行するための `PUT`、`GET`、`DELETE` 用、そしてすべての既存リソースを取得するための `GET` 用に、新しい Azure リソース API が生成されます。
 
 > [!NOTE]
 > `id`、`name`、`type` フィールドは必須ではありません。ただし、カスタム リソースを既存の Azure エコシステムと統合する場合は必要となります。
@@ -90,7 +90,7 @@ Content-Type: application/json
 }
 ```
 
-この要求は、その後、次の形式で**エンドポイント**に転送されます。
+この要求は、その後、次の形式で **エンドポイント** に転送されます。
 
 ``` HTTP
 PUT https://{endpointURL}/?api-version=2018-09-01-preview
@@ -107,12 +107,12 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-同様に、**エンドポイント**からの応答は、その後顧客に返されます。 エンドポイントからの応答は、次のように返される必要があります。
+同様に、**エンドポイント** からの応答は、その後顧客に返されます。 エンドポイントからの応答は、次のように返される必要があります。
 
 - 有効な JSON オブジェクト ドキュメント。 すべての配列と文字列は、最上位のオブジェクトの下で入れ子にする必要があります。
 - `Content-Type` ヘッダーは "application/json; charset=utf-8" に設定される必要があります。
 
-**エンドポイント**の応答:
+**エンドポイント** の応答:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -160,7 +160,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-この要求は、その後、次の形式で**エンドポイント**に転送されます。
+この要求は、その後、次の形式で **エンドポイント** に転送されます。
 
 ``` HTTP
 Delete https://{endpointURL}/?api-version=2018-09-01-preview
@@ -168,12 +168,12 @@ Content-Type: application/json
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}
 ```
 
-同様に、**エンドポイント**からの応答は次に顧客に返されます。 エンドポイントからの応答は、次のように返される必要があります。
+同様に、**エンドポイント** からの応答は次に顧客に返されます。 エンドポイントからの応答は、次のように返される必要があります。
 
 - 有効な JSON オブジェクト ドキュメント。 すべての配列と文字列は、最上位のオブジェクトの下で入れ子にする必要があります。
 - `Content-Type` ヘッダーは "application/json; charset=utf-8" に設定される必要があります。
 
-**エンドポイント**の応答:
+**エンドポイント** の応答:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -197,7 +197,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-この要求は、その後、次の形式で**エンドポイント**に転送されます。
+この要求は、その後、次の形式で **エンドポイント** に転送されます。
 
 ``` HTTP
 GET https://{endpointURL}/?api-version=2018-09-01-preview
@@ -205,12 +205,12 @@ Content-Type: application/json
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}
 ```
 
-同様に、**エンドポイント**からの応答は、その後顧客に返されます。 エンドポイントからの応答は、次のように返される必要があります。
+同様に、**エンドポイント** からの応答は、その後顧客に返されます。 エンドポイントからの応答は、次のように返される必要があります。
 
 - 有効な JSON オブジェクト ドキュメント。 すべての配列と文字列は、最上位のオブジェクトの下で入れ子にする必要があります。
 - `Content-Type` ヘッダーは "application/json; charset=utf-8" に設定される必要があります。
 
-**エンドポイント**の応答:
+**エンドポイント** の応答:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -258,7 +258,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-この要求は、その後、次の形式で**エンドポイント**に転送されます。
+この要求は、その後、次の形式で **エンドポイント** に転送されます。
 
 ``` HTTP
 GET https://{endpointURL}/?api-version=2018-09-01-preview
@@ -266,13 +266,13 @@ Content-Type: application/json
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources
 ```
 
-同様に、**エンドポイント**からの応答は、その後顧客に返されます。 エンドポイントからの応答は、次のように返される必要があります。
+同様に、**エンドポイント** からの応答は、その後顧客に返されます。 エンドポイントからの応答は、次のように返される必要があります。
 
 - 有効な JSON オブジェクト ドキュメント。 すべての配列と文字列は、最上位のオブジェクトの下で入れ子にする必要があります。
 - `Content-Type` ヘッダーは "application/json; charset=utf-8" に設定される必要があります。
 - リソースの一覧は最上位レベルの `value` プロパティの下に配置する必要があります。
 
-**エンドポイント**の応答:
+**エンドポイント** の応答:
 
 ``` HTTP
 HTTP/1.1 200 OK

@@ -8,10 +8,10 @@ ms.custom: devx-track-csharp
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: aaa1d6df9faa20b1a561bfccdfea682af7645c18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88930249"
 ---
 # <a name="write-code-to-track-requests-with-application-insights"></a>Application Insights を使用して要求を追跡するコードを記述する

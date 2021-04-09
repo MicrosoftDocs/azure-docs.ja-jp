@@ -9,18 +9,20 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: b352bd92ecc69ca68a6870d3a59ef5e0cdd1daba
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fea8f52ebf40ba8195de134098693f90315bb384
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920849"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103461421"
 ---
-# <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>チュートリアル:Linux のデバイス用の IoT Edge モジュールを開発する
+# <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>チュートリアル: Linux コンテナーを使用して IoT Edge モジュールを開発する
 
-Visual Studio Code を使用して、コードを開発して、IoT Edge を実行している Linux デバイスにデプロイします。
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-クイックスタートでは、Linux 仮想マシンを使用して IoT Edge デバイスを作成し、Azure Marketplace からモジュールをデプロイしました。 このチュートリアルでは、独自のコードを開発して IoT Edge デバイスにデプロイするまでを順を追って説明します。 この記事は、特定のプログラミング言語や Azure サービスをより詳細に説明する他のチュートリアルにとって有用な前提条件です。
+Visual Studio Code を使用して、コードを開発し、IoT Edge を実行しているデバイスにデプロイします。
+
+クイックスタートでは、IoT Edge デバイスを作成し、Azure Marketplace からモジュールをデプロイしました。 このチュートリアルでは、独自のコードを開発して IoT Edge デバイスにデプロイするまでを順を追って説明します。 この記事は、特定のプログラミング言語や Azure サービスをより詳細に説明する他のチュートリアルにとって有用な前提条件です。
 
 このチュートリアルでは、**C# モジュールの Linux デバイスへの** 展開例を使用します。 この例が選択された理由は、IoT Edge ソリューションで最も一般的な開発者シナリオだからです。 別の言語の使用や Azure サービスのデプロイを予定している場合でも、このチュートリアルは開発ツールと概念の学習に役立ちます。 この開発プロセスの概要を完了したら、使用する言語や Azure サービスを選択して、詳細に進みます。
 
@@ -44,7 +46,7 @@ Visual Studio Code を使用して、コードを開発して、IoT Edge を実�
 * [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
 
-Linux 上の Azure IoT Edge デバイス:
+Azure IoT Edge デバイス:
 
 * 開発マシンでは IoT Edge を実行せず、代わりに別個のデバイスを使用することをお勧めします。 開発マシンと IoT Edge デバイスのこの区別は、実際のデプロイ シナリオをより正確に反映し、異なる概念を区別するのに役立ちます。
 * 2 台目のデバイスが使用可能でない場合は、クイックスタートの記事を使用して、[Linux 仮想マシン](quickstart-linux.md)によって Azure で IoT Edge デバイスを作成してください。
@@ -61,7 +63,10 @@ Linux 上の Azure IoT Edge デバイス:
 
 IoT Edge モジュールを開発する場合は、開発マシンと、モジュールが最終的にデプロイされるターゲット IoT Edge デバイスの違いを理解することが重要です。 モジュール コードを保持するためにビルドするコンテナーは、*ターゲット デバイス* のオペレーティング システム (OS) と一致している必要があります。 たとえば、最も一般的なシナリオは、ある人が Windows コンピューターでモジュールを開発しているが、そのターゲットとして、IoT Edge を実行している Linux デバイスを予定している場合です。 その場合、コンテナーのオペレーティング システムは Linux になります。 このチュートリアルを進めていくときには、*開発マシンの OS* と *コンテナーの OS* の違いに留意してください。
 
-このチュートリアルでは、IoT Edge を実行している Linux デバイスをターゲットとしています。 ご使用の開発マシンで Linux コンテナーが実行される限り、自分の好きなオペレーティング システムを使用することができます。 Linux デバイス用の開発には Visual Studio Code を使用することをお勧めします。そのため、このチュートリアルでもそれを使用します。 Visual Studio も使用できますが、この 2 つのツールの間にはサポートに違いがあります。
+>[!TIP]
+>[IoT Edge for Linux on Windows](iot-edge-for-linux-on-windows.md) を使用している場合、シナリオの "*ターゲット デバイス*" は、Windows ホストではなく Linux 仮想マシンです。
+
+このチュートリアルでは、Linux コンテナーを使用して IoT Edge を実行しているデバイスをターゲットとしています。 ご使用の開発マシンで Linux コンテナーが実行される限り、自分の好きなオペレーティング システムを使用することができます。 Linux コンテナーを使用した開発には Visual Studio Code を使用することをお勧めします。そのため、このチュートリアルでもそれを使用します。 Visual Studio も使用できますが、この 2 つのツールの間にはサポートに違いがあります。
 
 次の表に、**Linux コンテナー** に関して Visual Studio Code と Visual Studio でサポートされる開発シナリオを示します。
 

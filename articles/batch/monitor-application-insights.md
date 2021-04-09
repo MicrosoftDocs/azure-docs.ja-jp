@@ -4,12 +4,12 @@ description: Azure Application Insights ライブラリを使用して Azure Bat
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 04/05/2018
-ms.openlocfilehash: d06e2b61725f05d025acd8a2995ea041f138ae4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9decb99c3de798df43dedc2441208066d18e3a13
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88933564"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605785"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Application Insights による Azure Batch .NET アプリケーションの監視とデバッグ
 
@@ -32,7 +32,7 @@ ms.locfileid: "88933564"
   
    * Azure Portal を使用して、Application Insights の "*リソース*" を作成します。 **[アプリケーションの種類]** として *[全般]* を選択します。
 
-   * ポータルから[インストルメンテーション キー](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key)をコピーします。 これはこの記事の中で後で必要になります。
+   * ポータルから[インストルメンテーション キー](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key)をコピーします。 これはこの記事の中で後で必要になります。
   
   > [!NOTE]
   > Application Insights に格納されているデータは[課金](https://azure.microsoft.com/pricing/details/application-insights/)されることがあります。 この記事で説明する診断データと監視データも対象となります。
@@ -258,13 +258,13 @@ for (int i = 1; i <= topNWordsConfiguration.NumberOfTasks; i++)
 
 ### <a name="view-live-stream-data"></a>ライブ ストリーム データの表示
 
-Application Insights リソースのトレース ログを表示するには、 **[ライブ ストリーム]** をクリックします。 次のスクリーンショットは、コンピューティング ノードあたりの CPU 使用率など、プール内のコンピューティング ノードから取得したライブ データを表示する方法を示しています。
+Application Insights リソースのトレース ログを表示するには、**[ライブ ストリーム]** をクリックします。 次のスクリーンショットは、コンピューティング ノードあたりの CPU 使用率など、プール内のコンピューティング ノードから取得したライブ データを表示する方法を示しています。
 
 ![ライブ ストリーム コンピューティング ノード データ](./media/monitor-application-insights/applicationinsightslivestream.png)
 
 ### <a name="view-trace-logs"></a>トレース ログの表示
 
-Application Insights リソースのトレース ログを表示するには、 **[検索]** をクリックします。 このビューには、トレース、イベント、例外など、Application Insights によってキャプチャされた診断データの一覧が表示されます。 
+Application Insights リソースのトレース ログを表示するには、**[検索]** をクリックします。 このビューには、トレース、イベント、例外など、Application Insights によってキャプチャされた診断データの一覧が表示されます。 
 
 次のスクリーンショットは、タスクの 1 つのトレースがどのようにログに記録され、その後デバッグを目的としたクエリがどのように実行されるかを示しています。
 
@@ -287,7 +287,7 @@ Application Insights リソースのトレース ログを表示するには、 
    * **[グラフの種類]** を **[グリッド]** に設定します。
    * **[集計]** を **[平均]** に設定します。
    * **[グループ化]** を **[NodeId]** に設定します。
-   * **[メトリック]** で、 **[カスタム]**  >  **[Blob download in seconds]\(秒単位の BLOB ダウンロード\)** を選択します。
+   * **[メトリック]** で、**[カスタム]** > **[Blob download in seconds]\(秒単位の BLOB ダウンロード\)** を選択します。
    * **[カラー パレット]** の表示を任意に調整します。 
 
 ![ノードあたりの BLOB ダウンロード時間](./media/monitor-application-insights/blobdownloadtime.png)

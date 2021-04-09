@@ -8,10 +8,10 @@ ms.date: 03/02/2021
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 23b23340550ded3642d19500270f06cfb6faf8cb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101735099"
 ---
 # <a name="app-service-environment-overview"></a>App Service Environment の概要 

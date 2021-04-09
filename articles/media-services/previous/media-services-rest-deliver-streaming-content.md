@@ -1,7 +1,7 @@
 ---
 title: REST を使用して Azure Media Services コンテンツを発行する
 description: ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。 コードは REST API を使用しています。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 438a816ca28b9414557e64591d9ece2dbb173370
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: b8733d499b2396160a73906f16a69291cf0b9d71
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256873"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103015422"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>REST を使用して Azure Media Services コンテンツを発行する
 

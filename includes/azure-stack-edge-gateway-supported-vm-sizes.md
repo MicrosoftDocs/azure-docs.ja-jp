@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/09/2020
 ms.author: alkohli
 ms.openlocfilehash: ae7cb05aeda296ffb3aa9d7f6e2c88fe59364975
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99475044"
 ---
 VM のサイズにより、VM で利用できる計算リソース (CPU、GPU、メモリなど) の量が決定されます。 仮想マシンは、ワークロードに適した VM サイズを使用して作成する必要があります。 すべてのマシンが同じハードウェア上で実行される場合でも、マシンのサイズによってディスク アクセスの制限が異なります。 これは、VM 間のディスク アクセス全体を管理するのに役立ちます。 ワークロードが増えた場合は、既存の仮想マシンのサイズを変更することもできます。

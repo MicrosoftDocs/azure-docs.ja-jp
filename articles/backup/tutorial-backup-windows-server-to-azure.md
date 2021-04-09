@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
 ms.openlocfilehash: d2990b5950cf8812367c3a59c6cace39e4085e2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88261907"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server を Azure にバックアップする
@@ -72,7 +72,7 @@ Microsoft Azure Recovery Services (MARS) エージェントは、Windows Server 
 
     インストーラーが別のブラウザーで開き、**MARSAgentInstaller.exe** をダウンロードします。
 
-6. ダウンロードしたファイルを実行する前に、[インフラストラクチャの準備] メニューの **[ダウンロード]** を選択し、**コンテナー資格情報**ファイルを保存します。 コンテナー資格情報は、MARS エージェントと Recovery Services コンテナーを結び付けるために必要です。
+6. ダウンロードしたファイルを実行する前に、[インフラストラクチャの準備] メニューの **[ダウンロード]** を選択し、**コンテナー資格情報** ファイルを保存します。 コンテナー資格情報は、MARS エージェントと Recovery Services コンテナーを結び付けるために必要です。
 
     ![コンテナー資格情報のダウンロード](./media/tutorial-backup-windows-server-to-azure/download-vault-credentials.png)
 
@@ -86,7 +86,7 @@ Microsoft Azure Recovery Services (MARS) エージェントは、Windows Server 
 
      ![Azure Recovery Services Agent セットアップ ウィザード](./media/tutorial-backup-windows-server-to-azure/mars-installer.png)
 
-3. ウィザードの終わりで、 **[登録処理を続行]** を選択し、前の手順でダウンロードした**コンテナー資格情報**ファイルを指定します。
+3. ウィザードの終わりで、 **[登録処理を続行]** を選択し、前の手順でダウンロードした **コンテナー資格情報** ファイルを指定します。
 
 4. 入力が求められたら、暗号化パスフレーズを指定し、Windows Server からのバックアップを暗号化します。 安全な場所にパスフレーズを保存します。パスフレーズを失った場合、Microsoft では回復することができません。
 
@@ -96,7 +96,7 @@ Microsoft Azure Recovery Services (MARS) エージェントは、Windows Server 
 
 Microsoft Azure Recovery Services エージェントを利用し、Azure へのバックアップを Windows Server で行うスケジュールを設定します。 エージェントをダウンロードしたサーバーで次の手順を実行します。
 
-1. Microsoft Azure Recovery Services エージェントを開きます。 エージェントは、コンピューターで **Microsoft Azure Backup**を検索すると見つかります。
+1. Microsoft Azure Recovery Services エージェントを開きます。 エージェントは、コンピューターで **Microsoft Azure Backup** を検索すると見つかります。
 
 2. Recovery Services エージェント コンソールで、 **[操作]** ペインにある **[バックアップのスケジュール]** を選択します。
 

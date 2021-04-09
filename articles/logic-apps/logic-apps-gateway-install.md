@@ -4,18 +4,18 @@ description: Azure Logic Apps からオンプレミスのデータにアクセ�
 services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
-ms.topic: article
-ms.date: 05/15/2020
-ms.openlocfilehash: 799e879b4d9fd54367d54c17b3d275acfc5f34c1
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.topic: how-to
+ms.date: 03/16/2021
+ms.openlocfilehash: 4b2559ad20036870c6df5c0662bb973f35155bfa
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054773"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104576800"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 用のオンプレミス データ ゲートウェイのインストール
 
-[Azure Logic Apps からオンプレミスのデータ ソースに接続する](../logic-apps/logic-apps-gateway-connection.md)には、ローカル コンピューターに[オンプレミス データ ゲートウェイ](https://aka.ms/on-premises-data-gateway-installer)をダウンロードしてインストールします。 このゲートウェイは、オンプレミスのデータ ソースとロジック アプリ間でのデータ転送と暗号化を高速で行うブリッジとして機能します。 同じゲートウェイ インストールを、Power BI、Power Automate、Power Apps、Azure Analysis Services など、他のクラウド サービスで使用できます。 これらのサービスでゲートウェイを使用する方法については、次の記事を参照してください。
+[Azure Logic Apps からオンプレミスのデータ ソースに接続する](../logic-apps/logic-apps-gateway-connection.md)には、ローカル コンピューターに[オンプレミス データ ゲートウェイ](https://aka.ms/on-premises-data-gateway-installer)をダウンロードしてインストールします。 このゲートウェイは、オンプレミスのデータ ソースとロジック アプリ間でのデータ転送と暗号化を高速で行うブリッジとして機能します。 同じゲートウェイ インストールを、Power Automate、Power BI、Power Apps、Azure Analysis Services など、他のクラウド サービスで使用できます。 これらのサービスでゲートウェイを使用する方法については、次の記事を参照してください。
 
 * [Microsoft Power Automate オンプレミス データ ゲートウェイ](/power-automate/gateway-reference)
 * [Microsoft Power BI オンプレミス データ ゲートウェイ](/power-bi/service-gateway-onprem)
@@ -71,7 +71,12 @@ ms.locfileid: "99054773"
 
   * Windows 認証を使用する予定の場合は、必ず、ご使用のデータ ソースと同じ Active Directory 環境のメンバーであるコンピューターにゲートウェイをインストールしてください。
 
-  * ゲートウェイ インストール用に選択するリージョンは、後でロジック アプリ用の Azure ゲートウェイ リソースを作成するときに選択する必要がある場所と同じです。 既定では、このリージョンは、Azure アカウントを管理する Azure AD テナントと同じ場所です。 ただし、この場所はゲートウェイのインストール中に変更できます。
+  * ゲートウェイ インストール用に選択するリージョンは、後でロジック アプリ用の Azure ゲートウェイ リソースを作成するときに選択する必要がある場所と同じです。 既定では、このリージョンは、Azure ユーザー アカウントを管理する Azure AD テナントと同じ場所です。 ただし、この場所はゲートウェイのインストール中またはそれ以降に変更できます。
+
+    > [!IMPORTANT]
+    > [Azure Government クラウド](../azure-government/compare-azure-government-global-azure.md)内の Azure Active Directory (Azure AD) テナントに関連付けられた Azure Government アカウントでサインインしている場合、ゲートウェイの設定中に **[リージョンの変更]** コマンドは使用できません。 ゲートウェイでは、ユーザー アカウントの AzureAD テナントと同じリージョンを自動的に使用します。
+    > 
+    > 引き続き Azure Government アカウントを使用する一方で、代わりにグローバル マルチテナント Azure Commercial クラウドで機能するようにゲートウェイを設定するには、まず、ゲートウェイのインストール中に `prod@microsoft.com` のユーザー名でサインインします。 この解決方法では、グローバル マルチテナント Azure クラウドを使用するようゲートウェイに強制しますが、ユーザーは Azure Government アカウントを引き続き使用できます。
 
   * ゲートウェイのインストールを更新している場合は、最初に現在のゲートウェイをアンインストールすると手順がより明確になります。
 
@@ -144,7 +149,7 @@ ms.locfileid: "99054773"
 
 オンプレミス データ ゲートウェイでは、[Azure Service Bus メッセージング](../service-bus-messaging/service-bus-messaging-overview.md)に依存してクラウドへの接続が行われ、ゲートウェイに関連付けられている Azure リージョンへの対応する送信接続が確立されます。 お使いの作業環境で、インターネットにアクセスするためにそのトラフィックがプロキシまたはファイアウォールを経由する必要がある場合は、この制限によって、オンプレミス データ ゲートウェイがゲートウェイ クラウド サービスおよび Azure Service Bus メッセージングに接続できない場合があります。 ゲートウェイにはいくつかの通信設定があり、これを調整できます。
 
-シナリオ例として、Azure でオンプレミスのデータ ゲートウェイ リソースを使用して、オンプレミスのリソースにアクセスするカスタム コネクタを使用する場合があります。 また、特定の IP アドレスへのトラフィックを制限するファイアウォールもある場合は、対応する *マネージド コネクタ[送信 IP アドレス](logic-apps-limits-and-config.md#outbound)* にアクセスできるようにゲートウェイのインストールをセットアップする必要があります。 同じリージョン内の *すべての* ロジック アプリは、同じ IP アドレス範囲を使用します。
+シナリオ例として、Azure でオンプレミスのデータ ゲートウェイ リソースを使用して、オンプレミスのリソースにアクセスするカスタム コネクタを使用する場合があります。 また、特定の IP アドレスへのトラフィックを制限するファイアウォールもある場合は、対応する *マネージド コネクタ [送信 IP アドレス](logic-apps-limits-and-config.md#outbound)* にアクセスできるようにゲートウェイのインストールをセットアップする必要があります。 同じリージョン内の *すべての* ロジック アプリは、同じ IP アドレス範囲を使用します。
 
 詳細については、以下のトピックを参照してください。
 

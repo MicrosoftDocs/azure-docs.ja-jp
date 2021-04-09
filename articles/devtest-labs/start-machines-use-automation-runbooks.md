@@ -4,10 +4,10 @@ description: Azure Automation Runbook を使用して Azure DevTest Labs のラ�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 231e79d594aab7c59fa21f9ee512abaa9ac67043
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87282264"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Azure Automation Runbook を使用してラボで仮想マシンを順番に起動する
@@ -17,7 +17,7 @@ DevTest Labs の[自動起動](devtest-lab-set-lab-policy.md#set-autostart)機�
 この例では、ラボの VM に、適切な値 (0、1、2 など) を付けてタグ **StartupOrder** を追加する必要があります。 起動する必要がないマシンを -1 に指定します。
 
 ## <a name="create-an-azure-automation-account"></a>Azure Automation アカウントを作成する
-Azure Automation アカウントは、[こちらの記事](../automation/automation-create-standalone-account.md)の手順に従って作成します。 アカウントを作成するときに、 **[アカウントとして実行]** オプションを選択します。 Automation アカウントが作成されたら、 **[モジュール]** ページを開き、メニューバーの **[Azure モジュールの更新]** を選択します。 既定のモジュールは数バージョン古いため、更新プログラムがないとスクリプトが機能しない可能性があります。
+Azure Automation アカウントは、[こちらの記事](../automation/automation-create-standalone-account.md)の手順に従って作成します。 アカウントを作成するときに、**[アカウントとして実行]** オプションを選択します。 Automation アカウントが作成されたら、**[モジュール]** ページを開き、メニューバーの **[Azure モジュールの更新]** を選択します。 既定のモジュールは数バージョン古いため、更新プログラムがないとスクリプトが機能しない可能性があります。
 
 ## <a name="add-a-runbook"></a>Runbook を追加する
 ここで、Runbook を Automation アカウントに追加するには、左側のメニューで **[Runbook]** を選択します。 メニューの **[Runbook の追加]** を選択し、指示に従って [PowerShell Runbook を作成](../automation/learn/automation-tutorial-runbook-textual-powershell.md)します。
@@ -129,4 +129,4 @@ While ($current -le 10) {
 複数のラボを持つ複数のサブスクリプションがある大規模な状況では、パラメーター情報を異なるラボ用のファイルに格納し、ファイルを個々のパラメーターではなくスクリプトに渡します。 スクリプトを変更する必要がありますが、コアの実行は同じになります。 このサンプルでは Azure Automation を使用して PowerShell スクリプトを実行していますが、ビルド/リリース パイプラインでタスクを使用するなど、他のオプションもあります。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Automation の詳細については、以下の記事を参照してください。[Azure Automation の概要](../automation/automation-intro.md).
+Azure Automation の詳細については、「[Azure Automation の概要](../automation/automation-intro.md)」の記事を参照してください。

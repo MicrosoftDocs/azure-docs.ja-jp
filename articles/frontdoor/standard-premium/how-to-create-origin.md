@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: qixwang
 ms.openlocfilehash: ebc71ea2d354caf0c8f31b1231ecc1487237dd29
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101741890"
 ---
 # <a name="set-up-an-azure-front-door-standardpremium-preview-origin"></a>Azure Front Door Standard/Premium (プレビュー) の配信元を設定する
 
 > [!Note]
-> このドキュメントは Azure Front Door Standard/Premium (プレビュー) 向けです。 Azure Front Door に関する情報をお探しですか? [こちら](../front-door-overview.md)をご覧ください。
+> このドキュメントは Azure Front Door Standard/Premium (プレビュー) 向けです。 Azure Front Door については、 [こちら](../front-door-overview.md)をご覧ください。
 
 この記事では、既存の配信元グループに Azure Front Door Standard/Premium の配信元を作成する方法について説明します。 
 

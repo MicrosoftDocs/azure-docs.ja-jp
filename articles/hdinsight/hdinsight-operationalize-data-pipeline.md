@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: a306890560497b0c7196f1286de3f73039821ea2
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c81eb092fa59cb890093e1e9acd0511e39b5047b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98939523"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864212"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>データ分析パイプラインを運用化する
 
@@ -30,7 +30,7 @@ ms.locfileid: "98939523"
 
 次の図はこの例のパイプラインを示したものです。
 
-![HDI フライト サンプル データ パイプラインの概要](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
+:::image type="content" source="./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png" alt-text="HDI フライト サンプル データ パイプラインの概要" border="false":::
 
 ## <a name="apache-oozie-solution-overview"></a>Apache Oozie ソリューションの概要
 
@@ -40,7 +40,7 @@ Oozie では、パイプラインは "*アクション*"、"*ワークフロー*
 
 次の図では、この例の Oozie パイプラインの概要設計を示します。
 
-![Oozie フライト サンプル データ パイプライン](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
+:::image type="content" source="./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png" alt-text="Oozie フライト サンプル データ パイプライン" border="false":::
 
 ## <a name="provision-azure-resources"></a>Azure リソースをプロビジョニングする
 
@@ -131,11 +131,11 @@ Oozie Web コンソールを使ってコーディネーター インスタンス
 
 2. サービスの一覧から、 **[Hive]** を選びます。
 
-    ![Hive が選択された Apache Ambari サービスの一覧](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png" alt-text="Hive が選択された Apache Ambari サービスの一覧":::
 
 3. Hive ビュー 2.0 のラベルの横にある **[ビューに移動]** を選びます。
 
-    ![Ambari Apache Hive の概要の一覧](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png" alt-text="Ambari Apache Hive の概要の一覧":::
 
 4. `rawFlights` テーブルを作成する次のステートメントを、クエリのテキスト領域に貼り付けます。 `rawFlights` テーブルでは、Azure Storage の `/example/data/flights` フォルダー内の CSV ファイルに対する読み取り時スキーマが提供されています。
 
@@ -164,7 +164,7 @@ Oozie Web コンソールを使ってコーディネーター インスタンス
 
 5. **[実行]** を選んでテーブルを作成します。
 
-    ![HDI Ambari サービスの Hive クエリ](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png" alt-text="HDI Ambari サービスの Hive クエリ":::
 
 6. `flights` テーブルを作成するには、クエリのテキスト領域内のテキストを次のステートメントに置き換えます。 `flights` テーブルは Hive のマネージド テーブルであり、読み込まれたデータを年、月、日で分割します。 このテーブルには、フライトごとに 1 行というソース データの最小の細分性で、すべてのフライト履歴データが格納されます。
 
@@ -253,18 +253,18 @@ Oozie Web コンソールを使ってコーディネーター インスタンス
     INSERT OVERWRITE TABLE flights
     PARTITION (YEAR, MONTH, DAY_OF_MONTH)
     SELECT 
-        FL_DATE,
-        CARRIER,
-        FL_NUM,
-        ORIGIN,
-        DEST,
-        DEP_DELAY,
-        ARR_DELAY,
-        ACTUAL_ELAPSED_TIME,
-        DISTANCE,
+          FL_DATE,
+          CARRIER,
+          FL_NUM,
+          ORIGIN,
+          DEST,
+          DEP_DELAY,
+          ARR_DELAY,
+          ACTUAL_ELAPSED_TIME,
+          DISTANCE,
         YEAR,
-        MONTH,
-        DAY_OF_MONTH
+          MONTH,
+          DAY_OF_MONTH
     FROM rawflights
     WHERE year = ${year} AND month = ${month} AND day_of_month = ${day};
     ```
@@ -278,17 +278,17 @@ Oozie Web コンソールを使ってコーディネーター インスタンス
     CREATE EXTERNAL TABLE ${hiveTableName}
     (
         YEAR INT,
-        MONTH INT,
-        DAY_OF_MONTH INT,
-        CARRIER STRING,
-        AVG_DEP_DELAY FLOAT,
-        AVG_ARR_DELAY FLOAT,
-        TOTAL_DISTANCE FLOAT
+          MONTH INT,
+          DAY_OF_MONTH INT,
+          CARRIER STRING,
+          AVG_DEP_DELAY FLOAT,
+          AVG_ARR_DELAY FLOAT,
+          TOTAL_DISTANCE FLOAT
     )
     ROW FORMAT DELIMITED
     FIELDS TERMINATED BY '\t' STORED AS TEXTFILE LOCATION '${hiveDataFolder}';
     INSERT OVERWRITE TABLE ${hiveTableName}
-    SELECT  year, month, day_of_month, carrier, avg(dep_delay) avg_dep_delay, 
+    SELECT     year, month, day_of_month, carrier, avg(dep_delay) avg_dep_delay, 
             avg(arr_delay) avg_arr_delay, sum(distance) total_distance 
     FROM flights
     GROUP BY year, month, day_of_month, carrier 
@@ -415,7 +415,7 @@ bash セッションから SCP を使って、Oozie ワークフロー (`workflo
 
 1. Oozie Web コンソールを使って状態を確認します。 Ambari 内から、 **[Oozie]** 、 **[クイック リンク]** 、 **[Oozie Web Console]\(Oozie Web コンソール\)** の順に選びます。 **[Workflow Jobs]\(ワークフロー ジョブ\)** タブで、 **[All Jobs]\(すべてのジョブ\)** を選びます。
 
-    ![HDI Oozie Web コンソールのワークフロー](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png" alt-text="HDI Oozie Web コンソールのワークフロー":::
 
 1. 状態が [SUCCEEDED]\(成功\) の場合、SQL Database テーブルにクエリを実行して、挿入された行を表示します。 Azure Portal で SQL Database のウィンドウに移動し、 **[ツール]** を選んで、 **[クエリ エディター]** を開きます。
 
@@ -593,11 +593,11 @@ sqlDatabaseTableName=dailyflights
 
 5. Oozie Web コンソールを使って状態を確認します。今度は、 **[Coordinator Jobs]\(コーディネーター ジョブ\)** タブの **[All jobs]\(すべてのジョブ\)** を選びます。
 
-    ![Oozie Web コンソールのコーディネーター ジョブ](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png" alt-text="Oozie Web コンソールのコーディネーター ジョブ":::
 
 6. スケジュールされたアクションの一覧を表示するには、コーディネーター インスタンスを選びます。 この例では、1/1/2017 から 1/4/2017 までの範囲の標準時刻に 4 つのアクションが表示されます。
 
-    ![Oozie Web コンソールのコーディネーター ジョブ](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-instance.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-instance.png" alt-text="Oozie Web コンソールのコーディネーター ジョブ":::
 
     この一覧の各アクションは、1 日分のデータを処理するワークフローのインスタンスに対応します。その日の開始は標準時刻によって示されます。
 

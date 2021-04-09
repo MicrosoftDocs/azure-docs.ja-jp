@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: c469ea3f104e71eb80010d4a5cd421eab6184fcf
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97895859"
 ---
 # <a name="expand-a-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドの拡張
@@ -33,7 +33,7 @@ CloudSimple は、プライベート クラウドを動的に拡張する柔軟�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="expand-a-private-cloud"></a>プライベート クラウドを拡張する
 
@@ -41,14 +41,14 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 2. **[リソース]** ページを開き、拡張するプライベート クラウドを選択します。
 
-3. 概要セクションで、 **[Expand]\(拡張\)** をクリックします。
+3. 概要セクションで、**[Expand]\(拡張\)** をクリックします。
 
     ![プライベート クラウドを拡張する](media/resources-expand-private-cloud.png)
 
 4. 既存のクラスターを拡張するか、新しい vSphere クラスターを作成するか選択します。 変更を加えると、ページ上の要約情報が更新されます。
 
-    * 既存のクラスターを拡張するには、 **[Expand existing cluster]\(既存のクラスターの拡張\)** を選択します。 拡張するクラスターを選択し、追加するノードの数を入力します。 各クラスターは、最大 16 個のノードを持つことができます。
-    * 新しいクラスターを追加するには、 **[新しいクラスターの作成]** をクリックします。 クラスターの名前を入力します。 既存のデータセンターを選択するか、名前を入力して新しいデータセンターを作成します。 ノードの種類を選択します。 新しい vSphere クラスターを作成するときは異なるノードの種類を選択できますが、既存の vSphere クラスターを拡張するときは選択できません。 ノードの数を選択します。 新しいクラスターのそれぞれに、少なくとも 3 つのノードが必要です。
+    * 既存のクラスターを拡張するには、**[Expand existing cluster]\(既存のクラスターの拡張\)** を選択します。 拡張するクラスターを選択し、追加するノードの数を入力します。 各クラスターは、最大 16 個のノードを持つことができます。
+    * 新しいクラスターを追加するには、**[新しいクラスターの作成]** をクリックします。 クラスターの名前を入力します。 既存のデータセンターを選択するか、名前を入力して新しいデータセンターを作成します。 ノードの種類を選択します。 新しい vSphere クラスターを作成するときは異なるノードの種類を選択できますが、既存の vSphere クラスターを拡張するときは選択できません。 ノードの数を選択します。 新しいクラスターのそれぞれに、少なくとも 3 つのノードが必要です。
 
     ![プライベート クラウドの拡張 - ノードの追加](media/resources-expand-private-cloud-add-nodes.png)
 

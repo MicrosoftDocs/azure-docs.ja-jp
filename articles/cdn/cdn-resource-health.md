@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 81c92b6ef5bdf89391364bc238f55200eb3679f6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92778159"
 ---
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>Azure CDN リソースの正常性の監視
@@ -38,14 +38,14 @@ Azure CDN リソース正常性は、[Azure Resource Health](../service-health/r
 
     ![[設定] ボタン](./media/cdn-resource-health/cdn-profile-settings.png)
 
-3. *[サポート + トラブルシューティング]* で、 **[リソース正常性]** をクリックします。
+3. *[サポート + トラブルシューティング]* で、**[リソース正常性]** をクリックします。
 
     ![CDN リソース正常性](./media/cdn-resource-health/cdn-resource-health3.png)
 
 >[!TIP] 
 >*[ヘルプとサポート]* ブレードの *[リソース正常性]* タイルでも CDN リソースを確認できます。  *[ヘルプとサポート]* にすばやくアクセスするには、ポータルの右上にある、丸で囲まれた **?** をクリックします。
 >
-> ![[ヘルプとサポート]](./media/cdn-resource-health/cdn-help-support.png)
+> ![ヘルプとサポート](./media/cdn-resource-health/cdn-help-support.png)
 
 ## <a name="azure-cdn-specific-messages"></a>Azure CDN 固有のメッセージ
 

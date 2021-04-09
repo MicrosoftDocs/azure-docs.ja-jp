@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 10206aced4f38f4d157f46703aac2d28ec863274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad4f5dcd137a9be6dfc764385802792026c0297d
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319152"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093007"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>cloud-to-device 通信に関するガイダンス
 
@@ -29,6 +29,8 @@ IoT Hub では、デバイス アプリがバックエンド アプリに機能�
 * [デバイス ツインの必要なプロパティ](iot-hub-devguide-device-twins.md): デバイスを特定の状態に置いておくために長時間実行されるコマンド用。 たとえば、テレメトリの送信間隔を 30 分に設定します。
 
 * [cloud-to-device メッセージ](iot-hub-devguide-messages-c2d.md): デバイス アプリに対する一方向の通知用。
+
+[Azure IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)でこれらのオプションがどのように使用されて IoT プラグ アンド プレイ デバイスが制御されるかについては、「[IoT プラグ アンド プレイ サービス開発者ガイド](../iot-pnp/concepts-developer-guide-service.md)」を参照してください。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 

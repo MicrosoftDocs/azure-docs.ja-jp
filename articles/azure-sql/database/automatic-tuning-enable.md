@@ -10,17 +10,16 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 12/03/2019
-ms.openlocfilehash: 35e2a73b0cfae104cee417e7d4a159e7fd169a17
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 03/03/2021
+ms.openlocfilehash: d60810c291984e0f57df1968f69678de8179273c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500905"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042523"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>クエリの監視とワークロード パフォーマンスの向上のために Azure portal で自動チューニングを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
-
 
 Azure SQL Database では、データ サービスが自動的に管理されます。データ サービスが常にクエリを監視し、ワークロードのパフォーマンスを向上させるために実行できるアクションを識別します。 推奨事項を確認し、手動で適用できます。また、Azure SQL Database で自動的に是正措置を適用することもできます (**自動チューニング モード** ともいう)。
 
@@ -111,11 +110,26 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 
 自動チューニングを構成する T-SQL のオプションの詳細については、[ALTER DATABASE SET オプション (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true) に関するページを参照してください。
 
-## <a name="disabled-by-the-system"></a>システムによる無効化
+## <a name="troubleshooting"></a>トラブルシューティング
 
-自動チューニングがデータベースに対して作用するあらゆる操作は監視されていて、ときにはデータベースに対して適切に作用しない可能性があると判断される場合があります。 そのような状況では、チューニング オプションがシステムによって無効化されます。 その原因はほとんどの場合、クエリ ストアが有効になっていないか、特定のデータベースに対して読み取り専用状態になっていることにあります。
+### <a name="automated-recommendation-management-is-disabled"></a>レコメンデーションの自動管理が無効になっている
 
-## <a name="permissions"></a>アクセス許可
+レコメンデーションの自動管理が無効になっているというエラー メッセージが表示された場合、または単にシステムによって無効にされた場合、最も一般的な原因は次のとおりです。
+- クエリ ストアが有効になっていない、または
+- クエリ ストアが、指定されたデータベースに対して読み取り専用モードになっている、または
+- クエリ ストアが割り当てられた記憶域スペースを使用したため、実行を停止した
+
+この問題を修正するには、次の手順を検討してください。
+- クエリ ストアをクリーンアップするか、T-SQL を使用してデータ保持期間を "auto" に変更します。 クエリ ストアに推奨される保持期間とキャプチャ ポリシーを構成する方法については、[こちら](/azure/azure-sql/database/query-performance-insight-use#recommended-retention-and-capture-policy)を参照してください。
+- SQL Server Management Studio (SSMS) を使用して、次の手順を行います。
+  - Azure SQL Database に接続する
+  - データベースを右クリックする
+  - [プロパティ] にアクセスし、[クエリ ストア] をクリックする
+  - [操作モード] を [読み取り/書き込み] に変更する
+  - [ストア キャプチャ モード] を [自動] に変更する
+  - [サイズ ベースのクリーンアップ モード] を [自動] に変更する
+
+### <a name="permissions"></a>アクセス許可
 
 自動チューニングは Azure の機能であるため、これを使用するには、Azure の組み込みロールを使用する必要があります。 SQL 認証を使用するだけでは、Azure portal からその機能を使用することはできません。
 
@@ -123,7 +137,7 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>メール通知の自動チューニングの構成
 
-[自動チューニングの電子メール通知](automatic-tuning-email-notifications-configure.md)に関するガイドを参照してください。
+自動チューニングによって作成されたレコメンデーションに関する通知を電子メールで自動的に受信するには、[自動チューニングの電子メール通知](automatic-tuning-email-notifications-configure.md)ガイドを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

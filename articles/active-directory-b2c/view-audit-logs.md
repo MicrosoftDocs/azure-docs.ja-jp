@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 04d5a989fcaf3cef3eea3b782842fb3255d4b317
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98661104"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C 監査ログへのアクセス
@@ -53,13 +53,13 @@ Azure Active Directory B2C (Azure AD B2C) は、B2C リソース、発行され�
 
 |Section|フィールド|説明|
 |-------|-----|-----------|
-| アクティビティ | Name | 実行されたアクティビティ。 たとえば、実際のユーザー サインインを終了する "*アプリケーションへの id_token の発行*"。 |
+| アクティビティ | 名前 | 実行されたアクティビティ。 たとえば、実際のユーザー サインインを終了する "*アプリケーションへの id_token の発行*"。 |
 | 開始者 (アクター) | ObjectId | ユーザーがサインインする B2C アプリケーションの **オブジェクト ID**。 この識別子は Azure portal には表示されませんが、Microsoft Graph API を使用してアクセスできます。 |
 | 開始者 (アクター) | Spn | ユーザーがサインインする B2C アプリケーションの **アプリケーション ID**。 |
 | ターゲット | ObjectId | サインインするユーザーの **オブジェクト ID**。 |
-| 追加情報 | TenantId | Azure AD B2C テナントの **テナント ID**。 |
-| 追加情報 | PolicyId | ユーザーのサインインに使用されるユーザー フロー (ポリシー) の **ポリシー ID**。 |
-| 追加情報 | ApplicationId | ユーザーがサインインする B2C アプリケーションの **アプリケーション ID**。 |
+| 追加の詳細 | TenantId | Azure AD B2C テナントの **テナント ID**。 |
+| 追加の詳細 | PolicyId | ユーザーのサインインに使用されるユーザー フロー (ポリシー) の **ポリシー ID**。 |
+| 追加の詳細 | ApplicationId | ユーザーがサインインする B2C アプリケーションの **アプリケーション ID**。 |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>Azure portal で監査ログを表示する
 
@@ -67,7 +67,7 @@ Azure portal は、Azure AD B2C テナントの監査ログ イベントへの�
 
 1. [Azure ポータル](https://portal.azure.com)
 1. Azure AD B2C テナントが含まれているディレクトリに切り替え、**Azure AD B2C** を参照します。
-1. 左側の **[アクティビティ]** で、 **[監査ログ]** を選択します。
+1. 左側の **[アクティビティ]** で、**[監査ログ]** を選択します。
 
 過去 7 日間にわたってログに記録されたアクティビティ イベントの一覧が表示されます。
 
@@ -80,7 +80,7 @@ Azure portal は、Azure AD B2C テナントの監査ログ イベントへの�
 
 一覧で行を選択すると、イベントのアクティビティの詳細が表示されます。
 
-アクティビティ イベントの一覧をコンマ区切り値 (CSV) ファイルでダウンロードするには、 **[ダウンロード]** を選択します。
+アクティビティ イベントの一覧をコンマ区切り値 (CSV) ファイルでダウンロードするには、**[ダウンロード]** を選択します。
 
 ## <a name="get-audit-logs-with-the-azure-ad-reporting-api"></a>Azure AD Reporting API を使って監査ログを取得する
 

@@ -4,12 +4,12 @@ description: GitHub Actions を使用して Azure Resource Manager テンプレ�
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 243316b32d5b0cf62f03ae77d8a9fb919743ace1
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 564a21d565fb80eba605eece95562a809a93246f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102172832"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103471926"
 ---
 # <a name="deploy-arm-templates-by-using-github-actions"></a>GitHub Actions を使用した ARM テンプレートのデプロイ
 
@@ -43,7 +43,7 @@ ms.locfileid: "102172832"
 リソース グループがまだない場合は、リソース グループを作成します。
 
 ```azurecli-interactive
-    az group create -n {MyResourceGroup}
+    az group create -n {MyResourceGroup} -l {location}
 ```
 
 `myApp` のプレースホルダーはアプリケーションの名前に置き換えます。

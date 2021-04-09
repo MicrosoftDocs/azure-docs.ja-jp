@@ -4,10 +4,10 @@ description: このチュートリアルでは、Azure Lab Services を使用し
 ms.topic: tutorial
 ms.date: 12/03/2020
 ms.openlocfilehash: 8093a1fd270cdba8bdccaf48737bf6737bdd394d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98787420"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>チュートリアル:クラスルーム ラボを設定する 
@@ -127,7 +127,7 @@ Azure Lab Services を使用する際の一般的なワークフローは次の�
 
 ユーザーを手動で追加または削除しなくて済むように、ラボ ユーザー リストを既存の Azure Active Directory (Azure AD) グループに同期することができます。 
 
-組織の Azure Active Directory 内に Azure AD グループを作成して、組織のリソースやクラウドベースのアプリへのアクセスを管理できます。 詳細については、[Azure AD グループ](../active-directory/fundamentals/active-directory-manage-groups.md)に関する記事を参照してください。 組織で Microsoft Office 365 または Azure サービスを使用している場合、組織には Azure Active Directory を管理する管理者が既に存在します。 
+組織の Azure Active Directory 内に Azure AD グループを作成して、組織のリソースやクラウドベースのアプリへのアクセスを管理できます。 詳細については、[Azure AD グループ](../active-directory/fundamentals/active-directory-manage-groups.md)に関する記事をご覧ください。 組織で Microsoft Office 365 または Azure サービスを使用している場合、組織には Azure Active Directory を管理する管理者が既に存在します。 
 
 > [!IMPORTANT]
 > ユーザー リストが空であることを確認してください。 手動または CSV ファイルのインポートによって追加したユーザーがラボ内に存在する場合、ラボを既存のグループに同期するオプションは表示されません。 
@@ -142,7 +142,7 @@ Azure Lab Services を使用する際の一般的なワークフローは次の�
     Azure AD グループがリストに表示されない場合は、次の理由が考えられます。
 
     -   Azure Active Directory のゲスト ユーザーの場合 (通常は、Azure AD を所有する組織の外部にいる場合)、Azure AD 内のグループを検索することはできません。 この場合、Azure AD グループをラボに追加することはできません。 
-    -   Teams を使用して作成された Azure AD グループは、このリストには表示されません。 Teams 内に Azure Lab Services アプリを追加すると、Teams 内から直接ラボを作成して管理できます。 詳細については、[Teams 内からのラボのユーザー リストの管理](how-to-manage-user-lists-within-teams.md)に関する記事を参照してください。 
+    -   Teams を使用して作成された Azure AD グループは、このリストには表示されません。 Teams 内に Azure Lab Services アプリを追加すると、そこから直接ラボを作成して管理できます。 詳細については、[Teams 内からのラボのユーザー リストの管理](how-to-manage-user-lists-within-teams.md)に関する記事をご覧ください。 
 1. ラボを同期する Azure AD グループを選択したら、 **[追加]** をクリックします。
 1. ラボが同期されると、Azure AD グループ内の全ユーザーがユーザーとしてラボに追加され、ユーザー リストが更新されます。 この Azure AD グループのユーザーだけがラボにアクセスできます。 ユーザー リストは、Azure AD グループの最新のメンバーシップに合わせて 24 時間ごとに更新されます。 [ユーザー] タブの [同期] ボタンをクリックすることで、Azure AD グループの最新の変更に手動で同期することもできます。
 1. **[全員を招待]** ボタンをクリックして、ユーザーをラボに招待します。これにより、ラボへの登録リンクが含まれた電子メールがすべてのユーザーに送信されます。 

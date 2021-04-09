@@ -8,10 +8,10 @@ ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
 ms.openlocfilehash: cb283380487310165c646c8615d10a545d1a923b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92675701"
 ---
 # <a name="frequently-asked-questions-about-the-education-hub"></a>Education Hub に関してよく寄せられる質問
@@ -252,8 +252,8 @@ Azure Dev Tools for Teaching へのサインイン試行に学校の資格情報
 
 ### <a name="how-do-i-find-my-subscriber-id"></a>サブスクライバー ID を調べるにはどうすればよいですか?
 
-- **プログラムへの初回登録時** : サブスクライバー ID 番号は、お手元のサブスクリプション ウェルカム メールに記載されています。
-- **サブスクリプションを更新した場合** : サブスクライバー ID は、サブスクリプション管理者に送信された更新メールに記載されています。
+- **プログラムへの初回登録時**: サブスクライバー ID 番号は、お手元のサブスクリプション ウェルカム メールに記載されています。
+- **サブスクリプションを更新した場合**: サブスクライバー ID は、サブスクリプション管理者に送信された更新メールに記載されています。
 
 サブスクライバー ID は、Visual Studio Subscription ポータルでも確認できます。 サインイン後、 **[マイ アカウント]** ページの **[My Subscription]\(個人用サブスクリプション\)** を確認してください。
 
@@ -282,7 +282,7 @@ Azure Dev Tools for Teaching へのサインイン試行に学校の資格情報
 
 または、[Azure Dev Tools for Teaching の更新ページ](https://portal.azureforeducation.microsoft.com/)にアクセスして、更新プロセスを完了してください。
 
-サブスクリプションの有効期限日を確認するには、 [Azure Dev Tools for Teaching 管理ポータル](https://azureforeducation.microsoft.com/account/Subscriptions)にアクセスし、 **[サブスクリプション]** をご覧ください。
+サブスクリプションの有効期限日を確認するには、[Azure Dev Tools for Teaching 管理ポータル](https://azureforeducation.microsoft.com/account/Subscriptions)にアクセスし、 **[サブスクリプション]** をご覧ください。
 
 ### <a name="what-if-i-need-more-help"></a>さらにサポートが必要な場合はどうすればよいですか?
 

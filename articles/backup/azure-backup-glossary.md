@@ -3,12 +3,12 @@ title: Azure Backup 用語集
 description: この記事では、Azure Backup を使用する際に役立つ用語を定義します。
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 5b575e0f56c9cf39987e9e77850ab1d9b2e80d93
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: fb46415c8bdb463556d57004e37d741c1b9a9b57
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723916"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102502027"
 ---
 # <a name="azure-backup-glossary"></a>Azure Backup 用語集
 
@@ -299,6 +299,18 @@ Azure サブスクリプションは、Azure でリソースをプロビジョ�
 ## <a name="tenant"></a>Tenant
 
 テナントは、組織を表したものです。 これは、組織やアプリの開発者が、Azure、Microsoft Intune、または Microsoft 365 へのサインアップのような Microsoft とのリレーションシップを作成するときに受け取る、Azure AD の専用インスタンスです。
+
+## <a name="tier"></a>レベル
+
+現在のところ、Azure Backup では次のバックアップ ストレージ層がサポートされています。
+
+### <a name="snapshot-tier"></a>スナップショット層
+
+(ワークロード固有の用語) VM バックアップの最初の段階では、作成されたスナップショットはディスクと共に保存されます。 この形態のストレージはスナップショット層と呼ばれています。 スナップショット層の復元は (コンテナーから復元するより) 速くなります。復元を始動させる前にスナップショットがコンテナーからコピーされるのを待つ時間がなくなるためです。
+
+### <a name="vault-standard-tier"></a>Vault-Standard 層
+
+Azure Backup でサポートされているすべてのワークロードのバックアップ データは、Azure Backup で管理されるストレージ アカウントの自動スケーリング セットであるバックアップ ストレージを保持するコンテナーに保存されます。 Vault-Standard 層は、Microsoft が管理するテナントにバックアップ データのコピーを隔離保存することを可能にするオンライン ストレージ層です。つまり、保護層が一段厚くなります。 スナップショット層がサポートされるワークロードの場合、スナップショット層と Vault-Standard 層の両方でバックアップ データがコピーされます。 Vault-Standard 層によって、バックアップ対象のデータソースが削除されたり、危険にさらされたりした場合でも、バックアップ データを確実に利用できます。
 
 ## <a name="unmanaged-disk"></a>アンマネージド ディスク
 

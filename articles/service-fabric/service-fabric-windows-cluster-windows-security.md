@@ -3,12 +3,12 @@ title: Windows セキュリティを使用して Windows 上で実行される�
 description: Windows セキュリティを使用して、Windows 上で実行されるスタンドアロン クラスターでノード間またはクライアントとノード間のセキュリティを構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: e97a951f6dc0a97b1cfa8f960ed762084c82d2ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a34c7084a9faaf0d676d4f6c68da53b2bc84f01b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839483"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103574613"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Windows セキュリティを使用して Windows 上のスタンドアロン クラスターを保護する
 Service Fabric クラスターへの未承認のアクセスを防ぐには、クラスターをセキュリティで保護する必要があります。 クラスターで運用環境のワークロードが実行されている場合は、セキュリティが特に重要となります。 この記事では、*ClusterConfig.JSON* ファイルで Windows セキュリティを使用して、ノード間およびクライアントとノード間のセキュリティを構成する方法について説明します。  このプロセスは、[Windows 上で実行されるスタンドアロン クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)に関する記事のセキュリティの構成手順に対応しています。 Service Fabric における Windows セキュリティの使用の詳細については、[クラスターのセキュリティ シナリオ](service-fabric-cluster-security.md)に関する記事をご覧ください。
@@ -19,13 +19,13 @@ Service Fabric クラスターへの未承認のアクセスを防ぐには、�
 >
 
 ## <a name="configure-windows-security-using-gmsa"></a>gMSA を使用して Windows セキュリティを構成する  
-[Microsoft.Azure.ServiceFabric.WindowsServer\<version>.zip](https://go.microsoft.com/fwlink/?LinkId=730690) スタンドアロン クラスター パッケージと共にダウンロードされるサンプルの構成ファイル *ClusterConfig.gMSA.Windows.MultiMachine.JSON* には、[グループ管理サービス アカウント (gMSA)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) を使用して Windows セキュリティを構成するためのテンプレートが含まれています。  
+gMSA は、推奨されるセキュリティ モデルです。 [Microsoft.Azure.ServiceFabric.WindowsServer\<version>.zip](https://go.microsoft.com/fwlink/?LinkId=730690) スタンドアロン クラスター パッケージと共にダウンロードされるサンプルの構成ファイル *ClusterConfig.gMSA.Windows.MultiMachine.JSON* には、[グループ管理サービス アカウント (gMSA)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) を使用して Windows セキュリティを構成するためのテンプレートが含まれています。  
 
 ```
 "security": {
     "ClusterCredentialType": "Windows",
     "ServerCredentialType": "Windows",
-    "WindowsIdentities": {  
+    "WindowsIdentities": {  
         "ClustergMSAIdentity": "[gMSA Identity]",
         "ClusterSPN": "[Registered SPN for the gMSA account]",
         "ClientIdentities": [
@@ -40,7 +40,7 @@ Service Fabric クラスターへの未承認のアクセスを防ぐには、�
 
 | **構成設定** | **説明** |
 | --- | --- |
-| ClusterCredentialType |ノード間通信の Windows セキュリティを有効にするには、*Windows* に設定します。  | 
+| ClusterCredentialType |ノード間通信の Windows セキュリティを有効にするには、*Windows* に設定します。  | 
 | ServerCredentialType |クライアントとノード間通信の Windows セキュリティを有効にするには、*Windows* に設定します。 |
 | WindowsIdentities |クラスターとクライアントの ID が含まれます。 |
 | ClustergMSAIdentity |ノード間のセキュリティを構成します。 グループ管理サービス アカウント。 |
@@ -75,7 +75,7 @@ Service Fabric クラスターへの未承認のアクセスを防ぐには、�
 ```
   
 ## <a name="configure-windows-security-using-a-machine-group"></a>コンピューター グループを使用して Windows セキュリティを構成する  
-このモデルは非推奨となっています。 上記の詳しい説明のとおり、gMSA を使用することをお勧めします。 [Microsoft.Azure.ServiceFabric.WindowsServer\<version>.zip](https://go.microsoft.com/fwlink/?LinkId=730690) スタンドアロン クラスター パッケージと共にダウンロードされるサンプルの構成ファイル *ClusterConfig.Windows.MultiMachine.JSON* には、Windows セキュリティを構成するためのテンプレートが含まれています。  Windows セキュリティは **Properties** セクション内で構成します。 
+上記のように gMSA が推奨されていますが、このセキュリティ モデルの使用もサポートされています。 [Microsoft.Azure.ServiceFabric.WindowsServer\<version>.zip](https://go.microsoft.com/fwlink/?LinkId=730690) スタンドアロン クラスター パッケージと共にダウンロードされるサンプルの構成ファイル *ClusterConfig.Windows.MultiMachine.JSON* には、Windows セキュリティを構成するためのテンプレートが含まれています。  Windows セキュリティは **Properties** セクション内で構成します。 
 
 ```
 "security": {
@@ -93,7 +93,7 @@ Service Fabric クラスターへの未承認のアクセスを防ぐには、�
 
 | **構成設定** | **説明** |
 | --- | --- |
-| ClusterCredentialType |ノード間通信の Windows セキュリティを有効にするには、*Windows* に設定します。  |
+| ClusterCredentialType |ノード間通信の Windows セキュリティを有効にするには、*Windows* に設定します。  |
 | ServerCredentialType |クライアントとノード間通信の Windows セキュリティを有効にするには、*Windows* に設定します。 |
 | WindowsIdentities |クラスターとクライアントの ID が含まれます。 |
 | ClusterIdentity |コンピューター グループ名 (domain\machinegroup) を使用して、ノード間のセキュリティを構成します。 |

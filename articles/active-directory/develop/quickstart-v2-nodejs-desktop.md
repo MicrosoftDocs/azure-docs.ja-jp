@@ -8,14 +8,14 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
-ms.date: 02/11/2021
+ms.date: 02/17/2021
 ms.author: v-doeris
-ms.openlocfilehash: 35fdd5032a6b666aaf8d0b29a83f0c83818ef230
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: beef869b891fe6e3f0ea2f667763cb310008b2fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100562032"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101653271"
 ---
 # <a name="quickstart-acquire-an-access-token-and-call-the-microsoft-graph-api-from-an-electron-desktop-app"></a>クイックスタート: Electron デスクトップ アプリケーションからアクセス トークンを取得して Microsoft Graph API を呼び出す
 
@@ -29,11 +29,11 @@ ms.locfileid: "100562032"
 * [Visual Studio Code](https://code.visualstudio.com/download) または別のコード エディター
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-application"></a>クイック スタート アプリケーションを登録してダウンロードする
-> 
+> ## <a name="register-and-download-the-sample-application"></a>サンプル アプリケーションを登録してダウンロードする
+>
 > まず、以下の手順に従ってください。
-> 
-> #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
+>
+> #### <a name="step-1-register-the-application"></a>手順 1:アプリケーションを登録する
 > アプリケーションを登録し、その登録情報をソリューションに手動で追加するには、次の手順を実行します。
 >
 > 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
@@ -48,7 +48,7 @@ ms.locfileid: "100562032"
 > 1. **[構成]** をクリックします。
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
+> #### <a name="step-1-configure-the-application-in-azure-portal"></a>手順 1: Azure portal でのアプリケーションの構成
 > このクイックスタートのサンプル コードを動作させるには、応答 URL として **msal://redirect** を追加する必要があります。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [この変更を行う]()
@@ -56,7 +56,7 @@ ms.locfileid: "100562032"
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![構成済み](media/quickstart-v2-windows-desktop/green-check.png) アプリケーションはこれらの属性で構成されています。
 
-#### <a name="step-2-download-your-electron-project"></a>手順 2:Electron プロジェクトのダウンロード
+#### <a name="step-2-download-the-electron-sample-project"></a>手順 2: Electron サンプル プロジェクトのダウンロード
 
 > [!div renderon="docs"]
 > [コード サンプルをダウンロードします](https://github.com/azure-samples/ms-identity-javascript-nodejs-desktop/archive/main.zip)
@@ -69,7 +69,7 @@ ms.locfileid: "100562032"
 > > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-electron-project"></a>手順 3: Electron プロジェクトの構成
+> #### <a name="step-3-configure-the-electron-sample-project"></a>手順 3: Electron サンプル プロジェクトの構成
 >
 > 1. ディスクのルートに近いローカル フォルダー (例: *C:/Azure-Samples*) に ZIP ファイルを展開します。
 > 1. *.env* を編集し、`TENANT_ID` および `CLIENT_ID` フィールドの値を次のスニペットに置き換えます。
@@ -170,7 +170,7 @@ async function getTokenInteractive(authWindow, tokenRequest) {
 
     /**
      * Proof Key for Code Exchange (PKCE) Setup
-     * 
+     *
      * MSAL enables PKCE in the Authorization Code Grant Flow by including the codeChallenge and codeChallengeMethod
      * parameters in the request passed into getAuthCodeUrl() API, as well as the codeVerifier parameter in the
      * second leg (acquireTokenByCode() API).
@@ -181,11 +181,11 @@ async function getTokenInteractive(authWindow, tokenRequest) {
     pkceCodes.verifier = verifier;
     pkceCodes.challenge = challenge;
 
-    const authCodeUrlParams = { 
-        redirectUri: redirectUri 
+    const authCodeUrlParams = {
+        redirectUri: redirectUri
         scopes: tokenRequest.scopes,
         codeChallenge: pkceCodes.challenge, // PKCE Code Challenge
-        codeChallengeMethod: pkceCodes.challengeMethod // PKCE Code Challenge Method 
+        codeChallengeMethod: pkceCodes.challengeMethod // PKCE Code Challenge Method
     };
 
     const authCodeUrl = await pca.getAuthCodeUrl(authCodeUrlParams);
@@ -197,14 +197,14 @@ async function getTokenInteractive(authWindow, tokenRequest) {
     });
 
     const authCode = await listenForAuthCode(authCodeUrl, authWindow); // see below
-    
-    const authResponse = await pca.acquireTokenByCode({ 
-        redirectUri: redirectUri, 
-        scopes: tokenRequest.scopes, 
+
+    const authResponse = await pca.acquireTokenByCode({
+        redirectUri: redirectUri,
+        scopes: tokenRequest.scopes,
         code: authCode,
-        codeVerifier: pkceCodes.verifier // PKCE Code Verifier 
+        codeVerifier: pkceCodes.verifier // PKCE Code Verifier
     });
-    
+
     return authResponse;
 }
 
@@ -214,7 +214,7 @@ async function getTokenInteractive(authWindow, tokenRequest) {
  * @param {object} authWindow: Electron window object
  */
 async function listenForAuthCode(navigateUrl, authWindow) {
-    
+
     authWindow.loadURL(navigateUrl);
 
     return new Promise((resolve, reject) => {

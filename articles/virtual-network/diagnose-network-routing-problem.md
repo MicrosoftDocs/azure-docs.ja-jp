@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: kumud
 ms.openlocfilehash: 1c23244707179e05c63ed44b5915e58eefd3f4a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84705051"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>仮想マシンのルーティングに関する問題を診断する
@@ -36,17 +36,17 @@ VM に接続しようとしましたが、接続に失敗します。 VM に接�
 
 1. [必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで Azure [portal](https://portal.azure.com) にログインします。
 2. Azure portal の上部の検索ボックスに、実行中状態になっている VM の名前を入力します。 検索結果に VM の名前が表示されたら、それを選択します。
-3. 左側の **[設定]** で、 **[Networking]\(ネットワーク\)** を選択し、ネットワーク インターフェイス リソースの名前を選択してそのリソースに移動します。
+3. 左側の **[設定]** で、**[Networking]\(ネットワーク\)** を選択し、ネットワーク インターフェイス リソースの名前を選択してそのリソースに移動します。
      ![ネットワーク インターフェイスを表示する](./media/diagnose-network-routing-problem/view-nics.png)
-4. 左側で、 **[Effective routes]\(有効なルート\)** を選択します。 次の図に示すように、**myVMNic1** という名前のネットワーク インターフェイスに対して有効なルートが表示されます。![有効なルートを表示する](./media/diagnose-network-routing-problem/view-effective-routes.png)
+4. 左側で、**[Effective routes]\(有効なルート\)** を選択します。 次の図に示すように、**myVMNic1** という名前のネットワーク インターフェイスに対して有効なルートが表示されます: ![有効なルートの表示](./media/diagnose-network-routing-problem/view-effective-routes.png)
 
     複数のネットワーク インターフェイスが VM に接続されている場合は、任意のネットワーク インターフェイスに対して有効なルートを選択して表示できます。 各ネットワーク インターフェイスは異なるサブネットに存在できるので、ネットワーク インターフェイスはそれぞれ異なる有効なルートを持つことができます。
 
-    前の図に示した例では、一覧のルートは、Azure が各サブネットに対して作成する既定のルートです。 一覧には少なくともこれらのルートがありますが、別の仮想ネットワークとのピアリングや、Azure VPN ゲートウェイを通じたオンプレミスのネットワークへの接続など、仮想ネットワークに対して有効にした機能によっては追加のルートがある場合があります。 各ルート、およびネットワーク インターフェイスに対して表示される他のルートについて詳しくは、「[仮想ネットワーク トラフィックのルーティング](virtual-networks-udr-overview.md)」をご覧ください。 一覧に多数のルートがある場合は、 **[ダウンロード]** を選択すると、ルートの一覧を .csv ファイルで簡単にダウンロードできます。
+    前の図に示した例では、一覧のルートは、Azure が各サブネットに対して作成する既定のルートです。 一覧には少なくともこれらのルートがありますが、別の仮想ネットワークとのピアリングや、Azure VPN ゲートウェイを通じたオンプレミスのネットワークへの接続など、仮想ネットワークに対して有効にした機能によっては追加のルートがある場合があります。 各ルート、およびネットワーク インターフェイスに対して表示される他のルートについて詳しくは、「[仮想ネットワーク トラフィックのルーティング](virtual-networks-udr-overview.md)」をご覧ください。 一覧に多数のルートがある場合は、**[ダウンロード]** を選択すると、ルートの一覧を .csv ファイルで簡単にダウンロードできます。
 
 有効なルートは前の手順の VM を通じて表示されますが、以下を通じて有効なルートを表示することもできます。
-- **個々のネットワーク インターフェイス**:[ネットワーク インターフェイスの表示](virtual-network-network-interface.md#view-network-interface-settings)方法をご確認ください。
-- **個々のルート テーブル**:[ルート テーブルの表示](manage-route-table.md#view-details-of-a-route-table)方法をご確認ください。
+- **個々のネットワーク インターフェイス**: [ネットワーク インターフェイス設定の表示](virtual-network-network-interface.md#view-network-interface-settings)方法をご確認ください。
+- **個々のルート テーブル**: [ルート テーブルの表示](manage-route-table.md#view-details-of-a-route-table)方法をご確認ください。
 
 ## <a name="diagnose-using-powershell"></a>PowerShell を使用して診断する
 
@@ -122,10 +122,10 @@ az vm show \
 
 - ルーティングは、定義したルートの中の最長プレフィックス一致 (LPM)、ボーダー ゲートウェイ プロトコル (BGP)、システム ルートに基づきます。 同じ LPM マッチの複数のルートが存在する場合、ルートは[ルーティング概要](virtual-networks-udr-overview.md#how-azure-selects-a-route)のページに示されている順序でその起点に基づいて選択されます。 有効なルートを使用すると、使用可能なすべてのルートに対して LPM マッチの有効なルートのみが表示されます。 ネットワーク インターフェイスに対してルートが評価される方法を表示することによって、VM からの通信に影響を与える可能性のある特定のルートのトラブルシューティングをより簡単に行うことができます。
 - "*仮想アプライアンス*" を次ホップの種類として使用して、ネットワーク仮想アプライアンス (NVA) へのカスタム ルートを定義した場合は、トラフィックを受信する NVA で IP 転送が有効であることを確認してください。有効になっていない場合、パケットが破棄されます。 [ネットワーク インターフェイスの IP 転送の有効化](virtual-network-network-interface.md#enable-or-disable-ip-forwarding)の詳細をご確認ください。 さらに、オペレーティング システム、または NVA 内のアプリケーションは、ネットワーク トラフィックを転送できる必要もあり、そのように構成されている必要があります。
-- 0\.0.0.0/0 へのルートを作成した場合、すべての送信インターネット トラフィックは、NVA や VPN ゲートウェイなど、指定した次ホップにルーティングされます。 このようなルートの作成は、多くの場合に強制トンネリングと呼ばれます。 次ホップがトラフィックを処理する方法によっては、RDP または SSH プロトコルを使用したインターネットから VM へのリモート接続がこのルートで動作しない場合があります。 強制トンネリングは、次の方法で有効にできます。
+- 0.0.0.0/0 へのルートを作成した場合、すべての送信インターネット トラフィックは、NVA や VPN ゲートウェイなど、指定した次ホップにルーティングされます。 このようなルートの作成は、多くの場合に強制トンネリングと呼ばれます。 次ホップがトラフィックを処理する方法によっては、RDP または SSH プロトコルを使用したインターネットから VM へのリモート接続がこのルートで動作しない場合があります。 強制トンネリングは、次の方法で有効にできます。
     - "*VPN ゲートウェイ*" の次ホップの種類でルートを作成して、サイト間 VPN を使用する場合。 [強制トンネリングの構成](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の詳細をご確認ください。
     - サイト間 VPN または ExpressRoute 回線を使用しているときに、0.0.0.0/0 (既定のルート) が仮想ネットワーク ゲートウェイを介して BGP 経由でアドバタイズされる場合。 [サイト間 VPN](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#ip-addresses-used-for-azure-private-peering) で BGP を使用する方法の詳細をご確認ください。
-- 仮想ネットワークのピアリング トラフィックが正常に機能するためには、次ホップの種類が "*VNet のピアリング*" であるシステム ルートが、ピアリングされる仮想ネットワークのプレフィックスの範囲に対して存在する必要があります。 そのようなルートが存在せず、仮想ネットワーク ピアリングのリンクが**接続済み**の場合:
+- 仮想ネットワークのピアリング トラフィックが正常に機能するためには、次ホップの種類が "*VNet のピアリング*" であるシステム ルートが、ピアリングされる仮想ネットワークのプレフィックスの範囲に対して存在する必要があります。 そのようなルートが存在せず、仮想ネットワーク ピアリングのリンクが **接続済み** の場合:
     - 数秒待機してから再試行します。 新しく確立されたピアリング リンクの場合は、サブネット内のすべてのネットワーク インターフェイスにルートを反映させるのに時間がかかる場合がります。 仮想ネットワーク ピアリングについて詳しくは、[仮想ネットワーク ピアリングの概要](virtual-network-peering-overview.md)および[仮想ネットワーク ピアリングの管理](virtual-network-manage-peering.md)に関する記事をご覧ください。
     - ネットワーク セキュリティ グループの規則が通信に影響を与える可能性があります。 詳しくは、「[Diagnose a virtual machine network traffic filter problem](diagnose-network-traffic-filter-problem.md)」(仮想マシン ネットワーク トラフィック フィルターの問題を診断する) をご覧ください。
 - Azure では、各 Azure ネットワーク インターフェイスに既定のルートが割り当てられますが、VM に複数のネットワーク インターフェイスが接続されている場合は、プライマリ ネットワーク インターフェイスだけに既定のルート (0.0.0.0/0) または VM のオペレーティング システム内のゲートウェイが割り当てられます。 [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) または [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) VM に接続されているセカンダリ ネットワーク インターフェイスの既定のルートを作成する方法をご確認ください。 [プライマリとセカンダリのネットワーク インターフェイス](virtual-network-network-interface-vm.md#constraints)の詳細をご確認ください。

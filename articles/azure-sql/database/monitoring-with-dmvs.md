@@ -11,13 +11,13 @@ ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 1/14/2021
-ms.openlocfilehash: b87d0a2446eb2b65c20ae0bef408320686cb5165
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 03/15/2021
+ms.openlocfilehash: 5c0de2c1589bfa495ab6ad287b998c403041674c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219132"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104592151"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>動的管理ビューを使用した Microsoft Azure SQL Database および Azure SQL Managed Instance のパフォーマンスの監視
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,6 +31,10 @@ Microsoft Azure SQL Database および Azure SQL Managed Instance では、動�
 - トランザクション関連の動的管理ビュー。
 
 動的管理ビューの詳細については、[動的管理ビューおよび関数 (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) に関する記事をご覧ください。
+
+## <a name="monitor-with-sql-insights"></a>SQL insights での監視
+
+[Azure Monitor SQL insights](../../azure-monitor/insights/sql-insights-overview.md) は、Azure SQL VM 内の Azure SQL マネージド インスタンス、Azure SQL データベース、SQL Server インスタンスを監視するためのツールです。 このサービスでは、リモート エージェントを使用して動的管理ビュー (DMV) からデータをキャプチャして、Azure Log Analytics にルーティングし、ここでそのデータを監視および分析することができます。 このデータは、[Azure Monitor](../../azure-monitor/overview.md) から提供されたビューで表示することも、ログ データに直接アクセスしてクエリを実行したり、傾向を分析したりすることもできます。 Azure Monitor SQL 分析情報の使用を開始するには、「[SQL の分析情報を有効にする](../../azure-monitor/insights/sql-insights-enable.md)」を参照してください。
 
 ## <a name="permissions"></a>アクセス許可
 

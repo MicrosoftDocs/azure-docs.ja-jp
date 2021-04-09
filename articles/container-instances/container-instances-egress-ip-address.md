@@ -4,10 +4,10 @@ description: イングレスとエグレスにファイアウォールのパブ�
 ms.topic: article
 ms.date: 07/16/2020
 ms.openlocfilehash: 497645b9fe7f908cc9b8b4d7ed0ba5e201570160
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89566570"
 ---
 # <a name="configure-a-single-public-ip-address-for-outbound-and-inbound-traffic-to-a-container-group"></a>コンテナー グループへの送信と受信トラフィック用の 1 つのパブリック IP アドレスを構成する

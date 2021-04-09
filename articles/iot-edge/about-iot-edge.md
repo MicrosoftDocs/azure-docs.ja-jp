@@ -10,14 +10,16 @@ ms.topic: overview
 ms.date: 10/28/2019
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 1ba133acda414d9779e2fb10150bbdd57285e9a5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e6c8e83838240b989c8c782840d8c771a6f6b7db
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "76511214"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103487804"
 ---
 # <a name="what-is-azure-iot-edge"></a>Azure IoT Edge とは
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge は、企業がデータの管理に手間取ることなくビジネス インサイトに専念できるよう、これまでクラウドで行っていた分析とカスタム ビジネス ロジックをデバイス側で実行できるようにするものです。 ビジネス ロジックを標準のコンテナーにパッケージ化して IoT ソリューションをスケールアウトし、それらのコンテナーを任意のデバイスにデプロイして、すべてをクラウドから監視できます。
 
@@ -25,7 +27,7 @@ Azure IoT Edge は、企業がデータの管理に手間取ることなくビ�
 
 Azure IoT Edge は、次の 3 つのコンポーネントで構成されます。
 
-* **IoT Edge モジュール**: Azure のサービス、サードパーティのサービス、または独自のコードを実行するコンテナーです。 モジュールは、IoT Edge デバイスにデプロイされ、そのデバイス上のローカルで実行されます。
+* **IoT Edge モジュール**: Azure のサービス、サードパーティのサービス、または独自のコードを実行するコンテナーです。 モジュールは、IoT Edge デバイスにデプロイされ、そのデバイス上でローカルに実行されます。
 * **IoT Edge ランタイム**: 個々の IoT Edge デバイス上で動作し、各デバイスにデプロイされたモジュールを管理します。
 * **クラウドベースのインターフェイス**: IoT Edge デバイスをリモートから監視して管理します。
 
@@ -62,7 +64,7 @@ Azure IoT Edge ランタイムは、多数の IoT デバイス上で動作する
 
 ## <a name="iot-edge-cloud-interface"></a>IoT Edge クラウド インターフェイス
 
-製造元やモデルが異なっていたり、地理的に分散したりしている数百万台の IoT デバイスのソフトウェア ライフ サイクルを管理するのは困難です。 ワークロードは、特定の種類のデバイス用に作成および構成され、すべてのデバイスにデプロイされ、異常な動作をしているデバイスを検出するために監視されます。 これらのアクティビティをデバイス単位で行うことはできないので、一定の規模で実施する必要があります。
+製造元やモデルが異なっていたり、地理的に分散したりしている数百万台の IoT デバイスのソフトウェア ライフ サイクルを管理するのは困難です。 ワークロードは、特定の種類のデバイスに合わせて作成および構成され、使用するすべてのデバイスにデプロイされ、異常な動作をしているデバイスを検出するために監視されます。 これらのアクティビティは、デバイス単位で行うことはできないので、一定の規模で実施する必要があります。
 
 Azure IoT Edge は、Azure IoT ソリューション アクセラレータ とシームレスに連携し、実際のソリューションのニーズに合った一元的なコントロール プレーンを提供します。 ユーザーは Cloud Services を通じて次のことを実行できます。
 
@@ -72,6 +74,6 @@ Azure IoT Edge は、Azure IoT ソリューション アクセラレータ と�
 
 ![デバイスのテレメトリとアクションはクラウドで調整される](./media/about-iot-edge/cloud-interface.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ここで説明した概念を、[シミュレートされたデバイスに対して IoT Edge をデプロイする方法](quickstart.md)に関するページで試してみましょう。

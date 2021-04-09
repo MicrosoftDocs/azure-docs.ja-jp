@@ -4,10 +4,10 @@ description: 一括分析のトピックには、Batch サービスのリソー�
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: 0d55ecd7f10e267a9cb469dffcdf26c131c8ce41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91849513"
 ---
 # <a name="batch-analytics"></a>一括分析

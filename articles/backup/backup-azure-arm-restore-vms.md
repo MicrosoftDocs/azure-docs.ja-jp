@@ -4,12 +4,12 @@ description: Azure Portal を使用して復旧ポイントから Azure 仮想�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: c15b2dc39202c6f8386031bcf055688aa2d279df
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 506c764250347bfccc3f80dcb055f1203583748c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722689"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103016527"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -181,7 +181,7 @@ CRR が有効になっている場合は、セカンダリ リージョンのバ
 
 [Azure ゾーン固定 VM](../virtual-machines/windows/create-portal-availability-zone.md) は、同じリージョンの任意の[可用性ゾーン](../availability-zones/az-overview.md)で復元できます。
 
-復元プロセスでは、 **[可用性ゾーン]** オプションが表示されます。 既定のゾーンが最初に表示されます。 別のゾーンを選択するには、任意のゾーンの番号を選択します。 固定ゾーンが使用できない場合は、バックアップ データがゾーン的にレプリケートされないため、別のゾーンにデータを復元することはできません。
+復元プロセスでは、 **[可用性ゾーン]** オプションが表示されます。 既定のゾーンが最初に表示されます。 別のゾーンを選択するには、任意のゾーンの番号を選択します。 固定ゾーンが使用できない場合は、バックアップ データがゾーン的にレプリケートされないため、別のゾーンにデータを復元することはできません。 可用性ゾーンでは、コンテナー階層の復旧ポイントからの復元のみが可能です。
 
 ![可用性ゾーンを選択する](./media/backup-azure-arm-restore-vms/cross-zonal-restore.png)
 

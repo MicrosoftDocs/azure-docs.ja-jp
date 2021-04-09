@@ -4,10 +4,10 @@ description: Azure Backup でのコンプライアンス認証の概要
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: 0b175590bc83ad1cd1f47d0111101b967962f3a8
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97093300"
 ---
 # <a name="azure-backup-compliance-offerings"></a>Azure Backup のコンプライアンス認証

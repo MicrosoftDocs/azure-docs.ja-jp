@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: mvc
 ms.openlocfilehash: 1ac418d855696138341115412dc7e2601d4cf3a1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91961410"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL - フレキシブル サーバーを管理する
@@ -52,7 +52,7 @@ Azure portal を使用して、管理者ロールのパスワードを変更で�
 2. 新しいパスワードを入力し、そのパスワードを確認します。 テキストボックスに、パスワードの複雑さの要件についてのメッセージが表示されます。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="ストレージのフレキシブル サーバーのスケーリング":::
+> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="フレキシブル サーバーのパスワードをリセットする":::
 
 3. **[保存]** を選択して新しいパスワードを保存します。
 
@@ -63,7 +63,7 @@ Azure portal を使用して、管理者ロールのパスワードを変更で�
 1. お使いのサーバーを Azure portal で選択します。 **[概要]** ウィンドウで **[削除]** を選択します。
 2. 入力ボックスにサーバーの名前を入力して、サーバーを削除することを確認します。
 
-   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="ストレージのフレキシブル サーバーのスケーリング":::
+   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="フレキシブル サーバーを削除する":::
 
    > [!IMPORTANT]
    > サーバーを削除すると、元に戻せません。

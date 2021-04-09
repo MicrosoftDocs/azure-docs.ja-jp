@@ -7,10 +7,10 @@ ms.date: 11/04/2019
 ms.author: v-ummehabiba
 ms.custom: has-adal-ref
 ms.openlocfilehash: e4182f3718422be3a0aa99c980d33026df4ce9af
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102173751"
 ---
 # <a name="ingest-historical-telemetry-data"></a>過去のテレメトリ データの取り込み

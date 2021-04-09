@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: b8cfb483f2b06c072707c57ff45b7ad995a22eb4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a2f6023b86b96266be8e625fd5b0d6625500e3fc
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034440"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102551472"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor エージェントの概要
 
@@ -152,10 +152,10 @@ Telegraf エージェントは、次のような場合に使用します。
 
 ### <a name="linux"></a>Linux
 
-| オペレーティング システム | Azure Monitor エージェント | Log Analytics エージェント | 依存関係エージェント | 診断拡張機能 | 
+| オペレーティング システム | Azure Monitor エージェント <sup>1</sup> | Log Analytics エージェント <sup>1</sup> | 依存関係エージェント | 診断拡張機能 <sup>2</sup>| 
 |:---|:---:|:---:|:---:|:---:
 | Amazon Linux 2017.09                                        |   | X |   |   |
-| CentOS Linux 8 <sup>1</sup> <sup>2</sup>                    | X | X | X |   |
+| CentOS Linux 8                                              | X <sup>3</sup> | X | X |   |
 | CentOS Linux 7                                              | X | X | X | X |
 | CentOS Linux 6                                              |   | X |   |   |
 | CentOS Linux 6.5 以降                                           |   | X | X | X |
@@ -164,26 +164,28 @@ Telegraf エージェントは、次のような場合に使用します。
 | Debian 8                                                    |   | X | X |   |
 | Debian 7                                                    |   |   |   | X |
 | OpenSUSE 13.1+                                              |   |   |   | X |
-| Oracle Linux 8 <sup>1</sup> <sup>2</sup>                    | X | X |   |   |
+| Oracle Linux 8                                              | X <sup>3</sup> | X |   |   |
 | Oracle Linux 7                                              | X | X |   | X |
 | Oracle Linux 6                                              |   | X |   |   |
 | Oracle Linux 6.4+                                           |   | X |   | X |
-| Red Hat Enterprise Linux Server 8 <sup>1</sup> <sup>2</sup> | X | X | X |   |
+| Red Hat Enterprise Linux Server 8                           | X <sup>3</sup> | X | X |   |
 | Red Hat Enterprise Linux Server 7                           | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                           |   | X | X |   |
 | Red Hat Enterprise Linux Server 6.7 以降                        |   | X | X | X |
-| SUSE Linux Enterprise Server 15.2 <sup>1</sup> <sup>2</sup> | X |   |   |   |
-| SUSE Linux Enterprise Server 15.1 <sup>1</sup> <sup>2</sup> | X | X |   |   |
+| SUSE Linux Enterprise Server 15.2                           | X <sup>3</sup> |   |   |   |
+| SUSE Linux Enterprise Server 15.1                           | X <sup>3</sup> | X |   |   |
 | SUSE Linux Enterprise Server 15                             | X | X | X |   |
 | SUSE Linux Enterprise Server 12                             | X | X | X | X |
-| Ubuntu 20.04 LTS <sup>1</sup>                               | X | X | X |   |
+| Ubuntu 20.04 LTS                                            | X | X | X |   |
 | Ubuntu 18.04 LTS                                            | X | X | X | X |
 | Ubuntu 16.04 LTS                                            | X | X | X | X |
 | Ubuntu 14.04 LTS                                            |   | X |   | X |
 
-<sup>1</sup> マシンに Python 3 がインストールされている必要があります。
+<sup>1</sup> マシンに Python (2 または 3) がインストールされている必要があります。
 
-<sup>2</sup> Syslog イベントの収集に関する既知の問題。 現在、パフォーマンス データのみがサポートされています。
+<sup>2</sup> マシンに Python 2 がインストールされている必要があります。
+
+<sup>3</sup> Syslog イベントの収集に関する既知の問題。 現在、パフォーマンス データのみがサポートされています。
 #### <a name="dependency-agent-linux-kernel-support"></a>依存関係エージェントの Linux カーネル サポート
 
 依存関係エージェントはカーネル レベルで動作するため、サポートもカーネルのバージョンに依存します。 次の表は、Linux OS のメジャーおよびマイナー リリースと依存関係エージェントでサポートされているカーネル バージョンの一覧です。

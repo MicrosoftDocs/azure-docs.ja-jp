@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: b260e51321e14a6ea1d1ee75f88ca7564b83d492
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92516751"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>チュートリアル: Azure Active Directory と N2F - Expense reports の統合
@@ -41,7 +41,7 @@ N2F - Expense reports と Azure AD の統合を構成するには、次のもの
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* N2F - Expense reports では、 **SP** と **IDP** によって開始される SSO がサポートされます
+* N2F - Expense reports では、**SP** と **IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-n2f---expense-reports-from-the-gallery"></a>ギャラリーからの N2F - Expense reports の追加
 
@@ -61,13 +61,13 @@ Azure AD への N2F - Expense reports の統合を構成するには、マネー
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **N2F - Expense reports** 」と入力し、結果ウィンドウで **N2F - Expense reports** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**N2F - Expense reports**」と入力し、結果ウィンドウで **N2F - Expense reports** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の N2F - Expense reports](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、N2F - Expense reports で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、N2F - Expense reports で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと N2F - Expense reports 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 N2F - Expense reports で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -167,9 +167,9 @@ N2F - Expense reports で Azure AD シングル サインオンを構成する�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -226,11 +226,11 @@ Azure AD ユーザーが N2F - Expense reports にログインできるように
 
     ![スクリーンショットは、説明した値を入力できるセクションを示しています。](./media/n2f-expensereports-tutorial/user3.png)
 
-    a. **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス ( **brittasimon\@contoso.com** など) を入力します。
+    a. **[Email address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
 
-    b. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta** )。
+    b. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
 
-    c. **[Name]\(名前\)** ボックスに、ユーザーの名前 ( **BrittaSimon** など) を入力します。
+    c. **[Name]\(名前\)** ボックスに、ユーザーの名前 (**BrittaSimon** など) を入力します。
 
     d. 組織の要件に応じて、 **[Role]\(ロール\)、[Direct manager (N+1)]\(直属の上司\)** および **[Division]\(部門\)** を選択します。
 

@@ -15,10 +15,10 @@ ms.date: 04/19/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 0410a1cde12b9ef762d348a286d78b35f7b14bfd
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96932304"
 ---
 # <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>チュートリアル:Azure App Configuration で機能フラグを管理する

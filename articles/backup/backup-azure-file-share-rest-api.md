@@ -4,10 +4,10 @@ description: REST API を使用して、Azure ファイル共有を Recovery Ser
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 8d2d8ed88da133986540a293185c8e37000ab87b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88824867"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>REST API で Azure Backup を使用して Azure ファイル共有をバックアップする
@@ -370,7 +370,7 @@ GET backupprotectableitems 操作の応答本文の ID 属性を使用して、*
 - {containername} - *storagecontainer;storage;azurefiles;testvault2*
 - {protectedItemName} - *azurefileshare;testshare*
 
-または、保護コンテナーと保護可能な項目の応答の**名前**属性を参照することもできます。
+または、保護コンテナーと保護可能な項目の応答の **名前** 属性を参照することもできます。
 
 >[!NOTE]
 >常に、応答の名前属性を取得し、この要求に入力します。 コンテナー名の形式や保護された項目名の形式を、ハードコーディングしたり、作成したりしないでください。 作成したりハードコーディングしたりすると、後でコンテナー名の形式または保護された項目名の形式が変更された場合、API 呼び出しは失敗します。

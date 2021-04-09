@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ba7875caa6a1db7638bfeafcfea1efa7b2462152
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87489517"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して itsme OpenID Connect を構成する
@@ -24,7 +24,7 @@ itsme デジタル ID アプリを使用すると、カードリーダー、パ�
 
 ## <a name="prerequisites"></a>前提条件
 
-開始するには、以下が必要です。
+作業を開始するには、以下が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](tutorial-create-tenant.md)。
@@ -59,9 +59,9 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 1. itsme でアカウントを作成するには、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) で itsme にアクセスします。
 
-2. onboarding@itsme.be に電子メールを送信して、itsme アカウントをアクティブ化します。 B2C のセットアップに必要な**パートナー コード**と**サービス コード**が送信されます。
+2. onboarding@itsme.be に電子メールを送信して、itsme アカウントをアクティブ化します。 B2C のセットアップに必要な **パートナー コード** と **サービス コード** が送信されます。
 
-3. itsme パートナー アカウントをアクティブ化すると、**クライアント シークレット**へのワンタイム リンクを含む電子メールが送信されます。
+3. itsme パートナー アカウントをアクティブ化すると、**クライアント シークレット** へのワンタイム リンクを含む電子メールが送信されます。
 
 4. [itsme](https://business.itsme.be/en) の指示に従って、構成を完了します。
 
@@ -84,7 +84,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
    |------------ |------- |
    | 名前 | itsme |
    | メタデータ URL | `https://oidc.<environment>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration` <br>`<environment>` は `e2e` (テスト環境) または `prd` (運用環境) のいずれか  |
-   | ClientID     | **クライアント ID** (**パートナー コード**とも呼ばれます)  |
+   | ClientID     | **クライアント ID** (**パートナー コード** とも呼ばれます)  |
    | クライアント シークレット | お使いの **client_secret** |
    | Scope  | openid service:YOURSERVICECODE プロファイルの電子メール [電話] [アドレス]  |
    |応答の種類 | code |

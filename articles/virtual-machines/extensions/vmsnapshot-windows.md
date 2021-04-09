@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 10/15/2020
 ms.author: trinadhk
 ms.openlocfilehash: 834c886c15e50870ec008dbb5ceab38132cc4649
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102561069"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Azure Backup 用の VM スナップショットの Windows 拡張機能

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
-ms.date: 09/30/2020
-ms.openlocfilehash: 6b56da68b10bc40304097fbe9eeaf200d422b663
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 03/17/2021
+ms.openlocfilehash: 4c9edaea75215bc4b471cd2e0ac50c4e69546bb0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592694"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104592134"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance での監視とパフォーマンス チューニング
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -35,6 +35,10 @@ Azure portal では、Azure SQL Database と Azure SQL Managed Instance によ�
 
 > [!NOTE]
 > 使用率が非常に低いデータベースは、ポータルに実際の使用量より少なく表示されることがあります。 double 値を最も近い整数値に変換する場合のテレメトリ生成方法が理由で、0.5 未満の特定の使用量は 0 に丸められます。これにより、生成されたテレメトリの細分性は低下します。 詳細については、「[使用率が低いデータベースおよびエラスティック プールのメトリックの 0 への丸め処理](#low-database-and-elastic-pool-metrics-rounding-to-zero)」を参照してください。
+
+### <a name="monitor-with-sql-insights"></a>SQL insights で監視する
+
+[Azure Monitor SQL insights](../../azure-monitor/insights/sql-insights-overview.md) は、Azure SQL VM 内の Azure SQL マネージド インスタンス、Azure SQL データベース、SQL Server インスタンスを監視するためのツールです。 このサービスでは、リモート エージェントを使用して動的管理ビュー (DMV) からデータをキャプチャして、Azure Log Analytics にルーティングし、ここでそのデータを監視および分析することができます。 このデータは、[Azure Monitor](../../azure-monitor/overview.md) から提供されたビューで表示することも、ログ データに直接アクセスしてクエリを実行したり、傾向を分析したりすることもできます。 Azure Monitor SQL 分析情報の使用を開始するには、「[SQL insights を有効にする](../../azure-monitor/insights/sql-insights-enable.md)」を参照してください。
 
 ### <a name="azure-sql-database-and-azure-sql-managed-instance-resource-monitoring"></a>Azure SQL Database と Azure SQL Managed Instance のリソースの監視
 

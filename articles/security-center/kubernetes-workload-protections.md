@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: f024457ed9f20e6bab0852a53ab6a60ac85ed25a
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: eacca5573c672e9f4485c26b1b580ee4c982c5d2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546263"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104580754"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes ワークロードを保護する
 
@@ -51,7 +51,7 @@ Azure Security Center には、**Kubernetes 用の Azure Policy アドオン** �
 
 推奨設定を構成するために、**Kubernetes 用の Azure Policy アドオン** をインストールします。 
 
-- 「[拡張機能の自動プロビジョニングの有効化](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)」で説明されているように、このアドオンは自動的にデプロイできます。 アドオンの自動プロビジョニングが "オン" に設定されている場合は、既存のクラスターおよび今後作成されるクラスターすべて (アドオンのインストール要件を満たすもの) で、拡張機能が既定で有効になります。
+- 「[Log Analytics エージェントと拡張機能の自動プロビジョニングを有効にする](security-center-enable-data-collection.md#auto-provision-mma)」で説明されているように、このアドオンは自動的にデプロイできます。 アドオンの自動プロビジョニングが "オン" に設定されている場合は、既存のクラスターおよび今後作成されるクラスターすべて (アドオンのインストール要件を満たすもの) で、拡張機能が既定で有効になります。
 
     :::image type="content" source="media/defender-for-kubernetes-usage/policy-add-on-auto-provision.png" alt-text="Security Center の自動プロビジョニング ツールを使用して Kubernetes 用の Policy アドオンをインストールする":::
 

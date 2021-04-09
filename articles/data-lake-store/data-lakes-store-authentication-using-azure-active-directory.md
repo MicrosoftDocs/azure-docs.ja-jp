@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 6fc09f9145b7a1652b621ed38a8bf9af7c4c82a8
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92106571"
 ---
 # <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Data Lake Storage Gen1 での Azure Active Directory を使用した認証
@@ -19,9 +19,9 @@ Azure Data Lake Storage Gen1 では、認証するために Azure Active Directo
 
 ## <a name="authentication-options"></a>認証オプション
 
-* **エンドユーザー認証** - Data Lake Storage Gen1 での認証に、エンド ユーザーの Azure 資格情報が使用されます。 Data Lake Storage Gen1 と組み合わせて動作するように作成されたアプリケーションでは、これらのユーザー資格情報を求めるメッセージが表示されます。 そのため、この認証メカニズムは*対話型*であり、アプリケーションはログインしたユーザーのコンテキストで実行されます。 詳細と手順については、[Data Lake Storage Gen1 でのエンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)に関するページをご覧ください。
+* **エンドユーザー認証** - Data Lake Storage Gen1 での認証に、エンド ユーザーの Azure 資格情報が使用されます。 Data Lake Storage Gen1 と組み合わせて動作するように作成されたアプリケーションでは、これらのユーザー資格情報を求めるメッセージが表示されます。 そのため、この認証メカニズムは *対話型* であり、アプリケーションはログインしたユーザーのコンテキストで実行されます。 詳細と手順については、[Data Lake Storage Gen1 でのエンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)に関するページをご覧ください。
 
-* **サービス間認証** - Data Lake Storage Gen1 でアプリケーションが自身を認証するようにするには、このオプションを使用します。 このような場合は、Azure Active Directory (AD) アプリケーションを作成して、Data Lake Storage Gen1 での認証に、Azure AD アプリケーションのキーを使用します。 そのため、この認証メカニズムは*非対話型*です。 詳細と手順については、[Data Lake Storage Gen1 でのサービス間認証](data-lake-store-service-to-service-authenticate-using-active-directory.md)に関するページをご覧ください。
+* **サービス間認証** - Data Lake Storage Gen1 でアプリケーションが自身を認証するようにするには、このオプションを使用します。 このような場合は、Azure Active Directory (AD) アプリケーションを作成して、Data Lake Storage Gen1 での認証に、Azure AD アプリケーションのキーを使用します。 そのため、この認証メカニズムは *非対話型* です。 詳細と手順については、[Data Lake Storage Gen1 でのサービス間認証](data-lake-store-service-to-service-authenticate-using-active-directory.md)に関するページをご覧ください。
 
 次の表は、Data Lake Storage Gen1 でエンドユーザー認証メカニズムとサービス間認証メカニズムがどのようにサポートされているかを示しています。 表の見方は次のとおりです。
 

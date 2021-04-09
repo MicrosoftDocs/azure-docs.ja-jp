@@ -9,10 +9,10 @@ ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 4678a6128be13ac61dc4ac67bbd1a17e99c6d24d
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99820231"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>チュートリアル:Azure SQL Database リソースを別のリージョンに移動する

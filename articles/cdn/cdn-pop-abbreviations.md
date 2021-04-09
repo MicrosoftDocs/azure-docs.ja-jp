@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: allensu
 ms.openlocfilehash: a5f3f8dbb83b23fc16fd1225e5a9cbeab16b9576
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81260243"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>Azure CDN の略称別の POP の場所
@@ -30,7 +30,7 @@ ms.locfileid: "81260243"
 
 この記事では、**Azure CDN from Verizon** に対する Azure CDN の POP の場所を、POP の略称順に示します。
 
-省略形 | Location | リージョン
+省略形 | 場所 | リージョン
 | --- | --- | --- |
 AGA | ジョージア州アトランタ (米国) | 北米: 米国東海岸
 AGB | ジョージア州アトランタ (米国) | 北米: 米国東海岸

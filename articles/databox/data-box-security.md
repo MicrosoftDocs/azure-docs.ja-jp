@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: alkohli
 ms.openlocfilehash: 4d6c77b3e8920cabc397cdcbc235baefa031e5ab
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97655494"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box のセキュリティとデータ保護
@@ -56,7 +56,7 @@ Data Box デバイスは、次の機能によって保護されます。
 - Data Box 固有のソフトウェアのみを実行します。
 - ロック状態で起動します。
 - デバイスのロック解除パスキーによってデバイスへのアクセスを制御します。 このパスキーは、暗号化キーによって保護されています。 パスキーは、独自のカスタマー マネージド キーを使用して保護できます。 詳細については、「[Azure Key Vault のカスタマー マネージド キーを Azure Data Box に使用する](data-box-customer-managed-encryption-key-portal.md)」を参照してください。
-- デバイスとの間でデータをコピーするためのアクセス資格情報。 Azure portal の **[デバイスの資格情報]** ページへのすべてのアクセスは[アクティビティ ログ](data-box-logs.md#query-activity-logs-during-setup)に記録されます。
+- デバイスとの間でデータをコピーするためのアクセス資格情報。 Azure portal の **[デバイスの資格情報]** ページへのすべてのアクセスは [アクティビティ ログ](data-box-logs.md#query-activity-logs-during-setup)に記録されます。
 - デバイスと共有へのアクセスには、独自のパスワードを使用できます。 詳細については、[Azure Data Box の注文](data-box-deploy-ordered.md)に関するページを参照してください。
 
 ### <a name="establish-trust-with-the-device-via-certificates"></a>証明書を使用してデバイスとの信頼関係を確立する
@@ -104,7 +104,7 @@ Azure Data Box は、同サービスにおける次の主要なインスタン�
 
 - **配送先住所** - Data Box サービスは、注文を受けると、サード パーティの運送業者 (UPS、DHL など) に配送先住所を提供します。 
 
-詳細については、[Trust Center](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
+詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
 
 
 ## <a name="security-guidelines-reference"></a>セキュリティ ガイドラインのリファレンス

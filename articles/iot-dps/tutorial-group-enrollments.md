@@ -10,13 +10,13 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 4cfbfe3e3e3ba620d8292767012c9bb866d8a878
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94968096"
 ---
-# <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>チュートリアル:シミュレートされた X.509 デバイスを IoT Hub Device Provisioning Service 対応の Java device and service SDK と登録グループを使用して作成、プロビジョニングする
+# <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>チュートリアル: シミュレートされた X.509 デバイスを IoT Hub Device Provisioning Service 対応の Java device and service SDK と登録グループを使用して作成、プロビジョニングする
 
 以下の手順では、Windows OS を実行する開発マシン上で X.509 デバイスをシミュレートすると共に、コード サンプルを使って、そのシミュレートされたデバイスを Device Provisioning Service および IoT Hub に登録グループを使って接続する方法について説明します。 
 
@@ -92,7 +92,7 @@ ms.locfileid: "94968096"
 
     1. テキスト エディターで、中間署名証明書ファイルを開きます。 `PUBLIC_KEY_CERTIFICATE_STRING` 値を中間署名証明書の値で更新します。
 
-        Bash シェルを使用してデバイス証明書を生成した場合は、 *./certs/azure-iot-test-only.intermediate.cert.pem* に中間証明書キーが含まれています。 証明書が PowerShell で生成された場合は、 *./Intermediate1.pem* が中間証明書ファイルになります。
+        Bash シェルを使用してデバイス証明書を生成した場合は、*./certs/azure-iot-test-only.intermediate.cert.pem* に中間証明書キーが含まれています。 証明書が PowerShell で生成された場合は、*./Intermediate1.pem* が中間証明書ファイルになります。
 
         ```java
         private static final String PUBLIC_KEY_CERTIFICATE_STRING =
@@ -149,7 +149,7 @@ ms.locfileid: "94968096"
 
 ## <a name="simulate-the-device"></a>デバイスをシミュレートする
 
-1. Device Provisioning Service の概要ブレードで、 **[概要]** を選択し、"_ID スコープ_" と "_プロビジョニング サービス グローバル エンドポイント_" をメモします。
+1. Device Provisioning Service の概要ブレードで、**[概要]** を選択し、"_ID スコープ_" と "_プロビジョニング サービス グローバル エンドポイント_" をメモします。
 
     ![サービス情報](./media/tutorial-group-enrollments/extract-dps-endpoints.png)
 
@@ -202,7 +202,7 @@ ms.locfileid: "94968096"
 
 1. 中間証明書の `leafPrivateKey` のすぐ下に、新しい変数を追加します。 この新しい変数に、`intermediateKey` という名前を付けます。 それに、中間署名証明書の値を設定します。
 
-    Bash シェルを使用してデバイス証明書を生成した場合は、 *./certs/azure-iot-test-only.intermediate.cert.pem* に中間証明書キーが含まれています。 証明書が PowerShell で生成された場合は、 *./Intermediate1.pem* が中間証明書ファイルになります。
+    Bash シェルを使用してデバイス証明書を生成した場合は、*./certs/azure-iot-test-only.intermediate.cert.pem* に中間証明書キーが含まれています。 証明書が PowerShell で生成された場合は、*./Intermediate1.pem* が中間証明書ファイルになります。
 
     ```java
     private static final String intermediateKey = "-----BEGIN CERTIFICATE-----\n" +

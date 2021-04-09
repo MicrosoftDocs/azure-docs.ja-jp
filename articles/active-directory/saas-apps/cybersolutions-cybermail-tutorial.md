@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: 41c0bdf3eaac1a78d4cdef09ba418155a5a0c919
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92455036"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cybersolutions-cybermail"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と CyberSolutions CYBERMAILΣ の統合
@@ -37,7 +37,7 @@ ms.locfileid: "92455036"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* CyberSolutions CYBERMAILΣ では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* CyberSolutions CYBERMAILΣ では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-cybersolutions-cybermail-from-the-gallery"></a>ギャラリーからの CyberSolutions CYBERMAILΣ の追加
 
@@ -47,7 +47,7 @@ Azure AD への CyberSolutions CYBERMAILΣ の統合を構成するには、ギ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **CyberSolutions CYBERMAILΣ** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**CyberSolutions CYBERMAILΣ**」と入力します。
 1. 結果のパネルから **[CyberSolutions CYBERMAILΣ]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 

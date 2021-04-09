@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
 ms.openlocfilehash: 19f42270e37c42cf56bbde04f73c01027a56ff63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89657389"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー アクションを制御する条件付きステートメントを作成する
@@ -36,7 +36,7 @@ ms.locfileid: "89657389"
 
 1. 必要な場所に条件を追加します。 
 
-   ステップの間に条件を追加するには、条件を追加する位置の矢印の上にポインターを移動します。 表示される**プラス記号** ( **+** ) を選択し、 **[アクションの追加]** を選択します。 次に例を示します。
+   ステップの間に条件を追加するには、条件を追加する位置の矢印の上にポインターを移動します。 表示される **プラス記号** ( **+** ) を選択し、 **[アクションの追加]** を選択します。 次に例を示します。
 
    ![ステップの間にアクションを追加する](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 

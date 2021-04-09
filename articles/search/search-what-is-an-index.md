@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: d0cc7630a3bea67a99c3cb65d2015e934e8ac2da
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.date: 03/05/2021
+ms.openlocfilehash: 96594d573c308727217f537e5421dcb79f02c2ff
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539096"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102433796"
 ---
 # <a name="creating-search-indexes-in-azure-cognitive-search"></a>Azure Cognitive Search での検索インデックスの作成
 
@@ -61,7 +61,7 @@ Azure Cognitive Search では、フル テキスト クエリおよびフィル�
 
 ## <a name="choose-a-client"></a>クライアントを選択する
 
-検索インデックスを作成するには、いくつかの方法があります。 早期の開発と概念実証のテストには、Azure portal または REST API をお勧めします。
+検索インデックスを作成する方法はいくつかあります。 早期の開発と概念実証のテストには、Azure portal または SDK をお勧めします。
 
 開発時に、頻繁な再構築を計画します。 物理構造はサービス内で作成されるため、既存のフィールド定義への変更のほとんどにおいて[インデックスの削除と再作成](search-howto-reindex.md)が必要です。 リビルドを高速化するために、データのサブセットを使って作業することを検討してもよいでしょう。
 
@@ -110,7 +110,7 @@ Cognitive Search の場合、一般公開される機能は Azure SDK によっ�
 
 検索ドキュメントは、`fields` コレクションによって定義されます。 クエリとキーのフィールドが必要になります。 また、フィルター、ファセット、および並べ替えをサポートするフィールドが必要になる場合もあります。 また、ユーザーに表示されないデータのフィールドが必要な場合もあります。たとえば、利益幅やマーケティング プロモーションのためのフィールドを作成して、検索順位の変更に使用できます。
 
-Edm.String 型の 1 つのフィールドをドキュメント キーとして指定する必要があります。 これは、各検索ドキュメントを一意に識別するために使用されます。 キーを使用してドキュメントを取得し、詳細ページを設定できます。  
+Edm.String 型の 1 つのフィールドをドキュメント キーとして指定する必要があります。 これは各検索ドキュメントを一意に識別するために使用され、大文字と小文字が区別されます。 キーを使用してドキュメントを取得し、詳細ページを設定できます。
 
 受信データ自体が階層化されている場合、入れ子構造を表すために、スキーマには[複合型](search-howto-complex-data-types.md)データ型を割り当てます。 あらかじめ登録されているサンプル データ セットである Hotels (ホテル) は、各ホテルとの一対一のリレーションシップを持つ Address (複数のサブフィールドを含む) と、各ホテルに複数の部屋が関連付けられている複合型コレクションの Rooms を使用した複合型を示しています。 
 

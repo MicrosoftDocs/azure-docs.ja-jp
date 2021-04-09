@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: jeedes
 ms.openlocfilehash: 9512287f656c6c64399cb8749b7451a5a780bba8
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92677630"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsara"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Samsara の統合
@@ -37,8 +37,8 @@ ms.locfileid: "92677630"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Samsara では、 **SP** と **IDP** によって開始される SSO がサポートされます
-* Samsara では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* Samsara では、**SP** と **IDP** によって開始される SSO がサポートされます
+* Samsara では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-samsara-from-the-gallery"></a>ギャラリーからの Samsara の追加
 
@@ -57,7 +57,7 @@ Azure AD への Samsara の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Samsara** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Samsara**」と入力します。
 
      ![結果一覧の OneTrust Privacy Management Software](common/search-new-app.png)
 
@@ -102,7 +102,7 @@ Samsara に対して Azure AD SSO を構成してテストするには、次の�
     c. **[応答 URL]** ボックスに、`https://samsara-dev.auth0.com/login/callback?connection=samlp-orgid-<ORGID>` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値を実際のサインオン URL、応答 URL、識別子で更新してください。 これらの値を取得するには、 [Samsara クライアント サポート チーム](mailto:support@samsara.com)に連絡してください。または、Samsara で、 **[設定]**  >  **[シングル サインオン]**  >  **[New SAML Connection]\(新しい SAML 接続\)** に移動して \<ORGID\> を入手してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値を実際のサインオン URL、応答 URL、識別子で更新してください。 これらの値を取得するには、[Samsara クライアント サポート チーム](mailto:support@samsara.com)に連絡してください。または、Samsara で、 **[設定]**  >  **[シングル サインオン]**  >  **[New SAML Connection]\(新しい SAML 接続\)** に移動して \<ORGID\> を入手してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

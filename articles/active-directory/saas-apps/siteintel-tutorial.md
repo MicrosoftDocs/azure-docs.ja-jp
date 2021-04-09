@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: jeedes
 ms.openlocfilehash: 0c8224bf84a2235086d941df7d02ab6f458f3f16
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92510000"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-siteintel"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SiteIntel の統合
@@ -50,7 +50,7 @@ Azure AD への SiteIntel の統合を構成するには、ギャラリーから
 1. 左側のペインで、 **[Azure Active Directory]** を選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** ボックスに「 **SiteIntel** 」と入力します。
+1. **[ギャラリーから追加する]** ボックスに「**SiteIntel**」と入力します。
 1. 結果リストで **[SiteIntel]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-siteintel"></a>SiteIntel の Azure AD シングル サインオンの構成とテスト
@@ -108,7 +108,7 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 1. ペインの上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、次の手順を実行します。
 
-   a. **[名前]** ボックスに「 **B.Simon** 」と入力します。  
+   a. **[名前]** ボックスに「**B.Simon**」と入力します。  
 
    b. **[ユーザー名]** ボックスに、`username@companydomain.extension` 形式でユーザー名を入力します (例: `B.Simon@contoso.com`)。
 

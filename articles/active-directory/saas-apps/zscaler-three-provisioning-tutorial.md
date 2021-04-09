@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: c16c02a870edb1a777b63da6fea57fc02136d643
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97936602"
 ---
 # <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>チュートリアル:Zscaler Three を構成し、自動ユーザー プロビジョニングに対応させる

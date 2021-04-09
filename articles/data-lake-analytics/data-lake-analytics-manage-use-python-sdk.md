@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/08/2018
 ms.custom: devx-track-python
 ms.openlocfilehash: fda09047d138e404eeca87ed3eba9bb72ff62d56
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92220229"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Python を使用して Azure Data Lake Analytics を管理する
@@ -98,7 +98,7 @@ import time
 
 ### <a name="interactive-user-authentication-with-a-pop-up"></a>ポップアップを使用した対話型ユーザー認証
 
-この方法はサポートされていません。
+このメソッドはサポートされていません。
 
 ### <a name="interactive-user-authentication-with-a-device-code"></a>デバイス コードを使用した対話型ユーザー認証
 
@@ -118,7 +118,7 @@ credentials = ServicePrincipalCredentials(
 
 ### <a name="noninteractive-authentication-with-api-and-a-certificate"></a>API と証明書を使用した非対話型認証
 
-この方法はサポートされていません。
+このメソッドはサポートされていません。
 
 ## <a name="common-script-variables"></a>共通スクリプト変数
 

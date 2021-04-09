@@ -12,10 +12,10 @@ ms.date: 06/23/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3e6fcf956639d827a8654c5ee80e7cab8cadf930
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85383599"
 ---
 # <a name="define-an-azure-ad-sspr-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C カスタム ポリシーで Azure AD SSPR 技術プロファイルを定義する
@@ -72,7 +72,7 @@ Azure AD SSPR プロトコル プロバイダーでは **OutputClaims** は返�
 
 ### <a name="metadata"></a>Metadata
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Operation | はい | **SendCode** である必要があります。  |
 
@@ -80,7 +80,7 @@ Azure AD SSPR プロトコル プロバイダーでは **OutputClaims** は返�
 
 次のメタデータを使用して、SMS 送信に失敗したときに表示されるエラー メッセージを構成できます。 メタデータは、[セルフアサート](self-asserted-technical-profile.md)技術プロファイルで構成する必要があります。 エラー メッセージは、[ローカライズ](localization-string-ids.md#azure-ad-sspr)できます。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | UserMessageIfInternalError | いいえ | サーバーで内部エラーが発生した場合のユーザー エラー メッセージ。 |
 | UserMessageIfThrottled| いいえ | 要求が調整された場合のユーザー エラー メッセージ。|
@@ -126,7 +126,7 @@ Azure AD SSPR プロトコル プロバイダーでは **OutputClaims** は返�
 
 ### <a name="metadata"></a>Metadata
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Operation | はい | **VerifyCode** になっている必要があります |
 
@@ -134,7 +134,7 @@ Azure AD SSPR プロトコル プロバイダーでは **OutputClaims** は返�
 
 次のメタデータを使用して、コード確認に失敗したときに表示されるエラー メッセージを構成できます。 メタデータは、[セルフアサート](self-asserted-technical-profile.md)技術プロファイルで構成する必要があります。 エラー メッセージは、[ローカライズ](localization-string-ids.md#azure-ad-sspr)できます。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 |UserMessageIfChallengeExpired | コード確認セッションの有効期限が切れた場合にユーザーに表示するメッセージ。 コードの有効期限が切れているか、指定された識別子に対してコードが生成されたことがないかのいずれかです。|
 |UserMessageIfInternalError | サーバーで内部エラーが発生した場合のユーザー エラー メッセージ。|

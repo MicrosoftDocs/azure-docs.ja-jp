@@ -12,10 +12,10 @@ ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: ec101786f33aa6f2525d685993d6b6c891ab2e9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "88936318"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>モデレーション ジョブを定義して使用する (.NET)
@@ -41,14 +41,14 @@ SDK サンプルで、Azure から提供される API キーを使用する予�
 
 ## <a name="define-a-custom-moderation-workflow"></a>カスタム モデレーション ワークフローを定義する
 
-モデレーション ジョブでは、API を使用してコンテンツがスキャンされ、**ワークフロー**を使用してレビューを作成するかどうかが決定されます。
+モデレーション ジョブでは、API を使用してコンテンツがスキャンされ、**ワークフロー** を使用してレビューを作成するかどうかが決定されます。
 レビュー ツールには既定のワークフローが含まれていますが、このクイックスタート用に[カスタムのワークフローを定義](Review-Tool-User-Guide/Workflows.md)してみましょう。
 
 コードでは、モデレーション ジョブを開始するワークフローの名前を使用します。
 
 ## <a name="create-your-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
-1. ソリューションに新しい**コンソール アプリ (.NET Framework)** プロジェクトを追加します。
+1. ソリューションに新しい **コンソール アプリ (.NET Framework)** プロジェクトを追加します。
 
    サンプル コードで、プロジェクトに **CreateReviews** と名前を付けます。
 
@@ -126,9 +126,9 @@ public static class Clients
 
 > [!NOTE]
 > TeamName 定数は、Content Moderator サブスクリプションの作成時に使用した名前に設定します。 Content Moderator Web サイトから TeamName を取得します。
-> ログインしたら、 **[設定]** (歯車) メニューから **[資格情報]** を選択します。
+> ログインしたら、**[設定]** (歯車) メニューから **[資格情報]** を選択します。
 >
-> チーム名は、 **[API]** セクションの **[Id]** フィールドの値です。
+> チーム名は、**[API]** セクションの **[Id]** フィールドの値です。
 
 ```csharp
 /// <summary>

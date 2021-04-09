@@ -8,10 +8,10 @@ author: swinarko
 ms.custom: seo-lt-2019
 ms.date: 09/06/2020
 ms.openlocfilehash: f11a3845e8644f3f60425538b2ef32cff668d88d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100384930"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSDT から Azure 内で SSIS パッケージを実行する

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 03/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: eb7cba1de280793a1ca98687c71355c1ea702d4c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 4e709719d56aacacf61e247a5dbe215f766a891a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585226"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102607953"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でユーザー属性を追加してユーザー入力をカスタマイズする
 
@@ -156,16 +156,22 @@ city 属性の値のセットの一覧を指定するには、次のようにし
 1. **ClaimsSchema** 要素に city 要求を追加します。  
 
 ```xml
-<ClaimType Id="city">
-  <DisplayName>City where you work</DisplayName>
-  <DataType>string</DataType>
-  <UserInputType>DropdownSingleSelect</UserInputType>
-  <Restriction>
-    <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
-    <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
-    <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
-  </Restriction>
-</ClaimType>
+<!-- 
+<BuildingBlocks>
+  <ClaimsSchema> -->
+    <ClaimType Id="city">
+      <DisplayName>City where you work</DisplayName>
+      <DataType>string</DataType>
+      <UserInputType>DropdownSingleSelect</UserInputType>
+      <Restriction>
+        <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
+        <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
+        <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
+      </Restriction>
+    </ClaimType>
+  <!-- 
+  </ClaimsSchema>
+</BuildingBlocks>-->
 ```
 
 ## <a name="add-a-claim-to-the-user-interface"></a>ユーザー インターフェイスに要求を追加する
@@ -198,7 +204,7 @@ city 属性の値のセットの一覧を指定するには、次のようにし
 </ClaimsProvider>
 ```
 
-フェデレーション アカウントを使用して初めてサインインした後に city 要求を収集するには、それを出力要求として `SelfAsserted-Social` 技術プロファイルに追加する必要があります。 ローカルとフェデレーション アカウントのユーザーが後でプロファイル データを編集できるようにするには、`SelfAsserted-ProfileUpdate` 技術プロファイルに出力要求を追加します。 拡張ファイル内のこれらの技術プロファイルをオーバーライドします。 要求が画面に表示される順序を制御するには、出力要求の一覧全体を指定します。 **ClaimsProviders** 要素を見つけます。 新しい ClaimsProvider を次のように追加します。
+フェデレーション アカウントを使用して初めてサインインした後に city 要求を収集するには、それを出力要求として `SelfAsserted-Social` 技術プロファイルに追加する必要があります。 ローカルとフェデレーション アカウントのユーザーが後でプロファイル データを編集できるようにするには、`SelfAsserted-ProfileUpdate` 技術プロファイルに入力/出力要求を追加します。 拡張ファイル内のこれらの技術プロファイルをオーバーライドします。 要求が画面に表示される順序を制御するには、出力要求の一覧全体を指定します。 **ClaimsProviders** 要素を見つけます。 新しい ClaimsProvider を次のように追加します。
 
 ```xml
 <ClaimsProvider>
@@ -206,6 +212,9 @@ city 属性の値のセットの一覧を指定するには、次のようにし
   <TechnicalProfiles>
     <!--Federated account first-time sign-in page-->
     <TechnicalProfile Id="SelfAsserted-Social">
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="city" />
+      </InputClaims>
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="displayName"/>
         <OutputClaim ClaimTypeReferenceId="givenName"/>
@@ -215,6 +224,9 @@ city 属性の値のセットの一覧を指定するには、次のようにし
     </TechnicalProfile>
     <!--Edit profile page-->
     <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="city" />
+      </InputClaims>
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="displayName"/>
         <OutputClaim ClaimTypeReferenceId="givenName" />
@@ -255,14 +267,20 @@ city 属性の値のセットの一覧を指定するには、次のようにし
         <PersistedClaim ClaimTypeReferenceId="city"/>
       </PersistedClaims>
     </TechnicalProfile>
-    <!-- Read data after user authenticates with a local account. -->
+    <!-- Read data after user resets the password. -->
     <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
       <OutputClaims>  
         <OutputClaim ClaimTypeReferenceId="city" />
       </OutputClaims>
     </TechnicalProfile>
-    <!-- Read data after user authenticates with a federated account. -->
+    <!-- Read data after user authenticates with a local account. -->
     <TechnicalProfile Id="AAD-UserReadUsingObjectId">
+      <OutputClaims>  
+        <OutputClaim ClaimTypeReferenceId="city" />
+      </OutputClaims>
+    </TechnicalProfile>
+    <!-- Read data after user authenticates with a federated account. -->
+    <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
       <OutputClaims>  
         <OutputClaim ClaimTypeReferenceId="city" />
       </OutputClaims>

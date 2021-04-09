@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: c79e32ed48ebdc4fbb05de91a5d4b900408fb154
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: bb4dd08b4f30982ec4572fd4e130a89112578175
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258746"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203557"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>チュートリアル:Azure CLI を介して DMS を使用してオンラインで PostgreSQL を Azure DB for PostgreSQL に移行する
 
@@ -58,11 +58,11 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
     >
     > Azure Database Migration Service にはインターネット接続がないため、この構成が必要となります。
 
-* 仮想ネットワークのネットワーク セキュリティ グループ (NSG) の規則によって、Azure Database Migration Service への次のアウトバウンド通信ポートが確実にブロックされないようにします: 443、53、9354、445、12000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事を参照してください。
-* [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules)を構成します。
+* 仮想ネットワークのネットワーク セキュリティ グループ (NSG) の規則によって、ServiceBus、Storage、AzureMonitor の ServiceTag の送信ポート 443 がブロックされていないことを確認します。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事を参照してください。
+* [データベース エンジン アクセスのために Windows ファイアウォール](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
 * Azure Database Migration Service がソース PostgreSQL サーバーにアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 5432 です。
 * ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
-* Azure Database for PostgreSQL のサーバーレベルの[ファイアウォール規則](https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
+* Azure Database for PostgreSQL のサーバーレベルの[ファイアウォール規則](../postgresql/concepts-firewall-rules.md)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
 * CLI を呼び出すには、次の 2 つの方法があります。
 
   * Azure portal の右上隅にある [Cloud Shell] ボタンを選択します。
@@ -71,7 +71,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
   * CLI をローカルにインストールして実行します。 CLI 2.0 は、Azure リソースを管理するためのコマンドライン ツールです。
 
-       CLI をダウンロードするには、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」の記事の手順に従ってください。 この記事には、CLI 2.0 をサポートするプラットフォームも一覧表示されています。
+       CLI をダウンロードするには、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」の記事の手順に従ってください。 この記事には、CLI 2.0 をサポートするプラットフォームも一覧表示されています。
 
        Windows Subsystem for Linux (WSL) を設定するには、[Windows 10 インストール ガイド](/windows/wsl/install-win10)の指示に従います。
 

@@ -4,15 +4,15 @@ titleSuffix: An Azure Communication Services quickstart
 description: このクイックスタートでは、Azure Communication チャット クライアント ライブラリを使用して、Teams の会議に参加する方法について説明します
 author: askaur
 ms.author: askaur
-ms.date: 12/08/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 8c4753b2041c2ab15fd586a8b1add6c4dd1a167b
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 75580931b2df33b02b9759b6faaa5bec548daaae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124025"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103496178"
 ---
 # <a name="quickstart-join-your-chat-app-to-a-teams-meeting"></a>クイックスタート: チャット アプリを Teams の会議に参加させる
 

@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: b1be5e903994f0a2c4a3d457f0c2bb5572a889c3
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98663031"
 ---
 ## <a name="add-secret-manager"></a>シークレット マネージャーを追加する

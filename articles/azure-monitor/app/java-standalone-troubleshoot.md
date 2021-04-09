@@ -4,12 +4,12 @@ description: Azure Monitor Application Insights の Java エージェントの�
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 286354ecf508dec7b9ba7633bf3b5c7ddc6bfd91
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f971466f25c2b7a4bd28e5b7eec6268f1b2e8b3d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737059"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103225576"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>トラブルシューティング ガイド:Azure Monitor Application Insights for Java
 
@@ -41,11 +41,13 @@ Java 3.0 Preview エージェントからアップグレードする場合は、
 
 ## <a name="some-logging-is-not-auto-collected"></a>一部のログ記録が自動収集されない
 
-ログ記録は、最初にログ記録フレームワークの構成されたしきい値を満たし、次に Application Insights の構成されたしきい値も満たす場合にのみキャプチャされます。
+ログ記録は、ログ記録フレームワークに構成されているレベルを最初に満たし、次に Application Insights に構成されているレベルも満たす場合にのみキャプチャされます。
+
+たとえば、パッケージ `com.example` から `WARN` (以上) をログに記録するようにログ記録フレームワークが構成されており、`INFO` (以上) をキャプチャするように Application Insights が構成されている場合、Application Insights では、パッケージ `com.example` から `WARN` (以上) しかキャプチャしません。
 
 特定のログ記録ステートメントがログ記録フレームワークで構成されているしきい値を満たしているかどうかを確認する最善の方法は、通常のアプリケーション ログ (ファイルやコンソールなど) に表示されているかどうかを確認することです。
 
-また、ロガーに例外が渡されると、Azure portal 内で `traces` テーブルではなく `exceptions` テーブルの下にログ メッセージ (および例外) が表示されることにも注意してください。
+また、ロガーに例外オブジェクトが渡されると、Azure portal 内で `traces` テーブルではなく `exceptions` テーブルの下にログ メッセージ (および例外オブジェクトの詳細) が表示されることにも注意してください。
 
 詳細については、[自動収集されたログ記録の構成](./java-standalone-config.md#auto-collected-logging)に関するページをご覧ください。
 

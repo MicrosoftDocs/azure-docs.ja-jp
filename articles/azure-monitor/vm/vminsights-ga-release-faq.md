@@ -1,17 +1,16 @@
 ---
 title: VM Insights (GA) についてよく寄せられる質問 | Microsoft Docs
 description: VM Insights は、Azure VM オペレーティング システムの正常性およびパフォーマンスの監視と、アプリケーション コンポーネントおよび他のリソースとの依存関係の自動検出を組み合わせ、それらの間の通信をマップする Azure のソリューションです。 この記事では、GA リリースに関する一般的な質問への回答を示します。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 0c55463847e0bf55cf14db2a35de1de16526cd90
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fbef73bfe8058110277b200b8c4091fcde110c04
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710755"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031878"
 ---
 # <a name="vm-insights-generally-available-ga-frequently-asked-questions"></a>VM Insights の一般提供 (GA) についてよく寄せられる質問
 この一般提供に関する FAQ では、GA に向けた準備の過程で 2019 年第 4 四半期から 2020 年第 1 四半期までの間に行われた変更について説明しています。
@@ -20,7 +19,7 @@ ms.locfileid: "101710755"
 GA の発表に先立ち、VM Insights の新しいバージョンが 2020 年 1 月にリリースされました。 VM Insights を有効にしたお客様は、GA バージョンを自動的に受信しますが、2019 年第 4 四半期以前のバージョンの VM Insights を使用している既存のお客様はアップグレードするように求められます。 この FAQ では、複数のワークスペースとの間で大規模なデプロイを行っている場合に、アップグレードを広範囲に実行するためのガイダンスを提供します。
 
 
-このアップグレードを使用すると、Azure Monitor for VMs のパフォーマンス データは、[Container Insights](../containers/container-insights-overview.md) と同じ *InsightsMetrics* テーブルに格納されるため、2 つのデータ セットのクエリを簡単に実行することができます。 また、以前に使用したテーブルには格納できなかったより多様なデータ セットを格納することもできます。 
+このアップグレードを使用すると、VM Insights のパフォーマンス データは、[Container Insights](../containers/container-insights-overview.md) と同じ *InsightsMetrics* テーブルに格納されるため、2 つのデータ セットのクエリを簡単に実行することができます。 また、以前に使用したテーブルには格納できなかったより多様なデータ セットを格納することもできます。 
 
 パフォーマンス ビューでは、*InsightsMetrics* テーブルに格納しているデータが使用されています。  ワークスペースで最新の VMInsights ソリューションを使用するようにアップグレードしていない場合は、グラフに情報が表示されなくなります。  次に示すように、 **[Get Started]\(開始\)** ページからアップグレードすることができます。
 
@@ -58,7 +57,7 @@ VM Insights を有効にする以前のメソッドでは、ご利用のワー�
 
 この FAQ とドキュメントを更新して、収集するデータ セットに対するログ検索のアラート ルールの例を含めます。
 
-## <a name="how-will-this-affect-my-bill"></a>これは自分の請求書にどのように影響しますか? 
+## <a name="how-will-this-change-affect-my-bill"></a>この変更は請求書にどのように影響しますか。
 
 課金は引き続き、Log Analytics ワークスペースに取り込まれ保持されるデータに基づいて行われます。
 
@@ -84,13 +83,13 @@ Microsoft が収集するマシン レベルのパフォーマンス データ�
 
 いいえ、2 つのソリューションでは、`VMComputer` (以前の ServiceMapComputer_CL)、`VMProcess` (以前の ServiceMapProcess_CL)、`VMConnection`、`VMBoundPort` に格納されているマップ データ セットを共有しています。 ワークスペースに両方のソリューションがある場合、このデータに対して二重に課金されることはありません。
 
-## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Service Map または VMInsights ソリューションのいずれかを削除した場合、自分のデータは削除されますか? 
+## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Service Map または VMInsights ソリューションのいずれかを削除した場合、自分のデータは削除されますか。
 
 いいえ、2 つのソリューションでは、`VMComputer` (以前の ServiceMapComputer_CL)、`VMProcess` (以前の ServiceMapProcess_CL)、`VMConnection`、`VMBoundPort` に格納されているマップ データ セットを共有しています。 ソリューションのいずれかを削除すると、これらのデータ セットでは、データを使用するソリューションが配置されたままで、Log Analytics ワークスペースに保持されていることがわかります。 ご利用のワークスペースからデータを削除する場合は、ワークスペースから両方のソリューションを削除する必要があります。
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>正常性機能は、制限付きのパブリック プレビュー段階にあります。
 
-VM 正常性の機能セットに関して、お客様から多くのすばらしいフィードバックを受け取りました。 この機能にはさまざまな関心があり、監視ワークフローをサポートする可能性にご期待いただいています。 Microsoft では、機能を追加するための一連の変更を行い、お客様からお寄せいただいたフィードバックに対処する予定です。 
+VM 正常性の機能セットに関して、お客様から多くのすばらしいフィードバックを受け取りました。 この機能には大きな関心が寄せられており、監視ワークフローをサポートする可能性にご期待いただいています。 Microsoft では、機能を追加するための一連の変更を行い、お客様からお寄せいただいたフィードバックに対処する予定です。 
 
 これらの変更が新規のお客様に与える影響を最小限に抑えるために、この機能を **制限付きパブリック プレビュー** に移行しました。 この更新は 2019 年 10 月に行われました。
 

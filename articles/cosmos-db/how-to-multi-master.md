@@ -5,20 +5,20 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 01/06/2021
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, "seo-nov-2020"
-ms.openlocfilehash: 6f71f4c0ec353f36614ea6dcabf4d698b31baacb
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 08d50b18605fd833e6b0efca987338d0ca1eef8d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336728"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102488513"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Azure Cosmos DB を使用するアプリケーションで複数リージョン書き込みを構成する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-複数の書き込みリージョンが有効なアカウントが作成されたら、お使いのアプリケーションで DocumentClient 用の ConnectionPolicy に対して 2 つの変更を行って、Azure Cosmos DB で複数リージョン書き込み機能とマルチホーミング機能を有効にする必要があります。 ConnectionPolicy の中で、UseMultipleWriteLocations を true に設定し、アプリケーションのデプロイ先となるリージョンの名前を SetCurrentLocation に渡します。 これにより、渡された場所との地理的な近接性に基づいて PreferredLocations プロパティが設定されます。 後で新しいリージョンがアカウントに追加された場合でも、アプリケーションの更新や再デプロイを行う必要はなく、近接するリージョンが自動的に検出され、リージョンのイベントが発生した場合は自動ホーミングが実行されます。
+複数の書き込みリージョンが有効なアカウントが作成されたら、お使いのアプリケーションで Cosmos クライアント用の ConnectionPolicy に対して 2 つの変更を行って、Azure Cosmos DB で複数リージョン書き込み機能を有効にする必要があります。 ConnectionPolicy の中で、UseMultipleWriteLocations を true に設定し、アプリケーションのデプロイ先となるリージョンの名前を ApplicationRegion に渡します。 これにより、渡された場所との地理的な近接性に基づいて PreferredLocations プロパティが設定されます。 後で新しいリージョンがアカウントに追加された場合でも、アプリケーションの更新や再デプロイを行う必要はなく、近接するリージョンが自動的に検出され、リージョンのイベントが発生した場合は自動ホーミングが実行されます。
 
 > [!Note]
 > 初期構成が単一書き込みリージョンである Cosmos アカウントを、ダウンタイムなしで複数書き込みリージョンに構成できます。 詳細については、[複数書き込みリージョンの構成](how-to-manage-database-account.md#configure-multiple-write-regions)に関する記事を参照してください。

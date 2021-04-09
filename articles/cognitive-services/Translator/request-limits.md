@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: lajanuar
 ms.openlocfilehash: 2bc2c1361c7d2f73ff8a67e906a6db725f669d52
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895409"
 ---
 # <a name="request-limits-for-translator"></a>Translator に対する要求の制限

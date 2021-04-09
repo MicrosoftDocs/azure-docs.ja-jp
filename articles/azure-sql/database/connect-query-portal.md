@@ -6,19 +6,19 @@ keywords: sql データベースへの接続, sql データベースの照会, A
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, contperf-fy21q3-portal
 ms.devlang: ''
 ms.topic: quickstart
 author: Ninarn
 ms.author: ninarn
 ms.reviewer: sstein
 ms.date: 03/01/2021
-ms.openlocfilehash: b2b614002a380ecd9c7eb6ec40e9dbd734b99628
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a6f13e27a5aa2684a16565c616d781e3d5c3a750
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692846"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594191"
 ---
 # <a name="quickstart-use-the-azure-portals-query-editor-preview-to-query-an-azure-sql-database"></a>クイック スタート:Azure portal のクエリ エディター (プレビュー) を使用して、Azure SQL Database のクエリを実行します
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/22/2020
-ms.openlocfilehash: 20567a1e38686b5d452a5353bc459e7e1125f499
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1799aff8bff96d404ddcbefbf58a5f5014cdba6a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941302"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871590"
 ---
 # <a name="apache-spark-operations-supported-by-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight の Hive Warehouse Connector でサポートされる Apache Spark の操作
 
@@ -86,7 +86,7 @@ Spark では、Hive によって管理される ACID テーブルへの書き込
     hive.table("sampletable_colorado").show()
     ```
     
-    ![Hive Warehouse Connector の Hive テーブルの表示](./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png)
+    :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png" alt-text="Hive Warehouse Connector の Hive テーブルの表示" border="true":::
 
 
 ## <a name="structured-streaming-writes"></a>構造化ストリーミングの書き込み

@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.openlocfilehash: 46063d5f2d9ff4b85914ad7c4cd74a2400298db0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98943080"
 ---
 # <a name="the-account-being-accessed-does-not-support-http-error-in-azure-hdinsight"></a>アクセスされているアカウントでは Azure HDInsight の http エラーをサポートしていない
@@ -31,7 +31,7 @@ com.microsoft.azure.storage.StorageException: The account being accessed does no
 
 * セキュリティで保護された転送が "*無効*" なストレージ アカウントでクラスターが作成されました。 その後、ストレージ アカウントでセキュリティで保護された転送が有効になりました。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解決方法
 
 Azure Storage または Data Lake Storage Gen2 で安全な転送が有効になっている場合、URI はそれぞれ `wasbs://` または `abfss://` になります。  [安全な転送](../../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 

@@ -4,15 +4,15 @@ description: ハイパフォーマンス コンピューティングのための
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 03/11/2021
 ms.author: v-erkel
 ms.custom: references_regions
-ms.openlocfilehash: 0568d9b7fea2e4e048c0c1d1b2d6f81d64a9b114
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bbb0ca345dc76f566dd55956911703e2c9bf0183
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519338"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103471824"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Azure HPC Cache とは
 
@@ -55,15 +55,6 @@ Azure HPC Cache のデプロイは定量分析計算やリスク分析ワーク�
 ## <a name="region-availability"></a>利用可能なリージョン
 
 Azure HPC Cache を使用できる場所については、[リージョン別の Azure グローバル インフラストラクチャ製品](https://azure.microsoft.com/global-infrastructure/services/?products=hpc-cache)に関するページを参照してください。
-
-[カスタマー マネージド キー機能](customer-keys.md)は、次の Azure リージョンでのみサポートされます。
-
-* 米国東部
-* 米国中南部
-* 米国西部 2
-* 西ヨーロッパ
-* US Gov アリゾナ
-* US Gov バージニア州
 
 Azure HPC Cache は 1 つのリージョンに属します。 それを他のリージョンに置かれている BLOB コンテナーに接続すれば、他のリージョンに格納されているデータにアクセスすることができます。 このキャッシュは、顧客データを永続的には格納しません。
 

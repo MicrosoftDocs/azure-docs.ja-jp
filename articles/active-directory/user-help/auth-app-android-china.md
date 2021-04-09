@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 01/27/2021
 ms.author: curtand
 ms.openlocfilehash: d499417414e560bdaa3fcd0a12255946aca413d9
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99054841"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>中国のパブリック クラウドでの Android の Microsoft Authenticator

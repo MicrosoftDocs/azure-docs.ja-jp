@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Igloo Software の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Igloo Software の統合 | Microsoft Docs'
 description: Azure Active Directory と Igloo Software の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 03/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 033561ac3c4a510927691dc8db4f61196f54ec2a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92460395"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>チュートリアル:Azure Active Directory と Igloo Software の統合
+# <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>チュートリアル: Azure Active Directory と Igloo Software の統合
 
 このチュートリアルでは、Igloo Software と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Igloo Software と Azure AD の統合には、次の利点があります。
@@ -41,8 +41,8 @@ Igloo Software と Azure AD の統合を構成するには、次のものが必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Igloo Software では、 **SP** によって開始される SSO がサポートされます
-* Igloo Software では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* Igloo Software では、**SP** によって開始される SSO がサポートされます
+* Igloo Software では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-igloo-software-from-the-gallery"></a>ギャラリーからの Igloo Software の追加
 
@@ -62,13 +62,13 @@ Azure AD への Igloo Software の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Igloo Software** 」と入力し、結果パネルの **[Igloo Software]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Igloo Software**」と入力し、結果パネルの **[Igloo Software]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果一覧の Igloo Software](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Igloo Software で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Igloo Software で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Igloo Software 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Igloo Software で Azure AD のシングル サインオンを構成し、テストするには、次の要素を完了する必要があります。
@@ -86,7 +86,7 @@ Igloo Software で Azure AD のシングル サインオンを構成し、テス
 
 Igloo Software で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Igloo Software** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Igloo Software** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -129,53 +129,53 @@ Igloo Software で Azure AD シングル サインオンを構成するには、
 
 1. 別の Web ブラウザーのウィンドウで、管理者として Igloo Software 企業サイトにログインします。
 
-2. **コントロール パネル** に移動します。
+2. [**コントロール パネル**] に移動します。
 
      ![コントロール パネル](./media/igloo-software-tutorial/ic799949.png "コントロール パネル")
 
-3. **[Membership (メンバーシップ)]** タブで **[Sign In Settings (サインインの設定)]** をクリックします。
+3. [**メンバーシップ**] タブで、[**サイン イン設定**] をクリックします。
 
-    ![[Sign in Settings]\(サインインの設定\)](./media/igloo-software-tutorial/ic783968.png "[サインインの設定]")
+    ![[サインインの設定]](./media/igloo-software-tutorial/ic783968.png "[サインインの設定]")
 
-4. SAML の構成のセクションで、 **[SAML 認証の構成]** をクリックします。
+4. [SAML 構成] セクションで、[**SAML 認証を構成する**] をクリックします。
 
     ![SAML の構成](./media/igloo-software-tutorial/ic783969.png "SAML の構成")
 
-5. **[全般構成]** セクションで、次の手順を実行します。
+5. [**一般構成**] セクションで、次の手順を実行します。
 
-    ![[General Configuration]\(全般構成\)](./media/igloo-software-tutorial/ic783970.png "[全般構成]")
+    ![[全般構成]](./media/igloo-software-tutorial/ic783970.png "[全般構成]")
 
-    a. **[接続名]** テキストボックスに、構成のカスタム名を入力します。
+    a. [**接続名**] テキスト ボックスに、構成の名前を入力します。
 
     b. **[IdP Login URL]\(IdP ログイン URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     c. **[IdP Logout URL]\(IdP ログアウト URL\)** ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
-    d. **[POST]\(POST\)** として、 **[Logout Response and Request HTTP Type]\(ログアウト応答と要求 HTTP のタイプ\)** を選択します。
+    d. **[POST]\(POST\)** として、**[Logout Response and Request HTTP Type]\(ログアウト応答と要求 HTTP のタイプ\)** を選択します。
 
     e. Azure Portal からダウンロードした **base-64** でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[Public Certificate]\(パブリック証明書\)** ボックスに貼り付けます。
 
-6. **[応答および認証の構成]** で、次の手順を実行します。
+6. [**応答と認証の構成**] で、次の手順を実行します。
 
-    ![[Response and Authentication Configuration]\(応答および認証の構成\)](./media/igloo-software-tutorial/IC783971.png "[応答および認証の構成]")
+    ![[応答および認証の構成]](./media/igloo-software-tutorial/IC783971.png "[応答および認証の構成]")
   
-    a. **[Identity Provider (ID プロバイダー)]** として **[Microsoft ADFS]** を選択します。
+    a. [**Id プロバイダー**] として [**Microsoft ADFS**] を選択します。
 
-    b. **[Identifier Type (識別子の種類)]** として **[Email Address (メール アドレス)]** を選択します。 
+    b. [**識別子の型**] として [**電子メール アドレス**] を選択します。 
 
-    c. **[Email Attribute]** ボックスに、「 **emailaddress** 」と入力します。
+    c. [**電子メール属性**] テキスト ボックスに「**emailaddress**」と入力します。
 
-    d. **[First Name Attribute (名属性)]** ボックスに、「 **givenname** 」と入力します。
+    d. [**名属性**] テキスト ボックスに「**givenname**」を入力します。
 
-    e. **[Last Name Attribute (姓属性)]** ボックスに、「 **surname** 」と入力します。
+    e. [**姓属性**] テキスト ボックスに「**surname**」を入力します。
 
 7. 次の手順を実行して、構成を完成させます。
 
-    ![[User creation on Sign in]\(サインイン時のユーザー作成\)](./media/igloo-software-tutorial/IC783972.png "サインインでユーザー作成") 
+    ![サインインでユーザー作成](./media/igloo-software-tutorial/IC783972.png "サインインでユーザー作成") 
 
-    a. **[User creation on Sign in (サインイン時のユーザー作成)]** で **[Create a new user in your site when they sign in (サインイン時に新しいユーザーをサイトに作成する)]** を選択します。
+    a. [**サインインでのユーザー作成**] で [**サインイン時に新規ユーザーを作成**] を選択します。
 
-    b. **[Sign in Settings (サインインの設定)]** で、 **[Use SAML button on "Sign in" screen ([サインイン] 画面で SAML ボタンを使用する)]** を選択します。
+    b. [**サインイン設定**] で [**サインイン画面で SAML ボタンを使用**] を選択します。
 
     c. **[保存]** をクリックします。
 
@@ -195,7 +195,7 @@ Igloo Software で Azure AD シングル サインオンを構成するには、
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -208,7 +208,7 @@ Igloo Software で Azure AD シングル サインオンを構成するには、
 
 このセクションでは、Britta Simon に Igloo Software へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Igloo Software]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Igloo Software]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

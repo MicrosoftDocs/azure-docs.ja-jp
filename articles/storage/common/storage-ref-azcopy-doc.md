@@ -9,17 +9,17 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: df9eee825f0becbe4efde4aacb2fe895f2d0132c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98879141"
 ---
 # <a name="azcopy-doc"></a>azcopy doc
 
 ツールのドキュメントをマークダウン形式で生成します。
 
-## <a name="synopsis"></a>概要
+## <a name="synopsis"></a>構文
 
 ツールのドキュメントをマークダウン形式で生成し、指定された場所に格納します。
 
@@ -36,7 +36,7 @@ azcopy doc [flags]
 - [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
 - [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
 
-## <a name="options"></a>オプション
+## <a name="options"></a>Options
 
 |オプション|説明|
 |--|--|

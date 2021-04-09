@@ -10,10 +10,10 @@ ms.date: 01/07/2021
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
 ms.openlocfilehash: 4d7d4b5af9b86fe5116dc29f6ed1a789cdbf2047
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100581088"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Automation アカウントを作成する

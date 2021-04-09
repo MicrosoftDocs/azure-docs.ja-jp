@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 8b04119f4a9ff702356f942cec5bebed1e23926b
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: d3aea23c816b9d8b32b0563d3116cdc2b92e080f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515939"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101094311"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Azure Machine Learning Studio (クラシック) Web サービス ポータルを使用して Web サービスを管理する
 
@@ -44,7 +44,7 @@ Machine Learning Web サービス ポータルでは、次のことができま�
 
 ワークスペースを作成する方法の詳細については、「[Azure Machine Learning Studio (クラシック) ワークスペースの作成と共有](create-workspace.md)」を参照してください。
 
-アクセス許可の設定の詳細については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+アクセス許可の設定の詳細については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 
 ## <a name="manage-new-web-services"></a>新しい Web サービスを管理する

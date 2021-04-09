@@ -4,12 +4,12 @@ description: エージェント、拡張機能、ディスクに関する Azure 
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: dd6f4d7884b120d2f8b5ea3f3ccb8d5385dd0880
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 0313394ad149460f82c98c63cab95b922b4a3da2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377107"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102519607"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -23,7 +23,7 @@ ms.locfileid: "93377107"
 
 ### <a name="step-1-check-azure-vm-health"></a>手順 1:Azure VM の正常性を確認する
 
-- **Azure VM のプロビジョニングの状態が '実行中' であることを確認します**:[VM のプロビジョニングの状態](../virtual-machines/states-lifecycle.md#provisioning-states)が **停止/割り当て解除済み/更新中** の状態にある場合、バックアップ操作が妨げられます。 *[Azure portal] > [VM] > [概要] >* の順に開き、VM の状態をチェックして **実行中** であることを確認してから、バックアップ操作を再試行してください。
+- **Azure VM のプロビジョニングの状態が '実行中' であることを確認します**:[VM のプロビジョニングの状態](../virtual-machines/states-billing.md)が **停止/割り当て解除済み/更新中** の状態にある場合、バックアップ操作が妨げられます。 *[Azure portal] > [VM] > [概要] >* の順に開き、VM の状態をチェックして **実行中** であることを確認してから、バックアップ操作を再試行してください。
 - **保留中の OS の更新または再起動を確認します**:VM で保留中の OS 更新プログラムがないか、または再起動が保留されていないかを確認してください。
 
 ### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>手順 2:Azure VM ゲスト エージェント サービスの正常性を確認する
@@ -53,11 +53,11 @@ Azure Backup では、VM スナップショット拡張機能を使用して Azu
 
 - **ウイルス対策によって拡張機能がブロックされているかどうかを確認します**:特定のウイルス対策ソフトウェアによって、拡張機能の実行が妨げられる場合があります。
   
-  バックアップ エラーが発生した際は、**_イベント ビューアーのアプリケーション ログ_* _ に、_*_障害が発生しているアプリケーション名:IaaSBcdrExtension.exe_*_ と記載されたログ エントリがあるかどうかを確認します。 エントリが見つかった場合、VM で構成されているウイルス対策によってバックアップ拡張機能の実行が制限されている可能性があります。 ウイルス対策構成で次のディレクトリを除外してテストを行い、バックアップ操作を再試行してください。
+  バックアップ エラーが発生した際は、"**イベント ビューアーのアプリケーション ログ**" に、"_障害が発生しているアプリケーション名: IaaSBcdrExtension.exe_" と記載されたログ エントリがあるかどうかを確認します。 エントリが見つかった場合、VM で構成されているウイルス対策によってバックアップ拡張機能の実行が制限されている可能性があります。 ウイルス対策構成で次のディレクトリを除外してテストを行い、バックアップ操作を再試行してください。
   - `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
   - `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 
-- _*ネットワーク アクセスが必要かどうかを確認します**:拡張機能パッケージは、Azure Storage 拡張機能リポジトリからダウンロードされ、拡張機能ステータスのアップロードが Azure Storage に転記されます。 [詳細については、こちらを参照してください](../virtual-machines/extensions/features-windows.md#network-access)。
+- **ネットワーク アクセスが必要かどうかを確認します**:拡張機能パッケージは、Azure Storage 拡張機能リポジトリからダウンロードされ、拡張機能ステータスのアップロードが Azure Storage に転記されます。 [詳細については、こちらを参照してください](../virtual-machines/extensions/features-windows.md#network-access)。
   - サポートされていないバージョンのエージェントを使用する場合は、そのリージョン内の Azure Storage への VM からの送信アクセスを許可する必要があります。
   - ゲスト ファイアウォールまたはプロキシを使用して `168.63.129.16` へのアクセスをブロックしている場合は、上記とは関係なく拡張機能はエラーになります。 ポート 80、443、および 32526 が必要です。[詳細はこちらを参照してください](../virtual-machines/extensions/features-windows.md#network-access)。
 
@@ -101,7 +101,7 @@ Azure Backup サービスに VM を登録してスケジュール設定すると
 **エラー コード**:UserErrorVmProvisioningStateFailed<br>
 **エラー メッセージ**:VM がプロビジョニングに失敗した状態<br>
 
-このエラーは、拡張機能の１つが失敗して、VM がプロビジョニング失敗状態になる場合に発生します。<br>**Azure portal を開いて [VM] > [設定] > [拡張機能] > [拡張機能の状態]** に移動し、すべての拡張機能が **[プロビジョニング成功]** の状態になっていることを確認します。 詳細については、「[プロビジョニング状態](../virtual-machines/states-lifecycle.md#provisioning-states)」を参照してください。
+このエラーは、拡張機能の１つが失敗して、VM がプロビジョニング失敗状態になる場合に発生します。<br>**Azure portal を開いて [VM] > [設定] > [拡張機能] > [拡張機能の状態]** に移動し、すべての拡張機能が **[プロビジョニング成功]** の状態になっていることを確認します。 詳細については、「[プロビジョニング状態](../virtual-machines/states-billing.md)」を参照してください。
 
 - エラー状態の拡張機能がある場合、バックアップが影響を受ける可能性があります。 これらの拡張機能の問題が解決されていることを確認して、バックアップ操作をやり直してください。
 - VM のプロビジョニング状態が更新中の状態になっている場合は、バックアップが妨げられる可能性があります。 正常であることを確認してから、バックアップ操作を再試行してください。

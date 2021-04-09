@@ -6,10 +6,10 @@ ms.author: jakras
 ms.date: 04/22/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: 1a05216fd44a64c037561662009987615f5657a8
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "92207174"
 ---
 # <a name="azure-remote-rendering-support-options"></a>Azure Remote Rendering のサポート オプション

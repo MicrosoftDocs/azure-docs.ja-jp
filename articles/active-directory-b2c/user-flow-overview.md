@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 06253b571fd71623501c27fd5b0d9d4013727fc2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94840193"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フロー
@@ -25,7 +25,7 @@ ms.locfileid: "94840193"
 
 - サインインに使用するアカウントの種類 (Facebook などのソーシャル アカウントやローカル アカウント)
 - コンシューマーから収集される属性 (名、郵便番号、靴のサイズなど)
-- Azure AD の Multi-Factor Authentication
+- Azure AD Multi-Factor Authentication
 - ユーザー インターフェイスのカスタマイズ
 - アプリケーションがトークンで要求として受け取る情報
 

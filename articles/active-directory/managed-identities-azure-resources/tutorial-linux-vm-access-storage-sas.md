@@ -16,10 +16,10 @@ ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3edc63a1532bb6889fc490e400dbb57e7bce10d0
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93360413"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>チュートリアル:Linux VM のシステム割り当て ID を使用して SAS 資格情報で Azure Storage にアクセスする
@@ -90,7 +90,7 @@ Azure Storage は、ネイティブでは Azure AD 認証をサポートして�
 
 1. Azure Portal で **[Virtual Machines]** にナビゲートして Linux 仮想マシンに移動し、 **[概要]** ページの上部にある **[接続]** をクリックします。 VM に接続する文字列をコピーします。 
 2. SSH クライアントを使用して VM に接続します。  
-3. 次に、 **Linux VM** の作成時に追加した **パスワード** の入力を求められます。 パスワードを入力すると、正常にサインインできます。  
+3. 次に、**Linux VM** の作成時に追加した **パスワード** の入力を求められます。 パスワードを入力すると、正常にサインインできます。  
 4. CURL を使用して Azure Resource Manager のアクセス トークンを取得します。  
 
     アクセス トークンの CURL 要求と応答を次に示します。

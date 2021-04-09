@@ -2,20 +2,21 @@
 title: Windows VM での Azure Disk Encryption 用のキー コンテナーの作成と構成
 description: この記事では、Windows VM の Azure Disk Encryption で使用するためのキー コンテナーを作成および構成する手順について説明します。
 ms.service: virtual-machines
-ms.subservice: security
+ms.subservice: disks
+ms.collection: windows
 ms.topic: how-to
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1fcd639eb55f61c215742d0eec7821e282010a2
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: af48bd74bbc38b1cd9b4d3b0f127e7bdf5d3e037
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807516"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102555450"
 ---
-# <a name="create-and-configure-a-key-vault-for-azure-disk-encryption"></a>Azure Disk Encryption のキー コンテナーを作成して構成する
+# <a name="create-and-configure-a-key-vault-for-azure-disk-encryption-on-a-windows-vm"></a>Windows VM で Azure Disk Encryption のキー コンテナーを作成して構成する
 
 Azure Disk Encryption では、Azure Key Vault を使用して、ディスク暗号化キーとシークレットを制御および管理します。  キー コンテナーの詳細については、「[Azure Key Vault の概要](../../key-vault/general/overview.md)」と「[キー コンテナーのセキュリティ保護](../../key-vault/general/secure-your-key-vault.md)」を参照してください。 
 

@@ -4,10 +4,10 @@ description: Event Grid のイベント配信オプションをカスタマイ�
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.openlocfilehash: 7d8cd74ccfb77bcec45d06071a4f46fb2a640cf8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92460939"
 ---
 # <a name="set-dead-letter-location-and-retry-policy"></a>配信不能な場所の設定と再試行ポリシー

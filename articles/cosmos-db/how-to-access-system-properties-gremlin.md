@@ -8,10 +8,10 @@ ms.date: 09/10/2019
 author: SnehaGunda
 ms.author: sngun
 ms.openlocfilehash: 61814082ebe9828a08da1e8786890b500c239082
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93081843"
 ---
 # <a name="system-document-properties"></a>システム ドキュメントのプロパティ
@@ -35,7 +35,7 @@ g.withStrategies(ProjectionStrategy.build().IncludeSystemProperties('_etag').cre
 
 コレクションでドキュメントの有効期限が有効になっており、ドキュメントに ```ttl``` プロパティが設定されている場合、このプロパティは通常の頂点または辺プロパティとして Gremlin トラバーサルで使用できるようになります。 Time-to-live プロパティの公開を有効にするために ```ProjectionStrategy``` は必要ありません。
 
-次のトラバーサルで作成された頂点は、 **123 秒** 以内に自動的に削除されます。
+次のトラバーサルで作成された頂点は、**123 秒** 以内に自動的に削除されます。
 
 ```
 g.addV('vertex-one').property('ttl', 123)

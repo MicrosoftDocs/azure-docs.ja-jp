@@ -4,10 +4,10 @@ description: Azure Lab Services を使用してラボを設定し、エシカル
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 97cdf13f39cc73ee7f35fb402229469195f1456c
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97616424"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>エシカル ハッキング クラスを教えるためのラボを設定する

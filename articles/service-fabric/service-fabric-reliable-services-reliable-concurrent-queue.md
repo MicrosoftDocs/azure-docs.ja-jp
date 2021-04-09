@@ -4,10 +4,10 @@ description: ReliableConcurrentQueue は、並列エンキューと並列デキ�
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.openlocfilehash: d6852982621d3efd3f4a8597a2959fceb13abd12
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784293"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric の ReliableConcurrentQueue の概要
@@ -29,7 +29,7 @@ Reliable Concurrent Queue は、[Reliable Queue](/dotnet/api/microsoft.servicefa
 
 ReliableConcurrentQueue の使用例として、[メッセージ キュー](https://en.wikipedia.org/wiki/Message_queue)のシナリオが挙げられます。 このシナリオでは、メッセージ プロデューサーが、何らかの要素を作成してキューに追加し、メッセージ コンシューマーがキューからメッセージを取り出して処理します。 同時トランザクションを使用して複数のプロデューサーと複数のコンシューマーが別々に動作し、そのキューを処理することが可能です。
 
-## <a name="usage-guidelines"></a>使用上のガイドライン
+## <a name="usage-guidelines"></a>使用方法のガイドライン
 * キューに格納されている要素のリテンション期間は短いことが想定されています。 つまりキューに長い間、要素が留まらないことが前提となります。
 * このキューでは、FIFO の厳密な順序が保証されません。
 * このキューは、それ自身の書き込みを読み取りません。 トランザクション内で何らかの要素がエンキューされた場合、同じトランザクション内のデキュー側からは、その要素が見えません。

@@ -4,16 +4,16 @@ description: Azure に高可用性で回復力のあるアプリケーション�
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 01/26/2021
+ms.date: 03/16/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 16bb173bdbe390da46f2dc105baa9bc73d25a3dc
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 5152b0ecf6eebe87031a2165d5d8ba11d99209cf
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557021"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601187"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Availability Zones をサポートする Azure サービス
 
@@ -50,12 +50,13 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 | アメリカ           | ヨーロッパ               | アフリカ              | アジア太平洋   |
 |--------------------|----------------------|---------------------|----------------|
 |                    |                      |                     |                |
-| カナダ中部     | フランス中部       | 南アフリカ北部* | 東日本     |
-| 米国中部         | ドイツ中西部 |                     | 東南アジア |
-| 米国東部            | 北ヨーロッパ         |                     | オーストラリア東部 |
-| 米国東部 2          | 英国南部             |                     |                |
-| 米国中南部 | 西ヨーロッパ          |                     |                |
-| US Gov バージニア州    |                      |                     |                |
+| ブラジル南部       | フランス中部       | 南アフリカ北部* | 東日本     |
+| カナダ中部     | ドイツ中西部 |                     | 東南アジア |
+| 米国中部         | 北ヨーロッパ         |                     | オーストラリア東部 |
+| 米国東部            | 英国南部             |                     |                |
+| 米国東部 2          | 西ヨーロッパ          |                     |                |
+| 米国中南部 |                      |                     |                |
+| US Gov バージニア州     |                      |                     |                |
 | 米国西部 2        |                      |                     |                |
 
 
@@ -106,6 +107,8 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 |     Virtual Machines:Dv3 シリーズ                              | :large_blue_diamond:  |
 |     Virtual Machines:ESv3 シリーズ                             | :large_blue_diamond:  |
 |     Virtual Machines:Ev3 シリーズ                              | :large_blue_diamond:  |
+|     Virtual Machines: F シリーズ                                | :large_blue_diamond:  |
+|     Virtual Machines: FS シリーズ                               | :large_blue_diamond:  |
 |     仮想ネットワーク                                           | :large_blue_diamond:  |
 |     VPN Gateway                                                 | :large_blue_diamond:  |
 
@@ -123,17 +126,24 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 | Azure Database for MySQL – フレキシブル サーバー      |      :large_blue_diamond:  |
 | Azure Database for PostgreSQL – フレキシブル サーバー |      :large_blue_diamond:  |
 | Azure DDoS Protection                           |      :large_blue_diamond:  |
+| Azure Disk Encryption                           |      :large_blue_diamond:  |
 | Azure Firewall                                  |      :large_blue_diamond:  |
 | Azure Firewall Manager                          |      :large_blue_diamond:  |
 | Azure Kubernetes Service (AKS)                  |      :large_blue_diamond:  |
 | Azure Private Link                              |      :large_blue_diamond:  |
 | Azure Red Hat OpenShift                         |      :large_blue_diamond:  |
 | Azure Site Recovery                             |      :large_blue_diamond:  |
+| Azure SQL: 仮想マシン                      |      :large_blue_diamond:  |
+| Azure Search                                    |      :large_blue_diamond:  |
+| Azure Web アプリケーション ファイアウォール                  |      :large_blue_diamond:  |
 | Container Registry                              |      :large_blue_diamond:  |
 | Event Grid                                      |      :large_blue_diamond:  |
 | Network Watcher                                 |      :large_blue_diamond:  |
+| Network Watcher: Traffic Analytics              |      :large_blue_diamond:  |
 | Power BI Embedded                               |      :large_blue_diamond:  |
 | Premium Blob Storage                            |      :large_blue_diamond:  |
+| ストレージ: Azure Premium Files                    |      :large_blue_diamond:  |
+| 仮想マシン: Azure Dedicated Host          |      :large_blue_diamond:  |
 | Virtual Machines: Ddsv4 シリーズ                  |      :large_blue_diamond:  |
 | Virtual Machines: Ddv4 シリーズ                   |      :large_blue_diamond:  |
 | Virtual Machines: Dsv4 シリーズ                   |      :large_blue_diamond:  |
@@ -145,6 +155,9 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 | Virtual Machines: Fsv2 シリーズ                   |      :large_blue_diamond:  |
 | Virtual Machines: M シリーズ                      |      :large_blue_diamond:  |
 | Virtual WAN                                     |      :large_blue_diamond:  |
+| 仮想 WAN: ExpressRoute                       |      :large_blue_diamond:  |
+| 仮想 WAN: ポイント対サイト VPN Gateway          |      :large_blue_diamond:  |
+| 仮想 WAN: サイト間 VPN Gateway           |      :large_blue_diamond:  |
 
 
 **リージョン依存なし**
@@ -153,21 +166,31 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 |-----------------------------------------------|:-------------------:|
 |     Azure DNS                                 |     :globe_with_meridians:             |
 |     Azure Active Directory                  |     :globe_with_meridians:             |
+|     Azure Advanced Threat Protection          |     :globe_with_meridians:             |
 |     Azure Advisor                             |     :globe_with_meridians:             |
+|     Azure Blueprint                          |     :globe_with_meridians:             |
 |     Azure Bot Services                        |     :globe_with_meridians:             |
+|     Azure Front Door                          |     :globe_with_meridians:             |
 |     Azure Defender for IoT                  |     :globe_with_meridians:             |
+|     Azure Front Door                           |     :globe_with_meridians:             |
 |     Azure Information Protection            |     :globe_with_meridians:             |
 |     Azure Lighthouse                        |     :globe_with_meridians:             |
 |     Azure Managed Applications              |     :globe_with_meridians:             |
 |     Azure Maps                                |     :globe_with_meridians:             |
 |     Azure Policy                              |     :globe_with_meridians:             |
 |     Azure Resource Graph                    |     :globe_with_meridians:             |
+|     Azure Sentinel                            |     :globe_with_meridians:             |
 |     Azure Stack                               |     :globe_with_meridians:             |
 |     Azure Stack Edge                        |     :globe_with_meridians:             |
 |     Cloud Shell                               |     :globe_with_meridians:             |
+|     Content Delivery Network                  |     :globe_with_meridians:             |
+|     Cost Management                           |     :globe_with_meridians:             |
 |     Microsoft Azure 用カスタマー ロックボックス    |     :globe_with_meridians:             |
+|     Intune                                    |     :globe_with_meridians:             |
 |     Microsoft Azure Peering Service         |     :globe_with_meridians:             |
 |     Microsoft Azure portal                  |     :globe_with_meridians:             |
+|     Microsoft Cloud App Security              |     :globe_with_meridians:             |
+|     Microsoft Graph                           |     :globe_with_meridians:             |
 |     Security Center                         |     :globe_with_meridians:             |
 |     Traffic Manager                         |     :globe_with_meridians:             |
 

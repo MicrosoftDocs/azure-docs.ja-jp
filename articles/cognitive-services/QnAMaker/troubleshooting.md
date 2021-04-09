@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 11/09/2020
-ms.openlocfilehash: aea205bee41aed232b8453417dca521d2dfc83ab
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 7b7ac20672ee653cbf6d2b82b7a9454c1d742b2c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233782"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102612696"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker のトラブルシューティング
 
@@ -389,7 +389,7 @@ QnA ペアをナレッジ ベースに追加すると、回答のマークダウ
 <details>
 <summary><b>QnA Maker を利用するには Bot Framework を使う必要がありますか?</b></summary>
 
-**回答**: いいえ。QnA Maker に関して [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) を使用する必要はありません。 ただし、QnA Maker は [Azure Bot Service](/azure/bot-service/?preserve-view=true&view=azure-bot-service-4.0) に用意されているいくつかのテンプレートの 1 つとして提供されています。 Bot Service では、Microsoft Bot Framework を使用してインテリジェントなボットを迅速に開発し、サーバーレス環境で実行することができます。
+**回答**: いいえ。QnA Maker に関して [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) を使用する必要はありません。 ただし、QnA Maker は [Azure Bot Service](/azure/bot-service/) に用意されているいくつかのテンプレートの 1 つとして提供されています。 Bot Service では、Microsoft Bot Framework を使用してインテリジェントなボットを迅速に開発し、サーバーレス環境で実行することができます。
 
 </details>
 
@@ -438,7 +438,7 @@ QnA ペアをナレッジ ベースに追加すると、回答のマークダウ
 <details>
 <summary><b>QnA Maker を利用するには Bot Framework を使う必要がありますか?</b></summary>
 
-**回答**: いいえ。QnA Maker に関して [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) を使用する必要はありません。 ただし、QnA Maker は [Azure Bot Service](/azure/bot-service/?preserve-view=true&view=azure-bot-service-4.0) に用意されているいくつかのテンプレートの 1 つとして提供されています。 Bot Service では、Microsoft Bot Framework を使用してインテリジェントなボットを迅速に開発し、サーバーレス環境で実行することができます。
+**回答**: いいえ。QnA Maker に関して [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) を使用する必要はありません。 ただし、QnA Maker は [Azure Bot Service](/azure/bot-service/) に用意されているいくつかのテンプレートの 1 つとして提供されています。 Bot Service では、Microsoft Bot Framework を使用してインテリジェントなボットを迅速に開発し、サーバーレス環境で実行することができます。
 
 </details>
 

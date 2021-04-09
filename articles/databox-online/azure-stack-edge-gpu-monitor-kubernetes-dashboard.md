@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 137cff47d49be1405f60bc47cd16f7f027ab63a9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 19b3595228c29814e42af88696972fd81b156190
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320831"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102443048"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes ダッシュボードを使用して Azure Stack Edge Pro GPU デバイスを監視する
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 この記事では、Kubernetes ダッシュボードへのアクセス方法と、これを使用して Azure Stack Edge Pro GPU デバイスを監視する方法について説明します。 デバイスを監視するには、Azure portal のグラフを使用するか、Kubernetes ダッシュボードを表示するか、デバイスの PowerShell インターフェイスを使用して `kubectl` コマンドを実行します。 
 

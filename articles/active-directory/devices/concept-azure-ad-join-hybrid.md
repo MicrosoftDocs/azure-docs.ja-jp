@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 259a1324c412dad40d32a8b8e026d84e6f5aa066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85554922"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>ハイブリッド Azure AD 参加済みデバイス
@@ -25,7 +25,7 @@ ms.locfileid: "85554922"
 - IT 部門が一元化された場所から職場所有のデバイスを管理する。
 - ユーザーが Active Directory の職場または学校アカウントを使用して自分のデバイスにサインインする。
 
-通常、オンプレミスのフットプリントを持つ組織は、イメージ作成方法を利用してデバイスをプロビジョニングし、多くの場合、**Configuration Manager** または**グループ ポリシー(GP)** を使用してそれらを管理します。
+通常、オンプレミスのフットプリントを持つ組織は、イメージ作成方法を利用してデバイスをプロビジョニングし、多くの場合、**Configuration Manager** または **グループ ポリシー(GP)** を使用してそれらを管理します。
 
 環境にオンプレミスの AD フットプリントがあるときに、Azure Active Directory が提供する機能も活用したい場合は、ハイブリッド Azure AD 参加済みデバイスを実装できます。 これらのデバイスは、オンプレミスの Active Directory に参加し、Azure Active Directory に登録されているデバイスです。
 

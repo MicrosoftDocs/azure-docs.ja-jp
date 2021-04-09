@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: f3e1ea8861646490875667f6238b3f8813bd6c4b
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 608f3d72aecb0c6d53325c0d082b1779822e9c80
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518166"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103200526"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>仮想ネットワーク ピアリングの問題をトラブルシューティングする
 
@@ -44,7 +44,7 @@ ms.locfileid: "100518166"
 >
 > * Basic 内部ロードバランサー (ILB) SKU の背後にある仮想マシン (VM)
 > * Redis Cache (Basic ILB SKU を使用)
-> * Application Gateway (Basic ILB SKU を使用)
+> * Application Gateway v1 (Basic ILB SKU を使用)
 > * 仮想マシン スケール セット (Basic ILB SKU を使用)
 > * Azure Service Fabric クラスター (Basic ILB SKU を使用)
 > * SQL Server Always On (Basic ILB SKU を使用)

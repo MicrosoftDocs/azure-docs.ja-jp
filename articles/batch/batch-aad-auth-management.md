@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 04/27/2017
 ms.custom: has-adal-ref, devx-track-csharp
 ms.openlocfilehash: ff49d5e88df7c56ed4dee0685f09e45eb372aa5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88930215"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Batch 管理ソリューションの認証に Active Directory を使用する
@@ -58,7 +58,7 @@ Azure Portal で次の手順に従います。
 
 Azure AD でバッチ管理ソリューションを認証するには、よく知られている 2 つのエンドポイントが必要です。
 
-- 統合認証などのように、特定のテナントが提供されていない場合は、インターフェイスを収集する汎用的な資格情報が **Azure AD 共通のエンドポイント**から次のように提供されます。
+- 統合認証などのように、特定のテナントが提供されていない場合は、インターフェイスを収集する汎用的な資格情報が **Azure AD 共通のエンドポイント** から次のように提供されます。
 
     `https://login.microsoftonline.com/common`
 

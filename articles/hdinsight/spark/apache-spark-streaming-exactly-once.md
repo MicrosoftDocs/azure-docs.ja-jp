@@ -6,10 +6,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2018
 ms.openlocfilehash: 4ba7df665b24a3eba2cd185d85a17bd0ef456b0b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98929665"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>イベント処理を 1 回だけ伴う Apache Spark Streaming ジョブを作成します

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 03/15/2021
 ms.author: alexeyo
-ms.openlocfilehash: f5566276f4555e2480434e385bf2129f5b8cdd24
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 78e40250710c133cbed53c05137971247663b0df
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699982"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103564424"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Speech Services のクォータと制限
 
@@ -27,10 +27,13 @@ ms.locfileid: "101699982"
 次の表の "調整可能" 行のないパラメーターは、すべての価格レベルで調整可能 **ではありません**。
 
 #### <a name="online-transcription"></a>オンライン文字起こし
+[Speech SDK](speech-sdk.md) と [Speech-to-text REST API for short audio](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) の両方または一方で使用する場合。
 
 | Quota | Free (F0)<sup>1</sup> | Standard (S0) |
 |--|--|--|
-| **同時要求の制限 (ベースとカスタム モデル)** | 1 | 20 (既定値) |
+| **同時要求の制限 - 基本モデル** | 1 | 100 (既定値) |
+| 調整可能 | いいえ<sup>2</sup> | はい<sup>2</sup> |
+| **同時要求の制限 - カスタム モデル** | 1 | 20 (既定値) |
 | 調整可能 | いいえ<sup>2</sup> | はい<sup>2</sup> |
 
 #### <a name="batch-transcription"></a>バッチ文字起こし
@@ -72,7 +75,7 @@ ms.locfileid: "101699982"
 | **Websocket 固有のクォータ** |  |  |
 |1 ターンあたりに生成されるオーディオの最大長 | 10 分 | 10 分 |
 |1 ターンあたりの最大 SSML メッセージ サイズ |64 KB |64 KB |
-| **Rest API の制限** | 1 分あたり 20 要求 | 5 秒あたり 25 要求 |
+| **Rest API の制限** | 1 分あたり 20 要求 | 1 分あたり 300 要求 |
 
 
 <sup>3</sup> **Free (F0)** 価格レベルについては、[価格ページ](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)で月額料金に関するページを参照してください。<br/>

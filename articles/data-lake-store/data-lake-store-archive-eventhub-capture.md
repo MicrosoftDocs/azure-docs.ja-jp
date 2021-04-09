@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 8be242369ecae2c809a38428284c9ddcad440e3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91578242"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Azure Data Lake Storage Gen1 を使用して Event Hubs からデータをキャプチャする
@@ -53,7 +53,7 @@ Azure Data Lake Storage Gen1 を使用して、Azure Event Hubs で受信した�
     c. **[アクセス許可の割り当て]** で **[アクセス許可の選択]** をクリックします。 **[アクセス許可]** を **[実行]** に設定します。 **[追加先]** を **[このフォルダーとすべての子]** に設定します。 **[追加ユーザー]** を **[アクセス許可エントリと既定のアクセス許可エントリ]** に設定します。
 
     > [!IMPORTANT]
-    > Azure Event Hubs で受信したデータをキャプチャするための新しいフォルダー階層を作成する際、これは宛先フォルダーに確実にアクセスする簡単な方法です。  ただし、子ファイルとフォルダーが多数含まれる最上位フォルダーのすべての子にアクセス許可を追加すると、長い時間がかかる可能性があります。  ルート フォルダーに多数のファイルとフォルダーが含まれている場合、最終的な宛先フォルダーへのパスに `Microsoft.EventHubs` の **実行**権限を各フォルダーに個別に追加した方が速いことがあります。 
+    > Azure Event Hubs で受信したデータをキャプチャするための新しいフォルダー階層を作成する際、これは宛先フォルダーに確実にアクセスする簡単な方法です。  ただし、子ファイルとフォルダーが多数含まれる最上位フォルダーのすべての子にアクセス許可を追加すると、長い時間がかかる可能性があります。  ルート フォルダーに多数のファイルとフォルダーが含まれている場合、最終的な宛先フォルダーへのパスに `Microsoft.EventHubs` の **実行** 権限を各フォルダーに個別に追加した方が速いことがあります。 
 
     ![[アクセス許可の選択] オプションが強調表示されている [アクセス許可の割り当て] セクションのスクリーンショット。[アクセス許可の選択] セクションの横では、[実行] オプション、[追加先] オプション、[追加ユーザー] オプションが強調表示されています。](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Data Lake Storage Gen1 ルートにアクセス許可を割り当てる")
 

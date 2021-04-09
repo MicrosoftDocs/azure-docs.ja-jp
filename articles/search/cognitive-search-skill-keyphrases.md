@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2fdebffbf9643febc08cba997b3a5a5fc4bb5998
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 8aafb08ff0ccc9391071f796450e69f87de279ba
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652315"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102547834"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>キー フレーズ抽出コグニティブ スキル
 
@@ -41,6 +41,7 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 |---------------------|-------------|
 | `defaultLanguageCode` | (省略可能) 言語を明示的に指定しないドキュメントに適用する言語コード。  既定の言語コードが指定されていない場合、既定の言語コードとして英語 (en) が使用されます。 <br/> [サポートされる言語の完全な一覧](../cognitive-services/text-analytics/language-support.md)を参照してください。 |
 | `maxKeyPhraseCount`   | (省略可能) 生成するキー フレーズの最大数。 |
+| `modelVersion`   | (省略可能) Text Analytics サービスを呼び出すときに使用するモデルのバージョン。 指定しない場合、既定では利用可能な最新のものになります。 絶対に必要な場合以外は、この値を指定しないことをお勧めします。 詳細については、「[Text Analytics API でのモデルのバージョン管理](../cognitive-services/text-analytics/concepts/model-versioning.md)」を参照してください。 |
 
 ## <a name="skill-inputs"></a>スキルの入力
 
@@ -109,8 +110,8 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 
 他のスキルへの入力として、または[出力フィールドのマッピング](cognitive-search-output-field-mapping.md)のソースとして、"document/myKeyPhrases" を使用できます。
 
-## <a name="errors-and-warnings"></a>エラーと警告
-サポートされていない言語コードを指定すると、エラーが生成され、キー フレーズは抽出されません。
+## <a name="warnings"></a>警告
+サポートされていない言語コードを指定すると、警告が生成され、キー フレーズは抽出されません。
 テキストが空の場合、警告が生成されます。
 テキストが 50,000 文字を超えると、最初の 50,000 文字のみが分析され、警告が発行されます。
 

@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のクラスターで複数のノー
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 07c4628a17d2c76e8e4608c9c6d059a81a9c378f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3e029695e9dce79473ada0bae3e7f0bbfd30db89
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182861"
+ms.locfileid: "102218487"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -130,9 +130,11 @@ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluste
 #### <a name="limitations"></a>制限事項
 
 * ノード プールに割り当てられるサブネットはすべて、同じ仮想ネットワークに属している必要があります。
-* システム ポッドは、coreDNS による DNS 解決などの重要な機能を提供するために、クラスター内のすべてのノードにアクセスできる必要があります。
-* プレビュー期間中、ノード プールごとの一意なサブネットの割り当ては、Azure CNI に制限されます。
-* プレビュー期間中、ノード プールごとの一意なサブネットでのネットワーク ポリシーの使用はサポートされません。
+* DNS 解決や kubectl logs/exec/port-forward プロキシのトンネリングなど、重要な機能を提供するために、システム ポッドはクラスター内のすべてのノードとポッドにアクセスできる必要があります。
+* クラスター作成後、VNet を拡張する場合、元の cidr の外でサブネットを追加する前に、クラスターを更新する必要があります (マネージド クラスター操作があれば、それを実行しますが、ノード プール操作は数に入りません)。 元々は許可していましたが、エージェント プールを追加すると AKS でエラーが出るようになっています。 クラスターを調整する方法がわからない場合、サポート チケットを提出してください。 
+* Calico ネットワーク ポリシーはサポートされていません。 
+* Azure ネットワーク ポリシーはサポートされていません。
+* Kube-proxy からは隣接する cidr が 1 つ求められ、3 つの最適化にそれが使用されます。 詳細については、この [K.E.P](https://github.com/kubernetes/enhancements/blob/master/keps/sig-network/20191104-iptables-no-cluster-cidr.md ) と [こちら](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)の --cluster-cidr を参照してください。 azure cni では、最初のノード プールのサブネットが kube-proxy に与えられます。 
 
 専用サブネットを持つノード プールを作成するには、ノード プールを作成する際に、サブネットのリソース ID を追加パラメーターとして渡します。
 

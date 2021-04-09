@@ -6,10 +6,10 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
 ms.openlocfilehash: 3f80c42be217d062510c687075cf46b4e7539419
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102045345"
 ---
 # <a name="connect-system-center-service-manager-with-it-service-management-connector"></a>System Center Service Manager を IT Service Management Connector に接続する

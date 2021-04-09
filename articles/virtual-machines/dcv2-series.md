@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
 ms.openlocfilehash: 677f4df0873f8b72d40dd373035111e2e0002491
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102549232"
 ---
 # <a name="dcsv2-series"></a>DCsv2 シリーズ

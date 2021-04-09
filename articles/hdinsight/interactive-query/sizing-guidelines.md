@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: a7baa9340a1f0a99b94bfcbe535c73d0b502e2a0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98933053"
 ---
 # <a name="interactive-query-cluster-sizing-guide-in-azure-hdinsight"></a>Azure HDInsight の Interactive Query クラスターのサイズ設定ガイド

@@ -12,10 +12,10 @@ ms.reviewer: dineshm
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2918b845430a6fc6dc59eca7041c114fc9d06515
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97092212"
 ---
 # <a name="create-an-account-sas-with-net"></a>.NET を使用してアカウント SAS を作成する

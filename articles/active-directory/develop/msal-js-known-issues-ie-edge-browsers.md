@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 2a471504b88791b5bfb6ce6cc7c81d60bfbe5028
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83772082"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer および Microsoft Edge ブラウザーに関する既知の問題 (MSAL.js)
@@ -65,7 +65,7 @@ IE と Microsoft Edge での認証に関する問題が複数報告されてい�
 
 たとえば、[多要素認証](../authentication/concept-mfa-howitworks.md)中に 2 つ目のポップアップが開いたときに、IE や Microsoft Edge でポップアップがブロックされることがあります。 ポップアップを 1 回のみまたは常に許可するかどうかを確認するアラートがブラウザーで表示されます。 許可することを選択した場合、ブラウザーは自動的にポップアップ ウィンドウを開き、`null` ハンドルを返します。 その結果、ライブラリはウィンドウの制御を得ることができず、ポップアップ ウィンドウを閉じることができません。 Chrome では、ポップアップを許可するプロンプトを表示するときに、同じ問題が発生しません。これは、Chrome ではポップアップ ウィンドウが自動的に開かないためです。
 
-**回避策**としては、アプリの使用を開始する前に、この問題を回避するために、開発者は IE と Microsoft Edge でポップアップを許可する必要があります。
+**回避策** としては、アプリの使用を開始する前に、この問題を回避するために、開発者は IE と Microsoft Edge でポップアップを許可する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 [Internet Explorer での MSAL.js の使用](msal-js-use-ie-browser.md)について詳しく学習します。

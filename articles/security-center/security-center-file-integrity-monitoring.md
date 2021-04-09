@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 90f0cd913a191f345afd8acc3f3449b87e4cbfaf
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b858903b87dc6c4cc1f7c40338c09bf5b8204b3d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918608"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176537"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Security Center のファイルの整合性の監視
 このチュートリアルを使用して、Azure Security Center のファイルの整合性の監視 (FIM) を構成する方法を説明します。
@@ -31,7 +31,7 @@ ms.locfileid: "98918608"
 |リリース状態:|一般提供 (GA)|
 |価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要です。<br>FIM は、Log Analytics ワークスペースにデータをアップロードします。 データ料金は、アップロードするデータの量に基づいて適用されます。 詳細については、「[Log Analytics の価格](https://azure.microsoft.com/pricing/details/log-analytics/)」をご覧ください。|
 |必要なロールとアクセス許可:|**ワークスペースの所有者** は、FIM を有効/無効にすることができます (詳細については、[Log Analytics での Azure のロール](/services-hub/health/azure-roles#azure-roles)に関する記事を参照してください)。<br>**閲覧者** は結果を表示できます。|
-|クラウド:|![はい](./media/icons/yes-icon.png) 商用クラウド<br>![はい](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)<br>Azure Automation の変更追跡ソリューションが利用可能なリージョンでのみサポートされます。<br>「[リンクされた Log Analytics ワークスペースでサポートされるリージョン](../automation/how-to/region-mappings.md)」を参照してください。<br>[変更追跡についてさらに学習](../automation/change-tracking/overview.md)します。|
+|クラウド:|![はい](./media/icons/yes-icon.png) 商用クラウド<br>![はい](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)<br>Azure Automation の変更追跡ソリューションが利用可能なリージョンでのみサポートされます。<br>![はい](./media/icons/yes-icon.png) [Azure Arc](https://docs.microsoft.com/azure/azure-arc/servers/overview) 対応デバイス。<br>「[リンクされた Log Analytics ワークスペースでサポートされるリージョン](../automation/how-to/region-mappings.md)」を参照してください。<br>[変更追跡についてさらに学習](../automation/change-tracking/overview.md)します。|
 |||
 
 ## <a name="what-is-fim-in-security-center"></a>Security Center の FIM とは
@@ -120,7 +120,7 @@ FIM は、Azure portal の Security Center のページからのみ利用でき�
 
     - 各ワークスペースの状態と設定にアクセスして表示する
 
-    - ![[アップグレード プラン] アイコン][4] Azure Defender を使用するようにワークスペースをアップグレードする。 このアイコンは、ワークスペースまたはサブスクリプションが Azure Defender によって保護されていないことを示します。 FIM 機能を使用するには、サブスクリプションが Azure Defender によって保護されている必要があります。 [詳細については、こちらを参照してください](security-center-pricing.md)。
+    - ![[アップグレード プラン] アイコン][4] Azure Defender を使用するようにワークスペースをアップグレードする。 このアイコンは、ワークスペースまたはサブスクリプションが Azure Defender によって保護されていないことを示します。 FIM 機能を使用するには、サブスクリプションが Azure Defender によって保護されている必要があります。 詳細については、「[Azure Security Center (無料) と有効化された Azure Defender](security-center-pricing.md)」を参照してください。
 
     - ![[有効化] アイコン][3] ワークスペースにあるすべてのマシンで FIM を有効にし、FIM オプションを構成する。 このアイコンは、ワークスペースの FIM が有効ではないことを示します。
 

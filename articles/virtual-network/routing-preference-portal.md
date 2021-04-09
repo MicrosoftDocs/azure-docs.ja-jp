@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/02/2020
+ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: 2c6295db96f951abd1fd069535b98639e723d93a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f445eab65e8d2448e57bad19c52a4b72732016bb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217568"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672903"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>Azure portal を使用してパブリック IP アドレスのルーティング優先設定を構成する
 
@@ -32,20 +32,26 @@ ms.locfileid: "98217568"
 
 既定では、パブリック IP アドレスに対するルーティング優先設定は、すべての Azure サービスについて Microsoft グローバル ネットワークに設定され、任意の Azure サービスと関連付けることができます。
 
-> [!IMPORTANT]
-> 現在、ルーティング優先設定はパブリック プレビューの段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
 Azure サブスクリプションをお持ちでない場合は、ここで[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 ## <a name="create-a-public-ip-address-with-a-routing-preference"></a>ルーティング優先設定を使用してパブリック IP アドレスを作成する
-1. [Azure portal](https://preview.portal.azure.com/) にサインインします。
-2. **[リソースの作成]** を選択します。 
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+2. **[リソースの作成]** を選択します。
 3. 検索ボックスに「*パブリック IP アドレス*」と入力します。
 3. 検索結果から **[パブリック IP アドレス]** を選択します。 次に、 **[パブリック IP アドレス]** ページで、 **[作成]** を選択します。
-3. **[ルーティングの優先順位]** オプションで、 **[インターネット]** を選択します。
+1. [SKU] には **[Standard]** を選択します。
+1. **[ルーティングの優先順位]** で、 **[インターネット]** を選択します。
 
-      ![パブリック IP アドレスを作成する](./media/routing-preference-portal/pip-new.png)
+      ![パブリック IP アドレスを作成する](./media/routing-preference-portal/public-ip-new.png)
+1. **[IPV4 IP アドレスの構成]** セクションで、次の情報を入力または選択します。
+
+    | 設定 | 値 |
+    | ------- | ----- |
+    | サブスクリプション | サブスクリプションを選択します。|
+    | Resource group | **[新規作成]** を選択し、「*RoutingPreferenceResourceGroup*」と入力して、 **[OK]** を選択します。 |
+    | 場所 | **[米国東部]** を選択します。|
+    | 可用性ゾーン | 既定値「**Zone-redundant**」はそのままにします。 |
+1. **［作成］** を選択します
 
     > [!NOTE]
     > パブリック IP アドレスは、IPv4 または IPv6 アドレスを使用して作成されます。 ただし、現在、ルーティング優先設定では IPV4 のみがサポートされています。

@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.openlocfilehash: 4564e28f76aebe7f708c2b6f68903fe67bcefe26
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101698860"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Media Services での Bring Your Own Key (カスタマー マネージド キー)

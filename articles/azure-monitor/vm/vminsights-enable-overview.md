@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7aa8221c960685149a5d475665be105acaf7aa15
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bb2e12082b80c397eec27409b1177379a92fdd7d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046671"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102634160"
 ---
 # <a name="enable-vm-insights-overview"></a>VM insights の有効化の概要
 
@@ -54,6 +54,7 @@ VM insights では、Log Analytics エージェントと Dependency Agent をサ
 > [!IMPORTANT]
 > パブリック プレビュー段階の間、VM insights のゲストの正常性機能では、オペレーティング システムのサポートが制限されています。 詳細な一覧については、「[VM insights のゲストの正常性 (プレビュー) を有効にする](../vm/vminsights-health-enable.md)」を参照してください。
 
+### <a name="linux-considerations"></a>Linux に関する考慮事項
 VM insights をサポートする Dependency Agent の Linux サポートについては、次の考慮事項の一覧を確認してください。
 
 - 既定と SMP Linux のカーネル リリースのみがサポートされています。
@@ -61,7 +62,22 @@ VM insights をサポートする Dependency Agent の Linux サポートにつ�
 - カスタム カーネル (標準カーネルの再コンパイルを含む) はサポートされていません。
 - バージョン 9.4 以外の Debian ディストリビューションでは、マップ機能はサポートされておらず、パフォーマンス機能は [Azure Monitor] メニューからのみ使用できます。 Azure VM の左側のウィンドウから直接使用することはできません。
 - CentOSPlus カーネルはサポートされています。
-- Spectre の脆弱性のために、Linux カーネルに修正プログラムを適用する必要があります。 詳細については、Linux ディストリビューション ベンダーに問い合わせてください。
+
+Spectre と Meltdown の脆弱性のために、Linux カーネルに修正プログラムを適用する必要があります。 詳細については、Linux ディストリビューション ベンダーに問い合わせてください。 次のコマンドを実行して、Spectre または Meltdown が軽減されているかどうかを確認します。
+
+```
+$ grep . /sys/devices/system/cpu/vulnerabilities/*
+```
+
+このコマンドの出力は次のようになり、マシンがどちらの問題に対して脆弱であるかを特定します。 これらのファイルが見つからない場合、マシンには修正プログラムが適用されていません。
+
+```
+/sys/devices/system/cpu/vulnerabilities/meltdown:Mitigation: PTI
+/sys/devices/system/cpu/vulnerabilities/spectre_v1:Vulnerable
+/sys/devices/system/cpu/vulnerabilities/spectre_v2:Vulnerable: Minimal generic ASM retpoline
+```
+
+
 ## <a name="log-analytics-workspace"></a>Log Analytics ワークスペース
 VM insights には Log Analytics ワークスペースが必要です。 このワークスペースの詳細と要件については、「[VM insights 用に Log Analytics ワークスペースを構成する](vminsights-configure-workspace.md)」を参照してください。
 ## <a name="agents"></a>エージェント

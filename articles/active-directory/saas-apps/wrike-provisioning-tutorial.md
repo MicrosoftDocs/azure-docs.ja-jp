@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Wrike を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
+title: 'チュートリアル: Wrike を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
 description: Azure Active Directory を構成して、ユーザー アカウントを Wrike に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 author: zchia
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: 53b1db1a8c4da59055c0af5f448fa0c8a6933daf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95988129"
 ---
-# <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>チュートリアル:Wrike を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>チュートリアル: Wrike を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルの目的は、Azure AD が自動的にユーザーまたはグループを Wrike にプロビジョニングまたは Wrike からプロビジョニング解除するように構成するために、Wrike と Azure Active Directory (Azure AD) で実行する手順を示すことです。
 
@@ -83,7 +83,7 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Wrike 
 
 Azure AD ギャラリーから Wrike を追加するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** を選択します。
+1. [Azure portal](https://portal.azure.com) の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** を選択します。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
@@ -95,7 +95,7 @@ Azure AD ギャラリーから Wrike を追加するには、次の手順に従�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Wrike**」と入力し、結果ウィンドウで **[Wrike]** を選択してから、 **[追加]** を選択してアプリケーションを追加します。
+4. 検索ボックスに「**Wrike**」と入力し、結果ウィンドウで **[Wrike]** を選択してから、**[追加]** を選択してアプリケーションを追加します。
 
     ![結果一覧の Wrike](common/search-new-app.png)
 
@@ -125,7 +125,7 @@ Azure AD ギャラリーから Wrike を追加するには、次の手順に従�
 
     ![[プロビジョニング モード] が [自動] に設定されている](common/provisioning-automatic.png)
 
-5. [管理者資格情報] セクションで、先ほど取得した **[ベース URL]** と **[Permanent access token]\(永続的なアクセス トークン\)** の値を、それぞれ **[テナント URL]** と **[シークレット トークン]** に入力します。 Azure AD が Wrike に接続できることを確認するために、 **[テスト接続]** を選択します。 接続できない場合は、使用中の Wrike アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. [管理者資格情報] セクションで、先ほど取得した **[ベース URL]** と **[Permanent access token]\(永続的なアクセス トークン\)** の値を、それぞれ **[テナント URL]** と **[シークレット トークン]** に入力します。 Azure AD が Wrike に接続できることを確認するために、**[テスト接続]** を選択します。 接続できない場合は、使用中の Wrike アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -145,7 +145,7 @@ Azure AD ギャラリーから Wrike を追加するには、次の手順に従�
 
 11. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の手順を参照してください。
 
-12. Wrike に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+12. Wrike に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 

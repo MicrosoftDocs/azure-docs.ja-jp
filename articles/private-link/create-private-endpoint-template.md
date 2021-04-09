@@ -1,19 +1,19 @@
 ---
-title: Azure Private Link でプライベート エンドポイントを作成する
+title: クイックスタート - ARM テンプレートを使用してプライベート エンドポイントを作成する
 description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用してプライベート エンドポイントを作成します。
 services: private-link
-author: mblanco77
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 553d36a86671617417b6b9b1ea47966c3ba3fdf6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e80adc16e08e676ac2daabec01a11c10d537c547
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88705811"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102562947"
 ---
 # <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用してプライベート エンドポイントを作成する
 
@@ -114,7 +114,7 @@ ARM テンプレートを Azure にデプロイする方法を次に示します
 
 3.  SQL Server Management Studio をインストールします。
 4.   **[サーバーに接続]** で、次の情報を入力または選択します。
-    - **[サーバーの種類]** : **データベース エンジン**を選択します。
+    - **[サーバーの種類]** : **データベース エンジン** を選択します。
     - **[サーバー名]** : **[sqlserver{uniqueid}.database.windows.net]** を選択します。
     - **[ユーザー名]** : 作成時に指定したユーザー名を入力します。
     - **パスワード**:作成時に指定したパスワードを入力します。
@@ -137,4 +137,6 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Private Link](private-link-overview.md) について学習します。
+プライベート エンドポイントをサポートするサービスの詳細については、以下を参照してください。
+> [!div class="nextstepaction"]
+> [Private Link の可用性](private-link-overview.md#availability)

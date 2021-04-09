@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 36249694c5a4de8a738853892f827c6d9e1e4aff
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92489474"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql---flexible-server-firewall-rules-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for PostgreSQL - フレキシブル サーバー ファイアウォール規則の作成と管理
@@ -20,30 +20,30 @@ ms.locfileid: "92489474"
 > [!IMPORTANT]
 > Azure Database for PostgreSQL - フレキシブル サーバーはプレビュー段階です
 
-Azure Database for PostgreSQL - フレキシブル サーバーによって、ご利用のフレキシブル サーバーに接続するために、2 種類の相互に排他的なネットワーク接続方法がサポートされています。 次の 2 つのオプションがあります。
+Azure Database for PostgreSQL - フレキシブル サーバーでは、フレキシブル サーバーに接続するために、同時に使用できないネットワーク接続方法が 2 種類サポートされています。 次の 2 つのオプションがあります。
 
 * パブリック アクセス (許可された IP アドレス)
 * プライベート アクセス (VNet 統合)
 
-この記事では、Azure CLI を使用して **パブリック アクセス (許可された IP アドレス)** を指定して PostgreSQL サーバーを作成する方法について説明します。また、サーバーの作成後にファイアウォール規則を作成、更新、削除、一覧表示、表示するために使用できる Azure CLI コマンドの概要について説明します。 " *パブリック アクセス (許可された IP アドレス)* " を使用すると、PostgreSQL サーバーへの接続が、許可された IP アドレスのみに制限されます。 クライアント IP アドレスは、ファイアウォール規則で許可されている必要があります。 詳細については、「[パブリック アクセス (許可された IP アドレス)](./concepts-networking.md#public-access-allowed-ip-addresses)」をご覧ください。 ファイアウォール規則は、サーバーの作成時に定義できます (推奨) が、後で追加することもできます。
+この記事では、Azure CLI を使用して **パブリック アクセス (許可された IP アドレス)** を指定して PostgreSQL サーバーを作成する方法について説明します。また、サーバーの作成後にファイアウォール規則を作成、更新、削除、一覧表示、表示するために使用できる Azure CLI コマンドの概要について説明します。 "*パブリック アクセス (許可された IP アドレス)* " を使用すると、PostgreSQL サーバーへの接続が、許可された IP アドレスのみに制限されます。 クライアント IP アドレスは、ファイアウォール規則で許可されている必要があります。 詳細については、「[パブリック アクセス (許可された IP アドレス)](./concepts-networking.md#public-access-allowed-ip-addresses)」をご覧ください。 ファイアウォール規則は、サーバーの作成時に定義できます (推奨) が、後で追加することもできます。
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
-[Azure Cloud Shell](../../cloud-shell/overview.md) は無料の対話型シェルで、これを使用してこの記事の手順を行うことができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。
+[Azure Cloud Shell](../../cloud-shell/overview.md) は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。
 
 Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/bash](https://shell.azure.com/bash) に移動して、別のブラウザー タブで Cloud Shell を開くこともできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、 **[入力]** を選択して実行します。
 
-ローカルに CLI をインストールして使用する場合は、このクイックスタートのために Azure CLI バージョン 2.0 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このクイックスタートでは、Azure CLI バージョン 2.0 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-[az login](/cli/azure/reference-index#az-login) コマンドを使用してアカウントにサインインする必要があります。 **ID** プロパティにご注意ください。これは、お使いの Azure アカウントの **サブスクリプション ID** のことです。
+[az login](/cli/azure/reference-index#az-login) コマンドを使用してアカウントにサインインする必要があります。 **ID** プロパティに注意してください。これは、お使いの Azure アカウントの **サブスクリプション ID** のことです。
 
 ```azurecli-interactive
 az login
 ```
 
-[az account set](/cli/azure/account#az-account-set) コマンドを使用して、アカウントの特定のサブスクリプションを選択します。 **az login** 出力の **ID** 値をメモして、コマンドの **subscription** 引数の値として使用します。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 すべてのサブスクリプションを取得するには、[az account list](/cli/azure/account#az-account-list) を使用します。
+[az account set](/cli/azure/account#az-account-set) コマンドを使用して、アカウントの特定のサブスクリプションを選択します。 **az login** 出力の **ID** の値をメモしておいて、このコマンドの **subscription** 引数の値として使用します。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 すべてのサブスクリプションを取得するには、[az account list](/cli/azure/account#az-account-list) を使用します。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -51,9 +51,9 @@ az account set --subscription <subscription id>
 
 ## <a name="create-firewall-rule-during-flexible-server-create-using-azure-cli"></a>Azure CLI を使用してフレキシブル サーバーの作成時にファイアウォール規則を作成する
 
-`az postgres flexible-server --public access` コマンドを使用して、" *パブリック アクセス (許可された IP アドレス)* " を指定してフレキシブル サーバーを作成し、フレキシブル サーバーの作成時にファイアウォール規則を構成できます。 **--public-access** スイッチを使用して、サーバーに接続できる許可された IP アドレスを指定できます。 IP アドレスの許可リストに含める 1 つの IP アドレス、または IP アドレスの範囲を指定できます。 IP アドレスの範囲はダッシュで区切る必要があり、スペースは含めません。 次の例に示すように、CLI を使用してフレキシブル サーバーを作成するためのさまざまなオプションがあります。
+`az postgres flexible-server --public access` コマンドを使用して、"*パブリック アクセス (許可された IP アドレス)* " を指定してフレキシブル サーバーを作成し、フレキシブル サーバーの作成時にファイアウォール規則を構成できます。 **--public-access** スイッチを使用して、サーバーに接続できる許可された IP アドレスを指定できます。 IP アドレスの許可リストに含める 1 つの IP アドレス、または IP アドレスの範囲を指定できます。 IP アドレスの範囲はダッシュで区切る必要があり、スペースは含めません。 次の例に示すように、CLI を使用してフレキシブル サーバーを作成するためのさまざまなオプションがあります。
 
-構成可能な CLI パラメーターの完全な一覧については、 <!--FIXME --> Azure CLI リファレンス ドキュメントを参照してください。 たとえば、次のコマンドによって、必要に応じてリソース グループを指定できます。
+構成可能な CLI パラメーターの完全な一覧については、 <!--FIXME --> Azure CLI リファレンス ドキュメントを参照してください。 たとえば、次のコマンドでは、必要に応じてリソース グループを指定できます。
 
 - パブリック アクセスでフレキシブル サーバーを作成し、サーバーにアクセスするためのクライアント IP アドレスを追加する
     ```azurecli-interactive
@@ -87,13 +87,13 @@ az account set --subscription <subscription id>
 Azure CLI の **az postgres flexible-server firewall-rule** コマンドで、ファイアウォール規則を作成、削除、一覧表示、表示、更新します。
 
 コマンド:
-- **create** :フレキシブル サーバーのファイアウォール規則を作成します。
-- **list** :フレキシブル サーバーのファイアウォール規則を一覧表示します。
-- **update** :フレキシブル サーバーのファイアウォール規則を更新します。
-- **show** :フレキシブル サーバーのファイアウォール規則の詳細を表示します。
-- **delete** :フレキシブル サーバーのファイアウォール規則を削除します。
+- **create**:フレキシブル サーバーのファイアウォール規則を作成します。
+- **list**:フレキシブル サーバーのファイアウォール規則を一覧表示します。
+- **update**:フレキシブル サーバーのファイアウォール規則を更新します。
+- **show**:フレキシブル サーバーのファイアウォール規則の詳細を表示します。
+- **delete**:フレキシブル サーバーのファイアウォール規則を削除します。
 
-構成可能な CLI パラメーターの完全な一覧については、 <!--FIXME --> Azure CLI リファレンス ドキュメントを参照してください。 たとえば、次のコマンドによって、必要に応じてリソース グループを指定できます。
+構成可能な CLI パラメーターの完全な一覧については、 <!--FIXME --> Azure CLI リファレンス ドキュメントを参照してください。 たとえば、次のコマンドでは、必要に応じてリソース グループを指定できます。
 
 ### <a name="create-a-firewall-rule"></a>ファイアウォール規則を作成する
 `az postgres flexible-server firewall-rule create` コマンドを使用して、サーバーに新しいファイアウォール規則を作成します。

@@ -10,10 +10,10 @@ ms.date: 03/17/2020
 ms.author: robinsh
 ms.custom: devx-track-python
 ms.openlocfilehash: 733e3be21a1a1305b5c7947de1ae54ddce5e0d2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87876684"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>ジョブのスケジュールとブロードキャスト (Python)
@@ -32,7 +32,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 * デバイス ツインとプロパティ: [デバイス ツインの概要](iot-hub-python-twin-getstarted.md)および[チュートリアル: デバイス ツインのプロパティの使用方法](tutorial-device-twins.md)
 
-* ダイレクト メソッド: [IoT Hub 開発者ガイド - ダイレクト メソッド](iot-hub-devguide-direct-methods.md)および[チュートリアル: ダイレクト メソッド](quickstart-control-device-python.md)
+* ダイレクト メソッド: [ダイレクト メソッドに関する IoT Hub 開発者ガイド](iot-hub-devguide-direct-methods.md)と[ダイレクト メソッドに関するチュートリアル](quickstart-control-device-python.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -49,7 +49,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 **scheduleJobService.py**。シミュレートされたデバイス アプリでダイレクト メソッドを呼び出し、ジョブを使用してデバイス ツインの必要なプロパティを更新します。
 
 > [!NOTE]
-> **Azure IoT SDK for Python** では、**ジョブ**機能は直接サポートされません。 代わりに、このチュートリアルでは、非同期スレッドとタイマーを利用する代替ソリューションを提供します。 さらに更新するには、[Azure IoT SDK for Python](https://github.com/Azure/azure-iot-sdk-python) に関するページで**サービス クライアント SDK** 機能の一覧をご覧ください。
+> **Azure IoT SDK for Python** では、**ジョブ** 機能は直接サポートされません。 代わりに、このチュートリアルでは、非同期スレッドとタイマーを利用する代替ソリューションを提供します。 さらに更新するには、[Azure IoT SDK for Python](https://github.com/Azure/azure-iot-sdk-python) に関するページで **サービス クライアント SDK** 機能の一覧をご覧ください。
 >
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
@@ -153,17 +153,17 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 ## <a name="get-the-iot-hub-connection-string"></a>IoT ハブ接続文字列を取得する
 
-この記事では、デバイス上でダイレクト メソッドを呼び出し、デバイス ツインを更新するバックエンド サービスを作成します。 デバイス上でダイレクト メソッドを呼び出すには、サービスに**サービス接続**アクセス許可が必要です。 また、このサービスで ID レジストリの読み取りと書き込みを行うために、**レジストリ読み取り**および**レジストリ書き込み**アクセス許可も必要です。 これらのアクセス許可だけを含んだ既定の共有アクセス ポリシーは存在しないため、共有アクセス ポリシーを独自に作成する必要があります。
+この記事では、デバイス上でダイレクト メソッドを呼び出し、デバイス ツインを更新するバックエンド サービスを作成します。 デバイス上でダイレクト メソッドを呼び出すには、サービスに **サービス接続** アクセス許可が必要です。 また、このサービスで ID レジストリの読み取りと書き込みを行うために、**レジストリ読み取り** および **レジストリ書き込み** アクセス許可も必要です。 これらのアクセス許可だけを含んだ既定の共有アクセス ポリシーは存在しないため、共有アクセス ポリシーを独自に作成する必要があります。
 
-**サービス接続**、**レジストリ読み取り**、および**レジストリ書き込み**のアクセス許可を付与する共有アクセス ポリシーを作成し、そのポリシーの接続文字列を取得するには、次の手順を実行します。
+**サービス接続**、**レジストリ読み取り**、および **レジストリ書き込み** のアクセス許可を付与する共有アクセス ポリシーを作成し、そのポリシーの接続文字列を取得するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com) で IoT ハブを開きます。 IoT ハブに移動するための最も簡単な方法は、 **[リソース グループ]** を選択し、IoT ハブがあるリソース グループを選択した後、リソースの一覧から目的の IoT ハブを選択することです。
+1. [Azure portal](https://portal.azure.com) で IoT ハブを開きます。 IoT ハブに移動するための最も簡単な方法は、**[リソース グループ]** を選択し、IoT ハブがあるリソース グループを選択した後、リソースの一覧から目的の IoT ハブを選択することです。
 
 2. IoT ハブの左側のウィンドウで、 **[共有アクセス ポリシー]** を選択します。
 
 3. ポリシーの一覧の上にあるトップ メニューから **[追加]** を選択します。
 
-4. **[共有アクセス ポリシーを追加]** ウィンドウで、対象のポリシーのわかりやすい名前を入力します (例: *serviceAndRegistryReadWrite*)。 **[アクセス許可]** で、 **[サービス接続]** と **[レジストリ書き込み]** を選択します ( **[レジストリ書き込み]** を選択すると、 **[レジストリ読み取り]** が自動的に選択されます)。 **[作成]** を選択します。
+4. **[共有アクセス ポリシーを追加]** ウィンドウで、対象のポリシーのわかりやすい名前を入力します (例: *serviceAndRegistryReadWrite*)。 **[アクセス許可]** で、**[サービス接続]** と **[レジストリ書き込み]** を選択します (**[レジストリ書き込み]** を選択すると、**[レジストリ読み取り]** が自動的に選択されます)。 **[作成]** を選択します。
 
     ![新しい共有アクセス ポリシーを追加する方法を示す画面](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
 

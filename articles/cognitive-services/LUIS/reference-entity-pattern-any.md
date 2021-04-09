@@ -9,10 +9,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.openlocfilehash: ec23be3709cebc534c059a21c52452abff683b18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91542208"
 ---
 # <a name="patternany-entity"></a>Pattern.any エンティティ
@@ -35,7 +35,7 @@ Pattern.any エンティティは、意図のユーザー例内ではなく、[�
 |--|
 |`Was The Man Who Mistook His Wife for a Hat and Other Clinical Tales written by an American this year?`<br><br>「**The Man Who Mistook His Wife for a Hat and Other Clinical Tales (自分の妻を帽子と間違える男やその他の臨床例)** 」は、アメリカ人によって今年執筆されましたか?|
 |`Was Half Asleep in Frog Pajamas written by an American this year?`<br><br>「**Half Asleep in Frog Pajamas (カエルのパジャマで夢うつつ)** 」は、アメリカ人によって今年執筆されましたか?|
-|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br><br>「**The Particular Sadness of Lemon Cake:A Novel (悲しきレモン ケーキ: 小説)** 」は、アメリカ人によって今年執筆されましたか?|
+|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br><br>「**The Particular Sadness of Lemon Cake (レモンケーキの独特なさびしさ)** 」は、アメリカ人によって今年執筆された小説ですか?|
 |`Was There's A Wocket In My Pocket! written by an American this year?`<br><br>「**There's A Wocket In My Pocket! (ポケットにウォケットが!)** 」 は、アメリカ人によって今年執筆されましたか?|
 ||
 
@@ -43,7 +43,7 @@ Pattern.any エンティティは、意図のユーザー例内ではなく、[�
 
 ## <a name="example-json"></a>JSON の例
 
-次のクエリを考えてみます。
+次のクエリがあるとします。
 
 `where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
 
@@ -106,4 +106,4 @@ Pattern.any として抽出する埋め込みフォーム名を使用します�
 
 ## <a name="next-steps"></a>次のステップ
 
-この[チュートリアル](luis-tutorial-pattern.md)では、発話が正しい形式であって、データの末尾が発話の残りの単語と混同しやすい可能性がある場合に、**Pattern.any** エンティティを使用して発話からデータを抽出します。
+この [チュートリアル](luis-tutorial-pattern.md)では、発話が正しい形式であって、データの末尾が発話の残りの単語と混同しやすい可能性がある場合に、**Pattern.any** エンティティを使用して発話からデータを抽出します。

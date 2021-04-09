@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 05/01/2017
 ms.openlocfilehash: ce77f5074d707da5cfb251a103653b96e4644b5f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92544530"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Cache for Redis の ASP.NET セッション状態プロバイダー
@@ -83,14 +83,14 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
 属性の構成には、Microsoft Azure ポータルのキャッシュ ブレードの値を使用してください。その他の値は適宜構成します。 キャッシュのプロパティにアクセスする方法については、「[Configure Azure Cache for Redis settings (Azure Cache for Redis の設定を構成する)](cache-configure.md#configure-azure-cache-for-redis-settings)」を参照してください。
 
 * **host** : キャッシュ エンドポイントを指定します。
-* **port** : TLS の設定に応じて、非 TLS/SSL ポートまたは TLS/SSL ポートを使用します。
+* **port**: TLS の設定に応じて、非 TLS/SSL ポートまたは TLS/SSL ポートを使用します。
 * **accessKey** : キャッシュのプライマリ キーまたはセカンダリ キーを使用します。
-* **ssl** : キャッシュとクライアント間の通信を TLS で保護する場合は true、保護しない場合は false を指定します。 必ず適切なポートを指定してください。
+* **ssl**: キャッシュとクライアント間の通信を TLS で保護する場合は true、保護しない場合は false を指定します。 必ず適切なポートを指定してください。
   * 既定では、新しいキャッシュに対して非 TLS ポートは無効になっています。 TLS ポートを使用するには、この設定に true を指定します。 非 TLS ポートの有効化の詳細については、[キャッシュの構成](cache-configure.md)に関するトピックの「[アクセス ポート](cache-configure.md#access-ports)」セクションを参照してください。
-* **throwOnError** : 失敗時に例外がスローされるようにする場合は true、操作の失敗時にエラー メッセージが表示されないようにする場合は false を指定します。 静的 Microsoft.Web.Redis.RedisSessionStateProvider.LastException プロパティをチェックすることでエラーを確認できます。 既定値は true です。
-* **retryTimeoutInMilliseconds** : 失敗した操作がこの時間に再試行されます。ミリ秒単位で指定します。 最初は 20 ミリ秒後に再試行され、その後 retryTimeoutInMilliseconds の時間が経過するまで 1 秒ごとに再試行されます。 この時間を過ぎるとすぐに、操作が最後に 1 回再試行されます。 操作が失敗した場合、throwOnError 設定に応じて、例外がスローされて呼び出し元に戻ります。 既定値は 0 です。これは再試行されないことを意味します。
+* **throwOnError**: 失敗時に例外がスローされるようにする場合は true、操作の失敗時にエラー メッセージが表示されないようにする場合は false を指定します。 静的 Microsoft.Web.Redis.RedisSessionStateProvider.LastException プロパティをチェックすることでエラーを確認できます。 既定値は true です。
+* **retryTimeoutInMilliseconds**: 失敗した操作がこの時間に再試行されます。ミリ秒単位で指定します。 最初は 20 ミリ秒後に再試行され、その後 retryTimeoutInMilliseconds の時間が経過するまで 1 秒ごとに再試行されます。 この時間を過ぎるとすぐに、操作が最後に 1 回再試行されます。 操作が失敗した場合、throwOnError 設定に応じて、例外がスローされて呼び出し元に戻ります。 既定値は 0 です。これは再試行されないことを意味します。
 * **databaseId** : キャッシュ出力データに使用するデータベースを指定します。 指定されていない場合は、既定値の 0 が使用されます。
-* **applicationName** : キーが `{<Application Name>_<Session ID>}_Data` として Redis に格納されます。 この命名規則により、複数のアプリケーションで同じ Redis インスタンスを共有できます。 このパラメーターは省略可能です。指定されていない場合は、既定値が使用されます。
+* **applicationName**: キーが `{<Application Name>_<Session ID>}_Data` として Redis に格納されます。 この命名規則により、複数のアプリケーションで同じ Redis インスタンスを共有できます。 このパラメーターは省略可能です。指定されていない場合は、既定値が使用されます。
 * **connectionTimeoutInMilliseconds** : この設定によって、StackExchange.Redis クライアントの connectTimeout 設定をオーバーライドすることができます。 指定されていない場合は、connectTimeout 設定の既定値である 5000 が使用されます。 詳細については、 [StackExchange.Redis 構成モデル](https://go.microsoft.com/fwlink/?LinkId=398705)に関するページを参照してください。
 * **operationTimeoutInMilliseconds** : この設定によって、StackExchange.Redis クライアントの syncTimeout 設定をオーバーライドすることができます。 指定されていない場合は、syncTimeout 設定の既定値である 1000 が使用されます。 詳細については、 [StackExchange.Redis 構成モデル](https://go.microsoft.com/fwlink/?LinkId=398705)に関するページを参照してください。
 * **redisSerializerType** - この設定では、Redis に送信されるセッションの内容のカスタム シリアル化を指定できます。 指定される型では、`Microsoft.Web.Redis.ISerializer` を実装し、パラメーターのないパブリック コンストラクターを宣言する必要があります。 既定では `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` が使用されます。

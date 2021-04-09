@@ -4,10 +4,10 @@ description: Azure Blueprints でポータルから既存のブループリン�
 ms.date: 01/27/2021
 ms.topic: how-to
 ms.openlocfilehash: c383ebedaf83b3a52062c91f98b816c3baf6618e
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98919395"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>既存のブループリントの割り当てを更新する方法

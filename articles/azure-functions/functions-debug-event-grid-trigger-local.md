@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cshoe
 ms.openlocfilehash: be05d237d2799404c3fd8b5733464e23eeb49aa3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94833063"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Functions の Event Grid トリガーのローカル デバッグ

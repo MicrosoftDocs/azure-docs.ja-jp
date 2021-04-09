@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/03/2019
 ms.author: mayg
 ms.openlocfilehash: c721234f2e1d806d51d31f3466e441bf8360f6b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "73693172"
 ---
 # <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>VMware VM または物理サーバーの Azure へのディザスター リカバリーのためのターゲット環境を準備する
@@ -27,7 +27,7 @@ ms.locfileid: "73693172"
 
 ## <a name="prepare-target"></a>ターゲットを準備する
 
-**ステップ 1: 保護の目標の選択**と**ステップ 2: ソースの準備**を完了した後は、**ステップ 3: ターゲットの準備**を行います。
+**ステップ 1: 保護の目標の選択** と **ステップ 2: ソースの準備** を完了した後は、**ステップ 3: ターゲットの準備** を行います。
 
 ![ターゲットを準備する](./media/vmware-azure-set-up-target/prepare-target-vmware-to-azure.png)
 

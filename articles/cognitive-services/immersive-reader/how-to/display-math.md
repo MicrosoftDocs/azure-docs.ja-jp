@@ -11,10 +11,10 @@ ms.date: 01/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js
 ms.openlocfilehash: 75b748604e8faa502970ac71e3fec4fae2774c19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91334516"
 ---
 # <a name="how-to-display-math-in-the-immersive-reader"></a>イマーシブ リーダーで数式を表示する方法

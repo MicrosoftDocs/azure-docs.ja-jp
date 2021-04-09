@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bfcd1e600c722cf3a4951da60097c7c373f9b1a6
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 3370aac242fb47a133a5f7d6dc9b3444c65e3691
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592043"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573117"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>チュートリアル:リモートでレンダリングされたモデルの表示
 
@@ -55,43 +55,9 @@ Unity Hub から新しいプロジェクトを作成します。
 
 ## <a name="include-the-azure-remote-rendering-package"></a>Azure Remote Rendering パッケージを含める
 
-Unity プロジェクト フォルダーにある `Packages/manifest.json` ファイルに変更を加える必要があります。 テキスト エディターでファイルを開き、マニフェストの先頭に次の行を追加します。
+Azure Remote Rendering パッケージを Unity プロジェクトに追加する方法に関する[手順に従ってください](../../../how-tos/unity/install-remote-rendering-unity-package.md)。
 
-```json
-{
-    "scopedRegistries": [
-    {
-        "name": "Azure Mixed Reality Services",
-        "url": "https://api.bintray.com/npm/microsoft/AzureMixedReality-NPM/",
-        "scopes": ["com.microsoft.azure"]
-    }
-    ],
-    "dependencies": {
-        "com.unity.render-pipelines.universal": "7.3.1",
-        "com.microsoft.azure.remote-rendering": "0.1.31",
-        ...existing dependencies...
-    }
-}
-```
 
-マニフェストに変更を加えて保存すると、Unity が自動的に更新されます。 *[プロジェクト]* ウィンドウにパッケージが読み込まれたことを確認します。
-
-:::image type="content" source="./media/confirm-packages.png" alt-text="パッケージのインポートを確認する":::
-
-パッケージが読み込まれない場合は、Unity コンソールでエラーを確認してください。 エラーが発生していないのに、 **[Packages]\(パッケージ\)** フォルダーにパッケージが表示されない場合は、パッケージの表示トグル ボタンを確認します。\
-![パッケージ表示トグル ボタンを指し示す矢印を含むスクリーンショット。](./media/unity-package-visibility.png)
-
-## <a name="ensure-you-have-the-latest-version-of-the-package"></a>最新バージョンのパッケージがあることを確認する
-
-プロジェクトで最新バージョンの remote-rendering パッケージが使用されていることを次の手順で確認します。
-
-1. Unity エディターの上部のメニューで、 *[Window]\(ウィンドウ\)、[Package Manager]\(パッケージ マネージャー\)* の順に開きます。
-1. **[Microsoft Azure Remote Rendering]** パッケージを選択します。
-1. **Microsoft Azure Remote Rendering** パッケージの [Package Manager]\(パッケージ マネージャー\) ページで、 **[Update]\(更新\)** ボタンを使用できるかどうかを確認します。 使用できる場合はクリックして、利用可能な最新バージョンにパッケージを更新します。\
-![パッケージ マネージャーにおける ARR パッケージ](./media/package-manager.png)
-1. パッケージを更新すると、コンソール エラーが発生することがあります。 その場合は、プロジェクトを閉じてから再度開いてみてください。
-1. パッケージが最新の状態になると、パッケージ マネージャーには [更新] ボタンではなく **[Up to date]\(最新\)** が表示されます。\
-![最新のパッケージ](./media/package-up-to-date.png)
 ## <a name="configure-the-camera"></a>カメラを構成する
 
 1. **[Main Camera]\(メイン カメラ\)** ノードを選択します。
@@ -640,7 +606,7 @@ public async void JoinRemoteSession()
     else
     {
         CurrentCoordinatorState = RemoteRenderingState.ConnectingToNewRemoteSession;
-        joinResult = await ARRSessionService.StartSession(new RenderingSessionCreationOptions(renderingSessionVmSize, maxLeaseHours, maxLeaseMinutes));
+        joinResult = await ARRSessionService.StartSession(new RenderingSessionCreationOptions(renderingSessionVmSize, (int)maxLeaseHours, (int)maxLeaseMinutes));
     }
 
     if (joinResult.Status == RenderingSessionStatus.Ready || joinResult.Status == RenderingSessionStatus.Starting)
@@ -778,7 +744,7 @@ private void LateUpdate()
     #endif
 
         //Load a model that will be parented to the entity
-        var loadModelParams = new LoadModelFromSasParams(modelPath, modelEntity);
+        var loadModelParams = new LoadModelFromSasOptions(modelPath, modelEntity);
         var loadModelAsync = ARRSessionService.CurrentActiveSession.Connection.LoadModelFromSasAsync(loadModelParams, progress);
         var result = await loadModelAsync;
         return modelEntity;

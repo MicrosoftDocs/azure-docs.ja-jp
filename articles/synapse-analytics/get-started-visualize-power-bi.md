@@ -11,10 +11,10 @@ ms.subservice: business-intelligence
 ms.topic: tutorial
 ms.date: 12/31/2020
 ms.openlocfilehash: 952d69cccff86d1a0119391c400a40908c62ed69
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98208966"
 ---
 # <a name="visualize-data-with-power-bi"></a>Power BI でデータを視覚化する

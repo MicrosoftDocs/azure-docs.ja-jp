@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: cherylmc
 ms.openlocfilehash: 2f2184507e17e3ecae40bb33be4202c183d32b77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91274235"
 ---
 # <a name="point-to-site-vpn-session-management"></a>ポイント対サイト VPN セッションの管理
@@ -44,7 +44,7 @@ PowerShell を使用してセッションを表示および切断するには、
    ```
 1. 切断するセッションの **VpnConnectionId** をコピーします。
 
-   :::image type="content" source="./media/p2s-session-management/powershell.png" alt-text="ポータルの例":::
+   :::image type="content" source="./media/p2s-session-management/powershell.png" alt-text="PowerShell の例":::
 1. セッションを切断するには、次のコマンドを実行します。
 
    ```azurepowershell-interactive

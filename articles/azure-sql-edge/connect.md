@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/25/2020
 ms.openlocfilehash: b56b65261950e9cf534a3755d214229ef7d5bb1e
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93395208"
 ---
 # <a name="connect-and-query-azure-sql-edge"></a>Azure SQL Edge の接続とクエリ
@@ -36,8 +36,8 @@ Azure SQL Edge では、コンテナーをデプロイした後、次のいず�
 
 ネットワーク マシンから Azure SQL Edge データベース エンジンに接続するには、次のものが必要です。
 
-- **ホスト マシンの IP アドレスまたはネットワーク名** :これは、Azure SQL Edge コンテナーが実行されているホスト マシンです。
-- **Azure SQL Edge コンテナーのホスト ポートのマッピング** :これは、Docker コンテナー ポートからホスト上のポートへのマッピングです。 コンテナー内では、Azure SQL Edge は常にポート 1433 にマップされます。 これは、必要に応じて変更できます。 ポート番号を変更するには、Azure IoT Edge の Azure SQL Edge モジュールの **[コンテナーの作成オプション]** を更新します。 次の例では、コンテナーのポート 1433 がホストのポート 1600 にマッピングされています。
+- **ホスト マシンの IP アドレスまたはネットワーク名**:これは、Azure SQL Edge コンテナーが実行されているホスト マシンです。
+- **Azure SQL Edge コンテナーのホスト ポートのマッピング**:これは、Docker コンテナー ポートからホスト上のポートへのマッピングです。 コンテナー内では、Azure SQL Edge は常にポート 1433 にマップされます。 これは、必要に応じて変更できます。 ポート番号を変更するには、Azure IoT Edge の Azure SQL Edge モジュールの **[コンテナーの作成オプション]** を更新します。 次の例では、コンテナーのポート 1433 がホストのポート 1600 にマッピングされています。
 
     ```JSON
     {
@@ -51,7 +51,7 @@ Azure SQL Edge では、コンテナーをデプロイした後、次のいず�
     }
     ```
 
-- **Azure SQL Edge インスタンスの SA パスワード** :これは、Azure SQL Edge のデプロイ時に `SA_PASSWORD` 環境変数に指定された値です。
+- **Azure SQL Edge インスタンスの SA パスワード**:これは、Azure SQL Edge のデプロイ時に `SA_PASSWORD` 環境変数に指定された値です。
 
 ## <a name="connect-to-the-database-engine-from-within-the-container"></a>コンテナー内からデータベース エンジンに接続する
 

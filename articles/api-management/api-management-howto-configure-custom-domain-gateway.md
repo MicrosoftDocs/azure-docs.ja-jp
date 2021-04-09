@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
 ms.openlocfilehash: d52bf87b74ae9b1770ed5092738fd05eb9f54fde
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99491032"
 ---
 # <a name="configure-a-custom-domain-name-for-a-self-hosted-gateway"></a>セルフホステッド ゲートウェイのカスタム ドメイン名を構成する

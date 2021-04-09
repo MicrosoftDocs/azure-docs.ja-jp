@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85252969"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 ローミング設定リファレンス
@@ -52,7 +52,7 @@ Windows 10 でローミングまたはバックアップされる設定の一覧
 ![設定の同期](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
 > [!NOTE]
-> この記事は、2015 年 7 月に Windows 10 で提供が開始された Microsoft Edge レガシ HTML ベースのブラウザーに適用されます。 この記事は、2020 年 1 月 15 日にリリースされた新しい Microsoft Edge Chromium ベースのブラウザーには適用されません。 新しい Microsoft Edge の同期動作の詳細については、「[Microsoft Edge の同期](/deployedge/microsoft-edge-enterprise-sync)」を参照してください。
+> この記事は、2015年7月に Windows 10 で起動された Microsoft Edge レガシ HTML ベースのブラウザーに適用されます。 この記事は、2020 年 1 月 15 日にリリースされた新しい Microsoft Edge Chromium ベースのブラウザーには適用されません。 新しい Microsoft Edge の同期動作の詳細については、「[Microsoft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)」を参照してください。
 
 Microsoft Edge ブラウザーの設定グループ (お気に入り、リーディング リスト) の同期は、Microsoft Edge ブラウザーの [設定] メニュー オプションを通じてエンド ユーザーが有効/無効にできます。
 
@@ -73,12 +73,12 @@ Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer 
 | --- | --- | --- | --- |
 | **アカウント**: アカウントの画像 |sync |X |テーマ |
 | **アカウント**: その他のアカウントの設定 |X |X | |
-| **高度なモバイル ブロードバンド**: インターネット接続の共有のネットワーク名 (Bluetooth を介したモバイル Wi-Fi ホットスポットの自動検出を有効にします) |X |X |パスワード |
-| **アプリ データ**: 個々のアプリでデータを同期可能 |同期バックアップ |同期バックアップ |内部 |
+| **高度なモバイル ブロードバンド**: インターネット接続の共有のネットワーク名 (Bluetooth 経由のモバイル Wi-Fi ホットスポットの自動検出に必要) |X |X |パスワード |
+| **アプリ データ**: 個々のアプリでデータを同期可能 |同期バックアップ |同期バックアップ |internal |
 | **アプリの一覧**: インストールされているアプリの一覧 |X |バックアップ (backup) |その他 |
 | **Bluetooth**: Bluetooth のすべての設定 |X |X | |
-| **コマンド プロンプト**: コマンド プロンプトの "既定" 設定 |sync |X |内部 |
-| **資格情報**:資格情報保管ボックス |sync |sync |password |
+| **コマンド プロンプト**: コマンド プロンプトの "既定" 設定 |sync |X |internal |
+| **資格情報**: 資格情報保管ボックス |sync |sync |password |
 | **日付、時刻、地域**: 時刻の自動同期 (インターネット時刻同期) |sync |sync |language |
 | **日付、時刻、地域**: 24 時間形式 |sync |X |language |
 | **日付、時刻、地域**: 日付と時刻 |sync |X |language |
@@ -96,22 +96,22 @@ Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer 
 | **デスクトップの個人設定**: タスク バーの設定 (位置、自動的に隠す、など) |sync |X |テーマ |
 | **デスクトップの個人設定**: スタート画面のレイアウト |X |バックアップ (backup) | |
 | **デバイス**: 接続済みの共有プリンター |X |X |その他 |
-| **Microsoft Edge ブラウザー**: リーディング リスト |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: お気に入り |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: サイトのトップ <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: 入力されたURL <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: お気に入りバーの設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: [ホーム] ボタンを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: ポップアップをブロックする <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: ダウンロード時の動作を毎回確認する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: パスワードを保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: トラッキング拒否要求を送信する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: フォームへの入力を保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: 入力時に検索候補とおすすめサイトを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: Cookie の基本設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: サイトでデバイスに保護されたメディア ライセンスを保存できるようにする <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **Microsoft Edge ブラウザー**: スクリーン リーダー設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
-| **ハイ コントラスト**: [オン] または [オフ] |sync |X |簡単操作 |
+| **Microsoft Edge ブラウザー**: リーディング リスト |sync |sync |internal |
+| **Microsoft Edge ブラウザー**: お気に入り |sync |sync |internal |
+| **Microsoft Edge ブラウザー**: サイトのトップ <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge ブラウザー**: 入力されたURL <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge ブラウザー**: お気に入りバーの設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge ブラウザー**: [ホーム] ボタンを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge ブラウザー**: ポップアップをブロックする <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge ブラウザー**: ダウンロード時の動作を毎回確認する <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge ブラウザー**: パスワードを保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge ブラウザー**: トラッキング拒否要求を送信する <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge ブラウザー**: フォームへの入力を保存する <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge ブラウザー**: 入力時に検索候補とおすすめサイトを表示する <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge ブラウザー**: Cookie の基本設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge ブラウザー**: サイトでデバイスに保護されたメディア ライセンスを保存できるようにする <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **Microsoft Edge ブラウザー**: スクリーン リーダー設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |internal |
+| **ハイ コントラスト**: オン/オフ |sync |X |簡単操作 |
 | **ハイ コントラスト**: テーマの設定 |sync |X |簡単操作 |
 | **Internet Explorer**: 開いているタブ (URL とタイトル) |sync |sync |Internet Explorer |
 | **Internet Explorer**: リーディング リスト |sync |sync |Internet Explorer |

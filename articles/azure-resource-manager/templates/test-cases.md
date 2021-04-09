@@ -6,10 +6,10 @@ ms.date: 12/03/2020
 ms.author: tomfitz
 author: tfitzmac
 ms.openlocfilehash: 451323058ad743d6e26fc8bcea27d1b44c76f543
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97674044"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>ARM テンプレート テスト ツールキットの既定のテスト ケース

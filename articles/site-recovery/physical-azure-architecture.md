@@ -4,10 +4,10 @@ description: この記事では、Azure Site Recovery サービスを使用し�
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 966636e269043d81912b552711635f34b412f22f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97654729"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>物理サーバーの Azure へのディザスター リカバリー アーキテクチャ
@@ -31,7 +31,7 @@ ms.locfileid: "97654729"
 
 ## <a name="set-up-outbound-network-connectivity"></a>発信ネットワーク接続を設定する
 
-Site Recovery を期待どおりに動作させるためには、環境でレプリケートが可能になるように、発信ネットワーク接続を変更する必要があります。
+Site Recovery を期待どおりに動作させるためには、環境でレプリケートが可能になるように、送信ネットワーク接続を変更する必要があります。
 
 > [!NOTE]
 > Site Recovery では、ネットワーク接続を制御するための認証プロキシの使用をサポートしていません。

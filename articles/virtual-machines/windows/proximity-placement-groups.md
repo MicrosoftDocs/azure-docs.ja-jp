@@ -1,22 +1,22 @@
 ---
-title: PowerShell:近接通信配置グループを使用する
+title: Azure PowerShell を使用して近接配置グループを作成する
 description: Azure PowerShell を使用した近接配置グループを作成して使用する方法について説明します。
 services: virtual-machines
 ms.service: virtual-machines
 ms.subservice: proximity-placement-groups
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 01/27/2020
+ms.date: 3/8/2021
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 742ce6e9937fbe0f67e61b7b96b1289030e7e148
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 26921b3d102032cb36f47c3be7a79c2b596a1d0c
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677215"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102503676"
 ---
-# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>PowerShell を使用し、近接通信配置グループに VM をデプロイする
+# <a name="deploy-vms-to-proximity-placement-groups-using-azure-powershell"></a>Azure PowerShell を使用して近接通信配置グループに VM をデプロイする
 
 
 各 VM をできるだけ近くに配置して、可能性のある最も短い待ち時間を実現するには、それらを[近接通信配置グループ](../co-location.md#proximity-placement-groups)内にデプロイするようにしてください。

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c89e7e948b8a48c7e8d43950ffc2748efff6f51b
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 7d5786c4188db63efc3012e565071f8fd410b92f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953871"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579962"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Google アカウントでのサインアップおよびサインインを設定する
 
@@ -47,7 +47,9 @@ Azure Active Directory B2C (Azure AD B2C) で Google アカウントを持つユ
 アプリケーションの **[名前]** を入力します。 **[承認済みドメイン]** セクションに「*b2clogin.com*」と入力し、**[保存]** を選択します。
 1. 左側のメニューで **[Credentials (資格情報)]** を選択して、**[Create credentials (資格情報を作成)]** > **[Oauth client ID (Oauth クライアント ID)]** を選択します。
 1. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択します。
-1. アプリケーションの **名前** を指定します。**[承認済みの JavaScript 生成元]** に「`https://your-tenant-name.b2clogin.com`」と入力し、**[承認済みのリダイレクト URI]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` をテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用します。
+    1. アプリケーションの **[名前]** を入力します。
+    1. **[認可済みの JavaScript 生成元]** に「`https://your-tenant-name.b2clogin.com`」と入力します。 [カスタム ドメイン](custom-domain.md)を使用する場合は、「`https://your-domain-name`」と入力します。
+    1. **[認可済みのリダイレクト URI]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 [カスタム ドメイン](custom-domain.md)を使用する場合は、「`https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-domain-name` を実際のカスタム ドメインに、`your-tenant-name` を実際のテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用します。
 1. **Create** をクリックしてください。
 1. **[クライアント ID]** と **[クライアント シークレット]** の値をコピーします。 テナントで ID プロバイダーとして Google を構成するには、両方の値が必要です。 **[クライアント シークレット]** は、重要なセキュリティ資格情報です。
 
@@ -66,13 +68,19 @@ Azure Active Directory B2C (Azure AD B2C) で Google アカウントを持つユ
 
 ## <a name="add-google-identity-provider-to-a-user-flow"></a>ユーザー フローに Google ID プロバイダーを追加する 
 
+この時点では、Google ID プロバイダーは設定されていますが、サインイン ページではまだ使用できません。 Google ID プロバイダーをユーザー フローに追加するには、次のようにします。
+
+
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
 1. Google ID プロバイダーを追加するユーザー フローをクリックします。
 1. **[ソーシャル ID プロバイダー]** から、 **[Google]** を選択します。
 1. **[保存]** を選択します。
 1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
 1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
-1. **[ユーザー フローを実行します]** をクリックします
+1. **[ユーザー フローを実行します]** ボタンを選択します。
+1. サインアップまたはサインイン ページで、 **[Google]** を選択して、Google アカウントでサインインします。
+
+サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
 
 ::: zone-end
 
@@ -170,7 +178,14 @@ Google アカウントをクレーム プロバイダーとして定義するに
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
+
+1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。
+1. **[アプリケーション]** には、[前に登録した](troubleshoot-custom-policies.md#troubleshoot-the-runtime) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[今すぐ実行]** ボタンを選択します。
+1. サインアップまたはサインイン ページで、 **[Google]** を選択して、Google アカウントでサインインします。
+
+サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
 
 ::: zone-end
 

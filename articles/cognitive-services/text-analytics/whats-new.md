@@ -8,19 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 02/23/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 45b52f98f9f3670f2a68c22cfe9e27a86b2a74cc
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 629b40567ad9a1126413f5a97d1dc6264b4b10ca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220702"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736640"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能
 
 Text Analytics API は継続的に更新されます。 常に最新の開発情報を把握していただけるよう、この記事では新しいリリースと機能に関する情報を提供します。
+
+## <a name="february-2021"></a>2021 年 2 月
+
+* [固有表現認識](how-tos/text-analytics-how-to-entity-linking.md) v3.1-preview.x の PII エンドポイントの `2021-01-15` モデル バージョンでは、次のものが提供されます。 
+  * 9 つの新しい言語の拡張サポート
+  * サポートされている言語の名前付きエンティティのカテゴリの AI 品質が向上しました。
+* S0 から S4 の価格レベルは、2021 年 3 月 8 日に廃止されています。 S0 から S4 の価格レベルを使用している既存の Text Analytics リソースがある場合は、Standard (S) [価格レベル](how-tos/text-analytics-how-to-call-api.md#change-your-pricing-tier)を使用するように更新する必要があります。
+* [言語検出コンテナー](how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment)は一般提供されています。
+* API の v2.1 は廃止されています。 
 
 ## <a name="january-2021"></a>2021 年 1 月
 

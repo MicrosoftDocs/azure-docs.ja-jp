@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
 ms.openlocfilehash: 23ae69f49d37a210dd9fa1bfeedeca6c1b461e20
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94888863"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>クイック スタート:カスタム プロバイダーの作成とカスタム リソースのデプロイ

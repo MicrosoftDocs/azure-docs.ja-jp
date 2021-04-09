@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: 577340e485550e84941a33d82b58aa6ff1c933d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90983660"
 ---
 # <a name="configure-azure-firewall-in-a-virtual-wan-hub"></a>仮想 WAN ハブ内で Azure Firewall を構成する
 
-**セキュリティ保護付きハブ**は、Azure Firewall を備えた Azure Virtual WAN ハブです。 この記事では、Azure Virtual WAN ポータル ページから直接 Azure Firewall をインストールして、仮想 WAN ハブをセキュリティ保護付きハブに変換する手順について説明します。
+**セキュリティ保護付きハブ** は、Azure Firewall を備えた Azure Virtual WAN ハブです。 この記事では、Azure Virtual WAN ポータル ページから直接 Azure Firewall をインストールして、仮想 WAN ハブをセキュリティ保護付きハブに変換する手順について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 

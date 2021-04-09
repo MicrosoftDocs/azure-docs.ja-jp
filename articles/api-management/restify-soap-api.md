@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: a87f4d0748d14ab995f75279b6a192f350165d6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87843829"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>SOAP API のインポートと REST への変換
@@ -49,7 +49,7 @@ ms.locfileid: "87843829"
 
 5. Tab キーを押します。
 
-    [表示名]、[名前]、[説明] の各フィールドに、SOAP API の情報が入力されます。
+    SOAP API からの情報が次のフィールドに入力されます: [表示名]、[名前]、[説明]。
 6. API URL サフィックスを追加します。 サフィックスは、この APIM インスタンスでこの特定の API を識別する名前です。 この APIM インスタンス内で一意である必要があります。
 9. API を成果物に関連付けることで API を公開します。 この場合、"*無制限*" の成果物が使用されます。  API を公開して開発者が利用できるようにするには、その API を成果物に追加します。 API の作成時に行うことも、後で設定することもできます。
 

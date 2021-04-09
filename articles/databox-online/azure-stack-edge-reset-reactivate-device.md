@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/01/2020
+ms.date: 03/03/2020
 ms.author: alkohli
-ms.openlocfilehash: 4026bac9818b14c33c05d99caff4052adad196c3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 95fbe5dc4a934fee10c558f640bc24f261203a33
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743924"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102443529"
 ---
 # <a name="reset-and-reactivate-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスをリセットして再アクティブ化する
 
@@ -32,7 +32,7 @@ ms.locfileid: "101743924"
 
 ## <a name="reset-data-from-the-device"></a>デバイスのデータをリセットする
 
-デバイス上のデータ ディスクのデータを削除するには、ご利用のデバイスをリセットする必要があります。 
+デバイス上のデータ ディスクのデータを削除するには、ご利用のデバイスをリセットする必要があります。
 
 リセットする前に、必要に応じて、デバイス上のローカル コピーを作成します。 デバイスから Azure Storage コンテナーにデータをコピーできます。
 
@@ -41,7 +41,7 @@ ms.locfileid: "101743924"
 
 ローカル Web UI または PowerShell でデバイスをリセットできます。 PowerShell の手順については、「[デバイスをリセットする](./azure-stack-edge-connect-powershell-interface.md#reset-your-device)」を参照してください。
 
-[!INCLUDE] [デバイスのデータをリセットする](../../includes/azure-stack-edge-device-reset.md)
+[!INCLUDE [Reset data from the device](../../includes/azure-stack-edge-device-reset.md)]
 
 ## <a name="reactivate-device"></a>デバイスを再アクティブ化する
 
@@ -49,11 +49,11 @@ ms.locfileid: "101743924"
 
 既存のデバイスを再アクティブ化するには、次の手順を実行します。
 
-1. 「[新しいリソースを作成する](azure-stack-edge-gpu-deploy-prep?tabs=azure-portal#create-a-new-resource)」の手順に従って、既存のデバイスについて新しい注文を作成します。 **[配送先住所]** タブで、 **[I already have a device]\(既にデバイスを持っています\)** を選択します。
+1. 「[新しいリソースを作成する](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource)」の手順に従って、既存のデバイスについて新しい注文を作成します。 **[配送先住所]** タブで、 **[I already have a device]\(既にデバイスを持っています\)** を選択します。
 
    ![[配送先住所] に新しいデバイスを指定しない](./media/azure-stack-edge-reset-reactivate-device/create-resource-with-no-new-device.png)
 
-1. [アクティブ化キーを取得します](azure-stack-edge-gpu-deploy-prep?tabs=azure-portal#get-the-activation-key)。
+1. [アクティブ化キーを取得します](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#get-the-activation-key)。
 
 1. [デバイスに接続します](azure-stack-edge-gpu-deploy-connect.md)。
 
@@ -63,7 +63,7 @@ ms.locfileid: "101743924"
 
 1. [証明書を構成します](azure-stack-edge-gpu-deploy-configure-certificates.md)。
 
-1. [デバイスをアクティブ化します](databox-online/azure-stack-edge-gpu-deploy-activate.md)。
+1. [デバイスをアクティブ化します](azure-stack-edge-gpu-deploy-activate.md)。
 
 ## <a name="next-steps"></a>次のステップ
 

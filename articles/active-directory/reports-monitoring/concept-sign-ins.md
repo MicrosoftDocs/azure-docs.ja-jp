@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d61962667953b20f4b542874e902411bb579b9c3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93122845"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
@@ -62,14 +62,14 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 ![[Azure Active Directory] を選択する](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
 
-**[監視]** で **[サインイン]** を選択して、 [サインイン レポート](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)を開きます。
+**[監視]** で **[サインイン]** を選択して、[サインイン レポート](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)を開きます。
 
 ![スクリーンショットには、[監視] メニューから選択された [サインイン] が示されています。](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "サインイン アクティビティ")
 
 一部のサインイン レコードがポータルに表示されるまでに、最大 2 時間かかることがあります。
 
 > [!IMPORTANT]
-> サインイン レポートには、 **対話型** のサインイン、つまりユーザーがユーザー名とパスワードを使用して手動で行うサインインのみが表示されます。 サービス間の認証のような対話型ではないサインインは、サインイン レポートに表示されません。 
+> サインイン レポートには、**対話型** のサインイン、つまりユーザーがユーザー名とパスワードを使用して手動で行うサインインのみが表示されます。 サービス間の認証のような対話型ではないサインインは、サインイン レポートに表示されません。 
 
 サインイン ログには、次のものを示す既定のリスト ビューがあります。
 
@@ -177,11 +177,11 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 **条件付きアクセス** - 適用されている条件付きアクセス規則の状態です
 
-- **適用されていません** :サインイン中にポリシーがユーザーとアプリケーションに適用されていません。
+- **適用されていません**:サインイン中にポリシーがユーザーとアプリケーションに適用されていません。
 
-- **成功** :サインイン中に 1 つ以上の条件付きアクセス ポリシーがユーザーとアプリケーションに適用されました (ただし、必ずしも他の条件が適用されたとは限りません)。 
+- **成功**:サインイン中に 1 つ以上の条件付きアクセス ポリシーがユーザーとアプリケーションに適用されました (ただし、必ずしも他の条件が適用されたとは限りません)。 
 
-- **失敗** :サインインによって少なくとも 1 つの条件付きアクセス ポリシーのユーザーとアプリケーションの条件が満たされたうえで、制御の許可が満たされていないか、またはアクセスをブロックするように設定されています。
+- **失敗**:サインインによって少なくとも 1 つの条件付きアクセス ポリシーのユーザーとアプリケーションの条件が満たされたうえで、制御の許可が満たされていないか、またはアクセスをブロックするように設定されています。
 
 
 

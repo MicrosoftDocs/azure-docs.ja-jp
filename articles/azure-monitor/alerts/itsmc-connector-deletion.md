@@ -7,10 +7,10 @@ ms.author: v-jysur
 ms.date: 12/29/2020
 ms.custom: references_regions
 ms.openlocfilehash: e73510b6c61c58f6f0b2b8067a240214ee35a46c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036488"
 ---
 # <a name="deletion-of-unused-itsm-connectors"></a>未使用の ITSM コネクタの削除

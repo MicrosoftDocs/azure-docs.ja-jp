@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 01/05/2021
+ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: 異常検出, 機械学習, アルゴリズム
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 425c6cab4a4a5e1329e2d38f49c5058ec8ffc5b9
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: ad3bd1eed6e5e7efb783c4a40958e16c3ca23691
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901370"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572083"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomaly Detector API とは
 
@@ -53,13 +53,13 @@ Anomaly Detector API を呼び出す方法については、こちらの [ Noteb
 Notebook を実行するには、次の手順を完了します。
 
 1. 有効な Anomaly Detector API サブスクリプション キーと API エンドポイントを取得します。 下のセクションに新規登録方法があります。
-1. 右上隅でサインインし、[複製] をクリックします。
-1. 複製操作を完了する前に、ダイアログ ボックスの [パブリック] オプションをオフにします。そうしないと、ノートブックはサブスクリプション キーを含めてパブリックになります。
-1. **[無料のコンピューティングで実行]** をクリックします。
+1. 右上隅でサインインし、[複製] を選択します。
+1. 複製操作を完了する前に、ダイアログ ボックスの [パブリック] オプションをオフにします。そうしないと、すべてのサブスクリプション キーを含め、ノートブックはパブリックになります。
+1. **[Run on free compute]\(無料のコンピューティングで実行\)** を選択します
 1. いずれかのノートブックを選択します。
 1. 有効な Anomaly Detector API サブスクリプション キーを `subscription_key` 変数に追加します。
 1. `endpoint` 変数を自分のエンドポイントに変更します。 例: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
-1. 上部のメニュー バーで **[セル]** をクリックし、 **[すべて実行]** をクリックします。
+1. 上部のメニュー バーで **[セル]** 、 **[すべてを実行]** の順に選択します。
 
 ## <a name="workflow"></a>ワークフロー
 

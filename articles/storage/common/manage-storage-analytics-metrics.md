@@ -10,10 +10,10 @@ ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
 ms.openlocfilehash: 784929e50d25a07ae92cf388be5ac14f6fa820a6
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99221458"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics メトリックを有効にして管理する (クラシック)

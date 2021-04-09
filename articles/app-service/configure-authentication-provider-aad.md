@@ -5,35 +5,29 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 3d1e0eb90005abf69d90b46acc59e0258c9914c6
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 2805500e4a4c98ad7b8360393e7d69ad9fb704a3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630032"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563338"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Azure AD ログインを使用するように App Service または Azure Functions アプリを構成する
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-この記事では、Azure Active Directory (Azure AD) を認証プロバイダーとして使用するように Azure App Service または Azure Functions を構成する方法について説明します。
-
-> [!NOTE]
-> 簡単設定のフローでは、AAD V1 アプリケーション登録を設定します。 [Azure Active Directory v2.0](../active-directory/develop/v2-overview.md) ([MSAL](../active-directory/develop/msal-overview.md) を含む) を使用する場合は、[詳細構成の手順](#advanced)に従ってください。
-
-アプリと認証を設定するときは、次のベスト プラクティスに従ってください。
-
-- App Service アプリごとに独自のアクセス許可と同意を付与します。
-- それぞれの App Service アプリを独自の登録で構成します。
-- デプロイ スロットごとに個別のアプリ登録を使用することで、環境間でアクセス許可を共有することを回避します。 新しいコードをテストするとき、このプラクティスは、問題が運用アプリに影響を与えることを回避する上で役立つことがあります。
-
-> [!NOTE]
-> この機能は現在のところ、Azure Functions の Linux Consumption プランでは利用できません
+この記事では、アプリで Azure Active Directory (Azure AD) を認証プロバイダーとして使用してユーザーがサインインするように、Azure App Service または Azure Functions の認証を構成する方法について説明します。
 
 ## <a name="configure-with-express-settings"></a><a name="express"> </a>簡単設定を構成する
 
+**[簡易]** オプションでは、認証を簡単にするように設計されていて、必要なのは数回のクリックのみです。
+
+簡易設定では、Azure Active Directory V1 エンドポイントを使用するアプリケーション登録が自動的に作成されます。 [Azure Active Directory v2.0](../active-directory/develop/v2-overview.md) ([MSAL](../active-directory/develop/msal-overview.md) を含む) を使用するには、[詳細構成の手順](#advanced)に従ってください。
+
 > [!NOTE]
 > **[Express]\(簡易\)** オプションは、政府機関向けクラウドでは使用できません。
+
+**[簡易]** オプションを使用して認証を有効にするには、次の手順に従います。
 
 1. [Azure portal] で、 **[App Services]** を探して選択してから、アプリを選択します。
 2. 左側のナビゲーションから、 **[認証/承認]**  >  **[On]\(オン\)** を選択します。
@@ -58,24 +52,21 @@ Azure Storage と Microsoft Graph にアクセスする Web アプリの Azure A
 
 ## <a name="configure-with-advanced-settings"></a><a name="advanced"> </a>詳細設定を構成する
 
-異なる Azure AD テナントからアプリの登録を使用する場合、アプリの設定を手動で構成できます。 このカスタム構成を完了するには、次の手順を実行します。
-
-1. Azure AD で登録を作成します。
-2. App Service に登録の詳細を指定します。
+Azure AD がアプリの認証プロバイダーとして機能するためには、アプリを登録する必要があります。 簡易オプションでは、これが自動的に行われます。 [詳細] オプションを使用すると、アプリを手動で登録できるため、登録をカスタマイズして、登録の詳細を App Service に手動で入力することができます。 これは、たとえば App Service が含まれているものとは異なる Azure AD テナントからアプリの登録を使用する場合に便利です。
 
 ### <a name="create-an-app-registration-in-azure-ad-for-your-app-service-app"></a><a name="register"> </a>App Service アプリに対するアプリ登録を Azure AD で作成する
 
-App Service アプリを構成するとき、次の情報が必要になります。
+まず、アプリの登録を作成します。 この場合は、後で App Service アプリで認証を構成するときに必要になる次の情報を収集します。
 
 - クライアント ID
 - テナント ID
 - クライアント シークレット (省略可能)
 - アプリケーション ID URI
 
-次の手順に従います。
+アプリを登録するには、次の手順に従います。
 
 1. [Azure portal] にサインインし、 **[App Services]** を探して選択してから、アプリを選択します。 アプリの **URL** をメモしておきます。 Azure Active Directory アプリの登録を構成するときにそれを使用します。
-1. **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[新規登録]** の順に選択します。
+1. ポータル メニューから **[Azure Active Directory]** を選択し、 **[アプリの登録]** タブにアクセスして、 **[新規登録]** を選択します。
 1. **[アプリケーションの登録]** ページで、アプリの登録の **[名前]** を入力します。
 1. **[リダイレクト URI]** で、 **[Web]** を選択し、「`<app-url>/.auth/login/aad/callback`」と入力します。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/aad/callback` 」のように入力します。
 1. **[登録]** を選択します。
@@ -113,9 +104,13 @@ App Service アプリを構成するとき、次の情報が必要になりま�
 
 これで、App Service アプリで認証に Azure Active Directory を使用する準備ができました。
 
-## <a name="configure-a-native-client-application"></a>ネイティブ クライアント アプリケーションを構成する
+## <a name="configure-client-apps-to-access-your-app-service"></a>App Service にアクセスするようにクライアント アプリを構成する
 
-**Active Directory 認証ライブラリ** などのクライアント ライブラリを使用してアプリでホストされている Web API への認証を許可するように、ネイティブ クライアントを登録できます。
+前のセクションでは、ユーザーを認証するために App Service または Azure 関数を登録しました。 このセクションでは、ネイティブ クライアントまたはデーモン アプリを登録して、ユーザーまたはユーザーの代わりに App Service によって公開される API へのアクセスを要求できるようにする方法について説明します。 ユーザーを認証するだけの場合は、このセクションの手順を完了する必要はありません。
+
+### <a name="native-client-application"></a>ネイティブ クライアント アプリケーション
+
+サインインしているユーザーの代わりに App Service アプリの API へのアクセスを要求するようにネイティブ クライアントを登録できます。
 
 1. [Azure portal] で、 **[Active Directory]** 、 **[アプリの登録]** 、 **[新規登録]** の順に選択します。
 1. **[アプリケーションの登録]** ページで、アプリの登録の **[名前]** を入力します。
@@ -129,9 +124,9 @@ App Service アプリを構成するとき、次の情報が必要になりま�
 1. App Service アプリ用に以前に作成したアプリの登録を選択します。 アプリの登録が表示されない場合は、「[App Service アプリに対するアプリ登録を Azure AD で作成する](#register)」で **user_impersonation** スコープを追加したことを確認します。
 1. **[委任されたアクセス許可]** で、 **[user_impersonation]** を選択し、 **[アクセス許可の追加]** を選択します。
 
-これで、ユーザーに代わって App Service アプリにアクセスできるネイティブ クライアント アプリケーションが構成されました。
+これで、ユーザーに代わって App Service アプリにアクセスを要求できるネイティブ クライアント アプリケーションが構成されました。
 
-## <a name="configure-a-daemon-client-application-for-service-to-service-calls"></a>サービス間の呼び出し用にデーモン クライアント アプリケーションを構成する
+### <a name="daemon-client-application-service-to-service-calls"></a>デーモン クライアント アプリケーション (サービス間の呼び出し)
 
 アプリケーションは、(ユーザーの代わりではなく) それ自体の代わりに App Service または関数アプリでホストされる Web API を呼び出すトークンを取得できます。 このシナリオは、ログイン ユーザーなしでタスクを実行する非対話型デーモン アプリケーションに役立ちます。 これには標準の OAuth 2.0 [クライアント資格情報](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)の付与が使用されます。
 
@@ -155,6 +150,14 @@ App Service アプリを構成するとき、次の情報が必要になりま�
 1. これで、ターゲット App Service または関数アプリのコード内で、必要なロールがトークンに存在しているか検証できます (これは App Service 認証/承認では実行されません)。 詳しくは、「[ユーザー要求へのアクセス](app-service-authentication-how-to.md#access-user-claims)」をご覧ください。
 
 これで、独自の ID を使用して App Service アプリにアクセスできるデーモン クライアント アプリケーションが構成されました。
+
+## <a name="best-practices"></a>ベスト プラクティス
+
+認証の設定に使用する構成に関係なく、次のベスト プラクティスによってテナントとアプリケーションのセキュリティが強化されます。
+
+- App Service アプリごとに独自のアクセス許可と同意を付与します。
+- それぞれの App Service アプリを独自の登録で構成します。
+- デプロイ スロットごとに個別のアプリ登録を使用することで、環境間でアクセス許可を共有することを回避します。 新しいコードをテストするとき、このプラクティスは、問題が運用アプリに影響を与えることを回避する上で役立つことがあります。
 
 ## <a name="next-steps"></a><a name="related-content"> </a>次の手順
 

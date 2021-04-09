@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 89f234ece2f7437e4a9d4092334e3dd3690e288d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: a7949324cd4ad0459aa5ba111037b2f580da9cf8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258101"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103601714"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>シングル サインオンのデプロイを計画する
 
@@ -291,17 +291,12 @@ SaaS アプリのセキュリティのさまざまな側面を確認する定期
 
 - [Microsoft アプリケーションへのサインインに関する問題](./application-sign-in-problem-first-party-microsoft.md)
 
-#### <a name="sso-issues-for-applications-listed-in-the-azure-application-gallery"></a>Azure アプリケーション ギャラリーのアプリケーションの SSO の問題
+#### <a name="sso-issues-for-applications"></a>アプリケーションの SSO の問題
 
-- [Azure アプリケーション ギャラリーのアプリケーションのパスワード SSO に関する問題](./troubleshoot-password-based-sso.md) 
+- [アプリケーションのパスワード SSO に関する問題](./troubleshoot-password-based-sso.md) 
 
-- [Azure アプリケーション ギャラリーのアプリケーションのフェデレーション SSO に関する問題](./application-sign-in-problem-federated-sso-gallery.md)   
+- [SAML ベースのシングル サインオンで構成されたアプリへのサインインに関する問題](/troubleshoot/azure/active-directory/troubleshoot-sign-in-saml-based-apps)   
 
-#### <a name="sso-issues-for-applications-not-listed-in-the-azure-application-gallery"></a>Azure アプリケーション ギャラリー以外のアプリケーションの SSO の問題
-
-- [Azure アプリケーション ギャラリー以外のアプリケーションのパスワード SSO に関する問題](./troubleshoot-password-based-sso.md) 
-
-- [Azure アプリケーション ギャラリー以外のアプリケーションのフェデレーション SSO に関する問題](./application-sign-in-problem-federated-sso-gallery.md)
 
 ## <a name="next-steps"></a>次のステップ
 

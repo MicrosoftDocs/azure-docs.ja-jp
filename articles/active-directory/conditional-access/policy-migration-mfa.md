@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5cc99241f5fa7c09c69db13dcb3f6c3aaa75e376
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87027395"
 ---
 # <a name="migrate-a-classic-policy-in-the-azure-portal"></a>Azure portal でクラシック ポリシーを移行する
 
-この記事では、クラウド アプリの**多要素認証**が必要なクラシック ポリシーを移行する方法を示します。 前提条件ではありませんが、クラシック ポリシーの移行を開始する前に「[Azure Portal でクラシック ポリシーを移行する](policy-migration.md)」を読むことをお勧めします。
+この記事では、クラウド アプリの **多要素認証** が必要なクラシック ポリシーを移行する方法を示します。 前提条件ではありませんが、クラシック ポリシーの移行を開始する前に「[Azure Portal でクラシック ポリシーを移行する](policy-migration.md)」を読むことをお勧めします。
 
 ![Salesforce アプリの MFA を要求とするクラシック ポリシーの詳細](./media/policy-migration/33.png)
 

@@ -8,10 +8,10 @@ ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
 ms.openlocfilehash: d58341979b0bbe0699a5ca293b20394c43cde1d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88962810"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure App Service 診断の概要
@@ -28,7 +28,7 @@ App Service 診断にアクセスするには、[Azure portal](https://portal.az
 
 Azure Functions の場合、関数アプリに移動し、上部ナビゲーションにある **[プラットフォーム機能]** をクリックし、 **[リソース管理]** セクションの **[問題の診断と解決]** を選択します。
 
-App Service 診断のホームページ上で、各ホームページ タイルにあるキーワードを使用して、アプリでの問題を最もよく表しているカテゴリを選択できます。 また、このページでは、Windows アプリ用の**診断ツール**を見つけることができます。 「[Diagnostic tools (only for Windows app) (診断ツール (Windows アプリのみ))](#diagnostic-tools-only-for-windows-app)」をご覧ください。
+App Service 診断のホームページ上で、各ホームページ タイルにあるキーワードを使用して、アプリでの問題を最もよく表しているカテゴリを選択できます。 また、このページでは、Windows アプリ用の **診断ツール** を見つけることができます。 「[Diagnostic tools (only for Windows app) (診断ツール (Windows アプリのみ))](#diagnostic-tools-only-for-windows-app)」をご覧ください。
 
 ![ホームページ](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
 

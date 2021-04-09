@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/19/2019
 ms.openlocfilehash: 68fa089713c3dd89b4699011ded7d667bca6f73f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102178077"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>チュートリアル:自動フェールオーバー グループに Azure SQL Database を追加する
@@ -163,7 +163,7 @@ ms.locfileid: "102178077"
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 単一データベースとエラスティック プールをホストする Azure SQL Database 内のサーバーを作成します。 |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Azure SQL Database 内のサーバーのファイアウォール規則を作成します。 |
@@ -286,7 +286,7 @@ PowerShell を使用してフェールオーバーをテストします。
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Azure SQL Database のフェールオーバー グループを取得または一覧表示します。 |
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Azure SQL Databese のフェールオーバー グループのフェールオーバーを実行します。 |
@@ -355,7 +355,7 @@ PowerShell を使用してリソース グループを削除します。
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループを削除します |
 
@@ -388,7 +388,7 @@ Azure CLI を使用してリソース グループを削除します。
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Azure SQL Database 内の単一データベースとエラスティック プールをホストするサーバーを作成します。 |
@@ -407,7 +407,7 @@ Azure CLI を使用してリソース グループを削除します。
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [az account set](/cli/azure/account#az-account-set) | サブスクリプションを現在のアクティブなサブスクリプションとして設定します。 |
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |

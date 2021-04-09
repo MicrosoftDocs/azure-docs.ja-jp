@@ -11,10 +11,10 @@ ms.date: 02/15/2021
 ms.author: rolyon
 ms.custom: contperf-fy21q3-portal
 ms.openlocfilehash: e25bbe4e1a96e4efaaa13732aea571d26d4b006e
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100555275"
 ---
 # <a name="assign-azure-roles-using-the-azure-portal"></a>Azure portal を使用して Azure ロールを割り当てる

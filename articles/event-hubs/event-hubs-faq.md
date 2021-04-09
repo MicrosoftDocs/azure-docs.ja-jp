@@ -4,10 +4,10 @@ description: この記事では、Azure Event Hubs に関するよく寄せら�
 ms.topic: article
 ms.date: 01/20/2021
 ms.openlocfilehash: e6fd4814e771d03827e51f1cd5ee182c9e432cc5
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98696110"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問

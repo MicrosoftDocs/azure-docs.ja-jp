@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/02/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9757a322922524f181b1fa3f48850efbb7a18dd
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 43f926f400bf8ddd522bbb5f62509519fa09903d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546779"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101096599"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>チュートリアル:Windows VM 上でユーザー割り当てマネージド ID を使用して Azure Resource Manager にアクセスする
 
@@ -45,15 +45,15 @@ ms.locfileid: "96546779"
 
 - [Windows 仮想マシンを作成する](../../virtual-machines/windows/quick-create-portal.md)
 
-- このチュートリアルの必要なリソース作成およびロール管理のステップを実行するために、お使いのアカウントには、適切な範囲 (サブスクリプションまたはリソース グループ) を対象とする "所有者" アクセス許可が必要となります。 ロールの割り当てに関するサポートが必要な場合は、「[ロールベースのアクセス制御を使用して Azure サブスクリプション リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+- このチュートリアルの必要なリソース作成およびロール管理のステップを実行するために、お使いのアカウントには、適切な範囲 (サブスクリプションまたはリソース グループ) を対象とする "所有者" アクセス許可が必要となります。 ロールの割り当てに関するサポートが必要な場合は、[Azure ロールの割り当てによる Azure サブスクリプション リソースへのアクセスの管理](../../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
 
 - サンプル スクリプトを実行するには、次の 2 つのオプションがあります。
-    - [Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。これは、コード ブロックの右上隅にある **[Try It]\(試してみる\)** ボタンを使用して開くことができます。
+    - [Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。これは、コード ブロックの右上隅にある **[使ってみる]** ボタンを使用して開くことができます。
     - Azure PowerShell を使用して、スクリプトをローカルで実行します。次のセクションの説明を参照してください。
 
-### <a name="configure-azure-powershell-locally"></a>Azure PowerShell をローカルで構成する
+### <a name="configure-azure-powershell-locally"></a>ローカルで Azure PowerShell を構成する
 
-この記事では、(Cloud Shell ではなく) Azure PowerShell をローカルで使用して、次の手順を実行します。
+この記事で、(Cloud Shell ではなく) ローカルで Azure PowerShell を使用するには、次の手順を実行します。
 
 1. [最新バージョンの Azure PowerShell](/powershell/azure/install-az-ps) をインストールします (まだインストールしていない場合)。
 
@@ -69,7 +69,7 @@ ms.locfileid: "96546779"
     Install-Module -Name PowerShellGet -AllowPrerelease
     ```
 
-    次の手順に備えて、このコマンドを実行した後に現在の PowerShell セッションから `Exit` することが必要になる場合があります。
+    次の手順に備えて、このコマンドを実行した後に現在の PowerShell セッションから `Exit` する必要がある場合があります。
 
 1. `Az.ManagedServiceIdentity` モジュールのプレリリース バージョンをインストールして、この記事のユーザー割り当てマネージド ID 操作を実行します。
 

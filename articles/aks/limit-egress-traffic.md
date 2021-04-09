@@ -4,14 +4,14 @@ description: Azure Kubernetes Service (AKS) でエグレス トラフィック�
 services: container-service
 ms.topic: article
 ms.author: jpalma
-ms.date: 11/09/2020
+ms.date: 01/12/2021
 author: palma21
-ms.openlocfilehash: c6160d36240b59c60fafa955b916fb6167c2648e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 9e65e2736578ce04dfa79d5a7827e190d47fb312
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685756"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103573831"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -28,13 +28,13 @@ AKS の送信依存関係は、ほぼすべて、背後に静的アドレスが�
 既定で、AKS クラスターは、送信 (エグレス) インターネット アクセスが無制限です。 このレベルのネットワーク アクセスでは、実行しているノードやサービスから必要に応じて外部リソースにアクセスできます。 エグレス トラフィックを制限する場合は、正常なクラスター メンテナンス タスクを維持するために、アクセスできるポートとアドレスの数を制限する必要があります。 送信アドレスをセキュリティで保護する最も簡単なソリューションは、ドメイン名に基づいて送信トラフィックを制御できるファイアウォール デバイスを使用することです。 たとえば、Azure Firewall では、送信先の FQDN に基づいて HTTP と HTTPS の送信トラフィックを制限できます。 また、適切なファイアウォール規則とセキュリティ規則を構成し、これらの必要なポートとアドレスを許可することができます。
 
 > [!IMPORTANT]
-> このドキュメントでは、AKS サブネットから出て行くトラフィックをロックダウンする方法についてのみ説明します。 既定では、AKS にはイングレス要件はありません。  ネットワーク セキュリティ グループ (NSG) とファイアウォールを使用して **内部サブネット トラフィック** をブロックすることは、サポートされていません。 クラスター内のトラフィックを制御およびブロックするには、[**_ネットワーク ポリシー_* _][network-policy]を使用します。
+> このドキュメントでは、AKS サブネットから出て行くトラフィックをロックダウンする方法についてのみ説明します。 既定では、AKS にはイングレス要件はありません。  ネットワーク セキュリティ グループ (NSG) とファイアウォールを使用して **内部サブネット トラフィック** をブロックすることは、サポートされていません。 クラスター内のトラフィックを制御およびブロックするには、 "[**_ネットワーク ポリシー_**][network-policy]" を使用します。
 
 ## <a name="required-outbound-network-rules-and-fqdns-for-aks-clusters"></a>AKS クラスターに必要な送信ネットワーク規則と FQDN
 
 AKS クラスターには、次のネットワーク規則と FQDN およびアプリケーションの規則が必要です。Azure Firewall 以外のソリューションを構成する場合は、これらの規則を使用できます。
 
-_ IP アドレスの依存関係が HTTP/S 以外のトラフィック (TCP トラフィックと UDP トラフィックの両方) に対応しています
+* IP アドレスの依存関係が HTTP/S 以外のトラフィック (TCP トラフィックと UDP トラフィックの両方) に対応しています
 * FQDN HTTP/HTTPS エンドポイントは、ファイアウォール デバイスに配置することができます。
 * HTTP と HTTPS のワイルドカード エンドポイントは、いくつかの修飾子に基づき、AKS クラスターによって異なる場合がある依存関係です。
 * AKS では、アドミッション コントローラーを使用して、kube-system と gatekeeper-system の下にあるすべてのデプロイに対し、FQDN が環境変数として挿入されます。これにより、ノードと API サーバー間のすべてのシステム通信において、API サーバーの IP ではなく、API サーバーの FQDN が使用されるようになります。 
@@ -128,7 +128,7 @@ _ IP アドレスの依存関係が HTTP/S 以外のトラフィック (TCP ト�
 
 | 送信先 FQDN                                                               | Port          | 用途      |
 |--------------------------------------------------------------------------------|---------------|----------|
-| **`security.ubuntu.com`、`azure.archive.ubuntu.com`、`changelogs.ubuntu.com`** | **`HTTP:80`** | このアドレスを使用すると、Linux クラスター ノードから必要なセキュリティ パッチと更新プログラムをダウンロードできます。 |
+| **`security.ubuntu.com`, `azure.archive.ubuntu.com`, `changelogs.ubuntu.com`** | **`HTTP:80`** | このアドレスを使用すると、Linux クラスター ノードから必要なセキュリティ パッチと更新プログラムをダウンロードできます。 |
 
 これらの FQDN をブロックして許可しない場合、[ノード イメージのアップグレード](node-image-upgrade.md)または[クラスターのアップグレード](upgrade-cluster.md)を行うと、ノードは OS の更新プログラムのみを受け取ります。
 
@@ -214,6 +214,24 @@ Azure Policy が有効になっている AKS クラスターの場合、次の F
 | **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | このアドレスは、Azure Policy の適切な操作のために使用されます。  |
 | **`raw.githubusercontent.com`**               | **`HTTPS:443`** | このアドレスは、Azure Policy の正しい動作のために組み込みポリシーを GitHub から取得するために使用されます。 |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | テレメトリ データを Application Insights エンドポイントに送信するAzure Policy アドオン。 |
+
+#### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Azure China 21Vianet に必要な FQDN とアプリケーションの規則 
+
+Azure Policy が有効になっている AKS クラスターの場合、次の FQDN/アプリケーション規則が必要です。
+
+| FQDN                                          | Port      | 用途      |
+|-----------------------------------------------|-----------|----------|
+| **`data.policy.azure.cn`** | **`HTTPS:443`** | このアドレスは、Kubernetes ポリシーをプルし、クラスターのコンプライアンス状態をポリシー サービスにレポートするために使用されます。 |
+| **`store.policy.azure.cn`** | **`HTTPS:443`** | このアドレスは、組み込みポリシーの Gatekeeper アーティファクトをプルするために使用されます。 |
+
+#### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure US Government に必要な FQDN とアプリケーションの規則
+
+Azure Policy が有効になっている AKS クラスターの場合、次の FQDN/アプリケーション規則が必要です。
+
+| FQDN                                          | Port      | 用途      |
+|-----------------------------------------------|-----------|----------|
+| **`data.policy.azure.us`** | **`HTTPS:443`** | このアドレスは、Kubernetes ポリシーをプルし、クラスターのコンプライアンス状態をポリシー サービスにレポートするために使用されます。 |
+| **`store.policy.azure.us`** | **`HTTPS:443`** | このアドレスは、組み込みポリシーの Gatekeeper アーティファクトをプルするために使用されます。 |
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Azure Firewall を使用してエグレス トラフィックを制限する
 
@@ -407,7 +425,7 @@ az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NA
 
 ### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>既存の仮想ネットワーク内にプロビジョニングできるアクセス権を持つサービス プリンシパルを作成する
 
-サービス プリンシパルは、クラスター リソースを作成するために AKS によって使用されます。 作成時に渡されるサービス プリンシパルは、AKS によって使用されるストレージ リソース、IP、ロード バランサーなどの基になる AKS リソースを作成するために使用されます (代わりに[マネージド ID](use-managed-identity.md) を使用することもできます)。 以下の適切なアクセス許可が付与されていない場合、AKS クラスターをプロビジョニングすることはできません。
+クラスター ID (マネージド ID またはサービス プリンシパル) は、クラスター リソースを作成するために AKS によって使用されます。 作成時に渡されるサービス プリンシパルは、AKS によって使用されるストレージ リソース、IP、ロード バランサーなどの基になる AKS リソースを作成するために使用されます (代わりに[マネージド ID](use-managed-identity.md) を使用することもできます)。 以下の適切なアクセス許可が付与されていない場合、AKS クラスターをプロビジョニングすることはできません。
 
 ```azurecli
 # Create SP and Assign Permission to Virtual Network

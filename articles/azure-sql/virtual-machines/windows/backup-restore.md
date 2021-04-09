@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: 2fcba81bcd20db321d791fcda589f40fb0699702
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97733075"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM における SQL Server のバックアップと復元

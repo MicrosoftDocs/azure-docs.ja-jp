@@ -1,5 +1,5 @@
 ---
-title: App Service 環境の使用
+title: App Service Environment の使用
 description: App Service Environment を使用して、独立したアプリケーションをホストする方法について説明します。
 author: ccompy
 ms.assetid: 377fce0b-7dea-474a-b64b-7fbe78380554
@@ -8,10 +8,10 @@ ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: d4cd673b5029d8379a699becd7339a265c787390
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100586400"
 ---
 # <a name="using-an-app-service-environment"></a>App Service Environment の使用
@@ -48,7 +48,7 @@ ASE 内にアプリを作成するには:
     ![Isolated v2 価格レベル][2]
 
     > [!NOTE]
-    > 同じ App Service プランに Linux アプリと Windows アプリを含めることはできませんが、それらを同じ App Service 環境に含めることはできます。
+    > 同じ App Service プランに Linux アプリと Windows アプリを含めることはできませんが、それらを同じ App Service Environment に含めることはできます。
     >
 
 1. **Next:監視** を選択します。お使いのアプリで App Insights を有効にする場合は、作成フロー中のここで、それを行うことができます。 
@@ -59,7 +59,7 @@ ASE 内にアプリを作成するには:
 
 ## <a name="how-scale-works"></a>スケールのしくみ
 
-すべての App Service アプリは、App Service プランで実行されます。 App Service 環境に App Service プランが存在し、App Service プランにアプリが存在します。 アプリをスケールするときは、App Service プラン、および同じプラン内のすべてのアプリをスケールすることになります。
+すべての App Service アプリは、App Service プランで実行されます。 App Service Environment に App Service プランが存在し、App Service プランにアプリが存在します。 アプリをスケールするときは、App Service プラン、および同じプラン内のすべてのアプリをスケールすることになります。
 
 App Service プランをスケールすると、必要なインフラストラクチャが自動的に追加されます。 インフラストラクチャが追加されるまでの間、スケール操作に時間差が生じます。 App Service プランをスケーリングするときには、同じ OS とサイズに関して要求されたその他のスケール操作はすべて、最初の操作が完了するまで待機することになります。 ブロックしているスケール操作が完了すると、キューにあるすべての要求が同時に処理されます。 1 つのサイズと OS に関するスケール操作では、サイズと OS の他の組み合わせのスケーリングはブロックされません。 たとえば Windows I2v2 App Service プランをスケーリングした場合は、それが完了するまで、その ASE で Windows I2v2 をスケーリングするその他の要求はすべてキューに入れられます。   
 

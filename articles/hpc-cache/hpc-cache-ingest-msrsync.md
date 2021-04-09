@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: v-erkel
 ms.openlocfilehash: 323ecd6a2dd001c3c8df1b2ec15f0ae8402ec70c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87092407"
 ---
 # <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC Cache のデータ取り込み - msrsync を使用した方法
@@ -19,7 +19,7 @@ ms.locfileid: "87092407"
 
 Azure HPC Cache の Blob Storage にデータを移動する方法について詳しくは、「[Azure Blob Storage にデータを移動する](hpc-cache-ingest.md)」を参照してください。
 
-``msrsync`` ツールを使用すると、Azure HPC Cache のバックエンド ストレージ ターゲットにデータを移動することができます。 このツールは、複数の ``rsync`` プロセスを並列実行して帯域幅の使用を最適化することを目的に設計されています。 GitHub (https://github.com/jbd/msrsync ) で入手できます。
+``msrsync`` ツールを使用すると、Azure HPC Cache のバックエンド ストレージ ターゲットにデータを移動することができます。 このツールは、複数の ``rsync`` プロセスを並列実行して帯域幅の使用を最適化することを目的に設計されています。 GitHub (https://github.com/jbd/msrsync) で入手できます。
 
 ``msrsync`` では、ソース ディレクトリを別々の "バケット" に分割したうえで、個々の ``rsync`` プロセスを各バケットに対して実行します。
 

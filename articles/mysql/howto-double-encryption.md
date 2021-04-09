@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.openlocfilehash: 3f9c22a690859b459b6bb748c3b1001c4aa7660d
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93241754"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-mysql"></a>Azure Database for MySQL のインフラストラクチャの二重暗号化
@@ -27,7 +27,7 @@ Azure Database for MySQL のインフラストラクチャの二重暗号化を�
 
 1. ポータルの左上隅にある **[リソースの作成]** (+) を選択します。
 
-2. **[データベース]**  >  **[Azure Database for MySQL]** の順に選択します。 検索ボックスに「 **MySQL** 」と入力してサービスを検索することもできます。
+2. **[データベース]**  >  **[Azure Database for MySQL]** の順に選択します。 検索ボックスに「**MySQL**」と入力してサービスを検索することもできます。
 
    :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png" alt-text="Azure Database for MySQL オプション":::
 
@@ -52,7 +52,7 @@ Azure Database for MySQL のインフラストラクチャの二重暗号化を�
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
-次の例では、サーバー管理者ログイン `myadmin` を使用して、リソース グループ `myresourcegroup` の `mydemoserver` という名前の MySQL 5.7 サーバーを米国西部に作成します。 これは、 **2 つの仮想コア** を備えた **Gen 4** **汎用** サーバーです。 これにより、作成されたサーバーのインフラストラクチャの二重暗号化も有効になります。 `<server_admin_password>` は独自の値に置き換えます。
+次の例では、サーバー管理者ログイン `myadmin` を使用して、リソース グループ `myresourcegroup` の `mydemoserver` という名前の MySQL 5.7 サーバーを米国西部に作成します。 これは、**2 つの仮想コア** を備えた **Gen 4** **汎用** サーバーです。 これにより、作成されたサーバーのインフラストラクチャの二重暗号化も有効になります。 `<server_admin_password>` は独自の値に置き換えます。
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7 --infrastructure-encryption <Enabled/Disabled>

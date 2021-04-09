@@ -6,10 +6,10 @@ ms.topic: troubleshooting
 ms.date: 5/20/2019
 ms.author: pepogors
 ms.openlocfilehash: c30eedb6782e4172d677f16e27441f28c78cdd89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75614351"
 ---
 # <a name="use-visual-studio-to-create-and-publish-net-core-applications-targeting-a-remote-linux-service-fabric-cluster"></a>Visual Studio を使用してリモート Linux Service Fabric クラスターをターゲットとする .Net Core アプリケーションを作成および発行する
@@ -20,20 +20,20 @@ Visual Studio ツールを使用して、Linux Service Fabric クラスターを
 >
 
 ## <a name="create-a-service-fabric-application-targeting-net-core"></a>.Net Core をターゲットとした Service Fabric アプリケーションの作成
-1. Visual Studio を**管理者**として起動します。
+1. Visual Studio を **管理者** として起動します。
 2. **[ファイル] -> [新規] -> [プロジェクト]** の順に選択して、プロジェクトを作成します。
 3. **[新しいプロジェクト]** ダイアログで、 **[クラウド] -> [Service Fabric アプリケーション]** の順に選択します。
 ![create-application]
 4. アプリケーションに名前を付けて、 **[OK]** をクリックします。
-5. **[新しい Service Fabric サービス**] ページで、 **[.Net Core] セクション**の下で作成するサービスの種類を選択します。
+5. **[新しい Service Fabric サービス**] ページで、 **[.Net Core] セクション** の下で作成するサービスの種類を選択します。
 ![create-service]
 
 ## <a name="deploy-to-a-remote-linux-cluster"></a>リモートの Linux クラスターへのデプロイ
 1. ソリューション エクスプローラーで、アプリケーションを右クリックし、 **[ビルド]** を選択します。
 ![build-application]
-2. アプリケーションのビルド プロセスが完了したら、サービスを右クリックし、**csproj ファイル**の編集を選択します。
+2. アプリケーションのビルド プロセスが完了したら、サービスを右クリックし、**csproj ファイル** の編集を選択します。
 ![edit-csproj]
-3. サービスが**アクター プロジェクト タイプ**の場合は、UpdateServiceFabricManifestEnabled プロパティを True から **False** に編集します。 アプリケーションにアクター サービスがない場合は、手順 4 に進みます。
+3. サービスが **アクター プロジェクト タイプ** の場合は、UpdateServiceFabricManifestEnabled プロパティを True から **False** に編集します。 アプリケーションにアクター サービスがない場合は、手順 4 に進みます。
 ```xml
     <UpdateServiceFabricManifestEnabled>False</UpdateServiceFabricManifestEnabled>
 ```

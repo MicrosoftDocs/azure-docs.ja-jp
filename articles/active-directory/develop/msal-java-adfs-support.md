@@ -14,10 +14,10 @@ ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-java
 ms.openlocfilehash: 82e3f3b32c6d96b83ec1d0402f344e7d65788c06
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98063707"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-java"></a>MSAL for Java での Active Directory フェデレーション サービスのサポート

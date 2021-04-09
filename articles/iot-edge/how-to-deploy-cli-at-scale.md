@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 4ecb1c3dc0e72523b19e3183e17306774b3ce164
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7b12b6c1cdc85eaba531f34b23aa74bee6b38f7b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370378"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103201121"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Azure CLI を使用した大規模な IoT Edge モジュールの展開と監視
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure コマンドライン インターフェイスを使用して **IoT Edge の自動展開** を作成して、多数のデバイスの進行中のデプロイを一度に管理します。 IoT Edge の自動展開は、IoT Hub の[自動デバイス管理](../iot-hub/iot-hub-automatic-device-management.md)機能の一部です。 デプロイは、複数のモジュールを複数のデバイスにデプロイし、モジュールの状態と正常性を追跡し、必要に応じて変更できる動的プロセスです。
 

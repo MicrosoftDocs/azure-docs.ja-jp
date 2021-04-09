@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cherylmc
 ms.openlocfilehash: 1305ca603aef63dafcc7b055d55e3f0fe281f4fc
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91819678"
 ---
 # <a name="create-an-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN プロトコル接続用の Active Directory (AD) テナントを作成する

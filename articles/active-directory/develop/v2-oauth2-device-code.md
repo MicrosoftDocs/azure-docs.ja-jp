@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 8c757f3e067aeac5d8145ca47b2eac145daba574
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88272452"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 デバイス許可付与フロー
@@ -28,7 +28,7 @@ Microsoft ID プラットフォームでは、ユーザーがスマート TV、I
 
 ## <a name="protocol-diagram"></a>プロトコルのダイアグラム
 
-全体的なデバイス コード フローは、次のダイアグラムのようになります。 それぞれの手順については、この記事で後述します。
+全体的なデバイス コード フローは、次の図のようになります。 それぞれの手順については、この記事で後述します。
 
 ![デバイス コード フロー](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
 
@@ -54,12 +54,12 @@ scope=user.read%20openid%20profile
 | パラメーター | 条件 | 説明 |
 | --- | --- | --- |
 | `tenant` | 必須 | /common、/consumers、または /organizations が可能です。  GUID またはフレンドリ名の形式でアクセス許可を要求するディレクトリ テナントを指定することもできます。  |
-| `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。 |
+| `client_id` | 必須 | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた **アプリケーション (クライアント) ID**。 |
 | `scope` | 必須 | ユーザーに同意を求める [スコープ](v2-permissions-and-consent.md) の、スペースで区切られたリスト。  |
 
 ### <a name="device-authorization-response"></a>デバイス承認応答
 
-正常な応答は、ユーザーがサインインするために必要な情報が含まれている JSON オブジェクトです。
+成功した応答は、ユーザーがサインインできるようにするために必要な情報が含まれた JSON オブジェクトです。
 
 | パラメーター | Format | 説明 |
 | ---              | --- | --- |
@@ -68,7 +68,7 @@ scope=user.read%20openid%20profile
 |`verification_uri`| URI | ユーザーがサインインするために `user_code` を使用してアクセスする必要がある URI。 |
 |`expires_in`      | INT | `device_code` と `user_code` の有効期限か切れるまでの秒数。 |
 |`interval`        | INT | ポーリング要求の間にクライアントが待機する秒数。 |
-| `message`        | String | ユーザーのための指示が含まれている、人間が判読可能な文字列。 これは、`?mkt=xx-XX` という形式で**クエリ パラメーター**を要求に含め、適切な言語カルチャ コードを入力することで、ローカライズできます。 |
+| `message`        | String | ユーザーのための指示が含まれている、人間が判読可能な文字列。 これは、`?mkt=xx-XX` という形式で **クエリ パラメーター** を要求に含め、適切な言語カルチャ コードを入力することで、ローカライズできます。 |
 
 > [!NOTE]
 > `verification_uri_complete` 応答フィールドは現時点では含まれておらず、サポートされていません。  このことに触れる理由は、[標準](https://tools.ietf.org/html/rfc8628)を読むと、デバイス コード フロー標準のオプションの部分として `verification_uri_complete` が示されているためです。

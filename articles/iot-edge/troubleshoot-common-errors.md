@@ -4,21 +4,23 @@ description: この記事では、IoT Edge ソリューションをデプロイ�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e1605f45dc8a7a1c03b5481ea17478064414df59
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cc6d7491d9c38f1ddf4aba2adecad4aaee3c344b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382210"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489564"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 この記事では、IoT Edge ソリューションのデプロイ時に遭遇する可能性のある一般的な問題の解決手順を紹介しています。 IoT Edge デバイスからログやエラーを見つける方法については、[IoT Edge デバイスのトラブルシューティング](troubleshoot.md)に関するページを参照してください。
 
@@ -216,6 +218,9 @@ IoT Edge ランタイムは、64 文字未満のホスト名のみをサポー�
 
 このエラーが発生したときは、仮想マシンの DNS 名を構成し、setup コマンドでその DNS 名をホスト名として設定することで、エラーを解決できます。
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. Azure Portal で、目的の仮想マシンの概要ページに移動します。
 2. DNS 名の下の **[構成]** を選択します。 仮想マシンに既に構成済みの DNS 名がある場合は、新しいものを構成する必要はありません。
 
@@ -236,6 +241,39 @@ IoT Edge ランタイムは、64 文字未満のホスト名のみをサポー�
       ```cmd
       notepad C:\ProgramData\iotedge\config.yaml
       ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Azure Portal で、目的の仮想マシンの概要ページに移動します。
+
+2. DNS 名の下の **[構成]** を選択します。 仮想マシンに既に構成済みの DNS 名がある場合は、新しいものを構成する必要はありません。
+
+   ![仮想マシンの DNS 名を構成する](./media/troubleshoot/configure-dns.png)
+
+3. **[DNS 名ラベル]** に値を指定し、 **[保存]** を選択します。
+
+4. 新しい DNS 名をコピーします。これは、 **\<DNSnamelabel\>.\<vmlocation\>.cloudapp.azure.com** の形式である必要があります。
+
+5. IoT Edge デバイスで構成ファイルを開きます。
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+6. `hostname` の値を DNS 名に置き換えます。
+
+7. ファイルを保存して閉じ、IoT Edge に変更を適用します。
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>Windows で IoT Edge デーモン ログを取得できません
 
@@ -343,7 +381,7 @@ IoT Edge デーモンが、有効な構成ファイルでアクティブにな�
 
 **根本原因:**
 
-ゲートウェイの背後にある IoT Edge デバイスは、config.yaml ファイルの `parent_hostname` フィールドに指定されている親 IoT Edge デバイスからモジュール イメージを取得します。 `Could not perform HTTP request` エラーは、子デバイスが HTTP 経由で親デバイスに到達できないことを意味します。
+ゲートウェイの背後にある IoT Edge デバイスは、構成ファイルの `parent_hostname` フィールドに指定されている親 IoT Edge デバイスからモジュール イメージを取得します。 `Could not perform HTTP request` エラーは、子デバイスが HTTP 経由で親デバイスに到達できないことを意味します。
 
 **解決方法:**
 

@@ -3,7 +3,7 @@ title: REST API によるジョブの進行状況のチェック方法 | Microso
 description: この記事では、Azure Media Services v2 REST API を使用してジョブの進行状況をチェックする方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: a1a1f956-c035-448a-af9c-5ac15fcce9dd
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 252495df8189f677ada66b67b8a845b320c81aca
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 8727c9e20a9a04dfc48d89b224d15f0cde184f72
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694918"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103017343"
 ---
 # <a name="how-to-check-job-progress"></a>方法: ジョブの進行状況をチェックする
 

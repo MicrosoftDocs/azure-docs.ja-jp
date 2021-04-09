@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 05d312296b48f35ea87c5443cc587989e2d11fd5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9bdba36e2ff4721bd024369788c7dc04f066e9a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587961"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102565582"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Windows Virtual Desktop (クラシック) の診断ツールをデプロイする
 
@@ -38,8 +38,8 @@ Windows Virtual Desktop の診断ツールでは、次のことを行うこと�
 
 また、開始する前に、次の 2 つの PowerShell モジュールもインストールする必要があります。
 
-- [Azure PowerShell モジュール](/powershell/azure/install-az-ps?view=azps-2.4.0/&preserve-view=true)
-- [Azure AD モジュール](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/&preserve-view=true)
+- [Azure PowerShell モジュール](/powershell/azure/install-az-ps)
+- [Azure AD モジュール](/powershell/azure/active-directory/install-adv2)
 
 サインインするときに、サブスクリプション ID が準備できていることを確認します。
 

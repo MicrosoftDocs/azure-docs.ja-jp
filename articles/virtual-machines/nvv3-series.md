@@ -8,12 +8,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 208e8dd63e748c5b558eb3c551fede4bcdc25944
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 276afba62a26a53fe32f7aa9d47f42ada251d6b5
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551115"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102613053"
 ---
 # <a name="nvv3-series"></a>NVv3 シリーズ
 
@@ -27,7 +27,7 @@ NVv3 インスタンス内の各 GPU には GRID ライセンスが付属して�
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
-[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) | 仮想ワークステーション | 仮想アプリケーション |

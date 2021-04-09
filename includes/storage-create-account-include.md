@@ -21,4 +21,4 @@ ms.locfileid: "95996819"
 
 Azure Storage アカウントは、[Azure PowerShell](/powershell/module/az.storage/)、[Azure CLI](../articles/storage/blobs/storage-quickstart-blobs-cli.md)、または [.NET 用 Azure ストレージ リソース プロバイダー](https://azure.microsoft.com/resources/samples/storage-dotnet-resource-provider-getting-started/)を使用して作成することもできます。
 
-現時点で Azure にストレージ アカウントを作成しない場合は、Azure ストレージ エミュレーターを使って、ローカル環境でコードの実行とテストを行うこともできます。 詳細については、[ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する](../articles/storage/common/storage-use-azurite.md)方法に関するページを参照してください。
+現時点で Azure にストレージ アカウントを作成しない場合は、Azure Storage Emulator を使って、ローカル環境でコードの実行とテストを行うこともできます。 詳細については、[ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する](../articles/storage/common/storage-use-azurite.md)方法に関するページを参照してください。

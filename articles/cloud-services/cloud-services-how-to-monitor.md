@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 60f320f86860cca482cdf25c7d93f84dae8c4e5f
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743374"
 ---
 # <a name="introduction-to-cloud-service-classic-monitoring"></a>Cloud Services (クラシック) の監視の概要
@@ -37,7 +37,7 @@ ms.locfileid: "98743374"
 
 ## <a name="advanced-monitoring"></a>高度な監視
 
-高度な監視では、監視対象のロールで **Azure Diagnostics** 拡張機能 (および必要に応じて Application Insights SDK) が使用されます。 診断拡張機能は、(ロールごとに) 構成ファイル **diagnostics.wadcfgx** を使用して、監視する診断メトリックを構成します。 Azure 診断拡張機能では、データを収集して Azure Storage アカウントに格納します。 これらの設定は、 **.wadcfgx** ファイル、[.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) ファイル、および[.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) ファイルで構成されています。 つまり、高度な監視機能には追加のコストが伴います。
+高度な監視では、監視対象のロールで **Azure Diagnostics** 拡張機能 (および必要に応じて Application Insights SDK) が使用されます。 診断拡張機能は、(ロールごとに) 構成ファイル **diagnostics.wadcfgx** を使用して、監視する診断メトリックを構成します。 Azure 診断拡張機能では、データを収集して Azure Storage アカウントに格納します。 これらの設定は、 **.wadcfgx** ファイル、[.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) ファイル、および [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) ファイルで構成されています。 つまり、高度な監視機能には追加のコストが伴います。
 
 ロールが作成されるたびに、Visual Studio が Azure Diagnostics 拡張機能をロールに追加します。 この診断拡張機能では、次の種類の情報を収集できます。
 

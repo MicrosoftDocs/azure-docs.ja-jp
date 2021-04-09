@@ -7,14 +7,16 @@ ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 61779527d4b855f4327ad4b77a1e22207a94b8c0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 323973b7646acee07a0c4dbc59834e0aceca75ee
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048374"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103462050"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>チュートリアル:Azure Stream Analytics を IoT Edge モジュールとしてデプロイする
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 IoT ソリューションの多くが、分析サービスを使用して、IoT デバイスからクラウドに送信されたデータの分析情報を得ます。 Azure IoT Edge を使用すると、[Azure Stream Analytics](../stream-analytics/index.yml) ロジックを取得し、そのロジックをデバイス自体に移動できます。 エッジで利用統計情報のストリームを処理することで、アップロードされるデータの量を削減し、アクションにつながる分析情報への対応にかかる時間を短縮できます。
 
@@ -144,7 +146,7 @@ IoT Edge デバイスにデプロイされるように Stream Analytics ジョ�
 
    ![Azure Stream Analytics - ストレージ アカウントの追加](./media/tutorial-deploy-stream-analytics/add-storage-account.png)
 
-1. このチュートリアルの開始時に作成した**ストレージ アカウント**をドロップダウン メニューから選択します。
+1. このチュートリアルの開始時に作成した **ストレージ アカウント** をドロップダウン メニューから選択します。
 
 1. **[コンテナー]** フィールドで、 **[新規作成]** を選択し、ストレージ コンテナーの名前を指定します。
 
@@ -154,7 +156,7 @@ IoT Edge デバイスにデプロイされるように Stream Analytics ジョ�
 
 IoT Edge デバイスに Azure Stream Analytics ジョブをデプロイする準備が整いました。
 
-このセクションでは、Azure portal の**モジュールの設定**ウィザードを使用して、*配置マニフェスト*を作成します。 配置マニフェストは、デバイスにデプロイされるすべてのモジュール、モジュール イメージを格納するコンテナー レジストリ、モジュールの管理方法、およびモジュール間の通信方法を記述した JSON ファイルです。 IoT Edge デバイスは、IoT Hub からその配置マニフェストを取得し、その中の情報を使用して、割り当てられているすべてのモジュールをデプロイおよび構成します。
+このセクションでは、Azure portal の **モジュールの設定** ウィザードを使用して、*配置マニフェスト* を作成します。 配置マニフェストは、デバイスにデプロイされるすべてのモジュール、モジュール イメージを格納するコンテナー レジストリ、モジュールの管理方法、およびモジュール間の通信方法を記述した JSON ファイルです。 IoT Edge デバイスは、IoT Hub からその配置マニフェストを取得し、その中の情報を使用して、割り当てられているすべてのモジュールをデプロイおよび構成します。
 
 このチュートリアルでは、2 つのモジュールをデプロイします。 1 つ目は、**SimulatedTemperatureSensor** です。これは、温度と湿度のセンサーをシミュレートするモジュールです。 2 つ目は、Stream Analytics ジョブです。 センサー モジュールは、ジョブ クエリが分析するデータのストリームを提供します。
 
@@ -200,7 +202,7 @@ IoT Edge デバイスに Azure Stream Analytics ジョブをデプロイする�
     | `alertsToReset` | `FROM /messages/modules/{moduleName}/* INTO BrokeredEndpoint("/modules/SimulatedTemperatureSensor/inputs/control")` |
     | `telemetryToAsa` | `FROM /messages/modules/SimulatedTemperatureSensor/* INTO BrokeredEndpoint("/modules/{moduleName}/inputs/temperature")`|
 
-    ここで宣言するルートは、IoT Edge デバイスを通過するデータのフローを定義します。 SimulatedTemperatureSensor のテレメトリ データは、IoT Hub に送信されます。また、Stream Analytics ジョブで構成された**温度**入力にも送信されます。 **アラート**出力メッセージは、IoT Hub に送信され、リセット コマンドをトリガーするように SimulatedTemperatureSensor モジュールにも送信されます。
+    ここで宣言するルートは、IoT Edge デバイスを通過するデータのフローを定義します。 SimulatedTemperatureSensor のテレメトリ データは、IoT Hub に送信されます。また、Stream Analytics ジョブで構成された **温度** 入力にも送信されます。 **アラート** 出力メッセージは、IoT Hub に送信され、リセット コマンドをトリガーするように SimulatedTemperatureSensor モジュールにも送信されます。
 
 1. **確認と作成** を選択します。
 

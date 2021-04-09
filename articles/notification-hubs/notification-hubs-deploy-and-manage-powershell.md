@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: f000251009bda730b15458f3ab4d8b7d6ca1db6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4534584144f54618d7f3dd39cf5e40bc0464fb21
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87030302"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102454987"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>PowerShell を使用した Notification Hubs のデプロイと管理
 
@@ -76,7 +76,7 @@ catch [System.Exception]
 
 ## <a name="create-the-namespacemanager-class"></a>`NamespaceManager` クラスの作成
 
-Notification Hubs をプロビジョニングするには、SDK から [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager?view=azure-dotnet) クラスのインスタンスを作成します。
+Notification Hubs をプロビジョニングするには、SDK から [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) クラスのインスタンスを作成します。
 
 Azure PowerShell に付属の [Get-AzureSBAuthorizationRule] コマンドレットを使用して、接続文字列の指定に使用する承認規則を取得できます。 `NamespaceManager` インスタンスへの参照は `$NamespaceManager` 変数に保存されます。 `$NamespaceManager` を使用して通知ハブをプロビジョニングします。
 
@@ -160,7 +160,7 @@ else
 [メンバー オファー]: https://azure.microsoft.com/pricing/member-offers/
 [無料試用版]: https://azure.microsoft.com/pricing/free-trial/
 [Azure PowerShell のインストールおよび構成]: /powershell/azure/
-[.NET API for Notification Hubs]: /dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
+[.NET API for Notification Hubs]: /dotnet/api/overview/azure/notification-hubs
 [Get-AzureSBNamespace]: /powershell/module/servicemanagement/azure.service/get-azuresbnamespace
 [New-AzureSBNamespace]: /powershell/module/servicemanagement/azure.service/new-azuresbnamespace
 [Get-AzureSBAuthorizationRule]: /powershell/module/servicemanagement/azure.service/get-azuresbauthorizationrule

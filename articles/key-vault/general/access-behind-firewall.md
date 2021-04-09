@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: ambapat
 ms.openlocfilehash: ca5842fb268c20f8ae58eb5f683229c4ae3919f4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93289167"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>ファイアウォールの向こう側にある Azure Key Vault へのアクセス
@@ -56,7 +56,7 @@ Key Vault クライアント アプリケーションは、認証用の Azure Ac
 
 ## <a name="key-vault-operations"></a>Key Vault の操作
 
-すべてのキー コンテナー オブジェクト (キーとシークレット) の管理と暗号化の操作のために、Key Vault クライアントはキー コンテナー エンドポイントにアクセスする必要があります。 キー コンテナーの場所によって、エンドポイント DNS サフィックスが異なります。 キー コンテナー エンドポイントは、次の表で説明しているように *vault-name*. *region-specific-dns-suffix* の形式になります。  
+すべてのキー コンテナー オブジェクト (キーとシークレット) の管理と暗号化の操作のために、Key Vault クライアントはキー コンテナー エンドポイントにアクセスする必要があります。 キー コンテナーの場所によって、エンドポイント DNS サフィックスが異なります。 キー コンテナー エンドポイントは、次の表で説明しているように *vault-name*.*region-specific-dns-suffix* の形式になります。  
 
 | 操作の種類 | エンドポイント:ポート |
 | --- | --- |

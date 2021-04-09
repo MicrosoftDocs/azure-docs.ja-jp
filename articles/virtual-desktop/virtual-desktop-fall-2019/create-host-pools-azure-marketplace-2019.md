@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008595"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>チュートリアル:Windows Virtual Desktop (クラシック) でホスト プールを作成する
@@ -60,11 +60,11 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 **[基本]** タブで必要な操作は次のとおりです。
 
-1. **サブスクリプション**を選択します。
+1. **サブスクリプション** を選択します。
 1. **[リソース グループ]** で **[新規作成]** を選択し、新しいリソース グループの名前を指定します。
-1. **リージョン**を選択します。
+1. **リージョン** を選択します。
 1. ホスト プールの名前を入力します。入力する名前は、Windows Virtual Desktop テナント内で一意のものを指定してください。
-1. **デスクトップの種類**を選択します。 **[個人]** を選択した場合には、このホスト プールに接続するユーザーそれぞれに対して仮想マシンが 1 台、永久的に割り当てられます。
+1. **デスクトップの種類** を選択します。 **[個人]** を選択した場合には、このホスト プールに接続するユーザーそれぞれに対して仮想マシンが 1 台、永久的に割り当てられます。
 1. Windows Virtual Desktop クライアントにサインインしてデスクトップにアクセスできるユーザーを入力します。 コンマ区切りのリストを使用します。 たとえば、`user1@contoso.com` と `user2@contoso.com` に対してアクセス権を割り当てる場合、「 *`user1@contoso.com,user2@contoso.com`* 」と入力します
 1. **[Service metadata location]\(サービス メタデータの場所\)** には、Active Directory サーバーに接続している仮想ネットワークと同じ場所を選択します。
 
@@ -99,7 +99,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
    >
    > アカウントは、Azure AD DS マネージド ドメインまたは Azure AD テナントの一部でもある必要があります。 Azure AD テナントに関連付けられている外部ディレクトリのアカウントが、ドメイン参加プロセス中に正しく認証を行うことはできません。
 
-1. Active Directory サーバーに接続している**仮想ネットワーク**を選択し、仮想マシンをホストするサブネットを選択します。
+1. Active Directory サーバーに接続している **仮想ネットワーク** を選択し、仮想マシンをホストするサブネットを選択します。
 1. **Windows Virtual Desktop information\(Windows Virtual Desktop 情報\)** を選択します。
 
 ### <a name="windows-virtual-desktop-tenant-information"></a>Windows Virtual Desktop のテナント情報

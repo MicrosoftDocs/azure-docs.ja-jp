@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
 ms.openlocfilehash: 5ed23889d8648c65ea0887d2f0f3406b50291f12
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101654301"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>チュートリアル: Azure Active Directory と TOPdesk - Secure の統合
@@ -97,7 +97,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
+### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成 
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -109,7 +109,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に TOPdesk - Secure へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -121,13 +121,13 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-### <a name="configure-topdesk---secure-sso"></a>TOPdesk - Secure の SSO の構成
+### <a name=&quot;configure-topdesk---secure-sso&quot;></a>TOPdesk - Secure の SSO の構成
 
 1. **TOPdesk - Secure** 会社サイトに管理者としてサインインします。
 
 2. [**TOPdesk**] メニューで、[**設定**] をクリックします。
 
-    ![[設定]](./media/topdesk-secure-tutorial/ic790598.png "設定")
+    ![[設定]](./media/topdesk-secure-tutorial/ic790598.png &quot;設定")
 
 3. [**ログイン設定**] をクリックします。
 

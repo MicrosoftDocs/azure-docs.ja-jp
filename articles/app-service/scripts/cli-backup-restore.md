@@ -1,5 +1,5 @@
 ---
-title: CLI:アプリをバックアップから復元する
+title: 'CLI: アプリをバックアップから復元する'
 description: Azure CLI を使用して App Service アプリのデプロイと管理を自動化する方法について説明します。 このサンプルでは、アプリをバックアップから復元する方法を紹介しています。
 author: msangapu-msft
 tags: azure-service-management
@@ -10,10 +10,10 @@ ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18
 ms.openlocfilehash: a8b7d20c3eee57d10a7025b05605603f82437cdb
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97006420"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-cli"></a>CLI を使用して Web アプリをバックアップから復元する
@@ -36,7 +36,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [`az webapp config backup list`](/cli/azure/webapp/config/backup#az-webapp-config-backup-list) | Web アプリのバックアップの一覧を取得します。 |
 | [`az webapp config backup restore`](/cli/azure/webapp/config/backup#az-webapp-config-backup-restore) | Web アプリをバックアップから復元します。 |

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 12/17/2020
 ms.openlocfilehash: bdd7fd8e19bf2de6d0b3c6b2edd4515771fae237
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98119019"
 ---
 # <a name="execute-r-script-module"></a>R スクリプトの実行モジュール
@@ -147,7 +147,7 @@ R スクリプトの実行モジュールには、出発点として利用でき
 1. **[R script]\(R スクリプト\)** テキストボックスに、有効な R スクリプトを入力するか貼り付けます。
 
     > [!NOTE]
-    > スクリプトを記述するときは注意が必要です。 宣言されていない変数やインポートされていないモジュールまたは関数の使用など、構文エラーがないことを確認してください。 この記事の最後に記載したプレインストールされているパッケージの一覧には特に注意してください。 一覧に記載されていないパッケージを使用するには、スクリプトでインストールします。 たとえば `install.packages("zoo",repos = "http://cran.us.r-project.org")` です。
+    > スクリプトを記述するときは注意が必要です。 宣言されていない変数やインポートされていないモジュールまたは関数の使用など、構文エラーがないことを確認してください。 この記事の最後に記載したプレインストールされているパッケージの一覧には特に注意してください。 一覧に記載されていないパッケージを使用するには、スクリプトでインストールします。 たとえば `install.packages("zoo&quot;,repos = &quot;http://cran.us.r-project.org")` です。
     
     作業を支援するために、 **[R Script]\(R スクリプト\)** テキスト ボックスにはサンプル コードが事前に入力されており、編集または置換することができます。
     

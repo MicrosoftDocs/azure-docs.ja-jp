@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9e0a645bc580ab3a0794ca6ded1e60159df7d92
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 2038587aebe8fe98bd1adcccef6b895ec7370656
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100090600"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176860"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>段階的なロールアウトを使用してクラウド認証に移行する (プレビュー)
 
@@ -184,7 +184,7 @@ PowerShell を使用して、Active Directory Domain Services フォレストで
 
    >[!NOTE]
    >グループ内のメンバーは、段階的なロールアウトに対して自動的に有効になります。 段階的なロールアウトでは、入れ子になったグループと動的グループはサポートされていません。
-   >新しいグループを追加すると、グループ内のユーザー (新しいグループ 1 つにつき最大 200 ユーザー) が、即座にマネージド認証を使用するように更新されます。 グループを編集する (ユーザーを追加または削除する) 場合、変更が有効になるまでに最大 24 時間かかることがあります。
+   >新しいグループを追加するとき、グループ内のユーザー (新しいグループ 1 つにつき最大 200 ユーザー) が、即座にマネージド認証を使用するように更新されます。 グループを編集する (ユーザーを追加または削除する) 場合、変更が有効になるまでに最大 24 時間かかることがあります。
    >シームレス SSO は、ユーザーがシームレス SSO グループ内にあり、PTA または PHS グループのいずれかにも含まれている場合にのみ適用されます。
 
 ## <a name="auditing"></a>監査

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d1811d5b9ae4d3e34b48e1cdc156438f2bad98d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90601658"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>条件付きアクセスのクラシック ポリシーの移行
@@ -33,13 +33,13 @@ ms.locfileid: "90601658"
 
 ## <a name="classic-policies"></a>クラシック ポリシー
 
-[Azure portal](https://portal.azure.com) では、 **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** で、条件付きアクセス ポリシーを確認できます。 このページを使用して作成されていない古い条件付きアクセスポリシーが、組織に存在している場合もあります。 これらのポリシーは*クラシック ポリシー*と呼ばれます。 クラシック ポリシーは、次の場所で作成した条件付きアクセス ポリシーです。
+[Azure portal](https://portal.azure.com) では、 **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** で、条件付きアクセス ポリシーを確認できます。 このページを使用して作成されていない古い条件付きアクセスポリシーが、組織に存在している場合もあります。 これらのポリシーは *クラシック ポリシー* と呼ばれます。 クラシック ポリシーは、次の場所で作成した条件付きアクセス ポリシーです。
 
 - Azure クラシック ポータル
 - Intune クラシック ポータル
 - Intune App Protection ポータル
 
-**[条件付きアクセス]** ページで、 **[管理]** セクションの [ **[クラシック ポリシー]** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) をクリックして、クラシック ポリシーにアクセスできます。 
+**[条件付きアクセス]** ページで、 **[管理]** セクションの [ **[クラシック ポリシー]**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) をクリックして、クラシック ポリシーにアクセスできます。 
 
 ![クラシック ポリシー ビューを示している Azure AD の条件付きアクセス](./media/policy-migration/71.png)
 
@@ -89,7 +89,7 @@ ms.locfileid: "90601658"
 
 ![条件付きアクセスでの条件](./media/policy-migration/16.png)
  
-**Exchange Active Sync** をクライアント アプリの条件として含む Exchange Online のアプリ ベースのクラシック ポリシーは、**サポートされている**デバイス プラットフォームにも、**サポートされていない**デバイス プラットフォームにも対応します。 関連する新しいポリシーで個々のデバイス プラットフォームを構成することはできませんが、サポートを[サポートされているデバイス プラットフォーム](concept-conditional-access-conditions.md#device-platforms)のみに制限できます。 
+**Exchange Active Sync** をクライアント アプリの条件として含む Exchange Online のアプリ ベースのクラシック ポリシーは、**サポートされている** デバイス プラットフォームにも、**サポートされていない** デバイス プラットフォームにも対応します。 関連する新しいポリシーで個々のデバイス プラットフォームを構成することはできませんが、サポートを[サポートされているデバイス プラットフォーム](concept-conditional-access-conditions.md#device-platforms)のみに制限できます。 
 
 ![条件付きアクセスでの Exchange ActiveSync の選択](./media/policy-migration/65.png)
 

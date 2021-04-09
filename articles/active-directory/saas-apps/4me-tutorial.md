@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 241450b9a6e97953205aca5de2a7cfd30a08d254
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92319120"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-4me"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と 4me の統合
@@ -70,7 +70,7 @@ Azure AD への 4me の統合を構成するには、ギャラリーから管理
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **4me** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **4me** アプリケーション統合ページで、**[管理]** セクションを探して、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -162,13 +162,13 @@ Azure AD への 4me の統合を構成するには、ギャラリーから管理
 
     ![4me のシングル サインオン](./media/4me-tutorial/tutorial_4me_singlesignon.png)
 
-    a. **[Enabled]\(有効\)** オプションを選択します。
+    a. [**有効**] オプションを選択します。
 
-    b. **[リモート ログアウト URL]** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    b. **[リモート ログアウト URL]** ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
-    c. **[SAML]** セクションの **[SAML SSO URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    c. **[SAML]** セクションの **[SAML SSO URL]** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    d. **[Certificate fingerprint]\(証明書フィンガープリント\)** ボックスに、Azure portal からコピーした**拇印**の値をコロンで区切って貼り付けます (AA:BB:CC:DD:EE:FF:GG:HH:II)。
+    d. **[Certificate fingerprint]\(証明書フィンガープリント\)** ボックスに、Azure portal からコピーした **拇印** の値をコロンで区切って貼り付けます (AA:BB:CC:DD:EE:FF:GG:HH:II)。
 
     e. **[保存]** をクリックします。
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
 ms.openlocfilehash: ad6696fc4fe2af7047c25a3a9c260d3b12588ee2
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102203302"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Azure Cache for Redis の高可用性

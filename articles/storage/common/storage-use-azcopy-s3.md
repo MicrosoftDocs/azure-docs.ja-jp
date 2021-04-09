@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b94cb6d6302cd92816fe25f6e672b1ce3bb9398d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 34f54bb30e959ecc2fa27fba5ab7392b9eddc68e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791999"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103494514"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>AzCopy を使用して Amazon S3 から Azure Storage にデータをコピーする
 
@@ -40,7 +40,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 AWS アクセス キーとシークレット アクセス キーを収集して、以下の環境変数を設定します。
 
-| オペレーティング システム | command  |
+| オペレーティング システム | コマンド  |
 |--------|-----------|
 | **Windows** | `set AWS_ACCESS_KEY_ID=<access-key>`<br>`set AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
 | **Linux** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
@@ -70,7 +70,7 @@ AzCopy では、[URL からブロックの配置](/rest/api/storageservices/put-
 >
 > また、仮想ホスト形式の URL も使用できます (例: `http://bucket.s3.amazonaws.com`)。 
 >
-> バケットの仮想ホスティングの詳細については、「バケットの仮想ホスティング」(https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) ) を参照してください。
+> バケットの仮想ホスティングの詳細については、「[バケットの仮想ホスティング](https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html)」を参照してください。
 
 ### <a name="copy-a-directory"></a>ディレクトリをコピーする
 
@@ -103,7 +103,7 @@ AzCopy では、[URL からブロックの配置](/rest/api/storageservices/put-
 |--------|-----------|
 | **構文** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive=true` |
 | **例** | `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
-| **例** (階層型名前空間)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **例** (階層型名前空間)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-all-regions"></a>すべてのリージョン内のすべてのバケットをコピーする
 
@@ -113,7 +113,7 @@ AzCopy では、[URL からブロックの配置](/rest/api/storageservices/put-
 |--------|-----------|
 | **構文** | `azcopy copy 'https://s3.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **例** | `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
-| **例** (階層型名前空間)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **例** (階層型名前空間)| `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-a-specific-s3-region"></a>特定の S3 リージョン内のすべてのバケットをコピーする
 
@@ -123,7 +123,7 @@ AzCopy では、[URL からブロックの配置](/rest/api/storageservices/put-
 |--------|-----------|
 | **構文** | `azcopy copy 'https://s3-<region-name>.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **例** | `azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
-| **例** (階層型名前空間)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **例** (階層型名前空間)| `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ## <a name="handle-differences-in-object-naming-rules"></a>オブジェクトの名前付け規則の違いに対処する
 
@@ -168,7 +168,5 @@ AzCopy では次の手順が実行されます。
 - [AzCopy を使ってみる](storage-use-azcopy-v10.md)
 
 - [データの転送](storage-use-azcopy-v10.md#transfer-data)
-
-- [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
 
 - [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)

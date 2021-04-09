@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 2f1edc14efdeaf70bf4c2acc0e31e1517753ed3e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92546349"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>VMware VM/物理サーバー ディザスター リカバリー用の構成サーバーを管理する
@@ -29,16 +29,16 @@ OVF テンプレートに付属するライセンスは、180 日間有効な評
 次のように構成サーバーにアクセスすることができます。
 
 * デプロイ先の VM にサインインし、デスクトップのショートカットから **Azure Site Recovery 構成マネージャー** を起動します。
-* または、 https:// *ConfigurationServerName* /:44315/ から構成サーバーにリモートでアクセスできます。 管理者の資格情報でサインインします。
+* または、 https://*ConfigurationServerName*/:44315/ から構成サーバーにリモートでアクセスできます。 管理者の資格情報でサインインします。
 
 ## <a name="modify-vmware-server-settings"></a>VMware サーバーの設定を変更する
 
-1. 別の VMware サーバーを構成サーバーと関連付けるには、 [サインイン](#access-configuration-server)後に **[vCenter Server/vSphere ESXi サーバーの追加]** を選択します。
+1. 別の VMware サーバーを構成サーバーと関連付けるには、[サインイン](#access-configuration-server)後に **[vCenter Server/vSphere ESXi サーバーの追加]** を選択します。
 2. 詳細を入力し、 **[OK]** を選択します。
 
 ## <a name="modify-credentials-for-automatic-discovery"></a>自動検出用の資格情報を変更する
 
-1. VMware VM の自動検出のための VMware サーバーへの接続に使う資格情報を更新するには、 [サインイン](#access-configuration-server)後にアカウントを選択し、 **[編集]** をクリックします。
+1. VMware VM の自動検出のための VMware サーバーへの接続に使う資格情報を更新するには、[サインイン](#access-configuration-server)後にアカウントを選択し、 **[編集]** をクリックします。
 2. 新しい資格情報を入力して、 **[OK]** を選択します。
 
     ![VMware の変更](./media/vmware-azure-manage-configuration-server/modify-vmware-server.png)
@@ -114,7 +114,7 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
 
 ### <a name="if-certificates-have-already-expired"></a>証明書の有効期限が既に切れている場合
 
-1. 有効期限が切れると、証明書を **Azure portal から更新することはできません** 。 先に進む前に、スケールアウト プロセス サーバー、マスター ターゲット サーバーのすべてのコンポーネント、すべての保護されたマシン上のモビリティ エージェントが最新バージョンであり、かつ接続状態にあることを確認します。
+1. 有効期限が切れると、証明書を **Azure portal から更新することはできません**。 先に進む前に、スケールアウト プロセス サーバー、マスター ターゲット サーバーのすべてのコンポーネント、すべての保護されたマシン上のモビリティ エージェントが最新バージョンであり、かつ接続状態にあることを確認します。
 2. **証明書の有効期限が既に切れている場合にのみ、この手順に従ってください。** 構成サーバーにログインし、C ドライブ > [Program Data] > [Site Recovery] > [home] > [svsystems] > [bin] に移動して、管理者として "RenewCerts" 実行ツールを実行します。
 3. PowerShell の実行ウィンドウがポップアップ表示され、証明書の更新がトリガーされます。 この処理には最大 15 分かかることがあります。 更新の完了までウィンドウを閉じないでください。
 
@@ -128,7 +128,7 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
 1. コンテナーで、 **[管理]**  >  **[Site Recovery インフラストラクチャ]**  >  **[構成サーバー]** を開きます。
 2. **[サーバー]** で **[登録キーのダウンロード]** を選択して、コンテナーの資格情報ファイルをダウンロードします。
 3. 構成サーバー マシンにサインインします。
-4. **%ProgramData%\ASR\home\svsystems\bin** で、 **cspsconfigtool.exe** を開きます。
+4. **%ProgramData%\ASR\home\svsystems\bin** で、**cspsconfigtool.exe** を開きます。
 5. **[Vault Registration]\(コンテナーの登録\)** タブで **[参照]** を選択して、ダウンロードしたコンテナー資格情報ファイルを探します。
 6. 必要な場合は、プロキシ サーバーの詳細を指定します。 次に、 **[登録]** を選択します。
 7. 管理者の PowerShell コマンド ウィンドウを開き、次のコマンドを実行します。
@@ -293,7 +293,7 @@ ProxyPassword="Password"
 
 1. 構成サーバーにサインインし、コマンド プロンプト ウィンドウを管理者として開きます。
 2. bin フォルダーにディレクトリを変更するには、コマンド **cd %ProgramData%\ASR\home\svsystems\bin** を実行します。
-3. パスフレーズ ファイルを生成するには、 **genpassphrase.exe -v > MobSvc.passphrase** を実行します。
+3. パスフレーズ ファイルを生成するには、**genpassphrase.exe -v > MobSvc.passphrase** を実行します。
 4. **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase** にあるファイルにパスフレーズが格納されます。
 
 ## <a name="refresh-configuration-server"></a>構成サーバーを最新の情報に更新する

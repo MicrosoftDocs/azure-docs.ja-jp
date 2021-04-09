@@ -7,10 +7,10 @@ ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
 ms.openlocfilehash: c7bd942b427bdbd2d8184f712f97dd2a0a57fa90
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102178076"
 ---
 このステップでは、AdventureWorksLT サンプル データを使用する[論理 SQL サーバー](../database/logical-servers.md)と[単一データベース](../database/single-database-overview.md)を作成します。 データベースを作成するには、Azure portal のメニューと画面を使用するか、Azure Cloud Shell で Azure CLI または PowerShell スクリプトを使用します。
@@ -149,7 +149,7 @@ az sql db create \
 
 前述のコードでは、次の Azure CLI コマンドを使用しています。
 
-| command | 説明 |
+| コマンド | 説明 |
 |---|---|
 | [az account set](/cli/azure/account#az-account-set) | サブスクリプションを現在のアクティブなサブスクリプションとして設定します。 |
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
@@ -237,7 +237,7 @@ Azure Cloud Shell で次のコード サンプルを実行するには、コー�
 
 前述のコードでは、次の PowerShell コマンドレットを使用しています。
 
-| command | メモ |
+| コマンド | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | データベースとエラスティック プールをホストするサーバーを作成します。 |

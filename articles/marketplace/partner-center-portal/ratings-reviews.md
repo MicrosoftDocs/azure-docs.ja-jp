@@ -8,10 +8,10 @@ ms.date: 12/11/2019
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: d7b64ce907cd68d1d6850f90df49b347f3b0270d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96461009"
 ---
 # <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>パートナー センターの評価とレビューの分析ダッシュボード

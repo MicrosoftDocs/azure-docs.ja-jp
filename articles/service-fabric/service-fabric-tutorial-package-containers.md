@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 995291a783d14a6d2db8ed8319c720f55c009d91
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92738849"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>チュートリアル: Yeoman を使用して Service Fabric アプリケーションとしてコンテナーをパッケージ化およびデプロイする
@@ -99,7 +99,7 @@ Yeoman を使用して作成したアプリケーションに別のコンテナ�
    create TestContainer/azurevotebackPkg/code/Dummy.txt
 ```
 
-このチュートリアルの後の手順で、 **TestContainer** ディレクトリを使用します。 たとえば、 *./TestContainer/TestContainer* です。 このディレクトリの内容は、次のようになります。
+このチュートリアルの後の手順で、**TestContainer** ディレクトリを使用します。 たとえば、 *./TestContainer/TestContainer* です。 このディレクトリの内容は、次のようになります。
 
 ```bash
 $ ls
@@ -108,7 +108,7 @@ ApplicationManifest.xml azurevotefrontPkg azurevotebackPkg
 
 ## <a name="configure-the-application-manifest-with-credentials-for-azure-container-registry"></a>Azure Container Registry の資格情報を使用してアプリケーション マニフェストを構成する
 
-Service Fabric が Azure Container Registry からコンテナー イメージをプルするには、 **ApplicationManifest.xml** に資格情報を入力する必要があります。
+Service Fabric が Azure Container Registry からコンテナー イメージをプルするには、**ApplicationManifest.xml** に資格情報を入力する必要があります。
 
 ACR インスタンスにサインインします。 **az acr login** コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に割り当てられた一意名を入力します。
 
@@ -138,7 +138,7 @@ az acr credential show -n <acrName> --query passwords[0].value
 
 ### <a name="configure-communication-port"></a>通信ポートを構成する
 
-クライアントがサービスと通信できるように HTTP エンドポイントを構成しましょう。 *./TestContainer/azurevotefrontPkg/ServiceManifest.xml* ファイルを開いて、 **ServiceManifest** 要素にエンドポイント リソースを宣言します。  プロトコル、ポート、名前を追加します。 このチュートリアルでは、サービスがポート 80 でリッスンします。 次のスニペットが、リソース内の *ServiceManifest* タグ下に配置されています。
+クライアントがサービスと通信できるように HTTP エンドポイントを構成しましょう。 *./TestContainer/azurevotefrontPkg/ServiceManifest.xml* ファイルを開いて、**ServiceManifest** 要素にエンドポイント リソースを宣言します。  プロトコル、ポート、名前を追加します。 このチュートリアルでは、サービスがポート 80 でリッスンします。 次のスニペットが、リソース内の *ServiceManifest* タグ下に配置されています。
 
 ```xml
 <Resources>
@@ -152,7 +152,7 @@ az acr credential show -n <acrName> --query passwords[0].value
 
 ```
 
-同様に、バックエンド サービスのサービス マニフェストを変更します。 *./TestContainer/azurevotebackPkg/ServiceManifest.xml* を開いて、 **ServiceManifest** 要素にエンドポイント リソースを宣言します。 このチュートリアルでは、Redis の既定値である 6379 を使用します。 次のスニペットが、リソース内の *ServiceManifest* タグ下に配置されています。
+同様に、バックエンド サービスのサービス マニフェストを変更します。 *./TestContainer/azurevotebackPkg/ServiceManifest.xml* を開いて、**ServiceManifest** 要素にエンドポイント リソースを宣言します。 このチュートリアルでは、Redis の既定値である 6379 を使用します。 次のスニペットが、リソース内の *ServiceManifest* タグ下に配置されています。
 
 ```xml
 <Resources>
@@ -169,7 +169,7 @@ az acr credential show -n <acrName> --query passwords[0].value
 
 ### <a name="map-container-ports-to-a-service"></a>サービスにコンテナー ポートをマップする
 
-クラスター内のコンテナーを公開するには applicationmanifest.xml にポートのバインドも作成する必要があります。 **PortBinding** ポリシーは、 **ServiceManifest.xml** で定義した **エンドポイント** を参照します。 これらのエンドポイントへの受信要求は、ここで開いてバインドされたコンテナー ポートにマップされます。 **ApplicationManifest.xml** ファイルに次のコードを追加して、ポート 80 およびポート 6379 をエンドポイントにバインドします。 **ApplicationManifest.xml** の完全なサンプル ファイルは、このドキュメントの最後にあります。
+クラスター内のコンテナーを公開するには applicationmanifest.xml にポートのバインドも作成する必要があります。 **PortBinding** ポリシーは、**ServiceManifest.xml** で定義した **エンドポイント** を参照します。 これらのエンドポイントへの受信要求は、ここで開いてバインドされたコンテナー ポートにマップされます。 **ApplicationManifest.xml** ファイルに次のコードを追加して、ポート 80 およびポート 6379 をエンドポイントにバインドします。 **ApplicationManifest.xml** の完全なサンプル ファイルは、このドキュメントの最後にあります。
 
 ```xml
 <ContainerHostPolicies CodePackageRef="Code">
@@ -185,7 +185,7 @@ az acr credential show -n <acrName> --query passwords[0].value
 
 ### <a name="add-a-dns-name-to-the-backend-service"></a>バックエンド サービスに DNS 名を追加する
 
-Service Fabric がこの DNS 名をバックエンド サービスに割り当てるには、 **ApplicationManifest.xml** に名前を指定する必要があります。 次のように **ServiceDnsName** 属性を **サービス** 要素に追加します。
+Service Fabric がこの DNS 名をバックエンド サービスに割り当てるには、**ApplicationManifest.xml** に名前を指定する必要があります。 次のように **ServiceDnsName** 属性を **サービス** 要素に追加します。
 
 ```xml
 <Service Name="azurevoteback" ServiceDnsName="redisbackend.testapp">

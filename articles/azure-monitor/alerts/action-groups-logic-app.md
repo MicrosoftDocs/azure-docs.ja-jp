@@ -4,14 +4,13 @@ description: Azure Monitor アラートを処理するためのロジック ア�
 author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
-ms.date: 07/18/2018
-ms.subservice: alerts
-ms.openlocfilehash: d74d77abbc0d105e6772240b8a6d7f463e8d94f7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/19/2021
+ms.openlocfilehash: a1371e00a6d4c5db609466e25c9d94aad5e73398
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604491"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045719"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Azure Monitor アラートによって複雑なアクションをトリガーする方法
 
@@ -19,7 +18,7 @@ ms.locfileid: "100604491"
 
 ## <a name="overview"></a>概要
 
-Azure Monitor アラートは、トリガー時に[アクション グループ](../platform/action-groups.md)を呼び出します。 アクション グループを使用すると、アラートについて他ユーザーに通知したり、アラートを修復したりするための 1 つまたは複数のアクションをトリガーできます。
+Azure Monitor アラートは、トリガー時に[アクション グループ](./action-groups.md)を呼び出します。 アクション グループを使用すると、アラートについて他ユーザーに通知したり、アラートを修復したりするための 1 つまたは複数のアクションをトリガーできます。
 
 一般的なプロセスは次のとおりです:
 
@@ -35,29 +34,15 @@ Azure Monitor アラートは、トリガー時に[アクション グループ]
 
 ## <a name="create-an-activity-log-alert-administrative"></a>アクティビティ ログ アラートを作成する:管理
 
-1.  Azure portal で、左上隅にある **[リソースの作成]** を選択します。
+1. [ロジック アプリの作成](~/articles/logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-2.  **[ロジック アプリ]** を見つけて選択し、 **[作成]** を選択します。
+2.  次のトリガーを選択します:**HTTP 要求の受信時**。
 
-3.  ロジック アプリに **名前** を付け、**リソース グループ** などを選択します。
+1. **[HTTP 要求の受信時]** のダイアログで、 **[サンプルのペイロードを使用してスキーマを生成する]** を選択します。
 
-    ![ロジック アプリの作成](media/action-groups-logic-app/create-logic-app-dialog.png "ロジック アプリを作成します")
+    ![[HTTP 要求の受信時] ダイアログ ボックスのスクリーンショット。[サンプルのペイロードを使用してスキーマを生成する] オプションが選択されています。 ](~/articles/app-service/media/tutorial-send-email/generate-schema-with-payload.png)
 
-4.  **[作成]** を選択して、ロジック アプリを作成します。 ロジック アプリが作成されたことを示すポップアップ メッセージが表示されます。 **[Launch Resource]\(リソースの起動\)** を選択して **Logic Apps デザイナー** を開きます。
-
-5.  次のトリガーを選択します:**HTTP 要求の受信時**。
-
-    ![ロジック アプリのトリガー](media/action-groups-logic-app/logic-app-triggers.png "ロジック アプリのトリガー")
-
-6.  **[編集]** を選択して HTTP 要求トリガーを変更します。
-
-    ![HTTP 要求トリガー](media/action-groups-logic-app/http-request-trigger-shape.png "HTTP 要求トリガー")
-
-7.  **[サンプルのペイロードを使用してスキーマを生成する]** を選びます。
-
-    ![サンプル ペイロードの使用](media/action-groups-logic-app/use-sample-payload-button.png "サンプル ペイロードの使用")
-
-8.  次のサンプル ペイロードをコピーしてダイアログ ボックスに貼り付けます。
+3.  次のサンプル ペイロードをコピーしてダイアログ ボックスに貼り付けます。
 
     ```json
         {
@@ -128,7 +113,7 @@ Azure Monitor アラートは、トリガー時に[アクション グループ]
 
 14. **Logic Apps デザイナー** の上部にある **[保存]** を選択して、ロジック アプリを保存します。
 
-15. 既存のアクション グループを開き、ロジック アプリを参照するためのアクションを追加します。 既存のアクション グループがない場合は、「[Azure portal でのアクション グループの作成および管理](../platform/action-groups.md)」を参照してアクション グループを作成します。 忘れずに変更を保存してください。
+15. 既存のアクション グループを開き、ロジック アプリを参照するためのアクションを追加します。 既存のアクション グループがない場合は、「[Azure portal でのアクション グループの作成および管理](./action-groups.md)」を参照してアクション グループを作成します。 忘れずに変更を保存してください。
 
     ![アクション グループの更新](media/action-groups-logic-app/update-action-group.png "アクション グループの更新")
 
@@ -138,8 +123,8 @@ Azure Monitor アラートは、トリガー時に[アクション グループ]
 
 Azure Service Health エントリは、アクティビティ ログの一部です。 アラートの作成プロセスは[アクティビティ ログ アラートの作成](#create-an-activity-log-alert-administrative)プロセスと似ていますが、いくつかの点が異なります。
 
-- 手順 1 ～ 7 は同じです。
-- 手順 8 で、HTTP 要求トリガーに次のサンプル ペイロードを使用します。
+- 手順 1 から 3 は同じです。
+- 手順 4 で、HTTP 要求トリガーに次のサンプル ペイロードを使用します。
 
     ```json
     {
@@ -183,8 +168,8 @@ Azure Service Health エントリは、アクティビティ ログの一部で�
     }
     ```
 
--  手順 9 から 10 は同じです。
--  手順 11 から 14 では、次の手順に従います。
+-  手順 5 と 6 は同じです。
+-  手順 7 から 11 では、次の手順に従います。
 
    1. **[+** **新しいステップ]** 、 **[条件の追加]** の順に選択します。 次の条件を設定して、入力データが下の値と一致する場合にのみロジック アプリが実行されるようにします。  テキスト ボックスにバージョンの値を入力するときに、数値型ではなく文字列として評価されるように引用符で囲みます ("0.1.1")。  ページに戻ったとき、基になるコードが引き続き文字列型の場合、引用符は表示されません。   
        - `schemaId == Microsoft.Insights/activityLogs`
@@ -226,8 +211,8 @@ Azure Service Health エントリは、アクティビティ ログの一部で�
 
 メトリック アラートの作成プロセスは[アクティビティ ログ アラートの作成](#create-an-activity-log-alert-administrative)プロセスと似ていますが、いくつかの点が異なります。
 
-- 手順 1 ～ 7 は同じです。
-- 手順 8 で、HTTP 要求トリガーに次のサンプル ペイロードを使用します。
+- 手順 1 から 3 は同じです。
+- 手順 4 で、HTTP 要求トリガーに次のサンプル ペイロードを使用します。
 
     ```json
     {
@@ -271,8 +256,8 @@ Azure Service Health エントリは、アクティビティ ログの一部で�
     }
     ```
 
-- 手順 9 から 10 は同じです。
-- 手順 11 から 14 では、次の手順に従います。
+- 手順 5 と 6 は同じです。
+- 手順 7 から 11 では、次の手順に従います。
 
   1. **[+** **新しいステップ]** 、 **[条件の追加]** の順に選択します。 次の条件を設定して、入力データが下の値と一致する場合にのみロジック アプリが実行されるようにします。 テキスト ボックスにバージョンの値を入力するときに、数値型ではなく文字列として評価されるように引用符で囲みます ("2.0")。  ページに戻ったとき、基になるコードが引き続き文字列型の場合、引用符は表示されません。 
      - `schemaId == AzureMonitorMetricAlert`
@@ -294,7 +279,6 @@ Azure Service Health エントリは、アクティビティ ログの一部で�
 Logic Apps には、幅広いアプリケーションやデータベースのアクションをトリガーできるさまざまなコネクタがあります。 Slack、SQL Server、Oracle、Salesforce はその一例です。 コネクタの詳細については、[Logic Apps コネクタ](../../connectors/apis-list.md)に関するページを参照してください。  
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure アクティビティ ログ アラートの概要](../platform/alerts-overview.md)を把握し、アラートを受信する方法について学習します。  
+* [Azure アクティビティ ログ アラートの概要](./alerts-overview.md)を把握し、アラートを受信する方法について学習します。  
 * [Azure Service Health 通知の投稿に関するアラートを構成](../../service-health/alerts-activity-log-service-notifications-portal.md)する方法について学習します。
-* [アクション グループ](../platform/action-groups.md)について学習します。
-
+* [アクション グループ](./action-groups.md)について学習します。

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: ae3ebdbc642ce8bf60a8caf35b8da0c8e16c5a87
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92453222"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flock"></a>チュートリアル: Azure Active Directory と Flock の統合
@@ -41,7 +41,7 @@ Flock と Azure AD の統合を構成するには、次のものが必要です�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Flock では、 **SP** によって開始される SSO がサポートされます
+* Flock では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-flock-from-the-gallery"></a>ギャラリーからの Flock の追加
 
@@ -61,13 +61,13 @@ Azure AD への Flock の統合を構成するには、ギャラリーからマ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Flock** 」と入力し、結果パネルで **[Flock]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Flock**」と入力し、結果パネルで **[Flock]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Flock](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Flock で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Flock で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Flock 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Flock で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -158,9 +158,9 @@ Flock で Azure AD シングル サインオンを構成するには、次の手
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

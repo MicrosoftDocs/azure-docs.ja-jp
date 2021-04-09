@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
 ms.openlocfilehash: c8e2c707566b08219b495e76be7f6f6130d876ab
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93081316"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - アプリに CRUD 関数を追加する
@@ -37,7 +37,7 @@ ms.locfileid: "93081316"
 
 ## <a name="add-a-post-function-to-the-hero-service"></a>Post 関数をヒーロー サービスに追加する
 
-1. Visual Studio Code で、 **[エディターの分割]** ボタン (:::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png":::) を押して、 **routes.js** と **hero.service.js** を左右に並べて表示します。
+1. Visual Studio Code で、 **[エディターの分割]** ボタン (:::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png":::) を押して、**routes.js** と **hero.service.js** を左右に並べて表示します。
 
     **hero.service.js** の 5 行目にある `getHeroes` 関数が、routes.js の 7 行目で呼び出されていることがわかります。  これと同じペアリングを Post、Put、Delete の各関数についても作成する必要があります。 
 

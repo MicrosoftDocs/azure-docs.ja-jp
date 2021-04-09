@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7828313844b8f95b2bac5bff37022a822686ab33
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 9f0fb81a4daa57b473e8b2b4b937426eafbf903d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740246"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103014538"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>Azure Active Directory で PowerShell を使用してリソース スコープのカスタム ロールを割り当てる
 
@@ -35,16 +35,16 @@ Azure AD 管理者ロールの詳細については、[Azure Active Directory �
 [PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureADPreview)から Azure AD PowerShell モジュールをインストールします。 その後、次のコマンドを使用して、Azure AD PowerShell プレビュー モジュールをインポートします。
 
 ``` PowerShell
-Import-Module AzureADPreview
+Import-Module -Name AzureADPreview
 ```
 
 モジュールが使用できる状態であることを確認するには、次のコマンドによって返されたバージョンを次に示されているものと照合します。
 
 ``` PowerShell
-Get-Module AzureADPreview
+Get-Module -Name AzureADPreview
   ModuleType Version      Name                         ExportedCommands
   ---------- ---------    ----                         ----------------
-  Binary     2.0.0.115    azureadpreview               {Add-AzureADMSAdministrati...}
+  Binary     2.0.0.115    AzureADPreview               {Add-AzureADMSAdministrati...}
 ```
 
 これで、モジュールのコマンドレットの使用を開始できます。 Azure AD モジュールのコマンドレットの詳細については、[Azure AD プレビュー モジュール](https://www.powershellgallery.com/packages/AzureADPreview)のオンライン リファレンス ドキュメントをご覧ください。

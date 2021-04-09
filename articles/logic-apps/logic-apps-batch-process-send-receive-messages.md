@@ -9,10 +9,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
 ms.openlocfilehash: 0985afe3ddfd0d9de3c36ad6b030b6f259708c88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87458253"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Azure Logic Apps でのメッセージの送信、受信、バッチ処理
@@ -50,7 +50,7 @@ ms.locfileid: "87458253"
 
 1. [Azure portal](https://portal.azure.com) または Visual Studio で、`BatchReceiver` という名前のロジック アプリを作成します
 
-1. ロジック アプリ デザイナーで、ロジック アプリのワークフローを開始する**バッチ** トリガーを追加します。 検索ボックスに「`batch`」と入力して、このトリガーを選択します。**メッセージのバッチ処理**
+1. ロジック アプリ デザイナーで、ロジック アプリのワークフローを開始する **バッチ** トリガーを追加します。 検索ボックスに「`batch`」と入力して、このトリガーを選択します。**メッセージのバッチ処理**
 
    !["メッセージのバッチ処理" トリガーの追加](./media/logic-apps-batch-process-send-receive-messages/add-batch-receiver-trigger.png)
 

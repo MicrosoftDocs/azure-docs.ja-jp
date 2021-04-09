@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.openlocfilehash: f666cc2f9d11b1e05d11ba266897e6fca3cd287e
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92057622"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Azure Cognitive Search でのデバッグ セッション
@@ -51,13 +51,13 @@ ms.locfileid: "92057622"
 
 グラフでスキルを選択すると、それに接続されているスキル、その入力を作成するノード、およびその出力を受け入れるノードが強調表示されます。 各スキル ノードでは、その種類、エラーまたは警告、および実行回数が表示されます。 **[スキル グラフ]** では、デバッグまたは強化するスキルを選択します。 スキルを選択すると、その詳細がグラフの右側のスキルの詳細ペインに表示されます。
 
-> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="デバッグ セッションの作成":::
+> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="スキル グラフ":::
 
 ## <a name="skill-details"></a>スキルの詳細
 
-スキルの詳細ペインには、特定のスキルを操作するための一連の領域が表示されます。その場合、スキルは **[スキル グラフ]** で強調表示されます。 スキルの設定の詳細を確認して編集することができます。 スキルの JSON 定義が指定されます。 スキルの実行およびエラーと警告の詳細も表示されます。 **[スキルの設定]** タブと**スキルの JSON エディター**を使用して、スキルを直接編集することができます。 [`</>`](#expression-evaluator) では、スキルの入力と出力の式を表示および編集するためのウィンドウが開きます。
+スキルの詳細ペインには、特定のスキルを操作するための一連の領域が表示されます。その場合、スキルは **[スキル グラフ]** で強調表示されます。 スキルの設定の詳細を確認して編集することができます。 スキルの JSON 定義が指定されます。 スキルの実行およびエラーと警告の詳細も表示されます。 **[スキルの設定]** タブと **スキルの JSON エディター** を使用して、スキルを直接編集することができます。 [`</>`](#expression-evaluator) では、スキルの入力と出力の式を表示および編集するためのウィンドウが開きます。
 
-スキルの設定ウィンドウの入れ子になった入力コントロールを使用して、プロジェクション用の複雑な図形、複合型フィールドの出力フィールド、またはスキルへの入力を構築できます。 **式エバリュエーター**と共に使用すると、入れ子になった入力で簡単なテストと確認の式ビルダーが提供されます。
+スキルの設定ウィンドウの入れ子になった入力コントロールを使用して、プロジェクション用の複雑な図形、複合型フィールドの出力フィールド、またはスキルへの入力を構築できます。 **式エバリュエーター** と共に使用すると、入れ子になった入力で簡単なテストと確認の式ビルダーが提供されます。
 
 ## <a name="skill-execution-history"></a>スキルの実行履歴
 
@@ -73,7 +73,7 @@ ms.locfileid: "92057622"
 
 **[エンリッチ処理されたデータ構造]** ペインには、スキルセットを介してドキュメントのエンリッチメントが表示され、各エンリッチメントのコンテキストと元のスキルの詳細が示されます。 **[式エバリュエーター]** を使用して、各エンリッチメントの内容を表示することもできます。
 
-> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="デバッグ セッションの作成":::
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="エンリッチ処理されたデータ構造":::
 
 ## <a name="expression-evaluator"></a>式エバリュエーター
 

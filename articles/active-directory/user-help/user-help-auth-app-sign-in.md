@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 06/03/2020
+ms.date: 03/12/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 3a9e4c8f3dd9e4cf291388bc102ae9a73d8de6dd
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0fd0aa19d52adb4bf06c9d21d4182e27497a531b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131566"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103471767"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウントにサインインする
 
@@ -51,9 +51,12 @@ Microsoft Authenticator アプリを使用するには、次の条件を満た�
 
 Microsoft Authenticator アプリを開き、職場または学校アカウントにアクセスして電話によるサインインを有効にします。
 
-- **アカウント タイルをタップする** と、アカウントの全画面ビューが表示されます。 " **電話によるサインインが有効になりました** " と表示されている場合は、パスワードを使用せずにサインインするように完全に設定されていることを意味します。 **[電話によるサインインを有効にする]** が表示されている場合は、それをタップして電話によるサインインをオンにします。
+- **アカウント タイルをタップする** と、アカウントの全画面ビューが表示されます。 "**電話によるサインインが有効になりました**" と表示されている場合は、パスワードを使用せずにサインインするように完全に設定されていることを意味します。 **[電話によるサインインを有効にする]** が表示されている場合は、それをタップして電話によるサインインをオンにします。
 - **既に 2 要素認証用にアプリを使用している場合** は、アカウント タイルをタップすると、アカウントの全画面ビューが表示されます。 次に、 **[電話によるサインインを有効にする]** をタップして、電話によるサインインをオンにします。
 - アプリの **[アカウント]** 画面に **お使いの職場または学校アカウントが表示されない** 場合は、まだアプリに追加していないことを意味します。 [職場または学校アカウントの追加](user-help-auth-app-add-work-school-account.md)に関するヘルプの手順に従って、職場または学校アカウントを追加します。
+
+> [!NOTE]
+> Microsoft では、iOS 上の Authenticator でのデバイスの登録と証明書ベースの認証の組み合わせをサポートしていません。 代わりに、ユーザーはサインインする前に Authenticator 設定を使用してデバイスを手動で登録する必要があります。
 
 電話によるサインインを有効にした後は、Microsoft Authenticator アプリのみを使用してサインインできます。 その方法は次のとおりです。
 
@@ -82,7 +85,7 @@ Outlook.com、Xbox、または Skype などにサインインするために使�
 
 Microsoft Authenticator アプリを開き、職場または学校アカウントにアクセスして電話によるサインインを有効にします。
 
-- **アカウント タイルをタップする** と、アカウントの全画面ビューが表示されます。 " **電話によるサインインが有効になりました** " と表示されている場合は、パスワードを使用せずにサインインするように完全に設定されていることを意味します。 **[電話によるサインインを有効にする]** が表示されている場合は、それをタップして電話によるサインインをオンにします。
+- **アカウント タイルをタップする** と、アカウントの全画面ビューが表示されます。 "**電話によるサインインが有効になりました**" と表示されている場合は、パスワードを使用せずにサインインするように完全に設定されていることを意味します。 **[電話によるサインインを有効にする]** が表示されている場合は、それをタップして電話によるサインインをオンにします。
 - **既に 2 要素認証用にアプリを使用している場合** は、アカウント タイルをタップすると、アカウントの全画面ビューが表示されます。 次に、 **[電話によるサインインを有効にする]** をタップして、電話によるサインインをオンにします。
 - アプリの **[アカウント]** 画面に **お使いのアカウントが表示されない** 場合は、まだアプリに追加していないことを意味します。 [個人用 Microsoft アカウントの追加](user-help-auth-app-add-personal-ms-account.md)に関する記事の手順に従って、お使いの個人用 Microsoft アカウントを追加します。
 
@@ -117,7 +120,7 @@ Microsoft Authenticator アプリを開き、職場または学校アカウン�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 個人用 Microsoft アカウントの確認コードの取得に問題がある場合は、「 [Microsoft アカウントのセキュリティ情報と確認コード](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)」の記事の「 **確認コードの問題のトラブルシューティング** 」セクションを参照してください。
+- 個人用 Microsoft アカウントの確認コードの取得に問題がある場合は、「[Microsoft アカウントのセキュリティ情報と確認コード](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)」の記事の「**確認コードの問題のトラブルシューティング**」セクションを参照してください。
 
 - アプリに関する一般的な質問については、「[Microsoft Authenticator アプリに関する FAQ](user-help-auth-app-faq.md)」をご覧ください
 

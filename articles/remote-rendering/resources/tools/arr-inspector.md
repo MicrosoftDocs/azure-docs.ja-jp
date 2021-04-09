@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
 ms.openlocfilehash: 300e0ff26d643ae0263d21e604cb26da37a18841
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97723827"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>ArrInspector 検査ツール

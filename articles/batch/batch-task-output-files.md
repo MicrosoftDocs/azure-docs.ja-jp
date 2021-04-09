@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 720c064c6b382bc62565c0828422181c761df8e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88936930"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch サービス API を使用してタスクのデータを Azure Storage に保持する
@@ -178,10 +178,10 @@ C# 以外の言語で開発している場合は、自分でファイル規則�
 [PersistOutputs](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs) サンプル プロジェクトは、GitHub にある [Azure Batch コード サンプル](https://github.com/Azure/azure-batch-samples)の 1 つです。 この Visual Studio ソリューションは、.NET 用の Batch クライアント ライブラリを使用して持続性のあるストレージにタスク出力を保持する方法を示しています。 サンプルを実行するには、次の手順に従います。
 
 1. **Visual Studio 2019** でプロジェクトを開きます。
-2. Microsoft.Azure.Batch.Samples.Common プロジェクトの **AccountSettings.settings** に、Batch と Storage の**アカウント資格情報**を追加します。
+2. Microsoft.Azure.Batch.Samples.Common プロジェクトの **AccountSettings.settings** に、Batch と Storage の **アカウント資格情報** を追加します。
 3. **ビルド** します (ただし実行はしないでください)。 NuGet パッケージの復元を求められた場合は、復元します。
-4. Azure ポータルを使用して、 [アプリケーション パッケージ](batch-application-packages.md) を **PersistOutputsTask**としてアップロードします。 `PersistOutputsTask.exe` とそれに依存するアセンブリを .zip パッケージに含め、アプリケーション ID を "PersistOutputsTask"、アプリケーション パッケージのバージョンを "1.0" に設定します。
-5. **PersistOutputs** プロジェクトを**開始** (実行) します。
+4. Azure ポータルを使用して、 [アプリケーション パッケージ](batch-application-packages.md) を **PersistOutputsTask** としてアップロードします。 `PersistOutputsTask.exe` とそれに依存するアセンブリを .zip パッケージに含め、アプリケーション ID を "PersistOutputsTask"、アプリケーション パッケージのバージョンを "1.0" に設定します。
+5. **PersistOutputs** プロジェクトを **開始** (実行) します。
 6. サンプルの実行に使用する保持テクノロジを選択するように求められたら、「**2**」と入力して、タスク出力の保持に Batch サービス API を使用してサンプルを実行します。
 7. 必要であれば、サンプルをもう一度実行し、「**3**」と入力して、Batch サービス API を使用して出力を保持するとともに、ファイル規則の標準に準拠して保存先のコンテナーと BLOB のパスに名前を付けます。
 

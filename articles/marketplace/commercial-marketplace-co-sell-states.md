@@ -8,10 +8,10 @@ author: palanis-MSFT
 ms.author: palanis
 ms.date: 09/02/2020
 ms.openlocfilehash: 9ec914e5fea0d54f4705e8f14f5a64fa80c1adfe
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102120030"
 ---
 # <a name="co-sell-state-and-province-codes-in-azure-marketplace"></a>Azure Marketplace での共同販売の州コード

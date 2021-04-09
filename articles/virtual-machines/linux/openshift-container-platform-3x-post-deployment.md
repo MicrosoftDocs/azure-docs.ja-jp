@@ -3,19 +3,20 @@ title: Azure での OpenShift Container Platform 3.11 のデプロイ後タス�
 description: OpenShift Container Platform 3.11 クラスターがデプロイされた後の追加タスクについて説明します。
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible, devx-track-azurecli
-ms.openlocfilehash: dd967ad08b628f9073edfe548033f7e97845d047
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c3f9aaa15a697202aa76c563ed62bf37443d69ec
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016065"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669386"
 ---
 # <a name="post-deployment-tasks"></a>デプロイ後タスク
 
@@ -34,11 +35,11 @@ OpenShift クラスターをデプロイした後に、追加の項目を構成�
 
 以下の手順では、Azure CLI を使用してアプリの登録を作成し、GUI (Portal) を使用してアクセス許可を設定します。 アプリの登録を作成するには、次の 5 つの情報が必要です。
 
-- 表示名:アプリの登録名 (例: OCPAzureAD)
-- ホーム ページ:OpenShift コンソール URL (例: `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
-- 識別子 URI:OpenShift コンソール URL (例: `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
-- 応答 URL:マスター パブリック URL とアプリの登録名 (例: `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD`)
-- Password (パスワード):強力なパスワードを使用
+- 表示名: アプリの登録名 (例: OCPAzureAD)
+- ホーム ページ: OpenShift コンソール URL (例: `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
+- 識別子 URI: OpenShift コンソール URL (例: `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
+- 応答 URL: マスター パブリック URL とアプリの登録名 (例: `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD`)
+- パスワード: セキュリティで保護されたパスワード (強力なパスワードを使用する)
 
 次の例では、上記の情報を使用してアプリの登録を作成します。
 
@@ -68,7 +69,7 @@ az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.
 
 後の手順のために、コマンドから返された appId プロパティを書き留めます。
 
-Azure Portal で次の操作を行います。
+Azure portal で次の操作を行います。
 
 1. **[Azure Active Directory]**  >  **[アプリの登録]** の順に選択します。
 2. アプリの登録を検索します (例: OCPAzureAD)。
@@ -78,15 +79,15 @@ Azure Portal で次の操作を行います。
 
    ![アプリケーションの登録](media/openshift-post-deployment/app-registration.png)
 
-6. [手順 1:API の選択]、 **[Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)]** の順にクリックします。 下部にある **[選択]** をクリックします。
+6. [手順 1: API の選択]、**[Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)]** の順にクリックします。 下部にある **[選択]** をクリックします。
 
    ![[アプリの登録] の [API の選択]](media/openshift-post-deployment/app-registration-select-api.png)
 
-7. [手順 2:アクセス許可の選択] で、 **[委任されたアクセス許可]** の **[サインインとユーザー プロファイルの読み取り]** を選択し、 **[選択]** をクリックします。
+7. [手順 2: アクセス許可の選択] で、**[委任されたアクセス許可]** の **[サインインとユーザー プロファイルの読み取り]** を選択し、**[選択]** をクリックします。
 
    ![[アプリの登録] のアクセス](media/openshift-post-deployment/app-registration-access.png)
 
-8. **[Done]** を選択します。
+8. **[完了]** を選択します。
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>Azure AD 認証用に OpenShift を構成する
 
@@ -160,7 +161,7 @@ OpenShift に Log Analytics エージェントを追加するには 3 つの方�
 - OpenShift の各ノードで Azure Monitor VM 拡張機能を有効にする
 - Log Analytics エージェントを OpenShift デーモン セットとしてインストールする
 
-詳細については、[手順](../../azure-monitor/insights/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift)全体を参照してください。
+詳細については、[手順](../../azure-monitor/containers/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift)全体を参照してください。
 
 ## <a name="configure-metrics-and-logging"></a>メトリックとログを構成する
 
@@ -198,7 +199,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 
 Open Service Broker for Azure (OSBA) を使用して、OpenShift から Azure Cloud Services を直接プロビジョニングすることができます。 OSBA は、Azure 用の Open Service Broker API の実装です。 Open Service Broker API は、クラウド ネイティブ アプリケーションがロックインなしでクラウド サービスの管理に使用できるクラウド プロバイダー用の共通言語を定義した仕様です。
 
-OpenShift に OSBA をインストールするには、こちらの手順に従います: https://github.com/Azure/open-service-broker-azure#openshift-project-template 。 
+OpenShift に OSBA をインストールするには、こちらの手順に従います: https://github.com/Azure/open-service-broker-azure#openshift-project-template。 
 > [!NOTE]
 > OpenShift プロジェクト テンプレートのセクションの手順のみを実行し、インストールのセクション全体は実行しないでください。
 

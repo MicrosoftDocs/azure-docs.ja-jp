@@ -4,10 +4,10 @@ description: ラボ アカウント所有者がサポートの連絡先情報を
 ms.date: 06/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 17456f61352b1e26a33c042b27faa2d3aa44d73a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85445085"
 ---
 # <a name="set-up-support-information-lab-account-owner-in-azure-lab-services"></a>サポート情報を設定する (Azure Lab Services のラボ アカウント所有者)
@@ -26,9 +26,9 @@ ms.locfileid: "85445085"
 3. ラボ アカウントの一覧からご使用のラボ アカウントを選択します。 
 4. **[社内サポート]** ページに切り替え、次の手順を実行します。
     1. **サポート URL** を入力します。 
-     2. **サポート電子メール**を入力します。 
-     3. **サポート電話番号**を入力します。
-     4. 詳細な**サポートの指示**を入力します (省略可能)。 ラボの所有者とユーザーには、サポートの連絡先情報と共にこのテキストが表示されます。 URL は自動的にリンクに変換されます。 
+     2. **サポート電子メール** を入力します。 
+     3. **サポート電話番号** を入力します。
+     4. 詳細な **サポートの指示** を入力します (省略可能)。 ラボの所有者とユーザーには、サポートの連絡先情報と共にこのテキストが表示されます。 URL は自動的にリンクに変換されます。 
      5. ツールバーの **[保存]** を選択します。
 
          ![[社内サポート] ページ](./media/lab-account-owner-support-information/internal-support-page.png)      

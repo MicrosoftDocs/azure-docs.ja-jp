@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
 ms.openlocfilehash: e7ddeaf1273a9e3b5608336b24c07fad3c3f4525
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031040"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Azure Monitor (プレビュー) の Log Analytics ワークスペースでカスタム フィールドを作成する

@@ -7,10 +7,10 @@ ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
 ms.openlocfilehash: 0d70ed8b906c171c001c5bda81a79ca9b65febac
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101658742"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-sample-microsoft-connected-cache-within-an-azure-iot-edge-for-industrial-iot-configuration"></a>Microsoft 接続キャッシュ プレビューのデプロイ シナリオのサンプル: インダストリアル IoT の構成を対象とした Azure IoT Edge 内の Microsoft 接続キャッシュ

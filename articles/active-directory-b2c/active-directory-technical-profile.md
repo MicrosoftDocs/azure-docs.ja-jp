@@ -12,10 +12,10 @@ ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3f92bfe98a45117264c957481a75493de652abc9
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97508103"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで Azure Active Directory 検証技術プロファイルを定義します。
@@ -246,7 +246,7 @@ InputClaims 要素には、ディレクトリ内のアカウントを検索し�
 ```
 ## <a name="metadata"></a>Metadata
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Operation | はい | 実行する操作。 指定できる値: `Read`、`Write`、`DeleteClaims`、または `DeleteClaimsPrincipal`。 |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | いいえ | ユーザー オブジェクトがディレクトリに存在しない場合、エラーを発生させます。 指定できる値: `true` または `false`。 |
@@ -259,7 +259,7 @@ InputClaims 要素には、ディレクトリ内のアカウントを検索し�
  
 次の設定を使用して、失敗したときに表示されるエラー メッセージを構成できます。 メタデータは、[セルフアサート](self-asserted-technical-profile.md)技術プロファイルで構成する必要があります。 エラー メッセージは、[ローカライズ](localization.md)できます。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | UserMessageIfClaimsPrincipalAlreadyExists | いいえ | エラーが発生する場合 (RaiseErrorIfClaimsPrincipalAlreadyExists 属性の説明を参照)、ユーザー オブジェクトが既に存在する場合にユーザーに表示するメッセージを指定します。 |
 | UserMessageIfClaimsPrincipalDoesNotExist | いいえ | エラーが発生する場合 (RaiseErrorIfClaimsPrincipalDoesNotExist 属性の説明を参照)、ユーザー オブジェクトが存在しない場合にユーザーに表示するメッセージを指定します。 |

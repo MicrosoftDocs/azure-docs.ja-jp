@@ -5,15 +5,15 @@ description: Azure Communication Services における通話フローのトポ�
 author: nmurav
 services: azure-communication-services
 ms.author: nmurav
-ms.date: 12/11/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d2df7255980ca00d405cf80a9fff69ff0511bd17
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 526e3a1e4eeb6ef6a31a33498241d9a7443cca35
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659309"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490638"
 ---
 # <a name="call-flow-topologies"></a>通話フローのトポロジ
 この記事では、Azure Communication Services における通話フローのトポロジについて説明します。 この記事は、管理下のネットワーク内に Communication Services を統合することを検討しているエンタープライズのお客様にぜひお勧めします。 Communication Services における通話フローの概要については、[通話フローの概念に関するドキュメント](./call-flows.md)を参照してください。
@@ -152,7 +152,7 @@ VPN とカスタマー ネットワークとの間のシグナリングにはフ
 
 ### <a name="vpn-user-to-internal-user-direct-media"></a>VPN ユーザーから内部ユーザー (ダイレクト メディア)
 
-:::image type="content" source="./media/call-flows/vpn-to-internal-direct-media.png" alt-text="ダイレクト メディアを使用した VPN との一対一の通話フロー":::
+:::image type="content" source="./media/call-flows/vpn-to-internal-direct-media.png" alt-text="ダイレクト メディアを使用した VPN との一対一の通話フロー (内部ユーザー)":::
 
 *図 6 - VPN ユーザーから内部ユーザー (ダイレクト メディア)*
 
@@ -162,7 +162,7 @@ VPN とカスタマー ネットワークとの間のシグナリングにはフ
 
 ### <a name="vpn-user-to-external-user-direct-media"></a>VPN ユーザーから外部ユーザー (ダイレクト メディア)
 
-:::image type="content" source="./media/call-flows/vpn-user-to-external-user.png" alt-text="ダイレクト メディアを使用した VPN との一対一の通話フロー":::
+:::image type="content" source="./media/call-flows/vpn-user-to-external-user.png" alt-text="ダイレクト メディアを使用した VPN との一対一の通話フロー (外部ユーザー)":::
 
 *図 7 - VPN ユーザーから外部ユーザー (ダイレクト メディア)*
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wellsi
 ms.openlocfilehash: c590e0972de289a36890a75b220eddbded701ea8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "74815566"
 ---
 # <a name="troubleshoot-the-speech-devices-sdk"></a>Speech Devices SDK のトラブルシューティング
@@ -25,11 +25,11 @@ ms.locfileid: "74815566"
 
 Speech Service を使用している場合に証明書エラーが発生した場合は、デバイスの日付と時刻が正しいことを確認します。
 
-1. **[設定]** に移動します。 **[システム]** で、 **[日付と時刻]** を選択します。
+1. **[設定]** に移動します。 **[システム]** で、**[日付と時刻]** を選択します。
 
     ![[設定] で、[日付と時刻] を選択する](media/speech-devices-sdk/qsg-12.png)
 
-1. **[Automatic date & time]** (自動の日付と時刻) オプションは選択したままにします。 **[タイム ゾーンの選択]** で、現在のタイム ゾーンを選択します。
+1. **[Automatic date & time]**(自動の日付と時刻) オプションは選択したままにします。 **[タイム ゾーンの選択]** で、現在のタイム ゾーンを選択します。
 
     ![日付とタイム ゾーンのオプションを選択する](media/speech-devices-sdk/qsg-13.png)
 

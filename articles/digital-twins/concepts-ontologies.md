@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b53cac6e732fb568ba799534d9ad9168fd65eab1
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 3393856b25040cff603ea2ef51e8adbcba78dc26
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100563357"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102034695"
 ---
 # <a name="what-is-an-ontology"></a>オントロジとは 
 
@@ -58,7 +58,7 @@ DTDL を使用した業界標準のオントロジを統合するための戦略
 
 この後、Azure Digital Twins インスタンスで自分のモデルを使用できるようになります。 
 
-[Azure Digital Twins (ADT) エクスプローラー](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)や [ADT Model Visualizer](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer) などのサンプルを使用してそれらを視覚化できます。また、それらを使用した[デジタル ツイン](concepts-twins-graph.md)の作成に進むこともできます。
+[Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) や [Azure Digital Twins Model Visualizer](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer) などのサンプルを使用してそれらを視覚化できます。また、それらを使用した[デジタル ツイン](concepts-twins-graph.md)の作成に進むこともできます。
 
 ## <a name="next-steps"></a>次のステップ
 

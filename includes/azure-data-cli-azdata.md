@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/19/2020
 ms.author: mikeray
 ms.openlocfilehash: 9600ddd3bf0da8a7d72af237a10325910c7ed535
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92309500"
 ---
-Azure データ CLI (`azdata`)
+Azure Data CLI (`azdata`)

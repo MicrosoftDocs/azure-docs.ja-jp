@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 55fa106f0515405dcad969f05d28e0bc7b975b40
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: c38e4681c76fb0dd52d77c7dc1438b87a9571a80
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922299"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103562061"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure の SQL データ同期とは
 
@@ -100,6 +100,9 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 - [PowerShell を使用して Azure SQL Database の複数データベース間で同期する](scripts/sql-data-sync-sync-data-between-sql-databases.md)
 - [PowerShell を使用して Azure SQL Database と SQL Server インスタンスのデータベース間で同期する](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
+
+### <a name="set-up-data-sync-with-rest-api"></a>REST API を使用したデータ同期の設定
+- [REST API を使用して Azure SQL Database の複数データベース間で同期する](scripts/sql-data-sync-sync-data-between-sql-databases-rest-api.md)
 
 ### <a name="review-the-best-practices-for-data-sync"></a>データ同期のベスト プラクティスの確認
 

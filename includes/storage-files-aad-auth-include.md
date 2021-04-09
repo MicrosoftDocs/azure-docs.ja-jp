@@ -9,10 +9,10 @@ ms.date: 07/30/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 84fa97ec964d490eb9571c7e030704562a4a81d0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95553660"
 ---
 [Azure Files](../articles/storage/files/storage-files-introduction.md) では、[オンプレミス Active Directory Domain Services (AD DS)](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) と[ Azure Active Directory Domain Services (Azure AD DS)](../articles/active-directory-domain-services/overview.md) を介した、サーバー メッセージ ブロック (SMB) 経由の ID ベースの認証がサポートされます。 この記事では、Azure Files がオンプレミスまたは Azure のドメイン サービスを利用し、SMB 経由の Azure ファイル共有への ID ベースのアクセスをサポートする方法に焦点を当てています。 Azure ファイル共有のために ID ベースのアクセスを有効にすると、既存のディレクトリ サービスを置換することなく、既存のファイル サーバーを Azure ファイル共有に置換できます。共有への継ぎ目のないユーザー アクセスを維持できます。 

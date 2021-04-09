@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 75226f92995794221635ced7ee0e285ac824b6e2
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 714fb92e8757fed6e11a09528b60cda3e945175e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696865"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102218895"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Azure CLI を使用して IPv6 のパブリック ロード バランサーを作成する
 
@@ -58,7 +58,7 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
 
 この例では、PowerShell コマンド ウィンドウで Azure CLI ツールを実行しています。 読みやすさを改善し、再利用できるようにするために、Azure PowerShell コマンドレットではなく、PowerShell のスクリプト機能を使用します。
 
-1. リンクされている記事の手順に従って [Azure CLI をインストールして構成](/cli/azure/install-azure-cli?view=azure-cli-latest)し、Azure アカウントにサインインします。
+1. リンクされている記事の手順に従って [Azure CLI をインストールして構成](/cli/azure/install-azure-cli)し、Azure アカウントにサインインします。
 
 2. Azure CLI コマンドで使用するために PowerShell 変数を設定します。
 

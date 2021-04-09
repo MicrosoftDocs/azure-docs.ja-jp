@@ -9,12 +9,13 @@ ms.subservice: synapse-link
 ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 13891f9614e658be39adbb69fed1503a0c66d5e4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: cosmos-db
+ms.openlocfilehash: 755782b117ef5a5619ddde3e1573fe1805117e77
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309220"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868564"
 ---
 # <a name="copy-data-from-azure-cosmos-db-into-a-dedicated-sql-pool-using-apache-spark"></a>Apache Spark を使用して Azure Cosmos DB から専用 SQL プールにデータをコピーする
 
@@ -37,7 +38,7 @@ Azure Synapse Link for Azure Cosmos DB を使用すると、ユーザーは Azur
 [![Spark から SQL への手順 1](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
 
 ## <a name="data"></a>Data
-この例では、 **RetailSales** という HTAP コンテナーを使用します。 これは、 **ConnectedData** というリンクされたサービスの一部です。スキーマは次のとおりです。
+この例では、**RetailSales** という HTAP コンテナーを使用します。 これは、**ConnectedData** というリンクされたサービスの一部です。スキーマは次のとおりです。
 * _rid: string (nullable = true)
 * _ts: long (nullable = true)
 * logQuantity: double (nullable = true)
@@ -50,7 +51,7 @@ Azure Synapse Link for Azure Cosmos DB を使用すると、ユーザーは Azur
 * weekStarting: long (nullable = true)
 * _etag: string (nullable = true)
 
-レポート用に、売上 (" *数量* "、" *収益* " (価格 x 数量)) を *productCode* と *weekStarting* で集計します。 最後に、そのデータを **dbo.productsales** という専用 SQL プール テーブルにエクスポートします。
+レポート用に、売上 ("*数量*"、"*収益*" (価格 x 数量)) を *productCode* と *weekStarting* で集計します。 最後に、そのデータを **dbo.productsales** という専用 SQL プール テーブルにエクスポートします。
 
 ## <a name="configure-a-spark-notebook"></a>Spark ノートブックを構成する
 Scala as Spark (Scala) を主要言語とした Spark ノートブックを作成します。 セッションにはノートブックのデフォルト設定を使用します。

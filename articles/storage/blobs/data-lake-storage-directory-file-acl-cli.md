@@ -1,34 +1,37 @@
 ---
-title: Azure Data Lake Storage Gen2 でファイルと ACL に Azure CLI を使用する
-description: Azure CLI を使用して、階層型名前空間を持つストレージ アカウントでディレクトリ、ファイル、ディレクトリのアクセス制御リスト (ACL) を管理します。
+title: Azure CLI を使用してデータを管理する (Azure Data Lake Storage Gen2)
+description: Azure CLI を使用して、階層型名前空間を持つストレージ アカウントでディレクトリとファイルを管理します。
 services: storage
 author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 42359eb8a2bfdad23589e0302b80e7806b388510
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3e9afd4617eb7445ba83948d46eef0890832e2be
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913608"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650356"
 ---
-# <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure CLI を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
+# <a name="use-azure-cli-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Azure CLI を使用して Azure Data Lake Storage Gen2 でディレクトリとファイルを管理する
 
-この記事では、[Azure コマンド ライン インターフェイス (CLI)](/cli/azure/) を使用して、階層型名前空間を持つストレージ アカウントでディレクトリ、ファイル、アクセス許可を作成および管理する方法について説明します。 
+この記事では、[Azure コマンド ライン インターフェイス (CLI)](/cli/azure/) を使用して、階層型名前空間を持つストレージ アカウントでディレクトリとファイルを作成および管理する方法について説明します。
+
+ディレクトリとファイルのアクセス制御リスト (ACL) を取得、設定、更新する方法については、「[Azure Data Lake Storage Gen2 で Azure CLI を使用して ACL を管理する](data-lake-storage-acl-cli.md)」を参照してください。
 
 [サンプル](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md) | [フィードバックを送る](https://github.com/Azure/azure-cli-extensions/issues)
 
 ## <a name="prerequisites"></a>前提条件
 
-> [!div class="checklist"]
-> * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-> * 階層型名前空間 (HNS) が有効になっているストレージ アカウント。 作成するには、[こちら](../common/storage-account-create.md)の手順に従います。
-> * Azure CLI バージョン `2.6.0` 以上。
+- Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+
+- 階層型名前空間が有効になっているストレージ アカウント。 作成するには、[こちら](create-data-lake-storage-account.md)の手順に従います。
+
+- Azure CLI バージョン `2.6.0` 以上。
 
 ## <a name="ensure-that-you-have-the-correct-version-of-azure-cli-installed"></a>正しいバージョンの Azure CLI がインストールされていることを確認する
 
@@ -39,6 +42,7 @@ ms.locfileid: "95913608"
    ```azurecli
     az --version
    ```
+
    Azure CLI のバージョンが `2.6.0` より低い場合は、新しいバージョンをインストールします。 「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="connect-to-the-account"></a>アカウントに接続する
@@ -64,7 +68,7 @@ ms.locfileid: "95913608"
    `<subscription-id>` プレースホルダーの値をサブスクリプションの ID に置き換えます。
 
 > [!NOTE]
-> この記事に示す例は、Azure Active Directory (AD) 認証を示しています。 認証方法の詳細については、「[Azure CLI を使用して BLOB またはキュー データへのアクセスを承認する](./authorize-data-operations-cli.md)」を参照してください。
+> この記事に示す例は、Azure Active Directory (Azure AD) 認証を示しています。 認証方法の詳細については、「[Azure CLI を使用して BLOB またはキュー データへのアクセスを承認する](./authorize-data-operations-cli.md)」を参照してください。
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
@@ -216,106 +220,9 @@ az storage fs file move -p my-file.txt -f my-file-system --new-path my-file-syst
 az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --account-name mystorageaccount --auth-mode login 
 ```
 
-## <a name="manage-access-control-lists-acls"></a>アクセス制御リスト (ACL) を管理する
-
-ディレクトリとファイルのアクセス許可を取得、設定、更新できます。
-
-> [!NOTE]
-> Azure Active Directory (Azure AD) を使用してコマンドを承認している場合は、セキュリティ プリンシパルに [Storage BLOB データ所有者ロール](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)が割り当てられていることを確認してください。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](./data-lake-storage-access-control.md)」を参照してください。
-
-### <a name="get-an-acl"></a>ACL を取得する
-
-`az storage fs access show` コマンドを使用して、**ディレクトリ** の ACL を取得します。
-
-この例では、ディレクトリの ACL を取得して、その ACL をコンソールに出力します。
-
-```azurecli
-az storage fs access show -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-`az storage fs access show` コマンドを使用して、**ファイル** のアクセス許可を取得します。 
-
-この例では、ファイルの ACL を取得して、その ACL をコンソールに出力します。
-
-```azurecli
-az storage fs access show -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-次の画像は、ディレクトリの ACL を取得した後の出力を示しています。
-
-![ACL 出力を取得する](./media/data-lake-storage-directory-file-acl-cli/get-acl.png)
-
-この例では、所有ユーザーには読み取り、書き込み、実行のアクセス許可があります。 所有グループには、読み取りと実行のアクセス許可のみがあります。 アクセス制御リストの詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](data-lake-storage-access-control.md)」を参照してください。
-
-### <a name="set-an-acl"></a>ACL を設定する
-
-`az storage fs access set` コマンドを使用して、**ディレクトリ** の ACL を設定します。 
-
-この例では、所有ユーザー、所有グループ、またはその他のユーザーのディレクトリに ACL を設定し、その ACL をコンソールに出力します。
-
-```azurecli
-az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-この例では、所有ユーザー、所有グループ、またはその他のユーザーのディレクトリに *既定の* ACL を設定し、その ACL をコンソールに出力します。
-
-```azurecli
-az storage fs access set --acl "default:user::rw-,group::rw-,other::-wx" -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-`az storage fs access set` コマンドを使用して、**ファイル** の ACL を設定します。 
-
-この例では、所有ユーザー、所有グループ、またはその他のユーザーのファイルに ACL を設定し、その ACL をコンソールに出力します。
-
-```azurecli
-az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-次の画像は、ファイルの ACL を設定した後の出力を示しています。
-
-![ACL 出力を取得する 2](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
-
-この例では、所有ユーザーと所有グループには、読み取りと書き込みのアクセス許可のみがあります。 他のすべてのユーザーには、書き込みと実行のアクセス許可があります。 アクセス制御リストの詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](data-lake-storage-access-control.md)」を参照してください。
-
-### <a name="update-an-acl"></a>ACL を更新する
-
-`az storage fs access set` コマンドを使用して、このアクセス許可を設定することもできます。 
-
-ディレクトリまたはファイルの ACL を更新するには、`-permissions` パラメーターを短縮形の ACL に設定します。
-
-この例では、**ディレクトリ** の ACL を更新します。
-
-```azurecli
-az storage fs access set --permissions rwxrwxrwx -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-この例では、**ファイル** の ACL を更新します。
-
-```azurecli
-az storage fs access set --permissions rwxrwxrwx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-`--owner` または `group` パラメーターをユーザーのエンティティ ID またはユーザー プリンシパル名 (UPN) に設定して、ディレクトリまたはファイルの所有ユーザーとグループを更新することもできます。 
-
-この例では、ディレクトリの所有者を変更します。 
-
-```azurecli
-az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
-```
-
-この例では、ファイルの所有者を変更します。 
-
-```azurecli
-az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
-
-```
-
-### <a name="set-an-acl-recursively"></a>ACL を再帰的に設定する
-
-また、親ディレクトリの既存の子項目に対して ACL を再帰的に追加、更新、および削除することができます。それぞれの子項目に対してこれらの変更を個別に行う必要はありません。 詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御リスト (ACL) を再帰的に設定する](recursive-access-control-lists.md)」を参照してください。
-
 ## <a name="see-also"></a>関連項目
 
-* [サンプル](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
-* [フィードバックのご提供](https://github.com/Azure/azure-cli-extensions/issues)
-* [既知の問題](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+- [サンプル](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
+- [フィードバックのご提供](https://github.com/Azure/azure-cli-extensions/issues)
+- [既知の問題](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+- [Azure Data Lake Storage Gen2 で Azure CLI を使用して ACL を管理する](data-lake-storage-acl-cli.md)

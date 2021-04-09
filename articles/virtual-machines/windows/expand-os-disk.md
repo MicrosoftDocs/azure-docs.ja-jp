@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 2f991dd93549cf73005127569af496df541eecde
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: af57bc396349286c3edcaefc8385ddbaec066226
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102549602"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103199447"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>仮想マシンの OS ドライブを展開する方法
 
@@ -49,21 +49,21 @@ ms.locfileid: "102549602"
 
     :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="ディスク名が選択されている [ディスク] ウィンドウを示すスクリーンショット。":::
 
-4. 左側のメニューの **[設定]** で **[構成]** を選択します。
+4. 左側のメニューの **[設定]** で、 **[Size + performance]\(サイズおよびパフォーマンス\)** を選択します。
 
-    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="メニューの [設定] セクションで [構成] オプションが選択されているのを示すスクリーンショット。":::
+    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="メニューの [設定] セクションで [サイズおよびパフォーマンス] オプションが選択されているのを示すスクリーンショット。":::
 
-5. **[サイズ (GiB)]** で、必要なディスク サイズを選択します。
+5. **[Size + performance]\(サイズおよびパフォーマンス\)** で、必要なディスク サイズを選択します。
    
    > [!WARNING]
    > 新しいサイズには、既存のディスク サイズより大きい値を指定する必要があります。 OS ディスクで許可される最大値は、2,048 GB です。 (VHD BLOB はこのサイズよりも大きくすることができます。ただし、OS の実行に使用できるのは、最初の 2,048 GB の領域のみです。)
    > 
 
-    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="ディスク サイズが選択された [構成] ウィンドウを示すスクリーンショット。":::
+    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="ディスク サイズが選択された[Size + performance]\(サイズおよびパフォーマンス\) ペインを示すスクリーンショット。":::
 
-6. **[保存]** を選択します。
+6. ページの下部にある **[サイズ変更]** を選択します。
 
-    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="[保存] ボタンが選択された [構成] ウィンドウを示すスクリーンショット。":::
+    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="[サイズ変更] ボタンが選択された [Size + performance]\(サイズおよびパフォーマンス\) ペインを示すスクリーンショット。":::
 
 
 ## <a name="resize-a-managed-disk-by-using-powershell"></a>PowerShell を使用してマネージド ディスクのサイズを変更する

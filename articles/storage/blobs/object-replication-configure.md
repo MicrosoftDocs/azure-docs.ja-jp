@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 03/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 226601eadf922a9d834ab84520fd1edf964348fa
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 2b6855d72b644a3fe1fa46c883eb7414383a1a57
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762928"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031703"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>ブロック BLOB のオブジェクト レプリケーションを構成する
 
@@ -238,10 +238,10 @@ az storage account or-policy show \
 
 次の表は、各シナリオで JSON ファイル内のポリシー ID とルール ID に使用される値をまとめたものです。
 
-| このアカウントに JSON ファイルを作成する場合は、 | この値にポリシー ID とルール ID を設定します。 |
-|-|-|
-| 宛先アカウント | 文字列の *既定値*。 Azure Storage で自動的にポリシー ID とルール ID が作成されます。 |
-| ソース アカウント | 宛先アカウントで定義されているポリシーを JSON ファイルとしてダウンロードすると、ポリシー ID とルール ID の値が返されます。 |
+| このアカウントに JSON ファイルを作成する場合は、 | ポリシー ID をこの値に設定します | ルール ID をこの値に設定します |
+|-|-|-|
+| 宛先アカウント | 文字列の *既定値*。 Azure Storage によって自動的にポリシー ID 値が作成されます。 | 空の文字列。 Azure Storage によって自動的にルール ID 値が作成されます。 |
+| ソース アカウント | 宛先アカウントで定義されているポリシーを JSON ファイルとしてダウンロードすると、ポリシー ID の値が返されます。 | 宛先アカウントで定義されているポリシーを JSON ファイルとしてダウンロードすると、ルール ID の値が返されます。 |
 
 次の例では、プレフィックス *b* が一致する 1 つのルールを使用して宛先アカウントにレプリケーション ポリシーを定義し、レプリケート対象の BLOB に最小作成時間を設定しています。 山かっこ内の値は、実際の値に置き換えてください。
 
@@ -253,7 +253,7 @@ az storage account or-policy show \
     "destinationAccount": "<dest-account>",
     "rules": [
       {
-        "ruleId": "default",
+        "ruleId": "",
         "sourceContainer": "<source-container>",
         "destinationContainer": "<destination-container>",
         "filters": {
@@ -272,7 +272,7 @@ az storage account or-policy show \
 
 Azure portal で JSON ファイルを使用して宛先アカウントにオブジェクト レプリケーションを構成するには、次の手順に従います。
 
-1. 宛先アカウントにレプリケーション ポリシーを定義するローカル JSON ファイルを作成します。 Azure Storage でポリシー ID が定義されるように、**policyId** フィールドを **既定値** に設定します。
+1. 宛先アカウントにレプリケーション ポリシーを定義するローカル JSON ファイルを作成します。 Azure Storage でポリシー ID が定義されるように、**policyId** フィールドを *既定値* に設定します。
 
     レプリケーション ポリシーを定義する JSON ファイルを簡単に作成する方法は、まず、Azure portal で 2 つのストレージ アカウント間にテスト レプリケーション ポリシーを作成することです。 その後、レプリケーション ルールをダウンロードし、必要に応じて JSON ファイルを変更できます。
 

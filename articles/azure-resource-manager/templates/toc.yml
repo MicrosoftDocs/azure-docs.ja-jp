@@ -477,7 +477,7 @@
           href: view-resources.md
     - name: オーサリング ツールを使用する
       items:
-        - name: "Visual\_Studio"
+        - name: Visual Studio
           href: create-visual-studio-deployment-project.md
         - name: VS デプロイ スクリプトを Az モジュールに更新する
           href: update-visual-studio-deployment-script.md
@@ -556,7 +556,7 @@
     - name: Java
       href: /java/api/com.microsoft.azure.management.resources
     - name: Python
-      href: /python/api/overview/azure/resources?view=azure-python
+      href: /python/api/overview/azure/resources
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

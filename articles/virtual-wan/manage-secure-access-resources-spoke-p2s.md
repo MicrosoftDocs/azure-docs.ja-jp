@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: cherylmc
 ms.openlocfilehash: 751d11fcd4b5d4c33145ee7f2b7b49971b8927ae
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102048262"
 ---
 # <a name="manage-secure-access-to-resources-in-spoke-vnets-for-user-vpn-clients"></a>ユーザー VPN クライアント用のスポーク VNet にあるリソースへのセキュリティで保護されたアクセスを管理する

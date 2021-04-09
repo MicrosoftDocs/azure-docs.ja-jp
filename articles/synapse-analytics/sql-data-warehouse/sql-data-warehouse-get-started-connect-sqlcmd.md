@@ -1,6 +1,6 @@
 ---
 title: sqlcmd を使用して接続する
-description: sqlcmd コマンド ライン ユーティリティを使用して Synapse SQL プールに接続し、クエリを実行します。
+description: sqlcmd コマンドライン ユーティリティを使用して、Azure Synapse Analytics の専用 SQL プールに接続し、クエリを実行します。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3d1d8d3ce3afece5a979aadc27cd82dc7ddaf0d5
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f8b4d54585bc70c3ee5f24846e216f75e985cf84
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676232"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675737"
 ---
-# <a name="connect-to-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>sqlcmd を使用して Azure Synapse Analytics の SQL プールに接続する
+# <a name="connect-to-a-dedicated-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>sqlcmd を使用して Azure Synapse Analytics の専用 SQL プールに接続する
 
 > [!div class="op_single_selector"]
 >
@@ -28,15 +28,15 @@ ms.locfileid: "98676232"
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-[sqlcmd][sqlcmd] コマンド ライン ユーティリティを使用して SQL プールに接続し、クエリを実行します。  
+[sqlcmd][sqlcmd] コマンド ライン ユーティリティを使用して、専用 SQL プールに接続し、クエリを実行します。  
 
 ## <a name="1-connect"></a>1.接続する
 
-[sqlcmd][sqlcmd] の使用を開始するには、コマンド プロンプトを開いて「**sqlcmd**」と入力し、続けて SQL プールの接続文字列を入力します。 接続文字列では、次のパラメーターが必要になります。
+[sqlcmd][sqlcmd] の使用を開始するには、コマンド プロンプトを開いて「**sqlcmd**」と入力し、続けて専用 SQL プールの接続文字列を入力します。 接続文字列では、次のパラメーターが必要になります。
 
 * **サーバー (-S):** サーバー。`<`Server Name`>`.database.windows.net の形式で指定します。
-* **データベース (-d):** SQL プール名。
-* **引用符で囲まれた ID の有効化 (-I):** SQL プール インスタンスに接続するには、引用符で囲まれた ID を有効にする必要があります。
+* **データベース (-d):** 専用 SQL プールの名前。
+* **引用符で囲まれた ID の有効化 (-I):** 専用 SQL プール インスタンスに接続するには、引用符で囲まれた ID を有効にする必要があります。
 
 SQL Server 認証を使用するには、ユーザー名とパスワードのパラメーターを追加する必要があります。
 

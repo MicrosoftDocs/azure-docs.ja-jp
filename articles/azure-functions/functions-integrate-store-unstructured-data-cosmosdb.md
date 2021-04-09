@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 5bc3895cb219338acde492b871dce806db70622b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91661161"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Azure Functions と Azure Cosmos DB を使用して非構造化データを格納する
@@ -42,11 +42,11 @@ Azure Functions では、入力および出力バインディングによって�
 
 1. **[統合]** を選択し、 **[+ 出力を追加する]** を選択します。
 
-     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-add-output-binding.png" alt-text="Azure portal で Http 関数を選択する。" border="true":::
+     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-add-output-binding.png" alt-text="Azure Cosmos DB 出力バインディングを追加する。" border="true":::
 
 1. 次の表に指定されている **[出力の作成]** 設定を使用します。
 
-     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-configure-cosmosdb-binding.png" alt-text="Azure portal で Http 関数を選択する。" border="true":::
+     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-configure-cosmosdb-binding.png" alt-text="Azure Cosmos DB 出力バインディングを構成する。" border="true":::
 
     | 設定      | 推奨値  | 説明                                |
     | ------------ | ---------------- | ------------------------------------------ |
@@ -55,7 +55,7 @@ Azure Functions では、入力および出力バインディングによって�
     | **データベース名** | taskDatabase | ドキュメントを保存するデータベースの名前。 |
     | **[コレクション名]** | taskCollection | データベース コレクションの名前 |
     | **[If true, creates the Cosmos DB database and collection]\(オンの場合、Cosmos DB データベースとコレクションを作成する\)** | はい | コレクションはまだ存在していないため、作成します。 |
-    | **Cosmos DB アカウント接続** | 新しい設定 | **[新規]** を選択します。**Azure Cosmos DB アカウント**と前の手順で作成した**データベース アカウント**を選択し、 **[OK]** を選択します。 アカウントの接続のアプリケーション設定を作成します。 この設定は、データベースへの接続へのバインディングによって使用されます。 |
+    | **Cosmos DB アカウント接続** | 新しい設定 | **[新規]** を選択します。**Azure Cosmos DB アカウント** と前の手順で作成した **データベース アカウント** を選択し、 **[OK]** を選択します。 アカウントの接続のアプリケーション設定を作成します。 この設定は、データベースへの接続へのバインディングによって使用されます。 |
 
 1. **[OK]** を選択してバインディングを作成します。
 
@@ -138,23 +138,23 @@ module.exports = async function (context, req) {
     + `task`
     + `duedate`
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png" alt-text="Azure portal で Http 関数を選択する。" border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png" alt-text="関数をテストする。" border="true":::
 
 
 1. **[実行]** を選択して、200 状態が返されることを確認します。
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="Azure portal で Http 関数を選択する。" border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="[実行] を選択した後で HTTP 応答コード 200 状態が強調表示されているスクリーンショット。" border="true":::
 
 
 1. Azure portal で、**Azure Cosmos DB** を検索して選択します。
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png" alt-text="Azure portal で Http 関数を選択する。" border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png" alt-text="Cosmos DB サービスを検索する。" border="true":::
 
 1. 対象の Azure Cosmos DB アカウントを選択してから、 **[データ エクスプローラー]** を選択します。
 
 1. **[TaskCollection]** ノードを展開して新しいドキュメントを選択し、ドキュメントにクエリ文字列値といくつかの追加のメタデータが含まれていることを確認します。
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-data-explorer-check-document.png" alt-text="Azure portal で Http 関数を選択する。" border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-data-explorer-check-document.png" alt-text="ドキュメント内の文字列値を確認する。" border="true":::
 
 Azure Cosmos DB に非構造化データを格納するバインディングを HTTP トリガーに正常に追加できました。
 

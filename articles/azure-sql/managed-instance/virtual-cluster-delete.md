@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 06/26/2019
 ms.openlocfilehash: 496ff6c7ec39706a99bb40447b6443ca71f19e5e
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99093686"
 ---
 # <a name="delete-a-subnet-after-deleting-an-azure-sql-managed-instance"></a>Azure SQL Managed Instance の削除後にサブネットを削除する

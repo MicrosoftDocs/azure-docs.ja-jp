@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: e2d89718d953f05b3e5500db412ac8ac03bfa00b
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: c6152d4b9ee28554efcb5b08b7a2d161a0723852
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301941"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670906"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>StorSimple でホストされたファイル共有向けの Azure Site Recovery を使用した自動ディザスター リカバリー ソリューション
 
@@ -44,7 +44,7 @@ StorSimple ストレージでホストされているファイル共有向けに
    - Azure StorSimple Manager に登録されたオンプレミスの StorSimple ストレージ デバイス
    - Azure StorSimple Manager で作成した StorSimple Cloud Appliance。 アプライアンスは、シャットダウン状態でも保持されます。
    - StorSimple ストレージ デバイスで構成されたボリュームでホストされているファイル共有
-   - [Azure Site Recovery Services コンテナー](/azure/site-recovery/hyper-v-vmm-azure-tutorial)
+   - [Azure Site Recovery Services コンテナー](../site-recovery/hyper-v-vmm-azure-tutorial.md)
 
 さらに、Azure が復旧サイトに設定されている場合は、 [Azure Virtual Machines 準備状況評価ツール](https://azure.microsoft.com/downloads/vm-readiness-assessment/) を VM で実行し、Azure VM および Azure Site Recovery サービスと互換性があることを確認してください。
 
@@ -112,7 +112,7 @@ Active Directory と DNS を実行するコンピューターを保護してデ�
    1. ファイル サービスおよびストレージ サービス ロールを使用して、これらのボリュームでファイル共有を作成します。
 
 #### <a name="to-create-and-prepare-an-azure-site-recovery-vault"></a>Azure Site Recovery コンテナーを作成および準備するには
-ファイル サーバー VM を保護する前に Azure Site Recovery で作業を開始するには、「 [Azure Site Recovery を利用し、オンプレミス Hyper-V 仮想マシンと Azure (VMM なし) の間で複製する](/azure/site-recovery/) 」を参照してください。
+ファイル サーバー VM を保護する前に Azure Site Recovery で作業を開始するには、「 [Azure Site Recovery を利用し、オンプレミス Hyper-V 仮想マシンと Azure (VMM なし) の間で複製する](../site-recovery/index.yml) 」を参照してください。
 
 #### <a name="to-enable-protection"></a>保護を有効にするには
 1. Azure Site Recovery を使用して保護したいオンプレミスの VM から iSCSI ターゲットを切断します。
@@ -124,7 +124,7 @@ Active Directory と DNS を実行するコンピューターを保護してデ�
    > [!NOTE]
    > この場合、ファイル共有が一時的に使用できなくなります。
    
-1. Azure Site Recovery ポータルから、ファイル サーバー VM の[仮想マシンの保護を有効にします](/azure/site-recovery/hyper-v-azure-tutorial)。
+1. Azure Site Recovery ポータルから、ファイル サーバー VM の[仮想マシンの保護を有効にします](../site-recovery/hyper-v-azure-tutorial.md)。
 1. 最初の同期の開始時に、ターゲットに再接続できます。 iSCSI イニシエーターに移動して StorSimple デバイスを選択し、 **[接続]** をクリックします。
 1. 同期の完了後に VM のステータスが **[保護済み]** になっていれば、その VM を選択してから **[構成]** タブをクリックし、設定に合わせて VM のネットワークを更新します (これはフェールオーバーされた VM を含むネットワークです)。 ネットワークが表示されないときは、同期が実行中ということです。
 

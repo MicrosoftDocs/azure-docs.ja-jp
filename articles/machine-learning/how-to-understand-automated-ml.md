@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: c95a75ef48aa9e3db070c6c237f913fabbe893fa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b60e5f656b675a1382b8b4776975723a437183bc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388211"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104773115"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>自動機械学習実験の結果を評価
 
@@ -45,7 +45,7 @@ ms.locfileid: "100388211"
 
 自動 ML 実験の完了後、実行履歴を次の方法で見つけることができます。
   - ブラウザーと [Azure Machine Learning スタジオ](overview-what-is-machine-learning-studio.md)
-  - Jupyter Notebook で [RunDetails Jupyter ウィジェット](/python/api/azureml-widgets/azureml.widgets.rundetails?view=azure-ml-py&preserve-view=true)を使用
+  - Jupyter Notebook で [RunDetails Jupyter ウィジェット](/python/api/azureml-widgets/azureml.widgets.rundetails)を使用
 
 次の手順とビデオでは、スタジオで実行履歴とモデル評価のメトリックとグラフを表示する方法について説明します。
 
@@ -91,6 +91,8 @@ weighted_accuracy|加重精度は、各サンプルが同じクラスに属す�
 自動 ML によって、バイナリと多クラスの各メトリックは区別されません。 データセットに 2 つのクラスがある場合でも、3 つ以上のクラスがある場合でも、同じ検証メトリックが報告されます。 ただし、一部のメトリックは多クラス分類を対象としています。 バイナリ データセットに適用した場合、これらのメトリックによってどのクラスも `true` クラスとして扱われません。 明らかに多クラス向けのメトリックには、`micro`、`macro`、または `weighted` がサフィックスとして付けられます。 例として、`average_precision_score`、`f1_score`、`precision_score`、`recall_score`、`AUC` などがあります。
 
 たとえば、リコールを `tp / (tp + fn)` として計算する代わりに、多クラスの平均リコール (`micro`、`macro`、または `weighted`) は、二項分類データセットの両方のクラスの平均をとります。 これは、`true` クラスと `false` クラスのリコールを個別に計算してから、その 2 つの平均を取得することと同じです。
+
+自動 ML では、バイナリ分類データセットのメトリックであるバイナリ メトリックは計算されません。 ただし、これらのメトリックは、その特定の実行のために自動 ML で生成された[混同行列](#confusion-matrix)を使用して手動で計算できます。 たとえば、2x2 の混同行列表に示されている真陽性と擬陽性の値を使用して、適合率 `tp / (tp + fp)` を計算できます。
 
 ## <a name="confusion-matrix"></a>混同行列
 
@@ -192,7 +194,7 @@ explained_variance|説明分散では、モデルでターゲット変数のバ�
 mean_absolute_error|平均絶対誤差は、ターゲットと予測の間における差異の絶対値について予期される値です。<br><br> **目的:** 0 に近いほど良い <br> **範囲:** [0, inf) <br><br> タイプ: <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`: データの範囲で除算した mean_absolute_error です。 | [計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|
 mean_absolute_percentage_error|平均絶対パーセント誤差 (MAPE) は、予測された値と実際の値との平均差を測定したものです。<br><br> **目的:** 0 に近いほど良い <br> **範囲:** [0, inf) ||
 median_absolute_error|中央絶対誤差は、ターゲットと予測の間におけるすべての絶対差の中央値です。 この損失は外れ値に対してロバストです。<br><br> **目的:** 0 に近いほど良い <br> **範囲:** [0, inf)<br><br>タイプ: <br> `median_absolute_error`<br> `normalized_median_absolute_error`: データの範囲で除算した median_absolute_error です。 |[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|
-r2_score|R^2 は、平均を出力するベースライン モデルと比較した、決定係数または二乗誤差の減少の割合です。 <br> <br> **目的:** 1 に近いほど良い <br> **範囲:** [-1, 1] <br><br> 注:R^2 には、多くの場合 (-inf, 1) が含まれていますが、非常に悪いモデルの場合、自動 ML は-1 に負の値をクリップします。|[計算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
+r2_score|R<sup>2</sup> (決定係数) では、観測されたデータの全分散と比較して平均二乗誤差 (MSE) の比例減少が測定されます。 <br> <br> **目的:** 1 に近いほど良い <br> **範囲:** [-1, 1]<br><br>注: R<sup>2</sup> は、(-inf, 1] の範囲を持つことがよくあります。 MSE は観測された分散よりも大きい場合があるため、データとモデル予測によっては、R<sup>2</sup> は任意の大きな負の値を持つ場合があります。 自動 ML クリップによって -1 の R<sup>2</sup> スコアが報告された場合、R<sup>2</sup> の値 -1 は、実際の R<sup>2</sup> スコアが -1 未満であることを意味する可能性があります。 負の R<sup>2</sup> スコアを解釈する場合は、他のメトリック値とデータのプロパティを考慮してください。|[計算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
 root_mean_squared_error |平均平方二乗誤差 (RMSE) は、ターゲットと予測の間における予期される二乗誤差の平方根です。 不偏推定の場合、RMSE は標準偏差と等しくなります。<br> <br> **目的:** 0 に近いほど良い <br> **範囲:** [0, inf)<br><br>タイプ:<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`: データの範囲で除算した root_mean_squared_error です。 |[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|
 root_mean_squared_log_error|対数平均平方二乗誤差は、予期される対数二乗誤差の平方根です。<br><br>**目的:** 0 に近いほど良い <br> **範囲:** [0, inf) <br> <br>タイプ: <br>`root_mean_squared_log_error` <br> `normalized_root_mean_squared_log_error`: データの範囲で除算した root_mean_squared_log_error です。  |[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|
 spearman_correlation| スピアマンの相関は、2 つのデータセット間の関係の単調性に対するノンパラメトリック測定です。 ピアソンの相関とは異なり、スピアマンの相関は両方のデータセットが正規分布していることを想定しません。 他の相関係数と同様に、スピアマンは -1 と 1 の間で変化し、0 は相関関係がないことを示します。 相関係数が -1 または 1 の場合は、完全に単調な関係であることを示します。 <br><br> スピアマンはランク順序の相関関係メトリックです。これは、予測値または実際の値を変更しても、予測値または実際の値のランク順序を変更しないと、スピアマンの結果が変更されないことを意味します。<br> <br> **目的:** 1 に近いほど良い <br> **範囲:** [-1, 1]|[計算](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|

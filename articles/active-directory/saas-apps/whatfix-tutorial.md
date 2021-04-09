@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/17/2019
 ms.author: jeedes
 ms.openlocfilehash: fd3ce846abbd2ce310b12634391453ef78ce0094
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521643"
 ---
 # <a name="tutorial-integrate-whatfix-with-azure-active-directory"></a>チュートリアル:Whatfix を Azure Active Directory と統合する
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Whatfix では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Whatfix では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-whatfix-from-the-gallery"></a>ギャラリーからの Whatfix の追加
 
@@ -47,7 +47,7 @@ Azure AD への Whatfix の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Whatfix** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Whatfix**」と入力します。
 1. 結果ウィンドウで **[Whatfix]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -92,7 +92,7 @@ Whatfix で Azure AD SSO を構成してテストするには、次の構成要�
 
 ### <a name="configure-whatfix-sso"></a>Whatfix SSO を構成する
 
-**Whatfix** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Whatfix サポート チーム](https://support.whatfix.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Whatfix** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Whatfix サポート チーム](https://support.whatfix.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

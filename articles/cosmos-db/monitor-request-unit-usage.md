@@ -7,16 +7,16 @@ author: kanshiG
 ms.author: govindk
 ms.date: 04/09/2020
 ms.openlocfilehash: d6f0f30d7437b6f8ecc1d915eb3d3195f2504fec
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93098248"
 ---
 # <a name="how-to-monitor-throughput-or-request-unit-usage-of-an-operation-in-azure-cosmos-db"></a>Azure Cosmos DB で操作のスループットまたは要求ユニットの使用状況を監視する方法
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Monitor for Azure Cosmos DB では、アカウントを監視したり、ダッシュボードを作成したりするためのメトリック ビューが提供されています。 Azure Cosmos DB のメトリックは既定で収集されるので、この機能を使用するために何かを明示的に有効にしたり構成したりする必要はありません。 さまざまな種類の操作についての要求ユニットの使用状況を取得するために、 **合計要求ユニット** メトリックが使用されます。 後で、どの操作がスループットの大半を使用したのか分析できます。 既定では、スループット データは 1 分間隔で集計されます。 ただし、時間の粒度オプションを変更することで集計単位を変更できます。
+Azure Monitor for Azure Cosmos DB では、アカウントを監視したり、ダッシュボードを作成したりするためのメトリック ビューが提供されています。 Azure Cosmos DB のメトリックは既定で収集されるので、この機能を使用するために何かを明示的に有効にしたり構成したりする必要はありません。 さまざまな種類の操作についての要求ユニットの使用状況を取得するために、**合計要求ユニット** メトリックが使用されます。 後で、どの操作がスループットの大半を使用したのか分析できます。 既定では、スループット データは 1 分間隔で集計されます。 ただし、時間の粒度オプションを変更することで集計単位を変更できます。
 
 要求ユニットの使用状況データを分析するには、次の 2 つの方法があります。
 
@@ -51,7 +51,7 @@ Azure Monitor for Azure Cosmos DB では、アカウントを監視したり、�
 
 ## <a name="filters-for-request-unit-usage"></a>要求ユニットの使用状況をフィルターする
 
-メトリックと、特定の **CollectionName** 、 **DatabaseName** 、 **OperationType** 、 **Region** 、 **Status** 、および **StatusCode** によって表示されるグラフをフィルターすることもできます。 **[フィルターの追加]** および **[Apply splitting]\(分割の適用\)** オプションにより、要求ユニットの使用状況をフィルター処理し、メトリックをグループ化できます。
+メトリックと、特定の **CollectionName**、**DatabaseName**、**OperationType**、**Region**、**Status**、および **StatusCode** によって表示されるグラフをフィルターすることもできます。 **[フィルターの追加]** および **[Apply splitting]\(分割の適用\)** オプションにより、要求ユニットの使用状況をフィルター処理し、メトリックをグループ化できます。
 
 各操作の要求ユニットの使用状況を合計 (sum) または平均で取得するには、 **[Apply splitting]\(分割の適用\)** を選択し、次の図に示すように **[Operation type]\(操作の種類\)** とフィルター値を選択します。
 

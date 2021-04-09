@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: c81084c77b355a5d60c72564c58a98e08da14312
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98946304"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Storm のトラブルシューティング
@@ -53,7 +53,7 @@ HDInsight Storm イベント ハブ スパウト .jar ファイルを使用し�
 
 lib フォルダーには、エクスポート/インポート操作の実装を含む .jar ファイルがあります。 bash フォルダーには、古いクラスター上の Zookeeper サーバーからデータをエクスポートし、新しいクラスター上の Zookeeper サーバーにデータをインポートして戻す方法を示すサンプル スクリプトがあります。
 
-データをエクスポートし、インポートするには、Zookeeper ノードから [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) スクリプトを実行します。 スクリプトを適切な Hortonworks Data Platform (HDP) バージョンに更新します (Microsoft では、HDInsight でこれらのスクリプトを汎用スクリプトにするよう取り組んでいます。 汎用スクリプトは、ユーザーが変更しなくてもクラスターのどのノードからでも実行できます)。
+データをエクスポートし、インポートするには、Zookeeper ノードから [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) スクリプトを実行します。 スクリプトを適切な Hortonworks Data Platform (HDP) バージョンに更新します  (Microsoft では、HDInsight でこれらのスクリプトを汎用スクリプトにするよう取り組んでいます。 汎用スクリプトは、ユーザーが変更しなくてもクラスターのどのノードからでも実行できます)。
 
 エクスポート コマンドでは、設定されている場所の Apache Hadoop 分散ファイル システム (HDFS) パス (Azure Blob Storage または Azure Data Lake Storage 内) にメタデータが書き込まれます。
 
@@ -171,7 +171,7 @@ Nimbus Log4J 構成は、`/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml` か�
 
 トポロジを送信するとき、ユーザーに次のようなエラー メッセージが表示されることがあります: `Topology submission exception, cause not a leader, the current leader is NimbusInfo`。
 
-解決するには、ユーザーはノードを再起動または再起動するためにチケットの申請が必要になる場合があります。 詳細については、[https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html) を参照してください。
+解決するには、ユーザーはノードを再起動または再起動するためにチケットの申請が必要になる場合があります。 詳細については、「[https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html)」を参照してください。
 
 ---
 

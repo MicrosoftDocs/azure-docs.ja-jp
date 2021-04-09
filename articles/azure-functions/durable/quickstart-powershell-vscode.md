@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 08/10/2020
 ms.reviewer: azfuncdf, antchu
 ms.openlocfilehash: edd02085abe63b124082255247362f096248ba82
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91317261"
 ---
 # <a name="create-your-first-durable-function-in-powershell"></a>PowerShell で最初の持続的関数を作成する

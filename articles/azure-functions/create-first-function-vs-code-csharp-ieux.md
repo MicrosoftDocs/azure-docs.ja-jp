@@ -6,10 +6,10 @@ ms.date: 11/03/2020
 ms.custom: devx-track-csharp
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 2848ce6214d59ba2732dcfc148ccaf9936497f17
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121033"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-using-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して Azure に C# 関数を作成する

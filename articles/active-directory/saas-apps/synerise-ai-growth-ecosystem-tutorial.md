@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/06/2021
 ms.author: jeedes
 ms.openlocfilehash: 0ffc6543a2597e39470c0d4aff86e7d5a1631d69
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98736638"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-synerise-ai-growth-operating-system"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Synerise AI Growth Operating System の統合

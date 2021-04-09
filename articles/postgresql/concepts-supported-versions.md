@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 41662c5e4cc0ed9458f8b1b1279e2753daed789f
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100518455"
 ---
 # <a name="supported-postgresql-major-versions"></a>サポートされる PostgreSQL のメジャー バージョン

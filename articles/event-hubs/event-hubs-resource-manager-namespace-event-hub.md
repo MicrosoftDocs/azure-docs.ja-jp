@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/23/2020
 ms.openlocfilehash: e6da5fbe3c0e269f5ceb2c3627df27ccf0e3b30b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88933853"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用したイベント ハブの作成

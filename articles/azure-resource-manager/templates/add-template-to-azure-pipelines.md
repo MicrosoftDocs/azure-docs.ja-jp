@@ -2,13 +2,13 @@
 title: Azure Pipelines とテンプレートを使用した CI/CD
 description: Azure Resource Manager テンプレートを使用して、Azure Pipelines で継続的インテグレーションを構成する方法について説明します。 PowerShell スクリプトを使用する方法、またはファイルをステージングの場所にコピーしてそこからデプロイする方法を示します。
 ms.topic: conceptual
-ms.date: 02/05/2021
-ms.openlocfilehash: ea1ccac00f121bd81fd8b9b1f182b565fc53d214
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.date: 03/09/2021
+ms.openlocfilehash: 4a2f1f15de0abd802f3dce138b2cea33e52e3dfc
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594199"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102561944"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>Azure Pipelines を使用した ARM テンプレートの統合
 
@@ -234,4 +234,5 @@ steps:
 
 ## <a name="next-steps"></a>次のステップ
 
-GitHub Actions で ARM テンプレートを使用する方法の詳細については、「[GitHub Actions を使用した Azure Resource Manager テンプレートのデプロイ](deploy-github-actions.md)」を参照してください。
+* パイプラインで What-If 操作を使用するには、「[Test ARM templates with What-If in a pipeline](https://4bes.nl/2021/03/06/test-arm-templates-with-what-if/)」 (パイプラインで What-If を使用して ARM テンプレートをテストする) を参照してください。
+* GitHub Actions で ARM テンプレートを使用する方法の詳細については、「[GitHub Actions を使用した Azure Resource Manager テンプレートのデプロイ](deploy-github-actions.md)」を参照してください。

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e2ca5f42120661b887d07e697596f41cb7a7fce4
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98745769"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して Azure SQL データにインデックスを付ける

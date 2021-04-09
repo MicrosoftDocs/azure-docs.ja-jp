@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
 ms.openlocfilehash: 4793216a12b17c4e4ea03f62d5a0ba512febc232
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101735728"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Azure のネットワーク セキュリティのベスト プラクティス

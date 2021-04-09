@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 9badbfe6cfe12d67e07f0889d175ed32bc455321
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 5a050d9aab9e8665c6048391488e57c9b4af10a5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753877"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043067"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate アプライアンス:一般的な質問
 
@@ -36,21 +36,20 @@ Azure Migrate アプライアンスに関する詳細を示します。
 
 ## <a name="how-can-i-deploy-the-appliance"></a>アプライアンスをデプロイするにはどうすればよいですか。
 
-アプライアンスは次のようにデプロイできます。
+このアプライアンスは、次のいくつかの方法を使用してデプロイできます。
 
-- VMware VM (.OVA ファイル) および Hyper-V VM (.VHD ファイル) を検出するためのテンプレートを使用して、アプライアンスをホストする新しい VM を作成します。
-- テンプレートを使用しない場合は、ポータルから zip ファイルでダウンロードできる PowerShell インストーラー スクリプトを使用して、VMware VM または Hyper-V VM を検出するための既存の物理マシンまたは仮想マシンにアプライアンスをデプロイすることができます。
-- オンプレミスまたは任意のクラウドの物理サーバーまたは仮想サーバーの場合は、既存のサーバー上のスクリプトを使用して、常にアプライアンスをデプロイします。
-- Azure Government では、3 つのアプライアンスすべてを、PowerShell インストーラー スクリプトのみを使用してデプロイできます。
+- アプライアンスは、VMware または Hyper-V 環境で実行されているサーバー用のテンプレート ([VMware の場合は OVA テンプレート](how-to-set-up-appliance-vmware.md)、[Hyper-V の場合は VHD](how-to-set-up-appliance-hyper-v.md)) を使用してデプロイできます。
+- テンプレートを使用しない場合は、[PowerShell インストーラー スクリプト](deploy-appliance-script.md)を使って VMware または Hyper-V 環境用のアプライアンスをデプロイできます。
+- Azure Government では、PowerShell インストーラー スクリプトを使用してアプライアンスをデプロイする必要があります。 デプロイの手順については、[こちら](deploy-appliance-script-government.md)を参照してください。
+- オンプレミスまたはその他のクラウドの物理あるいは仮想化されたサーバーの場合は、常に PowerShell インストーラー スクリプトを使用してアプライアンスをデプロイします。デプロイの手順については、[こちら](how-to-set-up-appliance-physical.md)を参照してください。
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>アプライアンスはどのように Azure に接続しますか。
 
 アプライアンスはインターネット経由、または Azure ExpressRoute を使用して接続できます。 
 
 - アプライアンスがそれらの [Azure URL](./migrate-appliance.md#url-access) に接続できることを確認してください。 
-- ExpressRoute と Microsoft ピアリングを使用できます。  パブリック ピアリングは非推奨となり、新しい ExpressRoute 回線には使用できません。
+- ExpressRoute と Microsoft ピアリングを使用できます。 パブリック ピアリングは非推奨となり、新しい ExpressRoute 回線には使用できません。
 - プライベート ピアリングのみはサポートされていません。
-
 
 
 ## <a name="does-appliance-analysis-affect-performance"></a>アプライアンス分析はパフォーマンスに影響しますか。
@@ -109,7 +108,7 @@ Azure Migrate に送信されるデータの量は、複数のパラメーター
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Azure Migrate のプロジェクトは複数のアプライアンスを持つことができますか。
 
-1 つのプロジェクトに複数のアプライアンスをアタッチすることができます。 ただし、1 つのアプライアンスは、1 つの Azure Migrate リソースにのみ関連付けることができます。 
+1 つのプロジェクトに複数のアプライアンスを登録することができます。 ただし、1 つのアプライアンスに登録できるのは、1 つのプロジェクトだけです。
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Azure Migrate アプライアンス/レプリケーション アプライアンスは同じ vCenter に接続できますか。
 
@@ -135,7 +134,7 @@ Azure Migrate に送信されるデータの量は、複数のパラメーター
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Azure VM 上にアプライアンスを設定できますか。
 
-いいえ。 現在、このオプションはサポートされていません。 
+いいえ。 現在、このオプションはサポートされていません。
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>ESXi ホスト上で検出できますか。
 
@@ -150,6 +149,19 @@ Azure Migrate に送信されるデータの量は、複数のパラメーター
 ## <a name="can-i-check-agent-health"></a>エージェントの正常性を確認できますか。
 
 はい。 ポータルで、Azure Migrate の **エージェントの正常性** ページにアクセスします。Server Assessment または Azure Migrate:サーバー移行ツール。 そこで、Azure とアプライアンス上の検出エージェントと評価エージェント間の接続状態を確認することができます。
+
+## <a name="can-i-add-multiple-server-credentials-on-vmware-appliance"></a>VMware アプライアンスに複数のサーバー資格情報を追加できますか。
+
+はい。ソフトウェア インベントリ (インストールされているアプリケーションの検出)、エージェントレスの依存関係の分析、SQL Server インスタンスとデータベースの検出を実行するために、複数のサーバー資格情報がサポートされるようになりました。 アプライアンス構成マネージャーで資格情報を指定する方法については、[こちら](tutorial-discover-vmware.md#provide-server-credentials)を参照してください。
+
+## <a name="what-type-of-server-credentials-can-i-add-on-the-vmware-appliance"></a>VMware アプライアンスにはどのような種類のサーバー資格情報を追加できますか。
+アプライアンス構成マネージャーでは、ドメイン、Windows (ドメイン以外)、Linux (ドメイン以外)、SQL Server の認証資格情報を指定できます。 資格情報の指定方法とそれらの処理方法の詳細については、[こちら](add-server-credentials.md)を参照してください。
+
+## <a name="what-type-of-sql-server-connection-properties-are-supported-by-azure-migrate-for-sql-discovery"></a>SQL 検出用に Azure Migrate でサポートされている SQL Server 接続プロパティの種類は何ですか。
+Azure Migrate により、Azure Migrate アプライアンスとソース SQL Server インスタンスの間の通信が暗号化されます (Encrypt 接続プロパティが TRUE に設定されている場合)。 これらの接続は、[TrustServerCertificate](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) で暗号化されます (TRUE に設定時)。トランスポート層は、SSL を使用してチャネルを暗号化し、証明書チェーンをバイパスして信頼を検証します。 アプライアンス サーバーは、[証明書のルート証明機関を信頼](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)するように設定する必要があります。
+
+サーバーの起動時に証明書がサーバーにプロビジョニングされていない場合、SQL Server は、ログイン パケットの暗号化に使用される自己署名証明書を生成します。 [詳細については、こちらを参照してください](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)。
+
 
 ## <a name="next-steps"></a>次のステップ
 

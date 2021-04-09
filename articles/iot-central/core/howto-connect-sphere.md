@@ -9,10 +9,10 @@ author: sandeeppujar
 ms.date: 04/30/2020
 ms.custom: device-developer
 ms.openlocfilehash: 770f6e56a669ab2d9b425a7a2879eeef5d37377b
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92123425"
 ---
 # <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>Azure Sphere デバイスを Azure IoT Central アプリケーションに接続する
@@ -67,7 +67,7 @@ Azure Sphere DevKit デバイスを IoT Central に接続するには、[デバ�
 
 デバイスが IoT Central に接続されたら、ダッシュボードでテレメトリを表示できます。
 
-:::image type="content" source="media/howto-connect-sphere/sphere-view.png" alt-text="Azure Sphere DevKit 用のデバイス テンプレート":::
+:::image type="content" source="media/howto-connect-sphere/sphere-view.png" alt-text="Azure Sphere DevKit 用のダッシュボード":::
 
 ## <a name="create-a-simulated-device"></a>シミュレート対象デバイスを作成します
 
@@ -78,7 +78,7 @@ Azure Sphere DevKit デバイスを IoT Central に接続するには、[デバ�
 - **[Devices] > [Azure IoT Sphere]** を選択します
 - **[+新規]** を選択します。
 - 一意の **[デバイス ID]** と、わかりやすい **[デバイス名]** を入力します。
-- **シミュレートされた**設定を有効にします。
+- **シミュレートされた** 設定を有効にします。
 - **［作成］** を選択します
 
 ## <a name="next-steps"></a>次のステップ

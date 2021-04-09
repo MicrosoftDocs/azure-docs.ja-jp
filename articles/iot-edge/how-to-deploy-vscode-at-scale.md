@@ -9,14 +9,16 @@ ms.date: 1/8/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9ae7009468b548cb9386fd405abfbe110d62f9a3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a20992ef26b74bcc37a7403e4ee77cacc0f8f66e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377518"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103200292"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>Visual Studio Code を使用して大規模 IoT Edge モジュールをデプロイする
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Visual Studio Code を使用して **IoT Edge の自動デプロイ** を作成し、多数のデバイスの進行中のデプロイを一括管理できます。 IoT Edge の自動展開は、IoT Hub の[自動デバイス管理](../iot-hub/iot-hub-automatic-device-management.md)機能の一部です。 デプロイは動的なプロセスであり、複数のモジュールを複数デバイスにデプロイすることができます。 また、モジュールの状態と正常性をトラッキングし、必要に応じて変更を加えることもできます。
 

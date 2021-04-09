@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
 ms.openlocfilehash: 2cda13ea089ac08dff7c1ba5ca93ba56ab3c23cf
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97831552"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure 仮想マシンでのバックアップ エラーのトラブルシューティング
@@ -134,8 +134,8 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 
 手順 3:手順 1 と 2 で問題が解決されなかった場合、IOPS が制限されているために VSS ライターがタイムアウトしたことが原因である可能性があります。<br>
 
-確認するには、"***システムおよびイベント ビューアーのアプリケーション ログ**" に移動し、次のエラー メッセージがあるかどうかを確認します。<br>
-The shadow copy provider timed out while holding writes to the volume being shadow copied. (シャドウ コピーされるボリュームへの書き込みを保持している間に、シャドウ コピー プロバイダーがタイムアウトしました。) This is probably due to excessive activity on the volume by an application or a system service. (これは、アプリケーションまたはシステム サービスによるボリュームでの過剰なアクティビティが原因である可能性があります。) Try again later when activity on the volume is reduced.* (ボリュームのアクティビティが減ったら、後でもう一度お試しください。)<br>
+確認するには、"***システムおよびイベント ビューアーのアプリケーション ログ***" に移動し、次のエラー メッセージがあるかどうかを確認します。<br>
+*The shadow copy provider timed out while holding writes to the volume being shadow copied. (シャドウ コピーされるボリュームへの書き込みを保持している間に、シャドウ コピー プロバイダーがタイムアウトしました。)This is probably due to excessive activity on the volume by an application or a system service. (これは、アプリケーションまたはシステム サービスによるボリュームでの過剰なアクティビティが原因である可能性があります。)Try again later when activity on the volume is reduced. (ボリュームのアクティビティが減ったら、後でもう一度お試しください。)*<br>
 
 解決方法:
 

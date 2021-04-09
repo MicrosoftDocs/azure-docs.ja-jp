@@ -3,17 +3,17 @@ title: HBv2 シリーズ - Azure Virtual Machines
 description: HBv2 シリーズ VM の仕様。
 author: vermagit
 ms.service: virtual-machines
-ms.subservice: hpc
+ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 5bcb3d8a6928127de5f0f25e92c8de3a6e510c15
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: edc0e7cb0c7e2f9deb6e8af785fb98be1a1d9968
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671298"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566007"
 ---
 # <a name="hbv2-series"></a>HBv2 シリーズ
 
@@ -26,7 +26,7 @@ HBv2 シリーズ VM は、200 Gb/秒の Mellanox HDR InfiniBand を特徴とし
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 1 世代<br>
-[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md): サポートされています (パフォーマンスと潜在的な問題の[詳細](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-hbv2-and-ndv2/ba-p/2067965)) <br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
 <br>
 

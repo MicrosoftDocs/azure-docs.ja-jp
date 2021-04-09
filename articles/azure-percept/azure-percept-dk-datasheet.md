@@ -7,10 +7,10 @@ ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
 ms.openlocfilehash: 5b8a84b77fbde41748a2d9ef99a92cb6af1bbea6
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097586"
 ---
 # <a name="azure-percept-dk-datasheet"></a>Azure Percept DK のデータシート

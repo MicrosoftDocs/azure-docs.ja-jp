@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac247b9dc70c565621d3544d14e2f76ff12fda47
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0277d4ce263610576178e3844a0665ab6506fbfa
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101689319"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579163"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Azure AD Connect クラウド同期の前提条件
 この記事では、ID ソリューションとして Azure Active Directory (Azure AD) クラウド同期を選択して使用する方法に関するガイダンスを示します。
@@ -33,10 +33,10 @@ Azure AD Connect クラウド同期を使用するには、次のものが必要
 グループ管理サービス アカウントは、パスワードの自動管理、簡略化されたサービス プリンシパル名 (SPN) の管理、管理を他の管理者に委任する機能を提供し、またこの機能を複数のサーバーに拡張する、マネージド ドメイン アカウントです。  Azure AD Connect Cloud Sync では、エージェントを実行するための gMSA がサポートされ、使用されています。  このアカウントを作成するために、セットアップ中に管理者資格情報の入力を求められます。  このアカウントは、(domain\provAgentgMSA$) として表示されます。  gMSA の詳細については、[グループ管理サービス アカウント](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)に関するページを参照してください。 
 
 ### <a name="prerequisites-for-gmsa"></a>gMSA の前提条件:
-1.  gMSA ドメインのフォレスト内の Active Directory スキーマを Windows Server 2012 に更新する必要があります。
+1.  gMSA ドメインのフォレスト内の Active Directory スキーマを Windows Server 2016 に更新する必要があります。
 2.  ドメイン コントローラー上の [PowerShell RSAT モジュール](/windows-server/remote/remote-server-administration-tools)
-3.  ドメイン内の少なくとも 1 つのドメイン コントローラーで Windows Server 201 が実行されている必要があります。
-4.  エージェントをインストールするドメイン参加済みサーバーは、Windows Server 2012 以降である必要があります。
+3.  ドメイン内の少なくとも 1 つのドメイン コントローラーで Windows Server 2016 が実行されている必要があります。
+4.  エージェントをインストールするドメイン参加済みサーバーは、Windows Server 2016 以降である必要があります。
 
 ### <a name="custom-gmsa-account"></a>カスタムの gMSA アカウント
 カスタムの gMSA アカウントを作成する場合は、アカウントに次のアクセス許可があることを確実にする必要があります。

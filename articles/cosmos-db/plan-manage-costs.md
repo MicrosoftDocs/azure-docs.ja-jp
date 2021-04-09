@@ -8,10 +8,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.openlocfilehash: 2bea2324817986654de6689a2be15d0cbf999b38
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98602134"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Azure Cosmos DB のコストを計画および管理する
@@ -21,7 +21,7 @@ ms.locfileid: "98602134"
 
 Azure Cosmos DB リソースの使用を開始したら、Cost Management 機能を使用して、予算の設定とコストの監視を行います。 また、予想コストを確認し、支出の傾向を特定して、対処が必要な領域を特定することもできます。Azure Cosmos DB のコストは、Azure の請求に記載された月額料金の一部でしかありません。 この記事では、Azure Cosmos DB のコストを計画し、管理する方法について説明しますが、サードパーティのサービスを含め、Azure サブスクリプションで使用されるすべての Azure サービスとリソースに対して課金されます。
 
-## <a name="prerequisites"></a>[前提条件]
+## <a name="prerequisites"></a>前提条件
 
 ### <a name="provisioned-throughput-or-serverless"></a>プロビジョニングされたスループットまたはサーバーレス
 
@@ -83,7 +83,7 @@ Azure Cosmos DB でリソースを使用するとコストが発生します。 
 
 Azure Cosmos DB のコストをコスト分析で表示するには、次の操作を行います。
 
-1. [Azure Portal ](https://portal.azure.com)にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. Azure portal でスコープを開き、メニューから **[コスト分析]** を選択します。 たとえば、 **[サブスクリプション]** に移動し、一覧からサブスクリプションを選択して、メニューから **[コスト分析]** を選択します。 コスト分析で別のスコープに切り替えるには、 **[スコープ]** を選択します。
 

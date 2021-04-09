@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2020
+ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3215eef337ca1c9a84f2f4d917dbea8ea2e090f0
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 6ce2a28ff9b34373cc716ea397927ef160bd1097
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346691"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103013348"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>方法:メディア プロセッサ インスタンスを取得する
 
@@ -43,7 +43,7 @@ ms.locfileid: "93346691"
 
 ## <a name="get-media-processor"></a>メディア プロセッサの取得
 
-次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。 このコード例では、 **_context** という名前のモジュール レベルの変数の使用を前提にしてサーバー コンテキストを参照しています。これは、 [Media Services にプログラムから接続する方法](media-services-use-aad-auth-to-access-ams-api.md)に関するセクションで説明されています。
+次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。 このコード例では、 **_context** という名前のモジュール レベルの変数の使用を前提にしてサーバー コンテキストを参照しています。これは、[Media Services にプログラムから接続する方法](media-services-use-aad-auth-to-access-ams-api.md)に関するセクションで説明されています。
 
 ```csharp
 private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)

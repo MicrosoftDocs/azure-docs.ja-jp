@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
 ms.openlocfilehash: 49cee5c98c4099e214a732371269e935db353152
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97106973"
 ---
 # <a name="tutorial-add-a-resource-to-your-arm-template"></a>チュートリアル:ARM テンプレートにリソースを追加する

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: a5db1ac9c70429d4b6a0b690de1b29c3656b3cc8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 3b8b53446799eec3473d63c89672393a35f9787a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016713"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670957"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>VPN Gateway を使用してオンプレミスの接続を診断する
 
@@ -34,11 +34,11 @@ Azure Network Watcher のトラブルシューティング機能により、Gate
 オンプレミスの VPN Gateway として FortiGate を使用して、Azure とオンプレミスとの間のサイト間接続を構成するとします。 このシナリオを成し遂げるには、次のセットアップが必要です。
 
 1. Virtual Network Gateway - Azure 上の VPN Gateway
-1. Local Network Gateway - Azure クラウドで表示されている、[オンプレミスの (FortiGate) VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)
-1. サイト間接続 (ルート ベース) - [VPN Gateway とオンプレミス ルーター間の接続](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection)
+1. Local Network Gateway - Azure クラウドで表示されている、[オンプレミスの (FortiGate) VPN Gateway](../vpn-gateway/tutorial-site-to-site-portal.md#LocalNetworkGateway)
+1. サイト間接続 (ルート ベース) - [VPN Gateway とオンプレミス ルーター間の接続](../vpn-gateway/tutorial-site-to-site-portal.md#CreateConnection)
 1. [FortiGate の構成](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
-サイト間構成を構成するための詳細なステップ バイ ステップ ガイダンスについては、「[Azure Portal を使用したサイト間接続を持つ VNet の作成](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)」をご覧ください。
+サイト間構成を構成するための詳細なステップ バイ ステップ ガイダンスについては、「[Azure Portal を使用したサイト間接続を持つ VNet の作成](../vpn-gateway/tutorial-site-to-site-portal.md)」をご覧ください。
 
 最も重要な構成の手順の 1 つは、IPsec コミュニケーション パラメーターの構成です。いかなる構成の誤りでも、オンプレミス ネットワークと Azure との間の接続は失われます。 Azure VPN Gateway は現在、以下のフェーズ 1 の IPsec パラメーターをサポートするように構成されています。 次の表に示すように、Azure VPN Gateway でサポートされている暗号化アルゴリズムは、AES256、AES128、3DES です。
 

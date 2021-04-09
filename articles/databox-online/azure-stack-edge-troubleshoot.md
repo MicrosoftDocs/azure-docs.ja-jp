@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 02/05/2021
 ms.author: alkohli
 ms.openlocfilehash: ff6d1f46299875354a72a6a93a828df7960169ad
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99831546"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>Azure Stack Edge Pro に関する問題をトラブルシューティングする

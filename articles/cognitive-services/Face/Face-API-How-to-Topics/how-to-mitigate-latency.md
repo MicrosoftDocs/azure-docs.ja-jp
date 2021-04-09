@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
 ms.openlocfilehash: 2c771509de5ac246bac0d8e006a5d0b884a410b0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101706811"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>方法: Face サービスを使用するときの待機時間を軽減する

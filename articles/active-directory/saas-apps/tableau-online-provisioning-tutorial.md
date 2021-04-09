@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: a42790e079985b003776b381c74f837b0ba619b1
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94359206"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>チュートリアル: Tableau Online を構成し、自動ユーザー プロビジョニングに対応させる
@@ -53,13 +53,13 @@ Marketplace から Tableau Online を追加するには、次の手順に従い�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Tableau Online** 」と入力し、結果パネルから **[Tableau Online]** を選択します。 アプリケーションを追加するには、 **[追加]** を選択します。
+4. 検索ボックスに「**Tableau Online**」と入力し、結果パネルから **[Tableau Online]** を選択します。 アプリケーションを追加するには、 **[追加]** を選択します。
 
     ![結果一覧の Tableau Online](common/search-new-app.png)
 
 ## <a name="assign-users-to-tableau-online"></a>Tableau Online にユーザーを割り当てる
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD でアプリケーションに割り当てられているユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD でアプリケーションに割り当てられているユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Tableau Online にアクセスする必要がある Azure AD のユーザーまたはグループを決定しておく必要があります。 これらのユーザーまたはグループを Tableau Online に割り当てるには、「[エンタープライズ アプリにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)」の指示に従います。
 

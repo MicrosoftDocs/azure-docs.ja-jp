@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 3274b19f350c8e7d3390456c94fb4789f4505d99
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92458270"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-manabi-pocket"></a>チュートリアル: Azure Active Directory と Manabi Pocket の統合
@@ -41,7 +41,7 @@ Manabi Pocket と Azure AD の統合を構成するには、次のものが必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Manabi Pocket では、 **SP** Initiated SSO がサポートされます
+* Manabi Pocket では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-manabi-pocket-from-the-gallery"></a>ギャラリーからの Manabi Pocket の追加
 
@@ -61,13 +61,13 @@ Azure AD への Manabi Pocket の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Manabi Pocket** 」と入力し、結果ウィンドウで **Manabi Pocket** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Manabi Pocket**」と入力し、結果ウィンドウで **Manabi Pocket** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Manabi Pocket](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Manabi Pocket で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Manabi Pocket で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Manabi Pocket 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Manabi Pocket で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ Manabi Pocket で Azure AD のシングル サインオンを構成してテス�
 
 Manabi Pocket で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Manabi Pocket** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Manabi Pocket** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -142,7 +142,7 @@ Manabi Pocket で Azure AD シングル サインオンを構成するには、�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -154,7 +154,7 @@ Manabi Pocket で Azure AD シングル サインオンを構成するには、�
 
 このセクションでは、Britta Simon に Manabi Pocket へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Manabi Pocket]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Manabi Pocket]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

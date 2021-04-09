@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dcd0ccdc42a820f1e264b739cb0063516a0cb53e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7dfad71d05a882e3a3941a96e12489adb5fb3234
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688554"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500531"
 ---
 # <a name="user-profile-attributes"></a>ユーザー プロファイルの属性
 
@@ -69,8 +69,8 @@ Azure AD B2C ユーザー プロファイルで使用できるほとんどの属
 |passwordPolicies     |String|パスワードのポリシー。 コンマで区切られた複数のポリシー名で構成される文字列です。 たとえば、"DisablePasswordExpiration, DisableStrongPassword"。|いいえ|いいえ|Persisted、Output|
 |physicalDeliveryOfficeName (officeLocation)|String|ユーザーの勤務先のオフィス所在地。 最大長 128。|はい|いいえ|Persisted、Output|
 |postalCode      |String|ユーザーの住所の郵便番号。 郵便番号は、ユーザーの国/地域に固有です。 米国では、この属性に ZIP コードが含まれます。 最大長 40。|はい|いいえ|Persisted、Output|
-|preferredLanguage    |String|ユーザーの優先言語。 ISO 639-1 コードに従う必要があります。 例: "en-US"。|いいえ|いいえ|Persisted、Output|
-|refreshTokensValidFromDateTime|DateTime|この日時より前に発行された更新トークンは無効です。無効な更新トークンを使用して新しいアクセス トークンを取得すると、アプリケーションでエラーが発生します。 この場合、アプリケーションは、承認エンドポイントに対して要求を行うことによって、新しい更新トークンを取得する必要があります。 読み取り専用です。|いいえ|いいえ|出力|
+|preferredLanguage    |String|ユーザーの優先言語。 優先される言語形式は RFC 4646 を基準とします。 名前は、言語に関連付けられた ISO 639 の 2 文字の小文字カルチャ コードと、国または地域に関連付けられた ISO 3166 の 2 文字の大文字サブカルチャ コードの組み合わせです。 例: "en-US" や "es-ES"。|いいえ|いいえ|Persisted、Output|
+|refreshTokensValidFromDateTime (signInSessionsValidFromDateTime)|DateTime|この日時より前に発行された更新トークンは無効です。無効な更新トークンを使用して新しいアクセス トークンを取得すると、アプリケーションでエラーが発生します。 この場合、アプリケーションは、承認エンドポイントに対して要求を行うことによって、新しい更新トークンを取得する必要があります。 読み取り専用です。|いいえ|いいえ|出力|
 |signInNames ([Identities](#identities-attribute)) |String|ディレクトリ内の任意の種類のローカル アカウント ユーザーの一意のサインイン名。 ローカル アカウントの種類を指定せずにサインイン値でユーザーを取得するには、この属性を使用します。|いいえ|いいえ|入力|
 |signInNames.userName ([Identities](#identities-attribute)) |String|ディレクトリ内のローカル アカウント ユーザーの一意のユーザー名。 特定のサインイン ユーザー名でユーザーを作成または取得するには、この属性を使用します。 パッチ操作中に PersistedClaims 単独でこれを指定すると、他の種類の signInNames は削除されます。 新しい種類の signInNames を追加する場合は、既存の signInNames も保持する必要があります。|いいえ|いいえ|Input、Persisted、Output|
 |signInNames.phoneNumber ([Identities](#identities-attribute)) |String|ディレクトリ内のローカル アカウント ユーザーの一意の電話番号。 特定のサインイン電話番号でユーザーを作成または取得するには、この属性を使用します。 パッチ操作中に PersistedClaims 単独でこの属性を指定すると、他の種類の signInNames は削除されます。 新しい種類の signInNames を追加する場合は、既存の signInNames も保持する必要があります。|いいえ|いいえ|Input、Persisted、Output|
@@ -101,9 +101,9 @@ Azure AD B2C ユーザー プロファイルで使用できるほとんどの属
 - **ローカル** ID - ユーザー名とパスワードは、Azure AD B2C ディレクトリにローカルに格納されます。 これらの ID は、"ローカル アカウント" とよく呼ばれます。
 - **フェデレーション** ID - "*ソーシャル*" または "*エンタープライズ*" アカウントとも呼ばれ、ユーザーの ID は、Facebook、Microsoft、ADFS、Salesforce などのフェデレーション ID プロバイダーによって管理されます。
 
-顧客アカウントを持つユーザーは、複数の ID でサインインできます。 たとえば、ユーザー名、電子メール、従業員 ID、政府 ID などです。 1 つのアカウントで、同じパスワードを持つ複数の ID (ローカルとソーシャルの両方) を持つことができます。
+顧客アカウントを持つユーザーは、複数の ID でサインインできます。 たとえば、ユーザー名、電子メール、従業員 ID、政府 ID などです。 1 つのアカウントで、同じパスワードを持つ複数の ID (ローカルとソーシャルの両方) を持つことができます。 
 
-Microsoft Graph API では、ローカル ID とフェデレーション ID の両方が、[objectIdentity][graph-objectIdentity] 型のユーザー `identities` 属性に格納されます。 `identities` コレクションは、ユーザー アカウントへのサインインに使用される一連の ID を表します。 このコレクションにより、ユーザーは、関連付けられた任意の ID を使用してユーザー アカウントにサインインできます。
+Microsoft Graph API では、ローカル ID とフェデレーション ID の両方が、[objectIdentity](/graph/api/resources/objectidentity) 型のユーザー `identities` 属性に格納されます。 `identities` コレクションは、ユーザー アカウントへのサインインに使用される一連の ID を表します。 このコレクションにより、ユーザーは、関連付けられた任意の ID を使用してユーザー アカウントにサインインできます。 識別子属性には最大 10 個の [objectIdentity](/graph/api/resources/objectidentity) オブジェクトを含めることができます。 各オブジェクトには次のプロパティが含まれます。
 
 | 名前   | 種類 |説明|
 |:---------------|:--------|:----------|

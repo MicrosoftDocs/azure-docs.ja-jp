@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
 ms.openlocfilehash: 5ee4481b3151e28d5d37760e486a43adbc194994
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102553223"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>パート 1: Azure ファイル共有に対する AD DS 認証を有効にする 

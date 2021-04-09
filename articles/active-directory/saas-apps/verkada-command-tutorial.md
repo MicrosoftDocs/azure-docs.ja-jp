@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Verkada Command の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Verkada Command の統合 | Microsoft Docs'
 description: Azure Active Directory と Verkada Command の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
 ms.openlocfilehash: 33e404a7569f4d68fa4679ce492c7713714ce09f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92636665"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-verkada-command"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Verkada Command の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-verkada-command"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Verkada Command の統合
 
 このチュートリアルでは、Verkada Command と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Verkada Command を統合すると、次のことができます。
 
@@ -39,7 +39,7 @@ ms.locfileid: "92636665"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Verkada Command では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Verkada Command では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 * Verkada Command を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
@@ -51,7 +51,7 @@ Azure AD への Verkada Command の統合を構成するには、ギャラリー
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Verkada Command** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Verkada Command**」と入力します。
 1. 結果のパネルから **Verkada Command** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -72,13 +72,13 @@ Verkada Command に対する Azure AD SSO を構成してテストするには�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Verkada Command** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Verkada Command** アプリケーション統合ページで、**[管理]** セクションを探して、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **サービス プロバイダー メタデータ ファイル** を保持しており、 **IDP** Initiated モードに構成したい場合は、 **[基本的な SAML 構成]** セクション上で次の手順を実行します。
+1. **サービス プロバイダー メタデータ ファイル** を保持しており、**IDP** Initiated モードに構成したい場合は、 **[基本的な SAML 構成]** セクション上で次の手順を実行します。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
@@ -88,7 +88,7 @@ Verkada Command に対する Azure AD SSO を構成してテストするには�
 
     ![メタデータ ファイルを選択する](common/browse-upload-metadata.png)
 
-    c. メタデータ ファイルが正常にアップロードされると、 **識別子** と **応答 URL** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
+    c. メタデータ ファイルが正常にアップロードされると、**識別子** と **応答 URL** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
 
     ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
@@ -102,7 +102,7 @@ Verkada Command に対する Azure AD SSO を構成してテストするには�
     > [!NOTE]
     > サインオン URL は実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[Verkada Command クライアント サポート チーム](mailto:support@verkada.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. Verkada Command アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 Verkada Command アプリケーションでは、 **nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. Verkada Command アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 Verkada Command アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、**[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/default-attributes.png)
 

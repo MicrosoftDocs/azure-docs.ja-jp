@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.openlocfilehash: 4b7f71b5405708cc1988fafa5ca9c4628fe0d80b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98882401"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の登録とスキャン
@@ -58,10 +58,10 @@ Azure Data Lake Storage Gen2 では、次の認証方法がサポートされて
 1. **[設定] > [アクセス キー]** を選択します
 1. "*キー*" をコピーし、次の手順のためにどこかに保存します
 1. お使いのキー コンテナーに移動する
-1. **[設定] > [シークレット]** を選択します
+1. **[設定] > [シークレット]** の順に選択します。
 1. **[+ 生成/インポート]** を選択し、 **[名前]** と *[値]* にストレージ アカウントの **キー** を入力します
-1. **[作成]** を選択して完了します
-1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります
+1. **[作成]** を選択して完了します。
+1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
 1. 最後に、キーを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
 
 #### <a name="service-principal"></a>サービス プリンシパル
@@ -76,18 +76,18 @@ Azure Data Lake Storage Gen2 では、次の認証方法がサポートされて
 > 1. **[+ 新しいアプリケーションの登録]** を選択します。
 > 1. **アプリケーション** の名前 (サービス プリンシパル名) を入力します。
 > 1. **[この組織のディレクトリ内のアカウントのみ]** を選択します。
-> 1. [リダイレクト URI] で **[Web]** を選択し、必要な URL を入力します。これは実際の URL である必要はなく、機能しなくてもかまいません。
+> 1. [リダイレクト URI] には **[Web]** を選択し、必要な URL を入力します。これは、実際の URL でなくてもよく、機能しなくてもかまいません。
 > 1. 次に、 **[登録]** を選択します。
 
 サービス プリンシパルのアプリケーション ID とシークレットを取得する必要があります。
 
 1. [Azure portal](https://portal.azure.com) でサービス プリンシパルに移動します
-1. **[概要]** から **[アプリケーション (クライアント) ID]** の値をコピーし、 **[証明書とシークレット]** から **[クライアント シークレット]** の値をコピーします。
+1. **[概要]** から **[アプリケーション (クライアント) ID]** 、 **[証明書とシークレット]** から **[クライアント シークレット]** の値をコピーします。
 1. お使いのキー コンテナーに移動する
-1. **[設定] > [シークレット]** を選択します
-1. **[+ 生成/インポート]** を選択し、サービス プリンシパルの **クライアント シークレット** として任意の **名前** と **値** を入力します
-1. **[作成]** を選択して完了します
-1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります
+1. **[設定] > [シークレット]** の順に選択します。
+1. **[生成/インポート]** を選択し、サービス プリンシパルの **クライアント シークレット** として任意の **名前** と **値** を入力します
+1. **[作成]** を選択して完了します。
+1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
 1. 最後に、サービス プリンシパルを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
 
 ##### <a name="granting-the-service-principal-access-to-your-adls-gen2-account"></a>ADLS Gen2 アカウントへのアクセス権をサービス プリンシパルに付与する
@@ -113,7 +113,7 @@ Azure Data Lake Storage Gen2 では、次の認証方法がサポートされて
 新しい ADLS Gen2 アカウントをデータ カタログに登録するには、次の手順を行います。
 
 1. Purview アカウントに移動します
-2. 左側のナビゲーションで **[ソース]** を選択します
+2. 左側のナビゲーションで **[ソース]** を選択します。
 3. **[登録]** を選択します
 4. **[ソースの登録]** で、 **[Azure Data Lake Storage Gen2]** を選択します
 5. **[続行]** を選択します
@@ -124,7 +124,7 @@ Azure Data Lake Storage Gen2 では、次の認証方法がサポートされて
 2. サブスクリプションを選択して、ストレージ アカウントをフィルター処理します
 3. Select a storage account (ストレージ アカウントを選択する)
 4. コレクションを選択するか、新しいものを作成します (省略可能)
-5. データ ソースの登録を **終了** します。
+5. **[完了]** を選択して、データ ソースを登録します。
 
 :::image type="content" source="media/register-scan-adls-gen2/register-sources.png" alt-text="ソースの登録のオプション" border="true":::
 
@@ -132,5 +132,5 @@ Azure Data Lake Storage Gen2 では、次の認証方法がサポートされて
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Purview Data Catalog を参照する](how-to-browse-catalog.md)
-- [Azure Purview Data Catalog を検索する](how-to-search-catalog.md)
+- [Azure Purview データ カタログを参照する](how-to-browse-catalog.md)
+- [Azure Purview データ カタログを検索する](how-to-search-catalog.md)

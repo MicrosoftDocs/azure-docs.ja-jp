@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: pafarley
 ms.openlocfilehash: 9293d47d8aade11f4cc3ee55bb32574f125dfafc
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102428288"
 ---
 # <a name="whats-new-in-face-service"></a>Face サービスの新機能

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80398474"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Azure カスタム リソース プロバイダーの概要
@@ -41,7 +41,7 @@ Azure カスタム リソース プロバイダーは、Azure とエンドポイ
 
 ## <a name="how-to-build-custom-resource-providers"></a>カスタム リソース プロバイダーを構築する方法
 
-カスタム リソース プロバイダーは、Azure とエンドポイントの間の契約の一覧です。 この契約では、Azure でエンドポイントとやりとりする方法について説明します。 リソース プロバイダーはプロキシのように動作し、指定した**エンドポイント**に対して要求と応答を転送します。 リソース プロバイダーは、2 種類の契約 ([**resourceTypes**](./custom-providers-resources-endpoint-how-to.md) と [**actions**](./custom-providers-action-endpoint-how-to.md)) を指定できます。 これらはエンドポイント定義によって有効にされます。 エンドポイント定義は、次の 3 つのフィールドで構成されます: **name**、**routingType**、**endpoint**。
+カスタム リソース プロバイダーは、Azure とエンドポイントの間の契約の一覧です。 この契約では、Azure でエンドポイントとやりとりする方法について説明します。 リソース プロバイダーはプロキシのように動作し、指定した **エンドポイント** に対して要求と応答を転送します。 リソース プロバイダーは、2 種類の契約 ([**resourceTypes**](./custom-providers-resources-endpoint-how-to.md) と [**actions**](./custom-providers-action-endpoint-how-to.md)) を指定できます。 これらはエンドポイント定義によって有効にされます。 エンドポイント定義は、次の 3 つのフィールドで構成されます: **name**、**routingType**、**endpoint**。
 
 サンプルのエンドポイント:
 
@@ -56,7 +56,7 @@ Azure カスタム リソース プロバイダーは、Azure とエンドポイ
 プロパティ | 必須 | 説明
 ---|---|---
 name | *はい* | エンドポイント定義の名前。 Azure では、この名前は '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}' の下にあるその API によって公開されます。
-routingType | *いいえ* | **エンドポイント**で契約の種類を決定します。 指定しないと、既定で "Proxy" になります。
+routingType | *いいえ* | **エンドポイント** で契約の種類を決定します。 指定しないと、既定で "Proxy" になります。
 endpoint | *はい* | 要求をルーティングするエンドポイント。 これにより、応答と要求の副作用がすべて処理されます。
 
 ### <a name="building-custom-resources"></a>カスタム リソースを構築する

@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: b3d09ec4c4ab578a87f0d983c0f243bee2a84597
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94991232"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions における SendGrid のバインディング
@@ -37,7 +37,7 @@ SendGrid バインディングは [Microsoft.Azure.WebJobs.Extensions.SendGrid](
 
 次の例は、Service Bus キュー トリガーと SendGrid 出力バインディングを使用する [C# 関数](functions-dotnet-class-library.md)を示しています。
 
-### <a name="synchronous"></a>同期
+### <a name="synchronous"></a>Synchronous
 
 ```cs
 using SendGrid.Helpers.Mail;
@@ -357,13 +357,13 @@ public static void Run(
 
 次の表は、*function.json* ファイルと `SendGrid` 属性/注釈で使用できるバインド構成のプロパティの一覧を示しています。
 
-| *function.json* のプロパティ | 属性/注釈のプロパティ | 説明 | 省略可能 |
+| *function.json* のプロパティ | 属性/注釈のプロパティ | 説明 | オプション |
 |--------------------------|-------------------------------|-------------|----------|
 | type |該当なし| `sendGrid` に設定する必要があります。| いいえ |
-| direction |該当なし| `out` に設定する必要があります。| いいえ |
+| 方向 |該当なし| `out` に設定する必要があります。| いいえ |
 | name |該当なし| 要求または要求本文の関数コードで使用される変数名。 戻り値が 1 つの場合、この値は `$return` です。 | いいえ |
 | apiKey | ApiKey | API キーを含むアプリ設定の名前。 設定されていない場合、既定のアプリの設定名は *AzureWebJobsSendGridApiKey* です。| いいえ |
-| から| ターゲット | 受信者の電子メール アドレス。 | はい |
+| to| 終了 | 受信者の電子メール アドレス。 | はい |
 | from| ソース | 送信者の電子メール アドレス。 |  はい |
 | subject| サブジェクト | 電子メールの件名。 | はい |
 | text| Text | 電子メールの本文。 | はい |

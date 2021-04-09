@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: overview
 ms.date: 02/08/2021
 ms.openlocfilehash: 5a0389b1074737728bd0ffa5d6db90d077a9f45f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101652172"
 ---
 # <a name="about-azure-cache-for-redis"></a>Azure Cache for Redis について

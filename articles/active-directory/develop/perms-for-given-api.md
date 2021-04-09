@@ -13,10 +13,10 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
 ms.openlocfilehash: fe6e7277761c670d5af8743e6330ffe2340d235c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101647457"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>指定の API のアクセス許可を選択する方法

@@ -1,6 +1,6 @@
 ---
-title: AzCopy v10 を使用して Azure Blob Storage にファイルをアップロードする | Microsoft Docs
-description: この記事には、Azure Blob Storage にファイルをアップロードするために役立つ AzCopy コマンドの例のコレクションが含まれています。
+title: AzCopy v10 を使用して Azure BLOB ストレージにファイルをアップロードする | Microsoft Docs
+description: この記事には、Azure BLOB ストレージにファイルをアップロードするために役立つ AzCopy コマンドの例のコレクションが含まれています。
 author: normesta
 ms.service: storage
 ms.topic: how-to
@@ -9,13 +9,13 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: ec88a3c740ceda7ccf352f8f32f94e2cd52d0988
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97358760"
 ---
-# <a name="upload-files-to-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy v10 を使用して Azure Blob Storage にファイルをアップロードする
+# <a name="upload-files-to-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy v10 を使用して Azure BLOB ストレージにファイルをアップロードする
 
 AzCopy v10 コマンド ライン ユーティリティを使用して、BLOB ストレージにファイルやディレクトリをアップロードできます。 
 
@@ -155,7 +155,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 Azure AD 承認を使用している場合は、セキュリティ プリンシパルに[ストレージ Blob データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)ロールが割り当てられているか、カスタム Azure ロールを使用して `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [Azure リソース プロバイダーの操作](../../role-based-access-control/resource-provider-operations.md#microsoftstorage)に対するアクセス許可が付与されている必要があります。 Shared Access Signature (SAS) トークンを使用している場合、そのトークンは、`t` SAS アクセス許可を使用して BLOB のタグへのアクセスを提供する必要があります。
 
-タグを追加するには、URL エンコードされたキーと値のペアと共に、`--blob-tags` オプションを使用します。 たとえば、キー `my tag` と値 `my tag value` を追加するには、宛先パラメーターに `--blob-tags='my%20tag=my%20tag%20value'` を追加します。 
+タグを追加するには、URL でエンコードされたキーと値のペアと共に `--blob-tags` オプションを使用します。 たとえば、キー `my tag` と値 `my tag value` を追加するには、宛先パラメーターに `--blob-tags='my%20tag=my%20tag%20value'` を追加します。 
 
 複数のインデックス タグを区切るには、アンパサンド (`&`) を使用します。  たとえば、キー `my second tag` と値 `my second tag value` を追加する場合、完全なオプション文字列は `--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` になります。
 
@@ -182,11 +182,11 @@ Azure AD 承認を使用している場合は、セキュリティ プリンシ�
 |追加 BLOB またはページ BLOB としてファイルをアップロードします。|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
 |特定のアクセス層 (アーカイブ層など) にアップロードします。|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
 
-完全な一覧については、[オプション](storage-ref-azcopy-copy.md#options)を参照してください。
+完全な一覧については、「[オプション](storage-ref-azcopy-copy.md#options)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-以下の記事にサンプルがあります。
+他の例については、次の記事を参照してください。
 
 - [例:ダウンロード](storage-use-azcopy-blobs-download.md)」をご覧ください
 - [例:アカウント間のコピー](storage-use-azcopy-blobs-copy.md)

@@ -10,10 +10,10 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 7a0e15ac3c08f55e817eb6a6300d58ab4af6029c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94966660"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>クイックスタート - Azure IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使い、シミュレートされた TPM デバイスを作成してプロビジョニングします。
@@ -98,14 +98,14 @@ ms.locfileid: "94966660"
 
 Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポートされています。
 
-- [登録グループ](concepts-service.md#enrollment-group): 複数の関連するデバイスを登録するために使用します。
-- [個別登録](concepts-service.md#individual-enrollment): 1 台のデバイスを登録するために使用します。
+- [登録グループ](concepts-service.md#enrollment-group)：複数の関連するデバイスを登録するために使用します。
+- [個別登録](concepts-service.md#individual-enrollment): 単一デバイスを登録するために使用します。
 
 この記事では、個別登録の使用方法を示します。
 
 1. Azure portal にサインインし、左側のメニューの **[すべてのリソース]** を選択して、Device Provisioning Service を開きます。
 
-1. Device Provisioning Service のメニューで、**[登録を管理します]** を選択します。 **[個々の登録]** タブを選択したうえで、上部にある **[個別登録の追加]** を選択します。 
+1. Device Provisioning Service のメニューで、 **[登録を管理します]** を選択します。 **[個々の登録]** タブを選択したうえで、上部にある **[個別登録の追加]** を選択します。 
 
 1. **[登録の追加]** パネルで、次の情報を入力します。
    - ID 構成証明の "*メカニズム*" として **[TPM]** を選択します。
@@ -114,7 +114,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
    - 必要に応じて、次の情報を入力することができます。
        - 一意の "*デバイス ID*" を入力します。 デバイスに名前を付ける際に機密データを含めないようにしてください。 指定しない場合には、デバイスを識別するために登録 ID が代わりに使用されます。
        - **[Initial device twin state]\(初期のデバイス ツインの状態\)** をデバイスの目的の初期構成で更新します。
-   - 作業が完了したら、**[保存]** を押します。 
+   - 作業が完了したら、 **[保存]** を押します。 
 
      ![ポータルのブレードにデバイス登録情報を入力します。](./media/java-quick-create-simulated-device/enterdevice-enrollment.png)  
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions , devx-track-azurecli
 ms.openlocfilehash: e82c959dc63222e8565243cc9ac805283cab6617
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102501833"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Azure 仮想マシンの選択的なディスク バックアップと復元

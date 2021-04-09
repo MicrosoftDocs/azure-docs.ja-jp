@@ -4,10 +4,10 @@ description: Azure PowerShell サンプル - Azure Lab Services でのラボの�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ce7a4f77aa0ea309afb81a54fd2f8f0a8f373e58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86187729"
 ---
 # <a name="azure-powershell-samples-for-azure-lab-services"></a>Azure Lab Services 用 Azure PowerShell サンプル

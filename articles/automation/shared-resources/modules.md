@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: a784127cfd6019629f1c2714d0f36850406c3b9d
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: ae3329401a138bc0566ea93a8fbf2071fd44f02c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99548775"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503421"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Automation でモジュールを管理する
 
@@ -142,6 +142,7 @@ Automation アカウントに Az モジュールをインポートしても、Ru
 
 * Runbook がモジュールからコマンドレットを呼び出したとき。
 * Runbook で [Import-Module](/powershell/module/microsoft.powershell.core/import-module) コマンドレットを使用してモジュールが明示的にインポートされたとき。
+* Runbook で [using module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_using#module-syntax) ステートメントを使用してモジュールが明示的にインポートされたとき。 using ステートメントは、Windows PowerShell 5.0 以降でサポートされており、クラスと列挙型のインポートをサポートしています。
 * Runbook が別の依存モジュールをインポートするとき。
 
 Az モジュールは Azure portal でインポートできます。 Az.Automation モジュール全体ではなく、必要な Az モジュールだけをインポートするようにしてください。 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) には他の Az モジュールが依存しているため、必ず他のモジュールの前にこのモジュールをインポートするようにしてください。

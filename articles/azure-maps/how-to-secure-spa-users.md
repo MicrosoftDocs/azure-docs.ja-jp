@@ -11,10 +11,10 @@ services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
 ms.openlocfilehash: 60d8dc45fb26ea210b1827a6938716474faa0304
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92895615"
 ---
 # <a name="secure-a-single-page-application-with-user-sign-in"></a>ユーザー サインインでシングル ページ アプリケーションをセキュリティで保護する
@@ -34,10 +34,10 @@ ms.locfileid: "92895615"
 
 2. **[名前]** を入力して **[Support account type]\(サポートされるアカウントの種類\)** を選択し、リダイレクト URI を指定します。この URI は、トークンを発行する Azure AD URL を表し、マップ コントロールがホストされる URL でもあります。 詳細なサンプルについては、[Azure Maps Azure AD サンプル](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/tree/master/src/ImplicitGrant)に関する記事を参照してください。 次に、 **[登録]** を選択します。  
 
-3. 委任された API アクセス許可を Azure Maps に割り当てるには、アプリケーションに移動します。 次に、 **[アプリの登録]** で、 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。 **[所属する組織で使用している API]** で、「 **Azure Maps** 」を検索して選択します。
+3. 委任された API アクセス許可を Azure Maps に割り当てるには、アプリケーションに移動します。 次に、 **[アプリの登録]** で、 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。 **[所属する組織で使用している API]** で、「**Azure Maps**」を検索して選択します。
 
     > [!div class="mx-imgBorder"]
-    > ![アプリの API アクセス許可の追加](./media/how-to-manage-authentication/app-permissions.png)
+    > ![アプリの API アクセス許可を追加する](./media/how-to-manage-authentication/app-permissions.png)
 
 4. **[Access Azure Maps] (Azure Maps へのアクセス)** の横にあるチェック ボックスをオンにしてから、 **[アクセス許可の追加]** を選択します。
 

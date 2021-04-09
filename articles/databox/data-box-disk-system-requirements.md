@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 02/22/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 6ac1fb1a69433be240e4250ea37835037f0b2ffa
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 750ed8f65db04199ea284e69693bced65a1dc8d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873934"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703135"
 ---
 ::: zone target="docs"
 
@@ -79,6 +79,9 @@ Data Box Disk でサポートされるストレージの種類の一覧を次に
 | クラシック | Standard |
 | General Purpose  |標準。V1 と V2 の両方がサポートされます。 また、ホット層とクール層の両方がサポートされます。 |
 | BLOB ストレージ アカウント | |
+
+> [!IMPORTANT]
+> Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポートは、Data Box Disk ではサポートされていません。
 
 ## <a name="supported-storage-types-for-upload"></a>アップロード用にサポートされているストレージの種類
 

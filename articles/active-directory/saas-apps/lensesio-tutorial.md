@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: jeedes
 ms.openlocfilehash: 181d58baf128c4848a538e776aea0e43213994dc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92458610"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Lenses.io DataOps ポータルの統合
@@ -52,7 +52,7 @@ Azure AD への Lenses.io の統合を構成するには、マネージド SaaS 
 1. 左側のペインで、 **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Lenses.io** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Lenses.io**」と入力します。
 1. 結果のパネルから **[Lenses.io]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-lensesio"></a>Lenses.io の Azure AD SSO の構成とテスト
@@ -80,11 +80,11 @@ Azure AD への Lenses.io の統合を構成するには、マネージド SaaS 
 
 1. **[基本的な SAML 構成]** セクションで、次のテキスト入力ボックスに値を入力します。
 
-    a. **サインオン URL** : `https://<CUSTOMER_LENSES_BASE_URL>` の形式で URL を入力します。 たとえば `https://lenses.my.company.com` です。
+    a. **サインオン URL**: `https://<CUSTOMER_LENSES_BASE_URL>` の形式で URL を入力します。 たとえば `https://lenses.my.company.com` です。
 
     b. **識別子 (エンティティ ID)** : `https://<CUSTOMER_LENSES_BASE_URL>` の形式で URL を入力します。 たとえば `https://lenses.my.company.com` です。
 
-    c. **応答 URL** :`https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client` の形式で URL を入力します。 たとえば `https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client` です。
+    c. **応答 URL**:`https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client` の形式で URL を入力します。 たとえば `https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client` です。
 
     > [!NOTE]
     > これらは実際の値ではありません。 これらは、お使いの Lenses ポータル インスタンスのベース URL を使用した実際のサインオン URL、応答 URL、および識別子で更新します。 詳細については、[Lenses.io SSO のドキュメント](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)を参照してください。
@@ -106,7 +106,7 @@ Lenses でグループ メンバーシップのマッピングを使用して認
 1. Azure portal の左側のペインで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** ボックスに「 **B.Simon** 」と入力します。  
+   1. **[名前]** ボックスに「**B.Simon**」と入力します。  
    1. **[ユーザー名]** ボックスに、「username@companydomain.extension」と入力します。 たとえば、「 B.Simon@contoso.com 」のように入力します。
    1. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示されるパスワードを書き留めます。
    1. **［作成］** を選択します
@@ -117,9 +117,9 @@ Lenses でグループ メンバーシップのマッピングを使用して認
 1. 画面の上部で、 **[新しいグループ]** を選択します。
 1. **[グループのプロパティ]** で、以下の手順を実行します。
    1. **[グループの種類]** ボックスで **[セキュリティ]** を選択します。
-   1. **[グループ名]** ボックスに、「 **LensesUsers** 」と入力します。
+   1. **[グループ名]** ボックスに、「**LensesUsers**」と入力します。
    1. **［作成］** を選択します
-1. グループ **LensesUsers** を選択し、 **オブジェクト ID** (たとえば、f8b5c1ec-45de-4abd-af5c-e874091fb5f7) をコピーします。 この ID は、このグループのユーザーを[適切なアクセス許可](https://docs.lenses.io/install_setup/configuration/security.html#id3)にマップするために、Lenses で使用します。  
+1. グループ **LensesUsers** を選択し、**オブジェクト ID** (たとえば、f8b5c1ec-45de-4abd-af5c-e874091fb5f7) をコピーします。 この ID は、このグループのユーザーを[適切なアクセス許可](https://docs.lenses.io/install_setup/configuration/security.html#id3)にマップするために、Lenses で使用します。  
 
 **テスト ユーザーにグループを割り当てるには、次のようにします。**
 
@@ -151,11 +151,11 @@ Lenses でグループ メンバーシップのマッピングを使用して認
 
 ## <a name="configure-lensesio-sso"></a>Lenses.io の SSO の構成
 
-**Lenses.io** ポータルで SSO を構成するには、ダウンロードした **フェデレーション メタデータ XML** を Lenses インスタンスにインストールし、 [SSO が有効になるように Lenses を構成します](https://docs.lenses.io/install_setup/configuration/security.html#configure-lenses)。
+**Lenses.io** ポータルで SSO を構成するには、ダウンロードした **フェデレーション メタデータ XML** を Lenses インスタンスにインストールし、[SSO が有効になるように Lenses を構成します](https://docs.lenses.io/install_setup/configuration/security.html#configure-lenses)。
 
 ### <a name="create-lensesio-test-group-permissions"></a>Lenses.io テスト グループのアクセス許可を作成する
 
-1. Lenses でグループを作成するには、 **LensesUsers** グループの **オブジェクト ID** を使用します。 これは、ユーザーの[作成セクション](#create-an-azure-ad-test-user-and-group)でコピーした ID です。
+1. Lenses でグループを作成するには、**LensesUsers** グループの **オブジェクト ID** を使用します。 これは、ユーザーの[作成セクション](#create-an-azure-ad-test-user-and-group)でコピーした ID です。
 1. B.Simon に必要なアクセス許可を割り当てます。
 
 詳細については、[Azure - Lenses グループ マッピング](https://docs.lenses.io/install_setup/configuration/security.html#azure-groups)に関する記述を参照してください。

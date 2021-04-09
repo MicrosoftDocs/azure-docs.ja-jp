@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: bc80b7dfd433911ef13906db38f59a76827db258
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: e527cf5fa6a7caaeaf56ea19d684dd0830d5ca8a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905283"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101708681"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Azure Maps の Indoor Maps モジュールを使用する
 
@@ -67,7 +67,7 @@ const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
 
 const map = new atlas.Map("map-id", {
   //use your facility's location
-  center: [-122.13315, 47.63637],
+  center: [-122.13203, 47.63645],
   //or, you can use bounds: [# west, # south, # east, # north] and replace # with your map's bounds
   style: "blank",
   view: 'Auto',
@@ -84,24 +84,24 @@ const map = new atlas.Map("map-id", {
 屋内タイルセットとタイルのマップ スタイルを読み込むには、*Indoor Manager* をインスタンス化する必要があります。 "*Map オブジェクト*" と対応する `tilesetId` を指定して、*Indoor Manager* をインスタンス化します。 [マップの動的スタイル設定](indoor-map-dynamic-styling.md)をサポートする場合は、`statesetId` を渡す必要があります。 `statesetId` 変数名では大文字と小文字が区別されます。 コードは次の JavaScript のようになります。
 
 ```javascript
-const tilesetId = "";
-const statesetId = "";
+const tilesetId = "<tilesetId>";
+const statesetId = "<statesetId>";
 
 const indoorManager = new atlas.indoor.IndoorManager(map, {
-    tilesetId: "<tilesetId>",
-    statesetId: "<statesetId>" // Optional
+    tilesetId: tilesetId,
+    statesetId: statesetId // Optional
 });
 ```
 
 指定した状態データのポーリングを有効にするには、`statesetId` を指定して `indoorManager.setDynamicStyling(true)` を呼び出す必要があります。 状態データのポーリングにより、動的プロパティの状態または "*複数の状態*" を動的に更新できます。 たとえば、部屋などの機能には `occupancy` という名前の動的プロパティ ("*状態*") を設定できます。 アプリケーションで "*状態*" の変更をポーリングして、ビジュアル マップ内の変更を反映することができます。 次のコードは、状態のポーリングを有効にする方法を示しています。
 
 ```javascript
-const tilesetId = "";
-const statesetId = "";
+const tilesetId = "<tilesetId>";
+const statesetId = "<statesetId>";
 
 const indoorManager = new atlas.indoor.IndoorManager(map, {
-    tilesetId: "<tilesetId>",
-    statesetId: "<statesetId>" // Optional
+    tilesetId: tilesetId,
+    statesetId: statesetId // Optional
 });
 
 if (statesetId.length > 0) {
@@ -218,9 +218,9 @@ map.events.add("facilitychanged", indoorManager, (eventData) => {
         });
 
         const indoorManager = new atlas.indoor.IndoorManager(map, {
-          levelControl, //level picker
-          tilesetId,
-          statesetId, //optional
+          levelControl: levelControl, //level picker
+          tilesetId: tilesetId,
+          statesetId: statesetId // Optional
         });
 
         if (statesetId.length > 0) {
@@ -244,6 +244,8 @@ map.events.add("facilitychanged", indoorManager, (eventData) => {
 ご自分の屋内マップを確認する場合は、Web ブラウザーに読み込みます。 次の画像のように表示されるはずです。 階段の機能をクリックすると、右上隅に "*レベル ピッカー*" が表示されます。
 
   ![屋内マップの画像](media/how-to-use-indoor-module/indoor-map-graphic.png)
+
+[ライブ デモを見る](https://azuremapscodesamples.azurewebsites.net/?sample=Creator%20indoor%20maps)
 
 ## <a name="next-steps"></a>次のステップ
 

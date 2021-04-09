@@ -4,10 +4,10 @@ description: このチュートリアルでは、Azure portal を使用して、
 ms.topic: tutorial
 ms.date: 10/07/2020
 ms.openlocfilehash: 9a07e490525ce532f8f843b30b3b83715e65ce3c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91826599"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>チュートリアル:準拠していないリソースを識別するためのポリシー割り当てを作成する
@@ -30,31 +30,31 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure Policy ページの左側にある **[割り当て]** を選択します。 割り当ては、特定のスコープ内で実行するように割り当てられたポリシーです。
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="[すべてのサービス] で [ポリシー] を検索する" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="ポリシーの概要ページから [割り当て] ページを選択する" border="false":::
 
 1. **[ポリシー - 割り当て]** ページの上部で **[ポリシーの割り当て]** を選択します。
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="[すべてのサービス] で [ポリシー] を検索する" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="[割り当て] ページでポリシー定義を割り当てる" border="false":::
 
 1. **[ポリシーの割り当て]** ページで、 **[スコープ]** を選択します。その際、省略記号をクリックし、管理グループまたはサブスクリプションを選択します。 任意でリソース グループを選択します。 スコープによって、ポリシー割り当てを強制するリソースまたはリソースのグループが決まります。 次に、**[スコープ]** ページの下部にある **[選択]** をクリックします。
 
    この例では、**Parnell Aerospace** サブスクリプションを使用しています。 お客様によってサブスクリプションは異なります。
 
-1. リソースは**スコープ**に基づいて除外できます。 **除外**は**スコープ**のレベルよりも 1 つ下のレベルで開始されます。 **除外**は省略可能です。ここでは空のまま残してください。
+1. リソースは **スコープ** に基づいて除外できます。 **除外** は **スコープ** のレベルよりも 1 つ下のレベルで開始されます。 **除外** は省略可能です。ここでは空のまま残してください。
 
 1. **[ポリシー定義]** の省略記号を選択して、使用可能な定義の一覧を開きます。 Azure Policy に組み込まれているポリシー定義を使用できます。 次のようなさまざまな定義を利用できます。
 
    - タグとその値を強制
    - タグとその値を適用
-   - 存在しない場合は、リソース グループからタグを継承する
+   - タグが存在しない場合は、リソース グループからタグを継承する
 
    使用できる組み込みポリシーの部分的な一覧については、[Azure Policy サンプル](../../../governance/policy/samples/index.md)に関する記事をご覧ください。
 
 1. Windows ベースのマシンで Arc 対応サーバー エージェントを有効にしている場合、ポリシー定義の一覧から、" _\[プレビュー]: Log Analytics エージェントは Windows Azure Arc マシンにインストールされる必要がある_" という定義を見つけます。 Linux ベースのマシンの場合、対応するポリシー定義 " _\[プレビュー]: Log Analytics エージェントは Linux Azure Arc マシンにインストールする必要がある_" を見つけます。 そのポリシーをクリックし、**[選択]** をクリックします。
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="[すべてのサービス] で [ポリシー] を検索する" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="適切なポリシー定義を見つける" border="false":::
 
-1. **[割り当て名]** には選択したポリシー名が自動的に入力されますが、この名前は変更できます。 この例では、選択内容に応じて " _\[プレビュー]: Log Analytics エージェントは Windows Azure Arc マシンにインストールする必要がある_" または " _\[プレビュー]: Log Analytics エージェントは Linux Azure Arc マシンにインストールする必要がある_" のままにします。 必要に応じて、**説明**を追加することもできます。 説明では、このポリシーの割り当ての詳細を示します。
+1. **[割り当て名]** には選択したポリシー名が自動的に入力されますが、この名前は変更できます。 この例では、選択内容に応じて " _\[プレビュー]: Log Analytics エージェントは Windows Azure Arc マシンにインストールする必要がある_" または " _\[プレビュー]: Log Analytics エージェントは Linux Azure Arc マシンにインストールする必要がある_" のままにします。 必要に応じて、**説明** を追加することもできます。 説明では、このポリシーの割り当ての詳細を示します。
    **[割り当て担当者]** には、ログイン ユーザーに基づいて自動的にデータが入力されます。 このフィールドは任意です。カスタム値を入力できます。
 
 1. **[マネージド ID を作成します]** のチェックは外しておいてください。 このボックスは、ポリシーまたはイニシアティブに [deployIfNotExists](../../../governance/policy/concepts/effects.md#deployifnotexists) 効果を含むポリシーが含まれるときにオンにする "_必要があります_"。 このクイック スタートに使用するポリシーにはそれが含まれないため、オフのままにします。 詳しくは、[マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) および[修復セキュリティのしくみ](../../../governance/policy/how-to/remediate-resources.md#how-remediation-security-works)に関するページをご覧ください。
@@ -67,7 +67,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ページの左側にある **[コンプライアンス]** を選択します。 次に、作成したポリシーの割り当て " **\[プレビュー]: Log Analytics エージェントは Windows Azure Arc マシンにインストールする必要がある**" または " **\[プレビュー]: Log Analytics エージェントは Linux Azure Arc マシンにインストールする必要がある**" を探します。
 
-:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="[すべてのサービス] で [ポリシー] を検索する" border="false":::
+:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="ポリシーのコンプライアンスのページのコンプライアンスの詳細" border="false":::
 
 この新しい割り当てに準拠していない既存のリソースがある場合、 **[準拠していないリソース]** の下に表示されます。
 
@@ -91,7 +91,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ポリシーの割り当てを右クリックし、 **[割り当ての削除]** を選択します。
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="[すべてのサービス] で [ポリシー] を検索する" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="コンプライアンスのページから割り当てを削除する" border="false":::
 
 ## <a name="next-steps"></a>次の手順
 

@@ -19,10 +19,10 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85360097"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Azure AD Connect を使用して AD FS と Azure AD の信頼を管理する
@@ -37,7 +37,7 @@ Azure AD Connect では、オンプレミスの Active Directory フェデレー
 
 ## <a name="settings-controlled-by-azure-ad-connect"></a>Azure AD Connect によって制御される設定
 
-Azure AD Connect では、Azure AD 信頼に関連する設定**だけ**が管理されます。 Azure AD Connect では、AD FS 内にあるその他の証明書利用者の信頼に関する設定は一切変更されません。 次の表は、Azure AD Connect によって制御される設定を示したものです。
+Azure AD Connect では、Azure AD 信頼に関連する設定 **だけ** が管理されます。 Azure AD Connect では、AD FS 内にあるその他の証明書利用者の信頼に関する設定は一切変更されません。 次の表は、Azure AD Connect によって制御される設定を示したものです。
 
 | 設定 | 説明 |
 | :--- | :--- |
@@ -56,15 +56,15 @@ Azure AD Connect では、構成フロー中に Azure AD 信頼のすべての�
 
 | 実行フロー | 影響を受ける設定 |
 | :--- | :--- |
-| 初回パス インストール (express) | なし |
+| 初回パス インストール (express) | None |
 | 初回パス インストール (新しい AD FS ファーム) | 新しい AD FS ファームが作成され、Azure AD との信頼関係が一から作成されます。 |
 | 初回パス インストール (既存の AD FS ファーム、既存の Azure AD 信頼) | Azure AD 信頼識別子、発行変換規則、Azure AD エンドポイント、代替 ID (必要な場合)、自動メタデータ更新 |
 | Azure AD 信頼のリセット | トークン署名証明書、トークン署名アルゴリズム、Azure AD 信頼識別子、発行変換規則、Azure AD エンドポイント、代替 ID (必要な場合)、自動メタデータ更新 |
-| フェデレーション サーバーの追加 | なし |
-| WAP サーバーの追加 | なし |
+| フェデレーション サーバーの追加 | None |
+| WAP サーバーの追加 | None |
 | デバイス オプション | 発行変換規則、IWA でのデバイス登録 |
 | フェデレーション ドメインの追加 | ドメインが最初に追加される場合 (つまり、設定が単一ドメイン フェデレーションからマルチドメイン フェデレーションに変更される場合)、Azure AD Connect は信頼を一から再作成します。 Azure AD との信頼関係が既に複数ドメイン用に構成されている場合は、発行変換規則だけが変更されます |
-| TLS の更新 | なし |
+| TLS の更新 | None |
 
 設定が変更される操作の際には必ず、Azure AD Connect によって、現在の信頼設定のバックアップが **%ProgramData%\AADConnect\ADFS** に作成されます
 
@@ -77,7 +77,7 @@ Azure AD Connect では、構成フロー中に Azure AD 信頼のすべての�
 
 Azure AD Connect は、Azure AD 信頼が常に推奨の要求規則セットで構成されているかどうかを確認します。 Azure AD 信頼の管理には Azure AD Connect を使用することをお勧めします。 このセクションでは、発行変換規則のセットと、それらの説明を一覧で示します。
 
-| 規則の名前 | 説明 |
+| 規則名 | 説明 |
 | --- | --- |
 | Issue UPN | この規則は、userprincipalname の値を、userprincipalname の同期設定で構成された属性からの値として照会します。|
 | Query objectguid and msdsconsistencyguid for custom ImmutableId claim | この規則は、objectguid と msdsconsistencyguid 値 (存在する場合) のパイプラインに一時的な値を追加します |
@@ -103,7 +103,7 @@ Azure AD Connect は、Azure AD 信頼が常に推奨の要求規則セットで
 
 ## <a name="restore-issuance-transform-rules"></a>発行変換規則の復元
 
-Azure AD Connect バージョン 1.1.873.0 以降では、Azure AD 信頼の設定に変更が加えられるたびに、Azure AD 信頼設定のバックアップが作成されます。 Azure AD 信頼設定のバックアップは、 **%ProgramData%\AADConnect\ADFS** に作成されます。 ファイル名の形式は次のようになります: AadTrust-&lt;date&gt;-&lt;time&gt;.txt (たとえば、AadTrust-20180710-150216.txt)
+Azure AD Connect バージョン 1.1.873.0 以降では、Azure AD 信頼の設定に変更が加えられるたびに、Azure AD 信頼設定のバックアップが作成されます。 Azure AD 信頼設定のバックアップは、**%ProgramData%\AADConnect\ADFS** に作成されます。 ファイル名の形式は次のようになります: AadTrust-&lt;date&gt;-&lt;time&gt;.txt (たとえば、AadTrust-20180710-150216.txt)
 
 ![Azure AD 信頼のバックアップ例のスクリーンショット](./media/how-to-connect-azure-ad-trust/backup.png)
 
@@ -112,9 +112,9 @@ Azure AD Connect バージョン 1.1.873.0 以降では、Azure AD 信頼の設�
 1. サーバー マネージャーで、AD FS 管理 UI を開きます
 2. **[AD FS] &gt; [証明書利用者信頼] &gt; [Microsoft Office 365 ID プラットフォーム] &gt; [要求発行ポリシーの編集]** に移動して、Azure AD 信頼のプロパティを開きます
 3. **[規則の追加]** をクリックします
-4. 要求規則テンプレートから [カスタム規則を使用して要求を送信] を選択し、 **[次へ]** をクリックします
-5. バックアップ ファイルから要求規則の名前をコピーし、 **[要求規則名]** フィールドに貼り付けます
-6. バックアップ ファイルの要求規則を **[カスタム規則]** のテキスト フィールドにコピーし、 **[完了]** をクリックします
+4. 要求規則テンプレートから [カスタム規則を使用して要求を送信] を選択し、**[次へ]** をクリックします
+5. バックアップ ファイルから要求規則の名前をコピーし、**[要求規則名]** フィールドに貼り付けます
+6. バックアップ ファイルの要求規則を **[カスタム規則]** のテキスト フィールドにコピーし、**[完了]** をクリックします
 
 > [!NOTE]
 > 追加の規則が、Azure AD Connect によって構成された規則と競合していないことを確認してください。

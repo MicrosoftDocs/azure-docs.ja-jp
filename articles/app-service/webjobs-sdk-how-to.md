@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 5666a489cfd0f0d92120c9ec7e3c8d3c2d083b5e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 063924dccb7d7b95b962b24ecc1af1870a855194
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737271"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102617133"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -425,7 +425,7 @@ static async Task Main()
 }
 ```
 
-詳しくは、[Event Hubs のバインド](../azure-functions/functions-bindings-event-hubs-trigger.md#host-json)に関する記事をご覧ください。
+詳しくは、[Event Hubs のバインド](../azure-functions/functions-bindings-event-hubs.md#host-json)に関する記事をご覧ください。
 
 ### <a name="queue-storage-trigger-configuration"></a>Queue Storage トリガーの構成
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: alkohli
 ms.openlocfilehash: ebf967fe02ab6424b9952bb0315b70fadb547fe3
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97967832"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro でコンピューティングを管理する
@@ -46,7 +46,7 @@ ms.locfileid: "97967832"
     
     <!--Trigger names can only contain numbers, lowercase letters, and hyphens. The share name must be between 3 and 63 characters long and begin with a letter or a number. Each hyphen must be preceded and followed by a non-hyphen character.-->
 
-3. トリガーの **[種類]** を選択します。 トリガーをファイル イベントへの応答にする場合は、 **[ファイル]** を選択します。 定義した時間にトリガーを開始し、指定の間隔で繰り返し実行する場合は、 **[Scheduled]\(スケジュール済み\)** を選択します。 選択内容に応じた一連のオプションが表示されます。
+3. トリガーの **[種類]** を選択します。 トリガーをファイル イベントへの応答にする場合は、**[ファイル]** を選択します。 定義した時間にトリガーを開始し、指定の間隔で繰り返し実行する場合は、**[Scheduled]\(スケジュール済み\)** を選択します。 選択内容に応じた一連のオプションが表示されます。
 
     - **[File trigger]\(ファイル トリガー\)** - ドロップダウン リストから、マウントされた共有を選択します。 この共有でファイル イベントが発生すると、トリガーによって Azure 関数が呼び出されます。
 
@@ -70,7 +70,7 @@ ms.locfileid: "97967832"
 
     ![トリガーの選択](media/azure-stack-edge-manage-compute/delete-trigger-1.png)
 
-2. 右クリックしてから、 **[削除]** を選択します。
+2. 右クリックして **[削除]** を選択します。
 
     ![[削除] の選択](media/azure-stack-edge-manage-compute/delete-trigger-2.png)
 

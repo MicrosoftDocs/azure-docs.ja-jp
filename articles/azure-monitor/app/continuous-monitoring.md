@@ -4,10 +4,10 @@ description: Application Insights で行う継続的な監視を迅速にセッ�
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: fd7cd6a107ed45adb60167a57661b60be5dc8212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86517129"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>リリース パイプラインに継続的監視を追加する
@@ -47,7 +47,7 @@ Azure Pipelines と Azure Application Insights を統合すると、ソフトウ
 
 ## <a name="modify-alert-rules"></a>アラート ルールを変更する
 
-すぐに使用できる**継続的監視を使用した Azure App Service の配置**テンプレートには、4 つのアラート ルールがあります。**可用性**、**失敗した要求**、**サーバー応答時間**、**サーバーの例外**です。 サービス レベルのニーズに合わせて、ルールを追加したり、ルール設定を変更したりすることができます。 
+すぐに使用できる **継続的監視を使用した Azure App Service の配置** テンプレートには、4 つのアラート ルールがあります。**可用性**、**失敗した要求**、**サーバー応答時間**、**サーバーの例外** です。 サービス レベルのニーズに合わせて、ルールを追加したり、ルール設定を変更したりすることができます。 
 
 アラート ルール設定を変更するには:
 

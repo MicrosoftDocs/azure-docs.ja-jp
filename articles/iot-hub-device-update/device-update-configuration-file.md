@@ -7,10 +7,10 @@ ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
 ms.openlocfilehash: 39ecd9d6d0deec942d5c8cce9357c779a4b328d3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101660547"
 ---
 # <a name="device-update-for-iot-hub-configuration-file"></a>Device Update for IoT Hub 構成ファイル

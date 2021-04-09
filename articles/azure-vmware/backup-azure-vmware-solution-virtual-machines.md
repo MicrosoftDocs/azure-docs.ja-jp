@@ -3,12 +3,12 @@ title: Azure Backup Server を使用して Azure VMware Solution の VM をバ�
 description: Azure Backup Server を使用して仮想マシンをバックアップするように Azure VMware Solution 環境を構成します。
 ms.topic: how-to
 ms.date: 02/04/2021
-ms.openlocfilehash: ea2164ba19703660e54879c25b975342d824662c
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 163065556b7dbc979d68613744ea827c209d9fda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585026"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102618918"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Azure Backup Server を使用して Azure VMware Solution の VM をバックアップする
 
@@ -73,7 +73,7 @@ VMware 6.7 以降では、TLS が通信プロトコルとして有効になっ�
 
 1. 次のレジストリ設定をコピーし、メモ帳に貼り付けます。 その後、.txt 拡張子を除いた TLS.REG としてファイルを保存します。
 
-   ```text
+   ```
    
    Windows Registry Editor Version 5.00
    

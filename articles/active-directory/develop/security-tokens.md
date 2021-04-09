@@ -14,17 +14,17 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: 6d9f5538d377be1414089e591559344bde4f381a
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98795641"
 ---
 # <a name="security-tokens"></a>セキュリティ トークン
 
 一元化された ID プロバイダーは、世界中にいるユーザーが必ずしも企業のネットワークからサインインするわけではないアプリにとって特に役立ちます。 Microsoft ID プラットフォームではユーザーを認証し、セキュリティ トークン ([アクセス トークン](developer-glossary.md#access-token)、[リフレッシュトークン](developer-glossary.md#refresh-token)、[ID トークン](developer-glossary.md#id-token)など) を提供します。 セキュリティ トークンを使用すると、[クライアント アプリケーション](developer-glossary.md#client-application)は、[リソース サーバー](developer-glossary.md#resource-server)上の保護されたリソースにアクセスできます。
 
-**アクセス トークン**:アクセス トークンは、[OAuth 2.0](active-directory-v2-protocols.md) フローの一部として[承認サーバー](developer-glossary.md#authorization-server)によって発行されるセキュリティ トークンです。 これには、そのトークンの対象となるユーザーとリソースに関する情報が含まれています。 この情報を使用すると、Web API やその他の保護されたリソースにアクセスできます。 アクセス トークンは、クライアント アプリにアクセス権を付与するためにリソースによって検証されます。 Microsoft ID プラットフォームがアクセス トークンを発行する方法の詳細については、[アクセス トークン](access-tokens.md)に関するページを参照してください。
+**アクセス トークン**:アクセス トークンは、[OAuth 2.0](active-directory-v2-protocols.md) フローの一部として [承認サーバー](developer-glossary.md#authorization-server)によって発行されるセキュリティ トークンです。 これには、そのトークンの対象となるユーザーとリソースに関する情報が含まれています。 この情報を使用すると、Web API やその他の保護されたリソースにアクセスできます。 アクセス トークンは、クライアント アプリにアクセス権を付与するためにリソースによって検証されます。 Microsoft ID プラットフォームがアクセス トークンを発行する方法の詳細については、[アクセス トークン](access-tokens.md)に関するページを参照してください。
 
 **リフレッシュトークン**: アクセス トークンは短時間しか有効でないため、承認サーバーでは、アクセス トークンが発行されると同時にリフレッシュトークンを発行する場合があります。 クライアント アプリケーションでは、必要に応じて、このリフレッシュトークンを新しいアクセス トークンに交換できます。 Microsoft ID プラットフォームがリフレッシュトークンを使用してアクセス許可を取り消す方法の詳細については、「[トークンの失効](access-tokens.md#token-revocation)」を参照してください。
 
@@ -78,7 +78,7 @@ Microsoft ID プラットフォームがトークンと要求の情報を実装�
 |[承認コード フロー](v2-oauth2-auth-code-flow.md) | | x | x | x | x|
 |[暗黙的なフロー](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[ハイブリッド OIDC フロー](v2-protocols-oidc.md#protocol-diagram-access-token-acquisition)| | x  | |          |            x   |
-|[リフレッシュトークンの使用](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | リフレッシュトークン | x | x | x| |
+|[更新トークンの使用](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | リフレッシュトークン | x | x | x| |
 |[On-Behalf-Of フロー](v2-oauth2-on-behalf-of-flow.md) | アクセス トークン| x| x| x| |
 |[クライアントの資格情報](v2-oauth2-client-creds-grant-flow.md) | | | x (アプリのみ)| | |
 

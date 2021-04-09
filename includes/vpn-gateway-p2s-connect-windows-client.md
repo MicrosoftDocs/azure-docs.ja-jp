@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 10/29/2020
 ms.author: cherylmc
 ms.openlocfilehash: 15c29648e42ba190991d51188489883e29bee165
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93041515"
 ---
 >[!NOTE]

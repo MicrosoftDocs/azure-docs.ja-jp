@@ -10,10 +10,10 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 6/8/2020
 ms.openlocfilehash: 40ca03114d5a27ad3e5be54d75cb3bbe0221a501
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102560295"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 および Esv4 シリーズ

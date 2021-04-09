@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 9/30/2020
+ms.date: 03/18/2021
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: f1ff679bddf2afc355516f2a04b3307d4a260a5c
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 8fb4ecb8fa8d6938e9afbc77064380b7b213029a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063622"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578738"
 ---
 # <a name="confidential-client-assertions"></a>機密クライアント アサーション
 
@@ -48,7 +48,16 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-[Azure AD で想定される要求](active-directory-certificate-credentials.md)は次のとおりです。
+委任フォームを使用することもできます。これにより、アサーションをジャスト イン タイムで計算できます。
+
+```csharp
+string signedClientAssertion = ComputeAssertion();
+app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
+                                          .WithClientAssertion(() => { return GetSignedClientAssertion(); } )
+                                          .Build();
+```
+
+署名付きアサーションで [Azure AD によって期待されるクレーム](active-directory-certificate-credentials.md)は次のとおりです。
 
 要求の種類 | 値 | 説明
 ---------- | ---------- | ----------

@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 04/20/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 24a38fde3d1b6bbe1efef9241458da846c186112
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97916339"
 ---
 # <a name="playback-technology-tech"></a>再生テクノロジ ("テクノロジ") #

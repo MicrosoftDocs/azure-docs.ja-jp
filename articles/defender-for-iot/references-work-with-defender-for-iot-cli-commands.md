@@ -1,35 +1,35 @@
 ---
 title: Defender for IoT の CLI コマンドを操作する
 description: この記事では、センサーおよびオンプレミスの管理コンソール用の Defender for IoT CLI コマンドについて説明します。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 2ec682bf76e35b54f58acc1956972c57128edd75
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 9cd3f4325db2bc45ddcd6cc011dd4993e385a43c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523143"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778680"
 ---
 # <a name="work-with-defender-for-iot-cli-commands"></a>Defender for IoT の CLI コマンドを操作する
 
-この記事では、センサーおよびオンプレミスの管理コンソール用の CLI コマンドについて説明します。 これらのコマンドには、管理者、cyberx ユーザー、およびサポート ユーザーがアクセスできます。
+この記事では、センサーおよびオンプレミスの管理コンソール用の CLI コマンドについて説明します。 コマンドには、次のユーザーがアクセスできます。
 
-メンテナンス アクティビティまたはアラートを必要としないアクティビティを計画している場合は、除外ルールを定義します。
+- 管理者
+- CyberX 
+- サポート
+
+CLI での作業を開始するには、ターミナルを使用して接続します。 たとえば、ターミナル名 `Putty` と `Support` ユーザーです。 
 
 ## <a name="create-local-alert-exclusion-rules"></a>ローカルのアラートの除外ルールを作成する
 
-次のコマンドを CLI に入力して、除外ルールを作成できます。
+次のコマンドを CLI に入力して、ローカルのアラートの除外ルールを作成できます。
 
 ```azurecli-interactive
 alerts exclusion-rule-create [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
 [-dev DEVICES] [-a ALERTS]
 ```
 
-アラートの除外ルール内で定義できる属性は次のとおりです。
+アラートの除外ルールでは、次の属性を使用できます。
 
 | 属性 | 説明 |
 |--|--|
@@ -42,18 +42,18 @@ alerts exclusion-rule-create [-h] -n NAME [-ts TIMES] [-dir DIRECTION]
 
 ## <a name="append-local-alert-exclusion-rules"></a>ローカルのアラートの除外ルールを追加する
 
-CLI で次のコマンドを入力して、現在のアラートの除外ルールに新しいルールを追加できます。
+次のコマンドを CLI に入力して、ローカルのアラートの除外ルールを追加できます。
 
 ```azurecli-interactive
 alerts exclusion-rule-append [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
 [-dev DEVICES] [-a ALERTS]
 ```
 
-ここで使用される属性は、ローカルのアラートの除外ルールを作成するときに記述する属性に似ています。 この場合の使用方法では、属性は既存のルールに適用されます。
+ここで使用される属性は、「ローカル アラートの除外ルールを作成する」セクションで説明されている属性と同じです。 使用方法の違いは、ここでは、既存のルールに属性が適用されることです。
 
 ## <a name="show-local-alert-exclusion-rules"></a>ローカルのアラートの除外ルールを表示する
 
-次のコマンドを入力して、既存のすべての除外ルールを表示します。
+次のコマンドを入力して、既存の除外ルールの一覧を表示します。
 
 ```azurecli-interactive
 alerts exclusion-rule-list [-h] -n NAME [-ts TIMES] [-dir DIRECTION]  
@@ -77,11 +77,11 @@ alerts exclusion-rule-remove [-h] -n NAME [-ts TIMES] [-dir DIRECTION]
 
 ## <a name="sync-time-from-the-ntp-server"></a>NTP サーバーからの時刻の同期
 
-NTP サーバーからの時刻同期を有効または無効にすることができます。
+指定の NTP サーバーからの時刻同期を有効または無効にすることができます。
 
 ### <a name="enable-ntp-sync"></a>NTP 同期を有効にする
 
-次のコマンドを入力すると、指定した NTP サーバーから現在の時刻を定期的に取得できるようになります。
+次のコマンドを入力して、指定した NTP サーバーから定期的に時刻を取得します。
 
 ```azurecli-interactive
 ntp enable IP
@@ -91,7 +91,7 @@ ntp enable IP
 
 ### <a name="disable-ntp-sync"></a>NTP 同期を無効にする
 
-次のコマンドを入力すると、指定した NTP サーバーとの時刻同期が無効になります。
+次のコマンドを入力して、指定した NTP サーバーとの時刻同期を無効にします。
 
 ```azurecli-interactive
 ntp disable IP
@@ -99,14 +99,14 @@ ntp disable IP
 
 コマンド内で定義できる属性は、NTP サーバーの IP アドレスです。
 
-## <a name="configure-the-network"></a>ネットワークの構成方法
+## <a name="network-configuration"></a>ネットワーク構成
 
 次の表では、Azure Defender for IoT のネットワーク オプションを構成するために使用できるコマンドについて説明します。
 
 |名前|コマンド|説明|
 |-----------|-------|-----------|
-|ping|`ping IP `| Defender for IoT プラットフォームの外部にあるアドレスに ping を実行します。|
-|Blink|`network blink`|ネットワーク構成パラメーターの変更を有効にします。|
+|ping|`ping IP`| Defender for IoT プラットフォームの外部にあるアドレスに ping を実行します。|
+|Blink|`network blink`| インターフェイスのライトを点滅させて接続を見つけます。 |
 |ネットワークの再構成 |`network edit-settings`| ネットワーク構成パラメーターの変更を有効にします。 |
 |ネットワーク設定の表示 |`network list`|ネットワーク アダプター パラメーターを表示します。 |
 |ネットワーク構成の検証 |`network validate` |出力ネットワーク設定を表示します。 <br /> <br />例: <br /> <br />Current Network Settings: <br /> interface: eth0 <br /> ip:10.100.100.1 <br />subnet:255.255.255.0 <br />default gateway:10.100.100.254 <br />dns:10.100.100.254 <br />monitor interfaces: eth1|
@@ -115,7 +115,7 @@ ntp disable IP
 
 ## <a name="filter-network-configurations"></a>ネットワーク構成のフィルター
 
-`network capture-filter` コマンドを使用すると、管理者は分析する必要のないネットワーク トラフィックを排除できます。 包含リストまたは除外リストを使用してトラフィックをフィルター処理します。
+`network capture-filter` コマンドを使用すると、管理者は分析する必要のないネットワーク トラフィックを排除できます。 包含リストまたは除外リストを使用してトラフィックをフィルター処理できます。
 
 ```azurecli-interactive
 network capture-filter
@@ -137,7 +137,7 @@ network capture-filter
 
 デバイス、チャネル、またはサブネットを含めると、センサーは、通常は処理されないポートやトラフィックを含む、その引数で有効なすべてのトラフィックを処理します。
 
-次のように尋ねられます。
+その後、次の質問が表示されます。
 
 >`Would you like to supply devices and subnet masks you wish to exclude from the capture filter? [Y/N]:`
 
@@ -173,7 +173,7 @@ network capture-filter
 
 ### <a name="components"></a>コンポーネント
 
-次のように尋ねられます。
+次の質問が表示されます。
 
 >`In which component do you wish to apply this capture filter?`
 
@@ -256,6 +256,7 @@ directions [-h] [--identifier IDENTIFIER] [--port PORT] [--remove] [--add]
 
 |名前|コード|説明|
 |----|----|-----------|
+|日付の表示|`date`|ホスト上の現在の日付を GMT 形式で返します。|
 |ホストの再起動|`system reboot`|ホスト デバイスを再起動します。|
 |ホストのシャットダウン|`system shutdown`|ホストをシャットダウンします。|
 |システムのバックアップ|`system backup`|即時バックアップを開始します (スケジュールしていないバックアップ)。|
@@ -282,7 +283,7 @@ cyberx-xsense-certificate-import
 | --key | \*.key ファイル。 キーの長さは、2048 ビット以上である必要があります。 |
 | --chain | 証明書チェーン ファイルへのパス (省略可能)。 |
 | --pass | 証明書の暗号化に使用されるパスフレーズ (省略可能)。 |
-| --passphrase-set | 既定値は **False** (**使用しない**) です。 <br />前の証明書で指定された前のパスフレーズを使用するには、**True** に設定します (省略可能)。 |  |
+| --passphrase-set | 既定値は **False** (**使用しない**) です。 <br />前の証明書で指定された前のパスフレーズを使用するには、**True** に設定します (省略可能)。 | 
 
 ツールを使用する場合:
 
@@ -290,6 +291,6 @@ cyberx-xsense-certificate-import
 
 - DNS サーバーと対応する IP アドレスを使用して、(証明書に表示されているように) アプライアンス ドメインを IT で確認します。 
     
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
 [Defender for IoT API センサーと管理コンソール API](references-work-with-defender-for-iot-apis.md)

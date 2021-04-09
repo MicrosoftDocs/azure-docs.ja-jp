@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
 ms.openlocfilehash: 7f6d3feee95d4cce654b2cc1547b8bd7f4eb45d2
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98743017"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>ゲスト OS ファミリ 1 の提供終了に関する通知

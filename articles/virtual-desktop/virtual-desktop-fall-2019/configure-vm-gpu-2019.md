@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: denisgun
 ms.openlocfilehash: fa7b80b021e00d25dea4f96432ae922c15474058
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95023056"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) 用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する

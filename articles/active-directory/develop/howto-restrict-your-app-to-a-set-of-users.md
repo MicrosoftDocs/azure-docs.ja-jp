@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f3eff6f5660089472ef431bad9a4f05be1fffe24
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 71cfe08da42b8eec9ddbd0e4246ba1b72f895414
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104147"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199592"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>方法:Azure AD アプリを Azure AD テナントの一連のユーザーに制限する
 
@@ -87,6 +87,6 @@ Azure AD のこの組み込み機能も使用することにより、テナン�
 
 - [方法: ご利用のアプリケーションにアプリ ロールを追加する](./howto-add-app-roles-in-azure-ad-apps.md)
 - [アプリ ロールおよびロール要求を使用して ASP.NET Core Web アプリに承認を追加する](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
-- [アプリでのセキュリティ グループとアプリケーション ロールの使用 (ビデオ)](https://www.youtube.com/watch?v=V8VUPixLSiM)
+- [アプリでのセキュリティ グループとアプリケーション ロールの使用 (ビデオ)](https://www.youtube.com/watch?v=LRoc-na27l0)
 - [グループ要求とアプリケーション ロールが追加された Azure Active Directory](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory のアプリ マニフェスト](./reference-app-manifest.md)

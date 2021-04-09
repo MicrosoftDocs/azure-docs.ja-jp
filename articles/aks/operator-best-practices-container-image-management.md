@@ -4,16 +4,16 @@ description: Azure Kubernetes Service (AKS) でコンテナー イメージを�
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 4d90ac5b8ab44925b73be2f22cd7a79458da9f5a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1d2f5465356a94b9ad7014e75aa6fe1515411a81
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073553"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102564919"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) でのコンテナー イメージの管理とセキュリティに関するベスト プラクティス
 
-Azure Kubernetes Service (AKS) でアプリケーションを開発および実行する際には、コンテナーおよびコンテナー イメージのセキュリティが重要な考慮事項になります。 期限切れの基本イメージ、または修正プログラムが適用されていないアプリケーション ランタイムを含むコンテナーは、セキュリティ上のリスクおよび考えられる攻撃ベクトルをもたらします。 これらのリスクを最小限に抑えるには、ビルド時と実行時にコンテナー内の問題をスキャンして修復するツールを統合する必要があります。 脆弱性または期限切れの基本イメージが、プロセス内のできるだけ早い段階で見つかれば、クラスターのセキュリティが高まります。 この記事で*コンテナー*は、コンテナー レジストリに格納されているコンテナー イメージと、実行中のコンテナーの両方を意味します。
+Azure Kubernetes Service (AKS) でアプリケーションを開発および実行する際には、コンテナーおよびコンテナー イメージのセキュリティが重要な考慮事項になります。 期限切れの基本イメージ、または修正プログラムが適用されていないアプリケーション ランタイムを含むコンテナーは、セキュリティ上のリスクおよび考えられる攻撃ベクトルをもたらします。 これらのリスクを最小限に抑えるには、ビルド時と実行時にコンテナー内の問題をスキャンして修復するツールを統合する必要があります。 脆弱性または期限切れの基本イメージが、プロセス内のできるだけ早い段階で見つかれば、クラスターのセキュリティが高まります。 この記事で *コンテナー* は、コンテナー レジストリに格納されているコンテナー イメージと、実行中のコンテナーの両方を意味します。
 
 この記事では、AKS でコンテナーをセキュリティで保護する方法について説明します。 学習内容は次のとおりです。
 
@@ -52,7 +52,7 @@ Azure Kubernetes Service (AKS) でアプリケーションを開発および実�
 * [Automate image builds on base image update with Azure Container Registry Tasks][acr-base-image-update] (Azure Container Registry タスクを使用して基本イメージの更新時のコンテナー イメージ ビルドを自動化する)
 
 <!-- EXTERNAL LINKS -->
-[azure-pipelines]: /azure/devops/pipelines/?view=vsts
+[azure-pipelines]: /azure/devops/pipelines/
 [twistlock]: https://www.twistlock.com/
 [aqua]: https://www.aquasec.com/
 

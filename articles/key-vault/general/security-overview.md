@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: mbaldwin
 ms.openlocfilehash: c7635fdc2012ab404709733d8f5849465c2ee82f
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99071569"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault セキュリティ

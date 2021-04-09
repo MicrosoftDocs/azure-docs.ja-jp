@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 11/05/2020
 ms.openlocfilehash: 4f243ca5be0878cde3b28f5b7a7c3eea0cf9b8d0
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94631324"
 ---
 # <a name="how-to-resell-your-offer-through-csp"></a>CSP を通してプランを再販する方法

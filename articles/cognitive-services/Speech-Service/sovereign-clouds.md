@@ -12,10 +12,10 @@ ms.custom: references_regions
 ms.date: 01/07/2021
 ms.author: alexeyo
 ms.openlocfilehash: f30b1f0f14bba54b8b4fcd7c5190f3c533f199a6
-ms.sourcegitcommit: 63caac7871df9d999ca5a5f1b8c036ae7014231c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98061754"
 ---
 # <a name="speech-services-in-sovereign-clouds"></a>ソブリン クラウドの Speech Services

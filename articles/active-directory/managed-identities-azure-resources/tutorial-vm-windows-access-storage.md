@@ -16,10 +16,10 @@ ms.date: 01/14/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de1cc69b3cfdac307edf6dfe999a5d538c2cb811
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89263180"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>チュートリアル: Windows VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする
@@ -42,7 +42,7 @@ ms.locfileid: "89263180"
 
 
 
-## <a name="enable"></a>[有効化]
+## <a name="enable"></a>有効化
 
 [!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
 
@@ -94,11 +94,11 @@ ms.locfileid: "89263180"
 
     ![アクセス許可の割り当て](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
-## <a name="access-data"></a>データにアクセスする 
+## <a name="access-data"></a>データにアクセスする 
 
 Azure Storage は Azure AD 認証をネイティブにサポートするため、マネージド ID を使用して取得したアクセス トークンを直接受け入れることができます。 これは Azure Storage の Azure AD との統合の一部であり、接続文字列に資格情報を提供することとは異なります。
 
-次に示すのは、アクセス トークンを使用して Azure Storage への接続を開き、以前に作成したファイルの内容を読み取る .NET コードの例です。 このコードは、VM のマネージド ID のエンドポイントにアクセスできる VM 上で実行する必要があります。 アクセス トークン メソッドを使用するには、.NET Framework 4.6 以降が必要です。 適宜、`<URI to blob file>` の値を置き換えます。 この値は、以前に作成して Blob Storage にアップロードしたファイルに移動し、 **[概要]** ページの **[プロパティ]** で **URL** をコピーすることで取得できます。
+次に示すのは、アクセス トークンを使用して Azure Storage への接続を開き、以前に作成したファイルの内容を読み取る .NET コードの例です。 このコードは、VM のマネージド ID のエンドポイントにアクセスできる VM 上で実行する必要があります。 アクセス トークン メソッドを使用するには、.NET Framework 4.6 以降が必要です。 適宜、`<URI to blob file>` の値を置き換えます。 この値は、以前に作成して Blob Storage にアップロードしたファイルに移動し、**[概要]** ページの **[プロパティ]** で **URL** をコピーすることで取得できます。
 
 ```csharp
 using System;

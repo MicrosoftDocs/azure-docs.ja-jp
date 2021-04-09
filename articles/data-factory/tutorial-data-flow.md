@@ -7,22 +7,25 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/09/2019
-ms.openlocfilehash: b0f564f68a638e7efd1cd1ce9116a26f4d19f277
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 03/11/2021
+ms.openlocfilehash: 52509dbf529076eaa0af73ea48db9a7f3fd10241
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497063"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584518"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>マッピング データ フローを使用してデータを変換する
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Factory を初めて使用する場合は、「[Azure Data Factory の概要](introduction.md)」を参照してください。
 
 このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UX) を使い、マッピング データ フローを使用して Azure Data Lake Storage (ADLS) Gen2 ソースから ADLS Gen2 シンクにデータをコピーして変換するパイプラインを作成します。 このチュートリアルの構成パターンは、マッピング データ フローを使用してデータを変換するときに拡張することができます
 
+ >[!NOTE]
+   >このチュートリアルでは、一般にデータ フローをマップすることを目的としています。 データ フローは、Azure Data Factory および Synapse パイプラインの両方で使用できます。 Azure Synapse パイプラインのデータ フローを初めて使用する場合は、[Azure Synapse パイプラインを使用したデータ フロー](https://docs.microsoft.com/azure/synapse-analytics/concepts-data-flow-overview)に関するページに従ってください 
+   
 このチュートリアルでは、次の手順を実行します。
 
 > [!div class="checklist"]
@@ -51,7 +54,7 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 
    Azure データ ファクトリの名前は *グローバルに一意* にする必要があります。 データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 (yournameADFTutorialDataFactory など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関するページを参照してください。
 
-     ![新しいデータ ファクトリ](./media/doc-common-process/name-not-available-error.png)
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="重複する名前に関する、新しい Data Factory のエラーメッセージ。":::
 4. データ ファクトリを作成する Azure **サブスクリプション** を選択します。
 5. **[リソース グループ]** で、次の手順のいずれかを行います。
 

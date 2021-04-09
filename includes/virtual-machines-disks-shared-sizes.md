@@ -9,10 +9,10 @@ ms.date: 04/06/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 0b185d545e129c941d5df2e8ce86ee684174b666
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81008347"
 ---
 現状では、Ultra ディスクと Premium SSD のみで共有ディスクを有効にできます。 ディスクのサイズによって `maxShares` 制限が異なる場合があります。これは、`maxShares` 値を設定するときに超えることはできません。 Premium SSD の場合、ディスク共有をサポートするディスク サイズは P15 以上です。

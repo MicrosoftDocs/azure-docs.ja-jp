@@ -14,10 +14,10 @@ ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
 ms.openlocfilehash: 3509185baa3a9d7be90c1fa4bd8000da4a8a6fe5
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95557929"
 ---
 ## <a name="prepare-for-akv-integration"></a>AKV 統合の準備
@@ -38,7 +38,7 @@ Azure Key Vault 統合を使用し、SQL Server VM を構成するには、い�
 
 最初に、サブスクリプションに [Azure Active Directory](https://azure.microsoft.com/trial/get-started-active-directory/) (AAD) を追加する必要があります。 特定のユーザーやアプリケーションが Key Vault にアクセスするための許可が与えられるなど、さまざまな利点があります。
 
-次に、アプリケーションを AAD に登録します。 これで VM に必要なキー コンテナーへのアクセス許可を持つサービス プリンシパル アカウントを入手できます。 Azure Key Vault の記事のセクション「[Azure Active Directory にアプリケーションを登録する](../articles/key-vault/general/manage-with-cli2.md#registering-an-application-with-azure-active-directory)」にこれらの手順があります。あるいは、[このブログ投稿](/archive/blogs/kv/azure-key-vault-step-by-step)の「**Get an identity for the application (アプリケーションの ID を取得する)** 」セクションのスクリーンショットで手順を確認できます。 これらの手順を完了する前に、後で SQL VM で Azure Key Vault 統合を有効にするときに必要になる次の情報をこの登録中に集める必要があります。
+次に、アプリケーションを AAD に登録します。 これで VM に必要なキー コンテナーへのアクセス許可を持つサービス プリンシパル アカウントを入手できます。 Azure Key Vault の記事のセクション「[Azure Active Directory にアプリケーションを登録する](../articles/key-vault/general/manage-with-cli2.md#registering-an-application-with-azure-active-directory)」にこれらの手順があります。あるいは、[このブログ投稿](/archive/blogs/kv/azure-key-vault-step-by-step)の「**Get an identity for the application (アプリケーションの ID を取得する)**」セクションのスクリーンショットで手順を確認できます。 これらの手順を完了する前に、後で SQL VM で Azure Key Vault 統合を有効にするときに必要になる次の情報をこの登録中に集める必要があります。
 
 * アプリケーションが追加されたら、 **[登録済みのアプリ]** ブレードで **[アプリケーション ID]** (別名 AAD ClientID または AppID) を探します。
     アプリケーション ID は後に PowerShell スクリプトの **$spName** (サービス プリンシパル名) パラメーターに割り当てられ、Azure Key Vault 統合を有効にします。

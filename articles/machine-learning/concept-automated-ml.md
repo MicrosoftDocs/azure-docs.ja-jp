@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: ee9267637c5e3250bfcd543ca46c39d513725819
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: e7038a4e06a96ac2df1a7f0918877db9c97cb71d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072226"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102502537"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>自動機械学習 (AutoML) とは
 
@@ -110,13 +110,13 @@ ms.locfileid: "98072226"
 自動機械学習の実験において、特徴量化は自動的に適用されますが、データに基づいてカスタマイズすることもできます。 含まれる特徴付けに関する詳細は[こちら](how-to-configure-auto-features.md#featurization)から参照してください。  
 
 > [!NOTE]
-> 自動機械学習の特徴付け手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 このモデルを予測に使用する場合、トレーニング中に適用されたのと同じ特徴付けの手順がご自分の入力データに自動的に適用されます。
+> 自動化された機械学習の特徴付け手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 このモデルを予測に使用する場合、トレーニング中に適用されたのと同じ特徴付けの手順がご自分の入力データに自動的に適用されます。
 
 ### <a name="automatic-featurization-standard"></a>自動特徴量化 (標準)
 
 自動化されたすべての機械学習実験において、アルゴリズムが十分に実行されるよう、自動的にデータの規模が調整され、正規化されます。 モデル トレーニングの間、次のいずれかのスケーリング手法または正規化手法が各モデルに適用されます。 AutoML がモデル内の[オーバーフィットや不均衡データを防止する](concept-manage-ml-pitfalls.md)方法について説明します。
 
-|スケーリング&nbsp;&&nbsp;正規化| 説明 |
+|スケーリング &nbsp;&&nbsp; 処理| 説明 |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | 中間を取り除き、単位差異に合わせてスケールを変更することで特徴を正規化します  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | その列の最小と最大で各特徴のスケールを変更することで特徴を変換します  |
@@ -204,7 +204,7 @@ ms.locfileid: "98072226"
 
 Azure Machine Learning には、自動 ML を使用するための 2 つのエクスペリエンスが用意されています。
 
-* コードの経験がある場合は、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) に関する記事を参照してください 
+* コードの経験がある場合は、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) に関する記事を参照してください 
 
 * コードの経験があまりない、またはない場合は、Azure Machine Learning Studio ([https://ml.azure.com](https://ml.azure.com/)) に関する記事を参照してください。  
 
@@ -289,7 +289,7 @@ AutoML の使用を開始する方法がわかるリソースが複数ありま�
 
 ### <a name="python-sdk-reference"></a>Python SDK リファレンス
 
-[AutoML クラス リファレンス ドキュメント](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py)では、SDK デザイン パターンとクラス仕様の知識を深めることができます。 
+[AutoML クラス リファレンス ドキュメント](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)では、SDK デザイン パターンとクラス仕様の知識を深めることができます。 
 
 > [!Note]
 > 自動機械学習機能は、[ML.NET](/dotnet/machine-learning/automl-overview)、[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、[Power BI](/power-bi/service-machine-learning-automated)、[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/) などの他の Microsoft ソリューションでも使用できます

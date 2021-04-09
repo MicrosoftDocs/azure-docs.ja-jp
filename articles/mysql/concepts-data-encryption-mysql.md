@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.openlocfilehash: 4c8f4b490c46ed8061201ba6362999f0e426ecb7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100596328"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure Database for MySQL のデータの暗号化

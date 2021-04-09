@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
 ms.openlocfilehash: b10c47a31bf1be10c278d4d9e0dce633bc7bff6c
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100530639"
 ---
 # <a name="connect-your-juniper-srx-firewall-to-azure-sentinel"></a>Juniper SRX ファイアウォールを Azure Sentinel に接続する

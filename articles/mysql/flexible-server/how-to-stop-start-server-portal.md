@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 09/29/2020
 ms.openlocfilehash: 15b08ea67afe0d307470b5a4fb0f7d26e0f4ea82
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93241924"
 ---
 # <a name="stopstart-an-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL を停止または開始する - フレキシブル サーバー (プレビュー)

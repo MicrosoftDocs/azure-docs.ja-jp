@@ -18,13 +18,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 2c77eba69fd914e8ecc7d08a1b16f61ceefe101b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92320571"
 ---
-# <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>チュートリアル:ユニバーサル Windows プラットフォーム アプリケーションを実行している特定のデバイスに通知を送信する
+# <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>チュートリアル: ユニバーサル Windows プラットフォーム アプリケーションを実行している特定のデバイスに通知を送信する
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -49,7 +49,7 @@ ms.locfileid: "92320571"
 
 ## <a name="prerequisites"></a>前提条件
 
-「[チュートリアル: Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する][get-started]」を完了してください。  
+このチュートリアルを開始する前に、[Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する][get-started]方法に関するチュートリアルを完了してください。  
 
 ## <a name="add-category-selection-to-the-app"></a>アプリケーションにカテゴリ選択を追加する
 
@@ -81,7 +81,7 @@ ms.locfileid: "92320571"
     </Grid>
     ```
 
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、 **[追加]**  >  **[クラス]** の順に選択します。 **[新しい項目の追加]** で、クラスに *Notifications* という名前を付けて、 **[追加]** を選択します。 必要に応じてクラス定義に `public` 修飾子を追加します。
+1. **ソリューション エクスプローラー** で、プロジェクトを右クリックし、**[追加]** > **[クラス]** の順に選択します。 **[新しい項目の追加]** で、クラスに *Notifications* という名前を付けて、**[追加]** を選択します。 必要に応じてクラス定義に `public` 修飾子を追加します。
 
 1. 次の `using` ステートメントを新しいファイルに追加します。
 
@@ -154,7 +154,7 @@ ms.locfileid: "92320571"
     コードのプレースホルダーである `<hub name>` と `<connection string with listen access>` を、通知ハブの名前と既に取得してある **DefaultListenSharedAccessSignature** の接続文字列に置き換えます。
 
    > [!NOTE]
-   > クライアント アプリを使用して配布される資格情報は一般にセキュリティで保護されないため、クライアント アプリでは*リッスン* アクセス用のキーだけを配布してください。 リッスン アクセスでは、通知用にアプリを登録できますが、既存の登録を変更することはできず、通知を送信することはできません。 通知を送信し既存の登録を変更するセキュリティで保護されたバックエンド サービスでは、フル アクセス キーが使用されます。
+   > クライアント アプリを使用して配布される資格情報は一般にセキュリティで保護されないため、クライアント アプリでは *リッスン* アクセス用のキーだけを配布してください。 リッスン アクセスでは、通知用にアプリを登録できますが、既存の登録を変更することはできず、通知を送信することはできません。 通知を送信し既存の登録を変更するセキュリティで保護されたバックエンド サービスでは、フル アクセス キーが使用されます。
 
 1. *MainPage.xaml.cs* ファイルに、次の行を追加します。
 
@@ -197,7 +197,7 @@ ms.locfileid: "92320571"
 1. `notifications` クラスを使用してカテゴリに基づいてサブスクライブするには、*App.xaml.cs* ファイルを開き、`InitNotificationsAsync` メソッドを更新します。
 
     ```csharp
-    // *** Remove or comment out these lines **_
+    // *** Remove or comment out these lines ***
     //var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
     //var hub = new NotificationHub("your hub name", "your listen connection string");
     //var result = await hub.RegisterNativeAsync(channel.Uri);
@@ -232,7 +232,7 @@ ms.locfileid: "92320571"
 
    ![ニュース速報アプリ](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breaking-news.png)
 
-1. 1 つ以上のカテゴリ切り替えボタンを有効にし、 **[購読]** を選択します。
+1. 1 つ以上のカテゴリ切り替えボタンを有効にし、**[購読]** を選択します。
 
    アプリケーションにより、選択されたカテゴリがタグに変換され、選択されたタグの新しいデバイス登録が通知ハブから要求されます。 登録済みのカテゴリがダイアログ ボックスに表示されます。
 

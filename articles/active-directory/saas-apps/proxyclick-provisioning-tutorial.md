@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory を使用した自動ユーザー プロビジョニング Proxyclick を構成する | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory を使用した自動ユーザー プロビジョニング用に Proxyclick を構成する | Microsoft Docs'
 description: ユーザー アカウントを Proxyclick に自動的にプロビジョニング/プロビジョニング解除するように Azure Active Directory を構成する方法について説明します。
 services: active-directory
 author: zchia
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: jeedes
 ms.openlocfilehash: f7d2a6f01e891a7fb1c14cde552d66679e474139
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359172"
 ---
-# <a name="tutorial-configure-proxyclick-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Proxyclick を構成する
+# <a name="tutorial-configure-proxyclick-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニング用に Proxyclick を構成する
 
 このチュートリアルの目的は、ユーザーまたはグループの Proxyclick へのプロビジョニングとプロビジョニング解除を自動的に行うように Azure AD を構成するために、Proxyclick と Azure Active Directory (Azure AD) で実行される手順を示すことです。
 
@@ -53,13 +53,13 @@ Azure AD での自動ユーザー プロビジョニング用に Proxyclick を�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Proxyclick** 」と入力し、結果ウィンドウで **[Proxyclick]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Proxyclick**」と入力し、結果ウィンドウで **[Proxyclick]** を選択してから、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果リストの Proxyclick](common/search-new-app.png)
 
 ## <a name="assigning-users-to-proxyclick"></a>Proxyclick へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Proxyclickr へのアクセスが必要な Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Proxyclick に割り当てることができます。
 
@@ -106,13 +106,13 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Proxyclick の [Marketplace]\(マーケットプレース\)](media/proxyclick-provisioning-tutorial/proxyclick02.png)
 
-    **[Azure AD ]** を選びます。 **[Install now]\(今すぐインストール\)** をクリックします。
+    **[Azure AD ]** を選びます。 [**今すぐインストール**] をクリックします。
 
     ![Proxyclick の [Azure AD]](media/proxyclick-provisioning-tutorial/proxyclick03.png)
 
     ![Proxyclick の [Install]\(インストール\)](media/proxyclick-provisioning-tutorial/proxyclick04.png)
 
-    **[User Provisioning]\(ユーザー プロビジョニング\)** を選択し、 **[Start integration]\(統合の開始\)** をクリックします。 
+    **[User Provisioning]\(ユーザー プロビジョニング\)** を選択し、**[Start integration]\(統合の開始\)** をクリックします。 
 
     ![Proxyclick の [User Provisioning]\(ユーザー プロビジョニング\)](media/proxyclick-provisioning-tutorial/proxyclick05.png)
 
@@ -120,11 +120,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Proxyclick の作成](media/proxyclick-provisioning-tutorial/proxyclick06.png)
 
-    ここで、 **テナント URL** と **シークレット トークン** を見つけることができます。
+    ここで、**テナント URL** と **シークレット トークン** を見つけることができます。
 
     ![Proxyclick の作成トークン](media/proxyclick-provisioning-tutorial/proxyclick07.png)
 
-7. 手順 5 の各フィールドに値を入力したら、 **[Test Connection]\(テスト接続\)** をクリックして、Azure AD で Proxyclick に接続できることを確認します。 接続できない場合は、使用中の Proxyclick アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+7. 手順 5 の各フィールドに値を入力したら、**[Test Connection]\(テスト接続\)** をクリックして、Azure AD で Proxyclick に接続できることを確認します。 接続できない場合は、使用中の Proxyclick アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -144,7 +144,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 13. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-14. Proxyclick に対して Azure AD プロビジョニング サービスを有効にするには、 **[Settings]\(設定\)** セクションで **[Provisioning Status]\(プロビジョニング状態\)** を **[On]\(オン\)** に変更します。
+14. Proxyclick に対して Azure AD プロビジョニング サービスを有効にするには、**[Settings]\(設定\)** セクションで **[Provisioning Status]\(プロビジョニング状態\)** を **[On]\(オン\)** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 
@@ -162,7 +162,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 ## <a name="connector-limitations"></a>コネクタの制限事項
 
-* Proxyclick では、 **[emails]** と **[userName]** に同じソース値を設定する必要があります。 片方の属性が更新されると、他方の値が変更されます。
+* Proxyclick では、**[emails]** と **[userName]** に同じソース値を設定する必要があります。 片方の属性が更新されると、他方の値が変更されます。
 * Proxyclick では、グループのプロビジョニングはサポートされていません。
 
 ## <a name="additional-resources"></a>その他のリソース

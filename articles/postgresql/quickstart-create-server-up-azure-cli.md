@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 05/06/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: c11a98c04f81e7c111faf4aa449ab2bf9a4890bb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92485224"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>クイック スタート:Azure CLI コマンドの az postgres up (プレビュー) を使用して Azure Database for PostgreSQL - 単一サーバーを作成する
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 az login
 ```
 
-複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。 サブスクリプション ID プレースホルダーへのサブスクリプションを、 **az login** 出力の **サブスクリプション ID** プロパティに置き換えます。
+複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。 サブスクリプション ID プレースホルダーへのサブスクリプションを、**az login** 出力の **サブスクリプション ID** プロパティに置き換えます。
 
 ```azurecli
 az account set --subscription <subscription id>

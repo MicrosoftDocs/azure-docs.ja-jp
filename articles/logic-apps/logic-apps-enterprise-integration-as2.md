@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/08/2020
 ms.openlocfilehash: 1845de8332287f85e96b4e29c40caa66cb8704d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91856672"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の AS2 メッセージを交換する
@@ -61,9 +61,9 @@ Azure Logic Apps で AS2 メッセージを操作するには、AS2 コネクタ
 
 * AS2 コネクタを使用するには、事前に取引先間の AS2 [契約](../logic-apps/logic-apps-enterprise-integration-agreements.md)を作成し、その契約をご利用の統合アカウントに格納しておく必要があります。
 
-* 証明書の管理に [ Azure Key Vault ](../key-vault/general/overview.md) を使用する場合は、ご利用のコンテナー キーで**暗号化**操作および**暗号化の解除**操作が許可されていることを確認してください。 そのようになっていない場合、エンコードとデコードのアクションは失敗します。
+* 証明書の管理に [ Azure Key Vault](../key-vault/general/overview.md) を使用する場合は、ご利用のコンテナー キーで **暗号化** 操作および **暗号化の解除** 操作が許可されていることを確認してください。 そのようになっていない場合、エンコードとデコードのアクションは失敗します。
 
-  Azure portal で、ご利用のキー コンテナーのキーに移動し、そのキーの**許可された**操作を表示し、**暗号化**操作と**暗号化の解除**操作が選択されていることを確認します。例：
+  Azure portal で、ご利用のキー コンテナーのキーに移動し、そのキーの **許可された** 操作を表示し、**暗号化** 操作と **暗号化の解除** 操作が選択されていることを確認します。例：
 
   ![コンテナー キーの操作を確認する](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
 

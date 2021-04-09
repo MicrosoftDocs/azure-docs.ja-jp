@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/12/2021
 ms.author: yelevin
 ms.openlocfilehash: 313f201aeabd470850b27d979dc5253f80e82a55
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98541166"
 ---
 # <a name="connect-your-beyond-security-besecure-to-azure-sentinel"></a>Beyond Security beSECURE を Azure Sentinel に接続する

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 163d200573dc93f7c9e1d5e404febd4f939a6164
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: c77375782ba23114be1953d9f8ad7de31ab06f1f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102565259"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582189"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>簡単な手順: Azure 内に Linux VM 用の SSH 公開/秘密キーのペアを作成して使用する
 
@@ -97,4 +97,4 @@ VM が Just-In-Time アクセス ポリシーを使用している場合、VM �
 
 * SSH キー ペアを操作する詳細については、[SSH キー ペアを作成して管理する詳細な手順](create-ssh-keys-detailed.md)に関するページを参照してください。
 
-* Azure VM への SSH 接続が困難な場合は、[Azure Linux VM への SSH 接続に関するトラブルシューティング](../troubleshooting/troubleshoot-ssh-connection.md)に関するページを参照してください。
+* Azure VM への SSH 接続が困難な場合は、[Azure Linux VM への SSH 接続に関するトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)に関するページを参照してください。

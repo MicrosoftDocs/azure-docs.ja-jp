@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: dac5a434d7f7c62d7a20e971294992ea91c79d2b
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 9ac53dab29feddd36a95b8b2b041caaf5c3598d5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625017"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720139"
 ---
 # <a name="tutorial-use-creator-preview-to-create-indoor-maps"></a>チュートリアル:Creator (プレビュー) を使用して屋内マップを作成する
 
@@ -116,6 +116,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 
     >[!IMPORTANT]
     > このドキュメントの API URL は、場合によっては、Creator リソースの場所に合わせて調整する必要があります。 詳細については、[Creator サービス (プレビュー) へのアクセス](how-to-manage-creator.md#access-to-creator-services)に関するセクションを参照してください。
+    > `"RequiresCreatorResource"` というコードを含むエラーが発生した場合は、自分の Azure Maps アカウントで [Azure Maps Creator リソースをプロビジョニング](how-to-manage-creator.md)していることを確認してください。
 
 3. **[Send]\(送信\)** ボタンをクリックし、要求が処理されるまで待ちます。 要求が完了したら、応答の **[Headers]\(ヘッダー\)** タブに移動し、**Location** キーを探します。 **Location** キーの値をコピーします。これは、変換要求の `status URL` です。 これは次の手順で使用します。
 
@@ -314,7 +315,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. **POST** 要求の **[Headers]\(ヘッダー\)** で、`Content-Type` を `application/json` に設定します。 **[Body]\(本文\)** で、次のスタイルを指定して `occupied` および `temperature` "*状態*" への変更を反映します。 設定が完了したら、 **[Send]\(送信\)** をクリックします。
+3. **POST** 要求の **[Headers]\(ヘッダー\)** で、`Content-Type` を `application/json` に設定します。 **[Body]\(本文\)** で、次の未加工の json スタイルを指定して `occupied` および `temperature` "*状態*" への変更を反映します。 設定が完了したら、 **[Send]\(送信\)** をクリックします。
 
     ```json
     {

@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: ba58f7897827cf7ce7f6156df1434733d89d7f42
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5515d1084b28091cf7d20958cfca8af3f2664563
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844456"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199494"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>IoT ハブから cloud-to-device メッセージを送信する
 
@@ -63,7 +63,7 @@ IoT ハブの **最大配信数** プロパティによって、メッセージ�
 * サービスの **ExpiryTimeUtc** プロパティ
 * IoT ハブ。IoT ハブ プロパティとして指定された既定の *有効期限* を使用します
 
-「 [C2D の構成オプション](#cloud-to-device-configuration-options)」を参照してください。
+「[C2D の構成オプション](#cloud-to-device-configuration-options)」を参照してください。
 
 メッセージの有効期限を利用し、接続されていないデバイスにメッセージが送信されないようにする一般的な方法は、短い *有効期限* の値を設定することです。 この方法を使用すると、デバイスの接続状態を維持するのと同じ結果が得られますが、より効率的です。 メッセージの受信確認を要求すると、IoT ハブによって、どのデバイスが次の状態であるかが通知されます。
 
@@ -77,8 +77,8 @@ cloud-to-device メッセージを送信するときに、サービスでは、�
 | Ack プロパティ値 | 動作 |
 | ------------ | -------- |
 | なし     | IoT ハブでは、フィードバック メッセージは生成されません (既定の動作)。 |
-| ポジティブ | cloud-to-device メッセージの状態が *完了* に達した場合に、IoT ハブによってフィードバック メッセージが生成されます。 |
-| ネガティブ | cloud-to-device メッセージの状態が *配信不能* に達した場合に、IoT ハブによってフィードバック メッセージが生成されます。 |
+| 肯定的 | cloud-to-device メッセージの状態が *完了* に達した場合に、IoT ハブによってフィードバック メッセージが生成されます。 |
+| 否定的 | cloud-to-device メッセージの状態が *配信不能* に達した場合に、IoT ハブによってフィードバック メッセージが生成されます。 |
 | フル     | IoT ハブでは、いずれの場合もフィードバック メッセージが生成されます。 |
 
 **Ack** 値が *フル* のときに、フィードバック メッセージを受信しなかった場合、フィードバック メッセージの有効期限が切れていることを意味します。 このとき、元のメッセージがどうなったかをサービスが認識することはできません。 実際には、有効期限切れになる前にフィードバックをサービスが確実に処理できることが必要です。 有効期限は最長 2 日間であるため、障害が発生した場合も、サービスを再び稼働させる時間はあります。
@@ -97,7 +97,7 @@ cloud-to-device メッセージを送信するときに、サービスでは、�
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | メッセージの結果が発生した日時を示すタイムスタンプ (たとえば、ハブでフィードバック メッセージが受信されたときや、元のメッセージの期限が切れたとき) |
 | OriginalMessageId  | このフィードバック情報が関連する cloud-to-device メッセージの *MessageId* |
-| StatusCode         | IoT ハブによって生成されるフィードバック メッセージで使用される、必須の文字列。 <br/> *Success* <br/> *Expired* <br/> *DeliveryCountExceeded* <br/> *Rejected* <br/> *Purged* |
+| StatusCode         | IoT ハブによって生成されるフィードバック メッセージで使用される、必須の文字列。 <br/> *Success* <br/> *Expired* <br/> *DeliveryCountExceeded* <br/> *拒否* <br/> *Purged* |
 | 説明        | *StatusCode* の文字列値 |
 | deviceId           | フィードバックのこの要素が関連する cloud-to-device メッセージのターゲット デバイスの *DeviceId* |
 | DeviceGenerationId | フィードバックのこの要素が関連する cloud-to-device メッセージのターゲット デバイスの *DeviceGenerationId* |
@@ -135,19 +135,19 @@ cloud-to-device メッセージのフィードバックを元のメッセージ�
 
 | プロパティ                  | 説明 | 範囲と既定値 |
 | ------------------------- | ----------- | ----------------- |
-| defaultTtlAsIso8601       | cloud-to-device メッセージの既定の TTL | 最大 2 日の ISO_8601 書式による間隔 (最小 1 分); 既定値:1 時間 |
-| maxDeliveryCount          | デバイスごとの cloud-to-device キューの最大配信数 | 1 から 100; 既定値:10 |
-| feedback.ttlAsIso8601     | サービス宛てのフィードバック メッセージの保有期間 | 最大 2 日の ISO_8601 書式による間隔 (最小 1 分); 既定値:1 時間 |
-| feedback.maxDeliveryCount | フィードバック キューの最大配信数 | 1 から 100; 既定値:10 |
-| feedback.lockDurationAsIso8601 | フィードバック キューの最大配信数 | 5 から 300 秒の ISO_8601 書式による間隔 (最短 5 秒)。既定値:60 秒。 |
+| defaultTtlAsIso8601       | cloud-to-device メッセージの既定の TTL | 最大 2 日の ISO_8601 書式による間隔 (最小 1 分); 既定値: 1 時間 |
+| maxDeliveryCount          | デバイスごとの cloud-to-device キューの最大配信数 | 1 から 100; 既定値: 10 |
+| feedback.ttlAsIso8601     | サービス宛てのフィードバック メッセージの保有期間 | 最大 2 日の ISO_8601 書式による間隔 (最小 1 分); 既定値: 1 時間 |
+| feedback.maxDeliveryCount | フィードバック キューの最大配信数 | 1 から 100; 既定値: 10 |
+| feedback.lockDurationAsIso8601 | フィードバック キューの最大配信数 | 5 から 300 秒の ISO_8601 書式による間隔 (最短 5 秒)。既定値: 60 秒。 |
 
 構成オプションは、次のいずれかの方法で設定できます。
 
-* **Azure ポータル**:IoT ハブの **[設定]** で、 **[組み込みのエンドポイント]** を選択し、 **[cloud-to-device メッセージング]** を展開します。 (**feedback.maxDeliveryCount** および **feedback.lockDurationAsIso8601** プロパティの設定は、Azure portal では現在サポートされていません。)
+* **Azure portal**: IoT ハブの **[設定]** で、 **[組み込みのエンドポイント]** を選択し、 **[cloud-to-device メッセージング]** を展開します。 (**feedback.maxDeliveryCount** および **feedback.lockDurationAsIso8601** プロパティの設定は、Azure portal では現在サポートされていません。)
 
     ![ポータルでの cloud-to-device メッセージングの構成オプションの設定](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
 
-* **Azure CLI**:[az iot hub update](/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update) コマンドを使用します。
+* **Azure CLI**: [az iot hub update](/cli/azure/iot/hub#az-iot-hub-update) コマンドを使用します。
 
     ```azurecli
     az iot hub update --name {your IoT hub name} \

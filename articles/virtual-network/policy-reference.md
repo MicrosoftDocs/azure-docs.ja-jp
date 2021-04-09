@@ -1,18 +1,18 @@
 ---
 title: Azure Virtual Network 用の組み込みポリシー定義
 description: Azure Virtual Network 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 03/05/2021
+ms.date: 03/17/2021
 ms.topic: reference
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 73096e9a6761365f966f8131617cfd40de72ed70
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: ead68783987ef3837251769fbb35ca03e855634f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433082"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596226"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-network"></a>Azure Virtual Network 用の Azure Policy 組み込み定義
 

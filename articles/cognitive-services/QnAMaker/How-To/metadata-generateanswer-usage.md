@@ -9,28 +9,16 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 18b70d60ade7cd40f7ed51aa7c219c8c046abfc3
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 9d2100dbc2c5f24742a949778a1b7450bf303c5f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584743"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103232207"
 ---
-# <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API およびメタデータを使って回答を取得する
+# <a name="get-an-answer-with-the-generateanswer-api"></a>GenerateAnswer API を使って回答を取得する
 
 ユーザーの質問に対して予測される回答を取得するには、GenerateAnswer API を使用します。 ナレッジ ベースを公開するときに、 **[公開]** ページにこの API を使用する方法に関する情報が表示されます。 また、メタデータ タグに基づいて回答をフィルター処理するように API を構成し、テスト クエリ文字列パラメーターを使用してエンドポイントからナレッジ ベースをテストすることも可能です。
-
-QnA Maker では、キーと値のペアの形式で、メタデータを質問と回答のペアに追加することができます。 この情報を使用して、ユーザー クエリの結果をフィルター処理し、フォローアップ会話で使用できる追加情報を格納できます。 詳細については、「[Knowledge base](../index.yml)」 (ナレッジ ベース) を参照してください。
-
-<a name="qna-entity"></a>
-
-## <a name="store-questions-and-answers-with-a-qna-entity"></a>QnA エンティティを使用して質問と回答を保存する
-
-まず、QnA Maker での質問と回答のデータの格納方法を理解することが重要です。 QnA エンティティを次の図に示します。
-
-![QnA エンティティのイラスト](../media/qnamaker-how-to-metadata-usage/qna-entity.png)
-
-QnA エンティティにはそれぞれ一意の永続 ID があります。 ID を使用して、特定の QnA エンティティを更新することができます。
 
 <a name="generateanswer-api"></a>
 
@@ -134,6 +122,21 @@ JSON 本文の例は、次のようになります。
 
 以前の JSON では、スコアが 38.5% の回答で応答しました。
 
+## <a name="match-questions-only-by-text"></a>テキストによる質問のみの一致
+
+既定では、QnA Maker は質問と回答を検索します。 質問のみを検索して、回答を生成する場合、GenerateAnswer 要求の POST 本文で `RankerType=QuestionOnly` を使用します。
+
+`isTest=false` を使用して公開済みの KB を検索することも、`isTest=true` を使用してテスト KB を検索することもできます。
+
+```json
+{
+  "question": "Hi",
+  "top": 30,
+  "isTest": true,
+  "RankerType":"QuestionOnly"
+}
+
+```
 ## <a name="use-qna-maker-with-a-bot-in-c"></a>C# のボットで QnA Maker を使用する
 
 Bot Framework では、[getAnswer API](/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__) を使用して QnA Maker のプロパティへのアクセスを提供します。
@@ -171,107 +174,49 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 以前の JSON では、30% のスコアまたはしきい値のスコア以上の回答のみが要求されました。
 
-<a name="metadata-example"></a>
+## <a name="get-precise-answers-with-generateanswer-api"></a>GenerateAnswer API を使用して正確な回答を得る
 
-## <a name="use-metadata-to-filter-answers-by-custom-metadata-tags"></a>メタデータを使用してカスタム メタデータ タグによる回答のフィルター処理を行う
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
-メタデータを追加すると、これらのメタデータ タグによって回答をフィルター処理できます。 **[表示のオプション]** メニューからメタデータ列を追加します。 メタデータ **+** アイコンを選択してメタデータ ペアを追加して、メタデータをナレッジ ベースに追加します。 このペアは、1 つのキーと 1 つの値で構成されます。
+正確な回答機能は、QnA Maker マネージド バージョンでのみ提供しています。
 
-![メタデータの追加のスクリーンショット](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
 
-<a name="filter-results-with-strictfilters-for-metadata-tags"></a>
-
-## <a name="filter-results-with-strictfilters-for-metadata-tags"></a>メタデータ タグの strictFilters を使用して結果をフィルター処理する
-
-ユーザーの質問が "When does this hotel close?" (このホテルはいつ閉まりますか?) であるとします。これには、"Paradise" というレストランがいつ閉まるかという意味が含まれます。
-
-"Paradise" レストランに関する結果のみが必要であるため、メタデータ "Restaurant Name" に対する GenerateAnswer 呼び出しでフィルターを設定することができます。 次の例はこのことを示します。
+ユーザーは QnA Maker 管理対象リソースを使用するときに、[正確な回答](../reference-precise-answering.md)を有効にすることができます。 同じ目的で answerSpanRequest パラメーターを更新する必要があります。
 
 ```json
 {
-    "question": "When does this hotel close?",
-    "top": 1,
-    "strictFilters": [ { "name": "restaurant", "value": "paradise"}]
+    "question": "How long it takes to charge surface pro 4?",
+    "top": 3,
+    "answerSpanRequest": {
+        "enable": true,
+        "topAnswersWithSpan": 1
+    }
 }
 ```
 
-### <a name="logical-and-by-default"></a>既定での論理 AND
-
-クエリで複数のメタデータ フィルターを組み合わせるには、`strictFilters` プロパティの配列に追加のメタデータ フィルターを付け加えます。 既定で、値が論理的に組み合わせられます (AND)。 論理的に組み合わせられる場合に、回答内で該当のペアが返されるためには、すべてのフィルターが QnA のペアと一致する必要があります。
-
-これは、`AND` の値を指定して `strictFiltersCompoundOperationType` プロパティを使用することと同じです。
-
-### <a name="logical-or-using-strictfilterscompoundoperationtype-property"></a>strictFiltersCompoundOperationType プロパティを使用する論理 OR
-
-複数のメタデータ フィルターを組み合わせるときに、1 つまたは一部のフィルター一致のみに関心がある場合は、`OR` の値を指定して `strictFiltersCompoundOperationType` プロパティを使用します。
-
-これにより、いずれかのフィルターが一致した場合にナレッジ ベースによって回答が返されるようになりますが、メタデータが含まれていない回答は返されません。
+同様に、ユーザーは正確な回答を無効にすることを選択できます。そのためには、answerSpanRequest パラメーターを設定しないようにします。
 
 ```json
 {
-    "question": "When do facilities in this hotel close?",
-    "top": 1,
-    "strictFilters": [
-      { "name": "type","value": "restaurant"},
-      { "name": "type", "value": "bar"},
-      { "name": "type", "value": "poolbar"}
-    ],
-    "strictFiltersCompoundOperationType": "OR"
+    "question": "How long it takes to charge surface pro 4?",
+    "top": 3
 }
 ```
+### <a name="bot-settings"></a>ボットの設定
 
-### <a name="metadata-examples-in-quickstarts"></a>クイックスタートのメタデータの例
+ボット サービスに対して正確な回答の設定を構成する場合は、ボットの App Service リソースに移動します。 その後に、次の設定を追加して、構成を更新することが必要です。
 
-メタデータに関する以下の QnA Maker ポータルのクイックスタートで、メタデータの詳細について確認します。
-* [作成 - QnA ペアにメタデータを追加する](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
-* [クエリ予測 - メタデータによる回答のフィルター処理を行う](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md)
+- EnablePreciseAnswer
+- DisplayPreciseAnswerOnly
 
-<a name="keep-context"></a>
+|ディスプレイの構成|EnablePreciseAnswer|DisplayPreciseAnswerOnly|
+|:--|--|--|
+|正確な回答のみ|true|true|
+|長い回答のみ|false|false|
+|長い回答と正確な回答の両方|true|false|
 
-## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>質問と回答の結果を使用して会話のコンテキストを維持する
-
-GenerateAnswer への応答には、一致した質問と回答のペアの対応するメタデータ情報が含まれます。 クライアント アプリケーション内でこの情報を使って、以降の会話で使用するために以前の会話のコンテキストを格納することができます。
-
-```json
-{
-    "answers": [
-        {
-            "questions": [
-                "What is the closing time?"
-            ],
-            "answer": "10.30 PM",
-            "score": 100,
-            "id": 1,
-            "source": "Editorial",
-            "metadata": [
-                {
-                    "name": "restaurant",
-                    "value": "paradise"
-                },
-                {
-                    "name": "location",
-                    "value": "secunderabad"
-                }
-            ]
-        }
-    ]
-}
-```
-
-## <a name="match-questions-only-by-text"></a>テキストによる質問のみの一致
-
-既定では、QnA Maker は質問と回答を検索します。 質問のみを検索して、回答を生成する場合、GenerateAnswer 要求の POST 本文で `RankerType=QuestionOnly` を使用します。
-
-`isTest=false` を使用して公開済みの KB を検索することも、`isTest=true` を使用してテスト KB を検索することもできます。
-
-```json
-{
-  "question": "Hi",
-  "top": 30,
-  "isTest": true,
-  "RankerType":"QuestionOnly"
-}
-```
+---
 
 ## <a name="common-http-errors"></a>一般的な HTTP エラー
 

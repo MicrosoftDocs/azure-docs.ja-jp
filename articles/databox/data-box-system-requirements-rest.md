@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/05/2020
 ms.author: alkohli
 ms.openlocfilehash: ac5f2de383066d6ee399dac3b0ad8c365b2e72bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91744104"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Azure Data Box BLOB ストレージの要件
@@ -26,7 +26,7 @@ Data Box BLOB ストレージに接続する前にこの情報をよく確認し
 
 |     機能                                             |     Azure Storage                                     |     Data Box BLOB ストレージ |
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
-|    Azure File Storage                                   |    クラウド ベースの SMB ファイル共有のサポート              |    サポートされていません      |
+|    Azure File ストレージ                                   |    クラウド ベースの SMB ファイル共有のサポート              |    サポートされていません      |
 |    サービスによる保存データの暗号化                  |    256 ビット AES 暗号化                             |    256 ビット AES 暗号化 |
 |    ストレージ アカウントの種類                                 |    汎用アカウントと Azure Blob Storage アカウント    |    汎用 v1 のみ|
 |    BLOB 名                                            |    1,024 文字 (2,048 バイト)                     |    880 文字 (1,760 バイト)|

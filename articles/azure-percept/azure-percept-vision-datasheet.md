@@ -7,10 +7,10 @@ ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
 ms.openlocfilehash: 7bbb3a88bbc3011ec5dd917cdb0c1e49f7556aab
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102177166"
 ---
 # <a name="azure-percept-vision-datasheet"></a>Azure Percept Vision のデータシート

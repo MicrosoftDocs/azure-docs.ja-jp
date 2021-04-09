@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 2e0cd424b71ff828ed0d8ad4c16d3333cf8a1c45
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 43804907d68ddd58e55c7ce453e0731d0cb4b9b5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575874"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102560380"
 ---
 # <a name="language-support-for-computer-vision"></a>Computer Vision の言語サポート
 
@@ -68,13 +68,13 @@ Computer Vision の OCR API では複数の言語をサポートしています�
 |イタリア語 | `it` |✔ |✔ |✔ |
 |日本語 | `ja` |✔ | |✔ |
 |ジャワ文字 | `jv` | | |✔ |
+|キチェ語  | `quc` | | |✔ |
 |カーボベルデ・クレオール語 | `kea` | | |✔ |
 |カチン語 (ラテン) | `kac` | | |✔ |
 |カラ・カルパク語 | `kaa` | | |✔ |
 |カシュビア語 | `csb` | | |✔ |
 |カシ語  | `kha` | | |✔ |
 |韓国語 | `ko` |✔ | |✔ |
-|キチェ語  | `quc` | | |✔ |
 |クルド語 (ラテン) | `kur` | | |✔ |
 |ルクセンブルク語  | `lb` | | |✔ |
 |マレー語 (ラテン)  | `ms` | | |✔ |

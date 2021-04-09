@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev, devx-track-java
 ms.reviewer: shoatman
 ms.openlocfilehash: fac66e8f82ea4c04e866b28fed5f8d0860ab81ef
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98755976"
 ---
 # <a name="accounts--tenant-profiles-android"></a>アカウントとテナント プロファイル (Android)

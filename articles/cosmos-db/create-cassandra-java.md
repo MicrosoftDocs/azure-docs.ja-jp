@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: df7f857edc4c1296b6a6e1fae13d70aa4f178728
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93099775"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v3-driver"></a>Azure Cosmos DB Cassandra API データを管理する Java アプリを作成する (v3 ドライバー)
@@ -67,7 +67,7 @@ ms.locfileid: "93099775"
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コードでデータベース リソースを作成する方法に関心がある場合は、次のスニペットで確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 これらのスニペットはすべて、 *src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java* ファイルから取得されます。  
+この手順は省略可能です。 コードでデータベース リソースを作成する方法に関心がある場合は、次のスニペットで確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 これらのスニペットはすべて、*src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java* ファイルから取得されます。  
 
 * Cassandra ホスト、ポート、ユーザー名、パスワード、および TLS/SSL オプションが設定されます。 接続文字列情報は、Azure Portal の [接続文字列] ページから取得されます。
 
@@ -81,7 +81,7 @@ ms.locfileid: "93099775"
     return cluster.connect();
     ```
 
-次のスニペットは、 *src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java* ファイルからのものです。
+次のスニペットは、*src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java* ファイルからのものです。
 
 * 新しいキースペースを作成します。
 

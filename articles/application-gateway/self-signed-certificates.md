@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 07/23/2019
 ms.author: victorh
 ms.openlocfilehash: e60aa9f072a447af97aa7cc66534e6e893fdbcf6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93396942"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>カスタム ルート CA を使用して Azure Application Gateway の自己署名証明書を生成する

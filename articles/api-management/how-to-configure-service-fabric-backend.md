@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/29/2021
 ms.author: apimpm
 ms.openlocfilehash: f6474dbd02c501612b951ddae490385a5d843fbf
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99499431"
 ---
 # <a name="set-up-a-service-fabric-backend-in-api-management-using-the-azure-portal"></a>Azure portal を使用して API Management に Service Fabric バックエンドを設定する

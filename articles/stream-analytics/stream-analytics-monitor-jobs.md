@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/20/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: dda1b6b652870440e7228e6640bb555f4c2e4a63
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98015078"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Stream Analytics ジョブ モニターをプログラムで作成する

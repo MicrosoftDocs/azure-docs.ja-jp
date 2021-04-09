@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: ad8239b3403d37a9e4c79de481fb9cb26306e243
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: e79c2f361108f1daa3c4a125491d1b399e050648
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946319"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863702"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>HDInsight Spark クラスターを使用して Data Lake Storage Gen1 内のデータを分析する
 
@@ -70,7 +70,7 @@ Data Lake Storage を追加ストレージとして使用し、Azure Storage Blo
 
 3. 新しい Notebook を作成します。 **[新規]** をクリックし、 **[PySpark]** をクリックします。
 
-    ![新しい Jupyter Notebook を作成する](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "新しい Jupyter Notebook を作成する")
+    :::image type="content" source="./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png " alt-text="新しい Jupyter Notebook を作成する" border="true":::
 
 4. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark および Hive コンテキストが自動的に作成されます。 このシナリオに必要な種類をインポートすることから始めることができます。 このためには、次のコード スニペットをセルに貼り付けて、 **Shift + Enter** キーを押します。
 
@@ -80,7 +80,7 @@ Data Lake Storage を追加ストレージとして使用し、Azure Storage Blo
 
     Jupyter でジョブを実行するたびに、Web ブラウザー ウィンドウのタイトルに **[(ビジー)]** ステータスと Notebook のタイトルが表示されます。 また、右上隅にある **PySpark** というテキストの横に塗りつぶされた円も表示されます。 ジョブが完了すると、白抜きの円に変化します。
 
-     ![Jupyter Notebook ジョブのステータス](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Jupyter Notebook ジョブのステータス")
+     :::image type="content" source="./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png " alt-text="Jupyter Notebook ジョブのステータス" border="true":::
 
 5. Data Lake Storage Gen1 アカウントにコピーした **HVAC.csv** ファイルを使用して、サンプル データを一時テーブルに読み込みます。 Data Lake Storage アカウントのデータにアクセスするには、次の URL パターンを使用します。
 
@@ -129,11 +129,11 @@ Data Lake Storage を追加ストレージとして使用し、Azure Storage Blo
     ```
 7. ジョブが正常に完了すると、既定で次の出力が表示されます。
 
-      ![クエリ結果のテーブル出力](./media/apache-spark-use-with-data-lake-store/jupyter-tabular-output.png "クエリ結果のテーブル出力")
+      :::image type="content" source="./media/apache-spark-use-with-data-lake-store/jupyter-tabular-output.png " alt-text="クエリ結果のテーブル出力" border="true":::
 
      他の視覚化でも結果を表示できます。 たとえば、ある出力の領域グラフは次のようになります。
 
-     ![クエリ結果の領域グラフ](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "クエリ結果の領域グラフ")
+     :::image type="content" source="./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png " alt-text="クエリ結果の領域グラフ" border="true":::
 
 8. アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 これにより、Notebook がシャットダウンされ、閉じられます。
 

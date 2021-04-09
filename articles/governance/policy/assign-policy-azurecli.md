@@ -5,10 +5,10 @@ ms.date: 10/14/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 9955f911f9a92d7b353a8f3d022af7884b5a6aae
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93090156"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>クイック スタート:Azure CLI を使用して準拠していないリソースを識別するポリシー割り当てを作成する
@@ -16,7 +16,7 @@ ms.locfileid: "93090156"
 Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。
 このクイックスタートでは、ポリシーの割り当てを作成して、マネージド ディスクを使用していない仮想マシンを特定するプロセスについて順を追って説明します。
 
-このプロセスを終了すると、マネージド ディスクを使用していない仮想マシンを適切に特定できるようになります。 これらはポリシーの割り当てに " _準拠していません_ "。
+このプロセスを終了すると、マネージド ディスクを使用していない仮想マシンを適切に特定できるようになります。 これらはポリシーの割り当てに "_準拠していません_"。
 
 Azure CLI は、コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 このガイドでは、Azure CLI を使用してポリシーの割り当てを作成し、Azure 環境内の準拠していないリソースを特定します。
 
@@ -40,7 +40,7 @@ Azure CLI は、コマンド ラインやスクリプトで Azure リソース�
 
 ## <a name="create-a-policy-assignment"></a>ポリシー割り当てを作成する
 
-このクイック スタートでは、ポリシーの割り当てを作成し、 **マネージド ディスクを使用しない監査 VM** 定義を割り当てます。 このポリシー定義では、ポリシー定義で設定されている条件に準拠していないリソースが識別されます。
+このクイック スタートでは、ポリシーの割り当てを作成し、**マネージド ディスクを使用しない監査 VM** 定義を割り当てます。 このポリシー定義では、ポリシー定義で設定されている条件に準拠していないリソースが識別されます。
 
 ポリシーの割り当てを作成するには、次のコマンドを実行します。
 
@@ -50,9 +50,9 @@ az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit
 
 上記のコマンドでは次の情報を使用します。
 
-- **Name** - 割り当ての実際の名前。 この例では、 _audit-vm-manageddisks_ が使用されました。
-- **DisplayName** - ポリシーの割り当てに使用する表示名。 このケースでは、" _Audit VMs without managed disks Assignment_ " を使用します。
-- **Policy** - 割り当ての作成に使用するポリシー定義 ID。 ここでは、" _Managed Disks を使用していない VM の監査_ " というポリシー定義の ID です。 ポリシー定義 ID を取得するには、次のコマンドを実行します。`az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`
+- **Name** - 割り当ての実際の名前。 この例では、_audit-vm-manageddisks_ が使用されました。
+- **DisplayName** - ポリシーの割り当てに使用する表示名。 このケースでは、"_Audit VMs without managed disks Assignment_" を使用します。
+- **Policy** - 割り当ての作成に使用するポリシー定義 ID。 ここでは、"_Managed Disks を使用していない VM の監査_" というポリシー定義の ID です。 ポリシー定義 ID を取得するには、次のコマンドを実行します。`az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`
 - **Scope** - スコープによって、ポリシーの割り当てを強制するリソースまたはリソースのグループが決まります。 サブスクリプションからリソース グループまで、適用対象は多岐にわたります。 &lt;scope&gt; は、実際のリソース グループの名前に置き換えてください。
 
 ## <a name="identify-non-compliant-resources"></a>準拠していないリソースを特定する

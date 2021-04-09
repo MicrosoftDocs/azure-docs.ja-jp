@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 12/17/2020
 ms.author: aahi
 ms.openlocfilehash: 4b106ebc5606c4e5a290e12728d4e2011e80f6a2
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97861829"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure Cognitive Services コンテナーのセキュリティ

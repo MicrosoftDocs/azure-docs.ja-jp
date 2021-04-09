@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/12/2021
 ms.author: yelevin
 ms.openlocfilehash: 9029b945eabd05b34306393b513e26ee9c1563f2
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98541522"
 ---
 # <a name="connect-your-wirex-network-forensics-platform-nfp-appliance-to-azure-sentinel"></a>WireX Network Forensics Platform (NFP) アプライアンスを Azure Sentinel に接続する

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: ca3dd410474af0a42a3cd5b4217c3bba90b8ff1a
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: fc4207547a1f34fca1ef302626f1365572a236b9
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511986"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101309"
 ---
 # <a name="protect-windows-admin-center-resources-with-security-center"></a>Security Center を使用した Windows Admin Center リソースの保護
 
@@ -21,7 +21,7 @@ Windows Admin Center は、Windows サーバーの管理ツールです。 シ�
 
 > [!NOTE]
 > Windows Admin Center の統合を有効にするには、Azure サブスクリプションと関連する Log Analytics ワークスペースの両方で、Azure Defender が有効になっている必要があります。
-> Azure Defender は、以前にサブスクリプションとワークスペースで使用したことがない場合、最初の 30 日間は無料です。 詳細については、[価格情報に関するページ](security-center-pricing.md)を参照してください。
+> Azure Defender は、以前にサブスクリプションとワークスペースで使用したことがない場合、最初の 30 日間は無料です。 選択した通貨でのお住まいのリージョンに応じた価格の詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
 >
 
 サーバーを Windows Admin Center から Azure Security Center に正常にオンボードすると、次のことができるようになります。

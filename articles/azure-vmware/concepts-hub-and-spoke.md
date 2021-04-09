@@ -4,10 +4,10 @@ description: Azure のハブ アンド スポーク アーキテクチャで Azu
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.openlocfilehash: bfc442e569572349b1323500fbd0b2f912ebbc62
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99062747"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>ハブ アンド スポークのアーキテクチャで Azure VMware Solution を統合する

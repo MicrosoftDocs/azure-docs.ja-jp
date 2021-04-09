@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 02/13/2018
 ms.author: curtand
 ms.openlocfilehash: 84588130788e9be8d3be52a8ea0f3988dce7b952
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91537006"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>[Security info (preview)] (セキュリティ情報 (プレビュー)) ページからアプリ パスワードを作成する
@@ -80,7 +80,7 @@ Outlook 2010 などの特定のアプリでは、2 段階認証はサポート�
 
     ![セキュリティ情報からアプリ パスワード メソッドを削除するためのリンク](media/security-info/securityinfo-myprofile-password-appdelete.png)
 
-2. 確認ボックスで **[はい]** を選択して、**アプリ パスワード**を削除します。 アプリ パスワードを削除すると、セキュリティ情報から削除され、 **[セキュリティ情報]** ページから消去されます。
+2. 確認ボックスで **[はい]** を選択して、**アプリ パスワード** を削除します。 アプリ パスワードを削除すると、セキュリティ情報から削除され、 **[セキュリティ情報]** ページから消去されます。
 
 ## <a name="for-more-information"></a>詳細情報
 

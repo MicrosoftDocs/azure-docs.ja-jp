@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 742cff544886a1499bccfa575684edef708da7bd
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: fc9cd95063f84a9af7f989af9a65ce8f99852dc1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028361"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103490978"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Azure Digital Twins 用のクエリ言語について
 
@@ -33,12 +33,17 @@ Azure Digital Twins クエリ言語を使用し、次に応じて、デジタル
 
 クライアント アプリからサービスにクエリを送信するには、Azure Digital Twins の [**Query API**](/rest/api/digital-twins/dataplane/query) を使用します。 API を使用する方法の 1 つとして、Azure Digital Twins のいずれかの [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) を使用する方法があります。
 
+### <a name="considerations-for-querying"></a>クエリに関する考慮事項
+
+Azure Digital Twins のクエリを作成する場合は、次の考慮事項に注意してください。
+* **大文字と小文字の区別を忘れない**: すべての Azure Digital Twins クエリ操作では大文字と小文字が区別されるため、モデルで定義されている正確な名前を使用するように注意してください。 プロパティ名のスペルが間違っているか、大文字と小文字が正しくない場合、結果セットは空になり、エラーは返されません。
+* **単一引用符をエスケープする**: クエリ テキストのデータに単一引用符文字が含まれている場合は、`\` 文字を使用して引用符をエスケープする必要があります。 プロパティ値 *D'Souza* を扱う例を次に示します。
+
+  :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="EscapedSingleQuote":::
+
 ## <a name="reference-expressions-and-conditions"></a>リファレンス: 式と条件
 
 このセクションでは、Azure Digital Twins クエリの作成に使用できる演算子と関数について説明します。 これらの機能の使用方法を示すクエリの例については、[*ツイン グラフにクエリを実行する*](how-to-query-graph.md)方法に関する記事を参照してください。
-
-> [!NOTE]
-> すべての Azure Digital Twins クエリ操作では大文字と小文字が区別されるため、モデルで定義されている正確な名前を使用するように注意してください。 プロパティ名のスペルが間違っているか、大文字と小文字が正しくない場合、結果セットは空になり、エラーは返されません。
 
 ### <a name="operators"></a>オペレーター
 
@@ -80,7 +85,7 @@ Azure Digital Twins クエリ言語を使用し、次に応じて、デジタル
 * `FROM` ステートメント内ではサブクエリはサポートされていません。
 * `OUTER JOIN` セマンティクスはサポートされていません。つまり、リレーションシップのランクがゼロの場合、"行" 全体が出力結果セットから削除されます。
 * グラフ トラバーサルの深さがクエリごとに 5 つの `JOIN` レベルに制限されます。
-* `JOIN` 操作のソースは制限されています。クエリを使用して、クエリが開始されるツインを宣言する必要があります。
+* Azure Digital Twins のリレーションには、独立したエンティティのようにクエリを実行できません。リレーションシップの発生元になるソース ツインに関する情報も提供する必要があります。 つまり、リレーションシップのクエリに使用される `JOIN` 操作にはいくつかの制約があります。クエリを開始するツインをクエリで確実に宣言するためです。 この例については、*ツイン グラフにクエリを実行する方法* に関する記事の「[*リレーションシップによるクエリ*](how-to-query-graph.md#query-by-relationship)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

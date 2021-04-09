@@ -10,10 +10,10 @@ ms.date: 06/12/2020
 ms.author: jodowns
 ms.custom: fasttrack-new
 ms.openlocfilehash: 9a20a7966daff372cf5c0abc9b7b1dbbfd459838
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91403240"
 ---
 # <a name="revisions-in-azure-api-management"></a>Azure API Management のリビジョン

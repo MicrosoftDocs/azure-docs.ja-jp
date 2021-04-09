@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 024b238ef9a6330831ae6cf4dcd6bb72d72dcc74
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98044273"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-powershell"></a>Azure Digital Twins インスタンスと認証を設定する (PowerShell)

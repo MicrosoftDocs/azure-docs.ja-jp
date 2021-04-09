@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/10/2020
 ms.openlocfilehash: 1d8859f4790610e72ad517f74bbbbf0cf77d9316
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97705204"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database"></a>クイックスタート: Visual Studio で .NET と C# を使用してデータベースに接続してクエリを実行する

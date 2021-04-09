@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
 ms.openlocfilehash: 04fe19960f01709562a47404373801715385e9c3
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92318689"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-altamira-hrm"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Altamira HRM の統合
@@ -131,7 +131,7 @@ Altamira HRM に対する Azure AD SSO を構成してテストするには、�
 
 ## <a name="configure-altamira-hrm-sso"></a>Altamira HRM SSO の構成
 
-**Altamira HRM** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Altamira HRM サポート チーム](https://altamira.zendesk.com/hc)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Altamira HRM** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Altamira HRM サポート チーム](https://altamira.zendesk.com/hc)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-altamira-hrm-test-user"></a>Altamira HRM のテスト ユーザーの作成
 

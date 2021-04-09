@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c43125edab0f5ed097b99798ca22e5543e15a2d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7f540ab40a14af09aa8667860286021f572eb6f1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692928"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587901"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Azure AD サービス アカウントの管理
 
@@ -51,22 +51,22 @@ Azure Active Directory (Azure AD) のサービス アカウントには、[マ�
 
 **アクセス許可**
 
-* サービス アカウントには、組み込みロールを割り当てないでください。 代わりに、[Microsoft Graph の OAuth2 アクセス許可付与モデル](https://docs.microsoft.com/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0)を使用してください。
+* サービス アカウントには、組み込みロールを割り当てないでください。 代わりに、[Microsoft Graph の OAuth2 アクセス許可付与モデル](/graph/api/resources/oauth2permissiongrant)を使用してください。
 
-* サービス プリンシパルに特権ロールを割り当てる必要がある場合は、特定の必要な特権を持つ[カスタム ロール](https://docs.microsoft.com/azure/active-directory/roles/custom-create)を期限付きで割り当てることを検討してください。
+* サービス プリンシパルに特権ロールを割り当てる必要がある場合は、特定の必要な特権を持つ[カスタム ロール](../roles/custom-create.md)を期限付きで割り当てることを検討してください。
 
 * サービス アカウントを、昇格されたアクセス許可を持つグループのメンバーとして含めないでください。 
 
-* [PowerShell を使用して、特権ロールのメンバーを列挙](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)し   
+* [PowerShell を使用して、特権ロールのメンバーを列挙](/powershell/module/azuread/get-azureaddirectoryrolemember)し   
 (`Get-AzureADDirectoryRoleMember` など)、"Service Principal" という objectType でフィルター処理します。
 
    または、  
 `Get-AzureADServicePrincipal | % { Get-AzureADServiceAppRoleAssignment -ObjectId $_ }` を使用します
 
-* [OAuth 2.0 スコープを使用](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)して、サービス アカウントがリソースに対してアクセスできる機能を制限します。
+* [OAuth 2.0 スコープを使用](../develop/v2-permissions-and-consent.md)して、サービス アカウントがリソースに対してアクセスできる機能を制限します。
 * サービス プリンシパルとマネージド ID は、サインオン ユーザーを偽装している委任されたコンテキスト内で、またはアプリケーション コンテキスト内のサービス アカウントとして、OAuth 2.0 スコープを使用できます。 アプリケーション コンテキストでは、サインオンしているユーザーはいません。
 
-* リソースに対するスコープのサービス アカウントの要求をチェックして、それらが適切であることを確認します。 たとえば、アカウントが Files.ReadWrite.All を要求している場合、実際に必要なのは File.Read.All だけではないかどうかを評価します。 アクセス許可の詳細については、「[Microsoft Graph のアクセス許可のリファレンス](https://docs.microsoft.com/graph/permissions-reference)」を参照してください。
+* リソースに対するスコープのサービス アカウントの要求をチェックして、それらが適切であることを確認します。 たとえば、アカウントが Files.ReadWrite.All を要求している場合、実際に必要なのは File.Read.All だけではないかどうかを評価します。 アクセス許可の詳細については、「[Microsoft Graph のアクセス許可のリファレンス](/graph/permissions-reference)」を参照してください。
 
 * リソースへのアクセスが要求されているアプリケーションまたは API の開発者が信頼できることを確認します。
 
@@ -78,9 +78,9 @@ Azure Active Directory (Azure AD) のサービス アカウントには、[マ�
 
 目的、スコープ、必要なアクセス許可について明確に理解できたら、サービス アカウントを作成してください。 
 
-[マネージド ID を作成して使用する](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
+[マネージド ID を作成して使用する](../../app-service/overview-managed-identity.md?tabs=dotnet)
 
-[サービス プリンシパルを作成して使用する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)
+[サービス プリンシパルを作成して使用する](../develop/howto-create-service-principal-portal.md)
 
 可能であれば、マネージド ID を使用してください。 マネージド ID を使用できない場合は、サービス プリンシパルを使用してください。 サービス プリンシパルを使用できない場合は、そのとき初めて Azure AD ユーザーアカウントを使用してください。
 
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) のサービス アカウントには、[マ�
 
 * Azure AD ポータルで Azure AD サインイン ログを使用する。
 
-* Azure AD サインイン ログを [Azure Storage](https://docs.microsoft.com/azure/storage/)、[Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)、または [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/logs/data-platform-logs) にエクスポートする。
+* Azure AD サインイン ログを [Azure Storage](../../storage/index.yml)、[Azure Event Hubs](../../event-hubs/index.yml)、または [Azure Monitor](../../azure-monitor/logs/data-platform-logs.md) にエクスポートする。
 
 
 ![サービス プリンシパルのサインイン画面を示すスクリーンショット。](./media/securing-service-accounts/service-accounts-govern-azure-1.png)
@@ -117,7 +117,7 @@ Azure AD サインイン ログをエクスポートし、既存のセキュリ�
 
 付与されているアクセス許可と、サービス アカウントによってアクセスされるスコープを定期的に見直して、それらを減らせるかどうかを確認します。
 
-* [PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipaloauth2permissiongrant?view=azureadps-2.0) を使用して、サービス アカウントに同意が付与されているスコープを[チェックして文書化するための自動化を構築](https://gist.github.com/psignoret/41793f8c6211d2df5051d77ca3728c09)します。
+* [PowerShell](/powershell/module/azuread/get-azureadserviceprincipaloauth2permissiongrant) を使用して、サービス アカウントに同意が付与されているスコープを[チェックして文書化するための自動化を構築](https://gist.github.com/psignoret/41793f8c6211d2df5051d77ca3728c09)します。
 
 * PowerShell を使用して、[既存のサービス プリンシパルの資格情報を見直し](https://github.com/AzureAD/AzureADAssessment)、その有効性をチェックします。
 
@@ -172,7 +172,7 @@ Microsoft の無料の PowerShell サンプルでは、サービス プリンシ
 
 **プロビジョニング解除のプロセスには、次のタスクが含まれている必要があります。**
 
-1. 関連するアプリケーションまたはスクリプトがプロビジョニング解除されたら、サービス アカウントによる[サインイン](../reports-monitoring/concept-all-sign-ins#sign-ins-report.md)とリソース アクセスを監視します。
+1. 関連するアプリケーションまたはスクリプトがプロビジョニング解除されたら、サービス アカウントによる[サインイン](../reports-monitoring/concept-sign-ins.md#sign-ins-report)とリソース アクセスを監視します。
 
    * アカウントがまだアクティブの場合は、それがどのように使用されているかを確認してから、以降の手順を実行します。
  
@@ -196,4 +196,3 @@ Azure サービス アカウントのセキュリティ保護の詳細につい�
 
  
 
- 

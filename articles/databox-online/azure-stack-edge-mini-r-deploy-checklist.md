@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/24/2021
 ms.author: alkohli
 ms.openlocfilehash: c6e0e6c18803d24f7aa41350d64de77f92c5c0c0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101730594"
 ---
 # <a name="deployment-checklist-for-your-azure-stack-edge-mini-r-device"></a>Azure Stack Edge Mini R デバイスのデプロイ チェックリスト  

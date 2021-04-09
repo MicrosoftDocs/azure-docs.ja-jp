@@ -10,10 +10,10 @@ ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
 ms.openlocfilehash: 5efdfcea7b6d727038bad124368179b9395bfafd
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97093279"
 ---
 # <a name="azure-synapse-analytics-notebooks"></a>Azure Synapse Analytics ノートブック
@@ -46,7 +46,7 @@ Azure Synapse Studio ノートブックでは、次のことができます。
     - [ノートブックをパイプラインに統合する](./spark/../apache-spark-development-using-notebooks.md#integrate-a-notebook)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ノートブックは、データの準備、データの視覚化、機械学習、およびその他のビッグ データのシナリオでも広く使用されています。 データ分析とビッグ データのシナリオでノートブックを使用する方法の詳細については、次のチュートリアルを参照してください。
   - [ノートブックを作成する](./spark/../../quickstart-apache-spark-notebook.md)
   - [Synapse Studio ノートブックを使用して視覚化を作成する](./spark/../apache-spark-data-visualization-tutorial.md)

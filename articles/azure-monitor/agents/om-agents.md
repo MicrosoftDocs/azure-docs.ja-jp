@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
-ms.openlocfilehash: e429b87397b91de28f7fea14729b0d18187fa8ff
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 99a8e331e265e686d1de06f8143d2345e51143f1
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031380"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613002"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager を Azure Monitor に接続する
 
@@ -99,6 +99,10 @@ Azure Monitor へのデータの転送時のセキュリティを保証するた
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Operations Manager を Azure Monitor に接続する
 
 Operations Manager 管理グループが  Log Analytics ワークスペースの 1 つに接続するように設定するには､以下の手順を実行します｡
+
+> [!NOTE]
+> 特定のエージェントまたは管理サーバーからの Log Analytics データが停止していることに気付いた場合、Winsock カタログのリセット (`netsh winsock reset` を使用) してから、サーバーを再起動してみてください。 Winsock カタログをリセットすると、切断されたネットワーク接続を再確立できます。
+
 
 初めて Operations Manager 管理グループを Log Analytics ワークスペースに登録する場合、管理グループのプロキシ構成を指定するオプションはオペレーション コンソールで使用できません。  このオプションを使用可能にするには、管理グループがサービスに正常に登録される必要があります。  この問題を回避するには、オペレーション コンソールを実行しているシステムで Netsh を使用してシステム プロキシ構成を更新して、統合と、管理グループのすべての管理サーバーを構成する必要があります。  
 

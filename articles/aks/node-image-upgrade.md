@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: jpalma
 ms.openlocfilehash: 83d7d48922806334e2b49494fe0ef1d15e1a7a6a
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96531481"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Azure Kubernetes Service (AKS) ノード イメージのアップグレード

@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: aa4be5852b4f8af00346a3ea9a86b13a85f99824
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93358458"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps 内のワークフロー アクションを繰り返す、または配列を処理するループを作成する
@@ -191,7 +191,7 @@ ms.locfileid: "93358458"
 
    ![変数のプロパティを設定する](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
-   | プロパティ | [値] | 説明 |
+   | プロパティ | 値 | 説明 |
    | -------- | ----- | ----------- |
    | **名前** | 制限 | 変数の名前 | 
    | **Type** | Integer | 変数のデータ型 | 
@@ -232,7 +232,7 @@ ms.locfileid: "93358458"
 
       ![電子メールのプロパティを設定する](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-      | プロパティ | [値] | 説明 |
+      | プロパティ | 値 | 説明 |
       | -------- | ----- | ----------- | 
       | **To** | *\<email-address\@domain>* | 受信者の電子メール アドレス。 テストのために、自分の電子メール アドレスを使用します。 | 
       | **件名** | "Limit" の現在の値は **Limit** | 電子メールの件名を指定します。 この例では、**Limit** 変数が含まれていることを確認してください。 | 

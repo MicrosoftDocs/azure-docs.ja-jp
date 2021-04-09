@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory で自動ユーザー プロビジョニング用に OfficeSpace Software を構成する | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory で自動ユーザー プロビジョニング用に OfficeSpace Software を構成する | Microsoft Docs'
 description: Azure Active Directory を構成して、ユーザー アカウントを OfficeSpace Software に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 author: zchia
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 10/02/2019
 ms.author: Zhchia
 ms.openlocfilehash: fc67d649e3a7cd094eb2c3d633244077abcab308
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359927"
 ---
-# <a name="tutorial-configure-officespace-software-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に OfficeSpace Software を構成する
+# <a name="tutorial-configure-officespace-software-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニング用に OfficeSpace Software を構成する
 
 このチュートリアルの目的は、ユーザーまたはグループを OfficeSpace Software に自動的にプロビジョニングおよびプロビジョニング解除するよう Azure AD を構成するために、OfficeSpace Software と Azure Active Directory (Azure AD) で実行される手順を示すことです。
 
@@ -37,7 +37,7 @@ ms.locfileid: "94359927"
 
 ## <a name="assigning-users-to-officespace-software"></a>OfficeSpace Software へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成し、有効にする前に、OfficeSpace Software へのアクセスが必要な Azure AD のユーザー、グループ、またはその両方を特定する必要があります。 決定したら、次の手順に従って、これらのユーザーやグループを OfficeSpace Software に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -80,7 +80,7 @@ Azure AD で自動ユーザー プロビジョニング用に OfficeSpace Softwa
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **OfficeSpace Software** 」と入力し、結果ウィンドウで **[OfficeSpace Software]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**OfficeSpace Software**」と入力し、結果ウィンドウで **[OfficeSpace Software]** を選択してから、**[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果一覧の OfficeSpace Software](common/search-new-app.png)
 
@@ -129,7 +129,7 @@ Azure AD で自動ユーザー プロビジョニング用に OfficeSpace Softwa
 
 11. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-12. OfficeSpace Software に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+12. OfficeSpace Software に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 

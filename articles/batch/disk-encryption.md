@@ -7,10 +7,10 @@ ms.date: 01/27/2021
 ms.author: peshultz
 ms.custom: references_regions
 ms.openlocfilehash: 41fc827459b454e2bcb120a925cdab8fcd46e310
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99055316"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>ディスク暗号化が有効になっているプールを作成する

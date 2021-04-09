@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: e038cdcb50c7ee15960c904c8e234d6917d02f3b
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: b62c3c4be4fdffd9f509b86d248cd028518ae89a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706122"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181943"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure Import/Export サービスを使用してデータを Azure Files にインポートする
 
@@ -35,10 +35,9 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
     - アカウントは、有効で、残高があり、差出人住所の機能を持っている必要があります。
     - エクスポート ジョブの追跡番号を生成します。
     - すべてのジョブに個別の追跡番号が必要です。 同じ追跡番号を持つ複数のジョブはサポートされていません。
-    - 運送業者アカウントがいない場合、次に移動します。
+    - 運送業者アカウントをお持ちでない場合は、次に移動します。
         - [FedEx アカウントを作成するか](https://www.fedex.com/en-us/create-account.html)、または
         - [DHL アカウントを作成します](http://www.dhl-usa.com/en/express/shipping/open_account.html)。
-
 
 
 ## <a name="step-1-prepare-the-drives"></a>手順 1:ドライブを準備する
@@ -51,7 +50,7 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
 2. 各ドライブに 1 つの NTFS ボリュームを作成します。 ボリュームにドライブ文字を割り当てます。 マウントポイントを使用しないでください。
 3. ツールが配置されているルート フォルダーにある *dataset.csv* ファイルを変更します。 インポート対象がファイルとフォルダーのどちらか一方か両方かに応じて、次の例のようなエントリを *dataset.csv* ファイルに追加します。
 
-   - **ファイルをインポートするには**:次の例では、コピーするデータは F: ドライブにあります。 ファイル *MyFile1.txt* は *MyAzureFileshare1* のルートにコピーされます。 *MyAzureFileshare1* は、存在しない場合、Azure Storage アカウントに作成されます。 フォルダー構造は維持されます。
+   - **ファイルをインポートするには**: 次の例では、コピーするデータは F: ドライブにあります。 ファイル *MyFile1.txt* は *MyAzureFileshare1* のルートにコピーされます。 *MyAzureFileshare1* は、存在しない場合、Azure Storage アカウントに作成されます。 フォルダー構造は維持されます。
 
        ```
            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
@@ -119,51 +118,62 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
 
 次の手順を実行して、Azure portal でインポート ジョブを作成します。
 1. https://portal.azure.com/ にログオンします。
-2. **[すべてのサービス] > [ストレージ] > [インポート/エクスポート ジョブ]** の順に移動します。
+2. **インポート/エクスポート ジョブ** を検索します。
 
-    ![インポート/エクスポートへの移動](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
+    ![インポート/エクスポート ジョブの検索](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
-3. **[インポート/エクスポート ジョブの作成]** をクリックします。
+3. **[+新規]** を選択します。
 
-    ![[インポート/エクスポート ジョブ] をクリックします](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
+    ![[新規] を選択して新しく作成する ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. **[基本]** で次のようにします。
 
-    - **[Azure へインポート]** を選択します。
-    - インポート ジョブのわかりやすい名前を入力します。 この名前を使って、ジョブの進行中および完了後にジョブを追跡します。
-        -  この名前には、小文字、数字、ハイフン、アンダースコアのみを使用できます。
-        -  名前はアルファベットから始める必要があります。スペースを含めることはできません。
-    - サブスクリプションを選択します。
-    - リソース グループを選択します。
+   1. サブスクリプションを選択します。
+   1. リソース グループを選択するか、 **[新規作成]** を選択して新しく作成します。
+   1. インポート ジョブのわかりやすい名前を入力します。 この名前は、ジョブの進行状況の追跡に使用します。
+       * 名前には小文字、数字、ハイフンのみを含めることができます。
+       * 名前はアルファベットから始める必要があります。スペースを含めることはできません。
+   1. **[Azure へインポート]** を選択します。
 
-        ![インポート ジョブを作成する - 手順 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+    ![インポート ジョブを作成する - 手順 1](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
 
-3. **[ジョブの詳細]** で次の操作を実行します。
+   **[次へ: ジョブの詳細 >]** を選択して続行します。
 
-    - 上記の「[手順 1: ドライブを準備する](#step-1-prepare-the-drives)」で作成したジャーナル ファイルをアップロードします。
-    - データのインポート先となるストレージ アカウントを選択します。
-    - 配送場所は、選んだストレージ アカウントのリージョンに基づいて自動的に入力されます。
+5. **[ジョブの詳細]** で次の操作を実行します。
 
-       ![インポート ジョブを作成する - 手順 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
+   1. 上記の「[手順 1: ドライブを準備する](#step-1-prepare-the-drives)」で作成したジャーナル ファイルをアップロードします。
+   1. 注文の宛先となる Azure リージョンを選択します。
+   1. インポート用のストレージ アカウントを選択します。
 
-4. **[差出人住所の詳細]** で次の操作を実行します。
+      配送場所は、選んだストレージ アカウントのリージョンに基づいて自動的に入力されます。
 
-    - ドロップダウン リストから運送業者を選択します。 FedEx または DHL 以外の運送業者を使用する場合は、ドロップダウンから既存のオプションを選びます。 `adbops@microsoft.com` で Azure Data Box Operations チームに使用する予定の運送業者に関する情報を連絡してください。
-    - その運送業者で作成した有効な運送業者アカウント番号を入力します。 Microsoft は、インポート ジョブの完了後、このアカウントを使ってドライブを返送します。
-    - 完全かつ有効な連絡先の名前、電話番号、電子メール、番地、市区町村、郵便番号、都道府県、国/地域を指定します。
+   1. 詳細ログを保存しない場合は、 **[Save verbose log in the 'waimportexport' blob container]\(詳細ログを 'waimportexport' BLOB コンテナーに保存する\)** オプションをオフにします。
+
+
+   ![インポート ジョブを作成する - 手順 2](./media/storage-import-export-data-to-blobs/import-to-blob-4.png)
+
+   **[次へ: 出荷 >]** を選択して続行します。
+
+4. **[出荷]** で、次の手順に従います。
+
+    1. ドロップダウン リストから運送業者を選択します。 FedEx または DHL 以外の運送業者を使用する場合は、ドロップダウンから既存のオプションを選びます。 Azure Data Box Operations チーム (`adbops@microsoft.com`) に、使用する予定の運送業者に関する情報をご連絡ください。
+    1. その運送業者で作成した有効な運送業者アカウント番号を入力します。 Microsoft は、インポート ジョブの完了後、このアカウントを使ってドライブを返送します。
+    1. 完全かつ有効な連絡先の名前、電話番号、電子メール、番地、市区町村、郵便番号、都道府県、国/地域を指定します。
 
         > [!TIP]
         > 1 人のユーザーの電子メール アドレスを指定する代わりに、グループ メール アドレスを提供します。 これにより、管理者が離れる場合でも、通知を受信します。
 
-       ![インポート ジョブの作成 - ステップ 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+    ![インポート ジョブの作成 - ステップ 3](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
 
+   **[確認と作成]** を選択して続行します。
 
-5. **[概要]** で次の操作を実行します。
+5. 注文の概要で、次の手順に従います。
 
-    - Azure にディスクを送付するために使用する Azure データセンターの送付先住所を指定します。 ジョブの名前と完全な住所が出荷ラベルに示されていることを確認します。
-    - **[OK]** をクリックして、インポート ジョブの作成を完了します。
+   1. **[使用条件]** を確認し、[指定したすべての情報が正しいことを確認しました。上記の利用規約に同意します] を選択します。 その後、検証が実行されます。
+   1. 概要に表示されているジョブ情報を確認します。 ジョブ名と、Azure にディスクを送付するために使用する Azure データセンターの送付先住所をメモします。 この情報は、後で配送先住所ラベルに使用します。
+   1. **［作成］** を選択します
 
-        ![インポート ジョブを作成する - 手順 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+        ![インポート ジョブを作成する - 手順 4](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -351,13 +361,13 @@ Install-Module -Name Az.ImportExport
 
 ## <a name="step-5-verify-data-upload-to-azure"></a>手順 5: Azure へのデータのアップロードを確認する
 
-完了するまでジョブを監視します。 ジョブが完了したら、データが Azure にアップロードされたことを確認します。 アップロードが成功したことを確認した後にのみ、オンプレミスのデータを削除します。
+完了するまでジョブを監視します。 ジョブが完了したら、データが Azure にアップロードされたことを確認します。 オンプレミスのデータは、アップロードが成功したことを確認した後にのみ削除してください。
 
 ## <a name="samples-for-journal-files"></a>ジャーナル ファイルのサンプル
 
 **ドライブを追加する** には、以下のように、新しいドライブセット ファイルを作成し、コマンドを実行します。
 
-*InitialDriveset .csv* ファイルで指定した以外のディスク ドライブに対する後続のコピー セッションについては、新しいドライブセット *.csv* ファイルを指定し、それを `AdditionalDriveSet` パラメーターの値として指定します。 **同じジャーナル ファイル** 名を使用し、**新しいセッション ID** を指定します。 AdditionalDriveset CSV ファイルの形式は、InitialDriveSet の形式と同じです。
+*InitialDriveset .csv* ファイルで指定したディスク ドライブ以外に対する後続のコピー セッションについては、新しいドライブセット *.csv* ファイルを指定し、それを `AdditionalDriveSet` パラメーターの値として指定します。 **同じジャーナル ファイル** 名を使用し、**新しいセッション ID** を指定します。 AdditionalDriveset CSV ファイルの形式は、InitialDriveSet の形式と同じです。
 
 ```cmd
 WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>

@@ -4,15 +4,15 @@ description: App Service セキュリティ ベースラインによって、Azu
 author: msmbaldwin
 ms.service: app-service
 ms.topic: conceptual
-ms.date: 11/17/2020
+ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 648e7991784212e4fe781efd5d9f01cb571c5012
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 3193acf8ef19cdac97f6733a657610801d614f32
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807854"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952305"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>App Service 用の Azure セキュリティ ベースライン
 
@@ -28,7 +28,7 @@ App Service を完全に Azure セキュリティ ベンチマークにマップ
 
 **ガイダンス**:Isolated 価格レベル (App Service Environment (ASE) とも呼ばれます) で App Service を使用する場合、Azure Virtual Network 内のサブネットに直接デプロイできます。 ネットワーク セキュリティ グループを使用して、Azure App Service Environmen を保護 (仮想ネットワーク内のリソースに対する受信トラフィックと送信トラフィックをブロック) したり、App Service Environment 内のアプリへのアクセスを制限したりします。
 
-既定では、ネットワーク セキュリティ グループには、優先順位が最も低い暗黙的な拒否規則が設定され、許可規則を明示的に追加する必要があります。 最小特権のネットワーク アプローチに基づいて、ネットワーク セキュリティ グループの許可規則を追加します。 App Service Environment をホストするために使用される基になる仮想マシンは、Microsoft が管理するサブスクリプション内にあるため、直接アクセスできません。
+既定では、ネットワーク セキュリティ グループには、優先順位が最も低い暗黙的な拒否規則が設定されているので、明示的な許可規則を追加する必要があります。 最小特権のネットワーク アプローチに基づいて、ネットワーク セキュリティ グループの許可規則を追加します。 App Service Environment をホストするために使用される基になる仮想マシンは、Microsoft が管理するサブスクリプション内にあるため、直接アクセスできません。
 
 Web アプリケーション ファイアウォール (WAF) が有効になっている Azure Application Gateway 経由でトラフィックをルーティングすることによって、App Service Environment を保護します。 サービス エンドポイントを Application Gateway と共に使用して、アプリへの受信発行トラフィックを保護します。  
 
@@ -57,9 +57,17 @@ Web アプリケーション ファイアウォール (WAF) が有効になっ�
 
 - [内部 ASE を作成する方法](environment/create-ilb-ase.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+
+**Azure Policy 組み込み定義 - Microsoft.Network**:
+
+[!INCLUDE [Resource Policy for Microsoft.Network 1.1](../../includes/policy/standards/asb/rp-controls/microsoft.network-1-1.md)]
+
+**Azure Policy 組み込み定義 - Microsoft.Web**:
+
+[!INCLUDE [Resource Policy for Microsoft.Web 1.1](../../includes/policy/standards/asb/rp-controls/microsoft.web-1-1.md)]
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2:仮想ネットワーク、サブネット、ネットワーク インターフェイスの構成とトラフィックを監視してログに記録する
 
@@ -73,9 +81,13 @@ Azure Firewall を使用して、トラフィックを送信し、サブスク�
 
 - [App Service の監視と保護を有効にする方法](../security-center/defender-for-app-service-introduction.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+
+**Azure Policy 組み込み定義 - Microsoft.Network**:
+
+[!INCLUDE [Resource Policy for Microsoft.Network 1.2](../../includes/policy/standards/asb/rp-controls/microsoft.network-1-2.md)]
 
 ### <a name="13-protect-critical-web-applications"></a>1.3:重要な Web アプリケーションを保護する
 
@@ -108,9 +120,13 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 - [Azure Monitor を使用して WAF アラートを追跡し、傾向を簡単に監視する](../azure-monitor/overview.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+
+**Azure Policy 組み込み定義 - Microsoft.Web**:
+
+[!INCLUDE [Resource Policy for Microsoft.Web 1.3](../../includes/policy/standards/asb/rp-controls/microsoft.web-1-3.md)]
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4:既知の悪意のある IP アドレスとの通信を拒否する
 
@@ -130,9 +146,13 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 - [「App Service 環境をロックする」の説明に従って ASE を保護する](environment/firewall-integration.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+
+**Azure Policy 組み込み定義 - Microsoft.Network**:
+
+[!INCLUDE [Resource Policy for Microsoft.Network 1.4](../../includes/policy/standards/asb/rp-controls/microsoft.network-1-4.md)]
 
 ### <a name="15-record-network-packets"></a>1.5:ネットワーク パケットを記録する
 
@@ -140,9 +160,13 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 - [Azure Application Gateway 上の Azure Web アプリケーション ファイアウォール](../web-application-firewall/ag/ag-overview.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+
+**Azure Policy 組み込み定義 - Microsoft.Network**:
+
+[!INCLUDE [Resource Policy for Microsoft.Network 1.5](../../includes/policy/standards/asb/rp-controls/microsoft.network-1-5.md)]
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7:Web アプリケーションへのトラフィックを管理する
 
@@ -168,11 +192,11 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 - [ポータルで Application Gateway を使用してエンド ツー エンド TLS を構成する方法](../application-gateway/end-to-end-ssl-portal.md)
 
-- [「App Service 環境をロックする」の説明に従って ASE を保護する](./environment/firewall-integration.md)
-
-**Azure Security Center の監視**: はい
+- [「App Service 環境をロックする」の説明に従って ASE を保護する](/azure/app-service/environment/firewall-integrationEnvironment:)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8:ネットワーク セキュリティ規則の複雑さと管理オーバーヘッドを最小限に抑える
 
@@ -184,9 +208,9 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 - [仮想ネットワーク サービス タグ](../virtual-network/service-tags-overview.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9:ネットワーク デバイスの標準的なセキュリティ構成を維持する
 
@@ -205,11 +229,11 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 - [ポータルで Application Gateway を使用してエンド ツー エンド TLS を構成する方法](../application-gateway/end-to-end-ssl-portal.md)
 
-- [「App Service 環境をロックする」の説明に従って ASE を保護する](./environment/firewall-integration.md)
-
-**Azure Security Center の監視**: 適用なし
+- [「App Service 環境をロックする」の説明に従って ASE を保護する](/azure/app-service/environment/firewall-integrationEnvironment:)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10:トラフィック構成規則を文書化する
 
@@ -221,11 +245,11 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-- [Azure App Service のアクセス制限](./app-service-ip-restrictions.md)
-
-**Azure Security Center の監視**: 適用なし
+- [Azure App Service のアクセス制限](/azure/app-service/app-service-ip-restriction)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11:自動化ツールを使用してネットワーク リソース構成を監視し、変更を検出する
 
@@ -241,15 +265,15 @@ Security Center、ポータル、またはプログラム ツールを使用し�
 
 ネットワーク リソースの構成を監視し、変更を迅速に検出するために、自動ツールを備えたプロセスを作成することをお勧めします。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [セキュリティ アラートと推奨事項のエクスポート](../security-center/continuous-export.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
@@ -261,7 +285,7 @@ Security Center、ポータル、またはプログラム ツールを使用し�
 
 ビジネス要件に基づいて、さまざまなデータ ソースやコネクタに接続するために使用できる、スケーラブルなクラウド ネイティブのセキュリティ情報イベント管理 (SIEM) システムである Microsoft Azure Sentinel を使用します。 また、Azure Marketplace の Barracuda など、サードパーティのセキュリティ情報イベント管理 (SIEM) システムに対してデータを有効にしてオンボードできます。
 
-- [ASE アクティビティのログ記録](environment/using-an-ase.md#logging)
+- [ASE アクティビティのログ記録](./environment/using-an-ase.md#logging)
 
 - [Azure App Service の診断設定を有効にする方法](troubleshoot-diagnostic-logs.md)
 
@@ -269,35 +293,40 @@ Security Center、ポータル、またはプログラム ツールを使用し�
 
 - [Application Insights からのテレメトリのエクスポート](../azure-monitor/app/export-telemetry.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3:Azure リソースの監査ログ記録を有効にする
 
 **ガイダンス**:App Service のコントロール プレーン監査ログのために Azure アクティビティ ログ診断設定を有効にします。 Log Analytics ワークスペース、Azure Event Hub、または Azure Storage アカウントにログを送信します。
+
 App Service とその他の Azure リソースの Azure アクティビティ ログ データを使用して、コントロール プレーン レベルで実行された書き込み操作 (PUT、POST、DELETE) について、"いつだれが何を" 行ったのかを特定できます。
 
 さらに、Azure Key Vault により、アクセス ポリシーと監査履歴を使用した一元的なシークレット管理が提供されます。 
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 - [Azure App Service の診断設定を有効にする方法](troubleshoot-diagnostic-logs.md)
 
 - [Resource Manager の操作](../role-based-access-control/resource-provider-operations.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+
+**Azure Policy 組み込み定義 - Microsoft.Web**:
+
+[!INCLUDE [Resource Policy for Microsoft.Web 2.3](../../includes/policy/standards/asb/rp-controls/microsoft.web-2-3.md)]
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5:セキュリティ ログのストレージ保持を構成する
 
 **ガイダンス**:Azure Monitor で、組織のコンプライアンス規則に従って、App Service リソースに関連付けられている Log Analytics ワークスペースのログの保持期間を設定します。
-- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
-
-**Azure Security Center の監視**: 適用なし
+- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="26-monitor-and-review-logs"></a>2.6:ログを監視して確認する
 
@@ -309,7 +338,7 @@ Web アプリケーション ファイアウォール (WAF) を配置してい�
 
 スケーラブルなクラウド ネイティブのセキュリティ情報イベント管理 (SIEM) システムである Azure Sentinel を使用して、要件に従ってさまざまなデータ ソースおよびコネクタを統合します。 必要に応じて、Azure Marketplace のサードパーティのセキュリティ情報イベント管理ソリューションに対してデータを有効にしてオンボードできます。
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 - [Application Insights を有効にする方法](../azure-monitor/app/app-insights-overview.md)
 
@@ -317,9 +346,9 @@ Web アプリケーション ファイアウォール (WAF) を配置してい�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7:異常なアクティビティについてのアラートを有効にする
 
@@ -331,11 +360,11 @@ Azure Web Application Firewall (WAF) を配置している場合は、リアル�
 
 - [セキュリティ アラートと推奨事項のエクスポート](../security-center/continuous-export.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
 
-## <a name="identity-and-access-control"></a>ID とアクセスの制御
+**Azure Security Center の監視**: なし
+
+## <a name="identity-and-access-control"></a>ID およびアクセス制御
 
 *詳細については、[Azure セキュリティ ベンチマークの「ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
@@ -345,13 +374,13 @@ Azure Web Application Firewall (WAF) を配置している場合は、リアル�
 
 - [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
-- [App Service と Azure Functions でマネージド ID を使用する方法](overview-managed-identity.md?context=azure%2Factive-directory%2Fmanaged-identities-azure-resources%2Fcontext%2Fmsi-context&amp;tabs=dotnet)
+- [App Service と Azure Functions でマネージド ID を使用する方法](./overview-managed-identity.md?tabs=dotnet&context=azure%2factive-directory%2fmanaged-identities-azure-resources%2fcontext%2fmsi-context)
 
-- [Azure portal を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)
-
-**Azure Security Center の監視**: はい
+- [Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: 既定のパスワードを変更する (該当する場合)
 
@@ -361,13 +390,13 @@ Azure Web Application Firewall (WAF) を配置している場合は、リアル�
 
 匿名アクセスは、サポートする必要がある場合を除いて、無効にします。 
 
-- [Azure App Service で既定で使用できる ID プロバイダー](overview-authentication-authorization.md#identity-providers)
+- [Azure App Service で既定で使用できる ID プロバイダー](./overview-authentication-authorization.md#identity-providers)
 
 - [Azure App Service および Azure Functions での認証と承認](overview-authentication-authorization.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3: 専用管理者アカウントを使用する
 
@@ -387,9 +416,9 @@ Security Center または組み込みの Azure ポリシーの推奨事項を使
 
 - [アプリケーションへのアクセス権をユーザーに付与することについて詳しく学習する](../role-based-access-control/overview.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4: Azure Active Directory シングル サインオン (SSO) を使用する
 
@@ -408,13 +437,13 @@ App Service アプリが使用するフェデレーション ID では、サー�
 
 これらのプロバイダーのいずれかで認証と認可を有効にすると、そのプロバイダーのサインイン エンドポイントが、ユーザー認証と、プロバイダーからの認証トークンの検証に使用できるようになります。
 
-- [Azure App Service での認証および認可について](overview-authentication-authorization.md#identity-providers)
+- [Azure App Service での認証および認可について](./overview-authentication-authorization.md#identity-providers)
 
 - [Azure App Service での認証および認可の詳細について](overview-authentication-authorization.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: すべての Azure Active Directory ベースのアクセスに多要素認証を使用する
 
@@ -422,27 +451,27 @@ App Service アプリが使用するフェデレーション ID では、サー�
 
 Azure AD に対して多要素認証を実装します。 管理者は、ポータルのサブスクリプション アカウントが保護されていることを確認する必要があります。 作成したリソースはサブスクリプションで管理されているため、サブスクリプションは攻撃に対して脆弱です。 
 
-- [Azure Security MFA](/previous-versions/azure/security/develop/secure-aad-app)
+- [Azure セキュリティ多要素認証](/previous-versions/azure/security/develop/secure-aad-app)
 
-- [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Azure で多要素認証を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 - [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6: セキュリティで保護された Azure マネージド ワークステーションを管理タスクに使用する
 
-**ガイダンス**:多要素認証が構成された特権アクセス ワークステーション (PAW) を使用して Azure リソースにログインし、そのリソースを構成します。
+**ガイダンス**:多要素認証が構成された特権アクセス ワークステーション (PAW) を使用して Azure リソースにログインし、そのリソースを構成します。 
 
 - [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
-
-**Azure Security Center の監視**: 適用なし
+- [Azure で多要素認証を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7: 管理者アカウントからの疑わしいアクティビティに関するログとアラート
 
@@ -458,9 +487,9 @@ Security Center の脅威の防止により、環境に対して包括的な防�
 
 - [Azure コンピューティング リソースのための脅威の防止](../security-center/azure-defender.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8:承認された場所からのみ Azure リソースを管理する
 
@@ -468,9 +497,9 @@ Security Center の脅威の防止により、環境に対して包括的な防�
 
 - [Azure でネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory を使用する
 
@@ -480,9 +509,9 @@ Security Center の脅威の防止により、環境に対して包括的な防�
 
 - [Azure AD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: ユーザー アクセスを定期的に確認して調整する
 
@@ -492,9 +521,9 @@ Security Center の脅威の防止により、環境に対して包括的な防�
 
 - [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11: 非アクティブ化された資格情報へのアクセスの試行を監視する
 
@@ -508,9 +537,9 @@ Azure AD サインイン アクティビティ、監査、およびリスク イ
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12: アカウント サインイン動作の偏差に関するアラートを生成する
 
@@ -524,19 +553,19 @@ Azure AD Identity Protection を使用して、ユーザー ID に関連する�
 
 - [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: サポート シナリオで関連する顧客データに Microsoft がアクセスできるようにする
 
-**ガイダンス**:App Service には使用できません。 カスタマー ロックボックスは、Azure App Service ではサポートされません。
+**ガイダンス**: 使用できません。Azure App Service ではカスタマー ロックボックスがサポートされていません。
 
 - [カスタマー ロックボックスでサポートされているサービスの一覧](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="data-protection"></a>データ保護
 
@@ -548,9 +577,9 @@ Azure AD Identity Protection を使用して、ユーザー ID に関連する�
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2:機密情報を格納または処理するシステムを分離する
 
@@ -570,9 +599,9 @@ App Service Environment (ASE) では、次の 2 つの種類のデプロイが�
 
 - [内部 ASE を作成する方法](environment/create-ilb-ase.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3:機密情報の承認されていない転送を監視してブロックする
 
@@ -582,9 +611,9 @@ Microsoft では、App Service 用の基になるインフラストラクチャ�
 
 - [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: 共有
+
+**Azure Security Center の監視**: なし
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4:転送中のすべての機密情報を暗号化する
 
@@ -592,9 +621,13 @@ Microsoft では、App Service 用の基になるインフラストラクチャ�
 
 - [Azure App Service Web Apps での送信時の暗号化について](security-recommendations.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+
+**Azure Policy 組み込み定義 - Microsoft.Web**:
+
+[!INCLUDE [Resource Policy for Microsoft.Web 4.4](../../includes/policy/standards/asb/rp-controls/microsoft.web-4-4.md)]
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5:アクティブ検出ツールを使用して機密データを特定する
 
@@ -606,19 +639,19 @@ Microsoft では、基になるプラットフォームを管理し、顧客の�
 
 - [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: 共有
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+**Azure Security Center の監視**: なし
 
-**ガイダンス**:Azure Active Directory (Azure AD) のロールベースのアクセス制御 (Azure RBAC) を使用して、Azure portal の App Service コントロール プレーンへのアクセスを制御します。
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する 
 
-- [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
+**ガイダンス**:Azure Active Directory (Azure AD) の Azure ロールベース アクセス制御 (Azure RBAC) を使用して、Azure portal の App Service コントロール プレーンへのアクセスを制御します。
 
-**Azure Security Center の監視**: 現在は使用できません
+- [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8:機密情報を保存時に暗号化する
 
@@ -628,23 +661,23 @@ Microsoft では、基になるプラットフォームを管理し、顧客の�
 
 ローカルに接続されたディスクは、必要に応じて Web サイトの一時ストレージ (たとえば、D:\local や %TMP%) として使用できますが、これらのディスクは保存時に暗号化されないので注意してください。
 
-- [Azure App Service のデータ保護のコントロールについて]()
+- [Azure App Service のデータ保護のコントロールについて](./security-recommendations.md#data-protection)
 
 - [Azure Storage の保存時の暗号化について](../storage/common/storage-service-encryption.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9:重要な Azure リソースへの変更に関するログとアラート
 
 **ガイダンス**:Azure Monitor と Azure アクティビティ ログを使用して、運用 App Service アプリとその他の重要または関連リソースが変更されたときにアラートを作成します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
-
-**Azure Security Center の監視**: 現在は使用できません
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
@@ -656,13 +689,13 @@ Microsoft では、基になるプラットフォームを管理し、顧客の�
 
 App Service アプリをセキュリティで保護するための Security Center の推奨事項を確認し、それに従ってください。
 
-- [CI/CD パイプラインに継続的なセキュリティ検証を追加する方法](/azure/devops/migrate/security-validation-cicd-pipeline?preserve-view=true&view=azure-devops)
+- [CI/CD パイプラインに継続的なセキュリティ検証を追加する方法](/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops&preserve-view=true)
 
 - [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/deploy-vulnerability-assessment-vm.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5:リスク評価プロセスを使用して、検出された脆弱性の修復に優先順位を付ける
 
@@ -670,9 +703,9 @@ App Service アプリをセキュリティで保護するための Security Cent
 
 - [セキュリティの推奨事項のリファレンス ガイド](../security-center/recommendations-reference.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: 共有
+
+**Azure Security Center の監視**: なし
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
@@ -686,13 +719,13 @@ App Service アプリをセキュリティで保護するための Security Cent
 
 - [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&preserve-view=true)
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="62-maintain-asset-metadata"></a>6.2:資産メタデータを保持する
 
@@ -700,9 +733,9 @@ App Service アプリをセキュリティで保護するための Security Cent
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3:承認されていない Azure リソースを削除する
 
@@ -721,17 +754,17 @@ Azure Policy を選択して、次の組み込みポリシー定義を使用し�
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4:承認された Azure リソースのインベントリを定義および管理する
 
 **ガイダンス**:組織のニーズに基づき、承認済み Azure リソースとコンピューティング リソース用の承認済みソフトウェアのインベントリを作成します。
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5:承認されていない Azure リソースを監視する
 
@@ -743,9 +776,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6:コンピューティング リソース内の承認されていないソフトウェア アプリケーションを監視する
 
@@ -759,9 +792,9 @@ App Service の WebJobs を使用して、未承認のソフトウェア アプ�
 
 - [クイック スタート - Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する](../governance/resource-graph/first-query-portal.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7:承認されていない Azure リソースとソフトウェア アプリケーションを削除する
 
@@ -773,9 +806,9 @@ App Service の WebJobs を使用して、未承認のソフトウェア アプ�
 
 - [クイック スタート - Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する](../governance/resource-graph/first-query-portal.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="68-use-only-approved-applications"></a>6.8:承認されたアプリケーションのみを使用する
 
@@ -787,9 +820,9 @@ App Service の WebJobs を使用して、未承認のソフトウェア アプ�
 
 - [クイック スタート - Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する](../governance/resource-graph/first-query-portal.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9:承認された Azure サービスのみを使用する
 
@@ -811,9 +844,9 @@ App Service の WebJobs を使用して、未承認のソフトウェア アプ�
 
 - [Azure App Service で WebJobs を使用してバックグラウンド タスクを実行する](webjobs-create.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10:承認されたソフトウェア タイトルのインベントリを管理する
 
@@ -833,9 +866,9 @@ Azure Policy を構成して、次の組み込みポリシー定義を使用し�
 
 - [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/built-in-policies.md#general)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11:Azure Resource Manager を操作するユーザーの機能を制限する
 
@@ -843,9 +876,9 @@ Azure Policy を構成して、次の組み込みポリシー定義を使用し�
 
 - [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12:コンピューティング リソース内でスクリプトを実行するユーザーの機能を制限する
 
@@ -853,9 +886,9 @@ Azure Policy を構成して、次の組み込みポリシー定義を使用し�
 
 - [Azure App Service で WebJobs を使用してバックグラウンド タスクを実行する](webjobs-create.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13:リスクの高いアプリケーションを物理的または論理的に分離する
 
@@ -869,9 +902,9 @@ Azure Policy を構成して、次の組み込みポリシー定義を使用し�
 
 - [App Service Environment で内部ロード バランサーを作成して使用する](environment/create-ilb-ase.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
@@ -884,20 +917,22 @@ Azure Policy を構成して、次の組み込みポリシー定義を使用し�
 "Microsoft.Web" 名前空間で Azure Policy エイリアスを使用して、App Service Web Apps の構成を監査または適用するカスタム ポリシーを作成します。
 
 次のような組み込みポリシー定義を適用します。
+
 - App Service は仮想ネットワーク サービス エンドポイントを使用する必要がある
+
 - Web アプリケーションには、HTTPS を介してのみアクセスできるようにする
 
 - アプリで最新の TLS バージョンを使用する
 
 標準化された使用のため、組み込みポリシー定義を適用するプロセスを文書化することをお勧めします。   
 
-- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&preserve-view=true)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
@@ -907,9 +942,9 @@ Azure Policy を構成して、次の組み込みポリシー定義を使用し�
 
 - [Azure Policy の効果について](../governance/policy/concepts/effects.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 
@@ -917,13 +952,13 @@ Azure Policy を構成して、次の組み込みポリシー定義を使用し�
 
 既存の継続的インテグレーション (CI) および継続的デリバリー (CD) パイプラインを使用して、既知の安全な構成をデプロイします。
 
-- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
-- [Azure Repos のドキュメント](/azure/devops/repos/?preserve-view=true&view=azure-devops)
-
-**Azure Security Center の監視**: 適用なし
+- [Azure Repos のドキュメント](/azure/devops/repos/?view=azure-devops&preserve-view=true)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7:Azure リソース用の構成管理ツールをデプロイする
 
@@ -931,9 +966,9 @@ Azure Policy を構成して、次の組み込みポリシー定義を使用し�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9:Azure リソースの自動構成監視を実装する
 
@@ -943,9 +978,9 @@ Azure リソースの構成を自動的に適用するには、Azure Policy の 
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11:Azure シークレットを安全に管理する
 
@@ -957,9 +992,9 @@ Azure リソースの構成を自動的に適用するには、Azure Policy の 
 
 - [マネージド ID で Key Vault の認証を提供する方法](../key-vault/general/assign-access-policy-portal.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12:ID を安全かつ自動的に管理する
 
@@ -969,9 +1004,13 @@ Azure リソースの構成を自動的に適用するには、Azure Policy の 
 
 - [マネージド ID で Key Vault の認証を提供する方法](../key-vault/general/assign-access-policy-portal.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+
+**Azure Policy 組み込み定義 - Microsoft.Web**:
+
+[!INCLUDE [Resource Policy for Microsoft.Web 7.12](../../includes/policy/standards/asb/rp-controls/microsoft.web-7-12.md)]
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13:意図しない資格情報の公開を排除する
 
@@ -979,13 +1018,13 @@ Azure リソースの構成を自動的に適用するには、Azure Policy の 
 
 - [資格情報スキャナーを設定する方法](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳しくは、「[Azure Security ベンチマーク:データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的な自動バックアップを保証する
 
@@ -1000,15 +1039,15 @@ App Service によって、アプリで使用するようにユーザーが構�
 
 - [Azure App Service バックアップ機能について](manage-backup.md)
 
-- [Azure Storage の暗号化のためのカスタマー マネージド キー](../storage/common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-
-**Azure Security Center の監視**: 適用なし
+- [Azure Storage の暗号化のためのカスタマー マネージド キー](../storage/common/customer-managed-keys-overview.md)
 
 **責任**: Customer
 
+**Azure Security Center の監視**: なし
+
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: システムの完全バックアップを実行し、すべてのカスタマー マネージド キーをバックアップする
 
-**ガイダンス**:App Service のバックアップと復元の機能を使用して、アプリケーションをバックアップします。 バックアップ機能を使用するには、アプリケーションのバックアップ情報を格納するために Azure Storage アカウントが必要です。
+**ガイダンス**: App Service のバックアップと復元の機能を使用して、アプリケーションをバックアップします。 バックアップ機能を使用するには、アプリケーションのバックアップ情報を格納するために Azure Storage アカウントが必要です。
 
 - Azure Storage では、保存時に暗号化が行われます。システムによって提供されるキー、または独自のカスタマー マネージド キーを使用します。 これは、Azure の Web アプリで実行されていないアプリケーション データが格納される場所です。
 - デプロイ パッケージからの実行は、App Service のデプロイ機能です。 これにより、Shared Access Signature (SAS) URL を使用して、Azure Storage アカウントからサイト コンテンツをデプロイできます。
@@ -1027,9 +1066,9 @@ App Service によって、アプリで使用するようにユーザーが構�
 
 - [カスタマー マネージド キーを使用した保存時の暗号化](configure-encrypt-at-rest-using-cmk.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3:カスタマー マネージド キーを含むすべてのバックアップを検証する
 
@@ -1039,9 +1078,9 @@ App Service によって、アプリで使用するようにユーザーが構�
 
 - [Azure App Service Web アプリを復元する方法](web-sites-restore.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: バックアップとカスタマー マネージド キーの保護を保証する
 
@@ -1055,9 +1094,9 @@ Azure Storage 暗号化は、Resource Manager と従来のストレージ アカ
 
 - [Azure Key Vault で論理的な削除を有効にする方法](../key-vault/general/key-vault-recovery.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="incident-response"></a>インシデント対応
 
@@ -1075,9 +1114,9 @@ Azure Storage 暗号化は、Resource Manager と従来のストレージ アカ
 
 - [お客様は、独自のインシデント対応計画の作成に役立つ NIST の「コンピューター セキュリティ インシデント対応ガイド」を利用することもできます](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2:インシデントのスコアリングと優先順位付けの手順を作成する
 
@@ -1085,9 +1124,9 @@ Azure Storage 暗号化は、Resource Manager と従来のストレージ アカ
 
 さらに、サブスクリプション (運用、非運用など) を明確にマークし、Azure リソースを明確に識別および分類するための命名システムを作成します。
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
@@ -1095,9 +1134,9 @@ Azure Storage 暗号化は、Resource Manager と従来のストレージ アカ
 
 - [NIST の出版物『IT 計画と機能に関するテスト、トレーニング、および演習プログラムのガイド』をご覧ください](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
@@ -1105,9 +1144,9 @@ Azure Storage 暗号化は、Resource Manager と従来のストレージ アカ
 
 - [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
@@ -1117,9 +1156,9 @@ Azure Storage 暗号化は、Resource Manager と従来のストレージ アカ
 
 - [Azure Sentinel にアラートをストリーミングする方法](../sentinel/connect-azure-security-center.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6:セキュリティ アラートへの対応を自動化する
 
@@ -1127,9 +1166,9 @@ Azure Storage 暗号化は、Resource Manager と従来のストレージ アカ
 
 - [ワークフローの自動化と Logic Apps を構成する方法](../security-center/workflow-automation.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
@@ -1137,17 +1176,17 @@ Azure Storage 暗号化は、Resource Manager と従来のストレージ アカ
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、確実に修復されるようにする
 
-**ガイダンス**: お客様の侵入テストが Microsoft のポリシーに違反しないように、確実に次の Microsoft の活動規則に従ってください。 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+**ガイダンス**: お客様の侵入テストが Microsoft のポリシーに違反しないように、Microsoft クラウド侵入テストの実施ルールに従ってください。 Microsoft が管理しているクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施を活用してください。 
 
-Microsoft が管理するクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストの Microsoft の戦略と実施について詳しくは、以下を参照してください。
+- [侵入テストの実施ルール](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
 
 - [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: 共有
+
+**Azure Security Center の監視**: なし
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
 - [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

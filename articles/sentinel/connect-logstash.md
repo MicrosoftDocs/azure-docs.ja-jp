@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 63b9d74fbbb1a79dd4f3d3e7c5fb094a372282e0
-ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
+ms.openlocfilehash: da7d540a4b7982c7f743a7ae968515485b45aa5a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96299634"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035429"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Logstash を使用して Azure Sentinel にデータ ソースを接続する
 
 > [!IMPORTANT]
 > Logstash 出力プラグインを使用したデータ インジェストは、現在パブリック プレビューの段階にあります。 この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-**Logstash データ収集エンジン** 用の Azure Sentinel の新しい出力プラグインを使用することで、Logstash 経由で任意の種類のログを Azure Sentinel の Log Analytics ワークスペースに直接送信できるようになりました。 ログは、出力プラグインを使用して定義するカスタム テーブルに送信されます。
+**Logstash データ収集エンジン** 用の Azure Sentinel の出力プラグインを使用することで、Logstash 経由で任意の種類のログを Azure Sentinel の Log Analytics ワークスペースに直接送信できます。 ログは、出力プラグインを使用して定義するカスタム テーブルに送信されます。
 
 Logstash データ収集エンジンの操作の詳細については、[Logstash の概要](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html)に関するページをご覧ください。
 
@@ -49,7 +49,7 @@ Logstash エンジンは、次の 3 つのコンポーネントで構成され�
 Logstash 用の Azure Sentinel 出力プラグインは、Log Analytics HTTP データ コレクター REST API を使用して、JSON 形式のデータを Log Analytics ワークスペースに送信します。 データはカスタム ログに取り込まれます。
 
 - [Log Analytics REST API ](/rest/api/loganalytics/create-request)の詳細を確認します。
-- [カスタム ログ](../azure-monitor/platform/data-sources-custom-logs.md)の詳細を確認します。
+- [カスタム ログ](../azure-monitor/agents/data-sources-custom-logs.md)の詳細を確認します。
 
 ## <a name="deploy-the-azure-sentinel-output-plugin-in-logstash"></a>Logstash での Azure Sentinel 出力プラグインのデプロイ
 
@@ -57,7 +57,7 @@ Logstash 用の Azure Sentinel 出力プラグインは、Log Analytics HTTP デ
 
 Azure Sentinel 出力プラグインは、Logstash コレクションで使用できます。
 
-- Logstash の [プラグインの操作](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html)に関するドキュメントに記載されている手順に従って、**_[microsoft-logstash-output-azure-loganalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)_* _ プラグインをインストールします。
+- Logstash の [プラグインの操作](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html)に関するドキュメントに記載されている手順に従って、***[microsoft-logstash-output-azure-loganalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)*** プラグインをインストールします。
    
 - Logstash システムがインターネットにアクセスできない場合は、Logstash の[オフライン プラグイン管理](https://www.elastic.co/guide/en/logstash/current/offline-plugins.html)に関するドキュメントに記載されている手順に従って、オフライン プラグイン パックを準備して使用します。 (この場合、インターネットにアクセスできる別の Logstash システムを構築する必要があります)。
 
@@ -67,7 +67,7 @@ Logstash の[構成ファイルの構造](https://www.elastic.co/guide/en/logsta
 
 | フィールド名 | データ型 | 説明 |
 |----------------|---------------|-----------------|
-| `workspace_id` | string | ワークスペース ID GUID を入力します。 _ |
+| `workspace_id` | string | ワークスペース ID GUID を入力します。 * |
 | `workspace_key` | string | ワークスペースの主キー GUID を入力します。 * |
 | `custom_log_table_name` | string | ログが取り込まれるテーブルの名前を設定します。 構成できるのは、出力プラグインごとに 1 つのテーブル名だけです。 ログ テーブルは、Azure Sentinel の **[ログ]** の下の **[カスタム ログ]** カテゴリの **[テーブル]** に `_CL` サフィックス付きで表示されます。 |
 | `endpoint` | string | 省略可能なフィールド。 既定では、これは Log Analytics エンドポイントです。 代替エンドポイントを設定するには、このフィールドを使用します。 |
@@ -76,8 +76,10 @@ Logstash の[構成ファイルの構造](https://www.elastic.co/guide/en/logsta
 | `plugin_flush_interval` | 数値 | 省略可能なフィールド。 Log Analytics へのメッセージの転送間の最大間隔 (秒) を定義するように設定します。 既定値は 5 です。 |
     | `amount_resizing` | boolean | true または false 自動スケーリング メカニズムを有効または無効にします。これにより、受信したログ データの量に応じてメッセージ バッファー サイズが調整されます。 |
 | `max_items` | 数値 | 省略可能なフィールド。 `amount_resizing` が "false" に設定されている場合にのみ適用されます。 メッセージ バッファー サイズ (レコード単位) の上限の設定に使用します。 既定値は 2000 です。  |
+| `azure_resource_id` | string | 省略可能なフィールド。 データが存在する Azure リソースの ID を定義します。 <br>リソース ID 値は特に、[リソースコンテキスト RBAC](resource-context-rbac.md) を使用して特定のデータへのアクセスのみを許可する場合に便利です。 |
+| | | |
 
-\* ワークスペース ID と主キーは、ワークスペース リソースの **[エージェント管理]** で確認できます。
+*  ワークスペース ID と主キーは、ワークスペース リソースの **[エージェント管理]** で確認できます。
 
 #### <a name="sample-configurations"></a>サンプルの構成
 

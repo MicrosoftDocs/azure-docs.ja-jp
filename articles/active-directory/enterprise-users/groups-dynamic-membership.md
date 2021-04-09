@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/02/2020
+ms.date: 02/18/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c60d54a905f460eb5c26c2f183cd22b175a5b3c4
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: c25504e3313234ac6b6f80a6e00c77fce28b1400
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860815"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174531"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -279,6 +279,14 @@ user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
+#### <a name="example-3"></a>例 3
+
+次の式では、サービス プランが割り当てられていないすべてのユーザーが選択されます。
+
+```
+user.assignedPlans -all (assignedPlan.servicePlanId -eq "")
+```
+
 ### <a name="using-the-underscore-_-syntax"></a>アンダースコア (\_) 構文を使用する
 
 アンダースコア (\_) 構文は、いずれかの複数値文字列コレクション プロパティの特定の値の出現回数を一致させて、ユーザーまたはデバイスを動的グループに追加します。 -any 演算子または -all 演算子と共に使用します。
@@ -378,8 +386,8 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
  ----- | ----- | ----------------
  accountEnabled | true false | (device.accountEnabled -eq true)
  displayName | 任意の文字列値 |(device.displayName -eq "Rob iPhone")
- deviceOSType | 任意の文字列値 | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")<br>(device.deviceOSType -contains "AndroidEnterprise")<br>(device.deviceOSType -eq "AndroidForWork")
- deviceOSVersion | 任意の文字列値 | (device.deviceOSVersion -eq "9.1")
+ deviceOSType | 任意の文字列値 | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")<br>(device.deviceOSType -contains "AndroidEnterprise")<br>(device.deviceOSType -eq "AndroidForWork")<br>(device.deviceOSType -eq "Windows")
+ deviceOSVersion | 任意の文字列値 | (device.deviceOSVersion -eq "9.1")<br>(device.deviceOSVersion -eq "10.0.17763.0")
  deviceCategory | 有効なデバイス カテゴリ名 | (device.deviceCategory -eq "BYOD")
  deviceManufacturer | 任意の文字列値 | (device.deviceManufacturer -eq "Samsung")
  deviceModel | 任意の文字列値 | (device.deviceModel -eq "iPad Air")

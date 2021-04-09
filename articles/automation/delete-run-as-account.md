@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 01/06/2021
 ms.topic: conceptual
 ms.openlocfilehash: 6924a9a9394d237b08db878ef910de6767ca9b39
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99056836"
 ---
 # <a name="delete-an-azure-automation-run-as-account"></a>Azure Automation の実行アカウントを削除する

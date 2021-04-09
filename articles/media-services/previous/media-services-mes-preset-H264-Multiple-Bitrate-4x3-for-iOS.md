@@ -1,7 +1,7 @@
 ---
 title: H264 Multiple Bitrate 4x3 for iOS | Microsoft Docs
 description: このトピックでは、**H264 Multiple Bitrate 4x3 for iOS** タスク プリセットの概要を説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: ba4124758a5e96ae580f7182b610b896594ca4ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 4277ade29efe094a343ac250e10f4783433f0b9f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266937"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103015054"
 ---
 # <a name="h264-multiple-bitrate-4x3-for-ios"></a>H264 Multiple Bitrate 4x3 for iOS
 

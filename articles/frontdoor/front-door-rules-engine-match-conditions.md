@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2020
+ms.date: 03/01/2020
 ms.author: duau
-ms.openlocfilehash: 0e874ae3d29f4143a4f8a9275d5ffcde48d08e6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a352624fc802e4224aa1b60768c064c0054cdfd6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569758"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035876"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Azure Front Door ルール エンジンの一致条件
 
@@ -142,7 +142,7 @@ String | [標準の演算子一覧](#standard-operator-list) | String、Int | �
 
 #### <a name="key-information"></a>重要な情報
 
-- このルール条件を使用する場合は、必ずプロトコル情報を含めてください。 たとえば、 *https://www.\<yourdomain\>.com* です。
+- このルール条件を使用する場合は、必ずプロトコル情報を含めてください。 (例: `https://www.<yourdomain\>.com`)。
 
 ## <a name="request-file-extension"></a>要求ファイル拡張子
 
@@ -182,6 +182,10 @@ String | [標準の演算子一覧](#standard-operator-list) | String、Int | �
 ---------|-------|---------------
 [標準の演算子一覧](#standard-operator-list) | String、Int | 小文字、大文字、切り捨て、空白の削除、URL エンコード、URL デコード
 
+#### <a name="key-information"></a>重要な情報
+
+- このルールの条件を使用する際は、パスの最初の `/` の後から照合が始まることに注意してください。 たとえば、`https://www.<yourdomain>.com/folder/page` の場合は `folder/page` から照合が始まります。
+
 ## <a name="standard-operator-list"></a>標準の演算子一覧
 
 標準の演算子リストからの値を受け入れるルールの場合、次の演算子が有効です。
@@ -204,7 +208,7 @@ String | [標準の演算子一覧](#standard-operator-list) | String、Int | �
 - 次の値より大きくない
 - 次の値以上ではない
 
-*より小さい*または*以上*のような数値演算子の場合、比較は長さに基づいて行われます。 一致条件の値は、比較する長さと同じ整数である必要があります。 
+*より小さい* または *以上* のような数値演算子の場合、比較は長さに基づいて行われます。 一致条件の値は、比較する長さと同じ整数である必要があります。 
 
 
 ## <a name="next-steps"></a>次のステップ

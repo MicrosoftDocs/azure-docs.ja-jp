@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 558df115043d76acf865f19611e8c4cd322e00a7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5a44c40838b7f7fa9ca499ade49317ff9ce828fe
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678684"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102498899"
 ---
 # <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>Cognitive Search で SharePoint Online のインデックス作成を構成する方法 (プレビュー)
 
@@ -23,6 +23,9 @@ ms.locfileid: "101678684"
 > プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 > 
 > [REST API バージョン 2020-06-30-Preview](search-api-preview.md) で、この機能を提供しています。 現時点では、ポータルと SDK によるサポートはありません。
+
+> [!NOTE]
+> SharePoint Online では、ユーザーごとのアクセスをドキュメント レベルで決定する詳細な認可モデルがサポートされています。 SharePoint Online インデクサーによってこれらのアクセス許可が検索インデックスに設定されることはありません。Cognitive Search では、ドキュメントレベルの認可がサポートされていません。 SharePoint Online からのインデックスがドキュメントに付けられ、検索サービスに設定される場合、そのインデックスに読み取りアクセスできる誰もがコンテンツを利用できます。 ドキュメントレベルのアクセス許可が必要な場合、セキュリティ フィルターを調べ、権限のないコンテンツの結果を減らしてください。 詳細については、[Active Directory ID を使用してセキュリティをトリミングする](search-security-trimming-for-azure-search-with-aad.md)方法に関するページを参照してください。
 
 この記事では、Azure Cognitive Search を使用して、SharePoint Online ドキュメント ライブラリに格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) の Azure Cognitive Search インデックスを作成する方法を説明します。 まず、インデクサーの設定と構成の基礎を説明します。 次に、発生する可能性のある動作とシナリオについて詳しく説明します。
 
@@ -163,7 +166,16 @@ api-key: [admin key]
         {
           "name" : "sharepoint-indexer",
           "dataSourceName" : "sharepoint-datasource",
-          "targetIndexName" : "sharepoint-index"
+          "targetIndexName" : "sharepoint-index",
+          "fieldMappings" : [
+            { 
+              "sourceFieldName" : "metadata_spo_site_library_item_id", 
+              "targetFieldName" : "id", 
+              "mappingFunction" : { 
+                "name" : "base64Encode" 
+              } 
+            }
+          ]
         }
     
     ```

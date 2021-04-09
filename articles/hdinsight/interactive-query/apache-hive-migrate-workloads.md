@@ -1,187 +1,119 @@
 ---
 title: Azure HDInsight 3.6 Hive ワークロードを Hive HDInsight 4.0 に移行する
 description: HDInsight 3.6 上の Apache Hive のワークロードを HDInsight 4.0 に移行する方法について説明します。
-author: msft-tacox
-ms.author: tacox
+author: kevxmsft
+ms.author: kevx
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 11/13/2019
-ms.openlocfilehash: 93dc565055c6eb413a0c277a9891e5fcfab50345
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 11/4/2020
+ms.openlocfilehash: b13e8e088eff95071247a53ad1a4a18879f94053
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941350"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742196"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3.6 Hive ワークロードを Hive HDInsight 4.0 に移行する
 
-このドキュメントでは、HDInsight 3.6 上の Apache Hive と LLAP のワークロードを HDInsight 4.0 に移行する方法について説明します。 HDInsight 4.0 では、マテリアライズドビューやクエリ結果のキャッシュなどの新しい Hive と LLAP の機能が提供されます。 ワークロードを HDInsight 4.0 に移行すると、HDInsight 3.6 で利用できない Hive 3 の多くの新しい機能を使用できます。
+HDInsight 4.0 には、HDInsight 3.6 よりも優れた点がいくつかあります。 こちらに [HDInsight 4.0 の新機能の概要](../hdinsight-version-release.md)があります。
 
-この記事に含まれるサブジェクトは次のとおりです。
+この記事では、Hive ワークロードを HDInsight 3.6 から 4.0 に移行する手順について説明します。以下が含まれます。
 
-* HDInsight 4.0 への Hive メタデータの移行
-* ACID テーブルと ACID 以外のテーブルの安全な移行
-* HDInsight バージョン間での Hive セキュリティ ポリシーの保持
-* HDInsight 3.6 から HDInsight 4.0 へのクエリの実行とデバッグ
+* Hive メタストアのコピーとスキーマのアップグレード
+* ACID 互換性のための安全な移行
+* Hive セキュリティ ポリシーの保持
 
-Hive の利点の 1 つは、外部データベース (Hive Metastore と呼ばれます) にメタデータをエクスポートする機能です。 **Hive Metastore** は、テーブル ストレージの場所、列名、テーブルのインデックス情報を含む、テーブルの統計情報の格納を担当します。 HDInsight 3.6 と HDInsight 4.0 には異なるメタストア スキーマが必要で、1 つのメタストアを共有することはできません。 Hive メタストアを安全にアップグレードするには、現在の運用環境にある元のメタストアではなく、コピーをアップグレードすることをお勧めします。 このドキュメントでは、元のクラスターと新しいクラスターから、同じストレージ アカウントにアクセスできることを要件としています。 そのため、別のリージョンへのデータ移行については取り上げません。
+新旧の HDInsight クラスターは、同じストレージ アカウントにアクセスできる必要があります。
 
-## <a name="migrate-from-external-metastore"></a>外部メタストアから移行する
+Hive テーブルの新しいストレージ アカウントへの移行は、別の手順として実行する必要があります。 [ストレージ アカウント間での Hive の移行](./hive-migration-across-storage-accounts.md)に関する記事を参照してください。
 
-### <a name="1-run-major-compaction-on-acid-tables-in-hdinsight-36"></a>1.HDInsight 3.6 で ACID テーブルの主要な圧縮を実行する
+## <a name="steps-to-upgrade"></a>アップグレードの手順
 
-HDInsight 3.6 と HDInsight 4.0 の ACID テーブルでは、ACID のデルタの解釈が異なります。 移行前に必要なアクションは、3.6 クラスター上の各 ACID テーブルに対して "主要な" 圧縮を実行することだけです。 圧縮の詳細については、[Hive 言語マニュアル](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable/Partition/Compact)を参照してください。
+### <a name="1-prepare-the-data"></a>1.データを準備する
 
-### <a name="2-copy-sql-database"></a>2.SQL データベースをコピーする
-外部メタストアの新しいコピーを作成します。 外部メタストアを使用している場合、メタストアのコピーを作成する安全で簡単な方法の 1 つは、`RESTORE` 関数を使用して、別の名前で[データベースを復元](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore)することです。  HDInsight クラスターへの外部メタストアのアタッチについて詳しくは、「[Azure HDInsight での外部メタデータ ストアの使用](../hdinsight-use-external-metadata-stores.md)」をご覧ください。
+* 既定では、HDInsight 3.6 では ACID テーブルがサポートされていません。 ただし、ACID テーブルが存在する場合は、それらに対して "主要な" 圧縮が実行されます。 圧縮の詳細については、[Hive 言語マニュアル](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable/Partition/Compact)を参照してください。
 
-### <a name="3-upgrade-metastore-schema"></a>3.メタストア スキーマをアップグレードする
-メタストアの **コピー** が完了したら、既存の HDInsight 3.6 クラスター上の [スクリプト アクション](../hdinsight-hadoop-customize-cluster-linux.md)でスキーマ アップグレード スクリプトを実行して、新しいメタストアを Hive 3 スキーマにアップグレードします。 (この手順では、新しいメタストアがクラスターに接続されている必要はありません。)これにより、データベースを HDInsight 4.0 メタストアとして接続できるようになります。
+* [Azure Data Lake Storage Gen1](../overview-data-lake-storage-gen1.md) を使用している場合、Hive テーブルの場所が、クラスターの HDFS 構成に依存している可能性があります。 次のスクリプト アクションを実行して、これらの場所を他のクラスターに移植できるようにします。 「[実行中のクラスターに対するスクリプト アクション](../hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster)」を参照してください。
 
-下にある表の値を使用してください。 `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` は、スペース区切りで、Hive メタストアの **コピー** 用に適切な値に置き換えます。 SQL サーバー名を指定するときに ".database.windows.net" を含めないでください。
+    |プロパティ | 値 |
+    |---|---|
+    |Bash スクリプト URI|`https://hdiconfigactions.blob.core.windows.net/linuxhivemigrationv01/hive-adl-expand-location-v01.sh`|
+    |ノードの種類|Head|
+    |パラメーター||
 
-|プロパティ | 値 |
-|---|---|
-|スクリプトの種類|- Custom|
-|名前|Hive アップグレード|
-|Bash スクリプト URI|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
-|ノードの種類|Head|
-|パラメーター|SQLSERVERNAME DATABASENAME USERNAME PASSWORD|
+### <a name="2-copy-the-sql-database"></a>2.SQL データベースをコピーする
 
-> [!Warning]  
-> HDInsight 3.6 のメタデータ スキーマを HDInsight 4.0 のスキーマに変換するアップグレードを元に戻すことはできません。
+* クラスターで既定の Hive メタストアを使用する場合は、こちらの[ガイド](./hive-default-metastore-export-import.md)に従って、外部メタストアにメタデータをエクスポートします。 次に、アップグレードのためにその外部メタストアのコピーを作成します。
 
-アップグレードを確認するには、データベースに対して次の SQL クエリを実行します。
+* クラスターで外部の Hive メタストアを使用する場合は、そのコピーを作成します。 オプションとしては、[エクスポートおよびインポート](../../azure-sql/database/database-export.md)と[ポイントインタイム リストア](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore)があります。
 
-```sql
-select * from dbo.version
-```
+### <a name="3-upgrade-the-metastore-schema"></a>3.メタストア スキーマをアップグレードする
+
+この手順では、HDInsight 4.0 の [`Hive Schema Tool`](https://cwiki.apache.org/confluence/display/Hive/Hive+Schema+Tool) を使用して、メタストア スキーマをアップグレードします。
+
+> [!Warning]
+> この手順は元に戻せません。 これは、メタストアのコピーに対してのみ実行してください。
+
+1. HDInsight 4.0 の一時クラスターを作成し、4.0 Hive `schematool` にアクセスします。 この手順では、[既定の Hive メタストア](../hdinsight-use-external-metadata-stores.md#default-metastore)を使用できます。
+
+1. HDInsight 4.0 クラスターから、`schematool` を実行して、ターゲットの HDInsight 3.6 メタストアをアップグレードします。
+
+    ```sh
+    SERVER='servername.database.windows.net'  # replace with your SQL Server
+    DATABASE='database'  # replace with your 3.6 metastore SQL Database
+    USERNAME='username'  # replace with your 3.6 metastore username
+    PASSWORD='password'  # replace with your 3.6 metastore password
+    STACK_VERSION=$(hdp-select status hive-server2 | awk '{ print $3; }')
+    /usr/hdp/$STACK_VERSION/hive/bin/schematool -upgradeSchema -url "jdbc:sqlserver://$SERVER;databaseName=$DATABASE;trustServerCertificate=false;encrypt=true;hostNameInCertificate=*.database.windows.net;" -userName "$USERNAME" -passWord "$PASSWORD" -dbType "mssql" --verbose
+    ```
+
+    > [!NOTE]
+    > このユーティリティでは、クライアント `beeline` を使用して、`/usr/hdp/$STACK_VERSION/hive/scripts/metastore/upgrade/mssql/upgrade-*.mssql.sql` で SQL スクリプトを実行します。
+    >
+    > これらのスクリプトの SQL 構文は、必ずしも他のクライアント ツールと互換性がありません。 たとえば、[SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) と [Azure portal のクエリ エディター](../../azure-sql/database/connect-query-portal.md)では、各コマンドの後にキーワード `GO` が必要です。
+    >
+    > リソースの容量またはトランザクションのタイムアウトが原因でスクリプトが失敗した場合は、SQL データベースをスケールアップします。
+
+1. クエリ `select schema_version from dbo.version` を使用して最終バージョンを確認します。
+
+    出力は、HDInsight 4.0 クラスターからの次の bash コマンドの出力と一致しているはずです。
+
+    ```bash
+    grep . /usr/hdp/$(hdp-select --version)/hive/scripts/metastore/upgrade/mssql/upgrade.order.mssql | tail -n1 | rev | cut -d'-' -f1 | rev
+    ```
+
+1. HDInsight 4.0 の一時クラスターを削除します。
 
 ### <a name="4-deploy-a-new-hdinsight-40-cluster"></a>4.新しい HDInsight 4.0 クラスターをデプロイする
 
-1. アップグレードされたメタストアを新しいクラスターの Hive メタストアとして指定します。
+新しい HDInsight 4.0 クラスターを作成し、[アップグレードされた Hive メタストア](../hdinsight-use-external-metadata-stores.md#select-a-custom-metastore-during-cluster-creation)および同じストレージ アカウントを選択します。
 
-1. ただし、テーブルからの実際のデータは、クラスターが必要なストレージ アカウントへのアクセス権を持つようになるまでアクセスできません。
-HDInsight 3.6 クラスター内の Hive テーブルのストレージ アカウントが、新しい HDInsight 4.0 クラスターのプライマリまたはセカンダリ ストレージ アカウントのどちらかとして指定されていることを確認します。
-HDInsight クラスターへのストレージ アカウントの追加について詳しくは、「[HDInsight にストレージ アカウントを追加する](../hdinsight-hadoop-add-storage.md)」をご覧ください。
+* 新しいクラスターでは、同じ既定のファイルシステムを持つ必要はありません。
 
-### <a name="5-complete-migration-with-a-post-upgrade-tool-in-hdinsight-40"></a>5.HDInsight 4.0 のアップグレード後ツールを使用して移行を完了する
+* メタストアに、複数のストレージ アカウントに存在するテーブルが含まれている場合は、それらのストレージ アカウントを新しいクラスターに追加して、これらのテーブルにアクセスする必要があります。 「[HDInsight にストレージ アカウントを追加する](../hdinsight-hadoop-add-storage.md)」を参照してください。
 
-マネージド テーブルは既定で、HDInsight 4.0 の ACID に準拠している必要があります。 メタストアの移行が完了したら、アップグレード後ツールを実行して、以前の非 ACID のマネージド テーブルを HDInsight 4.0 クラスターと互換性がある状態にします。 このツールでは、次の変換が適用されます。
+* ストレージにアクセスできないことが原因で Hive ジョブが失敗する場合は、テーブルの場所が、クラスターに追加されたストレージ アカウントにあることを確認します。
 
-|3.6 |4.0 |
-|---|---|
-|外部テーブル|外部テーブル|
-|非 ACID マネージド テーブル|プロパティ 'external.table.purge'='true' を備えた外部テーブル|
-|ACID マネージド テーブル|ACID マネージド テーブル|
+    次の Hive コマンドを使用して、テーブルの場所を確認します。
 
-SSH シェルを使用して、HDInsight 4.0 クラスターから Hive のアップグレード後ツールを実行します。
-
-1. SSH を使用して、そのクラスター ヘッドノードに接続します。 手順については、「[SSH を使用して HDInsight に接続する](../hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
-1. Hive ユーザーとして、`sudo su - hive` を実行することで、ログイン シェルを開きます。
-1. シェルから次のコマンドを実行します。
-
-    ```bash
-    STACK_VERSION=$(hdp-select status hive-server2 | awk '{ print $3; }')
-    /usr/hdp/$STACK_VERSION/hive/bin/hive --config /etc/hive/conf --service  strictmanagedmigration --hiveconf hive.strict.managed.tables=true -m automatic --modifyManagedTables
+    ```sql
+    SHOW CREATE TABLE ([db_name.]table_name|view_name);
     ```
 
-ツールが完了すると、Hive ウェアハウスは HDInsight 4.0 で利用できるようになります。
+### <a name="5-convert-tables-for-acid-compliance"></a>5.ACID 準拠のテーブルを変換する
 
-## <a name="migrate-from-internal-metastore"></a>内部メタストアから移行する
+マネージド テーブルは、HDInsight 4.0 の ACID に準拠している必要があります。 HDInsight 4.0 で `strictmanagedmigration` を実行して、すべての非 ACID マネージド テーブルを、プロパティ `'external.table.purge'='true'` を使用して外部テーブルに変換します。 次をヘッド ノードから実行します。
 
-HDInsight 3.6 クラスターによって内部 Hive メタストアが使用される場合、以下の手順に従ってスクリプトを実行します。これにより、メタストアからオブジェクト定義をエクスポートするための Hive クエリが生成されます。
-
-HDInsight 3.6 および 4.0 のクラスターでは、同じストレージ アカウントが使用される必要があります。
-
-> [!NOTE]
->
-> * ACID テーブルの場合、テーブルのデータの新しいコピーが作成されます。
->
-> * このスクリプトでは、Hive データベース、テーブル、およびパーティションの移行のみがサポートされます。 ビュー、UDF、テーブル制約などの他のメタデータ オブジェクトは、手動でコピーすることが想定されています。
->
-> * このスクリプトの完了後は、スクリプトで参照されているテーブルやデータベースにアクセスするために古いクラスターは使用されなくなることが想定されています。
->
-> * マネージド テーブルはすべて、HDInsight 4.0 ではトランザクションになります。 必要に応じて、プロパティ 'external. table. purge' = 'true' を使用して外部テーブルにデータをエクスポートすることによって、テーブルを非トランザクションのままにします。 たとえば、次のように入力します。
->
->    ```SQL
->    create table tablename_backup like tablename;
->    insert overwrite table tablename_backup select * from tablename;
->    create external table tablename_tmp like tablename;
->    insert overwrite table tablename_tmp select * from tablename;
->    alter table tablename_tmp set tblproperties('external.table.purge'='true');
->    drop table tablename;
->    alter table tablename_tmp rename to tablename;
->    ```
-
-1. [Secure Shell (SSH) クライアント](../hdinsight-hadoop-linux-use-ssh-unix.md)を使用して HDInsight 3.6 クラスターに接続します。
-
-1. 開いている SSH セッションから、次のスクリプト ファイルをダウンロードして、**alltables.sql** という名前のファイルを生成します。
-
-    ```bash
-    wget https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/exporthive_hdi_3_6.sh
-    chmod 755 exporthive_hdi_3_6.sh
-    ```
-
-    * 通常の HDInsight クラスターの場合は、ESP を使用せずに、単純に `exporthive_hdi_3_6.sh` を実行します。
-
-    * ESP を使用するクラスターの場合は、kinit を実行して引数を Beeline に変更します。以下を実行し、完全な Hive アクセス許可を持つ Azure AD ユーザーに対して USER および DOMAIN を定義します。
-
-        ```bash
-        USER="USER"  # replace USER
-        DOMAIN="DOMAIN"  # replace DOMAIN
-        DOMAIN_UPPER=$(printf "%s" "$DOMAIN" | awk '{ print toupper($0) }')
-        kinit "$USER@$DOMAIN_UPPER"
-        ```
-
-        ```bash
-        hn0=$(grep hn0- /etc/hosts | xargs | cut -d' ' -f4)
-        BEE_CMD="beeline -u 'jdbc:hive2://$hn0:10001/default;principal=hive/_HOST@$DOMAIN_UPPER;auth-kerberos;transportMode=http' -n "$USER@$DOMAIN" --showHeader=false --silent=true --outputformat=tsv2 -e"
-        ./exporthive_hdi_3_6.sh "$BEE_CMD"
-        ```
-
-1. SSH セッションを終了します。 次に、scp コマンドを入力して **alltables.hql** をローカルにダウンロードします。
-
-    ```bash
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:alltables.hql c:/hdi
-    ```
-
-1. **alltables.hql** を "*新しい*" HDInsight クラスターにアップロードします。
-
-    ```bash
-    scp c:/hdi/alltables.hql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
-    ```
-
-1. 次に SSH を使用して、"*新しい*" HDInsight 4.0 クラスターに接続します。 このクラスターへの SSH セッションから、次のコードを実行します。
-
-    ESP を使用しない場合:
-
-    ```bash
-    beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" -f alltables.hql
-    ```
-
-    ESP を使用する場合:
-
-    ```bash
-    USER="USER"  # replace USER
-    DOMAIN="DOMAIN"  # replace DOMAIN
-    DOMAIN_UPPER=$(printf "%s" "$DOMAIN" | awk '{ print toupper($0) }')
-    kinit "$USER@$DOMAIN_UPPER"
-    ```
-
-    ```bash
-    hn0=$(grep hn0- /etc/hosts | xargs | cut -d' ' -f4)
-    beeline -u "jdbc:hive2://$hn0:10001/default;principal=hive/_HOST@$DOMAIN_UPPER;auth-kerberos;transportMode=http" -n "$USER@$DOMAIN" -f alltables.hql
-    ```
-
-HDInsight 3.6 の非 ACID マネージド テーブルは HDInsight 4.0 では ACID マネージド テーブルに変換されるため、外部メタストア移行用のアップグレード後ツールは、ここでは適用されません。
-
-> [!Important]  
-> HDInsight 4.0 でのマネージド テーブル (3.6 から移行されたテーブルを含む) に対して、その他のサービスまたはアプリケーション (HDInsight 3.6 クラスターを含む) からアクセスすることはできません。
+```bash
+sudo su - hive
+STACK_VERSION=$(hdp-select status hive-server2 | awk '{ print $3; }')
+/usr/hdp/$STACK_VERSION/hive/bin/hive --config /etc/hive/conf --service strictmanagedmigration --hiveconf hive.strict.managed.tables=true -m automatic --modifyManagedTables
+```
 
 ## <a name="secure-hive-across-hdinsight-versions"></a>HDInsight バージョン間で Hive をセキュリティ保護する
 
-HDInsight 3.6 以降では、HDInsight は、HDInsight Enterprise セキュリティ パッケージ (ESP) を使用して Azure Active Directory と統合されます。 ESP では、Kerberos と Apache Ranger を使用して、クラスター内の特定のリソースのアクセス許可が管理されます。 次の手順で、HDInsight 3.6 内で Hive に対してデプロイした Ranger ポリシーを HDInsight 4.0 に移行できます。
+HDInsight は、必要に応じて、HDInsight Enterprise セキュリティ パッケージ (ESP) を使用して Azure Active Directory と統合されます。 ESP では、Kerberos と Apache Ranger を使用して、クラスター内の特定のリソースのアクセス許可が管理されます。 次の手順で、HDInsight 3.6 内で Hive に対してデプロイした Ranger ポリシーを HDInsight 4.0 に移行できます。
 
 1. HDInsight 3.6 クラスター内の Ranger Service Manager パネルに移動します。
 2. **HIVE** という名前のポリシーに移動し、json ファイルにポリシーをエクスポートします。
@@ -189,29 +121,17 @@ HDInsight 3.6 以降では、HDInsight は、HDInsight Enterprise セキュリ�
 4. HDInsight 4.0 クラスター内の **Ranger Service Manager** パネルに移動します。
 5. **HIVE** という名前のポリシーに移動し、手順 2 からの ranger ポリシーの json をインポートします。
 
-## <a name="check-compatibility-and-modify-codes-as-needed-in-test-app"></a>互換性を確認し、テスト アプリで必要に応じてコードを変更する
+## <a name="hive-changes-in-hdinsight-40-that-may-require-application-changes"></a>アプリケーションの変更が必要になる場合がある HDInsight 4.0 での Hive の変更点
 
-既存のプログラムやクエリなどのワークロードを移行する場合は、リリース ノートとドキュメントで変更点を確認し、必要に応じて変更を適用してください。 HDInsight 3.6 クラスターで共有の Spark と Hive メタストアが使用されている場合は、[Hive Warehouse Connector を使用した追加の構成](./apache-hive-warehouse-connector.md)が必要です。
+* Spark と Hive の間で ACID テーブル用にメタストアを共有する方法については、[Hive Warehouse Connector を使用した追加の構成](./apache-hive-warehouse-connector.md)に関する記事を参照してください。
 
-## <a name="deploy-new-app-for-production"></a>運用環境用の新しいアプリをデプロイする
+* HDInsight 4.0 では、[ストレージ ベースの承認](https://cwiki.apache.org/confluence/display/Hive/Storage+Based+Authorization+in+the+Metastore+Server)が使用されます。 ファイルのアクセス許可を変更したり、Hive とは別のユーザーとしてフォルダーを作成したりすると、ストレージのアクセス許可に基づいて Hive エラーが発生する可能性があります。 修正するには、ユーザーに `rw-` アクセス権を付与します。 「[HDFS アクセス許可ガイド](https://hadoop.apache.org/docs/r2.7.1/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)」を参照してください。
 
-新しいクラスターに切り替えるには、たとえば新しいクライアント アプリケーションをインストールし、それを新しい運用環境として使用するか、または既存のクライアント アプリケーションをアップグレードして HDInsight 4.0 に切り替えることができます。
+* `HiveCLI` が `Beeline` に置き換えられます。
 
-## <a name="switch-hdinsight-40-to-the-production"></a>HDInsight 4.0 を運用環境に切り替える
+その他の変更内容については、[HDInsight 4.0 に関するお知らせ](../hdinsight-version-release.md)を参照してください。
 
-テスト中にメタストアに差異が生じた場合は、切り替えの直前に変更を更新する必要があります。 この場合、メタストアのエクスポートとインポートを実行してから、もう一度アップグレードすることができます。
-
-## <a name="remove-the-old-production"></a>以前の運用環境を削除する
-
-リリースが完了し、完全に動作していることを確認したら、バージョン3.6 と前のメタストアを削除できます。 環境を削除する前に、すべてが移行されていることを確認してください。
-
-## <a name="query-execution-across-hdinsight-versions"></a>HDInsight バージョン間でのクエリの実行
-
-HDInsight 3.6 クラスター内で Hive/LLAP クエリを実行し、デバッグする方法は 2 つあります。 HiveCLI ではコマンドライン エクスペリエンスが提供され、[Tez ビューと Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md)では GUI ベースのワークフローが提供されます。
-
-HDInsight 4.0 では、Hive CLI は BeeLine に置き換えられています。 Tez ビューと Hive ビューには、GUI ベースのワークフローが用意されています。 HiveCLI は Hiveserver 1 用の Thrift クライアントであり、Beeline は Hiveserver 2 へのアクセスを提供する JDBC クライアントです。 Beeline は、その他の JDBC 互換のデータベース エンドポイントへの接続にも使用できます。 Beeline は、HDInsight 4.0 上ですぐに使用可能で、インストールは必要ありません。
-
-## <a name="next-steps"></a>次のステップ
+## <a name="further-reading"></a>関連項目
 
 * [HDInsight 4.0 のお知らせ](../hdinsight-version-release.md)
 * [HDInsight 4.0 の詳細情報](https://azure.microsoft.com/blog/deep-dive-into-azure-hdinsight-4-0/)

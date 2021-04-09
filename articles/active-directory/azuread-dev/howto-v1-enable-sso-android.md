@@ -16,10 +16,10 @@ ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev, devx-track-java
 ROBOTS: NOINDEX
 ms.openlocfilehash: 9d1faf7aed5cf4c4975925c7a56d169dc99a7bd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87313593"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>方法: Android で ADAL を使用してクロス アプリ SSO を有効にする
@@ -43,7 +43,7 @@ Microsoft の ID プラットフォームと SDK により、独自のアプリ�
 
 ### <a name="identity-brokers"></a>Identity ブローカー
 
-Microsoft は、すべてのモバイル プラットフォーム用に、さまざまなベンダーのアプリケーション間で資格情報をブリッジできるようにするアプリケーションを提供しています。このアプリケーションでは、資格情報を検証する安全な単一の場所を必要とする拡張機能を利用できます。 これらは**ブローカー**と呼ばれています。
+Microsoft は、すべてのモバイル プラットフォーム用に、さまざまなベンダーのアプリケーション間で資格情報をブリッジできるようにするアプリケーションを提供しています。このアプリケーションでは、資格情報を検証する安全な単一の場所を必要とする拡張機能を利用できます。 これらは **ブローカー** と呼ばれています。
 
 iOS および Android では、これらのブローカーはダウンロード可能なアプリケーションを通じて提供され、ユーザーが個別にインストールするか、従業員のデバイスの一部またはすべてを管理している会社がデバイスにプッシュします。 ブローカーは、IT 管理者の構成に基づいて、一部のアプリケーションまたはデバイス全体のセキュリティの管理をサポートします。 Windows では、この機能はオペレーティング システムに組み込まれているアカウント セレクターによって提供されます。これは、技術的には Web 認証ブローカーと呼ばれています。
 

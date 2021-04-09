@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: c83a1050035fc40912d0242a9c5fe2498b299ebd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 56aa7c41934506c7de0c8d5cebe84eb5a6bc2164
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517958"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174616"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-my-ibisworld"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と My IBISWorld の統合
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* My IBISWorld では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* My IBISWorld では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* My IBISWorld では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* My IBISWorld では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 * My IBISWorld を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 > [!NOTE]
@@ -54,7 +54,7 @@ Azure AD への My IBISWorld の統合を構成するには、ギャラリーか
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **My IBISWorld** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**My IBISWorld**」と入力します。
 1. 結果のパネルから **[My IBISWorld]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -83,26 +83,26 @@ My IBISWorld で Azure AD SSO を構成してテストするには、次の構�
 
 1. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
 
-1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
-
-    **[サインオン URL]** テキスト ボックスに、URL として「`https://my.ibisworld.com/account/login`」と入力します。
+   * **SP** Initiated モードでアプリケーションを構成するには、IBISWorld から URL を要求し、 **[サインオン URL]** テキスト ボックスにその URL を入力します。
+   
+   * **IdP** Initiated モードでアプリケーションを構成するには、 **[リレー状態]** テキスト ボックスにその URL `RPID=http://fedlogin.ibisworld.com` を入力します。 **[サインオン URL]** テキスト ボックスは空のままにします。
 
 1. **[保存]** をクリックします。
 
 1. My IBISWorld アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
-    ![image](common/default-attributes.png)
+   ![image](common/default-attributes.png)
 
 1. その他に、My IBISWorld アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
     
-    | 名前 | ソース属性|
-    | --------------- | --------- |
-    | department | user.department |
-    | language | user.preferredlanguage |
-    | phone | user.telephonenumber |
-    | title | user.jobtitle |
-    | userid | user.employeeid |
-    | country | user.country |
+   | 名前 | ソース属性|
+   | --------------- | --------- |
+   | department | user.department |
+   | language | user.preferredlanguage |
+   | phone | user.telephonenumber |
+   | title | user.jobtitle |
+   | userid | user.employeeid |
+   | country | user.country |
 
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
@@ -139,7 +139,7 @@ My IBISWorld で Azure AD SSO を構成してテストするには、次の構�
 
 ## <a name="configure-my-ibisworld-sso"></a>My IBISWorld の SSO の構成
 
-**My IBISWorld** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [My IBISWorld のサポート チーム](mailto:support@ibisworld.freshdesk.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**My IBISWorld** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [My IBISWorld のサポート チーム](mailto:support@ibisworld.freshdesk.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-my-ibisworld-test-user"></a>My IBISWorld のテスト ユーザーの作成
 

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/13/2020
 ms.openlocfilehash: 475ad3de8e0a7636a14949d4fcd8a5ec2812ad5e
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93421126"
 ---
 # <a name="web-service-input-and-web-service-output-modules"></a>[Web Service Input]\(Web サービスの入力\) モジュールと [Web Service Output]\(Web サービスの出力\) モジュール

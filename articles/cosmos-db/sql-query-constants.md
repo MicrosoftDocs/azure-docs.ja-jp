@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: b0973dca980b65b85ac66cc1b3c9ed45f0f9c779
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93339206"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB の SQL クエリ定数  
@@ -25,11 +25,11 @@ ms.locfileid: "93339206"
 |-|-|  
 |**Undefined**|単一の値: **undefined**|  
 |**Null**|単一の値: **Null**|  
-|**Boolean**|値: **false** 、 **true** 。|  
-|**Number**|倍精度浮動小数点数、IEEE 754 標準。|  
+|**Boolean**|値: **false**、**true**。|  
+|**数値**|倍精度浮動小数点数、IEEE 754 標準。|  
 |**String**|0 個以上の Unicode 文字のシーケンス。 文字列は、一重引用符または二重引用符で囲む必要があります。|  
-|**Array**|0 個以上の要素のシーケンス。 各要素には、 **Undefined** を除く、任意のスカラー データ型の値を指定できます。|  
-|**Object**|0 個以上の名前/値ペアの順序なしのセット。 名前は Unicode 文字列で、値は **Undefined** 以外の任意のスカラー データ型を指定できます。|  
+|**配列**|0 個以上の要素のシーケンス。 各要素には、**Undefined** を除く、任意のスカラー データ型の値を指定できます。|  
+|**オブジェクト**|0 個以上の名前/値ペアの順序なしのセット。 名前は Unicode 文字列で、値は **Undefined** 以外の任意のスカラー データ型を指定できます。|  
   
 ## <a name="syntax"></a><a name="bk_syntax"></a>構文
   

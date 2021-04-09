@@ -10,15 +10,15 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: fce098767fffd36376399bbd9396699e3d9fbfd3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392080"
 ---
 # <a name="deploy-azure-sql-edge-with-docker"></a>Docker を使用して Azure SQL Edge をデプロイする
 
-このクイックスタートでは、Docker を使用することで Azure SQL Edge のコンテナー イメージをプルして実行します。 次に、 **sqlcmd** と接続して最初のデータベースを作成し、クエリを実行します。
+このクイックスタートでは、Docker を使用することで Azure SQL Edge のコンテナー イメージをプルして実行します。 次に、**sqlcmd** と接続して最初のデータベースを作成し、クエリを実行します。
 
 このイメージは、Ubuntu 18.04 に基づく Azure SQL Edge で構成されています。 イメージは Linux の Docker エンジン 1.8+ または Mac/Windows 用 Docker で使用することができます。
 
@@ -69,7 +69,7 @@ ms.locfileid: "93392080"
 
     | パラメーター | 説明 |
     |-----|-----|
-    | **-e "ACCEPT_EULA=Y"** |  **ACCEPT_EULA** 変数を任意の値に設定し、 [使用許諾契約書](https://go.microsoft.com/fwlink/?linkid=2139274)の承諾を確定します。 Azure SQL Edge イメージに必要な設定。 |
+    | **-e "ACCEPT_EULA=Y"** |  **ACCEPT_EULA** 変数を任意の値に設定し、[使用許諾契約書](https://go.microsoft.com/fwlink/?linkid=2139274)の承諾を確定します。 Azure SQL Edge イメージに必要な設定。 |
     | **-e "MSSQL_SA_PASSWORD=yourStrong(!)Password"** | 8 文字以上の、[Azure SQL Edge のパスワード要件](/sql/relational-databases/security/password-policy)を満たす強力なパスワードを指定します。 Azure SQL Edge イメージに必要な設定。 |
     | **-p 1433:1433** | ホスト環境の TCP ポート (最初の値) とコンテナーの TCP ポート (2 番目の値) をマップします。 この例では、コンテナー内では Azure SQL Edge によって TCP 1433 がリッスンされており、これがホスト上ではポート 1433 に公開されます。 |
     | **--name azuresqledge** | ランダムに生成された名前ではなく、コンテナーのカスタム名を指定します。 複数のコンテナーを実行する場合は、この同じ名前を再利用することはできません。 |
@@ -134,11 +134,11 @@ ms.locfileid: "93392080"
    > [!TIP]
    > コマンド ラインでパスワードを省略すると、入力を求められます。
 
-3. 成功すると、 **sqlcmd** コマンド プロンプト `1>` が表示されます。
+3. 成功すると、**sqlcmd** コマンド プロンプト `1>` が表示されます。
 
 ## <a name="create-and-query-data"></a>データの作成とクエリ
 
-以下のセクションでは、 **sqlcmd** と Transact-SQL を使用して新しいデータベースを作成し、データを追加して簡単なクエリを実行します。
+以下のセクションでは、**sqlcmd** と Transact-SQL を使用して新しいデータベースを作成し、データを追加して簡単なクエリを実行します。
 
 ### <a name="create-a-new-database"></a>新しいデータベースの作成
 

@@ -3,12 +3,12 @@ title: Azure Functions ランタイムに到達できないエラーのトラブ
 description: 無効なストレージ アカウントのトラブルシューティング方法について説明します。
 ms.topic: article
 ms.date: 09/05/2018
-ms.openlocfilehash: 9f6592b6d5ef88127a9dfca1e868564be0aa4ed5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: a62001cedd695badc72eb76c93ea9c3cb4507403
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217296"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499630"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>"Azure Functions ランタイムに到達できない" エラーのトラブルシューティング
 
@@ -36,7 +36,7 @@ Azure portal でご自分のストレージ アカウントを検索して、ま
 
 * 必須:
     * [`AzureWebJobsStorage`](./functions-app-settings.md#azurewebjobsstorage)
-* 従量課金および Premium プランの関数には必須:
+* Premium プランの関数には必須:
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](./functions-app-settings.md)
     * [`WEBSITE_CONTENTSHARE`](./functions-app-settings.md)
 

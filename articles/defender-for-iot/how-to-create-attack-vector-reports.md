@@ -1,18 +1,14 @@
 ---
 title: 攻撃ベクトル レポートの作成
 description: 攻撃ベクトル レポートには、悪用可能なデバイスの脆弱性チェーンがグラフィカルに表示されています。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/17/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: e9960fc2120add845be8feda9bafdef95a9b5f94
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 6c178f379561ca4a572a7ae8f556ae6753d6e2be
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522327"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784375"
 ---
 # <a name="attack-vector-reporting"></a>攻撃ベクトル レポートの作成
 
@@ -69,7 +65,7 @@ ms.locfileid: "100522327"
 
    :::image type="content" source="media/how-to-generate-reports/sample-attack-vectors.png" alt-text="攻撃ベクトル。":::
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
 [攻撃ベクトル レポートの作成](how-to-create-attack-vector-reports.md)
 

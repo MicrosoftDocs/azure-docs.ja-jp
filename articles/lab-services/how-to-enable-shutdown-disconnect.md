@@ -4,10 +4,10 @@ description: リモート デスクトップ接続が切断されたときの VM
 ms.topic: article
 ms.date: 10/01/2020
 ms.openlocfilehash: 8f9080f3b7b762d3b9fa448a903a4167cd2cec4a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96433938"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab"></a>ラボで VM の自動シャットダウンを構成する

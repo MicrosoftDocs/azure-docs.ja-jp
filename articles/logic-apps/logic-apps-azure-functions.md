@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: 7df9f7d072af7c5f6523fd1be0432ce51954fa10
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98791881"
 ---
 # <a name="call-functions-from-azure-logic-apps"></a>Azure Logic Apps から関数を呼び出す

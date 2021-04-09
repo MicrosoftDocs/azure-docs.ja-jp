@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.openlocfilehash: 6290d89ed0ee539b4df4c2c8bc9070097da98c81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91447348"
 ---
 # <a name="upgrade-a-virtual-wan-from-basic-to-standard"></a>Virtual WAN を Basic から Standard にアップグレードする

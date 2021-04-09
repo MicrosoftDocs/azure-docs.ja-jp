@@ -4,10 +4,10 @@ description: PowerShell を使用して、Data Protection Manager (DPM) 用に M
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.openlocfilehash: 176cbffe5152462055c4ffdb2367cf9c0ab97c1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90968300"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>PowerShell を使用して Data Protection Manager (DPM) サーバーに Microsoft Azure Backup をデプロイおよび管理する手順
@@ -105,7 +105,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
 Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。 最新バージョンのインストーラーは、 [Microsoft ダウンロード センター](https://aka.ms/azurebackup_agent) または Recovery Services コンテナーの [ダッシュボード] ページから入手することができます。 インストーラーを、`C:\Downloads\*` などの、簡単にアクセスできる場所に保存します。
 
-エージェントをインストールするには、 **DPM サーバー**の管理者特権の PowerShell コンソールで、次のコマンドを実行します。
+エージェントをインストールするには、 **DPM サーバー** の管理者特権の PowerShell コンソールで、次のコマンドを実行します。
 
 ```powershell
 MARSAgentInstaller.exe /q
@@ -247,7 +247,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 $PG = New-DPMProtectionGroup -DPMServerName " TestingServer " -Name "ProtectGroup01"
 ```
 
-前記のコマンドレットは、 *ProtectGroup01*という名前の保護グループを作成します。 既存の保護グループを後で変更して、バックアップを Azure クラウドに追加することもできます。 ただし、新しいか既存かを問わず保護グループに変更を加えるには、 *Get-DPMModifiableProtectionGroup* コマンドレットを使って [変更可能な](/powershell/module/dataprotectionmanager/get-dpmmodifiableprotectiongroup) オブジェクトのハンドルを取得する必要があります。
+前記のコマンドレットは、 *ProtectGroup01* という名前の保護グループを作成します。 既存の保護グループを後で変更して、バックアップを Azure クラウドに追加することもできます。 ただし、新しいか既存かを問わず保護グループに変更を加えるには、 *Get-DPMModifiableProtectionGroup* コマンドレットを使って [変更可能な](/powershell/module/dataprotectionmanager/get-dpmmodifiableprotectiongroup) オブジェクトのハンドルを取得する必要があります。
 
 ```powershell
 $MPG = Get-ModifiableProtectionGroup $PG

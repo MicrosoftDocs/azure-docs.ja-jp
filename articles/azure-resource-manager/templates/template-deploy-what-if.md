@@ -3,14 +3,14 @@ title: テンプレート デプロイの what-if
 description: Azure Resource Manager テンプレートをデプロイする前に、リソースがどのような変更されるかを確認します。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/09/2021
 ms.author: tomfitz
-ms.openlocfilehash: 8122fa5c00a61017b5f358a112c94a5299539cee
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 3f35f00e5fcd26c7aa4bb685dc80f48eabb88b6d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591626"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102547936"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM テンプレート デプロイの What-If 操作
 
@@ -391,8 +391,6 @@ what-if 操作は、Azure SDK を介して使用できます。
 
 ## <a name="next-steps"></a>次のステップ
 
+- パイプラインで What-If 操作を使用するには、「[Test ARM templates with What-If in a pipeline](https://4bes.nl/2021/03/06/test-arm-templates-with-what-if/)」 (パイプラインで What-If を使用して ARM テンプレートをテストする) を参照してください。
 - what-if 操作から正しくない結果が表示された場合は、[https://aka.ms/whatifissues](https://aka.ms/whatifissues) で問題を報告してください。
 - what if の使用に関して説明している Microsoft Learn モジュールについては、「[what-if と ARM テンプレート テスト ツールキットを使用して変更をプレビューし、Azure リソースを検証する](/learn/modules/arm-template-test/)」を参照してください。
-- Azure PowerShell を使用してテンプレートをデプロイするには、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。
-- Azure CLI を使用してテンプレートをデプロイするには、「[ARM テンプレートと Azure CLI を使用したリソースのデプロイ](deploy-cli.md)」を参照してください。
-- REST を使用してテンプレートをデプロイするには、「[ARM テンプレートと Resource Manager REST API を使用したリソースのデプロイ](deploy-rest.md)」を参照してください。

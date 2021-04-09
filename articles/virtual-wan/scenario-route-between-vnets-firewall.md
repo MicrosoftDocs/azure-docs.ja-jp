@@ -10,17 +10,17 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: d083607782f96744ecbd7d23976f77ee53fec49d
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94515571"
 ---
 # <a name="scenario-azure-firewall---custom"></a>シナリオ:Azure Firewall - カスタム
 
 Virtual WAN の仮想ハブ ルーティングを使用する場合、多くのシナリオを利用できます。 このシナリオでは、VNet 間ではトラフィックを直接ルーティングする一方、"VNet 対インターネットまたはブランチ" と "ブランチ対 VNet" のトラフィック フローには Azure Firewall を使用することを目標とします。
 
-## <a name="design"></a><a name="design"></a>設計
+## <a name="design"></a><a name="design"></a>デザイン
 
 必要なルート テーブルの数を明らかにするには、各セルで接続元 (行) が接続先 (列) と通信できるかどうかを表す、接続マトリックスを作成します。 このシナリオの接続マトリックスは簡易的なものですが、他のシナリオの一貫性を持たせるために参照することができます。
 

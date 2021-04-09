@@ -13,10 +13,10 @@ ms.date: 01/26/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
 ms.openlocfilehash: b842934ea6bb458a59a53ea7068aa9ece98aacf1
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98796161"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Azure Data Factory を使用したデータ インジェスト

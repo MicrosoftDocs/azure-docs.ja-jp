@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Cerner Central のユーザー プロビジョニング - Azure AD
+title: 'チュートリアル: Cerner Central のユーザー プロビジョニング - Azure AD'
 description: Azure Active Directory を構成して、Cerner Central のリストに自動でユーザーをプロビジョニングする方法を説明します。
 services: active-directory
 author: ArvindHarinder1
@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.openlocfilehash: 1f82cab1172e7293e2a5910d35280eefb30ed49e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94357455"
 ---
-# <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>チュートリアル:Cerner Central を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>チュートリアル: Cerner Central を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure AD から Cerner Central のユーザー リストにユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除するために Cerner Central と Azure AD で実行する必要がある手順について説明します。
 
@@ -80,13 +80,13 @@ Cerner Central にユーザー アカウントをプロビジョニングする�
 
    * 運用: https://cernercentral.com/system-accounts/
 
-4. 最後に、Cerner のサンドボックスと運用環境の両方のユーザー リスト領域 ID を取得して構成を完了する必要があります。 取得方法については、 https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM をご覧ください。 
+4. 最後に、Cerner のサンドボックスと運用環境の両方のユーザー リスト領域 ID を取得して構成を完了する必要があります。 取得方法については、https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM をご覧ください。 
 
-5. この手順から、Azure AD を構成して Cerner にユーザー アカウントをプロビジョニングします。 [Azure Portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory] > [エンタープライズ アプリ] > [すべてのアプリケーション]** セクションに移動します。
+5. この手順から、Azure AD を構成して Cerner にユーザー アカウントをプロビジョニングします。 [Azure Portal](https://portal.azure.com) にサインインし、**[Azure Active Directory] > [エンタープライズ アプリ] > [すべてのアプリケーション]** セクションに移動します。
 
-6. シングル サインオンのために Cerner Central を既に構成している場合は、検索フィールドで Cerner Central のインスタンスを検索します。 または、 **[追加]** を選択して、アプリケーション ギャラリーで **[Cerner Central]** を検索します。 検索結果から Cerner Central を選択して、アプリケーションの一覧に追加します。
+6. シングル サインオンのために Cerner Central を既に構成している場合は、検索フィールドで Cerner Central のインスタンスを検索します。 または、**[追加]** を選択して、アプリケーション ギャラリーで **[Cerner Central]** を検索します。 検索結果から Cerner Central を選択して、アプリケーションの一覧に追加します。
 
-7. Cerner Central のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
+7. Cerner Central のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
 
 8. **[プロビジョニング モード]** を **[自動]** に設定します。
 
@@ -100,7 +100,7 @@ Cerner Central にユーザー アカウントをプロビジョニングする�
     > 
     > 運用: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
-   * **[シークレット トークン]** フィールドに、手順 3 で生成した OAuth ベアラー トークンを入力し、 **[テスト接続]** をクリックします。
+   * **[シークレット トークン]** フィールドに、手順 3 で生成した OAuth ベアラー トークンを入力し、**[テスト接続]** をクリックします。
 
    * ポータルの右上に成功通知が表示されます。
 
@@ -110,7 +110,7 @@ Cerner Central にユーザー アカウントをプロビジョニングする�
 
 1. **[属性マッピング]** セクションで、Azure AD から Cerner Central に同期されるユーザーとグループの属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Cerner Central のユーザー アカウントおよびグループとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
 
-1. Cerner Central に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+1. Cerner Central に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
 1. **[保存]** をクリックします。
 
@@ -121,7 +121,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [Cerner Central: Azure AD を使用して ID データを公開する](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
-* [チュートリアル:Cerner Central を構成して Azure Active Directory を使ったシングル サインオンに対応する](cernercentral-tutorial.md)
+* [チュートリアル: Cerner Central を構成して Azure Active Directory を使ったシングル サインオンに対応する](cernercentral-tutorial.md)
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 

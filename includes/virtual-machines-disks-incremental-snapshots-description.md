@@ -9,10 +9,10 @@ ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 39750a86ccf781a10109e299e27a55a03173acb6
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98901024"
 ---
 増分スナップショットは、マネージド ディスクの特定の時点のバックアップであり、取得時に、最後のスナップショット以降の変更のみで構成されます。 増分スナップショットからディスクを復元する場合、増分スナップショットの取得時に、システムによってディスクの特定の時点のバックアップを表す完全なディスクが再構築されます。 マネージド ディスク スナップショットに追加されたこの新しい機能は、コスト効率の向上に役立つ可能性があります。ユーザーが選択しない限り、スナップショットを取得するたびにディスク全体を保存する必要がなくなるからです。 増分スナップショットは、フル スナップショットと同様、完全なマネージド ディスクまたはフル スナップショットのいずれを作成する場合にも使用できます。

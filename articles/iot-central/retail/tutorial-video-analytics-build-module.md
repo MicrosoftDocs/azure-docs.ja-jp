@@ -9,10 +9,10 @@ ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
 ms.openlocfilehash: cbff2e774fae1f71624aa3cdbd83bfb21e3a9586
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101721465"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>チュートリアル:ライブ ビデオ分析ゲートウェイ モジュールの変更とビルド

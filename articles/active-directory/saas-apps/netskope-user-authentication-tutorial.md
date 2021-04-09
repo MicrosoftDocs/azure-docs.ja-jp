@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 1ae9e39f5a23725b17451d7144c8304194d2a1d0
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92514369"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-user-authentication"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Netskope User Authentication の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Netskope User Authentication では、 **SP および IDP によって開始される SSO** がサポートされます
+* Netskope User Authentication では、**SP および IDP によって開始される SSO** がサポートされます
 
 ## <a name="adding-netskope-user-authentication-from-the-gallery"></a>ギャラリーからの Netskope User Authentication の追加
 
@@ -49,7 +49,7 @@ Azure AD への Netskope User Authentication の統合を構成するには、�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Netskope User Authentication** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Netskope User Authentication**」と入力します。
 1. 結果のパネルから **[Netskope User Authentication]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 

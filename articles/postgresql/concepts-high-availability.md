@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
 ms.openlocfilehash: aa9f38b2cefa60a0c3341c1317cf45fbcb735301
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92485445"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Azure Database for PostgreSQL - Single Server での高可用性
@@ -49,7 +49,7 @@ Azure Database for PostgreSQL は、計画的なダウンタイム操作中に�
 計画外のダウンタイムは、基になるハードウェアの障害、ネットワークの問題、ソフトウェアのバグなど、予期しない障害の結果として発生する可能性があります。 データベース サーバーが予期せず停止した場合は、新しいデータベース サーバーが数秒で自動的にプロビジョニングされます。 リモート ストレージは、新しいデータベース サーバーに自動的に接続されます。 PostgreSQL エンジンは、WAL およびデータベース ファイルを使用して復旧操作を実行し、データベース サーバーを開いてクライアントが接続できるようにします。 コミットされていないトランザクションは失われ、アプリケーションが再試行する必要があります。 計画外のダウンタイムは回避できませんが、Azure Database for PostgreSQL では、データベース サーバーとストレージ レイヤーの両方で、ユーザーの介入を必要とすることなく自動的に復旧操作を実行することでダウンタイムを軽減します。 
 
 
-:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="Azure PostgreSQL でのエラスティック スケーリングのビュー":::
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="Azure PostgreSQL での高可用性のビュー":::
 
 1. 高速スケーリング機能を備えた Azure PostgreSQL サーバー。
 2. プロキシとして機能し、クライアント接続を適切なデータベース サーバーにルーティングするゲートウェイ

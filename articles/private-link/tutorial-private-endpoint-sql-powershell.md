@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure プライベート エンドポイントを使用して Azure SQL サーバーに接続する - PowerShell
+title: 'チュートリアル: Azure プライベート エンドポイントを使用して Azure SQL サーバーに接続する - PowerShell'
 description: このチュートリアルでは、Azure PowerShell を使用して、Azure SQL サーバーとプライベート エンドポイントを作成する方法について説明します
 services: private-link
 author: asudbring
@@ -7,14 +7,15 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: allensu
-ms.openlocfilehash: 7448e003771bea1e235d4e0776ebce3cb1beae17
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8668bdb9dc391582234bf5741c0dd287d026defd
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544090"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102554940"
 ---
-# <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-powershell"></a>チュートリアル - Azure プライベート エンドポイントを使用して Azure SQL サーバーに接続する - Azure PowerShell
+# <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-powershell"></a>チュートリアル: Azure プライベート エンドポイントを使用して Azure SQL サーバーに接続する - Azure PowerShell
 
 Azure プライベート エンドポイントは、Azure における Private Link の基本的な構成要素です。 仮想マシン (VM) などの Azure リソースと Private Link リソースとの非公開での通信が可能になります。
 
@@ -337,6 +338,6 @@ New-AzPrivateDnsZoneGroup @parameters4
 
 仮想マシンを使用して、プライベート エンドポイントを介した SQL サーバーへの接続を安全にテストしました。
 
-Private Link サービスの作成方法を確認します。
+次のステップとして、**Azure SQL データベースへのプライベート接続を使用する Web アプリ** のアーキテクチャ シナリオを確認します。このシナリオでは、仮想ネットワークの外部にある Web アプリケーションをデータベースのプライベート エンドポイントに接続します。
 > [!div class="nextstepaction"]
-> [Private Link サービスを作成する](create-private-link-service-portal.md)
+> [Azure SQL データベースへのプライベート接続を使用する Web アプリ](/azure/architecture/example-scenario/private-web-app/private-web-app)

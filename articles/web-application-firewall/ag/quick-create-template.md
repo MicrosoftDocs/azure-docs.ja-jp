@@ -10,10 +10,10 @@ ms.date: 09/16/2020
 ms.author: victorh
 ms.custom: subject-armqs
 ms.openlocfilehash: 4c5d5c4cafee9402e2afd7ddc047fd3b68e84540
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92091323"
 ---
 # <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Application Gateway に Azure WAF v2 を作成する

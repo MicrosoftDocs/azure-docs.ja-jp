@@ -10,10 +10,10 @@ ms.custom: include file
 ms.topic: include
 ms.date: 12/11/2020
 ms.openlocfilehash: 09dd6e9a9d69797c2c33270d1620e861a052efe2
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97505122"
 ---
 モデルをホストするために使用するコンピューティング先は、デプロイされているエンドポイントのコストと可用性に影響を及ぼします。 次のテーブルを使用して、適切なコンピューティング先を選択します。

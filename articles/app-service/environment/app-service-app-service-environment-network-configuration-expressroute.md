@@ -8,15 +8,15 @@ ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 3fa2677f7c71b118ec3f7da717e29d5879ee982b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88961824"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Azure ExpressRoute を使用した PowerApps 用の App Service Environment のネットワーク構成の詳細
 
-顧客は、[Azure ExpressRoute][ExpressRoute] 回線を自分の仮想ネットワーク インフラストラクチャに接続することで、オンプレミスのネットワークを Azure に拡張できます。 App Service 環境は、[仮想ネットワーク][virtualnetwork] インフラストラクチャのサブネットの中に作成されます。 App Service Environment で実行されるアプリは、ExpressRoute 接続でのみアクセスできる、バックエンド リソースに対する安全な接続を確立します。  
+顧客は、[Azure ExpressRoute][ExpressRoute] 回線を自分の仮想ネットワーク インフラストラクチャに接続することで、オンプレミスのネットワークを Azure に拡張できます。 App Service Environment は、[仮想ネットワーク][virtualnetwork] インフラストラクチャのサブネットの中に作成されます。 App Service Environment で実行されるアプリは、ExpressRoute 接続でのみアクセスできる、バックエンド リソースに対する安全な接続を確立します。  
 
 App Service Environment は以下のシナリオで作成できます。
 - Azure Resource Manager の仮想ネットワーク。
@@ -49,11 +49,11 @@ App Service Environment が正常に機能するには、次のネットワー�
 
 * 発信ネットワーク パスは、社内プロキシを経由したり、オンプレミスに強制的にトンネリングしたりすることができません。 これらのアクションにより、App Service Environment からの発信ネットワーク トラフィックの実質的な NAT アドレスが変わります。 App Service Environment の発信ネットワーク トラフィックの NAT アドレスを変更すると、多数のエンドポイントに対して接続エラーが発生します。 App Service Environment の作成は失敗します。 既存の App Service Environment は異常とマークされています。
 
-* App Service Environment に必要なポートへの受信ネットワーク アクセスを許可する必要があります。 詳細については、「[App Service 環境への受信トラフィックを制御する方法][requiredports]」を参照してください。
+* App Service Environment に必要なポートへの受信ネットワーク アクセスを許可する必要があります。 詳細については、「[App Service Environment への受信トラフィックを制御する方法][requiredports]」を参照してください。
 
 DNS 要件を満たすには、仮想ネットワークに対して有効な DNS インフラストラクチャが構成され保守されていることを確認します。 App Service Environment の作成後に DNS 構成が変わった場合、開発者は強制的に App Service Environment から新しい DNS 構成を選択することができます。 [Azure portal][NewPortal] の App Service Environment の管理にある **[再起動]** アイコンを使用することで、ローリングする環境の再起動をトリガーできます。 再起動により、環境から新しい DNS 構成が選択されます。
 
-受信ネットワーク アクセスの要件を満たすには、App Service Environment のサブネットに対して[ネットワーク セキュリティ グループ (NSG)][NetworkSecurityGroups] を構成します。 NSG は、[App Service 環境への受信トラフィックを制御する][requiredports]ために必要なアクセスを許可します。
+受信ネットワーク アクセスの要件を満たすには、App Service Environment のサブネットに対して[ネットワーク セキュリティ グループ (NSG)][NetworkSecurityGroups] を構成します。 NSG は、[App Service Environment への受信トラフィックを制御する][requiredports]ために必要なアクセスを許可します。
 
 ## <a name="outbound-network-connectivity"></a>発信ネットワーク接続
 
@@ -131,7 +131,7 @@ DNS 要件を満たすには、仮想ネットワークに対して有効な DNS
 
 仮想マシンをサブネットにデプロイし、以下の条件を確認します。
 
-* この記事に記載されている Azure エンドポイントと Azure 以外のエンドポイントに対する発信トラフィックは、ExpressRoute 回線を**フローしません**。 サブネットからの発信トラフィックがオンプレミスで強制トンネリングされると、App Service Environment の作成は常に失敗します。
+* この記事に記載されている Azure エンドポイントと Azure 以外のエンドポイントに対する発信トラフィックは、ExpressRoute 回線を **フローしません**。 サブネットからの発信トラフィックがオンプレミスで強制トンネリングされると、App Service Environment の作成は常に失敗します。
 * この記事に記載されているエンドポイントの DNS 参照は、すべて正しく解決されます。 
 
 構成手順を完了してルートを確認したら、仮想マシンを削除します。 サブネットは、App Service Environment の作成時には "空" である必要があります。

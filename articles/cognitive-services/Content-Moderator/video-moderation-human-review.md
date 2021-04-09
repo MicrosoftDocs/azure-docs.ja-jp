@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: pafarley
 ms.openlocfilehash: 05ece4d8ea24fb9da106ec3daa2cc1a63706dab9
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96853500"
 ---
 # <a name="video-moderation-with-the-review-tool"></a>レビュー ツールによるビデオ モデレーション

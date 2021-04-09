@@ -4,10 +4,10 @@ description: Azure Active Directory のテナント、ユーザー、および�
 ms.date: 01/14/2021
 ms.topic: conceptual
 ms.openlocfilehash: d78828cc739030f8e456c64885d77ddf59dd13fb
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98233918"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Azure Lighthouse のシナリオにおけるテナント、ユーザー、ロール

@@ -3,7 +3,7 @@ title: REST を使用した Azure Media Services アカウントへのファイ�
 description: REST を使用してアセットを作成し、アップロードすることによって、Media Services にメディア コンテンツを取り込む方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 49863bec4cbd367b6b309ef5a79e7287cb53ee5b
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 9f27a427df07302840ce719d35c7876f9dc17dbf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042972"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103012940"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>REST を使用して Media Services アカウントにファイルをアップロードする
 
@@ -49,14 +49,14 @@ Media Services で、デジタル ファイルを資産にアップロードし�
 - [Azure Portal を使用して Azure Media Services アカウントを作成](media-services-portal-create-account.md)します。
 - [AAD 認証による Azure Media Services API へのアクセスの概要](media-services-use-aad-auth-to-access-ams-api.md)に関する記事を確認してください。
 - また、詳細については、「[Azure AD 認証を使用して REST で Media Services API にアクセスする](./media-services-rest-connect-with-aad.md)」の記事を確認してください。
-- 「 [Configure Postman for Media Services REST API calls](media-rest-apis-with-postman.md)」 (Media Services REST API 呼び出しの Postman の構成) に説明されているように、 **Postman** を構成してください。
+- 「[Configure Postman for Media Services REST API calls](media-rest-apis-with-postman.md)」 (Media Services REST API 呼び出しの Postman の構成) に説明されているように、**Postman** を構成してください。
 
 ## <a name="considerations"></a>考慮事項
 
 Media Services REST API を使用する場合は、次の点を考慮してください。
  
 * Media Services REST API を使用してエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。 <br/>このチュートリアルで使用される Postman コレクションでは、必要なすべてのヘッダーの設定に対応しています。
-* Media Services は、ストリーミング コンテンツ (たとえば、 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、 [パーセント エンコーディング予約文字](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 また、ファイル名拡張子で使用できる "." は 1 つのみです。
+* Media Services は、ストリーミング コンテンツ (たとえば、 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 また、ファイル名拡張子で使用できる "." は 1 つのみです。
 * 名前は 260 文字以内で指定する必要があります。
 * Media Services での処理についてサポートされている最大ファイル サイズには制限があります。 ファイル サイズの制限の詳細については、[こちら](media-services-quotas-and-limitations.md)の記事を参照してください。
 
@@ -68,7 +68,7 @@ Media Services REST API を使用する場合は、次の点を考慮してく�
 
 1. 接続の値を環境に追加します。 
 
-    [コレクション](postman-collection.md)に定義された操作の実行を開始する前に、 **MediaServices** [環境](postman-environment.md)に属するいくつかの値は、手動で設定する必要があります。
+    [コレクション](postman-collection.md)に定義された操作の実行を開始する前に、**MediaServices** [環境](postman-environment.md)に属するいくつかの値は、手動で設定する必要があります。
 
     最初の 5 つの変数の値を取得するには、「[Azure AD Authentication を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」をご覧ください。 
 
@@ -92,7 +92,7 @@ Media Services REST API を使用する場合は、次の点を考慮してく�
     ```
 4. **[Postman]** ウィンドウの左にある **[1 Get AAD Auth token]\(1 AAD Auth トークンの取得\)**  ->  **[Get Azure AD Token for Service Principal]\(サービス プリンシパルの Azure AD トークンの取得\)** をクリックします。
 
-    URL 部分には、 **AzureADSTSEndpoint** 環境変数が入力されます (このチュートリアルの初めの方で、コレクションをサポートする環境変数の値を設定しています)。
+    URL 部分には、**AzureADSTSEndpoint** 環境変数が入力されます (このチュートリアルの初めの方で、コレクションをサポートする環境変数の値を設定しています)。
 
     ![スクリーンショットで示されているのは、1. Get AAD Auth token - Get Azure AD Token for Service Principal\(1. AAD 認証トークンの取得 - サービス プリンシパルの Azure AD トークンの取得\) が Postman ウィンドウで選択され、Send\(送信\) ボタンが選択されていることです。](./media/media-services-rest-upload-files/postment-get-token.png)
 
@@ -128,7 +128,7 @@ Media Services REST API を使用する場合は、次の点を考慮してく�
 
 資産を作成するときに追加できるプロパティの 1 つは **Options** です。 次の暗号化オプションのいずれかを指定できます。 **[None]** (既定、暗号化は使用されない)、 **[StorageEncrypted]** (クライアント側のストレージ暗号化を使って事前に暗号化されたコンテンツに対応)、 **[CommonEncryptionProtected]** 、または **[EnvelopeEncryptionProtected]** 。 暗号化された資産がある場合は、配信ポリシーを構成する必要があります。 詳細については、「[資産配信ポリシーの構成](media-services-rest-configure-asset-delivery-policy.md)」をご覧ください。
 
-資産が暗号化されたら、 **ContentKey** を作成し、次の記事の説明に従ってその資産にリンクする必要があります: [ContentKey の作成方法](media-services-rest-create-contentkey.md)。 ファイルを資産にアップロードした後、 **AssetFile** エンティティの暗号化プロパティを **Asset** 暗号化中に取得した値に更新する必要があります。 **MERGE** HTTP 要求を使用して実行します。 
+資産が暗号化されたら、**ContentKey** を作成し、次の記事の説明に従ってその資産にリンクする必要があります:[ContentKey の作成方法](media-services-rest-create-contentkey.md)。 ファイルを資産にアップロードした後、**AssetFile** エンティティの暗号化プロパティを **Asset** 暗号化中に取得した値に更新する必要があります。 **MERGE** HTTP 要求を使用して実行します。 
 
 この例では、暗号化されていない資産を作成しています。 
 
@@ -186,13 +186,13 @@ SAS URL には次の形式があります。
 
 例として、Postman を使用して小規模な .mp4 ファイルをアップロードします。 Postman 経由でバイナリをアップロードする際は、ファイル サイズに制限がある場合があります。
 
-アップロード要求は、 **AzureMedia** コレクションの一部です。 
+アップロード要求は、**AzureMedia** コレクションの一部です。 
 
 新しい要求を作成して設定するには、次の手順を実行します。
 1. **+** キーを押して、新しい要求タブを作成します。
 2. **PUT** 操作を選択し、URL に **{{UploadURL}}** を貼り付けます。
 2. **[Authorization]\(承認\)** タブはそのままにしておきます( **[ベアラー トークン]** に設定しないでください)。
-3. **[ヘッダー]** タブで、次を指定します: **Key** : "x-ms-blob-type" および **Value** :"BlockBlob"。
+3. **[ヘッダー]** タブで、次を指定します:**Key**: "x-ms-blob-type" および **Value**:"BlockBlob"。
 2. **[本文]** タブで、 **[バイナリ]** をクリックします。
 4. **MediaFileName** 環境変数に指定した名前のファイルを選択します。
 5. **[送信]** をクリックします。
@@ -212,7 +212,7 @@ SAS URL には次の形式があります。
 
 ## <a name="validate"></a>検証
 
-ファイルが正常にアップロードされたことを検証するために、 [AssetFile](/rest/api/media/operations/assetfile) を照会して、 **ContentFileSize** (または他の詳細項目) と新しい資産で確認できる項目を比較します。 
+ファイルが正常にアップロードされたことを検証するために、[AssetFile](/rest/api/media/operations/assetfile) を照会して、**ContentFileSize** (または他の詳細項目) と新しい資産で確認できる項目を比較します。 
 
 たとえば、次の **GET** 操作では、資産ファイル (ここでは、BigBuckBunny.mp4 ファイル) のファイル データを取得します。 クエリでは、以前に設定した[環境変数](postman-environment.md)を使用しています。
 

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/10/2020
 ms.openlocfilehash: e279a7c9f6810ece482b043284f0be0719a3dafe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90908036"
 ---
 # <a name="edit-metadata-module"></a>Edit Metadata (メタデータの編集) モジュール
@@ -55,7 +55,7 @@ Edit Metadata (メタデータの編集) モジュールを使用して、デー
     + Edit Metadata (メタデータの編集) の操作後、列の型と値が変更されます。 Edit Metadata (メタデータの編集) を使用して列のデータ型をリセットすることで、いつでも元のデータ型を復元できます。  
 
     > [!NOTE]
-    > **DateTime 形式**は、[Python の組み込みの datetime 形式](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior)に従います。  
+    > **DateTime 形式** は、[Python の組み込みの datetime 形式](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior)に従います。  
     > 任意の数値の型を **DateTime** 型に変更する場合は、 **[DateTime Format]\(DateTime 形式\)** フィールドを空白のままにします。 現時点では、ターゲットのデータ形式を指定することはできません。
 
 1. **[Categorical]\(カテゴリ\)** オプションを選択して、選択した列内の値をカテゴリとして扱うことを指定します。
@@ -81,9 +81,9 @@ Edit Metadata (メタデータの編集) モジュールを使用して、デー
   
          すべての列は、最初はフィーチャーとして扱われます。 数値演算を実行するモジュールでは、数値列が変数として扱われることを防ぐためにこのオプションを使用する必要があります。
   
-    + **[Clear label]\(ラベルのクリア\)** :指定した列から**ラベル** メタデータを削除するには、このオプションを使用します。  
+    + **[Clear label]\(ラベルのクリア\)** :指定した列から **ラベル** メタデータを削除するには、このオプションを使用します。  
   
-    + **[Clear score]\(スコアのクリア\)** :指定した列から**スコア** メタデータを削除するには、このオプションを使用します。  
+    + **[Clear score]\(スコアのクリア\)** :指定した列から **スコア** メタデータを削除するには、このオプションを使用します。  
   
          現時点では、Azure Machine Learning で列をスコアとして明示的にマークすることはできません。 ただし、一部の操作の結果として、列が内部的にスコアとしてフラグ設定されます。 また、カスタム R モジュールでスコアの値が出力される場合があります。
 

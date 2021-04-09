@@ -4,10 +4,10 @@ description: ファイアウォール ルールを使用して、特定の IP �
 ms.topic: article
 ms.date: 02/12/2021
 ms.openlocfilehash: e73f566533cb2357653f7f584ec9ca77333c0a63
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100560871"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>特定の IP アドレスまたは範囲から Azure Service Bus への接続を許可します
@@ -131,7 +131,7 @@ ms.locfileid: "100560871"
 テンプレートをデプロイするには、[Azure Resource Manager][lnk-deploy] の手順に従います。
 
 > [!IMPORTANT]
-> IP 規則も仮想ネットワーク規則も指定されていない場合は、`defaultAction` を `deny` に設定しても、すべてのトラフィックが名前空間に送られます。 名前空間には、パブリック インターネット経由で (アクセス キーを使用して) アクセスできます。 指定された IP アドレスまたはある仮想ネットワークのサブネットからのトラフィックのみを許可するには、名前空間に少なくとも 1 つの IP 規則または仮想ネットワーク規則を指定します。  
+> IP 規則も仮想ネットワーク規則も指定されていない場合は、`defaultAction` を `deny` に設定しても、すべてのトラフィックが名前空間に送られます。 名前空間には、パブリック インターネット経由で (アクセス キーを使用して) アクセスできます。 指定された IP アドレスまたは仮想ネットワークのサブネットからのトラフィックのみを許可するには、名前空間に少なくとも 1 つの IP 規則または仮想ネットワーク規則を指定します。  
 
 
 ## <a name="next-steps"></a>次のステップ

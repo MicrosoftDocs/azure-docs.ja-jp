@@ -4,10 +4,10 @@ description: Azure Resource Manager テンプレート (ARM テンプレート) 
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.openlocfilehash: 44a386ed849771dfba717c8d1414e64422d0c7bd
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97797045"
 ---
 # <a name="syntax-and-expressions-in-arm-templates"></a>ARM テンプレートの構文と式

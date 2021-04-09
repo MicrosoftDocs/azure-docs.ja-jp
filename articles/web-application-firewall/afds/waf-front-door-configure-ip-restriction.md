@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/22/2020
 ms.author: tyao
 ms.openlocfilehash: 65e378c0380804c13e4b42d855aede7781b93592
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102211670"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Azure Front Door 用の Web アプリケーション ファイアウォールで IP 制限規則を構成する

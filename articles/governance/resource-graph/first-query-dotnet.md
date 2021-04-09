@@ -5,10 +5,10 @@ ms.date: 01/27/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0135dfd499af48b3c60314679f4c9b635a5ce15a
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98917573"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-net-core"></a>クイック スタート:.NET Core を使用して自分の初めての Resource Graph クエリを実行する

@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: f0fbb1214015c088e7e1585840213faba06b59f3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96010701"
 ---
 # <a name="secure-your-internet-of-things-iot-deployment"></a>モノのインターネット (IoT) のデプロイのセキュリティ保護
 
 [!INCLUDE [iot-secure-your-deployment](../../includes/iot-secure-your-deployment.md)]
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 IoT Hub 開発者ガイドの [IoT Hub へのアクセス制御](../iot-hub/iot-hub-devguide-security.md)に関するページで IoT Hub のセキュリティについて学習します。 

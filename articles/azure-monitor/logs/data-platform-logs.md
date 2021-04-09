@@ -7,10 +7,10 @@ ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
 ms.openlocfilehash: 5066264777c66369205489fb27a6f9206c5da521
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101708001"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure Monitor ログの概要

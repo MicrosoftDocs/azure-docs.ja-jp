@@ -3,13 +3,13 @@ title: Azure ロールベースのアクセス制御を使用してバックア�
 description: Azure ロールベースのアクセス制御を使用して、Recovery Services コンテナーのバックアップ管理操作へのアクセスを管理します。
 ms.reviewer: utraghuv
 ms.topic: conceptual
-ms.date: 06/24/2019
-ms.openlocfilehash: 0dd8d08c4ee79082f47929cf7d453f3f4bbd60ee
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.date: 03/09/2021
+ms.openlocfilehash: 0b321a5f33bd75ce8615d6d2a90442a83d9fff67
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090881"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613444"
 ---
 # <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Azure ロール ベースのアクセス制御を使用して Azure Backup 復旧ポイントを管理する
 
@@ -28,26 +28,29 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>バックアップ管理アクションへの組み込みバックアップ ロールのマッピング
 
+### <a name="minimum-role-requirements-for-azure-vm-backup"></a>Azure VM バックアップの最小ロール要件
+
 次の表に、バックアップ管理アクションと、その操作を実行するために必要な最小限の Azure ロールを示します。
 
-| 管理操作 | 必要最小限 Azure ロール | 必要なスコープ |
-| --- | --- | --- |
-| Recovery Services コンテナーの作成 | Backup Contributor | コンテナーを含むリソース グループ |
-| Azure VM のバックアップの有効化 | Backup Operator | コンテナーを含むリソース グループ |
-| | Virtual Machine Contributor | VM リソース |
-| VM のオンデマンド バックアップ | Backup Operator | Recovery Services コンテナー |
-| VM の復元 | Backup Operator | Recovery Services コンテナー |
-| | Contributor | VM がデプロイされるリソース グループ |
-| | Virtual Machine Contributor | バックアップされたソース VM |
+| 管理操作 | 必要最小限 Azure ロール | 必要なスコープ | 代替手段 |
+| --- | --- | --- | --- |
+| Recovery Services コンテナーの作成 | Backup Contributor | コンテナーを含むリソース グループ |   |
+| Azure VM のバックアップの有効化 | Backup Operator | コンテナーを含むリソース グループ |   |
+| | Virtual Machine Contributor | VM リソース |  または、組み込みロールではなく、次のアクセス許可を持つカスタム ロールを検討できます: Microsoft.Compute/virtualMachines/write |
+| VM のオンデマンド バックアップ | Backup Operator | Recovery Services コンテナー |   |
+| VM の復元 | Backup Operator | Recovery Services コンテナー |   |
+| | Contributor | VM がデプロイされるリソース グループ |   または、組み込みロールではなく、次のアクセス許可を持つカスタム ロールを検討できます:  Microsoft.Resources/subscriptions/resourceGroups/write Microsoft.DomainRegistration/domains/write、 Microsoft.Compute/virtualMachines/write  Microsoft.Network/virtualNetworks/read Microsoft.Network/virtualNetworks/subnets/join/action |
+| | Virtual Machine Contributor | バックアップされたソース VM |   または、組み込みロールではなく、次のアクセス許可を持つカスタム ロールを検討できます: Microsoft.Compute/virtualMachines/write |
 | アンマネージド ディスク VM バックアップの復元 | Backup Operator | Recovery Services コンテナー |
-| | Virtual Machine Contributor | バックアップされたソース VM |
-| | Storage Account Contributor | ディスクの復元先となるストレージ アカウント リソース |
+| | Virtual Machine Contributor | バックアップされたソース VM | または、組み込みロールではなく、次のアクセス許可を持つカスタム ロールを検討できます: Microsoft.Compute/virtualMachines/write |
+| | Storage Account Contributor | ディスクの復元先となるストレージ アカウント リソース |   または、組み込みロールではなく、次のアクセス許可を持つカスタム ロールを検討できます: Microsoft.Storage/storageAccounts/write |
 | VM バックアップからのマネージド ディスクの復元 | Backup Operator | Recovery Services コンテナー |
-| | Virtual Machine Contributor | バックアップされたソース VM |
-| | Storage Account Contributor | マネージド ディスクに変換する前にコンテナーからのデータを保持する目的で、復元の一部として選択された一時ストレージ アカウント |
-| | Contributor | マネージド ディスクの復元先となるリソース グループ |
+| | Virtual Machine Contributor | バックアップされたソース VM |    または、組み込みロールではなく、次のアクセス許可を持つカスタム ロールを検討できます: Microsoft.Compute/virtualMachines/write |
+| | Storage Account Contributor | マネージド ディスクに変換する前にコンテナーからのデータを保持する目的で、復元の一部として選択された一時ストレージ アカウント |   または、組み込みロールではなく、次のアクセス許可を持つカスタム ロールを検討できます: Microsoft.Storage/storageAccounts/write |
+| | Contributor | マネージド ディスクの復元先となるリソース グループ | または、組み込みロールではなく、次のアクセス許可を持つカスタム ロールを検討できます: Microsoft.Resources/subscriptions/resourceGroups/write|
 | VM バックアップからの個々のファイルの復元 | Backup Operator | Recovery Services コンテナー |
-| | Virtual Machine Contributor | バックアップされたソース VM |
+| | Virtual Machine Contributor | バックアップされたソース VM | または、組み込みロールではなく、次のアクセス許可を持つカスタム ロールを検討できます: Microsoft.Compute/virtualMachines/write |
+| リージョンをまたがる復元 | Backup Operator | Recovery Services コンテナーのサブスクリプション | これは、前述の復元アクセス許可に追加されます。 特に CRR の場合、組み込みのロールではなく、次のアクセス許可を持つカスタム ロールを検討できます:   "Microsoft.RecoveryServices/locations/backupAadProperties/read" "Microsoft.RecoveryServices/locations/backupCrrJobs/action"         "Microsoft.RecoveryServices/locations/backupCrrJob/action" "Microsoft.RecoveryServices/locations/backupCrossRegionRestore/action"          "Microsoft.RecoveryServices/locations/backupCrrOperationResults/read" "Microsoft.RecoveryServices/locations/backupCrrOperationsStatus/read" |
 | Azure VM バックアップのバックアップ ポリシーの作成 | Backup Contributor | Recovery Services コンテナー |
 | Azure VM バックアップのバックアップ ポリシーの変更 | Backup Contributor | Recovery Services コンテナー |
 | Azure VM バックアップのバックアップ ポリシーの削除 | Backup Contributor | Recovery Services コンテナー |
@@ -58,7 +61,25 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 > [!IMPORTANT]
 > VM リソースのスコープで VM 共同作成者を指定し、VM 設定の一部として **[バックアップ]** を選択すると、その VM が既にバックアップされている場合でも **[バックアップの有効化]** 画面が開きます。 これは、バックアップの状態を確認するための呼び出しがサブスクリプション レベルでしか機能しないためです。 これを回避するには、コンテナーに移動して VM のバックアップ項目ビューを開くか、またはサブスクリプション レベルで VM 共同作成者ロールを指定します。
 
-## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Azure ファイル共有バックアップに使用されるロールの最低要件
+### <a name="minimum-role-requirements-for-azure-workload-backups-sql-and-hana-db-backups"></a>Azure ワークロード バックアップ (SQL と HANA DB のバックアップ) での最小ロール要件
+
+次の表に、バックアップ管理アクションと、その操作を実行するために必要な最小限の Azure ロールを示します。
+
+| 管理操作 | 必要最小限 Azure ロール | 必要なスコープ | 代替手段 |
+| --- | --- | --- | --- |
+| Recovery Services コンテナーの作成 | Backup Contributor | コンテナーを含むリソース グループ |   |
+| SQL または HANA データベースのバックアップの有効化 | Backup Operator | コンテナーを含むリソース グループ |   |
+| | Virtual Machine Contributor | DB がインストールされている VM リソース |  または、組み込みロールではなく、次のアクセス許可を持つカスタム ロールを検討できます: Microsoft.Compute/virtualMachines/write |
+| DB のオンデマンド バックアップ | Backup Operator | Recovery Services コンテナー |   |
+| データベースを復元、またはファイルとして復元 | Backup Operator | Recovery Services コンテナー |   |
+| | Virtual Machine Contributor | バックアップされたソース VM |   または、組み込みロールではなく、次のアクセス許可を持つカスタム ロールを検討できます: Microsoft.Compute/virtualMachines/write |
+| | Virtual Machine Contributor | DB が復元される、またはファイルが作成されるターゲット VM |   または、組み込みロールではなく、次のアクセス許可を持つカスタム ロールを検討できます: Microsoft.Compute/virtualMachines/write |
+| Azure VM バックアップのバックアップ ポリシーの作成 | Backup Contributor | Recovery Services コンテナー |
+| Azure VM バックアップのバックアップ ポリシーの変更 | Backup Contributor | Recovery Services コンテナー |
+| Azure VM バックアップのバックアップ ポリシーの削除 | Backup Contributor | Recovery Services コンテナー |
+| VM バックアップでのバックアップの停止 (データを保持またはデータを削除) | Backup Contributor | Recovery Services コンテナー |
+
+### <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Azure ファイル共有バックアップに使用されるロールの最低要件
 
 次の表に、バックアップ管理アクションと、Azure ファイル共有操作を実行するために必要な対応するロールを示します。
 

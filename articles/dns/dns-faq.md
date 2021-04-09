@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/11/2021
 ms.author: rohink
 ms.openlocfilehash: cb14cb95ec1362782a634b0e62cfa2f8237a5852
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98246384"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS に関する FAQ

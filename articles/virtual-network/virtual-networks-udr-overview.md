@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: aldomel
 ms.openlocfilehash: 512694d75bace40f33e346d28289f62e2adb04b8
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98221016"
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
@@ -32,7 +32,7 @@ Azure では、システム ルートが自動的に作成され、仮想ネッ�
 
 各ルートには、アドレス プレフィックスとネクストホップの種類が含まれています。 サブネットから出ていくトラフィックを、ルートのアドレス プレフィックスに含まれる IP アドレスに送信するときに、そのプレフィックスを含むルートが使用されます。 複数のルートに同じプレフィックス (重複するプレフィックス) が含まれているときに、Azure がルートを選択するしくみの詳細については、[こちら](#how-azure-selects-a-route) をご覧ください。 仮想ネットワークが作成されるたびに、その仮想ネットワークのサブネットごとに、次の既定のシステム ルートが自動的に作成されます。
 
-|source |アドレス プレフィックス                                        |ネクストホップの種類  |
+|source |アドレス プレフィックス                                        |次ホップの種類  |
 |-------|---------                                               |---------      |
 |Default|仮想ネットワークに固有                           |仮想ネットワーク|
 |Default|0.0.0.0/0                                               |インターネット       |
@@ -137,7 +137,7 @@ ER と VPN Gateway ルートの伝達は、ルート テーブルのプロパテ
 たとえば、ルート テーブルに次のルートが含まれているとします。
 
 
-|source   |アドレス プレフィックス  |ネクストホップの種類           |
+|source   |アドレス プレフィックス  |次ホップの種類           |
 |---------|---------         |-------                 |
 |Default  | 0.0.0.0/0        |インターネット                |
 |User     | 0.0.0.0/0        |仮想ネットワーク ゲートウェイ |

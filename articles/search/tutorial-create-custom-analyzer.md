@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 01/29/2021
 ms.openlocfilehash: f4bde98cfc772f5a80bb52c2e4bc2f5a9c28c78d
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99097659"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>チュートリアル:電話番号のカスタム アナライザーを作成する

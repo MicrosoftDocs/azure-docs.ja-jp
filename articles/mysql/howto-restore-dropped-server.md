@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 10/09/2020
 ms.openlocfilehash: 34dddd8e5f3fb418fc7155630bf82a922e418402
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97657092"
 ---
 # <a name="restore-a-dropped-azure-database-for-mysql-server"></a>ドロップした Azure Database for MySQL サーバーを復元する

@@ -11,10 +11,10 @@ ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
 ms.openlocfilehash: f3f29ae1ab868a96e6f70ed964f79c47bc591c4d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92373906"
 ---
 # <a name="upload-logs-to-azure-monitor"></a>ログを Azure Monitor にアップロードする

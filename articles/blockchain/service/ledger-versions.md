@@ -1,14 +1,14 @@
 ---
 title: Azure Blockchain Service の台帳のバージョン、修正プログラム適用、アップグレード
-description: Overview of the supported ledgers versions in Azure Blockchain Service. システム修正プログラムの適用やアップグレードに関するポリシーなど、Azure Blockchain Service でサポートされている台帳のバージョンの概要です。
+description: Azure Blockchain Service でサポートされている台帳のバージョンの概要です。 システム修正プログラムの適用やアップグレードに関するポリシーなど、Azure Blockchain Service でサポートされている台帳のバージョンの概要です。
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
 ms.openlocfilehash: ea7c54e229178320329204a3199ab2b4c44058fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85807742"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>サポートされている Azure Blockchain Service の台帳のバージョン

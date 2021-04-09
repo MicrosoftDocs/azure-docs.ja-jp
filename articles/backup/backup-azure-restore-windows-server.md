@@ -4,10 +4,10 @@ description: この記事では、Microsoft Azure Recovery Services (MARS) エ�
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.openlocfilehash: 79a4d32d6dbca5ca5be5d46c6b44a07ef42de061
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91813255"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>MARS エージェントを使用して Windows Server にファイルを復元する
@@ -54,7 +54,7 @@ Azure Portal の Recovery Services コンテナーでインスタント リス�
 
 5. **[ボリュームと日付の選択]** ページで、復元するファイルとフォルダーを含むボリュームを選択します。
 
-    カレンダーで回復ポイントを選択します。 **太字**になっている日付では、少なくとも 1 つの回復ポイントを利用できます。 1 日の中で複数の復旧ポイントを使用できる場合は、 **[時間]** ドロップダウン メニューから特定の復旧ポイントを選択します。
+    カレンダーで回復ポイントを選択します。 **太字** になっている日付では、少なくとも 1 つの回復ポイントを利用できます。 1 日の中で複数の復旧ポイントを使用できる場合は、 **[時間]** ドロップダウン メニューから特定の復旧ポイントを選択します。
 
     ![データの回復ウィザードの [ボリュームと日付の選択] ページのスクリーンショット (同じコンピューターに復元)](./media/backup-azure-restore-windows-server/samemachine_selectvolumedate_instantrestore.png)
 
@@ -119,7 +119,7 @@ Azure Portal の Recovery Services コンテナーでインスタント リス�
 
 8. **[ボリュームと日付の選択]** ページで、復元するファイルとフォルダーを含むボリュームを選択します。
 
-    カレンダーで回復ポイントを選択します。 **太字**になっている日付では、少なくとも 1 つの回復ポイントを利用できます。 1 日の中で複数の復旧ポイントを使用できる場合は、 **[時間]** ドロップダウン メニューから特定の復旧ポイントを選択します。
+    カレンダーで回復ポイントを選択します。 **太字** になっている日付では、少なくとも 1 つの回復ポイントを利用できます。 1 日の中で複数の復旧ポイントを使用できる場合は、 **[時間]** ドロップダウン メニューから特定の復旧ポイントを選択します。
 
     ![データの回復ウィザードの [ボリュームと日付の選択] ページのスクリーンショット (別のコンピューターに復元)](./media/backup-azure-restore-windows-server/alternatemachine_selectvolumedate_instantrestore.png)
 

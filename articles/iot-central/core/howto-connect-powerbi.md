@@ -8,10 +8,10 @@ ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
 ms.openlocfilehash: 191b57b08ba04844824dd5cf26875c21e494c5ef
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92123339"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central データを Power BI ダッシュボードに視覚化する
@@ -55,13 +55,13 @@ PBIX ファイルを開いたら、必ずカバー ページの指示を読ん�
 
 PBIX ファイルには、デバイスによって送信されたテレメトリの履歴ビューが表示される **[Devices and Telemetry] (デバイスとテレメトリ)** レポートが含まれています。 ここにはさまざまな種類のテレメトリの内訳が示され、デバイスによって送信された最新のテレメトリも表示されます。
 
-:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Power BI ソリューションのパイプライン":::
+:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Power BI の [Devices and Telemetry] (デバイスとテレメトリ) レポート":::
 
 ## <a name="pipeline-resources"></a>パイプライン リソース
 
 Azure portal で、パイプラインを構成するすべての Azure リソースにアクセスできます。 すべてのリソースは、パイプラインを設定したときに作成したリソース グループ内にあります。
 
-:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Power BI ソリューションのパイプライン":::
+:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="リソース グループの Azure portal ビュー":::
 
 次の一覧で、パイプライン内の各リソースの役割について説明します。
 
@@ -73,7 +73,7 @@ Azure 関数アプリは、IoT Central が BLOB ストレージに新しいフ�
 
 Azure Data Factory は、リンクされたサービスとして、SQL Database に接続します。 それがストアド プロシージャを実行し、データを処理して分析テーブルに格納します。
 
-Azure Data Factory は 15 分ごとに実行されて、最新のデータ バッチを変換し、SQL テーブルに読み込みます (これが**タンブリング ウィンドウ トリガー**の現在の最小数です)。
+Azure Data Factory は 15 分ごとに実行されて、最新のデータ バッチを変換し、SQL テーブルに読み込みます (これが **タンブリング ウィンドウ トリガー** の現在の最小数です)。
 
 ### <a name="azure-sql-database"></a>Azure SQL データベース
 

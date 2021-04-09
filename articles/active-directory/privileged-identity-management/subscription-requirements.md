@@ -18,10 +18,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74c9cd1c55f1b0dde173a7ffbeac92e5518db81e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88005806"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>Privileged Identity Management を使用するためのライセンスの要件
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用
 - アクセス レビューに割り当てられたユーザー
 - アクセス レビューを実行するユーザー
 
-Azure AD Premium P2 ライセンスは、次のタスクでは必要**ありません**。
+Azure AD Premium P2 ライセンスは、次のタスクでは必要 **ありません**。
 
 - PIM の設定、ポリシーの構成、アラートの受信、アクセス レビューの設定を行うユーザーに、ライセンスは必要ありません。
 

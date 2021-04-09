@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0fbf5c07b2d8fd5d754a46484d6b072cc9b682d6
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 78e4b35feb4e830a9f4335614a55d49ca90cd791
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599853"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667637"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Synapse SQL で外部テーブルを使用する
 
@@ -29,7 +29,7 @@ ms.locfileid: "98599853"
 - Transact-SQL ステートメントを使用して、Azure Blob Storage と Azure Data Lake Gen2 に対するクエリを実行する。
 - Azure Blob Storage と Azure Data Lake Storage から専用 SQL プールにデータのインポートと格納を行う。
 
-[CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ステートメントと組み合わせて使用する場合は、外部テーブルから選択するとデータが SQL プール内のテーブルにインポートされます。 [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)に加えて、外部テーブルはデータの読み込みにも便利です。 
+[CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ステートメントと組み合わせて使用する場合は、外部テーブルから選択するとデータが SQL プール内のテーブルにインポートされます。 [COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)に加えて、外部テーブルはデータの読み込みにも便利です。 
 
 読み込みのチュートリアルについては、[PolyBase を使用した Azure Blob Storage からのデータの読み込み](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)に関するページを参照してください。
 
@@ -60,7 +60,7 @@ ms.locfileid: "98599853"
 
 ## <a name="create-external-data-source"></a>CREATE EXTERNAL DATA SOURCE
 
-外部データ ソースは、ストレージ アカウントへの接続に使用されます。 完全なドキュメントについては、[こちら](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)で概説されています。
+外部データ ソースは、ストレージ アカウントへの接続に使用されます。 完全なドキュメントについては、[こちら](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true)で概説されています。
 
 ### <a name="syntax-for-create-external-data-source"></a>CREATE EXTERNAL DATA SOURCE の構文
 
@@ -159,7 +159,7 @@ WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yel
 
 ## <a name="create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT
 
-Azure Blob Storage または Azure Data Lake Storage に格納される外部データを定義する外部ファイル形式オブジェクトを作成します。 外部ファイル形式の作成は、外部テーブルを作成するための前提条件です。 完全なドキュメントは[こちら](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)にあります。
+Azure Blob Storage または Azure Data Lake Storage に格納される外部データを定義する外部ファイル形式オブジェクトを作成します。 外部ファイル形式の作成は、外部テーブルを作成するための前提条件です。 完全なドキュメントは[こちら](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true)にあります。
 
 外部ファイル形式を作成することで、外部テーブルによって参照されるデータの実際のレイアウトを指定します。
 
@@ -325,7 +325,7 @@ column_name <data_type>
 
 <column_definition>, ...*n* ]
 
-CREATE EXTERNAL TABLE では、列名、データ型、NULL 値の許容、照合順序を構成できます。 外部テーブルに対して DEFAULT CONSTRAINT を使用することはできません。
+CREATE EXTERNAL TABLE では、列名、データ型、照合順序を構成できます。 外部テーブルに対して DEFAULT CONSTRAINT を使用することはできません。
 
 >[!IMPORTANT]
 >データ型と列の数を含む列の定義は、外部ファイルのデータと一致している必要があります。 不一致がある場合、実際のデータに対してクエリを実行するときに、ファイルの行が拒否されます。
@@ -387,7 +387,7 @@ Data Lake の探索機能を使用することで、ファイルを右クリッ�
 
 - 少なくとも ADLS Gen2 アカウントに対するストレージ BLOB データ共同作成者 ARM アクセス ロールがある状態で、ワークスペースにアクセスできる必要があります
 
-- SQL プールまたは SQL オンデマンドで外部テーブルを[作成してクエリを実行するためのアクセス許可](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2&preserve-view=true)が少なくとも必要です
+- SQL プールまたは SQL オンデマンドで外部テーブルを[作成してクエリを実行するためのアクセス許可](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#permissions-2&preserve-view=true)が少なくとも必要です
 
 [データ] パネルで、外部テーブルの作成元にするファイルを選択します。
 > [!div class="mx-imgBorder"]

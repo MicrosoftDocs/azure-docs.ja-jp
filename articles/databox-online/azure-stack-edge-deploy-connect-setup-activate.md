@@ -10,10 +10,10 @@ ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: 8a143dadffb3f89ef67dc20a2038bb3c9bf5a0e4
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91743337"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro を接続、設定、およびアクティブ化する 
@@ -65,7 +65,7 @@ Azure Stack Edge Pro デバイスを構成および設定する前に、次の�
 
 ## <a name="set-up-and-activate-the-physical-device"></a>物理デバイスの設定とアクティブ化
  
-ダッシュボードには、物理デバイスを構成して Azure Stack Edge サービスに登録するために必要なさまざまな設定が表示されます。 **デバイス名**、**ネットワーク設定**、**Web プロキシの設定**、**時刻の設定**はオプションです。 必須の設定は、 **[クラウド設定]** のみです。
+ダッシュボードには、物理デバイスを構成して Azure Stack Edge サービスに登録するために必要なさまざまな設定が表示されます。 **デバイス名**、**ネットワーク設定**、**Web プロキシの設定**、**時刻の設定** はオプションです。 必須の設定は、 **[クラウド設定]** のみです。
    
 ![ローカル Web UI の [ダッシュボード] ページ](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-1.png)
 
@@ -96,7 +96,7 @@ Azure Stack Edge Pro デバイスを構成および設定する前に、次の�
    
    a. **[Web プロキシ URL]**  ボックスに、`http://host-IP address or FQDN:Port number` という形式の URL を入力します。 HTTPS URL はサポートされていません。
 
-   b. **[認証]** で、 **[なし]** または **[NTLM]** を選択します。 Azure Stack Edge Pro デバイス上でコンピューティングを有効にして IoT Edge モジュールを使用する場合には、Web プロキシ認証を **[なし]** に設定しておくことをお勧めします。 **NTLM** はサポートされていません。
+   b. **[認証]** で、 **[なし]** または **[NTLM]** を選択します。 Azure Stack Edge Pro デバイスでコンピューティングを有効にして IoT Edge モジュールを使用する場合は、Web プロキシ認証を **[なし]** に設定しておくことをお勧めします。 **NTLM** はサポートされていません。
 
    c. 認証を使用している場合は、ユーザー名とパスワードを入力します。
 

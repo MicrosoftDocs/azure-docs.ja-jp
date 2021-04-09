@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: eb1891b7201d8e1d3d18b0e01817ee943ae6341f
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 02607c219cf39a20a40854632e961b3ce199d0d3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548184"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588258"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault
 
@@ -132,6 +132,8 @@ Key Vault 統合には、次の 2 つの必要なパッケージがあります�
 * Azure.Core には、`IKeyEncryptionKey` および `IKeyEncryptionKeyResolver` インターフェイスが含まれています。 .NET 用ストレージ クライアント ライブラリでは、既に依存関係としてそれが定義されています。
 * Azure.Security.KeyVault.Keys (v4.x) には、Key Vault REST クライアントと、クライアント側の暗号化で使用される暗号化クライアントが含まれています。
 
+Key Vault は値の高いマスター キー向けで、Key Vault ごとのスロットルの上限はこれを念頭に設計されています。 Azure.Security.KeyVault.Keys 4.1.0 では、キーのキャッシュをサポートしている `IKeyEncryptionKeyResolver` 実装はありません。 スロットルのためにキャッシュする必要がある場合は、[こちらのサンプル](/samples/azure/azure-sdk-for-net/azure-key-vault-proxy/)に従って、キャッシュ層を `Azure.Security.KeyVault.Keys.Cryptography.KeyResolver` インスタンスに挿入できます。
+
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 次の 3 種類の Key Vault パッケージがあります。
@@ -140,15 +142,15 @@ Key Vault 統合には、次の 2 つの必要なパッケージがあります�
 * Microsoft.Azure.KeyVault (v3.x) には Key Vault REST クライアントが含まれています。
 * Microsoft.Azure.KeyVault.Extensions (v3.x) には、暗号化アルゴリズム、RSAKey、および SymmetricKey の実装を含む拡張機能コードが含まれています。 これは、コアおよび KeyVault 名前空間に依存し、集計リゾルバー (複数のキー プロバイダーを使用する必要がある場合) およびキャッシュ キー リゾルバーを定義する機能を提供します。 ストレージ クライアント ライブラリはこのパッケージに直接依存しませんが、Azure Key Vault を使用してキーを格納するか、Key Vault 拡張機能を使用してローカルおよびクラウドの暗号化プロバイダーを使用する必要がある場合はこのパッケージが必要です。
 
-v11 での Key Vault の使用方法について詳しくは、[v11 暗号化コードのサンプル](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)を参照してください。
-
----
-
 Key Vault は値の高いマスター キー向けで、Key Vault ごとのスロットルの上限はこれを念頭に設計されています。 Key Vault を使用してクライアント側の暗号化を実行するときに推奨されるモデルは、Key Vault 内のシークレットやローカルにキャッシュされたシークレットとして格納された対象マスター キーを使用することです。 次の操作を実行する必要があります。
 
 1. シークレットをオフラインで作成し、Key Vault にアップロードします。
 2. シークレットのベース識別子をパラメーターとして使用して、シークレットの現在のバージョンを暗号化用に解決し、この情報をローカルでキャッシュします。 キャッシュ用の CachingKeyResolver の使用: ユーザーが自身のキャッシュ ロジックを実装することは想定されていません。
 3. 暗号化ポリシーの作成時に、入力としてキャッシュ リゾルバーを使用します。
+
+v11 での Key Vault の使用方法について詳しくは、[v11 暗号化コードのサンプル](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)を参照してください。
+
+---
 
 ## <a name="best-practices"></a>ベスト プラクティス
 

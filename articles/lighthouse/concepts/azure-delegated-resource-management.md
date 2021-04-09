@@ -4,10 +4,10 @@ description: Azure の委任されたリソース管理は Azure Lighthouse の�
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.openlocfilehash: d484e61fc4ab3714eb362b26d64d449890065888
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92203859"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure の委任されたリソース管理
@@ -31,7 +31,7 @@ Azure の委任されたリソース管理を使用すると、承認された�
 
 大まかに言えば、Azure の委任されたリソース管理のしくみは次のとおりです。
 
-1. まず、顧客の Azure リソースを管理するためにグループ、サービス プリンシパル、またはユーザーが必要とするアクセス権 (ロール) を特定します。 アクセスの定義には、管理テナント ID とともに、 [組み込みの **roleDefinition** の値](../../role-based-access-control/built-in-roles.md) (共同作成者、VM 共同作成者、閲覧者など) にマップされるテナントの **principalId** ID が含まれています。
+1. まず、顧客の Azure リソースを管理するためにグループ、サービス プリンシパル、またはユーザーが必要とするアクセス権 (ロール) を特定します。 アクセスの定義には、管理テナント ID とともに、[組み込みの **roleDefinition** の値](../../role-based-access-control/built-in-roles.md) (共同作成者、VM 共同作成者、閲覧者など) にマップされるテナントの **principalId** ID が含まれています。
 2. このアクセスを指定し、次の 2 つの方法のいずれかで Azure Lighthouse に顧客をオンボードします。
    - 顧客が受け入れる [Azure Marketplace の管理されたサービス オファーを発行する](../how-to/publish-managed-services-offers.md) (プライベートまたはパブリック)
    - 1 つ以上の特定のサブスクリプションまたはリソース グループについて、[顧客のテナントに Azure Resource Manager テンプレートをデプロイする](../how-to/onboard-customer.md)

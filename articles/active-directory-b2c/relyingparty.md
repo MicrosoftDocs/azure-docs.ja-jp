@@ -7,15 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 03/15/2021
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 488065b0a1865484e96ea574b3031f2bf61869dd
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: b1c8bf5cb8944b990737d557326b2741716bab3d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120591"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579758"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -109,7 +110,7 @@ ms.locfileid: "102120591"
 
 ## <a name="defaultuserjourney"></a>DefaultUserJourney
 
-`DefaultUserJourney`要素は、通常はベースまたは拡張機能ポリシーで定義されているユーザー体験の ID への参照を指定します。 次の例は、**RelyingParty** 要素で指定されるサインアップまたはサインイン ユーザー体験を示しています。
+`DefaultUserJourney` 要素は、ベースまたは拡張機能ポリシーで定義されているユーザー体験の ID への参照を指定します。 次の例は、**RelyingParty** 要素で指定されるサインアップまたはサインイン ユーザー体験を示しています。
 
 *B2C_1A_signup_signin* ポリシー:
 
@@ -145,6 +146,7 @@ ms.locfileid: "102120591"
 | JourneyInsights | 0:1 | 使用される Azure Application Insights のインストルメンテーション キー。 |
 | ContentDefinitionParameters | 0:1 | コンテンツ定義読み込み URI に追加するキー値ペアのリスト。 |
 |ScriptExecution| 0:1| サポートされている [JavaScript](javascript-and-page-layout.md) 実行モード。 指定できる値: `Allow` または `Disallow`(既定値)。
+| JourneyFraming | 0:1| このポリシーのユーザー インターフェイスを iframe に読み込むことができます。 |
 
 ### <a name="singlesignon"></a>SingleSignOn
 
@@ -165,7 +167,7 @@ ms.locfileid: "102120591"
 | --------- | -------- | ----------- |
 | TelemetryEngine | はい | 値は `ApplicationInsights` である必要があります。 |
 | InstrumentationKey | はい | Application Insights 要素のインストルメンテーション キーを含む文字列。 |
-| DeveloperMode | はい | 指定できる値: `true` または `false`。 `true` であれば、Application Insights はパイプラインの処理を通じてテレメトリを迅速化します。 この設定は開発には適していますが、大量の場合は制約があります。 詳細なアクティビティ ログは、カスタム ポリシーの開発を支援することだけを目的として設計されています。 実稼働環境では開発モードを使わないでください。 ログは、開発中に ID プロバイダーとの間で送受信されるすべての要求を収集します。 実稼働環境で使う場合、開発者は、自分が所有する App Insights ログに PII (個人を特定できる情報) が収集されることに対して責任を追うことになります。 これらの詳細なログは、この値が `true` に設定されている場合のみ収集されます。|
+| DeveloperMode | はい | 指定できる値: `true` または `false`。 `true` であれば、Application Insights はパイプラインの処理を通じてテレメトリを迅速化します。 この設定は開発には適していますが、大量の場合は制約があります。 詳細なアクティビティ ログは、カスタム ポリシーの開発を支援することだけを目的として設計されています。 実稼働環境では開発モードを使わないでください。 ログは、開発中に ID プロバイダーとの間で送受信されるすべての要求を収集します。 実稼働環境で使う場合、開発者は、自分が所有する App Insights ログに収集された個人データに対して責任を追うことになります。 これらの詳細なログは、この値が `true` に設定されている場合のみ収集されます。|
 | ClientEnabled | はい | 指定できる値: `true` または `false`。 `true` とした場合、ページ ビューとクライアント側エラーを追跡するためのクライアント側スクリプトを Application Insights に送信します。 |
 | ServerEnabled | はい | 指定できる値: `true` または `false`。 `true` では、既存の UserJourneyRecorder JSON をカスタム イベントとして Application Insights に送信します。 |
 | TelemetryVersion | はい | 値は `1.0.0` である必要があります。 |
@@ -194,6 +196,15 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 
 詳しくは、[カスタム ポリシーを使用して動的コンテンツを含む UI を構成する](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri)を参照してください
 
+### <a name="journeyframing"></a>JourneyFraming
+
+**JourneyFraming** 要素には、次の属性が含まれています。
+
+| 属性 | 必須 | 説明 |
+| --------- | -------- | ----------- |
+| Enabled | はい | このポリシーを iframe 内に読み込めるようにします。 指定できる値は `false`(既定値) または`true`です。 |
+| 変換元 | はい | iframe を読み込んでホストするドメインが含まれています。 詳細については、[iframe での AZURE B2C の読み込み](embedded-login.md)に関するページを参照してください。 |
+
 ## <a name="technicalprofile"></a>TechnicalProfile
 
 **TechnicalProfile** 要素には、次の属性が含まれています。
@@ -219,6 +230,21 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 | --------- | -------- | ----------- |
 | 名前 | はい | 技術プロファイルの一部として使用される Azure AD B2C によってサポートされている有効なプロトコルの名前。 指定できる値: `OpenIdConnect` または `SAML2`。 `OpenIdConnect` 値は、OpenID 基盤の仕様に従って、OpenID Connect 1.0 プロトコルの標準を表します。 `SAML2` 値は、OASIS 仕様に従って、SAML 2.0 プロトコルの標準を表します。 |
 
+### <a name="metadata"></a>Metadata
+
+プロトコルが `SAML` である場合、メタデータ要素には次の要素が含まれます。 詳細については、[Azure AD B2C に SAML アプリケーションを登録するためのオプション](saml-service-provider-options.md)に関するページを参照してください。
+
+| 属性 | 必須 | 説明 |
+| --------- | -------- | ----------- |
+| IdpInitiatedProfileEnabled | いいえ | IDP Initiated フローがサポートされているかどうかを示します。 指定できる値: `true` または `false`(既定値)。 | 
+| XmlSignatureAlgorithm | いいえ | SAML 応答に署名するために Azure AD B2C で使用されるメソッド。 指定できる値: `Sha256`、`Sha384`、`Sha512`、または `Sha1`。 両方の側で同じ値の署名アルゴリズムを構成するようにします。 証明書でサポートされているアルゴリズムのみを使用してください。 SAML アサーションを構成するには、[SAML 発行者の技術プロファイルのメタデータ](saml-issuer-technical-profile.md#metadata)に関する記事を参照してください。 |
+| DataEncryptionMethod | No | Advanced Encryption Standard (AES) アルゴリズムを使用してデータを暗号化するために Azure AD B2C で使用される方法を示します。 このメタデータにより、SAML 応答内の `<EncryptedData>` 要素の値が制御されます。 可能な値: `Aes256` (既定)、`Aes192`、`Sha512`、または ` Aes128`。 |
+| KeyEncryptionMethod| No | データの暗号化に使用されたキーのコピーを暗号化するために Azure AD B2C で使用される方法を示します。 このメタデータにより、SAML 応答内の `<EncryptedKey>` 要素の値が制御されます。 使用可能な値: ` Rsa15` (既定) - RSA 公開鍵暗号化標準 (PKCS) バージョン 1.5 アルゴリズム、` RsaOaep` - RSA OAEP (Optimal Asymmetric Encryption Padding) 暗号化アルゴリズム。 |
+| UseDetachedKeys | No |  指定できる値: `true` または `false` (既定値)。 値が `true` に設定されている場合、暗号化されたアサーションの形式が変わります。 デタッチされたキーを使用すると、暗号化されたアサーションが EncryptedData ではなく、EncrytedAssertion の子として追加されます。 |
+| WantsSignedResponses| No | Azure AD B2C が SAML 応答の `Response` セクションに署名するかどうかを示します。 指定できる値: `true` (既定値) または `false`。  |
+| RemoveMillisecondsFromDateTime| いいえ | SAML 応答内の datetime の値からミリ秒を削除するかどうかを示します (これには、IssueInstant、NotBefore、NotOnOrAfter、および AuthnInstant が含まれます)。 指定できる値: `false` (既定値) または `true`。  |
+
+
 ### <a name="outputclaims"></a>OutputClaims
 
 **OutputClaims** 要素には、次の要素が含まれています。
@@ -238,8 +264,9 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 **SubjectNameingInfo** 要素によって、トークン サブジェクトの値を制御します。
+
 - **JWT トークン** - `sub` 要求。 これは、トークンが情報をアサートするプリンシパルです (アプリケーションのユーザーなど)。 この値は変更不可で、再割り当ても再利用もできません。 そのため、この値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。 既定では、サブジェクト要求には、ディレクトリ内のユーザーのオブジェクト ID が設定されます。 詳細は、[トークン、セッション、およびシングル サインオンの構成](session-behavior.md)をご覧ください。
-- **SAML トークン**- `<Subject><NameID>` subject 要素を識別する要素。 NameId 形式は変更することができます。
+- **SAML トークン** - subject 要素を識別する `<Subject><NameID>` 要素。 NameId 形式は変更することができます。
 
 **SubjectNamingInfo** 要素には、次の属性が含まれています。
 

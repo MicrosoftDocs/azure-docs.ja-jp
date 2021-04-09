@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: e139c15ef6de00376a4e1a88000d263c3486994b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92101377"
 ---
 # <a name="indexer-access-to-azure-storage-using-the-trusted-service-exception-azure-cognitive-search"></a>信頼されたサービスの例外を使用した Azure Storage へのインデクサー アクセス (Azure Cognitive Search)

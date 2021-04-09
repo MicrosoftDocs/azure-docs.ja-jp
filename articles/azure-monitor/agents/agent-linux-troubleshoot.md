@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 202182d6485bc340a7f9bb34622e483dcc9ff891
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 6c262e75bfc3fe9c7fb5ce3e00b42b0ff6cbe3bb
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041877"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952951"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -19,7 +19,7 @@ Azure Monitor の Linux 用 Log Analytics エージェントで発生する可�
 どの手順でも解決しない場合は、以下のサポート チャネルもご利用いただけます。
 
 * Premier サポート ベネフィットをお持ちのお客様は、[Premier](https://premier.microsoft.com/) でサポート要求を開くことができます。
-* Azure サポート契約のお客様は、[Azure portal](https://manage.windowsazure.com/?getsupport=true) でサポート要求を開くことができます。
+* Azure サポート契約のお客様は、[Azure portal](https://azure.microsoft.com/support/options/) でサポート要求を開くことができます。
 * OMI の問題は、[OMI トラブルシューティング ガイド](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md)を参考にして診断してください。
 * [GitHub の問題](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)を提出します。
 * Log Analytics のフィードバック ページ ([https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback)) で、提出されたアイデアやバグを確認したり、新しく登録します。 
@@ -82,7 +82,7 @@ Log Analytics エージェントの Linux トラブルシューティング ツ�
 
  >[!NOTE]
  >Azure portal でワークスペースに対する [Log Analytics の [詳細設定] の [データ] メニュー](../agents/agent-data-sources.md#configuring-data-sources)からコレクションを構成した場合、パフォーマンス カウンターおよび Syslog に関する構成ファイルの編集が上書きされます。 すべてのエージェントの構成を無効にするには、Log Analytics の **[詳細設定]** でコレクションを無効にします。1 つのエージェントの場合は、次を実行します。  
-> `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
+> `sudo /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable && sudo rm /etc/opt/omi/conf/omsconfig/configuration/Current.mof* /etc/opt/omi/conf/omsconfig/configuration/Pending.mof*`
 
 ## <a name="installation-error-codes"></a>インストール エラー コード
 

@@ -12,10 +12,10 @@ ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
 ms.openlocfilehash: 4f0588667df6acb11a43e8c3469c67f65ed3cdd9
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98165180"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>開発するモバイル アプリでシングル サインオンとアプリ保護ポリシーをサポートする

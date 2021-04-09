@@ -1,26 +1,19 @@
 ---
-title: クイックスタート - Azure Storage アカウントと Azure CDN との統合
-description: Azure Content Delivery Network (CDN) を使用して、Azure Storage から BLOB をキャッシュすることにより、高帯域幅コンテンツを配信する方法について説明します。
+title: クイック スタート:Azure Storage アカウントと Azure CDN との統合
+description: このクイックスタートでは、Azure Content Delivery Network (CDN) を使用して、Azure Storage から BLOB をキャッシュすることにより、高帯域幅コンテンツを配信する方法について説明します。
 services: cdn
-documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: b80437fa1ac41bb240565923eb40e562c8cf8c5b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 444639d9e36b67f25ed9b82bd68102273c66ae00
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018615"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951234"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>クイック スタート:Azure Storage アカウントと Azure CDN との統合
 
@@ -125,7 +118,4 @@ Azure CDN に既にキャッシュされているオブジェクトは、オブ�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure CDN プロファイルとエンドポイントの作成](cdn-create-new-endpoint.md)
-
-> [!div class="nextstepaction"]
-> [チュートリアル:サーバーの静的コンテンツへの CDN を Web アプリから使用する](cdn-add-to-web-app.md)
+> [チュートリアル: サーバーの静的コンテンツへの CDN を Web アプリから使用する](cdn-add-to-web-app.md)

@@ -2,13 +2,13 @@
 title: 管理グループにリソースをデプロイする
 description: Azure Resource Manager テンプレートを使用して、管理グループのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 01/13/2021
-ms.openlocfilehash: a203dd2c52bdc889452a6755fb025c7ed5721a59
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.date: 03/18/2021
+ms.openlocfilehash: dc7418d9e93fb50590c5e2502b3a3ffb3847273f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491621"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043310"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>ARM テンプレートを使用した管理グループへのデプロイ
 
@@ -25,7 +25,7 @@ Azure Blueprints では、以下を使用します。
 * [blueprintAssignments](/azure/templates/microsoft.blueprint/blueprintassignments)
 * [versions](/azure/templates/microsoft.blueprint/blueprints/versions)
 
-Azure ポリシーでは、以下を使用します。
+Azure Policy では、以下を使用します。
 
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
@@ -220,6 +220,16 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 }
 ```
 
+## <a name="subscriptions"></a>サブスクリプション
+
+ARM テンプレートを使用して、管理グループに新しい Azure サブスクリプションを作成するには、以下を参照してください。
+
+* [プログラムで Azure Enterprise Agreement サブスクリプションを作成する](../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md)
+* [プログラムで Microsoft 顧客契約の Azure サブスクリプションを作成する](../../cost-management-billing/manage/programmatically-create-subscription-microsoft-customer-agreement.md)
+* [プログラムで Microsoft Partner Agreement の Azure サブスクリプションを作成する](../../cost-management-billing/manage/programmatically-create-subscription-microsoft-partner-agreement.md)
+
+既存の Azure サブスクリプションを新しい管理グループに移動するテンプレートをデプロイする場合は、「[ARM テンプレートでのサブスクリプションの移動](../../governance/management-groups/manage.md#move-subscriptions-in-arm-template)」を参照してください
+
 ## <a name="azure-policy"></a>Azure Policy
 
 管理グループにデプロイされているカスタム ポリシー定義は、管理グループの拡張機能です。 カスタム ポリシー定義の ID を取得するには、[extensionResourceId()](template-functions-resource.md#extensionresourceid) 関数を使用します。 組み込みのポリシー定義は、テナント レベルのリソースです。 組み込みポリシー定義の ID を取得するには、[tenantResourceId()](template-functions-resource.md#tenantresourceid) 関数を使用します。
@@ -317,7 +327,7 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
     "resources": [
         {
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2020-10-01",
             "name": "nestedSub",
             "location": "[parameters('nestedLocation')]",
             "subscriptionId": "[parameters('nestedSubId')]",
@@ -333,7 +343,7 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
                     "resources": [
                         {
                             "type": "Microsoft.Resources/resourceGroups",
-                            "apiVersion": "2020-06-01",
+                            "apiVersion": "2020-10-01",
                             "name": "[parameters('nestedRG')]",
                             "location": "[parameters('nestedLocation')]"
                         }
@@ -343,7 +353,7 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
         },
         {
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2020-10-01",
             "name": "nestedRG",
             "subscriptionId": "[parameters('nestedSubId')]",
             "resourceGroup": "[parameters('nestedRG')]",

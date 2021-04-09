@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/21/2020
 ms.custom: references_regions
 ms.openlocfilehash: d65b074385311e74444929ef74901e402e29ec03
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93241737"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL フレキシブル サーバーのゾーン冗長の高可用性を管理する (プレビュー)
@@ -41,9 +41,9 @@ ms.locfileid: "93241737"
 4.  [高可用性] オプションをオンにすると、バースト可能レベルは選択できなくなります。 **[汎用]** または **[メモリ最適化]** のどちらかのコンピューティング レベルを選択できます。
 
     > [!IMPORTANT]
-    > ゾーン冗長の高可用性は、* *_[汎用]_* _ と _*_[メモリ最適化]_*_ の価格レベルでのみサポートされています。
+    > ゾーン冗長の高可用性は、* **[汎用]** _ と_ *_[メモリ最適化]_**の価格レベルでのみサポートされています。
 
-5.  ドロップダウンから、選択に応じた _ *[Compute size]\(コンピューティング サイズ\)* * を選択します。
+5.  ドロップダウンから、選択に応じた **コンピューティング サイズ** を選択します。
 
 6.  スライディング バーを使用して GiB 単位で **ストレージ サイズ** を選択し、7 日から 35 日の範囲で **バックアップ保持期間** を選択します。   
 

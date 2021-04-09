@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 12/28/2020
 ms.author: tamram
-ms.openlocfilehash: 85cfe3b062d7d9ef3a7bdcf29ef7d2125f8f3ae4
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: a9d7f4f77d91abc88ea348e71a3d9c471b26a273
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97812791"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103622322"
 ---
 エミュレーターでは、共有キー認証について、単一の固定アカウントと既知の認証キーがサポートされています。 このアカウントとキーのみ、エミュレーターで共有キー資格情報として使用できます。 これらは次のとおりです。
 
@@ -33,7 +33,7 @@ DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;
 AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;
 BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;
 QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;
-TableEndpoint=http://127.0.0.1:10001/devstoreaccount1;
+TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;
 ```
 
 次の .NET コード スニペットは、接続文字列を受け取るメソッドからショートカットを使用する方法を示しています。 たとえば、[BlobContainerClient (String, String)](/dotnet/api/azure.storage.blobs.blobcontainerclient.-ctor#Azure_Storage_Blobs_BlobContainerClient__ctor_System_String_System_String_) コンストラクターが接続文字列を受け取ります。

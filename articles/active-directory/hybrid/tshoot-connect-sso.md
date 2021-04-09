@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bc638eec174a52d501120d5e53bb2dc9e35b688
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: eef58f6e84fb3b4dec947fa3614b6ec1043ff89e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591176"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101644648"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う
 
@@ -32,6 +32,7 @@ ms.locfileid: "97591176"
 - バージョン 16.0.8730.xxxx 以降の Microsoft 365 Win32 クライアント (Outlook、Word、Excel など) は、非対話型フローを使用してサポートされています。 その他のバージョンはサポートされていません。それらのバージョンでは、ユーザーはパスワードではなく、ユーザー名を入力してサインインします。 OneDrive の場合、サイレント サインオン エクスペリエンス用の [OneDrive サイレント構成機能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894)をアクティブにする必要があります。
 - シームレス SSO は、Firefox のプライベート ブラウズ モードでは動作しません。
 - シームレス SSO は、拡張保護モードがオンの場合は Internet Explorer で動作しません。
+- シームレス SSO は、Microsoft Edge (レガシー) のプライベート ブラウズ モードでは動作しません。
 - シームレス SSO は、iOS および Android 上のモバイル ブラウザーでは動作しません。
 - Active Directory でユーザーが属しているグループ数が多すぎる場合、ユーザーの Kerberos チケットが大きすぎて処理できなくなり、シームレス SSO が失敗する可能性があります。 Azure AD HTTPS 要求のヘッダーは最大サイズが 50 KB です。Cookie など、他の Azure AD アーティファクト (通常、2 から 5 KB) に対応するには、Kerberos チケットのサイズを、制限より小さくする必要があります。 ユーザーのグループ メンバーシップを減らし、再試行することをお勧めします。
 - 30 以上の Active Directory フォレストを同期している場合は、Azure AD Connect によるシームレス SSO を有効にすることはできません。 この問題を回避するには、テナントでこの機能を[手動で有効](#manual-reset-of-the-feature)にします。

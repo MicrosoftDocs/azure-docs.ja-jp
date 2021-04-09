@@ -9,12 +9,12 @@ ms.date: 1/20/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 5a27f38e92955c0aa240f6be394aacd187c3a8b8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 24bee926d84c7a5be3f19c39d39285c2cd486824
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370905"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102211024"
 ---
 # <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
 Azure ファイル共有を作成するには、その使用方法について 3 つの質問に答える必要があります。
@@ -35,7 +35,7 @@ Azure ファイル共有を作成するには、その使用方法について 3
 ## <a name="prerequisites"></a>前提条件
 - この記事では、既に Azure サブスクリプションが作成されていることを前提としています。 サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 - Azure PowerShell を使用する場合は、[最新バージョンをインストールしてください](/powershell/azure/install-az-ps)。
-- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 Azure ファイル共有は、ストレージの共有プールを表す最上位オブジェクトである "*ストレージ アカウント*" にデプロイされます。 このストレージのプールは、複数のファイル共有をデプロイするのに使用できます。 
@@ -213,7 +213,7 @@ New-AzRmStorageShare `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-[`az storage share-rm create`](/cli/azure/storage/share-rm?preserve-view=true&view=azure-cli-latest#az_storage_share_rm_create) コマンドを使用して Azure ファイル共有を作成できます。 次の Azure CLI コマンドは、前述の Azure CLI を使用したストレージ アカウント作成のセクションで定義されているように、変数 `$resourceGroupName` と `$storageAccountName` が設定されていることを前提としています。
+[`az storage share-rm create`](/cli/azure/storage/share-rm#az_storage_share_rm_create) コマンドを使用して Azure ファイル共有を作成できます。 次の Azure CLI コマンドは、前述の Azure CLI を使用したストレージ アカウント作成のセクションで定義されているように、変数 `$resourceGroupName` と `$storageAccountName` が設定されていることを前提としています。
 
 > [!Important]  
 > Premium ファイル共有の場合、`--quota` パラメーターでは、ファイル共有のプロビジョニング済みのサイズが参照されます。 ファイル共有のプロビジョニング済みサイズは、使用量に関係なく、課金の対象となる容量です。 Standard ファイル共有は、プロビジョニング済みサイズではなく、使用量に基づいて課金されます。

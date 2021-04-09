@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.openlocfilehash: b5a893ee1923ba4b2bec53b20fb164337bd65902
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96558115"
 ---
 # <a name="skillset-concepts-in-azure-cognitive-search"></a>Azure Cognitive Search のスキルセットの概念
@@ -97,9 +97,9 @@ ms.locfileid: "96558115"
 
 |データ ソース/解析モード|Default|JSON、JSON 行、CSV|
 |---|---|---|
-|Blob Storage|/document/content<br>/document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
-|SQL|/document/{column1}<br>/document/{column2}<br>...|該当なし |
-|Cosmos DB|/document/{key1}<br>/document/{key2}<br>...|該当なし|
+|Blob Storage|/document/content<br>/document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
+|SQL|/document/{column1}<br>/document/{column2}<br>…|該当なし |
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|該当なし|
 
  実行されたスキルによって、強化ツリーに新しいノードが追加されます。 これらの新しいノードは、ダウンストリームのスキル、ナレッジ ストアへの射影、またはインデックス フィールドへのマッピングに対する入力として使用できます。 強化は変更できません。作成されたノードを編集することはできません。 スキルセットや強化ツリーの複雑さが増しても、強化ツリー内のすべてのノードをインデックスやナレッジ ストアにする必要はありません。 
 

@@ -3,7 +3,7 @@ title: fMP4 チャンクを生成する Azure Media Services エンコーディ�
 description: このトピックでは fMP4 チャンクを生成するエンコーディング タスクを作成する方法を紹介します。 Media Encoder Standard または Media Encoder Premium Workflow エンコーダーを使用してこのタスクを使うと、出力資産には ISO MP4 ファイルではなく、fMP4 チャンクが含まれます。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a247ef24104d9ecb9c827896d2bbfda8c50b9958
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6311aa6d0bfca133925f27b5ea4849769d9e0ec4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269405"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103013365"
 ---
 # <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>fMP4 チャンクを生成するエンコーディング タスクを作成する
 

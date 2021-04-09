@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 09/16/2020
 ms.author: enewman
 ms.openlocfilehash: 71d59e8bcf7b4078255d6b119e9d62f366e46033
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96437322"
 ---
 # <a name="architecture-fundamentals-in-azure-lab-services"></a>Azure Lab Services のアーキテクチャの基礎

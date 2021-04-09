@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/25/2020
 ms.author: alkohli
 ms.openlocfilehash: 6dc201af2271909de15af9bac1a2e2bb68faed1a
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91400993"
 ---
 Azure にデータを移動する際には、次の注意事項がデータに適用されます。

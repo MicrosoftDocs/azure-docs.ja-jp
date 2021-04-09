@@ -8,10 +8,10 @@ ms.date: 7/28/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 461d7a82854ce62ee99eef1227c13c7a8f0371e2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100594867"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Azure Digital Twins のトラブルシューティング: 警告

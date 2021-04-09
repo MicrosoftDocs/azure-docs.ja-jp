@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/17/2020
 ms.author: jeedes
 ms.openlocfilehash: e876c819ea797eb75ca8b2365fba83d416ff6168
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92318894"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alertmedia"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と AlertMedia の統合
@@ -144,7 +144,7 @@ AlertMedia で Azure AD SSO を構成してテストするには、次の構成�
 1. **[Allow Passive Requests]\(パッシブ要求を許可する\)** をオンに切り替えます。
 1. **[MetaData URL]\(メタデータ URL\)** ボックスに、Azure portal からコピーした **[アプリのフェデレーション メタデータ URL]** の値を貼り付けます。
 1. **[Requested Authentication Context Comparison]\(要求された認証コンテキストの比較\)** で **[exact]\(完全\)** を選択します。
-1. **[IDP Login URL]\(IDP ログイン URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+1. **[IDP Login URL]\(IDP ログイン URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 1. **[保存]**
 
 ### <a name="create-alertmedia-test-user"></a>AlertMedia のテスト ユーザーの作成

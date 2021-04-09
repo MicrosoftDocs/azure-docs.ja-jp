@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 4970cacb0995678bdad87f14ba971b8fb88ffa09
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 44554434eee51c11e7f89007c532f1a142fc998c
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593653"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199341"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>Application Insights JavaScript SDK の React プラグイン
 
@@ -161,7 +161,11 @@ export default MyComponent;
 
 ### `useTrackEvent`
 
-`useTrackEvent` フックは、ボタン クリックやその他の API 呼び出しなど、アプリケーションで追跡が必要になる可能性があるカスタム イベントの追跡に使用されます。 これは 2 つの引数を取ります。最初に Application Insights インスタンス (`useAppInsightsContext` フックから取得可能) を取り、次にイベントの名前を取ります。
+`useTrackEvent` フックは、ボタン クリックやその他の API 呼び出しなど、アプリケーションで追跡が必要になる可能性があるカスタム イベントの追跡に使用されます。 4 つの引数を受け取ります。
+-   Application Insights インスタンス (`useAppInsightsContext` フックから取得可能)。
+-   イベントの名前。
+-   追跡する必要がある変更をカプセル化するイベント データ オブジェクト。
+-   初期化時の `trackEvent` 呼び出しをスキップするための skipFirstRun (省略可能) フラグ。 既定値は `true` に設定されます。
 
 ```javascript
 import React, { useState, useEffect } from "react";

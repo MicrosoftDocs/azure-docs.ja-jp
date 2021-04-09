@@ -1,18 +1,14 @@
 ---
 title: アラート ワークフローの高速化
 description: アラートとインシデント ワークフローを改善します。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/02/2020
-ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 0a445abe0f448c28742282aedd1a886fae0f5a43
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: c12d1135b7a7bc87a38a609aeeb6ada8caa9a25e
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526291"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779122"
 ---
 # <a name="accelerate-alert-workflows"></a>アラート ワークフローの高速化
 
@@ -81,16 +77,29 @@ ms.locfileid: "100526291"
 ### <a name="default-alert-groups"></a>既定のアラート グループ
 
 次のアラート グループが自動的に定義されます。
-|  |  |  |
-|--|--|--|
-| 異常な通信動作 | カスタム アラート | リモート アクセス |
-| 異常な HTTP 通信動作 | 検出 | 再起動コマンドと停止コマンド |
-| 認証 | ファームウェアの変更 | スキャン |
-| 未認可の通信動作 | 無効なコマンド | センサー トラフィック |
-| 帯域幅の異常 | インターネットへのアクセス | マルウェアの疑い |
-| バッファー オーバーフロー | 操作の失敗 | 悪意のあるアクティビティの疑い |
-| コマンドの失敗 | 操作上の問題 |  |
-| 構成の変更 | プログラミング |  |
+
+- 異常な通信動作
+- カスタム アラート
+- リモート アクセス
+- 異常な HTTP 通信動作
+- 検出
+- 再起動コマンドと停止コマンド
+- 認証
+- ファームウェアの変更
+- スキャン
+- 未認可の通信動作
+- 無効なコマンド
+- センサー トラフィック
+- 帯域幅の異常
+- インターネットへのアクセス
+- マルウェアの疑い
+- バッファー オーバーフロー 
+- 操作の失敗
+- 悪意のあるアクティビティの疑い
+- コマンドの失敗
+- 操作上の問題
+- 構成の変更
+- プログラミング
 
 アラート グループは事前に定義されています。 アラート グループに関連付けられているアラートの詳細、およびカスタム アラート グループの作成については、[Microsoft サポート](https://support.microsoft.com/supportforbusiness/productselection?sapId=82c8f35-1b8e-f274-ec11-c6efdd6dd099)にお問い合わせください。
 

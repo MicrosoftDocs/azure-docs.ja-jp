@@ -8,10 +8,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fae78459a752d78fe47f189bca67667e917ba561
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100380068"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータを移動する
@@ -48,7 +48,7 @@ OData ストアから、サポートされている任意のシンク データ 
 2. コピー操作用の入力データと出力データを表す **データセット** を作成します。
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む **パイプライン** を作成します。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  OData ソースからデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON サンプル: OData ソースから Azure BLOB にデータをコピーする](#json-example-copy-data-from-odata-source-to-azure-blob)」のセクションを参照してください。
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  OData ソースからデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、この記事のセクション、「[JSON の使用例: OData ソースから Azure BLOB へのデータのコピー](#json-example-copy-data-from-odata-source-to-azure-blob)」をご覧ください。
 
 次のセクションでは、OData ソースに固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
@@ -57,7 +57,7 @@ OData ストアから、サポートされている任意のシンク データ 
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**OData** |はい |
+| type |type プロパティを **OData** |はい |
 | url |OData サービスの URL です。 |はい |
 | authenticationType |OData ソースへの接続に使用される認証の種類です。 <br/><br/> クラウド OData の場合、有効な値は、匿名、基本、または OAuth です (Azure Data Factory で現在サポートされているのは Azure Active Directory ベースの OAuth のみです)。 <br/><br/> オンプレミスの OData では、Anonymous、Basic、Windows のいずれかの値になります。 |はい |
 | username |基本認証を使用している場合は、ユーザー名を指定します。 |はい (基本認証を使用している場合のみ) |
@@ -184,7 +184,7 @@ OData からデータを移動する場合、OData 型から .NET 型に対す�
 > [!Note]
 > OData の複雑なデータ型 (オブジェクト型など) はサポートされていません。
 
-## <a name="json-example-copy-data-from-odata-source-to-azure-blob"></a>JSON の使用例:OData ソースから Azure BLOB にデータをコピーする
+## <a name="json-example-copy-data-from-odata-source-to-azure-blob"></a>JSON の使用例: OData ソースから Azure Blob にデータをコピーする
 次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、OData ソースから Azure BLOB ストレージにデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。 このサンプルでは、次の Data Factory のエンティティがあります。
 
 1. [OData](#linked-service-properties)型のリンクされたサービス。

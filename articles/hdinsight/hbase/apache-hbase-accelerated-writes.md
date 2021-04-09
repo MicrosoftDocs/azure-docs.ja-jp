@@ -4,12 +4,12 @@ description: Premium マネージド ディスクを使用して Apache HBase �
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: 1f5a9f05b94f43db9e1d883ef5e86f8621f39251
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c42a9d47cabd803944b858fc470c1bedc39d2d77
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943034"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868904"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight の Apache HBase 用書き込みアクセラレータ
 
@@ -35,7 +35,7 @@ MemStore がフラッシュされる前に **RegionServer** がクラッシュ�
 
 書き込みアクセラレータ機能を使用して新しい HBase クラスターを作成するには、[HDInsight のクラスターの設定](../hdinsight-hadoop-provision-linux-clusters.md)手順に従ってください。 **[基本]** タブで、[クラスターの種類] として [HBase] を選択し、コンポーネントのバージョンを指定します。次に、 **[HBase 高速書き込みを有効にする]** の横にあるチェックボックスをオンにします。 次に、クラスターの作成の残りの手順に進みます。
 
-![HDInsight の Apache HBase 用書き込みアクセラレータ オプションを有効にする](./media/apache-hbase-accelerated-writes/azure-portal-create-hbase-wals.png)
+:::image type="content" source="./media/apache-hbase-accelerated-writes/azure-portal-create-hbase-wals.png" alt-text="HDInsight の Apache HBase 用書き込みアクセラレータ オプションを有効にする" border="true":::
 
 ## <a name="other-considerations"></a>その他の考慮事項
 

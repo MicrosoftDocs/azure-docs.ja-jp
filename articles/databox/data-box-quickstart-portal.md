@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 03/05/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 81dee0c63db711b39ff8fd2123623a16b2b9cb91
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 3359152455df2701d897689a1f177bf63051b94b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122791"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440719"
 ---
 # <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Azure にデータをインポートするために Azure Data Box の使用を開始する
 
@@ -39,7 +39,7 @@ ms.locfileid: "92122791"
 作業を開始する前に、次のことを行います。
 
 - Data Box サービスで使用するサブスクリプションが、次のいずれかの種類であることを確認します。
-    - Microsoft Enterprise Agreement (EA)。 [EA サブスクリプション](https://azure.microsoft.com/pricing/enterprise-agreement/)に関する詳細をご覧ください。
+    - Microsoft 顧客契約 (MCA) (新しいサブスクリプションの場合) または Microsoft Enterprise Agreement (EA) (既存のサブスクリプションの場合)。 [新しいサブスクリプションの MCA](https://www.microsoft.com/licensing/how-to-buy/microsoft-customer-agreement) および [EA サブスクリプション](https://azure.microsoft.com/pricing/enterprise-agreement/)の詳細を確認してください。
     - Cloud Solution Provider (CSP)。 Azure CSP プログラムの詳細は[こちら](/azure/cloud-solution-provider/overview/azure-csp-overview)です。
     - Microsoft Azure スポンサー プラン。 Azure スポンサー プラン プログラムの詳細は[こちら](https://azure.microsoft.com/offers/ms-azr-0036p/)です。 
 
@@ -160,7 +160,7 @@ Data Box を入手したら、次の手順に従ってデバイスのケーブ�
 
 - Data Box の注文は、注文が処理される前であれば、Azure portal からキャンセルできます。 注文が処理された後は、キャンセルできません。 注文は、完了ステージに到達するまで続行されます。 注文をキャンセルするには、 **[概要]** に移動し、コマンド バーの **[キャンセル]** をクリックします。
 
-- Azure portal で **完了済み**または**キャンセル済み**の状態になった注文は削除することができます。 注文を削除するには、 **[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
+- Azure portal で **完了済み** または **キャンセル済み** の状態になった注文は削除することができます。 注文を削除するには、 **[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 

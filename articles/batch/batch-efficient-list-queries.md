@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/18/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 3a767cc8ae3c8c48e1e40e0735c33fa807ba0015
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88933516"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>効率的に Batch リソースを一覧表示するクエリを作成する
@@ -53,7 +53,7 @@ IPagedEnumerable<CloudTask> completedTasks =
 
 ## <a name="filter-select-and-expand"></a>filter、select、expand
 
-[Batch .NET](/dotnet/api/microsoft.azure.batch) API と [Batch REST](/rest/api/batchservice/) API には、リストとして返される項目の数と、クエリごとに返される情報の量を減らす機能が用意されています。 これを行うには、リスト クエリの実行時に **filter**、**select**、**expand 文字列**を指定します。
+[Batch .NET](/dotnet/api/microsoft.azure.batch) API と [Batch REST](/rest/api/batchservice/) API には、リストとして返される項目の数と、クエリごとに返される情報の量を減らす機能が用意されています。 これを行うには、リスト クエリの実行時に **filter**、**select**、**expand 文字列** を指定します。
 
 ### <a name="filter"></a>Assert
 

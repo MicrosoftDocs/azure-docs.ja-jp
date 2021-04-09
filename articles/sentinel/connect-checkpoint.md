@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 32cbdabef4d89c7fabb47a52ebf0589690b7ab33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85566063"
 ---
 # <a name="connect-check-point-to-azure-sentinel"></a>Check Point を Azure Sentinel に接続する
@@ -33,8 +33,8 @@ Syslog エージェントを介して Azure ワークスペースに CEF 形式�
 
 1. 「[Check Point Log Export](https://aka.ms/asi-syslog-checkpoint-forwarding)」(Check Point ログのエクスポート) に移動します。
 1. 下にスクロールして「**Basic Deployment**」(基本的なデプロイ) に移動し、次のガイドラインを使用して、接続を設定する指示に従います。
-   - **Syslog ポート**を **514** に設定するか、エージェントに設定されているポートに設定します。
-     - CLI で、**名前**と**ターゲット サーバーの IP アドレス**を、Syslog エージェント名と IP アドレスに置き換えます。
+   - **Syslog ポート** を **514** に設定するか、エージェントに設定されているポートに設定します。
+     - CLI で、**名前** と **ターゲット サーバーの IP アドレス** を、Syslog エージェント名と IP アドレスに置き換えます。
      - 形式を **CEF** に設定します。
 1. R77.30 または R80.10 バージョンを使用している場合は、上にスクロールして「**Installations**」(インストール) に移動し、お使いのバージョン用の Log Exporter をインストールする指示に従います。
 1. 「[手順 3:接続の検証](connect-cef-verify.md)」に進みます。

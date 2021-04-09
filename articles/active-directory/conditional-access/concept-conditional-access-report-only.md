@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: deced953089fcbb2640cbf3e402db24cb511e769
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: c6f4e4851d406b14ed38665274401b96446ac6a0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935888"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579078"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>条件付きアクセスのレポート専用モードとは
 
@@ -28,6 +28,8 @@ ms.locfileid: "97935888"
 - サインイン中に、レポート専用モードになっているポリシーが評価されますが、強制はされません。
 - 結果は、サインイン ログの詳細にある **[条件付きアクセス]** および **[レポート専用]** タブに記録されます。
 - Azure Monitor サブスクリプションをお持ちのお客様は、条件付きアクセスに関する分析情報のブックを使用して、条件付きアクセス ポリシーの影響を監視できます。
+
+> [!VIDEO https://www.youtube.com/embed/NZbPYfhb5Kc]
 
 > [!WARNING]
 > レポート専用モードになっているポリシーで準拠しているデバイスが要求されている場合には、デバイスの準拠が強制されていなくても、ポリシーの評価中に Mac、iOS、および Android のユーザーに対してデバイス証明書の選択が求められる場合があります。 これらのプロンプトの表示は、デバイスが準拠状態になるまで繰り返される場合があります。 サインイン時にエンド ユーザーにプロンプトが表示されないようにするには、デバイス プラットフォームである Mac、iOS、および Android を、デバイスの準拠状態を確認するレポート専用ポリシーから除外します。 レポート専用モードは、"ユーザー アクション" スコープの条件付きアクセス ポリシーには適用されないことに注意してください。

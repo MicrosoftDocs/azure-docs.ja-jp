@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cec028dec2bf2e6295f59aae9c2e243da2209827
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99257036"
 ---
 # <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーション用として動作するコネクタ グループが見つからない
@@ -46,7 +46,7 @@ ms.locfileid: "99257036"
 
    ![Azure portal でのコネクタ グループの選択](./media/application-proxy-connectivity-no-working-connector/no-active-connector.png)
 
-これらの各オプションの詳細については、以下の対応するセクションを参照してください。 これらの手順では、コネクタ管理ページから操作を開始していることを前提としています。 上記のエラー メッセージが表示される場合は、警告メッセージをクリックすることで、このページにアクセスできます。 **Azure Active Directory** にアクセスし、 **[エンタープライズ アプリケーション]** 、 **[アプリケーション プロキシ]** の順にクリックしても、このページにアクセスできます。
+これらの各オプションの詳細については、以下の対応するセクションを参照してください。 これらの手順では、コネクタ管理ページから操作を開始していることを前提としています。 上記のエラー メッセージが表示される場合は、警告メッセージをクリックすることで、このページにアクセスできます。 **Azure Active Directory** にアクセスし、**[エンタープライズ アプリケーション]**、**[アプリケーション プロキシ]** の順にクリックしても、このページにアクセスできます。
 
    ![Azure portal でのコネクタ グループの管理](./media/application-proxy-connectivity-no-working-connector/app-proxy.png)
 

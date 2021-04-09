@@ -12,10 +12,10 @@ ms.date: 11/02/2020
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 21c8e75ac81a443b1dd9d4a0f43263bbf40bee88
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97359202"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Microsoft 以外のアカウントを Microsoft Authenticator アプリに追加する

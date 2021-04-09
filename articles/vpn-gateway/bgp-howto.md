@@ -6,14 +6,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 03/22/2021
 ms.author: yushwang
-ms.openlocfilehash: db19b1ae017fa7981747b0e7b4c82e97efc61ed3
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 479a8fac111be6e5b1ae2c6ea21fff801ba26f83
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878886"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863583"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>Azure VPN Gateway で BGP を構成する方法
 
@@ -79,13 +79,15 @@ Azure サブスクリプションを持っていることを確認します。 A
 
    * **[Azure APIPA BGP IP address]\(Azure APIPA BGP IP アドレス\)** フィールドは省略可能です。 オンプレミスの VPN デバイスで、BGP に APIPA アドレスを使用する場合は、Azure で予約されている VPN 用の APIPA アドレス範囲 (**169.254.21.0** から **169.254.22.255**) のアドレスを選択する必要があります。 この例では、169.254.21.11 を使用します。
 
-   * アクティブ/アクティブ VPN ゲートウェイを作成している場合は、BGP セクションに、追加の **2 番目のカスタム Azure APIPA BGP IP アドレス** が表示されます。 許可されている APIPA 範囲 (**169.254.21.0** から **169.254.22.255**) とは異なるアドレスを指定します。
+   * アクティブ/アクティブ VPN ゲートウェイを作成している場合は、BGP セクションに、追加の **2 番目のカスタム Azure APIPA BGP IP アドレス** が表示されます。 許可されている APIPA 範囲 (**169.254.21.0** から **169.254.22.255**) から、別の IP アドレスを選択します。 2 番目の IP アドレスは、1 番目のアドレスとは別のものである必要があります。
 
    > [!IMPORTANT]
    >
    > * 既定では、Azure により、Azure VPN ゲートウェイの Azure BGP IP アドレスとして、GatewaySubnet プレフィックス範囲のプライベート IP アドレスが自動的に割り当てられます。 オンプレミスの VPN デバイスにより、BGP IP として APIPA アドレス (169.254.0.1 から 169.254.255.254) が使用される場合は、カスタム Azure APIPA BGP アドレスが必要です。 対応するローカル ネットワーク ゲートウェイ リソース (オンプレミス ネットワーク) に、BGP ピア IP として APIPA アドレスがある場合、Azure VPN Gateway により、カスタム APIPA アドレスが選択されます。 ローカル ネットワーク ゲートウェイによって (APIPA ではなく) 通常の IP アドレスが使用される場合は、Azure VPN Gateway によって GatewaySubnet 範囲のプライベート IP アドレスに戻されます。
    >
    > * APIPA BGP アドレスは、オンプレミスの VPN デバイスと、接続されているすべての Azure VPN ゲートウェイの間で重複しないようにする必要があります。
+   >
+   > * Azure VPN ゲートウェイで APIPA アドレスが使用されている場合、そのゲートウェイによって、APIPA の発信元 IP アドレスで BGP ピアリング セッションが開始されることはありません。 BGP ピアリング接続の開始は、オンプレミスの VPN デバイスによって行われる必要があります。
    >
 
 1. **[確認と作成]** を選択して検証を実行します。 検証に合格したら、 **[作成]** を選択して VPN ゲートウェイをデプロイします。 ゲートウェイを完全に作成してデプロイするには最大で 45 分かかることがあります。 デプロイの状態は、ゲートウェイの [概要] ページで確認できます。

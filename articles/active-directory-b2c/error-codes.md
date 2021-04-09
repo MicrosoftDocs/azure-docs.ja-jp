@@ -12,10 +12,10 @@ ms.date: 10/02/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: f6ae806b7666d83652e6b82bac16d89f2f9ce7aa
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92215435"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>エラー コード:Azure Active Directory B2C

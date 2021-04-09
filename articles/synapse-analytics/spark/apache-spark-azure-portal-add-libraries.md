@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: c6d720c3feec29eb32b1cfa9c31ea45839c98ec7
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: e8ad6d072af6979eb8509068c1dcd239e7840950
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176418"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598016"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用のライブラリを管理する
 ライブラリでは、プログラムまたはプロジェクトに含めることができる再利用可能なコードが提供されます。 
@@ -60,10 +60,6 @@ Azure Synapse Analytics のプール管理機能を使用すると、特定の�
 多くの場合、対話型でデータ分析または機械学習を行うときには、より新しいパッケージを試す必要が生じたり、Apache Spark プールでまだ使用可能になっていないパッケージが必要になったりする場合があります。 プールの構成を更新する代わりに、ユーザーがセッション スコープのパッケージを使用してセッションの依存関係を追加、管理、更新できるようになりました。
 
 セッション スコープのパッケージでは、ユーザーがセッションの開始時にパッケージの依存関係を定義できます。 セッション スコープのパッケージをインストールすると、指定されたパッケージにアクセスできるのは現在のセッションのみとなります。 そのため、これらのセッション スコープのパッケージが、同じ Apache Spark プールを使用する他のセッションやジョブに影響することはありません。 また、これらのライブラリは、基本ランタイムおよびプール レベルのパッケージの上にインストールされます。 
-
-これらのパッケージは、Python 環境に自動的に追加されます。 これらのパッケージを *requirements.txt* ファイルに記載することはできません。
-
-この方法では現在、`*.whl` ファイルのみがサポートされることに注意してください。 コンテナーに `*.tar.gz` ファイルを追加しないでください。
 
 セッション スコープのパッケージを管理する方法の詳細については、次の操作方法ガイドをご覧ください。
 

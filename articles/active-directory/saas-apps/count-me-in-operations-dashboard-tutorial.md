@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/30/2020
 ms.author: jeedes
 ms.openlocfilehash: 3339516193af6e1ff832ac586f4a81f8799c5b83
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98727679"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-count-me-in---operations-dashboard"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Count Me In - Operations Dashboard の統合

@@ -8,10 +8,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
 ms.openlocfilehash: cde8db5310e3ede2721ba327b28c789ccd0b7dd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87280768"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio でロジック アプリを管理する
@@ -158,7 +158,7 @@ Visual Studio で、デプロイの自動化に利用する [Azure リソース 
 ロジック アプリの場所の種類や場所を変更するには、ロジック アプリ デザイナーを利用し、ソリューション エクスプローラーからロジック アプリのワークフロー定義 (.json) ファイルを開く必要があります。 Cloud Explorer を使用してこれらのプロパティを変更することはできません。
 
 > [!IMPORTANT]
-> 場所の種類を **[リージョン]** から [**統合サービス環境**](connect-virtual-network-vnet-isolated-environment-overview.md)に変更すると、課金、[上限](logic-apps-limits-and-config.md#integration-account-limits)、[統合アカウント サポート](connect-virtual-network-vnet-isolated-environment-overview.md#ise-skus)などに使用されるロジック アプリの[価格設定モデル](logic-apps-pricing.md#fixed-pricing)に影響します。 場所に別の種類を選択する前に、ロジック アプリに与える影響を理解しておいてください。
+> 場所の種類を **[リージョン]** から [**統合サービス環境**](connect-virtual-network-vnet-isolated-environment-overview.md)に変更すると、課金、[上限](logic-apps-limits-and-config.md#integration-account-limits)、[統合アカウント サポート](connect-virtual-network-vnet-isolated-environment-overview.md#ise-skus)などに使用されるロジック アプリの [価格設定モデル](logic-apps-pricing.md#fixed-pricing)に影響します。 場所に別の種類を選択する前に、ロジック アプリに与える影響を理解しておいてください。
 
 1. Visual Studio で、お使いのロジック アプリを含む Azure リソース グループ プロジェクトを開きます。
 
@@ -273,7 +273,7 @@ Logic Apps デザイナーでロジック アプリ プロジェクトを開い�
 
 * ロジック アプリの .json ファイルの名前を変更します。 サブスクリプションのキャッシュは、ファイル名に依存します。
 
-* ソリューション内の*すべての*ロジック アプリの以前に選択されたサブスクリプションを削除するには、ソリューションのディレクトリにある非表示の Visual Studio 設定フォルダー (.vs) を削除します。 この場所には、サブスクリプションの情報が格納されます。
+* ソリューション内の *すべての* ロジック アプリの以前に選択されたサブスクリプションを削除するには、ソリューションのディレクトリにある非表示の Visual Studio 設定フォルダー (.vs) を削除します。 この場所には、サブスクリプションの情報が格納されます。
 
 ## <a name="next-steps"></a>次のステップ
 

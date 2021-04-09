@@ -12,10 +12,10 @@ ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: b817cfc347ee79ff7c9cbb4124e3f2b7e4d2b7ee
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101644257"
 ---
 # <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用して Keyless を構成する

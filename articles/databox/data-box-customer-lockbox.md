@@ -9,10 +9,10 @@ ms.date: 07/10/2020
 ms.author: alkohli
 ms.subservice: pod
 ms.openlocfilehash: 178ad169c1b576458f38b440ca79f4bb9eb012f5
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92124913"
 ---
 # <a name="use-customer-lockbox-for-azure-data-box-preview"></a>Azure Data Box のカスタマー ロックボックスを使用する (プレビュー)
@@ -52,7 +52,7 @@ Azure Data Box は、顧客データを Azure との間で転送するために�
 
 顧客データへのアクセス要求を追跡して承認するには、次の手順を実行します。
 
-1. Microsoft が、Azure データセンターでのデータのアップロードまたはダウンロード中に問題が発生したことを検出します。 たとえば、Data Box の注文が、**データ コピー**の段階中に停止したとします。 
+1. Microsoft が、Azure データセンターでのデータのアップロードまたはダウンロード中に問題が発生したことを検出します。 たとえば、Data Box の注文が、**データ コピー** の段階中に停止したとします。 
 
     サポート エンジニアは、サポート セッションを通じて Data Box に接続し、標準ツールとテレメトリを使用して問題のトラブルシューティングを試みます。 Data Box ディスクがロックされていて、共有にアクセスできない場合、サポート エンジニアはロックボックス要求を作成します。 
  

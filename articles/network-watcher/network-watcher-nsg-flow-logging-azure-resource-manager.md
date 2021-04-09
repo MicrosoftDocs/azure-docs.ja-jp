@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: a7244aebef6adcfbf96884d377592b575e2c3acb
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 2cae673dd319e55670357ae468d21ff63e4f9c72
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102519879"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669442"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートから NSG フロー ログを構成する
 
@@ -159,7 +160,7 @@ NSG フロー ログを設定するための完全なテンプレートの 2 つ
 
 テンプレートをデプロイするには、PowerShell で次のコマンドを実行します。
 ```azurepowershell
-$context = Get-AzSubscription -SubscriptionId 56acfbd6-vc72-43e9-831f-bcdb6f2c5505
+$context = Get-AzSubscription -SubscriptionId <SubscriptionId>
 Set-AzContext $context
 New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatcherRG `
     -TemplateFile "C:\MyTemplates\azuredeploy.json"

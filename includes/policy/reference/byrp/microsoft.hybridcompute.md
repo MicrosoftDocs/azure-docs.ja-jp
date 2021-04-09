@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 90ffa28355a0b68fc4ea144b0cc85d2901f85f23
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 70755462a0b1b687ff73a1640ba85ad031f5119e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425952"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102610462"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -44,6 +44,7 @@ ms.locfileid: "102425952"
 |[Administrators グループ内に指定されたメンバーが存在する Windows マシンを監査する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F69bf4abd-ca1e-4cf6-8b5a-762d42e61d4f) |前提条件がポリシーの割り当てスコープにデプロイされていることが要求されます。 詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) を参照してください。 ポリシー パラメーターに指定されたメンバーがローカルの Administrators グループに含まれている場合、マシンは非準拠となります。 |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministratorsGroupMembersToExclude_AINE.json) |
 |[再起動が保留中の Windows VM の監査](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4221adbc-5c0f-474f-88b7-037a99e6114c) |前提条件がポリシーの割り当てスコープにデプロイされていることが要求されます。 詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) を参照してください。 次のいずれかの理由でマシンの再起動が保留されている場合、マシンは非準拠となります: コンポーネント ベース サービシング、Windows Update、ファイル名の変更が保留中、コンピューター名の変更が保留中、構成マネージャーにより再起動が保留中。 各検出には一意のレジストリ パスがあります。 |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsPendingReboot_AINE.json) |
 |[Linux マシンに対する認証では SSH キーを要求する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F630c64f9-8b6b-4c64-b511-6544ceff6fd6) |SSH 自体は暗号化された接続を提供しますが、SSH でパスワードを使用すると、VM はブルートフォース攻撃に対して脆弱になります。 Azure Linux 仮想マシンに対して SSH による認証を行うための最も安全な方法は、公開キー/秘密キー ペア (SSH キーとも呼ばれます) を使用することです。 詳細については、[https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed) を参照してください。 |AuditIfNotExists、Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxNoPasswordForSSH_AINE.json) |
+|[Qualys 脆弱性評価エージェントを受け取るようにマシンを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F13ce0167-8ca6-4048-8e6b-f996402e3c1b) |Azure Defender には、お使いのマシンの脆弱性スキャンが追加費用なしで含まれています。 Qualys ライセンスも Qualys アカウントも必要ありません。すべてが Security Center 内でシームレスに処理されます。 このポリシーが有効になっていると、Qualys の脆弱性評価エージェントがデプロイされていないマシンには、自動的にエージェントが送信されます。 |DeployIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VulnerabilityAssessment_ProvisionQualysAgent_Deploy.json) |
 |[Windows マシンでタイム ゾーンを構成する。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6141c932-9384-44c6-a395-59e4c057d7c9) |このポリシーは、指定されたタイム ゾーンを Windows 仮想マシンに設定するためのゲスト構成の割り当てを作成します。 |deployIfNotExists |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SetWindowsTimeZone_Deploy.json) |
 |[ハイブリッド Linux Azure Arc マシンに Dependency Agent をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdeacecc0-9f84-44d2-bb82-46f32d766d43) |このポリシーでは、エージェントがインストールされていない場合、Linux Azure Arc マシンに Dependency Agent がデプロイされます。 |deployIfNotExists |[1.1.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Linux_HybridVM_Deploy.json) |
 |[Windows Azure Arc マシンに Dependency Agent をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F91cb9edd-cd92-4d2f-b2f2-bdd8d065a3d4) |このポリシーでは、エージェントがインストールされていない場合、Windows Azure Arc マシンに Dependency Agent がデプロイされます。 |deployIfNotExists |[1.1.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Windows_HybridVM_Deploy.json) |

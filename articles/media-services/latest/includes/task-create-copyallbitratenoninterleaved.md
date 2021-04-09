@@ -6,10 +6,10 @@ ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: REST
 ms.openlocfilehash: 26492ba71726cefe863b27162dd901c945c3ddb7
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96509538"
 ---
 <!--Create a copyAllNonInterleave transform with REST-->

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88a7600239d6e960fa2e635c9e7d9049a7c02db3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4584b0a605bd63c1f71082014d3c0622ca7d2c37
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032359"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587833"
 ---
 # <a name="securing-managed-identities"></a>マネージド ID のセキュリティ保護
 
@@ -50,11 +50,11 @@ Azure には、コントロール プレーンとデータ プレーンがあり
 
 ターゲット システムで認証のためにトークンが受け入れられると、コントロール プレーンとデータ プレーン用に承認のさまざまなメカニズムをサポートできるようになります。
 
-Azure のコントロール プレーン操作はすべて [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) によって管理され、[Azure のロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/overview)が適用されます。 データ プレーンには、各ターゲット システムごとに独自の承認メカニズムがあります。 Azure Storage によってデータ プレーンで Azure RBAC がサポートされています。 たとえば、Azure App Services を使用するアプリケーションで Azure Storage からデータを読み取ることができ、Azure Kubernetes Service を使用するアプリケーションで Azure Key Vault に格納されているシークレットを読み取ることができます。
+Azure のコントロール プレーン操作はすべて [Azure Resource Manager](../../azure-resource-manager/management/overview.md) によって管理され、[Azure のロールベースのアクセス制御](../../role-based-access-control/overview.md)が適用されます。 データ プレーンには、各ターゲット システムごとに独自の承認メカニズムがあります。 Azure Storage によってデータ プレーンで Azure RBAC がサポートされています。 たとえば、Azure App Services を使用するアプリケーションで Azure Storage からデータを読み取ることができ、Azure Kubernetes Service を使用するアプリケーションで Azure Key Vault に格納されているシークレットを読み取ることができます。
 
-コントロールおよびデータ プレーンの詳細については、[Azure Resource Manager のコントロール プレーンとデータ プレーンの概念](https://docs.microsoft.com/azure/azure-resource-manager/management/control-plane-and-data-plane)に関するページを参照してください。
+コントロールおよびデータ プレーンの詳細については、[Azure Resource Manager のコントロール プレーンとデータ プレーンの概念](../../azure-resource-manager/management/control-plane-and-data-plane.md)に関するページを参照してください。
 
-最終的にすべての Azure サービスでマネージド ID がサポートされます。 詳細については、「[Azure リソースのマネージド ID をサポートするサービス](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)」を参照してください。
+最終的にすべての Azure サービスでマネージド ID がサポートされます。 詳細については、「[Azure リソースのマネージド ID をサポートするサービス](../managed-identities-azure-resources/services-support-managed-identities.md)」を参照してください。
 
 ##  
 
@@ -116,7 +116,7 @@ Microsoft Graph に対する次の GET 要求を使用して、ご自身のテ�
 
    `Get-AzureADGroupMember -ObjectId <String> [-All <Boolean>] [-Top <Int32>] [<CommonParameters>]`
 
-* [マネージド ID でアクセスしているリソースをご自身が確実に把握している](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-powershell)ようにします。
+* [マネージド ID でアクセスしているリソースをご自身が確実に把握している](../../role-based-access-control/role-assignments-list-powershell.md)ようにします。
 
 ## <a name="move-to-managed-identities"></a>マネージド ID に移行する
 
@@ -126,11 +126,11 @@ Microsoft Graph に対する次の GET 要求を使用して、ご自身のテ�
 
 **マネージド ID の作成については、以下を参照してください。** 
 
-[ユーザー割り当てマネージド ID を作成する](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) 
+[ユーザー割り当てマネージド ID を作成する](../managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) 
 
-[VM の作成中にシステム割り当てマネージド ID を有効にする](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+[VM の作成中にシステム割り当てマネージド ID を有効にする](../managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
-[既存の VM でシステム割り当てマネージド ID を有効にする](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+[既存の VM でシステム割り当てマネージド ID を有効にする](../managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
 **サービス アカウントの詳細については、以下を参照してください。**
 
@@ -146,4 +146,3 @@ Microsoft Graph に対する次の GET 要求を使用して、ご自身のテ�
 
  
 
- 

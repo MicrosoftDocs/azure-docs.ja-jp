@@ -1,26 +1,21 @@
 ---
 title: Azure RBAC の変更のアクティビティ ログを表示する
-description: 過去 90 日間の Azure リソースに対する Azure のロールベースのアクセス制御 (Azure RBAC) の変更のアクティビティ ログを表示します。
+description: Azure のロールベースのアクセス制御 (Azure RBAC) の変更のアクティビティ ログを過去 90 日間分表示します。
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 2bc68595-145e-4de3-8b71-3a21890d13d9
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/27/2020
+ms.date: 03/01/2021
 ms.author: rolyon
-ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 53b72ac22df845f88dc82b14aa5dfaa57973b0d1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d9b39bc9a2f00fe83cae0ff78c6346042967e8bf
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100595841"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042133"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Azure RBAC の変更のアクティビティ ログを表示する
 
@@ -41,6 +36,10 @@ ms.locfileid: "100595841"
 
 ![Portal を使用したアクティビティ ログ - スクリーンショット](./media/change-history-report/activity-log-portal.png)
 
+詳細を表示するには、エントリをクリックし、[概要] ウィンドウを開きます。 **[JSON]** タブをクリックし、詳細なログを取得します。
+
+![ポータルを利用したアクティビティ ログ。[概要] ウィンドウが開いています - スクリーンショット](./media/change-history-report/activity-log-summary-portal.png)
+
 ポータルのアクティビティ ログには複数のフィルターがあります。 Azure RBAC 関連のフィルターを次に示します。
 
 | Assert | 値 |
@@ -50,9 +49,24 @@ ms.locfileid: "100595841"
 
 アクティビティ ログの詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)」を参照してください。
 
-## <a name="azure-powershell"></a>Azure PowerShell
 
-[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+## <a name="interpret-a-log-entry"></a>ログ エントリの解釈
+
+[JSON] タブ、Azure PowerShell、または Azure CLI からのログ出力にはたくさんの情報が含まれていることがあります。 ログ エントリの解釈を試みるとき、次のような主要なプロパティをご確認ください。 Azure PowerShell または Azure CLI を利用し、ログ出力をフィルター処理する方法については、次のセクションをご覧ください。
+
+> [!div class="mx-tableFixed"]
+> | プロパティ | 値の例 | 説明 |
+> | --- | --- | --- |
+> | authorization:action | Microsoft.Authorization/roleAssignments/write | ロール割り当ての作成 |
+> |  | Microsoft.Authorization/roleAssignments/delete | ロール割り当ての削除 |
+> |  | Microsoft.Authorization/roleDefinitions/write | ロールの定義の作成または更新 |
+> |  | Microsoft.Authorization/roleDefinitions/delete | ロールの定義の削除 |
+> | authorization:scope | /subscriptions/{subscriptionId}<br/>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId} | アクションのスコープ |
+> | caller | admin@example.com<br/>{objectId} | アクションを開始したユーザー |
+> | eventTimestamp | 2021-03-01T22:07:41.126243Z | アクションが発生した時刻 |
+> | status:value | Started<br/>成功<br/>失敗 | アクションの状態 |
+
+## <a name="azure-powershell"></a>Azure PowerShell
 
 Azure PowerShell を使用してアクティビティ ログを表示するには、[Get-AzLog](/powershell/module/Az.Monitor/Get-AzLog) コマンドを使用します。
 
@@ -68,56 +82,115 @@ Get-AzLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Act
 Get-AzLog -ResourceGroupName pharma-sales -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleDefinitions/*'}
 ```
 
-このコマンドでは、過去 7 日間のサブスクリプションのロール割り当てとロール定義のすべての変更が一覧表示され、結果が一覧で表示されます。
+### <a name="filter-log-output"></a>ログ出力のフィルター処理
+
+ログ出力には大量の情報が含まれることがあります。 このコマンドでは、あるサブスクリプションに含まれるロールの割り当てとロールの定義のすべての変更が過去 7 日間分、一覧表示され、出力がフィルター処理されます。
 
 ```azurepowershell
 Get-AzLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/role*'} | Format-List Caller,EventTimestamp,{$_.Authorization.Action},Properties
 ```
 
-```Example
-Caller                  : alain@example.com
-EventTimestamp          : 2/27/2020 9:18:07 PM
+次からは、ロールの割り当ての作成時、ログ出力がフィルター処理された例を確認できます。
+
+```azurepowershell
+Caller                  : admin@example.com
+EventTimestamp          : 3/1/2021 10:07:42 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
                           statusCode     : Created
-                          serviceRequestId: 11111111-1111-1111-1111-111111111111
+                          serviceRequestId: {serviceRequestId}
                           eventCategory  : Administrative
+                          entity         : /subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}
+                          message        : Microsoft.Authorization/roleAssignments/write
+                          hierarchy      : {tenantId}/{subscriptionId}
 
-Caller                  : alain@example.com
-EventTimestamp          : 2/27/2020 9:18:05 PM
+Caller                  : admin@example.com
+EventTimestamp          : 3/1/2021 10:07:41 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
-                          requestbody    : {"Id":"22222222-2222-2222-2222-222222222222","Properties":{"PrincipalId":"33333333-3333-3333-3333-333333333333","RoleDefinitionId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers
-                          /Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c","Scope":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"}}
+                          requestbody    : {"Id":"{roleAssignmentId}","Properties":{"PrincipalId":"{principalId}","PrincipalType":"User","RoleDefinitionId":"/providers/Microsoft.Authorization/roleDefinitions/fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64","Scope":"/subscriptions/
+                          {subscriptionId}/resourceGroups/example-group"}}
+                          eventCategory  : Administrative
+                          entity         : /subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}
+                          message        : Microsoft.Authorization/roleAssignments/write
+                          hierarchy      : {tenantId}/{subscriptionId}
 
 ```
 
-サービス プリンシパルを使用してロールの割り当てを作成する場合、Caller プロパティはオブジェクト ID になります。 サービス プリンシパルに関する情報は、[Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) で取得できます。
+サービス プリンシパルを使用してロールの割り当てを作成する場合、Caller プロパティはサービス プリンシパル オブジェクト ID になります。 サービス プリンシパルに関する情報は、[Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) で取得できます。
 
 ```Example
-Caller                  : 44444444-4444-4444-4444-444444444444
-EventTimestamp          : 6/4/2020 9:43:08 PM
+Caller                  : {objectId}
+EventTimestamp          : 3/1/2021 9:43:08 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              : 
                           statusCode     : Created
-                          serviceRequestId: 55555555-5555-5555-5555-555555555555
-                          category       : Administrative
+                          serviceRequestId: {serviceRequestId}
+                          eventCategory  : Administrative
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Azure CLI を使用してアクティビティ ログを表示するには、[az monitor activity-log list](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) コマンドを使用します。
+Azure CLI を使用してアクティビティ ログを表示するには、[az monitor activity-log list](/cli/azure/monitor/activity-log#az_monitor_activity_log_list) コマンドを使用します。
 
-次のコマンドでは、リソース グループの 2 月 27 日から 7 日間のアクティビティ ログが一覧表示されます。
+このコマンドでは、あるリソース グループの 3 月 1 日から 7 日間のアクティビティ ログが一覧表示されます。
 
 ```azurecli
-az monitor activity-log list --resource-group pharma-sales --start-time 2020-02-27 --offset 7d
+az monitor activity-log list --resource-group example-group --start-time 2021-03-01 --offset 7d
 ```
 
-次のコマンドでは、Authorization リソース プロバイダーの 2 月 27 日から 7 日間のアクティビティ ログが一覧表示されます。
+このコマンドでは、Authorization リソース プロバイダーの 3 月 1 日から 7 日間のアクティビティ ログが一覧表示されます。
 
 ```azurecli
-az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2020-02-27 --offset 7d
+az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2021-03-01 --offset 7d
+```
+
+### <a name="filter-log-output"></a>ログ出力のフィルター処理
+
+ログ出力には大量の情報が含まれることがあります。 このコマンドでは、あるサブスクリプションに含まれるロールの割り当てとロールの定義のすべての変更が 7 日間分、一覧表示され、出力がフィルター処理されます。
+
+```azurecli
+az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2021-03-01 --offset 7d --query '[].{authorization:authorization, caller:caller, eventTimestamp:eventTimestamp, properties:properties}'
+```
+
+次からは、ロールの割り当ての作成時、ログ出力がフィルター処理された例を確認できます。
+
+```azurecli
+[
+ {
+    "authorization": {
+      "action": "Microsoft.Authorization/roleAssignments/write",
+      "role": null,
+      "scope": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}"
+    },
+    "caller": "admin@example.com",
+    "eventTimestamp": "2021-03-01T22:07:42.456241+00:00",
+    "properties": {
+      "entity": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}",
+      "eventCategory": "Administrative",
+      "hierarchy": "{tenantId}/{subscriptionId}",
+      "message": "Microsoft.Authorization/roleAssignments/write",
+      "serviceRequestId": "{serviceRequestId}",
+      "statusCode": "Created"
+    }
+  },
+  {
+    "authorization": {
+      "action": "Microsoft.Authorization/roleAssignments/write",
+      "role": null,
+      "scope": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}"
+    },
+    "caller": "admin@example.com",
+    "eventTimestamp": "2021-03-01T22:07:41.126243+00:00",
+    "properties": {
+      "entity": "/subscriptions/{subscriptionId}/resourceGroups/example-group/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}",
+      "eventCategory": "Administrative",
+      "hierarchy": "{tenantId}/{subscriptionId}",
+      "message": "Microsoft.Authorization/roleAssignments/write",
+      "requestbody": "{\"Id\":\"{roleAssignmentId}\",\"Properties\":{\"PrincipalId\":\"{principalId}\",\"PrincipalType\":\"User\",\"RoleDefinitionId\":\"/providers/Microsoft.Authorization/roleDefinitions/fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64\",\"Scope\":\"/subscriptions/{subscriptionId}/resourceGroups/example-group\"}}"
+    }
+  }
+]
 ```
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor ログ
@@ -162,5 +235,5 @@ AzureActivity
 ![高度な分析ポータルを使用したアクティビティ ログ - スクリーンショット](./media/change-history-report/azure-log-analytics.png)
 
 ## <a name="next-steps"></a>次のステップ
-* [アクティビティ ログでのイベントの表示](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
+* [リソースのアクションを監視するアクティビティ ログの表示](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 * [Azure アクティビティ ログでサブスクリプション アクティビティを監視する](../azure-monitor/essentials/platform-logs-overview.md)

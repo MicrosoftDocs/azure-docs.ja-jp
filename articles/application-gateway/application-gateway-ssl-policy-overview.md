@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: amsriva
 ms.openlocfilehash: 77239cd8586b8fb07abf6862be436979541bdb99
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97631692"
 ---
 # <a name="application-gateway-tls-policy-overview"></a>Application Gateway の TLS ポリシーの概要

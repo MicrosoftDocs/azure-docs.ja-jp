@@ -9,10 +9,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: adf80d36edbe8f9a5535e8fa04501918a62ea7ca
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93335634"
 ---
 # <a name="exp-azure-cosmos-db"></a>EXP (Azure Cosmos DB)
@@ -37,9 +37,9 @@ EXP (<numeric_expr>)
   
 ## <a name="remarks"></a>解説
   
-  定数 **e** (2.718281…) は、自然対数の底です。  
+  定数 **e** (2.718281...) は、自然対数の底です。  
   
-  数値の指数は、定数 **e** をその数値で累乗したものです。 たとえば、EXP(1.0) = e^1.0 = 2.71828182845905 および EXP(10) = e^10 = 22026.4657948067 になります。  
+  数値の指数部は、定数 **e** を数値で累乗した値です。 たとえば、EXP(1.0) = e^1.0 = 2.71828182845905 および EXP(10) = e^10 = 22026.4657948067 になります。  
   
   数値の自然対数の指数は数自体です: EXP (LOG (n)) = n。 数値の指数の自然対数は数自体です: LOG (EXP (n)) = n。  
   

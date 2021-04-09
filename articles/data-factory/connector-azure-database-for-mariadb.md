@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: c25d217a5e2aea8acc91fcc8f6fe5ffd026ab976
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100370871"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Database for MariaDB からデータをコピーする 
@@ -43,7 +43,7 @@ Azure Database for MariaDB のリンクされたサービスでは、次のプ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**AzureMariaDB** | はい |
+| type | type プロパティは **AzureMariaDB** に設定する必要があります | はい |
 | connectionString | Azure Database for MariaDB に接続するための接続文字列。 Azure portal で、お使いの Azure Database for MariaDB から [接続文字列] に移動すると、ADO.NET の接続文字列のところに記載されています。 <br/> パスワードを Azure Key Vault に格納して、接続文字列から `pwd` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
@@ -99,7 +99,7 @@ Azure Database for MariaDB からのデータのコピーでは、次のプロ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**AzureMariaDBTable** | はい |
+| type | データセットの type プロパティは **AzureMariaDBTable** に設定する必要があります | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -129,7 +129,7 @@ Azure Database for MariaDB からデータをコピーするために、コピ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**AzureMariaDBSource** | はい |
+| type | コピー アクティビティのソースの type プロパティは **AzureMariaDBSource** に設定する必要があります | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**

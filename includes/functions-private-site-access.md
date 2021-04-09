@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
 ms.openlocfilehash: 3c9679f3d66d58c7a6c847b54c84438c979ecd39
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97936866"
 ---
 [Azure プライベート エンドポイント](../articles/private-link/private-endpoint-overview.md)は、Azure Private Link を使用するサービスに、プライベートで安全に接続するためのネットワーク インターフェイスです。  プライベート エンドポイントでは、仮想ネットワークのプライベート IP アドレスを使用して、サービスが仮想ネットワークに実質的に組み込まれます。

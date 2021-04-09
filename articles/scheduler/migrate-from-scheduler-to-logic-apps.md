@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
 ms.openlocfilehash: 0e9ca2c7b5d15fcc6be451bbe215c8b85d5309eb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92368266"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler ジョブを Azure Logic Apps に移行する
@@ -27,7 +27,7 @@ ms.locfileid: "92368266"
 
 * ビジュアル デザイナーと、Azure Blob Storage、Azure Service Bus、Office 365 Outlook、SAP などの数百のサービスの[すぐに使用できるコネクタ](../connectors/apis-list.md)を使用して、ジョブを構築します。
 
-* スケジュールされた各ワークフローを最上級の Azure リソースとして管理します。 各ロジック アプリは個別の Azure リソースであるため、 *ジョブ コレクション* の概念について心配する必要はありません。
+* スケジュールされた各ワークフローを最上級の Azure リソースとして管理します。 各ロジック アプリは個別の Azure リソースであるため、*ジョブ コレクション* の概念について心配する必要はありません。
 
 * 1 つのロジック アプリを使用して、複数の 1 回限りのジョブを実行します。
 
@@ -53,7 +53,7 @@ Scheduler ジョブはそれぞれ固有であるため、Azure Logic Apps へ�
 
    基本的な手順については、[クイック スタート: 初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
-1. 検索ボックスに「`when a http request`」と入力して、要求トリガーを検索します。 トリガーの一覧から、 **HTTP 要求の受信時**
+1. 検索ボックスに「`when a http request`」と入力して、要求トリガーを検索します。 トリガーの一覧から、**HTTP 要求の受信時**
 
    !["要求" トリガーの追加](./media/migrate-from-scheduler-to-logic-apps/request-trigger.png)
 
@@ -116,7 +116,7 @@ Scheduler ジョブはそれぞれ固有であるため、Azure Logic Apps へ�
 
 | 要求メソッド | URL | Body | ヘッダー |
 |----------------|-----|------|---------|
-| **POST** | <*endpoint-URL*> | **raw** <p>**JSON(application/json)** <p>**[raw]** ボックスに、要求で送信するペイロードを入力します。 <p>**注** :この設定により、 **[ヘッダー]** 値が自動的に構成されます。 | **[キー]** :Content-Type <br>**値** : application/json |
+| **POST** | <*endpoint-URL*> | **raw** <p>**JSON(application/json)** <p>**[raw]** ボックスに、要求で送信するペイロードを入力します。 <p>**注**:この設定により、 **[ヘッダー]** 値が自動的に構成されます。 | **[キー]** :Content-Type <br>**値**: application/json |
 |||||
 
 ![ロジック アプリを手動でトリガーする要求を送信する](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -141,7 +141,7 @@ Logic Apps では、1 回限りのジョブはそれぞれ 1 つのロジック 
 
    基本的な手順については、[クイック スタート: 初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
-1. 検索ボックスに、フィルターとして「recurrence」と入力します。 トリガーの一覧から、 **定期的なアイテム**
+1. 検索ボックスに、フィルターとして「recurrence」と入力します。 トリガーの一覧から、**定期的なアイテム**
 
    !["繰り返し" トリガーの追加](./media/migrate-from-scheduler-to-logic-apps/recurrence-trigger.png)
 
@@ -205,20 +205,20 @@ Azure Sheduler では、既定のアクションが実行に失敗した場合�
 
 <a name="retire-date"></a>
 
-**Q** : Azure Scheduler が廃止になるのはいつですか。 <br>
-**A** : Azure Scheduler は、2019 年 12 月 31 日に完全に廃止される予定です。 この日付より前に行う必要がある重要な手順と詳細なタイムラインについては、「[Scheduler のサービス停止日を 2019 年 12 月 31 日まで延長](https://azure.microsoft.com/updates/extending-retirement-date-of-scheduler/)」を参照してください。 一般的な更新については、[Azure の更新情報 - スケジューラ](https://azure.microsoft.com/updates/?product=scheduler)を参照してください。
+**Q**: Azure Scheduler が廃止になるのはいつですか。 <br>
+**A**: Azure Scheduler は、2019 年 12 月 31 日に完全に廃止される予定です。 この日付より前に行う必要がある重要な手順と詳細なタイムラインについては、「[Scheduler のサービス停止日を 2019 年 12 月 31 日まで延長](https://azure.microsoft.com/updates/extending-retirement-date-of-scheduler/)」を参照してください。 一般的な更新については、[Azure の更新情報 - スケジューラ](https://azure.microsoft.com/updates/?product=scheduler)を参照してください。
 
-**Q** : サービスの廃止後、ジョブ コレクションとジョブはどうなりますか。 <br>
-**A** : Scheduler のすべてのジョブ コレクションとジョブが実行を停止され、システムから削除されます。
+**Q**: サービスの廃止後、ジョブ コレクションとジョブはどうなりますか。 <br>
+**A**: Scheduler のすべてのジョブ コレクションとジョブが実行を停止され、システムから削除されます。
 
-**Q** : Scheduler ジョブを Logic Apps に移行する前に、バックアップまたはその他のタスクを実行する必要がありますか。 <br>
-**A** : ベスト プラクティスとして、作業は常にバックアップしてください。 Scheduler ジョブを削除または無効にする前に、作成したロジック アプリが期待どおりに実行されていることを確認します。
+**Q**: Scheduler ジョブを Logic Apps に移行する前に、バックアップまたはその他のタスクを実行する必要がありますか。 <br>
+**A**: ベスト プラクティスとして、作業は常にバックアップしてください。 Scheduler ジョブを削除または無効にする前に、作成したロジック アプリが期待どおりに実行されていることを確認します。
 
-**Q** : ジョブを Scheduler から Logic Apps に移行するために役立つツールはありますか。 <br>
-**A** : 各 Scheduler ジョブは独特であるため、すべてに対応できるツールは存在しません。 ただし、ニーズに基づき、[このスクリプトを編集して Azure Scheduler ジョブを Azure Logic Apps に移行する](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration)ことができます。
+**Q**: ジョブを Scheduler から Logic Apps に移行するために役立つツールはありますか。 <br>
+**A**: 各 Scheduler ジョブは独特であるため、すべてに対応できるツールは存在しません。 ただし、ニーズに基づき、[このスクリプトを編集して Azure Scheduler ジョブを Azure Logic Apps に移行する](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration)ことができます。
 
-**Q** : Scheduler ジョブを移行するためのサポートはどこで受けられますか。 <br>
-**A** : サポートを受けるためのいくつかの方法を次に示します。
+**Q**: Scheduler ジョブを移行するためのサポートはどこで受けられますか。 <br>
+**A**: サポートを受けるためのいくつかの方法を次に示します。
 
 **Azure Portal**
 

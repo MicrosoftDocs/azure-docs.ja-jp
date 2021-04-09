@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
 ms.openlocfilehash: 7fd9e504448d55b4a2ef8c10b4ba1176cb2e3402
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96172637"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>すべてのアプリを Azure AD と統合するための 5 つの手順

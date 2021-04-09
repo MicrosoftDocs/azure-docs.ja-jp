@@ -10,10 +10,10 @@ ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
 ms.openlocfilehash: 0c182e1093c29206d27a0e55a46dd9a5607fa6ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101701707"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-logs-classic"></a>Azure Storage Analytics ログを有効にして管理する (クラシック)
@@ -26,7 +26,7 @@ ms.locfileid: "101701707"
 > - [Azure Blob Storage の監視](../blobs/monitor-blob-storage.md)
 > - [Azure Files の監視](../files/storage-files-monitoring.md)
 > - [Azure Queue Storage の監視](../queues/monitor-queue-storage.md)
-> - [Azure Table Storage の監視](../tables/monitor-table-storage.md)
+> - [Azure Table ストレージの監視](../tables/monitor-table-storage.md)
 
 Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
 

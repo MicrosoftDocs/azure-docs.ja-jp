@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d14fdc4e2b2b1dfca8194077acc0453808611946
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97897945"
 ---
 # <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>CloudSimple プライベート クラウド環境内の VMware 仮想マシンで Azure Application Gateway を使用する
@@ -44,7 +44,7 @@ Azure Application Gateway を使用して、CloudSimple プライベート ク�
 3. [Azure アプリケーション ゲートウェイをデプロイする](#3-deploy-an-azure-application-gateway)
 4. [プライベート クラウド内で Web サーバー VM プールを作成および構成する](#4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud)
 
-## <a name="1-verify-prerequisites"></a>1.前提条件を確認する
+## <a name="1-verify-prerequisites"></a>1. 前提条件を確認する
 
 以下の前提条件が満たされていることを確認します。
 
@@ -53,7 +53,7 @@ Azure Application Gateway を使用して、CloudSimple プライベート ク�
 * CloudSimple プライベート クラウドが既に作成されている。
 * 仮想ネットワーク内の IP サブネットとプライベート クラウド内のサブネットの間で IP の競合がない。
 
-## <a name="2-connect-your-azure-virtual-network-to-your-private-cloud"></a>2.Azure 仮想ネットワークをプライベート クラウドに接続する
+## <a name="2-connect-your-azure-virtual-network-to-your-private-cloud"></a>2. Azure 仮想ネットワークをプライベート クラウドに接続する
 
 Azure 仮想ネットワークをプライベート クラウドに接続するには、次の手順に従います。
 
@@ -65,7 +65,7 @@ Azure 仮想ネットワークをプライベート クラウドに接続する�
 
 4. [コピーしたピアリング情報を使用して、仮想ネットワークを ExpressRoute 回線にリンクします](virtual-network-connection.md)。
 
-## <a name="3-deploy-an-azure-application-gateway"></a>3.Azure アプリケーション ゲートウェイをデプロイする
+## <a name="3-deploy-an-azure-application-gateway"></a>3. Azure アプリケーション ゲートウェイをデプロイする
 
 これを行うための詳細な手順は、「[Azure portal を使用してパス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する](../application-gateway/create-url-route-portal.md)」で確認できます。 必要な手順の概要は次のとおりです。
 

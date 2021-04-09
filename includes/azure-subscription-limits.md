@@ -1,5 +1,5 @@
 ---
-title: ファイルを含める
+title: インクルード ファイル
 description: インクルード ファイル
 author: rothja
 ms.service: azure-resource-manager
@@ -8,10 +8,10 @@ ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
 ms.openlocfilehash: 74f9c5304237ec77a629bc914d95c345882b784f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95558939"
 ---
 | リソース | 既定の制限 | 上限 |

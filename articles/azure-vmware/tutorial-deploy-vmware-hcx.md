@@ -3,21 +3,21 @@ title: チュートリアル - VMware HCX をデプロイして構成する
 description: Azure VMware Solution プライベート クラウドのために VMware HCX ソリューションをデプロイして構成する方法について説明します。
 ms.topic: tutorial
 ms.date: 11/25/2020
-ms.openlocfilehash: a792f8dbc646f61377cf0a88e1a6e386340f23e8
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a8b089ce834d5b49e4ad32081a58e371835e8602
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357893"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488307"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX をデプロイして構成する
 
 この記事では、Azure VMware Solution プライベート クラウドのためにオンプレミスの VMware HCX コネクタをデプロイして構成する方法について説明します。 VMware HCX を使用すると、さまざまな移行の種類を通じて、Azure VMware Solution やその他の接続されたサイトに VMware のワークロードを移行できます。 Azure VMware Solution では HCX Cloud Manager をデプロイして構成するため、オンプレミスの VMware データセンターで HCX コネクタをダウンロードし、アクティブ化して構成する必要があります。
 
-VMware HCX Advanced コネクタは、Azure VMware Solution にあらかじめデプロイされています。 最大 3 つのサイト接続 (オンプレミスからクラウド、またはクラウドからクラウド) がサポートされます。 3 つを超えるサイト接続が必要な場合は、[VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) アドオンを有効にするために[サポート リクエスト](https://portal.azure.com/#create/Microsoft.Support)を送信してください。 このアドオンは現在、プレビュー段階です。 
+VMware HCX Advanced コネクタは、Azure VMware Solution にあらかじめデプロイされています。 最大 3 つのサイト接続 (オンプレミスからクラウド、またはクラウドからクラウド) がサポートされます。 3 つを超えるサイト接続が必要な場合は、[VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) アドオンを有効にするために[サポート リクエスト](https://portal.azure.com/#create/Microsoft.Support)を送信してください。  
 
 >[!TIP]
->VMware Configuration Maximums ツールでは、オンプレミスの Connector と Cloud Manager との間におけるサイト ペアの最大数は 25 と説明されていますが、ライセンスにより、Advanced Edition では 3 に、Enterprise Edition では 10 に制限されます。
+>VMware Configuration Maximums ツールでは、オンプレミスの Connector と Cloud Manager との間におけるサイト ペアの最大数は 25 と説明されていますが、ライセンスにより、HCX Advanced Edition では 3 に、HCX Enterprise Edition では 10 に制限されます。
 
 >[!NOTE]
 >VMware HCX Enterprise は、Azure VMware Solution でプレビュー サービスとして使用できます。 これは無料で、プレビュー サービスの使用条件が適用されます。 VMware HCX Enterprise サービスが一般提供されると、課金に切り替わるという通知が 30 日前に届きます。 サービスを無効にするかオプトアウトするオプションも用意されます。 VMware HCX Enterprise から VMware HCX Advanced への単純なダウングレード パスはありません。 ダウングレードする場合は、再デプロイする必要があり、ダウンタイムが発生します。
@@ -58,9 +58,9 @@ VMware HCX Enterprise を使用する場合は、Azure VMware Solution のサポ
 
 ### <a name="network-and-ports"></a>ネットワークとポート
 
-* [Azure ExpressRoute Global Reach](tutorial-expressroute-global-reach-private-cloud.md) は、オンプレミスと Azure VMware Solution SDDC ExpressRoute 回線との間に構成されます。
+* [Azure ExpressRoute Global Reach](tutorial-expressroute-global-reach-private-cloud.md) は、オンプレミスと Azure VMware Solution プライベート クラウド ExpressRoute 回線との間に構成されます。
 
-* オンプレミスのコンポーネントと Azure VMware Solution SDDC の間の通信に[必要なすべてのポート](https://ports.vmware.com/home/VMware-HCX)を開きます。
+* オンプレミスのコンポーネントと Azure VMware Solution プライベートの間の通信に[必要なすべてのポート](https://ports.vmware.com/home/VMware-HCX)を開きます。
 
 ### <a name="ip-addresses"></a>IP アドレス
 
@@ -76,12 +76,15 @@ VMware HCX Enterprise を使用する場合は、Azure VMware Solution のサポ
 
    :::image type="content" source="media/tutorial-vmware-hcx/find-hcx-ip-address.png" alt-text="VMware HCX IP アドレスのスクリーンショット。" lightbox="media/tutorial-vmware-hcx/find-hcx-ip-address.png":::
 
-1. **[管理]**  >  **[ID]** の順に選択し、 **[vCenter admin password]\(vCenter 管理者パスワード\)** を選択して、パスワードを特定します。
+1. **[管理]**  >  **[ID]** を選択します。 
+
+   プライベート クラウドの vCenter および NSX-T Manager の URL とユーザーの資格情報が表示されます。
 
    > [!TIP]
-   > VCenter のパスワードは、プライベート クラウドの設定時に定義されました。 これは、Azure VMware Solution HCX Manager にサインインするときに使用するパスワードと同じです。
+   > VCenter のパスワードは、プライベート クラウドの設定時に定義されました。 これは、Azure VMware Solution HCX Manager にサインインするときに使用するパスワードと同じです。 **[Generate a new password]\(新しいパスワードを生成する\)** を選択して、新しい vCenter および NSX-T のパスワードを生成できます。
 
-   :::image type="content" source="media/tutorial-vmware-hcx/hcx-admin-password.png" alt-text="hcx パスワードを見つけます。" lightbox="media/tutorial-vmware-hcx/hcx-admin-password.png":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="プライベート クラウドの vCenter および NSX Manager の URL と資格情報を表示する。" border="true":::
+
 
 1. ブラウザー ウィンドウを開き、**cloudadmin\@vsphere.local** ユーザー資格情報を使用して、`https://x.x.x.9` のポート 443 で Azure VMware Solution HCX Manager にサインインします
 
@@ -166,7 +169,7 @@ VMware HCX コネクタ OVA をオンプレミスにデプロイし、アプラ�
 この手順全体の概要については、動画「[Azure VMware Solution: HCX をアクティブにする](https://www.youtube.com/embed/PnVg6SZkQsY?rel=0&amp;vq=hd720)」を参照してください。
 
    > [!IMPORTANT]
-   > VMware HCX Advanced と VMware HCX Enterprise のどちらを使用しているかにかかわらず、VMware の[サポート技術情報の記事 81558](https://kb.vmware.com/s/article/81558) からパッチをインストールする必要がある場合があります。 
+   > HCX Advanced と HCX Enterprise のどちらを使用しているかにかかわらず、VMware の[サポート技術情報の記事 81558](https://kb.vmware.com/s/article/81558) からパッチをインストールする必要がある場合があります。 
 
 ## <a name="configure-the-vmware-hcx-connector"></a>VMware HCX コネクタを構成する
 
@@ -279,7 +282,7 @@ VMware HCX コネクタによって、複数の IP セグメントを必要と�
 
 ### <a name="create-a-service-mesh"></a>サービス メッシュを作成する
 
-ここで、オンプレミスと Azure VMware Solution SDDC の間のサービス メッシュを構成します。
+ここで、オンプレミスと Azure VMware Solution プライベート クラウドの間にサービス メッシュを構成します。
 
 
 
@@ -366,7 +369,7 @@ VMware HCX コネクタによって、複数の IP セグメントを必要と�
 
 ## <a name="next-steps"></a>次のステップ
 
-アプライアンスの相互接続のトンネルの状態が **[UP]\(アップ\)** で緑色である場合は、VMware HCX を使用して、Azure VMware Solution VM の移行と保護を行うことができます。 Azure VMware Solution では、ワークロードの移行がサポートされています (ネットワーク拡張機能を使用または不使用)。 vSphere 環境のワークロードも、オンプレミスにネットワークを作成し、それらのネットワークに VM をデプロイして、移行できます。  
+HCX の相互接続トンネルの状態が **[UP]\(アップ\)** で緑色である場合は、VMware HCX を使用して、Azure VMware Solution VM の移行と保護を行うことができます。 Azure VMware Solution では、ワークロードの移行がサポートされています (ネットワーク拡張機能を使用または不使用)。 vSphere 環境のワークロードも、オンプレミスにネットワークを作成し、それらのネットワークに VM をデプロイして、移行できます。  
 
 HCX の使用の詳細については、VMware のテクニカル ドキュメントを参照してください。
 

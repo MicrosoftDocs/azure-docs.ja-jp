@@ -107,6 +107,8 @@
       href: concepts/logging-diagnostics.md
     - name: 粗い再局在化
       href: concepts/coarse-reloc.md
+    - name: アンカーの検索方法
+      href: concepts/anchor-locate-strategy.md
 - name: References
   items:
     - name: Unity 用 SDK

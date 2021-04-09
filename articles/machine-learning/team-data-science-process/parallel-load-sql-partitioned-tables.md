@@ -12,15 +12,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 456e881d84697f4542f972ac0798cc95a3455b3c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93322412"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Azure VM 上の SQL Server にデータを高速に並列でインポートするためのテーブルの作成と最適化
 
-この記事では、データを SQL Server データベースに高速に並列一括インポートするためのパーティション分割されたテーブルを作成する方法について説明します。 SQL データベースへのビッグ データの読み込み/転送では、" *パーティション テーブルとビュー* " を使用することによって、SQL データベースへのデータのインポートと以降のクエリを向上させることができます。 
+この記事では、データを SQL Server データベースに高速に並列一括インポートするためのパーティション分割されたテーブルを作成する方法について説明します。 SQL データベースへのビッグ データの読み込み/転送では、"*パーティション テーブルとビュー*" を使用することによって、SQL データベースへのデータのインポートと以降のクエリを向上させることができます。 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>新しいデータベースとファイル グループのセットの作成
 * [新しいデータベースを作成します](/sql/t-sql/statements/create-database-transact-sql) (まだ存在しない場合)。

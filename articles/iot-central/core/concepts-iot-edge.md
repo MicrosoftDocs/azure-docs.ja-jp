@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 91869614aef03b819a5f7fbb355004f6e802d673
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1a464b9e039f256fae52c32d828b1ec39a20a228
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733017"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123277"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -87,6 +87,20 @@ IoT Central とデバイスの対話方法は、[デバイス テンプレート
 * IoT Central でオペレーターがコマンドの呼び出しに使用する UI を表示できるように、デバイスが応答するコマンド。
 
 標準デバイスと同じように、IoT Edge デバイスで、テレメトリの送信、プロパティ値の同期、コマンドへの応答を行うことができます。 そのため、IoT Edge デバイスには IoT Central のデバイス テンプレートが必要です。
+
+### <a name="iot-edge-device-templates"></a>IoT Edge デバイス テンプレート
+
+IoT Central デバイス テンプレートでは、モデルを利用してデバイスの機能を表します。 次の図は、IoT Edge デバイスのモデル構造を示しています。
+
+:::image type="content" source="media/concepts-iot-edge/iot-edge-model.png" alt-text="IoT Central に接続されている IoT Edge デバイスのモデル構造" border="false":::
+
+IoT Central は、IoT Edge デバイスを次のようにモデル化します。
+
+* すべての IoT Edge デバイス テンプレートに機能モデルがあります。
+* 配置マニフェストに一覧表示されているすべてのカスタム モジュールに対して、モジュール機能モデルが生成されます。
+* 各モジュール機能モデルとデバイス モデルの間にリレーションシップが確立されます。
+* モジュール機能モデルは、1 つまたは複数のモジュール インターフェイスを実装します。
+* 各モジュール インターフェイスには、テレメトリ、プロパティ、およびコマンドが含まれます。
 
 ### <a name="iot-edge-deployment-manifests-and-iot-central-device-templates"></a>IoT Edge の配置マニフェストと IoT Central のデバイス テンプレート
 

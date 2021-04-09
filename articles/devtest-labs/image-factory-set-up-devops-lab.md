@@ -4,10 +4,10 @@ description: この記事では、Azure DevOps (旧称 Visual Studio Team Servic
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: fa7050bae1ff8681e04b6ab38220be9eaf38a64a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85476140"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Azure DevOps からイメージ ファクトリを実行する
@@ -42,7 +42,7 @@ Azure DevOps では、ソース コードを格納し、1 つの場所で Azure 
 
 1. 前の手順で作成した Azure DevOps プロジェクトを参照してください (URL は **https:\//\<accountname>.visualstudio.com/MyFirstProject** などとなります)。
 2. **[Import a Repository]\(リポジトリのインポート\)** を選択します。
-3. DevTest Labs リポジトリの**クローン URL** を入力します: `https://github.com/Azure/azure-devtestlab`。
+3. DevTest Labs リポジトリの **クローン URL** を入力します: `https://github.com/Azure/azure-devtestlab`。
 4. **[インポート]** を選択します。
 
     ![Git リポジトリのインポート](./media/set-up-devops-lab/import-git-repo.png)
@@ -58,8 +58,8 @@ Azure DevOps では、ソース コードを格納し、1 つの場所で Azure 
 1. 開始するには、DevOps プロジェクトのホームページで **[ビルドのセットアップ]** を選択します。
 
     ![[ビルドのセットアップ] ボタン](./media/set-up-devops-lab/setup-build-button.png)
-2. ビルドの**名前**を指定します (たとえば、"イメージのビルドと DevTest Labs への配信")。
-3. **空の**ビルド定義を選択し、 **[適用]** を選択してビルドを作成します。
+2. ビルドの **名前** を指定します (たとえば、"イメージのビルドと DevTest Labs への配信")。
+3. **空の** ビルド定義を選択し、 **[適用]** を選択してビルドを作成します。
 4. この段階で、ビルド エージェントに **[Hosted]\(ホステッド\)**  を選択できます。
 5. ビルド定義の **[保存]** を実行します。
 
@@ -78,7 +78,7 @@ Azure DevOps では、ソース コードを格納し、1 つの場所で Azure 
 | MachineUserName | ImageFactoryUser | 仮想マシンの組み込み管理者アカウント ユーザー名。 これは一時的なアカウントです。 |
 | StandardTimeoutMinutes | 30 | 通常の Azure 操作を待つ必要があるタイムアウト。 |
 | SubscriptionId |  0000000000-0000-0000-0000-0000000000000 | ラボが存在し、サービス エンドポイントがアクセスできるサブスクリプションの ID。 |
-| VMSize | Standard_A3 | **作成**手順に使用する仮想マシンのサイズ。 作成された VM は一時的なものです。 サイズは、[ラボに有効](devtest-lab-set-lab-policy.md)なものでなければなりません。 十分な[サブスクリプション コア クォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)があることを確認します。
+| VMSize | Standard_A3 | **作成** 手順に使用する仮想マシンのサイズ。 作成された VM は一時的なものです。 サイズは、[ラボに有効](devtest-lab-set-lab-policy.md)なものでなければなりません。 十分な[サブスクリプション コア クォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)があることを確認します。
 
 ![ビルド変数](./media/set-up-devops-lab/configure-build-variables.png)
 
@@ -93,18 +93,18 @@ Azure DevOps では、ソース コードを格納し、1 つの場所で Azure 
 
 サービス プリンシパルをセットアップする最も速い方法は、Azure DevOps にその実行を任せることです。
 
-1. 先ほど追加した**タスク**を選択します。
+1. 先ほど追加した **タスク** を選択します。
 2. **[Azure 接続の種類]** で、 **[Azure Resource Manager]** を選択します。
 3. **[管理]** リンクを選択して、サービス プリンシパルを設定します。
 
-詳細については、[このブログの投稿](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)を参照してください。 **[管理]** リンクを選択すると、Azure への接続を設定するための、DevOps の適切な場所が表示されます (ブログ投稿の 2 番目のスクリーン ショット)。 これを設定するときには、**Azure Resource Manager サービス エンドポイント**を必ず選択します。
+詳細については、[このブログの投稿](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)を参照してください。 **[管理]** リンクを選択すると、Azure への接続を設定するための、DevOps の適切な場所が表示されます (ブログ投稿の 2 番目のスクリーン ショット)。 これを設定するときには、**Azure Resource Manager サービス エンドポイント** を必ず選択します。
 
 ## <a name="complete-the-build-task"></a>ビルド タスクを実行する
 ビルド タスクを選択した場合、入力する必要があるすべての詳細が右側のウィンドウに表示されます。
 
 1. 最初に、ビルド タスクの名前を付けます。**仮想マシンを作成します**。
-2. **Azure Resource Manager** を選択して作成した**サービス プリンシパル**を選択します。
-3. **サービス エンドポイント**を選択します。
+2. **Azure Resource Manager** を選択して作成した **サービス プリンシパル** を選択します。
+3. **サービス エンドポイント** を選択します。
 4. **[スクリプト パス]** に、右側で **...(省略記号)** を選択します。
 5. **MakeGoldenImageVMs.ps1** スクリプトに移動します。
 6. スクリプトのパラメーターは、次のように表示されます。`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -DevTestLabName $(DevTestLabName) -vmSize $(VMSize) -machineUserName $(MachineUserName) -machinePassword (ConvertTo-SecureString -string '$(MachinePassword)' -AsPlainText -Force) -StandardTimeoutMinutes $(StandardTimeoutMinutes)`

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/23/2020
 ms.author: jeedes
 ms.openlocfilehash: acdfd8b6c57ad2005f116ffb1e5a3c94a5cb87f2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92522633"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-michigan-data-hub-single-sign-on"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Michigan Data Hub Single Sign-On の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Michigan Data Hub Single Sign-On では、 **SP** によって開始される SSO がサポートされます
+* Michigan Data Hub Single Sign-On では、**SP** によって開始される SSO がサポートされます
 * Michigan Data Hub Single Sign-On を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-michigan-data-hub-single-sign-on-from-the-gallery"></a>ギャラリーからの Michigan Data Hub Single Sign-On の追加
@@ -50,7 +50,7 @@ Azure AD への Michigan Data Hub Single Sign-On の統合を構成するには�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Michigan Data Hub Single Sign-On** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Michigan Data Hub Single Sign-On**」と入力します。
 1. 結果のパネルから **Michigan Data Hub Single Sign-On** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -117,7 +117,7 @@ Michigan Data Hub Single Sign-On で Azure AD の SSO を構成してテスト�
 
 ## <a name="configure-michigan-data-hub-single-sign-on-sso"></a>Michigan Data Hub Single Sign-On の SSO の構成
 
-**Michigan Data Hub Single Sign-On** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Michigan Data Hub Single Sign-On のサポート チーム](mailto:support@midatahub.org)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Michigan Data Hub Single Sign-On** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Michigan Data Hub Single Sign-On のサポート チーム](mailto:support@midatahub.org)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-michigan-data-hub-single-sign-on-test-user"></a>Michigan Data Hub Single Sign-On のテスト ユーザーの作成
 

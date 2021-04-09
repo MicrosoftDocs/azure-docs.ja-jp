@@ -16,10 +16,10 @@ ms.date: 03/04/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e99a199fcc5f43f3710fe2e2fcfe55b7e624987b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91317465"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>チュートリアル: Linux VM のシステム割り当てマネージド ID を使用してアクセス キーで Azure Storage にアクセスする
@@ -42,7 +42,7 @@ ms.locfileid: "91317465"
 
 1. Azure Portal の左上隅にある **[+/新しいサービスの作成]** ボタンをクリックします。
 2. **[ストレージ]** 、次に **[ストレージ アカウント]** をクリックすると、新しい [ストレージ アカウントの作成] パネルが表示されます。
-3. 後で使用する、ストレージ アカウントの**名前**を入力します。  
+3. 後で使用する、ストレージ アカウントの **名前** を入力します。  
 4. **[デプロイ モデル]** と **[アカウントの種類]** が "Resource manager" と "General purpose" にそれぞれ設定されている必要があります。 
 5. **[サブスクリプション]** と **[リソース グループ]** が、前の手順で VM を作成したときに指定したものと一致していることを確認します。
 6. **Create** をクリックしてください。
@@ -82,7 +82,7 @@ ms.locfileid: "91317465"
 
 1. Azure Portal で **[Virtual Machines]** にナビゲートして Linux 仮想マシンに移動し、 **[概要]** ページの上部にある **[接続]** をクリックします。 VM に接続する文字列をコピーします。 
 2. SSH クライアントを使用して VM に接続します。  
-3. 次に、**Linux VM** の作成時に追加した**パスワード**の入力を求められます。 パスワードを入力すると、正常にサインインできます。  
+3. 次に、**Linux VM** の作成時に追加した **パスワード** の入力を求められます。 パスワードを入力すると、正常にサインインできます。  
 4. CURL を使用して Azure Resource Manager のアクセス トークンを取得します。  
 
     アクセス トークンの CURL 要求と応答を次に示します。

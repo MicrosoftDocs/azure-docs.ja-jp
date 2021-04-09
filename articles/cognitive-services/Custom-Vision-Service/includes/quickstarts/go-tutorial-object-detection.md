@@ -2,25 +2,41 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 09/15/2020
-ms.openlocfilehash: 439a75907ccdc6d2f1af4f2a3d9fc951bdd6307d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/25/2021
+ms.openlocfilehash: f8c15b1236d15c193638842ce4dab7e81cd70ace
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947790"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102184237"
 ---
 このガイドでは、Go 用の Custom Vision クライアント ライブラリを使用して物体検出モデルを構築する際の足がかりとして役立つ手順とサンプル コードを紹介します。 プロジェクトを作成し、タグを追加し、プロジェクトをトレーニングして、プロジェクトの予測エンドポイント URL を使用してプログラムでテストします。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
 
 > [!NOTE]
-> 物体検出モデルの構築と使用をコードを記述 "_することなく_" 行う場合は、[ブラウザーベースのガイダンス](../../get-started-build-detector.md)を参照してください。
+> コードを記述 "_せずに_" 物体検出モデルの構築とトレーニングを行う場合は、代わりに [ブラウザーベースのガイダンス](../../get-started-build-detector.md)を参照してください。
+
+.Go 用 Custom Vision クライアント ライブラリを使用すると、次のことができます。
+
+* 新しい Custom Vision プロジェクトを作成する
+* プロジェクトにタグを追加する
+* 画像をアップロードし、タグ付けする
+* プロジェクトをトレーニングする
+* 現在のイテレーションを公開する
+* 予測エンドポイントをテストする
+
+リファレンス ドキュメント [(トレーニング)](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training) [(予測)](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction)| ライブラリのソース コード [(トレーニング)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/customvision/training) [(予測)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.1/customvision/prediction) 
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Go 1.8+](https://golang.org/doc/install)
-- [!INCLUDE [create-resources](../../includes/create-resources.md)]
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
+* [Go 1.8+](https://golang.org/doc/install)
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision"  title="Custom Vision リソースを作成"  target="_blank">Custom Vision リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、トレーニングおよび予測リソースを作成し、キーとエンドポイントを取得します。 デプロイするまで待ち、 **[リソースに移動]** ボタンをクリックします。
+    * 対象のアプリケーションを Custom Vision に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
-## <a name="install-the-custom-vision-client-library"></a>Custom Vision クライアント ライブラリをインストールする
+## <a name="setting-up"></a>設定
+
+### <a name="install-the-custom-vision-client-library"></a>Custom Vision クライアント ライブラリをインストールする
 
 Go 用の Custom Vision で画像分析アプリを作成するには、Custom Vision のサービス クライアント ライブラリが必要です。 PowerShell で次のコマンドを実行します。
 
@@ -33,15 +49,12 @@ go get -u github.com/Azure/azure-sdk-for-go/...
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
 
-[!INCLUDE [get-keys](../../includes/get-keys.md)]
 
 [!INCLUDE [python-get-images](../../includes/python-get-images.md)]
 
-## <a name="add-the-code"></a>コードの追加
-
-目的のプロジェクト ディレクトリに、*sample.go* という新しいファイルを作成します。
-
 ## <a name="create-the-custom-vision-project"></a>Custom Vision プロジェクトを作成する
+
+任意のプロジェクト ディレクトリに *sample.go* という新しいファイルを作成し、任意のコード エディターで開きます。
 
 新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 該当する各定義にサブスクリプション キーを挿入します。 また、Custom Vision Web サイトの [設定] ページからエンドポイント URL を取得します。
 

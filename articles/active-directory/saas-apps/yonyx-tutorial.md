@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 1cbf0b03928f8cf8823fe2491c48d0470cf24606
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92519148"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>チュートリアル: Azure Active Directory と Yonyx Interactive Guides の統合
@@ -41,9 +41,9 @@ Yonyx Interactive Guides と Azure AD の統合を構成するには、次のも
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Yonyx Interactive Guides では、 **SP** によって開始される SSO がサポートされます
+* Yonyx Interactive Guides では、**SP** によって開始される SSO がサポートされます
 
-* Yonyx Interactive Guides では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* Yonyx Interactive Guides では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-yonyx-interactive-guides-from-the-gallery"></a>ギャラリーからの Yonyx Interactive Guides の追加
 
@@ -63,13 +63,13 @@ Azure AD への Yonyx Interactive Guides の統合を構成するには、ギャ
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Yonyx Interactive Guides** 」と入力し、結果ウィンドウで **[Yonyx Interactive Guides]** を選択して **[追加]** ボタンをクリックし、アプリケーションを追加します。
+4. 検索ボックスに「**Yonyx Interactive Guides**」と入力し、結果ウィンドウで **[Yonyx Interactive Guides]** を選択して **[追加]** ボタンをクリックし、アプリケーションを追加します。
 
      ![結果一覧の Yonyx Interactive Guides](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Yonyx Interactive Guides で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Yonyx Interactive Guides で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Yonyx Interactive Guides 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Yonyx Interactive Guides で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -87,7 +87,7 @@ Yonyx Interactive Guides で Azure AD のシングル サインオンを構成�
 
 Yonyx Interactive Guides で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Yonyx Interactive Guides** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Yonyx Interactive Guides** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -144,7 +144,7 @@ Yonyx Interactive Guides で Azure AD シングル サインオンを構成す�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -156,7 +156,7 @@ Yonyx Interactive Guides で Azure AD シングル サインオンを構成す�
 
 このセクションでは、Britta Simon に Yonyx Interactive Guides へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Yonyx Interactive Guides]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Yonyx Interactive Guides]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

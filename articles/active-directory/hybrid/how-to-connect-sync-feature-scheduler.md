@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad7b0039602add7f4cd3cdd300bd829c4f148a79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90084738"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同期: Scheduler
@@ -74,7 +74,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 * SyncCycleEnabled
 * MaintenanceEnabled
 
-Azure AD Connect の以前のビルドでは、**isStagingModeEnabled** は Set-ADSyncScheduler で公開されていました。 このプロパティの設定は**サポートされていません**。 プロパティ **SchedulerSuspended** は Connect でのみ変更する必要があります。 PowerShell で直接これを設定することは**サポートされていません**。
+Azure AD Connect の以前のビルドでは、**isStagingModeEnabled** は Set-ADSyncScheduler で公開されていました。 このプロパティの設定は **サポートされていません**。 プロパティ **SchedulerSuspended** は Connect でのみ変更する必要があります。 PowerShell で直接これを設定することは **サポートされていません**。
 
 スケジューラの構成は Azure AD に保存されます。 ステージング サーバーがある場合、プライマリ サーバーでの変更はステージング サーバーにも影響します (IsStagingModeEnabled を除く)。
 

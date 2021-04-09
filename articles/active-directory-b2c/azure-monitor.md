@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 01/29/2021
-ms.openlocfilehash: 712a933276393890bf017a2517196031306233ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bc1dea8121d7986b8394adf6545a0b2c30afb133
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573009"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580183"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Monitor で Azure AD B2C を監視する
 
@@ -46,7 +46,7 @@ Azure AD B2C では、[Azure Active Directory 監視](../active-directory/report
 
 ![リソース グループのプロジェクション](./media/azure-monitor/resource-group-projection.png)
 
-このデプロイ中に、Log Analytics ワークスペースがホストされる Azure AD B2C テナントと Azure AD テナントの両方を構成します。 デプロイの実行に使用されるアカウントには、両方のテナントの[全体管理者](../active-directory/roles/permissions-reference.md#limit-use-of-global-administrator)ロールが割り当てられている必要があります。 また、説明に従って各手順を完了するときに、正しいディレクトリにサインインしていることを確認することも重要です。
+このデプロイ中に、Log Analytics ワークスペースがホストされる Azure AD B2C テナントと Azure AD テナントの両方を構成します。 Azure AD B2C アカウントには、Azure AD B2C テナントの[全体管理者](../active-directory/roles/permissions-reference.md#limit-use-of-global-administrator)ロールが割り当てられている必要があります。 デプロイを実行するために使用される Azure AD アカウントには、Azure AD サブスクリプションの[所有者](../role-based-access-control/built-in-roles.md#owner)ロールが割り当てられている必要があります。また、説明に従って各手順を完了するときに、正しいディレクトリにサインインしていることを確認することも重要です。
 
 ## <a name="1-create-or-choose-resource-group"></a>1. リソース グループの作成または選択
 
@@ -97,7 +97,7 @@ Azure AD B2C では、[Azure Active Directory 監視](../active-directory/report
 2. ポータル ツールバーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、**Azure AD テナント** が含まれているディレクトリを選択します。
 3. **[Azure へのデプロイ]** ボタンを使用して、Azure portal を開き、テンプレートをポータルに直接デプロイします。 詳細については、「[Azure Resource Manager テンプレートの作成](../lighthouse/how-to/onboard-customer.md#create-an-azure-resource-manager-template)」を参照してください。
 
-   [![Azure へのデプロイ](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Lighthouse-samples%2Fmaster%2Ftemplates%2Frg-delegated-resource-management%2FrgDelegatedResourceManagement.json)
+   [![Azure へのデプロイ](https://aka.ms/deploytoazurebutton)](   https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure-ad-b2c%2Fsiem%2Fmaster%2Ftemplates%2FrgDelegatedResourceManagement.json)
 
 5. **[カスタム デプロイ]** ページで、次の情報を入力します。
 

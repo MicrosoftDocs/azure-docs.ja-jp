@@ -12,32 +12,28 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66a6317b0cb59d656cdb2e402c5ade1b78ed60aa
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 646c2216c3d71aa441d33dde0ab3e2ef7bb4fd89
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258322"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101643560"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>アプリケーションに対してテナント全体の管理者の同意を付与する
 
-アプリケーションに対してテナント全体の管理者の同意を付与することで、ユーザー エクスペリエンスを簡略化する方法について説明します。 この記事では、さまざまな方法でこれを実現します。 この方法は、Azure Active Directory (Azure AD) テナントのすべてのエンド ユーザーに適用されます。
+  アプリケーションにテナント全体の管理者の同意を付与する方法について説明します。 この記事では、さまざまな方法でこれを実現します。
 
 アプリケーションに同意する行為の詳細については、「[Azure Active Directory 同意フレームワーク](../develop/consent-framework.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-テナント全体の管理者の同意を付与するには、[グローバル管理者](../roles/permissions-reference.md#global-administrator)、[アプリケーション管理者](../roles/permissions-reference.md#application-administrator)、または[クラウド アプリケーション管理者](../roles/permissions-reference.md#cloud-application-administrator)としてサインインする必要があります。
-
-> [!IMPORTANT]
-> アプリケーションにテナント全体の管理者の同意が付与されていると、ユーザーの割り当てが必要であると構成されていない限り、すべてのユーザーがアプリにサインインできるようになります。 アプリケーションにサインインできるユーザーを制限するには、ユーザー割り当てを要求してから、アプリケーションにユーザーまたはグループを割り当てます。 詳細については、[ユーザーとグループの割り当て方法](./assign-user-or-group-access-portal.md)に関するページを参照してください。
->
-> Microsoft Graph API にアプリケーション許可のための管理者の同意を与えるには、グローバル管理者ロールが必要です。
+テナント全体の管理者の同意を付与するには、組織を代表して同意する権限を持つユーザーとしてサインインする必要があります。 これには、[全体管理者](../roles/permissions-reference.md#global-administrator)と[特権ロール管理者](../roles/permissions-reference.md#privileged-role-administrator)、および一部のアプリケーションでは、[アプリケーション管理者](../roles/permissions-reference.md#application-administrator)と[クラウド アプリケーション管理者](../roles/permissions-reference.md#cloud-application-administrator)が含まれます。 [アプリケーションにアクセス許可を付与するアクセス許可](../roles/custom-consent-permissions.md)を含む[カスタム ディレクトリ ロール](../roles/custom-create.md)が割り当てられているユーザーも、テナント全体の同意を付与することが許可されます。
 
 > [!WARNING]
 > テナント全体の管理者の同意をアプリケーションに付与すると、アプリおよびアプリの発行者に、組織のデータへのアクセスが許可されます。 同意を付与する前に、アプリケーションで要求されているアクセス許可をよく確認してください。
->
-> Microsoft Graph API にアプリケーション許可のための管理者の同意を与えるには、グローバル管理者ロールが必要です。
+
+> [!IMPORTANT]
+> アプリケーションにテナント全体の管理者の同意が付与されていると、ユーザーの割り当てが必要であると構成されていない限り、すべてのユーザーがアプリにサインインできるようになります。 アプリケーションにサインインできるユーザーを制限するには、ユーザー割り当てを要求してから、アプリケーションにユーザーまたはグループを割り当てます。 詳細については、[ユーザーとグループの割り当て方法](./assign-user-or-group-access-portal.md)に関するページを参照してください。
 
 ## <a name="grant-admin-consent-from-the-azure-portal"></a>Azure portal から管理者の同意を付与する
 
@@ -101,4 +97,4 @@ https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id={client-id}
 
 [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/v2-permissions-and-consent.md)
 
-[Microsoft Q&A の Azure AD](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+[Microsoft Q&A の Azure AD](/answers/topics/azure-active-directory.html)

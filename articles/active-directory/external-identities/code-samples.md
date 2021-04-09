@@ -13,10 +13,10 @@ ms.reviewer: elisolMS
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fcf6e7a4fb5e76dddba6162bbabfdc5abc806a20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87906933"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Azure Active Directory B2B コラボレーション コードと PowerShell サンプル
@@ -80,7 +80,7 @@ namespace SampleInviteApp
         static readonly string InviteEndPoint = "https://graph.microsoft.com/v1.0/invitations";
 
         /// <summary>
-        ///  Authentication endpoint to get token.
+        ///  Authentication endpoint to get token.
         /// </summary>
         static readonly string EstsLoginEndpoint = "https://login.microsoftonline.com";
 

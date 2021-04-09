@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 5dbf98d363429e6d22a0b7719cdc669deebd21a0
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f853dca12b6a5855dc0603259ab534fa9933cd5b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348638"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432300"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>クイック スタート:Web ポータルを使用して初めてのメトリックを監視する
 
@@ -30,7 +30,7 @@ Metrics Advisor インスタンスをプロビジョニングするとき、サ�
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
-* Azure サブスクリプションを作成したら、Azure portal で <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title="Metrics Advisor リソースを作成"  target="_blank">Metrics Advisor リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>して、Metrics Advisor インスタンスをデプロイします。  
+* Azure サブスクリプションを作成したら、Azure portal で <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title="Metrics Advisor リソースを作成"  target="_blank">Metrics Advisor リソースを作成</a>して、Metrics Advisor インスタンスをデプロイします。  
 
     
 > [!TIP]

@@ -4,10 +4,10 @@ description: 他の Azure サービスに接続するバインドを、ご利用
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.openlocfilehash: d1c6f5bb8ca5fcf995b8a8d326abbec96f1d2e35
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99258203"
 ---
 # <a name="connect-functions-to-azure-services-using-bindings"></a>バインドを使用して関数を Azure サービスに接続する

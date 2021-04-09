@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
 ms.openlocfilehash: 4535e6bf11f8c2abf20b1b323925c3fc3299d362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90971793"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Logic Apps でのデプロイを自動化するために Azure Resource Manager テンプレートを作成する
@@ -34,7 +34,7 @@ Azure Resource Manager テンプレートの詳細については、これらの
 
 ほぼデプロイできる状態の有効なパラメーター化ロジック アプリ テンプレートを作成するには、Visual Studio (無料の Community Edition 以上) と Azure Logic Apps Tools for Visual Studio を使用する方法が最も簡単です。 その後に、[Visual Studio でロジック アプリを作成](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)するか、または [Azure portal で既存のロジック アプリを見つけて Visual Studio にダウンロード](../logic-apps/manage-logic-apps-with-visual-studio.md)します。
 
-ロジック アプリをダウンロードすると、ロジック アプリの定義やその他のリソース (接続など) が含まれたテンプレートを取得できます。 また、このテンプレートは、ロジック アプリとその他のリソースのデプロイに使用される値の*パラメーター化* (パラメーターの定義) を行います。 これらのパラメーターには、独立したパラメーター ファイルで値を提供できます。 これにより、デプロイのニーズに応じてこれらの値をより簡単に変更できます。 詳細については、以下のトピックを参照してください。
+ロジック アプリをダウンロードすると、ロジック アプリの定義やその他のリソース (接続など) が含まれたテンプレートを取得できます。 また、このテンプレートは、ロジック アプリとその他のリソースのデプロイに使用される値の *パラメーター化* (パラメーターの定義) を行います。 これらのパラメーターには、独立したパラメーター ファイルで値を提供できます。 これにより、デプロイのニーズに応じてこれらの値をより簡単に変更できます。 詳細については、以下のトピックを参照してください。
 
 * [Visual Studio でロジック アプリを作成する](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Visual Studio でロジック アプリを管理する](../logic-apps/manage-logic-apps-with-visual-studio.md)

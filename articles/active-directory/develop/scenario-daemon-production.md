@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8dc9bff86a07f3d4a0ec6fd224de6d5633165a6d
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: d903f04055d1607ee782bd502d99a8fd9cde87ca
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582843"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104578449"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Web API を呼び出すデーモン アプリ - 運用環境への移行
 
@@ -54,18 +54,43 @@ ms.locfileid: "99582843"
 
     ![トポロジ](media/scenario-daemon-app/damon-app-sample-web.svg)
 
+# <a name="java"></a>[Java](#tab/java)
+
+クイックスタート「[トークンを取得し、Java コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](quickstart-v2-java-daemon.md)」をお試しください。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+- 詳細については、次を参照してください。
+  - [構成](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/configuration.md)について
+  - [ConfidentialClientApplication](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/initialize-confidential-client-application.md) のインスタンス化
+  - [FAQ](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/faq.md)
+- 他のサンプル/チュートリアル:
+  - [MSAL ノード コンソール デーモンのサンプル](https://github.com/Azure-Samples/ms-identity-javascript-nodejs-console)
+
+# <a name="python"></a>[Python](#tab/python)
+
+クイックスタート「[トークンを取得し、Python コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](quickstart-v2-python-daemon.md)」をお試しください。
+
 ---
 
 ## <a name="next-steps"></a>次のステップ
 
 詳細については、次のリンクを参照してください。
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
-クイックスタート「[トークンを取得し、Python コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](./quickstart-v2-python-daemon.md)」をお試しください。
+クイックスタート「[トークンを取得し、.NET Core コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](quickstart-v2-netcore-daemon.md)」をお試しください。
 
 # <a name="java"></a>[Java](#tab/java)
 
-クイックスタート「[トークンを取得し、Java コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](./quickstart-v2-java-daemon.md)」をお試しください。
+クイックスタート「[トークンを取得し、Java コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](quickstart-v2-java-daemon.md)」をお試しください。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+クイックスタート「[トークンを取得し、Node.js コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](quickstart-v2-nodejs-console.md)」をお試しください。
+
+# <a name="python"></a>[Python](#tab/python)
+
+クイックスタート「[トークンを取得し、Python コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](quickstart-v2-python-daemon.md)」をお試しください。
 
 ---

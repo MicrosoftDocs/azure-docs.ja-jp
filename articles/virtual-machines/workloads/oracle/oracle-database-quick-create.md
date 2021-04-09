@@ -2,18 +2,18 @@
 title: Azure VM での Oracle データベースの作成 | Microsoft Docs
 description: Azure 環境で Oracle Database 12c データベースをすばやく起動して実行します。
 author: dbakevlar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: kegorman
-ms.reviewer: cynthn
-ms.openlocfilehash: a202c8d176d6b9a8893a7bc5aaad6771942dda04
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 8964248bb23b2b615c7e73e26d730fbd79b4e9e7
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063064"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184459"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Azure VM での Oracle データベースの作成
 
@@ -188,16 +188,16 @@ az vm disk attach --name oradata01 --new --resource-group rg-oracle --size-gb 12
    echo "/dev/sdc1               /u02                    ext4    defaults        0 0" >> /etc/fstab
    ```
    
-10. パブリック IP とホスト名で * **/etc/hosts** _ ファイルを更新します。
+10. パブリック IP とホスト名で ***/etc/hosts*** ファイルを更新します。
 
-    _*_<Public IP> と <VMname>_*_ は、実際の値に合わせて変更してください。
+    ***<Public IP> と <VMname>*** は、実際の値に合わせて変更してください。
   
     ```bash
     echo "<Public IP> <VMname>.eastus.cloudapp.azure.com <VMname>" >> /etc/hosts
     ```
 11. hostname ファイルを更新します
     
-    次のコマンドを使用して、VM のドメイン名を _ */etc/hostname** ファイルに追加します。 ここでは、リソース グループと VM が **eastus** リージョンに作成されていることを想定しています。
+    次のコマンドを使用して、VM のドメイン名を **/etc/hostname** ファイルに追加します。 ここでは、リソース グループと VM が **eastus** リージョンに作成されていることを想定しています。
     
     ```bash
     sed -i 's/$/\.eastus\.cloudapp\.azure\.com &/' /etc/hostname
@@ -221,12 +221,12 @@ Oracle ソフトウェアは、既に Marketplace イメージにインストー
 1.  **oracle** ユーザーに切り替えます。
 
     ```bash
-    $ sudo su - oracle
+    sudo su - oracle
     ```
 2. データベースのリスナーを開始する
 
    ```bash
-   $ lsnrctl start
+   lsnrctl start
    ```
    次のように出力されます。
   

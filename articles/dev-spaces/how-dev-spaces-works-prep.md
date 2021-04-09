@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Azure Dev Spaces でプロジェクトを準備する方法について説明します
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 ms.openlocfilehash: d2da69dd8a8c2683ff584dfd0ffc61cb023f2ece
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91968159"
 ---
 # <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Azure Dev Spaces のためにプロジェクトを準備する方法
@@ -36,7 +36,7 @@ azds prep --enable-ingress
 
 ソース コードを含むディレクトリから `prep` コマンドを実行する "*必要があります*"。 正しいディレクトリから `prep` コマンドを実行すると、クライアント側ツールで言語を識別し、アプリケーションのコンテナー化に適した Dockerfile を作成できます。 Java プロジェクト用の *pom.xml* ファイルを含むディレクトリから `prep` コマンドを実行することもできます。
 
-ソース コードが含まれないディレクトリから `prep` コマンドを実行すると、クライアント側ツールでは Dockerfile が生成されません。 また、次のようなエラーが表示されます。"*Dockerfile could not be generated due to unsupported language\(サポートされていない言語が原因で Dockerfile を生成できませんでした\)* "。 このエラーは、クライアント側ツールでプロジェクト タイプが認識されない場合にも発生します。
+ソース コードが含まれないディレクトリから `prep` コマンドを実行すると、クライアント側ツールでは Dockerfile が生成されません。 また、"*Dockerfile could not be generated due to unsupported language (サポートされていない言語が原因で Dockerfile を生成できませんでした)* " というエラーが表示されます。 このエラーは、クライアント側ツールでプロジェクト タイプが認識されない場合にも発生します。
 
 `prep` コマンドの実行時には、`--enable-ingress` フラグを指定することができます。 このフラグは、インターネットにアクセス可能なエンドポイントをこのサービス用に作成するようコントローラーに指示します。 このフラグを指定しない場合は、クラスター内から、またはクライアント側ツールで作成された localhost トンネルを使用してサービスにアクセスする必要があります。 生成された Helm チャートを更新することで、`prep` コマンドの実行後にこの動作を有効または無効にすることができます。
 

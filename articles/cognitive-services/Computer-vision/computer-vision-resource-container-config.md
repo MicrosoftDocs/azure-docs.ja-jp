@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 0539f37fe15f68d8bfd47bf426333f9d5c67c37d
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: ee2e4fca697c086b95e83feb9d40ce8e07dc344c
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006876"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102611897"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>読み取り OCR Docker コンテナーを構成する
 
@@ -39,6 +39,8 @@ ms.locfileid: "96006876"
 |いいえ|Queue:Azure:QueueVisibilityTimeoutInMilliseconds | v3.x コンテナーのみ。 別のワーカーが処理しているときにメッセージが非表示になる時間。 |
 |いいえ|Storage::DocumentStore::MongoDB|v2.0 コンテナーのみ。 永続的な結果ストレージ用に MongoDB を有効にします。 |
 |いいえ|Storage:ObjectStore:AzureBlob:ConnectionString| v3.x コンテナーのみ。 Azure BLOB ストレージの接続文字列。 |
+|いいえ|Storage:TimeToLiveInDays| v3.x コンテナーのみ。 結果の有効期限 (日数)。 この設定によって、システムが認識結果をクリアするタイミングが指定されます。 既定値は 2 日 (48 時間) です。これは、その期間より長く存続するすべての結果は、正常に取得されるとは限らないことを意味します。 |
+|いいえ|Task:MaxRunningTimeSpanInMinutes| v3.x コンテナーのみ。 1 つの要求の最大実行時間。 既定値は 60 分です。 |
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 構成設定
 

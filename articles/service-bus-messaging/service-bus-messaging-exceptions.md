@@ -4,10 +4,10 @@ description: この記事では、Azure Service Bus メッセージングの例�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 3b56aff2635593d6cb49adbcf3784ddd5cb4fa39
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99219147"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Service Bus メッセージングの例外

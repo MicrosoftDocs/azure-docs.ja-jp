@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: e4578b41e5cbb62c8a1bfa0c48d4fd60d042a506
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100361521"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory の Web アクティビティ
@@ -88,7 +88,7 @@ connectVia | データ ストアに接続するために使用される[統合�
 
 | 値の型 | 要求本文 | 応答本文 |
 |---|---|---|
-|JSON オブジェクト | サポート | サポートされています |
+|JSON オブジェクト | サポートされています | サポートされています |
 |JSON 配列 | サポートされています <br/>(バグがあるため、現在、JSON 配列は動作していません。 修正が進行中です)。 | サポートされていない |
 | JSON 値 | サポートされています | サポートされていない |
 | 非 JSON 型 | サポートされていない | サポートされていない |

@@ -2,15 +2,15 @@
 title: クイックスタート - Teams の会議に参加する
 author: askaur
 ms.author: askaur
-ms.date: 02/17/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 0c5ff52e5d3769124cd101b2483f18aea6963d25
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dd183e9088f24aa8b94955bc8ed2a68b4a7eb27c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101749993"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496179"
 ---
 ## <a name="joining-the-meeting-chat"></a>会議チャットへの参加 
 
@@ -23,7 +23,7 @@ Teams の相互運用性が有効になると、Communication Services ユーザ
 ```console
 npm install @azure/communication-common --save
 
-npm install @azure/communication-administration --save
+npm install @azure/communication-identity --save
 
 npm install @azure/communication-signaling --save
 
@@ -153,7 +153,7 @@ client.js ファイルの内容を次のスニペットに置き換えます。
 // npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
 import { CallClient, CallAgent } from "@azure/communication-calling";
 import { AzureCommunicationUserCredential } from "@azure/communication-common";
-import { CommunicationIdentityClient } from "@azure/communication-administration";
+import { CommunicationIdentityClient } from "@azure/communication-identity";
 import { ChatClient } from "@azure/communication-chat";
 
 let call;

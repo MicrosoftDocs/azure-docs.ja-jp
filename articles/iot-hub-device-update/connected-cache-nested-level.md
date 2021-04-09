@@ -7,12 +7,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 1501153b73683081dfac0684d6714eb537c03380
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0128d0de4f078b62bc9571c8758d80cb26585354
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658733"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102615382"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-sample-two-level-nested-azure-iot-edge-gateway-with-outbound-unauthenticated-proxy"></a>Microsoft 接続キャッシュ プレビュー デプロイ シナリオのサンプル: アウトバンドの認証されていないプロキシによる 2 レベルの入れ子の Azure IoT Edge ゲートウェイ
 
@@ -70,7 +70,7 @@ Azure IoT Edge ゲートウェイの多層デプロイの構成の詳細につ�
 ## <a name="child-gateway-configuration"></a>子ゲートウェイ構成
 
 >[!Note]
->独自のプライベート レジストリで構成に使用されているコンテナーをレプリケートした場合、モジュールのデプロイの config.xml 設定とランタイム設定を変更する必要があります。 詳細については、[チュートリアル - IoT Edge デバイスの階層の作成 - Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-nested-iot-edge?view=iotedge-2020-11&tabs=azure-portal#deploy-modules-to-the-lower-layer-device&preserve-view=true) に関するページを参照してください。
+>独自のプライベート レジストリで構成に使用されているコンテナーをレプリケートした場合、モジュールのデプロイの config.xml 設定とランタイム設定を変更する必要があります。 詳細については、[チュートリアル - IoT Edge デバイスの階層の作成 - Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-nested-iot-edge?view=iotedge-2020-11&tabs=azure-portal&preserve-view=true#deploy-modules-to-the-lower-layer-device) に関するページを参照してください。
 
 1. 次の例に示すように、Edge エージェントのイメージ パスを変更します。
 

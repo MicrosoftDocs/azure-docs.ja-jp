@@ -4,12 +4,12 @@ description: Azure HDInsight IO キャッシュについて、およびそれを
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/23/2019
-ms.openlocfilehash: 32f0756e59f81ad2c5d155581feed8c4fef09808
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 9df585c102e2c7307e949e38b6b69147372c38dd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940130"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866303"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Azure HDInsight IO キャッシュを使用して Apache Spark のワークロードのパフォーマンスを改善する
 
@@ -35,9 +35,9 @@ Azure HDInsight IO キャッシュはプレビューでは既定で非アクテ�
 
 1. 左側の **[IO キャッシュ]** を選択します。
 
-1. **[アクション]** (HDI 3.6 では **[Service Actions]\(サービス アクション\)** )、 **[有効にする]** の順に選択します。
+1. **[アクション]** (HDI 3.6 では **[Service Actions]\(サービス アクション\)**)、**[有効にする]** の順に選択します。
 
-    ![Ambari での IO キャッシュ サービスの有効化](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "Ambari での IO キャッシュ サービスの有効化")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png " alt-text="Ambari での IO キャッシュ サービスの有効化" border="true":::
 
 1. 影響を受けるクラスター上のすべてのサービスの再起動を確認します。
 
@@ -50,23 +50,23 @@ IO キャッシュを有効にした後に Spark のジョブを実行すると�
 
 1. Apache Ambari で、左側にある **[HDFS]** サービスを選択します。
 
-1. **[Configs]\(構成\)** タブを選択し、 **[Advanced]\(詳細\)** タブを選択します。
+1. **[Configs]\(構成\)** タブを選択し、**[Advanced]\(詳細\)** タブを選択します。
 
-    ![HDFS の詳細構成を編集する](./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png "HDFS の詳細構成を編集する")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png " alt-text="HDFS の詳細構成を編集する" border="true":::
 
-1. 下にスクロールし、 **[Custom core-site]\(カスタム コアサイト\)** 領域を展開します。
+1. 下にスクロールし、**[Custom core-site]\(カスタム コアサイト\)** 領域を展開します。
 
 1. プロパティ **hadoop.cache.data.fullness.percentage** を探します。
 
 1. ボックスの値を変更します。
 
-    ![IO キャッシュの最大割合を編集する](./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png "IO キャッシュの最大割合を編集する")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png " alt-text="IO キャッシュの最大割合を編集する" border="true":::
 
 1. 右上の **[Save]\(保存\)** を選択します。
 
 1. **[Restart]\(再起動\)**  >  **[Restart All Affected]\(影響を受けるすべてを再起動\)** を選択します。
 
-    ![Apache Ambari の [Restart All Affected]\(影響を受けるすべてを再起動\)](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "影響を受けるものをすべて再起動する")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png " alt-text="Apache Ambari の [Restart All Affected]\(影響を受けるすべてを再起動\)" border="true":::
 
 1. **[Confirm Restart All]\(すべて再起動\)** を選択します。
 

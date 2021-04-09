@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 23ae1a2c1371cda9435ea76f02cebc79c141c904
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92522242"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>チュートリアル: Azure Active Directory と Proxyclick の統合
@@ -60,7 +60,7 @@ Azure AD への Proxyclick の統合を設定するには、ギャラリーか�
 
     ![[新しいアプリケーション] を選択する](common/add-new-app.png)
 
-4. 検索ボックスに、「**Proxyclick**」と入力します。 検索結果で **[Proxyclick]** を選択し、 **[追加]** を選択します。
+4. 検索ボックスに、「**Proxyclick**」と入力します。 検索結果で **[Proxyclick]** を選択し、**[追加]** を選択します。
 
      ![[検索結果]](common/search-new-app.png)
 
@@ -84,7 +84,7 @@ Proxyclick で Azure AD のシングル サインオンを構成およびテス�
 
 Proxyclick で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の Proxyclick アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の Proxyclick アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![[シングル サインオン] の選択](common/select-sso.png)
 
@@ -141,7 +141,7 @@ Proxyclick で Azure AD シングル サインオンを構成するには、次�
 
     ![[Account & Settings]\(アカウントと設定\) を選択する](./media/proxyclick-tutorial/configure1.png)
 
-3. 下のまでスクロールし **[Integrations]\(統合\)** セクションで、 **[SAML]** を選択します。
+3. 下のまでスクロールし **[Integrations]\(統合\)** セクションで、**[SAML]** を選択します。
 
     ![[SAML] を選択する](./media/proxyclick-tutorial/configure2.png)
 
@@ -153,7 +153,7 @@ Proxyclick で Azure AD シングル サインオンを構成するには、次�
 
     1. **[SAML SSO Redirect URL]\(SAML SSO リダイレクト URL\)** の値をコピーし、Azure portal の **[基本的な SAML 構成]** ダイアログ ボックスにある **[サインオン URL]** ボックスと **[識別子]** ボックスに貼り付けます。
 
-    1. **[SAML Request Method]\(SAML 要求メソッド\)** 一覧で、 **[HTTP Redirect]\(HTTP リダイレクト\)** を選択します。
+    1. **[SAML Request Method]\(SAML 要求メソッド\)** 一覧で、**[HTTP Redirect]\(HTTP リダイレクト\)** を選択します。
 
     1. **[Issuer]/(発行者/)** ボックスに、Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
 
@@ -185,17 +185,17 @@ Proxyclick で Azure AD シングル サインオンを構成するには、次�
 
     1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
 
-    1. **作成** を選択します。
+    1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Proxyclick へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Proxyclick]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Proxyclick]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、 **[Proxyclick]** を選択します。
+2. アプリケーションの一覧で、**[Proxyclick]** を選択します。
 
     ![アプリケーションの一覧](common/all-applications.png)
 

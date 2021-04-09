@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 32aa64a9343a8e3c62af4322b3320b28ce805064
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97369193"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Azure セキュリティ ベンチマークの概要

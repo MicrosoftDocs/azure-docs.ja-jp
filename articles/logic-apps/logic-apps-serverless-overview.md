@@ -9,13 +9,13 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
 ms.openlocfilehash: 470857883144f4bf8c21a1921afacb7ba3f5ca00
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98788097"
 ---
-# <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure サーバーレス: Azure Logic Apps と Azure Functions を使用してクラウド ベースのアプリおよびソリューションを構築するための概要
+# <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure Serverless: Azure Logic Apps と Azure Functions を使用してクラウド ベースのアプリおよびソリューションを構築するための概要
 
 [サーバーレス](https://azure.microsoft.com/solutions/serverless/) アプリには、開発速度の向上、コードの削減、簡単さ、スケーリングなどの利点があります。 この記事では、サーバーレス ソリューションのさまざまな属性と Azure サーバーレスのオファリングについて説明します。
 

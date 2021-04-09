@@ -4,10 +4,10 @@ description: この記事では、Azure 仮想マシン上で実行されてい�
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: efb9c3f786e429df404e261f053a9c9a9b032e11
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96296456"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Azure VM での SAP HANA データベースバックアップについて

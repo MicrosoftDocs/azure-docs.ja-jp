@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 12/15/2020
 ms.author: kumud
 ms.openlocfilehash: 2801aa6b2e2b72df815b170200587c49ec0bae14
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99538994"
 ---
 # <a name="what-is-subnet-delegation"></a>サブネットの委任とは

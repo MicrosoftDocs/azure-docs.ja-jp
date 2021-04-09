@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 460ea446fc6dfc43e81a1a57bbba032a61f3a72d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90532547"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>PowerShell を使用してクラシック デプロイ モデルから Resource Manager デプロイ モデルに ExpressRoute 回線を移行する
@@ -54,7 +54,7 @@ Azure クラシック環境にサインインし、サービス キーを収集�
    Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
    ```
 
-4. 次のコマンドレットを使用して、すべての ExpressRoute 回線のサービス キーを取得します。 キーの取得後、Resource Manager デプロイ モデルに移行する回線の**サービス キー**をコピーします。
+4. 次のコマンドレットを使用して、すべての ExpressRoute 回線のサービス キーを取得します。 キーの取得後、Resource Manager デプロイ モデルに移行する回線の **サービス キー** をコピーします。
 
    ```powershell
    Get-AzureDedicatedCircuit

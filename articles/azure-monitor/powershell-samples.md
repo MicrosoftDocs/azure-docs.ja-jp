@@ -7,10 +7,10 @@ ms.author: bwren
 ms.date: 2/14/2018
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 1aa0d44dcb73a925494c0bc4aae43dc93e5a33d0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102047062"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Monitor PowerShell のサンプル

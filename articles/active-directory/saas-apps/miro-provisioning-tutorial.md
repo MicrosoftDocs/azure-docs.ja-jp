@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: Zhchia
 ms.openlocfilehash: d3dee76ada7a9ed48813928937f8f8da8be4add1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348043"
 ---
 # <a name="tutorial-configure-miro-for-automatic-user-provisioning"></a>チュートリアル:Miro を構成し、自動ユーザー プロビジョニングに対応させる

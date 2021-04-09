@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: e1b8c44f020d18066423eed236018308fe88b607
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75649175"
 ---
 # <a name="custom-resource-cache-reference"></a>カスタム リソースのキャッシュのリファレンス
@@ -42,11 +42,11 @@ ms.locfileid: "75649175"
 
 ## <a name="building-proxy-resource-endpoint"></a>プロキシ リソース エンドポイントの構築
 
-"Proxy, Cache" リソース **エンドポイント**を実装する**エンドポイント**では、Azure の新しい API に対する要求と応答を処理する必要があります。 この場合、**resourceType** により、シングル リソース上で CRUD を実行するための `PUT`、`GET`、`DELETE` 用と、すべての既存リソースを取得するための `GET` 用に、新しい Azure リソース API が生成されます。
+"Proxy, Cache" リソース **エンドポイント** を実装する **エンドポイント** では、Azure の新しい API に対する要求と応答を処理する必要があります。 この場合、**resourceType** により、シングル リソース上で CRUD を実行するための `PUT`、`GET`、`DELETE` 用と、すべての既存リソースを取得するための `GET` 用に、新しい Azure リソース API が生成されます。
 
 > [!NOTE]
-> Azure API は要求メソッドの `PUT`、`GET`、および `DELETE` を生成しますが、キャッシュ **エンドポイント**は `PUT` と `DELETE` だけを処理する必要があります。
-> **エンドポイント**に `GET` も実装することをお勧めします。
+> Azure API は要求メソッドの `PUT`、`GET`、および `DELETE` を生成しますが、キャッシュ **エンドポイント** は `PUT` と `DELETE` だけを処理する必要があります。
+> **エンドポイント** に `GET` も実装することをお勧めします。
 
 ### <a name="create-a-custom-resource"></a>カスタム リソースの作成
 
@@ -67,7 +67,7 @@ Content-Type: application/json
 }
 ```
 
-この要求は、その後、次の形式で**エンドポイント**に転送されます。
+この要求は、その後、次の形式で **エンドポイント** に転送されます。
 
 ``` HTTP
 PUT https://{endpointURL}/?api-version=2018-09-01-preview
@@ -84,14 +84,14 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-同様に、**エンドポイント**からの応答は、その後顧客に返されます。 エンドポイントからの応答は、次のように返される必要があります。
+同様に、**エンドポイント** からの応答は、その後顧客に返されます。 エンドポイントからの応答は、次のように返される必要があります。
 
 - 有効な JSON オブジェクト ドキュメント。 すべての配列と文字列は、最上位のオブジェクトの下で入れ子にする必要があります。
 - `Content-Type` ヘッダーは "application/json; charset=utf-8" に設定される必要があります。
 - カスタム リソースプロバイダーは、要求の `name`、`type`、および `id` フィールドを上書きします。
 - カスタム リソースプロバイダーは、キャッシュ エンドポイントの `properties` オブジェクトの下にあるフィールドのみを返します。
 
-**エンドポイント**の応答:
+**エンドポイント** の応答:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -138,7 +138,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-この要求は、その後、次の形式で**エンドポイント**に転送されます。
+この要求は、その後、次の形式で **エンドポイント** に転送されます。
 
 ``` HTTP
 Delete https://{endpointURL}/?api-version=2018-09-01-preview
@@ -146,13 +146,13 @@ Content-Type: application/json
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}
 ```
 
-同様に、**エンドポイント**からの応答は、その後顧客に返されます。 エンドポイントからの応答は、次のように返される必要があります。
+同様に、**エンドポイント** からの応答は、その後顧客に返されます。 エンドポイントからの応答は、次のように返される必要があります。
 
 - 有効な JSON オブジェクト ドキュメント。 すべての配列と文字列は、最上位のオブジェクトの下で入れ子にする必要があります。
 - `Content-Type` ヘッダーは "application/json; charset=utf-8" に設定される必要があります。
-- Azure カスタム リソースプロバイダーは、200 レベルの応答が返された場合にのみ、アイテムをキャッシュから削除します。 リソースが存在しない場合でも、**エンドポイント**は 204 を返す必要があります。
+- Azure カスタム リソースプロバイダーは、200 レベルの応答が返された場合にのみ、アイテムをキャッシュから削除します。 リソースが存在しない場合でも、**エンドポイント** は 204 を返す必要があります。
 
-**エンドポイント**の応答:
+**エンドポイント** の応答:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -176,7 +176,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-この要求は、**エンドポイント**に転送され**ません**。
+この要求は、**エンドポイント** に転送され **ません**。
 
 Azure カスタム リソースプロバイダーの応答:
 
@@ -207,7 +207,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-この要求は、**エンドポイント**に転送され**ません**。
+この要求は、**エンドポイント** に転送され **ません**。
 
 Azure カスタム リソースプロバイダーの応答:
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Allocadia の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Allocadia の統合 | Microsoft Docs'
 description: Azure Active Directory と Allocadia の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
 ms.openlocfilehash: cfb3da0b711bc1ac3f577a8f5af2a03c8532e925
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92318822"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-allocadia"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Allocadia の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-allocadia"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Allocadia の統合
 
 このチュートリアルでは、Allocadia と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Allocadia を統合すると、次のことができます。
 
@@ -70,7 +70,7 @@ Allocadia で Azure AD SSO を構成してテストするには、次の構成�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Allocadia** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Allocadia** アプリケーション統合ページで、**[管理]** セクションを探して、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -146,7 +146,7 @@ Allocadia で Azure AD SSO を構成してテストするには、次の構成�
 
 ## <a name="configure-allocadia-sso"></a>Allocadia の SSO を構成する
 
-**Allocadia** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Allocadia サポート チーム](mailto:support@allocadia.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Allocadia** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Allocadia サポート チーム](mailto:support@allocadia.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-allocadia-test-user"></a>Allocadia のテスト ユーザーの作成
 

@@ -1,18 +1,18 @@
 ---
-title: クイック スタート:Azure PowerShell を使用して Apache Kafka を作成する - HDInsight
+title: 'クイックスタート: Azure PowerShell を使用して Apache Kafka を作成する - HDInsight'
 description: このクイックスタートでは、Azure PowerShell を使って Azure HDInsight に Apache Kafka クラスターを作成する方法を説明します。 Kafka のトピック、サブスクライバー、およびコンシューマーについても説明します。
 ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 74fa512711dfb9226fcc88d949f5ddfeb0f9812b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f993ffa8d0d141d04ad399c5d1d4f0fc28cc82ac
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942623"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102505139"
 ---
-# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>クイック スタート:PowerShell を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>クイックスタート: PowerShell を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
 
 [Apache Kafka](https://kafka.apache.org/) は、オープンソースの分散ストリーミング プラットフォームです。 発行/サブスクライブ メッセージ キューと同様の機能を備えているため、メッセージ ブローカーとして多く使われています。 
 
@@ -247,7 +247,7 @@ Kafka は、"*トピック*" にデータのストリームを格納します。
         
         3 つの障害ドメインがあるリージョンでは、3 のレプリケーション係数により、レプリカを障害ドメインに分散できます。 2 つの障害ドメインのリージョンでは、4 のレプリケーション係数により、ドメイン全体に均等にレプリカが分散されます。
         
-        リージョン内の障害ドメインの数については、[Linux 仮想マシンの可用性](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)に関するトピックを参照してください。
+        リージョン内の障害ドメインの数については、[Linux 仮想マシンの可用性](../../virtual-machines/availability.md)に関するトピックを参照してください。
 
         Kafka は、Azure 障害ドメインを認識しません。 トピック用にパーティションのレプリカを作成すると、レプリカが適切に分散されず、高可用性が実現しない場合があります。
 

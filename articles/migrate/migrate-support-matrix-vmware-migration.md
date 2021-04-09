@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: fc3ba062f4995e975015d7c4db145ccde0c3f701
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 40fcdae9a94b2b48eb4c665f4e0c9c3e58962f4b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705213"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576783"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 移行のサポートマトリックス
 
@@ -27,14 +27,9 @@ VMware VM は、次のいくつかの方法で移行できます。
 
 [この記事](server-migrate-overview.md)を参照し、あなたが使用したい方法の詳細を確認してください。
 
-## <a name="migration-limitations"></a>移行の上限
-
-- Azure portal を通じて、レプリケーションのために最大 10 台の VM を一度に選択できます。 より多くのマシンを移行する場合は、10 個単位のグループでレプリケートします。 PowerShell コマンドレットを使用してレプリケートできる VM の台数に制限はありません。 最適なパフォーマンスを得るために、PowerShell で 1 つの vCenter から一度に 500 台を超える VM のレプリケートは実行しないことをお勧めします。
-- VMware のエージェントレス移行では、vCenter Server ごとに最大 500 件のレプリケーションを同時に実行できます。
-
 ## <a name="agentless-migration"></a>エージェントレス型移行 
 
-このセクションでは、エージェントレス移行の要件について概要を説明します。
+このセクションでは、エージェントレス VMware VM を Azure に移行する際の要件の概要を示します。
 
 ### <a name="vmware-requirements-agentless"></a>VMware の要件 (エージェントレス)
 
@@ -72,8 +67,11 @@ VMware VM は、次のいくつかの方法で移行できます。
 **チーミングされた NIC** | サポートされていません。
 **IPv6** | サポートされていません。
 **ターゲット ディスク** | VM は、Azure のマネージド ディスク (Standard HDD、Standard SSD、Premium SSD) にのみ移行できます。
-**同時レプリケーション** | vCenter Server あたり 500 台の VM。 それ以上ある場合は、500 単位のバッチで移行します。
-**Azure VM エージェントの自動インストール (Windows エージェント)** | Windows Server 2008 R2 以降でサポートされています。
+**同時レプリケーション** | 1 つのアプライアンスがある vCenter Server ごとに最大 300 の VM を同時にレプリケートします。 追加の[スケールアウト アプライアンス](./how-to-scale-out-for-migration.md)がデプロイされている場合、vCenter Server ごとに最大 500 の VM を同時にレプリケートします。 
+**Azure VM エージェントの自動インストール (Windows および Linux エージェント)** | Windows Server 2008 R2 以降でサポートされています。 <br/> RHEL6、RHEL7、CentOS7、Ubuntu 14.04、Ubuntu 16.04、Ubuntu 18.04 でサポートされています。 これらの Linux オペレーティング システムに[必要なパッケージ](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements)の一覧をご確認ください。
+
+> [!TIP]
+>  Azure portal を使用すると、最大 10 個の VM を一度に選択してレプリケーションを構成できます。 より多くの VM をレプリケートするために、ポータルを使用して、レプリケートする VM を 10 個の VM の複数のバッチで追加するか、Azure Migrate PowerShell インターフェイスを使用してレプリケーションを構成することができます。 同時レプリケーションがサポートされている VM の最大数を超えて同時レプリケーションを構成しないようにしてください。
 
 ### <a name="appliance-requirements-agentless"></a>アプライアンスの要件 (エージェントレス)
 

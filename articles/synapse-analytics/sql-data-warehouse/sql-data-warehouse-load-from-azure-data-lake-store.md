@@ -2,21 +2,21 @@
 title: 'チュートリアル: Azure Data Lake Storage からデータを読み込む'
 description: COPY ステートメントを使用して、専用 SQL プール用に Azure Data Lake Storage からデータを読み込む。
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 11/20/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 0974e880b75cce69f2b5ac82e3c4b39de53e03ce
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: ca57c6200cf7006a89be4b1fd621974559e5b514
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677106"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606125"
 ---
 # <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールに Azure Data Lake Storage からデータを読み込む
 

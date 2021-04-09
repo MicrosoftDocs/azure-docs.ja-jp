@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
 ms.openlocfilehash: 9c62534acdbfbff7fd4e718bad1f07a92c641626
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92792397"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio 接続済みサービスを使用して Web アプリケーションに Key Vault を追加する
@@ -24,8 +24,8 @@ ms.locfileid: "92792397"
 
 ## <a name="prerequisites"></a>前提条件
 
-- **Azure サブスクリプション** 。 サブスクリプションをお持ちでない場合には、[無料のアカウントにサインアップ](https://azure.microsoft.com/pricing/free-trial/)してください。
-- **Visual Studio 2019 バージョン 16.3** 以降。 [ここからダウンロードできます](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
+- **Azure サブスクリプション**。 サブスクリプションをお持ちでない場合には、[無料のアカウントにサインアップ](https://azure.microsoft.com/pricing/free-trial/)してください。
+- **Visual Studio 2019 バージョン 16.3** 以降。[ここからダウンロードできます](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
 
 
 ## <a name="add-key-vault-support-to-your-project"></a>Key Vault のサポートをプロジェクトに追加する
@@ -46,7 +46,7 @@ ms.locfileid: "92792397"
 
 ## <a name="access-your-secrets-in-code-aspnet-core"></a>コードでシークレットにアクセスする (ASP.NET Core)
 
-1. いずれかのページ ファイル ( *Index.cshtml.cs* など) を開き、次のコードを記述します。
+1. いずれかのページ ファイル (*Index.cshtml.cs* など) を開き、次のコードを記述します。
    1. この using ディレクティブによって `Microsoft.Extensions.Configuration` の参照を含めます。
 
        ```csharp
@@ -115,7 +115,7 @@ web.config ファイルの `appSettings` 要素のダミーの値が実行時に
          <add key="<secretNameInYourKeyVault>" value="dummy"/>
         ```
 
-1. 確認のために値が表示されるように、 *HomeController.cs* の `About` メソッドを編集します。
+1. 確認のために値が表示されるように、*HomeController.cs* の `About` メソッドを編集します。
 
    ```csharp
    public ActionResult About()
@@ -123,7 +123,7 @@ web.config ファイルの `appSettings` 要素のダミーの値が実行時に
        ViewBag.Message = "Key vault value = " + ConfigurationManager.AppSettings["<secretNameInYourKeyVault>"];
    }
    ```
-1. デバッガーの下でアプリをローカルで実行し、 **[About]\(概要\)** タブに切り替えて、キー コンテナーの値が表示されていることを確認します。
+1. デバッガーの下でアプリをローカルで実行し、**[About]\(概要\)** タブに切り替えて、キー コンテナーの値が表示されていることを確認します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -131,7 +131,7 @@ web.config ファイルの `appSettings` 要素のダミーの値が実行時に
 
 1. [Azure portal](https://portal.azure.com) に移動してお使いのキー コンテナーを開きます。
 
-1. **[アクセス ポリシー]** 、 **[アクセス ポリシーの追加]** の順に選択して、プリンシパルとしてログインしているアカウントを選択します。
+1. **[アクセス ポリシー]**、**[アクセス ポリシーの追加]** の順に選択して、プリンシパルとしてログインしているアカウントを選択します。
 
 1. Visual Studio で、 **[ファイル]**  >  **[アカウント設定]** の順に選択します。
 **[すべてのアカウント]** セクションから **[アカウントの追加]** を選択します。 お使いのアクセス ポリシーのプリンシパルとして選択したアカウントでサインインします。

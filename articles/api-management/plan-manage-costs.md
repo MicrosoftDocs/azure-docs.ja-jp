@@ -8,10 +8,10 @@ ms.service: api-management
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.openlocfilehash: 1ebb89ae318e57f1d4e0708a08019515ca43158d
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99581331"
 ---
 # <a name="plan-and-manage-costs-for-api-management"></a>API Management のコストを計画および管理する

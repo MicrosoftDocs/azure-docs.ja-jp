@@ -3,7 +3,7 @@ title: Azure Media Services を使用した DRM サブシステムのハイブ�
 description: このトピックでは、Azure Media Services を使用した DRM サブシステムのハイブリッド設計について説明します。
 services: media-services
 documentationcenter: ''
-author: willzhan
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 03/10/2021
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: 1bf01e98e418edfe8f15043d16a199b276b71020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a48e761c4fb74802c6b1db63884ee192446720a4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266903"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103016272"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>DRM サブシステムのハイブリッド設計
 
@@ -82,8 +82,8 @@ Microsoft は 3 つの DRM システムの完全なサポートを提供しま�
 
 * 動的 DRM 暗号化に使用するコンテンツ キー。
 * ライセンス配信サービスによって配信される DRM ライセンス コンテンツ: 権限、コンテンツ キー、および制限。
-* **コンテンツ キー承認ポリシー制限**のタイプ: オープン、IP、またはトークン制限。
-* **トークン**タイプの**コンテンツ キー承認ポリシー制限を使用する**場合、**コンテンツ キー承認ポリシー制限**はライセンス発行前に満たす必要があります。
+* **コンテンツ キー承認ポリシー制限** のタイプ: オープン、IP、またはトークン制限。
+* **トークン** タイプの **コンテンツ キー承認ポリシー制限を使用する** 場合、**コンテンツ キー承認ポリシー制限** はライセンス発行前に満たす必要があります。
 
 ### <a name="asset-delivery-policy"></a>資産の配信ポリシー
 
@@ -95,7 +95,7 @@ Microsoft は 3 つの DRM システムの完全なサポートを提供しま�
 
 ## <a name="scenarios-and-samples"></a>シナリオとサンプル
 
-前のセクションの説明に基づき、次の 5 つのハイブリッド シナリオでは、それぞれの**コンテンツ キー**-**資産配信ポリシー**構成の組み合わせを使用します (最後の列に示したサンプルが表の後に続きます)。
+前のセクションの説明に基づき、次の 5 つのハイブリッド シナリオでは、それぞれの **コンテンツ キー**-**資産配信ポリシー** 構成の組み合わせを使用します (最後の列に示したサンプルが表の後に続きます)。
 
 |**コンテンツ ホスティングおよび配信元**|**DRM 暗号化**|**DRM ライセンス配信**|**コンテンツ キーの構成**|**資産配信ポリシーを構成する**|**サンプル**|
 |---|---|---|---|---|---|

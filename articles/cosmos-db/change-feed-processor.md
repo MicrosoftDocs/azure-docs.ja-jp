@@ -11,10 +11,10 @@ ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 409b51682700a8b13b2840f171642bdcbee6f6d2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93340228"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード プロセッサ
@@ -32,7 +32,7 @@ ms.locfileid: "93340228"
 
 1. **リース コンテナー:** リース コンテナーは、状態ストレージとして機能し、複数の worker 間での変更フィードの処理を調整します。 リース コンテナーは、監視対象コンテナーと同じアカウントまたは別のアカウントに格納できます。
 
-1. **ホスト:** ホストは、変更フィード プロセッサを使って変更をリッスンするアプリケーション インスタンスです。 同じリース構成の複数のインスタンスを並列に実行できますが、 **インスタンス名** はインスタンスごとに異なっている必要があります。
+1. **ホスト:** ホストは、変更フィード プロセッサを使って変更をリッスンするアプリケーション インスタンスです。 同じリース構成の複数のインスタンスを並列に実行できますが、**インスタンス名** はインスタンスごとに異なっている必要があります。
 
 1. **デリゲート:** デリゲートは、変更フィード プロセッサによって読み取られる変更の各バッチについて、開発者が行いたいことが定義されているコードです。 
 
@@ -106,7 +106,7 @@ ms.locfileid: "93340228"
 
 ### <a name="reading-from-a-previous-date-and-time"></a>以前の日時からの読み取り
 
-`DateTime` のインスタンスを `WithStartTime` ビルダー拡張機能に渡すことで、 **特定の日時** 以降の変更を読み取るよう変更フィード プロセッサを初期化することができます。
+`DateTime` のインスタンスを `WithStartTime` ビルダー拡張機能に渡すことで、**特定の日時** 以降の変更を読み取るよう変更フィード プロセッサを初期化することができます。
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
 
@@ -114,7 +114,7 @@ ms.locfileid: "93340228"
 
 ### <a name="reading-from-the-beginning"></a>最初からの読み取り
 
-データの移行やコンテナーの履歴全体の分析など、他のシナリオでは、 **そのコンテナーの有効期間の最初** から変更フィードを読み取る必要があります。 これを行うために、ビルダー拡張機能で `WithStartTime` を使用できますが、`DateTime.MinValue.ToUniversalTime()` を渡すと、次のように `DateTime` の最小値の UTC 表現が生成されます。
+データの移行やコンテナーの履歴全体の分析など、他のシナリオでは、**そのコンテナーの有効期間の最初** から変更フィードを読み取る必要があります。 これを行うために、ビルダー拡張機能で `WithStartTime` を使用できますが、`DateTime.MinValue.ToUniversalTime()` を渡すと、次のように `DateTime` の最小値の UTC 表現が生成されます。
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
 

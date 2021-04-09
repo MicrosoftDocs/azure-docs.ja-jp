@@ -8,10 +8,10 @@ ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
 ms.openlocfilehash: c02ba12c790d745904d241f121e269aac3ed12f6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96462975"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析での [Summary] (概要) ダッシュボード

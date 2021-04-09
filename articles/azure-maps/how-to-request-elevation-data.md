@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: d14eda84144105bf2e04f1238284bc58a91c4c03
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98684057"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Azure Maps の Elevation Service (プレビュー) を使用して標高データを要求する

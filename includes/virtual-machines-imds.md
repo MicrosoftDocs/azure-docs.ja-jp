@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: e18c09130fcbcdbb470abc19d76bdf2ccfef0775
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 357223751112af03bf797ae9a0e6352a10132ab9
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175714"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464955"
 ---
 Azure Instance Metadata Service (IMDS) によって、現在実行中の仮想マシン インスタンスに関する情報が提供されます。 これを使用して、仮想マシンの管理と構成を行うことができます。
 この情報には、SKU、ストレージ、ネットワークの構成、今後のメンテナンス イベントなどがあります。 使用できるデータの完全な一覧については、[エンドポイント カテゴリの概要](#endpoint-categories)に関するページを参照してください。
@@ -345,8 +345,8 @@ GET /metadata/instance
 | `osType` | Linux または Windows | 2017-04-02
 | `placementGroupId` | お使いの仮想マシン スケール セットの[配置グループ](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 | `plan` | VM が Azure Marketplace イメージである場合、[プラン](/rest/api/compute/virtualmachines/createorupdate#plan)にはその名前、製品、および発行元が含まれています | 2018-04-02
-| `platformUpdateDomain` |  VM を実行中の[更新ドメイン](../articles/virtual-machines/manage-availability.md) | 2017-04-02
-| `platformFaultDomain` | VM を実行中の[障害ドメイン](../articles/virtual-machines/manage-availability.md) | 2017-04-02
+| `platformUpdateDomain` |  VM を実行中の[更新ドメイン](../articles/virtual-machines/availability.md) | 2017-04-02
+| `platformFaultDomain` | VM を実行中の[障害ドメイン](../articles/virtual-machines/availability.md) | 2017-04-02
 | `priority` | VM の優先度。 詳細については、「[スポット VM](../articles/virtual-machines/spot-vms.md)」を参照してください | 2020-12-01
 | `provider` | VM のプロバイダー | 2018-10-01
 | `publicKeys` | VM とパスに割り当てられた[公開キーのコレクション](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
@@ -1140,174 +1140,168 @@ IMDS を使用すると、スケジュールされたイベントの状態を取
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-**`400 Bad Request, Required metadata header not specified` エラーが発生します。これはどういう意味でしょうか。**
+- `400 Bad Request, Required metadata header not specified` エラーが発生します。 これはどういう意味でしょうか。
+  - IMDS では、要求に `Metadata: true` ヘッダーを渡す必要があります。 このヘッダーを REST 呼び出しに渡すと、IMDS へのアクセスが許可されます。
 
-IMDS では、要求に `Metadata: true` ヘッダーを渡す必要があります。 このヘッダーを REST 呼び出しに渡すと、IMDS へのアクセスが許可されます。
+- 使用している VM に関するコンピューティング情報を取得できないのはなぜですか。
+  - 現在、IMDS では、Azure Resource Manager で作成されたインスタンスのみがサポートされます。
 
-**使用している VM に関するコンピューティング情報を取得できないのはなぜですか。**
+- しばらく前に Azure Resource Manager で VM を作成しました。 コンピューティング メタデータ情報が表示されないのはなぜですか。
+  - 2016 年 9 月以降に VM を作成した場合は、[タグ](../articles/azure-resource-manager/management/tag-resources.md)を追加して、コンピューティング メタデータの表示を開始してください。 2016 年 9 月より前に VM を作成した場合は、VM インスタンスに対して拡張機能またはデータ ディスクを追加/削除して、メタデータを更新してください。
 
-現在、IMDS では、Azure Resource Manager で作成されたインスタンスのみがサポートされます。
+- 新しいバージョンに入力されたすべてのデータが表示されないのはなぜですか。
+  - 2016 年 9 月以降に VM を作成した場合は、[タグ](../articles/azure-resource-manager/management/tag-resources.md)を追加して、コンピューティング メタデータの表示を開始してください。 2016 年 9 月より前に VM を作成した場合は、VM インスタンスに対して拡張機能またはデータ ディスクを追加/削除して、メタデータを更新してください。
 
-**しばらく前に Azure Resource Manager で VM を作成しました。コンピューティング メタデータ情報が表示されないのはなぜですか。**
+- エラー `500 Internal Server Error` または `410 Resource Gone` が発生するのはなぜですか。
+  - 要求を再試行してください。 詳細については、「[一時的な障害の処理](/azure/architecture/best-practices/transient-faults)」を参照してください。 問題が解決しない場合は、VM の Azure portal でサポートの問題を作成してください。
 
-2016 年 9 月以降に VM を作成した場合は、[タグ](../articles/azure-resource-manager/management/tag-resources.md)を追加して、コンピューティング メタデータの表示を開始してください。 2016 年 9 月より前に VM を作成した場合は、VM インスタンスに対して拡張機能またはデータ ディスクを追加/削除して、メタデータを更新してください。
+- これは仮想マシン スケール セット インスタンスで機能しますか。
+  - はい。IMDS は仮想マシン スケール セット インスタンスで使用できます。
 
-**新しいバージョンに入力されたすべてのデータが表示されないのはなぜですか。**
+- 仮想マシン スケール セットでタグを更新しましたが、(単一インスタンスの VM とは異なり) インスタンスにタグが表示されません。 操作方法に何か間違いがありますか。
+  - 現時点では、仮想マシン スケール セットのタグは、再起動、再イメージ化、またはインスタンスに対するディスクの変更の際に VM に対してのみ表示されます。
 
-2016 年 9 月以降に VM を作成した場合は、[タグ](../articles/azure-resource-manager/management/tag-resources.md)を追加して、コンピューティング メタデータの表示を開始してください。 2016 年 9 月より前に VM を作成した場合は、VM インスタンスに対して拡張機能またはデータ ディスクを追加/削除して、メタデータを更新してください。
+- VM の SKU 情報が `instance/compute` 詳細に表示されないのはなぜですか。
+  - Azure Marketplace から作成されたカスタム イメージの場合、Azure プラットフォームではカスタム イメージの SKU 情報と、カスタム イメージから作成された VM の詳細は保持されません。 これは仕様であるため、VM `instance/compute` 詳細には表示されません。
 
-**エラー `500 Internal Server Error` または `410 Resource Gone` が発生するのはなぜですか。**
+- サービスの呼び出しの要求がタイムアウトするのはなぜですか。
+  - メタデータの呼び出しは、VM のプライマリ ネットワーク カードに割り当てられたプライマリ IP アドレスから行う必要があります。 さらに、ルートを変更した場合、VM のローカル ルーティング テーブルにアドレスが 169.254.169.254/32 のルートが存在する必要があります。
 
-要求を再試行してください。 詳細については、「[一時的な障害の処理](/azure/architecture/best-practices/transient-faults)」を参照してください。 問題が解決しない場合は、VM の Azure portal でサポートの問題を作成してください。
+    ### <a name="windows"></a>[Windows](#tab/windows/)
 
-**これは仮想マシン スケール セット インスタンスで機能しますか。**
+    1. ローカル ルーティング テーブルをダンプし、IMDS エントリを探します。 次に例を示します。
+        ```console
+        > route print
+        IPv4 Route Table
+        ===========================================================================
+        Active Routes:
+        Network Destination        Netmask          Gateway       Interface  Metric
+                0.0.0.0          0.0.0.0      172.16.69.1      172.16.69.7     10
+                127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
+                127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
+        127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+            168.63.129.16  255.255.255.255      172.16.69.1      172.16.69.7     11
+        169.254.169.254  255.255.255.255      172.16.69.1      172.16.69.7     11
+        ... (continues) ...
+        ```
+    1. `169.254.169.254` のルートが存在することを確認し、対応するネットワーク インターフェイス (`172.16.69.7` など) をメモします。
+    1. インターフェイス構成をダンプし、ルーティング テーブルで参照されているものに対応するインターフェイスを見つけ、MAC (物理) アドレスをメモします。
+        ```console
+        > ipconfig /all
+        ... (continues) ...
+        Ethernet adapter Ethernet:
 
-はい。IMDS は仮想マシン スケール セット インスタンスで使用できます。
+        Connection-specific DNS Suffix  . : xic3mnxjiefupcwr1mcs1rjiqa.cx.internal.cloudapp.net
+        Description . . . . . . . . . . . : Microsoft Hyper-V Network Adapter
+        Physical Address. . . . . . . . . : 00-0D-3A-E5-1C-C0
+        DHCP Enabled. . . . . . . . . . . : Yes
+        Autoconfiguration Enabled . . . . : Yes
+        Link-local IPv6 Address . . . . . : fe80::3166:ce5a:2bd5:a6d1%3(Preferred)
+        IPv4 Address. . . . . . . . . . . : 172.16.69.7(Preferred)
+        Subnet Mask . . . . . . . . . . . : 255.255.255.0
+        ... (continues) ...
+        ```
+    1. インターフェイスが VM のプライマリ NIC とプライマリ IP に対応していることを確認します。 Azure portal でネットワーク構成を確認するか、Azure CLI を使用して調べることで、プライマリ NIC および IP を見つけることができます。 プライベート IP (および CLI を使用している場合は MAC アドレス) をメモします。 PowerShell CLI の例を次に示します。
+        ```powershell
+        $ResourceGroup = '<Resource_Group>'
+        $VmName = '<VM_Name>'
+        $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
+        foreach($NicName in $NicNames)
+        {
+            $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
+            Write-Host $NicName, $Nic.primary, $Nic.macAddress
+        }
+        # Output: wintest767 True 00-0D-3A-E5-1C-C0
+        ```
+    1. 一致しない場合は、プライマリ NIC および IP がターゲットになるようにルーティング テーブルを更新します。
 
-**仮想マシン スケール セットでタグを更新しましたが、(単一インスタンスの VM とは異なり) インスタンスにタグが表示されません。操作方法に何か間違いがありますか。**
+    ### <a name="linux"></a>[Linux](#tab/linux/)
 
-現時点では、仮想マシン スケール セットのタグは、再起動、再イメージ化、またはインスタンスに対するディスクの変更の際に VM に対してのみ表示されます。
+    1. `netstat -r` などのコマンドを使用してローカル ルーティング テーブルをダンプし、IMDS エントリを探します (例)。
+        ```console
+        ~$ netstat -r
+        Kernel IP routing table
+        Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+        default         _gateway        0.0.0.0         UG        0 0          0 eth0
+        168.63.129.16   _gateway        255.255.255.255 UGH       0 0          0 eth0
+        169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
+        172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
+        ```
+    1. `169.254.169.254` のルートが存在することを確認し、対応するネットワーク インターフェイス (`eth0` など) をメモします。
+    1. ルーティング テーブル内の対応するインターフェイスのインターフェイス構成をダンプします (構成ファイルの正確な名前は異なっている場合があることに注意してください)。
+        ```console
+        ~$ cat /etc/netplan/50-cloud-init.yaml
+        network:
+        ethernets:
+            eth0:
+                dhcp4: true
+                dhcp4-overrides:
+                    route-metric: 100
+                dhcp6: false
+                match:
+                    macaddress: 00:0d:3a:e4:c7:2e
+                set-name: eth0
+        version: 2
+        ```
+    1. 動的 IP を使用している場合は、MAC アドレスをメモします。 静的 IP を使用している場合は、表示されている IP アドレスまたは MAC アドレスをメモできます。
+    1. インターフェイスが VM のプライマリ NIC とプライマリ IP に対応していることを確認します。 Azure portal でネットワーク構成を確認するか、Azure CLI を使用して調べることで、プライマリ NIC および IP を見つけることができます。 プライベート IP (および CLI を使用している場合は MAC アドレス) をメモします。 PowerShell CLI の例を次に示します。
+        ```powershell
+        $ResourceGroup = '<Resource_Group>'
+        $VmName = '<VM_Name>'
+        $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
+        foreach($NicName in $NicNames)
+        {
+            $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
+            Write-Host $NicName, $Nic.primary, $Nic.macAddress
+        }
+        # Output: ipexample606 True 00-0D-3A-E4-C7-2E
+        ```
+    1. 一致しない場合は、プライマリ NIC/IP がターゲットになるようにルーティング テーブルを更新します。
 
-**サービスの呼び出しの要求がタイムアウトするのはなぜですか。**
+    ---
 
-メタデータの呼び出しは、VM のプライマリ ネットワーク カードに割り当てられたプライマリ IP アドレスから行う必要があります。 さらに、ルートを変更した場合、VM のローカル ルーティング テーブルにアドレスが 169.254.169.254/32 のルートが存在する必要があります。
+- Windows Server でのフェールオーバー クラスタリング
+  - フェールオーバー クラスタリングを使用して IMDS に対してクエリを実行する場合は、ルーティング テーブルにルートを追加する必要がある場合があります。 その方法は次のとおりです。
 
-#### <a name="windows"></a>[Windows](#tab/windows/)
+    1. 管理者特権でコマンド プロンプトを開きます。
 
-1. ローカル ルーティング テーブルをダンプし、IMDS エントリを探します。 次に例を示します。
-    ```console
-    > route print
+    1. 次のコマンドを実行し、IPv4 ルーティング テーブルのネットワーク宛先 (`0.0.0.0`) のインターフェイスのアドレスをメモします。
+
+    ```bat
+    route print
+    ```
+
+    > [!NOTE]
+    > 次の出力例は、フェールオーバー クラスターが有効になっている Windows Server VM からのものです。 わかりやすくするために、出力には IPv4 ルート テーブルだけが含まれています。
+
+    ```
     IPv4 Route Table
     ===========================================================================
     Active Routes:
     Network Destination        Netmask          Gateway       Interface  Metric
-              0.0.0.0          0.0.0.0      172.16.69.1      172.16.69.7     10
+            0.0.0.0          0.0.0.0         10.0.1.1        10.0.1.10    266
+            10.0.1.0  255.255.255.192         On-link         10.0.1.10    266
+            10.0.1.10  255.255.255.255         On-link         10.0.1.10    266
+            10.0.1.15  255.255.255.255         On-link         10.0.1.10    266
+            10.0.1.63  255.255.255.255         On-link         10.0.1.10    266
             127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
             127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
-      127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-        168.63.129.16  255.255.255.255      172.16.69.1      172.16.69.7     11
-      169.254.169.254  255.255.255.255      172.16.69.1      172.16.69.7     11
-    ... (continues) ...
+    127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+        169.254.0.0      255.255.0.0         On-link     169.254.1.156    271
+        169.254.1.156  255.255.255.255         On-link     169.254.1.156    271
+    169.254.255.255  255.255.255.255         On-link     169.254.1.156    271
+            224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
+            224.0.0.0        240.0.0.0         On-link     169.254.1.156    271
+    255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+    255.255.255.255  255.255.255.255         On-link     169.254.1.156    271
+    255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
     ```
-1. `169.254.169.254` のルートが存在することを確認し、対応するネットワーク インターフェイス (`172.16.69.7` など) をメモします。
-1. インターフェイス構成をダンプし、ルーティング テーブルで参照されているものに対応するインターフェイスを見つけ、MAC (物理) アドレスをメモします。
-    ```console
-    > ipconfig /all
-    ... (continues) ...
-    Ethernet adapter Ethernet:
 
-       Connection-specific DNS Suffix  . : xic3mnxjiefupcwr1mcs1rjiqa.cx.internal.cloudapp.net
-       Description . . . . . . . . . . . : Microsoft Hyper-V Network Adapter
-       Physical Address. . . . . . . . . : 00-0D-3A-E5-1C-C0
-       DHCP Enabled. . . . . . . . . . . : Yes
-       Autoconfiguration Enabled . . . . : Yes
-       Link-local IPv6 Address . . . . . : fe80::3166:ce5a:2bd5:a6d1%3(Preferred)
-       IPv4 Address. . . . . . . . . . . : 172.16.69.7(Preferred)
-       Subnet Mask . . . . . . . . . . . : 255.255.255.0
-    ... (continues) ...
+    次のコマンドを実行し、ネットワーク宛先 (`0.0.0.0`) のインターフェイスのアドレスを使用します。この例では `10.0.1.10` です。
+
+    ```bat
+    route add 169.254.169.254/32 10.0.1.10 metric 1 -p
     ```
-1. インターフェイスが VM のプライマリ NIC とプライマリ IP に対応していることを確認します。 Azure portal でネットワーク構成を確認するか、Azure CLI を使用して調べることで、プライマリ NIC および IP を見つけることができます。 プライベート IP (および CLI を使用している場合は MAC アドレス) をメモします。 PowerShell CLI の例を次に示します。
-    ```powershell
-    $ResourceGroup = '<Resource_Group>'
-    $VmName = '<VM_Name>'
-    $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
-    foreach($NicName in $NicNames)
-    {
-        $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
-        Write-Host $NicName, $Nic.primary, $Nic.macAddress
-    }
-    # Output: wintest767 True 00-0D-3A-E5-1C-C0
-    ```
-1. 一致しない場合は、プライマリ NIC および IP がターゲットになるようにルーティング テーブルを更新します。
-
-#### <a name="linux"></a>[Linux](#tab/linux/)
-
- 1. `netstat -r` などのコマンドを使用してローカル ルーティング テーブルをダンプし、IMDS エントリを探します (例)。
-    ```console
-    ~$ netstat -r
-    Kernel IP routing table
-    Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
-    default         _gateway        0.0.0.0         UG        0 0          0 eth0
-    168.63.129.16   _gateway        255.255.255.255 UGH       0 0          0 eth0
-    169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
-    172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
-    ```
-1. `169.254.169.254` のルートが存在することを確認し、対応するネットワーク インターフェイス (`eth0` など) をメモします。
-1. ルーティング テーブル内の対応するインターフェイスのインターフェイス構成をダンプします (構成ファイルの正確な名前は異なっている場合があることに注意してください)。
-    ```console
-    ~$ cat /etc/netplan/50-cloud-init.yaml
-    network:
-    ethernets:
-        eth0:
-            dhcp4: true
-            dhcp4-overrides:
-                route-metric: 100
-            dhcp6: false
-            match:
-                macaddress: 00:0d:3a:e4:c7:2e
-            set-name: eth0
-    version: 2
-    ```
-1. 動的 IP を使用している場合は、MAC アドレスをメモします。 静的 IP を使用している場合は、表示されている IP アドレスまたは MAC アドレスをメモできます。
-1. インターフェイスが VM のプライマリ NIC とプライマリ IP に対応していることを確認します。 Azure portal でネットワーク構成を確認するか、Azure CLI を使用して調べることで、プライマリ NIC および IP を見つけることができます。 プライベート IP (および CLI を使用している場合は MAC アドレス) をメモします。 PowerShell CLI の例を次に示します。
-    ```powershell
-    $ResourceGroup = '<Resource_Group>'
-    $VmName = '<VM_Name>'
-    $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
-    foreach($NicName in $NicNames)
-    {
-        $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
-        Write-Host $NicName, $Nic.primary, $Nic.macAddress
-    }
-    # Output: ipexample606 True 00-0D-3A-E4-C7-2E
-    ```
-1. 一致しない場合は、プライマリ NIC/IP がターゲットになるようにルーティング テーブルを更新します。
-
----
-
-**Windows Server でのフェールオーバー クラスタリング**
-
-フェールオーバー クラスタリングを使用して IMDS に対してクエリを実行する場合は、ルーティング テーブルにルートを追加する必要がある場合があります。 その方法は次のとおりです。
-
-1. 管理者特権でコマンド プロンプトを開きます。
-
-1. 次のコマンドを実行し、IPv4 ルーティング テーブルのネットワーク宛先 (`0.0.0.0`) のインターフェイスのアドレスをメモします。
-
-```bat
-route print
-```
-
-> [!NOTE]
-> 次の出力例は、フェールオーバー クラスターが有効になっている Windows Server VM からのものです。 わかりやすくするために、出力には IPv4 ルート テーブルだけが含まれています。
-
-```
-IPv4 Route Table
-===========================================================================
-Active Routes:
-Network Destination        Netmask          Gateway       Interface  Metric
-          0.0.0.0          0.0.0.0         10.0.1.1        10.0.1.10    266
-         10.0.1.0  255.255.255.192         On-link         10.0.1.10    266
-        10.0.1.10  255.255.255.255         On-link         10.0.1.10    266
-        10.0.1.15  255.255.255.255         On-link         10.0.1.10    266
-        10.0.1.63  255.255.255.255         On-link         10.0.1.10    266
-        127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
-        127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
-  127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-      169.254.0.0      255.255.0.0         On-link     169.254.1.156    271
-    169.254.1.156  255.255.255.255         On-link     169.254.1.156    271
-  169.254.255.255  255.255.255.255         On-link     169.254.1.156    271
-        224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
-        224.0.0.0        240.0.0.0         On-link     169.254.1.156    271
-  255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-  255.255.255.255  255.255.255.255         On-link     169.254.1.156    271
-  255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
-```
-
-次のコマンドを実行し、ネットワーク宛先 (`0.0.0.0`) のインターフェイスのアドレスを使用します。この例では `10.0.1.10` です。
-
-```bat
-route add 169.254.169.254/32 10.0.1.10 metric 1 -p
-```
 
 ## <a name="support"></a>サポート
 
@@ -1315,12 +1309,12 @@ route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 
 ## <a name="product-feedback"></a>製品フィードバック
 
-製品のフィードバックとアイデアは、[Virtual Machines] > [Instance Metadata Service] にあるユーザー フィードバック チャネル https://feedback.azure.com/forums/216843-virtual-machines?category_id=394627 にお寄せください。
+製品のフィードバックとアイデアは、[Virtual Machines] > [Instance Metadata Service] にあるユーザー フィードバック チャネル ([こちら](https://feedback.azure.com/forums/216843-virtual-machines?category_id=394627)) にお寄せください。
 
 ## <a name="next-steps"></a>次のステップ
 
-[VM のアクセス トークンの取得](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
+- [VM のアクセス トークンの取得](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
 
-[Linux のスケジュールされたイベント](../articles/virtual-machines/linux/scheduled-events.md)
+- [Linux のスケジュールされたイベント](../articles/virtual-machines/linux/scheduled-events.md)
 
-[Windows のスケジュールされたイベント](../articles/virtual-machines/windows/scheduled-events.md)
+- [Windows のスケジュールされたイベント](../articles/virtual-machines/windows/scheduled-events.md)

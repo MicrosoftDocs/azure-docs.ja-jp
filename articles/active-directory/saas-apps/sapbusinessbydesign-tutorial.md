@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/22/2021
 ms.author: jeedes
 ms.openlocfilehash: 6db863f43deb6eb2787cda60650a267a62076aad
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101654342"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>チュートリアル: Azure Active Directory と SAP Business ByDesign の統合

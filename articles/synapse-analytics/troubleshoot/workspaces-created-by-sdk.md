@@ -8,10 +8,10 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.date: 11/24/2020
 ms.openlocfilehash: f5d0aae975d476da47510a1f2fd164cbc5f32945
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96465527"
 ---
 # <a name="troubleshoot-azure-synapse-analytics-workspaces-created-using-sdk"></a>SDK を使用して作成された Azure Synapse Analytics ワークスペースのトラブルシューティング

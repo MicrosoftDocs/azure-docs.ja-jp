@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.openlocfilehash: e1d84483a701bf7fb4e6c50b9dc4f4f89993c64d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96354910"
 ---
 # <a name="best-practices-for-server-operations-on-azure-database-for-mysql--single-server"></a>Azure Database for MySQL でのサーバー運用のベスト プラクティス - 単一サーバー
@@ -23,9 +23,9 @@ Azure Database for MySQL を使用してデータベースのパフォーマン�
 
 * **コロケーション**:ネットワーク待ち時間を短縮するために、クライアントとデータベース サーバーを同じ Azure リージョンに配置します。
 
-* **メモリ、CPU、ストレージの使用状況を監視する**:システムのパフォーマンスと可用性を維持できるようにするために、使用パターンが変化したとき、またはデプロイの容量に近づいたときに通知を受け取るように[アラートを設定](howto-alert-on-metric.md)できます。 
+* **メモリ、CPU、ストレージの使用状況を監視する**:システムのパフォーマンスと可用性を維持できるようにするために、使用パターンが変化したとき、またはデプロイの容量に近づいたときに通知を受け取るように [アラートを設定](howto-alert-on-metric.md)できます。 
 
-* **DB インスタンスをスケールアップする**:ストレージ容量の上限に近づいてきたら[スケールアップ](howto-create-manage-server-portal.md)できます。 アプリケーションからの予期しない需要増加に対応するために、ストレージとメモリにはある程度の余裕を持たせる必要があります。 また、ストレージの上限に近づいたときに、サービスによってストレージが自動的にスケーリングされるようにするために、[ストレージの自動拡張](howto-auto-grow-storage-portal.md)機能を "オン" にすることもできます。 
+* **DB インスタンスをスケールアップする**:ストレージ容量の上限に近づいてきたら [スケールアップ](howto-create-manage-server-portal.md)できます。 アプリケーションからの予期しない需要増加に対応するために、ストレージとメモリにはある程度の余裕を持たせる必要があります。 また、ストレージの上限に近づいたときに、サービスによってストレージが自動的にスケーリングされるようにするために、[ストレージの自動拡張](howto-auto-grow-storage-portal.md)機能を "オン" にすることもできます。 
 
 * **バックアップを構成する**:ビジネスの要件に基づいて、[ローカルまたは geo 冗長バックアップ](howto-restore-server-portal.md#set-backup-configuration)を有効にします。 また、バックアップがビジネス継続性のために利用できる期間に基づいて、保有期間を変更します。 
 

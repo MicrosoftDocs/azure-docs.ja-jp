@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/27/2021
 ms.author: apimpm
 ms.openlocfilehash: 22d2960801cac2222f868c384a55b4bf436bc75b
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99492605"
 ---
 # <a name="api-management-authentication-policies"></a>API Management の認証ポリシー

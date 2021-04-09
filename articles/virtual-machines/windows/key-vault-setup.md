@@ -2,19 +2,18 @@
 title: PowerShell を使用して Key Vault を設定する
 description: 仮想マシンで使用するために PowerShell を使用して Key Vault を設定する方法。
 author: mimckitt
-manager: vashan
 ms.service: virtual-machines
 ms.subservice: security
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/24/2017
 ms.author: mimckitt
-ms.openlocfilehash: dd4a6ed5f57c536a9e40b2fd81b96d055702b425
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 124ab121186ff7c9047515f2ee1ff51cee1114b8
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678319"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102557490"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-using-azure-powershell"></a>Azure PowerShell を使用して仮想マシンの Key Vault を設定する
 

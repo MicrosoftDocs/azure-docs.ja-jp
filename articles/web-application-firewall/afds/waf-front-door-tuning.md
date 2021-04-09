@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: mohitku
 ms.reviewer: tyao
-ms.openlocfilehash: 4c710792dd7966fad76b33954fdf7c2253cf18f0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b2f551257fb6869d5dec47014be3a8522b61b9fa
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488240"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102506635"
 ---
 # <a name="tuning-web-application-firewall-waf-for-azure-front-door"></a>Azure Front Door 用に Web Application Firewall (WAF) を調整する
  
@@ -38,9 +38,17 @@ UserId=20&captchaId=7&captchaId=15&comment="1=1"&rating=3
 
 要求を試すと、 WAF はパラメーターまたはフィールドに *1=1* という文字列を含むトラフィックをブロックします。 これは、SQL インジェクション攻撃に関連することが多い文字列です。 ログを調べて、要求のタイムスタンプと、ブロックされた/一致した規則を確認できます。
  
-次の例では、ルールの一致によって生成された `FrontdoorWebApplicationFirewallLog` ログを調べます。
+次の例では、ルールの一致によって生成された `FrontdoorWebApplicationFirewallLog` ログを調べます。 次の Log Analytics クエリを使用すると、過去 24 時間以内にブロックされた要求を見つけることができます。
+
+```kusto
+AzureDiagnostics
+| where Category == 'FrontdoorWebApplicationFirewallLog'
+| where TimeGenerated > ago(1d)
+| where action_s == 'Block'
+
+```
  
-"requestUri" フィールドでは、要求が `/api/Feedbacks/` に対して明示的に行われたことがわかります。 さらに、"ruleName" フィールドのルール ID は `942110` になっています。 ルール ID がわかると、[OWASP ModSecurity Core Rule Set の公式リポジトリ](https://github.com/coreruleset/coreruleset)にアクセスし、その[ルール ID](https://github.com/coreruleset/coreruleset/blob/v3.1/dev/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf) を検索して、そのコードを確認し、このルールが何と一致しているかを正確に把握することができます。 
+`requestUri` フィールドでは、要求が `/api/Feedbacks/` に対して明示的に行われたことがわかります。 さらに、`ruleName` フィールドのルール ID は `942110` になっています。 ルール ID がわかると、[OWASP ModSecurity Core Rule Set の公式リポジトリ](https://github.com/coreruleset/coreruleset)にアクセスし、その[ルール ID](https://github.com/coreruleset/coreruleset/blob/v3.1/dev/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf) を検索して、そのコードを確認し、このルールが何と一致しているかを正確に把握することができます。 
  
 次に、`action` フィールドを調べることで、このルールが一致した要求をブロックするように設定されていることがわかり、`policyMode` が `prevention` に設定されているので、要求が WAF によって実際にブロックされたことを確認できます。 
  
@@ -136,7 +144,7 @@ UserId=20&captchaId=7&captchaId=15&comment="1=1"&rating=3
  
 除外はグローバルな設定であることを考慮することが重要です。 これは、構成されている除外は、特定の Web アプリや URI だけでなく、WAF を通過するすべてのトラフィックに適用されることを意味します。 たとえば、*1=1* が特定の Web アプリの本文では有効な要求であっても、同じ WAF ポリシーで他のアプリに対しては無効である場合、これが問題になる可能性があります。 異なるアプリケーションに異なる除外リストを使用することに意味がある場合は、アプリケーションごとに異なる WAF ポリシーを使用し、各アプリケーションのフロントエンドにそれを適用することを検討します。
  
-マネージド ルールの除外リストを構成するときは、ルール セット内のすべてのルール、ルール グループ内のすべてのルール、または個別のルールを除外することを選択できます。 除外リストは、[PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-4.7.0&viewFallbackFrom=azps-3.5.0)、[Azure CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext_front_door_az_network_front_door_waf_policy_managed_rules_exclusion_add)、[Rest API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)、または Azure portal を使用して構成できます。
+マネージド ルールの除外リストを構成するときは、ルール セット内のすべてのルール、ルール グループ内のすべてのルール、または個別のルールを除外することを選択できます。 除外リストは、[PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject)、[Azure CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion#ext_front_door_az_network_front_door_waf_policy_managed_rules_exclusion_add)、[Rest API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)、または Azure portal を使用して構成できます。
 
 * ルール レベルでの除外
   * ルール レベルで除外を適用すると、指定した除外は、その個々のルールに対してだけは分析されませんが、ルール セット内の他のすべてのルールでは分析されます。 これは除外の最も小さいレベルであり、イベントのトラブルシューティングを行うときに、WAF ログで検出された情報に基づいてマネージド ルール セットを微調整するために使用できます。
@@ -193,9 +201,12 @@ WAF 規則の一致の原因になっているものが明らかになったら�
  
 ただし、ルールを無効にすることは、WAF ポリシーに関連付けられているすべてのフロントエンド ホストに適用されるグローバルな設定です。 ルールを無効にすると、WAF ポリシーに関連付けられている他のフロントエンド ホストに対し、保護や検出が行われずに脆弱性がさらされたままになるおそれがあります。
  
-Azure PowerShell を使用してマネージド ルールを無効にする場合は、[`PSAzureManagedRuleOverride`](/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject?preserve-view=true&view=azps-4.7.0) オブジェクトのドキュメントを参照してください。 Azure CLI を使用する場合は、[`az network front-door waf-policy managed-rules override`](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override?preserve-view=true&view=azure-cli-latest) のドキュメントを参照してください。
+Azure PowerShell を使用してマネージド ルールを無効にする場合は、[`PSAzureManagedRuleOverride`](/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject) オブジェクトのドキュメントを参照してください。 Azure CLI を使用する場合は、[`az network front-door waf-policy managed-rules override`](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override) のドキュメントを参照してください。
 
 ![WAF の規則](../media/waf-front-door-tuning/waf-rules.png)
+
+> [!TIP]
+> WAF ポリシーに対して行ったすべての変更を文書化することをお勧めします。 偽陽性の検出を示す要求の例を含め、カスタム ルールを追加した理由、ルールまたはルール セットを無効にした、または例外を追加した理由を明確に説明します。 このドキュメントは、将来アプリケーションを再設計して、変更がまだ有効であることを確認する必要がある場合に役立ちます。 また、監査を行う場合や、WAF ポリシーを既定の設定から再構成した理由を確認する必要がある場合にも役立ちます。
 
 ## <a name="finding-request-fields"></a>要求フィールドの検索
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: jeedes
 ms.openlocfilehash: faea5fdc7fdab11c630f24dbb8527e5bf198765c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92459154"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>チュートリアル: Azure Active Directory と IBM Kenexa Survey Enterprise の統合
@@ -41,7 +41,7 @@ IBM Kenexa Survey Enterprise と Azure AD の統合を構成するには、次�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* IBM Kenexa Survey Enterprise では、 **IDP** Initiated SSO がサポートされます
+* IBM Kenexa Survey Enterprise では、**IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-ibm-kenexa-survey-enterprise-from-the-gallery"></a>ギャラリーからの IBM Kenexa Survey Enterprise の追加
 
@@ -61,13 +61,13 @@ Azure AD への IBM Kenexa Survey Enterprise の統合を構成するには、�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **IBM Kenexa Survey Enterprise** 」と入力し、結果パネルで **[IBM Kenexa Survey Enterprise]** を選び、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**IBM Kenexa Survey Enterprise**」と入力し、結果パネルで **[IBM Kenexa Survey Enterprise]** を選び、**[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果一覧の IBM Kenexa Survey Enterprise](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、IBM Kenexa Survey Enterprise で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、IBM Kenexa Survey Enterprise で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと IBM Kenexa Survey Enterprise 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 IBM Kenexa Survey Enterprise で Azure AD のシングル サインオンを構成し、テストするには、次の要素を完了する必要があります。
@@ -85,7 +85,7 @@ IBM Kenexa Survey Enterprise で Azure AD のシングル サインオンを構�
 
 IBM Kenexa Survey Enterprise で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **IBM Kenexa Survey Enterprise** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **IBM Kenexa Survey Enterprise** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -148,7 +148,7 @@ IBM Kenexa Survey Enterprise で Azure AD シングル サインオンを構成�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -161,7 +161,7 @@ IBM Kenexa Survey Enterprise で Azure AD シングル サインオンを構成�
 
 このセクションでは、Britta Simon に IBM Kenexa Survey Enterprise へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[IBM Kenexa Survey Enterprise]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[IBM Kenexa Survey Enterprise]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

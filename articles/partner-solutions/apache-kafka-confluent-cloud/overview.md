@@ -7,10 +7,10 @@ ms.service: partner-services
 ms.date: 01/15/2021
 ms.author: tomfitz
 ms.openlocfilehash: b4aa00b7a2cc7ca6bc968be70957c127a8e00738
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98253288"
 ---
 # <a name="what-is-apache-kafka-for-confluent-cloud"></a>Apache Kafka on Confluent Cloud とは

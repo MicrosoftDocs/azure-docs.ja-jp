@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
 ms.openlocfilehash: 654ecb65068e4321b85594d96e8ca7a7f73cde7e
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99566592"
 ---
 # <a name="connect-your-alsid-for-active-directory-ad-to-azure-sentinel"></a>Azure Sentinel に Alsid for Active Directory (AD) を接続する

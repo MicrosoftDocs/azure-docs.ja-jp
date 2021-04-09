@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: 7db905af85a6f4c157ee6d019e8e3a3feeeb4b4a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 01bae85241950ffa1ccf77189694fb648b8c7d03
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722621"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103494089"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>都市別の Azure CDN のカバレッジ 
 > [!div class="op_single_selector"]
@@ -49,4 +49,4 @@ ms.locfileid: "101722621"
 
 
 ## <a name="next-steps"></a>次のステップ
-* 許可リスト用の最新 IP アドレスを取得するには、[Azure CDN エッジ ノード API](https://github.com/Azure/azure-docs-rest-apis/blob/master/docs-ref-autogen/cdn/cdn/EdgeNodes/) に関するページをご覧ください。
+* 許可リスト用の最新 IP アドレスを取得するには、[Azure CDN エッジ ノード API](https://docs.microsoft.com/rest/api/cdn/edgenodes) に関するページをご覧ください。

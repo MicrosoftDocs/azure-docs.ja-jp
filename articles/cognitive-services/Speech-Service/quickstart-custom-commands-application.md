@@ -12,10 +12,10 @@ ms.date: 06/18/2020
 ms.author: sausin
 ms.custom: references_regions
 ms.openlocfilehash: e046f8cbf6fa0418244f20e9a0c6f75f6da34136
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102434629"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>カスタム コマンドを使用して音声アシスタントを作成する

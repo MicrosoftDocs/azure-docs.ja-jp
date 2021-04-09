@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: sharrai
 ms.openlocfilehash: aeb89a9d18e4550fa1d6162920d60507fd50c208
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92359868"
 ---
 # <a name="monitoring-churn-patterns-on-virtual-machines"></a>仮想マシンでのチャーン パターンの監視
@@ -35,12 +35,12 @@ Windows オペレーティング システムを実行しているマシンが�
 
 **リソース モニター** には、ハードウェアとソフトウェアのリソースの使用に関する情報がリアルタイムで表示されます。 Windows マシンでリソース モニターを実行するには、次の手順に従います。
 
-1. Win + R キーを押し、「 _resmon_ 」と入力します。
+1. Win + R キーを押し、「_resmon_」と入力します。
 1. resmon ([リソース モニター]) ウィンドウが開いたら、[ディスク] タブに切り替えます。次のビューが表示されます。
 
     ![リソース モニターの [ディスク] タブ](./media/monitoring-high-churn/resmon-disk-tab.png)
 
-1. 明確な全体像を把握するために、このタブを一定時間継続的に監視する必要があります。 上の例では、 _wmiprv.exe_ のチャーンが高いことがわかります。
+1. 明確な全体像を把握するために、このタブを一定時間継続的に監視する必要があります。 上の例では、_wmiprv.exe_ のチャーンが高いことがわかります。
 
 マシン上で高いチャーンの原因となっているアプリケーションを特定したら、それらのアプリケーションに関連するチャーンに対処するために必要なアクションを実行できます。
 
@@ -48,7 +48,7 @@ Windows オペレーティング システムを実行しているマシンが�
 
 **パフォーマンス モニター** では、CPU やメモリ使用量などのマシン上のさまざまなアクティビティが監視されます。 Windows マシンでパフォーマンス モニターを実行するには、次の手順に従います。
 
-1. Win + R キーを押し、「 _perfmon_ 」と入力します。
+1. Win + R キーを押し、「_perfmon_」と入力します。
 1. Perfmon ([パフォーマンス モニター]) ウィンドウが開くと、次のビューが表示されます。
 
     ![パフォーマンス モニターの手順 1](./media/monitoring-high-churn/perfmon-step1.png)

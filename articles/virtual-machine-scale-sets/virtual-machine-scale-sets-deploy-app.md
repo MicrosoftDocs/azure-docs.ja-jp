@@ -10,10 +10,10 @@ ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurepowershell
 ms.openlocfilehash: e7a4ddaf74df6e04c1597b9c106cd458ddebac55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89079593"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>仮想マシン スケール セットへのアプリケーションのデプロイ
@@ -82,7 +82,7 @@ Update-AzVmss `
     -VirtualMachineScaleSet $vmss
 ```
 
-スケール セットのアップグレード ポリシーが*手動*の場合は、[Update-AzVmssInstance](/powershell/module/az.compute/update-azvmssinstance) を使用して VM インスタンスを更新します。 このコマンドレットは、更新されたスケール セットの構成をVM インスタンスに適用し、アプリケーションをインストールします。
+スケール セットのアップグレード ポリシーが *手動* の場合は、[Update-AzVmssInstance](/powershell/module/az.compute/update-azvmssinstance) を使用して VM インスタンスを更新します。 このコマンドレットは、更新されたスケール セットの構成をVM インスタンスに適用し、アプリケーションをインストールします。
 
 
 ## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>cloud-init を使用して Linux VM にアプリをインストールする

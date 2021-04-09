@@ -7,26 +7,27 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: eb08bb262806cb662822a75898196546a5c1058e
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 23bcfcb92a7fa642e111a67bf92c1306a606bb2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762533"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704805"
 ---
 # <a name="claim-sets"></a>要求セット
 
 Microsoft Azure Attestation を使用したエンクレーブの構成証明の過程で生成される要求は、以下のカテゴリに分類できます。
 
-- **入力要求**: 構成証明の証拠を解析した後に Microsoft Azure Attestation によって生成される要求。ポリシーの作成者がカスタム ポリシーに承認規則を定義する際に使用できます。
+- **入力要求**: 構成証明の証拠を解析した後に Microsoft Azure Attestation によって生成される要求。ポリシーの作成者がカスタム ポリシーに承認規則を定義する際に使用できます
 
-- **出力要求**: Azure Attestation によって生成される要求。最終的に構成証明トークンに追加される要求がすべて含まれます。
+- **出力要求**: Azure Attestation によって生成される要求。最終的に構成証明トークンに追加される要求がすべて含まれます
 
 - **プロパティ要求**: Azure Attestation によって出力として作成される要求。 これには、レポートのエンコード、レポートの有効期間など、構成証明トークンのプロパティを表すすべての要求が含まれます。
 
 ### <a name="common-incoming-claims-across-all-attestation-types"></a>すべての構成証明タイプに共通する入力要求
 
-次の要求は、Azure Attestation によって生成されます。カスタム ポリシーに承認規則を定義する際にこれらの要求を使用できます。
+次の要求は、Azure Attestation によって生成されます。すべての構成証明タイプのカスタム ポリシーに承認規則を定義する際に、ポリシー作成者が使用できます。
+
 - **x-ms-ver**: JWT スキーマ バージョン ("1.0")
 - **x-ms-attestation-type**: 構成証明のタイプを表す文字列値 
 - **x-ms-policy-hash**: BASE64URL(SHA256(UTF8(BASE64URL(UTF8(policy text))))) として計算される Azure Attestation 評価ポリシーのハッシュ
@@ -44,7 +45,9 @@ policy_signer | x-ms-policy-signer
 
 ### <a name="common-outgoing-claims-across-all-attestation-types"></a>すべての構成証明タイプに共通する出力要求
 
-[IETF JWT](https://tools.ietf.org/html/rfc7519) によって定義され、かつ Azure Attestation によって応答オブジェクトの中で使用される要求は以下のとおりです。
+次の要求は、サービスによって、すべての構成証明タイプの構成証明トークンに含まれます。
+
+ソース: [IETF JWT](https://tools.ietf.org/html/rfc7519) で定義されているとおり
 
 - **"jti" (JWT ID) 要求**
 - **"iss" (発行者) 要求**
@@ -52,10 +55,12 @@ policy_signer | x-ms-policy-signer
 - **"exp" (有効期限) 要求**
 - **"nbf" (期間の開始時刻) 要求**
 
-[IETF EAT](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9) によって定義され、かつ Azure Attestation によって応答オブジェクトの中で使用される要求は以下のとおりです。
+ソース: [IETF EAT](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9) で定義されているとおり
+
 - **"Nonce 要求" (nonce)**
 
-以下の要求は、入力要求に基づいて既定で生成されます。
+次の要求は、入力要求に基づいて、既定で構成証明トークンに含まれます。
+
 - **x-ms-ver**: JWT スキーマ バージョン ("1.0")
 - **x-ms-attestation-type**: 構成証明のタイプを表す文字列値 
 - **x-ms-policy-hash**: BASE64URL によって計算されたポリシー テキストの SHA256 ハッシュを含む文字列値 BASE64URL(SHA256(UTF8(BASE64URL(UTF8(ポリシー テキスト)))))
@@ -65,7 +70,8 @@ policy_signer | x-ms-policy-signer
 
 ### <a name="incoming-claims-specific-to-sgx-attestation"></a>SGX 構成証明に固有の入力要求
 
-次の要求は、SGX 構成証明のサービスによって生成されます。カスタム ポリシーに承認規則を定義する際にこれらの要求を使用できます。
+次の要求は、Azure Attestation によって生成されます。SGX 構成証明のカスタム ポリシーに承認規則を定義する際に、ポリシー作成者が使用できます。
+
 - **x-ms-sgx-is-debuggable**: エンクレーブでデバッグが有効になっているかどうかを示すブール値
 - **x-ms-sgx-product-id**
 - **x-ms-sgx-mrsigner**: クォートの "mrsigner" フィールドを 16 進数でエンコードした値
@@ -74,7 +80,8 @@ policy_signer | x-ms-policy-signer
 
 ### <a name="outgoing-claims-specific-to-sgx-attestation"></a>SGX 構成証明に固有の出力要求
 
-次の要求はサービスによって生成され、SGX 構成証明の応答オブジェクトに追加されます。
+次の要求は、SGX 構成証明のサービスによって生成され、構成証明トークンに含まれます。
+
 - **x-ms-sgx-is-debuggable**: エンクレーブでデバッグが有効になっているかどうかを示すブール値
 - **x-ms-sgx-product-id**
 - **x-ms-sgx-mrsigner**: クォートの "mrsigner" フィールドを 16 進数でエンコードした値

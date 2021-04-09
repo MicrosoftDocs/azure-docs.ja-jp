@@ -13,8 +13,12 @@
   items:
     - name: クライアント アプリをコーディングする
       href: tutorial-code.md
-    - name: サンプル クライアント アプリを使用して基本事項を確認する
-      href: tutorial-command-line-app.md
+    - name: グラフを作成する
+      items:
+        - name: サンプル クライアント アプリを使用する
+          href: tutorial-command-line-app.md
+        - name: Azure CLI コマンドを使用する
+          href: tutorial-command-line-cli.md
     - name: エンドツーエンドのソリューションを接続する
       href: tutorial-end-to-end.md
 - name: 概念
@@ -169,6 +173,8 @@
               href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core
     - name: Digital Twins CLI
       href: /cli/azure/ext/azure-iot/dt
+    - name: DTDL v2 の仕様
+      href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
 - name: リソース
   items:
     - name: Digital Twins サービスに関する制約
@@ -208,9 +214,9 @@
             - name: Python SDK - ソース コード
               href: 'https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins'
             - name: Go SDK - GoDoc
-              href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
+              href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt'
             - name: Go - ソース コード
-              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt'
         - name: データ プレーン
           items:
             - name: データ プレーン Swagger
@@ -249,8 +255,8 @@
           href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_servicebus'
     - name: ツールとサンプル プロジェクト
       items:
-        - name: デバイス シミュレーター サービス
-          href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
+        - name: Azure Digital Twins Postman コレクション
+          href: 'https://github.com/microsoft/azure-digital-twins-postman-samples'
         - name: Azure Digital Twins のエンドツーエンド サンプル
           href: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
         - name: Azure Digital Twins エクスプローラー (サンプル)
@@ -269,10 +275,10 @@
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
         - name: Logic Apps コネクタ用のカスタム Swagger
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
+        - name: デバイス シミュレーター サービス
+          href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
     - name: DTDL
       items:
-        - name: DTDL v2 の仕様
-          href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
         - name: VS Code 用の DTDL 拡張機能
           href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
         - name: DTDL パーサー ライブラリ - NuGet
@@ -296,4 +302,6 @@
         - name: Azure portal
           href: 'https://portal.azure.com'
     - name: サポート オプションとヘルプ オプション
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/digital-twins/toc.json&bc=/azure/digital-twins/breadcrumb/toc.json
+    - name: IoT 用語集
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/digital-twins/toc.json&bc=/azure/digital-twins/breadcrumb/toc.json

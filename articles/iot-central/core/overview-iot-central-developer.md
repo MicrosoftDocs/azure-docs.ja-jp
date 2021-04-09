@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 326fed659be43be3115cae1d7c2b14d0708f4a96
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f69bbecfc2acc24cd63b87212197342b28723a9f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377807"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043101"
 ---
 # <a name="iot-central-device-development-guide"></a>IoT Central デバイスの開発ガイド
 
@@ -68,7 +68,7 @@ DPS を使用すると、次のことが可能になります。
 - 独自のデバイス ID を使用して、IoT Central にデバイスを登録できます。 独自のデバイス ID を使用して、既存のバックオフィス システムとの統合を簡略化できます。
 - 1 つの一貫した方法で IoT Central にデバイスを接続できます。
 
-詳細については、「[Azure IoT Central に接続する](./concepts-get-connected.md)」を参照してください。
+詳細については、「[Azure IoT Central に接続する](./concepts-get-connected.md)」および[ベスト プラクティス](concepts-best-practices.md)に関するページを参照してください。
 
 ### <a name="security"></a>Security
 

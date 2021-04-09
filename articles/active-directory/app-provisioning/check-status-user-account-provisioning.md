@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: e6839026c83a10a4acebd7b7a6ab55b210e7ef14
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 5d93cec201feeb43700fe849f2fddc8eaf22488a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256679"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579486"
 ---
-# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>チュートリアル:自動ユーザー アカウント プロビジョニングについてのレポート
+# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>チュートリアル: 自動ユーザー アカウント プロビジョニングについてのレポート
 
 Azure Active Directory (Azure AD) には、エンド ツー エンドの ID ライフ サイクル管理のために、SaaS アプリとその他のシステムのユーザー アカウントのプロビジョニングとプロビジョニング解除の自動化を支援する、[ユーザー アカウント プロビジョニング サービス](user-provisioning.md)が含まれています。 Azure AD では、すべてのアプリケーションとシステム用に事前統合されたユーザー プロビジョニング コネクタがサポートされています。ユーザー プロビジョニングのチュートリアルは[こちら](../saas-apps/tutorial-list.md)です。
 
@@ -35,12 +35,12 @@ Azure Active Directory (Azure AD) には、エンド ツー エンドの ID ラ�
 
 この記事では、以下に定義されている用語を使用します。
 
-* **ソース システム** - Azure AD プロビジョニング サービスの同期元である、ユーザーのリポジトリ。 Azure Active Directory は、事前統合されたほとんどのプロビジョニング コネクタのソース システムです。ただし、いくつかの例外があります (例:Workday Inbound Synchronization)。
-* **ターゲット システム** - Azure AD プロビジョニング サービスの同期先である、ユーザーのリポジトリ。 これは、通常は SaaS アプリケーション (例:Salesforce、ServiceNow、G Suite、Dropbox for Business) です。ただし、場合によっては、Active Directory などのオンプレミス システムにすることもできます (例:Workday Inbound Synchronization から Active Directory へ)。
+* **ソース システム** - Azure AD プロビジョニング サービスの同期元である、ユーザーのリポジトリ。 Azure Active Directory は、事前統合されたほとんどのプロビジョニング コネクタのソース システムです。ただし、いくつかの例外があります (例: Workday Inbound Synchronization)。
+* **ターゲット システム** - Azure AD プロビジョニング サービスの同期先である、ユーザーのリポジトリ。 これは、通常は SaaS アプリケーション (例: Salesforce、ServiceNow、G Suite、Dropbox for Business) です。ただし、場合によっては、Active Directory などのオンプレミス システムにすることもできます (例: Workday Inbound Synchronization から Active Directory へ)。
 
 ## <a name="getting-provisioning-reports-from-the-azure-portal"></a>Azure portal からプロビジョニング レポートを取得する
 
-特定のアプリケーションに関するプロビジョニング レポート情報を取得するには、まず [Azure portal](https://portal.azure.com) を起動し、 **[Azure Active Directory]** &gt; **[エンタープライズ アプリ]** &gt; **[プロビジョニング ログ (プレビュー)]** ( **[アクティビティ]** セクション内) に移動します。 プロビジョニングが構成されているエンタープライズ アプリケーションに移動することもできます。 たとえば、LinkedIn Elevate にユーザーをプロビジョニングする場合、アプリケーションの詳細へのナビゲーション パスは、次のようになります。
+特定のアプリケーションに関するプロビジョニング レポート情報を取得するには、まず [Azure portal](https://portal.azure.com) を起動し、**[Azure Active Directory]** &gt; **[エンタープライズ アプリ]** &gt; **[プロビジョニング ログ (プレビュー)]** (**[アクティビティ]** セクション内) に移動します。 プロビジョニングが構成されているエンタープライズ アプリケーションに移動することもできます。 たとえば、LinkedIn Elevate にユーザーをプロビジョニングする場合、アプリケーションの詳細へのナビゲーション パスは、次のようになります。
 
 **[Azure Active Directory] > [エンタープライズ アプリケーション] > [すべてのアプリケーション] > [LinkedIn Elevate]**
 
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) には、エンド ツー エンドの ID ラ�
 
 ## <a name="provisioning-progress-bar"></a>プロビジョニング進行状況バー
 
-[プロビジョニング進行状況バー](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar)は、指定したアプリケーションの **[プロビジョニング]** タブに表示されます。 これは、 **[設定]** の下にある **[現在の状態]** セクションにあり、現在の初回サイクルまたは増分サイクルの状態を示します。 このセクションには、以下も表示されます。
+[プロビジョニング進行状況バー](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar)は、指定したアプリケーションの **[プロビジョニング]** タブに表示されます。 これは、 **[現在の状態]** セクションにあり、現在の初回サイクルまたは増分サイクルの状態を示します。 このセクションには、以下も表示されます。
 
 * ソース システムとターゲット システムの間で同期され、現時点でプロビジョニングの対象となっているユーザーとグループの総数。
 * 同期が最後に実行された時間。 同期は通常、[初回サイクル](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental)が完了した後、20 分から 40 分間隔で行われます。

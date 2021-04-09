@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: b9eb65311951706863c3b18c5fc91bae8c41c7dc
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bbb996362df1f99a8702de310bc11f6828cc303a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96007343"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103008452"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Storage での静的 Web サイト ホスティング
 
@@ -25,9 +25,6 @@ ms.locfileid: "96007343"
 Web サーバーでコンテンツのレンダリングが必要な場合は、[Azure App Service](https://azure.microsoft.com/services/app-service/) を使用できます。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
-> [!NOTE]
-> 必ず汎用 v2 Standard ストレージ アカウントを作成してください。 静的 Web サイトは、他の種類のストレージ アカウントでは使用できません。
 
 ## <a name="setting-up-a-static-website"></a>静的 Web サイトの設定
 
@@ -49,7 +46,7 @@ Web サーバーでコンテンツのレンダリングが必要な場合は、[
 > * [Azure CLI](storage-blob-static-website-how-to.md?tabs=azure-cli)
 > * [Azure PowerShell モジュール](storage-blob-static-website-how-to.md?tabs=azure-powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
-> * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
+> * [Azure 記憶域エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
 > * [Visual Studio Code 拡張機能](/azure/developer/javascript/tutorial-vscode-static-website-node-01)
 

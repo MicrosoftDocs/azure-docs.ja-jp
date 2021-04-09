@@ -14,12 +14,12 @@ metadata:
   ms.date: 10/14/2019
   ms.author: erhopf
   ms.custom: contperf-fy21q2
-  ms.openlocfilehash: f88271d7d212cf28356745a7a4e0f56e3350200d
-  ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+  ms.openlocfilehash: c8e74f83085054d7fc4e0892d371d644a06b060a
+  ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/17/2021
-  ms.locfileid: "100636251"
+  ms.lasthandoff: 03/19/2021
+  ms.locfileid: "104656279"
 landingContent:
 - title: Translator
   linkLists:
@@ -90,7 +90,7 @@ landingContent:
     - text: 言語のサポート
       url: language-support.md
     - text: 用語集
-      url: custom-translator/glossary.md
+      url: custom-translator/terminology.md
 - title: リソース
   linkLists:
   - linkListType: reference

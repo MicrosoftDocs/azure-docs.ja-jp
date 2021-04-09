@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 349f70c32ea4ebb4559f053d5ef05b4b37b6480f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86260366"
 ---
 # <a name="sfctl-is"></a>sfctl is
@@ -17,7 +17,7 @@ ms.locfileid: "86260366"
 
 ## <a name="commands"></a>コマンド
 
-|command|説明|
+|コマンド|説明|
 | --- | --- |
 | command | 特定の Infrastructure Service インスタンスで管理コマンドを呼び出します。 |
 | query | 特定の Infrastructure Service インスタンスで読み取り専用クエリを呼び出します。 |

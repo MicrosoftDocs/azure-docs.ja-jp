@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 48c819566db43e2f997309d1bea55a9436ec7085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74789455"
 ---
 # <a name="get-started-with-the-onedrive-for-business-connector"></a>OneDrive for Business コネクタの使用
@@ -20,7 +20,7 @@ OneDrive for Business に接続してファイルを管理します。 ファイ
 まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事を参照してください。
 
 ## <a name="create-a-connection-to-onedrive-for-business"></a>OneDrive for Business への接続の作成
-OneDrive for Business を使用してロジック アプリを作成するには、まず**接続**を作成してから、次のプロパティの詳細を指定する必要があります。
+OneDrive for Business を使用してロジック アプリを作成するには、まず **接続** を作成してから、次のプロパティの詳細を指定する必要があります。
 
 | プロパティ | 必須 | 説明 |
 | --- | --- | --- |

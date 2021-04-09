@@ -8,14 +8,16 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4064acd6d2857ebc00a38ea7f6ff5d5e30bbd699
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 517bcdab375db819b0942306df82e7285b9473b1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041370"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103487702"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>IoT Edge のための開発およびテスト環境の準備
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge によって、既存のビジネス ロジックをエッジで稼働するデバイスに移行できます。 [IoT Edge モジュール](iot-edge-modules.md)として実行するためにアプリケーションやワークロードを準備するには、それらをコンテナーとしてビルドする必要があります。 この記事では、IoT Edge ソリューションを正常に作成できるように開発環境を構成する方法について説明します。 開発環境を設定した後、[独自の IoT Edge モジュールの開発](module-development.md)方法についても学習することができます。
 

@@ -15,10 +15,10 @@ ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 686afa791df88382e3e5e1b2d233317c36bf1dd6
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98791308"
 ---
 # <a name="remove-an-application-from-a-service-fabric-cluster-using-powershell"></a>PowerShell を使用して Service Fabric クラスターからアプリケーションを削除する
@@ -35,7 +35,7 @@ ms.locfileid: "98791308"
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | Notes |
 |---|---|
 | [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication) | 実行中の Service Fabric アプリケーション インスタンスをクラスターから削除します。  |
 | [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype) | Service Fabric アプリケーションの種類とバージョンの登録をクラスターから解除します。 |

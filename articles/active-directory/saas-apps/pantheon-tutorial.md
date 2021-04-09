@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Pantheon の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Pantheon の統合 | Microsoft Docs'
 description: Azure Active Directory と Pantheon の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 900f64856d8f828fe4650ad86d0e8c4366672314
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92506549"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pantheon"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Pantheon の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pantheon"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Pantheon の統合
 
 このチュートリアルでは、Pantheon と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Pantheon を統合すると、次のことができます。
 
@@ -40,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 
-* Pantheon では、 **IDP** Initiated SSO がサポートされます
+* Pantheon では、**IDP** Initiated SSO がサポートされます
 
 
 
@@ -53,7 +53,7 @@ Azure AD への Pantheon の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Pantheon** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Pantheon**」と入力します。
 1. 結果のパネルから **[Pantheon]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -74,7 +74,7 @@ Pantheon で Azure AD SSO を構成してテストするには、次の構成要
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Pantheon** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Pantheon** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -89,7 +89,7 @@ Pantheon で Azure AD SSO を構成してテストするには、次の構成要
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Pantheon クライアント サポート チーム](https://pantheon.io/docs/getting-support/)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. Pantheon アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 Pantheon アプリケーションでは、 **nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. Pantheon アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 Pantheon アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、**[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -149,7 +149,7 @@ Pantheon で Azure AD SSO を構成してテストするには、次の構成要
 
 2. **[組織]** ダッシュボード ページに移動します。
  
-3. **[ユーザー]** をクリックします。
+3. **[People]\(ユーザー\)** をクリックします。
 
 4. **[ユーザーの追加]** をクリックします。
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/05/2021
 ms.openlocfilehash: 2744d51b6d68ed494050be10a9f0e4d1f59cdc49
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102204067"
 ---
 # <a name="configure-azure-ssis-integration-runtime-for-business-continuity-and-disaster-recovery-bcdr"></a>事業継続とディザスター リカバリー (BCDR) のために Azure-SSIS 統合ランタイムを構成する 
@@ -57,7 +57,7 @@ Azure SQL Database フェールオーバー グループと同期して機能す
 
 Azure SQL Managed Instance フェールオーバー グループと同期して機能するデュアル スタンバイ Azure-SSIS IR ペアを構成するには、次の手順を実行します。
 
-1. Azure portal を使用すると、プライマリ Azure SQL マネージド インスタンスの **[フェールオーバー グループ]** ページで[プライマリおよびセカンダリの Azure SQL マネージド インスタンスのフェールオーバー グループを作成](https://docs.microsoft.com/azure/azure-sql/managed-instance/failover-group-add-instance-tutorial?tabs=azure-portal)できます。
+1. Azure portal を使用すると、プライマリ Azure SQL マネージド インスタンスの **[フェールオーバー グループ]** ページで [プライマリおよびセカンダリの Azure SQL マネージド インスタンスのフェールオーバー グループを作成](https://docs.microsoft.com/azure/azure-sql/managed-instance/failover-group-add-instance-tutorial?tabs=azure-portal)できます。
 
 1. Azure portal または ADF UI を使用して、プライマリ Azure SQL マネージド インスタンスで新しい Azure-SSIS IR を作成し、プライマリ リージョンで SSISDB をホストできます。 プライマリ Azure SQL マネージド インスタンスによってホストされている SSIDB に既にアタッチされている既存の Azure-SSIS IR があり、それがまだ実行中の場合は、最初に停止して再構成する必要があります。 これがプライマリ Azure-SSIS IR になります。
 

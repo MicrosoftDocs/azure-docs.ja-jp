@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f47ca56fa1b40422edeb0d4e11c24be6f60e49e5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72792045"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666355"
 ---
 # <a name="conditional-cognitive-skill"></a>条件付きコグニティブ スキル
 
-**条件付きの**スキルを使用すると、出力に割り当てるデータを決定するブール演算を必要とする Azure Cognitive Search のシナリオが可能になります。 これらのシナリオには、条件に基づくフィルター処理、既定値の割り当て、データのマージなどがあります。
+**条件付きの** スキルを使用すると、出力に割り当てるデータを決定するブール演算を必要とする Azure Cognitive Search のシナリオが可能になります。 これらのシナリオには、条件に基づくフィルター処理、既定値の割り当て、データのマージなどがあります。
 
 次の擬似コードは、条件付きスキルで実現できる内容を示しています。
 
@@ -88,15 +88,15 @@ Microsoft.Skills.Util.ConditionalSkill
 | 入力   | 説明 |
 |-------------|-------------|
 | condition   | この入力は、評価する条件を表す[評価済みフィールド](#evaluated-fields)です。 この条件はブール値 (*true* または *false*) に評価されます。   <br/>  例 : <br/> "= true" <br/> "= $(/document/language) =='fr'" <br/> "= $(/document/pages/\*/language) == $(/document/expectedLanguage)" <br/> |
-| whenTrue    | この入力は、条件が *true* に評価された場合に返される値を表す[評価済みフィールド](#evaluated-fields)です。 定数文字列は単一引用符 (' と ') に囲まれて返されます。 <br/>サンプル値: <br/> "= 'contract'"<br/>"= $(/document/contractType)" <br/> "= $(/document/entities/\*)" <br/> |
-| whenFalse   | この入力は、条件が *false* に評価された場合に返される値を表す[評価済みフィールド](#evaluated-fields)です。 <br/>サンプル値: <br/> "= 'contract'"<br/>"= $(/document/contractType)" <br/> "= $(/document/entities/\*)" <br/>
+| whenTrue    | この入力は、条件が *true* に評価された場合に返される値を表す [評価済みフィールド](#evaluated-fields)です。 定数文字列は単一引用符 (' と ') に囲まれて返されます。 <br/>サンプル値: <br/> "= 'contract'"<br/>"= $(/document/contractType)" <br/> "= $(/document/entities/\*)" <br/> |
+| whenFalse   | この入力は、条件が *false* に評価された場合に返される値を表す [評価済みフィールド](#evaluated-fields)です。 <br/>サンプル値: <br/> "= 'contract'"<br/>"= $(/document/contractType)" <br/> "= $(/document/entities/\*)" <br/>
 
 ## <a name="skill-outputs"></a>スキルの出力
 単に "ourput" という 1 つの出力があります。 条件が false の場合は値 *whenFalse* が返され、条件が true の場合は値 *whenTrue* が返されます。
 
 ## <a name="examples"></a>例
 
-### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>サンプル スキル定義 1:フランス語のドキュメントのみを返すように、ドキュメントをフィルター処理する
+### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>サンプル スキル定義 1: フランス語のドキュメントのみを返すように、ドキュメントをフィルター処理する
 
 次の出力は、ドキュメントの言語がフランス語の場合、文の配列 ("/document/frenchSentences") を返します。 言語がフランス語ではない場合、その値は *null* に設定されます。
 
@@ -115,7 +115,7 @@ Microsoft.Skills.Util.ConditionalSkill
 "/document/frenchSentences" が別のスキルの "*コンテキスト*" として使用される場合、そのスキルは "/document/frenchSentences" が *null* に設定されていない場合にのみ実行されます。
 
 
-### <a name="sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist"></a>サンプル スキル定義 2:存在しない値の既定値を設定する
+### <a name="sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist"></a>サンプル スキル定義 2: 存在しない値の既定値を設定する
 
 次の出力では注釈 ("/document/languageWithDefault") が作成され、ドキュメントの言語に設定されるか、言語が設定されていない場合は "es" に設定されます。
 
@@ -132,9 +132,9 @@ Microsoft.Skills.Util.ConditionalSkill
 }
 ```
 
-### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>サンプル スキル定義 3:2 つのフィールドの値を 1 つにマージする
+### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>サンプル スキル定義 3: 2 つのフィールドの値を 1 つにマージする
 
-この例では、一部の文には *frenchSentiment* プロパティがあります。 *frenchSentiment* プロパティが null の場合は常に *englishSentiment* 値を使用します。 *sentiment* ("/document/sentiment/*/sentiment") というメンバーに出力を割り当てます。
+この例では、一部の文には *frenchSentiment* プロパティがあります。 *frenchSentiment* プロパティが null の場合は常に *englishSentiment* 値を使用します。 *sentiment* ("/document/sentences/*/sentiment") というメンバーに出力を割り当てます。
 
 ```json
 {
@@ -150,7 +150,7 @@ Microsoft.Skills.Util.ConditionalSkill
 ```
 
 ## <a name="transformation-example"></a>変換の例
-### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>サンプル スキル定義 4:単一フィールドでのデータ変換
+### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>サンプル スキル定義 4: 単一フィールドでのデータ変換
 
 この例では、0 から 1 の間の *sentiment* を受け取ります。 これを -1 から 1 の間に変換します。 条件付きのスキルを使用して、この小さな変換を実行することができます。
 

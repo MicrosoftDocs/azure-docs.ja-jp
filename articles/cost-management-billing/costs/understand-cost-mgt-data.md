@@ -3,18 +3,18 @@ title: Azure Cost Management のデータを理解する
 description: この記事では、Azure Cost Management に含まれるデータと、それが処理、収集、表示、およびクローズされる頻度について詳しく説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 01/06/2021
+ms.date: 01/17/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e6096c259ec1870a711a515bf02d5d00b4f75345
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 568f3d811876073dc899204cb8ca4d1753d9cfd0
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964152"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499298"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -31,6 +31,7 @@ Azure Cost Management で現在サポートされている [Microsoft Azure の�
 | **カテゴリ**  | **プラン名** | **クォータ ID** | **プラン番号** | **データ利用可能開始日** |
 | --- | --- | --- | --- | --- |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | 2014 年 5 月<sup>1</sup> |
+| **Azure Government** | Azure Government 従量課金制 | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P | 2018 年 10 月 2 日<sup>2</sup> |
 | **Enterprise Agreement (EA)** | Enterprise Dev/Test                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | 2014 年 5 月<sup>1</sup> |
 | **Enterprise Agreement (EA)** | Microsoft Azure エンタープライズ | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | 2014 年 5 月<sup>1</sup> |
 | **Microsoft 顧客契約** | Microsoft Azure プラン | EnterpriseAgreement_2014-09-01 | 該当なし | 2019 年 3 月<sup>3</sup> |
@@ -51,7 +52,7 @@ Azure Cost Management で現在サポートされている [Microsoft Azure の�
 
 _<sup>**1**</sup> 2014 年 5 月よりも前のデータについては、[Azure エンタープライズ ポータル](https://ea.azure.com)にアクセスしてください。_
 
-_<sup>**2**</sup> 2018 年 10 月 2 日よりも前のデータについては、[Azure アカウント センター](https://account.azure.com/subscriptions)にアクセスしてください。_
+_<sup>**2**</sup> 2018 年 10 月 2 日より前のデータについては、グローバル アカウントの場合は [Azure アカウント センター](https://account.azure.com/subscriptions)、Azure Government アカウントの場合は [Azure アカウント センター Gov](https://account.windowsazure.us/subscriptions) を、それぞれ参照してください。_
 
 _<sup>**3**</sup> Microsoft 顧客契約は 2019 年 3 月に開始したため、これ以前の履歴データはありません。_
 
@@ -62,7 +63,6 @@ _<sup>**4**</sup>クレジットベースの前払い制サブスクリプショ
 | カテゴリ  | **プラン名** | **クォータ ID** | **プラン番号** |
 | --- | --- | --- | --- |
 | **Azure Germany** | Azure Germany 従量課金制 | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
-| **Azure Government** | Azure Government 従量課金制 | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P |
 | **クラウド ソリューション プロバイダー (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **クラウド ソリューション プロバイダー (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
 | **クラウド ソリューション プロバイダー (CSP)** | Azure Germany in CSP (Microsoft Cloud Germany 用)   | CSP_2015-05-01 | MS-AZR-DE-0145P |
@@ -130,6 +130,7 @@ Cost Management に特定のタグが表示されない場合は、次の質問�
     - Data Factory
     - Databricks
     - ロード バランサー
+    - Machine Learning ワークスペースのコンピューティング インスタンス
     - Network Watcher
     - Notification Hubs
     - Service Bus
@@ -161,7 +162,7 @@ Cost Management に特定のタグが表示されない場合は、次の質問�
 
 ### <a name="rerated-data"></a>データの再評価
 
-Cost Management API シリーズ、Power BI、Azure portal のどの方法でデータを取得する場合でも、請求書がクローズされるまでは、現在の請求期間の料金が再評価され、その結果変更される可能性があります。
+データの取得に Cost Management API、Power BI、Azure portal のいずれを使用した場合でも、現在の請求期間の料金が再計算されることを想定しておいてください。 請求書がクローズされるまでの間は、料金が変化する可能性があります。
 
 ## <a name="cost-rounding"></a>コストの丸め
 
@@ -175,7 +176,7 @@ Cost Management に表示されるコストは丸められます。 クエリ AP
 
 ## <a name="historical-data-might-not-match-invoice"></a>履歴データが請求書と一致しない場合がある
 
-クレジットベースの前払い制オファーの履歴データは、請求書と一致しない場合があります。 Azure 従量課金制、MSDN、Visual Studio の一部のプランでは、Azure クレジットと前払いを請求書に適用できます。 しかし、Cost Management に示される履歴データは、従量課金による推定請求金額のみに基づきます。 Cost Management の履歴データには、支払いとクレジットは含まれていません。 そのため、以下のオファーに対して示される履歴データが、請求書と完全に一致しない場合があります。
+クレジットベースの前払い制オファーの履歴データは、請求書と一致しない場合があります。 Azure 従量課金制、MSDN、Visual Studio の一部のプランでは、Azure クレジットと前払いを請求書に適用できます。 Cost Management に表示される履歴データは、従量課金による推定請求金額のみに基づきます。 Cost Management の履歴データには、支払いとクレジットは含まれていません。 次のオファーについて表示される履歴データが、請求書と完全に一致しないことがあります。
 
 - 学生向け Azure (MS-AZR-0170P)
 - Azure イン オープン プラン (MS-AZR-0111P)

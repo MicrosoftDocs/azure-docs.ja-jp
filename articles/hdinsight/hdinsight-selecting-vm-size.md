@@ -7,10 +7,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.openlocfilehash: 51043f0a1009994528783a1b56ec5ccec68e99b3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98931780"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>Azure HDInsight クラスターの適切な VM サイズの選択
@@ -29,7 +29,7 @@ VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワ
 
 - RAM: VM サイズによって、VM で使用可能な RAM の容量も決まります。 処理するデータをディスクから読み取るのではなく、メモリに格納するワークロードの場合、ワーカー ノードにデータを格納できる十分なメモリがあることを確認します。
 
-- [ネットワーク]\: クラスターのほとんどの種類では、クラスターで処理されるデータはローカル ディスク上に存在するのではなく、Data Lake Storage や Azure Storage などの外部ストレージ サービスに存在します。 ノードの VM とストレージ サービス間のネットワーク帯域幅とスループットを考慮します。 通常は、VM のサイズが大きいほど、VM が使用できるネットワーク帯域幅が増加します。 詳細については、[VM サイズの概要](../virtual-machines/sizes.md)に関する記事をご覧ください。
+- ネットワーク: ほとんどの種類のクラスターでは、そのクラスターで処理されるデータは、ローカル ディスク上に存在するのではなく、Data Lake Storage や Azure Storage などの外部ストレージ サービスに存在します。 ノードの VM とストレージ サービス間のネットワーク帯域幅とスループットを考慮します。 通常は、VM のサイズが大きいほど、VM が使用できるネットワーク帯域幅が増加します。 詳細については、[VM サイズの概要](../virtual-machines/sizes.md)に関する記事をご覧ください。
 
 ## <a name="understanding-vm-optimization"></a>VM の最適化について
 
@@ -39,7 +39,7 @@ Azure の仮想マシン ファミリは、さまざまなユース ケースに
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [エントリ レベル](../virtual-machines/sizes-general.md)          | A、Av2  | 開発とテストのような、エントリ レベルのワークロードに最適な CPU パフォーマンスとメモリ構成を備えています。 A シリーズは経済的で、Azure の使用を開始するための低コストなオプションとなっています。 |
 | [汎用](../virtual-machines/sizes-general.md)          | D、DSv2、Dv2  | バランスのとれた CPU 対メモリ比。 テストと開発、小～中規模のデータベース、および低～中程度のトラフィックの Web サーバーに最適です。 |
-| [コンピューティングの最適化](../virtual-machines/sizes-compute.md)        | F           | 高い CPU 対メモリ比。 トラフィックが中程度の Web サーバー、ネットワーク アプライアンス、バッチ処理、アプリケーション サーバーに適しています。        |
+| [コンピューティング最適化](../virtual-machines/sizes-compute.md)        | F           | 高い CPU 対メモリ比。 トラフィックが中程度の Web サーバー、ネットワーク アプライアンス、バッチ処理、アプリケーション サーバーに適しています。        |
 | [メモリの最適化](../virtual-machines/sizes-memory.md)         | Esv3、Ev3  | 高いメモリ対 CPU 比。 リレーショナル データベース サーバー、中～大規模のキャッシュ、およびメモリ内分析に適しています。                 |
 
 - HDInsight がサポートされるリージョンで提供されている VM インスタンスの価格については、[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)に関するページを参照してください。

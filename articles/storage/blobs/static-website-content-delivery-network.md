@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.author: normesta
 ms.date: 04/07/2020
 ms.openlocfilehash: e458f98d82c910ec845ebf951b7f6470b6aba10d
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95527328"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>静的な Web サイトを Azure CDN と統合する

@@ -1,66 +1,52 @@
 ---
 title: Cognitive Services:ドキュメントの最新情報
-description: 2021 年 1 月 1 日から 2021 年 1 月 31 日までの Azure Cognitive Services ドキュメントの最新情報
+description: 2020 年 2 月 1 日から 2020 年 2 月 28 日までの Azure Cognitive Services ドキュメントの最新情報。
 author: erhopf
 manager: nitinme
 ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
-ms.date: 02/08/2021
-ms.openlocfilehash: 1cea159e6939463352102d7d3ff3dafbdea71b5a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/08/2021
+ms.openlocfilehash: b5893ab7c616c30d4febf957c21da56caf7c9673
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710323"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102631372"
 ---
-# <a name="cognitive-services-docs-whats-new-for-january-1-2021---january-31-2021"></a>Cognitive Services ドキュメント:2021 年 1 月 1 日から 2021 年 1 月 31 日の新機能
+# <a name="cognitive-services-docs-whats-new-for-february-1-2021---february-28-2021"></a>Cognitive Services ドキュメント: 2021 年 2 月 1 日から 2021 年 2 月 28 日までの最新情報
 
-2021 年 1 月 1 日から 2021 年 1 月 31 日までの Azure Cognitive Services ドキュメントの更新情報へようこそ。 この記事では、この期間中にドキュメントに加えられた大きな変更の一部を一覧で示します。
+2021 年 2 月 1 日から 2021 年 2 月 28 日までの Azure Cognitive Services ドキュメントの更新情報へようこそ。 この記事では、この期間中にドキュメントに加えられた大きな変更の一部を一覧で示します。
 
 ## <a name="cognitive-services"></a>Cognitive Services
 
-**更新された記事**
+### <a name="new-articles"></a>新しい記事
 
-- [Azure Cognitive Services のコストを計画および管理する](plan-manage-costs.md)
-- [Azure Cognitive Services コンテナー](cognitive-services-container-support.md)
+- [Azure Cognitive Services 用の Azure Policy 規制コンプライアンス コントロール](security-controls-policy.md)
+
+## <a name="containers"></a>コンテナー
+
+### <a name="new-articles"></a>新しい記事
+
+- [Azure Cognitive Services コンテナーについてよくあるご質問 (FAQ)](/azure/cognitive-services/containers/container-faq)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Azure Cognitive Services コンテナー イメージ タグとリリース ノート](/azure/cognitive-services/containers/container-image-tags)
 
 ## <a name="form-recognizer"></a>Form Recognizer
 
-**新しい記事**
+### <a name="updated-articles"></a>更新された記事
 
-- [チュートリアル:Azure Data Factory を使用したフォーム データの一括抽出](./form-recognizer/tutorial-bulk-processing.md)
-
-**更新された記事**
-
-- [Form Recognizer とは](./form-recognizer/overview.md)
-
-## <a name="immersive-reader"></a>イマーシブ リーダー
-
-**更新された記事**
-
-- [イマーシブ リーダー リソースを作成して Azure Active Directory 認証を構成する](./immersive-reader/how-to-create-immersive-reader.md)
-
-## <a name="personalizer"></a>Personalizer
-
-**更新された記事**
-
-- [フィーチャーはアクションとコンテキストに関する情報です。](./personalizer/concepts-features.md)
+- [サンプル ラベル付けツールのデプロイ](/azure/cognitive-services/form-recognizer/deploy-label-tool)
+- [Form Recognizer とは](/azure/cognitive-services/form-recognizer/overview)
+- [サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング](/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
 
 ## <a name="text-analytics"></a>Text Analytics
 
-**更新された記事**
+### <a name="updated-articles"></a>更新された記事
 
-- [Text Analytics API v3 の言語のサポート](./text-analytics/language-support.md)
-- [Text Analytics API のバージョン 3.x への移行](./text-analytics/migration-guide.md)
-- [Text Analytics API の新機能](./text-analytics/whats-new.md)
-
-## <a name="community-contributors"></a>コミュニティの共同作成者
-
-上記の期間中、Cognitive Services ドキュメントへのご協力をいただいた方々です。 よろしくお願いいたします。 [新機能ランディング ページ](index.yml)の「参加する」にあるリンクに従って投稿する方法について説明します。
-
-- [AnweshGangula](https://github.com/AnweshGangula) - Anwesh Gangula (1)
-- [cdglasz](https://github.com/cdglasz) - Christopher Glasz (1)
-- [huybuidac](https://github.com/huybuidac) - Bui Dac Huy (1)
+- [Text Analytics API v3 の言語のサポート](/azure/cognitive-services/text-analytics/language-support)
+- [Text Analytics REST API を呼び出す方法](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

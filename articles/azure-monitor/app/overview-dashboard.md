@@ -4,10 +4,10 @@ description: Azure の Application Insights と概要ダッシュボードの機
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 1b0708fa70d3a3ecb406f1d974bb1f2b47e55b40
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97504102"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights の概要ダッシュボード

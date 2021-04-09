@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: efab0234d428a8283845946289cdd1e8a17ded26
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92792057"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Elastic Database ツールを使用してシャードを追加する
@@ -29,7 +29,7 @@ ms.locfileid: "92792057"
 
 ### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>例: シャードとその範囲を既存のシャード マップに追加する
 
-このサンプルでは、TryGetShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard)、[.NET](/previous-versions/azure/dn823929(v=azure.100)))、CreateShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard))、CreateRangeMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) の各メソッドを使用し、ShardLocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)) クラスのインスタンスを作成します。 次の例では、範囲 [300, 400) を保持する、 **sample_shard_2** という名前のデータベースと、その中の必要なすべてのスキーマ オブジェクトが作成されています。  
+このサンプルでは、TryGetShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard)、[.NET](/previous-versions/azure/dn823929(v=azure.100)))、CreateShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard))、CreateRangeMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) の各メソッドを使用し、ShardLocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)) クラスのインスタンスを作成します。 次の例では、範囲 [300, 400) を保持する、**sample_shard_2** という名前のデータベースと、その中の必要なすべてのスキーマ オブジェクトが作成されています。  
 
 ```csharp
 // sm is a RangeShardMap object.
@@ -79,6 +79,6 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**重要** :この手法は、更新されるマッピング用の範囲が空であることが確実である場合のみ使用します。  上記の方法では、移動される範囲のデータはチェックされないので、コードにチェックを含めることをお勧めします。  移動される範囲内に行が存在する場合、実際のデータ分布は更新されたシャード マップと一致しなくなります。 このような場合は、 [分割/マージ ツール](elastic-scale-overview-split-and-merge.md) を代わりに使用して操作を行ってください。  
+**重要**:この手法は、更新されるマッピング用の範囲が空であることが確実である場合のみ使用します。  上記の方法では、移動される範囲のデータはチェックされないので、コードにチェックを含めることをお勧めします。  移動される範囲内に行が存在する場合、実際のデータ分布は更新されたシャード マップと一致しなくなります。 このような場合は、 [分割/マージ ツール](elastic-scale-overview-split-and-merge.md) を代わりに使用して操作を行ってください。  
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]

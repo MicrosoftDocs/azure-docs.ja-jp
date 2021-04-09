@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
 ms.openlocfilehash: 2371c789b9e4a9fc70f4207fd8a634e419c97912
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98599461"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>クイック スタート:Node.js で JavaScript v10 SDK を使用して BLOB を管理する
@@ -88,7 +88,7 @@ Done
 
 ## <a name="understanding-the-code"></a>コードについて
 
-サンプルでは、最初に Azure Blob Storage の名前空間からクラスと関数をインポートします。 インポートされる各アイテムについては、サンプルでそれらが使用されるコンテキストで説明します。
+サンプルでは、最初に Azure BLOB ストレージの名前空間からクラスと関数をインポートします。 インポートされる各アイテムについては、サンプルでそれらが使用されるコンテキストで説明します。
 
 ```javascript
 const {
@@ -409,7 +409,7 @@ console.log(`Container "${containerName}" is deleted`);
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Node.js を使用して Azure Blob Storage 内の BLOB とコンテナーを管理する方法を示しました。 この SDK の使用方法をさらに詳しく学習するには、GitHub リポジトリを参照してください。
+このクイック スタートでは、Node.js を使用して Azure BLOB ストレージ内の BLOB とコンテナーを管理する方法を示しました。 この SDK の使用方法をさらに詳しく学習するには、GitHub リポジトリを参照してください。
 
 > [!div class="nextstepaction"]
 > [Azure Storage v10 SDK for JavaScript リポジトリ](https://github.com/Azure/azure-storage-js)

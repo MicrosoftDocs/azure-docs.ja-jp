@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: fbca4b23b6fc414727ea1b5a4012d2847d6b8d78
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 9ae06565039e53c0096ff0541f7b28a5b041d9e8
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940474"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864552"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>HDInsight 上の Apache Spark で Application Insights テレメトリ ログを分析する
 
@@ -36,7 +36,7 @@ HDInsight 上の [Apache Spark](https://spark.apache.org/) を使用して Appli
 
 以下の図に、この例のサービス アーキテクチャを示します。
 
-![Application Insights から Blob Storage を経て Spark に流れるデータ](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
+:::image type="content" source="./media/apache-spark-analyze-application-insight-logs/application-insights.png" alt-text="Application Insights から Blob Storage を経て Spark に流れるデータ" border="false":::
 
 ### <a name="azure-storage"></a>Azure Storage
 
@@ -69,7 +69,7 @@ HDInsight クラスターを作成している場合は、クラスターの作�
 
 1. Web ブラウザーから、`https://CLUSTERNAME.azurehdinsight.net/jupyter` に移動します。ここで、CLUSTERNAME はクラスターの名前です。
 
-2. Jupyter のページの右上隅にある **[New]** をクリックし、 **[PySpark]** を選択します。 新しいブラウザーのタブが開き、Python ベースの Jupyter Notebook が表示されます。
+2. Jupyter のページの右上隅にある **[New]** をクリックし、**[PySpark]** を選択します。 新しいブラウザーのタブが開き、Python ベースの Jupyter Notebook が表示されます。
 
 3. ページの 1 番目のフィールド (**セル** と呼びます) に、次のテキストを入力します。
 
@@ -220,7 +220,7 @@ HDInsight クラスターを作成している場合は、クラスターの作�
 
 1. Web ブラウザーから、`https://CLUSTERNAME.azurehdinsight.net/jupyter` に移動します。ここで、CLUSTERNAME はクラスターの名前です。
 
-2. Jupyter のページの右上隅にある **[新規作成]** をクリックし、 **[Scala]** を選択します。 新しいブラウザーのタブが開き、Scala ベースの Jupyter Notebook が表示されます。
+2. Jupyter のページの右上隅にある **[新規作成]** をクリックし、**[Scala]** を選択します。 新しいブラウザーのタブが開き、Scala ベースの Jupyter Notebook が表示されます。
 
 3. ページの 1 番目のフィールド (**セル** と呼びます) に、次のテキストを入力します。
 
@@ -372,9 +372,9 @@ HDInsight クラスターを作成している場合は、クラスターの作�
 
 Apache Spark を使用して Azure のデータやサービスを操作するその他の例については、次のドキュメントを参照してください。
 
-* [Apache Spark と BI: HDInsight の Spark と BI ツールを使用して対話型データ分析を実行する](apache-spark-use-bi-tools.md)
+* [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
 * [Apache Spark と Machine Learning: HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark と Machine Learning: HDInsight 上で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
 
 Spark アプリケーションを作成および実行する方法については、次のドキュメントを参照してください。

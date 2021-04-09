@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 3f4d4d1e0fc44b9fb031ce5e3e45219fa8169562
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92458508"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-sales-navigator"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と LinkedIn Sales Navigator の統合
@@ -39,9 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* LinkedIn Sales Navigator では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* LinkedIn Sales Navigator では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
-* LinkedIn Sales Navigator では、 [**自動化された** ユーザー プロビジョニング](linkedinsalesnavigator-provisioning-tutorial.md)がサポートされます
+* LinkedIn Sales Navigator では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* LinkedIn Sales Navigator では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* LinkedIn Sales Navigator では、[**自動化された** ユーザー プロビジョニング](linkedinsalesnavigator-provisioning-tutorial.md)がサポートされます
 
 ## <a name="adding-linkedin-sales-navigator-from-the-gallery"></a>ギャラリーからの LinkedIn Sales Navigator ナビゲーターの追加
 
@@ -51,7 +51,7 @@ Azure AD への LinkedIn Sales Navigator の統合を構成するには、ギャ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **LinkedIn Sales Navigator** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**LinkedIn Sales Navigator**」と入力します。
 1. 結果のパネルから **[LinkedIn Sales Navigator]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-linkedin-sales-navigator"></a>LinkedIn Sales Navigator の Azure AD シングル サインオンの構成とテスト
@@ -79,9 +79,9 @@ LinkedIn Sales Navigator で Azure AD SSO を構成してテストするには�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、 **エンティティ ID** の値を入力します。エンティティ ID の値は、このチュートリアルで後述する Linkedin Portal からコピーします。
+    a. **[識別子]** ボックスに、**エンティティ ID** の値を入力します。エンティティ ID の値は、このチュートリアルで後述する Linkedin Portal からコピーします。
 
-    b. **[応答 URL]** ボックスに、 **Assertion Consumer Access (ACS) URL** の値を入力します。Assertion Consumer Access (ACS) URL の値は、このチュートリアルで後述する LinkedIn Portal からコピーします。
+    b. **[応答 URL]** ボックスに、**Assertion Consumer Access (ACS) URL** の値を入力します。Assertion Consumer Access (ACS) URL の値は、このチュートリアルで後述する LinkedIn Portal からコピーします。
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 

@@ -1,24 +1,21 @@
 ---
-title: VM の併置
-description: Azure VM リソースを併置することで待機時間を短縮する方法について説明します。
+title: 近接通信配置グループ
+description: Azure での近接通信配置グループの使用について説明します。
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
+ms.subservice: proximity-placement-groups
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 3/07/2021
 ms.reviewer: zivr
-ms.openlocfilehash: e193b7d084723ad50ddc0d1a40e0b6c8a111af73
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 1a65a1e4ecd989f3a7c4968c424472c3c6dfe472
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924055"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102559077"
 ---
-# <a name="co-locate-resources-for-improved-latency"></a>リソースの併置による待機時間の短縮
-
-Azure にアプリケーションをデプロイするときに、複数のリージョンまたは可用性ゾーンにインスタンスを分散すると、ネットワーク待機時間が発生し、アプリケーションの全体的なパフォーマンスに影響を及ぼす可能性があります。 
-
-## <a name="proximity-placement-groups"></a>近接通信配置グループ
+# <a name="proximity-placement-groups"></a>近接通信配置グループ
 
 VM を単一リージョンに配置すると、インスタンス間の物理的な距離が短縮されます。 また、単一可用性ゾーンに配置した場合も、それらの物理的な位置は近くなります。 ただし、Azure の占有領域が拡大するにつれ、単一可用性ゾーンが複数の物理的なデータ センターにまたがる可能性があるため、ネットワーク待ち時間がアプリケーションに影響を与えることがあります。 
 

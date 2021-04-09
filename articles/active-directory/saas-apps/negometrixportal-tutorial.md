@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/06/2019
 ms.author: jeedes
 ms.openlocfilehash: d972868cf9c5d67824eab781bc99a7cac5f7b313
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92507140"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-negometrixportal-single-sign-on-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と NegometrixPortal Single Sign On (SSO) の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* NegometrixPortal Single Sign On (SSO) では、 **SP** によって開始される SSO がサポートされます
+* NegometrixPortal Single Sign On (SSO) では、**SP** によって開始される SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -52,7 +52,7 @@ Azure AD への NegometrixPortal Single Sign On (SSO) の統合を構成する�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **NegometrixPortal Single Sign On (SSO)** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**NegometrixPortal Single Sign On (SSO)** 」と入力します。
 1. 結果パネルから **[NegometrixPortal Single Sign-on (SSO)]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-negometrixportal-single-sign-on-sso"></a>NegometrixPortal Single Sign On (SSO) の Azure AD シングル サインオンの構成とテスト
@@ -131,7 +131,7 @@ NegometrixPortal Single Sign On (SSO) で Azure AD のシングル サインオ�
 
 ## <a name="configure-negometrixportal-single-sign-on-sso-sso"></a>NegometrixPortal Single Sign On (SSO) のシングル サインオンを構成する
 
-**NegometrixPortal Single Sign On (SSO)** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [NegometrixPortal Single Sign On (SSO) サポートチーム](mailto:sander.hoek@negometrix.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**NegometrixPortal Single Sign On (SSO)** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [NegometrixPortal Single Sign On (SSO) サポートチーム](mailto:sander.hoek@negometrix.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-negometrixportal-single-sign-on-sso-test-user"></a>NegometrixPortal Single Sign On (SSO) のテスト ユーザーを作成する
 

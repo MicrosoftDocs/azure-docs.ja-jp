@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 07/11/2019
 ms.custom: mvc, cli-validate, seodec18
 ms.openlocfilehash: 45c87f690c24e989a797cbd82147b9125e447e79
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97561785"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service"></a>App Service で Ruby on Rails アプリを作成する

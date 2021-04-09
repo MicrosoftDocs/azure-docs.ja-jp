@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor の Log Analytics エージェントのデータ ソース
 description: データ ソースは、Azure Monitor がエージェントや接続されている他のソースから収集するログ データを定義します。  この記事では、Azure Monitor でのデータ ソースの扱い方の概念、それらを構成する方法の詳細、および使用可能なさまざまなデータ ソースの概要について説明します。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: 8b0debed6e0865f39cd42c7003347b2510600f81
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: 51cdee9c899feeb003a7d6301d2da0749fad65e9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720020"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041938"
 ---
 # <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Azure Monitor の Log Analytics エージェントのデータ ソース
 Azure Monitor で [Log Analytics](./log-analytics-agent.md) エージェントを使用して仮想マシンから収集されるデータは、[Log Analytics ワークスペース](../logs/data-platform-logs.md)で構成するデータ ソースによって定義されます。   データ ソースはそれぞれ異なるタイプのレコードを作成し、各レコード タイプは独自のプロパティ セットを持っています。
@@ -40,11 +39,11 @@ Azure Monitor で [Log Analytics](./log-analytics-agent.md) エージェント�
 
 
 ## <a name="configuring-data-sources"></a>データ ソースの構成
-Log Analytics エージェントのデータ ソースを構成するには、Azure portal の **[Log Analytics ワークスペース]** メニューに移動し、ワークスペースを選択します。 **[詳細設定]** 、 **[データ]** の順にクリックします。 構成するデータ ソースを選択します。 上記の表のリンクをクリックすると、各データ ソースとそれらの構成の詳細に関するドキュメントを参照できます。
+Log Analytics エージェントのデータ ソースを構成するには、Azure portal の **[Log Analytics ワークスペース]** メニューに移動し、ワークスペースを選択します。 **[エージェント構成]** をクリックします。 構成するデータ ソースのタブを選択します。 上記の表のリンクをクリックすると、各データ ソースとそれらの構成の詳細に関するドキュメントを参照できます。
 
 すべての構成は、そのワークスペースに接続されているすべてのエージェントに伝達されます。  この構成から、接続されている任意のエージェントを除外することはできません。
 
-![Windows イベントの構成](media/agent-data-sources/configure-events.png)
+[![Windows イベントの構成](media/agent-data-sources/configure-events.png)](media/agent-data-sources/configure-events.png#lightbox)
 
 
 

@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 3524b5d2274c52aa94fa1c3420fb0d3245d9b730
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6e6c692e8fc13d1703df44c99e9969ba4db5f119
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932062"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872100"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターのスケーリング
 
@@ -36,7 +36,7 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 |[Azure クラシック CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
 |[Azure Portal](https://portal.azure.com)|HDInsight クラスターのウィンドウを開き、左側のメニューの **[クラスター サイズ]** を選択し、[クラスター サイズ] ウィンドウでワーカー ノードの数を入力して、[保存] を選択します。|  
 
-![Azure portal のスケール クラスター オプション](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
+:::image type="content" source="./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png" alt-text="Azure portal のスケール クラスター オプション":::
 
 これらの方法のいずれかを使用すると、HDInsight クラスターを数分以内にスケールアップまたはスケールダウンできます。
 
@@ -82,7 +82,7 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 
     1. 再調整するトポロジを選択し、 **[Rebalance]** \(再調整) ボタンをクリックします。 再調整の操作が実行されるまでの待ち時間を入力します。
 
-        ![HDInsight Storm のスケールのバランス調整](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+        :::image type="content" source="./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png" alt-text="HDInsight Storm のスケールのバランス調整":::
 
   * コマンド ライン インターフェイス (CLI) ツール
 
@@ -130,13 +130,13 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 3. Ambari UI から、左側のメニューにあるサービスの一覧で **[YARN]** を選択します。  
 4. [YARN] ページから **[クイック リンク]** を選択し、アクティブなヘッド ノードにポインターを置き、 **[Resource Manager UI]** を選択します。
 
-    ![Apache Ambari クイック リンク Resource Manager UI](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
+    :::image type="content" source="./media/hdinsight-scaling-best-practices/resource-manager-ui1.png" alt-text="Apache Ambari クイック リンク Resource Manager UI":::
 
 `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster` を使用すると Resource Manager UI に直接アクセスできます。
 
 ジョブの一覧が、現在の状態と共に表示されます。 このスクリーンショットでは、現在実行中のジョブが 1 つあります。
 
-![Resource Manager UI アプリケーション](./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png)
+:::image type="content" source="./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png" alt-text="Resource Manager UI アプリケーション":::
 
 その実行中のアプリケーションを手動で中止するには、SSH シェルから次のコマンドを実行します。
 

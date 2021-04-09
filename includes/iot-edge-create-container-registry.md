@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/30/2019
 ms.author: kgremban
 ms.openlocfilehash: 8cae7ac2d3b961120cb9100f5072dc141769afff
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95557530"
 ---
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成

@@ -4,17 +4,17 @@ description: .NET SDK の要求タイムアウト例外を診断して修正す�
 author: j82w
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 08/06/2020
+ms.date: 03/05/2021
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c8d448cf335f328b5ae55579fd30127ef0e37e9d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: c8d35f7c666562022f503b2777f30f84193d0231
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340500"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102440005"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout-exceptions"></a>Azure Cosmos DB .NET SDK の要求タイムアウト例外を診断してトラブルシューティングする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -42,7 +42,23 @@ SDK のすべての非同期操作にオプションの CancellationToken パラ
 ### <a name="high-cpu-utilization"></a>高い CPU 使用率
 高い CPU 使用率は最も一般的なケースです。 最適な待機時間を実現するには、CPU 使用率は 40% ほどである必要があります。 CPU 使用率の (平均ではなく) 最大値を監視するには、間隔として 10 秒を使用します。 CPU スパイクは、1 つのクエリに対して複数の接続を実行する可能性があるクロスパーティション クエリでは、より一般的です。
 
-#### <a name="solution"></a>解答:
+エラーに `TransportException` 情報が含まれている場合は、`CPU History` も含まれている可能性があります。
+
+```
+CPU history: 
+(2020-08-28T00:40:09.1769900Z 0.114), 
+(2020-08-28T00:40:19.1763818Z 1.732), 
+(2020-08-28T00:40:29.1759235Z 0.000), 
+(2020-08-28T00:40:39.1763208Z 0.063), 
+(2020-08-28T00:40:49.1767057Z 0.648), 
+(2020-08-28T00:40:59.1689401Z 0.137), 
+CPU count: 8)
+```
+
+* CPU 測定値が 70% を超える場合、タイムアウトは CPU の枯渇が原因である可能性があります。 この場合の解決策は、CPU 使用率が高いソースを調査してそれを減らすか、マシンをより大きなリソース サイズにスケーリングすることです。
+* CPU 測定が 10 秒ごとに行われていない場合 (たとえば、間隔または測定時間が測定間の時間が長いことを示している場合)、原因はスレッドの枯渇です。 この場合の解決策は、スレッドの枯渇 (ロックされている可能性のあるスレッド) のソースを調査するか、マシンをより大きなリソース サイズにスケーリングすることです。
+
+#### <a name="solution"></a>解決方法:
 SDK を使用するクライアント アプリケーションをスケールアップまたはスケールアウトする必要があります。
 
 ### <a name="socket-or-port-availability-might-be-low"></a>ソケットまたはポートの可用性が低下している可能性がある
@@ -75,7 +91,7 @@ Azure Cosmos DB は、プロビジョニングされたスループット全体�
 ### <a name="high-degree-of-concurrency"></a>同時実行の程度が高い
 アプリケーションで高レベルの同時実行が行われています。これにより、チャネル上で競合が発生する可能性があります。
 
-#### <a name="solution"></a>解答:
+#### <a name="solution"></a>解決方法:
 SDK を使用するクライアント アプリケーションをスケールアップまたはスケールアウトする必要があります。
 
 ### <a name="large-requests-or-responses"></a>大量の要求または応答

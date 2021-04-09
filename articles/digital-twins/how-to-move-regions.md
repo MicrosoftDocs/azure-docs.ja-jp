@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 6393b0b8d794345fded95718a2581ae9b929ad49
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: e268cca87479625af023b5970bb27c56721f6d39
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381152"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102049850"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure Digital Twins インスタンスを別の Azure リージョンに移動する
 
@@ -52,18 +52,18 @@ Azure Digital Twins インスタンスを再作成しようとしている場合
     - Azure IoT Hub Device Provisioning Service
 * インスタンスに接続する *個人または会社のアプリ* には、他にどのようなものがあるか?
 
-この情報は、[Azure portal](https://portal.azure.com)、[Azure Digital Twins の API と SDK](how-to-use-apis-sdks.md)、[Azure Digital Twins CLI コマンド](how-to-use-cli.md)、または [Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) サンプルを使用して収集できます。
+この情報は、[Azure portal](https://portal.azure.com)、[Azure Digital Twins の API と SDK](how-to-use-apis-sdks.md)、[Azure Digital Twins CLI コマンド](how-to-use-cli.md)、または [Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) サンプルを使用して収集できます。
 
 ## <a name="prepare"></a>準備
 
-このセクションでは、元のインスタンスから元のモデル、ツイン、グラフをダウンロードすることによってインスタンスを再作成するための準備を行います。 この記事では、このタスクに [ADT Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) サンプルを使用します。
+このセクションでは、元のインスタンスから元のモデル、ツイン、グラフをダウンロードすることによってインスタンスを再作成するための準備を行います。 この記事では、このタスクに [Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) サンプルを使用します。
 
 >[!NOTE]
 >モデルやグラフを含むファイルがインスタンスに既に存在している場合があります。 その場合、すべてを再度ダウンロードする必要はありません。欠落している要素や、これらのファイルを最初にアップロードした後に変更された可能性があるもののみをダウンロードしてください。 たとえば、新しいデータで更新されたツインがある場合があります。
 
-### <a name="limitations-of-adt-explorer"></a>ADT Explorer の制限事項
+### <a name="limitations-of-azure-digital-twins-explorer"></a>Azure Digital Twins Explorer の制限事項
 
-[ADT Explorer サンプル](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)は、グラフの視覚的な表現をサポートするクライアント アプリのサンプルであり、インスタンスとの視覚的な対話機能を備えています。 この記事では、これを使用してモデル、ツイン、グラフをダウンロードし、後で再アップロードする方法を示します。
+[Azure Digital Twins Explorer サンプル](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)は、グラフの視覚的な表現をサポートするクライアント アプリのサンプルであり、インスタンスとの視覚的な対話機能を備えています。 この記事では、これを使用してモデル、ツイン、グラフをダウンロードし、後で再アップロードする方法を示します。
 
 このサンプルは完全なツールではありません。 ストレス テストが行われておらず、大きなサイズのグラフを処理するように構築されていませんでした。 そのため、次のようなすぐに使えるサンプルの制限事項に留意してください。
 
@@ -77,27 +77,27 @@ Azure Digital Twins インスタンスを再作成しようとしている場合
 * [Azure Digital Twins CLI コマンド](how-to-use-cli.md)
 * [Azure Digital Twins API および SDK](how-to-use-apis-sdks.md)
 
-### <a name="set-up-the-adt-explorer-application"></a>ADT Explorer アプリケーションを設定する
+### <a name="set-up-the-azure-digital-twins-explorer-application"></a>Azure Digital Twins Explorer アプリケーションを設定する
 
-ADT Explorer の設定を進めるには、まず、サンプル アプリケーション コードをダウンロードして設定し、コンピューター上で実行します。
+Azure Digital Twins Explorer の設定を進めるには、まず、サンプル アプリケーション コードをダウンロードして設定し、コンピューター上で実行します。
 
-サンプルを入手する場合は、[ADT Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) に関するページを参照してください。 **[ZIP のダウンロード]** ボタンを選択して、このサンプル コードの .zip ファイルを、ご利用のコンピューターに **Azure_Digital_Twins__ADT__explorer.zip** としてダウンロードします。 ファイルを解凍します。
+サンプルを入手するには、[Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) に関するページを参照してください。 **[ZIP のダウンロード]** ボタンを選択して、このサンプル コードの .zip ファイルを、ご利用のコンピューターに **Azure_Digital_Twins__ADT__explorer.zip** としてダウンロードします。 ファイルを解凍します。
 
-次に、ADT エクスプローラーのアクセス許可を設定し、構成します。 Azure Digital Twins クイックスタートの「[Azure Digital Twins と ADT エクスプローラーを設定する](quickstart-adt-explorer.md#set-up-azure-digital-twins-and-adt-explorer)」セクションの指示に従ってください。 このセクションでは、次の手順について説明します。
+次に、Azure Digital Twins Explorer のアクセス許可を設定し、構成します。 Azure Digital Twins クイックスタートの「[Azure Digital Twins と Azure Digital Twins Explorer を設定する](quickstart-adt-explorer.md#set-up-azure-digital-twins-and-azure-digital-twins-explorer)」セクションの指示に従ってください。 このセクションでは、次の手順について説明します。
 
 1. Azure Digital Twins インスタンスを設定します。 インスタンスは既にあるため、この部分はスキップしてかまいません。
 1. インスタンスへのアクセスを提供するようにローカルの Azure 資格情報を設定します。
-1. ADT エクスプローラーを実行し、インスタンスに接続するように構成する 移動する元の Azure Digital Twins インスタンスの "*ホスト名*" を使用します。
+1. Azure Digital Twins Explorer を実行し、お使いのインスタンスに接続するように構成します。 移動する元の Azure Digital Twins インスタンスの "*ホスト名*" を使用します。
 
-これで、コンピューター上のブラウザーで ADT エクスプローラー サンプル アプリが実行されます。 このサンプルが、元の Azure Digital Twins インスタンスに接続していることを確認します。
+これで、コンピューター上のブラウザーで Azure Digital Twins Explorer サンプル アプリが実行されます。 このサンプルが、元の Azure Digital Twins インスタンスに接続していることを確認します。
 
-:::image type="content" source="media/how-to-move-regions/explorer-blank.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT Explorer と呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが含まれている。画面上にはまだデータがない。" lightbox="media/how-to-move-regions/explorer-blank.png":::
+:::image type="content" source="media/how-to-move-regions/explorer-blank.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは Azure Digital Twins Explorer と呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが含まれる。画面上にはまだデータがない。" lightbox="media/how-to-move-regions/explorer-blank.png":::
 
 接続を確認するには、 **[クエリの実行]** ボタンを選択して既定のクエリを実行します。これにより、 **[グラフ エクスプローラー]** ボックスのグラフにすべてのツインとリレーションシップが表示されます。
 
 :::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="ウィンドウの右上隅にある [クエリの実行] ボタンが強調表示されている。" lightbox="media/how-to-move-regions/run-query.png":::
 
-この記事の後半で、ADT Explorer を再び使用して、これらのアイテムをターゲット リージョンの新しいインスタンスに再アップロードするため、ADT Explorer は実行したままでかまいません。
+この記事の後半で、Azure Digital Twins Explorer を再び使用して、これらのアイテムをターゲット リージョンの新しいインスタンスに再アップロードします。このため、Azure Digital Twins Explorer は実行したままでかまいません。
 
 ### <a name="download-models-twins-and-graph"></a>モデル、ツイン、グラフのダウンロード
 
@@ -131,17 +131,17 @@ ADT Explorer の設定を進めるには、まず、サンプル アプリケー
 
 次に、新しいインスタンスを設定して、元のもののコピーになるようにします。
 
-#### <a name="upload-the-original-models-twins-and-graph-by-using-adt-explorer"></a>ADT Explorer を使用して元のモデル、ツイン、グラフをアップロードする
+#### <a name="upload-the-original-models-twins-and-graph-by-using-azure-digital-twins-explorer"></a>Azure Digital Twins Explorer を使用して元のモデル、ツイン、グラフをアップロードする
 
 このセクションでは、モデル、ツイン、グラフを新しいインスタンスに再アップロードできます。 モデル、ツイン、またはグラフが元のインスタンスにないか、それらを新しいインスタンスに移動したくない場合は、スキップして[次のセクション](#re-create-endpoints-and-routes)に進むことができます。
 
-それ以外の場合は、ADT Explorer を実行しているブラウザー ウィンドウに戻り、これらの手順に従います。
+それ以外の場合は、Azure Digital Twins Explorer を実行しているブラウザー ウィンドウに戻り、これらの手順に従います。
 
 ##### <a name="connect-to-the-new-instance"></a>新しいインスタンスへの接続
 
-ADT エクスプローラーは現在、元の Azure Digital Twins インスタンスに接続しています。 ウィンドウの右上隅にある **[サインイン]** ボタンを選択して、新しいインスタンスを指すように接続を切り替えます。
+Azure Digital Twins Explorer は現在、元の Azure Digital Twins インスタンスに接続しています。 ウィンドウの右上隅にある **[サインイン]** ボタンを選択して、新しいインスタンスを指すように接続を切り替えます。
 
-:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="ADT Explorer のウィンドウの右上隅にある [サインイン] アイコンが強調表示されている。このアイコンには、人のシンプルなシルエットに鍵のシルエットが重なるように表示されている。" lightbox="media/how-to-move-regions/sign-in.png":::
+:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="Azure Digital Twins Explorer のウィンドウの右上隅にある [サインイン] アイコンが強調表示されている。このアイコンには、人のシンプルなシルエットに鍵のシルエットが重なるように表示されている。" lightbox="media/how-to-move-regions/sign-in.png":::
 
 **ADT URL** を新しいインスタンスに置き換えます。 *https://{新しいインスタンスのホスト名}* になるように、この値を変更します。
 
@@ -157,7 +157,7 @@ ADT エクスプローラーは現在、元の Azure Digital Twins インスタ�
 
 ファイル選択ボックスで、ダウンロードしたグラフに移動します。 グラフの **.json** ファイルを選び、 **[開く]** を選択します。
 
-数秒後、ADT Explorer で **[インポート]** ビューが開き、読み込まれるグラフのプレビューが表示されます。
+数秒後、Azure Digital Twins Explorer で **[インポート]** ビューが開き、読み込まれるグラフのプレビューが表示されます。
 
 グラフのアップロードを確認するには、 **[グラフ ビュー]** ボックスの右上隅にある **[保存]** アイコンを選択します。
 
@@ -169,7 +169,7 @@ ADT エクスプローラーは現在、元の Azure Digital Twins インスタ�
     :::column-end:::
 :::row-end:::
 
-これで、ADT Explorer で (ツインとリレーションシップを含む) モデルとグラフが新しい Azure Digital Twins インスタンスにアップロードされるようになりました。 アップロードされたモデル、ツイン、リレーションシップの数を示す成功メッセージが表示されるはずです。
+これで、Azure Digital Twins Explorer で (ツインとリレーションシップを含む) モデルとグラフが新しい Azure Digital Twins インスタンスにアップロードされるようになりました。 アップロードされたモデル、ツイン、リレーションシップの数を示す成功メッセージが表示されるはずです。
 
 :::row:::
     :::column:::
@@ -187,7 +187,7 @@ ADT エクスプローラーは現在、元の Azure Digital Twins インスタ�
 
 すべてのツインとリレーションシップを表示したグラフが **[グラフ エクスプローラー]** ボックスに表示されます。 **[モデル ビュー]** ボックスにもモデルの一覧が表示されます。
 
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="[モデル ビュー] ボックス内で強調表示された 2 つのモデルと、[グラフ エクスプローラー] ボックス内で強調表示されたグラフを示す ADT Explorer のビュー。" lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="[モデル ビュー] ボックス内で強調表示された 2 つのモデルと、[グラフ エクスプローラー] ボックス内で強調表示されたグラフを示す Azure Digital Twins Explorer のビュー。" lightbox="media/how-to-move-regions/post-upload.png":::
 
 これらのビューで、モデル、ツイン、グラフがターゲット リージョンの新しいインスタンスに再アップロードされたことを確認できます。
 
@@ -228,7 +228,7 @@ ADT エクスプローラーは現在、元の Azure Digital Twins インスタ�
 
 * [Azure Portal](https://portal.azure.com) このポータルは、新しいインスタンスが存在し、正しいターゲット リージョンにあることを確認するのに適しています。 また、エンドポイントとルート、および他の Azure サービスへの接続を確認するのに適しています。
 * [Azure Digital Twins CLI コマンド](how-to-use-cli.md)。 これらのコマンドは、新しいインスタンスが存在し、正しいターゲット リージョンにあることを確認するのに適しています。 また、これらはインスタンス データを確認するために使用できます。
-* [ADT Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 ADT Explorer は、モデル、ツイン、グラフなどのインスタンス データを確認するのに適しています。
+* [Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 Azure Digital Twins Explorer は、モデル、ツイン、グラフなどのインスタンス データを確認するのに適しています。
 * [Azure Digital Twins API および SDK](how-to-use-apis-sdks.md)。 これらのリソースは、モデル、ツイン、グラフなどのインスタンス データを確認するのに適しています。 また、エンドポイントとルートの確認にも適しています。
 
 元のインスタンスで実行していたカスタム アプリやエンドツーエンド フローを実行してみることもでき、これは、それらが新しいインスタンスで正しく動作していることを確認するのに役立ちます。

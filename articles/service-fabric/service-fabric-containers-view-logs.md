@@ -4,10 +4,10 @@ description: Service Fabric Explorer を使用して実行中の Service Fabric 
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.openlocfilehash: c47a408b272f95dbfcf3d791c644bfeb52254a72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75458187"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Service Fabric コンテナー サービスのログを表示する
@@ -18,7 +18,7 @@ Azure Service Fabric はコンテナー オーケストレーターであり、[
 
 コンテナー ログは、コンテナー サービス インスタンスが実行しているクラスター ノードにあります。 例として、[Linux Voting サンプル アプリケーション](service-fabric-quickstart-containers-linux.md)の Web フロントエンド コンテナーのログを取得します。 ツリー ビューで、 **[クラスター]** > **[アプリケーション]** > **[VotingType]** > **[fabric:/Voting/azurevotefront]** の順に展開します。  次に、パーティション (この例では d1aa737e-f22a-e347-be16-eec90be24bc1) を展開し、コンテナーがクラスター ノード *_lnxvm_0* 上で実行していることを確認します。
 
-ツリー ビューで、**[ノード]**>**[_lnxvm_0]**>**[fabric:/Voting]**>**[azurevotfrontPkg]**>**[コード パッケージ]**>**[コード]** の順に展開し、*_lnxvm_0* ノード上でコード パッケージを探します。  その後、 **[コンテナー ログ]** オプションを選択してコンテナー ログを表示します。
+ツリー ビューで、**[ノード]**>**[_lnxvm_0]**>**[fabric:/Voting]**>**[azurevotfrontPkg]**>**[コード パッケージ]**>**[コード]** の順に展開し、*_lnxvm_0* ノード上でコード パッケージを探します。  その後、**[コンテナー ログ]** オプションを選択してコンテナー ログを表示します。
 
 ![Service Fabric platform][Image1]
 
@@ -36,7 +36,7 @@ v6.2 以降、[REST API](/rest/api/servicefabric/sfclient-index) または [Serv
 **RunInteractive** 設定は、Docker の `--interactive` および `tty` [フラグ](https://docs.docker.com/engine/reference/commandline/run/#options)に対応します。 マニフェスト ファイルでこの設定を true にすると、これらのフラグを使用してコンテナーが開始されます。  
 
 ### <a name="rest"></a>REST
-「[Get Container Logs Deployed On Node](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode)」 (ノードにデプロイされているコンテナーのログを取得する) の操作を使用し、クラッシュしたコンテナーのログを取得します。 コンテナーが実行されたノードの名前、アプリケーション名、サービス マニフェスト名、コード パッケージ名を指定します。  `&Previous=true` を指定します。 応答には、コード パッケージ インスタンスのデッド コンテナーのコンテナー ログが含まれます。
+「[Get Container Logs Deployed On Node](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode)」 (ノードにデプロイされているコンテナーのログを取得する) の操作を使用し、クラッシュしたコンテナーのログを取得します。 コンテナーが実行されたノードの名前、アプリケーション名、サービス マニフェスト名、コード パッケージ名を指定します。  `&Previous=true`を指定します。 応答には、コード パッケージ インスタンスのデッド コンテナーのコンテナー ログが含まれます。
 
 要求 URI の形式は次のようになります。
 

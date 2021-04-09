@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
 ms.openlocfilehash: 53a3317f38cc22ffa3745f5f0e58cc01a54b825c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93096752"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>1 対多のリレーショナル データを Azure Cosmos DB SQL API アカウントに移行する
@@ -55,7 +55,7 @@ FROM Orders o;
 
 この現時点の制限には、次のいずれかの方法で回避できます。
 
-* **2 つのコピー アクティビティで Azure Data Factory を使用する** : 
+* **2 つのコピー アクティビティで Azure Data Factory を使用する**: 
   1. SQL から中間 BLOB ストレージの場所にあるテキストファイルに JSON 形式のデータを取得し、 
   2. Azure Cosmos DB で、JSON テキストファイルからコンテナーにデータを読み込みます。
 

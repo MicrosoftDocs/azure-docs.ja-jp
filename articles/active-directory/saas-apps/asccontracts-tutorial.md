@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と ASC Contracts の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と ASC Contracts の統合 | Microsoft Docs'
 description: Azure Active Directory と ASC Contracts の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: d1f45244d09ce55b61b04d88ce2eb4a16289b1ab
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97673003"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-asc-contracts"></a>チュートリアル:Azure Active Directory と ASC Contracts の統合
+# <a name="tutorial-azure-active-directory-integration-with-asc-contracts"></a>チュートリアル: Azure Active Directory と ASC Contracts の統合
 
 このチュートリアルでは、ASC Contracts と Azure Active Directory (Azure AD) を統合する方法について説明します。
 ASC Contracts と Azure AD の統合には、次の利点があります。
@@ -61,7 +61,7 @@ Azure AD への ASC Contracts の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**ASC Contracts**」と入力し、結果ウィンドウで **[ASC Contracts]** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**ASC Contracts**」と入力し、結果ウィンドウで **[ASC Contracts]** を選び、**[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果一覧の ASC Contracts](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ ASC Contracts で Azure AD のシングル サインオンを構成してテス�
 
 ASC Contracts で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **ASC Contracts** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **ASC Contracts** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -155,7 +155,7 @@ ASC Contracts で Azure AD シングル サインオンを構成するには、�
 
 このセクションでは、Britta Simon に ASC Contracts へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[ASC Contracts]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[ASC Contracts]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

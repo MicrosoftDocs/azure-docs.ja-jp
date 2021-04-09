@@ -3,12 +3,12 @@ title: Azure Backup エージェントのトラブルシューティング
 description: この記事では、Azure Backup エージェントのインストールと登録のトラブルシューティング方法について説明します。
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: c08a146d91a128dc48fa4c379055b8c0efc1df0c
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 3203d5604f1bd5db9cf579af01b2ae6f34032d89
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986651"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103467614"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントをトラブルシューティングする
 
@@ -41,7 +41,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 
 | 原因 | 推奨アクション |
 | ---     | ---    |
-| **コンテナーの資格情報が有効ではありません** <br/> <br/> コンテナー資格情報ファイルが、壊れている、期限が切れている、または *.vaultCredentials* と異なるファイル拡張子を持っている可能性があります。 (たとえば、登録の時刻より 48 時間以上前にダウンロードされている可能性があります。)| Azure portal で Recovery Services コンテナーから[新しい資格情報をダウンロード](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file)します。 その後、必要に応じて次の手順に従います。 <ul><li> MARS を既にインストールして登録している場合は、Microsoft Azure Backup エージェント MMC コンソールを開きます。 次に、 **[アクション]** ウィンドウで **[サーバーの登録]** を選択して、新しい資格情報での登録を完了します。 <br/> <li> 新規インストールに失敗した場合は、新しい資格情報で再度インストールしてみてください。</ul> **注**:複数のコンテナー資格情報ファイルがダウンロードされている場合、次の 48 時間の間は最新のファイルのみが有効になります。 新しいコンテナー資格情報ファイルをダウンロードすることをお勧めします。
+| **コンテナーの資格情報が有効ではありません** <br/> <br/> コンテナー資格情報ファイルが、壊れている、期限が切れている、または *.vaultCredentials* と異なるファイル拡張子を持っている可能性があります。 (たとえば、登録の時刻より 10 日間以上前にダウンロードされている可能性があります。)| Azure portal で Recovery Services コンテナーから[新しい資格情報をダウンロード](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file)します。 その後、必要に応じて次の手順に従います。 <ul><li> MARS を既にインストールして登録している場合は、Microsoft Azure Backup エージェント MMC コンソールを開きます。 次に、 **[アクション]** ウィンドウで **[サーバーの登録]** を選択して、新しい資格情報での登録を完了します。 <br/> <li> 新規インストールに失敗した場合は、新しい資格情報で再度インストールしてみてください。</ul> **注**: 複数のコンテナー資格情報ファイルがダウンロードされている場合、次の 10 日間の間は最新のファイルのみが有効になります。 新しいコンテナー資格情報ファイルをダウンロードすることをお勧めします。
 | **プロキシ サーバー/ファイアウォールによって登録がブロックされています** <br/>or <br/>**インターネットに接続されていません** <br/><br/> マシンまたはプロキシ サーバーでインターネット接続が制限されていて、必要な URL へのアクセスが許可されていない場合、登録は失敗します。| 次の手順を実行します。<br/> <ul><li> IT チームと連携して、システムでインターネットに接続できることを確認します。<li> プロキシ サーバーがない場合は、エージェントを登録するときにプロキシのオプションが選択されていないことを確認します。 [プロキシ設定を確認します](#verifying-proxy-settings-for-windows)。<li> ファイアウォール/プロキシ サーバーがある場合は、ネットワーク チームと連携して、以下の URL と IP アドレスにアクセスできることを確認します。<br/> <br> **URL**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>`www.msftconnecttest.com`<br><br>**IP アドレス**<br>  20.190.128.0/18 <br>  40.126.0.0/18<br> <br/></ul></ul>上記のトラブルシューティングの手順が完了したら、もう一度登録してみてください。<br></br> Azure ExpressRoute 経由で接続している場合は、「[Azure ExpressRoute のサポート](backup-support-matrix-mars-agent.md#azure-expressroute-support)」の説明に従って設定が構成されていることを確認してください。
 | **ウイルス対策ソフトウェアによって登録をブロックされています** | サーバーにウイルス対策ソフトウェアがインストールされている場合は、以下のファイルとフォルダーのウイルス対策スキャンに必要な除外ルールを追加します。 <br/><ul> <li> CBengine.exe <li> CSC.exe<li> スクラッチ フォルダー。 この既定の場所は C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です。 <li> C:\Program Files\Microsoft Azure Recovery Services Agent\Bin にある bin フォルダー。
 
@@ -96,7 +96,7 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 - バックアップ サービスでは、次の名前付け規則に従って、これらのファイルは失敗としてログ ファイルにマークされます。*C:\Program Files\Microsoft Azure Recovery Service Agent\temp* フォルダー下の *LastBackupFailedFilesxxxx.txt*。
 - この問題を解決するには、ログ ファイルを確認して、問題の性質を理解します。
 
-  | エラー コード             | 理由                                             | Recommendations                                              |
+  | エラー コード             | 理由                                             | 推奨事項                                              |
   | ---------------------- | --------------------------------------------------- | ------------------------------------------------------------ |
   | 0x80070570             | ファイルまたはディレクトリが壊れているため、読み取ることができません。 | ソース ボリュームで **chkdsk** を実行します。                             |
   | 0x80070002、0x80070003 | 指定されたファイルが見つかりません。         | [スクラッチ フォルダーがいっぱいになっていないことを確認します](./backup-azure-file-folder-backup-faq.md#manage-the-backup-cache-folder)  <br><br>  スクラッチ領域が構成されているボリュームが存在するかどうか (削除されていないかどうか) を確認します  <br><br>   [マシンにインストールされているウイルス対策から MARS エージェントが除外されていることを確認します](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)  |

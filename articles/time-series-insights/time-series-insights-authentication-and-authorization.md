@@ -11,19 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 02d9edd555566f86fd8bb09cf4acef4956ae53e4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 88fd575d40cc31f12f052158bda0aed9a5335555
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041214"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009268"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
-ビジネス ニーズによっては、Azure Time Series Insights 環境の [API](/rest/api/time-series-insights/reference-data-access-overview) と対話するために使用する 1 つ以上のクライアント アプリケーションが、ソリューションに含まれる場合があります。 Azure Time Series Insights により、[OAUTH 2.0 に基づく Azure AD セキュリティ トークン](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)を使用して認証が実行されます。 クライアントの認証を行うには、適切なアクセス許可を持つベアラー トークンを取得し、API の呼び出しでそれを渡す必要があります。 このドキュメントでは、ベアラー トークンを取得して認証を行うために使用できる、いくつかの資格情報取得方法について説明します。
-
-
-  新しい Azure Active Directory ブレードを使用して Azure Active Directory にアプリを登録する方法について説明します。 Azure Active Directory に登録されたアプリを使用すると、ユーザーは、Azure Time Series Insights 環境に関連付けられた Azure Time Series Insight API を使用する認証と承認を受けることができます。
+ビジネス ニーズによっては、Azure Time Series Insights 環境の [API](/rest/api/time-series-insights/reference-data-access-overview) と対話するために使用する 1 つ以上のクライアント アプリケーションが、ソリューションに含まれる場合があります。 Azure Time Series Insights により、[OAUTH 2.0 に基づく Azure AD セキュリティ トークン](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)を使用して認証が実行されます。 クライアントの認証を行うには、適切なアクセス許可を持つベアラー トークンを取得し、API の呼び出しでそれを渡す必要があります。 このドキュメントでは、ベアラー トークンを取得して認証を行うために使用できる、資格情報を取得するためのいくつかの方法について説明します。これには、マネージド ID の使用と Azure Active Directory アプリの登録が含まれます。
 
 ## <a name="managed-identities"></a>マネージド ID
 
@@ -108,10 +105,7 @@ Azure Time Series Insights 環境によって要求が受信されると、最�
 
 Azure App Service または Functions からアクセスする場合は、「[Azure リソースのトークンを取得する](../app-service/overview-managed-identity.md)」のガイダンスに従ってください。
 
-> [!TIP]
-> .NET のアプリケーションと関数の場合、マネージド ID を利用する最も簡単な方法は、.NET 用の [Azure ID クライアント ライブラリ](/dotnet/api/overview/azure/identity-readme)を使用することです。 
-
-.NET アプリケーションと Functions の場合、マネージド ID を使用する最も簡単な方法は、Microsoft.Azure.Services.AppAuthentication パッケージを利用することです。 このパッケージは、簡単でセキュリティ上の利点があるため、よく使われています。 開発者はコードを 1 回だけ記述すればよく、後はクライアント ライブラリにより、アプリケーションの環境 (開発者のアカウントを使用する開発者ワークステーション上か、またはマネージド サービス ID を使用して Azure にデプロイされるか) に基づいて、認証方法が決定されます。 前の AppAuthentication ライブラリからの移行に関するガイダンスについては、「[AppAuthentication から Azure.Identity への移行ガイダンス](/dotnet/api/overview/azure/app-auth-migration)」を参照してください。
+.NET のアプリケーションと関数の場合、マネージド ID を利用する最も簡単な方法は、.NET 用の [Azure ID クライアント ライブラリ](/dotnet/api/overview/azure/identity-readme)を使用することです。 このクライアント ライブラリは、簡単でセキュリティ上の利点があるため、よく使われています。 開発者はコードを 1 回だけ記述すればよく、後はクライアント ライブラリにより、アプリケーションの環境 (開発者のアカウントを使用する開発者ワークステーション上か、またはマネージド サービス ID を使用して Azure にデプロイされるか) に基づいて、認証方法が決定されます。 前の AppAuthentication ライブラリからの移行に関するガイダンスについては、「[AppAuthentication から Azure.Identity への移行ガイダンス](/dotnet/api/overview/azure/app-auth-migration)」を参照してください。
 
 C# と .NET 用 Azure ID クライアント ライブラリを使用して、Azure Time Series Insights 用のトークンを要求します。
 

@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 04/02/2019
 ms.openlocfilehash: 867ae2cc7567077786bb0840cd11c47b786be423
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95018754"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS アプリの API v1 から v2 への移行ガイド
@@ -26,7 +26,7 @@ LUIS では、LUIS API 用の新しい[リージョン](./luis-reference-regions
 オーサリング API ルートは、前は **prog** ルートが使用されていましたが、**api** ルートを使用するように変更されました。
 
 
-| version | ルート (route) |
+| version | route |
 |--|--|
 |1|/luis/v1.0/**prog**/apps|
 |2|/luis/**api**/v2.0/apps|
@@ -105,17 +105,17 @@ v2 エンドポイントの成功応答:
 ## <a name="key-management-no-longer-in-api"></a>API でのキー管理が不要
 サブスクリプション エンドポイント キー API は非推奨であり、410 GONE を返します。
 
-| version | ルート (route) |
+| version | route |
 |--|--|
 |1|/luis/v1.0/prog/subscriptions|
 |1|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
-Azure Portal で Azure [エンドポイント キー](luis-how-to-azure-subscription.md) が生成されます。 そのキーは、 **[[Publish]\(公開\)](luis-how-to-azure-subscription.md)** ページで LUIS アプリに割り当てます。 実際のキー値を確認する必要はありません。 LUIS では、サブスクリプション名を使用して、割り当てが行われます。
+Azure Portal で Azure [エンドポイント キー](luis-how-to-azure-subscription.md) が生成されます。 そのキーは、**[[Publish]\(公開\)](luis-how-to-azure-subscription.md)** ページで LUIS アプリに割り当てます。 実際のキー値を確認する必要はありません。 LUIS では、サブスクリプション名を使用して、割り当てが行われます。
 
 ## <a name="new-versioning-route"></a>新しいバージョン管理ルート
 v2 モデルは、[バージョン](luis-how-to-manage-versions.md)に含まれています。 バージョン名は、ルートの 10 文字です。 既定のバージョンは "0.1" です。
 
-| version | ルート (route) |
+| version | route |
 |--|--|
 |1|/luis/v1.0/**prog**/apps/{appId}/entities|
 |2|/luis/**api**/v2.0/apps/{appId}/**versions**/{versionId}/entities|
@@ -134,7 +134,7 @@ LUIS メタデータを返す API のいくつかが新しい名前に変更さ�
 ## <a name="sample-renamed-to-suggest"></a>"sample" から "suggest" への名前変更
 LUIS では、モデルを強化する可能性がある既存の[エンドポイント発話](luis-how-to-review-endpoint-utterances.md)から、発話が提案されます。 以前のバージョンでは、その提案は **sample** でした。 新しいバージョンでは、名前が sample から **suggest** に変更されています。 これは、LUIS Web サイトでは **[エンドポイントの発話の確認](luis-how-to-review-endpoint-utterances.md)** と呼ばれます。
 
-| version | ルート (route) |
+| version | route |
 |--|--|
 |1|/luis/v1.0/**prog**/apps/{appId}/entities/{entityId}/**sample**|
 |1|/luis/v1.0/**prog**/apps/{appId}/intents/{intentId}/**sample**|
@@ -150,7 +150,7 @@ LUIS では、モデルを強化する可能性がある既存の[エンドポ�
 |/luis/api/v2.0/apps/customprebuiltdomains  |get、post|
 |/luis/api/v2.0/apps/customprebuiltdomains/{culture}  |get|
 
-## <a name="importing-1x-app-into-2x"></a>1\.x アプリから 2.x へのインポート
+## <a name="importing-1x-app-into-2x"></a>1.x アプリから 2.x へのインポート
 エクスポートされた 1.x アプリの JSON には、[LUIS][LUIS] 2.0 にインポートする前に変更しなければならない領域があります。
 
 ### <a name="prebuilt-entities"></a>事前構築済みのエンティティ

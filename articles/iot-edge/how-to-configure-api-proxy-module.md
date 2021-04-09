@@ -12,14 +12,16 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 894398d63e326db3c6ee9de9bebc426a6e621600
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1070a4c8daecfedae513f2fd8738c27abfb33078
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024672"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103200577"
 ---
 # <a name="configure-the-api-proxy-module-for-your-gateway-hierarchy-scenario-preview"></a>ゲートウェイ階層のシナリオ用に API プロキシ モジュールを構成する (プレビュー)
+
+[!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 API プロキシ モジュールを使用すると、IoT Edge デバイスは、クラウド サービスに直接接続するのではなく、ゲートウェイを介して HTTP 要求を送信できます。 この記事では、ゲートウェイ階層の要件をサポートするようにモジュールをカスタマイズできるようにするための構成オプションについて説明します。
 

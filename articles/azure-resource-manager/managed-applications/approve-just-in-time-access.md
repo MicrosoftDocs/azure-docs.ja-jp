@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
 ms.openlocfilehash: 4a3604a3256fb2d3f4253891bbc28c7685748cd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75649371"
 ---
 # <a name="configure-and-approve-just-in-time-access-for-azure-managed-applications"></a>Azure Managed Applications でジャストインタイム アクセスの構成と承認を行う
@@ -35,17 +35,17 @@ ms.locfileid: "75649371"
 
 ## <a name="enable-during-deployment"></a>デプロイ時に有効にする
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
-1. マーケットプレースのエントリで、JIT が有効になっているマネージド アプリケーションを見つけます。 **作成** を選択します。
+1. マーケットプレースのエントリで、JIT が有効になっているマネージド アプリケーションを見つけます。 **［作成］** を選択します
 
-1. 新しいマネージド アプリケーションの値を指定するのと同時に、**JIT 構成**手順で、マネージド アプリケーションに対する JIT アクセスを有効または無効にすることができます。 **[JIT アクセスの有効化]** で **[はい]** を選択します。 マーケットプレースで JIT の有効化が定義されているマネージド アプリケーションでは、このオプションは既定で選択されています。
+1. 新しいマネージド アプリケーションの値を指定するのと同時に、**JIT 構成** 手順で、マネージド アプリケーションに対する JIT アクセスを有効または無効にすることができます。 **[JIT アクセスの有効化]** で **[はい]** を選択します。 マーケットプレースで JIT の有効化が定義されているマネージド アプリケーションでは、このオプションは既定で選択されています。
 
    ![アクセスを構成する](./media/approve-just-in-time-access/configure-jit-access.png)
 
    JIT アクセスの有効化は、デプロイ時にのみ実行できます。 **[いいえ]** を選択した場合、発行元は、マネージド リソース グループに対する永続的なアクセス権を取得します。 JIT アクセスは、後で有効にすることはできません。
 
-1. 既定の承認設定を変更するには、 **[JIT 構成のカスタマイズ]** を選択します。
+1. 既定の承認設定を変更するには、**[JIT 構成のカスタマイズ]** を選択します。
 
    ![アクセスのカスタマイズ](./media/approve-just-in-time-access/customize-jit-access.png)
 
@@ -59,9 +59,9 @@ ms.locfileid: "75649371"
 
    [アクティブ化の最大期間] には、発行元がマネージド リソース グループへのアクセスを要求できる最大期間を指定します。
 
-   承認者の一覧は、JIT アクセス要求を承認できる Azure Active Directory ユーザーです。 承認者を追加するには、 **[承認者の追加]** を選択し、ユーザーを検索します。
+   承認者の一覧は、JIT アクセス要求を承認できる Azure Active Directory ユーザーです。 承認者を追加するには、**[承認者の追加]** を選択し、ユーザーを検索します。
 
-   設定を更新した後、 **[保存]** を選択します。
+   設定を更新した後、**[保存]** を選択します。
 
 ## <a name="update-after-deployment"></a>デプロイ後に更新する
 
@@ -75,7 +75,7 @@ ms.locfileid: "75649371"
 
    ![アクセス設定を変更する](./media/approve-just-in-time-access/change-settings.png)
 
-1. 操作が完了したら、 **[保存]** をクリックします。
+1. 操作が完了したら、**[保存]** をクリックします。
 
 ## <a name="approve-requests"></a>要求の承認
 
@@ -83,7 +83,7 @@ ms.locfileid: "75649371"
 
 マネージド アプリケーションを介して要求を承認するには:
 
-1. マネージド アプリケーションで **[JIT アクセス]** を選択し、 **[要求の承認]** を選択します。
+1. マネージド アプリケーションで **[JIT アクセス]** を選択し、**[要求の承認]** を選択します。
 
    ![要求の承認](./media/approve-just-in-time-access/approve-requests.png)
  
@@ -91,7 +91,7 @@ ms.locfileid: "75649371"
 
    ![要求を選択する](./media/approve-just-in-time-access/select-request.png)
 
-1. フォームで、承認の理由を指定し、 **[承認]** を選択します。
+1. フォームで、承認の理由を指定し、**[承認]** を選択します。
 
 Azure AD Privileged Identity Management を介して要求を承認するには:
 

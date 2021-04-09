@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と BetterWorks の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と BetterWorks の統合 | Microsoft Docs'
 description: Azure Active Directory と BetterWorks の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
 ms.openlocfilehash: a1033799be8a01462ea065dc09499fb02a8dc61c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92457233"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-betterworks"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と BetterWorks の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-betterworks"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と BetterWorks の統合
 
 このチュートリアルでは、BetterWorks と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と BetterWorks を統合すると、次のことができます。
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* BetterWorks では、 **SP と IDP** によって開始される SSO がサポートされます
+* BetterWorks では、**SP と IDP** によって開始される SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -52,7 +52,7 @@ Azure AD への BetterWorks の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **BetterWorks** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**BetterWorks**」と入力します。
 1. 結果のパネルから **[BetterWorks]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -73,7 +73,7 @@ BetterWorks で Azure AD SSO を構成してテストするには、次の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **BetterWorks** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **BetterWorks** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 

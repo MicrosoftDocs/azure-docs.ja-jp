@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
 ms.openlocfilehash: 478f3454a728871040cdbbf9f817394cffe6b82f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94660255"
 ---
 # <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>クイック スタート:可用性ゾーンを使用して Azure Firewall をデプロイする - ARM テンプレート

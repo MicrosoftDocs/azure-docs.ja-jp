@@ -2,20 +2,20 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: azure-communication-services
-author: danieldoolabh
-manager: nimag
+author: lakshmans
+manager: ankita
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 09/03/2020
+ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
-ms.author: dadoolab
-ms.openlocfilehash: a24d9531b7b2d2d2f31eec275da7db7e48b9c74a
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.author: lakshmans
+ms.openlocfilehash: e8424f6b5b7617b00de6dedbece3325f3c5513c8
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96615942"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103622154"
 ---
 Communication Services Python SMS クライアント ライブラリを使用して SMS メッセージを送信することによって、Azure Communication Services の使用を開始します。
 
@@ -51,8 +51,6 @@ mkdir sms-quickstart && cd sms-quickstart
 
 ```python
 import os
-from azure.communication.sms import PhoneNumber
-from azure.communication.sms import SendSmsOptions
 from azure.communication.sms import SmsClient
 
 try:
@@ -76,12 +74,12 @@ Python 用 Azure Communication Services SMS クライアント ライブラリ�
 
 | 名前                                  | 説明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| SmsClient | このクラスは、すべての SMS 機能に必要となります。 サブスクリプション情報を使用してこれをインスタンス化し、そのインスタンスを使用して SMS を送信します。 |
-| SendSmsOptions | このクラスには、配信レポートを構成するためのオプションが用意されています。 enable_delivery_report が True に設定されている場合、配信が成功したときにイベントが生成されます |
+| SmsClient | このクラスは、すべての SMS 機能に必要となります。 サブスクリプション情報を使用してこれをインスタンス化し、そのインスタンスを使用して SMS を送信します。                                                                                                                 |
+| SmsSendResult               | このクラスには、SMS サービスからの結果が含まれます。                                          |
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-接続文字列を使用して **SmsClient** をインスタンス化します。 次のコードは、`COMMUNICATION_SERVICES_CONNECTION_STRING` という名前の環境変数からリソースの接続文字列を取得します。 [リソースの接続文字列を管理する](../../create-communication-resource.md#store-your-connection-string)方法を参照してください。
+接続文字列を使用して **SmsClient** をインスタンス化します。 次のコードは、`COMMUNICATION_SERVICES_CONNECTION_STRING` という名前の環境変数からリソースの接続文字列を取得します。 [リソースの接続文字列を管理する](../../create-communication-resource.md#store-your-connection-string)方法について確認してください。
 
 ```python
 # This code demonstrates how to fetch your connection string
@@ -92,24 +90,47 @@ connection_string = os.getenv('COMMUNICATION_SERVICES_CONNECTION_STRING')
 sms_client = SmsClient.from_connection_string(connection_string)
 ```
 
-## <a name="send-an-sms-message"></a>SMS メッセージの送信
+## <a name="send-a-11-sms-message"></a>1:1 の SMS メッセージを送信する
 
-Send メソッドを呼び出して、SMS メッセージを送信します。 **send-sms.py** の `try` ブロックの末尾に、次のコードを追加します。
+1 人の受信者に SMS メッセージを送信するには、1 人の受信者の電話番号を使用して **SmsClient** から ```send``` メソッドを呼び出します。 また、オプションのパラメーターを渡して、配信レポートを有効にするかどうか、およびカスタム タグを設定するかどうかを指定することもできます。 **send-sms.py** の `try` ブロックの末尾に、次のコードを追加します。
 
 ```python
 
 # calling send() with sms values
-sms_response = sms_client.send(
-        from_phone_number=PhoneNumber("<leased-phone-number>"),
-        to_phone_numbers=[PhoneNumber("<to-phone-number>")],
-        message="Hello World via SMS",
-        send_sms_options=SendSmsOptions(enable_delivery_report=True)) # optional property
+sms_responses = sms_client.send(
+    from_="<from-phone-number>",
+    to="<to-phone-number>,
+    message="Hello World via SMS",
+    enable_delivery_report=True, # optional property
+    tag="custom-tag") # optional property
 
 ```
 
-`<leased-phone-number>` は通信サービス リソースに関連付けられている、SMS が有効になっている電話番号で置き換え、`<to-phone-number>` はメッセージの送信先の電話番号で置き換える必要があります。 
+`<from-phone-number>` は通信サービス リソースに関連付けられている、SMS が有効になっている電話番号で置き換え、`<to-phone-number>` はメッセージの送信先の電話番号で置き換える必要があります。 
 
-`send_sms_options` パラメーターは、配信レポートを構成するために使用できる省略可能なパラメーターです。 これは、SMS メッセージが配信されたときにイベントを生成する場合に便利です。 SMS メッセージの配信レポートを構成するには、[SMS イベントの処理](../handle-sms-events.md)に関するクイックスタートを参照してください。
+## <a name="send-a-1n-sms-message"></a>1:N の SMS メッセージを送信する
+
+受信者の一覧に SMS メッセージを送信するには、受信者の電話番号の一覧を使用して **SmsClient** から ```send``` メソッドを呼び出します。 また、オプションのパラメーターを渡して、配信レポートを有効にするかどうか、およびカスタム タグを設定するかどうかを指定することもできます。 **send-sms.py** の `try` ブロックの末尾に、次のコードを追加します。
+
+```python
+
+# calling send() with sms values
+sms_responses = sms_client.send(
+    from_="<from-phone-number>",
+    to=["<to-phone-number-1>", "<to-phone-number-2>"],
+    message="Hello World via SMS",
+    enable_delivery_report=True, # optional property
+    tag="custom-tag") # optional property
+
+```
+
+`<from-phone-number>` は通信サービスに関連付けられている、SMS が有効になっている電話番号で置き換え、`<to-phone-number-1>` および `<to-phone-number-2>` はメッセージの送信先の電話番号で置き換える必要があります。 
+
+## <a name="optional-parameters"></a>省略可能のパラメーター
+
+`enable_delivery_report` パラメーターは、配信レポートを構成するために使用できる省略可能なパラメーターです。 これは、SMS メッセージが配信されたときにイベントを生成する場合に便利です。 SMS メッセージの配信レポートを構成するには、[SMS イベントの処理](../handle-sms-events.md)に関するクイックスタートを参照してください。
+
+`tag` パラメーターは、カスタム タグを構成するために使用できる省略可能なパラメーターです。
 
 ## <a name="run-the-code"></a>コードの実行
 

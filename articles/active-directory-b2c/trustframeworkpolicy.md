@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/31/2020
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a87b4c6b845006a9f9f3cf82815277c67c09bef0
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 9bf1cc197a7d6977ccb6ef69e157d9f8a76a58d5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178842"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103470733"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -29,16 +29,16 @@ ms.locfileid: "98178842"
   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
   xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
   PolicySchemaVersion="0.3.0.0"
-  TenantId="mytenant.onmicrosoft.com"
+  TenantId="yourtenant.onmicrosoft.com"
   PolicyId="B2C_1A_TrustFrameworkBase"
-  PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
+  PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
   ...
 ```
 
 
 **TrustFrameworkPolicy** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | はい | ポリシーを実行するために使用されるスキーマ バージョン。 値は `0.3.0.0` である必要があります |
 | TenantObjectId | いいえ | Azure Active Directory B2C (Azure AD B2C) テナントの一意のオブジェクト識別子。 |
@@ -57,9 +57,9 @@ ms.locfileid: "98178842"
    xmlns:xsd="https://www.w3.org/2001/XMLSchema"
    xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
    PolicySchemaVersion="0.3.0.0"
-   TenantId="mytenant.onmicrosoft.com"
+   TenantId="yourtenant.onmicrosoft.com"
    PolicyId="B2C_1A_TrustFrameworkBase"
-   PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
+   PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
 ```
 
 **TrustFrameworkPolicy** 要素には、次の要素が含まれます。
@@ -90,9 +90,9 @@ ms.locfileid: "98178842"
    xmlns:xsd="https://www.w3.org/2001/XMLSchema"
    xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
    PolicySchemaVersion="0.3.0.0"
-   TenantId="mytenant.onmicrosoft.com"
+   TenantId="yourtenant.onmicrosoft.com"
    PolicyId="B2C_1A_TrustFrameworkExtensions"
-   PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkExtensions">
+   PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_TrustFrameworkExtensions">
 
   <BasePolicy>
     <TenantId>yourtenant.onmicrosoft.com</TenantId>

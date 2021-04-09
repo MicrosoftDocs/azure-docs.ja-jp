@@ -15,10 +15,10 @@ ms.date: 05/18/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 4be9944a53aaf0c697d55ff567dee7f2fbb3ed85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87038088"
 ---
 # <a name="open-an-application-port-in-the-azure-load-balancer"></a>Azure ロード バランサーのアプリケーション ポートを開く
@@ -37,7 +37,7 @@ Azure で実行する Service Fabric アプリケーションは、Azure ロー�
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | Notes |
 |---|---|
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Azure リソースを取得します。  |
 | [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer) | Azure ロード バランサーを取得します。 |

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 06/09/2020
-ms.openlocfilehash: 3f2efd4051b427a4d7cef0e609f733095c6b020f
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 3d200cd9bccecf03f5313058189e134082a1a357
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259187"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742621"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>チュートリアル:DMS を使用して RDS MySQL を Azure Database for MySQL にオンラインで移行する
 
@@ -56,9 +56,9 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
 * [MySQL **Employees** サンプル データベース](https://dev.mysql.com/doc/employee/en/employees-installation.html)をダウンロードしてインストールします。
 * [Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-portal.md) のインスタンスを作成します。
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure Virtual Network を作成します。これで、[ExpressRoute](../expressroute/expressroute-introduction.md) または [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用したオンプレミスのソース サーバーとのサイト間接続が確立されます。 仮想ネットワークの作成方法の詳細については、「[Virtual Network のドキュメント](../virtual-network/index.yml)」を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
-* 仮想ネットワークのネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への次のアウトバウンド通信ポートが確実にブロックされないようにします: 443、53、9354、445、12000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事を参照してください。
-* データベース エンジン アクセスを許可するように [Windows ファイアウォール](https://docs.microsoft.com/azure/mysql/concepts-firewall-rules) (または Linux ファイアウォール) を構成します。 MySQL サーバーの場合は、接続用にポート 3306 を許可します。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure Virtual Network を作成します。これで、[ExpressRoute](../expressroute/expressroute-introduction.md) または [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用したオンプレミスのソース サーバーとのサイト間接続が確立されます。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](../virtual-network/index.yml)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
+* 仮想ネットワークのネットワーク セキュリティ グループの規則によって、ServiceBus、Storage、AzureMonitor の ServiceTag の送信ポート 443 がブロックされていないことを確認します。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事を参照してください。
+* データベース エンジン アクセスを許可するように [Windows ファイアウォール](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) (または Linux ファイアウォール) を構成します。 MySQL サーバーの場合は、接続用にポート 3306 を許可します。
 
 > [!NOTE]
 > Azure Database for MySQL では、InnoDB テーブルのみがサポートされます。 MyISAM テーブルを InnoDB に変換する場合は、[MyISAM から InnoDB へのテーブルの変換](https://dev.mysql.com/doc/refman/5.7/en/converting-tables-to-innodb.html)に関する記事を参照してください。

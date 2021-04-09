@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ab484e8caaffaf57f19f1fcd1e65f4b8e723f86
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93077899"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>クイック スタート:クラウド アプリにアクセスする前に利用規約への同意を要求する
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このクイック スタートのシナリオを完了するための要件を次に示します。
 
 - **Azure AD Premium エディションへのアクセス** - Azure AD の条件付きアクセスは Azure AD Premium の機能です。
-- **Isabella Simonsen というテスト アカウント** - テスト アカウントの作成方法がわからない場合は、「 [クラウド ベースのユーザーを追加する](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)」を参照してください。
+- **Isabella Simonsen というテスト アカウント** - テスト アカウントの作成方法がわからない場合は、「[クラウド ベースのユーザーを追加する](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)」を参照してください。
 
 ## <a name="test-your-sign-in"></a>サインインをテストする
 
@@ -54,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 **使用条件を作成するには:**
 
 1. Microsoft Word で、新しいドキュメントを作成します。
-1. 「 **My terms of use** 」と入力し、ドキュメントをコンピューターに **mytou.pdf** として保存します。
+1. 「**My terms of use**」と入力し、ドキュメントをコンピューターに **mytou.pdf** として保存します。
 1. [Azure portal](https://portal.azure.com) に全体管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
 1. Azure Portal の左側のナビゲーション バーで、 **[Azure Active Directory]** をクリックします。
 
@@ -76,8 +76,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    :::image type="content" source="./media/require-tou/112.png" alt-text="[New terms of use]\(新しい使用条件\) ページのスクリーンショット。名前、表示名、ドキュメント、言語、条件付きアクセス、および条件を展開するかどうかの切り替えボタンが強調表示されています。" border="false":::
 
-   1. **[名前]** ボックスに「 **My TOU** 」と入力します。
-   1. **[表示名]** ボックスに、「 **My TOU** 」と入力します。
+   1. **[名前]** ボックスに「**My TOU**」と入力します。
+   1. **[表示名]** ボックスに、「**My TOU**」と入力します。
    1. 使用条件 PDF ファイルをアップロードします。
    1. **[言語]** で **[英語]** を選択します。
    1. **[ユーザーは使用条件を展開する必要があります]** で、 **[オン]** を選択します。
@@ -103,7 +103,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **条件付きアクセス ポリシーを構成するには:**
 
-1. **[新規]** ページの **[名前]** ボックスに、「 **Require TOU for Isabella** 」と入力します。
+1. **[新規]** ページの **[名前]** ボックスに、「**Require TOU for Isabella**」と入力します。
 
    ![名前](./media/require-tou/71.png)
 
@@ -154,13 +154,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **What If** ポリシー評価ツールを初期化するには、次のように設定します。
 
-- ユーザーに「 **Isabella Simonsen** 」
-- クラウド アプリに「 **Microsoft Azure の管理** 」
+- ユーザーに「**Isabella Simonsen**」
+- クラウド アプリに「**Microsoft Azure の管理**」
 
 **[What If]** をクリックすると、シミュレート レポートが作成され、次のように表示されます。
 
-- **[適用するポリシー]** の下に " **Require TOU for Isabella** "
-- **[制御の許可]** として " **My TOU** "
+- **[適用するポリシー]** の下に "**Require TOU for Isabella**"
+- **[制御の許可]** として "**My TOU**"
 
 ![What If ポリシー ツール](./media/require-tou/79.png)
 
@@ -189,7 +189,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 前のセクションでは、シミュレートされたサインインを評価する方法を学びました。 期待どおりに動作することを確認するには、シミュレーションに加え、条件付きアクセス ポリシーもテストすることをお勧めします。
 
-ポリシーをテストするには、 **Isabella Simonsen** テスト アカウントを使用して [Azure Portal](https://portal.azure.com) にサインインしてみます。 使用条件への同意を求めるダイアログが表示されるはずです。
+ポリシーをテストするには、**Isabella Simonsen** テスト アカウントを使用して [Azure Portal](https://portal.azure.com) にサインインしてみます。 使用条件への同意を求めるダイアログが表示されるはずです。
 
 :::image type="content" source="./media/require-tou/57.png" alt-text="[Identity Security Protection terms of use]\(ID のセキュリティ保護の使用条件\) というタイトルのダイアログ ボックスのスクリーンショット。[拒否] および [Accept]\(承諾\) ボタンと [My T O U] とラベルされたボタンが表示されています。" border="false":::
 

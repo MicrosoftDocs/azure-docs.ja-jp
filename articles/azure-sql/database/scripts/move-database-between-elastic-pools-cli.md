@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
 ms.openlocfilehash: 9fcb23750137c8286efbc0e1fb7446e324c572dd
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92747346"
 ---
 # <a name="use-the-azure-cli-to-move-a-database-in-sql-database-in-a-sql-elastic-pool"></a>Azure CLI を使用して SQL Database のデータベースを SQL エラスティック プール間で移動する
@@ -46,7 +46,7 @@ az group delete --name $resource
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | 説明 |
+| command | 説明 |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | サーバーのコマンド。 |
 | [az sql elastic-pools](/cli/azure/sql/elastic-pool) | エラスティック プールのコマンド。 |

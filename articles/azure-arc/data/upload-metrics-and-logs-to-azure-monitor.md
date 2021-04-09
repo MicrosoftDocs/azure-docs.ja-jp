@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: 66b10efb6ca93bc6b4dd67d700daaf1f9049de68
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a522a650413be056ff64d26e90b6c15cf88d9a7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183432"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101643492"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>使用状況データ、メトリック、およびログを Azure Monitor にアップロードする
 
@@ -29,7 +29,7 @@ ms.locfileid: "96183432"
 使用状況データ、メトリック、またはログをアップロードする前に、次のことを行う必要があります。
 
 * ツールをインストールする 
-* [`Microsoft.AzureData` リソース プロバイダーを登録する](#register-the-resource-provider) 
+* [`Microsoft.AzureArcData` リソース プロバイダーを登録する](#register-the-resource-provider) 
 * [サービス プリンシパルを作成する](#create-service-principal)
 
 ## <a name="install-tools"></a>ツールをインストールする
@@ -42,18 +42,18 @@ ms.locfileid: "96183432"
 
 ## <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
 
-Azure にメトリックまたはユーザー データをアップロードする前に、Azure サブスクリプションに `Microsoft.AzureData` リソース プロバイダーが登録されていることを確認する必要があります。
+Azure にメトリックまたはユーザー データをアップロードする前に、Azure サブスクリプションに `Microsoft.AzureArcData` リソース プロバイダーが登録されていることを確認する必要があります。
 
 リソース プロバイダーを確認するには、次のコマンドを実行します。
 
 ```azurecli
-az provider show -n Microsoft.AzureData -o table
+az provider show -n Microsoft.AzureArcData -o table
 ```
 
 リソース プロバイダーがサブスクリプションに現在登録されていない場合は、登録できます。 登録するには、次のコマンドを実行します。  コマンドが完了するまでに 1 分から 2 分かかる場合があります。
 
 ```azurecli
-az provider register -n Microsoft.AzureData --wait
+az provider register -n Microsoft.AzureArcData --wait
 ```
 
 ## <a name="create-service-principal"></a>サービス プリンシパルの作成
@@ -65,11 +65,11 @@ az provider register -n Microsoft.AzureData --wait
 > [!NOTE]
 > サービス プリンシパルを作成するには、[Azure で一定のアクセス許可](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)を持っている必要があります。
 
-サービス プリンシパルを作成するには、次の例を更新します。 `<ServicePrincipalName>` をサービス プリンシパルの名前に置き換えて、コマンドを実行します。
+サービス プリンシパルを作成するには、次の例を更新します。 `<ServicePrincipalName>`、`SubscriptionId`、`resourcegroup` を実際の値で置き換えてコマンドを実行します。
 
 ```azurecli
-az ad sp create-for-rbac --name <ServicePrincipalName>
-``` 
+az ad sp create-for-rbac --name <ServicePrincipalName> --role Contributor --scopes /subscriptions/{SubscriptionId}/resourceGroups/{resourcegroup}
+```
 
 以前にサービス プリンシパルを作成しており、単に最新の資格情報の取得が必要な場合は、次のコマンドを実行して資格情報をリセットします。
 
@@ -79,8 +79,8 @@ az ad sp credential reset --name <ServicePrincipalName>
 
 たとえば、`azure-arc-metrics` という名前のサービス プリンシパルを作成するには、次のコマンドを実行します。
 
-```
-az ad sp create-for-rbac --name azure-arc-metrics
+```azurecli
+az ad sp create-for-rbac --name azure-arc-metrics --role Contributor --scopes /subscriptions/a345c178a-845a-6a5g-56a9-ff1b456123z2/resourceGroups/myresourcegroup
 ```
 
 出力例:
@@ -137,16 +137,15 @@ $Env:SPN_TENANT_ID="<tenant>"
 > Windows 環境から実行する場合は、ロール名に二重引用符を使用する必要があります。
 
 ```azurecli
-az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/<Subscription ID>
-az role assignment create --assignee <appId> --role "Contributor" --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
+
 ```
 ::: zone-end
 
 ::: zone pivot="client-operating-system-macos-and-linux"
 
 ```azurecli
-az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<Subscription ID>
-az role assignment create --assignee <appId> --role 'Contributor' --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
 ```
 
 ::: zone-end
@@ -154,8 +153,7 @@ az role assignment create --assignee <appId> --role 'Contributor' --scope subscr
 ::: zone pivot="client-operating-system-powershell"
 
 ```powershell
-az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<Subscription ID>
-az role assignment create --assignee <appId> --role 'Contributor' --scope subscriptions/<Subscription ID>
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
 ```
 
 ::: zone-end
@@ -193,7 +191,7 @@ Azure Arc 対応データ サービスに対する作成、読み取り、更新
 
 プレビュー期間中、この処理は夜間に行われます。 一般的なガイダンスは、使用状況を 1 日に 1 回だけアップロードすることです。 使用状況情報をエクスポートし、同じ 24 時間以内に複数回アップロードすると、リソースの使用状況ではなく Azure portal のリソース インベントリのみが更新されます。
 
-メトリックをアップロードする場合、Azure Monitor では過去 30 分間のデータのみが受け入れられます ([詳細を参照](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting))。 メトリックをアップロードするためのガイダンスは、エクスポート ファイルを作成した直後にメトリックをアップロードして、Azure portal でデータセット全体を表示できるようにすることです。 たとえば、午後 2:00 にメトリックをエクスポートし、午後 2:50 にアップロード コマンドを実行した場合などです。 Azure Monitor では過去 30 分間のデータのみが受け入れられるため、ポータルにデータが表示されない場合があります。 
+メトリックをアップロードする場合、Azure Monitor では過去 30 分間のデータのみが受け入れられます ([詳細を参照](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting))。 メトリックをアップロードするためのガイダンスは、エクスポート ファイルを作成した直後にメトリックをアップロードして、Azure portal でデータセット全体を表示できるようにすることです。 たとえば、午後 2:00 にメトリックをエクスポートし、午後 2:50 にアップロード コマンドを実行した場合などです。 Azure Monitor では過去 30 分間のデータのみが受け入れられるため、ポータルにデータが表示されない場合があります。 
 
 ## <a name="next-steps"></a>次の手順
 

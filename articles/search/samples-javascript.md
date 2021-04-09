@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: f83767813ea3923d85db2ca3f0164776c610525e
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 85a4d6390087100d8d9521f6ac20dbace3a711eb
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955022"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955943"
 ---
 # <a name="javascript-code-samples-for-azure-cognitive-search"></a>Azure Cognitive Search の JavaScript コード サンプル
 
@@ -39,7 +39,6 @@ Azure SDK 開発チームのコード サンプルは、API の使用方法を�
 | [インデクサー](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexers) |  [インデクサー](search-indexer-overview.md)を作成、更新、取得、一覧表示、リセット、削除する方法を示します。|
 | [skillSet](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/skillSets) |   アタッチされたインデクサーであり、インデックス作成中に AI ベースの強化を実行する[スキルセット](cognitive-search-working-with-skillsets.md)を作成、更新、取得、一覧表示、削除する方法が示されています。 |
 | [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/synonymMaps) | [シノニム マップ](search-synonyms.md)を作成、更新、取得、一覧表示、削除する方法が示されています。  |
-| [クエリ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/readonlyQuery.js) | Microsoft によってホストされている、読み取り専用のパブリック インデックスに対するクエリの実行が示されています。  |
 
 ### <a name="typescript-samples"></a>TypeScript のサンプル
 
@@ -50,11 +49,10 @@ Azure SDK 開発チームのコード サンプルは、API の使用方法を�
 | [インデクサー](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexers) |  [インデクサー](search-indexer-overview.md)を作成、更新、取得、一覧表示、リセット、削除する方法を示します。|
 | [skillSet](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/skillSets) |   アタッチされたインデクサーであり、インデックス作成中に AI ベースの強化を実行する[スキルセット](cognitive-search-working-with-skillsets.md)を作成、更新、取得、一覧表示、削除する方法が示されています。 |
 | [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/synonymMaps) | [シノニム マップ](search-synonyms.md)を作成、更新、取得、一覧表示、削除する方法が示されています。  |
-| [クエリ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/typescript/src/readonlyQuery.ts) | Microsoft によってホストされている、読み取り専用のパブリック インデックスに対するクエリの実行が示されています。  |
 
 ## <a name="doc-samples"></a>ドキュメントのサンプル
 
-Cognitive Search チームのコード サンプルは、機能とワークフローを示します。 これらのサンプルの多くは、チュートリアル、クイックスタート、および操作方法に関する記事で言及されています。 これらのサンプルは、GitHub の [**Azure-Samples/azure-search-javascript-samples**](https://github.com/Azure-Samples/azure-search-javascript-samples) にあります。
+Cognitive Search チームのコード サンプルは、機能とワークフローを示しています。 これらのサンプルの多くは、チュートリアル、クイックスタート、および操作方法に関する記事で言及されています。 これらのサンプルは、GitHub の [**Azure-Samples/azure-search-javascript-samples**](https://github.com/Azure-Samples/azure-search-javascript-samples) にあります。
 
 | サンプル | 記事 |
 |---------|---------|
@@ -65,7 +63,7 @@ Cognitive Search チームのコード サンプルは、機能とワークフ�
 
 ## <a name="other-samples"></a>その他のサンプル
 
-次のサンプルも Cognitive Search チームによって公開されていますが、ドキュメントでは参照されていません。 関連する readme ファイルは、使用方法を説明します。
+次のサンプルも Cognitive Search チームによって公開されていますが、ドキュメントでは参照されていません。 関連する readme ファイルでは、使用方法を説明します。
 
 | サンプル | 説明 |
 |---------|-------------|

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Khoros Care の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Khoros Care の統合 | Microsoft Docs'
 description: Azure Active Directory と Khoros Care の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 5f54c61cf8ce056c79faf84b64cf6650ea1db513
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459035"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-khoros-care"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Khoros Care の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-khoros-care"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Khoros Care の統合
 
 このチュートリアルでは、Khoros Care と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Khoros Care を統合すると、次のことができます。
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Khoros Care では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Khoros Care では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Khoros Care では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Khoros Care では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 * Khoros Care を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-khoros-care-from-the-gallery"></a>ギャラリーからの Khoros Care の追加
@@ -51,7 +51,7 @@ Azure AD への Khoros Care の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Khoros Care** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Khoros Care**」と入力します。
 1. 結果のパネルから **[Khoros Care]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-khoros-care"></a>Khoros Care の Azure AD シングル サインオンの構成とテスト

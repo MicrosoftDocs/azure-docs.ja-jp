@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 4b0bbb982ed48dc052b1a15514ad36b1d69b62b5
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 511eb12df511fd037fc0b5bec701c0cc5c29bad2
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599416"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102617779"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>音声アシスタントについてよく寄せられる質問
 
@@ -36,7 +36,7 @@ ms.locfileid: "98599416"
 **A:** カスタム コマンド (プレビュー) アプリケーションまたは基本的な Bot Framework ボットの作成から始めるのが最適な方法です。
 
 - [カスタム コマンド (プレビュー) アプリケーションを作成する](./quickstart-custom-commands-application.md)
-- [基本的な Bot Framework ボットを作成する](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [基本的な Bot Framework ボットを作成する](/azure/bot-service/bot-builder-tutorial-basic-deploy)
 - [ボットを Direct Line Speech チャネルに接続する](/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>デバッグ

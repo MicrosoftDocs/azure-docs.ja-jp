@@ -1,45 +1,34 @@
 ---
 title: セキュリティ エージェントの認証方法
 description: Defender for IoT サービスを使用する際に使用可能なさまざまな認証方法について説明します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2021
-ms.author: shhazam
-ms.openlocfilehash: c72fa87201fb0d7fdd526f0e6f4eeb2c35192fc2
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: bd4d89d8664dae2421ff7f268b3710b5a906427b
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521647"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784613"
 ---
 # <a name="security-agent-authentication-methods"></a>セキュリティ エージェントの認証方法
 
 この記事では、IoT Hub で認証するために AzureIoTSecurity エージェントで使用できるさまざまな認証方法について説明します。
 
-IoT ハブの Defender for IoT にオンボードされるデバイスごとに、セキュリティ モジュールが必要です。 デバイスを認証するために、Defender for IoT では 2 つの方法のいずれかを使用できます。 既存の IoT ソリューションにとって最適な方法を選択してください。
+IoT Hub の Defender for IoT にオンボードされるデバイスごとに Defender-IoT-micro-agent が必要です。 デバイスを認証するために、Defender for IoT では 2 つの方法のいずれかを使用できます。 既存の IoT ソリューションにとって最適な方法を選択してください。
 
-> [!div class="checklist"]
-> * SecurityModule オプション
-> * デバイス オプション
+- SecurityModule オプション
+- デバイス オプション
 
 ## <a name="authentication-methods"></a>認証方法
 
 Defender for IoT AzureIoTSecurity エージェントで認証を実行するための 2 つの方法を次に示します。
 
-- **SecurityModule** 認証モード<br>
-エージェントは、デバイス ID とは無関係にセキュリティモジュール ID を使用して認証されます。
-この認証の種類は、セキュリティ エージェントでセキュリティ モジュールを通して専用の認証方法 (対称キーのみ) を使用する場合に使用します。
+- **Defender-IoT-micro-agent** 認証モード<br>
+このエージェントは、デバイス ID とは独立に Defender-IoT-micro-agent ID を使用して認証されます。
+この認証の種類は、セキュリティ エージェントで Defender-IoT-micro-agent を通して専用の認証方法 (対称キーのみ) を使用するようにしたい場合に使用します。
 
 - **デバイス** 認証モード<br>
-この方法では、セキュリティ エージェントは最初にデバイス ID に対して認証します。 初期認証の後、Defender for IoT エージェントによって、REST API とデバイスの認証データを使用した IoT ハブへの **REST** 呼び出しが実行されます。 その後、Defender for IoT エージェントによって、セキュリティ モジュールの認証方法と IoT ハブからのデータが要求されます。 最後の手順では、Defender for IoT エージェントによって、Defender for IoT モジュールに対して認証が実行されます。
+この方法では、セキュリティ エージェントは最初にデバイス ID に対して認証します。 初期認証の後、Defender for IoT エージェントによって、REST API とデバイスの認証データを使用した IoT ハブへの **REST** 呼び出しが実行されます。 Defender for IoT エージェントは次に、IoT Hub に Defender-IoT-micro-agent 認証方法とデータを要求します。 最後の手順では、Defender for IoT エージェントによって、Defender for IoT モジュールに対して認証が実行されます。
 
 この認証の種類は、セキュリティ エージェントで既存のデバイス認証方法 (自己署名証明書または対称キー) を再利用する場合に使用します。
 
@@ -101,7 +90,8 @@ Defender for IoT AzureIoTSecurity エージェントで認証を実行するた�
     "HostName" : ""
 }
 ```
-## <a name="next-steps"></a>次のステップ
+
+## <a name="see-also"></a>関連項目
 
 - [セキュリティ エージェントの概要](security-agent-architecture.md)
 - [セキュリティ エージェントをデプロイする](how-to-deploy-agent.md)

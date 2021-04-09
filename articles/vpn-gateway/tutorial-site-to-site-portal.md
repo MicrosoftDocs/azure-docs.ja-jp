@@ -8,10 +8,10 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 12/04/2020
 ms.openlocfilehash: ccb43c3e7efb9289450ad9a71c003f54e5362b66
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98945201"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-in-the-azure-portal"></a>チュートリアル:Azure Portal でサイト間接続を作成する

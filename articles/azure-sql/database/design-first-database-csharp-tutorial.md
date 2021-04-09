@@ -11,10 +11,10 @@ ms.author: genemi
 ms.reviewer: sstein
 ms.date: 07/29/2019
 ms.openlocfilehash: 4b3235f457f1c6475c18045886c49d3dd2ca2242
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92671176"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-cx23-and-adonet"></a>チュートリアル:C&#x23; と ADO.NET を使用して Azure SQL Database 内でリレーショナル データベースを設計する
@@ -91,7 +91,7 @@ SQL Database では、サーバーレベルで IP ファイアウォールが作
 > [!IMPORTANT]
 > SQL Database の通信は、ポート 1433 上で行われます。 企業ネットワーク内からこのサービスに接続しようとしても、ポート 1433 でのアウトバウンド トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、管理者がポート 1433 を開かない限り、データベースに接続することはできません。
 
-1. デプロイが完了したら、左側のメニューで **[SQL データベース]** をクリックし、 **SQL データベース** ページで、 *yourDatabase* をクリックします。 お客様のデータベースの概要ページが開くと、完全修飾 **サーバー名** ( *yourserver.database.windows.net* など) や追加の構成オプションが表示されます。
+1. デプロイが完了したら、左側のメニューで **[SQL データベース]** をクリックし、**SQL データベース** ページで、*yourDatabase* をクリックします。 お客様のデータベースの概要ページが開くと、完全修飾 **サーバー名** (*yourserver.database.windows.net* など) や追加の構成オプションが表示されます。
 
 2. この完全修飾サーバー名をコピーします。これは、SQL Server Management Studio からお客様のサーバーとデータベースに接続するために使用します。
 

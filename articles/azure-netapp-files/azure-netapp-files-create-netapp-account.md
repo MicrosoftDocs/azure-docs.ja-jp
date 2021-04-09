@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: e5e0c43aa8c4fbf0db89065e0fab93ee174a4ede
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96006595"
 ---
 # <a name="create-a-netapp-account"></a>NetApp アカウントを作成する
@@ -44,11 +44,11 @@ NetApp アカウントを作成することによって、容量プールを設�
 4. NetApp アカウントについて次の情報を入力します。 
    * **アカウント名**  
      サブスクリプションの一意の名前を指定します。
-   * **サブスクリプション**  
+   * **[サブスクリプション]**  
      既存のサブスクリプションからいずれかのサブスクリプションを選択します。
    * **リソース グループ**   
      既存のリソース グループを使用するか、新しいリソース グループを作成します。
-   * **Location**  
+   * **場所**  
      アカウントとその子リソースを置くリージョンを選択します。  
 
      ![新しい NetApp アカウント](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)

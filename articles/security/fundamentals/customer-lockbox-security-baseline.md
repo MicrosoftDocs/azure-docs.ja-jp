@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b58d96adba690084580fe11b42253a1e77370379
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fb0b976c8759eb77aa2240f95fadbd41e5d9596a
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100595599"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102504918"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 用カスタマー ロックボックスの Azure セキュリティ ベースライン
 
@@ -525,7 +525,7 @@ Azure Active Directory サインイン アクティビティ、監査、およ�
 
 * [Azure Resource Graph を使用してクエリを作成する方法](../../governance/resource-graph/first-query-portal.md)
 
-* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription)
 
 * [Azure ロールベースのアクセス制御 (Azure RBAC) を理解する](../../role-based-access-control/overview.md)
 

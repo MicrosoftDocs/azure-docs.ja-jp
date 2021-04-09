@@ -1,14 +1,14 @@
 ---
 title: Azure Arc を使用してハイブリッド インフラストラクチャを大規模に管理する
 description: Azure の外部で顧客のマシンと Kubernetes クラスターを効果的に管理する方法について説明します。
-ms.date: 09/22/2020
+ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 66a798265683045d7ff9f3d8d811141800d08f9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec32389cd7444405580530a00c8b7c5bc48bcd56
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336617"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103419332"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>Azure Arc を使用してハイブリッド インフラストラクチャを大規模に管理する
 
@@ -18,9 +18,9 @@ ms.locfileid: "91336617"
 
 [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)を使用すると、顧客は、ネイティブの Azure 仮想マシンを管理する場合と同じ方法で、企業ネットワーク上の Azure の外部でホストされている Windows および Linux マシンを管理できます。 ハイブリッド マシンを Azure にリンクすると、接続され、Azure でリソースとして扱われるようになります。 サービス プロバイダーでは、このような非 Azure マシンを顧客の Azure リソースと共に管理できます。
 
-[Azure Arc 対応 Kubernetes (プレビュー)](../../azure-arc/kubernetes/overview.md) を使用すると、顧客は、Azure の内部または外部で Kubernetes クラスターを接続して構成できるようになります。 Kubernetes クラスターを Azure Arc に接続すると、Azure portal に表示され、Azure Resource Manager ID とマネージド ID が付与されます。 クラスターは、標準の Azure サブスクリプションに接続され、リソース グループ内に存在し、他の Azure リソースと同様にタグを受け取ることができます。
+[Azure Arc 対応 Kubernetes](../../azure-arc/kubernetes/overview.md) を使用すると、顧客は、Azure の内部または外部で Kubernetes クラスターを接続して構成できるようになります。 Kubernetes クラスターを Azure Arc に接続すると、Azure portal に表示され、Azure Resource Manager ID とマネージド ID が付与されます。 クラスターは、標準の Azure サブスクリプションに接続され、リソース グループ内に存在し、他の Azure リソースと同様にタグを受け取ることができます。
 
-このトピックでは、サービス プロバイダーが Azure Arc 対応サーバーと Azure Arc 対応 Kubernetes (プレビュー) をスケーラブルな方法で使用し、管理対象のすべての顧客テナントを可視化して、顧客のハイブリッド環境を管理する方法の概要について説明します。
+このトピックでは、サービス プロバイダーが Azure Arc 対応サーバーと Azure Arc 対応 Kubernetes をスケーラブルな方法で使用し、管理対象のすべての顧客テナントを可視化して、顧客のハイブリッド環境を管理する方法の概要について説明します。
 
 > [!TIP]
 > このトピックではサービスのプロバイダーと顧客について触れますが、このガイドラインは、[Azure Lighthouse を使用して複数のテナントを管理する企業](../concepts/enterprise.md)にも当てはまります。
@@ -33,10 +33,7 @@ Azure portal で委任されたサブスクリプションのリソースを表�
 
 たとえば、[顧客のハイブリッド マシン全体に同じポリシー セットを適用することができます](../../azure-arc/servers/learn/tutorial-assign-policy-portal.md)。 また、Azure Security Center を使用して、すべての顧客のハイブリッド環境全体のコンプライアンスを監視することや、[Azure Monitor を使用してハイブリッド マシンから直接データを収集し](../../azure-arc/servers/learn/tutorial-enable-vm-insights.md)、Log Analytics ワークスペースに取り込むこともできます。 [仮想マシン拡張機能](../../azure-arc/servers/manage-vm-extensions.md)は、Azure 以外の Windows および Linux VM にデプロイできるため、顧客のハイブリッド マシンの管理が簡素化されます。
 
-## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes-preview"></a>Azure Arc 対応 Kubernetes (プレビュー) を使用してハイブリッド Kubernetes クラスターを大規模に管理する
-
-> [!NOTE]
-> Azure Arc 対応 Kubernetes は現在プレビューの段階です。 現時点では、運用環境のワークロード用にはお勧めしません。
+## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes を使用してハイブリッド Kubernetes クラスターを大規模に管理する
 
 [Azure Arc を使用して顧客のサブスクリプションに接続されている](../../azure-arc/kubernetes/connect-cluster.md) Kubernetes クラスターは、Azure で実行されている場合と同様に管理できます。
 
@@ -48,9 +45,8 @@ Azure portal で委任されたサブスクリプションのリソースを表�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Arc GitHub リポジトリ](https://github.com/microsoft/azure_arc)ですぐに使える項目とサンプルを確認します。 
+- [Azure Arc GitHub リポジトリ](https://github.com/microsoft/azure_arc)ですぐに使える項目とサンプルを確認します。
 - [Azure Arc 対応サーバーのサポートされるシナリオ](../../azure-arc/servers/overview.md#supported-scenarios)を確認します。
 - [Azure Arc でサポートされている Kubernetes ディストリビューション](../../azure-arc/kubernetes/overview.md#supported-kubernetes-distributions)を確認します。
 - [ポリシーを大規模にデプロイする](policy-at-scale.md)方法を確認します。
 - [Azure Monitor ログを大規模に使用する](monitor-at-scale.md)方法を確認します。
-

@@ -3,7 +3,7 @@ title: Azure Media Services コミュニティの概要 | Microsoft Docs
 description: 'この Azure Media Services (AMS) コミュニティ ページでは、AMS に関する最新情報を取得するさまざまな方法が話し合われ、新しいビデオとポッドキャストを参照したり、質問を聞いてフィードバックをもらったりすることができます。 '
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 0df020f4-8297-4f31-92bf-de098283e997
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: f3cc775cd65293a39de28dfbdc8b1d06aeada3b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 8c566484d5a594e81a0900d5a5ab5a3e34bfffa8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987308"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103016918"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services コミュニティ
 

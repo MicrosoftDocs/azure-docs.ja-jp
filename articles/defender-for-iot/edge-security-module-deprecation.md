@@ -1,29 +1,24 @@
 ---
 title: 機能のサポートと廃止
-titleSuffix: Azure Defender for IoT
 description: Defender for IoT では、2022 年 3 月 1 日まで C、C#、Edge のサポートが継続されます。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/21/2021
-ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 2779a73d3a5f77e3a3b144309baf6d2788565443
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 782e2e8ab0c54e21da643ca73f647a7ea21e4223
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809660"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784528"
 ---
 # <a name="feature-support-and-retirement"></a>機能のサポートと廃止
 
 この記事では、Azure Defender for IoT の機能と、Defender for IoT 内のさまざまな機能のサポートについて説明します。
 
-## <a name="defender-for-iot-c-c-and-edge-security-module-deprecation"></a>Defender for IoT C、C#、および Edge セキュリティ モジュールの非推奨
+## <a name="defender-for-iot-c-c-and-edge-defender-iot-micro-agent-deprecation"></a>Defender for IoT C、C#、および Edge の Defender-IoT-micro-agent の非推奨
 
-現在の C、C#、および Edge セキュリティ モジュールは、新しいマイクロ エージェントによって置き換わります。  
+現在の C、C#、および Edge の Defender-IoT-micro-agent は、新しいマイクロ エージェントによって置き換わります。  
 
-新しいマイクロ エージェントは、知識、および既存のセキュリティ モジュールの開発、顧客、パートナーからのフィードバックによって収集された経験に基づいており、次の 4 つの重要な改善が行われています。 
+新しいマイクロ エージェントは、知識、および既存の Defender-IoT-micro-agent の開発、顧客、パートナーからのフィードバックによって収集された経験に基づいており、次の 4 つの重要な改善が行われています。 
 
 - **深度セキュリティの値**: 新しいエージェントはホスト レベルで実行されるため、デバイスの基礎となる操作が見やすくなり、セキュリティの網羅性が向上します。
 

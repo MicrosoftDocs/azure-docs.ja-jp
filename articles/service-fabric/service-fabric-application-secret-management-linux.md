@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: shsha
 ms.openlocfilehash: b8e0a19e3f654fc561e7c7e26c6a2da463e24d5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "78969034"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Linux クラスターでの暗号化証明書の設定とシークレットの暗号化
@@ -29,10 +29,10 @@ ms.locfileid: "78969034"
   ```
 
 ## <a name="install-the-certificate-in-your-cluster"></a>クラスターへの証明書のインストール
-この証明書は、クラスターの各ノードの `/var/lib/sfcerts` にインストールする必要があります。 サービスを実行しているユーザー アカウント (既定では sfuser) は、インストール済みの証明書 (現在の例では `/var/lib/sfcerts/TestCert.pem`) に対する**読み取りアクセスを持つ必要があります**。
+この証明書は、クラスターの各ノードの `/var/lib/sfcerts` にインストールする必要があります。 サービスを実行しているユーザー アカウント (既定では sfuser) は、インストール済みの証明書 (現在の例では `/var/lib/sfcerts/TestCert.pem`) に対する **読み取りアクセスを持つ必要があります**。
 
 ## <a name="encrypt-secrets"></a>シークレットを暗号化する
-次のスニペットは、シークレットの暗号化に使用できます。 このスニペットは値を暗号化するだけであり、暗号化テキストの署名は**行いません**。 クラスターにインストールされている同じ暗号化証明書を使用して、シークレット値の暗号化テキストを生成する**必要があります**。
+次のスニペットは、シークレットの暗号化に使用できます。 このスニペットは値を暗号化するだけであり、暗号化テキストの署名は **行いません**。 クラスターにインストールされている同じ暗号化証明書を使用して、シークレット値の暗号化テキストを生成する **必要があります**。
 
 ```console
 user@linux:$ echo "Hello World!" > plaintext.txt

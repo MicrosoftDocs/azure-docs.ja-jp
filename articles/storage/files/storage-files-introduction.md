@@ -8,10 +8,10 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: f0dcd763240205bd396fc8cd0301c2046098473b
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98070135"
 ---
 # <a name="what-is-azure-files"></a>Azure Files とは

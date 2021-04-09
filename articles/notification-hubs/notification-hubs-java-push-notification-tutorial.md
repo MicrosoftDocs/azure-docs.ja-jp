@@ -18,10 +18,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 09553f587916e8204541b36f259a450d72c1b270
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87322943"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Java から Notification Hubs を使用する方法
@@ -42,7 +42,7 @@ MSDN のトピック「 [Notification Hubs の REST API](/previous-versions/azur
 * 通常の送信
 * スケジュールされた送信
 * Java NIO を使用した非同期操作
-* サポート対象のプラットフォーム:APNS (iOS)、FCM (Android)、WNS (Windows ストア アプリ)、MPNS (Windows Phone)、ADM (Amazon Kindle Fire)、Baidu (Google のサービスを使用しない Android)
+* サポート対象のプラットフォーム: APNS (iOS)、FCM (Android)、WNS (Windows ストア アプリ)、MPNS (Windows Phone)、ADM (Amazon Kindle Fire)、Baidu (Google のサービスを使用しない Android)
 
 ## <a name="sdk-usage"></a>SDK の使用例
 
@@ -303,7 +303,7 @@ List<NotificationHubJob> jobs = hub.getAllNotificationHubJobs();
 
 Notification オブジェクトはヘッダー付きの本文にすぎません。一部のユーティリティ メソッドはネイティブ オブジェクトとテンプレート通知オブジェクトのビルドに役立ちます。
 
-* **Windows ストアおよび Windows Phone 8.1 (Silverlight 以外)**
+* **Windows ストアおよび Windows Phone 8.1 (非 Silverlight)**
 
 ```java
 String toast = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello from Java!</text></binding></visual></toast>";

@@ -2,14 +2,14 @@
 title: Shared Image Gallery を使用してカスタム イメージ プールを作成する
 description: カスタム イメージ プールは、Batch ワークロードを実行する計算ノードを構成するための効率的な方法です。
 ms.topic: conceptual
-ms.date: 11/18/2020
+ms.date: 03/04/2021
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 98dbb965d77da43d937dccbc0f99abf12c195929
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 8623c47952540717ae50538fd7b0282c9c8629bb
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731363"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124246"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Shared Image Gallery を使用してカスタム イメージ プールを作成する
 
@@ -69,12 +69,15 @@ Azure では、以下から作成できるマネージド イメージから共�
 > [!NOTE]
 > 基本イメージとして追加のライセンスと購入条件のあるサード パーティのイメージを使用することはできません。 このような Marketplace イメージについては、[Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) VM または [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) VM のガイダンスを参照してください。
 
+VM を作成するときは、次のガイドラインに従ってください。
+
 - VM がマネージド ディスクを使用して作成されていることを確認してください。 これは VM を作成するときの既定のストレージ設定です。
 - VM には、Azure 拡張機能 (カスタム スクリプト拡張機能など) をインストールしないでください。 イメージにプレインストールされた拡張機能が含まれる場合、Azure で Batch プールのデプロイ時に問題が発生する可能性があります。
 - 添付データ ディスクを含める場合は、それらを使用する VM 内からディスクを マウントおよびフォーマットする必要があります。
 - 提供するベース OS イメージには、必ず既定の一時ドライブを使用するようにしてください。 現在、Batch ノード エージェントでは、既定の一時ドライブを使用する必要があります。
 - OS ディスクが暗号化されていないことを確認します。
-- VM が実行状態になったら、RDP (Windows の場合) または SSH (Linux の場合) を使用して VM に接続します。 必要なソフトウェアをインストールしたり、必要なデータをコピーしてください。  
+- VM が実行状態になったら、RDP (Windows の場合) または SSH (Linux の場合) を使用して VM に接続します。 必要なソフトウェアをインストールしたり、必要なデータをコピーしてください。
+- プールのプロビジョニングを速くするには、VM の OS ディスクの [ReadWrite ディスク キャッシュ設定](../virtual-machines/premium-storage-performance.md#disk-caching)を使用します。
 
 ### <a name="create-a-vm-snapshot"></a>VM スナップショットを作成する
 

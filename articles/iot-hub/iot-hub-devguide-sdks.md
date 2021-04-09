@@ -12,18 +12,18 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 9921ed500f831f2a002335fe83eae8f1bb47ecd4
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: d35535c87ca20bfc573995bf15f79bc149619776
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095340"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102611591"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Azure IoT Hub SDK の概要と使用方法
 
 IoT Hub を使用する場合、以下の 2 つのカテゴリのソフトウェア開発キット (SDK) があります。
 
-* **IoT Hub Device SDK** では、デバイス クライアントまたはモジュール クライアントを使用して、ご利用の IoT デバイス上で実行するアプリを構築できます。 これらのアプリは IoT Hub にテレメトリを送信し、必要に応じて IoT Hub からメッセージ、ジョブ、メソッド、ツインの更新を受信します。  また、モジュール クライアントを使用して、[Azure IoT Edge ランタイム](../iot-edge/about-iot-edge.md)用の[モジュール](../iot-edge/iot-edge-modules.md)を作成することもできます。
+* **IoT Hub Device SDK** では、デバイス クライアントまたはモジュール クライアントを使用して、ご利用の IoT デバイス上で実行するアプリを構築できます。 これらのアプリは IoT Hub にテレメトリを送信し、必要に応じて IoT Hub からメッセージ、ジョブ、メソッド、ツインの更新を受信します。 これらの SDK を使用して、[Azure IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)の規則およびモデルを使用するデバイス アプリをビルドし、IoT プラグ アンド プレイ対応アプリケーションにその機能を提供することができます。 また、モジュール クライアントを使用して、[Azure IoT Edge ランタイム](../iot-edge/about-iot-edge.md)用の[モジュール](../iot-edge/iot-edge-modules.md)を作成することもできます。
 
 * **IoT Hub Service SDK** を使用すると、ご利用の IoT Hub を管理するバックエンド アプリケーションを構築できます。また、必要に応じてメッセージを送信し、ジョブのスケジュールを設定し、ダイレクト メソッドを呼び出し、ご利用の IoT デバイスまたはモジュールに必要なプロパティの更新情報を送信することができます。
 
@@ -51,8 +51,8 @@ Microsoft Azure IoT device SDK には、Azure IoT Hub サービスに接続お�
 
 * [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) からダウンロードする。  名前空間は、IoT Hub デバイス クライアント (DeviceClient、ModuleClient) を含む Microsoft.Azure.Devices.Clients です。
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-csharp)
-* [API リファレンス](/dotnet/api/microsoft.azure.devices?view=azure-dotnet)
-* [モジュール リファレンス](/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)
+* [API リファレンス](/dotnet/api/microsoft.azure.devices)
+* [モジュール リファレンス](/dotnet/api/microsoft.azure.devices.client.moduleclient)
 
 
 Embedded C 用 Azure IoT Hub デバイス SDK (ANSI C - C99):
@@ -78,14 +78,14 @@ Java 用 Azure IoT Hub デバイス SDK:
 * [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-device-sdk) プロジェクトに追加する
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-java)
 * [API リファレンス](/java/api/com.microsoft.azure.sdk.iot.device)
-* [モジュール リファレンス](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)
+* [モジュール リファレンス](/java/api/com.microsoft.azure.sdk.iot.device.moduleclient)
 
 Node.js 用 Azure IoT Hub デバイス SDK:
 
 * [npm](https://www.npmjs.com/package/azure-iot-device) からインストールする
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-node)
-* [API リファレンス](/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest)
-* [モジュール リファレンス](/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)
+* [API リファレンス](/javascript/api/azure-iot-device/)
+* [モジュール リファレンス](/javascript/api/azure-iot-device/moduleclient)
 
 Python 用 Azure IoT Hub デバイス SDK:
 
@@ -119,7 +119,7 @@ Node.js 用 Azure IoT Hub サービス SDK:
 
 * [npm](https://www.npmjs.com/package/azure-iothub) からダウンロードする
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-node)
-* [API リファレンス](/javascript/api/azure-iothub/?view=azure-iot-typescript-latest)
+* [API リファレンス](/javascript/api/azure-iothub/)
 
 Python 用 Azure IoT Hub サービス SDK:
 
@@ -153,7 +153,7 @@ C# 用の Azure Provisioning Device SDK および Azure Provisioning Service SDK
 
 * NuGet から [Device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Client/) および [Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) をダウンロードします。
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-csharp/)
-* [API リファレンス](/dotnet/api/microsoft.azure.devices.provisioning.client?view=azure-dotnet)
+* [API リファレンス](/dotnet/api/microsoft.azure.devices.provisioning.client)
 
 C 用の Azure Provisioning Device SDK および Azure Provisioning Service SDK:
 
@@ -165,12 +165,12 @@ Java 用の Azure Provisioning Device SDK および Azure Provisioning Service S
 
 * [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-service-sdk) プロジェクトに追加する
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-java/blob/master/provisioning)
-* [API リファレンス](/java/api/com.microsoft.azure.sdk.iot.provisioning.device?view=azure-java-stable)
+* [API リファレンス](/java/api/com.microsoft.azure.sdk.iot.provisioning.device)
 
 Node.js 用の Azure Provisioning Device SDK および Azure Provisioning Service SDK:
 
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning)
-* [API リファレンス](/javascript/api/overview/azure/iothubdeviceprovisioning?view=azure-node-latest)
+* [API リファレンス](/javascript/api/overview/azure/iothubdeviceprovisioning)
 * npm から [Device SDK](https://badge.fury.io/js/azure-iot-provisioning-device) および [Service SDK](https://badge.fury.io/js/azure-iot-provisioning-service) をダウンロードします。
 
 Python 用の Azure Provisioning Device SDK および Azure Provisioning Service SDK:

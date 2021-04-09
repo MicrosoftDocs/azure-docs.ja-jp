@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 3c908fffe93d657662310d4e91ed25ae28ca6908
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: cbc415411e05d6fdecee1acf2fbc02b3c170b9d6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429094"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102501126"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure Attestation を設定する
 
-以下の手順に沿って、Azure PowerShell を使用して構成証明プロバイダーを作成、構成します。 Azure PowerShell をインストールして実行する方法については、[Azure PowerShell の概要](/powershell/azure/?view=azps-2.8.0&viewFallbackFrom=azps-2.4.0)に関するページを参照してください。
+以下の手順に沿って、Azure PowerShell を使用して構成証明プロバイダーを作成、構成します。 Azure PowerShell をインストールして実行する方法については、[Azure PowerShell の概要](/powershell/azure/)に関するページを参照してください。
 
 PowerShell ギャラリーには、非推奨のトランスポート層セキュリティ (TLS) バージョン 1.0 および 1.1 が存在するので注意してください。 TLS 1.2 以降のバージョンが推奨されます。 したがって、次のエラーが表示される場合があります。
 
@@ -226,7 +226,7 @@ Remove-AzAttestationPolicySigner -Name $attestationProvider -ResourceGroupName $
 
 ポリシー署名者証明書のサンプルについては、[ポリシー署名者証明書の例](policy-signer-examples.md)を参照してください。
 
-コマンドレットとそのパラメーターの詳細については、[Azure Attestation PowerShell のコマンドレット](/powershell/module/az.attestation/?view=azps-4.3.0#attestation)を参照してください。 
+コマンドレットとそのパラメーターの詳細については、[Azure Attestation PowerShell のコマンドレット](/powershell/module/az.attestation/#attestation)を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

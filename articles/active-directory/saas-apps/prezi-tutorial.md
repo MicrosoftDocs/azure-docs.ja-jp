@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
 ms.openlocfilehash: 4ff8196ff4e30aa6ed036cabe00a72bfa8a5c51f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92515323"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-prezi"></a>チュートリアル:Azure Active Directory シングル サインオンと Prezi の統合
@@ -54,7 +54,7 @@ Azure AD への Prezi の統合を構成するには、ギャラリーからマ�
 1. 左端のペインで、 **[Azure Active Directory]** を選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Prezi** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Prezi**」と入力します。
 1. 結果パネルで **[Prezi]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-prezi"></a>Prezi の Azure AD SSO の構成とテスト
@@ -114,7 +114,7 @@ Azure portal で Azure AD SSO を有効にするには、次のようにしま�
 1. Azure portal の左端のペインで、 **[Azure Active Directory]** を選択します。 **[ユーザー]** に移動し、 **[すべてのユーザー]** を選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. ユーザーのプロパティで、以下の手順を実行します。
-   1. **[名前]** ボックスに「 **B.Simon** 」と入力します。
+   1. **[名前]** ボックスに「**B.Simon**」と入力します。
    1. **[ユーザー名]** ボックスに「`username@companydomain.extension`」と入力します (たとえば、`B.Simon@contoso.com`)。
    1. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **［作成］** を選択します

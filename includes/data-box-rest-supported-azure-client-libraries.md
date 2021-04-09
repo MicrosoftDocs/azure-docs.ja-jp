@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 09/24/2020
 ms.author: alkohli
 ms.openlocfilehash: 72c344c0a5c9cca278fe8c633309b1195a0454b0
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91941421"
 ---
 クライアント ライブラリ     |サポートされているバージョン     | Link   |     エンドポイントの指定      |

@@ -2,13 +2,13 @@
 title: 機能の概要 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs の機能と用語に関する詳細を示します。
 ms.topic: article
-ms.date: 02/19/2021
-ms.openlocfilehash: 8bb63bfdbeb5b875b1e461fbd93fb48dcbb43054
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/15/2021
+ms.openlocfilehash: da59d62cb7060389ea94b3af5e6f66a4b6347d7d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739077"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602623"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs の機能と用語
 
@@ -53,6 +53,13 @@ Event Hubs によって、1 つのパーティション キー値を共有する
 - Event Hubs **Standard** の場合、最大保持期間は **7 日** です。 
 - Event Hubs **Dedicated** の場合、最大保持期間は **90 日** です。
 - 保持期間を変更すると、既にイベント ハブ内にあるメッセージを含むすべてのメッセージに適用されます。 
+
+Event Hubs は構成された期間にわたりイベントを保持します。これは、すべてのパーティションに適用されます。 保持期間が経過するとイベントは自動的に削除されます。 保持期間を 1 日に指定すると、イベントは、その受領からちょうど 24 時間で利用できなくなります。 イベントを明示的に削除することはできません。 
+
+保持期間の上限を超えてイベントをアーカイブする必要がある場合、[Event Hubs Capture 機能を有効にして Azure Storage または Azure Data Lake にそれらを自動的に格納](event-hubs-capture-overview.md)することができます。また、そのような大量のアーカイブを検索したり分析したりする必要がある場合は、[それらを Azure Synapse に簡単にインポート](store-captured-data-data-warehouse.md)することができます。他の同様のストアや分析プラットフォームにインポートすることも可能です。 
+
+Event Hubs でデータの保持期間に上限を設けている理由は、タイムスタンプによってのみインデックスされ、順次アクセスしかできない大きなストアに、過去に発生した大量のカスタマー データが無造作に取り込まれるのを避けるためです。 履歴データには、Event Hubs や Kafka が提供するリアルタイムのイベント処理インターフェイスよりも高度なインデックス処理と直接アクセスが必要であるという思想の下に設計されています。 イベント ソーシングの長期的アーカイブやデータ レイク用途には、イベント ストリーム エンジンは適しません。 
+ 
 
 > [!NOTE]
 > Event Hubs はリアルタイムのイベント ストリーム エンジンであるため、データベースや、無期限に保持されるイベント ストリームの永続的なストアの代わりとして使用されるように設計されていません。 
@@ -167,7 +174,7 @@ Event Hubs の詳細については、次のリンクを参照してください
     - [.NET](event-hubs-dotnet-standard-getstarted-send.md)
     - [Java](event-hubs-java-get-started-send.md)
     - [Python](event-hubs-python-get-started-send.md)
-    - [JavaScript](event-hubs-java-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 * [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
 * [Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)

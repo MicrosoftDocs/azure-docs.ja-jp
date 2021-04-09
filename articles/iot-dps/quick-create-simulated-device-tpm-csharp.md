@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: b2648382fb19fafcfc342379aa9da974f6f8d1ff
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90528421"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>クイックスタート - IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングします。
@@ -27,8 +27,8 @@ ms.locfileid: "90528421"
 
 Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポートされています。
 
-- [登録グループ](concepts-service.md#enrollment-group): 複数の関連するデバイスを登録するために使用します。
-- [個別登録](concepts-service.md#individual-enrollment): 1 台のデバイスを登録するために使用します。
+- [登録グループ](concepts-service.md#enrollment-group)：複数の関連するデバイスを登録するために使用します。
+- [個々の登録](concepts-service.md#individual-enrollment):単一デバイスを登録するために使用します。
 
 この記事では、個別登録の使用方法を示します。
 
@@ -67,7 +67,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
     このコマンドにより、別のコマンド プロンプトで TPM チップのシミュレーターが起動します。 Windows の場合、Simulator.exe がパブリック ネットワーク経由で通信するのを許可するかどうかをお客様に確認する Windows セキュリティ アラートが発生する場合があります。 このサンプルでは、要求を取り消してもかまいません。
 
-1. 元のコマンド ウィンドウには、デバイスの登録に必要な**_保証キー_**、**_登録 ID_**、提案される**_デバイス ID_** が表示されます。 これらの値を書き留めておきます。 これらの値を使用して、Device Provisioning Service インスタンスで個々の登録を作成します。 
+1. 元のコマンド ウィンドウには、デバイスの登録に必要な **_保証キー_**、**_登録 ID_**、提案される **_デバイス ID_** が表示されます。 これらの値を書き留めておきます。 これらの値を使用して、Device Provisioning Service インスタンスで個々の登録を作成します。 
    > [!NOTE]
    > コマンド出力が表示されるウィンドウと、TPM シミュレーターの出力が表示されるウィンドウを混同しないでください。 必要に応じて、元のコマンド ウィンドウを選択してウィンドウを前面に表示します。
 
@@ -80,9 +80,9 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
    - 前にメモしておいた値を基に、TPM デバイスの "*登録 ID*" と "*保証キー*" を入力します。
    - プロビジョニング サービスにリンクされた IoT ハブを選択します。
    - 必要に応じて、次の情報を入力することができます。
-       - 一意の*デバイス ID* を入力します (推奨されるものを使用するか、独自のものを指定できます)。 デバイスに名前を付ける際に機密データを含めないようにしてください。 指定しない場合には、デバイスを識別するために登録 ID が代わりに使用されます。
+       - 一意の *デバイス ID* を入力します (推奨されるものを使用するか、独自のものを指定できます)。 デバイスに名前を付ける際に機密データを含めないようにしてください。 指定しない場合には、デバイスを識別するために登録 ID が代わりに使用されます。
        - **[Initial device twin state]\(初期のデバイス ツインの状態\)** をデバイスの目的の初期構成で更新します。
-   - 作業が完了したら、**[保存]** を押します。 
+   - 作業が完了したら、 **[保存]** を押します。 
 
      ![ポータルのブレードにデバイス登録情報を入力します。](./media/quick-create-simulated-device-tpm-csharp/enterdevice-enrollment.png)  
 

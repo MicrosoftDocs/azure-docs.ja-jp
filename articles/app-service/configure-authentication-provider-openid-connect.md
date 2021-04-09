@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.openlocfilehash: e8112f2dc20175e81cfa8388440b2d9aef6a419c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90983865"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>OpenID Connect プロバイダーを使用してログインするように App Service または Azure Functions アプリを構成する (プレビュー)
@@ -24,7 +24,7 @@ ms.locfileid: "90983865"
 
 ## <a name="register-your-application-with-the-identity-provider"></a><a name="register"> </a>アプリケーションを ID プロバイダーに登録する
 
-プロバイダーにより、アプリケーションの詳細を登録することを求められます。 そのプロバイダーに関連する指示を参照してください。 アプリケーションの**クライアント ID** と**クライアント シークレット**を収集する必要があります。
+プロバイダーにより、アプリケーションの詳細を登録することを求められます。 そのプロバイダーに関連する指示を参照してください。 アプリケーションの **クライアント ID** と **クライアント シークレット** を収集する必要があります。
 
 > [!IMPORTANT]
 > アプリケーション シークレットは、重要なセキュリティ資格情報です。 このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。

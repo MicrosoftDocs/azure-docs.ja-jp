@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: be7d477d08b025fd450bfa859e8eb677ba680143
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e074043cb685f60027d3c09ae7ad8dc17dded0df
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446368"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102443405"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>Azure Stack Edge Pro の順序の問題をトラブルシューティングする
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 この記事では、Azure Stack Edge Pro の順序の問題をトラブルシューティングする方法について説明します。
 

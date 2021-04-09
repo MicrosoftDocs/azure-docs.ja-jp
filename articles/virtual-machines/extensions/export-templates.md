@@ -1,26 +1,19 @@
 ---
 title: VM 拡張機能を含む Azure リソース グループのエクスポート
 description: 仮想マシン拡張機能を含む Resource Manager テンプレートをエクスポートします。
-services: virtual-machines-windows
-documentationcenter: ''
-author: axayjo
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 7f4e2ca6-f1c7-4f59-a2cc-8f63132de279
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: windows
 ms.date: 12/05/2016
-ms.author: akjosh
-ms.openlocfilehash: 40b8ff01a5c8d00d3234af31877ea58c471026e8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: df1ae43b2c6a74448a6782a43fb86f8f4939b13a
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955754"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102560006"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>VM 拡張機能を含むリソース グループのエクスポート
 

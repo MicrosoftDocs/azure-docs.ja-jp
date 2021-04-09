@@ -3,14 +3,14 @@ title: 低速クエリ ログにアクセスする - Azure portal - Azure Databa
 description: この記事では、Azure portal から Azure Database for MariaDB の低速クエリ ログの構成方法とアクセス方法について説明します。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 4/13/2020
-ms.openlocfilehash: f3a01d3e80be35d10ef5c163c9ad8956f37283c1
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c5ee948daecafc061910f36d2ac95d15338bfb38
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98662510"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-from-the-azure-portal"></a>Azure portal で Azure Database for Maria DB の低速クエリ ログを構成してアクセスする

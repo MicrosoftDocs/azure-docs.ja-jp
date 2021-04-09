@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.author: vikancha
-ms.openlocfilehash: f2c8b9efd02253026ff568983e42da87fa3c0f32
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 152e25fec4ee7b6181e2da58a9a4b0562a918151
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551081"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102609194"
 ---
 # <a name="nvv4-series"></a>NVv4 シリーズ 
 
@@ -27,7 +27,7 @@ NVv4 シリーズ仮想マシンは [AMD Radeon Instinct MI25](https://www.amd.c
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
-[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) |

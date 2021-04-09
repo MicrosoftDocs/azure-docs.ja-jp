@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.openlocfilehash: 2dbf7c31e6b0b40fa9dc2d59e86c0ecc731657e1
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102172411"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions デプロイ スロット

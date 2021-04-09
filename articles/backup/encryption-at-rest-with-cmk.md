@@ -3,12 +3,12 @@ title: カスタマー マネージド キーを使用したバックアップ �
 description: Azure Backup でカスタマー マネージド キー (CMK) を使用してご自分のバックアップ データを暗号化できるようにする方法を説明します。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 230669e0a3543a0709dda3f7fee35a0cae300d5a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 474f4238276f460abde3d600422e309171875a0c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369460"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716739"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>カスタマー マネージド キーを使用したバックアップ データの暗号化
 

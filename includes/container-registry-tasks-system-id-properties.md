@@ -9,10 +9,10 @@ ms.date: 07/06/2020
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 1b7c8487eb42204f2741679c9ef6eb2717c272cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86057358"
 ---
 コマンドの出力の `identity` セクションでは、タスクで `SystemAssigned` 型の ID が設定されたことが示されています。 `principalId` は、タスク ID のプリンシパル ID です。

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 1c3c3d38ac0d8334f70f681d8ef86c0d6f86ecfa
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: d8c0a5ce6f3befd41c0e1399363fd73726693837
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96750222"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の推奨事項とベスト プラクティス
@@ -28,7 +28,7 @@ ms.locfileid: "96750222"
 |--|--|
 | ほとんどのシナリオでユーザー フローを選択する | Azure AD B2C の Identity Experience Framework は、サービスの中核となる強みです。 ポリシーには、サインアップ、サインイン、プロファイル編集などの ID エクスペリエンスが完全に記述されています。 最も一般的な ID タスクを設定しやすくするために、Azure AD B2C ポータルには、ユーザー フローという事前定義済みで構成できるポリシーが用意されています。 ユーザー フローを使用すると、数回クリックするだけで、非常に優れたユーザー エクスペリエンスを数分で作成できます。 [ユーザー フローとカスタム ポリシーを使用するタイミングについて確認してください](custom-policy-overview.md#comparing-user-flows-and-custom-policies)。|
 | アプリの登録 | セキュリティで保護するすべてのアプリケーション (Web、ネイティブ) と API を Azure AD B2C に登録する必要があります。 アプリに iOS および Android の Web バージョンとネイティブ バージョンの両方が含まれている場合は、同じクライアント ID を使用して Azure AD B2C に 1 つのアプリケーションとして登録できます。 [OIDC、SAML、Web、ネイティブの各アプリを登録](./tutorial-register-applications.md?tabs=applications)する方法について確認してください。 [Azure AD B2C で使用できるアプリケーションの種類](./application-types.md)の詳細について確認してください。 |
-| 月間アクティブ ユーザーの課金に移行する | Azure AD B2C は、月間アクティブ認証から月間アクティブ ユーザー (MAU) の課金に移行されました。 ほとんどの顧客は、これがコスト効率の高いモデルであることに気付くでしょう。 [月間アクティブ ユーザーの課金の詳細について確認してください](https://azure.microsoft.com/updates/mau-billing/)。 [このリンクを保存する](b2clogin.md) |
+| 月間アクティブ ユーザーの課金に移行する | Azure AD B2C は、月間アクティブ認証から月間アクティブ ユーザー (MAU) の課金に移行されました。 ほとんどの顧客は、これがコスト効率の高いモデルであることに気付くでしょう。 [月間アクティブ ユーザーの課金の詳細について確認してください](https://azure.microsoft.com/updates/mau-billing/)。 |
 
 ## <a name="planning-and-design"></a>計画と設計
 
@@ -84,7 +84,7 @@ ms.locfileid: "96750222"
 | アクティブなアラートと監視のセットアップ | Application Insights を使用して Azure AD B2C での[ユーザーの動作を追跡](./analytics-with-application-insights.md)します。 |
 
 ## <a name="support-and-status-updates"></a>サポートとステータスの更新
-## <a name="todays-support-and-status-updates"></a>現在のサポートとステータス更新
+
 サービスの最新の状態を把握し、サポート オプションを見つけてください。
 
 | ベスト プラクティス | 説明 |

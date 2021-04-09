@@ -9,13 +9,13 @@ ms.custom: ''
 ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
-ms.reviewer: maghan
-ms.openlocfilehash: 77283596e4b0d7e25d757c9de76c284ca4f5d4f2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.reviewer: jburchel
+ms.openlocfilehash: 8cb92407954ab5376850e57b0ee91d934480b025
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556397"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786891"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>Azure の SSIS パッケージから Windows 認証を使用してデータ ストアとファイル共有にアクセスする
 

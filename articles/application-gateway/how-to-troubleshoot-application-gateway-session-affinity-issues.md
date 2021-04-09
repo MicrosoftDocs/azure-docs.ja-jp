@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
 ms.openlocfilehash: 548bda36ed2b167c159d32a575b63ecbf10b16dd
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93397571"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Azure Application Gateway のセッション アフィニティに関する問題をトラブルシューティングする
@@ -52,7 +52,7 @@ Cookie ベースのセッション アフィニティの維持に関する問題
 
 
 
-次の方法のいずれかを使用して、「 **backendHttpSettingsCollection** 」の下で「 **CookieBasedAffinity** 」の値が *[有効]* に設定されているかどうかも調べられます。
+次の方法のいずれかを使用して、「**backendHttpSettingsCollection**」の下で「**CookieBasedAffinity**」の値が *[有効]* に設定されているかどうかも調べられます。
 
 - PowerShell で [Get-AzApplicationGatewayBackendHttpSetting](/powershell/module/az.network/get-azapplicationgatewaybackendhttpsetting) を実行する
 - Azure Resource Manager テンプレートを使用して、JSON ファイルを調べる
@@ -80,9 +80,9 @@ Cookie ベースのアフィニティ設定を有効にしており、Internet E
 この問題を特定するには、次の手順に従います。
 
 1. Application Gateway の背後にあるアプリケーション (この例では Fiddle を使用しています) に接続している「クライアント」で、Web デバッガー トレースを行います。
-    **ヒント** : Fiddler を使用する方法がわからない場合は、下部にある **[I want to collect network traffic and analyze it using web debugger]** (ネットワーク トラフィックを収集し、Web デバッガーを使用して分析する) オプションをオンにします。
+    **ヒント**: Fiddler を使用する方法がわからない場合は、下部にある **[I want to collect network traffic and analyze it using web debugger]** (ネットワーク トラフィックを収集し、Web デバッガーを使用して分析する) オプションをオンにします。
 
-2. セッション ログを調べて分析し、クライアントから提供された Cookie に ARRAffinity 詳細があるかどうかを判断します。 Cookie セット内に " **ARRAffinity=** *ARRAffinityValue* " などの ARRAffinity 詳細が見つからない場合、クライアントが、Application Gateway によって提供される ARRA Cookie で応答していないことを意味します。
+2. セッション ログを調べて分析し、クライアントから提供された Cookie に ARRAffinity 詳細があるかどうかを判断します。 Cookie セット内に "**ARRAffinity=** *ARRAffinityValue*" などの ARRAffinity 詳細が見つからない場合、クライアントが、Application Gateway によって提供される ARRA Cookie で応答していないことを意味します。
     次に例を示します。
 
     ![セッション ログのスクリーンショット。エンティティが 1 つ強調表示されています。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
@@ -131,7 +131,7 @@ Azure Portal を使用したログの有効化
 
    ![[監視] のスクリーンショット。[診断ログ] が選択されています。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-8.png)
 
-2. 右側で、 **[ログのカテゴリ]** の下のドロップダウン リストから「 **ApplicationGatewayAccessLog** 」を選択します。  
+2. 右側で、 **[ログのカテゴリ]** の下のドロップダウン リストから「**ApplicationGatewayAccessLog**」を選択します。  
 
    ![[ログのカテゴリ] のドロップダウン リストのスクリーンショット。ApplicationGatewayAccessLog が選択されています。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-9.png)
 
@@ -144,10 +144,10 @@ Azure Portal を使用したログの有効化
 - **ClientIP** – これは、接続しているクライアントからのクライアント IP アドレスです。
 - **ClientPort** – これは、接続しているクライアントからの、要求のソース ポートです。
 - **RequestQuery** – これは、要求が受信される宛先サーバーを示します。
-- **Server-Routed** :要求が送信されるバックエンド プールのインスタンス。
-- **X-AzureApplicationGateway-LOG-ID** :要求に使用する関連付け ID。 この ID を使用すると、バックエンド サーバー上のトラフィックの問題をトラブルシューティングできます。 次に例を示します。X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.0.2.4.
+- **Server-Routed**:要求が送信されるバックエンド プールのインスタンス。
+- **X-AzureApplicationGateway-LOG-ID**:要求に使用する関連付け ID。 この ID を使用すると、バックエンド サーバー上のトラフィックの問題をトラブルシューティングできます。 次に例を示します。X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.0.2.4.
 
-  - **SERVER-STATUS** :Application Gateway がバックエンドから受信した HTTP 応答コード。
+  - **SERVER-STATUS**:Application Gateway がバックエンドから受信した HTTP 応答コード。
 
   ![プレーンテキストのサーバー ステータスのスクリーンショット。ほぼぼかしが入っていますが clientPort と SERVER-ROUTED を確認できます。](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-11.png)
 
@@ -190,7 +190,7 @@ Fiddler などの Web デバッグ ツールは、インターネットとテス
 
     次に例を示します。
 
-- **例 A:** 要求がクライアントから送信され、Application Gateway のパブリック IP アドレスに到達したことを示すセッション ログを探し、このログをクリックして詳細を表示します。  右側の下部のボックスのデータは、Application Gateway がクライアントに返しているものです。 [RAW] タブを選択し、クライアントが " **Set-Cookie: ARRAffinity=** *ARRAffinityValue* " を受信しているかどうかを判断します。 Cookie がない場合は、セッション アフィニティが設定されていないか、Application Gateway が Cookie をクライアントに適用していません。
+- **例 A:** 要求がクライアントから送信され、Application Gateway のパブリック IP アドレスに到達したことを示すセッション ログを探し、このログをクリックして詳細を表示します。  右側の下部のボックスのデータは、Application Gateway がクライアントに返しているものです。 [RAW] タブを選択し、クライアントが "**Set-Cookie: ARRAffinity=** *ARRAffinityValue*" を受信しているかどうかを判断します。 Cookie がない場合は、セッション アフィニティが設定されていないか、Application Gateway が Cookie をクライアントに適用していません。
 
    > [!NOTE]
    > この ARRAffinity 値は cookie-id であり、Application Gateway がクライアントに対して特定のバックエンド サーバーに送信されるように設定する値です。

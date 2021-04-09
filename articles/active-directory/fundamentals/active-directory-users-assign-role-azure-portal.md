@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe0c7eec5c023fcba3152ad6329d318210a0c2ab
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92370935"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) で、Azure AD リソースを管理するた�
 
 3. **[ユーザー]** を選択します。
 
-4. ロールの割り当てを取得するユーザーを検索して選択します。 たとえば、 _Alain Charon_ を選びます。
+4. ロールの割り当てを取得するユーザーを検索して選択します。 たとえば、_Alain Charon_ を選びます。
 
       ![[すべてのユーザー] ページ - ユーザーの選択](media/active-directory-users-assign-role-azure-portal/directory-role-select-user.png)
 
@@ -65,7 +65,7 @@ Azure Active Directory (Azure AD) で、Azure AD リソースを管理するた�
 
 ### <a name="to-remove-a-role-assignment-from-a-user"></a>ユーザーからロールの割り当てを削除するには
 
-1. **[Azure Active Directory]** 、 **[ユーザー]** の順に選択し、ロールの割り当てを削除するユーザーを検索して選択します。 たとえば、 _Alain Charon_ を選びます。
+1. **[Azure Active Directory]** 、 **[ユーザー]** の順に選択し、ロールの割り当てを削除するユーザーを検索して選択します。 たとえば、_Alain Charon_ を選びます。
 
 2. **[Assigned roles]\(割り当てられているロール\)** を選択し、 **[アプリケーション管理者]** を選択して、 **[Remove assignment]\(割り当ての削除\)** を選択します。
 

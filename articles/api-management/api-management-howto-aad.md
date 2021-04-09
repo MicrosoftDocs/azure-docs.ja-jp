@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 2d3f382635e9a8b8a562f7a7f60f256d68b90b8f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91363207"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを承認する
@@ -34,7 +34,7 @@ ms.locfileid: "91363207"
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Azure AD を使用して開発者アカウントを承認する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 
-2. Select ![矢印アイコン。](./media/api-management-howto-aad/arrow.png)。
+2. Select ![矢印アイコン。](./media/api-management-howto-aad/arrow.png).
 3. 検索ボックスに、「**api**」と入力します。
 4. **[API Management サービス]** を選択します。
 5. お使いの API Management サービス インスタンスを選択します。

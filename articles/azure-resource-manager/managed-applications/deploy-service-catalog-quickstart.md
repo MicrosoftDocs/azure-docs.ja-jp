@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: ce58fc69496f54c078b0a0a55a8a3c7cad82a051
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81391708"
 ---
-# <a name="quickstart-deploy-service-catalog-app-through-azure-portal"></a>クイック スタート:Azure portal を使用してサービス カタログ アプリをデプロイする
+# <a name="quickstart-deploy-service-catalog-app-through-azure-portal"></a>クイック スタート: Azure portal を使用してサービス カタログ アプリをデプロイする
 
 [前のクイック スタート](publish-service-catalog-app.md)ではマネージド アプリケーションの定義を発行しました。 このクイック スタートでは、その定義からサービス カタログ アプリを作成します。
 
@@ -44,7 +44,7 @@ Azure portal で次の手順のようにします。
 
    ![ストレージの値を指定する](./media/deploy-service-catalog-quickstart/provide-storage.png)
 
-1. 概要を確認します。 検証が成功したら、 **[OK]** を選択してデプロイを開始します。
+1. 概要を確認します。 検証が成功したら、**[OK]** を選択してデプロイを開始します。
 
    ![概要を表示する](./media/deploy-service-catalog-quickstart/view-summary.png)
 
@@ -54,7 +54,7 @@ Azure portal で次の手順のようにします。
 
 1. **applicationGroup** という名前のリソース グループを表示して、サービス カタログ アプリを確認します。
 
-   ![アプリケーションを表示する](./media/deploy-service-catalog-quickstart/view-managed-application.png)
+   ![アプリケーションの表示](./media/deploy-service-catalog-quickstart/view-managed-application.png)
 
 1. **applicationGroup{ハッシュ文字}** という名前のリソース グループを表示して、サービス カタログ アプリ用のリソースを確認します。
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a17f52e519a84c58c9ed5b75259cc0b96d0a175
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88949176"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection 用語集
@@ -32,7 +32,7 @@ ms.locfileid: "88949176"
 ### <a name="conditional-access"></a>条件付きアクセス
 リソースへのアクセスを保護するためのポリシー。 条件付きアクセス規則は、Azure Active Directory に格納され、リソースへのアクセス権を付与する前に Azure AD によって評価されます。  規則の例には、ユーザーの場所、デバイスの正常性またはユーザーの認証方法に基づいたアクセス権の制限が含まれます。
 
-### <a name="credentials"></a>[資格情報]
+### <a name="credentials"></a>資格情報
 ID およびローカル リソースとネットワーク リソースへのアクセス権を取得するために使用する ID の証明を含む情報です。 資格情報には、ユーザー名とパスワード、スマート カードおよび証明書などがあります。
 
 ### <a name="event"></a>Event
@@ -140,7 +140,7 @@ Azure Active Directory で ID を認証するプロセスとアクション、�
 ### <a name="sign-in-risk"></a>サインイン リスク
 リスク レベル (サインイン) を参照してください
 
-### <a name="sign-in-risk-policy"></a>サインインのリスク ポリシー
+### <a name="sign-in-risk-policy"></a>サインイン リスク ポリシー
 事前定義された条件と規則に基づいて、特定のサインインのリスクを評価し、対応策に適用する条件付きアクセス ポリシー。
 
 ### <a name="user-compromise-risk"></a>ユーザーの侵害リスク
@@ -149,7 +149,7 @@ Azure Active Directory で ID を認証するプロセスとアクション、�
 ### <a name="user-risk"></a>ユーザー リスク
 リスク レベル (ユーザーの侵害) を参照してください。
 
-### <a name="user-risk-policy"></a>ユーザー リスクのポリシー
+### <a name="user-risk-policy"></a>ユーザー リスク ポリシー
 事前定義された条件と規則に基づいて、サインインを考慮し、対応策に適用する条件付きアクセス ポリシー。
 
 ### <a name="users-flagged-for-risk"></a>リスクのフラグ付きユーザー
@@ -158,6 +158,6 @@ Azure Active Directory で ID を認証するプロセスとアクション、�
 ### <a name="vulnerability"></a>脆弱性
 ディレクトリが悪用または脅威の影響を受けやすくする Azure Active Directory の構成または条件です。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [Azure Active Directory Identity Protection](./overview-identity-protection.md)

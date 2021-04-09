@@ -11,10 +11,10 @@ ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
 ms.openlocfilehash: ae3899a61e942695fed1e3da5fc543b298a42e24
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94695556"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>Azure Load Balancer での一般的な Azure デプロイ エラーのトラブルシューティング

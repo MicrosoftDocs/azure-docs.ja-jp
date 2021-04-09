@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2070cfd94b39a08afb86ffd3579f1116faac72d5
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98805284"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Azure Active Directory を使用して Event Hubs リソースにアクセスするためのマネージド ID を認証する
@@ -57,8 +57,8 @@ Event Hubs リソースにロールを割り当てるには、Azure portal で�
 1. Azure portal でご利用の Event Hubs 名前空間に移動し、その名前空間の **[概要]** を表示します。 
 1. 左側のメニューの **[アクセス制御 (IAM)]** を選択して、イベント ハブのアクセス制御設定を表示します。
 1.  **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。
-3.  **[追加]** を選択し、 **[ロールの割り当ての追加]** を選択します。
-4.  *[ロールの割り当ての追加]* ページで、次の手順に従います。
+3.  **[追加]** を選択し、**[ロールの割り当ての追加]*** を選択します。
+4.  **[ロールの割り当ての追加]** ページで、これらの手順に従います。
     1. **[ロール]** で、割り当てる Event Hubs ロールを選択します。 この例では、 **[Azure Event Hubs データ所有者]** です。
     1. **[アクセスの割り当て先]** フィールドで、 **[システム割り当てマネージド ID]** の **[App Service]** を選択します。 
     1. Web アプリのマネージド ID が作成された **サブスクリプション** を選択します。

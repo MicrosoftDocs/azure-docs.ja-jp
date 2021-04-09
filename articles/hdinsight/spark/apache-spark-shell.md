@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/10/2020
 ms.openlocfilehash: 324852a967b5de015a9b1e9b465d4b4703e573cb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98929686"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>Spark Shell から Apache Spark を実行する
@@ -84,7 +84,7 @@ ms.locfileid: "98929686"
     data.select("BuildingID", "Country").show(10)
     ```
 
-1. Exit
+1. 終了
 
     ```spark-shell
     :q
@@ -104,7 +104,7 @@ SparkSession インスタンスにアクセスするには、「`spark`」と入
 
 Spark シェル コマンド (`spark-shell` または `pyspark`) は、数多くのコマンドライン パラメーターに対応しています。 パラメーターの完全な一覧を表示するには、スイッチ `--help` を使用して Spark シェルを起動します。 これらのパラメーターの一部は `spark-submit` のみに適用される場合があります (これは、Spark シェルによってラップされます)。
 
-| スイッチ | description | 例 |
+| switch | description | 例 |
 | --- | --- | --- |
 | --master MASTER_URL | マスター URL を指定します。 HDInsight では、この値は常に `yarn` です。 | `--master yarn`|
 | --jars JAR_LIST | ドライバーと Executor のクラスパスに含めるローカル jar のコンマ区切りリスト。 HDInsight では、この一覧は Azure Storage または Data Lake Storage の既定のファイルシステムへのパスで構成されます。 | `--jars /path/to/examples.jar` |

@@ -6,10 +6,10 @@ ms.author: chmant
 ms.date: 03/23/2020
 ms.topic: how-to
 ms.openlocfilehash: bd69710b6e4404a76d3cca385b6c07ea7c1f3f5c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "92201819"
 ---
 # <a name="use-holographic-remoting-and-remote-rendering-in-unity"></a>Unity で Holographic Remoting と Remote Rendering を使用する

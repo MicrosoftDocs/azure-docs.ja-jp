@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2020
 ms.author: duau
 ms.openlocfilehash: 4846438f8479fe622570aa515a4d8b40cccc57b8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91252308"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>クイック スタート:グローバル Web アプリケーションの高可用性を実現するフロント ドアを作成する
@@ -48,7 +48,7 @@ Azure portal で Azure Front Door を使用して Web アプリケーション�
     | ---                     | ---                                                |
     | **サブスクリプション**               | サブスクリプションを選択します。 |    
     | **リソース グループ**       | **[新規作成]** を選択し、テキスト ボックスに 「*FrontDoorQS_rg1*」 と入力します。|
-    | **名前**                   | Web アプリの一意の**名前**を入力します。 この例では *WebAppContoso-1* を使用します。 |
+    | **名前**                   | Web アプリの一意の **名前** を入力します。 この例では *WebAppContoso-1* を使用します。 |
     | **発行** | **[コード]** を選択します。 |
     | **ランタイム スタック**         | **[.NET Core 2.1 (LTS)]** を選択します。 |
     | **オペレーティング システム**          | **[Windows]** を選択します。 |
@@ -58,7 +58,7 @@ Azure portal で Azure Front Door を使用して Web アプリケーション�
 
 1. **[確認および作成]** を選択し、 **[概要]** を確認して、 **[作成]** を選択します。 デプロイが完了するまでに数分かかる場合があります。
 
-    :::image type="content" source="media/quickstart-create-front-door/create-web-app.png" alt-text="Azure portal で Web アプリを作成する":::
+    :::image type="content" source="media/quickstart-create-front-door/create-web-app.png" alt-text="Web アプリの概要を確認する":::
 
 デプロイが完了したら、もう 1 つ Web アプリを作成します。 次の値を除き、同じ手順と値を使用します。
 
@@ -87,7 +87,7 @@ Azure portal で Azure Front Door を使用して Web アプリケーション�
 
 1. グローバルに一意のホスト名を **[ホスト名]** に入力します。 この例では、*contoso-frontend* を使用します。 **[追加]** を選択します。
 
-    :::image type="content" source="media/quickstart-create-front-door/add-frontend-host-azure-front-door.png" alt-text="Azure portal で Web アプリを作成する":::
+    :::image type="content" source="media/quickstart-create-front-door/add-frontend-host-azure-front-door.png" alt-text="Azure Front Door のフロントエンド ホストを追加する":::
 
 次に、2 つの Web アプリを含んだバックエンド プールを作成します。
 
@@ -95,13 +95,33 @@ Azure portal で Azure Front Door を使用して Web アプリケーション�
 
 1. **[名前]** として「*myBackendPool*」を入力してから、 **[バックエンドの追加]** を選択します。
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool.png" alt-text="Azure portal で Web アプリを作成する"
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool.png" alt-text="バックエンド プールを追加する":::
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-backend.png" alt-text="Azure portal で Web アプリを作成する"
+1. **[バックエンドの追加]** ブレードで、次の情報を選択し、 **[追加]** を選択します。
+
+    | 設定 | 値 |
+    | --- | --- |
+    | **バックエンド ホストの種類** | **[App Service]** を選択します。 |   
+    | **サブスクリプション** | サブスクリプションを選択します。 |    
+    | **バックエンド ホスト名** | 最初に作成した Web アプリを選択します。 この例では、*WebAppContoso-1* という Web アプリが該当します。 |
+
+    "**他のフィールドはすべて既定値のままにします。* "
+
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-backend.png" alt-text="ご利用のフロント ドアにバックエンド ホストを追加する":::
+
+1. もう一度 **[バックエンドの追加]** を選択します。 次の情報を選択し、 **[追加]** を選択します。
+
+    | 設定 | 値 |
+    | --- | --- |
+    | **バックエンド ホストの種類** | **[App Service]** を選択します。 |   
+    | **サブスクリプション** | サブスクリプションを選択します。 |    
+    | **バックエンド ホスト名** | 作成した 2 つ目の Web アプリを選択します。 この例では、*WebAppContoso-2* という Web アプリが該当します。 |
+
+    "**他のフィールドはすべて既定値のままにします。* "
 
 1. **[バックエンド プールの追加]** ブレードで **[追加]** を選択して、バックエンド プールの構成を完了します。
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool-complete.png" alt-text="Azure portal で Web アプリを作成する":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool-complete.png" alt-text="Azure Front Door 用のバックエンド プールを追加する":::
 
 最後に、ルーティング規則を追加します。 フロントエンド ホストは、ルーティング規則によってバックエンド プールにマップされます。 この規則によって、`contoso-frontend.azurefd.net` への要求が **myBackendPool** に転送されます。
 
@@ -109,14 +129,14 @@ Azure portal で Azure Front Door を使用して Web アプリケーション�
 
 1. **[規則を追加する]** の **[名前]** に「*LocationRule*」と入力します。 すべて既定値のままにし、 **[追加]** を選択してルーティング規則を追加します。
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-rule.png" alt-text="Azure portal で Web アプリを作成する":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-rule.png" alt-text="フロント ドアにルールを追加する":::
 
    >[!WARNING]
-   > Front Door 内の各フロントエンド ホストに、既定のパス (`\*`) が関連付けられたルーティング規則があることを確認する**必要があります**。 つまり、すべてのルーティング規則について、既定のパス (`\*`) で定義された各フロントエンド ホストに対するルーティング規則が少なくとも 1 つは存在する必要があります。 そうなっていないと、エンド ユーザーのトラフィックが正しくルーティングされない可能性があります。
+   > Front Door 内の各フロントエンド ホストに、既定のパス (`\*`) が関連付けられたルーティング規則があることを確認する **必要があります**。 つまり、すべてのルーティング規則について、既定のパス (`\*`) で定義された各フロントエンド ホストに対するルーティング規則が少なくとも 1 つは存在する必要があります。 そうなっていないと、エンド ユーザーのトラフィックが正しくルーティングされない可能性があります。
 
 1. **[確認および作成]** 、 **[作成]** の順に選択します。
 
-    :::image type="content" source="media/quickstart-create-front-door/configuration-azure-front-door.png" alt-text="Azure portal で Web アプリを作成する":::
+    :::image type="content" source="media/quickstart-create-front-door/configuration-azure-front-door.png" alt-text="構成された Azure Front Door":::
 
 ## <a name="view-azure-front-door-in-action"></a>Azure Front Door の動作を確認する
 
@@ -141,7 +161,7 @@ Azure portal で Azure Front Door を使用して Web アプリケーション�
 
 1. ブラウザーを更新します。 今回はエラー メッセージが表示されます。
 
-   :::image type="content" source="media/quickstart-create-front-door/web-app-stopped-message.png" alt-text="Azure portal で Web アプリを作成する":::
+   :::image type="content" source="media/quickstart-create-front-door/web-app-stopped-message.png" alt-text="Web アプリの両方のインスタンスが停止":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

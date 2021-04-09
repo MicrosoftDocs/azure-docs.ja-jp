@@ -10,10 +10,10 @@ ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
 ms.openlocfilehash: 9c0040c0ad34b019eaa90bbd1571377ad3539578
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98940121"
 ---
 # <a name="content-protection-scenario-based-migration-guidance"></a>コンテンツ保護のシナリオベースの移行ガイダンス
@@ -57,7 +57,7 @@ ms.locfileid: "98940121"
 
 ## <a name="samples"></a>サンプル
 
-[コード サンプルで V2 と V3 のコードを比較する](migrate-v-2-v-3-migration-samples.md)こともできます。
+[V2 と V3 のコードをコード サンプルで比較する](migrate-v-2-v-3-migration-samples.md)こともできます。
 
 ## <a name="next-steps"></a>次のステップ
 

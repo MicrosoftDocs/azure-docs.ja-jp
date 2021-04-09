@@ -5,10 +5,10 @@ ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: brendal
 ms.openlocfilehash: fbd6be3907dbd10b003d065dfb14031a0e378478
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87003151"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Azure Blockchain Workbench とは

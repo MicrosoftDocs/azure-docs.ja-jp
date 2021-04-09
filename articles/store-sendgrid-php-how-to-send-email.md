@@ -16,10 +16,10 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96023790"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>PHP から SendGrid 電子メール サービスを使用する方法
@@ -37,7 +37,7 @@ SendGrid は、信頼性の高い[トランザクション メール配信]、�
 * 顧客の問い合わせを転送する
 * アプリケーションからの電子メール通知
 
-詳細については、[https://sendgrid.com][https://sendgrid.com] を参照してください。
+詳細については、「[https://sendgrid.com][https://sendgrid.com]」を参照してください。
 
 ## <a name="create-a-sendgrid-account"></a>SendGrid アカウントの作成
 
@@ -47,7 +47,7 @@ SendGrid は、信頼性の高い[トランザクション メール配信]、�
 
 Azure PHP アプリケーションで SendGrid を使用するために、特別な構成やコーディングは不要です。 SendGrid はサービスであるため、オンプレミスのアプリケーションからとまったく同じ方法で、クラウド アプリケーションからアクセスできます。
 
-## <a name="how-to-send-an-email"></a>方法:電子メールを送信する
+## <a name="how-to-send-an-email"></a>方法: 電子メールを送信する
 
 SMTP、または SendGrid の Web API を使用して電子メールを送信できます。
 
@@ -162,7 +162,7 @@ PHP の [curl 関数][curl function] で SendGrid Web API を使用して電子�
 
 SendGrid の Web API は REST API とほとんど同じですが、実際は REST ベースの API ではありません。ほとんどの呼び出しで GET と POST の両方の動詞を区別しないで使用できるためです。
 
-## <a name="how-to-add-an-attachment"></a>方法:添付ファイルを追加する
+## <a name="how-to-add-an-attachment"></a>方法: 添付ファイルを追加する
 
 ### <a name="smtp-api"></a>SMTP API
 
@@ -297,7 +297,7 @@ Web API を使用した添付ファイルの送信は、Web API を使用した�
  print_r($response);
 ```
 
-## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>方法:フィルターを使用してフッター、追跡、および分析を有効にする
+## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>方法: フィルターを使用してフッター、追跡、および分析を有効にする
 
 SendGrid では、 *フィルター* を使用することでその他の電子メール機能も利用することができます。 その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの独自の機能を有効にすることができます。
 

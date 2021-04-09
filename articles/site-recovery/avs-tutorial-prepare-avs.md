@@ -9,10 +9,10 @@ ms.date: 09/29/2020
 ms.author: harshacs
 ms.custom: MVC
 ms.openlocfilehash: 8e77ede7b04c95bfd6b6b8f660c8d811e7434c0f
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93395446"
 ---
 # <a name="prepare-azure-vmware-solution-for-disaster-recovery-to-azure-site-recovery"></a>Azure Site Recovery へのディザスター リカバリーのために Azure VMware Solution を準備する

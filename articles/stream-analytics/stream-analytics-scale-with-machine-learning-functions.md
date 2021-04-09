@@ -5,13 +5,13 @@ author: jseb225
 ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/16/2020
-ms.openlocfilehash: b9768bacf8d29b37f479ea080afddd494b506262
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.date: 01/15/2021
+ms.openlocfilehash: 1ee1411aba7724d76ed8626de9b8b038d02339dc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013942"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103574256"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Azure Machine Learning Studio (クラシック) 関数を使用した Stream Analytics ジョブのスケーリング
 
@@ -24,7 +24,7 @@ ms.locfileid: "98013942"
 
 Stream Analytics での Machine Learning Studio (クラシック) 関数は、Stream Analytics クエリ言語の通常の関数呼び出しのように使用できます。 ただし、この関数呼び出しは、バックグラウンドでは実際には Studio (クラシック) Web サービス要求です。
 
-複数の行を同じ Web サービス API 呼び出しで一度に "バッチ処理" することで、Studio (クラシック) Web サービス要求のスループットを上げることができます。 このグループ化は、ミニバッチと呼ばれます。 詳しくは、[Azure Machine Learning Studio (クラシック) Web サービス](../machine-learning/classic/consume-web-services.md)に関する記事をご覧ください。 Stream Analytics での Studio (クラシック) のサポートはプレビュー段階です。
+複数の行を同じ Web サービス API 呼び出しで一度に "バッチ処理" することで、Studio (クラシック) Web サービス要求のスループットを上げることができます。 このグループ化は、ミニバッチと呼ばれます。 詳しくは、[Azure Machine Learning Studio (クラシック) Web サービス](../machine-learning/classic/consume-web-services.md)に関する記事をご覧ください。 スタジオ (クラシック) は Stream Analytics でサポートされています。
 
 ## <a name="configure-a-stream-analytics-job-with-studio-classic-functions"></a>Studio (クラシック) 関数を使用した Stream Analytics ジョブの構成
 
@@ -51,7 +51,7 @@ Stream Analytics ジョブの待機時間の "*許容範囲*" を決定します
 
 ![Studio (クラシック) 関数を使用した Stream Analytics のスケーリング - 2 つのジョブの例](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "Studio (クラシック) 関数を使用した Stream Analytics のスケーリング - 2 つのジョブの例")
 
-一般的に、バッチ サイズが **_B_* _ で、バッチ サイズ B での Web サービスの待機時間が _*_L_*_ (ミリ秒単位) の場合、_*_N_*_ SU での Stream Analytics ジョブのスループットは次のようになります。
+一般的に、バッチ サイズが ***B** _ で、バッチ サイズ B での Web サービスの待機時間が _*_L_*_ (ミリ秒単位) の場合、_ *_N_** SU での Stream Analytics ジョブのスループットは次のようになります。
 
 ![Studio (クラシック) 関数を使用した Stream Analytics のスケーリング - 数式](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Studio (クラシック) 関数を使用した Stream Analytics のスケーリング - 数式")
 
@@ -62,7 +62,7 @@ Studio (クラシック) Web サービスで、"最大同時呼び出し数" を
 ## <a name="example--sentiment-analysis"></a>例 – センチメント分析
 次の例には、センチメント分析 Studio (クラシック) 関数を使用した Stream Analytics ジョブが含まれています。これについては、[Stream Analytics と Machine Learning Studio (クラシック) の統合に関するチュートリアル](stream-analytics-machine-learning-integration-tutorial.md)で説明されています。
 
-次の例に示すように、クエリは完全にパーティション分割されたシンプルなクエリで、その後に _ *sentiment** 関数が続いています。
+次の例に示すように、クエリは完全にパーティション分割されたシンプルなクエリで、その後に **sentiment** 関数が続いています。
 
 ```SQL
     WITH subquery AS (
@@ -111,7 +111,7 @@ Studio (クラシック) Web サービスで、"最大同時呼び出し数" を
 | **12 SU** |5,000 |10,000 |40,000 |60,000 |100,000 |
 | **18 SU** |7,500 |15,000 |60,000 |90,000 |150,000 |
 | **24 SU** |10,000 |20,000 |80,000 |120,000 |200,000 |
-| **…** |... |... |... |... |... |
+| **…** |… |… |… |… |… |
 | **60 SU** |25,000 |50,000 |200,000 |300,000 |500,000 |
 
 ここまでの説明で、Stream Analytics での Studio (クラシック) 関数のしくみを十分に理解できたと思います。 また、Stream Analytics ジョブがデータ ソースからデータを "プル" し、各 "プル" が Stream Analytics ジョブで処理されるイベントのバッチを返すことも理解されていることでしょう。 このプル モデルは Studio (クラシック) Web サービス要求にどのような影響を与えるのでしょうか。

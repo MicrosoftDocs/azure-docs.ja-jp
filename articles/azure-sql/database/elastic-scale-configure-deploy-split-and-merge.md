@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 71aad7699c5af6ce2a1b9d82a340138200cfb5e1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92792074"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>split-merge サービスをデプロイして、シャード化されたデータベース間でデータを移動する
@@ -35,7 +35,7 @@ split-merge ツールを使用すると、シャード化されたデータベ�
    nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge
    ```  
 
-ファイルは、 **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** という名前のディレクトリに配置されます。 *x.x.xxx.x* はバージョン番号です。 **content\splitmerge\service** サブディレクトリに Split-Merge サービス ファイル、 **content\splitmerge\powershell** サブディレクトリに Split-Merge PowerShell スクリプト (および必要なクライアント DLL) が格納されています。
+ファイルは、**Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** という名前のディレクトリに配置されます。*x.x.xxx.x* はバージョン番号です。 **content\splitmerge\service** サブディレクトリに Split-Merge サービス ファイル、**content\splitmerge\powershell** サブディレクトリに Split-Merge PowerShell スクリプト (および必要なクライアント DLL) が格納されています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,7 +51,7 @@ split-merge ツールを使用すると、シャード化されたデータベ�
 
 ### <a name="split-merge-service-configuration"></a>Split-Merge サービスの構成
 
-1. Split-Merge アセンブリをダウンロードしたフォルダーで、 *SplitMergeService.cspkg* に付属の *ServiceConfiguration.Template.cscfg* ファイルのコピーを作成し、 *ServiceConfiguration.cscfg* という名前に変更します。
+1. Split-Merge アセンブリをダウンロードしたフォルダーで、*SplitMergeService.cspkg* に付属の *ServiceConfiguration.Template.cscfg* ファイルのコピーを作成し、*ServiceConfiguration.cscfg* という名前に変更します。
 
 1. 証明書の拇印の形式などの入力値を検証する Visual Studio などのテキスト エディターで、 *ServiceConfiguration.cscfg* を開きます。
 
@@ -66,7 +66,7 @@ split-merge ツールを使用すると、シャード化されたデータベ�
 
 1. ElasticScaleMetadata 設定の **SplitMergeWeb** ロールと **SplitMergeWorker** ロールの両方のセクションに *.cscfg* ファイルの接続文字列を入力します。
 
-1. **SplitMergeWorker** ロールの場合は、 **WorkerRoleSynchronizationStorageAccountConnectionString** 設定として Azure Storage への有効な接続文字列を入力します。
+1. **SplitMergeWorker** ロールの場合は、**WorkerRoleSynchronizationStorageAccountConnectionString** 設定として Azure Storage への有効な接続文字列を入力します。
 
 ### <a name="configure-security"></a>セキュリティを構成する
 
@@ -145,7 +145,7 @@ Web ロール:
 2. 前に作成したクラウド サービスを選択します。
 3. **[Overview]** をクリックします。
 4. ステージング環境を選択し、 **[アップロード]** をクリックします。
-5. ダイアログ ボックスにデプロイ ラベルを入力します。 [パッケージ] と [構成] の両方で [ローカルから] をクリックし、 *SplitMergeService.cspkg* ファイルと、先ほど構成した cscfg ファイルを選択します。
+5. ダイアログ ボックスにデプロイ ラベルを入力します。 [パッケージ] と [構成] の両方で [ローカルから] をクリックし、*SplitMergeService.cspkg* ファイルと、先ほど構成した cscfg ファイルを選択します。
 6. **[1 つ以上のロールに単一のインスタンスが含まれている場合でもデプロイします。]** チェック ボックスがオンになっていることを確認します。
 7. 右下のチェック マークをクリックしてデプロイを開始します。 完了には数分かかります。
 
@@ -168,7 +168,7 @@ worker ロールのオンライン化に失敗した場合に最も考えられ�
 
 ### <a name="connect-with-a-web-browser"></a>Web ブラウザーへの接続
 
-Split-Merge サービスの Web エンドポイントを決定します。 これをポータルで見つけるには、クラウド サービスの **[概要]** に移動し、右側の **[サイトの URL]** を検索します。 既定のセキュリティ設定では HTTP エンドポイントは無効であるため、 **http://** を **https://** に置き換えます。 この URL のページをブラウザーに読み込みます。
+Split-Merge サービスの Web エンドポイントを決定します。 これをポータルで見つけるには、クラウド サービスの **[概要]** に移動し、右側の **[サイトの URL]** を検索します。 既定のセキュリティ設定では HTTP エンドポイントは無効であるため、**http://** を **https://** に置き換えます。 この URL のページをブラウザーに読み込みます。
 
 ### <a name="test-with-powershell-scripts"></a>PowerShell スクリプトでのテスト
 
@@ -324,7 +324,7 @@ Split-Merge サービスの Web エンドポイントを決定します。 こ�
 1. シャード テーブルごとに、テーブルの親のスキーマ名 (オプション、既定値は "dbo")、テーブル名、およびシャード キーが含まれているテーブル内の列名を記述する **ShardedTableInfo** オブジェクトを作成します。
 2. 参照テーブルごとに、テーブルの親のスキーマ名 (オプション、既定値は "dbo") とテーブル名を記述する **ReferenceTableInfo** オブジェクトを作成します。
 3. 新しい **SchemaInfo** オブジェクトに、前の TableInfo オブジェクトを追加します。
-4. **ShardMapManager** オブジェクトへの参照を取得し、 **GetSchemaInfoCollection** を呼び出します。
+4. **ShardMapManager** オブジェクトへの参照を取得し、**GetSchemaInfoCollection** を呼び出します。
 5. **SchemaInfoCollection** に **SchemaInfo** を追加し、シャード マップ名を入力します。
 
 この例は、SetupSampleSplitMergeEnvironment.ps1 スクリプトで確認できます。

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: f332416a10aa86cb7e0bc7ba560537955d9f2faa
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 0dd250f0a8f67d7e370b8ff453e9cff4d88b7896
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98930556"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866099"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Azure HDInsight で実行される Apache Spark ジョブのデバッグ
 
@@ -28,20 +28,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. YARN UI を起動します。 **[クラスター ダッシュボード]** で **[Yarn]** を選択します。
 
-    ![Azure portal での YARN UI の起動](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/launch-apache-yarn-ui.png" alt-text="Azure portal での YARN UI の起動" border="true":::
 
    > [!TIP]  
    > Ambari UI から YARN UI を起動してもかまいません。 Ambari UI を起動するには、 **[クラスター ダッシュボード]** で **[Ambari ホーム]** を選択します。 Ambari UI で、 **[YARN]**  >  **[クイック リンク]** > アクティブな Resource Manager > **[Resource Manager UI]** に移動します。
 
 2. Jupyter Notebook を使用して Spark ジョブを開始したため、アプリケーションの名前は **remotesparkmagics** (ノートブックから開始されたすべてのアプリケーション用の名前) になっています。 ジョブに関する詳しい情報を確認するには、アプリケーション名に対応するアプリケーション ID を選択します。 この操作により、アプリケーション ビューが起動されます。
 
-    ![Spark History Server での Spark アプリケーション ID の検索](./media/apache-spark-job-debugging/find-application-id1.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/find-application-id1.png" alt-text="Spark History Server での Spark アプリケーション ID の検索" border="true":::
 
     Jupyter Notebook から起動されたアプリケーションの場合、ノートブックを終了するまでステータスは常に **[実行中]** になります。
 
 3. アプリケーション ビューからドリルダウンして、アプリケーションやログ (stdout/stderr) に関連付けられているコンテナーを探すことができます。 次のように、 **[追跡 URL]** に対応するリンクをクリックして Spark UI を起動することもできます。
 
-    ![Spark History Server でのコンテナー ログのダウンロード](./media/apache-spark-job-debugging/download-container-logs.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/download-container-logs.png" alt-text="Spark History Server でのコンテナー ログのダウンロード" border="true":::
 
 ## <a name="track-an-application-in-the-spark-ui"></a>Spark UI でのアプリケーションの追跡
 
@@ -49,29 +49,29 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Spark UI を起動するには、アプリケーション ビューから **[追跡 URL]** に対応するリンクを選択します (上のスクリーン ショットを参照)。 Jupyter Notebook で実行中のアプリケーションによって開始されたすべての Spark ジョブを表示できます。
 
-    ![Spark History Server の [Jobs]\(ジョブ\) タブ](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/view-apache-spark-jobs.png" alt-text="Spark History Server の [Jobs]\(ジョブ\) タブ" border="true":::
 
 2. **[Executors]** タブを選択すると、実行プログラムごとの処理やストレージの情報が表示されます。 **[Thread Dump]\(スレッド ダンプ\)** リンクを選択して、呼び出し履歴を取得することもできます。
 
-    ![Spark History Server の [Executors] タブ](./media/apache-spark-job-debugging/view-spark-executors.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/view-spark-executors.png" alt-text="Spark History Server の [Executors] タブ" border="true":::
 
 3. アプリケーションに関連するステージを確認するには、 **[Stages]\(ステージ\)** タブを選択します。
 
-    ![Spark History Server の [Stages]\(ステージ\) タブ](./media/apache-spark-job-debugging/view-apache-spark-stages.png "View Spark stages")
+    :::image type="content" source="./media/apache-spark-job-debugging/view-apache-spark-stages.png " alt-text="Spark History Server の [Stages]\(ステージ\) タブ" border="true":::
 
     1 つのステージに複数のタスクが存在する場合もあり、対応する実行の統計を表示することができます (下図参照)。
 
-    ![Spark History Server の [Stages]\(ステージ\) タブの詳細](./media/apache-spark-job-debugging/view-spark-stages-details.png "Spark ステージの詳細を表示する")
+    :::image type="content" source="./media/apache-spark-job-debugging/view-spark-stages-details.png " alt-text="Spark History Server の [Stages]\(ステージ\) タブの詳細" border="true":::
 
 4. ステージの詳細ページから DAG Visualization を起動できます。 以下に示したように、ページの上部にある **[DAG Visualization]** リンクを展開してください。
 
-    ![View Spark stages DAG visualization](./media/apache-spark-job-debugging/view-spark-stages-dag-visualization.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/view-spark-stages-dag-visualization.png" alt-text="View Spark stages DAG visualization" border="true":::
 
     DAG (Direct Aclyic Graph) は、アプリケーション内の各種ステージを表します。 グラフ内の青色のボックスはそれぞれ、アプリケーションから呼び出された Spark 操作を表します。
 
 5. ステージの詳細ページから、アプリケーションのタイムライン ビューを起動することもできます。 以下に示したように、ページの上部にある **[Event Timeline (イベントのタイムライン)]** リンクを展開してください。
 
-    ![View Spark stages event timeline](./media/apache-spark-job-debugging/view-spark-stages-event-timeline.png)
+    :::image type="content" source="./media/apache-spark-job-debugging/view-spark-stages-event-timeline.png" alt-text="View Spark stages event timeline" border="true":::
 
     この画像には、Spark イベントがタイムラインの形式で表示されています。 タイムライン ビューには 3 種類の表示があります (ジョブ間、ジョブ内、ステージ内)。 上の画像は、特定のステージのタイムライン ビューをキャプチャしたものです。
 
@@ -92,14 +92,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Spark History Server を起動するには、 **[概要]** ページの **[クラスター ダッシュボード]** で **[Spark History Server]** を選択します。
 
-    ![Azure portal で Spark History Server を起動する](./media/apache-spark-job-debugging/launch-spark-history-server.png "Spark History Server1 を起動する")
+    :::image type="content" source="./media/apache-spark-job-debugging/launch-spark-history-server.png " alt-text="Azure portal で Spark History Server を起動する" border="true":::
 
    > [!TIP]  
    > Ambari UI から Spark History Server の UI を起動してもかまいません。 Ambari UI を起動するには、[概要] ブレードの **[クラスター ダッシュボード]** で **[Ambari ホーム]** を選択します。 Ambari UI で、 **[Spark2]**  >  **[クイック リンク]**  >  **[Spark2 History Server UI]\(Spark2 History Server の UI\)** に移動します。
 
 2. 完了済みのすべてのアプリケーションが一覧表示されます。 アプリケーションをドリルダウンして、より詳しい情報を入手するには、アプリケーション ID を選択します。
 
-    ![Spark History Server の完了済みアプリケーション](./media/apache-spark-job-debugging/view-completed-applications.png "Spark History Server2 を起動する")
+    :::image type="content" source="./media/apache-spark-job-debugging/view-completed-applications.png " alt-text="Spark History Server の完了済みアプリケーション" border="true":::
 
 ## <a name="see-also"></a>関連項目
 

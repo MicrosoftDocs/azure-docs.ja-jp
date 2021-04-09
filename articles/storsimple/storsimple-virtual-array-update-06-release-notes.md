@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/24/2017
 ms.author: alkohli
 ms.openlocfilehash: 24bddb47a32a7b8ad4ea659d52c2d5b2730be9ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96000914"
 ---
 # <a name="storsimple-virtual-array-update-06-release-notes"></a>StorSimple Virtual Array Update 0.6 のリリース ノート
@@ -52,17 +52,17 @@ Update 0.6 は重要な更新プログラムであるため、すぐにデプロ
 
 次の表に、このリリースで修正された問題の概要を示します。
 
-| いいえ。 | 機能 | 問題 |
+| いいえ。 | 特徴量 | 問題 |
 | --- | --- | --- |
-| 1 |Security| このリリースには、重要なWindows セキュリティ更新プログラムが含まれています。 この更新プログラムをすぐにインストールすることをお勧めします。|
-| 2 |[復元]| 復元中に、復元ジョブを完了できない競合状態が発生しました。 このバグ修正では、この競合状態に対処します。|
+| 1 |セキュリティ| このリリースには、重要なWindows セキュリティ更新プログラムが含まれています。 この更新プログラムをすぐにインストールすることをお勧めします。|
+| 2 |復元| 復元中に、復元ジョブを完了できない競合状態が発生しました。 このバグ修正では、この競合状態に対処します。|
 
 
 ## <a name="known-issues-in-the-update-06"></a>Update 0.6 の既知の問題
 
 次の表では、StorSimple Virtual Array の既知の問題の概要と、以前のリリースのリリース ノートに記載されていた問題を説明します。
 
-| いいえ。 | 機能 | 問題 | 対応策/コメント |
+| いいえ。 | 特徴量 | 問題 | 対応策/コメント |
 | --- | --- | --- | --- |
 | **1.** |更新プログラム |プレビュー リリースで作成された仮想デバイスは、サポートされている一般提供版に更新することはできません。 |これらの仮想デバイスは、障害復旧 (DR) ワークフローを使用して一般提供リリースにフェールオーバーする必要があります。 |
 | **2.** |プロビジョニング済みのデータ ディスク |特定の指定されたサイズのデータ ディスクをプロビジョニングし、対応する StorSimple 仮想デバイスを作成した後は、データ ディスクを拡張または縮小することはできません。 これを行おうとすると、デバイスのローカル層のすべてのデータが失われます。 | |
@@ -85,7 +85,7 @@ Update 0.6 は重要な更新プログラムであるため、すぐにデプロ
 ## <a name="next-step"></a>次のステップ
 StorSimple Virtual Array に [Update 0.6 をインストール](storsimple-virtual-array-install-update-06.md)します。
 
-## <a name="references"></a>References
+## <a name="references"></a>リファレンス
 以前のリリース ノートをお探しですか。 参照先:
 
 * [StorSimple Virtual Array Update 0.5 のリリース ノート](storsimple-virtual-array-update-05-release-notes.md)

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.custom: seodec18, mvc, devx-track-js
 ms.openlocfilehash: 1eca34fb5da50b15f15322a3b534556bcd3bda09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91303116"
 ---
 # <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>チュートリアル:Azure Container Instances へのデプロイに使用するコンテナー イメージを作成する
@@ -40,7 +40,7 @@ Azure Container Instances では、仮想マシンをプロビジョニングし
 git clone https://github.com/Azure-Samples/aci-helloworld.git
 ```
 
-GitHub から直接 [ZIP アーカイブをダウンロード][aci-helloworld-zip]することもできます。
+GitHub から直接 [ZIP アーカイブ][aci-helloworld-zip]をダウンロードすることもできます。
 
 ## <a name="build-the-container-image"></a>コンテナー イメージを構築する
 

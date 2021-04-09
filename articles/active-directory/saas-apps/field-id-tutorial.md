@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 55a66f3f287ffb50d932263e407772efffa839ba
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92453537"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-field-id"></a>チュートリアル:Azure Active Directory と Field iD のシングル サインオン (SSO) 統合
@@ -50,7 +50,7 @@ Field iD を Azure AD に統合するには、マネージド SaaS アプリの�
 1. 左側のナビゲーション ウィンドウで **[Azure Active Directory]** を選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Field iD** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Field iD**」と入力します。
 1. [結果] パネルから **[Field iD]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-field-id"></a>Field iD の Azure AD シングル サインオンの構成とテスト
@@ -121,7 +121,7 @@ Field iD に対する Azure AD SSO を構成してテストするには、次の
 
 ## <a name="configure-field-id-sso"></a>Field iD SSO の構成
 
-Field iD 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Field iD サポート チーム](mailto:support@ecompliance.com)に送信してください。 サポート チームにより、SAML シングル サインオン接続が両方の側で確実に正しく設定されます。
+Field iD 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Field iD サポート チーム](mailto:support@ecompliance.com)に送信してください。 サポート チームにより、SAML シングル サインオン接続が両方の側で確実に正しく設定されます。
 
 ### <a name="create-a-field-id-test-user"></a>Field iD のテスト ユーザーの作成
 

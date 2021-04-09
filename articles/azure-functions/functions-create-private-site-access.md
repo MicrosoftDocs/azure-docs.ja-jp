@@ -7,10 +7,10 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.openlocfilehash: 766ad12daeb6d2763f7ed5fe026cd4a0021eaf33
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97937044"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>チュートリアル:Azure Functions のプライベート サイト アクセスを設定する
@@ -139,7 +139,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     | 設定      | 推奨値  | 説明      |
     | ------------ | ---------------- | ---------------- |
     | _リソース グループ_ | myResourceGroup | このチュートリアルのすべてのリソースを含めるためのリソース グループを選択します。  Function App と VM に同じリソース グループを使用すれば、このチュートリアルの完了時にリソースを簡単にクリーンアップできます。 |
-    | _Function App 名_ | グローバルに一意の名前 | 新しい Function App を識別する名前。 有効な文字は、a から z (大文字と小文字は区別されない)、0 から 9、および - です。 |
+    | _関数アプリ名_ | グローバルに一意の名前 | 新しい Function App を識別する名前。 有効な文字は、a から z (大文字と小文字は区別されない)、0 から 9、および - です。 |
     | _発行_ | コード | コード ファイルまたは Docker コンテナーの発行オプション。 |
     | _ランタイム スタック_ | 優先言語 | お気に入りの関数プログラミング言語をサポートするランタイムを選択します。 |
     | _リージョン_ | 米国中北部 | ユーザーに近い[リージョン](https://azure.microsoft.com/regions/)、または関数がアクセスする他のサービスの近くのリージョンを選択します。 |

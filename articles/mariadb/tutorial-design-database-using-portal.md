@@ -1,20 +1,20 @@
 ---
-title: チュートリアル:Azure Database for MariaDB を設計する - Azure portal
+title: 'チュートリアル: Azure Database for MariaDB を設計する - Azure portal'
 description: このチュートリアルでは、Azure portal を使用して、Azure Database for MariaDB サーバーとデータベースを作成および管理する方法について説明します。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 9df151be99ba81af28f6b7b0cc012eae7db3ea1b
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: fe503d0e579e30b0c355d3be3e8d02b2bd7a44a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664471"
 ---
-# <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Database for MariaDB データベースを設計する
+# <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>チュートリアル: Azure portal を使用して Azure Database for MariaDB データベースを設計する
 
 Azure Database for MariaDB は、高可用性 MySQL データベースをクラウドで実行、管理、スケーリングするためのマネージド サービスです。 Azure portal を使用して、簡単にサーバーを管理し、データベースを設計することができます。
 
@@ -54,7 +54,7 @@ Azure Database for MariaDB サーバーは、定義済みの一連の[コンピ�
     サーバー名 | *一意のサーバー名* | Azure Database for MariaDB サーバーを識別する一意の名前を選択します。 たとえば **mydemoserver** を選択します。 入力したサーバー名にドメイン名 *.mariadb.database.azure.com* が追加されます。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 から 63 文字にする必要があります。
     サブスクリプション | *該当するサブスクリプション* | サーバーに使用する Azure サブスクリプションを選択します。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
     Resource group | **myresourcegroup** | 新しいリソース グループ名を入力するか、既存のリソース グループを選択します。
-    ソースの選択 | "**空白**" | **[空白]** を選択して新しいサーバーを作成します  (既存の Azure Database for MariaDB サーバーの geo バックアップからサーバーを作成する場合は、 **[バックアップ]** を選択します)。
+    ソースの選択 | "**空白**" | **[空白]** を選択して新しいサーバーを作成します  (既存の Azure Database for MariaDB サーバーの geo バックアップからサーバーを作成する場合は、**[バックアップ]** を選択します)。
     サーバー管理者のログイン | **myadmin** | サーバーに接続するときに使用するサインイン アカウント。 管理者のサインイン名に **azure_superuser**、**admin**、**administrator**、**root**、**guest**、**public** は使用できません。
     Password | *任意* | サーバー管理者アカウントの新しいパスワードを入力します。 8 ～ 128 文字にする必要があります。 パスワードには、英大文字、英小文字、数字 (0 から 9)、英数字以外の文字 (!、$、#、% など) のうち、3 つのカテゴリの文字が含まれている必要があります。
     [パスワードの確認入力] | *任意*| 管理者アカウントのパスワードを確認します。
@@ -69,11 +69,11 @@ Azure Database for MariaDB サーバーは、定義済みの一連の[コンピ�
 
 4. **[Review + create]\(レビュー + 作成\)** をクリックします。 ツール バーの **[通知]** ボタンをクリックすると、デプロイ プロセスを監視できます。 デプロイには、最大 20 分かかる場合があります。
 
-## <a name="configure-the-firewall"></a>ファイアウォールの構成
+## <a name="configure-the-firewall"></a>ファイアウォールを構成する
 
 Azure Database for MariaDB は、ファイアウォールによって保護されます。 既定では、サーバーとサーバー内部のデータベースに対する接続はすべて拒否されます。 初めて Azure Database for MariaDB に接続する前に、ファイアウォールを構成し、クライアント コンピューターのパブリック ネットワーク IP アドレス (またはその範囲) を追加します。
 
-1. 新しく作成したサーバーを選択し、 **[接続のセキュリティ]** を選択します。
+1. 新しく作成したサーバーを選択し、**[接続のセキュリティ]** を選択します。
 
    ![接続のセキュリティ](./media/tutorial-design-database-using-portal/1-Connection-security.png)
 2. **[自分の IP を追加]** を選択するか、またはファイアウォール規則を構成できます。 規則を作成したら、忘れずに **[保存]** を選択してください。
@@ -87,9 +87,9 @@ Azure Database for MariaDB は、ファイアウォールによって保護さ�
 
 Azure portal から、Azure Database for MariaDB サーバーの **[サーバー名]** (完全修飾) と **[サーバー管理者ログイン名]** の値を取得します。 この完全修飾サーバー名は、mysql コマンド ライン ツールでサーバーに接続する際に使用します。
 
-1. [Azure portal](https://portal.azure.com/) の左側のメニューで、 **[すべてのリソース]** を選択します。 サーバー名を入力し、Azure Database for MariaDB サーバーを検索します。 サーバー名を選択すると、その詳細が表示されます。
+1. [Azure portal](https://portal.azure.com/) の左側のメニューで、**[すべてのリソース]** を選択します。 サーバー名を入力し、Azure Database for MariaDB サーバーを検索します。 サーバー名を選択すると、その詳細が表示されます。
 
-2. **[概要]** ページで、 **[サーバー名]** と **[サーバー管理者ログイン名]** の値を書き留めます。 各フィールドの横にある **[コピー]** ボタンを選択して、クリップボードに値をコピーすることもできます。
+2. **[概要]** ページで、**[サーバー名]** と **[サーバー管理者ログイン名]** の値を書き留めます。 各フィールドの横にある **[コピー]** ボタンを選択して、クリップボードに値をコピーすることもできます。
 
    ![サーバー プロパティ](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
@@ -174,10 +174,10 @@ SELECT * FROM inventory;
 
    ![[復元] フォーム](./media/tutorial-design-database-using-portal/2-restore-form.png)
    
-   - **復元ポイント**:一覧表示された期間から、どの時点までさかのぼって復元するかを選択します。 ローカル タイム ゾーンは必ず UTC に変換してください。
-   - **新しいサーバーに復元**: 復元先となる新しいサーバーの名前を入力します。
-   - **[場所]** :リージョンはソース サーバーと同じ場所にします。変更することはできません。
-   - **価格レベル**:ソース サーバーと同じ価格レベルにします。変更することはできません。
+   - **[復元ポイント]**: 一覧表示された期間から、どの時点までさかのぼって復元するかを選択します。 ローカル タイム ゾーンは必ず UTC に変換してください。
+   - **[新しいサーバーに復元]**: 復元先となる新しいサーバーの名前を入力します。
+   - **[場所]**: リージョンはソース サーバーと同じ場所にします。変更することはできません。
+   - **[価格レベル]**: ソース サーバーと同じ価格レベルにします。変更することはできません。
    
 3. **[OK]** を選択して、テーブルが削除される前の [時点にサーバーを復元](./howto-restore-server-portal.md)します。 サーバーを復元すると、選択した時点のサーバーのコピーが新たに作成されます。 
 

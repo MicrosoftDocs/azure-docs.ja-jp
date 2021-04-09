@@ -8,10 +8,10 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 7663848bd06244de7efb169a576e11a5c78204c1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100392903"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Azure Data Factory を使用して Web テーブル ソースからデータを移動する
@@ -58,7 +58,7 @@ ms.locfileid: "100392903"
 2. コピー操作用の入力データと出力データを表す **データセット** を作成します。 
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む **パイプライン** を作成します。 
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  Web テーブルからデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON の使用例: Web テーブルから Azure BLOB にデータをコピーする](#json-example-copy-data-from-web-table-to-azure-blob)」セクションを参照してください。 
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  Web テーブルからデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、この記事のセクション、「[JSON の使用例: Web テーブルから Azure BLOB へのデータのコピー](#json-example-copy-data-from-web-table-to-azure-blob)」をご覧ください。 
 
 次のセクションでは、Web テーブルに固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
@@ -128,7 +128,7 @@ ms.locfileid: "100392903"
 現時点では、ソースが **WebSource** 型のコピー アクティビティの場合、追加プロパティはサポートされません。
 
 
-## <a name="json-example-copy-data-from-web-table-to-azure-blob"></a>JSON の使用例:Web テーブルから Azure BLOB にデータをコピーする
+## <a name="json-example-copy-data-from-web-table-to-azure-blob"></a>JSON の使用例: Web テーブルから Azure BLOB へのデータのコピー
 次のサンプルは以下を示しています。
 
 1. [Web](#linked-service-properties)型のリンクされたサービス。
@@ -173,7 +173,7 @@ ms.locfileid: "100392903"
 }
 ```
 
-**WebTable 入力データセット** **external** を **true** に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
+**WebTable 入力データセット****external** を **true** に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
 > [!NOTE]
 > HTML ページのテーブルのインデックスを取得する方法については、「 [HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page) 」を参照してください。  

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 09/16/2020
-ms.openlocfilehash: da3c70baccc3c86f2ac57d61539456464e3042b6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 02/22/2021
+ms.openlocfilehash: ce8d4bf36524e3e7e7b3b8c974aa189fa000d845
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493408"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773251"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL Database で単一データベースのリソースをスケーリングする
 
@@ -55,7 +55,7 @@ ms.locfileid: "96493408"
 |**Basic 単一データベース、</br>Standard (S0-S1)**|&bull; &nbsp;使用される領域とは関係ない一定時間の待機時間</br>&bull; &nbsp;通常は 5 分未満|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|
 |**Basic エラスティック プール、</br>Standard (S2-S12)、</br>汎用の単一データベースまたはエラスティック プール**|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|&bull; &nbsp;単一データベースの場合は、使用される領域とは関係ない一定時間の待機時間</br>&bull; &nbsp;単一データベースの場合は、通常 5 分未満</br>&bull; &nbsp;エラスティック プールの場合は、データベースの数に比例|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|
 |**Premium または Business Critical の単一データベースまたはエラスティック プール**|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|&bull; &nbsp;データのコピーのために使用されるデータベース領域に比例した待機時間</br>&bull; &nbsp;通常、使用される領域の GB あたり 1 分未満|
-|**Hyperscale**|該当なし|該当なし|該当なし|&bull; &nbsp;使用される領域とは関係ない一定時間の待機時間</br>&bull; &nbsp;通常は 2 分未満|
+|**Hyperscale**|該当なし|N/A|該当なし|&bull; &nbsp;使用される領域とは関係ない一定時間の待機時間</br>&bull; &nbsp;通常は 2 分未満|
 
 > [!NOTE]
 > さらに、Standard (S2-S12) データベースと General Purpose データベースでは、データベースで Premium ファイル共有 ([PFS](../../storage/files/storage-files-introduction.md)) ストレージが使用されている場合、エラスティック プールとの間、またはエラスティック プール間でデータベースを移動するための待ち時間は、データベース サイズに比例します。
@@ -112,6 +112,7 @@ else {
 - [geo レプリケーション](active-geo-replication-configure-portal.md)が有効な状態でデータベースをダウングレードする場合、そのプライマリ データベースを目的のサービス レベルとコンピューティング サイズにダウングレードしてから、セカンダリ データベースをダウングレードします (パフォーマンスを最大にするための一般的なガイダンス)。 別のエディションにダウングレードするには、プライマリ データベースを先にダウングレードする必要があります。
 - サービス階層によって、提供されている復元サービスは異なります。 **Basic** レベルにダウングレードする場合は、バックアップのリテンション期間が短くなります。 [Azure SQL Database のバックアップ](automated-backups-overview.md)に関する記事をご覧ください。
 - データベースに対する新しいプロパティは、変更が完了するまで適用されません。
+- サービス レベルを変更するときにデータベースをスケーリングする ( 「[待機時間](#latency)」を参照) 必要がある場合は、スケール操作と並列のリソース使用率が高いと、スケーリング時間が長くなる可能性があります。 [高速データベース復旧 (ADR)](/sql/relational-databases/accelerated-database-recovery-concepts) では、長期にわたるトランザクションのロールバックが遅延の主な原因になることはありませんが、並列のリソース使用率が高いと、特に、コンピューティングのサイズが小さい場合に、スケーリングのために残されるコンピューティング、ストレージ、ネットワーク帯域幅のリソースが減ってしまうことがあります。
 
 ## <a name="billing"></a>課金
 

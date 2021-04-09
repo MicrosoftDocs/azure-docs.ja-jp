@@ -4,10 +4,10 @@ description: Azure Service Bus が、キュー、トピック、およびサブ�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: e37c18b95bca7ef1e6e8f0d74976bb73b214624a
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102500633"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>非同期メッセージング パターンと高可用性
@@ -53,7 +53,7 @@ Azure 内の他のコンポーネントで、サービスの問題が発生す�
 
 このような状況では、クライアント アプリケーションは [System.TimeoutException][System.TimeoutException] または [MessagingException][MessagingException] 例外を生成します。 Service Bus には、自動化されたクライアント再試行ロジックという形で、この問題の軽減策が備わっています。 再試行期間が終了してもメッセージが配信されない場合は、「[故障と障害の扱い][handling outages and disasters]」の記事に記載されている他の方法を試すことができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Service Bus での非同期メッセージングの基本について学習しました。詳細については、「[故障と障害の扱い][handling outages and disasters]」をお読みください。
 
 [ServerBusyException]: /dotnet/api/microsoft.servicebus.messaging.serverbusyexception

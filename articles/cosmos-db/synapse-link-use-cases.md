@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 9855a53ebdf7501907b3e1e63d59823d3a0b0209
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: synapse-cosmos-db
+ms.openlocfilehash: 253257564ffc96108f282d7de3dbd9f5e8ce68fd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463113"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869873"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link for Azure Cosmos DB:凖リアルタイム分析のユース ケース
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -131,7 +132,7 @@ Azure Synapse Link を使用すると、Azure Cosmos DB でトランザクショ
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、次のドキュメントを参照してください。
+詳しく学習するために、次のドキュメントを参照してください。
 
 * [Azure Synapse Link for Azure Cosmos DB](synapse-link.md) 
 

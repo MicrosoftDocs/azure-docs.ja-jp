@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: victorh
-ms.openlocfilehash: e3b3b7a058fbd1235619c01e0dca24a3de9036db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66ca039a449e355e47563b689f5f44cced164fea
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231437"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724151"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Front Door 上の Azure Web アプリケーション ファイアウォール
 
@@ -23,6 +23,8 @@ Front Door 上の WAF は、グローバルな一元的ソリューションで�
 WAF は仮想ネットワークに入る前の攻撃ソースの近くで悪意のある攻撃を防ぐことができます。 パフォーマンスを損なうことなく大規模でグローバルな保護機能を利用することができます。 WAF のポリシーはサブスクリプション内の任意の Front Door プロファイルに簡単にリンクできます。 新しいルールを数分で展開できるので、脅威のパターンの変化にすばやく対応できます。
 
 ![Azure Web アプリケーション ファイアウォール](../media/overview/wafoverview.png)
+
+Azure Front Door では、Front Door Standard SKU と Front Door Premium SKU という [2 つの新しい SKU (プレビュー)](https://docs.microsoft.com/azure/frontdoor/standard-premium/overview) が導入されています。 WAF は、すべての機能を備えた Front Door Premium SKU とネイティブに統合されています。 Front Door Standard SKU の場合は、[カスタム ルール](https://docs.microsoft.com/azure/web-application-firewall/afds/afds-overview#custom-authored-rules)のみがサポートされています。
 
 ## <a name="waf-policy-and-rules"></a>WAF のポリシーと規則
 

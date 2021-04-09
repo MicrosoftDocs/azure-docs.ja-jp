@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/03/2020
 ms.author: jeedes
 ms.openlocfilehash: 0f17aa943f599c910d651a72b1ed2d3ae7b2434a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92677521"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saviynt"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Saviynt の統合
@@ -37,8 +37,8 @@ ms.locfileid: "92677521"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Saviynt では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Saviynt では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Saviynt では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Saviynt では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="add-saviynt-from-the-gallery"></a>ギャラリーから Saviynt を追加する
 
@@ -48,7 +48,7 @@ Azure AD への Saviynt の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Saviynt** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Saviynt**」と入力します。
 1. 結果ウィンドウで **Saviynt** を選択し、アプリケーションを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2020
+ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 495b6bc68e79e50a0bda773e7229225595236fac
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 3487e735e48cb5067515762d6276429ca81e43fe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694344"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103008741"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure Media Services のレガシ コンポーネント
 

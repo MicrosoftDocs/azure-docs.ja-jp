@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
 ms.openlocfilehash: 61e8ee2cbcd1252704b2d1e220fcfaaff17c2f28
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93085991"
 ---
 # <a name="restrict-user-access-to-data-operations-in-azure-cosmos-db"></a>Azure Cosmos DB でのデータ操作にユーザー アクセスを制限する

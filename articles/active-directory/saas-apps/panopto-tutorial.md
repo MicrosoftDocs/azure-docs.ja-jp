@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Panopto の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Panopto の統合 | Microsoft Docs'
 description: Azure Active Directory と Panopto の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 03/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 5eed5f0df5c6b8537beef2adcbcf81180bc997db
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92512766"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-panopto"></a>チュートリアル:Azure Active Directory と Panopto の統合
+# <a name="tutorial-azure-active-directory-integration-with-panopto"></a>チュートリアル: Azure Active Directory と Panopto の統合
 
 このチュートリアルでは、Panopto と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Panopto と Azure AD の統合には、次の利点があります。
@@ -41,9 +41,9 @@ Panopto と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Panopto では、 **SP** Initiated SSO がサポートされます
+* Panopto では、**SP** Initiated SSO がサポートされます
 
-* Panopto では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Panopto では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-panopto-from-the-gallery"></a>ギャラリーからの Panopto の追加
 
@@ -63,13 +63,13 @@ Azure AD への Panopto の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Panopto** 」と入力し、結果パネルで **[Panopto]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Panopto**」と入力し、結果パネルで **[Panopto]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Panopto](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Panopto で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Panopto で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Panopto 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Panopto で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -87,7 +87,7 @@ Panopto で Azure AD のシングル サインオンを構成してテストす�
 
 Panopto で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Panopto** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Panopto** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -126,11 +126,11 @@ Panopto で Azure AD シングル サインオンを構成するには、次の�
 
 1. 別の Web ブラウザーのウィンドウで、Panopto 企業サイトに管理者としてログインします。
 
-2. 左側のツールバーで、 **[システム]** 、 **[ID プロバイダー]** の順にクリックします。
+2. ツールバーの左側の [**System**] をクリックし、[**Identity Providers**] をクリックします。
    
     ![システム](./media/panopto-tutorial/ic777670.png "システム")
 
-3. **[プロバイダーを追加する]** を追加します。
+3. [**Add Provider**] をクリックします。
    
     ![[Identity Providers]\(ID プロバイダー\)](./media/panopto-tutorial/ic777671.png "[ID プロバイダー]")
    
@@ -140,9 +140,9 @@ Panopto で Azure AD シングル サインオンを構成するには、次の�
     
     a. **[プロバイダーの種類]** 一覧で **[SAML20]** を選択します。    
     
-    b. **[インスタンス名]** テキストボックスに、インスタンスの名前を入力します。
+    b. [**Instance Name**] テキスト ボックスに、インスタンスの名前を入力します。
 
-    c. **[わかりやすい説明]** テキストボックスに、わかりやすい説明を入力します。
+    c. [**Friendly Description**] テキスト ボックスに、わかりやすい説明を入力します。
     
     d. **[Bounce Page Url]** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
@@ -168,7 +168,7 @@ Panopto で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -181,7 +181,7 @@ Panopto で Azure AD シングル サインオンを構成するには、次の�
 
 このセクションでは、Britta Simon に Panopto へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Panopto]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Panopto]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

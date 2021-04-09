@@ -4,10 +4,10 @@ description: この記事では、2 つのクライアント ロールと、ロ�
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: abca19e686d39338fcaa2e0b0c8126913135170b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75451894"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>ロール ベースのアクセス制御 (Service Fabric クライアント用)
@@ -64,7 +64,7 @@ Azure Service Fabric では、Service Fabric クラスターに接続される�
 * **NodeControl**: ノードの開始、停止、および再開                             
 * **MoveReplicaControl**: ノードから別のノードへのレプリカの移動                             
 
-### <a name="miscellaneous-operations"></a>その他の操作
+### <a name="miscellaneous-operations"></a>その他の演算子
 * **Ping**: クライアントの ping                             
 * **Query**: 許可されるすべてのクエリ
 * **NameExists**: 名前付け URI の存在確認                             

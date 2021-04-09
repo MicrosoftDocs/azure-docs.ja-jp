@@ -9,10 +9,10 @@ ms.subservice: hyperscale-citus
 ms.topic: overview
 ms.date: 09/01/2020
 ms.openlocfilehash: 1734128384d63749d3c777cf6315278fced9d140
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95025142"
 ---
 # <a name="what-is-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) とは

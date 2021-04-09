@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.reviewer: cynthn
 ms.openlocfilehash: 5d8be9493b7a312270301e3520f301f797fe2167
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102565293"
 ---
 # <a name="using-a-prebuilt-flatcar-image-for-azure"></a>Azure 用の事前構築済みの Flatcar イメージを使用する

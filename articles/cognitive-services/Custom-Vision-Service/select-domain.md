@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 2259d0114d91af2e688df66ff8dc4e8d293c2b03
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 0b1358f67e2b10078e24168bdb779cd708ac2403
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624838"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095665"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Custom Vision プロジェクトのドメインを選択する
 
@@ -37,7 +37,7 @@ Custom Vision プロジェクトの [設定] タブで、プロジェクトの�
 |Domain|目的|
 |---|---|
 |__全般__| さまざまなオブジェクト検出タスク用に最適化されています。 他のドメインのいずれも適切でないか、どのドメインを選択すればよいか不確かな場合は、汎用ドメインを選択してください。 ID: `da2e3a8a-40a5-4171-82f4-58522f70fbc1`|
-|__全般 [A1]__| 全般ドメインと同等の推論時間で、精度がより高まるように最適化されています。 より正確な領域検出が必要なケース、大規模なデータセット、またはより困難なユーザー シナリオの場合に推奨されます。 このドメインにはより多くのトレーニング時間が必要であり、結果は決定論的ではありません。指定された同じトレーニング データに対して mAP の差が ±1% であることが予想されます。 ID: `9c616dff-2e7d-ea11-af59-1866da359ce6`|
+|__全般 [A1]__| 全般ドメインと同等の推論時間で、精度がより高まるように最適化されています。 より正確な領域検出が必要なケース、大規模なデータセット、またはより困難なユーザー シナリオの場合に推奨されます。 このドメインにはより多くのトレーニング時間が必要であり、結果は決定論的ではありません。指定された同じトレーニング データに対して mAP (mean Average Precision) の差が ±1% であることが予想されます。 ID: `9c616dff-2e7d-ea11-af59-1866da359ce6`|
 |__ロゴ__|画像内のブランド ロゴを探すために最適化されています。 ID: `1d8ffafe-ec40-4fb2-8f90-72b3b6cecea4`|
 |__シェルブの製品__|シェルブで製品を検出して分類するために最適化されています。 ID: `3780a898-81c3-4516-81ae-3a139614e1f3`|
 |__コンパクト ドメイン__| エッジ デバイス上でのリアルタイムのオブジェクト検出の制約に最適化されています。|

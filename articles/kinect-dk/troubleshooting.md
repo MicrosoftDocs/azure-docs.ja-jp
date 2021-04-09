@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: トラブルシューティング、更新プログラム、バグ、Kinect、フィードバック、回復、ログ記録、ヒント
-ms.openlocfilehash: a6e00b6c5e9e4f82bb668769aade8311896bef32
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 5f13815b8f8b26f6a08da28181a4a6164b7b89a3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587283"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038822"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect の既知の問題とトラブルシューティング
 
@@ -174,6 +174,10 @@ Linux 上の Azure Kinect 深度エンジンでは、OpenGL を使用します�
 2. システムの電源を切り、モニターを切断し、システムの電源を入れます。 自動ログインでは、x サーバー セッションが強制的に作成されます。
 2. ssh 経由で接続し、DISPLAY 環境変数 `export DISPLAY=:0` を設定します。
 3. Azure Kinect アプリケーションを起動します。
+
+[xtrlock](http://manpages.ubuntu.com/manpages/xenial/man1/xtrlock.1x.html) ユーティリティを使用すると、自動ログイン後すぐに画面をロックすることができます。 スタートアップ アプリケーションまたは systemd サービスに次のコマンドを追加します。
+
+`bash -c “xtrlock -b”` 
 
 ## <a name="missing-c-documentation"></a>C# ドキュメントがない
 

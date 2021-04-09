@@ -3,14 +3,14 @@ title: Azure Automation で Runbook を管理する
 description: この記事では、Azure Automation で Runbook を管理する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 10/23/2020
+ms.date: 02/24/2021
 ms.topic: conceptual
-ms.openlocfilehash: ed5eda668f6bd52ba144aa664119ab613fdb7742
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: af767ab37e8e77195b7d13b24ea78f4fb88485fb
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183585"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122138"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Automation で Runbook を管理する
 
@@ -23,6 +23,7 @@ Azure portal または Windows PowerShell を使用して、Azure Automation に
 * [Azure Automation でのテキスト形式の Runbook の編集](automation-edit-textual-runbook.md)
 * [Automation Runbook 向けの Windows PowerShell ワークフローの基本的な概念の説明](automation-powershell-workflow.md)
 * [Azure Automation で Python 2 パッケージを管理する](python-packages.md)
+* [Azure Automation で Python 3 パッケージ (プレビュー) を管理する](python-3-packages.md)
 
 ### <a name="create-a-runbook-in-the-azure-portal"></a>Azure portal で Runbook を作成する
 
@@ -45,7 +46,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ## <a name="import-a-runbook"></a>Runbook をインポートする
 
-PowerShell または PowerShell ワークフロー ( **.ps1**) スクリプト、グラフィカル Runbook ( **.graphrunbook**)、Python 2 スクリプト ( **.py**) をインポートして独自の Runbook を作成することができます。 以下の点を考慮して、インポート中に作成される [Runbook の種類](automation-runbook-types.md) を指定する必要があります。
+PowerShell または PowerShell ワークフロー ( **.ps1**) スクリプト、グラフィカル Runbook ( **.graphrunbook**)、Python 2 または Python 3 スクリプト ( **.py**) をインポートして独自の Runbook を作成することができます。 以下の点を考慮して、インポート中に作成される [Runbook の種類](automation-runbook-types.md) を指定する必要があります。
 
 * ワークフローが含まれていない **.ps1** ファイルは、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) または [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) のどちらにもインポートすることができます。 それを PowerShell ワークフロー Runbook にインポートすると、ワークフローに変換されます。 この場合、Runbook には、加えられた変更を説明するコメントが追加されます。
 

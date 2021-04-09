@@ -8,10 +8,10 @@ ms.date: 10/12/2020
 ms.author: victorh
 ms.topic: how-to
 ms.openlocfilehash: 3d905dd1e6acab8f9f6d3885c882dd9c32133cb4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100596426"
 ---
 # <a name="using-azure-sentinel-with-azure-web-application-firewall"></a>Azure Sentinel と Azure Web Application Firewall の併用

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e23b94c850c6ec326c2f4ad034e1fefc158087a5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 03bf92a2d77fb262ed6506bf18c0d27006e435a7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793451"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103201194"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>シャード マップ マネージャーでデータベースをスケールアウトする
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Azure SQL Database でデータベースを簡単にスケールアウトする�
 
 ![シャード マップの管理](./media/elastic-scale-shard-map-management/glossary.png)
 
-これらのマップの構造を理解することは、シャード マップ管理に不可欠です。 これを行うには、シャード マップを管理するための [Elastic Database クライアント ライブラリ](elastic-database-client-library.md)に含まれる ShardMapManager クラス ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) を使用します。  
+これらのマップの構造を理解することは、シャード マップ管理に不可欠です。 そのためには、シャード マップを管理するための [Elastic Database クライアント ライブラリ](elastic-database-client-library.md)に含まれる ShardMapManager クラス ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) を使用します。  
 
 ## <a name="shard-maps-and-shard-mappings"></a>シャード マップとシャードのマッピング
 
@@ -36,15 +36,15 @@ Azure SQL Database でデータベースを簡単にスケールアウトする�
    1. リスト マッピング
    2. 範囲マッピング
 
-シングルテナント モデルの場合は、 **リスト マッピング** シャード マップを作成します。 シングルテナント モデルでは、テナントごとに 1 つのデータベースが割り当てられます。 これは、管理が簡単なので、SaaS 開発者に有効なモデルです。
+シングルテナント モデルの場合は、**リスト マッピング** シャード マップを作成します。 シングルテナント モデルでは、テナントごとに 1 つのデータベースが割り当てられます。 これは、シャード マップ管理が簡単なので、SaaS 開発者にとって効率的なモデルです。
 
 ![リスト マッピング][1]
 
-マルチテナント モデルでは、個々のデータベースに複数のテナントが割り当てられます (そして、テナントのグループを複数のデータベースに分散させることができます)。 各テナントで必要なデータが少ない場合は、このモデルを使用します。 このモデルでは、 **範囲マッピング** を使用してデータベースにテナントの範囲を割り当てます。
+マルチテナント モデルでは、個々のデータベースに複数のテナントが割り当てられます (そして、テナントのグループを複数のデータベースに分散させることができます)。 各テナントで必要なデータが少ない場合は、このモデルを使用します。 このモデルでは、**範囲マッピング** を使用してデータベースにテナントの範囲を割り当てます。
 
 ![範囲マッピング][2]
 
-または、 *リスト マッピング* を使用して複数のテナントを個々のデータベースに割り当てることにより、マルチテナント データベース モデルを実装できます。 たとえば、ID が 1 と 5 のテナントに関する情報を DB1 に格納し、DB2 にテナント 7 と 10 のデータを格納する、といったことができます。
+または、*リスト マッピング* を使用して複数のテナントを個々のデータベースに割り当てることにより、マルチテナント データベース モデルを実装できます。 たとえば、ID が 1 と 5 のテナントに関する情報を DB1 に格納し、DB2 にテナント 7 と 10 のデータを格納する、といったことができます。
 
 ![単一 DB 上の複数のテナント][3]
 
@@ -64,11 +64,11 @@ Elastic Scale では、シャーディング キーとして次の型がサポ�
 
 ### <a name="list-and-range-shard-maps"></a>リスト シャード マップと範囲シャード マップ
 
-シャード マップは、 **個々のシャーディング キー値のリスト** または **シャーディング キー値の範囲** を使用して作成できます。
+シャード マップは、**個々のシャーディング キー値のリスト** または **シャーディング キー値の範囲** を使用して作成できます。
 
 ### <a name="list-shard-maps"></a>リスト シャード マップ
 
-**シャード** には、 **シャードレット** が含まれます。シャードレットとシャードの間のマッピングは、シャード マップによって管理されます。 **リスト シャード マップ** は、シャードレットを識別する個々のキー値と、シャードとして動作するデータベースとの間の関連付けのことです。  **リスト マッピング** は明示的であり、異なるキー値を同じデータベースにマップすることができます。 たとえば、キー値 1 がデータベース A にマップし、キー値 3 と 6 の両方がデータベース B にマップされます。
+**シャード** には、**シャードレット** が含まれます。シャードレットとシャードの間のマッピングは、シャード マップによって管理されます。 **リスト シャード マップ** は、シャードレットを識別する個々のキー値と、シャードとして動作するデータベースとの間の関連付けのことです。  **リスト マッピング** は明示的であり、異なるキー値を同じデータベースにマップすることができます。 たとえば、キー値 1 がデータベース A にマップし、キー値 3 と 6 の両方がデータベース B にマップされます。
 
 | Key | シャードの場所 |
 | --- | --- |
@@ -80,7 +80,7 @@ Elastic Scale では、シャーディング キーとして次の型がサポ�
 
 ### <a name="range-shard-maps"></a>範囲シャード マップ
 
-**範囲シャード マップ** では、キーの範囲がペア **[Low Value, High Value)** によって記述されます。 *Low Value* は範囲内の最小キー、 *High Value* は範囲を超える最初の値です。
+**範囲シャード マップ** では、キーの範囲がペア **[Low Value, High Value)** によって記述されます。*Low Value* は範囲内の最小キー、*High Value* は範囲を超える最初の値です。
 
 たとえば、 **[0, 100)** には、0 以上 100 未満のすべての整数が含まれます。 複数の範囲が同じデータベースをポイントでき、隣接していない範囲もサポートされます (たとえば、次の例の [100,200) と [400,600) は、いずれもデータベース C をポイントしています)。
 
@@ -100,15 +100,15 @@ Elastic Scale では、シャーディング キーとして次の型がサポ�
 
 1. **グローバル シャード マップ (GSM)** : すべてのシャード マップとマッピングのリポジトリとして機能するデータベースを指定します。 この情報を管理するために、特殊なテーブルとストアド プロシージャが自動的に作成されます。 通常、これは小さなデータベースで簡単にアクセスでき、アプリケーションの他の目的には使用されません。 このテーブルは、 **__ShardManagement** という名前の特殊なスキーマに含まれます。
 2. **ローカル シャード マップ (LSM)** : シャードとして指定されたすべてのデータベースは、シャードに固有のシャード マップ情報を格納と管理するためのいくつかの小さなテーブルと特殊なストアド プロシージャを含むように変更されます。 この情報は GSM 内の情報を冗長化したもので、これにより、アプリケーションは、GSM に負荷をかけることなくキャッシュされたシャード マップ情報を検証できます。アプリケーションは、LSM を使用して、キャッシュされたマッピングがまだ有効であるかどうかを判定できます。 各シャードの LSM に対応するテーブルも、スキーマ **__ShardManagement** に含まれます。
-3. **アプリケーション キャッシュ** : **ShardMapManager** オブジェクトにアクセスする各アプリケーション インスタンスは、そのマッピングのローカル メモリ内キャッシュを保持します。 ここには、最近取得されたルーティング情報が格納されます。
+3. **アプリケーション キャッシュ**: **ShardMapManager** オブジェクトにアクセスする各アプリケーション インスタンスは、そのマッピングのローカル メモリ内キャッシュを保持します。 ここには、最近取得されたルーティング情報が格納されます。
 
 ## <a name="constructing-a-shardmapmanager"></a>ShardMapManager の作成
 
-**ShardMapManager** オブジェクトは、ファクトリ ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)) パターンを使用して作成されます。 **ShardMapManagerFactory.GetSqlShardMapManager** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)) メソッドは、(サーバー名と、GSM を保持しているデータベースの名前を含む) **ConnectionString** 形式の資格情報を受け取り、 **ShardMapManager** のインスタンスを返します。  
+**ShardMapManager** オブジェクトは、ファクトリ ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)) パターンを使用して作成されます。 **ShardMapManagerFactory.GetSqlShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)) メソッドは、(サーバー名と、GSM を保持しているデータベースの名前を含む) **ConnectionString** 形式の資格情報を受け取り、**ShardMapManager** のインスタンスを返します。  
 
 **注意:** **ShardMapManager** は、アプリケーションの初期化コード内でアプリケーション ドメインごとに 1 回だけインスタンス化する必要があります。 同じアプリケーション ドメインで ShardMapManager の追加のインスタンスを作成すると、アプリケーションのメモリ使用率と CPU 使用率が増加します。 **ShardMapManager** には、任意の数のシャード マップを含めることができます。 多くのアプリケーションでは、シャード マップは 1 つあれば十分です。ただし、異なるスキーマ用や一意性を確保する目的のためにデータベースの異なるセットを使用する場合は、複数のシャード マップを使用することをお勧めします。
 
-次のコードでは、アプリケーションは、TryGetSqlShardMapManager ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.trygetsqlshardmapmanager)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) メソッドを使用して既存の **ShardMapManager** を開こうとします。 グローバル **ShardMapManager** (GSM) を表すオブジェクトがデータベース内に存在しない場合、クライアント ライブラリは CreateSqlShardMapManager ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.createsqlshardmapmanager)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) メソッドを使用してこれを作成します。
+次のコードでは、アプリケーションは、TryGetSqlShardMapManager ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.trygetsqlshardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) メソッドを使用して既存の **ShardMapManager** を開こうとします。 グローバル **ShardMapManager** (GSM) を表すオブジェクトがデータベース内に存在しない場合、クライアント ライブラリは CreateSqlShardMapManager ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.createsqlshardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) メソッドを使用してこれを作成します。
 
 ```Java
 // Try to get a reference to the Shard Map Manager in the shardMapManager database.
@@ -215,13 +215,13 @@ public static RangeShardMap<T> CreateOrGetRangeShardMap<T>(ShardMapManager shard
 
 シャード マップを管理、操作するアプリケーションは、シャード マップを使用して接続をルーティングするアプリケーションとは異なります。
 
-シャード マップの管理 (シャード、シャード マップ、シャード マッピングの追加または変更など) を実行するには、 **ShardMapManager** をインスタンス化する必要があります。そのためには、 **GSM データベースとシャードとして機能する各データベースに対する読み取り/書き込み特権** を持つ資格情報を使用します。 この資格情報により、新しいシャードに LSM テーブルが作成されるときだけでなく、シャード マップ情報が入力または変更されたときに GSM と LSM の両方のテーブルに対する書き込みが許可される必要があります。  
+シャード マップの管理 (シャード、シャード マップ、シャード マッピングの追加または変更など) を実行するには、**ShardMapManager** をインスタンス化する必要があります。そのためには、**GSM データベースとシャードとして機能する各データベースに対する読み取り/書き込み特権** を持つ資格情報を使用します。 この資格情報により、新しいシャードに LSM テーブルが作成されるときだけでなく、シャード マップ情報が入力または変更されたときに GSM と LSM の両方のテーブルに対する書き込みが許可される必要があります。  
 
 「 [Elastic Database クライアント ライブラリへのアクセスに使用する資格情報](elastic-scale-manage-credentials.md)」を参照してください。
 
 ### <a name="only-metadata-affected"></a>影響を受けるのはメタデータのみ
 
-**ShardMapManager** データを設定または変更するために使用されるメソッドは、シャード自体に格納されているユーザー データを変更しません。 たとえば、 **CreateShard** 、 **DeleteShard** 、 **UpdateMapping** などのメソッドは、シャード マップ メタデータのみに作用します。 シャードに含まれるユーザー データを削除、追加、変更することはありません。 代わりに、これらのメソッドは、実際のデータベースを作成または削除するために実行される別の操作や、シャード化環境のバランスを再調整するためにシャードで行を移動する操作と組み合わせて使用するように設計されています  (Elastic Database ツールに含まれる **分割/マージ** ツールでは、シャード間の実際のデータ移動のオーケストレーションと共にこれらの API を利用しています)。「 [Elastic Database 分割/マージ ツールを使用したスケーリング](elastic-scale-overview-split-and-merge.md)」をご覧ください。
+**ShardMapManager** データを設定または変更するために使用されるメソッドは、シャード自体に格納されているユーザー データを変更しません。 たとえば、**CreateShard**、**DeleteShard**、**UpdateMapping** などのメソッドは、シャード マップ メタデータのみに作用します。 シャードに含まれるユーザー データを削除、追加、変更することはありません。 代わりに、これらのメソッドは、実際のデータベースを作成または削除するために実行される別の操作や、シャード化環境のバランスを再調整するためにシャードで行を移動する操作と組み合わせて使用するように設計されています  (Elastic Database ツールに含まれる **分割/マージ** ツールでは、シャード間の実際のデータ移動のオーケストレーションと共にこれらの API を利用しています)。「[Elastic Database 分割/マージ ツールを使用したスケーリング](elastic-scale-overview-split-and-merge.md)」をご覧ください。
 
 ## <a name="data-dependent-routing"></a>データ依存ルーティング
 
@@ -237,22 +237,22 @@ public static RangeShardMap<T> CreateOrGetRangeShardMap<T>(ShardMapManager shard
 
 これらのメソッドは、シャード化データベース環境内のデータの全体的な分散状況を変更するために使用できるビルド ブロックとして連携します。  
 
-* シャードを追加または削除するには、shardmap ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap)) クラスの **CreateShard** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)) と **DeleteShard** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.deleteshard)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.deleteshard)) を使用します。
+* シャードを追加または削除するには、shardmap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap)) クラスの **CreateShard** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)) と **DeleteShard** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.deleteshard)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.deleteshard)) を使用します。
   
     これらの操作を実行するには、サーバーとターゲット シャードを表すデータベースが既に存在している必要があります。 これらのメソッドは、データベース自体には作用せず、シャード マップ内のメタデータのみに作用します。
-* シャードにマップされるポイントまたは範囲を作成または削除するには、 **CreateRangeMapping** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping)、 [.NET](/previous-versions/azure/dn841993(v=azure.100)))、RangeShardMapping ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) クラスの **DeleteMapping** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.deletemapping)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1))、ListShardMap ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) クラスの **CreatePointMapping** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap.createpointmapping)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) を使用します。
+* シャードにマップされるポイントまたは範囲を作成または削除するには、**CreateRangeMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping)、[.NET](/previous-versions/azure/dn841993(v=azure.100)))、RangeShardMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) クラスの **DeleteMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.deletemapping)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1))、ListShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) クラスの **CreatePointMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap.createpointmapping)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) を使用します。
   
     多くの異なるポイントまたは範囲を同じシャードにマップできます。 これらのメソッドは、メタデータにのみ作用し、シャードに既に存在するデータには作用しません。 **DeleteMapping** 操作に合わせてデータをデータベースから削除する必要がある場合は、これらのメソッドを組み合わせてこれらの操作を別個に実行する必要があります。  
-* 既存の範囲を 2 つに分割する、または隣接する範囲を 1 つにマージするには、 **SplitMapping** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.splitmapping)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) と **MergeMappings** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.mergemappings)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) を使用します。  
+* 既存の範囲を 2 つに分割する、または隣接する範囲を 1 つにマージするには、**SplitMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.splitmapping)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) と **MergeMappings** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.mergemappings)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) を使用します。  
   
-    分割操作とマージ操作を行っても、 **キー値がマップされているシャードは変更されない** ことに注意してください。 分割操作を実行すると、既存の範囲が 2 つの部分に分割されます。このとき、どちらの部分も同じシャードにマップされたままになります。 マージ操作を実行すると、同じシャードに既にマップされている 2 つの隣接する範囲が 1 つの範囲に結合されます。  シャード間でのポイントまたは範囲自体の移動は、実際のデータの移動と組み合わせて **UpdateMapping** を使用して調整する必要があります。  Elastic Database ツールの一部である **Split/Merge** サービスを使用すると、データの移動が必要な場合にシャード マップの変更をデータの移動と連携させることができます。
-* 個々のポイントまたは範囲を別のシャードに再マップ (移動) するには、 **UpdateMapping** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.updatemapping)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) を使用します。  
+    分割操作とマージ操作を行っても、**キー値がマップされているシャードは変更されない** ことに注意してください。 分割操作を実行すると、既存の範囲が 2 つの部分に分割されます。このとき、どちらの部分も同じシャードにマップされたままになります。 マージ操作を実行すると、同じシャードに既にマップされている 2 つの隣接する範囲が 1 つの範囲に結合されます。  シャード間でのポイントまたは範囲自体の移動は、実際のデータの移動と組み合わせて **UpdateMapping** を使用して調整する必要があります。  Elastic Database ツールの一部である **Split/Merge** サービスを使用すると、データの移動が必要な場合にシャード マップの変更をデータの移動と連携させることができます。
+* 個々のポイントまたは範囲を別のシャードに再マップ (移動) するには、**UpdateMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.updatemapping)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) を使用します。  
   
     データは **UpdateMapping** 操作に合わせてシャード間で移動することが必要になる場合があるため、これらのメソッドを使いながら移動操作を別個に実行する必要があります。
 
-* マッピングをオンラインまたはオフラインにするには、 **MarkMappingOffline** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.markmappingoffline)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) と **MarkMappingOnline** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.markmappingonline)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) を使用して、マッピングのオンライン状態を制御します。
+* マッピングをオンラインまたはオフラインにするには、**MarkMappingOffline** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.markmappingoffline)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) と **MarkMappingOnline** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.markmappingonline)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) を使用して、マッピングのオンライン状態を制御します。
   
-    マッピングが "オフライン" 状態のときは、シャード マッピングに対して特定の操作のみを実行できます ( **UpdateMapping** 、 **DeleteMapping** など)。 マッピングがオフラインのとき、そのマッピングに含まれるキーに基づくデータに依存する要求はエラーを返します。 さらに、範囲が初めてオフラインになったときは、変更が加えられている範囲に対するクエリによって一貫性のない結果または不完全な結果が生成されるのを防ぐために、影響を受けるシャードへのすべての接続が自動的に強制終了されます。
+    マッピングが "オフライン" 状態のときは、シャード マッピングに対して特定の操作のみを実行できます (**UpdateMapping**、**DeleteMapping** など)。 マッピングがオフラインのとき、そのマッピングに含まれるキーに基づくデータに依存する要求はエラーを返します。 さらに、範囲が初めてオフラインになったときは、変更が加えられている範囲に対するクエリによって一貫性のない結果または不完全な結果が生成されるのを防ぐために、影響を受けるシャードへのすべての接続が自動的に強制終了されます。
 
 マッピングは、.NET では不変オブジェクトです。  マッピングを変更する上記のすべてのメソッドは、コード内のこれらへの参照もすべて無効にします。 マッピングの状態を変更する一連の操作を実行しやすくするため、マッピングを変更するすべてのメソッドは新しいマッピングの参照を返します。これにより、操作を連結できます。 たとえば、キー 25 を含むシャード マップ sm で既存のマッピングを削除するには、次のように実行できます。
 

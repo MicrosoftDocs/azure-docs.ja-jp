@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/26/2021
+ms.date: 03/22/2021
 ms.author: justinha
-ms.openlocfilehash: e8887cc39b48f090ff223e5e83c13d65b921dc0b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a016287fedbd303a5571100130769ce4299828bc
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687500"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798561"
 ---
 # <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services"></a>チュートリアル:Azure Active Directory Domain Services で回復性または位置情報のためにレプリカ セットを作成して使用する
 

@@ -15,10 +15,10 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 40bf202e0f14f18d817e4e918f8372ba3c0a4ad8
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91950671"
 ---
 # <a name="single-sign-on-saml-protocol"></a>シングル サインオンの SAML プロトコル
@@ -55,7 +55,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | ForceAuthn | 省略可能 | これはブール値です。 true の場合は、ユーザーが Azure AD で有効なセッションを持っている場合であっても、再認証を強制されることを意味します。 |
 | IsPassive | 省略可能 | これはブール値で、セッション cookie がある場合はそれを使って、ユーザーの介入なしに、サイレント モードで Azure AD がユーザーを認証する必要があるかどうかを指定します。 true の場合は、Azure AD はセッション cookie を使ってユーザーの認証を試みます。 |
 
-Consent、Destination、AssertionConsumerServiceIndex、AttributeConsumerServiceIndex、ProviderName など、他の `AuthnRequest` 属性はすべて**無視**されます。
+Consent、Destination、AssertionConsumerServiceIndex、AttributeConsumerServiceIndex、ProviderName など、他の `AuthnRequest` 属性はすべて **無視** されます。
 
 Azure AD は、`AuthnRequest` の `Conditions` 要素も無視します。
 

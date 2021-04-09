@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 03/02/2021
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: ce79b450e5eaed04150ffafd88528a131417044a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0b6f85a675dc98928309870ea177629203db39e7
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692319"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557337"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API: サポートされる機能と構文
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -142,7 +142,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 | $limit | はい |
 | $listLocalSessions | いいえ |
 | $listSessions | いいえ |
-| $lookup | はい |
+| $lookup | 部分的 |
 | $match | はい |
 | $out | はい |
 | $project | はい |
@@ -154,6 +154,9 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 | $sort | はい |
 | $sortByCount | はい |
 | $unwind | はい |
+
+> [!NOTE]
+> `$lookup` では、サーバー バージョン3.6 で導入された[非相関サブクエリ](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#join-conditions-and-uncorrelated-sub-queries)機能をまだサポートしていません。 `let` および `pipeline` フィールドで `$lookup` 演算子を使用しようとすると、`let is not supported` という文字列を含むメッセージが表示されエラーが発生します。
 
 ### <a name="boolean-expressions"></a>ブール式
 

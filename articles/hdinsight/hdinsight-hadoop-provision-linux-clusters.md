@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: a04d976ed3d9be253425b4c8a5a5c0effb6f80b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 04da79509ac40ba870014995d8318a49c98e1ce5
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741839"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863413"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>HDInsight で Apache Hadoop、Apache Spark、Apache Kafka などを使用してクラスターを設定する
 
@@ -42,7 +42,7 @@ Hadoop クラスターは、タスクの分散処理に使用される複数の�
 
 ## <a name="basics"></a>基本
 
-![HDInsight の作成オプション: カスタムおよび簡易](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png" alt-text="HDInsight の作成オプション: カスタムおよび簡易":::
 
 ### <a name="project-details"></a>プロジェクトの詳細
 
@@ -107,7 +107,7 @@ SSH ユーザー名には次の制限があります。
 
 ## <a name="storage"></a>ストレージ
 
-![クラスター ストレージの設定: HDFS と互換性のあるエンドポイント](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png" alt-text="クラスター ストレージの設定: HDFS と互換性のあるエンドポイント":::
 
 クラスターのストレージには、Hadoop のオンプレミス環境では Hadoop 分散ファイル システム (HDFS) が使用されますが、クラウドでは、クラスターに接続されたストレージ エンドポイントを使用します。 クラウド ストレージを使用すると、データを維持したまま、計算に使用する HDInsight クラスターを安全に削除できます。
 
@@ -165,7 +165,7 @@ Ambari は、HDInsight クラスターの監視、構成の変更、およびク
 
 ## <a name="security--networking"></a>セキュリティとネットワーク
 
-![hdinsight の作成オプション [Enterprise セキュリティ パッケージ] を選択](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-security-networking.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-security-networking.png" alt-text="hdinsight の作成オプション [Enterprise セキュリティ パッケージ] を選択":::
 
 ### <a name="enterprise-security-package"></a>Enterprise セキュリティ パッケージ
 
@@ -201,7 +201,7 @@ Azure の仮想ネットワーク内で 2 つのクラスターの種類を使�
 
 ## <a name="configuration--pricing"></a>構成と価格
 
-![HDInsight でノード サイズを選択する](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png)
+:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png" alt-text="HDInsight でノード サイズを選択する":::
 
 ノードの使用に対する料金は、クラスターが存在する限り発生します。 課金はクラスターが作成されると開始され、クラスターが削除されると停止されます。 クラスターを割り当て解除または保留にすることはできません。
 
@@ -211,10 +211,10 @@ Azure の仮想ネットワーク内で 2 つのクラスターの種類を使�
 
 | Type | Nodes | ダイアグラム |
 | --- | --- | --- |
-| Hadoop |ヘッド ノード (2)、ワーカー ノード (1 以上) |![HDInsight Hadoop クラスター ノード](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
-| hbase |ヘッド サーバー (2)、リージョン サーバー (1 以上)、マスター/ZooKeeper ノード (3) |![HDInsight HBase クラスターの種類のセットアップ](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
-| Storm |Nimbus ノード (2)、Supervisor サーバー (1 以上)、ZooKeeper ノード (3) |![HDInsight storm クラスターの種類のセットアップ](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
-| Spark |ヘッド ノード (2)、ワーカー ノード (1 以上)、ZooKeeper ノード (3) (A1 ZooKeeper VM サイズでは無料) |![HDInsight spark クラスターの種類のセットアップ](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
+| Hadoop |ヘッド ノード (2)、ワーカー ノード (1 以上) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png" alt-text="HDInsight Hadoop クラスター ノード" border="false"::: |
+| hbase |ヘッド サーバー (2)、リージョン サーバー (1 以上)、マスター/ZooKeeper ノード (3) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png" alt-text="HDInsight HBase クラスターの種類のセットアップ" border="false"::: |
+| Storm |Nimbus ノード (2)、Supervisor サーバー (1 以上)、ZooKeeper ノード (3) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png" alt-text="HDInsight storm クラスターの種類のセットアップ" border="false"::: |
+| Spark |ヘッド ノード (2)、ワーカー ノード (1 以上)、ZooKeeper ノード (3) (A1 ZooKeeper VM サイズでは無料) |:::image type="content" source="./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png" alt-text="HDInsight spark クラスターの種類のセットアップ" border="false"::: |
 
 詳細については、HDInsight における Hadoop のコンポーネントとバージョンに関するページの「[Default node configuration and virtual machine sizes for clusters (クラスターの既定のノード構成と仮想マシン サイズ)](hdinsight-supported-node-configuration.md)」を参照してください。
 
@@ -222,7 +222,7 @@ HDInsight クラスターのコストは、ノード数とノードの仮想マ�
 
 クラスターの種類によって、ノードの種類、ノード数、ノード サイズが異なります。
 * 種類が Hadoop のクラスターにおける既定のノード数:
-    * "*ヘッド ノード*" (x 2)  
+    * "*ヘッド ノード*" (x 2)
     * 4 つの *ワーカー ノード*
 * 種類が Storm のクラスターにおける既定のノード数:
     * "*Nimbus ノード*" (x 2)

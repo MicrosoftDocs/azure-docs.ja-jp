@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Azure VM をバックア�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2536ae0d33767de5ad53740407622e67c582cc37
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 82de73944bd833ec5f921e07a29960ac6d175f8d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710670"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102609789"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 
@@ -72,6 +72,7 @@ Linux マシンをバックアップをしたい場合に何がサポートさ�
 Linux Azure VM エージェントを使用した Linux Azure VM のバックアップ | ファイル整合性バックアップ。<br/><br/> [カスタム スクリプト](backup-azure-linux-app-consistent.md)を使用したアプリ整合性バックアップ。<br/><br/> 復元する際に、新しい VM を作成したり、ディスクを復元し、それを使用して VM を作成したり、ディスクを復元し、それを使用して既存の VM 上のディスクを交換したりすることができます。 個々のファイルとフォルダーも復元できます。
 MARS エージェントを使用した Linux Azure VM のバックアップ | サポートされていません。<br/><br/> MARS エージェントをインストールできるのは Windows マシンだけです。
 DPM/MABS を使用した Linux Azure VM のバックアップ | サポートされていません。
+Docker マウント ポイントを使用して Linux Azure VM をバックアップする | 現時点では、Azure Backup は毎回異なるパスにマウントされるため、Docker マウント ポイントの除外をサポートしていません。
 
 ## <a name="operating-system-support-linux"></a>オペレーティング システムのサポート (Linux)
 
@@ -170,6 +171,7 @@ Azure VM のデータ ディスク数 | 最大 32 のディスクを使用した
 [共有ディスク](../virtual-machines/disks-shared-enable.md) | サポートされていません。
 Ultra SSD ディスク | サポートされていません。 詳細については、[制限](selective-disk-backup-restore.md#limitations)に関するページを参照してください。
 [一時ディスク](../virtual-machines/managed-disks-overview.md#temporary-disk) | 一時ディスクは Azure Backup ではバックアップされません。
+NVMe/エフェメラル ディスク | サポートされていません。
 
 ## <a name="vm-network-support"></a>VM ネットワークのサポート
 

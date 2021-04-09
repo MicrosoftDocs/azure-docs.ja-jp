@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: f6030e209b06dc7ae9acd8a13e6dcdf22b58f8c5
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92318873"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allbound-sso"></a>チュートリアル: Azure Active Directory と Allbound SSO の統合
@@ -115,7 +115,7 @@ Allbound SSO で Azure AD シングル サインオンを構成するには、�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 この値を取得するには、[Allbound SSO クライアント サポート チーム](mailto:engineering@allbound.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -131,7 +131,7 @@ Allbound SSO で Azure AD シングル サインオンを構成するには、�
 
 ### <a name="configure-allbound-sso-single-sign-on"></a>Allbound SSO のシングル サインオンを構成する
 
-**Allbound SSO** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Allbound SSO サポート チーム](mailto:engineering@allbound.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Allbound SSO** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Allbound SSO サポート チーム](mailto:engineering@allbound.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -189,7 +189,7 @@ Allbound SSO で Azure AD シングル サインオンを構成するには、�
 このセクションでは、Britta Simon というユーザーを Allbound SSO に作成します。 Allbound SSO では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Allbound SSO にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 > [!Note]
-> ユーザーを手動で作成する必要がある場合は、 [Allbound SSO サポート チーム](mailto:engineering@allbound.com)にお問い合わせください。
+> ユーザーを手動で作成する必要がある場合は、[Allbound SSO サポート チーム](mailto:engineering@allbound.com)にお問い合わせください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

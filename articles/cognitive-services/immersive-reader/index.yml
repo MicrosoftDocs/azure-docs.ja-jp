@@ -12,12 +12,12 @@ metadata:
   author: IEvangelist
   ms.author: dapine
   ms.date: 01/23/2020
-  ms.openlocfilehash: c19e6c7e05a3478007505ee4f02f12a7eade5eb6
-  ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+  ms.openlocfilehash: 4cc05d3b99530e5ba923bfcbf7f749fbcd1c0f20
+  ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/30/2020
-  ms.locfileid: "93130240"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102616640"
 landingContent:
 - title: Immersive Reader の概要
   linkLists:
@@ -43,28 +43,20 @@ landingContent:
       url: ./quickstarts/client-libraries.md?pivots=programming-language-kotlin
     - text: Swift (iOS) の使用
       url: ./quickstarts/client-libraries.md?pivots=programming-language-swift
-  - linkListType: tutorial
-    links:
-    - text: Android
-      url: tutorial-android.md
-    - text: iOS
-      url: tutorial-ios.md
-    - text: Python
-      url: tutorial-python.md
-    - text: 複数のイマーシブ リーダー リソースの使用
-      url: tutorial-multiple-resources.md
 - title: Immersive Reader を試す
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Immersive Reader のリソースを作成する
       url: how-to-create-immersive-reader.md
+    - text: 複数のイマーシブ リーダー リソースの使用
+      url: how-to-multiple-resources.md
+    - text: イマーシブ リーダーの起動
+      url: how-to-launch-immersive-reader.md
     - text: Cookie のポリシーを設定する
       url: how-to/set-cookie-policy.md
     - text: 数式を表示する
       url: how-to/display-math.md
-    - text: Immersive Reader を起動して HTML コンテンツを表示する
-      url: how-to-launch-with-html.md
     - text: Immersive Reader のボタンをカスタマイズする
       url: how-to-customize-launch-button.md
     - text: 認証トークンをキャッシュする

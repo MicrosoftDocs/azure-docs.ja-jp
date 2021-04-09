@@ -4,10 +4,10 @@ description: Azure Resource Manager テンプレート (ARM テンプレート) 
 ms.topic: conceptual
 ms.date: 12/01/2020
 ms.openlocfilehash: 583a113df9cdb1951daf1002dd69531f050cfb54
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99257999"
 ---
 # <a name="arm-template-best-practices"></a>ARM テンプレートのベスト プラクティス

@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
 ms.openlocfilehash: a876651b76aa259754623854b8fc4a7c6c8a939e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92330497"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Event Hubs の Azure スキーマ レジストリ (プレビュー)
@@ -17,8 +17,8 @@ ms.locfileid: "92330497"
 **Azure Schema Registry** は Event Hubs の機能で、イベント駆動型およびメッセージング中心のアプリケーション用のスキーマ ドキュメントの中央リポジトリとして機能します。 プロデューサーとコンシューマー アプリケーションの間でスキーマを管理して共有することなくデータを交換したり、それぞれ異なる速度で発展させることができる柔軟性を提供します。 また、Schema Registry には、再利用可能なスキーマのための単純なガバナンス フレームワークが用意されており、グループ化構成体 (スキーマ グループ) を使用してスキーマ間のリレーションシップを定義します。
 
 > [!NOTE]
-> - 現在、 **Schema Registry** 機能は **プレビュー** 段階にあります。運用環境のワークロードにはお勧めできません。
-> - この機能は **Standard** と **Dedicated** レベルでのみ使用でき、 **Basic** レベルでは使用できません。
+> - 現在、**Schema Registry** 機能は **プレビュー** 段階にあります。運用環境のワークロードにはお勧めできません。
+> - この機能は **Standard** と **Dedicated** レベルでのみ使用でき、**Basic** レベルでは使用できません。
 
 Apache Avro のようなスキーマ駆動型のシリアル化フレームワークを使用すると、共有スキーマにシリアル化メタデータを外部化するすることで、JSON などのタグ付きの形式の場合と同様に、すべてのデータ セットに含まれる型情報およびフィールド名の、メッセージごとのオーバーヘッドを大幅に削減することもできます。 スキーマをイベントと一緒にイベント インフラストラクチャ内に保持しておくことで、シリアル化または逆シリアル化に必要なメタデータに常にアクセスできるため、スキーマを間違えることがありません。 
 

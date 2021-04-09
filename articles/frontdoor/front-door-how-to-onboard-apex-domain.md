@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2020
 ms.author: duau
 ms.openlocfilehash: 55eefe7a7490df050aa7ebc2bb41fbadcc8d8279
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94646340"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>フロント ドアにルート ドメインまたは頂点ドメインをオンボードする

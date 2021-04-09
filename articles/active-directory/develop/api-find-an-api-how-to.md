@@ -12,10 +12,10 @@ ms.date: 06/28/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
 ms.openlocfilehash: 28cfb3d8b09c9661d16ac6e7146c50e7043d913a
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99581960"
 ---
 # <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>独自に開発したアプリケーションに必要な特定の API を見つける方法

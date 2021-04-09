@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 49d9b91df896646da7bf36e077d9f3c9187137dd
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b41bcda7381e5811ef1e1f91c102d8c85f50b3b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021798"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103196909"
 ---
 # <a name="debug-errors-when-running-a-custom-commands-application"></a>カスタム コマンド アプリケーションの実行時にエラーをデバッグする
 
@@ -28,7 +28,7 @@ ms.locfileid: "95021798"
 | エラー コード | 詳細 |
 | ------- | -------- |
 | [401](#error-401) | AuthenticationFailure: 認証エラーで WebSocket をアップグレードできませんでした |
-| [1002](#error-1002)] | サーバーが状態コード '101' を返すはずが、状態コード '404' を返しました。 |
+| [1002](#error-1002) | サーバーが状態コード '101' を返すはずが、状態コード '404' を返しました。 |
 
 ### <a name="error-401"></a>エラー 401
 - クライアント アプリケーションで指定されているリージョンが、カスタム コマンド アプリケーションのリージョンと一致しません
@@ -138,4 +138,4 @@ LUIS リソースの制限の詳細については、[Language Understanding の
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [GitHub 上のサンプルを参照してください](https://aka.ms/speech/cc-samples)
+> [GitHub のサンプルを参照](https://aka.ms/speech/cc-samples)

@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) でホストベースの暗号化を有効
 description: Azure Kubernetes Service (AKS) クラスターでホストベースの暗号化を構成する方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 01/27/2021
-ms.openlocfilehash: ac28c698a766f1f3febaff582038906f658d58dd
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.date: 03/03/2021
+ms.openlocfilehash: f4e599ae7aa81c15f86d0e8b1c934824010ea45b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071852"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102430158"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) でのホストベースの暗号化 (プレビュー)
 
@@ -26,6 +26,13 @@ ms.locfileid: "99071852"
 ### <a name="prerequisites"></a>前提条件
 
 - `aks-preview` CLI 拡張機能 v0.4.73 以降のバージョンがインストールされていることを確認します。
+- `Microsoft.ContainerService` の `EnableEncryptionAtHostPreview` 機能フラグが有効になっていることを確認します。
+
+VM または仮想マシン スケール セットに対してホストでの暗号化を使用できるようにするには、サブスクリプションで機能が有効になっている必要があります。 サブスクリプションに対してこの機能を有効にするには、ご自分のサブスクリプション ID を記載した電子メールを **encryptionAtHost@microsoft.com** に送信します。 
+
+> [!IMPORTANT]
+> コンピューティング リソースに対してこの機能を有効にするには、ご自分のサブスクリプション ID を記載した電子メールを **encryptionAtHost@microsoft.com** に送信する必要があります。 コンピューティング リソースに対して、自身でこれを有効にすることはできません。
+
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
@@ -41,7 +48,7 @@ az extension update --name aks-preview
 
 ### <a name="limitations"></a>制限事項
 
-- 新しいノード プールまたは新しいクラスターでのみ有効にできます。
+- 新しいノード プールでのみ有効にできます。
 - Azure マネージド ディスクのサーバー側暗号化がサポートされている [Azure リージョン][supported-regions]で、特定の[サポートされている VM サイズ][supported-sizes]のみを使用して有効にできます。
 - Virtual Machine Scale Sets (VMSS) の *VM セット タイプ* に基づいた AKS クラスターとノード プールが必要です。
 

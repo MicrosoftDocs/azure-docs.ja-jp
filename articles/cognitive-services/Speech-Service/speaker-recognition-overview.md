@@ -13,10 +13,10 @@ ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: Speaker Recognition, 音声生物測定学
 ms.openlocfilehash: d07a9960c8a586fa137b4b717afbf91740c265d3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95015326"
 ---
 # <a name="what-is-speaker-recognition-preview"></a>Speaker Recognition (プレビュー) とは

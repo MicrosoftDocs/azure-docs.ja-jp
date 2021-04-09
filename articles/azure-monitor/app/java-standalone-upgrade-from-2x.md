@@ -6,12 +6,12 @@ ms.date: 11/25/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: e9208e617eb73786bcb003dc1b55d0d77ca6650f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6e1c7e15ff77fd75ff2fb70a6741ea2dd9a4cab8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704431"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040245"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>Application Insights Java 2.x SDK からのアップグレード
 
@@ -219,11 +219,24 @@ Application Insights 2.x エージェントを使用していた場合は、2.x 
 
 以前の 2.x SDK では、依存関係テレメトリに要求テレメトリからの操作名も設定されていました。
 Application Insights Java 3.0 では、依存関係テレメトリに操作名が設定されなくなりました。
-依存関係テレメトリの親である要求の操作名を表示するには、ログ (Kusto) クエリを記述して、依存関係テーブルから要求テーブルに結合します。
+依存関係テレメトリの親である要求の操作名を表示するには、たとえば、ログ (Kusto) クエリを記述して依存関係テーブルから要求テーブルに結合します。
+
+```
+let start = datetime('...');
+let end = datetime('...');
+dependencies
+| where timestamp between (start .. end)
+| project timestamp, type, name, operation_Id
+| join (requests
+    | where timestamp between (start .. end)
+    | project operation_Name, operation_Id)
+    on $left.operation_Id == $right.operation_Id
+| summarize count() by operation_Name, type, name
+```
 
 ## <a name="2x-sdk-logging-appenders"></a>2.x SDK ロギング アペンダー
 
-3\.0 エージェントでは、ロギング アペンダーを構成する必要なく、[ログが自動収集](./java-standalone-config#auto-collected-logging)されます。
+3\.0 エージェントでは、ロギング アペンダーを構成する必要なく、[ログが自動収集](./java-standalone-config.md#auto-collected-logging)されます。
 2\. x SDK ロギング アペンダーを使用している場合は、3.0 エージェントによって抑制されるため、これらを削除できます。
 
 ## <a name="2x-sdk-spring-boot-starter"></a>2.x SDK Spring Boot スターター

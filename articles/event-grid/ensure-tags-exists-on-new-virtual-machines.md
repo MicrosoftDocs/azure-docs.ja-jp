@@ -10,13 +10,13 @@ ms.workload: infrastructure-services
 ms.date: 07/07/2020
 ms.author: eamono
 ms.openlocfilehash: 3b9b49a4d38566891f442a3d2d7eac9bf1d36465
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87462005"
 ---
-# <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>チュートリアル:Azure Automation を Event Grid および Microsoft Teams と統合する
+# <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>チュートリアル: Azure Automation を Event Grid および Microsoft Teams と統合する
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -39,35 +39,35 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="import-an-event-grid-sample-runbook"></a>Event Grid のサンプル Runbook をインポートする
 
-1. お使いの Automation アカウントを選び、 **[Runbook]** ページを選びます。
+1. お使いの Automation アカウントを選び、**[Runbook]** ページを選びます。
 
    ![Runbook を選ぶ](./media/ensure-tags-exists-on-new-virtual-machines/select-runbooks.png)
 
 2. **[ギャラリーを参照]** ボタンを選びます。
 
-3. **Event Grid** を検索し、 **[Integrating Azure Automation with Event grid]\(Azure Automation と Event Grid の統合\)** を選びます。
+3. **Event Grid** を検索し、**[Integrating Azure Automation with Event grid]\(Azure Automation と Event Grid の統合\)** を選びます。
 
     ![ギャラリーの Runbook をインポートする](media/ensure-tags-exists-on-new-virtual-machines/gallery-event-grid.png)
 
 4. **[インポート]** を選び、名前を「**Watch-VMWrite**」にします。
 
-5. インポートされた後、 **[編集]** を選んで Runbook ソースを表示します。 
+5. インポートされた後、**[編集]** を選んで Runbook ソースを表示します。 
 6. スクリプトの 74 行目を更新して `Tags` の代わりに `Tag` を使用してください。
 
     ```powershell
     Update-AzureRmVM -ResourceGroupName $VMResourceGroup -VM $VM -Tag $Tag | Write-Verbose
     ```
-7. **[発行]** を選択します。
+7. **[発行]** ボタンを選びます。
 
 ## <a name="create-an-optional-microsoft-teams-webhook"></a>オプションの Microsoft Teams webhook を作成する
 
-1. Microsoft Teams で、チャネル名の隣の **[その他のオプション]** を選び、 **[コネクタ]** を選びます。
+1. Microsoft Teams で、チャネル名の隣の **[その他のオプション]** を選び、**[コネクタ]** を選びます。
 
     ![Microsoft Teams の接続](media/ensure-tags-exists-on-new-virtual-machines/teams-webhook.png)
 
-2. コネクタの一覧をスクロールして **[Incoming Webhook]\(受信 webhook\)** に移動し、 **[追加]** を選びます。
+2. コネクタの一覧をスクロールして **[Incoming Webhook]\(受信 webhook\)** に移動し、**[追加]** を選びます。
 
-3. 名前に「**AzureAutomationIntegration**」と入力し、 **[作成]** を選びます。
+3. 名前に「**AzureAutomationIntegration**」と入力し、**[作成]** を選びます。
 
 4. Webhook URL をクリップボードにコピーして保存します。 webhook の URL は、Microsoft Teams への情報の送信に使います。
 
@@ -77,13 +77,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Watch-VMWrite Runbook を開きます。
 
-2. **[Webhook]** を選び、 **[Webhook の追加]** ボタンを選びます。
+2. **[Webhook]** を選び、**[Webhook の追加]** ボタンを選びます。
 
 3. 名前に「**WatchVMEventGrid**」と入力します。 URL をクリップボードにコピーして保存します。
 
     ![webhook 名を構成する](media/ensure-tags-exists-on-new-virtual-machines/copy-url.png)
 
-4. **[パラメータと実行設定を構成する]** を選び、 **[CHANNELURL]** に Microsoft Teams の webhook の URL を入力します。 **[WEBHOOKDATA]** は空白のままにします。
+4. **[パラメータと実行設定を構成する]** を選び、**[CHANNELURL]** に Microsoft Teams の webhook の URL を入力します。 **[WEBHOOKDATA]** は空白のままにします。
 
     ![webhook のパラメーターを構成する](media/ensure-tags-exists-on-new-virtual-machines/configure-webhook-parameters.png)
 
@@ -91,7 +91,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-an-event-grid-subscription"></a>Event Grid のサブスクリプションを作成する
 
-1. **[Automation アカウント]** 概要ページで、 **[イベント グリッド]** を選びます。
+1. **[Automation アカウント]** 概要ページで、**[イベント グリッド]** を選びます。
 
     ![Event Grid の選択](media/ensure-tags-exists-on-new-virtual-machines/select-event-grid.png)
 
@@ -101,7 +101,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     1. **[トピックの種類]** で **[Azure サブスクリプション]** を選びます。
     2. **[すべてのイベントの種類を購読します]** チェック ボックスをオフにします。
     3. 名前に「**AzureAutomation**」と入力します。
-    4. **[定義済みのイベントの種類]** ボックスの一覧で、 **[Resource Write Success]\(リソース書き込み成功\)** を除く、すべてのオプションのチェック ボックスをオフにします。
+    4. **[定義済みのイベントの種類]** ボックスの一覧で、**[Resource Write Success]\(リソース書き込み成功\)** を除く、すべてのオプションのチェック ボックスをオフにします。
 
         > [!NOTE] 
         > Azure Resource Manager は現在、作成と更新を区別していないため、 このチュートリアルを Azure サブスクリプションのすべての Microsoft.Resources.ResourceWriteSuccess イベントに対して実装すると大量の呼び出しが発生する可能性があります。

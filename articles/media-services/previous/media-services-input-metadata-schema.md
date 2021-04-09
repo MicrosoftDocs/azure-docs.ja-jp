@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services 入力メタデータのスキーマ | Microsoft Docs
 description: この記事では、Azure Media Services 入力メタデータのスキーマの概要を説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 57a91622bef401d946a383e3be39f2e566fa50b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: eebe1c77c9af6791be94c16f0f792a9e7deb9a6e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267838"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103017411"
 ---
 # <a name="input-metadata"></a>入力メタデータ
 
@@ -50,7 +50,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
  XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **名前**<br /><br /> 必須 |**xs:string** |資産ファイルの名前。 |
 | **[サイズ]**<br /><br /> 必須 |**xs:long** |資産ファイルのサイズ (バイト単位)。 |
@@ -67,7 +67,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 > 
 
 ### <a name="child-elements"></a>子要素
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **Programs**<br /><br /> minOccurs="0" | |資産ファイルが MPEG-TS 形式の場合のすべての [Programs 要素](media-services-input-metadata-schema.md#Programs)のコレクション。 |
 | **VideoTracks**<br /><br /> minOccurs="0" | |各物理資産ファイルには、適切なコンテナー形式にインターリーブされる 0 個以上のビデオ トラックを含めることができます。 この要素には、資産ファイルの一部であるすべての [VideoTracks](media-services-input-metadata-schema.md#VideoTracks) のコレクションが含まれます。 |
@@ -78,7 +78,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **Id**<br /><br /> 必須 |**xs:int** |このオーディオまたはビデオ トラックの 0 から始まるインデックス。<br /><br /> 必ずしも MP4 ファイルで使用されている TrackID であるとは限りません。 |
 | **Codec** |**xs:string** |ビデオ トラック コーデック文字列。 |
@@ -94,7 +94,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 > 
 
 ### <a name="child-elements"></a>子要素
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **Disposition**<br /><br /> minOccurs="0" maxOccurs="1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |プレゼンテーション情報が含まれます (特定のオーディオ トラックが視覚障碍者向けかどうか、など)。 |
 | **Metadata**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |さまざまな情報を保持する際に使用できる汎用的なキー/値文字列。 例: key=”language”、value=”eng”。 |
@@ -107,7 +107,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
  XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **SampleFormat** |**xs:string** |サンプル形式。 |
 | **ChannelLayout** |**xs: string** |チャネル レイアウト。 |
@@ -124,7 +124,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **FourCC**<br /><br /> 必須 |**xs:string** |ビデオ コーデックの FourCC コード。 |
 | **プロファイル** |**xs: string** |ビデオ トラックのプロファイル。 |
@@ -148,7 +148,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **key**<br /><br /> 必須 |**xs:string** |キー/値ペアのキー。 |
 | **value**<br /><br /> 必須 |**xs:string** |キー/値ペアの値。 |
@@ -157,7 +157,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 **ProgramType** は、プログラムを記述するグローバルな複合型です。  
 
 ### <a name="attributes"></a>属性
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **ProgramId**<br /><br /> 必須 |**xs:int** |プログラム ID |
 | **NumberOfPrograms**<br /><br /> 必須 |**xs:int** |プログラム数。 |
@@ -172,7 +172,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **[Default]**<br /><br /> 必須 |**xs: int** |この属性を 1 に設定して、これが既定のプレゼンテーションであることを示します。 |
 | **Dub**<br /><br /> 必須 |**xs:int** |この属性を 1 に設定して、これが吹き替えのプレゼンテーションであることを示します。 |
@@ -190,7 +190,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 複数の **Program** 要素が保持されているラッパー要素。  
 
 ### <a name="child-elements"></a>子要素
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **Program**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[ProgramType](media-services-input-metadata-schema.md#ProgramType) |MPEG-TS 形式の資産ファイルについては、資産ファイルのプログラムに関する情報が含まれます。 |
 
@@ -200,7 +200,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
  XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="child-elements"></a>子要素
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **VideoTrack**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[VideoTrackType (TrackType から継承)](media-services-input-metadata-schema.md#VideoTrackType) |資産ファイルのビデオ トラックに関する情報が含まれます。 |
 
@@ -210,7 +210,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
  XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="elements"></a>要素
-| 名前 | Type | 説明 |
+| 名前 | 型 | 説明 |
 | --- | --- | --- |
 | **AudioTrack**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[AudioTrackType (TrackType から継承)](media-services-input-metadata-schema.md#AudioTrackType) |資産ファイルのオーディオ トラックに関する情報が含まれます。 |
 

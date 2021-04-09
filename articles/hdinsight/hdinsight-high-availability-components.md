@@ -4,12 +4,12 @@ description: HDInsight クラスターで使用されるさまざまな高可用
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 336fe91174a8fc6d73d6e45c5fd1e2bf244eda52
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 93d2317c85f93ce8a22f2d434fbc081a88265a74
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945300"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863719"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight でサポートされている高可用性サービス
 
@@ -34,7 +34,7 @@ HDInsight では、次の 4 つのプライマリ サービスが、自動フェ
 - スレーブ高可用性サービス
 - マスター高可用性サービス
 
-![高可用性インフラストラクチャ](./media/hdinsight-high-availability-components/high-availability-architecture.png)
+:::image type="content" source="./media/hdinsight-high-availability-components/high-availability-architecture.png" alt-text="高可用性インフラストラクチャ" border="false":::
 
 また、他の高可用性サービスもあり、これらはオープンソースの Apache 信頼性コンポーネントによりサポートされています。 次のコンポーネントも HDInsight クラスターに存在します。
 
@@ -91,7 +91,7 @@ master-ha-service は、アクティブなヘッドノードでのみ実行さ�
 
 ### <a name="the-failover-process"></a>フェールオーバー プロセス
 
-![フェールオーバー プロセス](./media/hdinsight-high-availability-components/failover-steps.png)
+:::image type="content" source="./media/hdinsight-high-availability-components/failover-steps.png" alt-text="フェールオーバー プロセス" border="false":::
 
 ヘルス モニターは、マスター フェールオーバー コントローラーと共に各ヘッドノードで実行され、ハートビート通知が ZooKeeper クォーラムに送信されます。 このシナリオでは、ヘッドノードは HA サービスと見なされます。 ヘルス モニターにより、各高可用性サービスが正常であるかどうか、およびリーダーシップの選択に参加する準備ができているかどうかが確認されます。 もしできているなら、このヘッドノードは選択に加えられます。 そうでない場合は、再度準備が整うまで選択を停止します。
 

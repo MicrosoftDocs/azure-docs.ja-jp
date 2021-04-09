@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0bfca096eb49ee9f1807935de1dac49151cc8ac3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84743764"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールに対するセキュリティ アラートを構成する
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) 組織内で疑わしいアクティビティ�
 ### <a name="severity"></a>重大度
 
 - **高**: ポリシー違反のため直ちに対処が必要です。 
-- **Medium**:早急の対処は必要ありませんが、ポリシー違反の可能性が通知されています。
+- **中**: 早急の対処は必要ありませんが、ポリシー違反の可能性が通知されています。
 - **低**: 早急な対処は必要ありませんが、望ましいポリシー変更が提案されています。
 
 ## <a name="configure-security-alert-settings"></a>セキュリティ アラート設定の構成

@@ -3,20 +3,20 @@ title: バックアップ センターを使用してバックアップを監視
 description: この記事では、バックアップ センターを使用して、バックアップを大規模に監視および操作する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 1c40f7804a0f0bb7694e6df205648d3ad20ad80e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 86b81110d6abeb1425e18ee45dfe65a96f69687d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719544"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102506127"
 ---
-# <a name="monitor-and-operate-backups-using-backup-center"></a>バックアップ センターを使用してバックアップを監視および操作する
+# <a name="monitor-and-operate-backups-using-backup-center"></a>Backup Center を使用してバックアップを監視および操作する
 
 バックアップ管理者は、バックアップ センターを 1 つのウィンドウとして使用して、ジョブやバックアップ インベントリを日常的に監視できます。 また、バックアップ センターを使用すると、オンデマンド バックアップ要求への応答、バックアップの復元、バックアップ ポリシーの作成などの通常の操作を実行することもできます。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
-* バックアップ センターでは現在、Azure VM のバックアップ、Azure VM 内の SQL のバックアップ、Azure VM 内の SAP HANA のバックアップ、Azure Files のバックアップ、Azure BLOB のバックアップ、Azure Managed Disks のバックアップ、および Azure Database for PostgreSQL サーバーのバックアップがサポートされています。
+* バックアップ センターでは現在、Azure VM のバックアップ、Azure VM 内の SQL のバックアップ、Azure VM 内の SAP HANA のバックアップ、Azure Files のバックアップ、Azure Blob のバックアップ、Azure Managed Disks のバックアップ、および Azure Database for PostgreSQL サーバーのバックアップがサポートされています。
 * サポートされるシナリオとサポートされないシナリオの詳細な一覧については、[サポート マトリックス](backup-center-support-matrix.md)を参照してください。
 
 ## <a name="backup-instances"></a>バックアップ インスタンス

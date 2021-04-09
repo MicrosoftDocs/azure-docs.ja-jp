@@ -7,10 +7,10 @@ ms.subservice: process-automation
 ms.date: 09/15/2020
 ms.topic: tutorial
 ms.openlocfilehash: 1b6c02778b0ee790d81c713283e653058c29c153
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92899803"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>チュートリアル:グラフィカル Runbook を作成する
@@ -108,7 +108,7 @@ Runbook を発行して運用環境で使用できるようにする前に、テ
 
 2. [Runbook] ページで左にスクロールして Runbook を表示し、 **[編集状態]** の値が **[発行済み]** に設定されていることを確認します。
 
-3. 右へスクロールして戻り、 **MyFirstRunbook-Graphical** ページを表示します。
+3. 右へスクロールして戻り、**MyFirstRunbook-Graphical** ページを表示します。
 
    上部のオプションを使用すると、Runbook の即時開始、将来の開始スケジュールの設定、または Runbook を HTTP 呼び出しで開始できるようにする [Webhook](../automation-webhooks.md) の作成を行うことができます。
 
@@ -172,11 +172,11 @@ Runbook をテストして発行しましたが、これまでのところ Azure
 
     ![アクティビティ間のリンクの作成](../media/automation-tutorial-runbook-graphical/runbook-link-auth-activities.png)
 
-8. キャンバスで `Connect-AzAccount` を選択します。 [構成制御] ペインで、 **[ラベル]** フィールドに「 **Login to Azure** 」と入力します。
+8. キャンバスで `Connect-AzAccount` を選択します。 [構成制御] ペインで、 **[ラベル]** フィールドに「**Login to Azure**」と入力します。
 
 9. **[パラメーター]** をクリックすると、[アクティビティ パラメーターの構成] ページが表示されます。
 
-10. `Connect-AzAccount` コマンドレットには複数のパラメーター セットがあり、パラメーターの値を指定する前に、パラメーター セットを 1 つ選択する必要があります。 **[パラメーター セット]** をクリックしてから、 **ServicePrincipalCertificateWithSubscriptionId** を選択します。
+10. `Connect-AzAccount` コマンドレットには複数のパラメーター セットがあり、パラメーターの値を指定する前に、パラメーター セットを 1 つ選択する必要があります。 **[パラメーター セット]** をクリックしてから、**ServicePrincipalCertificateWithSubscriptionId** を選択します。
 
 11. このパラメーター セットのパラメーターが、[アクティビティ パラメーター構成] ページに表示されます。 **[APPLICATIONID]** をクリックします。
 
@@ -232,7 +232,7 @@ Runbook をテストして発行しましたが、これまでのところ Azure
 
 4. [`Start-AzVM`] を選択します。 **[パラメーター]** 、 **[パラメーター セット]** の順にクリックし、アクティビティに対するセットを表示します。
 
-5. パラメーター セットには、 **ResourceGroupNameParameterSetName** を選択します。 **[ResourceGroupName]** と **[Name]** フィールドの横に付いている感嘆符は、それらが必須のパラメーターであることを示します。 どちらのフィールドも文字列値が想定されていることに注意してください。
+5. パラメーター セットには、**ResourceGroupNameParameterSetName** を選択します。 **[ResourceGroupName]** と **[Name]** フィールドの横に付いている感嘆符は、それらが必須のパラメーターであることを示します。 どちらのフィールドも文字列値が想定されていることに注意してください。
 
 6. 一覧から **Name** してください。 **[データ ソース]** フィールドに対して **[PowerShell 式]** を選択します。 この Runbook を開始するために使用する VM として、二重引用符で囲んだコンピューター名を入力します。 **[OK]** をクリックします。
 
@@ -263,9 +263,9 @@ Runbook ではこの時点で、`Start-AzVM` コマンドレットに対して�
 
 5. `Start-AzVM` アクティビティを選択し、 **[パラメーター]** をクリックします。
 
-6. **Name** の **[データ ソース]** フィールドを **[Runbook の入力]** に変更します。 次に、 **VMName** を選択します。
+6. **Name** の **[データ ソース]** フィールドを **[Runbook の入力]** に変更します。 次に、**VMName** を選択します。
 
-7. **ResourceGroupName** の **[データ ソース]** フィールドを **[Runbook の入力]** に変更し、 **ResourceGroupName** を選択します。
+7. **ResourceGroupName** の **[データ ソース]** フィールドを **[Runbook の入力]** に変更し、**ResourceGroupName** を選択します。
 
     ![Start-AzVM のパラメーター](../media/automation-tutorial-runbook-graphical/start-azurermvm-params-runbookinput.png)
 
@@ -297,15 +297,15 @@ Runbook ではこの時点で、`Start-AzVM` コマンドレットに対して�
 
 6. **GetVirtualMachineInResourceGroupNameParamSet** パラメーター セットを選択します。 **[ResourceGroupName]** と **[Name]** フィールドの横に付いている感嘆符は、それらが必須のパラメーターであることを示しています。 どちらのフィールドも文字列値が想定されていることに注意してください。
 
-7. **Name** の **[データ ソース]** で **[Runbook の入力]** を選択し、 **VMName** を選択します。 **[OK]** をクリックします。
+7. **Name** の **[データ ソース]** で **[Runbook の入力]** を選択し、**VMName** を選択します。 **[OK]** をクリックします。
 
-8. **ResourceGroupName** の **[データ ソース]** で、 **[Runbook の入力]** を選択し、 **ResourceGroupName** を選択します。 **[OK]** をクリックします。
+8. **ResourceGroupName** の **[データ ソース]** で、 **[Runbook の入力]** を選択し、**ResourceGroupName** を選択します。 **[OK]** をクリックします。
 
 9. **Status** の **[データ ソース]** で、 **[定数値]** を選択し、 **[True]** を選択します。 **[OK]** をクリックします。
 
 10. `Specify Subscription Id` から `Get-AzVM` へのリンクを作成します。
 
-11. ライブラリ コントロールで **[Runbook の制御]** を展開し、 **Code** をキャンバスに追加します。  
+11. ライブラリ コントロールで **[Runbook の制御]** を展開し、**Code** をキャンバスに追加します。  
 
 12. `Get-AzVM` から `Code` へのリンクを作成します。  
 
@@ -335,7 +335,7 @@ Runbook ではこの時点で、`Start-AzVM` コマンドレットに対して�
 
 18. **[条件式]** に「`$ActivityOutput['Get Status'] -eq "Stopped"`」と入力します。 `Start-AzVM` は、VM が停止している場合にのみ実行されるようになりました。
 
-19. ライブラリ コントロールで **Cmdlets** 、 **Microsoft.PowerShell.Utility** の順に展開します。
+19. ライブラリ コントロールで **Cmdlets** 、**Microsoft.PowerShell.Utility** の順に展開します。
 
 20. キャンバスに `Write-Output` を 2 回追加します。
 

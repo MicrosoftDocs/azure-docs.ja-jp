@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 01/22/2021
 ms.author: duau
 ms.openlocfilehash: 455eeb83ef5a9608c077de24b8d3d4722d26a822
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98742711"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager エンドポイントの監視

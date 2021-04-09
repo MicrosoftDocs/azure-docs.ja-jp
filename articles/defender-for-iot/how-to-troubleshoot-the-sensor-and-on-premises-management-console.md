@@ -1,18 +1,14 @@
 ---
 title: センサーとオンプレミスの管理コンソールのトラブルシューティング
 description: センサーとオンプレミスの管理コンソールをトラブルシューティングして、発生している可能性のある問題を排除します。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
-ms.date: 1/3/2021
+ms.date: 03/14/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 624f60441f56646c3633a2afa79d326c92ba1a37
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 83ffec959a5b38e9f4fd4d7d0dcfd3b1b9faa096
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523721"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785446"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>センサーとオンプレミスの管理コンソールのトラブルシューティング
 
@@ -54,7 +50,7 @@ ms.locfileid: "100523721"
 1. **[次へ]** を選択すると、管理コンソールのユーザーとシステムが生成したパスワードが表示されます。
 
     > [!NOTE]
-    > センサーまたはオンプレミスの管理コンソールに初めてサインインすると、接続先のサブスクリプションにリンクされます。 CyberX またはサポート ユーザーのパスワードをリセットする必要がある場合は、そのサブスクリプションを選択する必要があります。 CyberX またはサポート ユーザーのパスワードを復元する方法の詳細については、「[センサーまたはオンプレミスの管理コンソールのユーザー パスワードをリセットする](how-to-create-and-manage-users.md#resetting-a-users-password-for-the-sensor-or-on-premises-management-console)」を参照してください。
+    > センサーまたはオンプレミスの管理コンソールに初めてサインインすると、接続先のサブスクリプションにリンクされます。 CyberX またはサポート ユーザーのパスワードをリセットする必要がある場合は、そのサブスクリプションを選択する必要があります。 CyberX またはサポート ユーザーのパスワードの復元に関する詳細は、「[パスワードのリセット](how-to-create-and-manage-users.md#resetting-passwords)」を参照してください。
 
 ### <a name="investigate-a-lack-of-traffic"></a>トラフィックの欠落を調査する
 
@@ -283,7 +279,7 @@ ICS デバイスは、外部 IP アドレスを使用して構成される場合
 
 アーカイブ済みログの一覧には、最大 5 つの項目を含めることができます。 リスト内の項目数がその数を超えると、最も古い項目が削除されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
 - [アラートを表示する](how-to-view-alerts.md)
 

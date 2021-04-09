@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
 ms.openlocfilehash: c1409bd7f098c24efbb4196d78c6dffb6048119b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93335443"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB の演算子
@@ -56,7 +56,7 @@ WHERE 7 = 'a'
 |  | **True** | **False** | **Undefined** |
 | --- | --- | --- | --- |
 | **True** |True |True |True |
-| **False** |True |誤り |未定義。 |
+| **False** |True |False |未定義。 |
 | **Undefined** |True |未定義 |未定義 |
 
 **AND 演算子**
@@ -65,7 +65,7 @@ WHERE 7 = 'a'
 
 |  | **True** | **False** | **Undefined** |
 | --- | --- | --- | --- |
-| **True** |True |誤り |未定義。 |
+| **True** |True |False |未定義。 |
 | **False** |False |False |False |
 | **Undefined** |未定義。 |False |未定義。 |
 

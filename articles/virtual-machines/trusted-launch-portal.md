@@ -5,16 +5,16 @@ author: khyewei
 ms.author: khwei
 ms.reviewer: cynthn
 ms.service: virtual-machines
-ms.subservice: security
+ms.subservice: trusted-launch
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 4c4ad2a1350632d381cc258049ee85c87766f9b5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dec9c7581bbcf55196b04e0a76e9e61f81a27244
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694123"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582070"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>トラステッド起動を有効にして VM をデプロイする (プレビュー)
 
@@ -37,7 +37,7 @@ ms.locfileid: "101694123"
 1. **[仮想マシン]** ページで、 **[追加]** を選択してから、 **[仮想マシン]** を選択します。
 1. **[プロジェクトの詳細]** で、正しいサブスクリプションが選択されていることを確認します。
 1. **[リソース グループ]** で **[新規作成]** を選択し、リソース グループの名前を入力するか、ドロップダウンから既存のリソース グループを選択します。
-1. **[インスタンスの詳細]** で、仮想マシンの名前を入力し、トラステッド起動がサポートされているリージョンを選択します。
+1. **[インスタンスの詳細]** で、仮想マシンの名前を入力し、[トラステッド起動](trusted-launch.md#public-preview-limitations)がサポートされているリージョンを選択します。
 1. **[イメージ]** で、[トラステッド起動がサポートされているイメージ](trusted-launch.md#public-preview-limitations)を選択します。 イメージの第 1 世代のバージョンしか表示されない場合がありますが、それでもかまわないので、次のステップに進みます。
 1. ページの上部にある **[詳細設定]** タブを選択してそれに切り替えます。
 1. **[VM の生成]** セクションまで下にスクロールし、 **[Gen 2]** を選択します。
@@ -134,13 +134,13 @@ ls: cannot access '/dev/tpm0': No such file or directory
 
 テンプレートは、サブスクリプションごとに 1 回だけデプロイする必要があります。 サポートされているすべての VM に、`GuestAttestation` および `AzureSecurity` 拡張機能が自動的にインストールされます。 エラーが発生する場合は、もう一度テンプレートを再デプロイしてみてください。
 
-トラステッド起動の VM で vTPM とセキュア ブートに関する推奨事項を入手するには、[サブスクリプションへのイニシアティブの追加](https://docs.microsoft.com/azure/security-center/custom-security-policies#to-add-a-custom-initiative-to-your-subscription)に関するページを参照してください。
+トラステッド起動の VM で vTPM とセキュア ブートに関する推奨事項を入手するには、[サブスクリプションへのイニシアティブの追加](../security-center/custom-security-policies.md#to-add-a-custom-initiative-to-your-subscription)に関するページを参照してください。
  
 ## <a name="sign-things-for-secure-boot-on-linux"></a>Linux でセキュア ブートに関するものに署名する
 
 場合によっては、UEFI のセキュア ブートに関するものに署名することが必要になります。  たとえば、Ubuntu では「[How to sign things for Secure Boot](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot)」(セキュア ブートに関するものに署名する方法) の説明に従うことが必要になる場合があります。 このような場合、お使いの VM の MOK ユーティリティ登録キーを入力する必要があります。 これを行うには、Azure シリアル コンソールを使用して MOK ユーティリティにアクセスする必要があります。
 
-1. Linux 用 Azure シリアル コンソールを有効にします。 詳細については、「[Linux 用シリアル コンソール](serial-console-linux.md)」を参照してください。
+1. Linux 用 Azure シリアル コンソールを有効にします。 詳細については、「[Linux 用シリアル コンソール](/troubleshoot/azure/virtual-machines/serial-console-linux)」を参照してください。
 1. [Azure Portal](https://portal.azure.com) にログインします。
 1. **[仮想マシン]** を見つけ、一覧から自分の VM を選択します。
 1. 左側のメニューで、 **[サポート + トラブルシューティング]** の **[シリアル コンソール]** を選択します。 右側にページが開いてシリアル コンソールが表示されます。

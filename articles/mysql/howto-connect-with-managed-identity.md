@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 74530b861b4dc7a35fa8b192ecc0e79ce5fa59c2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 898f568d285c3b4b4360ea4dda8c63a1e0f13a42
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742997"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091799"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>マネージド ID を使用して Azure Database for MySQL に接続する
 
@@ -31,7 +31,7 @@ ms.locfileid: "92742997"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure リソースのマネージド ID 機能に慣れていない場合は、こちらの[概要](../../articles/active-directory/managed-identities-azure-resources/overview.md)を参照してください。 Azure アカウントをお持ちでない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
-- 必要なリソース作成およびロール管理を実行するため、お使いのアカウントには、適切な範囲 (サブスクリプションまたはリソース グループ) を対象とする "所有者" アクセス許可が必要となります。 ロールの割り当てに関するサポートが必要な場合は、「[Azure ロールベースのアクセス制御 (Azure RBAC) を使用して Azure サブスクリプション リソースへのアクセスを管理する](../../articles/role-based-access-control/role-assignments-portal.md)」を参照してください。
+- 必要なリソース作成およびロール管理を実行するため、お使いのアカウントには、適切な範囲 (サブスクリプションまたはリソース グループ) を対象とする "所有者" アクセス許可が必要となります。 ロールの割り当てに関するサポートが必要な場合は、[Azure ロールの割り当てによる Azure サブスクリプション リソースへのアクセスの管理](../../articles/role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
 - マネージド ID を使用したデータベースへのアクセスに使用する Azure VM (Ubuntu Linux を実行しているものなど) が必要です
 - [Azure AD 認証](howto-configure-sign-in-azure-ad-authentication.md)が構成されている Azure Database for MySQL データベース サーバーが必要です
 - C# のサンプルを実行するため、[C# を使用した接続](connect-csharp.md)方法に関するガイドにまず目を通している

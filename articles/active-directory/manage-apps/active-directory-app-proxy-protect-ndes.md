@@ -14,10 +14,10 @@ ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
 ms.openlocfilehash: 69193296069765ae6e94ffe97913c136a0d033d9
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99257898"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>ネットワーク デバイス登録サービス (NDES) サーバー上の Azure AD アプリケーション プロキシとの統合

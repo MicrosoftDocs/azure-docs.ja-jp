@@ -2,13 +2,13 @@
 title: Azure VMware Solution のジャンプ ボックスを作成する
 description: Azure VMware Solution のジャンプ ボックスを作成する手順。
 ms.topic: include
-ms.date: 09/28/2020
-ms.openlocfilehash: 5d5a5d82cf6e70e7ad55bcfa10c7f85372131c87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/13/2021
+ms.openlocfilehash: f746e11763e1df1686f3134960dea167bf1c9908
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578421"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462257"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-access-private-cloud.md -->
 
@@ -33,9 +33,8 @@ ms.locfileid: "91578421"
    | **ユーザー名** | VM にログオンするためのユーザー名を入力します。 |
    | **パスワード** | VM にログオンするためのパスワードを入力します。 |
    | **[パスワードの確認入力]** | VM にログオンするためのパスワードを入力します。 |
-   | **パブリック インバウンド ポート** | **[なし]** を選択します。 [なし] を選択した場合は、[JIT アクセス](../../security-center/security-center-just-in-time.md#jit-configure)を使用して、VM にアクセスする必要があるときにのみ VM へのアクセスを制御できます。  |
+   | **パブリック インバウンド ポート** | **[なし]** を選択します。 [なし] を選択した場合は、[JIT アクセス](../../security-center/security-center-just-in-time.md#jit-configure)を使用して、VM にアクセスする必要があるときにのみ VM へのアクセスを制御できます。 あるいは、ネットワーク ポートを公開せずにインターネットから安全にジャンプ ボックス サーバーにアクセスするようにする場合は、[Azure Bastion](../../bastion/tutorial-create-host-portal.md) を使用することもできます。  |
 
 
 1. 検証に合格したら、 **[作成]** を選択して仮想マシンの作成プロセスを開始します。
 
-   :::image type="content" source="../media/tutorial-access-private-cloud/ss11-review-create-wjb01.png" alt-text="ジャンプ ボックス用に新しい Windows 10 VM を追加する。" border="true":::

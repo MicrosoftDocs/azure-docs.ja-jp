@@ -4,10 +4,10 @@ description: このクイックスタートでは、Azure portal を使用して
 ms.date: 02/05/2021
 ms.topic: quickstart
 ms.openlocfilehash: 5a336fe4caf5d2f825a93b5c7b8f8d05f6255c39
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99592434"
 ---
 # <a name="quickstart-create-a-management-group"></a>クイック スタート:管理グループの作成
@@ -61,4 +61,4 @@ ms.locfileid: "99592434"
 管理グループについて、またリソース階層の管理方法について詳しくは、次の記事に進んでください。
 
 > [!div class="nextstepaction"]
-> 管理グループを使用してリソースを管理する
+> [管理グループを使用してリソースを管理する](./manage.md)

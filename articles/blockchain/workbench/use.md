@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
 ms.openlocfilehash: 5761bf1294691c2d50e0e389fe69ec286df4a06c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74324052"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>チュートリアル:Azure Blockchain Workbench でのアプリケーションの使用
@@ -36,7 +36,7 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
 
 ## <a name="create-new-contract"></a>新しいコントラクトの作成
 
-新しいコントラクトを作成するには、コントラクト **イニシエーター**として指定されているメンバーになる必要があります。 コントラクトのアプリケーション ロールとイニシエーターの定義については、[構成概要ページのワークフローに関するセクション](configuration.md#workflows)を参照してください。 アプリケーション ロールにメンバーを割り当てる方法については、[アプリケーションにメンバーを追加する](manage-users.md#add-member-to-application)方法に関するページを参照してください。
+新しいコントラクトを作成するには、コントラクト **イニシエーター** として指定されているメンバーになる必要があります。 コントラクトのアプリケーション ロールとイニシエーターの定義については、[構成概要ページのワークフローに関するセクション](configuration.md#workflows)を参照してください。 アプリケーション ロールにメンバーを割り当てる方法については、[アプリケーションにメンバーを追加する](manage-users.md#add-member-to-application)方法に関するページを参照してください。
 
 1. Blockchain Workbench のアプリケーション セクションで、作成するコントラクトを含んだアプリケーション タイルを選択します。 アクティブなコントラクトの一覧が表示されます。
 

@@ -7,10 +7,10 @@ ms.date: 09/22/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 59379dd9c3a41729466de269b52dfd3fb206eea9
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97368717"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Windows デスクトップ クライアントを使用して接続する

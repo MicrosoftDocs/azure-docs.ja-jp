@@ -7,12 +7,12 @@ ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 1a5f665627da1b08ec57b04863a58f227c673af4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2950c175acfdda33394c93649a3e2c41d1264dd2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944897"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705995"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプライン オーケストレーションおよびトリガーのトラブルシューティング
 
@@ -78,13 +78,32 @@ Azure Data Factory では、すべてのリーフレベルのアクティビテ�
 1. [パイプラインの失敗とエラーの処理方法](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459)に関するページに従って、アクティビティレベルのチェックを実装します。
 1. [Factory によるクエリ](/rest/api/datafactory/pipelineruns/querybyfactory)に関するページに従って、Azure Logic Apps を使用して定期的な間隔でパイプラインを監視します。
 
-## <a name="monitor-pipeline-failures-in-regular-intervals"></a>定期的な間隔でパイプライン エラーを監視する
+### <a name="how-to-monitor-pipeline-failures-in-regular-intervals"></a>定期的な間隔でパイプライン エラーを監視する方法
 
 障害が発生した Data Factory パイプラインを、特定の間隔 (5 分など) で監視する必要がある場合があります。 エンドポイントを使用して、データ ファクトリからパイプライン実行にクエリを実行し、フィルター処理することができます。 
 
-[Factory によるクエリ](/rest/api/datafactory/pipelineruns/querybyfactory)に関するページで説明されているように、失敗したすべてのパイプラインのクエリを 5 分ごとに実行するように Azure ロジック アプリを設定します。 そうすると、インシデントをチケット システムに報告できるようになります。
+**解決方法** [Factory によるクエリ](/rest/api/datafactory/pipelineruns/querybyfactory)に関するページで説明されているように、失敗したすべてのパイプラインのクエリを 5 分ごとに実行するように Azure ロジック アプリを設定できます。 そうすると、インシデントをチケット システムに報告できるようになります。
 
 詳細については、[Data Factory から通知を送信する、パート 2](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/) に関するページを参照してください。
+
+### <a name="degree-of-parallelism--increase-does-not-result-in-higher-throughput"></a>並列処理の次数を増やしてもスループットが向上しない
+
+**原因** 
+
+*ForEach* の並列処理の次数は、実際には並列処理の最大限度です。 このパラメーターは、特定の同時実行数を保証するものではなく、設定された値を超えないことを保証するものです。 これは、ソースとシンクへの同時アクセスを制御するときに利用できる制限値として考えてください。
+
+*ForEach* に関する既知の事実
+ * Foreach には、batch count(n) というプロパティがあります。既定値は 20 で、最大値は 50 です。
+ * バッチ カウント (n) は、作成するキューの個数を指定するために使用されます。 これらのキューの作成方法の詳細については、後で説明します。
+ * 各キューは順番に実行されますが、複数のキューを並列に実行することもできます。
+ * キューは事前に作成されます。 つまり、実行時にはキューの再調整は行われません。
+ * 処理されるアイテムは、キューごとに常に 1 つだけです。 つまり、一度に処理される最大項目数は n 個となります。
+ * foreach の合計処理時間は、最も長いキューの処理時間と同じです。 つまり、foreach アクティビティのあり方は、キューの作成方法によって決まります。
+ 
+**解像度**
+
+ * *SetVariable* アクティビティは、並列で実行される *For Each* 内では使用しないでください。
+ * お客様は、キューの作成のしくみを考慮しながら、複数の *foreach* を設定し、各 foreach の項目の処理時間が同程度になるようにすることで、foreach のパフォーマンスを向上させることができます。 これにより、長時間の実行が順次ではなく、並列で処理されるようになります。
 
 ## <a name="next-steps"></a>次のステップ
 

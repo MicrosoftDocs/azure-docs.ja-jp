@@ -16,10 +16,10 @@ ms.date: 09/19/2016
 ms.author: rohink
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8e116096afbd01af4914be49d5675881724d5069
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96015062"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>.NET SDK を使用した DNS ゾーンとレコード セットの作成
@@ -45,9 +45,9 @@ Azure DNS .NET SDK を使用するには、 **Azure DNS 管理ライブラリ** 
 
 1. **Visual Studio** で、プロジェクトを開くか、新規作成します。
 2. **[ツール]** **>** **[NuGet パッケージ マネージャー]** **>** **[ソリューションの NuGet パッケージの管理]** の順に移動します。
-3. **[参照]** をクリックし、 **[プレリリースを含める]** チェック ボックスをオンにして、検索ボックスに「**Microsoft.Azure.Management.Dns**」と入力します。
+3. **[参照]** をクリックし、**[プレリリースを含める]** チェック ボックスをオンにして、検索ボックスに「**Microsoft.Azure.Management.Dns**」と入力します。
 4. パッケージを選択し、 **[インストール]** をクリックして Visual Studio プロジェクトに追加します。
-5. 上記のプロセスを繰り返して、次のパッケージもインストールします。**Microsoft.Rest.ClientRuntime.Azure.Authentication** と **Microsoft.Azure.Management.ResourceManager**。
+5. 上記の手順を繰り返して、**Microsoft.Rest.ClientRuntime.Azure.Authentication** パッケージと **Microsoft.Azure.Management.ResourceManager** パッケージもインストールします。
 
 ## <a name="add-namespace-declarations"></a>名前空間宣言の追加
 

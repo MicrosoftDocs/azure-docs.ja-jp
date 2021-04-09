@@ -6,13 +6,13 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/29/2020
-ms.openlocfilehash: 5faff410fa18c5161d93f739f77eeb9c85d581a8
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.date: 03/15/2021
+ms.openlocfilehash: d47a7b9e2229ffbd747b1ff7b9491ce99e9b190f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430957"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103492236"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Azure Cosmos DB での改ページ
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

@@ -7,10 +7,10 @@ ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.openlocfilehash: 8c00d2e4f622bcfad7b2468013336f0d936e318c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87048669"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Azure Logic Apps のシーケンシャルなコンボイを使用して、関連するメッセージを Azure Service Bus で送信する
@@ -49,7 +49,7 @@ ms.locfileid: "87048669"
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 Service Bus の "*名前空間*" を見つけて選択します。
 
-1. 名前空間メニューで **[設定]** の **[共有アクセス ポリシー]** を選択します。 **[要求]** で、その名前空間に対して**管理**アクセス許可が付与されていることを確認します。
+1. 名前空間メニューで **[設定]** の **[共有アクセス ポリシー]** を選択します。 **[要求]** で、その名前空間に対して **管理** アクセス許可が付与されていることを確認します。
 
    ![Service Bus 名前空間のアクセス許可を管理する](./media/send-related-messages-sequential-convoy/check-service-bus-permissions.png)
 
@@ -62,7 +62,7 @@ ms.locfileid: "87048669"
       ![Service Bus 名前空間の接続文字列をコピーする](./media/send-related-messages-sequential-convoy/copy-service-bus-connection-string.png)
 
    > [!TIP]
-   > 接続文字列が Service Bus 名前空間に関連付けられているのか、キューのようなメッセージング エンティティに関連付けられているのかを確認するには、接続文字列で `EntityPath`  パラメーターを探します。 このパラメーターがある場合、接続文字列は特定のエンティティを対象としています。これは、ロジック アプリで使用するのに適切な文字列ではありません。
+   > 接続文字列が Service Bus 名前空間に関連付けられているのか、キューのようなメッセージング エンティティに関連付けられているのかを確認するには、接続文字列で `EntityPath` パラメーターを探します。 このパラメーターがある場合、接続文字列は特定のエンティティを対象としています。これは、ロジック アプリで使用するのに適切な文字列ではありません。
 
 ## <a name="create-logic-app"></a>ロジック アプリを作成する
 
@@ -121,8 +121,8 @@ ms.locfileid: "87048669"
 |------|-------------|
 | **`When a message is received in a queue (peek-lock)`** | この Service Bus トリガーでは、指定された繰り返しに基づいて、指定された Service Bus キューでメッセージの有無を確認します。 キューにメッセージが存在する場合はトリガーを起動し、ワークフロー インスタンスを作成して実行します。 <p><p>"*ピーク ロック*" という用語は、キューからメッセージを取得する要求をトリガーによって送信することを意味します。 メッセージが存在する場合、トリガーによってメッセージを取得してロックし、ロック期間が終了するまでそのメッセージに他の処理が行われないようにします。 詳細については、「[セッションを初期化する](#initialize-session)」を参照してください。 |
 | **`Init isDone`** | この [ **[変数を初期化する]** アクション](../logic-apps/logic-apps-create-variables-store-values.md#initialize-variable)で、`false` に設定され、次の条件が満たされたことを示すブール変数を作成します。 <p><p>- セッション内に、読み取りができるメッセージがこれ以上ない。 <br>- これ以上セッション ロックを更新する必要がなく、現在のワークフロー インスタンスを終了できる。 <p><p>詳細については、「[セッションを初期化する](#initialize-session)」を参照してください。 |
-| **`Try`** | この[**スコープ** アクション](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)には、メッセージを処理するために実行されるアクションが含まれています。 `Try` スコープで問題が発生した場合は、後続の `Catch` **スコープ** アクションによってその問題が処理されます。 詳細については、「["Try" スコープ](#try-scope)」を参照してください。 |
-| **`Catch`**| この[**スコープ** アクション](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)には、先行する `Try` スコープで問題が発生した場合に実行されるアクションが含まれています。 詳細については、「["Catch" スコープ](#catch-scope)」を参照してください。 |
+| **`Try`** | この [**スコープ** アクション](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)には、メッセージを処理するために実行されるアクションが含まれています。 `Try` スコープで問題が発生した場合は、後続の `Catch` **スコープ** アクションによってその問題が処理されます。 詳細については、「["Try" スコープ](#try-scope)」を参照してください。 |
+| **`Catch`**| この [**スコープ** アクション](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)には、先行する `Try` スコープで問題が発生した場合に実行されるアクションが含まれています。 詳細については、「["Catch" スコープ](#catch-scope)」を参照してください。 |
 |||
 
 <a name="try-scope"></a>
@@ -148,7 +148,7 @@ ms.locfileid: "87048669"
 |------|-------------|
 | `Complete initial message in queue` | この Service Bus アクションでは、正常に取得されたメッセージを完了としてマークし、再処理を避けるためにキューからそのメッセージを削除します。 詳細については、「[最初のメッセージを処理する](#handle-initial-message)」を参照してください。 |
 | `While there are more messages for the session in the queue` | この [**Until** ループ](../logic-apps/logic-apps-control-flow-loops.md#until-loop)では、メッセージが存在している間または 1 時間が経過するまで、メッセージを取得し続けます。 このループ内のアクションの詳細については、「[キューにセッションのその他のメッセージがある間](#while-more-messages-for-session)」を参照してください。 |
-| **`Set isDone = true`** | これ以上メッセージが存在しない場合、この [**変数の設定**アクション](../logic-apps/logic-apps-create-variables-store-values.md#set-variable)で `isDone` を `true` に設定します。 |
+| **`Set isDone = true`** | これ以上メッセージが存在しない場合、この [**変数の設定** アクション](../logic-apps/logic-apps-create-variables-store-values.md#set-variable)で `isDone` を `true` に設定します。 |
 | **`Renew session lock until cancelled`** | この [**Until** ループ](../logic-apps/logic-apps-control-flow-loops.md#until-loop)では、メッセージが存在している間または 1 時間が経過するまで、このロジック アプリによってセッション ロックが確実に保持されるようにします。 このループ内のアクションの詳細については、「[キャンセルされるまでセッション ロックを更新する](#renew-session-while-messages-exist)」を参照してください。 |
 |||
 
@@ -171,9 +171,9 @@ ms.locfileid: "87048669"
 | 名前 | 説明 |
 |------|-------------|
 | **`Close a session in a queue and fail`** | この Service Bus アクションでは、セッション ロックが開いたままにならないように、キュー内のセッションを閉じます。 詳細については、「[キュー内のセッションを閉じて失敗させる](#close-session-fail)」を参照してください。 |
-| **`Find failure msg from 'Try' block`** | この[**配列のフィルター処理**アクション](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action)では、指定した条件に基づいて、`Try` スコープ内のすべてのアクションの入力と出力から配列を作成します。 この場合、このアクションでは、結果が `Failed` の状態になったアクションからの出力が返されます。 詳細については、「['Try' ブロックの失敗メッセージを検索する](#find-failure-message)」を参照してください。 |
-| **`Select error details`** | この[**選択**アクション](../logic-apps/logic-apps-perform-data-operations.md#select-action)では、指定した条件に基づいて、JSON オブジェクトが含まれた配列を作成します。 これらの JSON オブジェクトは、前のアクションである `Find failure msg from 'Try' block` で作成された配列内の値から構築されます。 この場合、このアクションでは、前のアクションで返されたエラーの詳細から作成された JSON オブジェクトを含む配列を返します。 詳細については、「[エラーの詳細を選択する](#select-error-details)」を参照してください。 |
-| **`Terminate`** | この[**終了**アクション](../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action)では、ワークフローの実行を停止し、進行中のすべてのアクションをキャンセルし、残りのアクションをすべてスキップして、`Select error details` アクションから指定された状態、セッション ID、エラー結果を返します。 詳細については、「[ロジック アプリを終了する](#terminate-logic-app)」を参照してください。 |
+| **`Find failure msg from 'Try' block`** | この [**配列のフィルター処理** アクション](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action)では、指定した条件に基づいて、`Try` スコープ内のすべてのアクションの入力と出力から配列を作成します。 この場合、このアクションでは、結果が `Failed` の状態になったアクションからの出力が返されます。 詳細については、「['Try' ブロックの失敗メッセージを検索する](#find-failure-message)」を参照してください。 |
+| **`Select error details`** | この [**選択** アクション](../logic-apps/logic-apps-perform-data-operations.md#select-action)では、指定した条件に基づいて、JSON オブジェクトが含まれた配列を作成します。 これらの JSON オブジェクトは、前のアクションである `Find failure msg from 'Try' block` で作成された配列内の値から構築されます。 この場合、このアクションでは、前のアクションで返されたエラーの詳細から作成された JSON オブジェクトを含む配列を返します。 詳細については、「[エラーの詳細を選択する](#select-error-details)」を参照してください。 |
+| **`Terminate`** | この [**終了** アクション](../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action)では、ワークフローの実行を停止し、進行中のすべてのアクションをキャンセルし、残りのアクションをすべてスキップして、`Select error details` アクションから指定された状態、セッション ID、エラー結果を返します。 詳細については、「[ロジック アプリを終了する](#terminate-logic-app)」を参照してください。 |
 |||
 
 <a name="complete-template"></a>
@@ -199,7 +199,7 @@ ms.locfileid: "87048669"
   | **[キューの種類]** | はい | **メイン** | プライマリ Service Bus キュー |
   | **セッション ID** | はい | **Next available (次の利用可能)** | このオプションでは、Service Bus キュー内のメッセージからのセッション ID に基づいて、トリガー実行ごとにセッションを取得します。 また、このセッションに関連するメッセージを他のロジック アプリまたは他のクライアントが処理できないように、セッションはロックされます。 ワークフローの後続のアクションでは、この記事の後半で説明するように、そのセッションに関連付けられているすべてのメッセージを処理します。 <p><p>**[セッション ID]** のその他のオプションの詳細は次のとおりです。 <p>- **なし**: 既定のオプション。セッションは発生せず、シーケンシャルなコンボイ パターンの実装には使用できません。 <p>- **カスタム値の入力**: 使用するセッション ID がわかっていて、そのセッション ID に対して常にトリガーを実行する場合は、このオプションを使用します。 <p>**注**:Service Bus コネクタを使用すると、Service Bus からコネクタ キャッシュに、限られた数の一意のセッションを一度に保存できます。 セッション数がこの制限を超えると、古いセッションはキャッシュから削除されます。 詳細については、「[Azure Logic Apps と Azure Service Bus を使用してクラウド内でメッセージを交換する](../connectors/connectors-create-api-servicebus.md#connector-reference)」を参照してください。 |
   | **間隔** | はい | <*number-of-intervals*> | メッセージの有無を確認する前の繰り返しの間隔を表す時間単位数。 |
-  | **頻度** | はい | **[秒]** 、 **[分]** 、 **[時間]** 、 **[日]** 、 **[週]** 、または **[月]** | メッセージの有無を確認するときに繰り返しで使用される時間の単位。 <p>**ヒント**:**タイム ゾーン**または**開始時刻**を追加するには、 **[新しいパラメーターの追加]** の一覧からこれらのプロパティを選択します。 |
+  | **頻度** | はい | **[秒]** 、 **[分]** 、 **[時間]** 、 **[日]** 、 **[週]** 、または **[月]** | メッセージの有無を確認するときに繰り返しで使用される時間の単位。 <p>**ヒント**:**タイム ゾーン** または **開始時刻** を追加するには、 **[新しいパラメーターの追加]** の一覧からこれらのプロパティを選択します。 |
   |||||
 
   トリガーの詳細については、「[Service Bus - メッセージがキューに着信したとき (ピーク ロック)](/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock))」を参照してください。 このトリガーの出力は [ServiceBusMessage](/connectors/servicebus/#servicebusmessage) です。
@@ -285,7 +285,7 @@ ms.locfileid: "87048669"
 
   * `isDone` が `true` に設定されていない場合、まだメッセージがワークフローで処理中です。そのため、ワークフローでキュー内のセッションのロックを更新し、ループ条件を再度確認します。
 
-    Service Bus アクション [ **[キュー内のセッションに対するロックを更新します]** ](#renew-lock-on-session) で、Service Bus キューの名前を指定する必要があります。
+    Service Bus アクション [ **[キュー内のセッションに対するロックを更新します]**](#renew-lock-on-session) で、Service Bus キューの名前を指定する必要があります。
 
   * `isDone` が `true` に設定されている場合、ワークフローでキュー内のセッションのロックは更新されず、ループは終了します。
 
@@ -331,7 +331,7 @@ ms.locfileid: "87048669"
 
 ### <a name="find-failure-msg-from-try-block"></a>'Try' ブロックの失敗メッセージを検索する
 
-この[**配列のフィルター処理**アクション](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action)では、[`result()` 関数](../logic-apps/workflow-definition-language-functions-reference.md#result)を使用して指定した条件に基づいて、`Try` スコープ内のすべてのアクションの入力と出力を含む配列を作成します。 この場合、このアクションでは、[`equals()` 関数](../logic-apps/workflow-definition-language-functions-reference.md#equals)および [`item()` 関数](../logic-apps/workflow-definition-language-functions-reference.md#item)を使用して、`Failed` の状態を持つアクションからの出力が返されます。
+この [**配列のフィルター処理** アクション](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action)では、[`result()` 関数](../logic-apps/workflow-definition-language-functions-reference.md#result)を使用して指定した条件に基づいて、`Try` スコープ内のすべてのアクションの入力と出力を含む配列を作成します。 この場合、このアクションでは、[`equals()` 関数](../logic-apps/workflow-definition-language-functions-reference.md#equals)および [`item()` 関数](../logic-apps/workflow-definition-language-functions-reference.md#item)を使用して、`Failed` の状態を持つアクションからの出力が返されます。
 
 ![配列のフィルター処理アクション -"Find failure msg from 'Try' block ('Try' ブロックの失敗メッセージを検索する)"](./media/send-related-messages-sequential-convoy/find-failure-message.png)
 
@@ -358,7 +358,7 @@ ms.locfileid: "87048669"
 
 ### <a name="select-error-details"></a>エラーの詳細を選択する
 
-この[**選択**アクション](../logic-apps/logic-apps-perform-data-operations.md#select-action)では、前のアクションである `Find failure msg from 'Try' block` ('Try' ブロックの失敗メッセージを検索する) から出力された入力配列に基づいた JSON オブジェクトを含む配列を作成します。 具体的には、このアクションで返されるのは、配列内の各オブジェクトに対して指定されたプロパティのみを持つ配列です。 この場合、配列にはアクション名とエラー結果のプロパティが含まれています。
+この [**選択** アクション](../logic-apps/logic-apps-perform-data-operations.md#select-action)では、前のアクションである `Find failure msg from 'Try' block` ('Try' ブロックの失敗メッセージを検索する) から出力された入力配列に基づいた JSON オブジェクトを含む配列を作成します。 具体的には、このアクションで返されるのは、配列内の各オブジェクトに対して指定されたプロパティのみを持つ配列です。 この場合、配列にはアクション名とエラー結果のプロパティが含まれています。
 
 ![選択アクション - "Select error details (エラーの詳細を選択する)"](./media/send-related-messages-sequential-convoy/select-error-details.png)
 
@@ -388,7 +388,7 @@ ms.locfileid: "87048669"
 
 ### <a name="terminate-logic-app-run"></a>ロジック アプリ実行を終了する
 
-この[**終了**アクション](../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action)では、ロジック アプリの実行を停止し、ロジック アプリの実行の状態として `Failed` を返すと共に、`Select error details` アクションからのセッション ID およびエラー結果を返します。
+この [**終了** アクション](../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action)では、ロジック アプリの実行を停止し、ロジック アプリの実行の状態として `Failed` を返すと共に、`Select error details` アクションからのセッション ID およびエラー結果を返します。
 
 ![ロジック アプリ実行を停止する終了アクション](./media/send-related-messages-sequential-convoy/terminate-logic-app-run.png)
 

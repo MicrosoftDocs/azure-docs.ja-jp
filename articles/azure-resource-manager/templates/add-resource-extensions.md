@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: jgao
 ms.openlocfilehash: 23d5a9aaa546542218a6f839ab415184ff309928
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97934324"
 ---
 # <a name="provide-post-deployment-configurations-by-using-extensions"></a>拡張機能を使用してデプロイ後の構成を指定する

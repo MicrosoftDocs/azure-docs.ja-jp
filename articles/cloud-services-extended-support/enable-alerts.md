@@ -9,10 +9,10 @@ ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
 ms.openlocfilehash: 4591253e1a305632b7f41afe692f297d71366382
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98744117"
 ---
 # <a name="enable-monitoring-for-cloud-services-extended-support-using-the-azure-portal"></a>Azure portal を使用して Cloud Services (延長サポート) の監視を有効にする
@@ -41,4 +41,4 @@ ms.locfileid: "98744117"
 
 ## <a name="next-steps"></a>次のステップ 
 - Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.md)を確認します。
-- [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)または [Visual Studio](deploy-visual-studio.md) を使用して、クラウド サービス (延長サポート) をデプロイします。
+- [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)、または [Visual Studio](deploy-visual-studio.md) を使用してクラウド サービス (延長サポート) をデプロイします。

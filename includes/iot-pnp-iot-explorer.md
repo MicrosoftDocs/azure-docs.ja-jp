@@ -5,10 +5,10 @@ ms.service: iot-pnp
 ms.topic: include
 ms.date: 07/13/2020
 ms.openlocfilehash: 3ab9161c006a88a254b247a921512698ed46fa95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87351821"
 ---
 1. Azure IoT エクスプローラーを開きます。
@@ -19,7 +19,7 @@ ms.locfileid: "87351821"
 
 1. **[IoT ハブ]** ページで、操作するハブの名前をクリックします。 IoT ハブに登録されたデバイスの一覧が表示されます。
 
-1. 先ほど作成したデバイスの**デバイス ID** をクリックします。
+1. 先ほど作成したデバイスの **デバイス ID** をクリックします。
 
 1. 左側のメニューに、デバイスで利用できるさまざまな種類の情報が表示されます。
 
@@ -33,7 +33,7 @@ ms.locfileid: "87351821"
 
 1. **[プロパティ (書き込み可能)]** ページを選択して、このコンポーネントに対して更新を行うことができる書き込み可能なプロパティを表示します。
 
-1. **名前**でプロパティを選択し、新しい値を入力して、 **[Update desired value]\(必要な値の更新\)** を選択します。
+1. **名前** でプロパティを選択し、新しい値を入力して、 **[Update desired value]\(必要な値の更新\)** を選択します。
 
 1. 新しい値が表示されるようにするには、 **[更新]** ボタンを選択します。
 

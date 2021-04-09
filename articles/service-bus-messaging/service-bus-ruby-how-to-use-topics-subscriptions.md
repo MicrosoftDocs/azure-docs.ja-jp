@@ -1,19 +1,19 @@
 ---
-title: クイック スタート:Service Bus トピックの使用方法 (Ruby)
-description: クイック スタート:Azure での Service Bus のトピックとサブスクリプションの使用方法について説明します。 コード サンプルは Ruby アプリケーション向けに作成されています。
+title: 'クイックスタート: Service Bus トピックの使用方法 (Ruby)'
+description: 'クイックスタート: Azure での Service Bus のトピックとサブスクリプションの使用方法について説明します。 コード サンプルは Ruby アプリケーション向けに作成されています。'
 services: service-bus-messaging
 documentationcenter: ruby
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: aba326a63558632bee3bf0c48d34e471bbe30886
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88067564"
 ---
-# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>クイック スタート:Ruby で Service Bus のトピックとサブスクリプションを使用する方法
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>クイックスタート: Ruby で Service Bus のトピックとサブスクリプションを使用する方法
  
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
@@ -28,10 +28,10 @@ ms.locfileid: "88067564"
 
 ## <a name="prerequisites"></a>前提条件
 1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
-2. 「[Quickstart:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認して、Service Bus の**名前空間**を作成し、**接続文字列**を取得します。 
+2. 「[Quickstart:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認して、Service Bus の **名前空間** を作成し、**接続文字列** を取得します。 
 
     > [!NOTE]
-    > このクイック スタートでは、**Ruby** を使用して **トピック**とその中に含まれる**サブスクリプション**を作成します。 
+    > このクイック スタートでは、**Ruby** を使用して **トピック** とその中に含まれる **サブスクリプション** を作成します。 
 
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 

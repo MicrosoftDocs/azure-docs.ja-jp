@@ -3,16 +3,16 @@ title: Data Factory を使用したスケジュール設定と実行
 description: Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: bfdae688f7736149fe7ddf04cd3833d9adf30818
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f613a14f84999fced888ae72de11328bc7c90811
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382720"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780006"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory のスケジュール設定と実行
 > [!NOTE]

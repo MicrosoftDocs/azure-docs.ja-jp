@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 5cc3c4a07cc698f3592a2ff2fd76e9f4bbef441b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 727e744c59d0a8d90cf320e1ee2e2a17e10ff847
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036454"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103471531"
 ---
 # <a name="connector-status-errors-in-the-itsmc-dashboard"></a>ITSMC ダッシュボード内の [コネクタの状態] のエラー
 
@@ -88,3 +88,11 @@ IT Service Management Connector (ITSMC) ダッシュボードに表示される�
 
 * 新しい ITSMC インスタンスを作成すると、作業項目テンプレートや作業項目など、ITSM システムからの情報の同期が開始されます。 [ITSMC を同期して新しい更新トークンを作成します](./itsmc-resync-servicenow.md)。
 * [ITSMC で接続の詳細を確認](./itsmc-connections-servicenow.md#create-a-connection)し、ITSMC が正常に[同期](./itsmc-resync-servicenow.md)されることを確認します。
+
+
+## <a name="ip-restrictions"></a>IP 制限
+**エラー**: "無効な要求により、"XXX" という名前の ITSM 接続を追加できませんでした。 エラー: 正しくない要求。 接続に無効なパラメーターが指定されました。 HTTP 例外: 状態コードは禁止されています。"
+
+**原因**: ITSM アプリケーションの IP アドレスでは、パートナーの ITSM ツールからの ITSM 接続を許可していません。
+
+**解決策**: パートナーの ITSM ツールからの ITSM 接続を許可するために ITSM IP アドレスを一覧表示するには、LogAnalytics ワークスペースが属している Azure リージョンのパブリック IP 範囲全体を一覧表示することをお勧めします。 [詳細はこちら](https://www.microsoft.com/download/details.aspx?id=56519) 米国東部、西ヨーロッパ、米国東部 2、米国西部 2、米国中南部のリージョンの場合、顧客は ActionGroup ネットワーク タグのみを一覧表示できます。

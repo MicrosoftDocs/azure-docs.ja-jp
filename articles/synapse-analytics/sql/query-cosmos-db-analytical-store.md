@@ -9,12 +9,13 @@ ms.subservice: sql
 ms.date: 03/02/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: a574cacbabf1c0d1730430153a3c0afcad6582c6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.custom: cosmos-db
+ms.openlocfilehash: 10262b168b91370956c9559ba688c72213ba7618
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694361"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870995"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link"></a>Azure Synapse Link でサーバーレス SQL プールを使用して Azure Cosmos DB データのクエリを実行する
 

@@ -7,10 +7,10 @@ ms.date: 02/08/2021
 author: tfitzmac
 ms.author: tomfitz
 ms.openlocfilehash: f8a54096ecda4729f7070120a02be3055f933cea
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99989114"
 ---
 # <a name="manage-the-confluent-cloud-resource"></a>Confluent Cloud リソースを管理する

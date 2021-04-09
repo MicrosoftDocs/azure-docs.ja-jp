@@ -7,14 +7,17 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 0cece3f531d50356fdefb81a598109d7c067c5ed
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 5cbcbcf8914a663a6d039abecd6a4488eaf677b2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805950"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739646"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューでのルート
+
+> [!IMPORTANT]
+> 現在、*routes.json* ファイルで定義される機能は非推奨とされており、Azure Static Web Apps の[構成ファイル](./configuration.md#routes)で実装することが推奨されています。
 
 Azure Static Web Apps でのルーティングでは、静的コンテンツと API の両方に対する、バックエンド ルーティング規則と承認動作が定義されています<sup>1</sup>。 規則は、規則の配列として _routes.json_ ファイルで定義されます。
 
@@ -29,6 +32,9 @@ Azure Static Web Apps でのルーティングでは、静的コンテンツと 
 詳細については、[ルート ファイルの例](#example-route-file)を参照してください。
 
 ## <a name="location"></a>場所
+
+> [!IMPORTANT]
+> 現在、*routes.json* ファイルで定義される機能は非推奨とされており、Azure Static Web Apps の[構成ファイル](./configuration.md#routes)で実装することが推奨されています。
 
 _routes.json_ ファイルは、アプリのビルド成果物フォルダーのルートに存在する必要があります。 Web アプリに、ビルドされたファイルを特定のフォルダーからビルド成果物フォルダーにコピーするビルド ステップが含まれている場合は、_routes.json_ ファイルがその特定のフォルダーに存在している必要があります。
 
@@ -46,6 +52,9 @@ _routes.json_ ファイルは、アプリのビルド成果物フォルダーの
 
 ## <a name="defining-routes"></a>ルートの定義
 
+> [!IMPORTANT]
+> 現在、*routes.json* ファイルで定義される機能は非推奨とされており、Azure Static Web Apps の[構成ファイル](./configuration.md#routes)で実装することが推奨されています。
+
 ルートは、`routes` プロパティのルート規則の配列として、_routes.json_ ファイルで定義されています。 各規則は、ルート パターンと、1 つまたは複数のオプションの規則プロパティで構成されます。 使用例については、[ルート ファイルの例](#example-route-file)を参照してください。
 
 | 規則のプロパティ  | 必須 | 既定値 | 解説                                                      |
@@ -56,6 +65,9 @@ _routes.json_ ファイルは、アプリのビルド成果物フォルダーの
 | `statusCode`   | いいえ       | 200           | 要求に対する [HTTP 状態コード](https://wikipedia.org/wiki/List_of_HTTP_status_codes)の応答。 |
 
 ## <a name="securing-routes-with-roles"></a>ロールによるルートのセキュリティ保護
+
+> [!IMPORTANT]
+> 現在、*routes.json* ファイルで定義される機能は非推奨とされており、Azure Static Web Apps の[構成ファイル](./configuration.md#routes)で実装することが推奨されています。
 
 ルートをセキュリティで保護するには、1 つまたは複数のロール名を規則の `allowedRoles` 配列に追加します。 使用例については、[ルート ファイルの例](#example-route-file)を参照してください。
 
@@ -77,10 +89,13 @@ _routes.json_ ファイルは、アプリのビルド成果物フォルダーの
 }
 ```
 
-- ロールの名前は完全に制御できます。ロールが従う必要のあるマスター リストはありません。
+- ロールの名前は完全に制御できます。ロールが従う必要のあるリストはありません。
 - 個々のユーザーは、[招待](authentication-authorization.md)によってロールに関連付けられます。
 
 ## <a name="wildcards"></a>ワイルドカード
+
+> [!IMPORTANT]
+> 現在、*routes.json* ファイルで定義される機能は非推奨とされており、Azure Static Web Apps の[構成ファイル](./configuration.md#routes)で実装することが推奨されています。
 
 ワイルドカード規則は、指定されたルート パターンでのすべての要求と一致します。 規則で `serve` の値を定義すると、指定したファイルまたはパスが応答として提供されます。
 
@@ -109,6 +124,9 @@ _routes.json_ ファイルは、アプリのビルド成果物フォルダーの
 
 ## <a name="fallback-routes"></a>フォールバック ルート
 
+> [!IMPORTANT]
+> 現在、*routes.json* ファイルで定義される機能は非推奨とされており、Azure Static Web Apps の[構成ファイル](./configuration.md#routes)で実装することが推奨されています。
+
 シングルページ アプリケーションは、フロントエンドの JavaScript フレームワークまたはライブラリを使用しているか、Blazor のような WebAssembly プラットフォームを使用しているかにかかわらず、多くの場合、クライアント側ルーティングを使用して Web アプリのナビゲーションを行っています。 これらのクライアント側ルーティング規則では、要求をサーバーに返さずに、ブラウザーのウィンドウの場所が更新されます。 ページを更新する場合、またはクライアント側ルーティング規則によって生成された場所に直接移動する場合は、適切な HTML ページを提供するために、サーバー側フォールバック ルートが必要です。
 
 一般的なフォールバック ルートの例を次に示します。
@@ -128,6 +146,9 @@ _routes.json_ ファイルは、アプリのビルド成果物フォルダーの
 フォールバック ルートは、それより前に定義されている規則によってキャッチされないすべての要求をキャッチするため、ルーティング規則の一覧の最後に追加する必要があります。
 
 ## <a name="redirects"></a>リダイレクト
+
+> [!IMPORTANT]
+> 現在、*routes.json* ファイルで定義される機能は非推奨とされており、Azure Static Web Apps の[構成ファイル](./configuration.md#routes)で実装することが推奨されています。
 
 [301](https://en.wikipedia.org/wiki/HTTP_301) および [302](https://en.wikipedia.org/wiki/HTTP_302) の HTTP 状態コードを使用して、あるルートから別のルートに要求をリダイレクトすることができます。
 
@@ -153,6 +174,9 @@ _routes.json_ ファイルは、アプリのビルド成果物フォルダーの
 
 ## <a name="custom-error-pages"></a>カスタム エラー ページ
 
+> [!IMPORTANT]
+> 現在、*routes.json* ファイルで定義される機能は非推奨とされており、Azure Static Web Apps の[構成ファイル](./configuration.md#routes)で実装することが推奨されています。
+
 ユーザーは、エラーが発生する可能性のあるさまざまな状況に遭遇する場合があります。 `platformErrorOverrides` 配列を使用して、これらのエラーに対するカスタム エクスペリエンスを提供できます。 _routes.json_ ファイルへの配列の配置については、[ルート ファイルの例](#example-route-file)を参照してください。
 
 > [!NOTE]
@@ -171,6 +195,9 @@ _routes.json_ ファイルは、アプリのビルド成果物フォルダーの
 | `Unauthorized_Unknown` | 401 | ユーザーを認証しようとして、不明な問題が発生しました。 このエラーの原因の 1 つとして可能性があるのは、ユーザーがアプリケーションに同意していないため、ユーザーが認識されない場合です。|
 
 ## <a name="custom-mime-types"></a>カスタム MIME の種類
+
+> [!IMPORTANT]
+> 現在、*routes.json* ファイルで定義される機能は非推奨とされており、Azure Static Web Apps の[構成ファイル](./configuration.md#routes)で実装することが推奨されています。
 
 `routes` 配列と同じレベルにリストされている `mimeTypes` オブジェクトを使用すると、[MIME の種類](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)をファイル拡張子と関連付けることができます。
 
@@ -194,6 +221,9 @@ MIME の種類を使用するときは、次の考慮事項が重要です。
 > Static Web Apps は、Blazor アプリケーションと、WASM ファイルおよび DLL ファイルに必要な MIME の種類を認識します。これらのアプリケーションのマッピングを追加する必要はありません。
 
 ## <a name="default-headers"></a>既定のヘッダー
+
+> [!IMPORTANT]
+> 現在、*routes.json* ファイルで定義される機能は非推奨とされており、Azure Static Web Apps の[構成ファイル](./configuration.md#routes)で実装することが推奨されています。
 
 `routes` 配列と同じレベルにリストされている `defaultHeaders` オブジェクトを使用すると、[応答ヘッダー](https://developer.mozilla.org/docs/Web/HTTP/Headers)を追加、変更、または削除できます。
 
@@ -221,6 +251,9 @@ MIME の種類を使用するときは、次の考慮事項が重要です。
 - _routes.json_ で定義されているヘッダーは、静的コンテンツにのみ適用されます。 関数のコードで API エンドポイントの応答ヘッダーをカスタマイズできます。
 
 ## <a name="example-route-file"></a>ルート ファイルの例
+
+> [!IMPORTANT]
+> 現在、*routes.json* ファイルで定義される機能は非推奨とされており、Azure Static Web Apps の[構成ファイル](./configuration.md#routes)で実装することが推奨されています。
 
 次の例では、_routes.json_ ファイルで静的コンテンツと API に対するルート規則を作成する方法を示します。 一部のルートでは、認証関連のエンドポイントにアクセスする [ _/.auth_ システム フォルダー](authentication-authorization.md)を使用します。
 

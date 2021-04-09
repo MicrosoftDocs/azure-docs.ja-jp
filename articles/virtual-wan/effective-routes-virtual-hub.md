@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: ad487aa7492abcf02988c78ccfa2ba7cd4798249
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90983658"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>仮想ハブの有効なルートを表示する
@@ -35,7 +35,7 @@ Azure portal で Virtual WAN ハブのすべてのルートを表示できます
 
 ### <a name="example"></a><a name="example"></a>例
 
-次の例の表に示す値は、仮想ハブの接続またはルート テーブルが、10.2.0.0/24 (分岐プレフィックス) というルートを学習したことを示しています。 また、**VPN の次ホップの種類**としての VPN_S2S_Gateway、**次ホップ**としての VPN Gateway リソース ID によって、ルートが学習されています。 **ルートの発信元**は、発信元の VPN ゲートウェイ、ルート テーブル、または接続のリソース ID を指します。 **AS パス**は、分岐の AS パスを示します。
+次の例の表に示す値は、仮想ハブの接続またはルート テーブルが、10.2.0.0/24 (分岐プレフィックス) というルートを学習したことを示しています。 また、**VPN の次ホップの種類** としての VPN_S2S_Gateway、**次ホップ** としての VPN Gateway リソース ID によって、ルートが学習されています。 **ルートの発信元** は、発信元の VPN ゲートウェイ、ルート テーブル、または接続のリソース ID を指します。 **AS パス** は、分岐の AS パスを示します。
 
 AS パスを表示するには、テーブルの下部にあるスクロールバーを使用します。
 

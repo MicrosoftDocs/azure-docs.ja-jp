@@ -10,10 +10,10 @@ ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: 6e2d1828acefacb03cc2f42193b8cd8897578b6f
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93397503"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>ポータルで Application Gateway を使用してエンド ツー エンド TLS を構成する
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="add-authenticationroot-certificates-of-back-end-servers"></a>バックエンド サーバーの認証証明書またはルート証明書を追加する
 
-1. **[すべてのリソース]** を選択し、 **myAppGateway** を選択します。
+1. **[すべてのリソース]** を選択し、**myAppGateway** を選択します。
 
 2. 左側のメニューで **[HTTP 設定]** を選択します。 アプリケーション ゲートウェイを作成したときに、既定の HTTP 設定 **appGatewayBackendHttpSettings** が Azure によって自動的に作成されました。 
 
@@ -61,7 +61,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![証明書を追加する](./media/end-to-end-ssl-portal/addcert.png)
 
-   Standard_v2 および WAF_v2 アプリケーション ゲートウェイの場合は、.cer 形式のバックエンド サーバー証明書のルート証明書をアップロードする必要があります。 バックエンド証明書が既知の証明機関 (CA) によって発行されている場合は、 **[既知の CA 証明書を使用する]** チェック ボックスを選択することができます。証明書をアップロードする必要はありません。
+   Standard_v2 および WAF_v2 アプリケーション ゲートウェイの場合は、.cer 形式のバックエンド サーバー証明書のルート証明書をアップロードする必要があります。 バックエンド証明書が既知の証明機関 (CA) によって発行されている場合は、**[既知の CA 証明書を使用する]** チェック ボックスを選択することができます。証明書をアップロードする必要はありません。
 
    ![信頼されたルート証明書を追加する](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
@@ -78,11 +78,11 @@ TLS 終了を有効化するために、HTTPS プロトコルおよび証明書�
 後者のオプションを選択した場合は、次の手順を実行します。
 ### <a name="enable-tls-termination-in-an-existing-application-gateway"></a>既存のアプリケーション ゲートウェイで TLS 終了を有効化する
 
-1. **[すべてのリソース]** を選択し、 **myAppGateway** を選択します。
+1. **[すべてのリソース]** を選択し、**myAppGateway** を選択します。
 
 2. 左側のメニューで **[リスナー]** を選択します。
 
-3. 要件に応じて、 **基本** リスナーまたは **マルチサイト** リスナーを選択します。
+3. 要件に応じて、**基本** リスナーまたは **マルチサイト** リスナーを選択します。
 
 4. **[プロトコル]** で **[HTTPS]** を選択します。 **[証明書]** ウィンドウが表示されます。
 
@@ -91,15 +91,15 @@ TLS 終了を有効化するために、HTTPS プロトコルおよび証明書�
    > [!NOTE]
    > テスト目的で、自己署名証明書を使用してもかまいません。 ただし、これらは管理が難しく、完全にセキュリティで保護されていないため、運用環境のワークロードには推奨されません。 詳細については、「[自己署名証明書の作成](./create-ssl-portal.md#create-a-self-signed-certificate)」を参照してください。
 
-6. 要件に応じて、 **リスナー** に必要なその他の設定を追加します。
+6. 要件に応じて、**リスナー** に必要なその他の設定を追加します。
 
 7. **[OK]** を選択して保存します。
 
 ### <a name="add-authenticationtrusted-root-certificates-of-back-end-servers"></a>バックエンド サーバーの認証証明書または信頼されたルート証明書を追加する
 
-1. **[すべてのリソース]** を選択し、 **myAppGateway** を選択します。
+1. **[すべてのリソース]** を選択し、**myAppGateway** を選択します。
 
-2. 左側のメニューで **[HTTP 設定]** を選択します。 既存のバックエンド HTTP 設定で証明書を安全な受信者リストに載せるか、新しい HTTP 設定を作成することができます。 (次の手順で、既定の HTTP 設定の証明書 ( **appGatewayBackendHttpSettings** ) が安全な受信者リストに追加されます。)
+2. 左側のメニューで **[HTTP 設定]** を選択します。 既存のバックエンド HTTP 設定で証明書を安全な受信者リストに載せるか、新しい HTTP 設定を作成することができます。 (次の手順で、既定の HTTP 設定の証明書 (**appGatewayBackendHttpSettings**) が安全な受信者リストに追加されます。)
 
 3. **[appGatewayBackendHttpSettings]** を選択します。
 
@@ -115,7 +115,7 @@ TLS 終了を有効化するために、HTTPS プロトコルおよび証明書�
 
    ![証明書を追加する](./media/end-to-end-ssl-portal/addcert.png)
 
-   Standard_v2 および WAF_v2 アプリケーション ゲートウェイの場合は、.cer 形式のバックエンド サーバー証明書のルート証明書をアップロードする必要があります。 バックエンド証明書が CA によって発行されている場合は、 **[既知の CA 証明書を使用する]** チェック ボックスを選択することができます。証明書をアップロードする必要はありません。
+   Standard_v2 および WAF_v2 アプリケーション ゲートウェイの場合は、.cer 形式のバックエンド サーバー証明書のルート証明書をアップロードする必要があります。 バックエンド証明書が CA によって発行されている場合は、**[既知の CA 証明書を使用する]** チェック ボックスを選択することができます。証明書をアップロードする必要はありません。
 
    ![信頼されたルート証明書を追加する](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 

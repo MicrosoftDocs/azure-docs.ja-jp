@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 30dd7068a8ba2d0e30a2a4308e124886c4439641
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92515476"
 ---
 # <a name="tutorial-integrate-perceptyx-with-azure-active-directory"></a>チュートリアル:Perceptyx を Azure Active Directory と統合する
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Perceptyx では、 **IDP** によって開始される SSO がサポートされます
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Perceptyx では、**IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-perceptyx-from-the-gallery"></a>ギャラリーからの Perceptyx の追加
 
@@ -47,7 +47,7 @@ Azure AD への Perceptyx の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Perceptyx** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Perceptyx**」と入力します。
 1. 結果ウィンドウで **[Perceptyx]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -88,7 +88,7 @@ Perceptyx で Azure AD SSO を構成してテストするには、次の構成�
 
 ### <a name="configure-perceptyx-sso"></a>Perceptyx SSO の構成
 
-**Perceptyx** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Perceptyx サポート チーム](mailto:customersupport@perceptyx.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Perceptyx** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Perceptyx サポート チーム](mailto:customersupport@perceptyx.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

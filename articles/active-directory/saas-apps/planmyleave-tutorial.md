@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: c143a5af40097039c70c58adba4cb21f687d3fa6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92893184"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-planmyleave"></a>チュートリアル: Azure Active Directory と PlanMyLeave の統合
@@ -41,9 +41,9 @@ PlanMyLeave と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* PlanMyLeave では、 **SP** Initiated SSO がサポートされます
+* PlanMyLeave では、**SP** Initiated SSO がサポートされます
 
-* PlanMyLeave では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* PlanMyLeave では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-planmyleave-from-the-gallery"></a>ギャラリーからの PlanMyLeave の追加
 
@@ -63,13 +63,13 @@ Azure AD への PlanMyLeave の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **PlanMyLeave** 」と入力し、結果ウィンドウで **[PlanMyLeave]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**PlanMyLeave**」と入力し、結果ウィンドウで **[PlanMyLeave]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの PlanMyLeave](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、PlanMyLeave で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、PlanMyLeave で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと PlanMyLeave 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 PlanMyLeave で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -142,7 +142,7 @@ PlanMyLeave で Azure AD シングル サインオンを構成するには、次
 
     a.  **[Login URL]\(ログイン URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** を貼り付けます。
 
-    b.  ダウンロードしたメタデータを開き、 **X509Certificate** 値をコピーして、 **[証明書]** ボックスに貼り付けます。
+    b.  ダウンロードしたメタデータを開き、**X509Certificate** 値をコピーして、 **[証明書]** ボックスに貼り付けます。
 
     c. **[Is Enable (有効)]** を **[はい]** に設定します。
 
@@ -164,7 +164,7 @@ PlanMyLeave で Azure AD シングル サインオンを構成するには、次
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

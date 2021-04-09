@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 5095f05b0c9ce9061781c3558ca6c7091ef37aa5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88270958"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Avere vFXT for Azure とは

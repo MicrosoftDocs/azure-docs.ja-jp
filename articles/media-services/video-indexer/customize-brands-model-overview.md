@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 12/15/2019
 ms.author: juliako
 ms.openlocfilehash: 81d7dda854c6afcc9397289ff23ba45b02ed9fc4
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97586076"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>Video Indexer でのブランド モデルのカスタマイズ

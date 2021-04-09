@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: ddc212e99c0e55156f56df6bf77e122408a727f9
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 7ae85fa2559b8313bd35a761945bff946563e935
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624057"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199783"
 ---
-# <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>チュートリアル:Azure IoT Hub のメッセージ エンリッチメントを使用する
+# <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>チュートリアル: Azure IoT Hub のメッセージ エンリッチメントを使用する
 
 "*メッセージ エンリッチメント*" は、指定されたエンドポイントに送信される前のメッセージに対し、追加情報を含んだ "*スタンプ*" を適用する Azure IoT Hub の機能です。 メッセージ エンリッチメントを使用する理由の 1 つは、ダウンストリームの処理を単純化するために用いることのできるデータを追加することです。 たとえば、デバイス ツイン タグを使用してデバイスのテレメトリ メッセージのエンリッチメントを行えば、この情報のために顧客側でデバイス ツイン API を呼び出す負担を軽減することができます。 詳細については、[メッセージ エンリッチメントの概要](iot-hub-message-enrichments-overview.md)に関するページを参照してください。
 
@@ -31,8 +31,8 @@ ms.locfileid: "98624057"
 
 **IoT Hub のメッセージ エンリッチメントを使用する**
 > [!div class="checklist"]
-> * 第 1 の方法: Azure CLI を使用してリソースを作成し、メッセージ ルーティングを構成します。 [Azure portal](https://portal.azure.com) を使用して、手動でメッセージ エンリッチメントを構成します。
-> * 第 2 の方法: Resource Manager テンプレートを使用して、リソースを作成し、メッセージ ルーティングとメッセージ エンリッチメントを構成します。 
+> * 方法 1: Azure CLI を使用してリソースを作成し、メッセージ ルーティングを構成します。 [Azure portal](https://portal.azure.com) を使用して、手動でメッセージ エンリッチメントを構成します。
+> * 方法 2: Resource Manager テンプレートを使用して、リソースを作成し、メッセージ ルーティングとメッセージ エンリッチメントを構成します。 
 > * IoT デバイスをシミュレートするアプリを実行し、ハブにメッセージを送信します。
 > * その結果を表示して、メッセージ エンリッチメントが想定どおりに機能していることを確認します。
 
@@ -62,7 +62,7 @@ GitHub から [IoT C# サンプル](https://github.com/Azure-Samples/azure-iot-s
 > メッセージはすべて両方のエンドポイントにルーティングされますが、エンリッチされるのは、メッセージ エンリッチメントが構成されたエンドポイントに向かうメッセージだけです。
 >
 
-以下のスクリプトを使用するか、ダウンロードしたリポジトリの /resources フォルダーにあるスクリプトを開くことができます。 スクリプトでは、次の手順が実行されます。
+以下のスクリプトを使用するか、ダウンロードしたリポジトリの /resources フォルダーにあるスクリプトを開くことができます。 このスクリプトでは、次の手順を行います。
 
 * IoT Hub を作成します。
 * ストレージ アカウントを作成します。
@@ -73,11 +73,11 @@ GitHub から [IoT C# サンプル](https://github.com/Azure-Samples/azure-iot-s
 
 IoT ハブ名やストレージ アカウント名など、グローバルに一意であることが必要なリソース名がいくつかあります。 スクリプトを実行しやすいように、これらのリソース名の末尾には、ランダムな英数字の値 (*randomValue*) が追加されます。 ランダムな値は、スクリプトの先頭で 1 回生成されます。 スクリプト全体を通し、必要に応じてそれがリソース名に追加されます。 値をランダムにしたくない場合は、空の文字列または特定の値に設定できます。
 
-まだ行っていない場合は、Azure [Cloud Shell ウィンドウ](https://shell.azure.com)を開き、Bash に設定されていることを確認します。 解凍したリポジトリ内のスクリプトを開き、Ctrl + A キーを押して全体を選択し、Ctrl + C キーを押してそれをコピーします。 または、以下の CLI スクリプトをコピーするか、Cloud Shell で直接開いてもかまいません。 Cloud Shell ウィンドウのコマンド ラインを右クリックし、 **[貼り付け]** を選択してスクリプトを貼り付けます。 スクリプトは一度に 1 ステートメントずつ実行します。 スクリプトの実行が停止したら、**Enter** キーを押して最後のコマンドを確実に実行します。 以下のコード ブロックは、使用されているスクリプトとその実行内容を説明するコメントを示したものです。
+まだ行っていない場合は、Azure [Cloud Shell ウィンドウ](https://shell.azure.com)を開き、Bash に設定されていることを確認します。 解凍したリポジトリ内のスクリプトを開き、Ctrl + A キーを押して全体を選択し、Ctrl + C キーを押してそれをコピーします。 または、以下の CLI スクリプトをコピーするか、Cloud Shell で直接開いてもかまいません。 Cloud Shell ウィンドウのコマンド ラインを右クリックし、**[貼り付け]** を選択してスクリプトを貼り付けます。 スクリプトは一度に 1 ステートメントずつ実行します。 スクリプトの実行が停止したら、**Enter** キーを押して最後のコマンドを確実に実行します。 以下のコード ブロックは、使用されているスクリプトとその実行内容を説明するコメントを示したものです。
 
 次に示したのは、このスクリプトによって作成されるリソースです。 *Enriched* と表示されているリソースは、エンリッチメントが適用されたメッセージ用であることを意味します。 *Original* と表示されているリソースは、エンリッチメントが適用されていないメッセージ用であることを意味します。
 
-| 名前 | 値 |
+| 名前 | [値] |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | container name | original  |
@@ -253,20 +253,20 @@ az iot hub route create \
 
    ![メッセージのルーティングを選択する](./media/tutorial-message-enrichments/select-iot-hub.png)
 
-   メッセージ ルーティング ペインには、 **[ルート]** 、 **[カスタム エンドポイント]** 、 **[メッセージのエンリッチ]** の 3 つのタブがあります。 スクリプトによって設定された構成を確認するには、最初の 2 つのタブを参照します。 メッセージ エンリッチメントは、3 つ目のタブを使用して追加します。 **enriched** というストレージ コンテナーのエンドポイントに向かうメッセージをエンリッチしてみましょう。 名前と値を入力した後、ドロップダウン リストからエンドポイント **ContosoStorageEndpointEnriched** を選択します。 IoT ハブの名前をメッセージに追加するエンリッチメントを設定する例を次に示します。
+   メッセージ ルーティング ペインには、**[ルート]**、**[カスタム エンドポイント]**、**[メッセージのエンリッチ]** の 3 つのタブがあります。 スクリプトによって設定された構成を確認するには、最初の 2 つのタブを参照します。 メッセージ エンリッチメントは、3 つ目のタブを使用して追加します。 **enriched** というストレージ コンテナーのエンドポイントに向かうメッセージをエンリッチしてみましょう。 名前と値を入力した後、ドロップダウン リストからエンドポイント **ContosoStorageEndpointEnriched** を選択します。 IoT ハブの名前をメッセージに追加するエンリッチメントを設定する例を次に示します。
 
    ![1 つ目のエンリッチメントを追加する](./media/tutorial-message-enrichments/add-message-enrichments.png)
 
 2. ContosoStorageEndpointEnriched エンドポイントのリストに次の値を追加します。
 
-   | Key | 値 | エンドポイント (ドロップダウン リスト) |
+   | Key | [値] | エンドポイント (ドロップダウン リスト) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | DeviceLocation | $twin.tags.location | AzureStorageContainers > ContosoStorageEndpointEnriched |
    |customerID | 6ce345b8-1e4a-411e-9398-d34587459a3a | AzureStorageContainers > ContosoStorageEndpointEnriched |
 
    > [!NOTE]
-   > デバイスにツインが存在しない場合、メッセージ エンリッチメントの値には、ここに入力した値が文字列のスタンプとして適用されます。 デバイス ツインの情報を見るには、ポータルでお使いのハブに移動し、 **[IoT デバイス]** を選択します。 デバイスを選択してから、ページの上部にある **[デバイス ツイン]** を選択します。
+   > デバイスにツインが存在しない場合、メッセージ エンリッチメントの値には、ここに入力した値が文字列のスタンプとして適用されます。 デバイス ツインの情報を見るには、ポータルでお使いのハブに移動し、**[IoT デバイス]** を選択します。 デバイスを選択してから、ページの上部にある **[デバイス ツイン]** を選択します。
    >
    > ツイン情報を編集して場所などのタグを追加し、特定の値に設定することができます。 詳細については、「[IoT Hub のデバイス ツインの理解と使用](iot-hub-devguide-device-twins.md)」を参照してください。
 
@@ -279,15 +279,15 @@ az iot hub route create \
 ## <a name="create-and-configure-by-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して作成および構成する
 Resource Manager テンプレートを使用して、リソース、メッセージ ルーティング、メッセージ エンリッチメントを作成および構成できます。
 
-1. Azure portal にサインインします。 **[+ リソースの作成]** を選択して、検索ボックスを表示します。 「*template deployment*」と入力して検索します。 結果ウィンドウで、 **[Template deployment (deploy using custom template)]\(テンプレートのデプロイ (カスタム テンプレートを使用してデプロイ)\)** を選択します。
+1. Azure portal にサインインします。 **[+ リソースの作成]** を選択して、検索ボックスを表示します。 「*template deployment*」と入力して検索します。 結果ウィンドウで、**[Template deployment (deploy using custom template)]\(テンプレートのデプロイ (カスタム テンプレートを使用してデプロイ)\)** を選択します。
 
    ![Azure portal でのテンプレートのデプロイ](./media/tutorial-message-enrichments/template-select-deployment.png)
 
 1. **[テンプレートのデプロイ]** ウィンドウで **[作成]** を選択します。
 
-1. **[カスタム デプロイ]** ペインで、 **[エディターで独自のテンプレートを作成する]** を選択します。
+1. **[カスタム デプロイ]** ペインで、**[エディターで独自のテンプレートを作成する]** を選択します。
 
-1. **[テンプレートの編集]** ペインで、 **[ファイルの読み込み]** を選択します。 エクスプローラーが表示されます。 **/iot-hub/Tutorials/Routing/SimulatedDevice/resources** にある解凍されたリポジトリ ファイルから **template_messageenrichments.json** ファイルを見つけます。 
+1. **[テンプレートの編集]** ペインで、**[ファイルの読み込み]** を選択します。 エクスプローラーが表示されます。 **/iot-hub/Tutorials/Routing/SimulatedDevice/resources** にある解凍されたリポジトリ ファイルから **template_messageenrichments.json** ファイルを見つけます。 
 
    ![ローカル コンピューターからテンプレートを選択](./media/tutorial-message-enrichments/template-select.png)
 
@@ -297,7 +297,7 @@ Resource Manager テンプレートを使用して、リソース、メッセー
 
    次に示すのは、テンプレートを読み込むことによって作成されるリソースです。 **Enriched** と表示されているリソースは、エンリッチメントが適用されたメッセージ用であることを意味します。 **Original** と表示されているリソースは、エンリッチメントが適用されていないメッセージ用であることを意味します。 これらは、Azure CLI スクリプトで使用される値と同じです。
 
-   | 名前 | 値 |
+   | 名前 | [値] |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | container name | original  |
@@ -312,21 +312,21 @@ Resource Manager テンプレートを使用して、リソース、メッセー
 
 1. **[保存]** を選択します。 **[カスタム デプロイ]** ペインが表示され、テンプレートで使用されているすべてのパラメーターが示されます。 設定する必要があるフィールドは **[リソース グループ]** だけです。 新しいものを作成するか、ドロップダウン リストから選択します。
 
-   次に示すのは、 **[カスタム デプロイ]** ペインの上半分です。 リソース グループを入力する場所を確認できます。
+   次に示すのは、**[カスタム デプロイ]** ペインの上半分です。 リソース グループを入力する場所を確認できます。
 
    ![[カスタム デプロイ] ペインの上半分](./media/tutorial-message-enrichments/template-deployment-top.png)
 
-1. 次に示すのは、 **[カスタム デプロイ]** ペインの下半分です。 残りのパラメーターと使用条件を確認できます。 
+1. 次に示すのは、**[カスタム デプロイ]** ペインの下半分です。 残りのパラメーターと使用条件を確認できます。 
 
    ![[カスタム デプロイ] ペインの下半分](./media/tutorial-message-enrichments/template-deployment-bottom.png)
 
-1. チェック ボックスをオンにして、使用条件に同意します。 次に、 **[購入]** を選択して、テンプレートのデプロイを続けます。
+1. チェック ボックスをオンにして、使用条件に同意します。 次に、**[購入]** を選択して、テンプレートのデプロイを続けます。
 
 1. テンプレートが完全にデプロイされるまで待ちます。 進行状況を確認するには、画面の上部にあるベルのアイコンを選択します。 完了したら、「[メッセージ エンリッチメントをテストする](#test-message-enrichments)」セクションに進みます。
 
 ## <a name="test-message-enrichments"></a>メッセージ エンリッチメントをテストする
 
-メッセージ エンリッチメントを表示するには、 **[リソース グループ]** を選択します。 次に、このチュートリアルで使用しているリソース グループを選択します。 リソースの一覧から IoT ハブを選択して、 **[メッセージング]** に移動します。 メッセージ ルーティングの構成と、構成されたエンリッチメントが表示されます。
+メッセージ エンリッチメントを表示するには、**[リソース グループ]** を選択します。 次に、このチュートリアルで使用しているリソース グループを選択します。 リソースの一覧から IoT ハブを選択して、**[メッセージング]** に移動します。 メッセージ ルーティングの構成と、構成されたエンリッチメントが表示されます。
 
 メッセージ エンリッチメントはエンドポイントに対して構成されているので、シミュレートされたデバイスのアプリケーションを実行して、IoT ハブにメッセージを送信します。 ハブは、次のタスクを実行するように設定されています。
 
@@ -336,9 +336,9 @@ Resource Manager テンプレートを使用して、リソース、メッセー
 
 シミュレートされたデバイスのアプリケーションは、解凍後のダウンロードに含まれているアプリケーションの 1 つです。 このアプリケーションでは、[ルーティングのチュートリアル](tutorial-routing.md)で説明されているさまざまなメッセージ ルーティング方法でメッセージが送信され、それには Azure Storage が含まれます。
 
-ソリューション ファイル **IoT_SimulatedDevice.sln** をダブルクリックしてコードを Visual Studio で開いた後、**Program.cs** を開きます。 マーカー `{your hub name}` を IoT ハブ名で置き換えます。 IoT ハブのホスト名の形式は、 **{自分のハブ名}.azure-devices.net** です。 このチュートリアルでのハブのホスト名は、ContosoTestHubMsgEn.azure-devices.net です。 次に、マーカー `{your device key}` を、先にスクリプトを実行してリソースを作成したときに保存したデバイス キーに置き換えます。
+ソリューション ファイル **IoT_SimulatedDevice.sln** をダブルクリックしてコードを Visual Studio で開いた後、**Program.cs** を開きます。 マーカー `{your hub name}` を IoT ハブ名で置き換えます。 IoT ハブのホスト名の形式は、**{自分のハブ名}.azure-devices.net** です。 このチュートリアルでのハブのホスト名は、ContosoTestHubMsgEn.azure-devices.net です。 次に、マーカー `{your device key}` を、先にスクリプトを実行してリソースを作成したときに保存したデバイス キーに置き換えます。
 
-デバイス キーがない場合は、ポータルから取得できます。 サインインした後、 **[リソース グループ]** に移動し、お使いのリソース グループを選択して、目的の IoT ハブを選択します。 テスト デバイスに対する **[IoT デバイス]** で、該当するデバイスを選択します。 **[プライマリ キー]** の横にあるコピー アイコンを選択して、クリップボードにコピーします。
+デバイス キーがない場合は、ポータルから取得できます。 サインインした後、**[リソース グループ]** に移動し、お使いのリソース グループを選択して、目的の IoT ハブを選択します。 テスト デバイスに対する **[IoT デバイス]** で、該当するデバイスを選択します。 **[プライマリ キー]** の横にあるコピー アイコンを選択して、クリップボードにコピーします。
 
    ```csharp
         private readonly static string s_myDeviceId = "Contoso-Test-Device";
@@ -386,7 +386,7 @@ Resource Manager テンプレートを使用して、リソース、メッセー
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Azure CLI を使用してリソースをクリーンアップする
 
-リソース グループを削除するには、[az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) コマンドを使います。 `$resourceGroup` は、このチュートリアルの最初で **ContosoResourcesMsgEn** に設定されたことを思い出してください。
+リソース グループを削除するには、[az group delete](/cli/azure/group#az-group-delete) コマンドを使います。 `$resourceGroup` は、このチュートリアルの最初で **ContosoResourcesMsgEn** に設定されたことを思い出してください。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -399,8 +399,8 @@ az group delete --name $resourceGroup
 **IoT Hub のメッセージ エンリッチメントを使用する**
 
 > [!div class="checklist"]
-> * 第 1 の方法: Azure CLI を使用してリソースを作成し、メッセージ ルーティングを構成します。 [Azure portal](https://portal.azure.com) を使用して、手動でメッセージ エンリッチメントを構成します。
-> * 第 2 の方法: Azure Resource Manager テンプレートを使用して、リソースを作成し、メッセージ ルーティングとメッセージ エンリッチメントを構成します。
+> * 方法 1: Azure CLI を使用してリソースを作成し、メッセージ ルーティングを構成します。 [Azure portal](https://portal.azure.com) を使用して、手動でメッセージ エンリッチメントを構成します。
+> * 方法 2: Azure Resource Manager テンプレートを使用して、リソースを作成し、メッセージ ルーティングとメッセージ エンリッチメントを構成します。
 > * IoT デバイスをシミュレートするアプリを実行し、ハブにメッセージを送信します。
 > * その結果を表示して、メッセージ エンリッチメントが想定どおりに機能していることを確認します。
 

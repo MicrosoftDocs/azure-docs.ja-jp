@@ -9,12 +9,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
 adobe-target: true
-ms.openlocfilehash: 320840277483776dfc74b98ab70410503008df67
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 48c4b2a73628ab2105e23054d747e28acc105d01
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374237"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563192"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning スタジオとは
 
@@ -76,31 +76,26 @@ ms.locfileid: "100374237"
 
 ## <a name="ml-studio-classic-vs-azure-machine-learning-studio"></a>ML Studio (classic) と Azure Machine Learning スタジオ
 
-2015 年にリリースされた **ML Studio (classic)** は、初めてのドラッグ アンド ドロップ機械学習ビルダーでした。 それは、ビジュアル エクスペリエンスだけを提供するスタンドアロンのサービスです。 Studio (classic) は、Azure Machine Learning との相互運用はできません。
+2015 年にリリースされた **ML Studio (classic)** は、初めてのドラッグ アンド ドロップ機械学習ビルダーでした。 
+
+**ML Studio (classic)** は、ビジュアル エクスペリエンスだけを提供するスタンドアロンのサービスです。 Studio (classic) は、Azure Machine Learning との相互運用はできません。
 
 **Azure Machine Learning** は、完全なデータ サイエンス プラットフォームを提供する、独立した最新のサービスです。 コード ファースト エクスペリエンスと少量コード エクスペリエンスの両方がサポートされています。
 
 **Azure Machine Learning スタジオ** は Azure Machine Learning "*内の*" Web ポータルであり、プロジェクト作成とアセット管理のための少量のコードおよびコードなしのオプションが用意されています。 
 
-新しく使い始める方には、最新の各種データ サイエンス ツールのために、ML Studio (classic) ではなく、**Azure Machine Learning** を選択することをお勧めします。
+新しく使い始める方には、最新の各種データ サイエンス ツールのために、ML Studio (classic) ではなく、**Azure Machine Learning** を選択することをお勧めします。 既存の ML Studio (classic) ユーザーの場合は、[Azure Machine Learning への移行](classic/migrate-overview.md)を検討してください。
+
+Azure Machine Learning に切り替えると、次のような利点があります。
+
+- 大規模なトレーニング用のスケーラブルなコンピューティング クラスター。
+- エンタープライズ セキュリティとガバナンス。
+- 一般的なオープンソース ツールとの相互運用が可能。
+- エンド ツー エンドの MLOps。
 
 ### <a name="feature-comparison"></a>機能の比較
 
-次の表は、ML Studio (classic) と Azure Machine Learning との主な違いをまとめたものです。
-
-| 特徴量 | ML Studio (クラシック) | Azure Machine Learning |
-|---| --- | --- |
-| ドラッグ アンド ドロップ インターフェイス | クラシック エクスペリエンス | 更新されたエクスペリエンス - [Azure Machine Learning デザイナー](concept-designer.md)| 
-| コード SDK | サポートされていない | [Azure Machine Learning Python](/python/api/overview/azure/ml/) および [R](https://github.com/Azure/azureml-sdk-for-r) SDK との完全な統合 |
-| 実験 | スケーラブル (10 GB トレーニング データの上限) | コンピューティング先に合わせてスケーリング |
-| コンピューティング ターゲットのトレーニング | 独自のコンピューティング ターゲット、CPU のサポートのみ | カスタマイズできる広範な[トレーニング コンピューティング先](concept-compute-target.md#train)。 GPU と CPU のサポートが含まれます | 
-| デプロイのコンピューティング ターゲット | 独自の Web サービス形式 (カスタマイズ不可) | カスタマイズできる広範な[デプロイ コンピューティング先](concept-compute-target.md#deploy)。 GPU と CPU のサポートが含まれます |
-| ML パイプライン | サポートされていません | ワークフローを自動化する柔軟性の高いモジュール式の[パイプライン](concept-ml-pipelines.md)を作成します |
-| MLOps | 基本的なモデル管理とデプロイ。CPU のみのデプロイ | エンティティのバージョン管理 (モデル、データ、ワークフロー)、ワークフロー オートメーション、CICD ツールとの統合、CPU および GPU のデプロイ、[その他](concept-model-management-and-deployment.md) |
-| モデル形式 | 専用の形式、Studio (クラシック) のみ | トレーニング ジョブの種類に応じて複数の形式がサポートされます |
-| 自動化されたモデル トレーニングとハイパーパラメーター調整 |  サポートされていません | [サポートされています](concept-automated-ml.md)。 コード ファースト オプションとコードなしオプション。 | 
-| データ ドリフト検出 | サポートされていません | [サポートされています](how-to-monitor-datasets.md) |
-| プロジェクトのラベル付けデータ | サポートされていません | [サポートされています](how-to-create-labeling-projects.md) |
+[!INCLUDE [aml-compare-classic](../../includes/machine-learning-compare-classic-aml.md)]
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

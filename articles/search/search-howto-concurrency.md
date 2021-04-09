@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/26/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 52260facc1a458a3ef18b067e6d52e189f5d329c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98881756"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Azure Cognitive Search でコンカレンシーを管理する方法

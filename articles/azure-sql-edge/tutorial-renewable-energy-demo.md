@@ -10,10 +10,10 @@ ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 12/18/2020
 ms.openlocfilehash: e966d756744210dc8f6739b96501dd91f0d8d1b5
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97723475"
 ---
 # <a name="using-azure-sql-edge-to-build-smarter-renewable-resources"></a>Azure SQL Edge を使用してよりスマートな再生可能リソースを構築する

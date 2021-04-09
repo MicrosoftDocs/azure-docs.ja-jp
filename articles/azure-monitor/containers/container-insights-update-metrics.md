@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: edca7e4e8f6a9ea8dd9efdaafab8c906efd671b6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101708273"
 ---
 # <a name="how-to-update-container-insights-to-enable-metrics"></a>メトリックを有効にするように Container insights を更新する方法

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 03/09/2021
 ms.author: victorh
-ms.openlocfilehash: 3914a82903c293cf1a8306b5ecc1f542fef83e72
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 47ebc752dedd72bbdedc02908911f1686584acda
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100549515"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615501"
 ---
 # <a name="azure-firewall-premium-preview-certificates"></a>Azure Firewall Premium プレビューの証明書 
 
@@ -90,6 +90,118 @@ Firewall Premium ポリシー内で CA 証明書を構成するには、ポリ�
 > Azure portal から証明書を表示して構成するには、Key Vault アクセス ポリシーに Azure ユーザー アカウントを追加する必要があります。 **[シークレットのアクセス許可]** で、ユーザー アカウントに **[取得]** と **[一覧表示]** を付与します。
    :::image type="content" source="media/premium-certificates/secret-permissions.png" alt-text="Azure Key Vault のアクセス ポリシー":::
 
+
+## <a name="create-your-own-self-signed-ca-certificate"></a>独自の自己署名 CA 証明書を作成する
+
+TLS 検査をテストして検証するために、次のスクリプトを使用して、独自の自己署名ルート CA と中間 CA を作成することができます。
+
+> [!IMPORTANT]
+> 運用時には、企業の PKI を使用して中間 CA 証明書を作成する必要があります。 企業の PKI では、既存のインフラストラクチャを活用して、すべてのエンドポイント マシンへのルート CA の配布を処理します。 詳細については、「[Azure Firewall プレビュー用にエンタープライズ CA 証明書をデプロイおよび構成する](premium-deploy-certificates-enterprise-ca.md)」を参照してください。
+
+このスクリプトには、次の 2 つのバージョンがあります。
+- Bash スクリプト `cert.sh` 
+- PowerShell スクリプト `cert.ps1` 
+
+ また、両方のスクリプトで `openssl.cnf` 構成ファイルが使用されています。 スクリプトを使用するには、`openssl.cnf`、`cert.sh`、または`cert.ps1` の内容をローカル コンピューターにコピーします。
+
+スクリプトでは、次のファイルが生成されます。
+- rootCA.crt/rootCA.key - ルート CA の公開証明書と秘密キー
+- interCA.crt/interCA.key - 中間 CA の公開証明書と秘密キー
+- interCA.pfx - ファイアウォールで使用される中間 CA pkcs12 パッケージ
+
+> [!IMPORTANT]
+> rootCA.key は、セキュリティで保護されたオフラインの場所に格納する必要があります。 このスクリプトでは、有効期間が 1024 日である証明書が生成されます。
+> スクリプトには、ローカル コンピューターにインストールされた openssl バイナリが必要です。 詳しくは、https://www.openssl.org/ をご覧ください。
+> 
+証明書を作成したら、次の場所に配置します。
+- rootCA.crt - エンドポイント マシンに配置します (公開証明書のみ)。
+- interCA.pfx - 証明書としてキー コンテナーにインポートし、ファイアウォール ポリシーに割り当てます。
+
+### <a name="opensslcnf"></a>**openssl.cnf**
+```
+[ req ]
+default_bits        = 4096
+distinguished_name  = req_distinguished_name
+string_mask         = utf8only
+default_md          = sha512
+
+[ req_distinguished_name ]
+countryName                     = Country Name (2 letter code)
+stateOrProvinceName             = State or Province Name
+localityName                    = Locality Name
+0.organizationName              = Organization Name
+organizationalUnitName          = Organizational Unit Name
+commonName                      = Common Name
+emailAddress                    = Email Address
+
+[ rootCA_ext ]
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, CA:true
+keyUsage = critical, digitalSignature, cRLSign, keyCertSign
+
+[ interCA_ext ]
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, CA:true, pathlen:1
+keyUsage = critical, digitalSignature, cRLSign, keyCertSign
+
+[ server_ext ]
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, CA:false
+keyUsage = critical, digitalSignature
+extendedKeyUsage = serverAuth
+```
+
+###  <a name="bash-script---certsh"></a>Bash スクリプト - cert.sh 
+```bash
+#!/bin/bash
+
+# Create root CA
+openssl req -x509 -new -nodes -newkey rsa:4096 -keyout rootCA.key -sha256 -days 1024 -out rootCA.crt -subj "/C=US/ST=US/O=Self Signed/CN=Self Signed Root CA" -config openssl.cnf -extensions rootCA_ext
+
+# Create intermediate CA request
+openssl req -new -nodes -newkey rsa:4096 -keyout interCA.key -sha256 -out interCA.csr -subj "/C=US/ST=US/O=Self Signed/CN=Self Signed Intermediate CA"
+
+# Sign on the intermediate CA
+openssl x509 -req -in interCA.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out interCA.crt -days 1024 -sha256 -extfile openssl.cnf -extensions interCA_ext
+
+# Export the intermediate CA into PFX
+openssl pkcs12 -export -out interCA.pfx -inkey interCA.key -in interCA.crt -password "pass:"
+
+echo ""
+echo "================"
+echo "Successfully generated root and intermediate CA certificates"
+echo "   - rootCA.crt/rootCA.key - Root CA public certificate and private key"
+echo "   - interCA.crt/interCA.key - Intermediate CA public certificate and private key"
+echo "   - interCA.pfx - Intermediate CA pkcs12 package which could be uploaded to Key Vault"
+echo "================"
+```
+
+### <a name="powershell---certps1"></a>PowerShell - cert.ps1
+```powershell
+# Create root CA
+openssl req -x509 -new -nodes -newkey rsa:4096 -keyout rootCA.key -sha256 -days 3650 -out rootCA.crt -subj '/C=US/ST=US/O=Self Signed/CN=Self Signed Root CA' -config openssl.cnf -extensions rootCA_ext
+
+# Create intermediate CA request
+openssl req -new -nodes -newkey rsa:4096 -keyout interCA.key -sha256 -out interCA.csr -subj '/C=US/ST=US/O=Self Signed/CN=Self Signed Intermediate CA'
+
+# Sign on the intermediate CA
+openssl x509 -req -in interCA.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out interCA.crt -days 3650 -sha256 -extfile openssl.cnf -extensions interCA_ext
+
+# Export the intermediate CA into PFX
+openssl pkcs12 -export -out interCA.pfx -inkey interCA.key -in interCA.crt -password 'pass:'
+
+Write-Host ""
+Write-Host "================"
+Write-Host "Successfully generated root and intermediate CA certificates"
+Write-Host "   - rootCA.crt/rootCA.key - Root CA public certificate and private key"
+Write-Host "   - interCA.crt/interCA.key - Intermediate CA public certificate and private key"
+Write-Host "   - interCA.pfx - Intermediate CA pkcs12 package which could be uploaded to Key Vault"
+Write-Host "================"
+
+```
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

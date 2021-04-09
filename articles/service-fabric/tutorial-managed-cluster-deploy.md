@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.custom: references_regions
 ms.openlocfilehash: fd54e6f8c5272c3a8fe0e0162ca2e57968b24642
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98791713"
 ---
 # <a name="tutorial-deploy-a-service-fabric-managed-cluster-preview"></a>チュートリアル:Service Fabric マネージド クラスターをデプロイする (プレビュー)

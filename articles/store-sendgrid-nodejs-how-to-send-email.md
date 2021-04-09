@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: f2d653441598a47986913d525057672eed24b435
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96015428"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>SendGrid を使用して Node.js から電子メールを送信する方法
@@ -36,7 +36,7 @@ SendGrid は、信頼性の高い[トランザクション メール配信]、�
 * 顧客の問い合わせを転送する
 * アプリケーションからの電子メール通知
 
-詳細については、[https://sendgrid.com](https://sendgrid.com) を参照してください。
+詳細については、「[https://sendgrid.com](https://sendgrid.com)」を参照してください。
 
 ## <a name="create-a-sendgrid-account"></a>SendGrid アカウントの作成
 
@@ -59,7 +59,7 @@ var sendgrid = require('sendgrid')(sendgrid_username, sendgrid_password);
 SendGrid モジュールは、**SendGrid** 機能および **Email** 機能をエクスポートします。
 **SendGrid** は Web API による電子メールの送信を処理します。**Email** は電子メール メッセージをカプセル化します。
 
-## <a name="how-to-create-an-email"></a>方法:電子メールを作成する
+## <a name="how-to-create-an-email"></a>方法: 電子メールを作成する
 
 SendGrid モジュールを使って電子メール メッセージを作成するには、最初に Email 機能で電子メール メッセージを作成し、次に SendGrid 機能でメッセージを送信します。 以下は、Email 機能を使用した新しいメッセージの作成の例です。
 
@@ -82,7 +82,7 @@ text プロパティと html プロパティの両方を設定することで、
 
 Email 機能でサポートされるすべてのプロパティの詳細については、「[sendgrid-nodejs][sendgrid-nodejs]」を参照してください。
 
-## <a name="how-to-send-an-email"></a>方法:電子メールを送信する
+## <a name="how-to-send-an-email"></a>方法: 電子メールを送信する
 
 Email 機能で電子メール メッセージを作成した後で、SendGrid の Web API を使用してメッセージを送信できます。 
 
@@ -108,7 +108,7 @@ sendgrid.send(email, function(err, json){
 > ```
 >
 
-## <a name="how-to-add-an-attachment"></a>方法:添付ファイルを追加する
+## <a name="how-to-add-an-attachment"></a>方法: 添付ファイルを追加する
 添付ファイルをメッセージに追加するには、**files** プロパティでファイル名とパスを指定します。 次の例に、添付ファイルを送信する方法を示します。
 
 ```javascript
@@ -135,7 +135,7 @@ sendgrid.send({
 > 
 > 
 
-## <a name="how-to-use-filters-to-enable-footers-and-tracking"></a>方法:フィルターを使用してフッターと追跡を有効にする
+## <a name="how-to-use-filters-to-enable-footers-and-tracking"></a>方法: フィルターを使用してフッターと追跡を有効にする
 
 SendGrid では、*フィルター* を使用することでその他の電子メール機能も利用できます。 その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの独自の機能を有効にすることができます。 すべてのフィルターの一覧については、 [フィルター設定][Filter Settings]に関するページを参照してください。
 
@@ -186,7 +186,7 @@ email.setFilters({
 sendgrid.send(email);
 ```
 
-## <a name="how-to-update-email-properties"></a>方法:電子メールのプロパティを更新する
+## <a name="how-to-update-email-properties"></a>方法: 電子メールのプロパティを更新する
 
 メールの一部のプロパティは、**setProperty** を使って上書きすることや、**addProperty** を使って追加することができます。 たとえば、次のようにして、新しい受信者を追加できます。
 
@@ -201,11 +201,11 @@ email.addFilter('footer', 'enable', 1);
 email.addFilter('footer', 'text/html', '<strong>boo</strong>');
 ```
 
-詳細については、「[sendgrid-nodejs][sendgrid-nodejs]」を参照してください。
+詳しくは、「[sendgrid-nodejs][sendgrid-nodejs]」をご覧ください。
 
-## <a name="how-to-use-additional-sendgrid-services"></a>方法:その他の SendGrid サービスを使用する
+## <a name="how-to-use-additional-sendgrid-services"></a>方法: その他の SendGrid サービスを使用する
 
-SendGrid の Web ベース API を使用して、Azure アプリケーションからその他の SendGrid 機能を利用することができます。 詳細については、 [SendGrid API に関するドキュメント][SendGrid API documentation]を参照してください。
+SendGrid の Web ベース API を使用して、Azure アプリケーションからその他の SendGrid 機能を利用することができます。 詳細については、[SendGrid API に関するドキュメント][SendGrid API documentation]を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

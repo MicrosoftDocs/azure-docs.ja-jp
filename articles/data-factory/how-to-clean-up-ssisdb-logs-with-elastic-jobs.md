@@ -8,10 +8,10 @@ author: swinarko
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: ecabbf88e14d17ac912065c2ed4aa95316efaf9f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100387647"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Azure エラスティック データベース ジョブで SSISDB のログをクリーンアップする
@@ -32,7 +32,7 @@ ms.locfileid: "100387647"
 
 以下のサンプル PowerShell スクリプトでは、SSISDB のログをクリーンアップするためのストアド プロシージャをトリガーする新しいエラスティック ジョブを作成しています。 詳細については、「[PowerShell を使用したエラスティック ジョブ エージェントの作成](../azure-sql/database/elastic-jobs-powershell-create.md)」を参照してください。
 
-### <a name="create-parameters"></a>パラメーターの作成
+### <a name="create-parameters"></a>パラメーターを作成する
 
 ``` powershell
 # Parameters needed to create the Job Database
@@ -263,6 +263,6 @@ ORDER BY start_time DESC
 
 Azure-SSIS Integration Runtime に関連した管理タスクと監視タスクについては、次の記事を参照してください。 Azure-SSIS IR は、Azure SQL Database の SSISDB に格納される SSIS パッケージのランタイム エンジンです。
 
--   [Azure-SSIS Integration Runtime の再構成](manage-azure-ssis-integration-runtime.md)
+-   [Azure-SSIS 統合ランタイムの再構成](manage-azure-ssis-integration-runtime.md)
 
 -   [Azure-SSIS Integration Runtime の監視](monitor-integration-runtime.md#azure-ssis-integration-runtime)

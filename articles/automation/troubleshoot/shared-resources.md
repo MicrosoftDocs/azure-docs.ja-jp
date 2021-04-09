@@ -6,10 +6,10 @@ ms.subservice: ''
 ms.date: 01/27/2021
 ms.topic: troubleshooting
 ms.openlocfilehash: 1a822166ae4c2bf793e0fa50e93018f499fcc27a
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99053621"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>共有リソースの問題のトラブルシューティング

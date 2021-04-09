@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1643b20c6c157c43e93967cef364e703dbf4478e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96010770"
 ---
 |**VPN<br>ゲートウェイ<br>世代** |**SKU**   | **S2S/VNet 間<br>トンネル** | **P2S<br> SSTP 接続** | **P2S<br> IKEv2/OpenVPN 接続** | **合計<br>スループット ベンチマーク** | **BGP** | **ゾーン冗長** |
@@ -26,9 +26,9 @@ ms.locfileid: "96010770"
 |**Generation1**|**VpnGw3AZ**| 最大 30*   | 最大 128  | 最大 1000      | 1.25 Gbps | サポートされています | はい |
 |        |            |            |           |                |           |           |     |
 |**Generation2**|**VpnGw2**  | 最大 30*   | 最大 128  | 最大 500       | 1.25 Gbps | サポートされています | いいえ |
-|**Generation2**|**VpnGw3**  | 最大 30*   | 最大 128  | 最大 1000      | 2.5 Gbps  | サポートされています | いいえ |
-|**Generation2**|**VpnGw4**  | 最大 30*   | 最大 128  | 最大 5000      | 5 Gbps    | サポートされています | いいえ |
-|**Generation2**|**VpnGw5**  | 最大 30*   | 最大 128  | 最大 10000      | 10 Gbps   | サポートされています | いいえ |
+|**Generation2**|**VpnGw3**  | 最大 30*   | 最大 128  | 最大 1000      | 2.5 Gbps  | サポート | いいえ |
+|**Generation2**|**VpnGw4**  | 最大 30*   | 最大 128  | 最大 5000      | 5 Gbps    | サポート | いいえ |
+|**Generation2**|**VpnGw5**  | 最大 30*   | 最大 128  | 最大 10000      | 10 Gbps   | サポート | いいえ |
 |**Generation2**|**VpnGw2AZ**| 最大 30*   | 最大 128  | 最大 500       | 1.25 Gbps | サポートされています | はい |
 |**Generation2**|**VpnGw3AZ**| 最大 30*   | 最大 128  | 最大 1000      | 2.5 Gbps  | サポートされています | はい |
 |**Generation2**|**VpnGw4AZ**| 最大 30*   | 最大 128  | 最大 5000      | 5 Gbps    | サポートされています | はい |

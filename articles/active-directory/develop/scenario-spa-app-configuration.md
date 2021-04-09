@@ -12,26 +12,22 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 5cbb576a7fcfb2daf492a149130aa7c99fe10ac5
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: fe73832ec5eaee62a2dc2d397c12f82334e2efd8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753610"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103010706"
 ---
 # <a name="single-page-application-code-configuration"></a>シングルページ アプリケーション：コード構成
 
 ご利用のシングルページ アプリケーション (SPA) のコードを構成する方法について説明します。
 
-## <a name="msal-libraries-for-spas-and-supported-authentication-flows"></a>SPA 用の MSAL ライブラリとサポートされている認証フロー
+## <a name="microsoft-libraries-supporting-single-page-apps"></a>シングルページ アプリをサポートする Microsoft ライブラリ 
 
-Microsoft ID プラットフォームには、次の JavaScript 用 Microsoft Authentication Library (MSAL.js) が用意されており、業界で推奨されているセキュリティ プラクティスを使用して暗黙的なフローと PKCE を使用した認可コード フローがサポートされます。
+次の Microsoft ライブラリはシングルページ アプリをサポートしています。
 
-| MSAL ライブラリ | Flow | 説明 |
-|--------------|------|-------------|
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js (2.x)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) | 認可コード フロー (PKCE) | JavaScript または SPA フレームワーク (Angular、Vue.js、React.js) を使用して構築されたクライアント側 Web アプリで使用するためのプレーンな JavaScript ライブラリ |
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js (1.x)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core) | 暗黙的なフロー | JavaScript または SPA フレームワーク (Angular、Vue.js、React.js) を使用して構築されたクライアント側 Web アプリで使用するためのプレーンな JavaScript ライブラリ |
-| ![MSAL Angular](media/sample-v2-code/logo_angular.png) <br/> [MSAL Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | 暗黙的なフロー | Angular フレームワークで構築されたシングル ページ アプリでの使用を簡素化するためのコア MSAL.js ライブラリのラッパー。 |
+[!INCLUDE [active-directory-develop-libraries-spa](../../../includes/active-directory-develop-libraries-spa.md)]
 
 ## <a name="application-code-configuration"></a>アプリケーションのコード構成
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/09/2021
+ms.date: 02/17/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q3-portal
-ms.openlocfilehash: 6bd44ea0217f11a156598a1a6f3703e528dd82d4
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 6a7f50268a09ae451b1e9dda2ca354ded31efb68
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100095173"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103200749"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する
 
@@ -67,11 +67,11 @@ Azure Active Directory (Azure AD) のアプリケーション プロキシ サ�
 > キーは、PowerShell で次のコマンドを使用して設定できます。
 > ```
 > Set-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\' -Name EnableDefaultHTTP2 -Value 0
->
+> ```
 
 #### <a name="recommendations-for-the-connector-server"></a>コネクタ サーバーの推奨事項
 
-1. コネクタとアプリケーション間のパフォーマンスを最適化するため、アプリケーション サーバーと物理的に近い場所にコネクタ サーバーを配置します。 詳しくは、「[ネットワーク トポロジに関する考慮事項](application-proxy-network-topology.md)」をご覧ください。
+1. コネクタとアプリケーション間のパフォーマンスを最適化するため、アプリケーション サーバーと物理的に近い場所にコネクタ サーバーを配置します。 詳細については、「[Azure Active Directory アプリケーション プロキシを使用したトラフィック フローの最適化](application-proxy-network-topology.md)」を参照してください。
 1. コネクタ サーバーと Web アプリケーション サーバーは、同じ Active Directory ドメインに属しているか、または信頼する側のドメインの範囲である必要があります。 統合 Windows 認証 (IWA) および Kerberos 制約付き委任 (KCD) でのシングル サインオン (SSO) を使用するには、サーバーを同じドメインまたは信頼する側のドメインに配置する必要があります。 コネクタ サーバーと Web アプリケーション サーバーが別の Active Directory ドメイン内にある場合は、シングル サインオン用にリソースベースの委任を使用する必要があります。 詳しくは、「[KCD for single sign-on with Application Proxy](application-proxy-configure-single-sign-on-with-kcd.md)」 (アプリケーション プロキシを使用したシングル サインオンのための KCD) をご覧ください。
 
 > [!WARNING]
@@ -115,10 +115,10 @@ Azure AD アプリケーション プロキシの環境を準備するには、�
 
 以下の各ポートを **アウトバウンド** トラフィックに対して開きます。
 
-   | ポート番号 | 用途 |
-   | --- | --- |
-   | 80 | TLS または SSL 証明書の検証時に証明書失効リスト (CRL) をダウンロードする |
-   | 443 | アプリケーション プロキシ サービスとのすべての送信通信 |
+| ポート番号 | 用途 |
+| ----------- | ------------------------------------------------------------ |
+| 80          | TLS または SSL 証明書の検証時に証明書失効リスト (CRL) をダウンロードする |
+| 443         | アプリケーション プロキシ サービスとのすべての送信通信 |
 
 ファイアウォールが送信元ユーザーに応じてトラフィックを処理している場合は、ネットワーク サービスとして実行されている Windows サービスからのトラフィック用にポート 80 と 443 も開きます。
 
@@ -127,11 +127,11 @@ Azure AD アプリケーション プロキシの環境を準備するには、�
 次の URL へのアクセスを許可します。
 
 | URL | Port | 用途 |
-| --- | --- | --- |
-| &ast;.msappproxy.net<br>&ast;.servicebus.windows.net | 443/HTTPS | コネクタとアプリケーション プロキシ クラウド サービスの間の通信 |
-| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP |コネクタでは、証明書の検証にこれらの URL が使用されます。 |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS |コネクタでは、登録プロセスの間にこれらの URL が使用されます。 |
-| ctldl.windowsupdate.com | 80/HTTP |コネクタでは、登録プロセスの間にこの URL が使用されます。 |
+| ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
+| &ast;.msappproxy.net<br>&ast;.servicebus.windows.net         | 443/HTTPS | コネクタとアプリケーション プロキシ クラウド サービスの間の通信 |
+| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP   | コネクタでは、証明書の検証にこれらの URL が使用されます。        |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS | コネクタでは、登録プロセスの間にこれらの URL が使用されます。 |
+| ctldl.windowsupdate.com                                      | 80/HTTP   | コネクタでは、登録プロセスの間にこの URL が使用されます。 |
 
 ファイアウォールまたはプロキシでドメインのサフィックスに基づいてアクセス規則を構成できる場合は、上記の &ast;.msappproxy.net、&ast;.servicebus.windows.net などの URL への接続を許可できます。 そうでない場合は、[Azure IP ranges and Service Tags - Public Cloud (Azure IP 範囲とサービス タグ - パブリック クラウド)](https://www.microsoft.com/download/details.aspx?id=56519) へのアクセスを許可する必要があります。 これらの IP 範囲は毎週更新されます。
 
@@ -157,6 +157,7 @@ Azure AD アプリケーション プロキシ エンドポイントのパブリ
 1. サービス利用規約を読みます。 準備ができたら、 **[規約に同意してダウンロード]** を選択します。
 1. ウィンドウの下部で、 **[実行]** を選択してコネクタをインストールします。 インストール ウィザードが開きます。
 1. ウィザードの指示に従ってサービスをインストールします。 Azure AD テナントのアプリケーション プロキシにコネクタを登録するよう求められたら、アプリケーション管理者の資格情報を提供します。
+   
     - Internet Explorer (IE) では、 **[IE セキュリティ強化の構成]** が **[オン]** に設定されていると、登録画面が表示されないことがあります。 アクセスするには、エラー メッセージに示された指示に従ってください。 **[Internet Explorer セキュリティ強化の構成]** が **[オフ]** に設定されていることを確認します。
 
 ### <a name="general-remarks"></a>一般的な注釈
@@ -164,6 +165,8 @@ Azure AD アプリケーション プロキシ エンドポイントのパブリ
 以前にコネクタをインストールした場合は、再インストールして最新バージョンにします。 過去にリリースされたバージョンと変更履歴については、次を参照してください: [アプリケーション プロキシのバージョン リリース履歴](application-proxy-release-version-history.md)。
 
 オンプレミス アプリケーション用に複数の Windows サーバーを選択する場合は、サーバーごとにコネクタをインストールして登録する必要があります。 コネクタはコネクタ グループに整理できます。 詳しくは、[コネクタ グループ](application-proxy-connector-groups.md)に関するページをご覧ください。
+
+異なるリージョンにコネクタをインストールした場合は、各コネクタ グループで使用する、最も近いアプリケーション プロキシ クラウド サービスのリージョンを選択することで、トラフィックを最適化できます。「[Azure Active Directory アプリケーション プロキシを使用したトラフィック フローの最適化](application-proxy-network-topology.md)」を参照してください。
 
 お客様の組織がプロキシ サーバーを使用してインターネットに接続する場合は、それらをアプリケーション プロキシ用に構成する必要があります。  詳しくは、「[既存のオンプレミス プロキシ サーバーと連携する](application-proxy-configure-connectors-with-proxy-servers.md)」をご覧ください。 
 
@@ -208,20 +211,20 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
 4. **[オンプレミスのアプリケーションの追加]** ボタンを選択します。このボタンは、ページの上から半分のあたりにある **[オンプレミスのアプリケーション]** セクションに表示されます。 または、ページの上部にある **[独自のアプリケーションの作成]** を選択し、 **[オンプレミスのアプリケーションへのセキュリティで保護されたリモート アクセス用のアプリケーション プロキシを作成します]** を選択することもできます。
 5. **[独自のオンプレミスのアプリケーションの追加]** セクションで、自分のアプリケーションについて次の情報を指定します。
 
-    | フィールド | 説明 |
-    | :---- | :---------- |
+    | フィールド  | 説明 |
+    | :--------------------- | :----------------------------------------------------------- |
     | **名前** | [マイ アプリ] および Azure portal に表示されるアプリケーションの名前。 |
     | **内部 URL** | プライベート ネットワークの内部からアプリケーションにアクセスするための URL。 バックエンド サーバー上の特定のパスを指定して発行できます。この場合、サーバーのそれ以外のパスは発行されません。 この方法では、同じサーバー上の複数のサイトを別々のアプリとして発行し、それぞれに独自の名前とアクセス規則を付与することができます。<br><br>パスを発行する場合は、アプリケーションに必要な画像、スクリプト、スタイル シートが、すべてそのパスに含まれていることを確認してください。 たとえば、アプリケーションが https:\//yourapp/app にあり、https:\//yourapp/media にある画像を使用する場合は、パスとして https:\//yourapp/ を発行する必要があります。 この内部 URL は、ユーザーに表示されるランディング ページである必要はありません。 詳細については、「[発行されたアプリのカスタム ホーム ページを設定する](application-proxy-configure-custom-home-page.md)」を参照してください。 |
-    | **外部 URL** | ユーザーがネットワークの外部からアプリにアクセスするためのアドレス。 既定のアプリケーション プロキシ ドメインを使用しない場合は、[Azure AD アプリケーション プロキシのカスタム ドメイン](application-proxy-configure-custom-domain.md)に関する記事を参照してください。|
+    | **外部 URL** | ユーザーがネットワークの外部からアプリにアクセスするためのアドレス。 既定のアプリケーション プロキシ ドメインを使用しない場合は、[Azure AD アプリケーション プロキシのカスタム ドメイン](application-proxy-configure-custom-domain.md)に関する記事を参照してください。 |
     | **事前認証** | ユーザーにアプリケーションへのアクセス権を付与する前にアプリケーション プロキシがユーザーを認証する方法。<br><br>**Azure Active Directory** - アプリケーション プロキシによってユーザーが Azure AD のサインイン ページにリダイレクトされます。これにより、ディレクトリとアプリケーションに対するユーザーのアクセス許可が認証されます。 このオプションは、条件付きアクセスや Multi-Factor Authentication など、Azure AD のセキュリティ機能を活用できるように、既定のままにしておくことをお勧めします。 Microsoft Cloud Application Security を使用してアプリケーションを監視するには、**Azure Active Directory** が必要です。<br><br>**パススルー** - アプリケーションにアクセスするための Azure AD に対するユーザーの認証は必要ありません。 ただし、バックエンドで認証要件を設定できます。 |
-    | **コネクタ グループ** | コネクタは、アプリケーションへのリモート アクセスを処理します。コネクタ グループを使用して、コネクタとアプリをリージョン、ネットワーク、または目的別に整理できます。 まだコネクタ グループを作成していない場合、アプリは **[既定]** グループに割り当てられます。<br><br>アプリケーションで接続に Websocket を使用する場合は、グループ内のすべてのコネクタがバージョン 1.5.612.0 以降である必要があります。|
+    | **コネクタ グループ** | コネクタは、アプリケーションへのリモート アクセスを処理します。コネクタ グループを使用して、コネクタとアプリをリージョン、ネットワーク、または目的別に整理できます。 まだコネクタ グループを作成していない場合、アプリは **[既定]** グループに割り当てられます。<br><br>アプリケーションで接続に Websocket を使用する場合は、グループ内のすべてのコネクタがバージョン 1.5.612.0 以降である必要があります。 |
 
 6. 必要に応じて、**追加設定** を構成します。 ほとんどのアプリケーションでは、これらの設定は既定の状態のままにしてください。 
 
     | フィールド | 説明 |
-    | :---- | :---------- |
+    | :------------------------------ | :----------------------------------------------------------- |
     | **バックエンド アプリケーションのタイムアウト** | アプリケーションの認証と接続に時間がかかる場合のみ、この値を **[遅い]** に設定します。 既定では、バックエンド アプリケーションのタイムアウトは 85 秒です。 [Long]\(長\) に設定すると、バックエンドのタイムアウトは 180 秒に増加します。 |
-    | **HTTP 専用 Cookie を使用する** | アプリケーション プロキシ Cookie に HTTP 応答ヘッダーの HTTPOnly フラグを含めるには、この値を **[はい]** に設定します。 リモート デスクトップ サービスを使用している場合は、この値を **[いいえ]** に設定します。|
+    | **HTTP 専用 Cookie を使用する** | アプリケーション プロキシ Cookie に HTTP 応答ヘッダーの HTTPOnly フラグを含めるには、この値を **[はい]** に設定します。 リモート デスクトップ サービスを使用している場合は、この値を **[いいえ]** に設定します。 |
     | **セキュリティで保護された Cookie を使用します**| 暗号化された HTTPS 要求などのセキュリティ保護されたチャネル経由で Cookie を送信するために、この値を **[はい]** に設定します。
     | **永続 Cookie を使用**| この値は、 **[いいえ]** のままにしておきます。 この設定は、プロセス間で Cookie を共有できないアプリケーションにのみ使用してください。 Cookie の設定の詳細については、「[Azure Active Directory でオンプレミスのアプリケーションにアクセスするための Cookie 設定](./application-proxy-configure-cookie-settings.md)」を参照してください。
     | **ヘッダーの URL を変換する** | 認証要求でアプリケーションの元のホスト ヘッダーが必要でない場合を除き、この値は **[はい]** のままにします。 |

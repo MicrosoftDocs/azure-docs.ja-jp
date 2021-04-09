@@ -11,10 +11,10 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 45712632ebfb2da4b713038503965ce908c1dfc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87498890"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>Blob ストレージ コンテナーのサイズを計算する
@@ -44,7 +44,7 @@ az group delete --name myResourceGroup
 
 このスクリプトでは次のコマンドを使用して、Blob ストレージ コンテナーのサイズを計算します。 表内の各項目は、コマンドごとのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az storage blob upload](/cli/azure/storage/account) | ローカル ファイルを Azure Blob Storage コンテナーにアップロードします。 |

@@ -6,10 +6,10 @@ ms.subservice: ''
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.openlocfilehash: 3d2c0cf780b992d7bb464969c50d60ffa5093e8f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98896564"
 ---
 # <a name="data-to-collect-when-opening-a-case-for-microsoft-azure-automation"></a>Microsoft Azure Automation のケースを開くときに収集するデータ

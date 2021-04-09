@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory で自動ユーザー プロビジョニング用に Keeper Password Manager & Digital Vault を構成する | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory で自動ユーザー プロビジョニング用に Keeper Password Manager & Digital Vault を構成する | Microsoft Docs'
 description: ユーザー アカウントを Keeper Password Manager & Digital Vault に自動的にプロビジョニングおよびプロビジョニング解除するよう Azure Active Directory を構成する方法について説明します。
 services: active-directory
 author: zchia
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 2670dc0cb56805a2afa966bee1d2aa52b6c8e46a
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358985"
 ---
-# <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Keeper Password Manager & Digital Vault を構成する
+# <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニング用に Keeper Password Manager & Digital Vault を構成する
 
 このチュートリアルの目的は、ユーザーまたはグループを Keeper Password Manager & Digital Vault に自動的にプロビジョニングおよびプロビジョニング解除するよう Azure AD を構成するために、Keeper Password Manager & Digital Vault と Azure Active Directory (Azure AD) で実行される手順を示すことです。
 
@@ -53,13 +53,13 @@ Azure AD で自動ユーザー プロビジョニング用に Keeper Password Ma
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Keeper Password Manager & Digital Vault** 」と入力し、結果パネルで **[Keeper Password Manager & Digital Vault]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Keeper Password Manager & Digital Vault**」と入力し、結果パネルで **[Keeper Password Manager & Digital Vault]** を選択してから、**[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果一覧の Keeper Password Manager & Digital Vault](common/search-new-app.png)
 
 ## <a name="assigning-users-to-keeper-password-manager--digital-vault"></a>Keeper Password Manager & Digital Vault へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Keeper Password Manager & Digital Vault へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定したら、次の手順に従って、これらのユーザーやグループを Keeper Password Manager & Digital Vault に割り当てることができます。
 
@@ -98,7 +98,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. **[管理者資格情報]** セクションで、手順 6 で説明するように、Keeper Password Manager & Digital Vault アカウントの **[テナント URL]** と **[シークレット トークン]** を入力します。
 
-6. [Keeper 管理コンソール](https://keepersecurity.com/console/#login)にサインインします。 **[Admin]\(管理者\)** をクリックし、既存のノードを選択するか、または新しく作成します。 **[Provisioning]\(プロビジョニング\)** タブに移動し、 **[Add Method]\(メソッドの追加\)** を選択します。
+6. [Keeper 管理コンソール](https://keepersecurity.com/console/#login)にサインインします。 **[Admin]\(管理者\)** をクリックし、既存のノードを選択するか、または新しく作成します。 **[Provisioning]\(プロビジョニング\)** タブに移動し、**[Add Method]\(メソッドの追加\)** を選択します。
 
     ![Keeper 管理コンソール](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-admin-console.png)
 
@@ -114,7 +114,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Keeper でのトークンの作成](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-token.png)
 
-7. 手順 5 の各フィールドに値を入力したら、 **[テスト接続]** をクリックして、Azure AD が Keeper Password Manager & Digital Vault に接続できることを確認します。 接続できない場合は、使用中の Keeper Password Manager & Digital Vault アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+7. 手順 5 の各フィールドに値を入力したら、**[テスト接続]** をクリックして、Azure AD が Keeper Password Manager & Digital Vault に接続できることを確認します。 接続できない場合は、使用中の Keeper Password Manager & Digital Vault アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -124,7 +124,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 9. **[保存]** をクリックします。
 
-10. **[マッピング]** セクションで、 **[Synchronize Azure Active Directory Users to Keeper Password Manager & Digital Vault]\(Azure Active Directory ユーザーを Keeper Password Manager & Digital Vault に同期する\)** を選択します。
+10. **[マッピング]** セクションで、**[Synchronize Azure Active Directory Users to Keeper Password Manager & Digital Vault]\(Azure Active Directory ユーザーを Keeper Password Manager & Digital Vault に同期する\)** を選択します。
 
     ![Keeper ユーザー マッピング](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-mappings.png)
 
@@ -132,7 +132,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Keeper ユーザーの属性](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-attributes.png)
 
-12. **[マッピング]** セクションで、 **[Synchronize Azure Active Directory Groups to Keeper Password Manager & Digital Vault]\(Azure Active Directory グループを Keeper Password Manager & Digital Vault に同期する\)** を選択します。
+12. **[マッピング]** セクションで、**[Synchronize Azure Active Directory Groups to Keeper Password Manager & Digital Vault]\(Azure Active Directory グループを Keeper Password Manager & Digital Vault に同期する\)** を選択します。
 
     ![Keeper グループ マッピング](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-mappings.png)
 
@@ -142,7 +142,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-15. Keeper Password Manager & Digital Vault に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+15. Keeper Password Manager & Digital Vault に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 
@@ -160,7 +160,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 ## <a name="connector-limitations"></a>コネクタの制限事項
 
-* Keeper Password Manager & Digital Vault では、 **電子メール** と **ユーザー名** のソース値が同じである必要があります。これは、どちらかの属性が更新されると、もう一方の値が変更されるためです。
+* Keeper Password Manager & Digital Vault では、**電子メール** と **ユーザー名** のソース値が同じである必要があります。これは、どちらかの属性が更新されると、もう一方の値が変更されるためです。
 * Keeper Password Manager & Digital Vault では、ユーザーの削除はサポートされておらず、無効化のみ可能です。 無効化されたユーザーは、Keeper 管理コンソール UI でロック済みとして表示されます。
 
 ## <a name="additional-resources"></a>その他のリソース

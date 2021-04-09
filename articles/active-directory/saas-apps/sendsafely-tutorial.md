@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: jeedes
 ms.openlocfilehash: c43756e7526a260f238ed6e9d0c1f253041b05e7
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92674404"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sendsafely"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SendSafely の統合
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* SendSafely では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* SendSafely では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* SendSafely では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* SendSafely では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 * SendSafely を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
@@ -52,7 +52,7 @@ Azure AD への SendSafely の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **SendSafely** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**SendSafely**」と入力します。
 1. 結果のパネルから **[SendSafely]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -134,7 +134,7 @@ SendSafely で Azure AD SSO を構成してテストするには、次の構成�
 
 ## <a name="configure-sendsafely-sso"></a>SendSafely SSO の構成
 
-**SendSafely** 側にシングル サインオンを構成するには、 [ここ](https://sendsafely.zendesk.com/hc/articles/360004152492-Setup-Single-Sign-On-SSO-with-SAML)に記載されている手順に従ってください。
+**SendSafely** 側にシングル サインオンを構成するには、[ここ](https://sendsafely.zendesk.com/hc/articles/360004152492-Setup-Single-Sign-On-SSO-with-SAML)に記載されている手順に従ってください。
 
 ### <a name="create-sendsafely-test-user"></a>SendSafely テスト ユーザーの作成
 

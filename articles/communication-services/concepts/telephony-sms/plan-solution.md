@@ -6,22 +6,35 @@ author: prakulka
 manager: nmurav
 services: azure-communication-services
 ms.author: prakulka
-ms.date: 10/05/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: b7d780ce6362e34c801b4da25332bff90f0b7515
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6ec0b32e487739c33b1b2b49bd0645130fc88581
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659275"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104729534"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Azure Communication Services での電話番号の種類
 
-[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
+
+
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
+> [!IMPORTANT]
+> 現在、電話番号の可用性は、請求先住所が米国内である有料の Azure サブスクリプションと、米国内にデータの場所がある Communication Services リソースに制限されています。 試用アカウントや Azure 無料クレジットを使用して電話番号を取得することはできません。 詳細については、このドキュメントの[対象となるサブスクリプション](#azure-subscriptions-eligibility)に関するセクションを参照してください。
+
 
 Azure Communication Services では、公衆交換電話網 (PSTN) で、電話番号を使用して音声通話を行ったり携帯ショートメール (SMS) メッセージを送信したりすることができます。 このドキュメントでは、Communication Services を使用したテレフォニーと SMS ソリューションを計画している方のために、電話番号の種類、構成オプション、利用可能なリージョンについて見ていきます。
+
+## <a name="azure-subscriptions-eligibility"></a>対象となる Azure サブスクリプション
+
+電話番号を取得するには、有料の Azure サブスクリプションが必要です。 試用アカウントや Azure 無料クレジットで電話番号を取得することはできません。 
+
+現在、電話番号の可用性は、請求先住所が米国内である Azure サブスクリプションと、米国内にデータの場所がある Communication Services リソースに制限されています。
+
 
 ## <a name="number-types-and-features"></a>番号の種類と機能
 Communication Services には、**ローカル** と **無料電話番号** の 2 種類の電話番号が用意されています。
@@ -69,11 +82,6 @@ Communication Services には、**ローカル** と **無料電話番号** の 
 
 \* 通話の宛先と価格について詳しくは、[価格のページ](../pricing.md)を参照してください。
 
-## <a name="azure-subscriptions-eligibility"></a>対象となる Azure サブスクリプション
-
-電話番号を取得するには、有料の Azure サブスクリプションが必要です。 試用アカウントや Azure 無料クレジットで電話番号を取得することはできません。
-
-現在、電話番号の提供は、請求先住所が米国内になっている Azure サブスクリプションに制限されています。
 
 ## <a name="next-steps"></a>次の手順
 

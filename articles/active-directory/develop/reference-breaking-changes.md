@@ -8,22 +8,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 5/4/2020
+ms.date: 2/22/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 94c34e6f7cb24ff749e5de95f1c28a496700af80
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c5e7f556f37a1d6d53e0a938490f1099a7be776a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348723"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647423"
 ---
 # <a name="whats-new-for-authentication"></a>認証の新機能
 
 > このページの更新に関する通知を受け取るには、この URL を RSS フィード リーダーに貼り付けてください。<br/>`https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us`
 
-認証システムは、セキュリティの向上と規格への準拠を確保するために、継続的に機能の変更と追加を行います。 常に最新の開発情報を把握していただけるよう、この記事では以下の事項に関する情報を提供します。
+認証システムは、セキュリティの向上と規格への準拠を確保するために、継続的に機能の変更と追加を行います。 常に最新の開発情報を把握していただけるよう、この記事では次の事項に関する情報を提供します。
 
 - 最新の機能
 - 既知の問題
@@ -35,7 +35,28 @@ ms.locfileid: "96348723"
 
 ## <a name="upcoming-changes"></a>今後の変更
 
-現時点ではスケジュールされていません。  運用環境の変更または変更予定については、以下を参照してください。
+### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>条件付きアクセスは、明示的に要求されたスコープに対してのみトリガーされる
+
+**有効日**: 2021 年 3 月
+
+**影響を受けるエンドポイント**: v2.0
+
+**影響を受けるプロトコル**:[動的な同意](v2-permissions-and-consent.md#requesting-individual-user-consent)が使用されているすべてのフロー
+
+現在、動的な同意が使用されているアプリケーションでは、名前を指定して `scope` パラメーターで要求されなかった場合でも、同意があるすべてのアクセス許可が付与されます。  これにより、たとえば、`user.read` のみが要求されているが、`files.read` に対する同意も含まれているアプリでは、`files.read` アクセス許可のために割り当てられている条件付きアクセスが強制的に渡される場合があります。 
+
+不要な条件付きアクセスのプロンプト数を減らすため、Azure AD では、要求されていないスコープがアプリケーションに提供される方法を変更し、明示的に要求されたスコープのみによって条件付きアクセスがトリガーされるようにします。 この変更によって、Azure AD の以前の動作 (つまり、要求されていなくてもすべてのアクセス許可を提供する) に依存しているアプリでは、要求するトークンにアクセス許可が不足することになり、問題が発生する可能性があります。
+
+今後、アプリでは、混合したアクセス許可 (要求されたものと、同意はあるが、条件付きアクセスのプロンプトが必要ないもの) が含まれたアクセス トークンを受け取ります。  アクセス トークンのスコープは、トークン応答の `scope` パラメーターに反映されます。 
+
+**使用例**
+
+アプリには、`user.read`、`files.readwrite`、および `tasks.read` に対する同意があります。 `files.readwrite` には、条件付きアクセス ポリシーが適用されていますが、他の 2 つには適用されていません。 アプリで `scope=user.read` に対するトークン要求が行われ、現在サインインしているユーザーが条件付きアクセス　ポリシーを渡していない場合、結果として得られるトークンは `user.read` と `tasks.read` のアクセス許可を対象としたものになります。 `tasks.read` が含まれている理由は、それに対する同意がアプリにあり、かつ条件付きアクセス ポリシーを適用する必要がないからです。 
+
+次に、アプリで `scope=files.readwrite` が要求されると、テナントによって要求される条件付きアクセスがトリガーされ、条件付きアクセス ポリシーを満たすことができる対話型認証プロンプトの表示がアプリに対して強制されます。  返されるトークンには、3 つすべてのスコープが含まれます。 
+
+次に、アプリがその 3 つのスコープのいずれか (たとえば、`scope=tasks.read`) に対して最後の要求を行うと、Azure AD では、ユーザーが `files.readwrite` に必要な条件付きアクセス ポリシーを既に完了していることを確認し、3 つすべてのアクセス許可が含まれたトークンを再び発行します。 
+
 
 ## <a name="may-2020"></a>2020 年 5 月
 

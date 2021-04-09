@@ -15,10 +15,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 9cf5a9c81ca1d7a42a5a8e342dee55f335656c3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80154425"
 ---
 # <a name="web-api"></a>Web API
@@ -40,7 +40,7 @@ Web API アプリケーションは、Web API からリソースを取得する�
 
 ### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>アプリケーション ID と OAuth 2.0 クライアント資格情報付与
 
-1. ユーザーは、Web アプリケーションで Azure AD にサインインします (詳細については、**Web アプリ**に関するセクションを参照してください)。
+1. ユーザーは、Web アプリケーションで Azure AD にサインインします (詳細については、**Web アプリ** に関するセクションを参照してください)。
 1. Web アプリケーションは、Web API に対して認証し、目的のリソースを取得できるように、アクセス トークンを取得する必要があります。 Web アプリケーションは、資格情報、アプリケーション ID、Web API のアプリケーション ID の URI を提供して、Azure AD のトークン エンドポイントに要求を送信します。
 1. Azure AD がアプリケーションを認証し、Web API の呼び出しに使用する JWT アクセス トークンを返します。
 1. Web アプリケーションでは、HTTPS 経由で返された JWT アクセス トークンを使用して、Web API への要求の Authorization ヘッダーに、"Bearer" を指定した JWT 文字列を追加します。 その後、Web API が JWT を検証します。検証が正常に行われると、目的のリソースが返されます。

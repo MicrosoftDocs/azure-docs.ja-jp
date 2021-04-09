@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: f4b5d4915cd6520edd7a45af85a836c3360eee32
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: ee66e68216933c410092865a1cdb781476a944c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696331"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103461136"
 ---
 # <a name="add-an-event-hub-event-source-to-your-azure-time-series-insights-environment"></a>Azure Time Series Insights 環境にイベント ハブ イベント ソースを追加する
 
@@ -27,7 +27,7 @@ ms.locfileid: "98696331"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Azure Time Series Insights 環境の作成](./tutorials-set-up-tsi-environment.md)に関する記事の説明に従って、Azure Time Series Insights 環境を作成します。
+- [Azure Time Series Insights 環境の作成](./tutorial-set-up-environment.md)に関する記事の説明に従って、Azure Time Series Insights 環境を作成します。
 - イベント ハブを作成します。 [Azure portal を使用した Event Hubs 名前空間およびイベント ハブの作成](../event-hubs/event-hubs-create.md)に関する記事を参照してください。
 - イベント ハブには、アクティブなメッセージ イベントが送信される必要があります。 [.NET Framework を使用して Azure Event Hubs にイベントを送信する](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md)方法を参照します。
 - Azure Time Series Insights 環境で使用する専用コンシューマー グループをイベント ハブで作成します。 各 Azure Time Series Insights イベント ソースには、他のコンシューマーと共有されない専用のコンシューマー グループが設定されている必要があります。 複数のリーダーが同じコンシューマー グループのイベントを消費すると、すべてのリーダーにエラーが発生する可能性があります。 イベント ハブごとに 20 個のコンシューマー グループという制限があります。 詳細については、[Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)をご覧ください。

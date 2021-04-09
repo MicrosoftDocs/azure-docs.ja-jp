@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: vanto
 ms.date: 11/05/2019
 ms.openlocfilehash: 2b948161633569d629dfb048a7d7dee6a9946f43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91323690"
 ---
 # <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Azure Key Vault の独自のキーを使用して Managed Instance で Transparent Data Encryption を管理する
@@ -46,7 +46,7 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
-リソース グループと、それに関連付けられているすべてのリソースを削除するには、次のコマンドを使用します。
+次のコマンドを使用して、リソース グループと、それに関連付けられているすべてのリソースを削除します。
 
 ```azurecli-interactive
 az group delete --name $resource

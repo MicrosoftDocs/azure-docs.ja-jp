@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 12/11/2020
 ms.author: rolyon
 ms.openlocfilehash: ecda0edcd34999e8cbb6c7ab9039953d17c119e5
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97369228"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Azure portal を使用して Azure カスタム ロールを作成または更新する
@@ -50,7 +50,7 @@ Azure には、カスタム ロールに含めることができる何千もの�
 
     ![サブスクリプションの [アクセス制御 (IAM)] ページ](./media/custom-roles-portal/access-control-subscription.png)
 
-1. **[ロール]** タブをクリックして、すべての組み込みおよびカスタム ロールの一覧を表示します。
+1. **[役割]** タブをクリックして、すべての組み込みおよびカスタム ロールの一覧を表示します。
 
 1. 請求閲覧者ロールなど、複製するロールを検索します。
 
@@ -285,7 +285,7 @@ Microsoft.CostManagement/exports/delete
 
     ![[確認と作成] のエラー](./media/custom-roles-portal/review-create-error.png)
 
-1. **[ロール]** の一覧で、新しいカスタム ロールを表示します。 カスタム ロールが表示されない場合は、 **[最新の情報に更新]** をクリックします。
+1. **[役割]** の一覧で、新しいカスタム ロールを表示します。 カスタム ロールが表示されない場合は、 **[最新の情報に更新]** をクリックします。
 
      カスタム ロールがすべての場所に表示されるまで、数分かかることがあります。
 
@@ -295,7 +295,7 @@ Microsoft.CostManagement/exports/delete
 
 1. サブスクリプションまたはリソース グループを開き、 **[アクセス制御 (IAM)]** を開きます。
 
-1. **[ロール]** タブをクリックして、すべての組み込みおよびカスタム ロールの一覧を表示します。
+1. **[役割]** タブをクリックして、すべての組み込みおよびカスタム ロールの一覧を表示します。
 
 1. **[種類]** 一覧で **[CustomRole]** を選択し、カスタム ロールのみを表示します。
 

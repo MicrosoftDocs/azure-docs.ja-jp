@@ -12,10 +12,10 @@ ms.custom:
 - mvc
 - mqtt
 ms.openlocfilehash: 3b6bc972f5c26c78ffff81f5bab8c2812cf2cb11
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98622915"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>チュートリアル:IoT ハブの手動フェールオーバーを実行する

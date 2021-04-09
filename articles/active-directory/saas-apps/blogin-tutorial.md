@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
 ms.openlocfilehash: a47a3ae27fd1a18b7e9acd7d8b25748f6274c3e9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92456995"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blogin"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と BlogIn の統合
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* BlogIn では、 **SP と IDP** によって開始される SSO がサポートされます
-* BlogIn では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* BlogIn では、**SP と IDP** によって開始される SSO がサポートされます
+* BlogIn では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 * BlogIn を構成したら、ご自分の組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-blogin-from-the-gallery"></a>ギャラリーからの BlogIn の追加
@@ -51,7 +51,7 @@ Azure AD への BlogIn の統合を構成するには、ギャラリーからマ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **BlogIn** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**BlogIn**」と入力します。
 1. 結果のパネルから **[BlogIn]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -143,7 +143,7 @@ BlogIn で Azure AD SSO を構成してテストするには、次の構成要�
 1. **[Settings]\(設定\)**  >  **[User Authentication]\(ユーザー認証\)**  >  **[Configure SSO & User provisioning]\(SSO とユーザー プロビジョニングの構成\)** に移動します。
 2. 次の画面で、シングル サインオンの状態を **[On]\(オン\)** に変更し、ログイン画面に表示される SSO ログイン ボタンに対してカスタム名を選択します。
 
-3. 前のセクションの最終手順で **アプリのフェデレーション メタデータ URL** を保存した場合、構成方法 **[メタデータ URL]** を選択し、 **アプリのフェデレーション メタデータ URL** を [メタデータ URL] フィールドに貼り付けます。 それ以外の場合は、構成方法を **[手動]** に変更し、 **[Identity Provider SSO URL (Login URL)]\(ID プロバイダーの SSO URL (ログイン URL)\)** および **[Identity Provider Issuer (entity ID)]\(ID プロバイダーの発行者 (エンティティ ID)\)** に手動でデータを入力し、Azure AD から取得した **証明書 (base64)** をアップロードします。
+3. 前のセクションの最終手順で **アプリのフェデレーション メタデータ URL** を保存した場合、構成方法 **[メタデータ URL]** を選択し、**アプリのフェデレーション メタデータ URL** を [メタデータ URL] フィールドに貼り付けます。 それ以外の場合は、構成方法を **[手動]** に変更し、 **[Identity Provider SSO URL (Login URL)]\(ID プロバイダーの SSO URL (ログイン URL)\)** および **[Identity Provider Issuer (entity ID)]\(ID プロバイダーの発行者 (エンティティ ID)\)** に手動でデータを入力し、Azure AD から取得した **証明書 (base64)** をアップロードします。
 
 4. SSO を使用して BlogIn に参加する新規ユーザーの既定のユーザー ロールを選択します。
 

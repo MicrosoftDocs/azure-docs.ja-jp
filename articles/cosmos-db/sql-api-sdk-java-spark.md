@@ -10,10 +10,10 @@ ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: 7ff75bf9d45803dd96927bcf7c70e7c7912db979
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93097160"
 ---
 # <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>コア (SQL) API 用 Azure Cosmos DB Apache Spark コネクタ:リリース ノートとリソース
@@ -44,7 +44,7 @@ ms.locfileid: "93097160"
 
 | コンポーネント | Version |
 |---------|-------|
-| Apache Spark | 2.4. *x* 、2.3. *x* 、2.2. *x* 、および 2.1. *x* |
+| Apache Spark | 2.4.*x*、2.3.*x*、2.2.*x*、および 2.1.*x* |
 | Scala | 2.11 |
 | Azure Databricks (ランタイムのバージョン) | 3\.4 より後 |
 

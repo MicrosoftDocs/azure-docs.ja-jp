@@ -7,14 +7,16 @@ ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 97dc0fe5a3720a41dd63583c222762d832d636ea
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 8a23041a714089c447ab35ee05aae0de0c9c33d2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436999"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103201151"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>Azure DevOps Starter を使用して IoT Edge 用の CI/CD パイプラインを作成する
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 DevOps Projects を使用して、IoT Edge アプリケーション用に継続的インテグレーション (CI) と継続的デリバリー (CD) を構成します。 DevOps Starter によって、Azure Pipelines のビルドおよびリリース パイプラインの初期構成が簡略化されます。
 
@@ -29,6 +31,16 @@ DevOps Starter によって、Azure DevOps に CI/CD パイプラインが作成
 1. 左のウィンドウで **[リソースの作成]** を選択し、**DevOps Starter** を検索します。  
 
 1. **［作成］** を選択します
+
+1. 既定では、DevOps Starter は GitHub を使用して設定されます。 このハウツーで説明している機能を利用するには、Azure DevOps を使用して設定するように、DevOps Starter を切り替えます。 **[設定の変更はこちら]** リンクに従います。
+
+   ![[設定の変更はこちら] を選択して、GitHub から Azure DevOps に切り替えます](./media/how-to-devops-starter/create-with-github-change-settings.png)
+
+1. 右側のペインで、 **[Azure DevOps]** タイルを選択し、 **[完了]** を選択します。
+
+   ![DevOps Starter の設定で Azure DevOps を選択します](./media/how-to-devops-starter/select-azure-devops.png)
+
+   これで、DevOps Starter が Azure DevOps を使って設定される状態になりました。
 
 ## <a name="create-a-new-application-pipeline"></a>新しいアプリケーション パイプラインを作成する
 

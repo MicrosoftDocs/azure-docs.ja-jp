@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 03/15/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5fa4cba67e279f66c090c8cb30eadf099f3c998
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a3759bbe92a2de8515c7d812637acd88070f8d46
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673554"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103490910"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した Azure への SAP NetWeaver HA のインストール
 
@@ -214,9 +214,11 @@ ms.locfileid: "101673554"
 * SAP Kernel 7.49 以降
 
 > [!IMPORTANT]
-> ファイル共有を使う SAP ASCS/SCS インスタンスのクラスター化は、SAP Kernel 7.49 (およびそれ以降) を含む SAP NetWeaver 7.40 (およびそれ以降) についてサポートされています。
+> ファイル共有を使う SAP ASCS/SCS インスタンスのクラスター化は、SAP Kernel 7.49 (およびそれ以降) を含む SAP NetWeaver 7.40 (およびそれ以降) についてサポートされています。  
+>   
+> [!IMPORTANT]
+> セットアップでは、SAP ASCS/SCS インスタンスと SOFS 共有は別々のクラスターにデプロイしてあるという要件を満たしていなければなりません。    
 >
-
 
 データベース管理システム (DBMS) の設定は、使用する DBMS システムによって異なるため、ここでは説明しません。 ただし、さまざまな DBMS ベンダーが Azure でサポートする機能を使用して、DBMS に関する高可用性の問題に対処していることを想定しています。 たとえば、SQL Server の Always On またはデータベース ミラーリング、Oracle データベースの Oracle Data Guard などがあります。 この記事のシナリオでは、DBMS の保護は強化しませんでした。
 

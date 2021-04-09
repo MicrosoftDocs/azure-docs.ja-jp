@@ -12,10 +12,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 7a2cbca8c02dcbfc0e59d31040d1fca7a790cd35
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96936660"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth1 技術プロファイルを定義する
@@ -68,7 +68,7 @@ Azure Active Directory B2C (Azure AD B2C) では、[OAuth 1.0 プロトコル](h
 
 ## <a name="metadata"></a>メタデータ
 
-| Attribute | 必須 | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | client_id | はい | ID プロバイダーのアプリケーション識別子。 |
 | ProviderName | いいえ | ID プロバイダーの名前。 |
@@ -82,7 +82,7 @@ Azure Active Directory B2C (Azure AD B2C) では、[OAuth 1.0 プロトコル](h
 
 **CryptographicKeys** 要素には次の属性が存在します。
 
-| Attribute | 必須 | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。   |
 

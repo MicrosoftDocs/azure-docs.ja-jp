@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/29/2019
 ms.author: Zhchia
 ms.openlocfilehash: 13ae960f5d259314f00f8f09b2999a36c0919bc5
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94353716"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>チュートリアル:Harness を構成し、自動ユーザー プロビジョニングに対応させる
@@ -37,7 +37,7 @@ ms.locfileid: "94353716"
 
 ## <a name="assign-users-to-harness"></a>ユーザーを Harness に割り当てる
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーまたはグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーまたはグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Harness にアクセスする必要がある Azure AD のユーザーまたはグループを決定しておく必要があります。 その後、「[エンタープライズ アプリにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)」の手順に従って、これらのユーザーまたはグループを Harness に割り当てることができます。
 
@@ -70,7 +70,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
    
 1. **[Submit]\(送信\)** をクリックします。
 
-1. このチュートリアルで後から使用するので、 **キー** をコピーしておきます。
+1. このチュートリアルで後から使用するので、**キー** をコピーしておきます。
 
     ![Harness でのトークンの作成](media/harness-provisioning-tutorial/token.png)
 
@@ -90,7 +90,7 @@ Azure AD での自動ユーザー プロビジョニング用に Harness を構�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-1. 検索ボックスに「 **Harness** 」と入力し、結果一覧から **[Harness]** を選択してから、 **[追加]** ボタンを選択してアプリケーションを追加します。
+1. 検索ボックスに「**Harness**」と入力し、結果一覧から **[Harness]** を選択してから、 **[追加]** ボタンを選択してアプリケーションを追加します。
 
     ![結果一覧の Harness](common/search-new-app.png)
 
@@ -128,15 +128,15 @@ Azure AD で Harness の自動ユーザー プロビジョニングを構成す�
  
    a. **[テナント URL]** ボックスに、「 **`https://app.harness.io/gateway/api/scim/account/<your_harness_account_ID>`** 」と入力します。 Harness にログインしているとき、お使いのブラウザーで URL から Harness アカウント ID を取得できます。
    b. **[シークレット トークン]** ボックスに、「プロビジョニングのためのハーネスの設定」セクションの手順 6 で保存した SCIM 認証トークンの値を入力します。  
-   c. Azure AD から Harness に接続できることを確認するために、 **[テスト接続]** を選択します。 接続できない場合は、使用中の Harness アカウントに " *管理者* " アクセス許可があることを確認してから、もう一度試します。
+   c. Azure AD から Harness に接続できることを確認するために、**[テスト接続]** を選択します。 接続できない場合は、使用中の Harness アカウントに "*管理者*" アクセス許可があることを確認してから、もう一度試します。
 
-1. **[通知用メール]** ボックスに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力し、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
+1. **[通知用メール]** ボックスに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力し、**[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
     ![[通知用メール] ボックス](common/provisioning-notification-email.png)
 
 1. **[保存]** を選択します。
 
-1. **[マッピング]** の下で、 **[Synchronize Azure Active Directory Users to Harness]\(Azure Active Directory ユーザーを Harness に同期する\)** を選択します。
+1. **[マッピング]** の下で、**[Synchronize Azure Active Directory Users to Harness]\(Azure Active Directory ユーザーを Harness に同期する\)** を選択します。
 
     ![Harness の [Synchronize Azure Active Directory Users to Harness]\(Azure Active Directory ユーザーを Harness に同期する\) リンク](media/harness-provisioning-tutorial/usermappings.png)
 
@@ -144,7 +144,7 @@ Azure AD で Harness の自動ユーザー プロビジョニングを構成す�
 
     ![Harness ユーザーの [属性マッピング] ウィンドウ](media/harness-provisioning-tutorial/userattributes.png)
 
-1. **[マッピング]** の下で、 **[Synchronize Azure Active Directory Groups to Harness]\(Azure Active Directory グループを Harness に同期する\)** を選択します。
+1. **[マッピング]** の下で、**[Synchronize Azure Active Directory Groups to Harness]\(Azure Active Directory グループを Harness に同期する\)** を選択します。
 
     ![Harness の [Synchronize Azure Active Directory Groups to Harness]\(Azure Active Directory グループを Harness に同期する\) リンク](media/harness-provisioning-tutorial/groupmappings.png)
 
@@ -154,7 +154,7 @@ Azure AD で Harness の自動ユーザー プロビジョニングを構成す�
 
 1. スコープ フィルターを構成するには、「[スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)」を参照します。
 
-1. **[設定]** セクションで、Harness に対する Azure AD プロビジョニング サービスを有効にするために、 **[プロビジョニング状態]** スイッチを **[オン]** に切り替えます。
+1. **[設定]** セクションで、Harness に対する Azure AD プロビジョニング サービスを有効にするために、**[プロビジョニング状態]** スイッチを **[オン]** に切り替えます。
 
     ![[オン] に切り替えられた [プロビジョニング状態] スイッチ](common/provisioning-toggle-on.png)
 
@@ -166,7 +166,7 @@ Azure AD で Harness の自動ユーザー プロビジョニングを構成す�
 
     ![プロビジョニングの [保存] ボタン](common/provisioning-configuration-save.png)
 
-この操作により、プロビジョニングするユーザーまたはグループの初期同期が開始されます。 初期同期は、以降の同期よりも実行に時間がかかります。 同期は、Azure AD プロビジョニング サービスが実行されている限り、約 40 分ごとに発生します。 進行状況を監視するには、 **[同期の詳細]** セクションに移動します。 また、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Harness に対して実行されたすべてのアクションが記載されています。
+この操作により、プロビジョニングするユーザーまたはグループの初期同期が開始されます。 初期同期は、以降の同期よりも実行に時間がかかります。 同期は、Azure AD プロビジョニング サービスが実行されている限り、約 40 分ごとに発生します。 進行状況を監視するには、**[同期の詳細]** セクションに移動します。 また、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Harness に対して実行されたすべてのアクションが記載されています。
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
 

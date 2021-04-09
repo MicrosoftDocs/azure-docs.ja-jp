@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 02/10/2021
+ms.date: 03/22/2021
 ms.author: genli
-ms.openlocfilehash: 582077c46f5fc7176b457cf0d392af48fbe7d40b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 38846bbe717912092ccfe2b236b717770b79302f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369341"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867255"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>トラブルシューティング: サイト間 VPN 接続が断続的に切断される
 
@@ -56,9 +56,7 @@ Azure 仮想ネットワーク ゲートウェイの種類を確認します。
 
 ### <a name="step-6-check-on-premises-vpn-device-external-interface-address"></a>手順 6 オンプレミス VPN デバイスの外部インターフェイスのアドレスを確認する
 
-- VPN デバイスのインターネット接続 IP アドレスが Azure の **[ローカル ネットワーク ゲートウェイ]** の定義に含まれていると、散発的に接続が途切れることがあります。
-- デバイスの外部インターフェイスは、インターネットに直接接続されている必要があります。 インターネットとデバイスとの間にネットワーク アドレス変換 (NAT) またはファイアウォールを配置することはできません。
--  仮想 IP が割り当てられるようにファイアウォール クラスタリングを構成する場合は、クラスターを分割し、ゲートウェイから対話できるパブリック インターフェイスに直接 VPN アプライアンスを公開する必要があります。
+VPN デバイスのインターネット接続 IP アドレスが Azure の **[ローカル ネットワーク ゲートウェイ]** の定義に含まれていると、散発的に接続が途切れることがあります。
 
 ### <a name="step-7-check-whether-the-on-premises-vpn-device-has-perfect-forward-secrecy-enabled"></a>手順 7 オンプレミス VPN デバイスで Perfect Forward Secrecy が有効になっているかどうかを確認する
 

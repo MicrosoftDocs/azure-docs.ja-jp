@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 09/18/2020
 ms.openlocfilehash: 95ef52acedc9171ba86110a665d08ea97c59bfbb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100575821"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Update Management を有効にする

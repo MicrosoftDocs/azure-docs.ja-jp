@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: jeedes
 ms.openlocfilehash: ad7952a604f8c02d16502d89bf14e7fb0ad15388
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92455478"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-community-spark"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Community Spark の統合
@@ -39,9 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Community Spark では、 **SP** Initiated SSO がサポートされます
+* Community Spark では、**SP** Initiated SSO がサポートされます
 
-* Community Spark では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* Community Spark では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 * Community Spark を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
@@ -53,7 +53,7 @@ Azure AD への Community Spark の統合を構成するには、ギャラリー
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Community Spark** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Community Spark**」と入力します。
 1. 結果のパネルから **[Community Spark]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -127,7 +127,7 @@ Community Spark で Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-community-spark-sso"></a>Community Spark の SSO の構成
 
-**Community Spark** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Community Spark サポート チーム](mailto:support@socialassurance.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Community Spark** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Community Spark サポート チーム](mailto:support@socialassurance.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-community-spark-test-user"></a>Community Spark のテスト ユーザーの作成
 

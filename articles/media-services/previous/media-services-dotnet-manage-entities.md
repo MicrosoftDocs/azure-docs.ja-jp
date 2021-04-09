@@ -1,7 +1,7 @@
 ---
 title: Media Services .NET SDK を使用するアセットと関連エンティティの管理
 description: Media Services SDK for .NET を使用してアセットと関連エンティティを管理する方法について説明します。
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d90e48d15e20b21f4c6032547517b3190cb46085
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: b859ff49edb495be15cdf76719c3aaaf1ac72a6e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695613"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103013773"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Media Services .NET SDK を使用するアセットと関連エンティティの管理
 
@@ -358,7 +358,7 @@ Media Services では、アセットまたはそのファイルに関するア�
 ## <a name="delete-a-job"></a>ジョブを削除する
 ジョブを削除するには、State プロパティで指定されているジョブの状態を確認する必要があります。 終了または取り消し済みのジョブは削除できますが、キューに登録済み、スケジュール済み、処理中などの他の状態のジョブは、取り消さないと削除できません。
 
-次のコード例では、ジョブを削除する方法を示します。この例では、ジョブの状態をチェックして、状態が終了または取り消し済みであるときに削除します。 このコードは、ジョブへの参照を取得するためのこのトピックの以前のセクション「ジョブ参照を取得する」に依存します。
+次のコード例では、ジョブを削除する方法を示します。この例では、ジョブの状態をチェックして、状態が終了または取り消し済みであるときに削除します。 このコードは、ジョブ参照の取得については、このトピックの前述のセクション「ジョブ参照を取得する」に依存します。
 
 ```csharp
     static void DeleteJob(string jobId)

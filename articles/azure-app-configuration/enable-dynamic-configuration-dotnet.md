@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.date: 07/24/2020
 ms.author: alkemper
 ms.openlocfilehash: 03940a86176d0bc93c5066977fdc87de5c456060
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96932763"
 ---
-# <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>チュートリアル:.NET Framework アプリで動的な構成を使用する
+# <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>チュートリアル: .NET Framework アプリで動的な構成を使用する
 
 App Configuration .NET クライアント ライブラリでは、アプリケーションを再起動せずに、必要に応じて一連の構成設定を更新できます。 これは、最初に構成プロバイダーのオプションから `IConfigurationRefresher` のインスタンスを取得した後、コード内の任意の場所でそのインスタンスの `TryRefreshAsync` を呼び出すことによって実装できます。
 
@@ -39,9 +39,9 @@ App Configuration .NET クライアント ライブラリでは、アプリケ�
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-7. **[Configuration Explorer]\(構成エクスプローラー)**  >  **[+ 作成]**  >  **[キー値]** の順に選択して、次のキーと値のペアを追加します。
+7. **[構成エクスプローラー]**  >  **[+ 作成]**  >  **[キー値]** の順に選択して、次のキーと値のペアを追加します。
 
-    | Key | Value |
+    | キー | 値 |
     |---|---|
     | TestApp:Settings:Message | Azure App Configuration からのデータ |
 
@@ -58,7 +58,7 @@ App Configuration .NET クライアント ライブラリでは、アプリケ�
 1. **[新しいプロジェクトの構成]** で、プロジェクト名を入力します。 **[フレームワーク]** で、 **.NET Framework 4.7.1** 以上を選択します。 **Create** をクリックしてください。
 
 ## <a name="reload-data-from-app-configuration"></a>App Configuration からデータを再度読み込む
-1. プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[参照]** タブで、*Microsoft.Extensions.Configuration.AzureAppConfiguration* NuGet パッケージを検索してプロジェクトに追加します。 見つからない場合は、 **[プレリリースを含める]** チェック ボックスをオンにします。
+1. プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[参照]** タブで、*Microsoft.Extensions.Configuration.AzureAppConfiguration* NuGet パッケージを検索してプロジェクトに追加します。 見つからない場合は、**[プレリリースを含める]** チェック ボックスをオンにします。
 
 1. *Program.cs* を開き、.NET Core App Configuration プロバイダーへの参照を追加します。
 
@@ -140,7 +140,7 @@ App Configuration .NET クライアント ライブラリでは、アプリケ�
 
 1. **[Configuration Explorer]\(構成エクスプローラー)** を選択して次のキーの値を更新します。
 
-    | Key | Value |
+    | Key | 値 |
     |---|---|
     | TestApp:Settings:Message | Azure App Configuration からのデータ - 更新済み |
 
@@ -155,7 +155,7 @@ App Configuration .NET クライアント ライブラリでは、アプリケ�
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、App Configuration から動的に構成設定を更新できるように .NET Framework アプリを設定しました。 App Configuration へのアクセスを効率化する Azure マネージド ID を使用する方法については、次のチュートリアルに進んでください。
 

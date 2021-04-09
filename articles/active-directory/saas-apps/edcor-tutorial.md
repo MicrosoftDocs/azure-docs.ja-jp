@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 04a15c3163e37e30636eefba638968c2e57c0536
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454288"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edcor"></a>チュートリアル: Azure Active Directory と Edcor の統合
@@ -42,7 +42,7 @@ Edcor と Azure AD の統合を構成するには、次のものが必要です�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
 
-* Edcor では、 **IDP** によって開始される SSO がサポートされます
+* Edcor では、**IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-edcor-from-the-gallery"></a>ギャラリーからの Edcor の追加
 
@@ -62,13 +62,13 @@ Azure AD への Edcor の統合を構成するには、ギャラリーから管�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Edcor** 」と入力し、結果ウィンドウで **[Edcor]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Edcor**」と入力し、結果ウィンドウで **[Edcor]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Edcor](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Edcor で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Edcor で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Edcor 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Edcor Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -86,7 +86,7 @@ Edcor Azure AD のシングル サインオンを構成してテストするに�
 
 Edcor で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Edcor** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Edcor** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -138,9 +138,9 @@ Edcor で Azure AD シングル サインオンを構成するには、次の手
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -151,7 +151,7 @@ Edcor で Azure AD シングル サインオンを構成するには、次の手
 
 このセクションでは、Britta Simon に Edcor へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Edcor]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Edcor]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/27/2020
 ms.author: Zhchia
 ms.openlocfilehash: 7b4dd01b74f81318338196a40949d339f13d16da
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97673302"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために Adobe Identity Management を構成する

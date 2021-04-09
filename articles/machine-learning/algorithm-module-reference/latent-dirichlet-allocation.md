@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
 ms.openlocfilehash: f9f239ea69aaf71e591a447feb300c13a45ba1a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90907852"
 ---
 # <a name="latent-dirichlet-allocation-module"></a>Latent Dirichlet Allocation モジュール
@@ -30,7 +30,7 @@ Latent Dirichlet Allocation (LDA) は、類似したテキストを検索する�
 
 + 保存し、入力として使用される新しいテキストに再適用することができる変換
 
-このモジュールでは、scikit-learn ライブラリを使用します。 scikit-learn の詳細については、チュートリアルとアルゴリズムの説明が含まれる  [GitHub リポジトリ](https://github.com/scikit-learn/scikit-learn)を参照してください。
+このモジュールでは、scikit-learn ライブラリを使用します。 scikit-learn の詳細については、チュートリアルとアルゴリズムの説明が含まれる [GitHub リポジトリ](https://github.com/scikit-learn/scikit-learn)を参照してください。
 
 ## <a name="more-about-latent-dirichlet-allocation"></a>Latent Dirichlet Allocation の詳細
 
@@ -54,7 +54,7 @@ LDA は、通常、分類の方法ではありません。 しかし、生成的
 
 3. **[Target columns]\(ターゲット列\)** で、分析するテキストを含む 1 つまたは複数の列を選択します。
 
-    複数の列を選択できますが、列は**文字列**データ型である必要があります。
+    複数の列を選択できますが、列は **文字列** データ型である必要があります。
 
     LDA ではテキストから大きな特徴マトリックスが作成されるため、通常は 1 つのテキスト列を分析します。
 
@@ -181,7 +181,7 @@ LDA プロセスで識別される "*トピック*" は、個々の製品のレ�
 
 ###  <a name="module-parameters"></a>モジュールのパラメーター
 
-|名前|Type|Range|省略可能|Default|説明|  
+|名前|種類|Range|省略可能|Default|説明|  
 |----------|----------|-----------|--------------|-------------|-----------------|  
 |Target column(s) (ターゲット列)|列の選択||必須|StringFeature|ターゲット列の名前またはインデックス。|  
 |Number of topics to model (モデル化するトピックの数)|Integer|[1;1000]|必須|5|N 個のトピックに対してドキュメントの分布をモデル化します。|  

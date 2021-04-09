@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: 304ad51bc40c8165c2dc11bb70287491e3d6dfb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91444029"
 ---
 # <a name="connect-excel-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance-and-create-a-report"></a>Azure SQL Database または Azure SQL Managed Instance 内のデータベースに Excel を接続し、レポートを作成する
@@ -37,7 +37,7 @@ Excel をデータベースに接続し、データをインポートして、�
 
    ![データ ソースを選択します。Excel を SQL Database に接続します。](./media/connect-excel/excel_data_source.png)
 
-3. **[SQL Server データベース]** ダイアログ ボックスで、接続する**サーバー名**を <*servername*> **.database.windows.net** 形式で入力します。 たとえば、**msftestserver.database.windows.net** のようにします。 必要に応じて、データベースの名前を入力します。 **[OK]** を選択して資格情報ウィンドウを開きます。
+3. **[SQL Server データベース]** ダイアログ ボックスで、接続する **サーバー名** を <*servername*> **.database.windows.net** 形式で入力します。 たとえば、**msftestserver.database.windows.net** のようにします。 必要に応じて、データベースの名前を入力します。 **[OK]** を選択して資格情報ウィンドウを開きます。
 
    ![[データベース サーバー] ダイアログ ボックスに接続する](./media/connect-excel/server-name.png)
 

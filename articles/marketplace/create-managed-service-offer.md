@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 12/23/2020
 ms.openlocfilehash: 46a9c9d953a2311d83b5fd18b83727d6765734fa
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97918035"
 ---
 # <a name="how-to-create-a-managed-service-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレース向けのマネージド サービス オファーを作成する方法

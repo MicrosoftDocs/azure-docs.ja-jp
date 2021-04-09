@@ -1,18 +1,18 @@
 ---
-title: チュートリアル:HDInsight Apache Storm からストレージへ - Azure/Data Lake
+title: 'チュートリアル: HDInsight Apache Storm からストレージへ - Azure Data Lake'
 description: チュートリアル - Apache Storm を使用して、Azure HDInsight 用の HDFS と互換性のあるストレージに書き込む方法について説明します。
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.openlocfilehash: 4e648c57be699620e669ce7db0845dad2b876095
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98932547"
 ---
-# <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>チュートリアル:Azure HDInsight 上の Apache Storm から Apache Hadoop HDFS に書き込む
+# <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>チュートリアル: Azure HDInsight 上の Apache Storm から Apache Hadoop HDFS に書き込む
 
 Apache Storm を使用して、HDInsight 上の Apache Storm によって使用される HDFS と互換性のあるストレージにデータを書き込む方法について説明します。 HDInsight では、HDFS と互換性のあるストレージとして Azure Storage と Azure Data Lake Storage の両方を使用できます。 Storm は、HDFS にデータを書き込む [HdfsBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) コンポーネントを提供します。 このドキュメントでは、HdfsBolt から両方の種類のストレージへの書き込みに関する情報を提供します。
 
@@ -97,11 +97,11 @@ bolts:
 
 この YAML は、次の項目を定義します。
 
-* `syncPolicy`:ファイルがファイル システムにいつ同期/フラッシュされるかを定義します。 この例では、1000 組ごとです。
-* `fileNameFormat`:ファイルを書き込むときに使用するパスとファイル名のパターンを定義します。 この例では、パスはフィルターを使用して実行時に指定され、ファイル拡張子は `.txt` です。
-* `recordFormat`:書き込まれるファイルの内部形式を定義します。 この例では、フィールドは `|` 文字で区切られます。
-* `rotationPolicy`:ファイルをいつローテーションするかを定義します。 この例では、ローテーションは実行されません。
-* `hdfs-bolt`:前のコンポーネントを `HdfsBolt` クラスの構成パラメーターとして使用します。
+* `syncPolicy`: ファイルがファイル システムにいつ同期/フラッシュされるかを定義します。 この例では、1000 組ごとです。
+* `fileNameFormat`: ファイルを書き込むときに使用するパスとファイル名のパターンを定義します。 この例では、パスはフィルターを使用して実行時に指定され、ファイル拡張子は `.txt` です。
+* `recordFormat`: 書き込まれるファイルの内部形式を定義します。 この例では、フィールドは `|` 文字で区切られます。
+* `rotationPolicy`: ファイルをいつローテーションするかを定義します。 この例では、ローテーションは実行されません。
+* `hdfs-bolt`: 前のコンポーネントを `HdfsBolt` クラスの構成パラメーターとして使用します。
 
 Flux フレームワークの詳細については、「[https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html)」を参照してください。
 
@@ -109,7 +109,7 @@ Flux フレームワークの詳細については、「[https://storm.apache.or
 
 既定では、HDInsight 上の Storm には、`HdfsBolt` が Storm のクラスパス内の Azure Storage または Data Lake Storage と通信するために使用するコンポーネントは含まれていません。 これらのコンポーネントをクラスター上の Storm 用の `extlib` ディレクトリに追加するには、次のスクリプト アクションを使用します。
 
-| プロパティ | Value |
+| プロパティ | 値 |
 |---|---|
 |スクリプトの種類 |- Custom|
 |Bash スクリプト URI |`https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`|

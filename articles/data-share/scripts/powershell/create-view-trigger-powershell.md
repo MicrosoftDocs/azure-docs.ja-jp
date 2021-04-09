@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: article
 ms.date: 07/07/2019
 ms.openlocfilehash: 05b70641873ab352ca92ac199d99c05b2fe0f4e6
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92221300"
 ---
 # <a name="use-powershell-to-create-and-share-snapshot-triggers"></a>PowerShell を使用してスナップ ショット トリガーを作成および共有する

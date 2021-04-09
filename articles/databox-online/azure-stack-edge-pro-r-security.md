@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 922ef24bff7d6e60a3ba3b91113003f8206b8177
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: bd90a16c09dce65115cea2f097d18f2e0ced931a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548643"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102632035"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Azure Stack Edge Pro R および Azure Stack Edge Mini R のセキュリティとデータ保護
 
@@ -133,7 +133,7 @@ Azure Stack Edge のラグド デバイスを使用すると、独自の証明�
 
 [!INCLUDE [azure-stack-edge-gateway-data-rest](../../includes/azure-stack-edge-gateway-protect-data-storage-accounts.md)]
 
-- 承認されていないユーザーからのストレージ アカウントの保護に役立つように、定期的にストレージ アカウント キーをローテーションし、その後[同期](azure-stack-edge-j-series-manage-storage-accounts.md)します。
+- 承認されていないユーザーからのストレージ アカウントの保護に役立つように、定期的にストレージ アカウント キーをローテーションし、その後[同期](azure-stack-edge-gpu-manage-storage-accounts.md)します。
 
 ## <a name="manage-personal-information"></a>個人情報の管理
 
@@ -141,7 +141,7 @@ Azure Stack Edge サービスは、次のシナリオで個人情報を収集し
 
 [!INCLUDE [azure-stack-edge-gateway-data-rest](../../includes/azure-stack-edge-gateway-manage-personal-data.md)]
 
-共有にアクセスできる、または削除できるユーザーの一覧を表示するには、[Azure Stack Edge での共有の管理](azure-stack-edge-j-series-manage-shares.md)に関するページにある手順に従ってください。
+共有にアクセスできる、または削除できるユーザーの一覧を表示するには、[Azure Stack Edge での共有の管理](azure-stack-edge-gpu-manage-shares.md)に関するページにある手順に従ってください。
 
 詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)で Microsoft のプライバシー ポリシーを確認してください。
 

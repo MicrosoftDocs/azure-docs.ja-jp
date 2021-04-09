@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, センサー, SDK, 深度カメラ, ToF, 原則, パフォーマンス, 無効化
 ms.openlocfilehash: 22f04b983ed7c6a2ab19a5c1c709621655ee31c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "85276699"
 ---
 # <a name="azure-kinect-dk-depth-camera"></a>Azure Kinect DK 深度カメラ
@@ -42,9 +42,9 @@ Azure Kinect DK 深度カメラには、AMCW (Amplitude Modulated Continuous Wav
 
 ![深度モジュール](./media/concepts/depth-camera-depth-module.jpg)
 
-深度カメラは、生の変調された IR 画像をホスト PC に送信します。 PC では、GPU で高速化された深度エンジン ソフトウェアが生の信号を深度マップに変換します。 深度カメラは、いくつかのモードをサポートしています。 **狭視野 (FoV)** モードは、X 次元と Y 次元の範囲は小さいが、Z 次元の範囲が大きいシーンに最適です。 シーンの X と Y の範囲は大きいが、Z の範囲が小さい場合は、**広 FoV モード**の方が適しています。
+深度カメラは、生の変調された IR 画像をホスト PC に送信します。 PC では、GPU で高速化された深度エンジン ソフトウェアが生の信号を深度マップに変換します。 深度カメラは、いくつかのモードをサポートしています。 **狭視野 (FoV)** モードは、X 次元と Y 次元の範囲は小さいが、Z 次元の範囲が大きいシーンに最適です。 シーンの X と Y の範囲は大きいが、Z の範囲が小さい場合は、**広 FoV モード** の方が適しています。
 
-深度カメラは、対応する**ビン分割解除モード**と比較して Z の範囲を拡張する **2x2 ビン分割モード**をサポートしています。 ビン分割は、画像の解像度の低下を犠牲にして行われます。 15 フレーム/秒 (fps) の最大フレーム レートで実行される 1 メガピクセル (MP) モードを除き、すべてのモードを最大 30 fps で実行できます。 また、深度カメラには**パッシブ IR モード**も用意されています。 このモードでは、カメラの発光体がアクティブではなく、周囲の照明のみが観察されます。
+深度カメラは、対応する **ビン分割解除モード** と比較して Z の範囲を拡張する **2x2 ビン分割モード** をサポートしています。 ビン分割は、画像の解像度の低下を犠牲にして行われます。 15 フレーム/秒 (fps) の最大フレーム レートで実行される 1 メガピクセル (MP) モードを除き、すべてのモードを最大 30 fps で実行できます。 また、深度カメラには **パッシブ IR モード** も用意されています。 このモードでは、カメラの発光体がアクティブではなく、周囲の照明のみが観察されます。
 
 ## <a name="camera-performance"></a>カメラのパフォーマンス
 
@@ -56,7 +56,7 @@ Azure Kinect DK 深度カメラには、AMCW (Amplitude Modulated Continuous Wav
 
 ![深度の系統誤差](./media/concepts/depth-camera-systematic-error.png)
 
-ここで、*d<sub>t</sub>* は時刻 *t* での測定深度を示し、*N* は平均化手順で使用されるフレームの数であり、*d<sub>gt</sub>* はグラウンド トゥルース深度です。
+ここで、*d <sub>t</sub>* は時刻 *t* での測定深度を示し、*N* は平均化手順で使用されるフレームの数であり、*d <sub>gt</sub>* はグラウンド トゥルース深度です。
 
 深度カメラの系統誤差の仕様にマルチパス干渉 (MPI) は含まれていません。 MPI は、1 つのセンサー ピクセルが複数のオブジェクトによって反射された光を統合する場合に発生します。 MPI は、深度カメラでは、より高い変調周波数を深度の無効化 (後で説明します) と共に使用することによって部分的に軽減されます。
 
@@ -66,7 +66,7 @@ Azure Kinect DK 深度カメラには、AMCW (Amplitude Modulated Continuous Wav
 
 ![深度の確率的誤差](./media/concepts/depth-camera-random-error.png)
 
-ここで、*N* は深度測定値の数を示し、*d<sub>t</sub>* は時刻 *t* での深度測定値を表し、*d* はすべての深度測定値 *d<sub>t</sub>* に対して計算された平均値を示します。
+ここで、*N* は深度測定値の数を示し、*d <sub>t</sub>* は時刻 *t* での深度測定値を表し、*d* はすべての深度測定値 *d <sub>t</sub>* に対して計算された平均値を示します。
 
 ## <a name="invalidation"></a>無効化
 

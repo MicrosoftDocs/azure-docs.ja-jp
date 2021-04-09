@@ -5,17 +5,20 @@ ms.topic: article
 ms.date: 02/11/2021
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 2a53ecb1b3411561da50f7dbf3be79f9d70b42bc
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: c7d3c7c8b5da40a4e9ccd9085af5a850b9ebc3dd
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560426"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052349"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service のデプロイ資格情報の構成
 ローカル コンピューターからのアプリのデプロイをセキュリティで保護するために、[Azure App Service](./overview.md) では、[ローカル Git デプロイ](deploy-local-git.md)と [FTP/S デプロイ](deploy-ftp.md)に対して 2 種類の資格情報がサポートされています。 これらの資格情報は Azure サブスクリプションの資格情報とは異なります。
 
 [!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
+
+> [!NOTE]
+> Azure portal の **[開発センター (クラシック)]** ページ (以前のデプロイ エクスペリエンス) は、2021 年 3 月に非推奨となる予定です。 この変更はアプリの既存のデプロイ設定には影響せず、 **[デプロイ センター]** ページで引き続きアプリのデプロイを管理できます。
 
 ## <a name="configure-user-scope-credentials"></a><a name="userscope"></a>ユーザー スコープの資格情報を構成する
 

@@ -4,10 +4,10 @@ description: Azure Backup サービスを使用した SQL Server データベー
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.openlocfilehash: 592a51051a0d02a6c1d491db0fe559e2e62babb2
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96327051"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server を Azure に DPM ワークロードとしてバックアップする

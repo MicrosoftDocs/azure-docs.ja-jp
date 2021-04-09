@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: f63c5e5764451fd7a03b0e68982db01330d1995c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 01196c34ea6afbaa5a1e3b81ab14dec037e1fed0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660632"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595942"
 ---
 # <a name="azure-percept-dk-8020-integration-overview"></a>Azure Percept DK の 80/20 統合の概要
 
@@ -22,9 +22,11 @@ Azure Percept DK および Audio アクセサリは、[80/20 レーリング シ
 
 各ハードウェア コンポーネントは、1010 の浮き出しの種類に合わせて、ノッチと突き出しを使用して構築されます。 この統合により、お客様とソリューション ビルダーは、概念実証を運用環境に簡単に拡張できます。
 
-<!---
-## Check out this video for more information on how to use Azure Percept DK with 80/20
---->
+Azure Percept DK を 80/20 と共に使用する方法の詳細については、こちらのビデオをご覧ください。
+
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/Dg6mtD9psLU]  
 
 ## <a name="next-steps"></a>次のステップ
 

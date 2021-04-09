@@ -3,16 +3,16 @@ title: Data Factory の関数およびシステム変数
 description: Azure Data Factory の関数およびシステム変数の一覧を提供する
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d47a26b46fad1ab8238f9fa7a1183aad20530ef5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 498f40a1783903b5dca0a2fe3204cc6aa25a2fec
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100363935"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104786432"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory - 関数およびシステム変数
 > [!NOTE]

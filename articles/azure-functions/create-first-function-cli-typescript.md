@@ -5,10 +5,10 @@ ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 488ef9fa3fd5b6c09ed435483dbf8f6fa3eb5bef
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97937197"
 ---
 # <a name="quickstart-create-a-typescript-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に TypeScript 関数を作成する

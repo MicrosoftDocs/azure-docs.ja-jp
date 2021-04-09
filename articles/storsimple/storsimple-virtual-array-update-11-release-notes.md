@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/22/2018
 ms.author: alkohli
 ms.openlocfilehash: df4722a4232686b0d981c190bdc154f0d1bec62e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94960206"
 ---
 # <a name="storsimple-virtual-array-update-11-release-notes"></a>StorSimple Virtual Array Update 1.1 のリリース ノート
@@ -48,7 +48,7 @@ Update 1.1 はソフトウェア バージョン **10.0.10307.0** に対応し�
 
 次の表に、このリリースで修正された問題の概要を示します。
 
-| いいえ。 | 機能 | 問題 |
+| いいえ。 | 特徴量 | 問題 |
 | --- | --- | --- |
 | 1 |バックアップ| このリリースには、クラウドのエラーや高い CPU 使用率に対する回復性を高めることでバックアップのエラーを改善する変更が含まれています。|
 | 2 |ログ記録| このリリースには、デバイスがサポート セッションにある間の詳細モードのログ記録動作の変更が含まれています。|
@@ -58,7 +58,7 @@ Update 1.1 はソフトウェア バージョン **10.0.10307.0** に対応し�
 
 次の表では、StorSimple Virtual Array の既知の問題の概要と、以前のリリースのリリース ノートに記載されていた問題を説明します。
 
-| いいえ。 | 機能 | 問題 | 対応策/コメント |
+| いいえ。 | 特徴量 | 問題 | 対応策/コメント |
 | --- | --- | --- | --- |
 | **1.** |更新プログラム |プレビュー リリースで作成された仮想アレイは、サポートされている一般提供版に更新することはできません。 |これらの仮想アレイは、ディザスター リカバリー (DR) ワークフローを使用して一般提供リリースにフェールオーバーする必要があります。 |
 | **2.** |プロビジョニング済みのデータ ディスク |特定の指定されたサイズのデータ ディスクをプロビジョニングし、対応する StorSimple Virtual Array を作成した後は、データ ディスクを拡張または縮小することはできません。 これを行おうとすると、デバイスのローカル層のすべてのデータが失われます。 | |
@@ -83,7 +83,7 @@ Update 1.1 はソフトウェア バージョン **10.0.10307.0** に対応し�
 ## <a name="next-steps"></a>次のステップ
 StorSimple Virtual Array に [Update 1.1 をインストールする](storsimple-virtual-array-install-update-11.md)。
 
-## <a name="references"></a>References
+## <a name="references"></a>リファレンス
 以前のリリース ノートをお探しですか。 参照先:
 * [StorSimple Virtual Array Update 1.0 のリリース ノート](storsimple-virtual-array-update-1-release-notes.md)
 * [StorSimple Virtual Array Update 0.6 のリリース ノート](storsimple-virtual-array-update-06-release-notes.md)

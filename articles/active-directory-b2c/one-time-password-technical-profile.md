@@ -12,10 +12,10 @@ ms.date: 10/19/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 12b9639342e2e35b9229aa15bb9cfb4695427606
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97881193"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C カスタム ポリシーでワンタイム パスワードの技術プロファイルを定義する
@@ -146,7 +146,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | いいえ | コード確認セッションの有効期限が切れた場合にユーザーに表示するメッセージ。 コードの有効期限が切れているか、指定された識別子に対してコードが生成されたことがないかのいずれかです。 |
-| UserMessageIfMaxRetryAttempted | No | 許容される確認の最大試行回数を超えた場合に、ユーザーに表示するメッセージ。 |
+| UserMessageIfMaxRetryAttempted | いいえ | 許容される確認の最大試行回数を超えた場合に、ユーザーに表示するメッセージ。 |
 | UserMessageIfMaxNumberOfCodeGenerated | いいえ | コード生成が許容される最大試行回数を超えた場合にユーザーに表示するメッセージ。 |
 | UserMessageIfInvalidCode | いいえ | 無効なコードが指定された場合にユーザーに表示するメッセージ。 |
 | UserMessageIfVerificationFailedRetryAllowed | いいえ | 無効なコードを指定した場合にユーザーに表示するメッセージ。ユーザーは正しいコードを指定できます。  |

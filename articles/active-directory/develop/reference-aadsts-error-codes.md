@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/01/2021
+ms.date: 03/17/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b948de6ad9e07a650df98ef38104c02462ab532d
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 56ffa8c33c409e274318407a70f33edaabb5073d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428033"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578500"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認証と承認のエラー コード
 
@@ -95,14 +95,14 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS50000 | TokenIssuanceError - サインイン サービスに問題があります。 この問題を解決するには、[サポート チケットを開いてください](../fundamentals/active-directory-troubleshooting-support-howto.md)。 |
 | AADSTS50001 | InvalidResource - リソースが無効になっているか、存在しません。 アプリのコードをチェックして、アクセスしようとしているリソースの正確なリソース URL を指定していることを確認します。  |
 | AADSTS50002 | NotAllowedTenant - テナントでプロキシ アクセスが制限されているため、サインインが失敗しました。 自分が所有するテナント ポリシーの場合は、制限されたテナント設定を変更して、この問題を解決できます。 |
-| AADSTS500021 | '{tenant}' テナントへのアクセスが拒否されました。 AADSTS500021 は、テナント制限機能が構成されており、ユーザーが、ヘッダー `Restrict-Access-To-Tenant` で指定されている許可されたテナントの一覧にないテナントにアクセスしようとしていることを示します。 詳細については、「[テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する](/azure/active-directory/manage-apps/tenant-restrictions)」を参照してください。|
-| AADSTS50003 | MissingSigningKey - 署名キーまたは証明書がないために、サインインが失敗しました。 アプリで署名キーが構成されていない可能性があります。 [../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured) で概要が説明されている解決策を確認してください。 問題が引き続き発生する場合は、アプリの所有者またはアプリ管理者に問い合わせてください。 |
+| AADSTS500021 | '{tenant}' テナントへのアクセスが拒否されました。 AADSTS500021 は、テナント制限機能が構成されており、ユーザーが、ヘッダー `Restrict-Access-To-Tenant` で指定されている許可されたテナントの一覧にないテナントにアクセスしようとしていることを示します。 詳細については、「[テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する](../manage-apps/tenant-restrictions.md)」を参照してください。|
+| AADSTS50003 | MissingSigningKey - 署名キーまたは証明書がないために、サインインが失敗しました。 アプリで署名キーが構成されていない可能性があります。 詳細については、エラー [AADSTS50003](/troubleshoot/azure/active-directory/error-code-aadsts50003-cert-or-key-not-configured) のトラブルシューティングに関する記事を参照してください。 問題が引き続き発生する場合は、アプリの所有者またはアプリ管理者に問い合わせてください。 |
 | AADSTS50005 | DevicePolicyError - ユーザーが、条件付きアクセス ポリシーで現在サポートされていないプラットフォームからデバイスにログインしようとしました。 |
 | AADSTS50006 | InvalidSignature - 無効な署名のため、署名の検証が失敗しました。 |
 | AADSTS50007 | PartnerEncryptionCertificateMissing - このアプリのパートナー暗号化証明書が見つかりませんでした。 この問題を解決するには、Microsoft への[サポート チケットを開いてください](../fundamentals/active-directory-troubleshooting-support-howto.md)。 |
 | AADSTS50008 | InvalidSamlToken - トークンに SAML アサーションがないか、正しく構成されていません。 フェデレーション プロバイダーに問い合わせてください。 |
 | AADSTS50010 | AudienceUriValidationFailed - トークン オーディエンスが構成されていないため、アプリのオーディエンス URI の検証が失敗しました。 |
-| AADSTS50011 | InvalidReplyTo - 返信アドレスがないか、正しく構成されていません。または、アプリに対して構成されている返信アドレスと一致しません。  解決方法として、この存在していない返信アドレスを Azure Active Directory アプリケーションに必ず追加するか、またはアクセス許可を持つ他のユーザーに Active Directory でアプリケーションを管理してもらいます。|
+| AADSTS50011 | InvalidReplyTo - 返信アドレスがないか、正しく構成されていません。または、アプリに対して構成されている返信アドレスと一致しません。  解決方法として、この存在していない返信アドレスを Azure Active Directory アプリケーションに必ず追加するか、またはアクセス許可を持つ他のユーザーに Active Directory でアプリケーションを管理してもらいます。 詳細については、エラー [AADSTS50011](/troubleshoot/azure/active-directory/error-code-aadsts50011-reply-url-mismatch) のトラブルシューティングに関する記事を参照してください。|
 | AADSTS50012 | AuthenticationFailed - 次のいずれかの理由で認証に失敗しました。<ul><li>署名証明書のサブジェクト名が承認されていない</li><li>承認されたサブジェクト名に一致する信頼された証明機関ポリシーが見つからなかった</li><li>証明書チェーンが無効</li><li>署名証明書が無効</li><li>テナントにポリシーが構成されていない</li><li>署名証明書の拇印が承認されていない</li><li>クライアント アサーションに無効な署名が含まれている</li></ul> |
 | AADSTS50013 | InvalidAssertion - さまざまな理由によりアサーションが無効です。たとえば、トークンの発行者が有効期間内の API バージョンと一致しない、期限が切れている、形式が正しくない、アサーションの更新トークンがプライマリ更新トークンではない、などです。 |
 | AADSTS50014 | GuestUserInPendingState - ユーザーの受諾が保留中の状態です。 ゲスト ユーザー アカウントがまだ完全には作成されていません。 |
@@ -140,7 +140,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS50089 | フロー トークンの有効期限が切れています。認証に失敗しました。 ユーザーに、ユーザー名とパスワードを使用してサインインを再試行させてください。 |
 | AADSTS50097 | DeviceAuthenticationRequired - デバイス認証が必要です。 |
 | AADSTS50099 | PKeyAuthInvalidJwtUnauthorized - JWT 署名が無効です。 |
-| AADSTS50105 | EntitlementGrantsNotFound - サインインしているユーザーが、サインインしているアプリのロールに割り当てられていません。 アプリにユーザーを割り当ててください。 詳細については、[../manage-apps/application-sign-in-problem-federated-sso-gallery.md#user-not-assigned-a-role](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#user-not-assigned-a-role) を参照してください。 |
+| AADSTS50105 | EntitlementGrantsNotFound - サインインしているユーザーが、サインインしているアプリのロールに割り当てられていません。 アプリにユーザーを割り当ててください。 詳細については、エラー [AADSTS50105](/troubleshoot/azure/active-directory/error-code-aadsts50105-user-not-assigned-role) のトラブルシューティングに関する記事を参照してください。 |
 | AADSTS50107 | InvalidRealmUri - 要求されたフェデレーション領域オブジェクトが存在しません。 テナント管理者に問い合わせてください。 |
 | AADSTS50120 | ThresholdJwtInvalidJwtFormat - JWT ヘッダーの問題。 テナント管理者に問い合わせてください。 |
 | AADSTS50124 | ClaimsTransformationInvalidInputParameter - 要求の変換に、無効な入力パラメーターが含まれています。 テナント管理者に問い合わせて、ポリシーを更新してください。 |
@@ -168,6 +168,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS50168 | ChromeBrowserSsoInterruptRequired - クライアントは、Windows 10 のアカウントの拡張機能を通じて SSO トークンを取得できますが、要求にトークンがないか、指定されたトークンの有効期限が切れています。 |
 | AADSTS50169 | InvalidRequestBadRealm - 領域が、現在のサービス名前空間の構成された領域ではありません。 |
 | AADSTS50170 | MissingExternalClaimsProviderMapping - 外部コントロールのマッピングがありません。 |
+| AADSTS50173 | FreshTokenNeeded - 許可が取り消されたため有効期限切れです。新しい認証トークンが必要です。 管理者またはユーザーがこのユーザーのトークンを取り消したため、後続のトークン更新が失敗し、再認証が必要です。 ユーザーにサインインの再試行を促してください。 |
 | AADSTS50177 | ExternalChallengeNotSupportedForPassthroughUsers - 外部のチャレンジは、パススルー ユーザーに対してサポートされていません。 |
 | AADSTS50178 | ExternalChallengeNotSupportedForPassthroughUsers - セッション制御は、パススルー ユーザーに対してサポートされていません。 |
 | AADSTS50180 | WindowsIntegratedAuthMissing - 統合 Windows 認証が必要です。 シームレス SSO に対してテナントを有効にしてください。 |
@@ -186,14 +187,15 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS53002 | ApplicationUsedIsNotAnApprovedApp - 使用されているアプリが、条件付きアクセスのために承認されたアプリではありません。 アクセスするには、ユーザーは承認されたアプリの一覧からアプリを 1 つ選んで使用する必要があります。 |
 | AADSTS53003 | BlockedByConditionalAccess - 条件付きアクセス ポリシーにより、アクセスがブロックされました。 アクセス ポリシーでは、トークンの発行が許可されていません。 |
 | AADSTS53004 | ProofUpBlockedDueToRisk - ユーザーは、このコンテンツにアクセスする前に、多要素認証登録プロセスを完了する必要があります。 ユーザーは多要素認証に登録する必要があります。 |
+| AADSTS53011 | ホーム テナントのリスクによりユーザーがブロックされました。 |
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist - X という ID でアプリケーションを使用することにユーザーまたは管理者が同意していません。このユーザーとリソースのインタラクティブな承認要求を送信してください。 |
 | AADSTS65004 | UserDeclinedConsent - ユーザーはアプリへのアクセスの同意を拒否しました。 ユーザーに、再度サインインしてアプリに同意させてください|
-| AADSTS65005 | MisconfiguredApplication - アプリの必須リソース アクセス リストに、リソースによって検出可能なアプリが含まれていません。または、必須リソース アクセス リストで指定されていないリソースへのアクセスをクライアント アプリが要求したか、Graph サービスから無効な要求が返されたか、リソースが見つかりません。 アプリが SAML をサポートしている場合、間違った識別子 (エンティティ) でアプリを構成している可能性があります。 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](../manage-apps/application-sign-in-problem-federated-sso-gallery.md?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) を参照し、SAML に対して示されている解決策を試してください |
+| AADSTS65005 | MisconfiguredApplication - アプリの必須リソース アクセス リストに、リソースによって検出可能なアプリが含まれていません。または、必須リソース アクセス リストで指定されていないリソースへのアクセスをクライアント アプリが要求したか、Graph サービスから無効な要求が返されたか、リソースが見つかりません。 アプリが SAML をサポートしている場合、間違った識別子 (エンティティ) でアプリを構成している可能性があります。 詳細については、エラー [AADSTS650056](/troubleshoot/azure/active-directory/error-code-aadsts650056-misconfigured-app) のトラブルシューティングに関する記事を参照してください。 |
 | AADSTS650052 | このアプリには、組織 `\"{organization}\"` がサブスクライブしていないか有効にしていない `(\"{name}\")` サービスへのアクセスが必要です。 サービス サブスクリプションの構成を確認するには、IT 管理者にお問い合わせください。 |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant - 認証に失敗しました。 更新トークンが無効です。 次のいずれかの理由がエラーの原因の可能性があります。<ul><li>トークンのバインド ヘッダーが空</li><li>トークンのバインド ハッシュが一致しない</li></ul> |
-| AADSTS70001 | UnauthorizedClient - アプリケーションが無効です。 |
+| AADSTS70001 | UnauthorizedClient - アプリケーションが無効です。 詳細については、エラー [AADSTS70001](/troubleshoot/azure/active-directory/error-code-aadsts70001-app-not-found-in-directory) のトラブルシューティングに関する記事を参照してください。 |
 | AADSTS70002 | InvalidClient - 資格情報の検証中にエラーが発生しました。 指定された client_secret が、このクライアントに予期される値と一致しません。 client_secret を修正してから、やり直してください。 詳細については、「[承認コードを使用してアクセス トークンを要求する](v2-oauth2-auth-code-flow.md#request-an-access-token)」を参照してください。 |
 | AADSTS70003 | UnsupportedGrantType - アプリがサポートされていない付与タイプを返しました。 |
 | AADSTS70004 | InvalidRedirectUri - アプリが無効なリダイレクト URI を返しました。 クライアントによって指定されているリダイレクト アドレスが、構成されているどのアドレス、または OIDC 承認リストのどのアドレスとも、一致しません。 |
@@ -207,10 +209,11 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS70019 | CodeExpired - 確認コードの有効期限が切れました。 ユーザーにサインインを再試行させてください。 |
 | AADSTS75001 | BindingSerializationError - SAML メッセージ バインド中にエラーが発生しました。 |
 | AADSTS75003 | UnsupportedBindingError - アプリが、サポートされていないバインドに関連するエラーを返しました (SAML プロトコルの応答は、HTTP POST 以外のバインド経由では送信できません)。 |
-| AADSTS75005 | Saml2MessageInvalid - Azure AD は、SSO 用のアプリによって送信された SAML 要求をサポートしていません。 |
+| AADSTS75005 | Saml2MessageInvalid - Azure AD は、SSO 用のアプリによって送信された SAML 要求をサポートしていません。 詳細については、エラー [AADSTS75005](/troubleshoot/azure/active-directory/error-code-aadsts75005-not-a-valid-saml-request) のトラブルシューティングに関する記事を参照してください。 |
 | AADSTS7500514 | サポートされている SAML 応答の種類が見つかりませんでした。 サポートされている応答の種類は "Response" (XML 名前空間 "urn:oasis:names:tc:SAML:2.0:protocol") または "Assertion" (XML 名前空間 "urn:oasis:names:tc:SAML:2.0:assertion") です。 アプリケーション エラー - 開発者がこのエラーを処理します。|
+| AADSTS750054 | SAML リダイレクト バインディング用の HTTP 要求に、SAMLRequest または SAMLResponse がクエリ文字列のパラメーターとしてある必要があります。 詳細については、エラー [AADSTS750054](/troubleshoot/azure/active-directory/error-code-aadsts750054-saml-request-not-present) のトラブルシューティングに関する記事を参照してください。 |
 | AADSTS75008 | RequestDeniedError - SAML 要求に予期しない宛先が設定されているため、アプリからの要求は拒否されました。 |
-| AADSTS75011 | NoMatchedAuthnContextInOutputClaims - サービスでのユーザーの認証に使用された認証方法が、要求された認証方法と一致しません。 |
+| AADSTS75011 | NoMatchedAuthnContextInOutputClaims - サービスでのユーザーの認証に使用された認証方法が、要求された認証方法と一致しません。 詳細については、エラー [AADSTS75011](/troubleshoot/azure/active-directory/error-code-aadsts75011-auth-method-mismatch) のトラブルシューティングに関する記事を参照してください。 |
 | AADSTS75016 | Saml2AuthenticationRequestInvalidNameIDPolicy - SAML2 認証要求の NameIdPolicy が無効です。 |
 | AADSTS80001 | OnPremiseStoreIsNotAvailable - 認証エージェントが Active Directory に接続できません。 エージェント サーバーが、パスワードを検証する必要のあるユーザーと同じ AD フォレストのメンバーであり、Active Directory に接続できることを確認します。 |
 | AADSTS80002 | OnPremisePasswordValidatorRequestTimedout - パスワード検証要求がタイムアウトしました。Active Directory が使用可能で、エージェントからの要求に応答していることを確認します。 |
@@ -266,6 +269,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS90094 | AdminConsentRequired - 管理者の同意が必要です。 |
 | AADSTS900382 | Confidential Client はクロスクラウド要求でサポートされていません。 |
 | AADSTS90099 | アプリケーション '{appId}' ({appName}) は、テナント '{tenant}' で承認されていません。 アプリケーションは、パートナー代理管理者が使用できるようになる前に、顧客テナントへのアクセスが承認されている必要があります。 事前同意を提供するか、適切な Partner Center API を実行してアプリケーションを承認します。 |
+| AADSTS900971| 応答アドレスが指定されていません。|
 | AADSTS90100 | InvalidRequestParameter - パラメーターが空であるか無効です。 |
 | AADSTS901002 | AADSTS901002:"resource" 要求パラメーターはサポートされていません。 |
 | AADSTS90101 | InvalidEmailAddress - 指定されたデータは有効な電子メール アドレスはありません。 電子メール アドレスは `someone@example.com` の形式である必要があります。 |

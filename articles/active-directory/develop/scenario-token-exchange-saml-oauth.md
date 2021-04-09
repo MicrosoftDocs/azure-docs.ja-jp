@@ -12,10 +12,10 @@ ms.date: 12/08/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.openlocfilehash: 812bf7bd68362667fcd1b636d0d28fdbb21c1409
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99582351"
 ---
 # <a name="microsoft-identity-platform-token-exchange-scenarios-with-saml-and-oidcoauth"></a>SAML と OIDC または OAuth を使用した Microsoft ID プラットフォーム のトークン交換のシナリオ

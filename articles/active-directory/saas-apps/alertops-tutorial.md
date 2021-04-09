@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 094b1a029c8e10abce3ca282de0cc99be34d313a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92318856"
 ---
 # <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>チュートリアル:AlertOps の Azure Active Directory との統合
@@ -96,7 +96,7 @@ AlertOps で Azure AD SSO を構成してテストするには、次の構成要
 
 ### <a name="configure-alertops"></a>AlertOps の構成
 
-1. AlertOps 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして**My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. AlertOps 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -120,9 +120,9 @@ AlertOps で Azure AD SSO を構成してテストするには、次の構成要
 
     c. **[発行者の URL]** テキストボックスに、Azure portal の **[基本的な SAML 構成]** セクションで使用した ID 値を使用します。
 
-    d. **[SAML endpoint URL]\(SAML エンドポイント URL\)** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    d. **[SAML endpoint URL]\(SAML エンドポイント URL\)** テキストボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    e. **[SLO endpoint URL]\(SLO エンドポイント URL\)** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    e. **[SLO endpoint URL]\(SLO エンドポイント URL\)** テキストボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     f. **[SAML Signature Algorithm]\(SAML 署名アルゴリズム\)** としてボックスの一覧から **[SHA256]** を選択します。
 

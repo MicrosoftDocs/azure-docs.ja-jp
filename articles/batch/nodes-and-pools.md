@@ -2,13 +2,13 @@
 title: Azure Batch のノードとプール
 description: コンピューティング ノードとプールについて、およびそれらが Azure Batch ワークフローで開発の観点からどのように使用されるかについて説明します。
 ms.topic: conceptual
-ms.date: 11/20/2020
-ms.openlocfilehash: e55be57968eae2a371a21b214dbd15921641e31f
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.date: 03/11/2021
+ms.openlocfilehash: 7d4c2d45849deb011498efe4c8a1ae91724b9acd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741776"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103563897"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch のノードとプール
 
@@ -65,7 +65,7 @@ Batch プールを作成するときに、Azure 仮想マシン構成と、プ�
 Batch で使用できるプール構成には、次の 2 種類があります。
 
 > [!IMPORTANT]
-> プールは、"Cloud Services の構成" ではなく、"仮想マシンの構成" を使用して構成する必要があります。 すべての Batch 機能は "仮想マシンの構成" プールによってサポートされており、新しい機能が追加されています。 "Cloud Services の構成" プールでは、すべての機能はサポートされず、新しい機能は計画されていません。
+> 現在、いずれかの構成を使用してプールを作成できますが、新しいプールは、Cloud Services の構成ではなく、仮想マシンの構成を使用して構成する必要があります。 現在および新しいすべての Batch 機能は、仮想マシンの構成プールによってサポートされます。 Cloud Services の構成プールでは、すべての機能はサポートされず、新しい機能は計画されていません。 [2024 年 2 月 29 日を過ぎると](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)、新しい 'CloudServiceConfiguration' プールを作成したり、既存のプールに新しいノードを追加したりすることはできなくなります。
 
 ### <a name="virtual-machine-configuration"></a>仮想マシンの構成
 
@@ -75,11 +75,14 @@ Batch で使用できるプール構成には、次の 2 種類があります�
 
 ### <a name="cloud-services-configuration"></a>Cloud Services の構成
 
+> [!WARNING]
+> Cloud Services 構成プールは[非推奨](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)とされます。 代わりに、仮想マシン構成プールを使用してください。 詳細については、「[Batch プールの構成を Cloud Services から仮想マシンに移行する](batch-pool-cloud-service-to-virtual-machine-configuration.md)」を参照してください。
+
 **Cloud Services の構成** は、プールが Azure Cloud Services ノードで構成されるように指定します。 Cloud Services では Windows 計算ノードのみが提供されます。
 
 Cloud Services の構成プールで使用可能なオペレーティング システムは、「[Azure ゲスト OS リリースと SDK の互換性対応表](../cloud-services/cloud-services-guestos-update-matrix.md)」に一覧表示されており、使用可能な計算ノードのサイズは、「[Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」に一覧表示されています。 Cloud Services ノードを含むプールを作成する場合は、ノード サイズとその *OS ファミリ* (これにより OS と共にインストールされる .NET のバージョンが決定されます) を指定します。 Cloud Services は、Windows を実行する仮想マシンよりも迅速に Azure にデプロイされます。 Windows コンピューティング ノードのプールが必要な場合、デプロイ時間に関して Cloud Services にパフォーマンスのメリットがあることがわかります。
 
-Cloud Services 内の worker ロールと同様、"*OS バージョン*" を指定できます (worker ロールの詳細については、[Cloud Services の概要](../cloud-services/cloud-services-choose-me.md)に関するページを参照してください)。 "*OS バージョン*" には `Latest (*)` を指定することをお勧めします。これにより、ノードは自動的にアップグレードされ、新たにリリースされたバージョンに対応するための作業が不要になります。 特定の OS バージョンを選択するのは、主にアプリケーションの互換性を確保する必要がある場合です。こうすることで、バージョンの更新を許可する前に旧バージョンとの互換性をテストできます。 検証した後は、プールの *OS バージョン* を更新して、新しい OS イメージをインストールできます。 実行中のタスクは中断され、キューに再登録されます。
+Cloud Services 内の worker ロールと同様、"*OS バージョン*" を指定できます。 "*OS バージョン*" には `Latest (*)` を指定することをお勧めします。これにより、ノードは自動的にアップグレードされ、新たにリリースされたバージョンに対応するための作業が不要になります。 特定の OS バージョンを選択するのは、主にアプリケーションの互換性を確保する必要がある場合です。こうすることで、バージョンの更新を許可する前に旧バージョンとの互換性をテストできます。 検証した後は、プールの *OS バージョン* を更新して、新しい OS イメージをインストールできます。 実行中のタスクは中断され、キューに再登録されます。
 
 ### <a name="node-agent-skus"></a>ノード エージェント SKU
 
@@ -205,3 +208,4 @@ Azure Batch ソリューションを設計するときは、いつ、どのよ�
 ## <a name="next-steps"></a>次のステップ
 
 - [ジョブとタスク](jobs-and-tasks.md)について学習します。
+- [プールとノードのバックグラウンド操作の失敗を検出して回避する](batch-pool-node-error-checking.md)方法について説明します。

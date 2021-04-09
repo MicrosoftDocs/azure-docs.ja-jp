@@ -5,10 +5,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 01/29/2018
 ms.openlocfilehash: 19b471d85a52fe38b72ad55847d022fb56b3c4f0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92220926"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Azure コマンド ライン インターフェイス (CLI) を使用して Azure Data Lake Analytics を管理する
@@ -25,7 +25,7 @@ Azure CLI を使用して、Azure Data Lake Analytics のアカウント、デ�
 
 - Azure CLI。 「 [Azure CLI のインストールと構成](/cli/azure/install-azure-cli)」をご覧ください。
 
-  - このデモを完了するためには、 **プレリリース版の** [Azure CLI ツール](https://github.com/MicrosoftBigData/AzureDataLake/releases)をダウンロードしてインストールします。
+  - このデモを完了するためには、**プレリリース版の** [Azure CLI ツール](https://github.com/MicrosoftBigData/AzureDataLake/releases)をダウンロードしてインストールします。
 
 - `az login` コマンドを使用して認証し、使用するサブスクリプションを選択します。 職場か学校のアカウントを使用した認証の詳細については、「 [Azure CLI から Azure サブスクリプションへの接続する](/cli/azure/authenticate-azure-cli)」をご覧ください。
 

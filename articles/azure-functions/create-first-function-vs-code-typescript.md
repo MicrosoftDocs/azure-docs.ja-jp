@@ -4,10 +4,10 @@ description: Visual Studio Code の Azure Functions 拡張機能を使用して 
 ms.topic: quickstart
 ms.date: 11/04/2020
 ms.openlocfilehash: 4470741c8c7f2f6c9832ea73aa9c6207764bc903
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99493540"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-typescript-using-visual-studio-code"></a>クイックスタート: Visual Studio Code と TypeScript を使用して Azure に関数を作成する

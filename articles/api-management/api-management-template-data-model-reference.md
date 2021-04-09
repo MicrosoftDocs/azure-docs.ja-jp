@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 868ad3d1c6e7e7ef2cf32dcf675bc471a614f3ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86243156"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API Management テンプレート データ モデル リファレンス
@@ -33,33 +33,33 @@ ms.locfileid: "86243156"
 
 -   [API](#API)  
 -   [API summary](#APISummary)  
--   [Application](#Application)  
+-   [アプリケーション](#Application)  
 -   [Attachment](#Attachment)  
 -   [Code sample](#Sample)  
--   [解説](#Comment)  
--   [Filtering](#Filtering)  
--   [ヘッダー](#Header)  
+-   [コメント](#Comment)  
+-   [フィルター処理](#Filtering)  
+-   [Header](#Header)  
 -   [HTTP 要求](#HTTPRequest)  
 -   [HTTP 応答](#HTTPResponse)  
 -   [問題点](#Issue)  
 -   [操作](#Operation)  
 -   [Operation menu](#Menu)  
 -   [Operation menu item](#MenuItem)  
--   [Paging](#Paging)  
+-   [ページング](#Paging)  
 -   [パラメーター](#Parameter)  
 -   [Product](#Product)  
 -   [プロバイダー](#Provider)  
--   [Representation](#Representation)  
--   [サブスクリプション](#Subscription)  
+-   [表現](#Representation)  
+-   [[サブスクリプション]](#Subscription): 。  
 -   [Subscription summary](#SubscriptionSummary)  
 -   [User account info](#UserAccountInfo)  
--   [User sign-in](#UseSignIn)  
+-   [ユーザーのサインイン](#UseSignIn)  
 -   [User sign-up](#UserSignUp)  
   
 ##  <a name="api"></a><a name="API"></a> API  
  `API` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`id`|string|リソース識別子。 現在の API Management サービス インスタンス内の API を一意に識別します。 値は `apis/{id}` 形式の有効な相対 URL です。ここで、`{id}` は API 識別子です。 このプロパティは読み取り専用です。|  
 |`name`|string|API の名前。 空にしないでください。 最大長は 100 文字です。|  
@@ -73,7 +73,7 @@ ms.locfileid: "86243156"
 ##  <a name="api-summary"></a><a name="APISummary"></a> API summary  
  `API summary` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`id`|string|リソース識別子。 現在の API Management サービス インスタンス内の API を一意に識別します。 値は `apis/{id}` 形式の有効な相対 URL です。ここで、`{id}` は API 識別子です。 このプロパティは読み取り専用です。|  
 |`name`|string|API の名前。 空にしないでください。 最大長は 100 文字です。|  
@@ -82,7 +82,7 @@ ms.locfileid: "86243156"
 ##  <a name="application"></a><a name="Application"></a> Application  
  `application` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`Id`|string|アプリケーションの一意の識別子。|  
 |`Title`|string|アプリケーションのタイトル。|  
@@ -100,7 +100,7 @@ ms.locfileid: "86243156"
 ##  <a name="attachment"></a><a name="Attachment"></a> Attachment  
  `attachment` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`UniqueId`|string|添付ファイルの一意の識別子。|  
 |`Url`|string|リソースの URL。|  
@@ -109,7 +109,7 @@ ms.locfileid: "86243156"
   
 ##  <a name="code-sample"></a><a name="Sample"></a> Code sample  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`title`|string|操作の名前。|  
 |`snippet`|string|このプロパティは非推奨です。使用しないでください。|  
@@ -127,7 +127,7 @@ ms.locfileid: "86243156"
 ##  <a name="comment"></a><a name="Comment"></a> Comment  
  `API` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`Id`|number|コメントの ID。|  
 |`CommentText`|string|コメントの本文。 HTML を含めることができます。|  
@@ -137,7 +137,7 @@ ms.locfileid: "86243156"
 ##  <a name="issue"></a><a name="Issue"></a> Issue  
  `issue` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`Id`|string|問題の一意の識別子。|  
 |`ApiID`|string|この問題が報告された API の ID。|  
@@ -153,7 +153,7 @@ ms.locfileid: "86243156"
 ##  <a name="filtering"></a><a name="Filtering"></a> Filtering  
  `filtering` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`Pattern`|string|現在の検索語句。検索語句がない場合は `null`。|  
 |`Placeholder`|string|検索語句が指定されていないときに検索ボックスに表示するテキスト。|  
@@ -161,9 +161,9 @@ ms.locfileid: "86243156"
 ##  <a name="header"></a><a name="Header"></a> Header  
  このセクションでは、`parameter` 表現を記述します。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|-----------------|----------|  
-|`name`|string|パラメーター名。|  
+|`name`|string|パラメーター名です。|  
 |`description`|string|パラメーターの説明。|  
 |`value`|string|ヘッダー値。|  
 |`typeName`|string|ヘッダー値のデータ型。|  
@@ -174,7 +174,7 @@ ms.locfileid: "86243156"
 ##  <a name="http-request"></a><a name="HTTPRequest"></a> HTTP Request  
  このセクションでは、`request` 表現を記述します。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`description`|string|操作要求の説明。|  
 |`headers`|[Header](#Header) エンティティの配列。|要求ヘッダー。|  
@@ -184,7 +184,7 @@ ms.locfileid: "86243156"
 ##  <a name="http-response"></a><a name="HTTPResponse"></a> HTTP Response  
  このセクションでは、`response` 表現を記述します。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`statusCode`|正の整数|操作応答の状態コード。|  
 |`description`|string|操作応答の説明。|  
@@ -193,7 +193,7 @@ ms.locfileid: "86243156"
 ##  <a name="operation"></a><a name="Operation"></a> Operation  
  `operation` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`id`|string|リソース識別子。 現在の API Management サービス インスタンス内の操作を一意に識別します。 値は `apis/{aid}/operations/{id}` 形式の有効な相対 URL です。ここで、`{aid}` は API 識別子、`{id}` は操作識別子です。 このプロパティは読み取り専用です。|  
 |`name`|string|操作の名前。 空にしないでください。 最大長は 100 文字です。|  
@@ -208,7 +208,7 @@ ms.locfileid: "86243156"
 ##  <a name="operation-menu"></a><a name="Menu"></a> Operation menu  
  `operation menu` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`ApiId`|string|現在の API の ID。|  
 |`CurrentOperationId`|string|現在の操作の ID。|  
@@ -218,7 +218,7 @@ ms.locfileid: "86243156"
 ##  <a name="operation-menu-item"></a><a name="MenuItem"></a> Operation menu item  
  `operation menu item` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`Id`|string|操作の ID。|  
 |`Title`|string|操作の説明。|  
@@ -227,7 +227,7 @@ ms.locfileid: "86243156"
 ##  <a name="paging"></a><a name="Paging"></a> Paging  
  `paging` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`Page`|number|現在のページ番号。|  
 |`PageSize`|number|1 ページに表示される結果の最大数。|  
@@ -238,9 +238,9 @@ ms.locfileid: "86243156"
 ##  <a name="parameter"></a><a name="Parameter"></a> パラメーター  
  このセクションでは、`parameter` 表現を記述します。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|-----------------|----------|  
-|`name`|string|パラメーター名。|  
+|`name`|string|パラメーター名です。|  
 |`description`|string|パラメーターの説明。|  
 |`value`|string|パラメーター値。|  
 |`options`|文字列の配列|クエリ パラメーター値に対して定義されている値。|  
@@ -251,7 +251,7 @@ ms.locfileid: "86243156"
 ##  <a name="product"></a><a name="Product"></a> Product  
  `product` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`Id`|string|リソース識別子。 現在の API Management サービス インスタンス内の製品を一意に識別します。 値は `products/{pid}` 形式の有効な相対 URL です。ここで、`{pid}` は製品識別子です。 このプロパティは読み取り専用です。|  
 |`Title`|string|製品の名前。 空にしないでください。 最大長は 100 文字です。|  
@@ -264,24 +264,24 @@ ms.locfileid: "86243156"
 ##  <a name="provider"></a><a name="Provider"></a> Provider  
  `provider` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`Properties`|文字列辞書|この認証プロバイダーのプロパティ。|  
-|`AuthenticationType`|string|プロバイダーの種類 (Azure Active Directory、Facebook ログイン、Google アカウント、Microsoft アカウント、Twitter)。|  
+|`AuthenticationType`|string|プロバイダーの種類  (Azure Active Directory、Facebook ログイン、Google アカウント、Microsoft アカウント、Twitter)。|  
 |`Caption`|string|プロバイダーの表示名。|  
   
 ##  <a name="representation"></a><a name="Representation"></a> Representation  
  このセクションでは、`representation` を記述します。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`contentType`|string|この表現の登録済みコンテンツ タイプまたはカスタム コンテンツ タイプを指定します (例: `application/xml`)。|  
 |`sample`|string|表現の例。|  
   
-##  <a name="subscription"></a><a name="Subscription"></a> Subscription  
+##  <a name="subscription"></a><a name="Subscription"></a> サブスクリプション  
  `subscription` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`Id`|string|リソース識別子。 現在の API Management サービス インスタンス内のサブスクリプションを一意に識別します。 値は `subscriptions/{sid}` 形式の有効な相対 URL です。ここで、`{sid}` はサブスクリプション識別子です。 このプロパティは読み取り専用です。|  
 |`ProductId`|string|サブスクライブされている製品の製品リソース識別子。 値は `products/{pid}` 形式の有効な相対 URL です。ここで、`{pid}` は製品識別子です。|  
@@ -307,7 +307,7 @@ ms.locfileid: "86243156"
 ##  <a name="subscription-summary"></a><a name="SubscriptionSummary"></a> Subscription summary  
  `subscription summary` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`Id`|string|リソース識別子。 現在の API Management サービス インスタンス内のサブスクリプションを一意に識別します。 値は `subscriptions/{sid}` 形式の有効な相対 URL です。ここで、`{sid}` はサブスクリプション識別子です。 このプロパティは読み取り専用です。|  
 |`DisplayName`|string|サブスクリプションの表示名|  
@@ -315,7 +315,7 @@ ms.locfileid: "86243156"
 ##  <a name="user-account-info"></a><a name="UserAccountInfo"></a> User account info  
  `user account info` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`FirstName`|string|名。 空にしないでください。 最大長は 100 文字です。|  
 |`LastName`|string|姓。 空にしないでください。 最大長は 100 文字です。|  
@@ -328,7 +328,7 @@ ms.locfileid: "86243156"
 ##  <a name="user-sign-in"></a><a name="UseSignIn"></a> User sign in  
  `user sign in` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`Email`|string|電子メール アドレス。 空にしないでください。値は、サービス インスタンス内で一意である必要があります。 最大長は 254 文字です。|  
 |`Password`|string|ユーザー アカウントのパスワード。|  
@@ -346,7 +346,7 @@ ms.locfileid: "86243156"
 ##  <a name="user-sign-up"></a><a name="UserSignUp"></a> User sign up  
  `user sign up` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`PasswordConfirm`|boolean|[sign-up](api-management-page-controls.md#sign-up) コントロールで使用される値。|  
 |`Password`|string|ユーザー アカウントのパスワード。|  

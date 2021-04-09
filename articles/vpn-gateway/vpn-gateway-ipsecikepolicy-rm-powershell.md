@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: 96931d2dd94a8a31021ebe62caaefc54f643b007
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94649264"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成する
@@ -34,8 +34,9 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 
 > [!IMPORTANT]
 > 1. IPsec/IKE ポリシーは、次のゲートウェイ SKU でのみ機能する点に注意してください。
->    * ***VpnGw1、VpnGw2、VpnGw3** _ (ルートベース) _ ***Standard** _ および _*_HighPerformance_*_ (ルートベース)
-> 2. _*_1_*_ つのポリシーの組み合わせだけが、ある特定の接続に対して指定できます。
+>    * ***VpnGw1、VpnGw2、VpnGw3*** (ルート ベース)
+>    * ***Standard** _ および _ *_HighPerformance_** (ルート ベース)
+> 2. ある特定の接続に対して指定できるポリシーの組み合わせは ***1 つ*** だけです。
 > 3. IKE (メイン モード) と IPsec (クイック モード) の両方について、すべてのアルゴリズムとパラメーターを指定する必要があります。 ポリシーを部分的に指定することはできません。
 > 4. オンプレミスの VPN デバイスでポリシーがサポートされることを、VPN デバイス ベンダーの仕様で確認してください。 ポリシーに対応していない場合、S2S または VNet-to-VNet 接続を確立することはできません。
 
@@ -55,7 +56,7 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 
 以下の表は、サポートされている暗号アルゴリズムと、ユーザーが構成できるキーの強度を一覧にしたものです。
 
-| _ *IPsec/IKEv2**  | **[オプション]**    |
+| **IPsec/IKEv2**  | **[オプション]**    |
 | ---  | --- 
 | IKEv2 暗号化 | AES256、AES192、AES128、DES3、DES  
 | IKEv2 整合性  | SHA384、SHA256、SHA1、MD5  |

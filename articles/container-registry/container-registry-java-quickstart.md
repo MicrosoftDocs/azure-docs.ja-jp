@@ -7,13 +7,13 @@ ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.openlocfilehash: 9e400ee0bae2690a84f9cfd3f6a76359e08eabc2
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92018340"
 ---
-# <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>クイック スタート:Java コンテナー イメージを作成して Azure Container Registry にプッシュする
+# <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>クイックスタート: Java コンテナー イメージを作成して Azure Container Registry にプッシュする
 
 このクイックスタートでは、Maven Jib プラグインを使用して、コンテナー化された Java アプリを作成し、Azure Container Registry にプッシュする方法について説明します。 Maven と Jib の使用は、開発者ツールを使った Azure コンテナー レジストリの対話操作の一例です。
 
@@ -149,7 +149,7 @@ ms.locfileid: "92018340"
 
 ## <a name="verify-your-container-image"></a>コンテナー イメージを検証する
 
-お疲れさまでした。 Azure でサポートされている JDK 上に、コンテナー化された Java App を作成し、ACR にプッシュしました。 そのイメージを Azure App Service にデプロイしたり、次のコマンドで (プレースホルダーを適宜置き換えて) ローカルにプルしたりすることによってテストしてみましょう。
+おめでとうございます。 Azure でサポートされている JDK 上に、コンテナー化された Java App を作成し、ACR にプッシュしました。 そのイメージを Azure App Service にデプロイしたり、次のコマンドで (プレースホルダーを適宜置き換えて) ローカルにプルしたりすることによってテストしてみましょう。
 
 ```bash
 docker pull <your registry name>.azurecr.io/gs-spring-boot-docker

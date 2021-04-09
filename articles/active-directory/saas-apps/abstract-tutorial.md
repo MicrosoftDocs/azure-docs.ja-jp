@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Abstract の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Abstract の統合 | Microsoft Docs'
 description: Azure Active Directory と Abstract の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
 ms.openlocfilehash: e1c3236c4c1957b4d0daee8d30c71f03fb8674dd
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97587827"
 ---
-# <a name="tutorial-integrate-abstract-with-azure-active-directory"></a>チュートリアル:Abstract を Azure Active Directory と統合する
+# <a name="tutorial-integrate-abstract-with-azure-active-directory"></a>チュートリアル: Azure Active Directory と Abstract の統合
 
 このチュートリアルでは、Abstract と Azure Active Directory (Azure AD) を統合する方法について説明します。 Abstract を Azure AD と統合すると、次のことが可能になります。
 
@@ -70,7 +70,7 @@ Abstract に対する Azure AD SSO を構成してテストするには、次の
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Abstract** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Abstract** アプリケーション統合ページで、**[管理]** セクションを探して、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
 
@@ -90,10 +90,10 @@ Abstract に対する Azure AD SSO を構成してテストするには、次の
 
 Abstract で SSO を構成するために必要になるので、Azure portal から `App Federation Metadata Url` と `Azure AD Identifier` を取得しておきます。
 
-これらの情報は、 **[SAML でシングル サインオンをセットアップします]** ページに表示されます。
+これらの情報は、**[SAML でシングル サインオンをセットアップします]** ページに表示されます。
 
-* `App Federation Metadata Url` は、 **[SAML 署名証明書]** セクションにあります。
-* `Azure AD Identifier` は、 **[Abstract の設定]** セクションにあります。
+* `App Federation Metadata Url` は、**[SAML 署名証明書]** セクションにあります。
+* `Azure AD Identifier` は、**[Abstract の設定]** セクションにあります。
 
 
 これで、Abstract 上で SSO を構成する準備ができました。
@@ -103,7 +103,7 @@ Abstract で SSO を構成するために必要になるので、Azure portal �
 
 1. [Abstract Web アプリ](https://app.abstract.com/)を開きます。
 2. 左側のバーにある **[Permissions]\(アクセス許可\)** ページに移動します。
-3. **[Configure SSO]\(SSO の構成\)** セクションで、 **[Metadata URL]\(メタデータ URL\)** と **[Entity ID]\(エンティティ ID\)** を入力します。
+3. **[Configure SSO]\(SSO の構成\)** セクションで、**[Metadata URL]\(メタデータ URL\)** と **[Entity ID]\(エンティティ ID\)** を入力します。
 4. 手動による例外がある場合は、それを入力します。 手動による例外セクションに一覧表示されるメール アドレスでは、SSO がバイパスされ、そのメール アドレスとパスワードでログインできるようになります。 
 5. **[変更を保存]** をクリックします。
 

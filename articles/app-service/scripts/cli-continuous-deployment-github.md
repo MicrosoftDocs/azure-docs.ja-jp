@@ -1,5 +1,5 @@
 ---
-title: CLI:GitHub からの継続的デプロイ
+title: 'CLI: GitHub からの継続的デプロイ'
 description: Azure CLI を使用して App Service アプリのデプロイと管理を自動化する方法について説明します。 このサンプルでは、GitHub から CI/CD を使用してアプリを作成する方法を紹介しています。
 author: msangapu-msft
 tags: azure-service-management
@@ -10,10 +10,10 @@ ms.date: 09/02/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 2147976ae73f93e6f451dbd871ead865e2331455
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97006335"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-from-github-using-cli"></a>CLI を使用して GitHub からの継続的なデプロイで App Service アプリを作成する
@@ -39,7 +39,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [`az group create`](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | App Service プランを作成します。 |

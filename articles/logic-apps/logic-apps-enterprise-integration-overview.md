@@ -9,10 +9,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: overview
 ms.date: 08/01/2019
 ms.openlocfilehash: adf15904d4490647074d6e2b46ac7e9e871dd388
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86536404"
 ---
 # <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack を使用した B2B エンタープライズ統合ソリューション

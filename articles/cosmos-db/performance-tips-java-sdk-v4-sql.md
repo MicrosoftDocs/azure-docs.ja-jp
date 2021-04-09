@@ -10,10 +10,10 @@ ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperf-fy21q2
 ms.openlocfilehash: 8aad9df4720c833a74659b5cd36b7f5aafdf9b60
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97631841"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 のパフォーマンスに関するヒント
@@ -63,7 +63,7 @@ Java SDK V4 (Maven com.azure::azure-cosmos) 同期 API
 
 # <a name="async"></a>[非同期](#tab/api-async)
 
-Java SDK V4 (Maven com.azure::azure-cosmos) Async API
+Java SDK V4 (Maven com.azure::azure-cosmos) 非同期 API
 
 [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientDirectOverrideAsync)]
 
@@ -150,15 +150,15 @@ Java SDK V4 (Maven com.azure::azure-cosmos) 同期 API
 
 Azure Cosmos DB Java SDK v4 では、ほとんどのワークロードでデータベースのパフォーマンスを向上させるための最適な選択肢は直接モードです。 
 
-* ***直接モードの概要** _
+* ***直接モードの概要***
 
 :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="直接モード アーキテクチャの図" border="false":::
 
-直接モードで使用されるクライアント側のアーキテクチャにより、予測可能なネットワーク使用率と Azure Cosmos DB レプリカへの多重アクセスが可能になります。 上の図は、直接モードで Cosmos DB バックエンドのレプリカにクライアント要求をルーティングする方法を示しています。 直接モード アーキテクチャでは、クライアント側で DB レプリカあたり最大 10 個の _ *チャネル** が割り当てられます。 チャネルは、要求バッファーが先行する TCP 接続であり、要求の深さは 30 個です。 レプリカに属するチャネルは、レプリカの **サービス エンドポイント** によって、必要に応じて動的に割り当てられます。 ユーザーが直接モードで要求を発行すると、**TransportClient** により、パーティション キーに基づいて要求が適切なサービス エンドポイントにルーティングされます。 **要求キュー** では、サービス エンドポイントの前に要求がバッファリングされます。
+直接モードで使用されるクライアント側のアーキテクチャにより、予測可能なネットワーク使用率と Azure Cosmos DB レプリカへの多重アクセスが可能になります。 上の図は、直接モードで Cosmos DB バックエンドのレプリカにクライアント要求をルーティングする方法を示しています。 直接モード アーキテクチャでは、クライアント側で DB レプリカあたり最大 10 個の **チャネル** が割り当てられます。 チャネルは、要求バッファーが先行する TCP 接続であり、要求の深さは 30 個です。 レプリカに属するチャネルは、レプリカの **サービス エンドポイント** によって、必要に応じて動的に割り当てられます。 ユーザーが直接モードで要求を発行すると、**TransportClient** により、パーティション キーに基づいて要求が適切なサービス エンドポイントにルーティングされます。 **要求キュー** では、サービス エンドポイントの前に要求がバッファリングされます。
 
-* ***直接モード用の構成オプション** _
+* ***直接モード用の構成オプション***
 
-既定以外の直接モードの動作が必要な場合は、_DirectConnectionConfig* インスタンスを作成し、そのプロパティをカスタマイズしてから、Azure Cosmos DB クライアント ビルダーでカスタマイズしたプロパティ インスタンスを *directMode()* メソッドに渡します。
+既定以外の直接モードの動作が必要な場合は、*DirectConnectionConfig* インスタンスを作成し、そのプロパティをカスタマイズしてから、Azure Cosmos DB クライアント ビルダーでカスタマイズしたプロパティ インスタンスを *directMode()* メソッドに渡します。
 
 これらの構成設定は、上記で説明した基になる直接モードのアーキテクチャの動作を制御します。
 
@@ -176,19 +176,19 @@ Azure Cosmos DB Java SDK v4 では、ほとんどのワークロードでデー�
 
 Azure Cosmos DB Java SDK v4 では、パーティション分割コレクションに対してクエリを並列で実行できるようにするために、並列クエリがサポートされています。 詳細については、Azure Cosmos DB Java SDK v4 の操作に関連した[コード サンプル](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)を参照してください。 並列クエリは、シリアル クエリよりもクエリの待機時間とスループットを向上させるように設計されています。
 
-* "***setMaxDegreeOfParallelism の調整\:** _"
+* ***setMaxDegreeOfParallelism を調整する\:***
     
 並列クエリは、複数のパーティションに並列にクエリを実行することによって機能します。 ただし、個々のパーティション分割されたコレクションからのデータは、クエリごとに順番に取得されます。 そのため、setMaxDegreeOfParallelism を使ってパーティションの数を設定すると、その他のすべてのシステムの条件が変わらなければ、クエリのパフォーマンスを最大にできる可能性が最大になります。 パーティションの数が不明な場合は、setMaxDegreeOfParallelism を使って大きな数を設定すると、システムが並列処理の最大限度として最小値 (パーティションの数、ユーザー指定の入力) を選びます。
 
 並列クエリが最も有効に機能するのは、クエリに対するデータがすべてのパーティションに均等に分散している場合であることに注意する必要があります。 パーティション分割されたコレクションが、クエリによって返されるすべてまたは大部分のデータがわずかな数のパーティション (最悪の場合は 1 つのパーティション) に集中するように分割されている場合、クエリのパフォーマンスに関してこれらのパーティションがボトルネックになるでしょう。
 
-"_ ***setMaxBufferedItemCount の調整\:** _"
+* ***setMaxBufferedItemCount を調整する\:***
     
 並列クエリは、結果の現在のバッチがクライアントによって処理されている間に結果をプリフェッチするように設計されています。 プリフェッチは、クエリの全体的な遅延の削減に役立ちます。 setMaxBufferedItemCount は、プリフェッチされる結果の数を制限します。 setMaxBufferedItemCount を、返される結果の予期される数 (またはそれ以上の数) に設定すると、クエリに対するプリフェッチの効果が最大になります。
 
 プリフェッチは MaxDegreeOfParallelism とは無関係に同じように動作し、すべてのパーティションからのデータに対して単一のバッファーが存在します。
 
-_ **クライアント ワークロードをスケールアウトする**
+* **クライアント ワークロードをスケールアウトする**
 
 高いスループット レベルでテストを行っている場合、コンピューターが CPU 使用率またはネットワーク使用率の上限に達したことでクライアント アプリケーションがボトルネックになることがあります。 この状態に達しても、クライアント アプリケーションを複数のサーバーにスケールアウトすることで引き続き同じ Azure Cosmos DB アカウントで対応できます。
 
@@ -233,11 +233,11 @@ Azure Cosmos DB Java SDK v4 の詳細については、[GitHub の Azure SDK for
 
 さまざまな理由から、高い要求スループットを生成しているスレッドにログを追加することが必要な場合があります。 このスレッドによって生成される要求でコンテナーのプロビジョニングされたスループットを完全に飽和させることが目的である場合は、ログの最適化によってパフォーマンスを大幅に向上させることができます。
 
-* ***非同期ロガーを構成する** _
+* ***非同期ロガーを構成する***
 
 同期ロガーの待機時間は、要求を生成するスレッドの全体的な待機時間の計算に必ず含まれます。 高パフォーマンスのアプリケーション スレッドからログのオーバーヘッドを分離するために、[log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0) などの非同期ロガーが推奨されます。
 
-_ ***netty のログを無効にする** _
+* ***netty のログを無効にする***
 
 netty ライブラリのログは量が多いので、CPU コストが増えないようにオフにする必要があります (構成のサインインを抑制するだけでは不十分な場合があります)。 デバッグ モードではない場合は、netty のログを完全に無効にします。 したがって、log4j を使って netty からの ``org.apache.log4j.Category.callAppenders()`` によって発生する追加の CPU コストを削除するには、コードベースに次の行を追加します。
 
@@ -245,7 +245,7 @@ netty ライブラリのログは量が多いので、CPU コストが増えな�
 org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
 ```
 
- _ **OS の開かれるファイルのリソース制限**
+ * **OS の開かれるファイルのリソース制限**
  
 Red Hat などの一部の Linux システムには、開かれるファイルの数、したがって合計接続数に上限があります。 現在の制限を確認するには、次のコマンドを実行します。
 

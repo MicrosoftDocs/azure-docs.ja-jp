@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: bcca511bcb61ceab8395ee56b377efa99f095586
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 13862e642c6a91fe6f3c635df2efde91672ecbad
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946708"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866813"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Power Query を使用して Excel を Apache Hadoop に接続する
 
@@ -42,13 +42,13 @@ Power Query for Excel アドインを使うと、HDInsight クラスターから
 
      * **[データ]**  >  **[データの取得]**  >  **[Azure から]**  >  **[Azure HDInsight (HDFS) から]** を選択します。
 
-       ![HDI.PowerQuery.SelectHdiSource.2016](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource-excel2016.png)
+       :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource-excel2016.png" alt-text="HDI.PowerQuery.SelectHdiSource.2016" border="true":::
 
    * Excel 2013/2010
 
      * **[Power Query]**  >  **[Azure から]**  >  **[Microsoft Azure HDInsight から]** を選択します。
 
-       ![HDI.PowerQuery.SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png)
+       :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png" alt-text="HDI.PowerQuery.SelectHdiSource" border="true":::
 
        **注:** **[Power Query]** メニューが表示されない場合は、 **[ファイル]**  >  **[オプション]**  >  **[アドイン]** をクリックして、ページ下部にある **[管理]** ボックスの一覧の **[COM アドイン]** を選択します。 **[設定]** をクリックして、Power Query for Excel アドインのボックスがオンになっていることを確認します。
 
@@ -62,11 +62,11 @@ Power Query for Excel アドインを使うと、HDInsight クラスターから
 
 1. **[名前]** 列 (フォルダー パスは **../hive/warehouse/hivesampletable/** ) で **HiveSampleData.txt** を見つけて、HiveSampleData.txt の左側の **[バイナリ]** を選択します。 HiveSampleData.txt はすべてのクラスターに用意されています。 必要に応じて、独自のファイルを使用できます。
 
-    ![HDI Excel Power Query でのデータのインポート](./media/apache-hadoop-connect-excel-power-query/powerquery-importdata.png)
+    :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-importdata.png" alt-text="HDI Excel Power Query でのデータのインポート" border="true":::
 
 1. 列名を変更することもできます。 準備ができたら、 **[閉じて読み込む]** を選択します。  ブックにデータが読み込まれます。
 
-    ![HDI Excel Power Query でインポートされたテーブル](./media/apache-hadoop-connect-excel-power-query/powerquery-importedtable.png)
+    :::image type="content" source="./media/apache-hadoop-connect-excel-power-query/powerquery-importedtable.png" alt-text="HDI Excel Power Query でインポートされたテーブル" border="true":::
 
 ## <a name="next-steps"></a>次のステップ
 

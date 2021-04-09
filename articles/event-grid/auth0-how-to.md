@@ -4,10 +4,10 @@ description: Azure Event Grid を使用して Auth0 から Azure のサービス
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: a66a60cb926b933a6b0628a67506d0d52ab7a905
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93077865"
 ---
 # <a name="integrate-azure-event-grid-with-auth0"></a>Azure Event Grid と Auth0 を統合する

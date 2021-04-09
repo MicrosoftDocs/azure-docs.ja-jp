@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 03/10/2021
 ms.author: victorh
-ms.openlocfilehash: b01a856c71375af507e2bf29297e64a6ce9412e5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 21bb1856409b7fbea1eeffb8b3769dd63119da50
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741431"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102612849"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall の機能
 
@@ -148,4 +148,4 @@ Azure Firewall は、Payment Card Industry (PCI)、Service Organization Controls
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Firewall ルール処理ロジック](rule-processing.md)
+- [Azure Firewall Premium プレビューの機能](premium-features.md)

@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 11102d95bc2aba65e6bc3cba71805a67f195947b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92681362"
 ---
 # <a name="how-to-use-microsoftazuresearch-in-a-c-net-application"></a>C# .NET アプリケーションで Microsoft.Azure.Search を使用する方法
 
 この記事では、C#、および Azure SDK for .NET の従来のクライアント ライブラリ [**Microsoft.Azure.Search**](/dotnet/api/overview/azure/search/client10) (バージョン 10) を使用して、検索オブジェクトを作成および管理する方法について説明します。 
 
-バージョン 10 は、最新バージョンの Microsoft.Azure.Search パッケージです。 今後、新機能は、Azure SDK チームによって、 [**Azure.Search.Documents**](/dotnet/api/overview/azure/search.documents-readme) でロールアウトされます。
+バージョン 10 は、最新バージョンの Microsoft.Azure.Search パッケージです。 今後、新機能は、Azure SDK チームによって、[**Azure.Search.Documents**](/dotnet/api/overview/azure/search.documents-readme) でロールアウトされます。
 
 > [!NOTE]
 > 既存または開発中のプロジェクトがある場合は、引き続きバージョン 10 を使用してください。 新しいプロジェクトの場合、または新しい機能を使用する場合は、[新しいライブラリ](/dotnet/api/overview/azure/search.documents-readme)に移行する必要があります。

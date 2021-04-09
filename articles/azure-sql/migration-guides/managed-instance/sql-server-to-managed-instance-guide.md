@@ -1,6 +1,6 @@
 ---
 title: SQL Server から SQL Managed Instance:移行ガイド
-description: このガイドに従って、SQL Server データベースを Azure SQL Managed Instance に移行します。
+description: このガイドでは SQL Server データベースの Azure SQL Managed Instance への移行を説明します。
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
 ms.custom: ''
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 67f5665225bc1297d0eb1b1e1da954fb47660dee
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 6dcbf4a570fb5cdb58c914ea5e4b1164ed6a76ca
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488955"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103564492"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>移行ガイド:SQL Server から SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -197,10 +197,6 @@ DMS を使用して移行を実行するには、次の手順に従います。
 1. **テスト環境を設定する**: テスト環境には、ソース データベースとターゲット データベースのコピーが含まれている必要があります。 必ずテスト環境を分離してください。
 1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行してから、結果を分析します。
 1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行し、結果を分析して比較します。
-
-   > [!NOTE]
-   > 移行後の検証テストの開発と実行を支援するために、パートナーの [QuerySurge](https://www.querysurge.com/company/partners/microsoft) から入手できる Data Quality Solution を検討してください。 
-
 
 
 ## <a name="leverage-advanced-features"></a>高度な機能を活用する 

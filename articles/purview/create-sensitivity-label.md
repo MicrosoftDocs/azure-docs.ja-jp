@@ -6,13 +6,13 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 01/19/2021
-ms.openlocfilehash: b86414758c3b644725e5aa29ca3b314f489508aa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/09/2021
+ms.openlocfilehash: 37ac292acc76c681ea38b2ae881ff8cd2ae5ec3c
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693528"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102502448"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Azure Purview でデータに自動的にラベルを付ける
 
@@ -114,13 +114,24 @@ Azure Purview で MIP の秘密度ラベルを拡張することにより、組�
 Azure Purview の資産にラベル付けを拡張すると、Purview で使用できるようにするラベルを選択できます。 詳細については、「[新しい秘密度ラベルの作成または既存のラベルの変更](#creating-new-sensitivity-labels-or-modifying-existing-labels)」を参照してください。
 ### <a name="creating-new-sensitivity-labels-or-modifying-existing-labels"></a>新しい秘密度ラベルの作成または既存のラベルの変更
 
+Windows、macOS、iOS、および Android で Office アプリの秘密度ラベルを使用すると、ユーザーに対して 4 時間以内に新しいラベルが表示され、Web 上の Office では 1 時間以内に表示されます。 ただし、すべてのアプリとサービスに対して変更をレプリケートするには、最大 24 時間かかります。
+
+> [!IMPORTANT]
+> ユーザーへの影響が不明な場合は、ラベルを削除しないでください。 詳細については、Microsoft 365 のドキュメントの「[ラベルの解除と削除](/microsoft-365/compliance/create-sensitivity-labels#removing-and-deleting-labels)」を参照してください。
+>
+
+**新しい秘密度ラベルを作成または既存のラベルを変更するには**:
+
 1. [Microsoft 365 セキュリティ/コンプライアンス センター](https://protection.office.com/homepage)を開きます。 
 
 1. **[ソリューション]** で、 **[Information Protection]** を選択し、 **[ラベルの作成]** を選択します。 
 
     :::image type="content" source="media/create-sensitivity-label/create-sensitivity-label-full-small.png" alt-text="Microsoft 365 のセキュリティ/コンプライアンス センターで秘密度ラベルを作成します" lightbox="media/create-sensitivity-label/create-sensitivity-label-full.png":::
 
-1. ラベルに名前を付けます。 次に、 **[このラベルのスコープを定義]** で、 **[ファイルと電子メール]** と **[Azure Purview の資産]** を選択します。
+1. ラベルに名前を付けます。 その後、 **[Define the scope for this label]\(このラベルのスコープを定義\)** で、次を実行します。
+
+    - すべての場合において、 **[Azure Purview assets]\(Azure Purview の資産\)** を選択します。
+    - ファイルにラベルを付けるには、 **[ファイル & 電子メール]** も選択します。 このオプションは、データベース資産にのみラベルを付ける場合は必要ありません。 
     
     :::image type="content" source="media/create-sensitivity-label/create-label-scope-small.png" alt-text="Microsoft 365 セキュリティ/コンプライアンス センターでラベルを作成します" lightbox="media/create-sensitivity-label/create-label-scope.png":::
 
@@ -149,10 +160,6 @@ Azure Purview の資産にラベル付けを拡張すると、Purview で使用�
 
     詳細については、Microsoft 365 のドキュメントの「[ラベルの優先度 (順序の問題)](/microsoft-365/compliance/sensitivity-labels#label-priority-order-matters)」を参照してください。
 
-> [!IMPORTANT]
-> ユーザーへの影響が不明な場合は、ラベルを削除しないでください。 
->
-> 詳細については、Microsoft 365 のドキュメントの「[ラベルの解除と削除](/microsoft-365/compliance/create-sensitivity-labels#removing-and-deleting-labels)」を参照してください。
 
 「[データをスキャンしてラベルを自動的に適用する](#scan-your-data-to-apply-labels-automatically)」に進み、その後、次のトピックに進みます。
 

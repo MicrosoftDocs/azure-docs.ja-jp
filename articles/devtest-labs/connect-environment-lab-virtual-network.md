@@ -4,10 +4,10 @@ description: Azure DevTest Labs のラボの仮想ネットワークに環境 (S
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 980c6317ded70db374c2b948075f060754168b0f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97511962"
 ---
 # <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Azure DevTest Labs のラボの仮想ネットワークに環境を接続する
@@ -152,4 +152,4 @@ Azure DevTest Labs では、[組み込みネットワーク](devtest-lab-configu
 ```
 
 ## <a name="next-steps"></a>次のステップ
-次の記事で、これらの操作を Azure portal を使用して行う方法について確認します: [VM の再起動](devtest-lab-restart-vm.md)に関する記事。
+Azure portal を使用してこれらの操作を行う方法については、[VM の再起動](devtest-lab-restart-vm.md)に関する記事を参照してください。

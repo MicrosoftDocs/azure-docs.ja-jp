@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.openlocfilehash: 23b9774f28f915596abafbd8c1f6c38fc4f55748
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95995286"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>ポータルを使用して Azure Database for PostgreSQL 単一サーバー用の Private Link を作成および管理する
@@ -74,7 +74,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | Windows ライセンスを既にお持ちの場合 | 既定値 **[なし]** のままにします。 |
     |||
 
-1. **[Next:ディスク]** を選択します。
+1. **ディスク** を選択します。
 
 1. **[仮想マシンの作成 - Disk]** で、既定値のままにし、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 
@@ -158,7 +158,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |ターゲット サブリソース |*[postgresqlServer]* を選択します|
     |||
 7. **[Next:構成]** を選択します。
-8. **[Create a private endpoint - Configuration]\(プライベート エンドポイントの作成 - 構成\)** で次の情報を入力または選択します。
+8. **[Create a private endpoint - Configuration]/(プライベート エンドポイントの作成 - 構成/)** で次の情報を入力または選択します。
 
     | 設定 | 値 |
     | ------- | ----- |
@@ -241,7 +241,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 7. (省略可能) postgreSQL サーバーから情報を作成またはクエリします。
 
-8. myVm へのリモート デスクトップ接続を閉じます。
+8. myVM へのリモート デスクトップ接続を閉じます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 プライベート エンドポイント、PostgreSQL サーバー、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。

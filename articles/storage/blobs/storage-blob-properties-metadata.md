@@ -10,10 +10,10 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 984fb00e163a090534da1fb41850dcfef6c5d516
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95521531"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>.NET を使用した BLOB プロパティとメタデータの管理
@@ -27,7 +27,7 @@ BLOB コンテナーは、そこに含まれているデータに加えて、シ
 - **ユーザー定義のメタデータ**: ユーザー定義メタデータは、BLOB ストレージ リソースに対して指定された 1 つ以上の名前と値のペアで構成されます。 メタデータを使用すると、リソースに関する追加の値を格納できます。 メタデータ値は独自の目的にのみ使用され、リソースの動作には影響しません。
 
 > [!NOTE]
-> また、BLOB インデックス タグを使用して、ユーザー定義の任意のキーまたは値の属性を Azure Blob Storage リソースと共に格納することもできます。 メタデータに似ていますが、BLOB インデックス タグにのみ自動的にインデックスが付けられて、ネイティブの BLOB サービスによって検索可能になります。 Azure Search などの別のサービスを使用する場合を除き、メタデータにインデックスを付けてクエリを実行することはできません。
+> また、BLOB インデックス タグを使用して、ユーザー定義の任意のキーまたは値の属性を Azure BLOB ストレージ リソースと共に格納することもできます。 メタデータに似ていますが、BLOB インデックス タグにのみ自動的にインデックスが付けられて、ネイティブの BLOB サービスによって検索可能になります。 Azure Search などの別のサービスを使用する場合を除き、メタデータにインデックスを付けてクエリを実行することはできません。
 >
 > この機能の詳細については、「[BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する (プレビュー)](storage-manage-find-blobs.md)」を参照してください。
 
@@ -128,7 +128,7 @@ private static async Task GetBlobPropertiesAsync(CloudBlob blob)
 
 メタデータ名/値ペアは有効な HTTP ヘッダーであり、HTTP ヘッダーに適用されるすべての制約に準拠する必要があります。 メタデータ名は有効な HTTP ヘッダー名および有効な C# 識別子でなければならず、ASCII 文字のみを含むことができます。また、大文字と小文字が区別されないものとして扱う必要があります。 非 ASCII 文字を含む [Base64 エンコード](/dotnet/api/system.convert.tobase64string)または [URL エンコード](/dotnet/api/system.web.httputility.urlencode)のメタデータ値。
 
-メタデータの名前は、C# 識別子の名前付け規則に従う必要があります。 メタデータ名では、それが作成されたときに使用された大文字と小文字の区別が維持されますが、設定または読み取り時には大文字と小文字が区別されません。 同じ名前を使用する 2 つ以上のメタデータ ヘッダーがリソースに送信された場合、Azure Blob Storage は HTTP エラー コード 400 (正しくない要求) を返します。
+メタデータの名前は、C# 識別子の名前付け規則に従う必要があります。 メタデータ名では、それが作成されたときに使用された大文字と小文字の区別が維持されますが、設定または読み取り時には大文字と小文字が区別されません。 同じ名前を使用する 2 つ以上のメタデータ ヘッダーがリソースに送信された場合、Azure BLOB ストレージは HTTP エラー コード 400 (正しくない要求) を返します。
 
 次のコード例では、BLOB でメタデータを設定します。 一方の値は、コレクションの `Add` メソッドを使用して設定されます。 もう一方の値は、暗黙的なキーと値の構文を使用して設定されます。
 

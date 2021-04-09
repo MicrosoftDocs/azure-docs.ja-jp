@@ -10,10 +10,10 @@ ms.date: 02/02/2021
 ms.author: cherylmc
 ms.custom: subject-armqs
 ms.openlocfilehash: d31f490baec49e8e0b6fcf89caa8c19202fdf763
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102431382"
 ---
 # <a name="quickstart-create-an-any-to-any-configuration-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Any-to-Any の構成を作成する

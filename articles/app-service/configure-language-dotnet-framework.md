@@ -6,10 +6,10 @@ ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
 ms.openlocfilehash: 8ed6835583cc4881b19eee14ed392b193324535e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92744154"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>Azure App Service 向けの ASP.NET アプリを構成する
@@ -75,7 +75,7 @@ App Service と *web.config* で同じ名前のアプリ設定を構成した場
 
 ## <a name="deploy-multi-project-solutions"></a>マルチ プロジェクト ソリューションをデプロイする
 
-Visual Studio ソリューションに複数のプロジェクトが含まれている場合、Visual Studio の発行プロセスには、デプロイするプロジェクトの選択が既に含まれています。 ビルド自動化を有効にした状態で、Git や ZIP 配置などの App Service 展開エンジンにデプロイすると、App Service 展開エンジンは、App Service アプリとして検出された最初の Web サイトまたは Web アプリケーション プロジェクトを選択します。 `PROJECT` アプリ設定を指定することで、App Service で使用するプロジェクトを指定できます。 たとえば、[Cloud Shell](https://shell.azure.com) で以下を実行します。
+Visual Studio ソリューションに複数のプロジェクトが含まれている場合、Visual Studio の発行プロセスには、デプロイするプロジェクトの選択が既に含まれています。 ビルド自動化を有効にした状態で、Git や ZIP デプロイなどを使用して App Service 展開エンジンにデプロイすると、App Service 展開エンジンは、App Service アプリとして検出された最初の Web サイトまたは Web アプリケーション プロジェクトを選択します。 `PROJECT` アプリ設定を指定することで、App Service で使用するプロジェクトを指定できます。 たとえば、[Cloud Shell](https://shell.azure.com) で以下を実行します。
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -83,7 +83,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="get-detailed-exceptions-page"></a>例外の詳細ページを表示する
 
-Visual Studio デバッガーで ASP.NET アプリの実行中に例外が発生すると、ブラウザーに例外の詳細ページが表示されますが、App Service ではそのページは汎用のエラー メッセージに置き換わります。 App Service で例外の詳細ページを表示するには、 *Web.config* ファイルを開き、`<system.web>` 要素の下に `<customErrors mode="Off"/>` 要素を追加します。 次に例を示します。
+Visual Studio デバッガーで ASP.NET アプリの実行中に例外が発生すると、ブラウザーに例外の詳細ページが表示されますが、App Service ではそのページは汎用のエラー メッセージに置き換わります。 App Service で例外の詳細ページを表示するには、*Web.config* ファイルを開き、`<system.web>` 要素の下に `<customErrors mode="Off"/>` 要素を追加します。 次に例を示します。
 
 ```xml
 <system.web>

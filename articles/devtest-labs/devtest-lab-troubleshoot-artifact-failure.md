@@ -4,16 +4,16 @@ description: DevTest Labs からは、アーティファクトの失敗の診断
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 440ce6a537ac8d6a21ae8010bfbb3c38a82bf01e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85480815"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>ラボでアーティファクトの失敗を診断する 
 アーティファクトの作成後、作成が成功したか失敗したかを確認できます。 Azure DevTest Labs のアーティファクト ログには、アーティファクトの失敗の診断に使用できる情報が含まれています。 Windows VM のアーティファクト ログ情報を表示する場合、次のいずれかを選択できます。
 
-* Azure ポータルで次の操作を行います。
+* Azure Portal で次の操作を行います。
 * VM
 
 > [!NOTE]
@@ -23,7 +23,7 @@ ms.locfileid: "85480815"
 
 1. Azure Portal で、リソースの一覧からラボを選択します。
 2. 調査するアーティファクトが含まれている Windows VM を選択します。
-3. 左側のパネルの **[全般]** で、 **[アーティファクト]** を選択します。 その VM に関連付けられているアーティファクトの一覧が表示されます。 アーティファクトの名前と状態が示されます。
+3. 左側のパネルの **[全般]** で、**[アーティファクト]** を選択します。 その VM に関連付けられているアーティファクトの一覧が表示されます。 アーティファクトの名前と状態が示されます。
 
    ![アーティファクトの状態](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifacts-failure-new.png)
 
@@ -39,9 +39,9 @@ ms.locfileid: "85480815"
 
    ![状態ファイル](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error-vm-status-new.png)
 
-3. **状態**ファイルを開きます。
+3. **状態** ファイルを開きます。
 
-**Linux** VM でログ ファイルを見つける手順については、次の記事を参照してください。[Linux 仮想マシンで Azure カスタム スクリプト拡張機能バージョン 2 を使用する](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
+**Linux** VM でログ ファイルを見つける方法については、[Linux 仮想マシンでの Azure カスタム スクリプト拡張機能バージョン 2 の使用](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)に関する記事を参照してください。
 
 
 ## <a name="related-blog-posts"></a>関連するブログ記事

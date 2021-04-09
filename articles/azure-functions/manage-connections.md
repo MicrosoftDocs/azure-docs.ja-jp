@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
 ms.openlocfilehash: ec16ce3e7f9793be2a012a029bcca31c9a7ea4cf
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97936704"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Azure Functions での接続の管理

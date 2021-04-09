@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/10/2021
 ms.author: jeedes
 ms.openlocfilehash: cd6ba1da92a19a1f73fc67c0165bfb19b3bb77aa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100363851"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-perimeter-81"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Perimeter 81 の統合

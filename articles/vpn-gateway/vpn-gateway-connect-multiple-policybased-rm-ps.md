@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: 2a85204fef026940394a19934bef1c631a8e2d21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89418881"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>PowerShell を使って複数のオンプレミス ポリシー ベース VPN デバイスに VPN ゲートウェイを接続する
@@ -65,7 +65,7 @@ ms.locfileid: "89418881"
 この接続を有効にするワークフローは次のとおりです。
 1. クロスプレミス接続用に仮想ネットワーク、VPN ゲートウェイ、およびローカル ネットワーク ゲートウェイを作成します。
 2. IPsec/IKE ポリシーを作成します。
-3. S2S または VNet 対 VNet 接続を作成するときにこのポリシーを適用し、接続で**ポリシー ベース トラフィック セレクターを有効にします**。
+3. S2S または VNet 対 VNet 接続を作成するときにこのポリシーを適用し、接続で **ポリシー ベース トラフィック セレクターを有効にします**。
 4. 接続が既に作成されている場合、既存の接続に対してポリシーを適用または更新することができます。
 
 ## <a name="before-you-begin"></a>開始する前に

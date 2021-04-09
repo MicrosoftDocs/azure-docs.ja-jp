@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: b922c25561843d140f1e2b8221f62fad89ea00c8
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 5cc1025528959f8c81aa80703e3fc26d59c5266f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520899"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102618102"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Azure Machine Learning で非公開の Python パッケージを使用する
 
@@ -52,11 +52,11 @@ myenv.python.conda_dependencies=conda_dep
 
 ## <a name="use-a-repository-of-packages-from-azure-devops-feed"></a>Azure DevOps フィードからパッケージのリポジトリを使用する
 
-機械学習アプリケーションの Python パッケージを積極的に開発している場合は、それらを Azure DevOps リポジトリで成果物としてホストし、フィードとして公開することができます。 この方法により、パッケージをビルドするための DevOps ワークフローを Azure Machine Learning ワークスペースに統合することができます。 Azure DevOps を使用して Python フィードを設定する方法については、[Azure Artifacts で Python パッケージの使用を開始する](/azure/devops/artifacts/quickstarts/python-packages?preserve-view=true&view=azure-devops)方法に関する記事をお読みください。
+機械学習アプリケーションの Python パッケージを積極的に開発している場合は、それらを Azure DevOps リポジトリで成果物としてホストし、フィードとして公開することができます。 この方法により、パッケージをビルドするための DevOps ワークフローを Azure Machine Learning ワークスペースに統合することができます。 Azure DevOps を使用して Python フィードを設定する方法については、[Azure Artifacts で Python パッケージの使用を開始する](/azure/devops/artifacts/quickstarts/python-packages)方法に関する記事をお読みください。
 
 この方法では、個人用アクセス トークンを使用してリポジトリに対する認証を行います。 プライベート GitHub リポジトリなど、トークン ベースの認証を使用する他のリポジトリにも同じアプローチが適用できます。 
 
- 1. Azure DevOps インスタンスの[個人用アクセス トークン (PAT) を作成します](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?preserve-view=true&tabs=preview-page&view=azure-devops#create-a-pat)。 トークンのスコープを __[Packaging]\(パッケージ\) > [Read]\(読み取り\)__ に設定します。 
+ 1. Azure DevOps インスタンスの[個人用アクセス トークン (PAT) を作成します](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?tabs=preview-page#create-a-pat)。 トークンのスコープを __[Packaging]\(パッケージ\) > [Read]\(読み取り\)__ に設定します。 
 
  2. [Workspace.set_connection](/python/api/azureml-core/azureml.core.workspace.workspace#set-connection-name--category--target--authtype--value-) メソッドを使用して、Azure DevOps URL と PAT をワークスペースのプロパティとして追加します。
 

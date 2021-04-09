@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/04/2019
 ms.openlocfilehash: ad6fd62178ec8e987e1e3b6e05cc961bbe15e377
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91541963"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの geographyV2 作成済みエンティティ
@@ -68,7 +68,7 @@ ms.locfileid: "91541963"
 }
 ```
 
-上記の JSON で、`poi` は**目的地 (Point of Interest)** の略です。
+上記の JSON で、`poi` は **目的地 (Point of Interest)** の略です。
 
 #### <a name="v3-verbose-response"></a>[V3 の詳細な応答](#tab/V3-verbose)
 

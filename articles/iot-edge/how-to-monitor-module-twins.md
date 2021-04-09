@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d968fb066e68fe1bb6986c63ce750c5de5c98cf9
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 0b7013979199eefa873a651d99e87dc8b2c47856
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633180"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103201600"
 ---
 # <a name="monitor-module-twins"></a>モジュール ツインの監視
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Hub のモジュール ツインを利用すると、IoT Edge デプロイの接続性と正常性の監視が可能になります。 モジュール ツインでは、実行中のモジュールのパフォーマンスに関する有益な情報が、IoT ハブに格納されます。 [IoT Edge エージェント](iot-edge-runtime.md#iot-edge-agent)および [IoT Edge ハブ](iot-edge-runtime.md#iot-edge-hub)の各ランタイム モジュールでは、モジュール ツインである `$edgeAgent` と `$edgeHub` が保持されています。
 

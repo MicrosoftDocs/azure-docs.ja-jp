@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.custom: seodec18
 ms.openlocfilehash: cce374e7d7ffb513bed882b048ea54bcbad81b0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88719361"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Batch のユーザー アカウントでタスクを実行する
@@ -267,7 +267,7 @@ batch_client.pool.add(pool)
 
 ### <a name="run-a-task-under-a-named-user-account-with-elevated-access"></a>特権アクセスによって、名前付きユーザー アカウントでタスクを実行する
 
-昇格されたユーザーとしてタスクを実行するには、`Admin` に設定された **ElevationLevel** プロパティで作成された名前付きユーザー アカウントに、タスクの**UserIdentity** プロパティを設定します。
+昇格されたユーザーとしてタスクを実行するには、`Admin` に設定された **ElevationLevel** プロパティで作成された名前付きユーザー アカウントに、タスクの **UserIdentity** プロパティを設定します。
 
 このコード スニペットでは、タスクを名前付きユーザー アカウントで実行する必要があることを指定します。 この名前付きユーザー アカウントは、プールの作成時にプールで定義されました。 このケースでは、名前付きユーザー アカウントは管理者アクセス許可で作成されています。
 

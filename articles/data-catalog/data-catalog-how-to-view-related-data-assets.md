@@ -6,14 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: fb5352b4cc84801296d9e621053672328b02692a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c1c5ddcacfc529f8fc4ab9a70cea540c44da9fa6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017272"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674786"
 ---
 # <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>Azure Data Catalog で関連するデータ資産を表示する方法を説明します。
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 Azure Data Catalog を使用すると、選択したデータ資産に関連するデータ資産を表示し、それらの関係を表示できます。 
 
 ## <a name="supported-data-sources"></a>サポートされるデータ ソース 
@@ -28,7 +31,7 @@ Azure Data Catalog を使用すると、選択したデータ資産に関連す�
 > Data Catalog で 2 つのデータ資産間のリレーションシップをインポートするには、これらの資産を同時に登録する必要があります。 これらのいずれかを個別に追加している場合は、再度これともう一方のデータ資産を追加して、それらの間のリレーションシップをインポートします。
 
 ## <a name="view-related-data-assets"></a>関連するデータ資産の表示
-選択したデータ セットに関連するデータ資産を表示するには、次の図に示すように、 **[リレーションシップ]** タブを使用します。 
+選択したデータ セットに関連するデータ資産を表示するには、次の図に示すように、**[リレーションシップ]** タブを使用します。 
 
 ![Azure Data Catalog - 関連するデータ資産の表示](media/data-catalog-how-to-view-related-data-assets/relationships-tab.png)
 

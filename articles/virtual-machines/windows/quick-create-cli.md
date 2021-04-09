@@ -2,18 +2,19 @@
 title: クイック スタート - Azure CLI を使用して Windows VM を作成する
 description: このクイックスタートでは、Azure CLI を使用して Windows 仮想マシンを作成する方法について説明します
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: bcfbcc4f78e14edc40abccf4a697b00bc7a3f014
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 769b42133fb894c916ecaa3c42dd7de85206c765
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87496187"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102556249"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>クイック スタート:Azure CLI で Windows 仮想マシンを作成する
 

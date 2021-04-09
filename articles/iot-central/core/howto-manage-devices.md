@@ -10,10 +10,10 @@ services: iot-central
 manager: peterpr
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: 2f0b6feea5e586c87191b22f42e3ab86e85ba7b3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97032526"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイスを管理する

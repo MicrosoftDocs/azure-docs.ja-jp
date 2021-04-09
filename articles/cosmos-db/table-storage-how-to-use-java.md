@@ -10,10 +10,10 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.custom: devx-track-java
 ms.openlocfilehash: a5da5e1717f897d2236fd73f0fff525e157f7a0e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97093691"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Java から Azure Table Storage または Azure Cosmos DB Table API を使用する方法

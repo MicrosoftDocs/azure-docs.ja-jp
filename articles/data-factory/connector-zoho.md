@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: jingwang
 ms.openlocfilehash: e42638d484d2a71052c3a9410f73cbca9e038682
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100366893"
 ---
 # <a name="copy-data-from-zoho-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Zoho からデータをコピーする (プレビュー)
@@ -53,7 +53,7 @@ Zoho のリンクされたサービスでは、次のプロパティがサポー
 | endpoint | Zoho サーバーのエンドポイント (`crm.zoho.com/crm/private`)。 | はい |
 | authenticationType | 使用できる値は `OAuth_2.0` と `Access Token` です。 | はい |
 | clientId | Zoho アプリケーションに関連付けられているクライアント ID。 | はい (OAuth 2.0 認証の場合) | 
-| clientSecrect | Zoho アプリケーションに関連付けられているクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい (OAuth 2.0 認証の場合) | 
+| clientSecrect | Zoho アプリケーションに関連付けられているクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | OAuth 2.0 認証の場合、はい | 
 | refreshToken | Zoho アプリケーションに関連付けられている OAuth 2.0 更新トークン。アクセス トークンの有効期限切れ時にその更新のために使用されます。 更新トークンは期限切れになりません。 更新トークンを取得するには、`offline` access_type を要求する必要があります。詳細については、[こちら記事](https://www.zoho.com/crm/developer/docs/api/auth-request.html)を参照してください。 <br>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。| はい (OAuth 2.0 認証の場合) |
 | accessToken | Zoho 認証のアクセス トークン。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は、true です。  | いいえ |

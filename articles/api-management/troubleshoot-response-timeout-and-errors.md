@@ -7,10 +7,10 @@ ms.date: 12/04/2020
 ms.author: apimpm
 ms.service: api-management
 ms.openlocfilehash: 6cace4a02c8d45cacbbc34e9778b5c4a78ada27f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100576528"
 ---
 # <a name="troubleshooting-client-response-timeouts-and-errors-with-api-management"></a>API Management でのクライアント応答のタイムアウトとエラーのトラブルシューティング

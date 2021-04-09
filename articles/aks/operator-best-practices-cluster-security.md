@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) でクラスターのセキュリテ
 services: container-service
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: ad1f14fc92433e8d9cb31de165645e4a5731f01a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a56cf35fe3780aa53b12581358bd91fe44e8c8a1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019468"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585062"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのクラスターのセキュリティとアップグレードに関するベスト プラクティス
 
@@ -94,7 +94,7 @@ metadata:
 spec:
   containers:
   - name: hello
-    image: busybox
+    image: mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
     command: [ "sh", "-c", "echo 'Hello AppArmor!' && sleep 1h" ]
 ```
 
@@ -104,13 +104,14 @@ spec:
 kubectl apply -f aks-apparmor.yaml
 ```
 
-ポッドが展開されたら、[kubectl exec][kubectl-exec] コマンドを使用してファイルに書き込みます。 次の出力例に示すように、このコマンドは実行できません。
+ポッドを展開した状態で、*hello-apparmor* ポッドが "*ブロック済み*" と表示されていることを確認します。
 
 ```
-$ kubectl exec hello-apparmor touch /tmp/test
+$ kubectl get pods
 
-touch: /tmp/test: Permission denied
-command terminated with exit code 1
+NAME             READY   STATUS    RESTARTS   AGE
+aks-ssh          1/1     Running   0          4m2s
+hello-apparmor   0/1     Blocked   0          50s
 ```
 
 AppArmor の詳細については、[Kubernetes の AppArmor プロファイル][k8s-apparmor]に関する記事を参照してください。
@@ -145,7 +146,7 @@ metadata:
 spec:
   containers:
   - name: chmod
-    image: busybox
+    image: mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
     command:
       - "chmod"
     args:

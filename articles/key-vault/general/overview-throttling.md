@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5b60f290f6d3ca184e25edd2984ad5b2d1ff2bdf
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7bdc3ac517df6b73fba7231cfe0fdc9855803782
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289684"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175755"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault のスロットル ガイダンス
 
@@ -24,7 +24,7 @@ ms.locfileid: "93289684"
 
 ## <a name="how-does-key-vault-handle-its-limits"></a>Key Vault における制限の扱い
 
-Key Vault のサービス制限は、リソースの乱用を防ぎ、Key Vault の全クライアントのサービス品質を確保します。 サービスのしきい値を超えた場合、Key Vault によってそのクライアントからの要求が一定期間制限され、HTTP 状態コード 429 (要求が多すぎます) が返され、要求は失敗します。 429 が返されて失敗した要求は、Key Vault によって追跡されているスロットル制限に加算されます。 
+Key Vault のサービス制限は、リソースの乱用を防ぎ、Key Vault の全クライアントのサービス品質を確保します。 サービスのしきい値を超えた場合、Key Vault によってそのクライアントからの要求が一定期間制限され、HTTP 状態コード 429 (要求が多すぎます) が返され、要求は失敗します。 429 が返されて失敗した要求は、Key Vault によって追跡されているスロットル制限に加算されません。 
 
 Key Vault は本来、デプロイ時にシークレットを格納および取得するために使用するように設計されました。  世界が進化し、実行時にシークレットを格納および取得するために Key Vault が使用されています。そして多くの場合、アプリやサービスは Key Vault をデータベースのように使用することを希望しています。  現在の制限は、高いスループット率をサポートしていません。
 
@@ -47,8 +47,8 @@ Key Vault は、最初は [Azure Key Vault サービスの制限](service-limits
 
 追加の容量が承認された場合は、容量が増加したため、次の点に注意してください。
 1. データ整合性モデルが変更になります。 追加のスループット容量でコンテナーが許可されると、Key Vault サービスのデータの整合性が保証されます (基になる Azure Storage サービスが維持できなくなるため、より高い量の RPS を満たすために必要です)。  簡単に言うと、
-  1. **許可リストを使用しない場合** :Key Vault サービスは、書き込み操作 (例えば、 SecretSet、CreateKey) の結果を、それに続く呼び出しに即座に反映させます。(呼び出しとは例えば、 SecretGet、KeySign です)。
-  1. **許可リストを使用する場合** :Key Vault サービスは、書き込み操作 (例えば、 SecretSet、CreateKey) の結果を、それに続く呼び出しに 60 秒以内に反映させます。(呼び出しとは例えば、 SecretGet、KeySign です)。
+  1. **許可リストを使用しない場合**:Key Vault サービスは、書き込み操作 (例えば、 SecretSet、CreateKey) の結果を、それに続く呼び出しに即座に反映させます。(呼び出しとは例えば、 SecretGet、KeySign です)。
+  1. **許可リストを使用する場合**:Key Vault サービスは、書き込み操作 (例えば、 SecretSet、CreateKey) の結果を、それに続く呼び出しに 60 秒以内に反映させます。(呼び出しとは例えば、 SecretGet、KeySign です)。
 1. クライアント コードは 429 に対する再試行に関して、バックオフ ポリシーを遵守する必要があります。 429 応答コードを受信したときには、Key Vault サービスを呼び出すクライアント コードは Key Vault 要求をすぐに再試行することはできません。  ここで公開されている Azure Key Vault スロットル ガイダンスでは、429 HTTP 応答コードを受け取った場合にエクスポネンシャル バックオフを適用することをお勧めしています。
 
 業務上の正当な理由でスロットル制限の引き上げを希望される場合は、Microsoft にお問い合わせください。

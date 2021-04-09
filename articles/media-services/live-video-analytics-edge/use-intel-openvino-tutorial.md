@@ -4,12 +4,12 @@ description: このチュートリアルでは、Intel が提供する AI モデ
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: db018c5c8d8f3990fd465f4d586ef4dc70980542
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 68b5b7561cc31e156a745bcfb07e3203de10d425
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955718"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702217"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>チュートリアル:Intel の AI 拡張機能 OpenVINO™ モデル サーバーを使用してライブ ビデオを分析する 
 
@@ -88,11 +88,11 @@ Intel® のディストリビューション [OpenVINO™ ツールキット](ht
 
 1. *src/cloud-to-device-console-app* フォルダーに移動します。 ここには、*appsettings.json* ファイルと、他にいくつかのファイルがあります。
 
-    * ***c2d-console-app.csproj** - Visual Studio Code のプロジェクト ファイルです。
-    _ ***operations.json** _ - プログラムで実行する操作のリストです。
-    _ ***Program.cs** _ - サンプル プログラム コードです。 このコードによって以下が行われます。
+    * ***c2d-console-app.csproj*** - Visual Studio Code のプロジェクト ファイルです。
+    * ***operations.json*** - プログラムで実行する操作のリストです。
+    * ***Program.cs*** - サンプル プログラム コードです。 このコードによって以下が行われます。
 
-        _ アプリ設定を読み込みます。
+        * アプリ設定を読み込みます。
         * Live Video Analytics on IoT Edge モジュールによって公開されているダイレクト メソッドを呼び出します。 このモジュールを使用し、その[ダイレクト メソッド](direct-methods.md)を呼び出すことで、ライブ ビデオ ストリームを分析できます。
         * プログラムの出力を **[ターミナル]** ウィンドウで調べたり、モジュールによって生成されたイベントを **[出力]** ウィンドウで調べたりできるように、一時停止します。
         * ダイレクト メソッドを呼び出して、リソースをクリーンアップします。
@@ -117,7 +117,7 @@ Intel® のディストリビューション [OpenVINO™ ツールキット](ht
 
     ![IoT Edge 配置マニフェストの生成](./media/use-intel-openvino-tutorial/generate-deployment-manifest.png)  
 
-    *deployment.yolov3.amd64.json* マニフェスト ファイルが *src/edge/config* フォルダーに作成されます。
+    *deployment.openvino.amd64.json* マニフェスト ファイルが *src/edge/config* フォルダーに作成されます。
 
 1. クイックスタート「[モーションの検出とイベントの生成](detect-motion-emit-events-quickstart.md)」を完了している場合は、この手順をスキップしてください。 
 

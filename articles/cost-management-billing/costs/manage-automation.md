@@ -3,17 +3,17 @@ title: 自動化を使用した Azure コストの管理
 description: この記事では、自動化を使用して Azure コストを管理する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 01/06/2021
+ms.date: 03/08/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 02215bace693ac5ac36f9fc29758215d45b23eb1
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: f5cebffeaba1ce198be347758004068e8c03133b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051787"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499681"
 ---
 # <a name="manage-costs-with-automation"></a>自動化を使用したコストの管理
 
@@ -46,6 +46,8 @@ Power BI は、大量のデータの取り込みと処理に使用されます�
 ## <a name="automate-retrieval-with-usage-details-api"></a>Usage Details API を使用して取得を自動化する
 
 [Usage Details API](/rest/api/consumption/usageDetails) を使用すると、Azure の請求書に対応する未加工の集計されていないコスト データを簡単に取得できます。 この API は、組織がプログラムによるデータの取得ソリューションを必要とする場合に役立ちます。 小さいコスト データ セットを分析する場合は、この API の使用をご検討ください。 ただし、データ セットが大きい場合は、前述の他のソリューションを使用する必要があります。 Usage Details の詳細データは、1 日あたりの測定ごとに提供されます。 これは、毎月の請求額の計算に使用されます。 この API の一般提供 (GA) バージョンは、`2019-10-01` です。 API を使用して、予約および Azure Marketplace での購入のためにプレビュー バージョンにアクセスするには、`2019-04-01-preview` を使用してください。
+
+エクスポートされたデータを大量かつ定期的に取得する場合には、「[エクスポートを使用してサイズの大きなコスト データセットを繰り返し取得する](ingest-azure-usage-at-scale.md)」を参照してください。
 
 ### <a name="usage-details-api-suggestions"></a>Usage Details API に関する推奨事項
 
@@ -101,81 +103,19 @@ GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDe
 GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?metric=AmortizedCost&$filter=properties/usageStart+ge+'2019-04-01'+AND+properties/usageEnd+le+'2019-04-30'&api-version=2019-04-01-preview
 ```
 
-## <a name="retrieve-large-cost-datasets-recurringly-with-exports"></a>エクスポートを使用して大規模なコスト データ セットを繰り返し取得する
-
-Cost Management からエクスポートを使用して、大量のデータを定期的にエクスポートできます。 エクスポートは、未集計のコスト データを取得する際に推奨される方法です。 特に、使用状況ファイルが大きすぎるために、Usage Details API を使用して確実に呼び出したりダウンロードしたりできない場合に推奨されます。 エクスポートされたデータは、自分が選択した Azure Storage アカウントに配置されます。 そこから、お使いのシステムにそれを読み込み、必要に応じて分析できます。 Azure portal でエクスポートを構成するには、[データのエクスポート](tutorial-export-acm-data.md)に関するページを参照してください。
-
-さまざまなスコープでエクスポートを自動化する場合は、次のセクションのサンプル API 要求が出発点として適しています。 Exports API を使用して、一般的な環境構成の一部として自動エクスポートを作成できます。 自動エクスポートは、必要なデータを確実に入手するのに役立ちます。 Azure の使用の拡大に伴って、ご自分の組織のシステムで使用できます。
-
-### <a name="common-export-configurations"></a>一般的なエクスポート構成
-
-最初のエクスポートを作成する前に、実際のシナリオと、それを実現するために必要な構成オプションを検討します。 次のエクスポート オプションを検討してください。
-
-- **繰り返し** - エクスポート ジョブを実行する頻度と、自分の Azure Storage アカウントにファイルを配置するタイミングを決定します。 Daily、Weekly、Monthly から選択します。 自分の組織の内部システムで使用されているデータ インポート ジョブに合わせて繰り返しを構成してみてください。
-- **繰り返し期間** - エクスポートの有効期間を決定します。 ファイルは、繰り返し期間中にのみエクスポートされます。
-- **期間** - 特定の実行時にエクスポートによって生成されるデータの量を決定します。 一般的なオプションは、MonthToDate と WeekToDate です。
-- **開始日** - エクスポート スケジュールをいつ開始するかを構成します。 エクスポートは開始日に作成され、その後は繰り返しに基づいて作成されます。
-- **種類** - エクスポートには 3 つの種類があります。
-  - ActualCost - 指定された期間の合計使用量とコストを示します。これらが計上され、お客様の請求書に表示されます。
-  - AmortizedCost - 該当する予約購入コストに償却を適用して、指定された期間の合計使用量とコストを示します。
-  - Usage - 2020 年 7 月 20 日より前に作成されたエクスポートは、いずれも種類が Usage になります。 スケジュールされたすべてのエクスポートを、ActualCost または AmortizedCost として更新します。
-- **列** - エクスポート ファイルに含めるデータ フィールドを定義します。 これらは、Usage Details API で使用できるフィールドに対応しています。 詳細については、[Usage Details API](/rest/api/consumption/usagedetails/list) に関する記事をご覧ください。
-
-### <a name="create-a-daily-month-to-date-export-for-a-subscription"></a>サブスクリプションに対して月度累計の日単位のエクスポートを作成する
-
-要求 URL: `PUT https://management.azure.com/{scope}/providers/Microsoft.CostManagement/exports/{exportName}?api-version=2020-06-01`
-
-```json
-{
-  "properties": {
-    "schedule": {
-      "status": "Active",
-      "recurrence": "Daily",
-      "recurrencePeriod": {
-        "from": "2020-06-01T00:00:00Z",
-        "to": "2020-10-31T00:00:00Z"
-      }
-    },
-    "format": "Csv",
-    "deliveryInfo": {
-      "destination": {
-        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Storage/storageAccounts/{yourStorageAccount} ",
-        "container": "{yourContainer}",
-        "rootFolderPath": "{yourDirectory}"
-      }
-    },
-    "definition": {
-      "type": "ActualCost",
-      "timeframe": "MonthToDate",
-      "dataSet": {
-        "granularity": "Daily",
-        "configuration": {
-          "columns": [
-            "Date",
-            "MeterId",
-            "ResourceId",
-            "ResourceLocation",
-            "Quantity"
-          ]
-        }
-      }
-    }
-}
-```
-
-### <a name="automate-alerts-and-actions-with-budgets"></a>予算を使用してアラートとアクションを自動化する
+## <a name="automate-alerts-and-actions-with-budgets"></a>予算を使用してアラートとアクションを自動化する
 
 クラウドへの投資の価値を最大化するための重要な要素が 2 つあります。 1 つは予算の自動作成です。 もう 1 つは、予算アラートに対応するコストベースのオーケストレーションの構成です。 Azure の予算作成を自動化するには、さまざまな方法があります。 構成済みのアラートのしきい値を超えると、さまざまなアラート応答が発生します。
 
 以下のセクションでは、使用可能なオプションについて説明し、予算の自動化を開始するためのサンプル API 要求を示します。
 
-#### <a name="how-costs-are-evaluated-against-your-budget-threshold"></a>予算しきい値に対してコストが評価されるしくみ
+### <a name="how-costs-are-evaluated-against-your-budget-threshold"></a>予算しきい値に対してコストが評価されるしくみ
 
 コストは、1 日に 1 回、予算しきい値に対して評価されます。 新しい予算を作成したとき、または予算のリセット日には、評価が行われていない可能性があるため、しきい値と比較したコストはゼロまたは null になります。
 
 コストがしきい値を超えたことが Azure によって検出されると、検出後 1 時間以内に通知がトリガーされます。
 
-#### <a name="view-your-current-cost"></a>現在のコストを表示する
+### <a name="view-your-current-cost"></a>現在のコストを表示する
 
 現在のコストを表示するには、[Query API](/rest/api/cost-management/query) を使用して GET 呼び出しを行う必要があります。
 
@@ -185,7 +125,7 @@ Budgets API への GET 呼び出しでは、コスト分析で示される現在
 
 [Budgets API](/rest/api/consumption/budgets) を使用して、予算の作成を自動化できます。 [予算テンプレート](quick-create-budget-template.md)を使用して予算を作成することもできます。 テンプレートを使用すると、コスト管理を適切に構成し、確実に適用して、Azure デプロイを簡単に標準化できます。
 
-#### <a name="supported-locales-for-budget-alert-emails"></a>予算のアラート メールでサポートされているロケール
+### <a name="supported-locales-for-budget-alert-emails"></a>予算のアラート メールでサポートされているロケール
 
 予算については、コストが設定されたしきい値を超えた場合にアラートを受け取ります。 1 つの予算につき最大 5 つの電子メール受信者を設定できます。 受信者は、予算しきい値を超過してから 24 時間以内に電子メール アラートを受信します。 ただし、受信者は別の言語で電子メールを受信する必要がある場合があります。 次の言語カルチャ コードを、Budgets API で使用できます。 次の例のような `locale` パラメーターを使用して、カルチャ コードを設定します。
 
@@ -249,7 +189,7 @@ Budgets API への GET 呼び出しでは、コスト分析で示される現在
 | pt-pt | ポルトガル語 (ポルトガル) |
 | sv-se | スウェーデン語 (スウェーデン) |
 
-#### <a name="common-budgets-api-configurations"></a>Budgets API の一般的な構成
+### <a name="common-budgets-api-configurations"></a>Budgets API の一般的な構成
 
 Azure 環境で予算を構成する方法は多数あります。 まず、実際のシナリオを検討してから、それを実現する構成オプションを特定します。 次のオプションを確認します。
 

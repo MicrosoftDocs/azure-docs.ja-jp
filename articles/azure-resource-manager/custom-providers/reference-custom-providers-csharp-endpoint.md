@@ -7,10 +7,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 01/14/2021
 ms.openlocfilehash: 3b951cd0878bda4a3f65f9208f6997419a10d537
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98200262"
 ---
 # <a name="custom-provider-c-restful-endpoint-reference"></a>カスタム プロバイダーの C# RESTful エンドポイント リファレンス

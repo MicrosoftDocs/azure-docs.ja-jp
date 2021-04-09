@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8b1c4077c036cbb75738115437d29ffd14b160ff
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c898444659c2ce071163e9ab774a4534f8c51a9c
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723675"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102632052"
 ---
 # <a name="entity-functions"></a>エンティティ関数
 
@@ -18,7 +18,7 @@ ms.locfileid: "101723675"
 エンティティは、それぞれが適度なサイズの状態を備えた多数のエンティティ全体に作業を分散することにより、アプリケーションをスケールアウトする手段を提供します。
 
 > [!NOTE]
-> エンティティ関数と関連する機能は Durable Functions 2.0 以降でのみ使用できます。 現在、.NET と JavaScript でサポートされています。
+> エンティティ関数と関連する機能は [Durable Functions 2.0](durable-functions-versions.md#migrate-from-1x-to-2x) 以降でのみ使用できます。 現在、.NET、JavaScript、Python でサポートされています。
 
 ## <a name="general-concepts"></a>一般的な概念
 
@@ -189,7 +189,6 @@ def entity_function(context: df.DurableEntityContext):
     elif operation == "get":
         context.set_result(current_value)
     context.set_state(current_value)
-
 
 
 main = df.Entity.create(entity_function)

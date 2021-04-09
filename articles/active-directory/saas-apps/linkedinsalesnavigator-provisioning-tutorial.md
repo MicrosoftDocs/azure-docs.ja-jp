@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.openlocfilehash: 458b527194c1123e266bd6abedf25de18e0cee09
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94359359"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>チュートリアル:LinkedIn Sales Navigator を構成し、自動ユーザー プロビジョニングに対応させる
@@ -82,7 +82,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 6. ページを離れる前に、クリップボードまたはコンピューターにアクセス トークンを保存します。
 
-7. 次に、 [Azure Portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory] > [エンタープライズ アプリ] > [すべてのアプリケーション]** セクションに移動します。
+7. 次に、[Azure Portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory] > [エンタープライズ アプリ] > [すべてのアプリケーション]** セクションに移動します。
 
 8. シングル サインオンのために LinkedIn Sales Navigator を既に構成している場合は、検索フィールドで LinkedIn Sales Navigator のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **LinkedIn Sales Navigator** を検索します。 検索結果から LinkedIn Sales Navigator を選択してアプリケーションの一覧に追加します。
 

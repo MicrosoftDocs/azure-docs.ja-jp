@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/10/2019
-ms.openlocfilehash: 73598c7f5733dd65222770b80e79e2cf6ec27fbf
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a3589aff65b24563cf21f175ccfc3a706891d699
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032009"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954005"
 ---
 # <a name="azure-monitor-service-limits"></a>Azure Monitor サービスの制限
 
@@ -47,5 +47,5 @@ ms.locfileid: "102032009"
 ## <a name="next-steps"></a>次の手順
 
 - [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)
-- [Azure Monitor での使用量と推定コストの監視](/usage-estimated-costs.md)
+- [Azure Monitor での使用量と推定コストの監視](/azure/azure-monitor/usage-estimated-costs)
 - [Application Insights の使用量とコストを管理する](app/pricing.md)

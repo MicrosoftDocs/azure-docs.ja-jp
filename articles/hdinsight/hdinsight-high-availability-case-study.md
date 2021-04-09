@@ -6,10 +6,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
 ms.openlocfilehash: 6b995e2ab5ba663f6e33b009062859eb32928cc1
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99508593"
 ---
 # <a name="azure-hdinsight-highly-available-solution-architecture-case-study"></a>Azure HDInsight の高可用性ソリューション アーキテクチャのケース スタディ
@@ -71,7 +71,7 @@ Azure Pipelines に統合されたバージョン管理システムは、Azure �
 
 **Hive と Spark** では、平常時は [アクティブ プライマリ/オンデマンド セカンダリ](hdinsight-business-continuity-architecture.md#apache-spark) レプリケーション モデルが使用されます。 Hive レプリケーション プロセスが定期的に実行され、Hive Azure SQL メタストアと Hive ストレージ アカウントのレプリケーションが同時に実行されます。 ADF DistCP を使用して、Spark ストレージ アカウントが定期的にレプリケートされます。 これらのクラスターの一時的な性質は、コストを最適化するのに役立ちます。 RPO に到達するためにレプリケーションは 4 時間ごとにスケジュールされ、5 時間という要件に十分対応します。
 
-**HBase** レプリケーションでは、平常時は[リーダー/フォロワー](hdinsight-business-continuity-architecture.md#apache-hbase) モデルを使用して、リージョンに関係なくデータが常に確実に提供され、RPO が非常に低くなります。
+**HBase** レプリケーションでは、平常時は [リーダー/フォロワー](hdinsight-business-continuity-architecture.md#apache-hbase) モデルを使用して、リージョンに関係なくデータが常に確実に提供され、RPO が非常に低くなります。
 
 プライマリ リージョンでリージョン障害が発生した場合、ある程度古くなった 5 時間前の Web ページとバックエンドのコンテンツがセカンダリ リージョンから提供されます。 Azure サービス正常性ダッシュボードに、5 時間のリカバリ ETA が示されない場合、Contoso Retail では、セカンダリ リージョンに Hive および Spark 変換レイヤーを作成した後、すべてのアップストリーム データ ソースをセカンダリ リージョンに向けます。 セカンダリ リージョンを書き込み可能にすると、プライマリへのレプリケーションを伴うフェールバック プロセスが発生します。
 

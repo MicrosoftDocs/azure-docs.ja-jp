@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 6811a06eb3483fd53b6e566033935c3b2e00ceca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84887244"
 ---
 # <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Microsoft Azure CDN のリアルタイム アラート
@@ -53,17 +53,17 @@ ms.locfileid: "84887244"
     新しいアラートを作成するためのフォームが表示されます。
    
     ![[新しい警告] フォーム](./media/cdn-real-time-alerts/cdn-new-alert.png)
-5. **[保存]** をクリックしたときにこのアラートをアクティブにする場合は、 **[有効な警告]** チェックボックスをオンします。
+5. **[保存]** をクリックしたときにこのアラートをアクティブにする場合は、**[有効な警告]** チェックボックスをオンします。
 6. **[名前]** フィールドにアラートのわかりやすい名前を入力します。
-7. **[Media Type (メディアの種類)]** ドロップダウンで、 **[HTTP Large Object (HTTP ラージ オブジェクト)]** を選択します。
+7. **[Media Type (メディアの種類)]** ドロップダウンで、**[HTTP Large Object (HTTP ラージ オブジェクト)]** を選択します。
    
     ![[HTTP Large Object (HTTP ラージ オブジェクト] を選択した [Media Type (メディアの種類)]](./media/cdn-real-time-alerts/cdn-http-large.png)
    
    > [!IMPORTANT]
-   > **メディアの種類**として **[HTTP Large Object (HTTP ラージ オブジェクト)]** を選択する必要があります。  **Azure CDN from Verizon**では、他の選択肢は使用しません。  **[HTTP Large Object]\(HTTP ラージ オブジェクト\)** を選択しないと、アラートはトリガーされません。
+   > **メディアの種類** として **[HTTP Large Object (HTTP ラージ オブジェクト)]** を選択する必要があります。  **Azure CDN from Verizon** では、他の選択肢は使用しません。  **[HTTP Large Object]\(HTTP ラージ オブジェクト\)** を選択しないと、アラートはトリガーされません。
    > 
    > 
-8. **[メトリック]** 、 **[演算子]** 、および **[トリガー値]** を選択して、監視する**式**を作成します。
+8. **[メトリック]**、**[演算子]**、および **[トリガー値]** を選択して、監視する **式** を作成します。
    
    * **[メトリック]** では、監視条件の種類を選択します。  **[Bandwidth Mbps (帯域幅 Mbps)]** は、メガビット/秒単位の使用帯域幅の量です。  **[合計接続数]** は、エッジ サーバーへの同時 HTTP 接続の数です。  さまざまなキャッシュ ステータスとステータス コードの定義については、「[Azure CDN Cache Status Codes (Azure CDN のキャッシュ ステータス コード)](/previous-versions/azure/mt759237(v=azure.100))」と「[Azure CDN HTTP Status Codes (Azure CDN の HTTP ステータス コード)](/previous-versions/azure/mt759238(v=azure.100))」を参照してください
    * **[演算子]** は、メトリックとトリガー値の間のリレーションシップを確立する算術演算子です。
@@ -83,7 +83,7 @@ ms.locfileid: "84887244"
     
     ![[Notify by Email (電子メールで通知)] フォーム](./media/cdn-real-time-alerts/cdn-notify-email.png)
     
-    **[To (宛先)]** フィールドに、通知の送信先とする電子メール アドレスを入力します。 **[件名]** と **[本文]** は、既定のままにすることも、 **[Available keywords (使用可能なキーワード)]** ボックスの一覧を使ってメッセージをカスタマイズし、メッセージ送信時にアラート データを動的に挿入することもできます。
+    **[To (宛先)]** フィールドに、通知の送信先とする電子メール アドレスを入力します。 **[件名]** と **[本文]** は、既定のままにすることも、**[Available keywords (使用可能なキーワード)]** ボックスの一覧を使ってメッセージをカスタマイズし、メッセージ送信時にアラート データを動的に挿入することもできます。
     
     > [!NOTE]
     > **[テスト通知]** ボタンをクリックすることで電子メール通知をテストできますが、このテストはアラートの構成を保存した後にのみ実行できます。
@@ -93,7 +93,7 @@ ms.locfileid: "84887244"
     
     ![[Notify by HTTP Post (HTTP Post で通知)] フォーム](./media/cdn-real-time-alerts/cdn-notify-http.png)
     
-    **[URL]** フィールドに、HTTP メッセージをポストする URL を入力します。 **[ヘッダー]** テキストボックスに、要求で送信する HTTP ヘッダーを入力します。  **[本文]** は、 **[Available keywords]\(使用可能なキーワード\)** ボックスの一覧を使ってメッセージをカスタマイズし、メッセージ送信時にアラート データを動的に挿入することができます。  **[ヘッダー]** と **[本文]** は、既定では、以下の例のような XML ペイロードが設定されます。
+    **[URL]** フィールドに、HTTP メッセージをポストする URL を入力します。 **[ヘッダー]** テキストボックスに、要求で送信する HTTP ヘッダーを入力します。  **[本文]** は、**[Available keywords]\(使用可能なキーワード\)** ボックスの一覧を使ってメッセージをカスタマイズし、メッセージ送信時にアラート データを動的に挿入することができます。  **[ヘッダー]** と **[本文]** は、既定では、以下の例のような XML ペイロードが設定されます。
     
     ```
     <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">

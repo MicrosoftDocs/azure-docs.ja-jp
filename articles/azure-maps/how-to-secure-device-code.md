@@ -10,10 +10,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 3833cbfd0802f334e482203d269984eb0e299797
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92895632"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>入力制約付きデバイスを Azure AD と Azure Maps REST API で保護する
@@ -25,7 +25,7 @@ ms.locfileid: "92895632"
 ## <a name="create-an-application-registration-in-azure-ad"></a>Azure AD でアプリケーションの登録を作成する
 
 > [!NOTE]
-> * **前提条件:** 「 [シナリオ:Web API を呼び出すデスクトップ アプリ](../active-directory/develop/scenario-desktop-overview.md)」を読んでおくこと
+> * **前提条件:** 「[シナリオ:Web API を呼び出すデスクトップ アプリ](../active-directory/develop/scenario-desktop-overview.md)」を読んでおくこと
 > * 次のシナリオでは、トークンを取得するために Web ブラウザーを使用しないデバイス コード フローを使用します。
 
 Azure AD でデバイス ベースのアプリケーションを作成して、Azure AD サインインを有効にします。 このアプリケーションには、Azure Maps REST API へのアクセスが許可されます。
@@ -45,7 +45,7 @@ Azure AD でデバイス ベースのアプリケーションを作成して、A
     > [!div class="mx-imgBorder"]
     > ![アプリケーションの登録をパブリック クライアントとして有効にする](./media/azure-maps-authentication/devicecode-public-client.png)
 
-4.  委任された API アクセス許可を Azure Maps に割り当てるには、アプリケーションに移動します。 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。 **[所属する組織で使用している API]** で、「 **Azure Maps** 」を検索して選択します。
+4.  委任された API アクセス許可を Azure Maps に割り当てるには、アプリケーションに移動します。 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。 **[所属する組織で使用している API]** で、「**Azure Maps**」を検索して選択します。
 
     > [!div class="mx-imgBorder"]
     > ![アプリの API アクセス許可を追加する](./media/how-to-manage-authentication/app-permissions.png)

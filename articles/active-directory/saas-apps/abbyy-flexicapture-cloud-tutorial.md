@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 359511e653231ee25f0cd09f32448a0b66b40d3d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97586739"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-abbyy-flexicapture-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ABBYY FlexiCapture Cloud の統合

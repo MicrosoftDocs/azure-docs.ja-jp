@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 9432a3fe2f70ee9f84292c87c12b46671e667ec4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92517805"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trakstar"></a>チュートリアル: Azure Active Directory と Trakstar の統合
@@ -43,7 +43,7 @@ Azure AD と Trakstar の統合を構成するには、次のアイテムが必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Trakstar では、 **SP** Initiated SSO がサポートされます
+* Trakstar では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-trakstar-from-the-gallery"></a>ギャラリーからの Trakstar の追加
 
@@ -63,13 +63,13 @@ Azure AD への Trakstar の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Trakstar** 」と入力し、結果ウィンドウで **[Trakstar]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Trakstar**」と入力し、結果ウィンドウで **[Trakstar]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Trakstar](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Trakstar で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Trakstar で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Trakstar 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Trakstar で Azure AD のシングル サインオンを構成およびテストするには、次の構成要素を完了する必要があります。
@@ -87,7 +87,7 @@ Trakstar で Azure AD のシングル サインオンを構成およびテスト
 
 Trakstar で Azure AD のシングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Trakstar** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Trakstar** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -145,7 +145,7 @@ Trakstar で Azure AD のシングル サインオンを構成するには、次
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -157,7 +157,7 @@ Trakstar で Azure AD のシングル サインオンを構成するには、次
 
 このセクションでは、Britta Simon に Trakstar へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Trakstar]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Trakstar]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

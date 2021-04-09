@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: a7d575b92bff69c13ded70187005ce1db018ea4c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a56e5a4cae7c5a8e931b074f08a7152e53a8eb31
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151988"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674735"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>クイック スタート:Azure データ カタログを作成する
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 Azure Data Catalog は、フル マネージドのクラウド サービスで、エンタープライズ データ資産の登録システムと検出システムとして機能します。 詳細については、「 [Azure Data Catalog とは何ですか](overview.md)」を参照してください。
 
@@ -41,7 +43,7 @@ Data Catalog をセットアップするには、Azure サブスクリプショ�
 
     ![Azure Data Catalog の作成ボタン](media/data-catalog-get-started/data-catalog-create.png)
 
-2. データ カタログの**名前**、使用する**サブスクリプション**、カタログの**場所**、および**価格レベル**を指定します。 **[作成]** を選択します。
+2. データ カタログの **名前**、使用する **サブスクリプション**、カタログの **場所**、および **価格レベル** を指定します。 **[作成]** を選択します。
 
 3. [Azure Data Catalog ホーム ページ](http://azuredatacatalog.com) に移動し、 **[データの発行]** をクリックします。
 
@@ -55,7 +57,7 @@ Data Catalog をセットアップするには、Azure サブスクリプショ�
 
     ![Azure Data Catalog--provision data catalog](media/data-catalog-get-started/data-catalog-create-azure-data-catalog.png)
 
-5. **[価格]** を展開し、Azure Data Catalog の**エディション** (Free または Standard) を確認します。
+5. **[価格]** を展開し、Azure Data Catalog の **エディション** (Free または Standard) を確認します。
 
     ![Azure Data Catalog--エディションの選択](media/data-catalog-get-started/data-catalog-create-catalog-select-edition.png)
 

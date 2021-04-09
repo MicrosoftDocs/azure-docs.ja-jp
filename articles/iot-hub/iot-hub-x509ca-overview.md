@@ -13,10 +13,10 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: System Architecture'
 ms.openlocfilehash: 455f1f3e1c8181646fbe165d0f1aea6a2fb2fb13
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92150698"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>X.509 CA 証明書を使用したデバイス認証
@@ -56,7 +56,7 @@ X.509 CA 証明書の所有者は、中間 CA に暗号で署名できます。�
 
 ![img-generic-cert-chain-of-trust](./media/generic-cert-chain-of-trust.png)
 
-デバイス証明書 (リーフ証明書とも呼ばれる) では、*サブジェクト名*が、Azure IoT Hub で IoT デバイスを登録するときに使用された**デバイス ID** (`CN=deviceId`) に設定されている必要があります。 この設定は認証に必要です。
+デバイス証明書 (リーフ証明書とも呼ばれる) では、*サブジェクト名* が、Azure IoT Hub で IoT デバイスを登録するときに使用された **デバイス ID** (`CN=deviceId`) に設定されている必要があります。 この設定は認証に必要です。
 
 デバイスの署名時に行う証明書チェーンの作成方法については、[ここ](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)を参照してください。
 

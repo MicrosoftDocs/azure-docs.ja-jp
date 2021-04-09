@@ -9,10 +9,10 @@ ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 538d414ce606b944fcea7adbb1c817386e13090e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102178577"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Azure で静的 HTML Web アプリを作成する

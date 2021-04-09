@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: prmitiki
 ms.openlocfilehash: 292c850f5352c80112e3f0bcc5c868f8128819be
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97592315"
 ---
 # <a name="peering-service-partner-walkthrough"></a>Peering Service パートナーのチュートリアル

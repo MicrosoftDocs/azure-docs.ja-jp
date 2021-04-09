@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 7f5a24e4d351d7c133251900a80c70094b84cc4e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98019433"
 ---
 # <a name="debug-user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics のユーザー定義関数をデバッグする 

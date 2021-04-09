@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 1/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 349a77d2f2cd5e1c492de63919d84efb436a51a3
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97673700"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>チュートリアル: Azure Active Directory と Autotask Endpoint Backup の統合
@@ -61,7 +61,7 @@ Azure AD への Autotask Endpoint Backup の統合を構成するには、ギャ
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Autotask Endpoint Backup**」と入力し、結果ウィンドウで **Autotask Endpoint Backup** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Autotask Endpoint Backup**」と入力し、結果ウィンドウで **Autotask Endpoint Backup** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Autotask Endpoint Backup](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ Autotask Endpoint Backup で Azure AD のシングル サインオンを構成�
 
 Autotask Endpoint Backup で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Autotask Endpoint Backup** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Autotask Endpoint Backup** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -155,7 +155,7 @@ Autotask Endpoint Backup で Azure AD シングル サインオンを構成す�
 
 このセクションでは、Autotask Endpoint Backup へのアクセスを許可することで、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Autotask Endpoint Backup]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Autotask Endpoint Backup]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

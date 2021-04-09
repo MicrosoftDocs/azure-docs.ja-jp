@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 0c75d917f1abe72af2f4aa56b0f67dbb7bcd24a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91303558"
 ---
 # <a name="create-a-personalizer-resource"></a>Personalizer リソースを作成する
@@ -24,7 +24,7 @@ Personalizer で Web ページの複数のコンテンツ領域に最適なコ�
 
 フィードバック ループごとに Personalizer リソースを作成します。
 
-1. [Azure ポータル](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)にサインインします。 前のリンクから、Personalizer サービスの**作成**ページに移動できます。
+1. [Azure ポータル](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)にサインインします。 前のリンクから、Personalizer サービスの **作成** ページに移動できます。
 1. サービス名を入力し、サブスクリプション、場所、価格レベル、リソース グループを選択します。
 
     > [!div class="mx-imgBorder"]
@@ -67,9 +67,9 @@ Personalizer で Web ページの複数のコンテンツ領域に最適なコ�
         --yes
     ```
 
-    これにより、**リソース エンドポイント**を含む JSON オブジェクトが返されます。
+    これにより、**リソース エンドポイント** を含む JSON オブジェクトが返されます。
 
-1. 次の Azure CLI コマンドを使用して、**リソース キー**を取得します。
+1. 次の Azure CLI コマンドを使用して、**リソース キー** を取得します。
 
     ```azurecli-interactive
         az cognitiveservices account keys list \

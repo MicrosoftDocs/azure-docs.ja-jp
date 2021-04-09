@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 03/19/2020
 ms.openlocfilehash: f49e05578f55a38845acbd4010f928fb17c51606
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96352271"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>QnA Maker の回答テキストでサポートされるマークダウン形式
@@ -37,8 +37,8 @@ QnA Maker の回答テキストで使用できるマークダウン形式の一�
 |リンクの URL|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![URL (ハイパーリンク) の書式設定](./media/qnamaker-concepts-datasources/format-url.png)|
 |\* 公開画像の URL|`![text](https://www.my.com/image.png)`|`How can I create a bot with ![QnAMaker](https://review.docs.microsoft.com/azure/cognitive-services/qnamaker/media/qnamaker-how-to-key-management/qnamaker-resource-list.png)`|![公開画像の URL の書式設定 ](./media/qnamaker-concepts-datasources/format-image-url.png)|
 |取り消し線|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![取り消し線の書式設定](./media/qnamaker-concepts-datasources/format-strikethrough.png)|
-|太字と斜体|`***text**_`|`How can I create a _*_QnA Maker_*_ bot?`|![太字と斜体の書式設定](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
-|リンクの太字の URL|`[_*text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![太字の URL の書式設定](./media/qnamaker-concepts-datasources/format-bold-url.png)|
+|太字と斜体|`***text**_`|`How can I create a _*_QnA Maker_** bot?`|![太字と斜体の書式設定](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
+|リンクの太字の URL|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![太字の URL の書式設定](./media/qnamaker-concepts-datasources/format-bold-url.png)|
 |リンクの斜体の URL|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![斜体の URL の書式設定](./media/qnamaker-concepts-datasources/format-url-italics.png)|
 |マークダウン記号のエスケープ|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![マークダウン記号のエスケープの形式。](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |番号付きリスト|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>上の例では、マークダウンに組み込まれた自動番号付けを使用しています。<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>上の例では明示的な番号付けを使用しています。|![番号付きリストの書式設定](./media/qnamaker-concepts-datasources/format-ordered-list.png)|

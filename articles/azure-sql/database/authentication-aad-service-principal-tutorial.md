@@ -10,10 +10,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 02/11/2021
 ms.openlocfilehash: 13e049d3e7e0c87bd0a214a92491e10d652a3619
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100380612"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>チュートリアル:Azure AD アプリケーションを使用して Azure AD ユーザーを作成する

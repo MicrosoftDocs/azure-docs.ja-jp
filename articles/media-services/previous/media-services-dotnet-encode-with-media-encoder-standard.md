@@ -3,7 +3,7 @@ title: .NET を使用した Media Encoder Standard での資産のエンコー�
 description: この記事では、.NET を使用して、Media Encoder Standard で資産をエンコードする方法について説明します。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 03431b64-5518-478a-a1c2-1de345999274
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: anilmur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f49b951473db4b331bc42de3fb72829270822d5
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b94ec0b50182381d2a4e1bca09f4c8bc482d13ee
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014380"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103014096"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>.NET を使用した Media Encoder Standard での資産のエンコード
 

@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/25/2018
 ms.openlocfilehash: 1d68163a9fba3ba3bcd4c0c0f3fb5f442296e781
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91619391"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>アイテム保持ポリシーを使用してテンポラル テーブルで履歴データを管理する
@@ -35,7 +35,7 @@ ValidTo < DATEADD (MONTH, -6, SYSUTCDATETIME())
 
 ## <a name="how-to-configure-retention-policy"></a>リテンション ポリシーの構成方法
 
-テンポラル テーブルのリテンション ポリシーを構成する前に、テンポラル履歴のリテンション期間が*データベース レベルで*有効になっているかどうかを確認します。
+テンポラル テーブルのリテンション ポリシーを構成する前に、テンポラル履歴のリテンション期間が *データベース レベルで* 有効になっているかどうかを確認します。
 
 ```sql
 SELECT is_temporal_history_retention_enabled, name
@@ -84,7 +84,7 @@ SET (SYSTEM_VERSIONING = ON (HISTORY_RETENTION_PERIOD = 9 MONTHS));
 ```
 
 > [!IMPORTANT]
-> SYSTEM_VERSIONING をオフに設定したときには、リテンション期間の値は*保持されません*。 HISTORY_RETENTION_PERIOD を明示的に指定せずに SYSTEM_VERSIONING をオンに設定すると、リテンション期間が INFINITE に設定されます。
+> SYSTEM_VERSIONING をオフに設定したときには、リテンション期間の値は *保持されません*。 HISTORY_RETENTION_PERIOD を明示的に指定せずに SYSTEM_VERSIONING をオンに設定すると、リテンション期間が INFINITE に設定されます。
 
 保有期間ポリシーの現在の状態を確認するには、データベース レベルのテンポラル保有期間有効化フラグと個々のテーブルの保有期間を結合する次のクエリを使います。
 
@@ -103,7 +103,7 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 
 ## <a name="how-ages-rows-are-deleted"></a>期限切れの行を削除する方法
 
-クリーンアップ プロセスは、履歴テーブルのインデックスのレイアウトに依存します。 *有限の保持期間ポリシーを構成できるのはクラスター化インデックス (B ツリーまたは列ストア) を使っている履歴テーブルだけである*ことに注意する必要があります。 有限の保有期間を持つすべてのテンポラル テーブルの期限切れデータをクリーンアップするために、バックグラウンド タスクが作成されます。
+クリーンアップ プロセスは、履歴テーブルのインデックスのレイアウトに依存します。 *有限の保持期間ポリシーを構成できるのはクラスター化インデックス (B ツリーまたは列ストア) を使っている履歴テーブルだけである* ことに注意する必要があります。 有限の保有期間を持つすべてのテンポラル テーブルの期限切れデータをクリーンアップするために、バックグラウンド タスクが作成されます。
 行ストア (B ツリー) のクラスター化されたインデックスのクリーンアップ ロジックでは、よりサイズの小さなまとまり (最大 10K) で期限切れの行が削除され、データベース ログや IO サブシステムへの負荷が軽減されます。 クリーンアップ ロジックは必要な B ツリー インデックスを利用しますが、保有期間より古い行の削除の順序は確実には保証できません。 そのため、"*アプリケーションではクリーンアップ順序に依存しないでください*"。
 
 クラスター化された列ストアのクリーンアップ タスクでは[行グループ](/sql/relational-databases/indexes/columnstore-indexes-overview)(通常は、1 グループに 100 万行が含まれます)全体が一度に削除されるため 、特に、履歴データが頻繁に生成されるような場合に効果的です。
@@ -148,7 +148,7 @@ CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
 
 ## <a name="querying-tables-with-retention-policy"></a>リテンション ポリシーを持つテーブルの照会
 
-クリーンアップ タスクでは*任意の時間かつ任意の順序で*期限切れの行を削除できるため、予期しない、一貫性のない結果を避けるために、テンポラル テーブルのクエリではすべて、有限のリテンション ポリシーに一致する履歴列が除外されます。
+クリーンアップ タスクでは *任意の時間かつ任意の順序で* 期限切れの行を削除できるため、予期しない、一貫性のない結果を避けるために、テンポラル テーブルのクエリではすべて、有限のリテンション ポリシーに一致する履歴列が除外されます。
 
 次の図は、シンプルなクエリのクエリ プランを示しています。
 
@@ -168,7 +168,7 @@ SELECT * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME ALL;
 
 ## <a name="point-in-time-restore-considerations"></a>ポイントインタイム リストアの考慮事項
 
-[既存のデータベースを特定の時点に復元](recovery-using-backups.md)して新しいデータベースを作成するときは、データベース レベルのテンポラル リテンション期間が無効になります (**is_temporal_history_retention_enabled** フラグがオフに設定されます)。 この機能では、復元時にすべての履歴列を確認できるため、クエリを実行する前に期限切れの行が削除されることはありません。 この機能を使用すると、*構成された保有期間を超える履歴データを検査*できます。
+[既存のデータベースを特定の時点に復元](recovery-using-backups.md)して新しいデータベースを作成するときは、データベース レベルのテンポラル リテンション期間が無効になります (**is_temporal_history_retention_enabled** フラグがオフに設定されます)。 この機能では、復元時にすべての履歴列を確認できるため、クエリを実行する前に期限切れの行が削除されることはありません。 この機能を使用すると、*構成された保有期間を超える履歴データを検査* できます。
 
 テンポラル テーブルに 1 か月のリテンション期間が指定されているとします。 Premium サービス階層でデータベースが作成されている場合、過去 35 日間までの状態のデータベースのコピーを作成できます。 履歴テーブルにクエリを直接実行することにより、実質的に、最大 65 日間の履歴行を分析できます。
 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.openlocfilehash: 88a1524875f168b49f50f1684c650d5bc178bf38
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94542662"
 ---
 # <a name="restart-azure-database-for-mysql-flexible-server-using-azure-portal"></a>Azure portal を使用して Azure Database for MySQL フレキシブル サーバーを再起動する

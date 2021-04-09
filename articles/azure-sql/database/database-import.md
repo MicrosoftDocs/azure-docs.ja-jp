@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/29/2020
-ms.openlocfilehash: 30a511caec82ead406f0a80f107e4261a707bfdb
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: d59f08fc061bace55a7cd3d774380046055828ae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040171"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102618612"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:Azure SQL Database または Azure SQL Managed Instance 内のデータベースに BACPAC ファイルをインポートする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -35,7 +35,7 @@ SQL Server データベースを Azure SQL Database または SQL Managed Instan
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Its-just-SQL-Restoring-a-database-to-Azure-SQL-DB-from-backup/player?WT.mc_id=dataexposed-c9-niner]
 
-[Azure portal](https://portal.azure.com) では、Azure SQL Database 内の単一データベースの作成 " *だけ* " が、Azure Blob Storage に格納されている BACPAC ファイルから " *のみ* " サポートされています。
+[Azure portal](https://portal.azure.com) では、Azure SQL Database 内の単一データベースの作成 "*だけ*" が、Azure Blob Storage に格納されている BACPAC ファイルから "*のみ*" サポートされています。
 
 BACPAC ファイルから [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) にデータベースを移行するには、SQL Server Management Studio または SQLPackage を使用します。Azure portal または Azure PowerShell の使用は、現在はサポートされていません。
 
@@ -68,7 +68,7 @@ BACPAC ファイルから [Azure SQL Managed Instance](../managed-instance/sql-m
 
 DTU ベースのプロビジョニング モデルでは、レベルごとにデータベースの最大サイズを選択できます。 データベースをインポートする際は、[これらのサポートされている値のいずれか](/sql/t-sql/statements/create-database-transact-sql)を使用してください。 
 
-次の SqlPackage コマンドを実行すると、 **AdventureWorks2008R2** データベースが、ローカル ストレージから **mynewserver20170403** という論理 SQL サーバーにインポートされます。 **Premium** サービス層と **P6** サービス オブジェクトがある **myMigratedDatabase** という新しいデータベースが作成されます。 これらの値は、お使いの環境に合わせて変更してください。
+次の SqlPackage コマンドを実行すると、**AdventureWorks2008R2** データベースが、ローカル ストレージから **mynewserver20170403** という論理 SQL サーバーにインポートされます。 **Premium** サービス層と **P6** サービス オブジェクトがある **myMigratedDatabase** という新しいデータベースが作成されます。 これらの値は、お使いの環境に合わせて変更してください。
 
 ```cmd
 sqlpackage.exe /a:import /tcs:"Data Source=<serverName>.database.windows.net;Initial Catalog=<migratedDatabase>;User Id=<userId>;Password=<password>" /sf:AdventureWorks2008R2.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
@@ -144,6 +144,15 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 > [!TIP]
 > 別のスクリプト例については、「[データベースを BACPAC ファイルからインポートする](scripts/import-from-bacpac-powershell.md)」を参照してください。
+
+## <a name="cancel-the-import-request"></a>インポート要求を取り消す
+
+[データベース操作のキャンセル API](https://docs.microsoft.com/rest/api/sql/databaseoperations/cancel) または PowerShell の [Stop-AzSqlDatabaseActivity コマンド](https://docs.microsoft.com/powershell/module/az.sql/Stop-AzSqlDatabaseActivity)を使用します。ここでは、PowerShell コマンドの例を示します。
+
+```cmd
+Stop-AzSqlDatabaseActivity -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -OperationId $Operation.OperationId
+```
+
 
 ## <a name="limitations"></a>制限事項
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84697845"
 ---
 # <a name="http-api-reference"></a>HTTP API リファレンス
@@ -21,7 +21,7 @@ Durable Functions 拡張機能では、[オーケストレーション](durable-
 | パラメーター        | パラメーターの型  | 説明 |
 |------------------|-----------------|-------------|
 | **`taskHub`**    | クエリ文字列    | [タスク ハブ](durable-functions-task-hubs.md)の名前。 指定しない場合は、現在の関数アプリのタスク ハブの名前が想定されます。 |
-| **`connection`** | クエリ文字列    | ストレージ アカウントの接続文字列の**名前**。 指定しない場合は、関数アプリの既定の接続文字列が想定されます。 |
+| **`connection`** | クエリ文字列    | ストレージ アカウントの接続文字列の **名前**。 指定しない場合は、関数アプリの既定の接続文字列が想定されます。 |
 | **`systemKey`**  | クエリ文字列    | API の呼び出しに必要な承認キー。 |
 
 `systemKey` は、Azure Functions ホストによって自動生成される承認キーです。 このキーにより、Durable Task 拡張機能 API へのアクセスが特別に許可されます。また、このキーは[他の承認キー](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API)と同じ方法で管理できます。 .NET の `CreateCheckStatusResponse` や `CreateHttpManagementPayload` API、または JavaScript の `createCheckStatusResponse` や `createHttpManagementPayload` API などの[オーケストレーション クライアント バインド](durable-functions-bindings.md#orchestration-client) API を使用して、正しい `taskHub`、`connection`、`systemKey` クエリ文字列値を含む URL を生成できます。
@@ -32,7 +32,7 @@ Durable Functions 拡張機能では、[オーケストレーション](durable-
 
 指定されたオーケストレーター関数の新しいインスタンスの実行を開始します。
 
-### <a name="request"></a>Request
+### <a name="request"></a>要求
 
 Functions ランタイム バージョン 1.x の場合、要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
@@ -64,8 +64,8 @@ POST /runtime/webhooks/durabletask/orchestrators/{functionName}/{instanceId?}
 
 返される可能性がある状態コード値は、いくつかあります。
 
-* **HTTP 202 (Accepted)** :指定されたオーケストレーター関数は実行を開始するようにスケジュールされました。 `Location` 応答ヘッダーには、オーケストレーションの状態をポーリングするための URL が含まれています。
-* **HTTP 400 (Bad request)** :指定されたオーケストレーター関数が存在しないか、指定されたインスタンス ID が無効だったか、要求コンテンツが有効な JSON ではありませんでした。
+* **HTTP 202 (Accepted)** : 指定されたオーケストレーター関数は実行を開始するようにスケジュールされました。 `Location` 応答ヘッダーには、オーケストレーションの状態をポーリングするための URL が含まれています。
+* **HTTP 400 (Bad request)** : 指定されたオーケストレーター関数が存在しないか、指定されたインスタンス ID が無効だったか、要求コンテンツが有効な JSON ではありませんでした。
 
 `RestartVMs` オーケストレーター関数を開始し、JSON オブジェクトペイロードを含む要求の例を次に示します。
 
@@ -105,10 +105,10 @@ Content-Length: 83
 }
 ```
 
-HTTP 応答は、*ポーリング コンシューマー パターン*と互換性があるように意図されています。 また、次の重要な応答ヘッダーも含まれています。
+HTTP 応答は、*ポーリング コンシューマー パターン* と互換性があるように意図されています。 また、次の重要な応答ヘッダーも含まれています。
 
-* **[場所]** :状態エンドポイントの URL。 この URL には、`statusQueryGetUri` フィールドと同じ値が含まれます。
-* **Retry-After**:ポーリング操作の間に待機する秒数。 既定値は `10` です。
+* **Location**: 状態エンドポイントの URL。 この URL には、`statusQueryGetUri` フィールドと同じ値が含まれます。
+* **Retry-After**: ポーリング操作の間に待機する秒数。 既定値は `10` です。
 
 非同期 HTTP ポーリング パターンの詳細については、[HTTP 非同期操作の追跡](durable-functions-http-features.md#async-operation-tracking)に関するドキュメントをご覧ください。
 
@@ -116,7 +116,7 @@ HTTP 応答は、*ポーリング コンシューマー パターン*と互換�
 
 指定されたオーケストレーション インスタンスの状態を取得します。
 
-### <a name="request"></a>Request
+### <a name="request"></a>要求
 
 Functions ランタイム バージョン 1.x の場合、要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
@@ -158,11 +158,11 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 
 返される可能性がある状態コード値は、いくつかあります。
 
-* **HTTP 200 (OK)** :指定されたインスタンスが完了状態。
-* **HTTP 202 (Accepted)** :指定されたインスタンスが処理中。
-* **HTTP 400 (Bad Request)** :指定されたインスタンスが失敗したか終了した。
-* **HTTP 404 (Not Found)** :指定されたインスタンスが存在しないか実行開始されていない。
-* **HTTP 500 (Internal Server Error)** :指定されたインスタンスがハンドルされない例外で失敗した。
+* **HTTP 200 (OK)**: 指定されたインスタンスが完了状態。
+* **HTTP 202 (Accepted)**: 指定されたインスタンスが処理中。
+* **HTTP 400 (Bad Request)**: 指定されたインスタンスが失敗したか終了した。
+* **HTTP 404 (Not Found)**: 指定されたインスタンスが存在しないか実行開始されていない。
+* **HTTP 500 (Internal Server Error)**: 指定されたインスタンスがハンドルされない例外で失敗した。
 
 **HTTP 200** と **HTTP 202** の場合の応答ペイロードは、次のフィールドを持つ JSON オブジェクトです。
 
@@ -240,7 +240,7 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 覚えておくべきことの 1 つは、`connection` と `code` が省略可能であることです。 関数に対する匿名認証がある場合、`code` は必要ありません。
 AzureWebJobsStorage アプリ設定で定義されているのとは異なるストレージの接続文字列を使用しない場合は、接続クエリ文字列パラメーターを無視してかまいません。
 
-### <a name="request"></a>Request
+### <a name="request"></a>要求
 
 Functions ランタイム バージョン 1.x の場合、要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
@@ -348,7 +348,7 @@ GET /runtime/webhooks/durableTask/instances?
 
 指定したオーケストレーション インスタンスの履歴および関連する成果物を削除します。
 
-### <a name="request"></a>Request
+### <a name="request"></a>要求
 
 Functions ランタイム バージョン 1.x の場合、要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
@@ -378,8 +378,8 @@ DELETE /runtime/webhooks/durabletask/instances/{instanceId}
 
 以下の HTTP 状態コード値が返される可能性があります。
 
-* **HTTP 200 (OK)** :インスタンス履歴は正常に消去されました。
-* **HTTP 404 (Not Found)** :指定されたインスタンスは存在しません。
+* **HTTP 200 (OK)** : インスタンス履歴は正常に消去されました。
+* **HTTP 404 (Not Found)** : 指定されたインスタンスは存在しません。
 
 **HTTP 200** の場合の応答ペイロードは、次のフィールドを持つ JSON オブジェクトです。
 
@@ -399,7 +399,7 @@ DELETE /runtime/webhooks/durabletask/instances/{instanceId}
 
 '単一インスタンス履歴を消去する' 要求から `{instanceId}` を削除することで、タスク ハブ内の複数インスタンスの履歴および関連する成果物を削除することもできます。 インスタンス履歴を選択して消去するには、'すべてのインスタンス ステータスを取得する' 要求で説明したものと同じフィルターを使用します。
 
-### <a name="request"></a>Request
+### <a name="request"></a>要求
 
 Functions ランタイム バージョン 1.x の場合、要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
@@ -440,8 +440,8 @@ DELETE /runtime/webhooks/durabletask/instances
 
 以下の HTTP 状態コード値が返される可能性があります。
 
-* **HTTP 200 (OK)** :インスタンス履歴は正常に消去されました。
-* **HTTP 404 (Not Found)** :フィルター式に一致するインスタンスが見つかりませんでした。
+* **HTTP 200 (OK)** : インスタンス履歴は正常に消去されました。
+* **HTTP 404 (Not Found)** : フィルター式に一致するインスタンスが見つかりませんでした。
 
 **HTTP 200** の場合の応答ペイロードは、次のフィールドを持つ JSON オブジェクトです。
 
@@ -461,7 +461,7 @@ DELETE /runtime/webhooks/durabletask/instances
 
 実行中のオーケストレーション インスタンスにイベント通知メッセージを送信します。
 
-### <a name="request"></a>Request
+### <a name="request"></a>要求
 
 Functions ランタイム バージョン 1.x の場合、要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
@@ -493,10 +493,10 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
 
 返される可能性がある状態コード値は、いくつかあります。
 
-* **HTTP 202 (Accepted)** :発生したイベントが受け入れられて処理された。
-* **HTTP 400 (Bad request)** :要求内容が `application/json` タイプまたは有効な JSON でなかった。
-* **HTTP 404 (Not Found)** :指定されたインスタンスが見つからなかった。
-* **HTTP 410 (Gone)** :指定されたインスタンスが完了または失敗し、発生したイベントを処理できない。
+* **HTTP 202 (Accepted)**: 発生したイベントが受け入れられて処理された。
+* **HTTP 400 (Bad request)**: 要求内容が `application/json` タイプまたは有効な JSON でなかった。
+* **HTTP 404 (Not Found)**: 指定されたインスタンスが見つからなかった。
+* **HTTP 410 (Gone)**: 指定されたインスタンスが完了または失敗し、発生したイベントを処理できない。
 
 **operation** という名前のイベントを待機するインスタンスに JSON 文字列 `"incr"` を送信する要求の例を次に示します。
 
@@ -514,7 +514,7 @@ Content-Length: 6
 
 実行中のオーケストレーション インスタンスを終了します。
 
-### <a name="request"></a>Request
+### <a name="request"></a>要求
 
 Functions ランタイム バージョン 1.x の場合、要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
@@ -547,11 +547,11 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate
 
 返される可能性がある状態コード値は、いくつかあります。
 
-* **HTTP 202 (Accepted)** :終了要求が受け入れられて処理された。
-* **HTTP 404 (Not Found)** :指定されたインスタンスが見つからなかった。
-* **HTTP 410 (Gone)** :指定されたインスタンスが完了したか失敗した。
+* **HTTP 202 (Accepted)**: 終了要求が受け入れられて処理された。
+* **HTTP 404 (Not Found)**: 指定されたインスタンスが見つからなかった。
+* **HTTP 410 (Gone)**: 指定されたインスタンスが完了したか失敗した。
 
-実行中のインスタンスを終了させ、**バグ**の理由を示す要求の例を次に示します。
+実行中のインスタンスを終了させ、**バグ** の理由を示す要求の例を次に示します。
 
 ```
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason=buggy&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
@@ -563,7 +563,7 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 
 最後に失敗した操作を再実行することにより、失敗したオーケストレーション インスタンスを実行状態に復元します。
 
-### <a name="request"></a>Request
+### <a name="request"></a>要求
 
 Functions ランタイム バージョン 1.x の場合、要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
@@ -596,11 +596,11 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind
 
 返される可能性がある状態コード値は、いくつかあります。
 
-* **HTTP 202 (Accepted)** :巻き戻し要求が受け入れられて処理された。
-* **HTTP 404 (Not Found)** :指定されたインスタンスが見つからなかった。
-* **HTTP 410 (Gone)** :指定されたインスタンスが完了したか終了した。
+* **HTTP 202 (Accepted)**: 巻き戻し要求が受け入れられて処理された。
+* **HTTP 404 (Not Found)**: 指定されたインスタンスが見つからなかった。
+* **HTTP 410 (Gone)**: 指定されたインスタンスが完了したか終了した。
 
-失敗したインスタンスを rewind し、**修正**の理由を指定する要求の例を次に示します。
+失敗したインスタンスを rewind し、**修正** の理由を指定する要求の例を次に示します。
 
 ```http
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/rewind?reason=fixed&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
@@ -615,7 +615,7 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 > [!NOTE]
 > 持続エンティティは、Durable Functions 2.0 以降で使用できます。
 
-### <a name="request"></a>Request
+### <a name="request"></a>要求
 
 HTTP 要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
@@ -652,9 +652,9 @@ Content-Type: application/json
 
 この操作には、複数の応答の可能性があります。
 
-* **HTTP 202 (Accepted)** :非同期処理のためにシグナル操作が受理された。
-* **HTTP 400 (Bad request)** :要求内容が `application/json` タイプまたは有効な JSON でなかったか、`entityKey` の値が無効だった。
-* **HTTP 404 (Not Found)** :指定された `entityName` が見つからなかった。
+* **HTTP 202 (Accepted)** : 非同期処理のためにシグナル操作が受理されました。
+* **HTTP 400 (Bad request)** : 要求内容が `application/json` タイプまたは有効な JSON でなかったか、`entityKey` の値が無効でした。
+* **HTTP 404 (Not Found)** : 指定された `entityName` が見つかりませんでした。
 
 成功した HTTP 要求の応答には内容は含まれません。 失敗した HTTP 要求は、応答の内容に JSON 形式のエラー情報が含まれている場合があります。
 
@@ -662,7 +662,7 @@ Content-Type: application/json
 
 指定されたエンティティの状態を取得します。
 
-### <a name="request"></a>Request
+### <a name="request"></a>要求
 
 HTTP 要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
@@ -677,8 +677,8 @@ GET /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
 
 この操作には、2 つの応答の可能性があります。
 
-* **HTTP 200 (OK)** :指定されたエンティティが存在する。
-* **HTTP 404 (Not Found)** :指定されたエンティティが見つからなかった。
+* **HTTP 200 (OK)** : 指定されたエンティティが存在します。
+* **HTTP 404 (Not Found)** : 指定されたエンティティが見つかりませんでした。
 
 成功した応答は、JSON でシリアル化されたエンティティの状態がその内容に含まれます。
 
@@ -697,11 +697,11 @@ GET /runtime/webhooks/durabletask/entities/Counter/steps
 }
 ```
 
-## <a name="list-entities"></a>リスト エンティティ
+## <a name="list-entities"></a>エンティティの一覧表示
 
 複数のエンティティを照会するには、エンティティ名または最後の操作日を使用します。
 
-### <a name="request"></a>Request
+### <a name="request"></a>要求
 
 HTTP 要求は次のような形式です (わかりやすくするために複数行が示されています)。
 

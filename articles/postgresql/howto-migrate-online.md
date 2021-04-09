@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: 27da5f1b731b2cdb0604f91f7f9e78b19ee2908b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92489797"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-postgresql---single-server"></a>最小限のダウンタイムでの Azure Database for PostgreSQL - Single Server への移行

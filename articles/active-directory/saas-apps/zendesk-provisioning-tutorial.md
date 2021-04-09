@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 620dd8fd586352ebeaf097a8f870a606f8e06c01
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94359716"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>チュートリアル: Zendesk を構成し、自動ユーザー プロビジョニングに対応させる
@@ -51,13 +51,13 @@ Marketplace から Zendesk を追加するには、次の手順に従います�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Zendesk** 」と入力し、結果パネルで **[Zendesk]** を選択します。 アプリケーションを追加するには、 **[追加]** を選択します。
+4. 検索ボックスに「**Zendesk**」と入力し、結果パネルで **[Zendesk]** を選択します。 アプリケーションを追加するには、 **[追加]** を選択します。
 
     ![結果一覧の Zendesk](common/search-new-app.png)
 
 ## <a name="assign-users-to-zendesk"></a>ユーザーを Zendesk に割り当てる
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD でアプリケーションに割り当てられているユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD でアプリケーションに割り当てられているユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Zendesk にアクセスする必要がある Azure AD のユーザーまたはグループを決定しておく必要があります。 これらのユーザーまたはグループを Zendesk に割り当てるには、「[エンタープライズ アプリにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)」の指示に従います。
 
@@ -78,7 +78,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="configure-automatic-user-provisioning-for-zendesk-in-azure-ad"></a>Azure AD で Zendesk の自動ユーザー プロビジョニングを構成する
 
-1. [Azure portal](https://portal.azure.com) にサインインする **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  >  **[Zendesk]** の順に選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  >  **[Zendesk]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -108,7 +108,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Zendesk のシークレット トークン](./media/zendesk-provisioning-tutorial/ZenDesk2.png)
 
-7. 手順 5 に示されているボックスに入力したら、 **[テスト接続]** を選択して、Azure AD が Zendesk に接続できることを確認します。 接続できない場合は、使用中の Zendesk アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+7. 手順 5 に示されているボックスに入力したら、**[テスト接続]** を選択して、Azure AD が Zendesk に接続できることを確認します。 接続できない場合は、使用中の Zendesk アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![Zendesk のテスト接続](./media/zendesk-provisioning-tutorial/ZenDesk19.png)
 
@@ -136,7 +136,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の手順を参照してください。
 
-15. Zendesk に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+15. Zendesk に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![Zendesk のプロビジョニング状態](./media/zendesk-provisioning-tutorial/ZenDesk14.png)
 
@@ -156,11 +156,11 @@ Azure AD プロビジョニング ログの見方について詳しくは、「[
 
 ## <a name="connector-limitations"></a>コネクタの制限事項
 
-* Zendesk は、 **エージェント** の役割のみを持つユーザーのグループの使用をサポートしています。 詳細については、[Zendesk のドキュメント](https://support.zendesk.com/hc/en-us/articles/203661966-Creating-managing-and-using-groups)を参照してください。
+* Zendesk は、**エージェント** の役割のみを持つユーザーのグループの使用をサポートしています。 詳細については、[Zendesk のドキュメント](https://support.zendesk.com/hc/en-us/articles/203661966-Creating-managing-and-using-groups)を参照してください。
 
 * カスタム ロールがユーザーやグループに割り当てられると、Azure AD の自動ユーザー プロビジョニング サービスも既定のロールを **エージェント** に割り当てます。 エージェントのみにカスタム ロールを割り当てることができます。 詳細については、[Zendesk API のドキュメント](https://developer.zendesk.com/rest_api/docs/support/users#json-format-for-agent-or-admin-requests)を参照してください。 
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="additional-resources"></a>その他の技術情報
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)

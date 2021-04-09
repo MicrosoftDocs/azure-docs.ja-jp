@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 03/17/2020
 ms.custom: MVC
 ms.openlocfilehash: 19860e64182cd73fe9f9fa1246f440a03109d465
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92281871"
 ---
 # <a name="about-site-recovery"></a>Site Recovery について
@@ -19,8 +19,8 @@ Azure Site Recovery サービスへようこそ。 この記事では、サー�
 
 Azure Recovery Services はあなたの BCDR 戦略を支援します。
 
-- **Site Recovery サービス**:Site Recovery により、機能停止中でもビジネス アプリとワークロードの実行状態を維持することで、ビジネス継続性を確保できます。 Site Recovery は、物理マシンと仮想マシン (VM) で実行中のワークロードを、プライマリ サイトからセカンダリ ロケーションにレプリケートします。 プライマリ サイトで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーし、そこからアプリにアクセスします。 プライマリの場所が再度実行中になったら、そこにフェールバックできます。
-- **Backup サービス**:[Azure Backup](../backup/index.yml) サービスは、データを保護し、回復可能な状態に維持します。
+- **Site Recovery サービス**: Site Recovery により、機能停止中でもビジネス アプリとワークロードの実行状態を維持することで、ビジネス継続性を確保できます。 Site Recovery は、物理マシンと仮想マシン (VM) で実行中のワークロードを、プライマリ サイトからセカンダリ ロケーションにレプリケートします。 プライマリ サイトで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーし、そこからアプリにアクセスします。 プライマリの場所が再度実行中になったら、そこにフェールバックできます。
+- **Backup サービス**: [Azure Backup](../backup/index.yml) サービスは、データを保護し、回復可能な状態に維持します。
 
 Site Recovery で対応できるレプリケーションは次のとおりです。
 
@@ -47,7 +47,7 @@ Site Recovery で対応できるレプリケーションは次のとおりです
 
 ## <a name="what-can-i-replicate"></a>レプリケート対象
 
-**サポートされています** | **詳細**
+**サポート状況** | **詳細**
 --- | ---
 **レプリケーション シナリオ** | Azure VM を 1 つの Azure リージョンから別のリージョンにレプリケートします。<br/><br/>  オンプレミスの VMware VM、Hyper-V VM、物理サーバー (Windows および Linux)、Azure Stack VM を Azure にレプリケートします。<br/><br/> AWS Windows インスタンスを Azure にレプリケートします。<br/><br/> オンプレミスの VMware VM、System Center VMM で管理されている HYPER-V VM、および物理サーバーを、セカンダリ サイトにレプリケートします。
 **リージョン** | Site Recovery の[サポートされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=site-recovery)を確認してください。 |

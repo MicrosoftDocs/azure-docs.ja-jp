@@ -10,10 +10,10 @@ ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
 ms.openlocfilehash: b12715e299f523d7ace56a72b0098b5d7ffac0ab
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98683057"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
@@ -116,13 +116,13 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>イメージ バージョンの作成
 
-[az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) を使用して、VM からイメージのバージョンを作成します。  
+[az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) を使用して、VM からイメージ バージョンを作成します。  
 
 イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion*.*MinorVersion*.*Patch*。
 
 この例では、イメージのバージョンは *1.0.0* であり、"*米国中南部*" リージョンに 1 個のレプリカ、および "*米国東部 2*" リージョンに 1 個のレプリカを作成しています。 レプリケーション リージョンには、ソース VM が配置されているリージョンが含まれている必要があります。
 
-この例の `--managed-image` の値を、前の手順の VM の ID に置き換えます。
+この例の `--managed-image` の値を、前の手順の VM の ID で置き換えます。
 
 ```azurecli-interactive 
 az sig image-version create \

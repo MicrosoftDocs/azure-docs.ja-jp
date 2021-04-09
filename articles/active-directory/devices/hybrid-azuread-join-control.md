@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 38754b9e349e27afcff58dac27a616e3e4fb5319
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96860934"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の検証を制御する
@@ -44,8 +44,8 @@ AD で SCP オブジェクトを変更するには、Active Directory サービ�
 1. ドメインの **構成名前付けコンテキスト** に接続します。
 1. **CN=Configuration,DC=contoso,DC=com** > **CN=Services** > **CN=Device Registration Configuration** を参照します
 1. リーフ オブジェクト **CN=62a0ff2e-97b9-4513-943f-0d221bd30080** を右クリックし、 **[プロパティ]** を選択します
-   1. **[属性エディター]** ウィンドウから **キーワード** を選択し、 **[編集]** をクリックします
-   1. **azureADId** と **azureADName** の値を選択し (一度に 1 つずつ)、 **[削除]** をクリックします
+   1. **[属性エディター]** ウィンドウから **キーワード** を選択し、**[編集]** をクリックします
+   1. **azureADId** と **azureADName** の値を選択し (一度に 1 つずつ)、**[削除]** をクリックします
 1. **[ADSI エディター]** を閉じます
 
 
@@ -55,24 +55,24 @@ AD で SCP オブジェクトを変更するには、Active Directory サービ�
 
 1. グループ ポリシー管理コンソールを開き、ドメインに新しいグループ ポリシー オブジェクトを作成します。
    1. 新しく作成した GPO に名前 (ClientSideSCP など) を付けます。
-1. GPO を編集し、次のパスを参照します。 **[コンピューターの構成]**  >  **[基本設定]**  >  **[Windows 設定]**  >  **[レジストリ]**
+1. GPO を編集して、次のパスを参照します。 **[コンピューターの構成]**  >  **[基本設定]**  >  **[Windows 設定]**  >  **[レジストリ]**
 1. [レジストリ] を右クリックして、 **[新規]**  >  **[レジストリ項目]** を選択します
    1. **[全般]** タブで、次を構成します
-      1. アクション:**アップデート**
-      1. Hive:**HKEY_LOCAL_MACHINE**
-      1. キー パス:**SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
-      1. 値の名前:**TenantId**
-      1. 値の型:**REG_SZ**
-      1. 値のデータ:Azure AD インスタンスの GUID または **ディレクトリ ID** (この値は、**Azure portal** >  **[Azure Active Directory]**  >  **[プロパティ]**  >  **[ディレクトリ ID]** にあります)
+      1. アクション: **更新**
+      1. ハイブ: **HKEY_LOCAL_MACHINE**
+      1. キーのパス: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
+      1. 値の名前: **TenantId**
+      1. 値の種類: **REG_SZ**
+      1. 値のデータ: Azure AD インスタンスの GUID または **ディレクトリ ID** (この値は、**Azure portal** >  **[Azure Active Directory]**  >  **[プロパティ]**  >  **[ディレクトリ ID]** にあります)
    1. **[OK]**
 1. [レジストリ] を右クリックして、 **[新規]**  >  **[レジストリ項目]** を選択します
    1. **[全般]** タブで、次を構成します
-      1. アクション:**アップデート**
-      1. Hive:**HKEY_LOCAL_MACHINE**
-      1. キー パス:**SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
-      1. 値の名前:**TenantName**
-      1. 値の型:**REG_SZ**
-      1. 値のデータ:AD FS などのフェデレーション環境を使用している場合は、確認済みの **ドメイン名**。 マネージド環境を使用している場合は、確認済みの **ドメイン名** または onmicrosoft.com のドメイン名 (たとえば、`contoso.onmicrosoft.com`)。
+      1. アクション: **更新**
+      1. ハイブ: **HKEY_LOCAL_MACHINE**
+      1. キーのパス: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
+      1. 値の名前: **TenantName**
+      1. 値の種類: **REG_SZ**
+      1. 値のデータ: AD FS などのフェデレーション環境を使用している場合は、確認済みの **ドメイン名**。 マネージド環境を使用している場合は、確認済みの **ドメイン名** または onmicrosoft.com のドメイン名 (たとえば、`contoso.onmicrosoft.com`)。
    1. **[OK]**
 1. 新しく作成された GPO のエディターを閉じます
 1. 制御されたロールアウト群に属している、ドメインに参加しているコンピューターを含む目的の OU に、新しく作成した GPO をリンクします
@@ -102,4 +102,4 @@ AD FS を使用している場合は、まず、上記の手順を使用して�
 
 ## <a name="next-steps"></a>次のステップ
 
-[ハイブリッド Azure Active Directory 参加の実装の計画](hybrid-azuread-join-plan.md)
+[ハイブリッド Azure Active Directory 参加の実装を計画する](hybrid-azuread-join-plan.md)

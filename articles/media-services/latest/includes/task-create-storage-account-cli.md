@@ -6,10 +6,10 @@ ms.date: 08/17/2020
 ms.author: inhenkel
 ms.custom: CLI
 ms.openlocfilehash: a6349188a2c6b4da68009df93fbea5fa6eabacf1
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102245025"
 ---
 <!-- ### Create a storage account -->

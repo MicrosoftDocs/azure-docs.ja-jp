@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: bc101e6bb743b9290593937a4d1bac656430b438
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98685312"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Synapse SQL プール向けの開発に関するベスト プラクティス
@@ -24,7 +24,7 @@ ms.locfileid: "98685312"
 
 ## <a name="tune-query-performance-with-new-product-enhancements"></a>新しい製品の機能強化でクエリのパフォーマンスを調整する
 
-- [マテリアライズドビューを使用したパフォーマンスのチューニング](performance-tuning-materialized-views.md)
+- [具体化されたビューを使用したパフォーマンスのチューニング](performance-tuning-materialized-views.md)
 - [順序指定クラスター化列ストア インデックスを使用したパフォーマンスのチューニング](performance-tuning-ordered-cci.md)
 - [結果セットのキャッシュを使用したパフォーマンスのチューニング](performance-tuning-result-set-caching.md)
 

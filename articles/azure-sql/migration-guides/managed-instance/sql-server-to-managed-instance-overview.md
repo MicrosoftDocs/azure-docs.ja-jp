@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 1f619e1eac58f70642117dabafc266d1bc250609
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ac2b535b2e6b7a6b4169d08dd1768d69e685a216
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690415"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102562012"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>移行の概要: SQL Server から SQL Managed Instance
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -28,7 +28,7 @@ SQL Server を Azure SQL Managed Instance に移行するためのさまざま�
 - アマゾン ウェブ サービス (AWS) EC2 
 - Amazon Relational Database Service (AWS RDS) 
 - Compute Engine (Google Cloud Platform - GCP)  
-- Cloud SQL for SQL Server (Google Cloud Platform - GCP) 
+- Cloud SQL for SQL Server (Google Cloud Platform – GCP) 
 
 その他のシナリオについては、[データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。 
 
@@ -63,7 +63,9 @@ SQL Server を SQL Managed Instance に移行する主な利点の 1 つは、�
 デプロイ時にコンピューティング リソースとストレージ リソースを選択できます。その後、[Azure portal](../../database/scale-resources.md) を使用して、アプリケーションのダウンタイムなしにそれらを変更できます。 
 
 > [!IMPORTANT]
-> [Managed Instance の仮想ネットワーク要件](../../managed-instance/connectivity-architecture-overview.md#network-requirements)の不一致があると、新しいインスタンスを作成することや、既存のインスタンスを使用することができない場合があります。  [新しいネットワークの作成](../../managed-instance/virtual-network-subnet-create-arm-template.md) および [既存のネットワークの構成](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data) についてご確認ください。 
+> [Managed Instance の仮想ネットワーク要件](../../managed-instance/connectivity-architecture-overview.md#network-requirements)の不一致があると、新しいインスタンスを作成することや、既存のインスタンスを使用することができない場合があります。  [新しいネットワークの作成](../../managed-instance/virtual-network-subnet-create-arm-template.md) および [既存のネットワークの構成](../../managed-instance/vnet-existing-add-subnet.md) についてご確認ください。 
+
+Azure SQL Managed Instance でターゲットのサービス レベルを選択する際のもう 1 つの重要な考慮事項 (General Purpose または Business Critical) は、Business Critical レベルでのみ利用できるインメモリ OLTP などの特定の機能を使用できるかどうかという点です。 
 
 ### <a name="sql-server-vm-alternative"></a>代替手段 としての SQL Server VM
 
@@ -88,9 +90,10 @@ SQL Server を SQL Managed Instance に移行する主な利点の 1 つは、�
 
 |テクノロジ | 説明|
 |---------|---------|
+| [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | VMware の場合、Azure SQL 用の Azure Migrate を使用すると、SQL データ資産を大規模に検出して評価することができます。これにより、Azure SQL デプロイに関する推奨事項、ターゲットのサイズ設定、月単位の見積もりが提供されます。 | 
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | ファースト パーティの Azure サービス。移行プロセス時のダウンタイムを許容できるアプリケーションのオフライン モードでの移行をサポートします。 オンライン モードでの継続的な移行とは異なり、オフライン モードの移行では、ソースからターゲットへのデータベースの完全バックアップの 1 回限りの復元が実行されます。 | 
 |[ネイティブ バックアップと復元](../../managed-instance/restore-sample-database-quickstart.md) | SQL Managed Instance では、ネイティブの SQL Server データベース バックアップ (.bak ファイル) の復元がサポートされています。このため、これが Azure Storage にデータベースの完全バックアップを提供できるお客様にとって最も簡単な移行オプションとなります。 完全バックアップと差分バックアップもサポートされており、この記事の後半の「[移行資産](#migration-assets)」セクションで説明しています。| 
-|[ログ再生サービス (LRS)](../../managed-instance/log-replay-service-migrate.md) | これは SQL Server ログ配布テクノロジに基づくクラウド サービスであり、Managed Instance に対して有効にすることができます。Azure ストレージに完全、差分、ログのデータベース バックアップを提供できる顧客にとって移行オプションとなります。 LRS は、バックアップ ファイルを Azure Blob Storage から SQL Managed Instance に復元するのに使用されます。| 
+|[ログ再生サービス (LRS)](../../managed-instance/log-replay-service-migrate.md) | これは SQL Server ログ配布テクノロジに基づくクラウド サービスであり、Managed Instance に対して有効にすることができます。このため、Azure ストレージに完全、差分、ログのデータベース バックアップを提供できる顧客にとって移行オプションとなります。 LRS は、バックアップ ファイルを Azure Blob Storage から SQL Managed Instance に復元するのに使用されます。| 
 | | |
 
 ### <a name="alternative-tools"></a>代替ツール
@@ -190,6 +193,26 @@ Azure portal ([構成] ページ) を介して設定された Windows ユーザ�
 #### <a name="system-databases"></a>システム データベース
 
 システム データベースの復元はサポートされていません。 (マスターまたは msdb のデータベースに格納されている) インスタンス レベルのオブジェクトを移行するには、Transact-SQL (T-SQL) を使用してそれらをスクリプト化し、ターゲット Managed Instance でそれらを再作成します。 
+
+#### <a name="in-memory-oltp-memory-optimized-tables"></a>インメモリ OLTP (メモリ最適化テーブル)
+
+SQL Server にはインメモリ OLTP 機能があります。これを使用すると、メモリ最適化テーブル、メモリ最適化テーブル型、ネイティブにコンパイルされた SQL モジュールなどを利用して、高いスループットと短い待機時間というトランザクション処理要件を持つワークロードを実行することができます。 
+
+> [!IMPORTANT]
+> インメモリ OLTP は、Azure SQL Managed Instance の Business Critical レベルでのみサポートされています (General Purpose レベルではサポートされていません)。
+
+オンプレミスの SQL Server にメモリ最適化テーブルまたはメモリ最適化テーブル型がある場合、Azure SQL Managed Instance に移行する際には、次のいずれかを行う必要があります。
+
+- インメモリ OLTP がサポートされているターゲット Azure SQL Managed Instance の Business Critical レベルを選択します。または
+- Azure SQL Managed Instance の General Purpose レベルに移行する場合は、データベースを移行する前に、メモリ最適化テーブル、メモリ最適化テーブル型、およびメモリ最適化オブジェクトと対話する、ネイティブにコンパイルされた SQL モジュールを削除します。 次の T-SQL クエリを使用すると、General Purpose レベルに移行する前に削除する必要があるすべてのオブジェクトを識別できます。
+
+```tsql
+SELECT * FROM sys.tables WHERE is_memory_optimized=1
+SELECT * FROM sys.table_types WHERE is_memory_optimized=1
+SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
+```
+
+インメモリ テクノロジの詳細については、「[Azure SQL Database と Azure SQL Managed Instance でインメモリ テクノロジを使用してパフォーマンスを最適化する](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview)」を参照してください。
 
 ## <a name="leverage-advanced-features"></a>高度な機能を活用する 
 

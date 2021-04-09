@@ -7,10 +7,10 @@ ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 1196982fedc7321805e36cceed27c90e43a6e705
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99558329"
 ---
 # <a name="set-up-msix-app-attach-preview-using-powershell"></a>PowerShell を使用して MSIX アプリのアタッチ (プレビュー) を設定する
@@ -24,9 +24,9 @@ Azure portal に加え、MSIX アプリのアタッチ (プレビュー) を Pow
 ## <a name="requirements"></a>必要条件
 
 >[!IMPORTANT]
->作業を開始する前に、必ず[こちらのフォーム](https://aka.ms/enablemsixappattach)に記入して送信し、サブスクリプションで MSIX アプリのアタッチを有効にしてください。 承認された要求がない場合、MSIX アプリのアタッチは機能しません。 要求の承認には、営業日に最大で 24 時間かかる可能性があります。 要求が受諾されて完了すると、電子メールが届きます。
+>作業を開始する前に、必ず[こちらのフォーム](https://aka.ms/enablemsixappattach)に記入して送信し、サブスクリプションで MSIX アプリ アタッチを有効にしてください。 承認されたリクエストがない場合、MSIX アプリ アタッチは機能しません。 リクエストの承認には、営業日に最大で 24 時間かかる可能性があります。 リクエストが受諾されて完了すると、電子メールが届きます。
 
-MSIX アプリのアタッチを構成するために必要な項目を次に示します。
+MSIX アプリ アタッチを構成するために必要な項目を次に示します。
 
 - 機能する Windows Virtual Desktop のデプロイ。 Windows Virtual Desktop (classic) のデプロイ方法については、「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」を参照してください。 Azure Resource Manager の統合を使用して Windows Virtual Desktop をデプロイする方法については、「[Azure portal を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」を参照してください。
 - 少なくとも 1 つのアクティブなセッション ホストが含まれている Windows Virtual Desktop ホスト プール。

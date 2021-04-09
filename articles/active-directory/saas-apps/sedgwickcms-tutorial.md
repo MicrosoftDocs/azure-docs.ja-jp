@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.openlocfilehash: ccda5c050c9f8af711637ea45090b6647c6c3488
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92674658"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>チュートリアル: Azure Active Directory と Sedgwick CMS の統合
@@ -41,7 +41,7 @@ Sedgwick CMS と Azure AD の統合を構成するには、次のものが必要
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Sedgwick CMS では、 **IDP** によって開始される SSO がサポートされます
+* Sedgwick CMS では、**IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-sedgwick-cms-from-the-gallery"></a>ギャラリーからの Sedgwick CMS の追加
 
@@ -61,13 +61,13 @@ Azure AD への Sedgwick CMS の統合を構成するには、ギャラリーか
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Sedgwick CMS** 」と入力し、結果パネルで **[Sedgwick CMS]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Sedgwick CMS**」と入力し、結果パネルで **[Sedgwick CMS]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Sedgwick CMS](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Sedgwick CMS で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Sedgwick CMS で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Sedgwick CMS 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Sedgwick CMS で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ Sedgwick CMS で Azure AD のシングル サインオンを構成してテス�
 
 Sedgwick CMS で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Sedgwick CMS** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Sedgwick CMS** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -148,7 +148,7 @@ Sedgwick CMS で Azure AD シングル サインオンを構成するには、�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -160,7 +160,7 @@ Sedgwick CMS で Azure AD シングル サインオンを構成するには、�
 
 このセクションでは、Britta Simon に Sedgwick CMS へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Sedgwick CMS]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Sedgwick CMS]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

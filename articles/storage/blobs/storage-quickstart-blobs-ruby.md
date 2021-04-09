@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: ec3fc490466f5fce36b67b2f3744e4ee5cc0ae79
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96781098"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-ruby"></a>クイックスタート: Ruby 用 Azure Blob Storage クライアント ライブラリ

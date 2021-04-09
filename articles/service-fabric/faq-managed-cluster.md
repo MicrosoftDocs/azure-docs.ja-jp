@@ -4,18 +4,18 @@ description: Service Fabric マネージド クラスターについてよく寄
 ms.topic: troubleshooting
 ms.author: pepogors
 author: peterpogorski
-ms.date: 09/28/2020
+ms.date: 02/15/2021
 ms.custom: references_regions
-ms.openlocfilehash: 4dc41d2c13c834657534971041440bb744cfca38
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: aa77896ba88d0ffd0a6f94a84603b5f4a1803357
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319821"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "100633089"
 ---
 # <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Service Fabric マネージド クラスターに関してよく寄せられる質問
 
-Service Fabric マネージド クラスター (プレビュー) で実行できる内容とその使用方法に関してよく寄せられる多数の質問があります。 このドキュメントでは、これらのよく寄せられる質問とその回答を示します。
+Service Fabric マネージド クラスター (プレビュー) についてよく寄せられる質問 (FAQ) とその回答を示します。
 
 ## <a name="general"></a>全般
 
@@ -29,11 +29,11 @@ Service Fabric マネージド クラスター プレビューは、`centraluseu
 
 ### <a name="can-i-do-an-in-place-migration-of-my-existing-service-fabric-cluster-to-a-managed-cluster-resource"></a>既存の Service Fabric クラスターをマネージド クラスター リソースにインプレース移行することはできますか?
 
-現時点では、新しい Service Fabric マネージド クラスター リソースの種類を使用するには、新しい Service Fabric クラスター リソースを作成する必要があります。
+いいえ。 現時点では、新しい Service Fabric マネージド クラスター リソースの種類を使用するには、新しい Service Fabric クラスター リソースを作成する必要があります。
 
 ### <a name="is-there-an-additional-cost-for-service-fabric-managed-clusters"></a>Service Fabric マネージド クラスターを使用すると追加料金が発生しますか?
 
-いいえ。クラスターに必要な基礎となるコンピューティング、ストレージ、ネットワーク リソースのコスト以外に、Service Fabric マネージド クラスターに関連する追加コストは発生しません。
+いいえ。 クラスターに必要な基礎となるコンピューティング、ストレージ、ネットワーク リソースのコスト以外に、Service Fabric マネージド クラスターに関連する追加コストは発生しません。
 
 ### <a name="is-there-a-new-sla-introduced-by-the-service-fabric-managed-cluster-resource"></a>Service Fabric マネージド クラスター リソースによって導入される新しい SLA はありますか?
 
@@ -47,27 +47,30 @@ Basic SKU クラスターを使用すると、ほとんどの構成が Service F
 
 ### <a name="i-run-custom-script-extensions-on-my-virtual-machine-scale-set-can-i-continue-to-do-that-with-a-managed-service-fabric-resource"></a>仮想マシン スケール セットでカスタム スクリプト拡張機能を実行しています。Service Fabric のマネージド リソースでも引き続き使用できますか?
 
-はい。ノードの種類で VM 拡張機能を指定できます。 詳細については、ノードの種類の拡張機能サンプルを参照してください。
+はい。マネージド クラスター ノードの種類で VM 拡張機能を指定できます。 詳細については、「[Service Fabric 管理対象クラスター ノード タイプに仮想マシン スケール セット拡張機能を追加する (プレビュー)](how-to-managed-cluster-vmss-extension.md)」を参照してください。
 
 ### <a name="i-want-to-have-an-internal-only-load-balancer-is-that-possible"></a>内部専用のロード バランサーを使用することはできますか?
 
-現在、内部専用のロード バランサーを使用することはできません。 ネットワーク セキュリティ グループの規則をロックダウンし、不要な受信および送信トラフィックをブロックすることをお勧めします。
+いいえ。 現在、内部専用のロード バランサーを使用することはできません。 ネットワーク セキュリティ グループ (NSG) の規則をロックダウンし、不要な受信および送信トラフィックをブロックすることをお勧めします。
 
-### <a name="can-i-autoscale-my-cluster"></a>クラスターを自動スケーリングできますか? 
+### <a name="can-i-autoscale-my-cluster"></a>クラスターを自動スケーリングできますか?
+
 現在、プレビューでは自動スケーリングは利用できません。
 
-### <a name="can-i-deploy-my-cluster-across-availability-zones"></a>可用性ゾーンをまたいでクラスターをデプロイできますか? 
+### <a name="can-i-deploy-my-cluster-across-availability-zones"></a>可用性ゾーンをまたいでクラスターをデプロイできますか?
+
 クロス可用性ゾーン クラスターは、現在プレビューでは使用できません。
 
-### <a name="can-i-select-between-automatic-and-manual-upgrades-for-my-cluster-runtime"></a>クラスター ランタイムで自動アップグレードと手動アップグレードのどちらかを選択できますか? 
+### <a name="can-i-select-between-automatic-and-manual-upgrades-for-my-cluster-runtime"></a>クラスター ランタイムで自動アップグレードと手動アップグレードのどちらかを選択できますか?
+
 プレビューでは、すべてのランタイム アップグレードは自動的に行われます。
 
 ## <a name="applications"></a>アプリケーション
 
 ### <a name="is-there-a-local-development-experience-for-service-fabric-managed-clusters"></a>Service Fabric マネージド クラスター用のローカル開発エクスペリエンスはありますか?
 
-ローカル開発エクスペリエンスは、既存の Service Fabric クラスターから変更されていません。 ローカル開発エクスペリエンスの詳細については、[.NET アプリケーションの作成](./service-fabric-quickstart-dotnet.md)に関する記事を参照してください。
+ローカル開発エクスペリエンスは、既存の Service Fabric クラスターから変更されていません。 ローカル開発エクスペリエンスの詳細については、[開発環境の設定](./service-fabric-get-started.md)に関する記事を参照してください。
 
 ### <a name="can-i-deploy-my-applications-as-an-azure-resource-manager-resource"></a>アプリケーションを Azure Resource Manager リソースとしてデプロイできますか?
 
-プレビューでは、アプリケーションを Azure Resource Manager リソースとしてデプロイすることはできません。 アプリケーションをデプロイするには、PowerShell または CLI を使用してクラスターに直接接続する必要があります。 この機能は、Service Fabric マネージド クラスターが一般提供になる前に追加されます。
+はい。 PowerShell と CLI を使用したデプロイに加えて、アプリケーションを Azure Resource Manager リソースとしてデプロイするためのサポートが追加されました。 利用を開始するには、「[ARM テンプレートを使用して Service Fabric マネージド クラスター アプリケーションをデプロイする](how-to-managed-cluster-app-deployment-template.md)」を参照してください。

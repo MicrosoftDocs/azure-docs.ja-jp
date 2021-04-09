@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: b6c5f5b8e437ad2dc2e8a3be3f3f2ed03a613b44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75649219"
 ---
 # <a name="adding-custom-resources-to-azure-rest-api"></a>カスタム リソースを Azure REST API に追加する
@@ -18,7 +18,7 @@ ms.locfileid: "75649219"
 
 ## <a name="how-to-define-a-resource-endpoint"></a>リソース エンドポイントの定義方法
 
-**エンドポイント**はサービスを指す URL であり、サービスと Azure 間の基になるコントラクトを実装するものです。 エンドポイントはカスタム リソース プロバイダー内に定義されており、一般にアクセス可能な URL にすることができます。 次のサンプルには、`endpointURL`によって実装される、`myCustomResource` と呼ばれる**resourceType**が含まれています。
+**エンドポイント** はサービスを指す URL であり、サービスと Azure 間の基になるコントラクトを実装するものです。 エンドポイントはカスタム リソース プロバイダー内に定義されており、一般にアクセス可能な URL にすることができます。 次のサンプルには、`endpointURL`によって実装される、`myCustomResource` と呼ばれる **resourceType** が含まれています。
 
 サンプルの **ResourceProvider**:
 
@@ -42,7 +42,7 @@ ms.locfileid: "75649219"
 
 ## <a name="building-a-resource-endpoint"></a>リソース エンドポイントの構築
 
-**resourceType**を実装する**エンドポイント**では、Azure で新しい API 向けに要求と応答を処理する必要があります。 **resourceType** のあるカスタム リソース プロバイダーが作成されると、Azure に API の新しいセットが生成されます。 この場合、**resourceType** により、シングル リソース上で CRUD を実行するための `PUT`、`GET`、`DELETE` 用と、すべての既存リソースを取得するための `GET` 用に、新しい Azure リソース API が生成されます。
+**resourceType** を実装する **エンドポイント** では、Azure で新しい API 向けに要求と応答を処理する必要があります。 **resourceType** のあるカスタム リソース プロバイダーが作成されると、Azure に API の新しいセットが生成されます。 この場合、**resourceType** により、シングル リソース上で CRUD を実行するための `PUT`、`GET`、`DELETE` 用と、すべての既存リソースを取得するための `GET` 用に、新しい Azure リソース API が生成されます。
 
 1 つのリソースの操作 (`PUT`、`GET`、および `DELETE`):
 
@@ -60,7 +60,7 @@ ms.locfileid: "75649219"
 
 ### <a name="proxy-routing-type"></a>プロキシのルーティングの種類
 
-"`Proxy`" **routingType** は、すべての要求メソッドを、カスタム リソース プロバイダーで指定された**エンドポイント**にプロキシします。 "`Proxy`" を使用するのは次の場合です。
+"`Proxy`" **routingType** は、すべての要求メソッドを、カスタム リソース プロバイダーで指定された **エンドポイント** にプロキシします。 "`Proxy`" を使用するのは次の場合です。
 
 - 応答の完全な制御が必要。
 - システムを既存のリソースと統合する。
@@ -69,7 +69,7 @@ ms.locfileid: "75649219"
 
 ### <a name="proxy-cache-routing-type"></a>プロキシ キャッシュ ルーティングの種類
 
-"`Proxy, Cache`" **routingType** は、`PUT` および `DELETE` 要求メソッドのみを、カスタム リソース プロバイダーで指定された**エンドポイント**にプロキシします。 カスタム リソース プロバイダーは、そのキャッシュに格納されている内容に基づいて、自動的に `GET` 要求を返します。 カスタム リソースがキャッシュでマークされている場合、カスタム リソース プロバイダーはさらに応答内のフィールドを追加/上書きして、API を Azure 準拠にします。 "`Proxy, Cache`" を使用するのは次の場合です。
+"`Proxy, Cache`" **routingType** は、`PUT` および `DELETE` 要求メソッドのみを、カスタム リソース プロバイダーで指定された **エンドポイント** にプロキシします。 カスタム リソース プロバイダーは、そのキャッシュに格納されている内容に基づいて、自動的に `GET` 要求を返します。 カスタム リソースがキャッシュでマークされている場合、カスタム リソース プロバイダーはさらに応答内のフィールドを追加/上書きして、API を Azure 準拠にします。 "`Proxy, Cache`" を使用するのは次の場合です。
 
 - 既存のリソースがない新しいシステムを作成する。
 - 既存の Azure エコシステムと連携する。
@@ -106,7 +106,7 @@ az resource create --is-full-object \
 ---|---|---
 is-full-object | *はい* | properties オブジェクトに、場所、タグ、SKU、プランなどの他のオプションが含まれることを示します。
 id | *はい* | カスタム リソースのリソース ID。 これは **ResourceProvider** から存在するはずです
-properties | *はい* | **エンドポイント**に送信される要求本文。
+properties | *はい* | **エンドポイント** に送信される要求本文。
 
 Azure のカスタム リソースを削除します。
 
@@ -131,11 +131,11 @@ id | *はい* | カスタム リソースのリソース ID。 これは **Resou
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 
 > [!NOTE]
-> リソースは、**エンドポイント**からの適切な `id`、`name`、および `type` が応答に含まれていることを要求します。
+> リソースは、**エンドポイント** からの適切な `id`、`name`、および `type` が応答に含まれていることを要求します。
 
 Azure Resource Manager テンプレートは、`id`、`name`、および `type` がダウンストリーム エンドポイントから正しく返されることを要求します。 返されるリソース応答は次の形式である必要があります。
 
-**エンドポイント**の応答のサンプル:
+**エンドポイント** の応答のサンプル:
 
 ``` JSON
 {
@@ -176,7 +176,7 @@ Azure Resource Manager テンプレートは、`id`、`name`、および `type` 
 
 パラメーター | 必須 | 説明
 ---|---|---
-resourceTypeName | *はい* | カスタム プロバイダーで定義されている **resourceType** の**名前**。
+resourceTypeName | *はい* | カスタム プロバイダーで定義されている **resourceType** の **名前**。
 resourceProviderName | *はい* | カスタム リソース プロバイダーのインスタンス名。
 customResourceName | *はい* | カスタム リソースの名前。
 

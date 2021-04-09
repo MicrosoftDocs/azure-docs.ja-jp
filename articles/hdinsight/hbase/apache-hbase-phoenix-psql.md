@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: d56c9b33d53be0e30769aef8934a2dbf43d06867
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d1ddf69acda442212500200eb6dc326dcbcb3c1b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944831"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867799"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>psql を使用した Apache Phoenix へのデータの一括読み込み
 
@@ -26,7 +26,7 @@ MapReduce では複数のスレッドが使用されるので、MapReduce によ
 
 データの読み込みを開始する場合は、Phoenix が有効になっていて、クエリのタイムアウト設定が正しいことを事前に確認します。  HDInsight クラスターの [Apache Ambari](https://ambari.apache.org/) ダッシュ ボードにアクセスし、[HBase] を選択し、[構成] タブを選択します。下にスクロールし、次のように Apache Phoenix が `enabled` に設定されていることを確認します。
 
-![Apache Phoenix HDInsight クラスターの設定](./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png)
+:::image type="content" source="./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png" alt-text="Apache Phoenix HDInsight クラスターの設定" border="true":::
 
 ### <a name="use-psql-to-bulk-load-tables"></a>`psql` を使用してテーブルの一括読み込みを行う
 
@@ -164,7 +164,7 @@ MapReduce では複数のスレッドが使用されるので、MapReduce によ
 
 1. データのクエリを実行して表示する場合は、前に説明したように **psql** を使用できます。 [HBase シェル](./query-hbase-with-hbase-shell.md)または [Apache Zeppelin](./apache-hbase-phoenix-zeppelin.md) を使用することもできます。
 
-## <a name="recommendations"></a>Recommendations
+## <a name="recommendations"></a>推奨事項
 
 * 入力フォルダーと出力フォルダーの両方に同じストレージ メディア (Azure Storage (WASB) または Azure Data Lake Storage (ADL) のいずれか) を使用します。 Azure Storage から Data Lake Storage にデータを転送するには、`distcp` コマンドを使用できます。
 
@@ -181,6 +181,6 @@ MapReduce では複数のスレッドが使用されるので、MapReduce によ
 ## <a name="next-steps"></a>次のステップ
 
 * [Apache Phoenix を使用した一括データの読み込み](https://phoenix.apache.org/bulk_dataload.html)
-* [HDInsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用](../hbase/apache-hbase-query-with-phoenix.md)
+* [HDInsight 内の Linux ベースの Apache HBase クラスターで Apache Phoenix を使用する](../hbase/apache-hbase-query-with-phoenix.md)
 * [ソルティングされたテーブル](https://phoenix.apache.org/salted.html)
 * [Apache Phoenix 文法](https://phoenix.apache.org/language/index.html)

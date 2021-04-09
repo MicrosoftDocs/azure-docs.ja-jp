@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/05/2021
 ms.author: alkohli
 ms.openlocfilehash: 97d8da86565db73aa9a3866f39f793aaf0905470
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97900163"
 ---
 # <a name="azure-data-box-limits"></a>Azure Data Box の制限

@@ -4,10 +4,10 @@ description: ダッシュボードの例を使用して、Azure ダッシュボ�
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.openlocfilehash: d37e2fd9c9f6ef6e7ddea6dea002f26f20cd66a7
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96745963"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure ダッシュボードの構造

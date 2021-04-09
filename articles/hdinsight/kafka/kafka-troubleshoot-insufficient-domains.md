@@ -4,14 +4,14 @@ description: Azure HDInsight のリージョンに十分な障害ドメインが
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/09/2019
-ms.openlocfilehash: 3f7d866d1c9b8c8437bc0f84acca47e0b8631895
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ed9e98750a469f78855096c3149254cf92c2788f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98939045"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102501347"
 ---
-# <a name="scenario-cluster-creation-failed-due-to-not-sufficient-fault-domains-in-region-in-azure-hdinsight"></a>シナリオ:Azure HDInsight での `not sufficient fault domains in region` のために、クラスターの作成に失敗した
+# <a name="scenario-cluster-creation-failed-due-to-not-sufficient-fault-domains-in-region-in-azure-hdinsight"></a>シナリオ: Azure HDInsight での `not sufficient fault domains in region` のために、クラスターの作成に失敗した
 
 この記事では、Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策について説明します。
 
@@ -23,11 +23,11 @@ Apache Kafka クラスターを作成しようとしているときに、`not su
 
 障害ドメインとは、Azure データ センター内にある基になるハードウェアの論理的なグループです。 各障害ドメインは、一般的な電源とネットワーク スイッチを共有します。 HDInsight クラスター内のノードを実装する仮想マシンと管理ディスクは、これらの障害ドメインに分散されます。 このアーキテクチャにより、物理的なハードウェア障害の潜在的な影響が制限されます。
 
-各 Azure リージョンには、特定の数の障害ドメインがあります。 ドメインと、それに含まれる障害ドメインの数の一覧については、[可用性セット](../../virtual-machines/manage-availability.md)に関するドキュメントを参照してください。
+各 Azure リージョンには、特定の数の障害ドメインがあります。 ドメインと、それに含まれる障害ドメインの数の一覧については、[可用性セット](../../virtual-machines/availability.md)に関するドキュメントを参照してください。
 
 HDInsight では、Kafka クラスターは、3 つ以上の障害ドメインがあるリージョンにプロビジョニングする必要があります。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決策
 
 クラスターを作成するリージョンに十分な障害ドメインがない場合は、製品チームに連絡して、3 つの障害ドメインがない場合でもクラスターのプロビジョニングを許可するよう依頼してください。
 

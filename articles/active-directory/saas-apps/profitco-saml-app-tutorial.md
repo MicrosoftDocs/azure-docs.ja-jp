@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: jeedes
 ms.openlocfilehash: 027fb66538dfcead24470507b8080f2e0aacb469
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515204"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-profitco"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Profit.co の統合
@@ -51,7 +51,7 @@ Azure AD への Profit.co の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Profit.co** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Profit.co**」と入力します。
 1. 結果のパネルから **[Profit.co]** を選択し、そのアプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-profitco"></a>Profit.co の Azure AD シングル サインオンの構成とテスト
@@ -79,7 +79,7 @@ Profit.co に対する Azure AD SSO を構成してテストする一般的な�
 
 1. **[基本的な SAML 構成]** セクションでは、アプリケーションは事前に構成されており、必要な URL は既に Azure で事前に設定されています。 ユーザーは、 **[保存]** を選択して構成を保存する必要があります。
 
-1. **[SAML によるシングル サインオンのセットアップ]** ページの **[SAML 署名証明書]** セクションで、 **[コピー]** を選択します。 これにより、 **アプリのフェデレーション メタデータ URL** がコピーされ、お使いのコンピューターに保存されます。
+1. **[SAML によるシングル サインオンのセットアップ]** ページの **[SAML 署名証明書]** セクションで、 **[コピー]** を選択します。 これにより、**アプリのフェデレーション メタデータ URL** がコピーされ、お使いのコンピューターに保存されます。
 
     ![コピー ボタンが強調表示された [SAML 署名証明書] セクションのスクリーンショット](common/copy-metadataurl.png)
 

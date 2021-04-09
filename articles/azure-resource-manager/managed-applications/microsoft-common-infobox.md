@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: tomfitz
 ms.openlocfilehash: 7580ac0650706d6aee49bbf0e8235e8c5dab33f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87033354"
 ---
 # <a name="microsoftcommoninfobox-ui-element"></a>Microsoft.Common.InfoBox UI 要素
@@ -44,7 +44,7 @@ ms.locfileid: "87033354"
 
 ## <a name="remarks"></a>解説
 
-* `icon`では、**None** **Info** **Warning**または **Error**を使用します。
+* `icon`では、**None** **Info** **Warning** または **Error** を使用します。
 * `uri` プロパティは省略可能です。
 
 ## <a name="next-steps"></a>次のステップ

@@ -10,10 +10,10 @@ ms.date: 06/24/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: b55ea814214397e12e50e7bc5047988394623940
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98703591"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob Storage の概要

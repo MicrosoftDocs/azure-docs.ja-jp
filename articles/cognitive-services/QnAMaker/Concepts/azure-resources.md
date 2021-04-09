@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: f46a0938ebb8d9fe7e032162120056dca96b9567
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 2427fbdaa497ccb6d9a46330dcc6eb872e1d28ac
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979764"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102214169"
 ---
 # <a name="azure-resources-for-qna-maker"></a>QnA Maker 用の Azure リソース
 
@@ -126,7 +126,7 @@ QnA Maker マネージドは無料サービスであり、現在のスループ�
 |App Service SKU の[アップグレード](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service)、Cognitive Search のレベルの確認、および [Cognitive Search レプリカの作成](../../../search/search-capacity-planning.md)|ナレッジ ベースでクライアント アプリ (チャット ボットなど) からのより多くの要求に対応する必要がある。|
 |Azure Cognitive Search サービスの[アップグレード](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service)|多数のナレッジ ベースを使用する予定である。|
 
-[Azure portal で App Service を更新](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)して、最新のランタイム更新プログラムを取得します。
+[Azure portal で App Service を更新](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates)して、最新のランタイム更新プログラムを取得します。
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
 
@@ -142,16 +142,16 @@ QnA Maker サービスでは、App Service でホストされるランタイム�
 
 これらのキーは、API を介してサービスに要求を行うときに使用します。
 
-![キー管理](../media/qnamaker-how-to-key-management/key-management.png)
+![キー管理](../media/authoring-key.png)
 
 |名前|場所|目的|
 |--|--|--|
-|オーサリングまたはサブスクリプション キー|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|これらのキーは、[QnA Maker 管理サービス API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベース内の質問と回答を編集したり、ナレッジ ベースを公開したりできます。 これらのキーは、新しい QnA Maker サービスを作成するときに作成されます。<br><br>これらのキーは、 **[キー]** ページの **Cognitive Services** リソースで確認できます。|
+|オーサリングまたはサブスクリプション キー|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|これらのキーは、[QnA Maker 管理サービス API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベース内の質問と回答を編集したり、ナレッジ ベースを公開したりできます。 これらのキーは、新しい QnA Maker サービスを作成するときに作成されます。<br><br>これらのキーは、 **[キーとエンドポイント]** ページの **Cognitive Services** リソースで確認できます。|
 |クエリ エンドポイント キー|[QnA Maker ポータル](https://www.qnamaker.ai)|これらのキーは、公開されたナレッジ ベースのエンドポイントにクエリを実行して、ユーザーの質問に対する回答を取得する目的で使用されます。 通常、このクエリ エンドポイントは、QnA Maker サービスに接続するチャット ボットまたはクライアント アプリケーション コードで使用されます。 これらのキーは、QnA Maker ナレッジ ベースを公開するときに作成されます。<br><br>これらのキーは、 **[サービスの設定]** ページで確認できます。 このページは、ページの右上にあるドロップダウン メニュー内のユーザーのメニューに含まれています。|
 
 ### <a name="find-authoring-keys-in-the-azure-portal"></a>Azure portal でオーサリング キーを確認する
 
-QnA Maker リソースを作成した Azure portal で、オーサリング キーの表示とリセットを実行できます。 これらのキーは、サブスクリプション キーと呼ばれる場合もあります。
+QnA Maker リソースを作成した Azure portal で、オーサリング キーの表示とリセットを実行できます。
 
 1. Azure portal で QnA Maker リソースに移動し、種類が _Cognitive Services_ であるリソースを選択します。
 
@@ -189,12 +189,12 @@ QnA Maker マネージド (プレビュー) サービスにより、顧客のサ
 
 |名前|場所|目的|
 |--|--|--|
-|オーサリングまたはサブスクリプション キー|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|これらのキーは、[QnA Maker 管理サービス API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベース内の質問と回答を編集したり、ナレッジ ベースを公開したりできます。 これらのキーは、新しい QnA Maker サービスを作成するときに作成されます。<br><br>これらのキーは、 **[キー]** ページの **Cognitive Services** リソースで確認できます。|
+|オーサリングまたはサブスクリプション キー|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|これらのキーは、[QnA Maker 管理サービス API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベース内の質問と回答を編集したり、ナレッジ ベースを公開したりできます。 これらのキーは、新しい QnA Maker サービスを作成するときに作成されます。<br><br>これらのキーは、 **[キーとエンドポイント]** ページの **Cognitive Services** リソースで確認できます。|
 |Azure Cognitive Search の管理者キー|[Azure Portal](../../../search/search-security-api-keys.md)|これらのキーは、ユーザーの Azure サブスクリプションにデプロイされている Azure Cognitive Search サービスとの通信に使用されます。 Azure Cognitive Search を QnA Maker マネージド (プレビュー) サービスに関連付けると、管理者キーが QnA Maker サービスに自動的に渡されます。 <br><br>これらのキーは、**Azure Cognitive Search** リソースの **[キー]** ページで確認できます。|
 
 ### <a name="find-authoring-keys-in-the-azure-portal"></a>Azure portal でオーサリング キーを確認する
 
-QnA Maker マネージド (プレビュー) リソースを作成した Azure portal で、オーサリング キーの表示とリセットを実行できます。 これらのキーは、サブスクリプション キーと呼ばれる場合もあります。
+QnA Maker マネージド (プレビュー) リソースを作成した Azure portal で、オーサリング キーの表示とリセットを実行できます。
 
 1. Azure portal で QnA Maker マネージド (プレビュー) リソースに移動し、種類が *Cognitive Services* であるリソースを選択します。
 
@@ -307,7 +307,7 @@ QnA Maker リソースで作成された最初のナレッジ ベースは、Cog
 
 ポータルを使用して QnA サービスとその依存関係 (Search など) を作成すると、Search サービスが自動的に作成され、QnA Maker サービスにリンクされます。 これらのリソースが作成された後、既存の Search サービスを使用するように App Service 設定を更新して、先ほど作成されたサービスを削除できます。
 
-QnA Maker リソース作成プロセスの一環で作成されたものとは異なる Cognitive Service リソースを使用するように QnA Maker を[構成する方法](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource)を確認してください。
+QnA Maker リソース作成プロセスの一環で作成されたものとは異なる Cognitive Service リソースを使用するように QnA Maker を[構成する方法](../How-To/configure-QnA-Maker-resources.md#configure-qna-maker-to-use-different-cognitive-search-resource)を確認してください。
 
 ### <a name="app-service-and-app-service-plan"></a>App Service と App Service プラン
 
@@ -365,6 +365,6 @@ QnA Maker マネージド (プレビュー) を使用するときは、ナレッ
 
 ## <a name="next-steps"></a>次のステップ
 
-* QnA Maker の[ナレッジ ベース](../index.yml)について確認します
+* QnA Maker の[ナレッジ ベース](../How-To/manage-knowledge-bases.md)について確認します
 * [ナレッジ ベースのライフ サイクル](development-lifecycle-knowledge-base.md)を理解します
 * サービスとナレッジ ベースの[制限](../limits.md)を確認します

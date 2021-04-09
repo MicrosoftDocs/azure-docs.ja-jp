@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 297395fbd0a7fd3fc8959eed5c0aeabd7b8e5751
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92458695"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>チュートリアル: Azure Active Directory と LearnUpon の統合
@@ -42,9 +42,9 @@ LearnUpon と Azure AD の統合を構成するには、次のものが必要で
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
 
-* LearnUpon では、 **IDP** によって開始される SSO がサポートされます
+* LearnUpon では、**IDP** によって開始される SSO がサポートされます
 
-* LearnUpon では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* LearnUpon では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 
 ## <a name="adding-learnupon-from-the-gallery"></a>ギャラリーからの LearnUpon の追加
@@ -65,13 +65,13 @@ Azure AD への LearnUpon の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **LearnUpon** 」と入力し、結果パネルで **LearnUpon** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**LearnUpon**」と入力し、結果パネルで **LearnUpon** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果リストの LearnUpon](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、LearnUpon で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、LearnUpon で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと LearnUpon 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 LearnUpon で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -146,7 +146,7 @@ LearnUpon で Azure AD シングル サインオンを構成するには、次�
 
     c. **[Skip conditions]\(条件をスキップする\)** で **[いいえ]** を選択します。
 
-    d. **[SAML Token POST param name (SAML トークン POST パラメーター名)]** ボックスに、前述の SAML コンシューマー URL に対する POST 要求パラメーターの名前を入力します。ここには、確認と認証の対象である SAML アサーションが含まれます ( **SAMLResponse** など)。
+    d. **[SAML Token POST param name (SAML トークン POST パラメーター名)]** ボックスに、前述の SAML コンシューマー URL に対する POST 要求パラメーターの名前を入力します。ここには、確認と認証の対象である SAML アサーションが含まれます (**SAMLResponse** など)。
 
     e. **[Name Identifier Format]\(名前識別子形式\)** テキストボックスに、SAML アサーション内のユーザー ID (メール アドレス) の場所を示す値を入力します (例: `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`)。
   
@@ -180,7 +180,7 @@ LearnUpon で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

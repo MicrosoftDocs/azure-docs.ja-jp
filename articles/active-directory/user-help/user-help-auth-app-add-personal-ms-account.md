@@ -12,10 +12,10 @@ ms.date: 04/08/2020
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: ff83a9a4e4bfd4c27dd3f8d3f212e489c3772eb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83741624"
 ---
 # <a name="add-personal-microsoft-accounts-to-the-microsoft-authenticator-app"></a>個人の Microsoft アカウントを Microsoft Authenticator アプリに追加する
@@ -39,7 +39,7 @@ ms.locfileid: "83741624"
 
     ![[more security options]\(さらに多くのセキュリティ オプション\) リンクが強調表示された [Security basics]\(セキュリティの基礎\) ページ](./media/user-help-auth-app-add-personal-ms-account/more-security-options-link.png)
 
-3. **[2 段階認証]** セクションに移動して、この機能を**オン**にします。 個人用アカウントでこの機能を使用しない場合は、オフにすることもできます。
+3. **[2 段階認証]** セクションに移動して、この機能を **オン** にします。 個人用アカウントでこの機能を使用しない場合は、オフにすることもできます。
 
 ## <a name="add-your-microsoft-account-to-the-app"></a>アプリに Microsoft アカウントを追加する
 

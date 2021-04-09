@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: d23b376384262c208fed70306e62634592d0b46b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6073000f2f14f835e2bfbd91b41619101c36b10f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946776"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866847"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>HDInsight 上で JDBC ドライバーを使用して Apache Hive のクエリを実行する
 
@@ -38,7 +38,7 @@ Azure の HDInsight クラスターに対する JDBC 接続はポート 443 を�
 
 または、**Ambari UI で [Hive] > [Configs]\(構成\) > [ Advanced]\(詳細\)** を選択して、接続を取得できます。
 
-![Ambari を使用して JDBC 接続文字列を取得する](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-get-connection-string-through-ambari.png)
+:::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-get-connection-string-through-ambari.png" alt-text="Ambari を使用して JDBC 接続文字列を取得する" border="true":::
 
 ### <a name="host-name-in-connection-string"></a>接続文字列のホスト名
 
@@ -74,11 +74,11 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
 3. SQuirreL SQL アプリケーションを起動します。 ウィンドウの左側から **[Drivers]** を選択します。
 
-    ![ウィンドウの左側の [Drivers] タブ](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-squirreldrivers.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-squirreldrivers.png" alt-text="ウィンドウの左側の [Drivers] タブ" border="true":::
 
 4. **[Drivers\(ドライバー\)]** ダイアログの上部にあるアイコンから、 **+** アイコンを選択してドライバーを作成します。
 
-    ![SQuirreL SQL アプリケーション ドライバー アイコン](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png" alt-text="SQuirreL SQL アプリケーション ドライバー アイコン" border="true":::
 
 5. [Add Driver\(ドライバーの追加\)] ダイアログで、次の情報を追加します。
 
@@ -89,13 +89,13 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
     |Extra Class Path (追加クラス パス)|**[追加]** ボタンを使って、以前にダウンロードしたすべての jar ファイルを追加します。|
     |Class Name (クラス名)|org.apache.hive.jdbc.HiveDriver|
 
-   ![パラメーターを含むドライバーの追加ダイアログ](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
+   :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png" alt-text="パラメーターを含むドライバーの追加ダイアログ" border="true":::
 
    **[OK]** を選択してこれらの設定を保存します。
 
 6. SQuirreL SQL ウィンドウの左側で、 **[Aliases]** を選択します。 次に **+** アイコンを選択して接続のエイリアスを作成します。
 
-    ![`SQuirreL SQL の新しいエイリアスの追加ダイアログ`](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png" alt-text="`SQuirreL SQL の新しいエイリアスの追加ダイアログ`" border="true":::
 
 7. **[Add Alias]\(エイリアスの追加\)** ダイアログでは次の値を使用します。
 
@@ -103,11 +103,11 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
     |---|---|
     |名前|HDInsight の Hive|
     |Driver|ドロップダウンを使用して、**Hive** ドライバーを選択します。|
-    |URL|`jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2` **CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。|
+    |URL|`jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`. **CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。|
     |[ユーザー名]|HDInsight クラスターのクラスター ログイン アカウント名。 既定値は **admin** です。|
     |Password|クラスター ログイン アカウントのパスワード。|
 
-    ![パラメーターを含むエイリアスの追加ダイアログ](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png" alt-text="パラメーターを含むエイリアスの追加ダイアログ" border="true":::
 
     > [!IMPORTANT]
     > **[Test]** ボタンを使用して、接続が機能することを確認します。 **[Connect to: Hive on HDInsight] (接続先: HDInsight 上の Hive)** ダイアログが表示されたら、 **[接続]** を選択してテストを実行します。 テストが成功した場合、 **[Connection successful\(接続成功\)]** ダイアログが表示されます。 エラーが発生した場合は、「[トラブルシューティング](#troubleshooting)」を参照してください。
@@ -116,7 +116,7 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
 8. SQuirreL SQL の上部にある **[Connect to]** ドロップダウンから、 **[Hive on HDInsight]** を選択します。 メッセージが表示されたら、 **[Connect]** を選択します。
 
-    ![パラメーターを含む接続ダイアログ](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png" alt-text="パラメーターを含む接続ダイアログ" border="true":::
 
 9. 接続されたら、SQL クエリ ダイアログに次のクエリを入力し、 **[Run]\(実行\)** アイコン (走っている人) を選択します。 結果領域にクエリの結果が表示されます。
 
@@ -124,7 +124,7 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
     select * from hivesampletable limit 10;
     ```
 
-    ![結果を含む SQL クエリ ダイアログ](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-sqlquery-dialog.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-sqlquery-dialog.png" alt-text="結果を含む SQL クエリ ダイアログ" border="true":::
 
 ## <a name="connect-from-an-example-java-application"></a>Java アプリケーションの例からの接続
 

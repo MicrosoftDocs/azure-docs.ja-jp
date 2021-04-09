@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/21/2020
 ms.author: duau
 ms.openlocfilehash: 8ccc50dfc4c53f1ee207a04d7d7775775f13cb65
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91348044"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-powershell"></a>クイックスタート:Azure PowerShell を使用して高可用性のグローバル Web アプリケーション向けの Front Door を作成する

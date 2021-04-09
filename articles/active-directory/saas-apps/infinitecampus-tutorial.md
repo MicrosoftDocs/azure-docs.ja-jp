@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 08cee87d94b20e99bcc46d42cbac7eb4272561bb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92460236"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>チュートリアル: Azure Active Directory と Infinite Campus の統合
@@ -42,7 +42,7 @@ Infinite Campus と Azure AD の統合を構成するには、次のものが必
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Infinite Campus では、 **SP** によって開始される SSO がサポートされます
+* Infinite Campus では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-infinite-campus-from-the-gallery"></a>ギャラリーからの Infinite Campus の追加
 
@@ -62,13 +62,13 @@ Azure AD への Infinite Campus の統合を構成するには、管理対象の
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Infinite Campus** 」と入力し、結果パネルで **Infinite Campus** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Infinite Campus**」と入力し、結果パネルで **Infinite Campus** を選び、**[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果一覧での Infinite Campus](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Infinite Campus で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Infinite Campus で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Infinite Campus 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Infinite Campus で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -86,7 +86,7 @@ Infinite Campus で Azure AD のシングル サインオンを構成してテ�
 
 Infinite Campus で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Infinite Campus** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Infinite Campus** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -98,7 +98,7 @@ Infinite Campus で Azure AD シングル サインオンを構成するには�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. [基本的な SAML 構成] セクションで、次の手順を実行します (ドメインはホスティング モデルによって異なりますが、 **FULLY-QUALIFIED-DOMAIN** の値は Infinite Campus のインストールと一致する必要があることに注意してください)。
+4. [基本的な SAML 構成] セクションで、次の手順を実行します (ドメインはホスティング モデルによって異なりますが、**FULLY-QUALIFIED-DOMAIN** の値は Infinite Campus のインストールと一致する必要があることに注意してください)。
 
     a. **[サインオン URL]** ボックスに、`https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS` のパターンを使用して URL を入力します。
 
@@ -132,9 +132,9 @@ Infinite Campus で Azure AD シングル サインオンを構成するには�
 
     b. **[Optional Attribute Name]\(省略可能な属性名\)** を編集して **名前** を含めます
 
-    c. **[Select an option to retrieve Identity Provider (IDP) server data]\(ID プロバイダー (IDP) サーバー データ取得のオプションを選択する\)** セクションで、 **[Metadata URL]\(メタデータ URL\)** を選択し、Azure portal からコピーした **アプリのフェデレーション メタデータ URL** をボックスに貼り付けて、 **[Sync]\(同期\)** をクリックします。
+    c. **[Select an option to retrieve Identity Provider (IDP) server data]\(ID プロバイダー (IDP) サーバー データ取得のオプションを選択する\)** セクションで、**[Metadata URL]\(メタデータ URL\)** を選択し、Azure portal からコピーした **アプリのフェデレーション メタデータ URL** をボックスに貼り付けて、**[Sync]\(同期\)** をクリックします。
 
-    d. **[Sync]\(同期\)** をクリックすると、 **[SSO Service Provider Configuration]\(SSO サービス プロバイダーの構成\)** ページに値が自動的に設定されます。 これらの値は上記のステップ 4 で示される値と一致することを確認できます。
+    d. **[Sync]\(同期\)** をクリックすると、**[SSO Service Provider Configuration]\(SSO サービス プロバイダーの構成\)** ページに値が自動的に設定されます。 これらの値は上記のステップ 4 で示される値と一致することを確認できます。
 
     e. **[保存]** をクリックします。
 
@@ -154,7 +154,7 @@ Infinite Campus で Azure AD シングル サインオンを構成するには�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、「 BrittaSimon@contoso.com 」のように入力します。
 
@@ -169,7 +169,7 @@ Infinite Campus で Azure AD シングル サインオンを構成するには�
 
 このセクションでは、Britta Simon に Infinite Campus へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Infinite Campus]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Infinite Campus]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

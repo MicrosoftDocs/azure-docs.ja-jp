@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 7144d576694b6694f426533451717cef58c2da87
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4c03016d003978b3c56361595bec7c559205574b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562448"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102520882"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning での強化学習 (プレビュー)
 
@@ -49,8 +49,8 @@ ms.locfileid: "97562448"
  
  - 独自の Jupyter Notebook サーバー
 
-    - [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) をインストールします。
-    - [Azure Machine Learning RL SDK](/python/api/azureml-contrib-reinforcementlearning/?preserve-view=true&view=azure-ml-py) をインストールします: `pip install --upgrade azureml-contrib-reinforcementlearning`
+    - [Azure Machine Learning SDK](/python/api/overview/azure/ml/install) をインストールします。
+    - [Azure Machine Learning RL SDK](/python/api/azureml-contrib-reinforcementlearning/) をインストールします: `pip install --upgrade azureml-contrib-reinforcementlearning`
     - [ワークスペース構成ファイル](how-to-configure-environment.md#workspace)を作成します。
     - 仮想ネットワークを実行して、分散強化学習に使用されるネットワーク ポートを開きます。
 
@@ -107,7 +107,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-reinforcement-learning-experiment"></a>強化学習の実験を作成する
 
-強化学習の実行を追跡するための[実験](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py)を作成します。 Azure Machine Learning では、実験は、実行ログ、履歴、出力などを整理するための、関連する試行の論理的なコレクションです。
+強化学習の実行を追跡するための[実験](/python/api/azureml-core/azureml.core.experiment.experiment)を作成します。 Azure Machine Learning では、実験は、実行ログ、履歴、出力などを整理するための、関連する試行の論理的なコレクションです。
 
 ```python
 experiment_name='rllib-pong-multi-node'
@@ -214,7 +214,7 @@ else:
 ```
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>強化学習の推定器を作成する
-[ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py) を使用して、Azure Machine Learning にトレーニング ジョブを送信します。
+[ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator) を使用して、Azure Machine Learning にトレーニング ジョブを送信します。
 
 Azure Machine Learning では、推定器クラスを使用して、実行の構成情報がカプセル化されます。 これにより、スクリプトの実行の構成方法を指定できます。 
 
@@ -402,7 +402,7 @@ def on_train_result(info):
 
 ## <a name="submit-a-run"></a>実行を送信する
 
-[Run](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) では、進行中のジョブまたは完了したジョブの実行履歴が処理されます。 
+[Run](/python/api/azureml-core/azureml.core.run%28class%29) では、進行中のジョブまたは完了したジョブの実行履歴が処理されます。 
 
 ```python
 run = exp.submit(config=rl_estimator)

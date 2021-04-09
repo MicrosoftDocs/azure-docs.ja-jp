@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 05/20/2018
 ms.openlocfilehash: b95d4b0a082e8eac191d610c9516e5ce72180b4c
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92219175"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>異常な定期的ジョブのトラブルシューティング
@@ -21,7 +21,7 @@ ms.locfileid: "92219175"
 - 定期的なジョブのプレビュー実行の統計情報レポートを見て、何が起きたかを確認します。
 - 異常なジョブと正常なジョブを比較して、何が変化したかを明らかにします。
 
-Azure Data Lake Tools for Visual Studio の**関連ジョブ ビュー**を使うと、どちらの場合についてもトラブルシューティングがはかどります。
+Azure Data Lake Tools for Visual Studio の **関連ジョブ ビュー** を使うと、どちらの場合についてもトラブルシューティングがはかどります。
 
 ## <a name="step-1-find-recurring-jobs-and-open-related-job-view"></a>ステップ 1: 定期的なジョブを探して関連ジョブ ビューを開く
 

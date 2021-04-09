@@ -10,15 +10,15 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: 95a04d763fa5982181cc1c797bce969d9857ae4b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92890634"
 ---
 # <a name="use-the-drawing-tools-module"></a>描画ツール モジュールを使用する
 
-Azure Maps の Web SDK は、 *描画ツール モジュール* を提供しています。 このモジュールを使用すると、マウスやタッチ スクリーンなどの入力デバイスを使用して、マップ上で簡単に図形の描画や編集ができます。 このモジュールのコア クラスは、[描画マネージャー](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-)です。 描画マネージャーにより、マップ上で図形を描画したり編集したりするために必要なすべての機能が提供されます。 これは直接使用することができ、カスタム ツール バーの UI に統合されています。 組み込みの[描画ツール バー](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) クラスを使用することもできます。 
+Azure Maps の Web SDK は、*描画ツール モジュール* を提供しています。 このモジュールを使用すると、マウスやタッチ スクリーンなどの入力デバイスを使用して、マップ上で簡単に図形の描画や編集ができます。 このモジュールのコア クラスは、[描画マネージャー](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-)です。 描画マネージャーにより、マップ上で図形を描画したり編集したりするために必要なすべての機能が提供されます。 これは直接使用することができ、カスタム ツール バーの UI に統合されています。 組み込みの[描画ツール バー](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) クラスを使用することもできます。 
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>Web ページへの描画ツール モジュールの読み込み
 
@@ -48,7 +48,7 @@ Azure Maps の Web SDK は、 *描画ツール モジュール* を提供して�
 
 ### <a name="set-the-drawing-mode"></a>描画モードを設定する
 
-次のコードでは、描画マネージャーのインスタンスを作成して、描画モード ( **mode** ) オプションを設定します。 
+次のコードでは、描画マネージャーのインスタンスを作成して、描画モード (**mode**) オプションを設定します。 
 
 ```javascript
 //Create an instance of the drawing manager and set drawing mode.

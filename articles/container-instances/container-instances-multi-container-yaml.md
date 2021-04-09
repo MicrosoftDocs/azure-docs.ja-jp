@@ -4,10 +4,10 @@ description: このチュートリアルでは、複数のコンテナーを含�
 ms.topic: article
 ms.date: 07/01/2020
 ms.openlocfilehash: 6f9dda7735587dfee1dde86c85375efcf057daa7
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97605163"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>チュートリアル:YAML ファイルを使用して複数コンテナー グループをデプロイする

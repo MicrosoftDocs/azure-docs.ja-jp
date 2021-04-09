@@ -4,10 +4,10 @@ description: Azure Virtual Machines を簡単に作成、管理、監視する�
 ms.topic: article
 ms.date: 06/20/2020
 ms.openlocfilehash: b7e6493e5fb1c99dfa7962ed464dca3ebc6b0c7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85480203"
 ---
 # <a name="about-azure-devtest-labs"></a>Azure DevTest Labs とは
@@ -77,4 +77,4 @@ DevTest Labs を使用すると、開発者とテスト担当者は、事前に�
 次の記事をご覧ください。
 
 - DevTest Labs の詳細については、「[DevTest ラボの概念](devtest-lab-concepts.md)」を参照してください。
-- 詳細な手順については、「[チュートリアル:Azure DevTest Labs を使用してラボを設定する](tutorial-create-custom-lab.md)」を参照してください。
+- 具体的な手順を示すチュートリアルについては、「[チュートリアル: Azure DevTest Labs を使用してラボを設定する](tutorial-create-custom-lab.md)」を参照してください。

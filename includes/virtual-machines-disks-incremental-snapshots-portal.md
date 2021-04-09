@@ -9,10 +9,10 @@ ms.date: 04/02/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e207866b61d21334bc9923d0d784b900906b0045
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98539714"
 ---
 1. [Azure portal](https://portal.azure.com/) にサインインし、スナップショットを作成するディスクに移動します。

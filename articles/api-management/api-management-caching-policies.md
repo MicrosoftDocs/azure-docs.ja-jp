@@ -4,21 +4,16 @@ description: Azure API Management で使用できるキャッシュ ポリシー
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: erikre
-editor: ''
-ms.assetid: 8147199c-24d8-439f-b2a9-da28a70a890c
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/13/2020
+ms.date: 03/08/2021
 ms.author: apimpm
-ms.openlocfilehash: bd3a63db7dd4946a9836b3978992fb544b9ab0ab
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9888627bed0fbf90abc75c81564dacc0d1aac18e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688044"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103233468"
 ---
 # <a name="api-management-caching-policies"></a>API Management のキャッシュ ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](./api-management-policies.md)」をご覧ください。
@@ -29,8 +24,8 @@ ms.locfileid: "101688044"
 ## <a name="caching-policies"></a><a name="CachingPolicies"></a> キャッシュ ポリシー
 
 - 応答キャッシュ ポリシー
-    - [キャッシュから取得](api-management-caching-policies.md#GetFromCache) - キャッシュを検索して、キャッシュに格納された有効な応答があればそれを返します。
-    - [キャッシュに格納](api-management-caching-policies.md#StoreToCache) - 指定されたキャッシュ制御の構成に従って応答をキャッシュに格納します。
+    - [キャッシュから取得](#GetFromCache) - キャッシュを検索して、キャッシュに格納された有効な応答があればそれを返します。
+    - [キャッシュに格納](#StoreToCache) - 指定されたキャッシュ制御の構成に従って応答をキャッシュに格納します。
 - 値キャッシュ ポリシー
     - [キャッシュから値を取得](#GetFromCacheByKey) - キャッシュされたキー別の項目を取得します。
     - [値をキャッシュに格納](#StoreToCacheByKey) - 項目をキー別にキャッシュに格納します。
@@ -40,7 +35,7 @@ ms.locfileid: "101688044"
 `cache-lookup` ポリシーを使用し、キャッシュを検索して、キャッシュに格納された有効な応答ががあればそれを返します。 このポリシーを適用できるのは、応答の内容が一定期間にわたって静的である場合です。 応答のキャッシュを使用すると、バックエンド Web サーバーの帯域幅および処理の要件が低減され、API コンシューマーによって認識される遅延が小さくなります。
 
 > [!NOTE]
-> このポリシーには、対応する[キャッシュに格納](api-management-caching-policies.md#StoreToCache)ポリシーが必要です。
+> このポリシーには、対応する[キャッシュに格納](#StoreToCache)ポリシーが必要です。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
@@ -135,7 +130,7 @@ ms.locfileid: "101688044"
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
 ```xml
-<cache-store duration="seconds" />
+<cache-store duration="seconds" cache-response="true | false" />
 ```
 
 ### <a name="examples"></a>例
@@ -190,7 +185,8 @@ ms.locfileid: "101688044"
 
 | 名前             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | Default           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| duration         | キャッシュに格納されたエントリの有効期間 (秒単位)。                                                                                                                                                                                                                                                                                                   | はい      | 該当なし               |
+| duration         | キャッシュに格納されたエントリの有効期間 (秒単位)。     | はい      | 該当なし               |
+| cache-response         | 現在の HTTP 応答をキャッシュする場合は true に設定します。 属性が省略されている場合、または false に設定されている場合は、状態コード `200 OK` を含む HTTP 応答のみがキャッシュされます。                           | いいえ      | false               |
 
 ### <a name="usage"></a>使用法
 このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。

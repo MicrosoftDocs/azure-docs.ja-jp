@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "73953180"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Azure IoT Hub デバイス管理に Cloud Explorer for Visual Studio を使用する
@@ -65,11 +65,11 @@ Visual Studio 2017 用の Visual Studio インストーラーの Cloud Explorer 
 
     ![[アカウント管理] アイコン](media/iot-hub-visual-studio-cloud-device-messaging/account-management-icon.png)
 
-1. Azure にサインインしている場合は、お使いのアカウントが表示されます。 初めて Azure にサインインするには、 **[アカウントの追加]** を選択します。
+1. Azure にサインインしている場合は、お使いのアカウントが表示されます。 初めて Azure にサインインするには、**[アカウントの追加]** を選択します。
 
-1. 使用する Azure サブスクリプションを選択し、 **[適用]** を選択します。
+1. 使用する Azure サブスクリプションを選択し、**[適用]** を選択します。
 
-1. サブスクリプションを展開した後、 **[IoT ハブ]** を展開します。  各ハブで、そのハブのデバイスを確認できます。 管理オプションにアクセスする 1 つのデバイスを右クリックします。
+1. サブスクリプションを展開した後、**[IoT ハブ]** を展開します。  各ハブで、そのハブのデバイスを確認できます。 管理オプションにアクセスする 1 つのデバイスを右クリックします。
 
     ![管理オプション](media/iot-hub-device-management-visual-studio/management-options-vs2019.png)
 
@@ -77,9 +77,9 @@ Visual Studio 2017 用の Visual Studio インストーラーの Cloud Explorer 
 
 ダイレクト メソッドを使用するには、次の手順を実行します。
 
-1. デバイスを右クリックし、 **[Invoke Device Direct Method]\(デバイス ダイレクト メソッドの呼び出し)** を選択します。
+1. デバイスを右クリックし、**[Invoke Device Direct Method]\(デバイス ダイレクト メソッドの呼び出し)** を選択します。
 
-1. **[Invoke Direct Method]\(ダイレクト メソッドの呼び出し\)** にメソッド名とペイロードを入力し、 **[OK]** を選択します。
+1. **[Invoke Direct Method]\(ダイレクト メソッドの呼び出し\)** にメソッド名とペイロードを入力し、**[OK]** を選択します。
 
     **[出力]** に結果が表示されます。
 
@@ -101,9 +101,9 @@ Visual Studio 2017 用の Visual Studio インストーラーの Cloud Explorer 
 
 IoT Hub からデバイスにメッセージを送信するには、次の手順に従います。
 
-1. デバイスを右クリックして、 **[Send C2D Message]\(C2D メッセージを送信する\)** を選択します。
+1. デバイスを右クリックして、**[Send C2D Message]\(C2D メッセージを送信する\)** を選択します。
 
-1. **[Send C2D message]\(C2D メッセージを送信する\)** にメッセージを入力し、 **[OK]** を選択します。
+1. **[Send C2D message]\(C2D メッセージを送信する\)** にメッセージを入力し、**[OK]** を選択します。
 
    **[出力]** に結果が表示されます。
 

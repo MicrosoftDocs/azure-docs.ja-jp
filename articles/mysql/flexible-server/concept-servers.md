@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 2cce4810a9e1a4d7143e2bab384d4b26471b7238
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: b664dd406a1ab90b4ea5e85005a69935f345c609
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240751"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034661"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL フレキシブル サーバー (プレビュー) でのサーバーの概念
 
@@ -38,7 +38,7 @@ Azure Database for MySQL フレキシブル サーバーとは次のようなも
 - データベース サーバー アクセスのために仮想ネットワーク統合が提供されます
 - 使用されていないときにフレキシブル サーバーを一時停止してコストを節約する手段が提供されます
 - データベースに適用される管理ポリシーのスコープ (ログイン、ファイアウォール、ユーザー、ロール、構成など) を提供します。
-- 現在、MySQL バージョン 5.7 でサポートされています。 詳細については、[サポートされる Azure Database for MySQL エンジンのバージョン](./concepts-supported-versions.md)に関するページを参照してください。
+- メジャー バージョン MySQL 5.7 および MySQL 8.0 をサポートしています。 詳細については、[サポートされる Azure Database for MySQL エンジンのバージョン](./../concepts-supported-versions.md)に関するページを参照してください。
 
 Azure Database for MySQL フレキシブル サーバー内には、1 つまたは複数のデータベースを作成できます。 サーバーごとに 1 つのデータベースを作成してすべてのリソースを使用するか、複数のデータベースを作成してリソースを共有することができます。 価格は、コンピューティング レベル、仮想コア数、ストレージ (GB) の構成に基づいて、サーバーごとに構成されています。 詳細については、[コンピューティングとストレージ](./concepts-compute-storage.md)に関するページを参照してください。
 

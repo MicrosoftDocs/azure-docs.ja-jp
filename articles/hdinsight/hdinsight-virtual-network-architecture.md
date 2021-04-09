@@ -4,12 +4,12 @@ description: Azure Virtual Network に HDInsight クラスターを作成する�
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: d5b8bdf5577642290cee7250e0f21f8a69dfd248
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 43640a9de91b6b44a236090ff029a49313ee0247
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931155"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871675"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 仮想ネットワーク アーキテクチャ
 
@@ -43,7 +43,7 @@ Azure HDInsight クラスターには、さまざまな種類の仮想マシン�
 
 次の図は、Azure での HDInsight ノードとネットワーク リソースの配置を示しています。
 
-![Azure のカスタム VNET に作成された HDInsight のエンティティの図](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
+:::image type="content" source="./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png" alt-text="Azure のカスタム VNET に作成された HDInsight のエンティティの図" border="false":::
 
 Azure Virtual Network の既定のリソースには、前の表で説明したクラスター ノードの種類が含まれています。 また、仮想ネットワークと外部のネットワークの間の通信をサポートするネットワーク デバイスが含まれます。
 

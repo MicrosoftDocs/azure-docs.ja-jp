@@ -11,10 +11,10 @@ ms.service: storage
 ms.subservice: queues
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
 ms.openlocfilehash: 8f49485d00379f5845569976e793f06d56a8967d
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102506822"
 ---
 # <a name="monitoring-azure-queue-storage"></a>Azure Queue Storage の監視

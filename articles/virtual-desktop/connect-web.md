@@ -7,10 +7,10 @@ ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c8a4b22966c3d4db268e212bb3f2d1bbb78fee74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89400638"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-web-client"></a>Web クライアントを使用して Windows Virtual Desktop に接続する
@@ -51,7 +51,7 @@ Web クライアントを利用すると、時間のかかるインストール 
 
 ## <a name="using-an-input-method-editor"></a>Input Method Editor を使用する
 
-Web クライアントでは、バージョン **1.0.21.16 以降**で、リモート セッション時、Input Method Editor (IME) の使用をサポートしています。 リモート セッションで使用するキーボードの言語パックは、ホスト仮想マシンにインストールする必要があります。 リモート セッションで言語パックを設定する方法については、「[Windows 10 マルチセッション イメージへの言語パックの追加](language-packs.md)」を参照してください。
+Web クライアントでは、バージョン **1.0.21.16 以降** で、リモート セッション時、Input Method Editor (IME) の使用をサポートしています。 リモート セッションで使用するキーボードの言語パックは、ホスト仮想マシンにインストールする必要があります。 リモート セッションで言語パックを設定する方法については、「[Windows 10 マルチセッション イメージへの言語パックの追加](language-packs.md)」を参照してください。
 
 Web クライアントを使用して IME 入力を有効にするには:
 

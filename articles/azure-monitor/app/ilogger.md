@@ -4,12 +4,12 @@ description: ASP.NET Core とコンソール アプリケーションで Azure A
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 987d5b78c5fe680f43ff6a001e7a31a8ae9f6124
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e7d0bd6f7d93eac944e0d53a8e898463bf9887f9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931463"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104592270"
 ---
 # <a name="applicationinsightsloggerprovider-for-microsoftextensionlogging"></a>Microsoft.Extension.Logging の ApplicationInsightsLoggerProvider
 
@@ -20,7 +20,7 @@ ms.locfileid: "91931463"
 
 ApplicationInsights が[コード](./asp-net-core.md)または[コードレス](./azure-web-apps.md?tabs=netcore#enable-agent-based-monitoring) アプローチを使用して構成されている場合に、`ApplicationInsightsLoggerProvider` は、ASP.NET Core アプリケーションで既定で有効になります。
 
-既定で、(すべての[カテゴリ](/aspnet/core/fundamentals/logging/#log-category)から) *警告* 以上の `ILogger` ログのみが既定で Application Insights に送信されます。 ただし、[この動作はカスタマイズする](./asp-net-core.md#how-do-i-customize-ilogger-logs-collection)ことができます。 **Program.cs** または **Startup.cs** から ILogger ログをキャプチャするには、追加の手順が必要です。 (「[ASP.NET Core アプリの Startup.cs と Program.cs から ILogger ログをキャプチャする](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps)」をご覧ください。)
+既定で、(すべての [カテゴリ](/aspnet/core/fundamentals/logging/#log-category)から) *警告* 以上の `ILogger` ログのみが既定で Application Insights に送信されます。 ただし、[この動作はカスタマイズする](./asp-net-core.md#how-do-i-customize-ilogger-logs-collection)ことができます。 **Program.cs** または **Startup.cs** から ILogger ログをキャプチャするには、追加の手順が必要です。 (「[ASP.NET Core アプリの Startup.cs と Program.cs から ILogger ログをキャプチャする](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps)」をご覧ください。)
 
 Application Insights のほかの監視を使用せずに `ApplicationInsightsLoggerProvider` のみを使用する場合は、次の手順に従います。
 
@@ -195,7 +195,7 @@ public class Startup
 - 以前のプロバイダーには[ログ スコープ](/aspnet/core/fundamentals/logging#log-scopes)のサポートがありません。 新しいプロバイダーでは、スコープからのプロパティが、収集されるテレメトリにカスタム プロパティとして自動的に追加されます。
 - アプリケーション スタートアップ パイプラインのはるかに早い段階で、ログをキャプチャできます。 **Program** クラスと **Startup** クラスからのログをキャプチャできるようになっています。
 - 新しいプロバイダーでは、フィルタリングがフレームワーク レベル自体で行われます。 コンソールやデバッグといった組み込みプロバイダーなどの他のプロバイダーと同じ方法で、Application Insights プロバイダーへのログのフィルタリングを行うことができます。 また、複数のプロバイダーに同じフィルターを適用することもできます。
-- ASP.NET Core (2.0 以降) で[ログ記録プロバイダーを有効にする](https://github.com/aspnet/Announcements/issues/255)推奨される方法は、**Program.cs** 自体の ILoggingBuilder で拡張メソッドを使用することです。
+- ASP.NET Core (2.0 以降) で [ログ記録プロバイダーを有効にする](https://github.com/aspnet/Announcements/issues/255)推奨される方法は、**Program.cs** 自体の ILoggingBuilder で拡張メソッドを使用することです。
 
 > [!Note]
 > 新しいプロバイダーは、NETSTANDARD2.0 以降を対象とするアプリケーションで使用できます。 [Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) バージョン 2.14.0 以降では、新しいプロバイダーは .NET Framework NET461 以降を対象とするアプリケーションでも使用できます。 アプリケーションが .NET Core 1.1 のような古いバージョンの .NET Core を対象としている場合、または NET46 より前の .NET Framework を対象としている場合は、引き続き古いプロバイダーを使用してください。
@@ -484,13 +484,13 @@ Program.cs と appsettings.json を次のように変更します。
    }
    ```
 
-このコードは、スタンドアロンのログ記録プロバイダーを使用する場合にのみ必要です。 Application Insights の通常の監視では、インストルメンテーション キーは構成パス *ApplicationInsights:Instrumentationkey* から自動的に読み込まれます。 Appsettings.json は次のようになります。
+このコードは、スタンドアロンのログ記録プロバイダーを使用する場合にのみ必要です。 Application Insights の通常の監視では、インストルメンテーション キーは構成パス *ApplicationInsights: InstrumentationKey* から自動的に読み込まれます。 Appsettings.json は次のようになります。
 
    ```json
    {
      "ApplicationInsights":
        {
-           "Instrumentationkey":"putrealikeyhere"
+           "InstrumentationKey":"putrealikeyhere"
        }
    }
    ```

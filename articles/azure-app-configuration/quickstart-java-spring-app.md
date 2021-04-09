@@ -11,10 +11,10 @@ ms.date: 04/18/2020
 ms.custom: devx-track-java
 ms.author: alkemper
 ms.openlocfilehash: 40c8fae292f465b3ecc8778a21e4903bdf423a3a
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96932032"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して Java Spring アプリを作成する
@@ -33,7 +33,7 @@ ms.locfileid: "96932032"
 
 7. **[構成エクスプローラー]**  >  **[+ 作成]**  >  **[キー値]** の順に選択して、次のキーと値のペアを追加します。
 
-    | Key | Value |
+    | キー | Value |
     |---|---|
     | /application/config.message | こんにちは |
 

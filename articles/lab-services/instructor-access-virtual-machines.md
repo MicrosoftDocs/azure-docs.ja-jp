@@ -4,10 +4,10 @@ description: この記事では、教師が教師ビューから学生の VM に
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ad4f9cfd11b372e5c6da5c17eaeba82b0cd8a91f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85445102"
 ---
 # <a name="access-virtual-machines-as-a-student-from-the-educator-view"></a>教師ビューから学生として仮想マシンにアクセスする

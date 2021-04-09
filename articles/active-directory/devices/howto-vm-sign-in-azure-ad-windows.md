@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e22e5fc4bc7211d905dbe8775b0ef6e893bd2cc
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: ee392666a6c6807497eeac2a2291dac915c4e136
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761001"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101644308"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure 内の Windows 仮想マシンにサインインする
 
@@ -62,10 +62,10 @@ Azure AD 認証を使用して、Azure 内の Windows VM にログインする�
 
 Azure 内の Windows VM に対して Azure AD 認証を有効にするには、VM のネットワーク構成で、TCP ポート 443 を経由した次のエンドポイントへの発信アクセスが確実に許可されているようにする必要があります。
 
-- https:\//enterpriseregistration.windows.net
-- https:\//login.microsoftonline.com
-- https:\//device.login.microsoftonline.com
-- https:\//pas.windows.net
+- `https://enterpriseregistration.windows.net`
+- `https://login.microsoftonline.com`
+- `https://device.login.microsoftonline.com`
+- `https://pas.windows.net`
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Azure 内の Windows VM に対して Azure AD ログインを有効にする
 
@@ -98,9 +98,9 @@ Azure AD ログオンを使用して、Azure で Windows Server 2019 Datacenter 
 
 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 Cloud Shell には一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 [コピー] ボタンを選択してコードをコピーし、Cloud Shell に貼り付けて Enter キーを押すだけで、コードを実行することができます。 Cloud Shell は、次のようにいくつかの方法で開くことができます。
 
-コード ブロックの右上隅にある [使ってみる] を選択します。
-ブラウザーで Cloud Shell を開きます。
-[Azure portal](https://portal.azure.com) の右上隅にあるメニューの [Cloud Shell] ボタンを選択します。
+- コード ブロックの右上隅にある **[使ってみる]** を選択します。
+- ブラウザーで Cloud Shell を開きます。
+- [Azure portal](https://portal.azure.com) の右上隅にあるメニューの [Cloud Shell] ボタンを選択します。
 
 CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.31 以降を実行していることが要件となります。 バージョンを確認するには、az --version を実行します。 インストールまたはアップグレードする必要がある場合は、記事「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
@@ -127,7 +127,7 @@ az vm create \
 
 VM とサポートするリソースを作成するには数分かかります。
 
-最後に、Azure AD ログイン VM 拡張機能をインストールし、Windows VM に対して Azure AD ログインを有効にします。 VM 拡張機能は、Azure 仮想マシンでのデプロイ後の構成と自動タスクを提供する小さなアプリケーションです。 [az vm extension](/cli/azure/vm/extension#az-vm-extension-set) セットを使用して、myResourceGroup リソース グループの myVM という名前の VM に AADLoginForWindows 拡張機能をインストールします。
+最後に、Azure AD ログイン VM 拡張機能をインストールし、Windows VM に対して Azure AD ログインを有効にします。 VM 拡張機能は、Azure 仮想マシンでのデプロイ後の構成と自動タスクを提供する小さなアプリケーションです。 [az vm extension](/cli/azure/vm/extension#az-vm-extension-set) セットを使用して、`myResourceGroup` リソース グループの `myVM` という名前の VM に AADLoginForWindows 拡張機能をインストールします。
 
 > [!NOTE]
 > 既存の Windows Server 2019 または Windows 10 1809 以降の VM に AADLoginForWindows 拡張機能をインストールし、これを Azure AD 認証用に有効にすることができます。 AZ CLI の例を次に示します。
@@ -194,9 +194,9 @@ az role assignment create \
 
 Azure RBAC を使用して、Azure サブスクリプション リソースへのアクセスを管理する方法の詳細については、次の記事を参照してください。
 
-- [Azure CLI を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-cli.md)
-- [Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)
-- [Azure PowerShell を使用して Azure でのロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-powershell.md)。
+- [Azure CLI を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-cli.md)
+- [Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)
+- [Azure PowerShell を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-powershell.md)。
 
 ## <a name="using-conditional-access"></a>条件付きアクセスの使用
 
@@ -211,7 +211,7 @@ Azure AD サインインで有効になる Azure 上の Windows VM へのアク�
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Azure AD 資格情報を使用して Windows VM にログインする
 
 > [!IMPORTANT]
-> Azure AD 参加済みの VM にリモート接続できるのは、VM として **同じ** ディレクトリに対して Azure AD 登録済み (最低限必要なビルドは 20H1)、Azure AD 参加済み、またはハイブリッド Azure AD 参加済みの Windows 10 PC からのみです。 さらに、Azure AD 資格情報を使用して RDP 接続するには、ユーザーは 2 つの Azure ロールのいずれか (仮想マシンの管理者ログイン、または仮想マシンのユーザー ログイン) に属している必要があります。 Azure AD 登録済みの Windows 10 PC を使用している場合は、資格情報を AzureAD\UPN 形式で入力する必要があります (例: AzureAD\john@contoso.com)。 現在、AADLoginForWindows 拡張機能で Azure Active Directory 認証を使用してログインするために Azure Bastion を使用することはできません。直接 RDP のみサポートされています。
+> Azure AD 参加済みの VM にリモート接続できるのは、VM として **同じ** ディレクトリに対して Azure AD 登録済み (最低限必要なビルドは 20H1)、Azure AD 参加済み、またはハイブリッド Azure AD 参加済みの Windows 10 PC からのみです。 さらに、Azure AD 資格情報を使用して RDP 接続するには、ユーザーは 2 つの Azure ロールのいずれか (仮想マシンの管理者ログイン、または仮想マシンのユーザー ログイン) に属している必要があります。 Azure AD 登録済みの Windows 10 PC を使用している場合は、資格情報を `AzureAD\UPN` の形式で入力する必要があります (例: `AzureAD\john@contoso.com`)。 現在、AADLoginForWindows 拡張機能で Azure Active Directory 認証を使用してログインするために Azure Bastion を使用することはできません。直接 RDP のみサポートされています。
 
 Azure AD を使用して Windows Server 2019 仮想マシンにログインするには、次の操作を行います。 
 
@@ -233,12 +233,12 @@ Azure AD を使用して Windows Server 2019 仮想マシンにログインす�
 
 VM が Azure AD 参加プロセスを完了するには、AADLoginForWindows 拡張機能が正常にインストールされている必要があります。 VM 拡張機能を正常にインストールできない場合は、次の手順を行います。
 
-1. ローカル管理者アカウントを使用して VM に RDP 接続し、CommandExecution.log を調べます。  
+1. ローカル管理者アカウントを使用して VM に RDP 接続し、以下にある `CommandExecution.log` ファイルを調べます。
    
-   これは C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.ActiveDirectory.AADLoginForWindows\0.3.1.0 の下にあります。 
+   `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.ActiveDirectory.AADLoginForWindows\0.3.1.0.`
 
    > [!NOTE]
-   > 最初の失敗後に拡張機能を再起動すると、デプロイ エラーを含むログが、CommandExecution_YYYYMMDDHHMMSSSSS.log として保存されます。 "
+   > 最初の失敗後に拡張機能を再起動すると、デプロイ エラーを含むログが、`CommandExecution_YYYYMMDDHHMMSSSSS.log` として保存されます。 "
 1. VM で PowerShell コマンド プロンプトを開き、Azure ホストで実行されている Instance Metadata Service (IMDS) エンドポイントに対して次のクエリを実行し、返される結果を確認します。
 
    | 実行するコマンド | 想定される出力 |
@@ -248,61 +248,61 @@ VM が Azure AD 参加プロセスを完了するには、AADLoginForWindows 拡
    | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01"` | Azure Active Directory によって発行された、この VM に割り当てられているマネージド ID の有効なアクセス トークン |
 
    > [!NOTE]
-   > アクセス トークンは、[http://calebb.net/](http://calebb.net/) などのツールを使用してデコードできます。 アクセス トークンの "appid" と VM に割り当てられたマネージド ID が一致していることを確認します。
+   > アクセス トークンは、[calebb.net](http://calebb.net/) などのツールを使用してデコードできます。 アクセス トークンの `appid` と VM に割り当てられたマネージド ID が一致していることを確認します。
 
 1. 次のコマンド ラインを使用して、必要なエンドポイントに VM から確実にアクセスできるようにします。
    
-   - curl https:\//login.microsoftonline.com/ -D –
-   - curl https:\//login.microsoftonline.com/`<TenantID>`/ -D –
+   - `curl https://login.microsoftonline.com/ -D -`
+   - `curl https://login.microsoftonline.com/<TenantID>/ -D -`
 
    > [!NOTE]
    > `<TenantID>` を、Azure サブスクリプションに関連付けられている Azure AD テナント ID に置き換えます。
 
-   - curl https:\//enterpriseregistration.windows.net/ -D -
-   - curl https:\//device.login.microsoftonline.com/ -D -
-   - curl https:\//pas.windows.net/ -D -
+   - `curl https://enterpriseregistration.windows.net/ -D -`
+   - `curl https://device.login.microsoftonline.com/ -D -`
+   - `curl https://pas.windows.net/ -D -`
 
 1. Device State (デバイスの状態) を表示するには、`dsregcmd /status` を実行します。 目標は、Device State (デバイスの状態) で `AzureAdJoined : YES` と表示されることです。
 
    > [!NOTE]
-   > Azure AD 参加アクティビティは、イベント ビューアーの User Device Registration\Admin ログの下にキャプチャされます。
+   > Azure AD 参加アクティビティは、イベント ビューアーの `User Device Registration\Admin` ログの下にキャプチャされます。
 
 AADLoginForWindows 拡張機能が特定のエラー コードで失敗した場合、次の手順を行うことができます。
 
-#### <a name="issue-1-aadloginforwindows-extension-fails-to-install-with-terminal-error-code-1007-and-exit-code--2145648574"></a>問題 1:AADLoginForWindows 拡張機能のインストールは、ターミナル エラー コード '1007' と終了コード -2145648574 で失敗しました。
+#### <a name="issue-1-aadloginforwindows-extension-fails-to-install-with-terminal-error-code-1007-and-exit-code--2145648574"></a>問題 1: AADLoginForWindows 拡張機能のインストールが、ターミナル エラー コード '1007' と終了コード -2145648574 で失敗しました。
 
-拡張機能により Azure AD テナント情報が照会されないため、この終了コードは DSREG_E_MSI_TENANTID_UNAVAILABLE に変換されます。
+拡張機能により Azure AD テナント情報が照会されないため、この終了コードは `DSREG_E_MSI_TENANTID_UNAVAILABLE` に変換されます。
 
 1. Azure VM により Instance Metadata Service から TenantID を取得できることを確認します。
 
    - ローカル管理者として VM に RDP 接続し、VM で管理者特権でのコマンド ラインから次のコマンドを実行して、エンドポイントから有効なテナント ID が返されることを確認します。
       
-      - curl -H Metadata:true http://169.254.169.254/metadata/identity/info?api-version=2018-02-01
+      - `curl -H Metadata:true http://169.254.169.254/metadata/identity/info?api-version=2018-02-01`
 
 1. VM 管理者は AADLoginForWindows 拡張機能のインストールを試みましたが、システム割り当てマネージド ID があらかじめ有効にされていません。 VM の [ID] ブレードに移動します。 [システム割り当て済み] タブで、[状態] が [オン] に切り替えられていることを確認します。
 
 #### <a name="issue-2-aadloginforwindows-extension-fails-to-install-with-exit-code--2145648607"></a>問題 2:AADLoginForWindows 拡張機能のインストールは、終了コード -2145648607 で失敗しました。
 
-拡張機能は `https://enterpriseregistration.windows.net` エンドポイントに到達できないため、この終了コードは DSREG_AUTOJOIN_DISC_FAILED に変換されます。
+拡張機能は `https://enterpriseregistration.windows.net` エンドポイントに到達できないため、この終了コードは `DSREG_AUTOJOIN_DISC_FAILED` に変換されます。
 
 1. 次のコマンド ラインを使用して、必要なエンドポイントに VM からアクセスできることを確認します。
 
-   - curl https:\//login.microsoftonline.com/ -D –
-   - curl https:\//login.microsoftonline.com/`<TenantID>`/ -D –
+   - `curl https://login.microsoftonline.com/ -D -`
+   - `curl https://login.microsoftonline.com/<TenantID>/ -D -`
    
    > [!NOTE]
-   > `<TenantID>` を、Azure サブスクリプションに関連付けられている Azure AD テナント ID に置き換えます。 テナント ID を検索する必要がある場合、アカウント名にマウス カーソルを合わせてディレクトリ/テナント ID を取得するか、Azure portal で [Azure Active Directory]、[プロパティ]、[ディレクトリ ID] の順に選択します。
+   > `<TenantID>` を、Azure サブスクリプションに関連付けられている Azure AD テナント ID に置き換えます。 テナント ID を検索する必要がある場合、アカウント名にマウス カーソルを合わせてディレクトリとテナント ID を取得するか、Azure portal で **[Azure Active Directory]、[プロパティ]、[ディレクトリ ID]** の順に選択します。
 
-   - curl https:\//enterpriseregistration.windows.net/ -D -
-   - curl https:\//device.login.microsoftonline.com/ -D -
-   - curl https:\//pas.windows.net/ -D -
+   - `curl https://enterpriseregistration.windows.net/ -D -`
+   - `curl https://device.login.microsoftonline.com/ -D -`
+   - `curl https://pas.windows.net/ -D -`
 
 1. コマンドが "ホスト名 `<URL>` を解決できません" で失敗した場合、このコマンドを実行して、VM で使用されている DNS サーバーを特定してみてください。
    
    `nslookup <URL>`
 
    > [!NOTE] 
-   > `<URL>` を、エンドポイントで使用される完全修飾ドメイン名 ("login.microsoftonline.com" など) に置き換えます。
+   > `<URL>` を、エンドポイントで使用される完全修飾ドメイン名 (`login.microsoftonline.com` など) に置き換えます。
 
 1. 次に、パブリック DNS サーバーを指定してコマンドを正常に実行できるかどうかを確認します。
 
@@ -322,13 +322,13 @@ Azure AD 資格情報を使用して RDP 接続しようとしたときに発生
 
 Device State (デバイスの状態) と SSO State (SSO 状態) を表示するには、`dsregcmd /status`を実行します。 目標は、Device State (デバイスの状態) で `AzureAdJoined : YES` と表示され、`SSO State`で `AzureAdPrt : YES`と表示されることです。
 
-Azure AD アカウントを使用した RDP サインインは、イベント ビューアーの AAD\Operational イベント ログ下にキャプチャされます。
+また、Azure AD アカウントを使用した RDP サインインは、イベント ビューアーの `AAD\Operational` イベント ログ下にキャプチャされます。
 
 #### <a name="azure-role-not-assigned"></a>Azure ロールが割り当てられていない
 
 VM へのリモート デスクトップ接続を開始したときに次のエラー メッセージが表示された場合、 
 
-- このデバイスを使用できないようにアカウントが構成されています。 詳細については、システム管理者に問い合わせてください
+- このデバイスを使用できないようにアカウントが構成されています。 詳細については、システム管理者にお問い合わせください。
 
 ![このデバイスを使用できないようにアカウントが構成されています。](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
@@ -341,18 +341,18 @@ VM に対して、仮想マシンの管理者ログインまたは仮想マシ�
 
 VM へのリモート デスクトップ接続を開始したときに次のエラー メッセージが表示された場合、 
 
-- お使いの資格情報は機能しませんでした
+- 資格情報が正しくありません。
 
 ![お使いの資格情報は機能しませんでした](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
 
 リモート デスクトップ接続を開始するために使用している Windows 10 PC が、VM が参加している Azure AD ディレクトリと同じディレクトリに Azure AD 参加済みまたはハイブリッド Azure AD 参加済みのいずれかであることを確認します。 デバイスID の詳細については、「[デバイス ID とは](./overview.md)」の記事を参照してください。
 
 > [!NOTE]
-> Windows 10 ビルド 20H1 では、VM への RDP 接続を開始するために、Azure AD 登録済み PC のサポートが追加されました。 Azure AD 登録済み (Azure AD 参加済みまたはハイブリッド Azure AD 参加済みではない) PC を RDP クライアントとして使用して VM への接続を開始する場合は、AzureAD\UPN の形式 (例: AzureAD\john@contoso.com) で資格情報を入力する必要があります。
+> Windows 10 ビルド 20H1 では、VM への RDP 接続を開始するために、Azure AD 登録済み PC のサポートが追加されました。 Azure AD 登録済み (Azure AD 参加済みまたはハイブリッド Azure AD 参加済みではない) PC を RDP クライアントとして使用して VM への接続を開始する場合は、`AzureAD\UPN` の形式 (例: `AzureAD\john@contoso.com`) で資格情報を入力する必要があります。
 
 Azure AD への参加が完了した後に AADLoginForWindows 拡張機能がアンインストールされていないことを確認します。
 
-また、サーバー "*と*" クライアントの両方で、セキュリティ ポリシー "Network security:Allow PKU2U authentication requests to this computer to use online identities (ネットワーク セキュリティ: このコンピューターに対する PKU2U 認証要求でオンライン ID を使用することを許可する)" が有効になっていることを確認します。
+また、サーバーとクライアントの **両方** で、セキュリティ ポリシー "Network security: Allow PKU2U authentication requests to this computer to use online identities" (ネットワーク セキュリティ: このコンピューターに対する PKU2U 認証要求でオンライン ID を使用することを許可する) が有効になっていることを確認します。
  
 #### <a name="mfa-sign-in-method-required"></a>MFA サインイン方法が必要
 
@@ -367,7 +367,7 @@ VM へのリモート デスクトップ接続を開始したときに次のエ�
 Windows Hello for Business のデプロイがなく、それが当面は選択肢にならない場合は、MFA を要求するクラウド アプリの一覧から "Azure Windows VM サインイン" アプリを除外する条件付きアクセス ポリシーを構成することで、MFA 要件を除外できます。 Windows Hello for Business の詳細については、[Windows Hello for Business の概要](/windows/security/identity-protection/hello-for-business/hello-identity-verification)に関するページを参照してください。
 
 > [!NOTE]
-> RDP での Windows Hello for Business PIN 認証は Windows 10 のいくつかのバージョンでサポートされています。ただし、RDP での生体認証のサポートは Windows 10 バージョン 1809 で追加されています。 RDP での Windows Hello for Business 認証の使用は、証明書信頼モデルを使用するデプロイでのみ利用でき、現時点ではキー信頼モデルでは利用できません。
+> RDP での Windows Hello for Business PIN 認証は Windows 10 のいくつかのバージョンでサポートされています。ただし、RDP での生体認証のサポートは Windows 10 バージョン 1809 で追加されています。 RDP での Windows Hello for Business 認証の使用は、証明書信頼モデルを使用するデプロイでのみ利用できます。現時点ではキー信頼モデルでは利用できません。
  
 ## <a name="preview-feedback"></a>プレビューのフィードバック
 
@@ -375,4 +375,4 @@ Windows Hello for Business のデプロイがなく、それが当面は選択�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Active Directory の詳細については、「[Azure Active Directory とは](../fundamentals/active-directory-whatis.md)」を参照してください
+Azure Active Directory の詳細については、「[Azure Active Directory とは](../fundamentals/active-directory-whatis.md)」を参照してください。

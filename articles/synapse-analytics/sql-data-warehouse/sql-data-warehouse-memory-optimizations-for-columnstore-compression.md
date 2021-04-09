@@ -2,21 +2,21 @@
 title: 専用 SQL プールの列ストア インデックスのパフォーマンスを向上させる
 description: メモリ要件を減らすか、使用可能なメモリを増やして、専用 SQL プールの各行グループ内の行の数を最大化します。
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 03/22/2019
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: d668c3e505d6849d3cde52d52698a95c1c5647d9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b15f71698af8c340b58f3399390857790313b8ac
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676164"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585487"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore-indexes-in-dedicated-sql-pool"></a>専用 SQL プールの列ストア インデックスの行グループの品質を最大限に高める 
 

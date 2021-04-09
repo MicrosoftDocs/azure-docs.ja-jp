@@ -2,13 +2,13 @@
 title: Azure Service Bus - メッセージング ユニットを自動的に更新する
 description: この記事では、Service Bus 名前空間のメッセージング ユニットを自動的に更新する方法について説明します。
 ms.topic: how-to
-ms.date: 09/15/2020
-ms.openlocfilehash: 594f9987bfa5a7a439fb862a0345d0004785b189
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 7fc3aca82b8f01d70dec4fc2dac7842895417ec9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720598"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177957"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>Azure Service Bus 名前空間のメッセージング ユニットを自動的に更新する 
 自動スケールを使用すると、適切な量のリソースを実行して、アプリケーションに対する負荷を処理することができます。 リソースを追加して負荷の増加に対処したり、アイドル状態のリソースを削除して経費を節約したりできます。 Azure Monitor の自動スケーリング機能の詳細については、「[Microsoft Azure の自動スケーリングの概要](../azure-monitor/autoscale/autoscale-overview.md)」を参照してください。 
@@ -136,8 +136,14 @@ Service Bus Premium 名前空間の自動スケーリング機能を使用して
     
     :::image type="content" source="./media/automate-update-messaging-units/repeat-specific-days-2.png" alt-text="特定のメッセージング ユニットに合わせてスケーリングする - 特定の曜日に繰り返す":::
 
-> [!IMPORTANT]
-> 自動スケーリング設定がどのように機能するか、特にプロファイルまたは条件を選択して複数のルールを評価する方法の詳細については、「[自動スケーリング設定について](../azure-monitor/autoscale/autoscale-understanding-settings.md)」を参照してください。          
+    
+    自動スケーリング設定がどのように機能するか、特にプロファイルまたは条件を選択して複数のルールを評価する方法の詳細については、「[自動スケーリング設定について](../azure-monitor/autoscale/autoscale-understanding-settings.md)」を参照してください。          
+
+    > [!NOTE]
+    > - 自動スケーリングに関する意思決定を行う際に確認するメトリックは、5 から 10 分前のものである可能性があります。 激しいワークロードを扱う場合、激しいワークロードを処理するために十分なメッセージング ユニットを確保するため、スケール アップの継続時間は短く、スケール ダウンの継続時間は長く (10 分以上) 設定します。 
+    > 
+    > - それでも容量不足 (使用可能なメッセージング ユニットの不足) が原因でエラーが発生する場合は、サポート チケットを発行してください。  
+
 
 ## <a name="next-steps"></a>次のステップ
 メッセージング ユニットの詳細については、[Premium メッセージング](service-bus-premium-messaging.md)に関するページを参照してください

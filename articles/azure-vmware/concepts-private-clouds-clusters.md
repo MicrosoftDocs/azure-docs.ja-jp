@@ -2,13 +2,13 @@
 title: 概念 - プライベート クラウドとクラスター
 description: Azure VMware Solution ソフトウェアによるデータ センターと vSphere クラスターの主な機能について説明します。
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 87bd2592da681726227f89b403916a12593a9db8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/13/2021
+ms.openlocfilehash: aff66e01ae4b056eb082d2000611718b1a5cf66a
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391390"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773924"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware Solution のプライベート クラウドとクラスターの概念
 
@@ -20,8 +20,6 @@ Azure サブスクリプション、Azure VMware Solution のプライベート 
 
 ![顧客サブスクリプションに含まれる 2 つのプライベート クラウドの画像](./media/hosts-clusters-private-clouds-final.png)
 
->[!NOTE]
->開発環境の潜在的なニーズの方が低いため、容量が少ないホストを含む小規模なクラスターを使用します。 
 
 ## <a name="private-clouds"></a>プライベート クラウド
 
@@ -30,7 +28,7 @@ Azure サブスクリプション、Azure VMware Solution のプライベート 
 他のリソースと同様に、プライベート クラウドのインストールと管理は Azure サブスクリプション内から行われます。 サブスクリプション内のプライベート クラウドの数はスケーラブルです。 初期状態では、サブスクリプションにつきプライベート クラウドは 1 つという制限があります。
 
 ## <a name="clusters"></a>クラスター
-作成された各プライベート クラウドには、既定で 1 つの vSAN クラスターがあります。 Azure portal または API を使用して、クラスターの追加、削除、スケーリングを行うことができます。  すべてのクラスターの既定のサイズはホスト 3 台であり、16 台のホストまでスケールアップできます。  1 つのクラスター内で使用されるホストは、同じホストの種類である必要があります。
+作成された各プライベート クラウドには、既定で 1 つの vSAN クラスターがあります。 Azure portal または API を使用して、クラスターの追加、削除、スケーリングを行うことができます。  すべてのクラスターの既定のサイズはホスト 3 台であり、16 台のホストまでスケールアップできます。 プライベート クラウドあたり最大 4 つのクラスターを作成できます。
 
 試用版クラスターは評価用に利用でき、3 台のホストに制限されます。 プライベート クラウドごとに 1 つの試用版クラスターがあります。 試用版クラスターは、評価期間中、1 つのホストによってスケーリングできます。
 
@@ -38,11 +36,11 @@ Azure サブスクリプション、Azure VMware Solution のプライベート 
 
 ## <a name="hosts"></a>Hosts
 
-Azure VMware Solution プライベート クラウドのクラスターでは、ハイパーコンバージド ベアメタル インフラストラクチャ ホストが使用されます。 ホストの RAM、CPU、ディスク容量を次の表に示します。 
+Azure VMware Solution クラスターは、ハイパーコンバージド ベアメタル インフラストラクチャに基づいています。 ホストの RAM、CPU、ディスク容量を次の表に示します。
 
 | ホストの種類              |             CPU             |   RAM (GB)   |  vSAN NVMe キャッシュ階層 (TB、生)  |  vSAN SSD 容量階層 (TB、生)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
-| ハイエンド (HE)          |  デュアル Intel 18 コア 2.3 GHz  |     576      |                3.2               |                15.20               |
+| AVS36          |  デュアル Intel 18 コア 2.3 GHz  |     576      |                3.2               |                15.20               |
 
 クラスターの構築またはスケーリングに使用されるホストは、ホストの分離プールから取得されます。 これらのホストはハードウェア テストに合格しており、すべてのデータが安全に削除されています。 
 
@@ -50,15 +48,15 @@ Azure VMware Solution プライベート クラウドのクラスターでは、
 
 [!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
 
+## <a name="update-frequency"></a>更新頻度
+
+[!INCLUDE [vmware-software-update-frequency](includes/vmware-software-update-frequency.md)]
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>ホストのメンテナンスとライフサイクル管理
 
 ホストのメンテナンスとライフサイクル管理は、プライベート クラウド クラスターの容量やパフォーマンスに影響しません。  ホストの自動メンテナンスの例には、ファームウェアのアップグレード、ハードウェアの修理や交換があります。
 
-Microsoft は、NSX-T Manager や NSX-T Edge などの NSX-T アプライアンスのライフサイクル管理に対して責任があります。 また、Tier-0 ゲートウェイの作成や North-South ルーティングの有効化など、ネットワーク構成のブートストラップにも責任があります。 NSX-T SDN の構成は、ご自身の責任で行う必要があります。 たとえば、ネットワーク セグメント、分散ファイアウォール規則、Tier-1 ゲートウェイ、ロード バランサーなどです。
-
-> [!IMPORTANT]
-> サービスが失われる可能性があるため、NSX-T Edge および Tier-0 ゲートウェイの構成は変更しないでください。
+Microsoft は、NSX-T Manager や NSX-T Edge などの NSX-T アプライアンスのライフサイクル管理に対して責任があります。 Microsoft は、Tier-0 ゲートウェイの作成や North-South ルーティングの有効化など、ネットワーク構成のブートストラップに対して責任があります。 NSX-T SDN の構成は、ご自身の責任で行う必要があります。 たとえば、ネットワーク セグメント、分散ファイアウォール規則、Tier-1 ゲートウェイ、ロード バランサーなどです。
 
 ## <a name="backup-and-restoration"></a>バックアップと復元
 

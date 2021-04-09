@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: fd5848eb44ecd32612943662b5a4fd0a5091cd9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91461293"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights Telemetry のデータ モデル
@@ -28,7 +28,7 @@ Application Insights で収集されたデータは、典型的なアプリケ�
 
 * [**要求**](data-model-request-telemetry.md) - アプリが受け取る要求をロギングするために生成されます。 たとえば、Application Insights Web SDK は、Web アプリが受け取る HTTP 要求ごとに要求テレメトリ項目を自動的に生成します。 
 
-    **操作**は、要求を処理する実行のスレッドです。 [コードを記述](./api-custom-events-metrics.md#trackrequest)して、Web ジョブの "ウェイク アップ" または定期的にデータを処理する関数など、他の種類の操作を監視することもできます。  各操作には ID があります。 この ID を使用すると、アプリが要求を処理する際に生成されるすべてのテレメトリを[グループ分け](./correlation.md)できます。 各操作は成功するか失敗します。また、一定の時間がかかります。
+    **操作** は、要求を処理する実行のスレッドです。 [コードを記述](./api-custom-events-metrics.md#trackrequest)して、Web ジョブの "ウェイク アップ" または定期的にデータを処理する関数など、他の種類の操作を監視することもできます。  各操作には ID があります。 この ID を使用すると、アプリが要求を処理する際に生成されるすべてのテレメトリを[グループ分け](./correlation.md)できます。 各操作は成功するか失敗します。また、一定の時間がかかります。
 * [**例外**](data-model-exception-telemetry.md) - 通常は、操作が失敗する原因になった例外を表します。
 * [**依存関係**](data-model-dependency-telemetry.md) - アプリから外部のサービスまたはストレージへの呼び出しを表します (REST API や SQL など)。 ASP.NET では、SQL の依存関係呼び出しは `System.Data` で定義されます。 HTTP エンドポイントの呼び出しは `System.Net` で定義されます。 
 

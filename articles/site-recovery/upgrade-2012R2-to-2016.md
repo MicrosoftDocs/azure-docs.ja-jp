@@ -9,10 +9,10 @@ ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: sharrai
 ms.openlocfilehash: b9869ae7dfbf5afd6b8d3b870a2ad4e56fd54c1a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91250070"
 ---
 # <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>Windows Server Server/System Center 2012 R2 VMM を Windows Server/VMM 2016 にアップグレードする 
@@ -51,7 +51,7 @@ Site Recovery は、事業継続とディザスター リカバリー (BCDR) 戦
 
 - どちらも SCVMM によって管理されているお客様の 2 つのサイト間でレプリケートしている場合は、プライマリ側をアップグレードする前に、必ず復旧側を先にアップグレードします。
   > [!WARNING]
-  > SCVMM 2012 R2 のアップグレード中に、[分散キー管理] で**暗号化キーを Active Directory に格納する**ことを選択します。 サービス アカウントおよび分散キー管理の設定は、慎重に選択します。 お客様の選択によっては、テンプレート内のパスワードなど、暗号化されたデータがアップグレード後に使用できなくなり、Azure Site Recovery によるレプリケーションに影響が及ぶ可能性があります
+  > SCVMM 2012 R2 のアップグレード中に、[分散キー管理] で **暗号化キーを Active Directory に格納する** ことを選択します。 サービス アカウントおよび分散キー管理の設定は、慎重に選択します。 お客様の選択によっては、テンプレート内のパスワードなど、暗号化されたデータがアップグレード後に使用できなくなり、Azure Site Recovery によるレプリケーションに影響が及ぶ可能性があります
 
 > [!IMPORTANT]
 > 詳細な SCVMM ドキュメントの[前提条件](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#requirements-and-limitations)を参照してください

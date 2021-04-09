@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Firmex VDR の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Firmex VDR の統合 | Microsoft Docs'
 description: Azure Active Directory と Firmex VDR の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 6dbd39b5c56192ad2ca957c5500338b50e8c8963
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453386"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-firmex-vdr"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Firmex VDR の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-firmex-vdr"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Firmex VDR の統合
 
 このチュートリアルでは、Firmex VDR と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Firmex VDR を統合すると、次のことができます。
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Firmex VDR では、 **SP および IDP** Initiated SSO がサポートされます
+* Firmex VDR では、**SP および IDP** Initiated SSO がサポートされます
 
 * Firmex を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
@@ -51,7 +51,7 @@ Azure AD への Firmex VDR の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Firmex VDR** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Firmex VDR**」と入力します。
 1. 結果のパネルから **[Firmex VDR]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -72,7 +72,7 @@ Firmex VDR に対する Azure AD SSO を構成してテストするには、次�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Firmex VDR** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Firmex VDR** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -160,9 +160,9 @@ SSO の実装には数分かかります。 Firmex サポートがサイトの S
 
 ### <a name="step-2---contact-firmex-support-with-your-domains"></a>手順 2 - ドメインを Firmex サポートに連絡する
 
-[Firmex サポート チーム](mailto:support@firmex.com)にメールを送信するか、1888 688 4042 x.11 に電話して、Firmex サポートと連絡を取ります。 ご自分のドメイン情報を伝えてください。 Firmex サポートによって、 **要求されたドメイン** として、ご使用の VDR にドメインが追加されます。 これで、管理者が SSO を構成できます。
+[Firmex サポート チーム](mailto:support@firmex.com)にメールを送信するか、1888 688 4042 x.11 に電話して、Firmex サポートと連絡を取ります。 ご自分のドメイン情報を伝えてください。 Firmex サポートによって、**要求されたドメイン** として、ご使用の VDR にドメインが追加されます。 これで、管理者が SSO を構成できます。
 
-警告:要求されたドメインをサイト管理者が構成するまで、自社のユーザーは VDR にログインできません。 会社以外のユーザー (つまり、ゲスト ユーザー) は、引き続きメールとパスワードを使用してログインできます。 構成には数分かかります。
+警告: 要求されたドメインをサイト管理者が構成するまで、自社のユーザーは VDR にログインできません。 会社以外のユーザー (つまり、ゲスト ユーザー) は、引き続きメールとパスワードを使用してログインできます。 構成には数分かかります。
 
 ### <a name="step-3---configure-the-claimed-domains"></a>手順 3 - 要求されたドメインを構成する
 
@@ -180,7 +180,7 @@ SSO の実装には数分かかります。 Firmex サポートがサイトの S
 
     b. **[Identity Provider URL]\(ID プロバイダーの URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    c. **[Public Key Certificate]\(公開キー証明書\)** - SAML メッセージは、認証を目的として発行者によってデジタル署名される場合があります。 メッセージの署名を検証するために、メッセージの受信者は、発行者のものだとわかっている公開キーを使用します。 同様に、メッセージを暗号化するには、最終的な受信者のものである公開暗号化キーを発行者が知っている必要があります。 署名と暗号化のどちらの場面でも、信頼された公開キーを事前に共有する必要があります。  これは、 **フェデレーション メタデータ XML** からの **X509Certificate** です
+    c. **[Public Key Certificate]\(公開キー証明書\)** - SAML メッセージは、認証を目的として発行者によってデジタル署名される場合があります。 メッセージの署名を検証するために、メッセージの受信者は、発行者のものだとわかっている公開キーを使用します。 同様に、メッセージを暗号化するには、最終的な受信者のものである公開暗号化キーを発行者が知っている必要があります。 署名と暗号化のどちらの場面でも、信頼された公開キーを事前に共有する必要があります。  これは、**フェデレーション メタデータ XML** からの **X509Certificate** です
 
     d. **[Save]\(保存\)** をクリックして、SSO 構成を完了します。 変更はすぐに有効になります。
 

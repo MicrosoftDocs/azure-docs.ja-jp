@@ -3,7 +3,7 @@ title: Azure Media Services 用 Java SDK の使用を開始する | Microsoft Do
 description: このチュートリアルでは、Azure Media Services (AMS) アプリケーションと Java を使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信サービスの実装手順を紹介します。
 services: media-services
 documentationcenter: java
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: johndeu
 ms.assetid: b884bd61-dbdb-42ea-b170-8fb02e7fded7
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-java
-ms.openlocfilehash: f05b78c777fdfa633e07bc03266c862f9e85ee0c
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 5fa9f1eb4c9468c5cabaab6ee0430f165f339ed6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695723"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103014912"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Azure Media Services 用 Java クライアント SDK の概要
 

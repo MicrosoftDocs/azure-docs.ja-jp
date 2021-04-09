@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: b4a8ea5c08f66bc0c64d4762e695dd4e2822af44
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92452007"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>チュートリアル: Azure Active Directory と ForeSee CX Suite の統合
@@ -41,9 +41,9 @@ ForeSee CX Suite と Azure AD の統合を構成するには、次のものが�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* ForeSee CX Suite では、 **SP** Initiated SSO がサポートされます
+* ForeSee CX Suite では、**SP** Initiated SSO がサポートされます
 
-* ForeSee CX Suite では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* ForeSee CX Suite では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-foresee-cx-suite-from-the-gallery"></a>ギャラリーからの ForeSee CX Suite の追加
 
@@ -63,13 +63,13 @@ Azure AD への ForeSee CX Suite の統合を構成するには、ギャラリ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **ForeSee CX Suite** 」と入力し、結果パネルで **[ForeSee CX Suite]** を選び、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**ForeSee CX Suite**」と入力し、結果パネルで **[ForeSee CX Suite]** を選び、 **[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果一覧の ForeSee CX Suite](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、ForeSee CX Suite で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、ForeSee CX Suite で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと ForeSee CX Suite 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 ForeSee CX Suite で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -99,7 +99,7 @@ ForeSee CX Suite で Azure AD のシングル サインオンを構成するに�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、 **サービス プロバイダー メタデータ ファイル** がある場合は、次の手順に従います。
+4. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル** がある場合は、次の手順に従います。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
@@ -109,7 +109,7 @@ ForeSee CX Suite で Azure AD のシングル サインオンを構成するに�
 
     ![メタデータ ファイルを選択する](common/browse-upload-metadata.png)
 
-    c. メタデータ ファイルが正常にアップロードされると、 **識別子** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
+    c. メタデータ ファイルが正常にアップロードされると、**識別子** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
 
     ![[ForeSee CX Suite ドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
@@ -154,7 +154,7 @@ ForeSee CX Suite で Azure AD のシングル サインオンを構成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

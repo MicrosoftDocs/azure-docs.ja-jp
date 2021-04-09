@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: c9e1de7b5dee8e351cd8744287c07b0bbb174512
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92516462"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tidemark"></a>チュートリアル: Azure Active Directory と Tidemark の統合
@@ -41,7 +41,7 @@ Tidemark と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Tidemark では、 **SP** Initiated SSO がサポートされます
+* Tidemark では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-tidemark-from-the-gallery"></a>ギャラリーから Tidemark を追加する
 
@@ -61,13 +61,13 @@ Azure AD への Tidemark の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Tidemark** 」と入力し、結果パネルで **[Tidemark]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Tidemark**」と入力し、結果パネルで **[Tidemark]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Tidemark](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Tidemark で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Tidemark で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Tidemark 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Tidemark で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -101,7 +101,7 @@ Tidemark で Azure AD シングル サインオンを構成するには、次の
 
     ![[Tidemark ドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
 
     - `https://<subdomain>.tidemark.com/login`
     - `https://<subdomain>.tidemark.net/login`
@@ -149,7 +149,7 @@ Tidemark で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

@@ -9,10 +9,10 @@ ms.date: 2/3/2021
 ms.topic: how-to
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 56532c17c91e6c703a6acd7990bbae47cd248165
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99576567"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Unity プロジェクトでの Azure Spatial Anchors の構成

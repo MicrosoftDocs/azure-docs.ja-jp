@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
 ms.openlocfilehash: 5d847ac7ed805ad88bc24ed63896edc6f7596f9b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101729778"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Azure Sentinel での正規化

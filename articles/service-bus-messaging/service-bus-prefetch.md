@@ -4,15 +4,15 @@ description: Azure Service Bus メッセージをプリフェッチすること�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 05e23b0590f0c04171efda8fb561b4c2664ed096
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85341054"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Azure Service Bus メッセージのプリフェッチ
 
-公式の Service Bus クライアントで*プリフェッチ*を有効にしていると、受信側は、アプリケーションが元々要求した数を超えて [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) 限界に達するまでメッセージを自動的に取得します。
+公式の Service Bus クライアントで *プリフェッチ* を有効にしていると、受信側は、アプリケーションが元々要求した数を超えて [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) 限界に達するまでメッセージを自動的に取得します。
 
 このため、[Receive](/dotnet/api/microsoft.servicebus.messaging.queueclient.receive) または [ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) を 1 回呼び出すと、使用の準備ができると同時にメッセージが返され、すぐに使用できます。 クライアントは、プリフェッチ バッファーが満杯になるまで、バック グラウンドでメッセージを取得し続けます。
 

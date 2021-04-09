@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 03/12/2019
 ms.openlocfilehash: 89d285a56553f5c521d1edbc92786debd4a92e32
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101659292"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>チュートリアル:geo 分散型データベースを実装する (Azure SQL Database)

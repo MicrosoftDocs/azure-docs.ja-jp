@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と webMethods Integration Suite の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と webMethods Integration Suite の統合 | Microsoft Docs'
 description: Azure Active Directory と webMethods Integration Suite の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 52ad0d0356f4d309db89db6527d7fd2d7dec253d
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92636818"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-webmethods-integration-suite"></a>チュートリアル:Azure Active Directory と webMethods Integration Suite の統合
+# <a name="tutorial-azure-active-directory-integration-with-webmethods-integration-suite"></a>チュートリアル: Azure Active Directory と webMethods Integration Suite の統合
 
 このチュートリアルでは、webMethods Integration Suite と Azure Active Directory (Azure AD) を統合する方法について説明します。
 webMethods Integration Suite と Azure AD の統合には、次の利点があります。
@@ -41,9 +41,9 @@ webMethods Integration Suite と Azure AD の統合を構成するには、次�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* webMethods Integration Suite では、 **SP** と **IDP** によって開始される SSO がサポートされます。
+* webMethods Integration Suite では、**SP** と **IDP** によって開始される SSO がサポートされます。
 
-* webMethods Integration Suite では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます。
+* webMethods Integration Suite では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
 ## <a name="adding-webmethods-integration-suite-from-the-gallery"></a>ギャラリーからの webMethods Integration Suite の追加
 
@@ -63,13 +63,13 @@ Azure AD への webMethods Integration Suite の統合を構成するには、�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **webMethods Integration Suite** 」と入力し、結果パネルで **webMethods Integration Suite** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**webMethods Integration Suite**」と入力し、結果パネルで **webMethods Integration Suite** を選択し、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果一覧の webMethods Integration Suite](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、webMethods Integration Suite で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、webMethods Integration Suite で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと webMethods Integration Suite 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 webMethods Integration Suite で Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -87,7 +87,7 @@ webMethods Integration Suite で Azure AD シングル サインオンを構成�
 
 webMethods Integration Suite で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **webMethods Integration Suite** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **webMethods Integration Suite** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -99,7 +99,7 @@ webMethods Integration Suite で Azure AD シングル サインオンを構成�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **webMethods Integration Suite** を構成する際に、 **[基本的な SAML 構成]** セクションでアプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
+4. **webMethods Integration Suite** を構成する際に、**[基本的な SAML 構成]** セクションでアプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
     ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
@@ -129,7 +129,7 @@ webMethods Integration Suite で Azure AD シングル サインオンを構成�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[webMethods Integration Suite クライアント サポート チーム](https://empower.softwareag.com/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **webMethods API Cloud** を構成するときに、 **[基本的な SAML 構成]** セクションでアプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
+5. **webMethods API Cloud** を構成するときに、**[基本的な SAML 構成]** セクションでアプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
     ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
@@ -192,9 +192,9 @@ webMethods Integration Suite で Azure AD シングル サインオンを構成�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -205,7 +205,7 @@ webMethods Integration Suite で Azure AD シングル サインオンを構成�
 
 このセクションでは、Britta Simon に webMethods Integration Suite へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[webMethods Integration Suite]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[webMethods Integration Suite]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: mvc, subject-armqs, devx-track-azurecli
 ms.date: 06/30/2020
 ms.openlocfilehash: 8cee79efd9be53ddb9d450f643c04f21ae5e7fca
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102213999"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用してロジック アプリ ワークフローを作成してデプロイする
@@ -64,7 +64,7 @@ Azure Logic Apps の他のクイック スタート テンプレートについ�
 
 1. ポータルの **[テンプレートを使用したロジック アプリの作成]** ページで、これらの値を入力するか選択します。
 
-   | プロパティ | [値] | 説明 |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **サブスクリプション** | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションの名前。 |
    | **リソース グループ** | <*Azure-resource-group-name*> | 新規または既存の Azure リソース グループの名前。 この例では、`Check-Azure-Status-RG` を使用します。 |
@@ -186,7 +186,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
    }
    ```
 
-   | プロパティ | [値] | 説明 |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | `location`| <*Azure-region*> | デプロイに使用する Azure リージョン。 この例では、`West US` を使用します。 |
    | `templateLink` : `uri` | <*quickstart-template-URL*> | デプロイに使用するクイック スタート テンプレートの URL の場所: <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json`. |

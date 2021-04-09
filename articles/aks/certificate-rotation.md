@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターで証明書をロー
 services: container-service
 ms.topic: article
 ms.date: 11/15/2019
-ms.openlocfilehash: 1871a8deed4d189534915a9b46b6ace071c1126c
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: fa26762c54ad54835b174b8d814a2e77cb38b885
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181773"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102619037"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での証明書のローテーション
 
@@ -28,8 +28,6 @@ AKS では、次の証明書、証明機関、およびサービス アカウン
 * AKS API サーバーでは、クラスター CA と呼ばれる証明機関 (CA) が作成されます。
 * API サーバーには、API サーバーから kubelets への一方向の通信に使用する証明書に署名するクラスター CA があります。
 * また、各 kubelet では、kubelet から API サーバーへの通信のために、クラスター CA によって署名される証明書署名要求 (CSR) も作成されます。
-* etcd キー値ストアには、etcd から API サーバーへの通信用に、クラスター CA によって署名された証明書が含まれています。
-* etcd キー値ストアでは、AKS クラスター内で etcd レプリカ間のデータ レプリケーションを認証および承認するために証明書に署名する CA が作成されます。
 * API アグリゲーターでは、他の API との通信に証明書を発行するためにクラスター CA が使用されます。 API アグリゲーターでは、これらの証明書を発行するための独自の CA を持つこともできますが、現在はクラスター CA が使用されています。
 * 各ノードでは、クラスター CA によって署名されるサービスア カウント (SA) トークンが使用されます。
 * `kubectl` クライアントには、AKS クラスターと通信するための証明書があります。

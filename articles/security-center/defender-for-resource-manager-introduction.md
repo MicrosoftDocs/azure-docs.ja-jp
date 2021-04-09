@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 922189909da21aac65d1e2e898df58598868b929
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 903853f9f37921a68c918d09a94087548b5c562c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590468"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100663"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>Azure Defender for Resource Manager の概要
 
@@ -27,7 +27,7 @@ ms.locfileid: "100590468"
 |側面|詳細|
 |----|:----|
 |リリース状態:|プレビュー<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
-|価格:|**Azure Defender for Resource Manager** は、[価格ページ](security-center-pricing.md)の記載に基づいて課金されます。|
+|価格:|**Azure Defender for Resource Manager** の課金については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
 
@@ -75,4 +75,4 @@ Azure Defender for Resource Manager からのセキュリティ アラートを�
 - セキュリティ アラートは、Security Center によって生成される場合もあれば、Security Center がさまざまなセキュリティ製品から受信する場合もあります。 それらすべてのアラートを Azure Sentinel、サードパーティの SIEM、またはその他の外部ツールにエクスポートする場合は、[SIEM へのアラートのエクスポート](continuous-export.md)に関するページの手順に従ってください。
 
 - > [!div class="nextstepaction"]
-    > [Azure Defender を有効にする](security-center-pricing.md#enable-azure-defender)
+    > [Azure Defender を有効にする](enable-azure-defender.md)

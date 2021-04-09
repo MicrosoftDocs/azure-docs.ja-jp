@@ -9,10 +9,10 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: cee97fddc619840de821ebb70d32e0cab1bbe040
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "82106527"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack を備えた Azure Logic Apps の EDIFACT メッセージをエンコードする
@@ -64,7 +64,7 @@ Encode EDIFACT Message コネクタでは、EDI およびパートナー固有�
 
 #### <a name="encode-edifact-message-by-agreement-name"></a>契約名による Encode EDIFACT Message
 
-契約名で EDIFACT メッセージをエンコードすることを選択した場合は、 **[EDIFACT 契約の名前]** リストを開き、EDIFACT 契約名を入力または選択します。 エンコードする XML メッセージを入力します。
+契約名で EDIFACT メッセージをエンコードすることを選択した場合は、**[EDIFACT 契約の名前]** リストを開き、EDIFACT 契約名を入力または選択します。 エンコードする XML メッセージを入力します。
 
 ![EDIFACT 契約名とエンコードする XML メッセージの入力](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage6.png)
 

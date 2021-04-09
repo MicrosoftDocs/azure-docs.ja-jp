@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: e5f0fe76b599874afe8d64c293f3d914da5dd243
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 4e82be0e81e5e8c0182e061a0fba0f880bd45cc6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705168"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102632392"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
@@ -22,6 +22,7 @@ geo レプリケートされたレジストリには次の利点があります�
 * ネットワーク上の近い場所のレジストリにアクセスできることで、リージョンのデプロイのパフォーマンスと信頼性が向上する
 * コンテナー ホストと同じまたは隣接するリージョンにあるレプリケートされたローカルのレジストリからイメージ レイヤーをプルすることで、データ転送コストを削減する
 * 複数のリージョンにまたがってレジストリを一元管理できる
+* リージョンの障害が発生した場合のレジストリの復元
 
 > [!NOTE]
 > コンテナー イメージのコピーを複数の Azure コンテナー レジストリに保持する必要がある場合、Azure Container Registry も[イメージのインポート](container-registry-import-images.md)をサポートします。 たとえば DevOps ワークフローでは、Docker コマンドを使用する必要なしに、開発レジストリから運用レジストリにイメージをインポートできます。
@@ -59,6 +60,7 @@ Azure Container Registry の geo レプリケーション機能を使用する�
 * すべてのリージョンで同じイメージ URL (`contoso.azurecr.io/public/products/web:1.2`) が使用されるので、イメージのデプロイの 1 つの構成を管理すれば済む。
 * 1 つのレジストリにプッシュすれば済む。geo レプリケーションは、ACR が管理する。 ACR は一意のレイヤーのみをレプリケートし、リージョン間のデータ転送を削減する。 
 * 特定のレプリカ内のイベントを通知するように、リージョン [Webhook](container-registry-webhook.md) を構成する。
+* リージョンの障害に対して回復性がある高可用性レジストリを提供します。
 
 Azure Container Registry では、耐障害性と可用性に優れた Azure コンテナー レジストリを Azure リージョンに作成するため、[可用性ゾーン](zone-redundancy.md)もサポートされています。 リージョン内の冗長性のための可用性ゾーンと、複数のリージョンをまたぐ geo レプリケーションを組み合わせることで、レジストリの信頼性とパフォーマンスが強化されます。
 

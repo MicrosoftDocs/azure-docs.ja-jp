@@ -3,7 +3,7 @@ title: Azure Portal を使用したストリーミング エンドポイント�
 description: この記事では、Azure portal を使ってストリーミング エンドポイントを管理する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 writer: juliako
 manager: femila
 editor: ''
@@ -13,14 +13,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 496c5de8f9ead0773dfef7e65051344645ffa9de
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: bda244267e81d959abbc4ae0a8532ddce68d5726
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041972"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103017394"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Azure ポータルを使用したストリーミング エンドポイントの管理
 
@@ -99,7 +99,7 @@ Azure ポータルを使用してストリーミング エンドポイントを�
 
 CDN 統合は、中国および連邦政府地域を除くすべての Azure データ センターで有効になります。
 
-これが有効になると、 **Access Control** 、**カスタム ホスト名、および **Akamai 署名認証** 構成は無効になります。
+これが有効になると、**Access Control**、**カスタム ホスト名、および **Akamai 署名認証** 構成は無効になります。
  
 > [!IMPORTANT]
 > Azure CDN との Azure Media Services 統合は、Standard ストリーミング エンドポイント用の **Azure CDN from Verizon** で実装されます。 Premium ストリーミング エンドポイントは、すべての **Azure CDN 価格レベルとプロバイダー** を使用して構成できます。 Azure CDN 機能の詳細については、「 [CDN の概要](../../cdn/cdn-overview.md)」を参照してください。
@@ -109,7 +109,7 @@ CDN 統合は、中国および連邦政府地域を除くすべての Azure デ
 * CDN がストリーミング エンドポイントで有効になっている場合、クライアントは配信元から直接コンテンツを要求することはできません。 CDN の有無にかかわらずコンテンツをテストする必要がある場合は、CDN が有効になっていない別のストリーミング エンドポイントを作成できます。
 * ストリーミング エンドポイントのホスト名は、CDN を有効にした後も変化しません。 CDN を有効にした後、Media Services のワークフローを変更する必要はありません。 たとえば、ストリーミング エンドポイントのホスト名が strasbourg.streaming.mediaservices.windows.net の場合、CDN を有効にした後も同じホスト名が使用されます。
 * 新しいストリーミング エンドポイントの場合は、新しいエンドポイントを作成するだけで CDN を有効にできます。既存のストリーミング エンドポイントの場合は、最初にエンドポイントを停止してから CDN を有効/無効にする必要があります。
-* Standard ストリーミング エンドポイントは、Azure クラシック ポータルを使用して、 **Verizon Standard CDN プロバイダー** でのみ構成できます。 ただし、REST API を使用して、他の Azure CDN プロバイダーを有効にすることは可能です。
+* Standard ストリーミング エンドポイントは、Azure クラシック ポータルを使用して、**Verizon Standard CDN プロバイダー** でのみ構成できます。 ただし、REST API を使用して、他の Azure CDN プロバイダーを有効にすることは可能です。
 
 ## <a name="configure-cdn-profile"></a>CDN プロファイルを構成する
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: f2818965013e44cbbe3202887bf79a737dbbbb58
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: ffdd673cc8a357a7156fb3b3e932c524c831db15
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806964"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103418064"
 ---
 # <a name="public-ip-addresses"></a>パブリック IP アドレス
 
@@ -162,14 +162,17 @@ Azure Load Balancer SKU の詳細については、「[Azure Load Balancer の S
 * Azure 仮想ネットワーク
 * オンプレミス ネットワーク。 
 
-パブリック IP アドレスは、リモート ネットワークとの通信を有効にするために VPN Gateway に割り当てられます。 VPN ゲートウェイに割り当てることができるのは、*動的* 基本パブリック IP アドレスのみです。
+パブリック IP アドレスは、リモート ネットワークとの通信を有効にするために VPN Gateway に割り当てられます。 
+
+* **動的** な Basic パブリック IP を VPNGw 1-5 SKU フロントエンド構成に割り当てます。
+* **静的** な Standard パブリック IP アドレスを VPNGwAZ 1-5 SKU フロントエンド構成に割り当てます。
 
 ## <a name="application-gateways"></a>アプリケーション ゲートウェイ
 
 パブリック IP アドレスをゲートウェイの **フロント エンド** 構成に割り当てることで、Azure [Application Gateway](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関連付けることができます。 
 
 * **動的** な Basic パブリック IP アドレスは、Application Gateway の V1 フロントエンド構成に割り当てます。 
-* **静的** な Standard SKU アドレスは、V2 フロントエンド構成に割り当てます。
+* **静的** な Standard パブリック IP アドレスは、V2 フロントエンド構成に割り当てます。
 
 ## <a name="azure-firewall"></a>Azure Firewall
 

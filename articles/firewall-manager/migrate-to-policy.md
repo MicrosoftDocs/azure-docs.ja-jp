@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 46d24bbbf8e4cbe7e5b253de9e582763cd9424a5
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 68e3035ad4e48df7e615fc3b7161fb8e046032b2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900061"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669816"
 ---
 # <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-using-powershell"></a>PowerShell を使用して Azure Firewall の構成を Azure Firewall ポリシーに移行する
 
@@ -141,7 +141,7 @@ If ($azfw.NetworkRuleCollections.Count -gt 0) {
                 Write-Host "Created network rule " $firewallPolicyNetRule.Name
                 $firewallPolicyNetRules += $firewallPolicyNetRule
                 }
-            $fwpNetRuleCollection = New-AzFirewallPolicyFilterRuleCollection -Name $rc.Name -Priority $rc.Pl.llriority -ActionType $rc.Action.Type -Rule $firewallPolicyNetRules
+            $fwpNetRuleCollection = New-AzFirewallPolicyFilterRuleCollection -Name $rc.Name -Priority $rc.Priority -ActionType $rc.Action.Type -Rule $firewallPolicyNetRules
             Write-Host "Created NetworkRuleCollection "  $fwpNetRuleCollection.Name
         }
         $firewallPolicyNetRuleCollections += $fwpNetRuleCollection

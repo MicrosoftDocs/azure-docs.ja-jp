@@ -1,18 +1,18 @@
 ---
 title: 組み込みのポリシー定義
 description: Azure Synapse Analytics 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 03/05/2021
+ms.date: 03/17/2021
 ms.topic: reference
 author: julieMSFT
 ms.author: jrasnick
 ms.service: synapse-analytics
 ms.custom: subject-policy-reference
-ms.openlocfilehash: d6ad2800c0a223248bfd74b728583e3650395d6d
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 06e42f5a3dd83d534ea4c87b6e148629b8c66b28
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424796"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600185"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-synapse-analytics"></a>Azure Synapse Analytics 用の Azure Policy 組み込み定義 
 

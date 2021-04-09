@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 27a2b764ebf420c91c57c6f5f762f656b1040a91
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 2052669d3d1ae2bdb7aa1687c4dc348c9420d126
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594554"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102615365"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して VM の負荷を分散するパブリック ロード バランサーを作成する
 
@@ -368,7 +368,7 @@ New-AzPublicIpAddress @publicipout
 
 * [Add-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/add-azloadbalancerfrontendipconfig) を使用して、次のように新しいフロントエンド IP 構成を作成します。
 
-* [Add-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/add-azloadbalancerbackendaddresspoolconfig) を使用して、新しいアウトバウンド プールを作成します。 
+* [Add-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/add-azloadbalancerbackendaddresspoolconfig) を使用して、新しい送信バックエンド アドレス プールを作成します。 
 
 * [Set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer) を使用して、次のようにプールおよびフロントエンド IP アドレスをロード バランサーに適用します。
 *  [Add-AzLoadBalancerOutboundRuleConfig](/powershell/module/az.network/new-azloadbalanceroutboundruleconfig) を使用して、次のようにアウトバウンド バックエンド プールの新しいアウトバウンド規則を作成します。 

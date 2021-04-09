@@ -1,14 +1,14 @@
 ---
 title: 推奨セキュリティ プラクティス
 description: Azure Lighthouse を使用する場合、セキュリティとアクセス制御を考慮することが重要です。
-ms.date: 08/12/2020
+ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: ef2c41cf052e5f79ecf4abf01c8f3fab3dd1de14
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3aa50833b547882506bfad125992bb1c2f4e85bc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843725"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103419305"
 ---
 # <a name="recommended-security-practices"></a>推奨セキュリティ プラクティス
 
@@ -47,5 +47,6 @@ ms.locfileid: "94843725"
 
 ## <a name="next-steps"></a>次のステップ
 
+- [セキュリティ ベースライン情報](../security-baseline.md)を確認して、Azure セキュリティ ベンチマークのガイダンスが Azure Lighthouse にどう適用されるかを理解します。
 - [Azure AD Multi-Factor Authentication をデプロイします](../../active-directory/authentication/howto-mfa-getstarted.md)。
 - [テナント間の管理エクスペリエンス](cross-tenant-management-experience.md)について学習します。

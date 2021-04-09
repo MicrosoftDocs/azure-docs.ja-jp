@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 3d663dc4e2bd860ec9494785ecbf6dbf10a4c5b5
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93397758"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>内部ロード バランサー (ILB) を使用した Application Gateway の作成

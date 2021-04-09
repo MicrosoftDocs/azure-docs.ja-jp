@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 77bd5e3b7a258ef83e5de4ec645ea70578fb9dfb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 63a179f7123f088c9c60fbfb8996a5b21d1c704d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657093"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104773268"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC キャッシュを作成する
 
@@ -59,7 +59,7 @@ Azure HPC Cache では、キャッシュ ヒット率を最大限に高めるた
 
 ## <a name="enable-azure-key-vault-encryption-optional"></a>Azure Key Vault の暗号化を有効にする (省略可能)
 
-カスタマー マネージド暗号化キーをサポートしているリージョンにキャッシュがある場合は、 **[キャッシュ]** と **[タグ]** タブの間に **[Disk encryption keys]\(ディスク暗号化キー\)** ページが表示されます。 リージョンのサポートの詳細については、「[リージョン別の提供状況](hpc-cache-overview.md#region-availability)」を参照してください。
+**[Disk encryption keys]\(ディスク暗号化キー\)** ページは **[キャッシュ]** タブと **[タグ]** タブの間に表示されます。<!-- Read [Regional availability](hpc-cache-overview.md#region-availability) to learn more about region support. -->
 
 キャッシュ ストレージで使用する暗号化キーを管理する場合は、 **[Disk encryption keys] (ディスク暗号化キー)** ページで、お使いの Azure Key Vault の情報を入力します。 キー コンテナーは、キャッシュと同じリージョンおよび同じサブスクリプションに存在する必要があります。
 
@@ -133,9 +133,9 @@ nets/<cache_subnet_name>"``
   | キャッシュ サイズ | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
   | 3,072 GB    | 可         | no          | no          |
-  | 6144 GB    | 可         | はい         | no          |
-  | 12288 GB   | 可         | 可         | 可         |
-  | 24576 GB   | Ｘ          | 可         | 可         |
+  | 6144 GB    | はい         | はい         | no          |
+  | 12288 GB   | 可         | はい         | 可         |
+  | 24576 GB   | Ｘ          | はい         | 可         |
   | 49152 GB   | Ｘ          | no          | 可         |
 
   料金、スループット、およびワークフローに応じてキャッシュのサイズを適切に設定する方法については、ポータルの指示タブにある「**キャッシュ容量を設定する**」セクションを参照してください。
@@ -235,7 +235,7 @@ nets/<cache_subnet_name>"`
 
   | キャッシュ サイズ | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
-  | 3,072 GB    | 可         | Ｘ          | no          |
+  | 3,072 GB    | 可         | no          | no          |
   | 6144 GB    | はい         | はい         | no          |
   | 12,288 GB   | はい         | はい         | はい         |
   | 24,576 GB   | no          | はい         | はい         |

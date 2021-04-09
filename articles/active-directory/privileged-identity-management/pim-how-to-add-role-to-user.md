@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 09/16/2020
+ms.date: 02/16/2021
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0e230a975748fe2f737c4b8fe8491887351d387
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fd4374067fe0070c379a76ef5f59bb6aef5b29fc
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004672"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123107"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールを割り当てる
 
@@ -101,7 +101,7 @@ ms.locfileid: "96004672"
 
 ## <a name="update-or-remove-an-existing-role-assignment"></a>既存のロールの割り当てを更新または削除する
 
-既存のロールの割り当てを更新または削除するには、次の手順を実行します。
+既存のロールの割り当てを更新または削除するには、次の手順を実行します。 **Azure AD P2 ライセンス供与されたお客様のみ**:Azure AD と Privileged Identity Management (PIM) の両方を使用して、グループをアクティブとしてロールに割り当てないでください。 詳細については、「[既知の問題](../roles/groups-concept.md#known-issues)」を参照してください。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 

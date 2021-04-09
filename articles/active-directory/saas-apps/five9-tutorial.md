@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 68de5b11c131fe33252178ebecdeb9c3855fe239
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92453435"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>チュートリアル: Azure Active Directory と Five9 Plus Adapter (CTI、Contact Center Agents) の統合
@@ -41,7 +41,7 @@ Five9 Plus Adapter (CTI、Contact Center Agents) と Azure AD の統合を構成
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Five9 Plus Adapter (CTI、Contact Center Agents) では、 **IDP** によって開始される SSO がサポートされます。
+* Five9 Plus Adapter (CTI、Contact Center Agents) では、**IDP** によって開始される SSO がサポートされます。
 
 ## <a name="adding-five9-plus-adapter-cti-contact-center-agents-from-the-gallery"></a>ギャラリーからの Five9 Plus Adapter (CTI、Contact Center Agents) の追加
 
@@ -61,13 +61,13 @@ Azure AD への Five9 Plus Adapter (CTI、Contact Center Agents) の統合を構
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Five9 Plus Adapter (CTI, Contact Center Agents)** 」と入力し、結果パネルから **Five9 Plus Adapter (CTI, Contact Center Agents)** を選択してから **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Five9 Plus Adapter (CTI, Contact Center Agents)**」と入力し、結果パネルから **Five9 Plus Adapter (CTI, Contact Center Agents)** を選択してから **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果の一覧の Five9 Plus Adapter (CTI、Contact Center Agents)](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Five9 Plus Adapter (CTI、Contact Center Agents) で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Five9 Plus Adapter (CTI、Contact Center Agents) で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Five9 Plus Adapter (CTI、Contact Center Agents) の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 Five9 Plus Adapter (CTI、Contact Center Agents) で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
@@ -85,7 +85,7 @@ Five9 Plus Adapter (CTI、Contact Center Agents) で Azure AD のシングル �
 
 Five9 Plus Adapter (CTI、Contact Center Agents) で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/)の **Five9 Plus Adapter (CTI、Contact Center Agents)** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/)の **Five9 Plus Adapter (CTI、Contact Center Agents)** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -157,7 +157,7 @@ Five9 Plus Adapter (CTI、Contact Center Agents) で Azure AD シングル サ�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -169,7 +169,7 @@ Five9 Plus Adapter (CTI、Contact Center Agents) で Azure AD シングル サ�
 
 このセクションでは、Five9 Plus Adapter (CTI、Contact Center Agents) へのアクセスを許可することで、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Five9 Plus Adapter (CTI, Contact Center Agents)]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Five9 Plus Adapter (CTI, Contact Center Agents)]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

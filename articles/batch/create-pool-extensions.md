@@ -4,10 +4,10 @@ description: 拡張機能は、プロビジョニング後の構成とバッチ�
 ms.topic: how-to
 ms.date: 02/10/2021
 ms.openlocfilehash: 1bf9847af57347c143ee3d790d89988ba7cd48e4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100416615"
 ---
 # <a name="use-extensions-with-batch-pools"></a>Batch プールで拡張機能を使用する

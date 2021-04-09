@@ -9,10 +9,10 @@ ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 0fc6a62a94f31617209bcc60bfaa95bc8927551a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86050488"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge モジュールをデプロイする
@@ -35,7 +35,7 @@ ms.locfileid: "86050488"
 
 ### <a name="configure-a-deployment-manifest"></a>配置マニフェストを構成する
 
-配置マニフェストは、デプロイするモジュール、モジュール間でのデータ フロー、およびモジュール ツインの目的のプロパティを記述した JSON ドキュメントです。 Azure portal には、JSON ドキュメントを手動で作成する代わりに配置マニフェストを作成する手順を示すウィザードがあります。  3 つのステップがあります。**モジュールの追加**、**ルートの指定**、および**デプロイの確認**。
+配置マニフェストは、デプロイするモジュール、モジュール間でのデータ フロー、およびモジュール ツインの目的のプロパティを記述した JSON ドキュメントです。 Azure portal には、JSON ドキュメントを手動で作成する代わりに配置マニフェストを作成する手順を示すウィザードがあります。  3 つのステップがあります。**モジュールの追加**、**ルートの指定**、および **デプロイの確認**。
 
 ### <a name="add-modules"></a>モジュールを追加する
 
@@ -86,7 +86,7 @@ ms.locfileid: "86050488"
 ### <a name="verify-your-deployment"></a>デプロイを確認する
 
 1. デプロイを送信すると、自分の IoT ハブの IoT Edge ページに戻ります。
-1. デプロイで対象にした **IoT Edge デバイス**を選択して、その詳細を開きます。
+1. デプロイで対象にした **IoT Edge デバイス** を選択して、その詳細を開きます。
 1. デバイスの詳細で、Event Grid モジュールが **[デプロイで指定]** および **[デバイス別に報告]** の両方として一覧表示されていることを確認します。
 
 モジュールがデバイス上で開始してから IoT Hub にレポートされるまでしばらく時間がかかる場合があります。 ページを更新して、最新の状態を表示します。

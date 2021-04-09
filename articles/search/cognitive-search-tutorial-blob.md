@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/17/2020
 ms.openlocfilehash: 21f0d141567f17c470732088c6a93a2ae7ed3c67
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94738052"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル:REST と AI を使用して Azure Blob から検索可能なコンテンツを生成する
 
-Azure Blob Storage に非構造化テキストまたは画像がある場合、[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)で情報を抽出し、フルテキスト検索やナレッジ マイニングのシナリオに役立つ BLOB から新しいコンテンツを作成することができます。 パイプラインでは画像を処理できますが、この REST チュートリアルではテキストに焦点を当て、言語検出と自然言語処理を適用して、クエリ、ファセット、フィルターで活用できる新しいフィールドを作成します。
+Azure BLOB ストレージに非構造化テキストまたは画像がある場合、[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)で情報を抽出し、フルテキスト検索やナレッジ マイニングのシナリオに役立つ BLOB から新しいコンテンツを作成することができます。 パイプラインでは画像を処理できますが、この REST チュートリアルではテキストに焦点を当て、言語検出と自然言語処理を適用して、クエリ、ファセット、フィルターで活用できる新しいフィールドを作成します。
 
 このチュートリアルでは、Postman と [Search REST API](/rest/api/searchservice/) を使用して次のタスクを実行します。
 

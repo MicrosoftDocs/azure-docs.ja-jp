@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Active Directory と Cisco Umbrella の統合 | Microsoft Docs
-description: Azure Active Directory と Cisco Cloud の間でシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Azure Active Directory と Cisco Umbrella Admin SSO の統合 | Microsoft Docs
+description: Azure Active Directory と Cisco Umbrella Admin SSO の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/09/2021
+ms.date: 03/16/2021
 ms.author: jeedes
-ms.openlocfilehash: cfb8ee9972d19ce07e2d681533d30c4794ddca28
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6073142b21a28f1242e0e6ec65ee2945a354b60b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649073"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592508"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>チュートリアル:Azure Active Directory と Cisco Umbrella の統合
+# <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella-admin-sso"></a>チュートリアル: Azure Active Directory と Cisco Umbrella Admin SSO の統合
 
-このチュートリアルでは、Cisco Umbrella と Azure Active Directory (Azure AD) を統合する方法について説明します。 Cisco Umbrella を Azure AD と統合すると、次のことが可能になります。
+このチュートリアルでは、Cisco Umbrella Admin SSO と Azure Active Directory (Azure AD) を統合する方法について説明します。 Cisco Umbrella Admin SSO を Azure AD と統合すると、次のことが可能になります。
 
-* Cisco Umbrella にアクセスできるユーザーを Azure AD で制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して Cisco Umbrella に自動的にサインインできるように設定できます。
+* Cisco Umbrella Admin SSO にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Cisco Umbrella Admin SSO に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
@@ -31,43 +31,43 @@ ms.locfileid: "101649073"
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* シングル サインオン (SSO) が有効な Cisco Umbrella サブスクリプション。
+* シングル サインオン (SSO) が有効な Cisco Umbrella Admin SSO サブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Cisco Umbrella では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* Cisco Umbrella Admin SSO では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
 
-## <a name="add-cisco-umbrella-from-the-gallery"></a>ギャラリーからの Cisco Umbrella の追加
+## <a name="add-cisco-umbrella-admin-sso-from-the-gallery"></a>ギャラリーからの Cisco Umbrella Admin SSO の追加
 
-Azure AD への Cisco Umbrella の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Cisco Umbrella を追加する必要があります。
+Azure AD への Cisco Umbrella Admin SSO の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Cisco Umbrella Admin SSO を追加する必要があります。
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Cisco Umbrella**」と入力します。
-1. 結果パネルで **[Cisco Umbrella]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Cisco Umbrella Admin SSO**」と入力します。
+1. 結果パネルで **[Cisco Umbrella Admin SSO]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-sso-for-cisco-umbrella"></a>Cisco Umbrella の Azure AD SSO の構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-cisco-umbrella-admin-sso"></a>Cisco Umbrella Admin SSO の Azure AD SSO の構成とテスト
 
-**B.Simon** というテスト ユーザーを使用して、Cisco Umbrella に対する Azure AD SSO を構成してテストします。 SSO を機能させるには、Azure AD ユーザーと Cisco Umbrella の関連ユーザーとの間にリンク関係を確立する必要があります。
+**B.Simon** というテスト ユーザーを使用して、Cisco Umbrella Admin SSO に対する Azure AD SSO を構成してテストします。 SSO を機能させるには、Azure AD ユーザーと Cisco Umbrella Admin SSO の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-Cisco Umbrella に対する Azure AD SSO を構成してテストするには、次の手順を実行します。
+Cisco Umbrella Admin SSO に対する Azure AD SSO を構成してテストするには、次の手順を実行します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[Cisco Umbrella の SSO の構成](#configure-cisco-umbrella-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[Cisco Umbrella のテスト ユーザーの作成](#create-cisco-umbrella-test-user)** - Cisco Umbrella で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[Cisco Umbrella Admin SSO の SSO の構成](#configure-cisco-umbrella-admin-sso-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[Cisco Umbrella Admin SSO のテスト ユーザーの作成](#create-cisco-umbrella-admin-sso-test-user)** - Cisco Umbrella Admin SSO で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. Azure portal の **Cisco Umbrella** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **Cisco Umbrella Admin SSO** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
@@ -85,7 +85,7 @@ Cisco Umbrella に対する Azure AD SSO を構成してテストするには、
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-6. **[Cisco Umbrella のセットアップ]** セクションで、要件のとおりに適切な URL をコピーします。
+6. **[Cisco Umbrella Admin SSO のセットアップ]** セクションで、要件のとおりに適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -103,19 +103,19 @@ Cisco Umbrella に対する Azure AD SSO を構成してテストするには、
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、B.Simon に Cisco Umbrella へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon に Cisco Umbrella Admin SSO へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-1. アプリケーションの一覧で **[Cisco Umbrella]** を選択します。
+1. アプリケーションの一覧で **[Cisco Umbrella Admin SSO]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name="configure-cisco-umbrella-sso"></a>Cisco Umbrella の SSO の構成
+## <a name="configure-cisco-umbrella-admin-sso-sso"></a>Cisco Umbrella Admin SSO の SSO の構成
 
-1. 別の Web ブラウザーのウィンドウで、管理者として Cisco Umbrella 企業サイトにサインオンします。
+1. 別のブラウザーのウィンドウで、管理者として Cisco Umbrella Admin SSO 企業サイトにサインオンします。
 
 2. メニューの左側で **[Admin]\(管理者\)** をクリックして、**[Authentication]\(認証\)** に移動し、**[SAML]** をクリックします。
 
@@ -125,7 +125,7 @@ Cisco Umbrella に対する Azure AD SSO を構成してテストするには、
 
     ![その他](./media/cisco-umbrella-tutorial/other.png)
 
-4. **[Cisco Umbrella Metadata]\(Cisco Umbrella メタデータ\)** ページで、**[NEXT]\(次\)** をクリックします。
+4. **[Cisco Umbrella Admin SSO Metadata]\(Cisco Umbrella Admin SSO メタデータ\)** ページで、 **[NEXT]\(次\)** をクリックします。
 
     ![メタデータ](./media/cisco-umbrella-tutorial/metadata.png)
 
@@ -143,14 +143,14 @@ Cisco Umbrella に対する Azure AD SSO を構成してテストするには、
 
 8. **[保存]** をクリックします。
 
-### <a name="create-cisco-umbrella-test-user"></a>Cisco Umbrella テスト ユーザーの作成
+### <a name="create-cisco-umbrella-admin-sso-test-user"></a>Cisco Umbrella Admin SSO テスト ユーザーの作成
 
-Azure AD ユーザーが Cisco Umbrella にログインできるようにするには、ユーザーを Cisco Umbrella にプロビジョニングする必要があります。  
-Cisco Umbrella の場合、プロビジョニングは手動で行います。
+Azure AD ユーザーが Cisco Umbrella Admin SSO にログインできるようにするには、ユーザーを Cisco Umbrella Admin SSO にプロビジョニングする必要があります。  
+Cisco Umbrella Admin SSO の場合、プロビジョニングは手動で行います。
 
 **ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
-1. 別の Web ブラウザーのウィンドウで、管理者として Cisco Umbrella 企業サイトにサインオンします。
+1. 別のブラウザーのウィンドウで、管理者として Cisco Umbrella Admin SSO 企業サイトにサインオンします。
 
 2. メニューの左側で **[Admin]\(管理者\)** をクリックして、**[Accounts]\(アカウント\)** をクリックします。
 
@@ -180,16 +180,16 @@ Cisco Umbrella の場合、プロビジョニングは手動で行います。
 
 #### <a name="sp-initiated"></a>SP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Cisco Umbrella のサインオン URL にリダイレクトされます。  
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Cisco Umbrella Admin SSO のサインオン URL にリダイレクトされます。  
 
-* Cisco Umbrella のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* Cisco Umbrella Admin SSO のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
 #### <a name="idp-initiated"></a>IDP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Cisco Umbrella に自動的にサインインされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Cisco Umbrella Admin SSO に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Cisco Umbrella] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Cisco Umbrella に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Cisco Umbrella Admin SSO] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Cisco Umbrella Admin SSO に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Cisco Umbrella を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Cisco Umbrella Admin SSO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

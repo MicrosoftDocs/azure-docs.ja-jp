@@ -13,10 +13,10 @@ ms.date: 07/18/2019
 ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: 42ced6632ebfa56af8fe13a02f531b9835e13df3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88799385"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>2 段階認証またはセキュリティ情報を使ったサインイン方法
@@ -32,13 +32,13 @@ ms.locfileid: "88799385"
 
 1. ユーザー名とパスワードを使って、アカウントにサインインします。
 
-2. モバイル デバイスに送信された承認通知から、 **[承認]** を選択します。
+2. モバイル デバイスに送信された承認通知から、**[承認]** を選択します。
 
 ## <a name="sign-in-using-an-authenticator-app-code-on-your-mobile-device"></a>モバイル デバイスの認証アプリのコードを使ってサインインする
 
 1. ユーザー名とパスワードを使って、アカウントにサインインします。
 
-2. 認証アプリを開き、アカウントに対してランダムに生成されたコードを、 **[コードの入力]** ボックスに入力します。
+2. 認証アプリを開き、アカウントに対してランダムに生成されたコードを、**[コードの入力]** ボックスに入力します。
 
 ## <a name="sign-in-using-your-phone-number"></a>電話番号を使ってサインインする
 
@@ -75,7 +75,7 @@ ms.locfileid: "88799385"
 
 なんらかの理由で主要なサインイン方法を使用できない場合は、事前に設定した別の認証方法を使用することができます。
 
-1. 通常どおりアカウントにサインインし、 **[2 段階認証]** ページで **[別の方法でサインイン]** リンクを選択します。
+1. 通常どおりアカウントにサインインし、**[2 段階認証]** ページで **[別の方法でサインイン]** リンクを選択します。
 
     ![サインインの検証方法を変更する](media/security-info/two-factor-auth-signin-another-way.png)
 

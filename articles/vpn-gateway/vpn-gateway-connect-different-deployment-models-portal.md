@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: cherylmc
 ms.openlocfilehash: 9d31bcaad01b9b762e57bd619d45c1f53ffb201e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100376804"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>ポータルを使って異なるデプロイ モデルの仮想ネットワークを接続する
@@ -101,30 +101,30 @@ VPN Gateway と共に VNet を既に使用している場合、そのゲート�
 1. **[すべてのリソース]** に移動し、リスト内で **ClassicVNet** を見つけます。
 2. メニューの **[設定]** セクションで **[ゲートウェイ]** をクリックし、バナーをクリックしてゲートウェイを作成します。
   ![VPN ゲートウェイの構成](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "VPN ゲートウェイの構成")
-3. **[新しい VPN 接続]** ページの **[接続の種類]** で、 **[サイト対サイト]** を選びます。
-4. **[ローカル サイト]** で、 **[必要な設定の構成]** をクリックします。 これにより、 **[ローカル サイト]** ページが開きます。
+3. **[新しい VPN 接続]** ページの **[接続の種類]** で、**[サイト対サイト]** を選びます。
+4. **[ローカル サイト]** で、**[必要な設定の構成]** をクリックします。 これにより、**[ローカル サイト]** ページが開きます。
 5. **[ローカル サイト]** ページで、Resource Manager の VNet を参照するための名前を作成します。 たとえば、「RMVNetLocal」などにします。
-6. Resource Manager VNet の VPN Gateway にパブリック IP アドレスが既にある場合は、 **[VPN ゲートウェイの IP アドレス]** フィールドでその値を使います。 これらの手順を演習として実行しているか、Resource Manager VNet の仮想ネットワーク ゲートウェイがまだない場合、プレースホルダー IP アドレスを作成できます。 プレースホルダー IP アドレスで有効な形式が使われていることを確認します。 後で、プレースホルダー IP アドレスを、Resource Manager 仮想ネットワーク ゲートウェイのパブリック IP アドレスで置き換えます。
+6. Resource Manager VNet の VPN Gateway にパブリック IP アドレスが既にある場合は、**[VPN ゲートウェイの IP アドレス]** フィールドでその値を使います。 これらの手順を演習として実行しているか、Resource Manager VNet の仮想ネットワーク ゲートウェイがまだない場合、プレースホルダー IP アドレスを作成できます。 プレースホルダー IP アドレスで有効な形式が使われていることを確認します。 後で、プレースホルダー IP アドレスを、Resource Manager 仮想ネットワーク ゲートウェイのパブリック IP アドレスで置き換えます。
 7. **[クライアント アドレス空間]** に対しては、Resource Manager VNet の仮想ネットワーク IP アドレス空間の [値](#connectoverview)を使います。 この設定を使用して、Resource Manager 仮想ネットワークにルーティングするアドレス空間を指定します。 この例では、RMVNet のアドレス範囲である 192.168.0.0/16 を使用します。
-8. **[OK]** をクリックして値を保存し、 **[新しい VPN 接続]** ページに戻ります。
+8. **[OK]** をクリックして値を保存し、**[新しい VPN 接続]** ページに戻ります。
 
-### <a name="3-create-the-virtual-network-gateway"></a><a name="classicgw"></a>3.仮想ネットワーク ゲートウェイを作成する
+### <a name="3-create-the-virtual-network-gateway"></a><a name="classicgw"></a>3. 仮想ネットワーク ゲートウェイを作成する
 
-1. **[新しい VPN 接続]** ページで、 **[ゲートウェイをすぐに作成する]** チェック ボックスをオンにします。
-2. **[ゲートウェイの構成 (オプション)]** をクリックして、 **[ゲートウェイの構成]** ページを開きます。
+1. **[新しい VPN 接続]** ページで、**[ゲートウェイをすぐに作成する]** チェック ボックスをオンにします。
+2. **[ゲートウェイの構成 (オプション)]** をクリックして、**[ゲートウェイの構成]** ページを開きます。
 
    ![[ゲートウェイの構成] ページを開く](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "[ゲートウェイの構成] ページを開く")
-3. **[Subnet - Configure required settings]\(サブネット - 必要な設定の構成\)** ページをクリックして、 **[サブネットの追加]** を開きます。 **[名前]** は、必須の値 **GatewaySubnet**。
+3. **[Subnet - Configure required settings]\(サブネット - 必要な設定の構成\)** ページをクリックして、**[サブネットの追加]** を開きます。 **[名前]** は、必須の値 **GatewaySubnet** で既に構成されています。
 4. **[アドレス範囲]** は、ゲートウェイ サブネットの範囲を示します。 /29 アドレス範囲 (3 アドレス) でゲートウェイ サブネットを作成することもできますが、さらに多くの IP アドレスを含むゲートウエイ サブネットを作成することをお勧めします。 これにより、将来の構成でさらに多くの IP アドレスが必要になった場合にも対応できるようになります。 可能であれば、/27 または /28 を使います。 これらの手順を演習として使用している場合は、[例の値](#values)を参照してください。 この例では、10.0.0.32/28 を使用します。 **[OK]** をクリックして、ゲートウェイ サブネットを作成します。
 5. **[ゲートウェイの構成]** ページの **[サイズ]** は、ゲートウェイの SKU を示します。 VPN Gateway のゲートウェイ SKU を選びます。
-6. **[ルーティングの種類]** が **[動的]** であることを確認した後、 **[OK]** をクリックして **[新しい VPN 接続]** ページに戻ります。
-7. **[新しい VPN 接続]** ページで、 **[OK]** をクリックして VPN Gateway の作成を開始します。 VPN Gateway の作成を完了するまでに、最大 45 分かかることがあります。
+6. **[ルーティングの種類]** が **[動的]** であることを確認した後、**[OK]** をクリックして **[新しい VPN 接続]** ページに戻ります。
+7. **[新しい VPN 接続]** ページで、**[OK]** をクリックして VPN Gateway の作成を開始します。 VPN Gateway の作成を完了するまでに、最大 45 分かかることがあります。
 
 ### <a name="4-copy-the-virtual-network-gateway-public-ip-address"></a><a name="ip"></a>4.仮想ネットワーク ゲートウェイのパブリック IP アドレスをコピーする
 
 仮想ネットワーク ゲートウェイが作成されると、ゲートウェイ IP アドレスを確認できます。 
 
-1. クラシック VNet に移動し、 **[概要]** をクリックします。
+1. クラシック VNet に移動し、**[概要]** をクリックします。
 2. **[VPN 接続]** をクリックして、[VPN 接続] ページを開きます。 [VPN 接続] ページで、パブリック IP アドレスを確認できます。 これは、仮想ネットワーク ゲートウェイに割り当てられたパブリック IP アドレスです。 IP アドレスを書き留めておきます。 後で、Resource Manager ローカル ネットワーク ゲートウェイの構成を設定するときに使います。 
 3. ゲートウェイ接続の状態を見ることができます。 作成したローカル ネットワーク サイトが [接続中] になっていることに注意してください。 接続を作成すると、状態が変化します。 状態の表示を確認したらこのページを閉じます。
 
@@ -166,9 +166,9 @@ Resource Manager VNet を所有しておらず、これらの手順を演習と�
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-### <a name="3-create-a-local-network-gateway"></a><a name="createlng"></a>3.ローカル ネットワーク ゲートウェイの作成
+### <a name="3-create-a-local-network-gateway"></a><a name="createlng"></a>3. ローカル ネットワーク ゲートウェイの作成
 
-**値の例:** Local network gateway = ClassicVNetLocal
+**例の値:** ローカル ネットワーク ゲートウェイ = ClassicVNetLocal
 
 | Virtual Network | アドレス空間 | リージョン | ローカル ネットワーク サイトへの接続 |ゲートウェイのパブリック IP アドレス|
 |:--- |:--- |:--- |:--- |:--- |
@@ -184,14 +184,14 @@ Resource Manager VNet を所有しておらず、これらの手順を演習と�
 このセクションでは、ローカル サイト設定を指定するときに使用したプレースホルダー IP アドレスを、Resource Manager VPN Gateway の IP アドレスで置き換えます。 このセクションでは、クラシック (SM) PowerShell コマンドレットを使います。
 
 1. Azure Portal でクラシック仮想ネットワークに移動します。
-2. 仮想ネットワークのページで、 **[概要]** をクリックします。
+2. 仮想ネットワークのページで、**[概要]** をクリックします。
 3. **[VPN 接続]** セクションのグラフィックで、ローカル サイトの名前をクリックします。
 
    ![VPN 接続](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN 接続")
 4. **[サイト対サイト VPN 接続]** ページで、サイトの名前をクリックします。
 
    ![サイト名](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "ローカル サイト名")
-5. ローカル サイトの接続ページで、ローカル サイトの名前をクリックして、 **[ローカル サイト]** ページを開きます。
+5. ローカル サイトの接続ページで、ローカル サイトの名前をクリックして、**[ローカル サイト]** ページを開きます。
 
    ![[ローカル サイト] を開く](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "ローカル サイトを開く")
 6. **[ローカル サイト]** ページで、**VPN Gateway の IP アドレス** を、Resource Manager ゲートウェイの IP アドレスで置き換えます。
@@ -204,12 +204,12 @@ Resource Manager VNet を所有しておらず、これらの手順を演習と�
 次の手順では、Azure Portal を使用して、Resource Manager VNet からクラシック VNet への接続を構成します。
 
 1. **[すべてのリソース]** で、ローカル ネットワーク ゲートウェイを見つけます。 この例では、ローカル ネットワーク ゲートウェイは **ClassicVNetLocal** です。
-2. **[構成]** をクリックし、IP アドレス値がクラシック VNet の VPN Gateway であることを確認します。 必要に応じて更新し、 **[保存]** をクリックします。 ページを閉じます。
+2. **[構成]** をクリックし、IP アドレス値がクラシック VNet の VPN Gateway であることを確認します。 必要に応じて更新し、**[保存]** をクリックします。 ページを閉じます。
 3. **[すべてのリソース]** で、ローカル ネットワーク ゲートウェイをクリックします。
 4. **[接続]** をクリックして、[接続] ページを開きます。
-5. **[接続]** ページで、 **[+]** をクリックして接続を追加します。
+5. **[接続]** ページで、**[+]** をクリックして接続を追加します。
 6. **[接続の追加]** ページで、接続に名前を付けます。 たとえば、「RMtoClassic」のようにします。
-7. このページでは、 **[サイト対サイト]** が既に選択されています。
+7. このページでは、**[サイト対サイト]** が既に選択されています。
 8. このサイトに関連付ける仮想ネットワーク ゲートウェイを選択します。
 9. **共有キー** を作成します。 このキーは、クラシック VNet から Resource Manager VNet に作成する接続でも使用されます。 キーは、生成することも、作成することもできます。 この例では "abc123" を使いますが、さらに複雑な値を使うこともできます (推奨)。
 10. **[OK]** をクリックして、接続を作成します。
@@ -258,7 +258,7 @@ Select-AzureSubscription -SubscriptionName "Name of subscription"
 
 ### <a name="2-view-the-network-configuration-file-values"></a>2.ネットワーク構成ファイルの値を表示する
 
-Azure Portal で VNet を作成するときには、Azure で使用される完全名は Azure Portal に表示されません。 たとえば、Azure Portal に "ClassicVNet" という名前で表示されている VNet が、ネットワーク構成ファイルではそれよりもかなり長い名前である可能性があります。 名前は次のように表示されます。'Group ClassicRG ClassicVNet' 次の手順では、ネットワーク構成ファイルをダウンロードして、値を表示します。
+Azure Portal で VNet を作成するときには、Azure で使用される完全名は Azure Portal に表示されません。 たとえば、Azure Portal に "ClassicVNet" という名前で表示されている VNet が、ネットワーク構成ファイルではそれよりもかなり長い名前である可能性があります。 つまり、実際には "Group ClassicRG ClassicVNet" のような名前である場合があります。 次の手順では、ネットワーク構成ファイルをダウンロードして、値を表示します。
 
 コンピューターにディレクトリを作成し、ネットワーク構成ファイルをそのディレクトリにエクスポートします。 次の例では、ネットワーク構成ファイルは C:\AzureNet にエクスポートされます。
 
@@ -275,7 +275,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 
 共有キーを設定し、クラシック VNet から Resource Manager VNet への接続を作成します。 ポータルを使用して共有キーを設定することはできません。 次の手順を実行するときは、クラシック バージョンの PowerShell コマンドレットを使用してログインします。 それには、**Add-azureaccount** を使用します。 それ以外の場合は、"-AzureVNetGatewayKey" を設定できません。
 
-- この例では、 **-VNetName** はクラシック VNet の名前で、ネットワーク構成ファイルに示されているとおりです。 
+- この例では、**-VNetName** はクラシック VNet の名前で、ネットワーク構成ファイルに示されているとおりです。 
 - **-LocalNetworkSiteName** はローカル サイトに指定した名前で、ネットワーク構成ファイルに示されているとおりです。
 - **-SharedKey** は、生成および指定する値です。 この例では *abc123* を使いましたが、さらに複雑な値を生成できます。 ここに指定する値は、Resource Manager からクラシックへの接続を作成するときに指定したものと同じ値である必要があります。
 

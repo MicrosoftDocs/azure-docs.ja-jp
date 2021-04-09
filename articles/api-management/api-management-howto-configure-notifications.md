@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 786a9e26003a7afb98307e0bd7fae94c42a2f00d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84690304"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Azure API Management で通知と電子メール テンプレートを構成する方法
@@ -75,9 +75,9 @@ API Management には、サービスの管理および使用に関連して送�
 
 これらのテンプレートは、必要に応じて変更できます。
 
-API Management インスタンスの電子メール テンプレートを表示および構成するには、 **[通知テンプレート]** をクリックします。
+API Management インスタンスの電子メール テンプレートを表示および構成するには、**[通知テンプレート]** をクリックします。
 
-![Email templates][api-management-email-templates]
+![電子メール テンプレート][api-management-email-templates]
 
 それぞれの電子メール テンプレートは、件名がプレーンテキスト形式で記述され、本文定義が HTML 形式で記述されています。 必要に応じてそれぞれの項目をカスタマイズできます。
 
@@ -88,7 +88,7 @@ API Management インスタンスの電子メール テンプレートを表示�
 > [!NOTE]
 > プレビュー時またはテスト用のメールの送信時は、パラメーターは実際の値に置き換えられません。
 
-電子メール テンプレートに加えた変更を保存するには、 **[保存]** をクリックします。変更を取り消すには、 **[破棄]** をクリックします。
+電子メール テンプレートに加えた変更を保存するには、**[保存]** をクリックします。変更を取り消すには、**[破棄]** をクリックします。
 
 [api-management-management-console]: ./media/api-management-howto-configure-notifications/api-management-management-console.png
 [api-management-publisher-notifications]: ./media/api-management-howto-configure-notifications/api-management-publisher-notifications.png

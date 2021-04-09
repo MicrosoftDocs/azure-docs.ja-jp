@@ -8,10 +8,10 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: c4635333614ee1c0fd0322c29a659380fb4315c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74048374"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-portal"></a>Azure portal を使用した Web アプリケーション ファイアウォール規則のカスタマイズ
@@ -26,8 +26,8 @@ Azure Application Gateway Web アプリケーション ファイアウォール 
 ## <a name="view-rule-groups-and-rules"></a>ルール グループとルールの表示
 
 **ルール グループとルールを表示するには**
-1. アプリケーション ゲートウェイに移動し、 **[Web アプリケーション ファイアウォール]** を選択します。  
-2. お使いの **WAF ポリシー**を選択します。
+1. アプリケーション ゲートウェイに移動し、**[Web アプリケーション ファイアウォール]** を選択します。  
+2. お使いの **WAF ポリシー** を選択します。
 2. **[管理されているルール]** を選択します。
 
    このビューでは、選択されたルール セットによって提供されるすべてのルール グループのテーブルがページに表示されます。 すべてのルールのチェック ボックスが選択されています。
@@ -59,7 +59,7 @@ Azure Application Gateway Web アプリケーション ファイアウォール 
 * 要求本文 (ファイルを含む) のサイズが制限を超えている場合
 * WAF エンジンで内部エラーが発生した場合
 
-CRS 3.x 固有:
+CRS 3.x 固有: 
 
 * インバウンド異常スコアがしきい値を超えました
 

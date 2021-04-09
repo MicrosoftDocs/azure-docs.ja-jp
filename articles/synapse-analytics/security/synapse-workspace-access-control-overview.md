@@ -10,10 +10,10 @@ ms.date: 12/03/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: 20614b1c397bdf24e807d48d3de33f0033da14bc
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100105115"
 ---
 # <a name="synapse-access-control"></a>Synapse アクセス制御 

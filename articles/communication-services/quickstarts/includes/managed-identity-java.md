@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: bb3925c5c642f2a6d00f8f5b7fe6471676c23c30
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: f2e4bf603fa4cfb93c7ca51f64029ccaedcff727
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486621"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103021498"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-java"></a>Communication Services ソリューションにマネージド ID を追加する (Java)
 
@@ -15,12 +15,12 @@ pom.xml ファイルで、依存関係のグループに、次の dependency 要
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-identity</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-beta.6</version>
 </dependency>
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-sms</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-beta.4</version>
 </dependency>
 <dependency>
     <groupId>com.azure</groupId>
@@ -34,10 +34,17 @@ pom.xml ファイルで、依存関係のグループに、次の dependency 要
 Azure ID と Azure Communication クライアント ライブラリを使用するには、次の `import` ディレクティブをコードに追加します。
 
 ```java
-import com.azure.identity.*;
-import com.azure.communication.sms.*;
-import com.azure.communication.identity.*;
 import com.azure.communication.common.*;
+import com.azure.communication.identity.*;
+import com.azure.communication.identity.models.*;
+import com.azure.communication.sms.*;
+import com.azure.core.credential.*;
+import com.azure.core.http.*;
+import com.azure.core.http.netty.*;
+import com.azure.identity.*;
+
+import java.io.IOException;
+import java.util.*;
 ```
 
 下の例では [DefaultAzureCredential](/java/api/azure.identity.defaultazurecredential) が使用されています。 この資格情報は、運用と開発の各環境に適しています。
@@ -88,12 +95,12 @@ import com.azure.communication.common.*;
                .buildClient();
 
           // Send the message and check the response for a message id
-          SendSmsResponse response = smsClient.sendMessage(
-               new PhoneNumberIdentifier("<leased-phone-number>"),
-               to,
-               "your message",
-               options /* Optional */
+          SmsSendResult response = smsClient.send(
+               "<from-phone-number>",
+               "<to-phone-number>",
+               "your message"
           );
+
           return response;
     }
 ```

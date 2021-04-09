@@ -11,12 +11,12 @@ ms.author: nilsp
 author: NilsPohlmann
 ms.date: 07/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: e2b5a3322f633ca8301357c2186d78d3ac437ae2
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 2a92fa8fd242482585ab3785e99f8239548ce369
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521970"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868343"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>YAML で機械学習パイプラインを定義する
 
@@ -120,7 +120,7 @@ pipeline:
 | YAML キー | 説明 |
 | ----- | ----- |
 | `script_name` | U-SQL スクリプトの名前 (`source_directory` からの相対名)。 |
-| `compute_target` | このステップで使用する Azure Data Lake コンピューティング先。 |
+| `compute` | このステップで使用する Azure Data Lake コンピューティング先。 |
 | `parameters` | パイプラインへの[パラメーター](#parameters)。 |
 | `inputs` | 入力は、[InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)、または [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset) のいずれかです。 |
 | `outputs` | 出力は、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) か [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding) のどちらかです。 |
@@ -170,7 +170,7 @@ pipeline:
 
 | YAML キー | 説明 |
 | ----- | ----- |
-| `compute_target` | このステップで使用する Azure Batch コンピューティング先。 |
+| `compute` | このステップで使用する Azure Batch コンピューティング先。 |
 | `inputs` | 入力は、[InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)、または [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset) のいずれかです。 |
 | `outputs` | 出力は、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) か [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding) のどちらかです。 |
 | `source_directory` | モジュール バイナリ、実行可能ファイル、アセンブリなどを格納するディレクトリ。 |
@@ -224,7 +224,7 @@ pipeline:
 
 | YAML キー | 説明 |
 | ----- | ----- |
-| `compute_target` | このステップで使用する Azure Databricks コンピューティング先。 |
+| `compute` | このステップで使用する Azure Databricks コンピューティング先。 |
 | `inputs` | 入力は、[InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)、または [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset) のいずれかです。 |
 | `outputs` | 出力は、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) か [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding) のどちらかです。 |
 | `run_name` | この実行の Databricks 内の名前。 |
@@ -278,7 +278,7 @@ pipeline:
 
 | YAML キー | 説明 |
 | ----- | ----- |
-| `compute_target` | このステップで使用する Azure Data Factory コンピューティング先。 |
+| `compute` | このステップで使用する Azure Data Factory コンピューティング先。 |
 | `source_data_reference` | データ転送操作のソースとして機能する入力接続。 サポートされている値は、[InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)、または [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset) です。 |
 | `destination_data_reference` | データ転送操作の転送先として機能する入力接続。 サポートされている値は、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) と [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding) です。 |
 | `allow_reuse` | 同じ設定でもう一度実行されたときに、ステップで前の結果を再利用するかどうかを決定します。 |

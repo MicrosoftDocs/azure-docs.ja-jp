@@ -4,10 +4,10 @@ description: シークレット ボリュームをマウントし、コンテナ
 ms.topic: article
 ms.date: 07/02/2020
 ms.openlocfilehash: ea82ba5994feaf102d4622eada284df431e004d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86169563"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Azure Container Instances にシークレット ボリュームをマウントする
@@ -57,7 +57,7 @@ Bye.
 
 Azure CLI と [YAML テンプレート](container-instances-multi-container-yaml.md)を使ってコンテナー グループをデプロイすることもできます。 複数のコンテナーから成るコンテナー グループをデプロイするときは、YAML テンプレートによるデプロイ方法が推奨されます。
 
-YAML テンプレートを使ってデプロイするときは、テンプレート内のシークレット値が **Base64 でエンコード**されている必要があります。 ただしコンテナーのファイル内では、シークレット値がプレーンテキストで表示されます。
+YAML テンプレートを使ってデプロイするときは、テンプレート内のシークレット値が **Base64 でエンコード** されている必要があります。 ただしコンテナーのファイル内では、シークレット値がプレーンテキストで表示されます。
 
 以下の YAML テンプレートは、"*シークレット*" ボリュームを `/mnt/secrets` でマウントするコンテナーを 1 つ含んだコンテナー グループを定義しています。 このシークレット ボリュームには、シークレットを含む "mysecret1" と "mysecret2" の 2 つのファイルがあります。
 
@@ -103,7 +103,7 @@ az container create \
 
 コンテナー グループは、CLI と YAML によるデプロイに加え、Azure [Resource Manager テンプレート](/azure/templates/microsoft.containerinstance/containergroups)を使ってデプロイすることもできます。
 
-最初に、テンプレートのコンテナー グループ `properties` セクションに `volumes` 配列を入力します。 Resource Manager テンプレートを使ってデプロイするときは、テンプレート内のシークレット値が **Base64 でエンコード**されている必要があります。 ただしコンテナーのファイル内では、シークレット値がプレーンテキストで表示されます。
+最初に、テンプレートのコンテナー グループ `properties` セクションに `volumes` 配列を入力します。 Resource Manager テンプレートを使ってデプロイするときは、テンプレート内のシークレット値が **Base64 でエンコード** されている必要があります。 ただしコンテナーのファイル内では、シークレット値がプレーンテキストで表示されます。
 
 次に、*シークレット* ボリュームをマウントするコンテナー グループ内の各コンテナーに対して、コンテナー定義の `properties` セクションで `volumeMounts` 配列を設定します。
 

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/08/2021
+ms.date: 03/09/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5cf43310c68c8446b9465a39d85f84c8273a68d8
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 24d955b0d1c53f57f5927f9e893b6ecd75fb3ca8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051226"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102561893"
 ---
 # <a name="storage-account-overview"></a>ストレージ アカウントの概要
 
@@ -71,7 +71,7 @@ Azure Storage の冗長オプションの詳細については、「[Azure Stora
 - テーブル
 
 > [!NOTE]
-> Microsoft では、ほとんどのシナリオで汎用 v2 ストレージ アカウントを使用することをお勧めしています。 汎用 v1 または BLOB ストレージ アカウントは汎用 v2 アカウントに簡単にアップグレードできます。そのとき、ダウンタイムは発生せず、データをコピーする必要はありません。
+> Microsoft では、ほとんどのシナリオで汎用 v2 ストレージ アカウントを使用することをお勧めしています。 汎用 v1 または BLOB ストレージ アカウントは汎用 v2 アカウントに簡単にアップグレードできます。そのとき、ダウンタイムは発生せず、データをコピーする必要はありません。 ただし、アップグレードを元に戻すことはできません。
 >
 > 汎用 v2 アカウントへのアップグレードの詳細については、[汎用 v2 ストレージ アカウントへのアップグレード](storage-account-upgrade.md)に関する記事を参照してください。
 
@@ -87,13 +87,18 @@ Azure Storage の冗長オプションの詳細については、「[Azure Stora
 - キュー
 - テーブル
 
-ほとんどのシナリオで汎用 v2 アカウントをお勧めします。 これらのシナリオでは、汎用 v1 アカウントを使用できます：
+これらのシナリオでは、汎用 v1 アカウントを使用できます：
 
 - アプリケーションで、Azure クラシック デプロイ モデルが必要である。 汎用 v2 アカウントと BLOB ストレージ アカウントは、Azure Resource Manager デプロイ モデルのみをサポートします。
 
 - アプリケーションは、トランザクション集中型であるか、かなり geo レプリケーション帯域幅を使用しますが、大容量は必要ありません。 この場合は、汎用 v1 が最も経済的な選択肢になる可能性があります。
 
 - 2014-02-14 より前の [Storage Services REST API](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) バージョンを使用しているか、4.x より前のクライアント ライブラリ バージョンを使用しています。 アプリケーションをアップグレードできません。
+
+> [!NOTE]
+> Microsoft ではほとんどのシナリオで汎用 v2 アカウントを推奨していますが、Microsoft では新規および既存のお客様向けに汎用 v1 アカウントを引き続きサポートしています。 これらのリージョンで Azure Storage を利用できる場合は常に、新しいリージョンに汎用 v1 ストレージ アカウントを作成できます。 Microsoft では、現時点で汎用 v1 アカウントのサポートを廃止する予定はなく、Azure Storage 機能のサポート終了の少なくとも 1 年前に事前通知する予定です。 Microsoft では、汎用 v1 アカウントのセキュリティ更新プログラムを引き続き提供しますが、このアカウントの種類に対して新しい機能の開発は予定されていません。
+>
+> 2020 年 10 月 1 日の時点で、新しい Azure Storage リージョンでの汎用 v1 アカウントの価格は、これらのリージョンの汎用 v2 アカウントの料金と同じです。 既存の Azure Storage リージョンの価格は変更されていません。 特定のリージョンの汎用 v1 アカウントの価格の詳細については、Azure Storage の価格ページを参照してください。 リージョンを選択し、 **[価格プラン]** の横にある **[その他]** を選択してください。
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage アカウント
 

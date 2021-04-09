@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 414487d460d897eff787b11915db560706b29eb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86171756"
 ---
 # <a name="rest-api"></a>REST API
@@ -86,7 +86,7 @@ Event Grid on IoT Edge には、HTTP (ポート 5888) と HTTPS (ポート 4438)
     }
 ```
 
-**応答**:HTTP 200
+**応答**: HTTP 200
 
 **ペイロード**:
 
@@ -107,7 +107,7 @@ Event Grid on IoT Edge には、HTTP (ポート 5888) と HTTPS (ポート 4438)
 
 **要求**: ``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**応答**:HTTP 200
+**応答**: HTTP 200
 
 **ペイロード**:
 ```json
@@ -127,7 +127,7 @@ Event Grid on IoT Edge には、HTTP (ポート 5888) と HTTPS (ポート 4438)
 
 **要求**: ``` GET /topics?api-version=2019-01-01-preview ```
 
-**応答**:HTTP 200
+**応答**: HTTP 200
 
 **ペイロード**:
 ```json
@@ -159,7 +159,7 @@ Event Grid on IoT Edge には、HTTP (ポート 5888) と HTTPS (ポート 4438)
 
 **要求**: ``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**応答**:HTTP 200、空のペイロード
+**応答**: HTTP 200、空のペイロード
 
 ## <a name="manage-event-subscriptions"></a>イベント サブスクリプションの管理
 このセクションのサンプルでは、`EndpointType=Webhook;` を使用しています。 `EndpointType=EdgeHub / EndpointType=EventGrid` の json サンプルは、次のセクションにあります。 
@@ -266,7 +266,7 @@ Event Grid on IoT Edge には、HTTP (ポート 5888) と HTTPS (ポート 4438)
 }
 ```
 
-**応答**:HTTP 200
+**応答**: HTTP 200
 
 **ペイロード**:
 
@@ -373,7 +373,7 @@ Event Grid on IoT Edge には、HTTP (ポート 5888) と HTTPS (ポート 4438)
 
 **要求**: ``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**応答**:HTTP 200
+**応答**: HTTP 200
 
 **ペイロード**:
 ```json
@@ -478,7 +478,7 @@ Event Grid on IoT Edge には、HTTP (ポート 5888) と HTTPS (ポート 4438)
 
 **要求**: ``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
 
-**応答**:HTTP 200
+**応答**: HTTP 200
 
 **ペイロード**:
 ```json
@@ -496,7 +496,7 @@ Event Grid on IoT Edge には、HTTP (ポート 5888) と HTTPS (ポート 4438)
 
 **要求**: ``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**応答**:HTTP 200、ペイロードなし
+**応答**: HTTP 200、ペイロードなし
 
 
 ## <a name="publish-events-api"></a>イベント発行 API
@@ -521,7 +521,7 @@ Event Grid on IoT Edge には、HTTP (ポート 5888) と HTTPS (ポート 4438)
 ]
 ```
 
-**応答**:HTTP 200、空のペイロード
+**応答**: HTTP 200、空のペイロード
 
 
 **ペイロードのフィールドの説明**
@@ -546,7 +546,7 @@ Event Grid on IoT Edge には、HTTP (ポート 5888) と HTTPS (ポート 4438)
 ]
 ```
 
-**応答**:HTTP 200、空のペイロード
+**応答**: HTTP 200、空のペイロード
 
 
 **ペイロードの制限**

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: e7e8d51b8227acd033c95583d6e61d78a56d62a3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6f073777930b4d026d826d2c3586e0886f906206
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590282"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102503081"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 この記事では、VM とオペレーティング システムのセキュリティに関するベスト プラクティスについて説明します。
@@ -63,7 +63,7 @@ VM 保護の第一歩は、承認されたユーザーのみが新しい VM を�
 組織は、VM へのアクセスと設定を制御することで、VM の総合的なセキュリティを向上させることができます。
 
 ## <a name="use-multiple-vms-for-better-availability"></a>可用性を高めるために複数の VM を使用する
-高可用性を必要とする重要なアプリケーションが仮想マシンで実行されている場合は、複数の VM を使うことを強くお勧めします。 可用性を高めるには、[可用性セット](../../virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)または可用性[ゾーン](../../availability-zones/az-overview.md)を使用します。
+高可用性を必要とする重要なアプリケーションが仮想マシンで実行されている場合は、複数の VM を使うことを強くお勧めします。 可用性を高めるには、[可用性セット](../../virtual-machines/availability-set-overview.md)または可用性[ゾーン](../../availability-zones/az-overview.md)を使用します。
 
 可用性セットは、Azure で使用できる論理グループであり、グループに配置された VM リソースは、Azure データ センター内にデプロイされるときに互いに分離されます。 Azure では、可用性セット内に配置された VM は、複数の物理サーバー、コンピューティング ラック、ストレージ ユニット、およびネットワーク スイッチ間で実行されることが保証されます。 ハードウェアまたは Azure ソフトウェアの障害が発生した場合に影響を受けるのは VM のサブセットに限定され、顧客は引き続きアプリケーション全体を利用できます。 可用性セットは、信頼性の高いクラウド ソリューションを構築する際に不可欠な機能です。
 

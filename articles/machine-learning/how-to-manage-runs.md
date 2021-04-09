@@ -9,26 +9,30 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 12/04/2020
+ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 3eaab31d3948e41a216eaa402c2a11e470a6545d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 977498abb17fe592cef344f407a662d3b79749b7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691503"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102634788"
 ---
-# <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python でのトレーニングの実行の開始、監視、およびキャンセル
+# <a name="start-monitor-and-track-runs"></a>実行の開始、監視および追跡 
 
-[Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)、[Machine Learning CLI](reference-azure-machine-learning-cli.md)、および [Azure Machine Learning Studio](https://ml.azure.com) には、自分のトレーニングおよび実験の実行を、監視、整理、管理するさまざまな方法があります。
+[Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro)、[Machine Learning CLI](reference-azure-machine-learning-cli.md)、および [Azure Machine Learning Studio](https://ml.azure.com) には、自分のトレーニングおよび実験の実行を、監視、整理、管理するさまざまな方法があります。
 
 この記事では、次のタスクの例を示します。
 
 * 実行のパフォーマンスの監視。
+* 電子メール通知による実行状態の監視。
+* 実行のタグ付けおよび検索。
+* 実行の説明の追加。 
+* 検索の実行。 
 * 実行のキャンセルまたは失敗。
 * 子実行の作成。
-* 実行のタグ付けおよび検索。
+ 
 
 > [!TIP]
 > Azure Machine Learning service および関連する Azure サービスの監視の詳細については、[Azure Machine Learning を監視する方法](monitor-azure-machine-learning.md)に関する記事を参照してください。
@@ -42,7 +46,7 @@ ms.locfileid: "101691503"
 
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)。
 
-* Azure Machine Learning SDK for Python (バージョン 1.0.21 以降)。 SDK の最新バージョンのインストールまたは最新バージョンへの更新を行うには、[SDK のインストールまたは更新](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)に関する記事を参照してください。
+* Azure Machine Learning SDK for Python (バージョン 1.0.21 以降)。 SDK の最新バージョンのインストールまたは最新バージョンへの更新を行うには、[SDK のインストールまたは更新](/python/api/overview/azure/ml/install)に関する記事を参照してください。
 
     お使いの Azure Machine Learning SDK のバージョンを確認するには、次のコードを使用します。
 
@@ -52,13 +56,14 @@ ms.locfileid: "101691503"
 
 * [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) と [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 
+
 ## <a name="monitor-run-performance"></a>実行のパフォーマンスの監視
 
 * 実行とそのロギング プロセスを開始する
 
     # <a name="python"></a>[Python](#tab/python)
     
-    1. お使いの実験を設定するには、[azureml.core](/python/api/azureml-core/azureml.core?preserve-view=true&view=azure-ml-py) パッケージから [Workspace](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py)、[Experiment](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py)、[Run](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) および [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) クラスをインストールします。
+    1. お使いの実験を設定するには、[azureml.core](/python/api/azureml-core/azureml.core) パッケージから [Workspace](/python/api/azureml-core/azureml.core.workspace.workspace)、[Experiment](/python/api/azureml-core/azureml.core.experiment.experiment)、[Run](/python/api/azureml-core/azureml.core.run%28class%29) および [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) クラスをインストールします。
     
         ```python
         import azureml.core
@@ -69,7 +74,7 @@ ms.locfileid: "101691503"
         exp = Experiment(workspace=ws, name="explore-runs")
         ```
     
-    1. [`start_logging()`](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) メソッドを使用して、そのログ プロセスを開始および実行します。
+    1. [`start_logging()`](/python/api/azureml-core/azureml.core.experiment%28class%29#start-logging--args----kwargs-) メソッドを使用して、そのログ プロセスを開始および実行します。
     
         ```python
         notebook_run = exp.start_logging()
@@ -107,11 +112,15 @@ ms.locfileid: "101691503"
         > [!TIP]
         > `az ml folder attach` コマンドで、2 つのサンプル runconfig ファイルを含む `.azureml` サブディレクトリが作成されました。
         >
-        > プログラムで実行構成オブジェクトを作成する Python スクリプトがある場合は、[RunConfig.save()](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=truesave-path-none--name-none--separate-environment-yaml-false-) を使用してそれを runconfig ファイルとして保存できます。
+        > プログラムで実行構成オブジェクトを作成する Python スクリプトがある場合は、[RunConfig.save()](/python/api/azureml-core/azureml.core.runconfiguration#save-path-none--name-none--separate-environment-yaml-false-) を使用してそれを runconfig ファイルとして保存できます。
         >
         > runconfig ファイルのその他の例については、[https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) を参照してください。
     
         詳しくは、「[az ml run submit-script](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)」をご覧ください。
+
+    # <a name="studio"></a>[スタジオ](#tab/azure-studio)
+
+    Azure Machine Learning デザイナーでモデルをトレーニングする例については、「[チュートリアル: デザイナーを使用して自動車の価格を予測する](tutorial-designer-automobile-price-train-score.md)」を参照してください。
 
     ---
 
@@ -119,19 +128,19 @@ ms.locfileid: "101691503"
 
     # <a name="python"></a>[Python](#tab/python)
     
-    * [`get_status()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-status--) メソッドを使用して実行の状態を取得します。
+    * [`get_status()`](/python/api/azureml-core/azureml.core.run%28class%29#get-status--) メソッドを使用して実行の状態を取得します。
     
         ```python
         print(notebook_run.get_status())
         ```
     
-    * 実行 ID、実行時間、および実行に関する追加の詳細を取得するには、[`get_details()`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--) メソッドを使用します。
+    * 実行 ID、実行時間、および実行に関する追加の詳細を取得するには、[`get_details()`](/python/api/azureml-core/azureml.core.workspace.workspace#get-details--) メソッドを使用します。
     
         ```python
         print(notebook_run.get_details())
         ```
     
-    * 自分の実行が正常に終了したら、[`complete()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) メソッドを使用し、それを完了とマークします。
+    * 自分の実行が正常に終了したら、[`complete()`](/python/api/azureml-core/azureml.core.run%28class%29#complete--set-status-true-) メソッドを使用し、それを完了とマークします。
     
         ```python
         notebook_run.complete()
@@ -189,14 +198,36 @@ ms.locfileid: "101691503"
     
     ---
 
+## <a name="monitor-the-run-status-by-email-notification"></a>電子メール通知による実行状態の監視
+
+1. [Azure portal](https://ms.portal.azure.com/)の左側のナビゲーション バーで、 **[監視]** タブを選択します。 
+
+1. **[診断設定]** を選択し、 **[+ 診断設定の追加]** を選択します。
+
+    ![電子メール通知の診断設定のスクリーンショット](./media/how-to-manage-runs/diagnostic-setting.png)
+
+1. [診断設定] の 
+    1. **[カテゴリの詳細]** で、 **[AmlRunStatusChangedEvent]** を選択します。 
+    1. **[宛先の詳細]** で、 **[Log Analytics ワークスペースに送信する]** を選択し、 **[サブスクリプション]** と **[Log Analytics ワークスペース]** を指定します。 
+
+    > [!NOTE]
+    > **Azure Log Analytics ワークスペース** は、**Azure Machine Learning service ワークスペース** とは異なる種類の Azure Resource です。 そのリストにオプションがない場合は、[Log Analytics ワークスペースを作成](https://docs.microsoft.com/azure/azure-monitor/logs/quick-create-workspace)することができます。 
+    
+    ![電子メール通知を保存する場所](./media/how-to-manage-runs/log-location.png)
+
+1. **[ログ]** タブで、**新しい警告ルール** を追加します。 
+
+    ![新しいアラート ルール](./media/how-to-manage-runs/new-alert-rule.png)
+
+1. [Azure Monitor を使用してログ アラートを作成および管理する方法](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-log)に関するページを参照してください。
+
 ## <a name="run-description"></a>実行の説明 
 
 実行に実行の説明を追加し、その実行に関するコンテキストおよび情報をより多く指定できます。 また、実行の一覧でこれらの説明を検索し、実行の一覧の列として実行の説明を追加することもできます。 
 
 自分の実行の **[実行の詳細]** ページに移動し、編集または鉛筆アイコンを選択して、自分の実行の説明を追加、編集または削除します。 お使いの既存のカスタム ビューまたは新しいカスタム ビューに変更を保存すると、この変更を実行の一覧に保存できます。 実行の説明には、次に示すように、イメージを埋め込んだり、ディープ リンクを設定したりすることができる Markdown 形式がサポートされています。
 
-:::image type="content" source="media/how-to-manage-runs/rundescription.gif" alt-text="スクリーンショット: 実行の説明を作成する"::: 
-    
+:::image type="content" source="media/how-to-manage-runs/run-description.gif" alt-text="スクリーンショット: 実行の説明を作成する"::: 
 
 ## <a name="tag-and-find-runs"></a>実行のタグ付けおよび検索
 
@@ -206,7 +237,7 @@ Azure Machine Learning では、実行の整理にプロパティとタグを使
 
     # <a name="python"></a>[Python](#tab/python)
     
-    検索可能なメタデータを自分の実行に追加するには、[`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-properties-properties-) メソッドを使用します。 たとえば、次のコードでは実行に `"author"` プロパティが追加されます。
+    検索可能なメタデータを自分の実行に追加するには、[`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29#add-properties-properties-) メソッドを使用します。 たとえば、次のコードでは実行に `"author"` プロパティが追加されます。
     
     ```Python
     local_run.add_properties({"author":"azureml-user"})
@@ -222,7 +253,7 @@ Azure Machine Learning では、実行の整理にプロパティとタグを使
         print(e)
     ```
     
-    プロパティとは異なり、タグは変更可能です。 自分の実験のコンシューマーに検索可能で意味のある情報を追加するには、[`tag()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truetag-key--value-none-) メソッドを使用します。
+    プロパティとは異なり、タグは変更可能です。 自分の実験のコンシューマーに検索可能で意味のある情報を追加するには、[`tag()`](/python/api/azureml-core/azureml.core.run%28class%29#tag-key--value-none-) メソッドを使用します。
     
     ```Python
     local_run.tag("quality", "great run")
@@ -288,20 +319,20 @@ Azure Machine Learning では、実行の整理にプロパティとタグを使
     
     # <a name="studio"></a>[スタジオ](#tab/azure-studio)
     
-    1. **[すべての実行]** 一覧に移動します。
+    特定の実行を検索するには、 **[すべての実行]** リストに移動します。 ここでは、次の 2 つの選択肢があります。
     
-    1. タグ、説明、実験名、送信者名などの実行のメタデータをフィルター処理するには、検索バーを使用します。 タグのフィルター処理には、タグのフィルターを使用することもできます。 
+    1. **[フィルターの追加]** ボタンを使用して、タグへのフィルター適用を選択し、実行に割り当てられたタグで実行をフィルター処理します。 <br><br>
+    OR
     
-    ---
-
-
+    1. 検索バーを使用して、実行状態、説明、実験名、送信者名などの実行メタデータを検索することにより、実行をすばやく見つけます。 
+    
 ## <a name="cancel-or-fail-runs"></a>実行のキャンセルまたは失敗
 
 間違いに気付いた場合、または実行の完了に時間がかかりすぎる場合は、実行をキャンセルできます。
 
 # <a name="python"></a>[Python](#tab/python)
 
-SDK を使用して実行をキャンセルするには、[`cancel()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecancel--) メソッドを使用します。
+SDK を使用して実行をキャンセルするには、[`cancel()`](/python/api/azureml-core/azureml.core.run%28class%29#cancel--) メソッドを使用します。
 
 ```python
 src = ScriptRunConfig(source_directory='.', script='hello_with_delay.py')
@@ -349,7 +380,7 @@ Studio で実行をキャンセルするには、次の手順を使用します�
 > [!NOTE]
 > 子実行は、SDK を使用してのみ作成できます。
 
-このコード例では、`hello_with_children.py` スクリプトで [`child_run()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truechild-run-name-none--run-id-none--outputs-none-) メソッドを使用して、渡された実行から 5 つの子実行のバッチを作成します。
+このコード例では、`hello_with_children.py` スクリプトで [`child_run()`](/python/api/azureml-core/azureml.core.run%28class%29#child-run-name-none--run-id-none--outputs-none-) メソッドを使用して、渡された実行から 5 つの子実行のバッチを作成します。
 
 ```python
 !more hello_with_children.py
@@ -368,7 +399,7 @@ with exp.start_logging() as parent_run:
 > [!NOTE]
 > 子実行は、範囲外になると、自動的に完了とマークされます。
 
-多数の子実行を効率よく作成するには、[`create_children()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-children-count-none--tag-key-none--tag-values-none-) メソッドを使用します。 実行を作成するたびにネットワーク呼び出しが行われるため、実行のバッチを作成した方が、1 つずつ作成するよりも効率的です。
+多数の子実行を効率よく作成するには、[`create_children()`](/python/api/azureml-core/azureml.core.run.run#create-children-count-none--tag-key-none--tag-values-none-) メソッドを使用します。 実行を作成するたびにネットワーク呼び出しが行われるため、実行のバッチを作成した方が、1 つずつ作成するよりも効率的です。
 
 ### <a name="submit-child-runs"></a>子実行を送信する
 
@@ -404,7 +435,7 @@ for child in run.get_children():
     child.wait_for_completion()
 ```
 
-同じ構成、引数、および入力を使用して多数の子実行を効率的に作成するには、[`create_children()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-children-count-none--tag-key-none--tag-values-none-) メソッドを使用します。 実行を作成するたびにネットワーク呼び出しが行われるため、実行のバッチを作成した方が、1 つずつ作成するよりも効率的です。
+同じ構成、引数、および入力を使用して多数の子実行を効率的に作成するには、[`create_children()`](/python/api/azureml-core/azureml.core.run.run#create-children-count-none--tag-key-none--tag-values-none-) メソッドを使用します。 実行を作成するたびにネットワーク呼び出しが行われるため、実行のバッチを作成した方が、1 つずつ作成するよりも効率的です。
 
 次のようにすれば、子実行内から親実行 ID を確認できます。
 
@@ -416,7 +447,7 @@ child_run.parent.id
 
 ### <a name="query-child-runs"></a>子実行を照会する
 
-特定の親の子実行をクエリするには、[`get_children()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) メソッドを使用します。 ``recursive = True`` 引数を指定すると、入れ子になった子と孫のツリーを照会できます。
+特定の親の子実行をクエリするには、[`get_children()`](/python/api/azureml-core/azureml.core.run%28class%29#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) メソッドを使用します。 ``recursive = True`` 引数を指定すると、入れ子になった子と孫のツリーを照会できます。
 
 ```python
 print(parent_run.get_children())

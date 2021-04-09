@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: 3cf126caaaa0c518574418aca194ebd82cc4d6b9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 51df72e31acaadc83f4c094b99fa938377e5f023
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972069"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102500004"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure での仮想マシンのメンテナンス
 
@@ -23,7 +23,7 @@ Azure では、定期的にそのプラットフォームを更新して、仮�
 - 更新で再起動を必要としない場合、VM は、ホストの更新中に一時停止されるか、または既に更新済みのホストにライブ移行されます。 
 - メンテナンスで再起動が必要な場合は、計画メンテナンスが通知されます。 Azure により、都合の良いときに自分でメンテナンスを開始できる時間枠も与えられます。 セルフ メンテナンスの時間枠は、そのメンテナンスが緊急でない限り、通常は 35 日間です。 Azure は、計画されたプラットフォーム メンテナンスで VM の再起動を必要とするケースの数を減らすためのテクノロジに投資しています。 計画メンテナンスを管理する方法については、Azure [CLI](maintenance-notifications-cli.md)、[PowerShell](maintenance-notifications-powershell.md)、または[ポータル](maintenance-notifications-portal.md)を使用した計画済みメンテナンスの通知の処理に関する記事を参照してください。
 
-このページでは、2 種類のメンテナンスが Azure でどのように実行されるかについて説明します。 計画外のイベント (停止) の詳細については、 [Windows 向けの VM の可用性の管理](./manage-availability.md)に関する記事または [Linux](./manage-availability.md) 向けの該当する記事をご覧ください。
+このページでは、2 種類のメンテナンスが Azure でどのように実行されるかについて説明します。 計画外のイベント (停止) の詳細については、[Windows 向けの VM の可用性の管理](./availability.md)に関する記事または [Linux](./availability.md) 向けの該当する記事をご覧ください。
 
 VM 内で、[Linux](./linux/scheduled-events.md) または [Windows 向けの Scheduled Events を使用](./windows/scheduled-events.md)して、今後のメンテナンスに関する通知を受け取ることができます。
 
@@ -61,15 +61,15 @@ Azure Machine Learning アルゴリズムでハードウェア障害の発生が
 
 計画メンテナンスで VM の再起動が必要になるまれなケースでは、事前に通知が届きます。 計画メンテナンスには、"セルフサービス フェーズ" と "予定メンテナンス フェーズ" の 2 つのフェーズがあります。
 
-通常 4 週間続く*セルフ サービス フェーズ*中に、ご利用の VM でメンテナンスを開始します。 セルフ サービスの一環として、個々の VM に照会し、その状態と自分が最後に行ったメンテナンス要求の結果を確認できます。
+通常 4 週間続く *セルフ サービス フェーズ* 中に、ご利用の VM でメンテナンスを開始します。 セルフ サービスの一環として、個々の VM に照会し、その状態と自分が最後に行ったメンテナンス要求の結果を確認できます。
 
 セルフサービス メンテナンスを開始すると、VM は、既に更新済みのノードに再デプロイされます。 VM が再起動されるため、一時ディスクは失われ、仮想ネットワーク インターフェイスに関連付けられた動的 IP アドレスは更新されます。
 
 セルフサービス メンテナンス中にエラーが発生した場合、その操作が停止し、VM は更新されず、セルフサービス メンテナンスを再試行するオプションが提供されます。 
 
-セルフ サービス フェーズが終了すると、*予定メンテナンス フェーズ*が開始します。 このフェーズの間、ユーザーはメンテナンス フェーズについて照会することはできますが、自分でメンテナンスを開始することはできません。
+セルフ サービス フェーズが終了すると、*予定メンテナンス フェーズ* が開始します。 このフェーズの間、ユーザーはメンテナンス フェーズについて照会することはできますが、自分でメンテナンスを開始することはできません。
 
-再起動を必要とするメンテナンス管理の詳細については、Azure [CLI](maintenance-notifications-cli.md)、[PowerShell](maintenance-notifications-powershell.md)、または[ポータル](maintenance-notifications-portal.md)を使用した**計画メンテナンスの通知の処理**に関する記事を参照してください。 
+再起動を必要とするメンテナンス管理の詳細については、Azure [CLI](maintenance-notifications-cli.md)、[PowerShell](maintenance-notifications-powershell.md)、または [ポータル](maintenance-notifications-portal.md)を使用した **計画メンテナンスの通知の処理** に関する記事を参照してください。 
 
 ### <a name="availability-considerations-during-scheduled-maintenance"></a>予定メンテナンス中の可用性に関する考慮事項 
 
@@ -81,13 +81,13 @@ Azure Machine Learning アルゴリズムでハードウェア障害の発生が
 
 #### <a name="availability-sets-and-scale-sets"></a>可用性セットとスケール セット
 
-Azure VM にワークロードをデプロイするとき、*可用性セット*内に VM を作成して、アプリケーションの高可用性を確保することができます。 可用性セットを使用すると、再起動を必要とする停止またはメンテナンス イベントの間であっても、少なくとも 1 つの VM を確実に使用できるようになります。
+Azure VM にワークロードをデプロイするとき、*可用性セット* 内に VM を作成して、アプリケーションの高可用性を確保することができます。 可用性セットを使用すると、再起動を必要とする停止またはメンテナンス イベントの間であっても、少なくとも 1 つの VM を確実に使用できるようになります。
 
 可用性セット内の個々の VM は最大 20 個の更新ドメインに分散されます。 予定メンテナンス中は、どの時点においても 1 つの更新ドメインのみが更新されます。 更新ドメインは必ずしも順番に更新されるとは限りません。 
 
-仮想マシン *スケール セット*は、同一の VM のセットを単一のリソースとしてデプロイして管理するために使用できる Azure コンピューティング リソースです。 スケール セットは、可用性セット内の VM と同じように、UD をまたがって自動的にデプロイされます。 可用性セットと同様に、スケール セットを使用する場合、予定メンテナンス中に更新される UD は一度に 1 つだけです。
+仮想マシン *スケール セット* は、同一の VM のセットを単一のリソースとしてデプロイして管理するために使用できる Azure コンピューティング リソースです。 スケール セットは、可用性セット内の VM と同じように、UD をまたがって自動的にデプロイされます。 可用性セットと同様に、スケール セットを使用する場合、予定メンテナンス中に更新される UD は一度に 1 つだけです。
 
-高可用性のための VM の設定の詳細については、 [Windows 向けの VM の可用性の管理](./manage-availability.md)に関する記事または [Linux](./manage-availability.md) 向けの該当する記事をご覧ください。
+高可用性のための VM の設定の詳細については、[Windows 向けの VM の可用性の管理](./availability.md)に関する記事または [Linux](./availability.md) 向けの該当する記事をご覧ください。
 
 #### <a name="availability-zones"></a>可用性ゾーン
 

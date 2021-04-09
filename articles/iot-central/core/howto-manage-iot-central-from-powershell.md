@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 manager: philmea
 ms.openlocfilehash: a870b72d1dda04ab29dbb5f056873d47f888b837
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102501369"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Azure PowerShell から IoT Central を管理する

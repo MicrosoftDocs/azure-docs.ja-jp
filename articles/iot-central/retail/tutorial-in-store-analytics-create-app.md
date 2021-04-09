@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 112039b9227d5ff34e68b6dc6643597f335fbdb5
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: caa61170504c3ee4b7162cc06db4df16d1232395
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832234"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103014368"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>チュートリアル:Azure IoT Central でストア内分析アプリケーションを作成する
 
@@ -228,8 +228,8 @@ RuuviTag デバイス テンプレートの組み込みインターフェイス�
 
 次の 2 つの記事の手順を完了して、実際の Rigado ゲートウェイと RuuviTag センサーを接続します。 完了したら、このチュートリアルに戻ります。 このチュートリアルではデバイス テンプレートを既に作成しているため、次の一連の指示でもう一度作成する必要はありません。
 
-- Rigado ゲートウェイを接続するには、[Azure IoT Central アプリケーションへの Rigado Cascade 500 の接続](../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)に関する記事を参照してください。
-- RuuviTag センサーを接続するには、「[Azure IoT Central アプリケーションへの RuuviTag センサーの接続](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)」を参照してください。 必要に応じて、これらの指示に従って 2 つのシミュレートされたセンサーを作成することもできます。
+- Rigado ゲートウェイを接続するには、[Azure IoT Central アプリケーションへの Rigado Cascade 500 の接続](../core/howto-connect-rigado-cascade-500.md)に関する記事を参照してください。
+- RuuviTag センサーを接続するには、「[Azure IoT Central アプリケーションへの RuuviTag センサーの接続](../core/howto-connect-ruuvi.md)」を参照してください。 必要に応じて、これらの指示に従って 2 つのシミュレートされたセンサーを作成することもできます。
 
 ## <a name="add-rules-and-actions"></a>ルールとアクションの追加
 Azure IoT Central アプリケーション内でセンサーを使用して状態を監視することの一環として、特定の条件が満たされたときにアクションを実行するルールを作成できます。 ルールはデバイス テンプレートと 1 つまたは複数のデバイスに関連付けられており、デバイスのテレメトリまたはイベントに基づいて満たす必要がある条件が含まれています。 また、ルールには 1 つ以上のアクションが関連付けられています。 アクションには、メール通知の送信、または他のサービスにデータを送信するための Webhook アクションのトリガーが含まれる場合があります。 **In-store analytics - checkout** アプリケーション テンプレートには、アプリケーションのデバイス用の定義済みルールがいくつか含まれています。

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: e20611cbc2df17bcd201a493d1ef2f40cc984321
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515059"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redvector"></a>チュートリアル: Azure Active Directory と RedVector の統合
@@ -41,7 +41,7 @@ Azure AD と RedVector の統合を構成するには、次のものが必要で
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* RedVector では、 **SP** Initiated SSO がサポートされます
+* RedVector では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-redvector-from-the-gallery"></a>ギャラリーからの RedVector の追加
 
@@ -61,13 +61,13 @@ Azure AD への RedVector の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **RedVector** 」と入力し、結果ウィンドウで **[RedVector]** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**RedVector**」と入力し、結果ウィンドウで **[RedVector]** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の RedVector](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、RedVector で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、RedVector で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと RedVector 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 RedVector で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -142,7 +142,7 @@ RedVector で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

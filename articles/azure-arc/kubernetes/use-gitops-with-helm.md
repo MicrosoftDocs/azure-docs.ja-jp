@@ -9,10 +9,10 @@ ms.author: mlearned
 description: Azure Arc 対応クラスター構成に対して GitOps と Helm を使用します
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes Service, コンテナー
 ms.openlocfilehash: 75e2fcb25680817fc3e2bddabbbdd9c52b7dd059
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121407"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-an-arc-enabled-kubernetes-cluster"></a>Arc 対応 Kubernetes クラスターに対して GitOps を使用して Helm チャートをデプロイする

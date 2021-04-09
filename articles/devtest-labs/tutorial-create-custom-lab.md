@@ -4,10 +4,10 @@ description: このチュートリアルでは、Azure portal を使って Azure
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: 4b59edd4ab1204d6683cf95a02070d10b1abe061
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91324282"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>チュートリアル: Azure DevTest Labs を使用してラボを設定する
@@ -59,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         ![[Create lab resource]\(ラボ リソースの作成\) ページの [基本設定] のスクリーンショット。](./media/tutorial-create-custom-lab/new-virtual-machine.png)
 1. **[詳細設定]** タブを選択します。
     1. **[このマシンを要求可能にする]** で、 **[はい]** を選びます。
-    2. **インスタンス数**が **1** に設定されていることを確認します。 **2** に設定すると、`<base image name>00' and <base image name>01` という名前で 2 つの VM が作成されます。 たとえば、`win10vm00` と `win10vm01` などです。     
+    2. **インスタンス数** が **1** に設定されていることを確認します。 **2** に設定すると、`<base image name>00' and <base image name>01` という名前で 2 つの VM が作成されます。 たとえば、`win10vm00` と `win10vm01` などです。     
     3. **[Submit]\(送信\)** をクリックします。 
 
         ![ベースの選択](./media/tutorial-create-custom-lab/new-vm-advanced-settings.png)
@@ -81,7 +81,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![[ロール割り当ての追加] ボタン](./media/tutorial-create-custom-lab/add-role-assignment-button.png)
 1. **[アクセス許可の追加]** ページで、次のようにします。
     1. **[ロール]** で、 **[DevTest Labs ユーザー]** を選びます。 
-    2. 追加する**ユーザー**を選びます。 
+    2. 追加する **ユーザー** を選びます。 
     3. **[保存]** を選択します。
 
         ![ユーザーの追加](./media/tutorial-create-custom-lab/add-user.png)

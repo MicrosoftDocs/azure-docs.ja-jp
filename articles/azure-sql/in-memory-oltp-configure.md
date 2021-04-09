@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
 ms.openlocfilehash: e17e98e784b7453c87814c5cce5c03568f66b1cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91619748"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>インメモリ OLTP を使用して Azure SQL Database と Azure SQL Managed Instance のアプリケーション パフォーマンスを向上させる
@@ -43,7 +43,7 @@ SSMS には、アクティブなワークロードがあるデータベースに
 
 SSMS でこのレポートを生成するには、
 
-* **オブジェクト エクスプローラー**でデータベース ノードを右クリックし、
+* **オブジェクト エクスプローラー** でデータベース ノードを右クリックし、
 * **[レポート]**  >  **[標準レポート]**  >  **[トランザクション パフォーマンス分析の概要]** の順にクリックします。
 
 詳細については、「 [テーブルまたはストアド プロシージャをインメモリ OLTP に移植する必要があるかどうかの確認](/sql/relational-databases/in-memory-oltp/determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp)」を参照してください。
@@ -77,7 +77,7 @@ SSMS でこのレポートを生成するには、
 この移行オプションを使用する手順は、以下のとおりです。
 
 1. SSMS を使用して、テスト データベースに接続します。
-2. **オブジェクト エクスプローラー**で、テーブルを右クリックし、 **[メモリ最適化アドバイザー]** をクリックします。
+2. **オブジェクト エクスプローラー** で、テーブルを右クリックし、 **[メモリ最適化アドバイザー]** をクリックします。
 
    **テーブル メモリ オプティマイザー アドバイザー** ウィザードが表示されます。
 3. ウィザードで、 **[移行の検証]** (または **[次へ]** ) をクリックし、メモリ最適化テーブルでサポートされていない機能がテーブルに含まれているかどうかを確認します。 詳細については、次を参照してください。

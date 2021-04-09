@@ -6,10 +6,10 @@ ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
 ms.openlocfilehash: f62a07ef7109c669c6abc90d4e1b4a2ee83ece23
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100530248"
 ---
 # <a name="limitations"></a>制限事項

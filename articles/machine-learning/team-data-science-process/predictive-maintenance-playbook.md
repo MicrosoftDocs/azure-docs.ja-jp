@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: 1e939b86eeadfee276378488cfcb40c07f28684d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880660"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI ガイド
@@ -233,12 +233,12 @@ PdM のもう 1 つの便利な手法は、データ内の異常を検出する�
 
 | 資産 ID | Time | \<Feature Columns> | Label |
 | ---- | ---- | --- | --- |
-| A123 |Day 1 | 。 。 。 | 。 |
-| A123 |Day 2 | 。 。 。 | 。 |
-| ...  |...   | 。 。 。 | 。 |
-| B234 |Day 1 | 。 。 。 | 。 |
-| B234 |Day 2 | 。 。 。 | 。 |
-| ...  |...   | 。 。 。 | 。 |
+| A123 |Day 1 | . . . | . |
+| A123 |Day 2 | . . . | . |
+| ...  |...   | . . . | . |
+| B234 |Day 1 | . . . | . |
+| B234 |Day 2 | . . . | . |
+| ...  |...   | . . . | . |
 
 特徴エンジニア リングの最後の手順は、ターゲット変数の "**ラベル付け**" です。 このプロセスは、モデリング手法に依存します。 さらに、モデリング手法はビジネス上の問題と、使用可能なデータの特性に依存します。 ラベル付けについては次のセクションで説明します。
 

@@ -5,13 +5,13 @@ author: niklarin
 ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: c30c01a18a17981b4e034c9df2cf822e6580430e
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.date: 02/21/2021
+ms.openlocfilehash: a6f049670a6860bbc195b92458945d1a53029b4f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567724"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732804"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>ネットワークの概要 - Azure Database for PostgreSQL - フレキシブル サーバー
 
@@ -61,6 +61,8 @@ PostgreSQL フレキシブル サーバーで仮想ネットワークを使用�
 * **委任されたサブネット** - 仮想ネットワークには、サブネット (サブネットワーク) が含まれています。 サブネットを使用すると、仮想ネットワークをより小さなアドレス空間に分割できます。 Azure リソースは、仮想ネットワーク内の特定のサブネットにデプロイされます。 
 
    PostgreSQL フレキシブル サーバーは、PostgreSQL フレキシブル サーバー専用に **委任された** サブネット内に存在する必要があります。 この委任は、Azure Database for PostgreSQL フレキシブル サーバーのみがそのサブネットを使用できることを意味します。 委任されたサブネットに他の Azure リソースの種類を含めることはできません。 サブネットを委任するには、その委任プロパティを Microsoft.DBforPostgreSQL/flexibleServers として割り当てます。
+
+   フレキシブル サーバーに委任されたサブネット用に、`Microsoft.Storage` をサービス エンドポイントに追加します。 
 
 * **ネットワーク セキュリティ グループ (NSG)** ネットワーク セキュリティ グループのセキュリティ規則を使用して、仮想ネットワーク サブネットとネットワーク インターフェイスに出入りできるネットワーク トラフィックの種類をフィルター処理できます。 詳細については、[ネットワーク セキュリティ グループの概要](../../virtual-network/network-security-groups-overview.md)に関するページを参照してください。
 

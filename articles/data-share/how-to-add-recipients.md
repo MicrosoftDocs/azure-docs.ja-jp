@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 12/17/2020
 ms.openlocfilehash: a8e3dac620873ab11ae24395310066037f6d2df4
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97680642"
 ---
 # <a name="how-to-add-a-recipient-to-your-share"></a>共有に受信者を追加する方法

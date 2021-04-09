@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/24/2020
+ms.date: 03/15/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30f2e0e96f11203633b756a320d3da503686ed9f
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 8b1a29b0f94c5009d0535ca92363c25ad5c6c884
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504492"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103493494"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>Azure での Windows Server フェールオーバー クラスタリングとファイル共有による SAP ASCS/SCS インスタンスのマルチ SID 高可用性
 
@@ -59,6 +59,7 @@ _**図 1:** 2 つのクラスターにデプロイされた SAP ASCS/SCS イン�
 > セットアップは次の条件を満たしている必要があります。
 > * SAP ASCS/SCS インスタンスは同じ WSFC クラスターを共有している必要があります。
 > * 異なる SAP SID に属する別の SAP Global Hosts ファイル共有は、同じ SOFS クラスターを共有する必要があります。
+> * SAP ASCS/SCS インスタンスと SOFS 共有は、同じクラスター内で組み合わせることができません。 
 > * 各データベース管理システム (DBMS) SID には、独自の専用 WSFC クラスターが必要です。
 > * 1 つの SAP システム SID に属する SAP アプリケーション サーバーは、独自の専用 VM を持っている必要があります。
 > * エンキュー レプリケーション サーバー 1 とエンキュー レプリケーション サーバー 2 を同じクラスター上に配置することは、サポートされていません。  

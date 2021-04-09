@@ -9,10 +9,10 @@ ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
 ms.openlocfilehash: de10903be86b52b3415b57a53be81e7fd1661f63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89226031"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>Visual Studio を使用して Web ジョブの開発とデプロイを行う
@@ -71,7 +71,7 @@ Web ジョブ対応のプロジェクトには、Visual Studio によって以�
 
 #### <a name="enable-automatic-webjobs-deployment-with-a-web-project"></a><a id="convertlink"></a> Web プロジェクトを使用した Web ジョブの自動デプロイメントを有効にする
 
-1. **ソリューション エクスプローラー**で Web プロジェクトを右クリックし、 **[追加]**  >  **[既存のプロジェクトを Azure Web ジョブとして]** を選択します。
+1. **ソリューション エクスプローラー** で Web プロジェクトを右クリックし、 **[追加]**  >  **[既存のプロジェクトを Azure Web ジョブとして]** を選択します。
    
     ![[既存のプロジェクトを Azure Web ジョブとして]](./media/webjobs-dotnet-deploy-vs/eawj.png)
    
@@ -82,7 +82,7 @@ Web ジョブ対応のプロジェクトには、Visual Studio によって以�
 3. [[Azure Web ジョブの追加]](#configure) ダイアログ ボックスでの指定を完了し、 **[OK]** を選択します。 
 
 #### <a name="enable-webjobs-deployment-without-a-web-project"></a><a id="convertnolink"></a> Web プロジェクトなしで Web ジョブ デプロイメントを有効にする
-1. **ソリューション エクスプローラー**でコンソール アプリ プロジェクトを右クリックし、 **[Azure WebJob として発行]** を選択します。 
+1. **ソリューション エクスプローラー** でコンソール アプリ プロジェクトを右クリックし、 **[Azure WebJob として発行]** を選択します。 
    
     ![[Azure Web ジョブとして発行]](./media/webjobs-dotnet-deploy-vs/paw.png)
    
@@ -112,7 +112,7 @@ Web ジョブ対応のプロジェクトには、Visual Studio によって以�
 2. 以前の指示に従って、[コンソール アプリ プロジェクトを独立した Web ジョブ プロジェクトにします](#convertnolink)。
 
 #### <a name="use-the-webjobs-new-project-template-for-a-webjob-linked-to-a-web-project"></a><a id="createlink"></a> Web プロジェクトにリンクされた Web ジョブ用に Web ジョブの新しいプロジェクト テンプレートを使用する
-1. **ソリューション エクスプローラー**で Web プロジェクトを右クリックし、 **[追加]**  >  **[新しい Azure Web ジョブ プロジェクト]** を選択します。
+1. **ソリューション エクスプローラー** で Web プロジェクトを右クリックし、 **[追加]**  >  **[新しい Azure Web ジョブ プロジェクト]** を選択します。
    
     ![New Azure WebJob Project menu entry](./media/webjobs-dotnet-deploy-vs/nawj.png)
    
@@ -159,7 +159,7 @@ Web ジョブ対応のプロジェクトを Web プロジェクトにリンク�
 ### <a name="deploy-a-webjobs-project"></a><a id="deploy"></a>Web ジョブ プロジェクトをデプロイする
 Web プロジェクトにリンクした Web ジョブ プロジェクトは、その Web プロジェクトと共に自動的にデプロイされます。 Web プロジェクトのデプロイについては、左側のナビゲーションの **[ハウツー ガイド]**  >  **[アプリのデプロイ]** を参照してください。
 
-Web ジョブ プロジェクトをそれ自体でデプロイするには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[Azure Web ジョブとして発行]** をクリックします。 
+Web ジョブ プロジェクトをそれ自体でデプロイするには、**ソリューション エクスプローラー** でプロジェクトを右クリックし、 **[Azure Web ジョブとして発行]** をクリックします。 
 
 ![[Azure Web ジョブとして発行]](./media/webjobs-dotnet-deploy-vs/paw.png)
 
@@ -182,7 +182,7 @@ Web ジョブのデプロイ情報:
 
 ## <a name="webjob-types"></a>Web ジョブの種類
 
-Web ジョブの種類は、*トリガー*または*継続的*です。
+Web ジョブの種類は、*トリガー* または *継続的* です。
 
 - トリガー (既定値):トリガー Web ジョブは、バインディング イベントまたは[スケジュール](#scheduling-a-triggered-webjob)に基づいて開始されるか、手動でトリガーされたときに開始されます (オンデマンド)。 Web アプリが実行されている 1 つのインスタンスで実行されます。
 
@@ -229,7 +229,7 @@ Azure で **Always On** を有効にする場合は、Visual Studio を使用し
 
 1. [Azure にプロジェクトを発行](#deploy-to-azure-app-service)していない場合は、発行します。
 
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、 **[発行]** を選択します。
+1. **ソリューション エクスプローラー** で、プロジェクトを右クリックし、 **[発行]** を選択します。
 
 1. **[発行]** タブで、 **[編集]** を選択します。 
 

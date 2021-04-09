@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と AMMS の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と AMMS の統合 | Microsoft Docs'
 description: Azure Active Directory と AMMS の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 4fdfe26104e4b69212b7bf6870582ef4cbb4de2b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92318758"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-amms"></a>チュートリアル:Azure Active Directory と AMMS の統合
+# <a name="tutorial-azure-active-directory-integration-with-amms"></a>チュートリアル: Azure Active Directory と AMMS の統合
 
 このチュートリアルでは、AMMS と Azure Active Directory (Azure AD) を統合する方法について説明します。
 AMMS と Azure AD の統合には、次の利点があります。
@@ -61,7 +61,7 @@ Azure AD への AMMS の統合を構成するには、ギャラリーからマ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 結果ボックスに「**AMMS**」と入力し、結果パネルで **[AMMS]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 結果ボックスに「**AMMS**」と入力し、結果パネルで **[AMMS]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の AMMS](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ AMMS で Azure AD のシングル サインオンを構成してテストする�
 
 AMMS で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **AMMS** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **AMMS** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -144,7 +144,7 @@ AMMS で Azure AD シングル サインオンを構成するには、次の手�
 
 このセクションでは、Britta Simon に AMMS へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[AMMS]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[AMMS]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -168,7 +168,7 @@ AMMS で Azure AD シングル サインオンを構成するには、次の手�
 
 ### <a name="create-amms-test-user"></a>AMMS のテスト ユーザーの作成
 
-このセクションでは、AMMS で Britta Simon というユーザーを作成します。  [AMMS サポート チーム](mailto:techsupport@microwestsoftware.com)と連携して、AMMS プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、AMMS で Britta Simon というユーザーを作成します。 [AMMS サポート チーム](mailto:techsupport@microwestsoftware.com)と連携して、AMMS プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

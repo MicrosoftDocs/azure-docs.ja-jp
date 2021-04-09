@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: b940da2cf754e7e1cac91df6b517ecebe55e8c40
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94358424"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>マネージド ID を使用して Azure SQL Database へのインデクサー接続を設定する
@@ -101,9 +101,9 @@ ms.locfileid: "94358424"
 * **name** は、Search サービス内のデータ ソースの一意の名前です。
 * **型** は、`azuresql` です
 * **credentials**
-    * マネージド ID を使用して認証する場合、 **credentials** 形式は、マネージド ID を使用しない場合とは異なります。 この場合、Initial Catalog または Database の名前と、アカウント キーまたはパスワードが設定されていない ResourceId を指定します。 ResourceId には、Azure SQL Database のサブスクリプション ID、SQL データベースのリソース グループ、および SQL データベースの名前を含める必要があります。 
+    * マネージド ID を使用して認証する場合、**credentials** 形式は、マネージド ID を使用しない場合とは異なります。 この場合、Initial Catalog または Database の名前と、アカウント キーまたはパスワードが設定されていない ResourceId を指定します。 ResourceId には、Azure SQL Database のサブスクリプション ID、SQL データベースのリソース グループ、および SQL データベースの名前を含める必要があります。 
     * マネージド ID の接続文字列の形式:
-        * *Initial Catalog|Database= **データベース名** ;ResourceId=/subscriptions/ **お使いのサブスクリプション ID** /resourceGroups/ **お使いのリソース グループ名** /providers/Microsoft.Sql/servers/ **お使いの SQL Server 名** /;Connection Timeout= **接続タイムアウトの長さ** ;*
+        * *Initial Catalog|Database=**データベース名**;ResourceId=/subscriptions/**お使いのサブスクリプション ID**/resourceGroups/**お使いのリソース グループ名**/providers/Microsoft.Sql/servers/**お使いの SQL Server 名**/;Connection Timeout=**接続タイムアウトの長さ**;*
 * **container** には、インデックスを作成する対象のテーブルまたはビューの名前を指定します。
 
 [REST API](/rest/api/searchservice/create-data-source) を使用して Azure SQL データ ソース オブジェクトを作成する方法の例:

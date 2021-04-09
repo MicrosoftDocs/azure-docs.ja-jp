@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: 8d4663aac6af4abb8d9855d2f972965e997d9c92
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 97a8dd2476642e693b589b4046f612c5569b9c0b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945681"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865130"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Hue をインストールして使用する
 
@@ -80,17 +80,17 @@ Hue は Apache Hadoop クラスターとの情報のやりとりに使用され�
    > [!NOTE]  
    > 初回ログイン時、Hue ポータルにログインするためのアカウントを作成するように促されます。 ここで指定した資格情報はポータルに制限され、クラスターのプロビジョニング時に指定した管理者または SSH ユーザーの資格情報には関連しません。
 
-    ![HDInsight Hue ポータルのログイン ウィンドウ](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "Hue ポータルの資格情報を指定する")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png" alt-text="HDInsight Hue ポータルのログイン ウィンドウ":::
 
 ### <a name="run-a-hive-query"></a>Hive クエリを実行する
 
 1. Hue ポータルから、 **[クエリ エディター]** を選択し、 **[Hive]** を選択して Hive エディターを開きます。
 
-    ![HDInsight Hue ポータルで Hive エディターを使用する](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Hive を使用する")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png" alt-text="HDInsight Hue ポータルで Hive エディターを使用する":::
 
 2. **[支援]** タブの **[データベース]** に **hivesampletable** が表示されるはずです。 これは HDInsight のすべての Hadoop クラスターに含まれるサンプル テーブルです。 右ペインでサンプル クエリを入力します。スクリーン キャプチャに示すように、下のペインの **[結果]** タブに出力が表示されます。
 
-    ![HDInsight Hue ポータルの Hive クエリ](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Hive クエリを実行する")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png" alt-text="HDInsight Hue ポータルの Hive クエリ":::
 
     **[グラフ]** タブを使用し、結果を視覚的に表示することもできます。
 
@@ -99,7 +99,7 @@ Hue は Apache Hadoop クラスターとの情報のやりとりに使用され�
 1. Hue ポータルから、メニュー バーの右上隅にある **[ファイル ブラウザー]** を選択します。
 2. 既定では、ファイル ブラウザーは **/user/myuser** ディレクトリで起動します。 パスのユーザー ディレクトリの直前の斜線を選択し、クラスターに関連付けられている Azure ストレージ コンテナーのルートに移動します。
 
-    ![HDInsight ポータル ファイル ブラウザー](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png "ファイル ブラウザーを使用する")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png" alt-text="HDInsight ポータル ファイル ブラウザー":::
 
 3. ファイルまたはフォルダーを右クリックし、利用可能な操作を表示します。 現在のディレクトリにファイルをアップロードするには、右隅にある **[アップロード]** ボタンを使用します。 新しいファイルやディレクトリを作成するには、 **[新規]** ボタンを使用します。
 
@@ -118,7 +118,7 @@ Hue は Apache Hadoop クラスターとの情報のやりとりに使用され�
 
 1. Linux クラスターの場合、サービスをプライマリ ヘッドノードで実行し、Resource Manager をセカンダリ ヘッドノードで実行するシナリオがありえます。 そのようなシナリオの場合、Hue を利用してクラスターで「実行中」のジョブの詳細を表示するとき、エラーが発生する可能性があります (下の画像を参照)。 ただし、ジョブが完了したときにジョブの詳細を表示できます。
 
-   ![Hue ポータルのサンプル エラー メッセージ](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Hue ポータル エラー")
+   :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png" alt-text="Hue ポータルのサンプル エラー メッセージ":::
 
    これは既知の問題によるものです。 この問題を回避するには、アクティブな Resource Manager もプライマリ ヘッドノードで実行されるように Ambari を変更します。
 

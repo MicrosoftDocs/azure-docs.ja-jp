@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93086892"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
@@ -216,7 +216,7 @@ SDK インストールに付属する Service Fabric ランタイムには、次
 
 ---
 
-2. Web ブラウザーを開いて､ **Service Fabric Explorer** (`http://localhost:19080/Explorer`) に移動します。 クラスターが起動すると、Service Fabric Explorer ダッシュボードが表示されます。 クラスターが完全にセットアップされるまでに数分かかる場合があります。 ブラウザーで URL を開けない場合、またはシステムの準備が完了していることを Service Fabric Explorer で確認できない場合は、数分待ってからもう一度実行してください。
+2. Web ブラウザーを開いて､**Service Fabric Explorer** (`http://localhost:19080/Explorer`) に移動します。 クラスターが起動すると、Service Fabric Explorer ダッシュボードが表示されます。 クラスターが完全にセットアップされるまでに数分かかる場合があります。 ブラウザーで URL を開けない場合、またはシステムの準備が完了していることを Service Fabric Explorer で確認できない場合は、数分待ってからもう一度実行してください。
 
     ![Service Fabric Explorer on Linux][sfx-linux]
 
@@ -302,7 +302,7 @@ Eclipse IDE for Java Developers または Eclipse IDE for Java EE Developers 内
 
 2. **[Help]\(ヘルプ\)**  >  **[Install New Software]\(新しいソフトウェアのインストール\)** の順に選択して、Service Fabric プラグインをインストールします。
 
-3. **[Work with]\(作業対象\)** ボックスに、「 **https:\//dl.microsoft.com/eclipse** 」と入力します。
+3. **[Work with]\(作業対象\)** ボックスに、「**https:\//dl.microsoft.com/eclipse**」と入力します。
 
 4. **[追加]** を選択します。
 

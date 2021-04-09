@@ -11,10 +11,10 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 04/06/2018
 ms.openlocfilehash: 3097041c96f70dda384f0b116bbbc9bc9130be4d
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395752"
 ---
 # <a name="overview-of-business-continuity-with-microsoft-genomics"></a>Microsoft Genomics によるビジネス継続性の概要
@@ -30,7 +30,7 @@ ms.locfileid: "93395752"
 
 
 ### <a name="manually-failover-microsoft-genomics-workflows-to-another-region"></a>Microsoft Genomics のワークフローを別のリージョンに手動でフェールオーバーする
-リージョン規模でデータ センターの停止が発生した場合、個々のデータの主権とビジネス継続性の要件に基づいて、Microsoft Genomics のワークフローをセカンダリ リージョンに送信することができます。 Microsoft Genomics のワークフローを手動でフェールオーバーするには、異なるリージョン固有の Genomics アカウントを使用し、適切なリージョン固有の Genomics アカウントとストレージ アカウントの資格情報を使用してジョブを送信します。
+リージョン規模でデータ センターの停止が発生した場合、個々のデータの主権とビジネス継続性の要件に基づいて、Microsoft Genomics のワークフローをセカンダリ リージョンに送信することができます。 Microsoft Genomics のワークフローを手動でフェールオーバーするには、異なるリージョン固有の  Genomics アカウントを使用し、適切なリージョン固有の Genomics アカウントとストレージ アカウントの資格情報を使用してジョブを送信します。
 
 具体的には、次のようにする必要があります。
 * Azure Portal を使用して、セカンダリ リージョンに Genomics アカウントを作成します。 

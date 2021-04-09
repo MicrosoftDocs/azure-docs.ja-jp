@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2020
 ms.author: jeedes
 ms.openlocfilehash: cedd0f5f96d31c9a3c7e587f1478a3c7dfc122cd
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92453605"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fcm-hub"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と FCM HUB の統合
@@ -42,7 +42,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* FCM HUB では、 **SP と IDP** Initiated SSO がサポートされます
+* FCM HUB では、**SP と IDP** Initiated SSO がサポートされます
 * FCM HUB を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-fcm-hub-from-the-gallery"></a>ギャラリーからの FCM HUB の追加
@@ -53,7 +53,7 @@ Azure AD への FCM HUB の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **FCM HUB** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**FCM HUB**」と入力します。
 1. 結果のパネルから **[FCM HUB]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-fcm-hub"></a>FCM HUB の Azure AD シングル サインオンの構成とテスト
@@ -91,8 +91,8 @@ FCM HUB との Azure AD SSO を構成してテストするには、次の構成�
 1. **[保存]** を選択します。
 
 1. **[要求の管理]** ページの **[ユーザー属性とクレーム]** セクションで、次のカスタム属性を追加します。
-   - **Name** :PortalID
-   - **ソース** :属性
+   - **Name**:PortalID
+   - **ソース**:属性
    - **[基になる属性]** : PortalID、FCM によって提供される値
 
 1. **[SAML 署名証明書]** セクションで、編集オプションを使用して次の設定を選択または入力し、 **[保存]** を選択します。
@@ -139,7 +139,7 @@ FCM HUB との Azure AD SSO を構成してテストするには、次の構成�
 
 ## <a name="configure-fcm-hub-sso"></a>FCM HUB SSO を構成する
 
-**FCM HUB** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を、サポートに関して自分に割り当てられているアカウント マネージャーに送信するか、 [FCM HUB クライアント サポート チーム](mailto:fcmssoadmin@us.fcm.travel)に連絡する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**FCM HUB** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を、サポートに関して自分に割り当てられているアカウント マネージャーに送信するか、[FCM HUB クライアント サポート チーム](mailto:fcmssoadmin@us.fcm.travel)に連絡する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-fcm-hub-test-user"></a>FCM HUB テスト ユーザーを作成する
 

@@ -7,10 +7,10 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: d3e1334f513e8ac587d639758d83ce080c5b4ab9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92516904"
 ---
 # <a name="manage-site-recovery-access-with-azure-role-based-access-control-azure-rbac"></a>Azure のロールベースのアクセス制御 (Azure RBAC) を使用して Site Recovery のアクセスを管理する

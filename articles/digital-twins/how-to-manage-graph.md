@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b713a19cbe572998bb6e5050ab2d7721a844f07a
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: fde473453aa79e0078765df394acdeb54b3c7fe9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530452"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102433320"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>リレーションシップを使ってデジタル ツインのグラフを管理する
 
 Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](concepts-twins-graph.md)です。 ツイン グラフは、**リレーションシップ** を介して接続された個々のデジタル ツインで構成されています。 
 
-機能する [Azure Digital Twins インスタンス](how-to-set-up-instance-portal.md)があり、クライアント アプリで [認証](how-to-authenticate-client.md)コードを設定すると、[**DigitalTwins API**](/rest/api/digital-twins/dataplane/twins) を使用して Azure Digital Twins インスタンス内のデジタル ツインとそのリレーションシップを作成、変更、削除することができます。 [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用することもできます。
+機能する [Azure Digital Twins インスタンス](how-to-set-up-instance-portal.md)があり、クライアント アプリで [認証](how-to-authenticate-client.md)コードを設定すると、[**DigitalTwins API**](/rest/api/digital-twins/dataplane/twins) を使用して Azure Digital Twins インスタンス内のデジタル ツインとそのリレーションシップを作成、変更、削除することができます。 [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用することもできます。
 
 この記事では、リレーションシップとグラフ全体の管理に焦点を当てます。個々のデジタル ツインの操作については、[ *「デジタル ツインを管理する」方法*](how-to-manage-twin.md)を参照してください。
 
@@ -30,7 +30,7 @@ Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](co
 
 [!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
 
-また、Azure Digital Twins (ADT) Explorer サンプルを使用して、グラフに変更を加えることもできます。このサンプルでは、ツインとグラフを視覚化し、バックグラウンドで SDK を利用できます。 次のセクションでは、このサンプルについて詳しく説明します。
+また、Azure Digital Twins Explorer サンプルを使用して、グラフに変更を加えることもできます。このサンプルでは、ツインとグラフを視覚化し、バックグラウンドで SDK を利用できます。 次のセクションでは、このサンプルについて詳しく説明します。
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
@@ -97,7 +97,7 @@ Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](co
 Azure Digital Twins には、特定のツインとのすべての **受信** リレーションシップを検索する API もあります。 これは、逆方向のナビゲーションの場合やツインを削除するときに便利です。
 
 >[!NOTE]
-> `IncomingRelationship` の呼び出しからは、リレーションシップ全体は返されません。 `IncomingRelationship` クラスの詳細については、その[リファレンス ドキュメント](/dotnet/api/azure.digitaltwins.core.incomingrelationship?view=azure-dotnet&preserve-view=true)を参照してください。
+> `IncomingRelationship` の呼び出しからは、リレーションシップ全体は返されません。 `IncomingRelationship` クラスの詳細については、その[リファレンス ドキュメント](/dotnet/api/azure.digitaltwins.core.incomingrelationship)を参照してください。
 
 前のセクションのコード サンプルは、ツインからの発信リレーションシップの検索に重点を置いていました。 次の例は同じような構造になってますが、代わりにツインへの "*受信*" リレーションシップを検索します。 この例でも、より大きなプログラムのコンテキストで使用される可能性のあるカスタム メソッド内で SDK 呼び出し (強調表示) を使用しています。
 
@@ -157,7 +157,7 @@ Azure Digital Twins には、特定のツインとのすべての **受信** リ
 このサンプルを実行する前に、以下を実行します。
 1. モデル ファイルをダウンロードしてプロジェクトに配置し、以下のコードの `<path-to>` プレースホルダーを置き換えて、プログラムに検索場所を指示します。
 2. プレースホルダー `<your-instance-hostname>` を Azure Digital Twins インスタンスのホスト名に置き換えます。
-3. Azure Digital Twins を操作するために必要な 2 つの依存関係をプロジェクトに追加します。 1 つ目は [.NET 用 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 用のパッケージであり、2 つ目では Azure に対する認証に役立つツールが提供されます。
+3. Azure Digital Twins を操作するために必要な 2 つの依存関係をプロジェクトに追加します。 1 つ目は [.NET 用 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client) 用のパッケージであり、2 つ目では Azure に対する認証に役立つツールが提供されます。
 
       ```cmd/sh
       dotnet add package Azure.DigitalTwins.Core

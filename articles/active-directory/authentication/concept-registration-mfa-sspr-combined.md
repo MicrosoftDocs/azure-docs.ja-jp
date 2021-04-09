@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 112ad0714c84cd3be08788b3277f52372f6d0373
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98938473"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory での統合されたセキュリティ情報の登録の概要
@@ -56,13 +56,13 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure Germany 
 | Microsoft Authenticator | はい (最大 5) | いいえ | はい |
 | その他の認証アプリ | はい (最大 5) | いいえ | はい |
 | ハードウェア トークン | いいえ | いいえ | はい |
-| Phone | はい | はい | ○ |
-| Alternate phone | はい | はい | ○ |
-| 会社電話 | はい | はい | ○ |
-| Email | はい | はい | ○ |
+| Phone | はい | はい | はい |
+| Alternate phone | はい | はい | はい |
+| 会社電話 | はい | はい | はい |
+| Email | はい | はい | はい |
 | セキュリティの質問 | はい | いいえ | はい |
 | アプリ パスワード | はい | いいえ | はい |
-| FIDO2 セキュリティ キー<br />*[[セキュリティ情報]](https://mysignins.microsoft.com/security-info) ページからの管理モードのみ*| はい | はい | ○ |
+| FIDO2 セキュリティ キー<br />*[[セキュリティ情報]](https://mysignins.microsoft.com/security-info) ページからの管理モードのみ*| はい | はい | はい |
 
 > [!NOTE]
 > アプリ パスワードは、Multi-Factor Authentication が適用されているユーザーのみが使用できます。 条件付きアクセス ポリシーによって Multi-Factor Authentication が有効になっているユーザーはアプリ パスワードを使用できません。

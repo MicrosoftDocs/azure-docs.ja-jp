@@ -13,10 +13,10 @@ ms.custom: seodec18
 ms.date: 09/23/2020
 ms.author: spelluru
 ms.openlocfilehash: af2d820fd255d041ade21a00d7d7a9ac6b12fcba
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98745904"
 ---
 # <a name="eventhubsexception---net"></a>EventHubsException - .NET

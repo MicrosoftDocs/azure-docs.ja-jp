@@ -1,35 +1,39 @@
 ---
-title: ファイルと ACL 用の Azure Data Lake Storage Gen2 PowerShell
-description: PowerShell のコマンドレットを使用して、階層型名前空間 (HNS) が有効なストレージ アカウントでディレクトリ、ファイル、ディレクトリのアクセス制御リスト (ACL) を管理します。
+title: 'PowerShell を使用してデータを管理する: Azure Data Lake Storage Gen2'
+description: PowerShell コマンドレット を使用して、階層型名前空間が有効になっているストレージ アカウントでディレクトリとファイルを管理します。
 services: storage
 author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: how-to
-ms.date: 01/06/2021
+ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fb715840ec3b3b1d5e65f17d4c18eb719e6acf80
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 552d53ff0257105ff61397e281504c5270512319
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043576"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573865"
 ---
-# <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>PowerShell を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
+# <a name="use-powershell-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>PowerShell を使用して Azure Data Lake Storage Gen2 でディレクトリとファイルを管理する
 
-この記事では、PowerShell を使用して、階層型名前空間 (HNS) が有効なストレージ アカウントでディレクトリ、ファイル、アクセス許可を作成および管理する方法について説明します。 
+この記事では、階層型名前空間が有効になっているストレージ アカウントで、PowerShell を使用してディレクトリとファイルを作成および管理する方法を示します。
+
+ディレクトリとファイルのアクセス制御リスト (ACL) を取得、設定、および更新する方法については、「[Azure Data Lake Storage Gen2 で PowerShell を使用して ACL を管理する](data-lake-storage-acl-powershell.md)」を参照してください。
 
 [リファレンス](/powershell/module/Az.Storage/) | [Gen1 から Gen2 へのマッピング](#gen1-gen2-map) | [フィードバックの送信](https://github.com/Azure/azure-powershell/issues)
 
 ## <a name="prerequisites"></a>前提条件
 
-> [!div class="checklist"]
-> * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-> * 階層型名前空間 (HNS) が有効になっているストレージ アカウント。 作成するには、[こちら](../common/storage-account-create.md)の手順に従います。
-> * .NET Framework は 4.7.2 以降がインストールされていること。 「[.NET Framework のダウンロード](https://dotnet.microsoft.com/download/dotnet-framework)」を参照してください。
-> * PowerShell バージョン `5.1` 以降。
+- Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+
+- 階層型名前空間が有効になっているストレージ アカウント。 作成するには、[こちら](create-data-lake-storage-account.md)の手順に従います。
+
+- .NET Framework は 4.7.2 以降がインストールされていること。 「[.NET Framework のダウンロード](https://dotnet.microsoft.com/download/dotnet-framework)」を参照してください。
+
+- PowerShell バージョン `5.1` 以降。
 
 ## <a name="install-the-powershell-module"></a>PowerShell モジュールをインストールする
 
@@ -38,9 +42,9 @@ ms.locfileid: "98043576"
    ```powershell
    echo $PSVersionTable.PSVersion.ToString() 
    ```
-    
+
    お使いの PowerShell のバージョンをアップグレードするには、「[既存の Windows PowerShell をアップグレードする](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)」を参照してください。
-    
+
 2. **Az.Storage** モジュールをインストールします。
 
    ```powershell
@@ -53,7 +57,7 @@ ms.locfileid: "98043576"
 
 コマンドでストレージ アカウントに対する承認を取得する方法を選択します。 
 
-### <a name="option-1-obtain-authorization-by-using-azure-active-directory-ad"></a>オプション 1: Azure Active Directory (AD) を使用して承認を取得する
+### <a name="option-1-obtain-authorization-by-using-azure-active-directory-azure-ad"></a>オプション 1: Azure Active Directory (Azure AD) を使用して認可を取得する
 
 この方法を使用すると、ご利用のユーザー アカウントに、適切な Azure ロールベースのアクセス制御 (Azure RBAC) の割り当てと ACL のアクセス許可がシステムによって確実に付与されます。
 
@@ -127,6 +131,7 @@ $dir.Owner
 $dir.Properties
 $dir.Properties.Metadata
 ```
+
 > [!NOTE]
 > コンテナーのルート ディレクトリを取得するには、`-Path` パラメーターを省略します。
 
@@ -152,14 +157,14 @@ Move-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
 $filesystemName = "my-file-system"
 $dirname = "my-directory/"
 $dirname2 = "my-directory-2/my-subdirectory/"
-Move-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname1 -DestFileSystem $filesystemName -DestPath $dirname2
+Move-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -DestFileSystem $filesystemName -DestPath $dirname2
 ```
 
 ## <a name="delete-a-directory"></a>ディレクトリを削除する
 
 `Remove-AzDataLakeGen2Item` コマンドレットを使用してディレクトリを削除します。
 
-この例では、`my-directory` という名前のディレクトリを削除します。 
+この例では、`my-directory` という名前のディレクトリを削除します。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -173,7 +178,7 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $dirn
 
 `Get-AzDataLakeGen2ItemContent` コマンドレットを使用して、ディレクトリからファイルをダウンロードします。
 
-この例では、`my-directory` という名前のディレクトリから `upload.txt` という名前のファイルをダウンロードします。 
+この例では、`my-directory` という名前のディレクトリから `upload.txt` という名前のファイルをダウンロードします。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -267,143 +272,6 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 
 `-Force` パラメーターを使用すると、プロンプトを表示せずにファイルを削除できます。
 
-## <a name="manage-access-control-lists-acls"></a>アクセス制御リスト (ACL) を管理する
-
-ディレクトリとファイルのアクセス許可を取得、設定、更新できます。
-
-> [!NOTE]
-> Azure Active Directory (Azure AD) を使用してコマンドを承認している場合は、セキュリティ プリンシパルに [Storage BLOB データ所有者ロール](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)が割り当てられていることを確認してください。 ACL アクセス許可の適用方法とその変更による影響の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](./data-lake-storage-access-control.md)」を参照してください。
-
-### <a name="get-an-acl"></a>ACL を取得する
-
-`Get-AzDataLakeGen2Item` コマンドレットを使用して、ディレクトリまたはファイルの ACL を取得します。
-
-この例では、**コンテナー** のルート ディレクトリの ACL を取得し、その ACL をコンソールに出力します。
-
-```powershell
-$filesystemName = "my-file-system"
-$filesystem = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName
-$filesystem.ACL
-```
-
-この例では、**ディレクトリ** の ACL を取得し、その ACL をコンソールに出力します。
-
-```powershell
-$filesystemName = "my-file-system"
-$dirname = "my-directory/"
-$dir = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
-$dir.ACL
-```
-
-この例では、**ファイル** の ACL を取得し、その ACL をコンソールに出力します。
-
-```powershell
-$filePath = "my-directory/upload.txt"
-$file = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $filePath
-$file.ACL
-```
-
-次の画像は、ディレクトリの ACL を取得した後の出力を示しています。
-
-![ディレクトリの ACL 出力を取得する](./media/data-lake-storage-directory-file-acl-powershell/get-acl.png)
-
-この例では、所有ユーザーには読み取り、書き込み、実行のアクセス許可があります。 所有グループには、読み取りと実行のアクセス許可のみがあります。 アクセス制御リストの詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](data-lake-storage-access-control.md)」を参照してください。
-
-### <a name="set-an-acl"></a>ACL を設定する
-
-`set-AzDataLakeGen2ItemAclObject` コマンドレットを使用して、所有ユーザー、所有グループ、またはその他のユーザーの ACL を作成します。 その後、`Update-AzDataLakeGen2Item` コマンドレットを使用して ACL をコミットします。
-
-この例では、所有ユーザー、所有グループ、またはその他のユーザーの **コンテナー** のルート ディレクトリに ACL を設定し、その ACL をコンソールに出力します。
-
-```powershell
-$filesystemName = "my-file-system"
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
-Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Acl $acl
-$filesystem = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName
-$filesystem.ACL
-```
-
-この例では、所有ユーザー、所有グループ、または他のユーザーの **ディレクトリ** に ACL を設定し、その ACL をコンソールに出力します。
-
-```powershell
-$filesystemName = "my-file-system"
-$dirname = "my-directory/"
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
-Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
-$dir = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
-$dir.ACL
-```
-
-> [!NOTE]
-> **既定の** ACL エントリを設定する場合は、**Set-AzDataLakeGen2ItemAclObject** コマンドを実行するときに **-DefaultScope** パラメーターを使用します。 (例: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`)。
-
-この例では、所有ユーザー、所有グループ、または他のユーザーの **ファイル** に ACL を設定し、その ACL をコンソールに出力します。
-
-```powershell
-$filesystemName = "my-file-system"
-$filePath = "my-directory/upload.txt"
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "-wx" -InputObject $acl
-Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $filePath -Acl $acl
-$file = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $filePath
-$file.ACL
-```
-> [!NOTE]
-> **既定の** ACL エントリを設定する場合は、**Set-AzDataLakeGen2ItemAclObject** コマンドを実行するときに **-DefaultScope** パラメーターを使用します。 (例: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`)。
-
-次の画像は、ファイルの ACL を設定した後の出力を示しています。
-
-![ファイルの ACL 出力を取得する](./media/data-lake-storage-directory-file-acl-powershell/set-acl.png)
-
-この例では、所有ユーザーと所有グループには、読み取りと書き込みのアクセス許可のみがあります。 他のすべてのユーザーには、書き込みと実行のアクセス許可があります。 アクセス制御リストの詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](data-lake-storage-access-control.md)」を参照してください。
-
-### <a name="add-or-update-an-acl-entry"></a>ACL エントリを追加または更新する
-
-まず、ACL を取得します。 次に、`set-AzDataLakeGen2ItemAclObject` コマンドレットを使用して、ACL エントリを追加または更新します。 `Update-AzDataLakeGen2Item` コマンドレットを使用して ACL をコミットします。
-
-この例では、ユーザーの **ディレクトリ** で ACL を作成または更新します。
-
-```powershell
-$filesystemName = "my-file-system"
-$dirname = "my-directory/"
-$acl = (Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname).ACL
-$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityID xxxxxxxx-xxxx-xxxxxxxxxxx -Permission r-x -InputObject $acl 
-Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
-```
-
-> [!NOTE]
-> **既定の** ACL エントリを更新する場合は、**Set-AzDataLakeGen2ItemAclObject** コマンドを実行するときに **-DefaultScope** パラメーターを使用します。 (例: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityID xxxxxxxx-xxxx-xxxxxxxxxxx -Permission r-x -DefaultScope`)。
-
-### <a name="remove-an-acl-entry"></a>ACL エントリを削除する
-
-この例では、既存の ACL からエントリを削除します。
-
-```powershell
-$id = "xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-
-# Create the new ACL object.
-[Collections.Generic.List[System.Object]]$aclnew =$acl
-
-foreach ($a in $aclnew)
-{
-    if ($a.AccessControlType -eq "User"-and $a.DefaultScope -eq $false -and $a.EntityId -eq $id)
-    {
-        $aclnew.Remove($a);
-        break;
-    }
-}
-Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $aclnew
-```
-
-### <a name="set-an-acl-recursively"></a>ACL を再帰的に設定する
-
-また、親ディレクトリの既存の子項目に対して ACL を再帰的に追加、更新、および削除することができます。それぞれの子項目に対してこれらの変更を個別に行う必要はありません。 詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御リスト (ACL) を再帰的に設定する](recursive-access-control-lists.md)」を参照してください。
-
 <a id="gen1-gen2-map"></a>
 
 ## <a name="gen1-to-gen2-mapping"></a>Gen1 から Gen2 へのマッピング
@@ -423,5 +291,5 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 ## <a name="see-also"></a>関連項目
 
-* [既知の問題](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-* [Storage PowerShell コマンドレット](/powershell/module/az.storage)
+- [既知の問題](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
+- [Storage PowerShell コマンドレット](/powershell/module/az.storage)

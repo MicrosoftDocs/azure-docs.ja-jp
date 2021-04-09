@@ -9,10 +9,10 @@ ms.date: 01/14/2021
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: be6c48efc77880addf814b1609d4a371c7c5c73b
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98706071"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Import/Export サービス: よく寄せられる質問
@@ -103,7 +103,7 @@ FedEx、DHL、UPS などの既知の運送業者や、米国郵政公社を利�
 
 発送する物理メディアが国境を越える場合があることに注意してください。 お客様は、物理メディアおよびデータが輸入および輸出に関して該当する法律に準拠していることを確認する必要があります。 物理メディアを発送する前に、アドバイザーに依頼して、メディアおよびデータが指定のデータ センターに合法的に発送できることを確認してもらってください。 それにより、マイクロソフトへのメディアの到着が遅れるのを防ぐことができます。
 
-アップロードの完了後、ドライブを海外の住所に返送するプロセスは、国内の返送に要する期間 (通常 2 日から 3 日) よりも長くなる場合があります。 Azure portal に "Packaging (梱包)" として表示されている段階では、さまざまな海外輸出入要件を確実に満たした発送を行うために、適切な書類が提出されるよう Data Box チームが万全を期しています。
+アップロードの完了後、ドライブを海外の住所に返送するプロセスは、国内の返送に要する期間 (通常 2 日から 3 日) よりも長くなる場合があります。 Azure Portal に "Packaging (梱包)" として表示されている段階では、さまざまな海外輸出入要件を確実に満たした発送を行うために、適切な書類が提出されるよう Data Box チームが万全を期しています。
 
 ### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>ディスクをデータセンターに送付するための特別な要件はありますか?
 
@@ -132,7 +132,7 @@ Azure データ センターでは、サポートされる要件に適合しな�
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>このサービスでインポートされたデータには、どのようにしてアクセスできますか?
 
-Azure ストレージ アカウントのデータにアクセスするには、Azure portal または[ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用します。  
+Azure ストレージ アカウントのデータにアクセスするには、Azure Portal または[ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用します。  
 
 ### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>インポートの完了後、ストレージ アカウント内でデータはどのような状態になりますか? ディレクトリ階層は保持されますか?
 

@@ -10,10 +10,10 @@ ms.date: 04/03/2020
 ms.author: menchi
 ms.custom: devx-track-python
 ms.openlocfilehash: 665281adc892e6b3655c0b1d0533cb3148e62940
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92139404"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>IoT Hub モジュール ID とモジュール ツイン (Python) の概要
@@ -44,7 +44,7 @@ ms.locfileid: "92139404"
 
 ## <a name="get-the-iot-hub-connection-string"></a>IoT ハブ接続文字列を取得する
 
-この記事では、ID レジストリにデバイスを追加してそのデバイスにモジュールを追加するバックエンド サービスを作成します。 このサービスには、**レジストリ書き込み**のアクセス許可 (これには、**レジストリ読み取り**も含まれます) が必要です。 また、必要なプロパティを新しく作成されたモジュールのモジュール ツインに追加するサービスも作成します。 このサービスには、**サービス接続**のアクセス許可が必要です。 これらのアクセス許可を個別に付与する既定の共有アクセス ポリシーが存在しますが、このセクションでは、これらのアクセス許可の両方を含むカスタム共有アクセス ポリシーを作成します。
+この記事では、ID レジストリにデバイスを追加してそのデバイスにモジュールを追加するバックエンド サービスを作成します。 このサービスには、**レジストリ書き込み** のアクセス許可 (これには、**レジストリ読み取り** も含まれます) が必要です。 また、必要なプロパティを新しく作成されたモジュールのモジュール ツインに追加するサービスも作成します。 このサービスには、**サービス接続** のアクセス許可が必要です。 これらのアクセス許可を個別に付与する既定の共有アクセス ポリシーが存在しますが、このセクションでは、これらのアクセス許可の両方を含むカスタム共有アクセス ポリシーを作成します。
 
 [!INCLUDE [iot-hub-include-find-service-regrw-connection-string](../../includes/iot-hub-include-find-service-regrw-connection-string.md)]
 

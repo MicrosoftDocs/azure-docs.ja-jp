@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect クラウド同期のオンデマンド プロビジョニング
-description: この記事では、オンデマンド プロビジョニング機能について説明します。
+description: この記事では、Azure AD Connect のクラウド同期機能を使用して、構成の変更をテストする方法について説明します。
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,88 +11,90 @@ ms.date: 09/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ac186d4b460165605ccf0fc53bdb0b691348bf3
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 5048b78c7d59b3358dbffe2e3e6eedf41decabb8
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622526"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102554277"
 ---
-# <a name="azure-ad-connect-cloud-sync-on-demand-provisioning"></a>Azure AD Connect クラウド同期のオンデマンド プロビジョニング
+# <a name="on-demand-provisioning-in-azure-ad-connect-cloud-sync"></a>Azure AD Connect クラウド同期のオンデマンド プロビジョニング
 
-Azure AD Connect クラウド同期では、これらの変更を 1人のユーザーに適用することで、構成の変更をテストできる新機能が導入されました。  これを使用して、構成に対して行われた変更が正しく適用されたこと、および Azure AD に正しく同期されていることの妥当性を確認し、検証することができます。  
+Azure Active Directory (Azure AD) Connect のクラウド同期機能を使用すると、これらの変更を 1 人のユーザーに適用して、構成の変更をテストできます。 このオンデマンド プロビジョニングでは、構成に対する変更が正しく適用されたこと、および Azure AD と正しく同期されていることを確認および検証できます。  
 
 > [!IMPORTANT] 
-> オンデマンド プロビジョニングを使用する場合は、選択したユーザーにスコープ フィルターが適用されません。  これは、指定した OU の外部にあるユーザーにオンデマンド プロビジョニングを使用できることを意味します。
+> オンデマンド プロビジョニングを使用した場合、選択したユーザーにはスコープ フィルターは適用されません。 オンデマンド プロビジョニングは、指定した組織単位外のユーザーに使用できます。
 
-
-## <a name="using-on-demand-provisioning"></a>オンデマンド プロビジョニングを使用する
-新しい機能を使用するには、次の手順に従ってください。
-
+## <a name="validate-a-user"></a>ユーザーを検証する
+オンデマンド プロビジョニングを使用するには、次の手順を実行します。
 
 1.  Azure Portal で、 **[Azure Active Directory]** を選びます。
 2.  **[Azure AD Connect]** を選びます。
 3.  **[Manage cloud sync]\(クラウド同期の管理\)** を選択します。
 
-    ![プロビジョニングを管理する](media/how-to-install/install-6.png)
+    ![クラウドへの同期を管理するリンクを示すスクリーンショット。](media/how-to-install/install-6.png)
 4. **[構成]** の下で、自分の構成を選択します。
-5. **[検証]** で、 **[ユーザーのプロビジョニング]** ボタンをクリックします。 
+5. **[検証]** で、 **[ユーザーのプロビジョニング]** ボタンを選択します。 
 
- ![ユーザーをプロビジョニングする](media/how-to-on-demand-provision/on-demand-2.png)
+   ![ユーザーをプロビジョニングするボタンを示すスクリーンショット。](media/how-to-on-demand-provision/on-demand-2.png)
 
-6. [オンデマンド プロビジョニング] 画面上で。  ユーザーの **識別名** を入力し、 **[プロビジョニング]** ボタンをクリックします。  
+6. **[Provision on demand]** \(オンデマンド プロビジョニング\) 画面で、ユーザーの識別名を入力し、 **[プロビジョニング]** ボタンを選択します。  
  
- ![オンデマンド プロビジョニング](media/how-to-on-demand-provision/on-demand-3.png)
-7. 完了すると、成功の画面と、正常にプロビジョニングされたことを示す 4 つの緑色のチェック ボックスが表示されます。  エラーが発生すると、左側に表示されます。
+   ![ユーザー名と [プロビジョニング] ボタンを示すスクリーンショット。](media/how-to-on-demand-provision/on-demand-3.png)
+7. プロビジョニングが完了すると、4 つの緑色のチェックマークが表示された成功画面が表示されます。 エラーがある場合は、左側に表示されます。
 
-  ![Success](media/how-to-on-demand-provision/on-demand-4.png)
+   ![プロビジョニングの成功を示すスクリーンショット。](media/how-to-on-demand-provision/on-demand-4.png)
 
-これで、ユーザーを調べて、構成で行った変更が適用されているかどうかを確認できます。  このドキュメントの残りの部分では、正常に同期されたユーザーの詳細に表示される個々のセクションについて説明します。
+## <a name="get-details-about-provisioning"></a>プロビジョニングの詳細を取得する
+これで、ユーザー情報を調べて、構成で行った変更が適用されているかどうかを確認できます。 この記事の残りでは、ユーザー同期の成功の詳細に表示される個々のセクションについて説明します。
 
-## <a name="import-user-details"></a>ユーザーの詳細のインポート
-このセクションでは、Active Directory からインポートされたユーザーに関する情報を提供します。  これは、Azure AD にプロビジョニングされる前にユーザーがどのように表示されるかを示しています。  この情報を表示するには、 **[View Details (表示の詳細)]** リンクをクリックします。
+### <a name="import-user"></a>ユーザーをインポートする
+**[ユーザーのインポート]** セクションには、Active Directory からインポートされたユーザーの情報が表示されます。 これは、Azure AD にプロビジョニングされる前のユーザーについてです。 この情報の表示には、 **[詳細の表示]** リンクを選択します。
 
-![ユーザーをインポートする](media/how-to-on-demand-provision/on-demand-5.png)
+![インポートされたユーザーの詳細を表示するボタンのスクリーンショット。](media/how-to-on-demand-provision/on-demand-5.png)
 
-この情報を使用すると、インポートされたさまざまな属性とその値を確認できます。  カスタム属性マッピングを作成した場合は、ここで値を確認できます。
-![ユーザーの詳細のインポート](media/how-to-on-demand-provision/on-demand-6.png)
+この情報を使用すると、インポートされたさまざまな属性 (とその値) を確認できます。 カスタム属性のマッピングを作成した場合は、ここでその値を確認できます。
 
-## <a name="determine-if-user-is-in-scope-details"></a>ユーザーがスコープ内にあるかどうかを確認する
-このセクションでは、Azure AD からインポートされたユーザーがスコープ内にあるかどうかに関する情報を提供します。  この情報を表示するには、 **[View Details (表示の詳細)]** リンクをクリックします。
+![ユーザーの詳細を示すスクリーンショット。](media/how-to-on-demand-provision/on-demand-6.png)
 
-![ユーザー スコープ](media/how-to-on-demand-provision/on-demand-7.png)
+### <a name="determine-if-user-is-in-scope"></a>ユーザーがスコープ内にあるかどうかを確認する
+**[ユーザーがスコープ内にあるかどうかを確認]** セクションには、Azure AD にインポートしたユーザーがスコープ内にあるかどうかを示す情報が表示されます。 この情報の表示には、 **[詳細の表示]** リンクを選択します。
 
-この情報を使用して、ユーザーのスコープに関する追加情報を確認できます。
+![ユーザーのスコープの詳細を表示するボタンのスクリーンショット。](media/how-to-on-demand-provision/on-demand-7.png)
 
-![ユーザースコープの詳細](media/how-to-on-demand-provision/on-demand-10a.png)
+この情報を使用すると、ユーザーがスコープ内にあるかどうかを確認できます。
 
-## <a name="match-user-between-source-and-target-system-details"></a>ソースとターゲットのシステム詳細の間でユーザーを照合する
-このセクションでは、ユーザーが既に Azure AD に存在しているかどうか、および新しいユーザーをプロビジョニングする代わりに参加する必要があるかどうかについて説明します。  この情報を表示するには、 **[View Details (表示の詳細)]** リンクをクリックします。
-![詳細の表示](media/how-to-on-demand-provision/on-demand-8.png)
+![ユーザーのスコープの詳細を示すスクリーンショット。](media/how-to-on-demand-provision/on-demand-10a.png)
+
+### <a name="match-user-between-source-and-target-system"></a>ソースおよびターゲット システム間でユーザーを照合
+**[ソース システムとターゲット システム間でユーザーを照合]** セクションには、ユーザーが既に Azure AD に存在するか、および新しいユーザーをプロビジョニングするのではなく結合するかどうかに関する情報があります。 この情報の表示には、 **[詳細の表示]** リンクを選択します。
+
+![一致するユーザーの詳細を表示するボタンのスクリーンショット。](media/how-to-on-demand-provision/on-demand-8.png)
 
 この情報を使用すると、一致が見つかったか、新しいユーザーが作成されるかを確認できます。
 
-![ユーザー情報](media/how-to-on-demand-provision/on-demand-11.png)
+![ユーザー情報を示すスクリーンショット。](media/how-to-on-demand-provision/on-demand-11.png)
 
-一致の詳細には、次の3つの操作のいずれかを含むメッセージが表示されます。  これらは次のとおりです。
-- 作成-ユーザーは Azure AD で作成されます。
-- 更新-ユーザーは、構成に加えられた変更に基づいて更新されます。
-- 削除 - Azure AD からユーザーが削除されます。
+照合の詳細メッセージには、次の 3 つの操作のいずれかが表示されます。
+- **作成**: ユーザーが Azure AD に作成されます。
+- **更新**: ユーザーが構成に加えられた変更に基づいて更新されます。
+- **削除**: ユーザーが Azure AD から削除されます。
 
-実行した操作の種類によって、メッセージは異なります。
+このメッセージは、実行した操作の種類によって異なります。
 
-## <a name="perform-action-details"></a>アクションの詳細を実行
-このセクションでは、構成の適用後に Azure AD にプロビジョニングまたはエクスポートされたユーザーに関する情報を提供します。  これは、Azure AD にプロビジョニングされるとユーザーがどのように表示されるかを示しています。  この情報を表示するには、 **[View Details (表示の詳細)]** リンクをクリックします。
-![アクションの詳細を実行](media/how-to-on-demand-provision/on-demand-9.png)
+### <a name="perform-action"></a>実行するアクション
+**[アクションの実行]** セクションには、構成の適用後に Azure AD にプロビジョニングまたはエクスポートされたユーザーに関する情報が表示されます。 これは、Azure AD にプロビジョニングされた後のユーザーについてです。 この情報の表示には、 **[詳細の表示]** リンクを選択します。
 
-この情報を使用して、構成が適用された後に属性の値を確認できます。  インポートされたものと同じように見えますか、または違うように見えますか。  構成は正常に適用されますか。  
+![実行したアクションの詳細を表示するボタンのスクリーンショット。](media/how-to-on-demand-provision/on-demand-9.png)
 
-これにより、クラウドと Azure AD テナントの間を移動するときに、属性変換をトレースできるようになります。
+この情報を使用すると、構成の適用後の属性値を確認できます。 インポートしたものと似ていますか、または違いますか。 正常に構成を適用できましたか。  
 
-![トレース属性](media/how-to-on-demand-provision/on-demand-12.png)
+この手順では、クラウドからお使いの Azure AD テナントに移行される属性の変換をトレースできます。
+
+![トレースしている属性の詳細を示すスクリーンショット。](media/how-to-on-demand-provision/on-demand-12.png)
 
 ## <a name="next-steps"></a>次のステップ 
 
 - [Azure AD Connect クラウド同期とは](what-is-cloud-sync.md)
-- [Azure AD Connect クラウド同期をインストールする方法](how-to-install.md)
+- [Azure AD Connect クラウド同期のインストール](how-to-install.md)
  

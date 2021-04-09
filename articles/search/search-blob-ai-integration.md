@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/02/2021
 ms.openlocfilehash: 3d427d80e502eed0825165e640acc0755515c5b0
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99222050"
 ---
 # <a name="use-ai-to-process-and-analyze-blob-content-in-azure-cognitive-search"></a>AI を使用して Azure Cognitive Search で BLOB コンテンツを処理および分析する

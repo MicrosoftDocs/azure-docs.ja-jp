@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, SDK, 更新プログラムのダウンロード, 最新, 利用可能, インストール
-ms.openlocfilehash: 2fd14781c42192c713d826729f8fab6c698d6321
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 591fcba4c887e298cf667c5d95c19184bc213ffe
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505479"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102179631"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Azure Kinect Sensor SDK のダウンロード
 
@@ -41,18 +41,23 @@ Azure Kinect Sensor SDK とファームウェアの最新バージョンと以�
 
 最初に、[こちら](/windows-server/administration/linux-package-repository-for-microsoft-software)の手順に従って、[Microsoft のパッケージ リポジトリ](https://packages.microsoft.com/)を構成する必要があります。
 
-必要なパッケージをインストールできるようになりました。 `k4a-tools` パッケージには、[Azure Kinect ビューアー](azure-kinect-viewer.md)、[Azure Kinect レコーダー](record-sensor-streams-file.md)、[Azure Kinect ファームウェア ツール](azure-kinect-firmware-tool.md)が含まれています。 インストールするには、以下を実行します。
+必要なパッケージをインストールできるようになりました。 `k4a-tools` パッケージには、[Azure Kinect ビューアー](azure-kinect-viewer.md)、[Azure Kinect レコーダー](record-sensor-streams-file.md)、[Azure Kinect ファームウェア ツール](azure-kinect-firmware-tool.md)が含まれています。 パッケージをインストールするには、以下を実行します。
 
- `sudo apt install k4a-tools`
+`sudo apt install k4a-tools`
+ 
+このコマンドでは、ツールが正常に動作するために必要な依存関係パッケージがインストールされます。これには、`libk4a<major>.<minor>` の最新バージョンも含まれます。 root ユーザーにならずに Azure Kinect DK にアクセスするには、udev ルールを追加する必要があります。 手順については、「[Linux デバイスのセットアップ](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/docs/usage.md#linux-device-setup)」を参照してください。 別の方法として、デバイスを root として使用するアプリケーションを起動することもできます。
 
- `libk4a<major>.<minor>-dev` パッケージには、`libk4a` に対して構築するヘッダーと CMake ファイルが含まれています。
-`libk4a<major>.<minor>` パッケージには、`libk4a` に依存する実行可能ファイルを実行するために必要な共有オブジェクトが含まれています。
+`libk4a<major>.<minor>-dev` パッケージには、`libk4a` に対してアプリケーション/実行可能ファイルを構築するためのヘッダーと CMake ファイルが含まれています。
 
- 基本的なチュートリアルでは、`libk4a<major>.<minor>-dev` パッケージが必要です。 インストールするには、以下を実行します。
+`libk4a<major>.<minor>` パッケージには、`libk4a` に依存するアプリケーション/実行可能ファイルを実行するために必要な共有オブジェクトが含まれています。
 
- `sudo apt install libk4a1.1-dev`
+基本的なチュートリアルでは、`libk4a<major>.<minor>-dev` パッケージが必要です。 パッケージをインストールするには、以下を実行します。
+
+`sudo apt install libk4a<major>.<minor>-dev` 
 
 コマンドが成功すると、SDK を使用できるようになります。
+
+必ず、`libk4a<major>.<minor>-dev` と一致するバージョンの `libk4a<major>.<minor>` をインストールしてください。 たとえば、`libk4a4.1-dev` パッケージをインストールする場合は、一致するバージョンの共有オブジェクト ファイルが含まれる、対応する `libk4a4.1` パッケージをインストールします。 `libk4a` の最新バージョンについては、次のセクションのリンクを参照してください。
 
 ## <a name="change-log-and-older-versions"></a>変更ログと以前のバージョン
 

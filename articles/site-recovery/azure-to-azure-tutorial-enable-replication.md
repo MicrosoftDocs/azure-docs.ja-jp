@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 11/03/2020
 ms.custom: mvc
 ms.openlocfilehash: 473a264ef497cab4bd4f88372600161b33178099
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97656871"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-azure-vms"></a>チュートリアル:Azure VM のディザスター リカバリーを設定する

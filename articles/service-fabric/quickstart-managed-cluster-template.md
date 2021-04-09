@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.custom: references_regions
 ms.openlocfilehash: 079e8e3e39bd306332abb43fa2ae1f8cc04e305b
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91410421"
 ---
 # <a name="quickstart-deploy-a-service-fabric-managed-cluster-preview-with-an-azure-resource-manager-template"></a>クイックスタート: Azure Resource Manager テンプレートを使用して Service Fabric マネージド クラスター (プレビュー) をデプロイする
@@ -51,7 +51,7 @@ Service Fabric マネージド クラスターでは、アクセスの制御用�
     * **クラスター名**:自分のクラスター用に一意の名前 (*mysfcluster* など) を入力します。
     * **管理ユーザー名**: クラスター内の基になる VM で RDP に使用する管理者の名前を入力します。
     * **管理パスワード**: クラスター内の基になる VM で RDP に使用する管理者のパスワードを入力します。
-    * **クライアント証明書の拇印**: クラスターにアクセスするために使用するクライアント証明書の拇印を指定します。 証明書がない場合は、[証明書の設定と取得](../key-vault/certificates/quick-create-portal.md)に関する手順に従って、自己署名証明書を作成します。
+    * **クライアント証明書の拇印**:クラスターにアクセスするために使用するクライアント証明書の拇印を指定します。 証明書がない場合は、[証明書の設定と取得](../key-vault/certificates/quick-create-portal.md)に関する手順に従って、自己署名証明書を作成します。
     * **ノード タイプ名**: ノード タイプの一意の名前を入力します (例: *nt1*)。
     * **[上記の使用条件に同意する]** : このボックスをオンにして同意します。 
 
@@ -72,7 +72,7 @@ Service Fabric マネージド クラスターでは、アクセスの制御用�
 
 Service Fabric マネージド クラスターのリソース グループは、不要になったら削除してください。 ポータルを使用してリソース グループを削除するには:
 
-1. ポータルの上部にある*検索*ボックスにリソース グループの名前を入力します。 このクイック スタートで使用されているリソース グループが検索結果に表示されたら、それを選択します。
+1. ポータルの上部にある *検索* ボックスにリソース グループの名前を入力します。 このクイック スタートで使用されているリソース グループが検索結果に表示されたら、それを選択します。
 2. **[リソース グループの削除]** を選択します。
 3. **[リソース グループ名を入力してください:]** ボックスにリソース グループの名前を入力し、 **[削除]** を選択します。
 

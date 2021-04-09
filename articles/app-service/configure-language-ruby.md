@@ -6,10 +6,10 @@ ms.date: 06/18/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-azurecli
 ms.openlocfilehash: 038d62573b491325adc60647debf17fa87e06cfe
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92743685"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Azure App Service 向けの Linux Ruby アプリを構成する
@@ -51,7 +51,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 > ```
 > rbenv: version `2.3.1' is not installed
 > ```
-> これは、プロジェクトに構成されている Ruby のバージョンが、実行中のコンテナーにインストールされているバージョン (上の例では `2.3.3`) と異なることを意味します。 上の例では、 *Gemfile* と *.ruby-version* の両方をチェックし、Ruby のバージョンが未設定になっているか、または実行中のコンテナーにインストールされているバージョン (上の例では `2.3.3`) に設定されていることを確認してください。
+> これは、プロジェクトに構成されている Ruby のバージョンが、実行中のコンテナーにインストールされているバージョン (上の例では `2.3.3`) と異なることを意味します。 上の例では、*Gemfile* と *.ruby-version* の両方をチェックし、Ruby のバージョンが未設定になっているか、または実行中のコンテナーにインストールされているバージョン (上の例では `2.3.3`) に設定されていることを確認してください。
 
 ## <a name="access-environment-variables"></a>環境変数へのアクセス
 
@@ -111,7 +111,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 Ruby コンテナー内の Rails サーバーは、既定では実稼働モードで実行され、また、[アセットがプリコンパイル済みで Web サーバーから提供されることを想定](https://guides.rubyonrails.org/asset_pipeline.html#in-production)しています。 Rails サーバーから静的アセットを提供するには、次の 2 つのことを行う必要があります。
 
 - **アセットをプリコンパイルする** - [静的アセットをローカルでプリコンパイル](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation)し、それらを手動でデプロイします。 または、その処理をデプロイ エンジンで行います (「[アセットをプリコンパイルする](#precompile-assets)」を参照)。
-- **静的ファイルの提供を有効にする** - Ruby コンテナーから静的アセットを提供するには、 [`RAILS_SERVE_STATIC_FILES` アプリ設定を `true` に設定](configure-common.md#configure-app-settings)します。 次に例を示します。
+- **静的ファイルの提供を有効にする** - Ruby コンテナーから静的アセットを提供するには、[`RAILS_SERVE_STATIC_FILES` アプリ設定を `true` に設定](configure-common.md#configure-app-settings)します。 次に例を示します。
 
     ```azurecli-interactive
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_SERVE_STATIC_FILES=true

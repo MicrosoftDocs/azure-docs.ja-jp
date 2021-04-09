@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: dech
-ms.openlocfilehash: c7c910c7162bde2209b07eb4f1d533328bae08c3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 58ae61bc9e1736b13bb1802e2f39d5ada045cb6a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692963"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039327"
 ---
 # <a name="publish-notebooks-to-the-azure-cosmos-db-notebook-gallery"></a>Azure Cosmos DB ノートブック ギャラリーにノートブックを公開する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB の組み込みの Jupyter Notebook は、Azure portal 内のご自分の Azure Cosmos DB アカウントに直接統合されます。 これらのノートブックを使用して、Azure portal からデータを分析して視覚化することができます。 Azure Cosmos DB 用の組み込みノートブックは、現在、[29 の リージョン](#supported-regions)で使用できます。 ノートブックを使用するには、[新しい Cosmos アカウントを作成する](#create-a-new-cosmos-account)か、これらのリージョンのいずれかの[既存のアカウントでノートブックを有効にします](#enable-notebooks-in-an-existing-cosmos-account)。
+Azure Cosmos DB の組み込みの Jupyter Notebook は、Azure portal 内のご自分の Azure Cosmos DB アカウントに直接統合されます。 これらのノートブックを使用して、Azure portal からデータを分析して視覚化することができます。 Azure Cosmos DB 用の組み込みノートブックは、現在、[多くのリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=cosmos-db&regions=all)で使用できます。 ノートブックを使用するには、[新しい Cosmos アカウントを作成する](create-cosmosdb-resources-portal.md)か、これらのリージョンのいずれかの[既存のアカウントでノートブックを有効にします](enable-notebooks.md)。
 
 Azure portal のノートブック環境には、Azure Cosmos DB チームによって公開されたサンプルがいくつかあります。 また、独自のノートブックを公開して共有できるパブリック ギャラリーも用意されています。 このギャラリーに公開されたノートブックは、Azure Cosmos DB のすべてのユーザーが表示および使用できます。 この記事では、パブリック ギャラリーのノートブックを使用し、自分のノートブックをそのギャラリーに公開する方法について説明します。
 
@@ -53,7 +53,7 @@ Azure portal のノートブック環境には、Azure Cosmos DB チームによ
 
    **[ギャラリーに公開]** オプションは、ノートブック名の横にある **[…]** ボタンを選択して見つけることもできます。
 
-   :::image type="content" source="./media/publish-notebook-gallery/choose-notebook-publish.png" alt-text="ギャラリーに公開するノートブックを選択します。":::
+   :::image type="content" source="./media/publish-notebook-gallery/choose-notebook-publish.png" alt-text="ギャラリーに発行するノートブックを選択するもう 1 つの方法。":::
 
 1. **[ギャラリーに公開]** フォームに次の詳細を入力します。
 
@@ -61,11 +61,10 @@ Azure portal のノートブック環境には、Azure Cosmos DB チームによ
    * **[説明]:** ノートブックの機能に関する短い説明。
    * **[タグ]:** タグは省略可能であり、キーワードで検索するときに結果をフィルター処理するために使用されます。
    * **[カバー画像]:** ノートブックの公開時に表紙で使用される画像。 次のオプションの 1 つを選択できます。
-
-     * **[カスタム画像]** - コンピューターから画像をアップロードできます。 縦横比が 256 x 144 の画像ファイルを選択します。
-     * **[URL]** - 画像が配置されている、パブリックにアクセス可能な URL を指定します。
-     * **[スクリーンショットを撮る]** - 開いているノートブックのスクリーンショットが自動的に作成され、プレビューにアップロードされます。
-     * **[最初の表示出力を使用]** - 表示出力がある最初のセルを出力します。 マークダウンまたはテキストのみを表示するセルは、表示出力とみなされません。
+   * **[カスタム画像]** - コンピューターから画像をアップロードできます。 縦横比が 256 x 144 の画像ファイルを選択します。
+   * **[URL]** - 画像が配置されている、パブリックにアクセス可能な URL を指定します。
+   * **[スクリーンショットを撮る]** - 開いているノートブックのスクリーンショットが自動的に作成され、プレビューにアップロードされます。
+   * **[最初の表示出力を使用]** - 表示出力がある最初のセルを出力します。 マークダウンまたはテキストのみを表示するセルは、表示出力とみなされません。
 
    :::image type="content" source="./media/publish-notebook-gallery/publish-notebook.png" alt-text="[ギャラリーに公開] フォームに入力します。":::
 

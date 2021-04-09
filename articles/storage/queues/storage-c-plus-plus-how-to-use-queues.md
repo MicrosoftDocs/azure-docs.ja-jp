@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.openlocfilehash: 44d64c54049c02b6602f01b97effcc33b03dbcfe
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97591329"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>C++ から Queue ストレージを使用する方法
@@ -258,7 +258,7 @@ std::wcout << U("Number of messages in queue: ") << cachedMessageCount << std::e
 
 ## <a name="how-to-delete-a-queue"></a>方法:キューを削除する
 
-キューおよびそれに格納されているすべてのメッセージを削除するには、キュー オブジェクトの `delete_queue_if_exists` メソッドを呼び出します。
+キューおよびキューに格納されているすべてのメッセージを削除するには、キュー オブジェクトの `delete_queue_if_exists` メソッドを呼び出します。
 
 ```cpp
 // Retrieve storage account from connection-string.

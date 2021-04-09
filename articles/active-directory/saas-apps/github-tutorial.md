@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
 ms.openlocfilehash: c87f66e48aa7b39a7f3fc5f9b8572dd6925abbc0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98732159"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-a-github-enterprise-cloud-organization"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GitHub Enterprise Cloud Organization の統合
@@ -163,7 +163,7 @@ GitHub に対する Azure AD SSO を構成してテストするには、次の�
 
     ![設定](./media/github-tutorial/test.png)
 
-6. **[Save]\(保存\)**
+6. **[保存]**
 
 > [!NOTE]
 > GitHub でのシングル サインオンは GitHub で特定の組織を認証するものです。GitHub そのものの認証に取って代わることはできません。 つまり、ユーザーの github.com セッションの有効期限が切れた場合は、シングル サインオン プロセス中に GitHub の ID とパスワードで認証するように求められることがあります。

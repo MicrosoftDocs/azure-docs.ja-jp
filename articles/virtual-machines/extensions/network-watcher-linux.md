@@ -1,26 +1,19 @@
 ---
 title: Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能
 description: 仮想マシン拡張機能を使用して、Linux 仮想マシンに Network Watcher Agent をデプロイします。
-services: virtual-machines-linux
-documentationcenter: ''
-author: mimckitt
-manager: vashan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 5c81e94c-e127-4dd2-ae83-a236c4512345
-ms.service: virtual-machines-linux
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: linux
 ms.date: 02/14/2017
-ms.author: mimckitt
-ms.openlocfilehash: 870606299ee0e76c7a55578f258e837c4b8a9368
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bc252e560df782625d795b30c6688a34f5c2bd79
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952269"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102563593"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Linux 用 Network Watcher Agent 仮想マシン拡張機能
 
@@ -39,7 +32,7 @@ Network Watcher Agent 拡張機能は、次の Linux ディストリビューシ
 | Distribution | Version |
 |---|---|
 | Ubuntu | 12 以降 |
-| Debian | 7、8 |
+| Debian | 7 および 8 |
 | Red Hat | 6、7 |
 | Oracle Linux | 6.8 以降、7 |
 | SUSE Linux Enterprise Server | 11、12 |
@@ -76,7 +69,7 @@ Network Watcher Agent 拡張機能は、次の Linux ディストリビューシ
 
 ### <a name="property-values"></a>プロパティ値
 
-| Name | 値/例 |
+| 名前 | 値/例 |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.Azure.NetworkWatcher |

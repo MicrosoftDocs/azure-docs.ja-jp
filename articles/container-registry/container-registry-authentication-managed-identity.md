@@ -3,12 +3,12 @@ title: マネージド ID による認証
 description: ユーザー割り当てまたはシステム割り当て Azure マネージド ID を使用して、プライベート コンテナー レジストリ内のイメージへのアクセス権を付与します。
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 68564cc5743b1deb43bf39f897c239dc683c334c
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: e6c0d21f7bdefa94241655225589a52c02110f70
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987748"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041469"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure マネージド ID を使用して Azure コンテナー レジストリに対して認証する 
 
@@ -107,13 +107,13 @@ SSH セッションを終了します。
 
 ### <a name="create-an-identity"></a>ID の作成
 
-[az identity create](/cli/azure/identit#az-identity-create) コマンドを使用して、サブスクリプション内に ID を作成します。 前にコンテナー レジストリまたは仮想マシンを作成するために使用したものと同じリソース グループ、または別のリソース グループを使用できます。
+[az identity create](/cli/azure/identity#az_identity_create) コマンドを使用して、サブスクリプション内に ID を作成します。 前にコンテナー レジストリまたは仮想マシンを作成するために使用したものと同じリソース グループ、または別のリソース グループを使用できます。
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRId
 ```
 
-後の手順で ID を構成するために、[az identity show][az-identity-show] コマンドを使用して、ID のリソース ID とサービス プリンシパル ID を変数に格納します。
+後の手順で ID を構成するために、[az identity show][az_identity_show] コマンドを使用して、ID のリソース ID とサービス プリンシパル ID を変数に格納します。
 
 ```azurecli
 # Get resource ID of the user-assigned identity

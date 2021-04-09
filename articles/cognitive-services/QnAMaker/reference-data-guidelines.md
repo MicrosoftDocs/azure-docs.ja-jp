@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 01/02/2020
 ms.openlocfilehash: d73fd6c7f49c10c8aca1060e91fc69b0e581738b
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97707505"
 ---
 # <a name="import-and-export-data-reference"></a>データのインポートとエクスポートのリファレンス

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 800ce9d6603f60f7328525a964565bb233c04a5e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92516122"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-real-links"></a>チュートリアル:Azure Active Directory と Real Links の統合
@@ -41,7 +41,7 @@ Real Links と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Real Links では、 **SP** によって開始される SSO がサポートされます
+* Real Links では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-real-links-from-the-gallery"></a>ギャラリーからの Real Links の追加
 
@@ -61,13 +61,13 @@ Azure AD への Real Links の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Real Links** 」と入力し、結果ウィンドウで **Real Links** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Real Links**」と入力し、結果ウィンドウで **Real Links** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Real Links](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Real Links で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Real Links で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Real Links 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Real Links で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -114,7 +114,7 @@ Real Links で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="configure-real-links-single-sign-on"></a>Real Links のシングル サインオンの構成
 
-**Real Links** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Real Links サポート チーム](mailto:support@reallinks.io)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Real Links** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Real Links サポート チーム](mailto:support@reallinks.io)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -132,7 +132,7 @@ Real Links で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

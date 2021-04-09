@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 213b973bfc93cb2237473b6bc4c7f1e138457409
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 8bbd56499c9b62248662fc5e8df0d5b3e1b672d4
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131901"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504169"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 上の SQL Server の Always On 可用性グループ
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,11 +38,11 @@ Azure 仮想マシン上の Always On 可用性グループは、[オンプレ�
 
 ## <a name="vm-redundancy"></a>VM の冗長性 
 
-冗長性と高可用性を向上させるには、SQL Server VM を同じ[可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)に配置するか、異なる[可用性ゾーン](../../../availability-zones/az-overview.md)に配置する必要があります。
+冗長性と高可用性を向上させるには、SQL Server VM を同じ[可用性セット](../../../virtual-machines/availability-set-overview.md)に配置するか、異なる[可用性ゾーン](../../../availability-zones/az-overview.md)に配置する必要があります。
 
 一連の VM を同じ可用性セットに配置すると、機器の障害が原因で発生するデータセンター内での停止から保護され (可用性セット内の VM はリソースを共有しません)、更新からも保護されます (可用性セット内の VM は同時に更新されることはありません)。 可用性ゾーンは、データセンター全体の障害から保護します。各ゾーンは、リージョン内の一連のデータセンターを表します。  リソースがさまざまな可用性ゾーンに配置されるようにすることで、データセンターレベルの停止によってすべての VM がオフラインになることはなくなります。
 
-Azure VM を作成するときは、可用性セットと可用性ゾーンのどちらを構成するかを選択する必要があります。  Azure VM は両方に参加することはできません。
+Azure VM を作成するときは、可用性セットと可用性ゾーンのどちらを構成するかを選択する必要があります。  Azure VM が両方に参加することはできません。
 
 
 ## <a name="connectivity"></a>接続状況 
@@ -51,6 +51,7 @@ Azure VM を作成するときは、可用性セットと可用性ゾーンの�
 
 Azure VM 上の SQL Server を使用する場合、可用性グループ リスナーにトラフィックをルーティングするよう[ロード バランサー](availability-group-vnn-azure-load-balancer-configure.md)を構成します。また、SQL Server 2019 CU8 以降を使用している場合は、従来の VNN 可用性グループ リスナーに代わる[分散ネットワーク名 (DNN) リスナー](availability-group-distributed-network-name-dnn-listener-configure.md)を構成することもできます。 
 
+クラスター接続オプションの詳細については、[HADR 接続を Azure VM 上の SQL Server にルーティングする方法](hadr-cluster-best-practices.md#connectivity)に関する記事をご覧ください。 
 
 ### <a name="vnn-listener"></a>VNN リスナー 
 

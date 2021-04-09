@@ -4,12 +4,12 @@ description: Apache Ambari Web UI を使用して、Apache HBase を構成およ
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 02/01/2021
-ms.openlocfilehash: 60c9916bc7d7b3b380a332f41924ee744002fd66
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 7e54b1347e4c67b99ba87b15c2c15d9d28244ce7
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428202"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864773"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight で Apache Ambari を使用して Apache HBase を最適化する
 
@@ -28,7 +28,7 @@ HBase のヒープ サイズは、"*リージョン*" サーバーと "*マス�
 
 1. 既定値を 5,000 MB に変更します。
 
-    !['Apache Ambari の HBase メモリのヒープ サイズ'](./media/optimize-hbase-ambari/ambari-hbase-heapsize.png)
+    :::image type="content" source="./media/optimize-hbase-ambari/ambari-hbase-heapsize.png" alt-text="'Apache Ambari の HBase メモリのヒープ サイズ'" border="true":::
 
 ## <a name="optimize-read-heavy-workloads"></a>読み取り負荷の高いワークロードを最適化する
 
@@ -40,7 +40,7 @@ HBase のヒープ サイズは、"*リージョン*" サーバーと "*マス�
 
 1. このパラメーターを変更するには、HBase の **[Configs]\(構成\)** タブの **[Settings]\(設定\)** タブに移動し、 **[% of RegionServer Allocated to Read Buffers]\(読み取りバッファーに割り当てられた RegionServer の割合 (%)\)** を見つけます。
 
-    ![Apache HBase のメモリ ブロック キャッシュ サイズ](./media/optimize-hbase-ambari/hbase-block-cache-size.png)
+    :::image type="content" source="./media/optimize-hbase-ambari/hbase-block-cache-size.png" alt-text="Apache HBase のメモリ ブロック キャッシュ サイズ" border="true":::
 
 1. 値を変更するには、 **[Edit]\(編集\)** アイコンを選択します。
 
@@ -58,7 +58,7 @@ HBase のヒープ サイズは、"*リージョン*" サーバーと "*マス�
 
 `hbase.client.scanner.caching` 設定では、スキャナーで `next` メソッドが呼び出されたときにディスクから読み取る行数を定義します。  既定値は 100 です。 この数が多いほど、クライアントからリージョン サーバーに対して行われるリモート呼び出しが減り、スキャンが高速化されます。 ただし、この設定により、クライアントのメモリ負荷も増加します。
 
-![Apache HBase のフェッチされる行数](./media/optimize-hbase-ambari/hbase-num-rows-fetched.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-num-rows-fetched.png" alt-text="Apache HBase のフェッチされる行数" border="true":::
 
 > [!IMPORTANT]  
 > スキャナーでの次のメソッドの呼び出しまでの時間がスキャナーのタイムアウトよりも長くなるような値を設定しないでください。 スキャナーのタイムアウト期間は、`hbase.regionserver.lease.period` プロパティで定義します。
@@ -71,7 +71,7 @@ HBase のヒープ サイズは、"*リージョン*" サーバーと "*マス�
 
 HBase では、*HFile* と呼ばれる内部ファイル形式でデータを保存します。 `hbase.hregion.max.filesize` プロパティは、リージョンの 1 つの HFile のサイズを定義します。  リージョンのすべての HFile の合計がこの設定より大きい場合、リージョンが 2 つのリージョンに分割されます。
 
-!['Apache HBase の HRegion 最大ファイル サイズ'](./media/optimize-hbase-ambari/hbase-hregion-max-filesize.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-hregion-max-filesize.png" alt-text="'Apache HBase の HRegion 最大ファイル サイズ'" border="true":::
 
 リージョンのファイル サイズが大きいほど、分割数が少なくなります。 ファイル サイズを増やして、書き込みパフォーマンスが最大になる値を指定できます。
 
@@ -85,7 +85,7 @@ HBase では、*HFile* と呼ばれる内部ファイル形式でデータを保
 
     フラッシュ サイズとブロック乗数の既定値を使用した場合、Memstore のサイズが 128 * 4 = 512 MB になると更新がブロックされます。 更新のブロックの数を減らすには、`hbase.hregion.memstore.block.multiplier` の値を増やします。
 
-![Apache HBase のリージョンのブロック乗数](./media/optimize-hbase-ambari/hbase-hregion-memstore-block-multiplier.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-hregion-memstore-block-multiplier.png" alt-text="Apache HBase のリージョンのブロック乗数" border="true":::
 
 ## <a name="define-memstore-size"></a>Memstore のサイズを定義する
 
@@ -95,7 +95,7 @@ Memstore のサイズは、`hbase.regionserver.global.memstore.upperLimit` パ�
 
 Memstore のローカル割り当てバッファーの使用は、`hbase.hregion.memstore.mslab.enabled` プロパティで指定します。 有効 (true) にすると、この設定により、負荷の高い書き込み操作中にヒープの断片化を防ぐことができます。 既定値は、true です。
 
-![hbase.hregion.memstore.mslab.enabled](./media/optimize-hbase-ambari/hbase-hregion-memstore-mslab-enabled.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-hregion-memstore-mslab-enabled.png" alt-text="hbase.hregion.memstore.mslab.enabled" border="true":::
 
 ## <a name="next-steps"></a>次のステップ
 

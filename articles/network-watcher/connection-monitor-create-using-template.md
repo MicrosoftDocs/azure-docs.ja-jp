@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
 ms.openlocfilehash: 46bdaf932d4224bf97b46e7713d49d815ca1bcdd
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99832999"
 ---
 # <a name="create-a-connection-monitor-using-the-arm-template"></a>ARM テンプレートを使用して接続モニターを作成する
 
 > [!IMPORTANT]
-> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 接続モニター (クラシック) で、新しい接続モニターを追加することもできなくなります。 2021 年 7 月 1 日より前に作成されたテストと接続モニターは引き続き使用できます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor からテストを移行する](migrate-to-connection-monitor-from-network-performance-monitor.md)か、[接続モニター (クラシック) から Azure Network Watcher の新しい接続モニターに移行](migrate-to-connection-monitor-from-connection-monitor-classic.md)します。
+> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 接続モニター (クラシック) に新しい接続モニターを追加することもできなくなります。 2021 年 7 月 1 日より前に作成されたテストおよび接続モニターは引き続き使用することができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor からテストを移行する](migrate-to-connection-monitor-from-network-performance-monitor.md)か、[接続モニター (クラシック) から Azure Network Watcher の新しい接続モニターに移行](migrate-to-connection-monitor-from-connection-monitor-classic.md)します。
 
 ARMClient を使用して接続モニターを作成し、リソース間の通信を監視する方法について説明します。 これにより、ハイブリッド デプロイおよび Azure クラウド デプロイがサポートされます。
 

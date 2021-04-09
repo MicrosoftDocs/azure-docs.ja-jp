@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0c4d8b0a33763a967550453d8a205258f7583084
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90015264"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: インスタンスに関する特別な考慮事項
@@ -39,7 +39,7 @@ Azure AD テナントにサインインするときは、onmicrosoft.de ドメ�
 
 Microsoft Cloud Germany に現在ない機能:
 
-* **パスワード ライトバック**は、Azure AD Connect バージョン 1.1.570.0 以降のプレビューで利用できます。
+* **パスワード ライトバック** は、Azure AD Connect バージョン 1.1.570.0 以降のプレビューで利用できます。
 * その他の Azure AD Premium サービスは使用できません。
 
 ## <a name="microsoft-azure-government"></a>Microsoft Azure Government

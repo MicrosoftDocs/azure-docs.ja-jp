@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 4f071c0d09fc2fa97eeea45bd82228b7eb8434a2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96021658"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>自動スケールと App Service Environment v1
@@ -20,11 +20,11 @@ ms.locfileid: "96021658"
 > この記事は、App Service Environment v1 に関するものです。  より強力なインフラストラクチャ上で実行できる、使いやすい新しいバージョンの App Service Environment があります。 新しいバージョンの詳細については、「[App Service Environment の概要](intro.md)」を参照してください。
 > 
 
-Azure App Service 環境は " *自動スケール*" をサポートしています。 メトリックまたはスケジュールに基づいて個々のワーカー プールの規模を自動調整することができます。
+Azure App Service Environment は " *自動スケール*" をサポートしています。 メトリックまたはスケジュールに基づいて個々のワーカー プールの規模を自動調整することができます。
 
 ![Autoscale options for a worker pool.][intro]
 
-自動スケールでは、予算または負荷プロファイルに適合するように App Service 環境を自動的に拡大または縮小することにより、リソースの使用率が最適化されます。
+自動スケールでは、予算または負荷プロファイルに適合するように App Service Environment を自動的に拡大または縮小することにより、リソースの使用率が最適化されます。
 
 ## <a name="configure-worker-pool-autoscale"></a>ワーカー プールの自動スケールの構成
 自動スケール機能には、ワーカー プールの **[設定]** タブからアクセスできます。
@@ -50,14 +50,14 @@ Azure App Service 環境は " *自動スケール*" をサポートしていま�
  ワーカー プールまたはフロントエンドの任意のメトリックを使用して、自動スケール ルールを定義することができます。 これらのメトリックは、リソース ブレード グラフで監視したり、アラートを設定したりできるメトリックと同じものです。
 
 ## <a name="autoscale-example"></a>自動スケールの例
-App Service 環境の自動スケールの説明は、シナリオを通して行うのが最も効果的です。
+App Service Environment の自動スケールの説明は、シナリオを通して行うのが最も効果的です。
 
-この記事では、自動スケールを設定するときに必要なすべての考慮事項を説明します。 この記事では、App Service Environment でホストされている App Service 環境の自動スケールを考慮に入れる場合に必要なあらゆるやり取りについて説明します。
+この記事では、自動スケールを設定するときに必要なすべての考慮事項を説明します。 この記事では、App Service Environment でホストされている App Service Environment の自動スケールを考慮に入れる場合に必要なあらゆるやり取りについて説明します。
 
 ### <a name="scenario-introduction"></a>シナリオの概要
-Frank 氏は企業の sysadmin です。彼は管理するワークロードの一部を App Service 環境に移行しました。
+Frank 氏は企業の sysadmin です。彼は管理するワークロードの一部をApp Service Environment に移行しました。
 
-App Service 環境は、次のように手動で拡張するように構成されています。
+App Service Environment は、次のように手動で拡張するように構成されています。
 
 * **フロントエンド:** 3
 * **ワーカー プール 1**:10
@@ -84,7 +84,7 @@ Frank は、アプリケーションに関する知識がきわめて豊富で�
 | **タイム ゾーン:** UTC-08 |**タイム ゾーン:** UTC-08 |
 |  | |
 | **自動スケール ルール (スケールアップ)** |**自動スケール ルール (スケールアップ)** |
-| **リソース:** 運用環境 (App Service 環境) |**リソース:** 運用環境 (App Service 環境) |
+| **リソース:** 運用環境 (App Service Environment) |**リソース:** 運用環境 (App Service Environment) |
 | **メトリック:** CPU % |**メトリック:** CPU % |
 | **操作:** 60% 超過 |**操作:** 80% 超過 |
 | **期間:** 5 分 |**期間:** 10 分 |
@@ -93,7 +93,7 @@ Frank は、アプリケーションに関する知識がきわめて豊富で�
 | **クールダウン (分):** 15 |**クールダウン (分):** 20 |
 |  | |
 | **自動スケール ルール (スケールダウン)** |**自動スケール ルール (スケールダウン)** |
-| **リソース:** 運用環境 (App Service 環境) |**リソース:** 運用環境 (App Service 環境) |
+| **リソース:** 運用環境 (App Service Environment) |**リソース:** 運用環境 (App Service Environment) |
 | **メトリック:** CPU % |**メトリック:** CPU % |
 | **操作:** 30% 未満 |**操作:** 20% 未満 |
 | **期間:** 10 分 |**期間:** 約 15 分 |
@@ -104,7 +104,7 @@ Frank は、アプリケーションに関する知識がきわめて豊富で�
 ### <a name="app-service-plan-inflation-rate"></a>App Service プランの増加率
 自動スケールを行うように構成された App Service プランは、1 時間あたりの最大レートで処理を行います。 このレートは、自動スケール ルールで指定された値に基づいて算出できます。
 
-ワーカー プールに対するスケールの変更は瞬時に適用されるわけではないので、App Service 環境の自動スケールでは " *App Service プランの増加率* " を理解し計算することが重要となります。
+ワーカー プールに対するスケールの変更は瞬時に適用されるわけではないので、App Service Environment の自動スケールでは " *App Service プランの増加率* " を理解し計算することが重要となります。
 
 App Service プランの増加率は次のように計算します。
 
@@ -137,7 +137,7 @@ App Service プランの増加率は次のように計算します。
 ### <a name="use-the-app-service-plan-inflation-rate-to-define-worker-pool-autoscale-rules"></a>App Service プランの増加率を使用してワーカー プールの自動スケール ルールを定義する
 自動スケールを行うように構成された App Service プランのホストとなるワーカー プールには、容量のバッファーを割り当てる必要があります。 自動スケール操作で App Service プランを必要に応じて拡大したり縮小したりするために別途必要となる容量が、このバッファーによって確保されます。 最小バッファーは、計算した App Service プラン増加率合計となります。
 
-App Service 環境のスケール操作は適用されるのに多少時間がかかるため、何らかの変更を行う場合は、スケール操作の進行中は起こりうる需要の変化を考慮する必要があります。 この時間差に対応するため、計算した App Service プラン増加率合計を、自動スケール操作ごとに追加される最小インスタンス数として使用することをお勧めします。
+App Service Environment のスケール操作は適用されるのに多少時間がかかるため、何らかの変更を行う場合は、スケール操作の進行中は起こりうる需要の変化を考慮する必要があります。 この時間差に対応するため、計算した App Service プラン増加率合計を、自動スケール操作ごとに追加される最小インスタンス数として使用することをお勧めします。
 
 Frank は、この情報を使用して次の自動スケール プロファイルとルールを定義することができます。
 

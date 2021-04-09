@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/23/2020
 ms.author: jeedes
 ms.openlocfilehash: 36f3254a3a309f3dd2612658a82d0dc099ac1991
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92522667"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-numlyengage"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と NumlyEngage™ の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* NumlyEngage™ では、 **SP** Initiated SSO がサポートされます
+* NumlyEngage™ では、**SP** Initiated SSO がサポートされます
 * NumlyEngage™ を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-numlyengage-from-the-gallery"></a>ギャラリーからの NumlyEngage™ の追加
@@ -50,7 +50,7 @@ Azure AD への NumlyEngage™ の統合を構成するには、ギャラリー�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **NumlyEngage™** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**NumlyEngage™**」と入力します。
 1. 結果のパネルから **[NumlyEngage™]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -135,7 +135,7 @@ NumlyEngage™ で Azure AD SSO を構成してテストするには、次の構
 
 ## <a name="configure-numlyengage-sso"></a>NumlyEngage SSO の構成
 
-**NumlyEngage™** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [NumlyEngage™ のサポート チーム](mailto:numlyengage-support@numly.io)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**NumlyEngage™** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [NumlyEngage™ のサポート チーム](mailto:numlyengage-support@numly.io)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-numlyengage-test-user"></a>NumlyEngage のテスト ユーザーの作成
 

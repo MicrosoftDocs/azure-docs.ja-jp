@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
 ms.openlocfilehash: bcb334074d842fa5c35e4619f1c5d654405388a7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96459562"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Marketplace で Azure Container オファーを作成する
@@ -33,7 +33,7 @@ ms.locfileid: "96459562"
 
 ### <a name="offer-id-and-alias"></a>オファーの ID と別名
 
-**[オファー ID]** を入力します。 これは、ご自分のアカウント内の各オファーに対する一意の識別子です。
+**[オファー ID]** を入力します。 これは、アカウントのオファーごとに一意の識別子です。
 
 - この ID は、マーケットプレース オファーの Web アドレスと Azure Resource Manager テンプレート (該当する場合) で顧客に表示されます。
 - 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。 たとえば、「**test-offer-1**」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
@@ -197,7 +197,7 @@ Microsoft では、商業マーケットプレースの取り引きに役立つ�
 
 #### <a name="store-logos"></a>ストア ロゴ
 
-**大** サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、**小** および **中** サイズのロゴを作成します。 必要に応じて、これらを別の画像に置き換えることもできます。
+**大** サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、**小** および **中** サイズのロゴを作成します。 必要に応じて、別の画像に置き換えることもできます。
 
 - **大** (216 x 216 から 350 x 350 px、必須)
 - **中** (90 x 90 px、省略可能)

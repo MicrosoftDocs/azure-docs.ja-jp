@@ -4,17 +4,17 @@ description: PowerShell を使用して、Shared Image Gallery 内のスナッ�
 author: cynthn
 ms.topic: how-to
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: f4ca28efce28933eed9be5cca7bd412f2d9505aa
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 70ef194ab7f7403f31ad431eba25db5f71dfb580
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679536"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102556905"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>PowerShell を使用して Shared Image Gallery 内の Managed Disk またはスナップショットからイメージを作成する
 

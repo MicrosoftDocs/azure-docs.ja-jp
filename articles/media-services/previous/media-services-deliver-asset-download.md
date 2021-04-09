@@ -3,7 +3,7 @@ title: コンピューターへの Media Services 資産のダウンロード - 
 description: コンピューターへのアセットのダウンロードについて説明します。 コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 8908a1dd-3ffb-4f18-955d-4c8e2d82fc5d
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5ad40feacdccc847ed66caed3d586db2490b0b50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60f91e97a9bce1427b4ed8d251fe297d9eb7d969
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266529"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103016663"
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>方法:ダウンロードによってアセットを配信する
 

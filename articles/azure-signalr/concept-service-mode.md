@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: kenchen
 ms.openlocfilehash: 60f1ab0440120cb9a96e6c05a4fc1987ead29188
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92143258"
 ---
 # <a name="service-mode-in-azure-signalr-service"></a>Azure SignalR Service のサービス モード
@@ -21,15 +21,15 @@ ms.locfileid: "92143258"
 
 後で [設定] メニューでそれを変更することもできます。
 
-:::image type="content" source="media/concept-service-mode/update.png" alt-text="作成時にサービス モードを選択する":::
+:::image type="content" source="media/concept-service-mode/update.png" alt-text="サービス モードを更新する":::
 
-Azure SignalR サービスでは現在、**既定**、**サーバーレス**、**クラシック**の 3 つのサービス モードがサポートされています。 SignalR リソースの動作はモードによって異なります。 この記事では、それらの違いと、シナリオに基づいて適切なサービス モードを選択する方法について説明します。
+Azure SignalR サービスでは現在、**既定**、**サーバーレス**、**クラシック** の 3 つのサービス モードがサポートされています。 SignalR リソースの動作はモードによって異なります。 この記事では、それらの違いと、シナリオに基づいて適切なサービス モードを選択する方法について説明します。
 
 ## <a name="default-mode"></a>既定モード
 
 既定モードは、新しい SignalR リソースを作成するときのサービス モードの既定値です。 このモードでは、アプリケーションは通常の ASP.NET Core (または ASP.NET) SignalR アプリケーションとして動作します。ハブは Web サーバー (以下ではハブ サーバーと呼びます) でホストされ、クライアントとハブ サーバーの間ではリアルタイムの二重通信を行うことができます。 唯一の違いは、クライアントとサーバーは直接接続するのではなく、クライアントとサーバーの両方が SignalR Service に接続し、サービスをプロキシとして使用することです。 次の図は、既定モードでの一般的なアプリケーション構造を示したものです。
 
-:::image type="content" source="media/concept-service-mode/default.png" alt-text="作成時にサービス モードを選択する":::
+:::image type="content" source="media/concept-service-mode/default.png" alt-text="既定モードでのアプリケーション構造":::
 
 そのため、SignalR アプリケーションがあり、SignalR Service と統合する場合は、ほとんどの場合、既定モードが適切な選択になります。
 
@@ -59,7 +59,7 @@ Azure SignalR サービスでは現在、**既定**、**サーバーレス**、*
 
 次の図は、サーバーレス モードの動作を示したものです。
 
-:::image type="content" source="media/concept-service-mode/serverless.png" alt-text="作成時にサービス モードを選択する":::
+:::image type="content" source="media/concept-service-mode/serverless.png" alt-text="サーバーレス モードでのアプリケーション構造":::
 
 > [!NOTE]
 > 既定モードでも、ハブ サーバーを経由したくない場合は、REST API と管理 SDK と関数バインドを使用して、クライアントにメッセージを直接送信できることに注意してください。 ただし、既定モードでは、クライアント接続はやはりハブ サーバーによって処理され、アップストリームはそのモードでは動作しません。

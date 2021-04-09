@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
 ms.openlocfilehash: cb0a90db0595c655191006969071bc5b9cceaa75
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94337595"
 ---
 # <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>チュートリアル:REST API を使用して Azure Data Box BLOB ストレージにデータをコピーする  
@@ -169,7 +169,7 @@ Data Box BLOB ストレージに接続したら、次の手順はデータをコ
 
 BLOB は常にコンテナーにアップロードされるため、最初の手順はコンテナーを作成することです。 コンテナーを使用すると、お客様のコンピューター上のフォルダーにファイルを整理するように、BLOB のグループを整理できます。 BLOB コンテナーを作成するには、以下の手順に従います。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 2. 左側のウィンドウで、BLOB コンテナーを作成するストレージ アカウントを展開します。
 3. **[BLOB コンテナー]** を右クリックし、コンテキスト メニューの **[BLOB コンテナーの作成]** を選択します。
 

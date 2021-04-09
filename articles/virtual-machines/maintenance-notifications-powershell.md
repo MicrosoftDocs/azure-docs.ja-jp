@@ -3,16 +3,17 @@ title: PowerShell を使用して Azure VM のメンテナンス通知を取得�
 description: Azure で実行されている仮想マシンのメンテナンス通知を表示し、PowerShell を使用してセルフサービス メンテナンスを開始します。
 author: shants123
 ms.service: virtual-machines
+ms.subservice: maintenance-control
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 9942ad359bf1e1e7a02f30979ba4a9325d90d484
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4278aa563d76b783e02e67ee964764864931fd68
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336056"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102552373"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>PowerShell を使用した計画メンテナンスの処理
 
@@ -41,7 +42,7 @@ MaintenanceRedeployStatus               :
 
 MaintenanceRedeployStatus では、次のプロパティが返されます。 
 
-| [値] | 説明   |
+| 値 | 説明   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | この時点で VM に対してメンテナンスを開始できるかどうかを示します。 |
 | PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 |

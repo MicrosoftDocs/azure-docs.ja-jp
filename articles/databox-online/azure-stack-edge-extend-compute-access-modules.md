@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
 ms.openlocfilehash: 19c92deb58ac51aa882e7123b9a90aa3eae627d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90894120"
 ---
 # <a name="enable-compute-network-on-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro でコンピューティング ネットワークを有効にする
@@ -32,7 +32,7 @@ ms.locfileid: "90894120"
 開始する前に、次の条件を満たしている必要があります。
 
 - デバイスのセットアップが完了した Azure Stack Edge Pro デバイスがある。
-- **コンピューティングの構成**が完了している。コンピューティングの構成は、お使いのデバイスで、[Azure Stack Edge Pro を使用してデータを変換することに関するチュートリアル](azure-stack-edge-deploy-configure-compute-advanced.md#configure-compute)の手順に従って行います。 お使いのデバイスには、関連付けられた IoT Hub リソース、IoT デバイス、および IoT Edge デバイスが必要です。
+- **コンピューティングの構成** が完了している。コンピューティングの構成は、お使いのデバイスで、[Azure Stack Edge Pro を使用してデータを変換することに関するチュートリアル](azure-stack-edge-deploy-configure-compute-advanced.md#configure-compute)の手順に従って行います。 お使いのデバイスには、関連付けられた IoT Hub リソース、IoT デバイス、および IoT Edge デバイスが必要です。
 
 ## <a name="enable-network-interface-for-compute"></a>コンピューティング用ネットワーク インターフェイスを有効にする
 
@@ -42,7 +42,7 @@ ms.locfileid: "90894120"
 
 1. ローカル Web UI で、 **[構成] > [コンピューティング設定]** の順に移動します。  
 
-2. デバイスで実行するコンピューティング モジュールへの接続に使用するネットワーク インターフェイスを**有効**にします。
+2. デバイスで実行するコンピューティング モジュールへの接続に使用するネットワーク インターフェイスを **有効** にします。
 
     - 静的 IP アドレスを使用する場合は、ネットワーク インターフェイスの IP アドレスを入力します。
     - DHCP を使用している場合、IP アドレスは自動的に割り当てられます。 この例では、DHCP を使用します。
@@ -61,8 +61,8 @@ Azure Stack Edge Pro デバイスに Web サーバー アプリ モジュール�
 2. お使いの Azure Stack Edge Pro デバイスに関連付けられている IoT Edge デバイスを選択します。 **[デバイスの詳細]** で、 **[モジュールの設定]** を選択します。 **[モジュールの追加]** で、 **[+ 追加]** 、 **[IoT Edge モジュール]** の順に選択します。
 3. **[IoT Edge のカスタム モジュール]** ブレードで、以下の手順を実行します。
 
-    1. デプロイする Web サーバー アプリ モジュールの**名前**を指定します。
-    2. お使いのモジュール イメージの**イメージ URI** を指定します。 指定した名前とタグに一致するモジュールが取得されます。 この場合は、`nginx:stable` によって、パブリック [Docker リポジトリ](https://hub.docker.com/_/nginx/)から、(stable としてタグ付けされた) 安定した nginx イメージがプルされます。
+    1. デプロイする Web サーバー アプリ モジュールの **名前** を指定します。
+    2. お使いのモジュール イメージの **イメージ URI** を指定します。 指定した名前とタグに一致するモジュールが取得されます。 この場合は、`nginx:stable` によって、パブリック [Docker リポジトリ](https://hub.docker.com/_/nginx/)から、(stable としてタグ付けされた) 安定した nginx イメージがプルされます。
     3. **[コンテナーの作成オプション]** ボックスで、次のサンプル コードを貼り付けます。  
 
         ```
@@ -87,7 +87,7 @@ Azure Stack Edge Pro デバイスに Web サーバー アプリ モジュール�
 
 ## <a name="verify-module-access"></a>モジュール アクセスを確認する
 
-1. モジュールが正常にデプロイされ、実行されていることを確認します。 **[デバイスの詳細]** ページの **[モジュール]** タブで、モージュールの状態が**実行中**になっているはずです。  
+1. モジュールが正常にデプロイされ、実行されていることを確認します。 **[デバイスの詳細]** ページの **[モジュール]** タブで、モージュールの状態が **実行中** になっているはずです。  
 2. Web サーバー アプリ モジュールに接続します。 ブラウザー ウィンドウを開いて、次を入力します。
 
     `http://<compute-network-IP-address>:8080`

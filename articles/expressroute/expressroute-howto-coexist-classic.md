@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: duau
 ms.openlocfilehash: 70407d726b697dd6c4dfb6777cf6c445092d3b73
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92206327"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>ExpressRoute 接続とサイト間接続の共存の構成 (クラシック)
@@ -238,7 +238,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
       <AddressPrefix>10.17.159.224/27</AddressPrefix>
     </Subnet>
     ```
-5. 以前のゲートウェイがサイト間 VPN であった場合は、接続の種類を **Dedicated**に変更する必要もあります。
+5. 以前のゲートウェイがサイト間 VPN であった場合は、接続の種類を **Dedicated** に変更する必要もあります。
    
     ```xml
     <Gateway>

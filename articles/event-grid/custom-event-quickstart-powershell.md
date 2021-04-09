@@ -1,17 +1,17 @@
 ---
-title: クイック スタート:カスタム イベントを Web エンドポイントに送信する - Event Grid、PowerShell
-description: クイック スタート:Azure Event Grid と PowerShell を使用して、カスタム トピックを発行したり、そのトピックに対するイベントをサブスクライブしたりします。 イベントは、Web アプリケーションによって処理されます。
+title: 'クイックスタート: カスタム イベントを Web エンドポイントに送信する - Event Grid、PowerShell'
+description: 'クイックスタート: Azure Event Grid と PowerShell を使用して、カスタム トピックを発行したり、そのトピックに対するイベントをサブスクライブしたりします。 イベントは、Web アプリケーションによって処理されます。'
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 3bd389ff523fd32e73ac19f1131c8c2784e16db5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89075616"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>クイック スタート:PowerShell と Event Grid を使ったカスタム イベントの Web エンドポイントへのルーティング
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>クイックスタート: PowerShell と Event Grid を使ったカスタム イベントの Web エンドポイントへのルーティング
 
 Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure PowerShell を使用してカスタム トピックを作成してそのトピックをサブスクライブし、イベントをトリガーして結果を表示します。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 ただし、この記事では、単純化するために、メッセージを収集して表示する Web アプリにイベントを送信します。
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: zhchia
 ms.openlocfilehash: 4d0a52f06a751fba57a00615e2d57485ff740d04
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94359699"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>チュートリアル:MerchLogix を構成し、自動ユーザー プロビジョニングに対応させる
@@ -51,7 +51,7 @@ Azure AD を使用して自動的にユーザー プロビジョニングを行�
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに、「 **MerchLogix** 」と入力します。
+4. 検索ボックスに、「**MerchLogix**」と入力します。
 
 5. 結果パネルで **[MerchLogix]** を選択してから、 **[追加]** ボタンをクリックして MerchLogix を SaaS アプリケーションの一覧に追加します。
 

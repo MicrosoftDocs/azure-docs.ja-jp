@@ -13,10 +13,10 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
 ms.openlocfilehash: c84c81fa81cf4ba9be454eea5782927a09c3252a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101690963"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Azure SQL Managed Instance の使用を開始する

@@ -4,10 +4,10 @@ description: Azure Container Instances で liveness probe を構成して、異�
 ms.topic: article
 ms.date: 07/02/2020
 ms.openlocfilehash: befe9693be1413abf455d915814c53aab20db53c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86169699"
 ---
 # <a name="configure-liveness-probes"></a>liveness probe の構成
@@ -61,7 +61,7 @@ type: Microsoft.ContainerInstance/containerGroups
 az container create --resource-group myResourceGroup --name livenesstest -f liveness-probe.yaml
 ```
 
-### <a name="start-command"></a>コマンドを開始する
+### <a name="start-command"></a>開始コマンド
 
 デプロイには、コンテナーの初回の実行開始時に実行される開始コマンドを定義する `command` プロパティが含まれています。 このプロパティは、文字列の配列を受け入れます。 このコマンドでは、異常な状態に移行しているコンテナーがシミュレートされます。
 
@@ -97,7 +97,7 @@ liveness probe が継続的に失敗し、過剰な回数の再起動がトリ�
 
 ## <a name="liveness-probes-and-restart-policies"></a>Liveness probe および再起動のポリシー
 
-再起動ポリシーは、liveness probe によってトリガーされる再起動動作よりも優先されます。 たとえば、`restartPolicy = Never` "*および*" liveness probe を設定した場合、コンテナー グループは、liveness の検査失敗に起因して再起動されることはありません。 コンテナー グループはコンテナー グループの再起動ポリシーである `Never` に従います。
+再起動ポリシーは、liveness probe によってトリガーされる再起動動作よりも優先されます。 たとえば、 "`restartPolicy = Never` *および*" liveness probe を設定した場合、コンテナー グループは、liveness の検査失敗に起因して再起動されることはありません。 コンテナー グループはコンテナー グループの再起動ポリシーである `Never` に従います。
 
 ## <a name="next-steps"></a>次のステップ
 

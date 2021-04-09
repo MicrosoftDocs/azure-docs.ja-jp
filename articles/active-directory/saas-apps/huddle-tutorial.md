@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 481b11305ff99661487b83c7588b184ef502d7ad
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92460718"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>チュートリアル: Azure Active Directory と Huddle の統合
@@ -41,7 +41,7 @@ Huddle と Azure AD の統合を構成するには、次のものが必要です
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Huddle では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Huddle では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-huddle-from-the-gallery"></a>ギャラリーからの Huddle の追加
 
@@ -61,13 +61,13 @@ Azure AD への Huddle の統合を構成するには、ギャラリーから管
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Huddle** 」と入力し、結果パネルで **[Huddle]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Huddle**」と入力し、結果パネルで **[Huddle]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Huddle](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Huddle で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Huddle で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Huddle 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Huddle で Azure AD のシングル サインオンを構成してテストするには、次の一連の作業を完了させる必要があります。

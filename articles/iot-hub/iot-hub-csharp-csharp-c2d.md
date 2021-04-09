@@ -16,10 +16,10 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-csharp
 ms.openlocfilehash: d8df9884c0104792240d85d9ebd4235ef2a18741
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92142357"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>デバイスに IoT Hub でクラウドからメッセージを送信する (.NET)
@@ -98,7 +98,7 @@ MQTT ではなく AMQP と HTTPS を使用する場合、デバイスは次の�
 * メッセージを破棄します。この場合、IoT Hub は将来の使用に備えてメッセージをデバイスのキュー内に保持します。
 * メッセージを拒否します。この場合、メッセージはデバイスのキューから完全に削除されます。
 
-デバイスがメッセージを完了、破棄、または拒否することを妨げる問題が発生した場合、IoT Hub は一定のタイムアウト期間が経過した後で、メッセージの配信をキューに入れます。 このような理由から、同じメッセージを複数回受信した場合に生成される結果が毎回同じになるように、デバイス アプリ内のメッセージ処理ロジックを*べき等*にする必要があります。
+デバイスがメッセージを完了、破棄、または拒否することを妨げる問題が発生した場合、IoT Hub は一定のタイムアウト期間が経過した後で、メッセージの配信をキューに入れます。 このような理由から、同じメッセージを複数回受信した場合に生成される結果が毎回同じになるように、デバイス アプリ内のメッセージ処理ロジックを *べき等* にする必要があります。
 
 cloud-to-device メッセージのライフサイクルの詳細など、IoT Hub が cloud-to-device メッセージを処理する方法の詳細については、「[IoT ハブから cloud-to-device メッセージを送信する](iot-hub-devguide-messages-c2d.md)」を参照してください。
 
@@ -108,7 +108,7 @@ cloud-to-device メッセージのライフサイクルの詳細など、IoT Hub
 
 ## <a name="get-the-iot-hub-connection-string"></a>IoT ハブ接続文字列を取得する
 
-この記事では、「[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-dotnet.md)」で作成した IoT ハブを介して cloud-to-device メッセージを送信するバックエンド サービスを作成します。 cloud-to-device メッセージを送信するサービスには、**サービス接続**のアクセス許可が必要となります。 既定では、どの IoT Hub も、このアクセス許可を付与する **service** という名前の共有アクセス ポリシーがある状態で作成されます。
+この記事では、「[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-dotnet.md)」で作成した IoT ハブを介して cloud-to-device メッセージを送信するバックエンド サービスを作成します。 cloud-to-device メッセージを送信するサービスには、**サービス接続** のアクセス許可が必要となります。 既定では、どの IoT Hub も、このアクセス許可を付与する **service** という名前の共有アクセス ポリシーがある状態で作成されます。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -118,7 +118,7 @@ cloud-to-device メッセージのライフサイクルの詳細など、IoT Hub
 
 1. 現在の Visual Studio ソリューションで、**ファイル** > **新規** > 、**プロジェクト** の順に選択します。 **[新しいプロジェクトの作成]** で、 **[コンソール アプリ (.NET Framework)]** を選択してから、 **[次へ]** を選択します。
 
-1. プロジェクトに *SendCloudToDevice*という名前を付けます。 **[ソリューション]** で **[ソリューションに追加]** を選択し、最新版の .NET Framework をそのまま使用します。 **[作成]** を選択してプロジェクトを作成します。
+1. プロジェクトに *SendCloudToDevice* という名前を付けます。 **[ソリューション]** で **[ソリューションに追加]** を選択し、最新版の .NET Framework をそのまま使用します。 **[作成]** を選択してプロジェクトを作成します。
 
    ![Visual Studio で新しいプロジェクトを構成する](./media/iot-hub-csharp-csharp-c2d/sendcloudtodevice-project-configure.png)
 
@@ -169,7 +169,7 @@ cloud-to-device メッセージのライフサイクルの詳細など、IoT Hub
 
 1. **[共通プロパティ]**  >  **[スタートアップ プロジェクト]** で **[マルチ スタートアップ プロジェクト]** を選択してから、**SimulatedDevice** および **SendCloudToDevice** の **[開始]** アクションを選択します。 **[OK]** を選択して変更を保存します。
 
-1. **F5**キーを押します。 両方のアプリケーションが開始されます。 **[SendCloudToDevice]** ウィンドウを選択して **Enter** キーを押します。 デバイス アプリによってメッセージが受信されていることがわかります。
+1. **F5** キーを押します。 両方のアプリケーションが開始されます。 **[SendCloudToDevice]** ウィンドウを選択して **Enter** キーを押します。 デバイス アプリによってメッセージが受信されていることがわかります。
 
    ![デバイス アプリによるメッセージの受信](./media/iot-hub-csharp-csharp-c2d/sendc2d1.png)
 
@@ -216,7 +216,7 @@ cloud-to-device メッセージのライフサイクルの詳細など、IoT Hub
    commandMessage.Ack = DeliveryAcknowledgement.Full;
    ```
 
-1. **F5**キーを押してアプリを実行します。 両方のアプリケーションが開始されていることが確認できます。 **[SendCloudToDevice]** ウィンドウを選択して **Enter** キーを押します。 デバイス アプリがメッセージを受信し、その数秒後に、**SendCloudToDevice** アプリケーションがフィードバック メッセージを受信します。
+1. **F5** キーを押してアプリを実行します。 両方のアプリケーションが開始されていることが確認できます。 **[SendCloudToDevice]** ウィンドウを選択して **Enter** キーを押します。 デバイス アプリがメッセージを受信し、その数秒後に、**SendCloudToDevice** アプリケーションがフィードバック メッセージを受信します。
 
    ![デバイス アプリによるメッセージの受信とサービス アプリによるフィードバックの受信](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
 

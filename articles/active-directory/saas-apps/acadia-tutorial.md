@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
 ms.openlocfilehash: bf1b46a42b0b8b68e1ab95a3345bb3b5435a576b
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97673821"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>チュートリアル:Azure Active Directory と Acadia の統合

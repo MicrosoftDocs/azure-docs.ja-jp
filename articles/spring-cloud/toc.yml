@@ -123,6 +123,8 @@
           href: spring-cloud-howto-enable-system-assigned-managed-identity.md
         - name: ロールとアクセス許可を作成する
           href: spring-cloud-howto-permissions.md
+        - name: Azure AD RBAC を使用したデータ プレーンへのアクセス
+          href: spring-cloud-howto-access-data-plane-azure-ad-rbac.md
     - name: 統合
       items:
         - name: アプリを Azure CosmosDB にバインドする

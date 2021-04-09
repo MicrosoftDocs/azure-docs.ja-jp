@@ -9,10 +9,10 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 10e42e502a1f435d06d52d22d5c1e1924a46e575
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98744094"
 ---
 # <a name="azure-cloud-services-extended-support-definition-loadbalancerprobe-schema"></a>Azure Cloud Services (延長サポート) の定義: LoadBalancerProbe スキーマ
@@ -65,4 +65,4 @@ Azure Load Balancer の役割は、受信トラフィックを対象のロール
 | `timeoutInSeconds`  | `integer` | 省略可能。 プローブに適用されるタイムアウト期間 (秒)。この期間を過ぎると、応答がないと見なされ、そのエンドポイントへのトラフィックのルーティングが停止されます。 エンドポイントをローテーションから除外するタイミングは、この値を指定することで、Azure で使用される標準的な時間 (既定値) よりも早めたり遅らせたりすることができます。<br /><br /> 既定値は 31、最小値は 11 です。|
 
 ## <a name="see-also"></a>関連項目
-[クラウド サービス (延長サポート) 定義スキーマ](schema-csdef-file.md)。
+[Cloud Services (延長サポート) 定義スキーマ](schema-csdef-file.md)

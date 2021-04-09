@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 205136437fa1a2a33b3b337f5cc9f2dde283faef
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 6116ab543d6dfc886e44206c2a60e4456b39fbc9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491942"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102558187"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>条件付きアクセスを使用して認証セッション管理を構成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "99491942"
 
 ユーザー サインインの頻度に関する Azure Active Directory (Azure AD) の既定の構成は、90 日間のローリング ウィンドウです。 多くの場合、ユーザーに資格情報を要求することは賢明であるように思われますが、逆効果になることがあります。何も考えずに資格情報を入力するように教えられたユーザーは、意図せずに、資格情報を求める悪意のあるプロンプトに入力してしまう可能性があります。
 
-ユーザーにサインインし直すように求めないことは不安に感じられるかもしれませんが、実際は IT ポリシーのどのような違反によってもセッションは取り消されます。 たとえば、パスワードの変更、非準拠のデバイス、アカウントの無効化などがあります (ただしこれらに限定されません)。 また、明示的に [PowerShell を使用してユーザーのセッションを取り消す](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0&preserve-view=true)ことができます。 Azure AD の既定の構成は、結局、「セッションのセキュリティ体制が変更していなければ、資格情報の提供をユーザーに求めない」というものになります。
+ユーザーにサインインし直すように求めないことは不安に感じられるかもしれませんが、実際は IT ポリシーのどのような違反によってもセッションは取り消されます。 たとえば、パスワードの変更、非準拠のデバイス、アカウントの無効化などがあります (ただしこれらに限定されません)。 また、明示的に [PowerShell を使用してユーザーのセッションを取り消す](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)ことができます。 Azure AD の既定の構成は、結局、「セッションのセキュリティ体制が変更していなければ、資格情報の提供をユーザーに求めない」というものになります。
 
 サインイン頻度設定は、標準に従って OAUTH2 または OIDC プロトコルを実装したアプリで動作します。 Windows、Mac、次の Web アプリケーションを含むモバイル用のほとんどの Microsoft ネイティブ アプリは、この設定に準拠します。
 

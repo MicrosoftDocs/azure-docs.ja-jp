@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: 7dde05e02421ef8d2ea46fd0d50687ede6e5d884
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ff8c549f74b59706de5203f2d2e46867d6cb1d0a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727801"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177788"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>ストレージ イベントに応答してパイプラインを実行するトリガーを作成する
 
@@ -26,7 +26,6 @@ ms.locfileid: "101727801"
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Event-based-data-integration-with-Azure-Data-Factory/player]
 
-
 > [!NOTE]
 > この記事で説明されている統合は、[Azure Event Grid](https://azure.microsoft.com/services/event-grid/) に依存しています。 サブスクリプションが Event Grid リソース プロバイダーに登録されていることを確認してください。 詳細については、「[リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」を参照してください。 *Microsoft.EventGrid/eventSubscriptions/* * アクションを実行できる必要があります。 このアクションは、EventGrid EventSubscription 共同作成者の組み込みロールの一部です。
 
@@ -34,11 +33,11 @@ ms.locfileid: "101727801"
 
 このセクションでは、Azure Data Factory ユーザー インターフェイス内でストレージ イベント トリガーを作成する方法について説明します。
 
-1. **作成キャンバス** に移動します
+1. 鉛筆のシンボルを使用して表示された **[編集]** タブに切り替えます。 
 
-1. 左下隅にある **[トリガー]** ボタンをクリックします
+1. メニューの **[トリガー]** を選択して、 **[New/Edit]\(新規作成/編集\)** を選択します。 
 
-1. **[+ 新規]** をクリックして、トリガーの作成サイド ナビゲーションを開きます
+1. **[Add Triggers]\(トリガーの追加\)** ページで、 **[Choose trigger]\(トリガーの選択\)** を選択してから、 **[+新規]** を選択します。 
 
 1. トリガーの種類で **[Storage Event]\(ストレージ イベント\)** を選択します
 
@@ -107,4 +106,5 @@ ms.locfileid: "101727801"
 
 ## <a name="next-steps"></a>次のステップ
 
-トリガーについて詳しくは、「[Azure Data Factory でのパイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md#trigger-execution)」をご覧ください。
+* トリガーについて詳しくは、「[Azure Data Factory でのパイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md#trigger-execution)」をご覧ください。
+* パイプラインでトリガー メタデータを参照する方法については、[パイプライン実行でのトリガー メタデータの参照](how-to-use-trigger-parameterization.md)に関する記事を参照してください。

@@ -9,10 +9,10 @@ ms.date: 04/21/2020
 ms.author: kumud
 ms.custom: include file
 ms.openlocfilehash: defcce3a00a38c88e1bff944075f0987fbdedd4b
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98225352"
 ---
  次の制限は、Azure Private Link に適用されます。

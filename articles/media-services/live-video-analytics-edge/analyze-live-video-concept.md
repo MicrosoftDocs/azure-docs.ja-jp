@@ -4,10 +4,10 @@ description: メディア グラフは、ライブ ビデオ ストリームか�
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 25a7cadc47603b726542fa391d441e1fbca78908
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97398976"
 ---
 # <a name="analyzing-live-video-without-any-recording"></a>記録を行わないライブ ビデオの分析

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 181ed1a3059d86f78e40a9949448af77a551efbc
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97563128"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager の要求のスロットル
@@ -47,7 +47,7 @@ ms.locfileid: "97563128"
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
-### <a name="network-throttling"></a>ネットワークのスロットル
+### <a name="network-throttling"></a>Network throttling
 
 Microsoft.Network リソース プロバイダーでは、次の調整制限が適用されます。
 

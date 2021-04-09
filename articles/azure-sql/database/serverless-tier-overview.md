@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 12/8/2020
-ms.openlocfilehash: 1b8be7fc6295c6332d26718b5752d2fd8f2a6f73
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 2/22/2021
+ms.openlocfilehash: 4dd7bbe613b30df2611bfe6631950e121235204a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393243"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658590"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database サーバーレス
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -103,9 +103,9 @@ CPU 使用率が低い場合、使用パターンによってはアクティブ�
 
 データがディスクからフェッチされると、SQL キャッシュは、プロビジョニング済みデータベースと同じ方法および速度で拡大します。 データベースがビジー状態の場合、キャッシュは、最大メモリ制限に達するまで制約なしで拡大できます。
 
-## <a name="auto-pause-and-auto-resume"></a>自動一時停止と自動再開
+## <a name="auto-pausing-and-auto-resuming"></a>自動一時停止と自動再開
 
-### <a name="auto-pause"></a>自動一時停止
+### <a name="auto-pausing"></a>自動一時停止
 
 自動一時停止遅延の期間を通して次のすべての条件が満たされた場合、自動一時停止がトリガーされます。
 

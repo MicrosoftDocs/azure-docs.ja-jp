@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 75f4cea0e5cd2b0bf42c28cbd81e199115834e11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87283964"
 ---
 # <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Azure Logic Apps を使用して Slack の監視と管理を行う
@@ -35,7 +35,7 @@ Slack アカウントから応答を取得し、その出力を他のアクシ�
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
-* Slack アカウントにアクセスするロジック アプリ。 Slack トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 Slack アクションを使用するには、Slack トリガーや **繰り返し**トリガーなどの別のトリガーでロジック アプリを起動します。
+* Slack アカウントにアクセスするロジック アプリ。 Slack トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 Slack アクションを使用するには、Slack トリガーや **繰り返し** トリガーなどの別のトリガーでロジック アプリを起動します。
 
 ## <a name="connect-to-slack"></a>Slack に接続する
 

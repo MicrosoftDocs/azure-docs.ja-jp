@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 10/12/2020
 ms.openlocfilehash: 8fbbd7a2aabc9de417f1eefd2513edba3119bfc0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92791394"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL Database、SQL Managed Instance および Azure Synapse Analytics の透過的なデータ暗号化
@@ -120,7 +120,7 @@ Transact-SQL を使用して TDE を管理します。
 
 master データベースの **dbmanager** ロールの管理者またはメンバーであるログインを使用してデータベースに接続します。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) | SET ENCRYPTION ON/OFF によって、データベースを暗号化または暗号化解除します。 |
 | [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |データベースの暗号化の状態と、関連付けられているデータベース暗号化キーに関する情報を返します。 |
@@ -136,7 +136,7 @@ REST API を使用して TDE を管理します。
 REST API で TDE を構成するには、Azure の所有者、共同作成者、または SQL セキュリティ マネージャーとして接続する必要があります。
 Azure SQL Database と Azure Synapse には次の一連のコマンドを使用します。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 |[サーバーの作成または更新](/rest/api/sql/servers/createorupdate)|Azure Active Directory ID をサーバーに追加します。 (Key Vault へのアクセスを許可するために使用します)|
 |[サーバー キーの作成または更新](/rest/api/sql/serverkeys/createorupdate)|サーバーに Key Vault キーを追加します。|

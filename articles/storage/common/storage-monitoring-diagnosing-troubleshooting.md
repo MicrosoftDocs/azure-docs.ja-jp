@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: d28cfd533caaef3fb80a63aea932e6418dff7e55
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5943a65d61dee4fcf610b8cc45139674362995cb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724253"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600719"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -59,8 +59,8 @@ ms.locfileid: "101724253"
   * [開発またはテストでのストレージ エミュレーターの使用に起因する問題]
   * [Azure SDK for .NET のインストールで問題が発生する]
   * [Storage サービスで別の問題が発生する]
-  * [Windows 仮想マシン上の VHD のトラブルシューティング](../../virtual-machines/troubleshooting/index.yml)   
-  * [Linux 仮想マシン上の VHD のトラブルシューティング](../../virtual-machines/troubleshooting/index.yml)
+  * [Windows 仮想マシン上の VHD のトラブルシューティング](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)   
+  * [Linux 仮想マシン上の VHD のトラブルシューティング](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)
   * [Windows での Azure Files に関する問題のトラブルシューティング](../files/storage-troubleshoot-windows-file-connection-problems.md)   
   * [Linux での Azure Files に関する問題のトラブルシューティング](../files/storage-troubleshoot-linux-file-connection-problems.md)
 * [付録]

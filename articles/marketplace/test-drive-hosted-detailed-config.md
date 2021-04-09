@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 11/06/2020
 ms.openlocfilehash: 88779f67a2fa9b18f0177a1459b32c672343bb57
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96462950"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>ホストされた体験版の詳細な構成

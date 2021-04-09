@@ -3,7 +3,7 @@ title: ストレージ アカウントから Azure Media Services 資産に BLOB
 description: このトピックでは、既存の BLOB を Media Services 資産にコピーする方法を説明します。 このサンプルでは、Azure Media Services .NET SDK Extensions を使用します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8eee17e5ed819365f30cf1b1e0eb2e9ab1557e9d
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 6ee6af8726dbd0a7b564b442242572afec670f4d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695909"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103016748"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>既存の BLOB を Media Services 資産にコピーする
 

@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: dc9f7dfdf33411f11d51734b48105be200874d02
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 030f19d61e19349de7e2d3416a3aee1385fd03c8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738120"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607524"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure のブート診断
 
@@ -106,9 +106,9 @@ API バージョン 2020-06-01 以降はすべて、マネージド ブート診
 - マネージド ブート診断は、アンマネージド OS ディスクを使用する VM をサポートしていません。
 - ブート診断は、Premium Storage アカウントをサポートしていません。ブート診断に Premium Storage アカウントを使用すると、ユーザーは VM の起動時に `StorageAccountTypeNotSupported` エラーを受け取ります。 
 - マネージド ストレージ アカウントは、Resource Manager API バージョン "2020-06-01" 以降でサポートされています。
-- Azure シリアル コンソールは現在、ブート診断用のマネージド ストレージ アカウントとの互換性はありません。 [Azure シリアル コンソール](./troubleshooting/serial-console-overview.md)についてさらに詳しく学習します。
+- Azure シリアル コンソールは現在、ブート診断用のマネージド ストレージ アカウントとの互換性はありません。 [Azure シリアル コンソール](/troubleshoot/azure/virtual-machines/serial-console-overview)についてさらに詳しく学習します。
 - ポータルは、単一インスタンス VM のマネージド ストレージ アカウントでのブート診断の使用のみをサポートしています。
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure シリアル コンソール](./troubleshooting/serial-console-overview.md)の詳細、およびブート診断を使用して [Azure の仮想マシンでトラブルシューティング](./troubleshooting/boot-diagnostics.md)を行う方法について確認します。
+[Azure シリアル コンソール](/troubleshoot/azure/virtual-machines/serial-console-overview)の詳細、およびブート診断を使用して [Azure の仮想マシンでトラブルシューティング](/troubleshoot/azure/virtual-machines/boot-diagnostics)を行う方法について確認します。

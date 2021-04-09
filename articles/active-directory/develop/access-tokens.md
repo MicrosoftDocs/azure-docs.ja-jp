@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/27/2020
+ms.date: 2/18/2021
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: e1dcd52660ff43a93c6a170912fea5a5847fe9d3
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 8630dd2fb1157fbeba99f2a06d73712ab46a63f4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575756"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035069"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft ID プラットフォーム アクセス トークン
 
@@ -110,12 +110,12 @@ JWT (JSON Web トークン) は 3 つの部分に分かれています。
 | `name` | String | トークンのサブジェクトを識別する、人間が判読できる値を提供します。 この値は、一意であるとは限らず、変更可能であり、表示目的でのみ使用されます。 この要求を受け取るには、 `profile` スコープが必要です。 |
 | `scp` | 文字列、スコープのスペース区切りリスト | クライアント アプリケーションが同意を要求し、同意を得た、アプリケーションによって公開されているスコープのセット。 アプリでは、これらのスコープがアプリによって公開されている有効なスコープであることを確認し、これらのスコープの値に基づいて承認を決定する必要があります。 [ユーザー トークン](#user-and-application-tokens)にのみ含まれます。 |
 | `roles` | 文字列の配列、アクセス許可の一覧 | 要求元のアプリケーションに呼び出しのアクセス許可が付与されている、アプリケーションまたはユーザーによって公開されているアクセス許可のセット。 [アプリケーション トークン](#user-and-application-tokens)では、これはユーザー スコープの代わりにクライアント資格情報フロー ([v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)、[v2.0](v2-oauth2-client-creds-grant-flow.md)) で使用されます。  [ユーザー トークン](#user-and-application-tokens)では、これにはターゲット アプリケーションでユーザーに割り当てられたロールが設定されます。 |
-| `wids` | [RoleTemplateID](../roles/permissions-reference.md#role-template-ids) GUID の配列 | [管理者ロール ページ](../roles/permissions-reference.md#role-template-ids)に存在するロールのセクションから、このユーザーに割り当てられたテナント全体のロールを示します。  この要求は、[アプリケーション マニフェスト](reference-app-manifest.md)の `groupMembershipClaims` プロパティを介して、アプリケーションごとに構成されます。  これを "All" または "DirectoryRole" に設定することが必要です。  トークンの長さの問題のため、暗黙的フローを介して取得されたトークンには存在しない可能性があります。 |
+| `wids` | [RoleTemplateID](../roles/permissions-reference.md#all-roles) GUID の配列 | [Azure AD 組み込みロール](../roles/permissions-reference.md#all-roles)に存在するロールのセクションから、このユーザーに割り当てられたテナント全体のロールを示します。  この要求は、[アプリケーション マニフェスト](reference-app-manifest.md)の `groupMembershipClaims` プロパティを介して、アプリケーションごとに構成されます。  これを "All" または "DirectoryRole" に設定することが必要です。  トークンの長さの問題のため、暗黙的フローを介して取得されたトークンには存在しない可能性があります。 |
 | `groups` | GUID の JSON 配列 | サブジェクトのグループ メンバーシップを表すオブジェクト ID です。 これらの値は一意 (「オブジェクト ID」を参照) であり、アクセスの管理 (リソースへのアクセスを承認するなど) に安全に使用できます。 groups 要求に含まれるグループは、[アプリケーション マニフェスト](reference-app-manifest.md)の `groupMembershipClaims` プロパティを使用してアプリケーションごとに構成されます。 値が null の場合はすべてのグループが除外され、値が "SecurityGroup" の場合は Active Directory セキュリティ グループのメンバーシップのみが含まれ、値が ”All” の場合はセキュリティ グループと Microsoft 365 配布リストの両方が含まれます。 <br><br>暗黙的な許可での `groups` 要求の使用の詳細については、以下の `hasgroups` 要求を参照してください。 <br>他のフローでは、ユーザーが属するグループの数が上限 (SAML の場合は 150、JWT の場合は 200) を超えた場合、ユーザーのグループのリストを含む Microsoft Graph エンドポイントを参照する要求ソースに超過要求が追加されます。 |
 | `hasgroups` | Boolean | 存在する場合、常に `true` であり、ユーザーが 1 つ以上のグループに属していることを示します。 すべてのグループ要求で URL 長の制限 (現在は 6 以上のグループ) を超えて URI フラグメントが拡張された場合、暗黙的な許可フローの JWT で `groups` 要求の代わりに使用されます。 クライアントが Microsoft Graph API を使用して、ユーザーのグループを決定する必要があることを示します (`https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects`)。 |
 | `groups:src1` | JSON オブジェクト | 長さは制限されていないが (上記 `hasgroups` を参照)、トークンには大きすぎるトークン要求の場合、ユーザーのすべてのグループ リストへのリンクが含まれます。 SAML では `groups` 要求の代わりに新しい要求として、JWT では分散要求として使用されます。 <br><br>**JWT 値の例**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
 | `sub` | String | トークンが情報をアサートするプリンシパルです (アプリのユーザーなど)。 この値は変更不可で、再割り当ても再利用もできません。 そのため、この値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。また、データベース テーブルのキーとして使用することもできます。 サブジェクトは、Azure AD が発行するトークン内に常に存在するため、汎用性のある承認システムでこの値を使用することをお勧めします。 ただし、サブジェクトはペアワイズ識別子で、特定のアプリケーション ID に一意です。 そのため、1 人のユーザーが 2 つの異なるクライアント ID を使用して 2 つの異なるアプリにサインインすると、そのアプリは、サブジェクト要求に対して 2 つの異なる値を受け取ることになります。 この動作が求められているかどうかは、アーキテクチャやプライバシーの要件によって異なります。 `oid` 要求 (テナント内のアプリ全体で同じままです) も参照してください。 |
-| `oid` | 文字列、GUID | Microsoft ID プラットフォーム (ここではユーザー アカウント) におけるオブジェクトの変更不可の識別子です。 承認チェックの安全に実行するとき、また、データベース テーブルのキーとして使用することもできます。 この ID によって、複数のアプリケーションでユーザーが一意に識別されます。同じユーザーにサインインする 2 つの異なるアプリケーションは `oid` 要求で同じ値を受け取ります。 そのため、Microsoft Graph などの Microsoft オンライン サービスに対してクエリを実行するときに `oid` を使用できます。 Microsoft Graph は、この ID を、指定された[ユーザー アカウント](/graph/api/resources/user)の `id` プロパティとして返します。 `oid` では複数のアプリがユーザーを関連付けることができるため、この要求を受け取るには、`profile` スコープが必要です。 1 人のユーザーが複数のテナントに存在する場合、そのユーザーのオブジェクト ID はテナントごとに異なります。つまり、ユーザーは、同じ資格情報で各アカウントにログインしても、異なるアカウントと見なされます。 |
+| `oid` | 文字列、GUID | 要求の "プリンシパル" の変更不可 ID - ID の有効性が確認済みのユーザーまたはサービス プリンシパル。  ID トークンとアプリ + ユーザー トークンでは、これはユーザーのオブジェクト ID です。  アプリ専用トークンでは、これは呼び出し元のサービス プリンシパルのオブジェクト ID です。 承認チェックの安全に実行するとき、また、データベース テーブルのキーとして使用することもできます。 この ID によって、複数のアプリケーションでプリンシパルが一意に識別されます。同じユーザーにサインインする 2 つの異なるアプリケーションは `oid` 要求で同じ値を受け取ります。 そのため、Microsoft Graph などの Microsoft オンライン サービスに対してクエリを実行するときに `oid` を使用できます。 Microsoft Graph は、この ID を、指定された[ユーザー アカウント](/graph/api/resources/user)の `id` プロパティとして返します。 `oid` では複数のアプリがプリンシパルを関連付けることができるため、ユーザーがこの要求を受け取るには、`profile` スコープが必要です。 1 人のユーザーが複数のテナントに存在する場合、そのユーザーのオブジェクト ID はテナントごとに異なります。つまり、ユーザーは、同じ資格情報で各アカウントにログインしても、異なるアカウントと見なされます。 |
 | `tid` | 文字列、GUID | ユーザーが属している Azure AD テナントを表します。 職場または学校アカウントの場合、GUID はユーザーが属している組織の不変のテナント ID です。 個人アカウントでは、この値は `9188040d-6c67-4c5b-b112-36a304b66dad` です。 この要求を受け取るには、 `profile` スコープが必要です。 |
 | `unique_name` | String | v1.0 トークンにのみ存在します。 トークンのサブジェクトを識別する、人が判読できる値を提供します。 この値は、テナント内で一意であることが保証されているわけではなく、表示目的でのみ使用する必要があります。 |
 | `uti` | 不透明な文字列 | Azure がトークンの再検証に使用する内部要求。 リソースでこの要求を使用しないでください。 |

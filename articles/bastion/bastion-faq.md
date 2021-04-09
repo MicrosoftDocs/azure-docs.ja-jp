@@ -5,18 +5,16 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/05/2020
+ms.date: 02/05/2021
 ms.author: cherylmc
-ms.openlocfilehash: 502e57e442c48ae6b216d6b8399cee2fef4efa8f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 0ce3a364edd7cf09e194b321531848d02a14b425
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356669"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670923"
 ---
 # <a name="azure-bastion-faq"></a>Azure Bastion に関する FAQ
-
-これは、Azure Bastion に関する FAQ です。
 
 [!INCLUDE [Bastion FAQ](../../includes/bastion-faq-include.md)]
 

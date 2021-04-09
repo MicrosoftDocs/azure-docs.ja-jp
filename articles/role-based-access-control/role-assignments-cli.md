@@ -11,10 +11,10 @@ ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q1, devx-track-azurecli
 ms.openlocfilehash: ee356f32b6799c6182ec1c9e061a35271a4bbc23
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100556970"
 ---
 # <a name="assign-azure-roles-using-azure-cli"></a>Azure CLI を使用して Azure ロールを割り当てる

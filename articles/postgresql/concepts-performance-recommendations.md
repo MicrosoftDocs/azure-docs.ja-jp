@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: d547844671e6485e71be7dd8c355de08f3dec5e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91710568"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) のパフォーマンスに関する推奨事項
@@ -20,7 +20,7 @@ ms.locfileid: "91710568"
 パフォーマンスに関する推奨事項機能では、データベースを分析し、パフォーマンス向上に役立つカスタマイズされた提案が作成されます。 推奨事項を生成するために、分析ではスキーマなどのさまざまなデータベースの特性に注目します。 パフォーマンスに関する推奨事項機能をフル活用するには、サーバー上で[クエリ ストア](concepts-query-store.md)を有効にしてください。 パフォーマンスに関する推奨事項を実装した後は、パフォーマンスをテストし、変更の影響を評価する必要があります。 
 
 ## <a name="permissions"></a>アクセス許可
-パフォーマンスに関する推奨事項機能を使用して分析を実行するには、**所有者**または**共同作成者**の許可が必要です。
+パフォーマンスに関する推奨事項機能を使用して分析を実行するには、**所有者** または **共同作成者** の許可が必要です。
 
 ## <a name="performance-recommendations"></a>パフォーマンスに関する推奨事項
 [パフォーマンスに関する推奨事項](concepts-performance-recommendations.md)機能は、パフォーマンスを向上させる可能性のあるインデックスを識別するために、サーバーの間でワークロードを分析します。
@@ -33,7 +33,7 @@ Azure portal の PostgreSQL サーバーに関するページで、メニュー 
 
 **[推奨事項]** ウィンドウでは、推奨事項が見つかった場合に、その一覧が表示されます。
 
-:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="パフォーマンスに関する推奨事項ランディング ページ":::
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="パフォーマンスに関する推奨事項の新しいページ":::
 
 推奨事項は自動的には適用されません。 推奨事項を適用するには、クエリ テキストをコピーし、任意のクライアントから実行します。 推奨事項を評価するため、監視とテストを忘れずに行ってください。 
 

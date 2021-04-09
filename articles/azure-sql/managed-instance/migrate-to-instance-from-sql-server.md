@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: 2761b97e595f5e11b00e75cd778ee269b12bfcae
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 49d37a5537ada260eae453bbb5f81716d42657a5
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917802"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102565824"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Azure SQL Managed Instance への SQL Server インスタンスの移行
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -59,6 +59,26 @@ ms.locfileid: "94917802"
 - Transparent Database Encryption (TDE) や自動フェールオーバー グループなどの新しい機能を使うと、CPU と IO の使用率が影響を受ける可能性があります。
 
 SQL Managed Instance では、重要なシナリオであっても 99.99% の可用性が保証されるので、これらの機能によるオーバーヘッドを無効にすることはできません。 詳しくは、[SQL Server と、Azure SQL Managed Instance でパフォーマンスが異なる原因](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)に関するページをご覧ください。
+
+#### <a name="in-memory-oltp-memory-optimized-tables"></a>インメモリ OLTP (メモリ最適化テーブル)
+
+SQL Server にはインメモリ OLTP 機能があります。これを使用すると、メモリ最適化テーブル、メモリ最適化テーブル型、ネイティブにコンパイルされた SQL モジュールなどを利用して、高いスループットと短い待機時間というトランザクション処理要件を持つワークロードを実行することができます。 
+
+> [!IMPORTANT]
+> インメモリ OLTP は、Azure SQL Managed Instance の Business Critical レベルでのみサポートされています (General Purpose レベルではサポートされていません)。
+
+オンプレミスの SQL Server にメモリ最適化テーブルまたはメモリ最適化テーブル型がある場合、Azure SQL Managed Instance に移行する際には、次のいずれかを行う必要があります。
+
+- インメモリ OLTP がサポートされているターゲット Azure SQL Managed Instance の Business Critical レベルを選択します。または
+- Azure SQL Managed Instance の General Purpose レベルに移行する場合は、データベースを移行する前に、メモリ最適化テーブル、メモリ最適化テーブル型、およびメモリ最適化オブジェクトと対話する、ネイティブにコンパイルされた SQL モジュールを削除します。 次の T-SQL クエリを使用すると、General Purpose レベルに移行する前に削除する必要があるすべてのオブジェクトを識別できます。
+
+```tsql
+SELECT * FROM sys.tables WHERE is_memory_optimized=1
+SELECT * FROM sys.table_types WHERE is_memory_optimized=1
+SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
+```
+
+インメモリ テクノロジの詳細については、「[Azure SQL Database と Azure SQL Managed Instance でインメモリ テクノロジを使用してパフォーマンスを最適化する](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview)」を参照してください。
 
 ### <a name="create-a-performance-baseline"></a>パフォーマンスのベースラインを作成する
 

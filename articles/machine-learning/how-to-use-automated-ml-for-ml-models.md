@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: a91a4f3a2e686c8d502093dc41520df32b313209
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 2e06375441d6540d6630cfe9d4d8c3beec558879
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520637"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103562724"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning を使用して自動機械学習モデルを作成、確認、デプロイする
 
@@ -37,7 +37,7 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
 
 ## <a name="get-started"></a>はじめに
 
-1. https://ml.azure.com で Azure Machine Learning にサインインします。 
+1. [Azure Machine Learning Studio](https://ml.azure.com) にサインインします。 
 
 1. サブスクリプションとワークスペースを選択します。 
 
@@ -198,6 +198,11 @@ Included | トレーニングに含める列を指定します。
 ## <a name="deploy-your-model"></a>モデルをデプロイする
 
 最適なモデルを作成したら、Web サービスとしてデプロイして新しいデータで予測します。
+
+>[!TIP]
+> Python SDK が含まれる `automl` パッケージで生成されたモデルをデプロイする場合、ワークスペースに[モデルを登録する](how-to-deploy-and-where.md?tabs=python#register-a-model-from-an-azure-ml-training-run-1)必要があります。 
+>
+> モデルが登録されたら、左側のウィンドウで **[モデル]** を選択し、スタジオでモデルを見つけます。 モデルを開いたら、画面上部にある **[デプロイ]** ボタンを選択し、「**モデルをデプロイする**」セクションの **手順 2** にある指示に従うことができます。
 
 自動化された ML は、コードを記述せずにモデルをデプロイするのに役立ちます。
 

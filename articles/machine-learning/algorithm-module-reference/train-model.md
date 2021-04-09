@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/25/2020
-ms.openlocfilehash: 7063452d23d2975cf0c26a89e7a08a422de54942
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.date: 03/10/2021
+ms.openlocfilehash: 77927472dae6c8e7e6fddacf9088b479636edd37
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751939"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103224336"
 ---
 # <a name="train-model-module"></a>モデルのトレーニング モジュール
 
@@ -60,12 +60,34 @@ ms.locfileid: "96751939"
     > [!TIP] 
     > 列セレクターの使い方のヒントについては、「[Select Columns in Dataset (データセットの列を選択する)](./select-columns-in-dataset.md)」の記事を参照してください。 **[WITH RULES]\(規則を使用\)** オプションと **[名前別]** オプションの使い方についてのヒントといくつかの一般的なシナリオが取り上げられています。
   
-1.  パイプラインを送信します。 データの量が多いと、この処理にしばらく時間がかかる場合があります。
+1.  パイプラインを送信します。 データの量が多いと、しばらく時間がかかる場合があります。
 
     > [!IMPORTANT] 
     > 各行の ID となる ID 列がある場合、あるいは、テキスト列に含まれる一意の値が多すぎる場合、**モデルのトレーニング** が原因で、"列: "{column_name}" 内の一意の値の数が許可されている数を超えています" などのエラーが発生することがあります。
     >
-    > これは、列が一意の値のしきい値に達し、メモリが不足する場合があるためです。 [メタデータの編集](edit-metadata.md)を使用してその列を **[Clear feature]\(特徴のクリア\)** としてマークできます。テキスト列を事前処理する目的でトレーニングや[テキストからの N-gram 特徴抽出モジュール](extract-n-gram-features-from-text.md)で使用されることがありません。 エラーの詳細については、[デザイナーのエラー コード](././designer-error-codes.md)に関する記事を参照してください。
+    > これは、列が一意の値のしきい値に達し、メモリが不足する場合があるためです。 [メタデータの編集](edit-metadata.md)を使用してその列を **[Clear feature]\(特徴のクリア\)** としてマークできます。テキスト列を事前処理する目的でトレーニングや [テキストからの N-gram 特徴抽出モジュール](extract-n-gram-features-from-text.md)で使用されることがありません。 エラーの詳細については、[デザイナーのエラー コード](././designer-error-codes.md)に関する記事を参照してください。
+
+## <a name="model-interpretability"></a>モデルの解釈可能性
+
+モデルの解釈可能性により、ML モデルを理解し、人間が理解できる方法で意思決定の基礎を提示する可能性が提供されます。
+
+現在、**モデルのトレーニング** モジュールでは、[ML モデルを説明するための解釈可能性パッケージの使用がサポートされています](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs)。 次の組み込みアルゴリズムがサポートされています。
+
+- 線形回帰
+- ニューラル ネットワーク回帰
+- 2 クラスのロジスティック回帰
+- 2 クラス サポート ベクター マシン
+- 多クラス デシジョン フォレスト
+
+モデルの説明を生成するには、モデルのトレーニング モジュールでモデルの **[モデルの説明]** のドロップダウン リストから **[True]** を選択します。 **モデルのトレーニング** モジュールでは、これは既定で False に設定されています。 説明を生成するには、追加のコンピューティング コストが必要であることにご注意ください。
+
+![モデルの説明チェックボックスを示すスクリーンショット](./media/module/train-model-explanation-checkbox.png)
+
+パイプラインの実行が完了したら、**モデルのトレーニング** モジュールの右側のウィンドウにある **[説明]** タブにアクセスし、モデルのパフォーマンス、データセット、および特徴量の重要度を調べることができます。
+
+![モデルの説明グラフを示すスクリーンショット](./media/module/train-model-explanations-tab.gif)
+
+Azure Machine Learning におけるモデルの説明を使用する方法の詳細については、[ML モデルの解釈](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs)に関するハウツー記事を参照してください。
 
 ## <a name="results"></a>結果
 

@@ -18,19 +18,19 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 67700ec643a27f8ae5c581fe9de8e3295a1925e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88998239"
 ---
-# <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定の Windows Phone にプッシュ通知を送信する
+# <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>チュートリアル: Azure Notification Hubs を使用して特定の Windows Phone にプッシュ通知を送信する
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 このチュートリアルでは、Azure Notification Hubs を使用して特定の Windows Phone 8 または Windows Phone 8.1 デバイスにプッシュ通知を送信する方法を示します。 Windows Phone 8.1 (Silverlight 以外) を対象にしている場合は、このチュートリアルの [Windows ユニバーサル](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) バージョンを参照してください。
 
-このシナリオは、通知ハブで登録を作成するときに 1 つ以上の*タグ*を含めることによって有効にします。 通知がタグに送信されると、タグに登録されたすべてのデバイスが通知を受信します。 タグの詳細については、[登録におけるタグ](notification-hubs-tags-segment-push-message.md)に関するページを参照してください。
+このシナリオは、通知ハブで登録を作成するときに 1 つ以上の *タグ* を含めることによって有効にします。 通知がタグに送信されると、タグに登録されたすべてのデバイスが通知を受信します。 タグの詳細については、[登録におけるタグ](notification-hubs-tags-segment-push-message.md)に関するページを参照してください。
 
 > [!NOTE]
 > Notification Hubs Windows Phone SDK では、Windows Phone 8.1 Silverlight アプリで Windows プッシュ通知サービス (WNS) を使用できません。 Windows Phone 8.1 Silverlight アプリで (MPNS ではなく) WNS を使用するには、REST API を使用する「Notification Hubs - Windows Phone Silverlight チュートリアル」に従ってください。
@@ -308,7 +308,7 @@ ms.locfileid: "88998239"
 
     ![通知メッセージ][3]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、タグが登録に関連付けられている特定のデバイスにプッシュ通知を送信する方法を学習しました。 複数のデバイスを使用している可能性のある特定のユーザーにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。 
 

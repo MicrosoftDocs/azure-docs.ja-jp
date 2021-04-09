@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/2/2020
 ms.author: derekol
 ms.openlocfilehash: 69201c97882846fb929b3b6f9a90be6647603bcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84700482"
 ---
 # <a name="create-or-modify-an-exchange-peering-by-using-the-azure-portal"></a>Azure portal を使用して Exchange ピアリングを作成または変更する
@@ -54,7 +54,7 @@ ms.locfileid: "84700482"
 * **[PeerASN]** ボックスで、使用する ASN を選択します。
 
 >[!IMPORTANT] 
->選択できるのは、ピアリング要求を送信する前に ValidationState が "Approved" になっている ASN だけです。 PeerAsn 要求を送信した直後であれば、ASN の関連付けが承認されるまで 12 時間程度かかります。 選択した ASN が検証待ちの場合、エラー メッセージが表示されます。 選択する必要がある ASN が表示されない場合は、適切なサブスクリプションを選択しているかどうかを確認します。 選択している場合は、「 **[ピア ASN を Azure サブスクリプションに関連付ける](https://go.microsoft.com/fwlink/?linkid=2129592)** 」を参照して、PeerAsn を既に作成したかどうかを確認します。
+>選択できるのは、ピアリング要求を送信する前に ValidationState が "Approved" になっている ASN だけです。 PeerAsn 要求を送信した直後であれば、ASN の関連付けが承認されるまで 12 時間程度かかります。 選択した ASN が検証待ちの場合、エラー メッセージが表示されます。 選択する必要がある ASN が表示されない場合は、適切なサブスクリプションを選択しているかどうかを確認します。 選択している場合は、 **[ピア ASN の Azure サブスクリプションへの関連付け](https://go.microsoft.com/fwlink/?linkid=2129592)** を使用して、PeerAsn を既に作成したかどうかを確認します。
 
 * **[次へ: 構成]** を選択して続行します。
 

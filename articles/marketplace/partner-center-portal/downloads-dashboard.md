@@ -8,10 +8,10 @@ ms.date: 08/21/2020
 author: shganesh-dev
 ms.author: shganesh
 ms.openlocfilehash: d36043d74da1aa75b32867d4efeebc9729f4a119
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96457769"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析のダウンロード ダッシュボード

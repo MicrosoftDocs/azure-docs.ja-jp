@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: d807b591229644984f6658cdacd0bf447759f292
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2216eb5893b77761f4d31c5819d152ceeb985abc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933031"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869652"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Azure Kubernetes Service で HDInsight 上の Apache Kafka を使用する
 
@@ -34,7 +34,7 @@ Azure Kubernetes Service (AKS) で HDInsight クラスター上の [Apache Kafka
 
 またこのドキュメントでは、読者が「[Azure Kubernetes Service tutorial (Azure Container Service チュートリアル)](../../aks/tutorial-kubernetes-prepare-app.md)」を学習済みであることを前提としています。 この記事では、コンテナー サービス、Kubernetes クラスター、コンテナー レジストリを作成し、`kubectl` ユーティリティを構成しています。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a>Architecture
 
 ### <a name="network-topology"></a>ネットワーク トポロジ
 
@@ -42,7 +42,7 @@ HDInsight と AKS はいずれも、コンピューティング リソースの�
 
 次の図は、このドキュメントで使用されるネットワーク トポロジを示したものです。
 
-![仮想ネットワーク内の HDInsight、別の仮想ネットワーク内の AKS、ピアリングを使用](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
+:::image type="content" source="./media/apache-kafka-azure-container-services/kafka-aks-architecture.png" alt-text="仮想ネットワーク内の HDInsight、別の仮想ネットワーク内の AKS、ピアリングを使用" border="false":::
 
 > [!IMPORTANT]  
 > ピアリングされたネットワーク間では名前解決が有効化されていないので、IP アドレス指定が使用されます。 既定では、Kafka on HDInsight はクライアント接続時に IP アドレスではなく、ホスト名を返すように構成されています。 このドキュメントの手順では、Kafka に変更を加えて、IP アドバタイズが使用されるようにします。
@@ -109,15 +109,15 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
 2. Kafka に関する情報を表示するには、左にある一覧から __[Kafka]__ を選択します。
 
-    ![Kafka が強調表示されているサービスの一覧](./media/apache-kafka-azure-container-services/select-kafka-service.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/select-kafka-service.png" alt-text="Kafka が強調表示されているサービスの一覧" border="true":::
 
 3. Kafka 構成を表示するには、上部中央の __[Configs (構成)]__ を選択します。
 
-    ![Apache Ambari サービスの構成](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/select-kafka-config1.png" alt-text="Apache Ambari サービスの構成" border="true":::
 
 4. __kafka-env__ 構成を検索するには、右上の __[Filter (フィルター)]__ フィールドに「`kafka-env`」と入力します。
 
-    ![kafka-env の Kafka 構成](./media/apache-kafka-azure-container-services/search-for-kafka-env.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/search-for-kafka-env.png" alt-text="kafka-env の Kafka 構成" border="true":::
 
 5. IP アドレスを提供するように Kafka を構成するには、次のテキストを __kafka-env-template__ フィールドの最後に追加します。
 
@@ -135,15 +135,15 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
 8. 構成を保存するには、 __[Save (保存)]__ ボタンを使用します。 変更を説明するテキスト メッセージを入力します。 変更が保存されたら、 __[OK]__ を保存します。
 
-    ![Apache Ambari の保存の構成](./media/apache-kafka-azure-container-services/save-configuration-button.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/save-configuration-button.png" alt-text="Apache Ambari の保存の構成" border="true":::
 
 9. Kafka の再起動時にエラーが発生しないようにするため、 __[Service Actions (サービス アクション)__ ] ボタンを使用して __[Turn On Maintenance Mode (メンテナンス モードの有効化)]__ を選択します。 [OK] を選択して、この操作を完了します。
 
-    ![[Turn On Maintenance Mode (メンテナンス モードの有効化)] が強調表示されているサービス アクション](./media/apache-kafka-azure-container-services/turn-on-maintenance-mode.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/turn-on-maintenance-mode.png" alt-text="[Turn On Maintenance Mode (メンテナンス モードの有効化)] が強調表示されているサービス アクション" border="true":::
 
 10. Kafka を再起動するには、 __[Restart (再起動)]__ ボタンをクリックし、 __[Restart All Affected (影響を受けるものをすべて再起動)]__ を選択します。 再起動を確認し、操作が完了したら __[OK]__ ボタンを使用します。
 
-    ![[Restart All Affected (影響を受けるものをすべて再起動)] が強調表示されている [Restart (再起動)] ボタン](./media/apache-kafka-azure-container-services/restart-required-button.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/restart-required-button.png" alt-text="[Restart All Affected (影響を受けるものをすべて再起動)] が強調表示されている [Restart (再起動)] ボタン" border="true":::
 
 11. メンテナンス モードを無効にするには、 __[Service Actions (サービス アクション)]__ ボタンをクリックし、 __[Turn Off Maintenance Mode (メンテナンス モードの無効化)]__ を選択します。 **[OK]** を選択して、この操作を完了します。
 
@@ -213,7 +213,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
 11. Web ブラウザーを開き、サービスの外部 IP アドレスを入力します。 次の画像のようなページが表示されます。
 
-    ![Apache Kafka テスト Web ページの画像](./media/apache-kafka-azure-container-services/test-web-page-image1.png)
+    :::image type="content" source="./media/apache-kafka-azure-container-services/test-web-page-image1.png" alt-text="Apache Kafka テスト Web ページの画像" border="true":::
 
 12. フィールドにテキストを入力し、 __[送信]__ ボタンを選択します。 データが Kafka に送信されます。 その後、アプリケーション内の Kafka コンシューマーによりメッセージが読み取られ、 __[Messages from Kafka]__ セクションに追加されます。
 

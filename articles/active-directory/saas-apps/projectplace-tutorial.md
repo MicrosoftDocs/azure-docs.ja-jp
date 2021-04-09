@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Projectplace の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Projectplace の統合 | Microsoft Docs'
 description: Azure Active Directory と Projectplace の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 05/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 508a3ca02ec6c0475e78d16691f6597e1a389f97
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92511853"
 ---
-# <a name="tutorial-integrate-projectplace-with-azure-active-directory"></a>チュートリアル:Projectplace と Azure Active Directory の統合
+# <a name="tutorial-integrate-projectplace-with-azure-active-directory"></a>チュートリアル: Projectplace と Azure Active Directory の統合
 
 このチュートリアルでは、Projectplace と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Projectplace を統合すると、次のことができます。
 
@@ -38,7 +38,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Projectplace では、 **SP Initiated SSO と IDP Initiated SSO** のほか、 **ジャスト イン タイム** ユーザー プロビジョニングがサポートされます。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Projectplace では、**SP Initiated SSO と IDP Initiated SSO** のほか、**ジャスト イン タイム** ユーザー プロビジョニングがサポートされます。
 
 ## <a name="adding-projectplace-from-the-gallery"></a>ギャラリーからの Projectplace の追加
 
@@ -48,7 +48,7 @@ Azure AD への Projectplace の統合を構成するには、ギャラリーか
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Projectplace** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Projectplace**」と入力します。
 1. 結果のパネルから **[Projectplace]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -68,7 +68,7 @@ Projectplace で Azure AD SSO を構成してテストするには、次の構�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Projectplace** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Projectplace** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
 
@@ -132,11 +132,11 @@ Projectplace で Azure AD SSO を構成してテストするには、次の構�
 
 Azure AD ユーザーが Projectplace にサインインできるようにするには、それらを Projectplace に追加する必要があります。 手動で追加する必要があります。
 
-**ユーザー アカウントを作成するには、これらの手順に従います。**
+**ユーザー アカウントを作成するには、以下の手順に従います。**
 
 1. **Projectplace** 企業サイトに管理者としてサインインします。
 
-2. **[People]\(ユーザー\)** に移動し、 **[Members]\(メンバー\)** を選択します。
+2. **[People]\(ユーザー\)** に移動し、**[Members]\(メンバー\)** を選択します。
    
     ![[People]\(ユーザー\) に移動し、[Members]\(メンバー\) を選択します](./media/projectplace-tutorial/ic790228.png "ユーザー")
 
@@ -150,7 +150,7 @@ Azure AD ユーザーが Projectplace にサインインできるようにする
    
     1. **[New Members]\(新しいメンバー\)** ボックスに、追加する有効な Azure AD アカウントの電子メール アドレスを入力します。
    
-    1. **[送信]** を選択します。
+    1. **[Send]** を選択します。
 
    Azure AD のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含むメールが送信されます。
 

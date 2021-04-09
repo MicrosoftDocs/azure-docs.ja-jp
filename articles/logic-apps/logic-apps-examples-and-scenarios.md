@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: 5f7afe044ab4f782f2028598c2c56e75edf95860
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92317373"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps の一般的なシナリオ、例、チュートリアル、手順
@@ -21,7 +21,7 @@ Azure Logic Apps がサポートする機能とパターンについて学習す
 
 ## <a name="common-starting-points-for-logic-app-workflows"></a>ロジック アプリ ワークフローの一般的な開始点
 
-すべてのロジック アプリは[*トリガー*](../logic-apps/logic-apps-overview.md#logic-app-concepts) (1 つのトリガーのみ) から始まります。トリガーによって、ロジック アプリ ワークフローが開始され、あらゆるデータがそのトリガーの一部として渡されます。 一部のコネクタには、次のような種類のトリガーが用意されています。
+すべてのロジック アプリは [*トリガー*](../logic-apps/logic-apps-overview.md#logic-app-concepts) (1 つのトリガーのみ) から始まります。トリガーによって、ロジック アプリ ワークフローが開始され、あらゆるデータがそのトリガーの一部として渡されます。 一部のコネクタには、次のような種類のトリガーが用意されています。
 
 * *ポーリング トリガー*:新しいデータのサービス エンドポイントを定期的にチェックします。 新しいデータが存在する場合、トリガーは入力としてデータを使用して新しいワークフロー インスタンスを実行します。
 
@@ -31,12 +31,12 @@ Azure Logic Apps がサポートする機能とパターンについて学習す
 
 * "*ポーリング*" トリガー:
 
-  * [**繰り返し**トリガー](../connectors/connectors-native-recurrence.md)を使用すると、開始日時と、ロジック アプリを実行する頻度を設定できます。 たとえば、ロジック アプリをトリガーする曜日と時刻を選択できます。 詳細については、以下のトピックを参照してください。<p>
+  * [**繰り返し** トリガー](../connectors/connectors-native-recurrence.md)を使用すると、開始日時と、ロジック アプリを実行する頻度を設定できます。 たとえば、ロジック アプリをトリガーする曜日と時刻を選択できます。 詳細については、以下のトピックを参照してください。<p>
 
     * [Azure Logic Apps で自動化された定期的なタスク、プロセス、ワークフローのスケジュールを設定して実行する](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)
     * [チュートリアル:スケジュールに基づいて定期的に実行される自動化されたワークフローを Azure Logic Apps を使用して作成する](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
 
-  * **メールを受信したとき**トリガーでは、[Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)、[Gmail](/connectors/gmail/)、[Outlook.com](/connectors/outlook/) などの Logic Apps でサポートされる任意のメール プロバイダーからの新規メールをロジック アプリでチェックすることができます。
+  * **メールを受信したとき** トリガーでは、[Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)、[Gmail](/connectors/gmail/)、[Outlook.com](/connectors/outlook/) などの Logic Apps でサポートされる任意のメール プロバイダーからの新規メールをロジック アプリでチェックすることができます。
 
     > [!IMPORTANT]
     > Gmail コネクタを使用する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)に関する記事を参照してください。
@@ -52,9 +52,9 @@ Azure Logic Apps がサポートする機能とパターンについて学習す
 
   * [**要求** トリガー](../connectors/connectors-native-reqres.md) では、受信 HTTPS 要求を受信できます。
 
-  * [**HTTP Webhook** トリガー](../connectors/connectors-native-webhook.md)は、サービスに*コールバック URL* を登録することでサービス エンドポイントにサブスクライブします。 この方法では、指定されたイベントが発生したときにサービスからトリガーに通知することができるので、トリガーでサービスをポーリングする必要がありません。
+  * [**HTTP Webhook** トリガー](../connectors/connectors-native-webhook.md)は、サービスに *コールバック URL* を登録することでサービス エンドポイントにサブスクライブします。 この方法では、指定されたイベントが発生したときにサービスからトリガーに通知することができるので、トリガーでサービスをポーリングする必要がありません。
 
-指定されたイベントが発生すると、トリガーが呼び出され、新しいロジック アプリ ワークフロー インスタンスが作成され、ワークフローのアクションが実行されます。 ワークフロー全体でトリガーのすべてのデータにアクセスできます。 たとえば、Twitter の**新しいツイートで**トリガーは、実行されているロジック アプリにツイートの内容を渡します。 Azure Logic Apps の使用を開始するには、次のクイックスタート トピックを試してください。
+指定されたイベントが発生すると、トリガーが呼び出され、新しいロジック アプリ ワークフロー インスタンスが作成され、ワークフローのアクションが実行されます。 ワークフロー全体でトリガーのすべてのデータにアクセスできます。 たとえば、Twitter の **新しいツイートで** トリガーは、実行されているロジック アプリにツイートの内容を渡します。 Azure Logic Apps の使用を開始するには、次のクイックスタート トピックを試してください。
 
 * [クイック スタート: Azure Logic Apps を使用して初めてのワークフローを作成する - Azure portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [クイック スタート: Azure Logic Apps を使用して自動化されたタスク、プロセス、およびワークフローを作成する - Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)

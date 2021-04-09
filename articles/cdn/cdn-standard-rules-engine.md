@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 11/01/2019
 ms.author: allensu
-ms.openlocfilehash: 1c596bf10d8afbce504b5abf04eacb877989521a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b94798580b2d4ba746c152486c0de753cf64d2c9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887543"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102564902"
 ---
 # <a name="set-up-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN に対する Standard ルール エンジンを設定する
 

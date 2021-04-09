@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
 ms.openlocfilehash: 4a1a122eb7b5b0abcc47cd321c74267a1a4aecda
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93396857"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>アプリケーション ゲートウェイを作成して HTTP ヘッダーを書き換える
@@ -107,11 +107,11 @@ $setting = New-AzApplicationGatewayBackendHttpSettings -Name "BackendHttpSetting
 
 http ヘッダーの書き換えに必要な新しいオブジェクトを構成します。
 
-- **RequestHeaderConfiguration** : このオブジェクトは、書き換えようとしている要求ヘッダー フィールドと、元のヘッダーを書き換える必要がある新しい値を指定するために使用されます。
-- **ResponseHeaderConfiguration** : このオブジェクトは、書き換えようとしている応答ヘッダー フィールドと、元のヘッダーを書き換える必要がある新しい値を指定するために使用されます。
-- **ActionSet** : このオブジェクトには、上で指定した要求ヘッダーと応答ヘッダーの構成が格納されます。 
-- **RewriteRule** : このオブジェクトには、上で指定したすべての *ActionSet* が格納されます。 
-- **RewriteRuleSet** : このオブジェクトは、すべての *RewriteRule* を含み、基本またはパス ベースの要求ルーティング規則にアタッチする必要があります。
+- **RequestHeaderConfiguration**: このオブジェクトは、書き換えようとしている要求ヘッダー フィールドと、元のヘッダーを書き換える必要がある新しい値を指定するために使用されます。
+- **ResponseHeaderConfiguration**: このオブジェクトは、書き換えようとしている応答ヘッダー フィールドと、元のヘッダーを書き換える必要がある新しい値を指定するために使用されます。
+- **ActionSet**: このオブジェクトには、上で指定した要求ヘッダーと応答ヘッダーの構成が格納されます。 
+- **RewriteRule**: このオブジェクトには、上で指定したすべての *ActionSet* が格納されます。 
+- **RewriteRuleSet**: このオブジェクトは、すべての *RewriteRule* を含み、基本またはパス ベースの要求ルーティング規則にアタッチする必要があります。
 
    ```azurepowershell
    $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-isThroughProxy" -HeaderValue "True"
@@ -134,13 +134,13 @@ $rule01 = New-AzApplicationGatewayRequestRoutingRule -Name "Rule1" -RuleType bas
 
 これで、アプリケーション ゲートウェイに自動スケーリングの構成を指定できます。 次の 2 種類の自動スケール構成がサポートされています。
 
-* **固定容量モード** 。 このモードでは、アプリケーション ゲートウェイは自動スケールせず、固定されたスケール ユニットの容量で動作します。
+* **固定容量モード**。 このモードでは、アプリケーション ゲートウェイは自動スケールせず、固定されたスケール ユニットの容量で動作します。
 
    ```azurepowershell
    $sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2
    ```
 
-* **自動スケール モード** 。 このモードでは、アプリケーション ゲートウェイは、アプリケーションのトラフィック パターンに基づいて、自動スケールします。
+* **自動スケール モード**。 このモードでは、アプリケーション ゲートウェイは、アプリケーションのトラフィック パターンに基づいて、自動スケールします。
 
    ```azurepowershell
    $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 2

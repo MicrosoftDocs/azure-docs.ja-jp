@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 01/20/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 80bef52d568130fa800a1da661f4867abb3df02c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98678990"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>自動転送を使用した Service Bus エンティティのチェーン

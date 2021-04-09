@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: a05769c66c4b13de5c7197ef5612d64781574987
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cb555eefb19b5db7ed7eb0792a813c295a4bf38b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747675"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588615"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>クイックスタート: Azure portal から Azure Managed Instance for Apache Cassandra クラスターを作成する (プレビュー)
  
@@ -63,20 +63,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    :::image type="content" source="./media/create-cluster-portal/networking.png" alt-text="ネットワークの詳細を構成する。" lightbox="./media/create-cluster-portal/networking.png" border="true":::
 
-1. 最後の手順で新しい VNet を作成した場合は、手順 9 に進みます。 既存の VNet を選択した場合は、クラスターを作成する前に、仮想ネットワークとサブネットに特別なアクセス許可を適用する必要があります。 これを行うには、既存の仮想ネットワークのリソース ID を取得する必要があります。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) で、次のコマンドを実行します。
+1. 最後の手順で新しい VNet を作成した場合は、手順 8. に進みます。 既存の VNet を選択した場合は、クラスターを作成する前に、仮想ネットワークとサブネットに特別なアクセス許可を適用する必要があります。 そのためには、`az role assignment create` コマンドを使用します。`<subscription ID>`、`<resource group name>`、`<VNet name>`、`<subnet name>` は、適切な値に置き換えてください。
 
    ```azurecli-interactive
-   # get the resource ID of the Virtual Network
-   az network vnet show -n <VNet_name> -g <Resource_Group_Name> --query "id" --output tsv
-
-1. Now apply the special permissions by using the `az role assignment create` command. Replace `<Resource ID>` with the output of previous command:
-
-   ```azurecli-interactive
-   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope <Resource ID>
+   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>
    ```
 
    > [!NOTE]
-   > 前のコマンドの `assignee` と `role` 値は、それぞれ固定されたサービス プリンシパルとロール識別子です。
+   > 前のコマンドの `assignee` と `role` の値は固定値です。これらの値は、コマンドに記載されているとおりに入力してください。 そうしないと、クラスターの作成時にエラーが発生します。 このコマンドの実行中にエラーが発生した場合は、実行するためのアクセス許可がない可能性があります。管理者に連絡してアクセス許可を依頼してください。
 
 1. これでネットワークが完成しました。 **[確認および作成]**  >  **[作成]** をクリックします。
 
@@ -93,7 +87,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. クラスター ノードを参照するには、クラスターの作成に使用した [仮想ネットワーク] ウィンドウに移動し、 **[概要]** ウィンドウを開いてこれらを表示します。
 
    :::image type="content" source="./media/create-cluster-portal/resources.png" alt-text="クラスター リソースを表示する。" lightbox="./media/create-cluster-portal/resources.png" border="true":::
-
 
 
 ## <a name="connecting-to-your-cluster"></a>クラスターに接続する
@@ -120,13 +113,22 @@ host=("<IP>" "<IP>" "<IP>")
 cqlsh $host 9042 -u cassandra -p cassandra --ssl
 ```
 
+## <a name="troubleshooting"></a>トラブルシューティング
+
+Virtual Network にアクセス許可を適用するときにエラー (例えば、"*Cannot find user or service principal in graph database for 'e5007d2c-4b13-4a74-9b6a-605d99f03501' ('e5007d2c-4b13-4a74-9b6a-605d99f03501' に対するユーザーまたはサービス プリンシパルがグラフ データベース内で見つかりません)* " など) が発生した場合は、Azure portal から同じアクセス許可を手動で適用できます。 ポータルからアクセス許可を適用するには、既存の仮想ネットワークの **[アクセス制御 (IAM)]** ペインにアクセスし、"Azure Cosmos DB" のロール割り当てを "ネットワーク管理者" ロールに追加します。 "Azure Cosmos DB" を検索したときに 2 つのエントリが表示される場合は、次の図に示すように両方のエントリを追加します。 
+
+   :::image type="content" source="./media/create-cluster-cli/apply-permissions.png" alt-text="アクセス許可を適用する" lightbox="./media/create-cluster-cli/apply-permissions.png" border="true":::
+
+> [!NOTE] 
+> Azure Cosmos DB のロールの割り当ては、デプロイの目的にのみ使用されます。 Azure Managed Instance for Apache Cassandra には、Azure Cosmos DB に対するバックエンドの依存関係はありません。   
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このマネージド インスタンスを引き続き使用しない場合は、次の手順で削除します。
+このマネージド インスタンス クラスターを引き続き使用しない場合は、次の手順でそれを削除します。
 
 1. Azure portal の左側にあるメニューで、 **[リソース グループ]** を選択します。
 1. 一覧から、このクイック スタートで作成したリソース グループを選択します。
-1. リソース グループの **[概要]** ウィンドウで、 **[リソース グループの削除]** を選択します。
+1. リソース グループの **[概要]** ペインで、 **[リソース グループの削除]** を選択します。
 1. 次のウィンドウで、削除するリソース グループの名前を入力し、**[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ

@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 01/26/2021
 ms.custom: seodec18, has-adal-ref, devx-track-csharp
 ms.openlocfilehash: f6acf23742b8d4c5c31a5ea952aba5c76b64cae0
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98896733"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>.NET 用の Batch 管理クライアント ライブラリを使用した Batch アカウントとクォータの管理

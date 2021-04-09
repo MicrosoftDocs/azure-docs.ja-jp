@@ -1,18 +1,14 @@
 ---
 title: センサーをアクティブ化してセットアップする
 description: この記事では、センサー コンソールにサインインしてアクティブ化する方法について説明します。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 56f6c9d3ff3093c3acd28b670e37f823ad5e9f9a
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 2fdfa0dd7048bf39ae5b53a729aef578054b30ac
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522514"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779190"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>センサーをアクティブ化してセットアップする
 
@@ -214,9 +210,9 @@ CA 署名証明書のアップロード後に、画面を更新する必要が�
 |----|---|---|
 | サポート | :::image type="icon" source="media/concept-sensor-console-overview/support-icon-azure.png" border="false"::: | ヘルプが必要な場合は、[Microsoft サポート](https://support.microsoft.com/)にご連絡ください。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
-[センサーをオンボードする](getting-started.md#4-onboard-a-sensor)
+[センサーをオンボードする](getting-started.md#onboard-a-sensor)
 
 [センサーのアクティブ化ファイルを管理する](how-to-manage-individual-sensors.md#manage-sensor-activation-files)
 

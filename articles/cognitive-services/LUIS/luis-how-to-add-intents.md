@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 05/17/2020
 ms.service: cognitive-services
 ms.openlocfilehash: f2401c032f0fc90024e0049fad5f696b8a184544
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95018941"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>ユーザーの発話意図を判断する意図を追加する

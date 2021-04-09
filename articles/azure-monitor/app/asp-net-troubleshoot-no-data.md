@@ -4,12 +4,12 @@ description: Auzre Application Insights にデータが表示されない場合�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: e41b0a9ce1ff86bc6010e12fdf5d3320f303fd87
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 40fbe4d08676d7cc56478d3740424fccaa7addc0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092453"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103562197"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET、Application Insights for .NET Core
 
@@ -68,11 +68,11 @@ ms.locfileid: "99092453"
     </TelemetryModules>
     ```
 
-**_正常にアップグレードできないと、予期しない例外が発生したり、テレメトリが収集されなかったりする可能性があります。_* _
+***正常にアップグレードできないと、予期しない例外が発生したり、テレメトリが収集されなかったりする可能性があります。***
 
 
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Visual Studio に [Application Insights の追加] オプションが表示されない
-_ソリューション エクスプローラーで既存のプロジェクトを右クリックしたときに、Application Insights のオプションが表示されません。*
+*ソリューション エクスプローラーで既存のプロジェクトを右クリックしたときに、Application Insights のオプションが表示されません。*
 
 * このツールでは、一部の種類の .NET プロジェクトがサポートされません。 Web プロジェクトと WCF プロジェクトはサポートされます。 その他の種類のプロジェクト (デスクトップ アプリケーション、サービス アプリケーションなど) では、 [Application Insights SDK を手動でプロジェクトに追加](./windows-desktop.md)できます。
 * [Visual Studio 2013 Update 3 以降](/visualstudio/releasenotes/vs2013-update3-rtm-vs)を使用しているかご確認ください。 これは、Application Insights SDK を提供する Developer Analytics Tools と共に事前インストールされています。
@@ -224,7 +224,7 @@ Application Insights をインストールしているとき、またはログ �
 
     ```xml
     <TelemetryModules>
-      <Add Type="Microsoft.ApplicationInsights.Extensibility.HostingStartup.FileDiagnosticsTelemetryModule, Microsoft.AspNet.ApplicationInsights.HostingStartup">
+      <Add Type="Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.FileDiagnosticsTelemetryModule, Microsoft.ApplicationInsights">
         <Severity>Verbose</Severity>
         <LogFileName>mylog.txt</LogFileName>
         <LogFilePath>C:\\SDKLOGS</LogFilePath>

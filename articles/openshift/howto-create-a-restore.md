@@ -9,10 +9,10 @@ ms.author: b-trconn
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc
 ms.openlocfilehash: 8a9bb191390056caf7d5ba3b42c278205177d5a2
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102213014"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-restore"></a>Azure Red Hat OpenShift 4 クラスター アプリケーションの復元を作成する

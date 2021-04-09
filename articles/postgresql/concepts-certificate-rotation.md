@@ -6,44 +6,34 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 96720e156963a5fb542e72823a602aa2cc6a0ead
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 6dc687879eb646b4abd081b40bce292d20ff3186
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349003"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123991"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL シングル サーバーのルート CA の変更について
 
-Azure Database for PostgreSQL では、[データベース サーバーに接続する](concepts-connectivity-architecture.md)ために使用される、SSL によって有効にされるクライアント アプリケーションやドライバー用のルート証明書が変更されます。 現在使用できるルート証明書は、標準メンテナンスおよびセキュリティのベスト プラクティスの一部として、2021 年 2 月 15 日 (2021/02/15) に有効期限が切れます。 この記事では、予定されている変更、影響を受けるリソース、アプリケーションでデータベース サーバーへの接続を確実に維持するために必要な手順について、詳しく説明します。
+Azure Database for PostgreSQL シングル サーバーにより、標準のメンテナンスとセキュリティのベスト プラクティスの一環として、**2021 年 2 月 15 日 (2021/02/15)** にルート証明書の変更が正常に完了しました。 この記事では、変更、影響を受けるリソース、アプリケーションでデータベース サーバーへの接続を確実に維持するために必要な手順について、詳しく説明します。
 
->[!NOTE]
-> お客様からのフィードバックに基づいて、既存の Baltimore Root CA のルート証明書の非推奨を、2020 年 10 月 26 日から 2021 年 2 月 15 日まで延長しました。 この延長により、ユーザーが影響を受ける場合に、クライアントの変更を実装するのに十分なリード タイムを提供できるのではないかと考えています。
+## <a name="why-root-certificate-update-is-required"></a>ルート証明書の更新が必要な理由
 
-## <a name="what-update-is-going-to-happen"></a>予定されている更新
+Azure Database for PostgreSQL のユーザーが PostgreSQL サーバーへの接続に使用できるのは、[こちら](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)にある定義済みの証明書のみです。 ただし、[証明機関 (CA) ブラウザー フォーラム](https://cabforum.org/)から最近、CA ベンダーによって発行された複数の証明書が準拠していないことを示すレポートが公開されました。
 
-アプリケーションでは、安全に接続するために、信頼された証明機関 (CA) の証明書ファイルから生成されたローカル証明書ファイルが使用される場合があります。 現在、お客様が Azure Database for PostgreSQL サーバーへの接続に使用できるのは、[こちら](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)にある定義済みの証明書のみです。 ただし、[証明機関 (CA) ブラウザー フォーラム](https://cabforum.org/)から最近、CA ベンダーによって発行された複数の証明書が準拠していないことを示すレポートが公開されました。
+業界のコンプライアンス要件に従い、CA ベンダーは準拠していない CA の CA 証明書の取り消しを始めており、サーバーでは、準拠している CA で発行され、それらの準拠している CA からの CA 証明書によって署名された証明書が使用される必要があります。 Azure Database for MySQL にはこれらの準拠していない証明書の 1 つが使用されていたため、MySQL サーバーへの潜在的な脅威を最小限に抑えるために、証明書を準拠バージョンにローテーションする必要がありました。
 
-業界のコンプライアンス要件に従い、CA ベンダーは準拠していない CA の CA 証明書の取り消しを始めており、サーバーでは、準拠している CA で発行され、それらの準拠している CA からの CA 証明書によって署名された証明書が使用される必要があります。 現在、Azure Database for PostgreSQL によってこれらの非準拠証明書の 1 つが使用されており、クライアント アプリケーションではそれを使用して SSL 接続が検証されているため、PostgreSQL サーバーへの潜在的な影響を最小限に抑えるため、以下に説明する適切なアクションが確実に実行されるようにする必要があります。
+新しい証明書は 2021 年 2 月 15 日 (2021/02/15) からロールアウトされ、有効になっています。 
 
-新しい証明書は、2021 年 2 月 15 日 (02/15/2021) から使用されるようになります。 PostgreSQL クライアントからの接続時に、サーバー証明書の CA 検証または完全検証 (sslmode=verify-ca または sslmode=verify-full) を使用している場合は、2021 年 2 月 15 日 (02/15/2021) になる前にアプリケーションの構成を更新する必要があります。
+## <a name="what-change-was-performed-on-february-15-2021-02152021"></a>2021 年 2 月 15 日 (2021/02/15) にどのような変更が行われましたか?
 
-## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>データベースが影響を受けるかどうかを確認する方法
+2021 年 2 月 15 日、既存のお客様が何も変更する必要がなく、サーバーへの接続に影響が生じないように、[BaltimoreCyberTrustRoot ルート証明書](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)が同じ [BaltimoreCyberTrustRoot ルート証明書](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)の **準拠バージョン** に置き換えられました。 この変更時に、[BaltimoreCyberTrustRoot ルート証明書](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)は [DigiCertGlobalRootG2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) に **置き換えられませんでした**。この変更は、お客様が変更を行う時間を確保できるように、延期されました。
 
-SSL/TLS を使用し、ルート証明書を検証しているすべてのアプリケーションで、ルート証明書を更新する必要があります。 お使いの接続で、接続文字列を確認するとルート証明書が検証されているかどうかを、確認することができます。
--    接続文字列に `sslmode=verify-ca` または `sslmode=verify-full` が含まれている場合は、証明書を更新する必要があります。
--    接続文字列に `sslmode=disable`、`sslmode=allow`、`sslmode=prefer`、または `sslmode=require` が含まれている場合は、証明書を更新する必要はありません。 
--    接続文字列で sslmode が指定されていない場合は、証明書を更新する必要はありません。
+## <a name="do-i-need-to-make-any-changes-on-my-client-to-maintain-connectivity"></a>接続を維持するためにクライアントに変更を加える必要はありますか?
 
-接続文字列が抽象化されるクライアントを使用している場合、証明書が検証されているかどうかを確認するには、クライアントのドキュメントを参照してください。
+クライアント側での変更は必要ありません。 以下に示す以前の推奨事項に従った場合でも、結合された CA 証明書から **BaltimoreCyberTrustRoot 証明書が削除されない限り**、接続を継続できます。 **接続を維持するための通知があるまで、結合された CA 証明書から BaltimoreCyberTrustRoot を削除しないことをお勧めします。**
 
-PostgreSQL の sslmode を理解するには、PostgreSQL のドキュメントで [SSL モードの説明](https://www.postgresql.org/docs/11/libpq-ssl.html#ssl-mode-descriptions)をご確認ください。
-
-証明書の予期しない取り消しによってアプリケーションの可用性が中断されないようにするには、または取り消された証明書を更新するには、「 [**接続を維持するために必要な作業**](concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity)」セクションを参照してください。
-
-## <a name="what-do-i-need-to-do-to-maintain-connectivity"></a>接続を維持するために必要な作業
-
-証明書の予期しない取り消しによってアプリケーションの可用性が中断されないようにするため、または取り消された証明書を更新するため、以下の手順に従います。 考え方は、現在の証明書と新しい証明書を組み合わせた新しい *.pem* ファイルを作成し、SSL 証明書の検証の間に、許可された値の 1 つを使用する、というものです。 次の手順を参照してください。
+### <a name="previous-recommendation"></a>以前の推奨事項
 
 *   以下のリンクから、BaltimoreCyberTrustRoot と DigiCertGlobalRootG2 のルート CA をダウンロードします。
     *   https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem
@@ -64,11 +54,11 @@ PostgreSQL の sslmode を理解するには、PostgreSQL のドキュメント�
         *   System.setProperty("javax.net.ssl.trustStore","path_to_truststore_file"); 
         *   System.setProperty("javax.net.ssl.trustStorePassword","password");
         
-    *   Windows の .NET (Npgsql) ユーザーの場合は、 **Baltimore CyberTrust Root** と **DigiCert Global Root G2** の両方が Windows 証明書ストアの信頼されたルート証明機関に存在することを確認します。 いずれかの証明書が存在しない場合は、不足している証明書をインポートします。
+    *   Windows の .NET (Npgsql) ユーザーの場合は、**Baltimore CyberTrust Root** と **DigiCert Global Root G2** の両方が Windows 証明書ストアの信頼されたルート証明機関に存在することを確認します。 いずれかの証明書が存在しない場合は、不足している証明書をインポートします。
 
         ![Azure Database for PostgreSQL の .net 証明書](media/overview/netconnecter-cert.png)
 
-    *   SSL_CERT_DIR を使用する Linux 上の .NET (Npgsql) ユーザーの場合は、 **BaltimoreCyberTrustRoot** と **DigiCertGlobalRootG2** の両方が SSL_CERT_DIR によって示されるディレクトリに存在することを確認します。 いずれかの証明書が存在しない場合は、不足している証明書ファイルを作成します。
+    *   SSL_CERT_DIR を使用する Linux 上の .NET (Npgsql) ユーザーの場合は、**BaltimoreCyberTrustRoot** と **DigiCertGlobalRootG2** の両方が SSL_CERT_DIR によって示されるディレクトリに存在することを確認します。 いずれかの証明書が存在しない場合は、不足している証明書ファイルを作成します。
 
     *   その他の PostgreSQL クライアント ユーザーの場合は、次の形式のような 2 つの CA 証明書ファイルをマージできます
 
@@ -82,13 +72,19 @@ PostgreSQL の sslmode を理解するには、PostgreSQL のドキュメント�
 *   元のルート CA pem ファイルを、結合されたルート CA ファイルに置き換えて、アプリケーションやクライアントを再起動します。
 *    将来的に、サーバー側に新しい証明書がデプロイされた後は、CA pem ファイルを DigiCertGlobalRootG2.crt.pem に変更することができます。
 
-## <a name="what-can-be-the-impact-of-not-updating-the-certificate"></a>証明書を更新しない場合に可能性のある影響
-ここで説明されているように、Baltimore CyberTrust ルート証明書を使用して Azure Database for PostgreSQL への SSL 接続を検証している場合は、データベースに到達できなくなるため、アプリケーションの可用性が中断される可能性があります。 アプリケーションによっては、次のようなさまざまなエラー メッセージが表示される場合があります。
-*    無効な証明書/失効した証明書
-*    接続がタイムアウトしました
-
 > [!NOTE]
-> 証明書の変更が行われるまで、 **Baltimore 証明書** を破棄または変更しないでください。 変更が完了すると、Microsoft からメッセージが送信されます。その後、Baltimore 証明書を安全に削除できます。 
+> 証明書の変更が行われるまで、**Baltimore 証明書** を破棄または変更しないでください。 変更が完了すると、Microsoft からメッセージが送信されます。その後、Baltimore 証明書を安全に削除できます。 
+
+## <a name="why-was-baltimorecybertrustroot-certificate-not-replaced-to-digicertglobalrootg2-during-this-change-on-february-15-2021"></a>2021 年 2 月 15 日のこの変更時に、BaltimoreCyberTrustRoot 証明書が DigiCertGlobalRootG2 に置き換えられなかったのはなぜですか?
+
+この変更に対するお客様の準備状況を評価したところ、多くのお客様が、この変更の管理に追加のリード タイムを必要としていることがわかりました。 準備のためにお客様により多くのリード タイムを提供するという目的から、お客様とエンド ユーザーが十分なリード タイムを確保できるように証明書の変更を DigiCertGlobalRootG2 に少なくとも 1 年間延期することを決定しました。 
+
+ユーザーへの推奨事項は、前述の手順を使用して結合証明書を作成し、サーバーに接続しますが、削除するように Microsoft からメッセージが送信されるまで BaltimoreCyberTrustRoot 証明書を削除しないことです。 
+
+## <a name="what-if-we-removed-the-baltimorecybertrustroot-certificate"></a>BaltimoreCyberTrustRoot 証明書を削除した場合はどうなりますか?
+
+Azure Database for PostgreSQL サーバーへの接続時に、接続エラーが発生し始めます。 接続を維持するには、[BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) 証明書を使用してもう一度 SSL を構成する必要があります。
+
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -98,8 +94,14 @@ SSL/TLS を使用していない場合は、何も行う必要は必要ありま
 ### <a name="2-if-i-am-using-ssltls-do-i-need-to-restart-my-database-server-to-update-the-root-ca"></a>2.SSL/TLS を使用している場合、ルート CA を更新するには、データベース サーバーを再起動する必要がありますか?
 いいえ。新しい証明書を使い始めるために、データベース サーバーを再起動する必要はありません。 これはクライアント側の変更であり、確実にデータベース サーバーに接続できるよう、受信クライアント接続で新しい証明書を使用する必要があります。
 
-### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-february-15-2021-02152021"></a>3.2021 年 2 月 15 日 (2021/02/15) までにルート証明書を更新しないとどうなりますか?
-2021 年 2 月 15 日 (2021/02/15) までにルート証明書を更新しない場合、SSL/TLS を使用して接続し、ルート証明書に対する検証を実行するアプリケーションは、PostgreSQL データベース サーバーと通信できなくなり、アプリケーションで PostgreSQL データベース サーバーへの接続に関する問題が発生します。
+### <a name="3-how-do-i-know-if-im-using-ssltls-with-root-certificate-verification"></a>3.ルート証明書の検証で SSL/TLS を使用しているかどうかはどうすればわかりますか?
+
+お使いの接続で、接続文字列を確認するとルート証明書が検証されているかどうかを、確認することができます。
+-    接続文字列に `sslmode=verify-ca` または `sslmode=verify-full` が含まれている場合は、証明書を更新する必要があります。
+-    接続文字列に `sslmode=disable`、`sslmode=allow`、`sslmode=prefer`、または `sslmode=require` が含まれている場合は、証明書を更新する必要はありません。 
+-    接続文字列で sslmode が指定されていない場合は、証明書を更新する必要はありません。
+
+接続文字列が抽象化されるクライアントを使用している場合、証明書が検証されているかどうかを確認するには、クライアントのドキュメントを参照してください。 PostgreSQL の sslmode を理解するには、PostgreSQL のドキュメントで [SSL モードの説明](https://www.postgresql.org/docs/11/libpq-ssl.html#ssl-mode-descriptions)をご確認ください。
 
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-postgresql"></a>4.Azure Database for PostgreSQL で App Service を使用している場合、どのような影響がありますか?
 Azure App Services で Azure Database for PostgreSQL に接続している場合、アプリケーションでの SSL の使用方法により、2 つのシナリオが考えられます。
@@ -117,26 +119,23 @@ Azure Integration Runtime を使用しているコネクタでは、Azure でホ
 ### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7.この変更では、データベース サーバーのメンテナンス ダウンタイムを計画する必要がありますか?
 いいえ。 ここでの変更は、データベース サーバーに接続するためにクライアント側でのみ行うものなので、この変更のためにデータベース サーバーでメンテナンス ダウンタイムは必要ありません。
 
-### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-february-15-2021-02152021"></a>8.2021 年 2 月 15 日 (2021/02/15) より前に、この変更のためのダウンタイムをスケジュールできない場合はどうすればよいですか?
-修正に関する[こちら](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity)のセクションで説明されているように、サーバーへの接続に使用されるクライアントで証明書情報を更新する必要があるため、この場合、サーバーのダウンタイムは必要ありません。
+### <a name="8-if-i-create-a-new-server-after-february-15-2021-02152021-will-i-be-impacted"></a>8.2021 年 2 月 15 日 (2021/02/15) より後に新しいサーバーを作成する場合、影響はありますか?
+2021 年 2 月 15 日 (2021/02/15) より後に作成されたサーバーの場合、SSL を使用して接続するアプリケーションには引き続き [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) が使用されます。
 
-### <a name="9-if-i-create-a-new-server-after-february-15-2021-02152021-will-i-be-impacted"></a>9.2021 年 2 月 15 日 (2021/02/15) より後に新しいサーバーを作成する場合、影響はありますか?
-2021 年 2 月 15 日 (2021/02/15) より後に作成されるサーバーに対しては、アプリケーションが SSL を使用して接続するために新しく発行された証明書を使用できます。
+### <a name="9-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>9.Microsoft はどのくらいの頻度で証明書を更新しますか、または有効期限ポリシーはどのようなものですか?
+Azure Database for PostgreSQL によって使用されるこれらの証明書は、信頼された証明機関 (CA) によって提供されます。 そのため、これらの証明書のサポートは、CA によるこれらの証明書のサポートに関連付けられています。 [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) 証明書は 2025 年に有効期限が切れる予定であるため、Microsoft は有効期限が切れる前に証明書の変更を実行する必要があります。 また、これらの事前定義された証明書に予期しないバグがある場合、Microsoft は、サービスが常に安全で準拠していることを確保するために、2021 年 2 月 15 日に実行された変更と同様に、できるだけ早く証明書のローテーションを行う必要があります。
 
-###    <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10.Microsoft はどのくらいの頻度で証明書を更新しますか、または有効期限ポリシーはどのようなものですか?
-Azure Database for PostgreSQL によって使用されるこれらの証明書は、信頼された証明機関 (CA) によって提供されます。 そのため、Azure Database for PostgreSQL でのこれらの証明書のサポートは、CA によるこれらの証明書のサポートに関連付けられています。 ただし、今回のケースのように、事前に定義されたこれらの証明書に予期しないバグが存在する可能性があり、その場合はできるだけ早く修正する必要があります。
-
-###    <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-the-primary-server-or-the-read-replicas"></a>11.読み取りレプリカを使用している場合、この更新を行う必要があるのはプライマリ サーバーだけですか? または、読み取りレプリカでも必要ですか?
+### <a name="10-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-the-primary-server-or-the-read-replicas"></a>10。読み取りレプリカを使用している場合、この更新を行う必要があるのはプライマリ サーバーだけですか? または、読み取りレプリカでも必要ですか?
 この更新はクライアント側の変更であるため、レプリカ サーバーからデータを読み取るためにクライアントを使用している場合は、それらのクライアントにも変更を適用する必要があります。 
 
-### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12.SSL が使用されているかどうかを確認するためのサーバー側クエリはありますか?
+### <a name="11-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>11.SSL が使用されているかどうかを確認するためのサーバー側クエリはありますか?
 サーバーへの接続に SSL 接続を使用しているかどうかを確認するには、[SSL の検証](concepts-ssl-connection-security.md#applications-that-require-certificate-verification-for-tls-connectivity)に関する記事を参照してください。
 
-### <a name="13-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>13.証明書ファイルに DigiCertGlobalRootG2 が既に含まれている場合、必要なアクションはありますか?
+### <a name="12-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>12.証明書ファイルに DigiCertGlobalRootG2 が既に含まれている場合、必要なアクションはありますか?
 いいえ。 証明書ファイルに **DigiCertGlobalRootG2** が既に含まれている場合、必要なアクションはありません。
 
-### <a name="14-what-is-you-are-using-docker-image-of-pgbouncer-sidecar-provided-by-microsoft"></a>14.Microsoft によって提供される PgBouncer サイドカーの docker イメージは、どのようなものを使用していますか?
-[**Baltimore**](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) と [**DigiCert**](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) の両方をサポートする新しい docker イメージは、 [こちら](https://hub.docker.com/_/microsoft-azure-oss-db-tools-pgbouncer-sidecar)に公開されます (最新のタグ)。 2021 年 2 月 15 日以降の接続の中断を回避するために、この新しいイメージをプルすることができます。 
+### <a name="13-what-if-you-are-using-docker-image-of-pgbouncer-sidecar-provided-by-microsoft"></a>13.Microsoft によって提供される PgBouncer サイドカーの docker イメージを使用している場合はどうすればよいですか?
+[**Baltimore**](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) と [**DigiCert**](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) の両方をサポートする新しい docker イメージは、[こちら](https://hub.docker.com/_/microsoft-azure-oss-db-tools-pgbouncer-sidecar)に公開されます (最新のタグ)。 2021 年 2 月 15 日以降の接続の中断を回避するために、この新しいイメージをプルすることができます。 
 
-###    <a name="15-what-if-i-have-further-questions"></a>15. さらに質問がある場合はどうすればよいですか?
+### <a name="14-what-if-i-have-further-questions"></a>14. さらに質問がある場合はどうすればよいですか?
 質問がある場合は、[Microsoft Q&A](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com) でコミュニティの専門家から回答を得ることができます。 サポート プランをお持ちで技術的なヘルプが必要な場合は、[こちらまでお問い合わせください](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com)

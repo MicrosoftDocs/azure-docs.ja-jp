@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: fde4f236a48e00b20817a812810fc3ad7d4b227f
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 81cd2ca1cb47e6fdfb4858df930b73c1bd10118a
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521885"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091825"
 ---
 # <a name="change-iot-central-application-settings"></a>IoT Central アプリケーションの設定を変更する
 
@@ -25,7 +25,7 @@ ms.locfileid: "100521885"
 
 ## <a name="change-application-name-and-url"></a>アプリケーションの名前と URL を変更する
 
-**[アプリケーション設定]** ページで、アプリケーションの名前と URL を変更し、 **[保存]** を選択できます。
+**[アプリケーション設定]** ページで、アプリケーションの名前と URL を変更し、**[保存]** を選択できます。
 
 ![[Application Settings] (アプリケーション設定) ページ](media/howto-administer/image0-a.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "100521885"
 **[削除]** ボタンを使用して、IoT Central アプリケーションを完全に削除します。 この操作を行うと、そのアプリケーションに関連付けられているすべてのデータが完全に削除されます。
 
 > [!Note]
-> また、アプリケーションを削除するには、アプリケーションを作成したときに選択した Azure サブスクリプションのリソースを削除する許可も必要です。 詳細は、「[ロールベースのアクセス制御を使用して Azure サブスクリプション リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+> また、アプリケーションを削除するには、アプリケーションを作成したときに選択した Azure サブスクリプションのリソースを削除する許可も必要です。 詳細については、「[Azure サブスクリプション リソースへのアクセスを管理するための Azure ロールの割り当て](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="manage-programmatically"></a>プログラムで管理する
 
@@ -49,9 +49,9 @@ Azure Resource Manager SDK を使用する方法例については､[https://gi
 
 詳細については、以下の GitHub リポジトリとパッケージを参照してください。
 
-| 言語 | リポジトリ | Package |
+| Language | リポジトリ | Package |
 | ---------| ---------- | ------- |
-| ノード | [https://github.com/Azure/azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js) | [https://www.npmjs.com/package/@azure/arm-iotcentral](https://www.npmjs.com/package/@azure/arm-iotcentral)
+| Node | [https://github.com/Azure/azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js) | [https://www.npmjs.com/package/@azure/arm-iotcentral](https://www.npmjs.com/package/@azure/arm-iotcentral)
 | Python |[https://github.com/Azure/azure-sdk-for-python](https://github.com/Azure/azure-sdk-for-python) | [https://pypi.org/project/azure-mgmt-iotcentral](https://pypi.org/project/azure-mgmt-iotcentral)
 | C# | [https://github.com/Azure/azure-sdk-for-net](https://github.com/Azure/azure-sdk-for-net) | [https://www.nuget.org/packages/Microsoft.Azure.Management.IotCentral](https://www.nuget.org/packages/Microsoft.Azure.Management.IotCentral)
 | Ruby | [https://github.com/Azure/azure-sdk-for-ruby](https://github.com/Azure/azure-sdk-for-ruby) | [https://rubygems.org/gems/azure_mgmt_iot_central](https://rubygems.org/gems/azure_mgmt_iot_central)

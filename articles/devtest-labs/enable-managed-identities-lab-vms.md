@@ -4,10 +4,10 @@ description: この記事では、ラボ所有者がラボ仮想マシン上で�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b4bf2900acebaeecd5cbc4cb65635aee6de87dda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88717636"
 ---
 # <a name="enable-user-assigned-managed-identities-on-lab-virtual-machines-in-azure-devtest-labs"></a>Azure DevTest Labs のラボ仮想マシン上でユーザー割り当てのマネージド ID を有効にする
@@ -31,7 +31,7 @@ ms.locfileid: "88717636"
 
     > [!div class="mx-imgBorder"]
     > ![ID の[追加] ボタン](./media/enable-managed-identities-lab-vms/add-identity-button.png)
-1. ドロップダウン リストから既存の**ユーザー マネージド ID** を選択し、 **[OK]** を選択します。 
+1. ドロップダウン リストから既存の **ユーザー マネージド ID** を選択し、 **[OK]** を選択します。 
 
     > [!div class="mx-imgBorder"]
     > ![ID を追加する](./media/enable-managed-identities-lab-vms/add-identity.png)
@@ -40,7 +40,7 @@ ms.locfileid: "88717636"
 
 1.  ID を作成したら、この ID のリソース ID をメモしておきます。 これは次のサンプルのようになります。 
 
-    [https://login.microsoftonline.com/consumers/](`/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`)
+    `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`.
 2. 次の例に示すように、PUT HTTPS メソッドを実行して、新しい **ServiceRunner** リソースをラボに追加します。 
 
     サービス ランナー リソースは、DevTest Labs でマネージド ID を管理および制御するためのプロキシ リソースです。 サービス ランナー名は任意の有効な名前にすることができますが、マネージド ID リソースの名前を使用することをお勧めします。

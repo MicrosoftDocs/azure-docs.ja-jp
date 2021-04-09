@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: fc1bca1265139a438fad86bfce770026866d9a2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90930827"
 ---
 # <a name="manage-zone-redundant-high-availability-in-flexible-server"></a>フレキシブル サーバーでゾーン冗長の高可用性を管理する
@@ -30,29 +30,29 @@ ms.locfileid: "90930827"
 
 このセクションでは、特に HA に関連するフィールドの詳細について説明します。 次の手順に従って、柔軟なサーバーの作成中に高可用性を展開できます。
 
-1.   [Azure portal](https://portal.azure.com/) で、[フレキシブル サーバー] を選択し、[作成] をクリックします。  **[サブスクリプション]** 、 **[リソース グループ]** 、 **[サーバー名]** 、 **[リージョン]** 、およびその他のフィールドなどの詳細の入力方法の詳細については、サーバー作成に関するハウツー ドキュメントをご覧ください。
+1.  [Azure portal](https://portal.azure.com/) で、[フレキシブル サーバー] を選択し、[作成] をクリックします。  **[サブスクリプション]** 、 **[リソース グループ]** 、 **[サーバー名]** 、 **[リージョン]** 、およびその他のフィールドなどの詳細の入力方法の詳細については、サーバー作成に関するハウツー ドキュメントをご覧ください。
    
     :::image type="content" source="./media/how-to-manage-high-availability-portal/subscription-region.png" alt-text="サブスクリプションとリージョンを表示する":::
 
-2.  **可用性ゾーン**を確認します。 これは、待機時間を短縮するために、データベースと同じ可用性ゾーンにアプリケーションを併置する場合に便利です。 フレキシブル サーバーを任意の可用性ゾーンに展開する場合は、 **[優先設定なし]** を選択します。
-    ![AZ の選択]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="サブスクリプションとリージョンを表示する":::  
+2.  **可用性ゾーン** を確認します。 これは、待機時間を短縮するために、データベースと同じ可用性ゾーンにアプリケーションを併置する場合に便利です。 フレキシブル サーバーを任意の可用性ゾーンに展開する場合は、 **[優先設定なし]** を選択します。
+    ![AZ の選択]() :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="可用性ゾーンの選択":::  
 
 3.  [可用性] オプションで **[ゾーン冗長の高可用性]** のチェックボックスをオンにします。
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="サブスクリプションとリージョンを表示する":::
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-checkbox.png" alt-text="高可用性のチェックボックス":::
 
 4.  デフォルトのコンピューティングとストレージを変更する場合は、 **[サーバーの構成]** をクリックします。
  
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="サブスクリプションとリージョンを表示する":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="サーバーの構成 - コンピューティング + ストレージ":::  
 
-5.  [高可用性] オプションをオンにすると、バースト可能レベルは選択できなくなります。 **[汎用]** または **[メモリ最適化]** のどちらかのコンピューティング レベルを選択できます。 次に、ドロップダウン リストから選択した**コンピューティング サイズ**を選択できます。
+5.  [高可用性] オプションをオンにすると、バースト可能レベルは選択できなくなります。 **[汎用]** または **[メモリ最適化]** のどちらかのコンピューティング レベルを選択できます。 次に、ドロップダウン リストから選択した **コンピューティング サイズ** を選択できます。
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="サブスクリプションとリージョンを表示する":::  
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="コンピューティング レベルの選択":::  
 
 
-6.  スライディング バーを使用して GiB 単位で**ストレージ サイズ**を選択し、7 日から 35 日の範囲で**バックアップ保持期間**を選択します。
+6.  スライディング バーを使用して GiB 単位で **ストレージ サイズ** を選択し、7 日から 35 日の範囲で **バックアップ保持期間** を選択します。
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="サブスクリプションとリージョンを表示する"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="ストレージ バックアップ"::: 
 
 7. **[保存]** をクリックします。 
 
@@ -60,15 +60,15 @@ ms.locfileid: "90930827"
 
 次の手順に従って、既存のフレキシブル サーバーの高可用性を有効にします。
 
-1.   [Azure portal](https://portal.azure.com/) で、既存の PostgreSQL フレキシブル サーバーを選択します。
+1.  [Azure portal](https://portal.azure.com/) で、既存の PostgreSQL フレキシブル サーバーを選択します。
 
-2.  [フレキシブル サーバー] ページで、左側のパネルから  **[高可用性]** をクリックして、[高可用性] ページを開きます。
+2.  [フレキシブル サーバー] ページで、左側のパネルから **[高可用性]** をクリックして、[高可用性] ページを開きます。
    
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="サブスクリプションとリージョンを表示する"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="左側のパネルの選択"::: 
 
-3.  **[ゾーン冗長の高可用性]** チェックボックスをオンにしてこのオプションを**有効**にし、 **[保存]**   をクリックして変更内容を保存します。
+3.  **[ゾーン冗長の高可用性]** チェックボックスをオンにして、このオプションを **有効** にし、 **[保存]** をクリックして変更内容を保存します。
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="サブスクリプションとリージョンを表示する"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/enable-high-availability.png" alt-text="高可用性を有効にする"::: 
 
 4.  高可用性を有効にすることにより、追加のサーバーと記憶域のデプロイによってコストが増大することを示す確認ダイアログが表示されます。
 
@@ -80,15 +80,15 @@ ms.locfileid: "90930827"
 
 次の手順に従って、既にゾーン冗長で構成されているフレキシブル サーバーの高可用性を無効にします。
 
-1.   [Azure portal](https://portal.azure.com/) で、既存の Azure Database for PostgreSQL - フレキシブル サーバーを選択します。
+1.  [Azure portal](https://portal.azure.com/) で、既存の Azure Database for PostgreSQL - フレキシブル サーバーを選択します。
 
-2.  フレキシブル サーバー ページで、前面パネルから  **[高可用性]** をクリックして、[高可用性] ページを開きます。
+2.  フレキシブル サーバー ページで、前面パネルから **[高可用性]** をクリックして、[高可用性] ページを開きます。
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="サブスクリプションとリージョンを表示する"::: 
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="左側のパネルの選択"::: 
 
-3.  **[ゾーン冗長の高可用性]** チェックボックスをオンにして、オプションを**無効**にします。 次に、 **[保存]**   をクリックして、変更を保存します。
+3.  **[ゾーン冗長の高可用性]** チェックボックスをオンにして、オプションを **無効** にします。 次に、 **[保存]** をクリックして変更内容を保存します。
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="サブスクリプションとリージョンを表示する"::: 
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="高可用性を無効にする"::: 
 
 4.  高可用性を無効にすることを確認できる確認ダイアログが表示されます。
 
@@ -98,5 +98,5 @@ ms.locfileid: "90930827"
 
 ## <a name="next-steps"></a>次のステップ
 
--   [ビジネス継続性](./concepts-business-continuity.md)について確認します
--    [ゾーン冗長の高可用性](./concepts-high-availability.md)について確認します
+-   [ビジネス継続性](./concepts-business-continuity.md)について確認する
+-   [ゾーン冗長による高可用性](./concepts-high-availability.md)について確認する

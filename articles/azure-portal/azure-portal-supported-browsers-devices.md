@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/22/2021
 ms.custom: accessibility
 ms.openlocfilehash: 2637dd6112d1cf1f9a3131cb9043a8b6aac2884f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735828"
 ---
 # <a name="supported-devices"></a>サポートされているデバイス

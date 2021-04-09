@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 ms.openlocfilehash: 90fc1385afb2ef921828465ba030674281e96ebf
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99833849"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>クイック スタート:Azure IoT Central でデバイスのルールとアクションを構成する
@@ -51,7 +51,7 @@ ms.locfileid: "99833849"
 
 1. 次の表の情報を使用してアクションを定義してから、 **[完了]** を選択します。
 
-    | 設定   | Value                                             |
+    | 設定   | 値                                             |
     | --------- | ------------------------------------------------- |
     | Display name | オペレーターの電子メール アクション                          |
     | ターゲット        | メール アドレス                                |

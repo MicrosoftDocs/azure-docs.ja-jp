@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 06614fc33910eda44bf6bf8369c4ad4b3c0b25fe
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 9df8a67fd3dfbf23986f1cc5ed18392463fc7ecb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986024"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102522208"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Resource Manager テンプレートを使用して Azure Machine Learning のワークスペースを作成します。
 
@@ -30,14 +30,9 @@ ms.locfileid: "98986024"
 
 * **Azure サブスクリプション**。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 
-* CLI からテンプレートを使用するには、[Azure PowerShell](/powershell/azure/?view=azps-1.2.0) または [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) が必要です。
+* CLI からテンプレートを使用するには、[Azure PowerShell](/powershell/azure/) または [Azure CLI](/cli/azure/install-azure-cli) が必要です。
 
-* 一部のシナリオでは、サポート チケットを開く必要があります。 そのシナリオを次に示します。
-
-    * __カスタマーマネージド キーを使用する Private Link 対応ワークスペース__
-    * __仮想ネットワークの背後にあるワークスペースの Azure Container Registry__
-
-    詳細については、[クォータの管理と増加](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)に関するページを参照してください。
+* 一部のシナリオでは、サポート チケットを開く必要があります。 たとえば、カスタマーマネージド キーを使用する Private Link 対応ワークスペースを使います。 詳細については、[クォータの管理と増加](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)に関するページを参照してください。
 
 ## <a name="limitations"></a>制限事項
 
@@ -285,7 +280,7 @@ New-AzResourceGroupDeployment `
 関連付けられたリソースが仮想ネットワークの背後にない場合、**privateEndpointType** パラメーターを `AutoAproval` または `ManualApproval` に設定すると、ワークスペースをプライベート エンドポイントの背後にデプロイできます。 これは、新規および既存のワークスペースの両方に対して行うことができます。 既存のワークスペースを更新する場合は、テンプレート パラメーターに既存のワークスペースの情報を入力します。
 
 > [!IMPORTANT]
-> Azure Government リージョンまたは Azure China 21Vianet リージョンでは、プライベート リンクで Azure Machine Learning ワークスペースを使用することはできません。
+> Azure Government リージョンでは、プライベート リンクで Azure Machine Learning ワークスペースを使用することはできません。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 

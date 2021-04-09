@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/09/2019
-ms.openlocfilehash: f22642ae94ea01a798b1eab639c93fda31f87581
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 9aa11be42aca59458fea0462a90b6aeb70df893d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944053"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863141"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka 用に記憶域とスケーラビリティを構成する
 
@@ -20,18 +20,18 @@ HDInsight 上の Kafka は、HDInsight クラスターの仮想マシンのロ�
 
 次の図は、マネージド ディスクを使う前と使った後の HDInsight 上の Kafka を比較したものです。
 
-![Kafka とマネージド ディスクのアーキテクチャ](./media/apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
+:::image type="content" source="./media/apache-kafka-scalability/kafka-with-managed-disks-architecture.png" alt-text="Kafka とマネージド ディスクのアーキテクチャ" border="false":::
 
 ## <a name="configure-managed-disks-azure-portal"></a>マネージド ディスクを構成する: Azure Portal
 
 1. 「[HDInsight クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)」の手順に従って、Portal を使ってクラスターを作成する一般的な手順を理解します。 ポータルの作成プロセスを完了しないでください。
 
-2. **[構成と価格]** セクションで、 __[ノード数]__  フィールドを使用して、ディスクの数を構成します。
+2. [**構成と価格**] セクションで、__[ノード数]__ フィールドを使用して、ディスクの数を構成します。
 
     > [!NOTE]  
     > マネージド ディスクの種類は、__Standard__ (HDD) または __Premium__ (SSD) です。 Premium ディスクは、DS および GS シリーズの VM で使われます。 他の種類の VM はすべて Standard を使います。
 
-    ![ワーカー ノードごとのディスク数が強調表示されている [クラスター サイズ] セクション](./media/apache-kafka-scalability/azure-portal-cluster-configuration-pricing-kafka-disks.png)
+    :::image type="content" source="./media/apache-kafka-scalability/azure-portal-cluster-configuration-pricing-kafka-disks.png" alt-text="ワーカー ノードごとのディスク数が強調表示されている [クラスター サイズ] セクション" border="true":::
 
 ## <a name="configure-managed-disks-resource-manager-template"></a>マネージド ディスクを構成する: Resource Manager テンプレート
 

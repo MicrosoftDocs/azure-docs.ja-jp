@@ -4,10 +4,10 @@ description: この記事では、フル マネージド エンタープライ�
 ms.topic: overview
 ms.date: 02/16/2021
 ms.openlocfilehash: 897729b9748d69ad3c6de507e800dbb3a1a3619c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100570461"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus とは

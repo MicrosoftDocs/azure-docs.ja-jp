@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
 ms.openlocfilehash: 1f1647766eeae917f7a2266ebb8f00fdfab3452e
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102210582"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>チュートリアル:Azure Maps Route Service とマップ コントロールを使用してルートの道順を表示する方法
@@ -224,7 +224,7 @@ ms.locfileid: "102210582"
 
 クリーンアップが必要なリソースはありません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 次のチュートリアルでは、移動モードや積み荷の種類など、制限付きのルート クエリを作成する方法について説明します。 その後、同じマップに複数のルートを表示できます。
 

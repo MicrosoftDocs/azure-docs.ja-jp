@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-object-anchors
 ms.author: crtreasu
-ms.date: 02/19/2021
+ms.date: 03/02/2021
 ms.topic: conceptual
 ms.service: azure-object-anchors
-ms.openlocfilehash: 020f727674449523a57a608e8930d67e0f239cf6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 74663f05c5ff995a090c7cd35e4edf46a754da17
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744012"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034610"
 ---
 # <a name="runtime-sdk-overview"></a>Runtime SDK の概要
 
@@ -25,7 +25,7 @@ ms.locfileid: "101744012"
 
 ### <a name="objectmodel"></a>ObjectModel
 
-[ObjectModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectmodel) は、物理オブジェクトのジオメトリを表し、検出と姿勢推定に必要なパラメーターをエンコードします。 これは、[Object Anchors サービス](../quickstarts/get-started-model-ingestion.md)を使用して作成する必要があります。 その後、アプリケーションは、Object Anchors API を使用して、生成されたモデル ファイルを読み込み、視覚化のためにそのモデルに埋め込まれているメッシュに対してクエリを実行できます。
+[ObjectModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectmodel) は、物理オブジェクトのジオメトリを表し、検出と姿勢推定に必要なパラメーターをエンコードします。 これは、[Object Anchors サービス](../quickstarts/get-started-model-conversion.md)を使用して作成する必要があります。 その後、アプリケーションは、Object Anchors API を使用して、生成されたモデル ファイルを読み込み、視覚化のためにそのモデルに埋め込まれているメッシュに対してクエリを実行できます。
 
 ### <a name="objectsearcharea"></a>ObjectSearchArea
 
@@ -103,7 +103,7 @@ if(status != ObjectObserverStatus.Allowed)
 }
 ```
 
-次に、アプリケーションによってオブジェクト オブザーバーが作成され、[Object Anchors のインジェスト サービス](../quickstarts/get-started-model-ingestion.md)によって生成される必要なモデルが読み込まれます。
+次に、アプリケーションによってオブジェクト オブザーバーが作成され、[Object Anchors のモデル変換サービス](../quickstarts/get-started-model-conversion.md)によって生成される必要なモデルが読み込まれます。
 
 ```cs
 var observer = new ObjectObserver();

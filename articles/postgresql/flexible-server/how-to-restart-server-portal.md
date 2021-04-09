@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 952bd6dddf9f276ed1a4a18f03799147f1902198
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90930815"
 ---
 # <a name="restart-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーを再起動する
@@ -33,7 +33,7 @@ ms.locfileid: "90930815"
 
 フレキシブル サーバーを再起動するには、次の手順に従います。
 
-1.   [Azure portal](https://portal.azure.com/) で、再起動するフレキシブル サーバーを選択します。
+1.  [Azure portal](https://portal.azure.com/) で、開始するフレキシブル サーバーを選択します。
 
 2.  左側のパネルから **[概要]** をクリックし、 **[再起動]** をクリックします。
    
@@ -43,11 +43,11 @@ ms.locfileid: "90930815"
 
 4.  続行する場合は、 **[はい]** をクリックします。
    
-     :::image type="content" source="./media/how-to-restart-server-portal/restart-pop-up.png" alt-text="再起動の選択":::
+     :::image type="content" source="./media/how-to-restart-server-portal/restart-pop-up.png" alt-text="再起動の確認":::
  
 6.  再起動操作が開始されたことを示す通知が表示されます。
 
 ## <a name="next-steps"></a>次のステップ
 
 -   [ビジネス継続性](./concepts-business-continuity.md)について確認する
--    [ゾーン冗長の高可用性](./concepts-high-availability.md)について確認する
+-   [ゾーン冗長による高可用性](./concepts-high-availability.md)について確認する

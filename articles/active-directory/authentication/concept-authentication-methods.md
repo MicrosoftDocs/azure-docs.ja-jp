@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 03/15/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 0bbaf5fa4f3404b0e4fdb4dc016b703c58910457
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ee10aa7c461aca65f385c735f6e9aaa28af7f9e5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652081"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103471698"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory で使用できる認証方法と検証方法
 
@@ -43,7 +43,7 @@ Azure AD Multi-Factor Authentication (MFA) を使用すると、ユーザーが�
 | Windows Hello for Business     | 高     | 高      | 高         |
 | Microsoft Authenticator アプリ    | 高     | 高      | 高         |
 | FIDO2 セキュリティ キー             | 高     | 高      | 高         |
-| OATH ハードウェア トークン           | Medium   | Medium    | 高         |
+| OATH ハードウェア トークン (プレビュー) | Medium   | Medium    | 高         |
 | OATH ソフトウェア トークン           | Medium   | Medium    | 高         |
 | SMS                            | Medium   | 高      | Medium       |
 | 音声                          | Medium   | Medium    | Medium       |
@@ -68,7 +68,7 @@ Azure AD Multi-Factor Authentication (MFA) を使用すると、ユーザーが�
 | Windows Hello for Business     | はい                    | MFA                       |
 | Microsoft Authenticator アプリ    | Yes                    | MFA と SSPR              |
 | FIDO2 セキュリティ キー             | はい                    | MFA                       |
-| OATH ハードウェア トークン           | いいえ                     | MFA                       |
+| OATH ハードウェア トークン (プレビュー) | いいえ                     | MFA                       |
 | OATH ソフトウェア トークン           | いいえ                     | MFA                       |
 | SMS                            | Yes                    | MFA と SSPR              |
 | 音声通話                     | いいえ                     | MFA と SSPR              |
@@ -81,7 +81,7 @@ Azure AD Multi-Factor Authentication (MFA) を使用すると、ユーザーが�
 * [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-overview)
 * [Microsoft Authenticator アプリ](concept-authentication-authenticator-app.md)
 * [FIDO2 セキュリティ キー](concept-authentication-passwordless.md#fido2-security-keys)
-* [OATH ハードウェア トークン](concept-authentication-oath-tokens.md#oath-hardware-tokens)
+* [OATH ハードウェア トークン (プレビュー)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
 * [OATH ソフトウェア トークン](concept-authentication-oath-tokens.md#oath-software-tokens)
 * [SMS サインイン](howto-authentication-sms-signin.md)および[検証](concept-authentication-phone-options.md#mobile-phone-verification)
 * [音声通話の確認](concept-authentication-phone-options.md)

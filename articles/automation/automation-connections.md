@@ -7,10 +7,10 @@ ms.date: 12/22/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
 ms.openlocfilehash: 5f6494eb72084c683ddbb8b27a49acdb1fbc2bfc
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99054265"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Azure Automation の接続を管理する

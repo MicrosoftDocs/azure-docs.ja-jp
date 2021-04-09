@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 27cc55978582468c759603571bd8b0e69f29db5d
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: abcd2f6e23ea0c7c26b2ee26b2f6ca4ad502b769
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226575"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177183"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>帯域幅/スループットのテスト (NTTTCP)
 
@@ -93,15 +93,19 @@ nttcp-for-linux を使用します。 これは <https://github.com/Microsoft/nt
 
 Linux VM (送信側と受信側の両方) で、次のコマンドを実行して、VM 上に ntttcp-for-linux を準備します。
 
-CentOS - Install Git:
+CentOS - gcc と git をインストールします。
 ``` bash
   yum install gcc -y  
   yum install git -y
 ```
-Ubuntu - Install Git:
+Ubuntu - build-essential と git をインストールします。
 ``` bash
  apt-get -y install build-essential  
  apt-get -y install git
+```
+SUSE - git-core、gcc、make をインストールします。
+``` bash
+  zypper in -y git-core gcc make
 ```
 両方で作成とインストールを行います。
 ``` bash

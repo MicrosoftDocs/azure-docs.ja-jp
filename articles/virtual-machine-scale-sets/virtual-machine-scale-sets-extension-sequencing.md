@@ -10,10 +10,10 @@ ms.date: 01/30/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 3271041b9f4db100cd05588129c7d714d4478f10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83121033"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>仮想マシン スケール セット内の拡張機能のプロビジョニングをシーケンス処理する
@@ -243,7 +243,7 @@ az vmss extension set \
 
 ### <a name="not-able-to-add-extension-with-dependencies"></a>依存関係を持つ拡張機能を追加できない
 1. provisionAfterExtensions で指定された拡張機能がスケール セット モデル内に定義されていることを確認します。
-2. 循環依存関係が導入されていないことを確認します。 たとえば、次のシーケンスは許可されません:ExtensionA -> ExtensionB -> ExtensionC -> ExtensionA
+2. 循環依存関係が導入されていないことを確認します。 たとえば、次のシーケンスは許可されません: ExtensionA -> ExtensionB -> ExtensionC -> ExtensionA
 3. 依存関係を設定する拡張機能の拡張機能 "properties" に "settings" プロパティがあることを確認します。 たとえば、ExtentionB を ExtensionA より後にプロビジョニングする必要がある場合は、ExtensionA の ExtensionA "properties" に "settings" フィールドが必要です。 拡張機能に必須設定が必要でない場合は、空の "settings" プロパティを指定できます。
 
 ### <a name="not-able-to-remove-extensions"></a>拡張機能を削除できない

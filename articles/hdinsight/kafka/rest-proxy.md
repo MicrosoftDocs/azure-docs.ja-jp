@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: a9a007d33226c508e193368b08b189001bf53401
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: bc3cbe5d0d7cf5e5a78112ae5df63ebb88a97f5a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944077"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864841"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>REST プロキシを使用して Azure HDInsight で Apache Kafka クラスターを操作する
 
@@ -22,7 +22,7 @@ Kafka REST API によってサポートされる操作については、[HDInsig
 
 ## <a name="background"></a>バックグラウンド
 
-![Kafka REST プロキシ設計](./media/rest-proxy/rest-proxy-architecture.png)
+:::image type="content" source="./media/rest-proxy/rest-proxy-architecture.png" alt-text="Kafka REST プロキシ設計" border="false":::
 
 API でサポートされている操作の詳細については、[Apache Kafka REST プロキシ API](/rest/api/hdinsight-kafka-rest-proxy) を参照してください。
 
@@ -49,10 +49,10 @@ REST プロキシ エンドポイント要求の場合、クライアント ア�
 1. Azure AD セキュリティ グループを作成する。 Azure AD に登録したアプリケーションをセキュリティ グループにグループの **メンバー** として追加します。 このセキュリティ グループは、REST プロキシの操作を許可するアプリケーションを制御するために使用されます。 Azure AD グループの作成方法の詳細については、「[Azure Active Directory を使用して基本グループを作成してメンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
     グループの種類が **[セキュリティ]** であることを確認します。
-    ![セキュリティ グループ](./media/rest-proxy/rest-proxy-group.png)
+    :::image type="content" source="./media/rest-proxy/rest-proxy-group.png" alt-text="セキュリティ グループ" border="true":::
 
     アプリケーションがグループのメンバーであることを確認します。
-    ![メンバーシップの確認](./media/rest-proxy/rest-proxy-membergroup.png)
+    :::image type="content" source="./media/rest-proxy/rest-proxy-membergroup.png" alt-text="メンバーシップの確認" border="true":::
 
 ## <a name="create-a-kafka-cluster-with-rest-proxy-enabled"></a>REST プロキシが有効な Kafka クラスターを作成する
 
@@ -60,17 +60,17 @@ REST プロキシ エンドポイント要求の場合、クライアント ア�
 
 1. Kafka クラスター作成ワークフローの実行中に、 **[セキュリティとネットワーク]** タブで、 **[Enable Kafka REST proxy]\(Kafka REST プロキシを有効にする\)** オプションをオンにします。
 
-     ![[HDInsight クラスターの作成] ページが表示されているスクリーンショット。[セキュリティとネットワーク] が選択されています。](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
+     :::image type="content" source="./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png" alt-text="[HDInsight クラスターの作成] ページが表示されているスクリーンショット。[セキュリティとネットワーク] が選択されています。" border="true":::
 
 1. **[セキュリティ グループの選択]** をクリックします。 セキュリティ グループの一覧から、REST プロキシにアクセスするセキュリティ グループを選択します。 検索ボックスを使用して、適切なセキュリティ グループを見つけることができます。 下部にある **[選択]** ボタンをクリックします。
 
-     ![[HDInsight クラスターの作成] ページが表示されているスクリーンショット。セキュリティ グループを選択するためのオプションが示されています。](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
+     :::image type="content" source="./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png" alt-text="[HDInsight クラスターの作成] ページが表示されているスクリーンショット。セキュリティ グループを選択するためのオプションが示されています。" border="true":::
 
 1. 「[Azure portal を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する](./apache-kafka-get-started.md)」の説明に従って、残りのステップを完了してクラスターを作成します。
 
 1. クラスターが作成されたら、クラスターのプロパティにアクセスして Kafka REST プロキシ URL を記録します。
 
-     ![REST プロキシ URL の表示](./media/rest-proxy/apache-kafka-rest-proxy-view-proxy-url.png)
+     :::image type="content" source="./media/rest-proxy/apache-kafka-rest-proxy-view-proxy-url.png" alt-text="REST プロキシ URL の表示" border="true":::
 
 ## <a name="client-application-sample"></a>クライアント アプリケーションのサンプル
 

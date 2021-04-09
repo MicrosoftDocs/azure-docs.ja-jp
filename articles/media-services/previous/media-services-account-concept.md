@@ -3,20 +3,20 @@ title: Azure Media Services v2 アカウントの管理 | Microsoft Docs
 description: Azure でメディア コンテンツの管理、暗号化、エンコード、分析、およびストリーミングを開始するには、Media Services アカウントを作成する必要があります。 この記事では、Azure Media Services v2 アカウントを管理する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/05/2019
-ms.author: juliako
-ms.openlocfilehash: 167028cda6962445373b22c5f3d0a9e56c3e608a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: a097b186a2287ec13866c8a5ee9420641b44d131
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89255412"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103015949"
 ---
 # <a name="manage-azure-media-services-v2-accounts"></a>Azure Media Services v2 アカウントの管理
 

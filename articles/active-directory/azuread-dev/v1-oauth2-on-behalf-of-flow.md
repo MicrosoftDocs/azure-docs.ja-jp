@@ -15,10 +15,10 @@ ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: f746cc654934464d907c6ad669eb7470e4dcaeeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88117738"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>On-Behalf-Of フローでの委任ユーザー ID を使用するサービス間の呼び出し
@@ -43,7 +43,7 @@ On-Behalf-Of フローは次の手順で構成されます。![OAuth2.0 の On-B
 1. API B は、セキュリティで保護されたリソースからデータを返します。
 
 >[!NOTE]
->ダウンストリーム サービスのトークンを要求するために使用されるアクセス トークンの受信者要求は、OBO 要求を行うサービスの ID である必要があります。 このトークンは、Azure Active Directory のグローバル署名キーで署名されている必要があります (ポータルの**アプリの登録**を介して登録されたアプリケーションでは既定)。
+>ダウンストリーム サービスのトークンを要求するために使用されるアクセス トークンの受信者要求は、OBO 要求を行うサービスの ID である必要があります。 このトークンは、Azure Active Directory のグローバル署名キーで署名されている必要があります (ポータルの **アプリの登録** を介して登録されたアプリケーションでは既定)。
 
 ## <a name="register-the-application-and-service-in-azure-ad"></a>Azure AD でのアプリケーションとサービスの登録
 
@@ -179,7 +179,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 | パラメーター | 説明 |
 | --- | --- |
-| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer**タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。 |
+| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer** タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。 |
 | scope |トークンで付与されるアクセスのスコープ。 |
 | expires_in |アクセス トークンが有効な時間の長さ (秒単位)。 |
 | expires_on |アクセス トークンの有効期限が切れる日時。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 この値は、キャッシュされたトークンの有効期間を調べるために使用されます。 |
@@ -270,7 +270,7 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 
 | パラメーター | 説明 |
 | --- | --- |
-| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer**タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。 |
+| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer** タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。 |
 | scope |トークンで付与されるアクセスのスコープ。 |
 | expires_in |アクセス トークンが有効な時間の長さ (秒単位)。 |
 | expires_on |アクセス トークンの有効期限が切れる日時。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 この値は、キャッシュされたトークンの有効期間を調べるために使用されます。 |
@@ -289,7 +289,7 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 
 ## <a name="client-limitations"></a>クライアントの制限事項
 
-ワイルドカード応答 URL を持つパブリック クライアントは、OBO フローで `id_token` を使用することはできません。 ただし、パブリック クライアントが登録済みのワイルドカード リダイレクト URI を持っている場合でも、機密クライアントは引き続き、暗黙的な付与フローを通じて取得した**アクセス** トークンを利用することができます。
+ワイルドカード応答 URL を持つパブリック クライアントは、OBO フローで `id_token` を使用することはできません。 ただし、パブリック クライアントが登録済みのワイルドカード リダイレクト URI を持っている場合でも、機密クライアントは引き続き、暗黙的な付与フローを通じて取得した **アクセス** トークンを利用することができます。
 
 ## <a name="next-steps"></a>次のステップ
 

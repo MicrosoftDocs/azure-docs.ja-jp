@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: erhopf
 ms.openlocfilehash: 4746aad2d7cd62cb309a1823f8c50487e6f7e87c
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97032968"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Cognitive Services のカスタム サブドメイン名

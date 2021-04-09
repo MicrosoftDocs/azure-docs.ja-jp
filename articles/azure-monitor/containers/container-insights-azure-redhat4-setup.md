@@ -2,13 +2,13 @@
 title: Container Insights を使用して Azure Red Hat OpenShift v4.x を構成する | Microsoft Docs
 description: この記事では、Azure Red Hat OpenShift バージョン 4 以降でホストされている Azure Monitor を使用して Kubernetes クラスターの監視を構成する方法を説明します。
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: a9e04818f1a915a853d32b5db408a521cdae9f4c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: 02cb794463b965ebafef0b6861477dbf69227511
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713934"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102506414"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-container-insights"></a>Container Insights を使用して Azure Red Hat OpenShift v4.x を構成する
 
@@ -61,21 +61,8 @@ Container insights では、次の機能を除き、「[Container insights の�
 
     `curl -o enable-monitoring.sh -L https://aka.ms/enable-monitoring-bash-script`
 
-1. クラスターの *kubeContext* を特定するには、次のコマンドを実行します。
+1. 「[チュートリアル: Azure Red Hat OpenShift 4 クラスターに接続する](../../openshift/tutorial-connect-cluster.md)」の手順に従って、ARO v4 クラスターに接続します。
 
-    ```
-    adminUserName=$(az aro list-credentials -g $clusterResourceGroup -n $clusterName --query 'kubeadminUsername' -o tsv)
-    adminPassword=$(az aro list-credentials -g $clusterResourceGroup -n $clusterName --query 'kubeadminPassword' -o tsv)
-    apiServer=$(az aro show -g $clusterResourceGroup -n $clusterName --query apiserverProfile.url -o tsv)
-    oc login $apiServer -u $adminUserName -p $adminPassword
-    # openshift project name for Container insights
-    openshiftProjectName="azure-monitor-for-containers"
-    oc new-project $openshiftProjectName
-    # get the kube config context
-    kubeContext=$(oc config current-context)
-    ```
-
-1. 後で使用するために値をコピーします。
 
 ### <a name="integrate-with-an-existing-workspace"></a>既存のワークスペースと統合する
 
@@ -113,17 +100,16 @@ Container insights では、次の機能を除き、「[Container insights の�
 
 1. 出力でワークスペース名を探し、その Log Analytics ワークスペースについてフィールド **ID** にある完全なリソース ID をコピーします。
 
-1. 監視を有効にするには、次のコマンドを実行します。 `azureAroV4ClusterResourceId`、`logAnalyticsWorkspaceResourceId`、`kubeContext` の各パラメーターの値を置き換えます。
+1. 監視を有効にするには、次のコマンドを実行します。 `azureAroV4ClusterResourceId` パラメーターと `logAnalyticsWorkspaceResourceId` パラメーターの値を置き換えます。
 
     ```bash
-    export azureAroV4ClusterResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>”
-    export logAnalyticsWorkspaceResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>”
-    export kubeContext="<kubeContext name of your ARO v4 cluster>"  
+    export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
+    export logAnalyticsWorkspaceResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>" 
     ```
 
     Export コマンドを使用して 3 つの変数を設定した後に実行する必要があるコマンドを次に示します。
 
-    `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext --workspace-id $logAnalyticsWorkspaceResourceId`
+    `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --workspace-id $logAnalyticsWorkspaceResourceId`
 
 監視を有効にした後、クラスターの正常性メトリックが表示されるまで、約 15 分かかる場合があります。
 
@@ -135,16 +121,15 @@ Container insights では、次の機能を除き、「[Container insights の�
 
 作成される既定のワークスペースは、*DefaultWorkspace-\<GUID>-\<Region>* の形式になります。  
 
-`azureAroV4ClusterResourceId` パラメーターと `kubeContext` パラメーターの値を置き換えます。
+`azureAroV4ClusterResourceId` パラメーターの値で置き換えます。
 
 ```bash
 export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
-export kubeContext="<kubeContext name of your ARO v4 cluster>"
 ```
 
 次に例を示します。
 
-`bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext`
+`bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId 
 
 監視を有効にした後、クラスターの正常性メトリックが表示されるまで、約 15 分かかる場合があります。
 

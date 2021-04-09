@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: bc761d0bf4001fb1e3fb757b9be9e1e19689913d
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: b524869998dd2464ed359ec61ce655a807899aaa
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202996"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565718"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>プレビュー API を使用してプログラムで Azure サブスクリプションを作成する
 
@@ -190,7 +190,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `EnrollmentAccountObjectId`      | はい       | String | サブスクリプションが作成された、請求先の登録アカウントのオブジェクト ID。 この値は、`Get-AzEnrollmentAccount` から取得する GUID です。 |
 | `OwnerObjectId`      | いいえ       | String | サブスクリプションの作成時にサブスクリプションに Azure RBAC 所有者として追加するユーザーのオブジェクト ID。  |
 | `OwnerSignInName`    | いいえ       | String | サブスクリプションの作成時にサブスクリプションに Azure RBAC 所有者として追加するユーザーのメール アドレス。 `OwnerObjectId` の代わりにこのパラメーターを使用することができます。|
-| `OwnerApplicationId` | いいえ       | String | サブスクリプションの作成時にサブスクリプションに Azure RBAC 所有者として追加するサービス プリンシパルのアプリケーション ID。 `OwnerObjectId` の代わりにこのパラメーターを使用することができます。 このパラメーターを使用している場合、サービス プリンシパルには[ディレクトリへの読み取りアクセス権](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole&preserve-view=true)が必要です。|
+| `OwnerApplicationId` | いいえ       | String | サブスクリプションの作成時にサブスクリプションに Azure RBAC 所有者として追加するサービス プリンシパルのアプリケーション ID。 `OwnerObjectId` の代わりにこのパラメーターを使用することができます。 このパラメーターを使用している場合、サービス プリンシパルには[ディレクトリへの読み取りアクセス権](/powershell/azure/active-directory/signing-in-service-principal#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)が必要です。|
 
 すべてのパラメーターの完全な一覧については、[New-AzSubscription](/powershell/module/az.subscription/New-AzSubscription) を参照してください。
 
@@ -211,7 +211,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 | `enrollment-account-object-id`      | はい       | String | サブスクリプションが作成された、請求先の登録アカウントのオブジェクト ID。 この値は、`az billing enrollment-account list` から取得する GUID です。 |
 | `owner-object-id`      | いいえ       | String | サブスクリプションの作成時にサブスクリプションに Azure RBAC 所有者として追加するユーザーのオブジェクト ID。  |
 | `owner-upn`    | いいえ       | String | サブスクリプションの作成時にサブスクリプションに Azure RBAC 所有者として追加するユーザーのメール アドレス。 `owner-object-id` の代わりにこのパラメーターを使用することができます。|
-| `owner-spn` | いいえ       | String | サブスクリプションの作成時にサブスクリプションに Azure RBAC 所有者として追加するサービス プリンシパルのアプリケーション ID。 `owner-object-id` の代わりにこのパラメーターを使用することができます。 このパラメーターを使用している場合、サービス プリンシパルには[ディレクトリへの読み取りアクセス権](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole&preserve-view=true)が必要です。|
+| `owner-spn` | いいえ       | String | サブスクリプションの作成時にサブスクリプションに Azure RBAC 所有者として追加するサービス プリンシパルのアプリケーション ID。 `owner-object-id` の代わりにこのパラメーターを使用することができます。 このパラメーターを使用している場合、サービス プリンシパルには[ディレクトリへの読み取りアクセス権](/powershell/azure/active-directory/signing-in-service-principal#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)が必要です。|
 
 すべてのパラメーターの完全な一覧については、[az account create](/cli/azure/ext/subscription/account#-ext-subscription-az-account-create) を参照してください。
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/05/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 62fe1b3391eb4cb2d409a92b936fd3f1ae56d992
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100518421"
 ---
 # <a name="azure-database-for-postgresql-versioning-policy"></a>Azure Database for PostgreSQL のバージョン管理ポリシー

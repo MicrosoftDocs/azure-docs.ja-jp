@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 5561a4cdeef725eba7e48d7767aa0ee5d3c6d9cf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c47092b1488a79805db69308bcb9a8efde1c0d58
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625450"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101653051"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>チュートリアル: Azure Active Directory と MobileIron の統合
 
@@ -28,16 +28,16 @@ ms.locfileid: "98625450"
 
 ## <a name="prerequisites"></a>前提条件
 
-MobileIron と Azure AD の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* MobileIron でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* MobileIron でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* MobileIron では、**SP と IDP** によって開始される SSO がサポートされます
+* MobileIron では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
 
 ## <a name="add-mobileiron-from-the-gallery"></a>ギャラリーからの MobileIron の追加
 
@@ -131,7 +131,7 @@ MobileIron に対する Azure AD SSO を構成してテストするには、次�
     ![[シングル サインオン管理者メタデータの構成] ボタン](./media/MobileIron-tutorial/tutorial_MobileIron_adminmetadata.png)
 
 
-##  <a name="create-mobileiron-test-user"></a>MobileIron のテスト ユーザーの作成
+### <a name="create-mobileiron-test-user"></a>MobileIron のテスト ユーザーの作成
 
 Azure AD ユーザーが MobileIron にログインできるようにするには、ユーザーを MobileIron にプロビジョニングする必要があります。  
 MobileIron の場合、プロビジョニングは手動で行います。
@@ -157,15 +157,16 @@ MobileIron の場合、プロビジョニングは手動で行います。
     d. **[Done]** をクリックします。
 
 ## <a name="test-sso"></a>SSO のテスト
+
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-## <a name="sp-initiated"></a>SP Initiated:
+### <a name="sp-initiated"></a>SP Initiated:
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる MobileIron のサインオン URL にリダイレクトされます。  
 
 * MobileIron のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-##  <a name="idp-initiated"></a>IDP Initiated:
+### <a name="idp-initiated"></a>IDP Initiated:
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した MobileIron に自動的にサインインされます。
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: 00d2f0eeb5d353c8ebd7ad30f6866f890d6cb42e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87094698"
 ---
 # <a name="createuidefinition-logical-functions"></a>CreateUiDefinition 論理関数
@@ -42,7 +42,7 @@ ms.locfileid: "87094698"
 "[coalesce(steps('demoStep').element1, steps('demoStep').element2, 'Contoso')]"
 ```
 
-この関数は、ページが読み込まれた後にユーザーのアクションによって発生するオプションの呼び出しのコンテキストで特に役立ちます。 たとえば、UI 内の 1 つのフィールドに設定されている制約が、**最初は非表示**の別のフィールドの、現在選択されている値に依存している場合です。 この場合、`coalesce()` を使用して、ユーザーがフィールドと対話するときに望ましい効果を保持しながら、ページの読み込み時に関数を構文的に有効にすることができます。
+この関数は、ページが読み込まれた後にユーザーのアクションによって発生するオプションの呼び出しのコンテキストで特に役立ちます。 たとえば、UI 内の 1 つのフィールドに設定されている制約が、**最初は非表示** の別のフィールドの、現在選択されている値に依存している場合です。 この場合、`coalesce()` を使用して、ユーザーがフィールドと対話するときに望ましい効果を保持しながら、ページの読み込み時に関数を構文的に有効にすることができます。
 
 ユーザーが複数の異なるデータベースの種類から選択できるようにするこの `DropDown` を検討してください。
 

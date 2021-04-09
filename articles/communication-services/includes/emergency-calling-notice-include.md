@@ -4,12 +4,13 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/29/2020
 ms.author: bobazile
-ms.openlocfilehash: 97a6fd3b84b48d09024745c5a43b9d2a2bd9b8ec
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.custom: emergency_calling
+ms.openlocfilehash: 7487e92d8943e8829224ac2690d658c1ed184039
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767138"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487485"
 ---
 > [!IMPORTANT]
 > **Azure Communication Services では、緊急通話はサポートされません**

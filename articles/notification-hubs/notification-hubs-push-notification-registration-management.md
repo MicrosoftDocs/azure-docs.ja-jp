@@ -18,10 +18,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 04/08/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7807d28da459656938acb399eb8c621e4c292372
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89001571"
 ---
 # <a name="registration-management"></a>登録管理
@@ -30,7 +30,7 @@ ms.locfileid: "89001571"
 
 ## <a name="what-is-device-registration"></a>デバイス登録の概要
 
-Notification Hub にデバイスを登録するには、**登録**または**インストール**を使用します。
+Notification Hub にデバイスを登録するには、**登録** または **インストール** を使用します。
 
 ### <a name="registrations"></a>登録
 
@@ -115,7 +115,7 @@ SecondaryTiles ディクショナリは、Windows ストア アプリで Seconda
 
 デバイスは、まず PNS から PNS ハンドルを取得してから、通知ハブに直接登録します。 登録に成功すると、アプリ バックエンドからその登録に対して通知を送信できるようになります。 通知の送信方法の詳細については、 [ルーティングとタグ式](notification-hubs-tags-segment-push-message.md)に関するページを参照してください。
 
-この場合は、リッスン権限のみを使用して、デバイスから通知ハブにアクセスします。 詳細については、 [セキュリティ](notification-hubs-push-notification-security.md)に関するページを参照してください。
+この場合は、リッスン権限のみを使用して、デバイスから通知ハブにアクセスします。 詳細については、[セキュリティ](notification-hubs-push-notification-security.md)に関するページをご覧ください。
 
 デバイスからの登録が最も簡単な方法ですが、いくつか欠点があります。
 

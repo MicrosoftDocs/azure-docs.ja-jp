@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: c55314764f973a5a015a2bfc02815a58ce659901
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ee7ccb126eb04e168ccc213f0429d41a76a8bc2f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734061"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103021315"
 ---
 **データの収集量と保持期間** 
 
@@ -57,6 +57,7 @@ ms.locfileid: "101734061"
 | 最大要求レート | Azure AD ユーザーまたはクライアントの IP アドレスごとに、30 秒あたり 200 件の要求 | 詳細については、[レート制限](https://dev.loganalytics.io/documentation/Using-the-API/Limits)に関するページをご覧ください。 |
 
 **Azure Monitor Logs コネクタ**
+
 | カテゴリ | 制限 | 説明 |
 |:---|:---|:---|
 | レコードの最大数 | 500,000 | |

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
 ms.openlocfilehash: 03c78f05566876356e4f486368dc2a5b3a29de43
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92456260"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-change-process-management"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Change Process Management の統合
@@ -51,7 +51,7 @@ Azure AD への Change Process Management の統合を構成するには、ギ�
 1. 左ウィンドウで、 **[Azure Active Directory]** を選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Change Process Management** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Change Process Management**」と入力します。
 1. 結果パネルから **Change Process Management** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-change-process-management"></a>Change Process Management の Azure AD SSO の構成とテスト
@@ -101,7 +101,7 @@ Change Process Management に対する Azure AD SSO を構成してテストす�
 1. Azure portal の左ペインで、 **[Azure Active Directory]** を選択します。 **[ユーザー]** を選択し、 **[すべてのユーザー]** を選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、次の手順を実行します。
-   1. **[名前]** ボックスに「 **B.Simon** 」と入力します。  
+   1. **[名前]** ボックスに「**B.Simon**」と入力します。  
    1. **[ユーザー名]** ボックスに「\<username>@\<companydomain>.\<extension>」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
    1. **[パスワードを表示]** をオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **［作成］** を選択します
@@ -120,7 +120,7 @@ Change Process Management に対する Azure AD SSO を構成してテストす�
 
     ![[ユーザーの追加] を選択する](common/add-assign-user.png)
 
-1. **[ユーザーとグループ]** ダイアログ ボックスで、 **ユーザー** の一覧で **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. **[ユーザーとグループ]** ダイアログ ボックスで、**ユーザー** の一覧で **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. SAML アサーションにロール値が必要な場合は、 **[ロールの選択]** ダイアログ ボックスでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
 

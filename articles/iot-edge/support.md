@@ -8,20 +8,24 @@ ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9a9361df817db46028259d8792d9a1431df4ce67
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: f59e2ca06f4ec435522cd06815b22d706a2d894c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516327"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104772418"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge のサポートされるシステム
 
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+
 この記事では、公式またはプレビューの IoT Edge によってサポートされるシステムおよびコンポーネントについて、詳しく説明します。
+
+## <a name="get-support"></a>サポートを受ける
 
 Azure IoT Edge サービスの使用中に問題が発生した場合は、いくつかの方法でサポートを求めることができます。 サポートについては、次のいずれかのチャネルをお試しください。
 
-**バグの報告** – Azure IoT Edge 製品に関する開発の大多数は、IoT Edge のオープン ソース プロジェクトで発生します。 バグはプロジェクトの[問題ページ](https://github.com/azure/iotedge/issues)で報告できます。 修正プログラムはプロジェクトが製品の更新プログラムになるまでの時間を早めます。
+**バグの報告** – Azure IoT Edge 製品に関する開発の大多数は、IoT Edge のオープン ソース プロジェクトで発生します。 バグはプロジェクトの[問題ページ](https://github.com/azure/iotedge/issues)で報告できます。 Azure IoT Edge for Linux on Windows に関するバグは、 [iotedge-eflow の問題ページ](https://github.com/azure/iotedge-eflow/issues)で報告できます。 修正プログラムでは、プロジェクトが製品の更新プログラムになるまでの時間を早めます。
 
 **Microsoft カスタマー サポート チーム** – [サポート プラン](https://azure.microsoft.com/support/plans/)に加入しているユーザーは、[Azure Portal](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac) から直接サポート チケットを作成することで、Microsoft カスタマー サポート チームとやり取りをすることができます。
 
@@ -124,15 +128,15 @@ IoT Edge のコンポーネントは、個別にインストールまたは更�
 
 | Release | セキュリティ デーモン | Edge ハブ<br>Edge エージェント | Libiothsm | Moby |
 |--|--|--|--|--|
-| **1.1.0 LTS**<sup>1</sup> | 1.1.0 | 1.1.0 | 1.1.0 |   |
+| **1.1 LTS**<sup>1</sup> | 1.1.0<br>1.1.1 | 1.1.0<br>1.1.1 | 1.1.0<br>1.1.1 |   |
 | **1.0.10** | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br>1.0.10.3<br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 |  |
-| **1.0.9** | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 |  |
-| **1.0.8** | 1.0.8 | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
-| **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl、CentOS) |
-| **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |
+| **1.0.9** | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 |  |
+| **1.0.8** | 1.0.8 | 1.0.8<br>1.0.8.1<br>1.0.8.2<br>1.0.8.3<br>1.0.8.4<br>1.0.8.5 | 1.0.8 | 3.0.6 |
+| **1.0.7** | 1.0.7<br>1.0.7.1 | 1.0.7<br>1.0.7.1 | 1.0.7<br>1.0.7.1 | 3.0.4 (ARMv7hl、CentOS)<br>3.0.5 |
+| **1.0.6** | 1.0.6<br>1.0.6.1 | 1.0.6<br>1.0.6.1 | 1.0.6<br>1.0.6.1 |  |
 | **1.0.5** | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
 
-<sup>1</sup> IoT Edge 1.1 は、最初の長期サポート (LTS) リリース チャネルです。 このバージョンでは新機能は導入されていませんが、バグの修正とセキュリティ修正プログラムが適用されます。 IoT Edge 1.1 LTS では .NET Core 3.1 が使用され、これは [.NET Core および .NET 5 のリリース ライフサイクル](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)に合わせて 2022 年 12 月 3 日までサポートされます。
+<sup>1</sup> IoT Edge 1.1 は、最初の長期サポート (LTS) リリース チャネルです。 このバージョンでは新機能は導入されていませんが、回帰に対するセキュリティ更新プログラムとバグの修正が適用されます。 IoT Edge 1.1 LTS では .NET Core 3.1 が使用され、これは [.NET Core および .NET 5 のリリース ライフサイクル](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)に合わせて 2022 年 12 月 3 日までサポートされます。
 
 >[!IMPORTANT]
 >長期サポート チャネルがリリースされたため、現在 1.0.x を実行しているすべてのお客様は、継続的なサポートを受けるためにデバイスを 1.1.x にアップグレードすることをお勧めします。
@@ -141,7 +145,7 @@ IoT Edge では、Microsoft.Azure.Devices.Client SDK が使用されます。 �
 
 | IoT Edge のバージョン | Microsoft.Azure.Devices.Client SDK のバージョン |
 |------------------|--------------------------------------------|
-| 1.1.0 (LTS)      | 1.28.0                                     |
+| 1.1 (LTS)      | 1.28.0                                     |
 | 1.0.10           | 1.28.0                                     |
 | 1.0.9            | 1.21.1                                     |
 | 1.0.8            | 1.20.3                                     |

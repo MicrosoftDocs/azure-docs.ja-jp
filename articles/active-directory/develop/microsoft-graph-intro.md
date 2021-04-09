@@ -12,10 +12,10 @@ ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
 ms.openlocfilehash: a799d7c32ad632303931adf838ca8e2e715b2adc
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96860186"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API

@@ -4,10 +4,10 @@ description: このチュートリアルでは、エクスポート、GitHub ア
 ms.date: 10/20/2020
 ms.topic: tutorial
 ms.openlocfilehash: 76a46adc3fc8efab4f7a2d6e656e83c2537dd037
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92325871"
 ---
 # <a name="tutorial-implement-azure-policy-as-code-with-github"></a>チュートリアル:GitHub を使用してコードとしての Azure Policy を実装する
@@ -41,9 +41,9 @@ Azure portal からポリシー定義をエクスポートするには、次の�
 1. **[基本]** タブで、次のオプションを設定し、 **[ポリシー]** タブまたは **[Next : Policies]\(次へ: ポリシー\)** ボタンがページの下部にあるので選択します。
 
    - **Repository filter (リポジトリ フィルター)** :自分が所有しているリポジトリのみを表示するには _[My repositories]\(マイ リポジトリ\)_ に、GitHub アクションによるアクセスを許可したものをすべてを表示するには _[All repositories]\(すべてのリポジトリ\)_ に設定します。
-   - **リポジトリ** :Azure Policy リソースをエクスポートするリポジトリを設定します。
-   - **ブランチ** :リポジトリにブランチを設定します。 ソース コードにさらにマージする前に更新を検証する場合は、既定以外のブランチを使用することをお勧めします。
-   - **ディレクトリ** :Azure Policy リソースをエクスポートする " _ルート レベル フォルダー_ "。 このディレクトリの下のサブフォルダーは、エクスポートされるリソースに基づいて作成されます。
+   - **リポジトリ**:Azure Policy リソースをエクスポートするリポジトリを設定します。
+   - **ブランチ**:リポジトリにブランチを設定します。 ソース コードにさらにマージする前に更新を検証する場合は、既定以外のブランチを使用することをお勧めします。
+   - **ディレクトリ**:Azure Policy リソースをエクスポートする "_ルート レベル フォルダー_"。 このディレクトリの下のサブフォルダーは、エクスポートされるリソースに基づいて作成されます。
 
 1. **[ポリシー]** タブで、省略記号を選択し、管理グループ、サブスクリプション、またはリソース グループの組み合わせを選択して、検索範囲を設定します。
    
@@ -56,9 +56,9 @@ Azure portal からポリシー定義をエクスポートするには、次の�
 
 1. **[Review + Export]\(確認 + エクスポート\)** タブで、詳細が一致していることを確認し、ページの下部にある **[エクスポート]** ボタンを使用します。
 
-1. GitHub リポジトリ、ブランチ、" _ルート レベル フォルダー_ " を確認して、選択したリソースがソース管理にエクスポートされていることを確認します。
+1. GitHub リポジトリ、ブランチ、"_ルート レベル フォルダー_" を確認して、選択したリソースがソース管理にエクスポートされていることを確認します。
 
-Azure Policy リソースは、選択した GitHub リポジトリと " _ルート レベル フォルダー_ " 内の次の構造にエクスポートされます。
+Azure Policy リソースは、選択した GitHub リポジトリと "_ルート レベル フォルダー_" 内の次の構造にエクスポートされます。
 
 ```text
 |
@@ -88,11 +88,11 @@ Azure Policy リソースは、選択した GitHub リポジトリと " _ルー�
 
 1. ワークフローにより、ポリシー オブジェクトに対して行われた変更が Azure と同期され、ログ内に状態が記録されます。
 
-   :::image type="content" source="../media/policy-as-code-github/workflow-logging.png" alt-text="GitHub Web インターフェイスの [Actions]\(アクション\) タブ、ワークフロー、および [Run workflow]\(ワークフローの実行\) ボタンのスクリーンショット。":::
+   :::image type="content" source="../media/policy-as-code-github/workflow-logging.png" alt-text="実行中のワークフローとログに記録された詳細のスクリーンショット。":::
 
 1. また、ワークフローにより、Azure Policy オブジェクトの詳細 `properties.metadata` も追加され、追跡できます。
 
-   :::image type="content" source="../media/policy-as-code-github/updated-definition-metadata.png" alt-text="GitHub Web インターフェイスの [Actions]\(アクション\) タブ、ワークフロー、および [Run workflow]\(ワークフローの実行\) ボタンのスクリーンショット。":::
+   :::image type="content" source="../media/policy-as-code-github/updated-definition-metadata.png" alt-text="GitHub アクションに固有のメタデータで更新された Azure portal 内の Azure Policy 定義のスクリーンショット。":::
 
 ### <a name="trigger-compliance-scans-using-github-action"></a>GitHub アクションを使用してコンプライアンス スキャンをトリガーする
 

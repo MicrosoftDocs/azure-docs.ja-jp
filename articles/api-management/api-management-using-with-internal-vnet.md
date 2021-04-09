@@ -12,14 +12,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 03/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 0832c975ecb410b97a24c975f9fc0f4799120abd
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 10154f496d76ce6b9eb19d610fdff8d7a4023c2d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145516"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102565956"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>内部仮想ネットワークでの Azure API Management サービスの使用
 Azure Virtual Networksでは、Azure API Management はインターネットでアクセスできない API を管理できます。 多数の VPN テクノロジを利用して接続できます。 API Management は、次の 2 つの主要モードで仮想ネットワークの内部にデプロイできます。
@@ -43,11 +43,11 @@ API Management を内部モードで使用することにより、次のシナ�
 
 この記事で説明されている手順を実行するには、以下が必要です。
 
-+ **有効な Azure サブスクリプション** 。
++ **有効な Azure サブスクリプション**。
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ **Azure API Management インスタンス** 。 詳細については、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関する記事を参照してください。
++ **Azure API Management インスタンス**。 詳細については、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関する記事を参照してください。
 + API Management サービスが仮想ネットワークにデプロイされている場合は、[ポートの一覧](./api-management-using-with-vnet.md#required-ports)が使用され、開く必要があります。 
 
 ## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>内部仮想ネットワークでの API Management の作成
@@ -63,18 +63,18 @@ API Management を内部モードで使用することにより、次のシナ�
 
 4. **[保存]** を選択します。
 
-デプロイが成功すると、[概要] ブレードに API Management サービスの **プライベート** 仮想 IP アドレスと **パブリック** 仮想 IP アドレスが表示されるはずです。 **プライベート** 仮想 IP アドレスは、`gateway`、`portal`、`management`、および`scm`の各エンドポイントにアクセスできる API Management の委任されたサブネット内からロード バランシングされた IP アドレスです。 **パブリック** 仮想 IP アドレスは、ポート 3443 での `management` エンドポイントへのコントロール プレーン トラフィックに **のみ** に使用され、 [ApiManagement][ServiceTags] サービス タグにロックダウンすることができます。
+デプロイが成功すると、[概要] ブレードに API Management サービスの **プライベート** 仮想 IP アドレスと **パブリック** 仮想 IP アドレスが表示されるはずです。 **プライベート** 仮想 IP アドレスは、`gateway`、`portal`、`management`、および`scm`の各エンドポイントにアクセスできる API Management の委任されたサブネット内からロード バランシングされた IP アドレスです。 **パブリック** 仮想 IP アドレスは、ポート 3443 での `management` エンドポイントへのコントロール プレーン トラフィックに **のみ** に使用され、[ApiManagement][ServiceTags] サービス タグにロックダウンすることができます。
 
 ![内部仮想ネットワークが構成された API Management ダッシュボード][api-management-internal-vnet-dashboard]
 
 > [!NOTE]
-> Azure portal で利用可能なテスト コンソールは、 **内部の** VNET でデプロイされたサービスでは機能しません。これは、ゲートウェイ URL がパブリック DNS に登録されていないためです。 代わりに、 **開発者ポータル** で提供されるテスト コンソールを使用する必要があります。
+> Azure portal で利用可能なテスト コンソールは、**内部の** VNET でデプロイされたサービスでは機能しません。これは、ゲートウェイ URL がパブリック DNS に登録されていないためです。 代わりに、**開発者ポータル** で提供されるテスト コンソールを使用する必要があります。
 
 ### <a name="deploy-api-management-into-virtual-network"></a><a name="deploy-apim-internal-vnet"> </a>Virtual Network に API Management をデプロイする
 
 [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-internal-vnet%2Fazuredeploy.json)
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)] 
 
 仮想ネットワークの接続は、PowerShell コマンドレットを使用して有効にすることもできます。
 
@@ -83,7 +83,7 @@ API Management を内部モードで使用することにより、次のシナ�
 * 仮想ネットワーク内の API Management サービスの既存のデプロイを更新する。[Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) コマンドレットを使用して、仮想ネットワーク内の既存の API Management サービスを移動し、このサービスが内部仮想ネットワークの種類を使用するように構成します。
 
 ## <a name="dns-configuration"></a><a name="apim-dns-configuration"></a>DNS の構成
-API Management が外部仮想ネットワーク モードの場合、DNS は Azure によって管理されます。 内部仮想ネットワーク モードの場合は、自身で DNS を管理する必要があります。
+API Management が外部仮想ネットワーク モードの場合、DNS は Azure によって管理されます。 内部仮想ネットワーク モードの場合は、自身で DNS を管理する必要があります。 Azure DNS プライベート ゾーンを構成し、それを API Management サービスがデプロイされている仮想ネットワークにリンクすることをお勧めします。  Azure DNS でプライベート ゾーンを設定する方法については、[ここ](../dns/private-dns-getstarted-portal.md)をクリックしてください。
 
 > [!NOTE]
 > API Management サービスは、IP アドレスから送信される要求をリッスンしません。 サービスは、サービス エンドポイントに構成されたホスト名に対する要求のみに応答します。 これらのエンドポイントには、ゲートウェイ、Azure Portal および開発者ポータル、ダイレクト管理エンドポイント、Git が含まれます。
@@ -127,7 +127,7 @@ API Management が外部仮想ネットワーク モードの場合、DNS は Az
 ## <a name="routing"></a><a name="routing"> </a>ルーティング
 
 * サブネット範囲から負荷分散された *プライベート* 仮想 IP アドレスは予約され、仮想ネットワークから API Management サービス エンドポイントにアクセスするために使用されます。 この *プライベート* IP アドレスは、Azure portal のサービス用の [概要] ブレードで確認できます。 このアドレスを、仮想ネットワークによって使用される DNS サーバーに登録する必要があります。
-* 負荷分散された *パブリック* IP アドレス (VIP) は、管理サービス エンドポイントへのアクセスをポート 3443 経由で提供するための予約も行われます。 この *パブリック* IP アドレスは、Azure portal のサービス用の [概要] ブレードで確認できます。 " *パブリック* " IP アドレスは、ポート 3443 での `management` エンドポイントへのコントロール プレーン トラフィックにのみに使用され、 [ApiManagement][ServiceTags] サービス タグにロックダウンすることができます。
+* 負荷分散された *パブリック* IP アドレス (VIP) は、管理サービス エンドポイントへのアクセスをポート 3443 経由で提供するための予約も行われます。 この *パブリック* IP アドレスは、Azure portal のサービス用の [概要] ブレードで確認できます。 "*パブリック*" IP アドレスは、ポート 3443 での `management` エンドポイントへのコントロール プレーン トラフィックにのみに使用され、[ApiManagement][ServiceTags] サービス タグにロックダウンすることができます。
 * サービス内の各 VM には、サブネット IP 範囲 (DIP) の IP アドレスが割り当てられ、仮想ネットワーク内のリソースにアクセスするために使用されます。 パブリック IP アドレス (VIP) は、仮想ネットワークの外部のリソースにアクセスするために使用されます。 IP 制限リストを使用して仮想ネットワーク内のリソースをセキュリティで保護する場合は、API Management サービスがデプロイされるサブネットの範囲全体に対して、サービスからのアクセスを許可するか制限するように指定する必要があります。
 * 負荷分散されたパブリック IP アドレスとプライベート IP アドレスは、Azure portal の [概要] ブレードで確認できます。
 * サービスが仮想ネットワークから削除された後、再び追加された場合、パブリックとプライベートに対して割り当てられる IP アドレスが変更される可能性があります。 これが発生した場合は、仮想ネットワーク内の DNS 登録、ルーティング規則、および IP 制限リストの更新が必要な場合があります。

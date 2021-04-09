@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 55fa3ab4e5bd4472f7dae9692ae3ac9bcfa8e2b6
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: a31c9c4747ccc72f0552ebe2f8daf85ef5fba8a3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743170"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103015303"
 ---
 # <a name="sizes-for-cloud-services-classic"></a>Cloud Services (クラシック) のサイズ
 
@@ -63,7 +63,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 | [A8 ～ A11](#a-series) |225* |
 | [A v2](#av2-series) |100 |
 | [D](#d-series) |160 |
-| [D v2](#dv2-series) |160 - 190* |
+| [D v2](#dv2-series) |210 - 250* |
 | [D v3](#dv3-series) |160 - 190* |
 | [E v3](#ev3-series) |160 - 190* |
 | [G](#g-series) |180 ～ 240* |

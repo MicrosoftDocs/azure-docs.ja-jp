@@ -15,12 +15,12 @@ ms.custom:
 - cog-serv-seo-aug-2020
 - contperf-fy21q2
 keywords: computer vision, computer vision アプリケーション, computer vision サービス
-ms.openlocfilehash: 69edbf558b4bd452c67478bac828bfde26be5a70
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 804dacc4351da9e04ac75b2484b4330901a69271
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575942"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488484"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
@@ -29,6 +29,12 @@ ms.locfileid: "99575942"
 Azure の Computer Vision サービスを使用すると、関心のある視覚的特徴に基づいて、画像を処理して情報を返す高度なアルゴリズムにアクセスできます。 たとえば、Computer Vision では、成人向けコンテンツが画像に含まれているかどうかを判断したり、特定のブランドや物体、人の顔を検出したりすることができます。
 
 Computer Vision アプリケーションを作成するには、[クライアント ライブラリ SDK](./quickstarts-sdk/client-library.md) を使用するか、[REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) を直接呼び出します。 このページでは、Computer Vision でできることを大まかに取り上げます。
+
+このドキュメントには、次のような記事が記載されています。
+* [クイックスタート](./quickstarts-sdk/client-library.md)は、サービスの呼び出しと結果の取得を短時間で行えるようにする、ステップバイステップの手順です。 
+* [攻略ガイド](./Vision-API-How-to-Topics/HowToCallVisionAPI.md)には、より具体的またはカスタマイズした方法でサービスを使用するための手順が記載されています。
+* [概念の記事](concept-recognizing-text.md)では、サービスの機能と特長について詳しく説明します。
+* [チュートリアル](./tutorials/storage-lab-tutorial.md)はより長文のガイドであり、より広範なビジネス ソリューションの 1 コンポーネントとしてこのサービスを使用する方法を示すものです。
 
 ## <a name="optical-character-recognition-ocr"></a>光学式文字認識 (OCR)
 

@@ -3,12 +3,12 @@ title: 継続的なビデオ記録 - Azure
 description: 継続的なビデオ記録 (CVR) とは、ビデオ ソースからの継続的なビデオ記録プロセスのことを指します。 このトピックでは、CVR について説明します。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 04f09f1968e647c57ba0913a9e7f9e601d045771
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8b25d74db279f8cfff68f08efeab2975484a0c5
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566698"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102453752"
 ---
 # <a name="continuous-video-recording"></a>継続的なビデオ記録  
 
@@ -19,7 +19,7 @@ ms.locfileid: "89566698"
 
 ## <a name="overview"></a>概要
 
-継続的なビデオ記録 (CVR) とは、ビデオ ソースからの継続的なビデオ記録プロセスのことを指します。 IoT Edge のライブ ビデオ分析は、RTSP ソース ノードと資産シンク ノードで構成される[メディア グラフ](media-graph-concept.md)を使用して、CCTV カメラから 24 時間 365 日ベースで継続的なビデオ記録をサポートします。 そのようなメディア グラフをグラフィカルに表したものが次の図です。 このようなメディア グラフの[グラフ トポロジ](media-graph-concept.md?branch=release-preview-media-services-lva#media-graph-topologies-and-instances)の JSON 表現については、[こちら](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset)を参照してください。
+継続的なビデオ記録 (CVR) とは、ビデオ ソースからの継続的なビデオ記録プロセスのことを指します。 IoT Edge のライブ ビデオ分析は、RTSP ソース ノードと資産シンク ノードで構成される[メディア グラフ](media-graph-concept.md)を使用して、CCTV カメラから 24 時間 365 日ベースで継続的なビデオ記録をサポートします。 そのようなメディア グラフをグラフィカルに表したものが次の図です。 このようなメディア グラフの[グラフ トポロジ](media-graph-concept.md#media-graph-topologies-and-instances)の JSON 表現については、[こちら](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset)を参照してください。
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/continuous-video-recording/continuous-video-recording-overview.svg" alt-text="継続的なビデオ記録":::

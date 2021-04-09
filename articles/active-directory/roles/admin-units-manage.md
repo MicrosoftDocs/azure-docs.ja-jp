@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 537847d84b417814bddb16cf5b961bdb221af488
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 0706fad1e5340625c32eab691ac3e4d58eeafc9f
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740450"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012117"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Azure Active Directory で管理単位を管理する
 
@@ -38,7 +38,7 @@ Azure Active Directory (Azure AD) では、きめ細かい管理制御を行う�
     ![[Graph エクスプローラーに管理者の同意を与えます] リンクを示すスクリーンショット。](./media/admin-units-manage/select-graph-explorer.png)
 
 
-1. Azure AD PowerShell のプレビュー版を使用します。
+1. [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) を使用します。
 
 ## <a name="add-an-administrative-unit"></a>管理単位を追加する
 
@@ -58,7 +58,7 @@ Azure Active Directory (Azure AD) では、きめ細かい管理制御を行う�
 
 ### <a name="use-powershell"></a>PowerShell の使用
 
-次のコマンドを実行する前に Azure AD PowerShell (プレビュー) をインストールします。
+次のコマンドを実行する前に [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) をインストールします。
 
 ```powershell
 Connect-AzureAD
@@ -69,10 +69,15 @@ New-AzureADMSAdministrativeUnit -Description "West Coast region" -DisplayName "W
 
 ### <a name="use-microsoft-graph"></a>Microsoft Graph の使用
 
+要求
+
 ```http
-Http Request
 POST /administrativeUnits
-Request body
+```
+
+本文
+
+```http
 {
   "displayName": "North America Operations",
   "description": "North America Operations administration"
@@ -94,18 +99,23 @@ Azure AD では、管理ロールのスコープの単位として不要にな�
 ### <a name="use-powershell"></a>PowerShell の使用
 
 ```powershell
-$delau = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
-Remove-AzureADMSAdministrativeUnit -ObjectId $delau.ObjectId
+$adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
+Remove-AzureADMSAdministrativeUnit -ObjectId $adminUnitObj.ObjectId
 ```
 
 特定の環境で必要に応じて、引用符で囲まれた値を変更できます。
 
 ### <a name="use-the-graph-api"></a>Graph API の使用
 
+要求
+
 ```http
-HTTP request
-DELETE /administrativeUnits/{Admin id}
-Request body
+DELETE /administrativeUnits/{admin-unit-id}
+```
+
+Body
+
+```http
 {}
 ```
 

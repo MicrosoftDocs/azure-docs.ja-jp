@@ -1,24 +1,14 @@
 ---
 title: セキュリティ エージェントを構成する
 description: Defender for IoT セキュリティ サービスで Defender for IoT セキュリティ エージェントが使用されるように構成する方法について説明します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: aa863ce556840903d16238d6afef32136ba2b80d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 5ac9a5cdb4cc13ed91c0e5e29447b9cdbe71bcce
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090847"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784409"
 ---
 # <a name="tutorial-configure-security-agents"></a>チュートリアル:セキュリティ エージェントを構成する
 
@@ -88,7 +78,7 @@ Defender for IoT セキュリティ エージェントでは、**azureiotsecurit
 
 1. **[モジュール ID ツイン]** をクリックします。
 
-1. セキュリティ モジュールで変更するプロパティを編集します。
+1. Defender-IoT-micro-agent で変更するプロパティを編集します。
 
    たとえば、接続イベントを優先度が高いイベントとして構成し、7 分おきに優先度が高いイベントを収集するには、次の構成を使用します。
 

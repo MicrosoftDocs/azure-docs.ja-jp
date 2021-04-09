@@ -7,10 +7,10 @@ ms.date: 01/15/2021
 author: tfitzmac
 ms.author: tomfitz
 ms.openlocfilehash: f4c6dacf63b1be44e826fe6841c87ccec4bf9b1a
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98253691"
 ---
 # <a name="quickstart-get-started-with-apache-kafka-for-confluent-cloud"></a>クイック スタート: Apache Kafka for Confluent Cloud の概要
@@ -65,7 +65,7 @@ Apache Kafka on Confluent Cloud のプランを選択したら、アプリケー
 
     :::image type="content" source="media/setup-basics.png" alt-text="Confluent Cloud リソースを設定するためのフォーム。":::
 
-    | プロパティ | [説明] |
+    | プロパティ | 説明 |
     | ---- | ---- |
     | **サブスクリプション** | ドロップダウン メニューから、デプロイ先の Azure サブスクリプションを選択します。 "_所有者_" または "_共同作成者_" のアクセス権が必要です。 |
     | **リソース グループ** | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../azure-resource-manager/management/overview.md)に関するページをご覧ください。 |

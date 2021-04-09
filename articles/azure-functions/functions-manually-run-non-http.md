@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: cshoe
 ms.openlocfilehash: 79aebf7ed80fea370ff7a5d5cc40911da4144414
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91537703"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>HTTP によってトリガーされない関数を手動で実行する
@@ -43,11 +43,11 @@ HTTP によってトリガーされない関数を実行するには、関数を
 
 1. **[キーの編集]** セクションで、キーの値をクリップボードにコピーして、 **[OK]** を選択します。
 
-    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-copy.png" alt-text="コピーするマスター キーを見つけます。" border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-copy.png" alt-text="マスター キーをクリップボードにコピーします。" border="true":::
 
 1. *_master* キーをコピーした後、 **[Code + Test]\(コード + テスト\)** を選択し、 **[ログ]** を選択します。 Postman から手動で関数を実行すると、ログに記録された関数のメッセージがここに表示されます。
 
-    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="コピーするマスター キーを見つけます。" border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="ログからのメッセージが表示されている [Code + Test]\(コード + テスト\) ページを示すスクリーンショット。" border="true":::
 
 > [!CAUTION]  
 > マスター キーによって付与された関数 app の権限が昇格しているため、このキーを第三者と共有したり、アプリケーションに配布したりしないでください。 HTTPS エンドポイントにのみキーを送信する必要があります。
@@ -56,28 +56,28 @@ HTTP によってトリガーされない関数を実行するには、関数を
 
 Postman を開き、次の手順を実行します。
 
-1. **[URL] テキスト ボックスに要求の場所**を入力します。
+1. **[URL] テキスト ボックスに要求の場所** を入力します。
 1. HTTP メソッドが **[POST]** に設定されていることを確認します。
 1. **[Headers]\(ヘッダー\)** タブを選択します。
 1. 最初のキーとして「**x-functions-key**」と入力して、(クリップボードから) マスター キーを値として貼り付けます。
 1. 2 番目のキーとして「**Content-type**」と入力して、値として「**application/json**」と入力します。
 
-    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png" alt-text="コピーするマスター キーを見つけます。" border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png" alt-text="Postman のヘッダーの設定。" border="true":::
 
 1. **[本文]** タブを選択します。
 1. 要求の本文として「 **{ "input": "test" }** 」と入力します。
 
-    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="コピーするマスター キーを見つけます。" border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="Postman の本文の設定。" border="true":::
 
 1. **[送信]** を選択します。
         
-    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="コピーするマスター キーを見つけます。" border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="Postman を使用して要求を送信します。" border="true":::
 
     Postman から **202 Accepted** の状態が報告されます。
 
 1. 次に、Azure portal で関数に戻ります。 ログを確認すると、関数の手動呼び出しによるメッセージが表示されます。
 
-    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="コピーするマスター キーを見つけます。" border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="ログを表示して、マスター キーのテスト結果を確認します。" border="true":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -12,10 +12,10 @@ manager: celestedg
 ms.workload: identity
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 983a803245467145a0b1161a4495e8045759e7ab
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92442067"
 ---
 # <a name="billing-model-for-azure-ad-external-identities"></a>Azure AD External Identities の課金モデル
@@ -61,7 +61,7 @@ Azure AD テナントでは、ゲスト ユーザーの共同作業の使用量�
 
     ![テナントを選択してサブスクリプションをリンクする](media/external-identities-pricing/linked-subscriptions.png)
 
-7. [Link subscription]\(サブスクリプションのリンク\) ペインで、 **[サブスクリプション]** と **[リソース グループ]** を選択します。 次に、 **[適用]** を選択します。
+7. [Link subscription]\(サブスクリプションのリンク\) ペインで、 **[サブスクリプション]** と **[リソース グループ]** を選択します。 次に、**[適用]** を選択します。
 
    > [!NOTE]
    > サブスクリプションが表示されていない場合は、[サブスクリプションをテナントに関連付ける](../fundamentals/active-directory-how-subscriptions-associated-directory.md)ことができます。 または、 **[サブスクリプションをまだお持ちでない場合は、こちらで作成できます]** のリンクを選択して、新しいサブスクリプションを追加することもできます。

@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d67460c654c854c5a855560dde1d67732fa818c7
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98681957"
 ---
 # <a name="import-and-export-azure-ad-connect-configuration-settings"></a>Azure AD Connect 構成設定をインポートおよびエクスポートする 
@@ -77,10 +77,10 @@ Azure AD Connect ウィザードから構成が変更されるたびに、新し
 
    ![Azure AD Connect ディレクトリを示すスクリーンショット。](media/how-to-connect-import-export-config/migrate1.png)
 
-1. ここに示されているようにスクリプトを実行し、下位レベルのサーバー構成ディレクトリ全体を保存します。 このディレクトリを新しいステージング サーバーにコピーします。 **Exported-ServerConfiguration-** _ フォルダー全体を新しいサーバーにコピーする必要があります。
+1. ここに示されているようにスクリプトを実行し、下位レベルのサーバー構成ディレクトリ全体を保存します。 このディレクトリを新しいステージング サーバーにコピーします。 **Exported-ServerConfiguration-** * フォルダー全体を新しいサーバーにコピーする必要があります。
 
    ![Windows PowerShell でスクリプトが示されているスクリーンショット。](media/how-to-connect-import-export-config/migrate2.png)
-   ![Exported-ServerConfiguration-_ フォルダーをコピーしているところを示しているスクリーンショット。](media/how-to-connect-import-export-config/migrate3.png)
+   ![Exported-ServerConfiguration-* フォルダーをコピーしているところを示しているスクリーンショット。](media/how-to-connect-import-export-config/migrate3.png)
 
 1. デスクトップのアイコンをダブル クリックして **Azure AD Connect** を起動します。 Microsoft ソフトウェア ライセンス条項に同意し、次のページで **[カスタマイズ]** を選択します。
 1. **[同期設定をインポート]** チェック ボックスをオンにします。 **[参照]** を選択して、コピーした Exported-ServerConfiguration-* フォルダーを参照します。 MigratedPolicy.json を選択して、移行した設定をインポートします。

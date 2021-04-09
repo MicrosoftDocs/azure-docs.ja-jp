@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 02/01/2021
+ms.date: 02/16/2021
 ms.author: juliako
-ms.openlocfilehash: a6b1fc5adba166aa15a786d3440be1eca7f0a260
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 618617d3602e45ebb15314c7cc5f6898a73bb71f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100560501"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203727"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
 
@@ -29,6 +29,39 @@ ms.locfileid: "100560501"
 * 既知の問題
 * バグの修正
 * 非推奨の機能
+
+## <a name="march-2021"></a>2021 年 3 月
+
+音声分析が、さまざまな価格で新たに追加された音声機能のバンドルで利用できるようになりました。 新しい **基本音声** 分析プリセットは、音声の文字起こしの抽出、出力キャプションと字幕の書式設定のみを備えた低コストのオプションです。 **基本音声** プリセットからは、2 つの別個の測定 (文字起こし分、およびキャプションと字幕の書式設定分) が生成されて請求書に計上されます。 価格の詳細については、[Media Services の価格](https://azure.microsoft.com/pricing/details/media-services/)に関する記事を参照してください。
+
+新たに追加されたバンドルは、 **[詳細設定] オプション** ->  **[Basic Audio]\(基本音声\)** プリセット ( **[Video + audio indexing]\(ビデオ + 音声インデックス作成\)** のドロップダウン ボックス) を選択して、ファイルのインデックスを作成または再作成したときに使用できます。
+
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="multiple-account-owners"></a>複数アカウントの所有者 
+
+アカウント所有者ロールが Video Indexer に追加されました。 ユーザーの追加、変更、削除を行ったり、それらのユーザーのロールを変更できます。 アカウントを共有する方法の詳細については、[ユーザーの招待](invite-users.md)に関するページを参照してください。
+
+### <a name="audio-event-detection-public-preview"></a>音声イベントの検出 (パブリック プレビュー)
+
+> [!NOTE]
+> この機能は試用版アカウントでのみ使用できます。 
+
+Video Indexer は、銃声、ガラスの割れる音、アラーム、サイレン、爆発音、犬が吠える声、叫び声、笑い声、観客の反応 (声援、拍手、ブーイング)、静寂など、声以外の音声効果を検出できるようになりました。 
+
+新たに追加された音声効果機能は、 **[詳細設定] オプション** ->  **[高度なオーディオ]** プリセット ([Video + audio indexing]\(ビデオ + 音声インデックス作成\)) を選択してファイルのインデックスを作成したときに使用できます。 標準のインデックス作成には、**静寂** と **観客の反応** だけが含まれます。 
+
+以前の音声効果モデルに含まれていた **拍手** イベント タイプは、**観客の反応** イベント タイプの一部として抽出されるようになりました。
+
+[Video Indexer](https://www.videoindexer.ai/) Web サイトでビデオの **分析情報** を確認すると、音声効果がページに表示されます。
+
+:::image type="content" source="./media/release-notes/audio-detection.png" alt-text="音声イベントの検出":::
+
+### <a name="named-entities-enhancement"></a>名前付きエンティティの機能強化  
+
+抽出された人物と場所の一覧は、全体的に拡張および更新されています。 
+
+また、モデルには、ビデオの "Sam" や "Home" のような、状況に応じた、有名ではない人物や場所が含まれるようになりました。 
 
 ## <a name="january-2021"></a>2021 年 1 月
 

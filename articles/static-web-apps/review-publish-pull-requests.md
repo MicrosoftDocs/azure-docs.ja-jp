@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
-ms.openlocfilehash: f8f2e352ae458e3e2825c9701437ea652ba07375
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 1cb5f2f9ac941001efb18301f4a54bd0092920ba
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825654"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172742"
 ---
 # <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューにおける実稼働前環境での pull request の確認
 
@@ -33,7 +33,7 @@ Azure Static Web Apps を使用する場合は、複数の実稼働前環境を�
 - 運用環境にデプロイする前にサニティ チェックを実行する。
 
 > [!NOTE]
-> プレビュー期間中は、[最大で 1 つのステージング環境だけ](quotas.md)を同時に使用できます。
+> プレビュー期間中に使用可能な[ステージング環境の数は最大 3 つ](quotas.md)です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,11 +51,11 @@ Azure Static Web Apps を使用する場合は、複数の実稼働前環境を�
 
 1. _app_ フォルダーに移動して、テキストの内容を一部変更します。 たとえば、タイトルや段落を変更できます。 編集するファイルが見つかったら、 **[Edit]\(編集\)** をクリックして変更を加えます。
 
-    :::image type="content" source="./media/review-publish-pull-requests/edit-file.png" alt-text="GitHub インターフェイスを使用して新しいブランチを作成する":::
+    :::image type="content" source="./media/review-publish-pull-requests/edit-file.png" alt-text="GitHub インターフェイスのファイルの編集ボタン":::
 
 1. 変更が完了したら、 **[Commit changes]\(変更のコミット\)** をクリックして、変更内容をブランチにコミットします。
 
-    :::image type="content" source="./media/review-publish-pull-requests/commit-changes.png" alt-text="GitHub インターフェイスを使用して新しいブランチを作成する":::
+    :::image type="content" source="./media/review-publish-pull-requests/commit-changes.png" alt-text="GitHub インターフェイスの [Commit changes]\(変更のコミット\) ボタン":::
 
 ## <a name="create-a-pull-request"></a>pull request を作成する
 
@@ -63,13 +63,13 @@ Azure Static Web Apps を使用する場合は、複数の実稼働前環境を�
 
 1. GitHub でプロジェクトの **[Pull request]** タブを開きます。
 
-    :::image type="content" source="./media/review-publish-pull-requests/tab.png" alt-text="GitHub インターフェイスを使用して新しいブランチを作成する":::
+    :::image type="content" source="./media/review-publish-pull-requests/tab.png" alt-text="GitHub リポジトリの [Pull request] タブ":::
 
 1. ブランチの **[Compare & pull request]\(比較と pull request\)** ボタンをクリックします。
 
 1. 必要に応じて変更に関する詳細情報を入力し、 **[Create pull request]\(pull request の作成\)** をクリックします。
 
-    :::image type="content" source="./media/review-publish-pull-requests/open.png" alt-text="GitHub インターフェイスを使用して新しいブランチを作成する":::
+    :::image type="content" source="./media/review-publish-pull-requests/open.png" alt-text="GitHub での pull request の作成":::
 
 必要に応じて、レビュー担当者を割り当てたり、変更内容について説明するコメントを追加したりできます。
 
@@ -82,7 +82,7 @@ pull request が作成されると、[GitHub Actions](https://github.com/feature
 
 ワークフローでアプリのビルドとデプロイが完了すると、GitHub ボットによって実稼働前環境の URL を含むコメントが pull request に追加されます。 このリンクをクリックすると、ステージされた変更を確認できます。
 
-:::image type="content" source="./media/review-publish-pull-requests/bot-comment.png" alt-text="GitHub インターフェイスを使用して新しいブランチを作成する":::
+:::image type="content" source="./media/review-publish-pull-requests/bot-comment.png" alt-text="実稼働前 URL を含む pull request コメント":::
 
 生成された URL をクリックして、変更内容を確認します。
 
@@ -96,7 +96,9 @@ pull request が作成されると、[GitHub Actions](https://github.com/feature
 
 **[Merge pull request]\(pull request のマージ\)** をクリックします。
 
-:::image type="content" source="./media/review-publish-pull-requests/merge.png" alt-text="GitHub インターフェイスを使用して新しいブランチを作成する" ブランチ) にコピーされます。 その後、追跡対象のブランチでデプロイ ワークフローが開始され、アプリケーションが再構築された後に変更内容が反映されます。
+:::image type="content" source="./media/review-publish-pull-requests/merge.png" alt-text="GitHub インターフェイスの [Merge pull request]\(pull request のマージ\) ボタン":::
+
+マージによって、変更内容が追跡対象のブランチ ("運用" ブランチ) にコピーされます。 その後、追跡対象のブランチでデプロイ ワークフローが開始され、アプリケーションが再構築された後に変更内容が反映されます。
 
 運用環境の変更を確認するには、運用環境の URL を開いて、ライブ バージョンの Web サイトを読み込みます。
 
@@ -107,7 +109,7 @@ pull request が作成されると、[GitHub Actions](https://github.com/feature
 > [!WARNING]
 > 実稼働前環境へのアクセスが制限されないため、機密性の高い内容をステージング バージョンに発行する際は注意してください。
 
-Static Web Apps を使用してデプロイした各アプリ用に使用できる実稼働前環境の数は、使用している SKU レベルによって異なります。 たとえば、Free レベルでは、運用環境に加えて 1 つの実稼働前環境を使用できます。
+Static Web Apps を使用してデプロイした各アプリ用に使用できる実稼働前環境の数は、使用している SKU レベルによって異なります。 たとえば、Free レベルでは、運用環境に加えて 3 つの実稼働前環境を使用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

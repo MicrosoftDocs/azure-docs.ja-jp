@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 86efd7781c7353b4846c77eba01ed34fb63067ff
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 75911e91bb61b84d2e9315421f794739f2b5088b
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433252"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953699"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Twins のモデルを管理する
 
@@ -179,7 +179,7 @@ Azure Digital Twins インスタンスに格納されているモデルを一覧
 * プロパティの読み取り
 * 外部に対するリレーションシップの読み取り
 * 外部からの関係の追加および削除 (つまり、他のツインはこのツイン *に対して* リレーションシップを形成できます)。
-  - リレーションシップ定義内の `target` には、削除されたモデルの DTMI が引き続き反映されます。 ここでは、ターゲットが定義されていないリレーションシップを使用することもできます。
+  - リレーションシップ定義内の `target` には、削除されたモデルの DTMI が引き続き反映されます。 ここでは、ターゲットが定義されていないリレーションシップを使用することもできます。      
 * リレーションシップの削除
 * ツインを削除する
 

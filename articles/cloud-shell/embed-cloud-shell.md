@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: damaerte
 ms.openlocfilehash: bbf6c1f3049265961559ea34c8b748b2b4d263b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "60614305"
 ---
 # <a name="embed-azure-cloud-shell"></a>Azure Cloud Shell の埋め込み
@@ -33,7 +33,7 @@ Cloud Shell を埋め込むことで、開発者やコンテンツ作成者は�
 
 [![大きいサイズの起動](https://shell.azure.com/images/launchcloudshell@2x.png "Azure Cloud Shell を起動する")](https://shell.azure.com)
 
-## <a name="how-to"></a>操作方法
+## <a name="how-to"></a>方法
 
 次のコードをコピーして、Cloud Shell の起動ボタンをマークダウン ファイルに統合します。
 

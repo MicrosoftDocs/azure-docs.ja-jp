@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/03/2020
 ms.openlocfilehash: cb0fd5464f7025d71dd384c56233aefa6a6cd364
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98218724"
 ---
 # <a name="quickstart-transform-data-using-mapping-data-flows"></a>クイックスタート: マッピング データ フローを使用してデータを変換する

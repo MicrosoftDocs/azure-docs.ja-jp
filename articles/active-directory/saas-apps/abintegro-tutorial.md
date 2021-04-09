@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Abintegro の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Abintegro の統合 | Microsoft Docs'
 description: Azure Active Directory と Abintegro の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
 ms.openlocfilehash: d8c785295380d3a90fde41f52b002f4686decad6
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97587368"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-abintegro"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Abintegro の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-abintegro"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Abintegro の統合
 
 このチュートリアルでは、Abintegro と Azure Active Directory (Azure AD) を統合する方法について説明します。 Abintegro と Azure AD を統合すると、次のことができます。
 
@@ -72,7 +72,7 @@ Abintegro で Azure AD SSO を構成してテストするには、次の構成�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Abintegro** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Abintegro** アプリケーション統合ページで、**[管理]** セクションを探して、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 

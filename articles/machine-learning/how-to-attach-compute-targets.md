@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 318afced85f3cca0a450d77f8be7b2a1d6c388ed
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 9fa6a1758bc2e2a76291efc3bb239c5249a6e21e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504935"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103149343"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>モデルのトレーニングとデプロイのためのコンピューティング ターゲットを設定する
 
@@ -64,11 +64,7 @@ Azure Machine Learning では、さまざまなリソースまたは環境でご
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>リモート仮想マシン
 
-Azure Machine Learning では、独自のコンピューティング リソースを用意してワークスペースに接続することもサポートされています。 任意のリモート VM もそのようなリソースの一種ですが、Azure Machine Learning からアクセスできることが条件です。 リソースは、Azure VM でも、組織内またはオンプレミスのリモート サーバーでもかまいません。 具体的には、IP アドレスと資格情報 (ユーザー名とパスワードまたは SSH キー) があれば、任意のアクセス可能な VM をリモート実行に使用できます。
-
-[システムで構築済みの Conda 環境](how-to-use-environments.md)、既存の [Python 環境](how-to-configure-environment.md#local)、または [Docker コンテナー](https://docs.docker.com/engine/install/ubuntu/)を使用できます。 Docker コンテナーで実行するには、Docker エンジンを VM で実行する必要があります。 この機能は、ローカル コンピューターよりも柔軟性がある、クラウドベースの開発/実験環境が必要な場合に特に役立ちます。
-
-このシナリオ向けに選択する Azure VM としては、Azure Data Science 仮想マシン (DSVM) を使用します。 この VM は、Azure での事前構成済みのデータ サイエンスおよび AI 開発環境です。 その VM では、完全なライフサイクルの機械学習開発用に精選されたツールとフレームワークが提供されます。 Azure Machine Learning での DSVM の使用方法について詳しくは、[開発環境の構成](./how-to-configure-environment.md#dsvm)に関する記事をご覧ください。
+Azure Machine Learning では、Azure 仮想マシンのアタッチもサポートされています。 VM は、Azure Data Science Virtual Machine (DSVM) である必要があります。 この VM は、Azure での事前構成済みのデータ サイエンスおよび AI 開発環境です。 その VM では、完全なライフサイクルの機械学習開発用に精選されたツールとフレームワークが提供されます。 Azure Machine Learning での DSVM の使用方法について詳しくは、[開発環境の構成](./how-to-configure-environment.md#dsvm)に関する記事をご覧ください。
 
 1. **作成**:モデルのトレーニングに使用する DSVM を事前に作成します。 このリソースの作成については、「[Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング](./data-science-virtual-machine/dsvm-ubuntu-intro.md)」をご覧ください。
 

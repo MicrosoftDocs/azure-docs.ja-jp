@@ -3,7 +3,7 @@ title: .NET での Azure Media Services テレメトリの構成 | Microsoft Doc
 description: この記事では、.NET SDK を使用して Azure Media Services テレメトリを使用する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: f8f55e37-0714-49ea-bf4a-e6c1319bec44
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 263bf1cd2a7e2a37a1c4fae172ce4f66b1e59b5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bd7b472d8f42bd7872aeacf8b78aac8b249f4bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265985"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103013736"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-net"></a>.NET での Azure Media Services テレメトリの構成
 
@@ -33,7 +33,7 @@ ms.locfileid: "89265985"
 
 テレメトリ データは、次のいずれかの方法で使用できます。
 
-- Azure Table Storage から直接データを読み取ります (Storage SDK などを使用して)。 テレメトリのストレージ テーブルの説明については、**この**記事の「[Consuming telemetry information (テレメトリ情報の使用)](/previous-versions/azure/mt742089(v=azure.100))」を参照してください。
+- Azure Table Storage から直接データを読み取ります (Storage SDK などを使用して)。 テレメトリのストレージ テーブルの説明については、**この** 記事の「[Consuming telemetry information (テレメトリ情報の使用)](/previous-versions/azure/mt742089(v=azure.100))」を参照してください。
 
 または
 

@@ -9,17 +9,17 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 1fedadfa7e5b4ec3d7de30d0ad3ef1b1bfa0e0ec
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92144402"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Azure Resource Manager テンプレートを使用した IoT ハブの作成 (PowerShell)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Azure Resource Manager テンプレートを使って IoT ハブとコンシューマー グループを作成する方法を学習します。 Resource Manager テンプレートとは、ソリューションに対してデプロイが必要なリソースを定義した JSON ファイルのことをいいます。 Resource Manager の作成の詳細については、[Azure Resource Manager のドキュメント](../azure-resource-manager/index.yml)に関する記事をご覧ください。
+Azure Resource Manager テンプレートを使って IoT ハブとコンシューマー グループを作成する方法を学習します。 Resource Manager テンプレートとは、ご利用のソリューションに対して配置が必要なリソースを定義した JSON ファイルのことをいいます。 Resource Manager の作成の詳細については、[Azure Resource Manager のドキュメント](../azure-resource-manager/index.yml)に関する記事をご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 テンプレートをデプロイするには複数の方法があります。  このチュートリアルでは、Azure PowerShell を使います。
 
-PowerShell スクリプトを実行するには、 **[使ってみる]** を選択して、Azure Cloud シェルを開きます。 スクリプトを貼り付けるには、シェルを右クリックし、[貼り付け] を選択します。
+PowerShell スクリプトを実行するには、**[使ってみる]** を選択して、Azure Cloud シェルを開きます。 スクリプトを貼り付けるには、シェルを右クリックし、[貼り付け] を選択します。
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

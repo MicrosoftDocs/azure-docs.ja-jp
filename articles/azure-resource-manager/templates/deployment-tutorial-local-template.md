@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
 ms.openlocfilehash: d8d54acfa345994edcc401170e70495b3826bfdf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100384233"
 ---
 # <a name="tutorial-deploy-a-local-arm-template"></a>チュートリアル:ローカル ARM テンプレートをデプロイする

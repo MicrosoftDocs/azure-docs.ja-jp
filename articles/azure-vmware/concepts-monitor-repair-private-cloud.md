@@ -3,13 +3,13 @@ title: 概念 - Azure VMware Solution プライベート クラウドの監視�
 description: Azure VMware Solution で Azure VMware Solution プライベート クラウド上の VMware ESXi サーバーを監視および修復する方法について説明します。
 ms.topic: conceptual
 ms.custom: contperf-fy21q2
-ms.date: 02/03/2021
-ms.openlocfilehash: 6174df429fd9b21c7f685c8ba14e6d5c0bba4c83
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.date: 02/16/2021
+ms.openlocfilehash: 59319b5598be9770e82b9676a28444648230a019
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538960"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "100633140"
 ---
 # <a name="monitor-and-repair-azure-vmware-solution-private-clouds"></a>Azure VMware Solution プライベート クラウドの監視と修復
 
@@ -17,7 +17,7 @@ Azure VMware Solution では、Azure VMware Solution プライベート クラ�
 
 ## <a name="what-azure-vmware-solution-monitors"></a>Azure VMware Solution によって監視される対象
 
-Azure VMware Solution では、ホスト上で次の状態についてエラー状態が監視されます。  
+Azure VMware Solution では、ホスト上の次の状態が監視されます。  
 
 - プロセッサの状態 
 - メモリの状態 
@@ -37,9 +37,9 @@ Azure VMware Solution では、ホスト上で次の状態についてエラー�
 
 ## <a name="azure-vmware-solution-host-remediation"></a>Azure VMware Solution のホスト修復  
 
-Azure VMware Solution によってテナントのプライベート クラウド上の Azure VMware Solution ノードで機能低下または障害が検出されると、ホスト修復プロセスがトリガーされます。 ホスト修復には、障害が発生しているノードを新しい正常なノードに置き換える動作が含まれます。  
+Azure VMware Solution によって Azure VMware Solution ノードで機能低下または障害が検出されると、ホスト修復プロセスがトリガーされます。 ホスト修復には、障害が発生しているノードを新しい正常なノードに置き換える動作が含まれます。  
 
-ホスト修復プロセスは、クラスター内に新しい正常なノードを追加することによって開始されます。 その後、可能な場合は、障害が発生しているホストが VMware vSphere メンテナンス モードに切り替えられます。 VMware vMotion を使用して、障害が発生しているホストからクラスター内の使用可能な他のサーバーに VM が移動されます。これにより、ワークロードのライブ マイグレーションのダウンタイムがゼロになる可能性があります。 障害が発生しているホストをメンテナンス モードにすることができない場合は、そのホストがクラスターから削除されます。
+ホスト修復は、クラスター内に新しい正常なノードを追加することによって開始されます。 その後、可能な場合は、障害が発生しているホストが VMware vSphere メンテナンス モードに切り替えられます。 VMware vMotion により、障害が発生しているホストからクラスター内の使用可能な他のサーバーに VM が移動されます。これにより、ワークロードのライブ マイグレーションのダウンタイムをゼロにできる可能性があります。 障害が発生しているホストをメンテナンス モードにすることができない場合は、そのホストがクラスターから削除されます。
 
 ## <a name="next-steps"></a>次の手順
 

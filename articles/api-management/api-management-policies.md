@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/19/2017
+ms.date: 02/17/2021
 ms.author: apimpm
-ms.openlocfilehash: 312a496a5acda05a6b04a0bb47abb101f4ffcc8e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: e809efa9da32da5fe9ca296608c602e770f78265
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107591"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103562350"
 ---
 # <a name="api-management-policies"></a>API Management policies (API Management のポリシー)
 このセクションでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](api-management-howto-policies.md)」をご覧ください。
@@ -81,6 +81,12 @@ ms.locfileid: "92107591"
     - [サービスへの要求の送信](api-management-dapr-policies.md#invoke) - Dapr ランタイムを使用して Dapr マイクロサービスを検索し、このマイクロサービスとの通信を確実に行います。
     -  [Pub/Sub トピックへのメッセージの送信](api-management-dapr-policies.md#pubsub) - Dapr ランタイムを使用して、Publish/Subscribe トピックにメッセージを発行します。
     -  [トリガー出力バインド](api-management-dapr-policies.md#bind) - Dapr ランタイムを使用して、出力バインドを介して外部システムを呼び出します。
+- [検証ポリシー](validation-policies.md)
+    - [コンテンツを検証する](validation-policies.md#validate-content) - API スキーマに対して要求または応答の本文のサイズまたは JSON スキーマを検証します。
+. 
+    - [パラメーターを検証する](validation-policies.md#validate-parameters) - API スキーマに対して要求ヘッダー、クエリ、またはパス パラメーターを検証します。
+    - [ヘッダーを検証する](validation-policies.md#validate-headers) - API スキーマに対して応答ヘッダーを検証します。
+    - [状態コードを検証する](validation-policies.md#validate-status-code) - API スキーマに対して応答の HTTP 状態コードを検証します。
 
 ## <a name="next-steps"></a>次のステップ
 ポリシーを使用する方法の詳細については、次のトピックを参照してください。

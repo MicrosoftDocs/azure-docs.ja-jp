@@ -8,16 +8,20 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: aa22cffc1fc38e055c6c2bb504c311c012f31ac2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e4c58d67668a67eee38a73d46a2a40ca29c1dfd8
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012903"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121254"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-nodejs"></a>クイックスタート: Node.js で Azure Cache for Redis を使用する
 
 このクイック スタートでは、Azure 内の任意のアプリケーションからアクセスできるセキュリティで保護された専用キャッシュにアクセスするために、Azure Cache for Redis を Node.js アプリに組み込みます。
+
+## <a name="skip-to-the-code-on-github"></a>GitHub のコードにスキップする
+
+この記事をスキップしてすぐにコードをご覧になりたい方は、GitHub にある [Node.js のクイックスタート](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/nodejs)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

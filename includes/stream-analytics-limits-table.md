@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: e90a374917239ae1a20d25795757811a12cee80c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e387653d73105911f10bb184f9179e33e22671d4
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84200401"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103021301"
 ---
 ---
 | 制限の種類 | 制限 | 説明 |
@@ -15,6 +15,6 @@ ms.locfileid: "84200401"
 | ジョブあたりの関数の最大数 |60 |Stream Analytics ジョブあたりの関数には、最大数 60 のハード制限があります。 |
 | ジョブごとのストリーミング ユニットの最大数 |192 |Stream Analytics ジョブあたりのストリーミング ユニット数には 192 のハード制限があります。 |
 | リージョンあたりのジョブの最大数 |1,500 |サブスクリプションごとに、地理的リージョンあたり最大 1,500 ジョブが可能です。 |
-| 参照データの BLOB のサイズ (MB) | 該当なし | 参照データの BLOB のサイズは、それぞれ 300 MB を超えることはできません。 |
+| 参照データの BLOB のサイズ (MB) | 5 GB | 6 個以上の SU を使用する場合は最大 5 GB。 |
 | クエリの最大文字数 | 512,000 | Azure Stream Analytics ジョブ クエリには、512 k 文字のハード制限があります。|
 

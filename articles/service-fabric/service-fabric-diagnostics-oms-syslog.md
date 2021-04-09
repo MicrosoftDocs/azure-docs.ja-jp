@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: fe31c6fdca3651bfe56e798b30d50c9f047c680b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a98a833baefa9b1c2d1ebd9ff8147206c2106bf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258627"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570192"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Syslog 内の Service Fabric Linux クラスター イベント
 
@@ -87,7 +87,7 @@ SyslogConsumer を有効にするには、クラスターのアップグレー�
 ```
 
 ## <a name="azure-monitor-logs-integration"></a>Azure Monitor ログの統合
-Azure Monitor ログなどの監視ツールでこれらの Syslog イベントを読み取ることができます。 Azure Marketplace を使用して Log Analytics ワークスペースを作成するには、こちらの [手順].(../azure-monitor/learn/quick-create-workspace.md) を参照してください。また、このデータを収集してワークスペースに送信するには、Log Analytics エージェントをクラスターに追加する必要があります。 これは、パフォーマンス カウンターの収集に使用されるものと同じエージェントです。 
+Azure Monitor ログなどの監視ツールでこれらの Syslog イベントを読み取ることができます。 Azure Marketplace を使用して Log Analytics ワークスペースを作成するには、こちらの [手順].(../azure-monitor/logs/quick-create-workspace.md) を参照してください。また、このデータを収集してワークスペースに送信するには、Log Analytics エージェントをクラスターに追加する必要があります。 これは、パフォーマンス カウンターの収集に使用されるものと同じエージェントです。 
 
 1. `Advanced Settings` ブレードに移動します
 
@@ -113,6 +113,6 @@ Azure Monitor ログなどの監視ツールでこれらの Syslog イベント�
 
 ## <a name="next-steps"></a>次のステップ
 * お使いのノードに [Log Analytics エージェントをデプロイ](service-fabric-diagnostics-oms-agent.md)してパフォーマンス カウンターを収集し、Docker の統計とコンテナーのログを収集する
-* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../azure-monitor/log-query/log-query-overview.md)機能の詳細を確認します
-* [Azure Monitor ログのビュー デザイナーを使用してカスタム ビューを作成する](../azure-monitor/platform/view-designer.md)
-* [Azure Monitor ログを Syslog と統合する](../azure-monitor/platform/data-sources-syslog.md)方法を参照する。
+* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../azure-monitor/logs/log-query-overview.md)機能の詳細を確認します
+* [Azure Monitor ログのビュー デザイナーを使用してカスタム ビューを作成する](../azure-monitor/visualize/view-designer.md)
+* [Azure Monitor ログを Syslog と統合する](../azure-monitor/agents/data-sources-syslog.md)方法を参照する。

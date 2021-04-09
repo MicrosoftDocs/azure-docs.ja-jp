@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.openlocfilehash: e180f042d07768a432a59d2c9280f3de73d5ea2f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454142"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-eli-onboarding"></a>チュートリアル: Azure Active Directory と Eli Onboarding の統合
@@ -41,7 +41,7 @@ Eli Onboarding と Azure AD の統合を構成するには、次のものが必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Eli Onboarding では、 **SP** によって開始される SSO がサポートされます
+* Eli Onboarding では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-eli-onboarding-from-the-gallery"></a>ギャラリーからの Eli Onboarding の追加
 
@@ -61,13 +61,13 @@ Azure AD への Eli Onboarding の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Eli Onboarding** 」と入力し、結果ウィンドウで **Eli Onboarding** を選び、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Eli Onboarding**」と入力し、結果ウィンドウで **Eli Onboarding** を選び、**[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果一覧内の Eli Onboarding](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Eli Onboarding で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Eli Onboarding で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Eli Onboarding 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Eli Onboarding で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ Eli Onboarding で Azure AD のシングル サインオンを構成してテス
 
 Eli Onboarding で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Eli Onboarding** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Eli Onboarding** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -142,9 +142,9 @@ Eli Onboarding で Azure AD シングル サインオンを構成するには、
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -155,7 +155,7 @@ Eli Onboarding で Azure AD シングル サインオンを構成するには、
 
 このセクションでは、Britta Simon に Eli Onboarding へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Eli Onboarding]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Eli Onboarding]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

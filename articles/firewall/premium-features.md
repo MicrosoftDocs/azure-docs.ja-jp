@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 03/08/2021
 ms.author: victorh
-ms.openlocfilehash: ff5c6961e64deddc8e52dc92a7c34b5b369a44ed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a3f72d235d6c52ce91ae351c2606ee6cf4285159
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715566"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453429"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure Firewall Premium プレビューの機能
 
@@ -36,12 +36,11 @@ Azure Firewall Premium プレビューには次の機能が含まれています
 
 - **TLS 検査** - アウトバウンド トラフィックを復号化し、データを処理し、その後にデータを暗号化して宛先に送信します。
 - **IDPS** - ネットワーク侵入検出と防止システム (IDPS) を使用すると、ネットワーク アクティビティを監視して悪意のあるアクティビティがないか確認し、このアクティビティに関する情報をログに記録し、それを報告して、任意でそのブロックを試みることができます。
-- **URL フィルタリング** - Azure Firewall の FQDN フィルタリング機能を拡張して URL 全体が考慮対象になるようにします。 たとえば、`www.contoso.com` の代わりに `www.contoso.com/a/c` とします。
+- **URL フィルタリング** - Azure Firewall の FQDN フィルタリング機能を拡張して URL 全体が考慮対象になるようにします。 たとえば、`www.contoso.com` の代わりに `www.contoso.com/a/c` となります。
 - **Web カテゴリ** - 管理者は、ギャンブルの Web サイトやソーシャル メディアの Web サイトといった Web サイト カテゴリへのユーザーのアクセスを許可または拒否できます。
 
-## <a name="features"></a>機能
 
-### <a name="tls-inspection"></a>TLS インスペクション
+## <a name="tls-inspection"></a>TLS インスペクション
 
 Azure Firewall Premium では、アウトバウンドと東西の TLS 接続は終了されます。 インバウンドの TLS 検査は [Azure Application Gateway](../web-application-firewall/ag/ag-overview.md) でサポートされ、エンドツーエンドの暗号化を行うことができます。 Azure Firewall では必要な付加価値のセキュリティ機能が実行され、元の宛先に送信されるトラフィックが再暗号化されます。
 
@@ -50,23 +49,30 @@ Azure Firewall Premium では、アウトバウンドと東西の TLS 接続は�
 
 Azure Firewall Premium プレビューの中間 CA 証明書の要件に関する詳細については、「[Azure Firewall Premium プレビューの証明書](premium-certificates.md)」を参照してください。
 
-### <a name="idps"></a>IDPS
+## <a name="idps"></a>IDPS
 
 ネットワーク侵入検出と防止システム (IDPS) を使用すると、ネットワークを監視して悪意のあるアクティビティがないか確認し、このアクティビティに関する情報をログに記録し、それを報告して、必要に応じてそのブロックを試みることができます。 
 
 Azure Firewall Premium プレビューにはシグネチャベースの IDPS が用意され、ネットワーク トラフィック内のバイト シーケンスやマルウェアによって使用される既知の悪意のある命令シーケンスなど、特定のパターンを探すことによって攻撃を迅速に検出できます。 IDPS シグネチャはフル マネージドであり、継続的に更新されます。
 
+Azure Firewall シグネチャ/ルールセットには次のものが含まれます。
+- 実際のマルウェア、コマンド アンド コントロール、エクスプロイト キット、さらには従来の防止方法では見逃されていた、実害の出ている悪意のあるアクティビティについて、フィンガープリントを重視。
+- 50 以上のカテゴリで 35000 を超えるルール。
+    - カテゴリには、マルウェアのコマンド アンド コントロール、DoS 攻撃、ボットネット、情報イベント、エクスプロイト、脆弱性、SCADA ネットワークプロトコル、エクスプロイト キット アクティビティなどが含まれます。
+- 20 ～ 40 以上の新しいルールが毎日リリースされます。
+- 最先端のマルウェア サンドボックスとグローバル センサー ネットワーク フィードバック ループを使用した、低い擬陽性率。
+
 IDPS を使用すると、暗号化されていないトラフィックですべてのポートとプロトコルの攻撃を検出できます。 ただし、HTTPS トラフィックを検査する必要がある場合、Azure Firewall ではその TLS 検査機能を使用してトラフィックを復号化し、悪意のあるアクティビティをより的確に検出できます。  
 
-IDPS バイパス一覧を使用すると、バイパス一覧に指定された IP アドレス、範囲、サブネットへのトラフィックをフィルター処理しないようにすることができます。  
+IDPS バイパス一覧を使用すると、バイパス一覧に指定された IP アドレス、範囲、サブネットへのトラフィックをフィルター処理しないようにすることができます。 
 
-### <a name="url-filtering"></a>URL フィルタリング
+## <a name="url-filtering"></a>URL フィルタリング
 
 URL フィルタリングは、Azure Firewall の FQDN フィルタリング機能を拡張して URL 全体が考慮対象になるようにします。 たとえば、`www.contoso.com` の代わりに `www.contoso.com/a/c` となります。  
 
 URL フィルタリングは、HTTP と HTTPS の両方のトラフィックに適用できます。 Azure Firewall Premium プレビューでは、HTTPS トラフィックを検査する際にその TLS 検査機能を使用してトラフィックを復号化し、ターゲット URL を抽出してアクセスが許可されているかどうかを検証できます。 TLS 検査には、アプリケーション規則レベルでのオプトインが必要です。 有効にすると、URL を使用して HTTPS でのフィルター処理ができるようになります。 
 
-### <a name="web-categories"></a>Web カテゴリ
+## <a name="web-categories"></a>Web カテゴリ
 
 Web カテゴリでは、管理者は、ギャンブルの Web サイトやソーシャル メディアの Web サイトなどの Web サイト カテゴリへのユーザーのアクセスを許可または拒否できます。 Web カテゴリは Azure Firewall Standard にも含まれますが、Azure Firewall Premium プレビューではさらに細かく調整されます。 FQDN に基づくカテゴリと照合する Standard SKU の Web カテゴリ機能とは異なり、Premium SKU では、HTTP と HTTPS の両方のトラフィックについて URL 全体に従ってカテゴリを照合します。 
 
@@ -78,11 +84,11 @@ Web カテゴリでは、管理者は、ギャンブルの Web サイトやソ�
 
 カテゴリは、 **[責任]** 、 **[高帯域幅]** 、 **[ビジネス利用]** 、 **[生産性の低下]** 、 **[一般的なネット サーフィン]** 、 **[未分類]** の下で重要度に基づいて整理されています。
 
-#### <a name="category-exceptions"></a>カテゴリの例外
+### <a name="category-exceptions"></a>カテゴリの例外
 
 Web カテゴリの規則の例外を作成できます。 規則コレクション グループ内で、より優先度の高い個別の許可または拒否の規則コレクションを作成します。 たとえば、優先度が 100 で `www.linkedin.com` を許可する規則コレクションと、優先順位が 200 で **ソーシャル ネットワーキング** を拒否する規則コレクションを構成できます。 これにより、定義済みの **ソーシャル ネットワーキング** Web カテゴリの例外が作成されます。
 
-#### <a name="categorization-change"></a>分類の変更
+### <a name="categorization-change"></a>分類の変更
 
 次の場合に、分類の変更を要求できます。
 

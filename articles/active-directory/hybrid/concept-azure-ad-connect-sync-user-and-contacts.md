@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e015f7937db6788aa4473a8a04434121299901e9
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96861784"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect Sync: ユーザー、グループ、および連絡先について
@@ -71,8 +71,8 @@ Azure AD に対するオブジェクトのプロビジョニングでは、メ�
 前提では、無効なユーザー アカウントが見つかった場合、後で別のアクティブなアカウントを見つけることはなく、オブジェクトは、見つかった userPrincipalName および sourceAnchor を使用して Azure AD にプロビジョニングされます。 別のアクティブなアカウントが同じメタバース オブジェクトに結合される場合は、その userPrincipalName と sourceAnchor が使用されます。
 
 ## <a name="changing-sourceanchor"></a>sourceAnchor の変更
-オブジェクトが Azure AD にエクスポートされると、sourceAnchor は変更できなくなります。 オブジェクトがエクスポートされると、Azure AD が受け取った **sourceAnchor** 値を使用してメタバース属性 **cloudSourceAnchor** が設定されます。 **sourceAnchor** が変更され、**cloudSourceAnchor** と一致しない場合、**Out to AAD – User Join** というルールによって **[sourceAnchor 属性が変更されました]** というエラーがスローされます。 この場合、オブジェクトを再度同期できるようにする前に、構成またはデータを修正して、同じ sourceAnchor がメタバースに再び存在するようにする必要があります。
+オブジェクトが Azure AD にエクスポートされると、sourceAnchor は変更できなくなります。 オブジェクトがエクスポートされると、Azure AD が受け取った **sourceAnchor** 値を使用してメタバース属性 **cloudSourceAnchor** が設定されます。 **sourceAnchor** が変更され、**cloudSourceAnchor** と一致しない場合、**Out to AAD – User Join** というルールによって "**sourceAnchor 属性が変更されました**" というエラーがスローされます。 この場合、オブジェクトを再度同期できるようにする前に、構成またはデータを修正して、同じ sourceAnchor がメタバースに再び存在するようにする必要があります。
 
 ## <a name="additional-resources"></a>その他のリソース
-* [Azure AD Connect Sync: 同期オプションのカスタマイズ](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同期: 同期オプションをカスタマイズする](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)

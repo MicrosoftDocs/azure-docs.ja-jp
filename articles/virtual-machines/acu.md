@@ -3,18 +3,18 @@ title: Azure コンピューティング ユニットの概要
 description: Azure コンピューティング ユニットの概念の概要。 ACU は、Azure SKU 間の CPU パフォーマンスを比較する方法を提供します。
 author: mimckitt
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: azure-compute-unit
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
 ms.reviewer: davberg
-ms.openlocfilehash: ba8c3f730897c01c52aaf4499269425426d0b7b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae37771cd9e48f450ae538174b9bed9cfa866f9d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667182"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102565531"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure コンピューティング ユニット (ACU)
 

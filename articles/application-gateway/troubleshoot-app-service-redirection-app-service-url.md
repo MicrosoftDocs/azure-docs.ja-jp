@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
 ms.openlocfilehash: 1cc7df755198461643703cac988c8c31f2ac25db
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96182888"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Application Gateway での App Service に関する問題のトラブルシューティング
@@ -39,8 +39,8 @@ App Service では、リダイレクト応答を送信するとき、その応�
 
 ## <a name="sample-configuration"></a>サンプル構成
 
-- HTTP リスナー:基本またはマルチサイト
-- バックエンド アドレス プール:App Service
+- HTTP リスナー: 基本またはマルチサイト
+- バックエンド アドレス プール: App Service
 - HTTP 設定: **[Pick Hostname from Backend Address]\(バックエンド アドレスからホスト名を選択する\)** を有効にします
 - プローブ: **[Pick Hostname from HTTP Settings]\(HTTP 設定からホスト名を選択する\)** を有効にします
 
@@ -78,14 +78,14 @@ X-Powered-By: ASP.NET
 ```
 前の例では、応答ヘッダーにリダイレクトの状態コード 301 があることがわかります。 location ヘッダーには、元のホスト名 `www.contoso.com` ではなく、App Service のホスト名があります。
 
-## <a name="solution-rewrite-the-location-header"></a>解決方法:location ヘッダーを書き換える
+## <a name="solution-rewrite-the-location-header"></a>ソリューション: location ヘッダーを書き換える
 
 location ヘッダーのホスト名をアプリケーション ゲートウェイのドメイン名に設定します。 これを行うには、応答の location ヘッダーに azurewebsites.net が含まれているかどうかを評価する条件で書き換え[規則](./rewrite-http-headers.md)を作成します。 また、location ヘッダーを書き換えてアプリケーション ゲートウェイのホスト名を含めるようにするアクションも、これによって実行する必要があります。 詳細は、[location ヘッダーの書き換え方法](./rewrite-http-headers.md#modify-a-redirection-url)に関する記事の手順を参照してください。
 
 > [!NOTE]
 > HTTP ヘッダーの書き換えのサポートは、Application Gateway の [Standard_v2 と WAF_v2 SKU](./application-gateway-autoscaling-zone-redundant.md) でのみ利用できます。 v1 SKU を使用する場合、[v1 から v2 に移行する](./migrate-v1-v2.md)ことをお勧めします。 v2 SKU で利用できる書き換えやその他の[高度な機能](./application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku)を使用することがあります。
 
-## <a name="alternate-solution-use-a-custom-domain-name"></a>代替ソリューション:カスタム ドメイン名の使用
+## <a name="alternate-solution-use-a-custom-domain-name"></a>代替ソリューション: カスタム ドメイン名を使用する
 
 v1 SKU を使用する場合、location ヘッダーを書き換えることはできません。 この機能は v2 SKU でのみ利用できます。 リダイレクトの問題を解決するには、ホストのオーバーライドの代わりに、Application Gateway で受信されるのと同じホスト名を App Service に渡します。
 

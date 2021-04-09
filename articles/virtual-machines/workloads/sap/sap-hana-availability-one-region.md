@@ -16,10 +16,10 @@ ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 845cecfb6b09591b10de30267b31e6e1a80a7482
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102504322"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>1 つの Azure リージョン内での SAP HANA の可用性

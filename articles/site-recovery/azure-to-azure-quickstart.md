@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 03/27/2020
 ms.custom: mvc
 ms.openlocfilehash: 8681ccaac30402927005e5e8802d7da2bddc2c5c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86135708"
 ---
 # <a name="quickstart-set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>クイック スタート:Azure VM のセカンダリ Azure リージョンへのディザスター リカバリーの設定
@@ -48,7 +48,7 @@ ms.locfileid: "86135708"
 1. **[操作]** で、 **[ディザスター リカバリー]** を選択します。
 1. レプリケーションの詳細を表示するには、 **[概要]** から **[Essentials]\(基本\)** を選択します。 **[正常性と状態]** 、 **[フェールオーバーの準備]** 、 **[インフラストラクチャ ビュー]** のマップに詳しい情報が表示されます。
 
-   :::image type="content" source="media/azure-to-azure-quickstart/replication-status.png" alt-text="レプリケーションを有効にする。":::
+   :::image type="content" source="media/azure-to-azure-quickstart/replication-status.png" alt-text="レプリケーションの状態。":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -65,7 +65,7 @@ ms.locfileid: "86135708"
 1. **[概要]** から **[レプリケーションの無効化]** を選択します。
 1. Site Recovery 拡張機能をアンインストールするには、VM の **[設定]**  >  **[拡張機能]** に移動します。
 
-   :::image type="content" source="media/azure-to-azure-quickstart/disable2-replication.png" alt-text="レプリケーションを有効にする。":::
+   :::image type="content" source="media/azure-to-azure-quickstart/disable2-replication.png" alt-text="レプリケーションを無効にする。":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
 ms.openlocfilehash: 4bf0353148a5f8474270b314a85d55c3cfd753ab
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99257563"
 ---
 # <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>クイック スタート:Azure Active Directory (Azure AD) テナントを使用して ID 管理を行っているアプリケーションの一覧を表示する

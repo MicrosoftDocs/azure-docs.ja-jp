@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: b63db3d02b471a577586ecd54f56caa59af504d6
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 59246c3739ad4de27e65641cc9d2154b33a6ee5e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805514"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008435"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>API コネクタをサインアップ ユーザー フローに追加する (プレビュー)
 
@@ -34,12 +34,36 @@ ms.locfileid: "99805514"
 
 5. 呼び出しの表示名を指定します。 例: **ユーザー情報の検証**。
 6. API 呼び出しの **[エンドポイント URL]** を指定します。
-7. API の認証情報を指定します。
+7. **[認証の種類]** を選択し、API を呼び出すための認証情報を構成します。 API のセキュリティ保護に関するオプションについては、以下のセクションを参照してください。
 
-   - 現在サポートされているのは [基本認証] のみです。 開発目的で基本認証を使用せずに API を使用する場合は、API で無視できる "ダミー" の **[ユーザー名]** と **[パスワード]** を入力するだけです。 Azure 関数で API キーを使用するには、コードをクエリ パラメーターとして **[エンドポイント URL]** に含めることができます (例: `https://contoso.azurewebsites.net/api/endpoint?code=0123456789`)。
+    ![API コネクタの構成](./media/add-api-connector/api-connector-config.png)
 
-   ![新しい API コネクタを構成する](./media/add-api-connector/api-connector-config.png)
 8. **[保存]** を選択します。
+
+## <a name="securing-the-api-endpoint"></a>API エンドポイントのセキュリティ保護
+API エンドポイントを保護するには、HTTP 基本認証または HTTPS クライアント証明書認証 (プレビュー) を使用します。 どちらの場合も、API エンドポイントを呼び出すときに Azure AD B2C によって使用される資格情報を指定します。 次に、API エンドポイントは資格情報を確認し、承認の決定を行います。
+
+### <a name="http-basic-authentication"></a>HTTP 基本認証
+HTTP 基本認証は [RFC 2617](https://tools.ietf.org/html/rfc2617) で定義されています。 Azure AD B2C は、`Authorization` ヘッダー内にクライアント資格情報 (`username` および `password`) を持つ HTTP 要求を送信します。 資格情報は、Base64 でエンコードされた文字列 `username:password` として書式設定されます。 API は、API 呼び出しを拒否するかどうかを判断するために、これらの値をチェックします。
+
+### <a name="https-client-certificate-authentication-preview"></a>HTTPS クライアント証明書認証 (プレビュー)
+
+> [!IMPORTANT]
+> この機能はプレビュー段階であり、サービス レベル アグリーメントなしで提供されます。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+クライアント証明書の認証は証明書ベースの相互認証であり、クライアントがクライアント証明書をサーバーに提供し、その ID を証明します。 この場合、Azure AD B2C は API コネクタ構成の一部としてアップロードした証明書を使用します。 これは、SSL ハンドシェイクの一部として発生します。 適切な証明書を持つサービスのみが、REST API サービスにアクセスできます。 クライアント証明書は、X.509 デジタル証明書です。 運用環境では、証明機関によって署名されている必要があります。 
+
+
+証明書を作成するには、[Azure Key Vault](../key-vault/certificates/create-certificate.md) を使用できます。これには、自己署名証明書のオプションと、署名された証明書の証明書発行者プロバイダーとの統合があります。 その後、[証明書をエクスポート](../key-vault/certificates/how-to-export-certificate.md)し、API コネクタ構成で使用するためにアップロードできます。 パスワードは、パスワードで保護されている証明書ファイルにのみ必要です。 PowerShell の [New-SelfSignedCertificate](./secure-rest-api.md#prepare-a-self-signed-certificate-optional) コマンドレットを使用して自己署名証明書を生成することもできます。
+
+Azure App Service と Azure Functions については、[TLS 相互認証の構成](../app-service/app-service-web-configure-tls-mutual-auth.md)に関するページで、API エンドポイントから証明書を有効化および検証する方法をご覧ください。
+
+証明書の有効期限がまもなく切れることを知らせるリマインダー アラートを設定することをお勧めします。 既存の API コネクタに新しい証明書をアップロードするには、**API コネクタ (プレビュー)** で API コネクタを選択し、 **[新しい証明書のアップロード]** をクリックします。 開始日は過ぎていても有効期限が切れていない、直近でアップロードされた証明書が、Azure AD B2C によって自動的に使用されます。
+
+### <a name="api-key"></a>API キー
+一部のサービスは、開発時に HTTP エンドポイントへのアクセスを難読化するために "API キー" メカニズムを使用しています。 [Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) に対しては、`code` を **エンドポイント URL** にクエリ パラメーターとして含めることで、これを実現できます。 たとえば、`https://contoso.azurewebsites.net/api/endpoint`<b>`?code=0123456789`</b> です。 
+
+これは、運用環境で単独で使用する必要があるメカニズムではありません。 そのため、基本認証または証明書認証の構成は常に必要です。 開発上の目的により、いずれの認証方法も実装しない場合 (非推奨) は、基本認証を選択し、(API で承認を実装している 間は API が無視できる) `username` と `password` に一時的な値を使用します。
 
 ## <a name="the-request-sent-to-your-api"></a>API に送信される要求
 API コネクタによってユーザー属性 ("要求") が **HTTP POST** 要求として具体化され、JSON 本文のキーと値のペアとして送信されます。 属性は [Microsoft Graph](/graph/api/resources/user#properties) ユーザー プロパティと同様にシリアル化されます。 
@@ -75,7 +99,7 @@ Content-type: application/json
 
 **[Azure AD B2C]** の **[ユーザー属性]** のエクスペリエンスで一覧表示されるユーザー プロパティとカスタム属性だけが、要求で送信できます。
 
-カスタム属性は、ディレクトリ内に **extension_\<extensions-app-id>_CustomAttribute** の形式で存在しています。 API では、これと同じシリアル化された形式で要求を受け取ることを想定しています。 カスタム属性の詳細については、「[Azure Active Directory B2C でカスタム属性を定義する](user-flow-custom-attributes.md)」を参照してください。
+カスタム属性は、ディレクトリ内に **extension_\<extensions-app-id>_CustomAttribute** の形式で存在しています。 API では、これと同じシリアル化された形式で要求を受け取ることを想定しています。 カスタム属性の詳細については、[Azure AD B2C でカスタム属性を定義する方法](user-flow-custom-attributes.md)に関するページを参照してください。
 
 また、**UI ロケール ("ui_locales")** 要求は、すべての要求で既定で送信されます。 これによって、デバイスで構成されているユーザーのロケールがわかります。API ではこれを使用して、国際化応答を返すことができます。
 
@@ -155,13 +179,6 @@ API に送信される正確な要求は、ID プロバイダーによって提�
 
 サインアップ プロセスのこのステップでの API コネクタは、属性コレクション ページが含まれている場合、その後に呼び出されます。 このステップは、ユーザー アカウントが作成される前に必ず呼び出されます。
 
-<!-- The following are examples of scenarios you might enable at this point during sign-up: -->
-<!-- 
-- Validate user input data and ask a user to resubmit data.
-- Block a user sign-up based on data entered by the user.
-- Perform identity verification.
-- Query external systems for existing data about the user and overwrite the user-provided value. -->
-
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>この手順で API に送信される要求の例
 
 ```http
@@ -237,9 +254,8 @@ Content-type: application/json
 }
 ```
 
-| パラメーター                                          | Type              | 必須 | 説明                                                                                                                                                                                                                                                                            |
+| パラメーター                                          | 種類              | 必須 | 説明                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| version                                            | String            | はい      | API のバージョン。                                                                                                                                                                                                                                                                |
 | action                                             | String            | はい      | 値は `Continue` とする必要があります。                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | いいえ       | 戻り値を使用すると、ユーザーから収集された値を上書きすることができます。 また、 **[アプリケーション要求]** として選択されている場合は、値をトークンで返すことができます。                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | いいえ       | 要求に `_<extensions-app-id>_` が含まれている必要はありません。 戻り値を使用すると、ユーザーから収集された値を上書きすることができます。 また、 **[アプリケーション要求]** として選択されている場合は、値をトークンで返すことができます。  |
@@ -258,7 +274,7 @@ Content-type: application/json
 
 ```
 
-| パラメーター   | Type   | 必須 | 説明                                                                |
+| パラメーター   | 種類   | 必須 | 説明                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | version     | String | はい      | API のバージョン。                                                    |
 | action      | String | はい      | 値は `ShowBlockPage` とする必要があります                                              |
@@ -269,8 +285,6 @@ Content-type: application/json
 ![ブロック ページの例](./media/add-api-connector/blocking-page-response.png)
 
 ### <a name="example-of-a-validation-error-response"></a>検証エラー応答の例
-
-
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -284,7 +298,7 @@ Content-type: application/json
 }
 ```
 
-| パラメーター   | Type    | 必須 | 説明                                                                |
+| パラメーター   | 種類    | 必須 | 説明                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | version     | String  | はい      | API のバージョン。                                                    |
 | action      | String  | はい      | 値は `ValidationError` とする必要があります。                                           |
@@ -311,7 +325,7 @@ Azure Functions の HTTP トリガーなどのサーバーレス機能を使用�
 * API によって、受け取った要求の null 値が明示的に確認されます。
 * API が可能な限り迅速に応答することで、スムーズなユーザー エクスペリエンスが保証されます。
     * サーバーレス機能またはスケーラブルな Web サービスを使用している場合は、API を運用環境で "起動状態" または "ウォーム状態" に保つホスティング プランを 使用します。 Azure Functions の場合は、[Premium プラン](../azure-functions/functions-scale.md)を使用することをお勧めします。
-
+ 
 
 ### <a name="use-logging"></a>ログの使用
 一般に、予期しないエラー コード、例外、およびパフォーマンスの低下について API を監視するには、ご使用の Web API サービスによって有効になっているログ ツール ([Application insights](../azure-functions/functions-monitoring.md) など) を使うと便利です。
@@ -321,5 +335,4 @@ Azure Functions の HTTP トリガーなどのサーバーレス機能を使用�
 * 長い応答時間について API を監視します。
 
 ## <a name="next-steps"></a>次の手順
-<!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
 - [サンプル](code-samples.md#api-connectors)を使用して作業を開始します。

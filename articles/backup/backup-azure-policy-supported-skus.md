@@ -4,15 +4,15 @@ description: バックアップによって提供される組み込みの Azure 
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.openlocfilehash: 4658d1beffe707682e173491edea1eac0db9c811
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "82183621"
 ---
 # <a name="supported-vm-skus-for-azure-policy"></a>Azure Policy 向けにサポートされる VM SKU
 
-Azure Backup には、**サブスクリプションまたはリソース グループ内の指定された場所にあるすべての Azure VM** に割り当てることができる組み込みのポリシー (Azure Policy を使用) が用意されています。 このポリシーが特定のスコープに割り当てられると、そのスコープ内に作成されたすべての新しい VM は、**同じ場所およびサブスクリプション内の既存のコンテナー**にバックアップするように自動的に構成されます。 次の表は、このポリシーでサポートされているすべての VM SKU を示しています。
+Azure Backup には、**サブスクリプションまたはリソース グループ内の指定された場所にあるすべての Azure VM** に割り当てることができる組み込みのポリシー (Azure Policy を使用) が用意されています。 このポリシーが特定のスコープに割り当てられると、そのスコープ内に作成されたすべての新しい VM は、**同じ場所およびサブスクリプション内の既存のコンテナー** にバックアップするように自動的に構成されます。 次の表は、このポリシーでサポートされているすべての VM SKU を示しています。
 
 ## <a name="supported-vms"></a>サポートされている VM*
 

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 60c43adddd4799a639c2d58e0293086eb1776588
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98791090"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>チュートリアル: Azure で実行されている Service Fabric クラスターを削除する
@@ -98,7 +98,7 @@ Remove-AzResource -ResourceName "<name of the Resource>" -ResourceType "Microsof
 az resource delete --name "<name of the Resource>" --resource-type "Microsoft.ServiceFabric/clusters" --resource-group $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、以下の内容を学習しました。
 

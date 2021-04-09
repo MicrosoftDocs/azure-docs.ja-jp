@@ -4,10 +4,10 @@ description: 既存のアプリケーションを Service Fabric クラスター
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 8b808d092001196a4d2150e44d508e031db95554
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017748"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>既存の実行可能ファイルを Service Fabric にデプロイする
@@ -55,7 +55,7 @@ ApplicationPackageRoot には、アプリケーションを定義する Applicat
 
 * *Code*。 このディレクトリにはサービス コードが含まれています。
 * *Config*:settings.xml ファイル (および、必要に応じてその他のファイル) が含まれています。実行時にサービスがこのファイルにアクセスし、特定の構成設定を取得します。
-* *Data*:追加のローカル データが格納されている追加ディレクトリ。 サービスでこのデータが必要になる場合があります。 データは、一時的なデータのみを格納します。 フェールオーバー中など、サービスの再配置が必要な場合、Service Fabric ではこのデータ ディレクトリには変更がコピー/レプリケートされません。
+* *データ*。 サービスでこのデータが必要になる場合があります。 データは、一時的なデータのみを格納します。 フェールオーバー中など、サービスの再配置が必要な場合、Service Fabric ではこのデータ ディレクトリには変更がコピー/レプリケートされません。
 
 > [!NOTE]
 > `config` ディレクトリと `data` ディレクトリは、必要がなければ作成する必要はありません。

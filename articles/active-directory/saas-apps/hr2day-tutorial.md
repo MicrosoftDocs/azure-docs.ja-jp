@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 94b152c842845433a55c8c1e285adabda1591260
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92442962"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>チュートリアル:Azure Active Directory と HR2day by Merces の統合
@@ -41,7 +41,7 @@ HR2day by Merces と Azure AD の統合を構成するには、次のものが�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* HR2day by Merces では、 **SP** によって開始される SSO がサポートされます
+* HR2day by Merces では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-hr2day-by-merces-from-the-gallery"></a>ギャラリーからの HR2day by Merces の追加
 
@@ -61,13 +61,13 @@ Azure AD への HR2day by Merces の統合を構成するには、ギャラリ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **HR2day by Merces** 」と入力し、結果パネルで **[HR2day by Merces]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**HR2day by Merces**」と入力し、結果パネルで **[HR2day by Merces]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果一覧の HR2day by Merces](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、HR2day by Merces で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、HR2day by Merces で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと HR2day by Merces 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 HR2day by Merces で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -115,7 +115,7 @@ HR2day by Merces で Azure AD シングル サインオンを構成するには�
     > [!NOTE]
     > SAML アサーションを構成する前に、[HR2day by Merces クライアント サポート チーム](mailto:servicedesk@merces.nl)に連絡し、テナントの一意識別子属性の値を請求する必要があります。 次のセクションの手順を完了するには、この値が必要です。
 
-6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、 **編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
     | 名前 |  ソース属性 |
     | ---------- | ----------- |
@@ -177,7 +177,7 @@ HR2day by Merces で Azure AD シングル サインオンを構成するには�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

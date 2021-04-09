@@ -15,14 +15,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3afeadff71bd373354b891bd6690d94d28fc0805
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92096353"
 ---
 # <a name="custom-installation-of-azure-active-directory-connect"></a>Azure Active Directory Connect のカスタム インストール
-Azure Active Directory (Azure AD) Connect の " *カスタム設定* " は、より多くのインストール オプションが必要な場合に使用します。 これらの設定は、たとえば複数のフォレストがある場合、またはオプションの機能を構成する場合に使用します。 [高速インストール](how-to-connect-install-express.md)では対象のデプロイまたはトポロジのニーズに対応できないすべての場合に、カスタム設定を使用します。
+Azure Active Directory (Azure AD) Connect の "*カスタム設定*" は、より多くのインストール オプションが必要な場合に使用します。 これらの設定は、たとえば複数のフォレストがある場合、またはオプションの機能を構成する場合に使用します。 [高速インストール](how-to-connect-install-express.md)では対象のデプロイまたはトポロジのニーズに対応できないすべての場合に、カスタム設定を使用します。
 
 前提条件:
 - [Azure AD Connect のダウンロード](https://go.microsoft.com/fwlink/?LinkId=615771)。
@@ -96,8 +96,8 @@ Azure AD Connect では、Active Directory ドメイン サービス (Azure AD D
 
 | オプション | 説明 |
 | --- | --- |
-| 新しいアカウントを作成します | ディレクトリ同期中に Azure AD Connect が Active Directory フォレストに接続するために必要とする Azure AD DS アカウントを作成します。 このオプションを選択した後、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。  Azure AD Connect は指定したエンタープライズ管理者アカウントを使用して、必要な AD DS アカウントを作成します。 ドメイン部分は、NetBIOS 形式または FQDN 形式で入力できます。 つまり、 *FABRIKAM\administrator* または *fabrikam.com\administrator* と入力します。 |
-| 既存のアカウントを使用します | ディレクトリ同期中に Azure AD Connect が Active Directory フォレストに接続するために使用できる Azure AD DS アカウントを作成します。 ドメイン部分は、NetBIOS 形式または FQDN 形式で入力できます。 つまり、 *FABRIKAM\syncuser* または *fabrikam.com\syncuser* と入力します。 このアカウントには既定の読み取りアクセス許可が必要なだけなので、通常のユーザー アカウントを指定できます。 ただし、シナリオによっては、アクセス許可がさらに必要になることがあります。 詳細については、[Azure AD Connect アカウントとアクセス許可](reference-connect-accounts-permissions.md#create-the-ad-ds-connector-account)に関するページを参照してください。 |
+| 新しいアカウントを作成します | ディレクトリ同期中に Azure AD Connect が Active Directory フォレストに接続するために必要とする Azure AD DS アカウントを作成します。 このオプションを選択した後、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。  Azure AD Connect は指定したエンタープライズ管理者アカウントを使用して、必要な AD DS アカウントを作成します。 ドメイン部分は、NetBIOS 形式または FQDN 形式で入力できます。 つまり、*FABRIKAM\administrator* または *fabrikam.com\administrator* と入力します。 |
+| 既存のアカウントを使用します | ディレクトリ同期中に Azure AD Connect が Active Directory フォレストに接続するために使用できる Azure AD DS アカウントを作成します。 ドメイン部分は、NetBIOS 形式または FQDN 形式で入力できます。 つまり、*FABRIKAM\syncuser* または *fabrikam.com\syncuser* と入力します。 このアカウントには既定の読み取りアクセス許可が必要なだけなので、通常のユーザー アカウントを指定できます。 ただし、シナリオによっては、アクセス許可がさらに必要になることがあります。 詳細については、[Azure AD Connect アカウントとアクセス許可](reference-connect-accounts-permissions.md#create-the-ad-ds-connector-account)に関するページを参照してください。 |
 
 ![[ディレクトリの接続] ページと [AD フォレスト アカウント] ウィンドウを示すスクリーンショット。ここでは、新しいアカウントを作成したり、既存のアカウントを使用したりできます。](./media/how-to-connect-install-custom/connectdir02.png)
 
@@ -112,9 +112,9 @@ Azure AD Connect では、Active Directory ドメイン サービス (Azure AD D
 
 **[追加されていません]** または **[未確認]** としてマークされているすべてのドメインを確認します。 使用するドメインを Azure AD で検証済みにしてください。 ドメインを確認したら、循環更新アイコンを選択します。 詳細については、[ドメインの追加と検証](../fundamentals/add-custom-domain.md)に関するページを参照してください。
 
-ユーザーは Azure AD と Microsoft 365 にサインインするとき、 *userPrincipalName* 属性を使用します。 ユーザーを同期できるようにするには、まず Azure AD で、UPN サフィックスとも呼ばれるドメインを確認する必要があります。 既定の userPrincipalName 属性のままにしておくことをお勧めします。 
+ユーザーは Azure AD と Microsoft 365 にサインインするとき、*userPrincipalName* 属性を使用します。 ユーザーを同期できるようにするには、まず Azure AD で、UPN サフィックスとも呼ばれるドメインを確認する必要があります。 既定の userPrincipalName 属性のままにしておくことをお勧めします。 
 
-userPrincipalName 属性がルーティング不可能で、検証できない場合は、別の属性を選択できます。 たとえば、サインイン ID を保持する属性として電子メールを選択することができます。 userPrincipalName 以外の属性を使用する場合、これは " *代替 ID* " と呼ばれます。 
+userPrincipalName 属性がルーティング不可能で、検証できない場合は、別の属性を選択できます。 たとえば、サインイン ID を保持する属性として電子メールを選択することができます。 userPrincipalName 以外の属性を使用する場合、これは "*代替 ID*" と呼ばれます。 
 
 代替 ID の属性値は、RFC822 標準に従う必要があります。 代替 ID は、パスワード ハッシュの同期、パススルー認証、およびフェデレーションで使用できます。 Active Directory では、値が 1 つのみであってもこの属性を複数値として定義できません。 代替 ID の詳細については、「[パススルー認証:よく寄せられる質問](./how-to-connect-pta-faq.md#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)」をご覧ください。
 
@@ -323,8 +323,8 @@ Web アプリケーション サーバーが AD FS サーバーとの間にセ�
 ### <a name="specify-the-service-account-for-the-ad-fs-service"></a>AD FS サービスのサービス アカウントを指定します。
 AD FS サービスには、ユーザーを認証し Active Directory のユーザー情報を参照するドメイン サービス アカウントが必要です。 次の 2 種類のサービス アカウントがサポートされます。
 
-* **グループ管理サービス アカウント** : このアカウントの種類は、Windows Server 2012 によって AD DS に導入されました。 この種類のアカウントは、AD FS などのサービスを提供します。 1 つのアカウントであり、パスワードを定期的に更新する必要はありません。 AD FS サーバーが所属するドメインに Windows Server 2012 ドメイン コントローラーが既にある場合は、このオプションを使用してください。
-* **ドメイン ユーザー アカウント** : この種類のアカウントでは、パスワードを入力し、期限が切れたときに定期的に更新する必要があります。 このオプションは、AD FS サーバーが所属するドメインに Windows Server 2012 ドメイン コントローラーがない場合にのみ使用してください。
+* **グループ管理サービス アカウント**: このアカウントの種類は、Windows Server 2012 によって AD DS に導入されました。 この種類のアカウントは、AD FS などのサービスを提供します。 1 つのアカウントであり、パスワードを定期的に更新する必要はありません。 AD FS サーバーが所属するドメインに Windows Server 2012 ドメイン コントローラーが既にある場合は、このオプションを使用してください。
+* **ドメイン ユーザー アカウント**: この種類のアカウントでは、パスワードを入力し、期限が切れたときに定期的に更新する必要があります。 このオプションは、AD FS サーバーが所属するドメインに Windows Server 2012 ドメイン コントローラーがない場合にのみ使用してください。
 
 **グループ管理サービス アカウントの使用** を選択し、Active Directory でこの機能を使用したことがない場合、エンタープライズ管理者の資格情報を入力します。 入力した資格情報は、キー ストアを開始し、Active Directory でこの機能を有効にするために使用されます。
 

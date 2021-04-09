@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/11/2021
 ms.author: yelevin
 ms.openlocfilehash: ea571f9b033ba82709a13c6d32649f3228ee04b1
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98798039"
 ---
 # <a name="manage-watchlists-in-azure-sentinel-using-rest-api"></a>REST API を使用して Azure Sentinel でウォッチリストを管理する
@@ -33,7 +33,7 @@ Azure Sentinel は、一部分が Azure Monitor Log Analytics 上に構築され
 
 すべてのウォッチリスト API コマンドの共通 URI パラメーターを次に示します。
 
-| 名前 | / | 必須 | 型 | [説明] |
+| 名前 | / | 必須 | Type | [説明] |
 |-|-|-|-|-|
 | **{subscriptionId}** | path | yes | GUID | Azure サブスクリプション ID |
 | **{resourceGroupName}** | path | yes | string | サブスクリプション内のリソース グループの名前 |

@@ -8,10 +8,10 @@ ms.date: 12/07/2020
 ms.author: sngun
 ms.custom: subject-monitoring
 ms.openlocfilehash: 5f542b35110a6d967640ad91faead75f6cc0e0c2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100593280"
 ---
 # <a name="monitoring-azure-cosmos-db-data-reference"></a>Azure Cosmos DB データの監視のリファレンス

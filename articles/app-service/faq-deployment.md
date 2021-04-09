@@ -10,10 +10,10 @@ ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 163a6940e50d1f8beacc23855fd1e6f9daad0085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88080475"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure の Web Apps のデプロイに関するよくあるご質問
@@ -73,7 +73,7 @@ FTP の問題を解決するには、次のことを行います。
 
 ## <a name="how-do-i-publish-my-code-to-app-service"></a>App Service にコードを発行するにはどうすればよいですか。
 
-Azure クイック スタートは、お好きなデプロイ スタックと方法を使用してアプリをデプロイできるように設計されています。 クイック スタートを使うには、Azure portal で App Service に移動し、 **[展開]** の **[クイック スタート]** を選択します。
+Azure クイック スタートは、お好きなデプロイ スタックと方法を使用してアプリをデプロイできるように設計されています。 クイック スタートを使うには、Azure portal で App Service に移動し、**[展開]** の **[クイック スタート]** を選択します。
 
 ## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>App Service へのデプロイ後にアプリが再起動することがありますが、これはなぜですか。
 

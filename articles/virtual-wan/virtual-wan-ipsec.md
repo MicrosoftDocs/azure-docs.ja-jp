@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/24/2021
 ms.author: cherylmc
 ms.openlocfilehash: 94225ea6ef8b53a83388b2be6ea3b32c1e5204bf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101726684"
 ---
 # <a name="site-to-site-ipsec-policies"></a>サイト間 IPsec ポリシー

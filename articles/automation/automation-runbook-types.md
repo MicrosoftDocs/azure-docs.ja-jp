@@ -3,14 +3,14 @@ title: Azure Automation の Runbook の種類
 description: この記事では、Azure Automation で使用できる Runbook の種類と、使用する種類を決定する際の考慮事項について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 01/08/2021
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: c1398d25b6d2540abea0012acd69555e5e53e25c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 067096943cd95913077ada817c94640ff5264520
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050971"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "100634891"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation の Runbook の種類
 
@@ -101,6 +101,11 @@ PowerShell ワークフロー Runbook は、 [Windows PowerShell ワークフロ
 ## <a name="python-runbooks"></a>Python Runbook
 
 Python Runbook は Python 2 および Python 3 でコンパイルされます。 Python 3 Runbook は現在プレビュー段階です。 Azure portal のテキスト エディターを使用して、Runbook のコードを直接編集することができます。 また、任意のオフライン テキスト エディターを使用したり、Azure Automation に [Runbook をインポート](manage-runbooks.md)したりすることもできます。
+
+Python 3 の Runbook は、次の Azure グローバル インフラストラクチャでサポートされています。
+
+* Azure グローバル
+* Azure Government
 
 ### <a name="advantages"></a>長所
 

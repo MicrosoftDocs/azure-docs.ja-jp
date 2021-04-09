@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.custom: references_regions
-ms.openlocfilehash: 6c0cc1c8da6fddfad6d3f70c88860ddcdd35a11a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ef9e3689f5846ddfc66c47a15967a18fc6550d35
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182419"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102504254"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する
 
@@ -24,10 +24,9 @@ ms.locfileid: "102182419"
 
 * AKS クラスターの仮想ネットワークでは、送信インターネット接続を許可する必要があります。
 * AKS クラスターでは、Kubernetes サービスのアドレス範囲、ポッド アドレス範囲、またはクラスターの仮想ネットワーク アドレス範囲に `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16`、`192.0.2.0/24` を使用することはできません。
-* AKS クラスターで使用されるサービス プリンシパルには、少なくとも、ご利用の仮想ネットワーク内のサブネットに対する[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)アクセス許可が必要です。 組み込みのネットワークの共同作成者ロールを使用する代わりに、[カスタム ロール](../role-based-access-control/custom-roles.md)を定義する場合は、次のアクセス許可が必要です。
+* AKS クラスターで使用されるクラスター ID には、少なくとも、ご利用の仮想ネットワーク内のサブネットに対する[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)のアクセス許可が必要です。 組み込みのネットワークの共同作成者ロールを使用する代わりに、[カスタム ロール](../role-based-access-control/custom-roles.md)を定義する場合は、次のアクセス許可が必要です。
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
-* サービス プリンシパルの代わりに、システム割り当てのマネージド ID をアクセス許可のために使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。
 * AKS ノード プールに割り当てられたサブネットを[委任されたサブネット](../virtual-network/subnet-delegation-overview.md)にすることはできません。
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>クラスターの IP アドレス指定を計画する
@@ -100,7 +99,7 @@ AKS クラスターを作成するときに、Azure CNI ネットワーク用に
 
 **Azure ネットワーク プラグイン**: Azure ネットワーク プラグインが使用されている場合、"externalTrafficPolicy = Local" の内部 LoadBalancer サービスには、AKS クラスターに属さない clusterCIDR の IP で VM からアクセスすることはできません。
 
-**Kubernetes サービスのアドレス範囲**: このパラメーターは、Kubernetes によってクラスターの内部[サービス][services]に割り当てられる仮想 IP のセットです。 次の要件を満たす任意のプライベート アドレス範囲を使用できます。
+**Kubernetes サービスのアドレス範囲**: このパラメーターは、Kubernetes によってクラスターの内部 [サービス][services]に割り当てられる仮想 IP のセットです。 次の要件を満たす任意のプライベート アドレス範囲を使用できます。
 
 * クラスターの仮想ネットワークの IP アドレス範囲に含まれていてはなりません
 * クラスターの仮想ネットワークがピアリングする他の仮想ネットワークと重複していてはなりません

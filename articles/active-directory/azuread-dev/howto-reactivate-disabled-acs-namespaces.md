@@ -14,13 +14,13 @@ ms.reviewer: jlu
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7bb572e9e22519491290e54417f5ca350d6c0b5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85383719"
 ---
-# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>方法:無効化された Access Control Service 名前空間を再アクティブ化する
+# <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>方法: 無効化された Access Control Service 名前空間を再度有効化する
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
@@ -126,4 +126,4 @@ Microsoft では、2019 年 1 月 21 日より、新しい延長要請を受け�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[方法: Azure Access Control Service からの移行](active-directory-acs-migration.md)」を参照して、ACS の提供終了に関する情報を確認します。
+- 「[方法: Azure Access Control Service からの移行](active-directory-acs-migration.md)」で ACS サービス終了に関する情報を確認します。

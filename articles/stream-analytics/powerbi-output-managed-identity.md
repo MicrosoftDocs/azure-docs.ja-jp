@@ -6,14 +6,14 @@ author: enkrumah
 ms.author: ebnkruma
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: b468df97f168562f4f5ce9e0e6d6e9a70835648b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 7c1ddbbbd8198cf769e89cfa824de370184a992c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102436109"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589686"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する (プレビュー)
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する
 
 Power BI への出力の[マネージド ID 認証](../active-directory/managed-identities-azure-resources/overview.md)により、Stream Analytics ジョブは Power BI アカウント内のワークスペースに直接アクセスできるようになります。 この機能を使用すると、Stream Analytics ジョブのデプロイを完全に自動化できます。これは、ユーザーが Azure portal 経由で Power BI に対話形式でログインする必要がなくなったためです。 さらに、ジョブを定期的に再認証する必要がないため、Power BI に書き込む長時間実行ジョブのサポートが強化されました。
 

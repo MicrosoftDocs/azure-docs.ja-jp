@@ -1,21 +1,16 @@
 ---
-title: Defender for IoT マイクロ エージェントのトラブルシューティング
-titleSuffix: Azure Defender for IoT
+title: Defender for IoT マイクロ エージェントのトラブルシューティング (プレビュー)
 description: 予期しないまたは原因不明のエラーを処理する方法について説明します。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/24/2021
 ms.topic: reference
-ms.service: azure
-ms.openlocfilehash: dade0d0d5dc4d690ea94f20deaf956b1e079bad7
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 51550a4d3e5042fed7cadc4eac10a0074e954f19
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124178"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782454"
 ---
-# <a name="defender-iot-micro-agent-troubleshooting"></a>Defender for IoT マイクロ エージェントのトラブルシューティング 
+# <a name="defender-iot-micro-agent-troubleshooting-preview"></a>Defender for IoT マイクロ エージェントのトラブルシューティング (プレビュー)
 
 予期しないまたは原因不明のエラーが発生した場合は、次のトラブルシューティング方法を使用して、問題の解決を試みてください。 必要に応じて、Azure Defender for IoT 製品チームにもお問い合わせいただけます。   
 

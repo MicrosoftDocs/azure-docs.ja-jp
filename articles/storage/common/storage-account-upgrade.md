@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 03/09/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 50a0894898dcdc817ee253ad326b88a9bb61b9d6
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 85520032e9bc63b6296e40dd1c1055e36762dcc8
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357366"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102555008"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントにアップグレードする
 
@@ -24,6 +24,15 @@ ms.locfileid: "97357366"
 
 > [!IMPORTANT]
 > 汎用 v1 または BLOB ストレージ アカウントから汎用 v2 へのアップグレードは永続的であり、元に戻すことはできません。
+
+> [!NOTE]
+> Microsoft ではほとんどのシナリオで汎用 v2 アカウントを推奨していますが、Microsoft では新規および既存のお客様向けに汎用 v1 アカウントを引き続きサポートしています。 これらのリージョンで Azure Storage を利用できる場合は常に、新しいリージョンに汎用 v1 ストレージ アカウントを作成できます。 Microsoft では、現時点で汎用 v1 アカウントのサポートを廃止する予定はなく、Azure Storage 機能のサポート終了の少なくとも 1 年前に事前通知する予定です。 Microsoft では、汎用 v1 アカウントのセキュリティ更新プログラムを引き続き提供しますが、このアカウントの種類に対して新しい機能の開発は予定されていません。
+>
+> 2020 年 10 月 1 日の時点で、新しい Azure Storage リージョンでの汎用 v1 アカウントの価格は、これらのリージョンの汎用 v2 アカウントの料金と同じです。 既存の Azure Storage リージョンの価格は変更されていません。 特定のリージョンの汎用 v1 アカウントの価格の詳細については、Azure Storage の価格ページを参照してください。 リージョンを選択し、 **[価格プラン]** の横にある **[その他]** を選択してください。
+
+## <a name="upgrade-an-account"></a>アカウントのアップグレード
+
+汎用 v1 または BLOB ストレージ アカウントを汎用 v2 アカウントにアップグレードするには、Azure portal、PowerShell、または Azure CLI を使用します。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -47,6 +56,7 @@ PowerShell を使用して汎用 v1 アカウントを汎用 v2 アカウント�
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -Name <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLI を使用して汎用 v1 アカウントを汎用 v2 アカウントにアップグレードするには、まず Azure CLI の最新バージョンをインストールします。 CLI のインストールについては、[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。

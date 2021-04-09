@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 372d04d5dd240dd1ccde087e07c3d33bbee7abde
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92522171"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qprism"></a>チュートリアル: Azure Active Directory と QPrism の統合
@@ -41,13 +41,13 @@ QPrism と Azure AD の統合を構成するには、次のものが必要です
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* QPrism では、 **SP** Initiated SSO がサポートされます
+* QPrism では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-qprism-from-the-gallery"></a>ギャラリーからの QPrism の追加
 
 Azure AD への QPrism の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に QPrism を追加する必要があります。
 
-**ギャラリーから QPrism を追加するには、次の手順に従います。**
+**ギャラリーから QPrism を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
@@ -61,13 +61,13 @@ Azure AD への QPrism の統合を構成するには、ギャラリーから管
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **QPrism** 」と入力し、結果パネルで **[QPrism]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**QPrism**」と入力し、結果パネルで **[QPrism]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の QPrism](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、QPrism で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、QPrism で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと QPrism 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 QPrism で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -114,7 +114,7 @@ QPrism で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="configure-qprism-single-sign-on"></a>QPrism シングル サインオンの構成
 
-**QPrism** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [QPrism サポート チーム](mailto:qsupport-ce@quatrro.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**QPrism** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [QPrism サポート チーム](mailto:qsupport-ce@quatrro.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -132,7 +132,7 @@ QPrism で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -144,7 +144,7 @@ QPrism で Azure AD シングル サインオンを構成するには、次の�
 
 このセクションでは、Britta Simon に QPrism へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[QPrism]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[QPrism]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

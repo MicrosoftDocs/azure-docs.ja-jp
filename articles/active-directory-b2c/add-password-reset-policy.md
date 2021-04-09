@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b82d573b7d8a65447d75aa8f017c87795bbef6cd
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: fa34e8ea71c307b75a3f345861f8ed99d131b3fd
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102171656"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447930"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でパスワードのリセット フローを設定する
 
@@ -203,6 +203,24 @@ ms.locfileid: "102171656"
     ```xml
     <ClaimsExchange Id="ForgotPasswordExchange" TechnicalProfileReferenceId="ForgotPassword" />
     ```
+    
+1. 現在のステップと次のステップの間に、次のオーケストレーション ステップを追加します。 追加した新しいオーケストレーション ステップによって、`isForgotPassword` 要求が存在するかどうかが確認されます。 要求が存在する場合は、[パスワード リセットのサブ体験](#add-the-password-reset-sub-journey)が呼び出されます。 
+
+    ```xml
+    <OrchestrationStep Order="3" Type="InvokeSubJourney">
+      <Preconditions>
+        <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
+          <Value>isForgotPassword</Value>
+          <Action>SkipThisOrchestrationStep</Action>
+        </Precondition>
+      </Preconditions>
+      <JourneyList>
+        <Candidate SubJourneyReferenceId="PasswordReset" />
+      </JourneyList>
+    </OrchestrationStep>
+    ```
+    
+1. 新しいオーケストレーション ステップを追加した後、ステップの番号には、1 から N の整数がスキップされずに順番に付け替えられます。
 
 ### <a name="set-the-user-journey-to-be-executed"></a>実行するユーザー体験を設定する
 
@@ -262,7 +280,7 @@ ms.locfileid: "102171656"
 1. ユーザーは **[パスワードを忘れた場合]** リンクを選択します。 Azure AD B2C によって、アプリケーションに AADB2C90118 エラー コードが返されます。
 1. アプリケーションはエラー コードを処理し、新しい承認要求を開始します。 承認要求では、**B2C_1_pwd_reset** などのパスワード リセット ポリシーの名前を指定します。
 
-![パスワードのリセット フロー](./media/add-password-reset-policy/password-reset-flow-legacy.png)
+![レガシ パスワード リセットのユーザー フロー](./media/add-password-reset-policy/password-reset-flow-legacy.png)
 
 例を確認するには、[簡単な ASP.NET サンプル](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI)を参照してください。これに、ユーザー フローのリンクの実例が示されています。
 

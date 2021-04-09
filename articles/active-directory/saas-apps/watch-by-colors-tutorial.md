@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: jeedes
 ms.openlocfilehash: fae276049ec3ff6c4bf96be38ff0d2a952731a15
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92636784"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Watch by Colors の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Watch by Colors では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Watch by Colors では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-watch-by-colors-from-the-gallery"></a>ギャラリーからの Watch by Colors の追加
 
@@ -49,7 +49,7 @@ Azure AD への Watch by Colors の統合を構成するには、ギャラリー
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Watch by Colors** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Watch by Colors**」と入力します。
 1. 結果パネルで **[Watch by Colors]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-watch-by-colors"></a>Watch by Colors の Azure AD シングル サインオンの構成とテスト
@@ -159,9 +159,9 @@ Azure AD ユーザーが Watch by Colors にサインインできるようにす
 
     ![[User Details]\(ユーザーの詳細\) ページを示すスクリーンショット。ここで説明されている値を入力できます。](./media/watch-by-colors-tutorial/config04.png)
 
-    a. **[名]** ボックスに、ユーザーの名を入力します (例: **B** )。
+    a. **[名]** ボックスに、ユーザーの名を入力します (例: **B**)。
 
-    b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon** )。
+    b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon**)。
 
     c. **[電子メール]** ボックスに、ユーザーのメール アドレスを入力します (例: `B.Simon@contoso.com`)。
 

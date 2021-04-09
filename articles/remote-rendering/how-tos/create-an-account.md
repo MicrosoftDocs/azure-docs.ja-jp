@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: 83bd4a7ae0082d24f7ac617719e628f4db4baeb9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98197636"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Azure Remote Rendering アカウントを作成する

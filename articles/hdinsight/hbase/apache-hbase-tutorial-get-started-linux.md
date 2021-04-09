@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/22/2021
-ms.openlocfilehash: 5de98f5bf57626a408dd5bec8575856074f434c7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 50216b83475e92cbabb5ed78c3836264ceff4600
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705672"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866609"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache HBase を使用する
 
@@ -64,11 +64,11 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
 
 多くの場合、データは次のような表形式で表示されます。
 
-![HDInsight Apache HBase の表形式データ](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png)
+:::image type="content" source="./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png" alt-text="HDInsight Apache HBase の表形式データ" border="false":::
 
 HBase ([クラウド BigTable](https://cloud.google.com/bigtable/) の実装) では、同じデータが次のように表示されます。
 
-![HDInsight Apache HBase の BigTable データ](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png)
+:::image type="content" source="./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png" alt-text="HDInsight Apache HBase の BigTable データ" border="false":::
 
 **HBase シェルを使用するには**
 
@@ -111,7 +111,7 @@ HBase ([クラウド BigTable](https://cloud.google.com/bigtable/) の実装) �
     scan 'Contacts'
     ```
 
-    ![HDInsight Apache Hadoop HBase シェル](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png)
+    :::image type="content" source="./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png" alt-text="HDInsight Apache Hadoop HBase シェル" border="false":::
 
 1. `get` コマンドを使用して、行のコンテンツを取り込みます。 次のコマンドを入力します。
 
@@ -331,7 +331,7 @@ HDInsight の HBase には、クラスターを監視するための Web UI が�
 
 1. ページの上部にある **[Quick links]\(クイック リンク\)** を選択し、アクティブな Zookeeper ノード リンクをポイントして、 **[HBase Master UI]** を選択します。  UI は別のブラウザー タブで開かれます。
 
-   ![HDInsight Apache HBase HMaster UI](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
+   :::image type="content" source="./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png" alt-text="HDInsight Apache HBase HMaster UI" border="false":::
 
    HBase Master UI には次のセクションがあります。
 

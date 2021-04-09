@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: eb006482b851e9094b82ec3d0753b74c05296994
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "68727843"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Microsoft Threat Modeling Tool の脅威
@@ -40,7 +40,7 @@ Threat Modeling Tool を使用すると、以下のような特定の質問に�
 
 | カテゴリ | 説明 |
 | -------- | ----------- |
-| **スプーフィング** | 他のユーザーの認証情報 (ユーザー名、パスワードなど) に不正にアクセスし、それを使用する行為などです |
+| **なりすまし** | 他のユーザーの認証情報 (ユーザー名、パスワードなど) に不正にアクセスし、それを使用する行為などです |
 | **改ざん** | 悪意のあるデータの変更などです。 例としては、データベースに保持されているような永続的なデータに対する許可されていない変更や、インターネットなどのオープン ネットワーク経由で 2 台のコンピューター間を流れるデータの変更などがあります |
 | **否認** | 反証できる関係者がいない状況でアクションの実行を否定するユーザーに関連するものです。たとえば、禁止されている操作を追跡できる機能がないシステムでユーザーが不正な操作を行うような場合です。 否認防止とは、否認の脅威に対抗するシステムの機能のことです。 たとえば、商品を購入するユーザーは、受け取り時に署名をする必要があります。 販売者は、署名された受領書をユーザーが荷物を受け取ったことの証拠として使用することができます |
 | **情報漏えい** | 情報へのアクセスが想定されていない個人への情報の暴露などです。たとえば、アクセスが許可されていないファイルをユーザーが読み取ることができたり、侵入者が2 台のコンピューター間で送信されるデータを読み取ることができたりする場合です |
@@ -49,4 +49,4 @@ Threat Modeling Tool を使用すると、以下のような特定の質問に�
 
 ## <a name="next-steps"></a>次のステップ
 
-「 **[Threat Modeling Tool Mitigations](threat-modeling-tool-mitigations.md)** 」(Threat Modeling Tool の軽減策) に進み、これらの脅威 Azure で軽減する方法について学びます。
+「**[Threat Modeling Tool Mitigations](threat-modeling-tool-mitigations.md)**」(Threat Modeling Tool の軽減策) に進み、これらの脅威 Azure で軽減する方法について学びます。

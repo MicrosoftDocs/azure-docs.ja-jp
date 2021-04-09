@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: 989f47c0ff60865a8e8be15e089cdcf96ab2550c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2b4719561ad94d54267410d0af28db6ee8d82b00
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968300"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799107"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Azure App Service での断続的な送信接続エラーのトラブルシューティング
 
@@ -88,8 +88,8 @@ HTTP キープアライブ
 
 HTTP 接続プール
 
-* [Apache の接続管理](https://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html)
-* [クラス PoolingHttpClientConnectionManager](http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/impl/conn/PoolingHttpClientConnectionManager.html)
+* [Apache の接続管理](https://hc.apache.org/httpcomponents-client-5.0.x/)
+* [クラス PoolingHttpClientConnectionManager](https://hc.apache.org/httpcomponents-client-5.0.x/)
 
 #### <a name="php"></a>PHP
 

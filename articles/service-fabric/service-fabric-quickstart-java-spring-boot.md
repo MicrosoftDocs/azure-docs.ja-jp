@@ -1,17 +1,17 @@
 ---
-title: クイック スタート:Azure Service Fabric 上に Spring Boot アプリを作成する
+title: 'クイックスタート: Azure Service Fabric 上に Spring Boot アプリを作成する'
 description: このクイック スタートでは、Spring Boot サンプル アプリケーションを使用して、Azure Service Fabric 用の Spring Boot アプリケーションをデプロイします。
 ms.topic: quickstart
 ms.date: 01/29/2019
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 84ce5920af95113801f468e3149421f3b9bd8901
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91530002"
 ---
-# <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>クイック スタート:Azure Service Fabric 上に Java Spring Boot アプリをデプロイする
+# <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>クイックスタート: Azure Service Fabric 上に Java Spring Boot アプリをデプロイする
 
 このクイックスタートでは、Linux または MacOS で使い慣れたコマンドライン ツールを使用して、Java Spring Boot アプリケーションを Azure Service Fabric にデプロイします。 Azure Service Fabric は、マイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
 
@@ -150,13 +150,13 @@ Service Fabric Explorer は、すべての Service Fabric クラスターで動�
 Web フロントエンド サービスをスケーリングするには、以下を実行します。
 
 1. クラスターで Service Fabric Explorer を開きます (例: `http://localhost:19080`)。
-1. ツリービューで **fabric:/SpringServiceFabric/SpringGettingStarted** ノードの横にある省略記号 ( **...** ) を選択し、 **[サービスのスケール]** を選択します。
+1. ツリービューで **fabric:/SpringServiceFabric/SpringGettingStarted** ノードの横にある省略記号 (**...**) を選択し、**[サービスのスケール]** を選択します。
 
     ![Service Fabric Explorer スケーリング サービスのサンプル](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-scale-sample.png)
 
     次に、スケーリングするサービスのインスタンス数を選択します。
 
-1. 数値を **3** に変更し、 **[サービスのスケール]** を選択します。
+1. 数値を **3** に変更し、**[サービスのスケール]** を選択します。
 
     または、次のコマンドラインを使用してサービスを拡張することもできます。
 
@@ -181,7 +181,7 @@ Web フロントエンド サービスをスケーリングするには、以下
 サービスのフェールオーバーを示すために、Service Fabric Explorer を使用して、ノードの再起動をシミュレートします。 サービス インスタンスが 1 つのみ実行されていることを確認してください。
 
 1. クラスターで Service Fabric Explorer を開きます (例: `http://localhost:19080`)。
-1. サービスのインスタンスを実行しているノードの横にある省略記号 ( **...** ) を選択し、ノードを再起動します。
+1. サービスのインスタンスを実行しているノードの横にある省略記号 (**...**) を選択し、ノードを再起動します。
 
     ![Service Fabric Explorer でのノードの再起動](./media/service-fabric-quickstart-java-spring-boot/service=fabric-explorer-restart=node.png)
 1. サービスのインスタンスは別のノードに移動され、アプリケーションにはダウンタイムは発生しません。

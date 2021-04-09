@@ -5,10 +5,10 @@ ms.date: 01/27/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1eaabfdd78712966f3b21d869259a312db31b7bc
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98917692"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>大規模な Azure リソース データ セットの処理

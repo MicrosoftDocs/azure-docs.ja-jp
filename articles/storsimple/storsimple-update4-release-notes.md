@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 060a52b61dcd43fe0d05b2a8ef594c0ab9f2cc9e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954054"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 シリーズ Update 4 リリース ノート
@@ -66,7 +66,7 @@ Update 4 では、主に次の機能強化とバグ修正が行われていま�
 
 次の表は、Update 4 で修正された問題の概要を示しています。    
 
-| いいえ | 機能 | 問題 | 物理デバイスへの適用 | 仮想デバイスへの適用 |
+| いいえ | 特徴量 | 問題 | 物理デバイスへの適用 | 仮想デバイスへの適用 |
 | --- | --- | --- | --- | --- |
 | 1 |[フェールオーバー] |以前のリリースでは、フェールオーバー後に顧客のサイトでクリーンアップに関する問題が発生していました。 この問題は今回のリリースで修正されました。 |はい |はい |
 | 2 |ローカル固定ボリューム |以前のリリースでは、ローカル固定ボリュームのボリューム作成に関する問題が発生し、ボリュームの作成が失敗することがありました。 このリリースでは、この問題の根本原因が特定され、問題が修正されました。 |はい |いいえ |

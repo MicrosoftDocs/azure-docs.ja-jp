@@ -15,10 +15,10 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: phjensen
 ms.openlocfilehash: 03ffa93a71ded40e033f2068ea23fc6b994a5bbb
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97632159"
 ---
 # <a name="test-azure-application-consistent-snapshot-tool-preview"></a>Azure アプリケーション整合性スナップショット ツールをテストする (プレビュー)

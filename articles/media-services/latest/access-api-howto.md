@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 00808c25ac84da852cce6169fb210767ee2b56cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b59276cc340f133c0f270e8ab95051b3c392e1c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265883"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581288"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Media Services API にアクセスするための資格情報を取得する
 
@@ -37,7 +37,7 @@ Azure AD 認証を使用して Azure Media Services API にアクセスする場
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure アカウント。 アカウントをお持ちでない場合は、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)で作業を開始してください。 
+- Azure アカウント。 アカウントをお持ちでない場合は、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)で作業を開始してください。
 - Media Services アカウント。 詳細については、「[Azure ポータルを使用した Azure Media Services アカウントの作成](create-account-howto.md)」を参照してください。
 
 ## <a name="portal"></a>[ポータル](#tab/portal/)
@@ -46,8 +46,8 @@ Azure AD 認証を使用して Azure Media Services API にアクセスする場
 
 **[API アクセス]** ページでは、API への接続に使用する認証方法を選択できます。 このページには、API に接続するために必要な値も表示されます。
 
-1. [Azure ポータル](https://portal.azure.com/) で Media Services アカウントを選択します。
-2. 左側のナビゲーション バーで **[API access (new)]\(API アクセス (新規)\)** ブレードを選択します。
+1. [Azure Portal](https://portal.azure.com/) で Media Services アカウントを選択します。
+2. 左側のナビゲーション バーで **[API アクセス]** ブレードを選択します。
 3. **[Media Services API に接続する]** で、接続する Media Services API のバージョンを選択します (V3 がサービスの最新バージョンです)。
 
 ### <a name="service-principal-authentication--recommended"></a>サービス プリンシパル認証 (推奨)

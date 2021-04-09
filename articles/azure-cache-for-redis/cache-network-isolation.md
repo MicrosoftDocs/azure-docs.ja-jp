@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/15/2020
 ms.openlocfilehash: ef284661d44f700cf0b5282efcd2e6f7b94fa3b6
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96621520"
 ---
 # <a name="azure-cache-for-redis-network-isolation-options"></a>Azure Cache for Redis のネットワークの分離オプション 

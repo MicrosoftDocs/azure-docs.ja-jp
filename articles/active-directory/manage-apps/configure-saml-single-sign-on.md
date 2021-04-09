@@ -12,10 +12,10 @@ ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.openlocfilehash: f6422c3f751a7aaa430b93ee68ca1a3520ac915f
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99257694"
 ---
 # <a name="understand-saml-based-single-sign-on"></a>SAML ベースのシングル サインオンについて理解する
@@ -49,7 +49,7 @@ Azure AD を ID プロバイダー (IdP) として使用し、シングル サ�
 | **識別子 (エンティティ ID)** | 一部のアプリでは必須 | 一部のアプリでは必須 | アプリケーションを一意に識別します。 Azure AD から ID が SAML トークンの Audience パラメーターとしてアプリケーションに送信されます。 アプリケーションではこの ID を検証する必要があります。 また、この値はアプリケーションによって提供される SAML メタデータ内に Entity ID として表示されます。 "'https://<subdomain>.contoso.com' *この値は、アプリケーションから送信された **AuthnRequest** (SAML 要求) の **Issuer** 要素として見つけることができます。"* パターンを使用する URL を入力します。 |
 | **応答 URL** | 必須 | 必須 | アプリケーションが SAML トークンを受け取ることになっている場所を指定します。 応答 URL は Assertion Consumer Service (ACS) URL とも呼ばれています。 追加の応答 URL フィールドを使用して、複数の応答 URL を指定できます。 たとえば複数のサブドメインで、追加の応答 URL が必要となります。 またはテスト目的で、複数の応答 URL (ローカル ホストとパブリック URL) を一度に指定できます。 |
 | **サインオン URL** | 必須 | 指定しません | この URL をユーザーが開くと、サービス プロバイダーは、ユーザーの認証とサインインを行う Azure AD にそのユーザーをリダイレクトします。 Azure AD はその URL を使用して Microsoft 365 または Azure AD マイ アプリからアプリケーションを起動します。 何も入力されていない場合は、ユーザーが Microsoft 365、Azure AD マイ アプリ、または Azure AD SSO URL からアプリケーションを起動したときに、Azure AD により IdP-Initiated のサインオンが実行されます。|
-| **リレー状態** | オプション | オプション | 認証が完了した後にユーザーをリダイレクトする場所をアプリケーションに指示します。 通常、値はアプリケーションで有効な URL です。 ただし、一部のアプリケーションでは、このフィールドを異なる方法で使用します。 詳細については、アプリケーションのベンダーに問い合わせてください。
+| **リレー状態** | 省略可能 | 省略可能 | 認証が完了した後にユーザーをリダイレクトする場所をアプリケーションに指示します。 通常、値はアプリケーションで有効な URL です。 ただし、一部のアプリケーションでは、このフィールドを異なる方法で使用します。 詳細については、アプリケーションのベンダーに問い合わせてください。
 | **ログアウト URL** | 省略可能 | 省略可能 | SAML ログアウト応答をアプリケーションに返送するために使用します。
 
 ## <a name="user-attributes-and-claims"></a>ユーザー属性と要求 

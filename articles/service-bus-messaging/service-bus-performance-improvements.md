@@ -2,14 +2,14 @@
 title: Azure Service Bus を使用したパフォーマンス向上のためのベスト プラクティス
 description: Service Bus を使用して、ブローカー メッセージを交換する際のパフォーマンスを最適化する方法について説明します。
 ms.topic: article
-ms.date: 01/15/2021
+ms.date: 03/09/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 70f2fe88cf363572bcbca71115ba08dc0ed10e6d
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 10435f74cfb7c87ccb28b64e1b3f136add1dc927
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664700"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102561876"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス
 
@@ -44,17 +44,22 @@ AMQP は、Service Bus への接続を維持するため、最も効率的です
 # <a name="azuremessagingservicebus-sdk"></a>[Azure.Messaging.ServiceBus SDK](#tab/net-standard-sdk-2)
 サービスと相互操作する Service Bus オブジェクト ([ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient)、[ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender)、[ServiceBusReceiver](/dotnet/api/azure.messaging.servicebus.servicebusreceiver)、[ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) など) は、依存関係の挿入のため、シングルトンとして登録する必要があります (または、一度インスタンス化して共有します)。 ServiceBusClient は、依存関係の挿入のため、[ServiceBusClientBuilderExtensions](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/src/Compatibility/ServiceBusClientBuilderExtensions.cs) に登録できます。 
 
-これらのオブジェクトは、各メッセージの送信または受信後に閉じたり破棄したりしないことをお勧めします。 エンティティ固有のオブジェクト (ServiceBusSender/Receiver/Processor) を閉じるたり破棄したりすると、Service Bus サービスへのリンクが解除されます。 ServiceBusClient を破棄すると、Service Bus サービスへの接続が切断されます。 接続の確立は高価な操作であり、同じ ServiceBusClient を再利用し、同じ ServiceBusClient インスタンスから必要なエンティティ固有のオブジェクトを作成すると、回避することができます。 これらのクライアントオブジェクトは、同時実行の非同期操作のために、複数のスレッドから安全に使用できます。
+これらのオブジェクトは、各メッセージの送信または受信後に閉じたり破棄したりしないことをお勧めします。 エンティティ固有のオブジェクト (ServiceBusSender/Receiver/Processor) を閉じるたり破棄したりすると、Service Bus サービスへのリンクが解除されます。 ServiceBusClient を破棄すると、Service Bus サービスへの接続が切断されます。 
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
 
-[`IQueueClient`][QueueClient] または [`IMessageSender`][MessageSender]の実装などの Service Bus クライアント オブジェクトは、シングルトンとして依存関係の挿入用に登録する（またはインスタンス化された後で共有する）必要があります。 メッセージを送信した後にメッセージング ファクトリ、キュー、トピック、またはサブスクリプションのクライアントを閉じないようにし、次のメッセージを送信するときにこれらを再作成することをお勧めします。 メッセージング ファクトリを閉じると、Service Bus サービスへの接続が削除されます。 ファクトリを再作成するときに、新しい接続が確立されます。 接続の確立は費用のかかる操作です。この操作は、同じファクトリとクライアント オブジェクトを複数の操作に再利用することで回避できます。 これらのクライアントオブジェクトは、同時実行の非同期操作のために、複数のスレッドから安全に使用できます。
+[`IQueueClient`][QueueClient] または [`IMessageSender`][MessageSender]の実装などの Service Bus クライアント オブジェクトは、シングルトンとして依存関係の挿入用に登録する（またはインスタンス化された後で共有する）必要があります。 メッセージを送信した後にメッセージング ファクトリ、キュー、トピック、またはサブスクリプションのクライアントを閉じないようにし、次のメッセージを送信するときにこれらを再作成することをお勧めします。 メッセージング ファクトリを閉じると、Service Bus サービスへの接続が削除されます。 ファクトリを再作成するときに、新しい接続が確立されます。 
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure.ServiceBus SDK](#tab/net-framework-sdk)
 
-`QueueClient` や `MessageSender` などの Service Bus クライアント オブジェクトは、接続の内部管理も提供する [MessagingFactory][MessagingFactory] オブジェクトによって作成されます。 メッセージを送信した後にメッセージング ファクトリ、キュー、トピック、またはサブスクリプションのクライアントを閉じないようにし、次のメッセージを送信するときにこれらを再作成することをお勧めします。 メッセージング ファクトリを閉じると Service Bus サービスの接続が削除され、ファクトリを再作成すると新しい接続が確立されます。 接続の確立は費用のかかる操作です。この操作は、同じファクトリとクライアント オブジェクトを複数の操作に再利用することで回避できます。 これらのクライアントオブジェクトは、同時実行の非同期操作のために、複数のスレッドから安全に使用できます。
+`QueueClient` や `MessageSender` などの Service Bus クライアント オブジェクトは、接続の内部管理も提供する [MessagingFactory][MessagingFactory] オブジェクトによって作成されます。 メッセージを送信した後にメッセージング ファクトリ、キュー、トピック、またはサブスクリプションのクライアントを閉じないようにし、次のメッセージを送信するときにこれらを再作成することをお勧めします。 メッセージング ファクトリを閉じると Service Bus サービスの接続が削除され、ファクトリを再作成すると新しい接続が確立されます。 
 
 ---
+
+次の注意事項はすべての SDK に当てはまります。
+
+> [!NOTE]
+> 接続の確立は費用のかかる操作です。この操作は、同じファクトリとクライアント オブジェクトを複数の操作に再利用することで回避できます。 これらのクライアントオブジェクトは、同時実行の非同期操作のために、複数のスレッドから安全に使用できます。
 
 ## <a name="concurrent-operations"></a>同時実行の操作
 送信、受信、削除などの操作には、時間がかかります。 この時間には、Service Bus サービスが操作を処理するための時間や、要求と応答の待機時間が含まれます。 時間あたりの操作数を増やすには、操作を同時に実行する必要があります。
@@ -302,9 +307,9 @@ var queue = await managementClient.CreateQueueAsync(queueDescription);
 ```
 
 詳細については、次の記事を参照してください。
-* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.queuedescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.QueueDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
-* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.subscriptiondescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.SubscriptionDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
-* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.topicdescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.TopicDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.queuedescription.enablebatchedoperations" target="_blank">`Microsoft.Azure.ServiceBus.Management.QueueDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.subscriptiondescription.enablebatchedoperations" target="_blank">`Microsoft.Azure.ServiceBus.Management.SubscriptionDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.topicdescription.enablebatchedoperations" target="_blank">`Microsoft.Azure.ServiceBus.Management.TopicDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure.ServiceBus SDK](#tab/net-framework-sdk)
 
@@ -319,9 +324,9 @@ var queue = namespaceManager.CreateQueue(queueDescription);
 ```
 
 詳細については、次の記事を参照してください。
-* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.QueueDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
-* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.SubscriptionDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
-* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.topicdescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.TopicDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations" target="_blank">`Microsoft.ServiceBus.Messaging.QueueDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.enablebatchedoperations" target="_blank">`Microsoft.ServiceBus.Messaging.SubscriptionDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.topicdescription.enablebatchedoperations" target="_blank">`Microsoft.ServiceBus.Messaging.TopicDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 ---
 
@@ -353,15 +358,15 @@ var queue = namespaceManager.CreateQueue(queueDescription);
 
 詳細については、次の `PrefetchCount` プロパティを参照してください。
 
-* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.QueueClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
-* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.subscriptionclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.SubscriptionClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount" target="_blank">`Microsoft.Azure.ServiceBus.QueueClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.subscriptionclient.prefetchcount" target="_blank">`Microsoft.Azure.ServiceBus.SubscriptionClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure.ServiceBus SDK](#tab/net-framework-sdk)
 
 詳細については、次の `PrefetchCount` プロパティを参照してください。
 
-* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queueclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.QueueClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
-* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.SubscriptionClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queueclient.prefetchcount" target="_blank">`Microsoft.ServiceBus.Messaging.QueueClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.prefetchcount" target="_blank">`Microsoft.ServiceBus.Messaging.SubscriptionClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: H264 Multiple Bitrate 720p Media Encoder Standard プリセット - Azure | Microsoft Docs
 description: このトピックでは、**H264 Multiple Bitrate 720p** タスク プリセットの概要を説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: b395d54dc9ca2ab771f46262c414ed07ac295ebf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 17186307fd8c6a78f17e233f79d255bee5d7648d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265815"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103010118"
 ---
 # <a name="h264-multiple-bitrate-720p"></a>H264 Multiple Bitrate 720p
 

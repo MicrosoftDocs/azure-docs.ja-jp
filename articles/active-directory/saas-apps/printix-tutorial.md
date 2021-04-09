@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/29/2017
 ms.author: jeedes
 ms.openlocfilehash: dfde9bbbeb7f6b349ecbdc4c2da605d39a0708da
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94357880"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>チュートリアル: Azure Active Directory と Printix の統合
@@ -67,7 +67,7 @@ Azure AD への Printix の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] が選択されたことを示すスクリーンショット。][3]
 
-1. 検索ボックスに、「 **Printix** 」と入力します。
+1. 検索ボックスに、「 **Printix**」と入力します。
 
     ![[ギャラリーから追加する] ダイアログ ボックスで「Printix」を検索している状態を示すスクリーンショット。](./media/printix-tutorial/tutorial_printix_search.png)
 
@@ -173,7 +173,7 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
  
     ![説明されている値を入力できる [ユーザー] ダイアログ ボックスが表示されているスクリーンショット。](./media/printix-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の **電子メール アドレス** を入力します。
 

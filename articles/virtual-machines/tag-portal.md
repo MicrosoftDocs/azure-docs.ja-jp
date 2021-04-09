@@ -8,10 +8,10 @@ ms.service: virtual-machines
 ms.date: 11/11/2020
 ms.author: cynthn
 ms.openlocfilehash: 9c220814ae1f714e9eac0c0c11a50d9cf68a621d
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98897410"
 ---
 # <a name="tagging-a-vm-using-the-portal"></a>ポータルを使用して VM にタグを付ける

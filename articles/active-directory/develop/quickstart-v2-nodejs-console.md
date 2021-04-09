@@ -1,21 +1,21 @@
 ---
 title: 'クイックスタート: Node.js コンソール アプリから Microsoft Graph を呼び出す | Azure'
 titleSuffix: Microsoft identity platform
-description: このクイックスタートでは、Node.js コンソール アプリケーションでアクセス トークンを取得し、Microsoft ID プラットフォーム エンドポイントによって保護されている API を、アプリ自体の ID を使用して呼び出す方法について説明します
+description: このクイックスタートでは、Node.js コンソール アプリケーションでアクセス トークンを取得し、Microsoft ID プラットフォーム エンドポイントによって保護されている API を、アプリ自体の ID を使用して呼び出す方法を示すコード サンプルをダウンロードして実行します
 services: active-directory
 author: derisen
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
-ms.date: 02/11/2021
+ms.date: 02/17/2021
 ms.author: v-doeris
-ms.openlocfilehash: c550cc8009f0138b9f1803399fbc592b34efbfab
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 4360810d460c5fc8598ce302ad8b82f65d2d819e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100562035"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101653747"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-nodejs-console-app-using-apps-identity"></a>クイックスタート: トークンを取得し、Node.js コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
 
@@ -29,12 +29,12 @@ ms.locfileid: "100562035"
 * [Visual Studio Code](https://code.visualstudio.com/download) または別のコード エディター
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-application"></a>クイック スタート アプリケーションを登録してダウンロードする
+> ## <a name="register-and-download-the-sample-application"></a>サンプル アプリケーションを登録してダウンロードする
 >
 > まず、以下の手順に従ってください。
 >
 > [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
+> #### <a name="step-1-register-the-application"></a>手順 1:アプリケーションを登録する
 > アプリケーションを登録し、その登録情報をソリューションに手動で追加するには、次の手順を実行します。
 >
 > 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
@@ -50,9 +50,9 @@ ms.locfileid: "100562035"
 > 1. **[ユーザー]** ノードで、 **[User.Read.All]** を選択し、 **[アクセス許可の追加]** を選択します。
 
 > [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="download-and-configure-your-quickstart-app"></a>クイックスタート アプリをダウンロードして構成する
+> ### <a name="download-and-configure-the-sample-app"></a>サンプル アプリをダウンロードして構成する
 >
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
+> #### <a name="step-1-configure-the-application-in-azure-portal"></a>手順 1: Azure portal でのアプリケーションの構成
 > このクイック スタート用サンプル コードを動作させるには、クライアント シークレットを作成し、Graph API の **User.Read.All** アプリケーションのアクセス許可を追加します。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [これらの変更を行います]()
@@ -60,7 +60,7 @@ ms.locfileid: "100562035"
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![構成済み](media/quickstart-v2-netcore-daemon/green-check.png) アプリケーションはこれらの属性で構成されています。
 
-#### <a name="step-2-download-your-nodejs-project"></a>手順 2:Node.js プロジェクトをダウンロードする
+#### <a name="step-2-download-the-nodejs-sample-project"></a>手順 2: Node.js サンプル プロジェクトをダウンロードする
 
 > [!div renderon="docs"]
 > [コード サンプルをダウンロードします](https://github.com/azure-samples/ms-identity-javascript-nodejs-console/archive/main.zip)
@@ -73,7 +73,7 @@ ms.locfileid: "100562035"
 > > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-nodejs-project"></a>手順 3: Node.js プロジェクトを構成する
+> #### <a name="step-3-configure-the-nodejs-sample-project"></a>手順 3: Node.js サンプル プロジェクトを構成する
 >
 > 1. ディスクのルートに近いローカル フォルダー (例: *C:/Azure-Samples*) に ZIP ファイルを展開します。
 > 1. *.env* を編集し、`TENANT_ID`、`CLIENT_ID`、`CLIENT_SECRET` の各フィールドの値を次のスニペットに置き換えます。
@@ -172,7 +172,7 @@ const msalConfig = {
         clientId: "Enter_the_Application_Id_Here",
         authority: "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
         clientSecret: "Enter_the_Client_Secret_Here",
-   } 
+   }
 };
 const cca = new msal.ConfidentialClientApplication(msalConfig);
 ```

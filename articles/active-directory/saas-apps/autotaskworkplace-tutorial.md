@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/02/2021
 ms.author: jeedes
 ms.openlocfilehash: 1a2602ee3b8fad6e87a778ab966f7cb1f8aad8c2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101649956"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>チュートリアル: Azure Active Directory と Autotask Workplace の統合

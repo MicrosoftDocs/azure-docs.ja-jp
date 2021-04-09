@@ -3,12 +3,12 @@ title: メディア グラフ拡張機能とは - Azure
 description: Live Video Analytics on IoT Edge では、グラフ拡張ノードを使用してメディア グラフ処理機能を拡張することができます。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 6735148bf453cfe0afb58d51451dea65f06705d6
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 66656690e4e53508253091134a67adeb899b3dbf
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401119"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102455841"
 ---
 # <a name="media-graph-extension"></a>メディア グラフ拡張機能
 
@@ -19,11 +19,11 @@ Live Video Analytics は、次の 2 種類のメディア グラフ拡張プロ�
 * [HTTP 拡張プロセッサ](media-graph-concept.md#http-extension-processor)
 * [gRPC 拡張プロセッサ](media-graph-concept.md#grpc-extension-processor)
 
-グラフ拡張ノードが結果を JSON 形式で返すためには、分析拡張機能プラグインが必要となります。 理想的には、結果が[推論メタデータ スキーマ オブジェクト モデル](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update)に準拠している必要があります。
+グラフ拡張ノードが結果を JSON 形式で返すためには、分析拡張機能プラグインが必要となります。 理想的には、結果が[推論メタデータ スキーマ オブジェクト モデル](/azure/media-services/live-video-analytics-edge/inference-metadata-schema)に準拠している必要があります。
 
 ## <a name="http-extension-processor"></a>HTTP 拡張プロセッサ
 
-HTTP 拡張プロセッサでは、[HTTP プロトコル](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/http-extension-protocol?branch=release-lva-dec-update)を使用して拡張性シナリオを実現します。この場合、パフォーマンスや最適なリソース使用率が主要な懸念事項ではありません。 HTTP REST エンドポイントを使用して独自の AI をメディア グラフに公開できます。 
+HTTP 拡張プロセッサでは、[HTTP プロトコル](/azure/media-services/live-video-analytics-edge/http-extension-protocol)を使用して拡張性シナリオを実現します。この場合、パフォーマンスや最適なリソース使用率が主要な懸念事項ではありません。 HTTP REST エンドポイントを使用して独自の AI をメディア グラフに公開できます。 
 
 HTTP 拡張プロセッサ ノードは、次の場合に使用します。
 
@@ -33,7 +33,7 @@ HTTP 拡張プロセッサ ノードは、次の場合に使用します。
 
 ## <a name="grpc-extension-processor"></a>gRPC 拡張プロセッサ
 
-gRPC 拡張プロセッサでは、gRPC ベースの高性能な[構造化プロトコル](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/grpc-extension-protocol?branch=release-lva-dec-update)を使用して拡張シナリオを実現します。 これは、パフォーマンスや最適なリソース使用率が優先されるシナリオに最適です。 gRPC 拡張プロセッサを使用すると、構造化データ定義のメリットを最大限に活用できます。 gRPC は、以下を使用して、コンテンツ転送の高いパフォーマンスを実現します。
+gRPC 拡張プロセッサでは、gRPC ベースの高性能な[構造化プロトコル](/azure/media-services/live-video-analytics-edge/grpc-extension-protocol)を使用して拡張シナリオを実現します。 これは、パフォーマンスや最適なリソース使用率が優先されるシナリオに最適です。 gRPC 拡張プロセッサを使用すると、構造化データ定義のメリットを最大限に活用できます。 gRPC は、以下を使用して、コンテンツ転送の高いパフォーマンスを実現します。
 
 * [未処理の共有メモリ](https://en.wikipedia.org/wiki/Shared_memory) 
 * gRPC メッセージの本文へのコンテンツの直接埋め込み。 
@@ -57,7 +57,7 @@ gRPC 拡張プロセッサは、推論メッセージの交換と共にメディ
 
 ## <a name="samples"></a>サンプル
 
-あらかじめ構築された拡張サービスを使用し、低フレーム レート ([HTTP 拡張プロセッサ](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/use-your-model-quickstart?branch=release-lva-dec-update&pivots=programming-language-csharp)) または高フレーム レート ([gRPC 拡張プロセッサ](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/analyze-live-video-use-your-grpc-model-quickstart?branch=release-lva-dec-update&pivots=programming-language-csharp)) でライブ ビデオ分析を行う例を紹介した、いずれかのクイックスタートを体験してみましょう。
+あらかじめ構築された拡張サービスを使用し、低フレーム レート ([HTTP 拡張プロセッサ](/azure/media-services/live-video-analytics-edge/use-your-model-quickstart?pivots=programming-language-csharp)) または高フレーム レート ([gRPC 拡張プロセッサ](/azure/media-services/live-video-analytics-edge/analyze-live-video-use-your-grpc-model-quickstart?pivots=programming-language-csharp)) でライブ ビデオ分析を行う例を紹介した、いずれかのクイックスタートを体験してみましょう。
 
 上級ユーザーの方は、Live Video Analytics 用の [Jupyter ノートブック](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md)のサンプルをいくつか確認してください。 これらのノートブックでは、次の操作について **メディア グラフ拡張機能** の詳しい手順を説明しています。
 

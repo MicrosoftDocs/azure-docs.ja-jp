@@ -15,10 +15,10 @@ ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
 ms.openlocfilehash: f3d4ec8db89e9bebfdcd594e842a6c19d3d66d54
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100104095"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>方法:Android で MSAL を使用してクロスアプリ SSO を有効にする

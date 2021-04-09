@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: a473085f9c94ca42a75d01b342d60cc33836b096
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "88244841"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>オフライン評価で学習ループを分析する
@@ -26,7 +26,7 @@ ms.locfileid: "88244841"
 ## <a name="prerequisites"></a>前提条件
 
 * 構成済みの Personalizer ループ
-* Personalizer ループには、代表的な量のデータが含まれている必要があります。意味のある評価結果を得るには、おおよそ、50,000 個以上のイベントをログに記録することをお勧めします。 必要に応じて、同じ評価で比較およびテストできる以前にエクスポートした_学習ポリシー_ ファイルを使用することもできます。
+* Personalizer ループには、代表的な量のデータが含まれている必要があります。意味のある評価結果を得るには、おおよそ、50,000 個以上のイベントをログに記録することをお勧めします。 必要に応じて、同じ評価で比較およびテストできる以前にエクスポートした _学習ポリシー_ ファイルを使用することもできます。
 
 ## <a name="run-an-offline-evaluation"></a>オフライン評価を実行する
 

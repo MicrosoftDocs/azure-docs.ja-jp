@@ -1,16 +1,16 @@
 ---
-author: PatrickFarley
+author: laujan
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 08/17/2019
-ms.author: pafarley
-ms.openlocfilehash: 01524c103c420fe719cc68d01e9421a321d05968
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: lajanuar
+ms.openlocfilehash: 5e856b7cf6404a30bf983c4014bd6aa55c4a9cbc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88944356"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103466994"
 ---
 * サポートされているファイル形式: JPEG、PNG、PDF、TIFF 
 * PDF と TIFF については、最大 2,000 ページまで処理されます。 Free レベルのサブスクライバーの場合は、最初の 2 ページだけが処理されます。 

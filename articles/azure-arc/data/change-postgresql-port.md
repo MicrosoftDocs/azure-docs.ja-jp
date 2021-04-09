@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 11/02/2020
 ms.topic: how-to
 ms.openlocfilehash: 45424408c790e4921be48464818c55fe74313fd3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93328656"
 ---
 # <a name="change-the-port-on-which-the-server-group-is-listening"></a>サーバー グループがリッスンしているポートの変更 

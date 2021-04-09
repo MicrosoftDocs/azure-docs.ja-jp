@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: faef2721b48ffab12264c585d2dec55ab9334016
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc41d2904d5a6676f1e9e1e2d178985bef0a9aa3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015291"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101095541"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Azure API Management でロールベースのアクセス制御を使用する方法
 
@@ -30,7 +30,7 @@ Azure API Management では、Azure のロールベースのアクセス制御 (
 
 API Management には、現在、組み込みロールが 3 つ提供されており、近い将来、さらに 2 つのロールが追加されます。 これらのロールは、サブスクリプション、リソース グループ、および個々の API Management インスタンスなどのさまざまなスコープで割り当てることができます。 たとえば、"API Management サービスのリーダー" ロールをリソース グループ レベルのユーザーに割り当てた場合、そのユーザーはリソース グループ内のすべての API Management インスタンスに読み取りアクセスを行うことができます。 
 
-次の表に、組み込みのロールについての簡単な説明を示します。 これらのロールは Azure ポータルや、Azure [PowerShell](../role-based-access-control/role-assignments-powershell.md)、[Azure CLI](../role-based-access-control/role-assignments-cli.md)、[REST API](../role-based-access-control/role-assignments-rest.md) などのツールを使用して割り当てることができます。 組み込みロールを割り当てる方法の詳細については、[ロール割り当てを使用した Azure サブスクリプション リソースへのアクセス管理](../role-based-access-control/role-assignments-portal.md)に関するページを参照してください。
+次の表に、組み込みのロールについての簡単な説明を示します。 これらのロールは Azure ポータルや、Azure [PowerShell](../role-based-access-control/role-assignments-powershell.md)、[Azure CLI](../role-based-access-control/role-assignments-cli.md)、[REST API](../role-based-access-control/role-assignments-rest.md) などのツールを使用して割り当てることができます。 組み込みロールを割り当てる方法の詳細については、[Azure サブスクリプション リソースへのアクセスを管理するための Azure ロールの割り当て](../role-based-access-control/role-assignments-portal.md)に関するページを参照してください。
 
 | Role          | 読み取りアクセス<sup>[1]</sup> | 書き込みアクセス<sup>[2]</sup> | サービスの作成、削除、スケーリング、VPN、カスタム ドメインの構成 | 以前のパブリッシャー ポータルへのアクセス | 説明
 | ------------- | ---- | ---- | ---- | ---- | ---- 
@@ -81,6 +81,6 @@ New-AzRoleAssignment -ObjectId <object ID of the user account> -RoleDefinitionNa
 
 Azure でのロールベースのアクセス制御の詳細については、次の記事を参照してください。
   * [Azure Portal でのアクセス管理の概要](../role-based-access-control/overview.md)
-  * [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../role-based-access-control/role-assignments-portal.md)
+  * [Azure サブスクリプション リソースへのアクセスを管理するための Azure ロールの割り当て](../role-based-access-control/role-assignments-portal.md)
   * [Azure RBAC のカスタム ロール](../role-based-access-control/custom-roles.md)
   * [Azure Resource Manager のリソース プロバイダー操作](../role-based-access-control/resource-provider-operations.md#microsoftapimanagement)

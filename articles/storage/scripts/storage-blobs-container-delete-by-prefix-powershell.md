@@ -11,10 +11,10 @@ ms.date: 06/13/2017
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: b95c5ab243fbd938e8a7eb1d3b9619b0d46fb046
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89072954"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>コンテナー名のプレフィックスに基づいたコンテナーの削除

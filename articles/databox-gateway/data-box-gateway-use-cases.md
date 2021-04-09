@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/14/2020
 ms.author: alkohli
 ms.openlocfilehash: 3bf137f968082e677f45c20947793232b9181220
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98786614"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway のユース ケース

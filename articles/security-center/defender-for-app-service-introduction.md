@@ -7,31 +7,43 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2a3253d1ed8b0814fc20b3256a0f98d3aa0949f6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ec4ac5d355266a46b33d89fd25c2665493773f5d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393311"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100816"
 ---
-# <a name="introduction-to-azure-defender-for-app-service"></a>Azure Defender for App Service の概要
+# <a name="protect-your-web-apps-and-apis"></a>Web アプリと API の保護
+
+## <a name="prerequisites"></a>前提条件
+
+Security Center は App Service とネイティブで統合されており、デプロイやオンボーディングの必要がありません。統合は透過的となっています。
+
+Azure Defender for App Service を使用して Azure App Service プランを保護するには、次のものが必要です。
+
+- 専用のマシンに関連付けられた、サポートされている App Service プラン。 サポートされているプランは、「[可用性](#availability)」に記載されています。
+
+- 「[クイックスタート: Azure Defender を有効にする](enable-azure-defender.md)」の説明に従って、サブスクリプションで有効にした Azure Defender。
+
+    > [!TIP]
+    > (Azure Defender for App Service のように) Azure Defender で個々のプランを必要に応じて有効にすることもできます。
+
+## <a name="availability"></a>可用性
+
+| 側面                       | 詳細                                                                                                                                                                                        |
+|------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| リリース状態:               | 一般提供 (GA)                                                                                                                                                                      |
+| 価格:                     | [Azure Defender for App Service](azure-defender.md) の課金については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください<br>課金は、すべてのプランのコンピューティング インスタンスの合計に基づいて行われます。       |
+| サポートされている App Service プラン: | [従量課金プランの Azure Functions](../azure-functions/functions-scale.md) を除き、[すべての App Service プラン](https://azure.microsoft.com/pricing/details/app-service/plans/)がサポートされています。 |
+| クラウド:                      | ![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)                                                     |
+|                              |                                                                                                                                                                                                |
+
+## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>Azure Defender for App Service の利点
 
 Azure App Service は、Web アプリや API の作成とホスティングに使用するフル マネージドのプラットフォームです。 フル マネージドのプラットフォームであるため、そのインフラストラクチャについて心配する必要はありません。 エンタープライズ クラスのパフォーマンス、セキュリティ、コンプライアンス要件を満たすための管理機能、監視機能、運用に関する分析情報を提供します。 詳細については、[Azure App Service](https://azure.microsoft.com/services/app-service/)に関するページを参照してください。
 
 **Azure Defender for App Service** では、クラウドのスケールを使用して、App Service で実行されるアプリケーションをターゲットとした攻撃が識別されます。 攻撃者は、Web アプリケーションをプローブして弱点を発見し、悪用します。 Azure で実行されているアプリケーションに対する要求は、特定の環境にルーティングされる前に、複数のゲートウェイを通過し、そこで検査され、ログに記録されます。 その後、このデータは、悪用や攻撃者を特定し、後で使用される新しいパターンを学習するために使用されます。
-
-
-## <a name="availability"></a>可用性
-
-| 側面                       | 詳細                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-|------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| リリース状態:               | 一般提供 (GA)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| 価格:                     | [Azure Defender for App Service](azure-defender.md) は、[価格ページ](security-center-pricing.md)に記載されているように課金されます。<br>課金は、すべてのプランのコンピューティング インスタンスの合計に基づいて行われます。|
-| サポートされている App Service プラン: | App Service プランは 1 つ (下記) を除いてすべてサポートされます。 [App Service プランの詳細情報](https://azure.microsoft.com/pricing/details/app-service/plans/)を確認してください。<br>従量課金プランの Azure Functions はサポートされません。 [Azure Functions ホスティングのオプションについて確認してください](../azure-functions/functions-scale.md)。                                                                                                                                                                                                                                                                   |
-| クラウド:                      | ![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)                                                                                                                                                                                                                                                                                                                                                                                 |
-|                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-
-## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>Azure Defender for App Service の利点
 
 Azure Defender for App Service を有効にするとすぐに、その Azure Defender プランによって提供される次のサービスの利点が得られます。
 
@@ -77,19 +89,6 @@ Azure App Service のアラートを網羅した一覧については、[アラ�
 > [!NOTE]
 > カスタム ドメインが App Service リソースを直接参照していない場合や、未解決の DNS の保護が有効にされてから Web サイトへのトラフィックが Defender によって監視されていない場合、未解決の DNS のアラートが Defender からトリガーされない場合があります (カスタム ドメインの特定につながるログが存在しないため)。
 
-## <a name="how-to-protect-your-azure-app-service-web-apps-and-apis"></a>Azure App Service Web アプリと API を保護する方法
-
-Azure Defender for App Service で Azure App Service プランを保護するには、次のようにします。
-
-1. 確実に専用のコンピューターに関連付けられた、サポートされている App Service プランを利用します。 サポートされているプランは、上記の「[可用性](#availability)」に記載されています。
-
-2. 「[Azure Security Center の価格](security-center-pricing.md)」で説明されているとおり、ご自分のサブスクリプションの **Azure Defender** を有効にします。
-
-    (Azure Defender for App Service のように) Azure Defender で個々のプランを必要に応じて有効にすることもできます。
-
-    Security Center は App Service とネイティブで統合されており、デプロイやオンボーディングの必要がありません。統合は透過的となっています。
-
-
 ## <a name="next-steps"></a>次の手順
 
 この記事では、Azure Defender for App Service について説明しました。 
@@ -100,4 +99,4 @@ Azure Defender for App Service で Azure App Service プランを保護するに
 - Azure Defender for App Service のアラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-azureappserv)を参照してください。
 - App Service プランの詳細については、「[App Service プラン](https://azure.microsoft.com/pricing/details/app-service/plans/)」を参照してください。
 > [!div class="nextstepaction"]
-> [Azure Defender を有効にする](security-center-pricing.md#enable-azure-defender)
+> [Azure Defender を有効にする](enable-azure-defender.md)

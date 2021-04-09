@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2e3e5abdfbb2bf2e9d7a12a677422adc67336775
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92209240"
 ---
 # <a name="remove-change-tracking-and-inventory-from-automation-account"></a>Automation アカウントから変更履歴とインベントリを削除する
@@ -28,13 +28,13 @@ Azure Automation の変更履歴とインベントリを使用して仮想マシ
 
 ワークスペースから Automation アカウントのリンクを解除する前に、次の手順に従って、変更履歴とインベントリを完全に削除する必要があります。 **ChangeTracking** ソリューションをワークスペースから削除します。
 
-1. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「 **Log Analytics** 」と入力します。 入力を始めると、入力内容に基づいて一覧から候補が絞り込まれます。 **[Log Analytics]** を選択します。
+1. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて一覧から候補が絞り込まれます。 **[Log Analytics]** を選択します。
 
 2. Log Analytics ワークスペースの一覧で、変更履歴とインベントリを有効化するときに選択したワークスペースを選択します。
 
 3. 左側で、 **[ソリューション]** を選択します。  
 
-4. ソリューションの一覧から、 **ChangeTracking(<ワークスペース名>)** を選択します。 ソリューションの **[概要]** ページで、 **[削除]** を選択します。 確認メッセージが表示されたら、 **[はい]** を選択します。
+4. ソリューションの一覧から、**ChangeTracking(<ワークスペース名>)** を選択します。 ソリューションの **[概要]** ページで、 **[削除]** を選択します。 確認メッセージが表示されたら、 **[はい]** を選択します。
 
 ## <a name="unlink-workspace-from-automation-account"></a>Automation アカウントからワークスペースのリンクを解除する
 

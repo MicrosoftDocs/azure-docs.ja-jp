@@ -3,16 +3,19 @@ title: レンダリングの機能を使用する
 description: Azure Batch レンダリングの機能を使用する方法。 直接またはクライアント アプリケーション プラグインから呼び出して、Batch Explorer アプリケーションの使用を試みます。
 author: mscurrell
 ms.author: markscu
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.topic: how-to
-ms.openlocfilehash: a5bf4d0ed2173d048d968f60dea72a1a0c25ab05
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: dc3d2cc53b478b1ec955d8f4b3717b0407772849
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429787"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103496628"
 ---
 # <a name="using-azure-batch-rendering"></a>Azure Batch レンダリングを使用する
+
+> [!IMPORTANT]
+> レンダリング VM イメージと従量課金ライセンスは、[非推奨となっており、2024 年 2 月 29 日に廃止されます](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/)。 レンダリングにバッチを使用するには、[カスタム VM イメージと標準アプリケーション ライセンスを使用してください](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing)。
 
 Azure Batch のレンダリングを使用する方法はいくつかあります。
 

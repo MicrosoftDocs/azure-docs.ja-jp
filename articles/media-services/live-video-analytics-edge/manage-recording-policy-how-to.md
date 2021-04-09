@@ -4,10 +4,10 @@ description: このトピックでは、記録ポリシーを管理する方法�
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.openlocfilehash: ec72f28496c1392b9d95134c343e1892998a0c28
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99224991"
 ---
 # <a name="manage-recording-policy"></a>記録ポリシーの管理

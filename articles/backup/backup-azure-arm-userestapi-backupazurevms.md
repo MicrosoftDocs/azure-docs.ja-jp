@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 9ba22c51c7a6c26a232ed20aec21fc83d2c54b37
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92171458"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API を通して Azure Backup を使用して Azure VM をバックアップする
@@ -323,7 +323,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 オンデマンド バックアップをトリガーする場合、要求本文のコンポーネントは次のようになります。
 
-|名前  |種類  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource プロパティ         |
 
@@ -348,7 +348,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|名前  |種類  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |202 Accepted     |         |     承認済み    |
 
@@ -473,11 +473,11 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 #### <a name="responses-for-delete-protection"></a>保護の削除の応答
 
-保護の *DELETE* は[非同期操作](../azure-resource-manager/management/async-operations.md)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
+保護の *DELETE* は [非同期操作](../azure-resource-manager/management/async-operations.md)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、次にその操作が完了したときは 204 (NoContent)。
 
-|名前  |種類  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
 |202 Accepted     |         |     承認済み    |
@@ -489,7 +489,7 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 誤削除の取り消しは、バックアップ項目の作成と似ています。 削除を取り消すと、その項目は保持されますが、以降のバックアップはトリガーされません。
 
-削除の取り消しは *PUT* 操作であり、[ポリシーの変更](#changing-the-policy-of-protection)や[保護の有効化](#enabling-protection-for-the-azure-vm)と非常に似ています。 [要求本文](#example-request-body)の中で変数 *isRehydrate* を使用して、単に削除を取り消すという目的を提示して、要求を送信します。 次に例を示します。testVM に対する削除を取り消すには、次の要求本文を使用する必要があります。
+削除の取り消しは *PUT* 操作であり、[ポリシーの変更](#changing-the-policy-of-protection)や [保護の有効化](#enabling-protection-for-the-azure-vm)と非常に似ています。 [要求本文](#example-request-body)の中で変数 *isRehydrate* を使用して、単に削除を取り消すという目的を提示して、要求を送信します。 次に例を示します。testVM に対する削除を取り消すには、次の要求本文を使用する必要があります。
 
 ```http
 {

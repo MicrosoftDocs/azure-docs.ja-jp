@@ -17,12 +17,12 @@ ms.date: 01/04/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b0771687aa7ccf9b749c107a6b1c507cb3ba08d
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 1f7466931537745fb188a3bdb05646bff19912e8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881941"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103466254"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect:アカウントとアクセス許可
 
@@ -44,7 +44,7 @@ Azure AD Connect を実行するためのこれら 3 つのアカウントに加
 
 - **AD DS エンタープライズ管理者アカウント**: 必要に応じて、上記の "AD DS コネクタ アカウント" を作成するために使用します。
 
-- **Azure AD 全体管理者アカウント**:  Azure AD コネクタ アカウントを作成したり、Azure AD を構成したりする目的で使用します。  Azure portal で全体管理者アカウントを表示できます。  [ロールの表示](../../active-directory/roles/manage-roles-portal.md#view-all-roles)に関する記事をご覧ください。
+- **Azure AD 全体管理者アカウント**:  Azure AD コネクタ アカウントを作成したり、Azure AD を構成したりする目的で使用します。  Azure portal で全体管理者アカウントを表示できます。  「[Azure AD ロールの割り当てを一覧表示する](../../active-directory/roles/view-assignments.md)」を参照してください。
 
 - **SQL SA アカウント (任意)** :     通常版の SQL Server を使用して ADSync データベースを作成する目的で使用します。  この SQL Server は、Azure AD Connect のインストール環境に対してローカルでもリモートでもかまいません。  このアカウントは、エンタープライズ管理者と同じアカウントにすることもできます。  現在では、SQL 管理者が帯域外でデータベースのプロビジョニングを実行し、データベース所有者権限を持つ Azure AD Connect 管理者がインストールできるようになっています。  詳細については、「[Install Azure AD Connect using SQL delegated administrator permissions (SQL によって委任された管理者の権限を使用した Azure AD Connect のインストール)](how-to-connect-install-sql-delegation.md)」を参照してください。
 

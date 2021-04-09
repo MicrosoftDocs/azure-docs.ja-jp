@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/31/2020
-ms.openlocfilehash: 04da5d668515fe96d50d4e6a7d0f5ff1c4c48c27
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4aa25368e156ce793e969f866490352e253559fc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931388"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871726"
 ---
 # <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>HDInsight クラスターを新しいバージョンに移行する
 
@@ -24,7 +24,7 @@ ms.locfileid: "98931388"
 ## <a name="migration-tasks"></a>移行タスク
 
 HDInsight クラスターをアップグレードするワークフローは次のとおりです。
-![HDInsight アップグレード ワークフローの図](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
+:::image type="content" source="./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png" alt-text="HDInsight アップグレード ワークフローの図" border="false":::
 
 1. このドキュメントの各セクションを読んで、HDInsight クラスターに移行するときに必要になる場合がある変更について理解します。
 2. テスト/品質保証環境として、クラスターを作成します。 クラスターの作成の詳細については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。

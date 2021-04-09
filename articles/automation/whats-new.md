@@ -8,10 +8,10 @@ ms.author: magoedte
 ms.date: 02/23/2021
 ms.custom: references_regions
 ms.openlocfilehash: 899249c98c3ce0fdf061b1e689182f71c120aa13
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101729397"
 ---
 # <a name="whats-new-in-azure-automation"></a>Azure Automation の新着情報

@@ -5,10 +5,10 @@ ms.date: 02/07/2019
 ms.topic: how-to
 ms.custom: seodec18
 ms.openlocfilehash: 784fd89c3dea88e25a2058713897c7a655c8a3af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83726521"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Azure レンダリング向け参照アーキテクチャ
@@ -23,7 +23,7 @@ ms.locfileid: "83726521"
 
 * **ネットワーク** - オンプレミス: Azure ExpressRoute または VPN。 Azure: Azure VNet。
 
-* **ストレージ** - 入力ファイルと出力ファイル: Azure VM を使用した NFS または CFS。Azure File Sync または RSync を介してオンプレミス ストレージと同期されています。 あるいは:NFS を使用してオンプレミスの NAS デバイスからファイルを入力または出力するための Avere vFXT。
+* **ストレージ** - 入力ファイルと出力ファイル:Azure VM を使用した NFS または CFS。Azure File Sync または RSync を介してオンプレミス ストレージと同期されています。 または、NFS を使用してオンプレミスの NAS デバイスからファイルを入力または出力するための Avere vFXT。
 
   ![クラウド バースティング - NFS または CFS を持つハイブリッド](./media/batch-rendering-architectures/hybrid-nfs-cfs-avere.png)
 
@@ -35,7 +35,7 @@ ms.locfileid: "83726521"
 
 * **ネットワーク** - オンプレミス: Azure ExpressRoute または VPN。 Azure: Azure VNet。
 
-* **ストレージ** - 入力ファイルと出力ファイル: BLOB ストレージ。Azure Blobfuse を介してコンピューティング リソースにマウントされています。
+* **ストレージ** - 入力ファイルと出力ファイル: Blob Storage。Azure Blobfuse を介してコンピューティング リソースにマウントされています。
 
   ![クラウド バースティング - Blobfuse を持つハイブリッド](./media/batch-rendering-architectures/hybrid-blob-fuse.png)
 

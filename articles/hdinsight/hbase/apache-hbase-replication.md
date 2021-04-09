@@ -6,10 +6,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.openlocfilehash: cfcb3a5a601afadb9f3fcd71c24e18a9d7f27b9e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98946411"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で Apache HBase クラスターのレプリケーションを設定する
@@ -65,7 +65,7 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 
 | プロパティ | 値 |
 |----------|-------|
-| Location | 米国西部 |
+| 場所 | 米国西部 |
 | VNet の名前 | &lt;クラスター名のプレフィックス>-vnet1 |
 | アドレス空間プレフィックス | 10.1.0.0/16 |
 | サブネット名 | subnet 1 |
@@ -82,7 +82,7 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 
 | プロパティ | 値 |
 |----------|-------|
-| Location | East US |
+| 場所 | 米国東部 |
 | VNet の名前 | &lt;クラスター名のプレフィックス>-vnet2 |
 | アドレス空間プレフィックス | 10.2.0.0/16 |
 | サブネット名 | subnet 1 |
@@ -101,10 +101,10 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 
 Bind をインストールするには、2 つの DNS 仮想マシンのパブリック IP アドレスを見つける必要があります。
 
-1. [Azure Portal](https://portal.azure.com)を開きます。
+1. [Azure portal](https://portal.azure.com) を開きます。
 2. **[リソース グループ] > <リソース グループ名> [vnet1DNS]** を選択して、DNS 仮想マシンを開きます。  リソース グループ名は、最後の手順で作成する名前です。 既定の DNS 仮想マシン名は、*vnet1DNS* と *vnet2NDS* です。
 3. **[プロパティ]** を選択して、仮想ネットワークのプロパティ ページを開きます。
-4. **[パブリック IP アドレス]** を書き留めます。さらに、 **[プライベート IP アドレス]** を確認します。  プライベート IP アドレスは、vnet1DNS では **10.1.0.4**、vnet2DNS では **10.2.0.4** です。  
+4. **[パブリック IP アドレス]** を書き留めます。さらに、**[プライベート IP アドレス]** を確認します。  プライベート IP アドレスは、vnet1DNS では **10.1.0.4**、vnet2DNS では **10.2.0.4** です。  
 5. 既定の (Azure で提供されている) DNS サーバーを使用して受信および送信アクセスでパッケージをダウンロードして Bind をインストールできるように、次の手順で両方の仮想ネットワークの DNS サーバーを変更します。
 
 Bind をインストールするには、次の手順に従います。
@@ -241,11 +241,11 @@ Bind をインストールするには、次の手順に従います。
 
 Azure 再帰リゾルバーではなく、カスタム DNS サーバーを使用するように仮想ネットワークを構成するには、次の手順に従います。
 
-1. [Azure Portal](https://portal.azure.com) で、仮想ネットワークを選択し、 __[DNS サーバー]__ を選択します。
+1. [Azure Portal](https://portal.azure.com) で、仮想ネットワークを選択し、__[DNS サーバー]__ を選択します。
 
 2. __[カスタム]__ を選択し、カスタム DNS サーバーの __内部 IP アドレス__ を入力します。 最後に、 __[保存]__ を選択します。
 
-6. vnet1 の DNS サーバー仮想マシンを開き、 **[再起動]** をクリックします。  DNS 構成が有効であることを確認するには、仮想ネットワーク内のすべての仮想マシンを再起動する必要があります。
+6. vnet1 の DNS サーバー仮想マシンを開き、**[再起動]** をクリックします。  DNS 構成が有効であることを確認するには、仮想ネットワーク内のすべての仮想マシンを再起動する必要があります。
 7. 手順を繰り返して、vnet2 のカスタムの DNS サーバーを構成します。
 
 DNS 構成をテストするには、SSH を使用して 2 つの DNS 仮想マシンに接続し、他の仮想ネットワークの DNS サーバーをそのホスト名を使用して ping します。 うまくいかない場合は、次のコマンドを使用して DNS の状態をチェックします。
@@ -261,7 +261,7 @@ sudo service bind9 status
 - **リソース グループ名**: 仮想ネットワークの作成時と同じリソース グループ名を使用します。
 - **クラスターの種類**: HBase
 - **バージョン**: HBase 1.1.2 (HDI 3.6)
-- **場所**: 仮想ネットワークと同じ場所を使用します。  既定では、vnet1 は *[米国西部]* 、vnet2 は *[米国東部]* です。
+- **場所**: 仮想ネットワークと同じ場所を使用します。  既定では、vnet1 は *[米国西部]*、vnet2 は *[米国東部]* です。
 - **ストレージ**: クラスター用の新しいストレージ アカウントを作成します。
 - **仮想ネットワーク**(ポータルの [詳細設定]): 最後の手順で作成した vnet1 を選択します。
 - **サブネット**: テンプレートで使われる既定の名前は **subnet1** です。
@@ -284,14 +284,14 @@ sudo service bind9 status
 
 **Azure Portal から HBase レプリケーションを有効にするには**
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. ソース HBase クラスターを開きます。
 3. クラスター メニューの **[スクリプト アクション]** を選択します。
 4. ページの上部にある **[新規で送信]** を選択します。
 5. 次の情報を選択するか入力します。
 
    1. **名前**: 「**Enable replication**」と入力します。
-   2. **バッシュ スクリプト URI**: 「 **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** 」と入力します。
+   2. **バッシュ スクリプト URI**: 「**https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**」と入力します。
    3. **ヘッド**: これが選択されていることを確認します。 他のノード タイプをオフにします。
    4. **パラメーター**: 次のサンプル パラメーターは、すべての既存のテーブルに対するレプリケーションを有効にし、ソース クラスターからデスティネーション クラスターにすべてのデータをコピーします。
 
@@ -302,11 +302,11 @@ sudo service bind9 status
       >
       > このチュートリアルでは、hn1 をアクティブなヘッド ノードと見なしています。 クラスターを確認してアクティブなヘッド ノードを識別してください。
 
-6. **作成** を選択します。 このスクリプトの実行には、少し時間がかかます (特に **-copydata** 引数を使用する場合)。
+6. **［作成］** を選択します このスクリプトの実行には、少し時間がかかます (特に **-copydata** 引数を使用する場合)。
 
 必須の引数:
 
-|Name|説明|
+|名前|説明|
 |----|-----------|
 |-s, --src-cluster | ソース HBase クラスターの DNS 名を指定します。 例: -s hbsrccluster, --src-cluster=hbsrccluster |
 |-d, --dst-cluster | デスティネーション (レプリカ) HBase クラスターの DNS 名を指定します。 例: -s dsthbcluster, --src-cluster=dsthbcluster |
@@ -315,7 +315,7 @@ sudo service bind9 status
 
 省略可能な引数:
 
-|Name|説明|
+|名前|説明|
 |----|-----------|
 |-su, --src-ambari-user | ソース HBase クラスターでの Ambari の管理ユーザー名を指定します。 既定値は **admin** です。 |
 |-du, --dst-ambari-user | デスティネーション HBase クラスターでの Ambari の管理者ユーザー名を指定します。 既定値は **admin** です。 |
@@ -323,7 +323,7 @@ sudo service bind9 status
 |-m, --machine | スクリプト アクションを実行するヘッド ノードを指定します。 この値は、どちらがアクティブなヘッド ノードであるかに基づいて選択する必要があります。 このオプションは、HDInsight ポータルまたは Azure PowerShell からスクリプト アクションとして $0 スクリプトを実行する場合に使用します。|
 |-cp, -copydata | レプリケーションが有効になっているテーブルの既存のデータの移行を有効にします。 |
 |-rpm, -replicate-phoenix-meta | Phoenix システム テーブルのレプリケーションを有効にします。 <br><br>*このオプションは慎重に使用してください。* このスクリプトを使用する前に、レプリカ クラスターで Phoenix テーブルを再作成しておくことをお勧めします。 |
-|-h, --help | 使用方法に関する情報を表示します。 |
+|-h, --help | 使用情報を表示します。 |
 
 [スクリプト](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) の `print_usage()` セクションに、パラメーターの詳細な説明が用意されています。
 

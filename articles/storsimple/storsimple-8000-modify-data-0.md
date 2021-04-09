@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
 ms.openlocfilehash: 85d7114f419266124d0d23368b24700af025758a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94961041"
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスの DATA 0 ネットワーク インターフェイス設定の変更
@@ -38,8 +38,8 @@ DATA 0 インターフェイスは、まず、StorSimple デバイスを初め�
 DATA 0 ネットワーク設定を再構成するには、StorSimple デバイスの Windows PowerShell インターフェイスに接続し、セットアップ ウィザードのセッションを起動します。 DATA 0 の設定を変更するには、次の手順を実行します。
 
 #### <a name="to-modify-data-0-network-settings-through-setup-wizard"></a>セットアップ ウィザードを使用して DATA 0 ネットワーク設定を変更するには
-1. シリアル コンソール メニューで、オプション 1 を選択し、 **フル アクセスでログイン** します。 画面の指示に従って、 **デバイス管理者のパスワード** を入力します。 既定のパスワードは `Password1`です。
-2. コマンド プロンプトに、次のコマンドを入力します。
+1. シリアル コンソール メニューで、オプション 1 を選択して、**フル アクセスでログイン** します。 画面の指示に従って、 **デバイス管理者のパスワード** を入力します。 既定のパスワードは `Password1`です。
+2. コマンド プロンプトで、次のコマンドを入力します。
    
     `Invoke-HcsSetupWizard`
 3. デバイスの DATA 0 インターフェイスの構成に役立つセットアップ ウィザードが表示されます。 IP アドレス、ゲートウェイ、およびネットマスクの新しい値を指定します。
@@ -51,8 +51,8 @@ DATA 0 ネットワーク設定を再構成するには、StorSimple デバイ�
 DATA 0 ネットワーク インターフェイスを再構成するためのもう 1 つの方法は、 `Set-HcsNetInterface` コマンドレットを使用することです。 このコマンドレットは、StorSimple デバイスの Windows PowerShell インターフェイスから実行します。 この手順を使用する場合、コントローラーの固定 IP アドレスをここで構成することもできます。 DATA 0 の設定を変更するには、次の手順を実行します。 
 
 #### <a name="to-modify-data-0-network-settings-through-the-set-hcsnetinterface-cmdlet"></a>Set-HcsNetInterface コマンドレットを使用して DATA 0 ネットワーク設定を変更するには
-1. シリアル コンソール メニューで、オプション 1 を選択し、 **フル アクセスでログイン** します。 画面の指示に従って、デバイス管理者のパスワードを入力します。 既定のパスワードは `Password1`です。
-2. コマンド プロンプトに、次のコマンドを入力します。
+1. シリアル コンソール メニューで、オプション 1 を選択して、**フル アクセスでログイン** します。 画面の指示に従って、デバイス管理者のパスワードを入力します。 既定のパスワードは `Password1`です。
+2. コマンド プロンプトで、次のコマンドを入力します。
    
     `Set-HCSNetInterface -InterfaceAlias Data0 -IPv4Address <> -IPv4Netmask <> -IPv4Gateway <> -Controller0IPv4Address <> -Controller1IPv4Address <> -IsiScsiEnabled 1 -IsCloudEnabled 1`
    

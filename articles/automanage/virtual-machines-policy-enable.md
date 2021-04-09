@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
 ms.openlocfilehash: 8f679626b69bd855e86b94cdde51955edd068e8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91714901"
 ---
 # <a name="enable-automanage-for-virtual-machines-through-azure-policy"></a>Azure Policy を通じて Automanage for virtual machines を有効にする
@@ -28,7 +28,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 > 無料試用版アカウントでは、このチュートリアルで使用されている仮想マシンを利用できません。 従量課金制サブスクリプションにアップグレードしてください。
 
 > [!IMPORTANT]
-> Automanage を有効にするには、次の Azure RBAC アクセス許可が必要です。**所有者**ロール、または**共同作成者**ロールと**ユーザー アクセス管理者**ロールの併用。
+> Automanage を有効にするには、次の Azure RBAC アクセス許可が必要です。**所有者** ロール、または **共同作成者** ロールと **ユーザー アクセス管理者** ロールの併用。
 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン

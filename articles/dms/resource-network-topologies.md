@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: reference
 ms.date: 01/08/2020
-ms.openlocfilehash: ae036b7d893eb268ea55026054bf364dad0b610e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0799e8c76bc5d3969943d766aa83de40659a236a
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961551"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093337"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>Azure Database Migration Service を使用して Azure SQL Managed Instance を移行するためのネットワーク トポロジ
 
@@ -83,11 +83,12 @@ Azure SQL Managed Instance がオンプレミス ネットワークに接続さ�
 
 | **名前**                  | **ポート**                                              | **プロトコル** | **ソース** | **送信先**           | **アクション** | **ルールの理由**                                                                                                                                                                              |
 |---------------------------|-------------------------------------------------------|--------------|------------|---------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| management                | 443,9354                                              | TCP          | Any        | Any                       | Allow      | Service Bus と Azure Blob Storage を経由する管理プレーン通信。 <br/>(Microsoft ピアリングが有効になっている場合、この規則は必要ないことがあります。)                                                             |
-| 診断               | 12000                                                 | TCP          | Any        | Any                       | Allow      | DMS はこの規則を使用して、トラブルシューティングのために診断情報を収集します。                                                                                                                      |
+| ServiceBus                | 443、ServiceTag: ServiceBus                           | TCP          | Any        | Any                       | Allow      | Service Bus を経由する管理プレーン通信。 <br/>(Microsoft ピアリングが有効になっている場合、この規則は必要ないことがあります。)                                                             |
+| ストレージ                   | 443、ServiceTag: Storage                              | TCP          | Any        | Any                       | Allow      | Azure Blob Storage を使用した管理プレーン。 <br/>(Microsoft ピアリングが有効になっている場合、この規則は必要ないことがあります。)                                                             |
+| 診断               | 443、ServiceTag: AzureMonitor                         | TCP          | Any        | Any                       | Allow      | DMS はこの規則を使用して、トラブルシューティングのために診断情報を収集します。 <br/>(Microsoft ピアリングが有効になっている場合、この規則は必要ないことがあります。)                                                  |
 | SQL ソース サーバー         | 1433 (または、SQL Server がリッスンしている TCP IP ポート) | TCP          | Any        | オンプレミスのアドレス空間 | Allow      | DMS からの SQL Server ソース接続 <br/>(サイト間接続がある場合、この規則は必要ないことがあります。)                                                                                       |
 | SQL Server 名前付きインスタンス | 1434                                                  | UDP          | Any        | オンプレミスのアドレス空間 | Allow      | DMS からの SQL Server 名前付きインスタンス ソース接続 <br/>(サイト間接続がある場合、この規則は必要ないことがあります。)                                                                        |
-| SMB 共有                 | 445                                                   | TCP          | Any        | オンプレミスのアドレス空間 | Allow      | Azure VM 上の Azure SQL Database MI と SQL Server への移行用にデータベース バックアップ ファイルを格納するための DMS に対する SMB ネットワーク共有 <br/>(サイト間接続がある場合、この規則は必要ないことがあります)。 |
+| SMB 共有                 | 445 (シナリオで必要な場合)                             | TCP          | Any        | オンプレミスのアドレス空間 | Allow      | Azure VM 上の Azure SQL Database MI と SQL Server への移行用にデータベース バックアップ ファイルを格納するための DMS に対する SMB ネットワーク共有 <br/>(サイト間接続がある場合、この規則は必要ないことがあります)。 |
 | DMS_subnet                | Any                                                   | Any          | Any        | DMS_Subnet                | Allow      |                                                                                                                                                                                                  |
 
 ## <a name="see-also"></a>関連項目

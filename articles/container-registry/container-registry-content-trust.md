@@ -4,10 +4,10 @@ description: Azure Container Registry でコンテンツの信頼を有効にし
 ms.topic: article
 ms.date: 09/18/2020
 ms.openlocfilehash: f44cea09521dc235ad0d555264b165c9a3842a14
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92148572"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry におけるコンテンツの信頼
@@ -19,7 +19,7 @@ Azure Container Registry では、Docker の[コンテンツの信頼][docker-co
 
 ## <a name="how-content-trust-works"></a>コンテンツの信頼の動作概念
 
-セキュリティを考慮して設計されたあらゆる分散システムにとって大切なことは、システムに入力されるデータの " *ソース* " と " *整合性* " の両方を確認することです。 データのコンシューマーは、データの公開元 (ソース) を確認できること、またデータが公開後に改変されていないこと (整合性) を確認できることが必要です。 
+セキュリティを考慮して設計されたあらゆる分散システムにとって大切なことは、システムに入力されるデータの "*ソース*" と "*整合性*" の両方を確認することです。 データのコンシューマーは、データの公開元 (ソース) を確認できること、またデータが公開後に改変されていないこと (整合性) を確認できることが必要です。 
 
 レジストリにプッシュするイメージには、イメージの発行者がコンテンツの信頼を通じて **署名** することができます。 イメージのコンシューマー (レジストリからイメージをプルする人またはシステム) は、署名済みのイメージ *のみ* をプルするように各自のクライアントを構成することができます。 署名済みのイメージをそのコンシューマーがプルすると、Docker クライアントによってイメージの整合性が確認されます。 このモデルでは、レジストリに存在する署名済みのイメージが確かに本人によって発行され、また発行された後に改変されていないという確信をコンシューマーは得ることができます。
 
@@ -112,7 +112,7 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee <service principal ID>
 ```
 
-`<service principal ID>` には、サービス プリンシパルの **appId** 、 **objectId** 、またはその **servicePrincipalNames** を指定できます。 サービス プリンシパルと Azure Container Registry の取り扱いについて詳しくは、「[サービス プリンシパルによる Azure Container Registry 認証](container-registry-auth-service-principal.md)」をご覧ください。
+`<service principal ID>` には、サービス プリンシパルの **appId**、**objectId**、またはその **servicePrincipalNames** を指定できます。 サービス プリンシパルと Azure Container Registry の取り扱いについて詳しくは、「[サービス プリンシパルによる Azure Container Registry 認証](container-registry-auth-service-principal.md)」をご覧ください。
 
 > [!IMPORTANT]
 > ロールが変更されたら、新しいロールを有効にするために、`az acr login` を実行して Azure CLI のローカル ID トークンを更新します。 ID に対するロール検証の詳細については、「[Azure CLI を使用して Azure でのロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-cli.md)」と「[Azure RBAC のトラブルシューティング](../role-based-access-control/troubleshooting.md)」を参照してください。
@@ -193,7 +193,7 @@ umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; 
 ルート キーが利用できなくなった場合、そのキーでタグが署名されているリポジトリ内の署名済みのタグにはアクセスできなくなります。 紛失したルート キーで署名されたイメージ タグへのアクセスを Azure Container Registry で復元することはできません。 レジストリのすべての信頼データ (署名) を削除するには、まずそのレジストリに対するコンテンツの信頼を無効にしてから再度有効にしてください。
 
 > [!WARNING]
-> レジストリのコンテンツの信頼を無効にしてから再度有効にすると、 **そのレジストリの各リポジトリに存在するすべての署名済みタグの信頼データがすべて削除されます** 。 この操作を元に戻すことはできません。つまり削除された信頼データを Azure Container Registry で復旧することはできません。 コンテンツの信頼を無効にしても、イメージそのものは削除されません。
+> レジストリのコンテンツの信頼を無効にしてから再度有効にすると、**そのレジストリの各リポジトリに存在するすべての署名済みタグの信頼データがすべて削除されます**。 この操作を元に戻すことはできません。つまり削除された信頼データを Azure Container Registry で復旧することはできません。 コンテンツの信頼を無効にしても、イメージそのものは削除されません。
 
 レジストリに対してコンテンツの信頼を無効にするには、Azure portal で目的のレジストリに移動します。 **[ポリシー]** で、 **[コンテンツの信頼]**  >  **[無効]**  >  **[保存]** の順に選択します。 レジストリ内の署名がすべて失われるという警告が表示されます。 そのレジストリ内のすべての署名を完全に削除する場合は、 **[OK]** を選択してください。
 

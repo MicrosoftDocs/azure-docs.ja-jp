@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1dd82fb00c55e3676929999f204eae8755671038
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93314751"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Azure HDInsight 上の Spark を使用したデータ サイエンスの概要
@@ -156,13 +156,13 @@ Jupyter Notebook は Azure ポータルから起動できます。 ダッシュ�
 
 ![クラスター ダッシュボード](./media/spark-overview/spark-jupyter-on-portal.png)
 
-* *_`https://CLUSTERNAME.azurehdinsight.net/jupyter`_* _ を参照して Jupyter Notebooks にアクセスすることもできます。 この URL の CLUSTERNAME の部分は、実際のクラスターの名前に置き換えてください。 ノートブックにアクセスするには、管理者アカウントのパスワードが必要です。
+***`https://CLUSTERNAME.azurehdinsight.net/jupyter`*** を参照し、Jupyter Notebooks にアクセスすることもできます。 この URL の CLUSTERNAME の部分は、実際のクラスターの名前に置き換えてください。 ノートブックにアクセスするには、管理者アカウントのパスワードが必要です。
 
 ![Jupyter Notebook を参照する](./media/spark-overview/spark-jupyter-notebook.png)
 
 [PySpark] を選択すると表示されるディレクトリには、PySpark API を使用する、あらかじめパッケージ化された Notebook の例が含まれています。 Spark に関連する一連のトピックのコード サンプルが含まれた Notebook は [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) で入手できます
 
-[GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) から、Spark クラスター上の Jupyter Notebook サーバーに Notebook を直接アップロードできます。 Jupyter のホーム ページで、画面の右側にある _ *[アップロード]* * ボタンをクリックします。 ファイル エクスプ ローラーが開きます。 ここで、Notebook の GitHub (生コンテンツ) URL を貼り付け、 **[開く]** をクリックします。
+[GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) から、Spark クラスター上の Jupyter Notebook サーバーに Notebook を直接アップロードできます。 Jupyter のホーム ページで、画面の右側にある **[アップロード]** ボタンをクリックします。 ファイル エクスプ ローラーが開きます。 ここで、Notebook の GitHub (生コンテンツ) URL を貼り付け、 **[開く]** をクリックします。
 
 Jupyter ファイルの一覧にファイル名が **[アップロード]** ボタンと共に表示されます。 この **[アップロード]** ボタンをクリックします。 これで、ノートブックがインポートされます。 このチュートリアルの他のノートブックをアップロードするには、この手順を繰り返します。
 
@@ -190,6 +190,6 @@ HDInsight Spark クラスターが設定され、Jupyter Notebook がアップ�
 
 **Spark を使用したデータ探索とモデリング:** [Spark MLlib ツールキットを使用したデータの二項分類と回帰モデルの作成](spark-data-exploration-modeling.md)に関するトピックで、データセットの詳細を確認し、機械学習モデルの作成、スコア付け、評価を行います。
 
-**モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付ける方法については、 [Spark で構築した機械学習モデルのスコア付けと評価](spark-model-consumption.md)に関するページを参照してください。
+**モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付ける方法については、[Spark で構築した機械学習モデルのスコア付けと評価](spark-model-consumption.md)に関するページを参照してください。
 
-**クロス検証とハイパーパラメーター スイープ** :クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「 [Spark を使用した高度なデータ探索とモデリング](spark-advanced-data-exploration-modeling.md)」を参照してください。
+**クロス検証とハイパーパラメーター スイープ**:クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「[Spark を使用した高度なデータ探索とモデリング](spark-advanced-data-exploration-modeling.md)」を参照してください。

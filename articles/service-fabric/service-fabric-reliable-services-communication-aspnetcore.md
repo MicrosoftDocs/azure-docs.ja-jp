@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/12/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a125c6a1972b51f518175a4c69248119f71ada7c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98791596"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric Reliable Services での ASP.NET Core

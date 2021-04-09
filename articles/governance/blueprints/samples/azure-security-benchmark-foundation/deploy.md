@@ -1,14 +1,14 @@
 ---
 title: Azure セキュリティ ベンチマーク基盤ブループリント サンプルのデプロイ
 description: ブループリント アーティファクト パラメーターの詳細を含む Azure セキュリティ ベンチマーク基盤ブループリント サンプルのデプロイ手順です。
-ms.date: 02/12/2020
+ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: 84c157d696dc8ababe1f252136672ea600e604af
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: af41dd50c976ac6c0570b8a089211fa310ef4ef1
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633956"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232615"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>Azure セキュリティ ベンチマーク基盤ブループリント サンプルのデプロイ
 
@@ -92,6 +92,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
      - **Network Watcher 名**: Network Watcher リソースの名前
      - **Network Watcher リソース グループ名**: Network Watcher リソース グループの名前
      - **DDoS Protection の有効化**: "true" または "false" を入力して、仮想ネットワークで DDoS Protection を有効にするかどうかを指定します
+     
+    > [!NOTE] 
+    > Network Watcher が既に有効になっている場合は、既存の Network Watcher リソース グループを使用することをお勧めします。 また、アーティファクト パラメーター **[Network Watcher リソース グループの場所]** に、既存の Network Watcher リソース グループの場所を指定する必要もあります。
 
    - アーティファクトのパラメーター
 
@@ -132,8 +135,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |Azure Virtual Network スポーク テンプレート|Resource Manager テンプレート|サブネットのアドレス名 (省略可能)|スポーク仮想ネットワークにデプロイするサブネット名の配列 (例: "subnet1"、"subnet2")|
 |Azure Virtual Network スポーク テンプレート|Resource Manager テンプレート|サブネット アドレス プレフィックス (省略可能)|スポーク仮想ネットワークのオプション サブネットの IP アドレス プレフィックスの配列 (例: "10.0.7.0/24"、"10.0.8.0/24")|
 |Azure Virtual Network スポーク テンプレート|Resource Manager テンプレート|スポークのデプロイ|"true" または "false" を入力して、アーキテクチャのスポーク コンポーネントが割り当てによってデプロイされるかどうかを指定します|
-|Azure Network Watcher テンプレート|Resource Manager テンプレート|Network Watcher の場所|Network Watcher が既に有効になっている場合、このパラメーター値は既存の Network Watcher リソース グループの場所と一致している **必要があります**。|
-|Azure Network Watcher テンプレート|Resource Manager テンプレート|Network Watcher リソース グループの場所|Network Watcher が既に有効になっている場合、このパラメーター値は既存の Network Watcher リソース グループの名前と一致している **必要があります**。|
+|Azure Network Watcher テンプレート|Resource Manager テンプレート|Network Watcher の場所|Network Watcher リソースの場所|
+|Azure Network Watcher テンプレート|Resource Manager テンプレート|Network Watcher リソース グループの場所|Network Watcher が既に有効になっている場合、このパラメーター値は既存の Network Watcher リソース グループの場所と一致している **必要があります**。|
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+`The resource group 'NetworkWatcherRG' failed to deploy due to the
+following error: Invalid resource group location '{location}'. The Resource group already exists in
+location '{location}'.` というエラーが発生した場合は、ブループリント パラメーター **[Network Watcher リソース グループ名]** に既存の Network Watcher リソース グループ名が指定されていること、およびアーティファクト パラメーター **[Network Watcher リソース グループの場所]** に既存の Network Watcher リソース グループの場所が指定されていることを確認します。
 
 ## <a name="next-steps"></a>次の手順
 

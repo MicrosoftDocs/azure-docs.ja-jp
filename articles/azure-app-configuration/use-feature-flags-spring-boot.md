@@ -15,13 +15,13 @@ ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 0dcf85add4e1c9f1d701c4ce4a122c8d6b31382a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92077832"
 ---
-# <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>チュートリアル:Spring Boot アプリ内で機能フラグを使用する
+# <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>チュートリアル: Spring Boot アプリ内で機能フラグを使用する
 
 Spring Boot Core 機能管理ライブラリでは、Spring Boot アプリケーションで機能フラグを実装するためのサポートが提供されます。 これらのライブラリにより、機能フラグを宣言的にコードに追加できます。
 

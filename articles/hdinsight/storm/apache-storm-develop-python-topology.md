@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-python
 ms.date: 12/16/2019
 ms.openlocfilehash: e28d21ed71cf5f485165c639a8bd519b3a2736e1
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98928990"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>HDInsight での Python を使用した Apache Storm トポロジの開発
@@ -111,7 +111,7 @@ Flux では、Python スクリプトは、トポロジを含む jar ファイル
     storm kill wordcount
     ```
 
-    別の方法として、Storm UI を使用することもできます。 トポロジの **[トポロジのアクション]** で、 **[強制終了]** を選択します。
+    別の方法として、Storm UI を使用することもできます。 トポロジの **[トポロジのアクション]** で、**[強制終了]** を選択します。
 
 ## <a name="run-the-topology-locally"></a>トポロジをローカルで実行する
 
@@ -142,4 +142,4 @@ storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.
 
 ## <a name="next-steps"></a>次のステップ
 
-HDInsight で Phthon を使用する他の方法については、次のドキュメントを参照してください。[Apache Hive と Apache Pig で Python ユーザー定義関数 (UDF) を使用する](../hadoop/python-udf-hdinsight.md)。
+HDInsight で Python を使用するその他の方法については、次のドキュメントを参照してください: [Apache Pig と Apache Hive での Python ユーザー定義関数 (UDF) の使用方法](../hadoop/python-udf-hdinsight.md)に関するドキュメント。

@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 09c4dadd7a6560bd5163d623dd8a7f247b57860e
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100102497"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>国内クラウド環境で MSAL を使用する

@@ -12,10 +12,10 @@ ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: c656bfe7f9cc8923859a99f31210cd554aa66a41
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99256968"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>アプリケーション プロキシ コネクタの問題をデバッグする 

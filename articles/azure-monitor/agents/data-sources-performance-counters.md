@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor で Log Analytics エージェントを使用して Windows と Linux のパフォーマンス データ ソースを収集する
 description: Azure Monitor では、Windows および Linux のエージェントのパフォーマンスを分析するためにパフォーマンス カウンターが収集されます。  この記事では、Windows および Linux の両方のエージェントでのパフォーマンス カウンターの収集の構成方法、ワークスペースに格納されたそれらの詳細、および Azure Portal でのそれらの分析方法について説明します。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/21/2020
-ms.openlocfilehash: c06123b33c7f467e12742cf6180d821e647b5115
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: f4bddc1666d1165d6a1e4c749fdbc96ede37747a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711554"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036779"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Log Analytics エージェントを使用して Windows と Linux のパフォーマンス データ ソースを収集する
 Windows および Linux のパフォーマンス カウンターから、ハードウェア コンポーネント、オペレーティング システム、およびアプリケーションのパフォーマンスに関する情報が得られます。  Azure Monitor では、長期的な分析とレポートのためにパフォーマンス データを集計することに加えて、ほぼリアルタイム (NRT) 分析のために Log Analytics エージェントから頻繁な間隔でパフォーマンス カウンターを収集できます。
@@ -22,7 +21,7 @@ Windows および Linux のパフォーマンス カウンターから、ハー�
 ![パフォーマンス カウンター](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>パフォーマンス カウンターの構成
-Log Analytics ワークスペースで [[詳細設定] の [データ] メニュー](../agents/agent-data-sources.md#configuring-data-sources)からパフォーマンス カウンターを構成します。
+Log Analytics ワークスペースの [[エージェント構成] メニュー](../agents/agent-data-sources.md#configuring-data-sources)からパフォーマンス カウンターを構成します。
 
 新しいワークスペースの Windows または Linux のパフォーマンス カウンターを初めて構成する場合、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。  それぞれのオプションの横には、チェック ボックスが表示されます。  最初に作成するカウンターがオンになっていることを確認し、 **[Add the selected performance counters (選択されたパフォーマンス カウンターを追加する)]** をクリックします。
 
@@ -36,28 +35,28 @@ Windows のパフォーマンス カウンターの場合、パフォーマン�
 
 ### <a name="windows-performance-counters"></a>Windows パフォーマンス カウンター
 
-![Windows パフォーマンス カウンターの構成](media/data-sources-performance-counters/configure-windows.png)
+[![Windows パフォーマンス カウンターの構成](media/data-sources-performance-counters/configure-windows.png)](media/data-sources-performance-counters/configure-windows.png#lightbox)
 
 収集する新しい Windows パフォーマンス カウンターを追加するには、次の手順を実行します。 V2 Windows パフォーマンス カウンターがサポートされていないことにご注意ください。
 
-1. *<オブジェクト (インスタンス)>\<カウンター>* の形式で、テキスト ボックスにカウンターの名前を入力します。  入力を開始すると、入力内容に一致する一般的なカウンターの一覧が表示されます。  一覧からカウンターを選択するか、または独自の名前を入力することができます。  *<オブジェクト>\<カウンター>* を指定して、特定のカウンターのすべてのインスタンスを返すこともできます。  
+1. **[パフォーマンス カウンターの追加]** をクリックします。
+2. *<オブジェクト (インスタンス)>\<カウンター>* の形式で、テキスト ボックスにカウンターの名前を入力します。  入力を開始すると、入力内容に一致する一般的なカウンターの一覧が表示されます。  一覧からカウンターを選択するか、または独自の名前を入力することができます。  *<オブジェクト>\<カウンター>* を指定して、特定のカウンターのすべてのインスタンスを返すこともできます。  
 
     名前付きインスタンスから SQL Server パフォーマンス カウンターを収集するとき、すべての名前付きインスタンス カウンターの名前が *MSSQL$* から始まり、その後ろにインスタンスの名前が付きます。  たとえば、名前付き SQL インスタンス INST2 のデータベース パフォーマンス オブジェクトからログ キャッシュ ヒット率カウンターを収集するには、`MSSQL$INST2:Databases(*)\Log Cache Hit Ratio` と指定します。
 
-2. **+** をクリックするか、または **Enter** キーを押して、一覧にカウンターを追加します。
-3. カウンターを追加すると、その **[サンプルの間隔]** には既定値の 10 秒が使用されます。  収集されたパフォーマンス データのストレージ要件を削減する場合は、この値を最大 1800 秒 (30 分) まで高く変更できます。
-4. カウンターの追加を完了したら、画面の上部にある **[保存]** ボタンをクリックして、構成を保存します。
+4. カウンターを追加すると、その **[サンプルの間隔]** には既定値の 10 秒が使用されます。  収集されたパフォーマンス データのストレージ要件を削減する場合は、この値を最大 1800 秒 (30 分) まで高く変更できます。
+5. カウンターの追加を完了したら、画面の上部にある **[適用]** ボタンをクリックして、構成を保存します。
 
 ### <a name="linux-performance-counters"></a>Linux パフォーマンス カウンター
 
-![Linux パフォーマンス カウンターの構成](media/data-sources-performance-counters/configure-linux-1.png)
+[![Linux パフォーマンス カウンターの構成](media/data-sources-performance-counters/configure-linux.png)](media/data-sources-performance-counters/configure-linux.png#lightbox)
 
 収集する新しい Linux パフォーマンス カウンターを追加するには、次の手順を実行します。
 
+1. **[パフォーマンス カウンターの追加]** をクリックします。
 1. *<オブジェクト (インスタンス)>\<カウンター>* の形式で、テキスト ボックスにカウンターの名前を入力します。  入力を開始すると、入力内容に一致する一般的なカウンターの一覧が表示されます。  一覧からカウンターを選択するか、または独自の名前を入力することができます。  
-1. **+** をクリックするか、または **Enter** キーを押して、オブジェクトのその他のカウンターの一覧にカウンターを追加します。
 1. オブジェクトのすべてのカウンターは、同じ **[サンプルの間隔]** を使用します。  既定値は 10 秒です。  収集されたパフォーマンス データのストレージ要件を削減したい場合は、1,800 秒 (30 分) を上限としてこの値を増やしてください。
-1. カウンターの追加を完了したら、画面の上部にある **[保存]** ボタンをクリックして、構成を保存します。
+1. カウンターの追加を完了したら、画面の上部にある **[適用]** ボタンをクリックして、構成を保存します。
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>構成ファイルで Linux のパフォーマンス カウンターを構成する
 Azure Portal を使用して Linux のパフォーマンス カウンターを構成する代わりに、Linux エージェントで構成ファイルを編集することもできます。  収集するパフォーマンス メトリックは、 **/etc/opt/microsoft/omsagent/\<workspace id\>/conf/omsagent.conf** の構成によって制御されます。

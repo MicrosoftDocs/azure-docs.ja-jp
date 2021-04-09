@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: a5fa6b1c75bee562394af42fcea9ebfabeb732f0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 858f006de7425a9fa8bea25e356a148b877aa30d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389537"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040602"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -37,7 +37,7 @@ Azure Migrate ハブには、次のツールが含まれています。
 --- | --- | ---
 **Azure Migrate: Server Assessment** | サーバーを評価します。 | Azure への移行の準備として、オンプレミスの VMware VM、Hyper-V VM、および物理サーバーを検出して評価します。
 **Azure Migrate: Server Migration** | サーバーを移行します。 | VMware VM、Hyper-V VM、物理サーバー、その他の仮想マシン、およびパブリック クラウド VM を Azure に移行します。
-**Data Migration Assistant** | Azure SQL Database、Azure SQL Managed Instance、または SQL Server を実行する Azure VM に移行する SQL Server データベースを評価します。 | Data Migration Assistant は、移行を妨げる可能性のある問題の特定に役立ちます。 サポートされていない機能、移行後に役に立つ新機能、データベースの移行の適切なパスが明らかになります。 [詳細については、こちらを参照してください](/sql/dma/dma-overview?view=sql-server-2017)。
+**Data Migration Assistant** | Azure SQL Database、Azure SQL Managed Instance、または SQL Server を実行する Azure VM に移行する SQL Server データベースを評価します。 | Data Migration Assistant は、移行を妨げる可能性のある問題の特定に役立ちます。 サポートされていない機能、移行後に役に立つ新機能、データベースの移行の適切なパスが明らかになります。 [詳細については、こちらを参照してください](/sql/dma/dma-overview)。
 **Azure Database Migration Service** | オンプレミスのデータベースを、SQL Server を実行している Azure VM、Azure SQL Database、または SQL Managed Instance に移行します。 | Database Migration Service の[詳細を参照](../dms/dms-overview.md)してください。
 **Movere** | サーバーを評価します。 | Movere の[詳細を参照](#movere)してください。
 **Web App Migration Assistant** | オンプレミスの Web アプリを評価し、Azure に移行します。 |  Azure App Service に移行するためにオンプレミスの Web サイトを評価するには、Azure App Service Migration Assistant を使用します。<br/><br/> .NET と PHP の Web アプリを Azure に移行するには、Migration Assistant を使用します。 Azure App Service Migration Assistant の[詳細を参照](https://appmigration.microsoft.com/)してください。
@@ -78,6 +78,9 @@ Server Assessment では、オンプレミスに展開されている軽量の [
 - アプライアンスにより、オンプレミスのマシンが検出されます。 また、マシンのメタデータとパフォーマンス データが Azure Migrate に継続的に送信されます。
 - アプライアンスによる検出はエージェントレスです。 検出されたマシンには何もインストールされません。
 - アプライアンスによる検出後、検出されたマシンをグループ化し、各グループの評価を実行できます。
+
+> [!Note]
+> VMware 環境で実行されている SQL Server インスタンスおよびデータベースの検出と評価は、現在プレビュー段階にあります。 この機能を試すには、[**このリンク**](https://go.microsoft.com/fwlink/?linkid=2155668)を使用して、**オーストラリア東部** リージョンにプロジェクトを作成します。 オーストラリア東部に既にプロジェクトがあり、この機能を試したい場合は、ポータルでこれらの [**前提条件**](how-to-discover-sql-existing-project.md)が完了していることを確認してください。
 
 ## <a name="azure-migrate-server-migration-tool"></a>Azure Migrate: Server Migration ツール
 

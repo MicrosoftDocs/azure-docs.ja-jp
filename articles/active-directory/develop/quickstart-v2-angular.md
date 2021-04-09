@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 95747bb68a904212e7e075fc29b2497932d66e5f
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 5ac6a19fc569d60f75f9da788629331a70b0a4c9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103857"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103225049"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>クイック スタート:Angular シングルページ アプリケーションでユーザーをサインインさせてアクセス トークンを取得する
 
@@ -102,8 +102,8 @@ ms.locfileid: "100103857"
 >|Enter_the_Redirect_Uri_Here|**http://localhost:4200** に置き換えます。|
 >|cacheLocation  | (省略可能) 認証状態のブラウザー ストレージを設定します。 既定では **sessionStorage** です。   |
 >|storeAuthStateInCookie  | (省略可能) 認証要求の状態を格納するライブラリを識別します。 認証フローを検証するためには、ブラウザーの Cookie にこの状態が必要になります。 この Cookie は、Internet Explorer および Microsoft Edge の 2 つのブラウザーに適合するように設定されます。 詳細については、[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues)に関するページを参照してください。 |
-> > [!TIP]
-> > **[アプリケーション (クライアント) ID]** 、 **[ディレクトリ (テナント) ID]** 、 **[サポートされているアカウントの種類]** の値を見つけるには、Azure portal でアプリの **[概要]** ページに移動します。
+>
+> **[アプリケーション (クライアント) ID]** 、 **[ディレクトリ (テナント) ID]** 、 **[サポートされているアカウントの種類]** の値を見つけるには、Azure portal でアプリの **[概要]** ページに移動します。
 
 使用できる構成オプションの詳細については、[クライアント アプリケーションの初期化](msal-js-initializing-client-applications.md)に関する記事を参照してください。
 

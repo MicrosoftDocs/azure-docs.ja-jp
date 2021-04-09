@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 4fed65e12a166c046a0c63d7c4849f86805bbe9c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96021046"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 シリーズ Update 5 リリース ノート
@@ -44,7 +44,7 @@ Update 5 では、主に次の機能強化とバグ修正が行われていま�
 
 次の表は、Update 5 で修正された問題の概要を示しています。
 
-| いいえ | 機能 | 問題 | 物理デバイスへの適用 | 仮想デバイスへの適用 |
+| いいえ | 特徴量 | 問題 | 物理デバイスへの適用 | 仮想デバイスへの適用 |
 | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell のリモート処理 |以前のリリースでは、Windows PowerShell 経由で StorSimple Cloud Appliance へのリモート接続の確立を試行しているときに、ユーザーはエラーを受信しました。 このリリースでは、この問題の根本原因が特定され、問題が修正されました。 |いいえ |はい |
 | 2 |帯域幅テンプレート |以前のリリースでは、帯域幅のテンプレートに問題があり、デバイスでの構成よりも少ない帯域幅になっていました。 この問題は今回のリリースで解決されました。 |はい |はい |

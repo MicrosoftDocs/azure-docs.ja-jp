@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: b013c66feefade077c85194ba3b1ff04ff4c4aa5
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 4f5cc0d5eefd5969566040e4148ca7358d348736
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99536834"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951506"
 ---
 # <a name="creating-queries-in-azure-cognitive-search"></a>Azure Cognitive Search でのクエリの作成
 
@@ -21,18 +21,21 @@ ms.locfileid: "99536834"
 
 ## <a name="whats-a-query-request"></a>クエリ要求とは
 
-クエリとは、単一の検索インデックスのドキュメント コレクションに対する読み取り専用の要求です。 これは "queryType" と、"search" パラメーターによるクエリ式を指定します。 クエリ式には、検索語句、引用符で囲まれたフレーズ、および演算子を含めることができます。
+クエリとは、単一の検索インデックスのドキュメント コレクションに対する読み取り専用の要求です。 ここでは、'Search' パラメーターを指定します。また、語句、引用符で囲まれたフレーズ、および演算子で構成されたクエリ式が含まれます。
 
-クエリには、インデックスで見つかった一致の数を返すための "count"、検索結果で返されるフィールドを選択するための "select"、結果を並べ替えるための "orderby" を含めることもできます。 次の例では、使用可能なパラメーターのサブセットを示すことにより、クエリ要求の一般的な概念を示します。 クエリの構成の詳細については、[クエリの種類と構成](search-query-overview.md)および[ドキュメントの検索 (REST)](/rest/api/searchservice/search-documents) に関する記事を参照してください。
+追加のパラメーターを使用すると、クエリと応答をより詳細に定義することができます。 たとえば、'searchFields' では特定のフィールドに対してクエリを実行します。'select' では結果で返されるフィールドを指定し、'count' ではインデックス内で見つかった一致の数を返します。
+
+次の例では、使用可能なパラメーターのサブセットを示すことにより、クエリ要求の一般的な概念を示します。 クエリの構成の詳細については、[クエリの種類と構成](search-query-overview.md)および[ドキュメントの検索 (REST)](/rest/api/searchservice/search-documents) に関する記事を参照してください。
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-    "queryType": "simple"
-    "search": "`New York` +restaurant",
-    "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
-    "count": "true",
-    "orderby": "Rating desc"
+    "search": "NY +view",
+    "queryType": "simple",
+    "searchMode": "all",
+    "searchFields": "HotelName, Description, Address/City, Address/StateProvince, Tags",
+    "select": "HotelName, Description, Address/City, Address/StateProvince, Tags",
+    "count": "true"
 }
 ```
 
@@ -71,7 +74,7 @@ Cognitive Search の場合、一般公開される機能は Azure SDK によっ�
 |-----------|--------|----------|
 | .NET | [SearchClient](/dotnet/api/azure.search.documents.searchclient) | [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) |
 | Java | [SearchClient](/java/api/com.azure.search.documents.searchclient) | [SearchForDynamicDocumentsExample.java](https://github.com/Azure/azure-sdk-for-java/blob/azure-search-documents_11.1.3/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/SearchForDynamicDocumentsExample.java) |
-| JavaScript | [SearchClient](/javascript/api/@azure/search-documents/searchclient) | [readonlyQuery.js](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/readonlyQuery.js) |
+| JavaScript | [SearchClient](/javascript/api/@azure/search-documents/searchclient) | 保留中  |
 | Python | [SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient) | [sample_simple_query.py ](https://github.com/Azure/azure-sdk-for-python/blob/7cd31ac01fed9c790cec71de438af9c45cb45821/sdk/search/azure-search-documents/samples/sample_simple_query.py) |
 
 ## <a name="choose-a-query-type-simple--full"></a>クエリの種類を選択する: simple | full

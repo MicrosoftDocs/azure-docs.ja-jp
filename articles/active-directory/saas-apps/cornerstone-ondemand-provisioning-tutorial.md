@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 59c599167089d222324ed880c18e68d763f5e468
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94358458"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>チュートリアル: Cornerstone OnDemand を構成し、自動ユーザー プロビジョニングに対応させる
@@ -54,13 +54,13 @@ Marketplace から Cornerstone OnDemand を追加するには、次の手順を�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに、「 **Cornerstone OnDemand** 」と入力し、結果パネルから **[Cornerstone OnDemand]** を選択します。 アプリケーションを追加するには、 **[追加]** を選択します。
+4. 検索ボックスに、「**Cornerstone OnDemand**」と入力し、結果パネルから **[Cornerstone OnDemand]** を選択します。 アプリケーションを追加するには、 **[追加]** を選択します。
 
     ![結果リストの Cornerstone OnDemand](common/search-new-app.png)
 
 ## <a name="assign-users-to-cornerstone-ondemand"></a>Cornerstone OnDemand にユーザーを割り当てる
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD でアプリケーションに割り当てられているユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD でアプリケーションに割り当てられているユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Cornerstone OnDemand にアクセスする必要がある Azure AD のユーザーまたはグループを決定しておく必要があります。 これらのユーザーまたはグループを Cornerstone OnDemand に割り当てるには、「[エンタープライズ アプリにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)」の指示に従います。
 
@@ -76,7 +76,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 Azure AD で Cornerstone OnDemand の自動ユーザー プロビジョニングを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  >  **[Cornerstone OnDemand]** の順に選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  >  **[Cornerstone OnDemand]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -100,7 +100,7 @@ Azure AD で Cornerstone OnDemand の自動ユーザー プロビジョニング
 
     * **[ドメイン]** ボックスに、Cornerstone OnDemand テナントの Web サービスの URL を入力します。 たとえば、サービスは `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx` にあり、Contoso の場合、ドメインは `https://ws-contoso.csod.com/feed30/clientdataservice.asmx` です。 Web サービスの URL を取得する方法の詳細については、[こちらの pdf](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf) を参照してください。
 
-6. 手順 5 に示されているボックスに入力したら、 **[テスト接続]** を選択して、Azure AD が Cornerstone OnDemand に接続できることを確認します。 接続できない場合は、使用中の Cornerstone OnDemand アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+6. 手順 5 に示されているボックスに入力したら、**[テスト接続]** を選択して、Azure AD が Cornerstone OnDemand に接続できることを確認します。 接続できない場合は、使用中の Cornerstone OnDemand アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![Cornerstone OnDemand のテスト接続](./media/cornerstone-ondemand-provisioning-tutorial/TestConnection.png)
 
@@ -120,7 +120,7 @@ Azure AD で Cornerstone OnDemand の自動ユーザー プロビジョニング
 
 11. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の手順を参照してください。
 
-12. Cornerstone OnDemand に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+12. Cornerstone OnDemand に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![Cornerstone OnDemand のプロビジョニング状態](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningStatus.png)
 

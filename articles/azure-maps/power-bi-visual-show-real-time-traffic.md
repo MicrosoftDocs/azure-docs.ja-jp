@@ -10,15 +10,15 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: fe9e86f3c1d155a1f0b29f500de3954e360b4aa7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86261450"
 ---
 # <a name="show-real-time-traffic"></a>リアルタイム トラフィックを表示する
 
-トラフィック レイヤー機能を使用すると、マップの上にリアルタイムのトラフィック データがオーバーレイされます。 この機能を有効にするには、**書式**ウィンドウの **[Traffic layer]\(トラフィック レイヤー\)** スライダーを **[オン]** の位置に移動します。 これにより、交通流量データが色分けされた道路としてオーバーレイされます。
+トラフィック レイヤー機能を使用すると、マップの上にリアルタイムのトラフィック データがオーバーレイされます。 この機能を有効にするには、**書式** ウィンドウの **[Traffic layer]\(トラフィック レイヤー\)** スライダーを **[オン]** の位置に移動します。 これにより、交通流量データが色分けされた道路としてオーバーレイされます。
 
 > [!div class="mx-imgBorder"]
 > ![リアルタイムのトラフィック データを表示するマップ](media/power-bi-visual/traffic-layer.png)

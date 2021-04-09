@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 5a43eb2537ebc09ffcb524a4426d7a8c9bec560b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96500004"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Azure IoT C SDK を使用した制約のあるデバイス向けの開発
@@ -31,7 +31,7 @@ C SDK は apt-get、NuGet、および MBED からパッケージ形式で入手�
 制約のあるデバイス向けの C SDK をビルドします。
 
 > [!NOTE]
-> 埋め込み C SDK は、BYON (bring your own network) アプローチをサポートする、制約付きデバイスの代替手段です。 IoT 開発者はデバイス ソリューションを作成するために、選択した MQTT クライアント、TLS、ソケットを自由に使用することができます。 [埋め込み C SDK の詳細については、こちらを参照してください](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot)。
+> 埋め込み C SDK は、BYON (bring your own network) アプローチをサポートする、制約付きデバイスの代替手段です。 IoT 開発者はデバイス ソリューションを作成するために、任意の MQTT クライアント、TLS、ソケットを自由に使用できます。 [埋め込み C SDK の詳細については、こちらを参照してください](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot)。
 
 ### <a name="prerequisites"></a>[前提条件]
 

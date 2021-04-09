@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a7e33f950bc5f13372962694abc8e3e40d8ad5c0
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: dbd4923dd2843ab2c043da69f1b72efd8e1eb701
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753237"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573049"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>シナリオ:ユーザーをサインインさせる Web アプリ
 
@@ -55,7 +55,7 @@ Python を使用して開発する場合は、次のクイックスタートを�
 
 Web アプリに認証を追加して、ユーザーがサインインできるようにします。 認証を追加すると、ユーザーのエクスペリエンスをカスタマイズするために、限られたプロファイル情報に Web アプリがアクセスできるようになります。
 
-Web アプリでは、Web ブラウザーでユーザーを認証します。 このシナリオでは、Web アプリが、ユーザーを Azure Active Directory (Azure AD) にサインインさせるよう、ユーザーのブラウザーに指示します。 Azure AD は、ユーザーのブラウザーを介してサインイン応答を返します。この応答のセキュリティ トークンには、ユーザーに関する要求が含まれています。 ユーザーのサインインでは、ミドルウェアの[ライブラリ](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps)を使用して簡素化された [Open ID Connect](./v2-protocols-oidc.md) の標準プロトコルを利用します。
+Web アプリでは、Web ブラウザーでユーザーを認証します。 このシナリオでは、Web アプリが、ユーザーを Azure Active Directory (Azure AD) にサインインさせるよう、ユーザーのブラウザーに指示します。 Azure AD は、ユーザーのブラウザーを介してサインイン応答を返します。この応答のセキュリティ トークンには、ユーザーに関する要求が含まれています。 ユーザーのサインインでは、ミドルウェアの[ライブラリ](scenario-web-app-sign-user-app-configuration.md#microsoft-libraries-supporting-web-apps)を使用して簡素化された [Open ID Connect](./v2-protocols-oidc.md) の標準プロトコルを利用します。
 
 ![Web アプリによるユーザーのサインイン](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
 

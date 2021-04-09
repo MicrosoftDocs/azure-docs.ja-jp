@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 7b586edd7adce8bcea61419005a3ce8cfc814fb3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96013552"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Azure API Management で Azure Active Directory B2C を使用して開発者アカウントを承認する方法
@@ -27,7 +27,7 @@ ms.locfileid: "96013552"
 Azure Active Directory B2C は、コンシューマー向け Web アプリケーションおよびモバイル アプリケーション用のクラウド ID 管理ソリューションです。 これを使用して、開発者ポータルへのアクセスを管理することができます。 このガイドでは、Azure Active Directory B2C との統合のために API Management サービスで必要な構成について説明します。 従来の Azure Active Directory を使用して開発者ポータルへのアクセスを有効にする方法については、[Azure Active Directory を使用して開発者アカウントを承認する方法]に関する記事を参照してください。
 
 > [!NOTE]
-> このガイドの手順を実行するには、アプリケーションの作成先となる Azure Active Directory B2C テナントが事前に必要です。 また、サインアップ ポリシーとサインイン ポリシーを用意しておく必要があります。 詳細については、[Azure Active Directory B2C の概要]に関する記事を参照してください。
+> このガイドの手順を実行するには、アプリケーションの作成先となる Azure Active Directory B2C テナントが事前に必要です。 また、サインアップ ポリシーとサインイン ポリシーを用意しておく必要があります。 詳細については、[Azure Active Directory B2C の概要]に関する記事をご覧ください。
 
 [!INCLUDE [premium-dev-standard.md](../../includes/api-management-availability-premium-dev-standard.md)]
 
@@ -48,7 +48,7 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 
    ![AAD B2C ID プロバイダーのリダイレクト URL][api-management-howto-copy-b2c-identity-provider-redirect-url]
 
-1. 新しいタブで、Azure portal の Azure Active Directory B2C テナントにアクセスし、 **[Applications]** \(アプリケーション) ブレードを開きます。
+1. 新しいタブで、Azure portal の Azure Active Directory B2C テナントにアクセスし、**[Applications]** \(アプリケーション) ブレードを開きます。
 
    ![新しいアプリケーション 1 の登録][api-management-howto-aad-b2c-portal-menu]
 
@@ -56,7 +56,7 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 
    ![新しいアプリケーション 2 の登録][api-management-howto-aad-b2c-add-button]
 
-1. **[新しいアプリケーション]** ブレードで、アプリケーションの名前を入力します。 **[Web App/Web API (Web アプリ/Web API)]** で **[はい]** を選択し、 **[暗黙的フローを許可する]** で **[はい]** を選択します。 続けて、手順 3 でコピーした **[リダイレクト URL]** を **[応答 URL]** テキスト ボックスに貼り付けます。
+1. **[新しいアプリケーション]** ブレードで、アプリケーションの名前を入力します。 **[Web App/Web API (Web アプリ/Web API)]** で **[はい]** を選択し、**[暗黙的フローを許可する]** で **[はい]** を選択します。 続けて、手順 3 でコピーした **[リダイレクト URL]** を **[応答 URL]** テキスト ボックスに貼り付けます。
 
    ![新しいアプリケーション 3 の登録][api-management-howto-aad-b2c-app-details]
 
@@ -64,7 +64,7 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 
     ![アプリケーション要求](./media/api-management-howto-aad-b2c/api-management-application-claims.png)
 
-1. **[作成]** ボタンをクリックします。 アプリケーションが作成され、 **[アプリケーション]** ブレードに表示されます。 アプリケーション名をクリックすると、その詳細が表示されます。
+1. **[作成]** ボタンをクリックします。 アプリケーションが作成され、**[アプリケーション]** ブレードに表示されます。 アプリケーション名をクリックすると、その詳細が表示されます。
 
    ![新しいアプリケーション 4 の登録][api-management-howto-aad-b2c-app-created]
 
@@ -74,25 +74,25 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 
 1. API Management の **[Add identity provider]** \(ID プロバイダーの追加) ウィンドウに戻り、ID を **[Client Id]** \(クライアント ID) テキスト ボックスに貼り付けます。
     
-1.  B2C アプリ登録に戻り、 **[キー]** をクリックし、 **[キーの生成]** をクリックします。 **[保存]** をクリックして構成を保存し、**アプリ キー** を表示します。 キーをクリップボードにコピーします。
+1.  B2C アプリ登録に戻り、**[キー]** をクリックし、**[キーの生成]** をクリックします。 **[保存]** をクリックして構成を保存し、**アプリ キー** を表示します。 キーをクリップボードにコピーします。
 
     ![アプリ キー 1][api-management-howto-aad-b2c-app-key]
 
 1.  API Management の **[Add identity provider]** \(ID プロバイダーの追加) ウィンドウに戻り、キーを **[Client Secret]** \(クライアント シークレット) テキスト ボックスに貼り付けます。
     
-1.  **[Signin tenant]** (サインインするテナント) ボックスに、Azure Active Directory B2C テナントのドメイン名を指定します。
+1.  [**Signin tenant**] (サインインするテナント) ボックスに、Azure Active Directory B2C テナントのドメイン名を指定します。
 
-1.  **[Authority]** (認定機関) フィールドを使用して、使用する Azure AD B2C のログイン URL を制御できます。 値を **< your_b2c_tenant_name >. b2clogin.com** に設定します。
+1.  [**Authority**] (認定機関) フィールドを使用して、使用する Azure AD B2C のログイン URL を制御できます。 値を **< your_b2c_tenant_name >. b2clogin.com** に設定します。
 
-1. B2C テナントのポリシーから、 **[Signup Policy]** \(サインアップ ポリシー) と **[Signin Policy]** \(サインイン ポリシー) を指定します。 必要に応じて、 **[Profile Editing Policy (プロファイル編集ポリシー)]** と **[Password Reset Policy (パスワードのリセット ポリシー)]** も指定します。
+1. B2C テナントのポリシーから、**[Signup Policy]** \(サインアップ ポリシー) と **[Signin Policy]** \(サインイン ポリシー) を指定します。 必要に応じて、**[Profile Editing Policy (プロファイル編集ポリシー)]** と **[Password Reset Policy (パスワードのリセット ポリシー)]** も指定します。
 
-1. 必要な構成を指定したら、 **[保存]** をクリックします。
+1. 必要な構成を指定したら、**[保存]** をクリックします。
 
     変更が保存されると、開発者は新しいアカウントを作成し、Azure Active Directory B2C を使用して開発者ポータルにサインインできるようになります。
 
 ## <a name="developer-portal---add-azure-ad-b2c-account-authentication"></a>開発者ポータル - Azure AD B2C アカウント認証の追加
 
-開発者ポータルでは、AAD B2C によるサインインは、 **[サインイン] ボタン:OAuth** ウィジェットを利用して行うことができます。 このウィジェットは、既定の開発者ポータル コンテンツのサインイン ページに既に含まれています。
+開発者ポータルでは、AAD B2C によるサインインは、 **[サインイン] ボタン: OAuth** ウィジェットを利用して行うことができます。 このウィジェットは、既定の開発者ポータル コンテンツのサインイン ページに既に含まれています。
 
 新しいユーザーが AAD B2C を使用してサインインするたびに新しいアカウントが自動的に作成されますが、サインアップ ページに同じウィジェットを追加することを検討できます。
 
@@ -127,7 +127,7 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 ## <a name="next-steps"></a>次のステップ
 
 *  [Azure Active Directory B2C の概要]
-*  [Azure Active Directory B2C: 拡張ポリシー フレームワーク]
+*  [Azure Active Directory B2C: 拡張可能なポリシー フレームワーク]
 *  [Azure Active Directory B2C で ID プロバイダーとして Microsoft アカウントを使用する]
 *  [Azure Active Directory B2C で ID プロバイダーとして Google アカウントを使用する]
 *  [Azure Active Directory B2C で ID プロバイダーとして LinkedIn アカウントを使用する]
@@ -196,7 +196,7 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
 [Azure Active Directory B2C の概要]: ../active-directory-b2c/overview.md
 [Azure Active Directory を使用して開発者アカウントを承認する方法]: ./api-management-howto-aad.md
-[Azure Active Directory B2C: 拡張ポリシー フレームワーク]: ../active-directory-b2c/user-flow-overview.md
+[Azure Active Directory B2C: 拡張可能なポリシー フレームワーク]: ../active-directory-b2c/user-flow-overview.md
 [Azure Active Directory B2C で ID プロバイダーとして Microsoft アカウントを使用する]: ../active-directory-b2c/identity-provider-microsoft-account.md
 [Azure Active Directory B2C で ID プロバイダーとして Google アカウントを使用する]: ../active-directory-b2c/identity-provider-google.md
 [Azure Active Directory B2C で ID プロバイダーとして Facebook アカウントを使用する]: ../active-directory-b2c/identity-provider-facebook.md

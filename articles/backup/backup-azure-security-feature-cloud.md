@@ -4,10 +4,10 @@ description: Azure Backup のセキュリティ機能を使用してバックア
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.openlocfilehash: da473b1d886ec2fe95a7baae76b09aff38fb3cd7
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95254051"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure Backup の論理的な削除

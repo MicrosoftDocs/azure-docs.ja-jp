@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 6110a7952b7c29609d2b98e135b61032aec3fa52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75649179"
 ---
 # <a name="adding-custom-actions-to-azure-rest-api"></a>カスタム アクションを Azure REST API に追加する
@@ -18,7 +18,7 @@ ms.locfileid: "75649179"
 
 ## <a name="how-to-define-an-action-endpoint"></a>アクション エンドポイントの定義方法
 
-**エンドポイント**はサービスを指す URL であり、サービスと Azure 間の基になるコントラクトを実装するものです。 エンドポイントはカスタム リソース プロバイダー内に定義されており、一般にアクセス可能な URL にすることができます。 次のサンプルには、`endpointURL`によって実装される、`myCustomAction` と呼ばれる**アクション**が含まれています。
+**エンドポイント** はサービスを指す URL であり、サービスと Azure 間の基になるコントラクトを実装するものです。 エンドポイントはカスタム リソース プロバイダー内に定義されており、一般にアクセス可能な URL にすることができます。 次のサンプルには、`endpointURL`によって実装される、`myCustomAction` と呼ばれる **アクション** が含まれています。
 
 サンプルの **ResourceProvider**:
 
@@ -42,7 +42,7 @@ ms.locfileid: "75649179"
 
 ## <a name="building-an-action-endpoint"></a>アクション エンドポイントを構築する
 
-**アクション**を実装する**エンドポイント**では、Azure で新しい API 向けに要求と応答を処理する必要があります。 **アクション**のあるカスタム リソース プロバイダーが作成されると、Azure に API の新しいセットが生成されます。 この場合、アクションにより `POST` 呼び出し用の新しい Azure アクション API が生成されます。
+**アクション** を実装する **エンドポイント** では、Azure で新しい API 向けに要求と応答を処理する必要があります。 **アクション** のあるカスタム リソース プロバイダーが作成されると、Azure に API の新しいセットが生成されます。 この場合、アクションにより `POST` 呼び出し用の新しい Azure アクション API が生成されます。
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomAction
@@ -63,7 +63,7 @@ Content-Type: application/json
 }
 ```
 
-この要求は、その後、次の形式で**エンドポイント**に転送されます。
+この要求は、その後、次の形式で **エンドポイント** に転送されます。
 
 ``` HTTP
 POST https://{endpointURL}/?api-version=2018-09-01-preview
@@ -78,7 +78,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-同様に、**エンドポイント**からの応答は、その後顧客に返されます。 エンドポイントからの応答は、次のように返される必要があります。
+同様に、**エンドポイント** からの応答は、その後顧客に返されます。 エンドポイントからの応答は、次のように返される必要があります。
 
 - 有効な JSON オブジェクト ドキュメント。 すべての配列と文字列は、最上位のオブジェクトの下で入れ子にする必要があります。
 - `Content-Type` ヘッダーは "application/json; charset=utf-8" に設定される必要があります。
@@ -134,7 +134,7 @@ az resource invoke-action --action {actionName} \
 ---|---|---
 action | *はい* | **ResourceProvider** で定義されているアクションの名前。
 ids | *はい* | **ResourceProvider** のリソース ID。
-request-body | *いいえ* | **エンドポイント**に送信される要求本文。
+request-body | *いいえ* | **エンドポイント** に送信される要求本文。
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 
@@ -188,7 +188,7 @@ request-body | *いいえ* | **エンドポイント**に送信される要求�
 ---|---|---
 resourceIdentifier | *はい* | **ResourceProvider** のリソース ID。
 apiVersion | *はい* | リソースのランタイムの API バージョン。 常に "2018-09-01-preview" に設定する必要があります。
-functionValues | *いいえ* | **エンドポイント**に送信される要求本文。
+functionValues | *いいえ* | **エンドポイント** に送信される要求本文。
 
 ## <a name="next-steps"></a>次のステップ
 

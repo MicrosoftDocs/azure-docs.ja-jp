@@ -3,12 +3,12 @@ title: バックアップ センターを使用してコミュニティ リソ�
 description: バックアップ センターを使用してサンプル テンプレート、スクリプト、機能に関する要望にアクセスする
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: ee377ed393aa4afe1f41d243230686020f5825aa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b5173f916341497620d521af1bc7e973e0b6e507
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744033"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102506270"
 ---
 # <a name="access-community-resources-using-backup-center"></a>バックアップ センターを使用してコミュニティ リソースにアクセスする
 
@@ -26,7 +26,7 @@ ms.locfileid: "101744033"
 
 - **機能に関するご要望**: UserVoice に移動して機能に関するご要望を提出できます。
 
-- **自動デプロイのサンプル**: コミュニティ ハブを使用すると、すぐに使用できる Azure Resource Manager (ARM) テンプレートと Azureポリシーのサンプルを見つけることができます。 PowerShell スクリプト、CLI コマンド、MSDB スクリプトのサンプルを見つけることもできます。
+- **自動デプロイのサンプル**: コミュニティ ハブを使用すると、すぐに使用できる Azure Resource Manager (ARM) テンプレートと Azureポリシーのサンプルを見つけることができます。 また、サンプルの PowerShell スクリプト、CLI コマンド、および Microsoft データベース バックアップ スクリプトを見つけることもできます。
 
 ## <a name="next-steps"></a>次の手順
 

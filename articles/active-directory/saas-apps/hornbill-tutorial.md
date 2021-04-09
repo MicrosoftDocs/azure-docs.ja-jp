@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 4131f1d0ef36eb49641ac184cd3f72fb719ea90e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92443408"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hornbill"></a>チュートリアル: Azure Active Directory と Hornbill の統合
@@ -44,8 +44,8 @@ Hornbill と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Hornbill では、 **SP** Initiated SSO がサポートされます
-* Hornbill では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Hornbill では、**SP** Initiated SSO がサポートされます
+* Hornbill では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-hornbill-from-the-gallery"></a>ギャラリーからの Hornbill の追加
 
@@ -65,13 +65,13 @@ Azure AD への Hornbill の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Hornbill** 」と入力し、結果パネルで **[Hornbill]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Hornbill**」と入力し、結果パネルで **[Hornbill]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Hornbill](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Hornbill で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Hornbill で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Hornbill 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Hornbill で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -136,7 +136,7 @@ Hornbill で Azure AD シングル サインオンを構成するには、次の
 
     ![Hornbill の追加](./media/hornbill-tutorial/tutorial_hornbill_addlogo.png)
 
-6. **[Profile Details]\(プロファイルの詳細\)** バーで、 **SAML メタデータのインポートのロゴ** をクリックします。
+6. **[Profile Details]\(プロファイルの詳細\)** バーで、**SAML メタデータのインポートのロゴ** をクリックします。
 
     ![Hornbill のロゴ](./media/hornbill-tutorial/tutorial_hornbill_logo.png)
 
@@ -170,9 +170,9 @@ Hornbill で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

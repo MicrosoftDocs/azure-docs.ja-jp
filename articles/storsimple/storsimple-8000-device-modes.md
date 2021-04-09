@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: c7b0ea489c1d70ab86d677aad666ea6728fa76b4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017085"
 ---
 # <a name="change-the-device-mode-on-your-storsimple-device"></a>StorSimple デバイスのデバイス モードの変更
@@ -78,7 +78,7 @@ StorSimple デバイスを (通常モードから) メンテナンス モード�
 #### <a name="to-enter-maintenance-mode"></a>メンテナンス モードを開始するには
 
 1. 「 [PuTTY を使用してデバイスのシリアル コンソールに接続する](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)」の手順に従って、デバイスのシリアル コンソールにログオンします。
-2. シリアル コンソール メニューで、オプション 1 を選択し、 **フル アクセスでログイン** します。 画面の指示に従って、 **デバイス管理者のパスワード** を入力します。 既定のパスワードは `Password1`になります。
+2. シリアル コンソール メニューで、オプション 1 を選択して、**フル アクセスでログイン** します。 画面の指示に従って、 **デバイス管理者のパスワード** を入力します。 既定のパスワードは `Password1`になります。
 3. コマンド プロンプトに、次のコマンドを入力します。 
    
     `Enter-HcsMaintenanceMode`
@@ -122,7 +122,7 @@ StorSimple デバイスを (通常モードから) メンテナンス モード�
 #### <a name="to-exit-maintenance-mode"></a>メンテナンス モードを終了するには
 
 1. デバイスのシリアル コンソールにログオンします。 バナー メッセージを調べて、デバイスがメンテナンス モードになっていることを確認します。
-2. コマンド プロンプトに、次のコマンドを入力します。
+2. コマンド プロンプトで、次のコマンドを入力します。
    
     `Exit-HcsMaintenanceMode`
 3. 警告メッセージと確認メッセージが表示されます。 メンテナンス モードを終了するには、「 **Y** 」と入力します。

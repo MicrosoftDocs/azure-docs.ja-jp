@@ -12,10 +12,10 @@ ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
 ms.openlocfilehash: f42a2f9e606eaa0475f2e35c479e99545ecf8193
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102521902"
 ---
 # <a name="collect-data-from-models-in-production"></a>実稼働環境のモデルからデータを収集する

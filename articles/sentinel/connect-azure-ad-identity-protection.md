@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 06/24/2020
 ms.author: yelevin
 ms.openlocfilehash: f420e80f10072c440f5401c042d6370a061b1a7f
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98632243"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad-identity-protection"></a>Azure Active Directory (Azure AD) Identity Protection からデータを接続する

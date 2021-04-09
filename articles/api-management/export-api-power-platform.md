@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/01/2020
 ms.author: apimpm
 ms.openlocfilehash: 7c4d32dd63120a52fd7351977943574455e5cfad
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93146656"
 ---
 # <a name="export-apis-from-azure-api-management-to-the-power-platform"></a>Azure API Management から Power Platform に API をエクスポートする 

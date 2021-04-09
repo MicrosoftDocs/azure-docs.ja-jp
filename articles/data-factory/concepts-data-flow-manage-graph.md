@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2020
 ms.openlocfilehash: f55364fe0eabae4bb1698bd655cde8d3e01b127a
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97590462"
 ---
 # <a name="managing-the-mapping-data-flow-graph"></a>マッピング データ フロー グラフの管理
@@ -21,7 +21,7 @@ ms.locfileid: "97590462"
 
 マッピング データ フローは、データ フロー グラフと呼ばれるデザイン サーフェスを使用して作成されます。 グラフでは、変換ロジックが左から右に構築され、追加のデータ ストリームが上から下に追加されます。 新しい変換を追加するには、既存の変換の右下にあるプラス記号を選択します。
 
-![キャンバス](media/data-flow/canvas-2.png)
+![Canvas](media/data-flow/canvas-2.png)
 
 データ フローの複雑性に伴い、次のメカニズムを使用して、データ フロー グラフを効率的に移動および管理できます。 
 

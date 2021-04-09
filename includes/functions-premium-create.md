@@ -9,10 +9,10 @@ ms.date: 04/24/2020
 ms.author: jehollan, glenga
 ms.custom: include file
 ms.openlocfilehash: cdeba09c91bee72508632b8468126150017df7cd
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98186979"
 ---
 1. Azure portal メニューまたは **[ホーム]** ページで、 **[リソースの作成]** を選択します。

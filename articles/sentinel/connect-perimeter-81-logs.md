@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
 ms.openlocfilehash: e70bfd12b018e785e7b3b91e098c99fea1101c04
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100093099"
 ---
 # <a name="connect-your-perimeter-81-activity-logs-to-azure-sentinel"></a>Perimeter 81 アクティビティ ログを Azure Sentinel に接続する

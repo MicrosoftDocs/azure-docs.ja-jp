@@ -6,10 +6,10 @@ ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 76063c479950d12985d5f3f52393f9bb0d5ecd8d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92221685"
 ---
 # <a name="limit-update-management-deployment-scope"></a>Update Management のデプロイのスコープを制限する
@@ -44,4 +44,4 @@ Update Management デプロイのスコープを制限するには、次のよ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Monitor ログに対してクエリを実行](query-logs.md)すると、更新プログラムの評価、デプロイ、およびその他の関連する管理タスクを分析することができます。 これには、作業を開始するために役立つ事前定義されたクエリが含まれています。
+[Azure Monitor ログに対してクエリを実行](query-logs.md)すると、更新プログラムの評価、展開、およびその他の関連する管理タスクを分析することができます。 これには、作業を開始するために役立つ事前定義されたクエリが含まれています。

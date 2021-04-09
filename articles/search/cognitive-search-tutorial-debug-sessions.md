@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/02/2021
 ms.openlocfilehash: ed988baec46152d55cf63aec09fce7a298157212
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99509152"
 ---
 # <a name="tutorial-debug-a-skillset-using-debug-sessions"></a>チュートリアル:デバッグ セッションを使用してスキルセットをデバッグする

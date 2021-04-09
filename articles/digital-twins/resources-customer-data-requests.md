@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
 ms.openlocfilehash: 9942056e59a46c61b4e9da32aab191d4b72db968
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "92461761"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Azure Digital Twins の顧客データ要求機能

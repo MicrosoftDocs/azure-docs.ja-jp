@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: alkohli
 ms.openlocfilehash: 17b8d6de198746a79a50c4fbda805b364212e3c4
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98796052"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Azure Data Box BLOB ストレージに関連する問題のトラブルシューティング
@@ -55,7 +55,7 @@ ms.locfileid: "98796052"
 |エラー メッセージ  |推奨される操作 |
 |---------|---------|
 |The value for one of the HTTP headers is not in the correct format. (いずれかの HTTP ヘッダーの値の形式が正しくありません。) |インストールしたバージョンの Python 用 Azure Storage ライブラリが Data Box でサポートされていません。 Azure Data Box Blob ストレージの要件で、サポートされるバージョンを確認してください。|
-|... [SSL:CERTIFICATE_VERIFY_FAILED] …|Python を実行する前に、REQUESTS_CA_BUNDLE 環境変数を Base64 でエンコードされた TLS 証明書ファイルのパスに設定してください ([証明書のダウンロード](data-box-deploy-copy-data-via-rest.md#download-certificate)方法を参照してください)。 <br>次に例を示します。<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>あるいは、証明書をシステムの証明書ストアに追加し、この環境変数をそのストアのパスに設定します。 <br> Ubuntu の場合の例: <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
+|… [SSL:CERTIFICATE_VERIFY_FAILED] …|Python を実行する前に、REQUESTS_CA_BUNDLE 環境変数を Base64 でエンコードされた TLS 証明書ファイルのパスに設定してください ([証明書のダウンロード](data-box-deploy-copy-data-via-rest.md#download-certificate)方法を参照してください)。 <br>次に例を示します。<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>あるいは、証明書をシステムの証明書ストアに追加し、この環境変数をそのストアのパスに設定します。 <br> Ubuntu の場合の例: <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
 
 
 ## <a name="common-errors"></a>一般的なエラー

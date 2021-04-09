@@ -9,10 +9,10 @@ ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
 ms.openlocfilehash: 335879af93834665985fe2c14ce3cbd827387920
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102172141"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>GitHub Actions を使用して Azure SQL Database に接続する

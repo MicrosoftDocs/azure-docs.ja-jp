@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: 00d4381c7af7fdf82ee1e895072d92d1e641f8c4
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454696"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と DocuSign の統合
@@ -40,9 +40,9 @@ ms.locfileid: "92454696"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成、テストして、次のことを確認します。
 
-* DocuSign では、 **SP** (Service Provider) Initiated SSO がサポートされます。
+* DocuSign では、**SP** (Service Provider) Initiated SSO がサポートされます。
 
-* DocuSign では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます。
+* DocuSign では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
 * DocuSign では、[自動ユーザー プロビジョニング](./docusign-provisioning-tutorial.md)がサポートされます。
 
@@ -56,7 +56,7 @@ Azure AD への DocuSign の統合を構成するには、ギャラリーから�
 1. 左側のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **DocuSign** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**DocuSign**」と入力します。
 1. 結果のパネルから **[DocuSign]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -118,7 +118,7 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
 1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「 **B.Simon** 」と入力します。  
+   1. **[名前]** フィールドに「**B.Simon**」と入力します。  
    1. **[ユーザー名]** フィールドに「`<username>@<companydomain>.<extension>`」と入力します。 (例: `B.Simon@contoso.com`)。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **［作成］** を選択します
@@ -193,7 +193,7 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
 
        ![[Custom Attribute Mapping]\(カスタム属性のマッピング\) UI][62]
 
-    i. Azure AD の要求にマッピングするフィールドを選択します。 この例では、 **emailaddress** 要求は `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` の値とマップされます。 これは、Azure AD の電子メール要求の既定の要求名です。 **[SAVE]\(保存\)** を選択します。
+    i. Azure AD の要求にマッピングするフィールドを選択します。 この例では、**emailaddress** 要求は `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` の値とマップされます。 これは、Azure AD の電子メール要求の既定の要求名です。 **[SAVE]\(保存\)** を選択します。
 
        ![[Custom Attribute Mapping]\(カスタム属性のマッピング\) のフィールド][57]
 

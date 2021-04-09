@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 02/11/2021
-ms.openlocfilehash: 838a48aa11a1cb36c3a7d822ce88f58936aa976d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8319885de26bf79f5e402c4d06b29e9dd94894de
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734623"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104655853"
 ---
 # <a name="visualizations-for-application-change-analysis-preview"></a>アプリケーション変更分析の視覚化 (プレビュー)
 
@@ -22,11 +22,11 @@ Azure portal の検索バーで変更分析を検索し、エクスペリエン�
 
 ![Azure portal における変更分析の検索のスクリーンショット](./media/change-analysis/search-change-analysis.png)
 
-選択したサブスクリプションのすべてのリソースの、過去 24 時間の変更内容が表示されます。 ページ読み込みのパフォーマンスを最適化するために、一度に 10 個のリソースが表示されます。 その他のリソースを表示するには、次のページを選択します。 この制限については、削除するよう取り組んでいる最中です。
+選択したサブスクリプションのすべてのリソースの、過去 24 時間の変更内容が表示されます。 すべての変更が古い値および新しい値と共に表示され、分析情報の概要が提供されます。
 
 ![Azure portal の変更分析ブレードのスクリーンショット](./media/change-analysis/change-analysis-standalone-blade.png)
 
-リソースをクリックすると、そのすべての変更が表示されます。 必要に応じて、変更をドリルダウンして JSON 形式の変更の詳細と分析情報を表示します。
+変更をクリックすると、Resource Manager の完全なスニペットとその他のプロパティが表示されます。
 
 ![変更の詳細のスクリーンショット](./media/change-analysis/change-details.png)
 
@@ -40,11 +40,6 @@ UI では、リソースの変更を表示する複数のサブスクリプシ�
 
 ![複数のサブスクリプションの選択をサポートするサブスクリプション フィルターのスクリーンショット](./media/change-analysis/multiple-subscriptions-support.png)
 
-### <a name="web-app-diagnose-and-solve-problems"></a>Web アプリに関する問題の診断と解決
-
-Azure Monitor では、変更分析はセルフサービスの **問題の診断と解決** エクスペリエンスにも組み込まれています。 このエクスペリエンスには、App Service アプリケーションの **[概要]** ページからアクセスします。
-
-![[概要] ボタンと [問題の診断と解決] ボタンのスクリーンショット](./media/change-analysis/change-analysis.png)
 
 ## <a name="application-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>問題の診断と解決ツールのアプリケーション変更分析
 
@@ -69,6 +64,13 @@ Azure Monitor では、変更分析はセルフサービスの **問題の診断
 5. 変更データは、 **[Web アプリのダウン]** および **[アプリケーションのクラッシュ]** 検出機能の選択でも使用でき ます。 変更の種類を時系列でまとめたグラフと、その変更の詳細が表示されます。 既定では、当面の問題を解決できるように、過去 24 時間の変更が表示されます。
 
      ![変更の差分ビューのスクリーンショット](./media/change-analysis/change-view.png)
+
+## <a name="diagnose-and-solve-problems-tool"></a>問題の診断と解決ツール
+問題の診断と解決ツールでは、変更分析を分析情報カードとして利用できます。 リソースに問題が発生し、過去 72 時間以内に検出された変更がある場合、分析情報カードに変更の数が表示されます。 変更の詳細を表示するリンクをクリックすると、変更分析スタンドアロン UI のフィルター処理されたビューが表示されます。
+
+![問題の診断と解決ツールで変更分析情報を表示するスクリーンショット。](./media/change-analysis/change-insight-diagnose-and-solve.png)
+
+
 
 ## <a name="virtual-machine-diagnose-and-solve-problems"></a>仮想マシンの問題の診断と解決
 

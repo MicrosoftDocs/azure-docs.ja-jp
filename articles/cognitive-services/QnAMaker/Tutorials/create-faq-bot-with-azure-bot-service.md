@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
-ms.openlocfilehash: 356b954c65086ff65264ce7a62b038cd7a8eac3d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ab6607175c596a0d82cf75f0ad786a76e85b6959
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350961"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612152"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>チュートリアル:Azure Bot Service を使用した FAQ ボットの作成
 QnA Maker と Azure [Bot Service](https://azure.microsoft.com/services/bot-service/) を使用して FAQ ボットをコードなしで作成します。
@@ -80,4 +80,4 @@ QnA Maker と Azure [Bot Service](https://azure.microsoft.com/services/bot-servi
     チャット ボットが、ナレッジ ベースからの回答で応答します。
 
     :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="テスト Web チャットにユーザー クエリを入力します。":::
-1. 追加の[サポートされているチャネル](/azure/bot-service/bot-service-manage-channels?preserve-view=true&view=azure-bot-service-4.0)でボットを照らします。
+1. 追加の[サポートされているチャネル](/azure/bot-service/bot-service-manage-channels)でボットを照らします。

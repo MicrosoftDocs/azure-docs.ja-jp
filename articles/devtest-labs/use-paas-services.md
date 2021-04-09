@@ -4,10 +4,10 @@ description: Azure DevTest Labs でサービスとしてのプラットフォー
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: eec37527386098174906dc2737d7b763241da3f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85478741"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Azure DevTest Labs でのサービスとしてのプラットフォーム (PaaS) サービスの使用
@@ -31,24 +31,24 @@ DevTest Labs リソース プロバイダーがラボ ユーザーに代わっ�
 ## <a name="customizations"></a>カスタマイズ
 
 #### <a name="sandbox"></a>サンドボックス 
-ラボ所有者は、ラボ環境をカスタマイズして、リソース グループ内のユーザーのロールを**閲覧者**から**共同作成者**に変更できます。 この機能は、 **[ラボの設定]** ページのラボの **[構成とポリシー]** の下にあります。 このロールの変更により、ユーザーはその環境内でリソースを追加または削除できるようになります。 アクセスをさらに制限する場合は、Azure ポリシーを使用します。 この機能を使用すると、サブスクリプション レベルのアクセスがなくてもリソースまたは構成をカスタマイズできます。
+ラボ所有者は、ラボ環境をカスタマイズして、リソース グループ内のユーザーのロールを **閲覧者** から **共同作成者** に変更できます。 この機能は、**[ラボの設定]** ページのラボの **[構成とポリシー]** の下にあります。 このロールの変更により、ユーザーはその環境内でリソースを追加または削除できるようになります。 アクセスをさらに制限する場合は、Azure ポリシーを使用します。 この機能を使用すると、サブスクリプション レベルのアクセスがなくてもリソースまたは構成をカスタマイズできます。
 
 #### <a name="custom-tokens"></a>カスタム トークン
-リソース グループの外部にあり、テンプレートからアクセスできる環境に固有したカスタム ラボ情報がいくつかあります。 そのいくつかを次に示します。 
+リソース グループの外部にあり、テンプレートからアクセスできる環境に固有したカスタム ラボ情報がいくつかあります。 その一部を次に示します。 
 
 - ラボ ネットワーク ID
-- Location
+- 場所
 - Resource Manager テンプレート ファイルが保存されているストレージ アカウント。 
  
 #### <a name="lab-virtual-network"></a>ラボ仮想ネットワーク
-[ラボの仮想ネットワークへの環境の接続](connect-environment-lab-virtual-network.md)に関する記事では、`$(LabSubnetId)` トークンを使用するよう Resource Manager テンプレートを変更する方法が説明されています。 環境の作成時、`$(LabSubnetId)` トークンは、 **[仮想マシンの作成時に使用]** オプションが **true** に設定されている最初のサブネット マークに置き換えられます。 これにより、以前に作成されたネットワークを環境で使用できるようになります。 ステージングや運用と同じ Resource Manager テンプレートをテストの環境で使用する場合は、Resource Manager テンプレート パラメーターの既定の値として `$(LabSubnetId)` を使用します。 
+[ラボの仮想ネットワークへの環境の接続](connect-environment-lab-virtual-network.md)に関する記事では、`$(LabSubnetId)` トークンを使用するよう Resource Manager テンプレートを変更する方法が説明されています。 環境の作成時、`$(LabSubnetId)` トークンは、**[仮想マシンの作成時に使用]** オプションが **true** に設定されている最初のサブネット マークに置き換えられます。 これにより、以前に作成されたネットワークを環境で使用できるようになります。 ステージングや運用と同じ Resource Manager テンプレートをテストの環境で使用する場合は、Resource Manager テンプレート パラメーターの既定の値として `$(LabSubnetId)` を使用します。 
 
 #### <a name="environment-storage-account"></a>環境のストレージ アカウント
-DevTest Labs は、[入れ子になった Resource Manager テンプレート](../azure-resource-manager/templates/linked-templates.md)の使用をサポートしています。 [[テスト環境用に入れ子になった Azure Resource Manager テンプレートを展開する方法](deploy-nested-template-environments.md)に関する記事では、`_artifactsLocation` および `_artifactsLocationSasToken` トークンを使用して、Resource Manager テンプレートへの URI をメイン テンプレートと同じフォルダー内または入れ子になったフォルダー内に作成する方法が説明されています。 この 2 つのトークンの詳細については、[Azure Resource Manager のベスト プラクティス ガイド](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)の**デプロイの成果物**に関するセクションを参照してください。
+DevTest Labs は、[入れ子になった Resource Manager テンプレート](../azure-resource-manager/templates/linked-templates.md)の使用をサポートしています。 [[テスト環境用に入れ子になった Azure Resource Manager テンプレートを展開する方法](deploy-nested-template-environments.md)に関する記事では、`_artifactsLocation` および `_artifactsLocationSasToken` トークンを使用して、Resource Manager テンプレートへの URI をメイン テンプレートと同じフォルダー内または入れ子になったフォルダー内に作成する方法が説明されています。 この 2 つのトークンの詳細については、[Azure Resource Manager のベスト プラクティス ガイド](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)の **デプロイの成果物** に関するセクションを参照してください。
 
 ## <a name="user-experience"></a>ユーザー エクスペリエンス
 
-## <a name="developer"></a>Developer
+## <a name="developer"></a>開発者
 開発者は、VM の作成に同じワークフローを使用して、特定の環境を作成します。 彼らは、環境とマシン イメージを選択し、テンプレートに必要な情報を入力します。 環境を所有している各開発者は、変更のデプロイと改良された内部ループ デバッグを行うことができます。 その環境は、最新のテンプレートを使用していつでも作成できます。  この機能は、環境を破棄して作成し直すことを可能にし、手動でシステムを作成したり障害テストから復旧したりすることによるダウンタイムを減らすのに役立ちます。  
 
 ### <a name="testing"></a>テスト
@@ -59,10 +59,10 @@ DevTest Labs 環境では、特定のコードと構成を非同期的に独立�
 ### <a name="cost-tracking"></a>コスト管理
 コスト追跡機能には、全体的なコスト傾向の一部として、さまざまな環境内の Azure リソースが含まれます。 リソース別のコストでは、環境内の各種リソースが示されるのではなく、その環境が 1 つのコストとして表示されます。
 
-### <a name="security"></a>Security
+### <a name="security"></a>セキュリティ
 DevTest Labs を使用して適切に構成された Azure サブスクリプションでは、[ラボを介した Azure リソースへのアクセスのみを制限](devtest-lab-add-devtest-user.md)できます。 環境を使用した場合、ラボ所有者は、他の Azure リソースへのアクセスを許可しなくても、承認された構成の PaaS リソースへのアクセスをユーザーに許可できます。 ラボ ユーザーが環境をカスタマイズするシナリオでは、ラボ所有者が共同作成者アクセスを許可できます。 共同作成者アクセスにより、ラボ ユーザーは、マネージド リソース グループ内でのみ Azure リソースを追加または削除できます。 サブスクリプションへの共同作成者アクセスをユーザーに許可するよりも、追跡や管理が簡単になります。
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>オートメーション
 オートメーションは、大規模で効果的なエコシステムにとって重要なコンポーネントです。 サブスクリプションやラボをまたがって複数の環境の管理や追跡を処理するには、オートメーションが必要です。
 
 ### <a name="cicd-pipeline"></a>CI/CD パイプライン

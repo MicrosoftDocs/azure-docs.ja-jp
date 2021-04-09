@@ -5,10 +5,10 @@ ms.service: iot-pnp
 ms.topic: include
 ms.date: 10/20/2020
 ms.openlocfilehash: 33752c1ebb83c5d63e8e1cb396c52f01f07046cd
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102245008"
 ---
 次のリソースも使用できます。

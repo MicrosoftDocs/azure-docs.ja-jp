@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 30744ab97549d585cb6893dc2e2e12009e8cd3fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4ef01045d1ca16d0101cdd9ccfcd118231cd28de
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100595776"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102456115"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>FAQ - データ収集、エージェント、およびワークスペースに関する質問
 
@@ -29,11 +29,11 @@ Security Center では、セキュリティの脆弱性と脅威を監視する�
 
 いいえ。 ノードごとの Azure Monitor ログの課金が構成されている場合でも、Security Center で作成されるワークスペースに Azure Monitor ログの料金はかかりません。 Security Center の課金は、常に Security Center セキュリティ ポリシーとワークスペースにインストールされているソリューションに基づいています。
 
-- **Azure Defender オフ** – Security Center によって、既定のワークスペースで 'SecurityCenterFree' ソリューションが有効化されます。 Azure Defender がオフになっている場合は課金されません。
+- **Azure Defender オフ** – Security Center によって、既定のワークスペースで "SecurityCenterFree" ソリューションが有効化されます。 Azure Defender がオフになっている場合は課金されません。
 
-- **Azure Defender オン** – Security Center によって、既定のワークスペースで 'Security' ソリューションが有効化されます。
+- **Azure Defender オン** – Security Center によって、既定のワークスペースで "Security" ソリューションが有効化されます。
 
-価格の詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
+選択した通貨でのお住まいのリージョンに応じた価格の詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
 
 > [!NOTE]
 > Security Center で作成されたワークスペースのログ分析の価格レベルは、Security Center の課金には影響しません。
@@ -146,7 +146,7 @@ Log Analytics エージェントが VM に (Azure 拡張機能としてではな
 
 インストールされているエージェントでは、既に構成されているワークスペースに引き続きレポートし、さらに Security Center で構成されたワークスペースにもレポートします (Windows マシンでは、マルチ ホームがサポートされています)。
 
-構成済みのワークスペースが (Security Center の既定のワークスペースではなく) ユーザー ワークスペースの場合、そのワークスペースにレポートする VM およびコンピューターからのイベントの処理を Security Center で始めるには、"Security/SecurityCenterFree" ソリューションをインストールする必要があります。
+構成済みのワークスペースが (Security Center の既定のワークスペースではなく) ユーザー ワークスペースの場合、そのワークスペースにレポートする VM およびコンピューターからのイベントの処理を Security Center で始めるには、"Security" または "SecurityCenterFree" ソリューションをインストールする必要があります。
 
 Linux マシンでは、エージェントのマルチ ホームはまだサポートされていません。そのため、既存のエージェントのインストールが検出されても、自動プロビジョニングは行われず、マシンの構成は変更されません。
 
@@ -207,7 +207,7 @@ Microsoft Monitoring Extension を削除すると、Security Center は VM か�
 
 Log Analytics エージェントの拡張機能を手動でインストールし、Security Center がお使いになっている VM からセキュリティ データを収集して、推奨や通知を提示できるようにします。 インストールのガイダンスとして、[Windows VM 用のエージェントのインストール](../virtual-machines/extensions/oms-windows.md)または [Linux VM 用のエージェントのインストール](../virtual-machines/extensions/oms-linux.md)に関するページを参照してください。
 
-エージェントをいずれかの既存のカスタム ワークスペースまたは Security Center が作成したワークスペースに接続できます。 カスタム ワークスペースの 'Security' または 'SecurityCenterFree' ソリューションが有効になっていない場合は、ソリューションを適用する必要があります。 適用するには、 **[セキュリティ ポリシー – 価格レベル]** ページを利用して、カスタム ワークスペースまたはサブスクリプションを選択します。
+エージェントをいずれかの既存のカスタム ワークスペースまたは Security Center が作成したワークスペースに接続できます。 カスタム ワークスペースの "Security" または "SecurityCenterFree" ソリューションが有効になっていない場合は、ソリューションを適用する必要があります。 適用するには、 **[セキュリティ ポリシー – 価格レベル]** ページを利用して、カスタム ワークスペースまたはサブスクリプションを選択します。
 
 :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Azure Defender を有効または無効にする":::
 

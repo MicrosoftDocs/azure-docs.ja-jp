@@ -8,10 +8,10 @@ ms.date: 12/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 8fa657f3b343cdf49723dc68601bb1c9513ff504
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96487339"
 ---
 # <a name="create-an-office-data-connection-file"></a>Office データ接続ファイルを作成する
@@ -31,7 +31,7 @@ ms.locfileid: "96487339"
 
 4. 拡張子を `.odc` に設定して、C:\Users\\*username*\Documents\My Data Sources フォルダーにファイルを保存します。
 
-5. ファイルを右クリックして、 **[Excel で開く]** をクリックします。 または Excel の **[データ]** リボンで、 **[既存の接続]** をクリックしてファイルを選択し、 **[開く]** をクリックします。
+5. ファイルを右クリックして、**[Excel で開く]** をクリックします。 または Excel の **[データ]** リボンで、**[既存の接続]** をクリックしてファイルを選択し、**[開く]** をクリックします。
 
 
 

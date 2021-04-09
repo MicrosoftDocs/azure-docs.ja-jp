@@ -1,18 +1,18 @@
 ---
 title: Azure Cognitive Services 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Cognitive Services に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 03/05/2021
+ms.date: 03/17/2021
 ms.topic: sample
 author: nitinme
 ms.author: nitinme
 ms.service: cognitive-services
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 988457306850fc4c574a0308c42ede396c85647b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 39560325011d2c94e35d0705c248317c7bdece15
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440185"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599386"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cognitive-services"></a>Azure Cognitive Services 用の Azure Policy 規制コンプライアンス コントロール
 

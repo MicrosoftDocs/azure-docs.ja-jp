@@ -3,7 +3,7 @@ title: .NET で Azure AD Authentication を使用して Azure Media Services API
 description: このトピックでは、.NET で Azure Active Directory (Azure AD) Authentication を使用して Azure Media Services (AMS) API にアクセスする方法を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 9de7505ffaab244713706984bdeb9ab395766321
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: fd19bce05d18eb8f9b8fd3806082caeebe98bdad
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695740"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103013994"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>.NET で Azure AD Authentication を使用して Azure Media Services API にアクセスする
 

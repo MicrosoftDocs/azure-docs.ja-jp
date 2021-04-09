@@ -8,10 +8,10 @@ ms.topic: overview
 ms.custom: mvc, contperf-fy21q2
 ms.date: 11/12/2020
 ms.openlocfilehash: 5aea6460f3a876d63544ce8422f9f205c22f2a0f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98015251"
 ---
 # <a name="welcome-to-azure-stream-analytics"></a>Azure Stream Analytics へようこそ

@@ -5,18 +5,28 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 02/24/2021
 ms.author: banders
-ms.openlocfilehash: 045ab35a35aa4caefb1e1bcbbf7bf78b726c09f7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9015cbcd669665467d3836112b152aa504176f2b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601462"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035995"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure の予約のセルフサービスによる交換と払戻
 
-Azure の予約は、変化するニーズを満たすために柔軟性を提供します。 変化するニーズを満たすために、予約を同じ種類の別の予約と交換できます。 たとえば、他の任意のサイズまたはリージョンの別の VM の予約を購入して、仮想マシンの予約と交換することができます。 同様に、任意の種類またはリージョンの SQL PaaS Database の予約を購入して、SQL PaaS Database の予約と交換することができます。 予約は払い戻しも可能ですが、ご自分の請求範囲 (EA、Microsoft 顧客契約、Microsoft Partner Agreement など) のすべての予約コミットメントのキャンセル額合計が、12 か月間のローリング ウィンドウで 50,000 米国ドルを超えることはできません。 Azure Databricks の予約容量、Azure VMware Solution by CloudSimple の予約、Azure Red Hat Open Shift の予約、Red Hat プラン、SUSE Linux プランは払い戻しの対象外となります。
+Azure の予約は、変化するニーズを満たすために柔軟性を提供します。 予約は同じ種類の別の予約と交換できます。 たとえば、Azure Dedicated Host、Azure VMware Solution、Azure Virtual Machines を含む複数のコンピューティングの予約を一度に返品して他の予約と交換することができます。 つまり、予約製品は、それが同じ種類の予約である場合、他の予約製品と相互に交換することができます。 別の例として、Managed Instance や Elastic Pool を含む複数の SQL データベースの予約の種類を互いに交換することもできます。
+
+ただし、異なる種類の予約を交換することはできません。 たとえば、Cosmos DB の予約を SQL Database と交換することはできません。
+
+また、予約を交換することによって、異なるリージョンで同じ種類の別の予約を購入することもできます。 たとえば、米国西部 2 での予約を西ヨーロッパでの予約と交換することができます。
+
+予約を交換する際に、期間を 1 年から 3 年に変更することもできます。
+
+予約は払い戻しも可能ですが、ご自分の請求範囲 (EA、Microsoft 顧客契約、Microsoft Partner Agreement など) のすべての予約コミットメントのキャンセル額合計が、12 か月間のローリング ウィンドウで 50,000 米国ドルを超えることはできません。
+
+Azure Databricks の予約容量、Azure VMware Solution by CloudSimple の予約、Azure Red Hat Open Shift の予約、Red Hat プラン、SUSE Linux プランは払い戻しの対象外となります。
 
 セルフ サービスの交換およびキャンセルの機能は、米国政府のエンタープライズ契約のお客様は利用できません。 従量課金制やクラウド ソリューション プロバイダー (CSP) などの他の種類の米国政府機関向けサブスクリプションがサポートされています。
 
@@ -37,9 +47,26 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 
 予約を払い戻すには、 **[予約の詳細]** に移動し、 **[払戻]** を選択します。
 
+## <a name="exchange-multiple-reservations"></a>複数の予約を交換する
+
+同じ種類の予約を 1 回のアクションで返品することができます。
+
+予約を交換する場合、新しい購入金額が払戻額よりも大きくならなければなりません。 新しい購入額が払戻額未満の場合は、エラーが発生します。 エラーが発生した場合、返す数量を減らすか、購入額を増やします。
+
+1. Azure portal にサインインし、 **[予約]** に移動します。
+1. 予約の一覧で、交換する各予約のチェック ボックスをオンにします。
+1. ページの上部で **[交換]** を選択します。
+1. 必要に応じて、予約ごとに返す数量を修正します。
+1. 返品数量の自動入力を選択している場合は、各予約について所有している全数量が一覧に入力される **[Refund all]\(すべてを払戻\)** か、過去 7 日間の使用に基づく使用率で最適化された数量がリストに設定される **[Optimize for utilization (7-day)]\(使用率で最適化 (7 日)\)** のいずれかを選択できます。 **[適用]** を選択します。
+1. ページの下部で、 **[Next: Purchase]\(次へ: 購入\)** を選択します。
+1. 購入タブで、交換したい利用可能な製品を選択します。 さまざまな種類の複数の製品を選択できます。
+1. [購入する製品の選択] ペインで目的の製品を選び、 **[カートに追加]** を選択して **[閉じる]** を選択します。
+1. 完了したら、 **[Next: Review]\(次へ: 確認\)** を選択します。
+1. 返品する予約と購入する新しい予約を確認し、 **[交換の確認]** を選択します。
+
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Premium Storage 以外のストレージを Premium Storage と交換する
 
-Premium Storage をサポートしない VM サイズの購入済み予約を、Premium Storage をサポートする対応する VM サイズと交換できます。 たとえば、_F1_ を _F1s_ と交換できます。 交換を行う場合は、[予約の詳細] に移動し、 **[交換]** を選択します。 交換により、予約済みインスタンスの期間のリセットや、新しいトランザクションの作成が行われることはありません。 
+Premium Storage をサポートしない VM サイズの購入済み予約を、Premium Storage をサポートする対応する VM サイズと交換できます。 たとえば、_F1_ を _F1s_ と交換できます。 交換を行う場合は、[予約の詳細] に移動し、 **[交換]** を選択します。 交換により、予約済みインスタンスの期間のリセットや、新しいトランザクションの作成が行われることはありません。
 
 ## <a name="how-transactions-are-processed"></a>トランザクションの処理方法
 

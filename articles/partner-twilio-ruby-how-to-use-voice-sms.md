@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 49203195bf7746d0bff1b9543d1641f69ab23359
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95542679"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Ruby で音声および SMS 機能に Twilio を使用する方法
@@ -174,7 +174,7 @@ end
 変更を加えた後は、必ず Web アプリケーションを再起動してください。 次に、電話を使用して Twilio 番号に SMS を送信します。 "Hey, thanks for the ping! Twilio and Azure rock!" という SMS 応答がすぐに返されます。
 
 ## <a name="how-to-use-additional-twilio-services"></a><a id="additional_services"></a>方法: その他の Twilio サービスを使用する
-ここに示す例以外にも、Twilio が提供する Web ベースの API を使用して、Azure アプリケーションからその他の Twilio 機能を利用することができます。 詳細については、[Twilio API のドキュメント][twilio_api_documentation]を参照してください。
+ここに示す例以外にも、Twilio が提供する Web ベースの API を使用して、Azure アプリケーションからその他の Twilio 機能を利用することができます。 詳細については、[Twilio API に関するドキュメント][twilio_api_documentation]を参照してください。
 
 ### <a name="next-steps"></a><a id="NextSteps"></a>次のステップ
 これで、Twilio サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先をご覧ください。
@@ -182,8 +182,8 @@ end
 * [Twilio のセキュリティ ガイドライン][twilio_security_guidelines]
 * [Twilio のハウツー ガイドとコード例][twilio_howtos]
 * [Twilio のクイックスタート チュートリアル][twilio_quickstarts] 
-* [GitHub 上の Twilio][twilio_on_github]
-* [Twilio サポートへの問い合わせ][twilio_support]
+* [GitHub 上の Twilio に関するページ][twilio_on_github]
+* [Twilio に関するサポートへの連絡のページ][twilio_support]
 
 [twilio_ruby]: https://www.twilio.com/docs/ruby/install
 

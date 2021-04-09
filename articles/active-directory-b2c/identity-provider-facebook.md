@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e0e71bc0e3a81b5ab2f455224ed2ed4281532d55
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 7e7a99daa169c994a0b9656786926f0715fa17a2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98952676"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104580064"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Facebook アカウントでのサインアップおよびサインインを設定する
 
@@ -55,7 +55,8 @@ Azure Active Directory B2C (Azure AD B2C) でユーザーが Facebook アカウ�
 1. **[Show (表示)]** を選択し、 **[App Secret (アプリ シークレット)]** の値をコピーします。 テナントで ID プロバイダーとして Facebook を構成するには、この両方を使用します。 **[App Secret]** は、重要なセキュリティ資格情報です。
 1. メニューから、 **[製品]** の横にある **プラス記号** を選択します。 **[アプリに製品を追加する]** で、 **[Facebook ログイン]** の下にある **[設定]** を選択します。
 1. メニューから、 **[Facebook ログイン]** 、 **[設定]** の順に選択します。
-1. **[有効な OAuth リダイレクト URI]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」を入力します。 `your-tenant-name` をテナントの名前に置き換えます。 ページの下部にある **[Save Changes]\(変更の保存\)** を選択します。
+1. **[有効な OAuth リダイレクト URI]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」を入力します。 [カスタム ドメイン](custom-domain.md)を使用する場合は、「`https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` を実際のテナントの名前に、`your-domain-name` を実際のカスタム ドメインに置き換えます。 
+1. ページの下部にある **[Save Changes]\(変更の保存\)** を選択します。
 1. Facebook アプリケーションを Azure AD B2C で使用できるようにするには、ページの右上にある状態セレクターを選択し、 **[オン]** に設定してアプリケーションを公開し、 **[スイッチ モード]** を選択します。  この時点で、状態は **開発** から **ライブ** に変更されます。
 
 ::: zone pivot="b2c-user-flow"
@@ -73,13 +74,19 @@ Azure Active Directory B2C (Azure AD B2C) でユーザーが Facebook アカウ�
 
 ## <a name="add-facebook-identity-provider-to-a-user-flow"></a>ユーザー フローに Facebook ID プロバイダーを追加する 
 
+この時点では、Facebook ID プロバイダーは設定されていますが、サインイン ページではまだ使用できません。 Facebook ID プロバイダーをユーザー フローに追加するには、次の手順を実行します。
+
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
 1. Facebook ID プロバイダーを追加するユーザー フローをクリックします。
 1. **[ソーシャル ID プロバイダー]** から、 **[Facebook]** を選択します。
 1. **[保存]** を選択します。
 1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
 1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
-1. **[ユーザー フローを実行します]** をクリックします
+1. **[ユーザー フローを実行します]** ボタンを選択します。
+1. サインアップまたはサインイン ページで、 **[Facebook]** を選択して、Facebook アカウントでサインインします。
+
+サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
+
 
 ::: zone-end
 
@@ -118,7 +125,10 @@ Azure AD B2C テナントで前に記録したアプリ シークレットを格
 1. *TrustFrameworkExtensions.xml* ファイルをテナントにアップロードします。
 1. **[カスタム ポリシー]** ページで、**B2C_1A_signup_signin** を選択します。
 1. **[アプリケーションの選択]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
-1. **[今すぐ実行]** を選択し、Facebook でサインインする Facebook を選択し、カスタム ポリシーをテストします。
+1. **[今すぐ実行]** ボタンを選択します。
+1. サインアップまたはサインイン ページで、 **[Facebook]** を選択して、Facebook アカウントでサインインします。
+
+サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
 
 ::: zone-end
 

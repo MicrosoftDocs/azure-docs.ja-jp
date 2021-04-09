@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 01/16/2020
 ms.openlocfilehash: 7c1a6623883cbee46ba98982808f3c392dc50ffa
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98946648"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>HDInsight 上の Apache Hadoop 用の Java MapReduce プログラムを開発する
@@ -44,8 +44,8 @@ cd C:\HDI
     このコマンドにより、`artifactID` パラメーターで指定した名前 (この例では **wordcountjava**) のディレクトリが作成されます。このディレクトリには、次の項目が含まれます。
 
     * `pom.xml` - [プロジェクト オブジェクト モデル (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
-    * src\main\java\org\apache\hadoop\examples:アプリケーション コードが含まれます。
-    * src\test\java\org\apache\hadoop\examples:アプリケーションのテストが含まれます。
+    * src\main\java\org\apache\hadoop\examples: アプリケーションコードが含まれています。
+    * src\test\java\org\apache\hadoop\examples: アプリケーションのテストが含まれています。
 
 1. 生成されたコード例の削除 以下のコマンドを入力して、生成されたテストとアプリケーション ファイル `AppTest.java` と `App.java` を削除します。
 
@@ -57,7 +57,7 @@ cd C:\HDI
 
 ## <a name="update-the-project-object-model"></a>プロジェクト オブジェクト モデルを更新する
 
-pom.xml ファイルの完全なリファレンスについては、 https://maven.apache.org/pom.html を参照してください。 以下のコマンドを入力して `pom.xml` を開きます。
+pom.xml ファイルの完全なリファレンスについては、https://maven.apache.org/pom.htmlを参照してください。 以下のコマンドを入力して `pom.xml` を開きます。
 
 ```cmd
 notepad pom.xml
@@ -95,7 +95,7 @@ notepad pom.xml
 > [!IMPORTANT]
 > 使用されるバージョンは、クラスター上に存在する Hadoop のバージョンと一致する必要があります。 バージョンの詳細については、[HDInsight コンポーネントのバージョン](../hdinsight-component-versioning.md)に関する記事を参照してください。
 
-### <a name="build-configuration"></a>ビルド構成
+### <a name="build-configuration"></a>[ビルド構成]
 
 Maven プラグインでは、プロジェクトのビルド ステージをカスタマイズできます。 このセクションは、プラグインやリソース、他のビルド構成オプションを追加する際に使用します。
 
@@ -144,7 +144,7 @@ Maven プラグインでは、プロジェクトのビルド ステージをカ�
 
 ## <a name="create-the-mapreduce-application"></a>MapReduce アプリケーションを作成する
 
-1. 以下のコマンドを入力して、新しいファイル `WordCount.java` を作成して開きます。 プロンプトが表示されたら **[YES]** を選択して新しいファイルを作成します。
+1. 以下のコマンドを入力して、新しいファイル `WordCount.java` を作成して開きます。 プロンプトが表示されたら [**YES**] を選択して新しいファイルを作成します。
 
     ```cmd
     notepad src\main\java\org\apache\hadoop\examples\WordCount.java

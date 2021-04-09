@@ -7,10 +7,10 @@ ms.custom:
 - devx-track-js
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 3cf47d04da51db898e667ef8b31d42d79c9f354e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101747542"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-using-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して Azure に JavaScript 関数を作成する
@@ -32,7 +32,7 @@ Visual Studio Code を使用して、HTTP 要求に応答する JavaScript 関�
 
 作業を開始する前に、次の要件が満たされていることを確認します。
 
-+ Azure アカウント。 <abbr title="Azure サブスクリプションは、Azure でリソースをプロビジョニングするために使用される論理コンテナーです。 仮想マシン (VM) やデータベースなどのすべてのリソースの詳細が保持されます。">active subscription</abbr>. [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
++ Azure アカウント。 <abbr title="Azure サブスクリプションは、Azure でリソースをプロビジョニングするために使用される論理コンテナーです。 仮想マシン (VM) やデータベースなどのすべてのリソースの詳細が保持されます。">アクティブなサブスクリプション</abbr>. [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 + [Node.js 10.14.1 以降](https://nodejs.org/)
 

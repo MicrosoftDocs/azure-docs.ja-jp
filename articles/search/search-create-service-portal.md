@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/15/2021
-ms.openlocfilehash: 8a61ad1599a2d4d1aeaf8b36d2f92d95ec1896a0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e183d81355d4db81e677f34b02330ddb9b631957
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573040"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651988"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>クイック スタート:ポータルで Azure Cognitive Search サービスを作成する
 
 [Azure Cognitive Search](search-what-is-azure-search.md) は、カスタム アプリにフルテキスト検索エクスペリエンスを追加する際に使用される Azure リソースです。 データや二次的な処理を提供する他の Azure サービス、ネットワーク サーバー上のアプリ、他のクラウド プラットフォーム上で実行されているソフトウェアと簡単に統合できます。
 
-検索サービスは、[Azure portal](https://portal.azure.com/) を使用して作成できます。この記事で取り上げているのは、その方法です。 その他、[Azure PowerShell](search-manage-powershell.md)、[Azure CLI](/cli/azure/search)、[Azure Resource Manager サービス テンプレート](https://azure.microsoft.com/resources/templates/101-azure-search-create/)を使用することもできます。
+検索サービスは、[Azure portal](https://portal.azure.com/) を使用して作成できます。この記事ではこれを取り上げます。 また、[Azure PowerShell](search-manage-powershell.md)、[Azure CLI](/cli/azure/search)、[Management REST API](/rest/api/searchmanagement/)、または [Azure Resource Manager サービス テンプレート](https://azure.microsoft.com/resources/templates/101-azure-search-create/)を使用することもできます。
 
 [![アニメーション GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -85,7 +85,7 @@ ms.locfileid: "100573040"
 
 Azure Cognitive Search は、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=search)」に記載されているように、ほとんどのリージョンで利用できます。 一般に、複数の Azure サービスを使用している場合は、データまたはアプリケーション サービスもホストしているリージョンを選択します。 そのようにすることで、送信データの帯域幅使用料を最小限またはゼロに抑えられます (サービスが同じリージョンにある場合、送信データには課金されません)。
 
-+ [AI エンリッチメント](cognitive-search-concept-intro.md)を使用するには、Cognitive Services が Azure Cognitive Search と同じ物理リージョンに存在する必要があります。 そのため、片方の機能しか提供していないリージョンは少数です。 「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=search)」ページで、縦にチェック マークが 2 つ並んでいれば、両方の機能が利用できます。 どちらも利用できなければ、チェックマークは表示されません。
++ [AI エンリッチメント](cognitive-search-concept-intro.md)を使用するには、Cognitive Services が Azure Cognitive Search と同じ物理リージョンに存在する必要があります。 ごくわずかですが、どちらか一方が提供されていないリージョンがあります。 「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=search)」ページで、縦にチェック マークが 2 つ並んでいれば、両方の機能が利用できます。 どちらも利用できなければ、チェックマークは表示されません。
 
   :::image type="content" source="media/search-create-service-portal/region-availability.png" alt-text="リージョン別の提供状況" border="true":::
 

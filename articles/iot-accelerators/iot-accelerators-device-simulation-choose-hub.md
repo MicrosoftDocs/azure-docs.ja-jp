@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1f89e23d7bb279e7cce5c104060cc7898517f8b7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96009366"
 ---
 # <a name="use-an-existing-iot-hub-with-the-device-simulation-solution-accelerator"></a>デバイス シミュレーション ソリューション アクセラレータで既存の IoT Hub を使用する
@@ -25,7 +25,7 @@ IoT Hub がない場合は、いつでも [Azure Portal](https://portal.azure.co
 
 既存の IoT ハブを使用するには、**iothubowner** 共有アクセス ポリシーに対する接続文字列が必要です。 この接続文字列は、[Azure Portal](https://portal.azure.com) から取得できます。
 
-1. ポータルのハブの構成ページで、 **[共有アクセス ポリシー]** をクリックします。
+1. ポータルのハブの構成ページで、**[共有アクセス ポリシー]** をクリックします。
 
 1. **iothubowner** をクリックします。
 

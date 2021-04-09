@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
 ms.openlocfilehash: 6724d8eb8df29ccfb033f5951ec56b7770e3c413
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90903561"
 ---
 # <a name="api-support-in-azure-static-web-apps-preview-with-azure-functions"></a>Azure Functions による Azure Static Web Apps プレビューでの API のサポート
 
 Azure Static Web Apps では、[Azure Functions](../azure-functions/functions-overview.md) を介してサーバーレス API エンドポイントが提供されています。 Azure Functions を利用することで、API は需要に基づいて動的にスケーリングされ、API には次の機能があります。
 
-- ユーザー[認証とロールベースの承認](user-information.md)データに直接アクセスできる**統合セキュリティ**。
-- カスタム CORS ルールを必要とせずに、Web アプリで安全に _api_ ルートを使用できるようにする**シームレスなルーティング**。
+- ユーザー [認証とロールベースの承認](user-information.md)データに直接アクセスできる **統合セキュリティ**。
+- カスタム CORS ルールを必要とせずに、Web アプリで安全に _api_ ルートを使用できるようにする **シームレスなルーティング**。
 - Node.js 12、.NET Core 3.1、および Python 3.8 と互換性がある **Azure Functions** v3。
-- **HTTP トリガー**と入力/出力バインディング。
+- **HTTP トリガー** と入力/出力バインディング。
 
 ## <a name="configuration"></a>構成
 
-Web アプリでは、_api_ ルートを介して API エンドポイントを使用できます。 このルートは固定ですが、関連付けられる Azure Functions アプリを配置するフォルダーとプロジェクトを制御できます。 リポジトリの _.github/workflows_ フォルダーにある[ワークフロー YAML ファイルを編集する](github-actions-workflow.md#build-and-deploy)ことにより、この場所を変更できます。
+Web アプリでは、_api_ ルートを介して API エンドポイントを使用できます。 このルートは固定ですが、関連付けられる Azure Functions アプリを配置するフォルダーとプロジェクトを制御できます。 リポジトリの _.github/workflows_ フォルダーにある [ワークフロー YAML ファイルを編集する](github-actions-workflow.md#build-and-deploy)ことにより、この場所を変更できます。
 
 ## <a name="constraints"></a>制約
 

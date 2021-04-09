@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 13b6b8658aa2d896ec154cfa3c7a961e37df6cbf
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1aab6b4fe4ffafb3cbba60b2b3774d2577d3d53c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935912"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103562469"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で対話型クエリを使用してデータの抽出、変換、読み込みを行う
 
@@ -35,7 +35,7 @@ ms.locfileid: "98935912"
 
 ## <a name="download-the-flight-data"></a>フライト データのダウンロード
 
-1. [米国運輸省研究・革新技術庁/運輸統計局](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)のページに移動します。
+1. [米国運輸省研究・革新技術庁/運輸統計局](https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ)のページに移動します。
 
 2. ページで、すべてのフィールドをクリアしてから、次の値を選択します。
 

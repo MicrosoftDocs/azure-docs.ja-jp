@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 5881d03603002cc8d5bef1680083f6b4145bc77f
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 19de94db517afb2a8eeb855e76f2381096f8d7c0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526689"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609109"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) に移行する
 
@@ -114,7 +114,7 @@ IP を使い切らないようにするには、[ネットワーク クォータ
 データの損失や予期しないダウンタイムを回避するために、ステートフル アプリケーションの移行は慎重に計画してください。
 
 Azure Files を使用する場合は、ファイル共有をボリュームとして新しいクラスターにマウントできます。
-* [静的 Azure Files をボリュームとしてマウントする](./azure-files-volume.md#mount-the-file-share-as-a-volume)
+* [静的 Azure Files をボリュームとしてマウントする](./azure-files-volume.md#mount-file-share-as-an-persistent-volume)
 
 Azure Managed Disks を使用する場合は、どの VM にも接続されていない場合にのみ、ディスクをマウントできます。
 * [静的 Azure Disk をボリュームとしてマウントする](./azure-disk-volume.md#mount-disk-as-volume)

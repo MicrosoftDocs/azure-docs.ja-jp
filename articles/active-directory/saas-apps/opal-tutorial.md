@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Opal の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Opal の統合 | Microsoft Docs'
 description: Azure Active Directory と Opal の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
 ms.openlocfilehash: 80c4b1998872c749228d7352484fd5af22b6d23d
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97608342"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opal"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Opal の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opal"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Opal の統合
 
 このチュートリアルでは、Opal と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Opal を統合すると、次のことができます。
 
@@ -72,7 +72,7 @@ Opal に対する Azure AD SSO を構成してテストするには、次の構�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Opal** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Opal** アプリケーション統合ページで、**[管理]** セクションを探して、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 

@@ -4,10 +4,10 @@ description: Azure Site Recovery を使用してオンプレミスの VMware VM 
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: a272486eea111ab8c8e489556986f12f382e3f65
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97587794"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware から Azure へのレプリケーションに関するよくある質問

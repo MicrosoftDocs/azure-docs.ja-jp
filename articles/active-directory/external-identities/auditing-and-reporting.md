@@ -13,17 +13,17 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a805f643e5f93270fe4721f527073baa9a1e4c8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87907787"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>B2B コラボレーション ユーザーの監査およびレポート
 ゲスト ユーザーに対しても、メンバー ユーザーに対する場合と同様に、監査機能を使用できます。 
 
 ## <a name="access-reviews"></a>アクセス レビュー
-アクセス レビューを使用すると、ゲスト ユーザーがリソースへのアクセスをまだ必要としているかどうかを定期的に確認できます。 **アクセス レビュー**機能は、**Azure Active Directory** では **[外部 ID]**  >  **[アクセス レビュー]** から利用できます。 Azure portal で **[すべてのサービス]** で「アクセス レビュー」を検索することもできます。 アクセス レビューの使用方法については、「[Azure AD のアクセス レビューによるゲスト アクセスの管理](../governance/manage-guest-access-with-access-reviews.md)」を参照してください。
+アクセス レビューを使用すると、ゲスト ユーザーがリソースへのアクセスをまだ必要としているかどうかを定期的に確認できます。 **アクセス レビュー** 機能は、**Azure Active Directory** では **[外部 ID]**  >  **[アクセス レビュー]** から利用できます。 Azure portal で **[すべてのサービス]** で「アクセス レビュー」を検索することもできます。 アクセス レビューの使用方法については、「[Azure AD のアクセス レビューによるゲスト アクセスの管理](../governance/manage-guest-access-with-access-reviews.md)」を参照してください。
 
 ## <a name="audit-logs"></a>監査ログ
 

@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 8c97710202a448c613ab685932cb335bbaed4953
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87832656"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>チュートリアル:Azure Notification Hubs と Google Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する (非推奨)
@@ -67,7 +67,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 ### <a name="configure-gcm-setting-for-the-notification-hub"></a>GCM の設定を通知ハブ用に構成する
 
 1. **[通知設定]** で **[Google (GCM)]** を選択します。
-2. Google Cloud Console から取得した **API キー**を入力します。
+2. Google Cloud Console から取得した **API キー** を入力します。
 3. ツールバーの **[保存]** を選択します。
 
     ![Azure Notification Hubs - Google (GCM)](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)

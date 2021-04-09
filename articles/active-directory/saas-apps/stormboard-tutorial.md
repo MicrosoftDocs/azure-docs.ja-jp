@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 1fdcef7e3b4a4246c3e093874fbb775f4811e59f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92522021"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-stormboard"></a>チュートリアル:Azure Active Directory と Stormboard の統合
@@ -41,9 +41,9 @@ Stormboard と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Stormboard では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Stormboard では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
-* Stormboard では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Stormboard では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 
 ## <a name="adding-stormboard-from-the-gallery"></a>ギャラリーからの Stormboard の追加
@@ -64,13 +64,13 @@ Azure AD への Stormboard の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Stormboard** 」と入力し、結果パネルで **Stormboard** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Stormboard**」と入力し、結果パネルで **Stormboard** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Stormboard](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Stormboard で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Stormboard で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Stormboard 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Stormboard で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -149,9 +149,9 @@ Stormboard で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -186,7 +186,7 @@ Stormboard で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="create-stormboard-test-user"></a>Stormboard のテスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを Stormboard に作成します。 Stormboard では、 **Just-In-Time ユーザー プロビジョニング** がサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Stormboard にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+このセクションでは、Britta Simon というユーザーを Stormboard に作成します。 Stormboard では、**Just-In-Time ユーザー プロビジョニング** がサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Stormboard にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
 ms.openlocfilehash: d8c6c8d22c059c63fb4f84c84a02a70de30d4ebe
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98678527"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>結果セットのキャッシュを使用したパフォーマンスのチューニング

@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory External Identities の新機能
 description: Azure Active Directory External Identities の新規および更新されたドキュメント。
-ms.date: 02/01/2021
+ms.date: 03/08/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,39 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: e0daa5b1c8d3fcc749f10e48e453ca8f92607643
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: dda3f7c8f4a9a21e16ebab7d243a004c01a40eed
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591703"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102453668"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory External Identities:新機能
 
 Azure Active Directory External Identities のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 External Identities サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [ゲスト ユーザーの引き換え状態をリセットする](reset-redemption-status.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Azure Active Directory B2B のベスト プラクティス](b2b-fundamentals.md)
+- [B2B 外部コラボレーションを有効にしてゲストを招待できるユーザーを管理する](delegate-invitations.md)
+- [Azure Active Directory B2B コラボレーションの FAQ](faq.md)
+- [電子メール ワンタイム パスコード認証](one-time-passcode.md)
+- [Azure Active Directory B2B コラボレーションの招待の利用](redemption-experience.md)
+- [Azure Active Directory B2B コラボレーションのトラブルシューティング](troubleshoot.md)
+- [Azure Active Directory B2B コラボレーション ユーザーのプロパティ](user-properties.md)
+- [Azure Active Directory B2B のゲスト ユーザー アクセスとは](what-is-b2b.md)
+- [Azure Active Directory External Identities:新機能](whats-new-docs.md)
+- [特定の組織からの B2B ユーザーへの招待を許可またはブロックする](allow-deny-list.md)
+- [Azure Active Directory B2B コラボレーションの API とカスタマイズ](customize-invitation-api.md)
+- [内部ユーザーを B2B コラボレーションに招待する](invite-internal-users.md)
+- [Microsoft 365 の外部共有と Azure Active Directory (Azure AD) B2B コラボレーション](o365-external-user.md)
+- [ゲスト ユーザーのための AD FS およびサード パーティ プロバイダーとの直接フェデレーション (プレビュー)](direct-federation.md)
 
 ## <a name="january-2021"></a>2021 年 1 月
 

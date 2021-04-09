@@ -12,10 +12,10 @@ ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: d1b2c7513562e951e1098cf327780387ddf6a495
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94953544"
 ---
 # <a name="tutorial-for-configuring-whoiam-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して WhoIAM を構成するためのチュートリアル
@@ -26,7 +26,7 @@ BRIMS は、お使いの環境にデプロイされるアプリとサービス�
 
 ## <a name="prerequisites"></a>前提条件
 
-開始するには、以下が必要です。
+作業を開始するには、以下が必要です。
 
 - Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 

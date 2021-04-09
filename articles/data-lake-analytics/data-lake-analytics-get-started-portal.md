@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/21/2017
 ms.openlocfilehash: 6e51c6848476147073626119689407ebc02c036d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92220960"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Azure portal で Azure Data Lake Analytics の使用を開始する
@@ -19,7 +19,7 @@ ms.locfileid: "92220960"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを開始する前に、**Azure サブスクリプション**が必要です。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+このチュートリアルを開始する前に、**Azure サブスクリプション** が必要です。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
 ## <a name="create-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントを作成する
 
@@ -28,11 +28,11 @@ ms.locfileid: "92220960"
 1. [Azure Portal](https://portal.azure.com) にサインオンします。
 2. **[リソースの作成]**  >   **[データ + 分析]**  >  **[Data Lake Analytics]** の順にクリックします。
 3. 次の項目の値を選択します。
-   * **Name**:Data Lake Analytics アカウントに名前を付けます (小文字と数字のみが許可されています)。
-   * **サブスクリプション**:Analytics アカウントに使用される Azure サブスクリプションを選択します。
-   * **リソース グループ**。 既存の Azure リソース グループを選択するか、新しいものを作成します。
+   * **名前**: Data Lake Analytics アカウントに名前を付けます (英小文字と数字のみ使用できます)。
+   * **サブスクリプション**: Analytics アカウントに使用する Azure サブスクリプションを選択します。
+   * **[リソース グループ]**。 既存の Azure リソース グループを選択するか、新しいものを作成します。
    * **場所**。 Data Lake Analytics アカウントの Azure データ センターを選択します。
-   * **[Data Lake Storage Gen1]** :手順に従って新しい Data Lake Storage Gen1 アカウントを作成するか、または既存のアカウントを選択します。 
+   * **Data Lake Storage Gen1**: 以下の指示に従って、新しい Data Lake Storage Gen1 アカウントを作成するか、既存のものを選択します。 
 4. 必要に応じて、Data Lake Analytics アカウントの価格レベルを選択します。
 5. **Create** をクリックしてください。 
 

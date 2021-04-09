@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 02/03/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 19b284aceb83fbbc2bcf662b2b58941e6a5b36f9
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99539215"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Service Bus メッセージングを介した分散トレースおよび相関付け
@@ -73,7 +73,7 @@ async Task ProcessAsync(ProcessMessageEventArgs args)
 
 この例では、処理されるメッセージごとに、タイムスタンプ、期間、結果 (成功) を含む要求テレメトリが報告されます。 テレメトリには、相関関係プロパティのセットも含まれます。 メッセージ処理中に報告された入れ子のトレースと例外にも、`RequestTelemetry` の "子" であることを表す相関関係プロパティがスタンプされます。
 
-サポートされる外部コンポーネントへの呼び出しをメッセージ処理中に行った場合は、それらの呼び出しも自動的に追跡されて相関付けられます。 手動での追跡と相関付けについて詳しくは、「[Application Insights .NET SDK でカスタム操作を追跡する](../azure-monitor/app/custom-operations-tracking.md)」をご覧ください。
+サポートされる外部コンポーネントへの呼び出しをメッセージ処理中に行った場合は、それも自動的に追跡されて相関付けられます。 手動での追跡と相関付けについて詳しくは、「[Application Insights .NET SDK でカスタム操作を追跡する](../azure-monitor/app/custom-operations-tracking.md)」をご覧ください。
 
 Application Insights SDK に加えて外部コードを実行している場合は、Application Insights ログを表示するときの **所要時間** が長くなることが予想されます。 
 

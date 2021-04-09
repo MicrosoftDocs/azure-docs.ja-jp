@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.openlocfilehash: 6642e59c2957b298d54bc587853752b9fce74686
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95019145"
 ---
 # <a name="prebuilt-models"></a>事前構築済みのモデル
@@ -26,7 +26,7 @@ LUIS では、3 種類の事前構築済みモデルが提供されています�
 
 |モデルの種類|Includes|
 |--|--|
-|[[ドメイン]](luis-reference-prebuilt-domains.md)|意図、発話、エンティティ|
+|[ドメイン](luis-reference-prebuilt-domains.md)|意図、発話、エンティティ|
 |意図|意図、発話|
 |[エンティティ](luis-reference-prebuilt-entities.md)|エンティティのみ| 
 

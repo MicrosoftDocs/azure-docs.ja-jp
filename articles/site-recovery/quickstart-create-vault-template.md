@@ -2,13 +2,13 @@
 title: Azure Resource Manager テンプレートを使用して Azure Recovery Services コンテナーを作成するためのクイックスタート。
 description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure Recovery Services コンテナーを作成する方法について説明します。
 ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-azurecli
+ms.custom: subject-armqs
 ms.date: 04/29/2020
-ms.openlocfilehash: c1c6d625c67130a4e3608cee6134b8c81404c01b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92745879"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Recovery Services コンテナーを作成する
@@ -42,7 +42,7 @@ ms.locfileid: "92745879"
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-テンプレートをデプロイするには、 **サブスクリプション** 、 **リソース グループ** 、 **コンテナー名** が必要です。
+テンプレートをデプロイするには、**サブスクリプション**、**リソース グループ**、**コンテナー名** が必要です。
 
 1. Azure にサインインしてテンプレートを開くには、 **[Azure へのデプロイ]** イメージを選択します。
 
@@ -52,18 +52,18 @@ ms.locfileid: "92745879"
 
    :::image type="content" source="media/quickstart-create-vault-template/create-vault-template.png" alt-text="Recovery Services コンテナーを作成するためのテンプレート。":::
 
-   - **サブスクリプション** : Azure サブスクリプションを選択します。
-   - **リソース グループ** : 既存のグループを選択するか、 **[新規作成]** を選択してグループを追加します。
-   - **場所** : 既定でリソース グループの場所になります。リソース グループの選択後は利用できなくなります。
-   - **Vault Name** :コンテナーの名前を指定します。
+   - **サブスクリプション**: Azure サブスクリプションを選択します。
+   - **リソース グループ**: 既存のグループを選択するか、 **[新規作成]** を選択してグループを追加します。
+   - **場所**: 既定でリソース グループの場所になります。リソース グループの選択後は利用できなくなります。
+   - **Vault Name**:コンテナーの名前を指定します。
    - **Change Storage Type (ストレージの種類の変更)** : 既定値は **false** です。 **true** は、コンテナーのストレージの種類を変更する必要がある場合のみ選択してください。
    - **Vault Storage Type (コンテナー ストレージの種類)** : 既定値は **GloballyRedundant** です。 ストレージの種類が **true** に設定されている場合は、 **[LocallyRedundant]** を選択します。
-   - **場所** : `[resourceGroup().location]` 関数によって、既定でリソース グループの場所が選択されます。 場所を変更するには、「 **westus** 」などの値を入力してください。
+   - **場所**: `[resourceGroup().location]` 関数によって、既定でリソース グループの場所が選択されます。 場所を変更するには、「**westus**」などの値を入力してください。
    - **[上記の使用条件に同意する]** のチェック ボックスをオンにします。
 
 1. コンテナーのデプロイを開始するには、 **[購入]** ボタンを選択します。 デプロイの成功後、通知が表示されます。
 
-   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="Recovery Services コンテナーを作成するためのテンプレート。":::
+   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="コンテナーのデプロイに成功。":::
 
 ## <a name="validate-the-deployment"></a>デプロイの検証
 

@@ -7,10 +7,10 @@ ms.date: 2/17/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
 ms.openlocfilehash: bbd39f7752a1a482350a7231a0bb5a3710591b1d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102030683"
 ---
 # <a name="device-update-for-iot-hub-update-manifest"></a>IoT Hub 用のデバイス更新の更新マニフェスト

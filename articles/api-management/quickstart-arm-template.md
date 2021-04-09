@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 10/09/2020
 ms.openlocfilehash: 1610c51b613712c06410247e2eb673a50a9988b3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92792244"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して新しい Azure API Management サービス インスタンスを作成する
@@ -50,9 +50,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     この例では、Azure API Management を評価するための経済的なオプションである Developer レベルにインスタンスが構成されます。 このレベルは運用目的では使用できません。 API Management レベルのスケーリングの詳細については、[アップグレードとスケーリング](upgrade-and-scale.md)に関するをページをご覧ください。
 
 1. 次の値を選択または入力します。
-    - **サブスクリプション** : Azure サブスクリプションを選択します。
-    - **リソース グループ** : **[新規作成]** を選択し、リソース グループの一意の名前を入力し、 **[OK]** を選択します。
-    - **[リージョン]** : リソース グループの場所を選択します。 例: **米国中部** 。
+    - **サブスクリプション**: Azure サブスクリプションを選択します。
+    - **リソース グループ**: **[新規作成]** を選択し、リソース グループの一意の名前を入力し、 **[OK]** を選択します。
+    - **[リージョン]** : リソース グループの場所を選択します。 例:**米国中部**。
     - **[Publisher Email]\(公開者の電子メール\)** : 通知を受信するためのメール アドレスを入力します。
     - **[Publisher Name]\(公開者名\)** : API 公開者用に選択した名前を入力します。
     - **[SKU]** : 既定値の **Developer** を受け入れます。
@@ -68,7 +68,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. インスタンスが正常に作成されると、次の通知が表示されます。
 
-    :::image type="content" source="media/quickstart-arm-template/deployment-notification.png" alt-text="API Management テンプレートのプロパティ":::
+    :::image type="content" source="media/quickstart-arm-template/deployment-notification.png" alt-text="デプロイの通知":::
 
  テンプレートをデプロイするには Azure portal を使用します。 Azure portal だけでなく、Azure PowerShell、Azure CLI、および REST API を使用することもできます。 他のデプロイ方法については、「[テンプレートのデプロイ](../azure-resource-manager/templates/deploy-cli.md)」を参照してください。
 
@@ -76,10 +76,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure portal を使用してデプロイされたリソースを確認するか、Azure CLI や Azure PowerShell などのツールを使用してデプロイされたリソースを一覧表示します。
 
-1. [Azure portal](https://portal.azure.com) で、 **API Management サービス** を検索して選択し、作成したサービス インスタンスを選択します。
+1. [Azure portal](https://portal.azure.com) で、**API Management サービス** を検索して選択し、作成したサービス インスタンスを選択します。
 1. **[概要]** ページで、サービスのプロパティを確認します。
 
-:::image type="content" source="media/quickstart-arm-template/service-instance-created.png" alt-text="API Management テンプレートのプロパティ":::
+:::image type="content" source="media/quickstart-arm-template/service-instance-created.png" alt-text="サービスの概要ページ":::
 
 API Management サービス インスタンスがオンラインになったら、使用する準備ができています。 最初の API を[インポートして公開する](import-and-publish.md)ためのチュートリアルを開始します。
 
@@ -89,10 +89,10 @@ API Management サービス インスタンスがオンラインになったら�
 
 1. [Azure portal](https://portal.azure.com) で、 **[リソース グループ]** を検索して選択します。 **[ホーム]** ページで **[リソース グループ]** を選択することもできます。
 1. **[リソース グループ]** ページで、リソース グループを選択します。
-1. [リソース グループ] ページで、 **[リソース グループの削除]** を選択します。
+1. [リソース グループ] ページで、**[リソース グループの削除]** を選択します。
 
     リソース グループの削除
-1. リソース グループの名前を入力し、 **[削除]** を選択します。
+1. リソース グループの名前を入力し、**[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

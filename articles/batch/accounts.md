@@ -4,10 +4,10 @@ description: Azure Batch アカウントについて、およびそれらがど�
 ms.topic: conceptual
 ms.date: 01/26/2021
 ms.openlocfilehash: 83108a265f91c9feef2fab424f1819939c2d58c9
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98896750"
 ---
 # <a name="batch-accounts-and-azure-storage-accounts"></a>Batch アカウントおよび Azure Storage アカウント

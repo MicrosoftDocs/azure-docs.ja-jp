@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 96652b2a1eb35668bd8a810b309ab31cec5afdb7
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97967261"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>トランザクションとオプティミスティック同時実行制御

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: victorh
 ms.openlocfilehash: e63336b0e84d303b51eda56f90ca6fb453d8ae0d
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99831843"
 ---
 # <a name="monitor-logs-using-azure-firewall-workbook"></a>Azure Firewall ブックを使用してログを監視する

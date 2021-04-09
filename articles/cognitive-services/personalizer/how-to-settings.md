@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.openlocfilehash: 9b7347cb98bcbf2e1d92f115d404197083acef4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91292610"
 ---
 # <a name="configure-personalizer-learning-loop"></a>Personalizer の学習ループを構成する
@@ -36,7 +36,7 @@ Azure portal で、その Personalizer リソースの **[構成]** ページで
 * 報酬
 * 探索
 
-すべてのデータを[クリア](how-to-manage-model.md)するには、 **[モデルと学習設定]** ページを使用します。
+すべてのデータを [クリア](how-to-manage-model.md)するには、 **[モデルと学習設定]** ページを使用します。
 
 ## <a name="configure-rewards-for-the-feedback-loop"></a>フィードバック ループの報酬を構成する
 
@@ -71,8 +71,8 @@ Azure portal で、その Personalizer リソースの **[構成]** ページで
 
 |頻度の設定|目的|
 |--|--|
-|1 分|1 分間の更新頻度は、Personalizer を使用してアプリケーションのコードを**デバッグ**するとき、デモを実行するとき、または機械学習の側面を対話形式でテストするときに有用です。|
-|約 15 分|モデルの更新頻度を高くすると、ユーザー動作の**変化を詳細に追跡**したい場合に便利です。 例としては、ライブ ニュース、バイラル コンテンツ、またはライブ商品入札で実行されるサイトがあります。 これらのシナリオでは、15 分間の頻度を使用できます。 |
+|1 分|1 分間の更新頻度は、Personalizer を使用してアプリケーションのコードを **デバッグ** するとき、デモを実行するとき、または機械学習の側面を対話形式でテストするときに有用です。|
+|約 15 分|モデルの更新頻度を高くすると、ユーザー動作の **変化を詳細に追跡** したい場合に便利です。 例としては、ライブ ニュース、バイラル コンテンツ、またはライブ商品入札で実行されるサイトがあります。 これらのシナリオでは、15 分間の頻度を使用できます。 |
 |1 時間|ほとんどのユース ケースでは、更新頻度が低い方が効果的です。|
 
 ![[Model update frequency]\(モデルの更新頻度\) により、新しい Personalizer モデルを再トレーニングする頻度を設定します。](media/settings/configure-model-update-frequency-settings-15-minutes.png)

@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 6eb9a20920f0a340491459f0875fc85b90dfa193
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92209170"
 ---
 # <a name="limit-change-tracking-and-inventory-deployment-scope"></a>Change Tracking とインベントリのデプロイのスコープを制限する
@@ -26,7 +26,7 @@ Change Tracking とインベントリのデプロイのスコープを制限す�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「 **Automation** 」と入力します。 入力を始めると、入力内容に基づいて一覧から候補が絞り込まれます。 **[Automation アカウント]** を選択します。
+2. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**Automation**」と入力します。 入力を始めると、入力内容に基づいて一覧から候補が絞り込まれます。 **[Automation アカウント]** を選択します。
 
 3. Automation アカウントの一覧で、変更履歴とインベントリを有効にしたときに選択したアカウントを選択します。
 

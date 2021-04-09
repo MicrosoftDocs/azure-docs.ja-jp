@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 2453fa2d9b4e78b60d4922e09347799266a84cff
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743221"
 ---
 # <a name="troubleshoot-azure-cloud-service-classic-roles-that-fail-to-start"></a>起動できない Azure クラウド サービス (クラシック) ロールをトラブルシューティングする
@@ -79,8 +79,8 @@ Web サイトにアクセスすると、詳しいエラー メッセージが表
 
 ![Explicit Server Error in '/' Application](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
-## <a name="diagnose-issues-by-using-the-compute-emulator"></a>コンピューティング エミュレーターを使用した問題の診断
-依存コンポーネントの不足や web.config エラーに関する問題の診断とトラブルシューティングは、Microsoft Azure コンピューティング エミュレーターを使用して行うことができます。
+## <a name="diagnose-issues-by-using-the-compute-emulator"></a>Compute Emulator を使用した問題の診断
+依存コンポーネントの不足や web.config エラーに関する問題の診断とトラブルシューティングは、Microsoft Azure Compute Emulator を使用して行うことができます。
 
 この診断方法の効果を最大限に高めるには、Windows がクリーン インストールされたコンピューターまたは仮想マシンを使用する必要があります。 Azure 環境のシミュレーションには、Windows Server 2008 R2 x64 が最適です。
 

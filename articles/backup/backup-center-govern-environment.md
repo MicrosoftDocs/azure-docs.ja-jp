@@ -3,16 +3,16 @@ title: バックアップ センターを使用してバックアップ資産を
 description: バックアップ センターを使用して、バックアップの観点からすべてのリソースが準拠していることを確認するために Azure 環境を管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 67b0591c7d7146d162687018854365d338105d76
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 283c99c4b17683850f71b25fb2006784e43f3b8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893848"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102506211"
 ---
-# <a name="govern-your-backup-estate-using-backup-center-preview"></a>バックアップ センター (プレビュー) を使用してバックアップ資産を管理する
+# <a name="govern-your-backup-estate-using-backup-center"></a>バックアップ センターを使用してバックアップ資産を管理する
 
-バックアップ センターは、バックアップの観点からすべてのリソースが準拠していることを確認するために Azure 環境を管理するのに役立ちます。 バックアップ センターのガバナンス機能のいくつかを次に示します。
+バックアップ センターは、バックアップの観点からすべてのリソースが準拠していることを確保するために Azure 環境を管理するのに役立ちます。 バックアップ センターのガバナンス機能のいくつかを次に示します。
 
 * バックアップ用の Azure ポリシーの表示と割り当て
 

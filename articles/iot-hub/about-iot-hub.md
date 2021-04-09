@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: a460d77a032f36505c8036bc60aa37017f630e55
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 86a373844b370cc9f9ce31dc65b2039a81279803
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501143"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102454772"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT Hub とは
 
@@ -30,7 +30,7 @@ IoT Hub の機能を使うと、製造で使われる産業機器の管理、医
 
 ## <a name="scale-your-solution"></a>ソリューションをスケール調整する
 
-IoT Hub は、数百万のデバイスの同時接続、および IoT ワークロードをサポートするための毎秒数百万のイベントに対応するようにスケーリングします。 IoT ハブのスケーリングについて詳しくは、[IoT Hub のスケーリング](iot-hub-scaling.md?branch=release-iotbasic)に関するページを参照してください。 IoT Hub で提供される複数階層のサービスと、スケーラビリティ ニーズへの最適な対応について詳しくは、[価格のページ](https://azure.microsoft.com/pricing/details/iot-hub/)を参照してください。
+IoT Hub は、数百万のデバイスの同時接続、および IoT ワークロードをサポートするための毎秒数百万のイベントに対応するようにスケーリングします。 IoT ハブのスケーリングについて詳しくは、[IoT Hub のスケーリング](iot-hub-scaling.md)に関するページを参照してください。 IoT Hub で提供される複数階層のサービスと、スケーラビリティ ニーズへの最適な対応について詳しくは、[価格のページ](https://azure.microsoft.com/pricing/details/iot-hub/)を参照してください。
 
 ## <a name="secure-your-communications"></a>通信のセキュリティ保護
 
@@ -104,6 +104,8 @@ IoT Hub と device SDK は、次のプロトコルを使ったデバイスの接
 * AMQP over WebSocket
 * MQTT
 * WebSocket 経由の MQTT
+
+IoT Hub とデバイス SDK では、デバイスを接続するための [Azure IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)規則をサポートしています。 IoT プラグ アンド プレイ デバイスは、デバイス モデルを使用して、その機能を IoT プラグ アンド プレイ対応アプリケーションにアドバタイズします。 デバイス モデルにより、ソリューション ビルダーは、手動で構成することなく、独自のソリューションにスマート デバイスを統合することができます。
 
 ソリューションで device ライブラリを使用できない場合、デバイスは MQTT v3.1.1、HTTPS 1.1、または AMQP 1.0 プロトコルを使って、ハブにネイティブに接続できます。
 

@@ -1,24 +1,14 @@
 ---
 title: セキュリティ エージェントのローカル構成 (C)
 description: Defender での C のエージェント ローカル構成について説明します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: elazark
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/08/2020
-ms.author: v-ekrieg
-ms.openlocfilehash: d96a73c3ba996fecf24a4232e1391f0b814be868
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc4ea30080711633e52f966b89a16f7246a30673
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851256"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779411"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>LocalConfiguration.json ファイルについて - C エージェント
 
@@ -39,7 +29,7 @@ Defender for IoT セキュリティ エージェントでは、ローカル構�
 | TriggerdEventsInterval | ISO8601 文字列 | トリガーされたイベント収集のスケジューラ間隔 |
 | ConnectionTimeout | ISO8601 文字列 | IoThub への接続がタイムアウトになるまでの期間 |
 | 認証 | JsonObject | 認証の構成。 このオブジェクトには、IoTHub に対する認証に必要なすべての情報が含まれます |
-| ID | "DPS"、"SecurityModule"、"Device" | 認証 ID - 認証が DPS を使用して行われる場合は DPS、認証がセキュリティ モジュールの資格情報を使用して行われる場合は SecurityModule、認証がデバイスの資格情報を使用して行われる場合は Device |
+| ID | "DPS"、"SecurityModule"、"Device" | 認証 ID - 認証が DPS を使用して行われる場合は DPS、認証が Defender-IoT-micro-agent の資格情報を使用して行われる場合は SecurityModule、認証がデバイスの資格情報を使用して行われる場合は Device |
 | AuthenticationMethod | "SasToken"、"SelfSignedCertificate" | 認証用のユーザー シークレット - ユーザー シークレットが対称キーの場合は SasToken を選択します。シークレットが自己署名証明書の場合は SelfSignedCertificate を選択します  |
 | FilePath | ファイルへのパス (文字列) | 認証シークレットを含むファイルへのパス |
 | HostName | string | Azure IoT ハブのホスト名。 通常 <my-hub>.azure-devices.net |

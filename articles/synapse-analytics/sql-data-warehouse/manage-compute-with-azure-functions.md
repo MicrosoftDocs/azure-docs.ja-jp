@@ -12,10 +12,10 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: f0731f0deaf46ec419cfe43037804e10f2b73fd4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96448377"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-for-your-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Functions を使用して Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のコンピューティング リソースを管理する
@@ -139,7 +139,7 @@ ms.locfileid: "96448377"
 
 毎日午前 8 時に DW600c にスケールアップし、午後 8 時に DW200c にスケールダウンします。
 
-| 機能  | スケジュール     | 操作                                |
+| 機能  | スケジュール     | Operation                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600c"}` |
 | Function2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200c"}` |
@@ -148,7 +148,7 @@ ms.locfileid: "96448377"
 
 毎日午前 8 時に DW1000c にスケールアップし、午後 4 時に DW600 にスケールダウンします。さらに、午後 10 時に DW200c にスケールダウンします。
 
-| 機能  | スケジュール     | 操作                                |
+| 機能  | スケジュール     | Operation                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000c"}` |
 | Function2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600c"}` |
@@ -158,7 +158,7 @@ ms.locfileid: "96448377"
 
 平日の午前 8 時に DW1000c にスケールアップし、午後 4 時に 1 回 DW600c にスケールダウンします。 金曜日の午後 11 時に一時停止し、月曜朝の午前 7 時に再開します。
 
-| 機能  | スケジュール       | 操作                                |
+| 機能  | スケジュール       | Operation                                |
 | :-------- | :------------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000c"}` |
 | Function2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600c"}` |

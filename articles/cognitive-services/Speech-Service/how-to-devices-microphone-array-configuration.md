@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: wellsi
 ms.openlocfilehash: cf0580c96f5bf78f0444b2bb39088f2a417fd658
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95025063"
 ---
 # <a name="how-to-configure-a-microphone-array"></a>マイク配列を構成する方法

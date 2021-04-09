@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: e2c88091072921f1ca674868e401c34d354418de
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98746511"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web アプリケーション ファイアウォールの CRS 規則グループと規則

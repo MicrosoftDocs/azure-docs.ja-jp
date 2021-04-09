@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b57d675003c1ebeb29927b86338f95cf7dd68090
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96574465"
 ---
 # <a name="bulk-delete-users-in-azure-active-directory"></a>Azure Active Directory でユーザーを一括削除する
@@ -34,15 +34,15 @@ CSV テンプレートをダウンロードして入力すると、Azure AD ユ�
 
 ダウンロードした CSV テンプレート内の行は次のとおりです。
 
-- **バージョン番号**: アップロード CSV には、バージョン番号を含む最初の行を含める必要があります。
-- **列見出し**:列見出しの形式は &lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `User name [userPrincipalName] Required` 」のように入力します。 テンプレートの古いバージョンの中には、微妙に異なるものもあります。
-- **例の行**:このテンプレートには、各列に使用できる値の例の行が含まれています。 例の行を削除し、独自のエントリに置き換える必要があります。
+- **バージョン番号**: アップロード CSV の先頭行にバージョン番号を含める必要があります。
+- **列見出し**:列見出しの形式は、&lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `User name [userPrincipalName] Required` 」のように入力します。 テンプレートの古いバージョンの中には、微妙に異なるものもあります。
+- **例の行**:このテンプレートには、各列に使用できる値のサンプル行が含まれています。 サンプル行を削除し、独自のエントリに置き換える必要があります。
 
 ### <a name="additional-guidance"></a>その他のガイダンス
 
 - アップロード テンプレートの最初の 2 行を削除または変更することはできません。アップロードを処理することができなくなります。
-- 必須の列は最初に表示されます。
-- テンプレートに新しい列を追加することはお勧めしません。 追加した列は無視され、処理されません。
+- 必須の列が最初に示されています。
+- テンプレートに新しい列を追加することはお勧めしません。 列を追加しても無視され、処理されません。
 - できる限り、常に最新バージョンの CSV テンプレートをダウンロードすることをお勧めします。
 
 ## <a name="to-bulk-delete-users"></a>ユーザーを一括削除するには

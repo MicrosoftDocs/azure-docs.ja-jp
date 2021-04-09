@@ -10,16 +10,25 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 4f5ea68102e98a9abc3e5a0a31d3153bc1bd1663
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 78746e7623f58af5ae9df829b48245295dc39f01
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738227"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487102"
 ---
 # <a name="whats-new-in-computer-vision"></a>Computer Vision の新機能
 
 サービス内の新機能について説明します。 以下の項目には、リリース ノート、ビデオ、ブログの投稿、およびその他の種類の情報が含まれる可能性があります。 このページをブックマークして、常にサービスの最新情報を確認してください。
+
+## <a name="march-2021"></a>2021 年 3 月
+
+### <a name="computer-vision-32-public-preview-update"></a>Computer Vision 3.2 パブリック プレビューの更新
+
+Computer Vision API v3.2 パブリック プレビューが更新されました。 プレビュー リリースには、すべての Computer Vision 機能に加えて、更新された Read および Analyze API が含まれています。
+
+> [!div class="nextstepaction"]
+> [Computer Vision v3.2 パブリック プレビュー 3 を参照する](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
 
 ## <a name="february-2021"></a>2021 年 2 月
 
@@ -34,7 +43,7 @@ ms.locfileid: "101738227"
 Read API については、[こちら](concept-recognizing-text.md)を参照してください。
 
 > [!div class="nextstepaction"]
-> [Read API v3.2 パブリック プレビューを使用する](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)
+> [Read API v3.2 パブリック プレビューを使用する](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
 
 
 ## <a name="january-2021"></a>2021 年 1 月

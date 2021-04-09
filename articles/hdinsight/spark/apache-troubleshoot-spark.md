@@ -6,12 +6,12 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: af488cd253e8a8ebedd838aa5286185ea556f69d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b54b9d932505ada890ac21c1b8de3178ad2f0042
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942509"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867510"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Spark のトラブルシューティング
 
@@ -25,49 +25,49 @@ Spark 構成値を調整して、Apache Spark アプリケーションの `Outof
 
 1. **Spark2** >  **[構成]** に移動します。
 
-    ![[Configs]\(構成\) タブの選択](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png" alt-text="[Configs]\(構成\) タブの選択" border="true":::
 
 1. 構成の一覧で **[Custom-spark2-defaults]** を選択して展開します。
 
 1. **[spark.executor.memory]** など、調整する必要のある値の設定を見つけます。 この場合、**9728m** という値は大きすぎます。
 
-    ![[Custom-spark-defaults] の選択](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png" alt-text="[Custom-spark-defaults] の選択" border="true":::
 
 1. この値を推奨される値に設定します。 この設定では **2048m** が推奨値です。
 
 1. 値を保存してから、構成を保存します。 **[保存]** を選択します。
 
-    ![2048m への値の変更](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png" alt-text="2048m への値の変更" border="true":::
 
     構成の変更内容に関するメモを入力して、 **[Save]\(保存\)** をクリックします。
 
-    ![変更内容のメモの入力](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png" alt-text="変更内容のメモの入力" border="true":::
 
     注意の必要な値がある場合は警告が表示されます。 各項目を確認したうえで **[Proceed Anyway]\(警告を無視して続行\)** をクリックします。
 
-    ![[Proceed Anyway]\(警告を無視して続行\) の選択](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png" alt-text="[Proceed Anyway]\(警告を無視して続行\) の選択" border="true":::
 
 1. 構成を保存すると、サービスを再起動するように求められます。 **[Restart]\(再起動\)** をクリックします。
 
-    ![[Restart]\(再起動\) をクリック](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png" alt-text="[Restart]\(再起動\) をクリック" border="true":::
 
     再起動を確定します。
 
-    ![[Confirm Restart All]\(すべて再起動\) をクリック](./media/apache-troubleshoot-spark/apache-spark-ambari-config7b.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config7b.png" alt-text="[Confirm Restart All]\(すべて再起動\) をクリック" border="true":::
 
     実行中のプロセスを確認できます。
 
-    ![実行中のプロセスの確認](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png" alt-text="実行中のプロセスの確認" border="true":::
 
 1. 構成を追加することもできます。 構成の一覧で **[Custom-spark2-defaults]** を選択し、 **[Add Property]\(プロパティの追加\)** をクリックします。
 
-    ![[Add Property]\(プロパティの追加\) をクリック](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png" alt-text="[Add Property]\(プロパティの追加\) をクリック" border="true":::
 
 1. 新しいプロパティを定義します。 データ型など特定の設定用のダイアログ ボックスを使用して 1 つのプロパティを定義することができます。 または、1 行につき 1 つの定義を使用して、複数のプロパティを定義することもできます。
 
     この例では、**spark.driver.memory** プロパティの値を **4g** に定義しています。
 
-    ![新しいプロパティの定義](./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png" alt-text="新しいプロパティの定義" border="true":::
 
 1. 構成を保存し、手順 6 と 7 の説明に従ってサービスを再起動します。
 
@@ -77,7 +77,7 @@ Spark 構成値を調整して、Apache Spark アプリケーションの `Outof
 
 **%%configure** ディレクティブの後にある最初の Jupyter Notebook セルに、Spark 構成を有効な JSON 形式で指定します。 必要に応じて、実際の値に変更します。
 
-![構成の追加](./media/apache-troubleshoot-spark/add-configuration-cell.png)
+:::image type="content" source="./media/apache-troubleshoot-spark/add-configuration-cell.png" alt-text="構成の追加" border="true":::
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>クラスター上の Apache Livy を使用して Apache Spark アプリケーションを構成する方法
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/10/2021
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: 9dc44b4b898603df88d1bdd8c36ddfb6449335ac
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 55951f288314d92cf5057e7d5c1e988f65cb3e14
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547198"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040381"
 ---
 # <a name="versions-in-azure-api-management"></a>Azure API Management のバージョン
 
@@ -42,7 +42,7 @@ ms.locfileid: "100547198"
 
 たとえば、`https://apis.contoso.com/products/v1` と `https://apis.contoso.com/products/v2` は同じ `products` API ではあっても、それぞれバージョン `v1` と `v2` を参照できます。
 
-ヘッダー ベースのバージョン管理を使用している場合の API 要求 URL の形式は `https://{yourDomain}/{apiName}/{versionIdentifier}/{operationId}` です。
+パスベースのバージョン管理を使用している場合の API 要求 URL の形式は `https://{yourDomain}/{apiName}/{versionIdentifier}/{operationId}` です。
 
 ### <a name="header-based-versioning"></a>ヘッダー ベースのバージョン管理
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
-ms.openlocfilehash: ccd642578c8c35ac6b5f23397788ad1e7f83a1f5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: de838e094c8a37d375aa6c7649ee5717705ad33c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942600"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866354"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター上で SSH により Apache Spark アプリケーションをデバッグする
 
@@ -45,7 +45,7 @@ ms.locfileid: "98942600"
     * Scala プロジェクト作成ウィザードをサポートする場合は **Maven**。
     * 依存関係を管理し、Scala プロジェクトをビルドする場合は **SBT**。
 
-     ![Intellij の新規プロジェクト作成 (Spark)](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-create-projectfor-debug-remotely.png)
+     :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-create-projectfor-debug-remotely.png" alt-text="Intellij の新規プロジェクト作成 (Spark)" border="true":::
 
 1. **[次へ]** を選択します。
 
@@ -58,7 +58,7 @@ ms.locfileid: "98942600"
     |Project SDK (プロジェクト SDK)|空白の場合は、 **[新規作成]** を選択し、JDK に移動します。|
     |Spark バージョン|作成ウィザードにより、Spark SDK と Scala SDK の適切なバージョンが統合されます。 Spark クラスターのバージョンが 2.0 より前の場合は、 **[Spark 1.x]** を選択します。 それ以外の場合は、 **[Spark 2.x]** を選択します。 この例では、**Spark 2.3.0 (Scala 2.11.8)** を使用します。|
 
-   ![Intellij の新しいプロジェクト、Spark バージョンの選択](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-new-project.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-new-project.png" alt-text="Intellij の新しいプロジェクト、Spark バージョンの選択" border="true":::
 
 1. **[完了]** を選択します。 プロジェクトが使用可能になるまで数分かかる場合があります。 右下隅の進行状況を監視します。
 
@@ -70,11 +70,11 @@ ms.locfileid: "98942600"
 
 1. ローカル実行が完了すると、現在のプロジェクト エクスプローラーの **[data]**  >  **__[default]__** に出力ファイルが保存されていることを確認できます。
 
-    ![Intellij プロジェクトのローカル実行の結果](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png" alt-text="Intellij プロジェクトのローカル実行の結果" border="true":::
 
 1. ローカル実行とローカル デバッグを行うと、既定のローカル実行構成が自動的に設定されます。 右上済の **[Spark on HDInsight] XXX** という構成を開くと、 **[HDInsight の Apache Spark]** の下に **[Spark on HDInsight]XXX** が既に作成されていることがわかります。 **[Locally Run]\(ローカル実行\)** タブに切り替えます。
 
-    ![Intellij の実行/デバッグ構成 (ローカル実行)](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png" alt-text="Intellij の実行/デバッグ構成 (ローカル実行)" border="true":::
 
     - [環境変数](#prerequisites):システム環境変数 **HADOOP_HOME** を **C:\WinUtils** に設定した場合は、自動的に検出されます。手動で追加する必要はありません。
     - [[WinUtils.exe Location]\(WinUtils.exe の場所\)](#prerequisites):システム環境変数が未設定である場合、対応するボタンをクリックして場所を探すことができます。
@@ -94,35 +94,35 @@ ms.locfileid: "98942600"
 
 1. **[実行/デバッグ構成]** ダイアログ ボックスで、プラス記号 ( **+** ) を選択します。 次に **[HDInsight での Apache Spark]** オプションを選択します。
 
-   ![Intellij の新規構成の追加](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-add-new-Configuration.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-add-new-Configuration.png" alt-text="Intellij の新規構成の追加" border="true":::
 
 1. **[Remotely Run in Cluster]\(クラスターでリモート実行\)** タブに切り替えます。 **[名前]** 、 **[Spark cluster]\(Spark クラスター\)** 、 **[Main class name]\(メイン クラス名\)** に情報を入力します。 **[詳細な構成 (リモート デバッグ)]** をクリックします。 ツールでは、**Executor** を使用したデバッグがサポートされています。 **numExectors** の既定値は 5 です。 3 より大きい値に設定することはお勧めできません。
 
-   ![Intellij の実行/デバッグ構成](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-run-debug-configurations.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-run-debug-configurations.png" alt-text="Intellij の実行/デバッグ構成" border="true":::
 
 1. **[詳細な構成 (リモート デバッグ)]** パートで、 **[Enable Spark remote debug]\(Spark のリモート デバッグを有効化\)** を選択します。 SSH ユーザー名を入力し、次にパスワードを入力するか、秘密キー ファイルを使用します。 リモート デバッグを実行する場合は、これを設定する必要があります。 リモート実行を使用する場合は、設定する必要はありません。
 
-   ![Intellij の詳細構成 (Spark のリモート デバッグの有効化)](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-enable-spark-remote-debug.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-enable-spark-remote-debug.png" alt-text="Intellij の詳細構成 (Spark のリモート デバッグの有効化)" border="true":::
 
 1. 指定した名前で構成が保存されます。 構成の詳細を表示するには、構成名を選択します。 変更するには、 **[構成の編集]** を選択します。
 
 1. 構成の設定が完了したら、リモート クラスターでプロジェクトを実行したり、リモート デバッグを実行したりすることができます。
 
-   ![Intellij のリモート Spark ジョブのデバッグ (リモート実行ボタン)](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run-button.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run-button.png" alt-text="Intellij のリモート Spark ジョブのデバッグ (リモート実行ボタン)" border="true":::
 
 1. **[切断]** ボタンをクリックします。送信ログは左側のパネルに表示されません。 ただし、バックエンドで実行が続けられています。
 
-   ![Intellij のリモート Spark ジョブのデバッグ (リモート実行結果)](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-remote-run-result.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-remote-run-result.png" alt-text="Intellij のリモート Spark ジョブのデバッグ (リモート実行結果)" border="true":::
 
 ## <a name="perform-remote-debugging"></a>リモート デバッグを実行する
 
 1. ブレークポイントを設定し、 **[Remote debug]\(リモート デバッグ\)** アイコンをクリックします。 リモート送信との違いは、SSH ユーザー名/パスワードの構成が必要である点です。
 
-   ![Intellij のリモート Spark ジョブのデバッグ (デバッグ アイコン)](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-icon.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-icon.png" alt-text="Intellij のリモート Spark ジョブのデバッグ (デバッグ アイコン)" border="true":::
 
 1. プログラムの実行がブレークポイントに達すると、 **[ドライバー]** タブと 2 つの **[Executor]** タブが **[デバッガー]** ウィンドウに表示されます。 **[Resume Program]\(プログラムの再開\)** アイコンを選択してコードの実行を続けます。その後、次のブレークポイントに到達します。 デバッグの対象となる Executor を見つけるには、正しい **[Executor]** タブに切り替える必要があります。 対応する **[Console]\(コンソール\)** タブで実行ログを確認できます。
 
-   ![Intellij のリモート Spark ジョブのデバッグ (デバッグ タグ)](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debugger-tab.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debugger-tab.png" alt-text="Intellij のリモート Spark ジョブのデバッグ (デバッグ タグ)" border="true":::
 
 ### <a name="perform-remote-debugging-and-bug-fixing"></a>リモート デバッグを実行し、バグを修正するには
 
@@ -132,21 +132,21 @@ ms.locfileid: "98942600"
 
 1. **[Resume Program]\(プログラムの再開\)** アイコンを選択して続行します。 2 番めのブレーク ポイントでコードが停止します。 例外が想定どおりにキャッチされます。
 
-   ![Intellij のリモート Spark ジョブのデバッグ (エラーのスロー)](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-throw-error.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-throw-error.png" alt-text="Intellij のリモート Spark ジョブのデバッグ (エラーのスロー)" border="true":::
 
 1. もう一度 **[Resume Program]\(プログラムの再開\)** アイコンを選択します。 **[HDInsight Spark Submission]\(HDInsight Spark の送信\)** ウィンドウに、"ジョブ実行失敗" エラーが表示されます。
 
-   ![Intellij のリモート Spark ジョブのデバッグ (エラーの送信)](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-error-submission.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-error-submission.png" alt-text="Intellij のリモート Spark ジョブのデバッグ (エラーの送信)" border="true":::
 
 1. IntelliJ のデバッグ機能を使って変数の値を動的に更新するには、もう一度 **[デバッグ]** を選択します。 **[変数]** ウィンドウが再度表示されます。
 
 1. **[デバッグ]** タブでターゲットを右クリックし、 **[値の設定]** を選択します。 次に、変数に新しい値を入力します。 **[Enter]\(確定\)** を選択して値を保存します。
 
-   ![Intellij のリモート Spark ジョブのデバッグ (値の設定)](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value1.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value1.png" alt-text="Intellij のリモート Spark ジョブのデバッグ (値の設定)" border="true":::
 
 1. **[Resume Program]\(プログラムの再開\)** アイコンを選択して、プログラムの実行を続けます。 今回は例外はキャッチされません。 プロジェクトは例外なしに正常に実行されていることが表示されます。
 
-   ![Intellij のリモート Spark ジョブのデバッグ (例外なし)](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-without-exception.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-without-exception.png" alt-text="Intellij のリモート Spark ジョブのデバッグ (例外なし)" border="true":::
 
 ## <a name="next-steps"></a>次のステップ
 

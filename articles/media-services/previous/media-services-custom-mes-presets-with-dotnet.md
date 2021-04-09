@@ -3,7 +3,7 @@ title: Media Encoder Standard のプリセットのカスタマイズ | Microsof
 description: このトピックでは、Media Encoder Standard のタスク プリセットをカスタマイズして、高度なエンコードを実行する方法を紹介します。 また、Media Services .NET SDK を使用してエンコード タスクとジョブを作成する方法も紹介します。 エンコード ジョブにカスタム プリセットを与える方法も紹介します。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ec95392f-d34a-4c22-a6df-5274eaac445b
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6c1c74f86a9cf0e4bcd73844222f256a715cbfe5
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: c2ec7c8fe312787d153c76b0b0194354e1717db7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695892"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103016714"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard のプリセットのカスタマイズ
 
@@ -269,7 +269,7 @@ namespace CustomizeMESPresests
 }
 ```
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [CLI を使用してカスタム変換でエンコードする方法](../latest/custom-preset-cli-howto.md)
 - [Media Services v3 でのエンコード](../latest/encoding-concept.md)

@@ -4,10 +4,10 @@ description: 共有イメージ ギャラリーを使用するようにラボ �
 ms.topic: article
 ms.date: 09/11/2020
 ms.openlocfilehash: 984cb4c47099928ffab327895a728cbe8a8f9604
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98791392"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services で共有イメージ ギャラリーを使用する

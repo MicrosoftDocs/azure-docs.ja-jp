@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
 ms.openlocfilehash: 3baf2d7ed7c326895ae40948fc2d0a4cc03021f9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92788368"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>クイック スタート:オンプレミスから Azure SQL Managed Instance へのポイント対サイト接続を構成する
@@ -71,7 +71,7 @@ ms.locfileid: "92788368"
 
     ![VPN クライアントのダウンロード](./media/point-to-site-p2s-configure/download-vpn-client.png)  
 4. オンプレミスのクライアント コンピューターで、ZIP ファイルから必要なファイルを抽出し、抽出されたファイルのあるフォルダーを開きます。
-5. **WindowsAmd64** フォルダーを開き、 **VpnClientSetupAmd64.exe** ファイルを開きます。
+5. **WindowsAmd64** フォルダーを開き、**VpnClientSetupAmd64.exe** ファイルを開きます。
 6. **[Windows によって PC が保護されました]** というメッセージが表示されたら、 **[詳細]** をクリックし、 **[実行]** をクリックします。
 
     ![VPN クライアントをインストールします](./media/point-to-site-p2s-configure/vpn-client-defender.png)
@@ -80,7 +80,7 @@ ms.locfileid: "92788368"
 
 ## <a name="connect-to-the-vpn-connection"></a>VPN で接続する
 
-1. オンプレミスのクライアント コンピューターで **[ネットワークとインターネット]** の **[VPN]** に移動し、お使いの SQL Managed Instance 仮想ネットワークを選択して、その VNet との接続を確立します。 次の画像では、 **MyNewVNet** という名前の VNet が該当します。
+1. オンプレミスのクライアント コンピューターで **[ネットワークとインターネット]** の **[VPN]** に移動し、お使いの SQL Managed Instance 仮想ネットワークを選択して、その VNet との接続を確立します。 次の画像では、**MyNewVNet** という名前の VNet が該当します。
 
     ![VPN 接続](./media/point-to-site-p2s-configure/vpn-connection.png)  
 2. **[接続]** を選択します。

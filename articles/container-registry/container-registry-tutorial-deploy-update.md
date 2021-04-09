@@ -5,13 +5,13 @@ ms.topic: tutorial
 ms.date: 04/30/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 9222ac31e067cba6a0ffa71143c90f906ba6ff7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74454695"
 ---
-# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>チュートリアル:更新されたコンテナー イメージをリージョンの Web アプリのデプロイ用に geo レプリケーション コンテナー レジストリにプッシュする
+# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>チュートリアル: 更新されたコンテナー イメージをリージョンの Web アプリのデプロイ用に geo レプリケーション コンテナー レジストリにプッシュする
 
 これは 3 部構成のチュートリアル シリーズの第 3 部です。 [前のチュートリアル](container-registry-tutorial-deploy-app.md)では、Geo レプリケーションは 2 つの異なるリージョン Web アプリ デプロイに対して構成されました。 このチュートリアルでは、まずアプリケーションを変更してから、新しいコンテナー イメージを構築し、それを Geo レプリケートされたレジストリにプッシュします。 最後に、両方の Web アプリ インスタンスで、Azure Container Registry Webhook によって自動的にデプロイされた変更を表示します。
 
@@ -74,7 +74,7 @@ docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-hellowo
 
 ## <a name="push-image-to-azure-container-registry"></a>Azure Container Registry へのイメージのプッシュ
 
-次に、更新された *acr-helloworld* コンテナー イメージを Geo レプリケートされたレジストリにプッシュします。 ここでは、更新されたイメージを*米国西部*と*米国東部*の両方のリージョンにあるレジストリ レプリカにデプロイするための 1 つの `docker push` コマンドを実行します。
+次に、更新された *acr-helloworld* コンテナー イメージを Geo レプリケートされたレジストリにプッシュします。 ここでは、更新されたイメージを *米国西部* と *米国東部* の両方のリージョンにあるレジストリ レプリカにデプロイするための 1 つの `docker push` コマンドを実行します。
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
@@ -99,11 +99,11 @@ v1: digest: sha256:4c3f2211569346fbe2d1006c18cbea2a4a9dcc1eb3a078608cef70d3a186e
 
 イメージがレプリケートされている間、Azure Container Registry Webhook がトリガーされていることを確認できます。
 
-前のチュートリアルでコンテナーを *Web Apps for Containers* にデプロイしたときに作成されたリージョン Webhook を表示するには、Azure Portal のコンテナー レジストリに移動し、 **[SERVICES] \(サービス)** の **[Webhook]** を選択します。
+前のチュートリアルでコンテナーを *Web Apps for Containers* にデプロイしたときに作成されたリージョン Webhook を表示するには、Azure Portal のコンテナー レジストリに移動し、**[SERVICES] \(サービス)** の **[Webhook]** を選択します。
 
 ![Azure Portal のコンテナー レジストリ Webhook][tutorial-portal-01]
 
-各 Webhook を選択すると、その呼び出しと応答の履歴が表示されます。 両方の Webhook のログに**プッシュ** アクションの行が表示されます。 ここで、*米国西部*リージョンにある Webhook のログは、前の手順で `docker push` によってトリガーされた**プッシュ** アクションを示しています。
+各 Webhook を選択すると、その呼び出しと応答の履歴が表示されます。 両方の Webhook のログに **プッシュ** アクションの行が表示されます。 ここで、*米国西部* リージョンにある Webhook のログは、前の手順で `docker push` によってトリガーされた **プッシュ** アクションを示しています。
 
 ![Azure Portal のコンテナー レジストリ Webhook のログ (米国西部)][tutorial-portal-02]
 
@@ -115,11 +115,11 @@ Web ブラウザーで両方のリージョン Web アプリ デプロイに移�
 
 ![Azure Portal の [App Service の概要]][tutorial-portal-03]
 
-更新されたアプリケーションを表示するには、[App Service の概要] のリンクを選択します。 *米国西部*で実行されているアプリのビューの例を次に示します。
+更新されたアプリケーションを表示するには、[App Service の概要] のリンクを選択します。 *米国西部* で実行されているアプリのビューの例を次に示します。
 
 ![米国西部リージョンで実行されている変更された Web アプリのブラウザー ビュー][deployed-app-westus-modified]
 
-ブラウザーで*米国東部*デプロイを表示することによって、更新されたコンテナー イメージがここにもデプロイされたことを確認します。
+ブラウザーで *米国東部* デプロイを表示することによって、更新されたコンテナー イメージがここにもデプロイされたことを確認します。
 
 ![米国東部リージョンで実行されている変更された Web アプリのブラウザー ビュー][deployed-app-eastus-modified]
 
@@ -129,11 +129,11 @@ Web ブラウザーで両方のリージョン Web アプリ デプロイに移�
 
 このチュートリアルでは、Web アプリケーション コンテナーの新しいバージョンを更新し、それを Geo レプリケートされたレジストリにプッシュしました。 Azure Container Registry の Webhook が Web Apps for Containers に更新を通知し、それが一番近いレジストリ レプリカからのローカル プルをトリガーしました。
 
-### <a name="acr-build-automated-image-build-and-patch"></a>ACR のビルド:自動イメージ ビルドとパッチ
+### <a name="acr-build-automated-image-build-and-patch"></a>ACR のビルド: 自動イメージビルドとパッチ
 
 Geo レプリケーションに加えて、ACR ビルドはコンテナー展開パイプラインを最適化するための別のAzure Container Registry です。 ACRビルド概要から始めて、機能を理解するアイデアを得ましょう:
 
-[ACRビルドを使用してOSとフレームワークの修正プログラムの適用を自動化する](container-registry-tasks-overview.md)
+[ACR ビルドを使用して OS とフレームワークの修正プログラムの適用を自動化する](container-registry-tasks-overview.md)
 
 <!-- IMAGES -->
 [deployed-app-eastus-modified]: ./media/container-registry-tutorial-deploy-update/deployed-app-eastus-modified.png

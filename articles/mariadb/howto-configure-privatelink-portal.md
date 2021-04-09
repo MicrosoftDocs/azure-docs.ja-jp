@@ -3,14 +3,14 @@ title: Private Link - Azure portal - Azure Database for MariaDB
 description: Azure portal から Azure Database for MariaDB 用のプライベート リンクを構成する方法について説明します
 author: mksuni
 ms.author: sumuth
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 127a1c83525c4a9c457f551c05045a63a3c4347a
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 79b3c3f8eca2fa4442a7845ca4aa3921d0302453
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98659626"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>ポータルを使用して Azure Database for MariaDB 用の Private Link を作成および管理する
@@ -74,7 +74,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | Windows ライセンスを既にお持ちの場合 | 既定値 **[なし]** のままにします。 |
     |||
 
-1. **[Next:ディスク]** を選択します。
+1. **ディスク** を選択します。
 
 1. **[仮想マシンの作成 - Disk]** で、既定値のままにし、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 
@@ -240,7 +240,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 6. (省略可能) 左側のメニューからデータベースを参照して、MariaDB データベースからの情報を作成または照会します
 
-7. myVM へのリモート デスクトップ接続を閉じます。
+7. myVm へのリモート デスクトップ接続を閉じます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 プライベート エンドポイント、MariaDB サーバー、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。

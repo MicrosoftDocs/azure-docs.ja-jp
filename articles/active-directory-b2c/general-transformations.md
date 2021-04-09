@@ -12,10 +12,10 @@ ms.date: 02/03/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 52831a1907d5ca8d13b0477c909d0d0358873973
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85202222"
 ---
 # <a name="general-claims-transformations"></a>一般要求変換
@@ -90,7 +90,7 @@ salt と secret を使用して、提供されたプレーン テキストをハ
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | plaintext | string | 暗号化される入力要求。 |
 | InputClaim | salt | string | salt パラメーター。 `CreateRandomString` 要求変換を使用して、ランダムな値を作成できます。 |
-| InputParameter | randomizerSecret | string | 既存の Azure AD B2C **ポリシー キー**をポイントします。 新しいポリシー キーを作成するには:Azure AD B2C テナントの **[管理]** で、 **[Identity Experience Framework]** を選択します。 **[ポリシー キー]** を選択して、テナント内で使用できるキーを確認します。 **[追加]** を選択します。 **[オプション]** には **[手動]** を選択します。 名前を指定します (プレフィックス *B2C_1A_* が自動的に追加される場合があります)。 **[シークレット]** テキスト ボックスに、使用するシークレットを入力します (1234567890 など)。 **[キー使用法]** には **[署名]** を選択します。 **［作成］** を選択します |
+| InputParameter | randomizerSecret | string | 既存の Azure AD B2C **ポリシー キー** をポイントします。 新しいポリシー キーを作成するには、Azure AD B2C テナントの **[管理]** で、 **[Identity Experience Framework]** を選択します。 **[ポリシー キー]** を選択して、テナント内で使用できるキーを確認します。 **[追加]** を選択します。 **[オプション]** には **[手動]** を選択します。 名前を指定します (プレフィックス *B2C_1A_* が自動的に追加される場合があります)。 **[シークレット]** テキスト ボックスに、使用するシークレットを入力します (1234567890 など)。 **[キー使用法]** には **[署名]** を選択します。 **［作成］** を選択します |
 | OutputClaim | hash | string | この要求変換が呼び出された後に生成される ClaimType。 `plaintext` inputClaim で構成されている要求。 |
 
 ```xml
@@ -115,4 +115,4 @@ salt と secret を使用して、提供されたプレーン テキストをハ
   - **salt**: 487624568
   - **randomizerSecret**: B2C_1A_AccountTransformSecret
 - 出力要求:
-  - **outputClaim**:CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U=
+  - **outputClaim**: CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U=

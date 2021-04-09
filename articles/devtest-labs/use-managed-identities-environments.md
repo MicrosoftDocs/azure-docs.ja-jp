@@ -4,10 +4,10 @@ description: Azure でマネージ ID を使用して、Azure DevTest Labs の�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 0f3e4b4d7030eb26c25b291e03caaa430d1979c4
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98185786"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Azure マネージド ID を使用してラボに環境をデプロイする 

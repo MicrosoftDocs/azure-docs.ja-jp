@@ -5,15 +5,15 @@ author: ProbablePrime
 manager: chpalm
 services: azure-communication-services
 ms.author: rifox
-ms.date: 02/23/2021
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4d34f816a89091ecbdf3893a377c999a3c46869c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 204a7ff77b4dd32ef62e1a06c66d50d7b30fcfc4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043815"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103496135"
 ---
 # <a name="help-and-support-options-for-azure-communication-services"></a>Azure Communication Services のヘルプとサポートのオプション
 

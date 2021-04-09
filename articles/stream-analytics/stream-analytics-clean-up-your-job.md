@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 31812ac805bd3465b1b735842b45adb372286d66
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98016067"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Azure Stream Analytics ジョブを停止または削除する
@@ -25,7 +25,7 @@ Azure Stream Analytics ジョブは、Azure portal、Azure PowerShell、Azure SD
 
 ジョブを停止すると、リソースがプロビジョニング解除され、イベントの処理が停止します。 このジョブに関連する課金も停止します。 ただし、構成はすべて保持され、後でジョブを再開できます。 
 
-1. [Azure portal](https://portal.azure.com) にサインインする 
+1. [Azure portal](https://portal.azure.com) にサインインします。 
 
 2. 実行されている Stream Analytics ジョブを探し､選択します｡
 

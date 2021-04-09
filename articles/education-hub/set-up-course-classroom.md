@@ -8,10 +8,10 @@ ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
 ms.openlocfilehash: 0b797e2416b4d8849da19e4e75127f86a6f17322
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87101339"
 ---
 # <a name="quickstart-set-up-a-course-and-create-a-classroom"></a>クイック スタート:コースを設定して、クラスルームを作成する
@@ -45,17 +45,17 @@ ms.locfileid: "87101339"
 
 1. テーブルの左上隅にある **[+ 追加]** アイコンを選択して、作成ワークフローを開始します。
 
-    :::image type="content" source="media/set-up-course-classroom/courses-add.png" alt-text="Azure Education Hub の [コース] ページ" border="false":::
+    :::image type="content" source="media/set-up-course-classroom/courses-add.png" alt-text="コースを Azure Education Hub に追加する" border="false":::
 
 1. コース名簿を作成するには、名簿をアップロードするか、招待コードを使用するかの 2 つの方法を使用できます。
     - **名簿**: すべての学生の名前とログインが既にある場合は、名簿ファイルを作成してアップロードできます。 名簿をアップロードするために必要な .csv ファイルのサンプル ファイルをダウンロードするには、右上隅にある **[サンプル ファイルのダウンロード]** リンクを選択します。
     - **招待コード**: 招待コードの使用を選択した場合は、引き換えることができるコード数と期限切れになるタイミングを決定します。 コードを引き換えるには、次のリンクを学生に送信します: https://aka.ms/joinedu 。
 
-      :::image type="content" source="media/set-up-course-classroom/enter-invitation-code.png" alt-text="Azure Education Hub の [コース] ページ" border="false":::
+      :::image type="content" source="media/set-up-course-classroom/enter-invitation-code.png" alt-text="Azure Education Hub に招待コードを入力する" border="false":::
 
 1. 右下隅にある **[クラスルームの作成]** を選択します。 これは、完了するまでに少し時間がかかる場合があります。
 
-   :::image type="content" source="media/set-up-course-classroom/create-classroom.png" alt-text="Azure Education Hub の [コース] ページ" border="false":::
+   :::image type="content" source="media/set-up-course-classroom/create-classroom.png" alt-text="Azure Education Hub でクラスルームを作成する" border="false":::
 
 ## <a name="next-steps"></a>次のステップ
 

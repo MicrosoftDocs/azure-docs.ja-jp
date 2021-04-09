@@ -16,10 +16,10 @@ ms.topic: reference
 ms.date: 01/04/2021
 ms.author: yelevin
 ms.openlocfilehash: daba8fc1f645b51dc8668c806be63744b6ae0842
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97901629"
 ---
 # <a name="azure-sentinel-ueba-enrichments-reference"></a>Azure Sentinel UEBA エンリッチメント リファレンス

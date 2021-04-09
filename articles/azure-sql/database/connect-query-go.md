@@ -5,7 +5,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: sqldbrb=2 
+ms.custom: sqldbrb=2
 ms.devlang: go
 ms.topic: quickstart
 author: David-Engel
@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 02/12/2019
 ms.openlocfilehash: b4a22c734d2afb90d5ea7bc1bda17d3f8fcf585a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91327546"
 ---
 # <a name="quickstart-use-golang-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:Golang を使用して Azure SQL Database または Azure SQL Managed Instance 内のデータベースに対してクエリを実行する
@@ -112,7 +112,7 @@ ms.locfileid: "91327546"
 
 ## <a name="insert-code-to-query-the-database"></a>データベースに対してクエリを実行するコードを挿入する
 
-1. **sample.go**という名前のファイルを **SqlServerSample** フォルダーに作成します。
+1. **sample.go** という名前のファイルを **SqlServerSample** フォルダーに作成します。
 
 2. そのファイルに、以下のコードを貼り付けます。 サーバー、データベース、ユーザー名、およびパスワードの値を追加します。 この例では、Golang [コンテキスト メソッド](https://golang.org/pkg/context/)を使用して、アクティブな接続があることを確認します。
 

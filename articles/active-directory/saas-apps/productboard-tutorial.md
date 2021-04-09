@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と productboard の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と productboard の統合 | Microsoft Docs'
 description: Azure Active Directory と productboard の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
 ms.openlocfilehash: 0ccf7832ec569266e6fa16e5f130e3f2f74d6f48
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515255"
 ---
-# <a name="tutorial-integrate-productboard-with-azure-active-directory"></a>チュートリアル:productboard と Azure Active Directory の統合
+# <a name="tutorial-integrate-productboard-with-azure-active-directory"></a>チュートリアル: productboard と Azure Active Directory の統合
 
 このチュートリアルでは、productboard と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と productboard を統合すると、次のことができます。
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* productboard では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* productboard では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* productboard では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* productboard では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-productboard-from-the-gallery"></a>ギャラリーからの productboard の追加
 
@@ -50,7 +50,7 @@ Azure AD への productboard の統合を構成するには、ギャラリーか
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **productboard** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**productboard**」と入力します。
 1. 結果のパネルから **[productboard]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -70,7 +70,7 @@ productboard で Azure AD SSO を構成してテストするには、次の構�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **productboard** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **productboard** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
 
@@ -123,15 +123,15 @@ productboard で Azure AD SSO を構成してテストするには、次の構�
 
 ## <a name="configure-productboard-sso"></a>productboard SSO の構成
 
-1. productboard 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
+1. productboard 内での構成を自動化するには、**[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
-1. ブラウザーに拡張機能を追加した後、 **[productboard のセットアップ]** をクリックすると、productboard アプリケーションに移動します。 そこから、管理者の資格情報を入力して productboard にサインインします。 ブラウザー拡張機能により、アプリケーションが自動的に構成されます。
+1. ブラウザーに拡張機能を追加した後、**[productboard のセットアップ]** をクリックすると、productboard アプリケーションに移動します。 そこから、管理者の資格情報を入力して productboard にサインインします。 ブラウザー拡張機能により、アプリケーションが自動的に構成されます。
 
     ![セットアップの構成](common/setup-sso.png)
 
-1. **productboard** 側でシングル サインオンを手動で設定したい場合は、 **[アプリのフェデレーション メタデータ URL]** を [productboard サポート チーム](mailto:support@productboard.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **productboard** 側でシングル サインオンを手動で設定したい場合は、**[アプリのフェデレーション メタデータ URL]** を [productboard サポート チーム](mailto:support@productboard.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-productboard-test-user"></a>productboard テスト ユーザーの作成
 

@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 04a30a2446061df75d133bdbd088b7e71c59cade
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 31659f4e8e4f9e25a997be54223b8856edfa8abe
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578220"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102612985"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure Cloud Services (クラシック) の構成と管理の問題: よく寄せられる質問 (FAQ)
 
@@ -124,7 +124,7 @@ $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLoc
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-csdef および cscfg のアップロード先に blob またはローカルを選択する機能が、リリースされる予定です。 [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0&preserve-view=true) を使用して、各場所の値を設定できます。
+csdef および cscfg のアップロード先に blob またはローカルを選択する機能が、リリースされる予定です。 [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment) を使用して、各場所の値を設定できます。
 
 インスタンス レベルでメトリックを監視する機能。 追加の監視機能は、「[クラウド サービスの監視方法](cloud-services-how-to-monitor.md)」に従って利用できます。
 
@@ -293,7 +293,7 @@ Azure は、%approot% ドライブに対して何も書き込みません。 `.c
 スタートアップ タスクで PowerShell スクリプトを使用してマルウェア対策拡張機能を有効にすることができます。 次の記事の手順に従って実装してください。 
  
 - [PowerShell のスタートアップ タスクを作成する](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
-- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0&preserve-view=true)
+- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension)
 
 マルウェア対策デプロイ シナリオの詳細とポータルから有効にする方法については、「[マルウェア対策のデプロイ シナリオ](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)」を参照してください。
 

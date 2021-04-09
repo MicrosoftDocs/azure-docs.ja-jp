@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と CBRE ServiceInsight の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と CBRE ServiceInsight の統合 | Microsoft Docs'
 description: Azure Active Directory と CBRE ServiceInsight の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 899132a823cfbbde600de790166ce8923f435725
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456417"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cbre-serviceinsight"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と CBRE ServiceInsight の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cbre-serviceinsight"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と CBRE ServiceInsight の統合
 
 このチュートリアルでは、CBRE ServiceInsight と Azure Active Directory (Azure AD) を統合する方法について説明します。 CBRE ServiceInsight を Azure AD と統合すると、次のことができます。
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* CBRE ServiceInsight では、 **SP** によって開始される SSO がサポートされます
-* CBRE ServiceInsight では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* CBRE ServiceInsight では、**SP** によって開始される SSO がサポートされます
+* CBRE ServiceInsight では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-cbre-serviceinsight-from-the-gallery"></a>ギャラリーからの CBRE ServiceInsight の追加
 
@@ -50,7 +50,7 @@ Azure AD への CBRE ServiceInsight の統合を構成するには、ギャラ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **CBRE ServiceInsight** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**CBRE ServiceInsight**」と入力します。
 1. 結果のパネルから **[CBRE ServiceInsight]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-cbre-serviceinsight"></a>CBRE ServiceInsight の Azure AD シングル サインオンの構成とテスト
@@ -70,7 +70,7 @@ CBRE ServiceInsight で Azure AD SSO を構成してテストするには、次�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **CBRE ServiceInsight** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **CBRE ServiceInsight** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -104,7 +104,7 @@ CBRE ServiceInsight で Azure AD SSO を構成してテストするには、次�
 このセクションでは、B.Simon に CBRE ServiceInsight へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-1. アプリケーションの一覧で、 **[CBRE ServiceInsight]** を選択します。
+1. アプリケーションの一覧で、**[CBRE ServiceInsight]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
@@ -119,7 +119,7 @@ CBRE ServiceInsight で Azure AD SSO を構成してテストするには、次�
 
 ## <a name="configure-cbre-serviceinsight-sso"></a>CBRE ServiceInsight の SSO の構成
 
-**CBRE ServiceInsight** 側にシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [CBRE ServiceInsight サポート チーム](mailto:SISupport@cbre.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**CBRE ServiceInsight** 側にシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [CBRE ServiceInsight サポート チーム](mailto:SISupport@cbre.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-cbre-serviceinsight-test-user"></a>CBRE ServiceInsight テスト ユーザーの作成
 

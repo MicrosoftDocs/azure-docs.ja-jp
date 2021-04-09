@@ -7,10 +7,10 @@ author: keferna
 ms.author: keferna
 ms.date: 10/09/2020
 ms.openlocfilehash: 2b1ba0779649c4955987c7dae9802cefaba89b79
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97109345"
 ---
 # <a name="find-tenant-id-object-id-and-partner-association-details"></a>テナント ID、オブジェクト ID、パートナーの関連付けの詳細を検索する

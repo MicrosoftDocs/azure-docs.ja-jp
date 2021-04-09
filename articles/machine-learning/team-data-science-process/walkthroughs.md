@@ -12,15 +12,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8a1af48d89fbf5d303c2a6b8ef85ca3117debd5a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93320075"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Team Data Science Process を実行するチュートリアル
 
-これらの **包括的なチュートリアル** で取り上げるのは、特定のシナリオに対する Team Data Science Process のステップです。 チュートリアルでは、 **インテリジェント アプリケーション** のためにクラウド、オンプレミスのツール、サービスをワークフローに組み込む方法を説明しています。 チュートリアルは、使用している **プラットフォーム** ごとにグループ分けされています。
+これらの **包括的なチュートリアル** で取り上げるのは、特定のシナリオに対する Team Data Science Process のステップです。 チュートリアルでは、**インテリジェント アプリケーション** のためにクラウド、オンプレミスのツール、サービスをワークフローに組み込む方法を説明しています。 チュートリアルは、使用している **プラットフォーム** ごとにグループ分けされています。
 
 
 ## <a name="walkthrough-descriptions"></a>チュートリアルの説明

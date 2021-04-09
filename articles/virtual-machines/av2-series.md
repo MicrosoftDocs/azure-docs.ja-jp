@@ -3,16 +3,16 @@ title: Av2 シリーズ
 description: Av2 シリーズ VM の仕様。
 author: migerdes
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: d0972c9ed48f56a495804052c1ffc2b28e1db083
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 680ffe7964104f157debc64e44ac2f004ddac86d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095326"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102565514"
 ---
 # <a name="av2-series"></a>Av2 シリーズ
 

@@ -3,18 +3,18 @@ title: Azure のテナント間でギャラリー イメージを共有する
 description: 共有イメージ ギャラリーと PowerShell を使用して、Azure テナント間で VM イメージを共有する方法について説明します。
 author: axayjo
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/15/2019
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 84998182081c6a681668fbd9bc05446357beb959
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e78cb29551bf7eb3f713edb755464eb7696106e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781047"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102556130"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants-using-powershell"></a>PowerShell を使用して Azure テナント間でギャラリー VM イメージを共有する
 

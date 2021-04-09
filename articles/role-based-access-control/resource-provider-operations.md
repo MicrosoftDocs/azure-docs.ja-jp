@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/25/2021
 ms.custom: generated
-ms.openlocfilehash: 1ee422d4c040e8546135981e0640484acc997b0a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c91172ff110b950335c66f2c0ea9ac59c37e0a76
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718728"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487853"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure リソース プロバイダーの操作
 
@@ -50,6 +50,7 @@ ms.locfileid: "101718728"
 | [microsoft.storagesync](#microsoftstoragesync) |
 | [Microsoft.StorSimple](#microsoftstorsimple) |
 | **Web** |
+| [Microsoft.AppPlatform](#microsoftappplatform) |
 | [Microsoft.CertificateRegistration](#microsoftcertificateregistration) |
 | [Microsoft.DomainRegistration](#microsoftdomainregistration) |
 | [Microsoft.Maps](#microsoftmaps) |
@@ -2047,6 +2048,62 @@ Azure サービス:[StorSimple](../storsimple/index.yml)
 > | Microsoft.StorSimple/operations/read | 操作を一覧表示または取得します。 |
 
 ## <a name="web"></a>Web
+
+### <a name="microsoftappplatform"></a>Microsoft.AppPlatform
+
+Azure サービス: [Azure Spring Cloud](../spring-cloud/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | Microsoft.AppPlatform/register/action | Microsoft.AppPlatform リソース プロバイダーにサブスクリプションを登録します |
+> | Microsoft.AppPlatform/unregister/action | Microsoft.AppPlatform リソース プロバイダーからサブスクリプションの登録を解除します |
+> | Microsoft.AppPlatform/locations/checkNameAvailability/action | リソース名の可用性を確認します |
+> | Microsoft.AppPlatform/locations/operationResults/Spring/read | リソースの操作結果を読み取ります |
+> | Microsoft.AppPlatform/locations/operationStatus/operationId/read | リソースの操作状態を読み取ります |
+> | Microsoft.AppPlatform/operations/read | Microsoft Azure Spring Cloud の利用可能な操作を一覧表示します |
+> | Microsoft.AppPlatform/skus/read | Microsoft Azure Spring Cloud の利用可能な SKU を一覧表示します |
+> | Microsoft.AppPlatform/Spring/write | 特定の Azure Spring Cloud サービス インスタンスを作成または更新します |
+> | Microsoft.AppPlatform/Spring/delete | 特定の Azure Spring Cloud サービス インスタンスを削除します |
+> | Microsoft.AppPlatform/Spring/read | Azure Spring Cloud サービス インスタンスを取得します |
+> | Microsoft.AppPlatform/Spring/enableTestEndpoint/action | 特定の Azure Spring Cloud サービス インスタンスのテスト エンドポイント機能を有効にします |
+> | Microsoft.AppPlatform/Spring/disableTestEndpoint/action | 特定の Azure Spring Cloud サービス インスタンスのテスト エンドポイント機能を無効にします |
+> | Microsoft.AppPlatform/Spring/listTestKeys/action | 特定の Azure Spring Cloud サービス インスタンスのテスト キーを一覧表示します |
+> | Microsoft.AppPlatform/Spring/regenerateTestKey/action | 特定の Azure Spring Cloud サービス インスタンスのテスト キーを再生成します |
+> | Microsoft.AppPlatform/Spring/apps/write | 特定の Azure Spring Cloud サービス インスタンスのアプリケーションを作成または更新します |
+> | Microsoft.AppPlatform/Spring/apps/delete | 特定の Azure Spring Cloud サービス インスタンスのアプリケーションを削除します |
+> | Microsoft.AppPlatform/Spring/apps/read | 特定の Azure Spring Cloud サービス インスタンスのアプリケーションを取得します |
+> | Microsoft.AppPlatform/Spring/apps/getResourceUploadUrl/action | 特定の Microsoft Azure Spring Cloud アプリケーションのリソース アップロード URL を取得します |
+> | Microsoft.AppPlatform/Spring/apps/validateDomain/action | 特定のアプリケーションのカスタム ドメインを検証します |
+> | Microsoft.AppPlatform/Spring/apps/bindings/write | 特定のアプリケーションのバインドを作成または更新します |
+> | Microsoft.AppPlatform/Spring/apps/bindings/delete | 特定のアプリケーションのバインドを削除します |
+> | Microsoft.AppPlatform/Spring/apps/bindings/read | 特定のアプリケーションのバインドを取得します |
+> | Microsoft.AppPlatform/Spring/apps/deployments/write | 特定のアプリケーションのデプロイを作成または更新します |
+> | Microsoft.AppPlatform/Spring/apps/deployments/delete | 特定のアプリケーションのデプロイを削除します |
+> | Microsoft.AppPlatform/Spring/apps/deployments/read | 特定のアプリケーションのデプロイを取得します |
+> | Microsoft.AppPlatform/Spring/apps/deployments/start/action | 特定のアプリケーションのデプロイを開始します |
+> | Microsoft.AppPlatform/Spring/apps/deployments/stop/action | 特定のアプリケーションのデプロイを停止します |
+> | Microsoft.AppPlatform/Spring/apps/deployments/restart/action | 特定のアプリケーションのデプロイを再開します |
+> | Microsoft.AppPlatform/Spring/apps/deployments/getLogFileUrl/action | 特定の Microsoft Azure Spring Cloud アプリケーションのデプロイのログ ファイルの URL を取得します |
+> | Microsoft.AppPlatform/Spring/apps/deployments/skus/read | アプリケーションのデプロイの利用可能な SKU を一覧表示します |
+> | Microsoft.AppPlatform/Spring/apps/domains/write | 特定のアプリケーションのカスタム ドメインを作成または更新します |
+> | Microsoft.AppPlatform/Spring/apps/domains/delete | 特定のアプリケーションのカスタム ドメインを削除します |
+> | Microsoft.AppPlatform/Spring/apps/domains/read | 特定のアプリケーションのカスタム ドメインを取得します |
+> | Microsoft.AppPlatform/Spring/certificates/write | 特定の Azure Spring Cloud サービス インスタンスの証明書を作成または更新します |
+> | Microsoft.AppPlatform/Spring/certificates/delete | 特定の Azure Spring Cloud サービス インスタンスの証明書を削除します |
+> | Microsoft.AppPlatform/Spring/certificates/read | 特定の Azure Spring Cloud サービス インスタンスの証明書を取得します |
+> | Microsoft.AppPlatform/Spring/configServers/read | 特定の Azure Spring Cloud サービス インスタンスの構成サーバーを取得します |
+> | Microsoft.AppPlatform/Spring/configServers/write | 特定の Azure Spring Cloud サービス インスタンスの構成サーバーを作成または更新します |
+> | Microsoft.AppPlatform/Spring/deployments/read | 特定の Azure Spring Cloud サービス インスタンスのデプロイを取得します |
+> | Microsoft.AppPlatform/Spring/detectors/read | 特定の Azure Spring Cloud サービス インスタンスの検出機能を取得します |
+> | Microsoft.AppPlatform/Spring/monitoringSettings/read | 特定の Azure Spring Cloud サービス インスタンスの監視設定を取得します |
+> | Microsoft.AppPlatform/Spring/monitoringSettings/write | 特定の Azure Spring Cloud サービス インスタンスの監視設定を作成または更新します |
+> | **DataAction** | **説明** |
+> | Microsoft.AppPlatform/Spring/configService/read | 特定の Azure Spring Cloud サービス インスタンスの構成内容 (たとえば、application.yaml) を読み取ります |
+> | Microsoft.AppPlatform/Spring/eurekaService/read | 特定の Azure Spring Cloud サービス インスタンスのユーザー アプリ登録情報を読み取ります |
+> | Microsoft.AppPlatform/Spring/eurekaService/write | 特定の Azure Spring Cloud サービス インスタンスのユーザー アプリの登録情報を書き込みます |
+> | Microsoft.AppPlatform/Spring/eurekaService/delete | 特定の Azure Spring Cloud サービス インスタンスのユーザー アプリの登録情報を削除します |
+> | Microsoft.AppPlatform/Spring/logstreamService/read | 特定の Azure Spring Cloud サービス インスタンスのユーザー アプリのストリーミング ログを読み取ります |
 
 ### <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 

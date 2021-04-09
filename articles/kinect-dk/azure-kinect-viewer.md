@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, センサー, ビューアー, 視覚化, 深度, RGB, 色, IMU, オーディオ, マイク, ポイント クラウド
 ms.openlocfilehash: f411de5854d516586dc64701cca729c692ce40e0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "92166107"
 ---
 # <a name="azure-kinect-viewer"></a>Azure Kinect ビューアー
@@ -61,7 +61,7 @@ Azure Kinect ビューアーは[オープンソース](https://github.com/micros
 深度カメラ ビューアーには、次の 2 つのウィンドウが表示されます。
 
 * 1 つ目は、IR 輝度を示すグレースケール イメージである *アクティブ輝度* と呼ばれます。
-* 2 つ目は、 *深度* と呼ばれ、その深度データが色分け表示されます。
+* 2 つ目は、*深度* と呼ばれ、その深度データが色分け表示されます。
 
 次に示すように、深度ウィンドウのピクセルにカーソルを置くと、深度センサーの値が表示されます。
 

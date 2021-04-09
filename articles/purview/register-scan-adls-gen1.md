@@ -8,10 +8,10 @@ ms.subservice: data-catalog-gen2
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.openlocfilehash: a831681f892de9f6aae50fa9a2fcf71e883fe6ba
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97693716"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の登録とスキャン
@@ -31,7 +31,7 @@ Azure Data Lake Storage Gen1 データ ソースでは、以下の機能がサ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[クイック スタート: Azure Purview アカウントの作成](create-catalog-portal.md)に関するページを参照してください。
+- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[クイック スタート: Azure Purview アカウントの作成](create-catalog-portal.md)に関する記事を参照してください。
 - Azure Purview データ ソース管理者である必要があります
 
 ## <a name="setting-up-authentication-for-a-scan"></a>スキャンの認証の設定
@@ -137,5 +137,5 @@ Data Catalog の MSI を使用してスキャンを設定するには、まず�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Purview Data Catalog を参照する](how-to-browse-catalog.md)
-- [Azure Purview Data Catalog を検索する](how-to-search-catalog.md)
+- [Azure Purview データ カタログを参照する](how-to-browse-catalog.md)
+- [Azure Purview データ カタログを検索する](how-to-search-catalog.md)

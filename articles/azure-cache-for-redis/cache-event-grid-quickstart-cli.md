@@ -7,10 +7,10 @@ ms.date: 1/5/2021
 ms.topic: quickstart
 ms.service: cache
 ms.openlocfilehash: 7f33ca0043400962054fabb1aadb1da612fe5426
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99806428"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-azure-cli"></a>クイックスタート: Azure CLI を使用して Azure Cache for Redis のイベントを Web エンドポイントにルーティングする

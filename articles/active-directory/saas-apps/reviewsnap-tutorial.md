@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 00b9b12e3f60db631fdb30d3d449234149aec4b0
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92516547"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reviewsnap"></a>チュートリアル: Azure Active Directory と Reviewsnap の統合
@@ -41,7 +41,7 @@ Reviewsnap と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Reviewsnap では、 **SP と IDP** によって開始される SSO がサポートされます
+* Reviewsnap では、**SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-reviewsnap-from-the-gallery"></a>ギャラリーからの Reviewsnap の追加
 
@@ -61,13 +61,13 @@ Azure AD への Reviewsnap の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Reviewsnap** 」と入力し、結果パネルで **[Reviewsnap]** を選び、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Reviewsnap**」と入力し、結果パネルで **[Reviewsnap]** を選び、**[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果リストの Reviewsnap](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Reviewsnap で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Reviewsnap で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Reviewsnap 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Reviewsnap で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ Reviewsnap で Azure AD のシングル サインオンを構成してテスト�
 
 Reviewsnap で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Reviewsnap** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Reviewsnap** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -148,7 +148,7 @@ Reviewsnap で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -161,7 +161,7 @@ Reviewsnap で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に Reviewsnap へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Reviewsnap]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Reviewsnap]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

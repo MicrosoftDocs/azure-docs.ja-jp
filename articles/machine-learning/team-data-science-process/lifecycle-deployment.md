@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c3bf8e5f81ae7bf35ff34039fa1e81c9fd4a406b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93324551"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクルのデプロイ ステージ
@@ -39,7 +39,7 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 ## <a name="how-to-do-it"></a>方法
 このステージでは、以下に示す主な課題に取り組みます。
 
-**モデルの運用化** : モデルとパイプラインを、アプリケーションで利用できるように運用環境または運用環境に似た環境にデプロイします。
+**モデルの運用化**: モデルとパイプラインを、アプリケーションで利用できるように運用環境または運用環境に似た環境にデプロイします。
 
 ### <a name="operationalize-a-model"></a>モデルの運用化
 うまく機能する一連のモデルが得られたら、他のアプリケーションから利用できるように、それらのモデルを運用できるようにします。 予測は、ビジネス要件に応じてリアルタイムまたはバッチ処理で行われます。 モデルをデプロイするには、オープン API インターフェイスを使用してそれらを公開します。 インターフェイスを使用して、以下のさまざまなアプリケーションでモデルを簡単に使用できるようにすることができます。
@@ -52,7 +52,7 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 
 Azure Machine Learning Web サービスによるモデルの運用化の例については、「[Azure Machine Learning Web サービスをデプロイする](../classic/deploy-a-machine-learning-web-service.md)」を参照してください。 ベスト プラクティスは、デプロイする運用モデルとデータ パイプラインにテレメトリと監視を組み込むことです。 これは、その後のシステム状態のレポートとトラブルシューティングに役立ちます。  
 
-## <a name="artifacts"></a>アーティファクト
+## <a name="artifacts"></a>Artifacts
 
 * システムの正常性と主なメトリックを表示するステータス ダッシュボード
 * デプロイの詳細を含む最終的なモデリング レポート

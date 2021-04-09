@@ -5,10 +5,10 @@ ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: brendal
 ms.openlocfilehash: 2a70112fd0ab6e2f664ca48265c121936b01e58b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85209880"
 ---
 # <a name="azure-blockchain-workbench-preview-application-versioning"></a>Azure Blockchain Workbench プレビューでのアプリケーションのバージョン管理
@@ -35,7 +35,7 @@ Azure Blockchain Workbench プレビュー アプリの複数のバージョン�
 
     ![新しいバージョンを追加する](media/version-app/add-version.png)
 
-ブロックチェーン アプリケーションのデプロイには数分かかることがあります。 デプロイが完了したら、アプリケーション ページを更新します。 アプリケーションを選択して、 **[バージョン履歴]** ボタンを選択すると、アプリケーションのバージョン履歴が表示されます。
+ブロックチェーン アプリケーションのデプロイには数分かかることがあります。 デプロイが完了したら、アプリケーション ページを更新します。 アプリケーションを選択して、**[バージョン履歴]** ボタンを選択すると、アプリケーションのバージョン履歴が表示されます。
 
 > [!IMPORTANT]
 > 以前のバージョンのアプリケーションは無効になっています。 以前のバージョンを個別に再有効化できます。
@@ -48,7 +48,7 @@ Azure Blockchain Workbench プレビュー アプリの複数のバージョン�
 
 1. Blockchain Workbench のアプリケーション セクションで、使用するコントラクトを含んだアプリケーション チェックボックスを選択します。 以前のバージョンが有効になっている場合、[バージョン履歴] ボタンを選択できます。
 2. **[バージョン履歴]** ボタンを選択します。
-3. [バージョン履歴] ペインで、 *[更新日]* 列のリンクを選択してアプリケーションのバージョンを選択します。
+3. [バージョン履歴] ペインで、*[更新日]* 列のリンクを選択してアプリケーションのバージョンを選択します。
 
     ![以前のバージョンを選択する](media/version-app/use-version.png)
 

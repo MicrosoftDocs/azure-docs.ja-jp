@@ -4,10 +4,10 @@ description: Teams 内で Lab Services のスケジュールを作成する方�
 ms.topic: article
 ms.date: 10/07/2020
 ms.openlocfilehash: 202b202f99868875a51d13e95fbcac677246cc05
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92042339"
 ---
 # <a name="create-and-manage-lab-services-schedules-within-teams"></a>Teams 内で Lab Services のスケジュールを作成および管理する
@@ -39,7 +39,7 @@ ms.locfileid: "92042339"
 
 次の記事をご覧ください。
 
-- [Teams での Azure Lab Services の使用の概要](lab-services-within-teams-overview.md)
+- [Teams 内での Azure Lab Services の使用の概要](lab-services-within-teams-overview.md)
 - [作業の開始と Teams 内でのラボの作成](how-to-get-started-create-lab-within-teams.md)
 - [Teams 内でのラボ ユーザー リストの管理](how-to-manage-user-lists-within-teams.md)
 - [Teams 内でのラボ VM プールの管理](how-to-manage-vm-pool-within-teams.md)

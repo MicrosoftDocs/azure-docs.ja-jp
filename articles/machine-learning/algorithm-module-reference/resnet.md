@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: 88a820d0f1fa9515b4f2992a8305a2d1065e0987
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93421211"
 ---
 # <a name="resnet"></a>ResNet
@@ -44,7 +44,7 @@ ResNet の詳細については、[こちらの資料](https://pytorch.org/docs/
 
 ## <a name="results"></a>結果
 
-パイプラインの実行が完了したら、モデルをスコア付けに使用するために、[Train Pytorch Model](train-pytorch-model.md) を [Score Image Model](score-image-model.md) に接続して新しい入力例の値を予測します。
+パイプラインの実行が完了した後、モデルをスコア付けに使用するには、[PyTorch モデルのトレーニング](train-pytorch-model.md)を[画像モデルのスコア付け](score-image-model.md)に接続し、新しい入力例の値を予測します。
 
 ## <a name="technical-notes"></a>テクニカル ノート  
 
@@ -60,7 +60,7 @@ ResNet の詳細については、[こちらの資料](https://pytorch.org/docs/
 
 | 名前            | Type                    | 説明                              |
 | --------------- | ----------------------- | ---------------------------------------- |
-| Untrained model | UntrainedModelDirectory | Train Pytorch Model に接続できる未トレーニングの ResNet モデル。 |
+| 未トレーニング モデル | UntrainedModelDirectory | Train Pytorch Model に接続できる未トレーニングの ResNet モデル。 |
 
 ## <a name="next-steps"></a>次のステップ
 

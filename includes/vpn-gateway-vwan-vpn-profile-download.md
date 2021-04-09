@@ -9,10 +9,10 @@ ms.date: 02/08/2021
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f3eb2d9469ab3a3d2c1d09e4adc3ee2cb1f86e6e
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99979073"
 ---
 ## <a name="extract-the-zip-file"></a>ZIP ファイルを解凍する

@@ -1,18 +1,14 @@
 ---
 title: 監視するトラフィックを制御する
 description: センサーは、IT および OT トラフィックのディープ パケット検出を自動的に実行し、デバイス属性やネットワーク動作などネットワーク デバイスに関する情報を解決します。 各センサーが検出するトラフィックの種類を制御するために、いくつかのツールを使用できます。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: a7af817074400bedd8f07adaefc35309566dc931
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: b80ef4a4a1fca7383da80fda6fdf42831913f2bd
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522395"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784443"
 ---
 # <a name="control-what-traffic-is-monitored"></a>監視するトラフィックを制御する
 
@@ -295,7 +291,7 @@ Windows エンドポイント監視機能を使用して、Windows システム�
 
 1. スキャンが完了したら、 **[操作]** ペインで **[View Scan Results]\(スキャン結果の表示\)** を選択します。 スキャン結果を含む CSV ファイルがコンピューターにダウンロードされます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
 [デバイス インベントリでのセンサー検出を調査する](how-to-investigate-sensor-detections-in-a-device-inventory.md)
 [デバイス マップでのセンサー検出を調査する](how-to-work-with-the-sensor-device-map.md)

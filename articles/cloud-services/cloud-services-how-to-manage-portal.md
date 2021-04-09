@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 306da8dae31c2bbdb487e7128e3a2e24424c239d
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: a1b37ed1d15282224cc7de61ec6f8a98a4bbf732
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743391"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102610503"
 ---
 # <a name="manage-cloud-services-classic-in-the-azure-portal"></a>Azure portal で Cloud Services (クラシック) を管理する
 
@@ -81,7 +81,7 @@ Azure Portal の **[Cloud Services]** 領域では、次の操作を行うこと
 
 - 運用スロットに静的 IP アドレスを使用する場合は、ステージング スロットにも静的 IP アドレスを予約する必要があります。 これを行わなかった場合、スワップは失敗します。
 
-- スワップを実行する前に、ロールのすべてのインスタンスを実行する必要があります。 インスタンスの状態は、Azure Portal の **[概要]** ブレードで確認できます。 または Windows PowerShell の [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0&preserve-view=true) を使用して確認できます。
+- スワップを実行する前に、ロールのすべてのインスタンスを実行する必要があります。 インスタンスの状態は、Azure Portal の **[概要]** ブレードで確認できます。 または Windows PowerShell の [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole) を使用して確認できます。
 
 ゲスト OS の更新とサービス復旧操作もデプロイのスワップが失敗する原因となる可能性があることに注意してください。 詳細については、「[クラウド サービスのデプロイメントに関する問題のトラブルシューティング](cloud-services-troubleshoot-deployment-problems.md)」を参照してください。
 

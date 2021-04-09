@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 9989d0ebd95bfe5ee49be2ba76b73e07630b519a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87283947"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Azure Logic Apps を使用して SMTP アカウントから電子メールを送信する
@@ -30,9 +30,9 @@ Azure Logic Apps と簡易メール転送プロトコル (SMTP) コネクタを�
 
 * SMTP アカウントにアクセスするロジック アプリ。 SMTP アクションを使用するには、トリガーでロジック アプリを起動します。たとえば Salesforce アカウントがある場合は Salesforce トリガーを使用できます。
 
-  たとえば、**レコードが作成されたとき**という Salesforce トリガーを使用して、ロジック アプリを開始できます。 
+  たとえば、**レコードが作成されたとき** という Salesforce トリガーを使用して、ロジック アプリを開始できます。 
   このトリガーは、Salesforce で潜在顧客などの新しいレコードが作成されるたびに起動されます。 
-  このトリガーの後で、SMTP の**電子メールの送信**アクションを使用できます。 これにより、新しいレコードが作成されたときに、ロジック アプリは、SMTP アカウントから新しいレコードに関する電子メールを送信します。
+  このトリガーの後で、SMTP の **電子メールの送信** アクションを使用できます。 これにより、新しいレコードが作成されたときに、ロジック アプリは、SMTP アカウントから新しいレコードに関する電子メールを送信します。
 
 ## <a name="connect-to-smtp"></a>SMTP への接続
 

@@ -3,14 +3,14 @@ title: Azure Automation でソース管理の統合を使用する
 description: この記事では、Azure Automation のソース管理を他のリポジトリと同期させる方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 11/12/2020
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: e7a6b6d3e753352820cdcb910dcbfa9362793493
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 281da27ce95649e85dae5d0795bb743f21fdb578
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050772"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102631746"
 ---
 # <a name="use-source-control-integration"></a>ソース管理の統合を使用する
 
@@ -30,7 +30,7 @@ Azure Automation は、次の 3 種類のソース管理をサポートしてい
 
 * ソース管理リポジトリ (GitHub または Azure Repos)
 * [実行アカウント](automation-security-overview.md#run-as-accounts)
-* `Az.Accounts` モジュール (`AzureRM.Profile` と同等の Az モジュール) を含む、Automation アカウントの[最新の Azure モジュール](automation-update-azure-modules.md)
+* [`AzureRM.Profile` モジュール](/powershell/module/azurerm.profile/)を Automation アカウントにインポートする必要があります。 対応する Az モジュール (`Az.Accounts`) は、Automation ソース管理では動作しないことに注意してください。
 
 > [!NOTE]
 > ソース管理の同期ジョブは、ユーザーの Automation アカウントのもとで実行され、その他の Automation ジョブと同じレートで課金されます。

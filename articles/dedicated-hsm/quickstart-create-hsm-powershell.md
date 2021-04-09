@@ -10,10 +10,10 @@ ms.devlang: azurepowershell
 ms.date: 11/13/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: eebfb257d0324cf2771bd3af979ddbebb8429fb7
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94905548"
 ---
 # <a name="quickstart-create-an-azure-dedicated-hsm-with-azure-powershell"></a>クイックスタート: Azure PowerShell を使用して Azure Dedicated HSM を作成する

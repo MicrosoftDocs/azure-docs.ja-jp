@@ -4,10 +4,10 @@ description: Microsoft Azure Backup サーバー (MABS) をバックアップす
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.openlocfilehash: 81a6ee005e15b1d7ab7b11a938b8ab14143818f4
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92172127"
 ---
 # <a name="back-up-the-mabs-server"></a>MABS サーバーのバックアップ
@@ -83,7 +83,7 @@ MABS バックアップ戦略の一環として、MABS データベースをバ�
 
 1. MABS コンソールで、 **[保護]**  >  **[保護グループの作成]** を選択します。
 2. **[保護グループの種類の選択]** ページで **[サーバー]** を選択します。
-3. **[グループ メンバーの選択]** ページで、**DPM データベース**を選択します。 MABS サーバーを展開し、DPMDB を選択します。
+3. **[グループ メンバーの選択]** ページで、**DPM データベース** を選択します。 MABS サーバーを展開し、DPMDB を選択します。
 4. **[データの保護方法の選択]** ページで、 **[ディスクを使用して短期的な保護を行う]** を選択します。 短期的な保護ポリシー オプションを指定します。
 5. MABS データベースの最初のレプリケーションの後、次の SQL スクリプトを実行します。
 

@@ -12,10 +12,10 @@ ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 69355b58e36f435b5b5dbe94af72d55d9806b156
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100557172"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>オンプレミスのアプリケーションを保護するために、Strata を使用して Azure AD B2C を拡張するためのチュートリアル

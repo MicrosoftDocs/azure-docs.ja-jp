@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd4d42e1cafa58aaf6a47188c9e86c24ac175047
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92514391"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Azure Active Directory を使用して最近削除されたユーザーを復元または削除する
@@ -59,7 +59,7 @@ Azure portal 内で Azure Active Directory (Azure AD) を使用して、復元�
 > ユーザーが復元されると、削除時点でユーザーに割り当てられていたライセンスも復元されます。それらのライセンスで利用可能なシートが存在していなかったとしても同様です。 その後、購入分を超えるライセンスを利用した場合、所属組織は、ライセンスの使用に関して一時的に非準拠状態となる可能性があります。
 
 ### <a name="to-restore-a-user"></a>ユーザーを復元するには
-1. **[ユーザー - 削除済みユーザー]** ページ上で、利用可能なユーザーを検索し、その中のいずれかを選択します。 たとえば、 _Mary Parker_ を選択します。
+1. **[ユーザー - 削除済みユーザー]** ページ上で、利用可能なユーザーを検索し、その中のいずれかを選択します。 たとえば、_Mary Parker_ を選択します。
 
 2. **[ユーザーの復元]** を選びます。
 
@@ -73,7 +73,7 @@ Azure portal 内で Azure Active Directory (Azure AD) を使用して、復元�
 
 ### <a name="to-permanently-delete-a-user"></a>ユーザーを完全に削除するには
 
-1. **[ユーザー - 削除済みユーザー]** ページ上で、利用可能なユーザーを検索し、その中のいずれかを選択します。 たとえば、 _Rae Huff_ を選択します。
+1. **[ユーザー - 削除済みユーザー]** ページ上で、利用可能なユーザーを検索し、その中のいずれかを選択します。 たとえば、_Rae Huff_ を選択します。
 
 2. **[完全に削除]** を選びます。
 

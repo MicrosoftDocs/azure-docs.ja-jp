@@ -4,10 +4,10 @@ description: 運用ワークロードを処理するためのクラスターの�
 ms.topic: conceptual
 ms.date: 9/11/2018
 ms.openlocfilehash: 18b8b0ce8c0e877bf9dd274596b19f85b1febe12
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98790954"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Service Fabric スタンドアロン クラスターのデプロイの計画と準備

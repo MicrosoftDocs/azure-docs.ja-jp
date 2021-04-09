@@ -9,10 +9,10 @@ ms.date: 02/09/2021
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: 386a39d76bf47da45f07054124886e174104849e
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100545417"
 ---
 ボリューム コンテナーを削除するには、次の操作が必要です。

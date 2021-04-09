@@ -3,7 +3,7 @@ title: .NET を使用したコンテンツ キーの作成
 description: この記事では、.NET を使用してコンテンツ キーを作成する方法について説明します。 これらのキーは、資産への安全なアクセスを提供します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 225b05e5-7d30-409c-b5b7-3ef0634310c7
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d5efbc30c80a0052ed99cb129c2e5f9030482012
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 05bf928490e94f43b755e1958213899e9e1e98e9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91261228"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103014177"
 ---
 # <a name="create-contentkeys-with-net"></a>.NET を使用したコンテンツ キーの作成
 
@@ -32,13 +32,13 @@ ms.locfileid: "91261228"
 > 
 > 
 
-Media Services では、暗号化されたアセットを作成して送信できます。 **ContentKey** により、**アセット**に安全にアクセスすることができます。 
+Media Services では、暗号化されたアセットを作成して送信できます。 **ContentKey** により、**アセット** に安全にアクセスすることができます。 
 
 新しいアセットを作成するときは ([ファイルをアップロード](media-services-dotnet-upload-files.md)する前など)、次の暗号化オプションを指定できます:**StorageEncrypted**、**CommonEncryptionProtected**、または **EnvelopeEncryptionProtected**。 
 
-クライアントにアセットを配信するときは、次の 2 つの暗号化のどちらかを使用して[アセットが動的に暗号化されるように構成できます](media-services-dotnet-configure-asset-delivery-policy.md):**DynamicEnvelopeEncryption** または **DynamicCommonEncryption**。
+クライアントにアセットを配信するときは、次の 2 つの暗号化のどちらかを使用して [アセットが動的に暗号化されるように構成できます](media-services-dotnet-configure-asset-delivery-policy.md):**DynamicEnvelopeEncryption** または **DynamicCommonEncryption**。
 
-暗号化されたアセットには、 **ContentKey**を関連付ける必要があります。 この記事では、コンテンツ キーの作成方法について説明します。
+暗号化されたアセットには、 **ContentKey** を関連付ける必要があります。 この記事では、コンテンツ キーの作成方法について説明します。
 
 > [!NOTE]
 > Media Services .NET SDK を使用して新しい **StorageEncrypted** のアセットを作成する場合、**ContentKey** が自動的に作成され、アセットにリンクします。

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/02/2020
 ms.author: yushwang
 ms.openlocfilehash: 4c6bd62e96d85305036626a8672c39ff1b9f6b26
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98201095"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて
@@ -43,9 +43,9 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Barracuda Networks, Inc. |Barracuda CloudGen Firewall |PolicyBased:5.4.3<br>RouteBased:6.2.0 |[構成ガイド](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462887/how-to-configure-an-ikev1-ipsec-site-to-site-vpn-to-the-static-microsoft-azure-vpn-gateway/) |[構成ガイド](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462889/how-to-configure-bgp-over-ikev2-ipsec-site-to-site-vpn-to-an-azure-vpn-gateway/) |
 | Check Point |セキュリティ ゲートウェイ |R80.10 |[構成ガイド](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[構成ガイド](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco              |ASA       |8.3<br>8.4 以降 (IKEv2*) |サポートされています |[構成ガイド*](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/214109-configure-asa-ipsec-vti-connection-to-az.html) |
-| Cisco |ASR |PolicyBased:IOS 15.1<br>RouteBased:IOS 15.2 |サポート |サポート |
+| Cisco |ASR |PolicyBased:IOS 15.1<br>RouteBased:IOS 15.2 |サポートされています |サポートされています |
 | Cisco | CSR | RouteBased:IOS-XE 16.10 | (未テスト) | [構成スクリプト](vpn-gateway-download-vpndevicescript.md) |
-| Cisco |ISR |PolicyBased:IOS 15.0<br>RouteBased*:IOS 15.1 |サポート |サポート |
+| Cisco |ISR |PolicyBased:IOS 15.0<br>RouteBased*:IOS 15.1 |サポートされています |サポートされています |
 | Cisco |Meraki (MX) | MX v15.12 |互換性なし | [構成ガイド](https://documentation.meraki.com/MX/Site-to-site_VPN/Configuring_Site_to_Site_VPN_tunnels_to_Azure_VPN_Gateway) |
 | Cisco | vEdge (Viptela OS) | 18.4.0 (アクティブ/パッシブ モード)<br><br>19.2 (アクティブ/アクティブ モード) | 互換性なし |  [手動構成 (アクティブ/パッシブ)](https://community.cisco.com/t5/networking-documents/how-to-configure-ipsec-vpn-connection-between-cisco-vedge-and/ta-p/3841454)<br><br>[Cloud Onramp 構成 (アクティブ/アクティブ)](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/Network-Optimization-and-High-Availability/Network-Optimization-High-Availability-book/b_Network-Optimization-and-HA_chapter_00.html) |
 | Citrix |NetScaler MPX、SDX、VPX |10.1 以上 |[構成ガイド](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |互換性なし |

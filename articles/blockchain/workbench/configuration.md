@@ -5,10 +5,10 @@ ms.date: 12/09/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: f0ba19bf1d7fdf05014ac199fae9392b5c3249d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87073074"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Azure Blockchain Workbench 構成リファレンス
@@ -418,7 +418,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 ## <a name="configuration-file-example"></a>構成ファイルの例
 
-資産移転は、高価な資産を売買するためのスマート コントラクトのシナリオであり、検査担当者と評定者が必要です。 売り手は、資産移転スマート コントラクトをインスタンス化することによって、資産を一覧表示することができます。 買い手は、スマート コントラクトに対してアクションを実行してオファーを行うことができます。他の関係者は、資産を検査または評定するアクションを実行できます。 資産の検査と評定の両方が完了とマークされると、コントラクトが完了する前に買い手と売り手が販売内容を再確認します。 プロセスの各時点で、コントラクトが更新されたときにすべての参加者はコントラクトの状態を確認できます。 
+資産移転は、高価な資産を売買するためのスマート コントラクトのシナリオであり、検査担当者と評定者が必要です。 売り手は、資産移転スマート コントラクトをインスタンス化することによって、資産を一覧表示することができます。 買い手は、スマート コントラクトに対してアクションを実行してオファーを行うことができます。他の関係者は、資産を検査または評定するアクションを実行できます。 資産の検査と評定の両方が完了とマークされると、コントラクトが完了する前に買い手と売り手が販売内容を再確認します。 プロセスの各時点で、コントラクトが更新されたときにすべての参加者はコントラクトの状態を確認できます。 
 
 コード ファイルなどの詳細については、[Azure Blockchain Workbench の資産移転サンプル](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer)を参照してください。
 

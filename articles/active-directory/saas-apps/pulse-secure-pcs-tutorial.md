@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: jeedes
 ms.openlocfilehash: d38ff5c8f33bda5b12f6267e7a8cdf477db6c7d7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92511445"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pulse-secure-pcs"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Pulse Secure PCS の統合
@@ -37,7 +37,7 @@ ms.locfileid: "92511445"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Pulse Secure PCS では、 **SP** Initiated SSO がサポートされます
+* Pulse Secure PCS では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-pulse-secure-pcs-from-the-gallery"></a>ギャラリーからの Pulse Secure PCS の追加
 
@@ -47,7 +47,7 @@ Azure AD への Pulse Secure PCS の統合を構成するには、ギャラリ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Pulse Secure PCS** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Pulse Secure PCS**」と入力します。
 1. 結果のパネルから **[Pulse Secure PCS]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -166,7 +166,7 @@ Pulse Secure PCS に対して Azure AD SSO を構成してテストするには�
 
     f. **シングル ログアウト** は省略可能な設定です。 このオプションが選択されていると、ログアウトした後に新しい認証が要求されます。 このオプションが選択されておらず、ブラウザーを閉じていない場合は、認証なしで再接続できます。
 
-    g. **要求される認証コンテキスト クラス** として **[Password]\(パスワード\)** を、 **比較方法** として **[exact]\(完全\)** を選択します。
+    g. **要求される認証コンテキスト クラス** として **[Password]\(パスワード\)** を、**比較方法** として **[exact]\(完全\)** を選択します。
 
     h. **[Metadata Validity]\(メタデータの有効性\)** を日数の観点で設定します。
     

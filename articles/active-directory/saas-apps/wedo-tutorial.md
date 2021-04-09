@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と WEDO の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と WEDO の統合 | Microsoft Docs'
 description: Azure Active Directory と WEDO の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/22/2020
 ms.author: jeedes
 ms.openlocfilehash: 529c4e6433d16f9d70530ba516b5ec1426806984
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519233"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wedo"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と WEDO の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wedo"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と WEDO の統合
 
 このチュートリアルでは、WEDO と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と WEDO を統合すると、次のことができます。
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* WEDO では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* WEDO では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 * [WEDO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。セッション制御は、条件付きアクセスを拡張したものです。Microsoft Cloud App Security でセッション制御を強制する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。
 
@@ -51,7 +51,7 @@ Azure AD への WEDO の統合を構成するには、ギャラリーからマ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **WEDO** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**WEDO**」と入力します。
 1. 結果のパネルから **[WEDO]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -72,7 +72,7 @@ WEDO で Azure AD SSO を構成してテストするには、次の構成要素�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **WEDO** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **WEDO** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -143,7 +143,7 @@ WEDO で Azure AD SSO を構成してテストするには、次の構成要素�
 WEDO で Azure AD SSO を有効にするには、以下の手順に従います。
 
 1. [WEDO](https://login.wedo.swiss/) にログインします。 **管理者ロール** を持っている必要があります。
-1. [Profile settings]\(プロファイル設定\) で、 **[Network settings]\(ネットワーク設定\)** セクションの **[Authentication]\(認証\)** メニューを選択します。
+1. [Profile settings]\(プロファイル設定\) で、**[Network settings]\(ネットワーク設定\)** セクションの **[Authentication]\(認証\)** メニューを選択します。
 1. **[SAML Authentication]\(SAML 認証\)** ページで、次の手順を実行します。
 
    ![SAML 認証のリンク](media/wedo-tutorial/network-security-authentification.png)
@@ -152,15 +152,15 @@ WEDO で Azure AD SSO を有効にするには、以下の手順に従います�
 
    b. **[Identity Provider metadata (XML)]\(ID プロバイダー メタデータ (XML)\)** タブを選択します。
 
-   c. Azure portal からダウンロードした **フェデレーション メタデータ XML** をメモ帳で開き、メタデータ XML の内容をコピーして、 **[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
+   c. Azure portal からダウンロードした **フェデレーション メタデータ XML** をメモ帳で開き、メタデータ XML の内容をコピーして、**[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
 
    d. [設定] メニューの **[保存]**
 
 ### <a name="create-wedo-test-user"></a>WEDO テスト ユーザーの作成
 
-このセクションでは、WEDO で Bob Simon というテスト ユーザーを作成します。 情報は、「 *Azure AD のテスト ユーザーの作成* 」と一致している必要があります。
+このセクションでは、WEDO で Bob Simon というテスト ユーザーを作成します。 情報は、「*Azure AD のテスト ユーザーの作成*」と一致している必要があります。
 
-1. WEDO の [Profile setting]\(プロファイル設定\) で、 *[Network settings]\(ネットワーク設定\)* セクションの **[Users]\(ユーザー\)** を選択します。
+1. WEDO の [Profile setting]\(プロファイル設定\) で、*[Network settings]\(ネットワーク設定\)* セクションの **[Users]\(ユーザー\)** を選択します。
 1. **[ユーザーの追加]** をクリックします。
 1. [Add user]\(ユーザーの追加\) ポップアップで、ユーザーの情報を入力します
 
@@ -168,15 +168,15 @@ WEDO で Azure AD SSO を有効にするには、以下の手順に従います�
 
     b. 姓として「`Simon`」。
 
-    c. メール アドレスとして「`username@companydomain.extension`」を入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。 必ずメール アドレスのドメインを会社の短い名前と同じにする必要があります。
+    c. メール アドレスとして「`username@companydomain.extension`」を入力します。 たとえば、`B.Simon@contoso.com` のようにします。 必ずメール アドレスのドメインを会社の短い名前と同じにする必要があります。
 
     d. ユーザーの種類として「`User`」。
 
     e. **[Create user]\(ユーザーの作成\)** をクリックします。
 
-    f. *[Select teams]\(チームの選択\)* ページで、 **[Save]\(保存\)** をクリックします。
+    f. *[Select teams]\(チームの選択\)* ページで、**[Save]\(保存\)** をクリックします。
 
-    g.  *[Invite user]\(ユーザーの招待\)* ページで、 **[Yes]\(はい\)** をクリックします。
+    g.  *[Invite user]\(ユーザーの招待\)* ページで、**[Yes]\(はい\)** をクリックします。
 
 1. 電子メールで受信したリンクを使用してユーザーを検証する
 

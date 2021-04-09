@@ -12,10 +12,10 @@ ms.author: nibaccam
 ms.date: 02/26/2020
 ms.custom: devx-track-python, data4ml
 ms.openlocfilehash: a096375e32e3d8a6760da88fe5ec86a70d364aff
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98872097"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Azure Machine Learning ワークフローのデータ インジェスト オプション

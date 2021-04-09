@@ -1,18 +1,20 @@
 ---
 title: PowerShell とテンプレートを使用してリソースをデプロイする
-description: Azure Resource Manager と Azure PowerShell を使用してリソースを Azure にデプロイします。 リソースは Resource Manager テンプレートで定義されます。
+description: Azure Resource Manager と Azure PowerShell を使用してリソースを Azure にデプロイします。 リソースは、Resource Manager テンプレートまたは Bicep ファイルに定義されています。
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: efefb6706794bc2488aa4d4fef6c4ecc082b41a7
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 03/04/2021
+ms.openlocfilehash: 784f17566ce4fb19a7ec5e3fd4a504d7c25f90fe
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881267"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521630"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ
 
-この記事では、Azure PowerShell と Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure にリソースをデプロイする方法について説明します。 Azure ソリューションのデプロイと管理の概念について詳しくない場合、「[テンプレートのデプロイの概要](overview.md)」をご覧ください。
+この記事では、Azure PowerShell と Azure Resource Manager テンプレート (ARM テンプレート) または Bicep ファイルを使用して Azure にリソースをデプロイする方法について説明します。 Azure ソリューションのデプロイと管理の概念を熟知していない場合は、[テンプレートのデプロイの概要](overview.md)または [Bicep の概要](bicep-overview.md)に関するページをご覧ください。
+
+Bicep ファイルをデプロイするには、[Azure PowerShell バージョン 5.6.0 以降](/powershell/azure/install-az-ps)が必要です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,13 +34,13 @@ PowerShell がインストールされていない場合は、Azure Cloud Shell 
 - **リソース グループ** にデプロイするには、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) を使用します。
 
   ```azurepowershell
-  New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
+  New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template-or-bicep>
   ```
 
 - **サブスクリプション** にデプロイするには、`New-AzDeployment` コマンドレットの別名である [New-AzSubscriptionDeployment](/powershell/module/az.resources/new-azdeployment) を使用します。
 
   ```azurepowershell
-  New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template>
+  New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template-or-bicep>
   ```
 
   サブスクリプション レベルでのデプロイの詳細については、「[サブスクリプション レベルでリソース グループとリソースを作成する](deploy-to-subscription.md)」を参照してください。
@@ -46,7 +48,7 @@ PowerShell がインストールされていない場合は、Azure Cloud Shell 
 - **管理グループ** にデプロイするには、[新しい AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment)を使用します。
 
   ```azurepowershell
-  New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template>
+  New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template-or-bicep>
   ```
 
   管理グループ レベルでのデプロイの詳細については、「[管理グループ レベルでリソースを作成する](deploy-to-management-group.md)」を参照してください。
@@ -54,7 +56,7 @@ PowerShell がインストールされていない場合は、Azure Cloud Shell 
 - **テナント** にデプロイするには、[新しい AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment) を使用します。
 
   ```azurepowershell
-  New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template>
+  New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template-or-bicep>
   ```
 
   テナント レベルでのデプロイの詳細については、「[テナント レベルでリソースを作成する](deploy-to-tenant.md)」を参照してください。
@@ -89,7 +91,7 @@ $deploymentName="ExampleDeployment"+"$today"
 
 同時デプロイによる競合を回避し、デプロイ履歴に一意のエントリが確実に存在するようにするには、各デプロイに一意の名前を付けます。
 
-## <a name="deploy-local-template"></a>ローカル テンプレートのデプロイ
+## <a name="deploy-local-template-or-bicep-file"></a>ローカル テンプレートまたは Bicep ファイルをデプロイする
 
 ローカル コンピューターから、または外部に格納されているテンプレートを使用して、テンプレートをデプロイできます。 ここでは、ローカル テンプレートのデプロイについて説明します。
 
@@ -99,18 +101,21 @@ $deploymentName="ExampleDeployment"+"$today"
 New-AzResourceGroup -Name ExampleGroup -Location "Central US"
 ```
 
-ローカル テンプレートをデプロイするには、デプロイ コマンドで `-TemplateFile` パラメーターを使用します。 次の例では、テンプレートから取得したパラメーター値を設定する方法も示しています。
+ローカル テンプレートまたは Bicep ファイルをデプロイするには、デプロイ コマンドで `-TemplateFile` パラメーターを使用します。 次の例では、テンプレートから取得したパラメーター値を設定する方法も示しています。
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
   -Name ExampleDeployment `
   -ResourceGroupName ExampleGroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json
+  -TemplateFile <path-to-template-or-bicep>
 ```
 
 デプロイが完了するまでに数分かかる場合があります。
 
 ## <a name="deploy-remote-template"></a>リモート テンプレートのデプロイ
+
+> [!NOTE]
+> 現在、Azure PowerShell ではリモート Bicep ファイルのデプロイはサポートされていません。 リモート Bicep ファイルをデプロイするには、まず CLI Bicep を使用して Bicep ファイルを JSON テンプレートにコンパイルします。
 
 ARM テンプレートをローカル コンピューターに格納する代わりに、外部の場所に格納することもできます。 ソース管理リポジトリ (GitHub など) にテンプレートを格納できます。 または、組織内の共有アクセス用の Azure ストレージ アカウントに格納することができます。
 
@@ -145,6 +150,8 @@ New-AzResourceGroupDeployment `
 
 ## <a name="deploy-template-spec"></a>テンプレート スペックのデプロイ
 
+> [!NOTE]
+> 現在、Azure PowerShell では、Bicep ファイルを指定してテンプレート スペックを作成することはサポートされていません。 ただし、[Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) リソースを使用して Bicep ファイルを作成し、テンプレート スペックをデプロイできます。こちらに[例](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep)があります。
 ローカルまたはリモートのテンプレートをデプロイする代わりに、[テンプレート スペック](template-specs.md)を作成できます。テンプレート スペックは、ARM テンプレートが含まれる Azure サブスクリプションのリソースです。 これにより、組織内のユーザーとテンプレートを安全に共有することが容易になります。 テンプレート スペックへのアクセス権を付与するには、Azure ロールベースのアクセス制御 (Azure RBAC) を使用します。現在、この機能はプレビュー段階にあります。
 
 次の例では、テンプレート スペックの作成とデプロイの方法を示します。
@@ -187,7 +194,7 @@ New-AzResourceGroupDeployment `
 ```powershell
 $arrayParam = "value1", "value2"
 New-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -exampleString "inline string" `
   -exampleArray $arrayParam
 ```
@@ -197,7 +204,7 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
 ```powershell
 $arrayParam = "value1", "value2"
 New-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -exampleString $(Get-Content -Path c:\MyTemplates\stringcontent.txt -Raw) `
   -exampleArray $arrayParam
 ```
@@ -211,13 +218,13 @@ $hash1 = @{ Name = "firstSubnet"; AddressPrefix = "10.0.0.0/24"}
 $hash2 = @{ Name = "secondSubnet"; AddressPrefix = "10.0.1.0/24"}
 $subnetArray = $hash1, $hash2
 New-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -exampleArray $subnetArray
 ```
 
 ### <a name="parameter-files"></a>パラメーター ファイル
 
-スクリプト内のインライン値としてパラメーターを渡すよりも、パラメーター値を含む JSON ファイルを使用するほうが簡単な場合もあります。 パラメーター ファイルは、ローカル ファイルでも、アクセス可能な URI を持つ外部ファイルでもかまいません。
+スクリプト内のインライン値としてパラメーターを渡すよりも、パラメーター値を含む JSON ファイルを使用するほうが簡単な場合もあります。 パラメーター ファイルは、ローカル ファイルでも、アクセス可能な URI を持つ外部ファイルでもかまいません。 ARM テンプレートと Bicep ファイルのどちらでも、JSON パラメーター ファイルが使用されます。
 
 パラメーター ファイルの詳細については、「[Resource Manager パラメーター ファイルを作成する](parameter-files.md)」を参照してください。
 
@@ -225,7 +232,7 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
 

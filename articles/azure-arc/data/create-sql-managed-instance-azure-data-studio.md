@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 651811384a8e831c41c48ca8c4849e5ee3852054
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93280473"
 ---
 # <a name="create-sql-managed-instance---azure-arc-using-azure-data-studio"></a>Azure Data Studio を使用して SQL Managed Instance - Azure Arc を作成する
@@ -91,7 +91,7 @@ sqlinstance1  1/1         25.51.65.109:1433  Ready
 - Azure Data Studio の **[接続]** タブで、 **[サーバー]** ビューの **[新しい接続]** をクリックします
 - **[接続]** ブレードで、ServerEndpoint を [サーバー] テキストボックスに貼り付けます
 - 認証の種類として **[SQL ログイン]** を選択します
-- ユーザー名として「 *sa* 」と入力します
+- ユーザー名として「*sa*」と入力します
 - `sa` のアカウントのパスワードを入力します
 - 必要に応じて、接続先の特定のデータベース名を入力します
 - 必要に応じて、[Add New Server Group]\(新しいサーバー グループの追加\) を選択します

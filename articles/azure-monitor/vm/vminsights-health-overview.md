@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/27/2020
 ms.openlocfilehash: 2922ca4068531c45e6acad0ce54aa96624c6238e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052128"
 ---
 # <a name="vm-insights-guest-health-preview"></a>VM insights のゲストの正常性 (プレビュー)

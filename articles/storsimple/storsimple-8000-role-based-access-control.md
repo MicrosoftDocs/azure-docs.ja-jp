@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
 ms.openlocfilehash: 49c38e23ddbbfe983ff82ad25363c744292d4d69
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92518978"
 ---
 # <a name="azure-role-based-access-control-for-storsimple"></a>StorSimple の Azure ロールベースのアクセス制御
@@ -58,7 +58,7 @@ Azure ポータルの StorSimple デバイス ユーザーのために使用で�
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
-4. Visual Studio で JSON ファイルを開きます。 標準的な Azure ロールは、 **Actions** 、 **NotActions** 、 **AssignableScopes** という 3 つのメイン セクションで構成されていることがわかります。
+4. Visual Studio で JSON ファイルを開きます。 標準的な Azure ロールは、**Actions**、**NotActions**、**AssignableScopes** という 3 つのメイン セクションで構成されていることがわかります。
 
     **Actions** セクションには、このロールに許可されているすべての操作が記述されます。 各アクションはリソース プロバイダーから割り当てられます。 StorSimple インフラストラクチャ管理者では、`Microsoft.StorSimple` リソース プロバイダーを使用します。
 

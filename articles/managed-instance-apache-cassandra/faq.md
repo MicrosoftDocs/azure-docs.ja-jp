@@ -7,10 +7,10 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.openlocfilehash: 1ba2b7d648c86912118b83a566bf2eb0800baee2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101747640"
 ---
 # <a name="frequently-asked-questions-about-azure-managed-instance-for-apache-cassandra-preview"></a>Azure Managed Instance for Apache Cassandra についてよく寄せられる質問 (プレビュー)

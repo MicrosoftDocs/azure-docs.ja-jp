@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: 1daf59c47bf71ad019011036bf42bf6727754345
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: e6ed52f89c38a9c4c5476bd1db0f5a67326954e4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940359"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866269"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Azure Toolkit for IntelliJ を使用して HDInsight 上で VPN を介して Apache Spark アプリケーションをリモートでデバッグする
 
@@ -50,19 +50,19 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 
 1. ヘッド ノードの IP アドレスを取得します。 クラスターの Ambari UI を開きます。 クラスター ブレードから、 **[ダッシュボード]** を選択します。
 
-    ![Apache Ambari で [ダッシュボード] を選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/launch-apache-ambari.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/launch-apache-ambari.png" alt-text="Apache Ambari で [ダッシュボード] を選択する" border="true":::
 
 1. Ambari UI から、 **[Hosts]\(ホスト\)** を選択します。
 
-    ![Apache Ambari で [ホスト] を選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png" alt-text="Apache Ambari で [ホスト] を選択する" border="true":::
 
-1. ヘッド ノード、ワーカー ノード、Zookeeper ノードの一覧が表示されます。 ヘッド ノードには **hn** _ プレフィックスが付いています。 最初のヘッド ノードを選択します。
+1. ヘッド ノード、ワーカー ノード、Zookeeper ノードの一覧が表示されます。 ヘッド ノードには **hn*** プレフィックスが付いています。 最初のヘッド ノードを選択します。
 
-    ![Apache Ambari でヘッド ノードを見つける](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png" alt-text="Apache Ambari でヘッド ノードを見つける" border="true":::
 
-1. 開いたページの下部にある _ *[Summary]\(概要\)* *ペインから、ヘッド ノードの **IP アドレス** と **ホスト名** をコピーします。
+1. 開いたページの下部にある **[Summary]\(概要\)** ウィンドウから、ヘッド ノードの **IP アドレス** と **ホスト名** をコピーします。
 
-    ![Apache Ambari で IP アドレスを見つける](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png" alt-text="Apache Ambari で IP アドレスを見つける" border="true":::
 
 1. ヘッド ノードの IP アドレスとホスト名を、Spark ジョブの実行とリモート デバッグに使用するコンピューターの **hosts** ファイルに追加します。 これで、ホスト名と IP アドレスのどちらを使用してもヘッド ノードと通信できるようになります。
 
@@ -93,7 +93,7 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 
 1. IntelliJ IDEA を開き、新しいプロジェクトを作成します。 **[新しいプロジェクト]** ダイアログ ボックスで、次の操作を行います。
 
-    ![IntelliJ IDEA で新しいプロジェクト テンプレートを選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png" alt-text="IntelliJ IDEA で新しいプロジェクト テンプレートを選択する" border="true":::
 
     a. **[HDInsight]**  >  **[Spark on HDInsight (Scala)]\(HDInsight の Spark (Scala)\)** を選択します。
 
@@ -106,7 +106,7 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 
     - **[Spark version]\(Spark バージョン\)** ボックスの一覧には、Spark SDK と Scala SDK の適切なバージョンが組み合わされて表示されます。 Spark クラスターのバージョンが 2.0 より前の場合は、 **[Spark 1.x]** を選択します。 それ以外の場合は、 **[Spark2.x]** を選択します。 この例では、 **[Spark 2.0.2 (Scala 2.11.8)]** を使用します。
   
-   ![プロジェクト SDK と Spark バージョンを選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-project-details.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-project-details.png" alt-text="プロジェクト SDK と Spark バージョンを選択する" border="true":::
   
 1. Spark プロジェクトによって自動的に成果物が作成されます。 次の操作を実行して、アーティファクトを表示します。
 
@@ -114,7 +114,7 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 
     b. **[Project Structure]\(プロジェクト構造\)** ダイアログ ボックスで、 **[Artifacts]\(成果物\)** を選択して、作成された既定の成果物を表示します。 プラス記号 ( **+** ) を選択して、独自の成果物を作成することもできます。
 
-   ![IntelliJ IDEA artifacts create jar](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-default-artifact.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-default-artifact.png" alt-text="IntelliJ IDEA artifacts create jar" border="true":::
 
 1. プロジェクトにライブラリを追加します。 ライブラリを追加するには、以下の手順を実行します。
 
@@ -122,7 +122,7 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 
     b. **[Project Structure]\(プロジェクトの構造\)** ダイアログ ボックスで、 **[Libraries]\(ライブラリ\)** 、( **+** ) 記号、 **[From Maven]\(Maven から\)** の順に選択します。
 
-    ![IntelliJ IDEA download library](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png" alt-text="IntelliJ IDEA download library" border="true":::
 
     c. **[Download Library from Maven Repository (Maven リポジトリからライブラリをダウンロード)]** ダイアログ ボックスで、以下のライブラリを検索して追加します。
 
@@ -178,11 +178,11 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 
 1. アプリケーションに main クラスを追加します。 **Project Explorer** で、 **[src]** を右クリックし、 **[New]\(新規\)** をポイントして、 **[Scala class]\(Scala クラス\)** を選択します。
 
-    ![IntelliJ IDEA Select the main class](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png" alt-text="IntelliJ IDEA Select the main class" border="true":::
 
 1. **[Create New Scala Class]\(新規 Scala クラスの作成\)** ダイアログ ボックスで、名前を指定し、 **[Kind]\(種類\)** ボックスの一覧で **[Object]\(オブジェクト\)** を選択して、 **[OK]** をクリックします。
 
-    ![IntelliJ IDEA Create new Scala class](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png" alt-text="IntelliJ IDEA Create new Scala class" border="true":::
 
 1. 以下のコードを `MyClusterAppMain.scala` ファイルに貼り付けます。 このコードは Spark コンテキストを作成し、`SparkSample` オブジェクトから `executeJob` メソッドを開きます。
 
@@ -254,47 +254,47 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 
 1. `*RemoteClusterDebugging` クラスで `test` キーワードを右クリックし、 **[Create RemoteClusterDebugging Configuration]\(RemoteClusterDebugging 構成の作成\)** を選択します。
 
-    ![IntelliJ IDEA Create a remote configuration](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png" alt-text="IntelliJ IDEA Create a remote configuration" border="true":::
 
 1. **[Create RemoteClusterDebugging Configuration]\(RemoteClusterDebugging 構成の作成\)** ダイアログ ボックスで、構成の名前を指定し、 **[Test name]\(テスト名\)** として **[Test kind]\(テストの種類\)** を選択します。 他の値はすべて規定の設定のままにします。 **[Apply]\(適用\)** を選択し、次に **[OK]** を選択します。
 
-    ![Create RemoteClusterDebugging Configuration](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/provide-config-value.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/provide-config-value.png" alt-text="Create RemoteClusterDebugging Configuration" border="true":::
 
 1. メニュー バーに、 **[Remote Run]\(リモート実行\)** の構成のドロップダウン リストが表示されます。
 
-    ![IntelliJ The Remote run drop-down list](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-config-remote-run.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-config-remote-run.png" alt-text="IntelliJ The Remote run drop-down list" border="true":::
 
 ## <a name="step-5-run-the-application-in-debug-mode"></a>手順 5:デバッグ モードでアプリケーションを実行する
 
 1. IntelliJ IDEA プロジェクトで、`SparkSample.scala` を開き、`val rdd1` の次にブレークポイントを作成します。 **[Create Breakpoint for]\(ブレークポイントの作成対象\)** ポップアップ メニューで **[line in function executeJob]\(executeJob 関数内の行\)** を選択します。
 
-    ![IntelliJ IDEA Add a breakpoint](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png" alt-text="IntelliJ IDEA Add a breakpoint" border="true":::
 
 1. アプリケーションを実行するには、 **[Remote Run]\(リモート実行\)** の構成のドロップダウンの横にある **[Debug Run]\(デバッグを実行\)** ボタンを選択します。
 
-    ![IntelliJ IDEA Select the Debug Run button](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-run-mode-button.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-run-mode-button.png" alt-text="IntelliJ IDEA Select the Debug Run button" border="true":::
 
 1. プログラムの実行がブレークポイントに到達すると、下部のウィンドウに **[Debugger]\(デバッガー\)** タブが表示されます。
 
-    ![IntelliJ IDEA View the Debugger tab](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-debugger-tab.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-debugger-tab.png" alt-text="IntelliJ IDEA View the Debugger tab" border="true":::
 
 1. ウォッチ式を追加するには、( **+** ) アイコンを選択します。
 
-    ![IntelliJ debug-add-watch-variable](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png" alt-text="IntelliJ debug-add-watch-variable" border="true":::
 
     この例では、変数 `rdd1` が作成される前にアプリケーションは停止しています。 このウォッチ式を使用して、変数 `rdd` の最初の 5 行を見ることができます。 **[Enter]** を選択します。
 
-    ![IntelliJ Run the program in debug mode](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png" alt-text="IntelliJ Run the program in debug mode" border="true":::
 
     前の画像からわかるように、実行時に大量のデータを照会し、アプリケーションがどのように進行するかをデバッグできます。 たとえば、前の画像で示されている出力では、出力の最初の行がヘッダーであることがわかります。 この出力に基づいて、必要に応じてヘッダー行をスキップするようにアプリケーション コードを変更できます。
 
 1. この時点で **[Resume Program]\(プログラムの再開\)** アイコンを選択すると、アプリケーションの実行を続けることができます。
 
-    ![IntelliJ IDEA Select Resume Program](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-continue-remote-run.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-continue-remote-run.png" alt-text="IntelliJ IDEA Select Resume Program" border="true":::
 
 1. アプリケーションが正常に完了すると、次のような出力が表示されます。
 
-    ![IntelliJ IDEA debugger console output](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete-window.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete-window.png" alt-text="IntelliJ IDEA debugger console output" border="true":::
 
 ## <a name="next-steps"></a><a name="seealso"></a>次のステップ
 

@@ -1,18 +1,14 @@
 ---
 title: デバイス通知を操作する
 description: 通知により、このアクティビティの処理に関する推奨事項と共に、注意が必要な可能性があるネットワーク アクティビティに関する情報が提供されます。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 2083da329c41afbe95ff570194a1c3ad5c2661be
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: c0c2fc5a4c01a8a31512cd43c340bf3fadc259b1
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523568"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781332"
 ---
 # <a name="work-with-device-notifications"></a>デバイス通知を操作する
 
@@ -24,11 +20,7 @@ ms.locfileid: "100523568"
 
 通知に応答すると、デバイス マップ、デバイス インベントリ、およびデータ マイニング クエリとレポートに表示される情報が向上します。 正当なネットワークの変更やネットワーク構成の誤りの可能性についての分析情報も得られます。
 
-通知にアクセスするには:
-
-- **[システム設定]** を選択し、 **[Data Enhancement]\(データ強化\)** を選択します。
-
-## <a name="notifications-vs-alerts"></a>通知とアラート
+**通知とアラート**
 
 ネットワーク アクティビティに関する通知の受信に加えて、"*アラート*" を受け取る場合があります。 通知では、脅威にはならないネットワークの変更や未解決のデバイス プロパティに関する情報が提供されます。 アラートでは、ネットワークに脅威をもたらす可能性のあるネットワークの逸脱や変更に関する情報が提供されます。
 
@@ -86,18 +78,6 @@ ms.locfileid: "100523568"
 
 **[New IPs]\(新しい IP\)** と **[No Subnets]\(サブネットなし\)** の構成済みイベントは、同時に処理できません。 手動での確認が必要です。
 
-## <a name="improve-device-os-classification-data-enhancement"></a>デバイスの OS 分類の向上: データの強化 
-
-センサーにより、新しい OT デバイスが継続的に自動検出されます。 オペレーティング システムの種類など、以前に検出されたデバイスに対する変更も自動検出されます。
-
-特定の状況下では、検出されたオペレーティング システム内で競合が検出される可能性があります。 これは、デスクトップまたはサーバー システムのいずれかを参照する OS バージョンがあることが原因で発生する可能性があります。 これが発生すると、オプションの OS 分類を含む通知が表示されます。
-
-:::image type="content" source="media/how-to-enrich-asset-information/enhance-data-screen.png" alt-text="データを強化します。":::
-
-OS 分類をエンリッチするために、推奨事項を調査します。 この情報は、デバイス インベントリ、データマイニング レポート、およびその他の画面に表示されます。 アラート、脅威、およびリスク分析の精度を向上させることもできます。
-
-推奨事項を受け入れると、OS の種類の情報がセンサー内で更新されます。
-
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
 [アラートを表示する](how-to-view-alerts.md)

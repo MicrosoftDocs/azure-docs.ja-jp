@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: caaab07200a8631935a2b5d5368a0c16ea9a60c5
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92320225"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>PostgreSQL Hyperscale サーバー グループのトラブルシューティング
@@ -93,11 +93,11 @@ Azure Data Studio を起動して、トラブルシューティング ノート�
 1. Arc データ コントローラーに接続します。
 2. Postgres インスタンスを右クリックして、 **[管理]** を選択します。
 3. **[問題の診断と解決]** を選択します。
-4. **[トラブルシューティング] リンク**を選択します。
+4. **[トラブルシューティング] リンク** を選択します。
 
 :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook.jpg" alt-text="Azure Data Studio - PostgreSQL トラブルシューティング ノートブックを開く":::
 
-**TSG100 - Azure Arc 対応の PostgreSQL Hyperscale トラブルシューティング ノートブック**が開きます。:::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio - PostgreSQL トラブルシューティング ノートブックを開く":::
+**TSG100 - Azure Arc 対応の PostgreSQL Hyperscale トラブルシューティング ノートブック** が開きます。:::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio - PostgreSQL のトラブルシューティング ノートブックを使用する":::
 
 #### <a name="run-the-scripts"></a>スクリプトの実行
 上部にある [すべて実行] ボタンをクリックしてノートブックを一度にすべて実行するか、各コード セルを 1 つずつステップ実行して実行することができます。

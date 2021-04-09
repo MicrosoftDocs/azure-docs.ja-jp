@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 02/22/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 93443a321f22d232f8b2bfa6a0fe5a05a5e18175
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 69d23b9d02eb176a2e42985ef5c3673e83d9bb7e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747720"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102607902"
 ---
 # <a name="quickstart-create-an-object-anchors-model-from-a-3d-model"></a>クイック スタート: 3D モデルから Object Anchors モデルを作成する
 
@@ -102,7 +102,7 @@ Azure Object Anchors は、3D モデルを HoloLens の物体認識 Mixed Realit
 
     | フィールド                    | 説明                       |
     | ---                      | ---                               |
-    | InputAssetPath           | ローカル コンピューター上の 3D モデルの絶対パス (`assets/models` フォルダーに使用できるサンプル モデルがあります)。 サポートされるファイル形式は、`fbx`、`ply`、`obj`、`glb`、`gltf` です。 |
+    | InputAssetPath           | ローカル コンピューター上の 3D モデルへの絶対パス。 サポートされるファイル形式は、`fbx`、`ply`、`obj`、`glb`、`gltf` です。 |
     | AssetDimensionUnit       | 3D モデルの測定単位。 サポートされているすべての測定単位は、`Azure.MixedReality.ObjectAnchors.Conversion.AssetLengthUnit` 列挙型を使用してアクセスできます。 |
     | 重力                  | 3D モデルの重力ベクトルの方向。 この 3D ベクトルは、モデルの座標系で下方向を示します。 たとえば、負の `y` がモデルの 3D 空間の下方向を表す場合、この値は `Vector3(0.0f, -1.0f, 0.0f)` になります。 |
 

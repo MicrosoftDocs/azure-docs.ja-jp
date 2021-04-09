@@ -3,12 +3,12 @@ title: プライベート リンク サービスを使用してイベントを�
 description: この記事では、プライベート リンク サービスを使用してイベントを配信できないという制限に対処する方法について説明します。
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: 4343740ea6c34c9ae282723b79007f7035785b04
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 7ca15a76d56d9cdcdee741b661981b80c914d0e9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548618"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722329"
 ---
 # <a name="deliver-events-using-private-link-service"></a>プライベート リンク サービスを使用してイベントを配信する
 現時点では、[プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用してイベントを配信することはできません。 つまり、配信されたイベント トラフィックがプライベート IP 空間から外に出てはならないという、ネットワークの分離の厳格な要件がある場合はサポートされません。 
@@ -36,7 +36,7 @@ ms.locfileid: "100548618"
 マネージド ID を使用して Service Bus 名前空間の Service Bus キューまたはトピックにイベントを配信するには、これらの手順を実行します。
 
 1. [トピックまたはドメインに対してシステム割り当て ID を有効にします](managed-service-identity.md#create-a-custom-topic-or-domain-with-an-identity)。 
-1. Service Bus 名前空間で [Azure Service Bus データ送信者](/service-bus-messaging/service-bus-managed-service-identity.md#azure-built-in-roles-for-azure-service-bus)ロールに ID を追加します。
+1. Service Bus 名前空間で [Azure Service Bus データ送信者](/service-bus-messaging/service-bus-managed-service-identity#azure-built-in-roles-for-azure-service-bus)ロールに ID を追加します。
 1. [Service Bus 名前空間で、 **[Allow trusted Microsoft services to bypass this firewall]\(信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する\)** 設定を有効にします](../service-bus-messaging/service-bus-service-endpoints.md#trusted-microsoft-services)。 
 1. システム割り当て ID を使用するように、Service Bus のキューまたはトピックをエンドポイントとして使用する[イベント サブスクリプションを構成します](managed-service-identity.md#create-event-subscriptions-that-use-an-identity)。
 

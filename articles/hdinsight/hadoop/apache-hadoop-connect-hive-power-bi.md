@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: a5732c2dc0a92bd5727eeff39a529630e45683d7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: bb448a4befb15618485b2b5951222761180a1f22
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946685"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866745"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Azure HDInsight 上の Microsoft Power BI で ODBC を使用して Apache Hive データを視覚化する
 
@@ -21,7 +21,7 @@ ODBC を使用して Microsoft Power BI Desktop を Azure HDInsight に接続し
 
 この記事では、`hivesampletable` Hive テーブルのデータを Power BI に読み込みます。 Hive テーブルには、携帯電話の使用データが含まれます。 その使用データを世界地図に示します。
 
-![HDInsight Power BI の地図レポート](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-visualization.png)
+:::image type="content" source="./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-visualization.png" alt-text="HDInsight Power BI の地図レポート" border="true":::
 
 この情報は、新しい[対話型クエリ](../interactive-query/apache-interactive-query-get-started.md) クラスター タイプにも適用されます。 直接クエリを使用して HDInsight 対話型クエリに接続する方法については、「[Azure HDInsight の直接クエリを使用して Microsoft Power BI で対話型クエリの Hive データを視覚化する](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)」をご覧ください。
 
@@ -45,7 +45,7 @@ ODBC を使用して Microsoft Power BI Desktop を Azure HDInsight に接続し
 
 1. 最上位メニューから、 **[ホーム]**  >  **[データの取得]**  >  **[その他...]** に移動します。
 
-    ![HDInsight Excel Power BI でデータを開く](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png" alt-text="HDInsight Excel Power BI でデータを開く" border="true":::
 
 1. **[データの取得]** ダイアログで、左側から **[その他]** を選択し、右側から **[ODBC]** を選択して、一番下にある **[接続]** を選択します。
 
@@ -61,7 +61,7 @@ ODBC を使用して Microsoft Power BI Desktop を Azure HDInsight に接続し
 
 1. [視覚化] ウィンドウで、 **[マップ]** (地球アイコン) を選択します。
 
-    ![HDInsight Power BI のレポート カスタマイズ](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-customize.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-customize.png" alt-text="HDInsight Power BI のレポート カスタマイズ" border="true":::
 
 1. **[フィールド]** ウィンドウで、 **[country]** と **[devicemake]** を選択します。 データが地図に描かれます。
 

@@ -8,25 +8,28 @@ ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
+author: shkale
+ms.author: shkale
 ms.reviewer: mathoma, sstein
-ms.date: 05/18/2019
-ms.openlocfilehash: 8250fc39fe58168ddc13b7bcf5c040b57d5e92fb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 02/25/2021
+ms.openlocfilehash: b1ba3f98f39511bcebf94502ed749d7cba1fc71b
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782622"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184051"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>長期リテンション - Azure SQL Database と Azure SQL Managed Instance
 
-多くのアプリケーションで、規制、コンプライアンス、またはその他のビジネス上の目的で、Azure SQL Database と Azure SQL Managed Instance の[自動バックアップ](automated-backups-overview.md)によって提供される 7 ～ 35 日間を超えて、データベースのバックアップを保持する必要があります。 長期保有 (LTR) 機能を使用すると、指定された SQL Database と SQL Managed Instance の完全バックアップを、最大で 10 年間、[冗長性を設定](automated-backups-overview.md#backup-storage-redundancy)して Azure Blob Storage に格納することができます。 その後、任意のバックアップを新しいデータベースとして復元できます。
+多くのアプリケーションで、規制、コンプライアンス、またはその他のビジネス上の目的で、Azure SQL Database と Azure SQL Managed Instance の[自動バックアップ](automated-backups-overview.md)によって提供される 7 ～ 35 日間を超えて、データベースのバックアップを保持する必要があります。 長期保有 (LTR) 機能を使用すると、指定された SQL Database と SQL Managed Instance の完全バックアップを、最大で 10 年間、[冗長性を設定](automated-backups-overview.md#backup-storage-redundancy)して Azure Blob Storage に格納することができます。 その後、LTR バックアップを新しいデータベースとして復元できます。
 
 長期リテンションは Azure SQL Database に対して有効にすることができ、Azure SQL Managed Instance に対しては限定パブリック プレビュー段階にあります。 この記事では、長期リテンションの概念の概要を説明します。 長期リテンションを構成するには、[Azure SQL Database LTR の構成](long-term-backup-retention-configure.md)と [Azure SQL Managed Instance LTR の構成](../managed-instance/long-term-backup-retention-configure.md)に関するページを参照してください。 
 
 > [!NOTE]
 > SQL エージェント ジョブを使用すれば、LTR の代替手段として、[コピーのみのデータベース バックアップ](/sql/relational-databases/backup-restore/copy-only-backups-sql-server)を 35 日間以上スケジュールすることができます。
+
+> [!IMPORTANT]
+> マネージド インスタンスでの長期リテンションは現在、Azure パブリック リージョンでのみパブリック プレビューで利用できます。 
 
 
 ## <a name="how-long-term-retention-works"></a>長期リテンションのしくみ
@@ -77,25 +80,20 @@ W=12 weeks (84 日)、M=12 months (365 日)、Y=10 years (3650 日)、WeekOfYear
 > [!NOTE]
 > 元のプライマリ データベースをフェールオーバーの原因となる停止から回復させると、これが新しいセカンダリになります。 したがって、バックアップの作成は再開することなく、既存の LTR ポリシーは、もう一度プライマリになるまで反映されることはありません。 
 
-## <a name="sql-managed-instance-support"></a>SQL Managed Instance のサポート
-
-Azure SQL Managed Instance を使用して長期的なバックアップ保有期間を使用する場合、次の制限があります。
-
-- **限定パブリック プレビュー** - このプレビューは EA および CSP サブスクリプションでのみ利用可能で、使用が制限されています。  
-- [**PowerShell のみ**](../managed-instance/long-term-backup-retention-configure.md) - 現在 Azure portal はサポートされていません。 PowerShell を使用して LTR を有効にする必要があります。 
-
-登録を要求するには、[Azure サポート チケット](https://azure.microsoft.com/support/create-ticket/)を作成します。 [問題の種類] については [技術的な問題] を選択し、[サービス] には [SQL Managed Instance] を選択し、[問題の種類] には **[Backup, Restore, and Business continuity / Long-term backup retention]\(バックアップ、復元、およびビジネス継続性/長期的なバックアップ保有期間\)** を選択します。 要求に、SQL Managed Instance の LTR の限定パブリック プレビューに登録したい旨を明記してください。
 
 ## <a name="configure-long-term-backup-retention"></a>長期のバックアップ リテンション期間の構成
 
-Azure SQL Database には Azure portal と PowerShell を使用し、Azure SQL Managed Instance には PowerShell を使用して、長期のバックアップ リテンション期間を構成できます。 LTR ストレージからデータベースを復元するために、特定のバックアップを、そのタイムスタンプに基づいて選択することができます。 データベースは、元のデータベースと同じサブスクリプションの既存のサーバーまたはマネージド インスタンスに復元できます。
+Azure SQL Database には Azure portal を使用し、Azure SQL Managed Instance には PowerShell を使用して、長期のバックアップ リテンション期間を構成できます。 LTR ストレージからデータベースを復元するために、特定のバックアップを、そのタイムスタンプに基づいて選択することができます。 データベースは、元のデータベースと同じサブスクリプションの既存のサーバーまたはマネージド インスタンスに復元できます。
 
 Azure portal または PowerShell を使用して、長期のリテンション期間を構成したり、SQL Database のバックアップからデータベースを復元したりする方法については、「[Azure SQL Database の長期的なバックアップ保有期間を管理する](long-term-backup-retention-configure.md)」を参照してください。
 
 PowerShell を使用して、長期のリテンション期間を構成したり、SQL Managed Instance のバックアップからデータベースを復元したりする方法については、[Azure SQL Managed Instance の長期的なバックアップ保有期間の管理](../managed-instance/long-term-backup-retention-configure.md)に関するページを参照してください。
 
-LTR ストレージからデータベースを復元するために、特定のバックアップを、そのタイムスタンプに基づいて選択することができます。 データベースは、元のデータベースと同じサブスクリプションの既存のサーバーに復元できます。 Azure portal または PowerShell を使用して LTR バックアップからデータベースを復元する方法については、「[Azure SQL Database の長期的なバックアップ保有期間を管理する](long-term-backup-retention-configure.md)」を参照してください。 要求に、SQL Managed Instance の LTR の限定パブリック プレビューに登録したい旨を明記してください。
+LTR ストレージからデータベースを復元するために、特定のバックアップを、そのタイムスタンプに基づいて選択することができます。 データベースは、元のデータベースと同じサブスクリプションの既存のサーバーに復元できます。 Azure portal または PowerShell を使用して LTR バックアップからデータベースを復元する方法については、「[Azure SQL Database の長期的なバックアップ保有期間を管理する](long-term-backup-retention-configure.md)」を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 
-データベース バックアップは、データの不慮の破損または削除から保護するため、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。 その他の SQL Database ビジネス継続性ソリューションの概要については、[ビジネス継続性の概要](business-continuity-high-availability-disaster-recover-hadr-overview.md)に関する記事を参照してください。
+データベース バックアップは、データの不慮の破損または削除から保護するため、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。 
+
+- その他の SQL Database ビジネス継続性ソリューションの概要については、[ビジネス継続性の概要](business-continuity-high-availability-disaster-recover-hadr-overview.md)に関する記事を参照してください。
+- サービスによって生成された自動バックアップについては、[自動バックアップ](../database/automated-backups-overview.md)に関する記事を参照してください。

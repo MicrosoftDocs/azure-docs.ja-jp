@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: jobreen
 ms.openlocfilehash: 54d0df287865d5d92403bf68227a2d4c5faa8bb4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98200211"
 ---
 # <a name="author-a-restful-endpoint-for-custom-providers"></a>カスタム プロバイダー用の RESTful エンドポイントを作成する
@@ -23,7 +23,7 @@ ms.locfileid: "98200211"
 
 このチュートリアルでは、カスタム プロバイダーの RESTful エンドポイントとして動作するように関数アプリを更新します。 Azure のリソースとアクションは、次の RESTful の基本的な仕様に従ってモデル化されています。
 
-- **PUT**: 新しいリソースを作成
+- **PUT**: 新しいリソースを作成する
 - **GET (インスタンス)** : 既存のリソースを取得する
 - **DELETE**: 既存のリソースを削除する
 - **POST**: アクションをトリガーする
@@ -138,7 +138,7 @@ public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMe
 ---|---|---
 **name** | {myCustomResourceName} | カスタム リソースの名前
 **type** | Microsoft.CustomProviders/resourceProviders/{resourceTypeName} | リソースの種類の名前空間
-**id** | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>{resourceTypeName}/{myCustomResourceName} | リソース ID
+**ID** | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>{resourceTypeName}/{myCustomResourceName} | リソース ID
 
 プロパティを追加するだけでなく、Azure Table Storage へのドキュメントの保存も行いました。
 
@@ -370,4 +370,4 @@ using Newtonsoft.Json.Linq;
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure のカスタム プロバイダーのエンドポイントで動作する RESTful エンドポイントを作成しました。 カスタム プロバイダーの作成方法については、[カスタム プロバイダーの作成のチュートリアル](./tutorial-custom-providers-create.md)に関する記事を参照してください。
+この記事では、Azure のカスタム プロバイダーのエンドポイントで動作する RESTful エンドポイントを作成しました。 カスタム プロバイダーの作成方法については、[カスタム プロバイダーの作成のチュートリアル](./tutorial-custom-providers-create.md)に関する記事をご覧ください。

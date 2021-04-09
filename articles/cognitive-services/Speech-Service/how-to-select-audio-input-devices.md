@@ -12,13 +12,13 @@ ms.date: 07/05/2019
 ms.author: chlandsi
 ms.custom: devx-track-js
 ms.openlocfilehash: 48316d571eac835dd5d4ec7d225048f4fdcdf237
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026609"
 ---
-# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>方法:Speech SDK を使用してオーディオ入力デバイスを選択する
+# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>方法: Speech SDK を使用してオーディオ入力デバイスを選択する
 
 Speech SDK のバージョン 1.3.0 では、オーディオ入力を選択するための API が導入されています。 この記事では、システムに接続されているオーディオ デバイスの ID を取得する方法について説明します。 それらは、`AudioConfig` オブジェクトを使用してオーディオ デバイスを構成することで、Speech SDK で使用できるようになります。
 

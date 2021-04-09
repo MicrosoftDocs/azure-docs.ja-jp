@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 7b5017cdeade14e53778b58154456412507c5ce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "77024876"
 ---
 # <a name="what-is-azure-vmware-solution-by-cloudsimple"></a>Azure VMware Solution by CloudSimple とは何ですか?
@@ -21,7 +21,7 @@ ms.locfileid: "77024876"
 
 ![CloudSimple による Azure VMware ソリューションの概要](media/azure-vmware-solution-by-cloudsimple.png)
 
-## <a name="features"></a>[機能]
+## <a name="features"></a>特徴
 
 * オンデマンドでは、VMware クラウド環境のセルフ サービス プロビジョニング。 必要に応じて容量を追加し、削除する機能。
 * VMware プラットフォームの展開、アップグレード、管理プレーンのバックアップ、正常性と容量の監視、アラート、トラブルシューティング、および修復。
@@ -37,14 +37,14 @@ ms.locfileid: "77024876"
 ## <a name="benefits"></a>メリット
 
 * **運用の継続性**。 CloudSimple は、VMware プラットフォームへのネイティブ アクセスを提供しています。 CloudSimple アーキテクチャは、既存との互換性があります。
-    * [アプリケーション]
+    * アプリケーション
     * 操作
     * Security
     * バックアップ
     * 障害復旧
     * Audit
     * コンプライアンス ツール
-    * 処理
+    * プロセス
 * **再トレーニングなし**。 VMware プラットフォームの互換性により、既存のスキルと知識を使用できます。
 * **インフラストラクチャの機敏性**。 すべての容量ニーズを予測し、その結果、容量を無駄遣いしたりインフラストラクチャが足りなくなるということがなくなります。 CloudSimple は、クラウド サービスとして提供され、いつでも容量を追加または削減できます。
 * **セキュリティ**。 Azure を通した CloudSimple 環境へのアクセスにより、組み込みの DDoS を保護しセキュリティを監視することになります。

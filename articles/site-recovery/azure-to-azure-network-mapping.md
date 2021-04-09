@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: harshacs
 ms.openlocfilehash: ff1f80641dc3db1f6b69fc0223c60022f8cf8435
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95811624"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>VNet のネットワーク マッピングと IP アドレス指定を設定する

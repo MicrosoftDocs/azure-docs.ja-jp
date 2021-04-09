@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5cb7e1521c649be4abc155d9f28a49b43a11e6d
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: fea9662b6f5890c6240e91b26cf641d6166d560a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071267"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051193"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Azure Active Directory でアプリ登録のアクセス許可を委任する
 
@@ -77,7 +77,7 @@ Azure AD には、すべてのアプリケーションに対する Azure AD で�
 - アプリケーション管理者:このロールのユーザーは、エンタープライズ アプリケーション、アプリケーション登録、アプリケーション プロキシの設定の全側面を作成して管理できます。 さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph を除く) に同意する権限を付与します。 このロールに割り当てられたユーザーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されません。
 - クラウド アプリケーション管理者:このロールのユーザーは、(アプリケーション プロキシを管理する権限を除き) アプリケーション管理者ロールと同じアクセス許可を持ちます。 このロールに割り当てられたユーザーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されません。
 
-詳細およびこれらのロールの説明については、「[使用可能なロール](permissions-reference.md#available-roles)」を参照してください。
+詳細およびこれらのロールの説明については、「[Azure AD の組み込みロール](permissions-reference.md)」を参照してください。
 
 [Azure Active Directory を使用してユーザーにロールを割り当てる](../fundamentals/active-directory-users-assign-role-azure-portal.md)ことに関するハウツーガイドに記載されている手順に従って、アプリケーション管理者またはクラウド アプリケーション管理者のロールを割り当てます。
 

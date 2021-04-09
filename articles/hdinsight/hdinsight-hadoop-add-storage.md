@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 11852046442901c70112b5e80fef371671546412
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 32757fef131c5e443350f032c0ac987d7f491396
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945931"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864314"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight にストレージ アカウントを追加する
 
@@ -98,7 +98,7 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 1. `fs.azure.account.key` で始まるキーを確認します。 このサンプル イメージに示すように、アカウント名はキーの一部になります。
 
-   ![Apache Ambari による検証](./media/hdinsight-hadoop-add-storage/apache-ambari-verification.png)
+   :::image type="content" source="./media/hdinsight-hadoop-add-storage/apache-ambari-verification.png" alt-text="Apache Ambari による検証":::
 
 ## <a name="remove-storage-account"></a>ストレージ アカウントの削除
 

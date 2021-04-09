@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 90782263d82a93e77fe45efa3ae0ef48fa2d11ae
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96929125"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI のサンプル

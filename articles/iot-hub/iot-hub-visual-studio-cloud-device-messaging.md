@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: c56bb7030b2ebc12e3afc24e2d8cb29ce2dda0bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74079492"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Cloud Explorer for Visual Studio を使用してデバイスと IoT Hub 間でメッセージを送受信する
@@ -60,11 +60,11 @@ Visual Studio 2017 用の Visual Studio インストーラーの Cloud Explorer 
 
     ![[アカウント管理] アイコン](media/iot-hub-visual-studio-cloud-device-messaging/account-management-icon.png)
 
-1. Azure にサインインしている場合は、お使いのアカウントが表示されます。 初めて Azure にサインインするには、 **[アカウントの追加]** を選択します。
+1. Azure にサインインしている場合は、お使いのアカウントが表示されます。 初めて Azure にサインインするには、**[アカウントの追加]** を選択します。
 
-1. 使用する Azure サブスクリプションを選択し、 **[適用]** を選択します。
+1. 使用する Azure サブスクリプションを選択し、**[適用]** を選択します。
 
-1. サブスクリプションを展開した後、 **[IoT ハブ]** を展開します。  各ハブで、そのハブのデバイスを確認できます。
+1. サブスクリプションを展開した後、**[IoT ハブ]** を展開します。  各ハブで、そのハブのデバイスを確認できます。
 
     ![デバイス一覧](media/iot-hub-visual-studio-cloud-device-messaging/hub-device-list.png)
 
@@ -72,7 +72,7 @@ Visual Studio 2017 用の Visual Studio インストーラーの Cloud Explorer 
 
 デバイスから IoT Hub に送信されたメッセージを監視するには、次の手順に従います。
 
-1. IoT Hub またはデバイスを右クリックして、 **[Start Monitoring D2C Message]\(D2C メッセージの監視を開始する\)** を選択します。
+1. IoT Hub またはデバイスを右クリックして、**[Start Monitoring D2C Message]\(D2C メッセージの監視を開始する\)** を選択します。
 
     ![D2C メッセージの監視を開始する](media/iot-hub-visual-studio-cloud-device-messaging/start-monitoring-d2c-message-vs2019.png)
 
@@ -80,13 +80,13 @@ Visual Studio 2017 用の Visual Studio インストーラーの Cloud Explorer 
 
     ![D2C メッセージ結果の監視](media/iot-hub-visual-studio-cloud-device-messaging/monitor-d2c-message-result-vs2019.png)
 
-1. 監視を停止するには、いずれかの IoT Hub またはデバイスを右クリックして、 **[Stop Monitoring D2C Message]\(D2C メッセージの監視を停止する\)** を選択します。
+1. 監視を停止するには、いずれかの IoT Hub またはデバイスを右クリックして、**[Stop Monitoring D2C Message]\(D2C メッセージの監視を停止する\)** を選択します。
 
 ## <a name="send-cloud-to-device-messages"></a>C2D メッセージの送信
 
 IoT Hub からデバイスにメッセージを送信するには、次の手順に従います。
 
-1. デバイスを右クリックして、 **[Send C2D Message]\(C2D メッセージを送信する\)** を選択します。
+1. デバイスを右クリックして、**[Send C2D Message]\(C2D メッセージを送信する\)** を選択します。
 
 1. 入力ボックスにメッセージを入力します。
 

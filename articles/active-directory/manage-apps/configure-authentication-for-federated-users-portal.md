@@ -15,12 +15,12 @@ ms.date: 02/12/2021
 ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a21b6f5e7d2976bda0efd37577b7cca90469aea
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6ed101282a69120162d6e3b526693c0a83df45b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686446"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607111"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する
 
@@ -91,7 +91,7 @@ Azure Active Directory によってサポートされるドメイン ヒント�
 
 ### <a name="home-realm-discovery-policy-to-prevent-auto-acceleration"></a>自動高速化を防止するに対するホーム領域検出ポリシー
 
-一部の Microsoft アプリケーションや SaaS アプリケーションには、自動的に domain_hints が含められます (たとえば `https://outlook.com/contoso.com` は、`&domain_hint=contoso.com` が追加されたログイン要求になります)。これによって、FIDO などの管理された資格情報のロールアウトが中断される可能性があります。  [ホーム領域検出ポリシー](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy)を使用して、管理された資格情報のロールアウト中に特定アプリまたは特定ドメインのドメイン ヒントを無視することができます。  
+一部の Microsoft アプリケーションや SaaS アプリケーションには、自動的に domain_hints が含められます (たとえば `https://outlook.com/contoso.com` は、`&domain_hint=contoso.com` が追加されたログイン要求になります)。これによって、FIDO などの管理された資格情報のロールアウトが中断される可能性があります。  [ホーム領域検出ポリシー](/graph/api/resources/homeRealmDiscoveryPolicy)を使用して、管理された資格情報のロールアウト中に特定アプリまたは特定ドメインのドメイン ヒントを無視することができます。  
 
 ## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>レガシ アプリケーションに対するフェデレーション ユーザーの直接 ROPC 認証を有効にする
 
@@ -129,7 +129,7 @@ HRD ポリシーの定義の例を次に示します。
    }
 ```
 
-ポリシーの種類は、"[HomeRealmDiscoveryPolicy](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy)" です。
+ポリシーの種類は、"[HomeRealmDiscoveryPolicy](/graph/api/resources/homeRealmDiscoveryPolicy)" です。
 
 **AccelerateToFederatedDomain** は、省略可能です。 **AccelerateToFederatedDomain** が false の場合、ポリシーが自動高速化に影響を与えることはありません。 **AccelerateToFederatedDomain** が true で、テナント内に検証およびフェデレーションされたドメインが 1 つのみある場合は、フェデレーション IdP のサインイン ページが直接表示されます。 これが true で、テナント内に検証されたドメインが複数ある場合は、**PreferredDomain** を指定する必要があります。
 

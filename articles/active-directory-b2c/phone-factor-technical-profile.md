@@ -12,10 +12,10 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 322e4b78fbfb38f1822fb7a7cdcdbfcc0738b303
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91950399"
 ---
 # <a name="define-a-phone-factor-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで電話ファクター技術プロファイルを定義する
@@ -32,7 +32,7 @@ Azure Active Directory B2C (Azure AD B2C) では、電話番号の登録およ�
 
 ## <a name="protocol"></a>Protocol
 
-**Protocol** 要素の **Name** 属性は `Proprietary` に設定する必要があります。 電話ファクターのために**ハンドラー**属性は、Azure AD B2C で使用されるプロトコル ハンドラーのアセンブリの完全修飾名を含める必要があります。`Web.TPEngine.Providers.PhoneFactorProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+**Protocol** 要素の **Name** 属性は `Proprietary` に設定する必要があります。 電話ファクターのために **ハンドラー** 属性は、Azure AD B2C で使用されるプロトコル ハンドラーのアセンブリの完全修飾名を含める必要があります。`Web.TPEngine.Providers.PhoneFactorProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
 次の例は、登録と検証のための電話ファクター技術プロファイルを示しています。
 
@@ -90,7 +90,7 @@ OutputClaimsTransformations 要素には、出力要求を修正したり、新�
 
 ## <a name="metadata"></a>Metadata
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | ContentDefinitionReferenceId | はい | [コンテンツ定義](contentdefinitions.md)の識別子は、この技術プロファイルに関連付けられています。 |
 | ManualPhoneNumberEntryAllowed| いいえ | ユーザーが手動で電話番号を入力できるようにするかどうかを指定します。 指定できる値: `true` または `false` (既定値)。|

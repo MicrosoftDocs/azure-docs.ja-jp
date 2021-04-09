@@ -7,14 +7,14 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/29/2021
+ms.date: 03/12/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: eb5de33fd41d3a454f4d0b8d44325ed30f9c5d47
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 8b9c4792fa6dbdc70f657ce3c5f1757473a22fda
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071632"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103225219"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebook"></a>クイックスタート: Jupyter Notebook を使用して Python で Azure Cognitive Search インデックスを作成する
 
@@ -271,9 +271,9 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 ## <a name="3---search-an-index"></a>3 - インデックスの検索
 
-この手順では、[Search Documents (REST)](/rest/api/searchservice/search-documents) を使用してインデックスのクエリを実行する方法を示します。
+この手順では、[search. client クラス](/python/api/azure-search-documents/azure.search.documents.searchclient)の **search** メソッドを使用してインデックスのクエリを実行する方法について説明します。
 
-1. この操作には、search_client を使用します。 このクエリでは、空の検索が実行され (`search=*`)、任意のドキュメントのランクなしの一覧 (search score = 1.0) が返されます。 条件がないため、すべてのドキュメントが結果に含まれます。 このクエリでは、各ドキュメントのフィールドのうち 2 つだけを出力します。 さらに、`include_total_count=True` を追加して、結果に含まれるすべてのドキュメントの数 (4) を取得します。
+1. 次の手順では、空の検索が実行され (`search=*`)、任意のドキュメントのランクなしの一覧 (search score = 1.0) が返されます。 条件がないため、すべてのドキュメントが結果に含まれます。 このクエリでは、各ドキュメントのフィールドのうち 2 つだけを出力します。 さらに、`include_total_count=True` を追加して、結果に含まれるすべてのドキュメントの数 (4) を取得します。
 
     ```python
     results =  search_client.search(search_text="*", include_total_count=True)

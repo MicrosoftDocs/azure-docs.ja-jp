@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
 ms.openlocfilehash: 41423ce34a62dfdbd5b9a60f683a2366a94d1bfd
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97976794"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS モデルとキーの制限
@@ -52,7 +52,7 @@ LUIS にはいくつかの制限領域があります。 1 つは[モデルの�
 
 オブジェクト名は、同じレベルの他のオブジェクトと比較したときに一意である必要があります。
 
-|Objects|制限|
+|オブジェクト|制限|
 |--|--|
 |意図、エンティティ|すべての意図とエンティティの名前は、アプリのバージョン内で一意である必要があります。|
 |ML エンティティ コンポーネント|すべての機械学習エンティティ コンポーネント (子エンティティ) は、同じレベルのコンポーネントに関して、同じエンティティ内で一意である必要があります。|

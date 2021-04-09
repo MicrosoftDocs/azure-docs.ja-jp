@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/05/2016
 ms.custom: devx-track-js
 ms.openlocfilehash: ca1c865b31739e7163b0db26cb666a8a42edbaa2
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92218461"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>Azure SDK for Node.js を使用して Azure Data Lake Analytics を管理する
@@ -24,7 +24,7 @@ ms.locfileid: "92218461"
 * **カタログ用の REST API のバージョン: 2015-10-01-preview**
 * **ジョブ用の REST API のバージョン: 2016-03-20-preview**
 
-## <a name="features"></a>[機能]
+## <a name="features"></a>特徴
 * アカウント管理: 作成、取得、一覧表示、更新、および削除。
 * ジョブ管理: 送信、取得、一覧表示、および取り消し。
 * カタログ管理: 取得および一覧表示。
@@ -126,5 +126,5 @@ catalogClient.catalog.listDatabases(accountName, function (err, result, request,
 });
 ```
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 * [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)

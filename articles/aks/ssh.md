@@ -4,12 +4,12 @@ description: トラブルシューティングやメンテナンスのタスク�
 services: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.openlocfilehash: 7455b98348f2b8c40f2ffc125abe1297af88fbd8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4c068dc1521d19793d42b6788d0439dd11499a91
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034457"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605904"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために SSH を使用して Azure Kubernetes Service (AKS) クラスター ノードに接続する
 
@@ -141,14 +141,14 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
 1. `debian` コンテナー イメージを実行し、ターミナル セッションをそれにアタッチします。 このコンテナーを使用して、AKS クラスター内の任意のノードとの SSH セッションを作成できます。
 
     ```console
-    kubectl run -it --rm aks-ssh --image=debian
+    kubectl run -it --rm aks-ssh --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
     ```
 
     > [!TIP]
     > Windows Server ノードを使用する場合は、ノード セレクターをコマンドに追加して、Linux ノードで Debian コンテナーのスケジュールを設定します。
     >
     > ```console
-    > kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"v1","spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}'
+    > kubectl run -it --rm aks-ssh --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --overrides='{"apiVersion":"v1","spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}'
     > ```
 
 1. ターミナル セッションがコンテナーに接続された後、`apt-get` を使用して SSH クライアントをインストールします。

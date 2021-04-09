@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cea26cb119f64679807bc6c5eaadb41b341e5d5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89662393"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect sync: 同期を理解してカスタマイズする
@@ -28,7 +28,7 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 
 このトピックは **Azure AD Connect 同期** (別名: **同期エンジン**) のホームであり、関連する他のすべてのトピックへのリンクを示します。 Azure AD Connect へのリンクについては、「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」を参照してください。
 
-同期サービスは、オンプレミスの **Azure AD Connect 同期** コンポーネントと、**Azure AD Connect 同期サービス**と呼ばれる Azure AD のサービス側の、2 つのコンポーネントで構成されます。
+同期サービスは、オンプレミスの **Azure AD Connect 同期** コンポーネントと、**Azure AD Connect 同期サービス** と呼ばれる Azure AD のサービス側の、2 つのコンポーネントで構成されます。
 
 ## <a name="azure-ad-connect-sync-topics"></a>Azure AD Connect Sync のトピック
 | トピック | 内容 |

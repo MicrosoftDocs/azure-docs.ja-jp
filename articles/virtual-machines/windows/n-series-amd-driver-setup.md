@@ -3,17 +3,19 @@ title: Windows 用 Azure N シリーズ AMD GPU ドライバーのセットア�
 description: Azure で Windows Server または Windows を実行する N シリーズ VM 用の AMD GPU ドライバーの設定方法
 author: vikancha-MSFT
 manager: jkabat
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: vm-sizes-gpu
+ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 1e08d54b9467231233c62635dafc5135456a3843
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 62723a0fee6a3f696c517bc642fdac8cfa80a6b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695415"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102557422"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Windows を実行している N シリーズ VM に AMD GPU ドライバーをインストールする
 

@@ -4,6 +4,8 @@
   items:
     - name: Azure VMware Solution について
       href: introduction.md
+    - name: プラットフォームの更新
+      href: azure-vmware-solution-platform-updates.md
 - name: クイック スタート
   items:
     - name: 0 - デプロイの計画
@@ -72,6 +74,8 @@
       href: public-ip-usage.md
     - name: IPSec トンネルを作成する
       href: create-ipsec-tunnel.md
+    - name: Windows Server フェールオーバー クラスター
+      href: windows-server-failover-cluster.md
     - name: Azure のネイティブ統合
       items:
         - name: API Management

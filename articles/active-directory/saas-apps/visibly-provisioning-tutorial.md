@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/30/2020
 ms.author: Zhchia
 ms.openlocfilehash: c2feae18c4b32e1a1a87d153219aff0bfee3b756
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96182191"
 ---
 # <a name="tutorial-configure-visibly-for-automatic-user-provisioning"></a>チュートリアル:Visibly を構成し、自動ユーザー プロビジョニングに対応させる

@@ -14,14 +14,14 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: 585bdfdd7033f75e5beeba7246c8fbdd03a5e6e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cb979491e247a4d44b9ae9ae27c433fb3f436d1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86530034"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "100579217"
 ---
-# <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定の iOS デバイスにプッシュ通知を送信する
+# <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>チュートリアル: Azure Notification Hubs を使用して特定の iOS デバイスにプッシュ通知を送信する
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -41,7 +41,7 @@ ms.locfileid: "86530034"
 
 ## <a name="prerequisites"></a>前提条件
 
-このトピックは、「[チュートリアル: Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する][get-started]」で作成したアプリに基づいています。 このチュートリアルを開始する前に、「[チュートリアル: Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する][get-started]」で作成したアプリに基づいています。
+このトピックは、「[チュートリアル: Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する][get-started]」で作成したアプリに基づいて構築されています。 このチュートリアルを開始する前に、「[チュートリアル: Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する][get-started]」を既に完了している必要があります。
 
 ## <a name="add-category-selection-to-the-app"></a>アプリケーションにカテゴリ選択を追加する
 
@@ -73,7 +73,7 @@ ms.locfileid: "86530034"
     - (IBAction)subscribe:(id)sender;
     ```
 
-4. 新しい `Notifications` という名前の **Cocoa Touch クラス**を作成します。 Notifications.h の interface セクションに次のコードをコピーします。
+4. 新しい `Notifications` という名前の **Cocoa Touch クラス** を作成します。 Notifications.h の interface セクションに次のコードをコピーします。
 
     ```objc
     @property NSData* deviceToken;
@@ -125,8 +125,6 @@ ms.locfileid: "86530034"
 
     - (void)subscribeWithCategories:(NSSet *)categories completion:(void (^)(NSError *))completion
     {
-        //[hub registerNativeWithDeviceToken:self.deviceToken tags:categories completion: completion];
-
         NSString* templateBodyAPNS = @"{\"aps\":{\"alert\":\"$(messageParam)\"}}";
 
         [hub registerTemplateWithDeviceToken:self.deviceToken name:@"simpleAPNSTemplate" 
@@ -193,7 +191,7 @@ ms.locfileid: "86530034"
      }
     ```
 
-    このメソッドにより、簡単な **UIAlert**を表示することでアプリケーションの実行中に受信した通知が処理されます。
+    このメソッドにより、簡単な **UIAlert** を表示することでアプリケーションの実行中に受信した通知が処理されます。
 
 11. `ViewController.m` で、`AppDelegate.h` の `import` ステートメントを追加し、XCode で生成された `subscribe` メソッドに次のコードをコピーします。 このコードは、ユーザーがユーザー インターフェイスで選択した新しいカテゴリ タグを使用するように通知の登録を更新します。
 

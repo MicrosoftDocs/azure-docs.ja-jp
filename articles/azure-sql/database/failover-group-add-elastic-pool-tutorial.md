@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/27/2019
 ms.openlocfilehash: cdbc44158de2f24d7d33d68311979c3b8bdda85d
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94593979"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>チュートリアル:フェールオーバー グループに Azure SQL Database エラスティック プールを追加する
@@ -118,7 +118,7 @@ PowerShell を使用して、エラスティック プールとセカンダリ �
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| コマンド | Notes |
+| command | Notes |
 |---|---|
 | [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Azure SQL Database 用のエラスティック データベース プールを作成します。|
 | [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | データベースのプロパティを設定するか、既存のデータベースをエラスティック プールに移動します。 |
@@ -235,7 +235,7 @@ PowerShell を使用して、フェールオーバー グループを作成し�
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| コマンド | Notes |
+| command | Notes |
 |---|---|
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | データベースとエラスティック プールをホストするサーバーを作成します。 |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | サーバーに対するファイアウォール規則を作成します。 |
@@ -341,7 +341,7 @@ PowerShell を使用してフェールオーバー グループのフェール�
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| コマンド | Notes |
+| command | Notes |
 |---|---|
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Azure SQL Database のフェールオーバー グループを取得または一覧表示します。 |
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Azure SQL Databese のフェールオーバー グループのフェールオーバーを実行します。 |
@@ -374,7 +374,7 @@ PowerShell を使用してリソースをクリーンアップします。
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| コマンド | Notes |
+| command | Notes |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループを削除します |
 
@@ -391,7 +391,7 @@ PowerShell を使用してリソースをクリーンアップします。
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | Notes |
+| command | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | データベースとエラスティック プールをホストするサーバーを作成します。 |

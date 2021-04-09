@@ -4,12 +4,12 @@ description: Batch は、Batch サービスからの認証に Azure AD をサポ
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 784e92eaa2cd672d511177066befcfd7effc7ca4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 2ceefa538c44208750da8986fcf3d161f0c0865f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95252642"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180022"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch サービスの認証に Active Directory を使用する
 
@@ -41,7 +41,7 @@ Azure AD を使用して認証するには、このエンドポイントをテ�
 >
 > テナント固有のエンドポイントは、統合認証を使用して認証する場合はオプションですが使用が推奨されています。 ただし、Azure AD の共通のエンドポイントを使用することもできます。 特定のテナントが提供されていない場合は、インターフェイスを収集する汎用的な資格情報が共通のエンドポイントから提供されます。 共通のエンドポイントは、`https://login.microsoftonline.com/common` です。
 
-Azure AD エンドポイントの詳細については、[認証と承認の比較]()../active-directory/develop/authentication-vs-authorization.md) に関するページを参照してください。
+Azure AD エンドポイントの詳細については、「[認証と承認](../active-directory/develop/authentication-vs-authorization.md)」を参照してください。
 
 ### <a name="batch-resource-endpoint"></a>Batch リソース エンドポイント
 

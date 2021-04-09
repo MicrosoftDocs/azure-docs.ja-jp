@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: dcfef81f2d7f3413489490d97c143fdec7e11bed
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d516bcb224f7a7b5943214f28cffb7da3ea0871f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499324"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031601"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 
@@ -382,11 +382,9 @@ Premium ディスクと Standard ディスクのどちらの場合も、Azure �
 
 **適用可能な Premium SSD ディスク サイズに対してバースト機能をサポートしているリージョンを教えてください。**
 
-バースティング機能は、現在、Azure パブリック クラウドのすべてのリージョンでサポートされており、ソブリン クラウドのサポートは近日対応予定です。 
+クレジットベースのバーストは現在、Azure Public Cloud のあらゆるリージョンでサポートされています。ソブリン クラウドは現在のところ、サポートされていません。
 
-**4/8/16 GiB のマネージド ディスク サイズ (P1/P2/P3、E1/E2/E3) はどのリージョンでサポートされていますか?**
-
-これらの新しいディスク サイズは、現在、Azure パブリック クラウドのすべてのリージョンでサポートされており、ソブリン クラウドのサポートは近日対応予定です。 
+オンデマンド バーストは、米国中西部でのみご利用いただけます。
 
 **アンマネージド ディスクまたはページ BLOB では、P1/P2/P3 ディスク サイズはサポートされていますか?**
 

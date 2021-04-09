@@ -11,14 +11,16 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f95068b66fdd7907bf06086f855473b156738847
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ca8f02b375420590bcf1cc732c067a165e22b3fa
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371102"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492712"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>IoT Edge デバイスをゲートウェイとして使用する方法
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 IoT Edge デバイスはゲートウェイとして動作し、ネットワーク上の他のデバイスと IoT Hub 間の接続を提供できます。
 
@@ -95,7 +97,7 @@ IoT Edge デバイスは、透過的ゲートウェイ リレーションシッ�
 
 <!-- 1.2.0 -->
 ::: moniker range=">=iotedge-2020-11"
-ダウンストリーム IoT Edge デバイスでは、config.yaml ファイルに親デバイスを指す **parent_hostname** パラメーターを使用します。
+ダウンストリーム IoT Edge デバイスでは、config ファイルに親デバイスを指す **parent_hostname** パラメーターを使用します。
 ::: moniker-end
 
 #### <a name="secure-connection"></a>セキュリティ保護された接続

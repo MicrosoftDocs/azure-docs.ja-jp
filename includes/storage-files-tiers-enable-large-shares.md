@@ -9,10 +9,10 @@ ms.date: 02/03/2021
 ms.author: fauhse
 ms.custom: include file
 ms.openlocfilehash: a086aae35c9a800c6a4cfc3e872a34438bc84095
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99569532"
 ---
 既定では、Standard ファイル共有に使用できるのは最大 5 TiB だけですが、共有の制限は 100 TiB に増やすことができます。 共有の制限を増やすには、ご使用のストレージ アカウントで **大きなファイル共有** を有効にします。 Premium ストレージ アカウント (*FileStorage* ストレージ アカウント) の場合は、すべての Premium ファイル共有が既に 100 TiB の最大容量までプロビジョニングできるようになっているため、大きなファイル共有機能のフラグはありません。

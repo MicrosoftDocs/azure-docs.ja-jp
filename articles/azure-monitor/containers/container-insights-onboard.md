@@ -4,10 +4,10 @@ description: この記事では、コンテナーのパフォーマンスと特�
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 58797221fa3380e4f7533a710e2f8dc658cb676c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101708358"
 ---
 # <a name="enable-container-insights"></a>コンテナー分析情報を有効にする

@@ -11,10 +11,10 @@ ms.date: 08/26/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
 ms.openlocfilehash: 267a69486dc91ef95c0de704346eeb1d1780ef48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89013760"
 ---
 # <a name="get-started-with-device-twins-net"></a>デバイス ツインの使用 (.NET)
@@ -234,7 +234,7 @@ ms.locfileid: "89013760"
 
 1. **[共通プロパティ]**  >  **[スタートアップ プロジェクト]** で、 **[マルチ スタートアップ プロジェクト]** を選択します。 **ReportConnectivity** では、 **[アクション]** として **[開始]** を選択します。 **[OK]** を選択して変更を保存します。  
 
-1. **ReportConnectivity** プロジェクトを右クリックし、 **[デバッグ]** を選択してから、 **[新しいインスタンスを開始]** を選択して、このアプリを実行します。 アプリでツインの情報が取得された後、接続性が "***報告されるプロパティ***" として送信される様子が見られます。
+1. **ReportConnectivity** プロジェクトを右クリックし、 **[デバッグ]** を選択してから、 **[新しいインスタンスを開始]** を選択して、このアプリを実行します。 アプリでツインの情報が取得された後、接続性が "**_報告されるプロパティ_**" として送信される様子が見られます。
 
     ![デバイス アプリを実行して接続性を報告](./media/iot-hub-csharp-csharp-twin-getstarted/rundeviceapp.png)
 

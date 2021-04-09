@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 03/05/2021
 ms.author: yluiu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a70b10f7d22c9cc04427bdfbb44243fad457ba0
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 72fd005ce44d116f86d9a0b4c0d1932e2e4facfb
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913485"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102425772"
 ---
 # <a name="specify-a-face-detection-model"></a>顔検出モデルを指定する
 
@@ -43,6 +43,7 @@ AI による顔検出の概念を理解している必要があります。 そ�
 
 * `detection_01`
 * `detection_02`
+* `detection_03`
 
 [Face - Detect] REST API の要求 URL は次のようになります。
 
@@ -52,59 +53,59 @@ AI による顔検出の概念を理解している必要があります。 そ�
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_03", detectionModel: "detection_02");
+var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_04", detectionModel: "detection_03");
 ```
 
 ## <a name="add-face-to-person-with-specified-model"></a>指定したモデルを使用して Person に顔を追加する
 
-Face サービスは画像から顔データを抽出し、 [PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API によってそれを **Person** オブジェクトに関連付けることができます。 この API 呼び出しでは、[Face - Detect] と同じ方法で検出モデルを指定できます。
+Face サービスは画像から顔データを抽出し、[PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API によってそれを **Person** オブジェクトに関連付けることができます。 この API 呼び出しでは、[Face - Detect] と同じ方法で検出モデルを指定できます。
 
 .NET クライアント ライブラリの次のコード例を参照してください。
 
 ```csharp
-// Create a PersonGroup and add a person with face detected by "detection_02" model
+// Create a PersonGroup and add a person with face detected by "detection_03" model
 string personGroupId = "mypersongroupid";
-await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_03");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_04");
 
 string personId = (await faceClient.PersonGroupPerson.CreateAsync(personGroupId, "My Person Name")).PersonId;
 
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_02");
+await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_03");
 ```
 
-このコードは、ID `mypersongroupid` を持つ **PersonGroup** を作成し、それに **Person** を追加します。 次に、`detection_02` モデルを使用して、この **Person** に顔を追加します。 *detectionModel* パラメーターを指定しない場合、API は既定のモデルである `detection_01` を使用します。
+このコードは、ID `mypersongroupid` を持つ **PersonGroup** を作成し、それに **Person** を追加します。 次に、`detection_03` モデルを使用して、この **Person** に顔を追加します。 *detectionModel* パラメーターを指定しない場合、API は既定のモデルである `detection_01` を使用します。
 
 > [!NOTE]
-> **Person** オブジェクト内のすべての顔に同じ検出モデルを使用する必要はありません。また、( [Face - Identify] API などで) **Person** オブジェクトと比較するために新しい顔を検出するときに、同じ検出モデルを使用する必要もありません。
+> **Person** オブジェクト内のすべての顔に同じ検出モデルを使用する必要はありません。また、([Face - Identify] API などで) **Person** オブジェクトと比較するために新しい顔を検出するときに、同じ検出モデルを使用する必要もありません。
 
 ## <a name="add-face-to-facelist-with-specified-model"></a>指定したモデルを使用して FaceList に顔を追加する
 
 既存の **FaceList** オブジェクトに顔を追加するときにも検出モデルを指定できます。 .NET クライアント ライブラリの次のコード例を参照してください。
 
 ```csharp
-await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_04");
 
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_02");
+await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_03");
 ```
 
-このコードは、`My face collection` という **FaceList** を作成し、それに `detection_02` モデルを使用して顔を追加します。 *detectionModel* パラメーターを指定しない場合、API は既定のモデルである `detection_01` を使用します。
+このコードは、`My face collection` という **FaceList** を作成し、それに `detection_03` モデルを使用して顔を追加します。 *detectionModel* パラメーターを指定しない場合、API は既定のモデルである `detection_01` を使用します。
 
 > [!NOTE]
-> **FaceList** オブジェクト内のすべての顔に同じ検出モデルを使用する必要はありません。また、 **FaceList** オブジェクトと比較するために新しい顔を検出するときに、同じ検出モデルを使用する必要もありません。
+> **FaceList** オブジェクト内のすべての顔に同じ検出モデルを使用する必要はありません。また、**FaceList** オブジェクトと比較するために新しい顔を検出するときに、同じ検出モデルを使用する必要もありません。
 
 ## <a name="evaluate-different-models"></a>さまざまなモデルを評価する
 
 各顔検出モデルは、異なるタスクに合わせて最適化されています。 相違点の概要については、次の表を参照してください。
 
-|**detection_01**  |**detection_02**  |
-|---------|---------|
-|すべての顔検出操作に対する既定の選択です。 | 2019 年 5 月にリリースされ、すべての顔検出操作でオプションとして利用可能です。
-|小さい顔、横顔、不鮮明な顔には最適化されていません。  | 小さい顔、横顔、不鮮明な顔での精度が向上しています。 |
-|検出呼び出しで顔の属性 (頭部姿勢、年齢、感情など) が指定されている場合は、それらを返します。 |  顔の属性を返しません。     |
-|検出呼び出しで顔のランドマークが指定されている場合は、それらを返します。   | 顔のランドマークを返しません。  |
+|**detection_01**  |**detection_02**  |**detection_03** 
+|---------|---------|---|
+|すべての顔検出操作に対する既定の選択です。 | 2019 年 5 月にリリースされ、すべての顔検出操作でオプションとして利用可能です。 |  2021 年 2 月にリリースされ、すべての顔検出操作でオプションとして利用可能です。
+|小さい顔、横顔、不鮮明な顔には最適化されていません。  | 小さい顔、横顔、不鮮明な顔での精度が向上しています。 | より小さい顔 (64x64 ピクセル) や回転した顔の向きなど、さらに精度が向上しました。
+|検出呼び出しで主な顔の属性 (頭部姿勢、年齢、感情など) が指定されている場合は、それらを返します。 |  顔の属性を返しません。     | 検出呼び出しで "faceMask" と "noseAndMouthCovered" の各属性が指定されている場合は、それらを返します。
+|検出呼び出しで顔のランドマークが指定されている場合は、それらを返します。   | 顔のランドマークを返しません。  | 顔のランドマークを返しません。
 
-`detection_01` と `detection_02` モデルのパフォーマンスを比較する最良の方法は、それらをサンプル データセットで使用することです。 さまざまな画像、特に多数の顔や識別しづらい顔に対して、それぞれの検出モデルを使用して [Face - Detect] API を呼び出すことをお勧めします。 各モデルによって返される顔の数に注意してください。
+検出モデルのパフォーマンスを比較する最良の方法は、それらをサンプル データセットで使用することです。 さまざまな画像、特に多数の顔や識別しづらい顔に対して、それぞれの検出モデルを使用して [Face - Detect] API を呼び出すことをお勧めします。 各モデルによって返される顔の数に注意してください。
 
 ## <a name="next-steps"></a>次のステップ
 

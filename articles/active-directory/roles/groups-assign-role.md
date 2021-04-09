@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 816009abb688525cd7663311c79300a6d12cf146
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98742949"
 ---
 # <a name="assign-a-role-to-a-cloud-group-in-azure-active-directory"></a>Azure Active Directory でクラウド グループにロールを割り当てる
@@ -32,7 +32,7 @@ Azure AD ロールにグループを割り当てることは、ロールが割�
 
 1. **[Azure Active Directory]**  >  **[ロールと管理者]** を選択し、割り当てるロールを選択します。
 
-1. **_[ロール名]_ *ページで、>* [割り当ての追加]** を選択します。
+1. ***ロール名** _ ページで、> _*[割り当ての追加]** を選択します。
 
    ![新しいロールの割り当てを追加](./media/groups-assign-role/add-assignment.png)
 

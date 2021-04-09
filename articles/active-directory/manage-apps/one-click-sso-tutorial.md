@@ -17,10 +17,10 @@ ms.date: 06/11/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 50f705e587010d956c29a71127e97dd85cb517ea
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99258254"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>アプリの One Click シングル サインオンの構成

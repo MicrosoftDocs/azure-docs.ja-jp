@@ -15,10 +15,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4de9f5a21f38f741dcf65d285446d9482716d4f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85608128"
 ---
 # <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>方法: Azure Active Directory レポートを使用してサインイン エラーをトラブルシューティングする
@@ -37,15 +37,15 @@ Azure Active Directory (Azure AD) の[サインイン レポート](concept-sign
 必要なもの:
 
 * Premium (P1/P2) ライセンスがある Azure AD テナント。 Azure Active Directory エディションにアップグレードするには、「[Azure Active Directory Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。
-* テナントの**グローバル管理者**、**セキュリティ管理者**、**セキュリティ閲覧者**、または**レポート閲覧者**のロールに含まれているユーザー。 また、すべてのユーザーは自分のサインインにアクセスできます。 
+* テナントの **グローバル管理者**、**セキュリティ管理者**、**セキュリティ閲覧者**、または **レポート閲覧者** のロールに含まれているユーザー。 また、すべてのユーザーは自分のサインインにアクセスできます。 
 
 ## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>サインイン レポートを使用したサインイン エラーのトラブルシューティング
 
 1. [Azure portal](https://portal.azure.com) に移動し、自分のディレクトリを選択します。
-2. **[Azure Active Directory]** を選択し、 **[監視]** セクションの **[サインイン]** を選択します。 
-3. ユーザー名またはオブジェクト識別子、アプリケーション名または日付のいずれかで指定されたフィルターを使って、エラーを絞り込みます。 さらに、 **[状態]** ドロップダウンから **[失敗]** を選択して、失敗したサインインのみを表示します。 
+2. **[Azure Active Directory]** を選択し、**[監視]** セクションの **[サインイン]** を選択します。 
+3. ユーザー名またはオブジェクト識別子、アプリケーション名または日付のいずれかで指定されたフィルターを使って、エラーを絞り込みます。 さらに、**[状態]** ドロップダウンから **[失敗]** を選択して、失敗したサインインのみを表示します。 
 
-    ![結果のフィルター処理](./media/howto-troubleshoot-sign-in-errors/filters.png)
+    ![結果をフィルター](./media/howto-troubleshoot-sign-in-errors/filters.png)
         
 4. 調査する必要がある失敗したサインインを特定します。 そのサインインを選択し、追加の詳細ウィンドウを開いて、失敗したサインインに関する詳細情報を確認します。 **[サインインのエラー コード]** と **[エラーの理由]** をメモします。 
 
@@ -55,11 +55,11 @@ Azure Active Directory (Azure AD) の[サインイン レポート](concept-sign
 
     ![トラブルシューティングとサポート](./media/howto-troubleshoot-sign-in-errors/troubleshooting-and-support.png)
 
-6. 失敗の理由ではエラーについて説明します。 たとえば、上記のシナリオでの失敗の理由は、**ユーザー名またはパスワードが無効、またはオンプレミスのユーザー名またはパスワードが無効**です。 この修正プログラムは、単に適切なユーザー名とパスワードでもう一度サインインするためのものです。
+6. 失敗の理由ではエラーについて説明します。 たとえば、上記のシナリオでの失敗の理由は、**ユーザー名またはパスワードが無効、またはオンプレミスのユーザー名またはパスワードが無効** です。 この修正プログラムは、単に適切なユーザー名とパスワードでもう一度サインインするためのものです。
 
 7. [サインインのエラー コードの参照](reference-sign-ins-error-codes.md)でエラー コード (この例では **50126**) を検索することで、修復に関するアイデアなどの追加情報を取得できます。 
 
-8. 他のすべてが失敗した場合、または推奨されるアクションを行っても問題が解決しない場合は、 **[トラブルシューティングおよびサポート]** タブの手順に従って、[サポート チケットをオープン](../fundamentals/active-directory-troubleshooting-support-howto.md)にしてください。 
+8. 他のすべてが失敗した場合、または推奨されるアクションを行っても問題が解決しない場合は、**[トラブルシューティングおよびサポート]** タブの手順に従って、[サポート チケットをオープン](../fundamentals/active-directory-troubleshooting-support-howto.md)にしてください。 
 
 ## <a name="next-steps"></a>次のステップ
 

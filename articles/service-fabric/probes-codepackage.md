@@ -6,10 +6,10 @@ author: tugup
 ms.author: tugup
 ms.date: 3/12/2020
 ms.openlocfilehash: 07a1b836ca7ea79244e303f54654dfcaa6e5fcb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "82137588"
 ---
 # <a name="liveness-probe"></a>liveness probe
@@ -21,14 +21,14 @@ Azure Service Fabric のバージョン 7.1 以降では、[コンテナー化�
 > [!NOTE]
 > liveness probe は、NAT ネットワーク モードのコンテナーでのみサポートされています。
 
-## <a name="semantics"></a>セマンティクス
+## <a name="semantics"></a>Semantics
 指定できるのは、1 つのコンテナーにつき 1 つの liveness probe だけで、次のフィールドでその動作を制御できます。
 
-* `initialDelaySeconds`:コンテナーが起動されてから、probe の実行を開始するまでの最初の遅延 (秒)。 サポートされる値は **int** です。既定値は 0、最小値は 0 です。
+* `initialDelaySeconds`: コンテナーが起動されてから、probe の実行を開始するまでの最初の遅延 (秒)。 サポートされる値は **int** です。既定値は 0、最小値は 0 です。
 
-* `timeoutSeconds`:probe が正常に終了しなかった場合に、それが失敗したと見なされるまでの期間 (秒)。 サポートされる値は **int** です。既定値は 1、最小値は 1 です。
+* `timeoutSeconds`: probe が正常に終了しなかった場合に、それが失敗したと見なされるまでの期間 (秒)。 サポートされる値は **int** です。既定値は 1、最小値は 1 です。
 
-* `periodSeconds`:probe の頻度を指定する期間 (秒)。 サポートされる値は **int** です。既定値は 10、最小値は 1 です。
+* `periodSeconds`: probe の頻度を指定する期間 (秒)。 サポートされる値は **int** です。既定値は 10、最小値は 1 です。
 
 * `failureThreshold`: この値に達すると、コンテナーが再起動されます。 サポートされる値は **int** です。既定値は 3、最小値は 1 です。
 
@@ -40,7 +40,7 @@ Azure Service Fabric のバージョン 7.1 以降では、[コンテナー化�
 
 * `OK`: **successThreshold** で設定された値に対して probe は成功しています。
 
-* `Error`:probe の **failureCount** ==  **failureThreshold**。この後、コンテナーが再起動されます。
+* `Error`: probe の **failureCount** ==  **failureThreshold**。この後、コンテナーが再起動されます。
 
 * `Warning`: 
     * probe が失敗し、**failureCount** < **failureThreshold** となっています。 この正常性レポートは、**failureCount** が **failureThreshold** または **successThreshold** で設定された値に達するまで維持されます。
@@ -83,15 +83,15 @@ HTTP probe を指定する方法の例を次に示します。
 
 HTTP probe には、設定できる次の追加のプロパティがあります。
 
-* `path`:HTTP 要求で使用するパス。
+* `path`: HTTP 要求で使用するパス。
 
-* `port`:probe に使用するポート。 このプロパティは必須です。 範囲は 1 から 65535 です。
+* `port`: probe に使用するポート。 このプロパティは必須です。 範囲は 1 から 65535 です。
 
-* `scheme`:コード パッケージへの接続に使用するスキーム。 このプロパティを HTTPS に設定すると、証明書の検証はスキップされます。 既定の設定は HTTP です。
+* `scheme`: コード パッケージへの接続に使用するスキーム。 このプロパティを HTTPS に設定すると、証明書の検証はスキップされます。 既定の設定は HTTP です。
 
-* `httpHeader`:要求内で設定するヘッダー。 複数のヘッダーを指定できます。
+* `httpHeader`: 要求内で設定するヘッダー。 複数のヘッダーを指定できます。
 
-* `host`:接続先のホスト IP アドレス。
+* `host`: 接続先のホスト IP アドレス。
 
 ### <a name="tcp-probe"></a>TCP プローブ
 

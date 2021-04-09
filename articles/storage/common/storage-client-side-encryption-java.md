@@ -6,17 +6,17 @@ author: tamram
 ms.service: storage
 ms.devlang: java
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-java
-ms.openlocfilehash: fafce52f9d760fac0d5c3f0ea1be2480547c5d4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78baaa3f794bed870b40fb3975f6b80ff37e90f0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91817513"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043730"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Java による Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "91817513"
 ストレージ クライアント ライブラリは [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) を使用して、ユーザー データを暗号化します。 具体的には、AES で [暗号ブロック チェーン (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) モードを使用します。 サービスごとに動作が多少異なるため、以下でそれぞれについて説明します。
 
 ### <a name="blobs"></a>BLOB
-現在、クライアント ライブラリでは BLOB 全体の暗号化のみがサポートされています。 具体的には、**upload*** メソッドや **openOutputStream** メソッドを使用するときに暗号化がサポートされます。 ダウンロードについては、完全ダウンロードと一部の範囲のダウンロードの両方がサポートされています。  
+現在、クライアント ライブラリでは BLOB 全体の暗号化のみがサポートされています。 具体的には、**upload** メソッドや *openOutputStream* メソッドを使用するときに暗号化がサポートされます。 ダウンロードについては、完全ダウンロードと一部の範囲のダウンロードの両方がサポートされています。  
 
 暗号化中、クライアント ライブラリは 16 バイトのランダムな初期化ベクトル (IV) と 32 バイトのランダムなコンテンツ暗号化キー (CEK) を生成し、この情報を使用して BLOB データのエンベロープ暗号化を実行します。 ラップされた CEK と一部の追加暗号化メタデータが、サービスの暗号化された BLOB と共に、BLOB メタデータとして格納されます。
 
@@ -154,6 +154,12 @@ EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実�
 ### <a name="blob-service-encryption"></a>Blob service 暗号化
 **BlobEncryptionPolicy** オブジェクトを作成し、それを要求オプションに設定します (API ごとに、または **DefaultRequestOptions** を使用してクライアント レベルで設定します)。 その他の操作はすべて、クライアント ライブラリが内部的に処理します。
 
+# <a name="java-v12"></a>[Java v12](#tab/java)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="java-v8"></a>[Java v8](#tab/java8)
+
 ```java
 // Create the IKey used for encryption.
 RsaKey key = new RsaKey("private:key1" /* key identifier */);
@@ -172,9 +178,16 @@ blob.upload(stream, size, null, options, null);
 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 blob.download(outputStream, null, options, null);
 ```
+---
 
 ### <a name="queue-service-encryption"></a>Queue サービス暗号化
 **QueueEncryptionPolicy** オブジェクトを作成し、それを要求オプションに設定します (API ごとに、または **DefaultRequestOptions** を使用してクライアント レベルで設定します)。 その他の操作はすべて、クライアント ライブラリが内部的に処理します。
+
+# <a name="java-v12"></a>[Java v12](#tab/java)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="java-v8"></a>[Java v8](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -192,11 +205,18 @@ queue.addMessage(message, 0, 0, options, null);
 // Retrieve message
 CloudQueueMessage retrMessage = queue.retrieveMessage(30, options, null);
 ```
+---
 
 ### <a name="table-service-encryption"></a>Table service 暗号化
 暗号化ポリシーを作成し、要求オプションにそれを設定するだけでなく、**EncryptionResolver** を **TableRequestOptions** に指定するか、エンティティの getter と setter に [Encrypt] 属性を設定する必要があります。
 
 ### <a name="using-the-resolver"></a>リゾルバーの使用
+
+# <a name="java-v12"></a>[Java v12](#tab/java)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="java-v8"></a>[Java v8](#tab/java8)
 
 ```java
 // Create the IKey used for encryption.
@@ -228,9 +248,16 @@ retrieveOptions.setEncryptionPolicy(policy);
 TableOperation operation = TableOperation.retrieve(ent.PartitionKey, ent.RowKey, DynamicTableEntity.class);
 TableResult result = currentTable.execute(operation, retrieveOptions, null);
 ```
+---
 
 ### <a name="using-attributes"></a>属性の使用
-前述のように、エンティティで TableEntity を実装した場合、getter プロパティおよび setter プロパティは、 **EncryptionResolver**を指定するのではなく、[Encrypt] 属性で修飾できます。
+前述のように、エンティティで TableEntity を実装した場合、getter プロパティおよび setter プロパティは、 **EncryptionResolver** を指定するのではなく、[Encrypt] 属性で修飾できます。
+
+# <a name="java-v12"></a>[Java v12](#tab/java)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="java-v8"></a>[Java v8](#tab/java8)
 
 ```java
 private string encryptedProperty1;
@@ -245,6 +272,7 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
     this.encryptedProperty1 = encryptedProperty1;
 }
 ```
+---
 
 ## <a name="encryption-and-performance"></a>暗号化とパフォーマンス
 

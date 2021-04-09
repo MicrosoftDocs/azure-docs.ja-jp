@@ -3,7 +3,7 @@ title: Azure Live Streaming REST 呼び出し用の Postman コレクション�
 description: この記事では、Azure Media Services REST 呼び出しのための Postman コレクションの定義を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: c01883c75ad5d6633abeffcd29a7d3cf2485d6fc
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 542db385ac0c59bc20da8616444bb2e40e79ec5a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511724"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103007853"
 ---
 # <a name="import-a-postman-collection-with-live-streaming-operations"></a>ライブ ストリーミング操作による Postman コレクションのインポート
 

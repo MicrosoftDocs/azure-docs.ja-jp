@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 11/09/2020
 ms.author: yelevin
 ms.openlocfilehash: 7d52b76601a617f62ae5b10fa38841ef2608bf49
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94656992"
 ---
 # <a name="monitor-the-health-of-your-data-connectors-with-this-azure-sentinel-workbook"></a>この Azure Sentinel ブックを使用してデータ コネクタの正常性を監視する

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: 5ca8c41dc1e6a05975227555abd91f5d6725285a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: d6be9753cbcb2a6be9836b27f82f1b60068570b8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092173"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103224981"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>クイックスタート: 認証コード フローを使用して Node.js Web アプリ内でユーザーをサインインさせ、アクセス トークンを取得する
 
@@ -48,6 +48,15 @@ ms.locfileid: "101092173"
 > 1. 後で使用するために、アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を書き留めます。
 > 1. **[管理]** で、 **[Certificates & secrets]\(証明書およびシークレット\)**  >  **[新しいクライアント シークレット]** の順に選択します。  説明を空白のままにし、既定の有効期限をそのままにして、 **[追加]** を選択します。
 > 1. 後で使用するために、 **[クライアント シークレット]** の **値** を書き留めます。
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-1-configure-the-application-in-azure-portal"></a>手順 1: Azure portal でのアプリケーションの構成
+> このクイックスタートのサンプル コードを動作させるには、クライアント シークレットを作成して、応答 URL として **http://localhost:3000/redirect** を追加する必要があります。
+> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
+> > [この変更を行う]()
+>
+> > [!div id="appconfigured" class="alert alert-info"]
+> > ![構成済み](media/quickstart-v2-windows-desktop/green-check.png) アプリケーションはこれらの属性で構成されています。
 
 #### <a name="step-2-download-the-project"></a>手順 2:プロジェクトのダウンロード
 
@@ -91,16 +100,17 @@ ms.locfileid: "101092173"
 > 以下の説明に従って、`config` セクションの値を変更します。
 >
 > - `Enter_the_Application_Id_Here` は、登録したアプリケーションの **アプリケーション (クライアント) ID** です。
+>
+>    **[アプリケーション (クライアント) ID]** の値を見つけるには、Azure portal でアプリ登録の **[概要]** ページに移動します。
 > - `Enter_the_Client_Secret_Here` は、登録したアプリケーションの **[クライアント シークレット]** の **値** です。
+>
+>    新しい **クライアント シークレット** を取得または生成するには、 **[管理]** で、 **[証明書とシークレット]** を選択します。
 >
 > 既定値の `authority` は、メイン (グローバル) Azure クラウドを表します。
 >
 > ```javascript
 > authority: "https://login.microsoftonline.com/common",
 > ```
->
-> > [!TIP]
-> > **[アプリケーション (クライアント) ID]** の値を見つけるには、Azure portal でアプリ登録の **[概要]** ページに移動します。 **[証明書とシークレット]** の下に移動して、**クライアント シークレット** を取得するか、新しく生成します。
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる

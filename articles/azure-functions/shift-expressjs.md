@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: cshoe
 ms.openlocfilehash: 266df5371ff5f47526fa9d6567c62e31d51ebb05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87810226"
 ---
 # <a name="shifting-from-expressjs-to-azure-functions"></a>Express.js を Azure Functions に切り替える
@@ -24,7 +24,7 @@ Express.js は、Web 開発者の間で最も支持されている Node.js フ�
 
 - **既定のルート**: 既定では、Azure Functions のエンドポイントが `api` ルートで公開されます。 ルーティング規則は、[_host.json_ ファイル内の `routePrefix`](./functions-bindings-http-webhook-output.md#hostjson-settings) で構成できます。
 
-- **構成と規則**: 関数アプリでは、_function.json_ ファイルを使用して HTTP 動詞やセキュリティ ポリシーを定義するほか、関数の[入力と出力](./functions-triggers-bindings.md)を構成することができます。 既定では、関数ファイルを含んだフォルダーの名前によってエンドポイントの名前が定義されますが、その名前は、[function.json](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint) ファイル内の `route` プロパティで変更することができます。
+- **構成と規則**: 関数アプリでは、_function.json_ ファイルを使用して HTTP 動詞やセキュリティ ポリシーを定義するほか、関数の [入力と出力](./functions-triggers-bindings.md)を構成することができます。 既定では、関数ファイルを含んだフォルダーの名前によってエンドポイントの名前が定義されますが、その名前は、[function.json](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint) ファイル内の `route` プロパティで変更することができます。
 
 > [!TIP]
 > 詳細については、対話型チュートリアル「[Azure Functions で Node.js と Express API をサーバーレス API にリファクターする](/learn/modules/shift-nodejs-express-apis-serverless/)」を参照してください。

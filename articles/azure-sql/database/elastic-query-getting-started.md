@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
 ms.openlocfilehash: 586dad7439cc57ed2c863ee5f6692e12f7a78c50
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92781228"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>スケールアウトされたクラウド データベース全体のレポート (プレビュー)
@@ -34,10 +34,10 @@ ms.locfileid: "92781228"
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>サンプル アプリケーションを使用してシャード マップ マネージャーを作成する
 ここでは、シャード マップ マネージャーといくつかのシャードを作成し、シャードにデータを挿入します。 シャードがすでにセットアップされ、シャード データが取り込まれている場合は、以下の手順を省略して、次のセクションに進むことができます。
 
-1. 「 [サンプル アプリケーションのダウンロードと実行](elastic-scale-get-started.md#download-and-run-the-sample-app-1)」セクションの手順に従って、「 **Elastic Database ツールの概要** 」のサンプル アプリケーションをビルドして実行します。 すべての手順を完了すると、次のコマンド プロンプトが表示されます。
+1. 「[サンプル アプリケーションのダウンロードと実行](elastic-scale-get-started.md#download-and-run-the-sample-app-1)」セクションの手順に従って、「**Elastic Database ツールの概要**」のサンプル アプリケーションをビルドして実行します。 すべての手順を完了すると、次のコマンド プロンプトが表示されます。
 
     ![コマンド プロンプト (command prompt)][1]
-2. コマンド ウィンドウで、「1」を入力し、 **Enter** キーを押します。 シャード マップ マネージャーが作成され、2 つのシャードがサーバーに追加されます。 「3」を入力し、 **Enter** キーを押します。この操作を 4 回を繰り返します。 これにより、サンプルのデータ行がシャードに挿入されます。
+2. コマンド ウィンドウで、「1」を入力し、**Enter** キーを押します。 シャード マップ マネージャーが作成され、2 つのシャードがサーバーに追加されます。 「3」を入力し、**Enter** キーを押します。この操作を 4 回を繰り返します。 これにより、サンプルのデータ行がシャードに挿入されます。
 3. [Azure Portal](https://portal.azure.com) に、サーバー内の 3 つの新しいデータベースが表示されます。
 
    ![Visual Studio の確認][2]
@@ -72,7 +72,7 @@ ms.locfileid: "92781228"
     SECRET = '<password>';
     ```
 
-    "username" と "password" は、記事「 **Elastic Database ツールの概要** 」の「 [サンプル アプリケーションのダウンロードと実行](elastic-scale-get-started.md#download-and-run-the-sample-app)」セクションの手順 3 で使用されているログイン情報と同じである必要があります。
+    "username" と "password" は、記事「**Elastic Database ツールの概要**」の「[サンプル アプリケーションのダウンロードと実行](elastic-scale-get-started.md#download-and-run-the-sample-app)」セクションの手順 3 で使用されているログイン情報と同じである必要があります。
 
 ### <a name="external-data-sources"></a>外部データ ソース
 外部データ ソースを作成するには、ElasticDBQuery データベースで、次のコマンドを実行します。

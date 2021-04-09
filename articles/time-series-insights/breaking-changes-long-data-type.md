@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/07/2020
 ms.custom: dpalled
 ms.openlocfilehash: 0f7ac9844bfe7eac7094d3b7fdf653e07f236599
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96780826"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 での Long データ型のサポートの追加
@@ -240,6 +240,6 @@ IoT Hub を使用する場合、組み込みのエンドポイントへのアク
 
 多数のプロパティがあるウォーム ストアのユーザーで、この変更によって環境が 1,000 個のウォーム ストアのプロパティ名の制限を超える可能性がある場合は、Azure portal からサポート チケットを送信し、この通信を伝えてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [サポートされているデータ型](concepts-supported-data-types.md)の完全な一覧を表示します。

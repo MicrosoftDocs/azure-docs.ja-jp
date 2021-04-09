@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 3b2925a532d722598ccf16c001c9e2591aed1f2b
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99584992"
 ---
 # <a name="apply-math-operation"></a>算術演算の適用
@@ -303,7 +303,7 @@ Azure Machine Learning デザイナーでは、さまざまな丸めの演算が
 
 ### <a name="mod"></a>Mod
 
-指定された精度に合わせて、 **[Column set]\(列セット\)** 内の値の小数部を返します。  
+指定された有効桁数に対して、[**列セット**] の値の端数部分を返します。  
 
 ### <a name="quotient"></a>商
 

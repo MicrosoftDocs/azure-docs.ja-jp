@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8916fbc7c2a0b9789dcc73697324cee370f1fc1c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6291964aff7c215df7f738ab103947dcb9b1b1d4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704907"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036875"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>シナリオ:カスタム設定を使用して NVA 経由でトラフィックをルーティングする
 
@@ -176,7 +176,7 @@ NVA 経由のルーティングを設定するには、次の手順を検討し�
    >
    > * ポータル ユーザーは、0.0.0.0/0 のルートが有効になるよう、接続 (VPN/ER/P2S/VNet) で [Propagate to default route] (既定のルートに伝達する) を有効にする必要があります。
    > * PS/CLI/REST ユーザーは、0.0.0.0/0 のルートが有効になるよう、フラグ 'enableinternetsecurity' を true に設定する必要があります。
-   >
+   > * 仮想ネットワーク接続では、ネクスト ホップ IP が含まれる経路にパブリック IP アドレスまたは 0.0.0.0/0 (インターネット) が指定されている場合、"複数または 1 つの" ネクスト ホップ IP の経路を SPOKE VNet 内の "同じ" ネットワーク仮想アプライアンスに指定することはできません。
 
 ## <a name="next-steps"></a>次のステップ
 

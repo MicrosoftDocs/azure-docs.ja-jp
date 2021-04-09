@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 3af48c93633709c9b5814caa99c222e24e402a4a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cb5230ae42703d19726fb8ea0d6c88aa70e589a8
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945223"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864144"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight の Apache Phoenix
 
@@ -36,7 +36,7 @@ CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) IN
 
 この方法を使うと、単一インデックスでクエリを実行するより、パフォーマンスが大幅に向上します。 この種のセカンダリ インデックスは **カバリング インデックス** であり、クエリに含まれるすべての列を含みます。 したがって、テーブル参照は必要なく、インデックスがクエリ全体を満たします。
 
-### <a name="views"></a>ビュー
+### <a name="views"></a>Views
 
 Phoenix のビューは、作成された物理テーブルの数が約 100 個を超えるとパフォーマンスが低下し始める HBase の制限を克服する手段を提供します。 Phoenix のビューでは、基になる 1 つの物理 HBase テーブルを複数の "*仮想テーブル*" で共有できます。
 
@@ -123,15 +123,15 @@ HDInsight HBase クラスターには、構成の変更を行うための [Ambar
 
 1. Phoenix を有効または無効にしたり、Phoenix のクエリ タイムアウトの設定を制御したりするには、Hadoop のユーザー資格情報を使って Ambari Web UI (`https://YOUR_CLUSTER_NAME.azurehdinsight.net`) にログインします。
 
-2. 左側のメニューのサービス一覧から **[HBase]** を選び、 **[Configs]\(構成\)** タブを選びます。
+2. 左側のメニューのサービス一覧から **[HBase]** を選び、**[Configs]\(構成\)** タブを選びます。
 
-    ![Apache Ambari HBase の構成](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png)
+    :::image type="content" source="./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png" alt-text="Apache Ambari HBase の構成":::
 
 3. **[Phoenix SQL]** 構成セクションを探して、Phoenix を有効または無効にしたり、クエリのタイムアウトを設定します。
 
-    ![Ambari の Phoenix SQL 構成セクション](./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png)
+    :::image type="content" source="./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png" alt-text="Ambari の Phoenix SQL 構成セクション":::
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [HDInsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用](hbase/apache-hbase-query-with-phoenix.md)
 

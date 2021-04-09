@@ -4,18 +4,30 @@ description: Azure Functions の Durable Functions 拡張機能を使って状�
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e70c50098ece516312e1e92984185624c276301b
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 8ef32ecfb6f69b71d29578d3b8314f568fd9386a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028422"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102431076"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions のモニター シナリオ - 天気ウォッチャーのサンプル
 
 モニター パターンは、ワークフローの柔軟な "*繰り返し*" プロセスを参照します。たとえば、特定の条件が満たされるまでポーリングします。 この記事では、[Durable Functions](durable-functions-overview.md) を使って監視を実装するサンプルを説明します。
 
-[!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
+## <a name="prerequisites"></a>前提条件
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+* [クイックスタートの記事を完了していること](durable-functions-create-first-csharp.md)
+* [GitHub からサンプル プロジェクトを複製またはダウンロードしていること](https://github.com/Azure/azure-functions-durable-extension/tree/main/samples/precompiled)
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+* [クイックスタートの記事を完了していること](quickstart-js-vscode.md)
+* [GitHub からサンプル プロジェクトを複製またはダウンロードしていること](https://github.com/Azure/azure-functions-durable-extension/tree/main/samples/javascript)
+
+---
 
 ## <a name="scenario-overview"></a>シナリオの概要
 
@@ -72,9 +84,6 @@ API キーを入手したら、次の **アプリ設定** を関数アプリに�
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
-# <a name="python"></a>[Python](#tab/python)
-Python での監視パターンについては、別のチュートリアルがあります。[こちら](durable-functions-monitor-python.md)を参照してください。
-
 ---
 
 このオーケストレーター関数は、次のアクションを行います。
@@ -105,9 +114,6 @@ Python での監視パターンについては、別のチュートリアルが�
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
-# <a name="python"></a>[Python](#tab/python)
-Python での監視パターンについては、別のチュートリアルがあります。[こちら](durable-functions-monitor-python.md)を参照してください。
-
 ---
 
 ### <a name="e3_sendgoodweatheralert-activity-function"></a>E3_SendGoodWeatherAlert アクティビティ関数
@@ -130,9 +136,6 @@ Python での監視パターンについては、別のチュートリアルが�
 SMS メッセージを送信するコードを次に示します。
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
-
-# <a name="python"></a>[Python](#tab/python)
-Python での監視パターンについては、別のチュートリアルがあります。[こちら](durable-functions-monitor-python.md)を参照してください。
 
 ---
 

@@ -2,16 +2,17 @@
 title: SSH キー ペアを作成するための詳細な手順
 description: Azure の Linux VM 用に SSH の公開キーと秘密キーのペアを作成して管理する詳細な手順について説明します。
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 07/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 39db1aec06c16a2d44c93bea7785931f8de8ca9e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 9d888de78432558cda8e08c3de91be9673231b47
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182470"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102554719"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>詳細な手順: Azure の Linux VM に対する認証用に SSH キーを作成して管理する
 

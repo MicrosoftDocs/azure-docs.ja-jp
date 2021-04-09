@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Innoverse の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Innoverse の統合 | Microsoft Docs'
 description: Azure Active Directory と Innoverse の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 10/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 2ddd13bfb03f5df0a9fec5e14b22211e05b3a3b1
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460089"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-innoverse"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Innoverse の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-innoverse"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Innoverse の統合
 
 このチュートリアルでは、Innoverse と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Innoverse を統合すると、次のことができます。
 
@@ -41,8 +41,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 
 
-* Innoverse では、 **SP と IDP** によって開始される SSO がサポートされます
-* Innoverse では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Innoverse では、**SP と IDP** によって開始される SSO がサポートされます
+* Innoverse では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 
 ## <a name="adding-innoverse-from-the-gallery"></a>ギャラリーからの Innoverse の追加
@@ -53,7 +53,7 @@ Azure AD への Innoverse の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Innoverse** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Innoverse**」と入力します。
 1. 結果のパネルから **[Innoverse]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -74,7 +74,7 @@ Innoverse に対する Azure AD SSO を構成してテストするには、次�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Innoverse** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Innoverse** アプリケーション統合ページで、**[管理]** セクションを探して、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -139,7 +139,7 @@ Innoverse に対する Azure AD SSO を構成してテストするには、次�
 
 ## <a name="configure-innoverse-sso"></a>Innoverse の SSO の構成
 
-**Innoverse** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Innoverse サポート チーム](mailto:support@readify.net)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Innoverse** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Innoverse サポート チーム](mailto:support@readify.net)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-innoverse-test-user"></a>Innoverse のテスト ユーザーを作成する
 

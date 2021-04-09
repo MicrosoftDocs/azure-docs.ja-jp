@@ -10,10 +10,10 @@ ms.date: 02/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: debce0a1b4c09bb89cdceb1cd29e59e1976c939a
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99539156"
 ---
 # <a name="blob-snapshots"></a>BLOB のスナップショット

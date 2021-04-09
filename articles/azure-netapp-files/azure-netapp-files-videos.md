@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: b-juche
 ms.openlocfilehash: d90061d6d56e24168bf368498d05962296892342
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100374866"
 ---
 # <a name="azure-netapp-files-videos"></a>Azure NetApp Files のビデオ
@@ -26,5 +26,5 @@ ms.locfileid: "100374866"
 
 Azure NetApp Files の詳細については、いくつかのビデオを参照してください。  
 
-* [Microsoft Ignite 2019:Azure NetApp Files で最も要求の厳しいエンタープライズ ファイル ワークロードを実行する](https://azure.microsoft.com/resources/videos/ignite-2018-taking-on-the-most-demanding-enterprise-file-workloads-with-azure-netapp-files/)では、ユース ケースやデモなどを含めて Azure NetApp Files について簡単に説明し、機能とロードマップについて詳しく説明します。
+* [Microsoft Ignite 2019: Azure NetApp Files で最も要求の厳しいエンタープライズ ファイル ワークロードを実行する](https://azure.microsoft.com/resources/videos/ignite-2018-taking-on-the-most-demanding-enterprise-file-workloads-with-azure-netapp-files/)では、ユース ケースやデモなどを含めて Azure NetApp Files について簡単に説明し、機能とロードマップについて詳しく説明します。
 * [Kirk Ryan による Azure NetApp Files の講演](https://www.youtube.com/channel/UCq1jZkyVXqMsMSIvScBE2qg/playlists)は、Azure NetApp Files 専用の一連のビデオ、チュートリアルおよびデモとなります。 

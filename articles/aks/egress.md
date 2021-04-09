@@ -4,17 +4,17 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) クラスターでエグレス トラフィックの静的パブリック IP アドレスを作成して使用する方法を説明します
 services: container-service
 ms.topic: article
-ms.date: 03/04/2019
-ms.openlocfilehash: 2eefeecfa550683dafcf66d936837e2a891c4c84
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/16/2021
+ms.openlocfilehash: e1f81bf4c4d35108557449a8bebd126bdf744191
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726548"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104592372"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で *Basic* SKU ロード バランサーと共に、エグレス トラフィックに静的パブリック IP アドレスを使用する
 
-既定では、Azure Kubernetes Service (AKS) クラスターからのエグレス アドレスはランダムに割り当てられます。 この構成は、外部サービスにアクセスするための IP アドレスを識別する必要がある場合には適していません。 代わりに、サービス アクセスの許可リストに追加される静的 IP アドレスを割り当てる必要がある場合があります。
+既定では、Azure Kubernetes Service (AKS) クラスターからのエグレス アドレスはランダムに割り当てられます。 この構成は、外部サービスにアクセスするための IP アドレスを識別する必要がある場合には適していません。 代わりに、サービス アクセスの許可リストに追加される静的 IP アドレスを割り当てる必要が生じる場合があります。
 
 この記事では、AKS クラスターでエグレス トラフィックに使用する静的パブリック IP アドレスを作成して使用する方法を示します。
 
@@ -107,7 +107,7 @@ kubectl apply -f egress-service.yaml
 基本的な *Debian* pod を起動してアタッチします｡
 
 ```console
-kubectl run -it --rm aks-ip --image=debian
+kubectl run -it --rm aks-ip --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
 ```
 
 コンテナー内から web サイトにアクセスするには、`apt-get` を使用して､コンテナーに `curl` をインストールします｡

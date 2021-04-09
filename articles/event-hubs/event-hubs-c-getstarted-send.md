@@ -1,16 +1,16 @@
 ---
-title: クイック スタート:C を使用してイベントを送信する - Azure Event Hubs
-description: クイック スタート:この記事では、Azure Event Hubs にイベントを送信する C アプリケーションを作成するためのチュートリアルを提供します。
+title: 'クイックスタート: C を使用してイベントを送信する - Azure Event Hubs'
+description: 'クイックスタート: この記事では、Azure Event Hubs にイベントを送信する C アプリケーションを作成するためのチュートリアルを提供します。'
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: bfe1ca1a45f7b33d7431aed13446d8d72f79fb90
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85315667"
 ---
-# <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>クイック スタート:C を使用して Azure Event Hubs にイベントを送信する
+# <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>クイックスタート: C を使用して Azure Event Hubs にイベントを送信する
 
 ## <a name="introduction"></a>はじめに
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
@@ -22,7 +22,7 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 
 * C の開発環境。 このチュートリアルでは、Ubuntu 14.04 での Azure Linux VM 上の GCC スタックを想定しています。
 * [Microsoft Visual Studio](https://www.visualstudio.com/)。
-* **Event Hubs 名前空間とイベント ハブを作成する**。 [Azure portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。 次の記事の手順に従って、イベント ハブ用のアクセス キーの値を取得します:[接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 このチュートリアルの後半で記述するコードで、このアクセス キーを使用します。 既定のキー名は次のとおりです:**RootManageSharedAccessKey**。
+* **Event Hubs 名前空間とイベント ハブを作成する**。 [Azure portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。 次の記事の手順に従って、イベント ハブ用のアクセス キーの値を取得します。[接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 このチュートリアルの後半で記述するコードで、このアクセス キーを使用します。 既定のキー名は次のとおりです:**RootManageSharedAccessKey**。
 
 ## <a name="write-code-to-send-messages-to-event-hubs"></a>Event Hubs にメッセージを送信するコードの記述
 このセクションでは、イベントをイベント ハブに送信する C アプリの作成方法を示します。 コードでは、[Apache Qpid プロジェクト](https://qpid.apache.org/)の Proton AMQP ライブラリを使用します。 これは、[この例](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)に示すように、C の AMQP を Service Bus キューとトピックと共に使用するのに似ています。 詳しくは、[Qpid Proton のドキュメント](https://qpid.apache.org/proton/index.html)をご覧ください。
@@ -129,7 +129,7 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
         return 0;
     }
     ```
-6. **gcc**でファイルをコンパイルします。
+6. **gcc** でファイルをコンパイルします。
    
     ```
     gcc sender.c -o sender -lqpid-proton

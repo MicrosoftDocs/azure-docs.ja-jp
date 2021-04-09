@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: 90f3cb0ae44be176d3ae248988d098039c140c3e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92896159"
 ---
 # <a name="add-a-simple-data-layer"></a>シンプルなデータ レイヤーの追加
@@ -149,7 +149,7 @@ Azure Maps と GitHub スタイルのプロパティは、サポートされて�
 | レイヤー オプション | サポートされているプロパティ名 | 既定値 |
 |--------------|----------------------------|---------------|
 | `strokeColor` | `strokeColor`, `stroke` | `'#1E90FF'` |
-| `strokeWidth` | `strokeWidth`、`stroke-width`、`stroke-thickness` | `3` |
+| `strokeWidth` | `strokeWidth`, `stroke-width`, `stroke-thickness` | `3` |
 | `strokeOpacity` | `strokeOpacity`, `stroke-opacity` | `1` |
 
 ### <a name="polygon-style-properties"></a>多角形のスタイル プロパティ

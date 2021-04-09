@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 04/28/2020
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: d12d447acb3b6bf2b6f84e9768e9f063a9a36b03
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94542305"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-powershell"></a>クイック スタート:PowerShell を使用して Azure Database for MySQL サーバーを作成する

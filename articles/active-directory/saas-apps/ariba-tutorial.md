@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/01/2021
 ms.author: jeedes
 ms.openlocfilehash: 3ecbe96e0385bff6199094af7138017df500175b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101647253"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ariba"></a>チュートリアル: Azure Active Directory と Ariba の統合
@@ -77,7 +77,7 @@ Ariba に対する Azure AD SSO を構成してテストするには、次の手
 
     ![[Asana のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
     
     ```http
     https://<subdomain>.sourcing.ariba.com

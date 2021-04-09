@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4478c9c286c06d5d6c5593195a0e93abd286b8c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92371513"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management での Azure AD ロールの管理機能
@@ -29,7 +29,7 @@ Privileged Identity Management での Azure AD ロールの管理機能が更新
 
 ## <a name="time-bound-assignments"></a>期限付き割り当て
 
-以前、ロールの割り当てには、 *有資格* と *永続* の 2 つの状態がありました。 現在では、それぞれの割り当ての種類に、開始時間と終了時間を設定できます。 この追加により、割り当てには次の 4 つの状態が設定できるようになりました。
+以前、ロールの割り当てには、*有資格* と *永続* の 2 つの状態がありました。 現在では、それぞれの割り当ての種類に、開始時間と終了時間を設定できます。 この追加により、割り当てには次の 4 つの状態が設定できるようになりました。
 
 - [Eligible permanently]\(永続的に有資格\)
 - [Active permanently]\(永続的にアクティブ\)
@@ -49,8 +49,8 @@ Azure AD ロール向けの新しい設定も追加されました。
 
 期限付き割り当てについて知ると、期限が切れたらロールはどうなるのか、という疑問がわくと思います。 この新しいバージョンでは、このシナリオに対して 2 つの選択肢があります。
 
-- **拡張** :ロールの割り当ての有効期限が近付くと、ユーザーは Privileged Identity Management を使用してそのロールの割り当ての延長を要求できます
-- **更新** :ロールの割り当ての有効期限が切れた場合、ユーザーは Privileged Identity Management を使用してそのロールの割り当ての更新を要求できます
+- **拡張**:ロールの割り当ての有効期限が近付くと、ユーザーは Privileged Identity Management を使用してそのロールの割り当ての延長を要求できます
+- **更新**:ロールの割り当ての有効期限が切れた場合、ユーザーは Privileged Identity Management を使用してそのロールの割り当ての更新を要求できます
 
 ユーザーが行うこれらの操作には、グローバル管理者または特権ロール管理者からの承認が必要です。 管理者は、これらの有効期限を管理する仕事から解放されます。 延長または更新の要求を待ち、その要求が有効であれば承認するだけでよいのです。
 

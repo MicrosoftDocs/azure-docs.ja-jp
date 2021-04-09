@@ -4,15 +4,15 @@ description: GPU リソースを使用してコンピューティング集中型
 ms.topic: article
 ms.date: 07/22/2020
 ms.openlocfilehash: 0d645d1fce24d1324e485d74e20bcf492d4444a7
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93127010"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU リソースを使用するコンテナー インスタンスをデプロイする
 
-特定のコンピューティング集中型ワークロードを Azure Container Instances で実行するには、 *GPU リソース* を持つ [コンテナー グループ](container-instances-container-groups.md)をデプロイします。 グループのコンテナー インスタンスは、CUDA やディープ ラーニング アプリケーションなどのコンテナー ワークロードを実行しながら、1 つまたは複数の NVIDIA Tesla GPU にアクセスできます。
+特定のコンピューティング集中型ワークロードを Azure Container Instances で実行するには、*GPU リソース* を持つ [コンテナー グループ](container-instances-container-groups.md)をデプロイします。 グループのコンテナー インスタンスは、CUDA やディープ ラーニング アプリケーションなどのコンテナー ワークロードを実行しながら、1 つまたは複数の NVIDIA Tesla GPU にアクセスできます。
 
 この記事では、[YAML ファイル](container-instances-multi-container-yaml.md)または [Resource Manager テンプレート](container-instances-multi-container-group.md)を使用して、コンテナー グループをデプロイするときに GPU リソースを追加する方法について説明します。 また、Azure portal を使用してコンテナー インスタンスをデプロイするときに GPU リソースも指定できます。
 
@@ -27,9 +27,9 @@ ms.locfileid: "93127010"
 
 サポート対象リージョンは今後追加される予定です。
 
-**サポートされている OS の種類** :Linux のみ
+**サポートされている OS の種類**:Linux のみ
 
-**追加の制限事項** :GPU リソースは、コンテナー グループを [仮想ネットワーク](container-instances-vnet.md)にデプロイするときには使用できません。
+**追加の制限事項**:GPU リソースは、コンテナー グループを [仮想ネットワーク](container-instances-vnet.md)にデプロイするときには使用できません。
 
 ## <a name="about-gpu-resources"></a>GPU リソースについて
 
@@ -37,8 +37,8 @@ ms.locfileid: "93127010"
 
 コンテナー インスタンスで GPU を使用するには、次の情報を使って *GPU リソース* を指定します。
 
-* **カウント** - GPU の数: **1** 、 **2** 、または **4** 。
-* **SKU** - GPU SKU: **K80** 、 **P100** 、または **V100** 。 各 SKU は、次のいずれかの Azure GPU 対応 VM ファミリの NVIDIA Tesla GPU にマップされます。
+* **カウント** - GPU の数:**1**、**2**、または **4**。
+* **SKU** - GPU SKU:**K80**、**P100**、または **V100**。 各 SKU は、次のいずれかの Azure GPU 対応 VM ファミリの NVIDIA Tesla GPU にマップされます。
 
   | SKU | VM ファミリ |
   | --- | --- |
@@ -55,9 +55,9 @@ GPU リソースをデプロイするときに、ワークロードに適した 
 
 ### <a name="things-to-know"></a>注意事項
 
-* **デプロイ時** - GPU リソースを含むコンテナー グループの作成には、最大で **8 - 10 分** かかります。 これは、Azure で GPU VM をプロビジョニングして構成するための追加時間によるものです。 
+* **デプロイ時**- GPU リソースを含むコンテナー グループの作成には、最大で **8 - 10 分** かかります。 これは、Azure で GPU VM をプロビジョニングして構成するための追加時間によるものです。 
 
-* **価格** - GPU リソースのないコンテナー グループと同様に、Azure では GPU リソースがあるコンテナー グループの *期間* にわたって使用されたリソースに対して請求されます。 期間は、最初のコンテナー イメージのプルが開始された時点から、コンテナー グループが終了する時点までが計算されます。 コンテナー グループをデプロイする時間は含まれません。
+* **価格**- GPU リソースのないコンテナー グループと同様に、Azure では GPU リソースがあるコンテナー グループの *期間* にわたって使用されたリソースに対して請求されます。 期間は、最初のコンテナー イメージのプルが開始された時点から、コンテナー グループが終了する時点までが計算されます。 コンテナー グループをデプロイする時間は含まれません。
 
   [価格の詳細](https://azure.microsoft.com/pricing/details/container-instances/)を参照してください。
 
@@ -91,7 +91,7 @@ properties:
   restartPolicy: OnFailure
 ```
 
-[az container create][az-container-create] コマンドを使って、`--file` パラメーターに YAML ファイル名を指定して、コンテナー グループをデプロイします。 リソース グループの名前と、GPU リソースをサポートするコンテナー グループの場所 ( *eastus* など) を指定する必要があります。  
+[az container create][az-container-create] コマンドを使って、`--file` パラメーターに YAML ファイル名を指定して、コンテナー グループをデプロイします。 リソース グループの名前と、GPU リソースをサポートするコンテナー グループの場所 (*eastus* など) を指定する必要があります。  
 
 ```azurecli
 az container create --resource-group myResourceGroup --file gpu-deploy-aci.yaml --location eastus
@@ -168,7 +168,7 @@ GPU リソースでコンテナー グループをデプロイするには、[Re
 }
 ```
 
-[az deployment group create][az-deployment-group-create] コマンドを使用してテンプレートをデプロイします。 GPU リソースをサポートしているリージョン ( *eastus* など) で作成されたリソース グループの名前を指定する必要があります。
+[az deployment group create][az-deployment-group-create] コマンドを使用してテンプレートをデプロイします。 GPU リソースをサポートしているリージョン (*eastus* など) で作成されたリソース グループの名前を指定する必要があります。
 
 ```azurecli-interactive
 az deployment group create --resource-group myResourceGroup --template-file gpudeploy.json

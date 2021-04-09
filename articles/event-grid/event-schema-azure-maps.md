@@ -4,10 +4,10 @@ description: Azure Event Grid で Azure Maps のイベント用に提供され�
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: 88cf0c8274d685a45862bc7b7884b5e4a686c22d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100363681"
 ---
 # <a name="azure-maps-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Maps
@@ -168,7 +168,7 @@ Azure Maps アカウントから出力されるイベントの種類は次のと
 # <a name="event-grid-event-schema"></a>[Event Grid イベント スキーマ](#tab/event-grid-event-schema)
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -182,7 +182,7 @@ Azure Maps アカウントから出力されるイベントの種類は次のと
 # <a name="cloud-event-schema"></a>[クラウド イベント スキーマ](#tab/cloud-event-schema)
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `source` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -196,7 +196,7 @@ Azure Maps アカウントから出力されるイベントの種類は次のと
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `apiCategory` | string | イベントの API カテゴリ。 |
 | `apiName` | string | イベントの API 名。 |
@@ -206,13 +206,13 @@ Azure Maps アカウントから出力されるイベントの種類は次のと
 
 Maps API でエラーが発生すると、エラー オブジェクトが返されます。 エラー オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `error` | ErrorDetails |Maps API でエラーが発生すると、このオブジェクトが返されます  |
 
 Maps API でエラーが発生すると、ErrorDetails オブジェクトが返されます。 ErrorDetails オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `code` | string | HTTP 状態コード。 |
 | `message` | string | ある場合、人間が判読できるエラーの説明。 |
@@ -226,7 +226,7 @@ InnerError は、エラーに関するサービス固有の情報が含まれる
 
 geometries オブジェクト。要求のユーザー時刻を基準にして有効期限が切れているジオフェンスのジオメトリ ID の一覧です。 geometries オブジェクトには、次のプロパティを含むジオメトリ項目があります。 
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 |:-------- |:---- |:----------- |
 | `deviceid` | string | デバイスの ID。 |
 | `distance` | string | <p>座標からジオフェンスの最も近い境界までの距離。 正の値は、座標がジオフェンスの外部にあることを意味します。 座標がジオフェンスの外部にあっても、最も近いジオフェンスの境界から searchBuffer の値より大きく離れている場合、値は 999 になります。 負の値は、座標がジオフェンスの内部にあることを意味します。 座標がポリゴンの内部にあっても、最も近いジオフェンスの境界から searchBuffer の値より大きく離れている場合、値は -999 になります。 値 999 は、座標がジオフェンスの外部にあることが十分に確実であることを意味します。 値 -999 は、座標がジオフェンスの内部にあることが十分に確実であることを意味します。<p> |
@@ -237,7 +237,7 @@ geometries オブジェクト。要求のユーザー時刻を基準にして有
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `expiredGeofenceGeometryId` | string[] | 要求でのユーザー時刻を基準にして期限切れになっているジオフェンスのジオメトリ ID の一覧。 |
 | `geometries` | geometries[] |座標が含まれるフェンス ジオメトリ、または位置の周りに searchBuffer が重なっているフェンス ジオメトリの一覧を示します。 |

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: d54cf4e9025dfd75d9029dec534fc5dc5dd990a5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4e23c5977b2492d2ea8a7a8cc050c77c512c3e16
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944170"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868377"
 ---
 # <a name="memory-usage-optimization-for-apache-spark"></a>Apache Spark のメモリ使用量の最適化
 
@@ -31,7 +31,7 @@ Spark は、データをメモリに配置することで動作します。 そ�
 
 Apache Hadoop YARN を使用する場合は、YARN が Spark の各ノード上のすべてのコンテナーで使用されるメモリを制御します。  次の図は、重要なオブジェクトとそれらの関連性を示しています。
 
-![YARN の Spark メモリの管理](./media/apache-spark-perf/apache-yarn-spark-memory.png)
+:::image type="content" source="./media/apache-spark-perf/apache-yarn-spark-memory.png" alt-text="YARN の Spark メモリの管理" border="false":::
 
 ''メモリ不足'' のメッセージに対処するには、次を試してください。
 

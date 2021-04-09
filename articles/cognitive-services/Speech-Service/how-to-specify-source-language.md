@@ -13,10 +13,10 @@ ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 1b134fd3d09eeda340e7323638a36b68336242c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91362029"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>音声テキスト変換のソース言語を指定する

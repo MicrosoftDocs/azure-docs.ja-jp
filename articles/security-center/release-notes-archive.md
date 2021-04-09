@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 3766f29f26a6b2ffeb385cffc971b1ac7a1556cb
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: a00c11924d2c0f6860c297ab7e58da21da5e1975
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182578"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102634704"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Security Center の最新情報のアーカイブ
 
@@ -759,7 +759,7 @@ Free 価格レベルのサブスクリプションをお持ちのお客様は、
 
 詳しくは、「[ID とアクセスの推奨事項](recommendations-reference.md#recs-identityandaccess)」を参照してください。
 
-詳しくは、[ID とアクセスの監視](security-center-identity-access.md)に関するページを参照してください。
+詳細については、「[サブスクリプションでの多要素認証 (MFA) の実施を管理する](security-center-identity-access.md)」を参照してください。
 
 
 

@@ -9,10 +9,10 @@ ms.date: 07/08/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8f8d366961049deb3eda193718ccb553aac930e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "67666373"
 ---
 料金は 2 つの要素に対して課金されます。1 つは仮想ネットワーク ゲートウェイに対する時間単位のコンピューティング コスト、もう 1 つは仮想ネットワーク ゲートウェイからのエグレス (送信) データ転送のコストです。 料金情報については、[価格](https://azure.microsoft.com/pricing/details/vpn-gateway)に関するページをご覧ください。 レガシ ゲートウェイ SKU の価格については、[ExpressRoute の価格に関するページ](https://azure.microsoft.com/pricing/details/expressroute)を参照し、「**Virtual Network ゲートウェイ**」のセクションまでスクロールしてください。

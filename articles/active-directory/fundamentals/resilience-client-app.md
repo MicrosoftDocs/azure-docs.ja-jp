@@ -12,10 +12,10 @@ ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
 ms.openlocfilehash: bc3b041e44fad66a4edc6ff34c0e534dc423de86
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99226592"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>開発するクライアント アプリケーションで認証と認可の回復性を向上させる

@@ -2,49 +2,48 @@
 title: 仮想ネットワークの作成 - クイック スタート - Azure CLI
 titlesuffix: Azure Virtual Network
 description: このクイック スタートでは、Azure CLI を使用して仮想ネットワークを作成する方法について説明します。 仮想ネットワークでは、Azure リソースが互いに通信を行ったり、インターネットと通信したりできるようになります。
-services: virtual-network
-documentationcenter: virtual-network
 author: KumudD
 Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
 ms.service: virtual-network
-ms.devlang: azurecli
 ms.topic: quickstart
-ms.tgt_pltfrm: virtual-network
-ms.workload: infrastructure
-ms.date: 01/22/2019
+ms.date: 03/06/2021
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1feae201738a560c4cdb56f703c4af9a38af86d1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f4cd0a09c64c8c89116bf3a7dec40bae9f05f71
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88056790"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199069"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用した仮想ネットワークの作成
 
-仮想ネットワークによって、仮想マシン (VM) などの Azure リソースが互いにプライベートな通信を行ったりインターネットと通信したりできるようになります。 このクイック スタートでは、仮想ネットワークの作成方法について説明します。 仮想ネットワークを作成したら、2 つの VM を仮想ネットワークにデプロイします。 次にインターネットから VM に接続し、新しい仮想ネットワークを介してプライベートで通信します。
-## <a name="prerequisites"></a>前提条件
-Azure サブスクリプションをお持ちでない場合は、ここで[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+仮想ネットワークによって、仮想マシン (VM) などの Azure リソースが互いにプライベートな通信を行ったりインターネットと通信したりできるようになります。 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+このクイック スタートでは、仮想ネットワークの作成方法について説明します。 仮想ネットワークを作成したら、2 つの VM を仮想ネットワークにデプロイします。 次にインターネットから VM に接続し、新しい仮想ネットワークを介してプライベートで通信します。
 
-代わりに Azure CLI をローカルにインストールして使用する場合は、このクイック スタートには Azure CLI バージョン 2.0.28 以降を使用する必要があります。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードについては、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」をご覧ください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+- このクイックスタートには、Azure CLI のバージョン 2.0.28 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>リソース グループと仮想ネットワークを作成する
 
-仮想ネットワークを作成するには、その前に、仮想ネットワークをホストするリソース グループを作成する必要があります。 [az group create](/cli/azure/group) を使用して、リソース グループを作成します。 この例では、*eastus* の場所内に *myResourceGroup* という名前のリソース グループを作成します。
+仮想ネットワークを作成するには、その前に、仮想ネットワークをホストするリソース グループを作成する必要があります。 [az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 この例では、**Eastus** の場所内に **CreateVNetQS-rg** という名前のリソース グループを作成します。
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
+az group create \
+    --name CreateVNetQS-rg \
+    --location eastus
 ```
 
-[az network vnet create](/cli/azure/network/vnet) を使用して仮想ネットワークを作成します。 この例では、*default* という名前のサブネットを使って、*myVirtualNetwork* という名前の既定の仮想ネットワークを作成します。
+[az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) を使用して仮想ネットワークを作成します。 この例では、**default** という名前のサブネットを使って、**myVNet** という名前の既定の仮想ネットワークを作成します。
 
 ```azurecli-interactive
 az network vnet create \
-  --name myVirtualNetwork \
-  --resource-group myResourceGroup \
+  --name myVNet \
+  --resource-group CreateVNetQS-rg \
   --subnet-name default
 ```
 
@@ -54,26 +53,34 @@ az network vnet create \
 
 ### <a name="create-the-first-vm"></a>最初の VM を作成する
 
-[az vm create](/cli/azure/vm) を使用して VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 `--no-wait` オプションを使用すると、VM はバックグラウンドで作成されるため、次の手順に進むことができます。 この例では、*myVm1* という名前の VM を作成します。
+[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 
+
+既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 
+
+`--no-wait` オプションを使用すると、バックグラウンドで VM が作成されます。 次の手順に進むことができます。 
+
+この例では、**myVM1** という名前の VM を作成します。
 
 ```azurecli-interactive
 az vm create \
-  --resource-group myResourceGroup \
-  --name myVm1 \
+  --resource-group CreateVNetQS-rg \
+  --name myVM1 \
   --image UbuntuLTS \
   --generate-ssh-keys \
+  --public-ip-address myPublicIP-myVM1 \
   --no-wait
 ```
 
 ### <a name="create-the-second-vm"></a>2 つ目の VM を作成する
 
-前の手順で `--no-wait` オプションを使用したため、先に進んで *myVm2* という名前の 2 つ目の VM を作成できます。
+前の手順では、`--no-wait` オプションを使用しました。 今度は 2 つ目の VM を **myVM2** という名前で作成しましょう。
 
 ```azurecli-interactive
 az vm create \
-  --resource-group myResourceGroup \
-  --name myVm2 \
+  --resource-group CreateVNetQS-rg \
+  --name myVM2 \
   --image UbuntuLTS \
+  --public-ip-address myPublicIP-myVM2 \
   --generate-ssh-keys
 ```
 
@@ -84,22 +91,32 @@ VM の作成には数分かかります。 Azure で VM が作成された後、
 ```output
 {
   "fqdns": "",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm2",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/CreateVNetQS-rg/providers/Microsoft.Compute/virtualMachines/myVM2",
   "location": "eastus",
   "macAddress": "00-0D-3A-23-9A-49",
   "powerState": "VM running",
   "privateIpAddress": "10.0.0.5",
   "publicIpAddress": "40.68.254.142",
-  "resourceGroup": "myResourceGroup"
+  "resourceGroup": "CreateVNetQS-rg"
   "zones": ""
 }
 ```
 
-**publicIpAddress** を書き留めておきます。 このアドレスは、次の手順でインターネットから VM に接続するために使用します。
+## <a name="vm-public-ip"></a>VM のパブリック IP
+
+**myVM2** のパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) を使用します。
+
+```azurecli-interactive
+az network public-ip show \
+  --resource-group CreateVNetQS-rg  \
+  --name myPublicIP-myVM2 \
+  --query ipAddress \
+  --output tsv
+```
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>インターネットから VM に接続する
 
-このコマンドでは、`<publicIpAddress>` を *myVm2* VM のパブリック IP アドレスに置き換えます。
+このコマンドでは、`<publicIpAddress>` を **myVM2** VM のパブリック IP アドレスに置き換えます。
 
 ```bash
 ssh <publicIpAddress>
@@ -107,27 +124,35 @@ ssh <publicIpAddress>
 
 ## <a name="communicate-between-vms"></a>VM 間の通信
 
-*myVm2* VM と *myVm1* VM の間のプライベートな通信を確認するには、次のコマンドを入力します。
+**myVM2** VM と **myVM1** VM の間のプライベートな通信を確認するには、次のコマンドを入力します。
 
 ```bash
-ping myVm1 -c 4
+ping myVM1 -c 4
 ```
 
 *10.0.0.4* から 4 つの応答を受信します。
 
-*myVm2* VM との SSH セッションを終了します。
+**myVM2** VM との SSH セッションを終了します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-不要になったら、[az group delete](/cli/azure/group) を使用して、リソース グループとそのすべてのリソースを削除できます。
+不要になったら、[az group delete](/cli/azure/group#az_group_delete) を使用して、リソース グループとそのすべてのリソースを削除できます。
 
 ```azurecli-interactive
-az group delete --name myResourceGroup --yes
+az group delete \
+    --name CreateVNetQS-rg \
+    --yes
 ```
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、既定の仮想ネットワークと 2 つの VM を作成しました。 インターネットから 1 つの VM に接続し、2 つの VM の間でプライベート通信を行いました。
-Azure では、VM 間で無制限のプライベート通信を実行できます。 既定で、Azure では、インターネットから Windows VM への受信リモート デスクトップ接続のみを許可しています。 各種 VM ネットワーク通信の構成の詳細については、次の記事に進んでください。
+このクイック スタートでは次のようにします。 
+
+* 既定の仮想ネットワークと 2 つの VM を作成しました。 
+* インターネットから 1 つの VM に接続し、2 つの VM の間でプライベート通信を行いました。
+
+仮想ネットワークでは、VM 間のプライベート通信に制限はありません。 
+
+各種 VM ネットワーク通信の構成の詳細については、次の記事に進んでください。
 > [!div class="nextstepaction"]
 > [ネットワーク トラフィックをフィルター処理する](tutorial-filter-network-traffic.md)

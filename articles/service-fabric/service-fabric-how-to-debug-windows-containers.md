@@ -5,13 +5,13 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: mikhegn
 ms.openlocfilehash: 3e6e7785278b182cebb21115a70f35ade52303c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86247253"
 ---
-# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>方法:Visual Studio 2019 を使用して Azure Service Fabric で Windows コンテナーをデバッグする
+# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>方法: Visual Studio 2019 を使用して Azure Service Fabric で Windows コンテナーをデバッグする
 
 Visual Studio 2019 では、Service Fabric サービスとしてコンテナー内の .NET アプリケーションをデバッグすることができます。 この記事では、ご利用の環境を構成し、ローカルの Service Fabric クラスターで実行されているコンテナー内の .NET アプリケーションをデバッグする方法について説明します。
 
@@ -45,18 +45,18 @@ Visual Studio 2019 では、Service Fabric サービスとしてコンテナー�
 Service Fabric でコンテナーをデバッグする場合の既知の制限事項と考えられる解決策を以下にリストします。
 
 * ClusterFQDNorIP の localhost を使用する場合、コンテナーでの DNS 解決はサポートされません。
-    * 解決策:コンピューター名を使用して、ローカル クラスターを設定します (上記参照)。
+    * 解決策: コンピューター名を使用して、ローカル クラスターを設定します (上記参照)。
 * 仮想マシンで Windows 10 を実行している場合、コンテナーに DNS 応答が返されません。
-    * 解決策:Virtual Machines NIC で UDP チェックサム オフロード (IPv4) を無効にします。
+    * 解決策: Virtual Machines NIC で UDP チェックサム オフロード (IPv4 ) を無効にします。
     * Windows 10 を実行すると、マシン上のネットワーク パフォーマンスが低下します。
     * https://github.com/Azure/service-fabric-issues/issues/1061
 * アプリケーションが Docker Compose を使用してデプロイされた場合、Windows 10 では DNS サービス名を使用して同じアプリケーション内のサービスを解決できません
-    * 解決策:servicename.applicationname を使用して、サービス エンドポイントを解決します。
+    * 解決策: servicename.applicationname を使用して、サービス エンドポイントを解決します。
     * https://github.com/Azure/service-fabric-issues/issues/1062
 * ClusterFQDNorIP の IP アドレスを使用する場合、ホスト上のプライマリ IP を変更すると、DNS 機能が中断されます。
-    * 解決策:ホスト上に新しいプライマリ IP を使用してクラスターを再作成するか、コンピューター名を使用します。 この中断は仕様です。
+    * 解決策: ホスト上に新しいプライマリ IP を使用してクラスターを再作成するか、コンピューター名を使用します。 この中断は仕様です。
 * ネットワーク上でクラスターの作成時に使用された FQDN を解決できない場合、DNS が失敗します。
-    * 解決策:ホストのプライマリ IP を使用して、ローカル クラスターを再作成します。 このエラーは仕様です。
+    * 解決策: ホストのプライマリ IP を使用して、ローカル クラスターを再作成します。 このエラーは仕様です。
 * コンテナーをデバッグする場合、Docker ログは、Service Fabric Explorer を含む、Service Fabric API ではなく、Visual Studio の出力ウィンドウでのみ使用できます。
 
 ## <a name="debug-a-net-application-running-in-docker-containers-on-service-fabric"></a>Service Fabric の Docker コンテナーで実行されている .NET アプリケーションをデバッグする
@@ -65,7 +65,7 @@ Service Fabric でコンテナーをデバッグする場合の既知の制限�
 
 1. 既存の .NET アプリケーションを開くか、新しいものを作成します。
 
-1. プロジェクトを右クリックし、 **[追加]、[コンテナー オーケストレーター サポート]、[Service Fabric]** の順に選択します。
+1. プロジェクトを右クリックし、**[追加]、[コンテナー オーケストレーター サポート]、[Service Fabric]** の順に選択します。
 
 1. **F5** キーを押してアプリケーションのデバッグを開始します。
 

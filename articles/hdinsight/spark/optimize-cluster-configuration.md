@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: f70e9f242b0f12abf58e72554e7cb6819ce8f7a9
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98944729"
 ---
 # <a name="cluster-configuration-optimization-for-apache-spark"></a>Apache Spark のクラスター構成の最適化

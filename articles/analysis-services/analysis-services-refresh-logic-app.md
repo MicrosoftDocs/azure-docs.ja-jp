@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
 ms.openlocfilehash: 8a8d434fca7cab4432f38fc64093cf1fe060bd5f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92019088"
 ---
 # <a name="refresh-with-logic-apps"></a>Logic Apps を使用した更新
@@ -96,13 +96,13 @@ Azure Analysis Services での REST API の使用に関する詳細について�
 
 Data Factory などのオーケストレーション ツールを使用してモデルの更新をトリガーする予定がない場合は、スケジュールに基づいて更新をトリガーするようにロジック アプリを設定できます。
 
-上記の例を使用して、最初のアクティビティを削除して、それを**スケジュール**アクティビティに置き換えます。
+上記の例を使用して、最初のアクティビティを削除して、それを **スケジュール** アクティビティに置き換えます。
 
 ![[Logic Apps] ページのスクリーンショット。"スケジュール" タイルが選択されています。](./media/analysis-services-async-refresh-logic-app/12.png)
 
 ![[トリガー] ページのスクリーンショット。](./media/analysis-services-async-refresh-logic-app/13.png)
 
-この例では**繰り返し**を使用します。
+この例では **繰り返し** を使用します。
 
 アクティビティを追加したら、間隔と頻度を構成してから、新しいパラメーターを追加して **[設定時刻 (時間)]** を選択します。
 

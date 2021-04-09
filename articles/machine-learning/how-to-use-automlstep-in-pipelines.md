@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 02/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, automl
-ms.openlocfilehash: da973cf377ceace4a92d1cdd1e956321a5592e6a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0de3c9a7cf464f38a1a12d8bc19451fb1158a5ad
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692217"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102520508"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python の Azure Machine Learning パイプラインで自動 ML を使用する
 
@@ -37,7 +37,7 @@ Azure Machine Learning の自動 ML 機能は、考えられる方法をすべ�
 
 `PipelineStep` にはいくつかのサブクラスがあります。 `AutoMLStep` に加え、この記事では、データ準備用とモデルの登録用の `PythonScriptStep` を示します。
 
-データを ML パイプライン "_に_" 最初に移動する場合は、`Dataset` オブジェクトを使用することをお勧めします。 ステップ "_間_" でデータを移動し、場合によっては実行からデータ出力を保存するために、[`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) および [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) オブジェクトを使用することをお勧めします。 `AutoMLStep` で使用するには、`PipelineData` オブジェクトを `PipelineOutputTabularDataset` オブジェクトに変換する必要があります。 詳細については、[ML パイプラインからのデータの入力と出力](how-to-move-data-in-out-of-pipelines.md)に関するページを参照してください。
+データを ML パイプライン "_に_" 最初に移動する場合は、`Dataset` オブジェクトを使用することをお勧めします。 ステップ "_間_" でデータを移動し、場合によっては実行からデータ出力を保存するために、[`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig) および [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig) オブジェクトを使用することをお勧めします。 `AutoMLStep` で使用するには、`PipelineData` オブジェクトを `PipelineOutputTabularDataset` オブジェクトに変換する必要があります。 詳細については、[ML パイプラインからのデータの入力と出力](how-to-move-data-in-out-of-pipelines.md)に関するページを参照してください。
 
 `AutoMLStep` は `AutoMLConfig` オブジェクトを通じて構成されます。 「[Python で自動 ML の実験を構成する](./how-to-configure-auto-train.md#configure-your-experiment-settings)」で説明されているように、`AutoMLConfig` は柔軟なクラスです。 
 

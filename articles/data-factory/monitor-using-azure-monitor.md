@@ -3,16 +3,16 @@ title: Azure Monitor を使用して、データ ファクトリを監視する
 description: Azure Data Factory からの情報を使用して診断ログを有効にし、Azure Monitor を使用して Data Factory パイプラインを監視する方法を説明します。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 5e2ecf8dff432f2a0ce6b3356ce3eca7a8127932
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 04aba71e49fedc8a4ca22aed576aaa978f733336
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586863"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783644"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Azure Monitor を使用してデータ ファクトリの監視とアラート送信を行う
 
@@ -76,7 +76,7 @@ Data Factory では、パイプライン実行データを 45 日間だけ格納
    ![設定に名前を付けてログ分析ワークスペースを選択する](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > Azure ログ テーブルには 500 個を超える列を含めることができないため、"_リソース固有モード_" を選択することを **強くお勧めします**。 詳細については、[Log Analytics の既知の制限](../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics)に関するセクションを参照してください。
+    > Azure ログ テーブルには 500 個を超える列を含めることができないため、"_リソース固有モード_" を選択することを **強くお勧めします**。 詳細については、[Azure Diagnostics のログ リファレンス](/azure-monitor/reference/tables/azurediagnostics#additionalfields-column)に関するページを参照してください。
 
 1. **[保存]** を選択します。
 

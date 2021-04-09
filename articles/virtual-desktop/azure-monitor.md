@@ -7,10 +7,10 @@ ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: e9da1071686dafa003a5a49d0864b77644493344
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100594461"
 ---
 # <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment-preview"></a>Windows Virtual Desktop 向けの Azure Monitor を使用してデプロイを監視する (プレビュー)

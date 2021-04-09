@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: bb13df0f87cd10719f33afe4ec080c4c785df720
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 85773ec66dbe567afcfd1afca1d14aa0119fb8f6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695562"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103464022"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-azure-time-series-insight-environment"></a>Azure Time Series Insights 環境に IoT Hub イベント ソースを追加する
 
@@ -27,7 +27,7 @@ ms.locfileid: "98695562"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure Time Series Insights 環境](./tutorials-set-up-tsi-environment.md)を作成する。
+* [Azure Time Series Insights 環境](./tutorial-set-up-environment.md)を作成する。
 * [Microsoft Azure portal を使用して IoT Hub](../iot-hub/iot-hub-create-through-portal.md) を作成する。
 * IoT Hub には、アクティブなメッセージ イベントが送信される必要があります。
 * IoT Hub に Azure Time Series Insights 環境で使用する専用コンシューマー グループを作成します。 各 Azure Time Series Insights イベント ソースには、他のコンシューマーと共有されない専用のコンシューマー グループが設定されている必要があります。 複数のリーダーが同じコンシューマー グループのイベントを消費すると、すべてのリーダーにエラーが発生する可能性があります。 詳細については、[「Azure IoT Hub 開発者ガイド」](../iot-hub/iot-hub-devguide.md)をご覧ください。

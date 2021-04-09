@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: 34df2d2f4a2209cca93c3f7ac12dcd203bf4a089
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93339633"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Azure Cosmos DB の SQL クエリでのスカラー式
@@ -57,7 +57,7 @@ ms.locfileid: "93339633"
 - `input_alias`  
   
    `FROM` 句によって導入された `input_alias` で定義された値を表します。  
-  この値は、 **undefined** ではないことが保証されます。入力内の **undefined** 値はスキップされます。  
+  この値は、**undefined** ではないことが保証されます。入力内の **undefined** 値はスキップされます。  
   
 - `<scalar_expression>.property_name`  
   
@@ -105,7 +105,7 @@ ms.locfileid: "93339633"
   
   オブジェクトを作成するときに、未定義の値が割り当てられているプロパティはすべてスキップされ、作成されたオブジェクトに含まれません。  
   
-  配列を作成するときに、 **undefined** 値が割り当てられている要素値はすべてスキップされ、作成されたオブジェクトに含まれません。 この場合、作成される配列にスキップされたインデックスが含まれないようにするために、次の定義済みの要素が代わりに使用されます。  
+  配列を作成するときに、**undefined** 値が割り当てられている要素値はすべてスキップされ、作成されたオブジェクトに含まれません。 この場合、作成される配列にスキップされたインデックスが含まれないようにするために、次の定義済みの要素が代わりに使用されます。  
 
 ## <a name="examples"></a>例
 

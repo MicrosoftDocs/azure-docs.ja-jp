@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: v-erkel
 ms.openlocfilehash: f96a0fa264124f9d050e667b003d98579da63b77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87092339"
 ---
 # <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC Cache のデータ取り込み - 手動でコピーする方法
@@ -136,7 +136,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ## <a name="create-file-manifests"></a>ファイル マニフェストの作成
 
-上記のアプローチ (コピー先あたり複数のコピー スレッド、クライアントあたり複数のコピー先、ネットワーク アクセス可能なソース ファイルシステムあたり複数のクライアント) を理解したら、この推奨事項を検討してください。ファイル マニフェストを作成し、それらを複数のクライアント全体でコピー コマンドと一緒に使用します。
+上記のアプローチ (コピー先あたり複数のコピー スレッド、クライアントあたり複数のコピー先、ネットワーク アクセス可能なソース ファイル システムあたり複数のクライアント) を理解したら、この推奨事項を検討してください。つまり、ファイル マニフェストを作成し、コピー コマンドを使用して作成したマニフェストを複数のクライアント全体で使用します。
 
 このシナリオでは UNIX の ``find`` コマンドを使用して、ファイルまたはディレクトリのマニフェストを作成します。
 

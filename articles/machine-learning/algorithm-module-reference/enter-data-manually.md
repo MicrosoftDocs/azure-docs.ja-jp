@@ -1,5 +1,5 @@
 ---
-title: 'データの手動入力: モジュール リファレンス'
+title: 'Enter Data Manually (データの手動入力): モジュール参照'
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning でデータの手動入力モジュールを使用し、値を入力することによって、小さなデータセットを作成する方法について説明します。 データセットには、複数の列を含めることができます。
 services: machine-learning
@@ -10,17 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 3bff9a91f06649487560faef3ab554b2a3d56af3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90908066"
 ---
 # <a name="enter-data-manually-module"></a>データの手動入力モジュール
 
 この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
-値を入力して小さなデータセットを作成するには、**データの手動入力**モジュールを使用します。 データセットには、複数の列を含めることができます。
+値を入力して小さなデータセットを作成するには、**データの手動入力** モジュールを使用します。 データセットには、複数の列を含めることができます。
   
 このモジュールは、次のような用途に使用できます。  
   
@@ -34,10 +34,10 @@ ms.locfileid: "90908066"
   
 1. **[DataFormat]** で、次のいずれかのオプションを選択します。 指定したデータの解析方法は、これらのオプションによって決まります。 それぞれの形式で要件が大きく異なるため、関連するトピックに必ず目を通してください。  
   
-   - **ARFF**: Attribute-Relation File Format の略。Weka で使用されます。   
-   - **CSV**: コンマ区切り値形式。 詳細については、「[Convert to CSV (CSV への変換)](./convert-to-csv.md)」を参照してください。    
+   - **ARFF**: Weka で使用される属性関連ファイル形式。   
+   - **CSV**: コンマ区切りの値形式。 詳細については、「[Convert to CSV (CSV への変換)](./convert-to-csv.md)」を参照してください。    
    - **SVMLight**: Vowpal Wabbit などの機械学習フレームワークで使用される形式。    
-   - **TSV**: タブ区切り値形式。
+   - **TSV**: タブ区切りの値形式。
 
    形式を選択したにもかかわらず、その形式の仕様を満たしたデータを入力しなかった場合、実行時エラーが発生します。
   
@@ -55,7 +55,7 @@ ms.locfileid: "90908066"
   
      このオプションをオフにした場合は、Col1、Col2... という列名が使用されます。 列名は、後から [[メタデータの編集]](./edit-metadata.md) を使用して追加したり変更したりできます。  
   
-   - **ARFF**: 既存の ARFF 形式のファイルを貼り付けます。 値を直接入力する場合は、データの先頭にヘッダー (省略可能) と必須の属性フィールドを追加してください。 
+   - **ARFF**:既存の ARFF 形式のファイルを貼り付けます。 値を直接入力する場合は、データの先頭にヘッダー (省略可能) と必須の属性フィールドを追加してください。 
 
      たとえば、単純なリストに次のヘッダーと属性行を追加できます。 この場合、列見出しは `SampleText` となります。 文字列型はサポートされていません。
     
@@ -67,7 +67,7 @@ ms.locfileid: "90908066"
      \<type first data row here>  
      ```
 
-   - **SVMLight**: SVMLight 形式を使用して値を入力するか貼り付けます。  
+   - **SVMLight**:SVMLight 形式を使用して値を入力するか貼り付けます。  
   
      たとえば次のサンプルは、SVMLight 形式の献血データセットの最初の 2 行を表したものです。  
   

@@ -4,7 +4,7 @@ description: この記事では、オフラインの Windows 10 のために Pla
 services: media-services
 keywords: DASH, DRM, Widevine オフライン モード, ExoPlayer, Android
 documentationcenter: ''
-author: willzhan
+author: IngridAtMicrosoft
 manager: steveng
 editor: ''
 ms.service: media-services
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 3/10/2021
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bd1d50003ef4334f1ea83ac256b371b20d021936
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 828895894464eafc53f74e7c8b5798db4db03533
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693894"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103016136"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Windows 10 用のオフライン PlayReady ストリーミング
 

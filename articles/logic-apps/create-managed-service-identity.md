@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 02/12/2021
-ms.openlocfilehash: 9a3a511a287f093b4fc317213afedd5fdc3c21be
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 03/09/2021
+ms.openlocfilehash: 7796fc7e2032559ca3ff5c738c46fe025719942d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520665"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556623"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して Azure リソースへのアクセスを認証する
 
@@ -39,7 +39,6 @@ Azure Logic Apps では、"[*システム割り当て*](../active-directory/mana
 * Azure Automation
 * Azure Event Grid
 * Azure Key Vault
-* Azure Monitor ログ
 * Azure Resource Manager
 * HTTP with Azure AD
 
@@ -94,7 +93,7 @@ Azure Logic Apps では、"[*システム割り当て*](../active-directory/mana
 
    ![システム割り当て ID のオブジェクト ID](./media/create-managed-service-identity/object-id-system-assigned-identity.png)
 
-   | プロパティ | 値 | 説明 |
+   | プロパティ | [値] | 説明 |
    |----------|-------|-------------|
    | **オブジェクト ID** | <*identity-resource-ID*> | Azure AD テナント内のロジック アプリのシステム割り当て ID を表すグローバル一意識別子 (GUID) |
    ||||
@@ -307,7 +306,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 * [Azure Portal](#azure-portal-assign-access)
 * [Azure Resource Manager テンプレート](../role-based-access-control/role-assignments-template.md)
 * Azure PowerShell ([New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)) - 詳細については、[Azure RBAC と Azure PowerShell を使用したロールの割り当ての追加](../role-based-access-control/role-assignments-powershell.md)に関する記事を参照してください。
-* Azure CLI ([az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true#az-role-assignment-create)) - 詳細については、[Azure RBAC と Azure CLI を使用したロールの割り当ての追加](../role-based-access-control/role-assignments-cli.md)に関する記事を参照してください。
+* Azure CLI ([az role assignment create](/cli/azure/role/assignment#az-role-assignment-create)) - 詳細については、[Azure RBAC と Azure CLI を使用したロールの割り当ての追加](../role-based-access-control/role-assignments-cli.md)に関する記事を参照してください。
 * [Azure REST API](../role-based-access-control/role-assignments-rest.md)
 
 <a name="azure-portal-assign-access"></a>

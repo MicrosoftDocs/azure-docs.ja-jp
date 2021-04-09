@@ -3,12 +3,12 @@ title: Visual Studio での Application Insights の削除 - Azure Monitor
 description: Visual Studio で ASP.NET 用および ASP.NET Core 用 Application Insights SDK を削除する方法。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 5bfa6ee21cc1a55f653c0e79807a14ac34082e73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d70413fa6a47e2d41693db6eb705f31b2a2b1b2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981474"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101704312"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Visual Studio で Application Insights を削除する方法
 
@@ -27,7 +27,7 @@ Application Insights を削除するには、ご利用のアプリケーショ�
     > [!NOTE]
     > トレース コレクションが有効になっている場合は、Microsoft.ApplicationInsights.TraceListener を最初にアンインストールする必要があります。 「`Uninstall-package Microsoft.ApplicationInsights.TraceListener`」と入力してから、次の手順に従って、Microsoft.ApplicationInsights.Web を削除します。
 
-1. 次のコマンドを入力します:  `Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
+1. 次のコマンドを入力します。`Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
 
     コマンドを入力すると、Application Insights パッケージとそのすべての依存関係がプロジェクトからアンインストールされます。
     
@@ -39,17 +39,17 @@ Application Insights を削除するには、ご利用のアプリケーショ�
 
     ![上部のメニューで、[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール] の順にクリックします](./media/remove-application-insights/package-manager.png)
 
-1. 次のコマンドを入力します:  ` Uninstall-Package Microsoft.ApplicationInsights.AspNetCore -RemoveDependencies`
+1. 次のコマンドを入力します。` Uninstall-Package Microsoft.ApplicationInsights.AspNetCore -RemoveDependencies`
 
     コマンドを入力すると、Application Insights パッケージとそのすべての依存関係がプロジェクトからアンインストールされます。
 
 ---
 
-## <a name="uninstall-using-the-visual-studio-nugetui"></a>Visual Studio NuGet UI を使用してアンインストールする
+## <a name="uninstall-using-the-visual-studio-nuget-ui"></a>Visual Studio NuGet UI を使用してアンインストールする
 
 # <a name="net"></a>[.NET](#tab/net)
 
-1. 右側の *[ソリューション エクスプローラー]*  で **[ソリューション]**  を右クリックし、 **[ソリューションの NuGet パッケージの管理]** を選択します。
+1. 右側の *ソリューション エクスプローラー* で、 **[ソリューション]** を右クリックし、 **[ソリューションの NuGet パッケージの管理]** を選択します。
 
     その後、プロジェクトに含まれるすべての NuGet パッケージを編集するための画面が表示されます。
     
@@ -57,26 +57,26 @@ Application Insights を削除するには、ご利用のアプリケーショ�
 
     > [!NOTE]
     > トレース コレクションが有効になっている場合は、まず、[依存関係の削除] が選択されていない状態で Microsoft.ApplicationInsights.TraceListener をアンインストールし、次に、以下の手順に従って、[依存関係の削除] が選択された状態で Microsoft.ApplicationInsights.Web をアンインストールする必要があります。
-    
-1. "Microsoft.ApplicationInsights.Web" パッケージをクリックします。 右側で、 *[プロジェクト]*  の横にあるチェックボックスをオンにして、すべてのプロジェクトを選択します。
-    
-1. アンインストール時にすべての依存関係を削除するには、プロジェクトを選択したセクションの下にある **[オプション]**  ドロップダウン ボタンを選択します。
 
-     *[アンインストール オプション]* で、 *[依存関係の削除]* の横にあるチェックボックスをオンにします。
+1. **Microsoft.ApplicationInsights.Web** パッケージをクリックします。 右側で、 **[プロジェクト]** の横にあるチェックボックスをオンにして、すべてのプロジェクトを選択します。
+
+1. アンインストール時にすべての依存関係を削除するには、プロジェクトを選択したセクションの下にある **[オプション]** ドロップダウン ボタンを選択します。
+
+    *[アンインストール オプション]* で、 *[依存関係の削除]* の横にあるチェックボックスをオンにします。
 
 1. **[アンインストール]** を選択します。
     
     ![[依存関係の削除] がチェックされ、アンインストールが強調表示された Microsoft.ApplicationInsights.Web ウィンドウが表示されたスクリーンショット。](./media/remove-application-insights/uninstall-framework.png)
 
-    アプリケーションから削除されるすべての依存関係を示すダイアログボックスが表示されます。  **[OK]**  を選択してアンインストールします。
+    アプリケーションから削除されるすべての依存関係を示すダイアログボックスが表示されます。 **[OK]** を選択してアンインストールします。
     
     ![削除する依存関係が記載されたダイアログ ボックスが表示されたスクリーンショット。](./media/remove-application-insights/preview-uninstall-framework.png)
     
-1.  すべてのものがアンインストールされた後も、 *ソリューション エクスプローラー*に "ApplicationInsights.config" と "AiHandleErrorAttribute.cs" が表示される場合があります。 この 2 つのファイルは手動で削除できます。
+1.  すべてのものがアンインストールされた後も、*ソリューション エクスプローラー* に "ApplicationInsights.config" と "AiHandleErrorAttribute.cs" が表示される場合があります。  この 2 つのファイルは手動で削除できます。
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-1. 右側の *[ソリューション エクスプローラー]*  で **[ソリューション]**  を右クリックし、 **[ソリューションの NuGet パッケージの管理]** を選択します。
+1. 右側の *ソリューション エクスプローラー* で、 **[ソリューション]** を右クリックし、 **[ソリューションの NuGet パッケージの管理]** を選択します。
 
     その後、プロジェクトに含まれるすべての NuGet パッケージを編集するための画面が表示されます。
 

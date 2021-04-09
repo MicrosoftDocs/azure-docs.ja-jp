@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
 ms.openlocfilehash: 63f4b28915a932398e5417f8ea9be3fe4d68e705
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397843"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Azure リソース マネージャーで PowerShell を使用して Azure Application Gateway のカスタム プローブを作成する
@@ -58,7 +58,7 @@ ms.locfileid: "93397843"
 
 Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。 この場所は、そのリソース グループ内のリソースの既定の保存先として使用されます。 アプリケーション ゲートウェイを作成するためのすべてのコマンドで、同じリソース グループが使用されていることを確認します。
 
-前の例では、 **West US** という名前の場所に **appgw-RG** という名前のリソース グループを作成しました。
+前の例では、**West US** という名前の場所に **appgw-RG** という名前のリソース グループを作成しました。
 
 ### <a name="create-a-virtual-network-and-a-subnet"></a>仮想ネットワークとサブネットの作成
 

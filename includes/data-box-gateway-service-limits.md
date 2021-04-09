@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: alkohli
 ms.openlocfilehash: 968d8ad6e76956a12e1f8ddcf091eb905686d245
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98901029"
 ---
 - ストレージ アカウントは、デバイスがデプロイされたリージョンに物理的に最も近い場所にする必要があります (サービスがデプロイされた場所と異なっていてもかまいません)。

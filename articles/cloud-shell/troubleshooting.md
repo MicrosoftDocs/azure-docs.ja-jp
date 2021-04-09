@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: eea64520dd5440467c911b6de42d8c8c31fc1bde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87543454"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell のトラブルシューティングと制限事項
@@ -149,7 +149,7 @@ Azure Cloud Shell は、ユーザーの個人データを慎重に取り扱い�
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ### <a name="export"></a>エクスポート
-選択されたシェル、フォント サイズ、フォントの種類など、Cloud Shell によって保存されるユーザー設定を**エクスポート**するには、次のコマンドを実行します。
+選択されたシェル、フォント サイズ、フォントの種類など、Cloud Shell によって保存されるユーザー設定を **エクスポート** するには、次のコマンドを実行します。
 
 1. [![[Azure Cloud Shell の起動] というラベルが付いたボタンを示すイメージ。](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
 
@@ -170,7 +170,7 @@ PowerShell:
 ```
 
 ### <a name="delete"></a>削除
-選択されたシェル、フォント サイズ、フォントの種類など、Cloud Shell によって保存されるユーザー設定を**削除**するには、次のコマンドを実行します。 次回、Cloud Shell を起動すると、再びファイル共有にオンボードするように求めるメッセージが表示されます。 
+選択されたシェル、フォント サイズ、フォントの種類など、Cloud Shell によって保存されるユーザー設定を **削除** するには、次のコマンドを実行します。 次回、Cloud Shell を起動すると、再びファイル共有にオンボードするように求めるメッセージが表示されます。 
 
 >[!Note]
 > ユーザー設定を削除しても、実際の Azure Files 共有は削除されません。 Azure Files に移動して、そのアクションを完了します。

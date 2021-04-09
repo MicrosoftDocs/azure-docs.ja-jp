@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
 ms.openlocfilehash: e35b655dc8b735214de891884fe40fb951dd16cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91441294"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>チュートリアル: Azure のクラスターに Service Fabric アプリケーションをデプロイする
@@ -35,7 +35,7 @@ ms.locfileid: "91441294"
 このチュートリアルを開始する前に
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
-* [Visual Studio 2019 をインストール](https://www.visualstudio.com/)し、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
+* [Visual Studio 2019 をインストール](https://www.visualstudio.com/)し、**Azure 開発** ワークロードと **ASP.NET および Web 開発** ワークロードをインストールします。
 * [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
 
 > [!NOTE]
@@ -84,7 +84,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ![[Service Fabric クラスターの作成] ダイアログ ボックスの [証明書] タブを示すスクリーンショット。](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 
-**[VM の詳細]** タブで、クラスター管理者アカウントの**ユーザー名**と**パスワード**を入力します。  クラスター ノードの**仮想マシン イメージ**を選択し、各クラスター ノードの**仮想マシン サイズ**を選択します。  **[詳細設定]** タブをクリックします。
+**[VM の詳細]** タブで、クラスター管理者アカウントの **ユーザー名** と **パスワード** を入力します。  クラスター ノードの **仮想マシン イメージ** を選択し、各クラスター ノードの **仮想マシン サイズ** を選択します。  **[詳細設定]** タブをクリックします。
 
 ![[Service Fabric クラスターの作成] ダイアログ ボックスの [VM の詳細] タブを示すスクリーンショット。](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
 

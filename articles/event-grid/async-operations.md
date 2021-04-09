@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: baae7b097a0b696d405c0e7ea3d3bdeb326f23b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89011686"
 ---
 # <a name="track-event-grid-asynchronous-azure-operations"></a>Event Grid 非同期 Azure 操作の追跡
@@ -82,7 +82,7 @@ response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 ## <a name="example-requests-and-responses"></a>要求と応答の例
 
 ### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>仮想マシンの起動 (202 と Azure-AsyncOperation)
-この例では、仮想マシンの**開始**操作の状態を確認する方法を示します。 最初の要求の形式は次のとおりです。
+この例では、仮想マシンの **開始** 操作の状態を確認する方法を示します。 最初の要求の形式は次のとおりです。
 
 ```HTTP
 POST 
@@ -114,7 +114,7 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 
 ### <a name="deploy-resources-201-with-azure-asyncoperation"></a>リソースのデプロイ (201 と Azure-AsyncOperation)
 
-この例では、リソースを Azure にデプロイするための**展開**操作の状態を確認する方法を示します。 最初の要求の形式は次のとおりです。
+この例では、リソースを Azure にデプロイするための **展開** 操作の状態を確認する方法を示します。 最初の要求の形式は次のとおりです。
 
 ```HTTP
 PUT
@@ -154,7 +154,7 @@ https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{res
 
 ### <a name="create-storage-account-202-with-location-and-retry-after"></a>ストレージ アカウントの作成 (202 と Location および Retry-After)
 
-この例では、ストレージ アカウントの**作成**操作の状態を確認する方法を示します。 最初の要求の形式は次のとおりです。
+この例では、ストレージ アカウントの **作成** 操作の状態を確認する方法を示します。 最初の要求の形式は次のとおりです。
 
 ```HTTP
 PUT

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ac6055029b8fc7bbba11a8e3b789df3b6b1622e2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93322757"
 ---
 # <a name="team-data-science-process-project-planning"></a>Team Data Science Process のプロジェクト計画
@@ -60,4 +60,4 @@ Microsoft Project へのアクセス権がない場合は、同じデータす�
 
 [データ サイエンス プロジェクトのアジャイル開発](agile-development.md) このドキュメントでは、Team Data Science Process を使用したバージョン コントロールされた体系的、協調的な方法によるデータ サイエンス プロジェクトについて説明します。
 
-また、 **特定のシナリオ** のプロセスにおけるすべての手順を説明するチュートリアルも用意されています。 これらは、[サンプル チュートリアル](walkthroughs.md)の記事で簡単な説明と共にリンク付きで紹介されています。 チュートリアルでは、クラウド、オンプレミスのツール、サービスをワークフローまたはパイプラインに組み込んでインテリジェント アプリケーションを作成する方法を説明しています。
+また、**特定のシナリオ** のプロセスにおけるすべての手順を説明するチュートリアルも用意されています。 これらは、[サンプル チュートリアル](walkthroughs.md)の記事で簡単な説明と共にリンク付きで紹介されています。 チュートリアルでは、クラウド、オンプレミスのツール、サービスをワークフローまたはパイプラインに組み込んでインテリジェント アプリケーションを作成する方法を説明しています。

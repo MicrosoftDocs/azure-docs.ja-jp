@@ -2,17 +2,17 @@
 title: Azure プライベート エンドポイントの DNS 構成
 description: Azure プライベート エンドポイントの DNS 構成について説明します
 services: private-link
-author: allensu
+author: asudbring
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: allensu
-ms.openlocfilehash: d0085dc1cd7afa1fd8f557db27d30fd76ca05fac
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 42c5b315c9c3560c400c685448a11dc61bf64eb6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732736"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102215614"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure プライベート エンドポイントの DNS 構成
 
@@ -43,8 +43,8 @@ Azure サービスについては、次の表に示すように、推奨され�
 | プライベート リンク リソースの種類/サブリソース |プライベート DNS ゾーンの名前 | パブリック DNS ゾーンのフォワーダー |
 |---|---|---|
 | Azure Automation (Microsoft.Automation/automationAccounts)/Webhook、DSCAndHybridWorker | privatelink.azure-automation.net | azure-automation.net |
-| Azure SQL Database (Microsoft.Sql/servers)/SQL Server | privatelink.database.windows.net | database.windows.net |
-| Azure Synapse Analytics (Microsoft.Sql/servers)/SQL Server  | privatelink.database.windows.net | database.windows.net |
+| Azure SQL Database (Microsoft.Sql/servers) / sqlServer | privatelink.database.windows.net | database.windows.net |
+| Azure Synapse Analytics (Microsoft.Sql/servers) / sqlServer  | privatelink.database.windows.net | database.windows.net |
 | ストレージ アカウント (Microsoft.Storage/storageAccounts)/BLOB (blob、blob_secondary) | privatelink.blob.core.windows.net | blob.core.windows.net |
 | ストレージ アカウント (Microsoft.Storage/storageAccounts)/テーブル (table、table_secondary) | privatelink.table.core.windows.net | table.core.windows.net |
 | ストレージ アカウント (Microsoft.Storage/storageAccounts)/キュー (queue、queue_secondary) | privatelink.queue.core.windows.net | queue.core.windows.net |
@@ -73,13 +73,13 @@ Azure サービスについては、次の表に示すように、推奨され�
 | Azure Event Grid (Microsoft.EventGrid/topics)/トピック | privatelink.eventgrid.azure.net | eventgrid.azure.net |
 | Azure Event Grid (Microsoft.EventGrid/domains)/ドメイン | privatelink.eventgrid.azure.net | eventgrid.azure.net |
 | Azure Web Apps (Microsoft.Web/sites)/サイト | privatelink.azurewebsites.net | azurewebsites.net |
-| Azure Machine Learning (Microsoft.MachineLearningServices/workspaces)/amlworkspace | privatelink.api.azureml.ms<br/>privatelink.notebooks.azure.net | api.azureml.ms<br/>notebooks.azure.net<br/>aznbcontent.net |
+| Azure Machine Learning (Microsoft.MachineLearningServices/workspaces)/amlworkspace | privatelink.api.azureml.ms<br/>privatelink.notebooks.azure.net | api.azureml.ms<br/>notebooks.azure.net<br/>instances.azureml.ms<br/>aznbcontent.net |
 | SignalR (Microsoft.SignalRService/SignalR) / signalR | privatelink.service.signalr.net | service.signalr.net |
 | Azure Monitor (Microsoft.Insights/privateLinkScopes)/azuremonitor | privatelink.monitor.azure.com<br/> privatelink.oms.opinsights.azure.com <br/> privatelink.ods.opinsights.azure.com <br/> privatelink.agentsvc.azure-automation.net | monitor.azure.com<br/> oms.opinsights.azure.com<br/> ods.opinsights.azure.com<br/> agentsvc.azure-automation.net |
 | Cognitive Services (Microsoft.CognitiveServices/accounts)/アカウント | privatelink.cognitiveservices.azure.com  | cognitiveservices.azure.com  |
 | Azure File Sync (Microsoft.StorageSync/storageSyncServices) / afs |  privatelink.afs.azure.net  |  afs.azure.net  |
 | Azure Data Factory (Microsoft.DataFactory/factories) / dataFactory |  privatelink.datafactory.azure.net  |  datafactory.azure.net  |
-| Azure Data Factory (Microsoft.DataFactory/factories) / portal |  privatelink.azure.com  |  azure.com  |
+| Azure Data Factory (Microsoft.DataFactory/factories) / portal |  privatelink.adf.azure.com  |  adf.azure.com  |
 | Azure Cache for Redis (Microsoft.Cache/Redis) / redisCache | privatelink.redis.cache.windows.net | redis.cache.windows.net |
 
 <sup>1</sup>IoT Hub の組み込みのイベント ハブ互換エンドポイントで使用します。 詳細については、[IoT Hub の組み込みエンドポイントに対するプライベート リンクのサポート](../iot-hub/virtual-network-support.md#built-in-event-hub-compatible-endpoint)に関するページを参照してください。
@@ -97,7 +97,6 @@ Azure サービスについては、次の表に示すように、推奨され�
 | Azure Database for PostgreSQL - シングル サーバー (Microsoft DBforPostgreSQL/servers)/postgresqlServer | privatelink.postgres.database.chinacloudapi.cn | postgres.database.chinacloudapi.cn |
 | Azure Database for MySQL (Microsoft.DBforMySQL/servers)/mysqlServer | privatelink.mysql.database.chinacloudapi.cn  | mysql.database.chinacloudapi.cn  |
 | Azure Database for MariaDB (Microsoft.DBforMariaDB/servers)/mariadbServer | privatelink.mariadb.database.chinacloudapi.cn | mariadb.database.chinacloudapi.cn |
-
 
 ## <a name="dns-configuration-scenarios"></a>DNS の構成シナリオ
 

@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.openlocfilehash: 49027899d66a2192cc311fb4dba66e441155b527
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "92206851"
 ---
 # <a name="scene-lighting"></a>シーンのライティング
@@ -46,7 +46,7 @@ Azure Remote Rendering では、`PointLightComponent` は単一点から光を�
 
 ## <a name="spot-light"></a>スポット ライト
 
-`SpotLightComponent` は `PointLightComponent` に似ていますが、照明は円錐の形状に制限されています。 円錐の向きは、*所有者エンティティの負の Z 軸*によって定義されます。
+`SpotLightComponent` は `PointLightComponent` に似ていますが、照明は円錐の形状に制限されています。 円錐の向きは、*所有者エンティティの負の Z 軸* によって定義されます。
 
 ### <a name="spotlightcomponent-properties"></a>SpotLightComponent プロパティ
 
@@ -62,7 +62,7 @@ Azure Remote Rendering では、`PointLightComponent` は単一点から光を�
 
 ## <a name="directional-light"></a>指向性ライト
 
-`DirectionalLightComponent` は、無限に離れた場所にある光源をシミュレートします。 光は、*所有者エンティティの負の Z 軸*の方向に照射されます。 エンティティの位置は無視されます。
+`DirectionalLightComponent` は、無限に離れた場所にある光源をシミュレートします。 光は、*所有者エンティティの負の Z 軸* の方向に照射されます。 エンティティの位置は無視されます。
 
 追加のプロパティはありません。
 

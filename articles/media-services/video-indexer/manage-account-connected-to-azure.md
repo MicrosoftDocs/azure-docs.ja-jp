@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/14/2021
 ms.author: juliako
 ms.openlocfilehash: 25025efe5254442c4862563ce329cfae69e7d033
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98898445"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Azure に接続された Video Indexer アカウントを管理する
@@ -58,8 +58,8 @@ Videos Indexer アカウントが Azure に接続されている場合は、次�
 |---|---|
 |Azure サブスクリプション ID|サブスクリプション ID は Azure portal から取得できます。 左側のウィンドウで **[すべてのサービス]** をクリックし、「サブスクリプション」を検索します。 **[サブスクリプション]** を選択して、サブスクリプションの一覧から目的の ID を選択します。|
 |Azure Media Services のリソース グループ名|Media Services アカウントを作成したリソース グループの名前。|
-|アプリケーション ID|この Video Indexer アカウントに対して作成した (指定された Media Services アカウントのアクセス許可を持つ) Azure AD アプリケーション ID。 <br/><br/>アプリ ID を取得するには、Azure portal に移動します。 Media Services アカウントで、アカウントを選択し、 **[API アクセス]** に移動します。 **[サービス プリンシパルを使って Media Services API に接続する]**  ->  **[Azure AD アプリ]** を選択します。 関連するパラメーターをコピーします。|
-|アプリケーション キー|上で指定した Media Services アカウントに関連付けられている Azure AD アプリケーション キー。 <br/><br/>アプリ キーを取得するには、Azure portal に移動します。 Media Services アカウントで、アカウントを選択し、 **[API アクセス]** に移動します。 **[サービス プリンシパルを使って Media Services API に接続する]**  ->  **[アプリケーションの管理]**  ->  **[証明書とシークレット]** を選択します。 関連するパラメーターをコピーします。|
+|アプリケーション ID|この Video Indexer アカウントに対して作成した (指定された Media Services アカウントのアクセス許可を持つ) Azure AD アプリケーション ID。 <br/><br/>アプリ ID を取得するには、Azure portal に移動します。 Media Services アカウントで、アカウントを選択し、**[API アクセス]** に移動します。 **[サービス プリンシパルを使って Media Services API に接続する]**  ->  **[Azure AD アプリ]** を選択します。 関連するパラメーターをコピーします。|
+|アプリケーション キー|上で指定した Media Services アカウントに関連付けられている Azure AD アプリケーション キー。 <br/><br/>アプリ キーを取得するには、Azure portal に移動します。 Media Services アカウントで、アカウントを選択し、**[API アクセス]** に移動します。 **[サービス プリンシパルを使って Media Services API に接続する]**  ->  **[アプリケーションの管理]**  ->  **[証明書とシークレット]** を選択します。 関連するパラメーターをコピーします。|
 
 ## <a name="autoscale-reserved-units"></a>占有ユニットの自動スケール
 
@@ -87,6 +87,6 @@ Videos Indexer アカウントが Azure に接続されている場合は、次�
 
 ## <a name="next-steps"></a>次のステップ
 
-試用アカウント、または Azure に接続されている Video Indexer アカウントとプログラムでやりとりするには、[API の使用](video-indexer-use-apis.md)に関するページの手順を参照してください。
+[API の使用](video-indexer-use-apis.md)に関するページの手順に従って、試用アカウント、または Azure に接続されている Video Indexer アカウントとプログラムでやり取りすることができます。
 
 Azure への接続時に使用したものと同じ Azure AD ユーザーを使用します。

@@ -8,10 +8,10 @@ ms.author: lagayhar
 ms.date: 04/10/2019
 ms.custom: mvc
 ms.openlocfilehash: 6b8cc951301ec315f758478eda1c0736882e66f2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100597726"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Azure Application Insights でアプリケーションの正常性を監視してアラートを送信する
@@ -32,7 +32,7 @@ Azure Application Insights を使用すると、ご利用のアプリケーシ�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="create-availability-test"></a>可用性テストを作成する
 
@@ -40,7 +40,7 @@ Application Insights の可用性テストを使用して、世界中のさま�
 
 1. **[Application Insights]** を選択してから、ご利用のサブスクリプションを選択します。  
 
-2. **[調査]** メニューの **[可用性]** を選択して、 **[テストの作成]** をクリックします。
+2. **[調査]** メニューの **[可用性]** を選択して、**[テストの作成]** をクリックします。
 
     ![可用性テストを追加する](media/tutorial-alert/add-test-001.png)
 
@@ -73,5 +73,5 @@ Application Insights の可用性テストを使用して、世界中のさま�
 これで問題が生じた場合のアラートの送信方法について学習できました。次のチュートリアルでは、ユーザーがどのようにアプリケーションを使用しているかを分析する方法を説明します。
 
 > [!div class="nextstepaction"]
-> [ユーザーを理解する](./tutorial-users.md)
+> [ユーザーについての理解](./tutorial-users.md)
 

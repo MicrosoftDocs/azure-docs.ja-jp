@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 15f0b01304f3333b8650ab2079cd56271d0095db
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 2c98546d20e9f977a605ccbac21010aa9b1dbadc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424497"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103232496"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -39,6 +39,8 @@ ms.locfileid: "102424497"
 > モデルで検出される言語と音響に一致する小さなサンプル データのセットから始めます。
 > たとえば、実稼働シナリオでモデルが検出する同じハードウェアと同じ音響環境で、小さいが代表的なオーディオのサンプルを記録します。
 > トレーニング用にはるかに大きなデータセットの収集に投資する前に、代表的なデータの小さなデータセットで、問題点を明らかにできます。
+>
+> すぐに始めるには、サンプルデータの使用を検討してください。 <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">サンプル Custom Speech データ </a>については、こちらの GitHub リポジトリを参照する
 
 ## <a name="data-types"></a>データ型
 
@@ -50,17 +52,14 @@ ms.locfileid: "102424497"
 | [オーディオ + 人間というラベルが付いたトランスクリプト](#audio--human-labeled-transcript-data-for-testingtraining) | はい<br>精度を評価するために使用 | 0.5-5 時間のオーディオ | はい | 1 - 20 時間のオーディオ |
 | [関連するテキスト](#related-text-data-for-training) | いいえ | 該当なし | はい | 1 - 200 MB の関連テキスト |
 
-新しいモデルをトレーニングするときには、[関連テキスト](#related-text-data-for-training)から開始します。 このデータでは、特殊な用語や語句の認識が既に改善されています。 テキストを使用したトレーニングは、オーディオによるトレーニングよりもはるかに高速です (分単位と日単位)。
-
 ファイルは、型別にデータセットにグループ化し、ZIP ファイルとしてアップロードする必要があります。 各データセットには、1 つのデータの種類のみを含めることができます。
 
 > [!TIP]
-> すぐに始めるには、サンプルデータの使用を検討してください。 <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">サンプル Custom Speech データ </a>については、こちらの GitHub リポジトリを参照する
+> 新しいモデルをトレーニングするときには、[関連テキスト](#related-text-data-for-training)から開始します。 このデータでは、特殊な用語や語句の認識が既に改善されています。 テキストを使用したトレーニングは、オーディオによるトレーニングよりもはるかに高速です (分単位と日単位)。
 
 > [!NOTE]
 > すべての基本モデルでオーディオのトレーニングがサポートされるわけではありません。 基本モデルでサポートされていない音声サービスは、トランスクリプトのテキストのみを使用し、オーディオを無視します。 オーディオ データを使用したトレーニングをサポートする基本モデルの一覧については、「[言語のサポート](language-support.md#speech-to-text)」を参照してください。 基本モデルでオーディオ データを使用したトレーニングがサポートされている場合でも、サービスによってオーディオの一部しか使用されないことがあります。 その場合も、すべてのトランスクリプトが使用されます。
-
-> [!NOTE]
+>
 > トレーニングに使用する基本モデルを変更し、トレーニング データセットにオーディオが含まれる場合は、選択した新しい基本モデルが [オーディオ データを使用したトレーニングをサポート](language-support.md#speech-to-text)しているかどうかを "*常に*" 確認します。 以前使用した基本モデルでオーディオ データを使用したトレーニングがサポートされておらず、トレーニング データセットにオーディオが含まれる場合は、新しい基本モデルを使用したトレーニングの時間が **大幅に** 増加し、数時間から数日以上かかる可能性が大いにあります。 これは特に、音声サービスのサブスクリプションが、トレーニング用の [専用ハードウェアがあるリージョン](custom-speech-overview.md#set-up-your-azure-account)に **存在しない** 場合に当てはまります。
 >
 > 上の段落で説明されている問題が発生した場合、データセット内のオーディオの量を減らすか、完全に削除してテキストのみを残すことで、トレーニング時間を簡単に短縮できます。 音声サービスのサブスクリプションが、トレーニング用の [専用ハードウェアがあるリージョン](custom-speech-overview.md#set-up-your-azure-account)に **存在しない** 場合、後者のオプションを強くお勧めします。

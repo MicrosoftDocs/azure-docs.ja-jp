@@ -8,10 +8,10 @@ ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
 ms.openlocfilehash: 12a62bbd06cf9adf3b5978bb061e1d014599b44c
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99550744"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Azure App Configuration イベントへの反応
@@ -37,7 +37,7 @@ Event Grid は、[イベント サブスクリプション](../event-grid/concep
 ## <a name="event-schema"></a>イベント スキーマ
 Azure App Configuration イベントには、データの変更に対応するために必要なすべての情報が含まれます。 アプリ構成イベントは、eventType プロパティが "Microsoft.AppConfiguration" で始まるため識別できます。 Event Grid イベントのプロパティの使用法について詳しくは、「[Event Grid イベント スキーマ](../event-grid/event-schema.md)」をご覧ください。  
 
-> |プロパティ|種類|説明|
+> |プロパティ|Type|説明|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |topic|string|イベントを生成するアプリ構成の完全な Azure Resource Manager ID。|
 > |subject|string|イベントの対象であるキー/値の URI です。|

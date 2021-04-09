@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: overview
 ms.date: 09/30/2019
 ms.openlocfilehash: 8fef4bbc0c0e77c1e152b8c2c44254e091b0e5a3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100392546"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure Data Factory とは何ですか。

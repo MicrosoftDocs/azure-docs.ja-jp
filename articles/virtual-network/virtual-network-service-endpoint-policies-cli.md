@@ -18,16 +18,16 @@ ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
 ms.openlocfilehash: 9ce1e320a93a834a938ce95f3931d885d2214faa
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98216871"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Azure CLI を使って仮想ネットワーク サービス エンドポイント ポリシーで Azure Storage アカウントへのデータの流出を管理する
 
 仮想ネットワーク サービス エンドポイント ポリシーを使用すると、サービス エンドポイント経由で仮想ネットワーク内から Azure Storage アカウントにアクセス制御を適用できます。 これは、ワークロードのセキュリティ保護のために必要であり、どのストレージ アカウントが許可され、どのようなデータ流出が許可されるかが管理されます。
-この記事では、次の方法について説明します。
+この記事では、次のことについて説明します。
 
 * 仮想ネットワークを作成し、サブネットを追加します。
 * Azure Storage のサービス エンドポイントを有効にします。

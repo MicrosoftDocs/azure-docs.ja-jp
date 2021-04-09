@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: 36025a5a68e4c3d0de1d6b11a13df656c72745d4
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99260199"
 ---
 # <a name="what-is-single-sign-on-sso"></a>シングル サインオン (SSO) とは

@@ -4,10 +4,10 @@ description: Azure VMware Solution の予約インスタンスを購入する方
 ms.topic: how-to
 ms.date: 02/03/2021
 ms.openlocfilehash: 227ea9274f70cc58468e7e0b3ddcf8239f5b7f5b
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99550977"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Azure VMware Solution でコストを節約する

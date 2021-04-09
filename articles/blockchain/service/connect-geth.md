@@ -5,10 +5,10 @@ ms.date: 05/26/2020
 ms.topic: quickstart
 ms.reviewer: maheshna
 ms.openlocfilehash: 2c5b6a56d96ac132949052e9879c8f61d41ffb06
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83994785"
 ---
 # <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>クイック スタート:Geth を使用して Azure Blockchain Service のトランザクション ノードに接続する

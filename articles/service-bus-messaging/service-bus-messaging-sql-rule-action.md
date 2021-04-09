@@ -3,12 +3,12 @@ title: Azure Service Bus サブスクリプション ルールの SQL アクシ�
 description: この記事では、SQL ルールのアクション構文のリファレンスを示します。 アクションは、メッセージに対して実行される SQL 言語ベースの構文で記述されています。
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: f7b8cdfcccc22508b98a42391d2a0ef9955232d0
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 75ff437bace59d7f4de07342277f0760480a5b0f
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742686"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652838"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>サブスクリプション ルールの SQL アクション構文
 
@@ -199,7 +199,8 @@ ms.locfileid: "98742686"
   
 `property(name)` 関数は、`name` によって参照されるプロパティの値を返します。 `name` 値には、文字列値を返す任意の有効な式を指定できます。  
 
-[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
+## <a name="examples"></a>例
+例については、[Service Bus フィルターの例](service-bus-filter-examples.md)を参照してください。
   
 ## <a name="considerations"></a>考慮事項
 
@@ -210,7 +211,7 @@ ms.locfileid: "98742686"
 - 存在しないユーザー プロパティが参照されていても、アクションは失敗しません。
 - 存在しないユーザー プロパティは内部的に "Unknown" と評価され、演算子を評価するときに [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) と同じセマンティクスに従います。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [SQLRuleAction クラス (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
 - [SQLRuleAction クラス (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlruleaction)

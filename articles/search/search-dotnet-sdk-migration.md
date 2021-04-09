@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0e9f4602582a8c24f74d6603b732e7b91d97fa8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89002693"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Azure Search .NET SDK バージョン 3 へのアップグレード
@@ -33,7 +33,7 @@ the data source API will no longer return in the response of any REST operation,
 Azure Search .NET SDK のバージョン 3 には、以前のバージョンからの変更がいくつか含まれています。 ほとんどは小さなものなので、コードの変更に必要な作業は最小限で済みます。 新しいバージョンの SDK を使用するようにコードを変更する方法については、「 [アップグレードの手順](#UpgradeSteps) 」を参照してください。
 
 > [!NOTE]
-> 1\.0.2-preview 以前のバージョンを使用している場合は、まずバージョン 1.1 にアップグレードしてから、バージョン 3 にアップグレードする必要があります。 手順については、「[Azure Search .NET SDK バージョン 1.1 へのアップグレード](search-dotnet-sdk-migration-version-1.md)」をご覧ください。
+> 1.0.2-preview 以前のバージョンを使用している場合は、まずバージョン 1.1 にアップグレードしてから、バージョン 3 にアップグレードする必要があります。 手順については、「[Azure Search .NET SDK バージョン 1.1 へのアップグレード](search-dotnet-sdk-migration-version-1.md)」をご覧ください。
 >
 > Azure Search サービスのインスタンスは、最新のバージョンを含む複数の REST API バージョンをサポートします。 バージョンが最新ではなくなった場合でも、そのバージョンを引き続き使用できますが、最新バージョンを使用するようにコードを移行することをお勧めします。 REST API を使用している場合は、api-version パラメーターを使用して、すべての要求に API バージョンを指定する必要があります。 .NET SDK を使用している場合は、使用している SDK のバージョンによって REST API の対応するバージョンが決まります。 サービスが新しいバージョンの API をサポートするようにアップグレードされた場合でも、使用中の古い SDK のコードを変更なしで引き続き実行できます。
 
@@ -145,7 +145,7 @@ index.Analyzers = new Analyzer[]
 - `ParseJsonArrays`
 - `ParseDelimitedTextFiles`
 
-アプリケーションにこれらの機能に対するハードの依存関係が存在する場合、Azure Search .NET SDK のバージョン 3 にアップグレードすることはできません。 バージョン 2.0-preview を引き続き使用できますが、 **実稼働アプリケーションでのプレビュー版 SDK の使用は推奨されない**ことに注意してください。 プレビュー機能は評価のみを目的としており、変更される場合があります。
+アプリケーションにこれらの機能に対するハードの依存関係が存在する場合、Azure Search .NET SDK のバージョン 3 にアップグレードすることはできません。 バージョン 2.0-preview を引き続き使用できますが、 **実稼働アプリケーションでのプレビュー版 SDK の使用は推奨されない** ことに注意してください。 プレビュー機能は評価のみを目的としており、変更される場合があります。
 
 ## <a name="conclusion"></a>まとめ
 Azure Search .NET SDK の使い方について詳しくは、[.NET の方法](search-howto-dotnet-sdk.md)に関する記事をご覧ください。

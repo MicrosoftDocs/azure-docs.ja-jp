@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: f98ffde9ce9b5c564e9f9c6c0b95e11f76719597
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95244346"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template"></a>Azure 仮想ネットワークでの IPv6 デュアル スタック アプリケーションのデプロイ - テンプレート

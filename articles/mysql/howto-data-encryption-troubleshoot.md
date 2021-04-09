@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 02/13/2020
 ms.openlocfilehash: 95b5a7650e0990f13149daeed87da8e261ec37e4
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93241125"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-mysql"></a>Azure Database for MySQL でのデータ暗号化のトラブルシューティング
@@ -19,7 +19,7 @@ ms.locfileid: "93241125"
 
 ## <a name="introduction"></a>はじめに
 
-Azure Key Vault でカスタマー マネージド キーを使用するようにデータ暗号化を構成する場合、サーバーにはキーへの継続的なアクセスが必要となります。 サーバーが Azure Key Vault のカスタマー マネージド キーにアクセスできなくなると、すべての接続が拒否され、該当するエラー メッセージが表示され、Azure portal でその状態が * **[アクセス不可]** _ に変わります。
+Azure Key Vault でカスタマー マネージド キーを使用するようにデータ暗号化を構成する場合、サーバーにはキーへの継続的なアクセスが必要となります。 サーバーが Azure Key Vault のカスタマー マネージド キーにアクセスできなくなると、すべての接続が拒否され、該当するエラー メッセージが表示され、Azure portal でその状態が ***[アクセス不可]*** に変わります。
 
 アクセスできない Azure Database for MySQL サーバーが不要になった場合は、それを削除してコストを発生させないようにすることができます。 キー コンテナーへのアクセスが復元され、サーバーが使用できるようになるまで、サーバーに対する他のすべての操作は許可されません。 また、アクセスできないサーバーがカスタマー マネージド キーで暗号化されている場合は、そのサーバーで `Yes` (カスタマー マネージド) から `No` (サービス マネージド) にデータ暗号化オプションを変更することもできません。 サーバーに再度アクセスできるようにするには、キーを手動で再検証する必要があります。 このアクションは、カスタマー マネージド キーへのアクセス許可が取り消されている間、データを不正アクセスから保護するために必要です。
 
@@ -44,12 +44,12 @@ Azure Key Vault キーを使用するデータ暗号化に関するほとんど�
 #### <a name="disabled-key-vault"></a>無効な Key Vault
 
 - `AzureKeyVaultKeyDisabledMessage`
-- _*説明**:Azure Key Vault キーが無効になっているため、サーバーで操作を完了できませんでした。
+- **説明**:Azure Key Vault キーが無効になっているため、サーバーで操作を完了できませんでした。
 
 #### <a name="missing-key-vault-permissions"></a>Key Vault アクセス許可がない
 
 - `AzureKeyVaultMissingPermissionsMessage`
-- **説明** :サーバーに、Azure Key Vault に対して必要な取得、ラップ、およびラップ解除のアクセス許可がありません。 ID でサービス プリンシパルに欠落しているアクセス許可を付与します。
+- **説明**:サーバーに、Azure Key Vault に対して必要な取得、ラップ、およびラップ解除のアクセス許可がありません。 ID でサービス プリンシパルに欠落しているアクセス許可を付与します。
 
 ### <a name="mitigation"></a>対応策
 

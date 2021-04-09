@@ -1,6 +1,6 @@
 ---
 title: 'DB2 から SQL Managed Instance: 移行ガイド'
-description: このガイドに従って、DB2 データベースを Azure SQL Managed Instance に移行します。
+description: このガイドでは、SQL Server Migration Assistant for DB2 を使用して、DB2 データベースを Azure SQL Managed Instance に移行する方法について説明します。
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
 ms.custom: ''
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 3902661553bbb390e6e999e0f67cd043eee8df09
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 9ad838b8c5f54d3ecdd5c8ce56b197cdb6cec1ba
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359185"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103563863"
 ---
 # <a name="migration-guide-db2-to-sql-managed-instance"></a>移行ガイド:DB2 から SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -143,9 +143,6 @@ SQL Server Migration Assistant (SSMA) を使用して評価を作成します。
 1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行してから、結果を分析します。
 1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行し、結果を分析して比較します。
 
-   > [!NOTE]
-   > 移行後の検証テストの開発と実行を支援するために、パートナーの [QuerySurge](https://www.querysurge.com/company/partners/microsoft) から入手できる Data Quality Solution を検討してください。 
-
 
 ## <a name="leverage-advanced-features"></a>高度な機能を活用する 
 
@@ -170,7 +167,7 @@ SQL Server Migration Assistant (SSMA) を使用して評価を作成します。
 
 ## <a name="next-steps"></a>次のステップ
 
-- さまざまなデータベースとデータの移行シナリオ、および特殊なタスクを支援するために使用できる Microsoft とサードパーティのサービスとツールのマトリックスについては、[データ移行のサービスとツール](../../../dms/dms-tools-matrix.md)に関するページを参照してください。
+- さまざまなデータベースとデータの移行シナリオ、および特殊なタスクを支援するために使用できる Microsoft とサードパーティのサービスとツールの一覧については、[データ移行のサービスとツール](../../../dms/dms-tools-matrix.md)に関するページを参照してください。
 
 - Azure SQL Managed Instance の詳細については、以下を参照してください。
    - [SQL Managed Instance の概要](../../managed-instance/sql-managed-instance-paas-overview.md)

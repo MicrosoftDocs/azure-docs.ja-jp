@@ -7,10 +7,10 @@ author: nabhishek
 ms.author: abnarain
 ms.date: 01/10/2018
 ms.openlocfilehash: 2e2a50a96402f01fe914c79d5257fc5bb4dc57a0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100377790"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Azure Data Factory で Spark アクティビティを使用してクラウドのデータを変換する
@@ -82,7 +82,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-1. 左側のメニューの **[新規]** を選択し、 **[データ + 分析]** を選択して、 **[Data Factory]** を選択します。 
+1. 左側のメニューの **[新規]** を選択し、**[データ + 分析]** を選択して、**[Data Factory]** を選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/tutorial-transform-data-spark-portal/new-azure-data-factory-menu.png)
 1. **[新しいデータ ファクトリ]** ウィンドウで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。 
@@ -125,10 +125,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. ウィンドウの下部にある **[接続]** を選択して、 **[+ 新規]** を選択します。 
 
    ![新しい接続を作成するためのボタン](./media/tutorial-transform-data-spark-portal/new-connection.png)
-1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、 **[データ ストア]**  >  **[Azure Blob Storage]** を選択し、 **[続行]** を選択します。 
+1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、**[データ ストア]** > **[Azure Blob Storage]** を選択し、**[続行]** を選択します。 
 
    ![[Azure Blob Storage] タイルの選択](./media/tutorial-transform-data-spark-portal/select-azure-storage.png)
-1. **[ストレージ アカウント名]** で一覧から名前を選択し、 **[保存]** を選択します。 
+1. **[ストレージ アカウント名]** で一覧から名前を選択し、**[保存]** を選択します。 
 
    ![ストレージ アカウント名を指定するボックス](./media/tutorial-transform-data-spark-portal/new-azure-storage-linked-service.png)
 
@@ -136,7 +136,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="create-an-on-demand-hdinsight-linked-service"></a>オンデマンドの HDInsight のリンクされたサービスを作成する
 
 1. **[+ 新規]** ボタンをもう一度選択して、別のリンクされたサービスを作成します。 
-1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、 **[コンピューティング]**  >  **[Azure HDInsight]** の順に選択し、 **[続行]** を選択します。 
+1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、**[コンピューティング]** > **[Azure HDInsight]** の順に選択し、**[続行]** を選択します。 
 
    ![[Azure HDInsight] タイルの選択](./media/tutorial-transform-data-spark-portal/select-azure-hdinsight.png)
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を完了します。 
@@ -193,7 +193,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![[Script/Jar]\(スクリプト/Jar\) タブでの Spark スクリプトの指定](./media/tutorial-transform-data-spark-portal/specify-spark-script.png)
    
-   c. **adftutorial/spark/script** フォルダーに移動します。**WordCount_Spark.py** を選択し、 **[完了]** を選択します。      
+   c. **adftutorial/spark/script** フォルダーに移動します。**WordCount_Spark.py** を選択し、**[完了]** を選択します。      
 
 1. パイプラインを検証するために、ツール バーの **[検証]** ボタンを選択します。 **>>** (右矢印) ボタンを選択して、検証ウィンドウを閉じます。 
     
@@ -251,7 +251,7 @@ adftutorial コンテナーの spark/otuputfiles/wordcount フォルダーに出
 仮想ネットワークにある Azure HDInsight クラスター上で Hive スクリプトを実行してデータを変換する方法については、次のチュートリアルに進んでください。 
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Azure Virtual Network で Hive を使用してデータを変換する](tutorial-transform-data-hive-virtual-network-portal.md)。
+> [チュートリアル: Azure Virtual Network で Hive を使用してデータを変換する](tutorial-transform-data-hive-virtual-network-portal.md)。
 
 
 

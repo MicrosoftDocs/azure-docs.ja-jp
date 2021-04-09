@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
 ms.openlocfilehash: 8f193cface177e6be6343f28ef4dc27c2d6c6a7b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102030904"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics データのセキュリティ

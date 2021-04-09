@@ -4,10 +4,10 @@ description: この記事では、System Center Data Protection Manager を使�
 ms.topic: troubleshooting
 ms.date: 01/30/2019
 ms.openlocfilehash: 84646f34d905b570855f655465529eb19b717cab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86513814"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>System Center Data Protection Manager のトラブルシューティング
@@ -31,7 +31,7 @@ System Center Data Protection Manager の最新リリース ノートについ�
 
 - 不整合状態を解消するには、整合性チェックを手動で実行するか、または整合性チェックを毎日実行するようにスケジュールします。
 - Microsoft Azure Backup Server および Data Protection Manager の最新バージョンを使用していることを確認します。
-- **自動整合性**設定が有効になっていることを確認します。
+- **自動整合性** 設定が有効になっていることを確認します。
 - コマンド プロンプトからサービスの再起動を試みてください。 `net stop dpmra` コマンドに続いて `net start dpmra` コマンドを使用します。
 - ネットワーク接続と帯域幅の要件が満たされていることを確認します
 - ソース マシンが予期せずにシャットダウンされたかどうかを確認します。

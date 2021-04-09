@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Blob Storage で静的な Web サイトをホストする - Azure Storage
+title: 'チュートリアル: Blob Storage で静的な Web サイトをホストする - Azure Storage'
 description: 静的な Web サイト ホスティングのためにストレージ アカウントを構成し、静的な Web サイトを Azure Storage にデプロイする方法について説明します。
 author: normesta
 ms.service: storage
@@ -9,15 +9,15 @@ ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: 36cdaa813e0eccb23563301052aee268ab61533a
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94888506"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
-# <a name="tutorial-host-a-static-website-on-blob-storage"></a>チュートリアル:Blob Storage で静的な Web サイトをホストする
+# <a name="tutorial-host-a-static-website-on-blob-storage"></a>チュートリアル: Blob Storage で静的な Web サイトをホストする
 
 このチュートリアルでは、静的な Web サイトを構築し、Azure Storage にデプロイする方法を学習します。 終了すると、ユーザーがパブリックにアクセスできる静的な Web サイトが用意できます。 
 
@@ -39,7 +39,7 @@ ms.locfileid: "94888506"
 Visual Studio Code をインストールした後、Azure Storage プレビューの拡張機能をインストールします。 この拡張機能では、Azure Storage の管理機能を Visual Studio Code と統合します。 拡張機能を使用して、Azure Storage に静的な Web サイトをデプロイします。 拡張機能をインストールするには、次のようにします。
 
 1. Visual Studio Code を起動します。
-2. ツール バーの **[拡張機能]** をクリックします。 *Azure Storage* を検索し、リストで **[Azure Storage]** の拡張機能を選択します。 次に、 **[インストール]** ボタンをクリックして拡張機能をインストールします。
+2. ツール バーの **[拡張機能]** をクリックします。 *Azure Storage* を検索し、リストで **[Azure Storage]** の拡張機能を選択します。 次に、**[インストール]** ボタンをクリックして拡張機能をインストールします。
 
     ![VS Code で Azure Storage 拡張機能をインストールする](media/storage-blob-static-website-host/install-extension-vs-code.png)
 
@@ -66,7 +66,7 @@ Visual Studio Code をインストールした後、Azure Storage プレビュ�
 次に、Visual Studio Code を使用して Hello World Web ページを作成し、それを Azure Storage アカウントでホストされている静的な Web サイトにデプロイします。
 
 1. ローカル ファイル システムで *mywebsite* という名前の空のフォルダーを作成します。 
-1. Visual Studio Code を起動して、 **[エクスプローラー]** パネルから先ほど作成したフォルダーを開きます。
+1. Visual Studio Code を起動して、**[エクスプローラー]** パネルから先ほど作成したフォルダーを開きます。
 
     ![Visual Studio Code でフォルダーを開く](media/storage-blob-static-website-host/open-folder-vs-code.png)
 
@@ -97,7 +97,7 @@ Visual Studio Code をインストールした後、Azure Storage プレビュ�
     </html>
     ```
 
-1. **[エクスプローラー]** パネルの *mywebsite* フォルダーの下を右クリックし、 **[Deploy to Static Website...]\(静的な Web サイトにデプロイ...\)** を選択して Web サイトをデプロイします。 Azure にログインしてサブスクリプションのリストを取得することを求めるプロンプトが表示されます。
+1. **[エクスプローラー]** パネルの *mywebsite* フォルダーの下を右クリックし、**[Deploy to Static Website...]\(静的な Web サイトにデプロイ...\)** を選択して Web サイトをデプロイします。 Azure にログインしてサブスクリプションのリストを取得することを求めるプロンプトが表示されます。
 
 1. 静的な Web サイト ホスティングを有効にしたストレージ アカウントを含むサブスクリプションを選択します。 次に、プロンプトが表示されたらストレージ アカウントを選択します。
 
@@ -105,7 +105,7 @@ Visual Studio Code をインストールした後、Azure Storage プレビュ�
 
 チュートリアルは正常に完了し、静的な Web サイトが Azure にデプロイされました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、静的な Web サイト ホスティングのために Azure Storage アカウントを構成する方法と、静的な Web サイトを作成して Azure エンドポイントにデプロイする方法を学習しました。
 

@@ -4,10 +4,10 @@ description: 失敗したデプロイを、正常なデプロイにロールバ�
 ms.topic: conceptual
 ms.date: 02/02/2021
 ms.openlocfilehash: 742a8f16a2dce3204b48085759091540586a4522
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99492214"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>エラー発生時に正常なデプロイにロールバックする

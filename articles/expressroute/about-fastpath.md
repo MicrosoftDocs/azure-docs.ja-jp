@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: duau
-ms.openlocfilehash: ba23319c35aed1d09da652e6f84b60e5f8e9495e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: eefc42fb8e66e66c6388599df65c59ff642a6b59
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740887"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124110"
 ---
 # <a name="about-expressroute-fastpath"></a>ExpressRoute FastPath について
 
 ExpressRoute 仮想ネットワーク ゲートウェイの目的は、ネットワーク ルートを交換し、ネットワーク トラフィックをルーティングすることです。 FastPath の目的は、お使いのオンプレミス ネットワークと仮想ネットワークの間のデータ パスのパフォーマンスを向上させることです。 FastPath が有効になっていると、ゲートウェイはバイパスされ、ネットワーク トラフィックが仮想ネットワーク内の仮想マシンに直接送信されます。
 
-## <a name="requirements"></a>要件
+## <a name="requirements"></a>必要条件
 
 ### <a name="circuits"></a>回線
 
@@ -34,7 +34,7 @@ FastPath を構成するには、仮想ネットワーク ゲートウェイを�
 * ErGw3AZ
 
 > [!IMPORTANT]
-> ExpressRoute 経由で IPv6 ベースのプライベート ピアリングと共に FastPath を使用する予定の場合は、**SKU** に対して ErGw3AZ を選択してください。
+> ExpressRoute 経由で IPv6 ベースのプライベート ピアリングと共に FastPath を使用する予定の場合は、**SKU** に対して ErGw3AZ を選択してください。 これは、ExpressRoute Direct を利用する回線でのみ利用できます。
 > 
 >
 

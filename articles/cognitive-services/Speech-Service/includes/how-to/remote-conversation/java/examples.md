@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: amishu
 ms.openlocfilehash: 6a73c238cde7fbddfb7aa4c7153b5de5b442e9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87284221"
 ---
 ## <a name="upload-the-audio"></a>オーディオをアップロードする
 
 非同期での文字起こしを実行する前に、Microsoft Cognitive Speech クライアント SDK (バージョン1.8.0 以降) を使って、会話の文字起こしサービスにオーディオを送信する必要があります。
 
-このコード例では、非同期モード専用に会話の文字起こし機能を作成する方法を示します。 オーディオを文字起こし機能にストリーミングするには、[Speech SDK を使ってリアルタイムで会話の文字起こしを行う方法](../../../../how-to-use-conversation-transcription.md)に関する記事で作成したオーディオ ストリーミング コードを追加する必要があります。 そのトピックの**制限事項**に関するセクションを参照し、サポートされているプラットフォームと言語 API を確認してください。
+このコード例では、非同期モード専用に会話の文字起こし機能を作成する方法を示します。 オーディオを文字起こし機能にストリーミングするには、[Speech SDK を使ってリアルタイムで会話の文字起こしを行う方法](../../../../how-to-use-conversation-transcription.md)に関する記事で作成したオーディオ ストリーミング コードを追加する必要があります。 そのトピックの **制限事項** に関するセクションを参照し、サポートされているプラットフォームと言語 API を確認してください。
 
 ```java
 // Create the speech config object

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2020
 ms.author: memildin
-ms.openlocfilehash: ca3a1083b512709ad5ef070b6f5bd0e363baf80b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 432729417a65376533d9ecc201f2f6f52376cc58
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720751"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099405"
 ---
 # <a name="sql-information-protection-policy-in-azure-security-center"></a>Azure Security Center 上の SQL 情報保護ポリシー
  
@@ -32,7 +32,7 @@ SQL 情報保護の[データの検出と分類メカニズム](../azure-sql/dat
 Security Center 内の情報保護ポリシー オプションには、ラベルと情報の種類の定義済みセットが用意されおり、分類エンジンの既定値として機能します。 次に示すように、組織のニーズに応じてポリシーをカスタマイズできます。
 
 > [!IMPORTANT]
-> Azure テナントの情報保護ポリシーをカスタマイズするには、テナントのルート管理グループに対する管理特権が必要です。 詳細については、「[Azure Security Center に対するテナント全体の可視性を確保する](security-center-management-groups.md)」をご覧ください。
+> Azure テナントの情報保護ポリシーをカスタマイズするには、テナントのルート管理グループに対する管理特権が必要です。 詳細については、「[テナント全体の可視性を付与および要求する](tenant-wide-permissions-management.md)」を参照してください。
 
 :::image type="content" source="./media/security-center-info-protection-policy/sql-information-protection-policy-page.png" alt-text="SQL 情報の保護ポリシーを示しているページ":::
  
@@ -58,7 +58,7 @@ Security Center 内の情報保護ポリシー オプションには、ラベル
 Security Center の **[価格と設定]** ページで、 **[SQL information protection]** を選択します。
 
 > [!NOTE]
-> このオプションは、テナントレベルのアクセス許可を持つユーザーに対してのみ表示されます。 [テナント全体のアクセス許可を自分に付与します](./security-center-management-groups.md#grant-tenant-wide-permissions-to-yourself)。
+> このオプションは、テナントレベルのアクセス許可を持つユーザーに対してのみ表示されます。 [テナント全体のアクセス許可を自分に付与します](tenant-wide-permissions-management.md#grant-tenant-wide-permissions-to-yourself)。
 
 :::image type="content" source="./media/security-center-info-protection-policy/pricing-settings-link-to-information-protection.png" alt-text="Azure Security Center の [価格と設定] ページから SQL 情報保護ポリシーへのアクセス":::
 

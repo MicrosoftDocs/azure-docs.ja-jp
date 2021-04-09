@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 01/18/2021
 ms.author: allensu
 ms.openlocfilehash: d394a475c5121607f70c03437382e104a5d0cbee
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98746409"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Private Link サービスを作成する
@@ -217,12 +217,12 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 12. **[確認と作成]** タブの **[作成]** を選択します。
 
-Private Link サービスが作成され、トラフィックを受信できるようになります。 トラフィック フローを確認する場合は、アプリケーションを Standard Load Balancer の背後に構成します。
+Private Link サービスが作成され、トラフィックを受信できるようになります。 トラフィック フローを確認する場合は、ご利用のアプリケーションを Standard ロード バランサーの背後に構成します。
 
 
 ## <a name="create-private-endpoint"></a>プライベート エンドポイントの作成
 
-このセクションでは、Private Link サービスをプライベート エンドポイントにマップします。 仮想ネットワークには、Private Link サービスのプライベート エンドポイントが含まれています。 この仮想ネットワークには、Private Link サービスにアクセスするリソースが含まれています。
+このセクションでは、プライベート リンク サービスをプライベート エンドポイントにマップします。 仮想ネットワークには、プライベート リンク サービス用のプライベート エンドポイントが含まれています。 この仮想ネットワークには、ご利用のプライベート リンク サービスにアクセスするリソースが含まれています。
 
 ### <a name="create-private-endpoint-virtual-network"></a>プライベート エンドポイントの仮想ネットワークを作成する
 

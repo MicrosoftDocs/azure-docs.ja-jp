@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: 78fddb5b4512883f8e78d6ed53f6e3dbbeba0e4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90524999"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>モビリティ エージェントをプッシュ インストールできるようソース マシンを準備する
@@ -24,7 +24,7 @@ ms.locfileid: "90524999"
 1. マシンとプロセス サーバー間にネットワーク接続が存在することを確認します。 プロセス サーバーを別に設定していない場合は、既定で、構成サーバー上で実行されます。
 1. プロセス サーバーがコンピューターへのアクセスに使用できるアカウントを作成します。 このアカウントには管理者権限 (ローカルまたはドメイン) が必要です 。 このアカウントは、プッシュ インストールとエージェントの更新にのみ使用します。
 2. ドメイン アカウントを使用しない場合は、次のようにローカル コンピューターでリモート ユーザー アクセス コントロールを無効にします。
-    - HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System レジストリ キーに、新しい DWORD 値**LocalAccountTokenFilterPolicy** を追加します。 値を **1** に設定します。
+    - HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System レジストリ キーに、新しい DWORD 値 **LocalAccountTokenFilterPolicy** を追加します。 値を **1** に設定します。
     -  これをコマンド プロンプトから行うには、次のコマンドを実行します。
     
        ```

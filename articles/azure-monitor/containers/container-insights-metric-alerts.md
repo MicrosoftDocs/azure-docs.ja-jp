@@ -4,10 +4,10 @@ description: この記事では、Container insights から利用可能なパブ
 ms.topic: conceptual
 ms.date: 10/28/2020
 ms.openlocfilehash: f19959c76d31422a0bdf898a6fa41e6b168e2e61
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101728894"
 ---
 # <a name="recommended-metric-alerts-preview-from-container-insights"></a>Container insights からの推奨メトリック アラート (プレビュー)

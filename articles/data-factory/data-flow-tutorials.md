@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.date: 12/14/2020
 ms.openlocfilehash: f1171bdd087d6ca72a09a2e3efb7f4767a575d21
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100517792"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>マッピング データ フローのビデオ チュートリアル

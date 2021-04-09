@@ -7,10 +7,10 @@ ms.date: 2/17/2021
 ms.topic: troubleshooting
 ms.service: iot-hub-device-update
 ms.openlocfilehash: 3c1f60b214397b1f97e0157b5beca32d504102d6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102030632"
 ---
 # <a name="device-update-for-iot-hub-troubleshooting-guide"></a>Device Update for IoT Hub のトラブルシューティング ガイド

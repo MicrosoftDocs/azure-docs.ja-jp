@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 9e2f7115560148a1d3b9d2671be54c1ba4d61946
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 3da2e116f1f58ca7a5c75da49f64bb8fc046e3ac
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588915"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102548497"
 ---
 # <a name="create-a-cicd-pipeline-for-ruby-on-rails-by-using-azure-devops-starter"></a>Azure DevOps Starter を使用して Ruby on Rails 用の CI/CD パイプラインを作成する
 
@@ -126,4 +126,4 @@ Azure DevOps Starter によって、Azure DevOps 組織内に完全な CI/CD パ
 チームのニーズを満たすためのビルドおよびリリース パイプラインの変更については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [複数ステージの継続的デプロイ (CD) パイプラインを定義する](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [複数ステージの継続的デプロイ (CD) パイプラインを定義する](/azure/devops/pipelines/release/define-multistage-release-process)

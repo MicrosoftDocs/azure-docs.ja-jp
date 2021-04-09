@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.openlocfilehash: d604ca8c8979ec98b990f8002ce29d0df92ac2af
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90946231"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server-preview"></a>クイック スタート:MySQL Workbench を使用して Azure Database for MySQL - フレキシブル サーバー (プレビュー) に接続し、データのクエリを実行する
@@ -53,7 +53,7 @@ MySQL Workbench を使用して Azure Database for MySQL フレキシブル サ�
 
 2. **[Setup New Connection]\(新しい接続のセットアップ\)** ダイアログ ボックスで、次の情報を **[Parameters]\(パラメーター\)** タブに入力します。
 
-    :::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="Azure Database for MySQL Flexible Server name":::
+    :::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="新しい接続のセットアップ":::
 
     | **パラメーター** | **推奨値** | **フィールドの説明** |
     |---|---|---|
@@ -108,7 +108,7 @@ MySQL Workbench を使用して Azure Database for MySQL フレキシブル サ�
 
     このスクリーンショットは、SQL Workbench に表示された SQL コードとその実行後の出力の例を示しています。
 
-    :::image type="content" source="./media/connect-workbench/3-workbench-sql-tab.png" alt-text="Azure Database for MySQL Flexible Server name":::
+    :::image type="content" source="./media/connect-workbench/3-workbench-sql-tab.png" alt-text="サンプル SQL コードを実行するための MySQL Workbench の SQL タブ":::
 
 2. サンプル SQL コードを実行するには、 **[SQL File]\(SQL ファイル\)** タブのツールバーにある稲妻アイコンをクリックします。
 3. ページ中央の **[結果グリッド]** セクションの 3 つのタブに結果が表示されていることに注目してください。

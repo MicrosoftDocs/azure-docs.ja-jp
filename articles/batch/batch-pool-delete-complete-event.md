@@ -4,10 +4,10 @@ description: Batch のプール削除完了イベントのリファレンスで�
 ms.topic: reference
 ms.date: 12/28/2020
 ms.openlocfilehash: be6411a150ae6be424c0621eed768157154c7408
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97803733"
 ---
 # <a name="pool-delete-complete-event"></a>プール削除の完了イベント
@@ -24,7 +24,7 @@ ms.locfileid: "97803733"
 }
 ```
 
-|要素|種類|メモ|
+|要素|Type|Notes|
 |-------------|----------|-----------|
 |`id`|String|プールの ID。|
 |`startTime`|DateTime|プールの削除が開始された時刻。|

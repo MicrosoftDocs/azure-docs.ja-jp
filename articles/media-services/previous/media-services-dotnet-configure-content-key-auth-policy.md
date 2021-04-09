@@ -3,7 +3,7 @@ title: Media Services .NET SDK を使用したコンテンツ キー承認ポリ
 description: Media Services .NET SDK を使用してコンテンツ キー承認ポリシーを構成する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: mingfeiy
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 1a0aedda-5b87-4436-8193-09fc2f14310c
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bdaa823a14d99a16aa0f2e71483086d883b0515f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63cc20a9d7f6878961519aa28ae6478d9145852d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263775"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103014215"
 ---
 # <a name="configure-a-content-key-authorization-policy-by-using-the-media-services-net-sdk"></a>Media Services .NET SDK を使用したコンテンツ キー承認ポリシーの構成
 

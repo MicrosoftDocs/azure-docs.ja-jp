@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
 ms.openlocfilehash: 1bf9a2cf7af8b18994ef2473c11176b8aea74f6e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102042727"
 ---
 # <a name="quotas-in-azure-static-web-apps-preview"></a>Azure Static Web Apps のプレビューのクォータ

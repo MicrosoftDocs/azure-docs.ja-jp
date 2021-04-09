@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: bf6865d2756579f457dded90b247326d2eec137c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83123124"
 ---
 # <a name="create-a-function-in-azure-thats-triggered-by-blob-storage"></a>Blob Storage でトリガーされる Azure 関数の作成
@@ -36,13 +36,13 @@ Blob Storage コンテナーでファイルをアップロードしたり、更�
 
 1. **[関数]** を選択し、 **[+ 追加]** を選択して、新しい関数を追加します。
 
-   :::image type="content" source="./media/functions-create-storage-blob-triggered-function/function-app-quickstart-choose-template.png" alt-text="関数アプリが正常に作成されました。" border="true":::
+   :::image type="content" source="./media/functions-create-storage-blob-triggered-function/function-app-quickstart-choose-template.png" alt-text="Azure portal で関数テンプレートを選択します。" border="true":::
 
 1. **Azure Blob Storage トリガー** テンプレートを選択します。
 
 1. 画像の下の表に指定した設定を使用してください。
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-2.png" alt-text="関数アプリが正常に作成されました。" border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-2.png" alt-text="Blob Storage でトリガーされる関数に名前を付けて、構成します。" border="true":::
 
     | 設定 | 推奨値 | 説明 |
     |---|---|---|
@@ -52,7 +52,7 @@ Blob Storage コンテナーでファイルをアップロードしたり、更�
 
 1. 関数を作成するには **[関数を作成する]** を選択します。
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-3.png" alt-text="関数アプリが正常に作成されました。" border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-3.png" alt-text="Blob Storage でトリガーされる関数を作成します。" border="true":::
 
 次に、**samples-workitems** コンテナーを作成します。
 
@@ -60,19 +60,19 @@ Blob Storage コンテナーでファイルをアップロードしたり、更�
 
 1. 関数の **[概要]** ページで、リソース グループを選択します。
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-resource-group.png" alt-text="関数アプリが正常に作成されました。" border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-resource-group.png" alt-text="Azure portal リソースグループを選択します。" border="true":::
 
 1. リソース グループのストレージ アカウントを見つけて、選択します。
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-account-access.png" alt-text="関数アプリが正常に作成されました。" border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-account-access.png" alt-text="ストレージ アカウントにアクセスします。" border="true":::
 
 1. **[コンテナー]** を選択し、 **[+ コンテナー]** を選択します。 
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-add-container.png" alt-text="関数アプリが正常に作成されました。" border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-add-container.png" alt-text="Azure portal のストレージ アカウントにコンテナーを追加します。" border="true":::
 
 1. **[名前]** フィールドに「`samples-workitems`」と入力して、 **[作成]** を選択します。
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-name-blob-container.png" alt-text="関数アプリが正常に作成されました。" border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-name-blob-container.png" alt-text="ストレージ コンテナーに名前を付けます。" border="true":::
 
 Blob コンテナーが用意されているので、このコンテナーにファイルをアップロードすることによって、関数をテストできます。
 
@@ -80,23 +80,23 @@ Blob コンテナーが用意されているので、このコンテナーにフ
 
 1. Azure Portal に戻り、関数を参照して、ページ下部の **[ログ]** を展開して、ログ ストリーミングが一時停止していないことを確認します。
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-log-expander.png" alt-text="関数アプリが正常に作成されました。" border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-log-expander.png" alt-text="Azure portal でログを展開します。" border="true":::
 
 1. 別のブラウザー ウィンドウで、Azure portal のリソース グループに移動して、ストレージ アカウントを選択します。
 
 1. **[コンテナー]** を選択し、**samples-workitems** コンテナーを選択します。
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-container.png" alt-text="関数アプリが正常に作成されました。" border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-container.png" alt-text="Azure portal で samples-workitems コンテナーに移動します。" border="true":::
 
 1. **[アップロード]** を選択し、フォルダー アイコンを選択して、アップロードするファイルを選択します。
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-manager-upload-file-blob.png" alt-text="関数アプリが正常に作成されました。" border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-manager-upload-file-blob.png" alt-text="BLOB コンテナーにファイルをアップロードします。" border="true":::
 
 1. 画像ファイルなど、ローカル コンピューター上のファイルを参照して、そのファイルを選択します。 **[開く]** 、 **[アップロード]** の順に選択します。
 
 1. 関数ログに戻り、Blob が読み取られたことを確認します。
 
-    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/function-app-in-portal-editor.png" alt-text="関数アプリが正常に作成されました。" border="true":::
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/function-app-in-portal-editor.png" alt-text="ログ内のメッセージを表示します。" border="true":::
 
     >[!NOTE]
     > 既定の従量課金プランで Function App を実行する場合、Blob が追加されたり更新されてから関数がトリガーされるまで、最高数分間の遅延が生じることがあります。 Blob でトリガーされた関数で待機時間を短くする必要がある場合は、App Service プランで Function App を実行することを検討してください。

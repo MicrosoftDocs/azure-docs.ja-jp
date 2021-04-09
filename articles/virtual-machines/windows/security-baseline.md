@@ -2,17 +2,19 @@
 title: Linux Virtual Machines Windows Virtual Machines 用の Azure セキュリティ ベースライン
 description: Windows Virtual Machines セキュリティ ベースラインでは、Azure セキュリティ ベンチマークで指定されているセキュリティに関する推奨事項を実装するための手順のガイダンスとリソースが提供されます。
 author: msmbaldwin
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: security
+ms.collection: linux
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5a9bc576541c5991bb5f9352dc41fb0cce99c601
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 11f0a58f8c6d38d070d4bafe68794bdd9ada7cf3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100594281"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102556164"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Windows Virtual Machines 用の Azure のセキュリティ ベースライン
 

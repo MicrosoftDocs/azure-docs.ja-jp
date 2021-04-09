@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: jeedes
 ms.openlocfilehash: 0cc005ee22bff897a87679a0bde95ffec6e98e51
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92522412"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nimbus"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Nimbus の統合
@@ -37,8 +37,8 @@ ms.locfileid: "92522412"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Nimbus では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Nimbus では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* Nimbus では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Nimbus では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-nimbus-from-the-gallery"></a>ギャラリーからの Nimbus の追加
 
@@ -48,7 +48,7 @@ Azure AD への Nimbus の統合を構成するには、ギャラリーからマ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Nimbus** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Nimbus**」と入力します。
 1. 結果のパネルから **[Nimbus]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -117,7 +117,7 @@ Nimbus に対して Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-nimbus-sso"></a>Nimbus SSO の構成
 
-**Nimbus** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Nimbus サポート チーム](mailto:support@nimbus.cloud)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Nimbus** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Nimbus サポート チーム](mailto:support@nimbus.cloud)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-nimbus-test-user"></a>Nimbus テスト ユーザーの作成
 

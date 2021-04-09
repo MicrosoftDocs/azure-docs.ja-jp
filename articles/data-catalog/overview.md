@@ -6,14 +6,15 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: overview
 ms.date: 08/01/2019
-ms.openlocfilehash: 9b7a5d5ca6cbad897839c8e28c9e3efd1eeabaf0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e128e9f7515e572fc0be4b92ef03d8d98529ac66
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "68736993"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674905"
 ---
 # <a name="what-is-azure-data-catalog"></a>Azure Data Catalog とは何ですか
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 Azure Data Catalog は、フル マネージド クラウド サービスです。 ユーザーは必要なデータ ソースを発見し、発見したデータ ソースを理解することができます。 同時に、Data Catalog は、組織が既存の投資からより多くの価値を引き出すことを支援します。
 
@@ -68,7 +69,7 @@ Data Catalog の機能の詳細については、以下のページを参照し�
 * [ビジネス用語集を設定する方法](data-catalog-how-to-business-glossary.md)
 * [よく寄せられる質問](data-catalog-frequently-asked-questions.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Data Catalog の使用を開始するには: 
 

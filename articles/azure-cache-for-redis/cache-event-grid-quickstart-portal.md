@@ -7,10 +7,10 @@ ms.service: cache
 author: curib
 ms.author: cauribeg
 ms.openlocfilehash: 5bdd6b0e6f97f7e5a738ab17d68282cf402004b0
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99056484"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-the-azure-portal"></a>クイックスタート: Azure portal を使用して Azure Cache for Redis のイベントを Web エンドポイントにルーティングする

@@ -4,10 +4,10 @@ description: Azure Service Fabric を使用してアプリケーションとサ�
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: ddf846e9e3ac6add7cf3f584b702de5accfb22af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91538500"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Azure Service Fabric アプリケーションの設計に関するベスト プラクティス
@@ -68,7 +68,7 @@ Service Fabric Reliable Actors では、ステートフルな仮想アクター�
 - [ターンベースのコンカレンシー](./service-fabric-reliable-actors-introduction.md#concurrency)により、アクターを独立したオブジェクトとして使用するのが最適です。 複数アクターの同期メソッド呼び出し (それぞれが別のネットワーク呼び出しになる可能性が最も高い) のグラフを作成したり、循環アクター要求を作成したりしないでください。 これらは、パフォーマンスとスケールに大きく影響します。
 - 同期コードと非同期コードを混在させないでください。 パフォーマンスの問題を防ぐために、常に非同期を使用します。
 - アクターで長期呼び出しを行わないでください。 長期呼び出しを行うと、ターンベースのコンカレンシーにより、同じアクターへの他の呼び出しがブロックされます。
-- [Service Fabric リモート処理](./service-fabric-reliable-services-communication-remoting.md)を使用して他のサービスと通信しており、`ServiceProxyFactory` を作成する場合は、アクター レベル*ではなく*、[アクター サービス](./service-fabric-reliable-actors-using.md) レベルでファクトリーを作成します。
+- [Service Fabric リモート処理](./service-fabric-reliable-services-communication-remoting.md)を使用して他のサービスと通信しており、`ServiceProxyFactory` を作成する場合は、アクター レベル *ではなく*、[アクター サービス](./service-fabric-reliable-actors-using.md) レベルでファクトリーを作成します。
 
 
 ## <a name="application-diagnostics"></a>アプリケーション診断

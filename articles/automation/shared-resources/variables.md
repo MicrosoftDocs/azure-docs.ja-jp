@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 12/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: 6db0c82c034aab97deee1be4aa8bdc54368521bc
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98131527"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Azure Automation で変数を管理する

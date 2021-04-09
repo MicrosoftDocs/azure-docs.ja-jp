@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 02b8d72ab88f9eca2e1fac4858c14826dae57dbe
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 698b4ebedfc9b41e8c5732a0a81226a971d65585
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629174"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103470763"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>パート 3: SMB 経由でディレクトリとファイル レベルのアクセス許可を構成する 
 
@@ -93,9 +93,19 @@ Azure Files への接続で問題が発生した場合は、[Windows での Azur
 
 Windows DACL が AD DS ID に対して構成されたオンプレミスのファイル サーバーにディレクトリまたはファイルがある場合は、Robocopy などの従来のファイル コピー ツールか [Azure AzCopy v 10.4+](https://github.com/Azure/azure-storage-azcopy/releases) を使用して、ACL を保持している Azure Files にコピーできます。 Azure File Sync によってディレクトリとファイルが Azure Files に階層化されている場合は、ACL が引き継がれ、ネイティブ形式で保持されます。
 
+### <a name="configure-windows-acls-with-icacls"></a>icacls で Windows ACL を構成する
+
+ルート ディレクトリを含む、ファイル共有下のすべてのディレクトリとファイル共有に完全なアクセス許可を付与するには、次の Windows コマンドを使用します。 例中のプレースホルダーをお客様独自の値に置き換えてください。
+
+```
+icacls <mounted-drive-letter>: /grant <user-email>:(f)
+```
+
+icacls を使用して Windows ACL を設定する方法や、サポートされるさまざまな種類のアクセス許可の詳細については、[コマンド ライン リファレンスの icacls](/windows-server/administration/windows-commands/icacls) に関するページをご覧ください。
+
 ### <a name="configure-windows-acls-with-windows-file-explorer"></a>Windows エクスプローラーを使用して Windows ACL を構成する
 
-Windows エクスプローラーを使用して、ルート ディレクトリを含む、ファイル共有下のすべてのディレクトリとファイル共有に完全なアクセス許可を付与します。
+Windows エクスプローラーを使用して、ルート ディレクトリを含む、ファイル共有下のすべてのディレクトリとファイル共有に完全なアクセス許可を付与します。 AD ドメイン情報をエクスプローラーで正しく読み込むことができない場合は、オンプレミス AD 環境の信頼構成が原因の可能性があります。 クライアント コンピューターは、Azure ファイル認証で登録されている AD ドメイン コントローラーに接続できませんでした。 この場合は、icacls を Windows ACL 構成で使用します。
 
 1. Windows エクスプローラーを開き、ファイルまたはディレクトリを右クリックし、 **[プロパティ]** を選択します。
 1. **[セキュリティ]** タブをクリックします。
@@ -106,15 +116,6 @@ Windows エクスプローラーを使用して、ルート ディレクトリ�
 1.    **[セキュリティ]** タブで、新しいユーザーに付与するすべてのアクセス許可を選択します。
 1.    **[適用]** を選択します。
 
-### <a name="configure-windows-acls-with-icacls"></a>icacls で Windows ACL を構成する
-
-ルート ディレクトリを含む、ファイル共有下のすべてのディレクトリとファイル共有に完全なアクセス許可を付与するには、次の Windows コマンドを使用します。 例中のプレースホルダーをお客様独自の値に置き換えてください。
-
-```
-icacls <mounted-drive-letter>: /grant <user-email>:(f)
-```
-
-icacls を使用して Windows ACL を設定する方法や、サポートされるさまざまな種類のアクセス許可の詳細については、[コマンド ライン リファレンスの icacls](/windows-server/administration/windows-commands/icacls) に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: d9b77e96bc5cdf284eeedcaae67369356d43fc08
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 9cb46a57792ecdd650a8a9f5025a5055257057ec
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444779"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103622262"
 ---
 <a name="HOLTop"></a>
 
@@ -78,13 +78,23 @@ cd src
 touch sample-app.go
 ```
 
-普段使用している IDE またはテキスト エディターで `sample-app.go` を開きます。 次に、パッケージの名前を追加し、次のライブラリをインポートします。
+> [!TIP]
+> クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go) にあり、このクイックスタートのコード例が含まれています。
 
-[!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_imports)]
+普段使用している IDE またはテキスト エディターで `sample-app.go` を開きます。
 
-また、スクリプトのルートでコンテキストを宣言します。 このオブジェクトは、ほとんどの Computer Vision 関数呼び出しを実行するために必要です。
+スクリプトのルートでコンテキストを宣言します。 このオブジェクトは、ほとんどの Computer Vision 関数呼び出しを実行するために必要です。
 
-[!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_context)]
+### <a name="find-the-subscription-key-and-endpoint"></a>サブスクリプション キーとエンドポイントを見つける
+
+Azure Portal にアクセスします。 「**前提条件**」セクションで作成した Computer Vision リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 サブスクリプション キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
+
+Computer Vision のサブスクリプション キーとエンドポイントの変数を作成します。 サブスクリプション キーとエンドポイントを、次のコード内に示されている場所に貼り付けます。 Computer Vision エンドポイントの形式は `https://<your_computer_vision_resource_name>.cognitiveservices.azure.com/` です。
+
+[!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_imports_and_vars)]
+
+> [!IMPORTANT]
+> 終わったらコードからサブスクリプション キーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 たとえば、[Azure Key Vault](../../../../key-vault/general/overview.md) が考えられます。
 
 次に、さまざまな Computer Vision 操作を実行するコードの追加を開始します。
 

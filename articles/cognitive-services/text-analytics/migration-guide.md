@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/22/2021
 ms.author: aahi
-ms.openlocfilehash: 0faa7a6f5a3d2efc8bbef11308b308e3305a00d5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 416ef4ceddbb43e9f1606d44a66ffd5295cee4e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096323"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101699897"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Text Analytics API のバージョン 3.x への移行
 
@@ -104,7 +104,7 @@ JSON 応答の例については、リファレンス ドキュメントを参�
 
 ### <a name="feature-changes"></a>機能の変更 
 
-言語検出機能は、v3 ではエンドポイントのバージョン以外に変更されていませんが、JSON 応答には `score` ではなく `ConfidenceScore` が含まれます。 また、V3 では、出力で 1 つの言語のみが返されます。 
+v3 では言語検出機能の出力が変更されました。 JSON 応答には、`score` の代わりに `ConfidenceScore` が含まれます。 また、V3 では、各ドキュメントの `detectedLanguage` 属性で 1 つの言語のみが返されます。
 
 ### <a name="steps-to-migrate"></a>移行手順
 

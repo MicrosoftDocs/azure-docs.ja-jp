@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と DataCamp の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と DataCamp の統合 | Microsoft Docs'
 description: Azure Active Directory と DataCamp の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/10/2020
 ms.author: jeedes
 ms.openlocfilehash: 4e91424aadbe8d1e21d4fbb006d81ae22c491cbd
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454945"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datacamp"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と DataCamp の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datacamp"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と DataCamp の統合
 
 このチュートリアルでは、DataCamp と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と DataCamp を統合すると、次のことができます。
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* DataCamp では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* DataCamp では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* DataCamp では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* DataCamp では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-datacamp-from-the-gallery"></a>ギャラリーからの DataCamp の追加
 
@@ -50,7 +50,7 @@ Azure AD への DataCamp の統合を構成するに、ギャラリーからマ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **DataCamp** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**DataCamp**」と入力します。
 1. 結果のパネルから **[DataCamp]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-datacamp"></a>DataCamp の Azure AD シングル サインオンの構成とテスト
@@ -70,7 +70,7 @@ DataCamp で Azure AD SSO を構成してテストするには、次の構成要
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **DataCamp** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **DataCamp** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 

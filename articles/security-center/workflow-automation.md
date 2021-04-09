@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/04/2021
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 652986c4850a0b51fc86b84133d7e93813423c9a
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 6268ff6cfb3d3e856edcd8f84af930d52f4cf9d3
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550321"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096175"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>Security Center のトリガーへの応答を自動化する
 
@@ -113,6 +113,7 @@ ms.locfileid: "99550321"
     |---------|---------|---------|
     |セキュリティ アラートのワークフローの自動化|[Azure Security Center アラートに対してワークフローの自動化をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e)|f1525828-9a90-4fcf-be48-268cdd02361e|
     |セキュリティに関する推奨事項のワークフローの自動化|[Azure Security Center 推奨事項に対してワークフローの自動化をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
+    |規制コンプライアンスの変化に関するワークフローの自動化|[Azure Security Center の法令遵守のためにワークフローの自動化をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-509122b9-ddd9-47ba-a5f1-d0dac20be63c)|509122b9-ddd9-47ba-a5f1-d0dac20be63c|
     ||||
 
     > [!TIP]
@@ -155,7 +156,7 @@ ms.locfileid: "99550321"
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、ロジック アプリの作成、Security Center での実行の自動化、および手動実行について学習しました。 
+この記事では、ロジック アプリの作成、Security Center での実行の自動化、および手動実行について学習しました。
 
 関連資料については、以下を参照してください。 
 

@@ -14,10 +14,10 @@ ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 8cb426239fe9f3dea207df06b6f2bafbdb54058a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88117670"
 ---
 # <a name="azure-active-directory-for-developers-v10-overview"></a>開発者向け Azure Active Directory (v1.0) の概要
@@ -34,11 +34,11 @@ Azure Active Directory (Azure AD) はクラウドの ID サービスです。開
 
 ## <a name="get-started"></a>はじめに
 
-v1.0 のクイック スタートおよびチュートリアルでは、Azure AD Authentication Library (ADAL) SDK を使って好みのプラットフォームでアプリを構築する方法がわかりやすく説明されています。 作業を開始するには、「[Microsoft ID プラットフォーム (開発者向け Azure Active Directory)](index.yml)」の **v1.0 のクイック スタート**と **v1.0 のチュートリアル**に関するセクションを参照してください。
+v1.0 のクイック スタートおよびチュートリアルでは、Azure AD Authentication Library (ADAL) SDK を使って好みのプラットフォームでアプリを構築する方法がわかりやすく説明されています。 作業を開始するには、「[Microsoft ID プラットフォーム (開発者向け Azure Active Directory)](index.yml)」の **v1.0 のクイック スタート** と **v1.0 のチュートリアル** に関するセクションを参照してください。
 
 ## <a name="how-to-guides"></a>操作方法ガイド
 
-詳細な情報と Azure AD で最も一般的なタスクのチュートリアルについては、**v1.0 のハウツー ガイド**を参照してください。
+詳細な情報と Azure AD で最も一般的なタスクのチュートリアルについては、**v1.0 のハウツー ガイド** を参照してください。
 
 ## <a name="reference-topics"></a>参照トピック
 

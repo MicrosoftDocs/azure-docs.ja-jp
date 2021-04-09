@@ -4,10 +4,10 @@ description: Azure Lab Services ラボを Teams から削除する方法につ�
 ms.topic: article
 ms.date: 10/12/2020
 ms.openlocfilehash: 8d1e20f8f676eb9863187b550a3c0400871d670c
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96433956"
 ---
 # <a name="delete-labs-within-teams"></a>Teams 内でラボを削除する

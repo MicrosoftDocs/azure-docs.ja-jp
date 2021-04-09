@@ -9,10 +9,10 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: fef3e3cc63fb9e1ca6aa64cf799a620f187db76f
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98744070"
 ---
 # <a name="azure-cloud-services-extended-support-definition-webrole-schema"></a>Azure Cloud Services (延長サポート) の定義: WebRole スキーマ
@@ -471,7 +471,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 |path|string|必須。 Azure 仮想マシンにコピーするコンテンツが含まれるローカル ディレクトリの相対パスまたは絶対パスです。 ディレクトリ パスでは環境変数の展開がサポートされます。|  
   
 ## <a name="see-also"></a>関連項目
-[Cloud Services (延長サポート) 定義スキーマ](schema-csdef-file.md)。
+[Cloud Services (延長サポート) 定義スキーマ](schema-csdef-file.md)
 
 
 

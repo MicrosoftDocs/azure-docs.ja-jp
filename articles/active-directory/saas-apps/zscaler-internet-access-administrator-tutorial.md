@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 02/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 8af8d92ca66cfbd3d6223bc9a73125c457164d82
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 70afa0a02f4e303105aec1884b966796854c6f49
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735547"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102449325"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>チュートリアル:Azure Active Directory と Zscaler Internet Access Administrator の統合
 
@@ -28,10 +28,10 @@ ms.locfileid: "98735547"
 
 ## <a name="prerequisites"></a>前提条件
 
-Zscaler Internet Access Administrator と Azure AD の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* Zscaler Internet Access Administrator サブスクリプション
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* Zscaler Internet Access Administrator でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 > [!NOTE]
 > この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
@@ -40,9 +40,9 @@ Zscaler Internet Access Administrator と Azure AD の統合を構成するに�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Zscaler Internet Access Administrator では、**IDP** によって開始される SSO がサポートされます。
+* Zscaler Internet Access Administrator では、**IDP** Initiated SSO がサポートされます。
 
-## <a name="adding-zscaler-internet-access-administrator-from-the-gallery"></a>ギャラリーからの Zscaler Internet Access Administrator の追加
+## <a name="add-zscaler-internet-access-administrator-from-the-gallery"></a>ギャラリーからの Zscaler Internet Access Administrator の追加
 
 Azure AD への Zscaler Internet Access Administrator の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Zscaler Internet Access Administrator を追加する必要があります。
 
@@ -64,7 +64,7 @@ Zscaler Internet Access Administrator に対する Azure AD SSO を構成して�
     1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 2. **[Zscaler Internet Access Administrator の SSO の構成](#configure-zscaler-internet-access-administrator-sso)** - アプリケーション側でシングル サインオン設定を構成します。
     1. **[Zscaler Internet Access Administrator のテスト ユーザーの作成](#create-zscaler-internet-access-administrator-test-user)** - Zscaler Internet Access Administrator で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
+3. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
@@ -78,7 +78,7 @@ Zscaler Internet Access Administrator に対する Azure AD SSO を構成して�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    a. **[識別子]** テキスト ボックスに、要件に従って URL を入力します。
+    a. **[識別子]** テキスト ボックスに、要件に応じて次のいずれかの URL を入力します。
 
     | 識別子 |
     |------------|
@@ -89,7 +89,7 @@ Zscaler Internet Access Administrator に対する Azure AD SSO を構成して�
     | `https://admin.zscloud.net` |
     | `https://admin.zscalerbeta.net` |
 
-    b. **[応答 URL]** テキスト ボックスに、要件に従って URL を入力します。
+    b. **[応答 URL]** テキスト ボックスに、要件に応じて次のいずれかの URL を入力します。
 
     | [応答 URL] |
     |-----------|
@@ -102,11 +102,11 @@ Zscaler Internet Access Administrator に対する Azure AD SSO を構成して�
 
 5. Zscaler Internet Access Administrator アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性と要求]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[ユーザー属性と要求]** ダイアログを開きます。
 
-    ![属性リンク](./media/zscaler-internet-access-administrator-tutorial/tutorial_zscaler-internet_attribute.png)
+    ![属性リンク](./media/zscaler-internet-access-administrator-tutorial/attributes.png)
 
 6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
-    | Name  | ソース属性  |
+    | 名前  | ソース属性  |
     | ---------| ------------ |
     | Role | user.assignedroles |
 
@@ -153,14 +153,13 @@ Zscaler Internet Access Administrator に対する Azure AD SSO を構成して�
 1. 前述のロールを設定した場合、 **[ロールの選択]** ボックスの一覧からそれを選択できます。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-
 ## <a name="configure-zscaler-internet-access-administrator-sso"></a>Zscaler Internet Access Administrator の SSO の構成
 
 1. 別の Web ブラウザー ウィンドウで、Zscaler Internet Access の管理 UI にログインします。
 
 2. **[Administration]\(管理\) > [Administrator Management]\(管理者の管理\)** に移動し、次の手順を実行して、[Save]\(保存\) をクリックします。
 
-    ![[Administrator Management]\(管理者の管理\) を示すスクリーンショット。S A M L 認証を有効にするオプション、S S L 証明書をアップロードするオプション、および発行者を指定するオプションが表示されています。](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "管理")
+    ![[Administrator Management]\(管理者の管理\) を示すスクリーンショット。S A M L 認証を有効にするオプション、S S L 証明書をアップロードするオプション、および発行者を指定するオプションが表示されています。](./media/zscaler-internet-access-administrator-tutorial/management.png "管理")
 
     a. **[Enable SAML Authentication]\(SAML 認証を有効にする\)** をオンにします。
 
@@ -170,7 +169,7 @@ Zscaler Internet Access Administrator に対する Azure AD SSO を構成して�
 
 3. 管理 UI で次の手順を実行します。
 
-    ![管理 U I を示すスクリーンショット。ここでは、次の手順を実行できます。](./media/zscaler-internet-access-administrator-tutorial/ic800207.png)
+    ![管理 U I を示すスクリーンショット。ここでは、次の手順を実行できます。](./media/zscaler-internet-access-administrator-tutorial/activation.png)
 
     a. 左下の **[Activation]\(アクティブ化\)** メニューにポインターを置きます。
 
@@ -183,7 +182,7 @@ Zscaler Internet Access Administrator に対する Azure AD SSO を構成して�
 
 https://help.zscaler.com/zia/adding-admins
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 

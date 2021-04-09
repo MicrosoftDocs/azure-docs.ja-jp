@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 88a71eb5a8ca9a6f2bf1d17fc4eaf9780527d2cb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 13e5609c965a28405804b8a993280b13755b2d3c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98930545"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866069"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache Spark 機械学習アプリケーションを作成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "98930545"
 
 このアプリケーションでは、すべてのクラスターにおいて既定で利用可能なサンプル **HVAC.csv** データを使用します。 ファイルは `\HdiSamples\HdiSamples\SensorSampleData\hvac` にあります。 データは、HVAC (Heating, Ventilating, Air Conditioning: 冷暖房空調設備) システムがインストールされているいくつかのビルの目標温度と実際の温度を示します。 **[System]** 列はシステム ID を表し、 **[SystemAge]** 列は HVAC システムがビルに設置されてからの年数を表します。 目標温度、指定されたシステム ID、およびシステムの経過年数に基づいて、ビルが暑くなるか寒くなるかを予測できます。
 
-![Spark 機械学習の例に使用されるデータのスナップショット](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Spark 機械学習の例に使用されるデータのスナップショット")
+:::image type="content" source="./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png " alt-text="Spark 機械学習の例に使用されるデータのスナップショット" border="true":::
 
 ## <a name="develop-a-spark-machine-learning-application-using-spark-mllib"></a>Spark MLlib を使用した Spark Machine Learning アプリケーションの開発
 
@@ -138,7 +138,7 @@ ms.locfileid: "98930545"
 
     生の CSV ファイルと照らして出力を比較します。 たとえば、CSV ファイルの最初の行のデータは次のとおりです。
 
-    ![Spark 機械学習の例の出力データ スナップショット](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Spark 機械学習の例の出力データ スナップショット")
+    :::image type="content" source="./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png " alt-text="Spark 機械学習の例の出力データ スナップショット" border="true":::
 
     実際の温度は目標温度より低く、ビルが寒いことを示します。 最初の行の **label** の値は **0.0** であり、ビルが暑くないことを意味します。
 
@@ -199,7 +199,7 @@ HDInsight の Apache Spark クラスターには、Anaconda ライブラリが�
 
 1. **[削除]** を選択します。 **[はい]** を選択します。
 
-![Azure portal で HDInsight クラスターを削除する](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "HDInsight クラスターの削除")
+:::image type="content" source="./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png " alt-text="Azure portal で HDInsight クラスターを削除する" border="true":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 678b6f02245e463870fc5b2c4bfc8b5ffa50de60
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cd69e89954fab2256ffc7c23e22d3b8d44ab2a11
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381693"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455875"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Functions における Azure Blob Storage の入力バインド
 
@@ -379,7 +379,7 @@ _function.json_ ファイルのバインドの name パラメーターで指定�
 
 # <a name="python"></a>[Python](#tab/python)
 
-[InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python&preserve-view=true) に型指定したパラメーターを使用して BLOB データにアクセスします。 詳細については、「[入力 - 例](#example)」を参照してください。
+[InputStream](/python/api/azure-functions/azure.functions.inputstream) に型指定したパラメーターを使用して BLOB データにアクセスします。 詳細については、「[入力 - 例](#example)」を参照してください。
 
 ---
 

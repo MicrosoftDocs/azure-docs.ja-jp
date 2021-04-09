@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: aahi
 ms.openlocfilehash: 9c3908c81e7d89efe3da90f9707023cb7c184795
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94365009"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Text Analytics Cognitive Service の外部/コミュニティ コンテンツ
@@ -33,7 +33,7 @@ ms.locfileid: "94365009"
 
 + [Sentiment analysis with Dynamics 365 CRM Online (Dynamics 365 CRM Online による感情分析) (MSDN ブログ)](/archive/blogs/geoffreyinnis/sentiment-analysis-in-usd-with-cognitive-services-text-analytics) 
 
-+ Power BI ブログ:PowerBI ブログ: Facebook メッセージからキー フレーズを抽出する: [パート 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) と[パート 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
++ Power BI ブログ: Facebook メッセージからキー フレーズを抽出する: [パート 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) と[パート 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
 
 + [MS Flow を使って Yammer グループ内のコメントのセンチメントを特定する (Microsoft Tech コミュニティ)](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure)
 
@@ -53,5 +53,5 @@ ms.locfileid: "94365009"
 
 ## <a name="see-also"></a>関連項目
 
- [StackOverflow:Azure Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow:Azure Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [StackOverflow: Azure Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow: Azure Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

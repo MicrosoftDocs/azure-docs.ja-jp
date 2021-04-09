@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: d8e6c4b2addf9745b2ddabe8f6fdad9d82dce59f
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: ca25bbb72ff853f819f3e8ce4e0092ddb762b156
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503952"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183813"
 ---
 # <a name="use-purview-studio"></a>Purview Studio の使用
 
@@ -38,7 +38,7 @@ ms.locfileid: "97503952"
 
 次の一覧は、**ホーム ページ** の主な機能をまとめたものです。 一覧にある各番号は、前のスクリーンショットで強調表示されている番号に対応しています。
 
-1. カタログのフレンドリ名。 カタログ名は、 **[管理センター]** > * "*アカウント情報*" で設定できます。
+1. カタログのフレンドリ名。 カタログ名は、 **[管理センター]**  >  **[アカウント情報]** で設定できます。
 
 2. カタログ分析には、以下の数が表示されます。
     - ユーザー、グループ、アプリケーション

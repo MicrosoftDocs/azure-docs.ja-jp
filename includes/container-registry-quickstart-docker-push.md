@@ -9,10 +9,10 @@ ms.date: 08/04/2020
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 404fd10c3e3610671d2b6e5dbc6aba8bcaa70046
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100019578"
 ---
 ## <a name="push-image-to-registry"></a>レジストリにイメージをプッシュする

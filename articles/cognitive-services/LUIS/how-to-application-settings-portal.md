@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.openlocfilehash: aabe05924e781fbab5f92bd620ddcd566365f7e8
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96436642"
 ---
 # <a name="application-and-version-settings"></a>アプリとバージョンの設定
@@ -22,7 +22,7 @@ LUIS ポータルで、発話の正規化やアプリのプライバシーなど
 
 1. [LUIS ポータル](https://www.luis.ai)にサインインします。
 1. **[マイ アプリ]** の一覧からアプリを選択します。
-。
+.
 1. 上部のナビゲーション バーから **[管理]** を選択し、左側のナビゲーション バーで **[設定]** を選択します。
 
 > [!div class="mx-imgBorder"]

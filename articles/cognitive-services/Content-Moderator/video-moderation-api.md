@@ -12,10 +12,10 @@ ms.date: 05/18/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4f98eac4305333ec7225c90da2777b7e02f050a0
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96853534"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>C# で好ましくない要素を検出するためにビデオ コンテンツを分析する
@@ -39,7 +39,7 @@ Content Moderator のビデオのモデレーション機能は、Azure Media Se
 
 Azure portal で新しい AMS サブスクリプションに移動し、サイド メニューから **[API アクセス]** を選択します。 **[サービス プリンシパルを使って Azure Media Services に接続する]** を選択します。 **[REST API エンドポイント]** フィールドの値をメモします。この値は後で必要になります。
 
-**[Azure AD アプリ]** セクションで、 **[新規作成]** を選択し、新しい Azure AD アプリケーションの登録に名前を付けます ("VideoModADApp" など)。 **[保存]** をクリックして、アプリケーションが構成されるまで数分待ちます。 その後、ページの **[Azure AD アプリ]** セクションの下に、新しいアプリの登録が表示されるはずです。
+**[Azure AD アプリ]** セクションで、**[新規作成]** を選択し、新しい Azure AD アプリケーションの登録に名前を付けます ("VideoModADApp" など)。 **[保存]** をクリックして、アプリケーションが構成されるまで数分待ちます。 その後、ページの **[Azure AD アプリ]** セクションの下に、新しいアプリの登録が表示されるはずです。
 
 アプリの登録を選択し、その下の **[アプリケーションの管理]** ボタンをクリックします。 **[アプリケーション ID]** フィールドの値をメモします。この値は後で必要になります。 **[設定]**  >  **[キー]** の順に選択し、新しいキーの説明 ("VideoModKey" など) を入力します。 **[保存]** をクリックして、新しいキー値に注目します。 この文字列をコピーし、それをどこか安全な場所に保存します。
 
@@ -57,7 +57,7 @@ Azure Media Services エクスプローラーは、AMS のユーザー フレン
 
 1. Visual Studio で、新しい **コンソール アプリ (.NET Framework)** プロジェクトを作成し、**VideoModeration** という名前を付けます。 
 1. ソリューションに他のプロジェクトがある場合は、これを単一のスタートアップ プロジェクトとして選択します。
-1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーでプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。次のパッケージを見つけてインストールします。
+1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。次のパッケージを見つけてインストールします。
     - windowsazure.mediaservices
     - windowsazure.mediaservices.extensions
 

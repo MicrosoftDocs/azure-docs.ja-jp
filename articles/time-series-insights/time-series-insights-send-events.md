@@ -11,26 +11,26 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9a9115b5400cc6d6c1ecc5740af796d831f5dee3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8ee2cc5473d83eafc2443f3aea7cab6a2e77727c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023260"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103463563"
 ---
 # <a name="send-events-to-an-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>イベント ハブを使用して Azure Time Series Insights Gen1 環境にイベントを送信する
 
 > [!CAUTION]
 > これは Gen1 の記事です。
 
-この記事では、Azure Event Hubs でイベント ハブを作成して構成する方法について説明します。 また、サンプル アプリケーションを実行し、Event Hubs から Azure Time Series Insights にイベントをプッシュする方法も説明します。 JSON 形式のイベントを含む既存のイベント ハブがある場合は、このチュートリアルをスキップし、[Azure Time Series Insights](./tutorials-set-up-tsi-environment.md) で環境を表示してください。
+この記事では、Azure Event Hubs でイベント ハブを作成して構成する方法について説明します。 また、サンプル アプリケーションを実行し、Event Hubs から Azure Time Series Insights にイベントをプッシュする方法も説明します。 JSON 形式のイベントを含む既存のイベント ハブがある場合は、このチュートリアルをスキップし、[Azure Time Series Insights](./tutorial-set-up-environment.md) で環境を表示してください。
 
 ## <a name="configure-an-event-hub"></a>イベント ハブを構成する
 
 1. イベント ハブを作成する方法については、[Event Hubs のドキュメント](../event-hubs/index.yml)をご覧ください。
 1. 検索ボックスで、**Event Hubs** を検索します。 返された一覧で、 **[Event Hubs]** を選択します。
 1. 自分のイベント ハブを選択します。
-1. イベント ハブを作成すると、イベント ハブの名前空間が作成されます。 名前空間内にまだイベント ハブを作成していない場合は、メニューの **[エンティティ]** でイベント ハブを作成します。  
+1. イベント ハブを作成すると、イベント ハブの名前空間が作成されます。 名前空間内にまだイベント ハブを作成していない場合は、メニューの **[エンティティ]** でイベント ハブを作成します。
 
     [![イベント ハブの一覧](media/send-events/tsi-connect-event-hub-namespace.png)](media/send-events/tsi-connect-event-hub-namespace.png#lightbox)
 
@@ -78,7 +78,7 @@ Azure Time Series Insights Gen 2 では、Time Series Model (TSM) を使用し�
 
 1. <https://tsiclientsample.azurewebsites.net/windFarmGen.html> にアクセスします。 この URL では、シミュレートされた風力発電デバイスが作成され、実行されます。
 1. Web ページの **[イベント ハブ接続文字列]** ボックスに、[風力発電の入力フィールド](#push-events-to-windmills-sample)でコピーした接続文字列を貼り付けます。
-  
+
     [![[イベント ハブ接続文字列] ボックスに主キーの接続文字列を貼り付ける](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
 
 1. **[Click to start]\(クリックして開始\)** を選択します。

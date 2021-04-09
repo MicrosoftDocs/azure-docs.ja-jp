@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: jeedes
 ms.openlocfilehash: be63ea7ebf905b825ffe73dfc2b37dcdc3bb88fd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92507552"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moxtra"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Moxtra の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Moxtra では、 **SP** によって開始される SSO がサポートされます
+* Moxtra では、**SP** によって開始される SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -52,7 +52,7 @@ Azure AD への Moxtra の統合を構成するには、ギャラリーから管
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Moxtra** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Moxtra**」と入力します。
 1. 結果のパネルから **[Moxtra]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -162,15 +162,15 @@ Moxtra に対する Azure AD SSO を構成してテストするには、次の�
    
     ![[SAML] ページを示すスクリーンショット。ここでは、説明されている値を入力できます。](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
  
-    a. **[名前]** テキスト ボックスに、構成の名前を入力します (例: *SAML* )。 
+    a. **[名前]** テキスト ボックスに、構成の名前を入力します (例:*SAML*)。 
   
     b. **[IdP Entity ID]\(IdP エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。 
  
     c. **[Login URL]\(ログイン URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。 
  
-    d. **[AuthnContextClassRef]** ボックスに、「 **urn:oasis:names:tc:SAML:2.0:ac:classes:Password** 」と入力します。 
+    d. **[AuthnContextClassRef]** ボックスに、「**urn:oasis:names:tc:SAML:2.0:ac:classes:Password**」と入力します。 
  
-    e. **[NameID 形式]** ボックスに「 **urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress** 」と入力します。 
+    e. **[NameID 形式]** ボックスに「**urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**」と入力します。 
  
     f. Azure Portal からダウンロードした証明書をメモ帳で開き、その内容をコピーして、 **[証明書]** ボックスに貼り付けます。    
  
@@ -195,15 +195,15 @@ Moxtra に対する Azure AD SSO を構成してテストするには、次の�
 
 1. **[Add User]** ダイアログで、次の手順を実行します。
   
-    a. **[名]** ボックスに「 **B** 」と入力します。
+    a. **[名]** ボックスに「**B**」と入力します。
   
-    b. **[姓]** ボックスに「 **Simon** 」と入力します。
+    b. **[姓]** ボックスに「**Simon**」と入力します。
   
     c. **[電子メール]** ボックスに、Azure portal と同じ B.simon のメール アドレスを入力します。
   
-    d. **[Division (事業部)]** ボックスに「 **Dev** 」と入力します。
+    d. **[Division (事業部)]** ボックスに「**Dev**」と入力します。
   
-    e. **[Department (部門)]** ボックスに「 **IT** 」と入力します。
+    e. **[Department (部門)]** ボックスに「**IT**」と入力します。
   
     f. **[管理者]** を選択します。
   

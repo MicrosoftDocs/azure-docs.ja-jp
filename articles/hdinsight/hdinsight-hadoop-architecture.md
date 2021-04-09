@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
-ms.openlocfilehash: 6f291e5aa440a3e6e45a1dcdb872e18c8d4557ce
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f69917b574c0be8fdacf05934b05544a4f491a9c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945905"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864195"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight の Apache Hadoop アーキテクチャ
 
@@ -42,7 +42,7 @@ NodeManagers は、アプリケーションを構成するタスクを実行し�
 
 すべての HDInsight クラスターの種類が YARN をデプロイします。 ResourceManager は、それぞれクラスター内の最初と 2 番目のヘッド ノードで実行されるプライマリおよびセカンダリ インスタンスを備えた高可用性でデプロイされます。 一度には ResourceManager の 1 つのインスタンスだけがアクティブになります。 NodeManager インスタンスは、クラスター内の使用可能なワーカー ノードにまたがって実行されます。
 
-![Azure HDInsight 上の Apache YARN](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
+:::image type="content" source="./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png" alt-text="Azure HDInsight 上の Apache YARN" border="false":::
 
 ## <a name="soft-delete"></a>論理的な削除
 
@@ -63,7 +63,7 @@ NodeManagers は、アプリケーションを構成するタスクを実行し�
 
 ## <a name="trash-purging"></a>ごみ箱の消去
 
-ローカル ファイル システムにはデータを格納できないため、**[HDFS]** > **[Advanced core-site]\(高度なコアサイト\)** の `fs.trash.interval` プロパティは既定値の `0` のままにしておく必要があります。 この値はリモート ストレージ アカウント (WASB、ADLS GEN1、ABFS) には影響しません
+ローカル ファイル システムにはデータを格納できないため、 **[HDFS]**  >  **[Advanced core-site]\(高度なコアサイト\)** の `fs.trash.interval` プロパティは既定値の `0` のままにしておく必要があります。 この値はリモート ストレージ アカウント (WASB、ADLS GEN1、ABFS) には影響しません
 
 ## <a name="next-steps"></a>次のステップ
 

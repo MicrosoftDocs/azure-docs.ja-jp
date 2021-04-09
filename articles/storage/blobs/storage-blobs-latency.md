@@ -9,10 +9,10 @@ ms.date: 09/05/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 78440b8150a0992bed2e2a3e597fdac8e7a1c7b0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75749714"
 ---
 # <a name="latency-in-blob-storage"></a>Blob Storage での待ち時間
@@ -39,7 +39,7 @@ Azure Storage には、ブロック BLOB の待ち時間に関して 2 つのメ
 
 - **サーバーの待ち時間**: Azure Storage が最後の要求パケットを受け取ってから、1 つ目の応答パケットを返すまでの間隔を測定します。
 
-次の画像は、`Get Blob` 操作を呼び出すサンプル ワークロードについて、**成功した場合の E2E 平均待ち時間**と**成功した場合の平均サーバー待ち時間**を示しています。
+次の画像は、`Get Blob` 操作を呼び出すサンプル ワークロードについて、**成功した場合の E2E 平均待ち時間** と **成功した場合の平均サーバー待ち時間** を示しています。
 
 ![Get Blob 操作の待ち時間のメトリックを示すスクリーンショット](media/storage-blobs-latency/latency-metrics-get-blob.png)
 
@@ -67,5 +67,5 @@ Azure Storage 要求の処理には、クライアントの CPU リソースと�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Blob ストレージのスケーラビリティおよびパフォーマンス ターゲット](scalability-targets.md)
+- [BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](scalability-targets.md)
 - [BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト](storage-performance-checklist.md)

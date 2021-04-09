@@ -3,16 +3,16 @@ title: Hadoop ストリーミング アクティビティを使用したデー�
 description: Azure Data Factory で Hadoop ストリーミング アクティビティを使用して、オンデマンドまたは独自の HDInsight クラスターで Hadoop ストリーミング プログラミングを実行し、データを変換する方法について説明します。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 532ece3bcc8c62771511fb2608e824de846b54fe
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 964af993fdcf17bca2caa812bf39ab63e650e807
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383094"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782624"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Data Factory での Hadoop ストリーミング アクティビティを使用したデータ変換
 > [!div class="op_single_selector" title1="変換アクティビティ"]
@@ -91,11 +91,11 @@ HDInsight クラスターには、サンプル プログラム (wc.exe および
 
 1. **linkedServiceName** には、ストリーミングする mapreduce ジョブが実行される HDInsight クラスターを示す、リンクされたサービス名を設定します。
 2. アクティビティの種類には **HDInsightStreaming** に設定します。
-3. **mapper** プロパティには、mapper 実行可能ファイルの名前を指定します。 例では、cat.exe が mapper 実行可能ファイルです。
+3. **mapper** プロパティには、mapper 実行可能ファイルを指定します。 例では、cat.exe が mapper 実行可能ファイルです。
 4. **reducer** プロパティには、reducer 実行可能ファイルの名前を指定します。 例では、wc.exe が reducer 実行可能ファイルです。
 5. **input** プロパティには、mapper の入力ファイルを、場所を含めて指定します。 `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt` の例で、adfsample は BLOB コンテナー、example/data/Gutenberg はフォルダー、davinci.txt は BLOB です。
 6. **output** プロパティには、reducer の出力ファイルを、場所を含めて指定します。 Hadoop ストリーミング ジョブの出力は、このプロパティに指定されている場所に書き込まれます。
-7. **filePaths** セクションには、mapper と reducer の実行可能ファイルのパスを指定します。 例の "adfsample/example/apps/wc.exe"： adfsample は BLOB コンテナー、example/apps はフォルダー、wc.exe は実行可能ファイルです。
+7. **filePaths** セクションには、mapper および reducer 実行可能ファイルのパスを指定します。 例の "adfsample/example/apps/wc.exe"： adfsample は BLOB コンテナー、example/apps はフォルダー、wc.exe は実行可能ファイルです。
 8. **fileLinkedService** プロパティには、filePaths セクションに指定されたファイルを含む Azure ストレージを表す Azure Storage のリンクされたサービスを指定します。
 9. **arguments** プロパティには、ストリーミング ジョブの引数を指定します。
 10. **getDebugInfo** プロパティは、省略可能な要素です。 Failure に設定されていると、エラー時にのみログがダウンロードされます。 Always に設定されていると、ログは実行状態に関係なく常にダウンロードされます。

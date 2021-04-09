@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Brandfolder の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Brandfolder の統合 | Microsoft Docs'
 description: Azure Active Directory と Brandfolder の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 5004b433189700bc2fbaf5efe65e4556d40521cb
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97671996"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-brandfolder"></a>チュートリアル:Azure Active Directory と Brandfolder の統合
+# <a name="tutorial-azure-active-directory-integration-with-brandfolder"></a>チュートリアル: Azure Active Directory と Brandfolder の統合
 
 このチュートリアルでは、Brandfolder と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Brandfolder と Azure AD の統合には、次の利点があります。
@@ -63,7 +63,7 @@ Azure AD への Brandfolder の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Brandfolder**」と入力して結果パネルで **[Brandfolder]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Brandfolder**」と入力して結果パネルで **[Brandfolder]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果一覧の Brandfolder](common/search-new-app.png)
 
@@ -87,7 +87,7 @@ Brandfolder で Azure AD のシングル サインオンを構成してテスト
 
 Brandfolder で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **[Brandfolder]** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **[Brandfolder]** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -147,7 +147,7 @@ Brandfolder で Azure AD シングル サインオンを構成するには、次
 
 このセクションでは、Britta Simon に Brandfolder へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Brandfolder]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Brandfolder]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

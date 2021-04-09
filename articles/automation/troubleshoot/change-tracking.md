@@ -3,18 +3,63 @@ title: Azure Automation の Change Tracking とインベントリに関する問
 description: この記事では、Azure Automation の Change Tracking とインベントリ機能に関する問題のトラブルシューティングを行い、解決する方法について説明します。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 01/31/2019
+ms.date: 02/15/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 516f1a4e5e7c677b17a2941ee3c300db44d49a3b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: dd027f94edad580836f0afb8c7293c81ca77605a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896547"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723828"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Change Tracking と Inventory に関する問題のトラブルシューティング
 
 この記事では、Azure Automation の Change Tracking とインベントリの問題のトラブルシューティングを行い、解決する方法について説明します。 Change Tracking とインベントリの一般的な情報については、「[変更履歴とインベントリの概要](../change-tracking/overview.md)」を参照してください。
+
+## <a name="general-errors"></a>一般エラー
+
+### <a name="scenario-machine-is-already-registered-to-a-different-account"></a><a name="machine-already-registered"></a>シナリオ:マシンが違うアカウントに既に登録されている
+
+### <a name="issue"></a>問題
+
+次のエラー メッセージが表示されます。
+
+```error
+Unable to Register Machine for Change Tracking, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}
+```
+
+### <a name="cause"></a>原因
+
+マシンが既に Change Tracking 用の別のワークスペースにデプロイされています。
+
+### <a name="resolution"></a>解決方法
+
+1. マシンが適切なワークスペースにレポートしていることを確認します。 これを確認する方法については、「[Azure Monitor へのエージェント接続を確認する](../../azure-monitor/agents/agent-windows.md#verify-agent-connectivity-to-azure-monitor)」を参照してください。 このワークスペースが Azure Automation アカウントにリンクされていることも確認します。 確認するには、自分の Automation アカウントに移動して、 **[関連リソース]** の **[リンクされたワークスペース]** を選択します。
+
+1. Automation アカウントにリンクされた Log Analytics ワークスペースにマシンが表示されることを確認します。 Log Analytics ワークスペースで、次のクエリを実行します。
+
+   ```kusto
+   Heartbeat
+   | summarize by Computer, Solutions
+   ```
+
+   クエリ結果にマシンが表示されない場合は、最近チェックインされていません。 ローカルの構成に問題がある可能性があります。 Log Analytics エージェントを再インストールする必要があります。
+
+   コンピューターがクエリ結果に一覧表示されている場合は、Solutions プロパティの下に **changeTracking** が一覧表示されていることを確認します。 これにより、変更履歴とインベントリに登録されていることを確認できます。 そうでない場合は、スコープ構成に問題がないかどうかを確認します。 スコープの構成では、変更履歴とインベントリ用に構成されるマシンが決定されます。 ターゲット コンピューターのスコープ構成を構成するには、「[Automation アカウントで変更履歴とインベントリを有効にする](../change-tracking/enable-from-automation-account.md)」を参照してください。
+
+   ワークスペースで、次のクエリを実行します。
+
+   ```kusto
+   Operation
+   | where OperationCategory == 'Data Collection Status'
+   | sort by TimeGenerated desc
+   ```
+
+1. ```Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota``` という結果が表示される場合、ワークスペースに定義されたクォータに達したため、データの保存が停止されています。 ワークスペースで、 **[使用量と推定コスト]** に移動します。 より多くのデータを使用できる新しい **価格レベル** を選択するか、 **[日次上限]** をクリックして上限を削除します。
+
+:::image type="content" source="./media/change-tracking/change-tracking-usage.png" alt-text="使用量と推定コスト。" lightbox="./media/change-tracking/change-tracking-usage.png":::
+
+問題が解決しない場合は、「[Windows Hybrid Runbook Worker をデプロイする](../automation-windows-hrw-install.md)」の手順に従って、Windows 用のハイブリッド worker を再インストールしてください。 Linux の場合は、「[Linux Hybrid Runbook Worker を展開する](../automation-linux-hrw-install.md)」の手順に従います。
 
 ## <a name="windows"></a>Windows
 
@@ -96,11 +141,11 @@ Heartbeat
 | summarize by Computer, Solutions
 ```
 
-クエリ結果にマシンが表示されない場合は、最近チェックインされていません。 ローカルの構成に問題がある可能性があるため、エージェントを再インストールする必要があります。 インストールと構成の詳細については、「[Log Analytics エージェントを使用してログ データを収集する](../../azure-monitor/platform/log-analytics-agent.md)」を参照してください。
+クエリ結果にマシンが表示されない場合は、最近チェックインされていません。 ローカルの構成に問題がある可能性があるため、エージェントを再インストールする必要があります。 インストールと構成の詳細については、「[Log Analytics エージェントを使用してログ データを収集する](../../azure-monitor/agents/log-analytics-agent.md)」を参照してください。
 
 マシンがクエリ結果に表示される場合は、スコープの構成を確認します。 「[Azure Monitor での監視ソリューションのターゲット設定](../../azure-monitor/insights/solution-targeting.md)」を参照してください。
 
-この問題のトラブルシューティングの詳細については、「[問題点: Linux データが表示されない](../../azure-monitor/platform/agent-linux-troubleshoot.md#issue-you-are-not-seeing-any-linux-data)」を参照してください。
+この問題のトラブルシューティングの詳細については、「[問題点: Linux データが表示されない](../../azure-monitor/agents/agent-linux-troubleshoot.md#issue-you-are-not-seeing-any-linux-data)」を参照してください。
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>Linux 用 Log Analytics エージェントが正しく構成されていない
 

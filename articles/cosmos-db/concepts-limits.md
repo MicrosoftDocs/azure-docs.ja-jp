@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/19/2021
-ms.openlocfilehash: 007bf845bab6f493fae91debefde27a4929d9f95
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.date: 03/22/2021
+ms.openlocfilehash: f33490e273104105502ecc8f4f255c354a2d2f3b
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611034"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800025"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -137,7 +137,7 @@ Cosmos DB は、データのバックアップを一定の間隔で自動的に�
 | --- | --- |
 | データベースまたはコンテナー名の最大長 | 255 |
 | コンテナーあたりの最大ストアド プロシージャ | 100 <sup>*</sup>|
-| コンテナーあたりの最大 UDF | 25 <sup>*</sup>|
+| コンテナーあたりの最大 UDF | 50 <sup>*</sup>|
 | インデックス作成ポリシー内のパスの最大数| 100 <sup>*</sup>|
 | コンテナーあたりの一意キーの最大数|10 <sup>*</sup>|
 | 一意キー制約あたりのパスの最大数|16 <sup>*</sup>|

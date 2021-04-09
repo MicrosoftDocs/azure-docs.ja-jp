@@ -7,10 +7,10 @@ ms.date: 06/07/2017
 ms.author: bharatn
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c5b5d413eee2528e2d5c7d04d06f1607949beaae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89012706"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Reliable Services の WCF ベースの通信スタック
@@ -57,7 +57,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 ```
 
 ## <a name="writing-clients-for-the-wcf-communication-stack"></a>WCF の通信スタック用のクライアントの作成
-WCF を使用して、サービスと通信するクライアントを作成する場合、フレームワークには **ClientCommunicationFactoryBase**の WCF 固有の実装である [WcfClientCommunicationFactory](service-fabric-reliable-services-communication.md)があります。
+WCF を使用して、サービスと通信するクライアントを作成する場合、フレームワークには **ClientCommunicationFactoryBase** の WCF 固有の実装である [WcfClientCommunicationFactory](service-fabric-reliable-services-communication.md)があります。
 
 ```csharp
 

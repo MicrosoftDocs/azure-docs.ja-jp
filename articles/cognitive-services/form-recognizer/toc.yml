@@ -7,35 +7,26 @@
       href: overview.md
     - name: 新機能
       href: whats-new.md
-- name: Form Recognizer の概要
-  expaned: true
+- name: クイックスタート
   items:
-    - name: クライアント ライブラリまたは REST API を使用する
+    - name: クライアン トライブラリまたは REST API の概要
       href: quickstarts/client-library.md
     - name: サンプル ラベル付けツールの使用
       href: quickstarts/label-tool.md
-- name: チュートリアル
+- name: サンプル
   items:
-    - name: Cognitive Search で Form Recognizer を使用する
-      href: ../../search/cognitive-search-custom-skill-form.md
-    - name: AI Builder で Form Recognizer を使用する
-      href: tutorial-ai-builder.md
-    - name: フォーム データを一括で抽出する
-      href: tutorial-bulk-processing.md
-- name: 概念
-  items:
-    - name: レイアウトの抽出
-      href: concept-layout.md
-    - name: Receipts
-      href: concept-receipts.md
-    - name: 名刺
-      href: concept-business-cards.md
-    - name: Invoices
-      href: concept-invoices.md
+    - name: 'C#/.NET: Form Recognizer クライアント ライブラリ SDK'
+      href: /samples/azure/azure-sdk-for-net/azure-form-recognizer-client-sdk-samples
+    - name: 'Java: Form Recognizer クライアント ライブラリ SDK'
+      href: /samples/azure/azure-sdk-for-java/formrecognizer-java-samples
+    - name: 'Python: Form Recognizer クライアント ライブラリ SDK'
+      href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
 - name: 操作方法ガイド
   items:
     - name: トレーニング データ セットの作成
       href: build-training-data-set.md
+    - name: テーブル タグを使用したカスタム フォーム モデルのトレーニング
+      href: supervised-table-tags.md
     - name: サンプル ラベル付けツールのデプロイ
       href: deploy-label-tool.md
     - name: コンテナーの使用
@@ -53,10 +44,37 @@
           href: ../containers/index.yml
     - name: モデルのバックアップと復旧
       href: disaster-recovery.md
+- name: 概念
+  items:
+    - name: Layout API
+      expanded: true
+      items:
+        - name: フォーム データを抽出する
+          href: concept-layout.md
+    - name: カスタム モデル
+      href: concept-custom.md
+    - name: Receipts
+      href: concept-receipts.md
+    - name: 名刺
+      href: concept-business-cards.md
+    - name: Invoices
+      href: concept-invoices.md
+    - name: 身分証明書
+      href: concept-identification-cards.md
+- name: チュートリアル
+  items:
+    - name: フォーム データを一括で抽出する
+      href: tutorial-bulk-processing.md
+    - name: Cognitive Search で Form Recognizer を使用する
+      href: ../../search/cognitive-search-custom-skill-form.md
+    - name: AI Builder で Form Recognizer を使用する
+      href: tutorial-ai-builder.md
+    - name: Azure Functions で Form Recognizer を使用する
+      href: tutorial-azure-function.md
 - name: リファレンス
   items:
-    - name: Form Recognizer API v2.1 プレビュー
-      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync'
+    - name: Form Recognizer API v2.1 preview.3
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm'
     - name: Form Recognizer API v2.0
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
     - name: SDK

@@ -10,10 +10,10 @@ ms.date: 09/06/2016
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: f52d1d1c5f264550076688d5e25e110de230eff4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92152233"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>C 用 Azure IoT device SDK – シリアライザー
@@ -57,7 +57,7 @@ END_NAMESPACE(WeatherStation);
 このサンプルで示していないのは、SDK がサポートする追加のデータ型です。 これについては、次に説明します。
 
 > [!NOTE]
-> デバイスが IoT Hub に送信するデータは、IoT Hub では*イベント*と呼ばれ、モデリング言語では*データ* (**WITH_DATA** を使用して定義) と呼ばれます。 同じように、デバイスに送信するデータは、IoT Hub では*メッセージ*と呼ばれ、モデリング言語では*アクション* (**WITH_ACTION** を使用して定義) と呼ばれます。 この記事では、これらの用語が区別されずに使われる場合があります。
+> デバイスが IoT Hub に送信するデータは、IoT Hub では *イベント* と呼ばれ、モデリング言語では *データ* (**WITH_DATA** を使用して定義) と呼ばれます。 同じように、デバイスに送信するデータは、IoT Hub では *メッセージ* と呼ばれ、モデリング言語では *アクション* (**WITH_ACTION** を使用して定義) と呼ばれます。 この記事では、これらの用語が区別されずに使われる場合があります。
 > 
 > 
 
@@ -171,7 +171,7 @@ void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent
 
 この関数は、指定されたデータ イベントをシリアル化し、**IoTHubClient\_SendEventAsync** を使用して、そのデータ イベントを IoT Hub に送信します。 これは、以前の記事で説明したコードと同じコードです (**SendAsync** は、ロジックを便利な関数にカプセル化します)。
 
-前のコードで使用されているもう 1 つのヘルパー関数は **GetDateTimeOffset**です。 次のように、この関数は指定された時刻を型 **EDM\_DATE\_TIME\_OFFSET** の値に変換します。
+前のコードで使用されているもう 1 つのヘルパー関数は **GetDateTimeOffset** です。 次のように、この関数は指定された時刻を型 **EDM\_DATE\_TIME\_OFFSET** の値に変換します。
 
 ```C
 EDM_DATE_TIME_OFFSET GetDateTimeOffset(time_t time)
@@ -318,7 +318,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 
 この場合は、**DECLARE\_STRUCT** マクロを削除しており、単にモデリング言語の単純型を使用してこのシナリオのデータ項目を定義しています。
 
-しばらくの間は、**Time** イベントを無視します。 それを無視した場合、**Temperature**を受信するコードは次のとおりです。
+しばらくの間は、**Time** イベントを無視します。 それを無視した場合、**Temperature** を受信するコードは次のとおりです。
 
 ```C
 time_t now;
@@ -374,7 +374,7 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermosta
 
 {"Temperature":75, "Humidity":45}
 
-このことは奇妙に思えるかもしれません。その理由は、モデルでは次のように **Temperature** と **Humidity** が 2 つの*別々の*イベントとして定義されているためです。
+このことは奇妙に思えるかもしれません。その理由は、モデルでは次のように **Temperature** と **Humidity** が 2 つの *別々の* イベントとして定義されているためです。
 
 ```C
 DECLARE_MODEL(Thermostat,
@@ -578,17 +578,17 @@ WITH_DATA(int, MyData)
 );
 ```
 
-前に述べたように、**DECLARE\_MODEL** は単なる C マクロです。 モデルの名前と **WITH\_DATA** ステートメント (別のマクロ) は、**DECLARE\_MODEL** のパラメーターです。 **nMacroParameters** は、**DECLARE\_MODEL**に含めることができるパラメーターの数を定義します。 実質的に、これによって使用可能なデータ イベントおよびアクション宣言の数が定義されます。 124 という既定の制限値の場合、約 60 個のアクションとデータ イベントの組み合わせを使用してモデルを定義できます。 この制限を超えようとすると、次のようなコンパイラ エラーが発生します。
+前に述べたように、**DECLARE\_MODEL** は単なる C マクロです。 モデルの名前と **WITH\_DATA** ステートメント (別のマクロ) は、**DECLARE\_MODEL** のパラメーターです。 **nMacroParameters** は、**DECLARE\_MODEL** に含めることができるパラメーターの数を定義します。 実質的に、これによって使用可能なデータ イベントおよびアクション宣言の数が定義されます。 124 という既定の制限値の場合、約 60 個のアクションとデータ イベントの組み合わせを使用してモデルを定義できます。 この制限を超えようとすると、次のようなコンパイラ エラーが発生します。
 
   ![マクロ パラメーター コンパイラ エラーのスクリーンショット](media/iot-hub-device-sdk-c-serializer/02-nMacroParametersCompilerErrors.png)
 
-**nArithmetic** パラメーターは、アプリケーションよりもマクロ言語の内部動作に関連します。  このパラメーターは、モデルに含めることができるメンバー (**DECLARE_STRUCT** マクロなど) の合計数を制御します。 次のようなコンパイラ エラーが表示されるようになったら、 **nArithmetic**を増やす必要があります。
+**nArithmetic** パラメーターは、アプリケーションよりもマクロ言語の内部動作に関連します。  このパラメーターは、モデルに含めることができるメンバー (**DECLARE_STRUCT** マクロなど) の合計数を制御します。 次のようなコンパイラ エラーが表示されるようになったら、 **nArithmetic** を増やす必要があります。
 
    ![算術コンパイラ エラーのスクリーンショット](media/iot-hub-device-sdk-c-serializer/03-nArithmeticCompilerErrors.png)
 
 これらのパラメーターを変更する場合は、macro\_utils.tt ファイル内の値を変更して、\_utils\_h\_ ソリューションを再コンパイルし、コンパイル済みプログラムを実行します。 この操作を行うと、新しい macro\_utils.h ファイルが生成され、.\\common\\inc ディレクトリに配置されます。
 
-新しいバージョンの macro\_utils.h を使用するには、**シリアライザー** NuGet パッケージをソリューションから削除し、そこに**シリアライザー** Visual Studio プロジェクトを挿入します。 こうすることで、シリアライザー ライブラリのソース コードをコンパイルできるようになります。 これには、更新された macro\_utils.h が含まれます。 **simplesample\_amqp** に対してこの操作を行う場合は、まず、ソリューションからシリアライザー ライブラリの NuGet パッケージを削除します。
+新しいバージョンの macro\_utils.h を使用するには、**シリアライザー** NuGet パッケージをソリューションから削除し、そこに **シリアライザー** Visual Studio プロジェクトを挿入します。 こうすることで、シリアライザー ライブラリのソース コードをコンパイルできるようになります。 これには、更新された macro\_utils.h が含まれます。 **simplesample\_amqp** に対してこの操作を行う場合は、まず、ソリューションからシリアライザー ライブラリの NuGet パッケージを削除します。
 
    ![シリアライザー ライブラリ用の NuGet パッケージの削除のスクリーンショット](media/iot-hub-device-sdk-c-serializer/04-serializer-github-package.png)
 
@@ -640,7 +640,7 @@ sprintf_s(propText, sizeof(propText), "%d", i);
 Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 ```
 
-イベントが**シリアライザー** ライブラリにより生成されたか、または **IoTHubClient** ライブラリを使用して手動で作成されたかは関係ありません。
+イベントが **シリアライザー** ライブラリにより生成されたか、または **IoTHubClient** ライブラリを使用して手動で作成されたかは関係ありません。
 
 代替デバイスの資格情報については、**IoTHubClient\_LL\_Create** を使用すると **IoTHubClient\_CreateFromConnectionString** と同じように動作して **IOTHUB\_CLIENT\_HANDLE** が割り当てられます。
 
@@ -664,7 +664,7 @@ serializer_deinit();
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、**C 用 Azure IoT device SDK** に含まれている**シリアライザー** ライブラリの独自の側面について詳しく説明しました。説明した情報により、モデルを使用してイベントを送信したり、IoT Hub からメッセージを受信したりする方法についての理解が深まります。
+この記事では、**C 用 Azure IoT device SDK** に含まれている **シリアライザー** ライブラリの独自の側面について詳しく説明しました。説明した情報により、モデルを使用してイベントを送信したり、IoT Hub からメッセージを受信したりする方法についての理解が深まります。
 
 また、この記事は、**C 用 Azure IoT device SDK** を使用したアプリケーションの開発方法に関する 3 部構成のシリーズの最終回でもあります。この記事を読むことで、API の概要だけでなく、API のしくみについて理解するための十分な情報を得ることができます。 追加情報として、ここで取り上げなかった SDK のサンプルがいくつかあります。 それ以外では、[Azure IoT SDK のドキュメント](https://github.com/Azure/azure-iot-sdk-c)が追加情報を入手するための良いリソースになります。
 

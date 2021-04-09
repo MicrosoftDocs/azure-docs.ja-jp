@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
 ms.openlocfilehash: 65b8c21251f092311150a50480f5abecb1ad7c17
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96434568"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure マネージド アプリケーションの概要

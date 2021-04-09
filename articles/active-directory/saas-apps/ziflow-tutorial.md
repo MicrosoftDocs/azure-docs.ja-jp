@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: e10ca98e0c9257187288d02483ed81915a7b321d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92894742"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>チュートリアル: Azure Active Directory と Ziflow の統合
@@ -41,7 +41,7 @@ Ziflow と Azure AD の統合を構成するには、次のものが必要です
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Ziflow では、 **SP** によって開始される SSO がサポートされます
+* Ziflow では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-ziflow-from-the-gallery"></a>ギャラリーからの Ziflow の追加
 
@@ -61,13 +61,13 @@ Azure AD への Ziflow の統合を構成するには、ギャラリーから管
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Ziflow** 」と入力し、結果ウィンドウで **[Ziflow]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Ziflow**」と入力し、結果ウィンドウで **[Ziflow]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Ziflow](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、" **Britta Simon** " というテスト ユーザーに基づいて、Ziflow で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、"**Britta Simon**" というテスト ユーザーに基づいて、Ziflow で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Ziflow 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Ziflow で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -134,7 +134,7 @@ Ziflow で Azure AD シングル サインオンを構成するには、次の�
 
     ![Ziflow の構成 - サイン](./media/ziflow-tutorial/tutorial_ziflow_signon.png)
 
-4. **Single sign-on** (シングル サインオン) ページで、次の手順を実行します。
+4. **Single sign-on**(シングル サインオン) ページで、次の手順を実行します。
 
     ![Ziflow の構成 - シングル](./media/ziflow-tutorial/tutorial_ziflow_page.png)
 
@@ -164,7 +164,7 @@ Ziflow で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

@@ -9,10 +9,10 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: 520a0b4ec42b9a32fbd30c28c7ce311b5445f23d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74260793"
 ---
 テンプレート通知を送信する場合、必要なことは一連のプロパティを提供することだけです。 このシナリオでは、一連プロパティには現在のニュースのローカライズされたバージョンが格納されます。
@@ -66,7 +66,7 @@ private static async void SendTemplateNotificationAsync()
 }
 ```
 
-SendTemplateNotificationAsync メソッドは、ニュースのローカライズされた部分を、プラットフォームに関係なく、**すべて**のデバイスに配信します。 通知ハブは、正しいネイティブ ペイロードをビルドし、それを特定のタグにサブスクライブされているすべてのデバイスに配信します。
+SendTemplateNotificationAsync メソッドは、ニュースのローカライズされた部分を、プラットフォームに関係なく、**すべて** のデバイスに配信します。 通知ハブは、正しいネイティブ ペイロードをビルドし、それを特定のタグにサブスクライブされているすべてのデバイスに配信します。
 
 ### <a name="sending-notification-with-mobile-services"></a>Mobile Services を使用した通知の送信
 

@@ -9,10 +9,10 @@ ms.author: shasb
 description: この記事には、Azure Arc 対応 Kubernetes に関してよく寄せられる質問の一覧が記載されています。
 keywords: Kubernetes, Arc, Azure, コンテナー, 構成, GitOps, faq
 ms.openlocfilehash: d7facb842509bdf852957d46d91dfcb3912e99ba
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121713"
 ---
 # <a name="frequently-asked-questions---azure-arc-enabled-kubernetes"></a>よく寄せられる質問 - Azure Arc 対応 Kubernetes

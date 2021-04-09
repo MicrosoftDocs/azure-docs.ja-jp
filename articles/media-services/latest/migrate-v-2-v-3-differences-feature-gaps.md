@@ -12,10 +12,10 @@ ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
 ms.openlocfilehash: f77a41a172bc868ad056d74d018b50f734286f0f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101702455"
 ---
 # <a name="feature-gaps-between-azure-media-services-v2-and-v3"></a>Azure Media Services V2 と V3 の間の機能のギャップ

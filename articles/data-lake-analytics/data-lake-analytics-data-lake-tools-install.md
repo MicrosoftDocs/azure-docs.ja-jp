@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 08/30/2019
 ms.openlocfilehash: cb0183ae229c328588a31c2c0549e7e93fd19b78
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96019006"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio のインストール
@@ -18,7 +18,7 @@ Visual Studio を使用して Azure Data Lake Analytics アカウントを作成
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Visual Studio**: Express を除くすべてのエディションがサポートされます。
+* **Visual Studio**:Express を除くすべてのエディションがサポートされます。
 
   * Visual Studio 2019
   * Visual Studio 2017
@@ -30,7 +30,7 @@ Visual Studio を使用して Azure Data Lake Analytics アカウントを作成
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio-2017-or-visual-studio-2019"></a>Azure Data Lake Tools for Visual Studio 2017 または Visual Studio 2019
 
-Azure Data Lake Tools for Visual Studio は、Visual Studio 2017 15.3 以降でサポートされます。 このツールは、 **[データの保存と処理]** ワークロードと **[Azure の開発]** ワークロードに含まれます。 Visual Studio のインストールの一環として、この 2 つのワークロードのいずれかを有効にします。
+Azure Data Lake Tools for Visual Studio は、Visual Studio 2017 15.3 以降でサポートされます。 このツールは、**[データの保存と処理]** ワークロードと **[Azure の開発]** ワークロードに含まれます。 Visual Studio のインストールの一環として、この 2 つのワークロードのいずれかを有効にします。
 
 次のように **[データの保存と処理]** ワークロードを有効にします。
 

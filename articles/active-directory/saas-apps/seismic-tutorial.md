@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 71de0573f252cab7f2b479212551562de2b1d1c2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92674358"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-seismic"></a>チュートリアル:Azure Active Directory と Seismic の統合
@@ -44,7 +44,7 @@ Seismic と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Seismic では、 **SP** Initiated SSO がサポートされます
+* Seismic では、**SP** Initiated SSO がサポートされます
 * Seismic を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-seismic-from-the-gallery"></a>ギャラリーからの Seismic の追加
@@ -55,12 +55,12 @@ Azure AD への Seismic の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Seismic** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Seismic**」と入力します。
 1. 結果のパネルから **[Seismic]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Seismic で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Seismic で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Seismic 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Seismic で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -93,7 +93,7 @@ Seismic で Azure AD のシングル サインオンを構成してテストす�
     c. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.seismic.com/SSO/<ROUTEURL>` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値は、実際のサインオン URL、識別子、応答 URL で更新してください。 これらの値を取得するには、[Seismic クライアント サポート チーム](mailto:support@seismic.com)に問い合わせてください。 **サービス プロバイダーのメタデータ** をアップロードして [識別子] の値を自動的に事前設定することもできます。 **サービス プロバイダーのメタデータ** の詳細については、 [Seismic クライアント サポート チーム](mailto:support@seismic.com)に問い合わせてください。
+    > これらは実際の値ではありません。 これらの値は、実際のサインオン URL、識別子、応答 URL で更新してください。 これらの値を取得するには、[Seismic クライアント サポート チーム](mailto:support@seismic.com)に問い合わせてください。 **サービス プロバイダーのメタデータ** をアップロードして [識別子] の値を自動的に事前設定することもできます。**サービス プロバイダーのメタデータ** の詳細については、[Seismic クライアント サポート チーム](mailto:support@seismic.com)に問い合わせてください。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 

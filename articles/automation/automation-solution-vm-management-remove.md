@@ -3,14 +3,14 @@ title: Azure Automation の Start/Stop VMs during off-hours の削除の概要
 description: この記事では、Start/Stop VMs during off-hours 機能を削除し、Log Analytics ワークスペースから Automation アカウントのリンクを解除する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 02/04/2021
+ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: a201274bf0c06382da790dd051bf5023337970b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0bab5d8e82ce432e9b3834fe4c003316545eb338
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723845"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122087"
 ---
 # <a name="remove-startstop-vms-during-off-hours-from-automation-account"></a>Automation アカウントから Start/Stop VMs during off-hours を削除する
 
@@ -24,21 +24,7 @@ Azure VM の実行状態を管理するために Start/Stop VMs during off-hours
 
 ## <a name="delete-the-dedicated-resource-group"></a>専用のリソース グループを削除する
 
-1. [https://portal.azure.com](https://portal.azure.com) で Azure にサインインします。
-
-2. 自分の Automation アカウントに移動して、 **[関連リソース]** の **[リンクされたワークスペース]** を選択します。
-
-3. **[ワークスペースに移動]** を選択します。
-
-4. **[全般]** の下にある **[ソリューション]** をクリックします。
-
-5. [ソリューション] ページで、**Start-Stop-VM[ワークスペース]** を選択します。
-
-6. **VMManagementSolution[ワークスペース]** ページで、メニューから **[削除]** を選択します。
-
-    ![VM 管理機能を削除する](media/automation-solution-vm-management/vm-management-solution-delete.png)
-
-7. Start/Stop VMs during off-hours のみをサポートするように作成されたリソース グループを削除するには、「[Azure Resource Manager のリソース グループとリソースの削除](../azure-resource-manager/management/delete-resource-group.md)」記事に記載されている手順に従います。
+リソース グループを削除するには、「[Azure Resource Manager のリソース グループとリソースの削除](../azure-resource-manager/management/delete-resource-group.md)」記事に記載されている手順に従います。
 
 ## <a name="delete-the-automation-account"></a>Automation アカウントを削除する
 

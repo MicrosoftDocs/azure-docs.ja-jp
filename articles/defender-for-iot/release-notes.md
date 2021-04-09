@@ -1,43 +1,39 @@
 ---
 title: Azure Defender for IoT の新機能
 description: この記事では、Defender for IoT の最新リリースに含まれる新機能について説明します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/08/2021
-ms.author: shhazam
-ms.openlocfilehash: f15c4ed6bb7da5cd33eca96c171bfada68092b35
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.date: 03/14/2021
+ms.openlocfilehash: 970d46a76f125dcaf82491fdea877e6874e2384f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820672"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778697"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Azure Defender for IoT の新機能
 
 この記事では、Defender for IoT の新機能と機能強化の一覧を示します。
 
 記載されている機能はプレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
-## <a name="february-2021"></a>2021 年 2 月
+## <a name="march-2021"></a>2021 年 3 月
 
-### <a name="sensor---enhanced-custom-alert-rules"></a>センサー - 強化されたカスタム アラート ルール
+### <a name="sensor---enhanced-custom-alert-rules-public-preview"></a>センサー - 強化されたカスタム アラート ルール (パブリック プレビュー)
 
 ネットワーク アクティビティが検出された日付、日付のグループ、および期間に基づいて、カスタム アラート ルールを作成できるようになりました。  日付と時間のルール条件を使用すると、アラート イベントが発生した時間に応じてアラートの重要度が決まる場合などに役立ちます。 たとえば、週末または夜にネットワーク アクティビティが検出された場合に、重大度が高いアラートをトリガーするカスタム ルールを作成するなどです。
 
-この機能は、バージョン 10.1 のリリースのセンサーで利用できます。
+この機能は、バージョン 10.2 のリリースのセンサーで利用できます。
 
-### <a name="on-premises-management-console---export-alerts"></a>オンプレミスの管理コンソール - アラートのエクスポート
+### <a name="on-premises-management-console---export-alerts-public-preview"></a>オンプレミスの管理コンソール - アラートのエクスポート (パブリック プレビュー)
 
 アラートの情報を、オンプレミスの管理コンソールから .csv ファイルにエクスポートできるようになりました。 検出されたすべてのアラートの情報をエクスポートしたり、フィルター表示に基づいて情報をエクスポートしたりできます。
 
-この機能は、バージョン 10.1 のリリースのオンプレミスの管理コンソールで使用できます。
+この機能は、バージョン 10.2 のリリースのオンプレミスの管理コンソールで使用できます。
+
+### <a name="add-second-network-interface-to-on-premises-management-console-public-preview"></a>オンプレミスの管理コンソールへの 2 つ目のネットワーク インターフェイスの追加 (パブリック プレビュー)
+
+オンプレミスの管理コンソールに 2 つ目のネットワーク インターフェイスを追加することで、デプロイのセキュリティを強化できるようになりました。 この機能を使用すると、オンプレミスの管理において、セキュリティで保護された 1 つのネットワーク上にセンサーを接続する一方で、ユーザーは 2 つ目の別のネットワーク インターフェイスを介してオンプレミスの管理コンソールにアクセスできるようになります。
+
+この機能は、バージョン 10.2 のリリースのオンプレミスの管理コンソールで使用できます。
 ### <a name="device-builder---new-micro-agent-public-preview"></a>デバイス ビルダー - 新しいマイクロ エージェント (パブリック プレビュー)
 
 新しいデバイス ビルダー モジュールが登場しました。 このモジュール (マイクロ エージェントと呼ばれます) では、次のことが可能です。
@@ -48,7 +44,7 @@ ms.locfileid: "99820672"
 - **セキュリティ態勢管理** - IoT デバイスのセキュリティ態勢を事前に監視します。
 - **継続的なリアルタイムの IoT/OT 脅威検出** - ボットネット、ブルート フォース攻撃、クリプト マイナー、疑わしいネットワーク アクティビティなどの脅威を検出します
 
-非推奨のセキュリティ モジュールのドキュメントは、*デバイス ビルダー向けのエージェントベースのソリューション > Classic* フォルダーに移動されます。
+非推奨の Defender for IoT マイクロ エージェントのドキュメントは、*デバイス ビルダー向けのエージェントベースのソリューション > Classic* フォルダーに移動されます。
 
 この機能セットは、現在のパブリック プレビュー クラウド リリースで使用できます。
 

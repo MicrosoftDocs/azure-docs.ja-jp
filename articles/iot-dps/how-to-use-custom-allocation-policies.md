@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
 ms.openlocfilehash: 14a405dbab0460f841a5e9104dbfeff101568f44
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98919209"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>カスタム割り当てポリシーの使用方法
@@ -339,7 +339,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
     ![対称キー構成証明用にカスタム割り当て登録グループを追加する](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
-4. 登録を保存した後、もう一度開き、 **[主キー]** を書き留めておきます。 キーを生成するには、まず登録を保存する必要があります。 このキーは、シミュレートされたデバイスに対する一意のデバイス キーを生成するために後で使用します。
+4. 登録を保存した後、もう一度開き、**[主キー]** を書き留めておきます。 キーを生成するには、まず登録を保存する必要があります。 このキーは、シミュレートされたデバイスに対する一意のデバイス キーを生成するために後で使用します。
 
 ## <a name="derive-unique-device-keys"></a>一意のデバイス キーを派生させる
 

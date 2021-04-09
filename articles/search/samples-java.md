@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
 ms.openlocfilehash: b5ae38a3dc4a9324a4141314106d67c96c06c8e6
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98955039"
 ---
 # <a name="java-code-samples-for-azure-cognitive-search"></a>Azure Cognitive Search の Java コード サンプル
@@ -42,7 +42,7 @@ Azure SDK 開発チームのコード サンプルでは、API の使用方法�
 
 ## <a name="doc-samples"></a>ドキュメントのサンプル
 
-Cognitive Search チームのコード サンプルでは、機能とワークフローを示します。 これらのサンプルの多くは、チュートリアル、クイックスタート、および操作方法に関する記事で言及されています。 これらのサンプルは、GitHub の [**Azure-Samples/azure-search-java-samples**](https://github.com/Azure-Samples/azure-search-java-samples) にあります。
+Cognitive Search チームのコード サンプルは、機能とワークフローを示しています。 これらのサンプルの多くは、チュートリアル、クイックスタート、および操作方法に関する記事で言及されています。 これらのサンプルは、GitHub の [**Azure-Samples/azure-search-java-samples**](https://github.com/Azure-Samples/azure-search-java-samples) にあります。
 
 | サンプル | 記事 | 
 |---------|-------------|

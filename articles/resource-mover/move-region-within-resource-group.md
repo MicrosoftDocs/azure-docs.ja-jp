@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
 ms.openlocfilehash: 79224c14fc5182df7a699864af3d78c9be36259f
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97797280"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>(リソース グループ) のリソースをリージョン間で移動する

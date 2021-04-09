@@ -8,10 +8,10 @@ ms.date: 09/03/2019
 author: christopheranderson
 ms.author: chrande
 ms.openlocfilehash: 0442d21aebe1cf577c50d14a5aeff40bd1f6cd9c
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98600532"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin サーバーの応答ヘッダー

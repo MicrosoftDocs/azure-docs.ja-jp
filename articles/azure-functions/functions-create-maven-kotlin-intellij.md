@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.openlocfilehash: f02643ee28d76d4f90206a1aa2879b4672da2a38
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179458"
 ---
 # <a name="create-your-first-kotlin-function-in-azure-using-intellij"></a>IntelliJ を使用して Azure で初めての Kotlin 関数を作成する

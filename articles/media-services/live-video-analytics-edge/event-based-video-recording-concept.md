@@ -4,10 +4,10 @@ description: イベントベースのビデオ記録 (EVR) とは、イベント
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.openlocfilehash: 6a5f4873b2cfef8d9a6594916d82cd30a3bc1cc2
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97401605"
 ---
 # <a name="event-based-video-recording"></a>イベントベースのビデオ記録  

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/13/2021
 ms.author: cherylmc
 ms.openlocfilehash: 04555303d5128db6c183d27a0c5fcb69063fdc28
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98185412"
 ---
 # <a name="about-azure-edge-zone-preview"></a>Azure Edge Zone プレビューについて

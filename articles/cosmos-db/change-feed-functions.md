@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 7f4903cf29f15132db91e47d78efe5a556efd937
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93340245"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB と Azure Functions を使用したサーバーレスなイベントベースのアーキテクチャ
@@ -31,8 +31,8 @@ Azure Functions には、[変更フィード](change-feed.md)に接続する最�
 
 サーバーレスなイベントベースのフローを実装するには、以下が必要です。
 
-* **監視対象コンテナー** :監視対象コンテナーは監視されている Azure Cosmos コンテナーであり、そこには、変更フィードの生成元となるデータが含まれています。 監視対象コンテナーに対する挿入と更新が、コンテナーの変更フィードに反映されます。
-* **リース コンテナー** :リース コンテナーは、複数の動的なサーバーレス Azure 関数インスタンス全体で状態を維持し、動的スケーリングを可能にします。 このリース コンテナーは、Cosmos DB 用 Azure Functions トリガーによって、手動または自動で作成できます。 リース コンテナーを自動的に作成するには、 [構成](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)で *CreateLeaseCollectionIfNotExists* フラグを設定します。 パーティション分割されたリース コンテナーには、`/id` パーティション キー定義が必要です。
+* **監視対象コンテナー**:監視対象コンテナーは監視されている Azure Cosmos コンテナーであり、そこには、変更フィードの生成元となるデータが含まれています。 監視対象コンテナーに対する挿入と更新が、コンテナーの変更フィードに反映されます。
+* **リース コンテナー**:リース コンテナーは、複数の動的なサーバーレス Azure 関数インスタンス全体で状態を維持し、動的スケーリングを可能にします。 このリース コンテナーは、Cosmos DB 用 Azure Functions トリガーによって、手動または自動で作成できます。 リース コンテナーを自動的に作成するには、[構成](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)で *CreateLeaseCollectionIfNotExists* フラグを設定します。 パーティション分割されたリース コンテナーには、`/id` パーティション キー定義が必要です。
 
 ## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB 用 Azure Functions トリガーを作成する
 

@@ -3,12 +3,12 @@ title: Event Grid ソースとしての Azure Media Services
 description: Azure Event Grid で Media Services イベント用に用意されているプロパティについて説明します
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: be56c383c8c2d755ef82d4caad5e779bef418a19
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1f2f62f0a5ceed0e000c8bb7690fff009593bf82
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100363357"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591930"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Media Services
 
@@ -279,7 +279,7 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | [説明] |
 | -------- | ---- | ----------- |
 | `outputs` | Array | ジョブ出力を取得します。|
 
@@ -506,7 +506,7 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `streamId` | string | ストリームまたは接続の識別子。 この ID は、エンコーダーまたはカスタマーが取り込み URL に追加します。 |  
 | `ingestUrl` | string | ライブ イベントから提供される取り込み URL。 |  
@@ -569,7 +569,7 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `streamId` | string | ストリームまたは接続の識別子。 この ID は、エンコーダーまたはカスタマーが取り込み URL に指定します。 |
 | `ingestUrl` | string | ライブ イベントから提供される取り込み URL。 |
@@ -631,7 +631,7 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `streamId` | string | ストリームまたは接続の識別子。 この ID は、エンコーダーまたはカスタマーが取り込み URL に追加します。 |  
 | `ingestUrl` | string | ライブ イベントから提供される取り込み URL。 |  
@@ -710,7 +710,7 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `trackType` | string | 追跡のタイプ (オーディオ/ビデオ)。 |
 | `trackName` | string | トラックの名前。 |
@@ -782,7 +782,7 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `trackType` | string | 追跡のタイプ (オーディオ/ビデオ)。 |
 | `trackName` | string | トラックの名前。エンコーダーによって指定されるか、または RTMP の場合は、*TrackType_Bitrate* 形式でサーバーによって生成されます。 |
@@ -850,7 +850,7 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `minLastTimestamp` | string | 全トラック (オーディオまたはビデオ) における最後のタイムスタンプの最小値。 |
 | `typeOfTrackWithMinLastTimestamp` | string | 最後のタイムスタンプが最も小さいトラックの種類 (オーディオまたはビデオ)。 |
@@ -914,7 +914,7 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `firstTimestamp` | string | 種類がビデオであるいずれかのトラック/品質レベルについて受信したタイムスタンプ。 |
 | `firstDuration` | string | 1 つ目のタイムスタンプを持つデータ チャンクの期間。 |
@@ -992,7 +992,7 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `trackType` | string | 追跡のタイプ (オーディオ/ビデオ)。 |
 | `trackName` | string | トラックの名前。エンコーダーによって指定されるか、または RTMP の場合は、*TrackType_Bitrate* 形式でサーバーによって生成されます。 |
@@ -1066,7 +1066,7 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `trackType` | string | 追跡のタイプ (オーディオ/ビデオ)。 |
 | `trackName` | string | トラックの名前。エンコーダーによって指定されるか、または RTMP の場合は、*TrackType_Bitrate* 形式でサーバーによって生成されます。 |
@@ -1082,7 +1082,7 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `topic` | string | Event Grid トピック。 このプロパティは、Media Services アカウントのリソース ID を保持します。 |
 | `subject` | string | Media Services アカウント下の Media Services チャンネルのリソース パス。 トピックとサブジェクトを連結することで、ジョブのリソース ID が得られます。 |
@@ -1097,7 +1097,7 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `source` | string | Event Grid トピック。 このプロパティは、Media Services アカウントのリソース ID を保持します。 |
 | `subject` | string | Media Services アカウント下の Media Services チャンネルのリソース パス。 トピックとサブジェクトを連結することで、ジョブのリソース ID が得られます。 |
@@ -1112,7 +1112,7 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 
 ## <a name="next-steps"></a>次のステップ
 
-[ジョブ状態変更イベントを登録する](../media-services/latest/job-state-events-cli-how-to.md)
+[ジョブ状態変更イベントを登録する](../media-services/latest/monitoring/job-state-events-cli-how-to.md)
 
 ## <a name="see-also"></a>関連項目
 

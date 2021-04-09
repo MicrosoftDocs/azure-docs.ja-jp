@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain Service の概要
 description: Azure Blockchain Service の概要です
-ms.date: 01/04/2021
+ms.date: 03/15/2021
 ms.topic: overview
-ms.reviewer: ravastra
-ms.openlocfilehash: 15d1126a98a4d3194a256ed07de3918cb066a4e2
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.reviewer: patricka
+ms.openlocfilehash: 035e2c1df5912f291ad241ade25361f9cc098b22
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963880"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103573627"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blockchain Service とは
 
@@ -19,7 +19,7 @@ Azure Blockchain Service はフル マネージド台帳サービスであり、
 * 組み込みのコンソーシアム管理
 * 使い慣れた開発ツールによるスマート コントラクトの開発
 
-Azure Blockchain Service は、複数の台帳プロトコルをサポートするように設計されています。 現時点では、[Istanbul Byzantine Fault Tolerance (IBFT)](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) コンセンサス メカニズムを使用して、Ethereum [Quorum](https://www.goquorum.com/) 台帳がサポートされています。
+Azure Blockchain Service は、複数の台帳プロトコルをサポートするように設計されています。 現時点では、[Istanbul Byzantine Fault Tolerance (IBFT)](https://docs.goquorum.consensys.net/en/stable/Concepts/Consensus/IBFT/) コンセンサス メカニズムを使用して、Ethereum [Quorum](https://www.goquorum.com/) 台帳がサポートされています。
 
 これらの機能は、ほとんど管理を必要とせず、いずれも追加費用なしで利用することができます。 仮想マシンとインフラストラクチャの管理への時間とリソースの割り当てではなく、アプリの開発とビジネス ロジックに集中できます。 さらに、オープンソースのツールとプラットフォームを自由に選んでアプリケーションの開発を続けることができるので、新しいスキルを身に付けなくてもソリューションを提供できます。
 

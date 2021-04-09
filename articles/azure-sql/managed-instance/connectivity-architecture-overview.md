@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 10/22/2020
 ms.openlocfilehash: 58563629b30e7be764732a9810162e1a0b1931e6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98725838"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance の接続アーキテクチャ
@@ -111,7 +111,7 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>サービス支援サブネット構成を使用した必須の受信セキュリティ規則
 
-| 名前       |Port                        |Protocol|source           |宛先|アクション|
+| 名前       |Port                        |Protocol|source           |到着地|アクション|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |management  |9000、9003、1438、1440、1452|TCP     |SqlManagement    |MI SUBNET  |Allow |
 |            |9000、9003                  |TCP     |CorpNetSaw       |MI SUBNET  |Allow |
@@ -121,7 +121,7 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>サービス支援サブネット構成を使用した必須の送信セキュリティ規則
 
-| 名前       |Port          |Protocol|source           |宛先|アクション|
+| 名前       |Port          |Protocol|source           |到着地|アクション|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |443、12000    |TCP     |MI SUBNET        |AzureCloud |Allow |
 |mi_subnet   |Any           |Any     |MI SUBNET        |MI SUBNET  |Allow |

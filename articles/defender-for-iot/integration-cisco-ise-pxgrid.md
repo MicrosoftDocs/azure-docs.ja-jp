@@ -1,19 +1,14 @@
 ---
 title: Cisco ISE pxGrid の統合について
-titleSuffix: Azure Defender for IoT
 description: Defender for IoT と Cisco ISE pxGrid の機能の橋渡しをすることにより、セキュリティ チームには、エンタープライズ エコシステムについてのかつてないデバイス可視性が提供されます。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/28/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 3f1fb099aa18ebec5a7e2063740556cf806302e7
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 00151f2e407c65d024f3bd59bdaa85a08ae677f4
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557039"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784086"
 ---
 # <a name="about-the-cisco-ise-pxgrid-integration"></a>Cisco ISE pxGrid の統合について
 
@@ -224,4 +219,4 @@ MAC アドレスを持つデバイスのみが同期されます。
 
 ## <a name="next-steps"></a>次の手順
 
-[アラート情報を転送する](how-to-forward-alert-information-to-partners.md)方法を確認する。
+[アラート情報を転送する](how-to-forward-alert-information-to-partners.md)方法を学習します。

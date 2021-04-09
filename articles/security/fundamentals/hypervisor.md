@@ -9,10 +9,10 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
 ms.openlocfilehash: 766266edd663b75b893a5883e30bb48eed7bbfdf
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94696117"
 ---
 # <a name="hypervisor-security-on-the-azure-fleet"></a>Azure フリートでのハイパーバイザーのセキュリティ
@@ -66,7 +66,7 @@ Azure ハイパーバイザーでは、以下のものの間に複数のセキ�
 > Hyper-V の[強力なセキュリティ保証プロセス](../../azure-government/azure-secure-isolation-guidance.md#strong-security-assurance-processes)について、詳細を確認してください。
 
 ## <a name="next-steps"></a>次のステップ
-プラットフォームの整合性とセキュリティを強化するために Microsoft が行っていることの詳細については、以下を参照してください。
+プラットフォームの整合性とセキュリティを強化する方法の詳細については、次を参照してください。
 
 - [ファームウェアのセキュリティ](firmware.md)
 - [セキュア ブート](secure-boot.md)

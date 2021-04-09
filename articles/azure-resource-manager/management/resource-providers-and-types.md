@@ -2,14 +2,14 @@
 title: リソース プロバイダーとリソースの種類
 description: Azure Resource Manager をサポートするリソース プロバイダーについて説明します。 ここでは、そのスキーマと利用可能な API バージョン、およびリソースをホストできるリージョンについて説明します。
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 03/15/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6d114fdfae12dd9ee96a23e4dafc3847c6429d0c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 584f3065d0e696f2ee379a8cf6c048994a1e68d5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745118"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103493137"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure リソース プロバイダーと種類
 
@@ -32,7 +32,9 @@ ms.locfileid: "96745118"
 
 ## <a name="register-resource-provider"></a>リソース プロバイダーの登録
 
-リソース プロバイダーを使用する前に、Azure サブスクリプションにリソース プロバイダーを登録する必要があります。 登録により、サブスクリプションがリソース プロバイダーと連携するように構成されます。 一部のリソース プロバイダーが既定で登録されています。 その他のリソース プロバイダーは、特定のアクションを実行すると自動的に登録されます。 たとえば、ポータルを使用してリソースを作成すると、通常、リソース プロバイダーが自動的に登録されます。 他のシナリオでは、場合によっては、リソース プロバイダーを手動で登録する必要があります。 既定で登録されているリソース プロバイダーの一覧については、「[Azure サービスのリソース プロバイダー](azure-services-resource-providers.md)」を参照してください。
+リソース プロバイダーを使用する前に、Azure サブスクリプションにリソース プロバイダーを登録する必要があります。 登録により、サブスクリプションがリソース プロバイダーと連携するように構成されます。 一部のリソース プロバイダーが既定で登録されています。 既定で登録されているリソース プロバイダーの一覧については、「[Azure サービスのリソース プロバイダー](azure-services-resource-providers.md)」を参照してください。
+
+その他のリソース プロバイダーは、特定のアクションを実行すると自動的に登録されます。 Azure Resource Manager テンプレートをデプロイすると、必要なすべてのリソース プロバイダーが自動的に登録されます。 ポータルを使用してリソースを作成すると、通常、リソース プロバイダーが自動的に登録されます。 他のシナリオでは、場合によっては、リソース プロバイダーを手動で登録する必要があります。 
 
 この記事では、リソース プロバイダーの登録状態を確認し、必要に応じて登録する方法について説明します。 リソース プロバイダーの `/register/action` 操作を実行するためのアクセス許可が必要です。 このアクセス許可は、共同作成者ロールと所有者ロールに含まれます。
 

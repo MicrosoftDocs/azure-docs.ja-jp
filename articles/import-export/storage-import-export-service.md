@@ -9,10 +9,10 @@ ms.date: 03/04/2021
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: b1f1560fc1a00577e1e4b30d922fc7d4cae0ab92
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102181862"
 ---
 # <a name="what-is-azure-importexport-service"></a>Azure Import/Export サービスとは

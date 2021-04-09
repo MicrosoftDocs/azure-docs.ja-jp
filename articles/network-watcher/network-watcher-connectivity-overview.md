@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: 9c855fff9e5791b9c0cf870acfc6de53e7a700b2
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97653998"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure Network Watcher の接続のトラブルシューティングの概要
@@ -46,7 +46,7 @@ Network Watcher の接続のトラブルシューティング機能を使用す�
 |Hops[].Issues | そのホップのチェック中に発生した問題のコレクション。 問題がない場合、値は空になります。|
 |Hops[].Issues[].Origin | 現在のホップで、問題が発生した場所。 次のいずれかの値になります。<br/> **Inbound** - 問題が前のホップから現在のホップへのリンク上にある<br/>**Outbound** - 問題が現在のホップから次のホップへのリンク上にある<br/>**Local** - 問題が現在のホップにある|
 |Hops[].Issues[].Severity | 検出された問題の重大度。 値は、**Error** か **Warning** のいずれかです。 |
-|Hops[].Issues[].Type |見つかった問題の種類。 次のいずれかの値になります。 <br/>**CPU**<br/>**[メモリ]**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Hops[].Issues[].Type |見つかった問題の種類。 次のいずれかの値になります。 <br/>**CPU**<br/>**メモリ**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
 |Hops[].Issues[].Context |見つかった問題に関する詳細。|
 |Hops[].Issues[].Context[].key |返されたキーと値のペアのキー。|
 |Hops[].Issues[].Context[].value |返されたキーと値のペアの値。|
@@ -72,7 +72,7 @@ Network Watcher の接続のトラブルシューティング機能を使用す�
 
 接続のトラブルシューティングでは、接続に関する障害の種類が返されます。 次の表は、返された現在の障害の種類の一覧を示します。
 
-|種類  |説明  |
+|Type  |説明  |
 |---------|---------|
 |CPU     | CPU の使用率が高くなっています。       |
 |メモリ     | メモリの使用率が高くなっています。       |

@@ -9,10 +9,10 @@ ms.date: 11/05/2020
 ms.author: sttsinar
 ms.reviewer: ayshak
 ms.openlocfilehash: dba1e3fa33f489ba4d2f857d078999a874370357
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94413260"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Azure における仮想マシンの分離性

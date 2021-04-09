@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
 ms.openlocfilehash: 190a9e431dedfb0f0fe6077e903174f253f5c773
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100589099"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>Azure Load Balancer を監視および構成するための分析情報の使用

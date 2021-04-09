@@ -3,21 +3,25 @@ title: Azure CLI を使用して Azure Image Builder サービスのアクセス
 description: Azure CLI を使用してアクセス許可と特権を含む Azure VM Image Builder サービスの要件を構成する
 author: cynthn
 ms.author: danis
-ms.date: 03/02/2021
+ms.date: 04/02/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: f9b60af2c9fe16f834ce3098266c03afe2b99667
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: eb4fe102407bf519c9253ac7da39178ad8cacb0c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695432"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607536"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Azure CLI を使用して Azure Image Builder サービスのアクセス許可を構成する
 
-Azure Image Builder Service では、イメージを構築する前に、アクセス許可と特権の構成が必要です。 以下のセクションでは、Azure CLI を使用して考えられるシナリオを構成する方法について詳しく説明します。
+(AIB) に登録すると、ステージング リソース グループ (IT_*) を作成、管理、削除するためのアクセス許可が AIB サービスに付与され、イメージのビルドに必要なリソースを追加する権限が与えられます。 これは、登録が成功したときに、AIB サービス プリンシパル名 (SPN) がサブスクリプションで使用可能になることによって行われます。
+
+Azure VM Image Builder で、マネージド イメージまたは Shared Image Gallery にイメージを配布できるようにするには、イメージの読み取りと書き込みのアクセス許可を持つ Azure ユーザー割り当て ID を作成する必要があります。 Azure Storage にアクセスする場合は、プライベートまたはパブリック コンテナーを読み取るためのアクセス許可が必要です。
+
+イメージを構築する前にアクセス許可と特権を設定する必要があります。 以下のセクションでは、Azure CLI を使用して考えられるシナリオを構成する方法について詳しく説明します。
 
 > [!IMPORTANT]
 > 現在、Azure Image Builder はパブリック プレビュー段階にあります。
@@ -235,7 +239,7 @@ Image Builder テンプレートでは、ユーザー割り当てマネージド
 | \<Storage account container\> | ストレージ アカウント コンテナーの名前 |
 | \<Subscription ID\> | Azure サブスクリプション |
 
-ユーザー割り当てマネージド ID の使用方法の詳細については、「[Create a Custom Image that will use an Azure User-Assigned Managed Identity to seemlessly access files Azure Storage](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity)」 (Azure ユーザー割り当てマネージド ID を使用してシームレスにファイル Azure Storage にアクセスするカスタム イメージを作成する) を参照してください。 このクイックスタートでは、ユーザー割り当てマネージド ID を作成し、ストレージ アカウントにアクセスするように構成する方法について説明しています。
+ユーザー割り当てマネージド ID の使用方法の詳細については、「[Create a Custom Image that will use an Azure User-Assigned Managed Identity to seemlessly access files Azure Storage](./image-builder-user-assigned-identity.md)」 (Azure ユーザー割り当てマネージド ID を使用してシームレスにファイル Azure Storage にアクセスするカスタム イメージを作成する) を参照してください。 このクイックスタートでは、ユーザー割り当てマネージド ID を作成し、ストレージ アカウントにアクセスするように構成する方法について説明しています。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: f0dd5cf5209924972080af6d22429252338754de
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99491250"
 ---
 # <a name="create-modular-runbooks"></a>モジュラー Runbook を作成する

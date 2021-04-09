@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 00502c97e3fc06972c27cedf565d77b52f558795
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.custom: devx-track-js
+ms.openlocfilehash: 2886cb6433c4f8a65eb0661eded0ddd08248e137
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844814"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102219184"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Azure Static Web Apps (プレビュー) のアプリケーション設定を構成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "94844814"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure Static Web Apps アプリケーション
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure CLI](/cli/azure/install-azure-cli)
 
 ## <a name="types-of-application-settings"></a>アプリケーション設定の種類
 

@@ -9,10 +9,10 @@ ms.date: 10/20/2020
 ms.author: rohink
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 820641af00caea4ffca450be8aa81b5357ba1261
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97652965"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure プライベート DNS ゾーンを作成する

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: b09d68e7859a787c05a2fc62294f081c4345ae08
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99805042"
 ---
 # <a name="use-azure-active-directory-ad-authentication-for-your-storsimple"></a>StorSimple に Azure Active Directory (AD) 認証を使用する

@@ -11,10 +11,10 @@ author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 25d3380277d0e653fd5cb03069b7d91cb363dd95
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101692935"
 ---
 # <a name="microsoft-account-msa-identity-provider-for-external-identities-preview"></a>External Identities 用の Microsoft アカウント (MSA) ID プロバイダー (プレビュー)

@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: 147247c663311cfb3e05a986c6fb2bffbb41158b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92675206"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps で統合サービス環境 (ISE) にリソースを追加する
@@ -18,7 +18,7 @@ ms.locfileid: "92675206"
 [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成したら、ロジック アプリ、統合アカウント、コネクタなどのリソースを追加して、Azure 仮想ネットワーク内のリソースにアクセスできるようにします。 たとえば、ISE の作成後に使用可能になる ISE マネージド コネクタは、ロジック アプリ デザイナーに自動的には表示されません。 これらの ISE コネクタを使用するには、手動で[これらのコネクタを追加して ISE にデプロイ](#add-ise-connectors-environment)し、ロジック アプリ デザイナーに表示されるようにする必要があります。
 
 > [!IMPORTANT]
-> ISE でロジック アプリと統合アカウントを連携させるには、両方とも " *同じ ISE* " を場所として使用する必要があります。
+> ISE でロジック アプリと統合アカウントを連携させるには、両方とも "*同じ ISE*" を場所として使用する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,7 +47,7 @@ ms.locfileid: "92675206"
    | **名前** | はい | 作成するロジック アプリの名前 |
    | **サブスクリプション** | はい | 使用する Azure サブスクリプションの名前。 |
    | **リソース グループ** | はい | 使用する Azure リソース グループ (新規または既存) の名前 |
-   | **場所** | はい | **[統合サービス環境]** で、使用する ISE を選択します (まだ選択していない場合)。 <p><p> **重要** :統合アカウントでロジック アプリを使用するには、どちらも同じ ISE を使用する必要があります。 |
+   | **場所** | はい | **[統合サービス環境]** で、使用する ISE を選択します (まだ選択していない場合)。 <p><p> **重要**:統合アカウントでロジック アプリを使用するには、どちらも同じ ISE を使用する必要があります。 |
    ||||
 
 1. 完了したら **[作成]** を選択します。
@@ -62,7 +62,7 @@ ms.locfileid: "92675206"
 
 ## <a name="create-integration-accounts"></a>統合アカウントを作成する
 
-作成時に選択された [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) に基づいて、ISE には追加費用なしで特定の統合アカウントの使用が含まれます。 統合サービス環境 (ISE) に存在するロジック アプリは、同じ ISE に存在する統合アカウントのみを参照できます。 そのため、ISE で統合アカウントがロジック アプリと連携するには、統合アカウントとロジック アプリの両方で、場所として " *同じ環境* " を使用する必要があります。 統合アカウントと ISE の詳細については、「[ISE との統合アカウント](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment)」を参照してください。
+作成時に選択された [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) に基づいて、ISE には追加費用なしで特定の統合アカウントの使用が含まれます。 統合サービス環境 (ISE) に存在するロジック アプリは、同じ ISE に存在する統合アカウントのみを参照できます。 そのため、ISE で統合アカウントがロジック アプリと連携するには、統合アカウントとロジック アプリの両方で、場所として "*同じ環境*" を使用する必要があります。 統合アカウントと ISE の詳細については、「[ISE との統合アカウント](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment)」を参照してください。
 
 ISE を使用する統合アカウントを作成するには、次の手順を実行します。
 
@@ -80,7 +80,7 @@ ISE を使用する統合アカウントを作成するには、次の手順を�
    | **サブスクリプション** | はい | 使用する Azure サブスクリプションの名前 |
    | **リソース グループ** | はい | 使用する Azure リソース グループ (新規または既存) の名前 |
    | **価格レベル** | はい | 統合アカウントに使用する価格レベル |
-   | **場所** | はい | **[統合サービス環境]** で、ロジック アプリが使用するものと同じ ISE を選択します (まだ選択していない場合)。 <p><p> **重要** :ロジック アプリで統合アカウントを使用するには、どちらも同じ ISE を使用する必要があります。 |
+   | **場所** | はい | **[統合サービス環境]** で、ロジック アプリが使用するものと同じ ISE を選択します (まだ選択していない場合)。 <p><p> **重要**:ロジック アプリで統合アカウントを使用するには、どちらも同じ ISE を使用する必要があります。 |
    ||||
 
 1. 完了したら **[作成]** を選択します。

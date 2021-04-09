@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 5a2540aeb36cfcb2048ec994bbb486badc8a68d1
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 4ab4e40e1dd4bbaf9ae73ab545285f5ae6261e27
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358811"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201772"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>クラスター構成のベスト プラクティス (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -76,9 +76,7 @@ Azure 共有ディスクをディスク監視として構成します。
 
 ### <a name="file-share-witness"></a>ファイル共有監視
 
-ファイル共有監視は、通常 Windows Server を実行しているファイル サーバー上で構成される SMB ファイル共有です。 クラスタリング情報は witness.log ファイルに保持されますが、クラスター データベースのコピーは格納されません。 Azure では、[Azure ファイル共有](../../../storage/files/storage-how-to-create-file-share.md)を構成してファイル共有監視として使用することができます。または、別の仮想マシン上のファイル共有を使用することもできます。
-
-Azure ファイル共有を使用する予定の場合は、[Premium ファイル共有のマウント](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share)に使用するのと同じプロセスでマウントできます。 
+ファイル共有監視は、通常 Windows Server を実行しているファイル サーバー上で構成される SMB ファイル共有です。 クラスタリング情報は witness.log ファイルに保持されますが、クラスター データベースのコピーは格納されません。 Azure では、別の仮想マシンでファイル共有を構成することもできます。
 
 開始するには、[ファイル共有監視の構成](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)に関する記事をご覧ください。
 

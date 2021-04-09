@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: dech
 ms.openlocfilehash: 1cee4d2ad1bc7f362a045a5991624ec43521b8d2
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96341650"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>チュートリアル:データ移行ツールを使用して Azure Cosmos DB にデータを移行する

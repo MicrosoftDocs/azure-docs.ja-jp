@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
 ms.openlocfilehash: d66fe736936963e601aad7cba7bdaa94f0c3ec3f
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96518449"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault の可用性と冗長性

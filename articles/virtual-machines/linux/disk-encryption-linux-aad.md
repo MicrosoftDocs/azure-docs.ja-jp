@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: d1607ef4ff277f9c9cdb55db3e58da1052a00756
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: cec391ba998165af4dd9339b719a3b73cb330c16
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102558401"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601792"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Linux VM で Azure AD を使用して Azure Disk Encryption を有効にする (以前のリリース)
 
@@ -210,7 +210,7 @@ LVM-on-crypt のセットアップをお勧めします。 以下に示すすべ
 - VM を構成するデータ ディスクを追加します。
 - それらのディスクをフォーマットおよびマウントして fstab ファイルに追加します。
 
-    1. 新しく追加されたディスクをフォーマットします。 ここでは、Azure によって生成されたシンボリック リンクを使用します。 シンボリック リンクを使用すると、デバイス名の変更に関連する問題を回避できます。 詳細については、[デバイス名の問題のトラブルシューティング](../troubleshooting/troubleshoot-device-names-problems.md)に関する記事を参照してください。
+    1. 新しく追加されたディスクをフォーマットします。 ここでは、Azure によって生成されたシンボリック リンクを使用します。 シンボリック リンクを使用すると、デバイス名の変更に関連する問題を回避できます。 詳細については、[デバイス名の問題のトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems)に関する記事を参照してください。
     
         ```console
         mkfs -t ext4 /dev/disk/azure/scsi1/lun0
@@ -266,7 +266,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 [az vm disk attach](add-disk.md) を使用して、または [Azure portal](attach-disk-portal.md) を通じて新しいデータ ディスクを追加できます。 暗号化の前に、新しく接続されたデータ ディスクをマウントする必要があります。 暗号化の実行中はデータ ドライブが使用できなくなるため、そのドライブの暗号化を要求する必要があります。 
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-the-azure-cli"></a>Azure CLI を使用して新しく追加されたディスクで暗号化を有効にする
- VM が以前に "All" で暗号化された場合、--volume-type パラメーターは All のままにしておく必要があります。 All には OS とデータ ディスクの両方が含まれます。 VM が以前にボリュームの種類 "OS" で暗号化された場合は、--volume-type パラメーターを All に変更して、OS と新しいデータ ディスクの両方が含まれるようにする必要があります。 VM がボリュームの種類 "Data" でのみ暗号化された場合、ここに示すように Data のままにできます。 新しいデータ ディスクを VM に追加してアタッチするだけでは、暗号化の準備としては不十分です。 暗号化を有効にする前に、新しくアタッチしたディスクをフォーマットして、VM 内で適切にマウントする必要もあります。 Linux では、[永続的なブロック デバイス名](../troubleshooting/troubleshoot-device-names-problems.md)を使用して /etc/fstab にディスクをマウントする必要があります。 
+ VM が以前に "All" で暗号化された場合、--volume-type パラメーターは All のままにしておく必要があります。 All には OS とデータ ディスクの両方が含まれます。 VM が以前にボリュームの種類 "OS" で暗号化された場合は、--volume-type パラメーターを All に変更して、OS と新しいデータ ディスクの両方が含まれるようにする必要があります。 VM がボリュームの種類 "Data" でのみ暗号化された場合、ここに示すように Data のままにできます。 新しいデータ ディスクを VM に追加してアタッチするだけでは、暗号化の準備としては不十分です。 暗号化を有効にする前に、新しくアタッチしたディスクをフォーマットして、VM 内で適切にマウントする必要もあります。 Linux では、[永続的なブロック デバイス名](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems)を使用して /etc/fstab にディスクをマウントする必要があります。 
 
 PowerShell 構文とは異なり、CLI では暗号化を有効にするときに一意のシーケンス バージョンを指定する必要はありません。 CLI では独自の一意のシーケンス バージョン値が自動的に生成され、使用されます。
 

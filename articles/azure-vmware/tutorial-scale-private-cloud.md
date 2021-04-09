@@ -2,13 +2,13 @@
 title: チュートリアル - プライベート クラウドをスケーリングする
 description: このチュートリアルでは、Azure portal を使用して、Azure VMware Solution のプライベート クラウドをスケーリングします。
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: d49d973cc6d97280dc0c7ea6681f2602b871e1ba
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 03/13/2021
+ms.openlocfilehash: 2129a3f5d04311883369b7b708689a13f07ec118
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791241"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103463616"
 ---
 # <a name="tutorial-scale-an-azure-vmware-solution-private-cloud"></a>チュートリアル:Azure VMware Solution のプライベート クラウドをスケーリングする
 
@@ -22,7 +22,7 @@ Azure VMware Solution のプライベート クラウド エクスペリエン�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するためのプライベート クラウド。 プライベート クラウドを作成していない場合は、[プライベート クラウドの作成に関するチュートリアル](tutorial-create-private-cloud.md)を使用して作成します。 必要な仮想ネットワークを設定するために、Azure で VMware プライベート クラウド用のネットワークを構成します。
+このチュートリアルを完了するには、既存のプライベート クラウドが必要です。 プライベート クラウドを作成していない場合は、[プライベート クラウドの作成に関するチュートリアル](tutorial-create-private-cloud.md)を使用して作成します。 
 
 ## <a name="add-a-new-cluster"></a>新しいクラスターを追加する
 
@@ -32,7 +32,7 @@ Azure VMware Solution のプライベート クラウド エクスペリエン�
 
 1. **[クラスターの追加]** ページで、スライダーを使用してホストの数を選択します。 **[保存]** を選択します。
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss3-configure-new-cluster.png" alt-text="[Add cluster]\(クラスターの追加\) を選択する" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss3-configure-new-cluster.png" alt-text="[クラスターの追加] ページで、スライダーを使用してホストの数を選択します。[保存] を選択します。" border="true":::
 
    新しいクラスターのデプロイが開始されます。
 
@@ -40,13 +40,13 @@ Azure VMware Solution のプライベート クラウド エクスペリエン�
 
 1. 既存のプライベート クラウドの概要ページで、 **[Scale private cloud]\(プライベート クラウドのスケーリング\)** を選択し、鉛筆アイコンを選択してクラスターを編集します。
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss4-select-scale-private-cloud-2.png" alt-text="[Add cluster]\(クラスターの追加\) を選択する" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss4-select-scale-private-cloud-2.png" alt-text="[概要] で [Scale private cloud]\(プライベート クラウドのスケーリング\) を選択する" border="true":::
 
 1. **[クラスターの編集]** ページで、スライダーを使用してホストの数を選択します。 **[保存]** を選択します。
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss5-scale-cluster.png" alt-text="[Add cluster]\(クラスターの追加\) を選択する" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss5-scale-cluster.png" alt-text="[クラスターの編集] ページで、スライダーを使用してホストの数を選択します。[保存] を選択します。" border="true":::
 
-   クラスターのホストの追加が開始されます。
+   クラスターへのホストの追加が開始されます。
 
 ## <a name="next-steps"></a>次のステップ
 

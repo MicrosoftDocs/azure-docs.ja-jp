@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: jeedes
 ms.openlocfilehash: dbc1c68f666fed280ef5eea0b74836d0cb9f305d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92505847"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quantum-workplace"></a>チュートリアル:Azure Active Directory と Quantum Workplace の統合
@@ -41,7 +41,7 @@ Azure AD と Quantum Workplace の統合を構成するには、次のものが�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Quantum Workplace では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Quantum Workplace では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-quantum-workplace-from-the-gallery"></a>ギャラリーからの Quantum Workplace の追加
 
@@ -61,13 +61,13 @@ Azure AD への Quantum Workplace の統合を構成するには、ギャラリ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Quantum Workplace** 」と入力し、結果ウィンドウで **Quantum Workplace** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Quantum Workplace**」と入力し、結果ウィンドウで **Quantum Workplace** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果一覧の Quantum Workplace](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Quantum Workplace で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Quantum Workplace で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Quantum Workplace 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Quantum Workplace で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -113,7 +113,7 @@ Quantum Workplace で Azure AD シングル サインオンを構成するには
 
 ### <a name="configure-quantum-workplace-single-sign-on"></a>Quantum Workplace のシングル サインオンの構成
 
-**Quantum Workplace** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Quantum Workplace サポート チーム](mailto:support@quantumworkplace.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Quantum Workplace** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Quantum Workplace サポート チーム](mailto:support@quantumworkplace.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -131,7 +131,7 @@ Quantum Workplace で Azure AD シングル サインオンを構成するには
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

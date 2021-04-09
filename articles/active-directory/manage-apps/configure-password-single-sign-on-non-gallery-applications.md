@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: kenwith
 ms.openlocfilehash: bac04bd70469d7b9c4d9485b6a87fd7133967154
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99255307"
 ---
 # <a name="understand-password-based-single-sign-on"></a>パスワードベースのシングル サインオンについて理解する

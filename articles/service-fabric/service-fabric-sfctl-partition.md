@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fff569c586548d84ed55018764363ad7f05e526d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86257089"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
@@ -17,7 +17,7 @@ ms.locfileid: "86257089"
 
 ## <a name="commands"></a>コマンド
 
-|command|説明|
+|コマンド|説明|
 | --- | --- |
 | data-loss | この API は、指定されたパーティションのデータ損失を誘発します。 |
 | data-loss-status | StartDataLoss API を使用して開始されたパーティション データ損失操作の進行状況を取得します。 |

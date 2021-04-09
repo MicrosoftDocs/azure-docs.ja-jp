@@ -12,12 +12,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 02/01/2021
-ms.openlocfilehash: 6ba1ba9d8c809a805fe8691baf96350b70ec6a51
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3be01c304a40317e0d21baf6789ef1376cd89b80
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691894"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608080"
 ---
 # <a name="automate-management-tasks-using-sql-agent-jobs-in-azure-sql-managed-instance"></a>Azure SQL Managed Instance で SQL Agent ジョブを使用して管理タスクを自動化する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -81,7 +81,7 @@ SQL エージェントのジョブ ステップは、SQL エージェントが�
 SQL Agent を使用すると、さまざまな種類のジョブ ステップを作成できます。たとえば、データベースに対して単一の Transact-SQL バッチを実行する Transact-SQL ジョブ ステップ、カスタム OS スクリプトを実行できる OS コマンドまたは PowerShell のステップ、SSIS ランタイムを使用してデータを読み込むことができる [SSIS ジョブ ステップ](../../data-factory/how-to-invoke-ssis-package-managed-instance-agent.md)、お客様のデータベースから他のデータベースに変更を発行できる[レプリケーション](../managed-instance/replication-transactional-overview.md) ステップなどがあります。
 
 > [!Note]
-> Azure SQL Managed Instance でホストされている SSISDB で Azure SSIS Integration Runtime を利用する方法の詳細については、「[Azure Data Factory 内で SQL Server Integration Services (SSIS) と共に Azure SQL Managed Instance を使用する](/../azure/data-factory/how-to-use-sql-managed-instance-with-ir.md)」を参照してください。
+> Azure SQL Managed Instance でホストされている SSISDB で Azure SSIS Integration Runtime を利用する方法の詳細については、「[Azure Data Factory 内で SQL Server Integration Services (SSIS) と共に Azure SQL Managed Instance を使用する](../../data-factory/how-to-use-sql-managed-instance-with-ir.md)」を参照してください。
 
 [トランザクション レプリケーション](../managed-instance/replication-transactional-overview.md)を使用すると、テーブルの変更を、Azure SQL Managed Instance、Azure SQL Database、または SQL Server の他のデータベースにレプリケートできます。 詳しくは、[Azure SQL Managed Instance にレプリケーションを構成する方法](../../azure-sql/managed-instance/replication-between-two-instances-configure-tutorial.md)に関する記事をご覧ください。 
 

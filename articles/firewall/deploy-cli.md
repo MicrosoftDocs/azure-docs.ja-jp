@@ -8,10 +8,10 @@ ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: how-to
 ms.openlocfilehash: 4d611a6d575fbc94a555006882f77e5a31753164
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98051464"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Azure CLI を使用して Azure Firewall をデプロイして構成する

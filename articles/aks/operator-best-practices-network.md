@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) での仮想ネットワーク リ�
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: f004e0e78d7a626f878ba3651e4c6078f9cd21e8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2bd332dbf9412f5c42e77b14ada3aab67ec8b66a
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366570"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102508590"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのネットワーク接続とセキュリティに関するベスト プラクティス
 
@@ -43,11 +43,11 @@ Container Networking Interface (CNI) は、コンテナー ランタイムがネ
 
 運用環境での Azure CNI ネットワークの主な利点は、ネットワーク モデルを使用して、リソースの制御と管理の分離が可能になることです。 セキュリティの観点から、多くの場合に、それらのリソースを異なるチームが管理し、セキュリティで保護することが望まれます。 Azure CNI ネットワークでは、各ポッドに割り当てられた IP アドレスを使用して、既存の Azure リソース、オンプレミスのリソース、またはその他のサービスに直接接続することができます。
 
-Azure CNI ネットワークを使用する場合、仮想ネットワーク リソースは AKS クラスターとは別個のリソース グループに含まれます。 これらのリソースにアクセスして管理するためのアクセス許可を AKS サービス プリンシパルに委任します。 AKS クラスターで使用されるサービス プリンシパルには、少なくとも、ご利用の仮想ネットワーク内のサブネットに対する[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)アクセス許可が必要です。 組み込みのネットワークの共同作成者ロールを使用する代わりに、[カスタム ロール](../role-based-access-control/custom-roles.md)を定義する場合は、次のアクセス許可が必要です。
+Azure CNI ネットワークを使用する場合、仮想ネットワーク リソースは AKS クラスターとは別個のリソース グループに含まれます。 これらのリソースにアクセスして管理するためのアクセス許可を AKS クラスター ID に委任します。 AKS クラスターで使用されるクラスター ID には、少なくとも、ご利用の仮想ネットワーク内のサブネットに対する[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)のクセス許可が必要です。 組み込みのネットワークの共同作成者ロールを使用する代わりに、[カスタム ロール](../role-based-access-control/custom-roles.md)を定義する場合は、次のアクセス許可が必要です。
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
-AKS サービス プリンシパルへの委任の詳細については、[他の Azure リソースへのアクセスの委任][sp-delegation]に関するページを参照してください。 サービス プリンシパルの代わりに、システム割り当てのマネージド ID もアクセス許可に使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。
+既定では、AKS のクラスター ID にはマネージド ID が使用されますが、代わりにサービス プリンシパルを使用することもできます。 AKS サービス プリンシパルへの委任の詳細については、[他の Azure リソースへのアクセスの委任][sp-delegation]に関するページを参照してください。 マネージド ID の詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。
 
 各ノードとポッドは独自の IP アドレスを受け取ると、AKS サブネットのアドレス範囲を計画します。 これらのサブネットは、デプロイするすべてのノード、ポッド、およびネットワーク リソースの IP アドレスを提供するのに十分な大きさである必要があります。 各 AKS クラスターは、その独自のサブネットに配置する必要があります。 Azure でオンプレミスまたはピアリングされたネットワークへの接続を許可するには、既存のネットワーク リソースと重複する IP アドレス範囲を使用しないようにします。 各ノードが kubenet ネットワークと Azure CNI ネットワークの両方で実行するポッドの数には、既定の制限があります。 スケールアウト イベントまたはクラスター アップグレードを処理するには、割り当てられたサブネットで使用できる追加の IP アドレスも必要です。 Windows Server コンテナーを使用している場合、この追加のアドレス空間は特に重要です。これらのノード プールをアップグレードして最新のセキュリティ パッチを適用する必要があるためです。 Windows Server ノードの詳細については、[AKS でのノード プールのアップグレード][nodepool-upgrade]に関する記事を参照してください。
 

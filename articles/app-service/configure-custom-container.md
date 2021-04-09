@@ -2,14 +2,14 @@
 title: カスタム コンテナーを構成する
 description: Azure App Service でカスタム コンテナーを構成する方法について説明します。 この記事では、最も一般的な構成タスクを紹介しています。
 ms.topic: article
-ms.date: 09/22/2020
+ms.date: 02/23/2021
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: a7582bbb866a63820abbd959e06628eda5d57e29
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 8083c3c0c88d904ccb3ec75ae69a699867bd0f25
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007638"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704873"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Azure App Service のカスタム コンテナーを構成する
 
@@ -111,7 +111,7 @@ PowerShell では次のとおりです。
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"DB_HOST"="myownserver.mysql.database.azure.com"}
 ```
 
-アプリを実行すると、App Service アプリ設定が環境変数としてプロセスに自動的に挿入されます。 
+アプリを実行すると、App Service アプリ設定が環境変数としてプロセスに自動的に挿入されます。 コンテナー環境変数は、URL `https://<app-name>.scm.azurewebsites.net/Env)` を使用して確認できます。
 
 ::: zone pivot="container-windows"
 IIS または .NET Framework (4.0 以降) ベースのコンテナーの場合、これらは、App Service によって .NET アプリ設定と接続文字列として `System.ConfigurationManager` に挿入されます。 他のすべての言語またはフレームワークでは、これらは、次のいずれかの対応するプレフィックス付きの環境変数としてプロセスに提供されます。
@@ -292,44 +292,55 @@ Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"CO
 
 ## <a name="enable-ssh"></a>SSH を有効にする
 
-SSH では、コンテナーとクライアント間の通信をセキュリティで保護できます。 カスタム コンテナーで SSH をサポートするために、Dockerfile 自体に追加する必要があります。
+SSH では、コンテナーとクライアント間の通信をセキュリティで保護できます。 カスタム コンテナーで SSH をサポートするために、Docker イメージ自体に追加する必要があります。
 
 > [!TIP]
-> すべての組み込み Linux コンテナーは、そのイメージ リポジトリ内に SSH 命令を追加しました。 [Node.js 10.14 リポジトリ](https://github.com/Azure-App-Service/node/blob/master/10.14)で次のとおり実行し、それをそこで有効にする方法を表示できます。
+> App Service 内のすべての組み込み Linux コンテナーは、そのイメージ リポジトリ内に SSH 命令を追加しました。 [Node.js 10.14 リポジトリ](https://github.com/Azure-App-Service/node/blob/master/10.14)で次のとおり実行し、それをそこで有効にする方法を表示できます。 Node.js 組み込みイメージでの構成は少し異なりますが、原則は同じです。
 
-- [RUN](https://docs.docker.com/engine/reference/builder/#run) 命令を使用して、SSH サーバーをインストールし、ルート アカウントのパスワードを `"Docker!"` に設定します。 たとえば、[Alpine Linux](https://hub.docker.com/_/alpine) に基づくイメージの場合、次のコマンドが必要です。
+- 次の例のように、 [sshd_config ファイル](https://man.openbsd.org/sshd_config)をリポジトリに追加します。
 
-    ```Dockerfile
-    RUN apk add openssh \
-         && echo "root:Docker!" | chpasswd 
     ```
-
-    この構成は、コンテナーへの外部接続を許可しません。 SSH は `https://<app-name>.scm.azurewebsites.net` を通じてのみ利用でき、公開用の資格情報で認証されます。
-
-- [この sshd_config ファイル](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config)をイメージ リポジトリに追加し、[COPY](https://docs.docker.com/engine/reference/builder/#copy) 命令を使用してファイルを */etc/ssh/* ディレクトリにコピーします。 *sshd_config* ファイルの詳細については、[OpenBSD ドキュメント](https://man.openbsd.org/sshd_config)を参照してください。
-
-    ```Dockerfile
-    COPY sshd_config /etc/ssh/
+    Port            2222
+    ListenAddress       0.0.0.0
+    LoginGraceTime      180
+    X11Forwarding       yes
+    Ciphers aes128-cbc,3des-cbc,aes256-cbc,aes128-ctr,aes192-ctr,aes256-ctr
+    MACs hmac-sha1,hmac-sha1-96
+    StrictModes         yes
+    SyslogFacility      DAEMON
+    PasswordAuthentication  yes
+    PermitEmptyPasswords    no
+    PermitRootLogin     yes
+    Subsystem sftp internal-sftp
     ```
 
     > [!NOTE]
-    > *sshd_config* ファイルには次の項目を指定する必要があります。
+    > このファイルは OpenSSH を構成するものです。ファイル内には、次の項目を含める必要があります。
+    > - `Port` は 2222 に設定されている必要があります。
     > - `Ciphers` には、`aes128-cbc,3des-cbc,aes256-cbc` の項目を少なくとも 1 つ含める必要があります。
     > - `MACs` には、`hmac-sha1,hmac-sha1-96` の項目を少なくとも 1 つ含める必要があります。
 
-- [EXPOSE](https://docs.docker.com/engine/reference/builder/#expose) 命令を使用して、コンテナーでポート 2222 を開きます。 ルート パスワードはわかっていますが、ポート 2222 にはインターネットからアクセスできません。 それには、プライベート仮想ネットワークのブリッジ ネットワーク内でコンテナーのみがアクセスできます。
+- Dockerfile で、次のコマンドを追加します。
 
     ```Dockerfile
+    # Install OpenSSH and set the password for root to "Docker!". In this example, "apk add" is the install instruction for an Alpine Linux-based image.
+    RUN apk add openssh \
+         && echo "root:Docker!" | chpasswd 
+
+    # Copy the sshd_config file to the /etc/ssh/ directory
+    COPY sshd_config /etc/ssh/
+
+    # Open port 2222 for SSH access
     EXPOSE 80 2222
     ```
+
+    この構成は、コンテナーへの外部接続を許可しません。 コンテナーのポート 2222 は、プライベート仮想ネットワークのブリッジ ネットワーク内でのみアクセスでき、インターネット上の攻撃者からはアクセスできません。
 
 - コンテナーのスタートアップ スクリプトで、SSH サーバーを起動します。
 
     ```bash
     /usr/sbin/sshd
     ```
-
-    例については、既定の [Node.js 10.14 コンテナー](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh)が SSH サーバーを起動する方法を参照してください。
 
 ## <a name="access-diagnostic-logs"></a>診断ログにアクセスする
 

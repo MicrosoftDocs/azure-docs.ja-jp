@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
 ms.openlocfilehash: 0626a9e36d05ac9cb51f62652dbe6f3133bbc6d7
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101095906"
 ---
 # <a name="create-or-update-azure-custom-roles-using-an-arm-template"></a>ARM テンプレートを使用して Azure カスタム ロールを作成または更新する

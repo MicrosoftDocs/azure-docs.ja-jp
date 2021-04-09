@@ -11,10 +11,10 @@ ms.date: 02/19/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 54ad9f389070e1d5d280517a2f6c41e9a0f8f33e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96929992"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Azure App Configuration ストアに格納されているキー/値を操作する

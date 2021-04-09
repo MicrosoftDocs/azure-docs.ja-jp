@@ -4,10 +4,10 @@ description: Azure Storage でアプリケーション データを暗号化し�
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 6e4cf16118e748e3ee1d1ff4899730463565ec70
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92108033"
 ---
 # <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>カスタマー マネージド キーを使用し、保存中のアプリケーション データを暗号化する

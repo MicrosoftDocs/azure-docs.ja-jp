@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
 ms.openlocfilehash: 929c447d1a19b85ab8e12b45198508e5f5747c12
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92521856"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumtotalcentral"></a>チュートリアル: Azure Active Directory と SumTotalCentral の統合
@@ -41,7 +41,7 @@ Azure AD と SumTotalCentral の統合を構成するには、次のものが必
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* SumTotalCentral では、 **SP** Initiated SSO がサポートされます
+* SumTotalCentral では、**SP** Initiated SSO がサポートされます
 
 * SumTotalCentral を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
     
@@ -56,12 +56,12 @@ Azure AD への SumTotalCentral の統合を構成するには、ギャラリー
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **SumTotalCentral** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**SumTotalCentral**」と入力します。
 1. 結果のパネルから **[SumTotalCentral]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、SumTotalCentral で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、SumTotalCentral で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと SumTotalCentral 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 SumTotalCentral で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -118,7 +118,7 @@ SumTotalCentral で Azure AD のシングル サインオンを構成してテ�
 1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「 **B.Simon** 」と入力します。  
+   1. **[名前]** フィールドに「**B.Simon**」と入力します。  
    1. **[ユーザー名]** フィールドに「`<username>@<companydomain>.<extension>`」と入力します。 (例: `B.Simon@contoso.com`)。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **［作成］** を選択します

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da21359b56b9e5b9d6e971032d06f8bae94efce0
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 13460fad0ed106f5c0590df961ceca54cb04cd7b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682140"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102427183"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>条件付きアクセスのデプロイを計画する
 
@@ -72,6 +72,7 @@ Microsoft は、基本レベルのセキュリティを保証する[セキュリ
 * [条件付きアクセスとは](https://youtu.be/ffMAw2IVO7A)
 * [条件付きアクセスをデプロイする方法](https://youtu.be/c_izIRNJNuk)
 * [条件付きアクセス ポリシーをエンド ユーザーにロールアウトする方法](https://youtu.be/0_Fze7Zpyvc)
+* [条件付きアクセス ポリシーのユーザーを追加または除外する方法](https://youtu.be/5DsW1hB3Jqs)
 * [デバイス コントロールを使用した条件付きアクセス](https://youtu.be/NcONUf-jeS4)
 * [Azure AD MFA を使用した条件付きアクセス](https://youtu.be/Tbc-SU97G-w)
 * [Conditional Access in Enterprise Mobility + Security](https://youtu.be/A7IrxAH87wc) (Enterprise Mobility + Security での条件付きアクセス)

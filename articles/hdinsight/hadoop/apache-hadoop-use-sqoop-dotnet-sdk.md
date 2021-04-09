@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, hdiseo17may2017, devx-track-csharp
 ms.date: 01/14/2020
 ms.openlocfilehash: a06326f5b4cf34a06475c10e368c6dcbb49ca9e4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98928347"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>HDInsight で .NET SDK for Apache Hadoop を使用して Apache Sqoop ジョブを実行する
@@ -42,7 +42,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 
 ## <a name="sqoop-export"></a>Sqoop のエクスポート
 
-Hive から SQL Server へ  この例では、Hive の `hivesampletable` テーブルから SQL Database の `mobiledata` テーブルにデータをエクスポートします。
+Hive から SQL Server へ  この例では、`hivesampletable` のテーブルから SQL Database の `mobiledata` テーブルにデータをエクスポートします。
 
 1. Program.cs ファイルで次のコードを使用します。 このコードを編集して `ExistingClusterName` および `ExistingClusterPassword` の値を設定します。
 
@@ -134,7 +134,7 @@ Linux ベースの HDInsight には次の制限事項があります。
 
 * 一括エクスポート:Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタでは、一括挿入は現在サポートされていません。
 
-* バッチ処理:`-batch` スイッチを使用すると、Sqoop では挿入操作がバッチ処理されず、複数の挿入が実行されます。
+* バッチ処理: `-batch` スイッチを使用すると、Sqoop では挿入操作がバッチ処理されず、複数の挿入が実行されます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
 ms.openlocfilehash: 894a89126d1ee3ed909134f3e0dd914166568654
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90606636"
 ---
 キューは、[Azure portal](../articles/storage/queues/storage-quickstart-queues-portal.md) または [Microsoft Azure Storage Explorer](https://storageexplorer.com/) で確認できます。 次の手順に従って、Azure CLI でキューを確認することもできます。

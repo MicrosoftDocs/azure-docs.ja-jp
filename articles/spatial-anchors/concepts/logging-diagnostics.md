@@ -1,5 +1,5 @@
 ---
-title: ログ記録と診断
+title: ログの記録と診断
 description: Azure Spatial Anchors でログ記録と診断を生成して取得する方法に関する、詳細な説明。
 author: msftradford
 manager: MehranAzimi-msft
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
 ms.openlocfilehash: da8ffd7ff0b8473ce558943bb420b36f26c3fc32
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95494643"
 ---
 # <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Azure Spatial Anchors でのログ記録と診断
@@ -108,6 +108,6 @@ private async Task CreateAndSubmitBundle()
 ### <a name="parts-of-a-diagnostics-bundle"></a>診断バンドルのパーツ
 診断バンドルには次のような情報が含まれています。
 
-- **キーフレームのイメージ**: 診断が有効な状態のときにセッションでキャプチャされた環境のイメージ。
-- **ログ**:ランタイムによって記録されたログ イベント。
-- **セッションのメタデータ**: セッションを識別するメタデータ。
+- **キーフレーム イメージ**: 診断が有効な状態のときにセッションでキャプチャされた環境のイメージ。
+- **ログ**: ランタイムによって記録されたログ イベント。
+- **セッション メタデータ**: セッションを識別するメタデータ。

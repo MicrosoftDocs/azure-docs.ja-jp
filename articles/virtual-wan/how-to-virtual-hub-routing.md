@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: cae74a5f4859d208765c9a7e5cde05ff3c0c3096
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91313690"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>仮想ハブのルーティングを構成する方法
@@ -30,7 +30,7 @@ ms.locfileid: "91313690"
 3. **[+ ルート テーブルの作成]** を選択して、 **[ルート テーブルの作成]** ページを開きます。
 4. [ルート テーブルの作成] ページの **[基本]** タブで、次のフィールドを入力します。
 
-   :::image type="content" source="./media/how-to-virtual-hub-routing/basics.png" alt-text="[ルーティング] ページ":::
+   :::image type="content" source="./media/how-to-virtual-hub-routing/basics.png" alt-text="[基本] タブ":::
 
    * **名前**
    * **ルート**
@@ -41,20 +41,20 @@ ms.locfileid: "91313690"
 
      仮想ネットワーク接続を選択すると、 **[Configure static routes] (静的ルートの構成)** が表示されます。 これはオプションの構成設定です。 詳細については、[静的ルートの構成](about-virtual-hub-routing.md#static)に関するページを参照してください。
 
-      :::image type="content" source="./media/how-to-virtual-hub-routing/next-hop.png" alt-text="[ルーティング] ページ":::
+      :::image type="content" source="./media/how-to-virtual-hub-routing/next-hop.png" alt-text="次ホップ":::
 
 5. **[ラベル]** タブを選択して、ラベル名を構成します。 ラベルは、ルート テーブルを論理的にグループ化するためのメカニズムを提供します。
 
-    :::image type="content" source="./media/how-to-virtual-hub-routing/labels.png" alt-text="[ルーティング] ページ":::
+    :::image type="content" source="./media/how-to-virtual-hub-routing/labels.png" alt-text="ラベル名の構成":::
 
 6. **[関連付け]** タブを選択して、ルート テーブルへの接続を関連付けます。
 接続の **[ブランチ]** 、 **[仮想ネットワーク]** 、および **[現在の設定]** が表示されます。
 
-    :::image type="content" source="./media/how-to-virtual-hub-routing/associations.png" alt-text="[ルーティング] ページ":::
+    :::image type="content" source="./media/how-to-virtual-hub-routing/associations.png" alt-text="ルート テーブルへの接続の関連付け":::
 
 7. **[Propagations] (伝達)** タブを選択して、接続からルート テーブルへのルートを伝達します。
 
-    :::image type="content" source="./media/how-to-virtual-hub-routing/propagations.png" alt-text="[ルーティング] ページ":::
+    :::image type="content" source="./media/how-to-virtual-hub-routing/propagations.png" alt-text="ルートの伝達":::
 
 8. **[作成]** を選択して、ルート テーブルを作成します。
 
@@ -70,7 +70,7 @@ Azure portal で、仮想ハブのルート テーブルを見つけます。 [�
 
 Azure portal で、仮想ハブのルート テーブルを見つけます。 **[...]** をクリックし、 **[有効なルート]** を選択して、選択したルート テーブルによって学習されたルートを表示します。 接続からルート テーブルに伝達されたルートは、ルート テーブルの **[有効なルート]** に自動的に設定されます。 詳細については、[有効なルート](effective-routes-virtual-hub.md)に関するページを参照してください。
 
-:::image type="content" source="./media/how-to-virtual-hub-routing/effective.png" alt-text="[ルーティング] ページ" lightbox="./media/how-to-virtual-hub-routing/effective-expand.png":::
+:::image type="content" source="./media/how-to-virtual-hub-routing/effective.png" alt-text="有効なルートの表示" lightbox="./media/how-to-virtual-hub-routing/effective-expand.png":::
 
 ## <a name="to-set-up-routing-configuration-for-a-virtual-network-connection"></a><a name="routing-configuration"></a>仮想ネットワーク接続に対するルーティング構成を設定するには
 
@@ -82,7 +82,7 @@ Azure portal で、仮想ハブのルート テーブルを見つけます。 **
 1. **[静的ルート]** では、ネットワーク仮想アプライアンスの静的ルートを構成します (該当する場合)。 仮想 WAN では、仮想ネットワーク接続の静的ルートに対して 1 つの次ホップ IP がサポートされています。 たとえば、イングレスとエグレスのトラフィック フロー用に個別の仮想アプライアンスがある場合は、仮想アプライアンスを別の VNET に配置し、VNET を仮想ハブに接続することをお勧めします。
 
 
-:::image type="content" source="./media/how-to-virtual-hub-routing/routing-configuration.png" alt-text="[ルーティング] ページ" lightbox="./media/how-to-virtual-hub-routing/routing-configuration-expand.png":::
+:::image type="content" source="./media/how-to-virtual-hub-routing/routing-configuration.png" alt-text="ルーティング構成の設定" lightbox="./media/how-to-virtual-hub-routing/routing-configuration-expand.png":::
 
 ## <a name="next-steps"></a>次のステップ
 

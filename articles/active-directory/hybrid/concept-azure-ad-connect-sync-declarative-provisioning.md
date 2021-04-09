@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59dc94e37dfa1ef8b0b079bf5d78d0504e0cb8c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91313622"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同期: 宣言型のプロビジョニングについて
@@ -92,7 +92,7 @@ ms.locfileid: "91313622"
 メタバース オブジェクトが削除されると、出力同期規則に関連付けられているすべてのオブジェクト ( **プロビジョニング** とマークされているもの) が削除とマークされます。
 
 ## <a name="transformations"></a>変換
-変換は、ソースからターゲットへの属性のフローの方法を定義するために使用されます。 フローには、直接、定数、式のいずれかの **フローの種類**を設定できます。 直接フローの場合、属性値は変換が行われることなく、そのままフローされます。 定数値の場合、指定の値を設定します。 式の場合、宣言型のプロビジョニングの式言語を使用して変換の方法を指定します。 式言語の詳細については、 [宣言型のプロビジョニングの式言語](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) に関するトピックを参照してください。
+変換は、ソースからターゲットへの属性のフローの方法を定義するために使用されます。 フローには、直接、定数、式のいずれかの **フローの種類** を設定できます。 直接フローの場合、属性値は変換が行われることなく、そのままフローされます。 定数値の場合、指定の値を設定します。 式の場合、宣言型のプロビジョニングの式言語を使用して変換の方法を指定します。 式言語の詳細については、 [宣言型のプロビジョニングの式言語](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) に関するトピックを参照してください。
 
 ![Provision or join](./media/concept-azure-ad-connect-sync-declarative-provisioning/transformations1.png)  
 
@@ -105,7 +105,7 @@ ms.locfileid: "91313622"
 
 **Merge** と **MergeCaseInsensitive** もあります。 これらのオプションを使用すると、異なるソースの値を結合できます。 たとえば、それを使用して、いくつかの異なるフォレストのメンバー属性や proxyAddresses 属性を結合できます。 このオプションを使用する場合、オブジェクトのスコープ内にあるすべての同期規則では、同じ結合の種類を使用する必要があります。 あるコネクタから **Update** を定義し、別のコネクタから **Merge** を定義することはできません。 試した場合は、エラーが発生します。
 
-**Merge** と **MergeCaseInsensitive** では、重複する属性値の処理方法が異なります。 同期エンジンは、重複する値がターゲット属性に挿入されていないことを確認します。 **MergeCaseInsensitive**を使用すると、大文字小文字のみが異なる重複する値は表示されなくなります。 たとえば、"SMTP:bob@contoso.com" と "smtp:bob@contoso.com" は両方ともターゲット属性に表示されなくなります。 **Merge** は、正確な値だけを調べるため、大文字小文字のみが異なる複数の値は表示される可能性があります。
+**Merge** と **MergeCaseInsensitive** では、重複する属性値の処理方法が異なります。 同期エンジンは、重複する値がターゲット属性に挿入されていないことを確認します。 **MergeCaseInsensitive** を使用すると、大文字小文字のみが異なる重複する値は表示されなくなります。 たとえば、"SMTP:bob@contoso.com" と "smtp:bob@contoso.com" は両方ともターゲット属性に表示されなくなります。 **Merge** は、正確な値だけを調べるため、大文字小文字のみが異なる複数の値は表示される可能性があります。
 
 オプション **Replace** は **Update** と同じですが、使用されていません。
 
@@ -118,7 +118,7 @@ ms.locfileid: "91313622"
 
 リテラル **AuthoritativeNull** は **NULL** に似ていますが、優先順位の低い規則は値を提供できないという点が異なります。
 
-また、属性フローでは **IgnoreThisFlow**も使用できます。 これは、提供するものがないことを示す意味では NULL に似ています。 違いは、ターゲットに既に存在する値を削除しないことです。 属性フローがそこにあったことがないようなものです。
+また、属性フローでは **IgnoreThisFlow** も使用できます。 これは、提供するものがないことを示す意味では NULL に似ています。 違いは、ターゲットに既に存在する値を削除しないことです。 属性フローがそこにあったことがないようなものです。
 
 たとえば次のようになります。
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: jeedes
 ms.openlocfilehash: cee037b7f92dd55bb8fba264e164087a1cf8983b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92460276"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-in-case-of-crisis---mobile"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と In Case of Crisis - Mobile の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* In Case of Crisis - Mobile では、 **IDP** Initiated SSO がサポートされます
+* In Case of Crisis - Mobile では、**IDP** Initiated SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -52,7 +52,7 @@ Azure AD への In Case of Crisis - Mobile の統合を構成するには、ギ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **In Case of Crisis - Mobile** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**In Case of Crisis - Mobile**」と入力します。
 1. 結果のパネルから **[In Case of Crisis - Mobile]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-in-case-of-crisis---mobile"></a>In Case of Crisis - Mobile の Azure AD シングル サインオンの構成とテスト
@@ -84,7 +84,7 @@ In Case of Crisis - Mobile で Azure AD の SSO を構成してテストする�
 
     ![証明書のダウンロードのリンク](common/certificateraw.png)
 
-1. ページの左側にある **[管理]** セクションに移動し、 **[プロパティ]** タブをクリックします。次に、 **ユーザーのアクセス URL** をコピーして、コンピューターに保存します。
+1. ページの左側にある **[管理]** セクションに移動し、 **[プロパティ]** タブをクリックします。次に、**ユーザーのアクセス URL** をコピーして、コンピューターに保存します。
 
     ![シングル サインオンのプロパティ](./media/in-case-of-crisis-mobile-tutorial/properties.png)
 

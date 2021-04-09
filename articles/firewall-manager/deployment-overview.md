@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: victorh
 ms.openlocfilehash: ceb6e84b31067f7289b9e003a4fb273ce717de33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89079100"
 ---
 # <a name="azure-firewall-manager-deployment-overview"></a>Azure Firewall Manager のデプロイ概要

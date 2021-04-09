@@ -5,21 +5,21 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: cbc6999e3ede73b948ce034769966922b4b0f282
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89010321"
 ---
-# <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>さまざまなプロトコルを使用するコンシューマーとプロデューサー間でイベントを交換する: AMQP、Kafka、HTTPS
-Azure Event Hubs は、コンシューマーとプロデューサー用に 3 つのプロトコルをサポートしています: AMQP、Kafka、HTTPS です。 これらのプロトコルのそれぞれにメッセージの独自の表示方法があるため、当然、次のような疑問が生じます。アプリケーションがあるプロトコルでイベント ハブにイベントを送信し、それを別のプロトコルで使用する場合、イベントがコンシューマーに表示されるときにイベントのさまざまな部分や値はどのように見えるのでしょうか。 この記事では、プロデューサーとコンシューマーの両方で、イベント内の値がコンシューマー側アプリケーションによって正しく解釈されるようにするためのベスト プラクティスについて説明します。
+# <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>さまざまなプロトコル (AMQP、Kafka、および HTTPS) を使用するコンシューマーとプロデューサー間でイベントを交換する
+Azure Event Hubs は、コンシューマーとプロデューサー用に 3 つのプロトコル (AMQP、Kafka、および HTTPS) をサポートしています。 これらのプロトコルのそれぞれにメッセージの独自の表示方法があるため、当然、次のような疑問が生じます。アプリケーションがあるプロトコルでイベント ハブにイベントを送信し、それを別のプロトコルで使用する場合、イベントがコンシューマーに表示されるときにイベントのさまざまな部分や値はどのように見えるのでしょうか。 この記事では、プロデューサーとコンシューマーの両方で、イベント内の値がコンシューマー側アプリケーションによって正しく解釈されるようにするためのベスト プラクティスについて説明します。
 
 この記事のアドバイスは、コード スニペットの開発で一覧にあるバージョンが使用されるクライアントに対応しています。
 
-* Kafka Java クライアント (バージョン 1.1.1、 https://www.mvnrepository.com/artifact/org.apache.kafka/kafka-clients) で入手可能
-* Java 用 Microsoft Azure Event Hubs クライアント (バージョン 1.1.0、 https://github.com/Azure/azure-event-hubs-java) で入手可能
-* .NET 用 Microsoft Azure Event Hubs クライアント (バージョン 2.1.0、 https://github.com/Azure/azure-event-hubs-dotnet) で入手可能
-* Microsoft Azure Service Bus (バージョン 5.0.0、 https://www.nuget.org/packages/WindowsAzure.ServiceBus) で入手可能
+* Kafka Java クライアント (バージョン 1.1.1、https://www.mvnrepository.com/artifact/org.apache.kafka/kafka-clients) で入手可能
+* Java 用 Microsoft Azure Event Hubs クライアント (バージョン 1.1.0、https://github.com/Azure/azure-event-hubs-java) で入手可能
+* .NET 用 Microsoft Azure Event Hubs クライアント (バージョン 2.1.0、https://github.com/Azure/azure-event-hubs-dotnet) で入手可能
+* Microsoft Azure Service Bus (バージョン 5.0.0、https://www.nuget.org/packages/WindowsAzure.ServiceBus) で入手可能
 * HTTPS (プロデューサーのみをサポート)
 
 その他の AMQP クライアントの動作は少し異なる場合があります。 AMQP には適切に定義された型のシステムがありますが、型システムの間での言語固有の型のシリアル化の詳細は、クライアントが AMQP メッセージの一部にアクセスする方法と同様に、クライアントによって異なります。

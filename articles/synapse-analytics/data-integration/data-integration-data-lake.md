@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
 ms.openlocfilehash: fbc4f11b450a645002daedc800d4fed74ed37a3d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98219574"
 ---
 # <a name="ingest-data-into-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 にデータを取り込む 

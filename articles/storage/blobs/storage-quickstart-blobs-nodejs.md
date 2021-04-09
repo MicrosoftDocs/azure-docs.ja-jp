@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
 ms.openlocfilehash: 0883fd1546ac3b55ec4211e5048569556858de29
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179920"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>クイック スタート:Node.js の JavaScript v12 SDK を使用して BLOB を管理する
@@ -314,6 +314,6 @@ Done
 > [!div class="nextstepaction"]
 > [JavaScript 開発者センターの Azure](/azure/developer/javascript/)
 
-* Azure Blob Storage を使用する Web アプリをデプロイする方法については、「[チュートリアル: Azure Storage を使用してクラウドに画像データをアップロードする](./storage-upload-process-images.md?preserve-view=true&tabs=javascript)」を参照してください。
+* Azure BLOB ストレージを使用する Web アプリをデプロイする方法については、「[チュートリアル: Azure Storage を使用してクラウドに画像データをアップロードする](./storage-upload-process-images.md?preserve-view=true&tabs=javascript)」を参照してください。
 * Blob Storage のサンプル アプリの詳細については、[Azure Blob Storage クライアント ライブラリ v12 JavaScript サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples) ページを参照してください。
 * 詳細については、[JavaScript 用 Azure Blob Storage クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)に関するページを参照してください。

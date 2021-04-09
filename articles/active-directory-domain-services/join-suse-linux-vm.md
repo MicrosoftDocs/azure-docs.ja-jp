@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: justinha
 ms.openlocfilehash: f2f421d95dfc376aed373c718198db33a870d9dc
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96619608"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>SUSE Linux Enterprise 仮想マシンを Azure Active Directory Domain Services のマネージド ドメインに参加させる

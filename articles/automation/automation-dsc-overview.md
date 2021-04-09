@@ -11,10 +11,10 @@ ms.date: 01/26/2021
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 752d7f86941967c218b3a57fa163698b9f502057
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98897022"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration の概要

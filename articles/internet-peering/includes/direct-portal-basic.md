@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 5/22/2020
 ms.author: derekol
 ms.openlocfilehash: e2804c8f9b1af89ac0ea86ec14136df66d900060
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83846164"
 ---
 1. **[リソースの作成]**  >  **[すべて表示]** を選択します。
@@ -25,7 +25,7 @@ ms.locfileid: "83846164"
     > [!div class="mx-imgBorder"]
     > ![ピアリングの起動](../media/setup-launch.png)
 
-1. **ピアリング**を起動したら、ページを確認して詳細を理解します。 準備ができたら、 **[作成]** を選択します。
+1. **ピアリング** を起動したら、ページを確認して詳細を理解します。 準備ができたら、 **[作成]** を選択します。
 
     > [!div class="mx-imgBorder"]
     > ![ピアリングを作成する](../media/setup-create.png)
@@ -35,7 +35,7 @@ ms.locfileid: "83846164"
     > [!div class="mx-imgBorder"]
     > ![ピアリングの [基本] タブ](../media/setup-basics-tab.png)
 
-    * Azure **サブスクリプション**を選択します。
+    * Azure **サブスクリプション** を選択します。
     * **[リソース グループ]** では、ドロップダウンから既存のリソース グループを選択するか、 **[新規作成]** を選択して新しいグループを作成します。 この例では、新しいリソース グループを作成します。
     * **[名前]** は、リソース名に対応し、任意の名前を選択できます。
     * 既存のリソース グループを選択した場合、 **[リージョン]** は自動的に選択されます。 新しいリソース グループの作成を選択した場合は、リソースを配置する Azure リージョンも選択する必要があります。

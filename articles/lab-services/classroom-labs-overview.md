@@ -4,10 +4,10 @@ description: クラウドにクラスルーム ラボ環境をすばやく設定
 ms.topic: overview
 ms.date: 06/26/2020
 ms.openlocfilehash: 79d6f1cc9f2a6d8d8be872359a4677b36602eea5
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96434806"
 ---
 # <a name="introduction-to-labs"></a>ラボの概要

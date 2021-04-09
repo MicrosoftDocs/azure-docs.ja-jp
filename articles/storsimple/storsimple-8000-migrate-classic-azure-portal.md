@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: 523788dc727fc5fa32b2f57250fb738352ff6d31
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96491522"
 ---
 # <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>StorSimple デバイス マネージャー サービスに関連付けられているサブスクリプションとストレージ アカウントを移行する
@@ -29,8 +29,8 @@ StorSimple サービスを新しい登録や新しいサブスクリプション
 
 | 移行対象| サポートされています| ダウンタイム| Azure サポート プロセス| アプローチ|
 |-----|-----|-----|-----|-----|
-| サブスクリプション全体 (StorSimple サービスとストレージ アカウントを含む) を別の登録へ | はい       | いいえ       | **登録の転送**<br>用途:<li>新しい契約で新しい Azure コミットメントを購入する場合。</li><li>すべてのアカウントとサブスクリプションを以前の登録から新しい登録に移行します。 これには、以前のサブスクリプションのすべての Azure サービスが含まれます。</li> | **手順 1: Azure Enterprise 操作のサポート チケットを開く。**<li>[https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) に移動します。</li><li> **[Enrollment Administration]\(登録管理\)** に移動し、 **[Transfer from one enrollment to a new enrollment]\(登録間で転送する\)** を選択します。<br>**手順 2: 要求された情報を提供する**<br>以下が含まれます。<li>転送元の登録番号</li><li> 転送先の登録番号</li><li>転送の発効日|
-| StorSimple サービスを既存のアカウントから新しい登録へ    | はい       | いいえ       | **アカウントの転送**<br>次のコマンドを使用します。<li>登録を完全には転送しない場合。</li><li>特定のアカウントのみを新しい登録に移動します。</li>| **手順 1: Azure Enterprise 操作のサポート チケットを開く。**<li>[https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) に移動します。</li><li>**[Enrollment Administration]\(登録管理\)** に移動し、 **[Transfer an EA Account to a new enrollment]\(EA アカウントを新規登録に転送する\)** を選択します。<br>**手順 2: 要求された情報を提供する**<br>以下が含まれます。<li>転送元の登録番号</li><li> 転送先の登録番号</li><li>転送の発効日|
+| サブスクリプション全体 (StorSimple サービスとストレージ アカウントを含む) を別の登録へ | はい       | いいえ       | **登録の転送**<br>用途:<li>新しい契約で新しい Azure コミットメントを購入する場合。</li><li>すべてのアカウントとサブスクリプションを以前の登録から新しい登録に移行します。 これには、以前のサブスクリプションのすべての Azure サービスが含まれます。</li> | **手順 1: Azure Enterprise 操作のサポート チケットを開く。**<li>[https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) に移動します。</li><li> **[Enrollment Administration]\(登録管理\)** に移動し、**[Transfer from one enrollment to a new enrollment]\(登録間で転送する\)** を選択します。<br>**手順 2: 要求された情報を提供する**<br>包含:<li>転送元の登録番号</li><li> 転送先の登録番号</li><li>転送の発効日|
+| StorSimple サービスを既存のアカウントから新しい登録へ    | はい       | いいえ       | **アカウントの転送**<br>次のコマンドを使用します。<li>登録を完全には転送しない場合。</li><li>特定のアカウントのみを新しい登録に移動します。</li>| **手順 1: Azure Enterprise 操作のサポート チケットを開く。**<li>[https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) に移動します。</li><li>**[Enrollment Administration]\(登録管理\)** に移動し、**[Transfer an EA Account to a new enrollment]\(EA アカウントを新規登録に転送する\)** を選択します。<br>**手順 2: 要求された情報を提供する**<br>包含:<li>転送元の登録番号</li><li> 転送先の登録番号</li><li>転送の発効日|
 | StorSimple サービスをあるサブスクリプションから別のサブスクリプションへ      | いいえ        |    はい         | なし。手動プロセス|<li>StorSimple デバイスからデータを移行します。</li><li>デバイスを工場出荷時の状態にリセットします。これにより、デバイス上のローカル データがすべて削除されます。</li><li>StorSimple デバイス マネージャー サービスに新しいサブスクリプションでデバイスを登録します。</li><li>データをデバイスに移行します。|
 |Azure サブスクリプションの所有権を別のディレクトリに移すことはできますか。 | はい       | いいえ       | 既存のサブスクリプションを Azure AD ディレクトリに関連付ける | 「[既存のサブスクリプションを Azure AD ディレクトリに関連付けるには](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。 すべてが正しく表示されるまで、最大で 10 分かかる場合があります。|
 | StorSimple デバイスを、ある StorSimple デバイス マネージャー サービスから別のリージョンのサービスへ      | いいえ        | はい            | なし。手動プロセス |上記と同じです。|

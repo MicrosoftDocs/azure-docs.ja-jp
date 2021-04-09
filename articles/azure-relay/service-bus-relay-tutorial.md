@@ -4,14 +4,14 @@ description: このチュートリアルでは、Azure WCF Relay を使用して
 ms.topic: tutorial
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: bb2b9b5ed7c263762cc24b8eb2e6d66215147c4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7669bc07ad91933cd31bd2ccd10eaf830d98de7c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935706"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101710789"
 ---
-# <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>チュートリアル:Azure WCF Relay を使用してオンプレミスの WCF REST サービスを外部クライアントに公開する
+# <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>チュートリアル: Azure WCF Relay を使用してオンプレミスの WCF REST サービスを外部クライアントに公開する
 
 このチュートリアルでは、Azure Relay を使用して WCF Relay クライアント アプリケーションとサービスを構築する方法について説明します。 [Service Bus メッセージング](../service-bus-messaging/service-bus-messaging-overview.md)を使用した同様のチュートリアルについては、「[Service Bus キューの使用](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)」を参照してください。
 
@@ -56,11 +56,11 @@ ms.locfileid: "88935706"
 1. Microsoft Visual Studio を管理者として起動します。 これを行うには、Visual Studio のプログラム アイコンを右クリックして **[管理者として実行]** を選択します。
 1. Visual Studio で、 **[新しいプロジェクトの作成]** を選択します。
 1. **[新しいプロジェクトの作成]** で、C# の **[コンソール アプリ (.NET Framework)]** を選択してから、 **[次へ]** を選択します。
-1. プロジェクトに *EchoService* という名前を付けて、 **[作成]** を選択します。
+1. プロジェクトに *EchoService* という名前を付けて、**[作成]** を選択します。
 
    ![コンソール アプリを作成する][2]
 
-1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選びます。 **[NuGet パッケージ マネージャー]** で **[参照]** を選択してから、**WindowsAzure.ServiceBus** を検索して選択します。 **[インストール]** を選択して、使用条件に同意します。
+1. **ソリューション エクスプローラー** で、プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[NuGet パッケージ マネージャー]** で **[参照]** を選択してから、**WindowsAzure.ServiceBus** を検索して選択します。 **[インストール]** を選択して、使用条件に同意します。
 
     ![Service Bus パッケージ][3]
 
@@ -180,12 +180,12 @@ Azure Relay を作成するには、まずインターフェイスを使用し�
 
 構成ファイルは WCF 構成ファイルと似ています。 これには、サービス名、エンドポイント、およびバインドが含まれています。 エンドポイントは、クライアントとホストの相互通信用に Azure Relay により公開されている場所です。 バインドは、通信に使用されるプロトコルの種類です。 主な違いは、構成されているこのサービス エンドポイントで、.NET Framework に含まれていない [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) バインドが参照されている点です。 [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) は、サービスによって定義されたバインドの 1 つです。
 
-1. **ソリューション エクスプローラー**で、**App.config** をダブルクリックして、Visual Studio エディターでそのファイルを開きます。
+1. **ソリューション エクスプローラー** で、**App.config** をダブルクリックして、Visual Studio エディターでそのファイルを開きます。
 1. `<appSettings>` 要素内のプレースホルダーを、実際のサービスの名前空間名と先ほどコピーした SAS キーに置き換えます。
 1. `<system.serviceModel>` タグ内に、`<services>` 要素を追加します。 1 つの構成ファイルで複数のリレー アプリケーションを定義できます。 ただし、このチュートリアルで定義するのは 1 つだけです。
 
     ```xml
-    <?xmlversion="1.0"encoding="utf-8"?>
+    <?xmlversion="1.0" encoding="utf-8"?>
     <configuration>
       <system.serviceModel>
         <services>
@@ -439,15 +439,15 @@ namespace Microsoft.ServiceBus.Samples
 
 1. クライアント用の現在の Visual Studio ソリューションに新しいプロジェクトを作成します。
 
-   1. **ソリューション エクスプローラー**で (プロジェクトではなく) 現在のソリューションを右クリックし、 **[追加]**  >  **[新しいプロジェクト]** の順に選択します。
-   1. **[新しいプロジェクトの追加]** で、C# の **[コンソール アプリ (.NET Framework)]** を選択し、 **[次へ]** を選択します。
-   1. プロジェクトに「*EchoClient*」という名前を付けて、 **[作成]** を選択します。
+   1. **ソリューション エクスプローラー** で (プロジェクトではなく) 現在のソリューションを右クリックし、**[追加]** > **[新しいプロジェクト]** の順に選択します。
+   1. **[新しいプロジェクトの追加]** で、C# の **[コンソール アプリ (.NET Framework)]** を選択し、**[次へ]** を選択します。
+   1. プロジェクトに「*EchoClient*」という名前を付けて、**[作成]** を選択します。
 
-1. **ソリューション エクスプローラー**で **[EchoClient]** プロジェクトの **Program.cs** ファイルをダブルクリックしてエディターで開きます (まだ開いていない場合)。
+1. **ソリューション エクスプローラー** で **[EchoClient]** プロジェクトの **Program.cs** ファイルをダブルクリックしてエディターで開きます (まだ開いていない場合)。
 1. 名前空間の名前を、既定の名前である `EchoClient` から `Microsoft.ServiceBus.Samples` に変更します。
 1. [Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)をインストールします。
 
-   1. **ソリューション エクスプローラー**で **[EchoClient]** を右クリックし、 **[NuGet パッケージの管理]** を選択します。
+   1. **ソリューション エクスプローラー** で **[EchoClient]** を右クリックし、**[NuGet パッケージの管理]** を選択します。
    1. **[参照]** を選択し、**WindowsAzure.ServiceBus** を探して選択します。 **[インストール]** を選択して、使用条件に同意します。
 
       ![Service Bus パッケージのインストール][4]
@@ -508,12 +508,12 @@ namespace Microsoft.ServiceBus.Samples
 
 この手順では、このチュートリアルで前に作成したサービスにアクセスする基本的なクライアント アプリケーションの *App.config* ファイルを作成します。 この *App.config* ファイルでは、エンドポイントのコントラクト、バインド、および名前を定義します。 以下の手順では、これらのタスクに使用するコード例を示します。
 
-1. **ソリューション エクスプローラー**で、 **[EchoClient]** プロジェクトの **App.config** をダブルクリックし、Visual Studio エディターでファイルを開きます。
+1. **ソリューション エクスプローラー** で、**[EchoClient]** プロジェクトの **App.config** をダブルクリックし、Visual Studio エディターでファイルを開きます。
 1. `<appSettings>` 要素内のプレースホルダーを、実際のサービスの名前空間名と先ほどコピーした SAS キーに置き換えます。
 1. `system.serviceModel` 要素内に、`<client>` 要素を追加します。
 
     ```xml
-    <?xmlversion="1.0"encoding="utf-8"?>
+    <?xmlversion="1.0" encoding="utf-8"?>
     <configuration>
       <system.serviceModel>
         <client>
@@ -724,19 +724,19 @@ namespace Microsoft.ServiceBus.Samples
 ## <a name="run-the-applications"></a>アプリケーションの実行
 
 1. Ctrl + Shift + B キーを押して、ソリューションをビルドします。 このアクションにより、前の手順で作成したサービス プロジェクトとクライアント プロジェクトの両方がビルドされます。
-1. クライアント アプリケーションを実行する前に、サービス アプリケーションが実行されていることを確認してください。 **ソリューション エクスプローラー**で、 **[EchoService]** ソリューションを右クリックし、 **[プロパティ]** を選択します。
-1. **[プロパティ ページ]** で、 **[共通プロパティ]**  >  **[スタートアップ プロジェクト]** の順に選択し、 **[マルチ スタートアップ プロジェクト]** を選択します。 **EchoService** がリストの先頭に表示されていることを確認してください。
+1. クライアント アプリケーションを実行する前に、サービス アプリケーションが実行されていることを確認してください。 **ソリューション エクスプローラー** で、**[EchoService]** ソリューションを右クリックし、**[プロパティ]** を選択します。
+1. **[プロパティ ページ]** で、**[共通プロパティ]** > **[スタートアップ プロジェクト]** の順に選択し、**[マルチ スタートアップ プロジェクト]** を選択します。 **EchoService** がリストの先頭に表示されていることを確認してください。
 1. **EchoService** プロジェクトと **EchoClient** プロジェクトの両方の **[アクション]** ボックスを **[開始]** に設定します。
 
     ![[プロジェクト プロパティ] ページ][5]
 
-1. **[プロジェクトの依存関係]** を選択します。 **[プロジェクト]** で、 **[EchoClient]** を選択します。 **[依存先]** で、 **[EchoService]** が選択されていることを確認します。
+1. **[プロジェクトの依存関係]** を選択します。 **[プロジェクト]** で、**[EchoClient]** を選択します。 **[依存先]** で、**[EchoService]** が選択されていることを確認します。
 
     ![プロジェクト依存関係][6]
 
 1. **[OK]** を選択して **[プロパティ ページ]** を閉じます。
 1. F5 キーを押して両方のプロジェクトを実行します。
-1. 両方のコンソール ウィンドウが開き、名前空間名の入力が求められます。 先にサービスを実行しておく必要があるので、 **[EchoService]** コンソール ウィンドウで名前空間を入力し、Enter キーを押します。
+1. 両方のコンソール ウィンドウが開き、名前空間名の入力が求められます。 先にサービスを実行しておく必要があるので、**[EchoService]** コンソール ウィンドウで名前空間を入力し、Enter キーを押します。
 1. 次に、コンソールで、SAS キーの入力を求められます。 SAS キーを入力し、Enter キーを押します。
 
     コンソール ウィンドウの出力例を次に示します。 表示されている値は、単なる例です。

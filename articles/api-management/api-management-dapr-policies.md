@@ -3,15 +3,15 @@ title: Azure API Management の Dapr 統合ポリシー | Microsoft Docs
 description: Dapr マイクロサービス拡張機能と対話するための Azure API Management のポリシーについて説明します。
 author: vladvino
 ms.author: vlvinogr
-ms.date: 10/23/2020
+ms.date: 02/18/2021
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: b8e253f75f56f961a24a441188b7a8e571622667
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 051bf4398555f318f613c66d58ec65be1d30e215
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99560231"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646811"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API Management の Dapr 統合ポリシー
 
@@ -45,21 +45,21 @@ template:
 
 ## <a name="send-request-to-a-service"></a><a name="invoke"></a> サービスへの要求の送信
 
-このポリシーは、現在の要求のターゲット URL を `http://localhost:3500/v1.0/invoke/{app-id}/method/{method-name}` に設定します。この際、テンプレート パラメーターはポリシー ステートメントで指定された値に置き換えられます。
+このポリシーは、現在の要求のターゲット URL を `http://localhost:3500/v1.0/invoke/{app-id}[.{ns-name}]/method/{method-name}` に設定します。この際、テンプレート パラメーターはポリシー ステートメントで指定された値に置き換えられます。
 
 このポリシーでは、Dapr がゲートウェイと同じポッドのサイドカー コンテナーで実行されることを前提としています。 Dapr ランタイムは、要求を受け取ったときに、サービス検出と実際の呼び出しを実行します。これには、HTTP と gRPC の間のプロトコル変換、再試行、分散トレース、エラー処理が含まれます。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
 ```xml
-<set-backend-service backend-id="dapr" dapr-app-id="app-id" dapr-method="method-name" />
+<set-backend-service backend-id="dapr" dapr-app-id="app-id" dapr-method="method-name" dapr-namespace="ns-name" />
 ```
 
 ### <a name="examples"></a>例
 
 #### <a name="example"></a>例
 
-次の例は、"echo" という名前のマイクロサービスで "back" という名前のメソッドを呼び出す方法を示しています。 `set-backend-service` ポリシーは、送信先 URL を設定します。 `forward-request` ポリシーによって、要求が Dapr ランタイムにディスパッチされ、そこからマイクロサービスに配信されます。
+次の例は、"echo" という名前のマイクロサービスで "back" という名前のメソッドを呼び出す方法を示しています。 `set-backend-service` ポリシーは、送信先 URL を `http://localhost:3500/v1.0/invoke/echo.echo-app/method/back` に設定します。 `forward-request` ポリシーによって、要求が Dapr ランタイムにディスパッチされ、そこからマイクロサービスに配信されます。
 
 ここでは、わかりやすくするために `forward-request` ポリシーを示しています。 通常、このポリシーは `base` キーワードによってグローバル スコープから "継承" されます。
 
@@ -67,7 +67,7 @@ template:
 <policies>
     <inbound>
         <base />
-        <set-backend-service backend-id="dapr" dapr-app-id="echo" dapr-method="back" />
+        <set-backend-service backend-id="dapr" dapr-app-id="echo" dapr-method="back" dapr-namespace="echo-app" />
     </inbound>
     <backend>
         <forward-request />
@@ -92,8 +92,9 @@ template:
 | 属性        | 説明                     | 必須 | Default |
 |------------------|---------------------------------|----------|---------|
 | backend-id       | "dapr" に設定する必要があります           | はい      | 該当なし     |
-| dapr-app-id      | ターゲット マイクロサービスの名前。 Dapr の [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) パラメーターにマップされます。| はい | 該当なし |
+| dapr-app-id      | ターゲット マイクロサービスの名前。 Dapr の [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) パラメーターを形成するために使用されます。| はい | 該当なし |
 | dapr-method      | ターゲット マイクロサービスで呼び出すメソッドまたは URL の名前。 Dapr の [method-name](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) パラメーターにマップされます。| はい | 該当なし |
+| dapr-namespace   | ターゲット マイクロサービスが存在する名前空間の名前。 Dapr の [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) パラメーターを形成するために使用されます。| いいえ | 該当なし |
 
 ### <a name="usage"></a>使用法
 

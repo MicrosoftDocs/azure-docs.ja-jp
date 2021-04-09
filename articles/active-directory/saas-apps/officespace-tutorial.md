@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
 ms.openlocfilehash: bb994e154f410fb15b66588b41688326509a8f4a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92518537"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と OfficeSpace Software の統合
@@ -39,10 +39,10 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* OfficeSpace Software では、 **SP** によって開始される SSO がサポートされます
+* OfficeSpace Software では、**SP** によって開始される SSO がサポートされます
 
 
-* OfficeSpace Software では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* OfficeSpace Software では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 
 ## <a name="adding-officespace-software-from-the-gallery"></a>ギャラリーからの OfficeSpace Software の追加
@@ -53,7 +53,7 @@ Azure AD への OfficeSpace Software の統合を構成するには、ギャラ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **OfficeSpace Software** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**OfficeSpace Software**」と入力します。
 1. 結果のパネルから **OfficeSpace Software** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -89,7 +89,7 @@ OfficeSpace Software を使用して Azure AD の SSO を構成してテスト�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これの値の取得については、[OfficeSpace Software クライアント サポート チーム](mailto:support@officespacesoftware.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. OfficeSpace Software アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 OfficeSpace Software アプリケーションでは、 **nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. OfficeSpace Software アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 OfficeSpace Software アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 

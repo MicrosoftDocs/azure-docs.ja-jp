@@ -8,10 +8,10 @@ ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 0a1221a8de10fd18768a1a0f0ac08277dc2901d6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735035"
 ---
 # <a name="app-service-environment-networking"></a>App Service Environment のネットワーク

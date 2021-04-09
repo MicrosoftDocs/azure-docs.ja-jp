@@ -8,10 +8,10 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/09/2020
 ms.openlocfilehash: 698e65c4b982c5d639ffc666b394765fd04bd202
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98222464"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>商業マーケットプレースのポリシーと利用規約

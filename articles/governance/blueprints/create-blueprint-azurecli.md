@@ -4,10 +4,10 @@ description: このクイックスタートでは、Azure Blueprints と Azure C
 ms.date: 01/27/2021
 ms.topic: quickstart
 ms.openlocfilehash: 6ce3031c93f973c2efb251fad371a6f3750ae0fd
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98920242"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>クイック スタート:Azure CLI で Azure Blueprint を定義して割り当てる

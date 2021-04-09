@@ -8,10 +8,10 @@ ms.date: 11/22/2019
 author: kriti-ms
 ms.author: krsh
 ms.openlocfilehash: e3d20b5e9206cf05d749f75982a07937a8caf078
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102201092"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Azure Marketplace 上の仮想マシン (VM) イメージをマネージド ディスク ストレージに移行します

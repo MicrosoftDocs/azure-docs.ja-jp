@@ -7,16 +7,20 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 zone_pivot_groups: qnamaker-quickstart
-ms.openlocfilehash: 5fd200fcd1d48b533e629fe4429f5bafb5fde817
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bed89a3e37507da5b65af3eb26413ba35a79022d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731018"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583184"
 ---
 # <a name="quickstart-qna-maker-client-library"></a>クイック スタート:QnA Maker クライアント ライブラリ
 
 QnA Maker クライアント ライブラリの使用を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。
+
+::: zone pivot="rest"
+[!INCLUDE [QnA Maker REST quickstart](../includes/quickstart-rest.md)]
+::: zone-end
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [QnA Maker C# client library quickstart](../includes/quickstart-sdk-csharp.md)]
@@ -42,9 +46,6 @@ QnA Maker クライアント ライブラリの使用を開始します。 以�
 [!INCLUDE [QnA Maker Ruby client library quickstart](../includes/quickstart-sdk-ruby.md)]
 ::: zone-end
 
-::: zone pivot="rest"
-[!INCLUDE [QnA Maker REST quickstart](../includes/quickstart-rest.md)]
-::: zone-end
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

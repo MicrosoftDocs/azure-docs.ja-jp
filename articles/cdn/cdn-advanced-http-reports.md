@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: e2ef1367cbbb1fb71159c4520c3d1481904c1769
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92779324"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Azure CDN の詳細な HTTP レポートを使用した利用統計の分析
@@ -199,7 +199,7 @@ ms.locfileid: "92779324"
 
 棒グラフのすぐ下には、要求された資産の上位 250 件について、相対パス (ファイル名を含む)、状態コード "404 未検出" になった要求の数、資産が要求された合計回数、状態コード "404 未検出" になった要求の割合という情報が表示されます。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 * [Azure CDN の概要](cdn-overview.md)
 * [Microsoft Azure CDN でのリアルタイム統計情報](cdn-real-time-stats.md)
 * [規則エンジンを使用した既定の HTTP 動作のオーバーライド](./cdn-verizon-premium-rules-engine.md)

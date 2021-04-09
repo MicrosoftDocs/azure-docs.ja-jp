@@ -7,10 +7,10 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/10/2020
 ms.openlocfilehash: 91aed191e3bb165d6690759426a596df39f8c10f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100582296"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Azure Monitor for Key Vault によるキー コンテナー サービスの監視

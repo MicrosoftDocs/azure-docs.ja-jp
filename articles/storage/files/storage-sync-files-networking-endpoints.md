@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 64d66e1b9eab225b38ee21306fea6f9534a708f3
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 97ccbd0858a7b85c4b5d1e460f67416d8139e49a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673852"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102218606"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Azure File Sync ネットワーク エンドポイントの構成
 Azure Files および Azure File Sync では、Azure ファイル共有にアクセスするための次の主な 2 種類のエンドポイントが提供されます。 
@@ -34,7 +34,7 @@ Azure Files と Azure File Sync はどちらも、それぞれに Azure 管理�
 
 追加として:
 - Azure PowerShell を使用する場合は、[最新バージョンをインストールしてください](/powershell/azure/install-az-ps)。
-- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](/cli/azure/install-azure-cli)。
 
 ## <a name="create-the-private-endpoints"></a>プライベート エンドポイントを作成する
 Azure リソースのプライベート エンドポイントを作成すると、次のリソースがデプロイされます。
@@ -125,7 +125,7 @@ Address: 192.168.0.5
 
 ---
 
-### <a name="create-the-storage-sync-private-endpoint"></a>ストレージ同期のプライベート エンドポイントを作成する
+### <a name="create-the-storage-sync-service-private-endpoint"></a>ストレージ同期サービス プライベート エンドポイントを作成する
 > [!Important]  
 > ストレージ同期サービス リソースに対してプライベート エンドポイントを使用するには、Azure File Sync エージェント バージョン10.1 以降を使用する必要があります。 10.1 より前のバージョンのエージェントでは、ストレージ同期サービスに対するプライベート エンドポイントはサポートされません。 以前のすべてのエージェント バージョンでは、ストレージ アカウント リソースに対するプライベート エンドポイントがサポートされています。
 
@@ -597,19 +597,44 @@ Azure File Sync を使用すると、プライベート エンドポイントに
 $storageSyncServiceResourceGroupName = "<storage-sync-service-resource-group>"
 $storageSyncServiceName = "<storage-sync-service>"
 
-$storageSyncService = Get-AzResource `
-        -ResourceGroupName $storageSyncServiceResourceGroupName `
-        -ResourceName $storageSyncServiceName `
-        -ResourceType "Microsoft.StorageSync/storageSyncServices"
-
-$storageSyncService.Properties.incomingTrafficPolicy = "AllowVirtualNetworksOnly"
-$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force -UsePatchSemantics
+Set-AzStorageSyncService `
+    -ResourceGroupName $storageSyncServiceResourceGroupName `
+    -Name $storageSyncServiceName `
+    -IncomingTrafficPolicy AllowVirtualNetworksOnly
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 Azure CLI では、Storage Sync Service に `incomingTrafficPolicy` プロパティを設定できません。 ストレージ同期サービスのパブリック エンドポイントを無効にする方法については、Azure PowerShell タブの手順を選択してください。
 
 ---
+
+## <a name="azure-policy"></a>Azure Policy
+Azure Policy を使用すると、組織の標準を適用し、標準に対するコンプライアンスを大規模に評価する場合に役立ちます。 Azure Files と Azure File Sync により、デプロイの監視と自動化に役立ついくつかの便利な監査および修復ネットワーク ポリシーが公開されています。
+
+ポリシーによって環境が監査され、ストレージ アカウントまたはストレージ同期サービスが定義された動作から逸脱している場合は警告されます。 たとえば、パブリック エンドポイントを無効にするようにポリシーが設定されているときに、パブリック エンドポイントが有効な場合です。 変更またはデプロイ ポリシーはさらに一歩進み、ポリシーに合わせに合わせてリソース (ストレージ同期サービスなど) を事前に変更したり、リソース (プライベート エンドポイントなど) をデプロイしたりすることができます。
+
+次の事前定義されたポリシーは、Azure Files と Azure File Sync で使用できます。
+
+| アクション | サービス | 条件 | ポリシー名 |
+|-|-|-|-|
+| Audit | Azure Files | ストレージ アカウントのパブリック エンドポイントが有効になっています。 詳細については、「[ストレージ アカウントのパブリック エンドポイントへのアクセスを無効にする](#disable-access-to-the-storage-account-public-endpoint)」を参照してください。 | ストレージ アカウントではネットワーク アクセスを制限する必要がある |
+| Audit | Azure File Sync | ストレージ同期サービスのパブリック エンドポイントが有効になっています。 詳細については、「[ストレージ同期サービスのパブリック エンドポイントへのアクセスを無効にする](#disable-access-to-the-storage-sync-service-public-endpoint)」を参照してください。 | Azure File Sync のパブリック ネットワーク アクセスを無効にする必要がある |
+| Audit | Azure Files | ストレージ アカウントには、少なくとも 1 つのプライベート エンドポイントが必要です。 詳細については、「[ストレージ アカウントのプライベート エンドポイントを作成する](#create-the-storage-account-private-endpoint)」を参照してください。 | ストレージ アカウントではプライベート リンク接続を使用する必要がある |
+| Audit | Azure File Sync | ストレージ同期サービスには、少なくとも 1 つのプライベート エンドポイントが必要です。 詳細については、「[ストレージ同期のプライベート エンドポイントを作成する](#create-the-storage-sync-service-private-endpoint)」を参照してください。 | Azure File Sync ではプライベート リンクを使用する必要がある |
+| 変更 | Azure File Sync | ストレージ同期サービスのパブリック エンドポイントを無効にします。 | 変更 - パブリック ネットワーク アクセスを無効にするように Azure File Sync を構成する |
+| デプロイ | Azure File Sync | ストレージ同期サービスのプライベート エンドポイントをデプロイします。 | プライベート エンドポイントを持つ Azure File Sync を構成する |
+| デプロイ | Azure File Sync | A レコードを privatelink.afs.azure.net DNS ゾーンにデプロイします。 | プライベート DNS ゾーンを使用するように Azure File Sync を構成する |
+
+### <a name="set-up-a-private-endpoint-deployment-policy"></a>プライベート エンドポイント デプロイ ポリシーを設定する
+プライベート エンドポイント デプロイ ポリシーを設定するには、[Azure portal](https://portal.azure.com/) に移動し、**Policy** を検索します。 Azure Policy センターが一番上に表示されるはずです。 Policy センターの目次で、 **[作成]**  >  **[定義]** に移動します。 結果の **[定義]** ペインには、すべての Azure サービスにわたる事前に定義されたポリシーが表示されます。 特定のポリシーを見つけるには、カテゴリ フィルターで **[ストレージ]** カテゴリを選択するか、**プライベート エンドポイントを使用した Azure File Sync の構成** を検索します。 **[...]** と **[割り当て]** を選択し、定義から新しいポリシーを作成します。
+
+**[ポリシーの割り当て]** ウィザードの **[基本]** ブレードを使用すると、スコープ、リソース、またはリソース グループの除外一覧を設定し、ポリシーにわかりやすい名前を付けて区別しやすくすることができます。 ポリシーを機能させるためにこれらを変更する必要はありませんが、変更することもできます。 **[次へ]** を選択し、 **[パラメーター]** ページに進みます。 
+
+**[パラメーター]** ブレードで、 **[privateEndpointSubnetId]** ドロップダウン リストの横にある **[...]** を選択して、ストレージ同期サービス リソースのプライベート エンドポイントをデプロイする必要がある仮想ネットワークとサブネットを選択します。 結果のウィザードに、サブスクリプションで使用できる仮想ネットワークが読み込まれるまでに数秒かかる場合があります。 お使いの環境に適した仮想ネットワークとサブネットを選択し、 **[選択]** をクリックします。 **[次へ]** を選択して、 **[修復]** ブレードに進みます。
+
+プライベート エンドポイントを持たないストレージ同期サービスが特定されたときにプライベート エンドポイントをデプロイするには、 **[修復]** ページで **[修復タスクを作成する]** を選択する必要があります。 最後に、 **[確認と作成]** を選択してポリシーの割り当てを確認し、 **[作成]** を選択して作成します。
+
+結果のポリシーの割り当ては定期的に実行されます。また、作成された直後には実行されない場合があります。
 
 ## <a name="see-also"></a>関連項目
 - [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)

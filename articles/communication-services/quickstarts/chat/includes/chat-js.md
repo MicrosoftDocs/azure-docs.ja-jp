@@ -6,16 +6,16 @@ author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 9/1/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 18282bbe902599c471775a853704e459ea44bac1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9f62f262e1baa70982e667379a9bf4357197ecb4
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661638"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495472"
 ---
 ## <a name="prerequisites"></a>前提条件
 開始する前に、必ず次のことを行ってください。
@@ -140,22 +140,22 @@ JavaScript 用 Azure Communication Services チャット クライアント ラ�
 - このチャットにトピックを指定するには、`topic` を使用します。 チャット スレッドの作成後に、`UpdateThread` 関数を使用してトピックを更新することができます。
 - チャット スレッドに追加する参加者をリストアップするには、`participants` を使用します。
 
-解決されると、`createChatThread` メソッドから `CreateChatThreadResponse` が返されます。 このモデルには `chatThread` プロパティが含まれており、そこから、新しく作成されたスレッドの `id` にアクセスすることができます。 その後、`id` を使用して `ChatThreadClient` のインスタンスを取得できます。 さらに、`ChatThreadClient` を使用すると、メッセージの送信や参加者の一覧表示など、スレッド内で操作を実行できます。
+解決されると、`createChatThread` メソッドから `CreateChatThreadResult` が返されます。 このモデルには `chatThread` プロパティが含まれており、そこから、新しく作成されたスレッドの `id` にアクセスすることができます。 その後、`id` を使用して `ChatThreadClient` のインスタンスを取得できます。 さらに、`ChatThreadClient` を使用すると、メッセージの送信や参加者の一覧表示など、スレッド内で操作を実行できます。
 
 ```JavaScript
 async function createChatThread() {
     let createThreadRequest = {
         topic: 'Preparation for London conference',
         participants: [{
-                    user: { communicationUserId: '<USER_ID_FOR_JACK>' },
+                    id: { communicationUserId: '<USER_ID_FOR_JACK>' },
                     displayName: 'Jack'
                 }, {
-                    user: { communicationUserId: '<USER_ID_FOR_GEETA>' },
+                    id: { communicationUserId: '<USER_ID_FOR_GEETA>' },
                     displayName: 'Geeta'
                 }]
     };
-    let createThreadResponse = await chatClient.createChatThread(createThreadRequest);
-    let threadId = createThreadResponse.chatThread.id;
+    let createChatThreadResult = await chatClient.createChatThread(createThreadRequest);
+    let threadId = createChatThreadResult.chatThread.id;
     return threadId;
     }
 
@@ -184,7 +184,7 @@ Thread created: <thread_id>
 `getChatThreadClient` メソッドは、既に存在するスレッドの `chatThreadClient` を返します。 これは、作成したスレッドに対し、参加者の追加、メッセージの送信などの操作を実行する場合に使用できます。threadId は、既存のチャット スレッドの一意の ID です。
 
 ```JavaScript
-let chatThreadClient = await chatClient.getChatThreadClient(threadId);
+let chatThreadClient = chatClient.getChatThreadClient(threadId);
 console.log(`Chat Thread client for threadId:${threadId}`);
 
 ```
@@ -195,35 +195,33 @@ Chat Thread client for threadId: <threadId>
 
 ## <a name="send-a-message-to-a-chat-thread"></a>チャット スレッドにメッセージを送信する
 
-作成したスレッド (threadId で識別されます) にチャット メッセージを送信するには、`sendMessage` メソッドを使用します。
+threadId で識別されるスレッドにメッセージを送信するには、`sendMessage` メソッドを使用します。
 
-`sendMessageRequest` は、チャット メッセージ要求の必須フィールドを表します。
+メッセージ要求は、`sendMessageRequest` を使用して記述します。
 
 - チャット メッセージの内容は、`content` を使用して設定します。
 
-`sendMessageOptions` は、チャット メッセージ要求の省略可能なフィールドを表します。
+操作の省略可能なパラメーターを記述するには、`sendMessageOptions` を使用します。
 
-- "Normal (標準)" や "High (高)" など、チャット メッセージの優先度を指定するには `priority` を使用します。 このプロパティを使用して、自分のアプリ内の受信ユーザーにメッセージへの注意を促す UI インジケーターを表示したり、カスタム ビジネス ロジックを実行したりすることができます。
 - 送信者の表示名を指定するには、`senderDisplayName` を使用します。
+- 'text' や 'html' などのメッセージの種類を指定するには、`type` を使用します。
 
-応答である `sendChatMessageResult` には、ID (そのメッセージの一意の ID) が含まれています。
+`SendChatMessageResult` は、メッセージの送信から返された応答です。ここには ID (メッセージの一意の ID) が含まれています。
 
 ```JavaScript
-
 let sendMessageRequest =
 {
     content: 'Hello Geeta! Can you share the deck for the conference?'
 };
 let sendMessageOptions =
 {
-    priority: 'Normal',
-    senderDisplayName : 'Jack'
+    senderDisplayName : 'Jack',
+    type: 'text'
 };
 let sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
 let messageId = sendChatMessageResult.id;
-console.log(`Message sent!, message id:${messageId}`);
-
 ```
+
 **client.js** の `<SEND MESSAGE TO A CHAT THREAD>` コメントをこのコードで置き換え、ブラウザー タブを最新の情報に更新してコンソールを確認します。
 ```console
 Message sent!, message id:<number>
@@ -286,7 +284,7 @@ let nextMessage = await pagedAsyncIterableIterator.next();
 `addParticipants` メソッドを呼び出す前に必ず、そのユーザーの新しいアクセス トークンと ID を取得しておいてください。 チャット クライアントを初期化するためには、ユーザーにアクセス トークンが必要となります。
 
 `addParticipantsRequest` は要求オブジェクトを表します。その中では、チャット スレッドに追加する参加者が `participants` を使用してリストアップされます。
-- `user` (必須) は、チャット スレッドに追加するコミュニケーション ユーザーです。
+- `id` (必須) は、チャット スレッドに追加するコミュニケーション識別子です。
 - `displayName` (省略可) は、スレッド参加者の表示名です。
 - `shareHistoryTime` (省略可) は、参加者との間でチャット履歴が共有される際の起点となる時刻です。 チャット スレッドの始めから履歴を共有する場合は、スレッドの作成日時と同じかそれ以前の任意の日付にこのプロパティを設定してください。 参加者が追加された時点よりも前の履歴は共有しない場合は、現在の日付に設定します。 履歴を部分的に共有するには、目的の日付に設定します。
 
@@ -296,7 +294,7 @@ let addParticipantsRequest =
 {
     participants: [
         {
-            user: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
+            id: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
             displayName: 'Jane'
         }
     ]

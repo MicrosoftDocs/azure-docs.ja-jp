@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28d58c476a805b672a6ec8b4d8ec465eba17e559
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 35d2bf33b4a22c14abfb61a87a3697b05188ed31
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169683"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579095"
 ---
 # <a name="building-a-conditional-access-policy"></a>条件付きアクセス ポリシーの構築
 
@@ -106,6 +106,8 @@ ms.locfileid: "96169683"
 - ハイブリッド Azure AD 参加済みのデバイスを必要とする
 - 承認済みクライアント アプリを必須にする
 - アプリの保護ポリシーを必須にする
+- パスワードの変更を必須とする
+- 利用規約が必須
 
 管理者は、次のオプションを使用して、前のコントロールのいずれか、または選択したすべてのコントロールを必要とすることを選択できます。 複数のコントロールの場合の既定値は、すべて必要です。
 

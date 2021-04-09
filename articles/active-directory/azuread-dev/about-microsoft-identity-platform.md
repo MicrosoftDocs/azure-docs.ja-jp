@@ -14,10 +14,10 @@ ms.reviewer: agirling, saeeda, benv, marsma
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: ab0057f55ddb5bf76f6fa74b0211b5ea5af24288
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96608216"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft ID プラットフォームの進化

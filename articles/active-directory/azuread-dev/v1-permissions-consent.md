@@ -15,10 +15,10 @@ ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 2b85115d905cb6a7eb7c6aed64a4834425d2f1d7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92366396"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 エンドポイントでのアクセス許可と同意
@@ -27,7 +27,7 @@ ms.locfileid: "92366396"
 
 Azure Active Directory (Azure AD) では、OAuth フローと OpenID Connect (OIDC) フローの両方でアクセス許可を広く利用します。 アプリが Azure AD から受け取るアクセス トークンには、特定のリソースに関してアプリに付与されたアクセス許可を示す要求が含まれています。
 
-" *スコープ* " とも呼ばれる " *アクセス許可* " を使用すると、リソースに対する承認が容易になります。リソースはアプリが呼び出すどの API に対しても適切なアクセス許可がトークンに含まれていることを確認するだけで済むためです。
+"*スコープ*" とも呼ばれる "*アクセス許可*" を使用すると、リソースに対する承認が容易になります。リソースはアプリが呼び出すどの API に対しても適切なアクセス許可がトークンに含まれていることを確認するだけで済むためです。
 
 ## <a name="types-of-permissions"></a>アクセス許可の種類
 
@@ -72,7 +72,7 @@ Azure AD のアクセス許可には、ユーザー、管理者、またはア�
 
 Azure AD のアプリケーションでは、必要なリソースや API へのアクセス権を取得するために同意を利用します。 成功を収めるために、アプリが認識しておく必要があると考えられる多くの種類の同意があります。 アクセス許可を定義する場合は、ユーザーがアプリや API へのアクセス権を取得する方法も理解しておく必要があります。
 
-* **静的なユーザーの同意** - アプリが対話する必要があるリソースを指定すると、 [OAuth 2.0 認可フロー](v1-protocols-oauth-code.md#request-an-authorization-code)で自動的に発生します。 静的なユーザーの同意シナリオでは、Azure portal のアプリの構成で、アプリに必要なすべてのアクセス許可が既に指定されている必要があります。 ユーザー (または、必要に応じて管理者) がこのアプリに同意していなかった場合、Azure AD によって、現時点でユーザーに同意を求めるメッセージが表示されます。 
+* **静的なユーザーの同意** - アプリが対話する必要があるリソースを指定すると、[OAuth 2.0 認可フロー](v1-protocols-oauth-code.md#request-an-authorization-code)で自動的に発生します。 静的なユーザーの同意シナリオでは、Azure portal のアプリの構成で、アプリに必要なすべてのアクセス許可が既に指定されている必要があります。 ユーザー (または、必要に応じて管理者) がこのアプリに同意していなかった場合、Azure AD によって、現時点でユーザーに同意を求めるメッセージが表示されます。 
 
     API の静的セットへのアクセスを要求する Azure AD アプリの登録の詳細をご覧ください。
 * **動的なユーザーの同意** - v2 Azure AD アプリ モデルの機能です。 このシナリオでは、アプリは、[v2 アプリの OAuth 2.0 認可フロー](../develop/v2-permissions-and-consent.md#requesting-individual-user-consent)で必要な一連のアクセス許可を要求します。 ユーザーがまだ同意していなかった場合、現時点で同意を求められます。 動的な同意の詳細については、[こちら](./azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)をご覧ください。

@@ -8,10 +8,10 @@ ms.date: 01/27/2021
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 6bb608492327baae958c32be05d8f2a1bb4dbfbf
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99226643"
 ---
 # <a name="understand-azure-files-billing"></a>Azure Files の課金について

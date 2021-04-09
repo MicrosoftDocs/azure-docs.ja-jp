@@ -11,10 +11,10 @@ author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
 ms.openlocfilehash: dc1954c97da0d7f40deaf0f4efa7ca99793107bb
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102503693"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念

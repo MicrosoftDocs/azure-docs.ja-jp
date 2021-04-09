@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: duau
 ms.openlocfilehash: 8ee7f42a4b05def7c2239c7a1e5bcef54f6f7e50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89395776"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>ExpressRoute Direct ポートで MACsec を構成する
@@ -38,7 +38,7 @@ ms.locfileid: "89395776"
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
 
-## <a name="1-create-azure-key-vault-macsec-secrets-and-user-identity"></a>1.Azure Key Vault、MACsec シークレット、ユーザー ID を作成する
+## <a name="1-create-azure-key-vault-macsec-secrets-and-user-identity"></a>1. Azure Key Vault、MACsec シークレット、ユーザー ID を作成する
 
 1. MACsec シークレットを新しいリソース グループに格納する目的で Key Vault インスタンスを作成します。
 
@@ -85,7 +85,7 @@ ms.locfileid: "89395776"
     $erIdentity = New-AzExpressRoutePortIdentity -UserAssignedIdentityId $identity.Id
     ```
  
-## <a name="2-configure-macsec-on-expressroute-direct-ports"></a>2.ExpressRoute Direct ポートで MACsec を構成する
+## <a name="2-configure-macsec-on-expressroute-direct-ports"></a>2. ExpressRoute Direct ポートで MACsec を構成する
 
 ### <a name="to-enable-macsec"></a>MACsec を有効にするには
 

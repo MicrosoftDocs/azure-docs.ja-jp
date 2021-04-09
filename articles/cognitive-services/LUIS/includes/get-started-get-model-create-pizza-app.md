@@ -12,10 +12,10 @@ ms.custom: include file
 ms.author: aahi
 ms.reviewer: roy-har
 ms.openlocfilehash: a021b7c5b26e1bca1e3f623ad762c2f3ee8d6020
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97820621"
 ---
 pizza アプリを作成します。

@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
 ms.openlocfilehash: b0f8c5806ba22708db6dc537d391c1f1b1a183ec
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92543816"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>Azure Database for MySQL 単一サーバー
@@ -80,7 +80,7 @@ Azure Database for MySQL のセキュリティ機能の詳細については、[
 このサービスでは、MySQL のコミュニティ バージョンが実行されます。 これにより、アプリケーションの完全な互換性が確保され、MySQL エンジン上で開発された既存のアプリケーションを単一サーバー サービスに移行するために必要なリファクタリング コストが最小限に抑えられます。 単一サーバーへの移行は、次のいずれかのオプションを使用して実行できます。
 
 - **ダンプと復元** – ユーザーがダウンタイムを許容できるオフライン移行では、mysqldump や mydumper などのコミュニティ ツールを使用してダンプと復元を行うことで、最も迅速に移行することができます。 詳細については、[ダンプと復元を使用した移行](concepts-migrate-dump-restore.md)に関する記事を参照してください。 
-- **Azure Database Migration Service** – 最小限のダウンタイムで単一サーバーへのシームレスで簡素化された移行を行うには、 [Azure Database Migration Service](../dms/tutorial-mysql-azure-mysql-online.md) を利用できます。 
+- **Azure Database Migration Service** – 最小限のダウンタイムで単一サーバーへのシームレスで簡素化された移行を行うには、[Azure Database Migration Service](../dms/tutorial-mysql-azure-mysql-online.md) を利用できます。 
 - **データイン レプリケーション** – 移行のダウンタイムを最小限にするために、binlog ベースのレプリケーションに依存するデータイン レプリケーションを利用することもできます。 データイン レプリケーションは、移行をより細かく制御する必要がある現場のエキスパートが、最小限のダウンタイムで移行を行う場合に適しています。 詳細については、[データイン レプリケーション](concepts-data-in-replication.md)に関する記事をご覧ください。
 
 ## <a name="contacts"></a>連絡先

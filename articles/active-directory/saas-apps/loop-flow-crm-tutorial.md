@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: jeedes
 ms.openlocfilehash: eccc10cc50bac2eb2dde0bf9f77ab1ba656d5eb8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92458366"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-loop-flow-crm"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Loop Flow CRM の統合
@@ -37,7 +37,7 @@ ms.locfileid: "92458366"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Loop Flow CRM では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Loop Flow CRM では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-loop-flow-crm-from-the-gallery"></a>ギャラリーから Loop Flow CRM を追加する
 
@@ -47,7 +47,7 @@ Azure AD への Loop Flow CRM の統合を構成するには、ギャラリー�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Loop Flow CRM** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Loop Flow CRM**」と入力します。
 1. 結果のパネルから **[Loop Flow CRM]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -116,7 +116,7 @@ Loop Flow CRM に対して Azure AD SSO を構成してテストするには、�
 
 ## <a name="configure-loop-flow-crm-sso"></a>Loop Flow CRM の SSO の構成
 
-**Loop Flow CRM** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Loop Flow CRM サポート チーム](mailto:support@loopworks.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Loop Flow CRM** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Loop Flow CRM サポート チーム](mailto:support@loopworks.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-loop-flow-crm-test-user"></a>Loop Flow CRM テスト ユーザーの作成
 

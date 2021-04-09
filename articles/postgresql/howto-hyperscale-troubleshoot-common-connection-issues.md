@@ -9,10 +9,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 10/8/2019
 ms.openlocfilehash: e1c6825820ae943d10157279dfe93922a7521b75
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91295619"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) への接続に関する問題のトラブルシューティング

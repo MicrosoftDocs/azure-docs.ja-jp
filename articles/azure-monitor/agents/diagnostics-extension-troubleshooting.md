@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
 ms.openlocfilehash: 431b19595fbe2f5bc1f989e712c9c104af8e839b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101711520"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Diagnostics のトラブルシューティング

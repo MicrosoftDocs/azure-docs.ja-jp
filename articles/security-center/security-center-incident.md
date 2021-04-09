@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 06/15/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 2b5dc30de19704b5e8950515cfa6224b4bbdbaf0
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 722a508679c74f9d62df07575ffa1006528f4398
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341348"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652108"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Azure Security Center でのセキュリティ インシデントの管理
 
@@ -29,11 +29,19 @@ Security Center でのセキュリティ インシデントとは、 [キル チ
 
 ## <a name="managing-security-incidents"></a>セキュリティ インシデントの管理
 
-1. Security Center の概要ページで、 **[セキュリティ アラート]** タイルを選択します。 インシデントとアラートが一覧表示されます。 セキュリティ インシデントには、セキュリティ アラートとは異なるアイコンが付いています。
+1. Security Center のアラート ページで、 **[フィルターの追加]** ボタンを使用してアラート名によってフィルター処理し、アラート名 **[複数のリソースでセキュリティ インシデントが検出されました]** に絞り込みます。 
 
-    ![セキュリティ インシデントの表示](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
+    :::image type="content" source="media/security-center-incident/locating-incidents.png" alt-text="Azure Security Center のアラート ページでインシデントを特定する":::
 
-1. 詳細を表示するには、インシデントを選択します。 **[セキュリティ インシデント]** ページに詳細が表示されます。 
+    一覧がフィルター処理され、インシデントのみが表示されるようになりました。 セキュリティ インシデントには、セキュリティ アラートとは異なるアイコンが付いています。
+
+    :::image type="content" source="media/security-center-incident/incidents-list.png" alt-text="Azure Security Center のアラート ページのインシデント一覧":::
+
+1. インシデントの詳細を表示するには、一覧から 1 つを選択します。 サイド ペインに、インシデントの詳細が表示されます。
+
+    :::image type="content" source="media/security-center-incident/incident-quick-peek.png" alt-text="インシデントの詳細を示すサイド ペイン":::
+
+1. 詳細を表示するには、 **[すべての詳細を表示]** を選択します。
 
     [![Azure Security Center でのセキュリティ インシデントへの対応](media/security-center-incident/incident-details.png)](media/security-center-incident/incident-details.png#lightbox)
 

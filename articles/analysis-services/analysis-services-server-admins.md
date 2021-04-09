@@ -8,10 +8,10 @@ ms.date: 2/4/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 62acb526a247362b17c4dfd4e26c52760deecd71
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99573502"
 ---
 # <a name="manage-server-administrators"></a>サーバー管理者の管理

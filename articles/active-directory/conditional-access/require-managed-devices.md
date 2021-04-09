@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c11b58954eefda67f981d618b04ab2bd69fa6b43
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93077763"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する
@@ -26,11 +26,11 @@ ms.locfileid: "93077763"
 
 ## <a name="prerequisites"></a>前提条件
 
-クラウド アプリへのアクセスにマネージド デバイスを要求すると、 **Azure AD の条件付きアクセス** と **Azure AD のデバイス管理** が連携します。 これらの領域を十分に理解してない場合は、次のトピックを先に読んでおく必要があります。
+クラウド アプリへのアクセスにマネージド デバイスを要求すると、**Azure AD の条件付きアクセス** と **Azure AD のデバイス管理** が連携します。 これらの領域を十分に理解してない場合は、次のトピックを先に読んでおく必要があります。
 
 - **[Azure Active Directory の条件付きアクセス](./overview.md)** - この記事は、条件付きアクセスと関連する用語の概念的な概要を説明しています。
 - **[Azure Active Directory のデバイス管理の概要](../devices/overview.md)** - この記事は、組織の管理下にあるデバイスを取得する際に使用できるさまざまなオプションの概要を説明しています。 
-- **Windows 10 Creators Update (バージョン 1703)** 以降で Chrome をサポートするには、 [Windows 10 Accounts 拡張機能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)をインストールしてください。 条件付きアクセス ポリシーでデバイス固有の詳細が必要な場合は、この拡張機能が必要です。
+- **Windows 10 Creators Update (バージョン 1703)** 以降で Chrome をサポートするには、[Windows 10 Accounts 拡張機能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)をインストールしてください。 条件付きアクセス ポリシーでデバイス固有の詳細が必要な場合は、この拡張機能が必要です。
 
 >[!NOTE] 
 > Azure AD デバイスベースの条件付きアクセス ポリシーを使用して、最初のデバイス認証後に最適な実施を行うことをお勧めします。 これには、デバイスが準拠していない場合のセッションの終了とデバイス コード フローが含まれます。
@@ -48,7 +48,7 @@ Azure AD 条件付きアクセスを使用すると、アクセス許可を付�
 
 ## <a name="managed-devices"></a>マネージド デバイス  
 
-簡単に言えば、マネージド デバイスとは、 *何らかの* 組織的な管理下に置かれたデバイスのことです。 Azure AD では、マネージド デバイスの前提条件は、デバイスが Azure AD に登録されていることです。 デバイスを登録すると、デバイスの ID がデバイス オブジェクトの形式で作成されます。 このオブジェクトは、デバイスに関する状態情報を追跡するために Azure によって使用されます。 Azure AD 管理者は既に、このオブジェクトを使用してデバイスの状態を切り替える (有効化/無効化する) ことができます。
+簡単に言えば、マネージド デバイスとは、*何らかの* 組織的な管理下に置かれたデバイスのことです。 Azure AD では、マネージド デバイスの前提条件は、デバイスが Azure AD に登録されていることです。 デバイスを登録すると、デバイスの ID がデバイス オブジェクトの形式で作成されます。 このオブジェクトは、デバイスに関する状態情報を追跡するために Azure によって使用されます。 Azure AD 管理者は既に、このオブジェクトを使用してデバイスの状態を切り替える (有効化/無効化する) ことができます。
   
 :::image type="content" source="./media/require-managed-devices/32.png" alt-text="Azure A D の [デバイス] ウィンドウのスクリーンショット。項目の [有効化] と [無効化] が強調表示されています。" border="false":::
 
@@ -60,7 +60,7 @@ Azure AD に登録されているデバイスを取得するには、次の 3 �
 
 これらの 3 つのオプションについては、「[デバイス ID とは](../devices/overview.md)」という記事で説明されています。
 
-マネージド デバイスになることができる登録済みデバイスは、 **ハイブリッド Azure AD 参加済みデバイス** または **準拠とマークされたデバイス** である必要があります。  
+マネージド デバイスになることができる登録済みデバイスは、**ハイブリッド Azure AD 参加済みデバイス** または **準拠とマークされたデバイス** である必要があります。  
 
 :::image type="content" source="./media/require-managed-devices/47.png" alt-text="Azure A D の [許可] ウィンドウのスクリーンショット。[アクセス権の付与] と、デバイスが準拠しており、ハイブリッド Azure A D 参加済みであることを要求するチェック ボックスが選択されています。" border="false":::
  
@@ -74,7 +74,7 @@ Azure AD に登録されているデバイスを取得するには、次の 3 �
 
 :::image type="content" source="./media/require-managed-devices/45.png" alt-text="デバイスの名前、有効な状態、O S、バージョン、参加の種類、所有者、M D M、準拠状態が一覧表示されている表。準拠状態は [いいえ] です。" border="false":::
 
-ハイブリッド Azure AD 参加済みデバイスをマネージド デバイスにする条件は何でしょうか?  オンプレミス AD に参加しているデバイスの場合、これらのデバイスに対する統制は、 **Configuration Manager** などの管理ソリューションや、それらを管理するための **グループ ポリシー (GP)** を使用して適用されると想定されます。 これらの方法のいずれかがデバイスに適用されているかどうか Azure AD で判断する方法がないため、ハイブリッド Azure AD 参加済みデバイスを要求することは、マネージド デバイスを要求するための比較的弱いメカニズムです。 当該デバイスがハイブリッド Azure AD 参加済みデバイスでもある場合、オンプレミスのドメイン参加済みデバイスに適用されている方法がマネージド デバイスを構成するために十分に強いかどうかを判断することは管理者の責任です。
+ハイブリッド Azure AD 参加済みデバイスをマネージド デバイスにする条件は何でしょうか?  オンプレミス AD に参加しているデバイスの場合、これらのデバイスに対する統制は、**Configuration Manager** などの管理ソリューションや、それらを管理するための **グループ ポリシー (GP)** を使用して適用されると想定されます。 これらの方法のいずれかがデバイスに適用されているかどうか Azure AD で判断する方法がないため、ハイブリッド Azure AD 参加済みデバイスを要求することは、マネージド デバイスを要求するための比較的弱いメカニズムです。 当該デバイスがハイブリッド Azure AD 参加済みデバイスでもある場合、オンプレミスのドメイン参加済みデバイスに適用されている方法がマネージド デバイスを構成するために十分に強いかどうかを判断することは管理者の責任です。
 
 ## <a name="require-device-to-be-marked-as-compliant"></a>デバイスは準拠としてマーク済みである必要がある
 

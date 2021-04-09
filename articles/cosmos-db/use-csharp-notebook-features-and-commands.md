@@ -9,10 +9,10 @@ ms.date: 05/19/2020
 ms.author: dech
 ms.custom: devx-track-python, devx-track-csharp
 ms.openlocfilehash: 67fe71d8e2d6ab239989cb30e9bf5a1b4d731037
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93340481"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Azure Cosmos DB の C# ノートブックで組み込みのノートブック コマンドと機能を使用する (プレビュー)
@@ -115,7 +115,7 @@ for (int i = 0; i < 5; i++) {
 ## <a name="use-built-in-nteract-data-explorer"></a>組み込みの nteract データ エクスプローラーを使用する
 組み込みの [nteract データ エクスプローラー](https://blog.nteract.io/designing-the-nteract-data-explorer-f4476d53f897)を使用すると、項目のコレクションをフィルター処理したり視覚化したりできます。 セルで、視覚化する変数を最後の行に配置します。すると、セルを実行するときに、その変数が nteract に自動的に表示されます。
 
-たとえば、 *GetingStarted_Csharp.ipynb* の例では、変数 ``telemetryEvents`` を結果と共に出力できます。 サンプル全体については、[ノートブックの GettingStarted_Csharp.ipynb](https://github.com/Azure-Samples/cosmos-notebooks/blob/master/CSharp_quickstarts/GettingStarted_CSharp.ipynb) を参照してください。 
+たとえば、*GetingStarted_Csharp.ipynb* の例では、変数 ``telemetryEvents`` を結果と共に出力できます。 サンプル全体については、[ノートブックの GettingStarted_Csharp.ipynb](https://github.com/Azure-Samples/cosmos-notebooks/blob/master/CSharp_quickstarts/GettingStarted_CSharp.ipynb) を参照してください。 
 
 :::image type="content" source="media/use-notebook-features-and-commands/csharp-query-cell.png" alt-text="Csharp のクエリ セル":::
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
-ms.openlocfilehash: d2054058bb00b0801aa1c3694c73b6a2edb46c80
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 224ebae58a5688f81d1b64b4a9c81d5abd8a9690
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98930031"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868853"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Apache Spark MLlib を使用して Machine Learning アプリケーションを構築し、データセットを分析する
 
@@ -175,7 +175,7 @@ Spark コンテキストを使用し、未加工の CSV データを非構造化
 
     出力は次のようになります。
 
-    ![SQL クエリの出力](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL クエリ出力")
+    :::image type="content" source="./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png " alt-text="SQL クエリの出力" border="true":::
 
 3. データの視覚効果の構築に使用するライブラリ、Matplotlib を使用して、プロットを作成することもできます。 プロットはローカルに保存された **countResultsdf** データフレームから作成する必要があるため、コード スニペットは `%%local` マジックで始める必要があります。 このアクションにより、コードは Jupyter サーバーでローカルに実行されます。
 
@@ -348,7 +348,7 @@ model = pipeline.fit(labeledData)
 
     次の出力が表示されます。
 
-    ![Spark 機械学習アプリケーションの出力 - 不合格の食品検査の割合を示す円グラフ。](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Spark 機械学習の結果の出力")
+    :::image type="content" source="./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png " alt-text="Spark 機械学習アプリケーションの出力 - 不合格の食品検査の割合を示す円グラフ。" border="true":::
 
     このグラフでは、「positive」の結果は食品検査の不合格を指し、「negative」の結果は、食品検査の合格を指します。
 

@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: a177b22f0f91d82013956bff36eaa57a084c27d1
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 65eb4e8fefb74219c927fe507baceca7c55462be
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576584"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101095716"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio を使用した Azure App Service のアプリのトラブルシューティング
 ## <a name="overview"></a>概要
@@ -49,7 +49,7 @@ Visual Studio は、[Azure portal](https://go.microsoft.com/fwlink/?LinkId=52971
    >
    >
 
-    Visual Studio から Azure リソースへの接続の詳細については、「[アカウント、サブスクリプション、管理ロールの管理](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    Visual Studio から Azure リソースへの接続の詳細については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 2. **サーバー エクスプローラー** で **[Azure]** を展開し、 **[App Service]** を展開します。
 3. [Azure App Service での ASP.NET Web アプリの作成](quickstart-dotnet-framework.md)に関するページで作成したアプリを含むリソース グループを展開し、アプリ ノードを右クリックして、 **[設定の表示]** をクリックします。
 
@@ -182,7 +182,7 @@ Web.config ファイルの編集は、App Service アプリにあるファイル
 
 4. **ソリューション エクスプローラー** で Web プロジェクト (Web ジョブ プロジェクトではない) を右クリックし、 **[発行]** をクリックします。
 
-5. **[プロファイル]** ボックスの一覧から、「[Azure Web ジョブ SDK の使用](https://github.com/Azure/azure-webjobs-sdk/wiki)」で使用したものと同じプロファイルを選択します。
+5. **[プロファイル]** ボックスの一覧から、「 [Azure Web ジョブ SDK の使用](https://github.com/Azure/azure-webjobs-sdk/wiki)」で使用したものと同じプロファイルを選択します。
 
 6. **[設定]** タブをクリックして **[構成]** を **[デバッグ]** に変更し、 **[発行]** をクリックします。
 
@@ -243,7 +243,7 @@ Web.config ファイルの編集は、App Service アプリにあるファイル
     ```
 * デバッグ対象となるコードにデバッガーがステップ インしない場合、[マイ コードのみ] の設定を変更してみてください。  詳しくは、「[Specify whether to debug only user code using Just My Code in Visual Studio (Visual Studio で [マイコードのみ] を使用してユーザー コードのみをデバッグするかどうかを指定する)](/visualstudio/debugger/just-my-code)」をご覧ください。
 * リモート デバッグ機能を有効にしたときに、サーバー上でタイマーが開始され、48 時間後にこの機能が自動的に無効になります。 この 48 時間の上限はセキュリティとパフォーマンス上の理由で設定されています。 必要に応じて、この機能を何回でも簡単に有効に戻すことができます。 積極的にデバッグを実行している場合以外は、この機能を無効にしたままにすることをお勧めします。
-* 手動でデバッガーをアプリ プロセス (w3wp.exe) だけでなく、任意のプロセスに接続できます。 Visual Studio のデバッグ モードの使い方の詳細については、MSDN のトピック「[Visual Studio でのデバッグ](/visualstudio/debugger/debugging-in-visual-studio)」を参照してください。
+* 手動でデバッガーをアプリ プロセス (w3wp.exe) だけでなく、任意のプロセスに接続できます。 Visual Studio のデバッグ モードの使い方の詳細については、MSDN のトピック「 [Visual Studio でのデバッグ](/visualstudio/debugger/debugging-in-visual-studio)」を参照してください。
 
 ## <a name="diagnostic-logs-overview"></a><a name="logsoverview"></a>診断ログの概要
 App Service アプリで実行される ASP.NET アプリケーションは、次の種類のログを作成できます。
@@ -268,7 +268,7 @@ App Service アプリで実行される ASP.NET アプリケーションは、�
 * プロジェクトをローカル実行したときのログを確認します。
 * Azure で実行中のアプリケーションによって生成されたログを確認します。
 
-Web ジョブでアプリケーション ログを作成する方法については、「[Web ジョブ SDK を使用して Azure Queue Storage を操作する方法 - ログの記述方法](https://github.com/Azure/azure-webjobs-sdk/wiki)」を参照してください。 ログの表示とログを Azure に格納する方法の制御に関する次の手順は、Web ジョブによって作成されたアプリケーション ログにも適用されます。
+Web ジョブでアプリケーション ログを作成する方法については、「 [Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法 - ログの記述方法](https://github.com/Azure/azure-webjobs-sdk/wiki)」を参照してください。 ログの表示とログを Azure に格納する方法の制御に関する次の手順は、Web ジョブによって作成されたアプリケーション ログにも適用されます。
 
 ### <a name="add-tracing-statements-to-the-application"></a>アプリケーションへのトレース ステートメントの追加
 1. `System.Diagnostics` の `Trace` ステートメントと `using` ステートメントを追加するために、*Controllers\HomeController.cs* を開き、`Index`、`About`、`Contact` のメソッドを次のコードで置き換えます。

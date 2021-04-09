@@ -8,10 +8,10 @@ ms.date: 06/04/2018
 ms.author: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4cb07d9d19d85cd8dff9a52eeeb7e173b60f4d6d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93080772"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>S1、S2、および S3 パフォーマンス レベルの提供の中止

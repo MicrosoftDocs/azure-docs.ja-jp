@@ -5,12 +5,12 @@ description: トラブルシューティングやメンテナンスのタスク�
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: 4cfac73c66969148927897de7ed6da0c56aa276a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 4b6ccc05d1cb49a77a2867dfc1c5fe5f45134dd6
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102173819"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951914"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために RDP を使用して Azure Kubernetes Service (AKS) クラスターの Windows Server ノードに接続する
 
@@ -20,7 +20,7 @@ Azure Kubernetes Service (AKS) クラスターのライフサイクル全体を�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、Windows Server ノードを含む AKS クラスターが既に存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して Windows コンテナーと共に AKS クラスターを作成する][aks-windows-cli]方法に関する記事を参照してください。 トラブルシューティングを行う Windows Server ノードに対して、Windows 管理者のユーザー名とパスワードが必要です。 これらがわからない場合は、「[Windows VM でリモート デスクトップ サービスまたはその管理者パスワードをリセットする](../virtual-machines/troubleshooting/reset-rdp.md)」に従ってリセットできます。 [Microsoft リモート デスクトップ][rdp-mac]などの RDP クライアントも必要です。
+この記事は、Windows Server ノードを含む AKS クラスターが既に存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して Windows コンテナーと共に AKS クラスターを作成する][aks-windows-cli]方法に関する記事を参照してください。 トラブルシューティングを行う Windows Server ノードに対して、Windows 管理者のユーザー名とパスワードが必要です。 これらがわからない場合は、「[Windows VM でリモート デスクトップ サービスまたはその管理者パスワードをリセットする](/troubleshoot/azure/virtual-machines/reset-rdp)」に従ってリセットできます。 [Microsoft リモート デスクトップ][rdp-mac]などの RDP クライアントも必要です。
 
 また、Azure CLI バージョン 2.0.61 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 

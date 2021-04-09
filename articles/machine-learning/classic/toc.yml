@@ -140,6 +140,20 @@
         - name: Gallery データ
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
+    - name: Azure Machine Learning への移行
+      items:
+        - name: 移行の概要
+          href: migrate-overview.md
+        - name: データセットの移行
+          href: migrate-register-dataset.md
+        - name: 実験のリビルド
+          href: migrate-rebuild-experiment.md
+        - name: Web サービスのリビルド
+          href: migrate-rebuild-web-service.md
+        - name: クライアント アプリケーションの移行
+          href: migrate-rebuild-integrate-with-client-app.md
+        - name: R スクリプトの実行モジュールのリビルド
+          href: migrate-execute-r-script.md
 - name: リファレンス
   items:
     - name: アルゴリズムとモジュールのリファレンス

@@ -4,15 +4,16 @@ description: コンフィデンシャル コンピューティングを自分の
 services: virtual-machines
 author: JBCook
 ms.service: virtual-machines
+ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: jencook
-ms.openlocfilehash: e1280ac90032869616830ccb931b367ff22f8bfb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 47938f3a44c3a47f8b444b59d7e2f0867a274f33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90998418"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102566619"
 ---
 # <a name="common-scenarios-for-azure-confidential-computing"></a>Azure のコンフィデンシャル コンピューティングの一般的なシナリオ
 

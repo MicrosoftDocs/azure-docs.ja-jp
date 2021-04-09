@@ -9,10 +9,10 @@ ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 9bc641d680d927c44814f6814ebf6a6dde958c9e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98901038"
 ---
 Azure Functions を使用すると、事前構築済みのエントリ ポイントを使用して、構成のみのレプリケーション タスクを作成できます。 [Azure Functions の構成ベース レプリケーションのサンプル](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config)では、独自のコードで[事前構築済みのヘルパー](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication)を活用したり、コード全体を処理せずに構成を使用したりする方法について説明しています。

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: twooley
 ms.openlocfilehash: 4ac2bbb21fd1a987d544a536d0f52628824e0bf4
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97723798"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 で PowerShell を使用するためのパフォーマンス チューニング ガイダンス
@@ -44,7 +44,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
 次の考慮事項は、パフォーマンスに関連するプロパティに指定する値を決める方法です。 使用できるガイダンスがいくつかあります。
 
-* **ステップ 1:合計スレッド数を決める** - まず、使用する合計スレッド数を計算します。 一般的なガイドラインとして、各物理コアに 6 個のスレッドを使用する必要があります。
+* **手順 1: 合計スレッド数を決める** - まず、使用する合計スレッド数を計算します。 一般的なガイドラインとして、各物理コアに 6 個のスレッドを使用する必要があります。
 
     `Total thread count = total physical cores * 6`
 
@@ -54,7 +54,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
     `Total thread count = 16 cores * 6 = 96 threads`
 
-* **手順 2:PerFileThreadCount を計算する** - ファイルのサイズに基づいて PerFileThreadCount を計算します。 2\.5 GB 未満のファイルの場合、既定値の 10 で十分なため、このパラメーターを変更する必要はありません。 2\.5 GB を超えるファイルの場合、最初の 2.5 GB に基準として 10 個のスレッドを使用し、ファイル サイズが 256 MB 増加するたびにスレッドを 1 つ追加する必要があります。 コピーするフォルダーにさまざまなファイル サイズが含まれている場合は、似たようなファイル サイズに分類することを検討してください。 異なるファイル サイズがあると、最適なパフォーマンスを得られない可能性があります。 似たようなファイル サイズをグループ化できない場合は、最も大きいファイル サイズに基づいて PerFileThreadCount を設定する必要があります。
+* **手順 2: PerFileThreadCount を計算する** - ファイルのサイズに基づいて PerFileThreadCount を計算します。 2.5 GB 未満のファイルの場合、既定値の 10 で十分なため、このパラメーターを変更する必要はありません。 2.5 GB を超えるファイルの場合、最初の 2.5 GB に基準として 10 個のスレッドを使用し、ファイル サイズが 256 MB 増加するたびにスレッドを 1 つ追加する必要があります。 コピーするフォルダーにさまざまなファイル サイズが含まれている場合は、似たようなファイル サイズに分類することを検討してください。 異なるファイル サイズがあると、最適なパフォーマンスを得られない可能性があります。 似たようなファイル サイズをグループ化できない場合は、最も大きいファイル サイズに基づいて PerFileThreadCount を設定する必要があります。
 
     `PerFileThreadCount = 10 threads for the first 2.5 GB + 1 thread for each additional 256 MB increase in file size`
 
@@ -64,7 +64,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
     `PerFileThreadCount = 10 + ((10 GB - 2.5 GB) / 256 MB) = 40 threads`
 
-* **ステップ 3:ConcurrentFilecount を計算する** - 合計スレッド数と PerFileThreadCount を使用して、次の式に基づいて ConcurrentFileCount を計算します。
+* **手順 3: ConcurrentFilecount を計算する** - 合計スレッド数と PerFileThreadCount を使用して、次の式に基づいて ConcurrentFileCount を計算します。
 
     `Total thread count = PerFileThreadCount * ConcurrentFileCount`
 
@@ -88,13 +88,13 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
 ### <a name="limitation"></a>制限事項
 
-* **ファイルの数が ConcurrentFileCount より少ない**:アップロードしているファイルの数が、計算した **ConcurrentFileCount** より小さい場合、ファイル数と等しくなるように **ConcurrentFileCount** を小さくする必要があります。 残りのスレッドすべてを使用して、**PerFileThreadCount** を大きくすることができます。
+* **ファイルの数が ConcurrentFileCount より少ない**: アップロードしているファイルの数が、計算した **ConcurrentFileCount** より小さい場合、ファイル数と等しくなるように **ConcurrentFileCount** を小さくする必要があります。 残りのスレッドすべてを使用して、**PerFileThreadCount** を大きくすることができます。
 
-* **スレッドが多すぎる**:クラスターのサイズを大きくせずにスレッド数を増やしすぎると、パフォーマンスの低下というリスクがあります。 CPU でのコンテキスト切り替え時に競合の問題が発生する可能性があります。
+* **スレッドが多すぎる**: クラスターのサイズを大きくせずにスレッド数を増やしすぎると、パフォーマンスの低下というリスクがあります。 CPU でのコンテキスト切り替え時に競合の問題が発生する可能性があります。
 
-* **コンカレンシーが不十分**:コンカレンシーが十分でない場合、クラスターが小さすぎる可能性があります。 クラスター内のノード数を増やすことで、コンカレンシーを増加させることができます。
+* **コンカレンシーが不十分**: コンカレンシーが十分でない場合、クラスターが小さすぎる可能性があります。 クラスター内のノード数を増やすことで、コンカレンシーを増加させることができます。
 
-* **調整エラー**:コンカレンシーがあまりに多くなると、調整エラーが表示される場合があります。 調整エラーが表示される場合は、コンカレンシーを減らすか、Microsoft にお問い合わせください。
+* **調整エラー**: コンカレンシーがあまりに多くなると、調整エラーが表示される場合があります。 調整エラーが表示される場合は、コンカレンシーを減らすか、Microsoft にお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 

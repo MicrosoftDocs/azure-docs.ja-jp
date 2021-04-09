@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 2b5e852e3a32c4fb40dbe7ebc50a00302b4b82b4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519099"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-yuhu-property-management-platform"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Yuhu Property Management Platform の統合
@@ -49,7 +49,7 @@ Azure AD への Yuhu Property Management Platform の統合を構成するには
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Yuhu Property Management Platform** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Yuhu Property Management Platform**」と入力します。
 1. 結果のパネルから **[Yuhu Property Management Platform]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-yuhu-property-management-platform"></a>Yuhu Property Management Platform の Azure AD シングル サインオンの構成とテスト

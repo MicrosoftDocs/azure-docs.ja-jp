@@ -9,10 +9,10 @@ ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
 ms.openlocfilehash: cfa5be01a0d36764086c6c9adf97e6cb166d2bb6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101728163"
 ---
 # <a name="configure-scaling-options-with-azure-cloud-services-extended-support"></a>Azure Cloud Services (延長サポート) でスケーリング オプションを構成する 

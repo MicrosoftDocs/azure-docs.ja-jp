@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: a13f78b6aa4fc3cb6f6777c76bc762ec565624fc
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: dce4c41d0d6f15ac9dc33e687c9a5ac7b7b96e06
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951317"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200780"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure VM で Azure Cognitive Search インデクサーから SQL Server への接続を構成する
 
@@ -39,13 +39,13 @@ Azure Cognitive Search には、パブリック インターネット接続経�
    * regedit で、レジストリ キー `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\[MSSQL13.MSSQLSERVER]\MSSQLServer\SuperSocketNetLib\Certificate` に移動します。
      
      `[MSSQL13.MSSQLSERVER]` の部分は、バージョンとインスタンス名によって異なります。 
-   * **証明書**キーの値を、VM にインポートした TLS/SSL 証明書の**拇印**に設定します。
+   * **証明書** キーの値を、VM にインポートした TLS/SSL 証明書の **拇印** に設定します。
      
      拇印を取得する方法は複数ありますが、いくつかの方法は他の方法よりも優れています。 MMC の **証明書** スナップインからコピーする場合は、 [このサポート記事で説明されているように](https://support.microsoft.com/kb/2023869/)非表示の先頭文字を含めてしまい、その結果、接続を試みたときにエラーが発生する可能性があります。 この問題を修正するための回避策はいくつかあります。 最も簡単な方法は、regedit のキー値フィールドで Backspace キーを押してから拇印の最初の文字を再入力して、先頭文字を削除することです。 また、別のツールを使用して拇印をコピーすることもできます。
 
 3. サービス アカウントにアクセス許可を付与します。 
    
-    SQL Server サービス アカウントに TLS/SSL 証明書の秘密キーに関する適切なアクセス許可が付与されていることを確認します。 この手順を見過ごすと、SQL Server は起動されません。 このタスクには**証明書**スナップインまたは **CertUtils** を使用できます。
+    SQL Server サービス アカウントに TLS/SSL 証明書の秘密キーに関する適切なアクセス許可が付与されていることを確認します。 この手順を見過ごすと、SQL Server は起動されません。 このタスクには **証明書** スナップインまたは **CertUtils** を使用できます。
     
 4. SQL Server サービスを再起動します。
 
@@ -75,18 +75,9 @@ IP アドレスの指定ではいくつかの課題が生じる可能性があ�
 #### <a name="restrict-access-to-the-azure-cognitive-search"></a>Azure Cognitive Search へのアクセスを制限する
 SQL Azure VM をすべての接続要求に開放するのではなく、ACL で Search サービスの IP アドレスと `AzureCognitiveSearch` [サービス タグ](../virtual-network/service-tags-overview.md#available-service-tags)の IP アドレス範囲へのアクセスを制限することを強くお勧めします。
 
-IP アドレスは、Search サービスの FQDN (`<your-search-service-name>.search.windows.net` など) に ping を実行することで確認できます。
+IP アドレスは、Search サービスの FQDN (`<your-search-service-name>.search.windows.net` など) に ping を実行することで確認できます。 Search サービスの IP アドレスを変更することはできますが、変更される可能性はほとんどありません。 この IP アドレスがサービスの有効期間中に変わることはほとんどありません。
 
 `AzureCognitiveSearch` [サービス タグ](../virtual-network/service-tags-overview.md#available-service-tags)の IP アドレス範囲を確認するには、[ダウンロード可能な JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)または [Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) を使用します。 IP アドレス範囲は毎週更新されます。
-
-#### <a name="managing-ip-address-fluctuations"></a>IP アドレスの変動の管理
-Search サービスに検索ユニットが 1 つ (1 つのレプリカと 1 つのパーティション) しかない場合は、日常的なサービスの再起動で IP アドレスが変更され、Search サービスの IP アドレスを含む既存の ACL が無効になることがあります。
-
-その後で生じる接続エラーを回避する方法の 1 つは、Azure Cognitive Search で複数のレプリカと 1 つのパーティションを使用することです。 それによってコストは増加しますが、IP アドレスの問題も解決します。 Azure Cognitive Search では、複数の検索ユニットがあるときには IP アドレスが変更されません。
-
-2 つめの方法は、接続を失敗させた後で NSG 内の ACL を再構成することです。 平均すると、IP アドレスは数週間おきに変更されると想定されます。 管理されたインデックス作成をめったに行わないお客様の場合は、この方法を実行できる可能性があります。
-
-3 つめの実行可能な (しかしあまり安全ではない) 方法は、Search サービスがプロビジョニングされている Azure リージョンの IP アドレス範囲を指定することです。 Azure リソースへのパブリック IP アドレスの割り当てに使用する IP アドレス範囲のリストは、「 [Azure データセンターの IP アドレス範囲](https://www.microsoft.com/download/details.aspx?id=41653)」で公開されています。 
 
 #### <a name="include-the-azure-cognitive-search-portal-ip-addresses"></a>Azure Cognitive Search ポータルの IP アドレスを含める
 Azure portal を使用してインデクサーを作成する場合は、作成時に、Azure Cognitive Search ポータル ロジックから SQL Azure VM にアクセスできることも必要です。 Azure Cognitive Search ポータルの IP アドレスは、 `stamp2.search.ext.azure.com` に ping を実行すると確認できます。

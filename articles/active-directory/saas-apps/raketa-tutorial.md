@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 649a26e474c7c4d6b4f51a035b3f8f9da35b9dd1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92511156"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-raketa"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Raketa の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Raketa では、 **SP** によって開始される SSO がサポートされます。
+* Raketa では、**SP** によって開始される SSO がサポートされます。
 * Raketa を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-raketa-from-the-gallery"></a>ギャラリーからの Raketa の追加
@@ -57,7 +57,7 @@ Azure AD への Raketa の統合を構成するには、ギャラリーから管
 
     ![rkt_2](./media/raketa-tutorial/new-app.png)
 
-1. **[ギャラリーから追加する]** (5) セクションで、検索ボックスに「 **Raketa** 」と入力します (6)。
+1. **[ギャラリーから追加する]** (5) セクションで、検索ボックスに「**Raketa**」と入力します (6)。
 
 1. 結果パネルから **Raketa** を選択し (7)、 **[追加]** ボタン (8) をクリックします。 
 

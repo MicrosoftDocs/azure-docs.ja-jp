@@ -10,10 +10,10 @@ ms.custom:
 - devx-track-js
 - devx-track-azurecli
 ms.openlocfilehash: 1c327fc7fc067948b5022f989e6c86f99573bd1a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93100186"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用してコンテナー インスタンスを Azure にデプロイする
@@ -34,7 +34,7 @@ ms.locfileid: "93100186"
 
 Azure のコンテナー インスタンスは、すべての Azure リソースと同様に、リソース グループにデプロイする必要があります。 リソース グループを使用すると、関連する Azure リソースを整理して管理できます。
 
-まず、次の [az group create][az-group-create] コマンドを使用して、 *myResourceGroup* という名前のリソース グループを *eastus* の場所に作成します。
+まず、次の [az group create][az-group-create] コマンドを使用して、*myResourceGroup* という名前のリソース グループを *eastus* の場所に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -136,7 +136,7 @@ az container list --resource-group myResourceGroup --output table
 
 **mycontainer** コンテナーは、コマンドの出力に表示されません。 リソース グループに別のコンテナーがない場合、出力は表示されません。
 
-*myResourceGroup* リソース グループとそこに含まれるすべてのリソースの処理が完了したら、 [az group delete][az-group-delete] コマンドを使用してそれを削除します。
+*myResourceGroup* リソース グループとそこに含まれるすべてのリソースの処理が完了したら、[az group delete][az-group-delete] コマンドを使用してそれを削除します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

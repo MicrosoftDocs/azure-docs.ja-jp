@@ -4,10 +4,10 @@ description: Visual Studio Code の Azure Functions 拡張機能を使用して 
 ms.topic: quickstart
 ms.date: 11/04/2020
 ms.openlocfilehash: 9833b154cdba24f8760e7e8d9040bfc72bbcd271
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99493595"
 ---
 # <a name="quickstart-create-a-powershell-function-in-azure-using-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して Azure で PowerShell 関数を作成する

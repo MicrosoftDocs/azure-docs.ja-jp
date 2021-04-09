@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 01/18/2019
 ms.author: cynthn
 ms.openlocfilehash: a93ab207960133ecbf5a68927c5d16a6daf94fd4
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102562216"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Azure Portal を使用して VHD から VM を作成する

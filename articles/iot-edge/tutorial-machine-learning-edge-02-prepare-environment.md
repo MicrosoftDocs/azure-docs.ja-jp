@@ -8,14 +8,16 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d86a273a69203a92a9b437f021486feb3bcb31da
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 723d7b6ae5b96cf6dc622be1b1bb98065151787f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932372"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103463155"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>チュートリアル:IoT Edge 上に機械学習用の環境を設定する
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 この記事は、開発およびデプロイ用の環境の準備に役立ちます。 最初に、必要なすべてのツールがインストールされた開発用マシンを設定します。 次に、必要なクラウド リソースを Azure に作成します。
 

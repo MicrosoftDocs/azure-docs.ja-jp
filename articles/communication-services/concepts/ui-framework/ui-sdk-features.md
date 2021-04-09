@@ -4,15 +4,15 @@ titleSuffix: An Azure Communication Services conceptual document
 description: UI フレームワークの機能について説明します
 author: ddematheu2
 ms.author: dademath
-ms.date: 11/16/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 51caf1e73cdeda5862e033a05878f35ddb6ff8dc
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 5b1aab8b38614249d6b502044b5c4c8170f46b3c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539750"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103492219"
 ---
 # <a name="ui-framework-capabilities"></a>UI フレームワークの機能
 
@@ -71,7 +71,7 @@ Azure Communication Services の UI フレームワークでは、一連の再�
 
 | コンポーネントの種類            | テーマ     | レイアウト                                                              | データ モデル |
 |---------------------------|------------|---------------------------------------------------------------------|-------------|
-| 複合コンポーネント       |     N/A    | N/A                                                                 |     N/A     |
+| 複合コンポーネント       |     N/A    | 該当なし                                                                 |     N/A     |
 | 基本コンポーネント            |     N/A    | コンポーネントのレイアウトは、外部のスタイルを使用して変更できます         |     N/A     |
 
 

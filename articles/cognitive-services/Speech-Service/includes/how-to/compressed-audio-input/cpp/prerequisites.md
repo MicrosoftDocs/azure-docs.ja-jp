@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
-ms.openlocfilehash: 10e7db521781c21b3fe5feda0880fee7e603afab
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d555322c0fd4067a4232e53387d811de7b50a8f5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128326"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103417717"
 ---
 圧縮オーディオの処理は、[GStreamer](https://gstreamer.freedesktop.org) を使用して実装されます。 ライセンスの理由から、Speech SDK では GStreamer バイナリはコンパイルおよびリンクされません。 開発者は、いくつかの依存関係とプラグインをインストールする必要があります。
 
@@ -37,10 +37,9 @@ gstreamer1-plugins-ugly-free
 ```
 
 > [!NOTE]
+> - RHEL/CentOS 7 と RHEL/CentOS 8 で圧縮形式として "ANY" を使用している場合、ストリーム メディア形式プラグインがインストールされている上記のプラグインに含まれていない場合は、より多くの gstreamer プラグインをインストールする必要があります。 
 > - RHEL または CentOS 7 の場合、「[Speech SDK 用に RHEL/CentOS 7 を構成する](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md)」の手順に従います。
 > - RHEL または CentOS 8 の場合、「[Linux 用 OpenSSL の構成](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)」の手順に従います。
 
-> [!IMPORTANT]
-> Opus オーディオ コーディング形式は RHEL/CentOS 7 の Speech SDK ではサポートされていません。
 
 ---

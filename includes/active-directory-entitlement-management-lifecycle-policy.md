@@ -9,10 +9,10 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
 ms.openlocfilehash: db13884e3deed8e990d21d82e215a1e837371275
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98052798"
 ---
 ## <a name="lifecycle"></a>ライフサイクル

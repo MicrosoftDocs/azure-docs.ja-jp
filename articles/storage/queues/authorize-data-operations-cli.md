@@ -12,10 +12,10 @@ ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 2f7092d8ce184d7021774814e96935e46d1ffb56
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100363170"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>Azure CLI でキュー データへのアクセスの承認方法を選択する
@@ -35,7 +35,7 @@ Azure Storage には、キューのデータに対する操作を承認する方
 `--auth-mode` パラメーターを使用するには、Azure CLI v2.0.46 以降がインストールされていることを確認してください。 `az --version` を実行し、インストールされたバージョンを確認します。
 
 > [!NOTE]
-> ストレージ アカウントが Azure Resource Manager の **ReadOnly** ロックでロックされている場合、そのストレージ アカウントに対して[キーの一覧表示](/rest/api/storagerp/storageaccounts/listkeys)操作は許可されません。 **キーの一覧表示** は POST 操作であり、アカウントに対して **ReadOnly** ロックが設定されている場合、すべての POST 操作が禁止されます。 このため、アカウントが **ReadOnly** ロックでロックされている場合、アカウント キーをまだ所有していないユーザーは、Azure AD 資格情報を使用してキュー データにアクセスする必要があります。
+> ストレージ アカウントが Azure Resource Manager の **ReadOnly** ロックでロックされている場合、そのストレージ アカウントに対して [キーの一覧表示](/rest/api/storagerp/storageaccounts/listkeys)操作は許可されません。 **キーの一覧表示** は POST 操作であり、アカウントに対して **ReadOnly** ロックが設定されている場合、すべての POST 操作が禁止されます。 このため、アカウントが **ReadOnly** ロックでロックされている場合、アカウント キーをまだ所有していないユーザーは、Azure AD 資格情報を使用してキュー データにアクセスする必要があります。
 
 > [!IMPORTANT]
 > `--auth-mode` パラメーターを省略した場合、または `key` に設定した場合、Azure CLI はアカウント アクセス キーを使用して承認を試みます。 この場合、コマンドまたは `AZURE_STORAGE_KEY` 環境変数のいずれかでアクセス キーを指定することをお勧めします。 環境変数の詳細については、「 [承認パラメーターの環境変数を設定する](#set-environment-variables-for-authorization-parameters)」セクションを参照してください。

@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.openlocfilehash: 56a8514fc2531ba0b18925427814e5bfef7d64bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84988102"
 ---
 # <a name="troubleshoot-an-azure-ad-authentication-vpn-client"></a>Azure AD 認証 VPN クライアントのトラブルシューティング
@@ -24,7 +24,7 @@ ms.locfileid: "84988102"
 
 ![logs](./media/troubleshoot-ad-vpn-client/1.png)
 
-1. クライアント ウィンドウの右下隅にある矢印アイコンをクリックすると、**状態ログ**が表示されます。
+1. クライアント ウィンドウの右下隅にある矢印アイコンをクリックすると、**状態ログ** が表示されます。
 2. 問題を示す可能性があるエラーについては、ログを確認してください。
 3. エラー メッセージが赤色で表示されます。
 
@@ -39,7 +39,7 @@ ms.locfileid: "84988102"
 3. 接続を試みます。
 4. 接続がまだ失敗する場合は、次のセクションに進みます。
 
-## <a name="run-diagnostics"></a><a name="diagnostics"></a>診断を実行する
+## <a name="run-diagnostics"></a><a name="diagnostics"></a>診断の実行
 
 VPN クライアントで診断を実行します。
 

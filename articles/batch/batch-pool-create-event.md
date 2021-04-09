@@ -4,10 +4,10 @@ description: プールが作成されると生成される Batch プール作成
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: f8b020401443b2a9e80837599d6fd4b2a3001d27
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97609005"
 ---
 # <a name="pool-create-event"></a>プール作成イベント

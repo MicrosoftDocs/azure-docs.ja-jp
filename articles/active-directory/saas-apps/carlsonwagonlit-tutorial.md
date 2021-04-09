@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.openlocfilehash: 86c2d9585abd546acb3efb22256d3f3b70bfb972
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97674397"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>チュートリアル: Azure Active Directory と Carlson Wagonlit Travel の統合
@@ -61,7 +61,7 @@ Azure AD への Carlson Wagonlit Travel の統合を構成するには、ギャ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Carlson Wagonlit Travel**」と入力し、結果ウィンドウで **Carlson Wagonlit Travel** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Carlson Wagonlit Travel**」と入力し、結果ウィンドウで **Carlson Wagonlit Travel** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Carlson Wagonlit Travel](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ Carlson Wagonlit Travel で Azure AD のシングル サインオンを構成し
 
 Carlson Wagonlit Travel で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Carlson Wagonlit Travel** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Carlson Wagonlit Travel** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -150,7 +150,7 @@ Carlson Wagonlit Travel で Azure AD シングル サインオンを構成する
 
 このセクションでは、Carlson Wagonlit Travel へのアクセスを許可することで、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Carlson Wagonlit Travel]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Carlson Wagonlit Travel]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

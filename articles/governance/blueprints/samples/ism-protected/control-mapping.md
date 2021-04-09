@@ -4,10 +4,10 @@ description: Australian Government ISM PROTECTED ブループリント サンプ
 ms.date: 01/21/2021
 ms.topic: sample
 ms.openlocfilehash: df143a871db3d871fe6354eab23b7ca6dc012b78
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98679999"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Australian Government ISM PROTECTED ブループリント サンプルのコントロール マッピング
@@ -144,8 +144,8 @@ ms.locfileid: "98679999"
 ### <a name="1144-security-vulnerabilities-in-applications-and-drivers-assessed-as-extreme-risk-are-patched-updated-or-mitigated-within-48-hours-of-the-security-vulnerabilities-being-identified-by-vendors-independent-third-parties-system-managers-or-users"></a>1144 アプリケーションおよびドライバーについて、きわめて高リスクと評価されたセキュリティ脆弱性には、ベンダー、独立したサード パーティ、システム管理者、またはユーザーがその脆弱性を特定してから 48 時間以内にパッチの適用、更新、軽減策が実施される
 
 - SQL データベースの脆弱性を修復する必要がある
-- 脆弱性評価を SQL Server 上で有効にする必要がある
-- 脆弱性評価を SQL Managed Instance 上で有効にする必要がある
+- 脆弱性評価を SQL サーバー上で有効にする必要がある
+- 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
 - マシンで脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
@@ -156,8 +156,8 @@ ms.locfileid: "98679999"
 ### <a name="0940-security-vulnerabilities-in-applications-and-drivers-assessed-as-high-risk-are-patched-updated-or-mitigated-within-two-weeks-of-the-security-vulnerability-being-identified-by-vendors-independent-third-parties-system-managers-or-users"></a>0940 アプリケーションおよびドライバーについて、高リスクと評価されたセキュリティ脆弱性には、ベンダー、独立したサード パーティ、システム管理者、またはユーザーがその脆弱性を特定してから 2 週間以内にパッチの適用、更新、軽減策が実施される
 
 - SQL データベースの脆弱性を修復する必要がある
-- 脆弱性評価を SQL Server 上で有効にする必要がある
-- 脆弱性評価を SQL Managed Instance 上で有効にする必要がある
+- 脆弱性評価を SQL サーバー上で有効にする必要がある
+- 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
 - Virtual Machines で脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
@@ -168,8 +168,8 @@ ms.locfileid: "98679999"
 ### <a name="1472-security-vulnerabilities-in-applications-and-drivers-assessed-as-moderate-or-low-risk-are-patched-updated-or-mitigated-within-one-month-of-the-security-vulnerability-being-identified-by-vendors-independent-third-parties-system-managers-or-users"></a>1472 アプリケーションおよびドライバーについて、リスクが中または低と評価されたセキュリティ脆弱性には、ベンダー、独立したサード パーティ、システム管理者、またはユーザーがその脆弱性を特定してから 1 か月以内にパッチの適用、更新、軽減策が実施される
 
 - SQL データベースの脆弱性を修復する必要がある
-- 脆弱性評価を SQL Server 上で有効にする必要がある
-- 脆弱性評価を SQL Managed Instance 上で有効にする必要がある
+- 脆弱性評価を SQL サーバー上で有効にする必要がある
+- 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
 - Virtual Machines で脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
@@ -180,8 +180,8 @@ ms.locfileid: "98679999"
 ### <a name="1494-security-vulnerabilities-in-operating-systems-and-firmware-assessed-as-extreme-risk-are-patched-updated-or-mitigated-within-48-hours-of-the-security-vulnerabilities-being-identified-by-vendors-independent-third-parties-system-managers-or-users"></a>1494 オペレーティング システムおよびファームウェアについて、きわめて高リスクと評価されたセキュリティ脆弱性には、ベンダー、独立したサード パーティ、システム管理者、またはユーザーがその脆弱性を特定してから 48 時間以内にパッチの適用、更新、軽減策が実施される
 
 - SQL データベースの脆弱性を修復する必要がある
-- 脆弱性評価を SQL Server 上で有効にする必要がある
-- 脆弱性評価を SQL Managed Instance 上で有効にする必要がある
+- 脆弱性評価を SQL サーバー上で有効にする必要がある
+- 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
 - Virtual Machines で脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
@@ -192,8 +192,8 @@ ms.locfileid: "98679999"
 ### <a name="1495-security-vulnerabilities-in-operating-systems-and-firmware-assessed-as-high-risk-are-patched-updated-or-mitigated-within-two-weeks-of-the-security-vulnerability-being-identified-by-vendors-independent-third-parties-system-managers-or-users"></a>1495 オペレーティング システムおよびファームウェアについて、高リスクと評価されたセキュリティ脆弱性には、ベンダー、独立したサード パーティ、システム管理者、またはユーザーがその脆弱性を特定してから 2 週間以内にパッチの適用、更新、軽減策が実施される
 
 - SQL データベースの脆弱性を修復する必要がある
-- 脆弱性評価を SQL Server 上で有効にする必要がある
-- 脆弱性評価を SQL Managed Instance 上で有効にする必要がある
+- 脆弱性評価を SQL サーバー上で有効にする必要がある
+- 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
 - Virtual Machines で脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
@@ -204,8 +204,8 @@ ms.locfileid: "98679999"
 ### <a name="1496-security-vulnerabilities-in-operating-systems-and-firmware-assessed-as-moderate-or-low-risk-are-patched-updated-or-mitigated-within-one-month-of-the-security-vulnerability-being-identified-by-vendors-independent-third-parties-system-managers-or-users"></a>1496 オペレーティング システムおよびファームウェアについて、リスクが中または低と評価されたセキュリティ脆弱性には、ベンダー、独立したサード パーティ、システム管理者、またはユーザーがその脆弱性を特定してから 1 か月以内にパッチの適用、更新、軽減策が実施される
 
 - SQL データベースの脆弱性を修復する必要がある
-- 脆弱性評価を SQL Server 上で有効にする必要がある
-- 脆弱性評価を SQL Managed Instance 上で有効にする必要がある
+- 脆弱性評価を SQL サーバー上で有効にする必要がある
+- 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
 - Virtual Machines で脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
@@ -234,7 +234,7 @@ ms.locfileid: "98679999"
 
 ### <a name="1537-the-following-events-are-logged-for-databases-access-to-particularly-important-information-addition-of-new-users-especially-privileged-users-any-query-containing-comments-any-query-containing-multiple-embedded-queries-any-query-or-database-alerts-or-failures-attempts-to-elevate-privileges-attempted-access-that-is-successful-or-unsuccessful-changes-to-the-database-structure-changes-to-user-roles-or-database-permissions-database-administrator-actions-database-logons-and-logoffs-modifications-to-data-use-of-executable-commands"></a>1537 データベースに関して、次のイベントがログに記録される (特に重要な情報へのアクセス、新しいユーザー (特に特権ユーザー) の追加、コメントを含むクエリ、複数の埋め込みクエリを含んだクエリ、クエリまたはデータベースのアラートまたはエラー、権限昇格の試み、成功または失敗したアクセスの試行、データベース構造に対する変更、ユーザー ロールまたはデータベース権限に対する変更、データベース管理者アクション、データベースのログオンとログオフ、データの変更、実行可能コマンドの使用)
 
-- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - 診断設定の監査
 - Advanced Data Security を SQL Managed Instance 上で有効にする必要がある
 
@@ -243,8 +243,8 @@ ms.locfileid: "98679999"
 ### <a name="0911-vulnerability-assessments-and-penetration-tests-are-conducted-by-suitably-skilled-personnel-before-a-system-is-deployed-after-a-significant-change-to-a-system-and-at-least-annually-or-as-specified-by-the-system-owner"></a>0911 システムのデプロイ前、システムに対する大きな変更の後、年 1 回以上、またはシステム所有者から指示されたときに、適切なスキルを備えた担当者が脆弱性の評価と侵入テストを実施する
 
 - SQL データベースの脆弱性を修復する必要がある
-- 脆弱性評価を SQL Server 上で有効にする必要がある
-- 脆弱性評価を SQL Managed Instance 上で有効にする必要がある
+- 脆弱性評価を SQL サーバー上で有効にする必要がある
+- 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
 - Virtual Machines で脆弱性評価を有効にする必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある

@@ -9,10 +9,10 @@ ms.date: 10/06/2020
 ms.author: cauribeg
 ms.custom: include file
 ms.openlocfilehash: da36cb5c5d2db20b89f80d381f48632c7528c193
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96002463"
 ---
 1. キャッシュを作成するには、[Azure portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。

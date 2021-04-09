@@ -5,10 +5,10 @@ ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: 5007009d9aabf9a1c1c6e1d5c2f286c0ba25b340
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99493755"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Azure Functions の監視を構成する方法

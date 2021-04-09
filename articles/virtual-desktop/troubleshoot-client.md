@@ -7,10 +7,10 @@ ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 097c97d16cf62793d03ac42662267e0553383bc1
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98539619"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>リモート デスクトップ クライアントのトラブルシューティング

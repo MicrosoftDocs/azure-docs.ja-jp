@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: b939f10d2c3bcf3aeba7422809a1038b2a75f123
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92511088"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>チュートリアル: Azure Active Directory と Rally Software の統合
@@ -41,7 +41,7 @@ Rally Software と Azure AD の統合を構成するには、次のものが必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Rally Software では、 **SP** によって開始される SSO がサポートされます
+* Rally Software では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-rally-software-from-the-gallery"></a>ギャラリーからの Rally Software の追加
 
@@ -61,13 +61,13 @@ Azure AD への Rally Software の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Rally Software** 」と入力し、結果ウィンドウで **Rally Software** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Rally Software**」と入力し、結果ウィンドウで **Rally Software** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Rally Software](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Rally Software で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Rally Software で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Rally Software 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Rally Software で Azure AD のシングル サインオンを構成し、テストするには、次の要素を完了する必要があります。
@@ -85,7 +85,7 @@ Rally Software で Azure AD のシングル サインオンを構成し、テス
 
 Rally Software で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Rally Software** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Rally Software** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -126,17 +126,17 @@ Rally Software で Azure AD シングル サインオンを構成するには、
 
 1. **Rally Software** テナントにログインします。
 
-2. 上部にあるツールバーの **[Setup]** をクリックし、 **[Subscription]** を選択します。
+2. 上部のツール バーで、[**セットアップ**] をクリックし、[**サブスクリプション**] を選択します。
    
-    ![サブスクリプション](./media/rally-software-tutorial/ic769531.png "サブスクリプション")
+    ![[サブスクリプション]](./media/rally-software-tutorial/ic769531.png "サブスクリプション"): 。
 
 3. **[アクション]** ボタンをクリックします。 ツールバーの上部の右側にある **[サブスクリプションの編集]** を選択します。
 
-4. **[Subscription]** ダイアログ ページで次の手順に従った後、 **[Save & Close]** をクリックします。
+4. **[Subscription]** ダイアログ ページで次の手順に従った後、**[Save & Close]** をクリックします。
    
     ![認証](./media/rally-software-tutorial/ic769542.png "認証")
    
-    a. Authentication のドロップダウン リストから、 **[Rally or SSO authentication]** を選択します。
+    a. Authentication のドロップダウン リストから、**[Rally or SSO authentication]** を選択します。
 
     b. **[Identity provider URL]\(ID プロバイダー URL\)** ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。 
 
@@ -158,7 +158,7 @@ Rally Software で Azure AD シングル サインオンを構成するには、
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -170,7 +170,7 @@ Rally Software で Azure AD シングル サインオンを構成するには、
 
 このセクションでは、Britta Simon に Rally Software へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Rally Software]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Rally Software]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -200,23 +200,23 @@ Azure AD ユーザーがサインインできるように、Azure Active Directo
 
 1. Rally Software テナントにサインインします。
 
-2. **[Setup] \> [USERS]** に移動し、 **[+ Add New]** をクリックします。
+2. **[Setup] \> [USERS]** に移動し、**[+ Add New]** をクリックします。
    
     ![ユーザー](./media/rally-software-tutorial/ic781039.png "ユーザー")
 
-3. New User テキストボックスに名前を入力し、 **[Add with Details]** をクリックします。
+3. [New User] テキスト ボックスに名前を入力して、[**Add with Details**] をクリックします。
 
 4. **[Create User]** セクションで、次の手順に従います。
    
     ![ユーザーの作成](./media/rally-software-tutorial/ic781040.png "[Create User]")
 
-    a. **[User Name]\(ユーザー名\)** ボックスに、ユーザーの氏名 ( **BrittSimon** など) を入力します。
+    a. **[User Name]\(ユーザー名\)** ボックスに、ユーザーの氏名 (**BrittSimon** など) を入力します。
    
     b. **[E-mail address]\(電子メール アドレス\)** ボックスに、ユーザーの電子メール アドレスを入力します (この例では brittasimon@contoso.com)。
 
-    c. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Britta** )。
+    c. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Britta**)。
 
-    d. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon** )。
+    d. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon**)。
 
     e. **[Save & Close]** をクリックします。
 

@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: overview
 ms.date: 02/19/2020
 ms.openlocfilehash: 9786ff20c1d3f467e217d5fe34518fcc9494863e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96930111"
 ---
 # <a name="what-is-azure-app-configuration"></a>Azure App Configuration とは 

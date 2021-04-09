@@ -2,13 +2,13 @@
 title: Service Fabric マネージド クラスター (プレビュー)
 description: Service Fabric マネージド クラスターは、デプロイとクラスター管理を効率化する Azure Service Fabric クラスター リソース モデルの進化版です。
 ms.topic: overview
-ms.date: 09/28/2020
-ms.openlocfilehash: 3d26a92126491662d5c51b3c4e8900ffa547f830
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.date: 02/15/2021
+ms.openlocfilehash: 271852214097ee96ba6b10de7a94904981cd8ef8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91410399"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041231"
 ---
 # <a name="service-fabric-managed-clusters-preview"></a>Service Fabric マネージド クラスター (プレビュー)
 
@@ -62,21 +62,26 @@ Service Fabric マネージド クラスターには、Basic SKU と Standard SK
 | ノード タイプの追加と削除 | いいえ | はい |
 | ゾーン冗長性 | いいえ | はい |
 
-## <a name="service-fabric-managed-cluster-feature-roadmap"></a>Service Fabric マネージド クラスターの機能ロードマップ
-Service Fabric マネージド クラスターの早期プレビュー バージョンであるため、まだ実装されていない機能がいくつかあります。 以下の機能は今後のリリースで使用できるようになる予定です。 
+## <a name="whats-new-for-service-fabric-managed-clusters"></a>Service Fabric マネージド クラスターの新機能
 
-* Visual Studio から直接クラスターにアプリケーションを発行
-* マネージド ID 
-* ARM アプリケーション デプロイ 
-* 可用性ゾーン 
-* リバース プロキシ 
-* 自動スケーリング 
-* NSG ルールの更新 
-* OS の自動アップグレード
+Service Fabric マネージド クラスター プレビューの最新機能には、以下に対するサポートが含まれます。
 
-## <a name="next-steps"></a>次の手順
+* [ARM テンプレートを使用したアプリケーションのデプロイ](how-to-managed-cluster-app-deployment-template.md)
+* [OS の自動アップグレード](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)
+* [ディスクの暗号化](how-to-enable-managed-cluster-disk-encryption.md)
+* [NSG ルールの適用](how-to-managed-cluster-networking.md)
 
-Service Fabric マネージド クラスターを体験するには、次のクイックスタートをお試しください。
+今後のリリースで追加される機能は次のとおりです。
+
+* Visual Studio を使用したアプリケーションのデプロイ
+* マネージド ID のサポート
+* 可用性ゾーン
+* リバース プロキシ
+* 自動スケール
+
+## <a name="next-steps"></a>次のステップ
+
+Service Fabric マネージド クラスターでの作業を開始するには、次のクイックスタートをお試しください。
 
 > [!div class="nextstepaction"]
 > [Service Fabric マネージド クラスター (プレビュー) を作成する](quickstart-managed-cluster-template.md)

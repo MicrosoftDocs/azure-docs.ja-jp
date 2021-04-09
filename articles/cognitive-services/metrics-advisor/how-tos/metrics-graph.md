@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbullwin
 ms.openlocfilehash: bcedef4a1339dacaff3fe841e97f985c42320819
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "92043155"
 ---
 # <a name="how-to-build-a-metrics-graph-to-analyze-related-metrics"></a>方法: メトリックのグラフを作成して関連するメトリックを分析する
@@ -35,7 +35,7 @@ Metrics Advisor の各メトリックは、履歴データから学習して将�
 
 **[Add relation]\(関係の追加\)** をクリックすると、別のメトリックを選択して、2 つのノード間の関係の種類を指定できます。 また、特定のディメンション フィルターを適用することもできます。 
 
-:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="メトリックを選択する":::
+:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="ノードと関係を追加します":::
 
 上記の手順を繰り返すと、関連するすべてのメトリック間の関係を示すメトリックのグラフが作成されます。
 **ノードの色に関するヒント**
@@ -50,7 +50,7 @@ Metrics Advisor の各メトリックは、履歴データから学習して将�
 
 グラフ内のインシデントをクリックし、下にスクロールして、診断情報の下にある **[cross metrics analysis]\(クロス メトリック分析\)** に移動します。
 
-:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="メトリックを選択する":::
+:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="関連するメトリックと異常を表示します":::
 
 ## <a name="next-steps"></a>次のステップ
 

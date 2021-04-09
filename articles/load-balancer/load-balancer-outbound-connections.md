@@ -9,10 +9,10 @@ ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
 ms.openlocfilehash: d1632c66791dd5e697b95a2c5aaaddea81629abf
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99052824"
 ---
 # <a name="using-snat-for-outbound-connections"></a>アウトバウンド接続での SNAT の使用

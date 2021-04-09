@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
 ms.openlocfilehash: 2b658cdc58777274bb14f9e8069cef2facdb0479
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92363455"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>アプリを発行者確認済みとしてマークする
@@ -70,7 +70,7 @@ Microsoft Partner Network (MPN) に既に登録していて、[前提条件](pub
 
 1. アプリへの同意を求めるメッセージが表示されるユーザーに対しては、プロセスが正常に終了した直後から、バッジが表示されるようになります。ただし、この情報がシステム全体に複製されるまで、少し時間がかかる場合があります。 
 
-1. アプリケーションにサインインし、確認済みバッジが同意画面に表示されることを確認して、この機能をテストします。 アプリへの同意を既に許可しているユーザーとしてサインインしている場合は、 *prompt=consent* クエリ パラメーターを使用して、同意プロンプトを強制することができます。 このパラメーターはテストのみに使用し、アプリの要求にはハードコーディングしないでください。
+1. アプリケーションにサインインし、確認済みバッジが同意画面に表示されることを確認して、この機能をテストします。 アプリへの同意を既に許可しているユーザーとしてサインインしている場合は、*prompt=consent* クエリ パラメーターを使用して、同意プロンプトを強制することができます。 このパラメーターはテストのみに使用し、アプリの要求にはハードコーディングしないでください。
 
 1. バッジを表示する追加のアプリについて、必要に応じてこのプロセスを繰り返します。 Microsoft Graph を使用してこの処理を一括ですばやく行うことができ、間もなく PowerShell コマンドレットが利用可能になります。 詳細については、「[Microsoft Graph API の呼び出しを行う](troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls)」を参照してください。 
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: bcb6e91bba367363385214806077146b1a24fe7b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92503489"
 ---
 # <a name="indexer-access-to-content-protected-by-azure-network-security-features-azure-cognitive-search"></a>Azure ネットワーク セキュリティ機能によって保護されたコンテンツへのインデクサー アクセス (Azure Cognitive Search)
@@ -65,7 +65,7 @@ Azure Cognitive Search インデクサーは、データ ソースからコン�
 
 ## <a name="granting-access-to-indexer-ip-ranges"></a>インデクサーの IP 範囲へのアクセスを許可する
 
-インデクサーがアクセスしようとするリソースが特定の IP 範囲のセットにのみ制限される場合、インデクサー要求が発生する可能性のある IP 範囲を含むようにそのセットを拡張する必要があります。 前述のように、インデクサーが実行され、アクセス要求が発生する可能性がある環境が 2 つあります。 インデクサー アクセスを機能させるために、 **両方** の環境の IP アドレスを追加する必要があります。
+インデクサーがアクセスしようとするリソースが特定の IP 範囲のセットにのみ制限される場合、インデクサー要求が発生する可能性のある IP 範囲を含むようにそのセットを拡張する必要があります。 前述のように、インデクサーが実行され、アクセス要求が発生する可能性がある環境が 2 つあります。 インデクサー アクセスを機能させるために、**両方** の環境の IP アドレスを追加する必要があります。
 
 - 検索サービス固有のプライベート環境の IP アドレスを取得するには、検索サービスの完全修飾ドメイン名 (FQDN) を `nslookup` (または `ping`) します。 たとえば、パブリック クラウドの検索サービスの FQDN は、`<service-name>.search.windows.net` です。 この情報は、Azure portal で入手できます。
 - マルチテナント環境の IP アドレスは、`AzureCognitiveSearch` サービス タグを介して入手できます。 [Azure サービス タグ](../virtual-network/service-tags-overview.md)には、各サービスの公開された IP アドレスの範囲があり、これは [Discovery API (プレビュー)](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) または[ダウンロード可能な JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)を介して入手できます。 どちらの場合も、IP 範囲はリージョンごとに分類されます。検索サービスがプロビジョニングされているリージョンに割り当てられた IP 範囲のみを選択できます。
@@ -117,7 +117,7 @@ Azure Cognitive Search インデクサーは、データ ソースからコン�
 ```
 
 これらの手順の詳細については、[プライベート エンドポイントを使用したインデクサー接続](search-indexer-howto-access-private.md)に関する記事を参照してください。
-リソースに対して承認されたプライベート エンドポイントを使用すると、 *private* に設定されているインデクサーは、プライベート エンドポイント接続を介してアクセスを取得しようとします。
+リソースに対して承認されたプライベート エンドポイントを使用すると、*private* に設定されているインデクサーは、プライベート エンドポイント接続を介してアクセスを取得しようとします。
 
 ### <a name="limits"></a>制限
 

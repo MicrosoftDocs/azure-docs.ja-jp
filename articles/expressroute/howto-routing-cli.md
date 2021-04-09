@@ -9,10 +9,10 @@ ms.date: 10/09/2020
 ms.author: duau
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 2c56e847e3b112d50285cd2c116c8f22efbc507f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101715532"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>チュートリアル:CLI を使用した ExpressRoute 回線のピアリングの作成と変更

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 7ad6a576262b8e722b16c81af544a9370c2b49b3
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93242264"
 ---
 # <a name="supported-versions-for-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL - フレキシブル サーバーでサポートされているバージョン

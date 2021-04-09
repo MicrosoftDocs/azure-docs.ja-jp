@@ -5,16 +5,16 @@ ms.service: data-factory
 tags: azure-resource-manager
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan, jingwang
+ms.reviewer: jburchel, jingwang
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 07/16/2020
-ms.openlocfilehash: f3e76bf16b702adb26183209d36189a53b695c40
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c579b6d723533e751e08a80a578195c03e945607
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373846"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783338"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Data Factory を作成する
 

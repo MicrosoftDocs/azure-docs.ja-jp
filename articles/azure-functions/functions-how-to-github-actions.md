@@ -7,10 +7,10 @@ ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
 ms.openlocfilehash: cc356b307a752b10ba6f1c1a7151381c5644ca1e
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98762728"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub Actions を使用した継続的デリバリー
@@ -25,7 +25,7 @@ Azure Functions のワークフロー ファイルには、次の 3 つのセク
 
 | Section | タスク |
 | ------- | ----- |
-| **Authentication** | 発行プロファイルをダウンロードします。<br/>GitHub シークレットを作成します。|
+| **認証** | 発行プロファイルをダウンロードします。<br/>GitHub シークレットを作成します。|
 | **ビルド** | 環境を設定します。<br/>関数アプリを構築します。|
 | **デプロイする** | 関数アプリをデプロイします。|
 

@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: c4198a1b73f76d61e39324befc85b55bd260e363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88212231"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Functions における Notification Hubs の出力バインド
@@ -287,9 +287,9 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 既存の通知ハブに対する接続文字列を構成するには:
 
-1. [Azure Portal](https://portal.azure.com) で通知ハブに移動し、 **[アクセスポリシー]** を選択して、 **[DefaultFullSharedAccessSignature]** ポリシーの横にあるコピー ボタンを選択します。 これにより、*DefaultFullSharedAccessSignature* ポリシーの接続文字列が通知ハブにコピーされます。 この接続文字列を使用して、関数からハブに通知メッセージを送信できます。
+1. [Azure Portal](https://portal.azure.com) で通知ハブに移動し、**[アクセスポリシー]** を選択して、**[DefaultFullSharedAccessSignature]** ポリシーの横にあるコピー ボタンを選択します。 これにより、*DefaultFullSharedAccessSignature* ポリシーの接続文字列が通知ハブにコピーされます。 この接続文字列を使用して、関数からハブに通知メッセージを送信できます。
     ![通知ハブの接続文字列をコピーする](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
-1. Azure Portal の関数アプリに移動し、 **[アプリケーション設定]** を選択し、**MyHubConnectionString** などのキーを追加します。次に、通知ハブ用にコピーされた *DefaultFullSharedAccessSignature* を値として貼り付けて、 **[保存]** をクリックします。
+1. Azure Portal の関数アプリに移動し、**[アプリケーション設定]** を選択し、**MyHubConnectionString** などのキーを追加します。次に、通知ハブ用にコピーされた *DefaultFullSharedAccessSignature* を値として貼り付けて、**[保存]** をクリックします。
 
 このアプリケーション設定の名前が、*function.json* または .NET 属性の出力バインディング接続設定で使用されます。 この記事で前述した「[構成](#configuration)」セクションをご覧ください。
 

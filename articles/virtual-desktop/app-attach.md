@@ -7,10 +7,10 @@ ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 5e45c51735e0b7ab4b263d3f3047b5848c82439d
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98185769"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>MSIX アプリのアタッチ用の PowerShell スクリプトを作成する (プレビュー)
@@ -23,7 +23,7 @@ ms.locfileid: "98185769"
 このトピックでは、MSIX アプリのアタッチ用の PowerShell スクリプトを設定する方法について説明します。
 
 >[!IMPORTANT]
->作業を開始する前に、必ず[こちらのフォーム](https://aka.ms/enablemsixappattach)に記入して送信し、サブスクリプションで MSIX アプリのアタッチを有効にしてください。 承認された要求がない場合、MSIX アプリのアタッチは機能しません。 要求の承認には、営業日に最大で 24 時間かかる可能性があります。 要求が受諾されて完了すると、電子メールが届きます。
+>作業を開始する前に、必ず[こちらのフォーム](https://aka.ms/enablemsixappattach)に記入して送信し、サブスクリプションで MSIX アプリのアタッチを有効にしてください。 承認されたリクエストがない場合、MSIX アプリ アタッチは機能しません。 リクエストの承認には、営業日に最大で 24 時間かかる可能性があります。 要求が受諾されて完了すると、電子メールが届きます。
 
 ## <a name="install-certificates"></a>証明書をインストールする
 
@@ -87,7 +87,7 @@ PowerShell スクリプトを更新する前に、VHD にボリュームのボ�
     Possible values for VolumeName along with current mount points are:
 
     \\?\Volume{a12b3456-0000-0000-0000-10000000000}\
-    **_ NO MOUNT POINTS _*_
+    *** NO MOUNT POINTS ***
 
     \\?\Volume{c78d9012-0000-0000-0000-20000000000}\
         E:\
@@ -98,7 +98,7 @@ PowerShell スクリプトを更新する前に、VHD にボリュームのボ�
     ```
 
 
-6.  *$volumeGuid* 変数を、今コピーしたボリューム GUID に更新します。
+6.  **$volumeGuid** 変数を、今コピーしたボリューム GUID に更新します。
 
 7. 管理者の PowerShell プロンプトを開き、環境に適用される変数を使用して、次の PowerShell スクリプトを更新します。
 

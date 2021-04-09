@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 469fdbced4601c6ffb4b6aa35e8f943bcb5dde1b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5d902e0172a048527ce8f2fa9e22c5fc9bf22e0b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965784"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203625"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Azure CLI を使用して Azure DNS で DNS ゾーンを管理する方法
 
@@ -37,7 +37,7 @@ ms.locfileid: "94965784"
 
 ## <a name="set-up-azure-cli-for-azure-dns"></a>Azure DNS 向け Azure CLI の設定
 
-### <a name="before-you-begin"></a>開始する前に
+### <a name="before-you-begin"></a>始める前に
 
 構成を開始する前に、以下がそろっていることを確認します。
 
@@ -47,7 +47,7 @@ ms.locfileid: "94965784"
 
 ### <a name="sign-in-to-your-azure-account"></a>Azure アカウントへのサインイン
 
-コンソール ウィンドウを開き、資格情報を使用して認証を行います。 詳細については、「[Azure CLI から Azure へのログイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)」をご覧ください。
+コンソール ウィンドウを開き、資格情報を使用して認証を行います。 詳細については、「[Azure CLI から Azure へのログイン](/cli/azure/authenticate-azure-cli)」をご覧ください。
 
 ```
 az login
@@ -67,7 +67,7 @@ az account list
 az account set --subscription "subscription name"
 ```
 
-### <a name="optional-to-installuse-azure-dns-private-zones-feature"></a>省略可能:Azure DNS Private Zones の機能のインストール/使用
+### <a name="optional-to-installuse-azure-dns-private-zones-feature"></a>省略可能: Azure DNS Private Zones の機能のインストール/使用
 Azure DNS Private Zone の機能は、Azure CLI の拡張機能を介して利用できます。 "dns" Azure CLI 拡張機能をインストールしてください。 
 ```
 az extension add --name dns

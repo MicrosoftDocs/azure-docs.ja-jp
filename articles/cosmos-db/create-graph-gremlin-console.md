@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 07/10/2020
 ms.author: chrande
 ms.openlocfilehash: 20cb4cea52317022aea8a5b9e4b8280f8b88ff85
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93361513"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>クイック スタート:Gremlin コンソールを使用して Azure Cosmos DB グラフ データベースを作成、クエリ、および走査する
@@ -53,11 +53,11 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
 ## <a name="connect-to-your-app-servicegraph"></a><a id="ConnectAppService"></a>アプリ サービス/グラフへの接続
 
 1. Gremlin コンソールを開始する前に、`apache-tinkerpop-gremlin-console-3.2.5/conf` ディレクトリで remote-secure.yaml 構成ファイルを作成または変更します。
-2. 次の表の定義に従って、 *host* 、 *port* 、 *username* 、 *password* 、 *connectionPool* 、および *serializer* の構成を入力します。
+2. 次の表の定義に従って、*host*、*port*、*username*、*password*、*connectionPool*、および *serializer* の構成を入力します。
 
     設定|推奨値|説明
     ---|---|---
-    hosts|[ *<アカウント名>* . **gremlin**.cosmos.azure.com]|次のスクリーンショットをご覧ください。 これは、Azure portal の [概要] ページに表示される **[Gremlin URI]** の値から末尾の ":443/" を削除して角かっこで囲んだものです。 注:必ず Gremlin 値を使用してください。[ *<アカウント名>* .documents.azure.com] で終わる URI **ではありません** 。この URI を使用すると、後で Gremlin クエリを実行したときに "Host did not respond in a timely fashion (ホストが適切な時間内に応答しませんでした)" 例外が発生する可能性があります。 
+    hosts|[ *<アカウント名>* .**gremlin**.cosmos.azure.com]|次のスクリーンショットをご覧ください。 これは、Azure portal の [概要] ページに表示される **[Gremlin URI]** の値から末尾の ":443/" を削除して角かっこで囲んだものです。 注:必ず Gremlin 値を使用してください。[ *<アカウント名>* .documents.azure.com] で終わる URI **ではありません**。この URI を使用すると、後で Gremlin クエリを実行したときに "Host did not respond in a timely fashion (ホストが適切な時間内に応答しませんでした)" 例外が発生する可能性があります。 
     port|443|443 に設定します。
     username|*自分のユーザー名*|`/dbs/<db>/colls/<coll>` 形式のリソースです。`<db>` は実際のデータベースの名前、`<coll>` は実際のコレクションの名前になります。
     password|*自分のプライマリ キー*| 以下の 2 つ目のスクリーンショットをご覧ください。 これは自分のプライマリ キーです。Azure Portal の [キー] ページの [プライマリ キー] ボックスから取得できます。 ボックスの左側にあるコピー ボタンを使用して値をコピーしてください。
@@ -109,7 +109,7 @@ g.V().count()
 
 ## <a name="create-vertices-and-edges"></a>頂点と辺の作成
 
-まずはじめに、 *Thomas* 、 *Mary Kay* 、 *Robin* 、 *Ben* 、および *Jack* の 5 つの人物頂点を追加しましょう。
+まずはじめに、*Thomas*、*Mary Kay*、*Robin*、*Ben*、および *Jack* の 5 つの人物頂点を追加しましょう。
 
 入力 (Thomas):
 

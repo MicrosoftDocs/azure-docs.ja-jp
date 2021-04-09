@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory portal でカスタム ロールの割り当てを表示する |Microsoft Docs
+title: Azure AD ロールの割り当てを一覧表示する
 description: Azure Active Directory 管理センターで Azure Active Directory 管理者ロールのメンバーを表示して管理できるようになりました。
 services: active-directory
 author: rolyon
@@ -13,31 +13,41 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c13167706c2794253108b04eaa2dcc46e0e6c09a
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: de546ef091b1a8e996f286b0c9af45e93488b5b4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740688"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103467657"
 ---
-# <a name="view-custom-role-assignments-using-azure-active-directory"></a>Azure Active Directory でカスタム ロールの割り当てを表示する
+# <a name="list-azure-ad-role-assignments"></a>Azure AD ロールの割り当てを一覧表示する
 
-この記事では、Azure Active Directory (Azure AD) で割り当てたカスタム ロールを表示する方法について説明します。 Azure Active Directory (Azure AD) では、ロールを組織全体のスコープまたは単一アプリケーションのスコープで割り当てることができます。
+この記事では、Azure Active Directory (Azure AD) で割り当てたロールを一覧表示する方法について説明します。 Azure Active Directory (Azure AD) では、ロールを組織全体のスコープまたは単一アプリケーションのスコープで割り当てることができます。
 
 - 組織全体のスコープでのロールの割り当ては、単一アプリケーションのロールの割り当ての一覧に追加され、そこで確認することができます。
 - 単一アプリケーションのスコープでのロールの割り当ては、組織全体のスコープでの割り当ての一覧に追加されることはなく、そこで確認することもできません。
 
-## <a name="view-role-assignments-in-the-azure-portal"></a>Azure portal でロールの割り当てを表示する
+## <a name="list-role-assignments-in-the-azure-portal"></a>Azure portal でロールの割り当てを一覧表示する
 
-この手順では、組織全体のスコープを使用してロールの割り当てを表示する方法について説明します。
+この手順では、組織全体のスコープでロールの割り当てを一覧表示する方法について説明します。
 
 1. Azure AD 組織の特権ロール管理者またはグローバル管理者のアクセス許可を使用して [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 1. **[Azure Active Directory]** を選択し、**[ロールと管理者]** を選択します。次に、ロールを選択して開き、そのプロパティを表示します。
-1. **[割り当て]** を選択して、そのロールの割り当てを表示します。
+1. ロールの割り当てを一覧表示するには、 **[割り当て]** を選択します。
 
-    ![一覧からロールを開いたときに、ロールの割り当てとアクセス許可を表示する](./media/view-assignments/role-assignments.png)
+    ![一覧からロールを開いたときに、ロールの割り当てとアクセス許可を一覧表示する](./media/view-assignments/role-assignments.png)
 
-## <a name="view-role-assignments-using-azure-ad-powershell"></a>Azure AD PowerShell を使用してロールの割り当てを表示する
+## <a name="list-my-role-assignments"></a>自分のロールの割り当てを一覧表示する
+
+自分のアクセス許可も簡単に一覧表示することができます。 **[ロールと管理者]** ページの **[ロール]** を選択すると、現在自分に割り当てられているロールが表示されます。
+
+## <a name="download-role-assignments"></a>ロールの割り当てのダウンロード
+
+特定のロールのすべての割り当てをダウンロードするには、 **[ロールと管理者]** ページでロールを選択し、 **[ロールの割り当てのダウンロード]** を選択します。 そのロールのすべてのスコープでの割り当てを一覧表示する CSV ファイルがダウンロードされます。
+
+![ロールのすべての割り当てをダウンロードする](./media/view-assignments/download-role-assignments.png)
+
+## <a name="list-role-assignments-using-azure-ad-powershell"></a>Azure AD PowerShell を使用してロールの割り当てを一覧表示する
 
 このセクションでは、組織全体のスコープを使用してロールの割り当てを表示する方法について説明します。 この記事では、[Azure Active Directory PowerShell バージョン 2](/powershell/module/azuread/#directory_roles) モジュールを使います。 PowerShell を使用して単一アプリケーションのスコープを表示するには、[PowerShell を使用したカスタム ロールの割り当て](custom-assign-powershell.md)に関するページのコマンドレットを使用できます。
 
@@ -48,22 +58,22 @@ ms.locfileid: "98740688"
 Azure AD PowerShell モジュールをインストールするには、次のコマンドを使用します。
 
 ``` PowerShell
-install-module azureadpreview
-import-module azureadpreview
+Install-Module -Name AzureADPreview
+Import-Module -Name AzureADPreview
 ```
 
 モジュールを使用する準備ができているかどうかを確認するには、次のコマンドを使用します。
 
 ``` PowerShell
-get-module azuread
+Get-Module -Name AzureADPreview
   ModuleType Version      Name                         ExportedCommands
   ---------- ---------    ----                         ----------------
-  Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
+  Binary     2.0.0.115    AzureADPreview               {Add-AzureADAdministrati...}
 ```
 
-### <a name="view-the-assignments-of-a-role"></a>ロールの割り当てを表示する
+### <a name="list-role-assignments"></a>ロールの割り当ての一覧表示
 
-ロールの割り当てを表示する例。
+ロールの割り当てを一覧表示する例。
 
 ``` PowerShell
 # Fetch list of all directory roles with object ID
@@ -76,9 +86,9 @@ $role = Get-AzureADDirectoryRole -ObjectId "5b3fe201-fa8b-4144-b6f1-875829ff7543
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
 ```
 
-## <a name="view-role-assignments-using-microsoft-graph-api"></a>Microsoft Graph API を使用してロールの割り当てを表示する
+## <a name="list-role-assignments-using-microsoft-graph-api"></a>Microsoft Graph API を使用してロールの割り当てを一覧表示する
 
-このセクションでは、組織全体のスコープを使用してロールの割り当てを表示する方法について説明します。  Graph API を使用して単一アプリケーションのスコープの割り当てを表示するには、[Graph API を使用したカスタム ロールの割り当て](custom-assign-graph.md)に関するページの操作を使用できます。
+このセクションでは、組織全体のスコープでロールの割り当てを一覧表示する方法について説明します。  Graph API を使用して単一アプリケーションのスコープのロールの割り当てを一覧表示するには、[Graph API を使用したカスタム ロールの割り当て](custom-assign-graph.md)に関するページの操作を使用できます。
 
 特定のロールの定義に対するロールの割り当てを取得するための HTTP 要求。
 
@@ -100,9 +110,9 @@ HTTP/1.1 200 OK
 }
 ```
 
-## <a name="view-assignments-of-single-application-scope"></a>単一アプリケーションのスコープの割り当てを表示する
+## <a name="list-role-assignments-with-single-application-scope"></a>単一アプリケーションのスコープでロールの割り当てを一覧表示する
 
-このセクションでは、単一アプリケーションのスコープのロールの割り当てを表示する方法について説明します。 現在、この機能はパブリック プレビュー段階にあります。
+このセクションでは、単一アプリケーションのスコープでロールの割り当てを一覧表示する方法について説明します。 現在、この機能はパブリック プレビュー段階にあります。
 
 1. Azure AD 組織の特権ロール管理者またはグローバル管理者のアクセス許可を使用して [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 1. **[アプリの登録]** を選択し、次にそのアプリの登録を選択してそのプロパティを表示します。 Azure AD 組織内のアプリ登録の完全な一覧を表示するには、 **[すべてのアプリケーション]** を選択する必要がある場合があります。
@@ -111,11 +121,11 @@ HTTP/1.1 200 OK
 
 1. アプリの登録で、**[ロールと管理者]** を選択し、次にロールを選択してそのプロパティを表示します。
 
-    ![[アプリの登録] ページから、アプリの登録のロールの割り当てを表示する](./media/view-assignments/app-reg-assignments.png)
+    ![[アプリの登録] ページから、アプリの登録のロールの割り当てを一覧表示する](./media/view-assignments/app-reg-assignments.png)
 
-1. **[割り当て]** を選択して、そのロールの割り当てを表示します。 アプリの登録内から [割り当て] ビューを開くと、この Azure AD リソースをスコープとした割り当てが表示されます。
+1. ロールの割り当てを一覧表示するには、 **[割り当て]** を選択します。 アプリの登録内から [割り当て] ページを開くと、この Azure AD リソースをスコープとしたロールの割り当てが表示されます。
 
-    ![アプリの登録のプロパティから、アプリの登録のロールの割り当てを表示する](./media/view-assignments/app-reg-assignments-2.png)
+    ![アプリの登録のプロパティから、アプリの登録のロールの割り当てを一覧表示する](./media/view-assignments/app-reg-assignments-2.png)
 
 ## <a name="next-steps"></a>次のステップ
 

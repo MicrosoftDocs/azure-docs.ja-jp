@@ -1,18 +1,14 @@
 ---
 title: アラート情報を転送する
 description: 転送ルールを使用して、パートナーのシステムにアラート情報を送信することができます。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 528ea5a6b05dea59cb397bf32297f05b6cdc9be2
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: bc405f7d4837bf81d9cfcd859d562b7152cfc54b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522735"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104778799"
 ---
 # <a name="forward-alert-information"></a>アラート情報を転送する
 
@@ -203,6 +199,6 @@ NetWitness の転送パラメーターを定義するには:
 
 これは、ご自身で定義した転送ルールが、管理者によって作成された除外ルールに基づいて無視される可能性があることを意味します。 除外ルールは、オンプレミス管理コンソールで定義されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
 [アラート ワークフローの高速化](how-to-accelerate-alert-incident-response.md)

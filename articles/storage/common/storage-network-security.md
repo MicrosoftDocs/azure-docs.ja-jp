@@ -2,19 +2,19 @@
 title: Azure Storage ファイアウォールおよび仮想ネットワークの構成 | Microsoft Docs
 description: Azure Storage ファイアウォールと Azure Virtual Network を使用して、ストレージ アカウントの多層型ネットワーク セキュリティを構成します。
 services: storage
-author: santoshc
+author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/05/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 4aa4e0566093f01e5f14691158f37c630c753b00
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 62f61549ffd6312b94589b9cabbc347edafd0ff2
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714750"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601969"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -136,7 +136,7 @@ VNet 内の Azure Storage に対する[サービス エンドポイント](../..
 
 ### <a name="required-permissions"></a>必要なアクセス許可
 
-ストレージ アカウントに仮想ネットワーク規則を適用するには、追加されるサブネットに対する適切なアクセス許可を持っている必要があります。 必要なアクセス許可は "*サブネットにサービスを参加させる*" であり、"*ストレージ アカウント共同作成者*" 組み込みロールに含まれます。 カスタム ロール定義に追加することもできます。
+ストレージ アカウントに仮想ネットワーク規則を適用するには、追加されるサブネットに対する適切なアクセス許可を持っている必要があります。 規則の適用は、[Storage Account Contributor](../../role-based-access-control/built-in-roles.md#storage-account-contributor)か、カスタム Azure ロール経由で `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` [Azure リソース プロバイダー操作](../../role-based-access-control/resource-provider-operations.md#microsoftnetwork)にアクセスする権利が与えられているユーザーが実行できます。
 
 ストレージ アカウントとアクセスを許可される仮想ネットワークは、異なる Azure AD テナントの一部であるサブスクリプションなど、異なるサブスクリプションに含まれていてもかまいません。
 

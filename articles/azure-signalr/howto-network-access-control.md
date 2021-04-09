@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: dayshen
 ms.openlocfilehash: 24e56736e0d033420f9aaf976b0fb7d9727c1a5b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92143227"
 ---
 # <a name="configure-network-access-control"></a>ネットワーク アクセス制御を構成する
@@ -41,7 +41,7 @@ Azure portal を使用して、Azure SignalR Service のネットワーク ア�
 
 1. セキュリティで保護する Azure SignalR Service に移動します。
 
-1. **ネットワーク アクセス制御**という名前の設定メニューをクリックします。
+1. **ネットワーク アクセス制御** という名前の設定メニューをクリックします。
 
     ![ポータルでのネットワーク ACL](media/howto-network-access-control/portal.png)
 

@@ -3,7 +3,7 @@ title: Azure portal を使用したオンプレミス エンコーダーでの�
 description: このチュートリアルでは、パススルー配信用に構成されたチャネルを作成する手順を紹介します。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 6f4acd95-cc64-4dd9-9e2d-8734707de326
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.author: juliako
-ms.openlocfilehash: 08d1e9cd281cf41a79d1b30d709062c01abbab33
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 6dd2f8a228c582e99f7d7281bd2d31faff8cadda
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695443"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103010798"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Azure portal を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
 

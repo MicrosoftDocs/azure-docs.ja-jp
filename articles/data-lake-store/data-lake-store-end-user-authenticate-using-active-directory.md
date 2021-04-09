@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
 ms.openlocfilehash: a5272f7d580a3f8a68afda9150a1e95c1807eba6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92103783"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Data Lake Storage Gen1 による Azure Active Directory を使用したエンドユーザー認証
@@ -28,7 +28,7 @@ Azure Data Lake Storage Gen1 では、認証するために Azure Active Directo
 
 どちらのオプションでも、OAuth 2.0 トークンがアプリケーションに提供され、このトークンが Azure Data Lake Storage Gen1 または Azure Data Lake Analytics に対する各要求にアタッチされます。
 
-この記事では、**エンドユーザー認証用の Azure AD ネイティブ アプリケーション**の作成方法について説明します。 サービス間認証用に Azure AD アプリケーションを構成する方法については、[Data Lake Storage Gen1 による Azure Active Directory を使用したサービス間認証](./data-lake-store-service-to-service-authenticate-using-active-directory.md)に関する記事をご覧ください。
+この記事では、**エンドユーザー認証用の Azure AD ネイティブ アプリケーション** の作成方法について説明します。 サービス間認証用に Azure AD アプリケーションを構成する方法については、[Data Lake Storage Gen1 による Azure Active Directory を使用したサービス間認証](./data-lake-store-service-to-service-authenticate-using-active-directory.md)に関する記事をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。

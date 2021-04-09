@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: yushwang
 ms.openlocfilehash: 168bb9e06c73ec27ec1304813023889c9549b8e6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94660697"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する (クラシック)
@@ -71,12 +71,12 @@ ms.locfileid: "94660697"
 2. 新しいゲートウェイを構成し、VPN トンネルを作成します。 手順については、[「SKU と VPN の種類の指定](vpn-gateway-howto-site-to-site-classic-portal.md#sku)」を参照してください。 ルーティングの種類として [動的] が指定されていることを確認してください。
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>サイト間仮想ネットワークが存在しない場合:
-1. 次の手順を使用してサイト間仮想ネットワークを作成します: [サイト間 VPN 接続を持つ仮想ネットワークの作成](./vpn-gateway-howto-site-to-site-classic-portal.md)。  
-2. 次の手順により動的ルーティング ゲートウェイを構成します: [VPN ゲートウェイの構成](./vpn-gateway-howto-site-to-site-classic-portal.md)。 必ずゲートウェイ タイプに **動的ルーティング** を選択してください。
+1. 「[Azure クラシック ポータルでサイト間 VPN 接続を使用して Virtual Network を作成する](./vpn-gateway-howto-site-to-site-classic-portal.md)」の手順に従って、サイト間仮想ネットワークを作成します。  
+2. 次の手順により動的ルーティング ゲートウェイを構成します。[VPN ゲートウェイの構成](./vpn-gateway-howto-site-to-site-classic-portal.md) 必ずゲートウェイ タイプに **動的ルーティング** を選択してください。
 
 ## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2.ネットワーク構成ファイルをエクスポートする
 
-昇格された権利で PowerShell コンソールを開きます。 サービス管理に切り替えるには、このコマンドを使用します。
+管理者特権で PowerShell コンソールを開きます。 サービス管理に切り替えるには、このコマンドを使用します。
 
 ```powershell
 azure config mode asm

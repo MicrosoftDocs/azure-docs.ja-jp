@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: 86e1d74d5e4ab9f6e799c73bcf0d807d0d874f21
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92219719"
 ---
 # <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Azure FXT Edge Filer ハードウェアの状態を監視する
@@ -36,8 +36,8 @@ Azure FXT Edge Filer ハイブリッド ストレージ キャッシュ シス�
 
 | ドライブの状態 LED の状態              | 意味  |
 |-------------------------------------|----------------------------------------------------------|
-| 1 秒間に 2 回緑色が点滅する      | ドライブを識別中である*か* <br> ドライブを取り外す準備をしています  |
-| オフ (消灯)                         | システムのスタートアップが完了していない*か* <br>ドライブを取り外す準備が完了しています |
+| 1 秒間に 2 回緑色が点滅する      | ドライブを識別中である *か* <br> ドライブを取り外す準備をしています  |
+| オフ (消灯)                         | システムのスタートアップが完了していない *か* <br>ドライブを取り外す準備が完了しています |
 | 緑色、アンバーの順に点滅し、消灯する       | ドライブの故障が予想されます   |
 | 1 秒間に 4 回アンバーが点滅する | ドライブが故障しました   |
 | 緑色が点灯している                         | ドライブがオンラインです |

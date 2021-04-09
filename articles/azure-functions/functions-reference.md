@@ -4,12 +4,12 @@ description: プログラミング言語とバインドを問わず、Azure で�
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: fdc898c02cfd20ecfdd72dece4fb1e92d803dbb0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7030ca1c1950f7c06580ce7417a4429fbe330c4e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386902"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102614821"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 開発者ガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインド固有の詳細を学習する前に、それらすべてに当てはまるこの概要をお読みください。
@@ -116,10 +116,11 @@ Azure Functions の一部の接続は、シークレットの代わりに ID を
 
 ID ベースの接続は、次のトリガーおよびバインド拡張機能でサポートされています。
 
-| 拡張機能の名前 | 拡張機能のバージョン                                                                                     | 従量課金プランでの ID ベースの接続をサポートします。 |
+| 拡張機能の名前 | 拡張機能のバージョン                                                                                     | 従量課金プランでサポート |
 |----------------|-------------------------------------------------------------------------------------------------------|---------------------------------------|
 | Azure BLOB     | [バージョン 5.0.0-beta1 以降](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)  | いいえ                                    |
 | Azure Queue    | [バージョン 5.0.0-beta1 以降](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) | いいえ                                    |
+| Azure Event Hubs    | [バージョン 5.0.0-beta1 以降](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher) | いいえ                                    |
 
 > [!NOTE]
 > 主な動作に対して Functions ランタイムによって使用されるストレージ接続では、ID ベースの接続のサポートはまだ利用できません。 これは、`AzureWebJobsStorage` 設定が接続文字列である必要があることを意味します。
@@ -128,9 +129,10 @@ ID ベースの接続は、次のトリガーおよびバインド拡張機能�
 
 Azure サービスに対する ID ベースの接続では、次のプロパティを使用できます。
 
-| プロパティ    | 環境変数 | 必須 | 説明 |
+| プロパティ    | 拡張機能に必要 | 環境変数 | 説明 |
 |---|---|---|---|
-| サービス URI | `<CONNECTION_NAME_PREFIX>__serviceUri` | はい | 接続先サービスのデータ プレーン URI。 |
+| サービス URI | Azure Blob、Azure キュー | `<CONNECTION_NAME_PREFIX>__serviceUri` |  接続先サービスのデータ プレーン URI。 |
+| 完全修飾名前空間 | Event Hubs | `<CONNECTION_NAME_PREFIX>__fullyQualifiedNamespace` | 完全修飾イベント ハブの名前空間。 |
 
 特定の接続の種類に対して、追加のオプションがサポートされている場合があります。 接続を確立するコンポーネントのドキュメントを参照してください。
 
@@ -152,14 +154,26 @@ Azure Functions サービスでホストされている場合、ID ベースの�
 > [!NOTE]
 > Azure Functions サービスでホストされている場合、次の構成オプションはサポートされません。
 
-クライアント ID とシークレットを指定して Azure Active Directory サービス プリンシパルを使用して接続するには、次のプロパティを使用して接続を定義します。
+クライアント ID とシークレットを指定して Azure Active Directory サービス プリンシパルを使用して接続するには、上記の[接続プロパティ](#connection-properties)に加えて、次の必須プロパティを使用して接続を定義します。
 
-| プロパティ    | 環境変数 | 必須 | 説明 |
-|---|---|---|---|
-| サービス URI | `<CONNECTION_NAME_PREFIX>__serviceUri` | はい | 接続先サービスのデータ プレーン URI。 |
-| テナント ID | `<CONNECTION_NAME_PREFIX>__tenantId` | はい | Azure Active Directory のテナント (ディレクトリ) ID。 |
-| クライアント ID | `<CONNECTION_NAME_PREFIX>__clientId` | はい |  テナント内のアプリの登録のクライアント (アプリケーション) ID。 |
-| クライアント シークレット | `<CONNECTION_NAME_PREFIX>__clientSecret` | はい | アプリの登録で生成されたクライアント シークレット。 |
+| プロパティ    | 環境変数 | 説明 |
+|---|---|---|
+| テナント ID | `<CONNECTION_NAME_PREFIX>__tenantId` | Azure Active Directory のテナント (ディレクトリ) ID。 |
+| クライアント ID | `<CONNECTION_NAME_PREFIX>__clientId` |  テナント内のアプリの登録のクライアント (アプリケーション) ID。 |
+| クライアント シークレット | `<CONNECTION_NAME_PREFIX>__clientSecret` | アプリの登録で生成されたクライアント シークレット。 |
+
+Azure Blob との ID ベースの接続に必要な `local.settings.json` プロパティの例を次に示します。 
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "<CONNECTION_NAME_PREFIX>__serviceUri": "<serviceUri>",
+    "<CONNECTION_NAME_PREFIX>__tenantId": "<tenantId>",
+    "<CONNECTION_NAME_PREFIX>__clientId": "<clientId>",
+    "<CONNECTION_NAME_PREFIX>__clientSecret": "<clientSecret>"
+  }
+}
+```
 
 #### <a name="grant-permission-to-the-identity"></a>ID にアクセス許可を付与する
 

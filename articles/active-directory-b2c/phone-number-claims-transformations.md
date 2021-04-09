@@ -12,10 +12,10 @@ ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e175a81efc1ab0950c1fda314efb206ff97a2b7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85385384"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Azure AD B2C で電話番号要求変換を定義する
@@ -66,7 +66,7 @@ ms.locfileid: "85385384"
 | InputClaim | country | string | [省略可能] ISO3166 形式での電話番号の国/地域コードの文字列要求 (2 文字の ISO-3166 国/地域コード)。 |
 | OutputClaim | outputClaim | phoneNumber | この要求変換の結果。 |
 
-**ConvertStringToPhoneNumberClaim** 要求変換は、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)または[表示コントロール](display-controls.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md)から常に実行する必要があります。 **UserMessageIfClaimsTransformationInvalidPhoneNumber** セルフアサート技術プロファイル メタデータにより、ユーザーに表示されるエラー メッセージが制御されます。
+**ConvertStringToPhoneNumberClaim** 要求変換は、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)または [表示コントロール](display-controls.md)によって呼び出される [検証技術プロファイル](validation-technical-profile.md)から常に実行する必要があります。 **UserMessageIfClaimsTransformationInvalidPhoneNumber** セルフアサート技術プロファイル メタデータにより、ユーザーに表示されるエラー メッセージが制御されます。
 
 ![エラー メッセージの実行パスの図](./media/phone-authentication/assert-execution.png)
 
@@ -124,7 +124,7 @@ ms.locfileid: "85385384"
 | OutputClaim | countryCode | string | 電話番号の国/地域コードに対する文字列要求。 |
 
 
-**GetNationalNumberAndCountryCodeFromPhoneNumberString** 要求変換が、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)または[表示コントロール アクション](display-controls.md#display-control-actions)によって呼び出される[検証技術プロファイル](validation-technical-profile.md)から実行された場合、セルフアサート技術プロファイルの **UserMessageIfPhoneNumberParseFailure** メタデータによって、ユーザーに表示されるエラー メッセージが制御されます。
+**GetNationalNumberAndCountryCodeFromPhoneNumberString** 要求変換が、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)または [表示コントロール アクション](display-controls.md#display-control-actions)によって呼び出される [検証技術プロファイル](validation-technical-profile.md)から実行された場合、セルフアサート技術プロファイルの **UserMessageIfPhoneNumberParseFailure** メタデータによって、ユーザーに表示されるエラー メッセージが制御されます。
 
 ![エラー メッセージの実行パスの図](./media/phone-authentication/assert-execution.png)
 

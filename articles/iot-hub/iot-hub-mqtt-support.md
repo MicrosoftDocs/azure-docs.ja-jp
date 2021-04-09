@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: d206f40380ddb60a53ec8af2802a65af94f5820d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: cbc4bbf73c65d4d7eddad556f3776bc0bbd653ba
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027800"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431263"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -55,9 +55,9 @@ MQTT プロトコルをサポートする[デバイス SDK](https://github.com/A
 | Language | MQTT プロトコルのパラメーター | MQTT over WebSocket プロトコルのパラメーター
 | --- | --- | --- |
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azure-iot-device-mqtt.Mqtt | azure-iot-device-mqtt.MqttWs |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable).MQTT | IotHubClientProtocol.MQTT_WS |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol).MQTT | IotHubClientProtocol.MQTT_WS |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet).Mqtt | MQTT が失敗した場合、TransportType.Mqtt は MQTT over WebSocket にフォールバックします。 MQTT over WebSocket のみを指定するには、TransportType.Mqtt_WebSocket_Only を使用します |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](/dotnet/api/microsoft.azure.devices.client.transporttype).Mqtt | MQTT が失敗した場合、TransportType.Mqtt は MQTT over WebSocket にフォールバックします。 MQTT over WebSocket のみを指定するには、TransportType.Mqtt_WebSocket_Only を使用します |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | 既定で MQTT をサポートします | 呼び出しに `websockets=True` を追加してクライアントを作成します |
 
 次のフラグメントでは、Azure IoT Node.js SDK を使用しているときに MQTT over WebSocket プロトコルを指定する方法を示しています。
@@ -111,6 +111,8 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 これらのサンプルでは、Eclipse Mosquitto ライブラリを使用して、IoT ハブに実装されている MQTT ブローカーにメッセージを送信します。
 
+[Azure IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)の規則を使用するようにサンプルを調整する方法については、「[チュートリアル - MQTT を使用して IoT プラグ アンド プレイ デバイス クライアントを開発する](../iot-pnp/tutorial-use-mqtt.md)」を参照してください。
+
 このリポジトリには、次のものが含まれます。
 
 **Windows の場合:**
@@ -158,7 +160,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
   SAS トークンの生成方法について詳しくは、[IoT Hub のセキュリティ トークンの使用](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)に関するページにあるデバイスのセクションをご覧ください。
 
-  テスト時には、クロスプラットフォームの [Visual Studio Code 用 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) または CLI 拡張機能コマンド [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token) を使用して SAS トークンを簡単に生成し、コピーして自分のコードに貼り付けることができます。
+  テスト時には、クロスプラットフォームの [Visual Studio Code 用 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) または CLI 拡張機能コマンド [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token) を使用して SAS トークンを簡単に生成し、コピーして自分のコードに貼り付けることができます。
 
 ### <a name="for-azure-iot-tools"></a>Azure IoT Tools の場合
 

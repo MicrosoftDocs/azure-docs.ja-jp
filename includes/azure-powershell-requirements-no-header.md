@@ -9,10 +9,10 @@ ms.service: azure-powershell
 ms.devlang: azurepowershell
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 2646ad40caf37d6c9dc192b3a4b198a40e73c8d9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96509305"
 ---
 * Azure PowerShell をローカルで使用する場合は、次のようにします。

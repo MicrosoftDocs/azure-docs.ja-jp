@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: ba933d4981fb7ed209a7fb5d5c41113750f312de
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743476"
 ---
 # <a name="azure-cloud-services-classic-config-schema-cscfg-file"></a>Azure Cloud Services (クラシック) 構成スキーマ (.cscfg ファイル)

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/05/2021
 ms.author: jeedes
 ms.openlocfilehash: 477180a6576d52e3386e18b6e2ba12dd33e4d794
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101654411"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-11-token-enabled-lob-app"></a>チュートリアル: Azure Active Directory と SAML 1.1 Token enabled LOB App の統合

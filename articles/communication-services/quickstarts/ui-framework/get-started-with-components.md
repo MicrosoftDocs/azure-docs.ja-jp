@@ -4,15 +4,15 @@ titleSuffix: An Azure Communication Services quickstart
 description: このクイックスタートでは、UI フレームワークの基本コンポーネントの概要について説明します
 author: ddematheu2
 ms.author: dademath
-ms.date: 11/16/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 01fa817bd5173abc3b51e708b69b787c8b655e90
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 6f4a8e8f26e88a73fc73c309ef336813282589f3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539758"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103488178"
 ---
 # <a name="quickstart-get-started-with-ui-framework-base-components"></a>クイックスタート: UI フレームワークの基本コンポーネントの概要
 

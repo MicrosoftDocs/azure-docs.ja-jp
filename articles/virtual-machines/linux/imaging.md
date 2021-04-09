@@ -11,10 +11,10 @@ ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.openlocfilehash: a77c2bc69418b821933c0b62674500f7a32e40a5
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102565208"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Azure での Linux イメージの取り込みと作成

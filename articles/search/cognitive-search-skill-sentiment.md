@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 895e22d94122539ee68bcac8ee4debce2d824ff0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6519cd952bd1265b4daad3b77b29aabd47ea4cc5
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935281"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102547477"
 ---
 # <a name="sentiment-cognitive-skill"></a>センチメント コグニティブ スキル
 
@@ -110,11 +110,9 @@ Microsoft.Skills.Text.SentimentSkill
 }
 ```
 
-## <a name="notes"></a>Notes
-空の場合は、これらのレコードに対してセンチメント スコアは返されません。
-
-## <a name="error-cases"></a>エラーになる場合
-言語がサポートされていない場合、エラーが生成され、センチメント スコアは返されません。
+## <a name="warning-cases"></a>警告のケース
+テキストが空の場合は、警告が生成され、センチメント スコアは返されません。
+言語がサポートされていない場合は、警告が生成され、センチメント スコアは返されません。
 
 ## <a name="see-also"></a>関連項目
 

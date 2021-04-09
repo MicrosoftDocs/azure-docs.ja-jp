@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 763ccd397d8cd704ca161032e65f17979bccb53b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9fa4c678a04342b47601f81ede7c49ab841f42ba
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465758"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102630964"
 ---
 # <a name="configure-vpn-on-your-azure-stack-edge-mini-r-device-via-azure-powershell"></a>Azure PowerShell を使用して Azure Stack Edge Mini R デバイスで VPN を構成する
 
@@ -94,7 +94,7 @@ P2S VPN ゲートウェイ接続を使用すると、個々のクライアント
 
 ### <a name="download-service-tags-file"></a>サービス タグ ファイルをダウンロードする
 
-スクリプトをダウンロードしたフォルダーには、既に `ServiceTags.json` ファイルがある可能性があります。 ない場合は、サービス タグ ファイルをダウンロードできます。
+スクリプトをダウンロードしたフォルダーには、既に `ServiceTags.json` ファイルがある可能性があります。 そうでない場合は、サービス タグ ファイルをダウンロードできます。
 
 [!INCLUDE [azure-stack-edge-gateway-download-service-tags](../../includes/azure-stack-edge-gateway-download-service-tags.md)]
 
@@ -303,7 +303,7 @@ Azure Stack Edge デバイスのローカル UI で、これらの手順に従�
 
 ## <a name="validate-data-transfer-through-vpn"></a>VPN 経由のデータ転送を確認する
 
-VPN が動作していることを確認するには、データを SMB 共有にコピーします。 Azure Stack Edge デバイスで「[共有の追加](azure-stack-edge-j-series-manage-shares.md#add-a-share)」の手順に従います。 
+VPN が動作していることを確認するには、データを SMB 共有にコピーします。 Azure Stack Edge デバイスで「[共有の追加](azure-stack-edge-gpu-manage-shares.md#add-a-share)」の手順に従います。 
 
 1. クライアント システムにマウントした SMB 共有に、\data\pictures\waterfall.jpg などのファイルをコピーします。 
 2. データがコピーされている間に、そのデータが VPN 経由で移動していることを確認するには、次のようにします。

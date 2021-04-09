@@ -12,10 +12,10 @@ ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 07/16/2019
 ms.openlocfilehash: a5814bfe3bd6ec2d97a068ea8ce71fa7ffea8ec0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91323585"
 ---
 # <a name="use-cli-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>CLI を使用してフェールオーバー グループに Azure SQL Database エラスティック プールを追加する
@@ -52,7 +52,7 @@ az group delete --name $resource
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | 説明 |
+| command | 説明 |
 |---|---|
 | [az sql elastic-pool](/cli/azure/sql/elastic-pool) | エラスティック プールのコマンド。 |
 | [az sql failover-group ](/cli/azure/sql/failover-group) | フェールオーバー グループのコマンド。 |

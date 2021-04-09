@@ -7,10 +7,10 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.openlocfilehash: f41c6c8ab4e5b00c7281a75eeccb09a6e894764e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102039412"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Azure Monitor のメトリック アラート ルール用の Resource Manager テンプレート サンプル

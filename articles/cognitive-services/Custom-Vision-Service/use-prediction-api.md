@@ -12,10 +12,10 @@ ms.date: 04/02/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7f1939536e033d2cf964dd2f4ee562e4ee20061b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88934754"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Prediction API でモデルを使用する
@@ -27,7 +27,7 @@ ms.locfileid: "88934754"
 
 ## <a name="publish-your-trained-iteration"></a>トレーニング済みイテレーションを発行する
 
-[Custom Vision の Web ページ](https://customvision.ai)から自分のプロジェクトを選択し、 __[Performance]__ \(パフォーマンス) タブを選択します。
+[Custom Vision の Web ページ](https://customvision.ai)から自分のプロジェクトを選択し、__[Performance]__ \(パフォーマンス) タブを選択します。
 
 Prediction API にイメージを送信するには、まず予測のイテレーションを発行する必要があり、これは __[Publish]__ \(発行\) を選択して、発行されたイテレーションの名前を指定して実行できます。 これにより、モデルが、Custom Vision Azure リソースの Prediction API にアクセスできるようになります。
 
@@ -46,7 +46,7 @@ Prediction API にイメージを送信するには、まず予測のイテレ�
 ![イメージ ファイルと Prediction-Key 値を使用するための Prediction URL が赤い四角形で囲まれた、パフォーマンス タブが表示されます。](./media/use-prediction-api/prediction-api-info.png)
 
 
-このガイドでは、ローカル イメージを使用します。そのため、 **[If you have an image file]\(イメージ ファイルがある場合\)** の下にある URL を一時的な場所にコピーします。 対応する __Prediction-Key__ 値もコピーします。
+このガイドでは、ローカル イメージを使用します。そのため、**[If you have an image file]\(イメージ ファイルがある場合\)** の下にある URL を一時的な場所にコピーします。 対応する __Prediction-Key__ 値もコピーします。
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
 

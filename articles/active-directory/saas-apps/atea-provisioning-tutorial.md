@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/25/2021
 ms.author: Zhchia
 ms.openlocfilehash: 1991c27ee992a08c3f31cd90df016bf19405f56a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101653204"
 ---
 # <a name="tutorial-configure-atea-for-automatic-user-provisioning"></a>チュートリアル:Atea を構成し、自動ユーザー プロビジョニングに対応させる

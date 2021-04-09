@@ -11,18 +11,20 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7099de23b825fa7af203dff9696bb53e23a099c8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a1dee21182349108c44f9d498417d3b760ac4913
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741118"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103600864"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>Azure Active Directory でセルフサービス パスワード リセットをトラブルシューティングする
 
 Azure Active Directory (Azure AD) のセルフサービス パスワード リセット (SSPR) を使用すると、ユーザーはクラウド内の自分のパスワードをリセットできます。
 
-SSPR で問題が発生した場合は、次のトラブルシューティング手順と一般的なエラーが役立つことがあります。 問題に対する回答が見つからない場合は、[Microsoft のサポート チームがいつでも](#contact-microsoft-support)問題の解決をお手伝いいたします。
+SSPR で問題が発生した場合は、次のトラブルシューティング手順と一般的なエラーが役立つことがあります。 この短いビデオでは、[6 つの最も一般的な SSPR エンドユーザー エラー メッセージを解決する方法](https://www.youtube.com/watch?v=9RPrNVLzT8I&list=PL3ZTgFEc7LyuS8615yo39LtXR7j1GCerW&index=1)についても説明します。
+
+問題に対する回答が見つからない場合は、[Microsoft のサポート チームがいつでも](#contact-microsoft-support)問題の解決をお手伝いいたします。
 
 ## <a name="sspr-configuration-in-the-azure-portal"></a>Azure Portal の SSPR 構成
 

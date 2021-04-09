@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 597a7c3954912a3a86b5db9f92ba75e8aaee63f6
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4c8ee3a65c26d1eb3acb7b9f4c18f11e870e4b82
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601817"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102434524"
 ---
 # <a name="about-the-speech-sdk"></a>Speech SDK について
 
@@ -58,13 +58,14 @@ Speech SDK は Speech サービスの機能が多数含まれていますが、�
 
 ### <a name="voice-assistants"></a>音声アシスタント
 
-Speech SDK を使用した[音声アシスタント](voice-assistants.md)により、開発者はアプリケーションやエクスペリエンス向けに自然で人間のような会話型インターフェイスを作成できます。 音声アシスタント サービスは、デバイスとアシスタントの間で高速かつ信頼性の高い対話機能を提供します。 実装では、Bot Framework の Direct Line Speech チャネルまたは統合された Custom Commands サービスを使用してタスクを完了します。 さらに、音声アシスタントでは、[Custom Voice Portal](https://aka.ms/customvoice) で作成したカスタム音声を使用して、固有の音声出力エクスペリエンスを追加できます。
+Speech SDK を使用した[音声アシスタント](voice-assistants.md)により、アプリケーションやエクスペリエンス向けに自然で人間のような会話型インターフェイスを作成できます。 Speech SDK には高速で信頼性の高い対話機能が備わっており、音声テキスト変換、テキスト読み上げ、会話データが 1 回の接続で提供されます。 実装では、Bot Framework の Direct Line Speech チャネルまたは統合された Custom Commands サービスを使用してタスクを完了できます。 さらに、音声アシスタントでは、[Custom Voice Portal](https://aka.ms/customvoice) で作成したカスタム音声を使用して、固有の音声出力エクスペリエンスを追加できます。
 
-**音声アシスタント** は、次のプラットフォームで使用できます。
+**音声アシスタント** のサポートは、次のプラットフォームで利用できます。
 
   - C++/Windows、Linux、および macOS
   - C#/Windows
   - Java/Windows、Linux、macOS、および Android (Speech Devices SDK)
+  - Go
 
 #### <a name="keyword-spotting"></a>キーワード認識
 
@@ -113,7 +114,7 @@ Speech SDK は、テレフォニー データが生成されるコール セン�
 
 ### <a name="codec-compressed-audio-input"></a>コーデック圧縮音声入力
 
-いくつかの Speech SDK プログラミング言語では、コーデック圧縮音声入力ストリームをサポートしています。 詳細については、「<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">圧縮音声入力形式を使用する<span class="docon docon-navigate-external x-hidden-focus"></span></a>」を参照してください。
+いくつかの Speech SDK プログラミング言語では、コーデック圧縮音声入力ストリームをサポートしています。 詳細については、「<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">圧縮音声入力形式を使用する</a>」を参照してください。
 
 **コーデック圧縮音声入力** は、次のプラットフォームで使用できます。
 

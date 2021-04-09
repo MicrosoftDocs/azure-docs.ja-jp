@@ -11,11 +11,11 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e163ea34948906060996ee952f45ec0cdb467557
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: bbb4298d0d9a9d7589c4a2055b4d55a0b852f951
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97504357"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure Government クラウドのハイブリッド ID に関する考慮事項
@@ -24,9 +24,6 @@ ms.locfileid: "97504357"
 
 > [!NOTE]
 > Microsoft Active Directory 環境 (オンプレミスのもの、または同じクラウド インスタンスの一部である IaaS にホストされているもの) を Azure Government クラウドと統合するには、[Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) の最新リリースにアップグレードする必要があります。
-
-> [!NOTE]
-> この記事には、Microsoft が使用しなくなった "*ホワイトリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 米国政府の国防総省エンドポイントの完全一覧については、[こちらのドキュメント](/office365/enterprise/office-365-u-s-government-dod-endpoints)を参照してください。
 

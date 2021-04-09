@@ -7,10 +7,10 @@ ms.author: lle
 author: lle
 ms.date: 04/14/2020
 ms.openlocfilehash: 916d799ba08f46cb86ee2e22c4af7fc1b92b385f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100386154"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Azure SQL Managed Instance エージェントを使用して SSIS パッケージを実行する

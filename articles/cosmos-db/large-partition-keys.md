@@ -9,10 +9,10 @@ ms.date: 09/28/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4ad26d63ca06f5a46a4a1f77d329d04896e96c52
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93339299"
 ---
 # <a name="create-containers-with-large-partition-key"></a>大きいパーティション キーを持つコンテナーを作成する

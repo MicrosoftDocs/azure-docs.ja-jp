@@ -11,10 +11,10 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.openlocfilehash: fdbbc6c53e43d3ecc9fd4ecb563bd7ec798f8888
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99257581"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Azure AD でのパスワードベースのシングル サインオンのトラブルシューティング

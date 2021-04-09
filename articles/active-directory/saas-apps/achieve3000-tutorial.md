@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Achieve3000 の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Achieve3000 の統合 | Microsoft Docs'
 description: Azure Active Directory と Achieve3000 の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 9af00fef9c15ada44a5475bb419387b32b06d139
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92313376"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-achieve3000"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Achieve3000 の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-achieve3000"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Achieve3000 の統合
 
 このチュートリアルでは、Achieve3000 と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Achieve3000 を統合すると、次のことができます。
 
@@ -72,7 +72,7 @@ Achieve3000 に対する Azure AD SSO を構成してテストするには、次
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Achieve3000** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Achieve3000** アプリケーション統合ページで、**[管理]** セクションを探して、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -137,11 +137,11 @@ Achieve3000 に対する Azure AD SSO を構成してテストするには、次
 
 ## <a name="configure-achieve3000-sso"></a>Achieve3000 の SSO の構成
 
-**Achieve3000** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Achieve3000 サポート チーム](https://www.achieve3000.com/contact-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Achieve3000** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Achieve3000 サポート チーム](https://www.achieve3000.com/contact-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-achieve3000-test-user"></a>Achieve3000 のテスト ユーザーの作成
 
-このセクションでは、Achieve3000 で B.Simon というユーザーを作成します。  [Achieve3000 サポート チーム](https://www.achieve3000.com/contact-us/)と協力して、Achieve3000 プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Achieve3000 で B.Simon というユーザーを作成します。 [Achieve3000 サポート チーム](https://www.achieve3000.com/contact-us/)と連携し、Achieve3000 プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

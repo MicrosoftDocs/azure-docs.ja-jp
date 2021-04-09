@@ -4,10 +4,10 @@ description: 大規模な並列ワークロードと HPC ワークロードに�
 ms.topic: overview
 ms.date: 07/30/2020
 ms.openlocfilehash: dbd27dc1a00966a2d71952335cfb47c7ca55bc24
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98743102"
 ---
 # <a name="what-is-azure-batch"></a>Azure Batch とは

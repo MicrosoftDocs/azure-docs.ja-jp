@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 7158e9f82ee01b320d448baeab51fcfd122be00d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 73b958964db2d0b308dd6dfc34024d61ce5ad8af
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944677"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871437"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Azure HDInsight でのスクリプト アクションのトラブルシューティング
 
@@ -26,11 +26,11 @@ Apache Ambari Web UI を使用すると、スクリプト アクションによ�
 
 1. ページ上部のバーから **[OPS]** エントリを選択します。 これにより、Ambari を使用してクラスターで実行される、現在と過去の操作の一覧が表示されます。
 
-    ![Ambari Web UI バーで OPS を選択](./media/troubleshoot-script-action/hdi-apache-ambari-nav.png)
+    :::image type="content" source="./media/troubleshoot-script-action/hdi-apache-ambari-nav.png" alt-text="Ambari Web UI バーで OPS を選択" border="true":::
 
 1. **[Operations]** 列で **run\_customscriptaction** エントリを探します。 これらのエントリは、スクリプト アクションの実行時に作成されます。
 
-    ![Apache Ambari スクリプト アクションの操作](./media/troubleshoot-script-action/ambari-script-action.png)
+    :::image type="content" source="./media/troubleshoot-script-action/ambari-script-action.png" alt-text="Apache Ambari スクリプト アクションの操作" border="true":::
 
     **STDOUT** と **STDERR** の出力を表示するには、**run\customscriptaction** エントリを選択してリンクをたどります。 この出力結果はスクリプトの実行時に生成され、有益な情報が含まれていることがあります。
 
@@ -40,7 +40,7 @@ Apache Ambari Web UI を使用すると、スクリプト アクションによ�
 
 * ストレージ ログは、 `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`にあります。
 
-    ![スクリプト アクション ログ](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
+    :::image type="content" source="./media/troubleshoot-script-action/script-action-logs-in-storage.png" alt-text="スクリプト アクション ログ" border="true":::
 
     このディレクトリの下で、**ヘッド ノード**、**ワーカー ノード**、および **zookeeper ノード** ごとにログが整理されています。 次の例を参照してください。
 

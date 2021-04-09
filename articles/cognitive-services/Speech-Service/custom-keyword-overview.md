@@ -12,10 +12,10 @@ ms.date: 04/06/2020
 ms.author: hasshah
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b2763372cc63637f73610e1936e3ea54a4524e7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91356606"
 ---
 # <a name="what-is-a-keyword"></a>キーワードとは

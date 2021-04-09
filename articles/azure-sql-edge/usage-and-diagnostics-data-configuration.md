@@ -9,10 +9,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 08/04/2020
 ms.openlocfilehash: 81b2aabbae148faec06c9ab420bdfecde475b4bb
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97605004"
 ---
 # <a name="azure-sql-edge-usage-and-diagnostics-data-configuration"></a>Azure SQL Edge の使用状況と診断データの構成

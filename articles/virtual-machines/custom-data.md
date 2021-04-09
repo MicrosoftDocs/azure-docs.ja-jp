@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/06/2020
 ms.author: mimckitt
 ms.openlocfilehash: 2924caaac5fb8c512100d9e897f7f153af9a3b3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87284916"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Azure 仮想マシンでのカスタム データと cloud-init
@@ -88,7 +88,7 @@ Azure では、現在、次の 2 つのプロビジョニング エージェン�
 * 新しいインスタンスは、新しいカスタム データを受け取ります。
 
 ### <a name="can-i-place-sensitive-values-in-custom-data"></a>カスタム データに機密性の高い値を配置できますか?
-機密性の高いデータはカスタム データに格納**しない**ことをお勧めします。 詳細については、[Azure のセキュリティと暗号化のベスト プラクティス](../security/fundamentals/data-encryption-best-practices.md)に関する記事を参照してください。
+機密性の高いデータはカスタム データに格納 **しない** ことをお勧めします。 詳細については、[Azure のセキュリティと暗号化のベスト プラクティス](../security/fundamentals/data-encryption-best-practices.md)に関する記事を参照してください。
 
 
 ### <a name="is-custom-data-made-available-in-imds"></a>カスタム データは IMDS で使用できますか?

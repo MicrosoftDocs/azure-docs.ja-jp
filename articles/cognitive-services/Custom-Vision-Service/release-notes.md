@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: pafarley
 ms.openlocfilehash: 3724a7d515197c1f969bb051fc201b82bee64c42
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97813498"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service リリース ノート

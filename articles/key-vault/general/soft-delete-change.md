@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: sudbalas
 ms.openlocfilehash: b96f2ca4f925846bd252e5cfd35088d832f5c216
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98572869"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>すべてのキー コンテナーでの論理的な削除の有効化

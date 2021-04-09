@@ -2,13 +2,13 @@
 title: '[Azure にデプロイ] ボタン'
 description: Azure Resource Manager テンプレートを GitHub リポジトリからデプロイするためのボタンを使用する。
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: abe59f377474540e9209691df8b1d1a7b806c26d
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.date: 03/25/2021
+ms.openlocfilehash: e25d49571347bb5ed27dbd52bb60c68cbeb4360d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028745"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105543782"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>デプロイ ボタンを使用して GitHub リポジトリからテンプレートをデプロイする
 
@@ -76,7 +76,7 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 
 リンクの完全な URL が表示されます。
 
-通常は、パブリック リポジトリでテンプレートをホストします。 プライベート リポジトリを使用する場合は、テンプレートの生コンテンツにアクセスするためのトークンを含める必要があります。 GitHub によって生成されるトークンは、短時間のみ有効です。 リンクを頻繁に更新する必要があります。
+[!INCLUDE [Deploy templates in private GitHub repo](../../../includes/resource-manager-private-github-repo-templates.md)]
 
 GitHub リポジトリの代わりに [Azure Repos と共に Git](/azure/devops/repos/git/) を使用する場合でも、 **[Deploy to Azure]\(Azure にデプロイ\)** ボタンを使用できます。 リポジトリがパブリックであることを確認します。 テンプレートを取得するには [Items 操作](/rest/api/azure/devops/git/items/get)を使用します。 要求は次の形式にする必要があります。
 

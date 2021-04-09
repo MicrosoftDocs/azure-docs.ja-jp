@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: eb70a31d0fa5f231bd0db8ca27517ce43fe1db28
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 3b5204f1d390388c2dc9a10ac2ca0234f6b0499b
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007817"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101343"
 ---
 # <a name="container-security-in-security-center"></a>Security Center のコンテナーのセキュリティ
 
@@ -42,7 +42,7 @@ Security Center では、次のコンテナー リソースの種類を保護で
 
 次のスクリーンショットは、資産インベントリ ページと、Security Center によって保護されるさまざまなコンテナー リソースの種類を示しています。
 
-:::image type="content" source="./media/container-security/container-security-tab.png" alt-text="Security Center の資産インベントリ ページのコンテナー関連リソース" lightbox="./media/container-security/container-security-tab.png":::
+:::image type="content" source="./media/container-security/inventory-container-resources.png" alt-text="Security Center の資産インベントリ ページのコンテナー関連リソース" lightbox="./media/container-security/inventory-container-resources.png":::
 
 ## <a name="vulnerability-management---scanning-container-images"></a>脆弱性管理 - コンテナー イメージのスキャン
 
@@ -92,7 +92,7 @@ Security Center が受信して分析する項目には、以下が含まれて�
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>Kubernetes 受付制御を使用したワークロード保護のベストプラクティス
 
-Kubernetes コンテナーのワークロードを保護する推奨事項のバンドルを取得するには、**Kubernetes 用 Azure Policy アドオン** をインストールします。 「[拡張機能の自動プロビジョニングの有効化](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)」で説明されているように、このアドオンは自動的にデプロイすることもできます。 アドオンの自動プロビジョニングが "オン" に設定されている場合は、既存のクラスターおよび今後作成されるクラスターすべて (アドオンのインストール要件を満たすもの) で、拡張機能が既定で有効になります。
+Kubernetes コンテナーのワークロードを保護する推奨事項のバンドルを取得するには、**Kubernetes 用 Azure Policy アドオン** をインストールします。 「[Log Analytics エージェントと拡張機能の自動プロビジョニングの有効化](security-center-enable-data-collection.md#auto-provision-mma)」の説明に従って、このアドオンを自動でデプロイすることもできます。 アドオンの自動プロビジョニングが "オン" に設定されている場合は、既存のクラスターおよび今後作成されるクラスターすべて (アドオンのインストール要件を満たすもの) で、拡張機能が既定で有効になります。
 
 [こちらの Kubernetes 用 Azure Policy ページ](../governance/policy/concepts/policy-for-kubernetes.md)で説明するように、アドオンによって、 [Open Policy Agent](https://www.openpolicyagent.org/) 用オープンソース [Gatekeeper v3](https://github.com/open-policy-agent/gatekeeper)  アドミッション コントローラー Webhook が拡張されます。 Kubernetes アドミッション コントローラーは、クラスターの使用方法を規定するプラグインです。 アドオンは Webhook として Kubernetes 受付制御に登録され、大規模な実施内容と安全対策を、一元的で一貫性のある方法でお使いのクラスターに適用できるようにします。 
 

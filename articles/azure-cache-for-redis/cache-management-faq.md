@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
 ms.openlocfilehash: 15c7ed4ca9d04e4bb314eea8b92bef749d2369b1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92537662"
 ---
 # <a name="azure-cache-for-redis-management-faqs"></a>Azure Cache for Redis 管理に関してよくあるご質問
@@ -142,12 +142,12 @@ IOCP スレッドまたは WORKER スレッドの拡大がスロットルされ�
     ```
 
     > [!NOTE]
-    > このメソッドによって指定された値はグローバル設定であり、AppDomain 全体に影響を与えます。 たとえば、4 コア マシンをお持ちの場合で、実行時の *minWorkerThreads* および *minIoThreads* を CPU あたり 50 に設定したい場合は、 **ThreadPool.SetMinThreads(200, 200)** を使用します。
+    > このメソッドによって指定された値はグローバル設定であり、AppDomain 全体に影響を与えます。 たとえば、4 コア マシンをお持ちの場合で、実行時の *minWorkerThreads* および *minIoThreads* を CPU あたり 50 に設定したい場合は、**ThreadPool.SetMinThreads(200, 200)** を使用します。
 
 * 最小スレッド数の設定は、通常、`%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` にある `Machine.config` 内の `<processModel>` 構成要素の下にある [*minIoThreads* または *minWorkerThreads* 構成設定](/previous-versions/dotnet/netframework-4.0/7w2sway1(v=vs.100))を使用して指定することもできます。 **この方法で最小スレッド数を設定する方法は、一般的はにお勧めできません。これはシステム全体の設定だからです。**
 
   > [!NOTE]
-  > この構成要素で指定される値は、 " *コアごと* " の設定となります。 たとえば、4 コア マシンをお持ちの場合で、実行時の *minIoThreads* 設定を 200 にしたい場合は、`<processModel minIoThreads="50"/>` を使用します。
+  > この構成要素で指定される値は、 "*コアごと*" の設定となります。 たとえば、4 コア マシンをお持ちの場合で、実行時の *minIoThreads* 設定を 200 にしたい場合は、`<processModel minIoThreads="50"/>` を使用します。
   >
 
 ### <a name="enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis"></a>StackExchange.Redis を使用するときにサーバー GC を有効にしてクライアントでのスループットを向上させる
@@ -159,7 +159,7 @@ StackExchange.Redis を使用するときにサーバー GC を有効にする�
 
 ### <a name="performance-considerations-around-connections"></a>接続のパフォーマンスに関する考慮事項
 
-各価格レベルには、クライアント接続、メモリ、および帯域幅についてさまざまな制限があります。 各キャッシュのサイズが特定の接続数 *まで* 許容される一方で、Redis への各接続はそれにオーバーヘッドが関連付けられています。 このようなオーバーヘッドの例には、TLS/SSL 暗号化の結果としての CPU とメモリの使用量があります。 指定したキャッシュ サイズの最大接続数の上限は、負荷が低いキャッシュを想定しています。 接続オーバーヘッドからの読み込みに *加えて* 、クライアントの操作からの読み込みがシステムの容量を超える場合、現在のキャッシュ サイズが接続数の上限を超えていない場合でも、キャッシュ容量の問題が発生する可能性があります。
+各価格レベルには、クライアント接続、メモリ、および帯域幅についてさまざまな制限があります。 各キャッシュのサイズが特定の接続数 *まで* 許容される一方で、Redis への各接続はそれにオーバーヘッドが関連付けられています。 このようなオーバーヘッドの例には、TLS/SSL 暗号化の結果としての CPU とメモリの使用量があります。 指定したキャッシュ サイズの最大接続数の上限は、負荷が低いキャッシュを想定しています。 接続オーバーヘッドからの読み込みに *加えて*、クライアントの操作からの読み込みがシステムの容量を超える場合、現在のキャッシュ サイズが接続数の上限を超えていない場合でも、キャッシュ容量の問題が発生する可能性があります。
 
 各レベルの異なる接続制限について詳しくは、[Azure Cache for Redis の価格](https://azure.microsoft.com/pricing/details/cache/)についてのページを参照してください。 接続と他の既定の構成について詳しくは、「[既定の Redis サーバー構成](cache-configure.md#default-redis-server-configuration)」をご覧ください。
 

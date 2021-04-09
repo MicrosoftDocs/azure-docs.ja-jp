@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
 ms.openlocfilehash: 854d0fa9b34d495f03a0c3c6203ceb227e4712d2
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94629514"
 ---
 # <a name="how-to-add-a-preview-audience-for-a-virtual-machine-offer"></a>仮想マシン オファーのプレビュー対象ユーザーを追加する方法

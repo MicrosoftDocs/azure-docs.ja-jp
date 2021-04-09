@@ -7,10 +7,10 @@ ms.service: notification-hubs
 ms.topic: article
 ms.date: 01/29/2021
 ms.openlocfilehash: b98a04a70062461cec603bea83052c4f1224819e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101736238"
 ---
 # <a name="enable-diagnostics-logs-for-notification-hubs"></a>Notification Hubs の診断ログを有効にする

@@ -4,10 +4,10 @@ description: この記事では、Kafka アプリケーションを Azure Event 
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: 757db4faf2a933e366bc818d5cf6aab04d0b08ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90061735"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Azure Event Hubs のための Apache Kafka 開発者ガイド
@@ -45,7 +45,7 @@ GitHub の次のチュートリアルを参照してください。
 | チュートリアル | 説明 | 
 | ------------------------- | ----------- | 
 | [Akka](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java) | このチュートリアルでは、プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Akka Streams を Kafka 対応 Event Hubs に接続する方法を示します。 **Java** および **Scala** プログラミング言語を使用する 2 つの個別のチュートリアルがあります。 | 
-| [接続する](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) | このドキュメントでは、Kafka Connect を Azure Event Hubs と統合し、基本的な FileStreamSource および FileStreamSink コネクタをデプロイする方法について説明します。 これらのコネクタは運用環境での使用を想定したものではありませんが、Azure Event Hubs が Kafka ブローカーとして偽装する Kafka Connect のシナリオをエンド ツー エンドで示しています。| 
+| [のインスタンスに接続するときには、](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) | このドキュメントでは、Kafka Connect を Azure Event Hubs と統合し、基本的な FileStreamSource および FileStreamSink コネクタをデプロイする方法について説明します。 これらのコネクタは運用環境での使用を想定したものではありませんが、Azure Event Hubs が Kafka ブローカーとして偽装する Kafka Connect のシナリオをエンド ツー エンドで示しています。| 
 | [Filebeat](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/filebeat) | このドキュメントでは、Filebeat の Kafka の出力を介して Filebeat と Event Hubs を統合する手順について説明します。 | 
 | [Flink](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink) | このチュートリアルでは、プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Apache Flink を Kafka 対応 Event Hubs に接続する方法を示します。 | 
 | [FluentD](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/fluentd) | このドキュメントでは、Fluentd 用の `out_kafka` 出力プラグインを使用して、Fluentd と Event Hubs を統合する方法について説明します。 |

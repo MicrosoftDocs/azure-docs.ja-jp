@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: c187a1521762c0b69d42c81f464694729d3c02f7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "100594215"
 ---
 # <a name="configure-premiumv3-tier-for-azure-app-service"></a>Azure App Service の PremiumV3 レベルの構成

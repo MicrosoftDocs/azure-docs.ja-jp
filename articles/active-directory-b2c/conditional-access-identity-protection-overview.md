@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 09/01/2020
+ms.date: 03/03/2021
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b17706f908613336714bb7daf08fdf3bfd5eaf64
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e2ec8af824d573493d1da743923956e587ded62e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928394"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033828"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Azure AD B2C における Identity Protection と条件付きアクセス
 
@@ -49,21 +49,21 @@ Azure AD Identity Protection と条件付きアクセスを使用して、Azure 
 
 - Azure AD B2C テナントでは、Identity Protection のリスク検出が利用できるのはローカル B2C アカウントのみで、Google や Facebook などのソーシャル ID では利用できません。
 
-- Azure AD B2C テナントで利用できるのは、Identity Protection のリスク検出のサブセットです。 「[Identity Protection を設定する](conditional-access-identity-protection-setup.md#set-up-identity-protection)」を参照してください。
+- Azure AD B2C テナントで利用できるのは、Identity Protection のリスク検出のサブセットです。 [ID 保護によるリスクの調査](identity-protection-investigate-risk.md)および[ユーザー フローへの条件付きアクセスの追加](conditional-access-user-flow.md)に関する記事をご覧ください。
 
 - Azure AD B2C テナントでは、条件付きアクセスのデバイス コンプライアンス機能は利用できません。
 
 
 ## <a name="integrate-conditional-access-with-user-flows-and-custom-policies"></a>ユーザー フローやカスタム ポリシーに条件付きアクセスを統合する
 
-Azure AD B2C では、組み込みのユーザー フローから条件付きアクセスの条件をトリガーすることができます。 カスタム ポリシーに条件付きアクセスを組み込むこともできます。 B2C ユーザー フローの他の部分と同様、エンドユーザー エクスペリエンスのメッセージングも、組織の考えやブランド、リスクを軽減する代替手段に応じてカスタマイズすることができます。 「[条件付きアクセス技術プロファイル](conditional-access-technical-profile.md)」を参照してください。
+Azure AD B2C では、組み込みのユーザー フローから条件付きアクセスの条件をトリガーすることができます。 カスタム ポリシーに条件付きアクセスを組み込むこともできます。 B2C ユーザー フローの他の部分と同様、エンドユーザー エクスペリエンスのメッセージングも、組織の考えやブランド、リスクを軽減する代替手段に応じてカスタマイズすることができます。 [ユーザー フローへの条件付きアクセスの追加](conditional-access-user-flow.md)に関する記事をご覧ください。
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-Azure AD B2C の条件付きアクセス ポリシーは、Microsoft Graph API で管理することもできます。 詳細については、[条件付きアクセスのドキュメント](../active-directory/conditional-access/overview.md)および [Microsoft Graph のリファレンス](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta)を参照してください。
+Azure AD B2C の条件付きアクセス ポリシーは、Microsoft Graph API で管理することもできます。 詳細については、[条件付きアクセスに関するドキュメント](../active-directory/conditional-access/overview.md)および [Microsoft Graph 操作](microsoft-graph-operations.md#conditional-access)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure AD B2C の Identity Protection と条件付きアクセスを設定する](conditional-access-identity-protection-setup.md)
+- [ユーザー フローに条件付きアクセスを追加する](conditional-access-user-flow.md)
 - [Azure AD の Identity Protection について学ぶ](../active-directory/identity-protection/overview-identity-protection.md)
 - [条件付きアクセスについて学ぶ](../active-directory/conditional-access/overview.md)

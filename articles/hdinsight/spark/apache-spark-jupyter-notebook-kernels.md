@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: a16ec623d7475a80e546df43495db1a357a5fa66
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ef2bc5e00779200e5447c8829a437824657a2227
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98930400"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865980"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Apache Spark クラスター上の Jupyter Notebook のカーネル
 
@@ -32,7 +32,7 @@ HDInsight での Apache Spark クラスター。 手順については、「 [Cr
 
 2. **[概要]** ビューから、 **[クラスター ダッシュボード]** ボックスの **[Jupyter Notebook]** を選択します。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
-    ![Azure Spark 上の Jupyter Notebook](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Spark 上の Jupyter Notebook")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png " alt-text="Azure Spark 上の Jupyter Notebook" border="true":::
   
    > [!NOTE]  
    > ブラウザーで次の URL を開き、Spark クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
@@ -41,7 +41,7 @@ HDInsight での Apache Spark クラスター。 手順については、「 [Cr
 
 3. **[新規]** を選択し、 **[Pyspark]** 、 **[PySpark3]** 、または **[Spark]** を選択して、Notebook を作成します。 Scala アプリケーションには Spark カーネルを、Python2 アプリケーションには PySpark カーネルを、Python3 アプリケーションには PySpark3 カーネルを使用します。
 
-    ![Spark 上の Jupyter Notebook 用のカーネル](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Spark 上の Jupyter Notebook 用のカーネル")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png " alt-text="Spark 上の Jupyter Notebook 用のカーネル" border="true":::
 
 4. Notebook が、選択したカーネルで開きます。
 

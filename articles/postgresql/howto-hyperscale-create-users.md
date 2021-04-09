@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
 ms.openlocfilehash: 3d23ee6119b625e11ce44bb9ad11ce4b3ee0280d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91295738"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) でユーザーを作成する
@@ -52,7 +52,7 @@ Hyperscale (Citus) はマネージド PaaS サービスであるため、Microso
 
 2. ロール名とパスワードを入力します。 **[保存]** をクリックします。
 
-   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="[ロール] ページ":::
+   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="ロールの追加":::
 
 ユーザーは、サーバー グループのコーディネーター ノード上に作成され、すべてのワーカー ノードに伝達されます。 Azure portal によって作成されたロールには `LOGIN` 属性があります。つまり、これらはデータベースにサインインできる実際のユーザーであることを意味します。
 
@@ -77,7 +77,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
 
 ユーザーを更新するには、Hyperscale (Citus) サーバー グループの **[ロール]** ページに移動して、ユーザーの横にある省略記号 **[...]** をクリックします。 省略記号をクリックすると、ユーザーの削除やパスワードのリセットのためのメニューが表示されます。
 
-   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="[ロール] ページ":::
+   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="ロールを編集する":::
 
 `citus` ロールには特権が与えられているため、削除できません。
 

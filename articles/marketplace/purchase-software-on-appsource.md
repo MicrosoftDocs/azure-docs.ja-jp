@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 03/20/2020
 ms.openlocfilehash: bfdae8de4c1a460844b09f82048e1e1d6abdb2ad
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91708035"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Microsoft AppSource でソフトウェアを購入する方法

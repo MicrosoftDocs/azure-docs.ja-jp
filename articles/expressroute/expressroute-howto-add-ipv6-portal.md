@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 2/9/2021
 ms.author: duau
-ms.openlocfilehash: 67f296c7584fcf25af79f9125137aca07c9906fd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ef6ea9017a9aaa98e153df0d67f0b54fe5a2b64d
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744037"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124161"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>Azure portal を使用してプライベート ピアリングに対する IPv6 サポートを追加する (プレビュー)
 
@@ -88,16 +88,19 @@ IPv6 プライベート ピアリングを使用して Availability Zones があ
 
 2. [デュアルスタック ゲートウェイ サブネットを作成します](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager#create-the-gateway-subnet)。
 
-3. ゾーン冗長 SKU (ErGw1AZ、ErGw2AZ、ErGw3AZ) を使用して[仮想ネットワーク ゲートウェイを作成します](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager#create-the-virtual-network-gateway)。 FastPath の使用を計画している場合は、ErGw3AZ を使用します。
+3. ゾーン冗長 SKU (ErGw1AZ、ErGw2AZ、ErGw3AZ) を使用して[仮想ネットワーク ゲートウェイを作成](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager#create-the-virtual-network-gateway)します。 FastPath を使用する予定であれば、ErGw3AZ を使用してください (これは ExpressRoute Direct を利用する回線でのみ利用できます)。
 
 4. [仮想ネットワークを ExpressRoute 回線にリンクします](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager)。
 
 ## <a name="limitations"></a>制限事項
 IPv6 サポートは、Availability Zones があるリージョン内のデプロイへの接続に使用できますが、次のユース ケースはサポートされていません。
 
-* AZ ExpressRoute ゲートウェイ SKU 以外を使用した Azure 内のデプロイへの接続
+* Azure 内のデプロイへの接続に AZ ExpressRoute ゲートウェイ SKU 以外を使用
 * AZ リージョン内以外のデプロイへの接続
 * ExpressRoute 回線間の Global Reach 接続
+* ExpressRoute と仮想 WAN の使用
+* ExpressRoute Direct 以外の回線の FastPath
+* VPN Gateway との共存
 
 ## <a name="next-steps"></a>次のステップ
 

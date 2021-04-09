@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
 ms.openlocfilehash: 37d47c36ebbd7c274bac2a9e1b7e940614f2aa6f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92511678"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>チュートリアル:Azure Active Directory と ProMaster (by Inlogik) の統合
@@ -41,7 +41,7 @@ ProMaster (by Inlogik) と Azure AD の統合を構成するには、次のも�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* ProMaster (by Inlogik) では、 **SP** Initiated SSO と **IDP** Initiated SSO がサポートされます
+* ProMaster (by Inlogik) では、**SP** Initiated SSO と **IDP** Initiated SSO がサポートされます
 * ProMaster (by Inlogik) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-promaster-by-inlogik-from-the-gallery"></a>ギャラリーからの ProMaster (by Inlogik) の追加
@@ -52,12 +52,12 @@ Azure AD への ProMaster (by Inlogik) の統合を構成するには、ギャ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **ProMaster (by Inlogik)** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**ProMaster (by Inlogik)** 」と入力します。
 1. 結果のパネルから **[ProMaster (by Inlogik)]** を選択し、そのアプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **B.Simon** というテスト ユーザーに基づいて、ProMaster (by Inlogik) で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**B.Simon** というテスト ユーザーに基づいて、ProMaster (by Inlogik) で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと ProMaster (by Inlogik) の関連ユーザーの間にリンク関係が確立されている必要があります。
 
 ProMaster (by Inlogik) で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -151,7 +151,7 @@ ProMaster (by Inlogik) で Azure AD シングル サインオンを構成する�
 
 ## <a name="configure-promaster-by-inlogik-sso"></a>ProMaster (by Inlogik) SSO の構成
 
-**ProMaster (by Inlogik)** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [ProMaster (by Inlogik) サポート チーム](https://www.inlogik.com/contact)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**ProMaster (by Inlogik)** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [ProMaster (by Inlogik) サポート チーム](https://www.inlogik.com/contact)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-promaster-by-inlogik-test-user"></a>ProMaster (by Inlogik) テスト ユーザーの作成
 

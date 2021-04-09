@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/06/2020
 ms.author: yelevin
 ms.openlocfilehash: d5140bcd85606213f00185d4ba1f50dbe70dba63
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94655496"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-office-365"></a>Microsoft Defender for Office 365 からアラートに接続する 

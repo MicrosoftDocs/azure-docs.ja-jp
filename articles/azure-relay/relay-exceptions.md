@@ -4,10 +4,10 @@ description: Azure Relay の例外と、それを解決するための推奨さ�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 44eeba6eb7b8cfd4e81a923c2d9a3155f1709f2c
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98625150"
 ---
 # <a name="azure-relay-exceptions"></a>Azure Relay の例外
@@ -43,7 +43,7 @@ Relay API からは、次のカテゴリに分類できる例外が生成され�
 | [未承認のアクセス](/dotnet/api/system.unauthorizedaccessexception) |[TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) オブジェクトはトークンを取得できませんでした。トークンが無効です。または、操作の実行に必要な要求がトークンに含まれていません。 |正しい値を使用してトークン プロバイダーを作成します。 Access Control Service の構成を確認します。 |再試行によって解決する場合があります。再試行ロジックをコードに追加してください。 |
 | [引数の例外](/dotnet/api/system.argumentexception)、<br /> [引数が null](/dotnet/api/system.argumentnullexception)、<br />[範囲外の引数](/dotnet/api/system.argumentoutofrangeexception) |以下のいずれかまたは複数が発生しています。<br />メソッドに指定された 1 つまたは複数の引数が無効です。<br /> [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) または [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) に指定された URI に 1 つまたは複数のパス セグメントが含まれています。<br />[NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) または [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) に指定された URI スキームが無効です。 <br />プロパティ値が 32 KB を超えています。 |呼び出し元のコードを確認し、引数が正しいことを確かめます。 |再試行によって解決することはありません。 |
 | [サーバー ビジー](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) |この時点では、このサービスで要求を処理できません。 |クライアントは、しばらく待ってから操作をやり直すことができます。 |クライアントは、特定の間隔の後に再試行することができます。 再試行の結果として別の例外が発生した場合は、その例外の再試行動作を確認します。 |
-| [クォータを超過した](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) |メッセージング エンティティが最大許容サイズに達しています。 |エンティティまたはそのサブキューからメッセージを受信して、エンティティ内に領域を作成します。 「 [QuotaExceededException](#quotaexceededexception)」を参照してください。 |メッセージがそれまでに削除されている場合は、再試行によって解決することがあります。 |
+| [クォータ超過](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) |メッセージング エンティティが最大許容サイズに達しています。 |エンティティまたはそのサブキューからメッセージを受信して、エンティティ内に領域を作成します。 「 [QuotaExceededException](#quotaexceededexception)」を参照してください。 |メッセージがそれまでに削除されている場合は、再試行によって解決することがあります。 |
 | [メッセージ サイズの超過](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) |メッセージ ペイロードが 256 KB の制限を超えています。 256 KB までに制限されているのはメッセージの合計サイズであることに注意してください。 メッセージの合計サイズには、システム プロパティや Microsoft .NET のオーバーヘッドも含まれる場合があります。 |メッセージ ペイロードのサイズを小さくし、操作を再試行します。 |再試行によって解決することはありません。 |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
@@ -79,7 +79,7 @@ The time allotted to this operation may have been a portion of a longer timeout.
 
     場合によっては、Relay サービスで要求の処理が遅れることがあります。 これは、トラフィックの多い時間帯などに発生することがあります。 これが発生した場合は、遅延の後、操作が成功するまで操作を再試行できます。 複数回試行しても同じ操作が失敗する場合は、[Azure のサービス状態のサイト](https://azure.microsoft.com/status/)を確認し、既知のサービス停止がないかどうかを確認してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Relay に関する FAQ](relay-faq.md)
 * [Relay 名前空間の作成](relay-create-namespace-portal.md)
 * [Azure Relay と .NET の使用](relay-hybrid-connections-dotnet-get-started.md)

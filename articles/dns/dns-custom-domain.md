@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 7/13/2019
 ms.author: rohink
 ms.openlocfilehash: 4d8af5815e544698ab833001e5ce6d0f4a30a264
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92487400"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Azure DNS を使用して Azure サービス用のカスタム ドメイン設定を提供する
@@ -105,7 +105,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 ![[+ ホスト名の追加] ボタンが強調表示されているスクリーンショット。](./media/dns-custom-domain/figure1.png)
 
-プロセスが完了したら、 **nslookup** を実行して、名前解決が機能していることを検証します。
+プロセスが完了したら、**nslookup** を実行して、名前解決が機能していることを検証します。
 
 ![図 1](./media/dns-custom-domain/finalnslookup.png)
 

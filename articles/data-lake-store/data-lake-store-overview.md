@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 04/17/2019
 ms.author: twooley
 ms.openlocfilehash: 52c00359fb4e759d9517dee958e31c00feb2b33e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92149245"
 ---
 # <a name="what-is-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 とは

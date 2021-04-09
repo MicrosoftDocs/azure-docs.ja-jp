@@ -7,10 +7,10 @@ ms.author: v-jysur
 ms.date: 12/16/2020
 ms.custom: references_regions
 ms.openlocfilehash: 3f6131bc585b91676f29ed34dfedd49a5ca92201
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102041792"
 ---
 # <a name="it-service-management-connector-overview"></a>IT Service Management Connector 概要

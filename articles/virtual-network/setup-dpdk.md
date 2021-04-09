@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: ba7c2a37d58f20ac4ff1f49a46a406d1b1f70106
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 3b4d66525ec52ef2382dfbe97bc09278e35b31fb
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704420"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124671"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Linux 仮想マシンでの DPDK の設定
 
@@ -58,7 +58,7 @@ Azure Marketplace の次のディストリビューションがサポートさ�
 
 ## <a name="prerequisites"></a>前提条件
 
-Linux 仮想マシン上で高速ネットワークを有効にする必要があります。 仮想マシンは、管理用の 1 つのインターフェイスに加えて、少なくとも 2 つのネットワーク インターフェイスを保持している必要があります。 [高速ネットワークを有効にした Linux 仮想マシンを作成する](create-vm-accelerated-networking-cli.md)方法について説明します。
+Linux 仮想マシン上で高速ネットワークを有効にする必要があります。 仮想マシンは、管理用の 1 つのインターフェイスに加えて、少なくとも 2 つのネットワーク インターフェイスを保持している必要があります。 管理インターフェイスで高速ネットワークを有効にすることは推奨されません。 [高速ネットワークを有効にした Linux 仮想マシンを作成する](create-vm-accelerated-networking-cli.md)方法について説明します。
 
 ## <a name="install-dpdk-dependencies"></a>DPDK 依存関係をインストールする
 

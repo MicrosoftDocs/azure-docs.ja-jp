@@ -1,22 +1,22 @@
 ---
-title: チュートリアル - Azure での Windows VM の高可用性
-description: このチュートリアルでは、Azure PowerShell を使用して、可用性セット内での高可用性仮想マシンをデプロイする方法について説明します
-services: virtual-machines-windows
-author: cynthn
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.topic: tutorial
-ms.date: 11/30/2018
-ms.author: cynthn
+title: Azure PowerShell を使用して可用性セットに VM をデプロイする
+description: Azure PowerShell を使用して、可用性セットに高可用性仮想マシンをデプロイする方法について説明します
+services: virtual-machines
+author: mimckitt
+ms.service: virtual-machines
+ms.topic: how-to
+ms.date: 3/8/2021
+ms.author: mimckitt
+ms.reviewer: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e1c9cf0a60446fba6fae5c850231b0805e7ea135
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 178a29ea37195ddd2013ca5220663a75132beb24
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736654"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102555909"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して高可用性仮想マシンを作成してデプロイする
+# <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-powershell"></a>Azure PowerShell を使用して可用性セットに仮想マシンを作成およびデプロイする
 
 このチュートリアルでは、可用性セットを使用して、仮想マシン (VM) の可用性と信頼性を向上させる方法を学習します。 可用性セットを使うことで、Azure にデプロイする VM は、クラスター内で切り離された複数のハードウェア ノードに確実に分散されます。 
 
@@ -28,14 +28,6 @@ ms.locfileid: "98736654"
 > * 使用可能な VM のサイズを確認する
 > * Azure Advisor を確認する
 
-
-## <a name="availability-set-overview"></a>可用性セットの概要
-
-可用性セットは、デプロイされる VM リソースを相互に分離するための論理的なグループ化機能です。 Azure では、可用性セット内に配置された VM は、複数の物理サーバー、コンピューティング ラック、ストレージ ユニット、およびネットワーク スイッチ間で実行されます。 ハードウェアまたはソフトウェアの障害が発生した場合、影響を受けるのは VM のサブセットだけであり、ソリューション全体は動作状態を維持します。 可用性セットは、信頼性の高いクラウド ソリューションの構築に不可欠です。
-
-4 台のフロントエンド Web サーバーと 2 台のバックエンド VM がある典型的な VM ベースのソリューションを考えてみましょう。 Azure では、VM をデプロイする前に、2 つの可用性セット (Web 層用に 1 つ、バック層用に 1 つ) を定義します。 新しい VM を作成するときに、可用性セットをパラメーターとして指定します。 Azure により、VM は複数の物理的なハードウェア リソースに分離されます。 いずれかのサーバーが実行されている物理ハードウェアで問題が発生した場合でも、サーバーの他のインスタンスは別のハードウェアで実行されているため、稼働し続けます。
-
-Azure に信頼性の高い VM ベースのソリューションをデプロイする場合は、可用性セットを使用します。
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 

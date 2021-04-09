@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: d2afd88500801f1e2b1e4da5a1e267bddfa69fc7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96453021"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Azure IoT (モノのインターネット) とは
@@ -34,7 +34,7 @@ IoT デバイスは一般に、回路基板とそれに接続されたセンサ�
 
 Microsoft では、オープンソースの [Device SDK](../iot-hub/iot-hub-devguide-sdks.md) を提供しており、それらの SDK を使用して、お手持ちのデバイスで動作するアプリを作成することが可能です。 IoT ソリューションの開発は、それらの [SDK によって単純化し、能率化](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/)することができます。
 
-## <a name="communication"></a>Communication
+## <a name="communication"></a>通信
 
 通常、IoT デバイスは、クラウド内のバックエンド サービスに対し、センサーのテレメトリを送信します。 ただし、対応している通信の種類はそれだけではなく、たとえばバックエンド サービスからデバイスにコマンドを送信することもできます。 次に、device-to-cloud 通信と cloud-to-device 通信の例をいくつか示します。
 

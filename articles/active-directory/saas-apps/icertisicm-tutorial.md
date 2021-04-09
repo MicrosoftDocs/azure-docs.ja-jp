@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: f6b1ea00684495333ba7b04dbf146aa6104fa589
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92460514"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-icertis-contract-management-platform"></a>チュートリアル: Azure Active Directory と Icertis Contract Management Platform の統合
@@ -41,7 +41,7 @@ Icertis Contract Management Platform と Azure AD の統合を構成するには
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Icertis Contract Management Platform では、 **SP** によって開始される SSO がサポートされます
+* Icertis Contract Management Platform では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-icertis-contract-management-platform-from-the-gallery"></a>ギャラリーからの Icertis Contract Management Platform の追加
 
@@ -61,13 +61,13 @@ Azure AD への Icertis Contract Management Platform の統合を構成するに
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Icertis Contract Management Platform** 」と入力し、結果パネルで **[Icertis Contract Management Platform]** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Icertis Contract Management Platform**」と入力し、結果パネルで **[Icertis Contract Management Platform]** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Icertis Contract Management Platform](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Icertis Contract Management Platform で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Icertis Contract Management Platform で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Icertis Contract Management Platform 内の対応するユーザーの間で、リンク関係が確立されている必要があります。
 
 Icertis Contract Management Platform で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ Icertis Contract Management Platform で Azure AD のシングル サインオ�
 
 Icertis Contract Management Platform で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Icertis Contract Management Platform** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Icertis Contract Management Platform** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -143,7 +143,7 @@ Icertis Contract Management Platform で Azure AD シングル サインオン�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、「 BrittaSimon@contoso.com 」のように入力します。
 
@@ -155,7 +155,7 @@ Icertis Contract Management Platform で Azure AD シングル サインオン�
 
 このセクションでは、Icertis Contract Management Platform へのアクセス権を付与することによって、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Icertis Contract Management Platform]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Icertis Contract Management Platform]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

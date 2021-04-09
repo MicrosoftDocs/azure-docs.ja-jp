@@ -5,15 +5,15 @@ ms.topic: how-to
 ms.date: 02/17/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 5b1084cfdd5995b7983badcdce71460f7bdec3d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88919456"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Batch コンピューティング ノードでのジョブ準備タスクとジョブ解放タスクの実行
 
- Azure Batch ジョブでは、タスクの実行前に何らかのセットアップが必要になることがよくあります。また、タスクが完了した後に、ジョブ実行後のメンテナンスが必要になることもよくあります。 場合によっては、タスクに共通する入力データをコンピューティング ノードにダウンロードしたり、ジョブの完了後にタスクの出力データを Azure Storage にアップロードしたりする必要があります。 **ジョブの準備**タスクと**ジョブの解放**タスクを使用して、これらの操作を実行できます。
+ Azure Batch ジョブでは、タスクの実行前に何らかのセットアップが必要になることがよくあります。また、タスクが完了した後に、ジョブ実行後のメンテナンスが必要になることもよくあります。 場合によっては、タスクに共通する入力データをコンピューティング ノードにダウンロードしたり、ジョブの完了後にタスクの出力データを Azure Storage にアップロードしたりする必要があります。 **ジョブの準備** タスクと **ジョブの解放** タスクを使用して、これらの操作を実行できます。
 
 ## <a name="what-are-job-preparation-and-release-tasks"></a>ジョブの準備タスクと解放タスク
 ジョブのタスクが実行される前に、1 つ以上のタスクの実行がスケジュールされているすべてのコンピューティング ノードで、ジョブの準備タスクが実行されます。 ジョブが完了すると、少なくとも 1 つのタスクを実行したプールの各ノードでジョブ解放タスクが実行されます。 通常の Batch タスクと同様に、ジョブの準備タスクまたは解放タスクが実行されるときに呼び出されるコマンド ラインを指定できます。
@@ -40,7 +40,7 @@ Batch ジョブでは、ジョブのタスクに対する入力として共通�
 
 **ログのリテンション期間**
 
-タスクによって生成されるログ ファイルのコピーや、障害が発生したアプリケーションによって生成される可能性があるクラッシュ ダンプ ファイルの保持が必要な場合があります。 そのような場合は、**ジョブ解放タスク**を使用してこのデータを圧縮し、[Azure Storage][azure_storage] アカウントにアップロードします。
+タスクによって生成されるログ ファイルのコピーや、障害が発生したアプリケーションによって生成される可能性があるクラッシュ ダンプ ファイルの保持が必要な場合があります。 そのような場合は、**ジョブ解放タスク** を使用してこのデータを圧縮し、[Azure Storage][azure_storage] アカウントにアップロードします。
 
 > [!TIP]
 > ログ ファイルのほか、他のジョブやタスクの出力データを保持するもう 1 つの方法は、 [Azure Batch ファイル規則](batch-task-output.md) ライブラリを使用することです。
@@ -99,7 +99,7 @@ myJob.JobReleaseTask =
 await myJob.CommitAsync();
 ```
 
-前に述べたとおり、解放タスクはジョブの終了時または削除時に実行されます。 [JobOperations.TerminateJobAsync][net_job_terminate] を使用してジョブを終了します。 [JobOperations.DeleteJobAsync][net_job_delete] を使用してジョブを削除します。 通常は、タスクが完了したときか、定義したタイムアウトに達したときに、ジョブを終了または削除します。
+前に述べたとおり、解放タスクはジョブの終了時または削除時に実行されます。 [JobOperations.TerminateJobAsync を使用してジョブを終了します。][net_job_terminate]。 [JobOperations.DeleteJobAsync][net_job_delete] を使用してジョブを削除します。 通常は、タスクが完了したときか、定義したタイムアウトに達したときに、ジョブを終了または削除します。
 
 ```csharp
 // Terminate the job to mark it as Completed; this will initiate the
@@ -174,7 +174,7 @@ Sample complete, hit ENTER to exit...
 ### <a name="inspect-job-preparation-and-release-tasks-in-the-azure-portal"></a>Azure Portal でのジョブの準備タスクと解放タスクの確認
 サンプル アプリケーションを実行する際、[Azure Portal][portal] を使用して、ジョブとそのタスクのプロパティを表示したり、ジョブのタスクによって変更された共有テキスト ファイルをダウンロードしたりできます。
 
-以下のスクリーンショットは、サンプル アプリケーション実行後の Azure Portal の **[準備タスク]** ブレードです。 タスクの完了後 (ただし、ジョブとプールが削除される前)、*JobPrepReleaseSampleJob* プロパティに移動し、 **[準備タスク]** または **[リリース タスク]** をクリックして、それらのプロパティを表示します。
+以下のスクリーンショットは、サンプル アプリケーション実行後の Azure Portal の **[準備タスク]** ブレードです。 タスクの完了後 (ただし、ジョブとプールが削除される前)、*JobPrepReleaseSampleJob* プロパティに移動し、**[準備タスク]** または **[リリース タスク]** をクリックして、それらのプロパティを表示します。
 
 ![Job preparation properties in Azure portal][1]
 

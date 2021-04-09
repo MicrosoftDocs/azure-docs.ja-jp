@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
-ms.openlocfilehash: cb4f1ecdada68218c104558a85277417641906f6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2435e4ed16889d9d4701b6047c0a1f602ee7ae91
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033014"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102558697"
 ---
 # <a name="azure-resource-logs"></a>Azure リソース ログ
 Azure リソース ログは、Azure リソース内で実行された操作に関する分析情報を提供する[プラットフォーム ログ](../essentials/platform-logs-overview.md)です。 リソース ログの内容は、Azure サービスとリソースの種類によって異なります。 既定では、リソース ログは収集されません。 各 Azure リソースのリソース ログを、[Azure Monitor ログ](../logs/data-platform-logs.md)で使用するために Log Analytics ワークスペースに送信したり、Azure の外部に転送するために Azure Event Hubs に送信したり、アーカイブ用に Azure Storage に送信したりするために、各 Azure リソースの診断設定を作成する必要があります。
@@ -28,11 +28,11 @@ Azure リソース ログは、Azure リソース内で実行された操作に�
 
 リソース ログを Log Analytics ワークスペースに送信するには、[診断設定を作成します](../essentials/diagnostic-settings.md)。 このデータは、「[Azure Monitor Logs の構造](../logs/data-platform-logs.md)」の説明に従って、テーブルに格納されます。 リソース ログで使用されるテーブルは、リソースで使用されているコレクションの種類によって異なります。
 
-- Azure 診断 - 書き込まれたすべてのデータが _AzureDiagnostics_ テーブルに含められます。
+- Azure 診断 - 書き込まれたすべてのデータが [AzureDiagnostics](/azure/azure-monitor/reference/tables/azurediagnostics) テーブルに含められます。
 - リソース固有 - データは、リソースのカテゴリごとに個別のテーブルに書き込まれます。
 
 ### <a name="azure-diagnostics-mode"></a>Azure 診断モード 
-このモードでは、任意の診断設定に基づくすべてのデータが、_AzureDiagnostics_ テーブルに収集されます。 これは、ほとんどの Azure サービスで現在使用されている従来の方法です。 複数の種類のリソースから同じテーブルにデータが送信されるため、そのスキーマは、収集されるすべての種類のデータ型のスキーマのスーパーセットになります。
+このモードでは、任意の診断設定に基づくすべてのデータが、[AzureDiagnostics](/azure/azure-monitor/reference/tables/azurediagnostics) テーブルに収集されます。 これは、ほとんどの Azure サービスで現在使用されている従来の方法です。 複数の種類のリソースから同じテーブルにデータが送信されるため、そのスキーマは、収集されるすべての種類のデータ型のスキーマのスーパーセットになります。 このテーブルの構造の詳細と、この潜在的に多数の列でどのように機能するかについては、[AzureDiagnostics のリファレンス](/azure/azure-monitor/reference/tables/azurediagnostics)を参照してください。
 
 次の例を検討してください。ここでは次のデータ型について、同じワークスペースで診断設定が収集されています。
 
@@ -95,16 +95,6 @@ AzureDiagnostics テーブルは次のようになります。
 既存の診断設定をリソース固有モードに変更できます。 この場合、既に収集されたデータは、ワークスペースに対するご利用の保有期間設定に従って削除されるまで、_AzureDiagnostics_ テーブル内に残ります。 新しいデータは、専用のテーブルに収集されます。 両方のテーブルのデータに対してクエリを実行するには、[union](/azure/kusto/query/unionoperator) 演算子を使用します。
 
 リソース固有モードをサポートしている Azure サービスに関するお知らせは、[Azure の更新情報](https://azure.microsoft.com/updates/)を引き続きご覧ください。
-
-### <a name="column-limit-in-azurediagnostics"></a>AzureDiagnostics での列の制限
-Azure Monitor ログ内のいずれのテーブルに対しても、500 のプロパティ制限があります。 この上限に到達すると、最初の 500 プロパティから外れるデータを含む行は、取り込み時に破棄されます。 *AzureDiagnostics* テーブルは、このテーブルへの書き込みを行うすべての Azure サービスのプロパティを含んでいるため、特にこの制限の影響を受けやすくなっています。
-
-複数のサービスからリソースログを収集している場合、_AzureDiagnostics_ は、この制限を超えることがあり、データが失われる可能性があります。 すべての Azure サービスでリソース固有モードがサポートされるようになるまでは、複数のワークスペースに書き込むようにリソースを構成して、500 列の制限に達する可能性を低くする必要があります。
-
-### <a name="azure-data-factory"></a>Azure Data Factory
-Azure Data Factory サービスの場合は、詳細なログセットであるため、多数の列の書き込みが行われ、_AzureDiagnostics_ が制限を超える可能性があることがわかっています。 リソース固有モードを有効にする前に構成した診断設定の場合、任意のアクティビティに対して、一意の名前が付けられたユーザー パラメーターごとに新しい列が作成されます。 アクティビティの入力と出力がその性質上詳細であるため、より多くの列が作成されます。
- 
-ソース固有モードを使用するように、ご利用のログをできるだけ早く移行する必要があります。 今すぐ実行できない場合は、暫定措置として Azure Data Factory ログをそれぞれに固有のワークスペースに分離して、これらのログがワークスペースに収集される他のログの種類に影響を与える可能性を最小限に抑えるようにします。
 
 
 ## <a name="send-to-azure-event-hubs"></a>Azure Event Hubs に送信する

@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: 3f1e3fd360197310a89a67d43053649d904aeb18
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d125bca5ed67476897eec7cd32a586776d8b1ea8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677612"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176622"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>チュートリアル:Synapse Studio で Apache Spark ジョブ定義を作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "101677612"
 
 * Azure Synapse Analytics ワークスペース。 手順については、[Azure Synapse Analytics ワークスペースの作成](../../machine-learning/how-to-manage-workspace.md)に関するページを参照してください。
 * サーバーレス Apache Spark プール。
-* ADLS Gen2 ストレージ アカウント。 使用する ADLS Gen2 ファイル システムの **ストレージ BLOB データ所有者** である必要があります。 そうでない場合は、手動でアクセス許可を追加する必要があります。
+* ADLS Gen2 ストレージ アカウント。 使用する ADLS Gen2 ファイル システムの **ストレージ BLOB データ共同作成者** である必要があります。 そうでない場合は、手動でアクセス許可を追加する必要があります。
 * ワークスペースの既定のストレージを使用したくない場合は、必要な ADLS Gen2 ストレージ アカウントを Synapse Studio でリンクしてください。 
 
 ## <a name="create-an-apache-spark-job-definition-for-pyspark-python"></a>PySpark (Python) 用の Apache Spark ジョブ定義を作成する
@@ -162,7 +162,7 @@ ms.locfileid: "101677612"
 
 ## <a name="submit-an-apache-spark-job-definition-as-a-batch-job"></a>Apache Spark ジョブ定義をバッチ ジョブとして送信する
 
-Apache Spark ジョブ定義を作成したら、それを Apache Spark プールに送信できます。 使用する ADLS Gen2 ファイル システムの **ストレージ BLOB データ所有者** であることを確認してください。 そうでない場合は、手動でアクセス許可を追加する必要があります。
+Apache Spark ジョブ定義を作成したら、それを Apache Spark プールに送信できます。 使用する ADLS Gen2 ファイルシステムの **ストレージ BLOB データ共同作成者** であることを確認してください。 そうでない場合は、手動でアクセス許可を追加する必要があります。
 
 ### <a name="scenario-1-submit-apache-spark-job-definition"></a>シナリオ 1:Apache Spark ジョブ定義を送信する
  1. Apache Spark ジョブ定義を選択してウィンドウを開きます。

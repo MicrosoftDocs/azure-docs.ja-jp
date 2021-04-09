@@ -8,12 +8,12 @@ ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: e914bcece9a30270d12d5c2cc09d3fd1014783c6
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 0ed41cc01fcf5aa35b3d2195518b8e2bb0f3b9c4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916509"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588241"
 ---
 # <a name="azure-file-share-protocols"></a>Azure ファイル共有プロトコル
 
@@ -26,6 +26,7 @@ Azure Files には、Azure ファイル共有を接続してマウントする�
 |アクセス プロトコル     |NFS 4.1         |SMB 2.1、SMB 3.0         |
 |推奨される OS     |Linux カーネル バージョン 4.3 以降         |Windows 2008 R2 以降、Linux カーネル バージョン 4.11 以降         |
 |[使用できるレベル](storage-files-planning.md#storage-tiers)     |Premium Storage         |Premium Storage、トランザクション最適化、ホット、クール         |
+|課金モデル         |[プロビジョニング容量に対して課金する](./understanding-billing.md#provisioned-model)         |[Premium レベルではプロビジョニング容量に対して](./understanding-billing.md#provisioned-model)、[Standard レベルでは従量課金制で料金が課金されます](./understanding-billing.md#pay-as-you-go-model)         |
 |[冗長性](storage-files-planning.md#redundancy)     |LRS、ZRS         |LRS、ZRS、GRS         |
 |認証     |ホストベースの認証のみ        |ID ベースの認証、ユーザーベースの認証         |
 |アクセス許可     |UNIX 形式のアクセス許可         |NTFS 形式のアクセス許可         |

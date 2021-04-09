@@ -9,10 +9,10 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 8d55f17ba0fe42dab5ac9c7d2e3c09400b3d7029
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98744066"
 ---
 # <a name="azure-cloud-services-extended-support-definition-workerrole-schema"></a>Azure Cloud Services (延長サポート) の定義: WorkerRole スキーマ
@@ -245,7 +245,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`FixedPort` 要素の属性を示します。
 
-| 属性 | Type | [説明] |
+| 属性 | Type | 説明 |
 | --------- | ---- | ----------- |
 |port|INT|必須。 内部エンドポイントのポートです。 この属性の効果は、`FixedPortRange` の min と max を同じポートに設定した場合と同じです。<br /><br /> 使用できる値の範囲は 1 以上 65535 以下です (Azure SDK バージョン 1.7 以上)。|
 
@@ -259,7 +259,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`FixedPortRange` 要素の属性を示します。
 
-| 属性 | Type | [説明] |
+| 属性 | Type | 説明 |
 | --------- | ---- | ----------- |
 |分|INT|必須。 範囲の最小ポートです。 使用できる値の範囲は 1 以上 65535 以下です (Azure SDK バージョン 1.7 以上)。|
 |最大|string|必須。 範囲の最大ポートです。 使用できる値の範囲は 1 以上 65535 以下です (Azure SDK バージョン 1.7 以上)。|
@@ -291,7 +291,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`Import` 要素の属性を示します。
 
-| 属性 | Type | [説明] |
+| 属性 | Type | 説明 |
 | --------- | ---- | ----------- |
 |moduleName|string|必須。 インポートするモジュールの名前です。 有効なインポート モジュールは次のとおりです。<br /><br /> -   RemoteAccess<br />-   RemoteForwarder<br />-   Diagnostics<br /><br /> RemoteAccess モジュールと RemoteForwarder モジュールを使用すると、ロール インスタンスをリモート デスクトップ接続用に構成できます。 詳細については、「[拡張機能](extensions.md)」を参照してください。<br /><br /> Diagnostics モジュールを使用すると、ロール インスタンスの診断データを収集できます。|
 

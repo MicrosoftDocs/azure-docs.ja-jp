@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 03/17/2020
 ms.openlocfilehash: 461acc07ee2217a38f7bb59805d4c7e0de4a1e22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91617657"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance の既存の仮想ネットワークを構成する

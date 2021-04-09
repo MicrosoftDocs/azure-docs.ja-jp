@@ -8,10 +8,10 @@ ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 6fff19498e9ca70991d3190165df70a48136f502
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92631140"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>App Service Environment の概要 #
@@ -38,7 +38,7 @@ ASE では、単一の顧客のアプリケーションは VNet の 1 つでホ�
 * ASE には専用の価格レベルがあります。[独立したオファー](https://channel9.msdn.com/Shows/Azure-Friday/Security-and-Horsepower-with-App-Service-The-New-Isolated-Offering?term=app%20service%20environment)が高い拡張性とセキュリティを促進するのにどのように役立つかを学習してください。
 * [App Service Environments v2](https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud?term=app%20service%20environment) は、ネットワークのサブネット内のアプリを保護するための環境と、Azure App Service の独自のプライベートな展開を提供します。
 * 複数の ASE を使って水平方向にスケーリングすることができます。 詳細については、[地理的に分散したアプリ フットプリントの設定](app-service-app-service-environment-geo-distributed-scale.md)に関するページを参照してください。
-* AzureCon Deep Dive に示されているようなセキュリティ アーキテクチャは、ASE を使用して構成できます。 AzureCon Deep Dive に示されたセキュリティ アーキテクチャがどのように構成されたかを確認するには、App Service 環境での[レイヤード セキュリティ アーキテクチャのインプリメント方法](app-service-app-service-environment-layered-security.md)に関する記事を参照してください。
+* AzureCon Deep Dive に示されているようなセキュリティ アーキテクチャは、ASE を使用して構成できます。 AzureCon Deep Dive に示されたセキュリティ アーキテクチャがどのように構成されたかを確認するには、App Service Environment での[レイヤード セキュリティ アーキテクチャのインプリメント方法](app-service-app-service-environment-layered-security.md)に関する記事を参照してください。
 * ASE で実行されるアプリへのアクセスは、Web アプリケーション ファイアウォール (WAF) などのアップストリーム デバイスによって制限できます。 詳細については、[Web アプリケーション ファイアウォール (WAF)][AppGW] に関するページを参照してください。
 * Availability Zones (AZ) には、ゾーンの固定を使用して App Service Environment をデプロイできます。  詳細については、「[App Service Environment の Availability Zones サポート][ASEAZ]」を参照してください。
 

@@ -9,14 +9,16 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: a8d09f762002c89d225ccc00eac83da336850a3c
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: e5aeda35ed4110807f17c11e93b31d0b3998846e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047949"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103461115"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>チュートリアル:SQL Server データベースを使用したエッジでのデータの格納
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge を実行している Linux デバイスにデータを格納するための SQL Server モジュールをデプロイします。
 
@@ -40,7 +42,7 @@ Azure IoT Edge と SQL Server を使用し、エッジでデータを格納し�
 このチュートリアルを開始する前に、前のチュートリアルを完了して、Linux コンテナー開発用の開発環境を設定しておく必要があります。[Linux デバイス用の IoT Edge モジュールを開発する](tutorial-develop-for-linux.md)。 このチュートリアルを完了すると、次の前提条件が満たされます。
 
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
-* [Azure IoT Edge を実行している AMD64 Linux デバイス](quickstart-linux.md)。
+* Azure IoT Edge を実行している AMD64 デバイス。 クイックスタートを使用して、[Linux デバイス](quickstart-linux.md)または [Windows デバイス](quickstart.md)を設定できます。
   * Raspberry Pi などの ARM デバイスでは、SQL Server を実行できません。 ARM デバイスで SQL を使用する場合は、サインアップして [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/) (プレビュー) を試すことができます。
 * コンテナー レジストリ ([Azure Container Registry](../container-registry/index.yml) など)。
 * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して構成された [Visual Studio Code](https://code.visualstudio.com/)。
@@ -71,7 +73,7 @@ Azure IoT Edge と SQL Server を使用し、エッジでデータを格納し�
    | Provide a solution name (ソリューション名の指定) | **SqlSolution** のように、ソリューションのわかりやすい名前を入力するか、既定値をそのまま使用します。 |
    | Select module template (モジュール テンプレートの選択) | **[Azure Functions - C#]** を選択します。 |
    | Provide a module name (モジュール名の指定) | モジュールに **sqlFunction** という名前を付けます。 |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、前の手順で事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリの**ログイン サーバー**の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br>文字列は最終的に、\<registry name\>.azurecr.io/sqlfunction のようになります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、前の手順で事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリの **ログイン サーバー** の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br>文字列は最終的に、\<registry name\>.azurecr.io/sqlfunction のようになります。 |
 
    VS Code ウィンドウによって、ご自身の IoT Edge ソリューション ワークスペースが読み込まれます。
 
@@ -82,7 +84,7 @@ Azure IoT Edge と SQL Server を使用し、エッジでデータを格納し�
 IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格情報をプルし、それらを環境ファイルに取り込もうとします。 資格情報が既に含まれているかどうかを確認します。 含まれていない場合は、次のようにして追加します。
 
 1. VS Code エクスプローラーで、.env ファイルを開きます。
-2. ご自身の Azure コンテナー レジストリからコピーした**ユーザー名**と**パスワード**の値を使用して、フィールドを更新します。
+2. ご自身の Azure コンテナー レジストリからコピーした **ユーザー名** と **パスワード** の値を使用して、フィールドを更新します。
 3. このファイルを保存します。
 
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する
@@ -217,7 +219,7 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
    | Select deployment template file (配置テンプレート ファイルの選択) | コマンド パレットで、現在のソリューション フォルダー内の **deployment.template.json** ファイルが強調表示されます。 そのファイルを選択します。  |
    | Select module template (モジュール テンプレートの選択) | **[Module from Azure Marketplace]\(Azure Marketplace のモジュール\)** を選択します。 |
 
-3. Azure IoT Edge モジュール マーケットプレースで、**SQL Server モジュール**を検索して選択します。
+3. Azure IoT Edge モジュール マーケットプレースで、**SQL Server モジュール** を検索して選択します。
 
 4. モジュール名を **sql** (すべて小文字) に変更します。 この名前は、sqlFunction.cs ファイル内の接続文字列で宣言されているコンテナー名と一致します。
 
@@ -333,7 +335,7 @@ SQL コマンド ツール内から次のコマンドを実行して、書式設
 
 このチュートリアルでは、IoT Edge デバイスで生成された生データをフィルター処理するコードを含む、Azure Functions モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[Visual Studio Code 用の Azure IoT Edge で Azure 関数を開発する](./how-to-vs-code-develop-module.md)方法の詳細をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 エッジで別の格納方法を試す場合は、IoT Edge 上の Azure Blob Storage を使用する方法に関する記事を参照してください。
 

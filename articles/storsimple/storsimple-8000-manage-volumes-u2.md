@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/09/2017
 ms.author: alkohli
 ms.openlocfilehash: 3d649b54b544c120198963f8094764e9590e20b2
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100547644"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>StorSimple デバイス マネージャー サービスを使用してボリュームを管理する (Update 3 以降)

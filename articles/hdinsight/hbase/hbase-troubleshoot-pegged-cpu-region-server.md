@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/01/2019
 ms.openlocfilehash: 7d0cf139f06bb296b486d2932d95b53fc1167a5d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98937013"
 ---
-# <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>シナリオ:Azure HDInsight の Apache HBase クラスターのリージョン サーバーの固定 CPU
+# <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>シナリオ: Azure HDInsight の Apache HBase クラスターのリージョン サーバーの固定 CPU
 
 この記事では、Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策について説明します。
 
@@ -23,7 +23,7 @@ Apache HBase リージョン サーバー プロセスの CPU 占有率が 200% 
 
 HBase クラスター v3.4 を実行している場合に、jdk バージョン 1.7.0_151 へのアップグレードが原因である潜在的なバグに遭遇することがあります。 確認されている症状は、リージョン サーバーのプロセスが 200% に近い CPU 占有率を示し始めるというものです (これを検証するには、`top` コマンドを実行します。CPU 占有率が 200% に近いプロセスがある場合、その pid を取得し、`ps -aux | grep` を実行して、それがリージョン サーバーのプロセスであることを確認します)。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
 1. 次のようにして、クラスターのすべてのノードに jdk 1.8 をインストールします。
 

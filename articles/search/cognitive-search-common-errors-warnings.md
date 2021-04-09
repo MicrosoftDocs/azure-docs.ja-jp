@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 6625cd5ad91826ac5cdf8ec63382e9f94d8a2c08
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 3ba0abe8510291351c10ba085ba7e42b8197d886
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895941"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102553240"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的なエラーと警告のトラブルシューティング
 
@@ -236,6 +236,8 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 ## <a name="warning--skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>警告:Skill input 'languageCode' has the following language codes 'X,Y,Z', at least one of which is invalid. (スキルの入力 'languageCode' に次の言語コード 'X,Y,Z' が含まれており、その少なくとも 1 つが無効です。)
 ダウンストリーム スキルの省略可能な `languageCode` の入力に渡された 1 つ以上の値がサポートされていません。 [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) の出力を後続のスキルに渡し、それらのダウンストリーム スキルでサポートされているよりも多くの言語で出力が構成されている場合に、これが発生する可能性があります。
+
+また、LanguageDetectionSkill に無効な `countryHint` 入力が渡された場合にも、このような警告が表示されることがあることに注意してください。 そのような場合は、その入力のためにデータ ソースから使用しているフィールドに、有効な ISO 3166-1 alpha-2 の 2 文字の国番号が含まれていることを確認してください。 一部が有効で、一部が無効な場合は、次のガイダンスに従ってください。ただし、実際のユース ケースに合わせて、`languageCode` を `countryHint` に、`defaultLanguageCode` を `defaultCountryHint` に置き換えてください。
 
 データ セットがすべて 1 つの言語であることがわかっている場合は、[LanguageDetectionSkill](cognitive-search-skill-language-detection.md) および `languageCode` スキル入力を削除し、代わりにそのスキルに対して `defaultLanguageCode` スキル パラメーターを使用する必要があります (スキルに対してその言語がサポートされている場合)。
 

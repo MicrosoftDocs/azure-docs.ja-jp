@@ -3,14 +3,14 @@ title: ビジネス継続性 - Azure Database for MariaDB
 description: Azure Database for MariaDB サービスを使用する場合のビジネス継続性 (ポイントインタイム リストア、データ センターの停止、geo リストア) について説明します。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: 6439a63b74b6f627b62741c145f763dc3d9552d3
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: e164930736f7b93e56d9bd4187e72a9c8eb76202
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98659854"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのビジネス継続性を理解する

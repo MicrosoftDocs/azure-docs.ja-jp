@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 02fd6c1d4cbd1c2db287a38e086045042b5f220a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e477e4bb3b31477f9407e981d4c8da2340411f55
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309547"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102615739"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>Azure Data Factory を使用して SQL Server データベースから SQL Database にデータを移動する
 
@@ -78,7 +78,7 @@ Integration Runtime は、異なるネットワーク環境間でデータ統合
 
 1. オンプレミスの SQL Server
 2. Azure Blob Storage
-3. AAzure SQL Database
+3. Azure SQL データベース
 
 リンクされたサービスを作成するための手順は、「[リンクされたサービスを作成する](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)」を参照してください。
 
@@ -87,7 +87,7 @@ Integration Runtime は、異なるネットワーク環境間でデータ統合
 以下のスクリプトベースの手順に従って、データセットの構造、場所、可用性を指定するテーブルを作成します。 テーブルを定義するには、JSON ファイルを使用します。 これらのファイルの構造の詳細については、「 [データセット](../../data-factory/concepts-datasets-linked-services.md)」を参照してください。
 
 > [!NOTE]
-> コマンドの実行に適した Azure サブスクリプションが選択されていることを確認するために、`Add-AzureAccount` コマンドレットを実行してから [New-AzureDataFactoryTable](/previous-versions/azure/dn835096(v=azure.100)) コマンドレットを実行する必要があります。 このコマンドレットの説明については、「 [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-3.7.0)」を参照してください。
+> コマンドの実行に適した Azure サブスクリプションが選択されていることを確認するために、`Add-AzureAccount` コマンドレットを実行してから [New-AzureDataFactoryTable](/previous-versions/azure/dn835096(v=azure.100)) コマンドレットを実行する必要があります。 このコマンドレットの説明については、「 [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount)」を参照してください。
 >
 >
 

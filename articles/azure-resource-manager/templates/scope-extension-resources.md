@@ -4,10 +4,10 @@ description: 拡張リソースの種類を展開するときに scope プロパ
 ms.topic: conceptual
 ms.date: 01/13/2021
 ms.openlocfilehash: ce08ca951e24c1c0a5450052cf814a68888837c2
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99492163"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>ARM テンプレートで拡張リソースのスコープを設定する

@@ -13,10 +13,10 @@ ms.date: 10/06/2020
 ms.author: nichola
 ms.reviewer: ''
 ms.openlocfilehash: f6ce792b3db0100d7356884bbc6ee2696580df10
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97652060"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>継続的アクセス評価が有効になった API をアプリケーションで使用する方法
@@ -114,6 +114,6 @@ _clientApp = PublicClientApplicationBuilder.Create(App.ClientId)
 
 ユーザーをアプリケーションにサインインさせてから、Azure portal を使用してユーザーのセッションを取り消すことで、アプリケーションをテストできます。 CAE 対応の API が次にアプリで呼び出されたとき、ユーザーは再認証を行うように求められます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、「[継続的アクセス評価](../conditional-access/concept-continuous-access-evaluation.md)」を参照してください。

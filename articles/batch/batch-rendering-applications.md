@@ -3,12 +3,12 @@ title: アプリケーションをレンダリングする
 description: Azure Batch では任意のレンダリング アプリケーションを使用できます。 ただし、Azure Marketplace の VM イメージは、事前インストールされている一般的なアプリケーションで使用します。
 ms.date: 02/12/2021
 ms.topic: how-to
-ms.openlocfilehash: e296ab09498b6bb7ee21e3d88c9c416c66368d69
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 18fc142d2fa9c819b9872c64ef7aae4c73cc2428
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362235"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635338"
 ---
 # <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>VM イメージを Batch レンダリングするために事前インストールされているアプリケーション
 
@@ -20,7 +20,7 @@ Azure Batch では任意のレンダリング アプリケーションを使用�
 
 ## <a name="applications-on-latest-centos-7-rendering-image"></a>最新の CentOS 7 レンダリング イメージのアプリケーション
 
-次の一覧は、CentOS レンダリング イメージ (バージョン 1.1.7) に適用されます。
+次の一覧は、CentOS レンダリング イメージ (バージョン 1.2.0) に適用されます。
 
 * Autodesk Maya I/O 2020 Update 4.6
 * Autodesk Arnold for Maya 2020 (Arnold バージョン 6.2.0.0) MtoA-4.2.0-2020

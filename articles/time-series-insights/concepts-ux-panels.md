@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: 55e102cc7e27cbcd9a65999f590c8264f1ad4434
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 77c6e8790451ef830b37cc5914ce9de8e92174f5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736854"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103464090"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Explorer
 
@@ -25,7 +25,7 @@ ms.locfileid: "98736854"
 
 Azure Time Series Insights Explorer を使用するには、次のことが必要です。
 
-* Azure Time Series Insights Gen2 環境がプロビジョニングされていること。 インスタンスのプロビジョニングの詳細については、[Azure Time Series Insights Gen2](./tutorials-set-up-tsi-environment.md) のチュートリアルをお読みください。
+* Azure Time Series Insights Gen2 環境がプロビジョニングされていること。 インスタンスのプロビジョニングの詳細については、[Azure Time Series Insights Gen2](./tutorial-set-up-environment.md) のチュートリアルをお読みください。
 * 作成した Azure Time Series Insights Gen2 環境への[データ アクセスをアカウントに対して提供](./concepts-access-policies.md)します。 自分自身と同じように他のユーザーにもアクセスを提供できます。
 * 環境にデータをプッシュするために Azure Time Series Insights Gen2 環境にイベント ソースを追加します。
   * [イベント ハブに接続する方法](./how-to-ingest-data-event-hub.md)を参照してください
@@ -92,7 +92,7 @@ Azure Time Series Insights Gen2 によって、ご利用のタイム シリー�
 
 要素の左にある赤い **[削除]** (ごみ箱) コントロールを選択することで、現在のデータ ウェルから特定のデータ要素を削除できます。 ウェルでは、グラフにおける各要素の表示方法も制御できます。 最小/最大値に陰影を付けたり、データ ポイントを追加したり、時系列の要素を動かしたり、段階的にインスタンスを視覚化したりできます。
 
-また、探索コントロールでは、タイム シフトや散布図を簡単に作成できます。  
+また、探索コントロールでは、タイム シフトや散布図を簡単に作成できます。
 
   [![ウェル レイアウト オプション](media/v2-update-explorer/well-layout-options.png)](media/v2-update-explorer/well-layout-options.png#lightbox)
 

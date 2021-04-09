@@ -5,19 +5,21 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: kevindaw
-ms.date: 04/09/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ee51b31246760e4619eef1e16e800b16ea886de0
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 44ea6546eb2099165071fd493ec8f890820c0688
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430715"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199829"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>X.509 証明書を使用して IoT Edge デバイスを作成およびプロビジョニングする
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 [Azure IoT Hub Device Provisioning Service (DPS)](../iot-dps/index.yml) では、X.509 証明書を使用して IoT Edge デバイスを自動的にプロビジョニングできます。 自動プロビジョニングの処理に慣れていない場合は、[プロビジョニング](../iot-dps/about-iot-dps.md#provisioning-process)の概要を読んでから先に進んでください。
 
@@ -52,10 +54,14 @@ X.509 を使用して自動プロビジョニングを設定するには、次�
 * 完全なチェーン証明書。少なくともデバイス ID と中間証明書が含まれている必要があります。 完全なチェーン証明書は IoT Edge ランタイムに渡されます。
 * 信頼する証明書チェーンからの中間証明書またはルート CA 証明書。 グループ登録を作成すると、この証明書は DPS にアップロードされます。
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 > [!NOTE]
 > 現時点では、libiothsm の制限により、2038 年 1 月 1 日以降に有効期限が切れる証明書は使用できません。
 
-### <a name="use-test-certificates"></a>テスト証明書を使用する
+:::moniker-end
+
+### <a name="use-test-certificates-optional"></a>テスト証明書を使用する (省略可能)
 
 新しい ID 証明書を作成するために使用できる証明機関がない場合、このシナリオを試すには、Azure IoT Edge の Git リポジトリにあるスクリプトを使用してテスト証明書を生成できます。 それらの証明書は開発テスト専用に設計されているため、運用環境では使用できません。
 
@@ -227,18 +233,21 @@ DPS による x.509 のプロビジョニングは、IoT Edge バージョン 1.
 
 ### <a name="linux-device"></a>Linux デバイス
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. IoT Edge デバイスで構成ファイルを開きます。
 
    ```bash
    sudo nano /etc/iotedge/config.yaml
    ```
 
-1. ファイルのプロビジョニング構成セクションを見つけます。 DPS 対称キーのプロビジョニング行のコメントを解除し、他にもプロビジョニング行があれば、それらのコメントが解除されていることを確認します。
+1. ファイルのプロビジョニング構成セクションを見つけます。 DPS X.509 証明書のプロビジョニング行をコメント解除し、他にもプロビジョニング行があれば、それらもコメント アウトするようにします。
 
    `provisioning:` の行の先頭には空白文字を入れず、入れ子の項目には 2 つの空白でインデントする必要があります。
 
    ```yml
-   # DPS TPM provisioning configuration
+   # DPS X.509 provisioning configuration
    provisioning:
      source: "dps"
      global_endpoint: "https://global.azure-devices-provisioning.net"
@@ -252,8 +261,6 @@ DPS による x.509 のプロビジョニングは、IoT Edge バージョン 1.
    #  dynamic_reprovisioning: false
    ```
 
-   必要に応じて、`always_reprovision_on_startup` または `dynamic_reprovisioning` の行を使用して、デバイスの再プロビジョニング動作を構成します。 起動時に再プロビジョニングするようにデバイスが設定されている場合、常に最初に DPS を使用してプロビジョニングが試行され、失敗した場合はプロビジョニングのバックアップにフォールバックします。 動的に再プロビジョニングするようにデバイスが設定されている場合、再プロビジョニング イベントが検出されると、IoT Edge が再起動し、再プロビジョニングされます。 詳細については、「[IoT Hub デバイスの再プロビジョニングの概念](../iot-dps/concepts-device-reprovision.md)」を参照してください。
-
 1. `scope_id`、`identity_cert`、`identity_pk` の値を DPS およびデバイス情報で更新します。
 
    X.509 証明書とキー情報を config.yaml ファイルに追加する場合、パスはファイル URI として指定する必要があります。 次に例を示します。
@@ -261,13 +268,74 @@ DPS による x.509 のプロビジョニングは、IoT Edge バージョン 1.
    `file:///<path>/identity_certificate_chain.pem`
    `file:///<path>/identity_key.pem`
 
-1. 必要に応じてデバイスの `registration_id` を指定するか、この行をコメントアウトして、デバイスを ID 証明書の CN 名で登録します。
+1. 必要に応じて、デバイスに `registration_id` を指定します。 それ以外の場合は、その行をコメント アウトしたままにして、デバイスを ID 証明書の CN 名で登録します。
+
+1. 必要に応じて、`always_reprovision_on_startup` または `dynamic_reprovisioning` の行を使用して、デバイスの再プロビジョニング動作を構成します。 起動時に再プロビジョニングするようにデバイスが設定されている場合、常に最初に DPS を使用してプロビジョニングが試行され、失敗した場合はプロビジョニングのバックアップにフォールバックします。 動的に再プロビジョニングするようにデバイスが設定されている場合、再プロビジョニング イベントが検出されると、IoT Edge が再起動し、再プロビジョニングされます。 詳細については、「[IoT Hub デバイスの再プロビジョニングの概念](../iot-dps/concepts-device-reprovision.md)」を参照してください。
+
+1. config.yaml ファイルを保存して閉じます。
 
 1. デバイスで行ったすべての構成の変更が反映されるように、IoT Edge ランタイムを再起動します。
 
    ```bash
    sudo systemctl restart iotedge
    ```
+
+:::moniker-end
+<!-- end 1.1. -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. IoT Edge のインストールの一部として提供されるテンプレート ファイルに基づいて、デバイスの構成ファイルを作成します。
+
+   ```bash
+   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   ```
+
+1. IoT Edge デバイスで構成ファイルを開きます。
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+1. ファイルの **プロビジョニング** セクションを見つけます。 X.509 証明書を使用した DPS のプロビジョニング行をコメント解除し、他にもプロビジョニング行があれば、それらもコメント アウトするようにします。
+
+   ```toml
+   # DPS provisioning with X.509 certificate
+   [provisioning]
+   source = "dps"
+   global_endpoint = "https://global.azure-devices-provisioning.net"
+   id_scope = "<SCOPE_ID>"
+   
+   [provisioning.attestation]
+   method = "x509"
+   # registration_id = "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
+
+   identity_cert = "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
+
+   identity_pk = "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+   ```
+
+1. `id_scope`、`identity_cert`、`identity_pk` の値を DPS およびデバイス情報で更新します。
+
+   ID 証明書の値は、ファイルの URI として指定することも、EST またはローカルの証明機関を使用して動的に発行することもできます。 使用するように選択した形式に基づいて、1 行だけコメント解除します。
+
+   ID 秘密キーの値は、ファイル URI または PKCS#11 URI として指定できます。 使用するように選択した形式に基づいて、1 行だけコメント解除します。
+
+   任意の PKCS#11 URI を使用する場合は、構成ファイルで **PKCS#11** セクションを見つけ、PKCS#11 構成に関する情報を提供します。
+
+1. 必要に応じて、デバイスに `registration_id` を指定します。 それ以外の場合は、その行をコメント アウトしたままにして、デバイスを ID 証明書の共通名で登録します。
+
+1. ファイルを保存して閉じます。
+
+1. 加えた構成の変更を IoT Edge に適用します。
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ### <a name="windows-device"></a>Windows デバイス
 
@@ -287,7 +355,7 @@ DPS による x.509 のプロビジョニングは、IoT Edge バージョン 1.
    ```
 
    >[!TIP]
-   >config.yaml ファイルには、証明書とキー情報がファイル URI として格納されます。 ただし、Initialize-IoTEdge コマンドを使用すると、この書式設定の手順が処理されるため、デバイス上の証明書ファイルとキー ファイルの絶対パスを指定できます。
+   >構成ファイルには、証明書とキー情報がファイル URI として格納されます。 ただし、Initialize-IoTEdge コマンドを使用すると、この書式設定の手順が処理されるため、デバイス上の証明書ファイルとキー ファイルの絶対パスを指定できます。
 
 ## <a name="verify-successful-installation"></a>インストールの成功を確認する
 
@@ -298,6 +366,9 @@ Device Provisioning Service で作成した個々の登録が使用されたこ�
 ランタイムが正常にインストールされ、起動されたことを確認するには、デバイスで次のコマンドを使用します。
 
 ### <a name="linux-device"></a>Linux デバイス
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 IoT Edge サービスの状態を確認します。
 
@@ -316,6 +387,29 @@ journalctl -u iotedge --no-pager --no-full
 ```cmd/sh
 iotedge list
 ```
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+IoT Edge サービスの状態を確認します。
+
+```cmd/sh
+sudo iotedge system status
+```
+
+サービス ログを調べます。
+
+```cmd/sh
+sudo iotedge system logs
+```
+
+実行中のモジュールを一覧表示します。
+
+```cmd/sh
+sudo iotedge list
+```
+:::moniker-end
 
 ### <a name="windows-device"></a>Windows デバイス
 

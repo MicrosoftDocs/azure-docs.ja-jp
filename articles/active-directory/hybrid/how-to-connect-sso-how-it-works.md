@@ -16,11 +16,11 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: addb90ed3929847612fd423e3af01c1b3982c2d6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bde937adba8d2469390a6cf404f6cce8c5008e87
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100369647"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory シームレス シングル サインオン:技術的な詳細情報
@@ -67,10 +67,6 @@ Web ブラウザーでのサインインのフローは次のとおりです。
 6. Active Directory がコンピューター アカウントを検索し、コンピューター アカウントのシークレットで暗号化された Kerberos チケットをブラウザーに返します。
 7. ブラウザーは、Active Directory から取得した Kerberos チケットを Azure AD に転送します。
 8. Azure AD が、会社のデバイスにサインインしているユーザーの ID を含む Kerberos チケットを以前に共有していたキーを使用して解読します。
-
-   >[!NOTE]
-   >Azure AD は、Kerberos チケットのユーザーの UPN を、userPrincipalName 属性に対応する値を持つ Azure AD ユーザー オブジェクトに対して照合しようとします。 これが成功しなかった場合、Azure AD は、Kerberos チケットの samAccountName と、onPremisesSamAccountName 属性に対応する値を持つ Azure AD ユーザー オブジェクトとの照合にフォール バックします。
-   
 9. 評価後、Azure AD はアプリケーションにトークンを返すか、多要素認証などの他の検査を実行するようユーザーに要求します。
 10. ユーザーのサインインが成功すると、アプリケーションにアクセスできるようになります。
 

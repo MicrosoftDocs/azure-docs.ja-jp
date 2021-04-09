@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84690780"
 ---
 # <a name="single-sign-on-with-msaljs"></a>MSAL.js でのシングル サインオン
@@ -169,6 +169,6 @@ const myMSALObj = new UserAgentApplication(config);
 
 これを構成すると、MSAL.js は ADAL.js で認証されたユーザーのキャッシュされた状態を読み取って、MSAL.js で SSO を提供するために使用することができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure AD での[シングル サインオン セッションとトークンの有効期間](active-directory-configurable-token-lifetimes.md)の値に関する詳細を確認してください。

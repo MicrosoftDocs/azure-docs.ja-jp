@@ -10,10 +10,10 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.openlocfilehash: b10b6f011fa7daee4094f0cc7b819d36127fedcd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96460342"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Azure Synapse Analytics の共有メタデータ

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: af7baf413c9054ef3e5bf527851ac06c113cdce7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86131175"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Hyper-V VM のセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
@@ -34,7 +34,7 @@ Windows Server 2016 |  Windows Server 2016 ホストと 2012 R2 ホストが混�
 
 次の表は、Site Recovery 使用時にレプリケートされるマシンのオペレーティング システムのサポートをまとめたものです。 すべてのワークロードは、サポートされるオペレーティング システム上で実行できます。
 
-**Windows のバージョン** | **Hyper-V (VMM あり)**
+**Windows バージョン** | **Hyper-V (VMM あり)**
 --- | ---
 Windows Server 2016 | Windows Server 2016 の [Hyper-V でサポートされている](/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows)任意のゲスト オペレーティング システム 
 Windows Server 2012 R2 | Windows Server 2012 R2 の [Hyper-V でサポートされている](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29)任意のゲスト オペレーティング システム
@@ -51,7 +51,7 @@ Windows Server 2012 R2 | Windows Server 2012 R2 の [Hyper-V でサポートさ�
 
 ## <a name="network-configuration---hostguest-vm"></a>ネットワークの構成 - ホスト/ゲスト VM
 
-**構成** | **サポートされています**  
+**Configuration** | **サポートされています**  
 --- | --- 
 ホスト - NIC チーミング | はい 
 ホスト - VLAN | はい 
@@ -77,7 +77,7 @@ SAN (ISCSI) | はい
 
 ### <a name="guest-or-physical-server-storage"></a>ゲストまたは物理サーバーのストレージ
 
-**構成** | **サポートされています**
+**Configuration** | **サポートされています**
 --- | --- | 
 VMDK |  該当なし
 VHD/VHDX | はい (最大 16 個のディスク)

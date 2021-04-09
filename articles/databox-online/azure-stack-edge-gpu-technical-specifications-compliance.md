@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: d40d26e8fab0832a37a43c353e11189f8f193f14
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 937f0d1feb0c45c1c158b5e88daf268aeb383509
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573328"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034746"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>GPU を備えた Azure Stack Edge Pro の技術仕様とコンプライアンス 
 
@@ -25,7 +25,7 @@ Azure Stack Edge Pro デバイスには、コンピューティングとメモ�
 
 | 仕様           | 値                  |
 |-------------------------|----------------------------|
-| CPU                     | 2 X Intel Xeon Silver 4214 (Cascade Lake) CPU            |
+| CPU                     | 2 X Intel Xeon Silver 4214 (Cascade Lake) CPU<br> 24 個の物理コア (CPU あたり 12 個)<br>48 個の論理コア (vCPU) (CPU あたり 24 個)       |
 | メモリ                  | 128 (8x16 GB) GB RAM <br> Dell 互換 16 GB PC4-23400 DDR4-2933Mhz 2Rx8 1.2v ECC 登録済み RDIMM       |
 
 

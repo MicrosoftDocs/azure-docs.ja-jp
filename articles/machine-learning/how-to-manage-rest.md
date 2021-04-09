@@ -11,10 +11,10 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: b61050db29ff960b7923f2211b2f09649608b37e
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102520321"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>REST を使用して Azure ML リソースの作成、実行、削除を行う

@@ -4,10 +4,10 @@ description: カナダ連邦の PBMM ブループリント サンプルのコン
 ms.date: 02/05/2021
 ms.topic: sample
 ms.openlocfilehash: 440b07db514d8af0cf7f4177a6bac497eead2b37
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99627216"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>カナダ連邦の PBMM ブループリント サンプルのコントロール マッピング
@@ -73,7 +73,7 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 Azure SQL Database 用の高度なデータ セキュリティであるデータ検出および分類機能を使用すると、データベース内の機密データを検出、分類、ラベル付け、および保護することができます。 データベースの分類の状態を把握し、データベース内やその境界を越えて機密データへのアクセスを追跡するために使用できます。 Advanced Data Security は、情報が組織の適切なセキュリティ属性に関連付けられていることを確認するために役立ちます。 このブループリントでは、SQL サーバーに対する Advanced Data Security の使用を監視および強制する [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
 
 - SQL マネージド インスタンスで Advanced Data Security を有効にする必要がある
-- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL Server に対する Advanced Data Security のデプロイ
 
 ## <a name="ac-17-1-remote-access--automated-monitoring--control"></a>AC-17 (1) リモート アクセス | 自動監視および制御
@@ -103,7 +103,7 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 - 診断設定の監査
 - SQL Server の監査を有効にする必要があります
 - SQL マネージド インスタンスで Advanced Data Security を有効にする必要がある
-- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- Advanced Data Security を、SQL サーバー上で有効にする必要がある
 
 ## <a name="au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>AU-6 (4) 監査の確認、分析、およびレポート | 集中的な確認と分析
 
@@ -129,7 +129,7 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 - 診断設定の監査
 - SQL Server の監査を有効にする必要があります
 - SQL マネージド インスタンスで Advanced Data Security を有効にする必要がある
-- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL Server に対する Advanced Data Security のデプロイ
 - SQL Server での監査のデプロイ
 - ネットワーク セキュリティ グループの診断設定のデプロイ
@@ -189,7 +189,7 @@ Azure Site Recovery では、仮想マシンで実行中のワークロードが
 Azure Security Center では、デプロイされた Azure リソースのセキュリティ状態をリアルタイムに分析するためのレポート機能が提供されます。 このブループリントでは、他にも、SQL サーバー上で Advanced Data Security を監査および強制するポリシー定義が割り当てられます。 Advanced Data Security には、脆弱性の評価機能と高度な脅威に対する保護機能が含まれており、デプロイ済みのリソースに存在する脆弱性について理解を深めるうえで役立ちます。
 
 - SQL マネージド インスタンスで Advanced Data Security を有効にする必要がある
-- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL Server に対する Advanced Data Security のデプロイ
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
@@ -238,7 +238,7 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 このブループリントは、特定の暗号化コントロールを適用し、脆弱な暗号化設定の使用を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、保存情報の保護のための暗号化コントロールの使用に関するポリシーの実施を支援するものです。 最適でない暗号化構成が Azure リソースのどこに存在しているかを把握することにより、適切な是正措置を実施し、リソースの構成を情報セキュリティ ポリシーに準拠させることができます。 具体的には、このブループリントにより割り当てられるポリシー定義では、Data Lake Storage アカウントの暗号化と SQL データベースでの Transparent Data Encryption が必須になるほか、SQL データベース、仮想マシン ディスク、Automation アカウント変数の暗号化に漏れがないかどうかが監査されます。
 
 - SQL マネージド インスタンスで Advanced Data Security を有効にする必要がある
-- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL Server に対する Advanced Data Security のデプロイ
 - SQL DB Transparent Data Encryption のデプロイ
 - 仮想マシンでディスク暗号化を適用する必要がある
@@ -282,7 +282,7 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 - SQL マネージド インスタンスで Advanced Data Security を有効にする必要がある
-- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL Server に対する Advanced Data Security のデプロイ
 - ストレージ アカウントに対する Advanced Threat Protection のデプロイ
 - SQL Server での監査のデプロイ

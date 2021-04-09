@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 3cf5047dbb79f6d8b35b0fe089069a20ab4a50a6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/08/2021
+ms.openlocfilehash: ff938d29d998b6fcf0b2cfae72a9a9e685a10dc5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736373"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563960"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>Azure Logic Apps プレビューを使用して Azure portal でステートフルとステートレスのワークフローを作成する
 
@@ -236,7 +236,33 @@ Azure portal では、新しい **ロジック アプリ (プレビュー)** リ
 
 1. 作業内容を保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
-次に、ワークフローをテストするには、手動で実行をトリガーします。
+1. トラフィックを制限する厳しいネットワーク要件またはファイアウォールが環境内にある場合は、ワークフロー内に存在するすべてのトリガーまたはアクション接続に対してアクセス許可を設定する必要があります。 完全修飾名を検索するには 
+
+   そうでない場合、ワークフローをテストするには、[手動で実行をトリガーします](#trigger-workflow)。
+
+<a name="firewall-setup"></a>
+
+##  <a name="find-domain-names-for-firewall-access"></a>ファイアウォール アクセス用のドメイン名を検索する
+
+ロジック アプリをデプロイして Azure portal でワークフローを実行する前に、トラフィックを制限する厳しいネットワーク要件またはファイアウォールが環境内にある場合は、論理アプリ内に存在するワークフロー内のすべてのトリガーまたはアクション接続に対するネットワークまたはファイアウォールのアクセス許可を設定する必要があります。
+
+これらの接続の完全修飾ドメイン名 (FQDN) を検索するには、次の手順を実行します。
+
+1. ロジック アプリのメニューの **[ワークフロー]** で、 **[接続]** を選択します。 **[API 接続]** タブで、接続のリソース名を選択します。ここに例を示します。
+
+   ![[接続] および [offic365] 接続リソース名が選択されている、Azure portal とロジック アプリのメニューを示すスクリーンショット。](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connections.png)
+
+1. ブラウザーの右上隅に **[JSON ビュー]** が表示されるようにブラウザーの幅を広げて、 **[JSON ビュー]** を選択します。
+
+   ![[JSON ビュー] が選択されている、Azure portal と [API 接続] ペインを示すスクリーンショット。](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connection-view-json.png)
+
+1. `connectionRuntimeUrl` プロパティ値を見つけてコピーし、安全な場所に保存して、この情報を使用してファイアウォールを設定できるようにします。
+
+   ![選択された "connectionRuntimeUrl" プロパティ値を示すスクリーンショット。](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connection-runtime-url.png)
+
+1. 各接続について、関連する手順を繰り返します。
+
+<a name="trigger-workflow"></a>
 
 ## <a name="trigger-the-workflow"></a>ワークフローをトリガーする
 

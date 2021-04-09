@@ -4,10 +4,10 @@ description: この記事では、Azure Event Hubs での接続の問題のト�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 8eddc0e8c598e4553b30759d179fecb6ae880829
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96012682"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>接続に関する問題のトラブルシューティング - Azure Event Hubs

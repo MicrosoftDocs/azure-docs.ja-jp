@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/20/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 86e84d825bd1dd3774cfd2774e0b96e540bb3cd2
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92218478"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Java アプリケーション を使用して Azure Data Lake Analytics を管理する
@@ -21,11 +21,11 @@ ms.locfileid: "92218478"
 ## <a name="prerequisites"></a>前提条件
 * **Java Development Kit (JDK) 8** (Java バージョン 1.8 を使用)。
 * **IntelliJ** または別の適切な Java 開発環境。 このドキュメントの説明では IntelliJ を使います。
-* Azure Active Directory (AAD) アプリケーションを作成し、**そのクライアント ID**、**テナント ID**、および**キー**を取得します。 AAD アプリケーションと、クライアント ID の取得方法の詳細については、 [ポータルを使用した Active Directory のアプリケーションとサービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関するページを参照してください。 アプリケーションを作成しキーを生成したら、応答 URI とキーをポータルから使うことができます。
+* Azure Active Directory (AAD) アプリケーションを作成し、**そのクライアント ID**、**テナント ID**、および **キー** を取得します。 AAD アプリケーションと、クライアント ID の取得方法の詳細については、 [ポータルを使用した Active Directory のアプリケーションとサービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関するページを参照してください。 アプリケーションを作成しキーを生成したら、応答 URI とキーをポータルから使うことができます。
 
 ## <a name="authenticating-using-azure-active-directory"></a>Azure Active Directory を使用した認証
 
-次のコード スニペットは、アプリケーションが独自の資格情報を提供する、**非対話型**認証用のコードを提供します。
+次のコード スニペットは、アプリケーションが独自の資格情報を提供する、**非対話型** 認証用のコードを提供します。
 
 ## <a name="create-a-java-application"></a>Java アプリケーションの作成
 1. IntelliJ を開き、**コマンド ライン アプリ** テンプレートを使って Java プロジェクトを作成します。

@@ -8,10 +8,10 @@ ms.date: 11/30/2020
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: b49d90ffe2a262895727fdd4ef5f8a7950104102
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96437016"
 ---
 # <a name="how-to-get-an-intent-using-the-rest-apis"></a>REST API を使用して意図を取得する方法

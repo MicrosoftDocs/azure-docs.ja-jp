@@ -8,10 +8,10 @@ ms.author: helohr
 ms.reviewer: v-cawood; clemr
 manager: lizross
 ms.openlocfilehash: bfc797e0c11a1804d27c6c97fea8cb2ba62dca7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88010125"
 ---
 # <a name="configure-microsoft-endpoint-configuration-manager"></a>Microsoft Endpoint Configuration Manager を構成する

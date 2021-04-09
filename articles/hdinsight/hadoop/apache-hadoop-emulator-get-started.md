@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
-ms.openlocfilehash: eb286adfd7267a78fcf80bcf5ad34f8f1cc9f493
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 60f4e4998e1077ca373f47a0cdf35c9d7a064605
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946609"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866677"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Apache Hadoop サンドボックス (仮想マシンのエミュレーター) の概要
 
@@ -31,21 +31,21 @@ Hortonworks の Hadoop サンドボックスを仮想マシンにインストー
 
 サンドボックスの設定に関する手順については、[サンドボックスの展開およびインストール ガイド](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/)を参照してください。
 
-古い HDP バージョンのサンドボックスをダウンロードするには、 **[Older Versions]** の下のリンクを参照してください。
+古い HDP バージョンのサンドボックスをダウンロードするには、**[Older Versions]** の下のリンクを参照してください。
 
 ## <a name="start-the-virtual-machine"></a>仮想マシンの開始
 
 1. Oracle VM VirtualBox を開きます。
 1. **[ファイル]** メニューの **[Import Appliance (アプライアンスのインストール)]** をクリックしHortonworks Sandbox イメージを指定します。
-1. Hortonworks Sandbox を選択し、 **[Start (開始)]** 、 **[Normal Start (通常の方法で開始)]** の順にクリックします。 仮想マシンのブート プロセスが終了すると、ログインに関する手順が表示されます。
+1. Hortonworks Sandbox を選択し、**[Start (開始)]**、**[Normal Start (通常の方法で開始)]** の順にクリックします。 仮想マシンのブート プロセスが終了すると、ログインに関する手順が表示されます。
 
-    ![virtualbox マネージャーの通常の方法での開始](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
+    :::image type="content" source="./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png" alt-text="virtualbox マネージャーの通常の方法での開始" border="true":::
 
 1. Web ブラウザーを開き、表示された URL に移動します (通常は `http://127.0.0.1:8888`)。
 
 ## <a name="set-sandbox-passwords"></a>サンドボックスのパスワードの設定
 
-1. Hortonworks Sandbox のページの **[get started (開始)]** 手順で、 **[View Advanced Options (詳細設定の表示)]** をクリックします。 SSH を使用してサンドボックスにログインするには、このページの情報を使用します。 提供された名前とパスワードを使用してください。
+1. Hortonworks Sandbox のページの **[get started (開始)]** 手順で、**[View Advanced Options (詳細設定の表示)]** をクリックします。 SSH を使用してサンドボックスにログインするには、このページの情報を使用します。 提供された名前とパスワードを使用してください。
 
    > [!NOTE]
    > SSH クライアントがインストールされていない場合は、 **http://localhost:4200/** の仮想マシンから提供される Web ベースの SSH を使用することができます。

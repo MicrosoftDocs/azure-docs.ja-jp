@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/12/2020
+ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: f9e4af3330ecf5fbe161f7ba92ddf96eb04880a1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1996024d163a4bf7cfa741110038bb8db5b883e8
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728026"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102632748"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と BeyondTrust Remote Support の統合
 
@@ -51,7 +51,7 @@ Azure AD への BeyondTrust Remote Support の統合を構成するには、ギ�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**BeyondTrust Remote Support**」と入力します。
 1. 結果のパネルから **[BeyondTrust Remote Support]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-beyondtrust-remote-support"></a>BeyondTrust Remote Support の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-beyondtrust-remote-support"></a>BeyondTrust Remote Support の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、BeyondTrust Remote Support に対する Azure AD SSO を構成してテストします。 SSO を機能させるためには、Azure AD ユーザーと BeyondTrust Remote Support の関連ユーザーとの間にリンク関係を確立する必要があります。
 
@@ -76,14 +76,14 @@ BeyondTrust Remote Support に対する Azure AD SSO を構成してテストす
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** ボックスに、`https://<HOSTNAME>.bomgar.com/saml` という形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<HOSTNAME>.bomgar.com` という形式で URL を入力します。
 
-    b. **[識別子]** ボックスに、`https://<HOSTNAME>.bomgar.com` という形式で URL を入力します。
-
-    c. **[応答 URL]** ボックスに、`https://<HOSTNAME>.bomgar.com/saml/sso` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://<HOSTNAME>.bomgar.com/saml/sso` のパターンを使用して URL を入力します
+    
+    c. **[サインオン URL]** ボックスに、`https://<HOSTNAME>.bomgar.com/saml` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値については、このチュートリアルの後半で説明します。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値については、このチュートリアルの後半で説明します。
 
 1. BeyondTrust Remote Support アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -167,6 +167,10 @@ BeyondTrust Remote Support に対する Azure AD SSO を構成してテストす
 
 ### <a name="create-beyondtrust-remote-support-test-user"></a>BeyondTrust Remote Support のテスト ユーザーを作成する
 
+このセクションでは、Britta Simon というユーザーを BeyondTrust Remote Support に作成します。 BeyondTrust Remote Support では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 BeyondTrust Remote Support にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+
+下の手順に従います。これは、BeyondTrust Remote Support を構成するために必須です。
+
 ここでは、ユーザー プロビジョニング設定を構成します。 このセクションで使用される値は、Azure portal の **[ユーザー属性と要求]** セクションから参照されます。 これは、作成時に既にインポートされている既定値に構成しましたが、必要に応じて値をカスタマイズできます。
 
 ![スクリーンショットは、ユーザーの値を構成できる [User Provision Settings]\(ユーザー プロビジョニング設定\) を示しています。](./media/bomgarremotesupport-tutorial/user-attribute.png)
@@ -174,7 +178,7 @@ BeyondTrust Remote Support に対する Azure AD SSO を構成してテストす
 > [!NOTE]
 > この実装では、グループおよび電子メールの属性は必要ありません。 Azure AD グループを利用して、それらをアクセス許可の BeyondTrust Remote Support グループ ポリシーに割り当てる場合は、グループのオブジェクト ID を Azure portal のそのプロパティを使用して参照し、[Available Groups]\(使用可能なグループ\) セクションに配置する必要があります。 これが完了すると、オブジェクト ID/AD グループがアクセス許可のグループ ポリシーへの割り当てに使用できるようになります。
 
-![スクリーンショットは、[Membership type]\(メンバーシップの種類\)、[Source]\(ソース\)、[Type]\(種類\)、および [Object ID]\(オブジェクト ID\) を含む [IT] セクションを示しています。](./media/bomgarremotesupport-tutorial/config-user2.png)
+![スクリーンショットは、[Membership type]\(メンバーシップの種類\)、[Source]\(ソース\)、[Type]\(種類\)、および [Object ID]\(オブジェクト ID\) を含む [IT] セクションを示しています。](./media/bomgarremotesupport-tutorial/config-user-2.png)
 
 ![スクリーンショットは、グループ ポリシーの [Basic Settings]\(基本設定\) ページを示しています。](./media/bomgarremotesupport-tutorial/group-policy.png)
 

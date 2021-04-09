@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 08/17/2020
 ms.openlocfilehash: 9b51ee2767a9595f5732f558cfa25f5064944e49
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93131192"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でイングレス コントローラーを作成する
@@ -38,7 +38,7 @@ ms.locfileid: "93131192"
 イングレス コントローラーも Linux ノード上でスケジュールする必要があります。 Windows Server ノードでは、イングレス コントローラーを実行しないでください。 ノード セレクターは、`--set nodeSelector` パラメーターを使用して指定され、Linux ベース ノード上で NGINX イングレス コントローラーを実行するように Kubernetes スケジューラに指示されます。
 
 > [!TIP]
-> 次の例では、 *ingress-basic* という名前のイングレス リソースの Kubernetes 名前空間が作成されます。 必要に応じて、ご自身の環境の名前空間を指定できます。
+> 次の例では、*ingress-basic* という名前のイングレス リソースの Kubernetes 名前空間が作成されます。 必要に応じて、ご自身の環境の名前空間を指定できます。
 
 > [!TIP]
 > クラスター内のコンテナーへの要求で[クライアント ソース IP の保持][client-source-ip]を有効にする場合は、Helm インストール コマンドに `--set controller.service.externalTrafficPolicy=Local` を追加します。 クライアント ソース IP が要求ヘッダーの *X-Forwarded-For* の下に格納されます。 クライアント ソース IP の保持が有効になっているイングレス コントローラーを使用する場合、SSL パススルーは機能しません。
@@ -161,7 +161,7 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 
 両方のアプリケーションは、Kubernetes クラスターで実行するようになります。 各アプリケーションにトラフィックをルーティングするには、Kubernetes イングレス リソースを作成します。 イングレス リソースでは、2 つのアプリケーションのいずれかにトラフィックをルーティングするルールを構成します。
 
-次の例では、 *EXTERNAL_IP* へのトラフィックが `aks-helloworld-one` という名前のサービスにルーティングされます。 *EXTERNAL_IP/hello-world-two* へのトラフィックは、`aks-helloworld-two` サービスにルーティングされます。 静的資産の場合、 *EXTERNAL_IP/static* へのトラフィックは `aks-helloworld-one` という名前のサービスにルーティングされます。
+次の例では、*EXTERNAL_IP* へのトラフィックが `aks-helloworld-one` という名前のサービスにルーティングされます。 *EXTERNAL_IP/hello-world-two* へのトラフィックは、`aks-helloworld-two` サービスにルーティングされます。 静的資産の場合、*EXTERNAL_IP/static* へのトラフィックは `aks-helloworld-one` という名前のサービスにルーティングされます。
 
 *hello-world-ingress.yaml* という名前のファイルを作成し、次の例の YAML 内にコピーします。
 
@@ -223,11 +223,11 @@ ingress.extensions/hello-world-ingress-static created
 
 ## <a name="test-the-ingress-controller"></a>イングレス コントローラーをテストする
 
-イングレス コント ローラーに対してルートをテストするには、2 つのアプリケーションを参照します。 Web ブラウザーを開き、 *EXTERNAL_IP* などの NGINX イングレス コントローラーの IP アドレスに移動します。 最初のデモ アプリケーションは、次の例で示すように、Web ブラウザーに表示されます。
+イングレス コント ローラーに対してルートをテストするには、2 つのアプリケーションを参照します。 Web ブラウザーを開き、*EXTERNAL_IP* などの NGINX イングレス コントローラーの IP アドレスに移動します。 最初のデモ アプリケーションは、次の例で示すように、Web ブラウザーに表示されます。
 
 ![イングレス コント ローラーの背後で実行中の最初のアプリ](media/ingress-basic/app-one.png)
 
-ここで */hello-world-two* パスを IP アドレスに追加し、 *EXTERNAL_IP/hello-world-two* などとします。 カスタム タイトル付きの 2 番目のデモ アプリケーションが表示されます。
+ここで */hello-world-two* パスを IP アドレスに追加し、*EXTERNAL_IP/hello-world-two* などとします。 カスタム タイトル付きの 2 番目のデモ アプリケーションが表示されます。
 
 ![イングレス コント ローラーの背後で実行中の 2 番目のアプリ](media/ingress-basic/app-two.png)
 
@@ -245,7 +245,7 @@ kubectl delete namespace ingress-basic
 
 ### <a name="delete-resources-individually"></a>リソースを個々に削除する
 
-作成したリソースを個々に削除するという、きめ細かな方法もあります。 `helm list` コマンドを使用して、Helm リリースを一覧表示します。 次の出力例に示すように、 *nginx-ingress* および *aks-helloworld* という名前のグラフを探します。
+作成したリソースを個々に削除するという、きめ細かな方法もあります。 `helm list` コマンドを使用して、Helm リリースを一覧表示します。 次の出力例に示すように、*nginx-ingress* および *aks-helloworld* という名前のグラフを探します。
 
 ```
 $ helm list --namespace ingress-basic

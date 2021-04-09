@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: de98e25cf5703a43282e551a0eda20d7767c6ce8
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92103630"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-cli"></a>Azure CLI を使用して Azure Data Lake Storage Gen1 の使用を開始する
@@ -38,7 +38,7 @@ Azure CLI は、Azure リソースを管理するための、Azure のコマン�
 
 ## <a name="authentication"></a>認証
 
-この記事では、Data Lake Storage Gen1 に対してエンド ユーザーとしてログインする比較的単純な認証方法を使用します。 その後、Data Lake Storage Gen1 アカウントとファイル システムに対するアクセス レベルは、そのログイン ユーザーのアクセス レベルで管理されます。 ただし、Data Lake Storage Gen1 には他の認証方法も存在します (**エンド ユーザー認証**と**サービス間認証**)。 認証方法の詳細については、[エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)または[サービス間認証](./data-lake-store-service-to-service-authenticate-using-active-directory.md)に関するページを参照してください。
+この記事では、Data Lake Storage Gen1 に対してエンド ユーザーとしてログインする比較的単純な認証方法を使用します。 その後、Data Lake Storage Gen1 アカウントとファイル システムに対するアクセス レベルは、そのログイン ユーザーのアクセス レベルで管理されます。 ただし、Data Lake Storage Gen1 には他の認証方法も存在します (**エンド ユーザー認証** と **サービス間認証**)。 認証方法の詳細については、[エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)または[サービス間認証](./data-lake-store-service-to-service-authenticate-using-active-directory.md)に関するページを参照してください。
 
 
 ## <a name="log-in-to-your-azure-subscription"></a>Azure サブスクリプションにログイン
@@ -132,13 +132,13 @@ az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
 
 ## <a name="rename-download-and-delete-data-from-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントのデータの名前変更、ダウンロード、削除を行う 
 
-* **ファイルの名前を変更する**には、次のコマンドを使用します。
+* **ファイルの名前を変更する** には、次のコマンドを使用します。
   
     ```azurecli
     az dls fs move --account mydatalakestoragegen1 --source-path /mynewfolder/vehicle1_09142014.csv --destination-path /mynewfolder/vehicle1_09142014_copy.csv
     ```
 
-* **ファイルをダウンロードする**には、次のコマンドを使用します。 既に存在するパスをダウンロード先として指定してください。
+* **ファイルをダウンロードする** には、次のコマンドを使用します。 既に存在するパスをダウンロード先として指定してください。
   
     ```azurecli     
     az dls fs download --account mydatalakestoragegen1 --source-path /mynewfolder/vehicle1_09142014_copy.csv --destination-path "C:\mysampledata\vehicle1_09142014_copy.csv"
@@ -149,7 +149,7 @@ az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
     > 
     >
 
-* **ファイルを削除する**には、次のコマンドを使用します。
+* **ファイルを削除する** には、次のコマンドを使用します。
   
     ```azurecli
     az dls fs delete --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014_copy.csv
@@ -165,19 +165,19 @@ az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
 
 このセクションでは、Azure CLI を使用して ACL とアクセス許可を管理する方法について説明します。 Azure Data Lake Storage Gen1 で ACL がどのように実装されているかについては「[Azure Data Lake Storage Gen1 のアクセス制御](data-lake-store-access-control.md)」に説明があります。そちらをご参照ください。
 
-* **ファイルまたはフォルダーの所有者を更新する**には、次のコマンドを使用します。
+* **ファイルまたはフォルダーの所有者を更新する** には、次のコマンドを使用します。
 
     ```azurecli
     az dls fs access set-owner --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014.csv --group 80a3ed5f-959e-4696-ba3c-d3c8b2db6766 --owner 6361e05d-c381-4275-a932-5535806bb323
     ```
 
-* **ファイルまたはフォルダーのアクセス許可を更新する**には、次のコマンドを使用します。
+* **ファイルまたはフォルダーのアクセス許可を更新する** には、次のコマンドを使用します。
 
     ```azurecli
     az dls fs access set-permission --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014.csv --permission 777
     ```
     
-* **特定のパスの ACL を取得する**には、次のコマンドを使用します。
+* **特定のパスの ACL を取得する** には、次のコマンドを使用します。
 
     ```azurecli
     az dls fs access show --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014.csv
@@ -199,25 +199,25 @@ az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
     }
     ```
 
-* **ACL のエントリを設定する**には、次のコマンドを使用します。
+* **ACL のエントリを設定する** には、次のコマンドを使用します。
 
     ```azurecli
     az dls fs access set-entry --account mydatalakestoragegen1 --path /mynewfolder --acl-spec user:6360e05d-c381-4275-a932-5535806bb323:-w-
     ```
 
-* **ACL のエントリを削除する**には、次のコマンドを使用します。
+* **ACL のエントリを削除する** には、次のコマンドを使用します。
 
     ```azurecli
     az dls fs access remove-entry --account mydatalakestoragegen1 --path /mynewfolder --acl-spec user:6360e05d-c381-4275-a932-5535806bb323
     ```
 
-* **既定の ACL エントリ全体を削除する**には、次のコマンドを使用します。
+* **既定の ACL エントリ全体を削除する** には、次のコマンドを使用します。
 
     ```azurecli
     az dls fs access remove-all --account mydatalakestoragegen1 --path /mynewfolder --default-acl
     ```
 
-* **既定でない ACL エントリ全体を削除する**には、次のコマンドを使用します。
+* **既定でない ACL エントリ全体を削除する** には、次のコマンドを使用します。
 
     ```azurecli
     az dls fs access remove-all --account mydatalakestoragegen1 --path /mynewfolder

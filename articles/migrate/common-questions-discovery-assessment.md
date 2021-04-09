@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 40afa1d743b8d074fa46dde46163f6479ebf87c2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6c4dfed27a105fad951ae12ca053b6d86772717a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589076"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032570"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>検出、評価、および依存関係分析 - よく寄せられる質問
 
@@ -36,12 +36,17 @@ ms.locfileid: "100589076"
 
 - Azure VM への移行のためにオンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md)、[Hyper-V VM](how-to-set-up-appliance-hyper-v.md)、および [物理サーバー](how-to-set-up-appliance-physical.md)を評価する場合は、**Azure VM の評価** を使用します。 [詳細情報](concepts-assessment-calculation.md)
 
+- VMware 環境からオンプレミスの SQL サーバーを評価して、Azure SQL Database または Azure SQL Managed Instance に移行する場合は、評価の種類として **Azure SQL** を使用します。 [詳細情報](concepts-assessment-calculation.md)
+
+    > [!Note]
+    > VMware 環境で実行されている SQL Server インスタンスおよびデータベースの検出と評価は、現在プレビュー段階にあります。 この機能を試すには、[**このリンク**](https://aka.ms/AzureMigrate/SQL)を使用して、**オーストラリア東部** リージョンにプロジェクトを作成します。 オーストラリア東部に既にプロジェクトがあり、この機能を試したい場合は、ポータルでこれらの [**前提条件**](how-to-discover-sql-existing-project.md)が完了していることを確認してください。
+
 - **Azure VMware Solution (AVS)** の評価を使用するのは、[Azure VMware Solution (AVS)](../azure-vmware/introduction.md) への移行のために、この評価の種類を使用してオンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md) を評価する場合です。 [詳細情報](concepts-azure-vmware-solution-assessment-calculation.md)
 
 - VMware マシンで共通グループを使用できるのは、両方の種類の評価を実行する場合のみです。 Azure Migrate で AVS の評価を初めて実行する場合は、VMware マシンの新しいグループを作成することをお勧めします。
  
 
-## <a name="why-is-performance-data-missing-for-someall-vms-in-my-assessment-report"></a>評価レポートで一部または全部の VM のパフォーマンス データが見つからないのはなぜですか?
+## <a name="why-is-performance-data-missing-for-someall-servers-in-my-azure-vm-andor-avs-assessment-report"></a>Azure VM や AVS の評価レポートに、一部またはすべてのサーバーに関するパフォーマンス データがないのはなぜですか?
 
 "パフォーマンス ベース" の評価では、Azure Migrate アプライアンスでオンプレミス VM のパフォーマンス データを収集できない場合、評価レポートのエクスポートに "PercentageOfCoresUtilizedMissing" または "PercentageOfMemoryUtilizedMissing" と表示されます。 次の点を確認してください。
 
@@ -50,24 +55,111 @@ ms.locfileid: "100589076"
 
 - すべてのパフォーマンス カウンターがない場合は、ポート 443 (HTTPS) での発信接続が許可されていることを確認します。
 
-注 - いずれかのパフォーマンス カウンターを取得できない場合、Azure Migrate: Server Assessment はオンプレミスの割り当てられたコアまたはメモリにフォールバックし、それに応じて VM サイズが推奨されます。
+    > [!Note]
+    > いずれかのパフォーマンス カウンターを取得できない場合、Azure Migrate: Server Assessment はオンプレミスの割り当てられたコアまたはメモリにフォールバックし、それに応じて VM サイズが推奨されます。
+
+
+## <a name="why-is-performance-data-missing-for-someall-sql-instancesdatabases-in-my-azure-sql-assessment"></a>Azure SQL の評価に、一部またはすべての SQL インスタンスまたはデータベースに関するパフォーマンス データがないのはなぜですか?
+
+パフォーマンス データが収集されるようにするには、次のことを確認してください。
+
+- 評価を作成している期間中に SQL サーバーの電源がオンになっていたかどうか
+- Azure Migrate で SQL エージェントの接続状態が "接続済み" かどうか、また、最後のハートビートも確認します 
+- 検出された SQL インスタンスのブレードで、すべての SQL インスタンスの Azure Migrate の接続状態が "接続済み" かどうか
+- すべてのパフォーマンス カウンターがない場合は、ポート 443 (HTTPS) での発信接続が許可されていることを確認します
+
+パフォーマンス カウンターのいずれかが欠落している場合、Azure SQL 評価により、そのインスタンスまたはデータベースに対して最小限の Azure SQL 構成が推奨されます。
 
 ## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>評価の信頼度レーティングが低いのはなぜですか?
 
 信頼度評価は、評価を計算するために必要な[使用可能データ ポイント](./concepts-assessment-calculation.md#ratings)の割合に基づいて、"パフォーマンス ベース" の評価に対して計算されます。 評価の信頼度レーティングが低い理由は以下のとおりです。
 
-- 評価を作成するための期間用の環境をプロファイルしませんでした。 たとえば、パフォーマンス期間を 1 週間に設定した評価を作成する場合は、すべてのデータポイントが収集されるまで、検出を始めてから少なくとも 1 週間待つ必要があります。 その期間待つことができない場合は、パフォーマンス期間を短くし、評価を "再計算" してください。
+- 評価を作成するための期間用の環境をプロファイルしませんでした。 たとえば、パフォーマンス期間を 1 週間に設定した評価を作成する場合は、すべてのデータポイントが収集されるまで、検出を始めてから少なくとも 1 週間待つ必要があります。 その期間待つことができない場合は、パフォーマンス期間を短くし、評価を **再計算** してください。
  
-- サーバー評価では、評価期間内に一部または全部の VM のパフォーマンス データを収集できません。 高い信頼度レーティングを得るために、次のことを確認してください。 
-    - 評価期間中、VM の電源がオンになっている
+- 評価期間内に一部または全部のサーバーのパフォーマンス データを評価で収集できません。 高い信頼度レーティングを得るために、次のことを確認してください。 
+    - 評価期間中、サーバーの電源がオンになっている
     - ポート 443 でのアウトバウンド接続が許可されている
-    - Hyper-V VM で、動的メモリが有効になっている 
+    - Hyper-V サーバーで、動的メモリが有効になっている 
+    - Azure Migrate のエージェントの接続状態が "接続済み" である、また、最後のハートビートも確認します
+    - Azure SQL 評価の検出された SQL インスタンスのブレードで、すべての SQL インスタンスの Azure Migrate の接続状態が "接続済み" である
 
-    評価を "再計算" し、信頼性評価に最新の変更を反映してください。
+    評価を **再計算** し、信頼性評価に最新の変更を反映してください。
 
-- Server Assessment で検出が開始された後で、いくつかの VM が作成されました。 たとえば、過去 1 か月間のパフォーマンス履歴の評価を作成しているのに、ほんの 1 週間前にいくつかの VM が環境内に作成されたとします。 この場合、新しい VM のパフォーマンス データは期間全体を通しては利用できず、信頼度レーティングが低くなります。
+- Azure VM および AVS の評価では、検出の開始後に作成されたサーバーはほとんどありませんでした。 たとえば、過去 1 か月間のパフォーマンス履歴の評価を作成しているのに、ほんの 1 週間前にいくつかのサーバーが環境内に作成されたとします。 この場合、新しいサーバーのパフォーマンス データは期間全体を通しては利用できず、信頼度レーティングが低くなります。 [詳細情報](./concepts-assessment-calculation.md#confidence-ratings-performance-based)
 
-信頼度レーティングに関する[詳細についてはこちら](./concepts-assessment-calculation.md#confidence-ratings-performance-based)をご覧ください。
+- Azure SQL の評価の場合、検出が開始された後で、いくつかの SQL インスタンスまたはデータベースが作成されました。 たとえば、過去 1 か月間のパフォーマンス履歴の評価を作成しているのに、ほんの 1 週間前にいくつかの SQL インスタンスまたはデータベースが環境内に作成されたとします。 この場合、新しいサーバーのパフォーマンス データは期間全体を通しては利用できず、信頼度レーティングが低くなります。 [詳細情報](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
+
+## <a name="i-want-to-try-out-the-new-azure-sql-assessment-feature-in-azure-migrate"></a>Azure Migrate の新しい Azure SQL 評価機能を試してみたい
+この機能を試すには、[このリンク](https://go.microsoft.com/fwlink/?linkid=2155668L)を使用して、**オーストラリア東部** リージョンにプロジェクトを作成します。
+- 始めるには、[検出](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware)と[評価](https://docs.microsoft.com/azure/migrate/tutorial-assess-sql)に関するチュートリアルを参照してください。
+- VMware 環境で実行されている SQL Server のインスタンスとデータベースの検出と評価は、現在プレビュー段階にあることに注意してください。
+
+## <a name="i-cant-see-some-servers-when-i-am-creating-an-azure-sql-assessment"></a>Azure SQL の評価を作成するときに、一部のサーバーを見ることができません
+
+- Azure SQL の評価は、SQL インスタンスが検出された場所で実行されているサーバーに対してのみ実行できます。 評価したいサーバーと SQL インスタンスが表示されない場合は、検出が完了するまでしばらく待ってから、評価を作成してください。 
+- 評価の作成中に以前に作成したグループを表示できない場合は、VMware 以外のサーバーまたは SQL インスタンスが存在していないすべてのサーバーを、グループから削除してください。
+- Azure Migrate で Azure SQL の評価を初めて実行する場合は、サーバーの新しいグループを作成することをお勧めします。
+
+## <a name="i-want-to-understand-how-was-the-readiness-for-my-instance-computed"></a>インスタンスの対応状態がどのように計算されたかを理解したい
+SQL インスタンスの対応状態は、対象となる Azure SQL のデプロイの種類 (Azure SQL Database または Azure SQL Managed Instance) との機能の互換性チェックが実行された後で計算されます。 [詳細情報](./concepts-azure-sql-assessment-calculation.md#calculate-readiness)
+
+## <a name="why-is-the-readiness-for-all-my-sql-instances-marked-as-unknown"></a>すべての SQL インスタンスの対応状態が不明とマークされているのはなぜですか?
+検出が最近開始され、まだ進行中の場合は、一部またはすべての SQL インスタンスの対応状態が不明と表示されることがあります。 アプライアンスによって環境のプロファイリングが行われるまでしばらく待ってから、評価を再計算することをお勧めします。
+SQL の検出は 24 時間ごとに 1 回実行され、最新の構成変更が反映されるまで最大で 1 日待つ必要がある場合があります。 
+
+## <a name="why-is-the-readiness-for-some-of-my-sql-instances-marked-as-unknown"></a>一部の SQL インスタンスの対応状態が不明とマークされているのはなぜですか?
+これは、次の場合に発生する可能性があります。 
+- 検出がまだ進行中です。 アプライアンスによって環境のプロファイリングが行われるまでしばらく待ってから、評価を再計算することをお勧めします。
+- 検出には、[Errors and notifications]\(エラーと通知\) ブレードで修正する必要がある問題がいくつかあります。
+
+SQL の検出は 24 時間ごとに 1 回実行され、最新の構成変更が反映されるまで最大で 1 日待つ必要がある場合があります。
+
+## <a name="my-assessment-is-in-outdated-state"></a>評価が期限切れ状態になっています
+
+### <a name="azure-vmavs-assessment"></a>Azure VM または AVS の評価
+評価されたグループ内の VM に対してオンプレミスでの変更があった場合、その評価は古い評価としてマークされます。 次のプロパティに 1 つ以上の変更があるため、評価は "古い" としてマークされている可能性があります。
+- プロセッサ コアの数
+- 割り当て済みメモリ
+- ブートの種類またはファームウェア
+- オペレーティング システムの名前、バージョン、アーキテクチャ
+- ディスクの数
+- ネットワーク アダプターの数
+- ディスク サイズの変更 (割り当てられた GB)
+- NIC プロパティの更新。 例:MAC アドレスの変更、IP アドレスの追加など。
+
+評価を **再計算** し、評価に最新の変更を反映してください。
+
+### <a name="azure-sql-assessment"></a>Azure SQL の評価
+評価されたグループに含まれるオンプレミスの SQL インスタンスおよびデータベースに変更があった場合、その評価は **期限切れ** とマークされます。
+- SQL インスタンスがサーバーに追加された、またはサーバーから削除された
+- SQL データベースが SQL インスタンスに追加された、または削除された
+- SQL インスタンスのデータベースの合計サイズが、20% より大きく変化した
+- プロセッサ コア数や割り当てられたメモリの変更
+
+評価を **再計算** し、評価に最新の変更を反映してください。
+
+## <a name="why-was-i-recommended-a-particular-target-deployment-type"></a>対象のデプロイで特定の種類が推奨されたのはなぜですか?
+Azure Migrate により、SQL インスタンスと互換性のある特定の Azure SQL のデプロイの種類が推奨されます。 Microsoft によって推奨されるターゲットに移行すると、移行の全体的な作業量が減ります。 この Azure SQL 構成 (SKU) は、SQL インスタンスと、それによって管理されるデータベースの、パフォーマンス特性を考慮した後で推奨されます。 該当する Azure SQL 構成が複数ある場合は、最もコスト効率の高いものを使用することをお勧めします。 [詳細情報](./concepts-azure-sql-assessment-calculation.md#calculate-sizing)
+
+## <a name="what-deployment-target-should-i-choose-if-my-sql-instance-is-ready-for-azure-sql-db-and-azure-sql-mi"></a>SQL インスタンスが Azure SQL DB と Azure SQL MI に対応している場合、どのデプロイ ターゲットを選択する必要がありますか? 
+インスタンスが Azure SQL DB と Azure SQL MI の両方に対応している場合は、Azure SQL 構成の推定コストが低い方のターゲットのデプロイの種類を使用することをお勧めします。
+
+## <a name="why-is-my-instance-marked-as-potentially-ready-for-azure-vm-in-my-azure-sql-assessment"></a>Azure SQL の評価でインスタンスが "Azure VM に対応している可能性あり" とマークされるのはなぜですか?
+このようになる可能性があるのは、評価のプロパティで選択されたターゲットのデプロイの種類が **推奨** であり、SQL インスタンスが Azure SQL Database と Azure SQL Managed Instance のどちらにも対応していない場合です。 ユーザーには、評価の種類を **Azure VM** にして Azure Migrate で評価を作成し、インスタンスが実行されているサーバーが Azure VM への移行に対応しているかどうかを判断することをお勧めします。
+ユーザーには、評価の種類を **Azure VM** にして Azure Migrate で評価を作成し、インスタンスが実行されているサーバーが Azure VM への移行に対応しているかどうかを代わりに判断することをお勧めします。
+- 現在、Azure Migrate での Azure VM の評価ではリフト アンド シフトが重視されており、SQL のインスタンスとデータベースを Azure 仮想マシンで実行した場合の特定のパフォーマンス メトリックは考慮されません。 
+- サーバーで Azure VM の評価を実行した場合、推奨されるサイズとコストの見積もりは、サーバーで実行されているすべてのインスタンスに対するものであり、Server Migration ツールを使用して Azure VM に移行できます。 移行を行う前に、Azure Virtual Machines での SQL Server の[パフォーマンス ガイドラインを確認してください](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices)。
+
+## <a name="i-cant-see-some-databases-in-my-assessment-even-though-the-instance-is-part-of-the-assessment"></a>インスタンスが評価の一部であるにもかかわらず、評価に一部のデータベースが表示されません
+
+Azure SQL の評価には、オンライン状態のデータベースのみが含まれます。 それ以外の状態になっているデータベースの対応状態、サイズ設定、コスト計算は無視されます。 そのようなデータベースを評価するには、データベースの状態を変更し、しばらくしてから評価を再計算してください。
+
+## <a name="i-want-to-compare-costs-for-running-my-sql-instances-on-azure-vm-vs-azure-sql-databaseazure-sql-managed-instance"></a>SQL インスタンスを Azure VM で実行した場合と Azure SQL Database または Azure SQL Managed Instance で実行した場合のコストを比較するにはどうすればよいですか?
+
+**Azure SQL** の評価に使用したものと同じグループで、種類を **Azure VM** にして評価を作成できます。 その後、2 つのレポートを並べて比較することができます。 ただし、現在、Azure Migrate での Azure VM の評価ではリフトアンドシフトが重視されており、SQL のインスタンスとデータベースを Azure 仮想マシンで実行した場合の特定のパフォーマンス メトリックは考慮されません。 サーバーで Azure VM の評価を実行した場合、推奨されるサイズとコストの見積もりは、サーバーで実行されているすべてのインスタンスに対するものであり、Server Migration ツールを使用して Azure VM に移行できます。 移行を行う前に、Azure Virtual Machines での SQL Server の[パフォーマンス ガイドラインを確認してください](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices)。
+
+## <a name="the-storage-cost-in-my-azure-sql-assessment-is-zero"></a>Azure SQL の評価でストレージ コストが 0 です
+Azure SQL Managed Instance の場合、最初の 32 GB/インスタンス/月のストレージに対するストレージ コストは追加されず、追加のストレージ コストが 32 GB 単位でストレージに追加されます。 [詳細情報](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Azure VMware Solution (AVS) の評価を作成しているときに一部のグループが表示されません
 

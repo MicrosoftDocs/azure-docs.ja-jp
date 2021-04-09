@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: chlound
 ms.openlocfilehash: 7c801511b6f24cf5ef04d55bb195e3a4c62d7b6d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96491249"
 ---
 # <a name="refresh-with-azure-automation"></a>Azure Automation を使用した更新

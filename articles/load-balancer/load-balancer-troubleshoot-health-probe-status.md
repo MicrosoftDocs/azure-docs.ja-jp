@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: allensu
 ms.openlocfilehash: 28823c997cd974d5061829df88680ed52075caa0
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98029154"
 ---
 # <a name="troubleshoot-azure-load-balancer-health-probe-status"></a>Azure Load Balancer の正常性プローブの状態に関するトラブルシューティング

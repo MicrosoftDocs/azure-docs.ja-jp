@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: 11efdb727bacadb674fb49374ef1c70fcc788ecc
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92219991"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>U-SQL ユーザー定義演算子 (UDO) の開発
@@ -21,7 +21,7 @@ ms.locfileid: "92219991"
 
 1. Visual Studio で、 **[ファイル]、[新規作成]、[プロジェクト]、[ U-SQL プロジェクト]** の順に選択します。
 2. **[OK]** をクリックします。 Visual Studio によって、Script.usql ファイルを使用するソリューションが作成されます。
-3. **ソリューション エクスプローラー**で、Script.usql を展開してから **Script.usql.cs** をダブルクリックします。
+3. **ソリューション エクスプローラー** で、Script.usql を展開してから **Script.usql.cs** をダブルクリックします。
 4. 以下のコードをファイルに貼り付けます。
 
    ```usql
@@ -110,17 +110,17 @@ ms.locfileid: "92219991"
    ```
 
 6. Data Lake Analytics アカウント、データベース、スキーマを指定します。
-7. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、 **[スクリプトのビルド]** をクリックします。
-8. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、 **[スクリプトの送信]** をクリックします。
+7. **ソリューション エクスプローラー** で **Script.usql** を右クリックし、 **[スクリプトのビルド]** をクリックします。
+8. **ソリューション エクスプローラー** で **Script.usql** を右クリックし、 **[スクリプトの送信]** をクリックします。
 9. Azure サブスクリプションに接続していない場合は、Azure アカウント資格情報の入力を求められます。
 10. **[送信]** をクリックします。 送信が完了すると、[結果] ウィンドウに送信結果とジョブのリンクが示されます。
 11. 最新のジョブの状態を表示して、画面を更新するには、 **[更新]** ボタンをクリックします。
 
 ### <a name="to-see-the-output"></a>出力を表示するには
 
-1. **サーバー エクスプローラー**で、 **[Azure]** 、 **[Data Lake Analytics]** 、Data Lake Analytics アカウント、 **[ストレージ アカウント]** の順に展開し、既定のストレージを右クリックしてから **[エクスプローラー]** をクリックします。
+1. **サーバー エクスプローラー** で、 **[Azure]** 、 **[Data Lake Analytics]** 、Data Lake Analytics アカウント、 **[ストレージ アカウント]** の順に展開し、既定のストレージを右クリックしてから **[エクスプローラー]** をクリックします。
 
-2. [サンプル]、[出力] の順にクリックしてから、 **Drivers.csv**をダブルクリックします。
+2. [サンプル]、[出力] の順にクリックしてから、 **Drivers.csv** をダブルクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 

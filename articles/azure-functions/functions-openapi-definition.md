@@ -6,10 +6,10 @@ ms.date: 04/21/2020
 ms.reviewer: sunayv
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47, references_regions
 ms.openlocfilehash: 9083ff7d8f65c68ce8d173973a4eda650ac355aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88212907"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Azure API Management を使用してサーバーレス API の OpenAPI 定義を作成する
@@ -49,12 +49,12 @@ REST API は、多くの場合、OpenAPI 定義を使用して記述されます
 
 1. **[[承認レベル]](functions-bindings-http-webhook-trigger.md#http-auth)** ドロップダウン リストから **[Function]** を選択し、 **[関数の作成]** を選択します。
 
-    :::image type="content" source="media/functions-openapi-definition/select-http-trigger-openapi.png" alt-text="OpenAPI 用の HTTP 関数を作成する&quot;:::
+    :::image type="content" source="media/functions-openapi-definition/select-http-trigger-openapi.png" alt-text="OpenAPI 用の HTTP 関数を作成する":::
 
 1. **[Code + Test]\(コード + テスト\)** を選択し、ドロップダウン リストから **[run.csx]** を選択します。 この run.csx C# スクリプト ファイルの内容を次のコードに置き換えて、 **[保存]** を選択します。
 
     ```csharp
-    #r &quot;Newtonsoft.Json"
+    #r "Newtonsoft.Json"
     
     using System.Net;
     using Microsoft.AspNetCore.Mvc;
@@ -115,12 +115,7 @@ REST API は、多くの場合、OpenAPI 定義を使用して記述されます
     }
     ```
 
-    :::image type="content" source="media/functions-openapi-definition/test-function.png" alt-text="OpenAPI 用の HTTP 関数を作成する&quot;:::
-
-1. **[Code + Test]\(コード + テスト\)** を選択し、ドロップダウン リストから **[run.csx]** を選択します。 この run.csx C# スクリプト ファイルの内容を次のコードに置き換えて、 **[保存]** を選択します。
-
-    ```csharp
-    #r &quot;Newtonsoft.Json":::
+    :::image type="content" source="media/functions-openapi-definition/test-function.png" alt-text="Azure portal で関数をテストする":::
 
     次の出力が **[出力]** タブに返されます。
 
@@ -136,12 +131,7 @@ OpenAPI 定義を生成するには:
 
 1. 関数アプリを選択した後、左側のメニューから **[API Management]** を選択し、 **[API Management]** で **[新規作成]** を選択します。
 
-    :::image type="content" source="media/functions-openapi-definition/select-all-settings-openapi.png" alt-text="OpenAPI 用の HTTP 関数を作成する&quot;:::
-
-1. **[Code + Test]\(コード + テスト\)** を選択し、ドロップダウン リストから **[run.csx]** を選択します。 この run.csx C# スクリプト ファイルの内容を次のコードに置き換えて、 **[保存]** を選択します。
-
-    ```csharp
-    #r &quot;Newtonsoft.Json":::
+    :::image type="content" source="media/functions-openapi-definition/select-all-settings-openapi.png" alt-text="[API Management] を選択する":::
 
 
 1. 次の表に指定されている API Management の設定を使用してください。
@@ -168,12 +158,7 @@ OpenAPI 定義を生成するには:
 
 1. **[関数アプリから作成する]** ページで、既定値をそのまま使用して **[作成]** を選択します。
 
-    :::image type="content" source="media/functions-openapi-definition/create-function-openapi.png" alt-text="OpenAPI 用の HTTP 関数を作成する&quot;:::
-
-1. **[Code + Test]\(コード + テスト\)** を選択し、ドロップダウン リストから **[run.csx]** を選択します。 この run.csx C# スクリプト ファイルの内容を次のコードに置き換えて、 **[保存]** を選択します。
-
-    ```csharp
-    #r &quot;Newtonsoft.Json":::
+    :::image type="content" source="media/functions-openapi-definition/create-function-openapi.png" alt-text="[関数アプリから作成する]":::
 
     Azure によって、関数の API が作成されます。
 
@@ -192,14 +177,9 @@ OpenAPI 定義を使用する前に、API が動作することを確認する�
     }
     ```
 
-1. **[送信]** を選択した後、**HTTP 応答**を確認します。
+1. **[送信]** を選択した後、**HTTP 応答** を確認します。
 
-    :::image type="content" source="media/functions-openapi-definition/test-function-api-openapi.png" alt-text="OpenAPI 用の HTTP 関数を作成する&quot;:::
-
-1. **[Code + Test]\(コード + テスト\)** を選択し、ドロップダウン リストから **[run.csx]** を選択します。 この run.csx C# スクリプト ファイルの内容を次のコードに置き換えて、 **[保存]** を選択します。
-
-    ```csharp
-    #r &quot;Newtonsoft.Json":::
+    :::image type="content" source="media/functions-openapi-definition/test-function-api-openapi.png" alt-text="関数 API をテストする":::
 
 ## <a name="download-the-openapi-definition"></a>OpenAPI 定義をダウンロードする
 

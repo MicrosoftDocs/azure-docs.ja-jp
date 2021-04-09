@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8d3f8e9441064a5d2d1372e3f177534b8dfefb93
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92359834"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect のトポロジ
@@ -113,7 +113,7 @@ Azure AD Connect 同期の既定の構成では、次のことを前提として
 
 ![複数のフォレストのアカウント リソース フォレスト トポロジ](./media/plan-connect-topologies/multiforestaccountresource.png)
 
-アカウント リソース フォレスト トポロジでは、アクティブなユーザー アカウントを持つ 1 つ以上の " *アカウント* " フォレストが存在します。 また、アカウントが無効になった 1 つ以上の " *リソース* " フォレストも存在します。
+アカウント リソース フォレスト トポロジでは、アクティブなユーザー アカウントを持つ 1 つ以上の "*アカウント*" フォレストが存在します。 また、アカウントが無効になった 1 つ以上の "*リソース*" フォレストも存在します。
 
 このシナリオでは、1 つ (以上) のリソース フォレストがすべてのアカウント フォレストを信頼します。 リソース フォレストには、通常、Exchange および Lync を使用する拡張 Active Directory スキーマがあります。 すべての Exchange および Lync サービスと、他の共有サービスは、このフォレストに配置されます。 ユーザーのユーザー アカウントはこのフォレストで無効になり、メールボックスはアカウント フォレストにリンクされます。
 
@@ -130,7 +130,7 @@ Microsoft 365 の一部のワークロードでは、サポートされるトポ
 ## <a name="staging-server"></a>ステージング サーバー
 ![トポロジでのステージング サーバー](./media/plan-connect-topologies/multiforeststaging.png)
 
-Azure AD Connect では、" *ステージング モード* " でのセカンド サーバーのインストールがサポートされています。 このモードのサーバーは、接続されたすべてのディレクトリからデータを読み取りますが、接続されたディレクトリへの書き込みは行いません。 通常の同期サイクルを使用するため、ID データの更新されたコピーを保持します。
+Azure AD Connect では、"*ステージング モード*" でのセカンド サーバーのインストールがサポートされています。 このモードのサーバーは、接続されたすべてのディレクトリからデータを読み取りますが、接続されたディレクトリへの書き込みは行いません。 通常の同期サイクルを使用するため、ID データの更新されたコピーを保持します。
 
 プライマリ サーバーで障害が発生した場合は、ステージング サーバーにフェールオーバーできます。 この操作は、Azure AD Connect ウィザードで実行します。 このセカンド サーバーは、インフラストラクチャをプライマリ サーバーと共有していないため、別のデータ センターに配置することができます。 プライマリ サーバーで行われたすべての構成の変更をセカンド サーバーに手動でコピーする必要があります。
 

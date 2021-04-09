@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: 7d90c9b9b2c9aa97083e17d5ab7d20fc6b471658
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94492125"
 ---
 # <a name="how-to-configure-your-saas-offer-properties"></a>SaaS オファーのプロパティを構成する方法
@@ -65,7 +65,7 @@ ms.locfileid: "94492125"
 
 ### <a name="add-amendments-to-the-standard-contract-optional"></a>標準契約に変更を追加する (省略可能)
 
-可能な変更には、 *ユニバーサル* と *カスタム* の 2 種類があります。
+可能な変更には、*ユニバーサル* と *カスタム* の 2 種類があります。
 
 #### <a name="add-universal-amendment-terms"></a>ユニバーサル変更条件を追加する
 

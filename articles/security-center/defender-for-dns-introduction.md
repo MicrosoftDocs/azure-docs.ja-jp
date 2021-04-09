@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 957e39f7629337182c3e19a1a514c42883666301
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: dffb505719e6778adfdd8e99f62790df9ebd615a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796994"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100697"
 ---
 # <a name="introduction-to-azure-defender-for-dns"></a>Azure Defender for DNS の概要
 
@@ -28,7 +28,7 @@ Azure Defender for DNS は、次の方法によってクラウド リソース�
 |側面|詳細|
 |----|:----|
 |リリース状態:|プレビュー<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
-|価格:|**Azure Defender for DNS** は、[価格ページ](security-center-pricing.md)の記載に基づいて課金されます|
+|価格:|**Azure Defender for DNS** の課金については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
 
@@ -47,7 +47,7 @@ Azure Defender for DNS によって提供されるアラートの全一覧は、
 
 Azure Defender for DNS では、エージェントは使用されません。 
 
-DNS レイヤーを保護するためには、各サブスクリプションについて、「[Azure Defender を有効にする](security-center-pricing.md#enable-azure-defender)」の説明に従って Azure Defender for DNS を有効にします。
+DNS レイヤーを保護するためには、各サブスクリプションについて、「[Azure Defender を有効にする](enable-azure-defender.md)」の説明に従って Azure Defender for DNS を有効にします。
 
 
 ## <a name="next-steps"></a>次のステップ
@@ -57,4 +57,4 @@ DNS レイヤーを保護するためには、各サブスクリプションに�
 - セキュリティ アラートは、Security Center によって生成される場合もあれば、Security Center がさまざまなセキュリティ製品から受信する場合もあります。 それらすべてのアラートを Azure Sentinel、サードパーティの SIEM、またはその他の外部ツールにエクスポートする場合は、[SIEM へのアラートのエクスポート](continuous-export.md)に関するページの手順に従ってください。
 
 - > [!div class="nextstepaction"]
-    > [Azure Defender を有効にする](security-center-pricing.md#enable-azure-defender)
+    > [Azure Defender を有効にする](enable-azure-defender.md)

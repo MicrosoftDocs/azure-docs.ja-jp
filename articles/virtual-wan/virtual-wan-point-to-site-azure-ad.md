@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: alzam
 ms.openlocfilehash: 9cc68eb60096c4431acfc988c87ca9bf99f1f045
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93043398"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>ユーザー VPN 用に Azure Active Directory 認証を構成する
@@ -49,7 +49,7 @@ ms.locfileid: "93043398"
 
 ブラウザーから [Azure ポータル](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 
-1. [仮想 WAN] ページに移動します。 ポータルで **+ [リソースの作成]** をクリックします。 検索ボックスに「 **Virtual WAN** 」と入力し、Enter キーを押します。
+1. [仮想 WAN] ページに移動します。 ポータルで **+ [リソースの作成]** をクリックします。 検索ボックスに「**Virtual WAN**」と入力し、Enter キーを押します。
 2. 結果から **[Virtual WAN]** を選択します。 [Virtual WAN] (仮想 WAN) ページで、 **[作成]** をクリックして [WAN の作成] ページを開きます。
 3. **[WAN の作成]** ページの **[基本]** タブで、次のフィールドに入力します。
 
@@ -96,7 +96,7 @@ ms.locfileid: "93043398"
 
    * **構成名** - ユーザー VPN 構成に付ける名前を入力します。
    * **トンネルの種類** - OpenVPN を選択します。
-   * **認証方法** : [Azure Active Directory] を選択します。
+   * **認証方法**: [Azure Active Directory] を選択します。
    * **対象ユーザー** - Azure AD テナントに登録されている [Azure VPN](openvpn-azure-ad-tenant.md) エンタープライズ アプリケーションのアプリケーション ID を入力します。 
    * **発行者** - `https://sts.windows.net/<your Directory ID>/`
    * **AAD テナント** - `https://login.microsoftonline.com/<your Directory ID>`
@@ -172,7 +172,7 @@ VPN プロファイルを使用してクライアントを構成します。
 
 #### <a name="diagnose-connection-issues"></a><a name="diagnose"></a>接続の問題を診断する
 
-1. 接続の問題を診断するには、 **診断** ツールを使用します。 診断する VPN 接続の横にある省略記号 (...) を選択して、メニューを表示します。 次に、 **[診断]** を選択します。
+1. 接続の問題を診断するには、**診断** ツールを使用します。 診断する VPN 接続の横にある省略記号 (...) を選択して、メニューを表示します。 次に、 **[診断]** を選択します。
 
     ![メニューで [診断] が選択されていることを示すスクリーンショット。](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose1.jpg)
 

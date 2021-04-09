@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: a2f6a3fd8d36bb54773db21e3d36dab0060bae57
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3035b5d2803ff91e84bc6b47a99963185f9195d3
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178368"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623190"
 ---
 ## <a name="disk-level-bursting"></a>ディスクレベルでのバースト
 
@@ -147,7 +147,7 @@ VM が起動すると、バーストが実行されて OS ディスクに対し�
 
 起動後に、重要度の低いワークロードを持つアプリケーションを起動してください。 このアプリケーションでは、すべてのディスクに均等に分散される 15 MB/秒が必要です。
 
-![アプリケーションは 15 MB/秒のスループットの要求を VM に送信し、VM は要求を受け取り、各ディスクに 5 MB/秒の要求を送信します。各ディスクは 5 MB/秒を返し、VM は 15 MB/秒をアプリケーションに返します。](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
+![アプリケーションは 15 MB/s のスループットの要求を VM に送信し、VM は要求を受け取り、各ディスクに 5 MB/s の要求を送信します。各ディスクは 5 MB/s の応答を返し、VM は 15 MB/s をアプリケーションに返します。](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
 
 その後、アプリケーションは 360 MB/秒を必要とするバッチ ジョブを処理する必要があります。 この需要を満たすために Standard_L8s_v2 によってバーストが行われて、要求が行われます。 OS ディスクに必要とされるのは 20 MB/秒のみです。 残りの 340 MB/秒は、バーストする P4 データ ディスクによって処理されます。
 

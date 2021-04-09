@@ -4,12 +4,12 @@ description: Azure Resource Manager を使用して、リソースを新しい�
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cd05fe045532ee1b1f1fb88e502d786daabf9365
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aca1e5255c89e99a2c996e072e5106da8dc3eef9
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319556"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093633"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>リソースを新しいリソース グループまたはサブスクリプションに移動する
 
@@ -37,7 +37,7 @@ ms.locfileid: "91319556"
 
 1. Azure ロールがリソース (または子リソース) に直接割り当てられており、そのリソースを移動する場合、ロールの割り当ては移動されず、孤立します。 移動した後は、ロールの割り当てを再作成する必要があります。 最終的に、孤立したロールの割り当ては自動的に削除されますが、ベスト プラクティスとして、リソースを移動する前にロールの割り当てを削除しておくことをお勧めします。
 
-    ロールの割り当てを管理する方法の詳細については、[Azure ロールの割り当ての一覧表示](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope)、および [Azure ロールの割り当ての追加または削除](../../role-based-access-control/role-assignments-portal.md)に関する記事を参照してください。
+    ロールの割り当てを管理する方法の詳細については、[Azure ロールの割り当ての一覧表示](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope)に関するセクションおよび [Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)方法に関するページを参照してください。
 
 1. 移動元と移動先のサブスクリプションがアクティブである必要があります。 無効になっているアカウントを有効にするときに問題がある場合は、[Azure サポート リクエストを作成します](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 問題の種類として **[サブスクリプション管理]** を選択します。
 
@@ -62,7 +62,7 @@ ms.locfileid: "91319556"
    * [Azure サブスクリプションの所有権を別のアカウントに譲渡する](../../cost-management-billing/manage/billing-subscription-transfer.md)
    * [Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-1. 移動するリソースのリソース プロバイダーについて、移動先のサブスクリプションに登録する必要があります。 登録しないと、 **リソースの種類についてサブスクリプションへの登録が行われていない**ことを示すエラーが発生します。 このエラーは、リソースを新しいサブスクリプションに移動するが、そのサブスクリプションがそのリソースの種類で使用されたことがない場合に発生する可能性があります。
+1. 移動するリソースのリソース プロバイダーについて、移動先のサブスクリプションに登録する必要があります。 登録しないと、 **リソースの種類についてサブスクリプションへの登録が行われていない** ことを示すエラーが発生します。 このエラーは、リソースを新しいサブスクリプションに移動するが、そのサブスクリプションがそのリソースの種類で使用されたことがない場合に発生する可能性があります。
 
    PowerShell で登録状態を取得するには、次のコマンドを使用します。
 
@@ -178,11 +178,11 @@ Authorization: Bearer <access-token>
 
 [移動] オプションを有効にするには、移動するリソースを選択します。 すべてのリソースを選択するには、一覧の上部にあるチェック ボックスをオンにします。 または、リソースを個別に選択します。 リソースを選択すると、[移動] オプションが有効になります。
 
-:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="移動オプションが無効":::
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="リソースを選択":::
 
 **[移動]** ボタンを選択します。
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="移動オプションが無効":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="[移動] オプション":::
 
 このボタンにより、次の 3 つのオプションが提示されます。
 
@@ -194,11 +194,11 @@ Authorization: Bearer <access-token>
 
 移動先のリソース グループを選択します。 そのリソースのスクリプトを更新する必要があること確認し、 **[OK]** を選択します。 新しいサブスクリプションへの移動を選択した場合は、移動先のサブスクリプションも選択する必要があります。
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="移動オプションが無効":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="移動先の選択":::
 
 リソースを移動できることを検証した後、移動操作が実行中であることを示す通知が表示されます。
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="移動オプションが無効":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="通知":::
 
 完了すると、結果が表示されます。
 

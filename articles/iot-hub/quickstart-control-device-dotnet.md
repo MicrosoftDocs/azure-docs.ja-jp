@@ -15,10 +15,10 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 03/04/2020
 ms.openlocfilehash: 28d80a20c50f846146aed069028303e86426df27
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99072087"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>クイック スタート:IoT Hub に接続されたデバイスを制御する (.NET)

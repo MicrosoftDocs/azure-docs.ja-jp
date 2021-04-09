@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 09/17/2020
-ms.openlocfilehash: d54c005ffb17571be172b5716723febb742253a3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5eb6cfc7f0dbc0bc886550e1d601dc52dff66267
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945391"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866371"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-the-azure-portal"></a>Azure portal を使用して Data Lake Storage Gen2 を使用するクラスターを作成する
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure HDInsight でマネージド ID がどのように機能するかに関する詳細は、「[Azure HDInsight のマネージド ID](hdinsight-managed-identities.md)」を参照してください。
 
-![ユーザー割り当てマネージド ID を作成する](./media/hdinsight-hadoop-use-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png)
+:::image type="content" source="./media/hdinsight-hadoop-use-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png" alt-text="ユーザー割り当てマネージド ID を作成する":::
 
 ## <a name="create-a-storage-account-to-use-with-data-lake-storage-gen2"></a>Data Lake Storage Gen2 を使用するストレージ アカウントを作成する
 
@@ -57,7 +57,7 @@ Azure Data Lake Storage Gen2 を使用するストレージ アカウントを�
 
 ストレージ アカウントを作成する場合のその他のオプションについては、「[Azure Data Lake Storage Gen2 のストレージ アカウントを作成します](../storage/blobs/create-data-lake-storage-account.md)。
 
-![Azure portal でのストレージ アカウントの作成を示したスクリーンショット](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
+:::image type="content" source="./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png" alt-text="Azure portal でのストレージ アカウントの作成を示したスクリーンショット":::
 
 ## <a name="set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2"></a>Data Lake Storage Gen2 にマネージド ID のアクセス許可を設定する
 
@@ -66,12 +66,12 @@ Azure Data Lake Storage Gen2 を使用するストレージ アカウントを�
 1. [Azure portal](https://portal.azure.com) で、ストレージ アカウントに移動します。
 1. ストレージ アカウントを選択し、 **[アクセス制御 (IAM)]** を選択して、そのアカウントのアクセス制御設定を表示します。 **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。
 
-    ![ストレージのアクセス制御設定を示すスクリーンショット](./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png)
+    :::image type="content" source="./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png" alt-text="ストレージのアクセス制御設定を示すスクリーンショット":::
 
 1. **[+ ロールの割り当ての追加]** ボタンを選択して新しいロールを追加します。
 1. **[ロールの割り当ての追加]** ウィンドウで、 **[ストレージ BLOB データ所有者]** ロールを選択します。 次に、マネージド ID とストレージ アカウントを持つサブスクリプションを選択します。 次に、以前作成したユーザー割り当てマネージド ID を検索して見つけます。 最後に、マネージド ID を選択すると、その ID が **[選択したメンバー]** の下に一覧表示されます。
 
-    ![Azure ロールの割り当て方法を示すスクリーンショット](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
+    :::image type="content" source="./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png" alt-text="Azure ロールの割り当て方法を示すスクリーンショット":::
 
 1. **[保存]** を選択します。 選択したユーザー割り当て ID が、選択されたロールの下に表示されるようになります。
 1. この初期セットアップを完了すると、ポータルを通じてクラスターを作成できます。 クラスターは、ストレージ アカウントと同じ Azure リージョンに存在する必要があります。 クラスターの作成メニューの **[ストレージ]** タブで、次のオプションを選択します。
@@ -81,7 +81,7 @@ Azure Data Lake Storage Gen2 を使用するストレージ アカウントを�
 
     * **[ID]** から、新しく作成されたユーザー割り当てマネージド ID を選択します。
 
-        ![Azure HDInsight で Data Lake Storage Gen2 を使用するためのストレージ設定](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-portal-cluster-storage-gentwo.png)
+        :::image type="content" source="./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-portal-cluster-storage-gentwo.png" alt-text="Azure HDInsight で Data Lake Storage Gen2 を使用するためのストレージ設定":::
 
     > [!NOTE]
     > * Data Lake Storage Gen2 を使用するセカンダリ ストレージ アカウントを追加するには、ストレージ アカウント レベルで、先ほど作成したマネージド ID を、追加する新しい Data Lake Storage Gen2 に割り当てます。 Data Lake Storage Gen2 を使用するセカンダリ ストレージ アカウントの追加は、HDInsight の [追加のストレージ アカウント] ブレードからはサポートされていないことに注意してください。

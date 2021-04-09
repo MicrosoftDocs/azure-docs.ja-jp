@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 8c8b8b0090877db7abc8fae0e44f928e8b10dcf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84808008"
 ---
 # <a name="add-health-probes-to-your-service"></a>正常性プローブをサービスに追加する
@@ -60,7 +60,7 @@ Kubernetes API リファレンス:
 ## <a name="default-values-for-health-probe"></a>正常性プローブの既定値
 readiness/liveness probe によって推定できないプロパティにはすべて、既定値が設定されます。
 
-| Application Gateway プローブのプロパティ | Default value |
+| Application Gateway プローブのプロパティ | 既定値 |
 |-|-|
 | `Path` | / |
 | `Host` | localhost |

@@ -6,10 +6,10 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
 ms.openlocfilehash: 51d16ae53e34dacfc41e3d31b01115f9c55ca9f7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102039548"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>ServiceNow を IT Service Management Connector に接続する

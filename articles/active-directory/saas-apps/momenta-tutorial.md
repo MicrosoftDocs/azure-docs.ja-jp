@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/13/2020
 ms.author: jeedes
 ms.openlocfilehash: 712f6f6aa8b3fd3c72e6a5150115c85ee3f47e64
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92516736"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-momenta"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Momenta の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Momenta では、 **SP と IDP** によって開始される SSO がサポートされます。
+* Momenta では、**SP と IDP** によって開始される SSO がサポートされます。
 
 * Momenta を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
@@ -51,7 +51,7 @@ Azure AD への Momenta の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Momenta** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Momenta**」と入力します。
 1. 結果のパネルから **[Momenta]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -127,7 +127,7 @@ Momenta で Azure AD SSO を構成してテストするには、次の構成要�
 
 ## <a name="configure-momenta-sso"></a>Momenta SSO の構成
 
-**Momenta** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Momenta のサポート チーム](mailto:microsoftsupport@bts.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Momenta** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Momenta のサポート チーム](mailto:microsoftsupport@bts.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-momenta-test-user"></a>Momenta テスト ユーザーの作成
 

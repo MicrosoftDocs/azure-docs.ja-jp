@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: victorh
-ms.openlocfilehash: 694868f2a75cc66bf9e3ede9d12e30a2cc3d7af9
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8a64956deb7849568e70e94c9b58170df60db1e3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185939"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104775742"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>Key Vault 証明書を使用した TLS 終端
 
@@ -47,10 +47,19 @@ Application Gateway と Key Vault との統合には、3 つの手順の構成�
 
 1. **キー コンテナーの構成**
 
-   次に、既存の証明書をインポートするか、キー コンテナーで新しい証明書を作成します。 証明書は、アプリケーション ゲートウェイを介して実行されるアプリケーションによって使用されます。 この手順では、Base-64 でエンコードされたパスワードレスの PFX ファイルとして格納されているキー コンテナー シークレットを使用することもできます。 キー コンテナーでは証明書型のオブジェクトに自動更新機能を使用できるため、証明書型を使用することをお勧めします。 証明書またはシークレットを作成したら、キー コンテナーでアクセス ポリシーを定義し、その ID にシークレットの "*取得*" アクセス権が付与されるようにする必要があります。
+   次に、既存の証明書をインポートするか、キー コンテナーで新しい証明書を作成します。 証明書は、アプリケーション ゲートウェイを介して実行されるアプリケーションによって使用されます。 この手順では、Base-64 でエンコードされたパスワードレスの PFX ファイルも格納できる Key Vault シークレットを使用することもできます。 Key Vault では "証明書" 型のオブジェクトに自動更新機能を使用できるため、この型を使用することをお勧めします。 証明書またはシークレットを作成したら、Key Vault でアクセス ポリシーを定義し、その ID にシークレットの取得アクセス権が付与されるようにする必要があります。
    
    > [!IMPORTANT]
-   > 現在、Application Gateway では、統合を活用するために、Key Vault ですべてのネットワークからのアクセスを許可する必要があります。 プライベート エンドポイントと選択されたネットワークからのアクセスのみを許可するように Key Vault が設定されている場合、Key Vault 統合はサポートされません。 プライベートおよび選択されたネットワークのサポートは、Key Vault と Application Gateway の完全統合において予定されています。 
+   > 2021 年 3 月 15 日以降、Key Vault は Azure アプリケーション ゲートウェイを信頼されたサービスの 1 つとして認識するため、Azure でセキュリティで保護されたネットワーク境界を構築することができます。 これにより、すべてのネットワーク (インターネット トラフィックを含む) から Key Vault にアクセスするトラフィックを拒否することができますが、サブスクリプションで Application Gateway リソースにアクセスすることはできます。 
+
+   > 次の方法で、Key Vault の制限されたネットワークで Application Gateway を構成できます。 <br />
+   > a) Key Vault の [ネットワーク] ブレードで、 <br />
+   > b) [ファイアウォールと仮想ネットワーク] タブでプライベート エンドポイントと選択したネットワークを選択し、 <br/>
+   > c) 仮想ネットワークを使用して、Application Gateway の仮想ネットワークとサブネットを追加します。 このプロセス中に、チェックボックスをオンにして "Microsoft KeyVault" サービス エンドポイントも構成します。 <br/>
+   > d) 最後に [はい] を選択し、信頼されたサービスが Key Vault のファイアウォールをバイパスできるようにします。 <br/>
+   > 
+   > ![Key Vault ファイアウォール](media/key-vault-certs/key-vault-firewall.png)
+
 
    > [!NOTE]
    > Azure CLI または PowerShell を使用して ARM テンプレート経由で、あるいは Azure portal からデプロイされた Azure アプリケーション経由でアプリケーション ゲートウェイをデプロイする場合、SSL 証明書は Base-64 でエンコードされた PFX ファイルとしてキー コンテナーに格納されます。 「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/templates/key-vault-parameter.md)」の手順を実行する必要があります。 

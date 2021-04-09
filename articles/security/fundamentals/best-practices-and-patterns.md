@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
 ms.openlocfilehash: f4a3b2afd8b1a5ffdbb1fe0db1c3e345a9c99154
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94412614"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Azure セキュリティのベスト プラクティスとパターン
@@ -36,7 +36,7 @@ ms.locfileid: "94412614"
 * [Azure で運用可能なセキュリティに関するベスト プラクティス](operational-best-practices.md)
 * [Azure PaaS のベスト プラクティス](paas-deployments.md)
 * [Azure Service Fabric のセキュリティに関するベスト プラクティス](service-fabric-best-practices.md)
-* [Azure VM のセキュリティに関するベスト プラクティス](iaas.md)
+* [Azure VM のセキュリティのベスト プラクティス](iaas.md)
 * [Azure における安全なハイブリッド ネットワーク アーキテクチャの実装](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)
 * [モノのインターネットのセキュリティのベスト プラクティス](../../iot-fundamentals/iot-security-best-practices.md)
 * [Azure で Paas データベースをセキュリティ保護する](paas-applications-using-sql.md)

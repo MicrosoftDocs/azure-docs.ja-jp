@@ -4,10 +4,10 @@ description: Shared Access Signature (SAS) 認証を使用して、アプリケ�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 7b287b209fbcd5bc2782505095aeae4390107803
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98060216"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus の認証と承認

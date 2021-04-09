@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
 ms.openlocfilehash: 3975a57c095a8593e392e932bd125308853d3756
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92541521"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>device-to-cloud IoT Hub のメッセージ エンリッチメント
 
-" *メッセージ エンリッチメント* " は、指定エンドポイントに送信される前のメッセージに対し、追加情報を含んだ " *スタンプ* " を適用する IoT Hub の機能です。 メッセージ エンリッチメントを使用する理由の 1 つは、ダウンストリームの処理を単純化するために用いることのできるデータを追加することです。 たとえば、デバイス ツイン タグを使用してデバイスのテレメトリ メッセージのエンリッチメントを行えば、この情報のために顧客側でデバイス ツイン API を呼び出す負担を軽減することができます。
+"*メッセージ エンリッチメント*" は、指定エンドポイントに送信される前のメッセージに対し、追加情報を含んだ "*スタンプ*" を適用する IoT Hub の機能です。 メッセージ エンリッチメントを使用する理由の 1 つは、ダウンストリームの処理を単純化するために用いることのできるデータを追加することです。 たとえば、デバイス ツイン タグを使用してデバイスのテレメトリ メッセージのエンリッチメントを行えば、この情報のために顧客側でデバイス ツイン API を呼び出す負担を軽減することができます。
 
 ![メッセージ エンリッチメント フロー](./media/iot-hub-message-enrichments-overview/message-enrichments-flow.png)
 
@@ -84,7 +84,7 @@ ms.locfileid: "92541521"
 
 * デバイス ツインに対する更新が、対応するエンリッチメント値に反映されるまでに最大 5 分程度かかります。
 
-* エンリッチメントを含むメッセージ サイズの合計が 256 KB を超えることは許容されません。 メッセージ サイズが 256 KB を超えた場合、IoT ハブでメッセージがドロップされます。 メッセージがドロップされたときのエラーは、[IoT Hub メトリック](monitor-iot-hub-reference.md#metrics)を使用して識別し、デバッグすることができます。 たとえば、 [ルーティング メトリック](monitor-iot-hub-reference.md#routing-metrics)で *互換性のないテレメトリ メッセージ* ( *d2c.telemetry.egress.invalid* ) メトリックを監視できます。 詳細については、[IoT Hub の監視](monitor-iot-hub.md)に関する記事を参照してください。
+* エンリッチメントを含むメッセージ サイズの合計が 256 KB を超えることは許容されません。 メッセージ サイズが 256 KB を超えた場合、IoT ハブでメッセージがドロップされます。 メッセージがドロップされたときのエラーは、[IoT Hub メトリック](monitor-iot-hub-reference.md#metrics)を使用して識別し、デバッグすることができます。 たとえば、[ルーティング メトリック](monitor-iot-hub-reference.md#routing-metrics)で *互換性のないテレメトリ メッセージ* (*d2c.telemetry.egress.invalid*) メトリックを監視できます。 詳細については、[IoT Hub の監視](monitor-iot-hub.md)に関する記事を参照してください。
 
 * メッセージ エンリッチメントは、デジタル ツインの変更イベントには適用されません。
 

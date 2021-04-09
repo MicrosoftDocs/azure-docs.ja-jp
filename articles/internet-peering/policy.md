@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: prmitiki
 ms.openlocfilehash: bee41bb8e5beb4df3086ab50499cb185a83e4efe
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97592332"
 ---
 # <a name="peering-policy"></a>ピアリング ポリシー

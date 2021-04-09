@@ -9,10 +9,10 @@ ms.topic: sample
 ms.date: 02/11/2021
 ms.author: alzam
 ms.openlocfilehash: 04d0fe2b322f6b70cb1cda8d61fbd49638ec214a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100385831"
 ---
 # <a name="configure-a-point-to-site-vpn---certificate-authentication---powershell-script-sample"></a>ポイント対サイト VPN を構成する - 証明書認証 - PowerShell サンプル スクリプト
@@ -98,7 +98,7 @@ Remove-AzResourceGroup -Name TestRG1
 
 このスクリプトでは、以下のコマンドを実行してデプロイを作成します。 表内の各項目は、コマンドごとのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | メモ |
 |---|---|
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | サブネット構成を追加します。 この構成は、仮想ネットワークの作成プロセスで使用されます。 |
 | [Add-AzVpnClientRootCertificate](/powershell/module/az.network/add-azvpnclientrootcertificate) | ルート証明書の公開キー情報を VPN ゲートウェイにアップロードします。|

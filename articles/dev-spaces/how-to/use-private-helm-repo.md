@@ -9,10 +9,10 @@ description: Azure Dev Space でプライベート Helm リポジトリを使用
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー, Helm
 manager: gwallace
 ms.openlocfilehash: 7c5f28595df2e552fd48033b44e4e1f0ea4ec306
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91960339"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Azure Dev Spaces でプライベート Helm リポジトリを使用する
@@ -39,7 +39,7 @@ azds prep --enable-ingress
 ```
 
 > [!TIP]
-> `prep` コマンドを実行すると、対象のプロジェクトの [Dockerfile と Helm チャート](../how-dev-spaces-works-prep.md#prepare-your-code)の生成が試行されます。 これらのファイルは、対象のコードをビルドして実行するために Azure Dev Spaces によって使用されますが、プロジェクトのビルドおよび実行方法を変更する場合は、これらのファイルを変更することができます。
+> `prep` コマンドを実行すると、[対象のプロジェクトの Dockerfile と Helm チャート](../how-dev-spaces-works-prep.md#prepare-your-code)の生成が試行されます。 これらのファイルは、対象のコードをビルドして実行するために Azure Dev Spaces によって使用されますが、プロジェクトのビルドおよび実行方法を変更する場合は、これらのファイルを変更することができます。
 
 アプリケーションのチャート ディレクトリにチャートを含む [requirements.yaml][helm-requirements] ファイルを作成します。 たとえば、アプリケーションの名前が *app1* の場合は、*charts/app1/requirements.yaml* を作成します。
 

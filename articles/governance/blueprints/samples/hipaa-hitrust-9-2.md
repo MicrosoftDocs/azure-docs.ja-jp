@@ -4,10 +4,10 @@ description: HIPAA HITRUST 9.2 ブループリント サンプルの概要。 �
 ms.date: 01/27/2021
 ms.topic: sample
 ms.openlocfilehash: bd65b6113f291457096bacc02bdbcfd92d6e0f84
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98915547"
 ---
 # <a name="hipaa-hitrust-92-blueprint-sample"></a>HIPAA HITRUST 9.2 ブループリント サンプル

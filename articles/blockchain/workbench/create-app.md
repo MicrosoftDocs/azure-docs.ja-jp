@@ -5,10 +5,10 @@ ms.date: 08/24/2020
 ms.topic: tutorial
 ms.reviewer: ravastra
 ms.openlocfilehash: add790a069d2e0ea66d84bbd632825cf9331fd38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88784030"
 ---
 # <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>チュートリアル:Azure Blockchain Workbench 用ブロックチェーン アプリケーションを作成する
@@ -338,7 +338,7 @@ Blockchain Workbench にブロックチェーン アプリケーションを追�
 3. ページの右上隅にある **[メンバー]** リンクを選択します。 アプリケーションの現在のメンバーが一覧表示されます。
 4. メンバーシップ一覧で、 **[メンバーの追加]** を選択します。
 5. 追加するメンバーの名前を選択するか、入力します。 Blockchain Workbench テナントに存在する Azure AD ユーザーのみが一覧に表示されます。 ユーザーが見つからない場合は、[Azure AD ユーザーを追加する](manage-users.md#add-azure-ad-users)必要があります。
-6. メンバーの**ロール**を選択します。 最初のメンバーのロールには **[要求元]** を選択します。
+6. メンバーの **ロール** を選択します。 最初のメンバーのロールには **[要求元]** を選択します。
 7. **[追加]** を選択して、メンバーとそのロールをアプリケーションに追加します。
 8. 別のメンバーを **[レスポンダー]** ロールとしてアプリケーションに追加します。
 

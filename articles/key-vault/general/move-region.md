@@ -12,10 +12,10 @@ ms.date: 04/24/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another region.
 ms.openlocfilehash: 54a1894c88d12cfac1a2d8062425de9549c4292e
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93285209"
 ---
 # <a name="move-an-azure-key-vault-across-regions"></a>リージョン間で Azure キー コンテナーを移動する

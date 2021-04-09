@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
 ms.openlocfilehash: 49b267d36fb6c365cf2125912c0d27fe7d669474
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100585286"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>ワークスペースおよびテナント全体での Azure Sentinel の拡張

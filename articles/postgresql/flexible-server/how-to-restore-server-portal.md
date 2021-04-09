@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: e69bcb3d9e4dca4c45bf9a6fe8ed4d54e7f4a8cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90931198"
 ---
 # <a name="point-in-time-restore-of-a-flexible-server"></a>フレキシブル サーバーのポイントインタイム リストア
@@ -30,7 +30,7 @@ ms.locfileid: "90931198"
 
 以下の手順に従って、既存の最も古いバックアップを使用して、フレキシブル サーバーを復元します。
 
-1.   [Azure portal](https://portal.azure.com/) で、バックアップの復元元のフレキシブル サーバーを選択します。
+1.  [Azure portal](https://portal.azure.com/) で、バックアップの復元元のフレキシブル サーバーを選択します。
 
 2.  左側のパネルから **[概要]** をクリックし、 **[復元]** をクリックします。
    
@@ -40,7 +40,7 @@ ms.locfileid: "90931198"
 
 4.  **[最初の復元ポイント]** を選択し、 **[新しいサーバーに復元]** フィールドに新しいサーバー名を入力します。 復元できる最も古いタイムスタンプが表示されます。 
    
-   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="復元の概要":::
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-earliest.png" alt-text="最初の復元時刻":::
 
 5.  **[OK]** をクリックします。
 
@@ -50,7 +50,7 @@ ms.locfileid: "90931198"
 
 以下の手順に従って、既存の最も古いバックアップを使用して、フレキシブル サーバーを復元します。
 
-1.   [Azure portal](https://portal.azure.com/) で、バックアップの復元元のフレキシブル サーバーを選択します。
+1.  [Azure portal](https://portal.azure.com/) で、バックアップの復元元のフレキシブル サーバーを選択します。
 
 2.  [概要] ページで、 **[復元]** をクリックします。
  :::image type="content" source="./media/how-to-restore-server-portal/restore-overview.png" alt-text="復元の概要":::
@@ -61,7 +61,7 @@ ms.locfileid: "90931198"
 
 5.  日時を選択し、 **[新しいサーバーに復元]** フィールドに新しいサーバー名を入力します。 
    
-:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="復元の概要":::
+:::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="カスタム復元時刻":::
  
 6.  **[OK]** をクリックします。
 
@@ -70,5 +70,5 @@ ms.locfileid: "90931198"
 ## <a name="next-steps"></a>次のステップ
 
 -   [ビジネス継続性](./concepts-business-continuity.md)について確認する
--    [ゾーン冗長による高可用性](./concepts-high-availability.md)について確認する
+-   [ゾーン冗長による高可用性](./concepts-high-availability.md)について確認する
 -   [バックアップと復旧](./concepts-backup-restore.md)について確認する

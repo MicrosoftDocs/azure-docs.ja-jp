@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: 4e81d8f88a7c01b6d302bcdaa88559159bed04ea
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d06e90a691389b99d8f439364203b921f49b2305
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709411"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103496475"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Private Link のよく寄せられる質問 (FAQ)
 
@@ -54,6 +54,11 @@ ms.locfileid: "101709411"
 
 ### <a name="can-i-modify-my-private-endpoint-network-interface-nic-"></a>プライベート エンドポイント ネットワーク インターフェイス (NIC) を変更できますか。
 プライベート エンドポイントが作成されると、読み取り専用の NIC が割り当てられます。 これは変更できず、プライベート エンドポイントのライフ サイクルの間、そのままになります。
+
+### <a name="how-do-i-achieve-availability-while-using-private-endpoints-in-case-of-regional-failures-"></a>リージョンで障害が発生した場合にプライベート エンドポイントを使用して可用性を実現するにはどうすればよいですか。
+
+プライベート エンドポイントは、SLA が 99.99% の高可用性リソースです [[Azure Private Link の SLA]](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/)。 ただし、これらはリージョン リソースであるため、Azure リージョンの停止が可用性に影響する可能性があります。 リージョンで障害が発生した場合に可用性を実現するために、同じ宛先リソースに接続された複数の PE を、異なるリージョンにデプロイできます。 このようにして、1 つのリージョンがダウンした場合でも、別のリージョンの PE を介して復旧シナリオ用のトラフィックをルーティングし、宛先リソースにアクセスすることができます。 宛先サービス側でリージョンの障害がどのように処理されるかについての詳細は、フェールオーバーと復旧に関するサービスのドキュメントを参照してください。 Private Link トラフィックは、宛先エンドポイントの Azure DNS 解決に従います。 
+
 
 ## <a name="private-link-service"></a>Private Link サービス
  

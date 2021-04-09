@@ -6,12 +6,12 @@ ms.author: tyfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: c6bbb389902c11239f665c6d0db787f61955a953
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 47569309f35848e82488abd549751f6f1e5a1baa
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555811"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954872"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>クラスター構成できめ細かなロールベースのアクセスに移行する
 
@@ -27,8 +27,8 @@ ms.locfileid: "100555811"
 
 | Role                                  | 以前                                                                                       | 今後の予定       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
-| Reader                                | - シークレットを含む読み取りアクセス。                                                                   | - シークレットを **除く** 読み取りアクセス |           |   |   |
-| HDInsight クラスター オペレーター<br>(新しいロール) | 該当なし                                                                                              | - シークレットを含む読み取り/書き込みアクセス         |   |   |
+| Reader                                | - シークレットを含む読み取りアクセス。                                                                   | - シークレットを **除く** 読み取りアクセス | 
+| HDInsight クラスター オペレーター<br>(新しいロール) | 該当なし                                                                                              | - シークレットを含む読み取り/書き込みアクセス         | 
 | Contributor                           | - シークレットを含む読み取り/書き込みアクセス。<br>- すべての種類の Azure リソースを作成および管理します。<br>- スクリプト アクションの実行。     | 変更なし |
 | 所有者                                 | - シークレットを含む読み取り/書き込みアクセス。<br>- すべてのリソースへのフル アクセス<br>- アクセスを他のユーザーに委任する。<br>- スクリプト アクションの実行。 | 変更なし |
 
@@ -111,11 +111,11 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 
 [バージョン 5.0.0](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/5.0.0) の HDInsight SDK for .NET に更新してください。 以下の変更に影響されるメソッドを使用している場合、最小限のコード変更が必要になる可能性があります。
 
-- [`ConfigurationOperationsExtensions.Get`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet&preserve-view=true) では、ストレージ キー (コア サイト) や HTTP 資格情報 (ゲートウェイ) などの **機密性の高いパラメーターが返されなくなります**。
-    - 機密性の高いパラメーターを含むすべての構成を取得するには、今後は [`ConfigurationOperationsExtensions.List`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet&preserve-view=true) を使用します。  "閲覧者" ロールを持つユーザーはこのメソッドを使用できないことに注意してください。 これにより、クラスターの機密情報にアクセスできるユーザーをきめ細かく制御できます。 
-    - HTTP ゲートウェイ資格情報だけを取得するには、[`ClusterOperationsExtensions.GetGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings?view=azure-dotnet&preserve-view=true) を使用します。 
-- [`ConfigurationsOperationsExtensions.Update`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet&preserve-view=true) は非推奨になり、[`ClusterOperationsExtensions.UpdateGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet&preserve-view=true) に置き換えられています。 
-- [`ConfigurationsOperationsExtensions.EnableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp?view=azure-dotnet&preserve-view=true) と [`DisableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp?view=azure-dotnet&preserve-view=true) は非推奨となりました。 HTTP は常に有効にされるようになったので、これらのメソッドはもう必要ありません。
+- [`ConfigurationOperationsExtensions.Get`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get) では、ストレージ キー (コア サイト) や HTTP 資格情報 (ゲートウェイ) などの **機密性の高いパラメーターが返されなくなります**。
+    - 機密性の高いパラメーターを含むすべての構成を取得するには、今後は [`ConfigurationOperationsExtensions.List`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list) を使用します。  "閲覧者" ロールを持つユーザーはこのメソッドを使用できないことに注意してください。 これにより、クラスターの機密情報にアクセスできるユーザーをきめ細かく制御できます。 
+    - HTTP ゲートウェイ資格情報だけを取得するには、[`ClusterOperationsExtensions.GetGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings) を使用します。 
+- [`ConfigurationsOperationsExtensions.Update`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update) は非推奨になり、[`ClusterOperationsExtensions.UpdateGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings) に置き換えられています。 
+- [`ConfigurationsOperationsExtensions.EnableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp) と [`DisableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp) は非推奨となりました。 HTTP は常に有効にされるようになったので、これらのメソッドはもう必要ありません。
 
 ### <a name="sdk-for-python"></a>Python 用 SDK
 

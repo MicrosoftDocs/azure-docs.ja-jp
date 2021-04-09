@@ -17,10 +17,10 @@ ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
 ms.openlocfilehash: 33c767d847d9e70e95b3ee1648be7852aa5cec98
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100522888"
 ---
 # <a name="upgrade-public-ip-addresses"></a>パブリック IP アドレスのアップグレード

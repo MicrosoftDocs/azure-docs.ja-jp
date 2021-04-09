@@ -5,10 +5,10 @@ manager: rkarlin
 ms.date: 11/22/2020
 ms.topic: include
 ms.openlocfilehash: 2112cde42ee00b78a82962ee46f53110068977c0
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98187230"
 ---
 ## <a name="availability"></a>可用性

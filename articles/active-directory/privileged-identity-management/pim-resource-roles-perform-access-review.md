@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8091890d174ae68f012a6ec24685a0e705100f8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84743679"
 ---
 # <a name="review-access-to-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールのアクセスをレビューする
@@ -37,8 +37,8 @@ Privileged Identity Management (PIM) のアクセス レビューは、Azure Act
 
 アクセス レビューを検索して完了するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
-1. **[Azure Active Directory]** を選択し、 **[Privileged Identity Management]** を開きます。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. **[Azure Active Directory]** を選択し、**[Privileged Identity Management]** を開きます。
 1. **[アクセスのレビュー]** を選択します。
 
    ![[アクセスのレビュー] ブレードが選択された Privileged Identity Management アプリケーションのスクリーンショット](media/pim-resource-roles-perform-access-review/rbac-access-review-complete.png)

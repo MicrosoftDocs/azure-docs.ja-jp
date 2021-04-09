@@ -1,5 +1,5 @@
 ---
-title: バージョン管理ポリシー - Azure Database for MySQL - シングル サーバーとフレキシブル サーバー (プレビュー)
+title: バージョン サポート ポリシー - Azure Database for MySQL - シングル サーバーとフレキシブル サーバー (プレビュー)
 description: Azure Database for MySQL における MySQL のメジャーおよびマイナー バージョンに関するポリシーについて説明します
 author: sr-msft
 ms.author: srranga
@@ -7,14 +7,14 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6acb3268ba40399612940b395437fde3beffda1a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8ad79f2f27864b4fbc78b7c104828230ff7f93bc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732872"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103465659"
 ---
-# <a name="azure-database-for-mysql-versioning-policy"></a>Azure Database for MySQL バージョン管理ポリシー
+# <a name="azure-database-for-mysql-version-support-policy"></a>Azure Database for MySQL バージョン サポート ポリシー
 
 このページでは、Azure Database for MySQL のバージョン管理ポリシーについて説明します。これは、Azure Database for MySQL - シングル サーバーと Azure Database for MySQL - フレキシブル サーバー (プレビュー) のデプロイ モードに適用できます。
 
@@ -29,10 +29,11 @@ Azure Database for MySQL では、現在、次の MySQL メジャーおよびマ
 
 | Version | シングル サーバー <br/> 現行のマイナー バージョン |フレキシブル サーバー (プレビュー) <br/> 現行のマイナー バージョン  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
-|MySQL バージョン 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) | サポートされていません|
+|MySQL バージョン 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) (廃止) | サポートされていません|
 |MySQL バージョン 5.7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
 |MySQL バージョン 8.0 | [8.0.15](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) | [8.0.21](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)|
 
+[バージョン サポート ポリシーのドキュメント](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql)で、廃止されたバージョンのバージョン サポート ポリシーを参照してください。
 
 ## <a name="major-version-support"></a>メジャー バージョンのサポート
 MySQL の各メジャー バージョンは、[バージョン管理ポリシー](https://www.mysql.com/support/eol-notice.html)に記載されているように、Azure によってバージョンのサポートが開始される日付から MySQL コミュニティによってバージョンが提供終了されるまで、Azure Database for MySQL によってサポートされます。

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 84124f33f6aa02f63c0c47a24bd7d2a71ced2d11
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 47f0ea34fa650371d39252ce6b0ee6a15f3124d6
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699302"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871182"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: よく寄せられる質問
 
@@ -78,11 +78,11 @@ HDInsight クラスターの種類とプロビジョニング方法を確認す�
 1. [https://CLUSTERNAME.azurehdinsight.net](`https://CLUSTERNAME.azurehdinsight.net`) の Ambari Web UI を開きます。この CLUSTERNAME は実際のクラスターの名前です。
 2. 右上隅の [admin | Settings]\(管理者 | 設定\) を選択します。 
 
-   ![Ambari の設定](media/hdinsight-faq/ambari-settings.png)
+   :::image type="content" source="media/hdinsight-faq/ambari-settings.png" alt-text="Ambari の設定":::
 
 3. [User Settings]\(ユーザー設定\) ウィンドウの [Timezone]\(タイムゾーン\) ドロップ ダウンから新しいタイムゾーンを選択し、[Save]\(保存\) をクリックします。
 
-   ![Ambari の [User Settings]\(ユーザー設定\)](media/hdinsight-faq/ambari-user-settings.png)
+   :::image type="content" source="media/hdinsight-faq/ambari-user-settings.png" alt-text="Ambari の [User Settings]\(ユーザー設定\)":::
 
 ## <a name="metastore"></a>メタストア
 

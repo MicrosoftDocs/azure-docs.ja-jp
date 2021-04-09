@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 02/10/2021
 ms.author: alzam
 ms.openlocfilehash: d41ec492f1f694a8b39f16a7932c4476d9614a1a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100385882"
 ---
 # <a name="create-a-vpn-gateway---powershell-script-sample"></a>VPN ゲートウェイを作成する - PowerShell サンプル スクリプト
@@ -79,7 +79,7 @@ Remove-AzResourceGroup -Name TestRG1
 
 このスクリプトでは、以下のコマンドを実行してデプロイを作成します。 表内の各項目は、コマンドごとのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | メモ |
 |---|---|
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | サブネット構成を追加します。 この構成は、仮想ネットワークの作成プロセスで使用されます。 |
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | 仮想ネットワークの詳細を取得します。 |

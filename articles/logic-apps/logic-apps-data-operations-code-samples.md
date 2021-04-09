@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84712447"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Azure Logic Apps のデータ操作のコード サンプル
@@ -23,7 +23,7 @@ ms.locfileid: "84712447"
 
 ## <a name="compose"></a>作成
 
-[**作成**アクションの例](../logic-apps/logic-apps-perform-data-operations.md#compose-action)を試すには、次のアクション定義を使用できます。
+[**作成** アクションの例](../logic-apps/logic-apps-perform-data-operations.md#compose-action)を試すには、次のアクション定義を使用できます。
 
 ```json
 "actions": {
@@ -93,7 +93,7 @@ ms.locfileid: "84712447"
 
 ## <a name="create-csv-table"></a>CSV テーブルの作成
 
-[**CSV テーブルの作成**アクションの例](../logic-apps/logic-apps-perform-data-operations.md#create-csv-table-action)を試すには、次のアクション定義を使用できます。
+[**CSV テーブルの作成** アクションの例](../logic-apps/logic-apps-perform-data-operations.md#create-csv-table-action)を試すには、次のアクション定義を使用できます。
 
 ```json
 "actions": {
@@ -138,7 +138,7 @@ ms.locfileid: "84712447"
 
 ## <a name="create-html-table"></a>HTML テーブルの作成
 
-[**HTML テーブルの作成**アクションの例](../logic-apps/logic-apps-perform-data-operations.md#create-html-table-action)を試すには、次のアクション定義を使用できます。
+[**HTML テーブルの作成** アクションの例](../logic-apps/logic-apps-perform-data-operations.md#create-html-table-action)を試すには、次のアクション定義を使用できます。
 
 ```json
 "actions": {
@@ -183,7 +183,7 @@ ms.locfileid: "84712447"
 
 ## <a name="filter-array"></a>配列のフィルター処理
 
-[**配列のフィルター処理**アクションの例](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action)を試すには、次のアクション定義を使用できます。
+[**配列のフィルター処理** アクションの例](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action)を試すには、次のアクション定義を使用できます。
 
 ```json
 "actions": {
@@ -222,9 +222,9 @@ ms.locfileid: "84712447"
 
 <a name="join-action-example"></a>
 
-## <a name="join"></a>結合
+## <a name="join"></a>Join
 
-[**結合**アクションの例](../logic-apps/logic-apps-perform-data-operations.md#join-action)を試すには、次のアクション定義を使用できます。
+[**結合** アクションの例](../logic-apps/logic-apps-perform-data-operations.md#join-action)を試すには、次のアクション定義を使用できます。
 
 ```json
 "actions": {
@@ -265,7 +265,7 @@ ms.locfileid: "84712447"
 
 ## <a name="parse-json"></a>JSON の解析
 
-[**JSON の解析**アクションの例](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action)を試すには、次のアクション定義を使用できます。
+[**JSON の解析** アクションの例](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action)を試すには、次のアクション定義を使用できます。
 
 ```json
 "actions": {
@@ -322,9 +322,9 @@ ms.locfileid: "84712447"
 
 <a name="select-action-example"></a>
 
-## <a name="select"></a>選択
+## <a name="select"></a>Select
 
-[**選択**アクションの例](../logic-apps/logic-apps-perform-data-operations.md#select-action)を試すには、次のアクション定義を使用できます。
+[**選択** アクションの例](../logic-apps/logic-apps-perform-data-operations.md#select-action)を試すには、次のアクション定義を使用できます。
 
 ```json
 "actions": {

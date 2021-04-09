@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: bec221f762213fa8576ccef30e9b6a27aa708f01
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 826effb152d3f069e0a7c5b8e169f7083117ed22
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944134"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103494497"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy を使ってみる
 
@@ -101,13 +101,17 @@ SAS トークンの詳細とその取得方法については、「[Shared Acces
 
 ID を承認するか、SAS トークンを取得したら、データの転送を開始できます。
 
+> [!NOTE]
+> ストレージ アカウントの [[安全な転送が必須]](storage-require-secure-transfer.md) 設定によって、ストレージ アカウントへの接続がトランスポート層セキュリティ (TLS) で保護されるかどうかが決まります。 既定では、この設定は有効になっています。   
+
 サンプル コマンドは次の記事のいずれかをご覧ください。
 
 | サービス | [アーティクル] |
 |--------|-----------|
 |Azure Blob Storage |[Azure Blob Storage にファイルをアップロードする](storage-use-azcopy-blobs-upload.md)<br><br>[Azure Blob Storage から BLOB をダウンロードする](storage-use-azcopy-blobs-download.md)<br><br>[Azure ストレージ アカウント間で BLOB をコピーする](storage-use-azcopy-blobs-copy.md)<br><br>[Azure Blob Storage と同期する](storage-use-azcopy-blobs-synchronize.md)|
 |Azure Files |[AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)|
-|Amazon S3|[AzCopy と Amazon S3 バケットでデータを転送する](storage-use-azcopy-s3.md)|
+|Amazon S3|[Amazon S3 から Azure Storage にデータをコピーする](storage-use-azcopy-s3.md)|
+|Google Cloud Storage|[Google Cloud Storage から Azure Storage にデータをコピーする (プレビュー)](storage-use-azcopy-google-cloud.md)|
 |Azure Stack ストレージ|[AzCopy と Azure Stack ストレージを使用してデータを転送する](/azure-stack/user/azure-stack-storage-transfer#azcopy)|
 
 ## <a name="use-in-a-script"></a>スクリプト内で使用する
@@ -120,7 +124,7 @@ ID を承認するか、SAS トークンを取得したら、データの転送�
 
 そのリンクを取得するには、このコマンドを実行します。
 
-| オペレーティング システム  | command |
+| オペレーティング システム  | コマンド |
 |--------|-----------|
 | **Linux** | `curl -s -D- https://aka.ms/downloadazcopy-v10-linux | grep ^Location` |
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location` |
@@ -130,7 +134,7 @@ ID を承認するか、SAS トークンを取得したら、データの転送�
 
 この URL はこのコマンドの出力に表示されます。 その後、実際のスクリプトでその URL を使用して AzCopy をダウンロードできます。
 
-| オペレーティング システム  | command |
+| オペレーティング システム  | コマンド |
 |--------|-----------|
 | **Linux** | `wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |

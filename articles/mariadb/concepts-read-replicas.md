@@ -3,15 +3,15 @@ title: 読み取りレプリカ - Azure Database for MariaDB
 description: 'Azure Database for MariaDB の読み取りレプリカについて次の内容を説明します: リージョンの選択、レプリカの作成、レプリカへの接続、レプリケーションの監視、レプリケーションの停止。'
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: 375db7e5c113c2a48642365624207ce3acbde8a2
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 39547e3156a684293a0624f974a8b0930f656485
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98664216"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の読み取りレプリカ

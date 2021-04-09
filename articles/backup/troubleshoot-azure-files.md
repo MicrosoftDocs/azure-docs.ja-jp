@@ -4,10 +4,10 @@ description: この記事は、Azure ファイル共有を保護する際に発�
 ms.date: 02/10/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: 4908b8ed97bad43d9d24427660a8691ee43d7eaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89376980"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Azure ファイル共有のバックアップ中の問題のトラブルシューティング
@@ -51,7 +51,7 @@ ms.locfileid: "89376980"
 
 ### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>ファイル共有の保護を解除した後に Recovery Services コンテナーを削除できません
 
-Azure portal で、お使いの**コンテナー** >  **[バックアップ インフラストラクチャ]**  >  **[ストレージ アカウント]** の順に開きます。 **[登録解除]** を選択して、Recovery Services コンテナーからストレージ アカウントを削除してください。
+Azure portal で、お使いの **コンテナー** >  **[バックアップ インフラストラクチャ]**  >  **[ストレージ アカウント]** の順に開きます。 **[登録解除]** を選択して、Recovery Services コンテナーからストレージ アカウントを削除してください。
 
 >[!NOTE]
 >Recovery Services コンテナーは、コンテナーに登録されているすべてのストレージ アカウントの登録を解除した後にのみ削除できます。
@@ -151,7 +151,7 @@ Error Code:UserErrorStorageAccountIsLocked
 
 エラー メッセージ:ストレージ アカウントがロック状態のため、バックアップ ジョブまたは復元ジョブに失敗しました。
 
-ストレージ アカウントのロックを解除するか、**読み取りロック**ではなく**削除ロック**を使用して、バックアップまたは復元操作を再試行してください。
+ストレージ アカウントのロックを解除するか、**読み取りロック** ではなく **削除ロック** を使用して、バックアップまたは復元操作を再試行してください。
 
 ### <a name="datatransferservicecoflimitreached--recovery-failed-because-number-of-failed-files-are-more-than-the-threshold"></a>DataTransferServiceCoFLimitReached- 失敗したファイルの数がしきい値を超えているため、回復が失敗しました
 
@@ -308,7 +308,7 @@ Error Code:UserErrorBackupAFSInSoftDeleteState
 
 エラー メッセージ:Azure ファイル共有が論理的に削除された状態であるため、バックアップに失敗しました
 
-**Files ポータル**から、または[削除を取り消すためのスクリプト](scripts/backup-powershell-script-undelete-file-share.md)を使用して、ファイル共有の削除を取り消します。その後、バックアップを継続し、データが完全に削除されるのを回避します。
+**Files ポータル** から、または [削除を取り消すためのスクリプト](scripts/backup-powershell-script-undelete-file-share.md)を使用して、ファイル共有の削除を取り消します。その後、バックアップを継続し、データが完全に削除されるのを回避します。
 
 ### <a name="usererrorbackupafsindeletestate--backup-failed-as-the-associated-azure-file-share-is-permanently-deleted"></a>UserErrorBackupAFSInDeleteState- 関連付けられている Azure ファイル共有が完全に削除されているため、バックアップに失敗しました
 

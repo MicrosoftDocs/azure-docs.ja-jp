@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 02/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 4d992bcc202dc8bdacdda6426371df1adb1ec3e6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a18c53d972fbb38dc0b0e557d14b2fbffbff15fa
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379116"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174361"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files を使用して、スナップショットを管理する
 
@@ -68,7 +68,7 @@ Azure NetApp Files では、オンデマンドのスナップショットの作�
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
     ```
-また、[Azure CLI のコマンド](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
+また、[Azure CLI のコマンド](/cli/azure/feature) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
 
 ### <a name="create-a-snapshot-policy"></a>スナップショット ポリシーを作成する 
 
@@ -257,6 +257,9 @@ NFSv4.1 では `.snapshot` ディレクトリ (`ls -la`) は表示されませ�
 ## <a name="delete-snapshots"></a>スナップショットの削除  
 
 保持する必要がなくなったスナップショットは削除できます。 
+
+> [!IMPORTANT]
+> スナップショットの削除操作を元に戻すことはできません。 削除されたスナップショットは復元できません。 
 
 1. ボリュームの **[スナップショット]** メニューにアクセスします。 削除するスナップショットを右クリックします。 **[削除]** を選択します。
 

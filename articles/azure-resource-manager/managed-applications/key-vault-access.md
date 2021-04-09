@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: 5dc219747b9cc74b6c6aac8ab190ebfbe5ae9b32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81458285"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Azure Managed Applications のデプロイ時に Key Vault シークレットにアクセスする
@@ -44,7 +44,7 @@ ms.locfileid: "81458285"
 
    ![[追加] の選択](./media/key-vault-access/add-access-control.png)
 
-1. ロールとして **[共同作成者]** を選択します。 **アプライアンス リソース プロバイダー**を検索し、使用可能なオプションから選択します。
+1. ロールとして **[共同作成者]** を選択します。 **アプライアンス リソース プロバイダー** を検索し、使用可能なオプションから選択します。
 
    ![プロバイダーの検索](./media/key-vault-access/search-provider.png)
 

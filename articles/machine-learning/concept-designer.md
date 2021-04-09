@@ -11,10 +11,10 @@ author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
 ms.openlocfilehash: e6738bf944c5a80d0cb54432ade7555ebdcfbd51
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102503542"
 ---
 # <a name="what-is-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーとは 

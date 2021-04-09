@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: azure, kinect, 仕様, ハードウェア, DK, 機能, 深度, 色, RGB, IMU, 配列, 深さ, マルチ, 同期
-ms.openlocfilehash: 30961152b31a659cb27e91a99d6806490998d18d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: eabf77896777f39efcfd61adb3040bca8642716e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592281"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102039956"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>複数の Azure Kinect DK デバイスの同期
 
@@ -36,6 +36,9 @@ ms.locfileid: "97592281"
 ## <a name="plan-your-multi-device-configuration"></a>マルチデバイス構成を計画する
 
 開始する前に、「[Azure Kinect DK のハードウェアの仕様](hardware-specification.md)」および「[Azure Kinect DK 深度カメラ](depth-camera.md)」を確認してください。
+
+> [!NOTE]  
+> 外側のプラスチック カバーを取り外して、Sync In と Sync Out のジャックを露出します。
 
 ### <a name="select-a-device-configuration"></a>デバイス構成の選択
 
@@ -63,6 +66,9 @@ ms.locfileid: "97592281"
 ![外部トリガー シグナルのケーブル構成](./media/resources/camera-trigger-signal.jpg)
 
 外部機器を扱う方法の詳細については、[外部同期デバイスでの Azure Kinect レコーダーの使用](record-external-synchronized-units.md)に関する記事を参照してください
+
+> [!NOTE]  
+> Sync Out は、RGB カメラの VSync です。 すべてのデバイスのタイムスタンプはゼロに設定され、カウントされていきます。 Microsoft では、同期パルスの最小と最大の幅を特定しておらず、Azure Kinect DK の Sync Out によって生成されるパルスにならうことをお勧めしています。
 
 ### <a name="plan-your-camera-settings-and-software-configuration"></a>カメラの設定とソフトウェアの構成を計画する
 

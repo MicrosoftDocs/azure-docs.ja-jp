@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: a4303f43dffa98f842bd3daf9e3a0cd5214932b1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ee28837d3e687d78b645a1ab18a9add1f8e57fcc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585371"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104771262"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>手順 1:ログ フォワーダーをデプロイする
 
@@ -229,5 +229,7 @@ syslog デーモンを選択して、適切な説明を表示してください�
 ## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、Log Analytics エージェントをデプロイして、CEF アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+
+- [Cef および CommonSecurityLog フィールド マッピング](cef-name-mapping.md)についての説明。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。

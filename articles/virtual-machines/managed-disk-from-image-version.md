@@ -10,10 +10,10 @@ ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
 ms.openlocfilehash: 359816bbf3fb93a4ec2bfa3092adbb2236ae2f07
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102562556"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>イメージ バージョンからマネージド ディスクを作成する

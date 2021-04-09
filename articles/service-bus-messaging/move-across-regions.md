@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 573ea96437cf6cb76854ffa417fd3ad3fb86138b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88860428"
 ---
 # <a name="move-an-azure-service-bus-namespace-to-another-region"></a>Azure Service Bus 名前空間を別のリージョンに移動する
@@ -48,53 +48,53 @@ ms.locfileid: "88860428"
 1. Azure Portal で、 **[リソースの作成]** を選択します。
 2. **[Marketplace を検索]** に、検索テキストとして「**template deployment**」と入力し、 **[Template deployment (deploy using custom templates)]** を選択して、**ENTER** キーを押します。
 
-    :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="Resource Manager テンプレートをダウンロードする":::    
+    :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="新しい template deployment":::    
 1. **[Template deployment]** ページで **[作成]** を選択します。
 
-    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="Resource Manager テンプレートをダウンロードする":::        
+    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="[新しい Template deployment] - [作成] ボタン":::        
 1. **[カスタム デプロイ]** ページで、 **[エディターで独自のテンプレートを作成する]** を選択します。
 
-    :::image type="content" source="./media/move-across-regions/build-template-link.png" alt-text="Resource Manager テンプレートをダウンロードする":::            
+    :::image type="content" source="./media/move-across-regions/build-template-link.png" alt-text="[エディターで独自のテンプレートを作成する] - リンク":::            
 1. **[テンプレートの編集]** ページでツール バーの **[ファイルの読み込み]** を選択し、手順に従って、前のセクションでダウンロードした **template.json** ファイルを読み込みます。
 
-    :::image type="content" source="./media/move-across-regions/select-template.png" alt-text="Resource Manager テンプレートをダウンロードする":::                
+    :::image type="content" source="./media/move-across-regions/select-template.png" alt-text="テンプレートを選択する":::                
 1. **[保存]** を選択してテンプレートを保存します。 
 
-    :::image type="content" source="./media/move-across-regions/save-template.png" alt-text="Resource Manager テンプレートをダウンロードする":::                    
+    :::image type="content" source="./media/move-across-regions/save-template.png" alt-text="テンプレートを保存する":::                    
 1. **[カスタム デプロイ]** ページで、次の手順を行います。 
-    1. Azure **サブスクリプション**を選択します。 
-    2. 既存の**リソース グループ**を選択するか、新しく作成することができます。 
-    3. ターゲットの**場所**またはリージョンを選択します。 既存のリソース グループを選択した場合、この設定は読み取り専用になります。 
-    4. **名前空間の新しい名前**を入力します。
+    1. Azure **サブスクリプション** を選択します。 
+    2. 既存の **リソース グループ** を選択するか、新しく作成することができます。 
+    3. ターゲットの **場所** またはリージョンを選択します。 既存のリソース グループを選択した場合、この設定は読み取り専用になります。 
+    4. **名前空間の新しい名前** を入力します。
     1. **[Review + create]\(レビュー + 作成\)** を選択します。 
 
-        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="Resource Manager テンプレートをダウンロードする":::
+        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="Resource Manager テンプレートをデプロイする":::
     1. **[確認と作成]** ページで、ページの下部にある **[作成]** ボタンをクリックします。 
     
 ## <a name="verify"></a>確認
 1. デプロイが正常に完了したら、 **[リソース グループに移動]** を選択します。
 
-    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="Resource Manager テンプレートをダウンロードする":::    
+    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="[リソース グループに移動] リンク":::    
 1. **[リソース グループ]** ページで、Service Bus 名前空間を選択します。 
 
-    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="Resource Manager テンプレートをダウンロードする":::    
+    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="Service Bus 名前空間の選択":::    
 1. **[Service Bus 名前空間]** ページに、ソース リージョンのキュー、トピック、およびサブスクリプションが表示されていることを確認します。 
-    1. **キュー**は、右側のウィンドウの下部にある名前空間に表示されています。         
+    1. **キュー** は、右側のウィンドウの下部にある名前空間に表示されています。         
     
-        :::image type="content" source="./media/move-across-regions/queue-namespace.png" alt-text="Resource Manager テンプレートをダウンロードする":::
+        :::image type="content" source="./media/move-across-regions/queue-namespace.png" alt-text="名前空間のキュー":::
     2. **[トピック]** タブに切り替えると、名前空間のトピックが表示されます
     
-        :::image type="content" source="./media/move-across-regions/topics-namespace.png" alt-text="Resource Manager テンプレートをダウンロードする":::
+        :::image type="content" source="./media/move-across-regions/topics-namespace.png" alt-text="名前空間のトピック":::
     3. トピックを選択して、サブスクリプションが作成されたことを確認します。 
 
-        :::image type="content" source="./media/move-across-regions/topic-subscriptions.png" alt-text="Resource Manager テンプレートをダウンロードする":::      
+        :::image type="content" source="./media/move-across-regions/topic-subscriptions.png" alt-text="トピック サブスクリプション":::      
     
     
 
 ## <a name="discard-or-clean-up"></a>破棄またはクリーンアップ
-デプロイ後に、最初からやり直す場合は、**ターゲット Service Bus 名前空間**を削除し、この記事の「[準備](#prepare)」と「[移動](#move)」のセクションに示されている手順を繰り返します。
+デプロイ後に、最初からやり直す場合は、**ターゲット Service Bus 名前空間** を削除し、この記事の「[準備](#prepare)」と「[移動](#move)」のセクションに示されている手順を繰り返します。
 
-変更をコミットし、Service Bus 名前空間の移動を完了するには、**ソース Service Bus 名前空間**を削除します。 名前空間を削除する前に、すべてのメッセージを処理するようにしてください。 
+変更をコミットし、Service Bus 名前空間の移動を完了するには、**ソース Service Bus 名前空間** を削除します。 名前空間を削除する前に、すべてのメッセージを処理するようにしてください。 
 
 Azure portal を使用して Service Bus 名前空間 (ソースまたはターゲット) を削除するには、次の手順を行います。
 

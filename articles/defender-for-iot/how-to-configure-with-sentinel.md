@@ -1,23 +1,14 @@
 ---
 title: Defender for IoT 用に Azure Sentinel を構成する
 description: Defender for IoT ソリューションからデータを受信するように Azure Sentinel を構成する方法について説明します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/28/2020
-ms.author: shhazam
-ms.openlocfilehash: 2d82aaadf158e45cb8faaeee0b9b4e0fc80a3420
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: b481dd31b73e741d265a569076f1ddc076ad4a45
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247337"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778952"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel"></a>Defender for IoT からのデータを Azure Sentinel に接続する 
 

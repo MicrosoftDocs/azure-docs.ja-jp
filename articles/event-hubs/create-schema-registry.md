@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.custom: references_regions
 ms.openlocfilehash: 45791cd69772be97ca6768184ed17179e04ad9dc
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96576810"
 ---
 # <a name="create-an-azure-event-hubs-schema-registry-preview"></a>Azure Event Hubs スキーマ レジストリを作成する (プレビュー)

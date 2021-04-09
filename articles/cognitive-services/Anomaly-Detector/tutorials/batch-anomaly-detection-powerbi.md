@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: mbullwin
 ms.openlocfilehash: b122765a3d77428008c91dda471706cad53a5616
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102430600"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>チュートリアル:バッチ検出と Power BI を使用して異常を視覚化する

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 2139080367cdce9a5f018afab0970a7bd0e7504c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 66edd4cad5b2f38696ef1df2030687bf4c7d9956
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465607"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102634177"
 ---
 # <a name="configure-vpn-on-your-azure-stack-edge-pro-r-device-via-azure-powershell"></a>Azure PowerShell を使用して Azure Stack Edge Pro R デバイスで VPM を構成する
 
@@ -165,7 +165,7 @@ VPN オプションを指定すると、Azure Stack Edge Pro R デバイスか�
 
 ## <a name="validate-data-transfer-through-vpn"></a>VPN 経由のデータ転送を確認する
 
-VPN が動作していることを確認するには、データを SMB 共有にコピーします。 Azure Stack Edge Pro R デバイスで「[共有の追加](azure-stack-edge-j-series-manage-shares.md#add-a-share)」の手順に従います。 
+VPN が動作していることを確認するには、データを SMB 共有にコピーします。 Azure Stack Edge Pro R デバイスで「[共有の追加](azure-stack-edge-gpu-manage-shares.md#add-a-share)」の手順に従います。 
 
 1. クライアント システムにマウントした SMB 共有に、\data\pictures\waterfall.jpg などのファイルをコピーします。 
 2. クラウド上のストレージ アカウントにこのファイルが表示されていることを検証します。

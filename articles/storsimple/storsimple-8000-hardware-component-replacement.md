@@ -16,10 +16,10 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: 12ab5a9598cc0222f5a3e64985be2e2ea9e7e2fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96014858"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのハードウェア コンポーネントの交換
@@ -34,7 +34,7 @@ ms.locfileid: "96014858"
 
 次の表で、これらのチュートリアルで使用される安全性アイコンについて説明します。 デバイスのコンポーネントを取り外して交換する手順を進めるときに、これらの安全性アイコンに細心の注意を払ってください。
 
-| アイコン | Text | 関連情報 |
+| アイコン | テキスト | 追加情報 |
 |:--- |:--- |:--- |
 | ![警告アイコン](./media/storsimple-hardware-component-replacement/Warning.png) |**危険!** |回避しなければ、死亡事故または重大な負傷を招く危険な状況を示します。 この記号の文字は、最も重大な状況の場合にのみ使用されます。 |
 | ![警告アイコン](./media/storsimple-hardware-component-replacement/Warning.png) |**警告!** |回避しなければ、死亡事故または重大な負傷を招く可能性のある危険な状況を示します。 |
@@ -43,8 +43,8 @@ ms.locfileid: "96014858"
 | ![Electrical shock icon](./media/storsimple-hardware-component-replacement/Electric.png) |**感電の危険** |電圧が高いことを示します。 |
 | ![ヘビー ウェイト アイコン](./media/storsimple-hardware-component-replacement/Weight.png) |**ヘビー ウェイト** | |
 | ![ユーザーによる保守不可能な部品アイコン](./media/storsimple-hardware-component-replacement/NoUserServiceableParts.png) |**ユーザーによる保守不可能な部品** |適切な訓練を受けている場合を除き、触らないでください。 |
-| ![指示確認アイコン](./media/storsimple-hardware-component-replacement/ReadInstructions.png) |**最初にすべての指示を確認してください** | |
-| ![危険情報アイコン](./media/storsimple-hardware-component-replacement/TipHazard.png) |**危険情報** | |
+| ![指示確認アイコン](./media/storsimple-hardware-component-replacement/ReadInstructions.png) |**最初にすべての手順をお読みください** | |
+| ![危険情報アイコン](./media/storsimple-hardware-component-replacement/TipHazard.png) |**転倒注意** | |
 
 ### <a name="before-you-begin"></a>開始する前に
 
@@ -57,7 +57,7 @@ ms.locfileid: "96014858"
 * StorSimple デバイスのコンポーネントに触るときは、静電気除去マットまたは帯電防止マットを使用して、身体の静電気を逃がしてください。
 * 回路に触れないでください。 回路が露出してる可能性があるコンポーネントに触るときは、用意されているハンドルとガイドを使用してください。
 
-![警告アイコン](./media/storsimple-hardware-component-replacement/Warning.png) ![通告アイコン](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **通告:**
+![Warning Icon](./media/storsimple-hardware-component-replacement/Warning.png) ![Notice Icon](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **注意事項:**
 
 モジュールを交換するときは、 **エンクロージャの後部に空のベイを絶対に残さないでください**。 問題のある部分を取り外す前に、交換用モジュールまたは空のモジュールを用意してください。
 
@@ -135,7 +135,7 @@ StorSimple デバイスでは、次の現場交換可能ユニット (FRU) を�
 * バックアップ バッテリ モジュール
 * ラック取り付け用レール キット
 
-これらの交換ユニットの注文については、 [Microsoft サポートにお問い合わせください](storsimple-8000-contact-microsoft-support.md) 。
+これらの交換装置のいずれかの注文については、[Microsoft サポートにお問い合わせください](storsimple-8000-contact-microsoft-support.md)。
 
 ## <a name="next-steps"></a>次のステップ
 

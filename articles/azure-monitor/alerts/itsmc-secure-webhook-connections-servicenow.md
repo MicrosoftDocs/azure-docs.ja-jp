@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/31/2020
-ms.openlocfilehash: f296037a56b25255c7f7c7d48a8e8b7d4889052f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: cf19911bd8126bfb73f848c086aa817a7d7adb00
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041639"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103563693"
 ---
 # <a name="connect-servicenow-to-azure-monitor"></a>ServiceNow を Azure Monitor に接続する
 
@@ -29,6 +29,6 @@ ms.locfileid: "102041639"
 1. リンク https://<インスタンス名>.service-now.com/api/sn_em_connector/em/inbound_event?source=azuremonitor を使用します。これは、セキュア エクスポート定義の URI です。
 
 2. バージョンに応じた手順に従ってください。
-   * [パリ](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/task/azure-events-authentication.html)
-   * [Orlando](https://docs.servicenow.com/bundle/orlando-it-operations-management/page/product/event-management/task/azure-events-authentication.html)
-   * [ニューヨーク](https://docs.servicenow.com/bundle/newyork-it-operations-management/page/product/event-management/task/azure-events-authentication.html)
+   * [パリ](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
+   * [Orlando](https://docs.servicenow.com/bundle/orlando-it-operations-management/page/product/event-management/concept/azure-integration.html)
+   * [ニューヨーク](https://docs.servicenow.com/bundle/newyork-it-operations-management/page/product/event-management/concept/azure-integration.html)

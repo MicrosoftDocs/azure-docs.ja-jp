@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 6b1df49ed0f2c543706d7584a1ade5dc5554a564
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101749911"
 ---
 このチュートリアルでは、次の Azure リソースが必要です。

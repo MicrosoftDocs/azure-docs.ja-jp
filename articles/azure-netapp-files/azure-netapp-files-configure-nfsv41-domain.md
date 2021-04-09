@@ -14,10 +14,10 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: b-juche
 ms.openlocfilehash: c3c853190d5f63bbe9012727d8b7b7ac91da135f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92072154"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>Azure NetApp Files 用に NFSv4.1 の既定のドメインを構成する

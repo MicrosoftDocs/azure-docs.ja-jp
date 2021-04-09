@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 67153fa750fee765dcaa1072eec87a2f6169b918
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93397282"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portal を使用して HTTP から HTTPS にリダイレクトするアプリケーション ゲートウェイを作成する
@@ -87,9 +87,9 @@ Export-PfxCertificate `
      ![Create virtual network](./media/create-url-route-portal/application-gateway-vnet.png)
 
 7. **[OK]** をクリックして、仮想ネットワークとサブネットを作成します。
-8. **[フロントエンド IP 構成]** で、 **[IP アドレスの種類]** は **[パブリック]** であり、 **[新規作成]** が確実に選択されているようにします。 名前として「 *myAGPublicIPAddress* 」と入力します。 他の設定は既定値をそのまま使用し、 **[OK]** をクリックします。
-9. **[リスナー構成]** で、 **[HTTPS]** 、 **[ファイルの選択]** の順に選び、 *c:\appgwcert.pfx* ファイルに移動して **[開く]** を選択します。
-10. 証明書の名前として「 *appgwcert* 」と入力し、パスワードとして「 *Azure123456!* 」と 入力します。
+8. **[フロントエンド IP 構成]** で、 **[IP アドレスの種類]** は **[パブリック]** であり、 **[新規作成]** が確実に選択されているようにします。 名前として「*myAGPublicIPAddress*」と入力します。 他の設定は既定値をそのまま使用し、 **[OK]** をクリックします。
+9. **[リスナー構成]** で、 **[HTTPS]** 、 **[ファイルの選択]** の順に選び、*c:\appgwcert.pfx* ファイルに移動して **[開く]** を選択します。
+10. 証明書の名前として「*appgwcert*」と入力し、パスワードとして「*Azure123456!* 」と 入力します。
 11. Web アプリケーション ファイアウォールは無効のままにし、 **[OK]** を選択します。
 12. 概要ページで設定を確認し、 **[OK]** を選択して、ネットワーク リソースとアプリケーション ゲートウェイを作成します。 アプリケーション ゲートウェイの作成には数分かかる場合があります。デプロイが正常に終了するのを待ち、その後で次のセクションに進みます。
 
@@ -100,8 +100,8 @@ Export-PfxCertificate `
 
     ![サブネットの作成](./media/create-url-route-portal/application-gateway-subnet.png)
 
-3. サブネットの名前として「 *myBackendSubnet* 」と入力します。
-4. アドレス範囲として「 *10.0.2.0/24* 」と入力してから、 **[OK]** を選択します。
+3. サブネットの名前として「*myBackendSubnet*」と入力します。
+4. アドレス範囲として「*10.0.2.0/24*」と入力してから、 **[OK]** を選択します。
 
 ## <a name="add-a-listener-and-redirection-rule"></a>リスナーとリダイレクト規則の追加
 
@@ -111,14 +111,14 @@ Export-PfxCertificate `
 
 1. **myResourceGroupAG** リソース グループを開き、 **[myAppGateway]** を選択します。
 2. **[リスナー]** 、 **[+ Basic]\(+ 基本\)** の順に選択します。
-3. 名前として「 *MyListener* 」と入力します。
-4. 新しいフロントエンド ポート名については「 *httpPort* 」、ポートは「 *80* 」と入力します。
+3. 名前として「*MyListener*」と入力します。
+4. 新しいフロントエンド ポート名については「*httpPort*」、ポートは「*80*」と入力します。
 5. プロトコルが確実に **[HTTP]** に設定されている場合は、 **[OK]** を選択します。
 
 ### <a name="add-a-routing-rule-with-a-redirection-configuration"></a>リダイレクト構成と共にルーティング規則を追加する
 
 1. **[myAppGateway]** で、 **[規則]** 、 **[+Request routing rule]\(+基本ルーティング規則\)** の順に選択します。
-2. **[規則名]** には、「 *Rule2* 」と入力します。
+2. **[規則名]** には、「*Rule2*」と入力します。
 3. リスナーに対して **[MyListener]** が確実に選択されているようにします。
 4. **[Backend targets]\(バックエンド ターゲット\)** タブをクリックし、 **[ターゲットの種類]** は *[リダイレクト]* を選択します。
 5. **[リダイレクトの種類]** では、 **[永続]** を選択します。
@@ -133,13 +133,13 @@ Export-PfxCertificate `
 
 1. ポータルの左上隅にある **[+リソースの作成]** を選択します。
 2. **[コンピューティング]** を選択します。
-3. 検索ボックスに、「 *スケール セット* 」と入力し、Enter キーを押します。
+3. 検索ボックスに、「*スケール セット*」と入力し、Enter キーを押します。
 4. **[仮想マシン スケール セット]** 、 **[作成]** の順に選択します。
-5. **[仮想マシン スケール セットの名前]** に、「 *myvmss* 」と入力します。
+5. **[仮想マシン スケール セットの名前]** に、「*myvmss*」と入力します。
 6. オペレーティング システムのディスク イメージとして、** **[Windows Server 2016 Datacenter]** が確実に選択されているようにします。
 7. **[リソース グループ]** では、 **[myResourceGroupAG]** を選択します。
-8. **[ユーザー名]** では、「 *azureuser* 」と入力します。
-9. **[パスワード]** では、「 *Azure123456!* 」と入力し、 パスワードを確認します。
+8. **[ユーザー名]** では、「*azureuser*」と入力します。
+9. **[パスワード]** では、「*Azure123456!* 」と入力し、 パスワードを確認します。
 10. **[インスタンス数]** では、値が確実に **2** であるようにします。
 11. **[インスタンス サイズ]** では、 **[D2s_v3]** を選択します。
 12. **[ネットワーク]** で、 **[負荷分散オプションの選択]** が **[Application Gateway]** に確実に設定されているようにします。
@@ -172,7 +172,7 @@ Export-PfxCertificate `
 2. **[設定]** で、 **[インスタンス]** を選択します。
 3. 両方のインスタンスを選択し、 **[アップグレード]** を選びます。
 4. **[はい]** を選択して確定します。
-5. これが完了したら、 **myAppGateway** に戻り、 **[バックエンド プール]** を選択します。 これで、 **appGatewayBackendPool** のターゲットは 2 個になり、 **myAppGatewaymyvmss** のターゲットは 0 個になるはずです。
+5. これが完了したら、**myAppGateway** に戻り、 **[バックエンド プール]** を選択します。 これで、**appGatewayBackendPool** のターゲットは 2 個になり、**myAppGatewaymyvmss** のターゲットは 0 個になるはずです。
 6. **[myAppGatewaymyvmss]** 、 **[削除]** の順に選択します。
 7. **[OK]** を選択して確定します。
 

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2d97d02aec84fec92e29e971cd5c667c847b2541
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 733b2375a26b0157f88bc148b52932e2f3e3f2e2
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368049"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102488275"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>移行の概要: SQL Server から SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ SQL Server を Azure SQL Database に移行するためのさまざまな移行�
 - アマゾン ウェブ サービス (AWS) EC2 
 - Amazon Relational Database Service (AWS RDS) 
 - Compute Engine (Google Cloud Platform - GCP)  
-- Cloud SQL for SQL Server (Google Cloud Platform - GCP) 
+- Cloud SQL for SQL Server (Google Cloud Platform – GCP) 
 
 その他のシナリオについては、[データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。 
 
@@ -104,6 +104,7 @@ Azure SQL Database の適切なデプロイ モデルとサービス レベル�
 
 |テクノロジ | 説明|
 |---------|---------|
+| [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | VMware の場合、Azure SQL 用の Azure Migrate を使用すると、SQL データ資産を大規模に検出して評価することができます。これにより、Azure SQL デプロイに関する推奨事項、ターゲットのサイズ設定、月単位の見積もりが提供されます。 | 
 |[Data Migration Assistant (DMA)](/sql/dma/dma-migrateonpremsqltosqldb)|Data Migration Assistant は、シームレスな SQL Server の評価と Azure SQL Database への移行 (スキーマとデータの両方) を提供するデスクトップ ツールです。 このツールは、オンプレミスのサーバー、またはソース データベースに接続できるローカル コンピューターにインストールできます。 移行プロセスは、ソースとターゲットのデータベース内のオブジェクト間で行われる論理的なデータ移動です。 </br> - 単一データベース (スキーマとデータの両方) を移行する|
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-azure-sql.md)|Azure portal を使用するか、PowerShell を使って自動化して SQL Server データベースを Azure SQL Database に移行できるファースト パーティの Azure サービス。 Azure DMS では、優先する Azure Virtual Network (VNet) をプロビジョニング時に選択して、ソース SQL Server データベースに接続できることを確認する必要があります。 </br> - 単一データベースまたは大規模な移行を行う。 |
 | | |
@@ -133,7 +134,7 @@ Azure SQL Database の適切なデプロイ モデルとサービス レベル�
 |移行オプション  |使用する場合  |考慮事項  |
 |---------|---------|---------|
 |[Data Migration Assistant (DMA)](/sql/dma/dma-migrateonpremsqltosqldb) | - 単一データベース (スキーマとデータの両方) を移行する。  </br> - データ移行プロセス中のダウンタイムを許容できる。 </br> </br> サポートされているソース: </br> - オンプレミスの SQL Server (2005 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM | - 移行アクティビティでは、データベース オブジェクト間のデータ移動 (ソースからターゲット) が実行されるため、オフピーク時に実行することをお勧めします。 </br> - DMA によって、移行された行の数など、データベース オブジェクトごとの移行の状態が報告されます。  </br> - 大規模な移行 (データベースの数 / データベースのサイズ) では、以下に示す Azure Database Migration Service を使用します。|
-|[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-azure-sql.md)| - 単一データベースまたは大規模な移行を行う。 </br> - 移行プロセス中のダウンタイムを許容できる。 </br> </br> サポートされているソース: </br> - オンプレミスの SQL Server (2005 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM | - 大規模な移行は、[PowerShell](../../../dms/howto-sql-server-to-azure-sql-powershell.md) を使用して自動化できます。 </br> - 移行が完了するまでの時間は、データベースのサイズとデータベース内のオブジェクトの数によって異なります。 </br> - ソース データベースは、読み取り専用として設定する必要があります。 |
+|[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-azure-sql.md)| - 単一データベースまたは大規模な移行を行う。 </br> - 移行プロセス中のダウンタイムを許容できる。 </br> </br> サポートされるソース: </br> - オンプレミスの SQL Server (2005 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM | - 大規模な移行は、[PowerShell](../../../dms/howto-sql-server-to-azure-sql-powershell.md) を使用して自動化できます。 </br> - 移行が完了するまでの時間は、データベースのサイズとデータベース内のオブジェクトの数によって異なります。 </br> - ソース データベースは、読み取り専用として設定する必要があります。 |
 | | | |
 
 ### <a name="alternative-options"></a>代替オプション
@@ -144,7 +145,7 @@ Azure SQL Database の適切なデプロイ モデルとサービス レベル�
 |---------|---------|---------|
 |[トランザクション レプリケーション](../../database/replication-to-sql-database.md)| - ソース データベース テーブルからターゲット SQL Database テーブルに変更を継続的にパブリッシュすることによって移行する。 </br> - データベースを完全に、または選択したテーブル (データベースのサブセット) について部分的に移行する。  </br> </br> サポートされているソース: </br> - [SQL Server (2016 - 2019) (一部制限あり)](/sql/relational-databases/replication/replication-backward-compatibility) </br> - AWS EC2  </br> - GCP コンピューティングの SQL Server VM  | - セットアップは、他の移行オプションと比べて比較的複雑です。   </br> - (データベースをオフラインにせずに) データを移行するための継続的レプリケーション オプションが提供されます。  </br> - トランザクション レプリケーションには、ソース SQL Server にパブリッシャーを設定するときに考慮べきいくつかの制限があります。 詳細については、「[オブジェクトのパブリッシュに関する制限事項](/sql/relational-databases/replication/publish/publish-data-and-database-objects#limitations-on-publishing-objects)」を参照してください。 </br>- [レプリケーション アクティビティを監視](/sql/relational-databases/replication/monitor/monitoring-replication)することができます。    |
 |[インポートまたはエクスポート サービス / BACPAC](../../database/database-import.md)| - 個々の基幹業務アプリケーション データベースを移行する。 </br>- 比較的小規模なデータベースに適している。  </br>  - 個別の移行サービスやツールを必要としない。 </br> </br> サポートされているソース: </br> - オンプレミスの SQL Server (2005 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM  |  - データをソースでエクスポートし、転送先でインポートする必要があるため、ダウンタイムが必要です。   </br> - 切り捨てやデータ型不一致のエラーを回避するために、エクスポート/インポートで使用されるファイル形式とデータ型は、テーブル スキーマと一致している必要があります。  </br> - 多数のオブジェクトを含むデータベースをエクスポートするために要する時間は、大幅に長くなる可能性があります。       |
-|[一括コピー](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| - 完全または部分的にデータを移行する。 </br> - ダウンタイムを許容できる。 </br> </br> サポートされているソース: </br> - オンプレミスの SQL Server (2005 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM   | - データをソースからエクスポートするため、およびターゲットにインポートするためのダウンタイムが必要です。 </br> - エクスポート/インポートで使用されるファイル形式とデータ型は、テーブル スキーマと一致している必要があります。 |
+|[一括コピー](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| - 完全または部分的にデータを移行する。 </br> - ダウンタイムを許容できる。 </br> </br> サポートされるソース: </br> - オンプレミスの SQL Server (2005 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM   | - データをソースからエクスポートするため、およびターゲットにインポートするためのダウンタイムが必要です。 </br> - エクスポート/インポートで使用されるファイル形式とデータ型は、テーブル スキーマと一致している必要があります。 |
 |[Azure Data Factory (ADF)](../../../data-factory/connector-azure-sql-database.md)| - ソース SQL Server データベースからのデータの移行や変換を行う。 </br> - 通常、ビジネス インテリジェンス (BI) ワークロードのために、複数のデータ ソースから Azure SQL Database にデータをマージする。  |  - ソースからターゲットにデータを移動するために、ADF でデータ移動パイプラインを作成する必要があります。   </br> - [コスト](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)が重要な考慮事項であり、パイプライン トリガー回数、アクティビティの実行数、データ移動の期間などに応じて変わる。 |
 |[SQL データ同期](../../database/sql-data-sync-data-sql-server-sql-database.md)| - ソースとターゲットのデータベース間でデータを同期する。</br> - 双方向のフローで Azure SQL Database とオンプレミスの SQL Server 間の継続的同期を実行するのに適している。 | - Azure SQL Database をハブ データベースとし、オンプレミスの SQL Server データベースをメンバー データベースとして同期を行う必要があります。</br> - トランザクション レプリケーションと比較した場合、SQL データ同期では、オンプレミスと Azure SQL Database 間の双方向データ同期がサポートされます。 </br> - ワークロードによっては、パフォーマンスに大きな影響を与える可能性があります。|
 | | | |

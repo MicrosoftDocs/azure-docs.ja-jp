@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
 ms.openlocfilehash: 1727193faa028a1d681f2a74df950afeb9570ec9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91270051"
 ---
 # <a name="tutorial-add-security-headers-with-rules-engine"></a>チュートリアル:ルール エンジンを使用してセキュリティ ヘッダーを追加する
@@ -47,7 +47,7 @@ ms.locfileid: "91270051"
 ![ポータル サンプル](./media/front-door-rules-engine/rules-engine-security-header-example.png)
 
 > [!NOTE]
-> このシナリオでは、ルールに[一致条件](front-door-rules-engine-match-conditions.md)を追加しませんでした。 ルート ルールに定義されているパスに一致する受信要求にはすべて、このルールが適用されます。 これらの要求の一部にのみ適用する場合、必ず特定の**一致条件**をこのルールに追加してください。
+> このシナリオでは、ルールに[一致条件](front-door-rules-engine-match-conditions.md)を追加しませんでした。 ルート ルールに定義されているパスに一致する受信要求にはすべて、このルールが適用されます。 これらの要求の一部にのみ適用する場合、必ず特定の **一致条件** をこのルールに追加してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

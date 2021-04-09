@@ -10,19 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 294870d3448886b9cea573a0e79b3ac436941f89
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: b1c03bafd6d97dd6a60defee00d4efe854315631
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696491"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648086"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>チュートリアル:NetSuite を構成し、ユーザーが自動的にプロビジョニングされるようにする
 
 このチュートリアルでは、Azure AD から NetSuite OneWorld にユーザー アカウントが自動的にプロビジョニング/プロビジョニング解除されるために NetSuite と Azure AD で実行する必要がある手順について説明します。
 
 > [!WARNING]
-> このプロビジョニング統合は、Microsoft がユーザーを NetSuite にプロビジョニングするために使用している NetSuite API の変更により、2020 年 2 月をもって正常に機能しなくなります。 結果的に、NetSuite アプリケーションのプロビジョニング機能は、間もなく Azure Active Directory エンタープライズ アプリ ギャラリーから削除されます。 アプリケーションの SSO 機能はそのまま維持されます。 Microsoft は NetSuite と連携して、最新式のプロビジョニング統合を構築するために取り組んでいますが、現在ではその実現時期は未定です。
+> このプロビジョニング統合は、Microsoft がユーザーを NetSuite にプロビジョニングするために使用している NetSuite API シリーズの変更により、NetSuite の Spring 2021 更新プログラムのリリースをもって正常に機能しなくなります。  この更新プログラムは、2021 年 2 月から 4 月の間に NetSuite のお客様に提供されます。 結果的に、NetSuite アプリケーションのプロビジョニング機能は、間もなく Azure Active Directory エンタープライズ アプリ ギャラリーから削除されます。 アプリケーションの SSO 機能はそのまま維持されます。 Microsoft は NetSuite と連携して、最新式のプロビジョニング統合を構築するために取り組んでいますが、現在ではその実現時期は未定です。
 
 ## <a name="prerequisites"></a>前提条件
 

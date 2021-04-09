@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 02/26/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0a57e45b264badffd0305eb6ac5b3c8f7c42adf3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101695126"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して最初の検索アプリを作成する
@@ -107,7 +107,7 @@ model.resultList = searchResult.Value.GetResults().ToList();
 
 このサンプルでは、一般に公開されているホテルのデータを使用します。 このデータは、架空のホテル名と説明を含む 50 個の無作為なコレクションで、デモ データを提供するためにのみ作成されたものです。 このデータにアクセスするには、名前と API キーを指定します。
 
-1. **appsettings.json** を開き、既定の行を検索サービスの URL (`https://<service-name>.search.windows.net` 形式) と、検索サービスの[管理者またはクエリ API キー](search-security-api-keys.md)に置き換えます。 インデックスを作成または更新する必要がないため、このチュートリアルではクエリ キーを使用できます。
+1. **appsettings.json** を開き、既定の行を検索サービスの URL (`https://<service-name>.search.windows.net` 形式) と、検索サービスの [管理者またはクエリ API キー](search-security-api-keys.md)に置き換えます。 インデックスを作成または更新する必要がないため、このチュートリアルではクエリ キーを使用できます。
 
     ```csharp
     {

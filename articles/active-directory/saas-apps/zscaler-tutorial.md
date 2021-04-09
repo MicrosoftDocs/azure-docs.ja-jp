@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 84c74d5c1452cf5945aa4f66c3ed3c6af48681b3
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98726147"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zscaler の統合
@@ -87,7 +87,7 @@ Zscaler に対する Azure AD SSO を構成してテストするには、次の�
 
 1. その他に、Zscaler アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | Name | ソース属性 |
+    | 名前 | ソース属性 |
     | ---------| ------------ |
     | memberOf | user.assignedroles |
 

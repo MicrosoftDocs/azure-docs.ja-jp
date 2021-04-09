@@ -14,10 +14,10 @@ ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, n
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 8f6170de65ae5e1ca8ecb5f7cc8a78f4f194ac41
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92055292"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Microsoft ID プラットフォーム (v2.0) に更新する理由
@@ -30,7 +30,7 @@ ms.locfileid: "92055292"
 
 * v1.0 エンドポイントでは、職場と学校のアカウント (Azure AD) でのみ、ご利用のアプリケーションにサインインすることができます。
 * Microsoft ID プラットフォーム エンドポイントでは、Azure AD からの職場と学校のアカウント、および個人の Microsoft アカウント (MSA) (hotmail.com、outlook.com、msn.com など) でサインインできます。
-* 両方のエンドポイントで、 *[シングルテナント](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* として構成されているアプリケーション、またはテナント固有のエンドポイント (`https://login.microsoftonline.com/{TenantId_or_Name}`) を指すように構成されている*マルチテナント* アプリケーションに対する Azure AD ディレクトリの *[ゲスト ユーザー](../external-identities/what-is-b2b.md)* によるサインインも受け入れられます。
+* 両方のエンドポイントで、 *[シングルテナント](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* として構成されているアプリケーション、またはテナント固有のエンドポイント (`https://login.microsoftonline.com/{TenantId_or_Name}`) を指すように構成されている *マルチテナント* アプリケーションに対する Azure AD ディレクトリの *[ゲスト ユーザー](../external-identities/what-is-b2b.md)* によるサインインも受け入れられます。
 
 Microsoft ID プラットフォーム エンドポイントを使用した場合は、個人の Microsoft アカウントに加え、職場や学校のアカウントからのサインインを受け付けるアプリを記述することができます。 そのため、完全にアカウント非依存のアプリを作成することができます。 たとえば、アプリで [Microsoft Graph](https://graph.microsoft.io) を呼び出す場合、SharePoint サイトやディレクトリ データなど、いくつかの追加の機能とデータを職場のアカウントで使用できます。 しかし、[ユーザーのメールの読み取り](/graph/api/user-list-messages)など、多くのアクションでは、同じコードで個人アカウントおよび職場と学校のアカウントの両方のメールにアクセスすることができます。
 
@@ -42,7 +42,7 @@ Microsoft ID プラットフォーム エンドポイントの場合、Microsoft
 
 ![アクセス許可の登録 UI を示す例](./media/azure-ad-endpoint-comparison/app-reg-permissions.png)
 
-アプリケーションの登録時に直接設定されるアクセス許可は**静的**となります。 アプリの静的アクセス許可は Azure portal で定義されており、コードを適切に維持できますが、開発者にとってはそれがいくつかの問題を引き起こす場合があります。
+アプリケーションの登録時に直接設定されるアクセス許可は **静的** となります。 アプリの静的アクセス許可は Azure portal で定義されており、コードを適切に維持できますが、開発者にとってはそれがいくつかの問題を引き起こす場合があります。
 
 * アプリで、ユーザーの初回サインインの時点で必要になる可能性があるすべてのアクセス許可を要求する必要があります。 アクセス許可のリストは長くなる場合があり、エンドユーザーが初回サインイン時にアプリのアクセスを承認することを阻げる要因となります。
 
@@ -56,7 +56,7 @@ Microsoft ID プラットフォーム エンドポイントでは、Azure portal
 
 ## <a name="scopes-not-resources"></a>リソースではなくスコープ
 
-v1.0 エンドポイントを使用するアプリの場合、アプリは、**リソース**、またはトークンの受信者として動作できます。 リソースには、リソースで識別できる多数の**スコープ**または **oAuth2Permissions** を定義できます。それによりクライアント アプリは、そのリソースから特定のスコープのセットのトークンを要求できます。 リソースの例として、Microsoft Graph API があります。
+v1.0 エンドポイントを使用するアプリの場合、アプリは、**リソース**、またはトークンの受信者として動作できます。 リソースには、リソースで識別できる多数の **スコープ** または **oAuth2Permissions** を定義できます。それによりクライアント アプリは、そのリソースから特定のスコープのセットのトークンを要求できます。 リソースの例として、Microsoft Graph API があります。
 
 * リソース識別子、または `AppID URI`: `https://graph.microsoft.com/`
 * スコープ、または `oAuth2Permissions`: `Directory.Read`、`Directory.Write` など。
@@ -128,7 +128,7 @@ Microsoft ID プラットフォーム エンドポイントはこの一覧に記
 
 ### <a name="restrictions-on-app-registrations"></a>アプリの登録に関する制限事項
 
-Microsoft ID プラットフォーム エンドポイントと統合するアプリごとに、Azure portal の新しい[**アプリ登録**エクスペリエンス](https://aka.ms/appregistrations)でアプリの登録を作成することができます。 既存の Microsoft アカウント アプリはポータルとの互換性がありませんが、Azure AD アプリはすべて、登録された日時や場所に関係なく互換性があります。
+Microsoft ID プラットフォーム エンドポイントと統合するアプリごとに、Azure portal の新しい [**アプリ登録** エクスペリエンス](https://aka.ms/appregistrations)でアプリの登録を作成することができます。 既存の Microsoft アカウント アプリはポータルとの互換性がありませんが、Azure AD アプリはすべて、登録された日時や場所に関係なく互換性があります。
 
 職場や学校のアカウントと個人用アカウントをサポートするアプリの登録については、次の注意事項があります。
 
@@ -156,7 +156,7 @@ Microsoft ID プラットフォームで使用するアプリを登録する方�
 
 Microsoft ID プラットフォーム エンドポイントは SAML と WS-Federation をサポートしていません。OpenID 接続と OAuth 2.0 のみをサポートしています。  OAuth 2.0 プロトコルに加えられた、ｖ1.0 エンドポイントからの主な変更点は次のとおりです。
 
-* `email` 要求は、省略可能な要求が構成されている場合、**または**その要求の中で scope=email が指定されている場合に返されます。
+* `email` 要求は、省略可能な要求が構成されている場合、**または** その要求の中で scope=email が指定されている場合に返されます。
 * `resource` パラメーターに代わって、`scope` パラメーターがサポートされるようになりました。
 * OAuth 2.0 仕様への準拠性を高めるため、多くの応答に変更が加えられました (たとえば、`expires_in` を文字列ではなく整数として正しく返すなど)。
 

@@ -1,18 +1,18 @@
 ---
-title: 'Azure HDInsight: Azure CLI のサンプル'
+title: 'Azure HDInsight: Azure CLI サンプル'
 description: Azure HDInsight での一般的なタスクのための Azure CLI の例。
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 9367c1b4d82e984b2b4200768a3f83f9245c7f0f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946892"
 ---
-# <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLI のサンプル
+# <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLI サンプル
 
 > [!div class="op_single_selector"]
 > [.NET の例](hdinsight-sdk-dotnet-samples.md)
@@ -25,7 +25,7 @@ ms.locfileid: "98946892"
 
 * Azure CLI。 手順については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
-* 省略可能:Bash。 この記事の例では、Windows 10 上で Bash シェルを使用しています。 インストール手順については、「[Windows Subsystem for Linux Installation Guide for Windows 10 (Windows 10 用 Windows Subsystem for Linux インストール ガイド)](/windows/wsl/install-win10)」をご覧ください。  各例は、少し変更を加えることで、Windows コマンド プロンプトでも使用できます。
+* 省略可能: Bash。 この記事の例では、Windows 10 上で Bash シェルを使用しています。 インストール手順については、「[Windows Subsystem for Linux Installation Guide for Windows 10 (Windows 10 用 Windows Subsystem for Linux インストール ガイド)](/windows/wsl/install-win10)」をご覧ください。  各例は、少し変更を加えることで、Windows コマンド プロンプトでも使用できます。
 
 ## <a name="az-login"></a>az login
 

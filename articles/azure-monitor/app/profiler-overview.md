@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 0d3074d58560df5cb5bd6bdc2c0437a4be828918
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86499394"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Application Insights を使用した Azure のプロファイル運用アプリケーション
@@ -24,7 +24,7 @@ Profiler は、以下の Azure サービスにデプロイされた .NET アプ�
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines と仮想マシン スケール セット](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
-* [ASP.NET Core Azure Linux Web アプリ](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json)を **プレビュー**する 
+* [ASP.NET Core Azure Linux Web アプリ](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json)を **プレビュー** する 
 
 Profiler を有効にして、トレースが表示されない場合は、[トラブルシューティング ガイド](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json)を参照してください。
 

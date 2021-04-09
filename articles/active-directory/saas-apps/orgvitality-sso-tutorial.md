@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: jeedes
 ms.openlocfilehash: b774f50f6f136d9e7c71b5fe6fbffb725a9240a5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92522225"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-orgvitality-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と OrgVitality SSO の統合
@@ -37,7 +37,7 @@ ms.locfileid: "92522225"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* OrgVitality SSO では、 **IDP** によって開始される SSO がサポートされます
+* OrgVitality SSO では、**IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-orgvitality-sso-from-the-gallery"></a>ギャラリーからの OrgVitality SSO の追加
 
@@ -47,7 +47,7 @@ Azure AD への OrgVitality SSO の統合を構成するには、ギャラリー
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **OrgVitality SSO** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**OrgVitality SSO**」と入力します。
 1. 結果 パネルで **OrgVitality SSO** を選択して、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -83,7 +83,7 @@ OrgVitality SSO に対して Azure AD SSO を構成してテストするには�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[OrgVitality SSO サポート チーム](https://orgvitality.com/contact-us/)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. OrgVitality SSO アプリケーションでは、特定の形式の SAML アサーションを予測しているため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 OrgVitality SSO アプリケーションでは、 **nameidentifier** が **user.employeeid** にマップされると想定しているため、 **[編集]** アイコンをクリックして属性マッピングを編集することで、属性マッピングを変更する必要があります。
+1. OrgVitality SSO アプリケーションでは、特定の形式の SAML アサーションを予測しているため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 OrgVitality SSO アプリケーションでは、**nameidentifier** が **user.employeeid** にマップされると想定しているため、 **[編集]** アイコンをクリックして属性マッピングを編集することで、属性マッピングを変更する必要があります。
 
     ![image](common/default-attributes.png)
 

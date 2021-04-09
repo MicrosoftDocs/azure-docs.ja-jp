@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory で自動ユーザー プロビジョニング用に Comeet Recruiting Software を構成する | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory で自動ユーザー プロビジョニング用に Comeet Recruiting Software を構成する | Microsoft Docs'
 description: ユーザー アカウントを Comeet Recruiting Software に自動的にプロビジョニングおよびプロビジョニング解除するよう Azure Active Directory を構成する方法について説明します。
 services: active-directory
 author: zchia
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 288d1e6cec8ddcf7d4afe5a35f28a022c2a7be10
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96006714"
 ---
-# <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Comeet Recruiting Software を構成する
+# <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニング用に Comeet Recruiting Software を構成する
 
 このチュートリアルの目的は、ユーザーまたはグループを Comeet Recruiting Software に自動的にプロビジョニングおよびプロビジョニング解除するよう Azure AD を構成するために、Comeet Recruiting Software と Azure Active Directory (Azure AD) で実行される手順を示すことです。
 
@@ -53,7 +53,7 @@ Azure AD で自動ユーザー プロビジョニング用に Comeet Recruiting 
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Comeet Recruiting Software**」と入力し、結果ウィンドウで **[Comeet Recruiting Software]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Comeet Recruiting Software**」と入力し、結果ウィンドウで **[Comeet Recruiting Software]** を選択してから、**[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果一覧の Comeet Recruiting Software](common/search-new-app.png)
 
@@ -98,11 +98,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. **[管理者資格情報]** セクションで、手順 6 で説明するように、Comeet Recruiting Software アカウントの **[テナント URL]** と **[シークレット トークン]** を入力します。
 
-6. [Comeet Recruiting Software 管理コンソール](https://app.comeet.co/)で **[Comeet] > [Settings]\(設定\) > [Authentication]\(認証\) > [Microsoft Azure]** に移動し、 **[Secret Token for your company]\(会社のシークレット トークン\)** の値を Azure AD の **[シークレット トークン]** フィールドにコピーします。
+6. [Comeet Recruiting Software 管理コンソール](https://app.comeet.co/)で **[Comeet] > [Settings]\(設定\) > [Authentication]\(認証\) > [Microsoft Azure]** に移動し、**[Secret Token for your company]\(会社のシークレット トークン\)** の値を Azure AD の **[シークレット トークン]** フィールドにコピーします。
 
     ![Comeet Recruiting Software のプロビジョニング](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
 
-7. 手順 5 の各フィールドに値を入力したら、 **[テスト接続]** をクリックして、Azure AD が Comeet Recruiting Software に接続できることを確認します。 接続できない場合は、使用中の Comeet Recruiting Software アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+7. 手順 5 の各フィールドに値を入力したら、**[テスト接続]** をクリックして、Azure AD が Comeet Recruiting Software に接続できることを確認します。 接続できない場合は、使用中の Comeet Recruiting Software アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![トークン](common/provisioning-testconnection-token.png)
 
@@ -112,7 +112,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 9. **[保存]** をクリックします。
 
-10. **[マッピング]** セクションで、 **[Synchronize Azure Active Directory Users to Comeet]\(Azure Active Directory ユーザーを Comeet に同期する\)** を選択します。
+10. **[マッピング]** セクションで、**[Synchronize Azure Active Directory Users to Comeet]\(Azure Active Directory ユーザーを Comeet に同期する\)** を選択します。
 
     ![Comeet Recruiting Software のユーザー マッピング](media/comeet-recruiting-software-provisioning-tutorial/user-mappings.png)
 
@@ -122,7 +122,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-13. Comeet Recruiting Software に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+13. Comeet Recruiting Software に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 

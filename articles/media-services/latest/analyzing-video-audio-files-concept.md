@@ -2,21 +2,18 @@
 title: ビデオ ファイルとオーディオ ファイルを分析する
 description: Azure Media Services の AudioAnalyzerPreset と VideoAnalyzerPreset を使用して、オーディオ コンテンツとビデオ コンテンツを分析する方法を説明します。
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.service: media-services
-ms.workload: ''
 ms.topic: conceptual
-ms.date: 10/21/2020
+ms.date: 03/22/2021
 ms.author: inhenkel
-ms.openlocfilehash: 25b5c3163b657633ca78215468f4c2a2e40949b7
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: e062eb1ecc37a60567a6b8af0d4e0f27b1e73c36
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897226"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104863345"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Azure Media Services を使用してビデオ ファイルとオーディオ ファイルを分析する
 
@@ -30,21 +27,18 @@ Azure Media Services v3 を使うと、Video Indexer でビデオ ファイル�
 
 Media Services v3 プリセットを使用してコンテンツを分析するには、**Transform** を作成し、次のいずれかのプリセットを使用する **Job** を送信します ([VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset) または **AudioAnalyzerPreset**)。 **VideoAnalyzerPreset** の使用方法がわかるチュートリアルについては、[Azure Media Services を使用したビデオの分析](analyze-videos-tutorial-with-api.md)に関する記事をご覧ください。
 
-> [!NOTE]
-> ビデオ アナライザーまたはオーディオ アナライザーのプリセットを使用する場合は、Azure portal を使用して、10 個の S3 メディア占有ユニットを備えるようアカウントを設定します。ただし、これは必須ではありません。 オーディオ プリセットには、S1 または S2 を使用できます。 詳細については、[メディア処理のスケーリング](media-reserved-units-cli-how-to.md)に関するページを参照してください。
-
 ## <a name="compliance-privacy-and-security"></a>コンプライアンス、プライバシー、セキュリティ
 
-重要な注意事項として、Video Indexer の使用に適用されるすべての法律に従う必要があります。また、他の人の権利を犯したり、他の人に害を及ぼしたりする可能性のある方法で Video Indexer またはその他の Azure サービスを使用することはできません。 生体認証データなどのビデオを Video Indexer サービスにアップロードして処理と保管を行う前に、ビデオに写っている個人から適切なすべての同意を得ることを含め、適切な権限をすべて持っている必要があります。 Video Indexer のコンプライアンス、プライバシー、セキュリティについては、Microsoft の [Cognitive Services の条項](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)に関するページを参照してください。 Microsoft のプライバシー義務とデータの取り扱いについては、Microsoft の[プライバシー ステートメント](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス条件](https://www.microsoft.com/licensing/product-licensing/products) ("OST")、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 データの保持、削除、破棄などのその他のプライバシー情報は、OST および[こちら](../video-indexer/faq.md)で確認できます。 Video Indexer を使用すると、Cognitive Services の条項、OST、DPA、およびプライバシー ステートメントに従うことに同意したものと見なされます。
+重要な注意事項として、Video Indexer の使用に適用されるすべての法律に従う必要があります。また、他の人の権利を犯したり、他の人に害を及ぼしたりする可能性のある方法で Video Indexer またはその他の Azure サービスを使用することはできません。 生体認証データなどのビデオを Video Indexer サービスにアップロードして処理と保管を行う前に、ビデオに写っている個人から適切なすべての同意を得ることを含め、適切な権限をすべて持っている必要があります。 Video Indexer のコンプライアンス、プライバシー、セキュリティについては、Azure の [Cognitive Services の条項](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)に関するページを参照してください。 Microsoft のプライバシー義務とデータの取り扱いについては、Microsoft の[プライバシー ステートメント](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス条件](https://www.microsoft.com/licensing/product-licensing/products) ("OST")、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 データの保持、削除、破棄などのその他のプライバシー情報は、OST および[こちら](../video-indexer/faq.md)で確認できます。 Video Indexer を使用すると、Cognitive Services の条項、OST、DPA、およびプライバシー ステートメントに従うことに同意したものと見なされます。
 
 ## <a name="built-in-presets"></a>組み込みのプリセット
 
 現在、Media Services は次の組み込みのアナライザー プリセットをサポートしています。  
 
-|**プリセット名**|**シナリオ**|**詳細**|
+|**プリセット名**|**シナリオ/モード**|**詳細**|
 |---|---|---|
-|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|オーディオの分析: 標準|このプリセットは、音声の文字起こしなど、事前定義された一連の AI ベースの分析操作を適用します。 現在、プリセットは、1 つの言語での音声を含む単一オーディオ トラックを使用したコンテンツ処理をサポートしています。 BCP-47 形式の "language tag-region" を使用して、入力のオーディオ ペイロードの言語を指定できます。 サポートされる言語は、英語 ("en-US" および "en-GB")、スペイン語 ("es-ES" および "es-MX")、フランス語 ("fr-FR")、イタリア語 ("it-IT")、日本語 ("ja-JP")、ポルトガル語 ("pt-BR")、中国語 ("zh-CN")、ドイツ語 ("de-DE")、アラビア語 ("ar-EG" と "ar-SY")、ロシア語 ("ru-RU")、ヒンディー語 ("hi-IN")、韓国語 ("ko-KR") です。<br/><br/> 言語が指定されていない場合、または null 値に設定されている場合、自動言語検出では、最初に検出された言語が選択されて、ファイルの期間を通して選択された言語が使い続けられます。 自動言語検出機能では、現在、英語、中国語、フランス語、ドイツ語、イタリア語、日本語、スペイン語、ロシア語、およびポルトガル語がサポートされています。 最初の言語が検出された後に、複数の言語を動的に切り替えることはサポートされていません。 自動言語検出機能は、はっきりと音声が認識できる録音において最も効果的に機能します。 自動言語検出で言語を認識できなかった場合、文字起こしは英語にフォールバックされます。|
-|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|オーディオの分析: 基本|このモードでは、音声からテキストへの文字起こしを作成し、VTT 字幕/キャプション ファイルを生成します。 このモードの出力には、キーワード、文字起こし、タイミング情報のみを含む Insights JSON ファイルなどがあります。 このモードには、自動言語検出と話者のダイアライゼーションは含まれていません。 サポートされている言語の一覧は[こちら](#built-in-presets)で確認できます|
+|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|オーディオの分析: 標準モード|このプリセットは、音声の文字起こしなど、事前定義された一連の AI ベースの分析操作を適用します。 現在、プリセットは、1 つの言語での音声を含む単一オーディオ トラックを使用したコンテンツ処理をサポートしています。 BCP-47 形式の "language tag-region" を使用して、入力のオーディオ ペイロードの言語を指定できます。 サポートされている言語は、英語 ('en-US'、'en-GB'、'en-AU')、スペイン語 ('es-ES' と 'es-MX')、フランス語 ('fr-FR' と 'fr-CA')、イタリア語 ('it-IT')、日本語 ('ja-JP')、ポルトガル語 ('pt-BR')、中国語 ('zh-CN')、ドイツ語 ('de-DE')、アラビア語 ('ar-BH'、'ar-EG'、'ar-IQ'、'ar-JO'、'ar-KW'、'ar-LB'、'ar-OM'、'ar-QA'、'ar-SA'、'ar-SY')、ロシア語 ('ru-RU')、ヒンディー語 ('hi-IN')、韓国語 ('ko-KR')、デンマーク語 ('da-DK')、ノルウェー語 ('nb-NO')、スウェーデン語 ('sv-SE')、フィンランド語 ('fi-FI')、タイ語 ('th-TH')、トルコ語 ('tr-TR') です。<br/><br/> 言語が指定されていない場合、または null 値に設定されている場合、自動言語検出では、最初に検出された言語が選択されて、ファイルの期間を通して選択された言語が使い続けられます。 自動言語検出機能では、現在、英語、中国語、フランス語、ドイツ語、イタリア語、日本語、スペイン語、ロシア語、およびポルトガル語がサポートされています。 最初の言語が検出された後に、複数の言語を動的に切り替えることはサポートされていません。 自動言語検出機能は、はっきりと音声が認識できる録音において最も効果的に機能します。 自動言語検出で言語を認識できなかった場合、文字起こしは英語にフォールバックされます。|
+|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|オーディオの分析: 基本モード|このプリセット モードでは、音声からテキストへの文字起こしを作成し、VTT 字幕/キャプション ファイルを生成します。 このモードの出力には、キーワード、文字起こし、タイミング情報のみを含む Insights JSON ファイルなどがあります。 このモードには、自動言語検出と話者のダイアライゼーションは含まれていません。 サポートされている言語の一覧は、上記の標準モードと同じです。|
 |[VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|オーディオとビデオの分析|オーディオとビデオの両方から分析情報 (リッチ メタデータ) を抽出し、JSON 形式のファイルを出力します。 ビデオ ファイルを処理するときにオーディオの分析情報のみを抽出するかどうかを指定できます。 詳細については、[ビデオの分析](analyze-videos-tutorial-with-api.md)に関するページを参照してください。|
 |[FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset)|ビデオに存在する顔の検出|ビデオを分析して存在するすべての顔を検出するときに使用される設定について説明します。|
 

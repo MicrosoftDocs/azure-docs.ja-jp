@@ -1,6 +1,6 @@
 ---
-title: AzCopy v10 を使用して Azure Blob Storage から BLOB をダウンロードする | Microsoft Docs
-description: この記事には、Azure Blob Storage から BLOB をダウンロードするために役立つ AzCopy コマンドの例のコレクションが含まれています。
+title: AzCopy v10 を使用して Azure BLOB ストレージから BLOB をダウンロードする | Microsoft Docs
+description: この記事には、Azure BLOB ストレージから BLOB をダウンロードするために役立つ AzCopy コマンドの例のコレクションが含まれています。
 author: normesta
 ms.service: storage
 ms.topic: how-to
@@ -9,13 +9,13 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: 20da05399eed4cb9c5a4b69a82b0b1e799997751
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880120"
 ---
-# <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy v10 を使用して Azure Blob Storage から BLOB をダウンロードする
+# <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy v10 を使用して Azure BLOB ストレージから BLOB をダウンロードする
 
 AzCopy v10 コマンド ライン ユーティリティを使用して、BLOB ストレージから BLOB やディレクトリをダウンロードできます。 
 
@@ -26,7 +26,7 @@ AzCopy v10 コマンド ライン ユーティリティを使用して、BLOB �
 AzCopy のダウンロード方法と、ストレージ サービスに認証資格情報を与える方法については、[AzCopy の作業開始](storage-use-azcopy-v10.md)に関するページをご覧ください。
 
 > [!NOTE] 
-> この記事の例は、Azure Active Directory (Azure AD) を使用して認証資格情報を指定していることを前提にしています。
+> この記事の例では、Azure Active Directory (Azure AD) を使用して認証資格情報を指定していることを前提としています。
 >
 > SAS トークンを使用して BLOB データへのアクセスを承認する場合、各 AzCopy コマンドのリソース URL の先頭にそのトークンを追加できます。 (例: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`)。
 

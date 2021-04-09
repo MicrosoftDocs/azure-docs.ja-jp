@@ -11,10 +11,10 @@ ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: cb7e047d998342125a52af5ea3ae1e88fe88d313
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93289906"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Azure CLI を使用して Key Vault を管理します。 
@@ -65,7 +65,7 @@ az account set -h
 
 ## <a name="how-to-create-a-hardened-container-a-vault-in-azure"></a>強化されたコンテナー (資格情報コンテナー) を Azure に作成する方法
 
-資格情報コンテナーは、ハードウェア セキュリティ モジュールに支えられた安全なコンテナーです。 コンテナーでは、アプリケーション シークレットを一元的に保管することで、セキュリティ情報が過って失われる可能性は低くなります。 さらに、キー コンテナーでは、その中に格納されているすべての情報へのアクセスを制御し、記録します。 Azure Key Vault は、トランスポート層セキュリティ (TLS) 証明書の要求と更新を処理でき、堅牢な証明書ライフサイクル管理ソリューションに必要な機能を提供します。 次の手順で、資格情報コンテナーを作成します。
+資格情報コンテナーは、ハードウェア セキュリティ モジュールに支えられた安全なコンテナーです。 コンテナーでは、アプリケーション シークレットを一元的に保管することで、セキュリティ情報が過って失われる可能性は低くなります。 また、Key Vault では、その中に格納されているすべての情報へのアクセスを制御し、記録します。 Azure Key Vault は、トランスポート層セキュリティ (TLS) 証明書の要求と更新を処理でき、堅牢な証明書ライフサイクル管理ソリューションに必要な機能を提供します。 次の手順で、資格情報コンテナーを作成します。
 
 ### <a name="connect-to-your-subscriptions"></a>サブスクリプションへの接続
 
@@ -128,8 +128,8 @@ az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 
 このコマンドの出力は、作成したキー コンテナーのプロパティを示します。 最も重要な 2 つのプロパティは、次のとおりです。
 
-* **name** :この例では、名前は ContosoKeyVault です。 この名前を他の Key Vault コマンドに使用できます。
-* **vaultUri** : この例では、URI は https://contosokeyvault.vault.azure.net です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
+* **name**:この例では、名前は ContosoKeyVault です。 この名前を他の Key Vault コマンドに使用できます。
+* **vaultUri**: この例では、URI は https://contosokeyvault.vault.azure.net です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
 
 Azure アカウントは、この Key Vault ですべての操作の実行が許可されるようになりました。 現在のところ、誰も承認されていません。
 

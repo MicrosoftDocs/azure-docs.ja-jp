@@ -9,10 +9,10 @@ ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 09fee610ccc15874481ecfd4693e4b89379caa7a
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92330038"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>クラウド ソリューション プロバイダー (CSP) 向けの ExpressRoute
@@ -31,7 +31,7 @@ Microsoft Azure には顧客向けに提供できるさまざまなサービス�
 Microsoft では、プログラムによって独自のサービス管理システムに統合することで Azure 顧客サブスクリプションを管理できる API を、CSP 向けに提供しています。 サポートされている管理機能は [こちら](/previous-versions/windows/mt844538(v=win.10))から確認できます。
 
 ## <a name="microsoft-azure-resource-management"></a>Microsoft Azure リソースの管理
-サブスクリプションの管理方法は、顧客との契約内容によって異なります。 CSP がリソースの作成とメンテナンスを直接管理することもできますが、顧客が Microsoft Azure サブスクリプションを制御し、必要に応じて Azure リソースを作成することもできます。 顧客が Microsoft Azure サブスクリプションでのリソースの作成を管理する場合、" *Connect-Through* " モデルと " *Direct-To* " モデルという 2 つのモデルのいずれかを使用することになります。 以降のセクションで、これらのモデルの詳細について説明します。  
+サブスクリプションの管理方法は、顧客との契約内容によって異なります。 CSP がリソースの作成とメンテナンスを直接管理することもできますが、顧客が Microsoft Azure サブスクリプションを制御し、必要に応じて Azure リソースを作成することもできます。 顧客が Microsoft Azure サブスクリプションでのリソースの作成を管理する場合、"*Connect-Through*" モデルと "*Direct-To*" モデルという 2 つのモデルのいずれかを使用することになります。 以降のセクションで、これらのモデルの詳細について説明します。  
 
 ### <a name="connect-through-model"></a>Connect-Through モデル
 !["Connect-through" モデルを示す図。](./media/expressroute-for-cloud-solution-providers/connect-through.png)  

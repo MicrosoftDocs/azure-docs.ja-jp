@@ -4,10 +4,10 @@ description: Windows Server 2019 セキュリティ ベースラインからグ�
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.openlocfilehash: 7f7e2af70efa6771d94d7ceaa14d1408175b1d12
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93348646"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Windows のグループ ポリシー ベースラインからゲスト構成ポリシー定義を作成する方法
@@ -29,7 +29,7 @@ DSC コミュニティでは、エクスポートされたグループ ポリシ
 
 ## <a name="download-windows-server-2019-security-baseline-and-install-related-powershell-modules"></a>Windows Server 2019 セキュリティ ベースラインをダウンロードし、関連する PowerShell モジュールをインストールする
 
-PowerShell で **DSC** 、 **GuestConfiguration** 、 **Baseline Management** 、および関連する Azure モジュールをインストールするには:
+PowerShell で **DSC**、**GuestConfiguration**、**Baseline Management**、および関連する Azure モジュールをインストールするには:
 
 1. PowerShell プロンプトから、次のコマンドを実行します。
 
@@ -106,7 +106,7 @@ PowerShell で **DSC** 、 **GuestConfiguration** 、 **Baseline Management** �
    New-GuestConfigurationPolicy @NewGuestConfigurationPolicySplat
    ```
     
-1. `Publish-GuestConfigurationPolicy` コマンドレットを使用してポリシー定義を発行します。 コマンドレットのパラメーターは、`New-GuestConfigurationPolicy` によって作成される JSON ファイルの場所を指し示す **Path** だけです。 Publish コマンドを実行するには、Azure でポリシー定義を作成できるアクセス権が必要です。 特定の承認要件については、[Azure Policy の概要](../overview.md#getting-started)に関するページに記載されています。 最適な組み込みロールは、 **リソース ポリシーの共同作成者** です。
+1. `Publish-GuestConfigurationPolicy` コマンドレットを使用してポリシー定義を発行します。 コマンドレットのパラメーターは、`New-GuestConfigurationPolicy` によって作成される JSON ファイルの場所を指し示す **Path** だけです。 Publish コマンドを実行するには、Azure でポリシー定義を作成できるアクセス権が必要です。 特定の承認要件については、[Azure Policy の概要](../overview.md#getting-started)に関するページに記載されています。 最適な組み込みロールは、**リソース ポリシーの共同作成者** です。
 
    ```azurepowershell-interactive
    Publish-GuestConfigurationPolicy -Path C:\git\policyfiles\policy\ -Verbose
@@ -117,9 +117,9 @@ PowerShell で **DSC** 、 **GuestConfiguration** 、 **Baseline Management** �
 Azure で作成されるポリシーに関する最後のステップでは、イニシアティブを割り当てます。 [ポータル](../assign-policy-portal.md)、[Azure CLI](../assign-policy-azurecli.md)、および [Azure PowerShell](../assign-policy-powershell.md) でイニシアティブを割り当てる方法について確認できます。
 
 > [!IMPORTANT]
-> ゲスト構成ポリシー定義は **常に** 、" _AuditIfNotExists_ " ポリシーと " _DeployIfNotExists_ " ポリシーを組み合わせたイニシアティブを使って割り当てる必要があります。 " _AuditIfNotExists_ " ポリシーのみを割り当てた場合は、前提条件がデプロイされず、ポリシーでは、準拠しているサーバーが常に "0" と示されます。
+> ゲスト構成ポリシー定義は **常に**、"_AuditIfNotExists_" ポリシーと "_DeployIfNotExists_" ポリシーを組み合わせたイニシアティブを使って割り当てる必要があります。 "_AuditIfNotExists_" ポリシーのみを割り当てた場合は、前提条件がデプロイされず、ポリシーでは、準拠しているサーバーが常に "0" と示されます。
 
-_DeployIfNotExists_ 効果でポリシー定義を割り当てるには、追加のレベルのアクセス権が必要です。 最小限の権限を付与するために、 **リソース ポリシーの共同作成者** を拡張するカスタム ロール定義を作成できます。 次の例では、追加のアクセス許可 _Microsoft.Authorization/roleAssignments/write_ を持つ **リソース ポリシーの共同作成者 DINE** という名前のロールを作成します。
+_DeployIfNotExists_ 効果でポリシー定義を割り当てるには、追加のレベルのアクセス権が必要です。 最小限の権限を付与するために、**リソース ポリシーの共同作成者** を拡張するカスタム ロール定義を作成できます。 次の例では、追加のアクセス許可 _Microsoft.Authorization/roleAssignments/write_ を持つ **リソース ポリシーの共同作成者 DINE** という名前のロールを作成します。
 
    ```azurepowershell-interactive
    $subscriptionid = '00000000-0000-0000-0000-000000000000'

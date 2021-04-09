@@ -9,10 +9,10 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
 ms.openlocfilehash: 20e45454284af230da74896d5b3f5e9da676dbb4
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97831705"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:Ruby を使用して Azure Database for PostgreSQL - Single Server に接続してデータを照会する

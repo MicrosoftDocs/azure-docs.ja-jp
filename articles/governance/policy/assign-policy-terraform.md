@@ -4,10 +4,10 @@ description: このクイックスタートでは、Terraform と HCL 構文を�
 ms.date: 10/27/2020
 ms.topic: quickstart
 ms.openlocfilehash: dc4dae2dc6e43e7532117bf64af3ce97ddc7c496
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93104923"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-terraform"></a>クイックスタート: Terraform を使用してポリシー割り当てを作成し、非準拠リソースを特定する
@@ -15,7 +15,7 @@ ms.locfileid: "93104923"
 Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。
 このクイックスタートでは、ポリシーの割り当てを作成して、マネージド ディスクを使用していない仮想マシンを特定するプロセスについて順を追って説明します。
 
-このプロセスを終了すると、マネージド ディスクを使用していない仮想マシンを適切に特定できるようになります。 これらはポリシーの割り当てに " _準拠していません_ "。
+このプロセスを終了すると、マネージド ディスクを使用していない仮想マシンを適切に特定できるようになります。 これらはポリシーの割り当てに "_準拠していません_"。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -26,7 +26,7 @@ Azure のコンプライアンスを理解する第一歩は、リソースの�
 
 ## <a name="create-the-terraform-configuration-variable-and-output-file"></a>Terraform の構成、変数、および出力ファイルを作成する
 
-このクイックスタートでは、ポリシー割り当てを作成し、 **マネージド ディスクを使用しない監査 VM** (`06a78e20-9358-41c9-923c-fb736d382a4d`) 定義を割り当てます。 このポリシー定義では、ポリシー定義で設定されている条件に準拠していないリソースが識別されます。
+このクイックスタートでは、ポリシー割り当てを作成し、**マネージド ディスクを使用しない監査 VM** (`06a78e20-9358-41c9-923c-fb736d382a4d`) 定義を割り当てます。 このポリシー定義では、ポリシー定義で設定されている条件に準拠していないリソースが識別されます。
 
 まず、Terraform の構成、変数、および出力ファイルを作成します。 Azure Policy 用の Terraform リソースでは、[Azure プロバイダー](https://www.terraform.io/docs/providers/azurerm/index.html)を使用します。
 
@@ -111,7 +111,7 @@ terraform apply assignment.tfplan
 
 :::image type="content" source="./media/assign-policy-terraform/terraform-apply.png" alt-text="terraform apply コマンドの実行を示すスクリーンショット。結果として作成されるリソースが表示されています。":::
 
-"Apply complete! (適用が完了しました。) リソース: 1 added, 0 changed, 0 destroyed. (追加 1、変更 0、破棄 0。)" というメッセージが表示され、ポリシー割り当てが作成されます。 `outputs.tf` ファイルを定義したため、 _assignment\_id_ も返されます。
+"Apply complete! (適用が完了しました。) リソース: 1 added, 0 changed, 0 destroyed. (追加 1、変更 0、破棄 0。)" というメッセージが表示され、ポリシー割り当てが作成されます。 `outputs.tf` ファイルを定義したため、_assignment\_id_ も返されます。
 
 ## <a name="identify-non-compliant-resources"></a>準拠していないリソースを特定する
 

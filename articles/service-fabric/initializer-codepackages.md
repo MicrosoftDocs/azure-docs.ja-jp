@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
 ms.openlocfilehash: 3be079b97c2660437344f88203fdda06cc6d6740
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86258982"
 ---
 # <a name="initializer-codepackages"></a>初期化子 CodePackage
 
-Service Fabric では、バージョン 7.1 以降、[コンテナー][containers-introduction-link]と[ゲスト実行可能ファイル][guest-executables-introduction-link] アプリケーション用の**初期化子 CodePackage** をサポートします。 初期化子 CodePackage を使用すると、他の CodePackage の実行を開始する前に、ServicePackage スコープで初期化を実行できます。 ServicePackage との関係は、[SetupEntryPoint][setup-entry-point-link] と CodePackage の関係に似ています。
+Service Fabric では、バージョン 7.1 以降、[コンテナー][containers-introduction-link]と [ゲスト実行可能ファイル][guest-executables-introduction-link] アプリケーション用の **初期化子 CodePackage** をサポートします。 初期化子 CodePackage を使用すると、他の CodePackage の実行を開始する前に、ServicePackage スコープで初期化を実行できます。 ServicePackage との関係は、[SetupEntryPoint][setup-entry-point-link] と CodePackage の関係に似ています。
 
 この記事を読み進める前に、[Service Fabric のアプリケーション モデル][application-model-link]と [Service Fabric のホスティング モデル][hosting-model-link]を十分に理解しておくことをお勧めします。
 
@@ -23,7 +23,7 @@ Service Fabric では、バージョン 7.1 以降、[コンテナー][container
  
 ## <a name="semantics"></a>セマンティクス
 
-初期化子 CodePackages は、**正常に終了する (終了コード 0)** まで実行することが想定されています。 失敗した初期化子 CodePackage は、正常に終了するまで再起動されます。 複数の初期化子 CodePackage を使用することができます。これらが**指定された順序で**、**順番に**、**正常に終了する**と、ServicePackage 内の他の CodePackage の実行が開始されます。
+初期化子 CodePackages は、**正常に終了する (終了コード 0)** まで実行することが想定されています。 失敗した初期化子 CodePackage は、正常に終了するまで再起動されます。 複数の初期化子 CodePackage を使用することができます。これらが **指定された順序で**、**順番に**、**正常に終了する** と、ServicePackage 内の他の CodePackage の実行が開始されます。
 
 ## <a name="specifying-initializer-codepackages"></a>初期化子 CodePackage を指定する
 ServiceManifest で **Initializer** 属性を **true** に設定することにより、CodePackage を初期化子としてマークすることができます。 複数の初期化子 CodePackage がある場合、その実行の順序は、**ExecOrder** 属性で指定することができます。 **ExecOrder** は、負ではない整数である必要があり、初期化子 CodePackage に対してのみ有効です。 **ExecOrder** の値が小さい初期化子 CodePackage から順に実行されます。 初期化子 CodePackage に対して **ExecOrder** を指定しない場合、既定値の 0 と見なされます。 **ExecOrder** の値が同じ初期化子 CodePackage の相対的な実行の順序は未確定です。

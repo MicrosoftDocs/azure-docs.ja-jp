@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
 ms.openlocfilehash: 1800771bfff0afbcec8440383536734246ea8f5c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100580739"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Azure Monitor を使用した大規模な監視

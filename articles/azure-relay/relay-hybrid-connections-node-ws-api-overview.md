@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 558f49c09203192ff4cbb1af392eaeef8d705c94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91263489"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Relay ハイブリッド接続 Node API の概要
@@ -101,7 +101,7 @@ var uri = appendRelayToken([uri], [ruleName], [key], [[expirationSeconds]])
 
 これらの 2 つのクラスは、ほとんどの場合、コントラクトに互換性があります。つまり、`ws.Server` クラスを使用している既存のアプリケーションを、リレー バージョンを使用するように簡単に変更できます。 主な相違点は、コンストラクターと使用可能なオプションにあります。
 
-#### <a name="constructor"></a>Constructor  
+#### <a name="constructor"></a>コンストラクター  
 
 ```JavaScript 
 var ws = require('hyco-ws');
@@ -201,4 +201,4 @@ WebSocket.relayedConnect(
 ## <a name="next-steps"></a>次のステップ
 Azure リレーの詳細については、次のリンク先を参照してください。
 * [What is Azure Relay? (Azure Relay とは)](relay-what-is-it.md)
-* [使用可能な Relay API](relay-api-overview.md)
+* [使用可能なリレー API](relay-api-overview.md)

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.openlocfilehash: 1f47b3d5679b70461eaba64b5815770162cb6fda
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93241074"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-mysql"></a>Azure Database for MySQL のデータ暗号化の検証
@@ -23,11 +23,11 @@ ms.locfileid: "93241074"
 
 1. カスタマーのキーが暗号化に使用されていることを確認するには、これらの手順に従います。
 
-    * Azure portal で、 **Azure Key Vault** ->  **[キー]** の順に移動します
+    * Azure portal で、**Azure Key Vault** ->  **[キー]** の順に移動します
     * サーバーの暗号化に使用されるキーを選択します。
     * **有効になっている** キーの状態を **[いいえ]** に設定します。
   
-       しばらくすると ( **最大 15 分** )、Azure Database for MySQL サーバーの **状態** が **アクセス不可** となるはずです。 サーバーに対して行われた I/O 操作はすべて失敗し、サーバーが実際にカスタマー キーで暗号化されていること、およびキーが現在、有効ではないことが検証されます。
+       しばらくすると (**最大 15 分**)、Azure Database for MySQL サーバーの **状態** が **アクセス不可** となるはずです。 サーバーに対して行われた I/O 操作はすべて失敗し、サーバーが実際にカスタマー キーで暗号化されていること、およびキーが現在、有効ではないことが検証されます。
     
        サーバーを **利用可能** にするために、キーを再検証できます。 
     

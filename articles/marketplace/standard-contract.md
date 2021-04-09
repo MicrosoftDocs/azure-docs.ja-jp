@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 05/20/2020
 ms.openlocfilehash: 20a257bde6022249fd7b2ab875b94f356234b490
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94488878"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースの標準契約

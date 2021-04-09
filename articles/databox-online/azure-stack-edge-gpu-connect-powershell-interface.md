@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 27af230f8fa157f76865bd38a48c17640491d7db
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 580e5aab7b7ac1edcfee58345291afcb9eb0e977
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896191"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562163"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Windows PowerShell を使用して Azure Stack Edge Pro GPU デバイスを管理する
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Azure Stack Edge Pro ソリューションにより、データを処理してネットワーク経由で Azure に送信できます。 この記事では、Azure Stack Edge Pro デバイスの構成と管理のタスクをいくつか説明します。 Azure portal、ローカル Web UI、または Windows PowerShell インターフェイスを使用してデバイスを管理できます。
 
@@ -24,30 +26,12 @@ Azure Stack Edge Pro ソリューションにより、データを処理して�
 
 ## <a name="connect-to-the-powershell-interface"></a>PowerShell インターフェイスに接続する
 
-[!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
+[!INCLUDE [Connect to admin runspace](../../includes/azure-stack-edge-gateway-connect-minishell.md)]
 
 ## <a name="create-a-support-package"></a>サポート パッケージを作成する
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
-<!--## Upload certificate
-
-[!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
-
-You can also upload IoT Edge certificates to enable a secure connection between your IoT Edge device and the downstream devices that may connect to it. There are three IoT Edge certificates (*.pem* format) that you need to install:
-
-- Root CA certificate or the owner CA
-- Device CA certificate
-- Device key certificate
-
-The following example shows the usage of this cmdlet to install IoT Edge certificates:
-
-```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
-```
-When you run this cmdlet, you will be prompted to provide the password for the network share.
-
-For more information on certificates, go to [Azure IoT Edge certificates](../iot-edge/iot-edge-certs.md) or [Install certificates on a gateway](../iot-edge/how-to-create-transparent-gateway.md).-->
 
 ## <a name="view-device-information"></a>デバイス情報を表示する
  
@@ -86,17 +70,8 @@ For more information on certificates, go to [Azure IoT Edge certificates](../iot
 
 Nvidia GPU 上のマルチプロセス サービス (MPS) は、GPU を複数のジョブで共有できるメカニズムを提供します。ここで、各ジョブには、GPU のリソースのうち一定のパーセントが割り当てられます。 MPS は、Azure Stack Edge Pro GPU デバイスのプレビュー機能です。 デバイスで MPS を有効にするには、次の手順を実行します。
 
-1. 開始する前に次の点を確認します。 
+[!INCLUDE [Enable MPS](../../includes/azure-stack-edge-gateway-enable-mps.md)]
 
-    1. Azure の Azure Stack Edge Pro/Data Box Gateway リソースを使用して、[Azure Stack Edge Pro デバイスの構成とアクティブ化](azure-stack-edge-gpu-deploy-activate.md)が完了していること。
-    1. [Azure portal でこのデバイスのコンピューティングが構成済み](azure-stack-edge-deploy-configure-compute.md#configure-compute)であること。
-    
-1. [PowerShell インターフェイスに接続する](#connect-to-the-powershell-interface)。
-1. 次のコマンドを使用して、お使いのデバイスで MPS を有効にします。
-
-    ```powershell
-    Start-HcsGpuMPS
-    ```
 
 ## <a name="reset-your-device"></a>デバイスをリセットする
 
@@ -148,45 +123,13 @@ Id                                   PodSubnet    ServiceSubnet
 [10.100.10.10]: PS>
 ```
 
-
 ## <a name="debug-kubernetes-issues-related-to-iot-edge"></a>IoT Edge に関連する Kubernetes の問題をデバッグする
 
-<!--When the Kubernetes cluster is created, there are two system namespaces created: `iotedge` and `azure-arc`. --> 
+開始する前に、以下が必要になります。
 
-<!--### Create config file for system namespace
-
-To troubleshoot, first create the `config` file corresponding to the `iotedge` namespace with `aseuser`.
-
-Run the `Get-HcsKubernetesUserConfig -AseUser` command and save the output as `config` file (no file extension). Save the file in the `.kube` folder of your user profile on the local machine.
-
-Following is the sample output of the `Get-HcsKubernetesUserConfig` command.
-
-```PowerShell
-[10.100.10.10]: PS>Get-HcsKubernetesUserConfig -AseUser
-apiVersion: v1
-clusters:
-- cluster:
-    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN5RENDQWJDZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJd01EVXhNekl4TkRRME5sb1hEVE13TURVeE1USXhORFEwTmxvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS0M1CjlJbzRSU2hudG90QUdxdjNTYmRjOVd4UmJDYlRzWXU5S0RQeU9xanVoZE1UUE9PcmROOGNoa0x4NEFyZkZaU1AKZithUmhpdWZqSE56bWhucnkvZlprRGdqQzQzRmV5UHZzcTZXeVVDV0FEK2JBdi9wSkJDbkg2MldoWGNLZ1BVMApqU1k0ZkpXenNFbzBaREhoeUszSGN3MkxkbmdmaEpEanBQRFJBNkRWb2pIaktPb29OT1J1dURvUHpiOTg2dGhUCkZaQXJMZjRvZXRzTEk1ZzFYRTNzZzM1YVhyU0g3N2JPYVVsTGpYTzFYSnpFZlZWZ3BMWE5xR1ZqTXhBMVU2b1MKMXVJL0d1K1ArY
-===========CUT=========================================CUT===================
-    server: https://compute.myasegpu1.wdshcsso.com:6443
-    name: kubernetes
-contexts:
-- context:
-    cluster: kubernetes
-    user: aseuser
-    name: aseuser@kubernetes
-current-context: aseuser@kubernetes
-kind: Config
-preferences: {}
-users:
-- name: aseuser
-    user:
-    client-certificate-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUMwRENDQWJpZ0F3SUJBZ0lJY1hOTXRPU2VwbG93RFFZSktvWklodmNOQVFFTEJRQXdGVEVUTUJFR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TURBMU1UTXlNVFEwTkRaYUZ3MHlNVEExTVRNeU1UVXhNVEphTUJJeApFREFPQmdOVkJBTVRCMkZ6WlhWelpYSXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCCkFRRHVjQ1pKdm9qNFIrc0U3a1EyYmVjNEJkTXdpUEhmU2R2WnNDVVY0aTRRZGY1Yzd0dkE3OVRSZkRLQTY1d08Kd0h0QWdlK3lLK0hIQ1Qyd09RbWtNek1RNjZwVFEzUlE0eVdtRDZHR1cWZWMExBR1hFUUxWWHRuTUdGCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
-
-[10.100.10.10]: PS>
-```
--->
-
+- コンピューティング ネットワークが構成済みである。 「[チュートリアル: GPU 搭載の Azure Stack Edge Pro 用のネットワークを構成する](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)」を参照してください。
+- デバイスでコンピューティング ロールが構成済みである。
+    
 コンピューティング ロールが構成されている Azure Stack Edge Pro デバイスでは、2 つの異なるコマンド セットを利用してデバイスをトラブルシューティングしたり、監視したりできます。
 
 - `iotedge` コマンドの使用。 これらのコマンドはデバイスの基本操作に利用できます。
@@ -218,6 +161,7 @@ Commands:
 |`logs`     | モジュールのログを取得する        |
 |`restart`     | モジュールの停止と再開         |
 
+#### <a name="list-all-iot-edge-modules"></a>すべての IoT Edge モジュールを一覧表示する
 
 デバイスで実行されているすべてのモジュールを一覧表示するには、`iotedge list` コマンドを使用します。
 
@@ -237,7 +181,64 @@ webserverapp           Running Up 10 days  nginx:stable                         
 
 [10.100.10.10]: PS>
 ```
+#### <a name="restart-modules"></a>モジュールを再起動する
 
+デバイス上で実行されているすべてのモジュールを一覧表示するには、`list` コマンドを使用します。 次に、再起動するモジュールの名前を特定し、それを `restart` コマンドで使用します。
+
+モジュールを再起動する方法のサンプル出力を次に示します。 モジュールが実行されている期間の説明に基づいて、`cuda-sample1` が再起動されたことを確認できます。
+
+```powershell
+[10.100.10.10]: PS>iotedge list
+
+NAME         STATUS  DESCRIPTION CONFIG                                          EXTERNAL-IP PORT(S)
+----         ------  ----------- ------                                          ----------- -------
+edgehub      Running Up 5 days   mcr.microsoft.com/azureiotedge-hub:1.0          10.57.48.62 443:31457/TCP,5671:308
+                                                                                             81/TCP,8883:31753/TCP
+iotedged     Running Up 7 days   azureiotedge/azureiotedge-iotedged:0.1.0-beta13 <none>      35000/TCP,35001/TCP
+cuda-sample2 Running Up 1 days   nvidia/samples:nbody
+edgeagent    Running Up 7 days   azureiotedge/azureiotedge-agent:0.1.0-beta13
+cuda-sample1 Running Up 1 days   nvidia/samples:nbody
+
+[10.100.10.10]: PS>iotedge restart cuda-sample1
+[10.100.10.10]: PS>iotedge list
+
+NAME         STATUS  DESCRIPTION  CONFIG                                          EXTERNAL-IP PORT(S)
+----         ------  -----------  ------                                          ----------- -------
+edgehub      Running Up 5 days    mcr.microsoft.com/azureiotedge-hub:1.0          10.57.48.62 443:31457/TCP,5671:30
+                                                                                              881/TCP,8883:31753/TC
+                                                                                              P
+iotedged     Running Up 7 days    azureiotedge/azureiotedge-iotedged:0.1.0-beta13 <none>      35000/TCP,35001/TCP
+cuda-sample2 Running Up 1 days    nvidia/samples:nbody
+edgeagent    Running Up 7 days    azureiotedge/azureiotedge-agent:0.1.0-beta13
+cuda-sample1 Running Up 4 minutes nvidia/samples:nbody
+
+[10.100.10.10]: PS>
+
+```
+
+#### <a name="get-module-logs"></a>モジュールのログを取得する
+
+デバイス上で実行されている IoT Edge モジュールに関するログを取得するには、`logs` コマンドを使用します。 
+
+コンテナー イメージの作成中またはイメージのプル中にエラーが発生した場合、`logs edgeagent` を実行します。 `edgeagent` は、他のコンテナーのプロビジョニングを担う IoT Edge ランタイム コンテナーです。 `logs edgeagent` を実行するとすべてのログがダンプされるため、最近のエラーを表示する方法としては、オプション `--tail `0` の利用をお勧めします。 
+
+出力例を次に示します。
+
+```powershell
+[10.100.10.10]: PS>iotedge logs cuda-sample2 --tail 10
+[10.100.10.10]: PS>iotedge logs edgeagent --tail 10
+<6> 2021-02-25 00:52:54.828 +00:00 [INF] - Executing command: "Report EdgeDeployment status: [Success]"
+<6> 2021-02-25 00:52:54.829 +00:00 [INF] - Plan execution ended for deployment 11
+<6> 2021-02-25 00:53:00.191 +00:00 [INF] - Plan execution started for deployment 11
+<6> 2021-02-25 00:53:00.191 +00:00 [INF] - Executing command: "Create an EdgeDeployment with modules: [cuda-sample2, edgeAgent, edgeHub, cuda-sample1]"
+<6> 2021-02-25 00:53:00.212 +00:00 [INF] - Executing command: "Report EdgeDeployment status: [Success]"
+<6> 2021-02-25 00:53:00.212 +00:00 [INF] - Plan execution ended for deployment 11
+<6> 2021-02-25 00:53:05.319 +00:00 [INF] - Plan execution started for deployment 11
+<6> 2021-02-25 00:53:05.319 +00:00 [INF] - Executing command: "Create an EdgeDeployment with modules: [cuda-sample2, edgeAgent, edgeHub, cuda-sample1]"
+<6> 2021-02-25 00:53:05.412 +00:00 [INF] - Executing command: "Report EdgeDeployment status: [Success]"
+<6> 2021-02-25 00:53:05.412 +00:00 [INF] - Plan execution ended for deployment 11
+[10.100.10.10]: PS>
+```
 
 ### <a name="use-kubectl-commands"></a>kubectl コマンドを使用する
 
@@ -532,8 +533,8 @@ Kubernetes ワーカー ノードのメモリまたはプロセッサの制限�
 
 - 既定のメモリは、デバイスの仕様の 25% です。
 - 既定のプロセッサ数は、デバイスの仕様の 30% です。
-- メモリとプロセッサ数の値を変更するときは、デバイスのメモリとプロセッサ数の 15% から 65% の間で値を変更することをお勧めします。 
-- システム コンポーネントに十分なリソースがあるように、上限の 65% にすることをお勧めします。 
+- メモリとプロセッサ数の値を変更するときは、デバイスのメモリとプロセッサ数の 15% から 60% の間で値を変更することをお勧めします。 
+- システム コンポーネントに十分なリソースがあるように、上限の 60% にすることをお勧めします。 
 
 ## <a name="connect-to-bmc"></a>BMC に接続する
 
@@ -601,4 +602,4 @@ Kubernetes ワーカー ノードのメモリまたはプロセッサの制限�
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure portal で [Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md) を配置します。
+- Azure portal に [Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md) をデプロイします。

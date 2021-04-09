@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: b5c5143c7bc92487aeabc3cdc1afea5061466027
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90903155"
 ---
 # <a name="azure-stack-edge-pro-security-and-data-protection"></a>Azure Stack Edge Pro のセキュリティとデータ保護
@@ -95,4 +95,4 @@ Azure Stack Edge サービスは、次のシナリオで個人情報を収集し
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack Edge Pro デバイスをデプロイする](azure-stack-edge-deploy-prep.md)
+[Azure Stack Edge Pro デバイスを配置する](azure-stack-edge-deploy-prep.md)

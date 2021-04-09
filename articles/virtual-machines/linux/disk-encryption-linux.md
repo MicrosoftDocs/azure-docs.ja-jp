@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: bf5da120072f49421b6f2194626178048b044f6a
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 6ebec78d5a9e82cc8a2f6ceb020a8b9552d6311e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564698"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604017"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM での Azure Disk Encryption シナリオ
 
@@ -262,7 +262,7 @@ LVM-on-crypt のセットアップをお勧めします。 以下に示すすべ
 
 1. それらのディスクをフォーマットおよびマウントして fstab ファイルに追加します。
 
-1. パーティションの標準を選択し、ドライブ全体にわたるパーティションを作成してから、パーティションをフォーマットします。 ここでは、Azure によって生成されたシンボリック リンクを使用します。 シンボリック リンクを使用すると、デバイス名の変更に関連する問題を回避できます。 詳細については、[デバイス名の問題のトラブルシューティング](../troubleshooting/troubleshoot-device-names-problems.md)に関する記事を参照してください。
+1. パーティションの標準を選択し、ドライブ全体にわたるパーティションを作成してから、パーティションをフォーマットします。 ここでは、Azure によって生成されたシンボリック リンクを使用します。 シンボリック リンクを使用すると、デバイス名の変更に関連する問題を回避できます。 詳細については、[デバイス名の問題のトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems)に関する記事を参照してください。
     
     ```bash
     parted /dev/disk/azure/scsi1/lun0 mklabel gpt

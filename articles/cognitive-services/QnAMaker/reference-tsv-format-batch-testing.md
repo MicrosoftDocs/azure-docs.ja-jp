@@ -9,10 +9,10 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 10/24/2019
 ms.openlocfilehash: 0ed948b4bf69fc672a59a7825279a12868d10521
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "87132128"
 ---
 # <a name="batch-testing-tsv-format"></a>バッチ テストの TSV 形式
@@ -34,10 +34,10 @@ batchtesting.exe input.tsv https://YOUR-HOST.azurewebsites.net ENDPOINT-KEY out.
 
 ## <a name="tsv-input-fields"></a>TSV 入力フィールド
 
-|TSV 入力ファイルのフィールド|メモ|
+|TSV 入力ファイルのフィールド|Notes|
 |--|--|
 |KBID|[発行] ページの KB ID。|
-|質問|ユーザーが入力する質問。|
+|Question|ユーザーが入力する質問。|
 |メタデータ タグ|省略可能|
 |上位のパラメーター|省略可能| 
 |期待される回答の ID|省略可能|
@@ -46,11 +46,11 @@ batchtesting.exe input.tsv https://YOUR-HOST.azurewebsites.net ENDPOINT-KEY out.
 
 ## <a name="tsv-output-fields"></a>TSV 出力フィールド 
 
-|TSV 出力ファイル パラメーター|メモ|
+|TSV 出力ファイル パラメーター|ノート|
 |--|--|
 |KBID|[発行] ページの KB ID。|
-|質問|入力ファイルから入力された質問。|
-|Answer|ナレッジ ベースからの上位の回答|
+|Question|入力ファイルから入力された質問。|
+|回答|ナレッジ ベースからの上位の回答|
 |回答 ID|回答 ID|
 |Score|回答の予測スコア。 |
 |メタデータ タグ|返された回答に関連付けられている|

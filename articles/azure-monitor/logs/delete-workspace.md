@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/20/2020
 ms.openlocfilehash: 83a64e3348d4af768c56609df3df5c9194ec5af1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102030870"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics ワークスペースの削除と復旧

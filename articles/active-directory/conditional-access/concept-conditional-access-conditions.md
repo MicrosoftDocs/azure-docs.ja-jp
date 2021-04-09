@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/10/2021
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fecf3f1a302a6734d92335bc15722df4d5288a56
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ab840b46503aed1a318e3b39a4e8fe3e4d11735c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362422"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579129"
 ---
 # <a name="conditional-access-conditions"></a>条件付きアクセス:条件
 
 管理者は条件付きアクセスポリシー内で、リスク、デバイス プラットフォーム、場所などの条件からのシグナルを利用して、ポリシーの決定を強化できます。 
 
-[ ![条件付きアクセス ポリシーを定義し、条件を指定する](./media/concept-conditional-access-conditions/conditional-access-conditions.png)](./media/concept-conditional-access-conditions/conditional-access-conditions.png#lightbox)
+[![条件付きアクセス ポリシーを定義し、条件を指定する](./media/concept-conditional-access-conditions/conditional-access-conditions.png)](./media/concept-conditional-access-conditions/conditional-access-conditions.png#lightbox)
 
 複数の条件を組み合わせて、きめ細かで具体的な条件付きアクセス ポリシーを作成することができます。
 
@@ -174,11 +174,11 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync クライアント
 
-- 組織が Exchange ActiveSync クライアントを選択できるのは、ユーザーまたはグループにポリシーを割り当てるときにだけです。 **[すべてのユーザー]** 、 **[すべてのゲストと外部ユーザー]** 、または **[ディレクトリ ロール]** を選択すると、すべてのユーザーがブロックされます。
+- 組織が Exchange ActiveSync クライアントを選択できるのは、ユーザーまたはグループにポリシーを割り当てるときにだけです。 **[すべてのユーザー]** 、 **[すべてのゲストと外部ユーザー]** 、または **[ディレクトリ ロール]** を選択すると、すべてのユーザーがポリシーの対象となります。
 - Exchange ActiveSync クライアントに割り当てられるポリシーを作成する場合は、**Exchange Online** が、そのポリシーに割り当てられる唯一のクラウド アプリケーションである必要があります。 
 - 組織は、 **[デバイス プラットフォーム]** の条件を使用して、このポリシーの範囲を特定のプラットフォームに限定することができます。
 
-ポリシーに割り当てられたアクセス制御で、 **[承認済みクライアント アプリを必須にする]** が使用されている場合、ユーザーは Outlook モバイル クライアントをインストールして使用するように指示されます。 **多要素認証** が必須の場合、基本認証では多要素認証がサポートされていないため、影響を受けるユーザーはブロックされます。
+ポリシーに割り当てられたアクセス制御で、 **[承認済みクライアント アプリを必須にする]** が使用されている場合、ユーザーは Outlook モバイル クライアントをインストールして使用するように指示されます。 **多要素認証**、**使用条件**、または **カスタム コントロール** が必要な場合、基本認証ではこれらのコントロールがサポートされないため、影響を受けるユーザーはブロックされます。
 
 詳細については、次の記事を参照してください。
 

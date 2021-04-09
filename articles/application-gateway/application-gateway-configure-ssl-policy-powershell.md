@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: cb0f9ef64cb8032c02f2ccd4b42028103b6d3ec6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93397928"
 ---
 # <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>Application Gateway に TLS ポリシーのバージョンと暗号スイートを構成する
@@ -191,7 +191,7 @@ $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.Resourc
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-tls-policy"></a>定義済み TLS ポリシーを使用して既存のアプリケーション ゲートウェイを更新する
 
-カスタム TLS ポリシーを設定するには、パラメーター **PolicyType** 、 **MinProtocolVersion** 、 **CipherSuite** 、および **ApplicationGateway** を渡します。 定義済み TLS ポリシーを設定するには、パラメーター **PolicyType** 、 **PolicyName** 、および **ApplicationGateway** を渡します。 他のパラメーターを渡そうとすると、アプリケーション ゲートウェイを作成または更新するときにエラーが発生します。
+カスタム TLS ポリシーを設定するには、パラメーター **PolicyType**、**MinProtocolVersion**、**CipherSuite**、および **ApplicationGateway** を渡します。 定義済み TLS ポリシーを設定するには、パラメーター **PolicyType**、**PolicyName**、および **ApplicationGateway** を渡します。 他のパラメーターを渡そうとすると、アプリケーション ゲートウェイを作成または更新するときにエラーが発生します。
 
 次の例には、カスタム ポリシーと定義済みのポリシーの両方のコード サンプルが含まれます。 使用するポリシーのコメントを解除してください。
 

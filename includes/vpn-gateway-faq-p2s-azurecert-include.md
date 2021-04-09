@@ -9,17 +9,17 @@ ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5ef67580928a45609f50d3fe798eb9d054265c0a
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93375955"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
 ### <a name="what-should-i-do-if-im-getting-a-certificate-mismatch-when-connecting-using-certificate-authentication"></a>証明書認証を使用した接続時、証明書が一致しないと表示された場合、どうすればよいでしょうか。
 
-手動でプロファイルを作成するとき、 **[証明書を検証してサーバーの ID を検証する]** チェック ボックスをオフにするか、 **証明書と共にサーバーの FQDN を追加** します。 これを行うには、コマンド プロンプトから **rasphone** を実行し、ドロップ ダウン リストからプロファイルを選択します。
+手動でプロファイルを作成するとき、 **[証明書を検証してサーバーの ID を検証する]** チェック ボックスをオフにするか、**証明書と共にサーバーの FQDN を追加** します。 これを行うには、コマンド プロンプトから **rasphone** を実行し、ドロップ ダウン リストからプロファイルを選択します。
 
 一般に、サーバー ID の検証は回避しないようお勧めします。ただし、Azure 証明書認証では、VPN トンネリング プロトコル (IKEv2 または SSTP) と EAP プロトコルとで同じ証明書がサーバー検証に使用されます。 サーバー証明書と FQDN は VPN トンネリング プロトコルによって既に検証済みであるため、EAP で再度検証する必要はありません。
 
@@ -41,9 +41,9 @@ ms.locfileid: "93375955"
 
 * **内部 PKI/エンタープライズ PKI ソリューション:** [証明書を生成する](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)手順を参照してください。
 
-* **Azure PowerShell:** 手順については、 [Azure PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md) の記事を参照してください。
+* **Azure PowerShell:** 手順については、[Azure PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md) の記事を参照してください。
 
-* **MakeCert:** 手順については、 [MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md) の記事を参照してください。
+* **MakeCert:** 手順については、[MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md) の記事を参照してください。
 
 * **OpenSSL:** 
 

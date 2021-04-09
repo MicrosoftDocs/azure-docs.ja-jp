@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: jeedes
 ms.openlocfilehash: e8393410c5b15ee888a2c0cee82c783f17e0e177
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92517618"
 ---
 # <a name="tutorial-integrate-viareport-europe-with-azure-active-directory"></a>チュートリアル:Viareport (ヨーロッパ) を Azure Active Directory と統合する
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Viareport (ヨーロッパ) では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Viareport (ヨーロッパ) では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-viareport-europe-from-the-gallery"></a>ギャラリーからの Viareport (ヨーロッパ) の追加
 
@@ -49,7 +49,7 @@ Azure AD への Viareport (ヨーロッパ) の統合を構成するには、ギ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Viareport (ヨーロッパ)** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Viareport (ヨーロッパ)** 」と入力します。
 1. 結果ウィンドウで **[Viareport (ヨーロッパ)]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -93,7 +93,7 @@ Viareport (ヨーロッパ) に対する Azure AD SSO を構成してテスト�
 
 ### <a name="configure-viareport-europe-sso"></a>Viareport (ヨーロッパ) の SSO の構成
 
-**Viareport (ヨーロッパ)** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Viareport (ヨーロッパ) サポート チーム](mailto:ycezard@viareport.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Viareport (ヨーロッパ)** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Viareport (ヨーロッパ) サポート チーム](mailto:ycezard@viareport.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。

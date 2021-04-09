@@ -9,10 +9,10 @@ ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c1f83303c3f186b37c1c5c06e61c2263420c0cfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "72028049"
 ---
 1. [仮想 WAN] ページに移動します。 ポータルで **+ [リソースの作成]** をクリックします。 検索ボックスに「**Virtual WAN**」と入力し、Enter キーを押します。
@@ -23,4 +23,4 @@ ms.locfileid: "72028049"
    * **[サブスクリプション]** - 使用するサブスクリプションを選択します。
    * **[リソース グループ]** - 新規に作成するか、既存のものを使用します。
    * **[リソースの場所]** - ドロップダウンからリソースの場所を選択します。 WAN はグローバルなリソースであり、特定のリージョンに存在するものではありません。 ただし、作成する WAN リソースをより簡単に管理および検索するために、リージョンを選択する必要があります。
-4. フィールドの入力が完了したら、 **[作成]** をクリックします。
+4. フィールドの入力が完了したら、**[作成]** をクリックします。

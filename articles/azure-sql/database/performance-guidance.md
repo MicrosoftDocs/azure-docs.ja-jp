@@ -13,10 +13,10 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 03/10/2020
 ms.openlocfilehash: 40657ad2f3b69d62e0e0d9c7d9e0f0be7343547b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96490603"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance でアプリケーションとデータベースのパフォーマンスを調整します

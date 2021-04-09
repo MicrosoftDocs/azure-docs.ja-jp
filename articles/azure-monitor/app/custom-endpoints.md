@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/26/2019
 ms.custom: references_regions, devx-track-js
 ms.openlocfilehash: 13470017281ecfa616715777e78e446e71a08b0e
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102489805"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>既定のエンドポイントをオーバーライドする Application Insights

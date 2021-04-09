@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: c1a64bff8b81735d9c4c9a14d2c1e12bd0bfe57e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91296163"
 ---
 # <a name="writing-plugins-for-azure-media-player"></a>Azure Media Player のプラグインの作成 #

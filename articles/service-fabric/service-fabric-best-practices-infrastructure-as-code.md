@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: a0f0324d1f7308eb1392c4f7a98a6a5d226026be
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: b765d92778df40caec0864dc6f547324216fdb07
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705508"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102611982"
 ---
 # <a name="infrastructure-as-code"></a>コードとしてのインフラストラクチャ
 
@@ -91,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Azure Virtual Machine オペレーティング システムの自動アップグレード構成 
-仮想マシンのアップグレードは、ユーザーによって開始される操作です。Azure Service Fabric クラスター ホストの更新プログラム管理には、[仮想マシン スケール セットによる自動オペレーティング システム アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)を使用することをお勧めします。パッチ オーケストレーション アプリケーションを Azure で使用することはできますが、Azure で POA をホストするオーバーヘッドのために、一般的には POA よりも仮想マシン オペレーティング システム自動アップグレードが選ばれるので、POA は Azure の外部でホストする場合の代替ソリューションです。 以下は、自動 OS アップグレードを有効にするための、コンピューティング仮想マシン スケール セット Resource Manager テンプレートのプロパティです。
+仮想マシンのアップグレードは、ユーザーによって開始される操作です。Azure Service Fabric クラスター ホストの更新プログラム管理には、[仮想マシン スケール セットによる自動オペレーティング システム アップグレード](service-fabric-patch-orchestration-application.md)を使用することをお勧めします。パッチ オーケストレーション アプリケーションを Azure で使用することはできますが、Azure で POA をホストするオーバーヘッドのために、一般的には POA よりも仮想マシン オペレーティング システム自動アップグレードが選ばれるので、POA は Azure の外部でホストする場合の代替ソリューションです。 以下は、自動 OS アップグレードを有効にするための、コンピューティング仮想マシン スケール セット Resource Manager テンプレートのプロパティです。
 
 ```json
 "upgradePolicy": {
@@ -104,7 +104,7 @@ microservices_sfpkg.close()
 ```
 Service Fabric と OS 自動アップグレードを使用している場合、Service Fabric で実行されているサービスの高可用性を維持するために、新しい OS イメージは更新ドメインごとに 1 つずつロールアウトされます。 Service Fabric で OS 自動アップグレードを利用するには、クラスターが、Silver 以上の耐久性レベルを使用するように構成されている必要があります。
 
-次のレジストリ キーが false に設定されていることを確認して、調整されていない更新を Windows ホスト マシンが開始しないようにします。HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU。
+次のレジストリ キーが false に設定されていることを確認して、調整されていない更新を Windows ホスト マシンが開始しないようにします。HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU
 
 以下は、WindowsUpdate レジストリ キーを false に設定するための、コンピューティング仮想マシン スケール セット Resource Manager テンプレートのプロパティです。
 ```json

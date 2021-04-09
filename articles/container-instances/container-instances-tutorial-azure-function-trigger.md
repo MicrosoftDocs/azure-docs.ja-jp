@@ -4,12 +4,12 @@ description: HTTP によってトリガーされるサーバーレス PowerShell
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7b94d583ca26b88d093810528d3193f20d765f1d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e7315796f2f7f89800b58f5fa607e69cd7ae3447
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349250"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98935406"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>チュートリアル:HTTP によってトリガーされる Azure Functions を使用してコンテナー グループを作成する
 
@@ -105,7 +105,7 @@ if ($name) {
 
 ## <a name="run-the-function-in-azure"></a>Azure で関数を実行する
 
-デプロイが正常に完了したら、関数の URL を取得します。 たとえば、Visual Studio Code の **[Azure: Functions]** 領域を使用して **HttpTrigger** 関数の URL をコピーするか、[Azure portal](../azure-functions/functions-create-first-azure-function.md#test-the-function) で関数の URL を取得します。
+デプロイが正常に完了したら、関数の URL を取得します。 たとえば、Visual Studio Code の **[Azure: Functions]** 領域を使用して **HttpTrigger** 関数の URL をコピーするか、[Azure portal](../azure-functions/functions-get-started.md) で関数の URL を取得します。
 
 関数の URL の形式は次のとおりです。
 

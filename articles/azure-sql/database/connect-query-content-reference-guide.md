@@ -11,13 +11,13 @@ ms.topic: guide
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: a9f9e03227bfb75d94ed79cdf858278e2efe4f31
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.date: 03/17/2021
+ms.openlocfilehash: 96f40f1abd14987b7c404f5a4210a2cab1fa9143
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440396"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594174"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL Database と Azure SQL Managed Instance の接続とクエリに関する記事
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -118,6 +118,7 @@ Microsoft 以外のドライバーは、既定では TLS を使用しない場�
   - [Java を使用した接続とクエリ](connect-query-java.md)
   - [Python を使用した接続とクエリ](connect-query-python.md)
   - [Ruby を使用した接続とクエリ](connect-query-ruby.md)
+  - [Linux に SQL Server コマンドライン ツール sqlcmd および bcp をインストールする](/sql/linux/sql-server-linux-setup-tools) - Linux ユーザーの場合、[sqlcmd](/sql/ssms/scripting/sqlcmd-use-the-utility) を使用して Azure SQL Database または Azure SQL Managed Instance に接続してみてください。
 - 再試行ロジックのコード例:
   - [ADO.NET を使用して弾性的に接続する][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
   - [PHP を使用して弾性的に接続する][step-4-connect-resiliently-to-sql-with-php-p42h]

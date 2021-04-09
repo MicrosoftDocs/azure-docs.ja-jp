@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7726877efcb72caf5bb4c92e2e1c65e5df68f270
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89002710"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Azure Search .NET SDK バージョン 9 へのアップグレード
@@ -40,7 +40,7 @@ Azure Search .NET SDK のバージョン 9 では、Azure Search REST API の 20
 
 * [AI エンリッチメント](cognitive-search-concept-intro.md)では、画像や BLOB などの構造化されていないデータ ソースからテキストを抽出し、コンテンツを充実させて Azure Search インデックスで検索しやすくします。
 * [複合型](search-howto-complex-data-types.md)のサポートにより、Azure Search インデックス内の入れ子になったほとんどすべての JSON 構造をモデル化できます。
-* [オートコンプリート](search-autocomplete-tutorial.md)には、自動検索候補の動作を実装するための**サジェスト** API の代替手段が用意されています。 オートコンプリートは、ユーザーが現在入力している単語または語句を "完成" させます。
+* [オートコンプリート](search-autocomplete-tutorial.md)には、自動検索候補の動作を実装するための **サジェスト** API の代替手段が用意されています。 オートコンプリートは、ユーザーが現在入力している単語または語句を "完成" させます。
 * [JsonLines 解析モード](search-howto-index-json-blobs.md)。Azure BLOB インデックスの一部で、JSON エンティティごとに 1 つの検索ドキュメントが新規行として作成されます。
 
 ### <a name="new-preview-features-in-version-80-preview"></a>バージョン 8.0-preview での新しいプレビュー機能
@@ -173,7 +173,7 @@ using HitHighlights = System.Collections.Generic.IDictionary<string, System.Coll
 
 バージョン 8.0-preview からバージョン 9 にアップグレードする場合、ユーザーが管理するキーによる暗号化は、。この機能はまだプレビュー段階であるため、削除されていることに注意してください。 具体的には、`Index` および `SynonymMap` の `EncryptionKey` プロパティが削除されています。
 
-アプリケーションにこの機能に対するハードの依存関係が存在する場合、Azure Search .NET SDK のバージョン 9 にアップグレードすることはできません。 バージョン 8.0-preview を引き続き使用できますが、 **実稼働アプリケーションでのプレビュー版 SDK の使用は推奨されない**ことに注意してください。 プレビュー機能は評価のみを目的としており、変更される場合があります。
+アプリケーションにこの機能に対するハードの依存関係が存在する場合、Azure Search .NET SDK のバージョン 9 にアップグレードすることはできません。 バージョン 8.0-preview を引き続き使用できますが、 **実稼働アプリケーションでのプレビュー版 SDK の使用は推奨されない** ことに注意してください。 プレビュー機能は評価のみを目的としており、変更される場合があります。
 
 > [!NOTE]
 > SDK のバージョン 8.0-preview を使用して暗号化されたインデックスまたはシノニム マップを作成した場合、引き続きこれらを使用したり、SDK のバージョン 9 を使用したその定義を変更したりできます。その際、その暗号化の状態に悪影響はありません。 SDK のバージョン 9 では `encryptionKey` プロパティは REST API に送信されず、結果として、REST API によってリソースの暗号化の状態が変更されることはありません。 

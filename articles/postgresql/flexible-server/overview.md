@@ -6,13 +6,13 @@ ms.author: sunila
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 09/22/2020
-ms.openlocfilehash: b4df91f4654f39780f81e0a27139677431926238
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 03/17/2021
+ms.openlocfilehash: 8e5c204709f0eadb6c1a4b6f479d4833f335b264
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532664"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594888"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバー
 
@@ -56,7 +56,7 @@ Azure Database for PostgreSQL - フレキシブル サーバーは、データ�
 
 ゾーン冗長の高可用性が構成されている場合は、サービスによって同じ Azure リージョン内の可用性ゾーンにホット スタンバイ サーバーがプロビジョニングされ、管理されます。 データ損失をゼロにするために、ソース サーバー上でのデータの変更は、スタンバイ サーバーに同期的にレプリケートされます。 ゾーン冗長の高可用性により、計画済みまたは計画外のフェールオーバー イベントがトリガーされると、スタンバイ サーバーが直ちにオンラインになり、受信トランザクションを処理できるようになります。 これにより、次の図に示すように、複数の可用性ゾーンをサポートする Azure リージョン内の可用性ゾーンの障害からサービスを回復できます。
 
- :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="フレキシブル サーバー - VM とストレージの障害":::
+ :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="ゾーン冗長の高可用性":::
 
  詳細については、[高可用性のドキュメント](./concepts-high-availability.md)を参照してください。
 
@@ -86,12 +86,42 @@ Azure Database for PostgreSQL - フレキシブル サーバーは、データ�
 
 フレキシブル サーバー サービスには、組み込みのパフォーマンス監視機能とアラート機能が搭載されています。 すべての Azure メトリックは 1 分間隔で、各メトリックの 30 日間の履歴が保持されます。 メトリックにアラートを構成できます。 このサービスを使用すると、リソースの使用状況を監視するためのホスト サーバー メトリックが公開され、遅いクエリのログを構成できます。 これらのツールを使用すると、ワークロードをすばやく最適化し、最適なパフォーマンスが得られるようにサーバーを構成することができます。
 
+## <a name="azure-regions"></a>Azure Azure リージョン
+
+Azure でワークロードを実行する利点の 1 つは、グローバルに展開できることです。 フレキシブル サーバーは、現在、次の Azure リージョンで提供されています。
+
+| Region | 可用性 | ゾーン冗長 HA | 
+| --- | --- | --- |
+| 西ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: |
+| 北ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: |
+| 英国南部 | :heavy_check_mark: | :heavy_check_mark: | 
+| 米国東部 2 | :heavy_check_mark: | :heavy_check_mark: |
+| 米国西部 2 | :heavy_check_mark: | :heavy_check_mark: |
+| 米国中部 | :heavy_check_mark: | :heavy_check_mark: | 
+| 米国東部 | :heavy_check_mark: | :heavy_check_mark: | 
+| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: |
+| Japan East | :heavy_check_mark: | :heavy_check_mark: | 
+| オーストラリア東部 | :heavy_check_mark: | :heavy_check_mark: | 
+| カナダ中部 | :heavy_check_mark: | :heavy_check_mark: | 
+
+フレキシブル サーバー対応リージョンは今後さらに増える予定です。
+
 ## <a name="migration"></a>移行
 
 このサービスでは、PostgreSQL のコミュニティ バージョンが実行されます。 これにより、完全なアプリケーションの互換性が確保され、PostgreSQL エンジン上で開発された既存のアプリケーションをフレキシブル サーバーに移行するために必要なリファクタリング コストが最小限に抑えられます。 
 
 - **ダンプと復元** – ユーザーがある程度のダウンタイムを許容できるオフライン移行の場合、pg_dump や pg_restore などのコミュニティ ツールを使用してダンプと復元を行うことで、最も迅速に移行することができます。 詳細については、[ダンプと復元を使用した移行](../howto-migrate-using-dump-and-restore.md)に関するページを参照してください。
 - **Azure Database Migration Service** – 最小限のダウンタイムでフレキシブル サーバーへのシームレスかつ簡素化された移行を行うために、Azure Database Migration Service を利用できます。 [ポータル経由の DMS](../../dms/tutorial-postgresql-azure-postgresql-online-portal.md) および [CLI を介した DMS](../../dms/tutorial-postgresql-azure-postgresql-online.md) に関するページを参照してください。 Azure Database for PostgreSQL - 単一サーバーからフレキシブル サーバーに移行することができます。 詳細については、こちらの [DMS に関する記事](../../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md)を参照してください。
+
+## <a name="contacts"></a>連絡先
+Azure Database for PostgreSQL フレキシブル サーバーについての質問や提案は、Azure Database for PostgreSQL チームにメール ([@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)) でお送りください。 このメール アドレスはテクニカル サポートのエイリアスではないのでご注意ください。
+
+さらに、適切な連絡先について次の点を考慮してください。
+
+- Azure サポートに問い合わせる場合は、[Azure portal からチケットを申請します](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+- アカウントを使用して問題を修正するには、Azure Portal で[サポート要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出します。
+- フィードバックを提供したり、新しい機能を要求したりするには、[UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql) でエントリを作成します。
+  
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -12,10 +12,10 @@ ms.author: gopalv
 ms.reviewer: larryfr
 ms.custom: deploy
 ms.openlocfilehash: f88b6bd79e1004c108ef868f910a4e5a974cc08a
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102508539"
 ---
 # <a name="advanced-entry-script-authoring"></a>高度なエントリ スクリプトの作成

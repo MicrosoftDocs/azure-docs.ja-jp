@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
 ms.openlocfilehash: 88f6da7e43e269816c7e4ae2fd7bbc3f5e26522b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92453095"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fivetran"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Fivetran の統合
@@ -37,8 +37,8 @@ ms.locfileid: "92453095"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Fivetran では、 **IDP** Initiated SSO がサポートされています
-* Fivetran では、 **Just-In-Time** ユーザー プロビジョニングがサポートされています
+* Fivetran では、**IDP** Initiated SSO がサポートされています
+* Fivetran では、**Just-In-Time** ユーザー プロビジョニングがサポートされています
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -51,7 +51,7 @@ Azure AD への Fivetran の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Fivetran** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Fivetran**」と入力します。
 1. 結果のパネルから **[Fivetran]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -126,7 +126,7 @@ Fivetran に対して Azure AD SSO を構成してテストするには、次の
 
 ## <a name="configure-fivetran-sso"></a>Fivetran の SSO を構成する
 
-このセクションでは、 **Fivetran** 側でシングル サインオンを構成します。
+このセクションでは、**Fivetran** 側でシングル サインオンを構成します。
 
 1. 別の Web ブラウザーのウィンドウで、アカウント所有者として Fivetran アカウントにサインインします。
 1. ウィンドウの左上隅にある矢印を選択し、ドロップダウン リストから **[Manage Account]\(アカウントを管理する\)** を選択します。

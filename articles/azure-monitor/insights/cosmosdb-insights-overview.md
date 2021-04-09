@@ -5,12 +5,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: fdf482f5afc444aff77c2ab528a4e333a0282c3d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d88bf65f1bd94e29bd9f60f5597d655f0040623b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582366"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725764"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Monitor for Azure Cosmos DB の探索
 
@@ -87,13 +87,51 @@ Azure Monitor for Azure Cosmos DB を使用すると、すべての Azure Cosmos
 
 概要ブックと同様、 **[サブスクリプション]** 列で Azure Cosmos DB リソースの横にあるドロップダウンを選択すると、データベースを構成する個々のコンテナーごとの内訳が表示されます。
 
-### <a name="operations"></a>操作 
+### <a name="operations"></a>操作
 
-ページの上部にある **[操作]** を選択すると、ブック テンプレートの **操作** 部分が表示されます。 送信された要求の種類ごとに要求の内訳を確認できます。 
+ページの上部にある **[操作]** を選択すると、ブック テンプレートの **操作** 部分が表示されます。 送信された要求の種類ごとに要求の内訳を確認できます。
 
 以下の例を見ると、`eastus-billingint` は、読み取り要求の大部分を受け取っていますが、upsert 要求と作成要求はごくわずかであることがわかります。 `westeurope-billingint` は、要求の観点から言えば読み取りのみですが、現在このブックがパラメーターでスコープ設定されている時間範囲は、少なくとも過去 4 時間となります。
 
-![操作ブック](./media/cosmosdb-insights-overview/operation.png) 
+![操作ブック](./media/cosmosdb-insights-overview/operation.png)
+
+## <a name="view-from-an-azure-cosmos-db-resource"></a>Azure Cosmos DB リソースから表示する
+
+1. 既存の Azure Cosmos DB アカウントを検索または選択します。
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-search.png" alt-text="Azure Cosmos DB を検索します。" border="true":::
+
+2. Azure Cosmos DB アカウントに移動したら、[監視] セクションで **[Insights (プレビュー)]** または **[ブック]** を選択して、スループット、要求、ストレージ、可用性、待機時間、システム、およびアカウント管理に関する詳細な分析を実行します。
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-overview.png" alt-text="Cosmos DB Insights の概要。" border="true":::
+
+### <a name="time-range"></a>時間の範囲
+
+既定では、 **[時間の範囲]** フィールドには **過去 24 時間** のデータが表示されます。 時間の範囲を変更すれば、過去 5 分間から過去7日間までの任意の期間について、データを表示することができます。 時間範囲セレクターには、 **[カスタム]** モードも含まれています。このモードでは、開始日/終了日を入力して、選択したアカウントの使用可能なデータに基づく、カスタムの時間枠を表示することができます。
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-time-range.png" alt-text="Cosmos DB の時間範囲。" border="true":::
+
+### <a name="insights-overview"></a>Insights の概要
+
+**[概要]** タブには、選択した Azure Cosmos DB アカウントについて、最も一般的なメトリックが表示されます。これには、以下のものが含まれます。
+
+* 要求の合計数
+* 失敗した要求 (429)
+* 正規化された RU 消費量 (最大値)
+* データとインデックスの使用量
+* コレクション別の Cosmos DB アカウント メトリック
+
+**要求の合計数:** このグラフには、アカウントの要求の合計が状態コード別に分類されて表示されます。 グラフの下部の欄には、その期間の合計要求数が表示されます。
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-total-requests.png" alt-text="Cosmos DB の要求の合計数グラフ。" border="true":::
+
+**失敗した要求 (429)** : このグラフには、状態コードが 429 となっている、失敗した要求が表示されます。 グラフの下部の欄には、その期間における失敗した要求の合計数が表示されます。
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-429.png" alt-text="Cosmos DB の失敗した要求のグラフ。" border="true":::
+
+**正規化された RU 消費量 (最大値)** : このグラフには、指定された期間を対象に、正規化された RU 消費量が 0 ～ 100% の最大パーセンテージで表示されます。
+
+:::image type="content" source="./media/cosmosdb-insights-overview/cosmosdb-normalized-ru.png" alt-text="Cosmos DB の正規化された RU 消費量。" border="true":::
 
 ## <a name="pin-export-and-expand"></a>ピン留め、エクスポート、展開
 

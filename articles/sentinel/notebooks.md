@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
 ms.openlocfilehash: 43d7a697b3cb013a73a0b14db8ec1758244ae3b9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97092195"
 ---
 # <a name="use-jupyter-notebook-to-hunt-for-security-threats"></a>Jupyter Notebook を使用してセキュリティの脅威を検出する

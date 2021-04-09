@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9612a26d7ac2e7a059655636fc1a2a7a43e3b8d7
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 2d6c76a15ee62c26e0d0261c6b0d2d1e27443a40
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526240"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102518045"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーの概要
 
@@ -30,6 +30,10 @@ ms.locfileid: "100526240"
 - まだ持っていない場合は、[お使いの Azure サブスクリプションにリンクされている Azure AD B2C テナント](tutorial-create-tenant.md)を作成します。
 - Azure AD B2C と通信できるように、自分が作成した[テナントにアプリケーションを登録](tutorial-register-applications.md)します。
 - [Facebook アカウントでのサインアップとサインインの設定](identity-provider-facebook.md)に関する記事の手順を完了して、Facebook アプリケーションを構成します。 Facebook アプリケーションがなくてもカスタム ポリシーを使用できますが、カスタム ポリシーでソーシャル ログインを有効にする方法を見せる目的でこのチュートリアルで使用されています。
+
+> [!TIP]
+> この記事では、テナントを手動で設定する方法について説明します。 この記事からプロセス全体を自動化できます。 自動化すると、Azure AD B2C [SocialAndLocalAccountsWithMFA スターター パック ](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack) がデプロイされます。これにより、サインアップとサインイン、パスワードのリセット、プロファイル編集の体験が提供されます。 以下のチュートリアルを自動化するには、[IEF セットアップ アプリ](https://aka.ms/iefsetup)にアクセスし、指示に従います。
+
 
 ## <a name="add-signing-and-encryption-keys"></a>署名および暗号化キーを追加します。
 

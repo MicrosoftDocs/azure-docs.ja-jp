@@ -5,19 +5,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: 1dc8e3a78e681947a70ad96638d1d6e09f0bbc88
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8b3b1d39766d556b820f21c1775210611b995d92
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050666"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103199898"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics エージェントの概要
 
 Azure Log Analytics エージェントによって、任意のクラウドの Windows および Linux 仮想マシン、オンプレミスのマシン、[System Center Operations Manager](/system-center/scom/) で監視しているマシンからテレメトリを収集し、Azure Monitor の Log Analytics ワークスペースに収集したデータを送信できます。 Log Analytics エージェントは、分析情報や、[VM insights](../vm/vminsights-enable-overview.md)、[Azure Security Center](../../security-center/index.yml)、[Azure Automation](../../automation/automation-intro.md) といった Azure Monitor のその他のサービスもサポートします。 この記事では、エージェント、システムとネットワークの要件、およびデプロイ方法の詳細な概要について説明します。
 
 > [!NOTE]
-> Log Analytics エージェントは、Microsoft Monitoring Agent (MMA) または OMS Linux エージェントとも呼ばれます。
+> Log Analytics エージェントは、Microsoft Monitoring Agent (MMA) とも呼ばれます。
 
 ## <a name="comparison-to-azure-diagnostics-extension"></a>Azure Diagnostics 拡張機能との比較
 Azure Monitor の[Azure Diagnostics 拡張機能](./diagnostics-extension-overview.md)は、Azure 仮想マシンのゲスト オペレーティング システムから監視データを収集することにも使用できます。 ご自分の要件に応じて、いずれかまたは両方を選択できます。 Azure Monitor エージェントの詳細な比較については、「[Azure Monitor エージェントの概要](../agents/agents-overview.md)」を参照してください。 

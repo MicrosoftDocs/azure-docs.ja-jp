@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.openlocfilehash: 7ec27cc4f28151214ca97ffb5113607d6b60ee36
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93240581"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL のデータ暗号化の検証
@@ -23,11 +23,11 @@ ms.locfileid: "93240581"
 
 1. カスタマーのキーが暗号化に使用されていることを確認するには、これらの手順に従います。
 
-    * Azure portal で、 **Azure Key Vault** ->  **[キー]** の順に移動します
+    * Azure portal で、**Azure Key Vault** ->  **[キー]** の順に移動します
     * サーバーの暗号化に使用されるキーを選択します。
-    * **有効になっている** キーの状態を **[いいえ]** に設定します。
+    * **[Enabled]\(有効\)** になっているキーの状態を **[いいえ]** に設定します。
   
-       しばらくすると ( **約 15 分** )、Azure Database for PostgreSQL サーバーの **状態** が **アクセス不可** になります。 サーバーに対して行われた I/O 操作はすべて失敗し、サーバーが実際にカスタマー キーで暗号化されていること、およびキーが現在、有効ではないことが検証されます。
+       しばらくすると (**約 15 分**)、Azure Database for PostgreSQL サーバーの **状態** が **アクセス不可** になります。 サーバーに対して行われた I/O 操作はすべて失敗し、サーバーが実際にカスタマー キーで暗号化されていること、およびキーが現在有効ではないことが検証されます。
     
         サーバーを **利用可能** にするために、キーを再検証できます。 
     

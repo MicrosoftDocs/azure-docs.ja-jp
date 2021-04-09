@@ -12,10 +12,10 @@ ms.date: 03/05/2021
 ms.author: longl
 ms.custom: devx-track-csharp
 ms.openlocfilehash: cd4ed992557a3c333919b63cc36757beb2f70454
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102433558"
 ---
 # <a name="specify-a-face-recognition-model"></a>顔認識モデルを指定する

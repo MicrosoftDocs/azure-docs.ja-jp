@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.openlocfilehash: e05a4cbbc5fefbfe8a92914ef480f32bdf43ca37
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99560221"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics での参照に参照データを使用する
@@ -23,7 +23,7 @@ ms.locfileid: "99560221"
 ```SQL  
 SELECT I1.EntryTime, I1.LicensePlate, I1.TollId, R.RegistrationId  
 FROM Input1 I1 TIMESTAMP BY EntryTime  
-JOIN Registration R   
+JOIN Registration R  
 ON I1.LicensePlate = R.LicensePlate  
 WHERE R.Expired = '1'
 ```  

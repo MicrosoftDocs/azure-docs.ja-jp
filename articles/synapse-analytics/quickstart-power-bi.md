@@ -10,10 +10,10 @@ ms.date: 10/27/2020
 ms.author: jocaplan
 ms.reviewer: jrasnick
 ms.openlocfilehash: 9c63e5e24495f373f288d2789780a6c671a7cc24
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98218401"
 ---
 # <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-workspace"></a>クイック スタート:Power BI ワークスペースを Synapse ワークスペースにリンクする

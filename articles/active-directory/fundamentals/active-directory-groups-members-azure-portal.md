@@ -14,10 +14,10 @@ ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: af5a85bad1e7b2a6bf645084d6b78f77e6c0d8b2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92371836"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>Azure Active Directory を使用してグループのメンバーを追加または削除する
@@ -33,11 +33,11 @@ Azure Active Directory を使用して、グループのメンバーの追加と
 
     ![[グループ - すべてのグループ] ページ、グループ名が強調表示](media/active-directory-groups-members-azure-portal/group-all-groups-screen.png)
 
-4. **[MDM policy - West の概要]** ページで、 **[管理]** 領域から **[メンバー]** を選択します。
+4. **[MDM policy - West の概要]** ページで、**[管理]** 領域から **[メンバー]** を選択します。
 
     ![[MDM policy - West の概要] ページ、[メンバー] オプションが強調表示](media/active-directory-groups-members-azure-portal/group-overview-blade.png)
 
-5. **[メンバーの追加]** を選択し、グループに追加する各メンバーを検索して選択したら、 **[選択]** を選択します。
+5. **[メンバーの追加]** を選択し、グループに追加する各メンバーを検索して選択したら、**[選択]** を選択します。
 
     メンバーが正常に追加されたことを示すメッセージが表示されます。
 
@@ -49,7 +49,7 @@ Azure Active Directory を使用して、グループのメンバーの追加と
 
 1. **[グループ - すべてのグループ]** ページで、メンバーを削除するグループを検索して選択します。 ここでも **MDM policy - West** を使用します。
 
-2. **[管理]** 領域の **[メンバー]** を選択し、削除するメンバーの名前を検索して選択したら、 **[削除]** を選択します。
+2. **[管理]** 領域の **[メンバー]** を選択し、削除するメンバーの名前を検索して選択したら、**[削除]** を選択します。
 
     ![メンバー情報ページの [削除] オプション](media/active-directory-groups-members-azure-portal/remove-members-from-group.png)
 
@@ -63,4 +63,4 @@ Azure Active Directory を使用して、グループのメンバーの追加と
 
 - [グループ内のユーザーの動的ルールの管理](../enterprise-users/groups-create-rule.md)
 
-- [Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する](active-directory-how-subscriptions-associated-directory.md)
+- [Azure サブスクリプションの Azure Active Directory への関連付けまたは追加](active-directory-how-subscriptions-associated-directory.md)

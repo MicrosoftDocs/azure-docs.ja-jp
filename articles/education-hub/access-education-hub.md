@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 995956e23e211d2182159f6e61abbbf184983ab0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87101275"
 ---
 # <a name="accessing-the-azure-education-hub"></a>Azure Education Hub にアクセスする
@@ -32,7 +32,7 @@ Azure Education Hub にアクセスするには、学術助成が承認された
    > [!IMPORTANT]
    > (機関の @domain.edu など) 組織または職場のアカウントでサインインしていることを確認します。 確認できたら、まず、ウィンドウの左側でこのオプションを選択します。 別のログイン画面が表示されます。
 
-    :::image type="content" source="media/access-education-hub/sign-in.png" alt-text="プライベート ブラウザー ウィンドウを開きます。" border="false":::
+    :::image type="content" source="media/access-education-hub/sign-in.png" alt-text="組織のサインイン ダイアログ。" border="false":::
 
 1. サインイン後、Azure portal に移動します。 Education Hub を見つけるには、 **[すべてのサービス]** に移動し、**Education** を検索します。
    初めてログインすると、[はじめに] ページが表示されます。

@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 11/14/2020
+ms.date: 03/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 8ec0f8cf090b3ae85a8602fb39cb07f03a417133
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 98237efae89e7d88dd23cb7e8fc9f7e9f05bca70
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605600"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102521545"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Azure API Management でマネージド ID を使用する
 
@@ -263,6 +263,19 @@ API Management インスタンスのシステム割り当て ID を使用して�
 ### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>API Management ID を使用してバックエンドに対する認証を行う
 
 システム割り当て ID を使用して、[authentication-managed-identity](api-management-authentication-policies.md#ManagedIdentity) ポリシーを通じて、バックエンドに対する認証を行うことができます。
+
+### <a name="connect-to-azure-resources-behind-ip-firewall-using-system-assigned-managed-identity"></a><a name="apim-as-trusted-service"></a>システム割り当てマネージド ID を使用して、IP ファイアウォールの背後にある Azure リソースに接続する
+
+
+API Management は、次のリソースに対する信頼された Microsoft サービスです。 これを使用すると、サービスは、ファイアウォールの背後にある次のリソースに接続できるようになります。 適切な Azure ロールをそのリソース インスタンスの[システム割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) に明示的に割り当てると、そのインスタンスのアクセス スコープは、マネージド ID に割り当てられた Azure ロールに対応します。
+
+
+|Azure サービス | Link|
+|---|---|
+|Azure Storage | [Trusted-access-to-azure-storage](../storage/common/storage-network-security.md?tabs=azure-portal#trusted-access-based-on-system-assigned-managed-identity)|
+|Azure Service Bus | [Trusted-access-to-azure-service-bus](../service-bus-messaging/service-bus-ip-filtering.md#trusted-microsoft-services)|
+|Azure Event Hub | [Trused-access-to-azure-event-hub](../event-hubs/event-hubs-ip-filtering.md#trusted-microsoft-services)|
+
 
 ## <a name="create-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を作成する
 

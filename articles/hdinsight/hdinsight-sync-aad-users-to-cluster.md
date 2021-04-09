@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: a3307c5d677028c17717c0d591790f0373f131d6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2a753a33e9ddf16cc277ab10c1f91049a6382066
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931633"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871947"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory ユーザーを HDInsight クラスターに同期する
 
@@ -29,11 +29,11 @@ ms.locfileid: "98931633"
 
 2. 左側のメニューから **[すべてのユーザー]** を選択してから、 **[New user] (新しいユーザー)** を選択します。
 
-    ![Azure portal のすべてのユーザーとグループ](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png" alt-text="Azure portal のすべてのユーザーとグループ":::
 
 3. 新しいユーザーのフォームを完了します。 クラスター ベースのアクセス許可を割り当てるために作成したグループを選択します。 この例では、新しいユーザーを割り当てることのできる "HiveUsers" という名前のグループを作成します。 ESP クラスターを作成するための[手順の例](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)には、`HiveUsers` と `AAD DC Administrators` という 2 つのグループの追加が含まれています。
 
-    ![Azure portal ユーザー ウィンドウのグループの選択](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png" alt-text="Azure portal ユーザー ウィンドウのグループの選択":::
 
 4. **作成** を選択します。
 
@@ -129,15 +129,15 @@ ms.locfileid: "98931633"
 
 1. Ambari ダッシュボードから、**[管理者]** メニューの下にある **[Ambari の管理]** を選択します。
 
-    ![Apache Ambari ダッシュボードの Ambari の管理](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png" alt-text="Apache Ambari ダッシュボードの Ambari の管理":::
 
 2. ページの左側の **[User + Group Management] (ユーザーとグループの管理)** メニュー グループの下にある **[ユーザー]** を選択します。
 
-    ![HDInsight の [ユーザーとグループ] メニュー](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png" alt-text="HDInsight の [ユーザーとグループ] メニュー":::
 
 3. 新しいユーザーが [ユーザー] テーブル内に表示されます。 [種類] は `Local` ではなく、`LDAP` に設定されています。
 
-    ![HDInsight aad ユーザー ページの概要](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png" alt-text="HDInsight aad ユーザー ページの概要":::
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>新しいユーザーとして Ambari にログインする
 

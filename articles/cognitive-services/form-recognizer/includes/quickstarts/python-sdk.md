@@ -2,21 +2,26 @@
 title: クイック スタート:Python 用 Form Recognizer クライアント ライブラリ
 description: Python 用の Form Recognizer クライアント ライブラリを使用して、カスタム ドキュメントからキーと値のペアとテーブル データを抽出するフォーム処理アプリを作成します。
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
-ms.author: pafarley
-ms.openlocfilehash: d0c26a4b0cc860b959afc6703ee3e709c606f209
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.author: lajanuar
+ms.openlocfilehash: 445fdea4cb92ed8080528a41cf19ad774751b9ce
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584623"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510836"
 ---
+<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD034 -->
 > [!IMPORTANT]
+>
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 以下のリファレンス ドキュメントを参照してください。 
 
 [リファレンス ドキュメント](/python/api/azure-ai-formrecognizer) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer) | [パッケージ (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/) | [サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
@@ -25,10 +30,11 @@ ms.locfileid: "99584623"
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)
+  * Python のインストールには、[pip](https://pip.pypa.io/en/stable/) が含まれている必要があります。 pip がインストールされているかどうかを確認するには、コマンド ラインで `pip --version` を実行します。 最新バージョンの Python をインストールして pip を入手してください。
 * トレーニング データのセットを含む Azure Storage Blob。 トレーニング データ セットをまとめるためのヒントとオプションについては、「[カスタム モデルのトレーニング データ セットを作成する](../../build-training-data-set.md)」を参照してください。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)の **Train** フォルダーにあるファイルを使用できます (*sample_data.zip* をダウンロードして展開します)。
-* Azure サブスクリプションを用意できたら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Form Recognizer リソースを作成"  target="_blank">Form Recognizer リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、自分のキーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
-    * 自分のアプリケーションを Form Recognizer API に接続するには、作成したリソースのキーとエンドポイントが必要になります。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
-    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
+* Azure サブスクリプションを用意できたら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Form Recognizer リソースを作成"  target="_blank">Form Recognizer リソースを作成</a>し、自分のキーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+  * 自分のアプリケーションを Form Recognizer API に接続するには、作成したリソースのキーとエンドポイントが必要になります。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+  * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
 ## <a name="setting-up"></a>設定
 
@@ -36,23 +42,23 @@ ms.locfileid: "99584623"
 
 Python をインストールしたら、次のコマンドを使用して最新バージョンの Form Recognizer クライアント ライブラリをインストールすることができます。
 
-#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
-
-```console
-pip install azure-ai-formrecognizer
-```
-
-> [!NOTE]
-> 最新の Form Recognizer は、API バージョン 2.0 を反映しています
-
-#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
+#### <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
 
 ```console
 pip install azure-ai-formrecognizer --pre
 ```
 
 > [!NOTE]
-> Form Recognizer プレビュー SDK は、API バージョン 2.1 プレビューを反映しています
+> Form Recognizer 3.1.0 SDK は、API バージョン 2.1 プレビューを反映しています
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+```console
+pip install azure-ai-formrecognizer
+```
+
+> [!NOTE]
+> Form Recognizer 3.0.0 SDK は、API v2.0 を反映しています
 
 ---
 
@@ -65,24 +71,24 @@ pip install azure-ai-formrecognizer --pre
 > [!TIP]
 > クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/FormRecognizerQuickstart.py) にあり、このクイックスタートのコード例が含まれています。
 
-
 自分のリソースの Azure エンドポイントおよびキー用の変数を作成します。 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_creds)]
 
-
-## <a name="object-model"></a>オブジェクト モデル 
+## <a name="object-model"></a>オブジェクト モデル
 
 Form Recognizer で作成できるクライアントは 2 種類あります。 1 つは、`form_recognizer_client` です。認識されたフォームのフィールドやコンテンツをサービスに照会するときに使用します。 もう 1 つは `form_training_client` です。認識精度を高めるために使用できるカスタム モデルを作成したり管理したりするときに使用します。 
 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
+
 `form_recognizer_client` には、以下を目的とした操作が用意されています。
 
- * 対象のカスタム フォームを分析するようトレーニングされたカスタム モデルを使用して、フォームのフィールドやコンテンツを認識する。 
- * モデルをトレーニングせずにフォームのコンテンツ (表、行、単語など) を認識する。 
- * Form Recognizer サービスの事前トレーニング済みの領収書モデルを使用して、領収書から一般的なフィールドを認識する。
+* 対象のカスタム フォームを分析するようトレーニングされたカスタム モデルを使用して、フォームのフィールドやコンテンツを認識する。
+* モデルをトレーニングせずにフォームのコンテンツ (表、行、単語など) を認識する。
+* Form Recognizer サービスの事前トレーニング済みの領収書モデルを使用して、領収書から一般的なフィールドを認識する。
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
+
 `form_training_client` には、以下を目的とした操作が用意されています。
 
 * カスタム モデルをトレーニングして、対象のカスタム フォームにあるすべてのフィールドと値を分析する。 トレーニング データセットの作成について詳しくは、[ラベル付けなしのモデル トレーニングに関するサービス ドキュメント](#train-a-model-without-labels)を参照してください。
@@ -96,23 +102,24 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 ## <a name="code-examples"></a>コード例
 
 これらのコード スニペットでは、Python 用 Form Recognizer クライアント ライブラリを使用して次のタスクを実行する方法を示します。
-
-#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
-
-* [クライアントを認証する](#authenticate-the-client)
-* [レイアウトを分析する](#analyze-layout)
-* [領収書を分析する](#analyze-receipts)
-* [カスタム モデルをトレーニングする](#train-a-custom-model)
-* [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
-* [カスタム モデルを管理する](#manage-your-custom-models)
-
-#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
+<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD024 -->
+#### <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
 
 * [クライアントを認証する](#authenticate-the-client)
 * [レイアウトを分析する](#analyze-layout)
 * [領収書を分析する](#analyze-receipts)
 * [名刺を分析する](#analyze-business-cards)
 * [請求書を分析する](#analyze-invoices)
+* [カスタム モデルをトレーニングする](#train-a-custom-model)
+* [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
+* [カスタム モデルを管理する](#manage-your-custom-models)
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+* [クライアントを認証する](#authenticate-the-client)
+* [レイアウトを分析する](#analyze-layout)
+* [領収書を分析する](#analyze-receipts)
 * [カスタム モデルをトレーニングする](#train-a-custom-model)
 * [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
 * [カスタム モデルを管理する](#manage-your-custom-models)
@@ -125,10 +132,10 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_auth)]
 
-
 ## <a name="get-assets-for-testing"></a>テスト用のアセットを取得する
 
 トレーニングとテスト データの URL への参照を追加する必要があります。
+
 * [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
   
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL の取得":::
@@ -171,22 +178,21 @@ Confidence score: 1.0
 
 ```
 
-
 ## <a name="analyze-invoices"></a>請求書を分析する
 
-#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
-
-> [!IMPORTANT]
-> この機能は、選択した API バージョンでは使用できません。
-
-#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
+#### <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
 
 このセクションでは、事前トレーニング済みのモデルを使用して、売上請求書から共通フィールドを分析、抽出する方法を示します。 請求書の分析の詳細については、[請求書の概念ガイド](../../concept-invoices.md)を参照してください。 URL から請求書を分析するには、`begin_recognize_invoices_from_url` メソッドを使用します。 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
 
 > [!TIP]
-> ローカルの請求書画像を分析することもできます。 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) のメソッドを参照してください (`begin_recognize_invoices` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードを参照してください。
+> ローカルの請求書画像を分析することもできます。 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) のメソッドを参照してください (`begin_recognize_invoices` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードを参照してください。
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+> [!IMPORTANT]
+> この機能は、選択した API バージョンでは使用できません。
 
 ---
 
@@ -329,7 +335,7 @@ Field 'Total' has label 'Total' with value 'None' and a confidence score of None
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
 
 > [!TIP]
-> ローカルにあるレシートの画像を分析することもできます。 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) のメソッドを参照してください (`begin_recognize_receipts` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードを参照してください。
+> ローカルにあるレシートの画像を分析することもできます。 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) のメソッドを参照してください (`begin_recognize_receipts` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードを参照してください。
 
 ### <a name="output"></a>出力
 
@@ -353,22 +359,21 @@ Tax: 104.4 has confidence 0.713
 Total: 1203.39 has confidence 0.774
 ```
 
-
 ## <a name="analyze-business-cards"></a>名刺を分析する
 
-#### <a name="version-20"></a>[バージョン 2.0](#tab/ga)
-
-> [!IMPORTANT]
-> この機能は、選択した API バージョンでは使用できません。
-
-#### <a name="version-21-preview"></a>[バージョン 2.1 プレビュー](#tab/preview)
+#### <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
 
 このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から共通フィールドを分析、抽出する方法を示します。 名刺の分析の詳細については、[名刺の概念ガイド](../../concept-business-cards.md)を参照してください。 URL から名刺を分析するには、`begin_recognize_business_cards_from_url` メソッドを使用します。 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
 
 > [!TIP]
-> ローカルにある名刺の画像を分析することもできます。 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) のメソッドを参照してください (`begin_recognize_business_cards` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードを参照してください。
+> ローカルにある名刺の画像を分析することもできます。 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) のメソッドを参照してください (`begin_recognize_business_cards` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードを参照してください。
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+> [!IMPORTANT]
+> この機能は、選択した API バージョンでは使用できません。
 
 ---
 

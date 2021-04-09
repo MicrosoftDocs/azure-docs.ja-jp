@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
 ms.openlocfilehash: 7966cbe44fc8984cf3c3d9e2d08a11bf599ff158
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89079134"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>クイック スタート:Azure Firewall と IP グループを作成する - ARM テンプレート
@@ -68,7 +68,7 @@ ARM テンプレートを Azure にデプロイします。
    - 認証: sshPublicKey またはパスワードを選択します 
    - 管理者パスワード: 管理者パスワードまたはキーを入力します
 
-3. **[上記の使用条件に同意する]** を選択し、 **[購入]** を選択します。 デプロイの完了には、10 分以上かかる場合があります。
+3. **[上記の使用条件に同意する]** を選択し、 **[購入]** を選択します。 このデプロイの完了には、10 分以上かかる場合があります。
 
 ## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 
@@ -76,7 +76,7 @@ Azure portal で、デプロイされたリソース、特に IP グループを
 
 :::image type="content" source="media/quick-create-ipgroup-template/ipgroups.png" alt-text="IP グループ。":::
 
-:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="IP グループ。":::
+:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="ネットワーク規則。":::
 
 テンプレートにあるファイアウォールの JSON 構文とプロパティの詳細については、[Microsoft.Network azureFirewalls テンプレートのリファレンス](/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls)に関するページを参照してください。
 

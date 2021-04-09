@@ -14,10 +14,10 @@ ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 246b9398824597ec337ee9e9ea3dc24267311f60
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101669592"
 ---
 # <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) の監視方法
@@ -26,7 +26,7 @@ SAP HANA on Azure (L インスタンス) に、その他の IaaS デプロイと
 
 - CPU
 - メモリ
-- ネットワーク帯域幅
+- ネットワークの帯域幅
 - ディスク領域
 
 Azure Virtual Machines で、上に挙げたリソース クラスが十分であるか、不足しているかを把握する必要があります。 各クラスの詳細は次のとおりです。

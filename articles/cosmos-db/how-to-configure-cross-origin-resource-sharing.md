@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/11/2019
 ms.author: dech
 ms.openlocfilehash: eba49ff45ba9ab1f5cfaa1d75973d656ac32ca6a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93339901"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>クロスオリジン リソース共有 (CORS) の構成

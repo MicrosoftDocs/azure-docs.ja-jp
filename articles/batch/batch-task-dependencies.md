@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 12/28/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
 ms.openlocfilehash: ef05a98fffc3c0684ad0fa29f2f9f039b388f5ad
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97803937"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>タスクの依存関係を作成して、他のタスクに依存するタスクを実行する
@@ -117,7 +117,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 >
 > 範囲の依存関係を評価するときに先頭のゼロは重要ではないため、`4`、`04`、`004` の文字列識別子を持つタスクはすべて範囲 *内* になり、それらはすべてタスク `4` として扱われます。そのため、最初に完了したものが依存関係を満たします。
 >
-> 範囲内のすべてのタスクが、正常に完了するか、または **Satisfy** に設定された[依存関係アクション](#dependency-actions)に指定されているエラーで終了することによって、依存関係を満たしている必要があります。
+> 範囲内のすべてのタスクが、正常に完了するか、または **Satisfy** に設定された [依存関係アクション](#dependency-actions)に指定されているエラーで終了することによって、依存関係を満たしている必要があります。
 
 ```csharp
 // Tasks 1, 2, and 3 don't depend on any other tasks. Because

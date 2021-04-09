@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: sstein
 ms.date: 01/20/2021
 ms.openlocfilehash: 5f9e7e1c96db2b60e41fe0ded69ea562cf8fcea6
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98663987"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>読み取り専用レプリカを使用して読み取り専用クエリ ワークロードをオフロードする

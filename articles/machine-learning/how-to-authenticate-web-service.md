@@ -12,10 +12,10 @@ ms.date: 11/06/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 5bd938fce347d439c2acb4e3fcace04d5b27d770
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94447461"
 ---
 # <a name="configure-authentication-for-models-deployed-as-web-services"></a>Web サービスとしてデプロイされたモデルの認証を構成する

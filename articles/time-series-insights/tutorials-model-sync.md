@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/19/2021
 ms.custom: dpalled
 ms.openlocfilehash: 5e8e5367daa532fa0cc36a18cd28b382e7cd8f78
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98682904"
 ---
 # <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Azure Digital Twins と Time Series Insights Gen2 間のモデルの同期

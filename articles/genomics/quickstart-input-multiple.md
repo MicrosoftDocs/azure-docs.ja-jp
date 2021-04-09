@@ -10,17 +10,17 @@ ms.author: grhuynh
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.openlocfilehash: b426015906a8e17674123c0c3ad2fccb9c43798f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "72248560"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>同じサンプルに属する複数の入力を使用するワークフローを送信する
 
-この記事では、入力ファイルが、**同じサンプルに属する**複数の FASTQ ファイルまたは BAM ファイルである場合に、Microsoft Genomics サービスにワークフローを送信する方法を示します。 たとえば DNA 解析装置上の複数のレーンで**同じサンプル**を実行した場合、レーンごとに一対の FASTQ ファイルが装置から出力される可能性があります。 これらの FASTQ ファイルを連結してから配列およびバリアントの呼び出しを行う代わりに、これらすべての入力を `msgen` クライアントに直接送信することができます。 この場合、`msgen` クライアントからの出力は、.bam、.bai、.vcf を含んだ**単一のファイル群**となることが考えられます。 
+この記事では、入力ファイルが、**同じサンプルに属する** 複数の FASTQ ファイルまたは BAM ファイルである場合に、Microsoft Genomics サービスにワークフローを送信する方法を示します。 たとえば DNA 解析装置上の複数のレーンで **同じサンプル** を実行した場合、レーンごとに一対の FASTQ ファイルが装置から出力される可能性があります。 これらの FASTQ ファイルを連結してから配列およびバリアントの呼び出しを行う代わりに、これらすべての入力を `msgen` クライアントに直接送信することができます。 この場合、`msgen` クライアントからの出力は、.bam、.bai、.vcf を含んだ **単一のファイル群** となることが考えられます。 
 
-ただし、FASTQ ファイルと BAM ファイルを同じ送信に混在させることは**できません**。 また、複数の個体から得た複数の FASTQ (または BAM) ファイルを送信することは**できません**。 
+ただし、FASTQ ファイルと BAM ファイルを同じ送信に混在させることは **できません**。 また、複数の個体から得た複数の FASTQ (または BAM) ファイルを送信することは **できません**。 
 
 この記事では、`msgen` クライアントを既にインストールして実行していること、また、Azure Storage の使用方法をよく理解していることを前提とします。 提供されたサンプル データを使用してワークフローを正常に送信したら、この記事を読み進める準備は完了です。 
 
@@ -28,7 +28,7 @@ ms.locfileid: "72248560"
 ## <a name="multiple-bam-files"></a>複数の BAM ファイル
 
 ### <a name="upload-your-input-files-to-azure-storage"></a>Azure Storage に入力ファイルをアップロードする
-入力として使用する BAM ファイルが複数あり (*reads.bam*、*additional_reads.bam*、*yet_more_reads.bam*)、それらを Azure のストレージ アカウントである *myaccount* にアップロード済みであるとします。 API URL とアクセス キーは用意されています。 また、**https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** に出力を配置したいと考えています。
+入力として使用する BAM ファイルが複数あり (*reads.bam*、*additional_reads.bam*、*yet_more_reads.bam*)、それらを Azure のストレージ アカウントである *myaccount* にアップロード済みであるとします。 API URL とアクセス キーは用意されています。 また、**https://<span></span>myaccount.blob.core <span></span>.windows <span></span>.net <span></span>/outputs <span></span>** に出力を配置したいと考えています。
 
 
 ### <a name="submit-your-job-to-the-msgen-client"></a>ジョブを `msgen` クライアントに送信する 
@@ -91,7 +91,7 @@ output_storage_account_container: outputs
 ## <a name="multiple-paired-fastq-files"></a>複数の FASTQ ファイルのペア
 
 ### <a name="upload-your-input-files-to-azure-storage"></a>Azure Storage に入力ファイルをアップロードする
-入力として使用する FASTQ ファイルのペアが複数ある (*reads_1.fq.gz* と *reads_2.fq.gz*、*additional_reads_1.fq.gz* と *additional_reads_2.fq.gz*、*yet_more_reads_1.fq.gz* と *yet_more_reads_2.fq.gz*) とします。 それらを Azure のストレージ アカウントである *myaccount* にアップロード済みで、API URL とアクセス キーは用意されています。 また、**https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** に出力を配置したいと考えています。
+入力として使用する FASTQ ファイルのペアが複数ある (*reads_1.fq.gz* と *reads_2.fq.gz*、*additional_reads_1.fq.gz* と *additional_reads_2.fq.gz*、*yet_more_reads_1.fq.gz* と *yet_more_reads_2.fq.gz*) とします。 それらを Azure のストレージ アカウントである *myaccount* にアップロード済みで、API URL とアクセス キーは用意されています。 また、**https://<span></span>myaccount.blob.core <span></span>.windows <span></span>.net <span></span>/outputs <span></span>** に出力を配置したいと考えています。
 
 
 ### <a name="submit-your-job-to-the-msgen-client"></a>ジョブを `msgen` クライアントに送信する 

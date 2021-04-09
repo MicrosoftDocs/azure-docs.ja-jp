@@ -4,10 +4,10 @@ description: Azure Backup で PowerShell を使用して Key Vault のキーと�
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.openlocfilehash: 456ce18f253ffa02cd6b13826a7839f18beecba7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88827088"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Azure Backup を使用して暗号化された VM の Key Vault のキーとシークレットを復元
@@ -28,7 +28,7 @@ ms.locfileid: "88827088"
 > 暗号化された VM のディスクが復元されたら、以下を確認してください。
 >
 > * [ディスクの復元セクションの PowerShell ステップ](backup-azure-vms-automation.md#restore-an-azure-vm)に記載されているように、$details にはディスクの復元ジョブの詳細が設定されます。
-> * **キーとシークレットが Key Vault に復元された後**にのみ、復元されたディスクから VM が作成されます。
+> * **キーとシークレットが Key Vault に復元された後** にのみ、復元されたディスクから VM が作成されます。
 
 復元されたディスクのプロパティに対し、ジョブの詳細を照会します。
 
@@ -60,7 +60,7 @@ Restore-AzureKeyVaultKey -VaultName '<target_key_vault_name>' -InputFile $keyDes
 
 ## <a name="restore-secret"></a>シークレットの復元
 
-前の手順で生成した JSON ファイルを使用してシークレットの名前と値を取得し、これをフィードしてシークレットのコマンドレットを設定し、Key Vault にシークレット (BEK) を戻します。 **VM が BEK と KEK を使用して暗号化される場合**は、次のコマンドレットを使用します。
+前の手順で生成した JSON ファイルを使用してシークレットの名前と値を取得し、これをフィードしてシークレットのコマンドレットを設定し、Key Vault にシークレット (BEK) を戻します。  **VM が BEK と KEK を使用して暗号化される場合** は、次のコマンドレットを使用します。
 
 **Windows VM が BEK と KEK を使用して暗号化される場合は、次のコマンドレットを使用します。**
 
@@ -82,7 +82,7 @@ $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncryptionKey
 Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
-前の手順で生成した JSON ファイルを使用してシークレットの名前と値を取得し、これをフィードしてシークレットのコマンドレットを設定し、Key Vault にシークレット (BEK) を戻します。 **VM が BEK のみを使用して暗号化される場合**は、次のコマンドレットを使用します。
+前の手順で生成した JSON ファイルを使用してシークレットの名前と値を取得し、これをフィードしてシークレットのコマンドレットを設定し、Key Vault にシークレット (BEK) を戻します。  **VM が BEK のみを使用して暗号化される場合** は、次のコマンドレットを使用します。
 
 ```powershell
 $secretDestination = 'C:\secret.blob'

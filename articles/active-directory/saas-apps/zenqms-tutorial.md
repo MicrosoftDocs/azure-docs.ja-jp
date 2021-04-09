@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 2dc3fca98a949f5e0119b36ff4fe266b5049028f
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92895076"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zenqms"></a>チュートリアル: Azure Active Directory と ZenQMS の統合
@@ -41,7 +41,7 @@ ZenQMS と Azure AD の統合を構成するには、次のものが必要です
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* ZenQMS では、 **SP** と **IDP** によって開始される SSO がサポートされます
+* ZenQMS では、**SP** と **IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-zenqms-from-the-gallery"></a>ギャラリーからの ZenQMS の追加
 
@@ -61,13 +61,13 @@ Azure AD への ZenQMS の統合を構成するには、ギャラリーから管
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **ZenQMS** 」と入力し、結果パネルで **ZenQMS** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**ZenQMS**」と入力し、結果パネルで **ZenQMS** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の ZenQMS](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、ZenQMS で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、ZenQMS で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと ZenQMS 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 ZenQMS で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ ZenQMS で Azure AD のシングル サインオンを構成してテストす�
 
 ZenQMS で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **ZenQMS** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **ZenQMS** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -123,7 +123,7 @@ ZenQMS で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="configure-zenqms-single-sign-on"></a>ZenQMS シングル サインオンの構成
 
-**ZenQMS** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [ZenQMS サポート チーム](mailto:help@zenqms.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**ZenQMS** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [ZenQMS サポート チーム](mailto:help@zenqms.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -141,7 +141,7 @@ ZenQMS で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -153,7 +153,7 @@ ZenQMS で Azure AD シングル サインオンを構成するには、次の�
 
 このセクションでは、Britta Simon に ZenQMS へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[ZenQMS]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[ZenQMS]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

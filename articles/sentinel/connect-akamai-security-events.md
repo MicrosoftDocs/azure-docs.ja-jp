@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/03/2021
 ms.author: yelevin
 ms.openlocfilehash: 8aa5a52a06713b4f00b43205a57148049a8ef8da
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101711962"
 ---
 # <a name="connect-your-akamai-security-events-collector-to-azure-sentinel"></a>Azure Sentinel に Akamai セキュリティ イベント コレクターを接続する

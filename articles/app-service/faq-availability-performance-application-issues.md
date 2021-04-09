@@ -10,10 +10,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: dfaeee6a6e2a9728d7e63fb5681c487fbbd6139e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88959002"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure での Web アプリのアプリケーションパフォーマンスに関するよくあるご質問
@@ -32,11 +32,11 @@ ms.locfileid: "88959002"
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>CPU 使用量が多いシナリオをトラブルシューティングするにはどうすればよいですか?
 
-CPU 使用量が多い一部のシナリオでは、アプリが実際により多くのコンピューティング リソースを必要としている可能性があります。 その場合は、アプリケーションが必要なすべてのリソースを取得できるように、より高いサービス階層へのスケーリングを検討してください。 その他の場合、CPU 使用量の多さは、不適切なループまたはコーディング方法によって発生している可能性があります。 CPU 使用量が増えている原因の調査は 2 つの部分からなるプロセスです。 最初にプロセス ダンプを作成し、次にプロセス ダンプを分析します。 詳細については、「[Capture and analyze a dump file for high CPU consumption for Web Apps (Web アプリの増加した CPU 使用量のためのダンプ ファイルの取得と分析)](/archive/blogs/asiatech/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app)」を参照してください。
+CPU 使用量が多い一部のシナリオでは、アプリが実際により多くのコンピューティング リソースを必要としている可能性があります。 その場合は、アプリケーションが必要なすべてのリソースを取得できるように、より高いサービス階層へのスケーリングを検討してください。 その他の場合、CPU 使用量の多さは、不適切なループまたはコーディング方法によって発生している可能性があります。 CPU 使用量が増えている原因の調査は 2 つの部分からなるプロセスです。 最初にプロセス ダンプを作成し、次にプロセス ダンプを分析します。 詳細については、「[Capture and analyze a dump file for high CPU consumption for Web Apps (Web アプリの増加した CPU 使用量のためのダンプ ファイルの取得と分析)](/archive/blogs/asiatech/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app)」を参照してください。
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>メモリ使用量が多いシナリオをトラブルシューティングするにはどうすればよいですか?
 
-メモリ使用量が多い一部のシナリオでは、アプリが実際により多くのコンピューティング リソースを必要としている可能性があります。 その場合は、アプリケーションが必要なすべてのリソースを取得できるように、より高いサービス階層へのスケーリングを検討してください。 その他の場合、コード内のバグがメモリ リークの原因になることがあります。 また、コーディング方法によってもメモリ使用量が増えることがあります。 メモリ使用量が多い原因の調査は 2 つの部分からなるプロセスです。 最初にプロセス ダンプを作成し、次にプロセス ダンプを分析します。 Azure サイト拡張機能ギャラリーのクラッシュ診断は、これらの手順の両方を効率的に実行できます。 詳細については、「[Capture and analyze a dump file for intermittent high memory for Web Apps (Web アプリの断続的な増加したメモリ使用量のためのダンプ ファイルの取得と分析)](/archive/blogs/asiatech/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app)」を参照してください。
+メモリ使用量が多い一部のシナリオでは、アプリが実際により多くのコンピューティング リソースを必要としている可能性があります。 その場合は、アプリケーションが必要なすべてのリソースを取得できるように、より高いサービス階層へのスケーリングを検討してください。 その他の場合、コード内のバグがメモリ リークの原因になることがあります。 また、コーディング方法によってもメモリ使用量が増えることがあります。 メモリ使用量が多い原因の調査は 2 つの部分からなるプロセスです。 最初にプロセス ダンプを作成し、次にプロセス ダンプを分析します。 Azure サイト拡張機能ギャラリーのクラッシュ診断は、これらの手順の両方を効率的に実行できます。 詳細については、「[Capture and analyze a dump file for intermittent high memory for Web Apps (Web アプリの断続的な増加したメモリ使用量のためのダンプ ファイルの取得と分析)](/archive/blogs/asiatech/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app)」を参照してください。
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>PowerShell を使用して App Service Web アプリを自動化するにはどうすればよいですか?
 
@@ -48,7 +48,7 @@ Web アプリのイベント ログを表示するには:
 
 1. **Kudu の Web サイト** (`https://*yourwebsitename*.scm.azurewebsites.net`) にサインインします。
 2. メニューで、 **[デバッグ コンソール]**  >  **[CMD]** を選択します。
-3. **LogFiles** フォルダーを選択します。
+3. **LogFiles** フォルダーを選びます。
 4. イベント ログを表示するには、**eventlog.xml** の横にある鉛筆アイコンを選択します。
 5. ログをダウンロードするには、PowerShell コマンドレット `Save-AzureWebSiteLog -Name webappname` を実行します。
 
@@ -65,9 +65,9 @@ Web アプリのユーザーモードのメモリ ダンプをキャプチャす
 
 Web アプリのプロセス レベルの情報を表示するには、次の 2 つのオプションがあります。
 
-*   Azure Portal で次の操作を行います。
+*   Azure portal で次の操作を行います。
     1. Web アプリの **[プロセス エクスプローラー]** を開きます。
-    2. 詳細を表示するには、 **[w3wp.exe]** プロセスを選択します。
+    2. 詳細を表示するには、**[w3wp.exe]** プロセスを選択します。
 *   Kudu コンソールで次の操作を行います。
     1. **Kudu の Web サイト** (`https://*yourwebsitename*.scm.azurewebsites.net`) にサインインします。
     2. **[プロセス エクスプローラー]** メニューを選択します。
@@ -89,7 +89,7 @@ Web アプリのプロセス レベルの情報を表示するには、次の 2 
 
 ## <a name="how-do-i-decrease-the-response-time-for-the-first-request-after-idle-time"></a>アイドル時間の後の最初の要求の応答時間を短縮するにはどうすればよいですか?
 
-既定では、設定された期間だけアイドル状態が続くと Web アプリはアンロードされます。 このようにして、システムはリソースを節約できます。 欠点は、Web アプリが読み込まれて応答の処理を開始できるようにするために、Web アプリがアンロードされた後の最初の要求への応答が長くなることです。 [基本] および [標準] サービス プランでは、アプリを常に読み込まれた状態にするために、 **[常時接続]** 設定をオンにすることができます。 これにより、アプリがアイドル状態になった後の読み込み時間が長くなることはなくなります。 **[常時接続]** 設定を変更するには:
+既定では、設定された期間だけアイドル状態が続くと Web アプリはアンロードされます。 このようにして、システムはリソースを節約できます。 欠点は、Web アプリが読み込まれて応答の処理を開始できるようにするために、Web アプリがアンロードされた後の最初の要求への応答が長くなることです。 [基本] および [標準] サービス プランでは、アプリを常に読み込まれた状態にするために、**[常時接続]** 設定をオンにすることができます。 これにより、アプリがアイドル状態になった後の読み込み時間が長くなることはなくなります。 **[常時接続]** 設定を変更するには:
 
 1. Azure Portal で、Web アプリに移動します。
 2. **[構成]** を選択します。
@@ -106,7 +106,7 @@ Web アプリのプロセス レベルの情報を表示するには、次の 2 
 5. **[保存]** を選択します。
 6. Web アプリ ブレードで **[ツール]** を選択します。
 7. **[Visual Studio Online]** を選択します。
-8. 設定が **[On] \(オン)** でない場合は、 **[On] \(オン)** を選択します。
+8. 設定が **[On] \(オン)** でない場合は、**[On] \(オン)** を選択します。
 9. **[Go] \(移動)** を選択します。
 10. **Web.config** を選択します。
 11. system.webServer で、この構成を追加します (特定の URL をキャプチャする場合)。

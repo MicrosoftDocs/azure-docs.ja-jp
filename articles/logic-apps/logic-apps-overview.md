@@ -8,10 +8,10 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/11/2020
 ms.openlocfilehash: 4c4e8c8f809452286fee493e20dbef2cc538c8bd
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96921523"
 ---
 # <a name="what-is-azure-logic-apps"></a>Azure Logic Apps とは

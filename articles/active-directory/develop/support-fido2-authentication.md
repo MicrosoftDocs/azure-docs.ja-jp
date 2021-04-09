@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 1/29/2021
 ms.author: nichola
 ms.custom: aaddev
-ms.openlocfilehash: e7193ee5d076538689078ce634b8170926df20b6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f63d7aed75b14f5f008a639d667d8806b233b9fa
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101653254"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174600"
 ---
 # <a name="support-passwordless-authentication-with-fido2-keys-in-apps-you-develop"></a>開発するアプリで FIDO2 キーを使用してパスワードレス認証をサポートする
 
@@ -52,7 +52,7 @@ RequestedAuthnContext 要素は省略可能であるため、これを解決す�
 
 ### <a name="mobile"></a>モバイル
 
-2020 年 2 月の時点では、FIDO2 は現在、ネイティブの iOS または Android アプリではサポートされていませんが、開発中です。
+2021 年 2 月の時点では、FIDO2 は現在、ネイティブの iOS または Android アプリではサポートされていませんが、開発中です。
 
 利用できるようアプリケーションを準備するため、および一般的なベスト プラクティスとして、iOS および Android アプリケーションでは、システム Web ブラウザーを使用する既定の構成で MSAL を使用する必要があります。
 

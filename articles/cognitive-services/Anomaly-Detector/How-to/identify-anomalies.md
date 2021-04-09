@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: mbullwin
 ms.openlocfilehash: 74f891ba7f5b400b5782565e670539167f4e2464
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97703434"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>方法:時系列データに Anomaly Detector API を使用する  
@@ -33,7 +33,7 @@ Anomaly Detector API には、バッチとストリーミングの検出モー�
 
 特定の時間範囲にわたるデータ ポイントのバッチ全体で異常を検出するには、次の要求 URI を時系列データと共に使用します。 
 
-`/timeseries/entire/detect` 
+`/timeseries/entire/detect`. 
 
 時系列データを一度に送信することにより、API は、シリーズ全体を使用してモデルを生成し、そのモデルで各データ ポイントを分析します。  
 
@@ -41,7 +41,7 @@ Anomaly Detector API には、バッチとストリーミングの検出モー�
 
 ストリーミング データの異常を継続的に検出するには、最新のデータ ポイントと共に次の要求 URI を使用します。 
 
-`/timeseries/last/detect'` 
+`/timeseries/last/detect'`. 
 
 新しいデータ ポイントを生成するときにそれらを送信することによって、データをリアル タイムで監視できます。 モデルは、送信したデータ ポイントで生成され、API は、時系列の最新のポイントが異常であるかどうかを判断します。
 

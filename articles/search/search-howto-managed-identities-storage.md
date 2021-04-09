@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: f26ca04955dfa854a8ee17b7aa255a6ed991b8df
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94358373"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>マネージド ID を使用して、Azure Storage アカウントへの接続を設定する
@@ -49,9 +49,9 @@ ms.locfileid: "94358373"
     ![ロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-storage.png "ロールの割り当ての追加")
 
 4. インデックスを作成するストレージ アカウントの種類に基づいて、適切なロールを選択します。
-    1. Azure Blob Storage では、 **ストレージ BLOB データ閲覧者** ロールに検索サービスを追加する必要があります。
-    1. Azure Data Lake Storage Gen2 では、 **ストレージ BLOB データ閲覧者** ロールに検索サービスを追加する必要があります。
-    1. Azure Table Storage では、 **閲覧者とデータ アクセス** ロールに検索サービスを追加する必要があります。
+    1. Azure BLOB ストレージでは、**ストレージ BLOB データ閲覧者** ロールに検索サービスを追加する必要があります。
+    1. Azure Data Lake Storage Gen2 では、**ストレージ BLOB データ閲覧者** ロールに検索サービスを追加する必要があります。
+    1. Azure テーブル ストレージでは、**閲覧者とデータ アクセス** ロールに検索サービスを追加する必要があります。
 5.  **[アクセスの割り当て先]** は **[Azure AD のユーザー、グループ、サービス プリンシパル]** のままにしておきます
 6.  検索サービスを検索し、それを選んでから、 **[保存]** を選択します
 
@@ -75,9 +75,9 @@ ms.locfileid: "94358373"
     * Azure Table Storage: `azuretable`
     * Azure Data Lake Storage Gen2: [こちらのフォーム](https://aka.ms/azure-cognitive-search/mi-preview-request)を使用してプレビューにサインアップすると、この **種類** が提供されます。
 * **credentials**
-    * マネージド ID を使用して認証する場合、 **credentials** 形式は、マネージド ID を使用しない場合とは異なります。 ここでは、アカウント キーまたはパスワードのない ResourceId を指定します。 ResourceId には、ストレージ アカウントのサブスクリプション ID、ストレージ アカウントのリソース グループ、およびストレージ アカウント名を含める必要があります。
+    * マネージド ID を使用して認証する場合、**credentials** 形式は、マネージド ID を使用しない場合とは異なります。 ここでは、アカウント キーまたはパスワードのない ResourceId を指定します。 ResourceId には、ストレージ アカウントのサブスクリプション ID、ストレージ アカウントのリソース グループ、およびストレージ アカウント名を含める必要があります。
     * マネージド ID の形式: 
-        * *ResourceId=/subscriptions/ **ご利用のサブスクリプション ID** /resourceGroups/ **ご利用のリソース グループの名前** /providers/Microsoft.Storage/storageAccounts/ **ご利用のストレージ アカウントの名前** /;*
+        * *ResourceId=/subscriptions/**ご利用のサブスクリプション ID**/resourceGroups/**ご利用のリソース グループの名前**/providers/Microsoft.Storage/storageAccounts/**ご利用のストレージ アカウントの名前**/;*
 * **container** では、ストレージ アカウントにあるコンテナーまたはテーブルを指定します。 既定では、コンテナー内のすべての BLOB を取得できます。 特定の仮想ディレクトリにある BLOB についてのみインデックスを作成する場合は、オプションの **query** パラメーターを使用してそのディレクトリを指定できます。
 
 [REST API](/rest/api/searchservice/create-data-source) を使用して BLOB データ ソース オブジェクトを作成する方法の例:

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: jeedes
 ms.openlocfilehash: b6dda20487caf6fe3ba49578cfdc0b65434a8dfa
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92520559"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-splashtop"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Splashtop の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Splashtop では、 **SP** Initiated SSO がサポートされます
+* Splashtop では、**SP** Initiated SSO がサポートされます
 
 * Splashtop を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
@@ -51,7 +51,7 @@ Azure AD への Splashtop の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Splashtop** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Splashtop**」と入力します。
 1. 結果パネルで **[Splashtop]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -82,7 +82,7 @@ Splashtop で Azure AD SSO を構成してテストするには、次の構成�
 
     **[サインオン URL]** テキスト ボックスに、URL として「`https://my.splashtop.com/login/sso`」と入力します。
 
-1. Splashtop アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 TicketManager アプリケーションでは、 **nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. Splashtop アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 TicketManager アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes]\(ユーザー属性\) を示しています。](common/edit-attribute.png)
 
@@ -131,7 +131,7 @@ Splashtop で Azure AD SSO を構成してテストするには、次の構成�
 
     ![[Single Sign On]\(シングル サインオン\) ページのスクリーンショット。ここで [Apply for new S S O method]\(新しい S S O 方法を申請する\) を選択できます。](media/splashtop-tutorial/apply-for-new-SSO-method.png)
 
-1. 申請ウィンドウで、 **SSO 名** を指定します。 たとえば、"New Azure" を指定し、IDP タイプとして **[Azure]** を選択します。Azure portal の Splashtop アプリケーションからコピーした **ログイン URL** と **Azure AD 識別子** を入力します。
+1. 申請ウィンドウで、**SSO 名** を指定します。 たとえば、"New Azure" を指定し、IDP タイプとして **[Azure]** を選択します。Azure portal の Splashtop アプリケーションからコピーした **ログイン URL** と **Azure AD 識別子** を入力します。
 
     ![[Apply for S S O method]\(S S O 方法を申請する\) ページのスクリーンショット。ここで、名前やその他の情報を入力できます。](media/splashtop-tutorial/azure-sso-1.png)
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: juergent
 ms.openlocfilehash: 979de230655b4804fa65a4bddb678e21b59c4ea2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101674446"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server 上の Azure VM での IBM Db2 LUW の高可用性

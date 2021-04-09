@@ -4,21 +4,21 @@ description: この記事では、Apache Kafka 用 Azure Event Hubs に関する
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: e32e02947b9f004755381d562fd3f3c897b70674
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90061429"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Event Hubs 用 Apache Kafka トラブルシューティング ガイド
 この記事では、Apache Kafka 用 Event Hubs を使用するときに発生する可能性がある問題のトラブルシューティングのヒントを示します。 
 
 ## <a name="server-busy-exception"></a>サーバー ビジー例外
-Kafka の調整により、サーバー ビジー例外が発生する可能性があります。 AMQP クライアントでは、サービスの調整時に Event Hubs から直ちに**サーバー ビジー**例外が返されます。 これは、"後でもう一度お試しください" というメッセージと同じです。 Kafka では、完了前にメッセージが遅延します。 遅延の長さは、生成およびフェッチ応答の `throttle_time_ms` として、ミリ秒単位で返されます。 ほとんどの場合、これらの遅延要求は、Event Hubs ダッシュボードでサーバー ビジー例外としてログに記録されません。 代わりに、スループットがプロビジョニングされたクォータを超えたことを示すインジケーターとして、応答の `throttle_time_ms` 値を使用する必要があります。
+Kafka の調整により、サーバー ビジー例外が発生する可能性があります。 AMQP クライアントでは、サービスの調整時に Event Hubs から直ちに **サーバー ビジー** 例外が返されます。 これは、"後でもう一度お試しください" というメッセージと同じです。 Kafka では、完了前にメッセージが遅延します。 遅延の長さは、生成およびフェッチ応答の `throttle_time_ms` として、ミリ秒単位で返されます。 ほとんどの場合、これらの遅延要求は、Event Hubs ダッシュボードでサーバー ビジー例外としてログに記録されません。 代わりに、スループットがプロビジョニングされたクォータを超えたことを示すインジケーターとして、応答の `throttle_time_ms` 値を使用する必要があります。
 
 トラフィックが過剰な場合、サービスの動作は次のようになります。
 
-- 生成要求の遅延が要求タイムアウトを超えた場合、Event Hubs から**ポリシー違反**エラー コードが返されます。
+- 生成要求の遅延が要求タイムアウトを超えた場合、Event Hubs から **ポリシー違反** エラー コードが返されます。
 - フェッチ要求の遅延が要求タイムアウトを超えた場合、Event Hubs では、要求を調整済みとしてログに記録し、エラー コードのない空のレコード セットで応答します。
 
 [専用クラスター](event-hubs-dedicated-overview.md)には調整メカニズムがありません。 すべてのクラスター リソースを自由に使用できます。

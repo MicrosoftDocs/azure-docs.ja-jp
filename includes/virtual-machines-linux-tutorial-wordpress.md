@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 76a080d40721fa78ad703f77f6dbe7a3363ab77e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "68857425"
 ---
 ## <a name="install-wordpress"></a>WordPress のインストール
@@ -85,6 +85,6 @@ sudo ln -s /usr/share/wordpress /var/www/html/wordpress
 sudo mv /etc/wordpress/config-localhost.php /etc/wordpress/config-default.php
 ```
 
-これで WordPress のセットアップを完了し、プラットフォーム上で公開することができます。 Web ブラウザーを開いて､`http://yourPublicIPAddress/wordpress` に移動します。 IP アドレスは、実際の VM のパブリック IP アドレスに置き換えてください。 以下の画像のようなページが表示されます。
+これで WordPress のセットアップを完了し、プラットフォーム上で公開することができます。 ブラウザーを開き、`http://yourPublicIPAddress/wordpress` に移動します。 IP アドレスは、実際の VM のパブリック IP アドレスに置き換えてください。 以下の画像のようなページが表示されます。
 
 ![WordPress のインストール ページ](./media/virtual-machines-linux-tutorial-wordpress/wordpressstartpage.png)

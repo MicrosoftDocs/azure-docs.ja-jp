@@ -7,16 +7,10 @@
       href: what-are-cognitive-services.md
     - name: Cognitive Services ドキュメントの新着情報
       href: whats-new-docs.md
-    - name: Cognitive Services と機械学習
-      href: cognitive-services-and-machine-learning.md
-    - name: Cognitive Services の開発オプション
-      href: cognitive-services-development-options.md
-    - name: Cognitive Services のカスタム サブドメイン
-      href: cognitive-services-custom-subdomains.md
     - name: 言語のサポート
       href: language-support.md
-    - name: コストの計画と管理
-      href: plan-manage-costs.md
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
 - name: クイックスタート
   items:
     - name: Azure portal を使用して新しいリソースを作成する
@@ -28,70 +22,100 @@
     - name: ARM テンプレートを使用して新しいリソースを作成する
       displayName: Resource Manager
       href: create-account-resource-manager-template.md
+- name: 操作方法
+  items:
+    - name: コストの計画と管理
+      href: plan-manage-costs.md
     - name: 診断ログ
       href: diagnostic-logging.md
-- name: Security
+    - name: デプロイ
+      items:
+        - name: コンテナー
+          items:
+            - name: Cognitive Services コンテナー
+              href: cognitive-services-container-support.md
+            - name: コンテナー イメージ タグとリリース ノート
+              href: ./containers/container-image-tags.md
+            - name: コンテナーに関する FAQ
+              href: ./containers/container-faq.yml
+            - name: コンテナーのレシピ
+              items:
+                - name: コンテナーの再利用
+                  href: ./containers/container-reuse-recipe.md
+                - name: Azure コンテナー インスタンスへのデプロイ
+                  href: ./containers/azure-container-instance-recipe.md
+                - name: Azure Kubernetes へのデプロイ
+                  href: ./containers/azure-kubernetes-recipe.md
+                - name: Docker Compose を使用したデプロイ
+                  href: ./containers/docker-compose-recipe.md
+            - name: その他のコンテナー サービス
+              items:
+                - name: Azure Container Instances
+                  href: ../container-instances/container-instances-tutorial-prepare-app.md
+                - name: Azure Container Registry
+                  href: ../container-registry/container-registry-get-started-azure-cli.md
+                - name: Azure Kubernetes Service (AKS)
+                  href: ../aks/tutorial-kubernetes-prepare-app.md
+            - name: Cognitive Services コンテナーのドキュメント
+              href: containers/index.yml
+    - name: セキュリティ
+      items:
+        - name: Cognitive Services のセキュリティ
+          href: cognitive-services-security.md
+        - name: Cognitive Services の仮想ネットワーク
+          href: cognitive-services-virtual-networks.md
+        - name: 顧客管理キーの構成
+          href: ./encryption/cognitive-services-encryption-keys-portal.md
+        - name: Cognitive Services に対する要求の認証
+          href: authentication.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
+        - name: Azure Policy によるセキュリティ制御
+          href: ./security-controls-policy.md
+    - name: ビッグ データと共に使用する
+      items:
+        - name: ビッグ データの Cognitive Services
+          href: ./big-data/cognitive-services-for-big-data.md
+        - name: 作業の開始
+          href: ./big-data/getting-started.md
+        - name: サンプル
+          items:
+            - name: Python
+              href: ./big-data/samples-python.md
+            - name: Scala
+              href: ./big-data/samples-scala.md
+        - name: レシピ
+          items:
+            - name: 'レシピ:Anomaly Detector'
+              href: ./big-data/recipes/anomaly-detection.md
+            - name: 'レシピ:アート エクスプローラー'
+              href: ./big-data/recipes/art-explorer.md
+- name: 概念
   items:
-    - name: Cognitive Services のセキュリティ
-      href: cognitive-services-security.md
-    - name: Cognitive Services の仮想ネットワーク
-      href: cognitive-services-virtual-networks.md
-    - name: 顧客管理キーの構成
-      href: ./encryption/cognitive-services-encryption-keys-portal.md
-    - name: Cognitive Services に対する要求の認証
-      href: authentication.md
-    - name: セキュリティ ベースライン
-      href: security-baseline.md
-    - name: Azure Policy によるセキュリティ制御
-      href: ./security-controls-policy.md
-- name: コンテナー サポート
-  items:
-    - name: コンテナー サポート
-      href: cognitive-services-container-support.md
-    - name: コンテナー イメージ タグとリリース ノート
-      href: ./containers/container-image-tags.md
-    - name: コンテナーに関する FAQ
-      href: ./containers/container-faq.yml
-    - name: コンテナーのレシピ
-      items:
-        - name: コンテナーの再利用
-          href: ./containers/container-reuse-recipe.md
-        - name: Azure コンテナー インスタンスへのデプロイ
-          href: ./containers/azure-container-instance-recipe.md
-        - name: Azure Kubernetes へのデプロイ
-          href: ./containers/azure-kubernetes-recipe.md
-        - name: Docker Compose を使用したデプロイ
-          href: ./containers/docker-compose-recipe.md
-    - name: その他のコンテナー サービス
-      items:
-        - name: Azure Container Instances
-          href: ../container-instances/container-instances-tutorial-prepare-app.md
-        - name: Azure Container Registry
-          href: ../container-registry/container-registry-get-started-azure-cli.md
-        - name: Azure Kubernetes Service (AKS)
-          href: ../aks/tutorial-kubernetes-prepare-app.md
-    - name: Cognitive Services コンテナーのドキュメント
-      href: containers/index.yml
-- name: ビッグ データ
-  items:
-    - name: ビッグ データの Cognitive Services
-      href: ./big-data/cognitive-services-for-big-data.md
-    - name: 作業の開始
-      href: ./big-data/getting-started.md
-    - name: サンプル
-      items:
-        - name: Python
-          href: ./big-data/samples-python.md
-        - name: Scala
-          href: ./big-data/samples-scala.md
-    - name: レシピ
-      items:
-        - name: 'レシピ:Anomaly Detector'
-          href: ./big-data/recipes/anomaly-detection.md
-        - name: 'レシピ:アート エクスプローラー'
-          href: ./big-data/recipes/art-explorer.md
+    - name: Cognitive Services の開発オプション
+      href: cognitive-services-development-options.md
+    - name: Cognitive Services と機械学習
+      href: cognitive-services-and-machine-learning.md
+    - name: Cognitive Services のカスタム サブドメイン
+      href: cognitive-services-custom-subdomains.md
 - name: リファレンス
   items:
+    - name: REST API
+      href: /rest/api/cognitiveservices/accountmanagement/accounts
+    - name: .NET
+      href: /dotnet/api/overview/azure/cognitiveservices/management?view=azure-dotnet
+    - name: Node.js
+      href: /javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest
+    - name: Python
+      href: /python/api/overview/azure/cognitiveservices/management?view=azure-python
+    - name: Java
+      href: /java/api/overview/azure/cognitiveservices/resourcemanagement?view=azure-java-stable
+    - name: Go
+      href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go@v52.5.0+incompatible/services/cognitiveservices/mgmt/2017-04-18/cognitiveservices'
+    - name: Azure CLI
+      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.cognitiveservices/
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
@@ -99,23 +123,19 @@
   items:
     - name: サポートとヘルプのオプション
       href: cognitive-services-support-options.md
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
+    - name: リージョンのサポート
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Azure の更新情報
+      href: 'https://azure.microsoft.com/updates/?query=cognitive%20services'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: サービス レベル アグリーメント (SLA)
       href: 'https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/'
+    - name: Azure Government
+      href: 'https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
     - name: ブログ
       href: 'https://azure.microsoft.com/blog/topics/cognitive-services/'
-    - name: サービスの更新情報
-      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: 製品フィードバックの提供
-      href: 'https://cognitive.uservoice.com/'
-    - name: 倫理規定
-      href: 'https://go.microsoft.com/fwlink/?LinkId=698895'

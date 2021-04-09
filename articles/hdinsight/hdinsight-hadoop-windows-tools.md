@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
-ms.openlocfilehash: d0d389e8d9458cd6b43b50e24cec030baca740af
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ceb83c8c1754f0bc298290f522a8ae532db32140
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945324"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102434612"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Windows PC から HDInsight の Apache Hadoop エコシステムで作業する
 
@@ -55,7 +55,7 @@ Visual Studio と Data Lake Tools for Visual Studio を使用して実行でき�
 クラスターの管理やビッグ データ アプリケーションの開発のために Visual Studio で .NET SDK を使用することができます。 他の IDE を次のタスクに使用することもできますが、例では Visual Studio を使用しています。
 
 Visual Studio で .NET SDK を使用して実行できるタスクの例:
-* [Azure HDInsight SDK for .NET](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true)。
+* [Azure HDInsight SDK for .NET](/dotnet/api/overview/azure/hdinsight)。
 * [.NET SDK を使用して Apache Hive クエリを実行する](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)。
 * [Apache Hadoop の Apache Hive と Apache Pig ストリーミングで C# のユーザー定義関数を使用する](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)。
 

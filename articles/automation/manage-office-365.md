@@ -5,10 +5,10 @@ services: automation
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: 70c8892969a3b13175c60a4e20e0cf9086112abe
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93398047"
 ---
 # <a name="manage-office-365-services"></a>Office 365 サービスを管理する

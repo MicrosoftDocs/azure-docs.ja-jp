@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/06/2020
+ms.date: 03/04/2021
 ms.author: justinha
-ms.openlocfilehash: 6da1d285440daa5d1d5a230905a77057728d4ae6
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: fec2695c9e196a652a4166161bf012b22b0d00e6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256544"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579554"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメイン用に Secure LDAP を構成する
 
@@ -110,7 +110,7 @@ Secure LDAP を使用するために、ネットワーク トラフィックは�
 * マネージド ドメインには **秘密** キーが適用されます。
     * Secure LDAP トラフィックの "*暗号化を解除する*" には、この秘密キーが使用されます。 秘密キーの適用先はマネージド ドメインに限定する必要があります。クライアント コンピューターに広く秘密キーを配布しないでください。
     * 秘密キーを含んだ証明書では、 *.PFX* ファイル形式が使用されます。
-    * 証明書の暗号化アルゴリズムは、*TripleDES-SHA1* である必要があります。
+    * 証明書をエクスポートするときは、*TripleDES-SHA1* 暗号化アルゴリズムを指定する必要があります。 これは .pfx ファイルにのみ適用され、証明書自体で使用されるアルゴリズムには影響しません。 *TripleDES-SHA1* オプションは、Windows Server 2016 以降でのみ使用できます。
 * クライアント コンピューターには **公開** キーが適用されます。
     * この公開キーは、Secure LDAP トラフィックの "*暗号化*" に使用されます。 公開キーは、クライアント コンピューターに配布することができます。
     * 秘密キーを含まない証明書には、 *.CER* ファイル形式が使用されます。
@@ -151,6 +151,11 @@ Secure LDAP を使用するために、ネットワーク トラフィックは�
 1. この証明書は、データの暗号化を解除する目的で使用されるため、慎重にアクセスを制御する必要があります。 パスワードを使用して証明書の使用を保護することができます。 正しいパスワードがなければ、サービスに証明書を適用することはできません。
 
     *.PFX* 証明書ファイルを保護するには、 **[セキュリティ]** ページで **[パスワード]** のオプションを選択します。 暗号化アルゴリズムは、*TripleDES-SHA1* である必要があります。 パスワードの入力と確認入力を行って、 **[次へ]** を選択します。 このパスワードは、次のセクションでマネージド ドメインに対して Secure LDAP を有効にする際に使用します。
+
+    [PowerShell の export-pfxcertificate コマンドレット](/powershell/module/pkiclient/export-pfxcertificate)を使用してエクスポートする場合は、TripleDES_SHA1 を使用して *-CryptoAlgorithmOption* フラグを渡す必要があります。
+
+    ![パスワードを暗号化する方法を示すスクリーンショット](./media/tutorial-configure-ldaps/encrypt.png)
+
 1. **[エクスポートするファイル]** ページで、ファイル名と証明書のエクスポート先を指定します (例: *C:\Users\accountname\azure-ad-ds.pfx*)。 *.PFX* ファイルのパスワードと場所をメモしておきます。この情報は次の手順で必要になります。
 1. 確認ページで **[完了]** を選択すると、証明書が *.PFX* 証明書ファイルにエクスポートされます。 証明書が正しくエクスポートされると確認ダイアログが表示されます。
 1. MMC は、次のセクションで使用するため、開いたままにしておきます。

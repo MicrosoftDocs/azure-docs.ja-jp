@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 81725a28102caf0d69a9fb303eaccdcf2151587d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: aecd18fd0d568904f9704b749525204ced05f3ef
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020029"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103463427"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>C# を使用して Azure Time Series Insights Gen2 環境からデータを照会する
 
@@ -48,7 +48,7 @@ ms.locfileid: "95020029"
 
 サンプル コードをコンパイルして実行する前に、次の手順を実行します。
 
-1. [Gen2 Azure Time Series Insights](./how-to-provision-manage.md#create-the-environment) 環境をプロビジョニングします。
+1. [Gen2 Azure Time Series Insights](./how-to-create-environment-using-portal.md) 環境をプロビジョニングします。
 1. [認証と承認](time-series-insights-authentication-and-authorization.md)に関するページにある説明に基づき、Azure Active Directory で Azure Time Series Insights 環境を設定します。
 1. [Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/Readme.md) に示されているように [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/GenerateCode.bat) を実行して、Azure Time Series Insights Gen2 クライアントの依存関係を生成します。
 1. Visual Studio 上で `TSIPreviewDataPlaneclient.sln` ソリューションを開き、`DataPlaneClientSampleApp` を既定のプロジェクトとして設定します。

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 087e2d7f2db8f27378b54675095e97256d6aae9b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92895112"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>チュートリアル: Azure Active Directory と Sauce Labs - Mobile and Web Testing の統合
@@ -41,8 +41,8 @@ Azure AD と Sauce Labs - Mobile and Web Testing の統合を構成するには�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Sauce Labs - Mobile and Web Testing では、 **IDP** によって開始される SSO がサポートされます
-* Sauce Labs - Mobile and Web Testing では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* Sauce Labs - Mobile and Web Testing では、**IDP** によって開始される SSO がサポートされます
+* Sauce Labs - Mobile and Web Testing では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-sauce-labs---mobile-and-web-testing-from-the-gallery"></a>ギャラリーから Sauce Labs - Mobile and Web Testing を追加する
 
@@ -62,13 +62,13 @@ Azure AD への Sauce Labs - Mobile and Web Testing の統合を構成するに�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Sauce Labs - Mobile and Web Testing** 」と入力し、結果パネルで **[Sauce Labs - Mobile and Web Testing]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Sauce Labs - Mobile and Web Testing**」と入力し、結果パネルで **[Sauce Labs - Mobile and Web Testing]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Sauce Labs - Mobile and Web Testing](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Sauce Labs - Mobile and Web Testing で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Sauce Labs - Mobile and Web Testing で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Sauce Labs - Mobile and Web Testing 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Sauce Labs - Mobile and Web Testing で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -158,7 +158,7 @@ Sauce Labs - Mobile and Web Testing で Azure AD シングル サインオンを
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

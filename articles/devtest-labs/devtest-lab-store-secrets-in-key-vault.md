@@ -4,10 +4,10 @@ description: Azure Key Vault にシークレットを格納し、仮想マシン
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 5714279ef183cb930d643575466dae3d6cb69bba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85481648"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Azure DevTest Labs でキー コンテナーにシークレットを格納する
@@ -22,8 +22,8 @@ Azure DevTest Labs の使用時には複雑なシークレット (Windows 仮想
 Azure Key Vault にシークレットを保存するには、次の手順を実行します。
 
 1. 左側のメニューの **[自分のシークレット]** を選択します。
-2. シークレットの**名前**を入力します。 仮想マシン、数式、または環境の作成時に、この名前がドロップダウン リストに表示されます。 
-3. **値**としてシークレットを入力します。
+2. シークレットの **名前** を入力します。 仮想マシン、数式、または環境の作成時に、この名前がドロップダウン リストに表示されます。 
+3. **値** としてシークレットを入力します。
 
     ![シークレットの格納](media/devtest-lab-store-secrets-in-key-vault/store-secret.png)
 

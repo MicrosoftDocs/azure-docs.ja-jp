@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 414b7107d02f78676970ecda6ca9373ac3b8db4b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7a8880512fa2f22208ad98aa4c53d3a5c568e840
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101172"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595672"
 ---
 # <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Azure Cosmos DB Table API for Node.js: リリース ノートとリソース
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "93101172"
 > * [Python](table-sdk-python.md)
  
 
-|   |   |
+|   | リンク  |
 |---|---|
 |**SDK のダウンロード**|[NPM](https://www.npmjs.com/package/azure-storage)|
 |**API ドキュメント**|[Node.js の API リファレンス ドキュメント](https://azure.github.io/azure-storage-node/)|
@@ -53,6 +53,6 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 ## <a name="faq"></a>よく寄せられる質問
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページを参照してください。 
 

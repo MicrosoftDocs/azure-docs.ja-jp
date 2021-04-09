@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.openlocfilehash: de558c73f1ca1721dfa3380e296617661ff4e859
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97670112"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certify"></a>チュートリアル: Azure Active Directory と Certify の統合
@@ -62,7 +62,7 @@ Azure AD への Certify の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Certify**」と入力し、結果パネルで **Certify** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Certify**」と入力し、結果パネルで **Certify** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Certify](common/search-new-app.png)
 
@@ -86,7 +86,7 @@ Certify で Azure AD のシングル サインオンを構成してテストす�
 
 Certify で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Certify** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Certify** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -151,7 +151,7 @@ Certify で Azure AD シングル サインオンを構成するには、次の�
 
 このセクションでは、Britta Simon に Certify へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Certify]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Certify]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 35bb17a5cdfcc6aff4a513a594a08283ab1f1305
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 44fe128658b90d2327f17f22b2a33aaa1d4da1fc
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437033"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046127"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する
 
@@ -214,7 +214,7 @@ openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azu
 
 リーフ デバイスにゲートウェイ デバイスへの断続的な接続がある場合は、解決のために次の手順を試してください。
 
-1. 接続文字列のゲートウェイ ホスト名は、ゲートウェイ デバイスの IoT Edge config.yaml ファイル内のホスト名値と同じですか?
+1. 接続文字列のゲートウェイ ホスト名は、ゲートウェイ デバイスの IoT Edge 構成ファイル内のホスト名値と同じですか?
 2. そのゲートウェイ ホスト名は IP アドレスに解決できますか? DNS を使用するか、またはリーフ デバイスの host ファイル エントリを追加することによって、断続的な接続を解決できます。
 3. ファイアウォールの通信ポートは開いていますか? 使用されるプロトコル (MQTTS:8883/AMQPS:5671/HTTPS:433) に基づく通信を、ダウンストリーム デバイスと透過的な IoT Edge の間で可能にする必要があります。
 

@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.openlocfilehash: fcb53dc22cfb4bf7308b92ee76e5aaaf3bb0dead
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735100"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>チュートリアル:ThousandEyes を構成し、自動ユーザー プロビジョニングに対応させる

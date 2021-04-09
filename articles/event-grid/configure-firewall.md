@@ -4,10 +4,10 @@ description: この記事では Event Grid のトピックまたはドメイン�
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.openlocfilehash: 178b9d84ea8b2e0f764f7584526db8dbcf5284f3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031839"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid のトピックまたはドメインに対して IP ファイアウォールを構成する 

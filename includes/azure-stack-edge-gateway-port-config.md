@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 12/16/2019
 ms.author: alkohli
 ms.openlocfilehash: 417fbdea3f46dfb3e90ab4890cec5e88c5aa4e07
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94523898"
 ---
-| ポート番号| インまたはアウト | ポート範囲| 必須 | Notes |
+| ポート番号| インまたはアウト | ポート範囲| 必須 | メモ |
 |---------|-----------|-----------|----------|-------|
 | TCP 80 (HTTP)|アウト|WAN |いいえ|送信ポートは、更新プログラムを取得するためのインターネット アクセスに使用します。 <br>送信 Web プロキシは、ユーザーが構成できます。 |
 | TCP 443 (HTTPS)|アウト|WAN|はい|送信ポートは、クラウドのデータへのアクセスに使用します。<br>送信 Web プロキシは、ユーザーが構成できます。|

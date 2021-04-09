@@ -4,10 +4,10 @@ description: ACR タスクによって生成された実行ログを表示およ
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: b2a10d4a3a2746acf38445673af994c6317c77de
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93027178"
 ---
 # <a name="view-and-manage-task-run-logs"></a>タスク実行ログを表示および管理する
@@ -83,7 +83,7 @@ az acr task logs --registry mycontainerregistry1220 \
 
 タスク実行ログをローカル ファイル システムに保存することも、Azure Storage などの代替アーカイブ ソリューションを使用することもできます。
 
-たとえば、ローカルの *tasklogs* ディレクトリを作成し、 [az acr task logs](/cli/azure/acr/task#az-acr-task-logs) の出力をローカル ファイルにリダイレクトします。
+たとえば、ローカルの *tasklogs* ディレクトリを作成し、[az acr task logs](/cli/azure/acr/task#az-acr-task-logs) の出力をローカル ファイルにリダイレクトします。
 
 ```azurecli
 mkdir ~/tasklogs

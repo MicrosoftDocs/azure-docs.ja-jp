@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 01/14/2021
 ms.openlocfilehash: 2433e62fd1dbf35748483b40958fc3367532102a
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100099236"
 ---
 # <a name="introduction-to-listing-options"></a>登録情報オプションの概要

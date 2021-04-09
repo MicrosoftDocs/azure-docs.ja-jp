@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:VMware CloudSimple サービスを作成する
+title: 'クイック スタート: VMware CloudSimple サービスを作成する'
 titleSuffix: Azure VMware Solution by CloudSimple
 description: CloudSimple サービスの作成方法、ノードの購入方法、ノードの予約法について説明します。
 author: sharaths-cs
@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 14df0f131aaef8a4c24e2d1eb242a9b440e7c7b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86507592"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>クイック スタート - Azure VMware Solution by CloudSimple の作成
@@ -39,17 +39,17 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 ## <a name="create-the-service"></a>サービスの作成
 
 1. **[すべてのサービス]** を選択します。
-2. **CloudSimple サービス**を検索します。
+2. **CloudSimple サービス** を検索します。
 
     ![CloudSimple サービスを検索します。](media/create-cloudsimple-service-search.png)
 
-3. **CloudSimple サービス**を選択します。
+3. **CloudSimple サービス** を選択します。
 4. 新しいサービスを作成するには、**Add** (追加) をクリックします。
 
     ![CloudSimple サービスを追加します。](media/create-cloudsimple-service-add.png)
 
 5. CloudSimple サービスを作成するサブスクリプションを選択します。
-6. サービスのリソース グループを選択します。 リソース グループを新規に追加するには、 **[Create New]** (新規作成) をクリックします。
+6. サービスのリソース グループを選択します。 リソース グループを新規に追加するには、**[Create New]** (新規作成) をクリックします。
 7. サービスを識別する名前を入力します。
 8. サービス ゲートウェイの CIDR を入力します。 オンプレミス サブネット、オンプレミス サブネット、Azure サブネット、または計画上の CloudSimple サブネットと重複しないサブネットを/28 サブネットに指定します。 サービスを作成した後は、CIDR を変更できません。
 
@@ -74,14 +74,14 @@ CloudSimple プライベート クラウド環境に従量課金制の容量を�
     ![CloudSimple ノードを追加します。](media/create-cloudsimple-node-add.png)
 
 5. CloudSimple ノードをプロビジョニングするサブスクリプションを選択します。
-6. ノードのリソース グループを選択します。 リソース グループを新規に追加するには、 **[Create New]** (新規作成) をクリックします。
+6. ノードのリソース グループを選択します。 リソース グループを新規に追加するには、**[Create New]** (新規作成) をクリックします。
 7. ノードを識別するためにプレフィックスを入力します。
 8. ノード リソースの場所を選択します。
 9. ノード リソースをホスティングする専用の場所を選択します。
 10. [ノードの種類](cloudsimple-node.md)を選択します。
 11. プロビジョニングするノードの数を選択します。
 12. **[確認および作成]** を選択します。
-13. 設定を確認します。 設定を変更素ウルには、 **[前へ]** をクリックします。
+13. 設定を確認します。 設定を変更素ウルには、[**前へ**] をクリックします。
 14. **［作成］** を選択します
 
 ## <a name="next-steps"></a>次のステップ

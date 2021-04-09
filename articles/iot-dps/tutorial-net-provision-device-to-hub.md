@@ -10,15 +10,15 @@ services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: f9a14ee6ee3e10b36d64ec11fc23807efe2bfaf2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94966566"
 ---
-# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>チュートリアル:Azure IoT Hub Device Provisioning Service Client (.NET) を使用して IoT ハブにデバイスを登録する
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>チュートリアル: Azure IoT Hub Device Provisioning Service Client (.NET) を使用して IoT ハブにデバイスを登録する
 
-前のチュートリアルでは、Device Provisioning Service に接続するデバイスを設定する方法を説明しました。 このチュートリアルでは、このサービスで " **_個別の登録_** " と " **_登録グループ_** " の両方を使用して、1 つの IoT ハブにデバイスをプロビジョニングする方法について説明します。 このチュートリアルでは、次の操作方法について説明します。
+前のチュートリアルでは、Device Provisioning Service に接続するデバイスを設定する方法を説明しました。 このチュートリアルでは、このサービスで "**_個別の登録_**" と "**_登録グループ_**" の両方を使用して、1 つの IoT ハブにデバイスをプロビジョニングする方法について説明します。 このチュートリアルでは、次の操作方法について説明します。
 
 > [!div class="checklist"]
 > * デバイスを登録する
@@ -29,7 +29,7 @@ ms.locfileid: "94966566"
 
 以降の手順に進む前に、チュートリアル「[Azure IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスの設定](./tutorial-set-up-device.md)」の説明に従って、デバイスと "*ハードウェア セキュリティ モジュール*" を構成してください。
 
-* Visual Studio
+* Visual Studio
 
 > [!NOTE]
 > Visual Studio は必須ではありません。 [.NET](https://www.microsoft.com/net) のインストールだけが必要であり、開発者は Windows または Linux で任意のエディターを使用することができます。  
@@ -59,9 +59,9 @@ ms.locfileid: "94966566"
 
 1. Visual Studio で **コンソール アプリケーション** プロジェクト テンプレートを使用して、Visual C# コンソール アプリケーション プロジェクトを作成します。 プロジェクトに **DeviceProvisioning** という名前を付けます。
     
-1. ソリューション エクスプローラーで **[DeviceProvisioning]** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
+1. ソリューション エクスプローラーで **[DeviceProvisioning]** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-1. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices.provisioning.service** を検索します。 エントリを選択し、 **[インストール]** をクリックして **Microsoft.Azure.Devices.Provisioning.Service** パッケージをインストールして、使用条件に同意します。 この手順により、[Azure IoT Device Provisioning Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet パッケージがダウンロードおよびインストールされ、パッケージへの参照とパッケージの依存関係が追加されます。
+1. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**microsoft.azure.devices.provisioning.service** を検索します。 エントリを選択し、**[インストール]** をクリックして **Microsoft.Azure.Devices.Provisioning.Service** パッケージをインストールして、使用条件に同意します。 この手順により、[Azure IoT Device Provisioning Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet パッケージがダウンロードおよびインストールされ、パッケージへの参照とパッケージの依存関係が追加されます。
 
 1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
    
@@ -239,7 +239,7 @@ ms.locfileid: "94966566"
 
     ![ポータルに表示されたハブへの成功した接続](./media/tutorial-net-provision-device-to-hub/hub-connect-success.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]

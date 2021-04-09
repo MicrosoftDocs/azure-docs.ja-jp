@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d30d8cdfe6ee93f54dfd560987ac8b6a78517fd8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ccfbb585ccf50366721925b0b31b17088fd36371
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718694"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102612424"
 ---
 # <a name="security-control-logging-and-monitoring"></a>セキュリティ コントロールログ記録と監視
 
@@ -124,9 +124,9 @@ Log Analytics ワークスペースと共に Azure Security Center を使用し�
 
 Azure Virtual Machines および Cloud Services についてのマルウェア対策イベント収集を有効にします。
 
-- [Virtual Machines に対して Microsoft Antimalware を構成する方法](/powershell/module/servicemanagement/azure.service/set-azurevmmicrosoftantimalwareextension?view=azuresmps-4.0.0)
+- [Virtual Machines に対して Microsoft Antimalware を構成する方法](/powershell/module/servicemanagement/azure.service/set-azurevmmicrosoftantimalwareextension)
 
-- [Cloud Services に対して Microsoft Antimalware を構成する方法](/powershell/module/servicemanagement/azure.service/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
+- [Cloud Services に対して Microsoft Antimalware を構成する方法](/powershell/module/servicemanagement/azure.service/set-azureserviceantimalwareextension)
 
 - [Microsoft Antimalware について](../fundamentals/antimalware.md)
 

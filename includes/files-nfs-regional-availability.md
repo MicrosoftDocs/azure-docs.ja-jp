@@ -9,10 +9,10 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: f5ebd05177abf5fb3468b3ce935b7d004b414424
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100552150"
 ---
 NFS は、Premium Files Storage が使用可能な 30 以上の **すべての** リージョンでサポートされています。

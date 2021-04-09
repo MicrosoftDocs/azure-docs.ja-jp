@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 1b179ac555ea86aff381c1217e834b8d0aa85e8c
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102561706"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) で組み込みアプリを発行する

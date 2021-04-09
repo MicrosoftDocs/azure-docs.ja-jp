@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: harshacs
 ms.custom: MVC
 ms.openlocfilehash: fb14e647d3444f2f0d0cb86901f93582a18848f5
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91814232"
 ---
 # <a name="fail-back-vms-to-azure-vmware-solution-private-cloud"></a>Azure VMware Solution プライベート クラウドに VM をフェールバックする
@@ -38,7 +38,7 @@ ms.locfileid: "91814232"
 4. フェールオーバーに使用する復旧ポイントを選択します。
     - **最新の** 復旧ポイントを使用することをお勧めします。 アプリケーション整合性ポイントは最新の時点より古いため、一部のデータが失われます。
     - **最新の** は、クラッシュ整合性の復旧ポイントです。
-    - **最新の**では、VM は使用可能な最新の時点までフェールオーバーされます。 復旧計画内にマルチ VM 整合性のためのレプリケーショングループがある場合、グループ内の各 VM は、独立した最新の時点にフェールオーバーします。
+    - **最新の** では、VM は使用可能な最新の時点までフェールオーバーされます。 復旧計画内にマルチ VM 整合性のためのレプリケーショングループがある場合、グループ内の各 VM は、独立した最新の時点にフェールオーバーします。
     - アプリ整合性復旧ポイントを使用する場合、各 VM は、使用可能な最新のポイントにフェールバックします。 復旧計画にレプリケーショングループがある場合、各グループは、その共通の使用可能な復旧ポイントに復元されます。
 5. フェールオーバーが開始されます。 Site Recovery は、Azure VM をシャットダウンします。
 6. フェールオーバーが完了したら、すべてが正常に動作していることを確認します。 Azure VM がシャットダウンされていることを確認します。 

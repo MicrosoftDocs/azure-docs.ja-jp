@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/15/2021
 ms.author: duau
-ms.openlocfilehash: 9fa0f73d06bda02d784628823ee70bc538b375e2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 83f1e83653c5674988cadcb5b54d3c675ae0b8b8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695806"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103489442"
 ---
 # <a name="troubleshooting-azure-route-server-issues"></a>Azure Route Server の問題のトラブルシューティング
 
@@ -31,7 +31,7 @@ NVA が既定のルートをアドバタイズすると、Azure Route Server で
 | 0.0.0.0/0 | インターネット |
 
 
-### <a name="why-can-i-ping-from-my-nva-to-the-bgp-peer-ip-on-azure-route-server-but-after-i-set-up-the-bgp-peering-between-them-i-cant-ping-the-same-ip-anymore-why-does-the-bgp-peering-goes-down"></a>NVA から Azure Route Server の BGP ピア IP に ping を実行できますが、BGP ピアリングをそれらの間に設定すると、同じ IP に ping を実行できなくなるのはなぜですか。 BGP ピアリングが停止するのはなぜですか。
+### <a name="why-can-i-ping-from-my-nva-to-the-bgp-peer-ip-on-azure-route-server-but-after-i-set-up-the-bgp-peering-between-them-i-cant-ping-the-same-ip-anymore-why-does-the-bgp-peering-go-down"></a>NVA から Azure Route Server の BGP ピア IP に ping を実行できますが、BGP ピアリングをそれらの間に設定すると、同じ IP に ping を実行できなくなるのはなぜですか。 BGP ピアリングが停止するのはなぜですか。
 
 一部の NVA では、Azure Route Server サブネットに静的ルートを追加する必要があります。 たとえば、Azure Route Server が 10.0.255.0/27 にあり、お使いの NVA が 10.0.1.0/24 にある場合は、NVA のルーティング テーブルに次のルートを追加する必要があります。
 

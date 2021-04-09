@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 185320868c491d98df5fb6e31d9a627157431944
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 69a9f0a82f5c19504564825e47f69ab8414e0909
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527130"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102565837"
 ---
 # <a name="configure-azure-cosmos-db-account-with-periodic-backup"></a>定期的バックアップを使用して Azure Cosmos DB アカウントを構成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -115,7 +115,7 @@ Azure Cosmos データベースを誤って削除したときは、データベ�
 [CosmosdbBackupOperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)、所有者、または共同作成者のロールの一部であるプリンシパルは、復元を要求したり、保有期間を変更したりできます。
 
 ## <a name="understanding-costs-of-extra-backups"></a>追加バックアップのコストについて
-2 回のバックアップは無料で提供され、追加のバックアップは、[バックアップ ストレージの料金](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/)セクションに記載されている、リージョンに基づくバックアップ ストレージの価格に従って課金されます。 たとえば、バックアップの保有期間が 240 時間 (つまり、10日間)、バックアップ間隔が 24 時間に構成されているとします。 これは、バックアップ データのコピー 10 個を意味します。 米国西部 2 で 1 TB のデータを想定した場合、任意の月のバックアップ ストレージでは 1000 * 0.12 で $120 になります。 
+2 回のバックアップは無料で提供され、追加のバックアップは、[バックアップ ストレージの料金](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/)セクションに記載されている、リージョンに基づくバックアップ ストレージの価格に従って課金されます。 たとえば、バックアップの保有期間が 240 時間 (つまり、10日間)、バックアップ間隔が 24 時間に構成されているとします。 これは、バックアップ データのコピー 10 個を意味します。 米国西部 2 で 1 TB のデータを想定した場合、任意の月のバックアップ ストレージのコストは 0.12 * 1000 * 8 になります。 
 
 
 ## <a name="options-to-manage-your-own-backups"></a>独自のバックアップを管理するためのオプション

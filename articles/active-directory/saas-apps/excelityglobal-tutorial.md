@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 4c9eaf68036531530f844e919bacfae922441b79
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92453838"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-excelityglobal"></a>チュートリアル:Azure Active Directory と ExcelityGlobal の統合
@@ -41,7 +41,7 @@ ExcelityGlobal と Azure AD の統合を構成するには、次のものが必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* ExcelityGlobal では、 **IDP** によって開始される SSO がサポートされます
+* ExcelityGlobal では、**IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-excelityglobal-from-the-gallery"></a>ギャラリーからの ExcelityGlobal の追加
 
@@ -61,13 +61,13 @@ Azure AD への ExcelityGlobal の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **ExcelityGlobal** 」と入力し、結果パネルで **[ExcelityGlobal]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**ExcelityGlobal**」と入力し、結果パネルで **[ExcelityGlobal]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの ExcelityGlobal](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、ExcelityGlobal で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、ExcelityGlobal で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと ExcelityGlobal 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 ExcelityGlobal で Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -103,17 +103,17 @@ ExcelityGlobal で Azure AD シングル サインオンを構成するには、
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
-    **運用環境** : `https://ess.excelityglobal.com`
+    **運用環境**: `https://ess.excelityglobal.com`
 
-    **サンドボックス環境** : `https://s6.excelityglobal.com`
+    **サンドボックス環境**: `https://s6.excelityglobal.com`
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    **運用環境** : `https://ess.excelityglobal.com/ACS`
+    **運用環境**: `https://ess.excelityglobal.com/ACS`
 
-    **サンドボックス環境** : `https://s6.excelityglobal.com/ACS`
+    **サンドボックス環境**: `https://s6.excelityglobal.com/ACS`
 
-5. ExcelityGlobal アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 ExcelityGlobal アプリケーションでは、 **nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+5. ExcelityGlobal アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 ExcelityGlobal アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
  
     ![image](common/edit-attribute.png)
 
@@ -137,7 +137,7 @@ ExcelityGlobal で Azure AD シングル サインオンを構成するには、
 
 ### <a name="configure-excelityglobal-single-sign-on"></a>ExcelityGlobal のシングル サインオンの構成
 
-**ExcelityGlobal** 側でシングル サインオンを構成するには、 **サムプリントの値** と Azure portal からコピーした適切な URL を [ExcelityGlobal サポート チーム](https://www.excelityglobal.com/contact-us)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**ExcelityGlobal** 側でシングル サインオンを構成するには、**サムプリントの値** と Azure portal からコピーした適切な URL を [ExcelityGlobal サポート チーム](https://www.excelityglobal.com/contact-us)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -155,9 +155,9 @@ ExcelityGlobal で Azure AD シングル サインオンを構成するには、
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

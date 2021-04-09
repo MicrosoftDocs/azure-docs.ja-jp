@@ -7,10 +7,10 @@ ms.date: 02/11/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 9721685fc3ccd2c1c80b55e9118d6d347cc97a9c
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97830702"
 ---
 # <a name="get-service-access-tokens"></a>サービス アクセス トークンを取得する

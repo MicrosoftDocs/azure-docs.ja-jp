@@ -1,7 +1,9 @@
 ---
 title: Azure でサポートされているメインフレーム ワークロード | Microsoft Docs
 description: メインフレーム エミュレーターや Microsoft パートナーの他のサービスを使用して、Microsoft Azure を使用する IBM Z ベースのシステムなどのメインフレーム ワークロードをリホストします。
-services: virtual-machines-linux
+services: virtual-machines
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
 documentationcenter: ''
 author: njray
 manager: edprice
@@ -9,13 +11,12 @@ editor: edprice
 ms.author: larryme
 ms.date: 05/09/2020
 ms.topic: article
-ms.service: multiple
-ms.openlocfilehash: 07234e5f456a5467adde4d899341a6124d128567
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 467cae97f9b4efe4782ac802cccd84271d475ea7
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83006116"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955433"
 ---
 # <a name="mainframe-workloads-supported-on-azure"></a>Azure でサポートされているメインフレーム ワークロード
 

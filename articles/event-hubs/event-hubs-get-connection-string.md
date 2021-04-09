@@ -4,10 +4,10 @@ description: この記事では、クライアントが Azure Event Hubs への�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 5ae6c66ddbbf4b9946e7037e1a7723043bf60507
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86537192"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Event Hubs の接続文字列の取得
@@ -37,10 +37,10 @@ Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 6. **[Event Hubs 名前空間]** ページで、左側のメニューの **[共有アクセス ポリシー]** を選択します。
 
     ![[共有アクセス ポリシー] メニュー項目](./media/event-hubs-get-connection-string/event-hubs-get-connection-string1.png)
-7. ポリシーの一覧で**共有アクセス ポリシー**を選択します。 既定のものの名前は次のとおりです: **RootManageSharedAccessPolicy**。 適切なアクセス許可 (読み取り、書き込み) を持つポリシーを追加し、そのポリシーを使用できます。 
+7. ポリシーの一覧で **共有アクセス ポリシー** を選択します。 既定のポリシーの名前は **RootManageSharedAccessPolicy** です。 適切なアクセス許可 (読み取り、書き込み) を持つポリシーを追加し、そのポリシーを使用できます。 
 
     ![Event Hubs の共有アクセス ポリシー](./media/event-hubs-get-connection-string/event-hubs-get-connection-string2.png)
-8. **[接続文字列 - 主キー]** フィールドの隣にある**コピー** ボタンを選択します。 
+8. **[接続文字列 - 主キー]** フィールドの隣にある **コピー** ボタンを選択します。 
 
     ![Event Hubs - 接続文字列の取得](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
 

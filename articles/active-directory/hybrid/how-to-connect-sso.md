@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88eae702782e2f1af9c20797676214db458c2adc
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: eeede88bfbe024a66e40270240d32488e581dd77
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937624"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102517703"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -37,7 +37,7 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 
 ## <a name="sso-via-primary-refresh-token-vs-seamless-sso"></a>プライマリ更新トークンを介した SSO とシームレス SSO
 
-Windows 10 の場合、プライマリ更新トークン (PRT) を介した SSO を使用することをお勧めします。 Windows 7 と 8.1 の場合、シームレス SSO を使用することをお勧めします。
+Windows 10、Windows Server 2016、およびそれ以降のバージョンの場合は、プライマリ更新トークン (PRT) を介した SSO を使用することをお勧めします。 Windows 7 と 8.1 の場合、シームレス SSO を使用することをお勧めします。
 シームレス SSO では、ユーザーのデバイスがドメインに参加している必要がありますが、これは、Windows 10 の [Azure AD 参加済みデバイス](../devices/concept-azure-ad-join.md)や [Hybrid Azure AD 参加済みデバイス](../devices/concept-azure-ad-join-hybrid.md)では使用されません。 Azure AD 参加済み、Hybrid Azure AD 参加済み、および Azure AD 登録済みデバイスでの SSO は、[プライマリ更新トークン (PRT)](../devices/concept-primary-refresh-token.md) に基づいて機能します。
 
 Hybrid Azure AD 参加済み、Azure AD 参加済み、または個人登録済みのデバイスに対して PRT を介した SSO が機能するのは、[職場または学校アカウントを追加] を使用してデバイスが Azure AD に登録された後になります。 PRT を使用した Windows 10 での SSO のしくみについて詳しくは、次を参照してください: [プライマリ更新トークン (PRT) と Azure AD](../devices/concept-primary-refresh-token.md)

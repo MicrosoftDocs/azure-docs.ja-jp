@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 695261ceae9d64be9395e6de082f97be04292078
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98745987"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Multi-Factor Authentication の NPS の拡張機能の詳細構成オプション
@@ -30,7 +30,7 @@ NPS の拡張機能内では、Azure AD Multi-Factor Authentication の UPN の�
 
 代替ログイン ID を構成するには、`HKLM\SOFTWARE\Microsoft\AzureMfa` に移動して次のレジストリ値を編集します。
 
-| Name | 種類 | 既定値 | 説明 |
+| Name | Type | 既定値 | 説明 |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | string | Empty | UPN の代わりに使用する Active Directory 属性の名前を指定します。 この属性は、AlternateLoginId 属性として使用されます。 このレジストリ値が[有効な Active Directory 属性](/windows/win32/adschema/attributes-all) (メールや displayName など) に設定されている場合、その属性の値がユーザーの UPN の代わりに認証に使用されます。 このレジストリ値が空または構成されていない場合、AlternateLoginId が無効になり、ユーザーの UPN が認証に使用されます。 |
 | LDAP_FORCE_GLOBAL_CATALOG | boolean | False | このフラグを使用して、AlternateLoginId を検索する LDAP 検索でグローバル カタログの使用を強制します。 グローバル カタログとしてドメイン コントローラーを構成し、AlternateLoginId 属性をグローバル カタログに追加してから、このフラグを有効にします。 <br><br> LDAP_LOOKUP_FORESTS が構成されている (空でない) 場合、レジストリ設定の値に関係なく、**このフラグが true として適用されます**。 この場合、NPS の拡張機能では、各フォレストに対してグローバル カタログが AlternateLoginId 属性で構成される必要があります。 |
@@ -44,7 +44,7 @@ NPS の拡張機能内では、Azure AD Multi-Factor Authentication の UPN の�
 
 IP 許可リストを構成するには、`HKLM\SOFTWARE\Microsoft\AzureMfa` に移動して次のレジストリ値を構成します。
 
-| Name | 種類 | 既定値 | 説明 |
+| Name | Type | 既定値 | 説明 |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | string | Empty | セミコロンで区切られた IP アドレスの一覧を提供します。 サービス要求の送信元のマシン (NAS/VPN サーバーなど) の IP アドレスが含まれます。 IP 範囲とサブネットはサポートされません。 <br><br> (*10.0.0.1;10.0.0.2;10.0.0.3* など)。
 

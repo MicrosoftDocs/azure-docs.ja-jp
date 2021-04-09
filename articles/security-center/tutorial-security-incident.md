@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
 ms.openlocfilehash: 41f96202bffc0169be9705cd7e67c1eedbecbc05
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102453446"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>チュートリアル:セキュリティ アラートのトリアージ、調査、対応

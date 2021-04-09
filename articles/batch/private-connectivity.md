@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.custom: references_regions
 ms.openlocfilehash: d2e9d36e9e964f2e9f9a5a986fbf55d19b3069d8
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98920005"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Azure Batch アカウントでプライベート エンドポイントを使用する
@@ -42,7 +42,7 @@ Azure portal を使用してプライベート Batch アカウントを作成す
    - **プライベート DNS ゾーンと統合する**:  **[はい]** を選択します。 プライベート エンドポイントに非公開で接続するには、DNS レコードが必要です。 プライベート エンドポイントとプライベート DNS ゾーンを統合することをお勧めします。 また、独自の DNS サーバーを使用したり、仮想マシン上のホスト ファイルを使用して DNS レコードを作成したりすることもできます。
    - **プライベート DNS ゾーン**: privatelink.\<region\>.batch.azure.com を選択します。 プライベート DNS ゾーンは自動的に決定されます。 Azure portal を使用して変更することはできません。
 8. **[確認と作成]** を選択し、Azure で構成が検証されるまで待ちます。
-9. "**検証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。
+9. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。
 
 プライベート エンドポイントがプロビジョニングされたら、プライベート エンドポイントを使用して、同じ仮想ネットワーク内の VM から Batch アカウントにアクセスできます。
 

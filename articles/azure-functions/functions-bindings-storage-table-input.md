@@ -7,10 +7,10 @@ ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 4fc2426189384856d2d2e95887cdabd2f9e9ebea
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98033780"
 ---
 # <a name="azure-table-storage-input-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage の入力バインド
@@ -240,7 +240,7 @@ public class LogEntity : TableEntity
 }
 ```
 
-CloudTable オブジェクトの使用方法の詳細については、[Azure Table Storage の概要](../cosmos-db/tutorial-develop-table-dotnet.md)ページをご覧ください。
+CloudTable オブジェクトの使用方法の詳細については、[Azure Table ストレージの概要](../cosmos-db/tutorial-develop-table-dotnet.md)ページをご覧ください。
 
 `CloudTable` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](./functions-bindings-storage-table.md#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 

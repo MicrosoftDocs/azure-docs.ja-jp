@@ -11,10 +11,10 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 06/03/2020
 ms.openlocfilehash: f5c176db4f679c79bb42c6ceb46b3588e9440874
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100572218"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database 監査ログの形式

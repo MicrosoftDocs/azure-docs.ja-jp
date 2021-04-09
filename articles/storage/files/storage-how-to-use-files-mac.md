@@ -8,10 +8,10 @@ ms.date: 09/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 119f4c0ea434bc431b40c905d9142e187b7d9474
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91326067"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>macOS を使用して SMB 経由で Azure ファイル共有をマウントする
@@ -37,7 +37,7 @@ ms.locfileid: "91326067"
     ![マウントされた Azure ファイル共有のスナップショット](./media/storage-how-to-use-files-mac/mount-via-finder-3.png)
 
 ## <a name="mount-an-azure-file-share-via-terminal"></a>Terminal による Azure ファイル共有のマウント
-1.  `<storage-account-name>`、`<storage-account-key>`、および `<share-name>` を実際の環境の適切な値に置き換えます。
+1. `<storage-account-name>`、`<storage-account-key>`、および `<share-name>` を実際の環境の適切な値に置き換えます。
 
     ```
     open smb://<storage-account-name>:<storage-account-key>@<storage-account-name>.file.core.windows.net/<share-name>

@@ -4,12 +4,12 @@ description: Apache Ambari Web UI を使用して、Apache Hive を構成およ�
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 349f58720e6fff52191dfff65108cd1320e41eed
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 69a4e769677b6f0200f4157305a3a125f82ee76d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98939258"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864819"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight で Apache Ambari を使用して Apache Hive を最適化する
 
@@ -26,11 +26,11 @@ Hive は、Apache Hadoop MapReduce と Apache TEZ の 2 つの実行エンジン
 
 1. Hive の **[Configs]\(構成\)** タブで、フィルター ボックスに「**execution engine**」と入力します。
 
-    ![Apache Ambari の実行エンジンの検索](./media/optimize-hive-ambari/ambari-search-execution.png)
+    :::image type="content" source="./media/optimize-hive-ambari/ambari-search-execution.png" alt-text="Apache Ambari の実行エンジンの検索" border="true":::
 
 1. **[Optimization]\(最適化\)** プロパティの既定値は **Tez** です。
 
-    ![最適化 - Apache Tez エンジン](./media/optimize-hive-ambari/optimization-apache-tez.png)
+    :::image type="content" source="./media/optimize-hive-ambari/optimization-apache-tez.png" alt-text="最適化 - Apache Tez エンジン" border="true":::
 
 ## <a name="tune-mappers"></a>マッパーを調整する
 
@@ -47,7 +47,7 @@ Hadoop では、1 つのファイルを複数のファイルに分割 ( *"マッ
 
 1. 両方のパラメーターを **33,554,432** バイト(32 MB) に設定します。
 
-    ![Apache Ambari の Tez のグループ化サイズ](./media/optimize-hive-ambari/apache-tez-grouping-size.png)
+    :::image type="content" source="./media/optimize-hive-ambari/apache-tez-grouping-size.png" alt-text="Apache Ambari の Tez のグループ化サイズ" border="true":::
 
 これらの変更は、サーバーのすべての Tez ジョブに影響します。 最適な結果を得るために、適切なパラメーター値を選択してください。
 
@@ -63,11 +63,11 @@ Apache ORC と Snappy は、どちらもハイ パフォーマンスを提供し
 
 1. パラメーターを変更するには、Hive の **[Configs]\(構成\)** タブに移動し、[Settings]\(設定\) ページで **[Data per Reducer]\(レジューサーごとのデータ\)** パラメーターを見つけます。
 
-    ![Apache Ambari のレジューサーごとのデータ](./media/optimize-hive-ambari/ambari-data-per-reducer.png)
+    :::image type="content" source="./media/optimize-hive-ambari/ambari-data-per-reducer.png" alt-text="Apache Ambari のレジューサーごとのデータ" border="true":::
 
 1. **[Edit]\(編集\)** を選択して値を 128 MB (134,217,728 バイト) に変更し、**Enter** キーを押して保存します。
 
-    ![Ambari のレジューサーごとのデータ - 編集済み](./media/optimize-hive-ambari/data-per-reducer-edited.png)
+    :::image type="content" source="./media/optimize-hive-ambari/data-per-reducer-edited.png" alt-text="Ambari のレジューサーごとのデータ - 編集済み" border="true":::
   
     入力サイズが 1,024 MB、レジューサーごとのデータが 128 MB とすると、8 レジューサー (1024/128) になります。
 
@@ -81,7 +81,7 @@ Hive クエリは、1 つ以上のステージで実行されます。 独立し
 
 1. 並列実行するジョブの数を制限するには、`hive.exec.parallel.thread.number` プロパティを変更します。 既定値は 8 です。
 
-    ![Apache Hive の実行の並列表示](./media/optimize-hive-ambari/apache-hive-exec-parallel.png)
+    :::image type="content" source="./media/optimize-hive-ambari/apache-hive-exec-parallel.png" alt-text="Apache Hive の実行の並列表示" border="true":::
 
 ## <a name="enable-vectorization"></a>ベクター化を有効にする
 
@@ -91,7 +91,7 @@ Hive では行単位でデータを処理します。 ベクター化では、1 
 
 1. クエリの Reduce 側でベクター化された実行を有効にするには、`hive.vectorized.execution.reduce.enabled` パラメーターを true に設定します。 既定値は false です。
 
-    ![Apache Hive のベクター化された実行](./media/optimize-hive-ambari/hive-vectorized-execution.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-vectorized-execution.png" alt-text="Apache Hive のベクター化された実行" border="true":::
 
 ## <a name="enable-cost-based-optimization-cbo"></a>コストベースの最適化 (CBO) を有効にする
 
@@ -99,7 +99,7 @@ Hive では行単位でデータを処理します。 ベクター化では、1 
 
 CBO を有効にするには、 **[Hive]**  >  **[Configs]\(構成\)**  >  **[Settings]\(設定\)** に移動し、 **[Enable Cost Based Optimizer]\(コスト ベースのオプティマイザー を有効にする\)** を探して、トグル ボタンを **[オン]** に切り替えます。
 
-![HDInsight のコストベースのオプティマイザー](./media/optimize-hive-ambari/hdinsight-cbo-config.png)
+:::image type="content" source="./media/optimize-hive-ambari/hdinsight-cbo-config.png" alt-text="HDInsight のコストベースのオプティマイザー" border="true":::
 
 CBO を有効にすると、次の追加の構成パラメーターによって Hive クエリのパフォーマンスが向上します。
 
@@ -107,19 +107,19 @@ CBO を有効にすると、次の追加の構成パラメーターによって 
 
     true に設定すると、Hive はその metastore に保存されている統計を使用して、`count(*)` のような単純なクエリに応答します。
 
-    ![Apache Hive の統計を使用したクエリのコンピューティング](./media/optimize-hive-ambari/hive-compute-query-using-stats.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-compute-query-using-stats.png" alt-text="Apache Hive の統計を使用したクエリのコンピューティング" border="true":::
 
 * `hive.stats.fetch.column.stats`
 
     CBO を有効にすると、列統計が作成されます。 Hive は metastore に保存されている列統計を使用して、クエリを最適化します。 列数が多い場合、各列の列統計のフェッチに時間がかかります。 false に設定すると、metastore からの列統計のフェッチが無効になります。
 
-    ![Apache Hive の統計セットの列統計](./media/optimize-hive-ambari/hive-stats-fetch-column-stats.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-stats-fetch-column-stats.png" alt-text="Apache Hive の統計セットの列統計" border="true":::
 
 * `hive.stats.fetch.partition.stats`
 
     基本的なパーティション統計 (行数、データ サイズ、ファイル サイズなど) は metastore に保存されています。 true に設定すると、metastore からパーティション統計がフェッチされます。 false の場合、ファイルのサイズはファイル システムからフェッチされます。 行の数は、行スキーマからフェッチされます。
 
-    ![Hive 統計セットのパーティション統計](./media/optimize-hive-ambari/hive-stats-fetch-partition-stats.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-stats-fetch-partition-stats.png" alt-text="Hive 統計セットのパーティション統計" border="true":::
 
 ## <a name="enable-intermediate-compression"></a>中間圧縮を有効にする
 
@@ -140,7 +140,7 @@ CBO を有効にすると、次の追加の構成パラメーターによって 
 
 1. 中間圧縮を有効にするには、Hive の **[Configs]\(構成\)** タブに移動し、`hive.exec.compress.intermediate` パラメーターを true に設定します。 既定値は false です。
 
-    !['Hive exec compress intermediate'](./media/optimize-hive-ambari/hive-exec-compress-intermediate.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-exec-compress-intermediate.png" alt-text="'Hive exec compress intermediate'" border="true":::
 
     > [!NOTE]  
     > 中間ファイルを圧縮する場合、コーデックに高圧縮の出力がなくても、CPU コストが低い圧縮コーデックを選択します。
@@ -157,7 +157,7 @@ CBO を有効にすると、次の追加の構成パラメーターによって 
 
     d. **[追加]** を選択します。
 
-    !['Apache Hive のカスタム プロパティの追加'](./media/optimize-hive-ambari/hive-custom-property.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-custom-property.png" alt-text="'Apache Hive のカスタム プロパティの追加'" border="true":::
 
     この設定により、Snappy 圧縮を使用して中間ファイルが圧縮されます。 プロパティが追加されると、[Custom hive-site]\(カスタム hive-site\) ウィンドウに表示されます。
 
@@ -172,7 +172,7 @@ Hive の最終出力を圧縮することもできます。
 
 1. 出力圧縮コーデックを選択するには、前のセクションの手順 3. で説明したように、[Custom hive-site]\(カスタム hive-site\) ウィンドウに `mapred.output.compression.codec` カスタム プロパティを追加します。
 
-    ![Apache Hive のカスタム プロパティの追加 2](./media/optimize-hive-ambari/hive-custom-property2.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-custom-property2.png" alt-text="Apache Hive のカスタム プロパティの追加 2" border="true":::
 
 ## <a name="enable-speculative-execution"></a>予測実行を有効にする
 
@@ -182,7 +182,7 @@ Hive の最終出力を圧縮することもできます。
 
 * 予測実行を有効にするには、Hive の **[Configs]\(構成\)** タブに移動し、`hive.mapred.reduce.tasks.speculative.execution` パラメーターを true に設定します。 既定値は false です。
 
-    ![`Hive mapred reduce tasks speculative execution`](./media/optimize-hive-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-mapred-reduce-tasks-speculative-execution.png" alt-text="`Hive mapred reduce tasks speculative execution`" border="true":::
 
 ## <a name="tune-dynamic-partitions"></a>動的パーティションを調整する
 
@@ -202,7 +202,7 @@ Hive のローカル モードでは、1 台のコンピューター上のジョ
 
 ローカル モードを有効にするには、「[中間圧縮を有効にする](#enable-intermediate-compression)」の手順 3. で説明したように、[Custom hive-site]\(カスタム hive-site\) ウィンドウに `hive.exec.mode.local.auto` パラメーターを追加します。
 
-![Apache Hive の実行モードのローカル オート](./media/optimize-hive-ambari/hive-exec-mode-local-auto.png)
+:::image type="content" source="./media/optimize-hive-ambari/hive-exec-mode-local-auto.png" alt-text="Apache Hive の実行モードのローカル オート" border="true":::
 
 ## <a name="set-single-mapreduce-multigroup-by"></a>単一の MapReduce の MultiGROUP BY を設定する
 
@@ -210,7 +210,7 @@ Hive のローカル モードでは、1 台のコンピューター上のジョ
 
 この動作を有効にするには、「[中間圧縮を有効にする](#enable-intermediate-compression)」の手順 3. で説明したように、[Custom hive-site]\(カスタム hive-site\) ウィンドウに `hive.multigroupby.singlereducer` パラメーターを追加します。
 
-![Hive で単一の MapReduce の MultiGROUP BY を設定](./media/optimize-hive-ambari/hive-multigroupby-singlereducer.png)
+:::image type="content" source="./media/optimize-hive-ambari/hive-multigroupby-singlereducer.png" alt-text="Hive で単一の MapReduce の MultiGROUP BY を設定" border="true":::
 
 ## <a name="additional-hive-optimizations"></a>Hive のその他の最適化
 
@@ -234,7 +234,7 @@ Hive 実行エンジンの最適化に関するその他の推奨事項を次に
 | --- | --- | --- |
 | `hive.mapjoin.hybridgrace.hashtable` | True = 安全性は高いが低速、false = 高速 | false |
 | `tez.am.resource.memory.mb` | ほとんどの場合、上限は 4 GB | Auto-Tuned |
-| `tez.session.am.dag.submit.timeout.secs` | 300+ | 該当なし |
+| `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10000 |
 | `tez.am.container.idle.release-timeout-max.millis` | 40000+ | 20000 |
 

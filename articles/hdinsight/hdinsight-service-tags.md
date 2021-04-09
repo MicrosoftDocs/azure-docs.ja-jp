@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: d17d067b88add3006bc5c7fb10caa6b80a80a827
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 99a61d3e445bf6887db0c97e365e6e4489eb79e1
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931766"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872015"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight の NSG サービス タグ
 
@@ -40,7 +40,7 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 
 1. **[発信元サービス タグ]** ドロップダウン リストから、 **[HDInsight]** を選択します。
 
-    ![Azure portal からサービス タグを追加する](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
+    :::image type="content" source="./media/hdinsight-service-tags/azure-portal-add-service-tag.png" alt-text="Azure portal からサービス タグを追加する":::
 
 このタグには、HDInsight が使用可能なすべてのリージョンの正常性および管理サービスの IP アドレスが含まれています。 このタグでは、クラスターが作成された場所に関係なく、必要な正常性および管理サービスと通信できることが保証されます。
 

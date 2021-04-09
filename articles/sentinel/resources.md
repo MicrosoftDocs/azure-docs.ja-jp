@@ -13,81 +13,52 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/27/2021
+ms.date: 03/03/2021
 ms.author: yelevin
-ms.openlocfilehash: c404aa93669cd95dccb0ad185d71d2ec16256d0d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 30cd0181ff2c5fbb8918921be3515818128a98d0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570437"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102048235"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel の操作に便利なリソース
 
-
-
 この記事には、Azure Sentinel の操作の詳細を入手するのに役立つリソースをまとめています。
 
-- **Azure Logic Apps コネクタ**: <https://docs.microsoft.com/connectors/>
+## <a name="learn-more-about-creating-queries"></a>クエリの作成に関する詳細
 
+Azure Sentinel では、Azure Monitor Log Analytics の Kusto クエリ言語 (KQL) を使用してクエリを作成します。 詳細については、次を参照してください。
 
-## <a name="auditing-and-reporting"></a>監査とレポート
-Azure Sentinel の監査ログは、[Azure アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md)に保持されます。
+- [KQL の概念](/azure/data-explorer/kusto/concepts/)
+- [KQL のクエリ](/azure/data-explorer/kusto/query/)
+- [KQL のクイック リファレンス ガイド](/azure/data-explorer/kql-quick-reference)。
+- [KQL クエリを始める](../azure-monitor/logs/get-started-queries.md)
 
-次のサポートされている操作を監査できます。
+## <a name="learn-more-about-creating-automation"></a>オートメーション作成の詳細
 
-|操作の名前|    リソースの種類|
-|----|----|
-|ブックの作成または更新  |Microsoft.Insights/workbooks|
-|ブックの削除    |Microsoft.Insights/workbooks|
-|ワークフローの設定   |Microsoft.Logic/workflows|
-|ワークフローの削除    |Microsoft.Logic/workflows|
-|保存した検索条件を作成する    |Microsoft.OperationalInsights/workspaces/savedSearches|
-|保存した検索条件の削除    |Microsoft.OperationalInsights/workspaces/savedSearches|
-|警告ルールの更新 |Microsoft.SecurityInsights/alertRules|
-|警告ルールの削除 |Microsoft.SecurityInsights/alertRules|
-|警告ルールの応答アクションの更新 |Microsoft.SecurityInsights/alertRules/actions|
-|警告ルールの応答アクションの削除 |Microsoft.SecurityInsights/alertRules/actions|
-|ブックマークの更新   |Microsoft.SecurityInsights/bookmarks|
-|ブックマークの削除   |Microsoft.SecurityInsights/bookmarks|
-|ケースの更新   |Microsoft.SecurityInsights/Cases|
-|ケース調査の更新  |Microsoft.SecurityInsights/Cases/investigations|
-|ケース コメントの作成   |Microsoft.SecurityInsights/Cases/comments|
-|データ コネクタの更新 |Microsoft.SecurityInsights/dataConnectors|
-|データ コネクタの削除 |Microsoft.SecurityInsights/dataConnectors|
-|設定の更新    |Microsoft.SecurityInsights/settings|
+Azure Logic Apps と増え続ける組み込みプレイブック ギャラリーを利用し、Azure Sentinel でオートメーションを作成します。 
 
-### <a name="view-audit-and-reporting-data-in-azure-sentinel"></a>Azure Sentinel で監査とレポート データを表示する
+詳細については、[Azure Logic Apps コネクタ](https://docs.microsoft.com/connectors/)に関するページを参照してください。
 
-このデータを表示するには、Azure アクティビティ ログから Azure Sentinel にそれをストリーミングし、そこで調査と分析を実行します。
-
-1. [Azure アクティビティ](connect-azure-activity.md) データ ソースに接続します。 この操作を実行すると、監査イベントは、AzureActivity という名前の **ログ** 画面で新しいテーブルにストリームされます。
-
-1. 次に、他のテーブルの場合と同様に、KQL を使用してデータに対してクエリを実行します。
-
-    たとえば、特定の分析ルールを最後に編集したユーザーを確認するには、次のクエリを使用します (`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` を、確認するルールのルール ID に置き換えます)。
-
-    ```kusto
-    AzureActivity
-    | where OperationNameValue startswith "MICROSOFT.SECURITYINSIGHTS/ALERTRULES/WRITE"
-    | where Properties contains "alertRules/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    | project Caller , TimeGenerated , Properties
-    ```
-
-
-## <a name="blogs-and-forums"></a>ブログとフォーラム
+## <a name="comment-on-our-blogs-and-forums"></a>ブログとフォーラムでコメントしてください
 
 ユーザーの方のご意見をお待ちしています。
 
-- Azure Sentinel の [TechCommunity スペース](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel)に **ご質問を投稿** してください。 
+Azure Sentinel の Tech Community スペースでは:
 
-- [User Voice](https://feedback.azure.com/forums/920458-azure-sentinel) プログラムを使用して、**改善のためのご提案を送信** してください。
+- [最近のブログ投稿を見て、コメントできます](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog)
+- [Azure Sentinel に関する質問を自分から投稿できます](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel)
 
-- Azure Sentinel のブログ投稿を **閲覧し、コメントをお寄せください**:
+[User Voice](https://feedback.azure.com/forums/920458-azure-sentinel) プログラムから改善案を送信し、改善にご協力いただけます。
 
-    - [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 
-    - [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)
+## <a name="join-the-azure-sentinel-github-community"></a>Azure Sentinel GitHub コミュニティに参加する
 
+[Azure Sentinel GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel)は、脅威の検出とオートメーションのための強力なリソースです。 
+
+Microsoft のセキュリティ アナリストは、新しいブック、プレイブック、捜索クエリなどを常に作成して追加し、お客様の環境で使用できるようにそれらをコミュニティに投稿しています。 
+
+プライベート コミュニティの GitHub リポジトリからサンプル コンテンツをダウンロードし、Azure Sentinel 用のカスタム ブック、捜索クエリ、ノートブック、プレイブックを作成してください。
 
 ## <a name="next-steps"></a>次のステップ
 

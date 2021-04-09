@@ -1,20 +1,20 @@
 ---
 title: Java を使用した Azure 仮想マシンの作成および管理
 description: Java と Azure Resource Manager を使用して、仮想マシンとそれをサポートするすべてのリソースをデプロイします。
-services: virtual-machines-windows
+services: virtual-machines
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: 568760dcaebbad0e14405e14c5a5bf8f6cd18395
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ea9d5d92d45db50470276929b6e7b4200bb427d6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197457"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102557524"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java を使用して Azure で Windows VM を作成および管理する
 

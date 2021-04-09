@@ -1,7 +1,7 @@
 ---
 title: Widevine ライセンス テンプレートの概要 | Microsoft Docs
 description: このトピックでは、Widevine ライセンスの構成に使用する Widevine ライセンス テンプレートの概要を示します。
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 7bdffa607a1cbe47b940590d19f6140238d31bf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: d4a3805e50ce48d1439696a3d9015d6ba8571470
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266495"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103011189"
 ---
 # <a name="widevine-license-template-overview"></a>Widevine ライセンス テンプレートの概要
 

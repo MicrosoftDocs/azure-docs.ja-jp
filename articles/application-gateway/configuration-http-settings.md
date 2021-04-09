@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: c0c939a6a8323dfdfafddb46ccdb7d7ef3dd2f2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89652660"
 ---
 # <a name="application-gateway-http-settings-configuration"></a>Application Gateway の HTTP 設定の構成
@@ -76,7 +76,7 @@ Application Gateway では、要求のバックエンド サーバーへのル�
 
 ## <a name="use-for-app-service"></a>[App Service 用に使用します]
 
-これは、Azure App Service バックエンドに必要な 2 つの設定を選択する UI 専用ショートカットです。 これにより、**バックエンド アドレスからホスト名を選択**できます。また、新しいカスタム プローブがまだない場合は作成されます。 (詳細については、この記事の「[バックエンド アドレスからホスト名を選択する](#pick-host-name-from-back-end-address)」設定のセクションを参照してください。)新しいプローブが作成されます。プローブのヘッダーはバックエンド メンバーのアドレスから選択されます。
+これは、Azure App Service バックエンドに必要な 2 つの設定を選択する UI 専用ショートカットです。 これにより、**バックエンド アドレスからホスト名を選択** できます。また、新しいカスタム プローブがまだない場合は作成されます。 (詳細については、この記事の「[バックエンド アドレスからホスト名を選択する](#pick-host-name-from-back-end-address)」設定のセクションを参照してください。)新しいプローブが作成されます。プローブのヘッダーはバックエンド メンバーのアドレスから選択されます。
 
 ## <a name="use-custom-probe"></a>[カスタム プローブの使用]
 

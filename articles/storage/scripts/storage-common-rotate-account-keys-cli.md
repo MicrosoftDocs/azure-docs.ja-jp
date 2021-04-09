@@ -11,10 +11,10 @@ ms.date: 10/20/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 08e1b3837863b197f8463a0d969e78afab2b9858
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92370408"
 ---
 # <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>ストレージ アカウントを作成してアカウント アクセス キーのローテーションを行う
@@ -41,7 +41,7 @@ az group delete --name myResourceGroup
 
 このスクリプトでは、次のコマンドを使って、ストレージ アカウントを作成し、そのアクセス キーを取得してローテーションを行います。 表内の各項目は、コマンドごとのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az storage account create](/cli/azure/storage/account) | 特定のリソース グループに Azure Storage アカウントを作成します。 |

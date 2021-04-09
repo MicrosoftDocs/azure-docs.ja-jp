@@ -11,10 +11,10 @@ ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
 ms.openlocfilehash: 0eabb48aabcb50557b342385068807eb67a9b165
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98797845"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>移行の概要: SQL Server から Azure VM 上の SQL Server
@@ -38,7 +38,7 @@ SQL Server を Azure Virtual Machines (VM) 上の SQL Server に移行するた�
 [Azure ハイブリッド特典のライセンス モデル](../../virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md)を使用して独自のライセンスを持ち込み、コストを削減します。または、[無料のセキュリティ更新プログラム](../../virtual-machines/windows/sql-server-2008-extend-end-of-support.md)を取得して、SQL Server 2008 と SQL Server 2008 R2 のサポートを延長します。 
 
 
-## <a name="choose-appropriate-target"></a>適切なターゲットの選択
+## <a name="choose-appropriate-target"></a>適切なターゲットを選択する
 
 Azure Virtual Machines は、Azure の多くの異なるリージョンで動作します。また、さまざまな[マシン サイズ](../../../virtual-machines/sizes.md)と[ストレージ オプション](../../../virtual-machines/disks-types.md)も備えています。 ご自分の SQL Server ワークロードについて適切なサイズの VM とストレージを特定する際は、「[Azure Virtual Machines 上の SQL Server のパフォーマンスに関するガイドライン](../../virtual-machines/windows/performance-guidelines-best-practices.md#vm-size-guidance)」を参照してください。 ワークロードの VM サイズとストレージの要件を特定するには、 パフォーマンスベースの [Azure Migrate 評価](../../../migrate/concepts-assessment-calculation.md#types-of-assessments)を通じてそれらのサイズを設定することをお勧めします。 このオプションを使用できない場合は、[パフォーマンスのベースライン](https://azure.microsoft.com/services/virtual-machines/sql-server/)を独自に作成する方法について次の記事を参照してください。
 

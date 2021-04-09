@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 67003223d663ef87d816c72e9990ee22f4fea916
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92457290"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefitsolver"></a>チュートリアル: Azure Active Directory と Benefitsolver の統合
@@ -41,7 +41,7 @@ Benefitsolver と Azure AD の統合を構成するには、次のものが必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Benefitsolver では、 **SP** Initiated SSO がサポートされます
+* Benefitsolver では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-benefitsolver-from-the-gallery"></a>ギャラリーからの Benefitsolver の追加
 
@@ -61,13 +61,13 @@ Azure AD への Benefitsolver の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Benefitsolver** 」と入力し、結果ウィンドウで **[Benefitsolver]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Benefitsolver**」と入力し、結果ウィンドウで **[Benefitsolver]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Benefitsolver](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Benefitsolver で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Benefitsolver で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Benefitsolver 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Benefitsolver で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -114,9 +114,9 @@ Benefitsolver で Azure AD シングル サインオンを構成するには、�
 
     ![編集コントロールが強調表示された [ユーザー属性] 画面のスクリーンショット。](common/edit-attribute.png)
 
-6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、 **編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
+6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
 
-    | Name |  ソース属性|
+    | 名前 |  ソース属性|
     |---------------|----------------|
     | ClientID | この値は、[Benefitsolver クライアントサポート チーム](https://www.businessolver.com/contact)から入手する必要があります。|
     | ClientKey | この値は、[Benefitsolver クライアントサポート チーム](https://www.businessolver.com/contact)から入手する必要があります。|
@@ -179,9 +179,9 @@ Benefitsolver で Azure AD シングル サインオンを構成するには、�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

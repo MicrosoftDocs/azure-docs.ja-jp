@@ -8,14 +8,16 @@ ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c5f28e2c2d370329dbee0fb76284a4b76b2b945e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7b3b8078a03ef0e891306f056c604545cde71459
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100376512"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489459"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>IoT Edge デバイスのトラブルシューティング
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 お使いの環境で Azure IoT Edge の実行中に問題が発生した場合は、この記事を参考にしてトラブルシューティングと診断を行ってください。
 
@@ -42,7 +44,7 @@ iotedge check
 
 トラブルシューティング ツールでは、次の 3 つのカテゴリに分類される多くのチェックが実行されます。
 
-* "*構成検査*" では、*config.yaml* およびコンテナー エンジンの問題を含め、IoT Edge デバイスからクラウドへの接続を妨げる可能性のある問題の詳細を調べます。
+* "*構成検査*" では、構成ファイルおよびコンテナー エンジンの問題を含め、IoT Edge デバイスからクラウドへの接続を妨げるおそれのある問題の詳細を調べます。
 * "*接続検査*" では、IoT Edge ランタイムがホスト デバイス上のポートにアクセス可能であること、およびすべての IoT Edge コンポーネントが IoT Hub にアクセス可能であることが確認されます。 IoT Edge デバイスがプロキシの背後にある場合、この一連の検査でてエラーが返されます。
 * "*製品の準備完了検査*" では、デバイス証明機関 (CA) の証明書の状態やモジュール ログ ファイルの構成など、推奨される運用上のベスト プラクティスが検査されます。
 
@@ -102,6 +104,9 @@ iotedge support-bundle --since 6h
 
 Linux の場合:
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 * IoT Edge Security Manager の状態を確認します。
 
    ```bash
@@ -110,32 +115,68 @@ Linux の場合:
 
 * IoT Edge Security Manager のログを確認します。
 
-    ```bash
-    sudo journalctl -u iotedge -f
-    ```
+   ```bash
+   sudo journalctl -u iotedge -f
+   ```
 
 * IoT Edge Security Manager のログの詳細を確認します。
 
-  * IoT Edge デーモンの設定を編集します。
+  1. IoT Edge デーモンの設定を編集します。
 
-      ```bash
-      sudo systemctl edit iotedge.service
-      ```
+     ```bash
+     sudo systemctl edit iotedge.service
+     ```
 
-  * 次の行を更新します。
+  2. 次の行を更新します。
 
-      ```bash
-      [Service]
-      Environment=IOTEDGE_LOG=edgelet=debug
-      ```
+     ```bash
+     [Service]
+     Environment=IOTEDGE_LOG=edgelet=debug
+     ```
 
-  * IoT Edge セキュリティ デーモンを再起動します。
+  3. IoT Edge セキュリティ デーモンを再起動します。
 
-      ```bash
-      sudo systemctl cat iotedge.service
-      sudo systemctl daemon-reload
-      sudo systemctl restart iotedge
-      ```
+     ```bash
+     sudo systemctl cat iotedge.service
+     sudo systemctl daemon-reload
+     sudo systemctl restart iotedge
+     ```
+<!--end 1.1 -->
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+* IoT Edge システム サービスの状態を表示します。
+
+   ```bash
+   sudo iotedge system status
+   ```
+
+* IoT Edge システム サービスのログを表示します。
+
+   ```bash
+   sudo iotedge system logs -- -f
+   ```
+
+* デバッグレベルのログを有効にして、IoT Edge システム サービスのより詳細なログを表示します。
+
+  1. デバッグレベルのログを有効にします。
+
+     ```bash
+     sudo iotedge system set-log-level debug
+     sudo iotedge system restart
+     ```
+
+  1. デバッグ後に既定の情報レベルのログに戻ります。
+
+     ```bash
+     sudo iotedge system set-log-level info
+     sudo iotedge system restart
+     ```
+
+<!-- end 1.2 -->
+:::moniker-end
 
 Windows の場合:
 
@@ -159,52 +200,17 @@ Windows の場合:
 
 * IoT Edge Security Manager のログの詳細を確認します。
 
-  * システムレベルの環境変数を追加します。
+  1. システムレベルの環境変数を追加します。
 
-      ```powershell
-      [Environment]::SetEnvironmentVariable("IOTEDGE_LOG", "debug", [EnvironmentVariableTarget]::Machine)
-      ```
+     ```powershell
+     [Environment]::SetEnvironmentVariable("IOTEDGE_LOG", "debug", [EnvironmentVariableTarget]::Machine)
+     ```
 
-  * IoT Edge セキュリティ デーモンを再起動します。
+  2. IoT Edge セキュリティ デーモンを再起動します。
 
-      ```powershell
-      Restart-Service iotedge
-      ```
-
-### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>IoT Edge Security Manager が実行されていない場合は、yaml 構成ファイルを確認します
-
-> [!WARNING]
-> YAML ファイルには、インデントとしてタブを含めることはできません。 代わりにスペース 2 つを使用してください。 最上位の要素の先頭にはスペースを入れないでください。
-
-Linux の場合:
-
-   ```bash
-   sudo nano /etc/iotedge/config.yaml
-   ```
-
-Windows の場合:
-
-   ```cmd
-   notepad C:\ProgramData\iotedge\config.yaml
-   ```
-
-### <a name="restart-the-iot-edge-security-manager"></a>IoT Edge Security Manager を再起動する
-
-問題がまだ解決しない場合は、IoT Edge Security Manager を再起動することができます。
-
-Linux の場合:
-
-   ```cmd
-   sudo systemctl restart iotedge
-   ```
-
-Windows の場合:
-
-   ```powershell
-   Stop-Service iotedge -NoWait
-   sleep 5
-   Start-Service iotedge
-   ```
+     ```powershell
+     Restart-Service iotedge
+     ```
 
 ## <a name="check-container-logs-for-issues"></a>コンテナーのログで問題を確認する
 
@@ -217,6 +223,9 @@ iotedge logs <container name>
 また、デバイス上のモジュールへの[ダイレクト メソッド](how-to-retrieve-iot-edge-logs.md#upload-module-logs)の呼び出しを使用して、そのモジュールのログを Azure Blob Storage にアップロードすることもできます。
 
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>IoT Edge ハブを通過するメッセージを表示する
+
+<!--1.1 -->
+:::moniker range="iotedge-2018-06"
 
 IoT Edge ハブを通過するメッセージを表示し、ランタイム コンテナーから得た詳細なログから分析情報を収集できます。 これらのコンテナーで詳細ログを有効にするには、yaml 構成ファイルに`RuntimeLogLevel` を設定します。 ファイルを開くには:
 
@@ -256,7 +265,29 @@ Windows の場合:
 
 ファイルを保存し、IoT Edge Security Manager を再起動します。
 
-IoT Hub デバイスと IoT Edge デバイスの間で送信されたメッセージを確認することもできます。 [Visual Studio Code 用の Azure IoT Hub 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)を使用して、これらのメッセージを表示します。 詳細については、[Azure IoT で開発するときの便利なツール](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)に関するページを参照してください。
+<!-- end 1.1 -->
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+IoT Edge ハブを通過するメッセージを表示し、ランタイム コンテナーから得た詳細なログから分析情報を収集できます。 これらのコンテナーで詳細ログを有効にするには、配置マニフェストで環境変数 `RuntimeLogLevel` を設定します。
+
+IoT Edge ハブを経由するメッセージを表示するには、edgeHub モジュールの環境変数 `RuntimeLogLevel` を `debug` に設定します。
+
+edgeHub と edgeAgent の両方のモジュールにこのランタイム ログ環境変数があり、既定値は `info` に設定されています。 この環境変数は、次の値を取ることができます。
+
+* fatal
+* error
+* warning
+* info
+* debug
+* verbose
+
+<!-- end 1.2 -->
+:::moniker-end
+
+IoT Hub デバイスと IoT デバイスの間で送信されたメッセージを確認することもできます。 [Visual Studio Code 用の Azure IoT Hub 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)を使用して、これらのメッセージを表示します。 詳細については、[Azure IoT で開発するときの便利なツール](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)に関するページを参照してください。
 
 ## <a name="restart-containers"></a>コンテナーを再起動する
 

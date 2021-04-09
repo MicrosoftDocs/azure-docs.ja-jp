@@ -8,10 +8,10 @@ ms.date: 03/23/2020
 author: timsander1
 ms.author: tisande
 ms.openlocfilehash: e096de5eea9bf5bbd47b976976192e62eb6aa33e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93096412"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API と共に Robo 3T を使用する
@@ -39,7 +39,7 @@ Robo 3T 接続マネージャーに Cosmos DB アカウントを追加するに�
 4. **[接続の設定]** ウィンドウで、名前を選択します。 次に、手順 1. の接続情報の **[ホスト]** と **[ポート]** に示されている **アドレス** と **ポート** をそれぞれ入力します。
 
     :::image type="content" source="./media/mongodb-robomongo/manageconnections.png" alt-text="Robomongo 管理接続のスクリーンショット":::
-5. **[認証]** タブで **[Perform authentication (認証の実行)]** をクリックします。 次に、データベース (既定値は *Admin* )、 **ユーザー名** 、 **パスワード** を入力します。
+5. **[認証]** タブで **[Perform authentication (認証の実行)]** をクリックします。 次に、データベース (既定値は *Admin*)、**ユーザー名**、**パスワード** を入力します。
 この **ユーザー名** と **パスワード** は両方とも、手順 1 の接続情報に示されています。
 
     :::image type="content" source="./media/mongodb-robomongo/authentication.png" alt-text="Robomongo の [認証] タブのスクリーンショット":::

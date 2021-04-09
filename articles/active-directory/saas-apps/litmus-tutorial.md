@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
 ms.openlocfilehash: f2168715d59f9698cba58b7e91bbc897a8cd94f6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98727251"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmus"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Litmus の統合
@@ -140,7 +140,7 @@ Litmus に対して Azure AD SSO を構成してテストするには、次の�
 
     b. プロバイダーに **[Generic]\(汎用\)** を選択します。
 
-    c. **[Identity Provider Name]\(ID プロバイダー名\)** の名前を入力します。例: for ex. `Azure AD`
+    c. **[Identity Provider Name]\(ID プロバイダー名\)** の名前を入力します。例: 例: `Azure AD`
 
 1. 次の手順に従います。
 

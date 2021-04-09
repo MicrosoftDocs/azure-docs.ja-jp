@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: fad49db94195bbd2f9e5e32f8596f33fab586752
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97858520"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Resource Manager とは

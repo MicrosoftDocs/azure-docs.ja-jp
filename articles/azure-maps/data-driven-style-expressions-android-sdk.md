@@ -3,17 +3,18 @@ title: Android マップ でのデータ ドリブンのスタイルの式 | Mic
 description: データドリブンのスタイルの式について説明します。 Azure Maps Android SDK でこれらの式を使用し、マップ内のスタイルを調整する方法を確認してください。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/1/2020
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 61d7a295d86fd7da74dee03cd35c79feea0218ed
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 1babf1feb550109486089c45469ab4ce32f72cb3
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681351"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097416"
 ---
 # <a name="data-driven-style-expressions-android-sdk"></a>データ ドリブンのスタイルの式 (Android SDK)
 
@@ -38,6 +39,9 @@ Azure Maps Android SDK では、Azure Maps Web SDK とほぼすべて同じス�
 | [変数バインド式](#variable-binding-expressions) | 変数バインド式では、計算結果を変数に格納して、格納された値を再計算することなく、式内の別の場所で繰り返し参照することができます。 |
 | [ズーム式](#zoom-expression) | レンダリング時に、マップの現在のズーム レベルを取得します。 |
 
+> [!NOTE]
+> 式の構文は、Java と Kotlin ではほぼ同じです。 ドキュメントを Kotlin に設定しているが、Java 用のコード ブロックを参照している場合、コードは両方の言語で同じになります。
+
 このドキュメントのこのセクションのすべての例では、次の機能を使用して、これらの式を使用できるさまざまな方法を示します。
 
 ```json
@@ -47,7 +51,7 @@ Azure Maps Android SDK では、Azure Maps Web SDK とほぼすべて同じス�
         "type": "Point",
         "coordinates": [-122.13284, 47.63699]
     },
-    "properties": { 
+    "properties": {
         "id": 123,
         "entityType": "restaurant",
         "revenue": 12345,
@@ -65,6 +69,8 @@ Azure Maps Android SDK では、Azure Maps Web SDK とほぼすべて同じス�
 ```
 
 次のコードは、アプリでこの GeoJSON 機能を手動で作成する方法を示しています。
+
+::: zone pivot="programming-language-java-android"
 
 ```Java
 //Create a point feature.
@@ -106,13 +112,73 @@ style.addProperty("fillColor", "red");
 feature.addProperty("_style", style);
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a point feature.
+val feature = Feature.fromGeometry(Point.fromLngLat(-100, 45))
+
+//Add properties to the feature.
+feature.addNumberProperty("id", 123)
+feature.addStringProperty("entityType", "restaurant")
+feature.addNumberProperty("revenue", 12345)
+feature.addStringProperty("subTitle", "Building 40")
+feature.addNumberProperty("temperature", 64)
+feature.addStringProperty("title", "Cafeteria")
+feature.addStringProperty("zoneColor", "purple")
+
+val abcArray = JsonArray()
+abcArray.add("a")
+abcArray.add("b")
+abcArray.add("c")
+
+feature.addProperty("abcArray", abcArray)
+
+val array1 = JsonArray()
+array1.add("a")
+array1.add("b")
+
+val array2 = JsonArray()
+array1.add("x")
+array1.add("y")
+
+val array2d = JsonArray()
+array2d.add(array1)
+array2d.add(array2)
+
+feature.addProperty("array2d", array2d)
+
+val style = JsonObject()
+style.addProperty("fillColor", "red")
+
+feature.addProperty("_style", style)
+```
+
+::: zone-end
+
 次のコードは、文字列化されたバージョンの JSON オブジェクトをアプリの GeoJSON 機能に逆シリアル化する方法を示しています。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 String featureString = "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-122.13284,47.63699]},\"properties\":{\"id\":123,\"entityType\":\"restaurant\",\"revenue\":12345,\"subTitle\":\"Building 40\",\"temperature\":64,\"title\":\"Cafeteria\",\"zoneColor\":\"purple\",\"abcArray\":[\"a\",\"b\",\"c\"],\"array2d\":[[\"a\",\"b\"],[\"x\",\"y\"]],\"_style\":{\"fillColor\":\"red\"}}}";
 
 Feature feature = Feature.fromJson(featureString);
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val featureString = "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-122.13284,47.63699]},\"properties\":{\"id\":123,\"entityType\":\"restaurant\",\"revenue\":12345,\"subTitle\":\"Building 40\",\"temperature\":64,\"title\":\"Cafeteria\",\"zoneColor\":\"purple\",\"abcArray\":[\"a\",\"b\",\"c\"],\"array2d\":[[\"a\",\"b\"],[\"x\",\"y\"]],\"_style\":{\"fillColor\":\"red\"}}}"
+
+val feature = Feature.fromJson(featureString)
+```
+
+::: zone-end
 
 ## <a name="json-based-expressions"></a>JSON ベースの式
 
@@ -125,9 +191,21 @@ JSON.stringify(exp); // = "['get','title']"
 
 上記の式の文字列化されたバージョンは `"['get','title']"` であり、次のように Android SDK に読み取ることができます。
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 Expression exp = Expression.raw("['get','title']")
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val exp = Expression.raw("['get','title']")
+```
+
+::: zone-end
 
 このアプローチを使用すると、Azure Maps を使用するモバイルおよび Web アプリ間でスタイル式を簡単に再利用できるようになります。
 
@@ -162,17 +240,34 @@ Expression exp = Expression.raw("['get','title']")
 
 機能のプロパティには、`get` 式を使用して式内で直接アクセスできます。 この例では、機能の `zoneColor` 値を使用して、バブル レイヤーの色のプロパティを指定します。
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     //Get the zoneColor value.
     bubbleColor(get("zoneColor"))
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    //Get the zoneColor value.
+    bubbleColor(get("zoneColor"))
+)
+```
+
+::: zone-end
+
 上の例は、すべてのポイント機能に `zoneColor` プロパティがある場合、問題なく動作します。 そうでない場合は、色が "黒色" にフォールバックする可能性があります。 フォールバックの色を変更するには、`switchCase` 式と `has` 式を組み合わせて使用して、このプロパティが存在するかどうかをチェックします。 このプロパティが存在しない場合は、フォールバックの色が返されます。
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     bubbleColor(
         //Use a conditional case expression.
         switchCase(
@@ -189,21 +284,73 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    bubbleColor(
+        //Use a conditional case expression.
+        switchCase(
+            //Check to see if feature has a "zoneColor" 
+            has("zoneColor"), 
+
+            //If it does, use it.
+            get("zoneColor"), 
+
+            //If it doesn't, default to blue.
+            literal("blue")
+        )
+    )
+)
+```
+
+::: zone-end
+
 バブルとシンボルのレイヤーでは、既定でデータ ソース内のすべての図形の座標がレンダリングされます。 この動作により、多角形または線の頂点を強調表示できます。 レイヤーの `filter` オプションを使用すると、ブール式内で `geometryType` 式を使用して、レンダリングする機能の geometry 型を制限できます。 次の例では、`Point` 機能のみがレンダリングされるようにバブル レイヤーを制限できます。
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     filter(eq(geometryType(), "Point"))
 );
 ```
 
-次の例では、`Point` 機能と `MultiPoint` 機能の両方をレンダリングできます。 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    filter(eq(geometryType(), "Point"))
+)
+```
+
+::: zone-end
+
+次の例では、`Point` 機能と `MultiPoint` 機能の両方をレンダリングできます。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     filter(any(eq(geometryType(), "Point"), eq(geometryType(), "MultiPoint")))
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    filter(any(eq(geometryType(), "Point"), eq(geometryType(), "MultiPoint")))
+)
+```
+
+::: zone-end
 
 同様に、線レイヤーでは多角形のアウトラインがレンダリングされます。 線レイヤーでこの動作を無効にするには、`LineString` 機能と `MultiLineString` 機能のみを許可するフィルターを追加します。  
 
@@ -250,7 +397,7 @@ has("fillColor", get("_style"))
 | `ln2()` | number | 数理定数 `ln(2)` が返されます。 |
 | `max(numbers... | expressions...)` | number | 指定された数値セット内の最大数が計算されます。 |
 | `min(numbers... | expressions...)` | number | 指定された数値セット内の最小数が計算されます。 |
-| `mod(number, number)` \| | `mod(Expression, Expression)` | number | 1 番目の数値を 2 番目の数値で除算した際の剰余が計算されます。 Web SDK の同等の式: `%` |
+| `mod(number, number)` \| `mod(Expression, Expression)` | number | 1 番目の数値を 2 番目の数値で除算した際の剰余が計算されます。 Web SDK の同等の式: `%` |
 | `pi()` | number | 数理定数 `PI` が返されます。 |
 | `pow(number, number)` \| `pow(Expression, Expression)` | number | 1 番目の値を 2 番目の数値で累乗した値が計算されます。 |
 | `product(numbers... | expressions...)` | number | 指定された数値が乗算されます。 Web SDK の同等の式: `*` |
@@ -284,7 +431,7 @@ has("fillColor", get("_style"))
 
 条件式では、if ステートメントのようなロジック操作が提供されます。
 
-次の式では、入力データに対して条件付きロジック操作を実行します。 たとえば、`switchCase` 式では "if/then/else" ロジックを提供する一方、`match` 式は "switch ステートメント" に似ています。 
+次の式では、入力データに対して条件付きロジック操作を実行します。 たとえば、`switchCase` 式では "if/then/else" ロジックを提供する一方、`match` 式は "switch ステートメント" に似ています。
 
 ### <a name="switch-case-expression"></a>Switch case 式
 
@@ -307,8 +454,10 @@ switchCase(
 
 次の例では、さまざまなブール条件を通過し、`true` に評価されるものが見つかったら、その関連値が返されます。 `true` に評価されるブール条件がない場合は、フォールバック値が返されます。
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     bubbleColor(
         switchCase(
             //Check to see if the first boolean expression is true, and if it is, return its assigned result.
@@ -326,6 +475,31 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    bubbleColor(
+        switchCase(
+            //Check to see if the first boolean expression is true, and if it is, return its assigned result.
+            //If it has a zoneColor property, use its value as a color.
+            has("zoneColor"), toColor(get("zoneColor")),
+
+            //Check to see if the second boolean expression is true, and if it is, return its assigned result.
+            //If it has a temperature property with a value greater than or equal to 100, make it red.
+            all(has("temperature"), gte(get("temperature"), 100)), color(Color.RED),
+            
+            //Specify a default value to return. In this case green.
+            color(Color.GREEN)
+        )
+    )
+)
+```
+
+::: zone-end
+
 ### <a name="match-expression"></a>match 式
 
 `match` 式は、ロジックなどの switch ステートメントを提供する一種の条件式です。 入力には、文字列または数値を返す `get( "entityType")` などの任意の式を使用できます。 各分岐点には、1 つのリテラル値、または値がすべて文字列またはすべて数値であるリテラル値の配列が必要です。 配列内のいずれかの値が一致する場合、入力は一致します。 各分岐点ラベルは一意である必要があります。 入力の型がラベルの型と一致しない場合、結果は既定のフォールバック値になります。
@@ -340,8 +514,10 @@ match(Expression input, Expression defaultOutput, Expression.Stop... stops)
 
 次の例では、バブル レイヤー内のポイント機能の `entityType` プロパティを確認し、一致を検索します。 一致が見つかると、その指定値が返されるか、フォールバック値が返されます。
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     bubbleColor(
         match(
             //Get the input value to match.
@@ -362,10 +538,40 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    bubbleColor(
+        match(
+            //Get the input value to match.
+            get("entityType"),
+
+            //Specify a default value to return if no match is found.
+            color(Color.BLACK),
+
+            //List the values to match and the result to return for each match.
+
+            //If value is "restaurant" return "red".
+            stop("restaurant", color(Color.RED)),
+
+            //If value is "park" return "green".
+            stop("park", color(Color.GREEN))
+        )
+    )
+)
+```
+
+::: zone-end
+
 次の例では、配列を使用して、すべて同じ値を返すラベルのセットを一覧表示します。 この方法は、各ラベルを個々に一覧表示するよりもはるかに効率的です。 この場合、`entityType` プロパティが "restaurant" または "grocery_store" であれば、色 "red" が返されます。
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     bubbleColor(
         match(
             //Get the input value to match.
@@ -386,6 +592,34 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    bubbleColor(
+        match(
+            //Get the input value to match.
+            get("entityType"),
+
+            //Specify a default value to return if no match is found.
+            color(Color.BLACK),
+
+            //List the values to match and the result to return for each match.
+
+            //If value is "restaurant" or "grocery_store" return "red".
+            stop(arrayOf("restaurant", "grocery_store"), color(Color.RED)),
+
+            //If value is "park" return "green".
+            stop("park", color(Color.GREEN))
+        )
+    )
+)
+```
+
+::: zone-end
+
 ### <a name="coalesce-expression"></a>coalesce 式
 
 `coalesce` 式では、一連の式を通過し、最初の null 以外の値を取得したら、その値が返されます。
@@ -398,10 +632,12 @@ coalesce(Expression... input)
 
 **例**
 
-次の例では、`coalesce` 式を使用して、シンボル レイヤーの `textField` オプションを設定します。 `title` プロパティが機能内にないか、`null` に設定されている場合は、式で `subTitle` プロパティの検索が試行されます。このプロパティがないか `null` である場合は、空の文字列にフォールバックされます。 
+次の例では、`coalesce` 式を使用して、シンボル レイヤーの `textField` オプションを設定します。 `title` プロパティが機能内にないか、`null` に設定されている場合は、式で `subTitle` プロパティの検索が試行されます。このプロパティがないか `null` である場合は、空の文字列にフォールバックされます。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
-SymbolLayer layer = new SymbolLayer(dataSource,
+SymbolLayer layer = new SymbolLayer(source,
     textField(
         coalesce(
             //Try getting the title property.
@@ -417,6 +653,29 @@ SymbolLayer layer = new SymbolLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = SymbolLayer(source,
+    textField(
+        coalesce(
+            //Try getting the title property.
+            get("title"),
+
+            //If there is no title, try getting the subTitle. 
+            get("subTitle"),
+
+            //Default to an empty string.
+            literal("")
+        )
+    )
+)
+```
+
+::: zone-end
+
 ## <a name="type-expressions"></a>型式
 
 型式では、文字列、数値、ブール値などのさまざまなデータ型をテストおよび変換するためのツールを提供します。
@@ -425,7 +684,7 @@ SymbolLayer layer = new SymbolLayer(dataSource,
 |------------|-------------|-------------|
 | `array(Expression)` | Object[] | 入力が配列であることをアサートします。 |
 | `bool(Expression)` | boolean | 入力値がブール値であることをアサートします。 |
-| `collator(boolean caseSensitive, boolean diacriticSensitive)` \| `collator(boolean caseSensitive, boolean diacriticSensitive, java.util.Locale locale)` \| `collator(Expression caseSensitive, Expression diacriticSensitive)` \| `collator(Expression caseSensitive, Expression diacriticSensitive, Expression locale)` | collator | ロケールに依存する比較操作で使用する collator を返します。 大文字と小文字の区別と分音記号の区別のオプションは、既定で false に設定されています。 locale 引数は、使用するロケールの IETF 言語タグを指定します。 値が指定されない場合は、既定のロケールが使用されます。 要求されたロケールが使用できない場合、collator はシステム定義のフォールバック ロケールを使用します。 解決済みのロケールを使用して、ロケール フォールバック動作の結果をテストします。  |
+| `collator(boolean caseSensitive, boolean diacriticSensitive)` \| `collator(boolean caseSensitive, boolean diacriticSensitive, java.util.Locale locale)` \| `collator(Expression caseSensitive, Expression diacriticSensitive)` \| `collator(Expression caseSensitive, Expression diacriticSensitive, Expression locale)` | collator | ロケールに依存する比較操作で使用する collator が返されます。 大文字と小文字の区別と分音記号の区別のオプションは、既定で false に設定されています。 locale 引数は、使用するロケールの IETF 言語タグを指定します。 値が指定されない場合は、既定のロケールが使用されます。 要求されたロケールが使用できない場合、collator はシステム定義のフォールバック ロケールを使用します。 解決済みのロケールを使用して、ロケール フォールバック動作の結果をテストします。  |
 | `literal(boolean \| number \| string \| Object \| Object[])` | boolean \| number \| string \| Object \| Object[] | リテラル配列またはオブジェクト値が返されます。 配列またはオブジェクトが式として評価されないようにするには、この式を使用します。 この操作は、式で配列またはオブジェクトを返さなければならない場合に必要となります。 |
 | `number(Expression)` | number | 入力値が数値であることをアサートします。 |
 | `object(Expression)` | Object | 入力値がオブジェクトであることをアサートします。 |
@@ -452,8 +711,10 @@ SymbolLayer layer = new SymbolLayer(dataSource,
 
 次の例では、*red* 値 `255`、および `2.5` を `temperature` プロパティの値で乗算して計算された *green* 値と *blue* 値を含む、色の RGB 値が作成されます。 温度の変化に応じて、色はさまざまな色調の *red* に変化します。
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     bubbleColor(
         //Create a RGB color value.
         rgb(
@@ -470,10 +731,36 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    bubbleColor(
+        //Create a RGB color value.
+        rgb(
+            //Set red value to 255. Wrap with literal expression since using expressions for other values.
+            literal(255f),    
+
+            //Multiple the temperature by 2.5 and set the green value.
+            product(literal(2.5f), get("temperature")), 
+
+            //Multiple the temperature by 2.5 and set the blue value.
+            product(literal(2.5f), get("temperature")) 
+        )
+    )
+)
+```
+
+::: zone-end
+
 すべての色パラメーターが数値の場合、`literal` 式を使用してラップする必要はありません。 例:
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     bubbleColor(
         //Create a RGB color value.
         rgb(
@@ -487,6 +774,27 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    bubbleColor(
+        //Create a RGB color value.
+        rgb(
+            255f,  //Set red value to 255.
+
+            150f,  //Set green value to 150.
+
+            0f     //Set blue value to 0.
+        )
+    )
+)
+```
+
+::: zone-end
+
 > [!TIP]
 > 文字列の色の値は、`android.graphics.Color.parseColor` メソッドを使用して色に変換できます。 次の例では、16 進数の色の文字列を、レイヤーで使用できる色の式に変換します。
 >
@@ -496,7 +804,7 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 
 ## <a name="string-operator-expressions"></a>文字列演算子式
 
-文字列演算子式では、連結や大文字と小文字の変換など、文字列の変換操作を実行します。 
+文字列演算子式では、連結や大文字と小文字の変換など、文字列の変換操作を実行します。
 
 | 式 | の戻り値の型 : | 説明 |
 |------------|-------------|-------------|
@@ -510,8 +818,10 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 
 次の例では、ポイント機能の `temperature` プロパティが文字列に変換され、その末尾に "°F" が連結されます。
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-SymbolLayer layer = new SymbolLayer(dataSource,
+SymbolLayer layer = new SymbolLayer(source,
     textField(
         concat(Expression.toString(get("temperature")), literal("°F"))
     ),
@@ -522,6 +832,25 @@ SymbolLayer layer = new SymbolLayer(dataSource,
     textColor("white")
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = SymbolLayer(source,
+    textField(
+        concat(Expression.toString(get("temperature")), literal("°F"))
+    ),
+
+    //Some additional style options.
+    textOffset(new Float[] { 0f, -1.5f }),
+    textSize(12f),
+    textColor("white")
+)
+```
+
+::: zone-end
 
 上記の式では、次の図に示すように、テキスト "64°F" が上にオーバーレイされたピンをマップ上にレンダリングします。
 
@@ -545,15 +874,15 @@ interpolate(Expression.Interpolator interpolation, Expression number, Expression
 
 `interpolate` 式で使用できる補間メソッドには、次の 3 種類があります。
 
-| 名前 | [説明] | 
+| 名前 | [説明] |
 |------|-------------|
 | `linear()` | 分岐点のペア間を直線的に補間します。  |
 | `exponential(number)` \| `exponential(Expression)` | 分岐点間を指数関数的に補間します。 「基数」が指定されており、出力の増加率を制御します。 この値が大きくなるほど、出力は範囲の上限値に偏るように増加します。 「基数」の値が 1 に近づくと、より直線的に増加する出力が生成されます。|
 | `cubicBezier(number x1, number y1, number x2, number y2)` \| `cubicBezier(Expression x1, Expression y1, Expression x2, Expression y2)` | 指定された制御点により定義された [3 次ベジエ曲線](https://developer.mozilla.org/docs/Web/CSS/timing-function)を使用して補間します。 |
 
 `stop` 式の書式は `stop(stop, value)` です。
- 
-これらの異なる種類の補間の外観の例を次に示します。 
+
+これらの異なる種類の補間の外観の例を次に示します。
 
 | Linear  | 指数 | 3 次ベジエ |
 |---------|-------------|--------------|
@@ -563,8 +892,10 @@ interpolate(Expression.Interpolator interpolation, Expression number, Expression
 
 次の例では、`linear interpolate` 式を使用して、ポイント機能の `temperature` プロパティに基づきバブル レイヤーの `bubbleColor` プロパティが設定されます。 `temperature` 値が 60 未満の場合、"blue" が返されます。 60 以上 70 未満の場合は、yellow が返されます。 70 以上 80 未満の場合は、"orange" (`#FFA500`) が返されます。 80 以上の場合は、"red" が返されます。
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     bubbleColor(
         interpolate(
             linear(),
@@ -578,13 +909,34 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    bubbleColor(
+        interpolate(
+            linear(),
+            get("temperature"),
+            stop(50, color(Color.BLUE)),
+            stop(60, color(Color.YELLOW)),
+            stop(70, color(parseColor("#FFA500"))),
+            stop(80, color(Color.RED))
+        )
+    )
+)
+```
+
+::: zone-end
+
 次の図では、上記の式に対して色を選択する方法を示します。
 
 ![補間式の例](media/how-to-expressions/interpolate-expression-example.png)
 
 ### <a name="step-expression"></a>ステップ式
 
-`step` 式を使用すると、分岐点により定義された[区分定数関数](http://mathworld.wolfram.com/PiecewiseConstantFunction.html)を評価することで、非連続的な階段状の結果値を計算できます。 
+`step` 式を使用すると、分岐点により定義された[区分定数関数](http://mathworld.wolfram.com/PiecewiseConstantFunction.html)を評価することで、非連続的な階段状の結果値を計算できます。
 
 `interpolate` 式の書式は次のとおりです。
 
@@ -606,14 +958,16 @@ step(number input, number defaultOutput, Expression... stops)
 step(number input, number defaultOutput, Expression.Stop... stops)
 ```
 
-ステップ式では、入力値の直前の分岐点の出力値が返されます。または、入力値が最初の分岐点より小さい場合、最初の入力値が返されます。 
+ステップ式では、入力値の直前の分岐点の出力値が返されます。または、入力値が最初の分岐点より小さい場合、最初の入力値が返されます。
 
 **例**
 
 次の例では、`step` 式を使用して、ポイント機能の `temperature` プロパティに基づきバブル レイヤーの `bubbleColor` プロパティが設定されます。 `temperature` 値が 60 未満の場合、"blue" が返されます。 60 以上 70 未満の場合は、"yellow" が返されます。 70 以上 80 未満の場合は、"orange" が返されます。 80 以上の場合は、"red" が返されます。
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     bubbleColor(
         step(
             get("temperature"),
@@ -626,8 +980,28 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    bubbleColor(
+        step(
+            get("temperature"),
+            color(Color.BLUE),
+            stop(60, color(Color.YELLOW)),
+            stop(70, color(parseColor("#FFA500"))),
+            stop(80, color(Color.RED))
+        )
+    )
+)
+```
+
+::: zone-end
+
 次の図では、上記の式に対して色を選択する方法を示します。
- 
+
 ![ステップ式の例](media/how-to-expressions/step-expression-example.png)
 
 ## <a name="layer-specific-expressions"></a>レイヤー固有の式
@@ -643,10 +1017,12 @@ BubbleLayer layer = new BubbleLayer(dataSource,
 
 **例**
 
-この例では、線形補間式を使用して、ヒート マップをレンダリングするための滑らかな色のグラデーションを作成します。 
+この例では、線形補間式を使用して、ヒート マップをレンダリングするための滑らかな色のグラデーションを作成します。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
-HeatMapLayer layer = new HeatMapLayer(dataSource,
+HeatMapLayer layer = new HeatMapLayer(source,
     heatmapColor(
         interpolate(
             linear(),
@@ -660,10 +1036,33 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 );
 ```
 
-滑らかなグラデーションを使用してヒート マップを色分けするのに加えて、`step` 式を使用して、範囲のセット内で色を指定することができます。 ヒート マップの色分けに `step` 式を使用すると、密度は、等高線またはレーダー スタイル マップのような範囲に視覚的に分割されます。  
+::: zone-end
 
-```java 
-HeatMapLayer layer = new HeatMapLayer(dataSource,
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+    heatmapColor(
+        interpolate(
+            linear(),
+            heatmapDensity(),
+            stop(0, color(Color.TRANSPARENT)),
+            stop(0.01, color(Color.MAGENTA)),
+            stop(0.5, color(parseColor("#fb00fb"))),
+            stop(1, color(parseColor("#00c3ff")))
+        )
+    )
+)
+```
+
+::: zone-end
+
+滑らかなグラデーションを使用してヒート マップを色分けするのに加えて、`step` 式を使用して、範囲のセット内で色を指定することができます。 ヒート マップの色分けに `step` 式を使用すると、密度は、等高線またはレーダー スタイル マップのような範囲に視覚的に分割されます。
+
+::: zone pivot="programming-language-java-android"
+
+```java
+HeatMapLayer layer = new HeatMapLayer(source,
     heatmapColor(
         step(
             heatmapDensity(),
@@ -678,7 +1077,84 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+    heatmapColor(
+        step(
+            heatmapDensity(),
+            color(Color.TRANSPARENT),
+            stop(0.01, color(parseColor("#000080"))),
+            stop(0.25, color(parseColor("#000080"))),
+            stop(0.5, color(Color.GREEN)),
+            stop(0.5, color(Color.YELLOW)),
+            stop(1, color(Color.RED))
+        )
+    )
+)
+```
+
+::: zone-end
+
 詳細については、[ヒート マップ レイヤーの追加](map-add-heat-map-layer-android.md)に関するドキュメントを参照してください。
+
+### <a name="line-progress-expression"></a>線形進行状況の式
+
+線形進行状況の式では、線レイヤー内のグラデーション線に沿って進行状況を取得します。この式は `lineProgress()` として定義されます。 この値は 0 から 1 までの数値です。 これは `interpolation` 式または `step` 式と組み合わせて使用されます。 この式は、線レイヤーの `strokeGradient` オプションでのみ使用できます。
+
+> [!NOTE]
+> 線レイヤーの `strokeGradient` オプションでは、データ ソースの `lineMetrics` オプションが `true` に設定される必要があります。
+
+**例**
+
+この例では、`lineProgress()` 式を使用して、線のストロークに色のグラデーションを適用します。
+
+::: zone pivot="programming-language-java-android"
+
+```java
+LineLayer layer = new LineLayer(source,
+    strokeGradient(
+        interpolate(
+            linear(),
+            lineProgress(),
+            stop(0, color(Color.BLUE)),
+            stop(0.1, color(Color.argb(255, 65, 105, 225))), //Royal Blue
+            stop(0.3, color(Color.CYAN)),
+            stop(0.5, color(Color.argb(255,0, 255, 0))), //Lime
+            stop(0.7, color(Color.YELLOW)),
+            stop(1, color(Color.RED))
+        )
+    )
+);
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = LineLayer(source,
+    strokeGradient(
+        interpolate(
+            linear(),
+            lineProgress(),
+            stop(0, color(Color.BLUE)),
+            stop(0.1, color(Color.argb(255, 65, 105, 225))), //Royal Blue
+            stop(0.3, color(Color.CYAN)),
+            stop(0.5, color(Color.argb(255,0, 255, 0))), //Lime
+            stop(0.7, color(Color.YELLOW)),
+            stop(1, color(Color.RED))
+        )
+    )
+)
+```
+
+::: zone-end
+
+[実際に操作できる例をご覧ください](map-add-line-layer.md#line-stroke-gradient)
 
 ### <a name="text-field-format-expression"></a>テキスト フィールドの書式指定式
 
@@ -700,8 +1176,10 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 
 次の例では、太字フォントを追加し、機能の `title` プロパティのフォント サイズをスケール アップすることで、テキスト フィールドを書式設定します。 また、この例では、フォント サイズをスケール ダウンして、改行で機能の `subTitle` プロパティを追加します。
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-SymbolLayer layer = new SymbolLayer(dataSource,
+SymbolLayer layer = new SymbolLayer(source,
     textField(
         format(
             //Bold the title property and scale its font size up.
@@ -722,6 +1200,34 @@ SymbolLayer layer = new SymbolLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = SymbolLayer(source,
+    textField(
+        format(
+            //Bold the title property and scale its font size up.
+            formatEntry(
+                get("title"),
+                formatTextFont(arrayOf("StandardFont-Bold")),
+                formatFontScale(1.25)),
+
+            //Add a new line without any formatting.
+            formatEntry("\n"),
+
+            //Scale the font size down of the subTitle property.
+            formatEntry(
+                get("subTitle"),
+                formatFontScale(0.75))
+        )
+    )
+)
+```
+
+::: zone-end
+
 次の図に示すように、このレイヤーではポイント機能がレンダリングされます。
 
 ![書式設定されたテキスト フィールドを含むポイント機能の図](media/how-to-expressions/text-field-format-expression.png)
@@ -734,8 +1240,10 @@ SymbolLayer layer = new SymbolLayer(dataSource,
 
 既定では、ヒート マップ レイヤーにレンダリングされるデータ ポイントの半径には、すべてのズーム レベルの固定ピクセル半径が含まれます。 マップがズームされると、データがまとめて集計され、ヒート マップ レイヤーの外観が変化します。 `zoom` 式を使用すると、各データ ポイントによってマップの同じ物理領域がカバーされるように、各ズーム レベルの半径をスケーリングできます。 これにより、ヒート マップ レイヤーの外観は、より静的で一貫性の高いものになります。 マップの各ズーム レベルは、垂直方向および水平方向のピクセル数がすぐ下のズーム レベルの 2 倍になっています。 ズーム レベルごとに半径が 2 倍になるようにスケーリングすると、すべてのズーム レベルで外観に一貫性のあるヒート マップが作成されます。 これを実現するには、次のように、`zoom` 式と `base 2 exponential interpolation` 式を使用し、最小ズーム レベルに設定されたピクセル半径と最大ズーム レベルにスケーリングされた半径を `2 * Math.pow(2, minZoom - maxZoom)` として計算します。
 
-```java 
-HeatMapLayer layer = new HeatMapLayer(dataSource,
+::: zone pivot="programming-language-java-android"
+
+```java
+HeatMapLayer layer = new HeatMapLayer(source,
     heatmapRadius(
         interpolate(
             exponential(2),
@@ -751,6 +1259,29 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 );
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = HeatMapLayer(source,
+    heatmapRadius(
+        interpolate(
+            exponential(2),
+            zoom(),
+
+            //For zoom level 1 set the radius to 2 pixels.
+            stop(1, 2),
+
+            //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 2 * (maxZoom - minZoom)^2 pixels.
+            stop(19, 2 * Math.pow(2, 19 - 1))
+        )
+    )
+)
+```
+
+::: zone-end
+
 ## <a name="variable-binding-expressions"></a>変数バインド式
 
 変数バインド式は、計算結果を変数に格納します。 そのため、計算結果は式内の別の場所で繰り返し参照することができます。 これは、多くの計算を含む式で便利な最適化です。
@@ -764,8 +1295,10 @@ HeatMapLayer layer = new HeatMapLayer(dataSource,
 
 この例では、温度の比率を基準として収益を計算する式を使用した後、`case` 式を使用して、この値に対してさまざまなブール演算子を評価します。 `let` 式は、温度を基準とした収益の比率を格納するために使用され、その結果、1 回だけ計算すればよくなります。 `var` 式は、必要に応じてこの変数を再計算することなく何度も参照できます。
 
+::: zone pivot="programming-language-java-android"
+
 ```java
-BubbleLayer layer = new BubbleLayer(dataSource,
+BubbleLayer layer = new BubbleLayer(source,
     bubbleColor(           
         let(
             //Divide the point features `revenue` property by the `temperature` property and store it in a variable called `ratio`.
@@ -786,6 +1319,35 @@ BubbleLayer layer = new BubbleLayer(dataSource,
     )
 );
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = BubbleLayer(source,
+    bubbleColor(           
+        let(
+            //Divide the point features `revenue` property by the `temperature` property and store it in a variable called `ratio`.
+            literal("ratio"), division(get("revenue"), get("temperature")),
+
+            //Evaluate the child expression in which the stored variable will be used.
+            switchCase(
+                //Check to see if the ratio is less than 100, return 'red'.
+                lt(var("ratio"), 100), color(Color.RED),
+
+                //Check to see if the ratio is less than 200, return 'green'.
+                lt(var("ratio"), 200), color(Color.GREEN),
+
+                //Return `blue` for values greater or equal to 200.
+                color(Color.BLUE)
+            )
+        )
+    )
+)
+```
+
+::: zone-end
 
 ## <a name="next-steps"></a>次のステップ
 

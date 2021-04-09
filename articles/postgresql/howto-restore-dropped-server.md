@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/03/2020
 ms.openlocfilehash: 591f01004cfba247112f702625ab05ddc0aaede3
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97652927"
 ---
 # <a name="restore-a-dropped-azure-database-for-postgresql-server"></a>ドロップした Azure Database for PostgreSQL サーバーを復元する

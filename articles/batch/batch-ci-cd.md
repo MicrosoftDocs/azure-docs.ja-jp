@@ -3,66 +3,42 @@ title: Azure Pipelines を使用した HPC ソリューションのビルドと�
 description: Azure Batch で実行する HPC アプリケーションのビルド/リリース パイプラインをデプロイする方法について説明します。
 author: chrisreddington
 ms.author: chredd
-ms.date: 03/28/2019
+ms.date: 03/04/2021
 ms.topic: how-to
-ms.openlocfilehash: e87be0db65cf12a265566e0c05815722ce3cc609
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 7170044af58a508ff5a43751cc376f8b8d498444
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578877"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102435547"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Azure Pipelines を使用する HPC ソリューションの構築とデプロイ
 
-Azure DevOps サービスでは、開発チームがカスタム アプリケーションの構築時に使用するさまざまなツールが提供されています。 Azure DevOps によって提供されるツールを、ハイ パフォーマンス コンピューティング ソリューションの自動構築とテストに利用できます。 この記事では、Azure Batch にデプロイされるハイ パフォーマンス コンピューティング ソリューションのために、Azure Pipelines を使用して継続的インテグレーション (CI) と継続的配置 (CD) をどのように設定するかを説明します。
+Azure DevOps によって提供されるツールを、ハイ パフォーマンス コンピューティング (HPC) ソリューションの自動構築とテストに利用できます。 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) には、ソフトウェアの構築、デプロイ、テスト、および監視を行うための最新の継続的インテグレーション (CI) と継続的配置 (CD) の各プロセスが各種用意されています。 これらのプロセスによってソフトウェアの提供が早まるため、サポート インフラストラクチャや操作ではなくコードに集中することができます。
 
-Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト、および監視のためにさまざまな最新 CI/CD プロセスが提供されます。 これらのプロセスによってソフトウェアの提供が早まるため、サポート インフラストラクチャや操作ではなくコードに集中することができます。
+この記事では、Azure Batch にデプロイされた HPC ソリューションに対して、[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) を使用して CI/CD プロセスを設定する方法について説明します。
+
+## <a name="prerequisites"></a>前提条件
+
+この記事の手順を実行するには、[Azure DevOps 組織](/azure/devops/organizations/accounts/create-organization)が必要です。 また、[Azure DevOps でプロジェクトを作成する](/azure/devops/organizations/projects/create-project)必要もあります。
+
+開始する前に、[ソース管理](/azure/devops/user-guide/source-control)と [Azure Resource Manager テンプレートの構文](../azure-resource-manager/templates/template-syntax.md)の基本を理解しておくと役立ちます。
 
 ## <a name="create-an-azure-pipeline"></a>Azure パイプラインを作成する
 
-この例では、Azure Batch インフラストラクチャをデプロイしてアプリケーション パッケージをリリースするためのビルド パイプラインとリリース パプラインを作成します。 コードがローカルで開発される場合、一般的なデプロイ フローは次のようになります。
+この例では、Azure Batch インフラストラクチャをデプロイしてアプリケーション パッケージをリリースするためのビルドとリリースのパイプラインを作成します。 コードがローカルで開発される場合、一般的なデプロイ フローは次のようになります。
 
-![パイプラインのデプロイ フローを示す図](media/batch-ci-cd/DeploymentFlow.png)
+![パイプラインのデプロイ フローを示す図。](media/batch-ci-cd/DeploymentFlow.png)
 
-### <a name="setup"></a>セットアップ
+このサンプルでは、いくつかの Azure Resource Manager テンプレートと既存のバイナリを使用します。 これらのサンプルをリポジトリにコピーして、Azure DevOps にプッシュできます。
 
-この記事の手順を行うには、Azure DevOps 組織とチーム プロジェクトが必要です。
+### <a name="understand-the-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートについて理解する
 
-* [Azure DevOps 組織の作成](/azure/devops/organizations/accounts/create-organization)
-* [Azure DevOps でのプロジェクトの作成](/azure/devops/organizations/projects/create-project)
+この例では、いくつかの Azure Resource Manager テンプレートを使用してソリューションをデプロイします。 特定の機能を実装するために、3 つの機能テンプレート (ユニットまたはモジュールに似ている) を使用します。 次に、エンド ツー エンドのソリューション テンプレート (deployment.json) を使用して、基になるそれらの機能テンプレートをデプロイします。 この[リンク済みテンプレート構造](../azure-resource-manager/templates/deployment-tutorial-linked-template.md)を使用すると、各機能テンプレートを個別にテストし、ソリューション間で再利用できます。
 
-### <a name="source-control-for-your-environment"></a>環境のソース管理
+![Azure Resource Manager テンプレートを使用したリンク済みテンプレート構造を示す図。](media/batch-ci-cd/ARMTemplateHierarchy.png)
 
-ソース管理によって、チームがコードベースに加えられた変更を追跡して、コードの以前のバージョンを確認できるようになります。
-
-通常、ソース管理はソフトウェア コードと一緒に検討します。 基になるインフラストラクチャはどうすればよいでしょうか。 これは、Azure Resource Manager テンプレートまたは他のオープンソースの代替手段を使用して、基になるインフラストラクチャを宣言によって定義する Infrastructure as Code につながります。
-
-このサンプルは、多くの Resource Manager テンプレート (JSON ドキュメント) と既存のバイナリに大きく依存します。 これらのサンプルをリポジトリにコピーして、Azure DevOps にプッシュできます。
-
-このサンプルで使用されるコードベース構造は次のとおりです。
-
-* **arm-templates** フォルダー。多数の Azure Resource Manager テンプレートが含まれます。 この記事でテンプレートについて説明します。
-* **client-application** フォルダー。[ffmpeg による Azure Batch .NET ファイル処理](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial)サンプルのコピーです。 これはこの記事では必要ありません。
-* **hpc-application** フォルダー。Windows 64 ビット バージョンの [ffmpeg 4.3.1](https://github.com/GyanD/codexffmpeg/releases/tag/4.3.1-2020-11-08) です。
-* **pipelines** フォルダー。 これには、構築プロセスを示す YAML ファイルが含まれています。 これはこの記事で説明します。
-
-このセクションでは、バージョン管理と Resource Manager テンプレートの設計に習熟していることを前提としています。 これらの概念になじみがない場合は、以下のページで詳細を確認してください。
-
-* [ソース管理の概要](/azure/devops/user-guide/source-control)
-* [Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/templates/template-syntax.md)
-
-#### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
-
-この例では、複数の Resource Manager テンプレートを利用してソリューションをデプロイします。 これを行うために、特定の機能を実装している機能テンプレート (ユニットまたはモジュールに似ている) をいくつも使用します。 また、これらの基になる機能をまとめる役割を持つエンド ツー エンド テンプレートも使用します。 この方法には次の 2 つの利点があります。
-
-* 基になる機能テンプレートは、個別に単体テストを行うことができます。
-* 基になる機能テンプレートは、組織内で標準として定義でき、複数のソリューションで再利用できます。
-
-この例の場合は、3 つのテンプレートをデプロイするエンド ツー エンド ソリューション テンプレート (deployment.json) があります。 基になるテンプレートは、ソリューションの特定の機能をデプロイする機能テンプレートです。
-
-![Azure Resource Manager テンプレートを使用したリンク テンプレート構造の例](media/batch-ci-cd/ARMTemplateHierarchy.png)
-
-最初に説明するテンプレートは Azure Storage Account 用です。 このソリューションでは、アプリケーションを Batch アカウントにデプロイするためにストレージ アカウントが必要です。 ストレージ アカウント用の Resource Manager テンプレートを構築する際には、[Microsoft.Storage リソース タイプの Resource Manager テンプレートのリファレンス ガイド](/azure/templates/microsoft.storage/allversions)を参照することをお勧めします。
+このテンプレートにより、アプリケーションを Batch アカウントにデプロイするために必要な Azure ストレージアカウントが定義されます。 詳細については、[Microsoft.Storage リソースの種類の Resource Manager テンプレート リファレンス ガイド](/azure/templates/microsoft.storage/allversions)に関するページを参照してください。
 
 ```json
 {
@@ -102,7 +78,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 }
 ```
 
-次は、Azure Batch アカウントのテンプレートについて説明します。 Azure Batch アカウントは、プール (マシンのグループ) 全体で多数のアプリケーションを実行するためのプラットフォームとして機能します。 Batch アカウント用の Resource Manager テンプレートを構築する際には、[Microsoft.Batch リソース タイプの Resource Manager テンプレートのリファレンス ガイド](/azure/templates/microsoft.batch/allversions)を参照することをお勧めします。
+次のテンプレートにより、[Azure Batch アカウント](accounts.md)が定義されます。 Batch アカウントは、[プール](nodes-and-pools.md#pools)全体で多数のアプリケーションを実行するためのプラットフォームとして機能します。 詳細については、[Microsoft.Batch リソースの種類の Resource Manager テンプレート リファレンス ガイド](/azure/templates/microsoft.batch/allversions)に関するページを参照してください。
 
 ```json
 {
@@ -141,7 +117,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 }
 ```
 
-次のテンプレートは、Azure Batch プール (アプリケーションを処理するバックエンド マシン) を作成するサンプルです。 Batch アカウント プール用の Resource Manager テンプレートを構築する際には、[Microsoft.Batch リソース タイプの Resource Manager テンプレートのリファレンス ガイド](/azure/templates/microsoft.batch/allversions)を参照することをお勧めします。
+次のテンプレートにより、Batch アカウントに Batch プールが作成されます。 詳細については、[Microsoft.Batch リソースの種類の Resource Manager テンプレート リファレンス ガイド](/azure/templates/microsoft.batch/allversions)に関するページを参照してください。
 
 ```json
 {
@@ -187,9 +163,7 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 }
 ```
 
-最後に、オーケストレーターのように機能するテンプレートがあります。 このテンプレートには、機能テンプレートをデプロイする役割があります。
-
-[リンクされた Azure Resource Manager テンプレートの作成](../azure-resource-manager/templates/deployment-tutorial-linked-template.md)については別の記事でも詳しく説明しています。
+最後のテンプレートはオーケストレーターとして機能し、基になる 3 つの機能テンプレートをデプロイします。
 
 ```json
 {
@@ -199,13 +173,13 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
         "templateContainerUri": {
            "type": "string",
            "metadata": {
-                "description": "URI of the Blob Storage Container containing the Azure Resouce Manager templates"
+                "description": "URI of the Blob Storage Container containing the Azure Resource Manager templates"
             }
         },
         "templateContainerSasToken": {
            "type": "string",
            "metadata": {
-                "description": "The SAS token of the container containing the Azure Resouce Manager templates"
+                "description": "The SAS token of the container containing the Azure Resource Manager templates"
             }
         },
         "applicationStorageAccountName": {
@@ -287,20 +261,21 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 }
 ```
 
-#### <a name="the-hpc-solution"></a>HPC ソリューション
+### <a name="understand-the-hpc-solution"></a>HPC ソリューションについて理解する
 
-インフラストラクチャとソフトウェアはコードとして定義でき、同じリポジトリに一緒に配置できます。
+前述のように、このサンプルでは、いくつかの Azure Resource Manager テンプレートと既存のバイナリを使用します。 これらのサンプルをリポジトリにコピーして、Azure DevOps にプッシュできます。
 
-このソリューションでは、アプリケーション パッケージとして ffmpeg を使用します。 ffmpeg パッケージは[ここで](https://www.videohelp.com/software?d=ffmpeg-3.3.4-win64-static.zip)ダウンロードできます。
+このソリューションでは、アプリケーション パッケージとして ffmpeg を使用します。 まだない場合は、[ffmpeg パッケージをダウンロード](https://github.com/GyanD/codexffmpeg/releases/tag/4.3.1-2020-11-08)できます。
 
-![Git リポジトリの構造の例](media/batch-ci-cd/git-repository.jpg)
+![リポジトリ構造のスクリーンショット。](media/batch-ci-cd/git-repository.jpg)
 
 このリポジトリには 4 つの主要なセクションがあります。
 
-* Infrastructure as Code を格納する **arm-templates** フォルダー
-* ffmpeg のバイナリを含む **hpc-application** フォルダー
-* ビルド パイプラインの定義を含む **pipelines** フォルダー
-* **省略可能**:.NET アプリケーションのコードを格納する **client-application** フォルダー。 これはサンプルでは使用しませんが、ユーザー自身のプロジェクトで、クライアント アプリケーションを介して HPC バッチ アプリケーションを実行したい場合があります。
+- **arm-templates** フォルダー。Azure Resource Manager テンプレートが含まれます。
+- **hpc-application** フォルダー。Windows 64 ビット バージョンの [ffmpeg 4.3.1](https://github.com/GyanD/codexffmpeg/releases/tag/4.3.1-2020-11-08) が含まれます。
+- **pipelines** フォルダー。ビルド パイプライン プロセスを定義する YAML ファイルが含まれます。
+- オプション: **client-application** フォルダー。[ffmpeg による Azure Batch .NET ファイル処理](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial)サンプルのコピーです。 このアプリケーションは、この記事では必要ありません。
+
 
 > [!NOTE]
 > これはコードベースの構造の一例です。 このアプローチを使用しているのは、アプリケーション、インフラストラクチャ、およびパイプライン コードが同じリポジトリに格納されることを示すためです。
@@ -313,19 +288,19 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 
 通常、パイプラインのこの段階では、コードを検証してソフトウェアの該当する部分を構築するために、テストを実行します。 テストの回数や種類、および実行するその他のタスクは、ビルドとリリースの多様な戦略によって異なります。
 
-## <a name="preparing-the-hpc-application"></a>HPC アプリケーションを準備する
+## <a name="prepare-the-hpc-application"></a>HPC アプリケーションを準備する
 
-この例では、特に **hpc-application** フォルダーについて説明します。 **hpc-application** フォルダーは、Azure Batch アカウント内から実行される ffmpeg ソフトウェアです。
+このセクションでは、**hpc-application** フォルダーを操作します。 このフォルダーには、Azure Batch アカウント内で実行されるソフトウェア (ffmpeg) が含まれています。
 
 1. Azure DevOps 組織の Azure Pipelines の [ビルド] セクションに移動します。 **新しいパイプライン** を作成します。
 
-    ![新しいビルド パイプラインを作成する](media/batch-ci-cd/new-build-pipeline.jpg)
+    ![[新しいパイプライン] 画面のスクリーンショット。](media/batch-ci-cd/new-build-pipeline.jpg)
 
 1. ビルド パイプラインを作成するには、次の 2 つの方法があります。
 
-    a. [ビジュアル デザイナーを使用します](/azure/devops/pipelines/get-started-designer)。 これを使用するには、 **[新しいパイプライン]** ページで [ビジュアル デザイナーを使用する] をクリックします。
+    a. [ビジュアル デザイナーを使用する](/azure/devops/pipelines/get-started-designer)。 そのためには、 **[新しいパイプライン]** ページで [ビジュアル デザイナーを使用する] を選択します。
 
-    b. [YAML ビルドを使用します](/azure/devops/pipelines/get-started-yaml)。 新しい YAMLパイプラインを作成するには、[新しいパイプライン] ページで [Azure Repos] または [GitHub] オプションをクリックします。 または、[Visual Designer] をクリックしてから YAML テンプレートを使用することで、以下の例をソース管理に格納して、既存の YAML ファイルを参照できます。
+    b. [YAML ビルドを使用する](/azure/devops/pipelines/get-started-yaml)。 新しい YAMLパイプラインを作成するには、 **[新しいパイプライン]** ページで [Azure Repos] または [GitHub] オプションをクリックします。 または、[Visual Designer] を選択してから YAML テンプレートを使用することで、下の例をソース管理に格納して、既存の YAML ファイルを参照できます。
 
     ```yml
     # To publish an application into Azure Batch, we need to
@@ -350,133 +325,135 @@ Azure Pipelines では、ソフトウェアの構築、デプロイ、テスト�
 
 1. 必要に応じてビルドが構成されたら、 **[保存してキューに登録]** を選択します。 継続的インテグレーションを有効にしている場合 ( **[トリガー]** セクション)、リポジトリへの新しいコミットが行われ、ビルドに設定された条件を満たすと、ビルドが自動的にトリガーされます。
 
-    ![既存のビルド パイプラインの例](media/batch-ci-cd/existing-build-pipeline.jpg)
+    ![既存のビルド パイプラインのスクリーンショット。](media/batch-ci-cd/existing-build-pipeline.jpg)
 
 1. Azure DevOps のビルドの進行状況のライブ更新を表示するには、Azure Pipelines の **[ビルド]** セクションに移動します。 ビルド定義から適切なビルドを選択します。
 
-    ![ビルドのライブ出力の表示](media/batch-ci-cd/Build-1.jpg)
+    ![Azure DevOps におけるビルドからのライブ出力のスクリーンショット。](media/batch-ci-cd/Build-1.jpg)
 
 > [!NOTE]
-> HPC バッチ アプリケーションを実行するためにクライアント アプリケーションを使用する場合は、そのアプリケーションのために別のビルド定義を作成する必要があります。 [Azure Pipelines](/azure/devops/pipelines/get-started/index) のドキュメントにいくつもの攻略ガイドがあります。
+> HPC ソリューションを実行するためにクライアント アプリケーションを使用する場合は、そのアプリケーションのために別のビルド定義を作成する必要があります。 [Azure Pipelines](/azure/devops/pipelines/get-started/index) のドキュメントにいくつもの攻略ガイドがあります。
 
 ## <a name="continuous-deployment"></a>継続的なデプロイ
 
-また、Azure Pipelines を使用して、アプリケーションと基になるインフラストラクチャをデプロイします。 [リリース パイプライン](/azure/devops/pipelines/release)は、継続的配置を有効にし、リリース プロセスを自動化するコンポーネントです。
+また、Azure Pipelines を使用して、アプリケーションおよび基になるインフラストラクチャをデプロイします。 [リリース パイプライン](/azure/devops/pipelines/release)により、継続的配置が有効になり、リリース プロセスが自動化されます。
 
-### <a name="deploying-your-application-and-underlying-infrastructure"></a>アプリケーションと基になるインフラストラクチャのデプロイ
+### <a name="deploy-your-application-and-underlying-infrastructure"></a>アプリケーションおよび基になるインフラストラクチャをデプロイする
 
-インフラストラクチャのデプロイには多くの手順が関係します。 [リンクされたテンプレート](../azure-resource-manager/templates/linked-templates.md)を使用しているため、それらのテンプレートにパブリック エンドポイント (HTTP または HTTPS) からアクセスできる必要があります。 このためには、GitHub 上のリポジトリ、Azure Blob Storage アカウント、または別の保存場所を使用できます。 アップロードされたテンプレート成果物は、プライベート モードで保持されるが、なんらかの形式の Shared Access Signature (SAS) トークンを使用してアクセスできるため、安全性が保たれます。 次の例では、Azure Storage BLOB のテンプレートを含むインフラストラクチャをデプロイする方法を説明します。
+インフラストラクチャのデプロイには多くの手順が関係します。 このソリューションは[リンク済みテンプレート](../azure-resource-manager/templates/linked-templates.md)を使用しているため、それらのテンプレートにパブリック エンドポイント (HTTP または HTTPS) からアクセスできる必要があります。 このためには、GitHub 上のリポジトリ、Azure Blob Storage アカウント、または別の保存場所を使用できます。 アップロードされたテンプレート成果物は、プライベート モードで保持されるが、なんらかの形式の Shared Access Signature (SAS) トークンを使用してアクセスできるため、安全性が保たれます。
 
-1. **新しいリリース定義** を作成し、空の定義を選択します。 次に、新しく作成された環境の名前を、パイプラインに関連するものに変更する必要があります。
+次の例では、Azure Storage BLOB のテンプレートを含むインフラストラクチャをデプロイする方法を説明します。
 
-    ![初期のリリース パイプライン](media/batch-ci-cd/Release-0.jpg)
+1. **新しいリリース定義** を作成し、空の定義を選択します。 新しく作成された環境の名前を、お使いのパイプラインに関連するものに変更します。
+
+    ![初期リリース パイプラインのスクリーンショット。](media/batch-ci-cd/Release-0.jpg)
 
 1. ビルド パイプラインに対する依存関係を作成して、HPC アプリケーションの出力を取得します。
 
     > [!NOTE]
-    > ここでも、 **[ソース エイリアス]** に注意してください。これは、リリース定義内にタスクが作成されるときに必要になります。
+    > **[ソース エイリアス]** を書き留めておきます。これは、リリース定義内にタスクが作成されるときに必要になります。
 
-    ![適切なビルド パイプラインに HPCApplicationPackage に対する成果物リンクを作成する](media/batch-ci-cd/Release-1.jpg)
+    ![適切なビルド パイプライン内の HPCApplicationPackage に対する成果物リンクを示すスクリーンショット。](media/batch-ci-cd/Release-1.jpg)
 
 1. ここでは、別の成果物 Azure Repo に対するリンクを作成します。 これは、リポジトリに格納されている Resource Manager テンプレートにアクセスするために必要です。 Resource Manager テンプレートのコンパイルは必要ないため、ビルド パイプラインを通じてプッシュする必要はありません。
 
     > [!NOTE]
-    > ここでも、 **[ソース エイリアス]** に注意してください。これは、リリース定義内にタスクが作成されるときに必要になります。
+    > ここでも、 **[ソース エイリアス]** を書き留めておきます。これは後で必要になります。
 
-    ![Azure Repos への成果物リンクを作成する](media/batch-ci-cd/Release-2.jpg)
+    ![Azure Repos への成果物リンクを示すスクリーンショット。](media/batch-ci-cd/Release-2.jpg)
 
-1. **[変数]** セクションに移動します。 複数のタスクに同じ情報を入力せずにすむように、パイプラインに多くの変数を作成することをお勧めします。 この例で使用される変数とそれらのデプロイへの影響を次に示します。
+1. **[変数]** セクションに移動します。 複数のタスクに同じ情報を再入力せずに済むように、パイプラインに多くの変数を作成することをお勧めします。 この例では、次の変数を使用します。
 
-    * **applicationStorageAccountName**:HPC アプリケーション バイナリを保持するストレージ アカウントの名前
-    * **batchAccountApplicationName**:Azure Batch アカウント内のアプリケーションの名前
-    * **batchAccountName**:Azure Batch アカウントの名前
-    * **batchAccountPoolName**:処理を実行する VM のプールの名前
-    * **batchApplicationId**:Azure Batch アプリケーションの一意の ID
-    * **batchApplicationVersion**:バッチ アプリケーション (つまり ffmpeg バイナリ) のセマンティック バージョン
-    * **location**:Azure リソースをデプロイする場所
-    * **resourceGroupName**:作成するリソース グループ (リソースがデプロイされる) の名前
-    * **storageAccountName**:リンクされた Resource Manager テンプレートを保持するストレージ アカウントの名前
+   - **applicationStorageAccountName**: HPC アプリケーション バイナリを保持するストレージ アカウントの名前
+   - **batchAccountApplicationName**: Batch アカウント内のアプリケーションの名前
+   - **batchAccountName**: Batch アカウントの名前
+   - **batchAccountPoolName**:処理を実行する VM のプールの名前
+   - **batchApplicationId**: Batch アプリケーションの一意の ID
+   - **batchApplicationVersion**: Batch アプリケーション (つまり ffmpeg バイナリ) のセマンティック バージョン
+   - **location**: Azure リソースをデプロイする場所
+   - **resourceGroupName**: 作成するリソース グループ (リソースがデプロイされる) の名前
+   - **storageAccountName**: リンクされた Resource Manager テンプレートを保持するストレージ アカウントの名前
 
-    ![Azure Pipelines リリースの変数設定の例](media/batch-ci-cd/Release-4.jpg)
+   ![Azure Pipelines リリースに設定された変数を示すスクリーンショット。](media/batch-ci-cd/Release-4.jpg)
 
 1. [開発] 環境のタスクに移動します。 以下のスナップショットでは 6 つのタスクを確認できます。 これらのタスクで行われるのは、圧縮された ffmpeg ファイルのダウンロード、入れ子になった Resource Manager テンプレートをホストするストレージ アカウントのデプロイ、Batch アカウントと必要な依存関係のデプロイ、Azure Batch アカウントでのアプリケーションの作成、およびアプリケーション パッケージの Azure Batch アカウントへのアップロードです。
 
-    ![HPC アプリケーションを Azure Batch にリリースするために使用されるタスクの例](media/batch-ci-cd/Release-3.jpg)
+    ![HPC アプリケーションを Azure Batch にリリースするために使用されるタスクを示すスクリーンショット。](media/batch-ci-cd/Release-3.jpg)
 
 1. **[Download Pipeline Artifact (Preview)]\(パイプライン成果物のダウンロード(プレビュー)\)** タスクを追加し、次のプロパティを設定します。
-    * **[表示名]:** ApplicationPackage をエージェントにダウンロード
-    * **[ダウンロードする成果物の名前]:** hpc-application
-    * **[ダウンロード先のパス]** : $(System.DefaultWorkingDirectory)
+    - **[表示名]:** ApplicationPackage をエージェントにダウンロード
+    - **[ダウンロードする成果物の名前]:** hpc-application
+    - **[ダウンロード先のパス]** : $(System.DefaultWorkingDirectory)
 
-1. 成果物を格納するストレージ アカウントを作成します。 ソリューションの既存のストレージ アカウントを使用できますが、自己完結型サンプルとコンテンツの分離のために、成果物 (具体的には Resource Manager テンプレート) のための専用ストレージ アカウントを作成します。
+1. Azure Resource Manager テンプレートを格納するためのストレージ アカウントを作成します。 ソリューションの既存のストレージ アカウントを使用することもできますが、この自己完結型サンプルとコンテンツの分離をサポートするために、専用ストレージ アカウントを作成します。
 
     **[Azure リソース グループの配置]** タスクを追加して、次のプロパティを設定します。
-    * **[表示名]:** Resource Manager テンプレートのストレージ アカウントのデプロイ
-    * **[Azure サブスクリプション]:** 適切な Azure サブスクリプションを選択します。
-    * **アクション**:リソース グループを作成または更新します。
-    * **[リソース グループ]** : $(resourceGroupName)
-    * **[場所]** : $(location)
-    * **[テンプレート]** : $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/storageAccount.json
-    * **[テンプレート パラメーターのオーバーライド]** : -accountName $(storageAccountName)
+    - **[表示名]:** Resource Manager テンプレートのストレージ アカウントをデプロイします。
+    - **[Azure サブスクリプション]:** 適切な Azure サブスクリプションを選択します。
+    - **アクション**:リソース グループを作成または更新します。
+    - **[リソース グループ]** : $(resourceGroupName)
+    - **[場所]** : $(location)
+    - **[テンプレート]** : $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/storageAccount.json
+    - **[テンプレート パラメーターのオーバーライド]** : -accountName $(storageAccountName)
 
-1. ソース管理からストレージ アカウントに成果物をアップロードします。 これを実行する Azure パイプライン タスクがあります。 このタスクの中で、ストレージ アカウント コンテナーの URL と SAS トークンを Azure Pipelines の変数に出力できます。 つまり、このエージェント フェーズ全体で再利用できます。
+1. Azure Pipelines を使用して、ソース管理からストレージ アカウントに成果物をアップロードします。 この Azure Pipelines タスクの一環として、ストレージ アカウント コンテナーの URI と SAS トークンを Azure Pipelines の変数に出力でき、このエージェント フェーズ全体で再利用できます。
 
     **[Azure ファイル コピー]** タスクを追加し、次のプロパティを設定します。
-    * **[ソース]:** $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/
-    * **[Azure 接続の種類]** :Azure Resource Manager
-    * **[Azure サブスクリプション]:** 適切な Azure サブスクリプションを選択します。
-    * **[送信先の種類]** :Azure BLOB
-    * **[RM ストレージ アカウント]** : $(storageAccountName)
-    * **[コンテナー名]** : templates
-    * **[ストレージ コンテナーの URI]** : templateContainerUri
-    * **[ストレージ コンテナーの SAS トークン]** : templateContainerSasToken
+    - **[ソース]:** $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/
+    - **[Azure 接続の種類]** :Azure Resource Manager
+    - **[Azure サブスクリプション]:** 適切な Azure サブスクリプションを選択します。
+    - **[送信先の種類]** :Azure BLOB
+    - **[RM ストレージ アカウント]** : $(storageAccountName)
+    - **[コンテナー名]** : templates
+    - **[ストレージ コンテナーの URI]** : templateContainerUri
+    - **[ストレージ コンテナーの SAS トークン]** : templateContainerSasToken
 
-1. オーケストレーター テンプレートをデプロイします。 前述のオーケストレーター テンプレートを思い出してください。SAS トークンに加えてストレージ アカウント コンテナー URL のパラメーターがあったことにも注意します。 Resource Manager テンプレートで必要な変数は、リリース定義の変数セクションに保持されるか、別の Azure Pipelines タスク (Azure Blob コピー タスクの一部など) から設定されることに注意してください。
+1. オーケストレーター テンプレートをデプロイします。 このテンプレートには、ストレージ アカウント コンテナーの URI と SAS トークンのパラメーターが含まれています。 Resource Manager テンプレートで必要な変数は、リリース定義の変数セクションに保持されるか、別の Azure Pipelines タスク (Azure Blob コピー タスクの一部など) から設定されます。
 
     **[Azure リソース グループの配置]** タスクを追加して、次のプロパティを設定します。
-    * **[表示名]:** Azure Batch のデプロイ
-    * **[Azure サブスクリプション]:** 適切な Azure サブスクリプションを選択します。
-    * **アクション**:リソース グループを作成または更新します。
-    * **[リソース グループ]** : $(resourceGroupName)
-    * **[場所]** : $(location)
-    * **[テンプレート]** : $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/deployment.json
-    * **[テンプレート パラメーターのオーバーライド]** : ```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
+    - **[表示名]:** Azure Batch のデプロイ
+    - **[Azure サブスクリプション]:** 適切な Azure サブスクリプションを選択します。
+    - **アクション**:リソース グループを作成または更新します。
+    - **[リソース グループ]** : $(resourceGroupName)
+    - **[場所]** : $(location)
+    - **[テンプレート]** : $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/deployment.json
+    - **[テンプレート パラメーターのオーバーライド]** : `-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)`
 
-一般的には、Azure Key Vault タスクを使用します。 サービス プリンシパル (Azure サブスクリプションへの接続) に適切なアクセス ポリシーが設定されている場合は、サービス プリンシパルが Azure Key Vault からシークレットをダウンロードでき、パイプラインで変数として使用できます。 シークレットの名前として関連する値が設定されます。 たとえば、リリース定義で sshPassword のシークレットを $(sshPassword) と呼ぶことができます。
+   一般的には、Azure Key Vault タスクを使用します。 Azure サブスクリプションに接続されているサービス プリンシパルに適切なアクセス ポリシーが設定されている場合は、それによって Azure Key Vault からシークレットをダウンロードして、パイプラインで変数として使用できます。 シークレットの名前として関連する値が設定されます。 たとえば、リリース定義で sshPassword のシークレットを $(sshPassword) と呼ぶことができます。
 
-1. 次の手順では Azure CLI を呼び出します。 1 つ目は、Azure Batch にアプリケーションを作成し、 関連付けられたパッケージをアップロードするために使用されます。
-
-    **[Azure CLI]** タスクを追加し、次のプロパティを設定します。
-    * **[表示名]:** Azure Batch アカウントでのアプリケーションの作成
-    * **[Azure サブスクリプション]:** 適切な Azure サブスクリプションを選択します。
-    * **[スクリプトの場所]** :インライン スクリプト
-    * **[インライン スクリプト]** : ```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
-
-1. 2 つ目の手順は、関連付けられたパッケージをアプリケーションにアップロードするために使用されます。 この例では、ffmpeg ファイルです。
+1. 次の手順では Azure CLI を呼び出します。 1 つ目は、Azure Batch にアプリケーションを作成し、関連するパッケージをアップロードするために使用されます。
 
     **[Azure CLI]** タスクを追加し、次のプロパティを設定します。
-    * **[表示名]:** パッケージの Azure Batch アカウントへのアップロード
-    * **[Azure サブスクリプション]:** 適切な Azure サブスクリプションを選択します。
-    * **[スクリプトの場所]** :インライン スクリプト
-    * **[インライン スクリプト]** : ```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
+    - **[表示名]:** Azure Batch アカウントでアプリケーションを作成します
+    - **[Azure サブスクリプション]:** 適切な Azure サブスクリプションを選択します。
+    - **[スクリプトの場所]** :インライン スクリプト
+    - **[インライン スクリプト]** : `az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)`
+
+1. 2 つ目の手順は、関連するパッケージ (この場合は ffmpeg ファイル) をアプリケーションにアップロードするために使用されます。
+
+    **[Azure CLI]** タスクを追加し、次のプロパティを設定します。
+    - **[表示名]:** Azure Batch アカウントにパッケージをアップロードします。
+    - **[Azure サブスクリプション]:** 適切な Azure サブスクリプションを選択します。
+    - **[スクリプトの場所]** :インライン スクリプト
+    - **[インライン スクリプト]** : `az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip`
 
     > [!NOTE]
-    > アプリケーション パッケージのバージョン番号は変数に設定されます。 これが便利なのは、パッケージの以前のバージョンを上書きすると役立つ場合や、Azure Batch にプッシュするパッケージのバージョン番号を手動で管理したい場合です。
+    > アプリケーション パッケージのバージョン番号は変数に設定されます。 これにより、以前のバージョンのパッケージを上書きして、Azure Batch にプッシュされるパッケージのバージョン番号を手動で制御できるようになります。
 
 1. **[リリース] > [新しいリリースの作成]** を選択して、新しいリリースを作成します。 トリガーされたら、新しいリリースのリンクを選択して状態を表示します。
 
-1. 環境の下にある **[ログ]** ボタンを選択すると、エージェントからのライブ出力を見ることができます。
+1. 環境の下にある **[ログ]** ボタンを選択して、エージェントからのライブ出力を表示します。
 
-    ![リリースの状態を表示する](media/batch-ci-cd/Release-5.jpg)
+    ![リリースの状態を示すスクリーンショット。](media/batch-ci-cd/Release-5.jpg)
 
-### <a name="testing-the-environment"></a>環境のテスト
+## <a name="test-the-environment"></a>環境をテストする
 
 環境を設定したら、次のテストが正常に完了することを確認します。
 
 PowerShell コマンド プロンプトから Azure CLI を使用して新しい Azure Batch アカウントに接続します。
 
-* Azure アカウントに `az login` でサインインし、指示に従って認証します。
-* ここで、`az batch account login -g <resourceGroup> -n <batchAccount>` のように Batch アカウントを認証します。
+- Azure アカウントに `az login` でサインインし、指示に従って認証します。
+- ここで、`az batch account login -g <resourceGroup> -n <batchAccount>` のように Batch アカウントを認証します。
 
 #### <a name="list-the-available-applications"></a>使用可能なアプリケーションを一覧表示する
 
@@ -502,7 +479,7 @@ az batch pool resize --pool-id <poolname> --target-dedicated-nodes 4
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事の他に、.NET と Python を使用して ffmpeg を利用する 2 つのチュートリアルがあります。 単純なアプリケーションを介して Batch アカウントを操作する方法について詳しくは、次のチュートリアルをご覧ください。
+単純なアプリケーションを介して Batch アカウントを操作する方法について詳しくは、これらのチュートリアルをご覧ください。
 
-* [Python API を使用して Azure Batch で並列ワークロードを実行する](tutorial-parallel-python.md)
-* [.NET API を使用して Azure Batch で並列ワークロードを実行する](tutorial-parallel-dotnet.md)
+- [Python API を使用して Azure Batch で並列ワークロードを実行する](tutorial-parallel-python.md)
+- [.NET API を使用して Azure Batch で並列ワークロードを実行する](tutorial-parallel-dotnet.md)

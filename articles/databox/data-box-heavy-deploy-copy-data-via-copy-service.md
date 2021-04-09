@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:データ コピー サービスを使用してデータを Azure Data Box Heavy にコピーする
+title: 'チュートリアル: データ コピー サービスを使用してデータを Azure Data Box Heavy にコピーする'
 description: このチュートリアルでは、データ コピー サービス経由で Azure Data Box Heavy デバイスにデータをコピーする方法について学習します
 services: databox
 author: alkohli
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 601e5cf15c47b16c53ff9ca81a56cb613bcfc3f5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96006561"
 ---
-# <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>チュートリアル:データ コピー サービスを使用してデータを Azure Data Box Heavy にコピーする (プレビュー)
+# <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>チュートリアル: データ コピー サービスを使用してデータを Azure Data Box Heavy にコピーする (プレビュー)
 
 このチュートリアルでは、中間ホストを介さずにデータ コピー サービスを使用してデータを取り込む方法について説明します。 データ コピー サービスは、Azure Data Box Heavy 上でローカルに動作し、SMB 経由でお客様のネットワーク接続ストレージ (NAS) デバイスに接続して、Data Box Heavy にデータをコピーします。
 
@@ -33,7 +33,7 @@ ms.locfileid: "96006561"
 
 開始する前に次の点を確認します。
 
-1. 次のチュートリアルを完了していること: [Azure Data Box Heavy の設定](data-box-heavy-deploy-set-up.md)。
+1. [Azure Data Box Heavy の設定](data-box-heavy-deploy-set-up.md)に関するチュートリアルを完了していること。
 2. Data Box Heavy の受け取りが済んでいて、ポータル内での注文の状態が **[配送済み]** であること。
 3. 自分がデータ コピーのために接続するソース NAS デバイスの資格情報があること。
 4. 高速ネットワークに接続していること。 最速のコピー速度を得るため、2 つの 40 GbE 接続 (ノードごとに 1 つずつ) を並列で利用できます。 40 GbE 接続を使用できない場合は、少なくとも 2 つの 10 GbE 接続 (ノードごとに 1 つずつ) を使用することをお勧めします。 
@@ -55,7 +55,7 @@ NAS デバイスに接続したら、次の手順はデータのコピーです�
 
 3. **[ジョブの構成と開始]** ダイアログ ボックスで、以下のフィールドを入力します。
     
-    |フィールド                          |Value    |
+    |フィールド                          |値    |
     |-------------------------------|---------|
     |**ジョブ名**                       |ジョブの一意の名前を 230 文字未満で指定します。 \<, \>、\|、\?、\*、\\\:、\/、および \\ の各文字は、ジョブの名前には使用できません\.         |
     |**ソースの場所**                |データ ソースの SMB パスを `\\<ServerIPAddress>\<ShareName>` 形式または `\\<ServerName>\<ShareName>` 形式で指定します。        |

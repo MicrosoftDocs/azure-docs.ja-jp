@@ -11,10 +11,10 @@ ms.date: 11/17/2020
 ms.author: cathys
 keywords: visualstudio
 ms.openlocfilehash: a6acf27743f17941e14adc3f6deea903f4f5ca87
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102562080"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上の Visual Studio のイメージ

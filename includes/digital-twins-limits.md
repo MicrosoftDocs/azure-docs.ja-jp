@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
 ms.openlocfilehash: 4a69b2ff15fc4857e9fb292d2f753aa68ed875d4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100370107"
 ---
 ### <a name="functional-limits"></a>機能制限

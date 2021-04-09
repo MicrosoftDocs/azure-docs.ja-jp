@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4860918fc4f995ad267fc35b142d3fcb460ce177
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89002829"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-11"></a>Azure Search .NET SDK バージョン 1.1 へのアップグレード
@@ -33,7 +33,7 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
 
 以前にバージョン 1.0.0-preview、1.0.1-preview、または 1.0.2-preview を使用していた場合、ビルドは成功するはずであり、次に進む準備が整います。
 
-0\.13.0-preview 以前のバージョンを使用していた場合、次のようなビルド エラーが表示されます。
+0.13.0-preview 以前のバージョンを使用していた場合、次のようなビルド エラーが表示されます。
 
 ```output
 Program.cs(137,56,137,62): error CS0117: 'Microsoft.Azure.Search.Models.IndexBatch' does not contain a definition for 'Create'
@@ -391,7 +391,7 @@ public class Model
 
 さらに `IntValue` を 0 に設定します。現在では、この値はネットワーク上で正しく 0 としてシリアル化され、インデックスに 0 と格納されるようになっています。 ラウンドトリップも予期したとおりに動作します。
 
-この方法で注意すべき潜在的な問題が 1 つあります。null 非許容プロパティを使用する種類のモデルを使用する場合、対応するフィールドに null 値が含まれるドキュメントがインデックス内に存在しないことを、開発者が**保証する**必要があります。 SDK も Azure Search REST API も、このことを強制する役には立ちません。
+この方法で注意すべき潜在的な問題が 1 つあります。null 非許容プロパティを使用する種類のモデルを使用する場合、対応するフィールドに null 値が含まれるドキュメントがインデックス内に存在しないことを、開発者が **保証する** 必要があります。 SDK も Azure Search REST API も、このことを強制する役には立ちません。
 
 これは単なる仮定上の問題ではありません。`Edm.Int32` 型の既存のインデックスに新しいフィールドを追加する場合を考えてみてください。 インデックスの定義を更新した後、(Azure Search ではすべての型が null を許容するので) すべてのドキュメントでその新しいフィールドの値が null になります。 その後、そのフィールドが null 非許容型の `int` プロパティであるモデル クラスを使用した場合、ドキュメントを取得しようとすると、次のような `JsonSerializationException` が発生します。
 

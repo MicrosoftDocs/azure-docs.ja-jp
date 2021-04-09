@@ -4,10 +4,10 @@ description: この記事では、Azure Red Hat OpenShift バージョン 3 以�
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: b46dfda0bdb0f3b582aa751786187a4d74524f75
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101708375"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-container-insights"></a>コンテナー分析情報を使用して Azure Red Hat OpenShift v3 を構成する
@@ -43,7 +43,7 @@ ms.locfileid: "101708375"
 
 - [Log Analytics ワークスペース。](../logs/design-logs-deployment.md)
 
-    コンテナー分析情報では、Azure の[リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に関するページに一覧表示されているリージョンの Log Analytics ワークスペースがサポートされます。 ワークスペースは、[Azure Resource Manager](../logs/resource-manager-workspace.md)、[PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../logs/quick-create-workspace.md) のいずれかを使用して作成できます。
+    Container insights では、Azure の[リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に関するページに一覧表示されているリージョンの Log Analytics ワークスペースがサポートされます。 ワークスペースは、[Azure Resource Manager](../logs/resource-manager-workspace.md)、[PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../logs/quick-create-workspace.md) のいずれかを使用して作成できます。
 
 - コンテナー分析情報の機能を有効にしてアクセスするには、少なくとも、Azure サブスクリプションの Azure "*共同作成者*" ロールのメンバー、およびコンテナー分析情報で構成されている Log Analytics ワークスペースの "[*Log Analytics 共同作成者*](../logs/manage-access.md#manage-access-using-azure-permissions)" ロールのメンバーである必要があります。
 

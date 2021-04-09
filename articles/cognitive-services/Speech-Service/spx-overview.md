@@ -12,10 +12,10 @@ ms.date: 01/13/2021
 ms.author: trbye
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 8f1e5f38e97a1b51a2d919deebbdc452e9daf993
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98539778"
 ---
 # <a name="what-is-the-speech-cli"></a>Speech CLI とは

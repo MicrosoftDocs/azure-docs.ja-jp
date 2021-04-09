@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: a828f945c459142febbc2cee7a14d40a3d534435
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95999860"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>チュートリアル: Azure Active Directory と SciQuest Spend Director の統合
@@ -62,7 +62,7 @@ Azure AD への SciQuest Spend Director の統合を構成するには、ギャ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**SciQuest Spend Director**」と入力し、結果パネルで **[SciQuest Spend Director]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**SciQuest Spend Director**」と入力し、結果パネルで **[SciQuest Spend Director]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの SciQuest Spend Director](common/search-new-app.png)
 
@@ -86,7 +86,7 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 
 SciQuest Spend Director で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **SciQuest Spend Director** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **SciQuest Spend Director** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -158,7 +158,7 @@ SciQuest Spend Director で Azure AD シングル サインオンを構成する
 
 このセクションでは、Britta Simon に SciQuest Spend Director へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[SciQuest Spend Director]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[SciQuest Spend Director]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: alkohli
 ms.openlocfilehash: aae64cad3603725a4062d5afb42df974bbf8ac40
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102438790"
 ---
 # <a name="monitor-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro を監視する

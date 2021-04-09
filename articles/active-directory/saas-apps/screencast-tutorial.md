@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 2b0c42046df716c8ae65046e5f3314817da0a17e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92893781"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-screencast-o-matic"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Screencast-O-Matic の統合
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Screencast-O-Matic では、 **SP** によって開始される SSO がサポートされます
-* Screencast-O-Matic では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Screencast-O-Matic では、**SP** によって開始される SSO がサポートされます
+* Screencast-O-Matic では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-screencast-o-matic-from-the-gallery"></a>ギャラリーからの Screencast-O-Matic の追加
 
@@ -50,7 +50,7 @@ Azure AD への Screencast-O-Matic の統合を構成するには、ギャラリ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Screencast-O-Matic** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Screencast-O-Matic**」と入力します。
 1. 結果パネルで **[Screencast-O-Matic]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-screencast-o-matic"></a>Screencast-O-Matic の Azure AD シングル サインオンの構成とテスト

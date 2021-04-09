@@ -3,14 +3,18 @@ title: Azure Backup 診断イベントのデータ モデル
 description: このデータ モデルは、Log Analytics (LA) に診断イベントを送信するリソース固有モードを参照しています。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 52c5c0694ed59aea20453ae7a2bd3209d76df433
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 0d75af6d2b41aad0b5f821dd1f6409b30f7ca531
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173981"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499596"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure Backup 診断イベントのデータ モデル
+
+> [!NOTE]
+>
+> カスタムのレポート ビューを作成する場合は、次に示す未加工のテーブルを操作するのではなく、[Azure Monitor ログでシステム関数](backup-reports-system-functions.md)を使用することをお勧めします。
 
 ## <a name="coreazurebackup"></a>CoreAzureBackup
 
@@ -220,7 +224,7 @@ ms.locfileid: "92173981"
 
 ## <a name="valid-operation-names-for-each-table"></a>各テーブルの有効な操作名
 
-上記のテーブルの各レコードには、関連付けられている**操作名**があります。 操作名は、レコードの種類を表します (および、そのレコードに対して設定されるテーブル内のフィールドを示します)。 各テーブル (カテゴリ) は、1 つまたは複数の個別の操作名をサポートします。 次に、上記の各テーブルでサポートされている操作名の概要を示します。
+上記のテーブルの各レコードには、関連付けられている **操作名** があります。 操作名は、レコードの種類を表します (および、そのレコードに対して設定されるテーブル内のフィールドを示します)。 各テーブル (カテゴリ) は、1 つまたは複数の個別の操作名をサポートします。 次に、上記の各テーブルでサポートされている操作名の概要を示します。
 
 | **テーブル名/カテゴリ**                   | **サポートされる操作名** | **説明**              |
 | ------------------------------------------- | ------------------------------|----------------------------- |

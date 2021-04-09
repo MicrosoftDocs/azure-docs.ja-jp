@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 427f7ad4d6a1b9839b1197ef9f7ca15400ea0f59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87907476"
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>ハイブリッド組織向けの Azure Active Directory B2B コラボレーション
@@ -47,7 +47,7 @@ Azure AD Connect を使用して "ゲスト ユーザー" としてこれらの�
  
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセス許可する](hybrid-cloud-to-on-premises.md)
+- [Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する](hybrid-cloud-to-on-premises.md)
 - [Azure AD B2B コラボレーションを使用してローカルで管理されたパートナーのアカウントにクラウド リソースへのアクセスを許可する](hybrid-on-premises-to-cloud.md)
 
 

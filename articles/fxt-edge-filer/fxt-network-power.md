@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure FXT Edge Filer にケーブルを接続する
+title: 'チュートリアル: Azure FXT Edge Filer にケーブルを接続する'
 description: Azure FXT Edge Filer ハードウェアにネットワーク ポートにケーブルを接続し、電源を供給する方法
 author: ekpgh
 ms.author: rohogue
@@ -7,13 +7,13 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: 80458d99ed6ad19c8a837f0989798d4dcc156b61
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92219532"
 ---
-# <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>チュートリアル:Azure FXT Edge Filer ノードをネットワークに接続し、電源を供給する
+# <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>チュートリアル: Azure FXT Edge Filer ノードをネットワークに接続し、電源を供給する
 
 このチュートリアルでは、Azure FXT Edge Filer ハードウェア ノードの配線を行ってネットワークに接続する方法を説明します。
 
@@ -166,4 +166,4 @@ IP アドレスの範囲を構成するには、ノードを設置した後に�
 
 ハードウェアの配線が終わったら、各ノードの電源を入れ、ルート パスワードを設定して初期化します。
 > [!div class="nextstepaction"]
-> [初期パスワードの設定](fxt-node-password.md)
+> [初期パスワードを設定する](fxt-node-password.md)

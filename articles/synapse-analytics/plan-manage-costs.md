@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.date: 12/09/2020
-ms.openlocfilehash: c7a0be6f1d402cc994532ab4bc5a5d0ea39bc8b7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 06586b5bf20619f57b2ad1c3d5de84dd61952261
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599045"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102561247"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Azure Synapse Analytics のコストを計画して管理する
 
@@ -113,7 +113,12 @@ Azure Synapse のみのコストの表示例を次に示します。
 
 リソースが使用されていないときに一時停止することで、専用 SQL プールのコストを制御できます。 たとえば、夜間と週末にデータベースを使用しない場合、その期間にデータベースを一時停止して、日中に再開することができます。 詳細については、「[Azure portal を使用して専用 SQL プールのコンピューティングを一時停止および再開する](./sql-data-warehouse/pause-and-resume-compute-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)」を参照してください。
 
-<!-- ### Serverless Apache Spark pool -->
+### <a name="serverless-apache-spark-pool"></a>サーバーレス Apache Spark プール
+
+サーバーレス Apache Spark プールのコストを制御するには、サーバーレス Apache Spark 自動一時停止機能を有効にし、必要に応じてタイムアウト値を設定します。  開発に Synapse Studio を使用する場合、セッションをアクティブなままにするために、Studio によりキープ アライブ メッセージが送信されます。これも構成可能なため、自動一時停止の短いタイムアウト値を設定します。  終了すると、セッションが閉じ、タイムアウト値に達すると Apache Spark プールが自動的に一時停止します。
+ 
+開発時には、さまざまなサイズの複数の Apache Spark プール定義を作成します。  Apache Spark プール定義の作成は無料であり、使用量に対してのみ課金されます。  Azure Synapse での Apache Spark 使用量は、仮想コア時間単位で課金され、分単位で比例配分されます。  たとえば、コードの開発と検証には小さいプール サイズを使用し、パフォーマンス テストにはより大きなプール サイズを使用します。
+
 
 ### <a name="data-integration---pipelines-and-data-flows"></a>データ統合 - パイプラインとデータ フロー 
 

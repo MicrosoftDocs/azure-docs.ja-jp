@@ -9,10 +9,10 @@ ms.date: 12/09/2020
 ms.author: victorh
 ms.topic: how-to
 ms.openlocfilehash: ef4337b187500695d9ef1c0b896d6ae8b5663ca6
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96938853"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>Azure PowerShell を使用してサイト別 WAF ポリシーを構成する

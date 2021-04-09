@@ -1,5 +1,5 @@
 ---
-title: Azure Private Link 接続に関する問題のトラブルシューティング
+title: Azure Private Link 接続に関する問題のトラブルシューティングを行う
 description: プライベート リンク接続を診断するためのステップ バイ ステップのガイダンス
 services: private-link
 documentationcenter: na
@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
 ms.openlocfilehash: 45a7a146dd929408b50a0045fe2598726ee05505
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95544311"
 ---
-# <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Azure Private Link 接続に関する問題のトラブルシューティング
+# <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Azure Private Link 接続に関する問題のトラブルシューティングを行う
 
 この記事では、Azure Private Link のセットアップに使用される接続を検証して診断するためのステップ バイ ステップのガイダンスを提供します。
 

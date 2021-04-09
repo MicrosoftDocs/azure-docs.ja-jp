@@ -4,12 +4,12 @@ description: 独自のキー (BYOK) を使用して AKS OS ディスクとデー
 services: container-service
 ms.topic: article
 ms.date: 09/01/2020
-ms.openlocfilehash: 60a7e36039500ccb8a46fd1f5998c23c37174689
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4b1c311132cc812ccb2bbbc95c4b7414b108008c
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728137"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102499205"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の Azure ディスクに独自のキー (BYOK) を使用する
 
@@ -93,7 +93,7 @@ az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset
 V 1.17.2 以降では、データ ディスクにキーが指定されていない場合、OS ディスク暗号化キーがデータ ディスクの暗号化に使用されます。また、AKS データ ディスクを他のキーで暗号化することもできます。
 
 > [!IMPORTANT]
-> 適切な AKS 資格情報を持っていることを確認します。 サービス プリンシパルは、diskencryptionset がデプロイされているリソース グループへの共同作成者アクセス権を保持している必要があります。 そうでないと、サービス プリンシパルにアクセス許可がないことを示すエラーが表示されます。
+> 適切な AKS 資格情報を持っていることを確認します。 マネージド ID は、diskencryptionset がデプロイされているリソース グループへの共同作成者アクセス権を保持している必要があります。 そうしないと、マネージド ID にアクセス許可がないことを示すエラーが表示されます。
 
 ```azurecli-interactive
 # Retrieve your Azure Subscription Id from id property as shown below

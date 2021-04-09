@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 02/12/2021
 ms.author: allensu
 ms.openlocfilehash: e932e211996a05b2740613381735a7de3492e5bf
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100519186"
 ---
 # <a name="error-codes-common-error-codes-when-using-imds-to-retrieve-load-balancer-information"></a>エラー コード:IMDS を使用してロードバランサー情報を取得するときの一般的なエラーコード

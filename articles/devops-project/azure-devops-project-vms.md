@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: ce11fe5b65cd49cc880713eb4e47b081b6f3b44f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3495d0bd2a446b6b3255887d9b4523eb5a70ac53
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855975"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102557320"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-to-azure-virtual-machines-by-using-azure-devops-starter"></a>チュートリアル:Azure DevOps Starter を使用して ASP.NET アプリを Azure 仮想マシンにデプロイする
 
@@ -198,4 +198,4 @@ Azure Application Insights を使うと、アプリケーションのパフォ�
 CI/CD パイプラインの詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [複数ステージの継続的デプロイ (CD) パイプラインを定義する](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [複数ステージの継続的デプロイ (CD) パイプラインを定義する](/azure/devops/pipelines/release/define-multistage-release-process)

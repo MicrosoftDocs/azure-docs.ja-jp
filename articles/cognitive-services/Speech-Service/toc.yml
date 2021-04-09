@@ -39,28 +39,30 @@
           href: migrate-v2-to-v3.md
         - name: 発音を評価する
           href: how-to-pronunciation-assessment.md
+        - name: カスタマイズ
+          items:
+            - name: Custom Speech とは
+              href: custom-speech-overview.md
+            - name: Speech Studio でのオーディオ ファイルを使用したモデルのテスト
+              href: quickstarts/speech-studio-test-model.md
+            - name: Custom Speech 用のテスト データを準備する
+              href: how-to-custom-speech-test-and-train.md
+            - name: Custom Speech データを検査する
+              href: how-to-custom-speech-inspect-data.md
+            - name: Custom Speech の精度の評価と向上
+              href: how-to-custom-speech-evaluate-data.md
+            - name: Custom Speech モデルのトレーニングとデプロイ
+              href: how-to-custom-speech-train-model.md
+            - name: Custom Speech の CI/CD
+              href: how-to-custom-speech-continuous-integration-continuous-deployment.md
+            - name: ヒューマン ラベル付け文字起こしを作成する
+              href: how-to-custom-speech-human-labeled-transcriptions.md
+            - name: モデルとエンドポイントのライフサイクル
+              href: how-to-custom-speech-model-and-endpoint-lifecycle.md
     - name: チュートリアル
       items:
         - name: テナント モデルを使用して精度を向上させる
           href: tutorial-tenant-model.md
-    - name: カスタマイズ
-      items:
-        - name: Custom Speech とは
-          href: custom-speech-overview.md
-        - name: Speech Studio でのオーディオ ファイルを使用したモデルのテスト
-          href: quickstarts/speech-studio-test-model.md
-        - name: Custom Speech 用のテスト データを準備する
-          href: how-to-custom-speech-test-and-train.md
-        - name: Custom Speech データを検査する
-          href: how-to-custom-speech-inspect-data.md
-        - name: Custom Speech の精度の評価と向上
-          href: how-to-custom-speech-evaluate-data.md
-        - name: Custom Speech モデルのトレーニングとデプロイ
-          href: how-to-custom-speech-train-model.md
-        - name: Custom Speech の CI/CD
-          href: how-to-custom-speech-continuous-integration-continuous-deployment.md
-        - name: ヒューマン ラベル付け文字起こしを作成する
-          href: how-to-custom-speech-human-labeled-transcriptions.md
     - name: リファレンス
       items:
         - name: C++
@@ -69,6 +71,9 @@
         - name: C#
           displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
           href: /dotnet/api/microsoft.cognitiveservices.speech
+        - name: Go
+          displayName: 'Go SDK, Go dev kit,reference,reference docs,ref documentation'
+          href: 'https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go'
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: /java/api/com.microsoft.cognitiveservices.speech
@@ -109,25 +114,27 @@
           href: speech-synthesis-markup.md
         - name: Long Audio API を使用して音声を合成する
           href: long-audio-api.md
-    - name: カスタマイズ
-      items:
-        - name: Custom Voice ポータル
+        - name: リップシンクのために表情イベントを取得する
+          href: how-to-speech-synthesis-viseme.md
+        - name: カスタマイズ
           items:
-            - name: カスタム ニューラル音声とは
-              href: custom-neural-voice.md
-            - name: Custom Voice の概要
-              displayName: 'custom voice, neural voice'
-              href: how-to-custom-voice.md
-            - name: データを準備する
-              href: how-to-custom-voice-prepare-data.md
-            - name: Custom Voice モデルを作成して使用する
-              href: how-to-custom-voice-create-voice.md
-            - name: 音声サンプルを録音する
-              href: record-custom-voice-samples.md
-        - name: Audio Content Creation
-          items:
+            - name: Custom Voice ポータル
+              items:
+                - name: カスタム ニューラル音声とは
+                  href: custom-neural-voice.md
+                - name: Custom Voice の概要
+                  displayName: 'custom voice, neural voice'
+                  href: how-to-custom-voice.md
+                - name: データを準備する
+                  href: how-to-custom-voice-prepare-data.md
+                - name: Custom Voice モデルを作成して使用する
+                  href: how-to-custom-voice-create-voice.md
+                - name: 音声サンプルを録音する
+                  href: record-custom-voice-samples.md
             - name: Audio Content Creation
-              href: how-to-audio-content-creation.md
+              items:
+                - name: Audio Content Creation
+                  href: how-to-audio-content-creation.md
     - name: AI の責任ある使用
       items:
         - name: カスタム ニューラル音声
@@ -529,6 +536,8 @@
           displayName: 'ACI,azure container instances,container instances,containers'
           maintainContext: true
           href: ../containers/azure-container-instance-recipe.md
+        - name: コンテナーの FAQ
+          href: speech-container-faq.md
         - name: Cognitive Services コンテナーのドキュメント
           href: ../containers/index.yml
 - name: デバイス

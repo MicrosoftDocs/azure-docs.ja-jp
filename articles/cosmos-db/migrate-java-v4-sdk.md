@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 92a9abec36bd75c594c67843286bf8fa067d7dba
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101658539"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 を使用するようにアプリケーションを移行する

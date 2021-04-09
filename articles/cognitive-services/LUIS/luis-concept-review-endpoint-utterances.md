@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 82f228d5e6f801539c549e16faea371782ad4b59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91316445"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>エンドポイント発話のレビューによるアクティブ ラーニング実現の概念
@@ -24,7 +24,7 @@ ms.locfileid: "91316445"
 ## <a name="single-pool-for-utterances-per-app"></a>アプリごとの発話のための 1 つのプール
 **[エンドポイントの発話の確認]** 一覧は、バージョンによって変化しません。 どのバージョンの発話をアクティブに編集しているか、またはどのバージョンのアプリがエンドポイントで発行されたかには関係なく、確認すべき発話のプールが 1 つあります。
 
-[REST API](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/58b6f32139e2bb139ce823c9) ではバージョン名が必要で、アプリケーション内になくてはなりませんが、その検証以外に使われることはありません。 レビュー発話はアプリケーション全体に適用されます。 1 つの_バージョン_から発話を削除すると、すべてのバージョンが影響を受けます。
+[REST API](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/58b6f32139e2bb139ce823c9) ではバージョン名が必要で、アプリケーション内になくてはなりませんが、その検証以外に使われることはありません。 レビュー発話はアプリケーション全体に適用されます。 1 つの _バージョン_ から発話を削除すると、すべてのバージョンが影響を受けます。
 
 ## <a name="where-are-the-utterances-from"></a>発話の取得元
 エンドポイント発話は、アプリケーションの HTTP エンドポイントのエンド ユーザーのクエリから取得されます。 お使いのアプリが公開されていない場合や、まだヒットがない場合、レビュー対象の発話はありません。 特定の意図またはエンティティについて、エンドポイントでヒットがない場合は、それを含む、レビュー対象の発話がありません。

@@ -9,10 +9,10 @@ ms.date: 01/25/2021
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 3c76988557bfa338bcfb606f568036422a536c1d
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98798639"
 ---
 パブリック エンドポイントを特定の仮想ネットワークに制限するストレージ アカウントに移動します。 ストレージ アカウントの目次で、 **[ネットワーク]** を選択します。 

@@ -9,10 +9,10 @@ author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
 ms.openlocfilehash: 9169d691b58ad4a59796123c64f856128a0f8c83
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98879328"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>仮想マシンのオファーを計画する方法

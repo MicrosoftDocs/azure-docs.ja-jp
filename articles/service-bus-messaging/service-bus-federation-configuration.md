@@ -4,10 +4,10 @@ description: この記事では、レプリケーション タスクの構成方
 ms.topic: article
 ms.date: 12/12/2020
 ms.openlocfilehash: b15a5baa5c370014784f20792ff8af7cc19e8938
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97663531"
 ---
 # <a name="configured-replication-tasks"></a>構成されたレプリケーション タスク

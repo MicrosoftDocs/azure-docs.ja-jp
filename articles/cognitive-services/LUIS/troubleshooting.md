@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: e4de77a8a56ce21511ad099af59a77e10ab1815d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b5e25e9ed25ced96d38994928bcb6275ce79420f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787538"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102612798"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
@@ -286,7 +286,7 @@ Azure Bot Service を使用していて、 **[Test in Web Chat]\(Web チャッ�
 
 #### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Bot Framework を使用してローカル コンピューターでデバッグしながら問題を解決します。
 
-ボットのローカル デバッグについて詳しくは、「[ボットをデバッグする](/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0)」をご覧ください。
+ボットのローカル デバッグについて詳しくは、「[ボットをデバッグする](/azure/bot-service/bot-service-debug-bot)」をご覧ください。
 
 ## <a name="integrating-luis"></a>LUIS の統合
 

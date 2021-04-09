@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
 ms.openlocfilehash: b029fa246977dfe4210f6e8df242415f7e4103f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87081918"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal を使用して Durable Functions を作成する
@@ -40,12 +40,19 @@ JavaScript Durable Functions を作成する場合、[`durable-functions` npm �
 
 3. Kudu コンソール内で、 **[デバッグ コンソール]** 、 **[CMD]** を選択します。
 
-   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="関数のプラットフォーム機能が Kudu を選択"
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu デバッグ コンソール":::
+
+3. 関数アプリのファイルのディレクトリ構造が表示されます。 `site/wwwroot` フォルダーに移動します。 そこから、`package.json` ファイルをファイル ディレクトリ ウィンドウにドラッグ アンド ドロップしてアップロードすることができます。 `package.json` のサンプルを次に示します。
+
+    ```json
+    {
+      "dependencies": {
+        "durable-functions": "^1.3.1"
       }
     }
     ```
 
-   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="関数のプラットフォーム機能が Kudu を選択":::
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu アップロード (package.json)":::
 
 4. `package.json` がアップロードされたら、Kudu リモート実行コンソールから `npm install` コマンドを実行します。
 
@@ -57,7 +64,7 @@ JavaScript Durable Functions を作成する場合、[`durable-functions` npm �
 
 1. **[新規関数]** ページの検索フィールドに「`durable`」と入力し、 **[Durable Functions HTTP スターター]** テンプレートを選択します。
 
-   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="関数のプラットフォーム機能が Kudu を選択":::
+   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="[Durable Functions HTTP スターター] の選択":::
 
 1. **[新規関数]** の名前を「`HttpStart`」と入力し、 **[関数の作成]** をクリックします。
 

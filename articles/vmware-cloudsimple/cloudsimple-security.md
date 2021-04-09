@@ -9,17 +9,17 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d62eec72a884470ade03897a0533e62c6f1b0f71
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97898795"
 ---
 # <a name="cloudsimple-security-overview"></a>CloudSimple のセキュリティの概要
 
 この記事では、Azure VMware Solution by CloudSimple サービス、インフラストラクチャ、およびデータセンターにセキュリティがどのように実装されるかの概要について説明します。 データ保護とセキュリティ、ネットワーク セキュリティ、および脆弱性と修正プログラムの管理方法について説明します。
 
-## <a name="shared-responsibility"></a>Shared responsibility
+## <a name="shared-responsibility"></a>共同責任
 
 Azure VMware Solution by CloudSimple では、セキュリティに関する共同責任モデルを使用します。 クラウドでは、サービス プロバイダーである Microsoft とお客様の共同責任を通じて、信頼の置けるセキュリティが実現されます。 この責任を基盤とすることで、より強固なセキュリティが生まれ、単一障害点が排除されています。
 

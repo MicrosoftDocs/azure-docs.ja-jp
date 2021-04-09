@@ -4,10 +4,10 @@ description: スタンドアロン Service Fabric クラスターを実行する
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.openlocfilehash: 3cb1d40f5b32415588d3fd5a108967cfb4c0e534
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91842616"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>スタンドアロン クラスターの構成をアップグレードする 
@@ -62,13 +62,13 @@ Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Confi
 
 4 つのオプションがサポートされています。  
 
-* 証明書のシングル アップグレード: アップグレードのパスは "証明書 A (プライマリ) -> 証明書 B (プライマリ) -> 証明書 C (プライマリ) -> ..." です。
+* 証明書のシングル アップグレード: アップグレードのパスは '証明書 A (プライマリ) -> 証明書 B (プライマリ) -> 証明書 C (プライマリ) -> ...' です。
 
-* 証明書のダブル アップグレード: アップグレードのパスは "証明書 A (プライマリ) -> 証明書 A (プライマリ) および B (セカンダリ) -> 証明書 B (プライマリ) -> 証明書 B (プライマリ) および C (セカンダリ) -> 証明書 C (プライマリ) -> ..." です。
+* 証明書のダブル アップグレード: アップグレードのパスは '証明書 A (プライマリ) -> 証明書 A (プライマリ) および B (セカンダリ) -> 証明書 B (プライマリ) -> 証明書 B (プライマリ) および C (セカンダリ) -> 証明書 C (プライマリ) -> ...' です。
 
 * 証明書の種類のアップグレード: 拇印ベースの証明書の構成 <-> CommonName ベースの証明書の構成。 たとえば、証明書の拇印 A (プライマリ) と拇印 B (セカンダリ) -> 証明書 CommonName C。
 
-* 証明書の発行者の拇印のアップグレード: アップグレードのパスは、"証明書 CN = A、発行者の拇印 = IT1 (プライマリ) -> 証明書 CN = A、発行者の拇印 = IT1、IT2 (プライマリ) -> 証明書 CN = A、発行者の拇印 = IT2 (プライマリ)" です。
+* 証明書の発行者の拇印のアップグレード: アップグレードのパスは、'証明書 CN = A、発行者の拇印 = IT1 (プライマリ) -> 証明書 CN = A、発行者の拇印 = IT1、IT2 (プライマリ) -> 証明書 CN = A、発行者の拇印 = IT2 (プライマリ)' です。
 
 
 ## <a name="next-steps"></a>次のステップ

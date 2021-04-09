@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2a955273c01d8c0d865aabd91bb1bfcce70fd373
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 29922f088a51e4876e5e2ec8fe87c3bbce4482f3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587375"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102521681"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights Agent (旧称 Status Monitor v2): 詳しい手順
 
@@ -29,7 +29,7 @@ ms.locfileid: "100587375"
 PowerShell でコンピューターに対して変更を行うには、管理者レベルのアクセス許可が必要です。
 ### <a name="execution-policy"></a>実行ポリシー
 - 説明:既定では、PowerShell スクリプトの実行は無効になっています。 RemoteSigned スクリプトは現在のスコープに対してのみ許可することをお勧めします。
-- リファレンス: 「[About Execution Policies (実行ポリシーの概要)](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)」と「[Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)」
+- リファレンス: 「[About Execution Policies (実行ポリシーの概要)](/powershell/module/microsoft.powershell.core/about/about_execution_policies)」と「[Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy)」
 - コマンド: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`。
 - 省略可能なパラメーター:
     - `-Force`. 確認プロンプトをバイパスします。
@@ -71,14 +71,14 @@ SerializationVersion           1.1.0.1
 次の手順では、PowerShell ギャラリーからモジュールをダウンロードするようにサーバーを準備します。
 
 > [!NOTE] 
-> PowerShell ギャラリーは、Windows 10、Windows Server 2016、および PowerShell 6 でサポートされています。
+> PowerShell ギャラリーは、Windows 10、Windows Server 2016、および PowerShell 6 以上でサポートされています。
 > 以前のバージョンについては、「[PowerShellGet のインストール](/powershell/scripting/gallery/installing-psget)」を参照してください。
 
 
 1. 管理者として昇格された実行ポリシーで PowerShell を実行します。
 2. NuGet パッケージ プロバイダーをインストールします。
     - 説明:PowerShellGallery などの NuGet ベースのリポジトリとやり取りするには、このプロバイダーが必要です
-    - リファレンス: [Install-PackageProvider](/powershell/module/packagemanagement/install-packageprovider?view=powershell-6)。
+    - リファレンス: [Install-PackageProvider](/powershell/module/packagemanagement/install-packageprovider)。
     - コマンド: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201`。
     - 省略可能なパラメーター:
         - `-Proxy`. 要求用のプロキシ サーバーを指定します。
@@ -98,7 +98,7 @@ SerializationVersion           1.1.0.1
 
 3. PowerShell ギャラリーを信頼できるリポジトリとして構成します。
     - 説明:既定では、PowerShell ギャラリーは信頼されていないリポジトリです。
-    - リファレンス: [Set-PSRepository](/powershell/module/powershellget/set-psrepository?view=powershell-6)。
+    - リファレンス: [Set-PSRepository](/powershell/module/powershellget/set-psrepository)。
     - コマンド: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted`。
     - 省略可能なパラメーター:
         - `-Proxy`. 要求用のプロキシ サーバーを指定します。
@@ -144,7 +144,7 @@ SerializationVersion           1.1.0.1
 1. PowerShell ギャラリーのすべての前提条件が満たされていることを確認します。
 2. 管理者として昇格された実行ポリシーで PowerShell を実行します。
 3. Az.ApplicationMonitor モジュールをインストールします。
-    - リファレンス: [Install-Module](/powershell/module/powershellget/install-module?view=powershell-6)。
+    - リファレンス: [Install-Module](/powershell/module/powershellget/install-module)。
     - コマンド: `Install-Module -Name Az.ApplicationMonitor`。
     - 省略可能なパラメーター:
         - `-Proxy`. 要求用のプロキシ サーバーを指定します。
@@ -170,7 +170,7 @@ SerializationVersion           1.1.0.1
 #### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Expand-Archive (v1.0.1.0) を使用して zip ファイルとして nupkg を解凍する
 
 - 説明:Microsoft.PowerShell.Archive (v1.0.1.0) の基本バージョンでは、nupkg ファイルを解凍できません。 ファイル名を .zip 拡張子に変更します。
-- リファレンス: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)。
+- リファレンス: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive)。
 - コマンド:
 
     ```console
@@ -184,7 +184,7 @@ SerializationVersion           1.1.0.1
 #### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Expand-Archive (v1.1.0.0) を使用して nupkg を解凍する
 
 - 説明:拡張子を変更せずに nupkg ファイルを解凍するには、最新バージョンの Expand-Archive を使用します。
-- リファレンス: 「[Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)」と「[Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0)」。
+- リファレンス: 「[Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive)」と「[Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0)」。
 - コマンド:
 
     ```console
@@ -197,7 +197,7 @@ SerializationVersion           1.1.0.1
 手動でダウンロードした PowerShell モジュールを PowerShell ディレクトリにインストールし、PowerShell セッションで検出されるようにします。
 詳細については、「[PowerShell モジュールをインストールする](/powershell/scripting/developer/module/installing-a-powershell-module)」を参照してください。
 
-他のディレクトリにモジュールをインストールする場合は、[Import-Module](/powershell/module/microsoft.powershell.core/import-module?view=powershell-6) を使ってモジュールを手動でインポートします。
+他のディレクトリにモジュールをインストールする場合は、[Import-Module](/powershell/module/microsoft.powershell.core/import-module) を使ってモジュールを手動でインポートします。
 
 > [!IMPORTANT] 
 > DLL は相対パスでインストールされます。

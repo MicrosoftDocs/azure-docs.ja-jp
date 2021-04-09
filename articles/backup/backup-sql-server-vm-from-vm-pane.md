@@ -4,10 +4,10 @@ description: この記事では、VM ウィンドウから Azure 仮想マシン
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.openlocfilehash: 4f4ea202ee96e93a621c8dd0025c9ebc8b8d445d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88891659"
 ---
 # <a name="back-up-a-sql-server-from-the-vm-pane"></a>VM ウィンドウから SQL Server をバックアップする
@@ -42,7 +42,7 @@ VM の **[バックアップ]** ウィンドウから SQL Server VM のバック
     - これは、保護している SQL Server VM と同じサブスクリプションとリージョンに作成されます。
     - これは、すべてのバックアップの geo 冗長ストレージ (GRS) 設定を使用して作成されます。 冗長性の種類を変更する場合は、VM を保護する前に行う必要があります。 詳細については、 [こちらの記事](backup-create-rs-vault.md#set-storage-redundancy)を参照してください。
 
-3. **バックアップ ポリシー**を選択します。 既定のポリシー、またはコンテナーで作成したその他の既存のポリシーから選択できます。 新しいポリシーを作成する場合、ステップ バイ ステップ ガイドについては[こちらの記事](backup-sql-server-database-azure-vms.md#create-a-backup-policy)を参照してください。
+3. **バックアップ ポリシー** を選択します。 既定のポリシー、またはコンテナーで作成したその他の既存のポリシーから選択できます。 新しいポリシーを作成する場合、ステップ バイ ステップ ガイドについては[こちらの記事](backup-sql-server-database-azure-vms.md#create-a-backup-policy)を参照してください。
 
     ![バックアップ ポリシーの選択](./media/backup-sql-server-vm-from-vm-pane/backup-policy.png)
 
@@ -50,7 +50,7 @@ VM の **[バックアップ]** ウィンドウから SQL Server VM のバック
 
     ![[バックアップの有効化] の選択](./media/backup-sql-server-vm-from-vm-pane/enable-backup.png)
 
-5. 操作が完了すると、バナーに**コンテナー名**が表示されます。
+5. 操作が完了すると、バナーに **コンテナー名** が表示されます。
 
     ![バナーにコンテナー名が表示される](./media/backup-sql-server-vm-from-vm-pane/vault-name.png)
 
@@ -58,11 +58,11 @@ VM の **[バックアップ]** ウィンドウから SQL Server VM のバック
 
     ![登録されている VM が表示されているコンテナー ビュー](./media/backup-sql-server-vm-from-vm-pane/vault-view.png)
 
-7. マーケットプレース以外のイメージの場合、登録は成功する可能性がありますが、**バックアップの構成**は、SQL Server 上で Azure Backup 拡張機能にアクセス許可が与えられるまでトリガーされない可能性があります。 このような場合、 **[バックアップの準備]** 列には **[準備ができていません]** と表示されます。 バックアップの構成がトリガーされるようにするためには、マーケットプレイス以外のイメージに[適切なアクセス許可](backup-azure-sql-database.md#set-vm-permissions)を手動で割り当てる必要があります。
+7. マーケットプレース以外のイメージの場合、登録は成功する可能性がありますが、**バックアップの構成** は、SQL Server 上で Azure Backup 拡張機能にアクセス許可が与えられるまでトリガーされない可能性があります。 このような場合、 **[バックアップの準備]** 列には **[準備ができていません]** と表示されます。 バックアップの構成がトリガーされるようにするためには、マーケットプレイス以外のイメージに[適切なアクセス許可](backup-azure-sql-database.md#set-vm-permissions)を手動で割り当てる必要があります。
 
     ![[バックアップの準備] が [準備ができていません] になっている](./media/backup-sql-server-vm-from-vm-pane/backup-readiness-not-ready.png)
 
-8. バックアップされた SQL Server VM で行う必要がある他の操作または監視については、対応する Recovery Services コンテナーを参照してください。 このコンテナーにバックアップされているすべてのデータベースを表示し、オンデマンドのバックアップや復元などの操作をトリガーするには、 **[バックアップ項目]** にアクセスします。 同様に、保護の構成、バックアップ、復元などの操作に対応するジョブを[監視](manage-monitor-sql-database-backup.md)するには、 **[バックアップ ジョブ]** にアクセスします。
+8. バックアップされた SQL Server VM で行う必要がある他の操作または監視については、対応する Recovery Services コンテナーを参照してください。 このコンテナーにバックアップされているすべてのデータベースを表示し、オンデマンドのバックアップや復元などの操作をトリガーするには、 **[バックアップ項目]** にアクセスします。 同様に、保護の構成、バックアップ、復元などの操作に対応するジョブを [監視](manage-monitor-sql-database-backup.md)するには、 **[バックアップ ジョブ]** にアクセスします。
 
     ![[バックアップ項目] でバックアップされたデータベースを表示する](./media/backup-sql-server-vm-from-vm-pane/backup-items.png)
 

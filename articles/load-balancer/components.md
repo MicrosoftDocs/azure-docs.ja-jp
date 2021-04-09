@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 6ddfe581bb3f2f584fdec0229981321297c9a77f
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 6bf090cde7262fdae9c98ef55227bf2925937dbf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399199"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739833"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer のコンポーネント
 
@@ -131,6 +131,7 @@ Basic ロード バランサーでは、アウトバウンド規則がサポー�
 - 内部 Load Balancer のフロントエンドへのバックエンド VM からのアウトバウンド フローは失敗します。
 - ロード バランサーの規則は、2 つの仮想ネットワークにまたがることはできません。  フロントエンドとそのバックエンド インスタンスは、同じ仮想ネットワークに配置されている必要があります。  
 - 負荷分散規則では、IP フラグメントの転送はサポートされていません。 UDP パケットと TCP パケットの IP の断片化は負荷分散規則ではサポートされていません。 HA ポートの負荷分散規則を使用すると、既存の IP フラグメントを転送できます。 詳細については、「[高可用性ポートの概要](load-balancer-ha-ports-overview.md)」を参照してください。
+- 可用性セットごとに、1 つのパブリック ロード バランサーと 1 つの内部ロード バランサーのみを使用できます
 
 ## <a name="next-steps"></a>次のステップ
 

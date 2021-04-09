@@ -7,10 +7,10 @@ ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: how-to
 ms.openlocfilehash: 988b9d364f09a4c88bcaab1fe81ae80c8de5d4d9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96491572"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>Visual Studio Code 用の Azure Stream Analytics ツールでの IntelliSense
@@ -38,7 +38,7 @@ VS Code 用 Stream Analytics ツールの IntelliSense では、言語サーバ�
 | ----- | ------- |
 | Keywords | `keyword`
 | 関数 | `build-in function`, `user defined function`  |
-| データ セット名| `input`、`output`、`intermediate result set`|
+| データ セット名| `input`, `output`, `intermediate result set`|
 | データ セットの列名|`input`, `intermediate result set`|
 
 #### <a name="name-completion"></a>名前の補完

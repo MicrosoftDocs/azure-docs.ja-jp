@@ -4,10 +4,10 @@ description: アプリケーション コンテナー イメージの基本イ�
 ms.topic: article
 ms.date: 01/22/2019
 ms.openlocfilehash: df33096830cd7b34a288c38c105aff3610315337
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97707488"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>ACR タスクの基本イメージの更新について

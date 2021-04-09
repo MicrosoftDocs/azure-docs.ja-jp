@@ -2,19 +2,19 @@
 title: チュートリアル - Azure CLI を使用した Azure ディスクの管理
 description: このチュートリアルでは、Azure CLI を使用して、仮想マシン用の Azure ディスクの作成と管理を行う方法について説明します
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 08/20/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
-ms.openlocfilehash: 948a4ae8c329d69e404ef8d0f609748b955b0ecc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbecaa32f85c42954cea6c8e533f0f658eb2dfee
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078851"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802286"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>チュートリアル - Azure CLI を使用した Azure ディスクの管理
 
@@ -33,7 +33,7 @@ Azure Virtual Machines (VM) では、オペレーティング システム、ア
 
 Azure 仮想マシンを作成すると、2 つのディスクが仮想マシンに自動的に接続されます。
 
-**オペレーティング システム ディスク** - オペレーティング システム ディスクは、最大 2 TB までサイズを変更でき、VM のオペレーティング システムをホストします。 OS ディスクには既定で */dev/sda* というラベルが付けられています。 OS ディスクのディスク キャッシュ構成は、OS パフォーマンスの向上のために最適化されています。 この構成のため、アプリケーションまたはデータ用に OS ディスクを**使用しないでください**。 アプリケーションとデータ用には、このチュートリアルの後半で説明するデータ ディスクを使用してください。
+**オペレーティング システム ディスク** - オペレーティング システム ディスクは、最大 2 TB までサイズを変更でき、VM のオペレーティング システムをホストします。 OS ディスクには既定で */dev/sda* というラベルが付けられています。 OS ディスクのディスク キャッシュ構成は、OS パフォーマンスの向上のために最適化されています。 この構成のため、アプリケーションまたはデータ用に OS ディスクを **使用しないでください**。 アプリケーションとデータ用には、このチュートリアルの後半で説明するデータ ディスクを使用してください。
 
 **一時ディスク** - 一時ディスクは、VM と同じ Azure ホストに配置されているソリッド ステート ドライブを使用します。 一時ディスクは、パフォーマンスが高く、一時的なデータ処理などの操作に使用される場合があります。 ただし、VM を新しいホストに移動すると、一時ディスクに格納されているデータは削除されます。 一時ディスクのサイズは VM のサイズによって決まります。 一時ディスクには */dev/sdb* のラベルが付けられており、 */mnt* というマウント ポイントがあります。
 
@@ -84,6 +84,7 @@ az vm create \
   --name myVM \
   --image UbuntuLTS \
   --size Standard_DS2_v2 \
+  --admin-username azureuser \
   --generate-ssh-keys \
   --data-disk-sizes-gb 128 128
 ```

@@ -17,10 +17,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4f8de6389a04448579672b84e91f0bb4dd0f4ce2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96460467"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>APNS のトークンベース (HTTP/2) 認証

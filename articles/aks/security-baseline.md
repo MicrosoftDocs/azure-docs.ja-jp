@@ -4,23 +4,23 @@ description: Azure Kubernetes Service セキュリティ ベースラインで�
 author: msmbaldwin
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8e86679e7531bb70d6d4f1a27718c2fc8f0e8a9c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8fd058c88e11764a538f67fe49aba267e706bf11
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578542"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951838"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Azure Kubernetes Service 用の Azure セキュリティ ベースライン
 
-Azure Kubernetes Service 用の Azure セキュリティ ベースラインには、ご自身のデプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。
+このセキュリティ ベースラインにより、[Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview-v1.md) のガイダンスが Azure Kubernetes に適用されます。 Azure セキュリティ ベンチマークには、Azure 上のクラウド ソリューションをセキュリティで保護する方法に関する推奨事項がまとめてあります。
+内容は、**セキュリティ コントロール** によってグループ化されています。これは、Azure セキュリティ ベンチマークと、Azure Kubernetes に適用できる関連ガイダンスによって定義されています。 Azure Kubernetes に適用できない **コントロール** は、除外されています。
 
-このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview.md) に基づいて作成されています。
-
-詳細については、[Azure セキュリティ ベースラインの概要](../security/benchmarks/security-baselines-overview.md)に関するページを参照してください。
+ 
+Azure Kubernetes を完全に Azure セキュリティ ベンチマークにマップする方法については、[完全な Azure Kubernetes セキュリティ ベースライン マッピング ファイル](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)を参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
@@ -40,9 +40,13 @@ AKS ネットワーク ポリシーを使用してネットワーク トラフ�
 
 - [プライベート Azure Kubernetes Service クラスターを作成する](private-clusters.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+
+**Azure Policy 組み込み定義 - Microsoft.ContainerService**:
+
+[!INCLUDE [Resource Policy for Microsoft.ContainerService 1.1](../../includes/policy/standards/asb/rp-controls/microsoft.containerservice-1-1.md)]
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2:仮想ネットワーク、サブネット、NIC の構成とトラフィックを監視してログに記録する
 
@@ -56,9 +60,9 @@ AKS ネットワーク ポリシーを使用してネットワーク トラフ�
 
 - [Traffic Analytics を有効にして使用する方法](../network-watcher/traffic-analytics.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="13-protect-critical-web-applications"></a>1.3:重要な Web アプリケーションを保護する
 
@@ -72,13 +76,14 @@ AKS 環境で使用される API の認証、承認、調整、キャッシュ�
 
 - [Azure Kubernetes Service にデプロイされたマイクロサービスで Azure API Management を使用する](../api-management/api-management-kubernetes.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4:既知の悪意のある IP アドレスとの通信を拒否する
 
 **ガイダンス**:分散型サービス拒否 (DDoS) 攻撃から保護するには、Azure Kubernetes Service (AKS) コンポーネントをデプロイする仮想ネットワークで Microsoft DDoS Standard 保護を有効にします。
+
 既定では、AKS 内のポッド間ですべてのトラフィックが許可されるため、これらのポッド間のトラフィック フローを制御するために、ネットワーク ポリシー エンジンをインストールし、Kubernetes ネットワーク ポリシーを作成します。 ネットワーク ポリシーは、AKS の Linux ベースのノードとポッドに対してのみ使用する必要があります。 セキュリティを強化するには、ポッドの通信を制限する規則を定義します。 
 
 割り当てられたラベル、名前空間、トラフィック ポートなどの設定に基づいて、トラフィックを許可するか拒否するかを選択します。 ポッドは AKS クラスター内で動的に作成されるため、必要なネットワーク ポリシーを自動的に適用できます。 
@@ -87,21 +92,21 @@ AKS 環境で使用される API の認証、承認、調整、キャッシュ�
 
 - [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="15-record-network-packets"></a>1.5:ネットワーク パケットを記録する
 
 **ガイダンス**:異常なアクティビティを調査するために必要な場合は、Network Watcher パケット キャプチャを使用します。 
 
-サブスクリプションで仮想ネットワークを作成または更新すると、お使いの仮想ネットワークのリージョンで Network Watcher が自動的に有効になります。 PowerShell、Azure CLI、REST API、または ARMClient のメソッドを使用して、Network Watcher の新しいインスタンスを作成することもできます
+サブスクリプションで仮想ネットワークを作成または更新すると、お使いの仮想ネットワークのリージョンで Network Watcher が自動的に有効になります。 PowerShell、Azure CLI、REST API、または Azure Resource Manager Client メソッドを使用して、Network Watcher の新しいインスタンスを作成することもできます
 
 - [Network Watcher を有効にする方法](../network-watcher/network-watcher-create.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6:ネットワーク ベースの侵入検出または侵入防止システム (IDS または IPS) をデプロイする
 
@@ -109,29 +114,13 @@ AKS 環境で使用される API の認証、承認、調整、キャッシュ�
 
 ペイロード検査または動作分析に基づく侵入検出や侵入防止が必須でない場合は、WAF による Azure Application Gateway を、アラートと脅威をログに記録する「検出モード」、または検出された侵入や攻撃を積極的にブロックする「防止モード」で使用および構成できます。
 
-- [WAF で AKS クラスターを保護するためのベスト プラクティスを理解する](operator-best-practices-network.md#secure-traffic-with-a-web-application-firewall-waf)
+- [WAF で AKS クラスターを保護するためのベスト プラクティスを理解する](./operator-best-practices-network.md#secure-traffic-with-a-web-application-firewall-waf)
 
 - [Application Gateway (Azure WAF) をデプロイする方法](../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md)
-
-**Azure Security Center の監視**: 適用なし
 
 **責任**: Customer
 
-### <a name="17-manage-traffic-to-web-applications"></a>1.7:Web アプリケーションへのトラフィックを管理する
-
-**ガイダンス**:着信トラフィックをフィルター処理するには、Azure Application Gateway に対応する Web アプリケーション ファイアウォール (WAF) を AKS クラスターの前面に使用します。 Open Web Application Security Project (OWASP) では、Azure WAF でクロスサイト スクリプティングや cookie ポイズニングなどの攻撃を監視するために使用される一連の規則が提供されます。
-
-完全修飾ドメイン名 (FQDN) タグをアプリケーションに適用して、ネットワーク セキュリティ グループ内でアプリケーション規則を設定するときにこれらのタグを簡単に使用できるようにします。 ネットワーク規則を設定した後。 FQDN タグ (AzureKubernetesService など) を使用してアプリケーション規則を追加します。これには、TCP ポート 443 およびポート 80 を介してアクセスできるすべての必要な FQDN が含まれます。 
-
-- [AKS でのネットワーク接続とセキュリティに関するベスト プラクティスを理解する](operator-best-practices-network.md)
-
-- [Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護](use-network-policies.md)
-
-- [Application Gateway (Azure WAF) をデプロイする方法](../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md)
-
-**Azure Security Center の監視**: 適用なし
-
-**責任**: 適用なし
+**Azure Security Center の監視**: なし
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8:ネットワーク セキュリティ規則の複雑さと管理オーバーヘッドを最小限に抑える
 
@@ -147,33 +136,38 @@ AKS クラスター内のノード プールに Azure タグを適用します�
 
 - [Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する](limit-egress-traffic.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9:ネットワーク デバイスの標準的なセキュリティ構成を維持する
 
-**ガイダンス**:Azure Policy を使用して、Azure Kubernetes Service (AKS) クラスターに関連付けられているネットワーク リソースの標準的なセキュリティ構成を定義して実装します。 AKS クラスターのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.ContainerService" および "Microsoft.Network" 名前空間で Azure Policy エイリアスを使用します。 
+**ガイダンス**:Azure Policy を使用して、Azure Kubernetes Service (AKS) クラスターに関連付けられているネットワーク リソースの標準的なセキュリティ構成を定義して実装します。 
+
+AKS クラスターのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.ContainerService" および "Microsoft.Network" 名前空間で Azure Policy エイリアスを使用します。 
 
 また、AKS に関連する次のような組み込みのポリシー定義も使用します。
 
-•   Kubernetes Services では、許可する IP の範囲を定義する必要がある
+- Kubernetes Services では、許可する IP の範囲を定義する必要がある
 
-•   Kubernetes クラスターで HTTPS イングレスを強制する
+- Kubernetes クラスターで HTTPS イングレスを強制する
 
-•   サービスが Kubernetes クラスター内の許可されたポートでのみリッスンするようにする
+- サービスが Kubernetes クラスター内の許可されたポートでのみリッスンするようにする
+
+追加情報については、参照先のリンクをご覧ください。
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 - [ネットワークに関する Azure Policy のサンプル](../governance/policy/samples/built-in-policies.md#network)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10:トラフィック構成規則を文書化する
 
 **ガイダンス**:Azure Kubernetes Service (AKS) クラスター間のトラフィック フローに対応するネットワーク セキュリティ グループやその他のリソースにタグを使用します。 個々のネットワーク セキュリティ グループ規則の [説明] フィールドを使用して、ネットワークとの間のトラフィックを許可するすべての規則のビジネス ニーズや期間などを指定します。
+
 Azure Policy のタグ付けに関連したいずれかの組み込み定義 ("タグとその値が必要" など) を使用して、すべてのリソースがタグ付きで作成され、既存のタグ付けされていないリソースに関する通知が受信されるようにします。
 
 ネットワーク ポリシーを使用して、名前空間とラベル セレクターに基づいてクラスター内の特定のネットワーク パスを許可するか拒否するかを選択します。 トラフィック構成規則の記述子として、これらの名前空間とラベルを使用します。 Azure PowerShell または Azure コマンド ライン インターフェイス (CLI) を使用して、タグに基づいてリソースを検索したり、リソースに対するアクションを実行したりします。
@@ -184,9 +178,9 @@ Azure Policy のタグ付けに関連したいずれかの組み込み定義 ("�
 
 - [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11:自動化ツールを使用してネットワーク リソース構成を監視し、変更を検出する
 
@@ -200,15 +194,15 @@ Azure Monitor ログを使用して、AKS マスター コンポーネントで�
 
 - [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
-- [Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー](view-master-logs.md)
-
-**Azure Security Center の監視**: 適用なし
+- [Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー](./view-control-plane-logs.md)
 
 **責任**: Customer
 
+**Azure Security Center の監視**: なし
+
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳しくは、「[Azure Security ベンチマーク:ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
@@ -218,19 +212,19 @@ Azure Monitor ログを使用して、AKS マスター コンポーネントで�
 
 - [AKS クラスター ノードの NTP ドメインおよびポートの要件を理解する](limit-egress-traffic.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: 共有
+
+**Azure Security Center の監視**: なし
 
 ### <a name="22-configure-central-security-log-management"></a>2.2:セキュリティ ログの一元管理を構成する
 
 **ガイダンス**:マネージド サービスとして提供される Azure Kubernetes Service (AKS) マスター コンポーネントである kube-apiserver と kube-controller-manager からの監査ログを有効にします。 
 
-•   kube-auditaksService:コントロール プレーン操作に対する監査ログの表示名 (hcpService から) 
+- kube-auditaksService: コントロール プレーン操作に対する監査ログの表示名 (hcpService から) 
 
-•   masterclient:az aks get-credentials から取得する証明書 MasterClientCertificate に対する監査ログの表示名 
+- masterclient: az aks get-credentials から取得する証明書 MasterClientCertificate に対する監査ログの表示名 
 
-•   nodeclient:エージェント ノードによって使用される ClientCertificate に対する表示名
+- nodeclient: エージェント ノードによって使用される ClientCertificate に対する表示名
 
 kube-audit などの他の監査ログも有効にします。 
 
@@ -238,45 +232,44 @@ kube-audit などの他の監査ログも有効にします。
 
 組織のビジネス要件に基づいて、Azure Sentinel またはサードパーティの SIEM に対してこのデータを有効にしてオンボードします。
 
-- [ログのロールを含むログ スキーマを確認する](view-master-logs.md)
+- [ログのロールを含むログ スキーマを確認する](./view-control-plane-logs.md)
 
 - [Azure Monitor for Containers を理解する](../azure-monitor/containers/container-insights-overview.md)
 
 - [Azure Monitor for Containers を有効にする方法](../azure-monitor/containers/container-insights-onboard.md)
 
-- [Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー](view-master-logs.md)
-
-**Azure Security Center の監視**: はい
+- [Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー](./view-control-plane-logs.md)
 
 **責任**: Customer
 
+**Azure Security Center の監視**: なし
+
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3:Azure リソースの監査ログ記録を有効にする
 
-**ガイダンス**:アクティビティ ログを使用して Azure Kubernetes Service (AKS) リソースに対するアクションを監視し、すべてのアクティビティとそれらの状態を表示します。 アクティビティ ログを使用して、サブスクリプション内のリソースに対して実行された操作を特定します。操作を開始したユーザー
+**ガイダンス**:アクティビティ ログを使用して Azure Kubernetes Service (AKS) リソースに対するアクションを監視し、すべてのアクティビティとそれらの状態を表示します。 アクティビティ ログを使用して、サブスクリプション内のリソースに対して実行された操作を特定します。 
 
-操作が発生した時間
-
-操作の状態
-
-操作を調査するために役立つ可能性のあるその他のプロパティの値
+- 操作を開始したユーザー
+- 操作が発生した時間
+- 操作の状態
+- 操作を調査するために役立つ可能性のあるその他のプロパティの値
 
 Azure PowerShell、Azure コマンド ライン インターフェイス (CLI)、Azure REST API、または Azure portal を使用して、アクティビティ ログから情報を取得します。 
 
 次のような AKS マスター コンポーネントの監査ログを有効にします。 
 
-•   kube-auditaksService:コントロール プレーン操作に対する監査ログの表示名 (hcpService から) 
+- kube-auditaksService: コントロール プレーン操作に対する監査ログの表示名 (hcpService から) 
 
-•   masterclient:az aks get-credentials から取得する証明書 MasterClientCertificate に対する監査ログの表示名 
+- masterclient: az aks get-credentials から取得する証明書 MasterClientCertificate に対する監査ログの表示名 
 
-•   nodeclient:エージェント ノードによって使用される ClientCertificate に対する表示名
+- nodeclient: エージェント ノードによって使用される ClientCertificate に対する表示名
 
 kube-audit などの他の監査ログもオンにします。 
 
-- [AKS で Kubernetes マスター ノード ログを有効にして確認する方法](view-master-logs.md)
-
-**Azure Security Center の監視**: はい
+- [AKS で Kubernetes マスター ノード ログを有効にして確認する方法](./view-control-plane-logs.md)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4:オペレーティング システムからセキュリティ ログを収集する
 
@@ -286,9 +279,9 @@ kube-audit などの他の監査ログもオンにします。
 
 - [Log Analytics エージェントの自動プロビジョニングを有効にする方法](../security-center/security-center-enable-data-collection.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: 共有
+
+**Azure Security Center の監視**: なし
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5:セキュリティ ログのストレージ保持を構成する
 
@@ -296,9 +289,9 @@ kube-audit などの他の監査ログもオンにします。
 
 - [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="26-monitor-and-review-logs"></a>2.6:ログを監視して確認する
 
@@ -308,27 +301,29 @@ Azure Monitor の Log Analytics ワークスペースを使用してログを確
 
 AKS マスター コンポーネントによって生成されたログを表示して、アプリケーションやサービスのトラブルシューティングを行います。 データを有効にして、Azure Sentinel またはサードパーティの SIEM にオンボードすると、ログの一元的な管理と監視が可能になります。
 
-- [AKS で Kubernetes マスター ノード ログを有効にして確認する方法](view-master-logs.md)
+- [AKS で Kubernetes マスター ノード ログを有効にして確認する方法](./view-control-plane-logs.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 - [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7:異常なアクティビティについてのアラートを有効にする
 
-**ガイダンス**:AKS ノードをより詳しく把握するには、Azure Kubernetes Service (AKS) を Security Center と組み合わせて使用します。 ホストおよびクラスター レベルで検出された脅威や悪意のあるアクティビティに関する Security Center アラートを確認します。 Security Center には、ネットワーク データ、プロセス作成、Kubernetes 監査ログなど、AKS クラスターで発生する未加工のセキュリティ イベントの継続的な分析が実装されています。 このアクティビティが予期される動作であるかどうか、またはアプリケーションが誤動作しているかどうかを判断します。 Azure Monitor でメトリックとログを使用して、調査結果を実証します。 
+**ガイダンス**:AKS ノードをより詳しく把握するには、Azure Kubernetes Service (AKS) を Security Center と組み合わせて使用します。 
+
+ホストおよびクラスター レベルで検出された脅威や悪意のあるアクティビティに関する Security Center アラートを確認します。 Security Center には、ネットワーク データ、プロセス作成、Kubernetes 監査ログなど、AKS クラスターで発生する未加工のセキュリティ イベントの継続的な分析が実装されています。 このアクティビティが予期される動作であるかどうか、またはアプリケーションが誤動作しているかどうかを判断します。 Azure Monitor でメトリックとログを使用して、調査結果を実証します。 
 
 - [Azure Kubernetes Service と Security Center の統合を理解する](../security-center/defender-for-kubernetes-introduction.md)
 
 - [Azure Security Center Standard レベルを有効にする方法](../security-center/security-center-get-started.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8:マルウェア対策のログ記録を一元管理する
 
@@ -340,9 +335,9 @@ AKS マスター コンポーネントによって生成されたログを表示
 
 - [コンテナーのアラート - Azure Kubernetes Service クラスター](../security-center/alerts-reference.md#alerts-akscluster)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="29-enable-dns-query-logging"></a>2.9:DNS クエリのログ記録を有効にする
 
@@ -352,9 +347,9 @@ DNS クエリのログ記録を有効にするには、記載されている構�
 
 - [Azure Kubernetes Service で CoreDNS をカスタマイズする](coredns-custom.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10:コマンドライン監査ログ記録を有効にする
 
@@ -364,31 +359,31 @@ DNS クエリのログ記録を有効にするには、記載されている構�
 
 - [Azure Kubernetes Service (AKS) クラスター ノードから kubelet ログを取得する](kubelet-logs.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
 
-## <a name="identity-and-access-control"></a>ID とアクセスの制御
+**Azure Security Center の監視**: なし
+
+## <a name="identity-and-access-control"></a>ID およびアクセス制御
 
 *詳細については、[Azure セキュリティ ベンチマークの「ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
-**ガイダンス**:Azure Kubernetes Service (AKS) 自体には、通常のユーザー アカウントとパスワードを格納する ID 管理ソリューションはありません。 Azure Active Directory (Azure AD) 統合を使用すると、名前空間内またはクラスター間での Kubernetes リソースへのアクセス権をユーザーまたはグループに付与できます。 
+**ガイダンス**:Azure Kubernetes Service (AKS) 自体には、通常のユーザー アカウントとパスワードを格納する ID 管理ソリューションはありません。 Azure Active Directory (Azure AD) 統合を使用すると、名前空間内またはクラスター間での Kubernetes リソースへのアクセス権をユーザーまたはグループに付与できます。
 
 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、AKS 管理グループのメンバーであるアカウントを検出します
 
 Azure CLI を使用して「マネージド Kubernetes クラスターのアクセス資格情報の取得」などの操作を行うと、アクセスを定期的に調整しやすくなります。 このプロセスを実装して、AKS のもう 1 つのプライマリ ユーザー タイプであるサービス アカウントの更新されたインベントリを保持します。 Security Center の ID とアクセス管理の推奨事項を適用します。
 
-- [AKS と Azure AD を統合する方法](./azure-ad-integration-cli.md)
+- [AKS と Azure AD を統合する方法](azure-ad-integration-cli.md)
 
 - [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 - [Azure Security Center を使用して ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: 既定のパスワードを変更する (該当する場合)
 
@@ -398,9 +393,9 @@ Azure AD PowerShell モジュールを使用してアドホック クエリを�
 
 - [AKS のアクセスと ID のオプションを理解する](concepts-identity.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3: 専用管理者アカウントを使用する
 
@@ -414,9 +409,9 @@ Azure AD PowerShell モジュールを使用してアドホック クエリを�
 
 - [Azure ロールベースのアクセス制御を使用する](control-kubeconfig-access.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: シングル サインオン (SSO) と Azure Active Directory を統合する
 
@@ -424,34 +419,35 @@ Azure AD PowerShell モジュールを使用してアドホック クエリを�
 
 - [Kubernetes ログ、イベント、ポッド メトリックをリアルタイムで表示する方法](../azure-monitor/containers/container-insights-livedata-overview.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: すべての Azure Active Directory ベースのアクセスに多要素認証を使用する
 
 **ガイダンス**:Azure Kubernetes Service (AKS) の認証を Azure Active Directory (Azure AD) に統合します。 
 
-Azure AD の多要素認証 (MFA) を有効にして、Security Center の ID とアクセス管理の推奨事項に従います。
+Azure AD の多要素認証を有効にし、Security Center の ID とアクセス管理の推奨事項に従います。
 
-- [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Azure で多要素認証を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
-- [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md) 
-
-**Azure Security Center の監視**: はい
+- [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
 
 **ガイダンス**:多要素認証 (MFA) が構成された特権アクセス ワークステーション (PAW) を使用して、指定された Azure Kubernetes Service (AKS) クラスターと関連リソースにログインします。
+
 - [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
-
-**Azure Security Center の監視**: 適用なし
+- [Azure で多要素認証 (MFA) を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7: 管理者アカウントからの疑わしいアクティビティに関するログとアラート
 
@@ -461,9 +457,9 @@ Azure AD の多要素認証 (MFA) を有効にして、Security Center の ID �
 
 - [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](../security-center/security-center-identity-access.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="38-manage-azure-resources-only-from-approved-locations"></a>3.8:承認された場所からのみ Azure リソースを管理する
 
@@ -475,9 +471,9 @@ AKS API サーバーは、リソースの作成やノードの数のスケーリ
 
 - [Azure でネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory を使用する
 
@@ -487,13 +483,13 @@ Azure ロールベースのアクセス制御 (RBAC) と共に、AKS の組み�
 
 - [Azure Policy の概要](../governance/policy/overview.md)
 
-- [Azure AD と AKS を統合する方法](./azure-ad-integration-cli.md) 
+- [Azure AD と AKS を統合する方法](azure-ad-integration-cli.md)
 
 - [AKS マネージド Azure AD を統合する](managed-aad.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: ユーザー アクセスを定期的に確認して調整する
 
@@ -509,9 +505,9 @@ Azure ID アクセス レビューを実行して、グループ メンバーシ
 
 - [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](../security-center/security-center-identity-access.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11: 非アクティブ化された資格情報へのアクセスの試行を監視する
 
@@ -520,9 +516,9 @@ Azure ID アクセス レビューを実行して、グループ メンバーシ
 
 - [Azure Monitor を使用してログ アラートを作成、表示、管理する方法](../azure-monitor/alerts/alerts-log.md)。
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: アカウント ログイン動作の偏差に関するアラートを生成する
 
@@ -534,18 +530,9 @@ Azure ID アクセス レビューを実行して、グループ メンバーシ
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: サポート シナリオで関連する顧客データに Microsoft がアクセスできるようにする
-
-**ガイダンス**:Azure Kubernetes Service (AKS) はカスタマー ロックボックスでサポートされていないため、AKS には適用されません。
-- [カスタマー ロックボックスでサポートされているサービスの一覧](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
-
-**Azure Security Center の監視**: 適用なし
-
-**責任**: 適用なし
+**Azure Security Center の監視**: なし
 
 ## <a name="data-protection"></a>データ保護
 
@@ -559,9 +546,9 @@ Azure ID アクセス レビューを実行して、グループ メンバーシ
 
 - [マネージド クラスターのタグを更新する](/rest/api/aks/managedclusters/updatetags)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2:機密情報を格納または処理するシステムを分離する
 
@@ -577,9 +564,9 @@ Kubernetes の名前空間を使用して、論理的な分離境界を作成し
 
 - [AKS でのネットワーク接続とセキュリティに関するベスト プラクティスを理解する](operator-best-practices-network.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3:機密情報の承認されていない転送を監視してブロックする
 
@@ -593,9 +580,9 @@ Microsoft では、基になるプラットフォームを管理し、顧客の�
 
 - [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: 共有
+
+**Azure Security Center の監視**: なし
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4:転送中のすべての機密情報を暗号化する
 
@@ -609,9 +596,9 @@ Kubernetes エグレス トラフィックは、既定では HTTPS/TLS で暗号
 
 - [AKS で使用される可能性がある送信ポートとプロトコル](limit-egress-traffic.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5:アクティブ検出ツールを使用して機密データを特定する
 
@@ -622,9 +609,9 @@ Azure 内の顧客データが確実にセキュリティで保護されるよ�
 
 - [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
@@ -636,9 +623,13 @@ Azure RBAC と共に、AKS の組み込みロールであるリソース ポリ�
 
 - [AKS で Azure RBAC と Azure AD の ID を使用してクラスター リソースへのアクセスを制御する方法](azure-ad-rbac.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+
+**Azure Policy 組み込み定義 - Microsoft.ContainerService**:
+
+[!INCLUDE [Resource Policy for Microsoft.ContainerService 4.6](../../includes/policy/standards/asb/rp-controls/microsoft.containerservice-4-6.md)]
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7:ホストベースのデータ損失防止を使用してアクセス制御を実施する
 
@@ -647,9 +638,9 @@ Microsoft では、基になるプラットフォームを管理し、顧客の�
 
 - [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8:機密情報を保存時に暗号化する
 
@@ -661,9 +652,9 @@ Microsoft では、基になるプラットフォームを管理し、顧客の�
 
 - [Azure Kubernetes Service (AKS) の Azure ディスクに独自のキー (BYOK) を使用する](azure-disk-customer-managed-keys.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: 共有
+
+**Azure Security Center の監視**: なし
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9:重要な Azure リソースへの変更に関するログとアラート
 
@@ -679,9 +670,9 @@ Azure アクティビティ ログを使用して、AKS クラスターと関連
 
 - [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
@@ -701,9 +692,9 @@ Security Center を使用して、すべての脆弱性に関する実行可能�
 
 - [コンテナー レジストリと Azure Security Center の統合を理解する](../security-center/defender-for-container-registries-introduction.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2:自動化されたオペレーティング システム修正プログラム管理ソリューションを展開する
 
@@ -713,33 +704,37 @@ Windows Server ノードは毎日の更新プログラムを受信しないた�
 
 - [Linux を実行する AKS クラスター ノードに更新プログラムが適用されるしくみを理解する](node-updates-kured.md)
 
-- [Windows Server ノードを使用する AKS クラスターの AKS ノード プールをアップグレードする方法](use-multiple-node-pools.md#upgrade-a-node-pool)
+- [Windows Server ノードを使用する AKS クラスターの AKS ノード プールをアップグレードする方法](./use-multiple-node-pools.md#upgrade-a-node-pool)
 
 - [Azure Kubernetes Service (AKS) ノード イメージのアップグレード](node-image-upgrade.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5.3:サード パーティ ソフトウェア タイトル用の自動化された修正プログラム管理ソリューションをデプロイする
 
 **ガイダンス**:手動のプロセスを実装して、Azure Kubernetes Service (AKS) クラスター ノードのサードパーティ アプリケーションがクラスターの有効期間を通して修正プログラムが適用された状態に維持されるようにします。 これには、自動更新の有効化、ノードの監視、または定期的な再起動の実行が必要になる場合があります。
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+
+**Azure Policy 組み込み定義 - Microsoft.ContainerService**:
+
+[!INCLUDE [Resource Policy for Microsoft.ContainerService 5.3](../../includes/policy/standards/asb/rp-controls/microsoft.containerservice-5-3.md)]
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4:バックツーバックの脆弱性スキャンを比較する
 
-**ガイダンス**:Security Center のスキャン結果を一定の間隔でエクスポートして結果を比較し、脆弱性が修復されていることを確認します。 
+**ガイダンス**:Security Center のスキャン結果を一定の間隔でエクスポートして結果を比較し、脆弱性が修復されていることを確認します。
 
 PowerShell コマンドレット "Get-AzSecurityTask" を使用して、セキュリティ体制を強化し、脆弱性スキャンの結果を修復するために実行することが推奨される Security Center のセキュリティ タスクを自動的に取得します。
 
 - [PowerShell を使用して Azure Security Center で検出された脆弱性を表示する方法](/powershell/module/az.security/get-azsecuritytask)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5:リスク評価プロセスを使用して、検出された脆弱性の修復に優先順位を付ける
 
@@ -747,9 +742,9 @@ PowerShell コマンドレット "Get-AzSecurityTask" を使用して、セキ�
 
 組み込みの脆弱性評価ツール (Azure によって提供される Qualys や Rapid7 など) を使用する場合は、共通脆弱性評価システム (CVSS) (またはスキャン ツールによって提供される別の評価システム) を使用します。
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
@@ -767,9 +762,9 @@ PowerShell コマンドレット "Get-AzSecurityTask" を使用して、セキ�
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="62-maintain-asset-metadata"></a>6.2:資産メタデータを保持する
 
@@ -777,9 +772,9 @@ PowerShell コマンドレット "Get-AzSecurityTask" を使用して、セキ�
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3:承認されていない Azure リソースを削除する
 
@@ -797,19 +792,19 @@ Azure Kubernetes Service (AKS) ノード プールの作成時に、テイント
 
 - [マネージド クラスター - タグを更新する](/rest/api/aks/managedclusters/updatetags)
 
-- [テイント、ラベル、またはタグをノード プールに指定する](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool)
-
-**Azure Security Center の監視**: 適用なし
+- [テイント、ラベル、またはタグをノード プールに指定する](./use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4:承認された Azure リソースのインベントリを定義および管理する
 
 **ガイダンス**:組織のビジネス ニーズに応じて、承認された Azure リソースとコンピューティング リソース用に承認されたソフトウェアの一覧を定義します。
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5:承認されていない Azure リソースを監視する
 
@@ -824,9 +819,9 @@ Azure Kubernetes Service (AKS) ノード プールの作成時に、テイント
 
 - [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6:コンピューティング リソース内の承認されていないソフトウェア アプリケーションを監視する
 
@@ -838,9 +833,9 @@ Azure Kubernetes Service (AKS) ノード プールの作成時に、テイント
 
 - [Azure 仮想マシンのインベントリを有効にする方法](../automation/automation-tutorial-installed-software.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7:承認されていない Azure リソースとソフトウェア アプリケーションを削除する
 
@@ -856,9 +851,9 @@ Azure Kubernetes Service (AKS) ノード プールの作成時に、テイント
 
 - [Azure Change Tracking を理解する](../automation/change-tracking/overview.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="68-use-only-approved-applications"></a>6.8:承認されたアプリケーションのみを使用する
 
@@ -872,13 +867,11 @@ Security Center で、環境に存在するアプリケーションの適応型�
 
 - [Azure 仮想マシンのインベントリを有効にする方法](../automation/automation-tutorial-installed-software.md)
 
- 
-Azure Security Center の適応型アプリケーション制御を使用する方法
-- [コントロール](../security-center/security-center-adaptive-application.md)
-
-**Azure Security Center の監視**: 適用なし
+- [Azure Security Center の適応型アプリケーション制御を使用する方法](../security-center/security-center-adaptive-application.md)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9:承認された Azure サービスのみを使用する
 
@@ -894,11 +887,11 @@ Azure Security Center の適応型アプリケーション制御を使用する�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
-
-**Azure Security Center の監視**: 適用なし
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/built-in-policies.md#general)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10:承認されたソフトウェア タイトルのインベントリを管理する
 
@@ -906,24 +899,24 @@ Azure Security Center の適応型アプリケーション制御を使用する�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11:Azure Resource Manager を操作するユーザーの機能を制限する
 
 **ガイダンス**:"Microsoft Azure Management" アプリに対して [アクセスのブロック] を構成することによって、Azure Resource Manager を操作するユーザーの機能を制限するには、Azure 条件付きアクセスを使用します。
 - [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="612-limit-users-ability-to-execute-scripts-in-compute-resources"></a>6.12:コンピューティング リソースでスクリプトを実行するユーザーの機能を制限する
 
-**ガイダンス**:Azure Kubernetes Service (AKS) 自体には、通常のユーザー アカウントとパスワードを格納する ID 管理ソリューションはありません。 代わりに、AKS クラスターの場合は、統合された ID ソリューションとして Azure Active Directory (Azure AD) を使用します。 
+**ガイダンス**:Azure Kubernetes Service (AKS) 自体には、通常のユーザー アカウントとパスワードを格納する ID 管理ソリューションはありません。 代わりに、AKS クラスターの場合は、統合された ID ソリューションとして Azure Active Directory (Azure AD) を使用します。
 
-Azure AD 統合を使用して、名前空間内またはクラスター間での Kubernetes リソースへのアクセス権をユーザーまたはグループに付与します。 
+Azure AD 統合を使用して、名前空間内またはクラスター間での Kubernetes リソースへのアクセス権をユーザーまたはグループに付与します。
 
 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、AKS 管理グループのメンバーであるアカウントを検出し、それを使用してアクセスを定期的に調整します。 Azure CLI を使用して「マネージド Kubernetes クラスターのアクセス資格情報の取得」などの操作を行います。 Security Center の ID とアクセス管理の推奨事項を実装します。
 
@@ -931,7 +924,7 @@ Azure AD PowerShell モジュールを使用してアドホック クエリを�
 
 - [AKS と Azure AD の統合を理解する](concepts-identity.md)
 
-- [AKS と Azure AD を統合する方法](./azure-ad-integration-cli.md)
+- [AKS と Azure AD を統合する方法](azure-ad-integration-cli.md)
 
 - [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole)
 
@@ -939,9 +932,9 @@ Azure AD PowerShell モジュールを使用してアドホック クエリを�
 
 - [Azure Security Center を使用して ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13:リスクの高いアプリケーションを物理的または論理的に分離する
 
@@ -949,7 +942,7 @@ Azure AD PowerShell モジュールを使用してアドホック クエリを�
 
 Kubernetes の名前空間を実装して、論理的な分離境界を作成します。 Azure Kubernetes Service (AKS) インスタンスの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.ContainerService" 名前空間で Azure Policy エイリアスを使用します。 
 
-次を含む分離とマルチテナントに関する Kubernetes の追加機能と考慮事項を確認し、実装します: スケジュール設定、ネットワーク、認証と認可、コンテナー。 また、開発、テスト、運用で別々のサブスクリプションまたは管理グループ、あるいはその両方を使用します。 個別の仮想ネットワーク (適切にタグ付けされ、Web アプリケーション ファイアウォール (WAF) で保護されたサブネット) を使用して AKS クラスターを分離します。
+次を含む分離とマルチテナントに関する Kubernetes の追加機能と考慮事項を確認し、実装します: スケジュール設定、ネットワーク、認証と認可、コンテナー。 また、開発、テスト、運用で別々のサブスクリプションと管理グループを使用します。 個別の仮想ネットワーク (適切にタグ付けされ、Web アプリケーション ファイアウォール (WAF) で保護されたサブネット) を使用して AKS クラスターを分離します。
 
 - [AKS でのクラスター分離に関するベスト プラクティスについて学ぶ](operator-best-practices-cluster-isolation.md)
 
@@ -959,9 +952,9 @@ Kubernetes の名前空間を実装して、論理的な分離境界を作成し
 
 - [AKS でのネットワーク接続とセキュリティに関するベスト プラクティスを理解する](operator-best-practices-network.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
@@ -973,13 +966,13 @@ Kubernetes の名前空間を実装して、論理的な分離境界を作成し
 
 AKS の組み込みポリシー定義の例を次に示します。
 
-•   Kubernetes クラスターで HTTPS イングレスを強制する
+- Kubernetes クラスターで HTTPS イングレスを強制する
 
-•   Kubernetes Services では、許可する IP の範囲を定義する必要がある
+- Kubernetes Services では、許可する IP の範囲を定義する必要がある
 
-•   Kubernetes Services でロールベースのアクセス制御 (RBAC) を使用する必要がある
+- Kubernetes Services ではロールベースのアクセス制御 (RBAC) を使用する必要がある
 
-•   Kubernetes クラスター内で許可されたコンテナー イメージのみを実行する
+- Kubernetes クラスター内で許可されたコンテナー イメージのみを実行する
 
 Azure Resource Manager を使用して、JavaScript Object Notation (JSON) で AKS 構成のテンプレートをエクスポートします。 これを定期的に確認して、これらの構成が組織のセキュリティ要件を確実に満たすようにします。 Azure リソースの安全な構成基準として、Azure Security Center からの推奨事項を使用します。 
 
@@ -987,9 +980,9 @@ Azure Resource Manager を使用して、JavaScript Object Notation (JSON) で A
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2:セキュリティで保護されたオペレーティング システムの構成を確立する
 
@@ -1001,9 +994,9 @@ Azure では、AKS 仮想マシン ホストに対して更新プログラム (�
 
 - [AKS 仮想マシン ホストでのセキュリティ強化を理解する](security-hardened-vm-host-image.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: 共有
+
+**Azure Security Center の監視**: なし
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
@@ -1015,17 +1008,19 @@ Azure では、AKS 仮想マシン ホストに対して更新プログラム (�
 
 次の名前空間のエイリアスを使用して、カスタム Azure Policy 定義を作成できます。 
 
-•   Microsoft.ContainerService
+- Microsoft.ContainerService
 
-•   Microsoft.Network
+- Microsoft.Network
+
+追加情報については、参照先のリンクをご覧ください。
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 - [Azure Policy の効果について](../governance/policy/concepts/effects.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4:セキュリティで保護されたオペレーティング システムの構成を維持する
 
@@ -1035,39 +1030,37 @@ Azure では、AKS 仮想マシン ホストに対して更新プログラム (�
 
 - [AKS エージェント ノード ホスト OS のセキュリティ強化](security-hardened-vm-host-image.md)
 
-- [AKS クラスターの構成の状態を理解する](concepts-clusters-workloads.md#control-plane)
+- [AKS クラスターの構成の状態を理解する](./concepts-clusters-workloads.md#control-plane)
 
 - [AKS 仮想マシン ホストでのセキュリティ強化を理解する](security-hardened-vm-host-image.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 
-**ガイダンス**:カスタム Azure Policy 定義を使用する場合は、Azure Repos を使用して構成を安全に格納して管理します。 Azure Resource Manager を使用して、JavaScript Object Notation (JSON) で Azure Kubernetes Service (AKS) 構成のテンプレートをエクスポートします。 これを定期的に確認して、構成が組織のセキュリティ要件を確実に満たすようにします。 
+**ガイダンス**:カスタム Azure Policy 定義を使用する場合は、Azure Repos を使用して構成を安全に格納して管理します。 Azure Resource Manager を使用して、JavaScript Object Notation (JSON) で Azure Kubernetes Service (AKS) 構成のテンプレートをエクスポートします。 これを定期的に確認して、構成が組織のセキュリティ要件を確実に満たすようにします。
 
 Kubernetes クラスターのリソースを宣言する構成ファイルを作成するには、Terraform などのサードパーティ ソリューションを実装します。 セキュリティのベストプラクティスを実装し、構成をセキュリティで保護された場所にコードとして保存することで、AKS のデプロイを強化できます。
 
 - [Kubernetes クラスターを定義する](/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks#define-a-kubernetes-cluster)
 
-AKS エージェント ノード ホスト OS のセキュリティ強化
-
-security-hardened-vm-host-image.md
+- [AKS エージェント ノード ホスト OS のセキュリティ強化](security-hardened-vm-host-image.md)
 
 - [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6:カスタム オペレーティング システム イメージを安全に格納する
 
 **ガイダンス**:Azure Kubernetes Service (AKS) には適用されません。 AKS では、セキュリティが最適化されたホスト オペレーティング システム (OS) が既定で提供されます。 現在、代替またはカスタムのオペレーティング システムを選択するオプションはありません。
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7:Azure リソース用の構成管理ツールをデプロイする
 
@@ -1079,9 +1072,9 @@ security-hardened-vm-host-image.md
 
 - [エイリアスを使用する方法](../governance/policy/concepts/definition-structure.md#aliases)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8:オペレーティング システム用の構成管理ツールをデプロイする
 
@@ -1093,11 +1086,11 @@ AKS ホストに組み込まれている Center for Internet Security (CIS) コ�
 
 - [AKS 仮想マシン ホストでのセキュリティ強化を理解する](security-hardened-vm-host-image.md)
 
-- [AKS クラスターの構成の状態を理解する](concepts-clusters-workloads.md#control-plane)
-
-**Azure Security Center の監視**: 適用なし
+- [AKS クラスターの構成の状態を理解する](./concepts-clusters-workloads.md#control-plane)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9:Azure リソースの自動構成監視を実装する
 
@@ -1105,19 +1098,21 @@ AKS ホストに組み込まれている Center for Internet Security (CIS) コ�
 
 - [Azure Security Center の推奨事項を修復する方法](../security-center/security-center-remediate-recommendations.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10:オペレーティング システムの自動構成監視を実装する
 
-**ガイダンス**:Security Center の「計算とアプリ」セクションに示されたコンテナーの推奨事項を使用して、Azure Kubernetes Service (AKS) クラスターのベースライン スキャンを実行します。 構成の問題または脆弱性が見つかった場合は、Security Center ダッシュボードで通知されます。 その場合、Security Center でイメージをスキャンできるようにするオプションのコンテナー レジストリ バンドルを有効にする必要があります。  
+**ガイダンス**:Security Center の「計算とアプリ」セクションに示されたコンテナーの推奨事項を使用して、Azure Kubernetes Service (AKS) クラスターのベースライン スキャンを実行します。 
+
+構成の問題または脆弱性が見つかった場合は、Security Center ダッシュボードで通知されます。 その場合、Security Center でイメージをスキャンできるようにするオプションのコンテナー レジストリ バンドルを有効にする必要があります。  
 
 - [Azure Security Center のコンテナーの推奨事項を理解する](../security-center/container-security.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11:Azure シークレットを安全に管理する
 
@@ -1129,27 +1124,27 @@ AKS ホストに組み込まれている Center for Internet Security (CIS) コ�
 
 - [Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念](concepts-security.md)
 
-- [AKS クラスターで Key Vault を使用する方法](developer-best-practices-pod-security.md#limit-credential-exposure)
-
-**Azure Security Center の監視**: 適用なし
+- [AKS クラスターで Key Vault を使用する方法](./developer-best-practices-pod-security.md#limit-credential-exposure)
 
 **責任**: Customer
 
+**Azure Security Center の監視**: なし
+
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12:ID を安全かつ自動的に管理する
 
-**ガイダンス**:セキュリティのベスト プラクティスとして、アプリケーション コードで資格情報を定義しないでください。 Azure リソースのマネージド ID を使用して、ポッドが自身をサポートする Azure 内の任意のサービス (Azure Key Vault を含む) に対して自身を認証できるようにします。 ポッドには、Azure Active Directory (Azure AD) に対して認証を行い、デジタル トークンを受信するために、Azure ID が割り当てられます。このデジタル トークンを他の Azure サービスに提示すると、ポッドにそのサービスへのアクセス権が付与されているかどうかが確認され、必要なアクションが実行されます。 
+**ガイダンス**:セキュリティのベスト プラクティスとして、アプリケーション コードで資格情報を定義しないでください。 Azure リソースのマネージド ID を使用して、ポッドが自身をサポートする Azure 内の任意のサービス (Azure Key Vault を含む) に対して自身を認証できるようにします。 ポッドには、Azure Active Directory (Azure AD) に対して認証を行い、デジタル トークンを受信するために、Azure ID が割り当てられます。このデジタル トークンを他の Azure サービスに提示すると、ポッドにそのサービスへのアクセス権が付与されているかどうかが確認され、必要なアクションが実行されます。
 
 ポッドで管理されている ID は、Linux のポッドおよびコンテナー イメージでの使用のみを目的としていることに注意してください。 デジタル キーと資格情報を格納および取得するには、Azure Key Vault をプロビジョニングします。 キー (OS ディスクや AKS クラスターのデータの暗号化に使用されるキーなど) は、Azure Key Vault に格納できます。
 
 AKS クラスターでは、サービス プリンシパルを使用することもできます。 ただし、サービス プリンシパルを使用するクラスターでは、サービス プリンシパルを更新しないと、最終的にそのクラスターの動作を継続できない状態になる可能性があります。 サービス プリンシパルを管理しなければならない場合、複雑さが増すので、代わりにマネージ ID を使用した方が簡単です。 アクセス許可の要件は、サービス プリンシパルにおいてもマネージド ID においても同じです。
 
-- [Azure Kubernetes Service (AKS) で使用するマネージド ID と Key Vault を理解する](developer-best-practices-pod-security.md#limit-credential-exposure)
+- [Azure Kubernetes Service (AKS) で使用するマネージド ID と Key Vault を理解する](./developer-best-practices-pod-security.md#limit-credential-exposure)
 
-- [Azure Active Directory のポッド ID](https://github.com/Azure/aad-pod-identity)
-
-**Azure Security Center の監視**: 適用なし
+- [Azure AD ポッド ID](https://github.com/Azure/aad-pod-identity)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13:意図しない資格情報の公開を排除する
 
@@ -1161,9 +1156,9 @@ AKS クラスターでは、サービス プリンシパルを使用すること
 
 - [ポッドのセキュリティに関する開発者のベスト プラクティス](developer-best-practices-pod-security.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
@@ -1177,11 +1172,11 @@ AKS クラスターでは、サービス プリンシパルを使用すること
 
 - [コンテナーのアラート - Azure Kubernetes Service クラスター](../security-center/alerts-reference.md#alerts-akscluster)
 
-- [AKS の共有責任とデーモン セット](support-policies.md#shared-responsibility)
-
-**Azure Security Center の監視**: 適用なし
+- [AKS の共有責任とデーモン セット](./support-policies.md#shared-responsibility)
 
 **責任**: 共有
+
+**Azure Security Center の監視**: なし
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2:非コンピューティング Azure リソースにアップロードするファイルを事前にスキャンする
 
@@ -1189,9 +1184,9 @@ AKS クラスターでは、サービス プリンシパルを使用すること
 
 - [データ サービスに対する Azure Security Center の脅威検出について](../security-center/azure-defender.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="83-ensure-antimalware-software-and-signatures-are-updated"></a>手順 8.3:マルウェア対策ソフトウェアと署名が確実に更新されるようにする
 
@@ -1201,11 +1196,11 @@ AKS クラスターでは、サービス プリンシパルを使用すること
 
 - [コンテナーのアラート - Azure Kubernetes Service クラスター](../security-center/alerts-reference.md#alerts-akscluster)
 
-- [AKS の共有責任とデーモン セット](support-policies.md#shared-responsibility)
-
-**Azure Security Center の監視**: 適用なし
+- [AKS の共有責任とデーモン セット](./support-policies.md#shared-responsibility)
 
 **責任**: 共有
+
+**Azure Security Center の監視**: なし
 
 ## <a name="data-recovery"></a>データの復旧
 
@@ -1225,19 +1220,15 @@ AKS クラスターでは、サービス プリンシパルを使用すること
 
 - [Azure で Velero を設定する方法](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: システムの完全バックアップを実行し、すべてのカスタマー マネージド キーをバックアップする
 
 **ガイダンス**:Velero など、ご利用のストレージの種類に適したツールを使ってデータをバックアップします。Velero では、追加のクラスター リソースおよび構成と共に永続ボリュームをバックアップできます。 
 
 PowerShell コマンドを使用して、Key Vault の証明書、キー、マネージド ストレージ アカウント、シークレットの自動バックアップを定期的に行います。 
-
-次に例を示します。
-
-Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorageAccount Backup-AzKeyVaultSecret
 
 - [Key Vault の証明書をバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate)
 
@@ -1249,33 +1240,29 @@ Backup-AzKeyVaultCertificate Backup-AzKeyVaultKey Backup-AzKeyVaultManagedStorag
 
 - [Azure Backup を有効にする方法](../backup/index.yml)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3:カスタマー マネージド キーを含むすべてのバックアップを検証する
 
 **ガイダンス**:Velero バックアップ内のコンテンツのデータ復元を定期的に実行します。 必要に応じて、分離された仮想ネットワークへの復元をテストします。
 
-PowerShell コマンドを使用して、Key Vault の証明書、キー、マネージド ストレージ アカウント、シークレットのデータ復元を定期的に行います。 
+PowerShell コマンドを使用して、Key Vault の証明書、キー、マネージド ストレージ アカウント、シークレットのデータ復元を定期的に行います。
 
-次に例を示します。
+- [Key Vault の証明書を復元する方法](/powershell/module/az.keyvault/restore-azkeyvaultcertificate?amp;preserve-view=true&view=azps-4.8.0)
 
-Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAccount Restore-AzKeyVaultSecret
-
-- [Key Vault の証明書を復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
-
-- [Key Vault のキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Key Vault のキーを復元する方法](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
 
 - [Key Vault のマネージド ストレージ アカウントを復元する方法](/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount)
 
-- [Key Vault のシークレットを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0)
+- [Key Vault のシークレットを復元する方法](/powershell/module/az.keyvault/restore-azkeyvaultsecret?amp;preserve-view=true&view=azps-4.8.0)
 
 - [Azure 仮想マシンのバックアップからファイルを復旧する方法](../backup/backup-azure-restore-files-from-vm.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: バックアップとカスタマー マネージド キーの保護を保証する
 
@@ -1287,9 +1274,9 @@ Azure Kubernetes Service (AKS) デプロイで Azure Key Vault が使用され�
 
 - [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="incident-response"></a>インシデント対応
 
@@ -1305,62 +1292,66 @@ Azure Kubernetes Service (AKS) デプロイで Azure Key Vault が使用され�
 
 - [Microsoft Security Response Center のインシデントの構造](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
-- [お客様は、独自のインシデント対応計画の作成に役立つ NIST の「コンピューター セキュリティ インシデント対応ガイド」を利用することもできます](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
-
-**Azure Security Center の監視**: 適用なし
+- [NIST のコンピューター セキュリティ インシデント処理ガイド](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2:インシデントのスコアリングと優先順位付けの手順を作成する
 
 **ガイダンス**:Security Center でアラートに重大度を割り当てることで、最初に調査する必要があるアラートに優先順位を付けます。 重要度は、アラートの発行に使用された Security Center の信頼度と、アラートの原因となったアクティビティの背後に悪意のある意図があったかどうかの信頼レベルに基づいて決まります。
 サブスクリプション (運用、非運用など) を明確にマークし、Azure リソースを明確に識別および分類するための命名システムを作成します。
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
-**ガイダンス**:定期的にシステムのインシデント対応機能をテストする演習を実施します。 NIST の出版物を参照して弱点やギャップを特定し、必要に応じて計画を見直します。
+**ガイダンス**:定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて対応計画を見直します。
 
 - [IT 計画と機能に関するテスト、トレーニング、演習プログラムのガイド](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
-**ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。
+**ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 
+
+事後にインシデントをレビューして、問題が解決されていることを確認します。
 
 - [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-**ガイダンス**:連続エクスポート機能を使用して Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 組織のビジネス要件に応じて、Security Center データ コネクタを選択してアラートを Azure Sentinel にストリーミングします。
+**ガイダンス**:Security Center のアラートと推奨事項を、その連続エクスポート機能を使用してエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 
+
+必要と組織のビジネス要件に応じて、Security Center データ コネクタを選択してアラートを Azure Sentinel にストリーミングします。
 
 - [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 
 - [Azure Sentinel にアラートをストリーミングする方法](../sentinel/connect-azure-security-center.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6:セキュリティ アラートへの対応を自動化する
 
-**ガイダンス**:セキュリティ アラートやセキュリティに関する推奨事項に対して "Logic Apps" 経由で応答を自動的にトリガーするには、Azure Security Center のワークフローの自動化機能を使用します。
+**ガイダンス**:セキュリティ アラートやセキュリティに関する推奨事項に対して "Logic Apps" 経由で応答を自動的にトリガーするには、Security Center のワークフローの自動化機能を使用します。
 
 - [ワークフローの自動化と Logic Apps を構成する方法](../security-center/workflow-automation.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
@@ -1368,15 +1359,17 @@ Azure Kubernetes Service (AKS) デプロイで Azure Key Vault が使用され�
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、確実に修復されるようにする
 
-**ガイダンス**: お客様の侵入テストが Microsoft のポリシーに違反しないように、確実に次の Microsoft の活動規則に従ってください。 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+**ガイダンス**: お客様の侵入テストが Microsoft のポリシーに違反しないように、Microsoft の実施ルールに確実に従ってください。 Microsoft によって管理されているクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストの、Microsoft の戦略と実施の詳細については、以下のリンクを参照してください。
 
-- [Microsoft が管理しているクラウド インフラストラクチャ、サービス、アプリケーションに対する Red Teaming およびライブ サイト侵入テストに関する Microsoft の戦略と実施の詳細については、こちらを参照してください。](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [侵入テストの実施ルール](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-**Azure Security Center の監視**: 適用なし
+- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **責任**: 共有
 
+**Azure Security Center の監視**: なし
+
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
 - [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

@@ -14,10 +14,10 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: c1d7bf933b487c40d571f1912341b5ef771e4e67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90527328"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Media Services REST API を使用したフィルターの作成
@@ -44,7 +44,7 @@ ms.locfileid: "90527328"
 
 ## <a name="define-a-filter"></a>フィルターの定義  
 
-次に、マニフェストに追加されるトラック選択条件を定義する**要求本文**の例を示します。 このフィルターには、EC-3 のオーディオ トラックと、0 から 1,000,000 の範囲のビットレートのビデオ トラックが含まれます。
+次に、マニフェストに追加されるトラック選択条件を定義する **要求本文** の例を示します。 このフィルターには、EC-3 のオーディオ トラックと、0 から 1,000,000 の範囲のビットレートのビデオ トラックが含まれます。
 
 ```json
 {
@@ -85,7 +85,7 @@ ms.locfileid: "90527328"
 
 ## <a name="create-account-filters"></a>アカウント フィルターの作成
 
-ダウンロードした Postman のコレクションで、**アカウント フィルター**->**作成または更新、アカウント フィルター**を選択します。
+ダウンロードした Postman のコレクションで、**アカウント フィルター**->**作成または更新、アカウント フィルター** を選択します。
 
 **PUT** の HTTP 要求メソッドは、以下のようになります。
 
@@ -93,7 +93,7 @@ ms.locfileid: "90527328"
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/accountFilters/{filterName}?api-version=2018-07-01
 ```
 
-**本文**タブを選択し、[先ほど定義した](#define-a-filter) json コードを貼り付けます。
+**本文** タブを選択し、[先ほど定義した](#define-a-filter) json コードを貼り付けます。
 
 **[送信]** を選択します。 
 
@@ -111,7 +111,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/assets/{assetName}/assetFilters/{filterName}?api-version=2018-07-01
 ```
 
-**本文**タブを選択し、[先ほど定義した](#define-a-filter) json コードを貼り付けます。
+**本文** タブを選択し、[先ほど定義した](#define-a-filter) json コードを貼り付けます。
 
 **[送信]** を選択します。 
 
@@ -127,7 +127,7 @@ REST を使用してフィルターを作成してストリーミング ロケ�
                                 
 ## <a name="stream-using-filters"></a>フィルターを使用するストリーム
 
-フィルターを定義すると、クライアントからストリーミング URL で使用できるようになります。 フィルターは、アダプティブ ビットレート ストリーミング プロトコル(Apple HTTP Live Streaming (HLS)、MPEG DASH、Smooth Streaming) に適用できます。
+フィルターを定義すると、クライアントからストリーミング URL で使用できるようになります。 フィルターは、アダプティブ ビットレート ストリーミング プロトコル (Apple HTTP Live Streaming (HLS)、MPEG DASH、Smooth Streaming) に適用できます。
 
 次の表に、フィルターを含んだ URL の例をいくつか示します。
 

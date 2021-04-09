@@ -7,10 +7,10 @@ ms.date: 11/12/2020
 ms.service: signalr
 ms.topic: conceptual
 ms.openlocfilehash: d9dd7ce9cf321628598a7bb866c5d1b1a6fb0e1e
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98201673"
 ---
 # <a name="server-graceful-shutdown"></a>サーバーのグレースフル シャットダウン

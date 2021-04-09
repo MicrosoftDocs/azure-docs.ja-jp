@@ -5,10 +5,10 @@ ms.topic: troubleshooting
 ms.date: 02/15/2019
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: 143cf03a33739f43a29af94fc2f8a336fb3aef8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89076669"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>リソース プロバイダーの登録エラーの解決
@@ -114,7 +114,7 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
    ![リソース プロバイダーを登録するサブスクリプションを選択する](./media/error-register-resource-provider/select-subscription-to-register.png)
 
-1. サブスクリプションについては、 **[リソース プロバイダー]** を選択します。
+1. サブスクリプションについては、**[リソース プロバイダー]** を選択します。
 
    ![[リソース プロバイダー] を選択する](./media/error-register-resource-provider/select-resource-provider.png)
 

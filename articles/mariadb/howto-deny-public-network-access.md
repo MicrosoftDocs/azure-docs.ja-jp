@@ -3,14 +3,14 @@ title: パブリック ネットワーク アクセスを拒否する - Azure po
 description: Azure portal を使用して Azure Database for MariaDB でパブリック ネットワーク アクセスを拒否するように構成する方法について説明します
 author: mksuni
 ms.author: sumuth
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 7925107f4334df7a844b3f3e029f3769eef51a9c
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 3117ebfd258c72bb97432871c2ea74d30c52f669
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98665074"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mariadb-using-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB でパブリック ネットワーク アクセスを拒否する

@@ -7,10 +7,10 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
 ms.openlocfilehash: ad28b3300e9107c7f6d4b1987205583ef60ed658
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100545702"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>サービス要求が失敗しました。 状態:403 (許可されていません)
@@ -76,7 +76,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 :::image type="content" source="media/troubleshoot-error-403/app-registrations.png" alt-text="Azure portal のアプリの登録ページ":::
 
-最初に、Azure Digital Twins のアクセス許可の設定が登録時に正しく設定されたことを確認します。 これを行うには、メニュー バーから *[マニフェスト]* を選択して、アプリ登録のマニフェスト コードを表示します。 コード ウィンドウの一番下までスクロールし、`requiredResourceAccess` の下のこれらのフィールドを探します。 これらの値は、次のスクリーンショットの値と一致している必要があります。
+最初に、Azure Digital Twins のアクセス許可の設定が登録時に正しく設定されたことを確認します。 これを行うには、メニュー バーから *[マニフェスト]* を選択して、アプリ登録のマニフェスト コードを表示します。 コード ウィンドウの一番下までスクロールし、`requiredResourceAccess` の下のこれらのフィールドを探します。 値は、次のスクリーンショットの値と一致している必要があります。
 
 :::image type="content" source="media/troubleshoot-error-403/verify-manifest.png" alt-text="Azure AD アプリ登録のためのマニフェストのポータル ビュー":::
 

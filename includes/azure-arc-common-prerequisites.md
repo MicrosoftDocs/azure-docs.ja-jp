@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/05/2020
 ms.author: mikeray
 ms.openlocfilehash: 929a2775ab678d37b20865a6d6edc1cf17230b06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90931590"
 ---
 ## <a name="prerequisites"></a>前提条件

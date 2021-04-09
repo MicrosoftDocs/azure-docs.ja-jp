@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 0e524bfe090f0d67b76c13e876f44e83986aeb9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91334805"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure VM 内の SAP HANA データベースを復元する
@@ -280,7 +280,7 @@ az backup restore restore-azurewl --resource-group saphanaResourceGroup \
 >[!NOTE]
 >ターゲットとなる登録済み VM にマウントされている Azure ファイル共有でデータベース バックアップ ファイルを復元するには、Azure ファイル共有に対する読み取り/書き込みアクセス許可がルート アカウントに含まれていることを確認します。
 
-選択した復元ポイントの種類 (**ポイント イン タイム**または**完全および差分**) に基づいて、宛先パスに 1 つまたは複数のフォルダーが作成されるのを確認できます。 `Data_<date and time of restore>` という名前のフォルダーの 1 つには、完全および差分バックアップが含まれ、`Log` という名前の他のフォルダーにはログ バックアップが含まれます。
+選択した復元ポイントの種類 (**ポイント イン タイム** または **完全および差分**) に基づいて、宛先パスに 1 つまたは複数のフォルダーが作成されるのを確認できます。 `Data_<date and time of restore>` という名前のフォルダーの 1 つには、完全および差分バックアップが含まれ、`Log` という名前の他のフォルダーにはログ バックアップが含まれます。
 
 これらの復元されたファイルを、データベースとして復元する先の SAP HANA サーバーに移動します。 さらに、次の手順に従ってデータベースを復元します。
 
@@ -322,7 +322,7 @@ az backup restore restore-azurewl --resource-group saphanaResourceGroup \
 
         * `<DatabaseName>` - 復元する新しいデータベースまたは既存のデータベースの名前
         * `<Timestamp>` - ポイントインタイム リストアの正確なタイムスタンプ
-        * `<DatabaseName@HostName>` - バックアップが復元に使用されるデータベースの名前と、このデータベースが存在する**ホスト**/SAP HANA サーバーの名前。 `USING SOURCE <DatabaseName@HostName>` オプションでは、データ バックアップ (復元に使用) が、ターゲットの SAP HANA マシンとは異なる SID または名前を持つデータベースであることが指定されます。 そのため、バックアップが作成されたのと同じ HANA サーバーで復元を実行する場合には、これを指定する必要はありません。
+        * `<DatabaseName@HostName>` - バックアップが復元に使用されるデータベースの名前と、このデータベースが存在する **ホスト**/SAP HANA サーバーの名前。 `USING SOURCE <DatabaseName@HostName>` オプションでは、データ バックアップ (復元に使用) が、ターゲットの SAP HANA マシンとは異なる SID または名前を持つデータベースであることが指定されます。 そのため、バックアップが作成されたのと同じ HANA サーバーで復元を実行する場合には、これを指定する必要はありません。
         * `<PathToGeneratedCatalogInStep3>` - **手順 3.** で生成されたカタログ ファイルへのパス
         * `<DataFileDir>` - 完全バックアップが格納されているフォルダー
         * `<LogFilesDir>` - ログ バックアップが格納されているフォルダー
@@ -338,7 +338,7 @@ az backup restore restore-azurewl --resource-group saphanaResourceGroup \
 
         * `<DatabaseName>` - 復元する新しいデータベースまたは既存のデータベースの名前
         * `<Timestamp>` - ポイントインタイム リストアの正確なタイムスタンプ
-        * `<DatabaseName@HostName>` - バックアップが復元に使用されるデータベースの名前と、このデータベースが存在する**ホスト** / SAP HANA サーバー名。 `USING SOURCE <DatabaseName@HostName>` オプションでは、データ バックアップ (復元に使用) が、ターゲットの SAP HANA マシンとは異なる SID または名前を持つデータベースであることが指定されます。 そのため、バックアップが作成されたのと同じ HANA サーバーで復元を実行する場合には、これを指定する必要はありません。
+        * `<DatabaseName@HostName>` - バックアップが復元に使用されるデータベースの名前と、このデータベースが存在する **ホスト** / SAP HANA サーバー名。 `USING SOURCE <DatabaseName@HostName>` オプションでは、データ バックアップ (復元に使用) が、ターゲットの SAP HANA マシンとは異なる SID または名前を持つデータベースであることが指定されます。 そのため、バックアップが作成されたのと同じ HANA サーバーで復元を実行する場合には、これを指定する必要はありません。
         * `<PathToGeneratedCatalogInStep3>` - **手順 3.** で生成されたカタログ ファイルへのパス
         * `<DataFileDir>` - 完全バックアップが格納されているフォルダー
         * `<LogFilesDir>` - ログ バックアップが格納されているフォルダー

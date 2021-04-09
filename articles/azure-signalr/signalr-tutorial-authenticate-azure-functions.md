@@ -8,10 +8,10 @@ ms.date: 03/01/2019
 ms.author: zhshang
 ms.custom: devx-track-js
 ms.openlocfilehash: 6df47d3fd62083a5d0940a1d6da50ac5d7d955f4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92150916"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>チュートリアル:Azure Functions を使用した Azure SignalR Service 認証
@@ -327,7 +327,7 @@ Azure で実行される関数アプリには、Azure Storage アカウントが
 
 1. 次の情報を入力します。
 
-    | 名前 | 値 |
+    | 名前 | [値] |
     |---|---|
     | サブスクリプション | SignalR Service インスタンスを含むサブスクリプションを選択します |
     | Resource group | 同じリソース グループを選択します |
@@ -423,7 +423,7 @@ App Service 認証は、Azure Active Directory、Facebook、Twitter、Microsoft 
 
 1. ポータルで開いている関数アプリで、**[プラットフォーム機能]** タブを見つけ、**[認証/承認]** を選択します。
 
-1. App Service 認証を**オン**にします。
+1. App Service 認証を **オン** にします。
 
 1. **[要求が認証されない場合に実行するアクション]** で [{前の手順で選択した認証プロバイダー} でのログイン] を選択します。
 
@@ -461,7 +461,7 @@ Web アプリケーションは、Azure Blob Storage の静的 Web サイト機�
 
 1. 次の値を入力します。
 
-    | 名前 | 値 |
+    | 名前 | [値] |
     |---|---|
     | サブスクリプション | サブスクリプションを選択します |
     | ストレージ アカウント | 以前に作成したストレージ アカウントを選択します |
@@ -479,7 +479,7 @@ CORS 設定は **local.settings.json** にありますが、Azure の関数ア�
 
     ![CORS を見つける](media/signalr-tutorial-authenticate-azure-functions/signalr-find-cors.png)
 
-1. *[許可されたオリジン]* セクションで、静的な Web サイトの*プライマリ エンドポイント*を含むエントリを値として追加します (末尾の */* を削除します)。
+1. *[許可されたオリジン]* セクションで、静的な Web サイトの *プライマリ エンドポイント* を含むエントリを値として追加します (末尾の */* を削除します)。
 
 1. SignalR JavaScript SDK によってブラウザーから関数アプリが呼び出されるようにするために、CORS の資格情報のサポートを有効にする必要があります。 [Enable Access-Control-Allow-Credentials]\(Access-Control-Allow-Credentials を有効にする\) チェックボックスをオンにします。
 

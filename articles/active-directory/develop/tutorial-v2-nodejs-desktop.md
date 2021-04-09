@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: v-doeris
 ms.openlocfilehash: e9e36a3ed2cab05eb63168452bc8472656ab5efb
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101644291"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-in-an-electron-desktop-app"></a>チュートリアル:Electron デスクトップ アプリでユーザーのサインインと Microsoft Graph API の呼び出しを行う

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 803f5c25429b33e6d1af130196d38e125b410eb4
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92891025"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>チュートリアル: Azure Active Directory と Zscaler Private Access Administrator の統合
@@ -64,13 +64,13 @@ Azure AD への Zscaler Private Access Administrator の統合を構成するに
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Zscaler Private Access Administrator** 」と入力し、結果パネルから **[Zscaler Private Access Administrator]** を選択してから **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Zscaler Private Access Administrator**」と入力し、結果パネルから **[Zscaler Private Access Administrator]** を選択してから **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Zscaler Private Access Administrator](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Zscaler Private Access Administrator で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Zscaler Private Access Administrator で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Zscaler Private Access Administrator の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 Zscaler Private Access Administrator で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -179,7 +179,7 @@ Zscaler Private Access Administrator で Azure AD シングル サインオン�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

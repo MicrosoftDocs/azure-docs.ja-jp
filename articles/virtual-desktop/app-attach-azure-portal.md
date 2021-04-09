@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 02/11/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 19ce054ce29b744f900676ecf4e55af3487d9891
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c775d81b88c891d6d8ea0a4597b4fa4fee29c86a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373472"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737547"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Azure portal で MSIX アプリのアタッチを設定する
 
@@ -36,6 +36,7 @@ MSIX アプリ アタッチを構成するために必要な項目を次に示�
 - MSIX のパッケージされたアプリケーションは、ファイル共有にアップロードされる MSIX イメージに展開されます。
 - MSIX パッケージが格納される Windows Virtual Desktop デプロイ内のファイル共有。
 - MSIX イメージをアップロードしたファイル共有には、ホスト プール内のすべての仮想マシン (VM) からアクセスできる必要もあります。 ユーザーには、イメージにアクセスするための読み取り専用アクセス許可が必要になります。
+- 証明書が公的に信頼されていない場合は、「[証明書をインストールする](app-attach.md#install-certificates)」の手順に従ってください。
 
 ## <a name="turn-off-automatic-updates-for-msix-app-attach-applications"></a>MSIX アプリ アタッチ アプリケーションの自動更新をオフにする
 

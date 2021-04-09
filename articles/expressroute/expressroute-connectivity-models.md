@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: duau
 ms.openlocfilehash: fb35a03b5dd8780445eb27f485966e3c3452feea
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91978758"
 ---
 # <a name="expressroute-connectivity-models"></a>ExpressRoute 接続モデル

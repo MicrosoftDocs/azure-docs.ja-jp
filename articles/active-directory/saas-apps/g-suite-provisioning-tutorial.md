@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/06/2020
+ms.date: 03/18/2021
 ms.author: Zhchia
-ms.openlocfilehash: 5243e9490c9de0d6df1520edb970da93fabef85a
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: f6ef2f91d178db01e618c19df55705bc9c1209e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746123"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104583753"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>チュートリアル:G Suite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -273,6 +273,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 * 10/17/2020 - G Suite の追加のユーザーおよびグループ属性に対するサポートが追加されました。
 * 10/17/2020 - G Suite ターゲットの属性名が、[ここで](https://developers.google.com/admin-sdk/directory)定義されている内容に一致するように更新されました。
 * 10/17/2020 - 既定の属性マッピングが更新されました。
+* 03/18/2021 - 新しいユーザーについては、ID ではなくマネージャーのメールが同期されるようになりました。 マネージャーを ID としてプロビジョニングされている既存のユーザーについては、[Microsoft Graph](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) を通じて再開することができます。その際、メールが確実にプロビジョニングされるよう、スコープは "フル" とします。 この変更は GSuite プロビジョニング ジョブにのみ影響し、Goov2OutDelta で始まる古いプロビジョニング ジョブには影響しません。 マネージャーのメールがプロビジョニングされるのは、ユーザーが最初に作成されたときか、またはマネージャーが変わったときであることに注意してください。 マネージャーが自分のメール アドレスを変更しても、マネージャーのメールはプロビジョニングされません。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

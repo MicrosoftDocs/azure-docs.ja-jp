@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f346b997b5e0c785d066ce3a1edaab8cbea10212
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 28cc8a858d1779e17c893d64eda5f907bb4c808e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644121"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577990"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>チュートリアル:ハイブリッド Azure Active Directory 参加済みデバイスを手動で構成する
 
@@ -74,6 +74,9 @@ Azure AD にコンピューターを登録するため、組織ネットワー�
 バージョン 1703 以前の Windows 10 デバイスについては、送信プロキシ経由でインターネットにアクセスする必要がある組織の場合は、Windows 10 コンピューターを Azure AD に登録できるように、Web プロキシ自動発見 (WPAD) を実装する必要があります。
 
 Windows 10 1803 以降では、フェデレーション ドメイン内のデバイスが AD FS を使用して試みた Hybrid Azure AD 参加が失敗しても、コンピューターまたはデバイス オブジェクトを Azure AD と同期するように Azure AD Connect が構成されていれば、そのデバイスは、同期されたコンピューターまたはデバイスを使用して Hybrid Azure AD 参加を完了しようと試みます。
+
+> [!NOTE]
+> デバイス登録構成の過程でデバイス登録の同期参加を成功させるには、Azure AD Connect 同期構成から既定のデバイス属性を除外しないでください。 Azure AD と同期される既定のデバイスの属性について詳しくは、[Azure AD Connect によって同期される属性](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10)に関するセクションを参照してください。
 
 デバイスがシステム アカウントで上記の Microsoft リソースにアクセスできるかどうかを確認するには、「[デバイス登録接続のテスト](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/)」スクリプトを使用できます。
 

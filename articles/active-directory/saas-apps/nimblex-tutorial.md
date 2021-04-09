@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 528411f7ef662e90bce98a52b67caa9123fad6ad
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92522464"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>チュートリアル: Azure Active Directory と Nimblex の統合
@@ -41,9 +41,9 @@ Nimblex と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Nimblex では、 **SP** によって開始される SSO がサポートされます
+* Nimblex では、**SP** によって開始される SSO がサポートされます
 
-* Nimblex では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* Nimblex では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-nimblex-from-the-gallery"></a>ギャラリーからの Nimblex の追加
 
@@ -63,13 +63,13 @@ Azure AD への Nimblex の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Nimblex** 」と入力し、結果パネルで **[Nimblex]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Nimblex**」と入力し、結果パネルで **[Nimblex]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Nimblex](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Nimblex で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Nimblex で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Nimblex 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Nimblex で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -170,7 +170,7 @@ Nimblex で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「 **brittasimon@yourcompanydomain.extension** 」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。

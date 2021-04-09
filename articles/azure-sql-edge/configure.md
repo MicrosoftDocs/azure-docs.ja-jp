@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 0c49f5ab9f10456c32f7f8516cba0e851fa80e74
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93392335"
 ---
 # <a name="configure-azure-sql-edge"></a>Azure SQL Edge の構成
@@ -44,7 +44,7 @@ Azure SQL Edge では、SQL Edge コンテナーの構成に使用できるい�
 
 | 環境変数 | 説明 |
 |-----|-----|
-| **MSSQL_ENABLE_HADR** | 可用性グループを有効にします。 たとえば、 **1** は有効、 **0** は無効です。 |
+| **MSSQL_ENABLE_HADR** | 可用性グループを有効にします。 たとえば、**1** は有効、**0** は無効です。 |
 
 > [!IMPORTANT]
 > SQL Edge の **MSSQL_PID** 環境変数には、有効な値として **Premium** と **Developer** のみを指定できます。 Azure SQL Edge では、プロダクト キーを使用した初期化はサポートされていません。
@@ -176,7 +176,7 @@ chown -R 10001:0 <database file dir>
 
 ## <a name="persist-your-data"></a> データを保持する
 
-`docker stop` と `docker start` を使用してコンテナーを再起動しても、Azure SQL Edge の構成変更とデータベース ファイルはコンテナーに保持されています。 一方、`docker rm` を使用してコンテナーを削除すると、Azure SQL Edge とデータベースを含め、コンテナーの内容がすべて削除されます。 次のセクションでは、関連付けられているコンテナーが削除された場合でも、 **データ ボリューム** を使用してデータベース ファイルを保持する方法について説明します。
+`docker stop` と `docker start` を使用してコンテナーを再起動しても、Azure SQL Edge の構成変更とデータベース ファイルはコンテナーに保持されています。 一方、`docker rm` を使用してコンテナーを削除すると、Azure SQL Edge とデータベースを含め、コンテナーの内容がすべて削除されます。 次のセクションでは、関連付けられているコンテナーが削除された場合でも、**データ ボリューム** を使用してデータベース ファイルを保持する方法について説明します。
 
 > [!IMPORTANT]
 > Azure SQL Edge の場合、Docker 内でのデータの保持について理解しておくことが重要です。 このセクションの説明に加えて、[Docker コンテナー内でデータを管理する方法](https://docs.docker.com/engine/tutorials/dockervolumes/)については、Docker のドキュメントをご覧ください。
@@ -203,7 +203,7 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 14
 
 ### <a name="use-data-volume-containers"></a>データ ボリューム コンテナーを使用する
 
-2 つ目のオプションは、データ ボリューム コンテナーを使用することです。 `-v` パラメーターを使用してホスト ディレクトリではなくボリューム名を指定して、データ ボリューム コンテナーを作成できます。 次の例では、 **sqlvolume** という名前の共有データ ボリュームを作成します。
+2 つ目のオプションは、データ ボリューム コンテナーを使用することです。 `-v` パラメーターを使用してホスト ディレクトリではなくボリューム名を指定して、データ ボリューム コンテナーを作成できます。 次の例では、**sqlvolume** という名前の共有データ ボリュームを作成します。
 
 ```bash
 docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge

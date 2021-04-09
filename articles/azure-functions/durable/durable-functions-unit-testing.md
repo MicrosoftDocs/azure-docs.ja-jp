@@ -3,19 +3,19 @@ title: Azure Durable Functions の単体テスト
 description: Durable Functions の単体テストを行う方法について説明します。
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: 7786a0a2e2d31086e1938b70e63fe2374e16fe7f
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 89b6419e95b3971b0d272490e19354f300204e1e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601358"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103491046"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions の単体テスト
 
 単体テストは、最新ソフトウェアの開発プラクティスの重要な部分です。 単体テストでは、ビジネス ロジックの動作を確認して、今後、認識していない破壊的変更を組み入れることがないように保護します。 Durable Functions は容易に複雑になってしまうので、単体テストを導入することで、破壊的変更を回避できます。 以降のセクションでは、オーケストレーション クライアント、オーケストレーター、およびアクティビティ関数という 3 つの関数タイプを単体テストする方法について説明します。
 
 > [!NOTE]
-> この記事では、Durable Functions 1.x をターゲットにした Durable Functions アプリの単体テストに関するガイダンスを提供します。 ただし、Durable Functions 2.x で導入された変更については、まだ反映されていません。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+> この記事では、Durable Functions 2.x をターゲットにした Durable Functions アプリの単体テストに関するガイダンスを提供します。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,20 +31,17 @@ ms.locfileid: "96601358"
 
 ## <a name="base-classes-for-mocking"></a>モックの作成の基底クラス
 
-モックの作成は、Durable Functions 1.x の以下の 3 つの抽象クラスを介してサポートされます。
+次のインターフェイスを介してモックがサポートされています。
 
-* `DurableOrchestrationClientBase`
+* [IDurableOrchestrationClient](/dotnet/api/microsoft.azure.webjobs.IDurableOrchestrationClient)、[IDurableEntityClient](/dotnet/api/microsoft.azure.webjobs.IDurableEntityClient)、[IDurableClient](/dotnet/api/microsoft.azure.webjobs.IDurableClient)
 
-* `DurableOrchestrationContextBase`
+* [IDurableOrchestrationContext](/dotnet/api/microsoft.azure.webjobs.IDurableOrchestrationContext)
 
-* `DurableActivityContextBase`
+* [IDurableActivityContext](/dotnet/api/microsoft.azure.webjobs.IDurableActivityContext)
+  
+* [IDurableEntityContext](/dotnet/api/microsoft.azure.webjobs.IDurableEntityContext)
 
-これらのクラスは、オーケストレーション クライアント、オーケストレーター、およびアクティビティ メソッドを定義する `DurableOrchestrationClient`、`DurableOrchestrationContext`、および `DurableActivityContext` の基底クラスです。 単体テストでビジネス ロジックを検証できるように、モックは、基底クラスのメソッドの予期される動作を設定します。 オーケストレーション クライアントとオーケストレーターにおけるビジネス ロジックの単体テストには、以下の 2 段階のワークフローがあります。
-
-1. オーケストレーション クライアントとオーケストレーター関数の署名を定義するときに、具体的な実装ではなく、基底クラスを使用します。
-2. 単体テストでは、基底クラスの動作をモックして、ビジネス ロジックを検証します。
-
-オーケストレーション クライアントのバインディングとオーケストレーター トリガーのバインディングを使用する関数のテストについては、以降の説明で詳細を確認できます。
+これらのインターフェイスは、Durable Functions でサポートされているさまざまなトリガーおよびバインドで使用できます。 Azure Functions を実行しているとき、Functions ランタイムは、これらのインターフェイスの具象実装を使用して関数コードを実行します。 単体テストでは、これらのインターフェイスのモック バージョンを渡してビジネス ロジックをテストすることができます。
 
 ## <a name="unit-testing-trigger-functions"></a>トリガー関数の単体テスト
 
@@ -52,71 +49,77 @@ ms.locfileid: "96601358"
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-単体テスト タスクでは、応答のペイロードで指定された `Retry-After` の値を検証します。 そのため、単体テストでは、予測可能な動作を確認するために、一部の `DurableOrchestrationClientBase` メソッドをモックします。
+単体テスト タスクでは、応答のペイロードで指定された `Retry-After` の値を検証します。 そのため、単体テストでは、予測可能な動作を確認するために、一部の `IDurableClient` メソッドをモックします。
 
-まず、基底クラスのモックである `DurableOrchestrationClientBase` が必要です。 モックは、`DurableOrchestrationClientBase` を実装する新しいクラスにすることができます。 ただし、[moq](https://github.com/moq/moq4) などのモック作成のフレームワークを使用すると、プロセスが簡単になります。
+最初に、モック フレームワーク (この場合は [moq](https://github.com/moq/moq4)) を使用して `IDurableClient` をモックします。
 
 ```csharp
-    // Mock DurableOrchestrationClientBase
-    var durableOrchestrationClientBaseMock = new Mock<DurableOrchestrationClientBase>();
+// Mock IDurableClient
+var durableClientMock = new Mock<IDurableClient>();
 ```
+
+> [!NOTE]
+> インターフェイスをクラスとして直接実装することでインターフェイスをモックできますが、モック フレームワークによってプロセスはさまざまな形で簡略化されます。 たとえば、マイナー リリースで新しいメソッドがインターフェイスに追加された場合、具象実装とは違って moq でコード変更が必要となりません。
 
 その後、`StartNewAsync` メソッドは、既知のインスタンス ID を返すようにモックされます。
 
 ```csharp
-    // Mock StartNewAsync method
-    durableOrchestrationClientBaseMock.
-        Setup(x => x.StartNewAsync(functionName, It.IsAny<object>())).
-        ReturnsAsync(instanceId);
+// Mock StartNewAsync method
+durableClientMock.
+    Setup(x => x.StartNewAsync(functionName, It.IsAny<object>())).
+    ReturnsAsync(instanceId);
 ```
 
 次の `CreateCheckStatusResponse` は、常に空の HTTP 200 の応答が返るようにモックされます。
 
 ```csharp
-    // Mock CreateCheckStatusResponse method
-    durableOrchestrationClientBaseMock
-        .Setup(x => x.CreateCheckStatusResponse(It.IsAny<HttpRequestMessage>(), instanceId))
-        .Returns(new HttpResponseMessage
+// Mock CreateCheckStatusResponse method
+durableClientMock
+    // Notice that even though the HttpStart function does not call IDurableClient.CreateCheckStatusResponse() 
+    // with the optional parameter returnInternalServerErrorOnFailure, moq requires the method to be set up
+    // with each of the optional parameters provided. Simply use It.IsAny<> for each optional parameter
+    .Setup(x => x.CreateCheckStatusResponse(It.IsAny<HttpRequestMessage>(), instanceId, returnInternalServerErrorOnFailure: It.IsAny<bool>())
+    .Returns(new HttpResponseMessage
+    {
+        StatusCode = HttpStatusCode.OK,
+        Content = new StringContent(string.Empty),
+        Headers =
         {
-            StatusCode = HttpStatusCode.OK,
-            Content = new StringContent(string.Empty),
-            Headers =
-            {
-                RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(10))
-            }
-        });
+            RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(10))
+        }
+    });
 ```
 
 `ILogger` もモックされます。
 
 ```csharp
-    // Mock ILogger
-    var loggerMock = new Mock<ILogger>();
+// Mock ILogger
+var loggerMock = new Mock<ILogger>();
 ```  
 
 ここで、`Run` メソッドが、以下のように単体テストから呼び出されます。
 
 ```csharp
-    // Call Orchestration trigger function
-    var result = await HttpStart.Run(
-        new HttpRequestMessage()
-        {
-            Content = new StringContent("{}", Encoding.UTF8, "application/json"),
-            RequestUri = new Uri("http://localhost:7071/orchestrators/E1_HelloSequence"),
-        },
-        durableOrchestrationClientBaseMock.Object,
-        functionName,
-        loggerMock.Object);
+// Call Orchestration trigger function
+var result = await HttpStart.Run(
+    new HttpRequestMessage()
+    {
+        Content = new StringContent("{}", Encoding.UTF8, "application/json"),
+        RequestUri = new Uri("http://localhost:7071/orchestrators/E1_HelloSequence"),
+    },
+    durableClientMock.Object,
+    functionName,
+    loggerMock.Object);
  ```
 
  最後のステップでは、予期される値と出力を比較します。
 
 ```csharp
-    // Validate that output is not null
-    Assert.NotNull(result.Headers.RetryAfter);
+// Validate that output is not null
+Assert.NotNull(result.Headers.RetryAfter);
 
-    // Validate output's Retry-After header value
-    Assert.Equal(TimeSpan.FromSeconds(10), result.Headers.RetryAfter.Delta);
+// Validate output's Retry-After header value
+Assert.Equal(TimeSpan.FromSeconds(10), result.Headers.RetryAfter.Delta);
 ```
 
 すべてのステップを組み合わせると、単体テストは次のようなコードになります。
@@ -134,30 +137,30 @@ ms.locfileid: "96601358"
 単体テストのコードは、モックの作成から始まります。
 
 ```csharp
-    var durableOrchestrationContextMock = new Mock<DurableOrchestrationContextBase>();
+var durableOrchestrationContextMock = new Mock<IDurableOrchestrationContext>();
 ```
 
 その後、アクティビティ メソッドの呼び出しがモックされます。
 
 ```csharp
-    durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Tokyo")).ReturnsAsync("Hello Tokyo!");
-    durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Seattle")).ReturnsAsync("Hello Seattle!");
-    durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "London")).ReturnsAsync("Hello London!");
+durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Tokyo")).ReturnsAsync("Hello Tokyo!");
+durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Seattle")).ReturnsAsync("Hello Seattle!");
+durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "London")).ReturnsAsync("Hello London!");
 ```
 
 次に、単体テストは、`HelloSequence.Run` メソッドを呼び出します。
 
 ```csharp
-    var result = await HelloSequence.Run(durableOrchestrationContextMock.Object);
+var result = await HelloSequence.Run(durableOrchestrationContextMock.Object);
 ```
 
 そして最後に、出力が検証されます。
 
 ```csharp
-    Assert.Equal(3, result.Count);
-    Assert.Equal("Hello Tokyo!", result[0]);
-    Assert.Equal("Hello Seattle!", result[1]);
-    Assert.Equal("Hello London!", result[2]);
+Assert.Equal(3, result.Count);
+Assert.Equal("Hello Tokyo!", result[0]);
+Assert.Equal("Hello Seattle!", result[1]);
+Assert.Equal("Hello London!", result[2]);
 ```
 
 すべてのステップを組み合わせると、単体テストは次のようなコードになります。
@@ -172,7 +175,7 @@ ms.locfileid: "96601358"
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-また、単体テストでは、出力の形式を確認します。 単体テストでは、パラメーターの型を直接使用するか、`DurableActivityContextBase` クラスをモックできます。
+また、単体テストでは、出力の形式を確認します。 単体テストでは、パラメーターの型を直接使用するか、`IDurableActivityContext` クラスをモックできます。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceActivityTests.cs)]
 

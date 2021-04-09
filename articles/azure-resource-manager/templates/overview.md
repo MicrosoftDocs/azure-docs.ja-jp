@@ -2,13 +2,13 @@
 title: テンプレートの概要
 description: リソースのデプロイに Azure Resource Manager テンプレート (ARM テンプレート) を使用する利点について説明します。
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: dd9207ca1d0397b7dce63eb826567f07b1d0b892
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 03/12/2021
+ms.openlocfilehash: 14bcbbd7a7ae7315dbb8e9d3e7e44ce0ffe0a4b4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621841"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103419985"
 ---
 # <a name="what-are-arm-templates"></a>ARM テンプレートとは
 
@@ -17,6 +17,12 @@ ms.locfileid: "98621841"
 これらの課題に対応するには、デプロイを自動化し、インフラストラクチャの手法をコードとして使用することができます。 コードでは、デプロイする必要があるインフラストラクチャを定義します。 インフラストラクチャのコードは、プロジェクトの一部になります。 アプリケーションのコードと同様に、インフラストラクチャのコードをソース リポジトリに格納し、そのバージョンを管理します。 チーム内の誰でもコードを実行して、同様の環境をデプロイできます。
 
 Azure ソリューション用にインフラストラクチャをコードとして実装するには、Azure Resource Manager テンプレート (ARM テンプレート) を使用します。 テンプレートは JavaScript Object Notation (JSON) ファイルであり、プロジェクトのインフラストラクチャと構成が定義されています。 このテンプレートでは、デプロイしようとしているものを、それを作成する一連のプログラミング コマンドを記述しなくても記述できる、宣言型の構文を使用しています。 このテンプレートでは、デプロイするリソースとそれらのリソースのプロパティを指定します。
+
+Microsoft では、ARM テンプレートを開発するための新しい言語を導入しました。 この言語は Bicep という名前で、現在はプレビュー段階にありです。 Bicep および JSON テンプレートは、同じ機能を提供します。 テンプレートは 2 つの言語間で変換できます。 Bicep には、テンプレートの作成に使用しやすい構文が用意されています。 詳細については、「[Bicep とは (プレビュー)](bicep-overview.md)」を参照してください。
+
+ARM テンプレートの使用を開始する方法については、次のビデオをご覧ください。
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Enablement/How-and-why-to-learn-about-ARM-templates/player]
 
 ## <a name="why-choose-arm-templates"></a>ARM テンプレートを選択する理由
 
@@ -68,7 +74,7 @@ ARM テンプレートを使用するか、他のいずれかのコードとし�
 
 * [ユーザー定義関数](template-user-defined-functions.md) - テンプレートを簡略化するカスタマイズされた関数を作成します。
 
-* [リソース](template-syntax.md#resources) - デプロイするリソースを指定します。
+* [リソース](resource-declaration.md) - デプロイするリソースを指定します。
 
 * [出力](template-outputs.md) - デプロイされたリソースから値を返します。
 
@@ -109,6 +115,15 @@ REQUEST BODY
 ```
 
 リソースに対してテンプレートで設定された **apiVersion** が、REST 操作の API バージョンとして使用されていることに注意してください。 テンプレートを繰り返しデプロイし、自信を持って引き続き動作させることができます。 同じ API バージョンを使用することで、新しいバージョンで導入される可能性がある破壊的変更について気にする必要はなくなります。
+
+テンプレートをデプロイするには、次のいずれかのオプションを使用します。
+
+* [Azure Portal](deploy-portal.md)
+* [Azure CLI](deploy-cli.md)
+* [PowerShell](deploy-powershell.md)
+* [REST API](deploy-rest.md)
+* [GitHub リポジトリのボタン](deploy-to-azure-button.md)
+* [Azure Cloud Shell](deploy-cloud-shell.md)
 
 ## <a name="template-design"></a>テンプレートの設計
 

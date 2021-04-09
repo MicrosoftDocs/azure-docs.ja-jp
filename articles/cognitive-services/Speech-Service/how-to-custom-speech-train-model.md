@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 4da93503c32e380adb82028e7c5e11dddb247d6f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 166fb94f5a3aea505c0d20df861b8bc4de9ad8aa
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373370"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103491114"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Custom Speech モデルのトレーニングとデプロイ
 
@@ -43,7 +43,7 @@ ms.locfileid: "100373370"
 6. **[Select training data]\(トレーニング データの選択\)** ページで、関連するテキスト データセット、またはトレーニングに使用するオーディオ + 人間によってラベル付けされた文字起こしデータセットを 1 つ以上選択します。
 
 > [!NOTE]
-> 新しいモデルをトレーニングするときは、関連するテキストから開始します。オーディオ + 人間によってラベル付けされた文字起こしを使用したトレーニングは、かなり長い時間がかかる場合があります **(最大[数日](how-to-custom-speech-evaluate-data.md#add-audio-with-human-labeled-transcripts)** )。
+> 新しいモデルをトレーニングするときは、関連するテキストから開始します。オーディオ + 人間によってラベル付けされた文字起こしを使用したトレーニングは、かなり長い時間がかかる場合があります **(最大 [数日](how-to-custom-speech-evaluate-data.md#add-audio-with-human-labeled-transcripts)** )。
 
 > [!NOTE]
 > すべての基本モデルでオーディオのトレーニングがサポートされるわけではありません。 基本モデルでサポートされていない音声サービスは、トランスクリプトのテキストのみを使用し、オーディオを無視します。 オーディオ データを使用したトレーニングをサポートする基本モデルの一覧については、「[言語のサポート](language-support.md#speech-to-text)」を参照してください。
@@ -61,7 +61,7 @@ ms.locfileid: "100373370"
 Custom Speech モデルの精度の評価と向上については、[方法](how-to-custom-speech-evaluate-data.md)に関する記事を参照してください。 正確性のテストを選択する場合、現実的なモデルのパフォーマンスを把握するために、モデルで使用したものとは異なる音響データセットを選択することが重要です。
 
 > [!NOTE]
-> 基本モデルとカスタム モデルはどちらも、特定の日付までしか使用できません (「[モデルのライフサイクル](custom-speech-overview.md#model-lifecycle)」を参照)。 Speech Studio では、各モデルとエンドポイントの **[有効期限]** 列にこの日付が表示されます。 その日付以降は、エンドポイントへの要求やバッチ文字起こしの要求が失敗したり、基本モデルにフォールバックしたりする可能性があります。
+> 基本モデルとカスタム モデルはどちらも、特定の日付までしか使用できません (「[モデルとエンドポイントのライフサイクル](./how-to-custom-speech-model-and-endpoint-lifecycle.md)」を参照)。 Speech Studio では、各モデルとエンドポイントの **[有効期限]** 列にこの日付が表示されます。 その日付以降は、エンドポイントへの要求やバッチ文字起こしの要求が失敗したり、基本モデルにフォールバックしたりする可能性があります。
 >
 > 精度の向上を実現し、モデルの有効期限が切れないようにするには、最新の基本モデルを使用してモデルを再トレーニングしてください。
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
 ms.openlocfilehash: 2b298185866d16da02fe8d3b3fdb41f0b0b1f726
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98878546"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections-azure-portal"></a>S2S VPN または VNet 対 VNet 接続用の IPsec/IKE ポリシーを構成する:Azure portal
@@ -28,8 +28,10 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 ### <a name="considerations"></a>考慮事項
 
 * IPsec/IKE ポリシーは、次のゲートウェイ SKU でのみ機能します。
-  * ***VpnGw1 から 5 および VpnGw1AZ から 5AZ** _ _ ***Standard** _ および _*_HighPerformance_*_ _ 特定の接続に対して指定できるポリシーの組み合わせは ***1 つ** だけです。
-  IKE (メイン モード) と IPsec (クイック モード) の両方について、すべてのアルゴリズムとパラメーターを指定する必要があります。 ポリシーを部分的に指定することはできません。
+  * "***VpnGw1 から 5 および VpnGw1AZ から 5AZ***"
+  * ***Standard** _ および _ *_HighPerformance_**
+* ある特定の接続に対して指定できるポリシーの組み合わせは ***1 つ*** だけです。
+* IKE (メイン モード) と IPsec (クイック モード) の両方について、すべてのアルゴリズムとパラメーターを指定する必要があります。 ポリシーを部分的に指定することはできません。
 * オンプレミスの VPN デバイスでポリシーがサポートされることを、VPN デバイス ベンダーの仕様で確認してください。 ポリシーに対応していない場合、S2S または VNet-to-VNet 接続を確立することはできません。
 
 ## <a name="workflow"></a><a name ="workflow"></a>ワークフロー

@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 842563319e09a001fd6e85403d8aee6fb14690ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90884424"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL – Hyperscale (Citus) でのテーブル コロケーション
@@ -96,7 +96,7 @@ GROUP BY page_id ORDER BY count DESC LIMIT 10;
 
 クエリの実行では、ノード間に分散しているシャード内のデータを参照する必要があります。
 
-:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="シャード":::
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="非効率的なクエリ":::
 
 この場合、データの分散によって、大きな欠点が生じます。
 
@@ -134,7 +134,7 @@ GROUP BY page_id;
 
 tenant_id でのフィルターと結合のため、Hyperscale (Citus) は、その特定のテナントのデータを格納する併置されたシャードのセットを使用して、クエリ全体に応答できることを認識します。 単一の PostgreSQL ノードは、1 手順でクエリに応答できます。
 
-:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="シャード":::
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="優れたクエリ":::
 
 場合によっては、クエリとテーブル スキーマを変更して、一意の制約にテナント ID を含めて、条件を結合する必要があります。 通常これは簡単な変更で済みます。
 

@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory Business-to-Customer (B2C) の新機能
 description: Azure Active Directory Business-to-Customer (B2C) の新規および更新されたドキュメント。
-ms.date: 02/01/2021
+ms.date: 03/08/2021
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,28 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: c4561780a20bb2dfdef39269a49ebf8cb2a29fff
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 00be0a18984f1ad3eacf86a2cf3477d8b0d9065f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593012"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102454619"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C:新機能
 
 Azure Active Directory B2C のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 B2C サービスの新機能については、「[Azure Active Directory の新着情報](../active-directory/fundamentals/whats-new.md)」を参照してください。
+
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [電話ベースの多要素認証 (MFA) のセキュリティ保護](phone-based-mfa.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Azure Active Directory B2C のサンプル コード](code-samples.md)
+- [Application Insights を使用して Azure AD B2C でのユーザーの動作を追跡する](analytics-with-application-insights.md)
+- [Azure Active Directory B2C でセッションの動作を構成する](session-behavior.md)
 
 ## <a name="january-2021"></a>2021 年 1 月
 

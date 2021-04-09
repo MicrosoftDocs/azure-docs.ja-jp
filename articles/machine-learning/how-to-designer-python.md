@@ -11,10 +11,10 @@ ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer, devx-track-python
 ms.openlocfilehash: dcc28d98efbc82079586de8cfbecd35effc93d6e
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94556235"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーでの Python コードの実行

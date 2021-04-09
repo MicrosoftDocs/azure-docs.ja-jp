@@ -4,10 +4,10 @@ description: Azure Backup のパフォーマンスに関する問題の原因を
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.openlocfilehash: b3f2ac343ef4a703f347ec8a57f242a636bb32d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88824017"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング
@@ -27,7 +27,7 @@ ms.locfileid: "88824017"
 
 ## <a name="cause-backup-job-running-in-unoptimized-mode"></a>原因: 最適化されないモードでバックアップ ジョブが実行されている
 
-* MARS エージェントでは、USN (更新シーケンス番号) の変更ジャーナルを使用して**最適化されたモード**でバックアップ ジョブを実行できます。また、ボリューム全体をスキャンして、ディレクトリまたはファイルの変更を確認すると、**最適化されないモード**で実行されます。
+* MARS エージェントでは、USN (更新シーケンス番号) の変更ジャーナルを使用して **最適化されたモード** でバックアップ ジョブを実行できます。また、ボリューム全体をスキャンして、ディレクトリまたはファイルの変更を確認すると、**最適化されないモード** で実行されます。
 * エージェントでは、ボリューム上のすべてのファイルをスキャンし、メタデータと比較して変更されたファイルを判断する必要があるため、最適化されないモードは低速です。
 * これを確認するには、MARS エージェント コンソールから **[ジョブの詳細]** を開き、状態を確認し、次のように "**データを転送しています (最適化されていないため、しばらく時間がかかることがあります)** " と表示されるかどうかを確認します。
 

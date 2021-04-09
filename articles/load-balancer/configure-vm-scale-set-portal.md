@@ -7,10 +7,10 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
 ms.openlocfilehash: cb7bfb9ac4b10b807ac186d087b0037953abd559
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91439511"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>Azure portal を使用して、既存の Azure Load Balancer で仮想マシン スケール セットを構成する
@@ -79,7 +79,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
     | ロード バランサーを選択する            | **myLoadBalancer** または既存のロード バランサーを選択します |
     | バックエンド プールを選択する             | **myBackendPool** または既存のバックエンド プールを選択します。  |
 
-    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-02.png" alt-text="[仮想マシン スケール セットの作成] の [基本] タブが表示されているスクリーンショット。" border="true":::
+    :::image type="content" source="./media/vm-scale-sets/create-vm-scale-set-02.png" alt-text="[仮想マシン スケール セットの作成] の [ネットワーク] タブが表示されているスクリーンショット。" border="true":::
 
 6. **[管理]** タブを選択します。
 

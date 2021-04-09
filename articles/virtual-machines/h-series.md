@@ -1,19 +1,19 @@
 ---
 title: H シリーズ - Azure Virtual Machines
 description: H シリーズ VM の仕様。
-author: ju-shim
+author: vermagit
 ms.service: virtual-machines
-ms.subservice: hpc
+ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 274399e5c124bcf9d925a483584d4f501e6b5106
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b3e3beb51256bbf22d29d74b51c52ca3a6bee0c4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672481"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104774781"
 ---
 # <a name="h-series"></a>H シリーズ
 
@@ -40,10 +40,21 @@ H シリーズ VM は、高い CPU 周波数またはコアあたり大容量メ
 
 <sup>1</sup> MPI アプリケーションの場合、専用の RDMA バックエンド ネットワークが FDR InfiniBand ネットワークによって有効になります。
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
-
 > [!NOTE]
 > [RDMA 対応 VM](sizes-hpc.md#rdma-capable-instances) において、H シリーズは SR-IOV が有効になっていません。 そのため、サポートされている [VM イメージ](./workloads/hpc/configure.md#vm-images)、[InfiniBand ドライバー](./workloads/hpc/enable-infiniband.md)の要件、サポートされている [MPI ライブラリ](./workloads/hpc/setup-mpi.md)は、SR-IOV が有効になっている VM とは異なります。
+
+## <a name="software-specifications"></a>ソフトウェア仕様
+
+| ソフトウェア仕様     |HC シリーズ VM           |
+|-----------------------------|-----------------------|
+| 最大 MPI ジョブ サイズ            | 4,800 コア (1 つの仮想マシン スケール セットに 300 の VM、singlePlacementGroup=true)  |
+| MPI のサポート                 | Intel MPI 5.x、MS-MPI  |
+| SRIOV 以外の RDMA の OS のサポート   | CentOS/RHEL 6.5 - 7.4、SLES 12 SP4 以降、WinServer 2012 - 2016  |
+| Orchestrator のサポート        | CycleCloud、Batch、AKS  |
+
+[!INCLUDE [hpc-include](./workloads/hpc/includes/hpc-include.md)]
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="other-sizes"></a>その他のサイズ
 
@@ -56,7 +67,6 @@ H シリーズ VM は、高い CPU 周波数またはコアあたり大容量メ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [VM の構成](./workloads/hpc/configure.md)、[InfiniBand の有効化](./workloads/hpc/enable-infiniband.md)、[MPI の設定](./workloads/hpc/setup-mpi.md)、[HPC ワークロード](./workloads/hpc/overview.md)での Azure 用の HPC アプリケーションの最適化について学習します。
-- [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表および HPC の例と結果について参照します。
+- [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表、HPC ワークロードの例、およびパフォーマンスの結果について参照します。
 - HPC ワークロードの実行をアーキテクチャの面から見た概要については、「[Azure でのハイ パフォーマンス コンピューティング (HPC)](/azure/architecture/topics/high-performance-computing/)」をご覧ください。
 - [Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。

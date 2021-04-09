@@ -11,10 +11,10 @@ ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 93602e522338166abac98c3e4a198e1aff392d21
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97934970"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure Synapse Analytics の共有データベース

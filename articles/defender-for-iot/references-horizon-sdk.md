@@ -1,19 +1,14 @@
 ---
 title: Horizon SDK
-titleSuffix: Azure Defender for IoT
 description: Azure Defender for IoT 開発者は Horizon SDK を使用すると、自動化された Defender for IoT ネットワーク分析プログラムで処理できるようにネットワーク トラフィックをデコードする dissector プラグインを設計できます。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 06663e12bbcaee2243be75d6aa9ea9cf4fd125bf
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 500f1d78a6a2ab91284c993a5c56ef8e679db83f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523364"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782488"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Horizon の独自プロトコル dissector
 
@@ -1640,6 +1635,6 @@ Horizon コンソールの **[Overview]\(概要\)** ウィンドウには、ア�
 
 [Overview]\(概要\) から、プラグインの [Monitor]\(モニター\) ボタンを選択します。
 
-## <a name="next-steps"></a>次のステップ
+次のステップ
 
 [Horizon API](references-horizon-api.md) を設定する

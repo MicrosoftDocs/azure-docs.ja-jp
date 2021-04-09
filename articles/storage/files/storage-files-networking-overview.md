@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7164c3dd5c98544f3cb2944cb33cfd0e9703e36d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: cec386b798b843a5badc9d52d9c71bd7df54b59a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563337"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103601935"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure Files のネットワークに関する考慮事項 
 Azure ファイル共有には、次の 2 つの方法で接続できます。
@@ -25,6 +25,15 @@ Azure ファイル共有には、次の 2 つの方法で接続できます。
 Azure ファイル共有のネットワーク構成は Azure ストレージ アカウントで行います。 ストレージ アカウントは、複数のファイル共有だけでなく、BLOB コンテナーやキューなどのその他のストレージ リソースをデプロイできるストレージの共有プールを表す管理構造です。 ストレージ アカウントには、ネットワーク エンドポイント、ストレージ アカウントのファイアウォール設定、転送中の暗号化など、ファイル共有へのネットワーク アクセスをセキュリティで保護するうえで役立つ多数の設定が公開されています。 
 
 この概念的なガイドを読む前に、「[Azure Files のデプロイの計画](storage-files-planning.md)」を読むことをお勧めします。
+
+:::row:::
+    :::column:::
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/jd49W33DxkQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    :::column-end:::
+    :::column:::
+        このビデオは、簡単な 5 つのステップでインフォメーション ワーカーやアプリに直接 Azure ファイル共有を安全に公開する方法についてのガイドとデモです。 下のセクションでは、ビデオ内で参照されているドキュメントへのリンクと追加のコンテキストを提供します。
+   :::column-end:::
+:::row-end:::
 
 ## <a name="accessing-your-azure-file-shares"></a>Azure ファイル共有へのアクセス
 ストレージ アカウントに Azure ファイル共有をデプロイするとすぐに、そのストレージ アカウントのパブリック エンドポイント経由でファイル共有にアクセスできるようになります。 つまり、ユーザーのログオン ID によって承認された要求など、認証済みの要求は、Azure の内外から安全に送信できます。 

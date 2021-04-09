@@ -1,7 +1,7 @@
 ---
 title: .NET を使用した Azure Media Services コンテンツの発行 | Microsoft Docs
 description: ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。 コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0343c607a342c3438d68627b97c71cdf05199b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1a06c9a5fdac1082a57bee71cccad271a6aae81
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267787"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103015796"
 ---
 # <a name="publish-media-services-content-using-net"></a>.NET を使用して Media Services コンテンツを発行する
 
@@ -153,7 +153,7 @@ ms.locfileid: "89267787"
 - `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_3400kbps_AAC_und_ch2_96kbps.mp4`
 - `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_2250kbps_AAC_und_ch2_96kbps.mp4`
 
-    。 。 。 
+    . . . 
 
 ### <a name="use-media-services-net-sdk-extensions"></a>Media Services .NET SDK Extensions の使用
 次のコードでは、ロケーターを作成してアダプティブのスムーズ ストリーミング、HLS、MPEG-DASH URL を生成する.NET SDK Extensions のメソッドを呼び出します。

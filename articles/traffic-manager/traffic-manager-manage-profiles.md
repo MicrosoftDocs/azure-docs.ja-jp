@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: duau
 ms.openlocfilehash: a39120b1305022739aaef3407aa6c2621a97e842
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98184155"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Azure Traffic Manager プロファイルの管理
@@ -33,7 +33,7 @@ Azure Portal を使用して Traffic Manager プロファイルを作成でき�
 2. **[リソースの作成]**  >  **[ネットワーク]**  >  **[Traffic Manager プロファイル]**  >  **[作成]** の順にクリックします。
 4. **[Traffic Manager プロファイルの作成]** で、以下を実行します。
     1. **[名前]** に、プロファイルの名前を入力します。 この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名 `<name>`.trafficmanager.net になるためです。
-    2. **[ルーティング方法]** で、 **[優先順位]** ルーティング方法を選びます。
+    2. **[ルーティング方法]** で、**[優先順位]** ルーティング方法を選びます。
     3. **[サブスクリプション]** で、このプロファイルを作成するサブスクリプションを選択します。
     4. **[リソース グループ]** で、このプロファイルを配置する新しいリソース グループを作成します。
     5. **[リソース グループの場所]** で、リソース グループの場所を選択します。 これはリソース グループの場所を指定する設定であり、グローバルにデプロイされる Traffic Manager プロファイルには影響しません。

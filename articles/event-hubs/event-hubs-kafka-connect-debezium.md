@@ -6,10 +6,10 @@ author: abhirockzz
 ms.author: abhishgu
 ms.date: 01/06/2021
 ms.openlocfilehash: 0ad1df23e71e652f7d380ffbabb542b81954e038
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935174"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-with-debezium-for-change-data-capture"></a>変更データ キャプチャ用に Azure Event Hubs の Apache Kafka Connect のサポートを Debezium と統合する
@@ -19,9 +19,9 @@ ms.locfileid: "97935174"
 > [!WARNING]
 > Apache Kafka Connect フレームワークと Debezium プラットフォームおよびそのコネクタを共に使用することは、**Microsoft Azure 経由の製品サポートの対象外です**。
 >
-> Apache Kafka Connect では、その動的構成が、通常であれば無制限の保持期間を持つ圧縮されたトピックに保持されていることを前提としています。 Azure Event Hubs では[圧縮がブローカー機能として実装されていないため](event-hubs-federation-overview.md#log-projections)、保持されるイベントに時間ベースの保持期間の制限が常に課されます。これは、Azure Event Hubs が長期間のデータ ストアや構成ストアではなく、リアルタイムのイベント ストリーミング エンジンであるという原則から来ています。
+> Apache Kafka Connect では、その動的構成が、通常であれば無制限の保持期間を持つ圧縮されたトピックに保持されていることを前提としています。 Azure Event Hubs では[圧縮がブローカー機能として実装されていないため](event-hubs-federation-overview.md#log-projections)、保持されるイベントに時間ベースの保持期間の制限が常に課されます。これは、Azure Event Hubs が長期間のデータまたは構成ストアではなく、リアルタイムのイベント ストリーミング エンジンであるという原則から来ています。
 >
-> Apache Kafka プロジェクトは混在したこれらのロールに適している可能性がありますが、Azure では、このような情報は適切なデータベースまたは構成ストアで最適に管理されると考えています。
+> Apache Kafka プロジェクトではこれらの役割が混同されていても問題ないかもしれませんが、Azure では、このような情報は適切なデータベースまたは構成ストアで管理するのが最適であると考えられています。
 >
 > Apache Kafka Connect のシナリオの多くは正常に機能しますが、Apache Kafka と Azure Event Hubs の保持モデル間のこれらの概念的な違いのために、特定の構成が期待どおりに機能しなくなる可能性があります。 
 

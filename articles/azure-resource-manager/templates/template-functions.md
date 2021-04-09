@@ -4,10 +4,10 @@ description: 値の取得、文字列および数値の処理、デプロイ情�
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.openlocfilehash: dbda5c635a5189158424363c341b269d331a5fdc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101707321"
 ---
 # <a name="arm-template-functions"></a>ARM テンプレート関数

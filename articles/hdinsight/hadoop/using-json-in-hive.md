@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 5bc9acea219e5d111700840149a26c127b47514d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d3c5077450dd4ec59f5ea7bc8f37879f9aa775bf
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943056"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868938"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive による JSON ドキュメントの処理および分析
 
@@ -93,7 +93,7 @@ SELECT * FROM StudentsOneLine
 
 **SELECT** ステートメントの出力を次に示します。
 
-![HDInsight の JSON ドキュメントのフラット化](./media/using-json-in-hive/hdinsight-flatten-json.png)
+:::image type="content" source="./media/using-json-in-hive/hdinsight-flatten-json.png" alt-text="HDInsight の JSON ドキュメントのフラット化" border="true":::
 
 ## <a name="analyze-json-documents-in-hive"></a>Hive での JSON ドキュメントの分析
 
@@ -119,7 +119,7 @@ FROM StudentsOneLine;
 
 このクエリをコンソール ウィンドウで実行したときの出力を次に示します。
 
-![Apache Hive での JSON オブジェクト UDF の取得](./media/using-json-in-hive/hdinsight-get-json-object.png)
+:::image type="content" source="./media/using-json-in-hive/hdinsight-get-json-object.png" alt-text="Apache Hive での JSON オブジェクト UDF の取得" border="true":::
 
 get_json_object UDF には次の制限があります。
 
@@ -141,7 +141,7 @@ LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
 
 Hive コンソールにおけるこのスクリプトの出力:
 
-![Apache Hive の JSON クエリ結果](./media/using-json-in-hive/hdinsight-json-tuple.png)
+:::image type="content" source="./media/using-json-in-hive/hdinsight-json-tuple.png" alt-text="Apache Hive の JSON クエリ結果" border="true":::
 
 `json_tuple` UDF では、Hive で [lateral view](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) 構文を使用します。これにより、json\_tuple は、元のテーブルの各行に UDT 関数を適用することによって仮想テーブルを作成できます。 複雑な JSON では **LATERAL VIEW** が繰り返し使用されるため、処理が難しくなります。 また、**JSON_TUPLE** では入れ子になった JSON を処理できません。
 

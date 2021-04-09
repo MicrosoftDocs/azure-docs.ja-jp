@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: fc6b90be8e951c0e30c99d0bb16f85e49cf991f2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92522327"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>チュートリアル: Azure Active Directory と OrgChart Now の統合
@@ -41,7 +41,7 @@ OrgChart Now と Azure AD の統合を構成するには、次のものが必要
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* OrgChart Now では、 **SP** と **IDP** によって開始される SSO がサポートされます
+* OrgChart Now では、**SP** と **IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-orgchart-now-from-the-gallery"></a>ギャラリーから OrgChart Now を追加
 
@@ -61,13 +61,13 @@ Azure AD への OrgChart Now の統合を構成するには、ギャラリーか
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **OrgChart Now** 」と入力し、結果パネルから **[OrgChart Now]** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**OrgChart Now**」と入力し、結果パネルから **[OrgChart Now]** を選択し、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果一覧の OrgChart Now](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、OrgChart Now で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、OrgChart Now で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと OrgChart Now 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 OrgChart Now で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ OrgChart Now で Azure AD のシングル サインオンを構成してテス�
 
 OrgChart Now で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **OrgChart Now** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **OrgChart Now** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -146,7 +146,7 @@ OrgChart Now で Azure AD シングル サインオンを構成するには、�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -159,7 +159,7 @@ OrgChart Now で Azure AD シングル サインオンを構成するには、�
 
 このセクションでは、Britta Simon に OrgChart Now へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[OrgChart Now]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[OrgChart Now]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -185,13 +185,13 @@ OrgChart Now で Azure AD シングル サインオンを構成するには、�
 
 Azure AD ユーザーが OrgChart Now にログインできるようにするには、そのユーザーを OrgChart Now にプロビジョニングする必要があります。 
 
-1. OrgChart Now では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 OrgChart Now にアクセスしようとすると、ユーザーがまだ存在しない場合は新しいユーザーが作成されます。 Just-In-Time ユーザー プロビジョニング機能では、認識されている IDP から SSO 要求が届いたとき、SAML アサーションの電子メールがユーザーの一覧に見つからない場合にのみ **読み取り専用** ユーザーが作成されます。 この自動プロビジョニング機能のために、OrgChart Now で「 **全般** 」というタイトルのアクセス グループを作成する必要があります。 次の手順でアクセス グループを作成してください。
+1. OrgChart Now では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 OrgChart Now にアクセスしようとすると、ユーザーがまだ存在しない場合は新しいユーザーが作成されます。 Just-In-Time ユーザー プロビジョニング機能では、認識されている IDP から SSO 要求が届いたとき、SAML アサーションの電子メールがユーザーの一覧に見つからない場合にのみ **読み取り専用** ユーザーが作成されます。 この自動プロビジョニング機能のために、OrgChart Now で「**全般**」というタイトルのアクセス グループを作成する必要があります。 次の手順でアクセス グループを作成してください。
 
-    a. UI の右上隅にある **歯車** をクリックし、 **[グループの管理]** オプションに進みます。
+    a. UI の右上隅にある **歯車** をクリックし、**[グループの管理]** オプションに進みます。
 
     ![OrgChart Now のグループ](./media/orgchartnow-tutorial/tutorial_orgchartnow_manage.png)    
 
-    b. **[追加]** アイコンを選択し、グループに「 **全般** 」という名前を付け、 **[OK]** をクリックします。 
+    b. **[追加]** アイコンを選択し、グループに「**全般**」という名前を付け、**[OK]** をクリックします。 
 
     ![OrgChart Now の [追加]](./media/orgchartnow-tutorial/tutorial_orgchartnow_add.png)
 
@@ -199,7 +199,7 @@ Azure AD ユーザーが OrgChart Now にログインできるようにするに
 
     ![OrgChart Now のフォルダー](./media/orgchartnow-tutorial/tutorial_orgchartnow_chart.png)
 
-    d. 管理者ユーザーのみが変更できるようにフォルダーを **ロックします** 。 **[OK]** をクリックします。
+    d. 管理者ユーザーのみが変更できるようにフォルダーを **ロックします**。 **[OK]** をクリックします。
 
     ![OrgChart Now のロック機能](./media/orgchartnow-tutorial/tutorial_orgchartnow_lock.png)
 
@@ -207,7 +207,7 @@ Azure AD ユーザーが OrgChart Now にログインできるようにするに
 
     a. セキュリティ管理者として OrgChart Now にログインします。
 
-    b.  右上隅にある **[設定]** をクリックし、 **[ユーザーの管理]** に移動します。
+    b.  右上隅にある **[設定]** をクリックし、**[ユーザーの管理]** に移動します。
 
     ![OrgChart Now の設定](./media/orgchartnow-tutorial/tutorial_orgchartnow_settings.png)
 
@@ -217,7 +217,7 @@ Azure AD ユーザーが OrgChart Now にログインできるようにするに
 
     * **[ユーザー ID]** テキストボックスに **brittasimon\@contoso.com** のようなユーザー ID を入力します。
 
-    * **[Email Address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス ( **brittasimon\@contoso.com** など) を入力します。
+    * **[Email Address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
 
     * **[追加]** をクリックします。
 

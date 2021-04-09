@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
 ms.openlocfilehash: 4c7c68bf690097004f2f3310a8d89ce954d7f87f
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98612908"
 ---
 | リソース | 制限 | Note |

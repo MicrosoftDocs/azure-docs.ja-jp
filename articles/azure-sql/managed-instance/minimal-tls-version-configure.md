@@ -11,10 +11,10 @@ ms.author: srbozovi
 ms.reviewer: ''
 ms.date: 05/25/2020
 ms.openlocfilehash: 17d430946f3cba1aa4680d1eaf8979fa4338bc22
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92788402"
 ---
 # <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Azure SQL Managed Instance で最小 TLS バージョンを構成する
@@ -39,7 +39,7 @@ Login failed with invalid TLS version
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 次のスクリプトは [Azure PowerShell](/powershell/azure/install-az-ps) モジュールを必要とします。
 
-次の PowerShell スクリプトは、 **最少 TLS バージョン** プロパティをインスタンス レベルで `Get` および `Set` する方法を示しています。
+次の PowerShell スクリプトは、**最少 TLS バージョン** プロパティをインスタンス レベルで `Get` および `Set` する方法を示しています。
 
 ```powershell
 #Get the Minimal TLS Version property

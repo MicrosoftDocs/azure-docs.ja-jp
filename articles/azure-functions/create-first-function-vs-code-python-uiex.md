@@ -6,10 +6,10 @@ ms.date: 11/04/2020
 ms.custom: devx-track-python
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 42f07b76cefed38aad53caba9ba35c74238540fe
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031737"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-python-using-visual-studio-code"></a>クイックスタート: Visual Studio Code と Python を使用して Azure に関数を作成する
@@ -150,7 +150,7 @@ ms.locfileid: "102031737"
 
     + **Select a runtime (ランタイムを選択してください)** : ローカルで実行している Python のバージョンを選択します。 `python --version` コマンドを使用してバージョンを確認してください。
 
-    + **Select a location for new resources (新しいリソースの場所を選択してください)** : パフォーマンスを向上させるために、お近くの[リージョン](https://azure.microsoft.com/regions/)を選択してください。
+    + **Select a location for new resources (新しいリソースの場所を選択してください)** : パフォーマンスを向上させるために、お近くの [リージョン](https://azure.microsoft.com/regions/)を選択してください。
 
     この拡張機能は、Azure に作成されている個々のリソースの状態を通知領域に表示します。
 

@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 87fc8e30274f0a11b7ddfc5eeb184f1a45a5351d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: eaf40bafb68820b56fc9bf00dd4c11fbb337406f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588377"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102613461"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure Diagnostics を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
@@ -181,15 +181,15 @@ extensions 配列内に次のコードを追加し、 template.json ファイル
 
 > [!TIP]
 > 使用しているクラスターにコンテナーをデプロイする場合は、WAD を有効にして、ご自身の **WadCfg > DiagnosticMonitorConfiguration** セクションに次のコードを追加し、Docker の統計情報を取得します。
->
->```json
->"DockerSources": {
->    "Stats": {
->        "enabled": true,
->        "sampleRate": "PT1M"
->    }
->},
->```
+
+```json
+"DockerSources": {
+    "Stats": {
+        "enabled": true,
+        "sampleRate": "PT1M"
+    }
+},
+```
 
 ### <a name="update-storage-quota"></a>ストレージ クォータを更新する
 

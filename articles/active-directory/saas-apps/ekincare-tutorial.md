@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 349cc4ed17edeba6bdfabd0369fbef55c1a0f0f7
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454220"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ekincare"></a>チュートリアル: Azure Active Directory と eKincare の統合
@@ -41,9 +41,9 @@ Azure AD と eKincare の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* eKincare では、 **IDP** によって開始される SSO がサポートされます
+* eKincare では、**IDP** によって開始される SSO がサポートされます
 
-* eKincare では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* eKincare では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-ekincare-from-the-gallery"></a>ギャラリーから eKincare を追加する
 
@@ -63,13 +63,13 @@ Azure AD への eKincare の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **eKincare** 」と入力し、結果パネルで **eKincare** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**eKincare**」と入力し、結果パネルで **eKincare** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の eKincare](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、eKincare で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、eKincare で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと eKincare 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 eKincare で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -114,9 +114,9 @@ eKincare で Azure AD シングル サインオンを構成するには、次の
 
     ![[編集] ボタンが選択されている [ユーザー属性] ダイアログを示すスクリーンショット。](common/edit-attribute.png)
 
-6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、 **編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
+6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
 
-    | Name | ソース属性 |
+    | 名前 | ソース属性 |
     | ---------------| --------------- |    
     | employeeid | *user.extensionattribute1* |
     | organizationid | *"uniquevalue"* |
@@ -174,9 +174,9 @@ eKincare で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -211,7 +211,7 @@ eKincare で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="create-ekincare-test-user"></a>eKincare テスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを eKincare に作成します。 eKincare では、 **Just-In-Time ユーザー プロビジョニング** がサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 eKincare にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+このセクションでは、Britta Simon というユーザーを eKincare に作成します。 eKincare では、**Just-In-Time ユーザー プロビジョニング** がサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 eKincare にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

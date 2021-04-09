@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 1958e818f014b7419a1a33e9453fbad460dfc159
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92330616"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Azure DevTest Labs の実装を調整する
@@ -19,9 +19,9 @@ ms.locfileid: "92330616"
 ## <a name="assumptions"></a>前提条件
 この記事では、DevTest Labs をパイロット実装する前に、次のものが既にあることを前提としています。
 
-- **Azure サブスクリプション** :パイロット チームに、Azure サブスクリプションにリソースをデプロイするためのアクセス権があること。 ワークロードが開発とテストのみの場合、使用できるイメージを追加し、Windows 仮想マシンの料金を抑えるため、Enterprise DevTest オファーを選択することをお勧めします。
-- **オンプレミス アクセス** :必要な場合、オンプレミスへのアクセスが既に構成されていること。 オンプレミス アクセスは、サイト間 VPN 接続または ExpressRoute を使用して実現できます。 ExpressRoute による接続を確立するには何週間もかかるのが普通なので、プロジェクトを始める前に ExpressRoute を用意しておくことをお勧めします。
-- **パイロット チーム** :DevTest Labs を使用する初期開発プロジェクト チームと該当する開発またはテスト アクティビティが特定され、チームの要件/目標/目的が確立されていること。
+- **Azure サブスクリプション**:パイロット チームに、Azure サブスクリプションにリソースをデプロイするためのアクセス権があること。 ワークロードが開発とテストのみの場合、使用できるイメージを追加し、Windows 仮想マシンの料金を抑えるため、Enterprise DevTest オファーを選択することをお勧めします。
+- **オンプレミス アクセス**:必要な場合、オンプレミスへのアクセスが既に構成されていること。 オンプレミス アクセスは、サイト間 VPN 接続または ExpressRoute を使用して実現できます。 ExpressRoute による接続を確立するには何週間もかかるのが普通なので、プロジェクトを始める前に ExpressRoute を用意しておくことをお勧めします。
+- **パイロット チーム**:DevTest Labs を使用する初期開発プロジェクト チームと該当する開発またはテスト アクティビティが特定され、チームの要件/目標/目的が確立されていること。
 
 ## <a name="milestone-1-establish-initial-network-topology-and-design"></a>マイルストーン 1:最初のネットワーク トポロジと設計を確立する
 Azure DevTest Labs ソリューションをデプロイするときに最初に注目するのは、仮想マシンに対して計画されている接続を確立することです。 必要な手順の概要は以下のとおりです。

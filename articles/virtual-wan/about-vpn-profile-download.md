@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/08/2021
 ms.author: cherylmc
 ms.openlocfilehash: d83b6ed2ae83db569d3c61e3cf4cd887f875eb25
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99980917"
 ---
 # <a name="working-with-user-vpn-client-profile-files"></a>ユーザー VPN クライアント プロファイル ファイルの操作

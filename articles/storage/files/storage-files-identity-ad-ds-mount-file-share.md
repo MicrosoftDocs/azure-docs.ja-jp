@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 9807563c768b82c823ff754aaa679ddc917bf62d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1dd2768c7541312b68e2a44a35fc4260d67c5655
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87535061"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587000"
 ---
 # <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>パート 4: ドメインに参加している VM からファイル共有をマウントする
 
@@ -28,10 +28,10 @@ ms.locfileid: "87535061"
 
 ファイル共有をマウントする前に、次の前提条件を完了していることを確認してください。
 
-- 対象のストレージ アカウント キーを使用してファイル共有を以前にマウントしたクライアントからファイル共有をマウントする場合は、その共有を切断したこと、ストレージ アカウント キーの永続的な資格情報を削除したこと、および認証に AD DS 資格情報を現在使用していることを確認してください。
+- 対象のストレージ アカウント キーを使用してファイル共有を以前にマウントしたクライアントからファイル共有をマウントする場合は、その共有を切断したこと、ストレージ アカウント キーの永続的な資格情報を削除したこと、および認証に AD DS 資格情報を現在使用していることを確認してください。 マウントされた共有をストレージ アカウント キーでクリアする手順については、[FAQ ページ](./storage-files-faq.md#ad-ds--azure-ad-ds-authentication)を参照してください。
 - クライアントには、お使いの AD DS への通信経路が必要です。 お使いのマシンまたは VM が AD DS によって管理されているネットワークの外にある場合、VPN を有効にして、認証のために AD DS に到達できるようにする必要があります。
 
-プレースホルダーの値を実際の値に置き換えて次のコマンドを使用して Azure ファイル共有をマウントします。
+プレースホルダーの値を実際の値に置き換えて、次のコマンドを使用して Azure ファイル共有をマウントします。 必ず次に示すパスを使用してマウントする必要があります。 ファイルのマウントで CNAME を使用することは、ID ベース認証 (AD DS または Azure AD DS) ではサポートされていません。
 
 ```PSH
 # Always mount your share using.file.core.windows.net, even if you setup a private endpoint for your share.

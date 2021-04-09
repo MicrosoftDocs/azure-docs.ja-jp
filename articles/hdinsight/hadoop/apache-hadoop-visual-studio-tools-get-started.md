@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: how-to
 ms.date: 04/14/2020
-ms.openlocfilehash: 8d8e9784ea21bf5f2b6902e3d93c5c09c1ec5670
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c6969c3108fb1465a705d8e61b3a7bdf2083736a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944571"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865657"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Apache Hive クエリを実行する
 
@@ -41,7 +41,7 @@ Data Lake Tools for Visual Studio を使用して、Azure Data Lake Analytics �
 
     既存の Visual Studio インストールがある場合は、IDE メニュー バーに移動し、 **[ツール]**  >  **[ツールと機能を取得]** を選択して Visual Studio インストーラーを開きます。 **[ワークロード]** タブで、少なくとも **[Azure の開発]** ワークロード ( **[Web & クラウド]** の下) を選択します。 または、 **[データの保存と処理]** ワークロード ( **[他のツールセット]** の下) を選択します。
 
-  ![ワークロードの選択、Visual Studio インストーラー](./media/apache-hadoop-visual-studio-tools-get-started/vs-installation.png)
+  :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/vs-installation.png" alt-text="ワークロードの選択、Visual Studio インストーラー" border="true":::
 
 * Visual Studio 2015 の場合:
 
@@ -91,7 +91,7 @@ Azure サブスクリプションに接続するには:
 
 5. クラスターが 1 つもない場合は、Azure portal、Azure PowerShell、または HDInsight SDK を使用して作成します。 詳細については、[HDInsight でのクラスターの設定](../hdinsight-hadoop-provision-linux-clusters.md)に関する記事を参照してください。
 
-   ![HDInsight クラスター一覧、サーバー エクスプローラー、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png)
+   :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png" alt-text="HDInsight クラスター一覧、サーバー エクスプローラー、Visual Studio" border="true":::
 
 6. HDInsight クラスターを展開します。 クラスターには、**Hive データベース** 用のノードが含まれています。 また、既定のストレージ アカウント、すべての追加のリンクされたストレージ アカウント、および **Hadoop サービス ログ**。 さらに、エンティティを展開できます。
 
@@ -124,23 +124,23 @@ HDInsight クラスターをリンクするには:
 
 2. `https://CLUSTERNAME.azurehdinsight.net` の形式で **[接続 URL]** を入力します。 別のフィールドに移動すると、 **[クラスター名]** に URL のクラスター名部分が自動的に入力されます。 次に **[ユーザー名]** と **[パスワード]** を入力し、 **[次へ]** を選択します。
 
-    ![クラスターのリンク、HDInsight、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-dialog.png)
+    :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-dialog.png" alt-text="クラスターのリンク、HDInsight、Visual Studio" border="true":::
 
 3. **[完了]** を選択します。 クラスターのリンクが成功すると、クラスターは **[HDInsight]** ノードの下に一覧表示されます。
 
 リンクされたクラスターを更新するには、クラスターを右クリックし、 **[編集]** を選択します。 その後、クラスターの情報を更新できます。
 
-![リンクされたクラスターの編集、HDInsight、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-update.png)
+:::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-update.png" alt-text="リンクされたクラスターの編集、HDInsight、Visual Studio" border="true":::
 
 ## <a name="explore-linked-resources"></a>リンクされたリソースを調べる
 
 サーバー エクスプローラーで、既定のストレージ アカウント、すべてのリンクされたストレージ アカウントを確認できます。 既定のストレージ アカウントを展開すると、そのストレージ アカウントのコンテナーを表示できます。 既定のストレージ アカウントと既定のコンテナーがマークされます。
 
-![サーバー エクスプローラーでの Visual Studio のリンクされたリソースの Data Lake Tools](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-linked-resources.png)
+:::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-linked-resources.png" alt-text="サーバー エクスプローラーでの Visual Studio のリンクされたリソースの Data Lake Tools" border="true":::
 
 コンテナーを右クリックし、 **[コンテナーを表示]** を選択して、コンテナーの内容を表示します。 コンテナーを開いた後は、ツール バーのボタンを使用してコンテンツ リストの **[更新]** 、 **[BLOB のアップロード]** 、 **[選択した BLOB の削除]** 、 **[BLOB を開く]** を行い、選択した BLOB をダウンロードできます ( **[名前を付けて保存]** )。
 
-![コンテナー一覧と BLOB の操作、HDInsight クラスター、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-blob-operations.png)
+:::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-blob-operations.png" alt-text="コンテナー一覧と BLOB の操作、HDInsight クラスター、Visual Studio" border="true":::
 
 ## <a name="run-interactive-apache-hive-queries"></a>対話型 Apache Hive クエリを実行する
 
@@ -185,7 +185,7 @@ Hive テーブルを作成するには、GUI または Hive クエリを使用�
 
 4. **[テーブルの作成]** ボタンを選択して、新しい Hive テーブルを作成するジョブを送信します。
 
-    ![[テーブルの作成] ウィンドウ、Hive、HDInsight クラスター、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-create-hive-table.png)
+    :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-create-hive-table.png" alt-text="[テーブルの作成] ウィンドウ、Hive、HDInsight クラスター、Visual Studio" border="true":::
 
 ### <a name="create-and-run-hive-queries"></a>Hive クエリの作成と実行
 
@@ -204,9 +204,9 @@ Hive クエリを作成して実行するためのオプションは 2 つあり
 
     Hive エディターは IntelliSense をサポートしています。 Data Lake Tools for Visual Studio では、Hive スクリプトの編集時にリモート メタデータの読み込みをサポートします。 たとえば、`SELECT * FROM` と入力すると、IntelliSense によってテーブル名の候補が一覧表示されます。 テーブル名を指定すると、Intellisense によって列名が一覧表示されます。 このツールは、Hive の DML ステートメント、サブクエリ、および組み込みの UDF の大半をサポートします。
 
-    ![IntelliSense の例 1、Hive アドホック クエリ、HDInsight クラスター、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-intellisense-table-names.png)
+    :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-intellisense-table-names.png" alt-text="IntelliSense の例 1、Hive アドホック クエリ、HDInsight クラスター、Visual Studio" border="true":::
 
-    ![IntelliSense の例 2、Hive アドホック クエリ、HDInsight クラスター、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-intellisense-column-names.png)
+    :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-intellisense-column-names.png" alt-text="IntelliSense の例 2、Hive アドホック クエリ、HDInsight クラスター、Visual Studio" border="true":::
 
     > [!NOTE]  
     > IntelliSense は、HDInsight のツール バーで選択されているクラスターのメタデータのみを推奨します。
@@ -226,17 +226,17 @@ Hive クエリを作成して実行するためのオプションは 2 つあり
 
         最初のドロップダウン リストで、 **[対話型]** を選択し、 **[実行]** を選択します。
 
-        ![対話モード、Hive アドホック クエリ、HDInsight クラスター、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-execute.png)  
+        :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-execute.png" alt-text="対話モード、Hive アドホック クエリ、HDInsight クラスター、Visual Studio" border="true":::  
 
     * **Batch**  
 
         最初のドロップダウン リストで、 **[バッチ]** を選択し、 **[送信]** を選択します。 または、 **[送信]** の横にあるドロップダウン アイコンを選択し、 **[詳細]** を選択します。
 
-        ![バッチ モード、Hive アドホック クエリ、HDInsight クラスター、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)
+        :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png" alt-text="バッチ モード、Hive アドホック クエリ、HDInsight クラスター、Visual Studio" border="true":::
 
         詳細送信オプションを選択すると、 **[スクリプトの送信]** ダイアログ ボックスが表示されます。 スクリプトの **[ジョブ名]** 、 **[引数]** 、 **[追加の構成]** 、および **[状態ディレクトリ]** を構成します。
 
-        ![[スクリプトの送信] ダイアログ ボックス、Hive アドホック クエリ、HDInsight クラスター、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png)
+        :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png" alt-text="[スクリプトの送信] ダイアログ ボックス、Hive アドホック クエリ、HDInsight クラスター、Visual Studio" border="true":::
 
       > [!NOTE]  
       > 対話型クエリ クラスターにはバッチを送信できません。  対話モードを使用する必要があります。
@@ -251,7 +251,7 @@ Hive ソリューションを作成して実行するには:
 
 3. **[新しいプロジェクトの構成]** ウィンドウで、 **[プロジェクト名]** を入力し、プロジェクトの **[場所]** を選択または作成し、 **[作成]** を選択します。
 
-    ![新しい Hive アプリケーション、新しいプロジェクトの構成ウィンドウ、HDInsight Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-new-hive-project.png)
+    :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-new-hive-project.png" alt-text="新しい Hive アプリケーション、新しいプロジェクトの構成ウィンドウ、HDInsight Visual Studio" border="true":::
 
 4. **ソリューション エクスプローラー** で、**Script.hql** をダブルクリックしてスクリプトを開きます。
 
@@ -259,7 +259,7 @@ Hive ソリューションを作成して実行するには:
 
 ジョブの概要は、**バッチ** モードと **対話** モードとで若干異なります。
 
-![Hive ジョブの概要ウィンドウ、バッチと対話モード、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png)
+:::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png" alt-text="Hive ジョブの概要ウィンドウ、バッチと対話モード、Visual Studio" border="true":::
 
 **[更新]** アイコンを使用して、ジョブのステータスが **[完了]** に変更されるまで、ステータスを更新します。  
 
@@ -267,7 +267,7 @@ Hive ソリューションを作成して実行するには:
 
 * **対話** モードのジョブ詳細については、 **[出力]** ペインおよび **[HiveServer2 出力]** ペインを参照してください。
 
-    ![Hive 対話型ジョブの出力、HDInsight クラスター、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png)
+    :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png" alt-text="Hive 対話型ジョブの出力、HDInsight クラスター、Visual Studio" border="true":::
 
 ### <a name="view-job-graph"></a>ジョブ グラフの表示
 
@@ -277,13 +277,13 @@ Hive ソリューションを作成して実行するには:
 
 Tez アプリケーションが起動されていない場合は、実行エンジンとして Tez を指定してもジョブ グラフが表示されないことがあります。  この状況は、ジョブに DML ステートメントが含まれていないために発生する可能性があります。 または、DML ステートメントが Tez アプリケーションを起動せずに戻る可能性があるためです。 たとえば、`SELECT * FROM table1` では Tez アプリケーションが起動されません。
 
-![Apache Hive ジョブ グラフ、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-fast-path-hive-execution.png)
+:::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-fast-path-hive-execution.png" alt-text="Apache Hive ジョブ グラフ、Visual Studio" border="true":::
 
 ### <a name="view-task-execution-detail"></a>タスク実行の詳細を表示する
 
 ジョブ グラフから **[タスク実行の詳細]** を選択して、構造化および視覚化された Hive ジョブの情報を取得できます。 さらにジョブの詳細を取得することもできます。 パフォーマンスの問題が発生した場合に、このビューを使用して、問題の詳細を取得できます。 たとえば、各タスクの動作の情報と、各タスクの詳細情報 (データの読み取り/書き込み、開始時刻/終了時刻のスケジュールなど) を取得できます。 これらの情報を使用して、視覚化された情報に基づくジョブの構成やシステム アーキテクチャを調整します。
 
-![タスク実行ビュー ウィンドウ、Data Lake Visual Studio Tools](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-task-execution-view.png)
+:::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-task-execution-view.png" alt-text="タスク実行ビュー ウィンドウ、Data Lake Visual Studio Tools" border="true":::
 
 ### <a name="view-hive-jobs"></a>Hive ジョブの表示
 
@@ -295,7 +295,7 @@ Hive ジョブを表示するには:
 
 1. HDInsight クラスターを右クリックし、 **[ジョブの表示]** を選択します。
 
-    ![ジョブの表示、Apache Hive、HDInsight クラスター、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-view-hive-jobs.png)
+    :::image type="content" source="./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-view-hive-jobs.png" alt-text="ジョブの表示、Apache Hive、HDInsight クラスター、Visual Studio" border="true":::
 
     クラスターで実行された Hive ジョブの一覧が表示されます。  
 

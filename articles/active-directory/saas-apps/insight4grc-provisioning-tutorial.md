@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Insight4GRC を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
+title: 'チュートリアル: Insight4GRC を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
 description: Azure AD から Insight4GRC に対してユーザー アカウントを自動的にプロビジョニング、またはプロビジョニング解除する方法を説明します。
 services: active-directory
 author: Zhchia
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: Zhchia
 ms.openlocfilehash: 7d5904461d642f47e691d0a1aaa1f1faf439df1f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96178145"
 ---
-# <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>チュートリアル:Insight4GRC を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>チュートリアル: Insight4GRC を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、自動ユーザー プロビジョニングを構成するために Insight4GRC と Azure Active Directory (Azure AD) の両方で実行する必要がある手順について説明します。 構成すると、Azure AD では、ユーザーとグループの [Insight4GRC](https://www.rsmuk.com/) へのプロビジョニングおよびプロビジョニング解除が Azure AD プロビジョニング サービスを使って自動的に行われるようになります。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。 
 
@@ -123,7 +123,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-13. Insight4GRC に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+13. Insight4GRC に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 

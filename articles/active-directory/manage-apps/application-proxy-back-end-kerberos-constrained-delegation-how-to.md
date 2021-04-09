@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
 ms.reviewer: asteen, japere
-ms.openlocfilehash: 65d68924fbc3a777ef7ef59d2532a1ae20e23c48
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: b8562f3bdd82b5b0c2c1340f511f87ad90dfbe3b
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258220"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102487952"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Application Proxy のための、制限付き委任構成のトラブルシューティング Kerberos
 
@@ -161,7 +161,7 @@ Azure AD アプリケーション プロキシは、各種のインフラスト�
 ## <a name="other-scenarios"></a>その他のシナリオ
 
 - Azure アプリケーション プロキシは、Kerberos チケットを要求したうえで、その要求をアプリケーションに送信します。 一部のサードパーティ製アプリケーションは、この認証方法を受け付けません。 これらのアプリケーションは、より従来のネゴシエーションを実行することが予想されます。 最初の要求は、匿名です。401 を介して、サポートするタイプの認証で応答することを、アプリケーションに許可します。 この種類の Kerberos ネゴシエーションは、このドキュメントに記載されている手順に従って有効にすることができます。[シングル サインオンでの Kerberos の制約付き委任](application-proxy-configure-single-sign-on-with-kcd.md).
-- ダブルホップ認証。アプリケーションが階層化されてバックエンドとフロントエンドがあり、どちらも認証を必要とするようなシナリオでこの認証が使用されます (SQL Reporting Services など)。 マルチホップ シナリオを構成するには、サポートの記事を参照してください。 [Kerberos 制約付き委任は、プロトコルの切り替えと複数ホップのシナリオを要求することがある](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul)の記事です。
+- ダブルホップ認証。アプリケーションが階層化されてバックエンドとフロントエンドがあり、どちらも認証を必要とするようなシナリオでこの認証が使用されます (SQL Reporting Services など)。 詳細については、「[Web 登録プロキシ ページに対して Kerberos の制約付き委任を構成する方法](/troubleshoot/windows-server/identity/configure-kerberos-constrained-delegation)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

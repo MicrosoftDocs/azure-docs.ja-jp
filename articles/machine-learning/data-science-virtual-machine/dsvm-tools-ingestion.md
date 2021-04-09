@@ -10,10 +10,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: 21a6efa8108bfd0a317eb955e8b3ffcfba0862a2
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100519373"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>データ サイエンス仮想マシンのデータ取り込みツール
@@ -68,7 +68,7 @@ ms.locfileid: "100519373"
 | サンプルへのリンク      | [CosmosDB インポート データ](../../cosmos-db/import-data.md)      |
 | DSVM 上の関連ツール      | AzCopy、AdlCopy      |
 
-## <a name="azure-storage-explorer"></a>Azure Azure Storage Explorer
+## <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
 
 | カテゴリ | 値 |
 | ------------- | ------------- |

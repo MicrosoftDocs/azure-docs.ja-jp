@@ -17,10 +17,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
 ms.openlocfilehash: a1f4d4a3bb78da82753d651e1a73cf244096d5df
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94518103"
 ---
 # <a name="security-frame-session-management"></a>セキュリティ フレーム:セッションの管理
@@ -160,7 +160,7 @@ Session.Abandon() メソッドを呼び出して、ユーザーのセッショ�
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | EnvironmentType - OnPrem |
 | **参照**              | [httpCookies 要素 (ASP.NET 設定スキーマ)](/previous-versions/dotnet/netframework-4.0/ms228262(v=vs.100))、 [HttpCookie.Secure プロパティ](/dotnet/api/system.web.httpcookie.secure) |
-| **手順** | 通常、cookie はそれがスコープ指定されたドメインからのみアクセスできます。 残念ながら、"domain" の定義にはプロトコルが含まれないため、HTTPS 経由で作成された cookie に HTTP 経由でアクセスできます。 "secure" 属性は、cookie を HTTPS 経由でのみ使用できるようにする必要があることをブラウザーに示します。 HTTPS で設定されるすべての cookie が、 **secure** 属性を使うようにする必要があります。 この要件は、web.config ファイルで requireSSL 属性を true に設定することによって適用できます。 これは、コードを変更することなく、現在および将来のすべての cookie に **secure** 属性を強制できるので、推奨される方法です。|
+| **手順** | 通常、cookie はそれがスコープ指定されたドメインからのみアクセスできます。 残念ながら、"domain" の定義にはプロトコルが含まれないため、HTTPS 経由で作成された cookie に HTTP 経由でアクセスできます。 "secure" 属性は、cookie を HTTPS 経由でのみ使用できるようにする必要があることをブラウザーに示します。 HTTPS で設定されるすべての cookie が、**secure** 属性を使うようにする必要があります。 この要件は、web.config ファイルで requireSSL 属性を true に設定することによって適用できます。 これは、コードを変更することなく、現在および将来のすべての cookie に **secure** 属性を強制できるので、推奨される方法です。|
 
 ### <a name="example"></a>例
 ```csharp

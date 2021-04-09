@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 05be5295ae5f8c73c916a21bba7dbc98ab0c5e87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89002795"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Azure Cognitive Search へのファセット ナビゲーションの実装方法
@@ -168,7 +168,7 @@ Brand または Price でファセットを行う場合は、各ドキュメン�
 
 ファセット ナビゲーションでは、Web ページまたはアプリケーション ページがファセット ナビゲーション構造を表示し、ページでのユーザー入力を検出し、変更された要素を挿入します。 
 
-Web アプリケーションの場合は、増分変更を更新できるので、一般に AJAX がプレゼンテーション層に使用されます。 また、ASP.NET MVC や他の任意の視覚化プラットフォームを使用して、HTTP を使用して Azure Cognitive Search サービスに接続することもできます。 この記事全体で参照されているサンプル アプリケーションの **Azure Cognitive Search ジョブ ポータル デモ**は、ASP.NET MVC アプリケーションです。
+Web アプリケーションの場合は、増分変更を更新できるので、一般に AJAX がプレゼンテーション層に使用されます。 また、ASP.NET MVC や他の任意の視覚化プラットフォームを使用して、HTTP を使用して Azure Cognitive Search サービスに接続することもできます。 この記事全体で参照されているサンプル アプリケーションの **Azure Cognitive Search ジョブ ポータル デモ** は、ASP.NET MVC アプリケーションです。
 
 サンプルでは、ファセット ナビゲーションは検索結果ページに組み込まれています。 サンプル アプリケーションの `index.cshtml` ファイルから抜粋した次の例では、検索結果ページにファセット ナビゲーションを表示するための静的な HTML 構造を示しています。 検索語句を送信するか、ファセットをオンまたはオフにすると、ファセットのリストが作成されたり、動的に再構築されたりします。
 

@@ -15,10 +15,10 @@ ms.date: 11/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: b61636d6048f63ae962d4f755a29c02e6785d5e1
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100557541"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure の従来のサブスクリプション管理者

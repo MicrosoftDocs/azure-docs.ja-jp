@@ -5,16 +5,16 @@ description: Azure Kubernetes Service (AKS) クラスター用のサービス �
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: ba2c31872ae026cfdfcb7be17d333fb98194dce6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 84cadc54a11c2e57d73fd1f06e98deb3d599d648
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389010"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102501177"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 用の資格情報を更新またはローテーションする
 
-既定では、有効期限が 1 年のサービス プリンシパルと共に AKS クラスターが作成されます。 期限が近づいたら、資格情報をリセットしてサービス プリンシパルの期限を延長することができます。 また、定義済みのセキュリティ ポリシーの一環として、資格情報を更新またはローテーションすることもできます。 この記事では、AKS クラスターのこれらの資格情報の更新方法について説明します。
+サービス プリンシパルで作成された AKS クラスターには 1 年間の有効期間があります。 期限が近づいたら、資格情報をリセットしてサービス プリンシパルの期限を延長することができます。 また、定義済みのセキュリティ ポリシーの一環として、資格情報を更新またはローテーションすることもできます。 この記事では、AKS クラスターのこれらの資格情報の更新方法について説明します。
 
 また、[AKS クラスターと Azure Active Directory を統合][aad-integration]してあり、クラスターの認証プロバイダーとしてそれを使用する場合もあります。 その場合は、クラスター、AAD サーバー アプリ、AAD クライアント アプリ用にさらに 2 つの ID が作成されていて、それらの資格情報もリセットできます。
 

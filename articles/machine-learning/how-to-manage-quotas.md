@@ -11,12 +11,12 @@ ms.author: siarora
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: aa25a81068b25b7b8696a7472eb04542e8bb1a60
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 4e61a15b86d1d2d05889253f615eec0865c87a70
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878954"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102520389"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning を使用するリソースのクォータの管理と引き上げ
 
@@ -189,7 +189,6 @@ Azure Machine Learning の場合、(お客様の) サブスクリプションで
  次のシナリオでは、場合によっては Microsoft が所有するサブスクリプションでクォータの割り当てを依頼する必要があります。
 
 * カスタマーマネージド キー (CMK) を使用する Azure Private Link 対応ワークスペース
-* 仮想ネットワークの背後にあるワークスペースの Azure Container Registry
 * Private Link 対応の Azure Kubernetes Service クラスターのワークスペースへのアタッチ
 
 このようなシナリオの許容を依頼するには、次の手順を実行します。

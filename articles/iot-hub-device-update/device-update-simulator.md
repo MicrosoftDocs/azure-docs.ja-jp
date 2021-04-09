@@ -1,17 +1,17 @@
 ---
 title: Ubuntu (18.04 x64) Simulator Reference Agent を使用した Device Update for Azure IoT Hub のチュートリアル | Microsoft Docs
 description: Ubuntu (18.04 x64) Simulator Reference Agent を使用して、Device Update for Azure IoT Hub を開始します。
-author: vimeht
-ms.author: vimeht
+author: valls
+ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 8ca9d03fbeadfaaca06dac49acc7a08f0dd0566d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4740bf02c33314dd7c887356f2ef1ed12bea44cf
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678245"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102443813"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-ubuntu-1804-x64-simulator-reference-agent"></a>Ubuntu (18.04 x64) Simulator Reference Agent を使用した Device Update for Azure IoT Hub のチュートリアル
 
@@ -163,29 +163,30 @@ Agent running. [main]
 
 ## <a name="import-update"></a>更新プログラムをインポートする
 
-1. 左側のナビゲーション バーの [自動デバイス管理] にある [デバイスの更新] オプションを選択します。
+1. [手順](import-update.md)に従ってインポート マニフェストを作成します。
+2. 左側のナビゲーション バーの [自動デバイス管理] にある [デバイスの更新] オプションを選択します。
 
-2. [更新プログラム] タブを選択します。
+3. [更新プログラム] タブを選択します。
 
-3. [+ 新しい更新プログラムのインポート] を選択します。
+4. [+ 新しい更新プログラムのインポート] を選択します。
 
-4. [インポート マニフェスト ファイルを選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 以前にダウンロードしたインポート マニフェストを選択します。 次に、[1 つまたは複数の更新ファイルを選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 以前にダウンロードした apt マニフェスト更新ファイルを選択します。
-   
+5. [インポート マニフェスト ファイルを選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 先ほど作成したインポート マニフェストを選択します。  次に、[1 つまたは複数の更新プログラム ファイルの選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 先ほどダウンロードした Ubuntu 更新イメージを選択します。 
+
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="更新ファイルの選択を示すスクリーンショット。" lightbox="media/import-update/select-update-files.png":::
 
-5. [ストレージ コンテナーの選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 次に、適切なストレージ アカウントを選択します。
+6. [ストレージ コンテナーの選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 次に、適切なストレージ アカウントを選択します。
 
-6. コンテナーを既に作成してある場合は、再利用できます (そうでない場合は、[+ コンテナー] を選択して、更新用の新しいストレージ コンテナーを作成します)。  使用するコンテナーを選択し、[選択] をクリックします。
+7. コンテナーを既に作成してある場合は、再利用できます (そうでない場合は、[+ コンテナー] を選択して、更新用の新しいストレージ コンテナーを作成します)。  使用するコンテナーを選択し、[選択] をクリックします。
   
   :::image type="content" source="media/import-update/container.png" alt-text="コンテナーの選択を示すスクリーンショット。" lightbox="media/import-update/container.png":::
 
-7. [送信] を選択してインポート プロセスを開始します。
+8. [送信] を選択してインポート プロセスを開始します。
 
-8. インポート プロセスが開始され、画面が [インポートの履歴] セクションに変わります。 [更新] を選択すると、インポート プロセスが完了するまで進行状況が表示されます。 更新プログラムのサイズに応じて、これは数分で完了する場合も、それよりも長くかかる場合もあります。
+9. インポート プロセスが開始され、画面が [インポートの履歴] セクションに変わります。 [更新] を選択すると、インポート プロセスが完了するまで進行状況が表示されます。 更新プログラムのサイズに応じて、これは数分で完了する場合も、それよりも長くかかる場合もあります。
    
    :::image type="content" source="media/import-update/update-publishing-sequence-2.png" alt-text="更新プログラムのインポート シーケンスを示すスクリーンショット。" lightbox="media/import-update/update-publishing-sequence-2.png":::
 
-9. [状態] 列にインポートが正常に完了したと表示されたら、[デプロイの準備完了] ヘッダーを選択します。 インポートされた更新プログラムが一覧に表示されるはずです。
+10. [状態] 列にインポートが正常に完了したと表示されたら、[デプロイの準備完了] ヘッダーを選択します。 インポートされた更新プログラムが一覧に表示されるはずです。
 
 更新プログラムのインポートについて詳しくは、[こちら](import-update.md)をご覧ください。
 

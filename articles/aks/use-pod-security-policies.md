@@ -4,21 +4,26 @@ description: Azure Kubernetes Service (AKS) で PodSecurityPolicy を使用し�
 services: container-service
 ms.topic: article
 ms.date: 02/12/2021
-ms.openlocfilehash: 23c436cb3ddf970939ab9d7b936a4e03e1fbb7ff
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cb317e5e0d1f558121e675f569bad37811768ca6
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371228"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180311"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) でポッド セキュリティ ポリシーを使用してクラスターのセキュリティを保護する
 
 > [!WARNING]
-> **このドキュメントに記載したポッド セキュリティ ポリシー (プレビュー) 機能は非推奨となる予定です。2021 年 6 月 30 日を過ぎると使用できなくなるため**、[AKS 用の Azure Policy](use-pod-security-on-azure-policy.md) が推奨されます。 非推奨となる日は、以前に記載した日付の 2020 年 10 月 15 日から延長されています。
+> **このドキュメントに記載したポッド セキュリティ ポリシー (プレビュー) 機能は非推奨となる予定です。2021 年 6 月 30 日を過ぎると使用できなくなるため**、[AKS 用の Azure Policy](use-azure-policy.md) が推奨されます。 非推奨となる日は、以前に記載した日付の 2020 年 10 月 15 日から延長されています。
 >
 > ポッド セキュリティ ポリシー (プレビュー) が非推奨となった後、今後のクラスター アップグレードを実行し、Azure サポート内に留まるには、非推奨の機能を使用する既存のクラスターでその機能を無効にする必要があります。
 >
-> AKS 用の Azure Policy を使用したテスト シナリオを開始することを強くお勧めします。これには、ポッドをセキュリティで保護するための組み込みのポリシーと、ポッド セキュリティ ポリシーにマップする組み込みのイニシアチブが用意されています。 [ポッド セキュリティ ポリシー (プレビュー) から Azure Policy への移行](use-pod-security-on-azure-policy.md#migrate-from-kubernetes-pod-security-policy-to-azure-policy)については、ここをクリックしてください。
+> AKS 用の Azure Policy を使用したテスト シナリオを開始することを強くお勧めします。これには、ポッドをセキュリティで保護するための組み込みのポリシーと、ポッド セキュリティ ポリシーにマップする組み込みのイニシアチブが用意されています。 ポッドのセキュリティ ポリシーから移行するには、クラスターで次の操作を行う必要があります。
+> 
+> 1. クラスターで[ポッドのセキュリティ ポリシーを無効にします](#clean-up-resources)。
+> 1. [Azure Policy アドオン][kubernetes-policy-reference]を有効にします。
+> 1. [使用可能な組み込みポリシー][policy-samples]から目的の Azure Policy を有効にします。
+> 1. [ポッドのセキュリティ ポリシーと Azure Policy の動作変更](#behavior-changes-between-pod-security-policy-and-azure-policy)を確認します。
 
 AKS クラスターのセキュリティを向上させるには、どのポッドをスケジュールできるかを制限することができます。 許可しないリソースを要求するポッドは、AKS クラスターで実行できません。 ポッド セキュリティ ポリシーを使用してこのアクセスを定義します。 この記事では、ポッド セキュリティ ポリシーを使用して AKS でのポッドのデプロイを制限する方法について説明します。
 
@@ -77,6 +82,26 @@ AKS クラスターでポッド セキュリティ ポリシーを有効にす�
 * ポッド セキュリティ ポリシー機能を有効にする
 
 既定のポリシーでポッドのデプロイがどのように制限されるかを示すために、この記事では、最初にポッド セキュリティ ポリシー機能を有効にしてから、カスタム ポリシーを作成します。
+
+### <a name="behavior-changes-between-pod-security-policy-and-azure-policy"></a>ポッドのセキュリティ ポリシーと Azure Policy の動作変更
+
+ポッドのセキュリティポリシーと Azure Policy の動作変更の概要を次に示します。
+
+|シナリオ| ポッドのセキュリティ ポリシー | Azure Policy |
+|---|---|---|
+|インストール|ポッドのセキュリティ ポリシー機能を有効にします |Azure Policy アドオンを有効にします
+|ポリシーのデプロイ| ポッドのセキュリティ ポリシーのリソースをデプロイします| サブスクリプションまたはリソース グループのスコープに Azure Policy を割り当てます。 Kubernetes リソース アプリケーションには Azure Policy アドオンが必要です。
+| 既定のポリシー | AKS でポッドのセキュリティ ポリシーが有効になっている場合、既定の特権ポリシーおよび無制限のポリシーが適用されます。 | Azure Policy アドオンを有効にしても、既定のポリシーは適用されません。 Azure Policy では、ポリシーを明示的に有効にする必要があります。
+| ポリシーの作成と割り当てが可能なユーザー | クラスター管理者がポッドのセキュリティ ポリシー リソースを作成します。 | ユーザーには、少なくとも AKS クラスター リソース グループに対する "所有者" または "リソース ポリシーの共同作成者" 権限を含むロールが必要です。 - ユーザーは、API を通じて、AKS クラスター リソース スコープでポリシーを割り当てることができます。 ユーザーには、少なくとも AKS クラスター リソースに対する "所有者" または "リソース ポリシーの共同作成者" 権限が必要です。 - Azure portal では、ポリシーを管理グループ、サブスクリプション、またはリソース グループ レベルで割り当てることができます。
+| ポリシーの承認| ユーザーおよびサービス アカウントには、ポッドのセキュリティ ポリシーを使用するための明示的な権限が必要です。 | ポリシーを承認するために、追加の割り当ては必要ありません。 Azure でポリシーが割り当てられると、すべてのクラスター ユーザーがこれらのポリシーを使用できるようになります。
+| ポリシーの適用性 | 管理者ユーザーは、ポッド セキュリティ ポリシーの適用をバイパスします。 | すべてのユーザー (管理者および管理者以外) は同じポリシーを認識します。 ユーザーに基づく特殊な文字種はありません。 ポリシーの適用は、名前空間レベルで除外できます。
+| ポリシーのスコープ | ポッドのセキュリティ ポリシーには、名前空間が指定されていません。 | Azure Policy によって使用される制約テンプレートには、名前空間が指定されていません。
+| 拒否/監査/変異アクション | ポッドのセキュリティ ポリシーでは、拒否アクションのみがサポートされます。 作成要求では、既定値を使用して変異を実行できます。 更新要求中に検証を行うことができます。| Azure Policy では、監査アクションと拒否アクションの両方がサポートされています。 変異はまだサポートされていませんが、計画中です。
+| ポッドのセキュリティ ポリシーへの準拠 | ポッドのセキュリティ ポリシーを有効にする前に存在していたポッドが、それに準拠しているかどうかを可視化することはできません。 ポッドのセキュリティ ポリシーを有効にした後に作成された非準拠ポッドは拒否されます。 | Azure ポリシーを適用する前に存在していた非準拠ポッドは、ポリシー違反として表示されます。 ポリシーに deny 効果が設定されている場合、Azure ポリシーを有効にした後に作成された非準拠ポッドは拒否されます。
+| クラスターでポリシーを表示する方法 | `kubectl get psp` | `kubectl get constrainttemplate` - すべてのポリシーが返されます。
+| ポッドのセキュリティ ポリシーの標準 - 特権 | この機能を有効にすると、特権ポッド セキュリティ ポリシー リソースが既定で作成されます。 | 特権モードは、制限がないことを意味します。したがって、Azure Policy が割り当てられていないことと同じです。
+| [ポッドのセキュリティ ポリシーの標準 - ベースライン/既定](https://kubernetes.io/docs/concepts/security/pod-security-standards/#baseline-default) | ユーザーは、ポッドのセキュリティ ポリシーのベースライン リソースをインストールします。 | Azure Policy には、ベースライン ポッド セキュリティ ポリシーにマップされる[組み込みベースライン イニシアチブ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d)が用意されています。
+| [ポッドのセキュリティ ポリシーの標準 - 制限付き](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted) | ユーザーは、ポッドのセキュリティ ポリシーの制限付きリソースをインストールします。 | Azure Policy には、制限付きポッド セキュリティ ポリシーにマップされる[組み込みの制限付きイニシアチブ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00)が用意されています。
 
 ## <a name="enable-pod-security-policy-on-an-aks-cluster"></a>AKS クラスターでポッド セキュリティ ポリシーを有効にする
 
@@ -453,3 +478,4 @@ kubectl delete namespace psp-aks
 [aks-faq]: faq.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[policy-samples]: ./policy-reference.md#microsoftcontainerservice

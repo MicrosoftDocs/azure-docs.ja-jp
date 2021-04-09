@@ -4,10 +4,10 @@ description: 社内サポートの説明文を Azure DevTest Labs のラボに�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 1c9920e6fe7fbfe2a8d0aeacb896150b342981b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85480475"
 ---
 # <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs のラボに社内サポートの説明文を追加する
@@ -20,7 +20,7 @@ Azure DevTest Labs では、社内サポートの説明文を付けてラボを�
 
 ## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>サポートの説明文を既存のラボに追加する手順
 
-1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 1. 必要に応じて、 **[All Services]\(その他のサービス\)** を選択し、一覧から **[DevTest Labs]** を選択します。 (お使いのラボは、 **[すべてのリソース]** の [ダッシュボード] に既に表示されている場合があります)。
 1. ラボの一覧から、サポートの説明文を追加するラボを選択します。  
 1. ラボの **[概要]** で、 **[Configuration and policies]\(構成とポリシー\)** を選択します。  
@@ -38,9 +38,9 @@ Azure DevTest Labs では、社内サポートの説明文を付けてラボを�
     ![メッセージを作成する社内サポートの画面。](./media/devtest-lab-internal-support-message/devtestlab-add-support-statement.png)
 
 
-1. サポートの説明文を投稿する準備ができたら、 **[保存]** を選択します。
+1. サポートの説明文を投稿する準備ができたら、**[保存]** を選択します。
 
-このサポートのメッセージをラボのユーザーに表示する必要がなくなったら、 **[社内サポート]** ページに戻り、 **[有効]** を **[いいえ]** に設定します。
+このサポートのメッセージをラボのユーザーに表示する必要がなくなったら、**[社内サポート]** ページに戻り、**[有効]** を **[いいえ]** に設定します。
 
 ## <a name="steps-for-users-to-view-the-support-message"></a>ユーザーがサポートのメッセージを表示するための手順
 

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/24/2020
+ms.date: 03/18/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: d997c85f96fa9f87ca6d017cb555b3732007e21c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 49590c46588ad0d0f1c1b7b095679a3c3fce96eb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256307"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579503"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>検疫状態のアプリケーションのプロビジョニング
 
@@ -85,7 +85,7 @@ Azure AD プロビジョニング サービスは、構成の正常性を監視�
 
 問題を解決したら、プロビジョニング ジョブを再開します。 属性マッピングやスコープフィルターなど、アプリケーションのプロビジョニング設定に特定の変更を加えると、自動的にプロビジョニングが再開されます。 アプリケーションの **[プロビジョニング]** ページの進行状況バーは、プロビジョニングが最後に開始された日時を示します。 プロビジョニング ジョブを手動で再起動する必要がある場合は、次のいずれかの方法を使用します。  
 
-- Azure portal を使用して、プロビジョニング ジョブを再起動します。 **[設定]** のアプリケーションの **[プロビジョニング]** ページで、 **[Clear state and restart synchronization]\(状態を消去して同期を再開する\)** を選択し、 **[プロビジョニングの状態]** を **[オン]** に設定します。 この操作により、プロビジョニング サービスが完全に再起動されます (しばらく時間がかかることがあります)。 すべての初回サイクルが再度実行されます。これにより、エスクローがクリアされ、アプリが検疫から削除され、透かしがクリアされます。
+- Azure portal を使用して、プロビジョニング ジョブを再起動します。 アプリケーションの **プロビジョニング** ページで、**プロビジョニングを再開する** を選択します。 この操作により、プロビジョニング サービスが完全に再起動されます (しばらく時間がかかることがあります)。 すべての初回サイクルが再度実行されます。これにより、エスクローがクリアされ、アプリが検疫から削除され、透かしがクリアされます。 このサービスでは、ソース システム内のすべてのユーザーを再度評価し、プロビジョニングの対象になっているかどうかを判断します。 これは、この記事で説明されているように、アプリケーションが現在検査中である場合や、属性マッピングを変更する必要がある場合に便利です。 初期サイクルは、評価が必要なオブジェクトの数が多いため、通常の増分サイクルよりも完了までに時間がかかることに注意してください。 初期サイクルと増分サイクルのパフォーマンスの詳細については、[こちら](application-provisioning-when-will-provisioning-finish-specific-user.md)を参照してください。
 
 - Microsoft Graph を使用して、[プロビジョニング ジョブを再起動します](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true)。 再起動する対象は完全に制御できます。 エスクローをクリアするか (検疫状態と判定されるためのエスクロー カウンターを再起動するため)、検疫をオフにするか (検疫からアプリケーションを削除するため)、または透かしをクリアするかを選択できます。 次の要求を使用します。
  

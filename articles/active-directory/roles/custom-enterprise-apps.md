@@ -1,5 +1,5 @@
 ---
-title: エンタープライズ アプリ アクセスの割り当て用のカスタム ロール アクセス許可 - Azure Active Directory | Microsoft Docs
+title: Azure Active Directory でエンタープライズ アプリを管理するためのカスタム ロールを作成する
 description: Azure Active Directory でエンタープライズ アプリ アクセス用のカスタム Azure AD ロールを作成して割り当てる
 services: active-directory
 author: rolyon
@@ -13,14 +13,14 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3cb65503ffab610f9545acb313f7284ffb11ed1
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 1a76e2d37e9dcdd285a8608fdbfd715bfb834eb8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741147"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103467750"
 ---
-# <a name="assign-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリを管理するためのカスタム ロールを割り当てる
+# <a name="create-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリを管理するためのカスタム ロールを作成する
 
 この記事では、Azure Active Directory (Azure AD) でユーザーとグループのエンタープライズ アプリの割り当てを管理するためのアクセス許可を持つカスタム ロールを作成する方法について説明します。 ロールの割り当ての要素と、サブタイプ、アクセス許可、プロパティ セットなどの用語の意味については、「[カスタムロールの概要](custom-overview.md)」を参照してください。
 
@@ -89,18 +89,16 @@ ms.locfileid: "98741147"
 最初に、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)から Azure AD PowerShell モジュールをインストールします。 その後、次のコマンドを使用して、Azure AD PowerShell プレビュー モジュールをインポートします。
 
 ```powershell
-PowerShell
-import-module azureadpreview
+Import-Module -Name AzureADPreview
 ```
 
 モジュールが使用できる状態であることを確認するには、次のコマンドによって返されたバージョンを次に示されているものと照合します。
 
 ```powershell
-PowerShell
-get-module azureadpreview
+Get-Module -Name AzureADPreview
   ModuleType Version      Name                         ExportedCommands
   ---------- ---------    ----                         ----------------
-  Binary     2.0.0.115    azureadpreview               {Add-AzureADAdministrati...}
+  Binary     2.0.0.115    AzureADPreview               {Add-AzureADAdministrati...}
 ```
 
 ### <a name="create-a-custom-role"></a>カスタム ロールを作成する

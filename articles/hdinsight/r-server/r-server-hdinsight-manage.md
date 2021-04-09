@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: e4c9124ebd0b61b8db1b1da964355a3c36b5bba5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a5e623b0429194db6d03beb674679bd10e337844
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98930587"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869476"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight で ML Services クラスターを管理する
 
@@ -18,15 +18,15 @@ ms.locfileid: "98930587"
 
 ## <a name="prerequisites"></a>前提条件
 
-* HDInsight 上の ML Services クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照し、 **[クラスターの種類]** で **[ML Services]** を選択してください。
+* HDInsight 上の ML Services クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照し、**[クラスターの種類]** で **[ML Services]** を選択してください。
 
-* Secure Shell (SSH) クライアント:SSH クライアントは、HDInsight クラスターにリモート接続し、そのクラスター上でコマンドを直接実行するために使用されます。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
+* Secure Shell (SSH) クライアント: SSH クライアントを使用して、HDInsight クラスターにリモート接続し、クラスター上でコマンドを直接実行します。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
 
 ## <a name="enable-multiple-concurrent-users"></a>複数の同時ユーザーを有効にする
 
 HDInsight で ML Services クラスターに対して複数の同時ユーザーを有効にするには、RStudio Community バージョンが実行されているエッジ ノードのユーザーを追加します。 HDInsight クラスターを作成するときに、2 人のユーザー (HTTP ユーザーと SSH ユーザー) を指定する必要があります。
 
-![HDI Azure portal のログイン パラメーター](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
+:::image type="content" source="./media/r-server-hdinsight-manage/hdi-concurrent-users1.png" alt-text="HDI Azure portal のログイン パラメーター" border="true":::
 
 - **クラスター ログイン ユーザー名**: 作成した HDInsight クラスターを保護するために使用される、HDInsight ゲートウェイを介した認証用の HTTP ユーザー。 この HTTP ユーザーは、Apache Ambari UI、Apache Hadoop YARN UI、およびその他の UI コンポーネントにアクセスするために使用されます。
 - **Secure Shell (SSH) ユーザー名**: Secure Shell を介してクラスターにアクセスする SSH ユーザー。 このユーザーは、ヘッド ノード、ワーカー ノード、エッジ ノードすべてに対応する Linux システムのユーザーです。 そのため、Secure Shell を使用して、リモート クラスター内の任意のノードにアクセスできます。
@@ -45,11 +45,11 @@ RStudio はクラスターのエッジ ノードで実行されているため�
 2. エッジ ノードで Linux ユーザーをさらに追加する
 3. ユーザーが作成された RStudio Community バージョンを使用する
 
-### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>手順 1:作成された SSH ユーザーを使用してエッジ ノードにサインインする
+### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>手順 1: 作成した SSH ユーザーを使用してエッジ ノードにサインインする
 
 「[SSH を使用して HDInsight (Apache Hadoop) に接続する](../hdinsight-hadoop-linux-use-ssh-unix.md)」の手順に従って、エッジ ノードにアクセスします。 HDInsight での ML Services クラスターのエッジ ノード アドレスは `CLUSTERNAME-ed-ssh.azurehdinsight.net` です。
 
-### <a name="step-2-add-more-linux-users-in-edge-node"></a>手順 2:エッジ ノードで Linux ユーザーをさらに追加する
+### <a name="step-2-add-more-linux-users-in-edge-node"></a>手順 2: エッジ ノードで Linux ユーザーをさらに追加する
 
 エッジ ノードにユーザーを追加するには、次のコマンドを実行します。
 
@@ -63,11 +63,11 @@ sudo passwd <yournewusername>
 
 次のスクリーンショットは出力を示しています。
 
-![同時ユーザーの出力のスクリーンショット](./media/r-server-hdinsight-manage/hdi-concurrent-users2.png)
+:::image type="content" source="./media/r-server-hdinsight-manage/hdi-concurrent-users2.png" alt-text="同時ユーザーの出力のスクリーンショット" border="true":::
 
 "Current Kerberos password:" というメッセージが表示されたら、単に **Enter** キーを押して無視します。 `useradd` コマンドの `-m` オプションは、システムによってユーザーのホーム フォルダーが作成されることを示します。このフォルダーは、RStudio Community バージョンに必要です。
 
-### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>手順 3:ユーザーが作成された RStudio Community バージョンを使用する
+### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>手順 3: ユーザーが作成された RStudio Community バージョンを使用する
 
 `https://CLUSTERNAME.azurehdinsight.net/rstudio/` から RStudio にアクセスします。 クラスターの作成後、初めてログインする場合は、クラスター管理者の資格情報を入力してから、作成した SSH ユーザーの資格情報を入力します。 初めてのログインではない場合は、作成した SSH ユーザーの資格情報だけを入力します。
 
@@ -77,7 +77,7 @@ sudo passwd <yournewusername>
 
 ## <a name="connect-remotely-to-microsoft-ml-services"></a>Microsoft ML Services にリモート接続する
 
-ご自身のデスクトップで実行している ML Client のリモート インスタンスから HDInsight Spark コンピューティング コンテキストへのアクセスを設定できます。 それを行うには、デスクトップ上で RxSpark コンピューティング コンテキストを定義するときにオプション (hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches、および sshProfileScript) を指定する必要があります。次に例を示します。
+ご自身のデスクトップで実行している ML Client のリモート インスタンスから HDInsight Spark コンピューティング コンテキストへのアクセスを設定できます。 それには、使用しているデスクトップで RxSpark コンピューティング コンテキストを定義するときに、オプション (hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches、および sshProfileScript) を指定する必要があります。次の例を示します。
 
 ```r
 myNameNode <- "default"
@@ -194,7 +194,7 @@ rxSparkDisconnect(myHadoopCluster)
 
 3. **[スクリプト操作を追加]** で、次の情報を指定します。
 
-   * **[スクリプトの種類]** で、 **[カスタム]** を選択します。
+   * **[スクリプトの種類]** で、**[カスタム]** を選択します。
 
    * **[名前]** で、スクリプト操作の名前を指定します。
 
@@ -202,7 +202,7 @@ rxSparkDisconnect(myHadoopCluster)
 
    * **worker** についてのみチェック ボックスをオンにします。
 
-   * **パラメーター**: インストールされる R パッケージ。 たとえば、`bitops stringr arules` のように指定します。
+   * **[パラメーター]**: インストールする R パッケージ。 たとえば、`bitops stringr arules` のように指定します。
 
    * **このスクリプト操作を保持する** ためのチェック ボックスをオンにします。  
 
@@ -211,7 +211,7 @@ rxSparkDisconnect(myHadoopCluster)
    > 2. 一部の R パッケージには、Linux システムの他のライブラリが必要です。 便宜上、HDInsight ML Services には上位 100 の最も一般的な R パッケージで必要な依存関係が事前インストールされています。 ただし、インストールする R パッケージでこれら以外のライブラリが必要な場合、ここで使用する基本スクリプトをダウンロードし、システム ライブラリをインストールする手順を追加します。 その後、変更後のスクリプトを Azure ストレージ内のパブリック BLOB コンテナーにアップロードし、変更後のスクリプトを使用してパッケージをインストールする必要があります。
    >    スクリプト アクションを開発する方法の詳細については、 [スクリプト アクション開発](../hdinsight-hadoop-script-actions-linux.md)に関するページを参照してください。
 
-   ![Azure portal、スクリプト操作を追加](./media/r-server-hdinsight-manage/submit-script-action.png)
+   :::image type="content" source="./media/r-server-hdinsight-manage/submit-script-action.png" alt-text="Azure portal、スクリプト操作を追加" border="true":::
 
 4. **[作成]** を選択してスクリプトを実行します。 スクリプトが完了すると、R パッケージをすべてのワーカー ノードで使用できるようになります。
 

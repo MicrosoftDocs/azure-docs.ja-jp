@@ -4,10 +4,10 @@ description: Azure Lab Services でクラスルーム ラボ テンプレート�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: be84a05fd8b278f5176cd768191d10a20fc719e6
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96434279"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボ テンプレートを作成し、管理する

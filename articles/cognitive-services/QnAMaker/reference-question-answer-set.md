@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 09/01/2020
 ms.openlocfilehash: ef5476ade205109f5dfede1b3bb2c3a4ae2e81a7
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94506007"
 ---
 # <a name="question-and-answer-pair"></a>質問と回答のペア

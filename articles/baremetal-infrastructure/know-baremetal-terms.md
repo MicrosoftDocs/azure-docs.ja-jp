@@ -3,12 +3,12 @@ title: Azure BareMetal インフラストラクチャの用語を把握する
 description: Azure BareMetal インフラストラクチャの用語を把握します。
 ms.topic: conceptual
 ms.date: 1/4/2021
-ms.openlocfilehash: fd7a39854c86f728ef152f8e7d858157e1ad26f4
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b22a6cecb2647df3878cb8fd4ade93d9a7d963fd
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861909"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104770888"
 ---
 # <a name="know-the-terms-for-baremetal-infrastructure"></a>BareMetal インフラストラクチャの用語を把握する
 
@@ -23,4 +23,4 @@ ms.locfileid: "97861909"
 - **Tenant**: BareMetal インスタンス スタンプにデプロイされたお客様は、"*テナント*" に分離されます。 テナントは、ネットワーク、ストレージ、およびコンピューティング レイヤーで他のテナントから分離されます。 別のテナントに割り当てられているストレージ ユニットやコンピューティング ユニットは、BareMetal インスタンス スタンプ レベルで相互に認識したり通信したりすることはできません。 同じお客様が別々のテナントにデプロイを置くこともありますが、 その場合でも BareMetal インスタンス スタンプ レベルでテナント間が通信することはありません。
 
 ## <a name="next-steps"></a>次のステップ
-[BareMetal インフラストラクチャ](workloads/sap/baremetal-overview-architecture.md)について、または [BareMetal インスタンス ユニットを識別して操作する](workloads/sap/baremetal-infrastructure-portal.md)方法についてさらに詳しく学習します。 
+[BareMetal インフラストラクチャ](concepts-baremetal-infrastructure-overview.md)について、または [BareMetal インスタンス ユニットを識別して操作する](connect-baremetal-infrastructure.md)方法についてさらに詳しく学習します。 

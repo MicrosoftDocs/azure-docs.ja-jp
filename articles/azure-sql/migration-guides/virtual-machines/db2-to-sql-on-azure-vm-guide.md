@@ -1,6 +1,6 @@
 ---
-title: DB2 から Azure VM 上の SQL Server (移行ガイド)
-description: このガイドに従って、DB2 サーバーを Azure VM 上の SQL Server に移行します。
+title: 'DB2 から Azure VM 上の SQL Server: 移行ガイド'
+description: このガイドでは、SQL Server Migration Assistant for DB2 を使用して、DB2 データベースを Azure VM 上の SQL Server に移行する方法について説明します。
 ms.custom: ''
 ms.service: virtual-machines-sql
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: c3f3af6a1c114d6587992f79e95dcc0c1ccb41e6
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: aadfd2d96e2ed610ee1e3eaaec9276212e912b0d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797467"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103562231"
 ---
 # <a name="migration-guide-db2-to-sql-server-on-azure-vms"></a>移行ガイド:DB2 から Azure VM 上の SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -144,8 +144,6 @@ SQL Server Migration Assistant (SSMA) を使用して評価を作成します。
 1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行してから、結果を分析します。
 1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行し、結果を分析して比較します。
 
-   > [!NOTE]
-   > 移行後の検証テストの開発と実行を支援するために、パートナーの [QuerySurge](https://www.querysurge.com/company/partners/microsoft) から入手できる Data Quality Solution を検討してください。 
 
 ## <a name="migration-assets"></a>移行資産 
 
@@ -169,5 +167,4 @@ SQL Server Migration Assistant (SSMA) を使用して評価を作成します。
 その他の移行ガイドについては、[データベースの移行](https://datamigration.microsoft.com/)に関するページを参照してください。 
 
 ビデオ コンテンツについては、以下をご覧ください。
-- [データベース移行ガイドを使用する方法](https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/)
 - [移行の過程の概要](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/)

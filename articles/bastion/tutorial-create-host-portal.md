@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 02/12/2021
 ms.author: cherylmc
 ms.openlocfilehash: 60b49e5b6e103a85d79cf8495f2743b22e434c96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100586798"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm-through-a-browser"></a>チュートリアル:Bastion を構成し、ブラウザーを介して Windows VM に接続する

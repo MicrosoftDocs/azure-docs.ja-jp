@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: zhchia
 ms.openlocfilehash: 4cc89c1ad94ae738b25e4ea18d5fe687880969c1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101648222"
 ---
 # <a name="tutorial-configure-templafy-saml2-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように Templafy SAML2 を構成する

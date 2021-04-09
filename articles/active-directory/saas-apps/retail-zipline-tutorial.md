@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/23/2020
 ms.author: jeedes
 ms.openlocfilehash: 50cf98a2646d88360ea9d48d2d84d98ad237a099
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92514964"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-retail-zipline"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Retail Zipline の統合
@@ -37,8 +37,8 @@ ms.locfileid: "92514964"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Retail Zipline により、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Retail Zipline により、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Retail Zipline により、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Retail Zipline により、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-retail-zipline-from-the-gallery"></a>ギャラリーからの Retail Zipline の追加
 
@@ -48,7 +48,7 @@ Azure AD への Retail Zipline の統合を構成するには、ギャラリー�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Retail Zipline** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Retail Zipline**」と入力します。
 1. 結果パネルで **Retail Zipline** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -133,7 +133,7 @@ Retail Zipline に対して Azure AD SSO を構成してテストするには、
 
 ## <a name="configure-retail-zipline-sso"></a>Retail Zipline の SSO を構成する
 
-**Retail Zipline** 側でシングル サインオンを構成するには、 **アプリケーション フェデレーション メタデータ URL** を [Retail Zipline サポート チーム](mailto:support@retailzipline.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Retail Zipline** 側でシングル サインオンを構成するには、**アプリケーション フェデレーション メタデータ URL** を [Retail Zipline サポート チーム](mailto:support@retailzipline.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-retail-zipline-test-user"></a>Retail Zipline のテスト ユーザーを作成する
 

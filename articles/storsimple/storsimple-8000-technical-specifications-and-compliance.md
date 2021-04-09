@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "68965283"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple デバイスの技術的仕様とコンプライアンス
@@ -39,7 +39,7 @@ EBOD エンクロージャは 580 W PCM を使用し、主エンクロージャ�
 | --- | --- | --- |
 | 最大出力電力 |580 W |764 |
 | 頻度 |50/60 Hz |50/60 Hz |
-| 選択電圧範囲 |オート レンジ: 90 - 264 V AC、47/63 Hz |オート レンジ: 90 - 264 V AC、47/63 Hz |
+| 選択電圧範囲 |オート レンジ: 90 ～ 264 V AC、47/63 Hz |オート レンジ: 90 ～ 264 V AC、47/63 Hz |
 | 最大突入電流 |20 A |20 A |
 | 力率補正 |>95% の公称入力電圧 |>95% の公称入力電圧 |
 | 高調波 |EN61000-3-2 に準拠 |EN61000-3-2 に準拠 |
@@ -151,8 +151,8 @@ Microsoft Azure StorSimple デバイスは次の国際標準に準拠してい�
 
 Microsoft Azure StorSimple デバイスは次の安全性規格を満たしています。
 
-* システム製品タイプ承認:UL、cUL、CE
-* 安全性コンプライアンス:UL 60950、IEC 60950、EN 60950
+* システム製品タイプ承認: UL、cUL、CE
+* 安全性コンプライアンス: UL 60950、IEC 60950、EN 60950
 
 ## <a name="emc-compliance"></a>EMC コンプライアンス
 
@@ -162,8 +162,8 @@ Microsoft Azure StorSimple デバイスは次の EMC 規格を満たしていま
 
 デバイスは、伝導および放射される排出量レベルについて EMC に準拠しています。
 
-* 伝導性排出物規制レベル:CFR 47 Part 15B Class A EN55022 Class A CISPR Class A
-* 放射性排出物規制レベル:CFR 47 Part 15B Class A EN55022 Class A CISPR Class A
+* 伝導性排出物規制レベル:CFR 47 Part 15B Class A、EN55022 Class A、CISPR Class A
+* 放射性排出物規制レベル:CFR 47 Part 15B Class A、EN55022 Class A、CISPR Class A
 
 ### <a name="harmonics-and-flicker"></a>高調波と明滅
 

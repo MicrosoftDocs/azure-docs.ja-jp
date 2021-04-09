@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.openlocfilehash: e8ac3e376c8d67e82def3a57910707c6b1433912
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93333156"
 ---
 # <a name="consistency-levels-for-azure-cosmos-db-and-the-api-for-mongodb"></a>Azure Cosmos DB と MongoDB 用 API の整合性レベル
@@ -39,13 +39,13 @@ MongoDB で Azure Cosmos DB の API を使用する場合:
 
 :::image type="content" source="./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png" alt-text="MongoDB の整合性モデル マッピング" lightbox= "./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png":::
 
-Azure Cosmos アカウントが、強固な整合性以外の任意の整合性レベルで構成されている場合、 *確率論的有界整合性制約* (PBS) メトリックを調べることによって、ワークロードの厳密な整合性を持つ読み取りをクライアントが取得する確率を調べることができます。 このメトリックは、Azure portal で公開されます。詳しくは、「[確率的有界整合性制約 (PBS) メトリックを監視する](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)」をご覧ください。
+Azure Cosmos アカウントが、強固な整合性以外の任意の整合性レベルで構成されている場合、*確率論的有界整合性制約* (PBS) メトリックを調べることによって、ワークロードの厳密な整合性を持つ読み取りをクライアントが取得する確率を調べることができます。 このメトリックは、Azure portal で公開されます。詳しくは、「[確率的有界整合性制約 (PBS) メトリックを監視する](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)」をご覧ください。
 
 確率論的有界整合性制約は、最終的な整合性が、どれほど最終的であるかを示します。 このメトリックでは、Azure Cosmos アカウントで現在構成されている整合性レベルより強力な整合性をどのくらいの頻度で得られるかについての分析情報が提供されます。 つまり、書き込みと読み取りのリージョンの組み合わせに対して厳密な整合性の読み取りを取得する確率 (ミリ秒で測定) を表示できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Cosmos DB でのグローバル配信、および整合性レベルについて確認します。
+Azure Cosmos DB でのグローバル配信と整合性レベルについて学習します。
 
 * [グローバル配信の概要](distribute-data-globally.md)
 * [整合性レベルの概要](consistency-levels.md)

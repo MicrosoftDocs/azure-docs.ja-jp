@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 07/06/2020
 ms.openlocfilehash: 3ea6a0035a9f9354be5c14699936c6a07dea1150
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94492091"
 ---
 # <a name="offer-listing-best-practices"></a>オファーの掲載のベスト プラクティス
@@ -68,11 +68,11 @@ Microsoft AppSource と Azure Marketplace は、さまざまな種類のソリ�
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
 | 従量制課金 | Microsoft 365 アドイン | [Contact me (お問い合わせ)] | トランザクション (少なくとも 1 つのプラン) | プライベート専用プラン | パブリック専用プラン | パブリック & プライベート プラン | AppSource | Azure Marketplace |
 |  | X |  |  |  |  |  | X |  |
-| X |  |  | x | x |  |  |  | x |
-| x |  |  | x |  | x |  |  | x |
-| x |  |  | x |  |  | x |  | X<sup>2</sup> |
+| X |  |  | X | X |  |  |  | X |
+| X |  |  | X |  | X |  |  | X |
+| X |  |  | X |  |  | X |  | X<sup>2</sup> |
 |  |  |  | X | X |  |  |  | X |
-|  |  |  | x |  | x |  | X<sup>1</sup> | X<sup>1</sup> |
+|  |  |  | X |  | X |  | X<sup>1</sup> | X<sup>1</sup> |
 |  |  |  | X |  |  | X | X<sup>1</sup> | X<sup>1、2</sup> |
 |  |  | X |  |  |  |  | X<sup>1</sup> | X<sup>1</sup> | 
 
@@ -130,8 +130,8 @@ AppSource で選択した製品に表示されるオファーについて、ア�
 ## <a name="link-to-your-offer-page-from-your-website"></a>自社の Web サイトからオファーのページにリンクする
 
 自社サイトの AppSource または Marketplace バッジからコマーシャル マーケットプレースのリストにリンクする場合は、URL の末尾に次のクエリ パラメーターを含めることで、強力な分析やレポートに対応できます。
-* **src** :トラフィックが AppSource にルーティングされる元のソースを含めます (Web サイト、LinkedIn、Facebook など)。
-* **mktcmpid** :マーケティング キャンペーン ID。文字、数字、アンダースコア、およびハイフンを組み合わせて 16 文字までを入力できます (たとえば、 *blogpost_12* )。
+* **src**:トラフィックが AppSource にルーティングされる元のソースを含めます (Web サイト、LinkedIn、Facebook など)。
+* **mktcmpid**:マーケティング キャンペーン ID。文字、数字、アンダースコア、およびハイフンを組み合わせて 16 文字までを入力できます (たとえば、*blogpost_12*)。
 
 次の URL の例には、前述のクエリ パラメーターの両方が含まれています。`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 

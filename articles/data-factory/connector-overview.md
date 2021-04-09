@@ -4,14 +4,14 @@ description: Data Factory でサポートされるコネクタについて説明
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 03/10/2021
 ms.author: jingwang
-ms.openlocfilehash: 9dff36704fc0e3163da0439d55452fa82cb40e55
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cfd3376174ec0f7789389988245f7377b9896a00
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381309"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103015924"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Azure Data Factory コネクタの概要
 

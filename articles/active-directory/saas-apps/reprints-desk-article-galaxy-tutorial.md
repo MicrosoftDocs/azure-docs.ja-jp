@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Reprints Desk - Article Galaxy と Azure Active Directory のシングル サインオン (SSO) 統合 | Microsoft Docs
+title: 'チュートリアル: Reprints Desk - Article Galaxy と Azure Active Directory のシングル サインオン (SSO) 統合 | Microsoft Docs'
 description: Azure Active Directory と Reprints Desk - Article Galaxy の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
 ms.openlocfilehash: e28281b783c66f8dbb0bc4842679eeec43755508
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515003"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-reprints-desk---article-galaxy"></a>チュートリアル:Reprints Desk - Article Galaxy と Azure Active Directory のシングル サインオン (SSO) 統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-reprints-desk---article-galaxy"></a>チュートリアル: Reprints Desk - Article Galaxy と Azure Active Directory のシングル サインオン (SSO) 統合
 
 このチュートリアルでは、Reprints Desk - Article Galaxy と Azure Active Directory (Azure AD) を統合する方法について説明します。 Reprints Desk - Article Galaxy と Azure AD を統合すると、次のことができます。
 
@@ -39,9 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Reprints Desk - Article Galaxy では、 **IDP** Initiated SSO がサポートされます
+* Reprints Desk - Article Galaxy では、**IDP** Initiated SSO がサポートされます
 
-* Reprints Desk - Article Galaxy では、 **ジャスト イン タイム** のユーザー プロビジョニングがサポートされます
+* Reprints Desk - Article Galaxy では、**ジャスト イン タイム** のユーザー プロビジョニングがサポートされます
 
 * [Reprints Desk - Article Galaxy を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。セッション制御は、条件付きアクセスを拡張したものです。Microsoft Cloud App Security でセッション制御を強制する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。
 
@@ -53,7 +53,7 @@ Reprints Desk - Article Galaxy の Azure AD への統合を構成するには、
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Reprints Desk - Article Galaxy** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Reprints Desk - Article Galaxy**」と入力します。
 1. 結果のパネルから **[Reprints Desk - Article Galaxy]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -74,7 +74,7 @@ Reprints Desk - Article Galaxy に対する Azure AD SSO を構成してテス�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Reprints Desk - Article Galaxy** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Reprints Desk - Article Galaxy** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 

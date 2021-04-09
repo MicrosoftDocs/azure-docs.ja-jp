@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
 ms.openlocfilehash: 7aec0a7ff2e8dfdfca93971e01f8ed13af34acc6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92517856"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-synchronet-click"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SynchroNet CLICK の統合
@@ -42,7 +42,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* SynchroNet CLICK では、 **SP** Initiated SSO がサポートされます。
+* SynchroNet CLICK では、**SP** Initiated SSO がサポートされます。
 * SynchroNet CLICK を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-synchronet-click-from-the-gallery"></a>ギャラリーからの SynchroNet CLICK の追加
@@ -53,7 +53,7 @@ Azure AD への SynchroNet CLICK の統合を構成するには、ギャラリ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **SynchroNet CLICK** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**SynchroNet CLICK**」と入力します。
 1. 結果のパネルから **[SynchroNet CLICK]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -84,7 +84,7 @@ SynchroNet CLICK で Azure AD SSO を構成してテストするには、次の�
 
     **[サインオン URL]** ボックスに、URL として「`https://click.synchronet.com`」を入力します。
 
-1. SynchroNet CLICK アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **emailaddress** は **user.mail** にマップされています。 SynchroNet CLICK アプリケーションでは、 **emailaddress** が **user.userprincipalname** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. SynchroNet CLICK アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**emailaddress** は **user.mail** にマップされています。 SynchroNet CLICK アプリケーションでは、**emailaddress** が **user.userprincipalname** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -124,7 +124,7 @@ SynchroNet CLICK で Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-synchronet-click-sso"></a>SynchroNet CLICK の SSO の構成
 
-**SynchroNet CLICK** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [SynchroNet CLICK サポート チーム](mailto:tickets@synchronet.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**SynchroNet CLICK** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [SynchroNet CLICK サポート チーム](mailto:tickets@synchronet.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-synchronet-click-test-user"></a>SynchroNet CLICK のテスト ユーザーの作成
 

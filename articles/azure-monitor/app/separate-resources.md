@@ -3,12 +3,12 @@ title: Application Insights のデプロイを設計する方法 - 1 つまた�
 description: 開発、テスト、および運用スタンプのテレメトリを異なるリソースに送信します。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 3964cddcf27a4b2c7397b508ccb3cc8928bd04ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9a60981e692a45dd3630073300b206289cfd2a30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589523"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102424667"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>デプロイする必要がある Application Insights リソースの数
 
@@ -32,6 +32,9 @@ Web アプリに対する Application Insights の監視を設定するときは
 -   コンポーネント間で異なる方法で請求先またはクォータを管理する必要がない場合。
 -   API キーがすべてのコンポーネントのデータに対して同じアクセス権を持っていてもかまわない場合。 これらすべてのニーズに対応するには、10 個の API キーで十分です。
 -   すべてのロールで同じスマート検出と作業項目の統合設定を持つことができる場合。
+
+> [!NOTE]
+> 複数の Application Insights リソースを統合する場合、統合後の新しい Application Insights リソースに既存のアプリケーション コンポーネントをさし向けることができます。 古いリソースに保管されている利用統計情報は、新しいリソースに転送されません。そのため、事業継続性のために、新しいリソースに十分な利用統計情報がある場合、古いリソースのみを削除してください。
 
 ### <a name="other-things-to-keep-in-mind"></a>その他の注意点
 

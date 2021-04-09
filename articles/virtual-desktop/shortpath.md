@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: c1cdafe2929502293aada32dbae06e342761862b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 295a46f6d1074ddf8422233ea3ccfa4d65c28fd8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876700"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571583"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows Virtual Desktop の RDP Shortpath (プレビュー)
 
@@ -151,7 +151,8 @@ Save-NetGPO -GPOSession $gpoSession
 [ネットワーク セキュリティ グループのドキュメント](../virtual-machines/windows/nsg-quickstart-portal.md)に従い、次のパラメーターを使用して、トラフィックを許可する受信セキュリティ規則を作成します。
 
 * **Source** - **Any** またはクライアントが存在する IP 範囲
-* **Source port ranges** - * *\** _ _ **Destination** - **Any**
+* **[ソース ポート範囲]**  -  **\***
+* **[宛先]**  -  **[Any]**
 * **Destination port ranges** - **3390**
 * **Protocol** - **UDP**
 * **Action** - **Allow**
@@ -188,7 +189,7 @@ Save-NetGPO -GPOSession $gpoSession
 * **0** - ユーザー接続で RDP Shortpath は使用されていない
 * **1** - ユーザー接続で RDP Shortpath が使用されている
   
-次のクエリ一覧では、接続情報を確認できます。 このクエリは、[Log Analytics クエリ エディター](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query)で実行できます。 クエリごとに、`userupn` を検索するユーザーの UPN に置き換えます。
+次のクエリ一覧では、接続情報を確認できます。 このクエリは、[Log Analytics クエリ エディター](../azure-monitor/logs/log-analytics-tutorial.md#write-a-query)で実行できます。 クエリごとに、`userupn` を検索するユーザーの UPN に置き換えます。
 
 ```kusto
 let Events = WVDConnections | where UserName == "userupn" ;

@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
 ms.openlocfilehash: 7f4c09a32794e13b0e0041ee916401b714d8509e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90055233"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリとは
@@ -49,7 +49,7 @@ Microsoft Authenticator アプリは次のような複数の方法で使用で�
 
 Microsoft Authenticator アプリでは、2 要素認証が次の方法で機能します。
 
-- **通知**。 職場または学校アカウントあるいは個人の Microsoft アカウントのいずれかについて、お客様がログインするデバイスにユーザー名とパスワードを入力します。その後、Microsoft Authenticator アプリから、**サインインの承認**をお客様に求める通知が送信されます。 サインインを承認する場合は **[承認]** を選択します。 承認しない場合は、 **[拒否]** を選択します。 **[拒否]** を選択すると、要求を不正としてマークすることもできます。
+- **通知**。 職場または学校アカウントあるいは個人の Microsoft アカウントのいずれかについて、お客様がログインするデバイスにユーザー名とパスワードを入力します。その後、Microsoft Authenticator アプリから、**サインインの承認** をお客様に求める通知が送信されます。 サインインを承認する場合は **[承認]** を選択します。 承認しない場合は、 **[拒否]** を選択します。 **[拒否]** を選択すると、要求を不正としてマークすることもできます。
 
 - **確認コード**。 職場または学校アカウントあるいは個人の Microsoft アカウントのいずれかについて、お客様がログインするデバイスにユーザー名とパスワードを入力します。その後、関連付けられている確認コードを Microsoft Authenticator アプリの **[アカウント]** 画面からコピーします。 確認コードは、ワンタイム パスコード (OTP) 認証とも呼ばれます。
 
@@ -67,7 +67,7 @@ PIN を使用して認証プロセスを完了する場合、代わりにお客�
 
 - **個人の Microsoft アカウント。** 個人の Microsoft アカウント (例: alain@outlook.com) の場合、2 要素認証の設定を選択できます。 個人の Microsoft アカウントの追加について詳しくは、[個人用アカウントの追加](user-help-auth-app-add-personal-ms-account.md)に関するページを参照してください。
 
-- **非 Microsoft アカウント。** Microsoft 以外のアカウント (例: alain@gmail.com) に対して 2 要素認証を設定できます。 Microsoft 以外の個人アカウントでは 2 要素認証という用語が使用されていない可能性がありますが、**セキュリティ**設定内または**サインイン**設定内で機能を見つけられるはずです。 Microsoft Authenticator アプリは、TOTP 標準をサポートする任意のアカウントで動作します。 Microsoft 以外のアカウントの追加について詳しくは、「[Microsoft 以外のアカウントを追加する](user-help-auth-app-add-non-ms-account.md)」を参照してください。
+- **非 Microsoft アカウント。** Microsoft 以外のアカウント (例: alain@gmail.com) に対して 2 要素認証を設定できます。 Microsoft 以外の個人アカウントでは 2 要素認証という用語が使用されていない可能性がありますが、**セキュリティ** 設定内または **サインイン** 設定内で機能を見つけられるはずです。 Microsoft Authenticator アプリは、TOTP 標準をサポートする任意のアカウントで動作します。 Microsoft 以外のアカウントの追加について詳しくは、「[Microsoft 以外のアカウントを追加する](user-help-auth-app-add-non-ms-account.md)」を参照してください。
 
 ## <a name="in-this-section"></a>このセクションの内容
 

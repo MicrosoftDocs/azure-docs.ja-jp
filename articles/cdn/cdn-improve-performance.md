@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: ceed62d466627d6a23554229bd6f4b96c674c7e9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 11a2dbfc9c6da60e4dd96f65d2a20165a3663e8c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993671"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103601544"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Azure CDN でのファイル圧縮によるパフォーマンスの向上
 ファイル圧縮は、サーバーからファイルを送信する前にファイル サイズを減らすことができるため、ファイルの転送速度とページ読み込みのパフォーマンスを向上させることができる簡単で効率的な方法です。 ファイル圧縮により、帯域幅のコストを軽減し、ユーザーへの応答を改善することができます。
@@ -63,10 +63,6 @@ Standard および Premium CDN レベルでは同じ圧縮機能が提供され�
 
    > [!TIP]
    > 圧縮形式に圧縮を適用することは可能ですが、推奨されません。 たとえば、ZIP、MP3、MP4、JPG などの形式です。
-   > 
-
-   > [!NOTE]
-   > 現在、MIME の種類の既定一覧を変更することは、Microsoft の Azure CDN Standard でサポートされていません。
    > 
 
 5. 変更後、 **[保存]** を選択します。
@@ -153,10 +149,10 @@ Standard および Premium CDN レベルでは同じ圧縮機能が提供され�
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>圧縮が有効でファイルの圧縮が実行可能
 | クライアントから要求された形式 (Accept-Encoding ヘッダー経由) | キャッシュ ファイルの形式 | クライアントへの CDN の応答 | Notes |
 | --- | --- | --- | --- |
-| Compressed |Compressed |Compressed |CDN が、サポートされている形式間のトランスコードを実行します。 |
+| Compressed |Compressed |Compressed |CDN が、サポートされている形式間のトランスコードを実行します。 <br/>**Microsoft の Azure CDN** では、形式間のコード変換がサポートされていません。元のデータをフェッチした後、その形式に対して個別に圧縮とキャッシュが実行されます。 |
 | Compressed |非圧縮 |Compressed |CDN が圧縮を実行します。 |
 | Compressed |キャッシュなし |Compressed |配信元から非圧縮ファイルが返された場合、CDN が圧縮を実行します。 <br/>**Azure CDN from Verizon** は、最初の要求で圧縮されていないファイルを渡し、後続の要求のためにファイルを圧縮してキャッシュします。 <br/>`Cache-Control: no-cache` ヘッダーがあるファイルは圧縮されません。 |
-| 非圧縮 |Compressed |非圧縮 |CDN が展開を実行します。 |
+| 非圧縮 |Compressed |非圧縮 |CDN が展開を実行します。 <br/>**Microsoft の Azure CDN** では、圧縮解除がサポートされていません。元のデータをフェッチした後、非圧縮のクライアント用に個別にキャッシュが実行されます。 |
 | 非圧縮 |非圧縮 |非圧縮 | |
 | 非圧縮 |キャッシュなし |非圧縮 | |
 

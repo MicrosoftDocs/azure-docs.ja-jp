@@ -9,10 +9,10 @@ ms.service: virtual-machine-scale-sets
 ms.devlang: azurecli
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 1abdf7ae15753d78ac8728f57e9b0cd5dcd9165e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101672600"
 ---
 # <a name="create-and-manage-virtual-machine-scale-set"></a>仮想マシン スケール セットの作成と管理

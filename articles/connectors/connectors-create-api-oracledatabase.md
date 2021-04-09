@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
 ms.openlocfilehash: 91873a2d6a498712773bfe721653e64c3364666f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92674808"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database コネクタの概要
@@ -98,23 +98,23 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 ## <a name="common-errors"></a>一般的なエラー
 
-#### <a name="error-cannot-reach-the-gateway"></a>**Error** : ゲートウェイに到達できません
+#### <a name="error-cannot-reach-the-gateway"></a>**Error**: ゲートウェイに到達できません
 
-**原因** :オンプレミスのデータ ゲートウェイがクラウドに接続できません。 
+**原因**:オンプレミスのデータ ゲートウェイがクラウドに接続できません。 
 
-**対応策** :ゲートウェイをインストールしたオンプレミスのコンピューターで、そのゲートウェイが実行されていること、およびインターネットに接続できることを確認します。    オフまたはスリープ状態のコンピューターにはゲートウェイをインストールしないことをお勧めします。  オンプレミスのデータ ゲートウェイ サービス (PBIEgwService) を再起動することもできます。
+**対応策**:ゲートウェイをインストールしたオンプレミスのコンピューターで、そのゲートウェイが実行されていること、およびインターネットに接続できることを確認します。    オフまたはスリープ状態のコンピューターにはゲートウェイをインストールしないことをお勧めします。  オンプレミスのデータ ゲートウェイ サービス (PBIEgwService) を再起動することもできます。
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Error** : 使用中のプロバイダーは非推奨です: System.Data.OracleClient には Oracle クライアント ソフトウェア version 8.1.7 以降が必要です。 [https://go.microsoft.com/fwlink/p/?LinkID=272376](/power-bi/connect-data/desktop-connect-oracle-database) を参照して、公式のプロバイダーをインストールしてください。
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Error**: 使用中のプロバイダーは非推奨です: System.Data.OracleClient には Oracle クライアント ソフトウェア version 8.1.7 以降が必要です。 [https://go.microsoft.com/fwlink/p/?LinkID=272376](/power-bi/connect-data/desktop-connect-oracle-database) を参照して、公式のプロバイダーをインストールしてください。
 
-**原因** :オンプレミスのデータ ゲートウェイが実行されているコンピューターに Oracle クライアント SDK がインストールされていません。  
+**原因**:オンプレミスのデータ ゲートウェイが実行されているコンピューターに Oracle クライアント SDK がインストールされていません。  
 
-**解決方法** :Oracle クライアント SDK をダウンロードして、オンプレミスのデータ ゲートウェイと同じコンピューターにインストールします。
+**解決方法**:Oracle クライアント SDK をダウンロードして、オンプレミスのデータ ゲートウェイと同じコンピューターにインストールします。
 
-#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Error** : テーブル '[Tablename]' には、キー列が定義されていません
+#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Error**: テーブル '[Tablename]' には、キー列が定義されていません
 
-**原因** :テーブルに主キーがありません。  
+**原因**:テーブルに主キーがありません。  
 
-**解決方法** :Oracle Database コネクタでは、主キー列が含まれるテーブルを使用する必要があります。
+**解決方法**:Oracle Database コネクタでは、主キー列が含まれるテーブルを使用する必要があります。
  
 ## <a name="connector-specific-details"></a>コネクタ固有の詳細
 

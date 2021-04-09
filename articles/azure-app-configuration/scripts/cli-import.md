@@ -11,10 +11,10 @@ ms.date: 02/19/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: f7d68024dd86a1eb2a0311cecf607d41a7067deb
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102173570"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>Azure App Configuration ストアへのインポート
@@ -42,7 +42,7 @@ az appconfig kv import --name myTestAppConfigStore --source file --format json -
 
 このスクリプトでは、次のコマンドを使用して App Configuration ストアへのインポートを実行します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [az appconfig kv import](/cli/azure/appconfig/kv#az-appconfig-kv-import) | App Configuration ストア リソースへのインポートを行います。 |
 

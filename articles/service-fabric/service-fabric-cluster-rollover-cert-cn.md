@@ -4,10 +4,10 @@ description: 証明書共通名によって識別される Service Fabric クラ
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 65ea4f463073c472ac6a31e62dcfdfd11cb28cc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88853347"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Service Fabric クラスターの証明書を手動でロールオーバーする

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/18/2020
 ms.author: derekol
 ms.openlocfilehash: 22cb179925f95fd0762371cc904fcbd02675339a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91540270"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>ポータルを使用してピア ASN を Azure サブスクリプションに関連付ける
@@ -39,7 +39,7 @@ ms.locfileid: "91540270"
     > [!div class="mx-imgBorder"]
     > ![サブスクリプションを起動する](./media/rp-subscriptions-launch.png)
 
-1. サブスクリプションが開いたら、左側の **[リソース プロバイダー]** をクリックします。 次に、右側のペインの検索ウィンドウで "*ピアリング*" を探すか、スクロール バーを使用して **Microsoft.Peering** を見つけ、 **[状態]** を確認します。 状態が ***[Registered]\(登録済み\)*** の場合は、以下の手順をスキップして、「**PeerAsn を作成する**」セクションに進みます。 状態が ***[NotRegistered]\(未登録\)*** の場合は、**Microsoft.Peering** を選択して、 **[登録]** をクリックします。
+1. サブスクリプションが開いたら、左側の **[リソース プロバイダー]** をクリックします。 次に、右側のペインの検索ウィンドウで "*ピアリング*" を探すか、スクロール バーを使用して **Microsoft.Peering** を見つけ、 **[状態]** を確認します。 状態が **_[登録済み]_ *_ の場合は、以下の手順をスキップして、「_* PeerAsn を作成する**」セクションに進みます。 状態が **_[未登録]_ *_ の場合は、_* Microsoft.Peering** を選択して、 **[登録]** をクリックします。
 
     > [!div class="mx-imgBorder"]
     > ![登録の開始](./media/rp-register-start.png)
@@ -49,7 +49,7 @@ ms.locfileid: "91540270"
     > [!div class="mx-imgBorder"]
     > ![登録進行中](./media/rp-register-progress.png)
 
-1. 登録が完了するまで 1 分程度待ちます。 その後、 **[最新の情報に更新]** をクリックして、状態が ***[Registered]\(登録済み\)*** になっていることを確認します。
+1. 登録が完了するまで 1 分程度待ちます。 その後、 **[最新の情報に更新]** をクリックして、状態が **_[登録済み]_** になっていることを確認します。
 
     > [!div class="mx-imgBorder"]
     > ![登録完了](./media/rp-register-completed.png)
@@ -66,7 +66,7 @@ ms.locfileid: "91540270"
     * ASN を関連付ける必要がある **[サブスクリプション]** を選択します。
     * **[ピア名]** は会社の名前に対応しており、PeeringDB プロファイルにできるだけ近いものにする必要があります。 この値では、文字 a-z、A-Z、およびスペースのみがサポートされていることに注意してください
     * **[ピア ASN]** フィールドに、ASN を入力します。
-    * **[新規作成]** をクリックし、ネットワーク オペレーションセンター (NOC) の**メール アドレス**と**電話番号**を入力します
+    * **[新規作成]** をクリックし、ネットワーク オペレーションセンター (NOC) の **メール アドレス** と **電話番号** を入力します
 1. 次に、 **[確認と作成]** をクリックし、入力した情報の基本的な検証がポータルで実行されていることを確認します。 上部のリボンに、"*最終検証を実行しています...* " と表示されます。
 
     > [!div class="mx-imgBorder"]

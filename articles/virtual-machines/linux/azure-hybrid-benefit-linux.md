@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 346d58dbe06a29a4ba114ae788dee16e80b8f9df
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 17b2e260f9a90ddda6e246058cefb1bec8b1ac5e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101695483"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Azure ハイブリッド特典を Linux 仮想マシンに適用する方法
@@ -177,7 +177,7 @@ Red Hat サブスクリプションのコンプライアンス、ソフトウェ
 
 ### <a name="suse"></a>SUSE
 
-SLES VM での Azure ハイブリッド特典の使用方法について、および SLES PAYG から BYOS への移行または SLES BYOS から PAYG への移行については、「[SUSE Linux Enterprise and Azure Hybrid Benefit](https://www.suse.com/support/kb/doc/?id=000019868)」 (SUSE Linux Enterprise と Azure ハイブリッド特典) を参照してください。 
+SLES VM での Azure ハイブリッド特典の使用方法について、および SLES PAYG から BYOS への移行または SLES BYOS から PAYG への移行については、「[SUSE Linux Enterprise and Azure Hybrid Benefit](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/)」 (SUSE Linux Enterprise と Azure ハイブリッド特典) を参照してください。 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 *Q:`RHEL_BYOS` の種類のライセンスを SLES イメージと共に使用する、またはその逆は可能ですか。*

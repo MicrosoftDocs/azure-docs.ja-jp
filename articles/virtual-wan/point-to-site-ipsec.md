@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/24/2021
 ms.author: wellee
 ms.openlocfilehash: d64748bf7719af52b76c5e4141bfbbabe80bbae2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101743957"
 ---
 # <a name="point-to-site-ipsec-policies"></a>ポイント対サイト IPsec ポリシー

@@ -1,7 +1,7 @@
 ---
 title: H264 Single Bitrate 4x3 SD Media Encoder Standard プリセット - Azure | Microsoft Docs
 description: このトピックでは、**H264 Single Bitrate 4x3 SD** タスク プリセットの概要を説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: e7e79b3762d40357cee9000e0920db60c78f61a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 4db9e0a004bc6bf1bb3a2b0511c915f80bbe48bb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261633"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103008469"
 ---
 # <a name="h264-single-bitrate-4x3-sd"></a>H264 Single Bitrate 4x3 SD
 

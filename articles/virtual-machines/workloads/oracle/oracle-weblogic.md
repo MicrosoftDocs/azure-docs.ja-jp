@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: oracle
 ms.collection: linux
 ms.topic: article
-ms.date: 02/24/2021
+ms.date: 03/23/2021
 ms.author: rezar
-ms.openlocfilehash: a5675b313586615d4bad733aec6eabf0360f8489
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 59bae8bfea29ee458288751209ffc860b5b9ce9d
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694710"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956003"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Azure Virtual Machines で Oracle WebLogic Server を実行するためのソリューションとは
 

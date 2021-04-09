@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 7106ba0a9f2a95b96968cba28c327a6cc9b99610
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92522123"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shuccho-navi"></a>チュートリアル: Azure Active Directory と Shuccho Navi の統合
@@ -41,13 +41,13 @@ Azure AD と Shuccho Navi の統合を構成するには、次のものが必要
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Shuccho Navi では、 **SP** によって開始される SSO がサポートされます
+* Shuccho Navi では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-shuccho-navi-from-the-gallery"></a>ギャラリーからの Shuccho Navi の追加
 
 Azure AD への Shuccho Navi の統合を構成するには、管理対象の SaaS アプリの一覧にギャラリーから Shuccho Navi を追加する必要があります。
 
-**ギャラリーから Shuccho Navi を追加するには、次の手順に従います。**
+**ギャラリーから Shuccho Navi を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
@@ -61,13 +61,13 @@ Azure AD への Shuccho Navi の統合を構成するには、管理対象の Sa
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Shuccho Navi** 」と入力し、結果ウィンドウで **[Shuccho Navi]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Shuccho Navi**」と入力し、結果ウィンドウで **[Shuccho Navi]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Shuccho Navi](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Shuccho Navi で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Shuccho Navi で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Shuccho Navi 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Shuccho Navi で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ Shuccho Navi で Azure AD のシングル サインオンを構成してテス�
 
 Shuccho Navi で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Shuccho Navi** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Shuccho Navi** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -140,9 +140,9 @@ Shuccho Navi で Azure AD シングル サインオンを構成するには、�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -153,7 +153,7 @@ Shuccho Navi で Azure AD シングル サインオンを構成するには、�
 
 このセクションでは、Britta Simon に Shuccho Navi へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Shuccho Navi]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Shuccho Navi]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

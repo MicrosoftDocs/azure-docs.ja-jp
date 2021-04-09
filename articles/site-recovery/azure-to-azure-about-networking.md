@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
 ms.openlocfilehash: b9fdaf8a0791570ecee402442c5faefe2f70a22b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92370442"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Azure VM ディザスター リカバリーのネットワークについて

@@ -6,15 +6,15 @@ author: chriswhilar
 manager: mariusu-msft
 services: azure-communication-services
 ms.author: mariusu
-ms.date: 10/15/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: aadecd3c57f5a145efd43058a5113205d7517c0b
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 824fd19e8acfed75ab3d64048a00f579b70286d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486405"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103496237"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Web 通話サンプルの概要
 
@@ -88,12 +88,12 @@ PSTN 電話番号に電話をかける際は、代替の発信者番号を指定
 
 - [Calling クライアント ライブラリ](../quickstarts/voice-video-calling/calling-client-samples.md)について理解する
 - [通話のしくみ](../concepts/voice-video-calling/about-call-types.md)の詳細について確認する
-- [API リファレンス ドキュメント](/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js)を確認する
+- [API リファレンス ドキュメント](/javascript/api/azure-communication-services/@azure/communication-calling/)を確認する
 - [Contoso Med App](https://github.com/Azure-Samples/communication-services-contoso-med-app) サンプルを確認する
 
 ## <a name="additional-reading"></a>その他の情報
 
-- [Azure Communication GitHub](https://github.com/Azure/communication) - 他の例や情報は公式 GitHub ページで見つかります。
+- [サンプル](./overview.md) - その他のサンプルと例については、「サンプルの概要」ページを参照してください。
 - [Redux](https://redux.js.org/) - クライアント側の状態管理
 - [FluentUI](https://aka.ms/fluent-ui) - Microsoft が提供する UI ライブラリ
 - [React](https://reactjs.org/) - ユーザー インターフェイスを構築するためのライブラリ

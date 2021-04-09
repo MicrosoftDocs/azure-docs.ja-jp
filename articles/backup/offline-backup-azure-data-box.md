@@ -4,10 +4,10 @@ description: Azure Data Box を使用して、MARS エージェントから Reco
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: e789b6c9f4ff2e8cd168e6b5c138d423911d4743
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96752585"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Data Box を使用した Azure Backup のオフライン バックアップ

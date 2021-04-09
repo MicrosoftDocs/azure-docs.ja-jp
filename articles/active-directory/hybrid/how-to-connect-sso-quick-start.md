@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59cc50274b291c23aeec4620ec7a09312cc0c1fb
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: e49ed356f294baca6e339faeebe92ca02b2723df
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762250"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644784"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
@@ -161,10 +161,10 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
     ![[レジストリ] および [レジストリ項目] が選択されていることを示すスクリーンショット。](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. 次の値を該当するフィールドに入力し、 **[OK]** をクリックします。
-   - **キー パス**: **_Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon_* _
-   - _*値の名前**: **_https_*_
-   - _*値の型**: **_REG_DWORD_*_
-   - _*値のデータ**: **_00000001_*_
+   - **キー パス**: **_Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon_**
+   - **値の名前**: **_https_**
+   - **値の型**: **_REG_DWORD_**
+   - **値のデータ**: **_00000001_**
  
      ![[新しいレジストリのプロパティ] ウィンドウを示すスクリーンショット。](./media/how-to-connect-sso-quick-start/sso16.png)
  
@@ -176,7 +176,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
 Mozilla Firefox は、Kerberos 認証を自動的には使用しません。 各ユーザーが、次の手順に従って、Firefox の設定に Azure AD の URL を手動で追加する必要があります。
 1. Firefox を実行し、アドレス バーに「`about:config`」と入力します。 表示されているすべての通知を無視します。
-2. _ *network.negotiate-auth.trusted-uris** の設定を検索します。 この設定は、Kerberos 認証用の Firefox の信頼済みサイトを一覧表示します。
+2. **network.negotiate-auth.trusted-uris** の設定を検索します。 この設定は、Kerberos 認証用の Firefox の信頼済みサイトを一覧表示します。
 3. 右クリックして **[変更]** を選択します。
 4. フィールドに「 `https://autologon.microsoftazuread-sso.com` 」を入力します。
 5. **[OK]** を選択してから、ブラウザーをもう一度開きます。
@@ -205,7 +205,7 @@ macOS などの Windows 以外のプラットフォームで Google Chrome を�
 
 #### <a name="known-browser-limitations"></a>ブラウザーの既知の制限事項
 
-シームレス SSO は、Firefox および Microsoft Edge ブラウザーのプライベート ブラウズ モードでは動作しません。 拡張保護モードで実行されている場合は、Internet Explorer ブラウザーでも機能しません。 Chromium に基づく Microsoft Edge の次期バージョンは、仕様により InPrivate モードと Guest モードでは機能しなくなります。
+シームレス SSO は、Firefox および Microsoft Edge (レガシー) ブラウザーのプライベート ブラウズ モードでは動作しません。 拡張保護モードで実行されている場合は、Internet Explorer ブラウザーでも機能しません。 シームレス SSO では、Chromium に基づく Microsoft Edge の次期バージョンがサポートされています。仕様により InPrivate とゲスト モードで機能します。
 
 ## <a name="step-4-test-the-feature"></a>手順 4:機能をテストする
 
@@ -216,10 +216,10 @@ macOS などの Windows 以外のプラットフォームで Google Chrome を�
   - グループ ポリシーを使用して、このユーザーに[機能がロールアウト](#step-3-roll-out-the-feature)されている。
 
 ユーザーがユーザー名のみを入力し、パスワードを入力しないシナリオをテストする場合:
-   - 新しいプライベート ブラウザー セッションで `https://myapps.microsoft.com/` にサインインします。
+   - https://myapps.microsoft.com/ にサインインします。 必ずブラウザーのキャッシュをクリアするか、サポートされているいずれかのブラウザーのプライベート モードでの新しいプライベート ブラウザー セッションを使用してください。
 
 ユーザーがユーザー名またはパスワードを入力する必要がないシナリオをテストする場合は、次の手順のいずれかに従います。 
-   - 新しいプライベート ブラウザー セッションで `https://myapps.microsoft.com/contoso.onmicrosoft.com` にサインインします。 *contoso* を自分のテナント名に置き換えます。
+   - `https://myapps.microsoft.com/contoso.onmicrosoft.com` にサインインします。必ず、ブラウザーのキャッシュをクリアするか、サポートされているいずれかのブラウザーのプライベート モードで新しいプライベート ブラウザー セッションを使用してください。 *contoso* を自分のテナント名に置き換えます。
    - 新しいプライベート ブラウザー セッションで `https://myapps.microsoft.com/contoso.com` にサインインします。 *contoso.com* を、自分のテナントで検証されたドメイン (フェデレーション ドメインではなく) に置き換えます。
 
 ## <a name="step-5-roll-over-keys"></a>手順 5:キーをロール オーバーする

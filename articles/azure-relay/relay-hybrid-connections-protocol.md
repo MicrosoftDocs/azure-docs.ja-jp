@@ -4,10 +4,10 @@ description: この記事では、リスナーのクライアントとセンダ�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 36321f88de173a37c9aa6615c4c0f2b29aec9f20
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97976964"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay ハイブリッド接続プロトコル

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: victorh
-ms.openlocfilehash: 0df91680dadbc4ac19299a4df48a585a11f044e8
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: c425afc314435c38d15d53ab0c38dcd48e35a40b
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072243"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102508930"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure Firewall の SNAT プライベート IP アドレス範囲
 
@@ -58,7 +58,7 @@ New-AzFirewall @azFw
 > [!NOTE]
 > IANAPrivateRanges は Azure Firewall の現在の既定値に拡張されますが、他の範囲は追加されます。 プライベート範囲の指定で IANAPrivateRanges の既定値を維持するには、次の例に示すように、`PrivateRange` の指定に残す必要があります。
 
-詳細については、「[New-AzFirewall](/powershell/module/az.network/new-azfirewall?view=azps-3.3.0)」をご覧ください。
+詳細については、「[New-AzFirewall](/powershell/module/az.network/new-azfirewall)」をご覧ください。
 
 ### <a name="existing-firewall"></a>既存のファイアウォール
 

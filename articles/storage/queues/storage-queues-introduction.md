@@ -9,10 +9,10 @@ ms.topic: overview
 ms.service: storage
 ms.subservice: queues
 ms.openlocfilehash: 8c5c97fbb72934dd99ec784ccf8e08eec059c31b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97590581"
 ---
 # <a name="what-is-azure-queue-storage"></a>Azure Queue Storage とは

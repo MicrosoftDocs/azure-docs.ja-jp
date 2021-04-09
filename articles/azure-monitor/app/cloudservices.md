@@ -4,12 +4,12 @@ description: Application Insights で Web と worker ロールを効果的に監
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 1f9204534fcdfbf7c393eaafdbae62c4c4321f2f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 264d6d4b0b397a29b5dc1db4bb299297c1e30584
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573869"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103419237"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure クラウド サービス向けの Application Insights
 [Application Insights][start] では、Application Insights SDK からのデータとお客様のクラウド サービスからの [Azure 診断](../agents/diagnostics-extension-overview.md)データを組み合わせることで、[Azure クラウド サービス アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況を監視できます。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
@@ -52,9 +52,8 @@ Application Insights を使ってクラウド サービスを監視する最も�
 各リソースはリソース グループに属しています。 リソース グループは、コストの管理、チーム メンバーへのアクセスの許可、調整された単一のトランザクションでの更新のデプロイに使用されます。 たとえば、1 回の操作で Azure クラウド サービスとその Application Insights 監視リソースを[デプロイするスクリプトを記述](../../azure-resource-manager/templates/deploy-powershell.md)できます。
 
 ### <a name="resources-for-components"></a>コンポーネント用のリソース
-お客様のアプリのコンポーネントごとに別個のリソースを作成することをお勧めします。 つまり、web ロールと worker ロールにそれぞれリソースを作成します。 各コンポーネントを別個に分析できますが、すべてのコンポーネントから主要なグラフをまとめる[ダッシュボード](./overview-dashboard.md)を作成して、1 つのビューでまとめて比較および監視することもできます。 
 
-別の方法として、複数のロールから同じリソースにテレメトリを送信することもできますが、ソース ロールを識別する[各テレメトリ項目にディメンション プロパティを追加](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)します。 この方法では、例外などのメトリック グラフに通常はさまざまなロールからのカウントの集計が表示されます。しかし、必要な場合にはロール識別子を使用してグラフを分割することができます。 同じディメンションによって検索をフィルターすることもできます。 この代替方法ではすべてを同時に表示するのが若干簡単になりますが、ロール間で混乱を招く可能性もあります。
+[ディメンション プロパティを、そのソース ロールを識別する各テレメトリ項目に追加](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)することをお勧めします。 この方法では、例外などのメトリック グラフに通常はさまざまなロールからのカウントの集計が表示されます。しかし、必要な場合にはロール識別子を使用してグラフを分割することができます。 同じディメンションによって検索をフィルターすることもできます。 この代替方法ではすべてを同時に表示するのが若干簡単になりますが、ロール間で混乱を招く可能性もあります。
 
 通常、ブラウザーのテレメトリはサーバー側の Web ロールと同じリソースに含まれています。
 

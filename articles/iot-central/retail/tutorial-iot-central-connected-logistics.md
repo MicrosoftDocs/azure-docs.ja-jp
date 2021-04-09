@@ -8,10 +8,10 @@ ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
 ms.openlocfilehash: 7c6c50b6fd8200726aa11f120d9748cc1b40aa22
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99831622"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>チュートリアル:コネクテッド ロジスティクス アプリケーション テンプレートをデプロイして調べる

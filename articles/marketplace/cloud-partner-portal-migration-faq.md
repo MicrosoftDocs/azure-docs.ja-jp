@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 091feacceb510038786ae487c0895f9ff1e47aba
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: e071692a1c6fe423b048dab884164d9b3c98f1fd
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880340"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102613614"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターへの切り替えに関してよく寄せられる質問
 
@@ -22,7 +22,7 @@ Cloud パートナー ポータルはパートナー センターに切り替え
 
 パートナー センターでは、次のようにビジネスを続けることができます。
 
-| 領域<img src="" width=200px> | [変更点] |
+| 領域 | [変更点] |
 | --- | --- |
 | Account | 新しいパートナー センター アカウントを作成する必要はありません。Cloud パートナーポータルの既存の資格情報を使用してパートナー センターにログインし、アカウント、ユーザー、アクセス許可、請求を管理できるようになります。 公開への同意と会社のプロファイル情報は、支払いプロファイル情報、ユーザー アカウントとアクセス許可、アクティブなオファーと共に、新しいパートナー センター アカウントに移行されます。 詳細については、「[パートナー センターで商業マーケットプレース アカウントを管理する](partner-center-portal/manage-account.md)」を参照してください。 |
 | オファーの公開とオファーの管理のエクスペリエンス | オファーのデータは Cloud パートナー ポータルからパートナー センターに移行されました。 オファーにはパートナー センターでアクセスするようになり、向上したユーザー エクスペリエンスと直感的なインターフェイスが提供されます。 方法については、「[コマーシャル マーケットプレースで既存のオファーを更新する](partner-center-portal/update-existing-offer.md)」を参照してください。 |
@@ -41,7 +41,7 @@ Cloud パートナー ポータルはパートナー センターに切り替え
 
 Cloud パートナー ポータルでよく使用されるページに対するパートナー センターでのリンクを次に示します。 Cloud パートナー ポータルのリンクをブックマークとして保存した場合は、それらを更新する必要があります。
 
-| クラウド パートナー ポータル ページ <img src="" width=100px>| Cloud パートナー ポータルのページのリンク | パートナー センターのページのリンク |
+| クラウド パートナー ポータル ページ | Cloud パートナー ポータルのページのリンク | パートナー センターのページのリンク |
 | --- | --- | --- |
 | [すべてのプラン] ページ | [https://cloudpartner.azure.com/#alloffers](https://cloudpartner.azure.com/#alloffers) | [https://partner.microsoft.com/dashboard/commercial-marketplace/overview](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) |
 | [すべての発行元] ページ | [https://cloudpartner.azure.com/#publishers](https://cloudpartner.azure.com/#publishers) | [https://partner.microsoft.com/dashboard/account/v3/publishers/list](https://partner.microsoft.com/dashboard/account/v3/publishers/list) |
@@ -75,7 +75,7 @@ Dynamics Nav Managed Service オファーと Cortana Intelligence オファー�
 
 パートナー センターでサポートされているオファーの種類については、すべてのオファーがその状態に関係なく移動されました。ドラフト、除外、プレビュー専用のオファーも移動されています。
 
-| プランの種類 <img src="" width=150px>| パートナー センターに移動されたか? <img src="" width=100px>| 次のステップ |
+| プランの種類 | パートナー センターに移動されたか? | 次のステップ |
 | --- | --- | --- |
 | SaaS | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、[コマーシャル マーケットプレースの SaaS オファーの計画](plan-saas-offer.md)に関する記事を参照してください。 |
 | 仮想マシン | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、[仮想マシン オファーの計画](marketplace-virtual-machines.md)に関する記事を参照してください。 |
@@ -181,7 +181,7 @@ Cloud パートナー ポータルで作成したオファーは、パートナ�
 
 Cloud パートナー ポータル API はパートナー センターと統合されており、引き続き機能します。 パートナー センターへの切り替えでは、小さな変更が行われています。 次の表で、自分のコードがパートナー センターへの移行後も引き続き機能することを確認してください。
 
-| API <img src="" width=100px>| 変更の説明 | 影響 |
+| API | 変更の説明 | 影響 |
 | --- | --- | --- |
 | 公開、GoLive、キャンセル後 | 移行されたオファーの場合、応答ヘッダーは異なる形式になりますが、操作状態を取得する相対パスを示して、引き続き同じように動作します。 | オファーに対応する POST 要求のいずれかを送信する場合、オファーの移行状態に応じて Location ヘッダーは次の 2 つの形式のいずれかになります。 <ul><li>移行されていないオファー: `/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>移行されたオファー: `/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li></ul>|
 | GET 操作 | 以前に応答の "notification-email" フィールドをサポートしていたオファーの場合、このフィールドは非推奨になり、移行されたオファーでは返されなくなります。 | 移行されたオファーの場合、要求で指定されたメール アドレスのリストに通知が送信されなくなります。 その代わりに、API サービスとパートナー センターの通知メール プロセスが連携され、メールが送信されます。 具体的には、パートナー センターのアカウント設定の [販売元の連絡先情報] セクションで設定したメール アドレスに、操作の進行状況の通知が送信されます。<br><br>パートナー センターの [[アカウント設定]](https://partner.microsoft.com/dashboard/account/management) の [販売元の連絡先情報] セクションで設定されているメール アドレスが、通知を受け取る正しいものであることを確認します。 |

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 03efcd91553ab2235782d68cc70f4acdeedce4c6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92506900"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-neogov"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と NEOGOV の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* NEOGOV では、 **IDP** によって開始される SSO がサポートされます
+* NEOGOV では、**IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-neogov-from-the-gallery"></a>ギャラリーから NEOGOV を追加する
 
@@ -49,7 +49,7 @@ Azure AD への NEOGOV の統合を構成するには、ギャラリーからマ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **NEOGOV** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**NEOGOV**」と入力します。
 1. 結果のパネルから **[NEOGOV]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -94,7 +94,7 @@ NEOGOV での Azure AD SSO を構成してテストするには、次の構成�
     | サンドボックス | `https://login.uat.neogov.net/authentication/saml/consumer` |
     | | |
 
-1. NEOGOV アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 NEOGOV アプリケーションでは、 **nameidentifier** が **user.objectid** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. NEOGOV アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 NEOGOV アプリケーションでは、**nameidentifier** が **user.objectid** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -140,7 +140,7 @@ NEOGOV での Azure AD SSO を構成してテストするには、次の構成�
 
 ## <a name="configure-neogov-sso"></a>NEOGOV SSO の構成
 
-**NEOGOV** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [NEOGOV サポート チーム](mailto:itops@neogov.net)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**NEOGOV** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [NEOGOV サポート チーム](mailto:itops@neogov.net)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-neogov-test-user"></a>NEOGOV テスト ユーザーの作成
 

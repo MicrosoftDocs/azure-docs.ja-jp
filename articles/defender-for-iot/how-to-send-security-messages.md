@@ -1,25 +1,15 @@
 ---
 title: Defender for IoT デバイスのセキュリティ メッセージを送信する
 description: Defender for IoT を使用してセキュリティ メッセージを送信する方法について説明します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/8/2021
-ms.author: shhazam
 ms.custom: devx-track-js
-ms.openlocfilehash: d59121f2dbae208ba045a9c2e6d66245296537a0
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: dcda7f4c1d078fa32a5ab8c7b7ce690ab2134afe
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820689"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781638"
 ---
 # <a name="send-security-messages-sdk"></a>セキュリティ メッセージの送信 SDK
 
@@ -228,8 +218,8 @@ public void SendSecurityMessage(string message)
 
 ## <a name="next-steps"></a>次のステップ
 
-- Defender for IoT サービスの[概要](overview.md)を確認します
-- Defender for IoT の[アーキテクチャ](architecture.md)を確認します
+- Defender for IoT サービスの[概要](overview.md)を確認する
+- Defender for IoT の[アーキテクチャ](architecture.md)について詳細を確認する
 - [サービス](quickstart-onboard-iot-hub.md)を有効にします
 - [FAQ](resources-frequently-asked-questions.md) を読みます
 - [未加工のセキュリティ データ](how-to-security-data-access.md)にアクセスする方法を学習します

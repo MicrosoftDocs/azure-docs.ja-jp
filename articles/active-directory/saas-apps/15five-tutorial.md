@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 79c6a5959d000217dcb69370b0e0ac4ccc18ccdd
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97673920"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-15five"></a>チュートリアル: Azure Active Directory と 15Five の統合
@@ -61,7 +61,7 @@ Azure AD への 15Five の統合を構成するには、ギャラリーから管
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**15Five**」と入力し、結果パネルで **15Five** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**15Five**」と入力し、結果パネルで **15Five** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の 15Five](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ In 15Five, assign the value of the で Azure AD のシングル サインオン�
 
 15Fiveで Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **15Five** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **15Five** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -155,7 +155,7 @@ In 15Five, assign the value of the で Azure AD のシングル サインオン�
 
 このセクションでは、Britta Simon に 15Five へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[15Five]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[15Five]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -183,9 +183,9 @@ Azure AD ユーザーが 15Five にログインできるようにするには、
 
 ### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>ユーザー プロビジョニングを構成するには、次の手順に従います。
 
-1. **15Five** 企業サイトに管理者としてログインします。
+1. 管理者として **15Five** の会社サイトにログインします。
 
-2. **[会社の管理]** に移動します。
+2. [**会社の管理**] に移動します。
 
     ![会社の管理](./media/15five-tutorial/ic784675.png "会社の管理")
 
@@ -197,7 +197,7 @@ Azure AD ユーザーが 15Five にログインできるようにするには、
 
     ![新しいユーザーの追加](./media/15five-tutorial/ic784677.png "新しいユーザーの追加")
 
-    a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの **名**、**姓**、**役職**、**電子メール アドレス** を入力します。
+    a. 関連テキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの [**名**]、[**姓**]、[**役職**]、[**電子メール アドレス**] を入力します。
 
     b. **[Done]** をクリックします。
 

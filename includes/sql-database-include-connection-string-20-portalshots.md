@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: b06004143d4a1ec5a2808e21b1f78833e410c195
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95560305"
 ---
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Azure ポータルから接続文字列を取得する
@@ -26,11 +26,11 @@ ms.locfileid: "95560305"
 
 3. お使いのデータベースの行を選びます。
 
-4. お使いのデータベースのブレードが表示されたら、画面を見やすくするために、 **[最小化]** ボタンを選んで、参照とデータベースのフィルター処理に使ったブレードを折りたたみます。
+4. お使いのデータベースのブレードが表示されたら、画面を見やすくするために、**[最小化]** ボタンを選んで、参照とデータベースのフィルター処理に使ったブレードを折りたたみます。
 
-5. お使いのデータベースのブレードで、 **[データベース接続文字列の表示]** を選びます。
+5. お使いのデータベースのブレードで、**[データベース接続文字列の表示]** を選びます。
 
-6. 適切な接続文字列をコピーします。 つまり、ADO.NET 接続ライブラリを使用する場合は、 **[ADO.NET]** タブから適切な文字列をコピーします。
+6. 適切な接続文字列をコピーします。 つまり、ADO.NET 接続ライブラリを使用する場合は、**[ADO.NET]** タブから適切な文字列をコピーします。
 
     ![データベース用の ADO 接続文字列をコピーする][20-CopyAdoConnectionString]
 

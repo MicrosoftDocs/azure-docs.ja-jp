@@ -1,21 +1,21 @@
 ---
-title: Azure PowerShell を使用してゾーン Windows VM を作成する
-description: Azure PowerShell を使用して可用性ゾーン内に Windows 仮想マシンを作成する
+title: Azure PowerShell を使用したゾーン VM の作成
+description: Azure PowerShell を使用して可用性ゾーン内に仮想マシンを作成する
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 95d97605f00a3a80c097eb16695c9d296e17c33d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7167c5806fde883a84878d4947dba9fd8c095f69
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87825244"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102558833"
 ---
-# <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>PowerShell を使用して可用性ゾーン内に Windows 仮想マシンを作成する
+# <a name="create-a-virtual-machine-in-an-availability-zone-using-azure-powershell"></a>Azure PowerShell を使用して可用性ゾーン内に仮想マシンを作成する
 
 この記事では、Azure PowerShell を使用して、Windows Server 2016 を実行する Azure 仮想マシンを Azure 可用性ゾーン内に作成する方法を詳しく説明します。 [可用性ゾーン](../../availability-zones/az-overview.md)とは、1 つの Azure リージョン内で物理的に分離されたゾーンのことです。 可用性ゾーンは、データセンター全体に及ぶ珍しい障害や損失からアプリとデータを保護するために使用します。
 

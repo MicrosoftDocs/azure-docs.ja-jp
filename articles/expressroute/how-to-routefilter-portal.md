@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: d142028d197f9e279b5f1e05757946dc40d2c153
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92109138"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して Microsoft ピアリングにルート フィルターを構成する
@@ -79,27 +79,27 @@ Microsoft ピアリング経由でアクセスできるサービスに関連付�
 
 1. ルート フィルターをリソース グループに配置します。 場所は確実に ExpressRoute 回線と同じであるようにします。 **[確認および作成]** 、 **[作成]** の順に選択します。
 
-    :::image type="content" source="./media/how-to-routefilter-portal/create-route-filter-basic.png" alt-text="[ルート フィルター] ページを示すスクリーンショット":::
+    :::image type="content" source="./media/how-to-routefilter-portal/create-route-filter-basic.png" alt-text="サンプルの値が入力された [ルート フィルターの作成] ページを示すスクリーンショット":::
 
 ### <a name="create-a-filter-rule"></a>フィルター ルールを作成する
 
 1. ルールを追加および更新するには、ルート フィルターの [ルールの管理] タブを選択します。
 
-    :::image type="content" source="./media/how-to-routefilter-portal/manage-route-filter.png" alt-text="[ルート フィルター] ページを示すスクリーンショット":::
+    :::image type="content" source="./media/how-to-routefilter-portal/manage-route-filter.png" alt-text="[ルールの管理] アクションが強調表示されている [概要] ページを示すスクリーンショット":::
 
 1. ドロップダウン リストから接続するサービスを選択し、完了したらルールを保存します。
 
-    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="[ルート フィルター] ページを示すスクリーンショット":::
+    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="[許可されたサービス コミュニティ] ドロップダウン リストでサービスが選択されている [ルールの管理] ウィンドウを示すスクリーンショット":::
 
 ## <a name="attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>ルート フィルターを ExpressRoute 回線にアタッチする
 
 **[+ 回線の追加]** ボタンを選択し、ドロップダウン リストから ExpressRoute 回線を選択することで、ルート フィルターを回線にアタッチします。
 
-:::image type="content" source="./media/how-to-routefilter-portal/add-circuit-to-route-filter.png" alt-text="[ルート フィルター] ページを示すスクリーンショット":::
+:::image type="content" source="./media/how-to-routefilter-portal/add-circuit-to-route-filter.png" alt-text="[回線の追加] アクションが選択されている [概要] ページを示すスクリーンショット":::
 
 ご利用の ExpressRoute 回線のピアリングを接続プロバイダーが構成する場合は、 **[+ 回線の追加]** ボタンを選択する前に ExpressRoute 回線ページから回線を更新します。
 
-:::image type="content" source="./media/how-to-routefilter-portal/refresh-express-route-circuit.png" alt-text="[ルート フィルター] ページを示すスクリーンショット":::
+:::image type="content" source="./media/how-to-routefilter-portal/refresh-express-route-circuit.png" alt-text="[更新] アクションが選択されている [概要] ページを示すスクリーンショット。":::
 
 ## <a name="common-tasks"></a><a name="tasks"></a>一般的なタスク
 
@@ -107,30 +107,30 @@ Microsoft ピアリング経由でアクセスできるサービスに関連付�
 
 ポータルでリソースを開くときに、ルート フィルターのプロパティを表示できます。
 
-:::image type="content" source="./media/how-to-routefilter-portal/view-route-filter.png" alt-text="[ルート フィルター] ページを示すスクリーンショット":::
+:::image type="content" source="./media/how-to-routefilter-portal/view-route-filter.png" alt-text="[概要] ページを示すスクリーンショット":::
 
 ### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>ルート フィルターのプロパティを更新するには
 
 1. **[ルールの管理]** ボタンを選択することで、回線にアタッチした BGP コミュニティ値の一覧を更新できます。
 
-    :::image type="content" source="./media/how-to-routefilter-portal/update-route-filter.png" alt-text="[ルート フィルター] ページを示すスクリーンショット":::
+    :::image type="content" source="./media/how-to-routefilter-portal/update-route-filter.png" alt-text="[ルールの管理] アクションを使用してルート フィルターを更新する":::
 
 1. 必要なサービス コミュニティを選択し、 **[保存]** を選択します。
 
-    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="[ルート フィルター] ページを示すスクリーンショット":::
+    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="サービスが選択されている [ルールの管理] ウィンドウを示すスクリーンショット":::
 
 ### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>ExpressRoute 回線からルート フィルターをデタッチするには
 
 ルート フィルターから回線をデタッチするには、その回線を右クリックし、 **[関連付け解除]** を選択します。
 
-:::image type="content" source="./media/how-to-routefilter-portal/detach-route-filter.png" alt-text="[ルート フィルター] ページを示すスクリーンショット":::
+:::image type="content" source="./media/how-to-routefilter-portal/detach-route-filter.png" alt-text="[関連付け解除] アクションが強調表示されている [概要] ページを示すスクリーンショット":::
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ルート フィルターを削除するには、 **[削除]** ボタンを選択します。 この操作を行う前に、ルート フィルターが確実にどの回線にも関連付けられていないようにします。
 
-:::image type="content" source="./media/how-to-routefilter-portal/delete-route-filter.png" alt-text="[ルート フィルター] ページを示すスクリーンショット":::
+:::image type="content" source="./media/how-to-routefilter-portal/delete-route-filter.png" alt-text="ルート フィルターを削除する":::
 
 ## <a name="next-steps"></a>次の手順
 

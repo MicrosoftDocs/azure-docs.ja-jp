@@ -9,10 +9,10 @@ ms.author: shasb
 description: Kubernetes ディストリビューションの Arc 検証プログラムについて説明します
 keywords: Kubernetes, Arc, Azure, K8s, 検証
 ms.openlocfilehash: 819df906add6275997e01fab310fe8dd57a87b51
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121373"
 ---
 # <a name="azure-arc-validation-program"></a>Azure Arc 検証プログラム

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: e95cd313d341844eabf4f5c5feae8a8ca3dc9c2e
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: ab41a336c32a1827c23f4c4619f47dc294a4d2ea
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826536"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103419288"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューの認証と承認
 
@@ -24,7 +24,7 @@ Azure Static Web Apps では、次のプロバイダーでの認証を管理す�
 - Google<sup>1</sup>
 - Twitter
 
-プロバイダー固有の[招待](#invitations)によってユーザーはロールに関連付けられ、承認されたユーザーには、_routes.json_ ファイルに定義された規則によって[ルート](routes.md)へのアクセス権が付与されます。
+プロバイダー固有の [招待](#invitations)によってユーザーはロールに関連付けられ、承認されたユーザーには、_routes.json_ ファイルに定義された規則によって [ルート](routes.md)へのアクセス権が付与されます。
 
 すべての認証プロバイダーは、既定で有効になっています。 認証プロバイダーを制限するには、カスタム ルート規則によって[アクセスをブロック](#block-an-authorization-provider)します。
 
@@ -145,19 +145,18 @@ Azure Static Web Apps では、`/.auth` システム フォルダーを使用し
 
 複数のプロバイダーをサポートすることを選択した場合は、それぞれに対応するプロバイダー固有のリンクを Web サイト上に公開する必要があります。
 
-[ルート規則](routes.md)を使用して、既定のプロバイダーを _/login_ のようなわかりやすいルートにマップできます。
+[ルート規則](./configuration.md#routes)を使用して、既定のプロバイダーを _/login_ のようなわかりやすいルートにマップできます。
 
 ```json
 {
   "route": "/login",
-  "serve": "/.auth/login/github"
+  "redirect": "/.auth/login/github"
 }
 ```
 
 ### <a name="post-login-redirect"></a>ログイン後のリダイレクト
 
 ログイン後にユーザーが特定のページに戻るようにするには、`post_login_redirect_uri` クエリ文字列パラメーターに URL を指定します。
-
 
 ## <a name="logout"></a>Logout
 
@@ -167,12 +166,12 @@ Azure Static Web Apps では、`/.auth` システム フォルダーを使用し
 <a href="/.auth/logout">Log out</a>
 ```
 
-[ルート規則](routes.md)を使用して、 _/login_ のようなわかりやすいルートにマップできます。
+[ルート規則](./configuration.md#routes)を使用して、 _/login_ のようなわかりやすいルートにマップできます。
 
 ```json
 {
   "route": "/logout",
-  "serve": "/.auth/logout"
+  "redirect": "/.auth/logout"
 }
 ```
 

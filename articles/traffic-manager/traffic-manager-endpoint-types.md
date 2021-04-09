@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 01/21/2021
 ms.author: duau
 ms.openlocfilehash: 7686f2f97da0113704216dcab741c063a80d3136
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99051229"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager エンドポイント

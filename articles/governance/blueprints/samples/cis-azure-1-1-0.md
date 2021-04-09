@@ -1,26 +1,26 @@
 ---
-title: CIS Microsoft Azure Foundations Benchmark ブループリント サンプル
-description: CIS Microsoft Azure Foundations Benchmark ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定のコントロールを評価するのに役立ちます。
-ms.date: 01/27/2021
+title: CIS Microsoft Azure Foundations Benchmark v1.1.0 ブループリント サンプル
+description: CIS Microsoft Azure Foundations Benchmark v1.1.0 ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定のコントロールを評価するのに役立ちます。
+ms.date: 03/11/2021
 ms.topic: sample
-ms.openlocfilehash: fc9e2443cd1e413588487646d6400ae1f2185208
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b6188d96971329a83bc82042a1f840bd893354eb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918418"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103197799"
 ---
-# <a name="cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark ブループリント サンプル
+# <a name="cis-microsoft-azure-foundations-benchmark-v110-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark v1.1.0 ブループリント サンプル
 
-CIS Microsoft Azure Foundations Benchmark ブループリント サンプルでは、特定の CIS Microsoft Azure Foundations Benchmark の推奨事項を評価する際に役立つ、[Azure Policy](../../policy/overview.md)を使用したガバナンス ガードレールが提供されます。 このブループリントは、CIS Microsoft Azure Foundations Benchmark の推奨事項の実施が必要とされる、Azure でデプロイされたアーキテクチャのために、一連の主要なポリシーをデプロイするのに役立ちます。
+CIS Microsoft Azure Foundations Benchmark v1.1.0 ブループリント サンプルには、特定の CIS Microsoft Azure Foundations Benchmark の推奨事項を評価する際に役立つ、[Azure Policy](../../policy/overview.md) を使用したガバナンス ガードレールが用意されています。 このブループリントは、CIS Microsoft Azure Foundations Benchmark v1.1.0 の推奨事項の実施が必要とされる、Azure でデプロイされたアーキテクチャのために、一連の主要なポリシーをデプロイするのに役立ちます。
 
 ## <a name="recommendation-mapping"></a>推奨マッピング
 
-[Azure Policy の推奨マッピング](../../policy/samples/cis-azure-1-1-0.md)では、このブループリントに含まれるポリシーの定義について詳しく取り上げると共に、それらの定義が CIS Microsoft Azure Foundations Benchmark v1.1.0 の **コンプライアンス ドメイン** および **コントロール** にどのようにマッピングされるかについて詳しく説明します。 リソースはアーキテクチャに割り当てられると、割り当て済みのポリシー定義に違反していないかどうかを Azure Policy によって評価されます。 詳細については、[Azure Policy](../../policy/overview.md) に関するページをご覧ください。
+[Azure Policy の推奨マッピング](../../policy/samples/cis-azure-1-1-0.md)では、このブループリントに含まれるポリシーの定義について詳しく取り上げると共に、それらの定義が CIS Microsoft Azure Foundations Benchmark v1.1.0 の **推奨事項** にどのようにマッピングされるかについて詳しく説明します。 リソースはアーキテクチャに割り当てられると、割り当て済みのポリシー定義に違反していないかどうかを Azure Policy によって評価されます。 詳細については、[Azure Policy](../../policy/overview.md) に関するページをご覧ください。
 
 ## <a name="deploy"></a>配置
 
-Azure Blueprints CIS Microsoft Azure Foundations Benchmark ブループリント サンプルをデプロイするには、次の手順を実行する必要があります。
+Azure Blueprints CIS Microsoft Azure Foundations Benchmark v1.1.0 ブループリント サンプルをデプロイするには、次の手順を実行する必要があります。
 
 > [!div class="checklist"]
 > - サンプルから新しいブループリントを作成する
@@ -50,7 +50,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="publish-the-sample-copy"></a>サンプルのコピーを発行する
 
-環境でのブループリント サンプルのコピーの作成が完了しました。 これは **下書き** モードで作成されており、割り当ておよびデプロイの前に **発行** する必要があります。 ブループリント サンプルのコピーは環境やニーズに合わせてカスタマイズできますが、その変更によって CIS Microsoft Azure Foundations Benchmark の推奨事項との整合性が失われる可能性があります。
+環境でのブループリント サンプルのコピーの作成が完了しました。 これは **下書き** モードで作成されており、割り当ておよびデプロイの前に **発行** する必要があります。 ブループリント サンプルのコピーは環境やニーズに合わせてカスタマイズできますが、その変更によって CIS Microsoft Azure Foundations Benchmark v1.1.0 の推奨事項との整合性が失われる可能性があります。
 
 1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
@@ -101,8 +101,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 |アーティファクト名|アーティファクトの種類|パラメーター名|説明|
 |-|-|-|-|
-|CIS Microsoft Azure Foundations Benchmark 1.1.0 の推奨事項を監査し、特定のサポート VM 拡張機能をデプロイします|ポリシー割り当て|Network Watcher を有効にする必要があるリージョンの一覧|セミコロンで区切られたリージョンの一覧。 リージョンの完全な一覧を確認するには、Get-AzLocation を使用します。 例: eastus; eastus2|
-|CIS Microsoft Azure Foundations Benchmark 1.1.0 の推奨事項を監査し、特定のサポート VM 拡張機能をデプロイします|ポリシー割り当て|使用が承認されている仮想マシン拡張機能の一覧|セミコロンで区切られた拡張機能の一覧。 仮想マシン拡張機能の完全な一覧を参照するには、Get-AzVMExtensionImage をご使用ください。 例:AzureDiskEncryption; IaaSAntimalware|
+|CIS Microsoft Azure Foundations Benchmark 1.1.0 の推奨事項を監査し、これをサポートする特定の VM 拡張機能をデプロイする|ポリシー割り当て|Network Watcher を有効にする必要があるリージョンの一覧|セミコロンで区切られたリージョンの一覧。 リージョンの完全な一覧を確認するには、Get-AzLocation を使用します。 例: eastus; eastus2|
+|CIS Microsoft Azure Foundations Benchmark 1.1.0 の推奨事項を監査し、これをサポートする特定の VM 拡張機能をデプロイする|ポリシー割り当て|使用が承認されている仮想マシン拡張機能の一覧|セミコロンで区切られた拡張機能の一覧。 仮想マシン拡張機能の完全な一覧を参照するには、Get-AzVMExtensionImage をご使用ください。 例:AzureDiskEncryption; IaaSAntimalware|
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: ead1a324d342f818551ac05ac385ba4fa5b8b877
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12d68a9539420c77cc23722e1b7b7175d08459e9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439086"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674633"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でサポートされるデータ ソース
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 ユーザーは、パブリック API またはワンクリック登録ツールを使って、または Azure Data Catalog の Web ポータルに直接情報を手動で入力して、メタデータを公開できます。 以下の表は、現在カタログでサポートされているすべてのデータ ソースと、それぞれの公開機能をまとめたものです。 また、各データ ソースを弊社のポータルから「オープンイン」で起動できる外部ツールも一覧表示されています。 2 番目の表には、各データ ソースの接続プロパティの詳細な技術仕様があります。
 
@@ -445,7 +447,7 @@ ms.locfileid: "89439086"
 
 ## <a name="data-source-reference-specification"></a>データ ソース参照の仕様
 > [!NOTE]
-> 次の表の**DSL 構造体**列には、Azure Data Catalog で使われる "address" プロパティ バッグの接続プロパティのみが一覧表示されています。 つまり、"address" プロパティ バッグは、Azure Data Catalog が永続化しても使わないデータ ソースの他の接続プロパティを含むことができます。
+> 次の表の **DSL 構造体** 列には、Azure Data Catalog で使われる "address" プロパティ バッグの接続プロパティのみが一覧表示されています。 つまり、"address" プロパティ バッグは、Azure Data Catalog が永続化しても使わないデータ ソースの他の接続プロパティを含むことができます。
 
 <table>
     <tr>

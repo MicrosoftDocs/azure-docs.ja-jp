@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: da6e1a8ba31f8f4991bde4803191598a015a68b3
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94358441"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>チュートリアル:Oracle Fusion ERP を構成し、自動ユーザー プロビジョニングに対応させる
@@ -82,7 +82,7 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Oracle
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Oracle Fusion ERP** 」と入力し、結果パネルで **[Oracle Fusion ERP]** を選択します。
+4. 検索ボックスに「**Oracle Fusion ERP**」と入力し、結果パネルで **[Oracle Fusion ERP]** を選択します。
 
     ![結果リストの Oracle Fusion ERP](common/search-new-app.png)
 

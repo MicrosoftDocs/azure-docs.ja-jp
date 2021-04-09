@@ -9,10 +9,10 @@ ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: alkemper
 ms.openlocfilehash: 0ff80287971365b1477be319dc7a04760687f6a9
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98663402"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>クイック スタート:App Configuration を使用して .NET Core アプリを作成する
@@ -30,7 +30,7 @@ ms.locfileid: "98663402"
 
 7. **[構成エクスプローラー]**  >  **[+ 作成]**  >  **[キー値]** の順に選択して、次のキーと値のペアを追加します。
 
-    | Key | Value |
+    | Key | 値 |
     |---|---|
     | TestApp:Settings:Message | Azure App Configuration からのデータ |
 

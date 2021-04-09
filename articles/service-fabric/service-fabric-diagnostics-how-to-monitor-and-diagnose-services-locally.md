@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 58319b47c78a85b4f06c2c834db20f6c42cc1939
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86247423"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>ローカル コンピューターの開発のセットアップでのサービスの監視と診断
@@ -40,7 +40,7 @@ Service Fabric は ETW イベントを出力して、アプリケーションの
 ## <a name="add-your-own-custom-traces-to-the-application-code"></a>アプリケーション コードの独自のカスタム トレースを追加する
 Service Fabric の Visual Studio プロジェクト テンプレートには、サンプル コードが含まれています。 コードは、Visual Studio ETW ビューアーに表示されるカスタム アプリケーション コードの ETW トレースと Service Fabric からのシステム トレースを追加する方法を示しています。 このメソッドの利点は、メタデータがトレースに自動的に追加され、Visual Studio の診断イベント ビューアーがそれらを表示するよう既に構成されていることです。
 
-**サービス テンプレート**から作成されるプロジェクト (ステートレスまたはステートフル) の場合は、単に `RunAsync` の実装を検索します:
+**サービス テンプレート** から作成されるプロジェクト (ステートレスまたはステートフル) の場合は、単に `RunAsync` の実装を検索します:
 
 1. `ServiceEventSource.Current.ServiceMessage` in the `RunAsync` を呼び出すと、アプリケーション コードからのカスタムの ETW トレースの例が表示されます。
 2. **ServiceEventSource.cs** ファイルには、パフォーマンス上の理由により頻度の高いイベントに使用する必要がある、`ServiceEventSource.ServiceMessage` メソッドのオーバーロードが見つかります。
@@ -51,7 +51,7 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 2. *DoWorkAsync* メソッドでコード `ActorEventSource.Current.ActorMessage(this, "Doing Work");` を検索します。  これは、アプリケーション コードからのカスタムの ETW トレースの例です。  
 3. **ActorEventSource.cs** ファイルには、パフォーマンス上の理由により頻度の高いイベントに使用する必要がある、`ActorEventSource.ActorMessage` メソッドのオーバーロードが見つかります。
 
-カスタムの ETW トレースをサービスのコードに追加した後で、もう一度アプリケーションをビルド、デプロイ、および実行して、診断イベント ビューアーでイベントを表示することができます。 **F5**キーを使用してアプリケーションをデバッグすると、診断イベント ビューアーが自動的に開きます。
+カスタムの ETW トレースをサービスのコードに追加した後で、もう一度アプリケーションをビルド、デプロイ、および実行して、診断イベント ビューアーでイベントを表示することができます。 **F5** キーを使用してアプリケーションをデバッグすると、診断イベント ビューアーが自動的に開きます。
 
 ## <a name="next-steps"></a>次のステップ
 ローカルの診断のために上記でアプリケーションに追加したのと同じトレース コードは、Azure のクラスターでアプリケーションを実行したときにこれらのイベントを表示するために使用できるツールでも動作します。 ツールの各オプションや、その設定方法について説明した記事を参照してください。

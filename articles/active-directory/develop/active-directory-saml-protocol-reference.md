@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 4e9d63b8fe7fc281a87deb27ddadd794e14fa04d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98755628"
 ---
 # <a name="how-the-microsoft-identity-platform-uses-the-saml-protocol"></a>Microsoft ID プラットフォームでの SAML プロトコルの使用方法

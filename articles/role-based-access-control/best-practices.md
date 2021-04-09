@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
 ms.openlocfilehash: d58398c42cdc6faed758e5dba3431e0841fc0b03
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100555565"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC のベスト プラクティス

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: d5915316ee9d393b2481eeca6a5da7923b271d9f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6dc91dc07d11f195092343e657911a884d8bf475
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98930418"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865997"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter Notebook をコンピューターにインストールして HDInsight の Apache Spark に接続する
 
@@ -142,7 +142,7 @@ Jupyter Notebook をインストールする前に Python をインストール�
 
     a. 新しい Notebook を作成します。 右隅から **[新規]** を選択します。 既定のカーネル **Python 2** または **Python 3** と、インストールしたカーネルが表示されるはずです。 実際の値は、インストールの選択に応じて異なる場合があります。  **PySpark** を選択します。
 
-    ![Jupyter Notebook で使用可能なカーネル](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Jupyter Notebook のカーネル")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png " alt-text="Jupyter Notebook で使用可能なカーネル" border="true":::
 
     > [!IMPORTANT]  
     > **[新規]** を選択したら、エラーがないかシェルを確認します。  エラー `TypeError: __init__() got an unexpected keyword argument 'io_loop'` が表示される場合は、Tornado の特定のバージョンで既知の問題が発生している可能性があります。  その場合はカーネルを停止し、次のコマンドを使用して Tornado のインストールをダウン グレードします:`pip install tornado==4.5.3`。

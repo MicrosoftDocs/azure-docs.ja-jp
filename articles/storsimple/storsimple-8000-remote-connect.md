@@ -8,10 +8,10 @@ ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1da688dfb00b26ca6b561d5aa0fb548c221381c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85514568"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスにリモート接続する
@@ -53,13 +53,13 @@ Azure Portal で、次の手順に従って、HTTP 経由でのリモート管�
 
 1. StorSimple デバイス マネージャー サービスに移動します。 **[デバイス]** を選択し、リモート管理で構成するデバイスを選択してクリックします。 **[デバイスの設定] > [セキュリティ]** に移動します。
 2. **[セキュリティの設定]** ブレードで **[リモート管理]** をクリックします。
-3. **[リモート管理]** ブレードで、 **[リモート管理を有効にする]** を **[はい]** に設定します。
+3. **[リモート管理]** ブレードで、**[リモート管理を有効にする]** を **[はい]** に設定します。
 4. これで、HTTP を使用した接続を選択できるようになります。 (既定の設定は HTTPS 経由での接続です)。HTTP が選択されていることを確認します。
    
    > [!NOTE]
    > HTTP 経由での接続は、信頼のおけるネットワークでのみ許容されます。
    
-5. **[保存]** をクリックし、確認を求められたら、 **[はい]** を選択します。
+5. **[保存]** をクリックし、確認を求められたら、**[はい]** を選択します。
 
 ### <a name="use-the-serial-console-to-enable-remote-management-over-http"></a>シリアル コンソールを使用して HTTP 経由でリモート管理を有効にする
 デバイスのシリアル コンソールで、次の手順を実行して、リモート管理を有効にします。
@@ -67,7 +67,7 @@ Azure Portal で、次の手順に従って、HTTP 経由でのリモート管�
 #### <a name="to-enable-remote-management-through-the-device-serial-console"></a>デバイスのシリアル コンソール経由でリモート管理を有効にするには
 1. シリアル コンソール メニューで、オプション 1 を選択します。 デバイスのシリアル コンソールの使用の詳細については、「[デバイスのシリアル コンソール経由で Windows PowerShell for StorSimple に接続する](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console)」を参照してください。
 2. プロンプトで、次のように入力します。 `Enable-HcsRemoteManagement –AllowHttp`
-3. HTTP を使用してデバイスに接続した場合のセキュリティの脆弱性についての通知が表示されます。 確認を求められたら、「 **Y**」を入力して確認します。
+3. HTTP を使用してデバイスに接続した場合のセキュリティの脆弱性についての通知が表示されます。 確認メッセージが表示されたら、「**Y**」と入力して確定します。
 4. 次のように入力して、HTTP が有効になっていることを確認します。`Get-HcsSystem`
 5. **RemoteManagementMode** フィールドに **HttpsAndHttpEnabled** が表示されていることを確認します。次の図に、PuTTY の設定を示します。
    
@@ -96,7 +96,7 @@ Azure Portal で、次の手順に従って、HTTP 経由でのリモート管�
     
 4. 表示されるダイアログ ボックスで、次の操作を行います。
    
-   1. ユーザー名を *device_ip\SSAdmin*の形式で入力します。
+   1. ユーザー名を *device_ip\SSAdmin* の形式で入力します。
    2. セットアップ ウィザードでデバイスを構成したときに設定したデバイスの管理者パスワードを入力します。 既定のパスワードは *Password1* です。
 5. 次のコマンドを入力して、デバイスの Windows PowerShell セッションを開始します。
    
@@ -133,8 +133,8 @@ Azure Portal で、次の手順に従って、HTTPS 経由でのリモート管�
 1. StorSimple デバイス マネージャー サービスに移動します。 **[デバイス]** を選択し、リモート管理で構成するデバイスを選択してクリックします。 **[デバイスの設定] > [セキュリティ]** に移動します。
 2. **[セキュリティの設定]** ブレードで **[リモート管理]** をクリックします。
 3. **[リモート管理を有効にする]** を **[はい]** に設定します。
-4. これで、HTTPS を使用した接続を選択できるようになります (既定の設定は HTTPS 経由での接続です)。HTTPS が選択されていることを確認します。
-5. [...] をクリックし、 **[リモート管理証明書をダウンロードする]** をクリックします。 このファイルを保存する場所を指定します。 この証明書を、デバイスに接続するために使用するクライアントまたはホスト コンピューターにインストールする必要があります。
+4. これで、HTTPS を使用した接続を選択できるようになります  (既定の設定は HTTPS 経由での接続です)。HTTPS が選択されていることを確認します。
+5. [...] をクリックし、**[リモート管理証明書をダウンロードする]** をクリックします。 このファイルを保存する場所を指定します。 この証明書を、デバイスに接続するために使用するクライアントまたはホスト コンピューターにインストールする必要があります。
 6. **[保存]** をクリックし、確認を求められたら **[はい]** をクリックします。
 
 ### <a name="use-the-serial-console-to-enable-remote-management-over-https"></a>シリアル コンソールを使用して HTTPS 経由でのリモート管理を有効にする
@@ -167,7 +167,7 @@ Azure Portal で、次の手順に従って、HTTPS 経由でのリモート管�
     証明書は、次の画面に似たものになります。
    
     ![リモート管理証明書の取得](./media/storsimple-remote-connect/HCS_GetRemoteManagementCertificate.png)
-6. **-----BEGIN CERTIFICATE-----** から **-----END CERTIFICATE-----** までの証明書の情報をメモ帳などのテキスト エディターにコピーし、.cer ファイルとして保存します (このファイルは、ホストを準備するときにリモート ホストにコピーします)。
+6. **-----BEGIN CERTIFICATE-----** から **-----END CERTIFICATE-----** までの証明書の情報をメモ帳などのテキスト エディターにコピーし、.cer ファイルとして保存します  (このファイルは、ホストを準備するときにリモート ホストにコピーします)。
    
    > [!NOTE]
    > 新しい証明書を生成する場合は、`Set-HcsRemoteManagementCert` コマンドレットを使用します。
@@ -182,7 +182,7 @@ HTTPS セッションを使用するリモート接続のホスト コンピュ�
 この後、上記の各手順について説明します。
 
 #### <a name="to-import-the-certificate-on-the-remote-host"></a>証明書をリモート ホストにインポートするには
-1. .cer ファイルを右クリックし、 **[証明書のインストール]** を選択します。 これにより、証明書のインポート ウィザードが開始されます。
+1. .cer ファイルを右クリックし、[**証明書のインストール**] を選択します。 これにより、証明書のインポート ウィザードが開始されます。
    
     ![証明書インポート ウィザード (その 1)](./media/storsimple-remote-connect/HCS_CertificateImportWizard1.png)
 2. **[ストアの場所]** で **[ローカル マシン]** を選択し、 **[次へ]** をクリックします。
@@ -195,8 +195,8 @@ HTTPS セッションを使用するリモート接続のホスト コンピュ�
 
 #### <a name="to-add-device-serial-numbers-to-the-remote-host"></a>デバイスのシリアル番号をリモート ホストに追加するには
 1. メモ帳を管理者として起動し、\Windows\System32\Drivers\etc にあるホスト ファイルを開きます。
-2. hosts ファイルに**DATA 0 の IP アドレス**、**コントローラー 0 の固定 IP アドレス**、および**コントローラー 1 の固定 IP アドレス**という 3 つのエントリを追加します。
-3. 前に保存したデバイスのシリアル番号を入力します。 次の図に示すように、IP アドレスにマップします。 **コントローラー 0** と**コントローラー 1** の場合は、シリアル番号 (CN 名) の末尾に Controller0 と Controller1 を追加します。
+2. 次の 3 つのエントリを hosts ファイルに追加します。**DATA 0 の IP アドレス**、**コントローラー 0 の固定 IP アドレス**、および **コントローラー 1 の固定 IP アドレス**。
+3. 前に保存したデバイスのシリアル番号を入力します。 次の図に示すように、IP アドレスにマップします。 Controller 0 と Controller 1 については、シリアル番号 (CN 名) の終わりに **Controller0** と **Controller1** を追加します。
    
     ![hosts ファイルへの CN 名の追加](./media/storsimple-remote-connect/HCS_AddingCNNameToHostsFile.png)
 4. hosts ファイルを保存します。
@@ -216,7 +216,7 @@ Windows PowerShell のリモート接続元にするコンピューターで次�
    
      `Set-Item wsman:\localhost\Client\TrustedHosts <device_ip> -Concatenate -Force`
    
-    <*device_ip*> はデバイスの IP アドレスです。例: 
+    <*device_ip*> はデバイスの IP アドレスです。例:  
    
      `Set-Item wsman:\localhost\Client\TrustedHosts 10.126.173.90 -Concatenate -Force`
 3. 新しい資格情報を作成するには、次のように入力します。

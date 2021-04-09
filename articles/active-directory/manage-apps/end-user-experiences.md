@@ -12,10 +12,10 @@ ms.date: 09/27/2019
 ms.author: kenwith
 ms.reviewer: arvindh
 ms.openlocfilehash: 0d3f1cab0637c7409cbc45f4f5a5374b2b5b6a77
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99259255"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションのエンド ユーザー エクスペリエンス

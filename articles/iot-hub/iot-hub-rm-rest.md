@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2f393701b97be76acab49a627a195b337018fa29
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92144436"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>リソース プロバイダー REST API を使用して IoT Hub を作成する (.NET)
@@ -36,13 +36,13 @@ ms.locfileid: "92144436"
 
 ## <a name="prepare-your-visual-studio-project"></a>Visual Studio プロジェクトの準備
 
-1. Visual Studio で、 **[Console App (.NET Framework)]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを作成します。 プロジェクトに **CreateIoTHubREST**という名前を付けます。
+1. Visual Studio で、**[Console App (.NET Framework)]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを作成します。 プロジェクトに **CreateIoTHubREST** という名前を付けます。
 
 2. ソリューション エクスプローラーで、プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 
-3. NuGet パッケージ マネージャーで **[プレリリースを含める]** をオンにし、 **[参照]** ページで **Microsoft.Azure.Management.ResourceManager** を検索します。 パッケージを選択して **[インストール]** をクリックし、 **[変更の確認]** で、 **[OK]** 、 **[同意する]** の順にクリックしてライセンス条項に同意します。
+3. NuGet パッケージ マネージャーで **[プレリリースを含める]** をオンにし、**[参照]** ページで **Microsoft.Azure.Management.ResourceManager** を検索します。 パッケージを選択して **[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
 
-4. NuGet パッケージ マネージャーで、**Microsoft.IdentityModel.Clients.ActiveDirectory** を検索します。  **[インストール]** をクリックし、 **[変更の確認]** で、 **[OK]** 、 **[同意する]** の順にクリックしてライセンス条項に同意します。
+4. NuGet パッケージ マネージャーで、**Microsoft.IdentityModel.Clients.ActiveDirectory** を検索します。  **[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
 
 5. Program.cs で、既存の **using** ステートメントを以下のコードに置き換えます。
 
@@ -60,7 +60,7 @@ ms.locfileid: "92144436"
     using System.Threading;
     ```
 
-6. Program.cs で、次の静的変数を追加して、プレースホルダーの値を置き換えます。 このチュートリアルの前の手順で **ApplicationId**、**SubscriptionId**、**TenantId**、および**パスワード**を書き留めています。 **リソース グループ名**は、IoT Hub を作成するときに使用するリソース グループの名前です。 既存のリソース グループまたは新しいリソース グループを使用できます。 **IoT Hub 名**は、作成する IoT Hub の名前です (**MyIoTHub** など)。 IoT ハブの名前は、グローバルに一意である必要があります。 **デプロイ名**は、デプロイの名前です (**Deployment_01** など)。
+6. Program.cs で、次の静的変数を追加して、プレースホルダーの値を置き換えます。 このチュートリアルの前の手順で **ApplicationId**、**SubscriptionId**、**TenantId**、および **パスワード** を書き留めています。 **リソース グループ名** は、IoT Hub を作成するときに使用するリソース グループの名前です。 既存のリソース グループまたは新しいリソース グループを使用できます。 **IoT Hub 名** は、作成する IoT Hub の名前です (**MyIoTHub** など)。 IoT ハブの名前は、グローバルに一意である必要があります。 **デプロイ名** は、デプロイの名前です (**Deployment_01** など)。
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -162,9 +162,9 @@ ms.locfileid: "92144436"
     Console.ReadLine();
     ```
 
-2. **[ビルド]** 、 **[ソリューションのビルド]** の順にクリックします。 すべてのエラーを修正します。
+2. **[ビルド]**、**[ソリューションのビルド]** の順にクリックします。 すべてのエラーを修正します。
 
-3. **[デバッグ]** 、 **[デバッグの開始]** の順にクリックし、アプリケーションを実行します。 デプロイメントが実行されるまでに数分かかる場合があります。
+3. **[デバッグ]**、**[デバッグの開始]** の順にクリックし、アプリケーションを実行します。 デプロイメントが実行されるまでに数分かかる場合があります。
 
 4. アプリケーションが新しい IoT ハブを追加したことを確認するには、[Azure portal](https://portal.azure.com/) にアクセスしてリソースの一覧を表示します。 または、**Get-AzResource** PowerShell コマンドレットを使用します。
 

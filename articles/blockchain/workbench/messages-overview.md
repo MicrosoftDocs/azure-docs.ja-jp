@@ -5,10 +5,10 @@ ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 14bd0f84bc9490d95d3dbe0b9f122882f0d2059d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74324504"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench のメッセージング統合
@@ -59,14 +59,14 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
 | requestId             | クライアントによって指定された GUID |
 | userId                | 作成されたユーザーの ID |
-| userChainIdentifier   | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、このアドレスはユーザーの**オン チェーン** アドレスです。 |
+| userChainIdentifier   | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、このアドレスはユーザーの **オン チェーン** アドレスです。 |
 | connectionId          | ブロックチェーン接続の一意識別子|
 | messageSchemaVersion  | メッセージング スキーマ バージョン |
 | messageName           | **CreateUserUpdate** |
 | status                | ユーザー作成要求の状態。  成功した場合、値は **Success** です。 失敗した場合、値は **Failure** です。     |
 | additionalInformation | 状態に基づいて提供される追加情報 |
 
-**ユーザー作成**が成功した場合の Blockchain Workbench からの応答例:
+**ユーザー作成** が成功した場合の Blockchain Workbench からの応答例:
 
 ``` json
 { 
@@ -108,7 +108,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 | **名前**             | **説明**                                                                                                           |
 |----------------------|---------------------------------------------------------------------------------------------------------------------------|
 | requestId            | クライアントによって指定された GUID |
-| userChainIdentifier  | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、このアドレスはユーザーの**オン チェーン** アドレスです。 |
+| userChainIdentifier  | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、このアドレスはユーザーの **オン チェーン** アドレスです。 |
 | applicationName      | アプリケーションの名前 |
 | version              | アプリケーションのバージョン。 複数のバージョンのアプリケーションを有効にしている場合は必須です。 それ以外の場合、バージョンは省略可能です。 アプリケーションのバージョン管理の詳細については、「[Azure Blockchain Workbench アプリケーションのバージョン管理](version-app.md)」を参照してください。 |
 | workflowName         | ワークフローの名前 |
@@ -152,10 +152,10 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 | connectionId             | ブロックチェーン接続の一意識別子                               |
 | messageSchemaVersion     | メッセージング スキーマ バージョン                                                         |
 | messageName              | **CreateContractUpdate**                                                      |
-| status                   | コントラクト作成要求の状態。  指定できる値**Submitted**、**Committed**、**Failure**。  |
+| status                   | コントラクト作成要求の状態。  使用される値: **Submitted**、**Committed**、**Failure**。  |
 | additionalInformation    | 状態に基づいて提供される追加情報                              |
 
-**コントラクト作成**が送信された後の Blockchain Workbench からの応答例。
+**コントラクト作成** が送信された後の Blockchain Workbench からの応答例。
 
 ``` json
 {
@@ -170,7 +170,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 }
 ```
 
-**コントラクト作成**がコミットされた後の Blockchain Workbench からの応答例。
+**コントラクト作成** がコミットされた後の Blockchain Workbench からの応答例。
 
 ``` json
 {
@@ -212,7 +212,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 | **名前**                 | **説明**                                                                                                           |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------|
 | requestId                | クライアントによって指定された GUID |
-| userChainIdentifier      | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、このアドレスはユーザーの**オン チェーン** アドレスです。 |
+| userChainIdentifier      | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、このアドレスはユーザーの **オン チェーン** アドレスです。 |
 | contractLedgerIdentifier | 台帳のコントラクトのアドレス |
 | version                  | アプリケーションのバージョン。 複数のバージョンのアプリケーションを有効にしている場合は必須です。 それ以外の場合、バージョンは省略可能です。 アプリケーションのバージョン管理の詳細については、「[Azure Blockchain Workbench アプリケーションのバージョン管理](version-app.md)」を参照してください。 |
 | workflowFunctionName     | ワークフロー関数の名前 |
@@ -255,10 +255,10 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 | connectionId          | ブロックチェーン接続の一意識別子 |
 | messageSchemaVersion  | メッセージング スキーマ バージョン |
 | messageName           | **CreateContractActionUpdate** |
-| status                | コントラクト アクション要求の状態。 指定できる値**Submitted**、**Committed**、**Failure**。                         |
+| status                | コントラクト アクション要求の状態。 使用される値: **Submitted**、**Committed**、**Failure**。                         |
 | additionalInformation | 状態に基づいて提供される追加情報 |
 
-**コントラクト アクション作成**が送信された後の Blockchain Workbench からの応答例。
+**コントラクト アクション作成** が送信された後の Blockchain Workbench からの応答例。
 
 ``` json
 {
@@ -272,7 +272,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 }
 ```
 
-**コントラクト アクション作成**がコミットされた後の Blockchain Workbench からの応答例。
+**コントラクト アクション作成** がコミットされた後の Blockchain Workbench からの応答例。
 
 ``` json
 {
@@ -305,7 +305,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 
 ### <a name="input-api-error-codes-and-messages"></a>入力 API のエラー コードとメッセージ
 
-**エラー コード 4000:無効な要求のエラー**
+**エラー コード 4000: 無効な要求のエラー**
 - Invalid connectionId \(無効な connectionId です\)
 - CreateUserRequest deserialization failed \(CreateUserRequest のシリアル化を解除できませんでした\)
 - CreateContractRequest deserialization failed \(CreateContractRequest のシリアル化を解除できませんでした\)
@@ -317,12 +317,12 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 - Contract {identified by ledger identifier} does not have function {workflow function name} \({台帳識別子によって識別された} コントラクトには、{ワークフロー関数名} 関数がありません\)
 - UserChainIdentifier does not exist \(UserChainIdentifier が存在しません\)
 
-**エラー コード 4090:競合のエラー**
+**エラー コード 4090: 競合のエラー**
 - ユーザーは既に存在します
 - Contract already exists \(コントラクトは既に存在します\)
 - Contract action already exists \(コントラクト アクションは既に存在します\)
 
-**エラー コード 5000:内部サーバー エラー**
+**エラー コード 5000: 内部サーバー エラー**
 - 例外メッセージ
 
 ## <a name="event-notifications"></a>イベント通知
@@ -335,7 +335,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 
 Blockchain Workbench で発生したイベントについて、ユーザーが Event Grid による通知を望む場合は、Azure Functions を使用して、Event Grid からのイベントを利用することができます。
 
-1. Azure Portal で **Azure 関数アプリ**を作成します。
+1. Azure Portal で **Azure 関数アプリ** を作成します。
 2. 新しい関数を作成します。
 3. Event Grid のテンプレートを探します。 メッセージを読み取るための基本的なテンプレート コードが表示されます。 必要に応じてコードを変更します。
 4. 関数を保存します。 
@@ -346,7 +346,7 @@ Blockchain Workbench で発生したイベントについて、ユーザーが E
 1. Azure Portal で新しい **Azure Logic App** を作成します。
 2. ポータルで Azure Logic App を開くときに、トリガーの選択を求めるメッセージが表示されます。 **[Azure Event Grid -- When a resource event occurs]\(Azure Event Grid -- リソース イベントが発生するとき\)** を選択します。
 3. ワークフロー デザイナーが表示されるときに、サインインを求められます。
-4. サブスクリプションを選択します。 リソースとして **Microsoft.EventGrid.Topics** を選択します。 Azure Blockchain Workbench リソース グループのリソースの名前の中から、**リソース名**を選択します。
+4. サブスクリプションを選択します。 リソースとして **Microsoft.EventGrid.Topics** を選択します。 Azure Blockchain Workbench リソース グループのリソースの名前の中から、**リソース名** を選択します。
 5. Blockchain Workbench のリソース グループから Event Grid を選択します。
 
 ## <a name="using-service-bus-topics-for-notifications"></a>通知の Service Bus トピックの使用
@@ -362,7 +362,7 @@ Service Bus トピックは、Blockchain Workbench で発生するイベント�
 ### <a name="consuming-service-bus-messages-with-logic-apps"></a>Logic Apps による Service Bus メッセージの使用
 
 1. Azure Portal で新しい **Azure Logic App** を作成します。
-2. ポータルで Azure Logic App を開くときに、トリガーの選択を求めるメッセージが表示されます。 検索ボックスに「**Service Bus**」と入力し、Service Bus との対話の種類に適したトリガーを選択します。 たとえば、 **[Service Bus -- メッセージがトピック サブスクリプションに着信したとき (オート コンプリート)]** です。
+2. ポータルで Azure Logic App を開くときに、トリガーの選択を求めるメッセージが表示されます。 検索ボックスに「**Service Bus**」と入力し、Service Bus との対話の種類に適したトリガーを選択します。 たとえば、**[Service Bus -- メッセージがトピック サブスクリプションに着信したとき (オート コンプリート)]** です。
 3. ワークフロー デザイナーが表示されたら、Service Bus の接続情報を指定します。
 4. サブスクリプションを選択し、**workbench-external** のトピックを指定します。
 5. このトリガーからのメッセージを利用するアプリケーションのロジックを開発します。
@@ -550,7 +550,7 @@ Azure Blockchain Workbench からの *ContractMessage* の例:
 }
 ```
 
-### <a name="event-message-contract-function-invocation"></a>イベント メッセージ:コントラクト関数呼び出し
+### <a name="event-message-contract-function-invocation"></a>イベント メッセージ: コントラクト関数の呼び出し
 
 関数名、パラメーターの入力、関数の呼び出し元など、コントラクト関数が呼び出されたときの情報を含みます。
 
@@ -630,7 +630,7 @@ Blockchain Workbench からの *EventMessage ContractFunctionInvocation* の例:
 }
 ```
 
-### <a name="event-message-application-ingestion"></a>イベント メッセージ:アプリケーション インジェスト
+### <a name="event-message-application-ingestion"></a>イベント メッセージ: アプリケーション インジェスト
 
 アップロードされるアプリケーションの名前やバージョンなど、アプリケーションが Workbench にアップロードされるときの情報を含みます。
 
@@ -690,7 +690,7 @@ Blockchain Workbench からの *EventMessage ContractFunctionInvocation* の例:
 |------|-------------|
 | name | 状態名 |
 | displayName | 状態の表示名 |
-| style | 状態スタイル (成功または失敗) |
+| スタイル | 状態スタイル (成功または失敗) |
 
 ##### <a name="workflow-property-information"></a>ワークフロー プロパティの情報
 
@@ -824,7 +824,7 @@ Blockchain Workbench からの *EventMessage ApplicationIngestion* の例:
 }
 ```
 
-### <a name="event-message-role-assignment"></a>イベント メッセージ:ロール割り当て
+### <a name="event-message-role-assignment"></a>イベント メッセージ: ロールの割り当て
 
 ロールの割り当てを実行したユーザーや、ロールおよび対応するアプリケーションの名前など、Workbench でユーザーがロールを割り当てられたときの情報を含みます。
 

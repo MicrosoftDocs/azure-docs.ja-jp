@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/30/2019
 ms.openlocfilehash: 474fa5e084acfa508a4391075b3c78d96b01aa46
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98930739"
 ---
-# <a name="scenario-apache-hive-view-times-out-when-fetching-a-query-result-in-azure-hdinsight"></a>シナリオ:Azure HDInsight でクエリ結果をフェッチしているときに Apache Hive ビューがタイムアウトになる
+# <a name="scenario-apache-hive-view-times-out-when-fetching-a-query-result-in-azure-hdinsight"></a>シナリオ: Azure HDInsight でクエリ結果をフェッチしているときに Apache Hive ビューがタイムアウトになる
 
 この記事では、Azure HDInsight クラスターで Interactive Query コンポーネントを使用するときのトラブルシューティングの手順と問題の可能な解決策について説明します。
 
@@ -28,7 +28,7 @@ java.util.concurrent.TimeoutException: deadline passed
 
 Hive ビューの既定のタイムアウト値が、実行しているクエリに適していない可能性があります。 指定された時間が短すぎて、Hive ビューがクエリ結果をフェッチできません。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
 `/etc/ambari-server/conf/ambari.properties` で次のプロパティを設定して、Apache Ambari Hive ビューのタイムアウト値を増加してください。
 

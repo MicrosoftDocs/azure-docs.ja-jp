@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 4db7c9fdfd439e049ca76fec6f0e66bd4a37fffd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dc0655aba424d29a4055f0d50a20057f22d084ed
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702710"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015457"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する
 
@@ -178,7 +178,7 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
 
 ## <a name="associate-a-device-with-a-device-template"></a>デバイス テンプレートへのデバイスの関連付け
 
-デバイスが接続されると、IoT Central によってデバイスがデバイス テンプレートに自動的に関連付けられます。 デバイスは、接続時に[モデル ID](../../iot-pnp/iot-plug-and-play-glossary.md#model-id) を送信します。 IoT Central は、モデル ID を使用して、その特定のデバイス モデルのデバイス テンプレートを識別します。 検出プロセスは次のように実行されます。
+デバイスが接続されると、IoT Central によってデバイスがデバイス テンプレートに自動的に関連付けられます。 デバイスは、接続時に[モデル ID](../../iot-fundamentals/iot-glossary.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json#model-id) を送信します。 IoT Central は、モデル ID を使用して、その特定のデバイス モデルのデバイス テンプレートを識別します。 検出プロセスは次のように実行されます。
 
 1. IoT Central アプリケーションでデバイス テンプレートが既に発行されている場合、デバイスはデバイス テンプレートに関連付けられます。
 1. デバイス テンプレートが IoT Central アプリケーション内でまだ公開されていない場合は、IoT Centralにおいて[パブリック モデル リポジトリ](https://github.com/Azure/iot-plugandplay-models)でデバイス モデルが検索されます。 モデルが見つかると、それを使用して基本のデバイス テンプレートが生成されます。
@@ -215,47 +215,6 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
 
     オペレーターは、 **[デバイス]** ページから **[移行]** ボタンを使用して、デバイス テンプレートにデバイスを関連付けることができます。
 
-## <a name="best-practices"></a>ベスト プラクティス
-
-これらの推奨事項は、IoT Central の組み込みのディザスター リカバリーと自動スケーリングを活用するようにデバイスを実装する方法を示しています。
-
-次の一覧に、デバイスが IoT Central に接続するときのフローの概要を示します。
-
-1. DPS を使用してデバイスをプロビジョニングし、デバイス接続文字列を取得します。
-
-1. 接続文字列を使用して IoT Central の内部 IoT Hub エンドポイントに接続します。 IoT Central アプリケーションとの間でデータを送受信します。
-
-1. デバイスで接続エラーが発生した場合は、エラーの種類に応じて、接続を再試行するか、デバイスを再プロビジョニングします。
-
-### <a name="use-dps-to-provision-the-device"></a>DPS を使用してデバイスをプロビジョニングする
-
-DPS を使用してデバイスをプロビジョニングするには、IoT Central アプリケーションのスコープ ID、資格情報、およびデバイス ID を使用します。 資格情報の種類の詳細については、「[X.509 グループ登録](#x509-group-enrollment)」と「[SAS グループの登録](#sas-group-enrollment)」を参照してください。 デバイス ID の詳細については、「[デバイス登録](#device-registration)」を参照してください。
-
-成功すると、DPS によって、デバイスが IoT Central アプリケーションに接続するために使用できる接続文字列が返されます。 プロビジョニング エラーをトラブルシューティングするには、「[デバイスのプロビジョニングの状態を確認する](troubleshoot-connection.md#check-the-provisioning-status-of-your-device)」を参照してください。
-
-後で接続するために使用する接続文字列をデバイスでキャッシュできます。 ただし、デバイスは、[接続エラーを処理する](#handle-connection-failures)準備ができている必要があります。
-
-### <a name="connect-to-iot-central"></a>IoT Central に接続する
-
-接続文字列を使用して IoT Central の内部 IoT Hub エンドポイントに接続します。 接続によって、テレメトリの IoT Central アプリケーションへの送信、プロパティ値の IoT Central アプリケーションとの同期、および IoT Central アプリケーションから送信されたコマンドへの応答を実行できます。
-
-### <a name="handle-connection-failures"></a>接続エラーを処理する
-
-スケーリングまたはディザスター リカバリーのために、IoT Central によって基になる IoT ハブが更新されることがあります。 接続を維持するために、新しい IoT Hub エンドポイントへの接続を確立することによって、デバイス コードで特定の接続エラーを処理する必要があります。
-
-デバイスの接続時に次のエラーのいずれかが取得された場合、デバイスでは DPS によるプロビジョニング手順を再実行して新しい接続文字列を取得する必要があります。 これらのエラーは、デバイスが使用している接続文字列が有効ではなくなったことを意味します。
-
-- IoT Hub エンドポイントに到達できません。
-- セキュリティ トークンの有効期限が切れました。
-- IoT Hub でデバイスが無効です。
-
-デバイスの接続時に次のエラーのいずれかが取得された場合は、デバイスではバックオフ戦略を使用して接続を再試行する必要があります。 これらのエラーは、デバイスで使用されている接続文字列は引き続き有効ですが、一時的な状態によってデバイスの接続が停止されていることを意味します。
-
-- オペレーターによってデバイスがブロックされました。
-- サービスからの内部エラー 500。
-
-デバイス エラー コードの詳細については、[デバイス接続のトラブルシューティング](troubleshoot-connection.md)に関するページを参照してください。
-
 ## <a name="sdk-support"></a>SDK のサポート
 
 Azure Device SDK では、デバイス コードを最も簡単に実装する方法が提供されます。 次のデバイス SDK が使用できます。
@@ -282,7 +241,7 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 | オフライン コマンド | クラウドからデバイスへのメッセージ |
 | プロパティ | デバイス ツインの報告されるプロパティ |
 | プロパティ (書き込み可能) | デバイス ツインの目的および報告されるプロパティ |
-| command | ダイレクト メソッド |
+| コマンド | ダイレクト メソッド |
 
 ### <a name="protocols"></a>プロトコル
 
@@ -304,8 +263,8 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 
 デバイス開発者にお勧めする次のステップは次のとおりです。
 
+- デバイス開発の[ベスト プラクティス](concepts-best-practices.md)を確認します。
 - 「[チュートリアル:クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](tutorial-connect-device.md)」で、SAS トークンの使い方を示すサンプル コードを確認する
 - [IoT Central アプリケーション用の Node.js デバイス SDK を使用して、x.509 証明書を使用するデバイスを接続する](how-to-connect-devices-x509.md)方法を確認する
 - [Azure CLI を使用してデバイスの接続性を監視する](./howto-monitor-devices-azure-cli.md)方法を確認する
-- [Azure IoT Central アプリケーションで新しい IoT デバイスの種類を定義する](./howto-set-up-template.md)方法を確認する
 - [Azure IoT Edge デバイスと Azure IoT Central](./concepts-iot-edge.md) について確認する

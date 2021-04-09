@@ -10,10 +10,10 @@ ms.date: 12/15/2020
 ms.author: prmitiki
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 3b463293899dc2586404d68145943caff3105e89
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97590190"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>PowerShell を使用してピア ASN を Azure サブスクリプションに関連付ける
@@ -65,7 +65,7 @@ New-AzPeerAsn `
 
 ピアの [PeeringDB](https://www.peeringdb.com) には、完全な最新のプロファイルが必要です。 登録時にこの情報を使用して、NOC 情報、技術担当者の連絡先情報、ピアリング設備での存在など、ピアの詳細が検証されます。
 
-上記の出力の **{subscriptionId}** の代わりに、実際のサブスクリプション ID が表示されることに注意してください。
+上記の出力の **{subscriptionId}** の代わりに、実際のサブスクリプション ID が表示されます。
 
 ## <a name="view-status-of-a-peerasn"></a>PeerASN の状態を表示する
 
@@ -89,7 +89,7 @@ Type            : Microsoft.Peering/peerAsns
 > [!IMPORTANT]
 > ValidationState が "Approved" になるのを待ってから、ピアリング要求を送信します。 この承認には、最大で 12 時間かかる場合があります。
 
-## <a name="modify-peerasn"></a>PeerAsn を変更する
+## <a name="modify-peerasn"></a>PeerASN を変更する
 NOC の連絡先情報は、いつでも変更できます。
 
 次に例を示します。
@@ -98,7 +98,7 @@ NOC の連絡先情報は、いつでも変更できます。
 Set-PeerAsn -Name Contoso_1234 -Email "newemail@test.com" -Phone "1800-000-0000"
 ```
 
-## <a name="delete-peerasn"></a>PeerAsn を削除する
+## <a name="delete-peerasn"></a>PeerASN を削除する
 現在、PeerASN の削除はサポートされていません。 PeerASN を削除する必要がある場合は、[Microsoft ピアリング](mailto:peering@microsoft.com)にお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
@@ -110,4 +110,4 @@ Set-PeerAsn -Name Contoso_1234 -Email "newemail@test.com" -Phone "1800-000-0000"
 
 ## <a name="additional-resources"></a>その他のリソース
 
-詳細については、「[インターネット ピアリングのよくあるご質問](faqs.md)」を参照してください。
+詳細については、「[インターネット ピアリングのよくあるご質問](faqs.md)」を参照してください

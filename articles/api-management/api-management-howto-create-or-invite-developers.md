@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 92e032eb104835788f515cc7800fe5dacfa8adaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88566133"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Azure API Management でユーザー アカウントを管理する方法
@@ -42,7 +42,7 @@ API Management では、開発者は、API Management を使用して公開さ�
 
     ![新しいユーザーの追加](./media/api-management-howto-create-or-invite-developers/api-management-create-developer.png)
 
-既定では、新しく作成された開発者アカウントは**アクティブ**になり、**開発者**グループに関連付けられます。 **[アクティブ]** 状態の開発者アカウントを使用すると、サブスクリプションがあるすべての API にアクセスできます。 新しく作成した開発者を追加のグループに関連付ける方法については、「 [グループと開発者の関連付け][How to associate groups with developers]」を参照してください。
+既定では、新しく作成された開発者アカウントは **アクティブ** になり、**開発者** グループに関連付けられます。 **[アクティブ]** 状態の開発者アカウントを使用すると、サブスクリプションがあるすべての API にアクセスできます。 新しく作成した開発者を追加のグループに関連付ける方法については、「 [グループと開発者の関連付け][How to associate groups with developers]」を参照してください。
 
 ## <a name="invite-a-developer"></a><a name="invite-developer"> </a>開発者の招待
 開発者を招待するには、このセクションの手順に従います。
@@ -58,7 +58,7 @@ API Management では、開発者は、API Management を使用して公開さ�
 
 ## <a name="deactivate-or-reactivate-a-developer-account"></a><a name="block-developer"> </a> 開発者アカウントを非アクティブ化するか再アクティブ化する
 
-既定では、新しく作成または招待された開発者アカウントは **アクティブ**になります。 開発者アカウントを非アクティブ化するには、 **[ブロック]** をクリックします。 ブロックされている開発者アカウントを再アクティブ化するには、 **[アクティブ化]** をクリックします。 ブロックされている開発者アカウントは、開発者ポータルにアクセスすることも、API を呼び出すこともできません。 ユーザー アカウントを削除するには、 **[削除]** をクリックします。
+既定では、新しく作成または招待された開発者アカウントは **アクティブ** になります。 開発者アカウントを非アクティブ化するには、 **[ブロック]** をクリックします。 ブロックされている開発者アカウントを再アクティブ化するには、 **[アクティブ化]** をクリックします。 ブロックされている開発者アカウントは、開発者ポータルにアクセスすることも、API を呼び出すこともできません。 ユーザー アカウントを削除するには、 **[削除]** をクリックします。
 
 ユーザーをブロックするには、次の手順に従います。
 

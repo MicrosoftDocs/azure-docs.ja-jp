@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と TripActions の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と TripActions の統合 | Microsoft Docs'
 description: Azure Active Directory と TripActions の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/08/2020
 ms.author: jeedes
 ms.openlocfilehash: 741009b1d92d185678080c60078b272d7fb85558
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92509303"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tripactions"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と TripActions の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tripactions"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と TripActions の統合
 
 このチュートリアルでは、TripActions と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と TripActions を統合すると、次のことができます。
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* TripActions では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* TripActions では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* TripActions では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* TripActions では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-tripactions-from-the-gallery"></a>ギャラリーからの TripActions の追加
 
@@ -50,7 +50,7 @@ Azure AD への TripActions の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **TripActions** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**TripActions**」と入力します。
 1. 結果のパネルから **[TripActions]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-tripactions"></a>TripActions の Azure AD シングル サインオンの構成とテスト
@@ -70,7 +70,7 @@ TripActions で Azure AD SSO を構成してテストするには、次の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **TripActions** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **TripActions** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 

@@ -9,16 +9,16 @@ zone_pivot_groups: programming-languages-set-twenty
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 03/08/2021
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
 keywords: 画像の表示, 品詞, 選択テキストの読み上げ, 単語の翻訳, 読解力
-ms.openlocfilehash: 621be6293b4ac487cafafc14498524c97fdc6d82
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 78270700c49e3f0943940db3271a6605d583308c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90978272"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619231"
 ---
 # <a name="quickstart-get-started-with-immersive-reader"></a>クイック スタート:Immersive Reader を使ってみる
 

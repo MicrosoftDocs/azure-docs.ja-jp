@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: alkohli
 ms.openlocfilehash: 56d301762fde41f727b0b425d6c41a423f08103c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96465605"
 ---
 # <a name="azure-stack-edge-pro-r-technical-specifications"></a>Azure Stack Edge Pro R の技術仕様
@@ -165,12 +165,12 @@ The following table lists the dimensions of the 4U UPS case:
 
 |     仕様              |     値    |
 |--------------------------------|-------------------------------------------------------------------|
-|     温度範囲          |     0 ～ 43° C (運用時)    |
-|     振動                  |     MIL-STD-810 Method 514.7*<br>Procedure I CAT 4、20                  |
-|     衝撃                      |     MIL-STD-810 Method 516.7*<br>Procedure IV、Logistic                 |
+|     温度範囲          |     0 – 43° C (運用時)    |
+|     振動                  |     MIL-STD-810 Method 514.7*<br>Procedure I CAT 4, 20                  |
+|     衝撃                      |     MIL-STD-810 Method 516.7*<br>Procedure IV, Logistic                 |
 |     高度                   |     運用時: 10,000 フィート<br>非運用時:40,000 フィート          |
 
-**すべての参照は MIL-STD-810G Change 1 (2014) です*
+"**すべての参照は MIL-STD-810G Change 1 (2014) です*"
 
 ## <a name="next-steps"></a>次のステップ
 

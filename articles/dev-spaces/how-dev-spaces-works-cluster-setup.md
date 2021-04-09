@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Azure Dev Spaces に使用する Azure Kubernetes Service クラスターのセットアップの実際について説明します。
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 ms.openlocfilehash: 841e67b96e95aa251fa5bf1ef469b68de30f54d9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91972681"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Azure Dev Spaces に使用するクラスターのセットアップの実際

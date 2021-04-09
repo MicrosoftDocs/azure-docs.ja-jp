@@ -1,18 +1,18 @@
 ---
 title: Azure Stream Analytics クラスターの作成のクイックスタート
 description: Azure Stream Analytics クラスターの作成方法を説明します。
+ms.service: stream-analytics
 author: sidramadoss
 ms.author: sidram
-ms.service: stream-analytics
-ms.topic: overview
+ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: eb36af5b3f1e142405b24ade16516d0268b4ab2f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 6b7a7c5feb6165f5b2c7c0ea052318a255e8025c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016560"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600226"
 ---
 # <a name="quickstart-create-a-dedicated-azure-stream-analytics-cluster-using-azure-portal"></a>クイック スタート:Azure portal を使用して専用の Azure Stream Analytics クラスターを作成する
 
@@ -35,7 +35,7 @@ Azure portal を使用して Azure Stream Analytics クラスターを作成し�
 
 1. **[Create Stream Analytics cluster]\(Stream Analytics クラスターの作成\)** ページで、新しいクラスターの基本設定を入力します。
 
-   |設定|[値]|説明 |
+   |設定|値|説明 |
    |---|---|---|
    |サブスクリプション|サブスクリプション名|この Stream Analytics クラスターに使用する Azure サブスクリプションを選択します。 |
    |リソース グループ|リソース グループ名|リソース グループを選択するか、 **[新規作成]** を選択し、新しいリソース グループの一意の名前を入力します。 |

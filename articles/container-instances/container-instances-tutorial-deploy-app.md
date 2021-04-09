@@ -5,17 +5,17 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.custom: seodec18, mvc, devx-track-azurecli
 ms.openlocfilehash: 2ea3d285f00d38df84587d9a7c15242fff38453b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87500574"
 ---
-# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>チュートリアル:Azure Container Instances にコンテナー アプリケーションをデプロイする
+# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>チュートリアル: Azure Container Instances にコンテナー アプリケーションをデプロイする
 
 これは、3 部構成のシリーズの最後のチュートリアルです。 シリーズではこれまで、[コンテナー イメージを作成](container-instances-tutorial-prepare-app.md)して、[Azure Container Registry にプッシュ](container-instances-tutorial-prepare-acr.md)しました。 この記事で Azure Container Instances にコンテナーをデプロイして、このシリーズは完了です。
 
-このチュートリアルでは、次のことを行いました。
+このチュートリアルでは、次の作業を行いました。
 
 > [!div class="checklist"]
 > * Azure Container Registry から Azure Container Instances へのコンテナーのデプロイ
@@ -50,7 +50,7 @@ az acr show --name <acrName> --query loginServer
 az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <service-principal-ID> --registry-password <service-principal-password> --dns-name-label <aciDnsLabel> --ports 80
 ```
 
-数秒以内に、Azure から最初の応答を受信します。 `--dns-name-label` の値は、コンテナー インスタンスを作成する Azure リージョン内で一意である必要があります。 コマンドを実行したときに **DNS 名ラベル**のエラー メッセージが表示された場合は、前述のコマンドの値を変更してください。
+数秒以内に、Azure から最初の応答を受信します。 `--dns-name-label` の値は、コンテナー インスタンスを作成する Azure リージョン内で一意である必要があります。 コマンドを実行したときに **DNS 名ラベル** のエラー メッセージが表示された場合は、前述のコマンドの値を変更してください。
 
 ### <a name="verify-deployment-progress"></a>デプロイの進行状況を確認する
 

@@ -3,7 +3,7 @@ title: Windows Azure Media Encoder から Media Encoder Standard に移行する
 description: このトピックでは、Windows Azure Media Encoder から Media Encoder Standard メディア プロセッサに移行する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2019
-ms.author: juliako
+ms.date: 3/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9125639ab5b563a8db7cfa5730bd9673f383071c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a80d25145162c81ef999f8af1015cd590d5a090
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90529249"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103011121"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Windows Azure Media Encoder から Media Encoder Standard に移行する
 
@@ -27,7 +27,7 @@ ms.locfileid: "90529249"
 
 この記事では、廃止される従来の Windows Azure Media Encoder (WAME) メディア プロセッサから Media Encoder Standard メディア プロセッサに移行する手順について説明します。 提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。
 
-WAME でファイルをエンコードする場合、通常は `H264 Adaptive Bitrate MP4 Set 1080p` などの名前付きプリセット文字列が使用されます。 移行するには、WAME の代わりに **Media Encoder Standard** メディア プロセッサを使用し、いずれかの同等の[システム プリセット](media-services-mes-presets-overview.md) (`H264 Multiple Bitrate 1080p` など) を使用するようにコードを更新する必要があります。 
+WAME でファイルをエンコードする場合、通常は `H264 Adaptive Bitrate MP4 Set 1080p` などの名前付きプリセット文字列が使用されます。 移行するには、WAME の代わりに **Media Encoder Standard** メディア プロセッサを使用し、いずれかの同等の [システム プリセット](media-services-mes-presets-overview.md) (`H264 Multiple Bitrate 1080p` など) を使用するようにコードを更新する必要があります。 
 
 ## <a name="migrating-to-media-encoder-standard"></a>Media Encoder Standard への移行
 

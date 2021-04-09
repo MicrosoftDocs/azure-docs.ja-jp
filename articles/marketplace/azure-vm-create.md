@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 10/20/2020
-ms.openlocfilehash: 2ef80d26336ddbe3c015dfcde0c5ed29b762f39b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 03/10/2021
+ms.openlocfilehash: ffc09daa15e742ca2b5b8a2fa9323e33fe317c60
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629718"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200388"
 ---
 # <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>Azure Marketplace で仮想マシン オファーを作成する方法
 

@@ -4,10 +4,10 @@ description: この記事では、イベント ハブに送信されたデータ
 ms.topic: quickstart
 ms.date: 01/04/2021
 ms.openlocfilehash: acc2ce04add5fd837e9edc789e9616a9f04fb4b9
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97883199"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub"></a>Event Hubs データを Azure Storage にキャプチャし、Python (azure-eventhub) を使用してそれを読み取る

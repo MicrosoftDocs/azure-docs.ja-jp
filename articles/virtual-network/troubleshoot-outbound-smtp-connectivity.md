@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: genli
-ms.openlocfilehash: 518b8e33ac9adfdd1aa121e0cb8d1558545980e7
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: c28790b2ef423a3d0f996d7c6030b04198756eb1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054856"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102607613"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Azure でのアウトバウンド SMTP 接続に関する問題のトラブルシューティング
 
@@ -76,6 +76,10 @@ Enterprise Agreement の Azure ユーザーの場合、認証済みリレーを�
 (認証済み SMTP リレーを使用せずに) Azure VM から外部のメール プロバイダーに直接メールを送信できるようにする必要がある場合は、次の問題の種類を使用してサポート ケースを開くことでリクエストできます。 **[Technical]\(技術\)**  >  **[仮想ネットワーク]**  >  **[接続]**  >  **[Cannot send email (SMTP/Port 25)]\(メールを送信できない (SMTP/ポート 25)\)** 。 現在のデプロイで、認証済みリレーを使用する代わりに、メール プロバイダーに直接メールを送信する必要がある理由を詳しく記入してください。 リクエストは Microsoft の裁量でレビューおよび承認されます。 リクエストは、不正行為に関する追加確認が完了した後にのみ許可されます。 
 
 サブスクリプションが除外され、VM が Azure portal で一旦停止された後に再開されると、それ以降はそのサブスクリプション内のすべての VM が除外されます。 除外されるのは、リクエストされたサブスクリプションのみであり、インターネットに直接ルーティングされる VM トラフィックのみです。
+
+## <a name="changing-subscription-type"></a>サブスクリプションの種類の変更
+
+サブスクリプションの種類を変更した場合、あるいはクラウド ソリューション プロバイダーまたは従量課金制のサブスクリプションが承認された場合は、新しいポリシーを有効にするために、VM を停止し、割り当てを解除してから、再起動する必要があります。 同様に、既定で許可されているサブスクリプションの種類がある場合に、許可されていないサブスクリプションの種類に変更すると、デプロイの変更が原因で、ポート 25 がブロックされる可能性があります。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 

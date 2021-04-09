@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: bonova, sstein, danil
-ms.date: 02/21/2021
-ms.openlocfilehash: 75fc4166614862c5ac48a72bacb6b7b19019d003
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/08/2021
+ms.openlocfilehash: 8c98ce661e7bb753d4e62d1eaf98702de91c5106
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691911"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489771"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>機能の比較:Azure SQL Database と Azure SQL Managed Instance
 
@@ -30,7 +30,11 @@ Azure SQL Database と SQL Managed Instance は、SQL Server の最新の安定�
 - セキュリティ機能 - [アプリケーション ロール](/sql/relational-databases/security/authentication-access/application-roles)、[動的データ マスク](/sql/relational-databases/security/dynamic-data-masking) ([ファースト ステップ ガイドを参照](dynamic-data-masking-overview.md))、[行レベル セキュリティ](/sql/relational-databases/security/row-level-security)、および脅威の検出。[SQL Database](threat-detection-configure.md) および [SQL Managed Instance](../managed-instance/threat-detection-configure.md) についてはファースト ステップ ガイドを参照。
 - マルチモデル機能 - [グラフの処理](/sql/relational-databases/graphs/sql-graph-overview)、[JSON データ](/sql/relational-databases/json/json-data-sql-server) ([ファースト ステップ ガイドを参照](json-features.md))、[OPENXML](/sql/t-sql/functions/openxml-transact-sql)、[空間](/sql/relational-databases/spatial/spatial-data-sql-server)、[OPENJSON](/sql/t-sql/functions/openjson-transact-sql)、および [XML インデックス](/sql/t-sql/statements/create-xml-index-transact-sql)。
 
-Azure がデータベースを管理し、高可用性を保証します。 高可用性に影響する可能性がある、または PaaS では使用できない一部の機能は、SQL Database および SQL Managed Instance では機能が制限されています。 これらの機能について、以下の表で説明します。 違いについてさらに詳細が必要な場合は、[Azure SQL Database](../managed-instance/transact-sql-tsql-differences-sql-server.md) または [Azure SQL Managed Instance](../managed-instance/transact-sql-tsql-differences-sql-server.md) に関するそれぞれのページで見つけることができます。
+Azure がデータベースを管理し、高可用性を保証します。 高可用性に影響する可能性がある、または PaaS では使用できない一部の機能は、SQL Database および SQL Managed Instance では機能が制限されています。 これらの機能について、以下の表で説明します。
+
+違いについてさらに詳しく知りたい場合は、次の各ページで見つけることができます。
+- [Azure SQL Database とSQL Server との相違点](transact-sql-tsql-differences-sql-server.md)
+- [Azure SQL Managed Instance とSQL Server との相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md)
 
 ## <a name="features-of-sql-database-and-sql-managed-instance"></a>SQL Database と SQL Managed Instance の機能
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: 84fd1a2d3d0dc4ce6960469ea3212b8ca1d4d07c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96023025"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>StorSimple Virtual Array の非アクティブ化と削除
@@ -46,13 +46,13 @@ StorSimple Virtual Array を非アクティブ化する場合は、デバイス�
 
 #### <a name="to-deactivate-the-device"></a>デバイスを非アクティブ化するには
 
-1. サービスで、 **[管理] > [デバイス]** の順に移動します。 **[デバイス]** ブレードで、非アクティブ化するデバイスをクリックして選択します。
+1. サービスで、**[管理] > [デバイス]** の順に移動します。 **[デバイス]** ブレードで、非アクティブ化するデバイスをクリックして選択します。
    
     ![非アクティブ化するデバイスの選択](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete7.png)
 2. **[Device dashboard (デバイス ダッシュボード)]** ブレードで **[詳細]** をクリックし、一覧から **[非アクティブ化]** を選択します。
    
     ![[非アクティブ化] をクリック](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete8.png)
-3. **[非アクティブ化]** ブレードでデバイス名を入力し、 **[非アクティブ化]** をクリックします。 
+3. **[非アクティブ化]** ブレードでデバイス名を入力し、**[非アクティブ化]** をクリックします。 
    
     ![非アクティブ化の確定](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete1.png)
    
@@ -73,11 +73,11 @@ StorSimple Virtual Array を非アクティブ化する場合は、デバイス�
 
 #### <a name="to-delete-the-device"></a>デバイスを削除するには
 
-1. StorSimple デバイス マネージャーで、 **[管理] > [デバイス]** の順に移動します。 **[デバイス]** ブレードで、削除する非アクティブ化されたデバイスを選択します。
-2. **[Device dashboard (デバイス ダッシュボード)]** ブレードで、 **[詳細]** 、 **[削除]** の順にクリックします。
+1. StorSimple デバイス マネージャーで、**[管理] > [デバイス]** の順に移動します。 **[デバイス]** ブレードで、削除する非アクティブ化されたデバイスを選択します。
+2. **[Device dashboard (デバイス ダッシュボード)]** ブレードで、**[詳細]**、**[削除]** の順にクリックします。
    
    ![削除するデバイスの選択](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete4.png)
-3. **[削除]** ブレードで、削除を確定するデバイスの名前を入力し、 **[削除]** をクリックします。 デバイスを削除しても、デバイスに関連付けられているクラウド データは削除されません。 
+3. **[削除]** ブレードで、削除を確定するデバイスの名前を入力し、**[削除]** をクリックします。 デバイスを削除しても、デバイスに関連付けられているクラウド データは削除されません。 
    
    ![削除の確定](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete5.png) 
 4. 削除が開始されます。この処理は数分かかります。

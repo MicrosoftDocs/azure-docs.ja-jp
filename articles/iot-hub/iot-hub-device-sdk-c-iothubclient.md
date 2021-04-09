@@ -10,10 +10,10 @@ ms.date: 08/29/2017
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: f33521dd9110d7ba6ee84650345b38c8c6a4950b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92149133"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>C 用 Azure IoT device SDK – IoTHubClient の詳細
@@ -22,7 +22,7 @@ ms.locfileid: "92149133"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-前の記事では、 **IoTHubClient** ライブラリを使用して IoT Hub にイベントを送信してメッセージを受信する方法を説明しました。 この記事では、 *下位レベルの API* を紹介し、データを送受信する **タイミング**をより厳密に管理する方法について掘り下げて説明します。 **IoTHubClient** ライブラリでプロパティ処理機能を使用してプロパティをイベントに添付する (およびプロパティをメッセージから取得する) 方法についても説明します。 最後に、IoT Hub から受信したメッセージの別の処理方法をいくつか追加で紹介します。
+前の記事では、 **IoTHubClient** ライブラリを使用して IoT Hub にイベントを送信してメッセージを受信する方法を説明しました。 この記事では、 *下位レベルの API* を紹介し、データを送受信する **タイミング** をより厳密に管理する方法について掘り下げて説明します。 **IoTHubClient** ライブラリでプロパティ処理機能を使用してプロパティをイベントに添付する (およびプロパティをメッセージから取得する) 方法についても説明します。 最後に、IoT Hub から受信したメッセージの別の処理方法をいくつか追加で紹介します。
 
 この記事は、デバイスの資格情報の詳細や構成オプションで **IoTHubClient** の動作を変更する方法など、その他のトピックの説明で締めくくります。
 
@@ -65,7 +65,7 @@ IoTHubClient_Destroy(iotHubClientHandle);
 * IoTHubClient\_LL\_SetMessageCallback
 * IoTHubClient\_LL\_Destroy
 
-これらの関数の API 名にはすべて **LL** が使用されています。 名前の **LL**の部分以外は、これらの各関数のパラメーターは、LL が付いていないその対応するものと同じです。 ただし、これらの関数の動作は、1 つの重要な点で異なります。
+これらの関数の API 名にはすべて **LL** が使用されています。 名前の **LL** の部分以外は、これらの各関数のパラメーターは、LL が付いていないその対応するものと同じです。 ただし、これらの関数の動作は、1 つの重要な点で異なります。
 
 **IoTHubClient\_CreateFromConnectionString** を呼び出すと、基になるライブラリは、バックグラウンドで実行される新しいスレッドを作成します。 このスレッドは、IoT Hub にイベントを送信し、IoT Hub ハブからメッセージを受信します。 **LL** API を使用するときは、このようなスレッドは作成されません。 バックグラウンド スレッドが作成されるのは、開発者にとって便利です。 IoT Hub とのイベントの送信とメッセージの受信を明示的に実行することについて心配する必要はありません。自動的にバックグラウンドで実行されます。 これに対して、**LL** API では、必要に応じて IoT Hub との通信を明示的に制御することができます。
 
@@ -103,7 +103,7 @@ while (1)
 IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallback, &receiveContext)
 ```
 
-**IoTHubClient\_LL\_DoWork** が多くの場合ループ処理で呼び出される理由は、呼び出されるたびに、バッファリングされた*いくつかの*イベントを IoT Hub に送信し、キューに登録された*次の*デバイス用メッセージを取得するためです。 呼び出すたびに、バッファリングされたすべてのイベントが送信され、キューに登録されたすべてのメッセージが取得されるという保証はありません。 バッファー内のすべてのイベントを送信してから他の処理を続けるには、前のループ処理を次のようなコードで置き換えます。
+**IoTHubClient\_LL\_DoWork** が多くの場合ループ処理で呼び出される理由は、呼び出されるたびに、バッファリングされた *いくつかの* イベントを IoT Hub に送信し、キューに登録された *次の* デバイス用メッセージを取得するためです。 呼び出すたびに、バッファリングされたすべてのイベントが送信され、キューに登録されたすべてのメッセージが取得されるという保証はありません。 バッファー内のすべてのイベントを送信してから他の処理を続けるには、前のループ処理を次のようなコードで置き換えます。
 
 ```C
 IOTHUB_CLIENT_STATUS status;
@@ -157,7 +157,7 @@ Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 
 まず、**IoTHubMessage\_Properties** を呼び出してメッセージのハンドルを渡します。 返されるのは、プロパティを追加することができる **MAP\_HANDLE** 参照です。 最後に、MAP\_HANDLE への参照、プロパティ名、プロパティ値を取得する **Map\_AddOrUpdate** を呼び出します。 この API を使用すると、必要な数のプロパティを追加できます。
 
-イベントが **Event Hub**から読み込まれると、受信側はプロパティを列挙して対応する値を取得することができます。 たとえば、.NET では、 [EventData オブジェクトのプロパティ コレクション](/dotnet/api/microsoft.servicebus.messaging.eventdata)にアクセスしてこれを実行することができます。
+イベントが **Event Hub** から読み込まれると、受信側はプロパティを列挙して対応する値を取得することができます。 たとえば、.NET では、 [EventData オブジェクトのプロパティ コレクション](/dotnet/api/microsoft.servicebus.messaging.eventdata)にアクセスしてこれを実行することができます。
 
 前の例では、IoT Hub に送信するイベントにプロパティを添付しています。 プロパティは IoT Hub から受信するメッセージに添付することもできます。 メッセージからプロパティを取得する必要がある場合は、メッセージのコールバック関数で次のようなコードを使用できます。
 
@@ -252,7 +252,7 @@ IOTHUB_CLIENT_HANDLE iotHubClientHandle = IoTHubClient_LL_Create(&iotHubClientCo
 
 これは、**IoTHubClient\_CreateFromConnectionString** と同じ処理を実行します。
 
-このような冗長な初期化方法ではなく、**IoTHubClient\_CreateFromConnectionString** を使用しようと考えるのは当然のことと言えます。 ただし、IoT Hub にデバイスを登録するときに取得するのは、(接続文字列ではなく) デバイス ID とデバイス キーであることを留意してください。 [前の記事](iot-hub-device-sdk-c-intro.md)で紹介されている*デバイス エクスプローラー* SDK ツールは、**Azure IoT サービス SDK** のライブラリを使用して、デバイス ID、デバイス キー、IoT Hub ホスト名からデバイスの接続文字列を作成します。 そのため、**IoTHubClient\_LL\_Create** の呼び出しは、接続文字列を生成する手順を省略できるという理由で好まれる可能性があります。 いずれかの便利な方法を使用してください。
+このような冗長な初期化方法ではなく、**IoTHubClient\_CreateFromConnectionString** を使用しようと考えるのは当然のことと言えます。 ただし、IoT Hub にデバイスを登録するときに取得するのは、(接続文字列ではなく) デバイス ID とデバイス キーであることを留意してください。 [前の記事](iot-hub-device-sdk-c-intro.md)で紹介されている *デバイス エクスプローラー* SDK ツールは、**Azure IoT サービス SDK** のライブラリを使用して、デバイス ID、デバイス キー、IoT Hub ホスト名からデバイスの接続文字列を作成します。 そのため、**IoTHubClient\_LL\_Create** の呼び出しは、接続文字列を生成する手順を省略できるという理由で好まれる可能性があります。 いずれかの便利な方法を使用してください。
 
 ## <a name="configuration-options"></a>構成オプション
 
@@ -269,11 +269,11 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 * **Timeout** (符号なし整数): この値はミリ秒単位で表現されます。 HTTPS 要求の送信や応答の受信にこの時間より長くかかる場合は、接続がタイムアウトします。
 
-バッチ処理オプションは重要です。 既定では、このライブラリはイベントを個別に入力します (**IoTHubClient\_LL\_SendEventAsync** に渡したものが 1 つのイベントになります)。 バッチ処理オプションが **true**の場合、ライブラリはバッファーから可能な限りの (IoT Hub が許容する最大メッセージ サイズまでの) イベントを収集します。  イベントのバッチは、(個々のイベントが JSON 配列にまとめられて) 単一の HTTPS 呼び出しで IoT Hub に送信されます。 バッチ処理を有効にすると、通常はネットワーク ラウンドトリップが減少するため、パフォーマンスの大幅な向上につながります。 個別の各イベントの一連のヘッダーではなく、イベント バッチで一連の HTTPS ヘッダーが送信されるため、帯域幅が大幅に削減されます。 それ以外の方法で実行する特別な理由がない限り、一般的にバッチ処理を有効にします。
+バッチ処理オプションは重要です。 既定では、このライブラリはイベントを個別に入力します (**IoTHubClient\_LL\_SendEventAsync** に渡したものが 1 つのイベントになります)。 バッチ処理オプションが **true** の場合、ライブラリはバッファーから可能な限りの (IoT Hub が許容する最大メッセージ サイズまでの) イベントを収集します。  イベントのバッチは、(個々のイベントが JSON 配列にまとめられて) 単一の HTTPS 呼び出しで IoT Hub に送信されます。 バッチ処理を有効にすると、通常はネットワーク ラウンドトリップが減少するため、パフォーマンスの大幅な向上につながります。 個別の各イベントの一連のヘッダーではなく、イベント バッチで一連の HTTPS ヘッダーが送信されるため、帯域幅が大幅に削減されます。 それ以外の方法で実行する特別な理由がない限り、一般的にバッチ処理を有効にします。
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事は、**C 用 Azure IoT device SDK** にある **IoTHubClient** ライブラリの動作の詳細を説明しました。この情報は、**IoTHubClient** ライブラリの機能の理解に役立ててください。 このシリーズの 2 番目の記事は「[C 用 Azure IoT device SDK - シリアライザー](iot-hub-device-sdk-c-serializer.md)」です。よく似ている**シリアライザー** ライブラリについて詳しく説明します。
+この記事は、**C 用 Azure IoT device SDK** にある **IoTHubClient** ライブラリの動作の詳細を説明しました。この情報は、**IoTHubClient** ライブラリの機能の理解に役立ててください。 このシリーズの 2 番目の記事は「[C 用 Azure IoT device SDK - シリアライザー](iot-hub-device-sdk-c-serializer.md)」です。よく似ている **シリアライザー** ライブラリについて詳しく説明します。
 
 IoT Hub 用の開発の詳細については、「[Azure IoT SDK](iot-hub-devguide-sdks.md)」を参照してください。
 

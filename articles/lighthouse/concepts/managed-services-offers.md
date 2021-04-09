@@ -1,14 +1,14 @@
 ---
 title: Azure Marketplace のマネージド サービス オファー
 description: 管理サービス オファーを使用すると、Azure Marketplace の顧客にリソース管理オファーを販売できます。
-ms.date: 02/10/2021
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7f3a12f34b4cedcb12ad2786fcb687044c30c211
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e66a87751e0375804031e777a40c5fc1d0e8a7e2
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375546"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093000"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Azure Marketplace のマネージド サービス オファー
 
@@ -19,6 +19,9 @@ ms.locfileid: "100375546"
 マネージド サービス オファーにより、Azure Lighthouse に顧客をオンボードするプロセスが効率化されます。 顧客は、Azure Marketplace でオファーを購入すると、オンボードするサブスクリプションやリソース グループを指定できるようになります。
 
 その後、組織内のユーザーは、オファーを作成するときに定義されたアクセス権に従い、[Azure の委任されたリソース管理](azure-delegated-resource-management.md)を使用して、管理テナント内からそれらのリソースに対して作業できるようになります。 これは、顧客のリソースにアクセスできる Azure Active Directory (Azure AD) ユーザー、グループ、サービス プリンシパルが指定されているマニフェストと、それらのアクセス レベルが定義されている[ロール](tenants-users-roles.md)を通じて行われます。
+
+> [!NOTE]
+> マネージド サービス オファーは、Azure Government およびその他の国内クラウドでは利用できない場合があります。
 
 ## <a name="public-and-private-offers"></a>パブリック オファーとプライベート オファー
 
@@ -43,4 +46,4 @@ ms.locfileid: "100375546"
 ## <a name="next-steps"></a>次のステップ
 
 - 「[Azure の委任されたリソース管理](azure-delegated-resource-management.md)」および「[テナント間の管理エクスペリエンス](cross-tenant-management-experience.md)」を確認します。
-- Azure Marketplace に[マネージド サービス オファーを公開する](../how-to/publish-managed-services-offers.md)。
+- Azure Marketplace に[マネージド サービス オファーを公開](../how-to/publish-managed-services-offers.md)します。

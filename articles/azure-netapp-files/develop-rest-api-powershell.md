@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
 ms.openlocfilehash: 2e169bb4f7be8b52657d2caf8f05643875a8348c
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102180379"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api-using-powershell"></a>PowerShell を使用して REST API による Azure NetApp Files 用の開発を行う

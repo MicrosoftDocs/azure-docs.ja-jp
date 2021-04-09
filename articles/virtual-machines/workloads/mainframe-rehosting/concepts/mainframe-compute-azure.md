@@ -5,13 +5,14 @@ author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
-ms.service: multiple
-ms.openlocfilehash: 04ec652c6e7ce8de003a464c6427439cf1519eab
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
+ms.openlocfilehash: 84682514d83de9d6a613581d68301efe33cd44ee
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092671"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954396"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>メインフレーム コンピューティングを Azure に移行する
 
@@ -47,7 +48,7 @@ IBM メインフレームでは、最大 240 コアまでスケールアップ�
 
 CF では、コンピューティング クラスターは直接アクセスでデータを共有できます。 それは、ロック情報、キャッシュ情報、および共有データ リソースのリストに使用されます。 1 つ以上の CF を使用する Parallel Sysplex は、"すべてが共有された" スケールアウト コンピューティング クラスターと考えることができます。 これらの機能について詳しくは、IBM の Web サイトの「[Parallel Sysplex on IBM Z (IBM Z での Parallel Sysplex)](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)」をご覧ください。
 
-アプリケーションでは、これらの機能を使用して、スケールアウト パフォーマンスと高可用性の両方を提供できます。 CICS が CF で Parallel Sysplex を使用する方法については、「[IBM CICS and the Coupling Facility: Beyond the Basics (IBM CICS とカップリング ファシリティ: 基本を超えて)](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)」レッドブックをダウンロードしてください。
+アプリケーションでは、これらの機能を使用して、スケールアウト パフォーマンスと高可用性の両方を提供できます。 CICS が CF で Parallel Sysplex を使用する方法については、「[IBM CICS and the Coupling Facility: Beyond the Basics](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)」レッドブックをダウンロードしてください。
 
 ## <a name="azure-compute-at-a-glance"></a>Azure コンピューティングの概要
 
@@ -121,7 +122,7 @@ Azure アーキテクチャでは処理の各レベルを最適化できます�
 ### <a name="ibm-resources"></a>IBM リソース
 
 - [IBM Z 上の Parallel Sysplex](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
-- [IBM CICS と結合ファシリティ: 基本を超えて](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
+- [IBM CICS and the Coupling Facility: Beyond the Basics](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
 - [Db2 pureScale 機能のインストールに必要なユーザーを作成する](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 - [Db2icrt - インスタンス コマンドを作成する](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
 - [Db2 pureScale クラスター化データベース ソリューション](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)

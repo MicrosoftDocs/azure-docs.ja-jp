@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abc8badf261e631dd6ceb7af9a6a0cb3676ae25d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017595"
 ---
 # <a name="troubleshoot-errors-in-azure-active-directory-reporting-api"></a>Azure Active Directory Reporting API でのエラーのトラブルシューティング
@@ -32,11 +32,11 @@ ms.locfileid: "96017595"
 
 現在、Microsoft Graph v2 エンドポイントはサポートされていません。必ず、Microsoft Graph v1 エンドポイントを使用して、アクティビティ ログにアクセスしてください。
 
-### <a name="error-neither-tenant-is-b2c-or-tenant-doesnt-have-premium-license"></a>エラー:テナントが B2C ではなく、テナントに Premium ライセンスもありません
+### <a name="error-neither-tenant-is-b2c-or-tenant-doesnt-have-premium-license"></a>エラー: テナントが B2C ではなく、テナントに Premium ライセンスもありません
 
 サインイン レポートへのアクセスには、Azure Active Directory Premium 1 (P1) ライセンスが必要です。 サインインへのアクセス中にこのようなエラー メッセージが表示された場合は、テナントに Azure AD P1 ライセンスがあることを確認してください。
 
-### <a name="error-user-is-not-in-the-allowed-roles"></a>エラー:許可されているロールのユーザーではありません 
+### <a name="error-user-is-not-in-the-allowed-roles"></a>エラー: 許可されているロールのユーザーではありません 
 
 API を使用して監査ログやサインインにアクセスしようとしたときにこのようなエラー メッセージが表示された場合は、ご利用のアカウントが、Azure Active Directory テナントの **セキュリティ閲覧者** または **レポート閲覧者** のロールに属していることを確認してください。 
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 2f608843e27b79d02697df8e2a7f2aba6695e10a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80878427"
 ---
 # <a name="configure-face-docker-containers"></a>Face Docker コンテナーの構成
@@ -125,7 +125,7 @@ Face コンテナーでは、トレーニングやサービスのデータを格
 |省略可能| 名前 | データ型 | 説明 |
 |-------|------|-----------|-------------|
 |禁止| `Input` | String | Face コンテナーでは、これは使用されません。|
-|省略可能| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
+|オプション| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>docker run コマンドの例 
 
@@ -145,7 +145,7 @@ Face コンテナーでは、トレーニングやサービスのデータを格
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](face-how-to-install-containers.md#billing)」を参照してください。
-> ApiKey の値は、Azure `Cognitive Services` リソース キー ページにある**キー**です。 
+> ApiKey の値は、Azure `Cognitive Services` リソース キー ページにある **キー** です。 
 
 ## <a name="face-container-docker-examples"></a>Face コンテナーの Docker の例
 

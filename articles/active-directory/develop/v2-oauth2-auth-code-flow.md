@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/11/2021
+ms.date: 02/23/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 2687141ea870b0af0a4405ebef2261c5a303c767
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: aeed031025b9c494b35886861c273e2a7f9d2ac4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584114"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653730"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 認証コード フロー
 
@@ -73,14 +73,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`    | required    | 要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。 詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。  |
 | `client_id`   | required    | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた **アプリケーション (クライアント) ID**。  |
 | `response_type` | required    | 承認コード フローでは `code` を指定する必要があります。 [ハイブリッド フロー](#request-an-id-token-as-well-hybrid-flow)を使用する場合は、`id_token` または `token` を含めることもできます。 |
-| `redirect_uri`  | 必須 | アプリ の redirect_uri。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかの redirect_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 ネイティブ アプリとモバイル アプリでは、`https://login.microsoftonline.com/common/oauth2/nativeclient` の既定値を使用します。   |
+| `redirect_uri`  | 必須 | アプリ の redirect_uri。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかの redirect_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 ネイティブ アプリやモバイル アプリの場合は、推奨される値 (埋め込みのブラウザーを使用するアプリの場合は `https://login.microsoftonline.com/common/oauth2/nativeclient`、システム ブラウザーを使用するアプリの場合は `http://localhost`) のいずれかを使用してください。 |
 | `scope`  | required    | ユーザーに同意を求める [スコープ](v2-permissions-and-consent.md) の、スペースで区切られたリスト。  要求の `/authorize` の段階では、これに複数のリソースを含めることができ、ご利用のアプリが呼び出す必要がある複数の Web API に対して同意を取得することを許可します。 |
 | `response_mode`   | 推奨 | 結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。 以下のいずれかを指定できます。<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` はリダイレクト URI でクエリ文字列パラメーターとしてコードを提供します。 暗黙的フローを使って ID トークンを要求する場合、[OpenID 仕様](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)で規定された `query` を使用することはできません。コードのみを要求する場合は、`query`、`fragment`、`form_post` のいずれかを使用できます。 `form_post` は、リダイレクト URI に対するコードを含んだ POST を実行します。 |
 | `state`                 | 推奨 | 要求に含まれ、かつトークンの応答として返される値。 任意の文字列を指定することができます。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](https://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この値を使用すると、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードすることもできます。 |
 | `prompt`  | 省略可能    | ユーザーとの必要な対話の種類を指定します。 現時点で有効な値は `login`、`none`、`consent` だけです。<br/><br/>- `prompt=login` は、その要求でユーザーに資格情報の入力を強制し、シングル サインオンを無効にします。<br/>- `prompt=none` はその反対であり、ユーザーにどのような対話型プロンプトも表示されないようにします。 シングル サインオンで確認なしで要求を完了できない場合は、Microsoft ID プラットフォームから `interaction_required` エラーが返されます。<br/>- `prompt=consent` では、ユーザーがサインインした後で OAuth 同意ダイアログが表示され、アプリへのアクセス許可の付与をユーザーに求めます。<br/>- `prompt=select_account` では、シングル サインオンに割り込み、まったく別のアカウントの使用を選択するためのオプションとして、セッション内または記憶されているアカウント内のいずれかにある全アカウントを一覧表示するアカウント選択エクスペリエンスを提供します。<br/> |
 | `login_hint`  | 省略可能    | ユーザー名が事前にわかっている場合、ユーザーに代わって事前に、サインイン ページのユーザー名/電子メール アドレス フィールドに入力ができます。 アプリはしばしば前回のサインインから `preferred_username` 要求を抽出して再認証時にこのパラメーターを使用します。   |
 | `domain_hint`  | 省略可能    | これが含まれていると、ユーザーがサインイン ページで実行する電子メール ベースの検出プロセスがスキップされ、多少効率化されたユーザー エクスペリエンスが提供されます (たとえば、フェデレーション ID プロバイダーへの送信など)。 多くの場合、アプリでは、前回のサインインから `tid` を抽出することで再認証時にこのパラメーターを使用します。 `tid` 要求の値が `9188040d-6c67-4c5b-b112-36a304b66dad` の場合、`domain_hint=consumers` を使用する必要があります。 それ以外の場合は、 `domain_hint=organizations`を指定します。  |
-| `code_challenge`  | 推奨/必須 | PKCE (Proof Key for Code Exchange) を使用して承認コード付与をセキュリティ保護するために使用されます。 `code_challenge_method` が含まれている場合は必須です。 詳細については、「[PKCE RFC](https://tools.ietf.org/html/rfc7636)」を参照してください。 これは、すべての種類のアプリケーション (ネイティブ アプリ、SPA、Web アプリなどの機密クライアント) で推奨されるようになりました。 |
+| `code_challenge`  | 推奨/必須 | PKCE (Proof Key for Code Exchange) を使用して承認コード付与をセキュリティ保護するために使用されます。 `code_challenge_method` が含まれている場合は必須です。 詳細については、「[PKCE RFC](https://tools.ietf.org/html/rfc7636)」を参照してください。 これは、すべての種類のアプリケーション (パブリック クライアントと機密クライアントの両方) で推奨されるようになり、Microsoft ID プラットフォームでは[認可コード フローを使用するシングル ページ アプリ](reference-third-party-cookies-spas.md)で必須となりました。 |
 | `code_challenge_method` | 推奨/必須 | `code_challenge` パラメーターの `code_verifier` をエンコードするために使用されるメソッド。 これは `S256` である *べき* ですが、何らかの理由によってクライアントで SHA256 がサポートされない場合、仕様では `plain` の使用が許可されています。 <br/><br/>除外されていると、`code_challenge` が含まれている場合、`code_challenge` はプレーンテキストであると見なされます。 Microsoft ID プラットフォームは `plain` と `S256` の両方をサポートします。 詳細については、「[PKCE RFC](https://tools.ietf.org/html/rfc7636)」を参照してください。 これは、[承認コード フローを使用するシングル ページ アプリ](reference-third-party-cookies-spas.md)には必須です。|
 
 
@@ -93,7 +93,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 `response_mode=query` を使用した場合の正常な応答は次のようになります。
 
 ```HTTP
-GET https://login.microsoftonline.com/common/oauth2/nativeclient?
+GET http://localhost?
 code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 &state=12345
 ```
@@ -110,7 +110,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 アプリ側でエラーを適切に処理できるよう、 `redirect_uri` にはエラー応答も送信されます。
 
 ```HTTP
-GET https://login.microsoftonline.com/common/oauth2/nativeclient?
+GET http://localhost?
 error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
@@ -162,9 +162,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 |`response_type`| 必須 | `id_token` の追加により、アプリケーションが `/authorize` エンドポイントからの応答で ID トークンを要求していることがサーバーに示されます。  |
 |`scope`| 必須 | ID トークン用であり、更新して ID トークン スコープ (`openid` とオプションの `profile` および `email`) を含める必要があります。 |
 |`nonce`| 必須|     要求に含まれる、アプリによって生成される値。この値は、結果の id_token に要求として含まれます。 アプリはこの値を確認することにより、トークン リプレイ攻撃を緩和できます。 通常、この値はランダム化された一意の文字列であり、要求の送信元を特定する際に使用できます。 |
-|`response_mode`| 推奨 | 結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。 既定では、認可コードのみの場合は `query` に設定されますが、要求に id_token `response_type` を含める場合は `fragment` に設定します。|
+|`response_mode`| 推奨 | 結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。 既定では、認可コードのみの場合は `query` に設定されますが、要求に id_token `response_type` を含める場合は `fragment` に設定します。  ただし、特に `http:/localhost` をリダイレクト URI として使用している場合は、アプリで `form_post` を使用することをお勧めします。 |
 
-応答モードとして `fragment` を使用すると、ブラウザーがフラグメントを Web サーバーに渡さないため、リダイレクトからコードを読み取る Web アプリでは問題が発生する可能性があります。  このような状況では、すべてのデータがサーバーに送信されるようにするために、アプリで `form_post` 応答モードを使用することをお勧めします。 
+応答モードとして `fragment` を使用すると、ブラウザーでフラグメントが Web サーバーに渡されないため、リダイレクトからコードを読み取る Web アプリでは問題が発生する可能性があります。  このような状況では、すべてのデータがサーバーに送信されるようにするために、アプリで `form_post` 応答モードを使用してください。 
 
 #### <a name="successful-response"></a>成功応答
 

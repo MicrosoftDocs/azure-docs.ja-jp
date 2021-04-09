@@ -14,10 +14,10 @@ ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: df3941c895ce67862eb53b8e96bc7a6d53c1ed02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88799419"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>"ここからアクセスすることはできません" というエラー メッセージに対して可能性のある修正方法
@@ -54,11 +54,11 @@ ms.locfileid: "88799419"
 
 2. 仮想プライベート ネットワーク (VPN) または DirectAccess を使用して組織のネットワークに接続します。
 
-3. 接続後、**Windows ロゴ キーを押しながら L キーを押して**デバイスをロックします。
+3. 接続後、**Windows ロゴ キーを押しながら L キーを押して** デバイスをロックします。
 
 4. 職場または学校アカウントを使用してデバイスのロックを解除し、問題のあるアプリまたはサービスにもう一度アクセスしてみます。
 
-    「**ここからアクセスすることはできません**」エラー メッセージが再び表示される場合、 **[詳細]** リンクを選択し、詳細情報をヘルプデスクに連絡してください。
+    「**ここからアクセスすることはできません**」エラー メッセージが再び表示される場合、**[詳細]** リンクを選択し、詳細情報をヘルプデスクに連絡してください。
 
 ### <a name="to-join-your-device-to-your-network"></a>デバイスをネットワークに参加させる
 デバイスが組織のネットワークに参加していない場合は、次の 2 つのいずれかの操作を行います。

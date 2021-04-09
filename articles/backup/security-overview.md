@@ -4,10 +4,10 @@ description: バックアップ データを保護し、ビジネスのセキュ
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.openlocfilehash: 9aa1909f1590b477d9a7f7a09ad0c2b1936e3e29
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96325657"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Backup のセキュリティ機能の概要

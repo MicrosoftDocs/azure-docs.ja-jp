@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: b5c65035f8b51b53f617d4562fe1982f53f0deec
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98678274"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用して IoT 空間分析を実装する
@@ -131,7 +131,7 @@ Azure Maps Data Upload API を使用してジオフェンスをアップロー�
 
     URL パス内の `dataFormat` パラメーターに対する `geojson` 値は、アップロードするデータの形式を表します。
 
-4. 入力形式として **[本文]**  >  **[raw]\(未加工\)** を選択し、ドロップダウンリストから **[JSON]** を選択します。 [JSON データ ファイルを開き](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)、JSON を body セクションにコピーします。 **[送信]** を選択します。
+4. 入力形式として **[本文]**  >  **[raw]\(未加工\)** を選択し、ドロップダウンリストから **[JSON]** を選択します。 [JSON データ ファイルを開き](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)、JSON を body セクションにコピーします。 **[Send]** を選択します。
 
 5. **[Send]\(送信\)** を選択し、要求が処理されるまで待ちます。 要求が完了したら、応答の **[Headers]\(ヘッダー\)** タブに移動します。 **Location** キーの値である `status URL` をコピーします。
 

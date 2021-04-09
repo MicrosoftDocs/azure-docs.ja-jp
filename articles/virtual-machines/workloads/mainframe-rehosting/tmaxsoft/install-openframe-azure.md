@@ -8,13 +8,13 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines
-ms.subservice: workloads
-ms.openlocfilehash: 01a053745ad0b2b280e214af8284113a02458a27
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.subservice: mainframe-rehosting
+ms.openlocfilehash: 2ca5f0311102c27c1233098a18ff16701b99ea2a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102549177"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950792"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Azure 上に TmaxSoft OpenFrame をインストールする
 

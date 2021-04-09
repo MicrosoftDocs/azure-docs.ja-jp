@@ -4,10 +4,10 @@ description: Service Fabric アプリケーションの開発、デプロイ、�
 ms.topic: conceptual
 ms.date: 1/19/2018
 ms.openlocfilehash: ae0c79cdaafc8fc016d463a01046f0a02121330a
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98785737"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Service Fabric アプリケーションのライフサイクル

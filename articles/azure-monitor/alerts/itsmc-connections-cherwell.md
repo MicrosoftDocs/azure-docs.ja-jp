@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: d1fe5e20c06648aa6efc899fabb3ced3345ab41f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 0f488b047cf1323619d9603204877a55b413c295
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045413"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802473"
 ---
 # <a name="connect-cherwell-with-it-service-management-connector"></a>Cherwell を IT Service Management Connector に接続する
 
@@ -37,7 +37,7 @@ Cherwell 接続を作成するには、次の手順に従います。
 1. Azure Portal で、 **[すべてのリソース]** に移動し、**ServiceDesk(YourWorkspaceName)** を探します
 
 2. **[ワークスペースのデータ ソース]** で、 **[ITSM 接続]** をクリックします。
-    ![新しい接続](/media/itsmc-overview/add-new-itsm-connection.png)
+    ![新しい接続](/azure/azure-monitor/alerts/media/itsmc-connections-scsm/add-new-itsm-connection.png)
 
 3. 右側のウィンドウの上部にある **[追加]** をクリックします。
 

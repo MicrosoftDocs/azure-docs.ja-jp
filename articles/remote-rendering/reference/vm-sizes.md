@@ -7,10 +7,10 @@ ms.date: 05/28/2020
 ms.topic: reference
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0e2687954fb05ce826e780ae0dbd3931d899885f
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99594402"
 ---
 # <a name="server-sizes"></a>サーバーのサイズ

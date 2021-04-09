@@ -7,10 +7,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/25/2020
 ms.openlocfilehash: 4df9543e5e747de640562b7e5be224e257e0cfd1
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92676107"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps で統合サービス環境 (ISE) を管理する
@@ -138,7 +138,7 @@ Premium ISE ベース ユニットの容量は固定されているため、さ�
 
 ### <a name="manual-scale"></a>手動でのスケーリング
 
-1. **[Manual scale]\(手動スケーリング\)** を選択したら、 **追加容量** について、使用するスケーリング ユニット数を選択します。
+1. **[Manual scale]\(手動スケーリング\)** を選択したら、**追加容量** について、使用するスケーリング ユニット数を選択します。
 
    ![目的のスケーリングの種類を選択](./media/ise-manage-integration-service-environment/select-manual-scale-out-units.png)
 
@@ -148,7 +148,7 @@ Premium ISE ベース ユニットの容量は固定されているため、さ�
 
 ### <a name="custom-autoscale"></a>カスタム自動スケーリング
 
-1. **[カスタム自動スケーリング]** を選択したら、 **自動スケーリング設定の名前** について、設定の名前を指定し、必要に応じて、設定が属す Azure リソース グループを選択します。
+1. **[カスタム自動スケーリング]** を選択したら、**自動スケーリング設定の名前** について、設定の名前を指定し、必要に応じて、設定が属す Azure リソース グループを選択します。
 
    ![自動スケーリング設定の名前を指定し、リソース グループを選択](./media/ise-manage-integration-service-environment/select-custom-autoscale.png)
 
@@ -164,9 +164,9 @@ Premium ISE ベース ユニットの容量は固定されているため、さ�
 
      1. **[インスタンスの制限]** で、次の値を指定します。
 
-        * **最小** :使用する処理ユニットの最小数
-        * **Maximum** : 使用する処理ユニットの最大数
-        * **既定** :リソース メトリックの読み取り中に問題が発生した場合は、現在の容量が既定の容量を下回り、自動スケーリングが処理ユニットの既定数に対してスケールアウトされます。 ただし、現在の容量が既定の容量を超えた場合、自動スケーリングはスケールインしません。
+        * **最小**:使用する処理ユニットの最小数
+        * **Maximum**: 使用する処理ユニットの最大数
+        * **既定**:リソース メトリックの読み取り中に問題が発生した場合は、現在の容量が既定の容量を下回り、自動スケーリングが処理ユニットの既定数に対してスケールアウトされます。 ただし、現在の容量が既定の容量を超えた場合、自動スケーリングはスケールインしません。
 
 1. 他の条件を追加するには、 **[スケーリング条件を追加する]** を選択します。
 

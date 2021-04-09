@@ -11,10 +11,10 @@ ms.workload: Infrastructure-services
 ms.date: 11/06/2020
 ms.author: derekol
 ms.openlocfilehash: da6c53675378fcf9d395debe750bb97738763a09
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98059519"
 ---
 # <a name="peering-service-partners"></a>Peering Service パートナー

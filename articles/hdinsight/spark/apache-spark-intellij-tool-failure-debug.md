@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 5abbb26e7582d8ddabb73f3a178cf6d87e24db21
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5422fe324ca1f3ef5bb2d14fb04664c8fb03fe3c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942547"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866235"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Azure Toolkit for IntelliJ を使用した失敗した Spark ジョブのデバッグ (プレビュー)
 
@@ -40,13 +40,13 @@ ms.locfileid: "98942547"
 
    b. メイン ウィンドウから **[Spark Project with Failure Task Debugging Sample(Preview)(Scala)] (失敗したタスク デバッグのサンプルを含む Spark プロジェクト (プレビュー) (Scala))** を選択します。
 
-     ![Intellij のデバッグ プロジェクトの作成](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
+     :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png" alt-text="Intellij のデバッグ プロジェクトの作成" border="true":::
 
    c. **[次へ]** を選択します。
 
 2. **[New Project]\(新しいプロジェクト\)** ウィンドウで、次の手順を実行します。
 
-   ![Intellij の新しいプロジェクト、Spark バージョンの選択](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-project.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-project.png" alt-text="Intellij の新しいプロジェクト、Spark バージョンの選択" border="true":::
 
    a. プロジェクト名とプロジェクトの場所を入力します。
 
@@ -64,25 +64,25 @@ Spark Scala/Java アプリケーション作成した後、次の手順を実行
 
 1. **[構成の追加]** をクリックして **[実行/デバッグ構成]** ウィンドウを開きます。
 
-   ![HDI Intellij の構成の追加](./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png" alt-text="HDI Intellij の構成の追加" border="true":::
 
 2. **[実行/デバッグ構成]** ダイアログ ボックスで、プラス記号 ( **+** ) を選択します。 次に **[HDInsight での Apache Spark]** オプションを選択します。
 
-   ![Intellij の新規構成の追加](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png" alt-text="Intellij の新規構成の追加" border="true":::
 
 3. **[Remotely Run in Cluster]\(クラスターでリモート実行\)** タブに切り替えます。 **[名前]** 、 **[Spark cluster]\(Spark クラスター\)** 、 **[Main class name]\(メイン クラス名\)** に情報を入力します。 ツールでは、**Executor** を使用したデバッグがサポートされています。 **[numExectors]** は既定値が 5 ですが、3 より大きい値に設定することはお勧めできません。 実行時間を短縮するために、 **[job Configurations] (ジョブ構成)** に **[spark.yarn.maxAppAttempts]** を追加し、その値を 1 に設定できます。 **[OK]** ボタンをクリックして構成を保存します。
 
-   ![Intellij の新規構成の実行/デバッグ](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png" alt-text="Intellij の新規構成の実行/デバッグ" border="true":::
 
 4. 指定した名前で構成が保存されます。 構成の詳細を表示するには、構成名を選択します。 変更するには、 **[構成の編集]** を選択します。
 
 5. 構成の設定を完了したら、リモート クラスターに対してプロジェクトを実行できます。
 
-   ![Intellij のリモート Spark ジョブのデバッグ (リモート実行ボタン)](./media/apache-spark-intellij-tool-failure-debug/hdinsight-local-run-configuration.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-local-run-configuration.png" alt-text="Intellij のリモート Spark ジョブのデバッグ (リモート実行ボタン)" border="true":::
 
 6. 出力ウィンドウからアプリケーション ID を確認できます。
 
-   ![Intellij のリモート Spark ジョブのデバッグ (リモート実行結果)](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png" alt-text="Intellij のリモート Spark ジョブのデバッグ (リモート実行結果)" border="true":::
 
 ## <a name="download-failed-job-profile"></a>失敗したジョブのプロファイルをダウンロードする
 
@@ -90,9 +90,9 @@ Spark Scala/Java アプリケーション作成した後、次の手順を実行
 
 1. **Microsoft Azure Storage Explorer** を開き、失敗したジョブに対するクラスターの HDInsight アカウントを見つけて、失敗したジョブのリソースを、対応する場所である **\hdp\spark2-events\\.spark-failures\\\<application ID>** からローカル フォルダーにダウンロードします。 ダウンロードの進行状況が **[アクティビティ]** ウィンドウに表示されます。
 
-   ![Azure Storage Explorer での失敗のダウンロード](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png" alt-text="Azure Storage Explorer での失敗のダウンロード" border="true":::
 
-   ![Azure Storage Explorer でのダウンロードの成功](./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png" alt-text="Azure Storage Explorer でのダウンロードの成功" border="true":::
 
 ## <a name="configure-local-debugging-environment-and-debug-on-failure"></a>ローカルのデバッグ環境を構成して失敗をデバッグする
 
@@ -100,13 +100,13 @@ Spark Scala/Java アプリケーション作成した後、次の手順を実行
 
 1. IntelliJ IDEA で、**Spark Failure Debug** 構成ファイルを作成し、 **[Spark Job Failure Context location] (Spark ジョブの失敗したコンテキストの場所)** フィールドで前にダウンロードされた失敗したジョブのリソースから FTD ファイルを選択します。
 
-   ![失敗構成の作成](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png" alt-text="失敗構成の作成" border="true":::
 
 1. ツールバーのローカル実行ボタンをクリックすると、エラーが [実行] ウィンドウに表示されます。
 
-   ![run-failure-configuration1](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png" alt-text="run-failure-configuration1" border="true":::
 
-   ![run-failure-configuration2](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png" alt-text="run-failure-configuration2" border="true":::
 
 1. ログに示されているようにブレークポイントを設定した後、ローカル デバッグ ボタンをクリックして、IntelliJ の通常の Scala/Java プロジェクトと同様にローカル デバッグを実行します。
 

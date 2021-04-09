@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: 5ea58cc3d9f3615a74249b36f3f9ffb79caddda1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88212246"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions における Mobile Apps のバインド 
@@ -158,7 +158,7 @@ JavaScript 関数では、レコードは `context.bindings.<name>` オブジェ
 
 C# および F# の関数では、入力レコード (名前付き入力パラメーター) に加えられた変更は、関数が正常に終了したときに、テーブルに自動的に送り返されます。 JavaScript 関数ではレコードを変更できません。
 
-## <a name="output"></a>Output
+## <a name="output"></a>出力
 
 Mobile Apps 出力バインドを使用して、Mobile Apps テーブルにレコードを書き込みます。  
 

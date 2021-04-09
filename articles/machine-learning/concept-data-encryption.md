@@ -11,10 +11,10 @@ author: jhirono
 ms.reviewer: larryfr
 ms.date: 11/09/2020
 ms.openlocfilehash: 13d5c02fbb4ae06c7a5279ab7c5d3af90c263f71
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102521069"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの暗号化

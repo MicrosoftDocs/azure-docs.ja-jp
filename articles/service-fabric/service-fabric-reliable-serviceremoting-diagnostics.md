@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
 ms.openlocfilehash: 9c7d466d6e8fd36b4445966b92ee753becf96c64
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98791763"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Reliable Service Remoting の診断とパフォーマンス監視
@@ -91,5 +91,5 @@ Reliable Service ランタイムは、サービス メソッドの実行に関�
 | Service Fabric サービス |応答のシリアル化の平均時間 (ミリ秒) |クライアントに応答を送信する前に、サービスでサービス応答メッセージをシリアル化するのにかかった時間 (ミリ秒単位) |
 
 ## <a name="next-steps"></a>次のステップ
-* [コード サンプル](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
+* [サンプル コード](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
 * [PerfView での EventSource プロバイダー](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

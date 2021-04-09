@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: bcdb91d7516acb8f987a3f302c04fbd2d8594fc7
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019773"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Azure REST API を使用して Azure Network Watcher でパケット キャプチャを管理する
@@ -32,7 +32,7 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 
 - [**パケット キャプチャを取得する**](#get-a-packet-capture)
 - [**すべてのパケット キャプチャを一覧表示する**](#list-all-packet-captures)
-- [**パケット キャプチャの状態をクエリする**](#query-packet-capture-status)
+- [**パケット キャプチャの状態のクエリを実行する**](#query-packet-capture-status)
 - [**パケット キャプチャを開始する**](#start-packet-capture)
 - [**パケット キャプチャを停止する**](#stop-packet-capture)
 - [**パケット キャプチャを削除する**](#delete-packet-capture)
@@ -299,8 +299,8 @@ armclient delete "https://management.azure.com/subscriptions/${subscriptionId}/R
 > [!NOTE]
 > パケット キャプチャを削除しても、ストレージ アカウント内のファイルは削除されません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure BLOB ストレージを使用する](../storage/blobs/storage-quickstart-blobs-dotnet.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、[ストレージ エクスプローラー](https://storageexplorer.com/)に関するページを参照してください。
+Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure BLOB ストレージを使用する](../storage/blobs/storage-quickstart-blobs-dotnet.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、次のリンクを参照してください。[Storage Explorer](https://storageexplorer.com/)
 
 [アラートがトリガーするパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、仮想マシンのアラートを使用してパケット キャプチャを自動化する方法を確認する

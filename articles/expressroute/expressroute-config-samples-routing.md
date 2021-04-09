@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: duau
 ms.openlocfilehash: 3bc850f02884ae0547c2ecf56a46a57a4e66a752
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89397408"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>ルーティングをセットアップして管理するためのルーター構成のサンプル

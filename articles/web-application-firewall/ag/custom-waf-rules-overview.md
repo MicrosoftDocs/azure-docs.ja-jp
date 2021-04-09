@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: c0f802f5113e38e811c110ee913099e76fa7be0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a5f64687937479d65f94010bbe4f0a5f1cf5ca2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81383812"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102548225"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure Application Gateway の Web アプリケーション ファイアウォール v2 カスタム規則
 
@@ -22,11 +22,11 @@ Azure Application Gateway の Web アプリケーション ファイアウォー
 
 たとえば、範囲 192.168.5.4/24 内の IP アドレスからのすべての要求をブロックできます。 この規則では、演算子は *IPMatch*、matchValues は IP アドレス範囲 (192.168.5.4/24)、アクションはトラフィックのブロックです。 規則の名前と優先度も設定します。
 
-カスタム規則は、セキュリティ ニーズに対応する、より高度な規則を作成するための複合ロジックの使用をサポートします。 たとえば、(条件 1 **かつ**条件 2) **または**条件 3) のようなものです。 これは、条件 1 **かつ**条件 2 が満たされている場合、**または**条件 3 が満たされている場合、WAF はカスタム規則で指定されたアクションを実行することを意味します。
+カスタム規則は、セキュリティ ニーズに対応する、より高度な規則を作成するための複合ロジックの使用をサポートします。 たとえば、(条件 1 **かつ** 条件 2) **または** 条件 3) のようなものです。 これは、条件 1 **かつ** 条件 2 が満たされている場合、**または** 条件 3 が満たされている場合、WAF はカスタム規則で指定されたアクションを実行することを意味します。
 
 同じ規則内の異なる一致条件は常に "**かつ**" を使用して結合されます。 たとえば、特定の IP アドレスからのトラフィックを、特定のブラウザーが使用している場合にのみブロックします。
 
-2 つの異なる条件を "**または**" で結合したい場合、2 つの条件が異なる規則に含まれている必要があります。 たとえば、特定の IP アドレスからのトラフィックをブロックするか、または特定のブラウザーが使用されている場合にブロックします。
+2 つの異なる条件の間で "**または**" を使用する場合、2 つの条件が異なる規則に含まれている必要があります。 たとえば、特定の IP アドレスからのトラフィックをブロックするか、または特定のブラウザーが使用されている場合にブロックします。
 
 > [!NOTE]
 > WAF のカスタム規則数の上限は 100 です。 Application Gateway の制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)」を参照してください。
@@ -73,7 +73,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
               }
             ],
             "operator": "Contains",
-            "negationConditon": false,
+            "negationCondition": false,
             "matchValues": [
               "evilbot"
             ],

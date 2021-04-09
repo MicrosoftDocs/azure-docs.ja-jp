@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 77d756bc0c7bbdfa38bb1262638ef85b051fc234
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b50b98095cdfe0e6ec19c89b57887ebc4a0f6317
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026490"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "101713050"
 ---
 # <a name="getting-started-with-voice-assistants-on-windows"></a>Windows の音声アシスタントの概要
 
@@ -34,7 +34,7 @@ Windows 用の音声アシスタントの開発を開始するには、適切な
 
 Windows 上で完全にカスタマイズされた音声エージェントに必要なリソースには、Microsoft のリソースが必要なものがあります。 [UWP 音声アシスタント サンプル](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample)には、初期の開発とテストのためにこうしたリソースのサンプル バージョンが用意されているため、初期の開発の場合はこのセクションは不要です。
 
-- **キーワード モデル:** 音声によるアクティブ化には、.bin ファイル形式の Microsoft のキーワード モデルが必要です。 UWP 音声アシスタント サンプルで用意されている .bin ファイルは、キーワード "Contoso" でトレーニングされています。
+- **キーワード モデル:** 音声によるアクティブ化には、.bin ファイル形式の Microsoft のキーワード モデルが必要です。 UWP 音声アシスタント サンプルで用意されている .bin ファイルは、キーワード *Contoso* でトレーニングされています。
 - **制限付きアクセス機能トークン:** ConversationalAgent API はマイク オーディオへのアクセスを提供するため、制限付きアクセス機能の制限の下で保護されています。  制限付きアクセス機能を使用するには、アプリケーションのパッケージ ID に接続された制限付きアクセス機能トークンを Microsoft から入手する必要があります。
 
 ## <a name="establish-a-dialog-service"></a>ダイアログ サービスを確立する

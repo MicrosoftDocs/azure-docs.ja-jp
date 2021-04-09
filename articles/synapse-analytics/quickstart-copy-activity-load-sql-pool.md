@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
 ms.openlocfilehash: 568c738284a3d1b54ba907a973139fbced11f139
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98222698"
 ---
 # <a name="quickstart-load-data-into-dedicated-sql-pool-using-the-copy-activity"></a>クイックスタート: コピー アクティビティを使用してデータを専用 SQL プールに読み込む

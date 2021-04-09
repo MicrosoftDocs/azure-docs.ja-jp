@@ -8,14 +8,16 @@ ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 53d1504b03e3dbe99cbdeac23df2623a5390b3d9
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: d88d35eece698c7d0079221ae3c76058d1877948
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635423"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103200472"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>モジュールにデバイスのローカル ストレージへのアクセスを許可する
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure Storage サービスを使用して、またはデバイスのコンテナー ストレージにデータを格納することに加えて、特にオフラインで操作しているときは、信頼性を向上させるために、ホスト IoT Edge デバイス自体のストレージを専用で使用することもできます。
 

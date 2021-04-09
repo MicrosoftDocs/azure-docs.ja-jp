@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.openlocfilehash: 6463f30bc79d937bd5a51a5c8c78fbdd72954b1e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97364546"
 ---
 # <a name="best-practices-for-building-an-application-with-azure-database-for-postgresql"></a>Azure Database for PostgreSQL を使用してアプリケーションを構築するためのベスト プラクティス

@@ -4,10 +4,10 @@ description: このガイドは、Azure Lab Services を使用してラボ ア�
 ms.topic: article
 ms.date: 10/20/2020
 ms.openlocfilehash: 3ad3ee38a6c08a6af85822d76012cc6dfc34ff4e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96462469"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services - 管理者ガイド
@@ -271,7 +271,7 @@ Azure Lab Services では、ラボが配置されている[地域内のターゲ
 
 共有イメージ ギャラリーには、特定のリージョンへのレプリケーションを削除するオプションがありますが、コストを削減する方法としてレプリケーションを削除しないでください。 レプリケーションを変更すると、Azure Lab Services で、共有イメージ ギャラリー内に保存されたイメージから VM を発行することができなくなるおそれがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ラボの設定と管理の詳細については、以下を参照してください。
 

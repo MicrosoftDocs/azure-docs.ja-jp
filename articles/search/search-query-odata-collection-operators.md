@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 4c1243d5d9122539466e94b6bbfdd5ced588e69a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88934907"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Azure Cognitive Search での OData コレクション演算子 - `any` と `all`
@@ -60,7 +60,7 @@ lambda_expression ::= identifier ':' boolean_expression
   - `any` を使用する式からは、コレクションの少なくとも 1 つの要素に対して述語が true の場合、`true` が返されます。
 - コレクション フィルターの 3 番目の形式では、ラムダ式なしで `any` を使用して、コレクション フィールドが空かどうかがテストされます。 コレクションに要素が含まれている場合は、`true` が返されます。 コレクションが空の場合は、`false` が返されます。
 
-コレクション フィルター内の**ラムダ式**は、プログラミング言語のループ本体のようなものです。 これにより、反復中にコレクションの現在の要素を保持する、**範囲変数**と呼ばれる変数が定義されます。 また、コレクションの各要素の範囲変数に適用されるフィルター条件である別のブール式も定義されます。
+コレクション フィルター内の **ラムダ式** は、プログラミング言語のループ本体のようなものです。 これにより、反復中にコレクションの現在の要素を保持する、**範囲変数** と呼ばれる変数が定義されます。 また、コレクションの各要素の範囲変数に適用されるフィルター条件である別のブール式も定義されます。
 
 ## <a name="examples"></a>例
 

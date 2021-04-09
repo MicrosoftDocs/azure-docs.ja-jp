@@ -2,29 +2,58 @@
 title: Form Recognizer の新機能
 titleSuffix: Azure Cognitive Services
 description: Form Recognizer API の最新の変更点を把握します。
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.author: pafarley
-ms.openlocfilehash: f194f0bc7ec8d0bf2265c0863f93bfd11337b5f4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/15/2021
+ms.author: lajanuar
+ms.openlocfilehash: 81115f5a9ed802f1d07c45ec928dc4b84ea2917b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703390"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048750"
 ---
+<!-- markdownlint-disable MD024 -->
 # <a name="whats-new-in-form-recognizer"></a>Form Recognizer の新機能
 
 Form Recognizer サービスは、継続的に更新されます。 この記事で、機能の強化、修正、ドキュメントの更新についての最新情報を入手してください。
+
+## <a name="march-2021"></a>2021 年 3 月
+
+**Form Recognizer v2.1 パブリック プレビュー 3 が利用可能になりました。** v2.1-preview.3 がリリースされました。次の機能を備えています。
+
+- **新しい事前構築済み ID モデル** 新しい事前構築済み ID モデルを使用すると、お客様は ID を取得して構造化データを返し、処理を自動化できます。 強力な光学式文字認識 (OCR) 機能と ID 理解モデルを組み合わせて、パスポートや米国の運転免許証から、名前、生年月日、発行日、有効期限などの重要な情報を抽出することができます。
+
+  [事前作成された ID モデルの詳細情報](concept-identification-cards.md)
+
+   :::image type="content" source="./media/id-canada-passport-example.png" alt-text="パスポートの例" lightbox="./media/id-canada-passport-example.png":::
+
+- **事前構築済み請求書モデルの品目抽出** - 事前構築済み請求書モデルは品目抽出をサポートするようになりました。完全な項目とその一部 (説明、金額、数量、製品 ID、日付など) が抽出されるようになりました。 簡単な API または SDK の呼び出しにより、請求書から有用なデータ (テキスト、テーブル、キーと値のペア、品目) を抽出できます。
+
+   [事前作成された請求書モデルの詳細情報](concept-invoices.md)
+
+- **監視対象テーブルのラベル付けとトレーニング、空の値のラベル付け** - Form Recognizer の [最先端のディープ ラーニング自動テーブル抽出機能](https://techcommunity.microsoft.com/t5/azure-ai/enhanced-table-extraction-from-documents-with-form-recognizer/ba-p/2058011)に加えて、お客様がテーブルに対してラベル付けとトレーニングを行えるようになりました。 この新しいリリースには、品目とテーブル (動的と固定) にラベルを付けてトレーニングし、キーと値のペアと品目を抽出するカスタム モデルをトレーニングする機能が含まれています。 モデルのトレーニングが完了すると、モデルにより documentResults セクションの JSON 出力の一部として品目が抽出されます。
+
+    :::image type="content" source="./media/table-labeling.png" alt-text="テーブルのラベル付け" lightbox="./media/table-labeling.png":::
+
+    テーブルにラベルを付けることに加え、次は空の値と領域にラベルを付けます。トレーニング セット内の一部のドキュメントに特定のフィールドの値がない場合、これを使用して、分析済みのドキュメントから値が適切に抽出されることがモデルによって認識されるようになります。
+
+- **66 の新しい言語のサポート** - Form Recognizer の Layout API とカスタム モデルは 73 の言語をサポートするようになりました。
+
+  [Form Recognizer の言語サポートの詳細](language-support.md)
+
+- **自然な読み取り順序、手書きの分類、およびページ選択** - この更新により、既定の左から右、また上から下の順序ではなく、自然な読み取り順序でテキスト行の出力を取得することを選択できます。 新しい readingOrder クエリ パラメーターを使用して "自然な" 値に設定すると、より人間にとってわかりやすい読み取り順序の出力が得られます。 さらに、ラテン語の場合、Form Recognizer により、テキスト行が手書きスタイルかどうかが分類され、信頼スコアが与えられます。
+
+- **事前構築済み領収書モデルの品質改善** この更新プログラムには、特に品目の抽出に関する、事前構築済み領収書モデルの品質改善が多数含まれています。
 
 ## <a name="november-2020"></a>2020 年 11 月
 
 ### <a name="new-features"></a>新機能
 
-**Form Recognizer v2.1 パブリック プレビュー 2 が利用可能になりました。** V2.1-preview.2 がリリースされました。次の機能を備えています。 
+**Form Recognizer v2.1 パブリック プレビュー 2 が利用可能になりました。** v2.1-preview.2 がリリースされました。次の機能を備えています。 
 
 - **新しく事前作成された請求書モデル** - 新しく事前作成された請求書モデルにより、顧客はさまざまな形式で請求書を取得し、構造化されたデータを返して、請求書の処理を自動化することができます。 強力な光学式文字認識 (OCR) 機能と、請求書を解釈するディープ ラーニング モデルを組み合わせて、英語の請求書から重要な情報を抽出します。 顧客、仕入先、請求書 ID、請求書の期限、合計、請求額、課税額、出荷先、請求先などのテキスト、テーブル、情報が抽出されます。
 
@@ -68,36 +97,33 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
 - **[事前に作成された領収書の新しいロケール](concept-receipts.md)** 。EN-US に加えて、EN-AU、EN-CA、EN-GB、EN-IN でもサポートが利用できるようになりました。
 - **品質向上**。`Layout`、`Train Custom Model` -  _[ラベルを使用しないトレーニング]_ 、および _[ラベルを使用したトレーニング]_ が対象となります。
 
-
 **v2.0** には、次の更新が含まれています。
 
 - NET、Python、Java、および JavaScript 用の[クライアント ライブラリ](quickstarts/client-library.md)が一般提供になりました。 
 
-
 **新しいサンプル** は GitHub で入手できます。 
+
 - [知識抽出レシピ - Forms Playbook](https://github.com/microsoft/knowledge-extraction-recipes-forms) では、Form Recognizer の実際のカスタマー エンゲージメントからベスト プラクティスが収集され、これらのプロジェクトの開発時に使用する便利なコード サンプル、チェックリスト、およびサンプル パイプラインが提供されます。 
 - [サンプルラベル付けツール](https://github.com/microsoft/OCR-Form-Tools) が、v2.1 の新機能をサポートするように更新されました。 ツールの概要については、こちらの[クイックスタート](quickstarts/label-tool.md)を参照してください。 
 - [インテリジェント キオスク](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) Form Recognizer サンプルでは、`Analyze Receipt` と `Train Custom Model` -  _[ラベルを使用しないトレーニング]_ を統合する方法について示します。
 
-
-
 ## <a name="july-2020"></a>2020 年 7 月
 
 ### <a name="new-features"></a>新機能
-
+<!-- markdownlint-disable MD004 -->
 * **v2.0 リファレンスが使用可能** [v2.0 API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)と、[.NET](/dotnet/api/overview/azure/ai.formrecognizer-readme)、[Python](/python/api/overview/azure/)、[Java](/java/api/overview/azure/ai-formrecognizer-readme)、および [JavaScript](/javascript/api/overview/azure/) 用のアップデートされた SDK を参照できます。
 * **テーブルの機能強化と抽出の機能強化** には、精度の向上とテーブル抽出の機能強化が含まれています。特に、"_ラベルのないカスタム トレーニング_" でテーブルのヘッダーと構造を学習する機能が追加されています。 
 
 * **通貨のサポート** - グローバル通貨記号の検出と抽出。
 * **Azure Gov** - Form Recognizer が、Azure Gov でも使用できるようになりました。
 * **強化されたセキュリティ機能**: 
-   * **Bring Your Own Key** - Form Recognizer は、クラウドに永続化されたときにデータを自動的に暗号化して保護し、セキュリティとコンプライアンスに関する組織のコミットメントを満たすのに役立つようにします。 サブスクリプションでは、Microsoft が管理する暗号化キーが既定で使用されます。 ユーザー独自の暗号化キーを使用してサブスクリプションを管理することもできるようになりました。 [カスタマー マネージド キー (Bring Your Own Key (BYOK) とも呼ばれます)](./encrypt-data-at-rest.md) を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます また、データを保護するために使われる暗号化キーを監査することもできます。  
-   * **プライベート エンドポイント** – 仮想ネットワーク (VNet) を使用して、[Private Link を介してデータに安全にアクセスできるようになります。](../../private-link/private-link-overview.md)
-
+  * **Bring Your Own Key** - Form Recognizer は、クラウドに永続化されたときにデータを自動的に暗号化して保護し、セキュリティとコンプライアンスに関する組織のコミットメントを満たすのに役立つようにします。 サブスクリプションでは、Microsoft が管理する暗号化キーが既定で使用されます。 ユーザー独自の暗号化キーを使用してサブスクリプションを管理することもできるようになりました。 [カスタマー マネージド キー (Bring Your Own Key (BYOK) とも呼ばれます)](./encrypt-data-at-rest.md) を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます また、データを保護するために使われる暗号化キーを監査することもできます。  
+  * **プライベート エンドポイント** – 仮想ネットワーク (VNet) を使用して、[Private Link を介してデータに安全にアクセスできるようになります。](../../private-link/private-link-overview.md)
 
 ## <a name="june-2020"></a>2020 年 6 月
 
 ### <a name="new-features"></a>新機能
+
 * **クライアント SDK への CopyModel API の追加** - クライアント SDK を使用して、サブスクリプション間でモデルをコピーできるようになりました。 この機能の全般的な情報については、[モデルのバックアップと復旧](./disaster-recovery.md)に関する記事を参照してください。
 * **Azure Active Directory の統合** - Azure AD の資格情報を使用して、SDK で Form Recognizer クライアント オブジェクトを認証できるようになりました。
 * **SDK 固有の変更** - これには、小さな機能追加と破壊的な変更の両方が含まれます。 詳細については、SDK の変更ログを参照してください。
@@ -109,24 +135,26 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
 ## <a name="april-2020"></a>2020 年 4 月
 
 ### <a name="new-features"></a>新機能
+
 * **Form Recognizer API v2.0 パブリック プレビューの SDK サポート** - 今月、サービス サポートが拡張され、Form Recognizer v2.0 (プレビュー) リリースのプレビュー SDK が含まれるようになりました。 以下のリンクを使用して、任意の言語で作業を開始してください。 
-   * [.NET SDK](/dotnet/api/overview/azure/ai.formrecognizer-readme)
-   * [Java SDK](/java/api/overview/azure/ai-formrecognizer-readme)
-   * [Python SDK](/python/api/overview/azure/ai-formrecognizer-readme)
-   * [JavaScript SDK](/javascript/api/overview/azure/ai-form-recognizer-readme)
+  * [.NET SDK](/dotnet/api/overview/azure/ai.formrecognizer-readme)
+  * [Java SDK](/java/api/overview/azure/ai-formrecognizer-readme)
+  * [Python SDK](/python/api/overview/azure/ai-formrecognizer-readme)
+  * [JavaScript SDK](/javascript/api/overview/azure/ai-form-recognizer-readme)
 
   新しい SDK では、Form Recognizer 用の v2.0 REST API のすべての機能がサポートされています。 たとえば、モデルをラベルの有無にかかわらずトレーニングしたり、フォームからテキスト、キーと値のペア、およびテーブルを抽出したり、事前構築済みの領収書サービスを使用してレシートからデータを抽出したり、レイアウト サービスを使用してドキュメントからテキストやテーブルを抽出したりすることができます。 SDK に関するフィードバックは、[SDK フィードバック フォーム](https://aka.ms/FR_SDK_v1_feedback)を通じて共有できます。
- 
+
 * **カスタム モデルのコピー** 新しいカスタム モデルのコピー機能を使用して、リージョン間やサブスクリプション間でモデルをコピーできるようになりました。 Copy Custom Model API を呼び出す前に、ターゲット リソース エンドポイントに対してコピー承認操作を呼び出して、ターゲット リソースにコピーするための承認を取得する必要があります。
-   * [コピー承認を生成する](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModelAuthorization) REST API
-   * [カスタム モデルをコピーする](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModel) REST API 
+
+  * [コピー承認を生成する](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModelAuthorization) REST API
+  * [カスタム モデルをコピーする](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModel) REST API 
 
 ### <a name="security-improvements"></a>セキュリティの強化
 
 * FormRecognizer でカスタマー マネージド キーが利用できるようになりました。 詳細については、[Form Recognizer による保存データの暗号化](./encrypt-data-at-rest.md)に関するページを参照してください。
 * Azure Active Directory を使用した Azure リソースへのアクセスにマネージド ID を使用します。 詳細については、[マネージド ID に対するアクセスの承認](../authentication.md#authorize-access-to-managed-identities)に関するページを参照してください。
 
-## <a name="march-2020"></a>2020 年 3 月 
+## <a name="march-2020"></a>2020 年 3 月
 
 ### <a name="new-features"></a>新機能
 

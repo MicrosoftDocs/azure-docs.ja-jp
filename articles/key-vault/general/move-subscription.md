@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 23be8e667d435c2d91d32ebeac30b1e96b45a77e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: a84627b2b426385d21ad72b85780db86e7dd5ee3
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790293"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096082"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault を別のサブスクリプションに移動する
 
@@ -106,9 +106,9 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 - [PowerShell を使用してアクセス ポリシーを割り当てる](assign-access-policy-powershell.md)
 
 ロールの割り当てを追加する方法については、以下を参照してください。
-- [ポータルを使用してロールの割り当てを追加する](../../role-based-access-control/role-assignments-portal.md)
-- [Azure CLI を使用してロールの割り当てを追加する](../../role-based-access-control/role-assignments-cli.md)
-- [PowerShell を使用してロールの割り当てを追加する](../../role-based-access-control/role-assignments-powershell.md)
+- [Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)
+- [Azure CLI を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-cli.md)
+- [PowerShell を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-powershell.md)
 
 
 ### <a name="update-managed-identities"></a>マネージド ID を更新する

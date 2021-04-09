@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.openlocfilehash: 230f7fd9c62f657ce8ab893db2256808dce9a7ba
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92518366"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>チュートリアル: Azure Active Directory と Symantec Web Security Service (WSS) の統合
@@ -44,7 +44,7 @@ Symantec Web Security Service (WSS) と Azure AD の統合を構成するには�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Symantec Web Security Service (WSS) では、 **IDP** によって開始される SSO がサポートされます
+* Symantec Web Security Service (WSS) では、**IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-symantec-web-security-service-wss-from-the-gallery"></a>ギャラリーからの Symantec Web Security Service (WSS) (WSS) の追加
 
@@ -64,13 +64,13 @@ Azure AD への Symantec Web Security Service (WSS) の統合を構成するに�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Symantec Web Security Service (WSS)** 」と入力し、結果ウィンドウで「 **Symantec Web Security Service (WSS)** 」を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Symantec Web Security Service (WSS)**」と入力し、結果ウィンドウで「**Symantec Web Security Service (WSS)**」を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Symantec Web Security Service (WSS)](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Symantec Web Security Service (WSS) で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Symantec Web Security Service (WSS) で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Symantec Web Security Service (WSS) 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Symantec Web Security Service (WSS) での Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -88,7 +88,7 @@ Symantec Web Security Service (WSS) での Azure AD シングル サインオン
 
 Symantec Web Security Service (WSS) で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Symantec Web Security Service (WSS)** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Symantec Web Security Service (WSS)** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -109,7 +109,7 @@ Symantec Web Security Service (WSS) で Azure AD シングル サインオンを
     b. **[応答 URL]** ボックスに、`https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost` という URL を入力します。
 
     > [!NOTE]
-    > **ID** と **応答 URL** の値がなんらかの理由で有効でない場合には、 [Symantec Web Security Service (WSS) クライアント サポート チーム](https://www.symantec.com/contact-us)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > **ID** と **応答 URL** の値がなんらかの理由で有効でない場合には、[Symantec Web Security Service (WSS) クライアント サポート チーム](https://www.symantec.com/contact-us)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -135,9 +135,9 @@ Symantec Web Security Service (WSS) 側にシングル サインオンを構成�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -148,11 +148,11 @@ Symantec Web Security Service (WSS) 側にシングル サインオンを構成�
 
 このセクションでは、Britta Simon に Symantec Web Security Service (WSS) へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Symantec Web Security Service (WSS)]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Symantec Web Security Service (WSS)]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、「 **Symantec Web Security Service (WSS)** 」と入力して選択します。
+2. アプリケーションの一覧で、「**Symantec Web Security Service (WSS)**」と入力して選択します。
 
     ![アプリケーションの一覧の Symantec Web Security Service (WSS) リンク](common/all-applications.png)
 

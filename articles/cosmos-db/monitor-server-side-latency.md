@@ -7,10 +7,10 @@ author: kanshiG
 ms.author: govindk
 ms.date: 04/07/2020
 ms.openlocfilehash: ec6a9db63504958640137fcd0fcfc904eb01afa5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93074731"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>Azure Cosmos DB のコンテナーまたはアカウントでの操作に対するサーバー側の待機時間を監視する方法
@@ -44,9 +44,9 @@ Azure Monitor for Azure Cosmos DB では、アカウントを監視したり、�
 
 ## <a name="filters-for-server-side-latency"></a>サーバー側の待機時間のフィルター
 
-メトリックを特定の **CollectionName** 、 **ConnectionMode** 、 **DatabaseName** 、 **OperationType** 、 **Region** 、 **PublicAPIType** でフィルター処理してグラフを表示することもできます。 
+メトリックを特定の **CollectionName**、**ConnectionMode**、**DatabaseName**、**OperationType**、**Region**、**PublicAPIType** でフィルター処理してグラフを表示することもできます。 
 
-メトリックをフィルター処理するには、 **[フィルターの追加]** を選択し、 **PublicAPIType** などの必要なプロパティを選択して、値 **sql** を選択します。 **OperationType** に対して別のフィルターを追加します。 その後、グラフには、選択した期間におけるさまざまな操作のサーバー側待機時間が表示されます。 ストアド プロシージャを介して実行された操作は、ログに記録されないため、OperationType メトリックでは使用できません。
+メトリックをフィルター処理するには、 **[フィルターの追加]** を選択し、**PublicAPIType** などの必要なプロパティを選択して、値 **sql** を選択します。 **OperationType** に対して別のフィルターを追加します。 その後、グラフには、選択した期間におけるさまざまな操作のサーバー側待機時間が表示されます。 ストアド プロシージャを介して実行された操作は、ログに記録されないため、OperationType メトリックでは使用できません。
 
 次の図に示すように、各操作に対する **サーバー側待機時間** メトリックが表示されます。
 

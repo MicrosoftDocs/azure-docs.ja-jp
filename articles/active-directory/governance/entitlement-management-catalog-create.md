@@ -3,7 +3,7 @@ title: エンタイトルメント管理でリソースのカタログを作成�
 description: Azure Active Directory エンタイトルメント管理でリソースとアクセス パッケージの新しいコンテナーを作成する方法を説明します。
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: HANKI
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
 ms.date: 12/23/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b87fdd7c73d089c46d456491c02d49cb6f8883d
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: d21783f0ef32289aad4b7d136dc8200d61fc0852
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97745965"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592933"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でリソースのカタログを作成して管理する
 
@@ -80,6 +80,14 @@ Microsoft Graph を使用して、カタログを作成することもできま�
 1. 作業が終了したら、 **[追加]** をクリックします。
 
     これらのリソースをカタログ内のアクセス パッケージに含めることができるようになりました。
+
+### <a name="add-a-multi-geo-sharepoint-site"></a>複数の地理的な SharePoint サイトを追加する
+
+1. SharePoint に対して [Multi-Geo](/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365) が有効になっている場合、サイトの選択元の環境を選択します。
+    
+    :::image type="content" source="media/entitlement-management-catalog-create/sharepoint-multigeo-select.png" alt-text="アクセス パッケージ - リソース ロールの追加 - SharePoint Multi-Geo サイトの選択":::
+
+1. 次に、カタログに追加するサイトを選択します。 
 
 ### <a name="adding-a-resource-to-a-catalog-programmatically"></a>プログラムによるカタログへのリソースの追加
 

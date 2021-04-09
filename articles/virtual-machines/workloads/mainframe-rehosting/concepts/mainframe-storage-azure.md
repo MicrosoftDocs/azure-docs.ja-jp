@@ -5,13 +5,14 @@ author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
-ms.service: storage
-ms.openlocfilehash: 8f57210ff6b65ee3a893fb344a48629466e90004
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
+ms.openlocfilehash: 27f625e7fced5ff710a6fa0e8b2045a8c5434258
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095357"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954362"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>メインフレーム ストレージを Azure に移動する
 
@@ -113,7 +114,7 @@ BLOB ストレージは、Azure 上で最大のストレージ容量を提供し
 ### <a name="ibm-resources"></a>IBM リソース
 
 - [IBM Z 上の Parallel Sysplex](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
-- [IBM CICS と結合ファシリティ: 基本を超えて](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
+- [IBM CICS and the Coupling Facility: Beyond the Basics](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
 - [Db2 pureScale 機能のインストールに必要なユーザーを作成する](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 - [Db2icrt - インスタンス コマンドを作成する](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
 - [Db2 pureScale クラスター化データベース ソリューション](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)

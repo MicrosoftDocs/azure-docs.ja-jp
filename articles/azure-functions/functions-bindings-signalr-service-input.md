@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 3f3a99c83d4a18f3085419b91be947dd67f8eec4
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97763321"
 ---
 # <a name="signalr-service-input-binding-for-azure-functions"></a>Azure Functions における SignalR Service の入力バインド

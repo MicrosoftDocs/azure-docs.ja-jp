@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: daperlov
 ms.openlocfilehash: 5d555d7bc4d3aae9c016cacbe17b68c30859d99a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100372282"
 ---
 # <a name="use-github-to-read-common-data-model-entity-references"></a>GitHub を使用して Common Data Model エンティティ参照を読み取る

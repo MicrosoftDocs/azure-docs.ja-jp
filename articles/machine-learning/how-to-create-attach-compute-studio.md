@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1
-ms.openlocfilehash: ab7a74166e85f2ba9fd73e7323cf9cd200cf32e4
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 4194c71823e1affde1dcae47fd7e64668b57c0cf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031030"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103149360"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning スタジオでモデルのトレーニングとデプロイのためのコンピューティング先を作成する
 
@@ -147,7 +147,7 @@ Azure Machine Learning ワークスペースの外部に作成されたコンピ
 
 1. コンピューティング ターゲットの名前を入力します。 
 1. アタッチするコンピューティングの種類を選択します。 Azure Machine Learning Studio から、すべてのコンピューティングの種類をアタッチできるわけではありません。 現在トレーニング用に接続できるコンピューティングの種類は次のとおりです。
-    * リモート VM
+    * Azure 仮想マシン (Data Science Virtual Machine をアタッチするため)
     * Azure Databricks (機械学習パイプラインで使用)
     * Azure Data Lake Analytics (機械学習パイプラインで使用)
     * Azure HDInsight

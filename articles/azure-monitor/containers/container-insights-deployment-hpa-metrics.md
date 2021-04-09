@@ -4,10 +4,10 @@ description: この記事では、Container insights を使用して収集され
 ms.topic: conceptual
 ms.date: 08/09/2020
 ms.openlocfilehash: c8bb100b756ea92d73e1c3a698f119b4f8157930
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101717708"
 ---
 # <a name="deployment--hpa-metrics-with-container-insights"></a>Container insights によるデプロイと HPA メトリック

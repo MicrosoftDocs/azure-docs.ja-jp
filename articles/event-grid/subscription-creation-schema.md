@@ -3,12 +3,12 @@ title: Azure Event Grid サブスクリプション スキーマ
 description: この記事では、Azure Event Grid でイベントにサブスクライブするためのプロパティについて説明します。 Event Grid サブスクリプション スキーマ。
 ms.topic: reference
 ms.date: 07/07/2020
-ms.openlocfilehash: 21016627e545cc4935b4ac213df675e894c12d95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6e33171cbba65cfeaca49ab6a8954be8bb89acb
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119074"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199953"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid サブスクリプション スキーマ
 
@@ -25,10 +25,10 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
 ``` 
 
 イベント サブスクリプションの名前は、長さが 3 から 64 文字でなければならず、使用できるのは a から z、A から Z、0 から 9、"-" だけです。 この記事は、要求の本体のプロパティとスキーマについて説明します。
- 
+ 
 ## <a name="event-subscription-properties"></a>イベント サブスクリプションのプロパティ
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | 種類 | [説明] |
 | -------- | ---- | ----------- |
 | destination | object | エンドポイントを定義するオブジェクト。 |
 | filter | object | イベントの種類をフィルター処理するための省略可能なフィールド。 |
@@ -48,6 +48,7 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
 | subjectBeginsWith | string | イベント メッセージの件名フィールドに対する、プレフィックス一致のフィルター。 既定値または空の文字列はすべて一致します。 | 
 | subjectEndsWith | string | イベント メッセージの件名フィールドに対する、サフィックス一致のフィルター。 既定値または空の文字列はすべて一致します。 |
 | isSubjectCaseSensitive | string | フィルターの大文字小文字の一致を制御します。 |
+| enableAdvancedFilteringOnArrays | boolean | 高度なフィルター処理でキーの配列を使用できるようにします。 詳細については、[高度なフィルター処理](event-filtering.md#advanced-filtering)に関するページを参照してください。 |
 
 
 ## <a name="example-subscription-schema"></a>サブスクリプション スキーマの例

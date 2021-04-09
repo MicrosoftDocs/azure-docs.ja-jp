@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/05/2020
 ms.openlocfilehash: 9fdef187e9bdf77b29c548f767a4b4edfeb62f44
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93422180"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Azure portal から Azure Database for PostgreSQL - 単一サーバーの読み取りレプリカを作成および管理する
@@ -33,7 +33,7 @@ ms.locfileid: "93422180"
 
 
 > [!NOTE]
-> 永続的で高負荷の、書き込み集中型プライマリ ワークロードのために読み取りレプリカをデプロイする場合、レプリケーションの遅延が増加し続け、プライマリで対応できない可能性があります。 これにより、レプリカで受信されるまで WAL ファイルが削除されないため、プライマリでのストレージの使用量も増加する可能性があります。
+> 書き込み集中型の永続的で大量のプライマリのワークロードのために読み取りレプリカをデプロイする場合、レプリケーションの遅延が増加し続け、プライマリに追いつくことができない可能性があります。 これにより、レプリカで受信されるまで WAL ファイルが削除されないため、プライマリでのストレージの使用量も増加する可能性があります。
 
 ## <a name="prepare-the-primary-server"></a>プライマリ サーバーを準備する
 

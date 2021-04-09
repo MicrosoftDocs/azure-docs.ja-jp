@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: dc1e54106e2f31c7390d784cba6f92cf775e963c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 98044f6ff6311241717cb66a6e26a72702d749e6
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572701"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181450"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアクセスと ID オプション
 
@@ -42,6 +42,7 @@ Kubernetes クラスターに対する認証の実行、アクセス制御と認
 
 | 権限 | 理由 |
 |---|---|
+| Microsoft.ContainerService/managedClusters/*  <br/> | ユーザーを作成し、クラスターを操作するために必要です
 | Microsoft.Network/loadBalancers/delete <br/> Microsoft.Network/loadBalancers/read <br/> Microsoft.Network/loadBalancers/write | LoadBalancer サービスのロード バランサーを構成するために必要です。 |
 | Microsoft.Network/publicIPAddresses/delete <br/> Microsoft.Network/publicIPAddresses/read <br/> Microsoft.Network/publicIPAddresses/write | LoadBalancer サービスのパブリック IP を検索して構成するために必要です。 |
 | Microsoft.Network/publicIPAddresses/join/action | LoadBalancer サービスのパブリック IP を構成する場合に必要です。 |

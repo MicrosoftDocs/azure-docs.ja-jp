@@ -6,17 +6,54 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6e926211a0d86fef55608ede574dca53487f267c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a285f26a406caa88d91da5647b3b79cffc9b614f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732729"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102217416"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Application Insights Snapshot Debugger の有効化やスナップショットの表示に関する問題のトラブルシューティング
 アプリケーションで Application Insights スナップショット デバッガーを有効にしても、例外のスナップショットが表示されない場合は、こちらの手順を使用してトラブルシューティングを行うことができます。
 
 スナップショットが生成されない理由としては、さまざまなことが考えられます。 まずスナップショットの正常性チェックを実行することにより、考えられるいくつかの一般的な原因を特定できます。
+
+## <a name="make-sure-youre-using-the-appropriate-snapshot-debugger-endpoint"></a>適切なスナップショット デバッガー エンドポイントを使用していることを確認する
+
+現在、エンドポイントの変更が必要なリージョンは [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) と [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide) のみです。
+
+Application Insights SDK を使用する App Service とアプリケーションでは、次の定義されているように、サポートされているスナップショット デバッガーのオーバーライドを使用して接続文字列を更新する必要があります。
+
+|接続文字列プロパティ    | 米国政府のクラウド | China Cloud |   
+|---------------|---------------------|-------------|
+|SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
+
+その他の接続のオーバーライドの詳細については、[Application Insights のドキュメント](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides)を参照してください。
+
+Function App の場合は、サポートされている次のオーバーライドを使用して `host.json` を更新する必要があります。
+
+|プロパティ    | 米国政府のクラウド | China Cloud |   
+|---------------|---------------------|-------------|
+|AgentEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
+
+米国政府のクラウド エージェント エンドポイントで更新された `host.json` の例を次に示します。
+```json
+{
+  "version": "2.0",
+  "logging": {
+    "applicationInsights": {
+      "samplingExcludedTypes": "Request",
+      "samplingSettings": {
+        "isEnabled": true
+      },
+      "snapshotConfiguration": {
+        "isEnabled": true,
+        "agentEndpoint": "https://snapshot.monitor.azure.us"
+      }
+    }
+  }
+}
+```
 
 ## <a name="use-the-snapshot-health-check"></a>スナップショットの正常性チェックを使用する
 いくつかの一般的な問題により、[デバッグ スナップショットを開く] が表示されません。 古い Snapshot Collector を使用します (たとえば、1 日のアップロード上限に達した場合)。そうしないと、スナップショットのアップロードに時間がかかることがあります。 一般的な問題のトラブルシューティングには、Snapshot Health Check を使用します。
@@ -35,9 +72,10 @@ ms.locfileid: "98732729"
 
 公開したアプリケーションで、正しいインストルメンテーション キーを使用していることを確認します。 通常、インストルメンテーション キーは、ApplicationInsights.config ファイルから読み取られます。 値が、ポータルに表示される Application Insights リソースのインストルメンテーション キーと同じであることを確認します。
 
-## <a name="check-ssl-client-settings-aspnet"></a><a id="SSL"></a>SSL クライアント設定の確認 (ASP.NET)
+## <a name="check-tlsssl-client-settings-aspnet"></a><a id="SSL"></a>TLS/SSL クライアント設定の確認 (ASP.NET)
 
 ASP.NET アプリケーションが、Azure App Service または仮想マシンの IIS でホストされている場合、SSL セキュリティ プロトコルがないため、お使いのアプリケーションがスナップショット デバッガー サービスに接続できない可能性があります。
+
 [スナップショット デバッガー エンドポイントには、TLS バージョン 1.2 が必要です](snapshot-debugger-upgrade.md?toc=/azure/azure-monitor/toc.json)。 SSL セキュリティ プロトコルのセットは、web.config の system.web セクションの httpRuntime targetFramework 値によって有効にされる特性の 1 つです。httpRuntime targetFramework が 4.5.2 以下の場合、TLS 1.2 は既定では含まれていません。
 
 > [!NOTE]
@@ -64,6 +102,10 @@ ASP.NET アプリケーションが、Azure App Service または仮想マシン
 
 ## <a name="check-the-diagnostic-services-site-extension-status-page"></a>診断サービスのサイト拡張機能の状態ページを確認する
 スナップショット デバッガーがポータルの[[Application Insights] ペイン](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)から有効にされた場合は、診断サービスのサイト拡張機能によって有効にされています。
+
+> [!NOTE]
+> Application Insights スナップショット デバッガーのコード不要のインストールは、.NET Core サポート ポリシーに従います。
+> サポートされているランタイムの詳細については、[.Net Core サポート ポリシー](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)に関するページを参照してください。
 
 この拡張機能の状態ページを確認するには、次の URL に移動します: `https://{site-name}.scm.azurewebsites.net/DiagnosticServices`
 

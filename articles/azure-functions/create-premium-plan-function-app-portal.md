@@ -4,10 +4,10 @@ description: Azure portal を使用して、Premium プランで実行される�
 ms.topic: how-to
 ms.date: 10/30/2020
 ms.openlocfilehash: 9cab67f096665c9333fa40bcb790896fcbebd8d5
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98676588"
 ---
 # <a name="create-a-premium-plan-function-app-in-the-azure-portal"></a>Azure portal で Premium プランの関数アプリを作成する

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa2cac7c89a2cb1bd99675727bcd51e82c4a18ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74007855"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>チュートリアル:Azure AD のログを Azure ストレージ アカウントにアーカイブする
@@ -53,15 +53,15 @@ ms.locfileid: "74007855"
 
 5. 設定にその目的を連想しやすいよう、わかりやすい名前を付けます ("*Azure ストレージ アカウントに送信*" など)。 
 
-6. **[ストレージ アカウントへのアーカイブ]** チェック ボックスをオンにし、 **[ストレージ アカウント]** を選択します。 
+6. **[ストレージ アカウントへのアーカイブ]** チェック ボックスをオンにし、**[ストレージ アカウント]** を選択します。 
 
 7. ログのルーティング先となる Azure サブスクリプションとストレージ アカウントを選択します。
  
 8. **[OK]** をクリックして構成を終了します。
 
 9. 次のいずれかまたは両方を実行します。
-    * 監査ログをストレージ アカウントに送信するには、 **[AuditLogs]** チェックボックスをオンにします。 
-    * サインイン ログをストレージ アカウントに送信するには、 **[SignInLogs]** チェックボックスをオンにします。
+    * 監査ログをストレージ アカウントに送信するには、**[AuditLogs]** チェックボックスをオンにします。 
+    * サインイン ログをストレージ アカウントに送信するには、**[SignInLogs]** チェックボックスをオンにします。
 
 10. スライダーを使用してログ データのリテンション期間を設定します。 既定ではこの値は *0* になっています。つまり、ログはストレージ アカウントに無期限に保持されます。 別の値を設定すると、その選択した日数より古いイベントが自動的にクリーンアップされます。
 
@@ -69,7 +69,7 @@ ms.locfileid: "74007855"
 
     ![診断設定](./media/quickstart-azure-monitor-route-logs-to-storage-account/DiagnosticSettings.png)
 
-12. 約 15 分後、ログが対象のストレージ アカウントにプッシュされていることを確認します。 [Azure portal](https://portal.azure.com) に移動し、 **[ストレージ アカウント]** を選択して前に使用したストレージ アカウントを選択し、 **[BLOB]** を選択します。 **[監査ログ]** については、 **[insights-log-audit]** を選択します。 **[サインイン ログ]** については、 **[insights-logs-signin]** を選択します。
+12. 約 15 分後、ログが対象のストレージ アカウントにプッシュされていることを確認します。 [Azure portal](https://portal.azure.com) に移動し、**[ストレージ アカウント]** を選択して前に使用したストレージ アカウントを選択し、**[BLOB]** を選択します。 **[監査ログ]** については、**[insights-log-audit]** を選択します。 **[サインイン ログ]** については、**[insights-logs-signin]** を選択します。
 
     ![ストレージ アカウント](./media/quickstart-azure-monitor-route-logs-to-storage-account/StorageAccount.png)
 

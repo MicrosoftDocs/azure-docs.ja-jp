@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 8238b9902aafcabc079c551a0eabc7170042209a
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94357625"
 ---
 # <a name="tutorial-configure-theorgwiki-for-automatic-user-provisioning"></a>チュートリアル:TheOrgWiki を構成し、自動ユーザー プロビジョニングに対応させる
@@ -89,7 +89,7 @@ Azure AD で自動ユーザー プロビジョニング用に TheOrgWiki を構�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **TheOrgWiki** 」と入力し、結果パネルで **[TheOrgWiki]** を選択します。 
+4. 検索ボックスに「**TheOrgWiki**」と入力し、結果パネルで **[TheOrgWiki]** を選択します。 
 
     ![結果一覧の TheOrgWiki](common/search-new-app.png)
 
@@ -155,7 +155,7 @@ Azure AD で自動ユーザー プロビジョニング用に TheOrgWiki を構�
 
 10. **[属性マッピング]** セクションで、Azure AD から TheOrgWiki に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で TheOrgWiki のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![TheOrgWiki のユーザー属性](media/theorgwiki-provisioning-tutorial/userattribute.png)。
+    ![TheOrgWiki のユーザー属性](media/theorgwiki-provisioning-tutorial/userattribute.png).
 
 11. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 

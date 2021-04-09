@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:プロファイルとエンドポイントを作成する - Resource Manager テンプレート
 titleSuffix: Azure Content Delivery Network
-description: Resource Manager テンプレートを使用して Azure Content Delivery Network のプロファイルとエンドポイントを作成する方法について説明します。
+description: このクイックスタートでは、Resource Manager テンプレートを使用して Azure Content Delivery Network のプロファイルとエンドポイントを作成する方法について説明します
 services: cdn
 author: asudbring
 manager: KumudD
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: b215dfff3bf62b67b89aa260b0134381de6edeae
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: a36484bea3a2bc9caadc5cf4482aae3bea84eafa
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695713"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102560465"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>クイック スタート:Azure CDN のプロファイルとエンドポイントの作成 - ARM テンプレート
 
@@ -107,7 +107,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ### <a name="powershell"></a>PowerShell
 
-必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=latest) コマンドを使用して、リソース グループと、その内部に含まれているすべてのリソースを削除できます。
+必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループと、その内部に含まれているすべてのリソースを削除できます。
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupCDN
@@ -126,5 +126,5 @@ Remove-AzResourceGroup -Name myResourceGroupCDN
 
 Azure CDN と Azure Resource Manager の詳細については、引き続き以下の記事を参照してください。
 
-* [Azure CDN の概要](cdn-overview.md)に関するページを読む
-* [Azure Resource Manager](../azure-resource-manager/management/overview.md) の詳細を確認する
+> [!div class="nextstepaction"]
+> [チュートリアル: サーバーの静的コンテンツへの CDN を Web アプリから使用する](cdn-add-to-web-app.md)

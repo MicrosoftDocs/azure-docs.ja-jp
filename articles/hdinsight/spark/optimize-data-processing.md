@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: 98457456bc1c8f9fdb08c32fdcd319a3aa9ff14a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98944724"
 ---
 # <a name="data-processing-optimization-for-apache-spark"></a>Apache Spark のデータ処理の最適化

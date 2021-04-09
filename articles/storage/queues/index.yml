@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Queue Storage のドキュメント
-summary: Azure Queue Storage は、多数のメッセージを格納するためのサービスです。 世界中のどこからでも HTTP または HTTPS 経由でメッセージにアクセスできます。
+summary: Azure Queue storage は、多数のメッセージを格納するためのサービスです。 世界中のどこからでも HTTP または HTTPS 経由でメッセージにアクセスできます。
 metadata:
-  title: Azure Queue Storage のドキュメント
-  description: Azure Queue Storage は、多数のメッセージを格納するためのサービスです。 世界中のどこからでも HTTP または HTTPS 経由でメッセージにアクセスできます。
+  title: Azure Queue storage のドキュメント
+  description: Azure Queue storage は、多数のメッセージを格納するためのサービスです。 世界中のどこからでも HTTP または HTTPS 経由でメッセージにアクセスできます。
   services: storage
   ms.service: storage
   ms.subservice: queues
@@ -23,7 +23,7 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure Queue とは
+    - text: Azure キューとは
       url: storage-queues-introduction.md
 - title: 作業開始
   linkLists:
@@ -47,13 +47,13 @@ landingContent:
     links:
     - text: .NET を使用して Azure Queue Storage を使用する
       url: storage-dotnet-how-to-use-queues.md
-    - text: Java から Queue Storage を使用する方法
+    - text: Java から Queue ストレージを使用する方法
       url: storage-java-how-to-use-queue-storage.md
-    - text: Node.js から Queue Storage を使用する方法
+    - text: Node.js から Queue ストレージを使用する方法
       url: storage-nodejs-how-to-use-queues.md
-    - text: C++ から Queue Storage を使用する方法
+    - text: C++ から Queue ストレージを使用する方法
       url: storage-c-plus-plus-how-to-use-queues.md
-    - text: Python から Queue Storage を使用する方法
+    - text: Python から Queue ストレージを使用する方法
       url: storage-python-how-to-use-queue-storage.md
 - title: キューの管理
   linkLists:

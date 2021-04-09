@@ -12,10 +12,10 @@ ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 93bcbab9445d83bf17b37b6affc1d2bc70703bbf
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97814331"
 ---
 # <a name="initiate-a-storage-account-failover"></a>ストレージ アカウントのフェールオーバーを開始する

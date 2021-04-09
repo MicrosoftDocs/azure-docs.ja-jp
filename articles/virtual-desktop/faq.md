@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b915445b74e202f010c5505cc240b6f36e9da77c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3bdb38b8a9590cf6191c75fdef024543c2b1c190
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108509"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720275"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop の FAQ
 
@@ -136,3 +136,7 @@ Azure Lighthouse では、Windows Virtual Desktop 環境の管理は完全には
 また、Windows Virtual Desktop サービスで CSP サンドボックス サブスクリプションを使用することもできません。 詳細については、「[統合サンドボックス アカウント](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account)」を参照してください。
 
 最後に、CSP の所有者アカウントからリソース プロバイダーを有効にした場合、CSP の顧客アカウントでリソース プロバイダーを変更することはできません。
+
+## <a name="how-often-should-i-turn-my-vms-on-to-prevent-registration-issues"></a>登録の問題を防ぐには、VM をどれくらいの頻度でオンにする必要がありますか?
+
+Windows Virtual Desktop サービス内のホスト プールに VM を登録した後は、VM がアクティブになるたびに、エージェントによって VM のトークンが定期的に更新されます。 登録トークンの証明書の有効期間は 90 日間です。 この 90 日間の期限を考慮し、お客様には、VM を 90 日おきに起動することをお勧めしています。 この期限内に VM をオンにすれば、登録トークンが期限切れになったり、無効になったりするのを回避できます。 90 日を過ぎた後に VM を起動し、登録に関する問題が発生した場合は、[Windows Virtual Desktop エージェントのトラブルシューティング ガイド](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved)に記載されている手順に従って、ホスト プールから VM を削除し、エージェントを再インストールした後、VM をプールに再登録してください。

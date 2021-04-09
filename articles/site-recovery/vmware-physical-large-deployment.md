@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 101e42263e46c5a21f26b0fa9cdeed798525fee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc87429f269fba5083b87e2c328f0e21de9707ff
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89047084"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102454349"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>VMware VM/物理サーバーの大規模なディザスター リカバリーを設定する
 
@@ -214,7 +214,7 @@ VM の最初のバッチのレプリケーションを開始したら、次の�
     - [こちら](recovery-plan-overview.md) をご覧ください。
 2. Azure での手動タスクを自動化するため、復旧計画に Azure Automation Runbook スクリプトを追加します。 一般的なタスクには、ロード バランサーの構成や DNS の更新などがあります。 [詳細情報](site-recovery-runbook-automation.md)
 2. フェールオーバーの前に、Windows マシンが Azure 環境に準拠するように準備します。 準拠するマシンでは[フェールオーバーの上限](#plan-azure-subscriptions-and-quotas)が大きくなります。 Runbook については[こちら](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010)をご覧ください。
-4.  復旧計画と共に、[Start-AzRecoveryServicesAsrPlannedFailoverJob](/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob?view=azps-2.0.0&viewFallbackFrom=azps-1.1.0) PowerShell コマンドレットを使用してフェールオーバーをトリガーします。
+4.  復旧計画と共に、[Start-AzRecoveryServicesAsrPlannedFailoverJob](/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob) PowerShell コマンドレットを使用してフェールオーバーをトリガーします。
 
 
 

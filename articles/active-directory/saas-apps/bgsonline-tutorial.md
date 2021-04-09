@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 10531f87ee4a170310a97831a374a836641ce12b
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97673343"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bgs-online"></a>チュートリアル: Azure Active Directory と BGS Online の統合
@@ -61,7 +61,7 @@ Azure AD への BGS Online の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**BGS Online**」と入力し、結果パネルで **[BGS Online]** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**BGS Online**」と入力し、結果パネルで **[BGS Online]** を選び、**[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果一覧の BGS Online](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ BGS Online で Azure AD のシングル サインオンを構成してテスト�
 
 BGS Online で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **[BGS Online]** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **[BGS Online]** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -107,7 +107,7 @@ BGS Online で Azure AD シングル サインオンを構成するには、次�
 
     テスト環境の場合は、次の形式を使用します。`https://millwardbrown.marketingtracker.nl/mt5/`
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+    b. **[応答 URL]** ボックスに、 のパターンを使用して URL を入力します。
 
     運用環境の場合は、次の形式を使用します。`https://<company name>.millwardbrown.report/sso/saml/AssertionConsumerService.aspx`
 
@@ -163,7 +163,7 @@ BGS Online で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、BGS Online へのアクセスを許可することで、Britta Simon が Azure シングル サインオンを使用できるようします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[BGS Online]** の順に選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[BGS Online]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

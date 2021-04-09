@@ -14,10 +14,10 @@ ms.date: 04/24/2015
 ms.author: gwallace
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 104f969f5e27ef36ad43eb10e19176a4bcfd6648
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96003763"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Azure から音声および SMS 機能に Twilio を使用する方法
@@ -43,16 +43,16 @@ API では、Twilio 動詞を使用します。たとえば、 **&lt;Say&gt;** �
 
 Twilio 動詞の一覧を次に示します。  他の動詞と機能については、 [Twilio Markup Language のドキュメント](https://www.twilio.com/docs/api/twiml)を参照してください。
 
-* `<Dial>`:呼び出し元を別の電話に接続します。
-* `<Gather>`:電話キーパッドで入力された数字を収集します。
-* `<Hangup>`:通話を終了します。
-* `<Play>`:オーディオ ファイルを再生します。
-* `<Pause>`:指定された秒数だけ静かに待ちます。
-* `<Record>`:呼び出し元の音声を録音し、その録音を含むファイルの URL を返します。
-* `<Redirect>`:通話または SMS の制御を別の URL に存在する TwiML に転送します。
-* `<Reject>`:Twilio 番号への受信通話を、課金することなく拒否します。
-* `<Say>`:テキストを通話で流れる音声に変換します。
-* `<Sms>`:SMS メッセージを送信します。
+* `<Dial>`: 呼び出し元を別の電話に接続します。
+* `<Gather>`: 電話キーパッドで入力された数字を収集します。
+* `<Hangup>`: 通話を終了します。
+* `<Play>`: オーディオ ファイルを再生します。
+* `<Pause>`: 指定された秒数だけ静かに待ちます。
+* `<Record>`: 呼び出し元の音声を録音し、その録音を含むファイルの URL を返します。
+* `<Redirect>`: 通話または SMS の制御を別の URL に存在する TwiML に転送します。
+* `<Reject>`: Twilio 番号への受信通話を、課金することなく拒否します。
+* `<Say>`: テキストを通話で流れる音声に変換します。
+* `<Sms>`: SMS メッセージを送信します。
 
 ### <a name="twiml"></a>TwiML
 TwiML は、Twilio 動詞に基づいた XML ベースの命令のセットで、通話または SMS をどのように処理するかを Twilio に通知します。
@@ -114,7 +114,7 @@ Microsoft Visual Studio 2010 では既定で NuGet の Version 1.2 がインス�
 5. [オンライン検索] ボックスに、「 *twilio*」と入力します。
 6. Twilio パッケージで **[インストール]** をクリックします。
 
-## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>発信通話する
+## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>方法: 発信通話する
 次のコードでは、**CallResource** クラスを使用して、発信通話を行う方法を示しています。 このコードは、Twilio から提供されるサイトも使用して、Twilio Markup Language (TwiML) 応答を返します。 コードを実行する前に、**from** および **to** の電話番号の値を置き換えて、Twilio アカウントの **from** の電話番号を確認します。
 
 ```csharp
@@ -142,9 +142,9 @@ var call = CallResource.Create(
 
 **CallResource.Create** メソッドに渡されるパラメーターの詳細については、[https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls] を参照してください。
 
-既に説明したように、このコードは Twilio から提供されるサイトを使用して、TwiML 応答を返します。 代わりに独自のサイトを使用して TwiML 応答を返すこともできます。 詳細については、「[独自の Web サイトから TwiML 応答を返す](#howto_provide_twiml_responses)」を参照してください。
+既に説明したように、このコードは Twilio から提供されるサイトを使用して、TwiML 応答を返します。 代わりに独自のサイトを使用して TwiML 応答を返すこともできます。 詳細については、「[方法: 独自の Web サイトから TwiML 応答を返す](#howto_provide_twiml_responses)」を参照してください。
 
-## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>SMS メッセージを送信する
+## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>方法: SMS メッセージを送信する
 次のスクリーンショットは、**MessageResource** クラスを使用して SMS メッセージを送信する方法を示しています。 試用アカウントで SMS メッセージを送信できるように、**From** の番号が Twilio から提供されます。 コードを実行する前に、Twilio アカウントの **To** の番号を確認する必要があります。
 
 ```csharp
@@ -171,8 +171,8 @@ catch (TwilioException ex)
 }
 ```
 
-## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>独自の Web サイトから TwiML 応答を返す
-アプリケーションで Twilio API の呼び出しをインスタンス化する場合 (たとえば、**CallResource.Create** メソッドを使用した場合)、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。 「[方法:発信通話する](#howto_make_call)」の例では、Twilio で提供される URL [https://twimlets.com/message][twimlet_message_url] を使用して応答を返します。
+## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>方法: 独自の Web サイトから TwiML 応答を返す
+アプリケーションで Twilio API の呼び出しをインスタンス化する場合 (たとえば、**CallResource.Create** メソッドを使用した場合)、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。 「[方法: 発信通話する](#howto_make_call)」の例では、Twilio で提供される URL [https://twimlets.com/message][twimlet_message_url] を使用して応答を返します。
 
 > [!NOTE]
 > TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。 たとえば、[https://twimlets.com/message][twimlet_message_url] をクリックすると、空の `<Response>` 要素が表示されます。別の例として、[https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World) をクリックすると、&lt; Say&gt; 要素を含む `<Response>` 要素が表示されます。

@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: eaaeaa05caca7897eb649b56504b643038f08d53
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99260131"
 ---
 # <a name="use-certificates-and-securely-access-azure-key-vault-with-batch"></a>Batch で証明書を使用して Azure Key Vault に安全にアクセスする

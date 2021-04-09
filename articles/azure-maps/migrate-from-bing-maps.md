@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 9bd0516889733a666bf15668cffd124dcc468f3e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100388959"
 ---
 # <a name="tutorial-migrate-from-bing-maps-to-azure-maps"></a>チュートリアル:Bing 地図から Azure Maps に移行する
@@ -47,8 +47,8 @@ Azure Maps は、Web アプリケーションやモバイル アプリケーシ�
 | Web SDK                               | ✓                  |
 | Android SDK                           | ✓                  |
 | iOS SDK                               | 対応予定            |
-| UWP SDK                               | N/A                 |
-| WPF SDK                               | N/A                 |
+| UWP SDK                               | 該当なし                 |
+| WPF SDK                               | 該当なし                 |
 | REST サービス API                     | ✓                  |
 | 自動提案                           | ✓                  |
 | ルート案内 (トラックを含む)          | ✓                  |
@@ -63,7 +63,7 @@ Azure Maps は、Web アプリケーションやモバイル アプリケーシ�
 | 位置情報 (フォワード ジオコーディングと逆ジオコーディング) | ✓                  |
 | 最適化旅程ルート            | 対応予定            |
 | Snap to Road                         | ✓                  |
-| Spatial Data Services (SDS)           | 一部サポート            |
+| Spatial Data Services (SDS)           | Partial            |
 | タイム ゾーン                             | ✓                  |
 | トラフィック インシデント                     | ✓                  |
 | 構成ドリブン マップ             | 該当なし                |

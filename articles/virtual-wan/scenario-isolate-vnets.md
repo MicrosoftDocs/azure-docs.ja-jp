@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: e5e2ce17be6d8a1fa82d8a92b9b788f0bd2a37b8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92424735"
 ---
 # <a name="scenario-isolating-vnets"></a>シナリオ:VNet の分離
@@ -53,12 +53,12 @@ VNet は、この **[RT_VNET]** ルート テーブルに関連付けられま�
 1. 各ハブにカスタム ルート テーブルを作成します。 この例では、ルート テーブルは **RT_VNet** です。 ルート テーブルを作成するには、「[仮想ハブ ルーティングを構成する方法](how-to-virtual-hub-routing.md)」を参照してください。 ルート テーブルの詳細については、「[仮想ハブ ルーティングについて](about-virtual-hub-routing.md)」を参照してください。
 2. **RT_VNet** ルート テーブルを作成する場合は、次の設定を構成します。
 
-   * **Association** : 分離する VNet を選択します。
-   * **伝達** : ブランチのオプションを選択します。ブランチ (VPN/ER/P2S) 接続を暗黙的に指定することで、ルートはこのルート テーブルに伝達されます。
+   * **Association**: 分離する VNet を選択します。
+   * **伝達**: ブランチのオプションを選択します。ブランチ (VPN/ER/P2S) 接続を暗黙的に指定することで、ルートはこのルート テーブルに伝達されます。
 
 :::image type="content" source="./media/routing-scenarios/isolated/isolated-vnets.png" alt-text="分離された VNet":::
 
 ## <a name="next-steps"></a>次のステップ
 
 * Virtual WAN の詳細については、[FAQ](virtual-wan-faq.md) を参照してください。
-* 仮想ハブのルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。
+* 仮想ハブ ルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。

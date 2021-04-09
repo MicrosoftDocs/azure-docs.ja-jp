@@ -3,7 +3,7 @@ title: Azure Media Services を使用してコンテンツを保護する | Micr
 description: この記事では、Azure Media Services v2 を使用したコンテンツ保護の概要について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 81bc00e1-dcda-4d69-b9ab-8768b793422b
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
-ms.author: juliako
-ms.openlocfilehash: 287f93a60a1c44b29b75def8cc3ee9adc577971c
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: edffa2dddd0ec877a4b825a69a76fb158928c89f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695926"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103016765"
 ---
 # <a name="content-protection-overview"></a>コンテンツ保護の概要
 
@@ -38,7 +38,7 @@ Azure Media Services を使用すると、メディアがコンピューター�
 
 ## <a name="dynamic-encryption"></a>動的な暗号化
 
-Media Services を使用すると、AES クリアキーまたは DRM 暗号化 (PlayReady、Widevine、または FairPlay を使用) によって動的に暗号化されたコンテンツを配信できます。 コンテンツは、AES クリア キーで暗号化されて、HTTPS で送信される場合、クライアントに到達するまで平文になりません。 
+Media Services を使用すると、AES クリアキーまたは DRM 暗号化 (PlayReady、Widevine、または FairPlay を使用) によって動的に暗号化されたコンテンツを配信できます。 コンテンツが AES クリア キーで暗号化され、HTTPS で送信される場合、クライアントに到達するまで平文になりません。 
 
 各暗号化方法は、次のストリーミング プロトコルをサポートします。
  
@@ -119,7 +119,7 @@ Media Services は、承認されたクライアントに DRM (PlayReady、Widev
 * [ストレージ暗号化で保護する](media-services-rest-storage-encryption.md)
 * [AES 暗号化で保護する](media-services-protect-with-aes128.md)
 * [PlayReady や Widevine で保護する](media-services-protect-with-playready-widevine.md)
-* [FairPlay で保護する](media-services-protect-hls-with-FairPlay.md)
+* [FairPlay での保護](media-services-protect-hls-with-FairPlay.md)
 
 ## <a name="related-links"></a>関連リンク
 

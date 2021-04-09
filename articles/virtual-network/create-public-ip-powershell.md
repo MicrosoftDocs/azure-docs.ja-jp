@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: f61d45b6c46830064c3b58608e2eca0787d559c2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f81e76e32bc0a50b945c54cdfcac0575540484bc
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675115"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102502435"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用してパブリック IP アドレスを作成する
 
@@ -51,7 +51,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 # <a name="standard-sku---using-zones"></a>[**Standard SKU - ゾーンの使用**](#tab/option-create-public-ip-standard-zones)
 
 >[!NOTE]
->次のコマンドは、Az.Network モジュール バージョン 4.5.0 以降で動作します。  現在使用されている Powershell モジュールの詳細については、[PowerShellGet のドキュメント](/powershell/module/powershellget/?view=powershell-7.1)を参照してください。
+>次のコマンドは、Az.Network モジュール バージョン 4.5.0 以降で動作します。  現在使用されている Powershell モジュールの詳細については、[PowerShellGet のドキュメント](/powershell/module/powershellget/)を参照してください。
 
 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、**myResourceGroup** に **myStandardZRPublicIP** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します。
 
@@ -89,7 +89,7 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -Alloca
 # <a name="standard-sku---no-zones"></a>[**Standard SKU - ゾーンなし**](#tab/option-create-public-ip-standard)
 
 >[!NOTE]
->次のコマンドは、Az.Network モジュール バージョン 4.5.0 以降で動作します。  現在使用されている Powershell モジュールの詳細については、[PowerShellGet のドキュメント](/powershell/module/powershellget/?view=powershell-7.1)を参照してください。
+>次のコマンドは、Az.Network モジュール バージョン 4.5.0 以降で動作します。  現在使用されている Powershell モジュールの詳細については、[PowerShellGet のドキュメント](/powershell/module/powershellget/)を参照してください。
 
 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、**myResourceGroup** に **myStandardPublicIP** という名前の Standard パブリック IP アドレスを非ゾーン リソースとして作成します。
 

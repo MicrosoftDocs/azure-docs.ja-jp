@@ -4,10 +4,10 @@ description: メトリックおよび自動スケーリングのクラシック 
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.openlocfilehash: 0169de93b92de179c0ae9a36ff8dba3b7b1dc0fb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102049034"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>メトリックおよび自動スケーリング用クラシック デプロイ モデル API の Azure Monitor での提供終了

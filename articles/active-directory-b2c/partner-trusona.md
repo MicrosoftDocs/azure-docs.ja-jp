@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 99368da8b4018e93ad537e4722ffefd476e61291
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99573689"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>Trusona と Azure Active Directory B2C の統合
@@ -24,7 +24,7 @@ Trusona は、パスワードレス認証、多要素認証、およびデジタ
 
 ## <a name="prerequisites"></a>前提条件
 
-開始するには、以下が必要です。
+作業を開始するには、以下が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](tutorial-create-tenant.md)。

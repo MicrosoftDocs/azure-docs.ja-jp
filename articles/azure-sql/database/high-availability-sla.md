@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 5e84831798ec1c5f42facb04a25da9d8631b9d04
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1c210eab0332d01fc6514edc790d729172ed2174
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690585"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889061"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -64,6 +64,9 @@ General Purpose レベル向けのゾーン冗長構成には、次の 2 つの�
 
 > [!NOTE]
 > 80 個の仮想コアを備えたサイズの General Purpose データベースでは、ゾーン冗長構成によるパフォーマンスの低下が発生する可能性があります。 また、バックアップ、復元、データベース コピー、Geo DR のリレーションシップの設定などの操作では、1 TB を超える単一データベースのパフォーマンスが低下する可能性があります。 
+> 
+> [!NOTE]
+> プレビューは予約インスタンスの対象になりません
 
 ## <a name="premium-and-business-critical-service-tier-locally-redundant-availability"></a>Premium および Business Critical サービス レベルのローカル冗長可用性
 
@@ -123,7 +126,7 @@ Hyperscale の高可用性の詳細については、「[ハイパースケー�
 |デプロイの種類|PowerShell|REST API| Azure CLI|
 |:---|:---|:---|:---|
 |データベース|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[データベース フェールオーバー](/rest/api/sql/databases/failover)|Azure CLI から REST API 呼び出しを呼び出すために [az rest](/cli/azure/reference-index#az-rest) が使用できます|
-|エラスティック プール|[Invoke-AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[エラスティック プールのフェールオーバー](/rest/api/sql/elasticpools(failover)/failover/)|Azure CLI から REST API 呼び出しを呼び出すために [az rest](/cli/azure/reference-index#az-rest) が使用できます|
+|エラスティック プール|[Invoke-AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[エラスティック プールのフェールオーバー](/rest/api/sql/elasticpools/failover)|Azure CLI から REST API 呼び出しを呼び出すために [az rest](/cli/azure/reference-index#az-rest) が使用できます|
 |マネージド インスタンス|[Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[マネージド インスタンス - フェールオーバー](/rest/api/sql/managed%20instances%20-%20failover/failover)|[az sql mi failover](/cli/azure/sql/mi/#az-sql-mi-failover)|
 
 > [!IMPORTANT]

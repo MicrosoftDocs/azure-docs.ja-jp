@@ -5,16 +5,16 @@ services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 8d5c18eaaa4065eac515f38557664ceb44262adf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c70ecc4fc5469d728bc12d47024585ccf00ff98e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695877"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098708"
 ---
 # <a name="manage-scala-and-java-packages-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用の Scala および Java パッケージを管理する
 
@@ -37,13 +37,10 @@ Azure Synapse Analytics の Apache Spark には、一般的なデータ エン�
 
 ワークスペース パッケージを追加するには:
 1. **[管理]**  >  **[ワークスペース パッケージ]** タブに移動します。
-2. ファイル セレクターを使用して wheel ファイルをアップロードします。
-3. ファイルが Azure Synapse ワークスペースにアップロードされたら、これらの wheel ファイルを特定の Apache Spark プールに追加できます。
+2. ファイル セレクターを使用して jar ファイルをアップロードします。
+3. ファイルが Azure Synapse ワークスペースにアップロードされたら、これらの jar ファイルを特定の Apache Spark プールに追加できます。
 
 ![ワークスペース パッケージを強調したスクリーンショット。](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "ワークスペース パッケージを表示する")
-
-> [!IMPORTANT]
-> ワークスペース パッケージのインストールは、現時点ではまだ、データ流出保護 (DEP) ワークスペース内ではサポートされていません。
 
 ## <a name="pool-libraries"></a>プール ライブラリ
 Spark アプリケーションで使用したい Scala および Java パッケージを見つけたら、Spark プールにインストールすることができます。 プール レベルのライブラリは、プールで実行されているすべてのノートブックおよびジョブで使用できます。

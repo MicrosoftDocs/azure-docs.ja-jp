@@ -4,10 +4,10 @@ description: チュートリアル:Azure Event Grid は、Azure Storage での B
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.openlocfilehash: ca231fc65162fe38f4dcb8b8d5677ef42c7807bb
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99550518"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>チュートリアル:Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する

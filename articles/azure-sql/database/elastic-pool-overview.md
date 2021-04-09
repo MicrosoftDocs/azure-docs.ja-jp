@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 12/9/2020
-ms.openlocfilehash: f50042caf21630c5054ead76825e49b820405c5b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c478edf95ae345d64da630400fbf63ac613b73a6
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732696"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653637"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Azure SQL Database におけるエラスティック プールを利用した複数のデータベースの管理およびスケーリング
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -90,15 +90,10 @@ DTU 購入モデルでは、プールの価格は、プール eDTU の機能を�
 プールのコスト効果が単一データベースよりも高いかどうかを確認するには、次の手順が役立ちます。
 
 1. プールに必要な eDTU または vCore は、次のように見積もります。
-
-DTU ベースの購入モデルの場合:
-
-MAX(<*DB の合計数* X *DB あたりの平均 DTU 使用率*>, <*同時にピークとなる DB の数* X *DB あたりのピーク DTU 使用率*>)
-
-仮想コアベースの購入モデルの場合:
-
-MAX(<*DB の合計数* X *DB あたりの平均 vCore 使用率*>, <*同時にピークとなる DB の数* X *DB あたりのピーク vCore 使用率*>)
-
+   - DTU ベースの購入モデルの場合:
+     - MAX(<*DB の合計数* &times; *DB あたりの平均 DTU 使用率*>, <*同時にピークとなる DB の数* &times; *DB あたりのピーク DTU 使用率*>)
+   - 仮想コアベースの購入モデルの場合:
+     - MAX(<*DB の合計数* &times; *DB あたりの平均 vCore 使用率*>, <*同時にピークとなる DB の数* &times; *DB あたりのピーク vCore 使用率*>)
 2. プール内のすべてのデータベースに必要なデータ サイズを追加して、プールに必要な合計記憶域スペースを見積もります。 DTU 購入モデルの場合は、次に、このストレージの容量を提供する eDTU プール サイズを決定します。
 3. DTU ベースの購入モデルの場合、手順 1 と手順 2 の eDTU の見積もりのうち、大きい方を使用します。 仮想コアベースの購入モデルの場合、手順 1 の vCore の見積もりを使用します。
 4. 「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」ページを参照し、手順 3 の見積もりを超える最小のプール サイズを探します。

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: bf0b5f19d1aa224fa4a2e79c20f2900e3400fce0
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92151122"
 ---
 # <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Azure Functions および Azure SignalR Service を使用してリアルタイム アプリを構築する
@@ -74,4 +74,4 @@ Azure Functions とSignalR Service を一緒に使用する方法の完全な詳
 詳細については、これらのいずれかのクイック スタートを参照してください。
 
 * [Azure SignalR サービス サーバーレス クイック スタート - C#](signalr-quickstart-azure-functions-csharp.md)
-* [Azure SignalR サービス サーバーレス クイック スタート - JavaScript](signalr-quickstart-azure-functions-javascript.md)
+* [Azure SignalR Service サーバーレス クイック スタート - JavaScript](signalr-quickstart-azure-functions-javascript.md)

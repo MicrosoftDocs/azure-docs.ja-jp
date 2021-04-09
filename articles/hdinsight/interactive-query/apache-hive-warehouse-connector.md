@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 6611f5ca7ddae243c4bc314be73a9030311cec89
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 57a3d76f24c33984a883e926a8d4c68736e9f121
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594436"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869890"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight で Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する
 
@@ -23,7 +23,7 @@ Apache Hive では、ACID (原子性、一貫性、分離性、持続性) なデ
 
 Apache Spark には、Apache Hive では使用できないストリーミング機能を提供する Structured Streaming API があります。 HDInsight 4.0 以降、Apache Spark 2.3.1 と Apache Hive 3.1.0 は異なるメタストアになっています。 個別のメタストアによって相互運用性が困難になる可能性があります。 Hive Warehouse Connector によって、Spark と Hive を一緒に使用することが容易になります。 HWC ライブラリは、LLAP デーモンから Spark Executor にデータを並列で読み込みます。 このプロセスにより、Spark から Hive への標準の JDBC 接続よりも効率性と適応性が高まります。
 
-![Hive Warehouse Connector のアーキテクチャ](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
+:::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png" alt-text="Hive Warehouse Connector のアーキテクチャ" border="true":::
 
 Hive Warehouse Connector でサポートされる操作の一部を次に示します。
 
@@ -72,7 +72,7 @@ Hive Warehouse Connector には、Spark ワークロードと Interactive Query 
 
 1. **[Custom spark2-defaults]** を展開します。
 
-    ![Apache Ambari Spark2 の構成](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
+    :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png" alt-text="Apache Ambari Spark2 の構成" border="true":::
 
 1. **[プロパティの追加]** を選択して、次の構成を追加します。
 
@@ -103,11 +103,11 @@ Enterprise セキュリティ パッケージ (ESP) を使用すると、Active 
     
     * Web ブラウザーで `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` に移動します。ここで、CLUSTERNAME は Interactive Query クラスターの名前です。 **[HiveServer2 Interactive]** をクリックします。 スクリーンショットに示したように、LLAP を実行しているヘッド ノードの完全修飾ドメイン名 (FQDN) が表示されます。 `<llap-headnode>` は、この値に置き換えます。
 
-        ![Hive Warehouse Connector のヘッド ノード](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png" alt-text="Hive Warehouse Connector のヘッド ノード" border="true":::
 
     * [ssh コマンド](../hdinsight-hadoop-linux-use-ssh-unix.md)を使用して Interactive Query クラスターに接続します。 `/etc/krb5.conf` ファイルで `default_realm` パラメーターを探します。 `<AAD-DOMAIN>` は、その値に置き換えます。値の文字列は大文字にしてください。そうしないと、資格情報が見つからなくなります。
 
-        ![Hive Warehouse Connector の AAD ドメイン](./media/apache-hive-warehouse-connector/aad-domain.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/aad-domain.png" alt-text="Hive Warehouse Connector の AAD ドメイン" border="true":::
 
     * たとえば、`hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET` です。
     
@@ -211,21 +211,21 @@ kinit USERNAME
     hive.executeQuery("SELECT * FROM demo").show()
     ```
 
-    ![Ranger ポリシーを適用する前のデモ テーブル](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-before-ranger-policy.png)
+    :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-before-ranger-policy.png" alt-text="Ranger ポリシーを適用する前のデモ テーブル" border="true":::
 
 1. 列の最後の 4 文字だけが表示される列マスク ポリシーを適用します。  
     1. `https://LLAPCLUSTERNAME.azurehdinsight.net/ranger/` で Ranger 管理 UI に移動します。
     1. **[Hive]** の下にある自分のクラスターの Hive サービスをクリックします。
-        ![Ranger サービス マネージャー](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png" alt-text="Ranger サービス マネージャー" border="true":::
     1. **[Masking]\(マスク\)** タブをクリックし、 **[Add New Policy]\(新しいポリシーの追加\)** をクリックします
 
-        ![Hive Warehouse Connector の Ranger Hive ポリシーの一覧](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png" alt-text="Hive Warehouse Connector の Ranger Hive ポリシーの一覧" border="true":::
 
     1. 目的のポリシー名を入力します。 次のように選択します。データベース: **default**、Hive テーブル: **demo**、Hive 列: **name**、ユーザー: **rsadmin2**、アクセスの種類: **select**、 **[Select Masking Option]\(マスク オプションの選択\)** メニュー: **Partial mask: show last 4**。 **[追加]** をクリックします。
-                ![ポリシーの作成](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
+                :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png" alt-text="ポリシーの作成" border="true":::
 1. テーブルの内容をもう一度表示します。 Ranger ポリシーの適用後は、列の最後の 4 文字だけを確認できます。
 
-    ![Ranger ポリシーを適用した後のデモ テーブル](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)
+    :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png" alt-text="Ranger ポリシーを適用した後のデモ テーブル" border="true":::
 
 ## <a name="next-steps"></a>次のステップ
 

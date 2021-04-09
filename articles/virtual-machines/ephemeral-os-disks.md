@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 62f89106538ab7f57047e211fc8715878f889af1
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 814824fb6708abaf549bb3de19b4aced4774a244
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684561"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "102485760"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure VM のエフェメラル OS ディスク
 
@@ -244,6 +244,11 @@ A:エフェメラル ディスクでサポートされていない機能は次�
 - Azure Backup
 - Azure Site Recovery  
 - OS ディスクのスワップ 
+
+> [!NOTE]
+> 
+> エフェメラル ディスクにはポータルからアクセスできません。 予想されるエフェメラル ディスクにアクセスするときに、"リソースが見つかりません" または "404" エラーが表示されます。
+> 
  
 ## <a name="next-steps"></a>次のステップ
 [Azure CLI](/cli/azure/vm#az-vm-create) を使用して、エフェメラル OS ディスクで VM を作成できます。

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: eb8d0c229ed5f41dcb5999243a57ee19c2b67f74
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92458729"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>チュートリアル: Azure Active Directory と Learningpool Act の統合
@@ -41,7 +41,7 @@ Learningpool Act と Azure AD の統合を構成するには、次のものが�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Learningpool Act では、 **SP** によって開始される SSO がサポートされます
+* Learningpool Act では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-learningpool-act-from-the-gallery"></a>ギャラリーからの Learningpool Act の追加
 
@@ -61,13 +61,13 @@ Azure AD への Learningpool Act の統合を構成するには、ギャラリ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Learningpool Act** 」と入力し、結果パネルから **[Learningpool Act]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Learningpool Act**」と入力し、結果パネルから **[Learningpool Act]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Learningpool Act](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Learningpool Act で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Learningpool Act で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Learningpool Act 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Learningpool Act で Azure AD のシングル サインオンを構成してテストするには、次の一連の作業を完了させる必要があります。
@@ -85,7 +85,7 @@ Learningpool Act で Azure AD のシングル サインオンを構成してテ�
 
 Learningpool Act で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Learningpool Act** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Learningpool Act** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -117,9 +117,9 @@ Learningpool Act で Azure AD シングル サインオンを構成するには�
 
     ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes]\(ユーザー属性\) を示しています。](common/edit-attribute.png)
 
-6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、 **編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
+6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ------------------- | -------------------- |
     | urn:oid:1.2.840.113556.1.4.221 | user.userprincipalname |
     | urn:oid:2.5.4.42 | User.givenname |
@@ -179,9 +179,9 @@ Learningpool Act で Azure AD シングル サインオンを構成するには�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -192,7 +192,7 @@ Learningpool Act で Azure AD シングル サインオンを構成するには�
 
 このセクションでは、Britta Simon に Learningpool Act へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Learningpool Act]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Learningpool Act]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

@@ -6,10 +6,10 @@ ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 934b679813323fe144f935811eb613ab68b561db
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87089619"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>クイック スタート: Service Fabric に Windows コンテナーをデプロイする
@@ -43,13 +43,13 @@ Service Fabric SDK およびツールには、コンテナーを Service Fabric 
 
 "管理者" として Visual Studio を起動します。  **[File]**  >  **[New]**  >  **[Project]** の順に選択します。
 
-**[Service Fabric アプリケーション]** を選択し、"MyFirstContainer" という名前を付けて、 **[作成]** をクリックします。
+**[Service Fabric アプリケーション]** を選択し、"MyFirstContainer" という名前を付けて、**[作成]** をクリックします。
 
 **[ホスト コンテナーとアプリケーション]** テンプレートから **[コンテナー]** を選択します。
 
 **[イメージ名]** に「mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2016」と入力します。これが [Windows Server Core Server と IIS の基本イメージ](https://hub.docker.com/_/microsoft-windows-servercore-iis)になります。
 
-ポート 80 で受信するサービスへの要求が、コンテナーのポート 80 にマッピングされるように、コンテナーとホストとの間のポート マッピングを構成します。  **[Container Port] (コンテナー ポート)** を "80" に設定し、 **[ホスト ポート]** を "80" に設定します。  
+ポート 80 で受信するサービスへの要求が、コンテナーのポート 80 にマッピングされるように、コンテナーとホストとの間のポート マッピングを構成します。  **[Container Port] (コンテナー ポート)** を "80" に設定し、**[ホスト ポート]** を "80" に設定します。  
 
 サービスに "MyContainerService" という名前を付けて **[OK]** をクリックします。
 
@@ -130,7 +130,7 @@ Thumbprint                                Subject
 
 これでアプリケーションの準備ができたので、Visual Studio から直接クラスターにデプロイできます。
 
-ソリューション エクスプローラーで **[MyFirstContainer]** を右クリックして、 **[発行]** を選択します。 [発行] ダイアログが表示されます。
+ソリューション エクスプローラーで **[MyFirstContainer]** を右クリックして、**[発行]** を選択します。 [発行] ダイアログが表示されます。
 
 前に `Import-PfxCertificate` コマンドを実行したときの PowerShell ウィンドウで **CN=** に続く内容をコピーし、それにポート `19000` を追加します。 たとえば、「 `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000` 」のように入力します。 それを **[接続のエンドポイント]** フィールドにコピーします。 この値は、後の手順で必要になるため、覚えておいてください。
 

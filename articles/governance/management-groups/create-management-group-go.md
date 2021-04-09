@@ -5,10 +5,10 @@ ms.date: 09/30/2020
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7b6ca4d10f2a86ecb55fec2afe72b4aabfbb94f9
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100101669"
 ---
 # <a name="quickstart-create-a-management-group-with-go"></a>クイックスタート: Go を使用して管理グループを作成する
@@ -132,4 +132,4 @@ go clean -i github.com/Azure/go-autorest/autorest/azure/auth
 管理グループについて、またリソース階層の管理方法について詳しくは、次の記事に進んでください。
 
 > [!div class="nextstepaction"]
-> 管理グループを使用してリソースを管理する
+> [管理グループを使用してリソースを管理する](./manage.md)

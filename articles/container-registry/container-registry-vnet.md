@@ -3,12 +3,12 @@ title: サービス エンドポイントを使用してアクセスを制限す
 description: Azure 仮想ネットワークのサービス エンドポイントを使用して Azure コンテナー レジストリへのアクセスを制限します。 サービス エンドポイント アクセスは、Premium サービス レベルの機能です。
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 5f9bc7c9a6c8f2061765510a6396611502fd4a2a
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: c49595ee4ee79aef264a87dd48bccd03f3d4f5a5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026226"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104773897"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Azure 仮想ネットワークのサービス エンドポイントを使用してコンテナー レジストリへのアクセスを制限する
 
@@ -19,14 +19,13 @@ ms.locfileid: "93026226"
 > [!IMPORTANT]
 > Azure Container Registry で [Azure Private Link](container-registry-private-link.md) がサポートされ、仮想ネットワークからプライベート エンドポイントをレジストリにデプロイできるようになりました。 プライベート エンドポイントには、プライベート IP アドレスを使用して仮想ネットワーク内からアクセスできます。 ほとんどのネットワーク シナリオでは、サービス エンドポイントの代わりにプライベート エンドポイントを使用することをお勧めします。
 
-レジストリ サービス エンドポイントの構成は、 **Premium** コンテナー レジストリ サービス レベルで利用できます。 レジストリ サービスのレベルと制限については、「[Azure Container Registry のサービス レベル](container-registry-skus.md)」を参照してください。
+レジストリ サービス エンドポイントの構成は、**Premium** コンテナー レジストリ サービス レベルで利用できます。 レジストリ サービスのレベルと制限については、「[Azure Container Registry のサービス レベル](container-registry-skus.md)」を参照してください。
 
 ## <a name="preview-limitations"></a>プレビューの制限事項
 
 * 現在、Azure Container Registry のサービス エンドポイントの今後の開発は計画されていません。 代わりに、[プライベート エンドポイント](container-registry-private-link.md)を使用することをお勧めします。
 * Azure portal を使用してレジストリにサービス エンドポイントを構成することはできません。
-* サービス エンドポイントを使用してコンテナー レジストリにアクセスするためのホストとして使用できるのは、[Azure Kubernetes Service](../aks/intro-kubernetes.md) クラスターまたは Azure [仮想マシン](../virtual-machines/linux/overview.md)だけです。 " *Azure Container Instances を含むその他の Azure サービスはサポートされていません。* "
-* 各レジストリでは、最大 100 個のネットワーク アクセス規則がサポートされます。
+* サービス エンドポイントを使用してコンテナー レジストリにアクセスするためのホストとして使用できるのは、[Azure Kubernetes Service](../aks/intro-kubernetes.md) クラスターまたは Azure [仮想マシン](../virtual-machines/linux/overview.md)だけです。 "*Azure Container Instances を含むその他の Azure サービスはサポートされていません。* "
 * Azure Container Registry のサービス エンドポイントは、Azure US Government Cloud または Azure China Cloud ではサポートされていません。
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
@@ -72,7 +71,7 @@ az network vnet list \
 ]
 ```
 
-[az network vnet subnet update][az-network-vnet-subnet-update] コマンドを使用して、 **Microsoft.ContainerRegistry** サービス エンドポイントをサブネットに追加します。 次のコマンドでは、自分の仮想ネットワークとサブネットの名前に置き換えます。
+[az network vnet subnet update][az-network-vnet-subnet-update] コマンドを使用して、**Microsoft.ContainerRegistry** サービス エンドポイントをサブネットに追加します。 次のコマンドでは、自分の仮想ネットワークとサブネットの名前に置き換えます。
 
 ```azurecli
 az network vnet subnet update \

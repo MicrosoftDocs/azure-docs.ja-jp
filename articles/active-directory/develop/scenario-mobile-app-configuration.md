@@ -12,26 +12,22 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1187c768a54dd04d25b6de0e6785ebb81a7dfc24
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6f13d789cd63bb568bb8940ce614ebdb2dbcdb83
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584433"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103199745"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Web API を呼び出すモバイル アプリを構成する
 
 アプリケーションを作成した後、アプリ登録パラメーターを使用してコードを構成する方法を確認します。 モバイル アプリケーションには、作成フレームワークへの適合に関連する複雑な部分が存在します。
 
-## <a name="find-msal-support-for-mobile-apps"></a>モバイル アプリに対する MSAL のサポートを見つける
+## <a name="microsoft-libraries-supporting-mobile-apps"></a>モバイル アプリをサポートする Microsoft ライブラリ
 
-次の種類の Microsoft Authentication Library (MSAL) で、モバイル アプリがサポートされています。
+次の Microsoft ライブラリはモバイル アプリをサポートしています。
 
-MSAL | 説明
------------- | ----------
-![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | ポータブル アプリケーションを開発するために使用されます。 MSAL.NET では、モバイル アプリケーションをビルドするために次のプラットフォームがサポートされます。ユニバーサル Windows プラットフォーム (UWP)、Xamarin.iOS、および Xamarin.Android。
-![MSAL.iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL.iOS | Objective-C または Swift を使用してネイティブの iOS アプリケーションを開発するために使用されます。
-![MSAL.Android](media/sample-v2-code/logo_android.png) <br/> MSAL.Android | Java for Android でネイティブの Android アプリケーションを開発するために使用されます。
+[!INCLUDE [active-directory-develop-libraries-mobile](../../../includes/active-directory-develop-libraries-mobile.md)]
 
 ## <a name="instantiate-the-application"></a>アプリケーションをインスタンス化する
 
@@ -130,7 +126,7 @@ iOS と macOS 用の MSAL を使用する場合は、次のタスクが必要で
 Xamarin.Android を使用する場合は、次のタスクを実行します。
 
 - [認証フローの対話部分が終了したら確実に制御が MSAL に戻るようにする](msal-net-xamarin-android-considerations.md#ensure-that-control-returns-to-msal)
-- [Android マニフェストを更新する](msal-net-xamarin-android-considerations.md#update-the-android-manifest)
+- [Android マニフェストを更新する](msal-net-xamarin-android-considerations.md#update-the-android-manifest-for-system-webview-support)
 - [埋め込み Web ビューを使用する (省略可能)](msal-net-xamarin-android-considerations.md#use-the-embedded-web-view-optional)
 - [必要に応じてトラブルシューティングを行う](msal-net-xamarin-android-considerations.md#troubleshooting)
 

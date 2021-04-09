@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 1388dc11254324f74efcbaa55c97cac2ccd0c026
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87073747"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>App Service アプリを別のリージョンに移動する
@@ -39,7 +39,7 @@ App Service リソースはリージョン固有のものであり、リージ�
 
 ## <a name="restore-app-to-a-different-region"></a>アプリを別のリージョンに復元する
 
-1. 影響を受けたアプリとは*異なる* Azure リージョンで、新しい App Service アプリを作成します。 これはディザスター リカバリー シナリオにおけるターゲットアプリです。
+1. 影響を受けたアプリとは *異なる* Azure リージョンで、新しい App Service アプリを作成します。 これはディザスター リカバリー シナリオにおけるターゲットアプリです。
 
 1. [Azure portal](https://portal.azure.com) で、影響を受けたアプリの管理ページに移動します。 障害が発生した Azure リージョンでは、影響を受けたアプリに警告テキストが表示されます。 警告テキストをクリックします。
 

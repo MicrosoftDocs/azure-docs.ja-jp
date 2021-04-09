@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,seodec18,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: d352fc86f4451f60951b84929ad5d9450c1003d6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 72c82e8f425b05dde37352225dd7167b089ba48a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942800"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868462"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>チュートリアル:HDInsight で Apache Kafka による Apache Spark 構造化ストリーミングを使用する
 
@@ -113,7 +113,7 @@ HDInsight 上の Apache Kafka では、パブリック インターネット経�
 
 次の図に、Spark と Kafka の間の通信フローを示します。
 
-![Azure 仮想ネットワークにおける Spark クラスターと Kafka クラスターの図](./media/hdinsight-apache-kafka-spark-structured-streaming/apache-spark-kafka-vnet.png)
+:::image type="content" source="./media/hdinsight-apache-kafka-spark-structured-streaming/apache-spark-kafka-vnet.png" alt-text="Azure 仮想ネットワークにおける Spark クラスターと Kafka クラスターの図" border="false":::
 
 > [!NOTE]  
 > Kafka サービスは、仮想ネットワーク内の通信に制限されます。 SSH や Ambari など、クラスター上の他のサービスは、インターネット経由でアクセスできます。 HDInsight で使用できるパブリック ポートの詳細については、「[HDInsight で使用されるポートと URI](hdinsight-hadoop-port-settings-for-services.md)」を参照してください。
@@ -149,7 +149,7 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
     | [SSH ユーザー名] | クラスター用に作成する SSH ユーザー。 |
     | [SSH パスワード] | SSH ユーザーのパスワード。 |
 
-    ![カスタマイズされたテンプレートのスクリーンショット](./media/hdinsight-apache-kafka-spark-structured-streaming/spark-kafka-template.png)
+    :::image type="content" source="./media/hdinsight-apache-kafka-spark-structured-streaming/spark-kafka-template.png" alt-text="カスタマイズされたテンプレートのスクリーンショット":::
 
 3. **使用条件** を読み、 **[上記の使用条件に同意する]** をオンにします。
 

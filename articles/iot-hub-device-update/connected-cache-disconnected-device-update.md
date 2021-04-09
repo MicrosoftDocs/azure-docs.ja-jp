@@ -8,10 +8,10 @@ ms.date: 2/16/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
 ms.openlocfilehash: e2b27934f58402ecfb7dabf5560dc43e45f3f7dd
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101678642"
 ---
 # <a name="understand-support-for-disconnected-device-updates"></a>切断されたデバイスの更新のサポートについて

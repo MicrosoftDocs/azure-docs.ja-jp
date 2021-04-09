@@ -2,20 +2,20 @@
 title: 顧客へのコンテンツの配信
 description: このトピックでは、Azure Media Services を使用したコンテンツの配信の概要を説明します。
 services: media-services
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 ms.assetid: 89ede54a-6a9c-4814-9858-dcfbb5f4fed5
 ms.service: media-services
 ms.workload: media
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 363bb5389eda8336d04b1ff457f8246e89a042d8
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 1ad89345a2779766fde4559758e61dff92023741
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014392"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103016612"
 ---
 # <a name="deliver-content-to-customers"></a>顧客へのコンテンツ配信
 
@@ -32,7 +32,7 @@ ms.locfileid: "92014392"
     * **スムーズ ストリーミング**。
 
 >[!NOTE]
->AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
+>AMS アカウントの作成時に、**既定** のストリーミング エンドポイントが自分のアカウントに追加され、**停止** 状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが **実行中** 状態である必要があります。 
 
 この記事では、コンテンツ配信の重要な概念の概要を説明します。
 
@@ -150,7 +150,7 @@ http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46
 ストリーミング エンドポイントは、コンテンツをクライアント プレーヤー アプリケーションや、再配布のためのコンテンツ配信ネットワーク (CDN) に直接配信するストリーミング サービスを表します。 ストリーミング エンドポイント サービスからの送信ストリームには、Media Services アカウントのライブ ストリームやビデオ オンデマンドの資産があります。 ストリーミング エンドポイントには 2 つの種類があります。**Standard** と **Premium** です。 詳しくは、「[ストリーミング エンドポイントの概要](media-services-streaming-endpoints-overview.md)」をご覧ください。
 
 >[!NOTE]
->AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
+>AMS アカウントの作成時に、**既定** のストリーミング エンドポイントが自分のアカウントに追加され、**停止** 状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが **実行中** 状態である必要があります。 
 
 ## <a name="known-issues"></a>既知の問題
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>スムーズ ストリーミング マニフェスト バージョンへの変更

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
 ms.openlocfilehash: 1ba683e3d616f52854f1055dab9b9fe2d389116a
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92331738"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>Azure Firewall ポリシーを使用して規則の階層を定義する
@@ -48,7 +48,7 @@ Azure Firewall ポリシーを使用すると、規則の階層を定義し、�
 - Database ファイアウォール ポリシー。 Database ファイアウォール ポリシーは、基本ファイアウォール ポリシーを継承します。
 - Engineering ファイアウォール ポリシー。 Engineering ファイアウォール ポリシーも、基本のファイアウォール ポリシーを継承します。
 
-:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="チームと要件" border="false":::
+:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="ポリシー階層" border="false":::
 
 ### <a name="create-custom-roles-to-access-the-rule-collection-groups"></a>規則コレクション グループにアクセスするカスタム ロールを作成する 
 
@@ -97,7 +97,7 @@ Azure Firewall ポリシーを使用すると、規則の階層を定義し、�
 
    明示的にサブスクリプション ID を追加してください。それ以外の場合、サブスクリプションにロールをインポートできなくなります。
 7.  **Id**  プロパティ行を削除し、 **IsCustom**  プロパティを true に変更します。
-8.  **Name**  および  **Description**  の各プロパティを「 *AZFM Rule Collection Group Author* 」(AZFM 規則コレクション グループ作成者) と「 *Users in this role can edit Firewall Policy rule collection groups* 」(このロールのユーザーはファイアウォール ポリシー規則コレクション グループを編集できます) に変更します
+8.  **Name**  および  **Description**  の各プロパティを「*AZFM Rule Collection Group Author*」(AZFM 規則コレクション グループ作成者) と「*Users in this role can edit Firewall Policy rule collection groups*」(このロールのユーザーはファイアウォール ポリシー規則コレクション グループを編集できます) に変更します
 
 JSON ファイルは次の例のようになります。
 
@@ -134,9 +134,9 @@ JSON ファイルは次の例のようになります。
 
 Azure portal でカスタム ロールを確認することもできます。 サブスクリプションにアクセスし、 **[アクセス制御 (IAM)]** 、 **[ロール]** の順に選択します。
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="チームと要件":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="SalesAppPolicy":::
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="チームと要件":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="SalesAppPolicy の読み取りアクセス許可":::
 
 詳細については、[Azure PowerShell を使用して Azure カスタム ロールを作成する](../role-based-access-control/tutorial-custom-role-powershell.md)」をご覧ください。
 

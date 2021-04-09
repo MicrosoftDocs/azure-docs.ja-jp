@@ -11,10 +11,10 @@ ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 ms.openlocfilehash: 66de81387fe27bd2a81ebcfeab7d86aac7031ff1
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102425296"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services のセキュリティ
@@ -162,7 +162,7 @@ public class Program {
 }
 ```
 
-# <a name="nodejs"></a>"[Node.js](#tab/node-js)"
+# <a name="nodejs"></a>[Node.js](#tab/node-js)
 
 詳しくは、「<a href="https://nodejs.org/api/process.html#process_process_env" target="_blank">`process.env` </a>」をご覧ください。
 

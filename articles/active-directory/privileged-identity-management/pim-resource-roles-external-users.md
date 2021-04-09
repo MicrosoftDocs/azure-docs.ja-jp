@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f4e2e18f3bb9d1c972d805a60493897d605921e4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96010641"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management でゲスト ユーザーを招待して Azure リソース ロールを割り当てる
@@ -93,21 +93,21 @@ Privileged Identity Management を使用すると、ゲストを招待し、Azur
 
     ![[招待] オプションとともにユーザーとグループが一覧表示される [新しい割り当て] - [メンバーまたはグループの選択] ウィンドウ](./media/pim-resource-roles-external-users/select-member-group.png)
 
-1. ゲストを招待するには、 **[招待]** をクリックします。
+1. ゲストを招待するには、**[招待]** をクリックします。
 
     ![電子メール アドレスを入力するためのボックス、および個人宛メッセージを指定するためのボックスがある [ゲストを招待する] ページ](./media/pim-resource-roles-external-users/invite-guest.png)
 
-1. ゲストを選択したら、 **[招待]** をクリックします。
+1. ゲストを選択したら、**[招待]** をクリックします。
 
     ゲストは、選択されたメンバーとして追加する必要があります。
 
-1. **[メンバーまたはグループの選択]** ウィンドウで、 **[選択]** をクリックします。
+1. **[メンバーまたはグループの選択]** ウィンドウで、**[選択]** をクリックします。
 
 1. **[メンバーシップ設定]** ウィンドウで、割り当ての種類と期間を選択します。
 
     ![割り当ての種類、開始日、および終了日を指定するためのオプションがある [新しい割り当て] - [メンバーシップ設定] ページ](./media/pim-resource-roles-external-users/membership-settings.png)
 
-1. 割り当てを完了するには、 **[完了]** を選択してから **[追加]** を選択します。
+1. 割り当てを完了するには、**[完了]** を選択してから **[追加]** を選択します。
 
     ゲストのロールの割り当ては、ご利用のロールのリストに表示されます。
 
@@ -123,7 +123,7 @@ Privileged Identity Management を使用すると、ゲストを招待し、Azur
 
 1. 電子メールの **[開始する]** リンクを選択します。
 
-1. アクセス許可を確認した後に、 **[同意する]** をクリックします。
+1. アクセス許可を確認した後に、**[同意する]** をクリックします。
 
     ![組織があなたに確認を求めるアクセス許可の一覧が含まれる、ブラウザー内の [アクセス許可の確認] ページ](./media/pim-resource-roles-external-users/invite-accept.png)
 
@@ -141,7 +141,7 @@ Privileged Identity Management を使用すると、ゲストを招待し、Azur
 
     ロールの設定に応じて、ロールをアクティブ化するためのいくらかの情報を指定する必要があります。
 
-1. ロールの設定を指定したら、 **[アクティブ化]** をクリックしてロールをアクティブ化します。
+1. ロールの設定を指定したら、**[アクティブ化]** をクリックしてロールをアクティブ化します。
 
     ![スコープと開始時刻、期間、および理由を指定するためのオプションが一覧表示される [アクティブ化] ページ](./media/pim-resource-roles-external-users/activate-role.png)
 

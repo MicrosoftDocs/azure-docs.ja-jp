@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.openlocfilehash: 8fae4255a577e7744fa045ef3da4ee5b784ed6b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "79088048"
 ---
 # <a name="architecture-of-the-solution-template-for-predictive-maintenance-in-aerospace"></a>航空宇宙の業務における予測メンテナンスのための Solution Template のアーキテクチャ

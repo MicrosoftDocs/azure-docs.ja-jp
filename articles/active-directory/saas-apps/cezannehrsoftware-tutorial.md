@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.openlocfilehash: 0aa0dab7b512c85fbbdf374c962e6ee8e1c7d616
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92456286"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>チュートリアル: Azure Active Directory と Cezanne HR Software の統合
@@ -41,7 +41,7 @@ Cezanne HR Software と Azure AD の統合を構成するには、次のもの�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Cezanne HR Software では、 **SP** Initiated SSO がサポートされます
+* Cezanne HR Software では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-cezanne-hr-software-from-the-gallery"></a>ギャラリーからの Cezanne HR Software の追加
 
@@ -61,13 +61,13 @@ Azure AD への Cezanne HR Software の統合を構成するには、ギャラ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Cezanne HR Software** 」と入力し、結果ウィンドウで **Cezanne HR Software** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Cezanne HR Software**」と入力し、結果ウィンドウで **Cezanne HR Software** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Cezanne HR Software](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Cezanne HR Software で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Cezanne HR Software で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Cezanne HR Software 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Cezanne HR Software で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -178,9 +178,9 @@ Cezanne HR Software で Azure AD シングル サインオンを構成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -231,9 +231,9 @@ Azure AD ユーザーが Cezanne HR Software にログインできるように�
 
     a. **[Internal User (内部ユーザー)]** をオフに設定します。
 
-    b. **[名]** ボックスに、ユーザーの名を入力します (この例では **Britta** )。  
+    b. **[名]** ボックスに、ユーザーの名を入力します (この例では **Britta**)。  
 
-    c. **[姓]** ボックスに、ユーザーの姓を入力します (この例では **Simon** )。
+    c. **[姓]** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
     d. **[電子メール]** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
 ms.openlocfilehash: 652c7cbfbe63ef2ae9a0d54e05407152ea300f1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87006995"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses"></a>複数のパブリック IP アドレスを持つ Azure Firewall をデプロイする

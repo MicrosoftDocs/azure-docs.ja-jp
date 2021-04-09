@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: sarbar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f9a51c10a4f390e5627bccf35ab5dc74689e9c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91566824"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Azure Active Directory レポートの概要
@@ -52,7 +52,7 @@ Azure Active Directory (Azure AD) レポートを使用すると、ご利用の�
 
 "リスクのフラグ付きユーザー" レポートと "危険なサインイン" レポートは、Azure AD の全エディションで利用できます。 ただしエディションによってレポートの粒度が異なります。 
 
-- リスクのフラグ付きユーザーと危険なサインインは、**Azure Active Directory の Free エディションと Basic エディション**で一覧表示できます。 
+- リスクのフラグ付きユーザーと危険なサインインは、**Azure Active Directory の Free エディションと Basic エディション** で一覧表示できます。 
 
 - **Azure Active Directory Premium 1** エディションではこのモデルが拡張され、各レポートについて検出された、基になるリスク検出の一部を調べることができます。 
 

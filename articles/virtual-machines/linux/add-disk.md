@@ -2,17 +2,18 @@
 title: Azure CLI を使用して Linux VM にデータ ディスクを追加する
 description: Azure CLI を使用して Linux VM に永続データ ディスクを追加する方法について説明します
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: cynthn
-ms.subservice: disks
-ms.openlocfilehash: 1155b4274b97f540fd97bf39e51fd41c37bc9627
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: adf6198cf12011c77fcf3f93d4b595ea433ddefd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730623"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580387"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Linux VM へのディスクの追加
 
@@ -82,7 +83,7 @@ sdc     3:0:0:0      50G
 > ディスク サイズが 2 テビバイト (TiB) 以上の場合は、GPT パーティション分割を使用する必要があります。 ディスク サイズが 2 TiB 未満の場合は、MBR または GPT のどちらのパーティション分割でも使用できます。  
 
 
-次の例では、`/dev/sdc` 上で `parted` を使用します。これは、通常、ほとんどの VM 上で最初のデータ ディスクが置かれる場所です。 `sdc` を、ご利用のディスクに適したオプションに置き換えます。 また、[XFS](https://xfs.wiki.kernel.org/) ファイル システムを使用してフォーマットしています。
+次の例では、`/dev/sdc` にある `parted` を使用します。これは、通常、ほとんどの VM 上で最初のデータ ディスクが置かれる場所です。 `sdc` を、ご利用のディスクに適したオプションに置き換えます。 また、[XFS](https://xfs.wiki.kernel.org/) ファイル システムを使用して、その書式設定も行います。
 
 ```bash
 sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
@@ -90,7 +91,7 @@ sudo mkfs.xfs /dev/sdc1
 sudo partprobe /dev/sdc1
 ```
 
-[`partprobe`](https://linux.die.net/man/8/partprobe) ユーティリティを使用して、カーネルが新しいパーティションとファイル システムを認識できるようにしています。 `partprobe` を使用しないと、blkid または lslbk コマンドで、新しいファイル システムの UUID がすぐに返されない可能性があります。
+[`partprobe`](https://linux.die.net/man/8/partprobe) ユーティリティを使用して、カーネルが新しいパーティションとファイルシステムを認識できるようにしています。 `partprobe` を使用しないと、blkid または lslbk コマンドで、新しいファイルシステムの UUID が返されない可能性があります。
 
 
 ### <a name="mount-the-disk"></a>ディスクのマウント
@@ -109,7 +110,7 @@ sudo mount /dev/sdc1 /datadrive
 
 ### <a name="persist-the-mount"></a>マウントの永続化
 
-再起動後にドライブを自動的に再マウントするために、そのドライブを */etc/fstab* ファイルに追加する必要があります。 ドライブを参照する際に、デバイス名 ( */dev/sdc1* など) だけでなく、UUID (汎用一意識別子) を */etc/fstab* で使用することもお勧めします。 UUID を使用すると、OS が起動中にディスク エラーを検出した場合に、間違ったディスクが特定の場所にマウントされるのを防ぐことができます。 その後、残りのデータ ディスクは、その同じデバイス ID に割り当てられます。 新しいドライブの UUID を確認するには、`blkid` ユーティリティを使用します。
+再起動後にドライブを自動的に再マウントするために、そのドライブを */etc/fstab* ファイルに追加する必要があります。 ドライブを参照する場合に、デバイス名 ( */dev/sdc1* など) だけでなく、UUID (汎用一意識別子) を */etc/fstab* で使用することもお勧めします。 UUID を使用すると、OS が起動中にディスク エラーを検出した場合に、間違ったディスクが特定の場所にマウントされるのを防ぐことができます。 その後、残りのデータ ディスクは、その同じデバイス ID に割り当てられます。 新しいドライブの UUID を確認するには、`blkid` ユーティリティを使用します。
 
 ```bash
 sudo blkid
@@ -147,7 +148,7 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   xfs   defaults,nofail  
 >
 > *nofail* オプションを使用すると、ファイル システムが壊れているか、ブート時にディスクが存在しない場合でも VM が起動されるようになります。 このオプションを指定しない場合、「[Cannot SSH to Linux VM due to FSTAB errors (FSTAB エラーが原因で Linux VM に SSH 接続できない)](/archive/blogs/linuxonazure/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting)」で説明されているような動作が発生します。
 >
-> fstab の変更が原因で起動エラーが発生した場合は、VM へのコンソール アクセスに Azure VM シリアル コンソールを使用できます。 詳細については、[シリアル コンソールのドキュメント](../troubleshooting/serial-console-linux.md)を参照してください。
+> fstab の変更が原因で起動エラーが発生した場合は、VM へのコンソール アクセスに Azure VM シリアル コンソールを使用できます。 詳細については、[シリアル コンソールのドキュメント](/troubleshoot/azure/virtual-machines/serial-console-linux)を参照してください。
 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>Azure における Linux の TRIM/UNMAP サポート
 一部の Linux カーネルでは、ディスク上の未使用ブロックを破棄するために TRIM/UNMAP 操作がサポートされます。 この機能は主に、Standard Storage で、削除されたページが無効になり、破棄できるようになったことを Azure に通知するときに役立ちます。また、この機能により、サイズの大きいファイルを作成して削除する場合のコストを削減できます。

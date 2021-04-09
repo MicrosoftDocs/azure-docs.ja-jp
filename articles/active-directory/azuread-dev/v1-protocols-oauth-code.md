@@ -15,10 +15,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5f987ab15201e4c4dabf147ac468184881e9ed17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85551636"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する
@@ -285,7 +285,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 | authorization_uri |承認サーバーの URI (物理エンドポイント)。 この値は、探索エンドポイントからサーバーの詳細を取得するための、ルックアップ キーとしても使用します。 <p><p> クライアントは、承認サーバーが信頼されていることを検証する必要があります。 リソースが Azure AD によって保護されている場合は、URL が `https://login.microsoftonline.com` または Azure AD によってサポートされる別のホスト名で始まることを確認するだけで十分です。 テナント固有のリソースは、テナント固有の承認 URI を常に返すはずです。 |
 | error |「 [OAuth 2.0 Authorization Framework (OAuth 2.0 承認フレームワーク)](https://tools.ietf.org/html/rfc6749)」のセクション 5.2 で定義されているエラー コード値。 |
 | error_description |エラーの詳しい説明。 このメッセージはエンドユーザー向けではありません。 |
-| resource_id |リソースの一意の識別子を返します。 クライアント アプリケーションは、リソースのトークンを要求するときに、この識別子を `resource` パラメーターの値として使用できます。 <p><p> クライアント アプリケーションがこの値を確認することは重要です。確認を行わない場合、悪意のあるサービスから**権限昇格**攻撃を受ける可能性があります。 <p><p> 攻撃を防止するための推奨方法として、 `resource_id` と、アクセスしている Web API URL のベースが一致していることを確認します。 たとえば、`https://service.contoso.com/data` にアクセスしている場合、`resource_id` は `https://service.contoso.com/` になります。 クライアント アプリケーションは、ID を検証する信頼性の高い代替方法がない限り、ベース URL ではじまらない `resource_id` を拒否する必要があります。 |
+| resource_id |リソースの一意の識別子を返します。 クライアント アプリケーションは、リソースのトークンを要求するときに、この識別子を `resource` パラメーターの値として使用できます。 <p><p> クライアント アプリケーションがこの値を確認することは重要です。確認を行わない場合、悪意のあるサービスから **権限昇格** 攻撃を受ける可能性があります。 <p><p> 攻撃を防止するための推奨方法として、 `resource_id` と、アクセスしている Web API URL のベースが一致していることを確認します。 たとえば、`https://service.contoso.com/data` にアクセスしている場合、`resource_id` は `https://service.contoso.com/` になります。 クライアント アプリケーションは、ID を検証する信頼性の高い代替方法がない限り、ベース URL ではじまらない `resource_id` を拒否する必要があります。 |
 
 #### <a name="bearer-scheme-error-codes"></a>ベアラー スキームのエラー コード
 RFC 6750 仕様では、応答で WWW-Authenticate ヘッダーとベアラー スキームを使用するリソースのために、次のエラーが定義されています。
@@ -305,7 +305,7 @@ RFC 6750 仕様では、応答で WWW-Authenticate ヘッダーとベアラー �
 
 更新トークン エラーを含む応答を受信したときは、現在の更新トークンを破棄し、新しい認証コードまたはアクセス トークンを要求します。 特に、認証コード付与フロー内で更新トークンを使用しているときに `interaction_required` または `invalid_grant` エラー コードを含む応答を受信した場合は、更新トークンを破棄し、新しい認証コードを要求します。
 
-更新トークンを使って新しいアクセス トークンを取得する**テナント固有**のエンドポイント (**共通**エンドポイントの利用も可能) への要求の例は次のようになります。
+更新トークンを使って新しいアクセス トークンを取得する **テナント固有** のエンドポイント (**共通** エンドポイントの利用も可能) への要求の例は次のようになります。
 
 ```
 // Line breaks for legibility only
@@ -336,7 +336,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 | パラメーター | 説明 |
 | --- | --- |
-| token_type |トークンの型。 サポートされている値は **bearer**のみです。 |
+| token_type |トークンの型。 サポートされている値は **bearer** のみです。 |
 | expires_in |トークンの残りの有効期間を秒単位で表したもの。 標準的な値は 3600 (1 時間) です。 |
 | expires_on |トークンの有効期限が切れる日付と時刻。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 |
 | resource |アクセス トークンを使ってアクセスできる保護されたリソースを識別します。 |

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 110fc658ffc3b72de91bbf1c9562f3efeecaf55b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92342418"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>vFXT クラスターのデプロイ
@@ -141,7 +141,7 @@ Azure portal にある作成テンプレートにアクセスします。「Aver
 Avere vFXT テンプレートは、クラスターの作成が完了すると、新しいクラスターに関する重要な情報を出力します。
 
 > [!TIP]
-> テンプレートの出力から得られた**管理 IP アドレス**を必ずコピーしてください。 クラスターを管理するためには、このアドレスが必要です。
+> テンプレートの出力から得られた **管理 IP アドレス** を必ずコピーしてください。 クラスターを管理するためには、このアドレスが必要です。
 
 この情報を見つけるには、次の手順に従います。
 

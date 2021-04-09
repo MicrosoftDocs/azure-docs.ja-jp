@@ -4,10 +4,10 @@ description: 自動移行プロセスのしくみについて説明します。
 ms.topic: conceptual
 ms.date: 02/14/2021
 ms.openlocfilehash: 92aaffcea7a7c96cd77aade318520b093eed3e14
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102045464"
 ---
 # <a name="understand-the-automatic-migration-process-for-your-classic-alert-rules"></a>クラシック アラート ルールの自動移行プロセスについて

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/22/2021
 ms.author: jeedes
 ms.openlocfilehash: 8c0bbebf9fdc9e8027b947beb037dde47b26b67b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101644850"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Sugar CRM の統合
@@ -100,7 +100,7 @@ Sugar CRM に対する Azure AD SSO を構成してテストするには、次�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -112,7 +112,7 @@ Sugar CRM に対する Azure AD SSO を構成してテストするには、次�
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に Sugar CRM へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -124,13 +124,13 @@ Sugar CRM に対する Azure AD SSO を構成してテストするには、次�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name="configure-sugar-crm-sso"></a>Sugar CRM の SSO の構成
+## <a name=&quot;configure-sugar-crm-sso&quot;></a>Sugar CRM の SSO の構成
 
 1. 別の Web ブラウザー ウィンドウで、Sugar CRM 企業サイトに管理者としてサインインします。
 
 1. **[Admin]** に移動します。
 
-    ![管理者](./media/sugarcrm-tutorial/ic795888.png "[Admin]")
+    ![管理者](./media/sugarcrm-tutorial/ic795888.png &quot;[Admin]")
 
 1. **[Administration]** セクションで、 **[Password Management]** をクリックします。
 

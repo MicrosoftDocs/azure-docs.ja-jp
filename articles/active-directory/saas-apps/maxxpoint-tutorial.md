@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: 48714fb6137f1dad9d58e3f48783069e11ae840d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92519523"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-maxxpoint"></a>チュートリアル: Azure Active Directory と MaxxPoint の統合
@@ -41,13 +41,13 @@ MaxxPoint と Azure AD の統合を構成するには、次のものが必要で
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* MaxxPoint では、 **SP** Initiated SSO と **IDP** Initiated SSO がサポートされます
+* MaxxPoint では、**SP** Initiated SSO と **IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-maxxpoint-from-the-gallery"></a>ギャラリーからの MaxxPoint の追加
 
 Azure AD への MaxxPoint の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に MaxxPoint を追加する必要があります。
 
-**ギャラリーから MaxxPoint を追加するには、次の手順を実行します。**
+**ギャラリーから MaxxPoint を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
@@ -61,13 +61,13 @@ Azure AD への MaxxPoint の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **MaxxPoint** 」と入力し、結果パネルで **MaxxPoint** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**MaxxPoint**」と入力し、結果パネルで **MaxxPoint** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の MaxxPoint](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、MaxxPoint で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、MaxxPoint で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと MaxxPoint 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 MaxxPoint で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ MaxxPoint で Azure AD のシングル サインオンを構成してテスト�
 
 MaxxPoint で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **MaxxPoint** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **MaxxPoint** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -126,7 +126,7 @@ MaxxPoint で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="configure-maxxpoint-single-sign-on"></a>MaxxPoint のシングル サインオンの構成
 
-アプリケーション用に構成された SSO を入手するために、MaxxPoint サポート チームに電話 ( **888-728-0950** ) で問い合わせます。指示された方法に従って、ダウンロードした **フェデレーション メタデータ XML** ファイルを提出してください。
+アプリケーション用に構成された SSO を入手するために、MaxxPoint サポート チームに電話 (**888-728-0950**) で問い合わせます。指示された方法に従って、ダウンロードした **フェデレーション メタデータ XML** ファイルを提出してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -144,9 +144,9 @@ MaxxPoint で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -157,7 +157,7 @@ MaxxPoint で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に MaxxPoint へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[MaxxPoint]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[MaxxPoint]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -181,7 +181,7 @@ MaxxPoint で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="create-maxxpoint-test-user"></a>MaxxPoint のテスト ユーザーの作成
 
-このセクションでは、MaxxPoint で Britta Simon というユーザーを作成します。 MaxxPoint サポート チームに電話 ( **888-728-0950** ) し、MaxxPoint アプリケーションにユーザーを追加してください。
+このセクションでは、MaxxPoint で Britta Simon というユーザーを作成します。 MaxxPoint サポート チームに電話 (**888-728-0950**) し、MaxxPoint アプリケーションにユーザーを追加してください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

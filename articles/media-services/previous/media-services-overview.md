@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 08a419f021e0315468cb6fa5917b30bb2977d958
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 6e68e53387aa50b99bab8ed4cdba7f1e97fc48c0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "98695511"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103008236"
 ---
 # <a name="azure-media-services-overview"></a>Azure Media Services の概要
 

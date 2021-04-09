@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/12/2019
 ms.openlocfilehash: eaf36cc2690b3c0f8922c05432b3197b4ff30d9a
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93026056"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>Azure Data Factory のデータ フローを作成する

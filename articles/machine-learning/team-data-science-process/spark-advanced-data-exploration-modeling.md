@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4f4a8fb82a42c5121105ddf7bb9d3d886b531350
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b84b7387411e7df8e092a2e810591697319f9554
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321336"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104774679"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Spark を使用した高度なデータ探索とモデリング
 
@@ -35,7 +35,8 @@ ms.locfileid: "93321336"
 
 使用するモデルは、ロジスティック回帰と線形回帰、ランダム フォレスト、勾配ブースティング ツリーです。
 
-* [SGD を使用した線形回帰](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) は、最適化に確率的勾配降下 (SGD) 法を使用し、特徴のスケーリングを使用して支払われるチップの金額を予測する線形回帰モデルです。 
+* [SGD を使用した線形回帰](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.regression.LinearRegressionWithSGD.html#pyspark.mllib.regression.LinearRegressionWithSGD
+) は、最適化に確率的勾配降下 (SGD) 法を使用し、特徴のスケーリングを使用して支払われるチップの金額を予測する線形回帰モデルです。 
 * [LBFGS を使用したロジスティック回帰](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) ("ロジット" 回帰) は、データ分類を実行するために従属変数がカテゴリ型である場合に使用できる回帰モデルです。 LBFGS は、限られた量のコンピューター メモリを使用する Broyden–Fletcher–Goldfarb–Shanno (BFGS) アルゴリズムに近い準ニュートン最適化アルゴリズムであり、機械学習で広く使用されています。
 * [ランダム フォレスト](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) は、複数のデシジョン ツリーをまとめたものです。  オーバーフィットのリスクを軽減するために、多くのデシジョン ツリーが結合されています。 ランダム フォレストは回帰と分類に使用されます。カテゴリの特徴を処理し、多クラス分類設定に拡張できます。 特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャできます。 ランダム フォレストは、分類と回帰に使用される最も一般的な機械学習モデルの 1 つです。
 * [勾配ブースティング ツリー](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) は、複数のデシジョン ツリーをまとめたものです。 GBTS は、デシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。 GBTS は回帰と分類に使用されます。カテゴリの特徴を処理できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャできます。 また、多クラス分類の設定にも使用できます。
@@ -49,7 +50,7 @@ CV とハイパーパラメーター スイープを使用するモデリング�
 
 <!-- -->
 
-## <a name="setup-spark-clusters-and-notebooks"></a>セットアップ:Spark クラスターと Notebook
+## <a name="setup-spark-clusters-and-notebooks"></a>セットアップ: Spark クラスターと Notebook
 このチュートリアルで示すセットアップ手順とコードは HDInsight Spark 1.6 向けですが、 Jupyter Notebook は HDInsight Spark 1.6 と Spark 2.0 の両方のクラスター向けに提供されています。 ノートブックの説明およびノートブックへのリンクは、ノートブックが含まれる GitHub リポジトリの [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) 内にあります。 また、このページとリンク先のノートブックに記載しているコードは汎用性があり、どの Spark クラスターでも動作します。 HDInsight Spark を使用していない場合、クラスターのセットアップと管理の手順は、ここに記載されている内容と若干異なります。 ご参考までに、Jupyter Notebook サーバーの pyspark カーネルで実行される Spark 1.6 および 2.0 向け Jupyter Notebook へのリンクを以下に示します。
 
 ### <a name="spark-16-notebooks"></a>Spark 1.6 向け Notebook
@@ -58,7 +59,7 @@ CV とハイパーパラメーター スイープを使用するモデリング�
 
 ### <a name="spark-20-notebooks"></a>Spark 2.0 向け Notebook
 
-[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb):このファイルでは、Spark 2.0 クラスターでデータの探索、モデリング、スコア付けを実行する方法を示します。
+[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): このファイルでは、Spark 2.0 クラスターでデータの探索、モデリング、スコア付けを実行する方法について説明します。
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -90,7 +91,7 @@ datetime.datetime.now()
 
 datetime.datetime(2016, 4, 18, 17, 36, 27, 832799)
 
-### <a name="import-libraries"></a>ライブラリのインポート
+### <a name="import-libraries"></a>ライブラリをインポートする
 次のコードを使用して、必要なライブラリをインポートします。
 
 ```python
@@ -118,7 +119,7 @@ Jupyter Notebook で提供される PySpark カーネルには、コンテキス
 
 PySpark カーネルには、"マジック"、つまり、%% で呼び出すことができる特別なコマンドがいくつか事前定義されています。 そのようなコマンドが、以降のコード サンプルでは 2 つ使用されています。
 
-* **%%local** : 後続行のコードをローカルで実行することを指定します。 コードは有効な Python コードにする必要があります。
+* **%%local**: 後続行のコードをローカルで実行することを指定します。 コードは有効な Python コードにする必要があります。
 * **%%sql -o \<variable name>** sqlContext に対して Hive クエリを実行します。 -o パラメーターが渡される場合、クエリの結果は、Pandas データフレームとして %%local Python コンテキストで永続化されます。
 
 Jupyter Notebook のカーネルと、それによって提供される定義済みの "マジック" (例: %%local) の詳細については、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)」をご覧ください。
@@ -193,7 +194,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 **OUTPUT**
 
-上記のセルの実行に要した時間:276.62 秒
+上記のセルの実行に要した時間: 276.62 秒
 
 ## <a name="data-exploration--visualization"></a>データの探索と視覚化
 データが Spark に取り込まれたら、次に、探索と視覚化によってデータの理解を深めます。 このセクションでは、SQL クエリを使用してタクシー データを調べ、視覚化するためにターゲット変数と予想される特徴をプロットします。 具体的には、タクシー乗車における乗客数の頻度、チップの金額の頻度、支払金額と支払の種類によるチップの変化をプロットします。
@@ -403,7 +404,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 **OUTPUT**
 
-上記のセルの実行に要した時間:3.14 秒
+上記のセルの実行に要した時間: 3.14 秒
 
 ### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>ML 関数への入力用にラベル付きポイント オブジェクトを作成する
 このセクションのコードでは、ラベル付きポイント データ型としてカテゴリ テキスト データのインデックスを作成し、それをエンコードする方法を示します。 この変換によって、MLlib ロジスティック回帰モデルや他の分類モデルのトレーニングとテストに使用するテキスト データを準備します。 ラベル付きポイント オブジェクトは、MLlib のほとんどの ML アルゴリズムで入力データとして必要とされる方法でフォーマットされた Resilient Distributed Dataset (RDD) です。 [ラベル付きポイント](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) は、ラベル/応答に関連付けられたローカル ベクトル (密または疎) です。
@@ -543,7 +544,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 **OUTPUT**
 
-上記のセルの実行に要した時間:11.67 秒
+上記のセルの実行に要した時間: 11.67 秒
 
 ### <a name="cache-objects-in-memory"></a>オブジェクトをメモリにキャッシュする
 ML アルゴリズムのトレーニングとテストの所要時間は、分類、回帰、およびスケーリングされた特徴に使用される入力データ フレーム オブジェクトをキャッシュすることで短縮できます。
@@ -760,7 +761,7 @@ ROC 下面積 = 0.983383274312
 
 F1 スコア = 0.984174341679
 
-上記のセルの実行に要した時間:2.67 秒
+上記のセルの実行に要した時間: 2.67 秒
 
 **ROC 曲線をプロットする**
 
@@ -831,7 +832,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 **OUTPUT**
 
-上記のセルの実行に要した時間:34.57 秒
+上記のセルの実行に要した時間: 34.57 秒
 
 ### <a name="use-mllibs-crossvalidator-pipeline-function-with-logistic-regression-elastic-regression-model"></a>ロジスティック回帰 (Elastic 回帰) モデルでの MLlib の CrossValidator パイプライン関数の使用
 このセクションのコードでは、NYC タクシーの乗車と料金のデータセットで、乗車でチップが支払われるかどうかを予測するロジスティック回帰モデル ( [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) を使用) をトレーニング、評価し、保存する方法を示します。 モデルは、CV とパラメーター スイープを組み合わせる MLlib CrossValidator パイプライン関数で実装されたクロス検証 (CV) とハイパーパラメーター スイープを使用してトレーニングされます。   
@@ -891,7 +892,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 **OUTPUT**
 
-上記のセルの実行に要した時間:107.98 秒
+上記のセルの実行に要した時間: 107.98 秒
 
 **ROC 曲線をプロットする**
 
@@ -982,7 +983,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 ROC 下面積 = 0.985336538462
 
-上記のセルの実行に要した時間:26.72 秒
+上記のセルの実行に要した時間: 26.72 秒
 
 ### <a name="gradient-boosting-trees-classification"></a>勾配ブースティング ツリー分類
 このセクションのコードでは、NYC タクシー乗車および料金データセットで、乗車でチップが支払われるかどうかを予測する勾配ブースティング ツリー モデルをトレーニング、評価し、保存する方法を示します。
@@ -1028,7 +1029,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 ROC 下面積 = 0.985336538462
 
-上記のセルの実行に要した時間:28.13 秒
+上記のセルの実行に要した時間: 28.13 秒
 
 ## <a name="predict-tip-amount-with-regression-models-not-using-cv"></a>回帰モデルを使用して (CV を使用せずに) チップの金額を予測する
 このセクションでは、チップの他の特徴に基づいて、タクシーの乗車で支払われるチップの金額を予測する回帰タスクで 3 つのモデルを使用する方法を示します。 使用するモデルは次のとおりです。
@@ -1109,13 +1110,13 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 係数: [0.0141707753435, -0.0252930927087, -0.0231442517137, 0.247070902996, 0.312544147152, 0.360296120645, 0.0122079566092, -0.00456498588241, -0.0898228505177, 0.0714046248793, 0.102171263868, 0.100022455632, -0.00289545676449, -0.00791124681938, 0.54396316518, -0.536293513569, 0.0119076553369, -0.0173039244582, 0.0119632796147, 0.00146764882502]
 
-切片:0.854507624459
+切片: 0.854507624459
 
 RMSE = 1.23485131376
 
 R-sqr = 0.597963951127
 
-上記のセルの実行に要した時間:38.62 秒
+上記のセルの実行に要した時間: 38.62 秒
 
 ### <a name="random-forest-regression"></a>ランダム フォレスト回帰
 このセクションのコードでは、NYC タクシー乗車データでチップの金額を予測するランダム フォレスト モデルをトレーニング、評価し、保存する方法を示します。   
@@ -1175,7 +1176,7 @@ RMSE = 0.931981967875
 
 R-sqr = 0.733445485802
 
-上記のセルの実行に要した時間:25.98 秒
+上記のセルの実行に要した時間: 25.98 秒
 
 ### <a name="gradient-boosting-trees-regression"></a>勾配ブースティング ツリー回帰
 このセクションのコードでは、NYC タクシー乗車データでチップの金額を予測する勾配ブースティング ツリー モデルをトレーニング、評価し、保存する方法を示します。
@@ -1227,7 +1228,7 @@ RMSE = 0.928172197114
 
 R-sqr = 0.732680354389
 
-上記のセルの実行に要した時間:20.9 秒
+上記のセルの実行に要した時間: 20.9 秒
 
 **プロット**
 
@@ -1324,7 +1325,7 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 **OUTPUT**
 
-上記のセルの実行に要した時間:161.21 秒
+上記のセルの実行に要した時間: 161.21 秒
 
 **R-SQR メトリックで評価する**
 
@@ -1443,7 +1444,7 @@ RMSE = 0.906972198262
 
 R-sqr = 0.740751197012
 
-上記のセルの実行に要した時間:69.17 秒
+上記のセルの実行に要した時間: 69.17 秒
 
 ### <a name="clean-up-objects-from-memory-and-print-model-locations"></a>メモリ内のオブジェクトのクリーンアップと、モデルの場所の出力
 メモリにキャッシュされたオブジェクトを削除するには、 `unpersist()` を使用します。
@@ -1476,7 +1477,7 @@ oneHotTESTregScaled.unpersist()
 
 **OUTPUT**
 
-PythonRDD[122] at RDD at PythonRDD.scala:43
+PythonRDD[122] at RDD at PythonRDD.scala: 43
 
 \*\*consumption notebook で使用するモデル ファイルの出力パス。 \*\*独立したデータセットの取り込みとスコア付けを行うには、これらのファイル名をコピーして "Consumption notebook" に貼り付ける必要があります。
 
@@ -1507,4 +1508,4 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 ## <a name="whats-next"></a>次の操作
 Spark MlLib を使用して回帰モデルと分類モデルを作成しました。これで、これらのモデルにスコアを付け、評価する方法を学習する準備ができました。
 
-**モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付け、評価する方法については、 [Spark で構築した機械学習モデルのスコア付けと評価](spark-model-consumption.md)に関するページを参照してください。
+**モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付け、評価する方法については、[Spark で構築した機械学習モデルのスコア付けと評価](spark-model-consumption.md)に関するページを参照してください。

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: e235bf90568a1382a5ecee3ff4d2283aaa32f10b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1eb4194354a07d5b580f07cfe5962785a4e100bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083218"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578024"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング
 
@@ -99,7 +99,7 @@ WamDefaultAuthority: organizations
 
 #### <a name="workplacejoined--no"></a>WorkplaceJoined :NO
 
-このフィールドは、デバイスが (" *ワークプレースに参加済み* " としてマークされた) 個人所有のデバイスとして Azure AD に登録されているかどうかを示します。 ドメインに参加していて、なおかつハイブリッド Azure AD 参加済みのコンピューターでは、この値は **NO** になります。 この値が **YES** である場合、ハイブリッド Azure AD 参加が完了する前に、職場または学校アカウントが追加されています。 この場合、Windows 10 バージョン 1607 以降を使用しているときは、このアカウントは無視されます。
+このフィールドは、デバイスが ("*ワークプレースに参加済み*" としてマークされた) 個人所有のデバイスとして Azure AD に登録されているかどうかを示します。 ドメインに参加していて、なおかつハイブリッド Azure AD 参加済みのコンピューターでは、この値は **NO** になります。 この値が **YES** である場合、ハイブリッド Azure AD 参加が完了する前に、職場または学校アカウントが追加されています。 この場合、Windows 10 バージョン 1607 以降を使用しているときは、このアカウントは無視されます。
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined :YES
 
@@ -387,14 +387,14 @@ WamDefaultAuthority: organizations
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>手順 5:ログを収集して Microsoft サポートに問い合わせる
 
-[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH) から Auth.zip ファイルをダウンロードします。
+[https://github.com/CSS-Identity/DRS/tree/main/Auth](https://github.com/CSS-Identity/DRS/tree/main/Auth) から Auth.zip ファイルをダウンロードします。
 
 1. ファイルを解凍し、インクルード ファイルの **start-auth.txt** と **stop-auth.txt** という名前を **start-auth.cmd** と **stop-auth.cmd** に変更します。
-1. 管理者特権でのコマンド プロンプトから、 **start-auth.cmd** を実行します。
+1. 管理者特権でのコマンド プロンプトから、**start-auth.cmd** を実行します。
 1. アカウントの切り替えを使用して、問題のあるユーザーとの別のセッションに切り替えます。
 1. 問題を再現します。
 1. アカウントの切り替えを使用して、トレースを実行している管理者セッションに戻ります。
-1. 管理者特権でのコマンド プロンプトから、 **stop-auth.cmd** を実行します。
+1. 管理者特権でのコマンド プロンプトから、**stop-auth.cmd** を実行します。
 1. スクリプトが実行されたフォルダーから **Authlogs** フォルダーを Zip 形式で送信します。
 
 ## <a name="troubleshoot-post-join-issues"></a>参加後の問題のトラブルシューティング

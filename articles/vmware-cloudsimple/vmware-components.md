@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ff9aec1904be754990958869666e9d67038e4fb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88142504"
 ---
 # <a name="private-cloud-vmware-components"></a>プライベート クラウド VMware コンポーネント
@@ -48,13 +48,13 @@ vCenter サーバー アプライアンス (VCSA) は、VMware Solution by Cloud
 
 ### <a name="vcenter-single-sign-on"></a>vCenter シングル サインオン
 
-VCSA に組み込まれた Platform Services Controller は、**vCenter シングル サインオン ドメイン**に関連付けられています。  ドメイン名は、**cloudsimple.local** です。  vCenter にアクセスするために既定のユーザー **CloudOwner@cloudsimple.com** が作成されます。  vCenter 用のオンプレミス/Azure Active Directory [ID ソース](set-vcenter-identity.md)を追加できます。
+VCSA に組み込まれた Platform Services Controller は、**vCenter シングル サインオン ドメイン** に関連付けられています。  ドメイン名は、**cloudsimple.local** です。  vCenter にアクセスするために既定のユーザー **CloudOwner@cloudsimple.com** が作成されます。  vCenter 用のオンプレミス/Azure Active Directory [ID ソース](set-vcenter-identity.md)を追加できます。
 
 ## <a name="vsan-storage"></a>vSAN ストレージ
 
 プライベート クラウドは、完全に構成されたオール フラッシュ vSAN ストレージを使用して、クラスター ローカルで作成されます。  vSAN データストアを含む vSphere クラスターを作成するには、同じ SKU のノードが 3 つ以上必要です。  既定では、vSAN データストア上では重複除去と圧縮が有効になっています。  vSphere クラスターの各ノード上には、2 つのディスク グループが作成されます。 各ディスク グループには、1 つのキャッシュ ディスクと 3 つのキャパシティ ディスクが含まれています。
 
-既定の vSAN ストレージ ポリシーが vSphere クラスター上に作成され、vSAN データストアに適用されます。  必要なサービス レベルを保証するため、このポリシーでは、VM ストレージ オブジェクトをデータ ストア内でプロビジョニングおよび割り当てする方法が決定されます。  ストレージ ポリシーでは、**許容エラー (FTT)** と **エラー許容メソッド**が定義されます。  新規のストレージ ポリシーを作成して VM に適用することが可能です。 SLA を維持するため、vSAN データストア上では、25% のキャパシティを予備として確保しておく必要があります。  
+既定の vSAN ストレージ ポリシーが vSphere クラスター上に作成され、vSAN データストアに適用されます。  必要なサービス レベルを保証するため、このポリシーでは、VM ストレージ オブジェクトをデータ ストア内でプロビジョニングおよび割り当てする方法が決定されます。  ストレージ ポリシーでは、**許容エラー (FTT)** と **エラー許容メソッド** が定義されます。  新規のストレージ ポリシーを作成して VM に適用することが可能です。 SLA を維持するため、vSAN データストア上では、25% のキャパシティを予備として確保しておく必要があります。  
 
 ### <a name="default-vsan-storage-policy"></a>既定の vSAN ストレージ ポリシー
 

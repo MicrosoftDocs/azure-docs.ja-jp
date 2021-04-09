@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 86e4bb52f2a97bf36dc4be86289bd513a9f05091
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: bb7769298940095900da25e61e13612b92bad00c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538257"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103419101"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure Virtual Network の IPv6 の概要
 
@@ -77,8 +77,7 @@ Azure Virtual Network の IPv6 の現在のリリースには、次の制限が�
 - Azure Virtual Network の IPv6 は、すべてのデプロイ方法を使用して、すべてのグローバル Azure Commercial リージョンと米国政府リージョンで使用できます。  
 - ExpressRoute ゲートウェイは、IPv6 を有効になっている VNET で IPv4 専用のトラフィックに対して使用できます。  IPv6 トラフィックについては、今後サポートされる予定です。   
 - VPN ゲートウェイは、IPv6 が有効になっている VNET で、直接的にも、"UseRemoteGateway" とのピアリングでも使用できません。
-- Azure プラットフォーム (AKS など) では、コンテナーに対する IPv6 通信はサポートされていません。  
-- IPv6 は、Azure VM 上のプライマリ ネットワーク インターフェイス (NIC) に対してのみ負荷分散できます。 セカンダリ NIC への IPv6 トラフィックの負荷分散はサポートされていません。    
+- Azure プラットフォーム (AKS など) では、コンテナーに対する IPv6 通信はサポートされていません。 
 - IPv6 専用 Virtual Machines または Virtual Machine Scale Sets はサポートされていません。各 NIC には、少なくとも 1 つの IPv4 IP 構成を含める必要があります。 
 - 既存の IPv4 デプロイに IPv6 を追加する場合、既存のリソース ナビゲーション リンクがある VNET に IPv6 範囲を追加することはできません。  
 - 現在、Azure パブリック DNS では、IPv6 に対して正引き DNS がサポートされていますが、逆引き DNS はまだサポートされていません。   

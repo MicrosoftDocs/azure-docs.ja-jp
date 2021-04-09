@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48584fa4042cf53fa1084e519dca0e64f530ca59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90090127"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect:ステージング サーバーとディザスター リカバリー
@@ -33,7 +33,7 @@ ms.locfileid: "90090127"
 * 新しい構成の変更をテストおよびデプロイする。
 * 新しいサーバーを導入し、古いサーバーの使用を中止する。
 
-インストール時、サーバーを **ステージング モード**に設定することを選択できます。 この操作により、サーバーでインポートと同期が有効になりますが、エクスポートは実行されません。 ステージング モードのサーバーでは、インストール時にパスワード同期やパスワード ライトバックを選択した場合でも、パスワード同期やパスワード ライトバックは実行されません。 ステージング モードを無効にすると、サーバーはエクスポートを開始し、パスワード同期とパスワード ライトバックが有効になります。
+インストール時、サーバーを **ステージング モード** に設定することを選択できます。 この操作により、サーバーでインポートと同期が有効になりますが、エクスポートは実行されません。 ステージング モードのサーバーでは、インストール時にパスワード同期やパスワード ライトバックを選択した場合でも、パスワード同期やパスワード ライトバックは実行されません。 ステージング モードを無効にすると、サーバーはエクスポートを開始し、パスワード同期とパスワード ライトバックが有効になります。
 
 > [!NOTE]
 > たとえば、Azure AD Connect でパスワード ハッシュ同期機能が有効であるとします。 ステージング モードを有効にすると、サーバーはオンプレミス AD からのパスワード変更の同期を停止します。 ステージング モードを無効にすると、サーバーは停止されたところからパスワード変更の同期を再開します。 サーバーが一定時間ステージング モードになると、サーバーはその間に発生していたすべてのパスワードの変更を同期するため、時間がかかることがあります。
@@ -89,7 +89,7 @@ ms.locfileid: "90090127"
 
 #### <a name="switch-active-server"></a>アクティブなサーバーの切り替え
 1. 現在アクティブなサーバーで、サーバー (DirSync、FIM、または Azure AD Sync) をオフにして Azure AD にエクスポートしないように設定するか、ステージング モード (Azure AD Connect) に設定します。
-2. **ステージング モード**のサーバーでインストール ウィザードを実行して、**ステージング モード**を無効にします。
+2. **ステージング モード** のサーバーでインストール ウィザードを実行して、**ステージング モード** を無効にします。
    ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/additionaltasks.png)
 
 ## <a name="disaster-recovery"></a>障害復旧
@@ -113,7 +113,7 @@ ms.locfileid: "90090127"
 オブジェクトに関する状態は同期エンジン サーバーには保存されないため、Active Directory と Azure AD 内のデータからデータベースを再構築することができます。 **sourceAnchor** 属性は、オンプレミスとクラウドからのオブジェクトを結合するために使用されます。 オンプレミスとクラウドの既存のオブジェクトを使ってサーバーを再構築する場合、同期エンジンは、再インストール時にこれらのオブジェクトをもう一度まとめて適合させます。 ドキュメント化して保存する必要があることは、フィルター規則、同期規則など、サーバーに行った構成の変更です。 同期を開始する前に、これらのカスタム構成を再適用する必要があります。
 
 ### <a name="have-a-spare-standby-server---staging-mode"></a>予備のスタンバイ サーバーを用意する - ステージング モード
-環境がより複雑な場合は、1 つまたは複数のスタンバイ サーバーを持つことをお勧めします。 インストール時、サーバーを **ステージング モード**に設定できます。
+環境がより複雑な場合は、1 つまたは複数のスタンバイ サーバーを持つことをお勧めします。 インストール時、サーバーを **ステージング モード** に設定できます。
 
 詳しくは、「[ステージング モード](#staging-mode)」をご覧ください。
 
@@ -151,9 +151,9 @@ write-host "Importing XML" -ForegroundColor Yellow
 $resolvedXMLtoimport=Resolve-Path -Path ([Environment]::ExpandEnvironmentVariables($xmltoimport))
 
 #use an XmlReader to deal with even large files
-$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
+$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
 $result=$reader.ReadToDescendant('cs-object')
-do 
+do 
 {
     #create the object placeholder
     #adding them up here means we can enforce consistency

@@ -6,17 +6,17 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.openlocfilehash: 5236a3be9f8908d886274764dfc0c0da5b3565bc
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92104480"
 ---
 # <a name="azure-functions-http-triggers-and-bindings-overview"></a>Azure Functions の HTTP トリガーとバインドの概要
 
 Azure Functions は、HTTP 要求から呼び出して、サーバーレス API を構築し、[webhook](https://en.wikipedia.org/wiki/Webhook) に応答することができます。
 
-| アクション | 種類 |
+| アクション | Type |
 |---------|---------|
 | HTTP 要求から関数を実行する | [トリガー](./functions-bindings-http-webhook-trigger.md) |
 | 関数から HTTP 応答を返す |[出力バインド](./functions-bindings-http-webhook-output.md) |
@@ -29,7 +29,7 @@ Azure Functions は、HTTP 要求から呼び出して、サーバーレス API 
 
 トリガーとバインドを使用するには、適切なパッケージを参照する必要があります。 NuGet パッケージは .NET クラス ライブラリに使用されますが、他のすべてのアプリケーションの種類には拡張バンドルが使用されます。
 
-| 言語                                        | 追加手段                                   | 解説 
+| Language                                        | 追加手段                                   | 解説 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | [NuGet パッケージ] バージョン 3.x をインストールする | |
 | C# スクリプト、Java、JavaScript、Python、PowerShell | [拡張機能バンドル]を登録する          | Visual Studio Code で使用するには [Azure Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)をお勧めします。 |

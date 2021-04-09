@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 5def6db9d551b3882204c9f997f164a0df7ac223
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87063306"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI 要素
@@ -80,7 +80,7 @@ ms.locfileid: "87063306"
 }
 ```
 
-- `options.hideNone` が **true** として指定されると、`newOrExistingOrNone`は**新規**または**既存** の値のみを持ちます。
+- `options.hideNone` が **true** として指定されると、`newOrExistingOrNone`は **新規** または **既存** の値のみを持ちます。
 - `options.hideDomainNameLabel` が **true** として指定されると、`domainNameLabel` は宣言されません。
 
 ## <a name="remarks"></a>解説

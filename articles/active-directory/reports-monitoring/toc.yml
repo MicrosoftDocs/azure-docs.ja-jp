@@ -98,9 +98,9 @@
     - name: レポート用の Azure AD PowerShell コマンドレット
       href: reference-powershell-reporting.md
     - name: 監査ログの API リファレンス
-      href: /graph/api/resources/directoryaudit?view=graph-rest-1.0
+      href: /graph/api/resources/directoryaudit
     - name: サインイン ログの API リファレンス
-      href: /graph/api/resources/signin?view=graph-rest-1.0
+      href: /graph/api/resources/signin
     - name: 監査アクティビティ
       href: reference-audit-activities.md
     - name: データ保有ポリシー

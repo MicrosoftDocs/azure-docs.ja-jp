@@ -11,12 +11,12 @@ ms.date: 08/03/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: how-to, tracking-python, deploy
-ms.openlocfilehash: 6043ea4e1366890033571c2ba78ecdb2e59f64e1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9de971639e22f9656ea75dc64993ac5881efbffb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325200"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102609415"
 ---
 # <a name="continuously-deploy-models"></a>モデルを継続的にデプロイする
 
@@ -30,9 +30,9 @@ ms.locfileid: "93325200"
 
 [Azure DevOps](https://azure.microsoft.com/services/devops/) 用の Machine Learning 拡張機能を使用して、モデルを継続的にデプロイできます。 Azure DevOps 用の Machine Learning 拡張機能を使用して、新しい機械学習モデルが Azure Machine Learning ワークスペースに登録されたときにデプロイ パイプラインをトリガーできます。
 
-1. [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops) にサインアップします。そうすると、任意のプラットフォームや任意のクラウドへのご自分のアプリケーションの継続的インテグレーションとデリバリーを実現できます。 (Azure Pipelines は [Machine Learning パイプライン](concept-ml-pipelines.md#compare)とは異なることに注意してください)。
+1. [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-sign-up) にサインアップします。そうすると、任意のプラットフォームや任意のクラウドへのご自分のアプリケーションの継続的インテグレーションとデリバリーを実現できます。 (Azure Pipelines は [Machine Learning パイプライン](concept-ml-pipelines.md#compare)とは異なることに注意してください)。
 
-1. [Azure DevOps プロジェクトを作成します。](/azure/devops/organizations/projects/create-project?view=azure-devops)
+1. [Azure DevOps プロジェクトを作成します。](/azure/devops/organizations/projects/create-project)
 
 1. [Azure Pipelines 用の Machine Learning 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml&targetId=6756afbe-7032-4a36-9cb6-2771710cadc2&utm_source=vstsproduct&utm_medium=ExtHubManageList)をインストールします。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 author: dcstwh
 ms.author: weetok
-ms.openlocfilehash: a52fad39e19bdf2edf110990c8f0e392ec5803ce
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1cb4fcaa51e1a59ee9d09eb178faf9b250173709
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377501"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740029"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイムを監視する
 
@@ -224,7 +224,17 @@ Azure portal で Azure-SSIS IR を監視するには、ADF UI の **[監視]** �
 
 ![すべての統合ランタイムを監視する](media/monitor-integration-runtime/monitor-integration-runtimes.png)
 
-次に、Azure-SSIS IR の名前を選択して監視ページを開きます。そこでは、全体またはノード固有のプロパティと状態を確認できます。 このページには、Azure-SSIS IR の全般、デプロイ、および詳細の設定の構成方法に応じて、さまざまな情報や機能のタイルが表示されます。  **[種類]** と **[リージョン]** の各情報タイルには、Azure-SSIS IR の種類とリージョンがそれぞれ表示されます。 **[ノード サイズ]** 情報タイルには、Azure-SSIS IR の SKU (SSIS edition_VM tier_VM シリーズ)、CPU コア数、ノードあたりの RAM のサイズが表示されます。 **[RUNNING / REQUESTED NODE(S)]\(実行中または要求されたノード\)** 情報タイルでは、現在実行中のノード数が、Azure-SSIS IR に対して以前に要求されたノードの合計数と比較されます。 機能タイルの詳細については、以下を参照してください。
+次に、Azure-SSIS IR の名前を選択して監視ページを開きます。そこでは、全体またはノード固有のプロパティと状態を確認できます。 このページには、Azure-SSIS IR の全般、デプロイ、および詳細の設定の構成方法に応じて、さまざまな情報や機能のタイルが表示されます。
+
+**[種類]** と **[リージョン]** の各情報タイルには、Azure-SSIS IR の種類とリージョンがそれぞれ表示されます。
+
+**[ノード サイズ]** 情報タイルには、Azure-SSIS IR の SKU (SSIS edition_VM tier_VM シリーズ)、CPU コア数、ノードあたりの RAM のサイズが表示されます。 
+
+**[RUNNING / REQUESTED NODE(S)]\(実行中または要求されたノード\)** 情報タイルでは、現在実行中のノード数が、Azure-SSIS IR に対して以前に要求されたノードの合計数と比較されます。
+
+**[DUAL STANDBY PAIR / ROLE]\(デュアル スタンバイ ペアまたはロール\)** 情報タイルには、事業継続とディザスター リカバリー (BCDR) のために Azure SQL Database または Managed Instance フェールオーバー グループと同期して機能するデュアル スタンバイ Azure-SSIS IR ペアの名前と、Azure-SSIS IR の現在のプライマリおよびセカンダ リロールが表示されます。 SSISDB フェールオーバーが発生すると、プライマリとセカンダリの Azure-SSIS IR のロールが入れ替わります ([BCDR 用の Azure-SSIS IR の構成](./configure-bcdr-azure-ssis-integration-runtime.md)に関する記事を参照)。
+
+機能タイルの詳細については、以下を参照してください。
 
 ![Azure-SSIS IR の監視](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime.png)
 
@@ -254,13 +264,13 @@ Azure-SSIS IR を VNet に参加させると、Azure-SSIS IR 監視ページに 
 
 Azure-SSIS IR 監視ページの **[接続の診断]** タイルで **[テスト接続]** リンクを選択してウィンドウをポップアップ表示し、そのウィンドウで、完全修飾ドメイン名 (FQDN) または IP アドレスと指定されたポートを使用して、Azure-SSIS IR と関連するパッケージ、構成、またはデータ ストアとの間の接続を確認できます ([Azure-SSIS IR からの接続のテスト](./ssis-integration-runtime-diagnose-connectivity-faq.md)に関するページを参照してください)。
 
-![Azure-SSIS IR と、関連するパッケージ、構成、データ ストアの間の接続をテストできる場所を示すスクリーンショット。](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
+![Azure-SSIS IR の監視 - 診断タイル](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
 
 #### <a name="static-public-ip-addresses-tile"></a>[STATIC PUBLIC IP ADDRESSES]\(静的パブリック IP アドレス\) タイル
 
 Azure-SSIS IR にご自分の静的パブリック IP アドレスを使用すると、Azure-SSIS IR の監視ページに **[STATIC PUBLIC IP ADDRESSES]\(静的パブリック IP アドレス\)** タイルが表示されます ([ Azure-SSIS IR に自分の静的パブリック IP アドレスを使用する](./join-azure-ssis-integration-runtime-virtual-network.md#publicIP)方法に関するページを参照してください)。 このタイルでは、Azure-SSIS IR の 1 つ目または 2 つ目の静的パブリック IP アドレスを指定するリンクを選択し、ウィンドウをポップアップ表示することができます。ここで、テキスト ボックスからリソース ID (`/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress`) をコピーすることができます。 また、ポップアップ ウィンドウで **[See your first/second static public IP address settings]\(1 つ目または 2 つ目の静的パブリック IP アドレス設定を表示する\)** リンクを選択し、Azure portal で 1 つ目または 2 つ目の静的パブリック IP アドレスを管理することもできます。
 
-![1 つ目または 2 つ目の静的パブリック IP アドレスを指定できる場所を示すスクリーンショット。](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
+![Azure-SSIS IR の監視 - 静的タイル](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
 
 #### <a name="package-stores-tile"></a>[PACKAGE STORES]\(パッケージ ストア\) タイル
 
@@ -272,7 +282,7 @@ Azure SQL Managed Instance によってホストされ、Azure-SSIS IR パッケ
 
 Azure-SSIS IR の開始、停止、メンテナンス、アップグレードに問題がある場合は、Azure-SSIS IR 監視ページに **[エラー]** タイルが追加で表示されます。 このタイルでは、Azure-SSIS IR によって生成されるエラーの数を示すリンクを選択してウィンドウをポップアップ表示し、それらのエラーの詳細を確認してコピーし、トラブルシューティング ガイドで推奨されているソリューションを見つけることができます ([Azure-SSIS IR のトラブルシューティング](./ssis-integration-runtime-management-troubleshoot.md)に関するページを参照してください)。
 
-![Azure-SSIS IR の監視 - 診断タイル](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-error.png)
+![Azure-SSIS IR の監視 - エラー タイル](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-error.png)
 
 ### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-monitor"></a>Azure Monitor を使用して Azure-SSIS Integration Runtime を監視する
 

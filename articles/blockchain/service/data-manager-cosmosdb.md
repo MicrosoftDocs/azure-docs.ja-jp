@@ -5,10 +5,10 @@ ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
 ms.openlocfilehash: 69790787bc888448f2f40178bd12ee7058cc5892
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91283457"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>チュートリアル:Blockchain Data Manager を使用して Azure Cosmos DB にデータを送信する
@@ -88,7 +88,7 @@ Blockchain Data Manager には、スマート コントラクトのデプロイ�
 
     バイトコードがクリップボードにコピーされます。
 
-1. **バイトコード**値を JSON ファイルとして保存します。 たとえば、*bytecode.json* です。 このファイルは、後の手順で使用します。
+1. **バイトコード** 値を JSON ファイルとして保存します。 たとえば、*bytecode.json* です。 このファイルは、後の手順で使用します。
 
 次の例は、VS Code エディターで開いている *abi.json* ファイルと *bytecode.json* ファイルを示しています。 ファイルは次のようになります。
 
@@ -137,7 +137,7 @@ Blockchain Data Manager では、アプリケーションの追加時に、コ�
 ### <a name="add-helloblockchain-application-to-instance"></a>インスタンスに helloblockchain アプリケーションを追加する
 
 1. インスタンスの一覧から、Blockchain Data Manager インスタンスを選択します。
-1. **ブロックチェーン アプリケーション**を選択します。
+1. **ブロックチェーン アプリケーション** を選択します。
 1. **[追加]** を選択します。
 
     ![ブロックチェーン アプリケーションを追加する](./media/data-manager-cosmosdb/add-application.png)

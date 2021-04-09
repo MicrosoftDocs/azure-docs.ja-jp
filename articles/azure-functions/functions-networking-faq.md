@@ -4,12 +4,12 @@ description: Azure Functions のネットワークについてよく寄せられ
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.reviewer: glenga
-ms.openlocfilehash: 3e8a992aac95b6c2688cb45aa980bf0b01883a53
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 24afeeee3207127bb9404156dc390433671dd5da
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578231"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104592304"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Azure Functions のネットワークについてよく寄せられる質問
 
@@ -17,7 +17,9 @@ ms.locfileid: "94578231"
 
 ## <a name="how-do-i-set-a-static-ip-in-functions"></a>Functions で静的 IP を設定するにはどうすればいいですか?
 
-現時点で関数に静的な受信/送信 IP を設定する唯一の方法は、App Service Environment で関数をデプロイすることです。 App Service Environment の使用の詳細については、まず「[App Service Environment で内部ロード バランサーを作成して使用する](../app-service/environment/create-ilb-ase.md)」の記事から参照してください。
+関数に静的な受信/送信 IP アドレスを設定する主な方法は、App Service Environment で関数をデプロイすることです。 App Service Environment の使用の詳細については、まず「[App Service Environment で内部ロード バランサーを作成して使用する](../app-service/environment/create-ilb-ase.md)」の記事から参照してください。
+
+また、仮想ネットワーク NAT ゲートウェイを使用して、制御するパブリック IP アドレスを介して送信トラフィックをルーティングすることもできます。 詳しくは、「[チュートリアル: Azure 仮想ネットワーク NAT ゲートウェイを使用して Azure Functions の送信 IP を制御する](functions-how-to-use-nat-gateway.md)」を参照してください。 
 
 ## <a name="how-do-i-restrict-internet-access-to-my-function"></a>自分の関数へのインターネット アクセスを制限するにはどうすればよいですか?
 
@@ -33,7 +35,7 @@ Azure portal エディターから実行中の関数に直接アクセスする�
 
 [サービス エンドポイント](./functions-networking-options.md#use-service-endpoints)を使用して、関数アプリの **受信** トラフィックを仮想ネットワークに制限できます。 この構成により、関数アプリでインターネットに送信呼び出しを行うこともできます。
 
-すべてのトラフィックが仮想ネットワークを通過するように関数を完全に制限するには、送信仮想ネットワーク統合または App Service Environment で[プライベート エンドポイント](./functions-networking-options.md#private-endpoint-connections)を使用することができます。
+すべてのトラフィックが仮想ネットワークを通過するように関数を完全に制限するには、送信仮想ネットワーク統合または App Service Environment で[プライベート エンドポイント](./functions-networking-options.md#private-endpoint-connections)を使用することができます。 詳しくは、「[プライベート エンドポイントを使用して Azure Functions を Azure 仮想ネットワークに統合する](functions-create-vnet.md)」を参照してください。
 
 ## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>関数アプリから仮想ネットワーク内のリソースにアクセスするにはどうすればいいですか?
 

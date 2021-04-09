@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 113c11b749b42bbaf9e5e40cdf63623288997a92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "89440288"
 ---
 # <a name="agile-development-of-data-science-projects"></a>データ サイエンス プロジェクトのアジャイル開発
@@ -149,21 +149,21 @@ Azure Boards のスプリント計画の詳細については、「[バックロ
 1. **[すべてのプロセス]** で **[バックログ レベル]** タブを選択します。 **[Portfolios backlogs]\(ポートフォリオ バックログ\)** で **[Epic (disabled)]\(エピック (無効)\)** の横にある **[...]** を選択してから、 **[編集/名前の変更]** を選択します。 
    
 1. **[バックログ レベルの編集]** ダイアログ ボックスで:
-   1. **[名前]** で、**エピック**を「*TDSP Projects*」に置き換えます。 
+   1. **[名前]** で、**エピック** を「*TDSP Projects*」に置き換えます。 
    1. **[このバックログ レベルの作業項目の種類]** で **[新しい作業項目の種類]** を選択し、「*TDSP Project*」と入力して **[追加]** を選択します。 
    1. **[既定の作業項目の種類]** でドロップダウンから **TDSP Project** を選択します。 
    1. **[保存]** を選択します。
    
    ![ポートフォリオ バックログのレベルを選択する](./media/agile-development/13-rename.png)  
    
-1. 同様の手順に従って、**機能**から *TDSP Stages* に名前を変更し、次の新しい作業項目の種類を追加します。
+1. 同様の手順に従って、**機能** から *TDSP Stages* に名前を変更し、次の新しい作業項目の種類を追加します。
    
    - *ビジネスの把握*
    - *データの取得*
    - *モデリング*
    - *デプロイ*
    
-1. **[要件バックログ]** で**ストーリー**から *TDSP Substages* に名前を変更し、新しい作業項目の種類 *TDSP Substage* を追加して、既定の作業項目の種類を **TDSP Substage** に設定します。
+1. **[要件バックログ]** で **ストーリー** から *TDSP Substages* に名前を変更し、新しい作業項目の種類 *TDSP Substage* を追加して、既定の作業項目の種類を **TDSP Substage** に設定します。
    
 1. **[イテレーション バックログ]** で新しい作業項目の種類 *TDSP Task* を追加して、それを既定の作業項目の種類に設定します。 
    

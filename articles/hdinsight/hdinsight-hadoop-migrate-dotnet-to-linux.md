@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 02/27/2018
-ms.openlocfilehash: 1ceb5d323ecfed54b4e01d13d66c640769a224ee
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 9e626d08e7fd315ca70765477c5dae56030521c6
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945599"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866405"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Windows ベースの HDInsight から Linux ベースの HDInsight への .NET ソリューションの移行
 
@@ -31,17 +31,17 @@ Mono と .NET 間の互換性の詳細については、[Mono の互換性に関
 
 1. [.NET Portability Analyzer](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer) をインストールします。 インストール時に、使用する Visual Studio のバージョンを選択します。
 
-2. Visual Studio 2015 以降では、__[Analyze] \(分析)__ > __[Portability Analyzer Settings] \(移植性アナライザー設定)__ を選択し、__[Mono]__ セクションで __[4.5]__ がオンに設定されていることを確認します。
+2. Visual Studio 2015 以降では、 __[Analyze] \(分析)__  >  __[Portability Analyzer Settings] \(移植性アナライザー設定)__ を選択し、 __[Mono]__ セクションで __[4.5]__ がオンに設定されていることを確認します。
 
-    ![Analyzer 設定の [Mono] セクションで [4.5] がチェックされた状態](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
+    :::image type="content" source="./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png" alt-text="Analyzer 設定の [Mono] セクションで [4.5] がチェックされた状態":::
 
-    __[OK]__ をクリックして構成を保存します。
+    __[OK]__ を選択して構成を保存します。
 
-3. __[Analyze] \(分析)__  >  __[Analyze Assembly Portability] \(アセンブリ移植性の分析)__ を選択します。 ソリューションを含むアセンブリを選択して、 __[開く] \(Open)__ を選択して分析を開始します。
+3. __[Analyze] \(分析)__  >  __[Analyze Assembly Portability] \(アセンブリ移植性の分析)__ を選択します。 ソリューションを含むアセンブリを選択して、__[開く] \(Open)__ を選択して分析を開始します。
 
-4. 分析が完了したら、 __[Analyze] \(分析)__  >  __[View analysis reports] \(分析レポートを表示)__ を選択します。 __[Portability Analysis Results] \(移植性分析の結果)__ で、 __[Open report] \(レポートを開く)__ を選択してレポートを開きます。
+4. 分析が完了したら、 __[Analyze] \(分析)__  >  __[View analysis reports] \(分析レポートを表示)__ を選択します。 __[Portability Analysis Results] \(移植性分析の結果)__ で、__[Open report] \(レポートを開く)__ を選択してレポートを開きます。
 
-    ![移植性アナライザーの結果ダイアログ](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
+    :::image type="content" source="./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png" alt-text="移植性アナライザーの結果ダイアログ":::
 
 > [!IMPORTANT]  
 > アナライザーはソリューションのすべての問題に対応できません。 たとえば、Mono が Windows 上で実行されている場合、`c:\temp\file.txt` というファイル パスは有効と見なされます。 このパスは Linux プラットフォームでは無効です。

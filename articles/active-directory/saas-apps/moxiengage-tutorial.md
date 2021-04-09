@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: b61590fd001264d5cc9201fe1678396201e14cc8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92507909"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxi-engage"></a>チュートリアル: Azure Active Directory と Moxi Engage の統合
@@ -41,13 +41,13 @@ Azure AD と Moxi Engage の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Moxi Engage では、 **SP** によって開始される SSO がサポートされます
+* Moxi Engage では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-moxi-engage-from-the-gallery"></a>ギャラリーからの Moxi Engage の追加
 
 Azure AD への Moxi Engage の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Moxi Engage を追加する必要があります。
 
-**ギャラリーから Moxi Engage を追加するには、次の手順に従います。**
+**ギャラリーから Moxi Engage を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
@@ -61,13 +61,13 @@ Azure AD への Moxi Engage の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Moxi Engage** 」と入力し、結果ウィンドウで **[Moxi Engage]** を選び、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Moxi Engage**」と入力し、結果ウィンドウで **[Moxi Engage]** を選び、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果一覧の Moxi Engage](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Moxi Engage で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Moxi Engage で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Moxi Engage 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Moxi Engage で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ Moxi Engage で Azure AD のシングル サインオンを構成してテスト
 
 Moxi Engage で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Moxi Engage** アプリケーション統合ページで、 **[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **Moxi Engage** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -140,9 +140,9 @@ Moxi Engage で Azure AD シングル サインオンを構成するには、次
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -153,7 +153,7 @@ Moxi Engage で Azure AD シングル サインオンを構成するには、次
 
 このセクションでは、Britta Simon に Moxi Engage へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Moxi Engage]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Moxi Engage]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

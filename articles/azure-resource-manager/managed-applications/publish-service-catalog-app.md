@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 342fa722d704933f22cec00a46d11ccc38fc6e4d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b255cafb9040f87c902fe6c094c3e0db3d461e4b
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91650648"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093636"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>クイック スタート:マネージド アプリケーション定義を作成して発行する
 
@@ -309,7 +309,7 @@ az managedapp definition create \
 
 ### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>ストレージ アカウントに "アプライアンス リソースプロバイダー" のロールの割り当てを設定する
 
-マネージド アプリケーション定義をストレージ アカウントにデプロイするには、ストレージ アカウントのコンテナーに定義ファイルを書き込むことができるように、事前に**アプライアンス リソースプロバイダー** ロールに共同作成者のアクセス許可を付与する必要があります。
+マネージド アプリケーション定義をストレージ アカウントにデプロイするには、ストレージ アカウントのコンテナーに定義ファイルを書き込むことができるように、事前に **アプライアンス リソースプロバイダー** ロールに共同作成者のアクセス許可を付与する必要があります。
 
 1. [Azure portal](https://portal.azure.com) のストレージ アカウントに移動します。
 1. **[アクセス制御 (IAM)]** を選択して、ストレージ アカウントのアクセス制御設定を表示します。 **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。
@@ -401,7 +401,7 @@ az managedapp definition create \
 
 ## <a name="make-sure-users-can-see-your-definition"></a>ユーザーが定義を確認できるようにする
 
-自身がアクセスできるマネージ アプリケーション定義に、組織の他のユーザーもアクセスできることを確認する必要があります。 定義に対して閲覧者以上のロールをユーザーに付与してください。 ユーザーはこのレベルのアクセスをサブスクリプションまたはリソース グループから継承している場合があります。 定義にアクセスできるユーザーを確認し、ユーザーやグループを追加する方法については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+自身がアクセスできるマネージ アプリケーション定義に、組織の他のユーザーもアクセスできることを確認する必要があります。 定義に対して閲覧者以上のロールをユーザーに付与してください。 ユーザーはこのレベルのアクセスをサブスクリプションまたはリソース グループから継承している場合があります。 定義にアクセスできるユーザーを確認したり、ユーザーやグループを追加したりするには、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

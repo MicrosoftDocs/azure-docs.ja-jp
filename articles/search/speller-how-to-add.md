@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: da172e9a7605876711e4a4f32bf4fac698b35109
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: be72cae8d109bfeccd60e8c821625f75357568e3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694803"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103232360"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>Cognitive Search のクエリにスペル チェックを追加する
 
@@ -96,7 +96,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 スペル チェックに必要な queryLanguage パラメーターは、インデックス スキーマのフィールド定義に割り当てられている[言語アナライザー](index-add-language-analyzers.md)と一致している必要があります。 
 
-+ queryLanguage により、スペル チェックに使用される辞書が決まります。これは、"queryType=semantic" を使用している場合に[セマンティック ランク付けアルゴリズム](semantic-how-to-query-response.md)への入力としても使用されます。
++ queryLanguage により、スペル チェックに使用される辞書が決まります。これは、"queryType=semantic" を使用している場合に[セマンティック ランク付けアルゴリズム](semantic-answers.md)への入力としても使用されます。
 
 + 言語アナライザーは、検索インデックスで一致するドキュメントを見つけるために、インデックスの作成時とクエリの実行時に使用されます。 言語アナライザーを使用するフィールド定義の例として `"name": "Description", "type": "Edm.String", "analyzer": "en.microsoft"` があります。
 

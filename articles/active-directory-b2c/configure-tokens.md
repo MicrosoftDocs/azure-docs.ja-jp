@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a4299eff296d9795f8d256ff1236a8e8b4ad3e42
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: f22a55a65b7dc4fd4f714d880804e6fd65dbbe46
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585209"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101654376"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でトークンを構成する
 
@@ -43,7 +43,8 @@ ms.locfileid: "97585209"
 ![更新トークンの有効期間](./media/configure-tokens/refresh-token-lifetime.png)
 
 > [!NOTE]
-> PKCE での承認コード フローを使用するシングルページ アプリケーションには、24 時間有効な更新トークンが常に存在しています。 「[ブラウザーでの更新トークンのセキュリティへの影響](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser)」で詳細情報を参照してください。
+> >PKCE で認可コード フローを使用するシングルページ アプリケーションでは、更新トークンの有効期間は常に 24 時間ですが、モバイル アプリ、デスクトップ アプリ、Web アプリではこの制限がありません。 「[ブラウザーでの更新トークンのセキュリティへの影響](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser)」で詳細情報を参照してください。
+
 
 ## <a name="configure-token-lifetime"></a>トークンの有効期間を構成する
 

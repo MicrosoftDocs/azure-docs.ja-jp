@@ -12,10 +12,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 235efc550fd47d4244a5bf081c75d5e824a8e4b4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793434"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge セキュリティの構成
@@ -124,7 +124,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 既定の構成では、HTTPS エンドポイントへのすべてのアクセスを許可します。 この設定は、さらに制限できます。
 
 ### <a name="changing-the-configuration"></a>構成の変更
-エンドポイントに適用されるアクセス制御ルールのグループは、 **サービス構成ファイル** の **\<EndpointAcls>** セクションに構成されます。
+エンドポイントに適用されるアクセス制御ルールのグループは、**サービス構成ファイル** の **\<EndpointAcls>** セクションに構成されます。
 
 ```xml
 <EndpointAcls>

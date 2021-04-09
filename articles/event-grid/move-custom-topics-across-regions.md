@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
 ms.openlocfilehash: d0656a4f6ec1c7431cf7111f786b0f1d779166e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89145343"
 ---
 # <a name="move-azure-event-grid-custom-topics-to-another-region"></a>Azure Event Grid カスタム トピックを別のリージョンに移動する
@@ -23,7 +23,7 @@ ms.locfileid: "89145343"
 - **テンプレートを使用して、カスタム トピックをターゲット リージョンにデプロイします**。 
 - **ターゲット リージョンでサブスクリプションを手動で作成します**。 現在のリージョンでカスタム トピックをテンプレートにエクスポートすると、トピックのみがエクスポートされます。 サブスクリプションはテンプレートに含まれていないため、ターゲット リージョンでカスタム トピックを作成した後に手動で作成してください。 
 - **展開を確認する**。 ターゲット リージョンでカスタム トピックが作成されていることを確認します。 
-- **移動を完了する**には、ソース リージョンからカスタム トピックを削除します。 
+- **移動を完了する** には、ソース リージョンからカスタム トピックを削除します。 
 
 ## <a name="prerequisites"></a>前提条件
 - 「[Quickstart:カスタム イベントを Web エンドポイントにルーティングする](custom-event-quickstart-portal.md)」をソース リージョンで完了します。 このステップを実行すると、この記事の手順をテストできるようになります。 
@@ -36,12 +36,24 @@ ms.locfileid: "89145343"
 2. 検索バーに「**Event Grid トピック**」と入力し、結果リストから **[Event Grid トピック]** を選択します。 
 
     :::image type="content" source="./media/move-custom-topics-across-regions/search-topics.png" alt-text="Event Grid トピック を検索して選択する":::
-3. Resource Manager テンプレートにエクスポートする**トピック**を選択します。 
+3. Resource Manager テンプレートにエクスポートする **トピック** を選択します。 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/select-custom-topic.png" alt-text="Event Grid トピック を検索して選択する":::   
+    :::image type="content" source="./media/move-custom-topics-across-regions/select-custom-topic.png" alt-text="カスタム トピックを選択する":::   
 4. **[Event Grid トピック]** ページで、左側のメニューの **[設定]** にある **[テンプレートのエクスポート]** を選択し、ツール バーの **[ダウンロード]** を選択します。 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/export-template-download.png" alt-text="Event Grid トピック を検索して選択する"
+    :::image type="content" source="./media/move-custom-topics-across-regions/export-template-download.png" alt-text="[テンプレートのエクスポート] -> [ダウンロード]":::   
+
+    > [!IMPORTANT]
+    > トピックのみがテンプレートにエクスポートされます。 トピックのサブスクリプションはエクスポートされません。 そのため、トピックをターゲット リージョンに移動した後に、トピックのサブスクリプションを作成する必要があります。 
+5. ポータルからダウンロードした **.zip** ファイルを見つけて、選択したフォルダーにそのファイルを解凍します。 この ZIP ファイルには、テンプレートとパラメーターの JSON ファイルが含まれています。 
+1. 任意のエディターで **template.json** を開きます。 
+8. **トピック** リソースの `location` をターゲット リージョンまたは場所に更新します。 場所コードを取得するには、[Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)に関するページを参照してください。 リージョンのコードは、スペースを含まないリージョン名です (例えば、`West US` は `westus` と同じです)。
+
+    ```json
+    "type": "Microsoft.EventGrid/topics",
+    "apiVersion": "2020-06-01",
+    "name": "[parameters('topics_mytopic0130_name')]",
+    "location": "westus"
     ```
 1. テンプレートを **[保存]** します。 
 
@@ -56,20 +68,20 @@ ms.locfileid: "89145343"
 6. **[ファイルの読み込み]** を選択し、手順に従って、前のセクションでダウンロードした **template.json** ファイルを読み込みます。
 7. **[保存]** を選択してテンプレートを保存します。 
 8. **[カスタム デプロイ]** ページで、次の手順を行います。 
-    1. Azure **サブスクリプション**を選択します。 
-    1. ターゲット リージョンで既存の**リソース グループ**を選択するか、新しく作成します。 
+    1. Azure **サブスクリプション** を選択します。 
+    1. ターゲット リージョンの既存の **リソース グループ** を選択するか、新しく作成します。 
     1. **[リージョン]** で、ターゲット リージョンを選択します。 既存のリソース グループを選択した場合、この設定は読み取り専用になります。 
-    1. **トピック名**には、トピックの新しい名前を入力します。 
+    1. **トピック名** には、トピックの新しい名前を入力します。 
     1. ページ下部にある **[確認と作成]** を選択します。 
     
-        :::image type="content" source="./media/move-custom-topics-across-regions/deploy-template.png" alt-text="Event Grid トピック を検索して選択する":::
+        :::image type="content" source="./media/move-custom-topics-across-regions/deploy-template.png" alt-text="カスタム デプロイ":::
     1. **[確認および作成]** ページで、設定を確認し、 **[作成]** を選択します。 
 
 ## <a name="verify"></a>確認
 
 1. デプロイが成功したら、 **[リソースに移動]** を選択します。 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/navigate-custom-topic.png" alt-text="Event Grid トピック を検索して選択する":::
+    :::image type="content" source="./media/move-custom-topics-across-regions/navigate-custom-topic.png" alt-text="リソースに移動":::
 1. カスタム トピックの **[Event Grid トピック]** ページが表示されていることを確認します。   
 1. 「[カスタム イベントを Web エンドポイントにルーティングする](custom-event-quickstart-portal.md#send-an-event-to-your-topic)」の手順に従って、イベントをトピックに送信します。 Webhook イベント ハンドラーが呼び出されていることを確認します。 
 

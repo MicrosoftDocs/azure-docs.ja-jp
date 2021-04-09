@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 66bacdf27b2ef9cf624b645cb6e4c123d9c3fa2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de85cad8232d76706358c36806ce19a7c1df893f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88135880"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675007"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>チュートリアル:Azure Data Catalog でのデータ資産の登録
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 このチュートリアルでは、登録ツールを使用して、データベース サンプルのデータ資産をカタログに登録します。 登録は、データ ソースおよびそれに格納されている資産から、名前、型、場所などの重要な構造メタデータを抽出し、そのメタデータをカタログにコピーするプロセスです。 データ ソースとデータ資産はそのままの場所に残りますが、メタデータは、それらを簡単に検出して理解できるようにカタログで使用されます。
 
@@ -117,11 +119,11 @@ Azure Data Catalog での検出では、検索とフィルター処理という 
 
 1. Azure Data Catalog ポータルの **[ホーム]** を選択します。 Web ブラウザーを閉じた場合は、[Azure Data Catalog ホーム ページ](https://www.azuredatacatalog.com)に移動します。
 
-2. 検索ボックスに「 `product` 」と入力し、 **Enter**キーを押します。
+2. 検索ボックスに「 `product` 」と入力し、 **Enter** キーを押します。
 
    ![Azure Data Catalog--basic text search](media/register-data-assets-tutorial/data-catalog-basic-text-search.png)
 
-3. 4 つのテーブルすべてとデータベースが結果に表示されることを確認します。 以下の画像に示すように、ツール バーのボタンを選択することで、**グリッド ビュー**と**リスト ビュー**を切り替えることができます。 **[ハイライト]** オプションが**オン**になっているため、検索結果内で検索キーワードが強調表示されています。 検索結果で、 **ページごとの結果** の数を指定することもできます。
+3. 4 つのテーブルすべてとデータベースが結果に表示されることを確認します。 以下の画像に示すように、ツール バーのボタンを選択することで、**グリッド ビュー** と **リスト ビュー** を切り替えることができます。 **[ハイライト]** オプションが **オン** になっているため、検索結果内で検索キーワードが強調表示されています。 検索結果で、 **ページごとの結果** の数を指定することもできます。
 
    ![Azure Data Catalog--basic text search results](media/register-data-assets-tutorial/data-catalog-basic-text-search-results.png)
 
@@ -133,7 +135,7 @@ Azure Data Catalog での検出では、検索とフィルター処理という 
 
    **[プレビュー]** タブには、**Product** テーブルのデータのプレビューが表示されます。
 
-5. **[列]** タブを選択すると、データ資産の列の詳細 (**名前**、**データ型**など) がわかります。
+5. **[列]** タブを選択すると、データ資産の列の詳細 (**名前**、**データ型** など) がわかります。
 
 6. **[データ プロファイル]** タブを選択すると、データ資産のデータのプロファイル (行数、データ サイズ、列の最小値など) が表示されます。
 
@@ -143,7 +145,7 @@ Azure Data Catalog での検出では、検索とフィルター処理という 
 
 1. **[フィルター]** で、 **[オブジェクトの種類]** の **[テーブル]** フィルターをオフにします。  
 
-2. 検索ボックスに「 `tags:product` 」と入力し、 **Enter**キーを押します。 データ カタログの検索に使用できるすべてのプロパティについては、「 [Data Catalog Search syntax reference (Data Catalog の検索構文のリファレンス)](/rest/api/datacatalog/#search-syntax-reference) 」を参照してください。
+2. 検索ボックスに「 `tags:product` 」と入力し、 **Enter** キーを押します。 データ カタログの検索に使用できるすべてのプロパティについては、「 [Data Catalog Search syntax reference (Data Catalog の検索構文のリファレンス)](/rest/api/datacatalog/#search-syntax-reference) 」を参照してください。
 
 3. テーブルとデータベースが結果に表示されることを確認します。  
 
@@ -163,7 +165,7 @@ Azure Data Catalog での検出では、検索とフィルター処理という 
 
 かっこを使用したグループ化によって、クエリの一部をグループ化して論理的に分離できます。特にブール演算子と組み合わせて使用します。
 
-1. 検索ボックスに「 `name:product AND (tags:product AND objectType:table)` 」と入力し、 **Enter**キーを押します。
+1. 検索ボックスに「 `name:product AND (tags:product AND objectType:table)` 」と入力し、 **Enter** キーを押します。
 
 2. 検索結果に **Product** テーブルのみが表示されていることを確認します。
 
@@ -177,7 +179,7 @@ Azure Data Catalog での検出では、検索とフィルター処理という 
 
 2. **[オブジェクトの種類]** で **[テーブル]** フィルターをオフにします。
 
-3. **Enter**キーを押します。
+3. **Enter** キーを押します。
 
 4. 登録した **Product**、**ProductCategory**、**ProductDescription** の各テーブルと SQL データベースが検索結果に表示されていることを確認します。
 
@@ -276,7 +278,7 @@ Data Catalog を通じてデータ ソースを検出し、カタログに登録
 
 ### <a name="take-ownership-of-data-assets-and-restrict-visibility"></a>データ資産の所有権の取得と可視性の制限
 
-1. [Azure Data Catalog ホーム ページ](https://www.azuredatacatalog.com)に移動します。 **検索**ボックスに「`tags:cycles`」と入力し、**Enter** キーを押します。
+1. [Azure Data Catalog ホーム ページ](https://www.azuredatacatalog.com)に移動します。 **検索** ボックスに「`tags:cycles`」と入力し、**Enter** キーを押します。
 
 2. 結果の一覧で項目を選択し、ツール バーの **[所有権の取得]** を選択します。
 
@@ -284,7 +286,7 @@ Data Catalog を通じてデータ ソースを検出し、カタログに登録
 
     ![Azure Data Catalog--take ownership](media/register-data-assets-tutorial/data-catalog-take-ownership.png)
 
-4. 可視性を制限するには、 **[表示]** セクションで **[所有者とこれらのユーザー]** を選択し、 **[追加]** を選択します。 テキスト ボックスにユーザーのメール アドレスを入力し、 **Enter**キーを押します。
+4. 可視性を制限するには、 **[表示]** セクションで **[所有者とこれらのユーザー]** を選択し、 **[追加]** を選択します。 テキスト ボックスにユーザーのメール アドレスを入力し、 **Enter** キーを押します。
 
     ![Azure Data Catalog--restrict access](media/register-data-assets-tutorial/data-catalog-ownership.png)
 
@@ -296,7 +298,7 @@ Azure Data Catalog では、個々の資産を削除することも、複数の�
 
 1. [Azure Data Catalog ホーム ページ](https://www.azuredatacatalog.com)に移動します。
 
-2. **検索**ボックスに「`tags:cycles`」と入力し、**Enter** キーを押します。
+2. **検索** ボックスに「`tags:cycles`」と入力し、**Enter** キーを押します。
 
 3. 次の画像のように、結果の一覧でアイテムを選択し、ツール バーの **[削除]** を選択します。
 

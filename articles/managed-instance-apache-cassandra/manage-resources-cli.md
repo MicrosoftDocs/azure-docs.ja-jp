@@ -4,14 +4,14 @@ description: Azure CLI を使用して Azure Managed Instance for Apache Cassand
 author: TheovanKraay
 ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/15/2021
 ms.author: thvankra
-ms.openlocfilehash: 3cd5fdbf6cdc504a1290c8fbd80cf89cf85ce714
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3e44625d23a302c58ea065a4fc3ecec5605e60b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743857"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103564526"
 ---
 # <a name="manage-azure-managed-instance-for-apache-cassandra-resources-using-azure-cli-preview"></a>Azure CLI を利用して Azure Managed Instance for Apache Cassandra リソースを管理する (プレビュー)
 
@@ -24,9 +24,9 @@ ms.locfileid: "101743857"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-* この記事には、Azure CLI バージョン 2.12.1 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
-
 > [!IMPORTANT]
+> この記事では、Azure CLI バージョン 2.17.1 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
+>
 > Azure Managed Instance for Apache Cassandra リソースの名前を変更することはできません。Azure Resource Manager におけるリソース URI の取り扱いに違反するためです。
 
 ## <a name="azure-managed-instance-for-apache-cassandra-clusters"></a>Azure Managed Instance for Apache Cassandra クラスター
@@ -42,7 +42,7 @@ ms.locfileid: "101743857"
 
 ### <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>マネージド インスタンス クラスターを作成する
 
-Azure Managed Instance for Apache Cassandra クラスターを作成します。
+[Az Cassandra cluster create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_create)コマンドを使用して、Azure Managed Instance for Apache Cassandra クラスターを作成します。
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -65,7 +65,7 @@ az managed-cassandra cluster create \
 
 ### <a name="delete-a-managed-instance-cluster"></a><a id="delete-cluster"></a>マネージド インスタンス クラスターを削除する
 
-クラスターを削除します。
+[az managed-cassandra cluster delete](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_delete) コマンドを使用して、クラスターを削除します。
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -78,7 +78,7 @@ az managed-cassandra cluster delete \
 
 ### <a name="get-the-cluster-details"></a><a id="get-cluster-details"></a>クラスターの詳細を取得する
 
-クラスターの詳細を取得します。
+[az managed-cassandra cluster show](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_show) コマンドを使用して、クラスターの詳細を取得します。
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -91,7 +91,7 @@ az managed-cassandra cluster show \
 
 ### <a name="get-the-cluster-node-status"></a><a id="get-cluster-status"></a>クラスター ノードの状態を取得する
 
-クラスターの詳細を取得します。
+[az managed-cassandra cluster node-status](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_node_status) コマンドを使用して、クラスターの詳細を取得します。
 
 ```azurecli-interactive
 clusterName='cassandra-hybrid-cluster'
@@ -104,7 +104,7 @@ az managed-cassandra cluster node-status \
 
 ### <a name="list-the-clusters-by-resource-group"></a><a id="list-clusters-resource-group"></a>リソース グループでクラスターを一覧表示する
 
-リソース グループでクラスターを一覧表示します。
+[az managed-cassandra cluster list](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_list) コマンドを使用して、リソース グループ別にクラスターを一覧表示します。
 
 ```azurecli-interactive
 subscriptionId='MySubscriptionId'
@@ -116,7 +116,7 @@ az managed-cassandra cluster list\
 
 ### <a name="list-clusters-by-subscription-id"></a><a id="list-clusters-subscription"></a>サブスクリプション ID でクラスターを一覧表示する
 
-サブスクリプション ID でクラスターを一覧表示します。
+[az managed-cassandra cluster list](/cli/azure/ext/cosmosdb-preview/managed-cassandra?view=azure-cli-latest&preserve-view=true) コマンドを使用して、サブスクリプション ID 別にクラスターを一覧表示します。
 
 ```azurecli-interactive
 # set your subscription id
@@ -137,7 +137,7 @@ az managed-cassandra cluster list
 
 ### <a name="create-a-datacenter"></a><a id="create-datacenter"></a>データセンターを作成する
 
-データセンターを作成します。
+[az managed-cassandra datacenter create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_create) コマンドを使用して、データセンターを作成します。
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -157,7 +157,7 @@ az managed-cassandra datacenter create \
 
 ### <a name="delete-a-datacenter"></a><a id="delete-datacenter"></a>データセンターを削除する
 
-データセンターを削除します。
+[az managed-cassandra datacenter delete](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_delete) コマンドを使用して、データセンターを削除します。
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -172,7 +172,7 @@ az managed-cassandra datacenter delete \
 
 ### <a name="get-datacenter-details"></a><a id="get-datacenter-details"></a>データセンターの詳細を取得する
 
-データセンターの詳細を取得します。
+[az managed-cassandra datacenter show](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_show) コマンドを使用して、データセンターの詳細を取得します。
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -187,7 +187,7 @@ az managed-cassandra datacenter show \
 
 ### <a name="update-or-scale-a-datacenter"></a><a id="update-datacenter"></a>データセンターを更新またはスケーリングする
 
-データセンターを更新またはスケーリング (nodeCount 値をスケール変更) します。
+[az managed-cassandra datacenter update](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_update) コマンドを使用して、データセンターを更新またはスケーリングします (nodeCount 値をスケール変更します)。
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -205,7 +205,7 @@ az managed-cassandra datacenter update \
 
 ### <a name="get-the-datacenters-in-a-cluster"></a><a id="get-datacenters-cluster"></a>クラスター内のデータセンターを取得する
 
-クラスター内のデータセンターを取得します。
+[az managed-cassandra datacenter list](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_list) コマンドを使用して、クラスター内のデータセンターを取得します。
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'

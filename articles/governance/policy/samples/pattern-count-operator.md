@@ -1,13 +1,13 @@
 ---
-title: パターン:ポリシー定義の count 演算子
+title: 'パターン: ポリシー定義の count 演算子'
 description: この Azure Policy パターンでは、ポリシー定義内で count 演算子を使用する方法の例を示します。
 ms.date: 10/14/2020
 ms.topic: sample
 ms.openlocfilehash: 1339dff7f8bc92a8e38ec5635690cc2069dd8df4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005420"
 ---
 # <a name="azure-policy-pattern-the-count-operator"></a>Azure Policy パターン: count 演算子

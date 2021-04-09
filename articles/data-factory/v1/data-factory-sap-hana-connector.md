@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 robots: noindex
 ms.openlocfilehash: 9c192a5f84f36fbdea0dd1d280928aa40186d4ee
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100386987"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory を使用した SAP HANA からのデータ移動
@@ -30,7 +30,7 @@ ms.locfileid: "100386987"
 このコネクタは、任意のバージョンの SAP HANA データベースのほか、 SQL クエリを使用した、HANA 情報モデル (分析ビュー、計算ビューなど) および行/列のテーブルからのデータ コピーをサポートしています。
 
 SAP HANA への接続を有効にするには、次のコンポーネントをインストールします。
-- **Data Management Gateway**:Data Factory サービスは、Data Management Gateway と呼ばれるコンポーネントを使用した、オンプレミスのデータ ストア (SAP HANA を含む) への接続をサポートしています。 Data Management Gateway の詳細およびゲートウェイの設定手順については、[オンプレミスのデータ ストアとクラウド データ ストアの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事をご覧ください。 SAP HANA が Azure IaaS 仮想マシン (VM) でホストされている場合でも、ゲートウェイは必要です。 ゲートウェイはデータ ストアと同じ VM にインストールできるほか、ゲートウェイがデータベースに接続できれば別の VM にインストールしてもかまいません。
+- **Data Management Gateway**: Data Factory サービスは、Data Management Gateway と呼ばれるコンポーネントを使用した、オンプレミスのデータ ストア (SAP HANA を含む) への接続をサポートしています。 Data Management Gateway の詳細およびゲートウェイの設定手順については、[オンプレミスのデータ ストアとクラウド データ ストアの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事をご覧ください。 SAP HANA が Azure IaaS 仮想マシン (VM) でホストされている場合でも、ゲートウェイは必要です。 ゲートウェイはデータ ストアと同じ VM にインストールできるほか、ゲートウェイがデータベースに接続できれば別の VM にインストールしてもかまいません。
 - **SAP HANA ODBC ドライバー**: ゲートウェイ コンピューターにインストールします。 SAP HANA ODBC ドライバーは [SAP ソフトウェアのダウンロード センター](https://support.sap.com/swdc)からダウンロードできます。 "**SAP HANA CLIENT for Windows**" というキーワードで検索してください。 
 
 ## <a name="getting-started"></a>作業の開始
@@ -45,7 +45,7 @@ SAP HANA への接続を有効にするには、次のコンポーネントを�
 2. コピー操作用の入力データと出力データを表す **データセット** を作成します。 
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む **パイプライン** を作成します。 
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの SAP HANA からデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON の使用例: SAP HANA から Azure BLOB にデータをコピーする](#json-example-copy-data-from-sap-hana-to-azure-blob)」セクションを参照してください。 
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの SAP HANA データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例: SAP HANA から Azure BLOB へのデータのコピー](#json-example-copy-data-from-sap-hana-to-azure-blob)」を参照してください。 
 
 次のセクションでは、SAP HANA データ ストアに固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
@@ -78,7 +78,7 @@ encryptedCredential | 暗号化された資格情報の文字列。 | string | �
 | --- | --- | --- | --- |
 | query | SAP HANA インスタンスからデータを読み取る SQL クエリを指定します。 | SQL クエリ。 | はい |
 
-## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>JSON の使用例:SAP HANA から Azure BLOB にデータをコピーする
+## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>JSON の使用例: SAP HANA から Azure BLOB へのデータのコピー
 次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 このサンプルは、オンプレミスの SAP HANA から Azure Blob Storage にデータをコピーする方法を示します。 Azure Data Factory のコピー アクティビティを使用して、**こちら** に記載されているシンクのいずれかにデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats)コピーすることもできます。  
 
 > [!IMPORTANT]
@@ -158,7 +158,7 @@ external プロパティを true に設定すると、このテーブルが Data
 ```
 
 ### <a name="azure-blob-output-dataset"></a>Azure BLOB の出力データセット
-このデータセットでは、出力 Azure BLOB データセットを定義します。 type プロパティは AzureBlob に設定されます。 typeProperties セクションは、SAP HANA インスタンスからコピーしたデータの格納場所を示しています。 データは新しい BLOB に 1 時間おきに書き込まれます (frequency: hour、interval: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
+このデータセットでは、出力 Azure BLOB データセットを定義します。 type プロパティは AzureBlob に設定されます。 typeProperties セクションは、SAP HANA インスタンスからコピーしたデータの格納場所を示しています。 データは新しい BLOB に 1 時間おき (頻度: 時間、間隔: 1) に書き込まれます。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
 ```json
 {

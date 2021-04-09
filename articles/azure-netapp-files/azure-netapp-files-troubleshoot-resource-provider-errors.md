@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 02/10/2021
 ms.author: b-juche
 ms.openlocfilehash: ac83e5a9366a12c5adce0e08f04f2bb28a7d788d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100374883"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Azure NetApp Files のリソース プロバイダー エラーのトラブルシューティング 

@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b66b004a0371b76f82d525972feefab9c89efb2d
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 3fad2c683890776908afbfbf15ee91d46d564783
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742048"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103466764"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Azure Active Directory のロールベースのアクセス制御の概要
 
@@ -60,7 +60,7 @@ Azure AD の組み込みロールとカスタム ロールは、[Azure のロー
 - ロール定義
 - リソースのスコープ
 
-[ロールの割り当ての作成](custom-create.md)は、Azure portal、Azure AD PowerShell、または Graph API を使って行うことができます。 [カスタム ロールの割り当てを表示する](custom-view-assignments.md#view-the-assignments-of-a-role)こともできます。
+[ロールの割り当ての作成](custom-create.md)は、Azure portal、Azure AD PowerShell、または Graph API を使って行うことができます。 また、[ロールの割り当てを一覧表示](view-assignments.md)することもできます。
 
 次の図では、ロールの割り当ての例を示します。 この例では、Contoso Widget Builder アプリ登録のスコープで、Chris Green にアプリ登録管理者のカスタム ロールが割り当てられています。 割り当てにより、Chris には、この特定のアプリ登録に対してのみ、アプリ登録管理者ロールのアクセス許可が付与されます。
 
@@ -89,4 +89,4 @@ Azure AD の組み込みロールは無料で使用できますが、カスタ�
 
 - [Azure AD ロールを理解する](concept-understand-roles.md)
 - [Azure portal、Azure AD PowerShell、および Graph API](custom-create.md) を使用して、カスタム ロールの割り当てを作成する
-- [カスタム ロールの割り当てを表示する](custom-view-assignments.md)
+- [ロールの割り当てを一覧表示する](view-assignments.md)

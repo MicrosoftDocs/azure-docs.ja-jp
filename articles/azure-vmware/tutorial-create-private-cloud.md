@@ -1,18 +1,18 @@
 ---
-title: チュートリアル - Azure VMware Solution のプライベート クラウドを作成してデプロイする
+title: 'チュートリアル: Azure VMware Solution のプライベート クラウドをデプロイする'
 description: Azure VMware Solution のプライベート クラウドを作成してデプロイする方法を説明します
 ms.topic: tutorial
 ms.date: 02/22/2021
-ms.openlocfilehash: 2afd88bca05a9bcab309faff373bedf6a22e9f4b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ed916305cd1a67162f07c24e3bf97766e5389b74
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725426"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103462169"
 ---
-# <a name="tutorial-create-an-azure-vmware-solution-private-cloud"></a>チュートリアル:Azure VMware Solution のプライベート クラウドを作成する
+# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud"></a>チュートリアル: Azure VMware Solution のプライベート クラウドをデプロイする
 
-このチュートリアルでは、Azure VMware Solution のプライベート クラウドを作成してデプロイする方法を説明します。 初期デプロイ時の最小ホスト数は 3 つです。 追加のホストは、クラスターあたり最大 16 個まで一度に 1 つずつ追加できます。 
+Azure VMware Solution を使用すると、Azure に vSphere クラスターをデプロイできます。 初期デプロイ時の最小ホスト数は 3 つです。 追加のホストは、クラスターあたり最大 16 個まで一度に 1 つずつ追加できます。
 
 Azure VMware Solution では、最初はオンプレミスの vCenter でプライベート クラウドを管理することができないため、追加の構成と接続が必要です。 このチュートリアルでは、これらの手順と、関連する前提条件について説明します。
 
@@ -48,7 +48,7 @@ Azure portal の代わりに、Azure Cloud Shell が使用されている Azure 
 
 #### <a name="create-a-resource-group"></a>リソース グループを作成する
 
-`[az group create](/cli/azure/group)` コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+['az group create'](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 

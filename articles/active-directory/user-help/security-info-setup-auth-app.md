@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: e383896e50ccf06ef6d1b5caaeb0ef36ece2ce3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c947bee0b702797a86d1e038f74c6c10e2b23eb4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348298"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103197472"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Microsoft Authenticator アプリを検証方法として設定する
 
@@ -46,10 +46,10 @@ ms.locfileid: "96348298"
 
 組織の設定に応じて、セキュリティ情報メソッドの 1 つとして認証アプリを使用できます。 Microsoft Authenticator アプリを使用することは必須ではなく、設定プロセス時に別のアプリを選択することもできます。 ただし、この記事では、Microsoft Authenticator アプリを使用します。
 
->[!Important]
-> 5 つの異なるデバイスまたは 5 つのハードウェア トークンに Microsoft Authenticator アプリがセットアップされている場合は、6 つ目をセットアップすることができず、次のエラー メッセージが表示される可能性があります。
+> [!IMPORTANT]
+> 5 つの異なるデバイスに Microsoft Authenticator アプリを設定した場合、または 5 つのハードウェア トークンを使用した場合は、6 つ目を設定することはできず、次のエラーメッセージが表示されることがあります。
 > 
-> **既に 5 つの認証アプリまたはハードウェア トークンがあるため、Microsoft Authenticator をセットアップできません。認証アプリまたはハードウェア トークンを 1 つ削除する場合は、管理者に問い合わせてください。**
+> **既に 5 つの認証アプリまたはハードウェア トークンがあるため、Microsoft Authenticator を設定できません。認証アプリまたはハードウェア トークンを 1 つ削除する場合は、管理者に問い合わせてください。**
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを設定するには
 
@@ -57,7 +57,7 @@ ms.locfileid: "96348298"
 
     ![強調表示されているセキュリティ情報リンクを示す [マイ プロファイル] ページ](media/security-info/securityinfo-myprofile-page.png)
 
-2. 左側のナビゲーション ウィンドウから、または **[セキュリティ情報]** ブロックのリンクから **[セキュリティ情報]** を選択した後、 **[セキュリティ情報]** ページで **[メソッドの追加]** を選択します。
+2. 左側のメニューで **[セキュリティ情報]** を選択するか、 **[セキュリティ情報]** ペインのリンクを使用します。 既に登録されている場合は、2 要素認証を求めるメッセージが表示されます。 次に、 **[セキュリティ情報]** ペインで **[メソッドの追加]** を選択します。
 
     ![[メソッドの追加] オプションが強調表示されている [セキュリティ情報] ページ](media/security-info/securityinfo-myprofile-addmethod-page.png)
 

@@ -1,5 +1,5 @@
 ---
-title: OWIN ベースの Web API を b2clogin.com に移行する
+title: OWIN ベースの Web API を b2clogin.com またはカスタム ドメインに移行する
 titleSuffix: Azure AD B2C
 description: アプリケーションを b2clogin.com に移行するときに、複数のトークン発行者によって発行されたトークンを .NET Web API でサポートできるようにする方法について学習します。
 services: active-directory-b2c
@@ -8,26 +8,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/31/2019
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5528607b0559dad246262748c83c9d359ee2144e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 860f167913211ee7c511e515937f29ba5bf954cf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385741"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103491571"
 ---
-# <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>OWIN ベースの Web API を b2clogin.com に移行する
+# <a name="migrate-an-owin-based-web-api-to-b2clogincom-or-a-custom-domain"></a>OWIN ベースの Web API を b2clogin.com またはカスタム ドメインに移行する
 
-この記事では、[Open Web Interface for .NET (OWIN)](http://owin.org/) が実装されている Web API で複数のトークン発行者のサポートを有効にする方法について説明します。 複数のトークン エンドポイントのサポートは、Azure Active Directory B2C (Azure AD B2C) API とそのアプリケーションを *login.microsoftonline.com* から *b2clogin.com* に移行する場合に便利です。
+この記事では、[Open Web Interface for .NET (OWIN)](http://owin.org/) が実装されている Web API で複数のトークン発行者のサポートを有効にする方法について説明します。 複数のトークン エンドポイントのサポートは、Azure Active Directory B2C (Azure AD B2C) API とそのアプリケーションをあるドメインから別のドメインに移行する場合に便利です。 たとえば、*login.microsoftonline.com* から *b2clogin.com*、または[カスタム ドメイン](custom-domain.md)に移行するような場合です。
 
-b2clogin.com と login.microsoftonline.com の両方によって発行されたトークンを受け入れるように API にサポートを追加することにより、Web アプリケーションを段階的に移行してから、login.microsoftonline.com で発行されたトークンのサポートを API から削除することができます。
+b2clogin.com、login.microsoftonline.com、またはカスタム ドメインによって発行されたトークンを受け入れるように API にサポートを追加することにより、Web アプリケーションを段階的に移行してから、login.microsoftonline.com で発行されたトークンのサポートを API から削除することができます。
 
 以下のセクションでは、[Microsoft OWIN][katana] ミドルウェア コンポーネント (Katana) を使用する Web API で複数の発行者を有効にする方法の例について示します。 コード例は Microsoft OWIN ミドルウェアに固有のものですが、一般的な手法は他の OWIN ライブラリにも適用できます。
-
-> [!NOTE]
-> この記事は、`login.microsoftonline.com` を参照する API とアプリケーションを現在デプロイしていて、推奨される `b2clogin.com` エンドポイントへの移行を希望している Azure AD B2C のお客様を対象としています。 新しいアプリケーションを設定する場合は、指示に従って [b2clogin.com](b2clogin.md) を使用してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -102,7 +99,8 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
         AuthenticationType = Startup.DefaultPolicy,
         ValidIssuers = new List<string> {
             "https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/",
-            "https://{your-b2c-tenant}.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/"
+            "https://{your-b2c-tenant}.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/"//,
+            //"https://your-custom-domain/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/"
         }
     };
     ```
@@ -123,11 +121,11 @@ app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
 
 Web API で両方の URI がサポートされるようになったので、今度は b2clogin.com エンドポイントからトークンを取得するように、Web アプリケーションを更新する必要があります。
 
-たとえば、**TaskWebApp** プロジェクトの *TaskWebApp\\**Web.config**.* ファイルで `ida:AadInstance` の値を変更することにより、新しいエンドポイントを使うようにサンプル Web アプリケーションを構成できます。
+たとえば、_ *TaskWebApp** プロジェクトの* TaskWebApp\\**Web.config** _ ファイルで `ida:AadInstance` の値を変更することにより、新しいエンドポイントを使うようにサンプル Web アプリケーションを構成できます。
 
 TaskWebApp の *Web.config* の `ida:AadInstance` の値を、`login.microsoftonline.com` ではなく `{your-b2c-tenant-name}.b2clogin.com` を参照するように変更します。
 
-次の処理の前
+前:
 
 ```xml
 <!-- Old value -->
@@ -143,6 +141,13 @@ TaskWebApp の *Web.config* の `ida:AadInstance` の値を、`login.microsofton
 
 Web アプリの実行中にエンドポイントの文字列が作成されるとき、b2clogin.com ベースのエンドポイントを使ってトークンが要求されます。
 
+カスタム ドメインを使用しているとき:
+
+```xml
+<!-- Custom domain -->
+<add key="ida:AadInstance" value="https://custom-domain/{0}/{1}" />
+```
+
 ## <a name="next-steps"></a>次のステップ
 
 この記事では、複数の発行者エンドポイントからトークンを受け入れるために、Microsoft OWIN ミドルウェア (Katana) を実装する Web API を構成する方法について説明しました。 お気付きかもしれませんが、TaskService プロジェクトと TaskWebApp プロジェクトの *Web.Config* ファイルには、独自のテナントに対してプロジェクトをビルドして実行するときに変更する必要のある文字列が、他にもいくつかあります。 それらの動作を確認する場合はプロジェクトを適切に変更してかまいませんが、その完全なチュートリアルはこの記事の範囲外です。
@@ -154,6 +159,6 @@ Azure AD B2C によって生成されるさまざまな種類のセキュリテ�
 [sample-repo]: https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi
 
 <!-- LINKS - Internal -->
-[katana]: https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/
-[validissuers]: https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters.validissuers
-[tokenvalidationparameters]: https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters
+[katana]: /aspnet/aspnet/overview/owin-and-katana/
+[validissuers]: /dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters.validissuers
+[tokenvalidationparameters]: /dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters

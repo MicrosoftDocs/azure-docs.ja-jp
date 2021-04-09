@@ -8,14 +8,16 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 406420fcd517ceda8ea6eedfc955f54b15541f74
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2e3f1891a786751365a0bea58097e03bd41f85bb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366604"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103489921"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>IoT Edge にモジュールをデプロイしてルートを確立する方法について説明します。
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 各 IoT Edge デバイスでは、$edgeAgent と $edgeHub という少なくとも 2 つのモジュールが実行されます。これらは IoT Edge ランタイムに含まれています。 IoT Edge デバイスは、任意の数のプロセスに対して複数の追加モジュールを実行できます。 インストールするモジュールとそれらを連携させるための構成方法をデバイスに伝えるには、配置マニフェストを使用します。
 

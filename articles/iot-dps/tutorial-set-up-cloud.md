@@ -9,13 +9,13 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: f45c3def84c548ba12221efa59e9ebbd4699df71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91316071"
 ---
-# <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>チュートリアル:IoT Hub Device Provisioning Service を使用したデバイス プロビジョニングのためのクラウド リソースの構成
+# <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>チュートリアル: IoT Hub Device Provisioning Service を使用したデバイス プロビジョニングのためのクラウド リソースの構成
 
 このチュートリアルでは、IoT Hub Device Provisioning Service を使用した自動デバイス プロビジョニングのためのクラウドを設定する方法について説明します。 このチュートリアルでは、以下の内容を学習します。
 
@@ -52,11 +52,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![Device Provisioning Service に関する基本的な情報をポータルで入力](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. **Create** をクリックしてください。 しばらくすると、Device Provisioning Service インスタンスが作成され、 **[概要]** ページが表示されます。
+5. **Create** をクリックしてください。 しばらくすると、Device Provisioning Service インスタンスが作成され、**[概要]** ページが表示されます。
 
 6. 新しいサービス インスタンスの **[概要]** ページで、後で使用するために **[ID スコープ]** の値をコピーします。 この値は、登録 ID の識別に使用されます。この値により、登録 ID が一意であることが保証されます。
 
-7. また、後で使用するために、 **[サービス エンドポイント]** の値もコピーします。 
+7. また、後で使用するために、**[サービス エンドポイント]** の値もコピーします。 
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -74,13 +74,13 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
 1. **[すべてのリソース]** ページで、先ほど作成した Device Provisioning Service インスタンスをクリックします。
 
-2. Device Provisioning Service ページで、 **[Linked IoT hubs]\(リンクされた IoT ハブ\)** をクリックします。
+2. Device Provisioning Service ページで、**[Linked IoT hubs]\(リンクされた IoT ハブ\)** をクリックします。
 
 3. **[追加]** をクリックします。
 
-4. **[IoT Hub へのリンクを追加します]** ページで、以下の情報を入力して、 **[保存]** をクリックします。
+4. **[IoT Hub へのリンクを追加します]** ページで、以下の情報を入力して、**[保存]** をクリックします。
 
-    * **サブスクリプション:** IoT ハブを含むサブスクリプションが選択されていることを確認してください。 別のサブスクリプション内にある IoT ハブにリンクすることもできます。
+    * **[サブスクリプション]:** IoT ハブを含むサブスクリプションが選択されていることを確認してください。 別のサブスクリプション内にある IoT ハブにリンクすることもできます。
 
     * **[IoT Hub]:** この Device Provisioning Service インスタンスとリンクする IoT ハブの名前を選択します。
 
@@ -90,13 +90,13 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
 ## <a name="set-the-allocation-policy-on-the-device-provisioning-service"></a>Device Provisioning Service で割り当てポリシーを設定する
 
-割り当てポリシーは、デバイスを IoT ハブに割り当てる方法を決定する IoT Hub Device Provisioning Service 設定です。 次の 3 つの割り当てポリシーがサポートされています。 
+割り当てポリシーは、デバイスを IoT ハブに割り当てる方法を決定する IoT Hub Device Provisioning Service 設定です。 次の 3 つの割り当てポリシーがサポートされています。 
 
-1. **[最低待ち時間]** :デバイスに対する待ち時間が最も短いハブに基づいて、デバイスを IoT ハブにプロビジョニングします。
+1. **Lowest latency\(最も短い待機時間\)**: デバイスに対する待機時間が最も短いハブに基づいて、デバイスを IoT ハブにプロビジョニングします。
 
-2. **[加重が均等に分布]** (既定): リンクされた各 IoT Hub にデバイスが同程度にプロビジョニングされます。 これは、既定の設定です。 デバイスを 1 つの IoT ハブにのみプロビジョニングする場合は、この設定のままでかまいません。 
+2. **Evenly weighted distribution\(均等に重み付けされた分散\)** (既定値): リンクされた各 IoT ハブにデバイスが同程度にプロビジョニングされます。 この設定が既定です。 デバイスを 1 つの IoT ハブにのみプロビジョニングする場合は、この設定のままでかまいません。 
 
-3. **[登録リストを経由する静的構成]** : 登録リストの目的の IoT ハブの仕様が、Device Provisioning Service レベルの割り当てポリシーよりも優先されます。
+3. **Static configuration via the enrollment list\(登録リストによる静的構成\)**: 登録リストの目的の IoT ハブの仕様が、Device Provisioning Service レベルの割り当てポリシーよりも優先されます。
 
 割り当てポリシーを設定するには、Device Provisioning Service ページで **[Manage allocation policy]\(割り当てポリシーの管理\)** をクリックします。 割り当てポリシーが **[Evenly weighted distribution]\(均等に重み付けされた分散\)** (既定値) に設定されていることを確認します。 設定を変更した場合は、作業が終わったら **[保存]** をクリックします。
 

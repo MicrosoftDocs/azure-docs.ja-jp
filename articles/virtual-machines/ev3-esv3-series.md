@@ -1,18 +1,18 @@
 ---
 title: Ev3 シリーズと Esv3 シリーズ
 description: Ev3 および Esv3 シリーズ VM の仕様。
-author: DavidCBerry13
+author: mimckitt
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.author: daberry
-ms.openlocfilehash: 9d2c245cdc8b1aba644171089ed95bad2ab730a4
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.author: mimckitt
+ms.openlocfilehash: 878ca249a02d3b53d0085052b2ff1caf590e3ce3
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558610"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102557864"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 および Esv3 シリーズ
 

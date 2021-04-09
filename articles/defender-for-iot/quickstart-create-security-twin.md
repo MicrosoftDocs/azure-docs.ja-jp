@@ -1,24 +1,14 @@
 ---
 title: クイック スタート:セキュリティ モジュール ツインを作成する
 description: このクイックスタートでは、Azure Defender for IoT で使用する Defender for IoT モジュール ツインを作成する方法について説明します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 1/21/2021
-ms.author: shhazam
-ms.openlocfilehash: 832c8e426b57e6b447ef805f2868a6d42abe3d9d
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 2ee88bd23b7d125ef9244f8ff630ee5eb8cdd015
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449698"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782675"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>クイック スタート:azureiotsecurity モジュール ツインを作成する
 
@@ -39,9 +29,9 @@ Azure IoT Hub でのモジュール ツインの一般的な概念の詳細に�
 
 Defender for IoT では、モジュール ツイン メカニズムを利用して、各デバイス用の _azureiotsecurity_ というセキュリティ モジュール ツインが管理されます。
 
-セキュリティ モジュール ツインでは、各デバイスのデバイス セキュリティに関連するすべての情報が保持されます。
+Defender-IoT-micro-agent ツインでは、お使いのデバイスごとに、デバイスのセキュリティに関連するすべての情報が保持されます。
 
-Defender for IoT の機能を最大限に活用するには、サービス内のすべてのデバイスに対してこのセキュリティ モジュール ツインを作成、構成、および使用する必要があります。
+Defender for IoT の機能を最大限に活用するには、サービス内のすべてのデバイスに対してこの Defender-IoT-micro-agent ツインを作成、構成、使用する必要があります。
 
 ## <a name="create-azureiotsecurity-module-twin"></a>azureiotsecurity モジュール ツインを作成する
 

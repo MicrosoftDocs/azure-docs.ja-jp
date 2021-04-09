@@ -6,15 +6,15 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
 ms.openlocfilehash: 3caccd6766226ce68b371856b081b052c1033f71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91542191"
 ---
 # <a name="pattern-syntax"></a>パターンの構文
 
-パターンの構文は、発話のテンプレートです。 テンプレートには、一致させるワードとエンティティのほか、無視するワードや[句読点](luis-reference-application-settings.md#punctuation-normalization)が含まれている必要があります。 正規表現では**ありません**。
+パターンの構文は、発話のテンプレートです。 テンプレートには、一致させるワードとエンティティのほか、無視するワードや[句読点](luis-reference-application-settings.md#punctuation-normalization)が含まれている必要があります。 正規表現では **ありません**。
 
 > [!CAUTION]
 > パターンには、機械学習エンティティの親のみが含まれ、サブエンティティは含まれません。
@@ -33,7 +33,7 @@ ms.locfileid: "91542191"
 
 ## <a name="nesting-syntax-in-patterns"></a>パターンでの入れ子構文
 
-角かっこの**省略可能**構文は、2 レベルまで入れ子にできます。 (例: `[[this]is] a new form`)。 この例では、次の発話が許容されます。
+角かっこの **省略可能** 構文は、2 レベルまで入れ子にできます。 (例: `[[this]is] a new form`)。 この例では、次の発話が許容されます。
 
 |入れ子になった省略可能な発話の例|説明|
 |--|--|
@@ -41,7 +41,7 @@ ms.locfileid: "91542191"
 |is a new form (新しいフォームです)|外部の省略可能な単語およびパターン内の省略可能ではない単語と一致します|
 |a new form (新しいフォーム)|必要な単語のみと一致します|
 
-かっこによる**グループ化**構文は、2 レベルまで入れ子にできます。 (例: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`)。 この機能により、3 つのエンティティのどれとでも一致できます。
+かっこによる **グループ化** 構文は、2 レベルまで入れ子にできます。 (例: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`)。 この機能により、3 つのエンティティのどれとでも一致できます。
 
 Entity1 が出発地 (Seattle) や到着地 (Cairo) などの役割を持つ場所であり、Entity 2 がリスト エンティティの既知のビル名 (RedWest-C) である場合、次の発話はこのパターンにマップされます。
 
@@ -53,7 +53,7 @@ Entity1 が出発地 (Seattle) や到着地 (Cairo) などの役割を持つ場�
 
 ## <a name="nesting-limits-for-groups-with-optional-syntax"></a>省略可能構文でのグループに対する入れ子の制限
 
-**グループ化**と**省略可能**の構文の組み合わせでは、入れ子レベルは 3 に制限されます。
+**グループ化** と **省略可能** の構文の組み合わせでは、入れ子レベルは 3 に制限されます。
 
 |許可|例|
 |--|--|
@@ -62,7 +62,7 @@ Entity1 が出発地 (Seattle) や到着地 (Cairo) などの役割を持つ場�
 
 ## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>"または" 構文を含むグループの入れ子の制限
 
-**グループ化**と "**または**" の構文の組み合わせでは、縦棒は 2 個に制限されます。
+**グループ化** と "**または**" の構文の組み合わせでは、縦棒は 2 個に制限されます。
 
 |許可|例|
 |--|--|

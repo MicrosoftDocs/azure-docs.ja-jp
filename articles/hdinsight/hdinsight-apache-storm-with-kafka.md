@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 304ba791d107ca497e65905657e87e84cdb9567d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2078ba177d68cfaa0a91b79611d92e5c68e4e245
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942726"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868418"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>チュートリアル:HDInsight 上の Apache Kafka で Apache Storm を使用する
 
@@ -377,7 +377,7 @@ HDInsight の Apache Kafka では、パブリック インターネットを介�
 
 次の図に、Storm と Kafka 間の通信フローを示します。
 
-![Azure 仮想ネットワークにおける Strom クラスターと Kafka クラスターの図](./media/hdinsight-apache-storm-with-kafka/apache-storm-kafka-vnet.png)
+:::image type="content" source="./media/hdinsight-apache-storm-with-kafka/apache-storm-kafka-vnet.png" alt-text="Azure 仮想ネットワークにおける Strom クラスターと Kafka クラスターの図":::
 
 > [!NOTE]  
 > SSH や [Apache Ambari](https://ambari.apache.org/) など、クラスター上の他のサービスは、インターネット経由でアクセスできます。 HDInsight で使用できるパブリック ポートの詳細については、「[HDInsight で使用されるポートと URI](hdinsight-hadoop-port-settings-for-services.md)」を参照してください。
@@ -415,7 +415,7 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
       | [SSH ユーザー名] | クラスター用に作成する SSH ユーザー。 |
       | [SSH パスワード] | SSH ユーザーのパスワード。 |
    
-      ![テンプレート パラメーターの画像](./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png)
+      :::image type="content" source="./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png" alt-text="テンプレート パラメーターの画像":::
 
 3. **使用条件** を読み、 **[上記の使用条件に同意する]** をオンにします。
 

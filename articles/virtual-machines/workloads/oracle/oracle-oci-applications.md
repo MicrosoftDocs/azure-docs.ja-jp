@@ -2,18 +2,18 @@
 title: Azure Virtual Machines に Oracle アプリをデプロイするアーキテクチャ | Microsoft Docs
 description: Azure または Oracle Cloud Infrastructure (OCI) のデータベースを使用して、Microsoft Azure 仮想マシンに E-Business Suite、JD Edwards EnterpriseOne、PeopleSoft などの Oracle アプリをデプロイするアプリケーション アーキテクチャ。
 author: dbakevlar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: kegorman
-ms.reviewer: cynthn
-ms.openlocfilehash: aa481090e3483e58f6a88304e3e9d8c1a16df3c7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 862bb886c7ec5dfd40c7acdbae2f70f6698a711b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965920"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669939"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>Azure に Oracle アプリケーションをデプロイするアーキテクチャ
 
@@ -45,7 +45,7 @@ Oracle E-Business Suite (EBS) は、サプライ チェーン管理 (SCM) およ
 
 ![E-Business Suite のクロスクラウド アーキテクチャ](media/oracle-oci-applications/ebs-arch-cross-cloud.png)
 
-"*図 1:E-Business Suite のクロスクラウド アーキテクチャ* 
+*図 1: E-Business Suite のクロスクラウド アーキテクチャ* 
 
 このアーキテクチャで、Azure の仮想ネットワークは、クロスクラウド相互接続を使用して OCI 内の仮想クラウド ネットワークに接続されています。 アプリケーション層は Azure 内に設定され、データベースは OCI 内に設定されます。 特定のポート上の特定のサブネットからのトラフィックのみを許可するように、各コンポーネントをネットワーク セキュリティ グループを含む独自のサブネットに展開することをお勧めします。
 
@@ -53,7 +53,7 @@ Oracle E-Business Suite (EBS) は、サプライ チェーン管理 (SCM) およ
 
 ![E-Business Suite の Azure のみのアーキテクチャ](media/oracle-oci-applications/ebs-arch-azure.png)
 
-"*図 2:E-Business Suite の Azure のみのアーキテクチャ*
+*図 2: E-Business Suite の Azure のみのアーキテクチャ*
 
 以下のセクションでは、さまざまなコンポーネントについて概要を説明します。
 
@@ -94,7 +94,7 @@ E-Business Suite と同様に、セキュリティで保護された管理の目
 
 ![JD Edwards Enterprise One のクロスクラウド アーキテクチャ](media/oracle-oci-applications/jdedwards-arch-cross-cloud.png)
 
-"*図 3:JD Edwards Enterprise One のクロスクラウド アーキテクチャ*
+*図 3: JD Edwards EnterpriseOne のクロスクラウド アーキテクチャ*
 
 このアーキテクチャで、Azure の仮想ネットワークは、クロスクラウド相互接続を使用して OCI 内の仮想クラウド ネットワークに接続されています。 アプリケーション層は Azure 内に設定され、データベースは OCI 内に設定されます。 特定のポート上の特定のサブネットからのトラフィックのみを許可するように、各コンポーネントをネットワーク セキュリティ グループを含む独自のサブネットに展開することをお勧めします。
 
@@ -102,7 +102,7 @@ E-Business Suite と同様に、セキュリティで保護された管理の目
 
 ![JD Edwards EnterpriseOne Azure のみのアーキテクチャ](media/oracle-oci-applications/jdedwards-arch-azure.png)
 
-"*図 4:JD Edwards EnterpriseOne Azure のみのアーキテクチャ*
+*図 4: JD Edwards EnterpriseOne Azure のみのアーキテクチャ*
 
 以下のセクションでは、さまざまなコンポーネントについて概要を説明します。
 
@@ -156,7 +156,7 @@ PeopleSoft アプリケーション スイートをクロスクラウド アー�
 
 ![PeopleSoft クロスクラウド アーキテクチャ](media/oracle-oci-applications/peoplesoft-arch-cross-cloud.png)
 
-*図 5:PeopleSoft クロスクラウド アーキテクチャ*
+*図 5: PeopleSoft クロスクラウド アーキテクチャ*
 
 このサンプル アーキテクチャで、Azure の仮想ネットワークは、クロスクラウド相互接続を使用して OCI 内の仮想クラウド ネットワークに接続されています。 アプリケーション層は Azure 内に設定され、データベースは OCI 内に設定されます。 特定のポート上の特定のサブネットからのトラフィックのみを許可するように、各コンポーネントをネットワーク セキュリティ グループを含む独自のサブネットに展開することをお勧めします。
 
@@ -164,7 +164,7 @@ PeopleSoft アプリケーション スイートをクロスクラウド アー�
 
 ![PeopleSoft Azure のみのアーキテクチャ](media/oracle-oci-applications/peoplesoft-arch-azure.png)
 
-*図 6:PeopleSoft Azure のみのアーキテクチャ*
+*図 6: PeopleSoft Azure のみのアーキテクチャ*
 
 以下のセクションでは、さまざまなコンポーネントについて概要を説明します。
 

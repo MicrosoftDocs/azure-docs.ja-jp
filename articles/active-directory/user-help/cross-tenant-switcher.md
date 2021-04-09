@@ -13,10 +13,10 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 1af7f2918af7071320244dd35882a8de9717654f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92913247"
 ---
 # <a name="switching-organizations-in-a-portal"></a>ポータルでの組織の切り替え
@@ -30,7 +30,7 @@ ms.locfileid: "92913247"
 - [**マイ アクセス**](https://myaccess.microsoft.com)
 - [**マイ スタッフ**](https://mystaff.microsoft.com)
 
-**自分のサインイン** 、 **セキュリティ情報** 、または **マイグループ** では、組織を切り替えることはできません。
+**自分のサインイン**、**セキュリティ情報**、または **マイグループ** では、組織を切り替えることはできません。
 
 ## <a name="switch-organizations"></a>組織の切り替え
 

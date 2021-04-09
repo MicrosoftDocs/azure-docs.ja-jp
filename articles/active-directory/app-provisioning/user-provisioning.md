@@ -12,10 +12,10 @@ ms.date: 02/08/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: f899c4d67321482dab62729632fe031bb23f71ea
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99830670"
 ---
 # <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>Azure AD での SaaS アプリ ユーザー プロビジョニングの自動化とは

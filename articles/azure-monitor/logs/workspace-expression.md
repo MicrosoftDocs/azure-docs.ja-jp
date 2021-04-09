@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
 ms.openlocfilehash: 2f6eb3998c611cb7a72886d1c577c665d73cb5a2
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102035570"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure Monitor ログ クエリの workspace() 式
@@ -29,11 +29,11 @@ ms.locfileid: "102035570"
 |:---|:---|:---|
 | リソース名 | 人間が判読できるワークスペースの名前 (別名 "コンポーネント名") | workspace("contosoretail") |
 | 修飾名 | "subscriptionName/resourceGroup/componentName" の形式のワークスペースのフルネーム | workspace('Contoso/ContosoResource/ContosoWorkspace') |
-| id | ワークスペースの GUID | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
+| ID | ワークスペースの GUID | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
 | Azure リソース ID | Azure リソースの識別子 | workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 
-## <a name="notes"></a>Notes
+## <a name="notes"></a>メモ
 
 * ワークスペースへの読み取りアクセスが必要です。
 * 関連する式は、Application Insights のアプリケーション間でクエリすることができる `app` です。

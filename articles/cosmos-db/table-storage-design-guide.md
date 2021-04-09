@@ -9,10 +9,10 @@ author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 603c891e53e5712d489fcef8415e3db55328c9ad
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99988432"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure Table storage のテーブル設計ガイド:スケーラビリティとパフォーマンスに優れたテーブル

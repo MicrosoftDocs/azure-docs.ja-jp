@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 6958302a429fd88d4e26087b860b7f473bf4a1f9
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 226e94510709b37a7e6b1aae90a7e0ec5b4222b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103993"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103199577"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Xamarin アプリケーションで Microsoft Authenticator または Intune ポータル サイトを使用する
 
@@ -326,6 +326,8 @@ MSAL がブローカーを使用するように構成されているのに、ブ
                     android:path="/hgbUYHVBYUTvuvT&Y6tr554365466="/>
 ```
 
+システム ブラウザーおよび Android 11 のサポート用にアプリケーションを構成する方法の詳細については、[システム ブラウザーのサポート用の Android マニフェストの更新](msal-net-xamarin-android-considerations.md#update-the-android-manifest-for-system-webview-support)に関するページを参照してください。
+
 代わりに、リダイレクト URI に依存しない埋め込みブラウザーにフォールバックするように、MSAL を構成することもできます。
 
 ```csharp
@@ -344,22 +346,22 @@ Android でブローカー認証を実装するときの問題を回避するた
 
     例:Microsoft Authenticator を最初にインストールしてから Intune ポータル サイトをインストールした場合、ブローカー認証は Microsoft Authenticator "*だけで*" 行われます。
 - **ログ** - ブローカー認証で問題が発生した場合、ブローカーのログを見ると、原因の診断に役立つ場合があります。
-  - Microsoft Authenticator のログの表示:
+  - Microsoft Authenticator のログの取得:
 
     1. アプリの右上隅にあるメニュー ボタンを選択します。
-    1. **[ヘルプ] > ** **[ログの送信]**  >  **[ログの表示]** を選択します。
-    1. **[すべてコピー]** を選択して、ブローカーのログをデバイスのクリップボードにコピーします。
+    1. **[フィードバックの送信]**  >  **[何かお困りですか? ]** を選択します。
+    1. **[何を実行しようとしていますか?]** で、オプションを選択して説明を追加します。
+    1. ログを送信するには、アプリの右上隅にある矢印を選択します。
 
-    これらのログを使用してデバッグする最善の方法は、それを自分宛てにメールで送信し、開発用コンピューターで表示することです。 デバイス自体ではなく、コンピューターでログを解析する方が簡単な場合があります。 Android のテスト エディターを使用して、ログをテキスト ファイルとして保存した後、USB ケーブルを使用して、そのファイルをコンピューターにコピーすることもできます。
+    ログを送信すると、ダイアログ ボックスにインシデント ID が表示されます。 インシデント ID を記録し、サポートを要求するときに記載してください。
 
-  - Intune ポータル サイトのログの表示:
+  - Intune ポータル サイトのログの取得:
 
-    1. アプリの左上隅にあるメニュー ボタンを選択します
-    1. **[設定]**  >  **[診断データ]** を選択します
-    1. **[ログのコピー]** を選択して、ブローカーのログをデバイスの SD カードにコピーします。
-    1. USB ケーブルを使用してデバイスをコンピューターに接続し、開発用コンピューターでログを表示します。
+    1. アプリの左上隅にあるメニュー ボタンを選択します。
+    1. **[ヘルプ]**  >  **[電子メールでのサポート]** を選択します。
+    1. ログを送信するには、 **[Upload Logs Only]\(ログのみをアップロード)\** を選択します。
 
-    ログを取得した後は、関連付け ID を使用して認証の試行を検索できます。 関連付け ID は、すべての認証要求に割り当てられています。 Microsoft Identity プラットフォーム認証エンドポイントから返されたエラーを探すには、`AADSTS` を検索します。
+    ログを送信すると、ダイアログ ボックスにインシデント ID が表示されます。 インシデント ID を記録し、サポートを要求するときに記載してください。
 
 ## <a name="next-steps"></a>次のステップ
 

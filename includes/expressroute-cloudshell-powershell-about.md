@@ -9,10 +9,10 @@ ms.date: 12/13/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 446a3b786686d96f68d2d0a09d00a75e176a7661
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "86218131"
 ---
 Azure Cloud Shell を使用すると、Azure PowerShell または CLI をローカルにインストールしなくても、ほとんどの PowerShell コマンドレットおよび CLI コマンドを実行できます。 Azure Cloud Shell は、無料の対話型シェルで、一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。

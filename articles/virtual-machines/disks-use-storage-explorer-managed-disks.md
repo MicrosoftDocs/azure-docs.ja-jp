@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 9dfce7b76eed5bfc9f4979c0e3041b6c65c28422
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88749384"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>Azure Storage Explorer を使用して Azure マネージド ディスクを管理する
@@ -29,7 +29,7 @@ Storage Explorer 1.10.0 を使用すると、ユーザーは、マネージド �
 
 お使いの Storage Explorer が Azure に接続されていない場合、それを使用してリソースを管理することはできません。 このセクションでは、Storage Explorer を使用してリソースを管理できるよう、Azure アカウントに接続する方法について説明します。
 
-1. Azure Storage Explorer を起動し、左側にある**プラグイン** アイコンをクリックします。
+1. Azure Storage Explorer を起動し、左側にある **プラグイン** アイコンをクリックします。
 
     ![プラグイン アイコンをクリックする](media/disks-upload-vhd-to-managed-disk-storage-explorer/plug-in-icon.png)
 

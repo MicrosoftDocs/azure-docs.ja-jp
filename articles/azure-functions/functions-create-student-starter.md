@@ -5,10 +5,10 @@ Customer intent: As a student, I want to be able to create an HTTP triggered Fun
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.openlocfilehash: f40405c9325743da5d1963e3baea781606d2d8d9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96182531"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Azure for Students Starter を使用して関数を作成する

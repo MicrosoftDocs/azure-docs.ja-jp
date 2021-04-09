@@ -19,10 +19,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cc0c8c40e370579100c562e0289c97e3f5ce4236
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91274114"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Azure AD Connect を使用した Active Directory フェデレーション サービスの管理とカスタマイズ
@@ -200,7 +200,7 @@ Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
 > *TargetName* パラメーターは必須です。 AD FS と共にリリースされている既定のテーマの名前は Default です。
 
 ## <a name="add-a-sign-in-description"></a><a name="addsignindescription"></a>サインインの説明を追加する 
-**サインイン ページ**にサインイン ページの説明を追加するには、次の Windows PowerShell コマンドレットと構文を使用します。
+**サインイン ページ** にサインイン ページの説明を追加するには、次の Windows PowerShell コマンドレットと構文を使用します。
 
 ```azurepowershell-interactive
 Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
@@ -234,7 +234,7 @@ NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsisten
 => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 ```
 
-この規則では、ユーザーの **ms-ds-concistencyguid** が設定されていない場合に **useguid** に設定される、**idflag** という一時フラグを定義します。 この規則は、AD FS では空の要求が許可されないという事実に基づいています。 `http://contoso.com/ws/2016/02/identity/claims/objectguid` クレームを追加するとき、`http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid`ルール 1 では、その値がユーザーに設定される場合にだけ、**msdsconsistencyguid** 要求で終了します。 値が設定されていない場合、AD FS によって空の値を持つことになると判断され、すぐに削除されます。 すべてのオブジェクトは **objectGuid**を持つため、規則 1 が実行された後には、常に要求が存在することになります。
+この規則では、ユーザーの **ms-ds-concistencyguid** が設定されていない場合に **useguid** に設定される、**idflag** という一時フラグを定義します。 この規則は、AD FS では空の要求が許可されないという事実に基づいています。 `http://contoso.com/ws/2016/02/identity/claims/objectguid` クレームを追加するとき、`http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid`ルール 1 では、その値がユーザーに設定される場合にだけ、**msdsconsistencyguid** 要求で終了します。 値が設定されていない場合、AD FS によって空の値を持つことになると判断され、すぐに削除されます。 すべてのオブジェクトは **objectGuid** を持つため、規則 1 が実行された後には、常に要求が存在することになります。
 
 **規則 3: ms-ds-consistencyguid が存在する場合にそれを不変 ID として発行する**
 

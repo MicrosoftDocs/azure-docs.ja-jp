@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: ambapat
 ms.openlocfilehash: 4a3eaddd160acb8d4d2ae9f0da43ce6cb0236055
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/23/2021
 ms.locfileid: "102198151"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>HSM で保護されたキーを Key Vault にインポートする (BYOK)

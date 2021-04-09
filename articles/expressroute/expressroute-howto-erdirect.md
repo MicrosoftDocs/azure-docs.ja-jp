@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: 964af92006aad7b5ce8bdf25a332cbcf9c7ef144
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f54c22a0c2f7bf89d790dbd33f748446a871d224
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014520"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099949"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>ExpressRoute Direct を構成する方法
 
@@ -20,12 +20,21 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
 
 ## <a name="before-you-begin"></a>開始する前に
 
-ExpressRoute Direct を利用する前に、まず、サブスクリプションを登録する必要があります。 登録するには、以下の詳細を含め、サブスクリプション ID を記載して、<ExpressRouteDirect@microsoft.com> にメールを送信します。
+ExpressRoute Direct を利用する前に、まず、サブスクリプションを登録する必要があります。 ExpressRoute Direct を利用する前に、まず、サブスクリプションを登録する必要があります。 登録するには、Azure PowerShell から次の操作を行ってください。
+1.  Azure にサインインして、登録するサブスクリプションを選択します。
 
-* **ExpressRoute Direct** で実行しようとしているシナリオ
-* 場所設定。すべての場所の完全なリストについては、[パートナーとピアリングの場所](expressroute-locations-providers.md)に関するページを参照してください。
-* 実装のタイムライン
-* その他の質問について
+    ```azurepowershell-interactive
+    Connect-AzAccount 
+
+    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
+    ```
+
+2. 次のコマンドを使用して、サブスクリプションをパブリック プレビューに登録します。
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -FeatureName AllowExpressRoutePorts -ProviderNamespace Microsoft.Network
+    ```
+
+登録したら、**Microsoft.Network** リソース プロバイダーがサブスクリプションに登録されていることを確認します。 リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。
 
 ## <a name="create-the-resource"></a><a name="resources"></a>リソースを作成する
 

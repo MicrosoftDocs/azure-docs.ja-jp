@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 855765648d68756598f2942e0c994fa939bcbda0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 679df881e928825496a03b2fef7c9374d61593f7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695670"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103199981"
 ---
 # <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用して外部ストレージにアクセスする
 
-このドキュメントでは、ユーザーがサーバーレス SQL プールで、Azure Storage に格納されているファイルからデータを読み取る方法について説明します。 ユーザーは、ストレージにアクセスするための次のオプションを使用できます。
+この記事では、ユーザーがサーバーレス SQL プールで、Azure Storage に格納されているファイルからデータを読み取る方法について説明します。 ユーザーは、ストレージにアクセスするための次のオプションを使用できます。
 
 - [OPENROWSET](develop-openrowset.md) 関数。Azure Storage 内のファイルに対するアドホック クエリを有効にします。
 - [外部テーブル](develop-tables-external-tables.md)。外部ファイル セット上に構築された定義済みのデータ構造です。

@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: reference
 ms.date: 12/22/2020
 ms.openlocfilehash: f414c4a80750faac590a0c4c734f3634a85b79f0
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97740931"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learning のキュレーションされた環境

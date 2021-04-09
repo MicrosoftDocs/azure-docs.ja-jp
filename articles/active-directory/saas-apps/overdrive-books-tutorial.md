@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/18/2021
+ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 745a82300cbbc87070a117cd8dd094236821aee7
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 390ccfa828ebaa0d3dec15990ffeb60cbb24360e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625400"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648579"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>チュートリアル: Azure Active Directory と OverDrive の統合
 
@@ -37,9 +37,9 @@ ms.locfileid: "98625400"
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Overdrive では、**SP** Initiated SSO がサポートされます
+* Overdrive では、**SP** Initiated SSO がサポートされます。
 
-* Overdrive では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Overdrive では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
 ## <a name="add-overdrive-from-the-gallery"></a>ギャラリーからの Overdrive の追加
 
@@ -65,7 +65,7 @@ Overdrive に対して Azure AD SSO を構成してテストするには、次�
     1. **[Overdrive のテスト ユーザーの作成](#create-overdrive-test-user)** - Azure AD でのユーザーにリンクされた、Overdrive での B.Simon の対応するユーザーを作成します。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
@@ -121,7 +121,7 @@ Overdrive に対して Azure AD SSO を構成してテストするには、次�
 
 7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
-### <a name="configure-overdrive-sso"></a>Overdrive の SSO の構成
+## <a name="configure-overdrive-sso"></a>Overdrive の SSO の構成
 
 **Overdrive** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Overdrive サポート チーム](https://help.overdrive.com/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -133,7 +133,7 @@ Overdrive に対して Azure AD SSO を構成してテストするには、次�
 >他の OverDrive ユーザー アカウント作成ツールや、OverDrive から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 >
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
@@ -141,8 +141,8 @@ Overdrive に対して Azure AD SSO を構成してテストするには、次�
 
 * Overdrive のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Overdrive] タイルをクリックすると、Overdrive のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Overdrive] タイルをクリックすると、Overdrive のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Overdrive を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Overdrive を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

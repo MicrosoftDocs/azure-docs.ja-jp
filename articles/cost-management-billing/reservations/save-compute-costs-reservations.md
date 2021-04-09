@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 12/15/2020
+ms.date: 02/24/2021
 ms.author: banders
-ms.openlocfilehash: 0e45e9741e92bb9e1fe23af79695cae06e64e871
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 7c2cf88eed3d8b727147f57ef9e2b52afd07de59
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602047"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039140"
 ---
 # <a name="what-are-azure-reservations"></a>Azure の予約とは
 
@@ -91,7 +91,8 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 - **予約仮想マシン インスタンス** - 予約の対象は仮想マシンとクラウド サービスのコンピューティング コストのみです。 その他のソフトウェア、Windows、ネットワーク、ストレージの料金は含まれません。
 - **Azure Storage の予約容量** - 予約の対象となるのは、BLOB ストレージまたは Azure Data Lake Gen2 ストレージの標準ストレージ アカウントのストレージ容量です。 帯域幅またはトランザクション レートは予約の対象外です。
 - **Azure Cosmos DB の予約容量** - 予約は、リソース用にプロビジョニングされたスループットが対象になります。 ストレージとネットワーク料金は対象外です。
-- **SQL データベース予約済み仮想コア** - SQL Managed Instance と SQL Database エラスティック プールまたは単一データベースの両方が含まれます。 予約にはコンピューティング コストのみが含まれます。 SQL ライセンスの料金は別途請求されます。 
+- **Azure Data Factory のデータ フロー** - 予約には、購入するコンピューティングの種類とコア数の統合ランタイムの費用が含まれます。
+- **SQL データベース予約済み仮想コア** - SQL Managed Instance と SQL Database エラスティック プールまたは単一データベースの両方が含まれます。 予約にはコンピューティング コストのみが含まれます。 SQL ライセンスの料金は別途請求されます。
 - **Azure Synapse Analytics** - 予約には cDWU の使用が含まれます。 Azure Synapse Analytics の使用に関連するストレージまたはネットワークの料金は含まれません。
 - **Azure Databricks** - 予約の対象となるのは、DBU の使用のみです。 コンピューティング、ストレージ、およびネットワーキングなどの他の料金は別途適用されます。
 - **App Service スタンプ料金** - 予約にはスタンプの使用が含まれます。 worker には適用されないので、スタンプに関連する他のすべてのリソースには別途課金されます。

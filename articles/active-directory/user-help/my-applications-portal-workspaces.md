@@ -13,24 +13,24 @@ ms.date: 10/19/2020
 ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: d27e5b22fc0e24850a8c454ef1f07e77341ac15a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92282520"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>マイ アプリ ポータルでコレクションを使用する
 
-コレクションとは、**マイ アプリ** ポータルに表示されるさまざまなアプリ ビューです。 たとえば、部門の職務またはユーザー ロール別に、アプリをコレクションにグループ化できます。 使用可能なコレクションまたはカテゴリが表示されない場合は、管理者が設定していないか、共有していないことを意味します。 共有コレクションを表示するための追加のサポートやアクセス許可については、組織のヘルプデスクに問い合わせてください。
+コレクションとは、**マイ アプリ** ポータルに表示されるさまざまなアプリ ビューです。 たとえば、部門の職務またはユーザー ロール別に、アプリをコレクションにグループ化できます。 使用可能なコレクションまたはカテゴリが表示されない場合は、管理者が設定していないか、共有されているものがないことを意味します。 共有コレクションを表示するための追加のサポートやアクセス許可については、組織のヘルプデスクに問い合わせてください。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 >[!Important]
->このコンテンツは、**マイ アプリ**のユーザーを対象としています。 管理者の方は、「[アプリケーション管理のドキュメント](../manage-apps/access-panel-collections.md)」で、クラウドベースのアプリの設定と管理の方法を詳しくご覧いただけます。
+>このコンテンツは、**マイ アプリ** のユーザーを対象としています。 管理者の方は、「[アプリケーション管理のドキュメント](../manage-apps/access-panel-collections.md)」で、クラウドベースのアプリの設定と管理の方法を詳しくご覧いただけます。
 
 ## <a name="access-apps-using-collections"></a>コレクションを使用してアプリにアクセスする
 
-**マイ アプリ** ポータルのコレクションの一覧には既定で、 **[すべてのアプリ]** という名前のコレクションが表示されます。これには、ユーザーがアクセスできるすべてのアプリが含まれています。
+**マイ アプリ** ポータルのコレクションの一覧には既定で、**[すべてのアプリ]** という名前のコレクションが表示されます。これには、ユーザーがアクセスできるすべてのアプリが含まれています。
 
 ![マイ アプリ ポータルの [すべてのアプリ] ページ](media/my-applications-portal-workspaces/my-apps-all-apps.png)
 

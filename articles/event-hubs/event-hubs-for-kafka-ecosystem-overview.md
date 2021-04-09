@@ -4,10 +4,10 @@ description: この記事では、Azure Event Hubs での Apache Kafka のサポ
 ms.topic: article
 ms.date: 09/25/2020
 ms.openlocfilehash: b0f0da76bba68f8a66695700d530e871cbd35e3c
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97861342"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Apache Kafka アプリケーションから Azure Event Hubs を使用する

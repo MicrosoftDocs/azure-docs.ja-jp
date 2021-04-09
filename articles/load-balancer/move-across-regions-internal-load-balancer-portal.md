@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/18/2019
 ms.author: allensu
 ms.openlocfilehash: 68a2cb6926cb41956711a9e3c15d21c250d27f0b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94698491"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>Azure portal を使用して Azure 内部ロード バランサーを別のリージョンに移動する
@@ -221,7 +221,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
     1. 別のブラウザー タブまたはウィンドウで、[Azure portal](https://portal.azure.com) >  **[リソース グループ]** にログインします。
     2. 前の手順で移動した仮想ネットワークが含まれているターゲット リソース グループを探し、それをクリックします。
     3. **[設定]**  >  **[プロパティ]** を選択します。
-    4. 右側のブレードで **リソース ID** を強調表示し、それをクリップボードにコピーします。  または、 **[リソース ID]** パスの右側にある **[クリップボードにコピー]** ボタンをクリックすることもできます。
+    4. 右側のブレードで **リソース ID** を強調表示し、それをクリップボードにコピーします。  または、**[リソース ID]** パスの右側にある **[クリップボードにコピー]** ボタンをクリックすることもできます。
     5. 別のブラウザー ウィンドウまたはタブに開いた **[パラメーターの編集]** エディターで、**defaultValue** プロパティにリソース ID を貼り付けます。
 
         ```json

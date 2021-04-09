@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 01c2f61dcf024e8c9dbbd5b2ee11a479b3c16305
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86130283"
 ---
 # <a name="set-up-public-ip-addresses-after-failover"></a>フェールオーバー後にパブリック IP アドレスを設定する
@@ -32,7 +32,7 @@ Azure Resource Manager では、 パブリック IP アドレスは、独自の�
 
 ## <a name="public-ip-address-assignment-using-recovery-plan"></a>復旧計画を使用したパブリック IP アドレスの割り当て
 
-生産アプリケーションのパブリック IP アドレスは**フェールオーバー時に保持されません**。 フェールオーバー プロセスの一部として起動したワークロードは、ターゲット リージョンで利用可能なAzure パブリック IP リソースを割り当てる必要があります。 この手順は、手動でまたは復旧計画に基づき自動で行われます。 復旧計画は、マシンを復旧グループに収集します。 これは、体系的な回復プロセスを定義するのに役立ちます。 復旧計画は順序を指定し、各ステップで必要とされるアクションを自動化します。Azure へのフェールオーバーには Azure Automation の Runbook かスクリプトを使用します。
+生産アプリケーションのパブリック IP アドレスは **フェールオーバー時に保持されません**。 フェールオーバー プロセスの一部として起動したワークロードは、ターゲット リージョンで利用可能なAzure パブリック IP リソースを割り当てる必要があります。 この手順は、手動でまたは復旧計画に基づき自動で行われます。 復旧計画は、マシンを復旧グループに収集します。 これは、体系的な回復プロセスを定義するのに役立ちます。 復旧計画は順序を指定し、各ステップで必要とされるアクションを自動化します。Azure へのフェールオーバーには Azure Automation の Runbook かスクリプトを使用します。
 
 セットアップは次のとおりです。
 - [復旧計画](../site-recovery/site-recovery-create-recovery-plans.md#create-a-recovery-plan)を作成し、計画の必要性に応じて、ワークロードをグループ化します。
@@ -49,9 +49,9 @@ Traffic Manager でのフェールオーバーシナリオの詳細について�
 
 セットアップは次のとおりです。
 - [Traffic Manager プロファイル](../traffic-manager/quickstart-create-traffic-manager-profile.md)を作成します。
-- **優先度**ルーティングメゾットを活用しながら、2 つのエンドポイントを作成します ― ソース用の**プライマリ**と Azure 用の**フェールオーバー**です。 **Primary** には優先順位 1 を割り当て、**Failover** には優先順位 2 を割り当てます。
-- **プライマリ**エンドポイントは、ソース環境がAzure の内部または外部にあるかどうかによって、[Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints)または[外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)どちらにもなり得ます。
-- **フェールオーバー**エンドポイントが**Azure**エンドポイントとして作成されます。 **静的パブリック IP アドレス**を使用し、これが災害時に Traffic Manager 用の外部に接続するエンドポイントとなります。
+- **優先度** ルーティングメゾットを活用しながら、2 つのエンドポイントを作成します ― ソース用の **プライマリ** と Azure 用の **フェールオーバー** です。 **Primary** には優先順位 1 を割り当て、**Failover** には優先順位 2 を割り当てます。
+- **プライマリ** エンドポイントは、ソース環境がAzure の内部または外部にあるかどうかによって、[Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints)または [外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)どちらにもなり得ます。
+- **フェールオーバー** エンドポイントが **Azure** エンドポイントとして作成されます。 **静的パブリック IP アドレス** を使用し、これが災害時に Traffic Manager 用の外部に接続するエンドポイントとなります。
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Site Recovery を使ったAzure Traffic Manager](../site-recovery/concepts-traffic-manager-with-site-recovery.md)について詳しく見る

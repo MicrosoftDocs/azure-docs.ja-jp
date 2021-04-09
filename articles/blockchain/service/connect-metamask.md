@@ -5,10 +5,10 @@ ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
 ms.openlocfilehash: 4a45e02a861ff20a4dc774668a4e008f9b42aeea
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90530439"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>MetaMask を使用してスマート コントラクトを接続およびデプロイする
@@ -19,7 +19,7 @@ ms.locfileid: "90530439"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure portal を使用したブロックチェーン メンバーの作成[と「](create-member.md)クイックスタート: {}Azure CLI を使用して Azure Blockchain Service ブロックチェーン メンバーを作成する[」を完了していること
+* 「[Quickstart: Azure portal を使用したブロックチェーン メンバーの作成](create-member.md)に関するページと、「[クイック スタート: Azure CLI を使用して Azure Blockchain Service ブロックチェーン メンバーを作成する](create-member-cli.md)」を完了していること
 * [MetaMask ブラウザー拡張機能](https://metamask.io)をインストールする
 * MetaMask [ウォレット](https://metamask.zendesk.com/hc/en-us/articles/360015488971-New-to-MetaMask-Learn-How-to-Setup-MetaMask-the-First-Time)を生成する
 
@@ -86,7 +86,7 @@ Remix はブラウザーベースの Solidity 開発環境です。 MetaMask と
     }
     ```
 
-    この **simple コントラクト**では、**balance** という状態変数を宣言します。 2 つの関数が定義されています。 **add** 関数によって **balance** に数値が追加されます。 **get** 関数は **balance** の値を返します。
+    この **simple コントラクト** では、**balance** という状態変数を宣言します。 2 つの関数が定義されています。 **add** 関数によって **balance** に数値が追加されます。 **get** 関数は **balance** の値を返します。
 1. コントラクトをコンパイルするには、まず Solidity コンパイラ ウィンドウを選択し、次に **[Compile simple.sol]\(simple.sol をコンパイルする\)** を選択します。
 
     ![画面キャプチャには、コンパイルされているコントラクトが示されています。](./media/connect-metamask/compile.png)

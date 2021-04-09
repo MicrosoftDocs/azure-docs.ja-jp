@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019, devx-track-python
 ms.openlocfilehash: 34205caf03d2f2d7255f75ea6203c5572c4c429b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95523308"
 ---
 # <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>クイック スタート:Python v2.1 SDK で BLOB を管理する
@@ -223,4 +223,4 @@ BLOB ストレージを使用する Python 開発の詳細については、以�
  
 このクイック スタートでは、Python を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 
 
-Storage Explorer と BLOB の詳細については、「[Storage Explorer を使用した Azure Blob Storage リソースの管理](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
+Storage Explorer と BLOB の詳細については、「[Storage Explorer を使用した Azure BLOB ストレージリソースの管理](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。

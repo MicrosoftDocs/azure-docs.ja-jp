@@ -3,19 +3,19 @@ title: Azure CLI を使用して共有イメージ ギャラリーを作成す�
 description: この記事では、Azure CLI を使用して Azure で VM の共有イメージを作成する方法について説明します。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ee7f7b524225845dc68100ee8ec9292eef111232
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 991b5363b180651b775bd46a0a1353fd124d34e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882350"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102557730"
 ---
 # <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>Azure CLI を使用して共有イメージ ギャラリーを作成する
 

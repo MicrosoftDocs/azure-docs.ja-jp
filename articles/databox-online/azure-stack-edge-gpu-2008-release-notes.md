@@ -6,22 +6,24 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 09/07/2020
+ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 25db4e7f3e4e1f7056979c4c40c6ffc61f340439
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: dd72865e35318c7ff43dc17b7c92b9cc2f3e9790
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345373"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102436857"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-preview-release-notes"></a>GPU 搭載の Azure Stack Edge Pro Preview のリリース ノート
+
+[!INCLUDE [applies-to-Pro-GPU-sku](../../includes/azure-stack-edge-applies-to-gpu-sku.md)]
 
 次のリリース ノートでは、GPU 搭載の Azure Stack Edge Pro デバイスの 2008 プレビュー リリースについて、重大な未解決の問題と解決済みの問題を説明します。
 
 リリース ノートは継続的に更新されます。対応策を必要とする重大な問題が見つかった場合は、それらの問題が追加されます。 Azure Stack Edge Pro デバイスを配置する前に、リリース ノートに含まれている情報を注意深く確認してください。
 
-この記事は、**Azure Stack Edge Pro 2008** ソフトウェア リリースに適用されます。 
+この記事は、**Azure Stack Edge Pro 2008** ソフトウェア リリースに適用されます。
 
 <!--- **2.1.1328.1904**-->
 
@@ -30,7 +32,7 @@ ms.locfileid: "96345373"
 Azure Stack Edge 2008 リリースに、次の新機能が追加されました。 実行している特定のプレビュー ソフトウェアのバージョンによっては、これらの機能のサブセットが表示される場合があります。 
 
 - **ストレージ クラス** - 以前のリリースでは、Azure Stack Edge Pro デバイスで実行されている Kubernetes クラスターにデプロイされたステートフル アプリケーションに対して、SMB または NFS 共有を介してストレージを静的にプロビジョニングすることのみができました。 このリリースでは、ストレージを動的にプロビジョニングできるストレージ クラスが追加されました。 詳細については、[Azure Stack Edge Pro GPU デバイスでの Kubernetes ストレージ管理](azure-stack-edge-gpu-kubernetes-storage.md#dynamicprovisioning)に関するページを参照してください。 
-- **Kubernetes ダッシュボードとメトリック サーバー** - このリリースでは、Kubernetes ダッシュボードがメトリック サーバー アドオンと共に追加されました。 ダッシュボードを使用して、Azure Stack Edge Pro デバイスで実行されているアプリケーションの概要の取得、Kubernetes クラスター リソースの状態の表示、デバイスで発生したエラーの確認を行うことができます。 メトリック サーバーによって、デバイス上の Kubernetes リソース全体の CPU とメモリの使用量が集計されます。 詳細については、[Kubernetes ダッシュボードを使用した Azure Stack Edge Pro GPU デバイスの監視](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)に関するページを参照してください。
+- **Kubernetes ダッシュボードとメトリック サーバー** - このリリースでは、Kubernetes ダッシュボードがメトリック サーバー アドオンと共に追加されました。 ダッシュボードを使用して Azure Stack Edge Pro デバイス上で実行されているアプリケーションの概要を取得すること、Kubernetes クラスター リソースの状態を表示すること、デバイスで発生したエラーを確認することができます。 メトリック サーバーによって、デバイス上の Kubernetes リソース全体の CPU とメモリの使用量が集計されます。 詳細については、[Kubernetes ダッシュボードを使用した Azure Stack Edge Pro GPU デバイスの監視](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)に関するページを参照してください。
 - **Azure Arc for Azure Stack Edge Pro** - このリリースから、Azure Arc を介して Azure Stack Edge Pro デバイスにアプリケーション ワークロードをデプロイできるようになりました。Azure Arc は、Kubernetes クラスターにアプリケーションをデプロイできるようにするためのハイブリッド管理ツールです。 詳細については、[Azure Arc Edge を介して Azure Stack Edge Pro デバイスにワークロードを展開する](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)方法に関するページを参照してください。  
 
 ## <a name="known-issues"></a>既知の問題 
@@ -51,7 +53,7 @@ Azure Stack Edge Pro デバイスの既知の問題の概要を次の表に示�
 |**10.**|Kubernetes |ポート 31000 は Kubernetes ダッシュボード用に予約されています。 同様に、既定の構成では、IP アドレス 172.28.0.1 と 172.28.0.10 は、それぞれ Kubernetes サービスと Core DNS サービス用に予約されています。|予約済みの IP は使用しないでください。|
 |**11.**|Kubernetes |現在、Kubernetes ではマルチプロトコルの LoadBalancer サービスは許可されていません。 たとえば、TCP と UDP の両方をリッスンする必要がある DNS サービスです。 |MetalLB を使用して Kubernetes のこの制限を回避するには、同じポッド セレクター用に 2 つのサービス (TCP 用と UDP 用) を作成します。 これらのサービスでは、同じ共有キーと spec.loadBalancerIP を使用して、同じ IP アドレスを共有します。 使用可能な IP アドレスよりも多くのサービスがある場合は、IP を共有することもできます。 <br> 詳細については、「[IP address sharing (IP アドレスの共有)](https://metallb.universe.tf/usage/#ip-address-sharing)」を参照してください。|
 |**12.**|Kubernetes クラスター|既存の Azure IoT Edge マーケットプレース モジュールは、Azure Stack Edge デバイス上の IoT Edge 用ホスティング プラットフォームとしての Kubernetes クラスターでは実行されません。|モジュールは、Azure Stack Edge デバイスに展開する前に変更する必要があります。 詳細については、Azure Stack Edge デバイス上で実行するようにマーケットプレースの Azure IoT Edge モジュールを変更する方法に関するページを参照してください。<!-- insert link-->|
-|**13.**|Kubernetes |ファイルベースのバインド マウントは、Azure Stack Edge デバイス上の Kubernetes の Azure IoT Edge ではサポートされていません。|IoT Edge では、変換レイヤーを使用して、`ContainerCreate` オプションを Kubernetes コンストラクトに変換します。 `Binds` を作成すると、hostpath ディレクトリまたは create にマップされます。そのため、ファイルベースのバインド マウントを IoT Edge コンテナーのパスにバインドすることはできません。|
+|**13.**|Kubernetes |ファイルベースのバインド マウントは、Azure Stack Edge デバイス上の Kubernetes の Azure IoT Edge ではサポートされていません。|IoT Edge では、変換レイヤーを使用して、`ContainerCreate` オプションを Kubernetes コンストラクトに変換します。 `Binds` を作成すると、`hostpath` ディレクトリまたは create にマップされます。そのため、ファイルベースのバインド マウントを IoT Edge コンテナーのパスにバインドすることはできません。|
 |**14.**|Kubernetes |IoT Edge 用の独自の証明書を持ち込み、Azure Stack Edge デバイスにそれらを追加した場合、新しい証明書は Helm チャートの更新の一部として取得されません。|この問題を回避するには、[デバイスの PowerShell インターフェイスに接続します](azure-stack-edge-gpu-connect-powershell-interface.md)。 `iotedged` および `edgehub` ポッドを再起動します。|
 |**15.**|証明書 |場合によっては、ローカル UI の証明書の状態が更新されるまでに数秒かかることがあります。 |ローカル UI の次のシナリオが影響を受ける可能性があります。<ul><li>**[証明書]** ページの **[状態]** 列。</li><li>**[作業の開始]** ページの **[セキュリティ]** タイル。</li><li>**[概要]** ページの **[構成]** タイル。</li></ul>  |
 

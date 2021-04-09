@@ -2,14 +2,14 @@
 title: Web サイトの可用性と応答性の監視 | Microsoft Docs
 description: Application Insights で Web テストを設定します。 Web サイトが使用できなくなったり、応答速度が低下したりした場合に、アラートを受け取ります。
 ms.topic: conceptual
-ms.date: 02/14/2021
+ms.date: 03/10/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 0ea44aad43a3dd6f11656a45dc7d0e619187fc22
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d7c610e374dcb7b97850d815ba8bb927cdebacfc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729030"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103012566"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>任意の Web サイトの可用性を監視する
 

@@ -4,10 +4,10 @@ description: Microsoft 製品で Jupyter Notebook を使用する方法につい
 ms.topic: quickstart
 ms.date: 02/01/2021
 ms.openlocfilehash: 5679c28d9cc8a4f1893ffad72002b66ad59861e6
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99507379"
 ---
 # <a name="use-a-jupyter-notebook-with-microsoft-offerings"></a>Microsoft 製品で Jupyter Notebook を使用する

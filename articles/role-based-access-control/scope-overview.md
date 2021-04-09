@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 10/08/2020
 ms.author: rolyon
 ms.openlocfilehash: deee42c46c9b08bb265c972695b9319413d4fcb1
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100555911"
 ---
 # <a name="understand-scope-for-azure-rbac"></a>Azure RBAC のスコープについて

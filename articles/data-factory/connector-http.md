@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 0462dac12d41fff667212902152b420d1460186d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f3184602bad8aabf654c8fa94d33372d08c11a66
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383638"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573202"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して HTTP エンドポイントからデータをコピーする
 
@@ -221,7 +221,7 @@ HTTP では、形式ベースのコピー ソースの `storeSettings` 設定に
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` の type プロパティは **HttpReadSettings** に設定する必要があります。 | はい      |
 | requestMethod            | HTTP メソッド。 <br>使用できる値は、**Get** (既定値) と **Post** です。 | いいえ       |
-| addtionalHeaders         | 追加の HTTP 要求ヘッダー。                             | いいえ       |
+| additionalHeaders         | 追加の HTTP 要求ヘッダー。                             | いいえ       |
 | requestBody              | HTTP 要求の本文。                               | いいえ       |
 | httpRequestTimeout           | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 この値は、応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 既定値は **00:01:40** です。 | いいえ       |
 | maxConcurrentConnections | 同時にストレージ ストアに接続する接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ       |

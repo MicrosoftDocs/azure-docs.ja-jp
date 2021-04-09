@@ -1,17 +1,17 @@
 ---
 title: Raspberry Pi 3 B+ 参照 Yocto イメージを使用した Device Update for Azure IoT Hub のチュートリアル | Microsoft Docs
 description: Raspberry Pi 3 B+ 参照 Yocto イメージを使用した Device Update for Azure IoT Hub を開始します。
-author: vimeht
-ms.author: vimeht
+author: valls
+ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: bb992e4f33cc833411e7cce560f71adf1dc72076
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ca689df97e7268a5c0f7c0479e6514b98ffda9f2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659023"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102443456"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Raspberry Pi 3 B+ 参照イメージを使用した Device Update for Azure IoT Hub のチュートリアル
 
@@ -143,13 +143,11 @@ Device Update for Azure IoT Hub ソフトウェアには、次のライセンス
 
 ## <a name="import-update"></a>更新プログラムをインポートする
 
-1. 左側のナビゲーション バーの [自動デバイス管理] にある [デバイスの更新] オプションを選択します。
-
-2. [更新プログラム] タブを選択します。
-
-3. [+ 新しい更新プログラムのインポート] を選択します。
-
-4. [インポート マニフェスト ファイルを選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 以前にダウンロードしたインポート マニフェストを選択します。 次に、[1 つまたは複数の更新ファイルを選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 以前にダウンロードした apt マニフェスト更新ファイルを選択します。
+1. [手順](import-update.md)に従ってインポート マニフェストを作成します。
+2. 左側のナビゲーション バーの [自動デバイス管理] にある [デバイスの更新] オプションを選択します。
+3. [更新プログラム] タブを選択します。
+4. [+ 新しい更新プログラムのインポート] を選択します。
+5. [インポート マニフェスト ファイルを選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 先ほど作成したインポート マニフェストを選択します。  次に、[1 つまたは複数の更新プログラム ファイルの選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 IoT デバイスにデプロイしたい更新ファイルを選択します。
    
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="更新ファイルの選択を示すスクリーンショット。" lightbox="media/import-update/select-update-files.png":::
 

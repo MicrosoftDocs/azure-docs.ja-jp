@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/08/2021
-ms.openlocfilehash: 902b13c947cb005189e23dee943867100809564e
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 4e7b25315aaadffe7f34b28195c25b77a36fa5f8
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988544"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872151"
 ---
 # <a name="archived-release-notes"></a>アーカイブされたリリース ノート
 
@@ -34,7 +34,7 @@ HDInsight では、Azure 仮想マシンを使用してクラスターをプロ�
 
 ### <a name="deprecation"></a>非推奨
 #### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>HDInsight 3.6 ML Services クラスターの非推奨
-HDInsight 3.6 ML Services クラスターの種類は、2020 年 12 月 31 日でサポート終了となります。 2021 年 1 月 1 日以降は新しい 3.6 ML Services クラスターを作成できなくなります。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 HDInsight のバージョンとクラスターの種類に関するサポートの有効期限については、[こちら](./hdinsight-component-versioning.md#available-versions)で確認してください。
+HDInsight 3.6 ML Services クラスターの種類は、2020 年 12 月 31 日でサポート終了となります。 2021 年 1 月 1 日以降は新しい 3.6 ML Services クラスターを作成できなくなります。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 HDInsight のバージョンとクラスターの種類に関するサポートの有効期限については、[こちら](./hdinsight-component-versioning.md)で確認してください。
 
 #### <a name="disabled-vm-sizes"></a>無効な VM サイズ
 2020 年 11 月 16 日以降、新規のお客様が HDInsight で standand_A8、standand_A9、standand_A10、および standand_A11 の VM サイズを使用してクラスターを作成することができなくなります。 過去 3 か月間、これらの VM サイズを使用していた既存のお客様は、影響を受けません。 2021 年 1 月 9 日以降は、すべてのお客様が HDInsight で standand_A8、standand_A9、standand_A10、および standand_A11 の VM サイズを使用してクラスターを作成することができなくなります。 既存のクラスターはそのまま実行されます。 システムやサポートが中断される可能性を回避するため、HDInsight 4.0 への移行を検討してください。
@@ -62,7 +62,7 @@ HDInsight では、Azure 仮想マシンを使用してクラスターをプロ�
 
 ### <a name="deprecation"></a>非推奨
 #### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>HDInsight 3.6 ML Services クラスターの非推奨
-HDInsight 3.6 ML Services クラスターの種類は、2020 年 12 月 31 日でサポート終了となります。 2021 年 1 月 1 日以降は新しい 3.6 ML Services クラスターを作成できなくなります。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 HDInsight のバージョンとクラスターの種類に関するサポートの有効期限については、[こちら](./hdinsight-component-versioning.md#available-versions)で確認してください。
+HDInsight 3.6 ML Services クラスターの種類は、2020 年 12 月 31 日でサポート終了となります。 2021 年 1 月 1 日以降は新しい 3.6 ML Services クラスターを作成できなくなります。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 HDInsight のバージョンとクラスターの種類に関するサポートの有効期限については、[こちら](./hdinsight-component-versioning.md#supported-hdinsight-versions)で確認してください。
 
 #### <a name="disabled-vm-sizes"></a>無効な VM サイズ
 2020 年 11 月 16 日以降、新規のお客様が HDInsight で standand_A8、standand_A9、standand_A10、および standand_A11 の VM サイズを使用してクラスターを作成することができなくなります。 過去 3 か月間、これらの VM サイズを使用していた既存のお客様は、影響を受けません。 2021 年 1 月 9 日以降は、すべてのお客様が HDInsight で standand_A8、standand_A9、standand_A10、および standand_A11 の VM サイズを使用してクラスターを作成することができなくなります。 既存のクラスターはそのまま実行されます。 システムやサポートが中断される可能性を回避するため、HDInsight 4.0 への移行を検討してください。
@@ -77,7 +77,7 @@ HDInsight 3.6 ML Services クラスターの種類は、2020 年 12 月 31 日�
 現在、HDInsight では、Spark、Hadoop、および ML サービス クラスターの種類での Zookeeper ノード サイズのカスタマイズはサポートされていません。 既定値は A2_v2 および A2 の仮想マシン サイズであり、無料で提供されます。 今後のリリースでは、お客様のシナリオに最も適した Zookeeper 仮想マシン サイズを選択できます。 A2_v2 および A2 以外の仮想マシン サイズの Zookeeper ノードには課金されます。 A2_v2 および A2 の仮想マシンは引き続き無料で提供されます。
 
 #### <a name="default-cluster-version-will-be-changed-to-40"></a>既定のクラスター バージョンは 4.0 に変更されます
-2021 年 2 月以降、HDInsight クラスターの既定のバージョンは 3.6 から 4.0 に変更されます。 使用可能なバージョンの詳細については、「[使用可能なバージョン](./hdinsight-component-versioning.md#available-versions)」を参照してください。 HDInsight 4.0 の新機能については、[こちら](./hdinsight-version-release.md)を参照してください
+2021 年 2 月以降、HDInsight クラスターの既定のバージョンは 3.6 から 4.0 に変更されます。 サポートされているバージョンの詳細については、「[使用可能なバージョン](./hdinsight-component-versioning.md#supported-hdinsight-versions)」を参照してください。 HDInsight 4.0 の新機能については、[こちら](./hdinsight-version-release.md)を参照してください
 
 #### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>HDInsight 3.6 は 2021 年 6 月 30 日にサポート終了
 HDInsight 3.6 のサポートが終了します。 2021 年 6 月 30 日以降は、お客様が新しい HDInsight 3.6 クラスターを作成することはできません。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 システムやサポートが中断される可能性を回避するため、HDInsight 4.0 への移行を検討してください。
@@ -103,7 +103,7 @@ HDInsight では、Azure 仮想マシンを使用してクラスターをプロ�
 
 ### <a name="deprecation"></a>非推奨
 #### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>HDInsight 3.6 ML Services クラスターの非推奨
-HDInsight 3.6 ML Services クラスターの種類は、2020 年 12 月 31 日でサポートの終了となります。 その後は新しい 3.6 ML Services クラスターを作成できなくなります。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 HDInsight のバージョンとクラスターの種類に関するサポートの有効期限については、[こちら](./hdinsight-component-versioning.md#available-versions)で確認してください。
+HDInsight 3.6 ML Services クラスターの種類は、2020 年 12 月 31 日でサポートの終了となります。 その後は新しい 3.6 ML Services クラスターを作成できなくなります。 既存のクラスターはそのまま実行され、Microsoft からのサポートはありません。 HDInsight のバージョンとクラスターの種類に関するサポートの有効期限については、[こちら](./hdinsight-component-versioning.md#supported-hdinsight-versions)で確認してください。
 
 ### <a name="behavior-changes"></a>動作の変更
 このリリースに動作変更はありません。
@@ -385,7 +385,7 @@ HDInsight は引き続き、クラスターの信頼性とパフォーマンス�
 #### <a name="custom-ambari-db"></a>カスタム Ambari DB
 HDInsight では、自分の SQL DB for Apache Ambari を使用できるようになりました。 このカスタム Ambari DB は、Azure portal または Resource Manager テンプレートから構成できます。  この機能により、自分に必要な処理と容量に最適な SQL DB を選択できます。 また、事業の成長に合わせて簡単にアップグレードできます。 詳細については、「[カスタム Ambari DB を使用して HDInsight クラスターを設定する](hdinsight-custom-ambari-db.md)」を参照してください。
 
-![カスタム Ambari DB](./media/hdinsight-release-notes/custom-ambari-db.png)
+:::image type="content" source="./media/hdinsight-release-notes/custom-ambari-db.png" alt-text="カスタム Ambari DB":::
 
 ### <a name="deprecation"></a>非推奨
 このリリースに非推奨はありません。 今後の非推奨に備えるには、「[今後の変更](#upcoming-changes)」を参照してください。

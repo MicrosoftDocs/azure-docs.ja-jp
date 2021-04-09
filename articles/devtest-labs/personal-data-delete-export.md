@@ -4,10 +4,10 @@ description: Azure DevLast Labs サービスから個人データを削除およ
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2c44b2f3aa6f2dfad18ed53804842a5dad8bd94a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85483518"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Azure DevTest Labs から個人データをエクスポートまたは削除する
@@ -57,17 +57,17 @@ Azure portal または PowerShell を使用して個人用およびラボ用の�
 1. 左側のメニューの **[個人データ]** を選択します。 
 
     ![[個人データ] ページ](./media/personal-data-delete-export/personal-data-page.png)
-2. ラボが含まれる**リソース グループ**を選択します。
+2. ラボが含まれる **リソース グループ** を選択します。
 
     ![リソース グループの選択](./media/personal-data-delete-export/select-resource-group.png)
-3. リソース グループ内の**ストレージ アカウント**を選択します。
+3. リソース グループ内の **ストレージ アカウント** を選択します。
 4. **[ストレージ アカウント]** ページで **[BLOB]** を選択します。
 
     ![BLOB の選択タイル](./media/personal-data-delete-export/select-blobs-tile.png)
 5. コンテナーの一覧で、**labresourceusage** という名前のコンテナーを選択します。
 
     ![BLOB コンテナーの選択](./media/personal-data-delete-export/select-blob-container.png)
-6. ラボにちなんだ名前の**フォルダー**を選択します。 このフォルダー内に、ラボ内の**ディスク**と**仮想マシン**の **csv** ファイルが見つかります。 これらの csv ファイルをダウンロードし、アクセスを要求しているラボ ユーザーのコンテンツをフィルター処理して、それらのユーザーと共有できます。
+6. ラボにちなんだ名前の **フォルダー** を選択します。 このフォルダー内に、ラボ内の **ディスク** と **仮想マシン** の **csv** ファイルが見つかります。 これらの csv ファイルをダウンロードし、アクセスを要求しているラボ ユーザーのコンテンツをフィルター処理して、それらのユーザーと共有できます。
 
     ![CSV ファイルのダウンロード](./media/personal-data-delete-export/download-csv-file.png)
 

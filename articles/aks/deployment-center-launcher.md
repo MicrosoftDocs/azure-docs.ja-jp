@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 ms.openlocfilehash: 15b0413eabcfae7e3a4b28243caf2a708260ccae
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96932219"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Azure Kubernetes のデプロイ センター

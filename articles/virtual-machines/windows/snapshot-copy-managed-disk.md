@@ -3,18 +3,18 @@ title: ポータルまたは PowerShell を使用して仮想ハード ドライ
 description: バックアップまたは問題のトラブルシューティングに使うために、ポータルまたは PowerShell を使用して Azure VM のコピーを作成する方法について説明します。
 author: roygara
 manager: twooley
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: rogarana
-ms.subservice: disks
-ms.openlocfilehash: dd19729f8b119946a12220d4b0c434f0b039989a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 9070b69ac4c6b85791ff3dd4662273e75a3cd22c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879665"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102556062"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-powershell"></a>ポータルまたは PowerShell を使用してスナップショットを作成する
 

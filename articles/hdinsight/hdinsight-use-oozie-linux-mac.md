@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: b72d94c1cba3ea0476c6d44e68583f6668b167e2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 00573f01aab5e9aa86befaebb6b514c76a01b67d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702778"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871777"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Hadoop で Apache Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
 
@@ -40,7 +40,7 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 
 このドキュメントで使用されるワークフローには、2 つのアクションが含まれています。 アクションは、タスク (Hive、Sqoop、MapReduce、または他のプロセスの実行など) の定義です。
 
-![HDInsight oozie のワークフロー図](./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png)
+:::image type="content" source="./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png" alt-text="HDInsight oozie のワークフロー図" border="false":::
 
 1. Hive アクションは、HiveQL スクリプトを実行して、HDInsight に含まれている `hivesampletable` からレコードを抽出します。 各データ行は、特定のモバイル デバイスからのアクセスを表します。 レコードの形式は次のテキストのようになります。
 
@@ -516,29 +516,29 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
 
 3. ページの左側で、 **[Oozie]**  >  **[クイック リンク]**  >  **[Oozie Web UI]** の順に選びます。
 
-    ![Apache Ambari oozie Web UI の手順](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png" alt-text="Apache Ambari oozie Web UI の手順" border="true":::
 
 4. Oozie Web UI には、実行中のワークフロー ジョブが既定で表示されます。 すべてのワークフロー ジョブを表示するには、 **[All Jobs]\(すべてのジョブ\)** を選びます。
 
-    ![Oozie Web コンソールのワークフロー ジョブ](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png" alt-text="Oozie Web コンソールのワークフロー ジョブ" border="true":::
 
 5. ジョブに関する他の情報を表示するには、ジョブを選びます。
 
-    ![HDInsight Apache Oozie ジョブの情報](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png" alt-text="HDInsight Apache Oozie ジョブの情報" border="true":::
 
 6. **[Job Info]\(ジョブの情報\)** タブでは、基本的なジョブ情報とジョブの個々のアクションを確認できます。 上部にあるタブを使って、 **[Job Definition]\(ジョブの定義\)** の表示、 **[Job Configuration]\(ジョブの構成\)** の表示、 **[Job Log]\(ジョブのログ\)** へのアクセス、 **[Job DAG]\(ジョブの DAG\)** でジョブの有向非巡回グラフ (DAG) の表示を行うことができます。
 
    * **[ジョブのログ]** :ジョブのすべてのログを取得するには、 **[Get Logs]\(ログの取得)** ボタンを選びます。ログをフィルター処理するには、 **[Enter Search Filter]\(検索フィルターの入力)** フィールドを使います。
 
-       ![HDInsight Apache Oozie ジョブのログ](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
+       :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png" alt-text="HDInsight Apache Oozie ジョブのログ" border="true":::
 
    * **[Job DAG]\(ジョブの DAG)** :DAG は、ワークフローで取得されるデータ パスの概要をグラフィックで表したものです。
 
-       ![`HDInsight Apache Oozie ジョブの DAG`](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
+       :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png" alt-text="`HDInsight Apache Oozie ジョブの DAG`" border="true":::
 
 7. **[Job Info]\(ジョブの情報\)** タブでアクションのいずれかを選択すると、そのアクションの情報が表示されます。 たとえば、**RunHiveScript** アクションを選びます。
 
-    ![HDInsight oozie ジョブ アクション情報](./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png" alt-text="HDInsight oozie ジョブ アクション情報" border="true":::
 
 8. **コンソールの URL** へのリンクなど、アクションの詳細を確認できます。 このリンクを使うと、ジョブ トラッカーでのジョブの情報が表示されます。
 
@@ -638,18 +638,18 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
 
 7. Oozie Web UI にアクセスし、 **[Coordinator Jobs]\(コーディネーター ジョブ\)** タブを選ぶと、次の画像のような情報が表示されます。
 
-    ![Oozie Web コンソールの [Coordinator Jobs]\(コーディネーター ジョブ\) タブ](./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png" alt-text="Oozie Web コンソールの [Coordinator Jobs]\(コーディネーター ジョブ\) タブ" border="true":::
 
     **[Next Materialization (次の実体化)]** エントリは、このジョブが次回実行される日時を示しています。
 
 8. 前のワークフロー ジョブと同様に、Web UI でジョブ エントリを選ぶと、そのジョブの情報が表示されます。
 
-    ![Apache Oozie コーディネーター ジョブ情報](./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png" alt-text="Apache Oozie コーディネーター ジョブ情報" border="true":::
 
     > [!NOTE]  
     > この画像には、正常に実行されたジョブのみが表示されており、スケジュールされたワークフロー内の個々のアクションについては表示されません。 個々のアクションを表示するには、 **[Action]\(アクション\)** エントリの 1 つを選びます。
 
-    ![OOzie web コンソールの [ジョブ情報] タブ](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
+    :::image type="content" source="./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png" alt-text="OOzie web コンソールの [ジョブ情報] タブ" border="true":::
 
 ## <a name="next-steps"></a>次のステップ
 

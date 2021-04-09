@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.openlocfilehash: cd21197d6d1559b681ae622b974f6eb7ba95ad3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91397370"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>マルチテナント SaaS アプリケーションと Azure Cognitive Search の設計パターン
@@ -95,7 +95,7 @@ Azure Cognitive Search では、個々のインデックスとインデックス
 
 ## <a name="2-service-per-tenant"></a>2.テナントごとのサービス
 
-:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="テナントごとのインデックス モデルの図" border="false":::
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="テナントごとのサービス モデルの図" border="false":::
 
 テナントごとのサービス アーキテクチャでは、各テナントが独自の検索サービスを使用します。
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: deac4dcde51049d744706b7479f5b5f3bbb4d9c0
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92520860"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>チュートリアル:Azure Active Directory と Periscope Data の統合
@@ -41,7 +41,7 @@ Periscope Data と Azure AD の統合を構成するには、次のものが必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Periscope Data では、 **SP** Initiated SSO がサポートされます
+* Periscope Data では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-periscope-data-from-the-gallery"></a>ギャラリーからの Periscope Data の追加
 
@@ -61,13 +61,13 @@ Azure AD への Periscope Data の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Periscope Data** 」と入力し、結果ウィンドウで **Periscope Data** を選択して、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Periscope Data**」と入力し、結果ウィンドウで **Periscope Data** を選択して、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Periscope Data](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Periscope Data で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Periscope Data で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Periscope Data 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Periscope Data で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -111,7 +111,7 @@ Periscope Data で Azure AD シングル サインオンを構成するには、
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://app.periscopedata.com/<SITENAME>/sso`
 
     > [!NOTE]
-    > サインオン URL は実際の値ではありません。 実際のサインオン URL で値を更新してください。 この値を取得するには、 [Periscope Data クライアント サポート チーム](mailto:support@periscopedata.com)にお問い合わせください。識別子の値は、このチュートリアルで後ほど説明する「 **Periscope Data のシングル サインオンの構成** 」セクションで取得します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > サインオン URL は実際の値ではありません。 実際のサインオン URL で値を更新してください。 この値を取得するには、[Periscope Data クライアント サポート チーム](mailto:support@periscopedata.com)にお問い合わせください。識別子の値は、このチュートリアルで後ほど説明する「**Periscope Data のシングル サインオンの構成**」セクションで取得します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **Set up Single Sign-On with SAML\(SAML でのシングルサインオンの設定** ページの **SAML 署名証明書** セクションで、コピー ボタンをクリックして **App Federation Metadata Url\(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
 
@@ -129,19 +129,19 @@ Periscope Data で Azure AD シングル サインオンを構成するには、
 
     b. **[Single Sign-On]\(シングル サインオン\)** ボックスで、 **[Azure Active Directory]** を選択します。
 
-    c. **SingleSignOnService** タグを見つけて、 **Location** 値を **[SSO URL]\(SSO の URL\)** ボックスに貼り付けます。
+    c. **SingleSignOnService** タグを見つけて、**Location** 値を **[SSO URL]\(SSO の URL\)** ボックスに貼り付けます。
 
-    d. **SingleLogoutService** タグを見つけて、 **Location** 値を **[SLO URL]\(SLO の URL\)** ボックスに貼り付けます。
+    d. **SingleLogoutService** タグを見つけて、**Location** 値を **[SLO URL]\(SLO の URL\)** ボックスに貼り付けます。
 
     e. インスタンスの **[Identifier]\(識別子\)** をコピーして、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子 (エンティティ ID)]** ボックスに貼り付けます。
 
-    f. XML ファイルの最初のタグを見つけて、 **entityID** の値をコピーし、 **[Issuer]\(発行者\)** ボックスに貼り付けます。
+    f. XML ファイルの最初のタグを見つけて、**entityID** の値をコピーし、 **[Issuer]\(発行者\)** ボックスに貼り付けます。
 
-    g. SAML プロトコルで **IDPSSODescriptor** タグを見つけます。 そのセクション内で、 **use=signing** を含む **KeyDescriptor** タグを見つけます。 **X509Certificate** の値をコピーして、 **[Certificate]\(証明書\)** ボックスに貼り付けます。
+    g. SAML プロトコルで **IDPSSODescriptor** タグを見つけます。 そのセクション内で、**use=signing** を含む **KeyDescriptor** タグを見つけます。 **X509Certificate** の値をコピーして、 **[Certificate]\(証明書\)** ボックスに貼り付けます。
 
     h. 複数の領域を含むサイトでは、既定の領域を **[Default Space]\(既定の領域\)** ドロップダウンから選択できます。 これは、新しいユーザーが初めて Periscope Data にログインしたときに追加され、Active Directory シングル サインオンを介してプロビジョニングされる領域です。
 
-    i. 最後に、 **[Save]\(保存\)** をクリックし、「 **Logout** 」と入力して SSO 設定を **確定** します。
+    i. 最後に、 **[Save]\(保存\)** をクリックし、「**Logout**」と入力して SSO 設定を **確定** します。
 
     ![SSO 構成更新ダイアログのスクリーンショット。テキストボックスに「logout」と入力され、[確認] ボタンが選択されています。](./media/periscope-data-tutorial/configure02.png)
 
@@ -161,9 +161,9 @@ Periscope Data で Azure AD シングル サインオンを構成するには、
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -212,11 +212,11 @@ Azure AD ユーザーが Periscope Data にログインできるようにする�
 
       ![Periscope Data の構成情報](./media/periscope-data-tutorial/configure04.png)
 
-    a. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Britta** )。
+    a. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Britta**)。
 
-    b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon** )。
+    b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon**)。
 
-    c. **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレス ( **brittasimon\@contoso.com** など) を入力します。
+    c. **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
 
     d. **[ADD]\(追加\)** をクリックします。
 

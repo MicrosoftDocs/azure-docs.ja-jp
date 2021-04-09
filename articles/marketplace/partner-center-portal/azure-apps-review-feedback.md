@@ -8,10 +8,10 @@ ms.date: 11/11/2019
 ms.author: mingshen
 author: mingshen-ms
 ms.openlocfilehash: ede4e5dd781851c781407a8acea640e3e501f259
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96436387"
 ---
 # <a name="handling-review-feedback-for-azure-application-offers"></a>Azure アプリケーション オファーのレビュー フィードバックの処理

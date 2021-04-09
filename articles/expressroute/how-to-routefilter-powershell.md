@@ -9,10 +9,10 @@ ms.date: 10/08/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 90d4def5a1c08e305b9315f299e83e2187b6be2c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91969904"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-using-powershell"></a>チュートリアル:PowerShell を使用して Microsoft ピアリングにルート フィルターを構成する
@@ -38,7 +38,7 @@ ExpressRoute 回線に Microsoft ピアリングを構成すると、これら�
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > - BGP コミュニティ値を取得する。
-> - ルート フィルターとフィルター規則を作成する。
+> - ルート フィルターとフィルターのルールを作成する。
 > - ExpressRoute 回線にルート フィルターを関連付ける。
 
 ### <a name="about-route-filters"></a><a name="about"></a>ルート フィルターについて

@@ -4,10 +4,10 @@ description: Azure Batch プールで HPC および GPU の仮想マシン サ�
 ms.topic: how-to
 ms.date: 12/17/2018
 ms.openlocfilehash: 016da7669c9e6a6586a53d379f9665c9ea048b64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86147343"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch プールで RDMA または GPU インスタンスを使用する
@@ -88,7 +88,7 @@ Batch プール用の特殊な VM サイズを構成するために、必要な�
 * [Batch Shipyard](https://github.com/Azure/batch-shipyard) は、Azure Batch のコンテナー化ワークロードで透過的に機能するように GPU ドライバーと RDMA ドライバーを自動的に構成します。 Batch Shipyard は、完全に構成ファイルで駆動されます。 N シリーズ VM で GPU ドライバーを事前に構成し、Microsoft Cognitive Toolkit ソフトウェアを Docker イメージとして読み込む [CNTK GPU レシピ](https://github.com/Azure/batch-shipyard/tree/master/recipes/CNTK-GPU-OpenMPI)など、GPU および RDMA ワークロードに対応する多数のサンプル レシピ構成が提供されています。
 
 
-## <a name="example-nvidia-gpu-drivers-on-windows-nc-vm-pool"></a>例:Windows NC VM プールの NVIDIA GPU ドライバー
+## <a name="example-nvidia-gpu-drivers-on-windows-nc-vm-pool"></a>例: Windows NC VM プールの NVIDIA GPU ドライバー
 
 Windows NC ノードのプールで CUDA アプリケーションを実行するには、NVDIA GPU ドライバーをインストールする必要があります。 次の手順の例では、アプリケーション パッケージを使用して NVIDIA GPU ドライバーをインストールします。 ワークロードが特定の GPU ドライバー バージョンに依存する場合は、このオプションを選択できます。
 
@@ -107,7 +107,7 @@ Windows NC ノードのプールで CUDA アプリケーションを実行する
 | **アプリケーション パッケージの参照** | GPUDriver、バージョン 411.82 |
 | **開始タスクが有効** | True<br>**[コマンド ライン]**  - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**ユーザー ID** - Pool autouser、admin<br/>**成功を待機** - True
 
-## <a name="example-nvidia-gpu-drivers-on-a-linux-nc-vm-pool"></a>例:Linux NC VM プールの NVIDIA GPU ドライバー
+## <a name="example-nvidia-gpu-drivers-on-a-linux-nc-vm-pool"></a>例: Linux NC VM プールの NVIDIA GPU ドライバー
 
 Linux NC ノードのプールで CUDA アプリケーションを実行するには、CUDA Toolkit から必要な NVIDIA Tesla GPU ドライバーをインストールする必要があります。 次の手順の例では、GPU ドライバーがインストールされたカスタム Ubuntu 16.04 LTS イメージを作成およびデプロイします。
 
@@ -125,7 +125,7 @@ Linux NC ノードのプールで CUDA アプリケーションを実行する�
 | **ノード エージェント SKU** | batch.node.ubuntu 16.04 |
 | **ノード サイズ** | NC6 Standard |
 
-## <a name="example-microsoft-mpi-on-a-windows-h16r-vm-pool"></a>例:Windows H16r VM プールの Microsoft MPI
+## <a name="example-microsoft-mpi-on-a-windows-h16r-vm-pool"></a>例: Windows H16r VM プールの Microsoft MPI
 
 Azure H16r VM ノードのプールで Windows MPI アプリケーションを実行するには、HpcVmDrivers 拡張機能を構成し、[Microsoft MPI](/message-passing-interface/microsoft-mpi) をインストールする必要があります。 必要なドライバーとソフトウェアがインストールされたカスタムの Windows Server 2016 イメージをデプロイする手順の例を次に示します。
 
@@ -145,7 +145,7 @@ Azure H16r VM ノードのプールで Windows MPI アプリケーションを�
 | **ノード間通信が有効** | True |
 | **ノードごとの最大タスク数** | 1 |
 
-## <a name="example-intel-mpi-on-a-linux-h16r-vm-pool"></a>例:Linux H16r VM プール上の Intel MPI
+## <a name="example-intel-mpi-on-a-linux-h16r-vm-pool"></a>例: Linux H16r VM プール上の Intel MPI
 
 Linux H シリーズのノードのプールで MPI アプリケーションを実行するには、1 つのオプションとして、Azure Marketplace から入手した [CentOS ベースの 7.4 HPC](https://azuremarketplace.microsoft.com/marketplace/apps/openlogic.centos-hpc?tab=Overview) イメージを使用します。 Linux RDMA ドライバーと Intel MPI はプレインストールされています。 このイメージは、Docker コンテナーのワークロードもサポートしています。
 

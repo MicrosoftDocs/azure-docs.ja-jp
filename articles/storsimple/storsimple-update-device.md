@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: faf06775b78c5a7c90cea000ac0a1eb768107ef4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94956842"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスの更新
@@ -74,7 +74,7 @@ Azure クラシック ポータルを使用して、StorSimple デバイスに�
 [!INCLUDE [storsimple-install-regular-updates-powershell](../../includes/storsimple-install-regular-updates-powershell.md)]
 
 ## <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell を使用したメンテナンス モードの更新プログラムのインストール
-StorSimple 用 Windows PowerShell を使用して、メンテナンス モードの更新プログラムを StorSimple デバイスに適用します。 このモードでは、すべての I/O 要求が一時停止します。 非揮発性ランダム アクセス メモリ (NVRAM) などのサービスやクラスター化サービスも停止します。 このモードを開始または終了するときに、両方のコントローラーが再起動されます。 このモードを終了するときに、すべてのサービスが再開され、正常な状態になります (これには数分かかることがあります)。
+StorSimple 用 Windows PowerShell を使用して、メンテナンス モードの更新プログラムを StorSimple デバイスに適用します。 このモードでは、すべての I/O 要求が一時停止します。 非揮発性ランダム アクセス メモリ (NVRAM) などのサービスやクラスター化サービスも停止します。 このモードを開始または終了するときに、両方のコントローラーが再起動されます。 このモードを終了するときに、すべてのサービスが再開され、正常な状態になります  (これには数分かかることがあります)。
 
 メンテナンス モードの更新プログラムを適用する必要がある場合は、インストールが必要な更新プログラムがあることを示すアラートを Azure クラシック ポータルから受信します。 このアラートには、StorSimple 用 Windows PowerShell を使用して更新プログラムをインストールする手順が含まれます。 デバイスを更新した後、同じ手順を使用してデバイスを通常モードに変更します。 手順については、「 [手順 4: メンテナンス モードを終了するには](#step4)」を参照してください。
 

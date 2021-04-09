@@ -11,10 +11,10 @@ ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: c750e34e8081cf5a8b3d41cc8c52584a4353a336
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101695160"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する

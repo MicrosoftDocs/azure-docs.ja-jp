@@ -7,12 +7,12 @@ ms.subservice: disks
 ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
-ms.openlocfilehash: c3f1d08ac6375dcc854f2c16b6f66901295f88e3
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 92e3be9111abe5712549ba85ef4550a9ac1473f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564562"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596809"
 ---
 # <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>Azure Disk Encryption を使用する論理ボリューム管理デバイスのサイズを変更する方法
 
@@ -38,7 +38,7 @@ ms.locfileid: "102564562"
 
 - Linux と LVM の使用経験。
 
-- Azure 上のデータ ディスクの */dev/disk/scsi1/* パスの使用経験。 詳細については、[Linux VM デバイス名の問題のトラブルシューティング](../troubleshooting/troubleshoot-device-names-problems.md)に関する記事をご覧ください。 
+- Azure 上のデータ ディスクの */dev/disk/scsi1/* パスの使用経験。 詳細については、[Linux VM デバイス名の問題のトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems)に関する記事をご覧ください。 
 
 ## <a name="scenarios"></a>シナリオ
 

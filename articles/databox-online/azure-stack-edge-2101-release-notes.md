@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/01/2021
 ms.author: alkohli
 ms.openlocfilehash: 5c95da8d6ee88786ff983b4963c1cb96394886cf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101727551"
 ---
 # <a name="azure-stack-edge-pro-with-fpga-2101-release-notes"></a>FPGA が組み込まれた Azure Stack Edge Pro 2101 リリース ノート

@@ -5,15 +5,15 @@ services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: include
-ms.date: 05/09/2019
-ms.author: sharadag
+ms.date: 02/18/2021
+ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 361fb18574e90fc46e45bff8914c51ee1afa2f96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53d837883daefddd5fa3f0f543eae1d116a5e86a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89411712"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101102939"
 ---
 | リソース | 制限 |
 | --- | --- |
@@ -35,6 +35,31 @@ ms.locfileid: "89411712"
 | Web アプリケーション ファイアウォールの Cookie 名の長さ | 256 |
 | Web アプリケーション ファイアウォールの検査対象の HTTP 要求本文のサイズ | 128 KB |
 | Web アプリケーション ファイアウォールのカスタム応答本文の長さ | 2 KB |
+
+### <a name="azure-front-door-standardpremium-preview-service-limits"></a>Azure Front Door Standard/Premium (プレビュー) サービスの制限
+
+*** *サブスクリプションあたり合計で最大 **500** の Standard および Premium プロファイル。*
+
+| リソース | Standard SKU の制限 | Premium SKU の制限 |
+| --- | --- | --- |
+| プロファイルあたりのエンドポイントの最大数  | 10 | 25 |
+| プロファイルあたりのカスタムド メインの最大数 | 100 | 200 |
+| プロファイルあたりの配信元グループの最大数 | 100 | 200 |
+| プロファイルあたりのシークレットの最大数 | 100 | 200 |
+| プロファイルあたりのセキュリティ ポリシーの最大数 | 100 | 200 |
+| プロファイルあたりのルール セットの最大数 | 100 | 200 |
+| ルール セットあたりのルールの最大数 | 100 | 100 |
+| 配信元グループあたりの配信元の最大数 | 50 | 50 |
+| エンドポイントあたりのルートの最大数 | 100 | 200 |
+| カスタム規則ごとの Web アプリケーション ファイアウォールの一致条件 | 10 | 10 |
+| 一致条件ごとの Web アプリケーション ファイアウォール IP アドレスの範囲 | 600 | 600 |
+| 一致条件ごとの Web アプリケーション ファイアウォール文字列の一致する値 | 10 | 10 |
+| Web アプリケーション ファイアウォール文字列の一致する値の長さ | 256 | 256 |
+| Web アプリケーション ファイアウォールの POST 本文のパラメーター名の長さ | 256 | 256 |
+| Web アプリケーション ファイアウォールの HTTP ヘッダー名の長さ | 256 | 256 |
+| Web アプリケーション ファイアウォールの Cookie 名の長さ | 256 | 256|
+| Web アプリケーション ファイアウォールの検査対象の HTTP 要求本文のサイズ | 128 KB | 128 KB |
+| Web アプリケーション ファイアウォールのカスタム応答本文の長さ | 2 KB | 2 KB |
 
 ### <a name="timeout-values"></a>タイムアウト値
 #### <a name="client-to-front-door"></a>クライアントから Front Door

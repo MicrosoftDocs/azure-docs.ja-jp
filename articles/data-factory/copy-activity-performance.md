@@ -1,18 +1,23 @@
 ---
 title: コピー アクティビティのパフォーマンスとスケーラビリティに関するガイド
 description: コピー アクティビティを使用する場合に、Azure Data Factory でのデータ移動のパフォーマンスに影響する主な要因について説明します。
+services: data-factory
+documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
+manager: shwang
+ms.reviewer: douglasl
 ms.service: data-factory
+ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/15/2020
-ms.openlocfilehash: 1c166b99243e5a6ee576100b8470aa38b9535c7a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cba248d3f254c9bb97c66ff7a3d39275b4b912c4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387667"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102616079"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>コピー アクティビティのパフォーマンスとスケーラビリティに関するガイド
 
@@ -48,8 +53,8 @@ ADF は、さまざまなレベルで並列処理を可能にするサーバー�
 
 このアーキテクチャを使用すると、お使いの環境のデータ移動スループットを最大化するパイプラインを開発できます。 これらのパイプラインは、次のリソースを完全に利用します。
 
-* ネットワーク帯域幅
-* ストレージの 1 秒あたりの入出力操作 (IOPS) と帯域幅
+* ソースとコピー先のデータ ストア間のネットワーク帯域幅
+* ソースとコピー先のデータストアの 1 秒あたりの入力/出力操作数 (IOPS) と帯域幅
 
 この完全な利用は、次のリソースで使用可能な最小スループットを測定することで、全体のスループットを推定できることを意味します。
 
@@ -57,7 +62,7 @@ ADF は、さまざまなレベルで並列処理を可能にするサーバー�
 * コピー先データ ストア
 * ソースとコピー先のデータストア間のネットワーク帯域幅
 
-次の表は、コピー時間を計算したものです。 時間は、データ サイズとお使いの環境の帯域幅制限に基づいています。
+次の表は、コピー時間を計算したものです。 時間は、データ サイズとお使いの環境のネットワーク/データ ストアの帯域幅制限に基づいています。
 
 &nbsp;
 

@@ -5,16 +5,16 @@ services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 296bd3a4a75cdd7f5dab3b6eb5fdcb00a889703d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4bb323e0e8f72456b6a522ede9a98d193e1c3c7e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695878"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098776"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用の Python ライブラリを管理する
 
@@ -42,7 +42,7 @@ Spark アプリケーションで使用したい Python ライブラリを見つ
 > [!IMPORTANT]
 > - インストールするパッケージが大きいか、インストールに時間がかかる場合、これは Spark インスタンスのアップタイムに影響します。
 > - PySpark、Python、Scala/Java、.NET、または Spark のバージョンの変更はサポートされていません。
-> - DEP が有効なワークスペースでは、PyPI からのパッケージのインストールはサポートされていません。
+> - PyPI、Conda-Forge、または既定の Conda チャネルなどの外部リポジトリからパッケージをインストールすることは、DEP 対応のワークスペースではサポートされていません。
 
 ### <a name="install-python-packages"></a>Python パッケージのインストール
 環境仕様ファイルを指定して、PyPI や Conda-Forge などのリポジトリから Python パッケージをインストールできます。 
@@ -140,9 +140,6 @@ Python の wheel ファイルは、Python ライブラリをパッケージ化�
 
 ![ワークスペース パッケージを強調したスクリーンショット。](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "ワークスペース パッケージを表示する")
 
-> [!IMPORTANT]
-> ワークスペース パッケージのインストールは、現時点ではまだ、データ流出保護 (DEP) ワークスペース内ではサポートされていません。
-
 ### <a name="storage-account"></a>ストレージ アカウント
 Synapse ワークスペースにリンクされている Azure Data Lake Storage (Gen2) アカウントにすべての wheel ファイルをアップロードすることで、カスタム ビルドの wheel パッケージを Apache Spark プールにインストールできます。 
 
@@ -160,8 +157,8 @@ abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<wo
 >[!WARNING]
 > カスタム wheel ファイルを指定する場合、ユーザーはストレージ アカウントとワークスペース ライブラリ インターフェイスの両方で wheel ファイルを指定することはできません。 両方を指定した場合は、ワークスペース パッケージの一覧で指定した wheel ファイルのみがインストールされます。 
 
-## <a name="session-scoped-libraries-preview"></a>セッション スコープのライブラリ (プレビュー)
-プール レベルのライブラリに加えて、セッション スコープのライブラリをノートブック セッションの開始時に指定することもできます。  セッション スコープのライブラリを使用すると、ノートブック セッション内でカスタム Python 環境を指定して使用できます。 
+## <a name="session-scoped-packages-preview"></a>セッション スコープのパッケージ (プレビュー)
+プール レベルのパッケージに加えて、セッション スコープのライブラリをノートブック セッションの開始時に指定することもできます。  セッション スコープのライブラリを使用すると、ノートブック セッション内でカスタム Python 環境を指定して使用できます。 
 
 セッション スコープのライブラリを使用する場合は、以下の点に留意することが重要です。
    - セッション スコープのライブラリをインストールすると、現在のノートブックだけが、指定されたライブラリにアクセスできます。 
@@ -187,3 +184,4 @@ for d in pkg_resources.working_set:
 ## <a name="next-steps"></a>次のステップ
 - 既定のライブラリを確認します: [Apache Spark バージョンのサポート](apache-spark-version-support.md)
 - ライブラリのインストール エラーのトラブルシューティング: [ライブラリのエラーのトラブルシューティング](apache-spark-troubleshoot-library-errors.md)
+- Azure Data Lake Storage アカウントを使用してプライベート Conda チャネルを作成する: [Conda プライベート チャネル](./spark/../apache-spark-custom-conda-channel.md)

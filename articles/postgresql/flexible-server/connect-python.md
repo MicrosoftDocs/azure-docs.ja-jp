@@ -9,10 +9,10 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.openlocfilehash: 89dc36a9b1b1fee9ad10d55945c7fc17bf72f476
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90946191"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---flexible-server"></a>クイック スタート:Python を使用して Azure Database for PostgreSQL - フレキシブル サーバーに接続し、データのクエリを実行する
@@ -44,7 +44,7 @@ ms.locfileid: "90946191"
 Azure Database for PostgreSQL - フレキシブル サーバーに接続するには、完全修飾サーバー名とログイン資格情報が必要です。 この情報は Azure portal から取得できます。
 
 1. [Azure portal](https://portal.azure.com/) で、フレキシブル サーバーの名前を探して選択します。 
-2. サーバーの **[概要]** ページで、完全修飾**サーバー名**と**管理者ユーザー名**をコピーします。 完全修飾**サーバー名**は常に *\<my-server-name>.postgres.database.azure.com* の形式になります。
+2. サーバーの **[概要]** ページで、完全修飾 **サーバー名** と **管理者ユーザー名** をコピーします。 完全修飾 **サーバー名** は常に *\<my-server-name>.postgres.database.azure.com* の形式になります。
 
    また、管理者パスワードも必要です。 忘れた場合は、概要ページでリセットできます。 
 

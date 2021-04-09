@@ -11,10 +11,10 @@ ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.custom: sqldbrb=1
 ms.openlocfilehash: ae7baeac6cee2a692928642e3e38ce0adad17d1c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92674887"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-using-ssms"></a>チュートリアル:SSMS を使用して Azure SQL Database でリレーショナル データベースを設計する
@@ -134,20 +134,20 @@ Azure SQL Database では、サーバーレベルで IP ファイアウォール
    | 設定       | 推奨値 | 説明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **サーバーの種類** | データベース エンジン | この値は必須です。 |
-   | **サーバー名** | 完全修飾サーバー名 | たとえば、 *yourserver.database.windows.net* などです。 |
+   | **サーバー名** | 完全修飾サーバー名 | たとえば、*yourserver.database.windows.net* などです。 |
    | **認証** | SQL Server 認証 | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
    | **Login** | サーバー管理者アカウント | サーバーの作成時に指定したアカウントです。 |
    | **パスワード** | サーバー管理者アカウントのパスワード | お客様がサーバーを作成したときに指定したパスワードです。 |
 
    ![[サーバーに接続]](./media/design-first-database-tutorial/connect.png)
 
-3. **[サーバーへの接続]** ダイアログ ボックスの **[オプション]** をクリックします。 **[データベースへの接続]** セクションに「 *yourDatabase* 」と入力して、このデータベースに接続します。
+3. **[サーバーへの接続]** ダイアログ ボックスの **[オプション]** をクリックします。 **[データベースへの接続]** セクションに「*yourDatabase*」と入力して、このデータベースに接続します。
 
     ![サーバー上のデータベースに接続](./media/design-first-database-tutorial/options-connect-to-db.png)  
 
 4. **[Connect]** をクリックします。 SSMS で **オブジェクト エクスプローラー** ウィンドウが開きます。
 
-5. **オブジェクト エクスプローラー** で、 **Databases** 、 *yourDatabase* の順に展開して、サンプル データベース内のオブジェクトを表示します。
+5. **オブジェクト エクスプローラー** で、**Databases**、*yourDatabase* の順に展開して、サンプル データベース内のオブジェクトを表示します。
 
    ![データベース オブジェクト](./media/design-first-database-tutorial/connected.png)  
 
@@ -160,7 +160,7 @@ Azure SQL Database では、サーバーレベルで IP ファイアウォール
 - 生徒
 - クレジット
 
-次の図は、これらのテーブルの相互関係を示しています。 テーブルの一部は、他のテーブル内の列を参照します。 たとえば *Student* テーブルは、 *Person* テーブルの *PersonId* 列を参照します。 このチュートリアルのテーブルの相互関係を把握するため、図を詳しく確認します。 効果的なデータベース テーブル作成方法の詳細は、[効果的なデータベース テーブルの作成](/previous-versions/tn-archive/cc505842(v=technet.10))を参照してください。 データ型の選択については、[データ型](/sql/t-sql/data-types/data-types-transact-sql)を参照してください。
+次の図は、これらのテーブルの相互関係を示しています。 テーブルの一部は、他のテーブル内の列を参照します。 たとえば *Student* テーブルは、*Person* テーブルの *PersonId* 列を参照します。 このチュートリアルのテーブルの相互関係を把握するため、図を詳しく確認します。 効果的なデータベース テーブル作成方法の詳細は、[効果的なデータベース テーブルの作成](/previous-versions/tn-archive/cc505842(v=technet.10))を参照してください。 データ型の選択については、[データ型](/sql/t-sql/data-types/data-types-transact-sql)を参照してください。
 
 > [!NOTE]
 > [SQL Server Management Studio のテーブル デザイナー](/sql/ssms/visual-db-tools/design-database-diagrams-visual-database-tools)を使用して、テーブルを作成および設計することも可能です。
@@ -214,7 +214,7 @@ Azure SQL Database では、サーバーレベルで IP ファイアウォール
 
    ![テーブルの作成](./media/design-first-database-tutorial/create-tables.png)
 
-3. **オブジェクト エクスプローラー** で、 *yourDatabase* の **Tables** ノードを展開すると、お客様が作成したテーブルが表示されます。
+3. **オブジェクト エクスプローラー** で、*yourDatabase* の **Tables** ノードを展開すると、お客様が作成したテーブルが表示されます。
 
    ![作成済み SSMS テーブル](./media/design-first-database-tutorial/ssms-tables-created.png)
 
@@ -229,9 +229,9 @@ Azure SQL Database では、サーバーレベルで IP ファイアウォール
    - [SampleStudentData](https://sqldbtutorial.blob.core.windows.net/tutorials/SampleStudentData)
    - [SampleCreditData](https://sqldbtutorial.blob.core.windows.net/tutorials/SampleCreditData)
 
-3. コマンド プロンプト ウィンドウを開き、 *sampleData* フォルダーに移動します。
+3. コマンド プロンプト ウィンドウを開き、*sampleData* フォルダーに移動します。
 
-4. 次のコマンドを実行して、サンプル データをテーブルに挿入します。 *server* 、 *database* 、 *user* 、 *password* の各値は、お客様の環境の値に置き換えてください。
+4. 次のコマンドを実行して、サンプル データをテーブルに挿入します。*server*、*database*、*user*、*password* の各値は、お客様の環境の値に置き換えてください。
 
    ```cmd
    bcp Course in SampleCourseData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","

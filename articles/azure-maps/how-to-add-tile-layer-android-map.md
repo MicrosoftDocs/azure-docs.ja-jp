@@ -3,17 +3,18 @@ title: Android マップへのタイル レイヤーの追加 | Microsoft Azure 
 description: マップにタイル レイヤーを追加する方法について説明します。 Azure Maps Android SDK を使用して気象レーダーのオーバーレイをマップに追加する例を参照してください。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/08/2020
+ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 8ea6f44c47c5cd4d223b053640f65827f46db482
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 6a920dc222cae4aedd77b667644de317637bbb69
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679293"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047504"
 ---
 # <a name="add-a-tile-layer-to-a-map-android-sdk"></a>マップにタイル レイヤーを追加する (Android SDK)
 
@@ -36,6 +37,7 @@ ms.locfileid: "97679293"
 * `{quadkey}` - Bing Maps タイル システムの名前付け規則に基づくタイルの quadkey 識別子。
 * `{bbox-epsg-3857}` - EPSG 3857 空間参照系の `{west},{south},{east},{north}` 形式の境界ボックス文字列。
 * `{subdomain}` - サブドメインの値のプレースホルダー (サブドメインの値が指定される場合)。
+* `azmapsdomain.invalid` - タイル要求のドメインと認証を、マップで使用されているものと同じ値に合わせるためのプレースホルダー。 Azure Maps によってホストされているタイル サービスを呼び出すときにこれを使用します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,6 +46,8 @@ ms.locfileid: "97679293"
 ## <a name="add-a-tile-layer-to-the-map"></a>マップにタイル レイヤーを追加する
 
 このサンプルは、タイルのセットを指すタイル レイヤーを作成する方法を示しています。 このサンプルでは、"x、y、ズーム" タイル システムを使用します。 このタイル レイヤーのソースは、クラウド ソーシングされた海図が含まれている [OpenSeaMap プロジェクト](https://openseamap.org/index.php)です。 多くの場合、タイル レイヤーを表示するときは、マップ上の都市のラベルをはっきりと確認できることが求められます。 この動作は、マップ ラベル レイヤーの下にタイル レイヤーを挿入することによって実現できます。
+
+::: zone pivot="programming-language-java-android"
 
 ```java
 TileLayer layer = new TileLayer(
@@ -57,16 +61,31 @@ TileLayer layer = new TileLayer(
 map.layers.add(layer, "labels");
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = TileLayer(
+    tileUrl("https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"),
+    opacity(0.8f),
+    tileSize(256),
+    minSourceZoom(7),
+    maxSourceZoom(17)
+)
+
+map.layers.add(layer, "labels")
+```
+
+::: zone-end
+
 次のスクリーンショットは、上記のコードによって、濃いグレー スケール スタイルが設定されたマップ上に航海情報のタイル レイヤーが表示されている状態を示しています。
 
 ![タイル レイヤーを表示している Android マップ](media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)
 
 ## <a name="next-steps"></a>次の手順
 
-マップのスタイルを設定する方法の詳細については、次の記事を参照してください。
+地図上で画像をオーバーレイする各種方法の詳細については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [マップ スタイルを変更する](set-android-map-styles.md)
-
-> [!div class="nextstepaction"]
-> [ヒート マップを追加する](map-add-heat-map-layer-android.md)
+> [イメージ レイヤー](map-add-image-layer-android.md)

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: mvc
 ms.openlocfilehash: 5377a3ff7ef7033b57f8785baa615a717ef7fa0f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100575874"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Runbook から Update Management を有効にする

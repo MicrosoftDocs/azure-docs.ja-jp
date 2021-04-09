@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 09/28/2020
 ms.author: yegu
 ms.openlocfilehash: b30e83b89b25e6400b8c7e0419406631fa1edcd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91491708"
 ---
 # <a name="whats-new-in-azure-cache-for-redis"></a>Azure Cache for Redis の新機能
@@ -26,7 +26,7 @@ Microsoft では、異なる証明機関 (CA) のセットからの TLS サー�
 
 ### <a name="does-this-change-affect-me"></a>この変更は私に影響しますか?
 
-ほとんどの Azure Cache for Redis のお客様は、この変更の影響を受けないと想定されます。 ご利用のアプリケーションが、受け入れ可能な証明書のリストを明示的に指定する場合 ("証明書のピン留め" と呼ばれる実践方法)、そのアプリケーションは影響を受ける可能性があります。 Baltimore CyberTrust Root の代わりに中間証明書またはリーフ証明書をピン留めしている場合、証明書の構成を変更するには、**直ちに対応する**必要があります。
+ほとんどの Azure Cache for Redis のお客様は、この変更の影響を受けないと想定されます。 ご利用のアプリケーションが、受け入れ可能な証明書のリストを明示的に指定する場合 ("証明書のピン留め" と呼ばれる実践方法)、そのアプリケーションは影響を受ける可能性があります。 Baltimore CyberTrust Root の代わりに中間証明書またはリーフ証明書をピン留めしている場合、証明書の構成を変更するには、**直ちに対応する** 必要があります。
 
 次の表に、ロール アウトされる証明書に関する情報を示します。 アプリケーションが使用する証明書によっては、Azure Cache for Redis インスタンスへの接続が失われないように、アプリケーションを更新する必要がある場合があります。
 

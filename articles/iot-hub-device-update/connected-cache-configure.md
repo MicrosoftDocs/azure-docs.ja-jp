@@ -8,10 +8,10 @@ ms.date: 2/16/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
 ms.openlocfilehash: 2903407f88b57a7be948cdeb0610e6d65df975b0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101660625"
 ---
 # <a name="configure-microsoft-connected-cache-for-device-update-for-azure-iot-hub"></a>Device Update for Azure IoT Hub 用に Microsoft 接続キャッシュを構成する

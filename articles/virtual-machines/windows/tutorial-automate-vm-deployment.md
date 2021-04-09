@@ -2,18 +2,19 @@
 title: チュートリアル - Azure 内の Windows VM 上にアプリケーションをインストールする
 description: このチュートリアルでは、カスタム スクリプト拡張機能を使ってスクリプトを実行し、Azure 内の Windows 仮想マシンにアプリケーションを展開する方法を説明します
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6c5a89b6a376a5938a42b8ba945cdd5269ca54e4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c7c0fc8aaa3779390060ae283f1427f4955ed421
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730125"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102555977"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>チュートリアル - カスタム スクリプト拡張機能を使って Azure 内の Windows 仮想マシンにアプリケーションを展開する
 
@@ -92,9 +93,9 @@ Get-AzPublicIPAddress `
 ![実行中の IIS Web サイト](./media/tutorial-automate-vm-deployment/running-iis-website.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、仮想マシンへの IIS のインストールを自動化しました。 以下の方法について学習しました。
+このチュートリアルでは、仮想マシンへの IIS のインストールを自動化しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * カスタム スクリプト拡張機能を使用して IIS をインストールする

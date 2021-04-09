@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 6/9/2020
 ms.author: aschhab
 ms.custom: include file
-ms.openlocfilehash: 9030080d0b8c8e032cb2992a62275efcdb04aabc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 574507fcc6a3c05919c441bd6d0ec9c573d4b6ae
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87798139"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652609"
 ---
 次の表は、現在 Azure Service Bus でサポートされている Java Message Service (JMS) 機能の一覧を示しています。 また、サポートされていない機能も示しています。
 
@@ -34,4 +34,5 @@ ms.locfileid: "87798139"
 | メッセージ セレクター | 作成されるコンシューマーによって異なります | **サポートされています** |
 | 配信の遅延 (スケジュール済みメッセージ) | <ul> <li> JMSProducer.setDeliveryDelay( long deliveryDelay) </li> </ul>|**サポートされています**|
 | メッセージの作成 |<ul> <li> JMSContext.createMessage() </li> <li> JMSContext.createBytesMessage() </li> <li> JMSContext.createMapMessage() </li> <li> JMSContext.createObjectMessage(Serializable object) </li> <li> JMSContext.createStreamMessage() </li> <li> JMSContext.createTextMessage() </li> <li> JMSContext.createTextMessage(String text) </li> </ul>| **サポートされています** |
+| エンティティ間トランザクション |<ul> <li> Connection.createSession(true, Session.SESSION_TRANSACTED) </li> </ul> | **サポートされています** |
 | 分散トランザクション || サポートなし |

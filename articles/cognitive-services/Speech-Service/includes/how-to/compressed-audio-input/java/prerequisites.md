@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
-ms.openlocfilehash: ccc7fcd748323e05f21edcfff1535085d2cdbdc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f7e74a4e3a0ad208ea832798748adf7a15dfc89
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81421894"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103417726"
 ---
 圧縮オーディオの処理は、[GStreamer](https://gstreamer.freedesktop.org) を使用して実装されます。 ライセンスの理由から、Speech SDK では GStreamer バイナリはコンパイルおよびリンクされません。 代わりに、Android では事前構築済みのバイナリを使用する必要があります。 事前構築済みのライブラリをダウンロードするには、「[Android 開発用のインストール](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)」を参照してください。
 
-`libgstreamer_android.so` は必須です。 GStreamer プラグインが `libgstreamer_android.so` でリンクされていることを確認してください。
+`libgstreamer_android.so` は必須です。 `libgstreamer_android.so` ですべての GStreamer プラグイン (以下の Android.mk ファイルから) がリンクされていることを確認します。 最新の Speech SDK (1.16.0 以降) を GStreamer バージョン 1.18.3 と共に使用する場合、`libc++_shared.so` は Android NDK にも存在している必要があります。
 
 ```makefile
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
@@ -31,7 +31,6 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE    := dummy
 LOCAL_SHARED_LIBRARIES := gstreamer_android
-LOCAL_LDLIBS := -llog
 include $(BUILD_SHARED_LIBRARY)
 
 ifndef GSTREAMER_ROOT_ANDROID
@@ -62,10 +61,12 @@ endif
 
 GSTREAMER_NDK_BUILD_PATH  := $(GSTREAMER_ROOT)/share/gst-android/ndk-build/
 include $(GSTREAMER_NDK_BUILD_PATH)/plugins.mk
-GSTREAMER_PLUGINS         :=  coreelements app audioconvert mpg123 \
-    audioresample audioparsers ogg \
-    opusparse opus wavparse alaw mulaw flac
-GSTREAMER_EXTRA_LIBS      := -liconv
+GSTREAMER_PLUGINS         :=  $(GSTREAMER_PLUGINS_CORE) \ 
+                              $(GSTREAMER_PLUGINS_CODECS) \ 
+                              $(GSTREAMER_PLUGINS_PLAYBACK) \
+                              $(GSTREAMER_PLUGINS_CODECS_GPL) \
+                              $(GSTREAMER_PLUGINS_CODECS_RESTRICTED)
+GSTREAMER_EXTRA_LIBS      := -liconv -lgstbase-1.0 -lGLESv2 -lEGL
 include $(GSTREAMER_NDK_BUILD_PATH)/gstreamer-1.0.mk
 ```
 

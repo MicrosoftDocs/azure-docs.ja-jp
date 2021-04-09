@@ -4,10 +4,10 @@ description: Azure Site Recovery を使用したレプリケーションから A
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 15989fbfd65f758eb777c5170c217aba8707e0be
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96008261"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>ディザスター リカバリーからディスクを除外する
@@ -56,13 +56,13 @@ ms.locfileid: "96008261"
 
 ## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>例 1:SQL Server の tempdb 用ディスクを除外する
 
-ソース SQL Server Windows VM - **SalesDB*** のディスクの除外、フェールオーバー、およびフェールオーバーを処理する方法を見てみましょう。ここでは、tempdb を除外します。 
+ソース SQL Server Windows VM (SalesDB*) のディスクの除外、フェールオーバー、およびフェールオーバーを処理する方法を見てみましょう。ここでは、tempdb を除外します。 
 
 ### <a name="exclude-disks-from-replication"></a>レプリケーションからディスクを除外する
 
 ソース Windows VM SalesDB には、これらのディスクがあります。
 
-***ディスク名**** | **ゲスト OS ディスク** | **ドライブ文字** | **ディスク データの種類**
+**ディスク名** | **ゲスト OS ディスク** | **ドライブ文字** | **ディスク データの種類**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | オペレーティング システム ディスク。
 DB-Disk1| Disk1 | D:\ | SQL システム データベースとユーザー データベース 1。

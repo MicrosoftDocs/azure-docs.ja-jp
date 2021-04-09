@@ -16,13 +16,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 25314b4a306678dc877a95194907b3d73979e4f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89275863"
 ---
-# <a name="troubleshoot-azure-ad-connect-install-issues"></a>トラブルシューティング:Azure AD Connect のインストールの問題
+# <a name="troubleshoot-azure-ad-connect-install-issues"></a>トラブルシューティング: Azure AD Connect のインストールに関する問題
 
 ## <a name="recommended-steps"></a>**推奨される手順**
 適切な [Azure AD Connect のインストールの種類](./how-to-connect-install-select-installation.md)を確認してください。 高速インストールの条件を満たしている場合は、高速インストールを使用することを強くお勧めします。 高速インストールでは、インストールを完了するのに必要な最小限のオプションが提供されます。したがって、問題が発生する可能性が低くなります。 
@@ -52,8 +52,8 @@ ms.locfileid: "89275863"
 * [Azure AD Connect で使用するインストールの種類の選択](./how-to-connect-install-select-installation.md)
 * [簡単設定を使用した Azure AD Connect の開始](./how-to-connect-install-express.md)
 * [Azure AD Connect のカスタム インストール](./how-to-connect-install-custom.md)
-* [Azure AD Connect:旧バージョンから最新バージョンにアップグレードする](./how-to-upgrade-previous-version.md)」の記事を参照してください。
-* [Azure AD Connect:ステージング サーバーとは](./plan-connect-topologies.md#staging-server)
+* [Azure AD Connect:旧バージョンから最新バージョンにアップグレードする](./how-to-upgrade-previous-version.md)
+* [Azure AD Connect: ステージング サーバーとは](./plan-connect-topologies.md#staging-server)
 * [ADConnectivityTool PowerShell モジュールとは](./how-to-connect-adconnectivitytools.md)
 
 ## <a name="next-steps"></a>次のステップ

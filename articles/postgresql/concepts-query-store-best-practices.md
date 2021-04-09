@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: dd39b7ecd51902f5035b4cd17d59dea964d0c962
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91708834"
 ---
 # <a name="best-practices-for-query-store"></a>クエリ ストア関連のベスト プラクティス
@@ -35,11 +35,11 @@ ms.locfileid: "91708834"
 
 
 ## <a name="keep-the-data-you-need"></a>必要なデータを保持します。
-**Pg_qs.retention_period_in_days**パラメーターには､クエリ ストアのデータ保持期間を日数で指定します。 この期間より古いクエリと統計データは削除されます。 既定では、クエリ ストアは 7 日の間データを保持するように構成されます｡ 使用する予定がない履歴データを残さないでください。 もっと長くデータを保持する必要がある場合は、値を大きくします｡
+**Pg_qs.retention_period_in_days** パラメーターには､クエリ ストアのデータ保持期間を日数で指定します。 この期間より古いクエリと統計データは削除されます。 既定では、クエリ ストアは 7 日の間データを保持するように構成されます｡ 使用する予定がない履歴データを残さないでください。 もっと長くデータを保持する必要がある場合は、値を大きくします｡
 
 
 ## <a name="set-the-frequency-of-wait-stats-sampling"></a>待機統計のサンプリング頻度を設定します。 
-**Pgms_wait_sampling.history_period**パラメーターには､待機イベントをサンプリングする頻度 (ミリ秒単位) を指定します。 値が小さいほど、サンプリング頻度は増します。 より詳しい情報を得られますが、リソースの消費量が大きくなるというコストが伴います｡ サーバーの負荷が大きい場合、あるいはきめの細かい情報が必要ない場合は､値を大きくしてください｡
+**Pgms_wait_sampling.history_period** パラメーターには､待機イベントをサンプリングする頻度 (ミリ秒単位) を指定します。 値が小さいほど、サンプリング頻度は増します。 より詳しい情報を得られますが、リソースの消費量が大きくなるというコストが伴います｡ サーバーの負荷が大きい場合、あるいはきめの細かい情報が必要ない場合は､値を大きくしてください｡
 
 
 ## <a name="get-quick-insights-into-query-store"></a>クエリ ストアに対するクイック インサイトを取得します。

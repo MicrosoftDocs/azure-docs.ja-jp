@@ -9,10 +9,10 @@ ms.date: 12/14/2020
 ms.author: abhishgu
 ms.reviewer: abhishgu
 ms.openlocfilehash: 25972ba2bb30c39838c4822a42af292e8d8b1dba
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97803631"
 ---
 # <a name="ingest-data-from-apache-kafka-into-azure-cosmos-db-cassandra-api-using-kafka-connect"></a>Kafka Connect を使用して Apache Kafka から Azure Cosmos DB Cassandra API にデータを取り込む

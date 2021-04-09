@@ -12,12 +12,12 @@ ms.date: 2/23/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9a884cbe9ad30ce298318d217aa9ed1947c8f21
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: fa025f7e21f76b4dde547ccabf675511e9156359
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123022"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589329"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
@@ -197,13 +197,13 @@ Fiddler を構成したら、 **[File]** メニューに移動し、 **[Capture 
 
 ## <a name="blocking-consumer-applications-public-preview"></a>コンシューマー アプリケーションのブロック (パブリック プレビュー)
 
-[OneDrive](https://onedrive.live.com/) または [Microsoft Learn](https://docs.microsoft.com/learn/) など、コンシューマー アカウントと組織アカウントの両方をサポートする Microsoft のアプリケーションは、同じ URL でホストされる場合があります。  これは、仕事の目的でその URL にアクセスする必要があるユーザーは、個人的な使用のためにもアクセスできることを意味しますが、運用上のガイドラインでは、許可されない場合があります。
+[OneDrive](https://onedrive.live.com/) または [Microsoft Learn](/learn/) など、コンシューマー アカウントと組織アカウントの両方をサポートする Microsoft のアプリケーションは、同じ URL でホストされる場合があります。  これは、仕事の目的でその URL にアクセスする必要があるユーザーは、個人的な使用のためにもアクセスできることを意味しますが、運用上のガイドラインでは、許可されない場合があります。
 
 一部の組織では、個人用アカウントの認証をブロックするために `login.live.com` をブロックして、これを解決しようとします。  これには、いくつかの欠点があります。
 
 1. `login.live.com` をブロックすると、B2B ゲストシナリオでの個人アカウントの使用がブロックされ、訪問者やコラボレーションに侵入する場合があります。
-1. 展開するには、[オートパイロットで `login.live.com` を使用する必要があります](https://docs.microsoft.com/mem/autopilot/networking-requirements)。 `login.live.com` がブロックされると、Intune およびオートパイロットのシナリオは失敗するおそれがあります。
-1. デバイス ID を login.live.com サービスに依存する組織のテレメトリと Windows 更新プログラムは[機能しなくなります](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are)。
+1. 展開するには、[オートパイロットで `login.live.com` を使用する必要があります](/mem/autopilot/networking-requirements)。 `login.live.com` がブロックされると、Intune およびオートパイロットのシナリオは失敗するおそれがあります。
+1. デバイス ID を login.live.com サービスに依存する組織のテレメトリと Windows 更新プログラムは[機能しなくなります](/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are)。
 
 ### <a name="configuration-for-consumer-apps"></a>コンシューマー アプリの構成
 
@@ -216,7 +216,7 @@ Fiddler を構成したら、 **[File]** メニューに移動し、 **[Capture 
 `restrict-msa` ポリシーにより、コンシューマー アプリケーションの使用はブロックされますが、他の一部の種類のトラフィックおよび認証を通じて許可されます。
 
 1. デバイスのユーザーレス トラフィック。  これには、オートパイロット、Windows Update、組織のテレメトリのトラフィックが含まれます。
-1. コンシューマー アカウントの B2B 認証。 Microsoft アカウントを持ち、[テナントでのコラボレーションの招待を受けたユーザー](https://docs.microsoft.com/azure/active-directory/external-identities/redemption-experience#invitation-redemption-flow)は、リソース テナントにアクセスするために login.live.com に対して認証を行います。
+1. コンシューマー アカウントの B2B 認証。 Microsoft アカウントを持ち、[テナントでのコラボレーションの招待を受けたユーザー](../external-identities/redemption-experience.md#invitation-redemption-flow)は、リソース テナントにアクセスするために login.live.com に対して認証を行います。
     1. そのリソース テナントへのアクセスを許可または拒否するために、このアクセスは `Restrict-Access-To-Tenants` ヘッダーを使用して制御されます。
 1. 多くの Azure アプリおよび Office.com で使用される "パススルー" 認証。アプリでは、Azure AD を使用して、コンシューマー コンテキストでコンシューマー ユーザーにサインインします。
     1. 特別な "パススルー" テナントへのアクセスを許可または拒否するために、このアクセスも、`Restrict-Access-To-Tenants` ヘッダーを使用して制御されます (`f8cdef31-a31e-4b4a-93e4-5f571e91255a`)。  このテナントが、自分の許可されたドメインの `Restrict-Access-To-Tenants` リストに表示されない場合、コンシューマー アカウントは、これらのアプリへのサインインを Azure AD によってブロックされます。

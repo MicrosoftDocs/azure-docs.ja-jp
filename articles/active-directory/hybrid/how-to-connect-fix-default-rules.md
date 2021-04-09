@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0fc1bc3158e04c9b1f677af7ef2375ac3ed2ce7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91320049"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Azure AD Connect の既定の規則に加えた変更の修正
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) Connect では、同期のために既定の�
 > 必要なカスタマイズを実現するために既存の既定の規則を変更することはサポートされていません。 行った場合、将来のリリースでそれらの規則を最新バージョンに更新できなくなります。 必要なバグ修正や新機能が手に入りません。 このドキュメントでは、既存の既定の規則を変更せずに、同じ結果を実現する方法を説明します。 
 
 ## <a name="how-to-identify-modified-default-rules"></a>変更された既定の規則を識別する方法
-バージョン 1.3.7.0 以降の Azure AD Connect では、変更された既定の規則を簡単に識別できます。 **デスクトップのアプリ**に移動して、 **[Synchronization Rules Editor]\(同期規則エディター\)** を選択します。
+バージョン 1.3.7.0 以降の Azure AD Connect では、変更された既定の規則を簡単に識別できます。 **デスクトップのアプリ** に移動して、 **[Synchronization Rules Editor]\(同期規則エディター\)** を選択します。
 
 ![[Synchronization Rules Editor]\(同期規則エディター\) が強調表示されている Azure AD Connect](media/how-to-connect-fix-default-rules/default1.png)
 
@@ -71,7 +71,7 @@ Azure Active Directory (Azure AD) Connect では、同期のために既定の�
 
 
 #### <a name="add-an-inbound-sync-rule"></a>受信同期規則を追加する
-受信同期規則は、属性のソースがコネクタ スペースであり、ターゲットがメタバースであることを意味します。 たとえば、オンプレミスの Active Directory から Azure Active Directory への新しい属性フローを追加するには、新しい受信同期規則を作成します。 **同期規則エディター**を起動し、方向として **[Inbound]\(受信\)** を選択して、 **[Add new rule]\(新しい規則の追加\)** を選択します。 
+受信同期規則は、属性のソースがコネクタ スペースであり、ターゲットがメタバースであることを意味します。 たとえば、オンプレミスの Active Directory から Azure Active Directory への新しい属性フローを追加するには、新しい受信同期規則を作成します。 **同期規則エディター** を起動し、方向として **[Inbound]\(受信\)** を選択して、 **[Add new rule]\(新しい規則の追加\)** を選択します。 
 
  ![[Inbound]\(受信\) と [Add new rule]\(新しい規則の追加\) が選択されている同期規則エディターを示すスクリーンショット。](media/how-to-connect-fix-default-rules/default3a.png)
 
@@ -92,7 +92,7 @@ Azure Active Directory (Azure AD) Connect では、同期のために既定の�
 属性に対する適切な変換を追加します。 定数を割り当てて、定数値がターゲット属性にフローするようにできます。 ソース属性またはターゲット属性の間に直接マッピングを使用できます。 または、属性に対して式を使用することができます。 使用できるさまざまな[式関数](./reference-connect-sync-functions-reference.md)は、こちらに掲載されています。
 
 #### <a name="add-an-outbound-sync-rule"></a>送信同期規則を追加する
-属性をターゲット ディレクトリにリンクするには、送信規則を作成する必要があります。 これは、ソースがメタバースであり、ターゲットが接続されたシステムであることを意味します。 送信規則を作成するには、**同期規則エディター**を起動し、 **[Direction]\(方向\)** を **[Outbound]\(送信\)** に変更して、 **[Add new rule]\(新しい規則の追加\)** を選択します。 
+属性をターゲット ディレクトリにリンクするには、送信規則を作成する必要があります。 これは、ソースがメタバースであり、ターゲットが接続されたシステムであることを意味します。 送信規則を作成するには、**同期規則エディター** を起動し、 **[Direction]\(方向\)** を **[Outbound]\(送信\)** に変更して、 **[Add new rule]\(新しい規則の追加\)** を選択します。 
 
 ![同期規則エディター](media/how-to-connect-fix-default-rules/default3c.png)
 
@@ -137,7 +137,7 @@ Azure Active Directory (Azure AD) Connect では、同期のために既定の�
 > Azure AD Connect によって構成されているオブジェクトのスコープを拡大することはお勧めしません。 そのようにすると、Microsoft サポート チームがカスタマイズを理解するのが困難になります。 オブジェクトのスコープを拡大する必要がある場合は、既存の規則を編集し、それを複製して、元の規則を無効にします。 
 
 ### <a name="cloudfiltered-attribute"></a>cloudFiltered 属性
-Active Directory でこの属性を設定することはできません。 この属性の値を設定するには、新しい受信規則を追加します。 その後、**変換**と**式**を使用して、メタバースでこの属性を設定できます。 部署名が **HRD** (大文字と小文字の区別なし) で始まるすべてのユーザーを同期しない場合の例を次に示します。
+Active Directory でこの属性を設定することはできません。 この属性の値を設定するには、新しい受信規則を追加します。 その後、**変換** と **式** を使用して、メタバースでこの属性を設定できます。 部署名が **HRD** (大文字と小文字の区別なし) で始まるすべてのユーザーを同期しない場合の例を次に示します。
 
 `cloudFiltered <= IIF(Left(LCase([department]), 3) = "hrd", True, NULL)`
 
@@ -188,7 +188,7 @@ Azure AD Connect によって構成された既定の結合条件を使用しま
 
 ![windiff ツールの出力](media/how-to-connect-fix-default-rules/default17.png)
  
-規則を修正して既定の設定に戻すには、変更された規則を削除し、既定の規則を有効にします。 実現しようとしているカスタマイズが失われないように確認します。 準備ができたら、**完全同期**を実行します。
+規則を修正して既定の設定に戻すには、変更された規則を削除し、既定の規則を有効にします。 実現しようとしているカスタマイズが失われないように確認します。 準備ができたら、**完全同期** を実行します。
 
 ## <a name="next-steps"></a>次のステップ
 - [ハードウェアおよび前提条件](how-to-connect-install-prerequisites.md) 

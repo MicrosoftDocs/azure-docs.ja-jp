@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 03/10/2021
 ms.author: justinha
-ms.openlocfilehash: 76af477af8290634d2658c58574b8f96cff7b1fb
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 5473ef46751d64fdbbf1d52f39c66f49d707e615
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620343"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102631389"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services でのユーザー アカウント、パスワード、および管理の管理の概念
 
@@ -80,7 +80,7 @@ Azure AD DS では、使用可能なパフォーマンスと機能は SKU に基
 
 | SKU 名   | オブジェクトの最大数 | バックアップ頻度 | 送信フォレストの信頼の最大数 |
 |------------|----------------------|------------------|----|
-| Standard   | 無制限            | 7 日ごと     | 0  |
+| Standard   | 無制限            | 5 日ごと     | 0  |
 | Enterprise | 無制限            | 3 日ごと     | 5  |
 | Premium    | 無制限            | 毎日            | 10 |
 

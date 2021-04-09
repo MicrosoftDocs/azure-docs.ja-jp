@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 02/11/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 0802169898cad51e9a5d208e546a004f7ea7b3c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2af97206db00d683ab409710bc71a3b5048bf6ae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653334"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104658467"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Azure portal で IoT Central を管理する
 
@@ -22,6 +22,9 @@ ms.locfileid: "91653334"
 [Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上で IoT Central アプリケーションを作成および管理するのではなく、[Azure portal](https://portal.azure.com) を使用してアプリケーションを管理できます。
 
 ## <a name="create-iot-central-applications"></a>IoT Central アプリケーションを作成する
+
+[!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
+
 
 アプリケーションを作成するには、[Azure portal](https://ms.portal.azure.com) に移動し、 **[リソースの作成]** を選択します。
 
@@ -41,7 +44,7 @@ ms.locfileid: "91653334"
 
 ![IoT Central フォームを作成する](media/howto-manage-iot-central-from-portal/image6a.png)
 
-"**場所**" は、アプリケーションを作成する[地域](https://azure.microsoft.com/global-infrastructure/geographies/)です。 通常、最適なパフォーマンスを得るには、ご利用のデバイスに物理的に最も近い場所を選択する必要があります。 Azure IoT Central は、現在、**オーストラリア**、**アジア太平洋**、**ヨーロッパ**、**米国**、**英国**、および**日本**で使用できます。 いったん場所を選択すると、後でアプリケーションを別の場所に移動することはできません。
+"**場所**" は、アプリケーションを作成する [地域](https://azure.microsoft.com/global-infrastructure/geographies/)です。 通常、最適なパフォーマンスを得るには、ご利用のデバイスに物理的に最も近い場所を選択する必要があります。 Azure IoT Central は、現在、**オーストラリア**、**アジア太平洋**、**ヨーロッパ**、**米国**、**英国**、および **日本** で使用できます。 いったん場所を選択すると、後でアプリケーションを別の場所に移動することはできません。
 
 すべてのフィールドに値を入力したら、 **[作成]** を選択します。
 
@@ -50,7 +53,7 @@ ms.locfileid: "91653334"
 Azure IoT Central アプリケーションが既にある場合は、Azure portal でそれを削除したり、別のサブスクリプションまたはリソース グループに移動したりできます。
 
 > [!NOTE]
-> 無料価格プランで作成されたアプリケーションは、サブスクリプションに関連付けられていないため、Azure portal には表示されません。
+> "*無料*" プランを使用して作成されたアプリケーションは、Azure サブスクリプションを必要としないため、Azure portal の Azure サブスクリプション一覧にも表示されません。 無料のアプリは、IoT Central ポータルからのみ表示して管理することができます。
 
 開始するには、ポータルの **[すべてのリソース]** を選択します。 **[非表示の型の表示]** を選択し、 **[名前でフィルター処理]** にアプリケーションの名前の入力を開始して名前を見つけます。 次に、管理する IoT Central アプリケーションを選択します。
 

@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 397c74203aae2f52ce81844695266cc36fdf3042
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8809f8c168e7095f05587c7a572e08287637dc5a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370901"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034593"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのパスワードをリセットする
 
@@ -33,7 +33,7 @@ ms.locfileid: "92370901"
 
 ## <a name="to-reset-a-password"></a>パスワードをリセットするには
 
-1. [Azure portal](https://portal.azure.com/) にユーザー管理者またはパスワード管理者としてサインインします。 使用可能なロールについて詳しくは、[Azure Active Directory での管理者ロールの割り当て](../roles/permissions-reference.md#available-roles)に関するページを参照してください。
+1. [Azure portal](https://portal.azure.com/) にユーザー管理者またはパスワード管理者としてサインインします。 利用できるロールの詳細については、「[Azure AD の組み込みロール](../roles/permissions-reference.md)」を参照してください。
 
 2. **[Azure Active Directory]** 、 **[ユーザー]** の順に選択し、リセットを必要としているユーザーを検索して選択し、 **[パスワードのリセット]** を選択します。
 
@@ -50,6 +50,10 @@ ms.locfileid: "92370901"
 
     >[!Note]
     >一時パスワードに期限はありません。 次回ユーザーがサインインすると、一時パスワードが生成されてから経過している時間にかかわらず、パスワードは引き続き機能します。
+
+> [!IMPORTANT]
+> 管理者がユーザーのパスワードをリセットできず、Azure AD Connect サーバーのアプリケーション イベント ログにエラー コード hr=80231367 が表示される場合、Active Directory でユーザーの属性を確認してください。  属性 **AdminCount** が 1 に設定されている場合、管理者はユーザーのパスワードをリセットできません。  管理者がユーザーのパスワードをリセットするには、属性 **AdminCount** を 0 に設定する必要があります。
+
 
 ## <a name="next-steps"></a>次のステップ
 

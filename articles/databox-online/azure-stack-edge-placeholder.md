@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.author: alkohli
 ms.openlocfilehash: 94f32978fd292e27468ac04afc7f2a7396aa3457
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96468112"
 ---
 # <a name="what-is-placeholder-doc"></a>プレースホルダー ドキュメントとは

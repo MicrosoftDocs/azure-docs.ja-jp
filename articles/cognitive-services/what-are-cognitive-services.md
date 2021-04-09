@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 1a7e1cc2303438a904b95a378a14bd02ac88c179
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 85bcdb319431f1079cdbc8b94f0313f1dd6b67d6
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736636"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103602003"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure Cognitive Services とは
 
@@ -43,7 +43,6 @@ Azure Cognitive Services はクラウドベースのサービスです。REST AP
 |[Custom Vision Service](./custom-vision-service/overview.md "Custom Vision Service")|Custom Vision Service を使用すると、カスタム画像分類器を構築できます。|
 |[Face](./face/index.yml "Face")| Face サービスは、顔属性の検出と認識を有効にする、高度な顔アルゴリズムへのアクセスを提供します。|
 |[Form Recognizer](./form-recognizer/index.yml "Form Recognizer")|Form Recognizer では、キーと値のペアおよびテーブル データを識別して form ドキュメントから抽出し、その後、元のファイルにあるリレーションシップを含む構造化データを出力します。|
-|[Ink Recognizer](/previous-versions/azure/cognitive-services/Ink-Recognizer/ "Ink Recognizer") (廃止)|Ink Recognizer では、デジタル インク ストローク データ、シェイプ、および手書きのコンテンツを認識して分析し、認識されたすべてのエンティティを備えたドキュメント構造を出力します。|
 |[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer は、ビデオから洞察を抽出できます。|
 
 ## <a name="speech-apis"></a>Speech API

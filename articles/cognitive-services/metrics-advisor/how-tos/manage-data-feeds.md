@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: mbullwin
 ms.openlocfilehash: fb6eaf44967732d3a41ea92b0896540a40f694e3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96184724"
 ---
 # <a name="how-to-manage-your-data-feeds"></a>方法:データ フィードを管理する

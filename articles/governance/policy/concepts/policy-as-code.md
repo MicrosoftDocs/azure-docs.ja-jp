@@ -4,10 +4,10 @@ description: Azure Policy 定義をコードとしてデプロイし、リソー
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.openlocfilehash: 74d2097e4db4442e6e65f30541864fb554f7379d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359682"
 ---
 # <a name="design-azure-policy-as-code-workflows"></a>コードとしての Azure Policy ワークフローを設計する
@@ -104,7 +104,7 @@ ms.locfileid: "94359682"
 
 自動化によって、新たに作成または更新されたポリシーまたはイニシアチブの定義が取得され、Azure 内のオブジェクトが更新された後で、行った変更をテストします。 ポリシーまたはその一部であるイニシアチブは、運用環境から最も遠い環境のリソースに割り当てる必要があります。 通常、この環境は _開発_ 環境です。
 
-割り当てでは、 [enforcementMode](./assignment-structure.md#enforcement-mode) を _disabled_ にして、リソースの作成と更新がブロックされず、既存のリソースが、更新されたポリシー定義に準拠していることを引き続き監査されるようにする必要があります。 enforcementMode を使用する場合でも、割り当てスコープは、ポリシーの検証用のリソース グループまたはサブスクリプションのいずれかにすることをお勧めします。
+割り当てでは、[enforcementMode](./assignment-structure.md#enforcement-mode) を _disabled_ にして、リソースの作成と更新がブロックされず、既存のリソースが、更新されたポリシー定義に準拠していることを引き続き監査されるようにする必要があります。 enforcementMode を使用する場合でも、割り当てスコープは、ポリシーの検証用のリソース グループまたはサブスクリプションのいずれかにすることをお勧めします。
 
 > [!NOTE]
 > 強制モードは便利ですが、これはさまざまな条件下でポリシー定義を完全にテストすることの代替手段ではありません。 ポリシー定義は、`PUT` および `PATCH` REST API 呼び出し、準拠リソースおよび非準拠リソース、およびリソースに不足しているプロパティなどのエッジ ケースを使用してテストする必要があります。
@@ -129,7 +129,7 @@ ms.locfileid: "94359682"
 
 ### <a name="update-to-enforced-assignments"></a>強制割り当てを更新する
 
-すべての検証ゲートが完了したら、 **enforcementMode** を _enabled_ にするように割り当てを更新します。 この変更は、まずは運用環境から遠く離れた同じ環境内で行うことをお勧めします。 その環境が想定どおりに動作することが確認されたら、その次の環境を含むように変更のスコープを設定してゆき、ポリシーが運用リソースにデプロイされるまでこの操作を行う必要があります。
+すべての検証ゲートが完了したら、**enforcementMode** を _enabled_ にするように割り当てを更新します。 この変更は、まずは運用環境から遠く離れた同じ環境内で行うことをお勧めします。 その環境が想定どおりに動作することが確認されたら、その次の環境を含むように変更のスコープを設定してゆき、ポリシーが運用リソースにデプロイされるまでこの操作を行う必要があります。
 
 ## <a name="process-integrated-evaluations"></a>プロセス統合評価
 

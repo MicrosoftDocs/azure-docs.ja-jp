@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 6a1f4a02ebf42c0f181b595aae0a5fa0bcc9b41d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 21e0b800e06b7a5ad0351ff53d26a5e2cd2ba71c
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755907"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175390"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft ID プラットフォームの ID トークン
 
@@ -55,7 +55,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |-----|--------|-------------|
 |`typ` | 文字列 - 常に "JWT" | トークンが JWT トークンであることを示します。|
 |`alg` | String | トークンの署名に使用されたアルゴリズムを示します。 例:"RS256" |
-|`kid` | String | このトークンの署名に使用される公開キーの拇印。 v1.0 および v2.0 の `id_tokens` で生成されます。 |
+|`kid` | String | このトークンの検証に使用される公開キーの拇印。 v1.0 および v2.0 の `id_tokens` で生成されます。 |
 |`x5t` | String | `kid` と同様 (使用方法および値)。 ただし、これは、互換性のために v1.0 `id_tokens`でのみ生成される従来の要求です。 |
 
 ### <a name="payload-claims"></a>ペイロードのクレーム

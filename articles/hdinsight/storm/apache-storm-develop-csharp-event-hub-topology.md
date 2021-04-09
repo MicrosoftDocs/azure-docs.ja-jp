@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4393c6797f5a164a063b55f8994d7d37d278f3c4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ee483872535c58bde521cf0a751058fdc2fecd40
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929198"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871454"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>HDInsight 上の Apache Storm で Azure Event Hubs からのイベントを処理する (C#)
 
@@ -119,14 +119,14 @@ Event Hubs スパウトとボルト コンポーネントは [https://github.com
 
 Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用](../../event-hubs/event-hubs-create.md)に関するページの "イベント ハブの作成" のセクションにある情報を使用します。
 
-1. イベント ハブが作成されたら、Azure Portal の **EventHub** 設定を表示し、 **[共有アクセス ポリシー]** を選択します。 **[+ 追加]** を選択して、次のポリシーを作成します。
+1. イベント ハブが作成されたら、Azure Portal の **EventHub** 設定を表示し、**[共有アクセス ポリシー]** を選択します。 **[+ 追加]** を選択して、次のポリシーを作成します。
 
-   | Name | アクセス許可 |
+   | 名前 | アクセス許可 |
    | --- | --- |
-   | ライター |Send |
+   | ライター |送信 |
    | リーダー |リッスン |
 
-    ![[共有アクセス ポリシー] ウィンドウのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png" alt-text="[共有アクセス ポリシー] ウィンドウのスクリーンショット" border="true":::
 
 2. **reader** ポリシーと **writer** ポリシーを選択します。 両方のポリシーのプライマリ キー値をコピーして保存します (これらは後で使用します)。
 
@@ -168,19 +168,19 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 1. **ソリューション エクスプローラー** で **EventHubReader** プロジェクトを右クリックし、 **[HDInsight の Storm に送信]** を選択します。
 
-    ![ソリューション エクスプローラーのスクリーンショット ([HDInsight の Storm に送信] を強調表示)](./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png" alt-text="ソリューション エクスプローラーのスクリーンショット ([HDInsight の Storm に送信] を強調表示)" border="true":::
 
-2. **[トポロジの送信]** ダイアログ ボックスで該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、 **[Java ファイル パス]** 、 **[...]** の順に選択し、前の手順でダウンロードした JAR ファイルがあるディレクトリを選択します。 最後に、 **[送信]** をクリックします。
+2. **[トポロジの送信]** ダイアログ ボックスで該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、**[Java ファイル パス]**、**[...]** の順に選択し、前の手順でダウンロードした JAR ファイルがあるディレクトリを選択します。 最後に、 **[送信]** をクリックします。
 
-    ![[トポロジの送信] ダイアログ ボックスのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/submit-storm-topology.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/submit-storm-topology.png" alt-text="[トポロジの送信] ダイアログ ボックスのスクリーンショット" border="true":::
 
-3. トポロジが送信されると、 **[Storm トポロジ ビューアー]** が表示されます。 トポロジに関する情報を表示するには、左側のウィンドウにある **[EventHubReader]** トポロジを選択します。
+3. トポロジが送信されると、**[Storm トポロジ ビューアー]** が表示されます。 トポロジに関する情報を表示するには、左側のウィンドウにある **[EventHubReader]** トポロジを選択します。
 
-    ![Storm トポロジ ビューアーのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png" alt-text="Storm トポロジ ビューアーのスクリーンショット" border="true":::
 
 4. **ソリューション エクスプローラー** で **EventHubWriter** プロジェクトを右クリックし、 **[HDInsight の Storm に送信]** を選択します。
 
-5. **[トポロジの送信]** ダイアログ ボックスで該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、 **[Java ファイル パス]** 、 **[...]** の順に選択し、前の手順でダウンロードした JAR ファイルがあるディレクトリを選択します。 最後に、 **[送信]** をクリックします。
+5. **[トポロジの送信]** ダイアログ ボックスで該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、**[Java ファイル パス]**、**[...]** の順に選択し、前の手順でダウンロードした JAR ファイルがあるディレクトリを選択します。 最後に、 **[送信]** をクリックします。
 
 6. トポロジが送信されたら、 **[Storm トポロジ ビューアー]** でトポロジ一覧を最新情報に更新し、両方のトポロジがクラスターで実行中であることを確認します。
 
@@ -188,7 +188,7 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 8. ボルトのコンポーネントの概要を開くには、ダイアグラムの **[LogBolt]** コンポーネントをダブルクリックします。
 
-9. **[Executors]** セクションで、 **[ポート]** 列のリンクを 1 つ選択します。 これによって、コンポーネントで記録された情報が表示されます。 次のテキストのような情報が記録されています。
+9. **[Executors]** セクションで、**[ポート]** 列のリンクを 1 つ選択します。 これによって、コンポーネントで記録された情報が表示されます。 次のテキストのような情報が記録されています。
 
     ```output
     2017-03-02 14:51:29.255 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,255 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1830978598,"deviceId":"8566ccbc-034d-45db-883d-d8a31f34068e"}
@@ -198,9 +198,9 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 ## <a name="stop-the-topologies"></a>トポロジの停止
 
-トポロジを停止するには、 **[Storm トポロジ ビューアー]** で各トポロジを選択し、 **[強制終了]** をクリックします。
+トポロジを停止するには、**[Storm トポロジ ビューアー]** で各トポロジを選択し、**[強制終了]** をクリックします。
 
-![Storm トポロジ ビューアーのスクリーンショット ([強制終了] ボタンを強調表示)](./media/apache-storm-develop-csharp-event-hub-topology/kill-storm-topology1.png)
+:::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/kill-storm-topology1.png" alt-text="Storm トポロジ ビューアーのスクリーンショット ([強制終了] ボタンを強調表示)" border="true":::
 
 ## <a name="delete-your-cluster"></a>クラスターを削除する
 

@@ -11,12 +11,12 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/11/2021
 ms.topic: how-to
-ms.openlocfilehash: f874803e0ae361255754477ca68184255f35b91f
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 866500e9cd9e3fe6aac6a5bfded0dbb21ab137fc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98107380"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102614277"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>BACPAC ファイルへのエクスポート - Azure SQL Database および Azure SQL Managed Instance
 
@@ -103,6 +103,13 @@ while ($exportStatus.Status -eq "InProgress")
 }
 [Console]::WriteLine("")
 $exportStatus
+```
+## <a name="cancel-the-export-request"></a>エクスポート要求を取り消す
+
+[データベース操作のキャンセル API](https://docs.microsoft.com/rest/api/sql/databaseoperations/cancel) または PowerShell の [Stop-AzSqlDatabaseActivity コマンド](https://docs.microsoft.com/powershell/module/az.sql/Stop-AzSqlDatabaseActivity)を使用します。ここでは、PowerShell コマンドの例を示します。
+
+```cmd
+Stop-AzSqlDatabaseActivity -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -OperationId $Operation.OperationId
 ```
 
 ## <a name="next-steps"></a>次のステップ

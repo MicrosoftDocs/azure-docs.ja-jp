@@ -10,10 +10,10 @@ ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: f57cd3361d7888d9d7f747955257d96282274fd6
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97357348"
 ---
 # <a name="recover-a-deleted-storage-account"></a>削除されたストレージ アカウントを復旧します

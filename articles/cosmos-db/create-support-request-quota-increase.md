@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.openlocfilehash: e7ec71220b75647e789508c760e50957b3b497fa
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93090037"
 ---
 # <a name="how-to-request-quota-increase-for-azure-cosmos-db-resources"></a>Azure Cosmos DB リソースのクォータの増加を要求する方法
@@ -38,7 +38,7 @@ Azure Cosmos DB のリソースには[既定のクォータ/制限](concepts-lim
 
 1. このフォームで、以下の詳細を入力します。
 
-   * **説明** :既定値ではなぜ不十分であるか、実際のワークロードなど、要求の簡単な説明を入力します。 クォータの増加対象のリソースの種類に基づいて、以下の詳細を **[説明]** フィールドに入力することが必須となっています。
+   * **説明**:既定値ではなぜ不十分であるか、実際のワークロードなど、要求の簡単な説明を入力します。 クォータの増加対象のリソースの種類に基づいて、以下の詳細を **[説明]** フィールドに入力することが必須となっています。
 
      **[Regions requests] (リージョンの要求)** : 要求が、許可リストにリージョンを追加することに該当する場合、以下の値を入力する必要があります。
 
@@ -60,7 +60,7 @@ Azure Cosmos DB のリソースには[既定のクォータ/制限](concepts-lim
 
    * **[重大度]** :ビジネスへの影響に基づいて、選択可能ないずれかの重大度レベルを選択します。
 
-   * **[ご希望の連絡方法]** : **メール** または **電話** のいずれかによる連絡を選択できます。
+   * **[ご希望の連絡方法]** :**メール** または **電話** のいずれかによる連絡を選択できます。
 
 1. フォームに、連絡可能な時間帯、サポート言語、連絡先情報、メール、電話番号など、残りの詳細情報を入力します。
 

@@ -6,19 +6,25 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 05a2eaeb3b716988a8ae1eddcaa5a5a58cc3776a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 622a83c6d91bf2a30c2844e3279d6fd4b89d429f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675698"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102213795"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler の有効化または表示に関する問題のトラブルシューティング
 
-> [!CAUTION]
-> Azure App Service で ASP.NET Core アプリに対して Profiler を実行すると、バグが発生します。 既に修正プログラムがありますが、世界中にデプロイされるまでに数週間かかります。 [こちら](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)の手順に従って Application Insights SDK をアプリケーションに追加することで、このバグを回避できます。
-
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>一般的なトラブルシューティング
+
+### <a name="make-sure-youre-using-the-appropriate-profiler-endpoint"></a>必ず適切なプロファイラー エンドポイントを使用してください
+
+現在、エンドポイントの変更が必要なリージョンは [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) と [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide) のみです。
+
+|アプリ設定    | 米国政府のクラウド | China Cloud |   
+|---------------|---------------------|-------------|
+|ApplicationInsightsProfilerEndpoint         | `https://profiler.monitor.azure.us`    | `https://profiler.monitor.azure.cn` |
+|ApplicationInsightsEndpoint | `https://dc.applicationinsights.us` | `https://dc.applicationinsights.azure.cn` |
 
 ### <a name="profiles-are-uploaded-only-if-there-are-requests-to-your-application-while-profiler-is-running"></a>Profiler の実行中にアプリケーションへの要求がある場合しか、プロファイルがアップロードされない
 
@@ -67,6 +73,7 @@ Profiler では、トレース メッセージとカスタム イベントが Ap
 ポータルでサポート チケットを送信してください。 エラー メッセージの関連付け ID を必ず含めてください。
 
 ## <a name="troubleshoot-profiler-on-azure-app-service"></a>Azure App Service での Profiler のトラブルシューティング
+
 Profiler を正常に動作させるためには:
 * Web アプリ サービス プランは Basic レベル以上である必要があります。
 * Web アプリで Application Insights が有効になっている必要があります。
@@ -96,10 +103,14 @@ Profiler が動作していない場合は、ログをダウンロードし、Mi
 ### <a name="check-the-diagnostic-services-site-extension-status-page"></a>診断サービスのサイト拡張機能の状態ページを確認する
 Profiler がポータルの[[Application Insights] ペイン](profiler.md)から有効にされた場合は、診断サービスのサイト拡張機能によって有効にされています。
 
+> [!NOTE]
+> Application Insights Profiler のコードなしインストールは .NET Core サポート ポリシーに準拠します。
+> サポートされているランタイムの詳細については、[.Net Core サポート ポリシー](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)に関するページを参照してください。
+
 この拡張機能の状態ページを確認するには、次の URL に移動します: `https://{site-name}.scm.azurewebsites.net/DiagnosticServices`
 
 > [!NOTE]
-> 状態ページのドメイン リンクは、クラウドによって異なります。
+> 状態ページ リンクのドメインは、クラウドによって異なります。
 このドメインは App Service の Kudu 管理サイトと同じです。
 
 この状態ページには、Profiler と Snapshot Collector エージェントのインストール状態が表示されます。 予期しないエラーが発生した場合は、それが表示され、その修正方法が示されます。
@@ -108,7 +119,7 @@ App Service の Kudu 管理サイトを使用して、この状態ページの�
 1. Azure Portal で App Service アプリケーションを開きます。
 2. **[高度なツール]** を選択するか、「**Kudu**」を検索します。
 3. **[Go] \(移動)** を選択します。
-4. Kudu 管理サイトが表示されたら、URL に **次の `/DiagnosticServices` を追加して、Enter キーを押します**。
+4. Kudu 管理サイトが表示されたら、URL に **`/DiagnosticServices` を追加して、Enter キーを押します**。
  最終的には次のようになります: `https://<kudu-url>/DiagnosticServices`
 
 次のような状態ページが表示されます。![診断サービスの状態ページ](./media/diagnostic-services-site-extension/status-page.png)
@@ -140,7 +151,7 @@ Profiler が有効になっている Web Apps リソースに Web アプリを�
 
 *ディレクトリが空ではありません 'D:\\home\\site\\wwwroot\\App_Data\\jobs'*
 
-このエラーは、スクリプトまたは Azure Pipelines から Web 配置を実行した場合に発生します。 解決するには、次の追加デプロイ パラメーターを、Web 配置タスクに追加します。
+このエラーは、スクリプトまたは Azure Pipelines から Web 配置を実行した場合に発生します。 解決するには、次のデプロイ パラメーターを、Web 配置タスクに追加します。
 
 ```
 -skip:Directory='.*\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler.*' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs\\continuous$' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs$'  -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data$'

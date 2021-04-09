@@ -16,10 +16,10 @@ ms.date: 06/05/2015
 ms.author: wpickett
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: d36a2804519e5728dd068cc6c06ad005244e8c95
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95524098"
 ---
 # <a name="multitenant-applications-in-azure"></a>Azure 上のマルチテナント アプリケーション

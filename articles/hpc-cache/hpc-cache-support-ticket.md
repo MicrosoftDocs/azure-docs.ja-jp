@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: v-erkel
 ms.openlocfilehash: 95247985be955b71403a5c2c78962792c6451183
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87061436"
 ---
 # <a name="open-a-support-ticket-for-azure-hpc-cache"></a>Azure HPC Cache のサポート チケットを開く
@@ -23,7 +23,7 @@ ms.locfileid: "87061436"
 
 一覧からご利用のサブスクリプションを選択します。
 
-Azure HPC Cache サービスを見つけるには、 **[すべてのサービス]** ボタンをクリックし、HPC を検索します。
+Azure HPC Cache サービスを見つけるには、**[すべてのサービス]** ボタンをクリックし、HPC を検索します。
 
 ![サポート リクエストのスクリーンショット - [基本] タブ、一部に説明のとおり入力されています](media/hpc-cache-support-request.png)
 

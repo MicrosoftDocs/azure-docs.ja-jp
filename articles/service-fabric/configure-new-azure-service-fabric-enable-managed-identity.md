@@ -4,10 +4,10 @@ description: 新しい Azure Service Fabric クラスターでマネージド ID
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: ae4fec452a2342a68843d874ba955b594014c46d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96574668"
 ---
 # <a name="configure-managed-identity-support-for-a-new-service-fabric-cluster"></a>新しい Service Fabric クラスターのマネージド ID のサポートを構成する

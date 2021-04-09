@@ -10,18 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 83c5595dc64b46e1c30f3c36866e0efbbd8d3c7f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 27cc53c3eef1bb2a9962d2c21ae80db3c8b0383d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674123"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104585436"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>Azure Synapse Analytics での Synapse SQL を使用したテーブルの設計
 
 このドキュメントでは、専用 SQL プールとサーバーレス SQL プールによるテーブル設計の主要な概念について説明します。  
 
-[サーバーレス SQL プール](on-demand-workspace-overview.md)は、データ レイク内のデータに対するクエリ サービスです。 これには、データ インジェスト用のローカル ストレージはありません。 [専用 SQL プール](best-practices-sql-pool.md)は、Synapse SQL を使用するときにプロビジョニングされる分析リソースのコレクションを表します。 専用 SQL プールのサイズは、Data Warehouse ユニット (DWU) によって決まります。
+[サーバーレス SQL プール](on-demand-workspace-overview.md)は、データ レイク内のデータに対するクエリ サービスです。 これには、データ インジェスト用のローカル ストレージはありません。 [専用 SQL プール](best-practices-dedicated-sql-pool.md)は、Synapse SQL を使用するときにプロビジョニングされる分析リソースのコレクションを表します。 専用 SQL プールのサイズは、Data Warehouse ユニット (DWU) によって決まります。
 
 次の表は、専用 SQL プールとサーバーレス SQL プールに関連するトピックを示しています。
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: f9cb5370dcddf783e533664c4c141779402103f0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97028990"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>ASP.NET Web サイトに Application Insights を構成する

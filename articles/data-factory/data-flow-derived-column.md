@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/14/2020
 ms.openlocfilehash: 2e90a8779322cf8967ca9a194c6cc760f7c8b8f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90532028"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>マッピング データ フローの派生列変換
@@ -38,7 +38,7 @@ ms.locfileid: "90532028"
 
 ## <a name="building-schemas-using-the-expression-builder"></a>式ビルダーを使用してスキーマを作成する
 
-マッピング データ フローの[式ビルダー](concepts-data-flow-expression-builder.md)を使用すると、 **[Derived Columns]\(派生列\)** セクションで派生列を作成、編集、管理できます。 変換で作成または変更されたすべての列の一覧が表示されます。 列の名前をクリックして、編集している列またはパターンを対話形式で選択します。 列を追加するには、 **[新規作成]** を選択し、1 つの列またはパターンのどちらを追加するかを選択します。
+マッピング データ フローの [式ビルダー](concepts-data-flow-expression-builder.md)を使用すると、 **[Derived Columns]\(派生列\)** セクションで派生列を作成、編集、管理できます。 変換で作成または変更されたすべての列の一覧が表示されます。 列の名前をクリックして、編集している列またはパターンを対話形式で選択します。 列を追加するには、 **[新規作成]** を選択し、1 つの列またはパターンのどちらを追加するかを選択します。
 
 ![新しい列を作成する](media/data-flow/derive-add-column.png "新しい列を作成する")
 

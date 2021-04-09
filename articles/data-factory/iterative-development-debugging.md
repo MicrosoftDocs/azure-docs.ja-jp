@@ -1,17 +1,20 @@
 ---
 title: Azure Data Factory での反復開発とデバッグ
 description: ADF UX で Data Factory パイプラインの開発とデバッグを反復して実行する方法について説明します
-ms.date: 10/29/2020
+ms.date: 02/23/2021
 ms.topic: conceptual
 ms.service: data-factory
-author: dcstwh
-ms.author: weetok
-ms.openlocfilehash: 90f3f57fa527c8aaeb32a7dcf41f461ff5f0bf77
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+services: data-factory
+documentationcenter: ''
+ms.workload: data-services
+author: kromerm
+ms.author: makromer
+ms.openlocfilehash: ef47d311f5f096db962ea27792e7871dbf0ef81a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392529"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712965"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Azure Data Factory での反復開発とデバッグ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -73,6 +76,8 @@ Azure Data Factory を使用すると、パイプライン キャンバスの特
 **[監視]** エクスペリエンスで、ファクトリ全体のアクティブなデータ フロー デバッグ セッションを監視できます。
 
 ![データ フロー デバッグ セッションの表示](media/iterative-development-debugging/view-dataflow-debug-sessions.png)
+
+データ フロー デザイナーのデータ プレビューとデータ フローのパイプライン デバッグは、小規模なデータ サンプルを使った場合に最適に機能するよう設計されています。 ただし、パイプラインまたはデータ フローのロジックを大量のデータに対してテストする必要がある場合は、デバッグ セッションで使用される Azure Integration Runtime のサイズを増やしてください (コア数を増やし、汎用的な計算を最小限に減らしてください)。
  
 ### <a name="debugging-a-pipeline-with-a-data-flow-activity"></a>データ フロー アクティビティが含まれるパイプラインのデバッグ
 
@@ -83,7 +88,7 @@ Azure Data Factory を使用すると、パイプライン キャンバスの特
 アクティビティ ランタイムを使用すると、各データ フロー アクティビティの統合ランタイムで指定された設定を使用して新しいクラスターが作成されます。 これにより、各ジョブを分離することができるため、複雑なワークロードやパフォーマンス テストにはこれを使用する必要があります。 デバッグに使用されるクラスター リソースが、その期間内に追加のジョブ要求の処理のためにも使用できるように、Azure IR で TTL を制御することもできます。
 
 > [!NOTE]
-> データ フローが並列で実行されるパイプラインがある場合は、データ フロー アクティビティで選択した Integration Runtime を Data Factory で使用できるように、[アクティビティランタイムを使用する] を選択します。 これで、データ フローを複数のクラスターで実行できるようになり、データ フローの並列実行に対応できます。
+> データ フローが並列で実行されるパイプラインがある場合や、大きなデータセットを使ってテストしなければならないデータ フローがある場合は、データ フロー アクティビティで選択した Integration Runtime を Data Factory で使用できるように、[アクティビティランタイムを使用する] を選択します。 これで、データ フローを複数のクラスターで実行できるようになり、データ フローの並列実行に対応できます。
 
 ![データフローを使用したパイプラインの実行](media/iterative-development-debugging/iterative-development-dataflow.png)
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 96fbe676d4b929d2c1ee2efce0d10f3b5dc7c6ab
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 920249aa252469c3db2be284fc010d775d04c921
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103194"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104578279"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>ユーザーをサインインさせる Web アプリ:アプリの登録
 
@@ -94,6 +94,21 @@ ms.locfileid: "100103194"
    1. キーの有効期間として **[1 年]** を選択します。
    1. **[追加]** を選択します。
    1. キー値が表示されたら、後で使うためにコピーしておきます。 この値は二度と表示されず、他の何らかの手段で取得することもできません。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
+   1. アプリケーションの **名前** を入力します (例: `node-webapp`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
+   1. **[サポートされているアカウントの種類]** を **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]** に変更します。
+   1. **[リダイレクト URI (省略可能)]** セクションで、コンボボックスの **[Web]** を選択し、次のリダイレクト URI `http://localhost:3000/redirect` を入力します。
+   1. **[登録]** を選択して、アプリケーションを作成します。
+1. アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を見つけ、後で使用するために記録します。 これは、このプロジェクトの構成ファイルを構成するために必要になります。
+1. **[管理]** で、 **[証明書とシークレット]** を選択します。
+1. **[クライアント シークレット]** セクションで、 **[新しいクライアント シークレット]** を選択し、次に、
+   1. キーの説明を入力します。
+   1. キーの有効期間として **[1 年]** を選択します。
+   1. **[追加]** を選択します。
+   1. キー値が表示されたらコピーしておきます。 この情報は後で必要になります。
 
 # <a name="python"></a>[Python](#tab/python)
 

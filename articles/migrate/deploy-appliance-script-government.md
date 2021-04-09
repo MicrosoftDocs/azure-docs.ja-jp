@@ -5,47 +5,46 @@ author: vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
-ms.date: 04/16/2020
-ms.openlocfilehash: 6778c8e5e1e4fa83d34141fd13ba21d483ab76e9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/13/2021
+ms.openlocfilehash: c4ca8d8ac24ac174158957e44b5eabe4a89a5340
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041350"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104775206"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Azure Government でアプライアンスを設定する 
 
-VMware VM、Hyper-V VM、物理サーバー用の [Azure Migrate アプライアンス](./migrate-appliance-architecture.md)を Azure Government クラウドにデプロイするには、この記事に従ってください。 スクリプトを実行してアプライアンスを作成し、アプライアンスから Azure に接続可能であることを確認します。 パブリック クラウドでアプライアンスを設定する場合は、[こちらの記事](deploy-appliance-script.md)に従ってください。
+VMware 環境のサーバー、Hyper-V 上のサーバー、物理サーバー用の [Azure Migrate アプライアンス](./migrate-appliance-architecture.md)を Azure Government クラウドにデプロイするには、この記事に従ってください。 スクリプトを実行してアプライアンスを作成し、アプライアンスから Azure に接続可能であることを確認します。 パブリック クラウドでアプライアンスを設定する場合は、[こちらの記事](deploy-appliance-script.md)に従ってください。
 
 
 > [!NOTE]
-> テンプレートを使用して (VMware VM および Hyper-V VM 用の) アプライアンスをデプロイする方法は、Azure Government ではサポートされません。
+> テンプレートを使用して (VMware 環境および Hyper-V 環境のサーバー用の) アプライアンスをデプロイする方法は、Azure Government ではサポートされません。
 
 
 ## <a name="prerequisites"></a>前提条件
 
-このスクリプトは、既存の物理マシンまたは VM 上に Azure Migrate アプライアンスを設定します。
+このスクリプトは、既存の物理サーバーまたは仮想サーバー上に Azure Migrate アプライアンスを設定します。
 
-- アプライアンスとして機能するマシンは、32 GB のメモリ、8 個の vCPUs、80 GB のディスク　ストレージ、および外部仮想スイッチを搭載し、Windows Server 2016 を実行している必要があります。 ここには、静的または動的 IP アドレスと、インターネットへのアクセスが必要です。
-- アプライアンスを展開する前に、[VMware VM](migrate-appliance.md#appliance---vmware)、[Hyper-V VM](migrate-appliance.md#appliance---hyper-v)、[物理サーバー](migrate-appliance.md#appliance---physical)の詳細なアプライアンス要件をレビューしてください。
+- アプライアンスとして機能するサーバーは、32 GB のメモリ、8 個の vCPUs、80 GB のディスク ストレージ、および外部仮想スイッチを搭載し、Windows Server 2016 を実行している必要があります。 ここには、静的または動的 IP アドレスと、インターネットへのアクセスが必要です。
+- アプライアンスをデプロイする前に、[VMware 上のサーバー](migrate-appliance.md#appliance---vmware)、[Hyper-V 上のサーバー](migrate-appliance.md#appliance---hyper-v)、および[物理サーバー](migrate-appliance.md#appliance---physical)の詳細なアプライアンス要件を確認してください。
 - 既存の Azure Migrate アプライアンスでスクリプトを実行しないでください。
 
 ## <a name="set-up-the-appliance-for-vmware"></a>VMware 用のアプライアンスを設定する
 
-VMware 用のアプライアンスを設定するには、Azure portal から ZIP ファイルをダウンロードし、その内容を抽出します。 PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。 最初に、アプライアンスを設定して構成します。 次に、Azure Migrate プロジェクトにアプライアンスを登録します。
+VMware 用のアプライアンスを設定するには、Azure portal から ZIP ファイルをダウンロードし、その内容を抽出します。 PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。 最初に、アプライアンスを設定して構成します。 次に、プロジェクトにアプライアンスを登録します。
 
 ### <a name="download-the-script"></a>スクリプトのダウンロード
 
-1.  **[移行の目標]**  >  **[サーバー]**  >  **[Azure Migrate: Server Assessment]** で、 **[検出]** をクリックします。
-2.  **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[はい。VMware vSphere Hypervisor を使用します]** を選択します。
-3.  **[ダウンロード]** をクリックして、ZIP ファイルをダウンロードします。 
-
+1. **[移行の目標]**  >  **[Windows、Linux、SQL Server]**  >  **[Azure Migrate: Discovery and Assessment]** で、 **[検出]** をクリックします。
+2. **[サーバーの検出]**  >  **[お使いのサーバーは仮想化されていますか?]** で、 **[はい。VMware vSphere Hypervisor を使用します]** を選択します。
+3. **[ダウンロード]** をクリックして、ZIP ファイルをダウンロードします。
 
 ### <a name="verify-file-security"></a>ファイルのセキュリティを確認する
 
 圧縮されたファイルをデプロイする前に、それが安全であることを確認します。
 
-1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
+1. ファイルをダウンロードしたサーバーで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip SHA256```
@@ -71,10 +70,10 @@ VMware 用のアプライアンスを設定するには、Azure portal から ZI
 
 スクリプトを実行するには、次の手順を実行します。
 
-1. アプライアンスをホストするマシン上のフォルダーに ZIP ファイルを展開します。 既存の Azure Migrate アプライアンス マシンでスクリプトを実行しないよう注意してください。
-2. （昇格した）管理者権限を使用し、マシンで PowerShell を起動します。
+1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。 既存の Azure Migrate アプライアンスが存在するサーバー上でスクリプトを実行しないよう注意してください。
+2. (昇格された) 管理者特権を使用して、サーバーで PowerShell を起動します。
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルから抽出したコンテンツが格納されたフォルダーに変更します。
-4. 次のように、スクリプト **AzureMigrateInstaller.ps1** を実行します。 
+4. 次のように、スクリプト **AzureMigrateInstaller.ps1** を実行します。
     
     ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>.\AzureMigrateInstaller.ps1 ```
 1. スクリプトが正常に実行されると、アプライアンス Web アプリケーションが起動し、アプライアンスをセットアップできるようになります。 問題が発生した場合は、C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log で、スクリプトログを確認してください。
@@ -86,12 +85,12 @@ VMware 用のアプライアンスを設定するには、Azure portal から ZI
 
 ## <a name="set-up-the-appliance-for-hyper-v"></a>Hyper-V のアプライアンスを設定する
 
-Hyper-V のアプライアンスを設定するには、Azure portal から ZIP ファイルをダウンロードし、その内容を抽出します。 PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。 最初に、アプライアンスを設定して構成します。 次に、Azure Migrate プロジェクトにアプライアンスを登録します。
+Hyper-V のアプライアンスを設定するには、Azure portal から ZIP ファイルをダウンロードし、その内容を抽出します。 PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。 最初に、アプライアンスを設定して構成します。 次に、プロジェクトにアプライアンスを登録します。
 
 ### <a name="download-the-script"></a>スクリプトのダウンロード
 
-1.  **[移行の目標]**  >  **[サーバー]**  >  **[Azure Migrate: Server Assessment]** で、 **[検出]** をクリックします。
-2.  **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[はい。Hyper-V を使用します]** を選択します。
+1.  **[移行の目標]**  >  **[Windows、Linux、SQL Server]**  >  **[Azure Migrate: Discovery and Assessment]** で、 **[検出]** をクリックします。
+2.  **[サーバーの検出]**  >  **[お使いのサーバーは仮想化されていますか?]** で、 **[はい。Hyper-V を使用します]** を選択します。
 3.  **[ダウンロード]** をクリックして、ZIP ファイルをダウンロードします。 
 
 
@@ -99,7 +98,7 @@ Hyper-V のアプライアンスを設定するには、Azure portal から ZIP 
 
 圧縮されたファイルをデプロイする前に、それが安全であることを確認します。
 
-1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
+1. ファイルをダウンロードしたサーバーで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip SHA256```
@@ -126,8 +125,8 @@ Hyper-V のアプライアンスを設定するには、Azure portal から ZIP 
 
 スクリプトを実行するには、次の手順を実行します。
 
-1. アプライアンスをホストするマシン上のフォルダーに ZIP ファイルを展開します。 既存の Azure Migrate アプライアンス マシンでスクリプトを実行しないよう注意してください。
-2. （昇格した）管理者権限を使用し、マシンで PowerShell を起動します。
+1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。 既存の Azure Migrate アプライアンスを実行するサーバー上でスクリプトを実行しないよう注意してください。
+2. (昇格された) 管理者特権を使用して、サーバーで PowerShell を起動します。
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルから抽出したコンテンツが格納されたフォルダーに変更します。
 4. 次のように、スクリプト **AzureMigrateInstaller.ps1** を実行します。 
 
@@ -141,20 +140,19 @@ Hyper-V のアプライアンスを設定するには、Azure portal から ZIP 
 
 ## <a name="set-up-the-appliance-for-physical-servers"></a>物理サーバーのアプライアンスを設定する
 
-VMware 用のアプライアンスを設定するには、Azure portal から ZIP ファイルをダウンロードし、その内容を抽出します。 PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。 最初に、アプライアンスを設定して構成します。 次に、Azure Migrate プロジェクトにアプライアンスを登録します。
+VMware 用のアプライアンスを設定するには、Azure portal から ZIP ファイルをダウンロードし、その内容を抽出します。 PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。 最初に、アプライアンスを設定して構成します。 次に、プロジェクトにアプライアンスを登録します。
 
 ### <a name="download-the-script"></a>スクリプトのダウンロード
 
-1.  **[移行の目標]**  >  **[サーバー]**  >  **[Azure Migrate: Server Assessment]** で、 **[検出]** をクリックします。
-2.  **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[非仮想化/その他]** を選択します。
-3.  **[ダウンロード]** をクリックして、ZIP ファイルをダウンロードします。 
-
+1. **[移行の目標]**  >  **[Windows、Linux、SQL Server]**  >  **[Azure Migrate: Discovery and Assessment]** で、 **[検出]** をクリックします。
+2. **[サーバーの検出]**  >  **[お使いのサーバーは仮想化されていますか?]** で、 **[非仮想化/その他]** を選択します。
+3. **[ダウンロード]** をクリックして、ZIP ファイルをダウンロードします。
 
 ### <a name="verify-file-security"></a>ファイルのセキュリティを確認する
 
 圧縮されたファイルをデプロイする前に、それが安全であることを確認します。
 
-1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
+1. ファイルをダウンロードしたサーバーで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256```
@@ -180,10 +178,10 @@ VMware 用のアプライアンスを設定するには、Azure portal から ZI
 
 スクリプトを実行するには、次の手順を実行します。
 
-1. アプライアンスをホストするマシン上のフォルダーに ZIP ファイルを展開します。 既存の Azure Migrate アプライアンス マシンでスクリプトを実行しないよう注意してください。
-2. （昇格した）管理者権限を使用し、マシンで PowerShell を起動します。
+1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。 既存の Azure Migrate アプライアンスを実行するサーバー上でスクリプトを実行しないよう注意してください。
+2. (昇格された) 管理者特権を使用して、サーバーで PowerShell を起動します。
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルから抽出したコンテンツが格納されたフォルダーに変更します。
-4. 次のように、スクリプト **AzureMigrateInstaller.ps1** を実行します。 
+4. 次のように、スクリプト **AzureMigrateInstaller.ps1** を実行します。
 
     ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1 ```
 1. スクリプトが正常に実行されると、アプライアンス Web アプリケーションが起動し、アプライアンスをセットアップできるようになります。 問題が発生した場合は、C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log で、スクリプトログを確認してください。
@@ -194,7 +192,7 @@ VMware 用のアプライアンスを設定するには、Azure portal から ZI
 
 ## <a name="next-steps"></a>次のステップ
 
-アプライアンスをデプロイしたら、それを最初に構成してから、Azure Migrate プロジェクトに登録する必要があります。
+アプライアンスをデプロイしたら、それを最初に構成し、プロジェクトに登録する必要があります。
 
 - [VMware](how-to-set-up-appliance-vmware.md#4-configure-the-appliance) のアプライアンスを設定します。
 - [Hyper-V](how-to-set-up-appliance-hyper-v.md#configure-the-appliance) のアプライアンスを設定します。

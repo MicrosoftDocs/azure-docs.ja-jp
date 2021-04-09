@@ -1,19 +1,21 @@
 ---
 title: Azure Data Catalog でデータ ソースに注釈を付ける方法
-description: Azure Data Catalog でデータ資産に注釈を付ける方法を説明する操作方法に関する記事 (フレンドリ名、タグ、説明、エキスパートを含む)
+description: Azure Data Catalog でデータ資産に注釈を付ける方法を説明する操作方法に関する記事 (フレンドリ名、タグ、説明、エキスパートを含む)　
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 61a91ca8a51886c28beee77853d1ae67911e00e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89fa1b542c54fc962f8c12a2142884c677afb259
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081238"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674650"
 ---
 # <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でデータ ソースに注釈を付ける方法
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 ## <a name="introduction"></a>はじめに
 
@@ -34,7 +36,7 @@ Data Catalog では、さまざまなユーザーがエンタープライズ デ
 ## <a name="different-types-of-annotations"></a>さまざまな種類の注釈
 Data Catalog では、次の種類の注釈がサポートされています。
 
-| Annotation | メモ |
+| 注釈 | メモ |
 | --- | --- |
 | フレンドリ名 |データ資産レベルでフレンドリ名を指定すれば、データ資産をより理解しやすくすることができます。 フレンドリ名は、基になるオブジェクトの名前が暗号化または省略されているときに最も有用です。それ以外の場合、ユーザーにとって意味がありません。 |
 | 説明 |データ資産レベルおよび属性/列レベルに説明を入力することができます。 説明は、データ資産またはその用途に関するユーザーのパースペクティブを記述した自由形式の短いテキスト注釈です。 |
@@ -60,5 +62,5 @@ Data Catalog ポータルで複数のデータ資産を選択する場合、ユ�
 ## <a name="summary"></a>まとめ
 Data Catalog にデータ ソースを登録すると、構造メタデータと記述メタデータがデータ ソースから Catalog サービスにコピーされ、データの探索が可能になります。 データ ソースが登録されたら、ユーザーは Data Catalog ポータルでの探索や解釈が容易になるように、注釈を指定することができます。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 * [Azure Data Catalog の概要](data-catalog-get-started.md) 」チュートリアルをご覧ください。

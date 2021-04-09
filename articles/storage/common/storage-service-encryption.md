@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: da1acc6316d7af87ffe35b9560919c324373591a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b2471ccd2a412c7cbae9d4e59412ac055697e3d7
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484602"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180362"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>保存データに対する Azure Storage 暗号化
 
-Azure Storage では、データがクラウドに永続化されるときに自動的に暗号化されます。 Azure Storage 暗号化によってデータは保護され、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。
+Azure Storage では、サーバー側暗号化 (SSE) を使用して、データがクラウドに永続化されるときに自動的に暗号化します。 Azure Storage 暗号化によってデータは保護され、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。
 
 ## <a name="about-azure-storage-encryption"></a>Azure Storage 暗号化について
 
@@ -32,7 +32,7 @@ Azure Storage 暗号化は、Resource Manager と従来のストレージ アカ
 
 Azure Storage 暗号化の基になっている暗号化モジュールについて詳しくは、「[Cryptography API: Next Generation (暗号化 API: 次世代)](/windows/desktop/seccng/cng-portal)」を参照してください。
 
-Azure マネージド ディスクの暗号化とキー管理に関する詳細については、「Azure Managed Disks のサーバー側暗号化」のページを参照してください。Windows VM の場合は[こちら](../../virtual-machines/disk-encryption.md)を、Linux VM の場合は[こちら](../../virtual-machines/disk-encryption.md)をご覧ください。
+Azure マネージド ディスクの暗号化とキー管理に関する詳細については、「[Azure Managed Disks のサーバー側暗号化](../../virtual-machines/disk-encryption.md)」のページを参照してください。
 
 ## <a name="about-encryption-key-management"></a>暗号化キーの管理について
 

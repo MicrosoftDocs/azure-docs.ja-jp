@@ -8,14 +8,14 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 9f8e288f771b9d584a0fd3430115f5fa60f68e47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88961807"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>App Service 環境からバックエンド リソースに安全に接続する
-App Service 環境は常に Azure Resource Manager 仮想ネットワーク**または**クラシック デプロイ モデル[仮想ネットワーク][virtualnetwork]の**いずれか**に作成されるため、App Service 環境から他のバックエンド リソースへの送信接続は、仮想ネットワーク経由でのみ行うことができます。 2016 年 6 月の時点で、ASE はパブリック アドレス範囲または RFC1918 アドレス空間 (プライベートアドレス) のいずれかを使用する仮想ネットワークにもデプロイすることができます。  
+App Service 環境は常に Azure Resource Manager 仮想ネットワーク **または** クラシック デプロイ モデル [仮想ネットワーク][virtualnetwork]の **いずれか** に作成されるため、App Service 環境から他のバックエンド リソースへの送信接続は、仮想ネットワーク経由でのみ行うことができます。 2016 年 6 月の時点で、ASE はパブリック アドレス範囲または RFC1918 アドレス空間 (プライベートアドレス) のいずれかを使用する仮想ネットワークにもデプロイすることができます。  
 
 たとえば、ポート 1433 がロックされている仮想マシンのクラスターで実行されている SQL Server がある場合があります。  このエンドポイントは、同じ仮想ネットワークの他のリソースからのアクセスを許可する目的のみで使用されることがあります。  
 
@@ -23,14 +23,14 @@ App Service 環境は常に Azure Resource Manager 仮想ネットワーク**ま
 
 これらのすべてのシナリオで、App Service Environment で実行中のアプリが、さまざまなサーバーとリソースに安全に接続できます。 送信トラフィックが、App Service Environment で実行されているアプリから、同じ仮想ネットワーク内または同じ仮想ネットワークに接続されているプライベート エンドポイントへの場合、仮想ネットワーク経由でのみ送信されます。  プライベート エンドポイントへの送信トラフィックがパブリック インターネット経由で送信されることはありません。
 
-App Service Environment から仮想ネットワーク内のエンドポイントへの送信トラフィックには、問題が 1 つあります。 App Service Environment から、App Service Environment と**同じ**サブネットにある仮想マシンのエンドポイントに到達することはできません。 App Service Environment が、App Service Environment 専用として予約されているサブネットにデプロイされている場合、通常、これは問題にはなりません。
+App Service Environment から仮想ネットワーク内のエンドポイントへの送信トラフィックには、問題が 1 つあります。 App Service Environment から、App Service Environment と **同じ** サブネットにある仮想マシンのエンドポイントに到達することはできません。 App Service Environment が、App Service Environment 専用として予約されているサブネットにデプロイされている場合、通常、これは問題にはなりません。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="outbound-connectivity-and-dns-requirements"></a>発信接続と DNS の要件
 App Service Environment が正常に機能するためには、さまざまなエンドポイントへの発信アクセスが必要となります。 [ExpressRoute を使用した環境のネットワーク構成](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) の記事の「必要なネットワーク接続」というセクションに、App Service Environment で使用されるすべての外部エンドポイントが掲載されています。
 
-App Service 環境では、仮想ネットワーク用に構成された有効な DNS インフラストラクチャが必要です。  App Service Environment の作成後に DNS の構成が変更された場合、開発者は App Service Environment に、新しい DNS 構成の選択を強制できます。 ポータルの App Service Environment の管理ブレードの上部にある **[再起動]** アイコンを使用して、ローリングする環境の再起動をトリガーします。これにより、環境で新しい DNS 構成が選択されます。
+App Service Environment では、仮想ネットワーク用に構成された有効な DNS インフラストラクチャが必要です。  App Service Environment の作成後に DNS の構成が変更された場合、開発者は App Service Environment に、新しい DNS 構成の選択を強制できます。 ポータルの App Service Environment の管理ブレードの上部にある **[再起動]** アイコンを使用して、ローリングする環境の再起動をトリガーします。これにより、環境で新しい DNS 構成が選択されます。
 
 また、App Service Environment を作成する前に、VNet 上のカスタム DNS サーバーを設定しておくことをお勧めします。  App Service Environment の作成中に仮想ネットワークの DNS 構成が変更されると、App Service Environment の作成プロセスは失敗します。 VPN ゲートウェイのもう一方の端に、到達不能または使用できないカスタム DNS サーバーがある場合、App Service Environment の作成プロセスも失敗します。
 
@@ -81,9 +81,9 @@ Get-AzureNetworkSecurityGroup -Name "testNSGExample" | Set-AzureNetworkSecurityG
 ![既定のネットワーク セキュリティ グループ][DefaultNetworkSecurityRules]
 
 ## <a name="getting-started"></a>作業の開始
-App Service 環境の使用を開始するには、「 [App Service 環境の概要][IntroToAppServiceEnvironment]
+App Service Environment の使用を開始するには、「[App Service Environment の概要][IntroToAppServiceEnvironment]
 
-App Service 環境への着信トラフィックを制御する方法の詳細については、[App Service 環境への着信トラフィックの制御][ControlInboundASE]に関するページを参照してください。
+App Service Environment への着信トラフィックを制御する方法の詳細については、[App Service Environment への着信トラフィックの制御][ControlInboundASE]に関するページを参照してください。
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

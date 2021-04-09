@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 01/07/2021
 ms.topic: conceptual
 ms.openlocfilehash: a86d876a723c89eb8dcdf18c8318f2a9c740a229
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99051026"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Azure Automation アカウントを別のサブスクリプションに移動する

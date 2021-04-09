@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 335b564225bc2b7a4c2217c1d912f952239ecf24
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92127201"
 ---
-# <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>チュートリアル:Data Box Heavy を使用して Azure のマネージド ディスクとしてデータをインポートする
+# <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>チュートリアル: Data Box Heavy を使用して Azure のマネージド ディスクとしてデータをインポートする
 
 このチュートリアルでは、Azure Data Box Heavy を使用して、オンプレミスの VHD を Azure のマネージド ディスクに移行する方法について説明します。 オンプレミス VM の VHD は、ページ BLOB として Data Box Heavy にコピーされ、マネージド ディスクとして Azure にアップロードされます。 その後、これらのマネージド ディスクは Azure VM に接続できます。
 
@@ -165,7 +165,7 @@ SMB と NFS のどちらを経由して接続するかに応じて、次の方�
     
 ![ダッシュボードで空き領域と使用済み領域を確認する](media/data-box-deploy-copy-data-from-vhds/verify-used-space-dashboard.png)
 
-コピー ジョブが完了したら、**発送準備**に進むことができます。
+コピー ジョブが完了したら、**発送準備** に進むことができます。
 
 
 ## <a name="next-steps"></a>次のステップ

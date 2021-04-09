@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: mqtt
 ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81730103"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>複数デバイスでのジョブをスケジュール設定する
@@ -37,7 +37,7 @@ Azure IoT Hub では、[デバイス ツインのプロパティとタグ](iot-h
 
 ## <a name="jobs-to-execute-direct-methods"></a>ダイレクト メソッドを実行するジョブ
 
-次のスニペットでは、ジョブを使って一連のデバイス上で[ダイレクト メソッド](iot-hub-devguide-direct-methods.md)を実行するための HTTPS 1.1 要求の詳細を示します。
+次のスニペットでは、ジョブを使ってデバイス上で[ダイレクト メソッド](iot-hub-devguide-direct-methods.md)を実行するための HTTPS 1.1 要求の詳細を示します。
 
 ```
 PUT /jobs/v2/<jobId>?api-version=2018-06-30
@@ -172,7 +172,7 @@ Content-Type: application/json; charset=utf-8
 
 ContinuationToken は、応答から提供されます。
 
-それぞれのデバイスにおけるジョブの実行状態は、[デバイス ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語](iot-hub-devguide-query-language.md)を使用してクエリを実行することができます。
+それぞれのデバイスにおけるジョブの実行状態は、[デバイス ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語](iot-hub-devguide-query-language.md)を使用して照会することができます。
 
 ## <a name="jobs-properties"></a>ジョブのプロパティ
 
@@ -184,22 +184,22 @@ ContinuationToken は、応答から提供されます。
 | **startTime** |アプリケーションが提供するジョブの開始時刻 (ISO 8601)。 |
 | **endTime** |IoT Hub が提供するジョブの完了時の日付 (ISO 8601)。 ジョブが 'completed' 状態に達した後でのみ有効です。 |
 | **type** |ジョブの種類: |
-| | **scheduleUpdateTwin**:必要なプロパティまたはタグのセットを更新するために使用するジョブ。 |
-| | **scheduleDeviceMethod**:デバイス ツインのセットに対してデバイス メソッドを呼び出すために使用するジョブ。 |
+| | **scheduleUpdateTwin**: 必要なプロパティまたはタグを更新するために使用するジョブ。 |
+| | **scheduleDeviceMethod**: デバイス ツインでデバイス メソッドを呼び出すために使用するジョブ。 |
 | **status** |ジョブの現在の状態。 状態の可能値: |
-| | **pending**: スケジュールが設定され、ジョブ サービスによって選択されるのを待機しています。 |
+| | **pending**: スケジュールが設定され、ジョブ サービスによって選択されるために待機しています。 |
 | | **scheduled**: 将来の時刻のスケジュールが設定されています。 |
 | | **running**: 現在アクティブなジョブです。 |
-| | **canceled**: ジョブが取り消されました。 |
-| | **failed**: ジョブが失敗しました。 |
-| | **completed**: ジョブが完了しました。 |
+| | **canceled**: ジョブは取り消されました。 |
+| | **failed**: ジョブは失敗しました。 |
+| | **completed**: ジョブは完了しています。 |
 | **deviceJobStatistics** |ジョブの実行に関する統計情報。 |
 | | **deviceJobStatistics** プロパティ: |
 | | **deviceJobStatistics.deviceCount**: ジョブ内のデバイスの数。 |
 | | **deviceJobStatistics.failedCount**: ジョブが失敗したデバイスの数。 |
 | | **deviceJobStatistics.succeededCount**: ジョブが成功したデバイスの数。 |
 | | **deviceJobStatistics.runningCount**: 現在ジョブが実行中であるデバイスの数。 |
-| | **deviceJobStatistics.pendingCount**: 現在ジョブの実行が保留されているデバイスの数。 |
+| | **deviceJobStatistics.pendingCount**: ジョブの実行が保留中であるデバイスの数。 |
 
 ### <a name="additional-reference-material"></a>参考資料
 

@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:あるフォレストから別のフォレストにグループを移行する
+title: 'Azure AD Connect: あるフォレストから別のフォレストにグループを移行する'
 description: この記事では、Azure AD Connect で、あるフォレストから別のフォレストにグループを正常に移行するために必要な手順について説明します。
 services: active-directory
 author: billmath
@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ef693a48dc52854e4e1fd8359ef24f65ce236f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85358584"
 ---
 # <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>Azure AD Connect で、あるフォレストから別のフォレストにグループを移行する

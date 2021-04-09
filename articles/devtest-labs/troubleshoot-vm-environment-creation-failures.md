@@ -4,17 +4,17 @@ description: Azure DevTest Labs での仮想マシン (VM) および 環境の�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b7d3f3ad34d8a5bb48607816623c67121d21d78c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85476480"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Azure DevTest Labs での仮想マシン (VM) および 環境の作成の失敗に関するトラブルシューティング
 DevTest Labs は、マシン名が無効であるか、ラボ ポリシーに違反する可能性がある場合に警告を表示します。 問題が発生したことを伝えるラボ VM または環境のステータスの隣に、赤色の `X` が表示されることがあります。  この記事では、根本的な問題を検索し、できれば今後の問題を回避するために使用できるいくつかのこつを示します。
 
 ## <a name="portal-notifications"></a>Azure portal の通知
-Azure portal を使用している場合、最初に表示される場所が**通知パネル**です。  **ベルのアイコン**をクリックすることによりメイン コマンド バーで使用できる通知パネルには、ラボ VM または環境の作成が成功したかどうかが表示されます。  失敗した場合、作成エラーに関連付けられているエラー メッセージを参照してください。 多くの場合、問題解決に役立つ追加情報はこの詳細から得られます。 次の例では、仮想マシンの作成は、コアを使い果たしたために失敗しました。 詳細メッセージには、問題を修正し、コア クォータの引き上げを要求する方法が示されています。
+Azure portal を使用している場合、最初に表示される場所が **通知パネル** です。  **ベルのアイコン** をクリックすることによりメイン コマンド バーで使用できる通知パネルには、ラボ VM または環境の作成が成功したかどうかが表示されます。  失敗した場合、作成エラーに関連付けられているエラー メッセージを参照してください。 多くの場合、問題解決に役立つ追加情報はこの詳細から得られます。 次の例では、仮想マシンの作成は、コアを使い果たしたために失敗しました。 詳細メッセージには、問題を修正し、コア クォータの引き上げを要求する方法が示されています。
 
 ![Microsoft Azure portal 通知](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)
 
@@ -31,7 +31,7 @@ VM または環境の作成を試みてからしばらくの間、失敗を調�
 ## <a name="activity-logs-for-virtual-machines"></a>仮想マシンのアクティビティ ログ
 
 1. ラボのホーム ページで VM を選択して **[仮想マシン]** ページを起動します。
-2. **[仮想マシン]** ページの左メニューの **[監視]** セクションで、 **[アクティビティ ログ]** を選択して、VM に関連付けられているすべてのログを表示します。
+2. **[仮想マシン]** ページの左メニューの **[監視]** セクションで、**[アクティビティ ログ]** を選択して、VM に関連付けられているすべてのログを表示します。
 3. アクティビティ ログ項目では、失敗した操作を選択します。 通常、失敗した操作は、`Write Virtualmachines` と呼ばれます。
 4. 右ウィンドウで [JSON] タブに切り替えます。ログの JSON ビューで詳細を確認します。
 

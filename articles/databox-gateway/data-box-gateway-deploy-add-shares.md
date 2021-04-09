@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: alkohli
 ms.openlocfilehash: 0c0ef6157ebf70c896fbac5ff692246e4fad2c14
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98937204"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway を使用してデータを転送する

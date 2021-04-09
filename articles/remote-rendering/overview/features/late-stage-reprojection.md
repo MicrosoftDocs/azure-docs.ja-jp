@@ -6,10 +6,10 @@ ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
 ms.openlocfilehash: f0951415bba22a226dadb7f2a115cede451399bc
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "92205644"
 ---
 # <a name="late-stage-reprojection"></a>Late Stage Reprojection
@@ -46,7 +46,7 @@ Planar LSR は、指定された平面に近いオブジェクトを適切に再
 
 ### <a name="configure-planar-lsr-in-unity"></a>Unity で Planar LSR を構成する
 
-プレーン パラメーターは、`UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` を使用してすべてのフレームに設定する必要がある*フォーカス ポイント*と呼ばれるものから派生しています。 詳細については、[Unity のフォーカス ポイント API](/windows/mixed-reality/focus-point-in-unity) に関するページを参照してください。 フォーカス ポイントを設定しない場合は、フォールバックが自動で選択されます。 ただし多くの場合、自動フォールバックの結果は最適ではありません。
+プレーン パラメーターは、`UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` を使用してすべてのフレームに設定する必要がある *フォーカス ポイント* と呼ばれるものから派生しています。 詳細については、[Unity のフォーカス ポイント API](/windows/mixed-reality/focus-point-in-unity) に関するページを参照してください。 フォーカス ポイントを設定しない場合は、フォールバックが自動で選択されます。 ただし多くの場合、自動フォールバックの結果は最適ではありません。
 
 フォーカス ポイントは自分で計算できますが、Remote Rendering ホストによって計算されたものを基にした方が適切な場合もあります。 `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` を呼び出してこれを取得します。 フォーカス ポイントを表す座標フレームを指定するように求められます。 ほとんどの場合、`UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` の結果をここに入力するだけです。
 

@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 6cd1965ab51e7a7bbcc65836383000f0773b9b82
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 87dacd28223fd88866edb90266aa76fd3cdf86cf
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070942"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101095352"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -46,8 +46,8 @@ Azure 仮想ネットワークには、個々のネットワーク インター�
 
 - **ネットワーク セキュリティ グループ (NSG)** :Azure Virtual Network に接続されたリソースへのネットワーク トラフィックを許可または拒否する一連のセキュリティ規則が含まれています。 NSG はサブネットに関連付けることができるほか、クラシック モデルについては個々の VM に、Resource Manager モデルについては VM にアタッチされた個々のネットワーク インターフェイス (NIC) に関連付けることができます。 詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。
 - **ネットワーク セキュリティ グループ (NSG) フロー ログ**:ネットワーク セキュリティ グループを使用して、イングレス/エグレス IP トラフィックの情報を確認できます。 NSG フロー ログは JSON 形式で記述され、規則ごとの送信フローと受信フロー、フローが適用される NIC、フローに関する 5 組の情報 (送信元/宛先 IP アドレス、送信元/宛先ポート、プロトコル)、トラフィックが許可されているか拒否されているかが示されます。 NSG フロー ログの詳細については、[NSG フロー ログ](network-watcher-nsg-flow-logging-overview.md)に関する記事をご覧ください。
-- **Log Analytics**:監視データを収集し、そのデータを中央リポジトリに格納する Azure サービス。 このデータには、Azure API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。 Network Performance Monitor やトラフィック分析などの監視アプリケーションは、Azure Monitor ログを基盤として構築されています。 詳細については、[Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
-- **Log Analytics ワークスペース**:Azure アカウントに関するデータが格納される、Azure Monitor ログのインスタンス。 Log Analytics ワークスペースの詳細については、[Log Analytics ワークスペースの作成](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
+- **Log Analytics**:監視データを収集し、そのデータを中央リポジトリに格納する Azure サービス。 このデータには、Azure API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。 Network Performance Monitor やトラフィック分析などの監視アプリケーションは、Azure Monitor ログを基盤として構築されています。 詳細については、[Azure Monitor ログ](../azure-monitor/logs/log-query-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
+- **Log Analytics ワークスペース**:Azure アカウントに関するデータが格納される、Azure Monitor ログのインスタンス。 Log Analytics ワークスペースの詳細については、[Log Analytics ワークスペースの作成](../azure-monitor/logs/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
 - **Network Watcher**:ネットワーク シナリオ レベルで Azure の状態を監視および診断できるリージョン サービス。 Network Watcher で NSG フロー ログを有効または無効にすることができます。 詳細については、「[Network Watcher](network-watcher-monitoring-overview.md)」をご覧ください。
 
 ## <a name="how-traffic-analytics-works"></a>トラフィック分析のしくみ
@@ -71,33 +71,34 @@ NSG のトラフィック分析は、次のサポートされているどのリ�
       米国中部  
       中国東部 2  
       中国北部 2  
+      東アジア       
    :::column-end:::
    :::column span="":::
-      東アジア  
       米国東部  
       米国東部 2  
       米国東部 2 EUAP  
       フランス中部  
-      東日本  
+      ドイツ中西部 東日本  
       西日本  
       韓国中部  
       韓国南部  
       米国中北部  
+      北ヨーロッパ    
    :::column-end:::
    :::column span="":::
-      北ヨーロッパ  
       南アフリカ北部  
       米国中南部  
       インド南部  
       東南アジア  
       スイス北部  
       スイス西部  
+      アラブ首長国連邦北部  
       英国南部  
-      英国西部  
+      英国西部   
       USGov アリゾナ  
+      USGov テキサス
    :::column-end:::
    :::column span="":::
-      USGov テキサス  
       USGov バージニア州  
       USNat 東部  
       USNat 西部  
@@ -143,14 +144,15 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
       スイス北部  
       スイス西部  
       アラブ首長国連邦中部  
+      アラブ首長国連邦北部  
       英国南部  
-      英国西部  
+      英国西部   
       USGov アリゾナ  
       USGov バージニア州  
-      USNat 東部  
-      USNat 西部  
+      USNat 東部   
    :::column-end:::
    :::column span="":::
+      USNat 西部   
       USSec 東部  
       USSec 西部  
       米国中西部  
@@ -232,7 +234,7 @@ New-AzStorageAccount `
 4. **[リテンション期間]** を、データを保存する日数に設定します。 データを無期限に保存する場合は、値を *0* に設定します。 ストレージ アカウントに対して Azure Storage の料金が発生します。 
 5. *[Traffic Analytics Status]\(Traffic Analytics の状態\)* で、 **[オン]** を選択します。
 6. 処理間隔を選択します。 選択内容に基づいて、フロー ログがストレージ アカウントから収集され、Traffic Analytics によって処理されます。 処理間隔は、1 時間ごとまたは 10 分ごとを選択できます。 
-7. 既存の Log Analytics (OMS) ワークスペースを選択するか、 **[新しいワークスペースの作成]** を選択して新規作成します。 Log Analytics ワークスペースは、分析の生成に使用される集計済みのインデックス付きデータを格納するために、Traffic Analytics で使用されます。 既存のワークスペースを選択する場合は、[サポートされているリージョン](#supported-regions-log-analytics-workspaces)のいずれかに存在し、新しいクエリ言語にアップグレードされている必要があります。 既存のワークスペースをアップグレードするのが望ましくない場合や、サポートされているリージョンにワークスペースがない場合は、新しいワークスペースを作成します。 クエリ言語の詳細については、「[新しいログ検索への Azure Log Analytics のアップグレード](../azure-monitor/log-query/log-query-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」をご覧ください。
+7. 既存の Log Analytics (OMS) ワークスペースを選択するか、 **[新しいワークスペースの作成]** を選択して新規作成します。 Log Analytics ワークスペースは、分析の生成に使用される集計済みのインデックス付きデータを格納するために、Traffic Analytics で使用されます。 既存のワークスペースを選択する場合は、[サポートされているリージョン](#supported-regions-log-analytics-workspaces)のいずれかに存在し、新しいクエリ言語にアップグレードされている必要があります。 既存のワークスペースをアップグレードするのが望ましくない場合や、サポートされているリージョンにワークスペースがない場合は、新しいワークスペースを作成します。 クエリ言語の詳細については、「[新しいログ検索への Azure Log Analytics のアップグレード](../azure-monitor/logs/log-query-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」をご覧ください。
 
 > [!NOTE]
 >トラフィック分析ソリューションをホストするログ分析ワークスペースと NSG は、同じリージョンに存在する必要はありません。 たとえば、西ヨーロッパ リージョンのワークスペースにトラフィック分析があり、米国東部と米国西部に NSG があっても構いません。 同じワークスペースに複数の NSG を構成できます。

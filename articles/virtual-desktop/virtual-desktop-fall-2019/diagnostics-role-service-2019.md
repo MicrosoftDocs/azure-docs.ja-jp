@@ -7,10 +7,10 @@ ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7e652f04b42b132e7c1307503b1764dda7b2036b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88009343"
 ---
 # <a name="identify-and-diagnose-issues-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) での問題の特定と診断
@@ -37,7 +37,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Windows Virtual Desktop 診断では、1 つの PowerShell コマンドレットだけが使用されますが、問題を絞り込んで特定するために多くの省略可能なパラメーターが含まれています。 以下のセクションでは、問題を診断するために実行できるコマンドレットの一覧を示します。 ほとんどのフィルターは一緒に適用できます。 `<tenantName>` などの角かっこで囲まれた値は、自分の状況に適用される値で置き換える必要があります。
 
 >[!IMPORTANT]
->診断機能は、シングルユーザーのトラブルシューティング用です。 PowerShell を使用するすべてのクエリには、 *-UserName* または *-ActivityID*パラメーターのいずれかが含まれている必要があります。 監視機能については、Log Analytics を使用します。 診断データをワークスペースに送信する方法の詳細については、「[診断機能に Log Analytics を使用する](diagnostics-log-analytics-2019.md)」を参照してください。
+>診断機能は、シングルユーザーのトラブルシューティング用です。 PowerShell を使用するすべてのクエリには、 *-UserName* または *-ActivityID* パラメーターのいずれかが含まれている必要があります。 監視機能については、Log Analytics を使用します。 診断データをワークスペースに送信する方法の詳細については、「[診断機能に Log Analytics を使用する](diagnostics-log-analytics-2019.md)」を参照してください。
 
 ### <a name="filter-diagnostic-activities-by-user"></a>ユーザーによって診断アクティビティをフィルター処理する
 

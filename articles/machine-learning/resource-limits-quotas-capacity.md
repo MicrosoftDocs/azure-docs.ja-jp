@@ -11,10 +11,10 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 12/21/2020
 ms.openlocfilehash: b675e72df4f128d0ce096b3ac398fab63c20557e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97930805"
 ---
 # <a name="service-limits-in-azure-machine-learning"></a>Azure Machine Learning のサービスの制限値

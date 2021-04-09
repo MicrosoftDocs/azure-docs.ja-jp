@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 00b6f116ef6f4c6c21578ef05595ed1903777948
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97673758"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asset-bank"></a>チュートリアル: Azure Active Directory と Asset Bank の統合
@@ -62,7 +62,7 @@ Azure AD への Asset Bank の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Asset Bank**」と入力し、結果パネルで **[Asset Bank]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Asset Bank**」と入力し、結果パネルで **[Asset Bank]** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果一覧の Asset Bank](common/search-new-app.png)
 
@@ -86,7 +86,7 @@ Asset Bank で Azure AD のシングル サインオンを構成してテスト�
 
 Asset Bank で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Asset Bank** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Asset Bank** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -156,7 +156,7 @@ Asset Bank で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Asset Bank へのアクセス権を付与することによって、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Asset Bank]** の順に選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Asset Bank]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

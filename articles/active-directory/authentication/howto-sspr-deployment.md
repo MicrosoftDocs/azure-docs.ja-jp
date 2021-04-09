@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 765bfe0f805ae4219110d689e8f7f8fd54a26cf3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 55fc4c0b5f3e2bbf57c972ad4a7fd2c9bdd3810e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173938"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579197"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory のセルフサービス パスワード リセットのデプロイを計画する
 
@@ -25,7 +25,7 @@ ms.locfileid: "96173938"
 >
 > **自分がエンド ユーザーであり、自分のアカウントに戻す必要がある場合は、[https://aka.ms/sspr](https://aka.ms/sspr)** にアクセスしてください。
 
-Azure Active Directory の機能である[セルフサービス パスワード リセット (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) を使用すると、ユーザーは自分のパスワードをリセットすることができ、IT スタッフにヘルプを依頼する必要はありません。 ユーザーは場所や時間に関係なく、自分ですぐにブロックを解除して作業を続けることができます。 従業員が自分自身のブロックを解除できるようにすることで、組織としては、パスワード関連のほとんどの一般的な問題に対する非生産的な時間と高いサポート コストを削減できます。
+Azure Active Directory の機能である[セルフサービス パスワード リセット (SSPR)](https://www.youtube.com/watch?v=pS3XwfxJrMo) を使用すると、ユーザーは自分のパスワードをリセットすることができ、IT スタッフにヘルプを依頼する必要はありません。 ユーザーは場所や時間に関係なく、自分ですぐにブロックを解除して作業を続けることができます。 従業員が自分自身のブロックを解除できるようにすることで、組織としては、パスワード関連のほとんどの一般的な問題に対する非生産的な時間と高いサポート コストを削減できます。
 
 SSPR の主な機能は次のとおりです。
 
@@ -78,6 +78,7 @@ Azure Active Directory はユーザーごとのライセンスであり、機能
 | ビデオ| [IT のスケーラビリティ向上によるユーザーの支援](https://youtu.be/g9RpRnylxS8) 
 | |[セルフサービス パスワード リセットとは](https://youtu.be/hc97Yx5PJiM)|
 | |[セルフサービス パスワード リセットのデプロイ](https://www.youtube.com/watch?v=Pa0eyqjEjvQ&index=18&list=PLLasX02E8BPBm1xNMRdvP6GtA6otQUqp0)|
+| |[Azure AD で SSPR を有効にして構成する方法](https://www.youtube.com/watch?v=rA8TvhNcCvQ)|
 | |[Azure AD でユーザーにセルフサービスのパスワード リセットを構成する方法](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/) |
 | |[Azure Active Directory のセキュリティ情報を登録する [ユーザーを準備する] 方法](https://youtu.be/gXuh0XS18wA) |
 | オンライン コース|[Microsoft Azure Active Directory での ID の管理](https://www.pluralsight.com/courses/microsoft-azure-active-directory-managing-identities) SSPR を使用して、ユーザーに最新の保護されたエクスペリエンスを提供します。 特に、「[Azure Active Directory のユーザーとグループの管理](https://app.pluralsight.com/library/courses/microsoft-azure-active-directory-managing-identities/table-of-contents)」モジュールを参照してください。 |
@@ -321,7 +322,7 @@ Azure portal で構築済みのレポートを使用して、SSPR のパフォ�
 
 ### <a name="authentication-methods--usage-and-insights"></a>認証方法 - 使用状況と分析情報
 
-[使用状況と分析情報](./howto-authentication-methods-usage-insights.md)を使うと、Azure AD MFA や SSPR などの機能の認証方法が組織内でどのように機能しているかについて理解を深めることができます。 このレポート機能は、組織がどの方法で登録を行い、それらをどのように使用しているかを把握するための手段となるものです。
+[使用状況と分析情報](./howto-authentication-methods-activity.md)を使うと、Azure AD MFA や SSPR などの機能の認証方法が組織内でどのように機能しているかについて理解を深めることができます。 このレポート機能は、組織がどの方法で登録を行い、それらをどのように使用しているかを把握するための手段となるものです。
 
 ### <a name="troubleshoot"></a>トラブルシューティング
 

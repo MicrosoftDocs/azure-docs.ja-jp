@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b356d5dff453b598eeb773af1a56fc50193e9e16
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: c7c78dcbc34deca769739f82964df41ebfc596ea
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746662"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176792"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理で外部ユーザーのアクセスを管理する
 
@@ -84,7 +84,7 @@ Azure AD のエンタイトルメント管理では、[Azure AD 企業間 (B2B)]
 - ゲストが他のゲストをディレクトリに招待できるようにすることは、エンタイトルメント管理の外部でゲストの招待が発生する可能性があることを意味します。 **[ゲストは招待ができる]** を **[いいえ]** に設定して、適切に管理された招待のみを許可することをお勧めします。
 - B2B 許可リストを使用している場合は、エンタイトルメント管理を使用してパートナーにするドメインがリストに追加されていることを確認する必要があります。 または、B2B 拒否リストを使用している場合は、パートナーにするドメインがリストに追加されていないことを確認する必要があります。
 - **すべてのユーザー** (すべての接続されている組織と新しい外部ユーザー) にエンタイトルメント管理ポリシーを作成し、ユーザーがディレクトリ内の接続されている組織に属していない場合は、パッケージを要求するときに、接続されている組織が自動的に作成されます。 お使いの B2B の許可または拒否リストの設定が優先されます。 したがって、このポリシーに含めるドメインを、許可リストを使用している場合は許可リストに含め、拒否リストを使用している場合は拒否リストから除外するようにしてください。
-- **すべてのユーザー** (すべての接続されている組織とすべての新しい外部ユーザーを含む) のエンタイトルメント管理ポリシーを作成する場合は、まず、ディレクトリに対してメールのワンタイム パスコード認証を有効にする必要があります。 詳細については、「[電子メール ワンタイム パスコード認証 (プレビュー)](../external-identities/one-time-passcode.md)」を参照してください。
+- **すべてのユーザー** (すべての接続されている組織とすべての新しい外部ユーザーを含む) のエンタイトルメント管理ポリシーを作成する場合は、まず、ディレクトリに対してメールのワンタイム パスコード認証を有効にする必要があります。 詳細については、「[電子メール ワンタイム パスコード認証](../external-identities/one-time-passcode.md)」を参照してください。
 - Azure AD B2B の外部コラボレーション設定の詳細については、「[B2B 外部コラボレーションを有効にしてゲストを招待できるユーザーを管理する](../external-identities/delegate-invitations.md)」を参照してください。
 
     ![Azure AD の外部コラボレーション設定](./media/entitlement-management-external-users/collaboration-settings.png)

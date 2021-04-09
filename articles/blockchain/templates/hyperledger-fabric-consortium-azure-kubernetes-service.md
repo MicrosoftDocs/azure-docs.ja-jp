@@ -1,15 +1,16 @@
 ---
 title: Azure Kubernetes Service (AKS) に Hyperledger Fabric コンソーシアムをデプロイする
 description: Azure Kubernetes Service に Hyperledger Fabric コンソーシアム ネットワークをデプロイして構成する方法
-ms.date: 01/08/2021
+ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: c0e7f3e7ab83f64cebd990de57d48c97891edb7f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 42d16adbc5e6396c8d5d38176ac7681c712f4555
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897260"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101105"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Azure Kubernetes Service (AKS) に Hyperledger Fabric コンソーシアムをデプロイする
 
@@ -31,34 +32,6 @@ Hyperledger Fabric on Azure Kubernetes Service (AKS) テンプレートを使用
 ソリューション テンプレート | IaaS | ソリューション テンプレートは、完全に構成されたブロックチェーン ネットワーク トポロジのプロビジョニングに使用できる Azure Resource Manager テンプレートです。 テンプレートによって、ブロックチェーン ネットワークの種類に対応する Microsoft Azure コンピューティング、ネットワーク、およびストレージ サービスがデプロイされて構成されます。 ソリューション テンプレートは、サービス レベル アグリーメントなしで提供されます。 サポートが必要な場合には、[Microsoft Q&A ページ](/answers/topics/azure-blockchain-workbench.html)をご利用ください。
 [Azure Blockchain Service](../service/overview.md) | PaaS | Azure Blockchain Service (プレビュー) により、コンソーシアム ブロックチェーン ネットワークの構成、管理、ガバナンスが簡素化されます。 Azure Blockchain Service は、PaaS、コンソーシアム管理、またはコントラクトとトランザクションのプライバシーを必要とするソリューションに使用します。
 [Azure Blockchain Workbench](../workbench/overview.md) | IaaS および PaaS | Azure Blockchain Workbench プレビューは、ブロックチェーン アプリケーションを作成してデプロイし、ビジネス プロセスやデータを他の組織と効果的に共有するのに役立つ、Azure のサービスと機能のコレクションです。 ブロックチェーン ソリューションまたはブロックチェーン アプリケーションの概念実証のプロトタイプを作成するには、Azure Blockchain Workbench を使用します。 Azure Blockchain Workbench は、サービス レベル アグリーメントなしで提供されます。 サポートが必要な場合には、[Microsoft Q&A ページ](/answers/topics/azure-blockchain-workbench.html)をご利用ください。
-
-## <a name="hyperledger-fabric-consortium-architecture"></a>Hyperledger Fabric コンソーシアムのアーキテクチャ
-
-Azure で Hyperledger Fabric ネットワークを構築するには、ピア ノードにオーダリング サービスと組織をデプロイする必要があります。 Hyperledger Fabric on Azure Kubernetes Service ソリューション テンプレートを使用すると、オーダー ノードまたはピア ノードを作成できます。 作成するノードごとに、テンプレートをデプロイする必要があります。
-
-テンプレートのデプロイの一部として、次のような基本コンポーネントが作成されます。
-
-- **Orderer ノード**:台帳でトランザクションの順序付けを行うノード。 他のノードと順序付けされたノードにより、Hyperledger Fabric ネットワークの Ordering Service が形成されます。
-
-- **ピア ノード**:ネットワークの基本要素である台帳とスマート コントラクトを主にホストするノード。
-
-- **Fabric CA**: Hyperledger Fabric 用の証明機関 (CA)。 Fabric CA を使用して、証明機関をホストするサーバー プロセスを初期化し、起動することができます。 ID と証明書を管理することができます。 テンプレートの一部としてデプロイされる各 AKS クラスターには、既定で Fabric CA ポッドが配置されます。
-
-- **CouchDB または LevelDB**: ピア ノードのワールド ステート データベース。 LevelDB は、ピア ノードに埋め込まれている既定のステート データベースです。 そこには、チェーンコード データが単純なキー値ペアとして格納され、キー、キー範囲、複合キーのクエリのみがサポートされます。 CouchDB はオプションの代替状態データベースであり、チェーンコード データの値が JSON としてモデル化されている場合、リッチなクエリがサポートされます。
-
-デプロイ時にテンプレートによって、サブスクリプション内にさまざまな Azure リソースがスピンアップされます。 次の Azure リソースがデプロイされます。
-
-- **AKS クラスター**: ユーザーによって提供される入力パラメーターに従って構成される Azure Kubernetes Service クラスター。 AKS クラスターには、Hyperledger Fabric ネットワーク コンポーネントを実行するためのさまざまなポッドが構成されます。 次のポッドが作成されます。
-
-  - **ファブリック ツール**: Hyperledger Fabric コンポーネントの構成を行うツール。
-  - **Orderer/ピア ポッド**: Hyperledger Fabric ネットワークのノード。
-  - **Proxy**:クライアント アプリケーションが AKS クラスターとの通信に使用できる NGNIX プロキシ ポッド。
-  - **Fabric CA**: Fabric CA を実行するポッド。
-- **PostgreSQL**: Fabric CA の ID が保持されているデータベース インスタンス。
-
-- **キー コンテナー**: ユーザーによって提供された Fabric CA の資格情報とルート証明書を保存するためにデプロイされる Azure Key Vault サービスのインスタンス。 コンテナーは、テンプレートのデプロイが再試行される場合に、テンプレートの仕組みを処理するために使用されます。
-- **マネージド ディスク**: 元帳およびピア ノードのワールド ステート データベースに対する永続的なストアを提供する Azure Managed Disks サービスのインスタンス。
-- **[パブリック IP]** : クラスターとの通信のためにデプロイされる AKS クラスターのエンドポイント。
 
 ## <a name="deploy-the-orderer-and-peer-organization"></a>orderer とピア組織をデプロイする
 
@@ -85,10 +58,10 @@ Hyperledger Fabric ネットワーク コンポーネントのデプロイを始
     - **組織名**:さまざまなデータ プレーン操作に必要な Hyperledger Fabric 組織の名前を入力します。 組織名は、デプロイごとに一意である必要があります。
     - **[Fabric network component]\(Fabric ネットワーク コンポーネント\)** : 設定するブロックチェーン ネットワーク コンポーネントに基づいて、 **[Ordering Service]\(オーダリング サービス\)** または **[Peer nodes]\(ピア ノード\)** を選択します。
     - **[Number of nodes]\(ノードの数\)** : 次の 2 種類のノードがあります。
-        - **オーダリング サービス**: ネットワークにフォールト トレランスを提供するノードの数を選択します。 サポートされているオーダー ノードの数は、3、5、7 です。
-        - **ピア ノード**:要件に基づいて、1 から 10 ノードを選択できます。
-    - **[Peer node world state database]\(ピア ノード ワールド状態データベース\)** : LevelDB または CouchDB を選択します。 このフィールドは、 **[Fabric network component]\(Fabric ネットワーク コンポーネント\)** ドロップダウン リストで **[Peer nodes]\(ピア ノード\)** を選択すると表示されます。
-    - **[Fabric CA username]\(Fabric CA ユーザー名\)** : Fabric CA 認証に使用するユーザー名を入力します。
+        - **オーダリング サービス**: 台帳でトランザクションの順序付けを担当するノード。 ネットワークにフォールト トレランスを提供するノードの数を選択します。 サポートされているオーダー ノードの数は、3、5、7 です。
+        - **ピア ノード**: 台帳とスマートコントラクトをホストするノード。 要件に基づいて、1 から 10 ノードを選択できます。
+    - **[Peer node world state database]\(ピア ノード ワールド状態データベース\)** : ピア ノードのワールド ステート データベース。 LevelDB は、ピア ノードに埋め込まれている既定のステート データベースです。 そこには、チェーンコード データが単純なキー値ペアとして格納され、キー、キー範囲、複合キーのクエリのみがサポートされます。 CouchDB はオプションの代替状態データベースであり、チェーンコード データの値が JSON としてモデル化されている場合、リッチなクエリがサポートされます。 このフィールドは、 **[Fabric network component]\(Fabric ネットワーク コンポーネント\)** ドロップダウン リストで **[Peer nodes]\(ピア ノード\)** を選択すると表示されます。
+    - **[Fabric CA username]\(Fabric CA ユーザー名\)** : ファブリック証明機関を使用して、証明機関をホストするサーバー プロセスを初期化し、起動することができます。 ID と証明書を管理することができます。 テンプレートの一部としてデプロイされる各 AKS クラスターには、既定で Fabric CA ポッドが配置されます。 Fabric CA 認証に使用するユーザー名を入力します。
     - **[Fabric CA password]\(Fabric CA パスワード\)** : Fabric CA 認証のパスワードを入力します。
     - **[Confirm password]\(パスワードの確認\)** : Fabric CA のパスワードを確認します。
     - **[Certificates]\(証明書\)** : 独自のルート証明書を使用して Fabric CA を初期化する場合は、 **[Upload root certificate for Fabric CA]\(Fabric CA のルート証明書をアップロードする\)** オプションを選択します。 そうでない場合は、既定で Fabric CA によって自己署名証明書が作成されます。
@@ -96,11 +69,21 @@ Hyperledger Fabric ネットワーク コンポーネントのデプロイを始
     - **[Root Certificate private key]\(ルート証明書の秘密キー\)** : ルート証明書の秘密キーをアップロードします。 公開キーと秘密キーが組み合わされた .pem 証明書がある場合は、ここでそれもアップロードします。
 
 
-6. **[AKS クラスターの設定]** タブを選択し、Hyperledger Fabric ネットワーク コンポーネントの設定の基になるインフラストラクチャである Azure Kubernetes Service クラスターの構成を定義します。
+6. **[AKS クラスターの設定]** タブを選択し、Azure Kubernetes Service クラスターの構成を定義します。 AKS クラスターには、Hyperledger Fabric ネットワーク コンポーネントを実行するためのさまざまなポッドが構成されます。 次の Azure リソースがデプロイされます。
+
+    - **ファブリック ツール**: Hyperledger Fabric コンポーネントの構成を行うツール。
+    - **Orderer/ピア ポッド**: Hyperledger Fabric ネットワークのノード。
+    - **Proxy**:クライアント アプリケーションが AKS クラスターとの通信に使用できる NGNIX プロキシ ポッド。
+    - **Fabric CA**: Fabric CA を実行するポッド。
+    - **PostgreSQL**: Fabric CA の ID が保持されているデータベース インスタンス。
+    - **キー コンテナー**: ユーザーによって提供された Fabric CA の資格情報とルート証明書を保存するためにデプロイされる Azure Key Vault サービスのインスタンス。 コンテナーは、テンプレートのデプロイが再試行される場合に、テンプレートの仕組みを処理するために使用されます。
+    - **マネージド ディスク**: 元帳およびピア ノードのワールド ステート データベースに対する永続的なストアを提供する Azure Managed Disks サービスのインスタンス。
+    - **[パブリック IP]** : クラスターとの通信のためにデプロイされる AKS クラスターのエンドポイント。
+
+    次の詳細を入力します。 
 
     ![[AKS クラスターの設定] タブを示すスクリーンショット。](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
 
-7. 次の詳細を入力します。
     - **[Kubernetes クラスター名]** : 必要に応じて、AKS クラスターの名前を変更します。 このフィールドは、指定したリソース プレフィックスに基づいて既に設定されています。
     - **[Kubernetes バージョン]** : クラスターにデプロイする Kubernetes のバージョンを選択します。 **[基本]** タブで選択したリージョンに基づいて、使用可能なサポートされるバージョンが変わることがあります。
     - **[DNS プレフィックス]** : AKS クラスターのドメイン ネーム システム (DNS) 名のプレフィックスを入力します。 クラスターを作成した後でコンテナーを管理するときに、DNS を使用して Kubernetes API に接続します。

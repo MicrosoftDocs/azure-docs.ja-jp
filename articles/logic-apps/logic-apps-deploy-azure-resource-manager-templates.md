@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2020
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: 5f5db3fd88f04e7fe569cd675936445dcf730288
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97705338"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps 用の Azure Resource Manager テンプレートをデプロイする

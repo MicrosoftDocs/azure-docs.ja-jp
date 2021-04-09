@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/12/2020
+ms.date: 03/04/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0b7330485d3152a588d43added7d9feaa5c2a14
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3a3c2812a4ecfa1a80539804122042bc2dc2f3a2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "95994496"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199188"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
@@ -83,18 +83,22 @@ Video Indexer で使用できるファイル形式の一覧については、「
 
 #### <a name="indexingpreset"></a>indexingPreset
 
-未加工の録画または外部の録画に背景ノイズが入っている場合は、このパラメーターを使用します。 このパラメーターは、インデックス作成プロセスの構成に使用されます。 次の値を指定できます。
+このパラメーターを使用して、オーディオ ファイルまたはビデオ ファイルに適用する AI バンドルを定義します。 このパラメーターは、インデックス作成プロセスの構成に使用されます。 次の値を指定できます。
 
-- `AudioOnly` – オーディオのみを使用 (ビデオは無視) して、分析情報のインデックス作成と抽出を行います
-- `VideoOnly` – ビデオのみを使用 (オーディオは無視) して、分析情報のインデックス作成と抽出を行います
-- `Default` – オーディオとビデオの両方を使用して、分析情報のインデックス作成と抽出を行います
-- `DefaultWithNoiseReduction` – オーディオ ストリームにノイズ低減アルゴリズムを適用しながら、オーディオとビデオの両方からインデックス作成と抽出を行います
+- `AudioOnly` – オーディオのみを使用 (ビデオは無視) して、分析情報のインデックス作成と抽出を行います。
+- `VideoOnly` – ビデオのみを使用 (オーディオは無視) して、分析情報のインデックス作成と抽出を行います。
+- `Default` - オーディオとビデオの両方を使用して、分析情報のインデックス作成と抽出を行います。
+- `DefaultWithNoiseReduction` - オーディオ ストリームにノイズ低減アルゴリズムを適用しながら、オーディオとビデオの両方から分析情報のインデックス作成と抽出を行います。
+
+    `DefaultWithNoiseReduction` 値が既定のプリセット (非推奨) にマップされるようになりました。
+- `BasicAudio` - オーディオのみ (文字起こし、翻訳、出力キャプションの書式設定、字幕などの基本的なオーディオ機能のみ) を使用 (ビデオは無視) して、分析情報のインデックス作成と抽出を行います。
+ - `AdvancedAudio` -標準のオーディオ分析に加え、高度なオーディオ機能 (オーディオ イベントの検出) など、オーディオのみを使用 (ビデオは無視) して、分析情報のインデックス作成と抽出を行います。
 
 > [!NOTE]
 > Video Indexer では、最大 2 つのオーディオ トラックがカバーされます。 ファイル内にこれより多いオーディオ トラックがある場合、それらは 1 つのトラックとして扱われます。<br/>
 トラックに個別にインデックスを付ける場合は、関連するオーディオ ファイルを抽出し、それに `AudioOnly` とインデックスを付ける必要があります。
 
-料金は、選択したインデックス作成オプションによって異なります。  
+料金は、選択したインデックス作成オプションによって異なります。 詳細については、[Media Services の価格](https://azure.microsoft.com/pricing/details/media-services/)に関する記事を参照してください。
 
 #### <a name="priority"></a>priority
 

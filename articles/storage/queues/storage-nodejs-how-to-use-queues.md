@@ -10,10 +10,10 @@ ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-september2019, devx-track-js
 ms.openlocfilehash: 12ae05e10cdf0fa9a5f0725acaa1784eedc3612c
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97803682"
 ---
 # <a name="how-to-use-azure-queue-storage-from-nodejs"></a>Node.js から Azure Queue Storage を使用する方法

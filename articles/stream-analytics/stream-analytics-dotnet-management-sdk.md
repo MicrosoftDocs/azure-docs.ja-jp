@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/06/2018
+ms.date: 3/12/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 633885bb1062edac8226c073768ffdeba84fcb55
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 9adc4c92e3e637b9d3e18249b5de00782a94baab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012633"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103232887"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>管理用 .NET SDK:.NET 用 Azure Stream Analytics API を使用した分析ジョブの設定と実行
 管理用 .NET SDK を使用する .NET 用 Stream Analytics API で、分析ジョブを設定して実行する方法について説明します。 プロジェクトの設定、入力と出力ソース、変換の作成、およびジョブの開始と停止を行います。 分析ジョブでは、BLOB ストレージまたはイベント ハブからデータをストリームできます。
@@ -207,6 +207,12 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
    // Test the connection to the input
    ResourceTestStatus testInputResult = streamAnalyticsManagementClient.Inputs.Test(resourceGroupName, streamingJobName, inputName);
    ```
+TestConnection 呼び出しの結果は、次の 2 つのプロパティを含む *ResourceTestResult* オブジェクトになります。
+
+- *status*: ["TestNotAttempted", "TestSucceeded", "TestFailed"] のいずれかの文字列です。
+- *error*: 次のプロパティを含む ErrorResponse 型です。
+   - *code*: 文字列型の必須プロパティです。 値は、テスト中に受信した、標準の System.Net.HttpStatusCode です。
+   - *message*: エラーを表す文字列型の必須プロパティです。 
 
 ## <a name="create-a-stream-analytics-output-target"></a>Stream Analytics の出力ターゲットの作成
 出力ターゲットの作成は、Stream Analytics の入力ソースの作成と似ています。 入力ソースと同様、出力ターゲットも特定のジョブに関連付けられます。 1 つの出力ターゲットを複数のジョブで使用するには、メソッドを再度呼び出して別のジョブ名を指定する必要があります。

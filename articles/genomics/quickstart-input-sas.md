@@ -10,10 +10,10 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
 ms.openlocfilehash: 82f5e8b4a0c06517381857f0d914bcb65ba41d35
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93394613"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>ストレージ アカウント キーの代わりに SAS を使用してワークフローを Microsoft Genomics に送信する 
@@ -34,12 +34,12 @@ Microsoft Genomics サービスに送信される各ワークフローには、�
 
 入力ファイルの SAS には、次のプロパティが必要です。
  - 範囲 (アカウント、コンテナー、BLOB): BLOB
- - 有効期限: 今から 48 時間後
+ - 有効期限: 今から 48 時間
  - アクセス許可: 読み取り
 
 出力コンテナーの SAS には、次のプロパティが必要です。
  - 範囲 (アカウント、コンテナー、BLOB): コンテナー
- - 有効期限: 今から 48 時間後
+ - 有効期限: 今から 48 時間
  - アクセス許可: 読み取り、書き込み、削除
 
 
@@ -56,7 +56,7 @@ SAS トークンを作成するには、Azure Storage Explorer を使用する�
  ![Genomics SAS Storage Explorer](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "Genomics SAS Storage Explorer")
 
 
-### <a name="set-up-create-a-sas-programmatically"></a>設定: SAS をプログラムで作成する
+### <a name="set-up-create-a-sas-programmatically"></a>Set up (セットアップ): SAS をプログラムで作成する
 
 Azure Storage SDK を使用して SAS を作成する場合は、[.NET](../storage/common/storage-sas-overview.md)、[Python](../storage/blobs/storage-quickstart-blobs-python.md)、[Node.js](../storage/blobs/storage-quickstart-blobs-nodejs.md) など、複数の言語について説明されている既存のドキュメントを参照してください。 
 

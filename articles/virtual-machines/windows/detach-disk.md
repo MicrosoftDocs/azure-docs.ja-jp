@@ -2,18 +2,19 @@
 title: Windows VM からデータ ディスクを切断する - Azure
 description: Resource Manager デプロイ モデルを使用して、Azure の仮想マシンからデータ ディスクをデタッチします。
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: disks
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 01/26/2021
+ms.date: 03/03/2021
 ms.author: cynthn
-ms.openlocfilehash: a995cd1d02438ae3be7091ba55e945549558829d
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 24c95d486ce77028a2c49917d8f98de23a3a8315
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055197"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102552135"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Windows 仮想マシンからディスクを切断する方法
 
@@ -53,10 +54,10 @@ PowerShell を使用するとデータ ディスクを *ホット* 削除する�
 1. 左側のメニューで **[Virtual Machines]** を選択します。
 1. 切断するデータディスクがある仮想マシンを選択します。
 1. **[設定]** で **[ディスク]** を選択します。
-1. **[ディスク]** ウィンドウで、デタッチしたいデータ ディスクの右端にある **[X]** (デタッチ) ボタンをクリックします。
+1. **[ディスク]** ウィンドウで、デタッチしたいデータ ディスクの右端にある **[X]** ボタンを選択してデタッチします。
 1. ページの上部にある **[保存]** を選択して、変更を保存します。
 
-ディスクはストレージに残りますが、仮想マシンには接続されていません。
+ディスクはストレージに残りますが、仮想マシンには接続されていません。 このディスクは削除されません。
 
 ## <a name="next-steps"></a>次のステップ
 

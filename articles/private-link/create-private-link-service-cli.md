@@ -1,20 +1,20 @@
 ---
-title: Azure CLI を使用して Azure プライベート リンク サービスを作成する
-description: Azure CLI を使用して Azure プライベート リンク サービスを作成する方法について説明します
+title: クイックスタート - Azure CLI を使用して Azure Private Link サービスを作成する
+description: このクイックスタートでは、Azure CLI を使用して Azure Private Link サービスを作成する方法について説明します
 services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 01/22/2021
 ms.author: allensu
-ms.openlocfilehash: 27ce0b2646b6c380e86b377d3dba287f7791794e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 76fd959c28203132be4695031d96315f258cf53f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653732"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102563083"
 ---
-# <a name="create-a-private-link-service-using-azure-cli"></a>Azure CLI を使用してプライベート リンク サービスを作成する
+# <a name="quickstart-create-a-private-link-service-using-azure-cli"></a>クイックスタート: Azure CLI を使用して Private Link サービスを作成する
 
 自分のサービスを参照する Private Link サービスを作成してみましょう。  Private Link には、Azure Standard Load Balancer の背後にデプロイされたサービスやリソースへのアクセス権を付与することができます。  サービスのユーザーは、各自の仮想ネットワークからプライベートにアクセスすることができます
 

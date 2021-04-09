@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: jomore
 ms.custom: fasttrack-new
 ms.openlocfilehash: cc8e7314c941035207ecf809a9d85ef46bd58379
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92913757"
 ---
 # <a name="use-private-link-in-virtual-wan"></a>Virtual WAN で Private Link を使用する

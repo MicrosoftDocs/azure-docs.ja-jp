@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/08/2019
 ms.openlocfilehash: 82cad7fc68d650e5f525a8722d3e2f3e9865f456
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98936756"
 ---
-# <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>シナリオ:Azure HDInsight で接続をリセットした後のストレージ例外
+# <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>シナリオ: Azure HDInsight で接続をリセットした後のストレージ例外
 
 この記事では、Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策について説明します。
 
@@ -25,7 +25,7 @@ ms.locfileid: "98936756"
 
 ストレージ内に `/hbase/data/default/ThatTable` という名前のフォルダー BLOB がありませんでした。 WASB ドライバーで上記の BLOB ファイルの存在が検出され、親フォルダーが存在すると想定されたため `/hbase/data/default/ThatTable` という BLOB の作成が許可されなかったため、テーブルの作成は失敗します。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
 1. Apache Ambari UI から、アクティブな HMaster を再起動します。 これにより、2 つのスタンバイ HMaster の 1 つがアクティブになり、新しいアクティブな HMaster でメタデータ テーブルの情報が再読み込みされます。 これにより、HMaster UI に `already-deleted` テーブルが表示されなくなります。
 

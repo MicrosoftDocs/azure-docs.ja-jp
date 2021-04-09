@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 0035d367017c92bd151c27e14d744ef41eace069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "85800150"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>API コンソールでカスタム イメージ リストを使用してモデレートする
@@ -22,7 +22,7 @@ ms.locfileid: "85800150"
 カスタム イメージ リストを作成するには、Azure Content Moderator の [List Management API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672) を使用します。 カスタム イメージ リストは、Image Moderation API で使用します。 イメージ モデレーション操作では、イメージが表示されます。 カスタム リストを作成すると、この操作で、イメージとカスタム リスト内のイメージとの比較も行われます。 カスタム リストを使用して、イメージをブロックしたり許可したりできます。
 
 > [!NOTE]
-> **画像リスト数は 5 個**、各リストの**画像数は 10,000 個**という上限があります。
+> **画像リスト数は 5 個**、各リストの **画像数は 10,000 個** という上限があります。
 >
 
 List Management API を使用して、次のタスクを実行できます。
@@ -42,7 +42,7 @@ List Management API を使用して、次のタスクを実行できます。
 
 イメージ リストに変更を加えた後は、変更が今後のスキャンに含まれるように、イメージ リストのインデックスを最新の情報に更新する必要があります。 この手順は、デスクトップ上の検索エンジン (有効になっている場合) や Web 検索エンジンが、新しいファイルやページが含まれるように絶えずインデックスを最新の情報に更新する方法と似ています。
 
-1. [Image List Management API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)の左側のメニューで、 **[Image Lists]\(イメージ リスト\)** を選択し、 **[Refresh Search Index]\(検索インデックスを最新の情報に更新\)** を選択します。
+1. [Image List Management API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)の左側のメニューで、**[Image Lists]\(イメージ リスト\)** を選択し、**[Refresh Search Index]\(検索インデックスを最新の情報に更新\)** を選択します。
 
    **[Image Lists - Refresh Search Index]\(イメージ リスト - インデックスを最新の情報に更新\)** ページが開きます。
 
@@ -52,7 +52,7 @@ List Management API を使用して、次のタスクを実行できます。
 
     **[Image Lists - Refresh Search Index]\(イメージ リスト - インデックスを最新の情報に更新\)** API コンソールが開きます。
 
-3. **[listId]** ボックスに、リスト ID を入力します。 サブスクリプション キーを入力して、 **[送信]** を選択します。
+3. **[listId]** ボックスに、リスト ID を入力します。 サブスクリプション キーを入力して、**[送信]** を選択します。
 
    ![[Image Lists - Refresh Search Index]\(イメージ リスト - インデックスを最新の情報に更新\) コンソールの [応答のコンテンツ] ボックス](images/try-image-list-refresh-1.png)
 
@@ -71,7 +71,7 @@ List Management API を使用して、次のタスクを実行できます。
  
 4. **[Ocp-Apim-Subscription-Key]** ボックスにサブスクリプション キーを入力します。
 
-5. **[要求本文]** ボックスで、 **[名前]** (たとえば「MyList」) と **[説明]** の値を入力します。
+5. **[要求本文]** ボックスで、**[名前]** (たとえば「MyList」) と **[説明]** の値を入力します。
 
    ![[Image Lists - Create]\(イメージ リスト - 作成\) コンソールの [要求本文] の名前と説明](images/try-terms-list-create-1.png)
 
@@ -91,11 +91,11 @@ List Management API を使用して、次のタスクを実行できます。
 
    リストのメタデータは、実際のイメージではなく、キーと値のペアとして追加します。
  
-7. **[送信]** を選択します。 リストが作成されました。 新しいリストに関連付けられている **ID** の値をメモします。 この ID は、他のイメージ リスト管理機能で必要になります。
+7. **[Send]** を選択します。 リストが作成されました。 新しいリストに関連付けられている **ID** の値をメモします。 この ID は、他のイメージ リスト管理機能で必要になります。
 
    ![[Image Lists - Create]\(イメージ リスト - 作成\) コンソールの [応答のコンテンツ] ボックスに表示されるリスト ID](images/try-terms-list-create-2.png)
  
-8. 次に、MyList にイメージを追加します。 左側のメニューで **[イメージ]** を選択し、 **[イメージの追加]** を選択します。
+8. 次に、MyList にイメージを追加します。 左側のメニューで **[イメージ]** を選択し、**[イメージの追加]** を選択します。
 
    **[Image - Add Image]\(イメージ - イメージの追加\)** ページが開きます。 
 
@@ -105,13 +105,13 @@ List Management API を使用して、次のタスクを実行できます。
 
    **[Image - Add Image]\(イメージ - イメージの追加\)** API コンソールが開きます。
  
-10. **[listId]** ボックスに生成されたリスト ID を入力し、追加するイメージの URL を入力します。 サブスクリプション キーを入力して、 **[送信]** を選択します。
+10. **[listId]** ボックスに生成されたリスト ID を入力し、追加するイメージの URL を入力します。 サブスクリプション キーを入力して、**[送信]** を選択します。
 
-11. イメージがリストに追加されたことを確認するには、左側のメニューで **[イメージ]** を選択し、 **[Get All Image Ids]\(すべてのイメージ ID を取得\)** を選択します。
+11. イメージがリストに追加されたことを確認するには、左側のメニューで **[イメージ]** を選択し、**[Get All Image Ids]\(すべてのイメージ ID を取得\)** を選択します。
 
     **[Image - Get All Image Ids]\(イメージ - すべてのイメージ ID を取得\)** API コンソールが開きます。
   
-12. **[listId]** ボックスで、リスト ID を入力し、サブスクリプション キーを入力します。 **[送信]** を選択します。
+12. **[listId]** ボックスで、リスト ID を入力し、サブスクリプション キーを入力します。 **[Send]** を選択します。
 
     ![[Image - Get All Image Ids]\(イメージ - すべてのイメージ ID を取得\) コンソールの [応答のコンテンツ] ボックスに入力した用語が表示される](images/try-image-list-create-11.png)
  
@@ -121,13 +121,13 @@ List Management API を使用して、次のタスクを実行できます。
 
 イメージやリストを削除するのは簡単です。 API を使用して、次のタスクを実行できます。
 
-- イメージを削除します。 ( **[Image - Delete]\(イメージ - 削除\)** )
-- リストを削除せずに、リスト内のすべてのイメージを削除する。 ( **[Image - Delete All Images]\(イメージ - すべてのイメージを削除\)** )
+- イメージを削除します。 (**[Image - Delete]\(イメージ - 削除\)**)
+- リストを削除せずに、リスト内のすべてのイメージを削除する。 (**[Image - Delete All Images]\(イメージ - すべてのイメージを削除\)**)
 - リストと、そのコンテンツをすべて削除する。 ( **[Image Lists - Delete]\(イメージ リスト - 削除\)** )
 
 この例では、1 つのイメージだけを削除します。
 
-1. [Image List Management API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)の左側のメニューで、 **[イメージ]** を選択し、 **[削除]** を選択します。 
+1. [Image List Management API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)の左側のメニューで、**[イメージ]** を選択し、**[削除]** を選択します。 
 
    **[Image - Delete]\(イメージ - 削除\)** ページが開きます。
 
@@ -141,15 +141,15 @@ List Management API を使用して、次のタスクを実行できます。
 
 この例では、リスト ID は **ContentSource** の値である **58953** です。 イメージ ID は **ContentIds** の値である **59021** です。
 
-1. サブスクリプション キーを入力して、 **[送信]** を選択します。
+1. サブスクリプション キーを入力して、**[送信]** を選択します。
 
-1. イメージが削除されたことを確認するには、 **[Image - Get All Image Ids]\(イメージ - すべてのイメージ ID を取得\)** コンソールを使用します。
+1. イメージが削除されたことを確認するには、**[Image - Get All Image Ids]\(イメージ - すべてのイメージ ID を取得\)** コンソールを使用します。
  
 ## <a name="change-list-information"></a>リストの情報を変更する
 
 リストの名前と説明を編集し、メタデータ項目を追加することができます。
 
-1. [Image List Management API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)の左側のメニューで、 **[Image Lists]\(イメージ リスト\)** を選択し、 **[Update Details]\(詳細の更新\)** を選択します。 
+1. [Image List Management API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)の左側のメニューで、**[Image Lists]\(イメージ リスト\)** を選択し、**[Update Details]\(詳細の更新\)** を選択します。 
 
    **[Image Lists - Update Details]\(イメージ リスト - 詳細の更新\)** ページが開きます。
 

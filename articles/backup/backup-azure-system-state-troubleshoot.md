@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
 ms.openlocfilehash: 7c8e68da1c5da7b25d1385a82bf7dcc2f876306d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89376283"
 ---
 # <a name="troubleshoot-system-state-backup"></a>システム状態のバックアップをトラブルシューティングする
@@ -27,9 +27,9 @@ ms.locfileid: "89376283"
 - [スケジュールされたバックアップが失敗したが、手動バックアップは機能する](./backup-azure-mars-troubleshoot.md#backups-dont-run-according-to-schedule)
 - OS に最新の更新プログラムが適用されていることを確認する
 - [サポートされていない属性を持つサポートされていないドライブとファイルはバックアップから除外されることを確認する](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
-- 保護されているシステム上の**システム クロック**が適切なタイム ゾーンに構成されていることを確認します <br>
+- 保護されているシステム上の **システム クロック** が適切なタイム ゾーンに構成されていることを確認します <br>
 - [サーバーに .Net Framework バージョン 4.5.2 以降がインストールされていることを確認します](https://www.microsoft.com/download/details.aspx?id=30653)<br>
-- コンテナーに**サーバーを再登録する**場合は、次のことを行います。 <br>
+- コンテナーに **サーバーを再登録する** 場合は、次のことを行います。 <br>
   - エージェントがサーバーからアンインストールされていることと、ポータルから削除されていることを確認します。 <br>
   - 最初にサーバーの登録に使用したのと同じパスフレーズを使用します <br>
 - これがオフライン バックアップの場合は、ソース コンピューターとコピー用コンピューターの両方に Azure PowerShell バージョン 3.7.0 がインストールされていることを確認します
@@ -66,7 +66,7 @@ PowerShell を使用して Windows Server バックアップをインストー�
 
 サーバー マネージャーを使用して Windows Server バックアップをインストールするには、次の手順を実行します。
 
-1. **サーバー マネージャー**で **[役割と機能の追加]** を選択します。 **役割と機能の追加ウィザード**が表示されます。
+1. **サーバー マネージャー** で **[役割と機能の追加]** を選択します。 **役割と機能の追加ウィザード** が表示されます。
 
     ![ダッシュボード](./media/backup-azure-system-state-troubleshoot/server_management.jpg)
 
@@ -86,7 +86,7 @@ PowerShell を使用して Windows Server バックアップをインストー�
 
 ### <a name="system-volume-information-permission"></a>システム ボリューム情報のアクセス許可
 
-ローカル システムに、Windows がインストールされているボリュームに配置されている**システム ボリューム情報**フォルダーへのフル コントロールが与えられていることを確認します。 通常、これは **C:\System Volume Information** です。 上記のアクセス許可が正しく設定されていない場合、Windows Server バックアップは失敗する可能性があります。
+ローカル システムに、Windows がインストールされているボリュームに配置されている **システム ボリューム情報** フォルダーへのフル コントロールが与えられていることを確認します。 通常、これは **C:\System Volume Information** です。 上記のアクセス許可が正しく設定されていない場合、Windows Server バックアップは失敗する可能性があります。
 
 ### <a name="dependent-services"></a>依存サービス
 

@@ -10,10 +10,10 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: a32811b439a569a8f8f82fcc046e0f4b89e47a38
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94966702"
 ---
 # <a name="quickstart-provision-a-simulated-device-to-iot-hub-with-symmetric-keys"></a>対称キーを使用してシミュレートされたデバイスを IoT Hub にプロビジョニングする
@@ -88,7 +88,7 @@ ms.locfileid: "94966702"
 
 このセクションでは、デバイスのブート シーケンスを DPS インスタンスに送信するようにデバイスのサンプル コードを更新します。 このブート シーケンスにより、デバイスが認識、認証され、DPS インスタンスにリンクされた IoT ハブに割り当てられます。
 
-1. Device Provisioning Service メニューから、**[概要]** を選択し、"_ID スコープ_" と "_Provisioning Service のグローバル エンドポイント_" をメモします。
+1. Device Provisioning Service メニューから、 **[概要]** を選択し、"_ID スコープ_" と "_Provisioning Service のグローバル エンドポイント_" をメモします。
 
     ![サービス情報](./media/java-quick-create-simulated-device-x509/extract-dps-endpoints.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "94966702"
       Message received! Response status: OK_EMPTY
     ```
 
-6. Azure Portal で、ご利用のプロビジョニング サービスにリンクされている IoT Hub に移動し、**[Device Explorer]** ブレードを開きます。 シミュレートされた対称キーのデバイスをハブにプロビジョニングすると、そのデバイス ID が **有効** な "*状態*" として **[Device Explorer]** ブレードに表示されます。  サンプル デバイス アプリケーションを稼働させる前にこのブレードを開いていた場合は、一番上にある **[最新の情報に更新]** を押すことが必要になる場合があります。 
+6. Azure Portal で、ご利用のプロビジョニング サービスにリンクされている IoT Hub に移動し、 **[Device Explorer]** ブレードを開きます。 シミュレートされた対称キーのデバイスをハブにプロビジョニングすると、そのデバイス ID が **有効** な "*状態*" として **[Device Explorer]** ブレードに表示されます。  サンプル デバイス アプリケーションを稼働させる前にこのブレードを開いていた場合は、一番上にある **[最新の情報に更新]** を押すことが必要になる場合があります。 
 
     ![IoT ハブに登録されたデバイス](./media/quick-create-simulated-device-symm-key-java/hubregistration-java.png) 
 

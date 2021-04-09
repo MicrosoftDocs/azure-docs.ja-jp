@@ -4,10 +4,10 @@ description: この記事では、Azure Relay で IP ファイアウォール規
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 735a0b7dc303ad63cb301151e3e14e4488c856b1
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98217245"
 ---
 # <a name="network-security-for-azure-relay"></a>Azure Relay のネットワーク セキュリティ 

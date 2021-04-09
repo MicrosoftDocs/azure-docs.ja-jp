@@ -4,10 +4,10 @@ description: Azure Service Fabric スタンドアロン クラスターのバー
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: 519a9163d16fda2dd9fcf49cf22fe4ad4a272e09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86260978"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Service Fabric スタンドアロン クラスターのアップグレードと更新
@@ -21,7 +21,7 @@ Microsoft からのリリース時に自動ファブリック アップグレー
 
 ## <a name="customize-configuration-settings"></a>構成設定をカスタマイズする
 
-クラスターの信頼性レベルやノードのプロパティなど、*ClusterConfig.json* ファイルでは多くの異なる[構成設定](service-fabric-cluster-manifest.md)を設定できます。  詳細については、「[Upgrade the configuration of a standalone cluster](service-fabric-cluster-config-upgrade-windows-server.md)」(スタンドアロン クラスターの構成をアップグレードする) をご覧ください。  他の多くのさらに高度な設定もカスタマイズできます。  詳細については、[Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)に関するページを参照してください。
+クラスターの信頼性レベルやノードのプロパティなど、*ClusterConfig.json* ファイルでは多くの異なる [構成設定](service-fabric-cluster-manifest.md)を設定できます。  詳細については、「[Upgrade the configuration of a standalone cluster](service-fabric-cluster-config-upgrade-windows-server.md)」(スタンドアロン クラスターの構成をアップグレードする) をご覧ください。  他の多くのさらに高度な設定もカスタマイズできます。  詳細については、[Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)に関するページを参照してください。
 
 ## <a name="define-node-properties"></a>ノードのプロパティの定義
 場合によっては、特定のワークロードが、クラスター内の特定のノードの種類だけで確実に実行されるようにしたいことがあります。 たとえば、ワークロードの中に GPU や SSD を必要とするものとしないものが混在している場合があります。 クラスター内のノードの種類ごとに、カスタム ノードのプロパティをクラスター ノードに追加できます。 配置の制約は、1 つまたは複数のノードのプロパティに選択される個々のサービスに接続されるステートメントです。 配置の制約で、サービスを実行する場所を定義します。

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 748d10b994080b667885e5d0d5f4d688269e86ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "68728045"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft Threat Modeling Tool の軽減策
@@ -41,7 +41,7 @@ Threat Modeling Tool の軽減策は、Web アプリケーションのセキュ�
 | **[構成管理](threat-modeling-tool-configuration-management.md)** | アプリケーションがだれとして実行されるか。 どのデータベースに接続するか。 アプリケーションはどのように管理されるか。 これらの設定はどのように保護されるか。 構成管理とは、アプリケーションがこれらの操作上の問題を扱う方法のことです |
 | **[暗号化](threat-modeling-tool-cryptography.md)** | どのように秘密を保持するか (機密性)。 データまたはライブラリを改ざんからどのように保護するか (整合性)。 暗号的に強固である必要があるランダムな値のシードをどのように指定するか。 暗号化とは、アプリケーションが機密性と整合性を強制的に確保する方法のことです |
 | **[例外管理](threat-modeling-tool-exception-management.md)** | アプリケーションで呼び出したメソッドが失敗した場合、アプリケーションはどうするか。 どの程度公開するか。 エンド ユーザーにわかりやすいエラー情報を返すか。 呼び出し元に有益な例外情報を戻すか。 アプリケーションの失敗時に正常に終了させるか。 |
-| **[入力の検証](threat-modeling-tool-input-validation.md)** | アプリケーションが受け取る入力が有効で安全であることをどうやって知ることができるか。 入力の検証とは、処理を進める前にアプリケーションが入力をフィルター処理、スクラブ、または拒否する方法のことです。 エントリ ポイントで入力を制限し、エグジット ポイントで出力をエンコードすることを検討してください。 データベースやファイル共有などのソースからのデータを信頼するか。 |
+| **[入力検証](threat-modeling-tool-input-validation.md)** | アプリケーションが受け取る入力が有効で安全であることをどうやって知ることができるか。 入力の検証とは、処理を進める前にアプリケーションが入力をフィルター処理、スクラブ、または拒否する方法のことです。 エントリ ポイントで入力を制限し、エグジット ポイントで出力をエンコードすることを検討してください。 データベースやファイル共有などのソースからのデータを信頼するか。 |
 | **[機微なデータ](threat-modeling-tool-sensitive-data.md)** | アプリケーションが機微なデータをどのように処理するか。 機微なデータとは、メモリ内、ネットワーク上、または固定ストア内で保護する必要があるデータをアプリケーションが処理する方法のことです |
 | **[セッションの管理](threat-modeling-tool-session-management.md)** | アプリケーションがユーザー セッションをどのように処理および保護するか。 セッションとは、ユーザーと Web アプリケーション間の一連の関連するやり取りのことです |
 
@@ -50,8 +50,8 @@ Threat Modeling Tool の軽減策は、Web アプリケーションのセキュ�
 * 最も一般的な間違いがどこで起きるか
 * 最も実践的な機能強化をどこで行うことができるか
 
-そのため、これらのカテゴリを使用して、セキュリティに関連する作業の対象と優先順位を定めることができます。最も一般的なセキュリティの問題が入力の検証、認証、および承認のカテゴリで発生することが判明した場合は、そこから作業を開始できます。 詳細については、 **[このブログ投稿](https://www.google.com/patents/US7818788)** を参照してください。
+そのため、これらのカテゴリを使用して、セキュリティに関連する作業の対象と優先順位を定めることができます。最も一般的なセキュリティの問題が入力の検証、認証、および承認のカテゴリで発生することが判明した場合は、そこから作業を開始できます。 詳細については、**[このブログ投稿](https://www.google.com/patents/US7818788)** を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-「 **[Threat Modeling Tool Threats](threat-modeling-tool-threats.md)** 」(Threat Modeling Tool の脅威) に進み、設計上の脅威の可能性を生成するときにツールで使用される脅威のカテゴリの詳細について学びます。
+「**[Threat Modeling Tool Threats](threat-modeling-tool-threats.md)**」(Threat Modeling Tool の脅威) に進み、設計上の脅威の可能性を生成するときにツールで使用される脅威のカテゴリの詳細について学びます。

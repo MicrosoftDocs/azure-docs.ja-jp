@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.openlocfilehash: 183593022c934eaf52ffe18649c23e8deced34d8
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98166457"
 ---
 # <a name="manage-the-access-tier-of-a-blob-in-an-azure-storage-account"></a>Azure Storage アカウントの BLOB のアクセス層を管理する

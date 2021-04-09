@@ -4,27 +4,29 @@ description: このクイックスタートでは、Linux で IoT Edge デバイ
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/02/2020
+ms.date: 03/12/2021
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ff9ba73e71e4525fe56a3cbb54626030f57e990b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 37f4a63d0a901fd70e0a60bb435efdaf08868616
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920801"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103463471"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>クイック スタート:初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする
 
-このクイックスタートでは、コンテナー化されたコードを Linux IoT Edge 仮想デバイスに配置して、Azure IoT Edge をテストします。 IoT Edge を使用すると、ご利用のデバイス上のコードをリモートで管理できるため、より多くのワークロードをエッジに送信できます。 このクイックスタートでは、IoT Edge デバイス用に Azure 仮想マシンを使用することをお勧めします。これにより、IoT Edge サービスがインストールされているテスト マシンをすばやく作成でき、さらにテストが完了したら削除することができます。
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
+
+このクイックスタートでは、コンテナー化されたコードを Linux IoT Edge 仮想デバイスに配置して、Azure IoT Edge をテストします。 IoT Edge を使用すると、ご利用のデバイス上のコードをリモートで管理できるため、より多くのワークロードをエッジに送信できます。 このクイックスタートでは、IoT Edge デバイス用に Azure 仮想マシンを使用することをお勧めします。これにより、テスト マシンをすばやく作成し、終了したら削除できます。
 
 このクイック スタートでは、次の方法について説明します。
 
 * IoT Hub を作成します。
 * IoT Edge デバイスを IoT ハブに登録します。
-* IoT Edge ランタイムをご自分の仮想デバイスにインストールして開始します。
+* IoT Edge ランタイムを仮想デバイスにインストールして開始します。
 * モジュールを IoT Edge デバイスにリモートで展開する。
 
 ![図 - デバイスとクラウドのクイック スタートのアーキテクチャ](./media/quickstart-linux/install-edge-full.png)
@@ -41,7 +43,7 @@ Azure CLI の環境を準備します。
 
 クラウド リソース:
 
-- このクイック スタートで使用するすべてのリソースを管理するためのリソース グループです。 このクイックスタートと以下のチュートリアルでは、リソース グループ名の例 **IoTEdgeResources** を使用しています。
+* このクイック スタートで使用するすべてのリソースを管理するためのリソース グループです。 このクイックスタートと以下のチュートリアルでは、リソース グループ名の例 **IoTEdgeResources** を使用しています。
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
@@ -103,6 +105,9 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 
 このセクションでは、Azure Resource Manager テンプレートを使用して新しい仮想マシンを作成し、そこに IoT Edge ランタイムをインストールします。 代わりに独自の Linux デバイスを使用する場合は、[Azure IoT Edge ランタイムのインストール](how-to-install-iot-edge.md)に関するページのインストール手順を行ってから、このクイックスタートに戻ることができます。
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 次の CLI コマンドを使用して、構築済みの [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy) テンプレートに基づいて IoT Edge デバイスを作成します。
 
 * bash または Cloud Shell ユーザーの場合は、次のコマンドをテキスト エディターにコピーし、プレースホルダーのテキストを実際の情報に置き換えてから、bash または Cloud Shell ウィンドウにコピーします。
@@ -113,8 +118,7 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
    --template-uri "https://aka.ms/iotedge-vm-deploy" \
    --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' \
    --parameters adminUsername='azureUser' \
-   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name
-   <REPLACE_WITH_HUB_NAME> -o tsv) \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) \
    --parameters authenticationType='password' \
    --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
@@ -131,6 +135,42 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
    --parameters authenticationType='password' `
    --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+次の CLI コマンドを使用して、構築済みの [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy/tree/1.2.0-rc4) テンプレートに基づいて IoT Edge デバイスを作成します。
+
+* bash または Cloud Shell ユーザーの場合は、次のコマンドをテキスト エディターにコピーし、プレースホルダーのテキストを実際の情報に置き換えてから、bash または Cloud Shell ウィンドウにコピーします。
+
+   ```azurecli-interactive
+   az deployment group create \
+   --resource-group IoTEdgeResources \
+   --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0-rc4/edgeDeploy.json" \
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' \
+   --parameters adminUsername='azureUser' \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) \
+   --parameters authenticationType='password' \
+   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   ```
+
+* PowerShell ユーザーの場合は、次のコマンドを PowerShell ウィンドウにコピーし、プレースホルダーのテキストを実際の情報に置き換えます。
+
+   ```azurecli
+   az deployment group create `
+   --resource-group IoTEdgeResources `
+   --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0-rc4/edgeDeploy.json" `
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' `
+   --parameters adminUsername='azureUser' `
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) `
+   --parameters authenticationType='password' `
+   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   ```
+:::moniker-end
+<!-- end 1.2 -->
 
 このテンプレートにより、以下のパラメーターが受け取られます。
 
@@ -158,6 +198,9 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 
 仮想マシンに接続したら、ランタイムが IoT Edge デバイスに正常にインストールされ、構成されていることを確認します。
 
+<!--1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. IoT Edge セキュリティ デーモンがシステム サービスとして実行されていることを確認します。
 
    ```bash
@@ -182,6 +225,35 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
    ```
 
    ![ご自身のデバイス上の 1 つのモジュールを表示する](./media/quickstart-linux/iotedge-list-1.png)
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. IoT Edge が実行されていることを確認します。 次のコマンドを実行すると、IoT Edge が実行されている場合は **[OK]** の状態が返されます。そうでない場合は、サービス エラーが表示されます。
+
+   ```bash
+   sudo iotedge system status
+   ```
+
+   >[!TIP]
+   >`iotedge` コマンドの実行には、昇格された特権が必要です。 IoT Edge ランタイムのインストール後に初めてマシンにサインインし直すと、アクセス許可は自動的に更新されます。 それまでは、コマンドの前に `sudo` を使用します。
+
+2. サービスのトラブルシューティングが必要な場合は、サービス ログを取得します。
+
+   ```bash
+   sudo iotedge system logs
+   ```
+
+3. IoT Edge デバイス上で実行されているすべてのモジュールを表示します。 初めてサービスが開始されたので、**edgeAgent** モジュールが実行されていることのみが確認できます。 edgeAgent モジュールが既定で実行され、デバイスにデプロイする追加モジュールのインストールと起動を支援します。
+
+   ```bash
+   sudo iotedge list
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 IoT Edge デバイスの構成はこれで完了です。 クラウドからモジュールをデプロイして実行することができます。
 
@@ -192,6 +264,31 @@ Azure IoT Edge デバイスをクラウドから管理し、IoT Hub に利用統
 ![図 - クラウドからデバイスにモジュールを配置する](./media/quickstart-linux/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+IoT Edge バージョン1.2 はパブリック プレビュー段階であるため、ランタイム モジュールをパブリック プレビュー バージョンに更新するために追加の手順が必要になります。
+
+1. デバイスの詳細ページから **[モジュールの設定]** をもう一度選択します。
+
+1. **[ランタイムの設定]** を選択します。
+
+1. バージョン タグ 1.2.0-rc4 を使用するように、IoT Edge ハブと IoT Edge エージェントの両モジュールの **[イメージ]** フィールドを更新します。 次に例を示します。
+
+   * `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`
+   * `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4`
+
+1. シミュレートされた温度センサー モジュールは、まだ [モジュール] セクションに一覧表示されています。 パブリック プレビューでは、そのモジュールに変更を加える必要はありません。
+
+1. **[Review + create]\(レビュー + 作成\)** を選択します。
+
+1. **[作成]** を選択します。
+
+1. デバイスの詳細ページで **$edgeAgent** または **$edgeHub** のいずれかを選択すると、モジュールの詳細にイメージのパブリック プレビュー バージョンが反映されていることを確認できます。
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
 
@@ -205,7 +302,15 @@ Azure IoT Edge デバイスをクラウドから管理し、IoT Hub に利用統
    sudo iotedge list
    ```
 
-   ![ご利用のデバイスの 3 つのモジュールを表示する](./media/quickstart-linux/iotedge-list-2.png)
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+   ![ご利用のデバイスの 3 つのモジュールを表示する](./media/quickstart-linux/iotedge-list-2-version-201806.png)
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+   ![ご利用のデバイスの 3 つのモジュールを表示する](./media/quickstart-linux/iotedge-list-2-version-202011.png)
+:::moniker-end
 
 温度センサー モジュールから送信されているメッセージを確認します。
 
@@ -232,7 +337,7 @@ IoT Edge のチュートリアルに進む場合は、このクイック スタ�
 **IoTEdgeResources** グループを削除します。 リソース グループを削除するのに数分かかる場合があります。
 
 ```azurecli-interactive
-az group delete --name IoTEdgeResources
+az group delete --name IoTEdgeResources --yes
 ```
 
 リソース グループが削除されたことは、リソース グループの一覧を表示することによって確認できます。

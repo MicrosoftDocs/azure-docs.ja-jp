@@ -6,17 +6,20 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 09/30/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 88948f757c41550124acf20ac1cf0e33cdb3e5ba
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 21c247c2fb9e1532c4580eea894c97e2bff84f92
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660159"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657044"
 ---
 # <a name="communication-services-notifications"></a>Communication Services の通知
+
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+
 
 Azure Communication Services のチャットと通話のクライアント ライブラリにより、リアルタイムのメッセージング チャネルが作成されます。これは、効率的で信頼性の高い方法で、接続されたクライアントにシグナリング メッセージをプッシュすることを可能にします。 これにより、複雑な HTTP ポーリング ロジックを実装することなく、豊富なリアルタイム通信機能をアプリケーションに組み込むことができます。 ただしモバイル アプリケーションでは、このシグナリング チャネルは、アプリケーションがフォアグラウンドでアクティブになっているときにのみ接続されたままになります。 アプリケーションがバックグラウンドで実行されているときに、ユーザーが電話の着信またはチャット メッセージを受け取るようにするには、プッシュ通知を使用する必要があります。
 
@@ -28,7 +31,7 @@ Azure Communication Services は [Azure Event Grid](https://azure.microsoft.com/
 
 :::image type="content" source="./media/notifications/acs-events-int.png" alt-text="Communication Services が Event Grid とどのように統合されるかを示す図。":::
 
-[Azure Communication Services でのイベント処理](./event-handling.md)の詳細を確認してください。
+[Azure Communication Services でのイベント処理](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)の詳細を確認してください。
 
 ## <a name="deliver-push-notifications-via-azure-notification-hubs"></a>Azure Notification Hubs 経由でプッシュ通知を配信する
 

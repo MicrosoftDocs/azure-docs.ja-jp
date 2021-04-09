@@ -4,16 +4,16 @@ description: サポートが必要なお客様は、Azure portal を使用して
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
 ms.date: 06/25/2020
-ms.openlocfilehash: 11ca7925ce1664b5586ab8ec0fb523a2d562ee80
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 71aba8f2769a75805f47d90b71a8db4eeb26a97a
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745589"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652396"
 ---
 # <a name="create-an-azure-support-request"></a>Azure サポート要求を作成する
 
-Azure では、サポート要求 (サポート チケットとも呼ばれる) を作成して管理できます。 この記事で説明するように、[Azure portal ](https://portal.azure.com)上で要求を作成して管理することができます。 [Azure サポート チケット REST API ](/rest/api/support)を使用して、プログラムによって要求を作成して管理することもできます。
+Azure では、サポート要求 (サポート チケットとも呼ばれる) を作成して管理できます。 この記事で説明するように、[Azure portal ](https://portal.azure.com)上で要求を作成して管理することができます。 [Azure サポート チケット REST API ](/rest/api/support)を使用して、または [Azure CLI](/cli/azure/azure-cli-support-request) を使用して、プログラムによってリクエストを作成して管理することもできます。
 
 > [!NOTE]
 > Azure portal の URL は、組織がデプロイされている Azure クラウドに固有のものです。

@@ -16,12 +16,12 @@ ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da318840426d1c0b94eab06b89ff3152df9d26fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 681d92ed162feff0510067556d7eeaa47b12d988
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80331090"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102520032"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>ハイブリッド ID で必要なポートとプロトコル
 次のドキュメントは、ハイブリッド ID ソリューションを実装するために必要なポートとプロトコルに関するテクニカル リファレンスです。 次の図を使用して、対応する表を参照してください。
@@ -39,7 +39,7 @@ ms.locfileid: "80331090"
 | LDAP |389 (TCP/UDP) |AD からのデータのインポートに使用されます。 データは Kerberos の署名およびシールによって暗号化されます。 |
 | SMB | 445 (TCP) |AD フォレストにコンピューター アカウントを作成するためにシームレス SSO によって使用されます。 |
 | LDAP/SSL |636 (TCP/UDP) |AD からのデータのインポートに使用されます。 データ転送は署名されて暗号化されます。 TLS を使用している場合にのみ使用されます。 |
-| RPC |49152 から 65535 (ランダムな高い数値の RPC ポート)(TCP) |Azure AD Connect を AD フォレストにバインドするときの初期構成中と、パスワードの同期中に使用されます。 詳細については、[KB929851](https://support.microsoft.com/kb/929851)、[KB832017](https://support.microsoft.com/kb/832017)、[KB224196](https://support.microsoft.com/kb/224196) を参照してください。 |
+| RPC |49152 から 65535 (ランダムな高い数値の RPC ポート)(TCP) |Azure AD Connect を AD フォレストにバインドするときの初期構成中と、パスワードの同期中に使用されます。 動的ポートが変更されている場合は、そのポートを開く必要があります。 詳細については、[KB929851](https://support.microsoft.com/kb/929851)、[KB832017](https://support.microsoft.com/kb/832017)、[KB224196](https://support.microsoft.com/kb/224196) を参照してください。 |
 |WinRM  | 5985 (TCP) |Azure AD Connect ウィザードで gMSA を使用して AD FS をインストールする場合にのみ使用します|
 |AD DS Web サービス | 9389 (TCP) |Azure AD Connect ウィザードで gMSA を使用して AD FS をインストールする場合にのみ使用します |
 
@@ -81,7 +81,7 @@ ms.locfileid: "80331090"
 次の表は、Azure AD Connect と Azure AD 間の通信に必要なポートとプロトコルについて説明しています。
 
 ### <a name="table-6a---pass-through-authentication-with-sso"></a>表 6a - SSO でのパススルー認証のトラブルシューティング
-|Protocol|ポート番号|説明
+|プロトコル|ポート番号|説明
 | --- | --- | ---
 |HTTP|80|SSL などのセキュリティ検証用の送信 HTTP トラフィックに使用されます。 コネクタの自動更新機能が正常に機能するためにも必要です。
 |HTTPS|443| 機能の有効化と無効化、コネクタの登録、コネクタ更新プログラムのダウンロード、およびすべてのユーザー サインイン要求の処理などの操作のために、送信 HTTPS トラフィックを有効にします。
@@ -90,7 +90,7 @@ ms.locfileid: "80331090"
 
 ### <a name="table-6b---password-hash-sync-with-sso"></a>表 6b - SSO でのパスワード ハッシュ同期
 
-|Protocol|ポート番号|説明
+|プロトコル|ポート番号|説明
 | --- | --- | ---
 |HTTPS|443| SSO 登録を有効にします (SSO 登録プロセスでのみ必要です)。
 

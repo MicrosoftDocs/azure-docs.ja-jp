@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 3196d377c09ca0cce24093710bc4be13fb21d2e3
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99531649"
 ---
 「[イベントを監視するための準備をする](../../../detect-motion-emit-events-quickstart.md#prepare-to-monitor-events)」手順が完了していることを確認します。

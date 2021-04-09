@@ -2,17 +2,17 @@
 title: Azure Resource Manager テンプレートの仮想マシン | Microsoft Azure
 description: Azure Resource Manager テンプレートで仮想マシン リソースがどのように定義されるかについて説明します。
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 2726ba3b337dc785de58b06fb5e8372058f71879
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 32b73be3faf6eedb92220725b292a3e69cf7f965
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202098"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102555994"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの仮想マシン
 
@@ -144,7 +144,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 >
 >
 
-## <a name="api-version"></a>API Version
+## <a name="api-version"></a>API バージョン
 
 テンプレートを使用してリソースをデプロイする際に、使用する API のバージョンを指定する必要があります。 この例では、次の apiVersion 要素を使用して仮想マシン リソースを示しています。
 
@@ -270,7 +270,7 @@ Resource Manager は、デプロイ中の他のリソースに依存していな
 
 このプロパティを設定するには、ネットワーク インターフェイスが存在する必要があります。 したがって、依存関係が必要です。 1 つのリソース (子) が他のリソース (親) の中で定義されている場合も、依存関係を設定する必要があります。 たとえば、診断設定とカスタム スクリプト拡張機能は両方とも、仮想マシンの子リソースとして定義されています。 これらは、仮想マシンが存在しないうちは、作成することができません。 そのため、両方のリソースは、仮想マシンに依存しているとマークされます。
 
-## <a name="profiles"></a>プロファイル
+## <a name="profiles"></a>Profiles
 
 いくつかのプロファイル要素は、仮想マシン リソースを定義する際に使用されます。 必須のものもあれば、省略可能なものもあります。 たとえば、hardwareProfile、osProfile、storageProfile、networkProfile 要素は必須で、diagnosticsProfile 要素は省略可能です。 これらのプロファイルは、次のような設定を定義します。
    

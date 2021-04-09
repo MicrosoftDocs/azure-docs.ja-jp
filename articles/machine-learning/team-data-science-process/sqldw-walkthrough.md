@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: b638cb2b33f24220e7ceb852402862c707cc7bc6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93316001"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Team Data Science Process の活用: Azure Synapse Analytics の使用
@@ -61,10 +61,10 @@ trip\_data と trip\_fare の結合に使用される **一意のキー** は、
 * pickup\_datetime です。
 
 ## <a name="address-three-types-of-prediction-tasks"></a><a name="mltasks"></a>3 種類の予測タスクに対応する
-3 種類のモデリング タスクを説明するために、 *tip\_amount* に基づく 3 つの予測の問題を編成しました。
+3 種類のモデリング タスクを説明するために、*tip\_amount* に基づく 3 つの予測の問題を編成しました。
 
-1. **二項分類** :乗車においてチップが支払われたかどうかを予測します。つまり、 *tip\_amount* が $0 より大きい場合は肯定的な例で、 *tip\_amount* が $0 の場合は否定的な例です。
-2. **多クラス分類** :乗車で支払われたチップの範囲を予測します。 *tip\_amount* を次の 5 つの箱つまりクラスに分割します。
+1. **二項分類**:乗車においてチップが支払われたかどうかを予測します。つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
+2. **多クラス分類**:乗車で支払われたチップの範囲を予測します。 *tip\_amount* を次の 5 つの箱つまりクラスに分割します。
 
 `Class 0 : tip_amount = $0`
 
@@ -76,14 +76,14 @@ trip\_data と trip\_fare の結合に使用される **一意のキー** は、
 
 `Class 4 : tip_amount > $20`
 
-3. **回帰タスク** :乗車で支払われたチップの金額を予測します。
+3. **回帰タスク**:乗車で支払われたチップの金額を予測します。
 
 ## <a name="set-up-the-azure-data-science-environment-for-advanced-analytics"></a><a name="setup"></a>Azure データ サイエンス環境の高度な分析のためのセット アップ
 Azure データ サイエンス環境をセット アップするには、以下の手順に従います。
 
 **独自の Azure BLOB ストレージ アカウントを作成する**
 
-* 独自の Azure BLOB ストレージをプロビジョニングするときに、 **米国中南部** 内またはその場所にできるだけ近い Azure BLOB ストレージのジオロケーションを選択します。このストレージに NYC タクシー データが格納されています。 データは、AzCopy を使用してパブリック BLOB ストレージ コンテナーから独自のストレージ アカウント内のコンテナーにコピーされます。 Azure BLOB ストレージが米国中南部に近いほど、このタスク (ステップ 4) の完了が早くなります。
+* 独自の Azure BLOB ストレージをプロビジョニングするときに、**米国中南部** 内またはその場所にできるだけ近い Azure BLOB ストレージのジオロケーションを選択します。このストレージに NYC タクシー データが格納されています。 データは、AzCopy を使用してパブリック BLOB ストレージ コンテナーから独自のストレージ アカウント内のコンテナーにコピーされます。 Azure BLOB ストレージが米国中南部に近いほど、このタスク (ステップ 4) の完了が早くなります。
 * 独自の Azure Storage アカウントを作成するには、「[Azure Storage アカウントの作成](../../storage/common/storage-account-create.md)」に示されている手順に従います。 以下のストレージ アカウントの資格情報の値は必ずメモしておいてください。これらはチュートリアルの後半で必要になります。
 
   * **ストレージ アカウント名**
@@ -93,7 +93,7 @@ Azure データ サイエンス環境をセット アップするには、以下
 **Azure Synapse Analytics インスタンスをプロビジョニングします。**
 [Azure portal での Azure Synapse Analytics の作成とクエリの実行](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)に関するドキュメントの説明に従って、Azure Synapse Analytics インスタンスをプロビジョニングします。 後の手順で使用される次の Azure Synapse Analytics の資格情報は必ずメモしておいてください。
 
-* **サーバー名** : \<server Name>.database.windows.net
+* **サーバー名**: \<server Name>.database.windows.net
 * **SQLDW (データベース) 名**
 * **ユーザー名**
 * **パスワード**
@@ -103,7 +103,7 @@ Azure データ サイエンス環境をセット アップするには、以下
 **Visual Studio で Azure Synapse Analytics に接続します。** 手順については、[Azure Synapse Analytics 内で SQL Analytics に接続する方法](../../synapse-analytics/sql/connect-overview.md)に関する記事の手順 1 と 2 を参照してください。
 
 > [!NOTE]
-> Azure Synapse Analytics で作成したデータベースに対して (接続に関するトピックの手順 3 で示されているクエリではなく) 次の SQL クエリを実行して、 **マスター キーを作成します** 。
+> Azure Synapse Analytics で作成したデータベースに対して (接続に関するトピックの手順 3 で示されているクエリではなく) 次の SQL クエリを実行して、**マスター キーを作成します**。
 >
 >
 
@@ -154,7 +154,7 @@ PowerShell スクリプトを初めて実行するときに、Azure Synapse Anal
 
 この **PowerShell スクリプト** ファイルで、次のタスクが完了します。
 
-* AzCopy がまだインストールされていない場合は、 **AzCopy をダウンロードしてインストールします**
+* AzCopy がまだインストールされていない場合は、**AzCopy をダウンロードしてインストールします**
 
   ```azurepowershell
   $AzCopy_path = SearchAzCopy
@@ -191,7 +191,7 @@ PowerShell スクリプトを初めて実行するときに、Azure Synapse Anal
   Write-Host "This step (copying data from public blob to your storage account) takes $total_seconds seconds." -ForegroundColor "Green"
   ```
 
-* 以下のコマンドでは、プライベート BLOB ストレージ アカウントから、 **(LoadDataToSQLDW.sql を実行することで) Polybase を使用して Azure Synapse Analytics にデータを読み込みます** 。
+* 以下のコマンドでは、プライベート BLOB ストレージ アカウントから、 **(LoadDataToSQLDW.sql を実行することで) Polybase を使用して Azure Synapse Analytics にデータを読み込みます**。
 
   * スキーマの作成
 
@@ -363,13 +363,13 @@ PowerShell スクリプトを初めて実行するときに、Azure Synapse Anal
 コピー元のファイルとコピー先のファイルが重複する場合は、どのように対処するかを決定する必要があります。
 
 > [!NOTE]
-> パブリック BLOB ストレージからプライベート BLOB ストレージ アカウントにコピーする .csv ファイルが既にプライベート BLOB ストレージ アカウントに存在する場合、AzCopy によってファイルを上書きするかどうかが尋ねられます。 上書きしない場合は、確認を求めるメッセージが表示されたときに「 **n** 」と入力します。 **すべて** 上書きする場合は、確認を求めるメッセージが表示されたときに「 **a** 」と入力します。 「 **y** 」と入力して、.csv ファイルを個別に上書きすることもできます。
+> パブリック BLOB ストレージからプライベート BLOB ストレージ アカウントにコピーする .csv ファイルが既にプライベート BLOB ストレージ アカウントに存在する場合、AzCopy によってファイルを上書きするかどうかが尋ねられます。 上書きしない場合は、確認を求めるメッセージが表示されたときに「 **n** 」と入力します。 **すべて** 上書きする場合は、確認を求めるメッセージが表示されたときに「**a**」と入力します。 「 **y** 」と入力して、.csv ファイルを個別に上書きすることもできます。
 >
 >
 
 ![AzCopy からの出力][21]
 
-独自のデータを使用することができます。 実際のアプリケーションのオンプレミス マシンにデータがある場合でも、AzCopy を使用してオンプレミス データをプライベート Azure Blob Storage にアップロードできます。 アップロードするには、PowerShell スクリプト ファイルの AzCopy コマンドで、 **Source** の場所 (`$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`) を、データが格納されているローカル ディレクトリに変更します。
+独自のデータを使用することができます。 実際のアプリケーションのオンプレミス マシンにデータがある場合でも、AzCopy を使用してオンプレミス データをプライベート Azure Blob Storage にアップロードできます。 アップロードするには、PowerShell スクリプト ファイルの AzCopy コマンドで、**Source** の場所 (`$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`) を、データが格納されているローカル ディレクトリに変更します。
 
 > [!TIP]
 > 実際のアプリケーションのプライベート Azure BLOB ストレージ内にデータが既にある場合は、PowerShell スクリプトでの AzCopy ステップをスキップして、直接データを Azure Synapse Analytics にアップロードできます。 この場合、データの形式に合わせてスクリプトをさらに編集する必要があります。
@@ -383,12 +383,12 @@ PowerShell スクリプトを初めて実行するときに、Azure Synapse Anal
 ![成功したスクリプト実行の出力][20]
 
 ## <a name="data-exploration-and-feature-engineering-in-azure-synapse-analytics"></a><a name="dbexplore"></a>Azure Synapse Analytics でのデータの探索と特徴エンジニアリング
-このセクションでは、 **Visual Studio Data Tools** を使用して直接 Azure Synapse Analytics に対して SQL クエリを実行し、データの探索と特徴の生成を行います。 このセクションで使用されるすべての SQL クエリは、 *SQLDW_Explorations.sql* という名前のサンプル スクリプトにあります。 このファイルは、PowerShell スクリプトによってローカル ディレクトリに既にダウンロードされています。 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql)から取得することもできます。 ただし、GitHub のファイルには Azure Synapse Analytics の情報は含まれていません。
+このセクションでは、 **Visual Studio Data Tools** を使用して直接 Azure Synapse Analytics に対して SQL クエリを実行し、データの探索と特徴の生成を行います。 このセクションで使用されるすべての SQL クエリは、*SQLDW_Explorations.sql* という名前のサンプル スクリプトにあります。 このファイルは、PowerShell スクリプトによってローカル ディレクトリに既にダウンロードされています。 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql)から取得することもできます。 ただし、GitHub のファイルには Azure Synapse Analytics の情報は含まれていません。
 
-Visual Studio で、Azure Synapse Analytics ログイン名とパスワードを使用して Azure Synapse Analytics に接続し、 **SQL オブジェクト エクスプローラー** を開いて、データベースとテーブルがインポートされていることを確認します。 *SQLDW_Explorations.sql* ファイルを取得します。
+Visual Studio で、Azure Synapse Analytics ログイン名とパスワードを使用して Azure Synapse Analytics に接続し、**SQL オブジェクト エクスプローラー** を開いて、データベースとテーブルがインポートされていることを確認します。 *SQLDW_Explorations.sql* ファイルを取得します。
 
 > [!NOTE]
-> Parallel Data Warehouse (PDW) クエリ エディターを開くには、 **SQL オブジェクト エクスプローラー** で PDW を選択して **[新しいクエリ]** コマンドを使用します。 標準の SQL クエリ エディターは PDW でサポートされていません。
+> Parallel Data Warehouse (PDW) クエリ エディターを開くには、**SQL オブジェクト エクスプローラー** で PDW を選択して **[新しいクエリ]** コマンドを使用します。 標準の SQL クエリ エディターは PDW でサポートされていません。
 >
 >
 
@@ -646,7 +646,7 @@ Azure Machine Learning ワークスペースを既に設定している場合は
 2. Web ページの左下隅にある **[新規]** をクリックし、 **[Python 2]** を選択します。 次に、Notebook に名前を指定し、チェック マークをクリックして新しい空白の IPython Notebook を作成します。
 
     ![[新規] をクリックして [Python 2] を選択する][23]
-3. 新しい IPython Notebook の左上隅にある " **Jupyter** " のシンボルをクリックします。
+3. 新しい IPython Notebook の左上隅にある "**Jupyter**" のシンボルをクリックします。
 
     ![Jupyter Notebook のシンボルをクリックする][24]
 4. サンプルの IPython Notebook をドラッグして AzureML IPython Notebook サービスの **ツリー** ページにドロップしてから、 **[アップロード]** をクリックします。 これで、サンプルの IPython Notebook が AzureML IPython Notebook サービスにアップロードされます。
@@ -822,7 +822,7 @@ plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
 ![時間と距離の間の関係の散布図の出力][6]
 
-同様に、 **rate\_code** と **trip\_distance** のリレーションシップを確認できます。
+同様に、**rate\_code** と **trip\_distance** のリレーションシップを確認できます。
 
 ```sql
 plt.scatter(df1['passenger_count'], df1['trip_distance'])
@@ -937,11 +937,11 @@ pd.read_sql(query,conn)
 ## <a name="build-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Azure Machine Learning でモデルを作成する
 これで、[Azure Machine Learning](https://studio.azureml.net) でのモデルの作成とモデルのデプロイに進む準備が整いました。 データは、以前特定したどの予測の問題でも使用できる状態になりました。予測の問題とは、
 
-1. **二項分類** :乗車に対してチップが支払われたかどうかを予測します。
-2. **多クラス分類** :あらかじめ定義したクラスに従って、支払われたチップの範囲を予測します。
-3. **回帰タスク** :乗車で支払われたチップの金額を予測します。
+1. **二項分類**:乗車に対してチップが支払われたかどうかを予測します。
+2. **多クラス分類**:あらかじめ定義したクラスに従って、支払われたチップの範囲を予測します。
+3. **回帰タスク**:乗車で支払われたチップの金額を予測します。
 
-モデリングの演習を開始するには、 **Azure Machine Learning (クラシック)** ワークスペースにログインします。 Machine Learning ワークスペースをまだ作成していない場合は、[Azure Machine Learning Studio (クラシック) ワークスペースの作成](../classic/create-workspace.md)に関するページを参照してください。
+モデリングの演習を開始するには、**Azure Machine Learning (クラシック)** ワークスペースにログインします。 Machine Learning ワークスペースをまだ作成していない場合は、[Azure Machine Learning Studio (クラシック) ワークスペースの作成](../classic/create-workspace.md)に関するページを参照してください。
 
 1. Azure Machine Learning の使用を開始するには、「[Machine Learning Studio (クラシック) とは](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)」を参照してください。
 2. [Azure Machine Learning Studio (クラシック)](https://studio.azureml.net) にログインします。
@@ -965,10 +965,10 @@ pd.read_sql(query,conn)
 1. **[データの入力と出力]** セクションで利用できる [データのインポート][import-data] モジュールを使用して、Azure Machine Learning Studio (クラシック) にデータを取り込みます。 詳細については、[データのインポート][import-data] モジュールのリファレンスのページをご覧ください。
 
     ![Azure ML データのインポート][17]
-2. **[プロパティ]** パネルで、 **Azure SQL Database** を **データ ソース** として選択します。
+2. **[プロパティ]** パネルで、**Azure SQL Database** を **データ ソース** として選択します。
 3. データベースの DNS 名を **[データベース サーバー名]** フィールドに入力します。 形式: `tcp:<your_virtual_machine_DNS_name>,1433`
 4. **データベース名** を対応するフィールドに入力します。
-5. < *SQL ユーザー名* > を **[Server user account name (サーバーのユーザー アカウント名)]** に、< *パスワード* > を **[Server user account password (サーバーのユーザー アカウントのパスワード)]** に入力します。
+5. <*SQL ユーザー名*> を **[Server user account name (サーバーのユーザー アカウント名)]** に、<*パスワード*> を **[Server user account password (サーバーのユーザー アカウントのパスワード)]** に入力します。
 7. **データベース クエリ** テキスト編集領域で、必要なデータベース フィールド (ラベルなどの計算フィールドなど) を抽出するクエリを貼り付けてから、データを希望するサンプルのサイズにダウンサンプリングします。
 
 Azure Synapse Analytics データベースから直接データを読み取る、二項分類の実験の例を次の図に示します (テーブル名の nyctaxi_trip と nyctaxi_fare は、必ずチュートリアルで使用したスキーマ名とテーブル名に置き換えてください)。 同様の実験を、多クラス分類と回帰問題で構築することができます。
@@ -976,7 +976,7 @@ Azure Synapse Analytics データベースから直接データを読み取る�
 ![Azure ML トレーニング][10]
 
 > [!IMPORTANT]
-> 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、 **3 つのモデリングの演習用のラベルはすべてクエリに含まれています** 。 各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての **ターゲット リーク** を **除外する** ことです。 たとえば、二項分類を使用する場合は、ラベル **tipped** を使用し、フィールド **[tip\_class]** 、 **[tip\_amount]** 、 **[total\_amount]** は除外します。 使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
+> 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、 **3 つのモデリングの演習用のラベルはすべてクエリに含まれています**。 各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての **ターゲット リーク** を **除外する** ことです。 たとえば、二項分類を使用する場合は、ラベル **tipped** を使用し、フィールド **[tip\_class]** 、 **[tip\_amount]** 、 **[total\_amount]** は除外します。 使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
 >
 > 不要な列またはターゲット リークを除外するには、[データセット内の列の選択][select-columns]モジュールまたは[メタデータの編集][edit-metadata]を使用できます。 詳細については、[データセット内の列の選択][select-columns]と[メタデータの編集][edit-metadata]のリファレンス ページを参照してください。
 >
@@ -1000,7 +1000,7 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 2. 予想される入力データ スキーマを表す論理 **入力ポート** を特定する。
 3. 予想される Web サービスの出力スキーマを表す論理 **出力ポート** を特定する。
 
-スコア付け実験が作成されたら、結果を確認して、必要に応じて調整します。 一般的な調整は、入力データセットまたはクエリをラベル フィールドを除くものに置き換えることです。これらのラベル フィールドは、サービスの呼び出し時にスキーマにマップされないからです。 入力データセットまたはクエリのサイズを、入力スキーマを示すのに十分な 2、3 個のレコードまで削減することをお勧めします。 出力ポートでは、一般的に、すべての入力フィールドを除外し、 [データセット内の列の選択][select-columns]モジュールを使用して、 **スコアリングしたラベル** と **スコアリングした確率** のみを出力に含めます。
+スコア付け実験が作成されたら、結果を確認して、必要に応じて調整します。 一般的な調整は、入力データセットまたはクエリをラベル フィールドを除くものに置き換えることです。これらのラベル フィールドは、サービスの呼び出し時にスキーマにマップされないからです。 入力データセットまたはクエリのサイズを、入力スキーマを示すのに十分な 2、3 個のレコードまで削減することをお勧めします。 出力ポートでは、一般的に、すべての入力フィールドを除外し、[データセット内の列の選択][select-columns]モジュールを使用して、**スコアリングしたラベル** と **スコアリングした確率** のみを出力に含めます。
 
 サンプルのスコア付け実験を次の図に示します。 デプロイできる状態になったら、下部の操作バーにある **[Web サービスの発行]** ボタンをクリックします。
 

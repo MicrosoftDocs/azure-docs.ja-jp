@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/08/2019
 ms.openlocfilehash: 4867a065a85fab1e4abc7f19401239e5b76e1da4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91541409"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>ダッシュボードを使用してアプリを改善する方法
@@ -88,7 +88,7 @@ ms.locfileid: "91541409"
 
 この問題から始めましょう - 他の問題の根本的な原因である可能性があります。
 
-**データの不均衡**の意図一覧には、データの不均衡を修正するために、さらに多くの発話が必要な意図が示されます。
+**データの不均衡** の意図一覧には、データの不均衡を修正するために、さらに多くの発話が必要な意図が示されます。
 
 **この問題を解決するには**:
 
@@ -102,7 +102,7 @@ ms.locfileid: "91541409"
 
 ### <a name="review-incorrect-predictions"></a>正しくない予測を確認する
 
-**正しくない予測**の意図一覧には、特定の意図の例として使用されていますが、異なる意図のために予測されている発話のある意図が示されます。
+**正しくない予測** の意図一覧には、特定の意図の例として使用されていますが、異なる意図のために予測されている発話のある意図が示されます。
 
 **この問題を解決するには**:
 
@@ -111,7 +111,7 @@ ms.locfileid: "91541409"
 
 ### <a name="review-unclear-predictions"></a>不明瞭な予測を確認する
 
-**不明瞭な予測**の意図一覧には、最も近いライバルからあまり離れておらず、[ネガティブ サンプリング](luis-how-to-train.md#train-with-all-data)のために発話の最上位の意図が次のトレーニングで変化する可能性がある予測スコアの発話がある意図が示されます。
+**不明瞭な予測** の意図一覧には、最も近いライバルからあまり離れておらず、[ネガティブ サンプリング](luis-how-to-train.md#train-with-all-data)のために発話の最上位の意図が次のトレーニングで変化する可能性がある予測スコアの発話がある意図が示されます。
 
 **この問題を解決するには**:
 

@@ -11,10 +11,10 @@ services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
 ms.openlocfilehash: ebdc4b219e0840c18e6bef8ebfe9b8eefa8faf3b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92895586"
 ---
 # <a name="secure-a-web-application-with-user-sign-in"></a>ユーザー サインインを使用した Web アプリケーションのセキュリティ保護
@@ -36,10 +36,10 @@ ms.locfileid: "92895586"
 
 3. アプリケーションの登録が完了したら、ユーザーに対してアプリケーション サインインが機能することを確認します。 サインインが機能するなら、アプリケーションに対して、Azure Maps REST API への委任されたアクセスを許可できます。
     
-4.  委任された API アクセス許可を Azure Maps に割り当てるには、アプリケーションに移動します。 次に、 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。 **[所属する組織で使用している API]** で、「 **Azure Maps** 」を検索して選択します。
+4.  委任された API アクセス許可を Azure Maps に割り当てるには、アプリケーションに移動します。 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。 **[所属する組織で使用している API]** で、「**Azure Maps**」を検索して選択します。
 
     > [!div class="mx-imgBorder"]
-    > ![アプリの API アクセス許可の追加](./media/how-to-manage-authentication/app-permissions.png)
+    > ![アプリの API アクセス許可を追加する](./media/how-to-manage-authentication/app-permissions.png)
 
 5. **[Access Azure Maps] (Azure Maps へのアクセス)** の横にあるチェック ボックスをオンにしてから、 **[アクセス許可の追加]** を選択します。
 

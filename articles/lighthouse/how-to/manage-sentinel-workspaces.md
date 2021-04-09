@@ -4,10 +4,10 @@ description: 委任された顧客リソースで Azure Sentinel を効果的に
 ms.date: 03/02/2021
 ms.topic: how-to
 ms.openlocfilehash: 009edaefe021dedb5d9a40a8cc3bac2c2974ae10
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101702523"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel ワークスペースの大規模な管理を行う

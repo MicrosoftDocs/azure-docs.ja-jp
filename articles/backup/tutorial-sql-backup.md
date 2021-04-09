@@ -4,10 +4,10 @@ description: このチュートリアルでは、Azure VM 上で稼働してい�
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.openlocfilehash: 17a8472da2595c08cb198baaf853faf110a619fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88612454"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Azure VM での SQL Server データベースのバックアップ
@@ -167,7 +167,7 @@ VM 上で稼働しているデータベースを検出します。
    ![新しいバックアップ ポリシーのポリシーの種類を選択する](./media/backup-azure-sql-database/policy-type-details.png)
 
 3. **[ポリシー名]** に新しいポリシーの名前を入力します。
-4. **完全バックアップのポリシー**で **[バックアップ頻度]** を選択し、 **[毎日]** または **[毎週]** を選びます。
+4. **完全バックアップのポリシー** で **[バックアップ頻度]** を選択し、 **[毎日]** または **[毎週]** を選びます。
 
    * **[毎日]** を選択する場合は、バックアップ ジョブが開始されるときに、時刻とタイム ゾーンを選択します。
    * **[完全バックアップ]** オプションをオフにすることはできないため、完全バックアップを実行する必要があります。
@@ -192,7 +192,7 @@ VM 上で稼働しているデータベースを検出します。
    ![リテンション期間の間隔の設定](./media/backup-azure-sql-database/retention-range-interval.png)
    ![差分バックアップのポリシー メニューを開く](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
 
-8. **差分バックアップのポリシー**で、 **[有効]** を選択して頻度とリテンション期間の制御を開きます。
+8. **差分バックアップのポリシー** で、 **[有効]** を選択して頻度とリテンション期間の制御を開きます。
 
     * 最多で、1 日に 1 回の差分バックアップをトリガーできます。
     * 差分バックアップは、最大 180 日間保持できます。 より長いリテンション期間が必要な場合は、完全バックアップを使用する必要があります。
@@ -205,7 +205,7 @@ VM 上で稼働しているデータベースを検出します。
 
     ![ログ バックアップ ポリシーを編集する](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
-13. **[バックアップ ポリシー]** メニューで、**SQL バックアップの圧縮**を有効にするかどうかを選択します。
+13. **[バックアップ ポリシー]** メニューで、**SQL バックアップの圧縮** を有効にするかどうかを選択します。
     * 圧縮は既定で、無効になっています。
     * バックエンドでは、Azure Backup は SQL ネイティブ バックアップの圧縮を使用します。
 

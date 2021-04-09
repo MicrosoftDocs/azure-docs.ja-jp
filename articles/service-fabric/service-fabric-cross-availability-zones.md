@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 50ab66a1f98d06d79a46d61f683d56822b619721
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: ef1a49301cf150f92d30c163dee262a22f1515d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007042"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714954"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Availability Zones をまたがる Azure Service Fabric クラスターのデプロイ
 Azure の Availability Zones は高可用性を備えたサービスで、アプリケーションとデータをデータセンターの障害から保護します。 可用性ゾーンは、Azure リージョン内に独立した電源、冷却手段、ネットワークを備えた一意の物理的な場所です。
@@ -345,7 +345,7 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 
 * 最初の値は、**zones** プロパティで、仮想マシン スケール セットに存在する Availability Zones を指定します。
 * 2 つ目の値は、"singlePlacementGroup" プロパティで、true に設定する必要があります。 **3 つの AZ にまたがるスケールセットでは、"singlePlacementGroup = true" の場合でも、最大 300 VM までスケールアップできます。**
-* 3 つ目の値は、"zoneBalance" であり、true に設定されている場合、厳密なゾーン バランシングが確実に行われます。 ゾーン間で VM が不均等に分散されないようにするには、これを true に設定することをお勧めします。 [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing) について確認します。
+* 3 つ目の値は、"zoneBalance" です。これを指定すると、厳密なゾーン バランシングが確実に行われます。 ゾーン間で VM が不均衡に分散されないようにするには、これを "true" にする必要があります。 ゾーン間で VM が不均衡に分散しているクラスターでは、ゾーン ダウンのシナリオに対処できる可能性が低くなります。 [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing) について確認します。
 * FaultDomain と UpgradeDomain のオーバーライドは、構成する必要はありません。
 
 ```json
@@ -409,7 +409,7 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 > * パブリック IP と Load Balancer リソースは、この記事で既に説明したように、Standard SKU を使用する必要があります。
 > * nodeType の "multipleAvailabilityZones" プロパティは、nodeType の作成時にのみ定義できます。後で変更することはできません。 このため、既存の nodeTypes をこのプロパティで構成することはできません。
 > * "SfZonalUpgradeMode" を省略した場合、または "Hierarchical" に設定した場合、クラスター内のアップグレード ドメインが増えるにつれて、クラスターとアプリケーションのデプロイ速度が低下します。 15 のアップグレード ドメインのアップグレード期間に組み入れるようにアップグレード ポリシーのタイムアウトを適切に調整することが重要です。
-> * 1 ゾーン ダウン シナリオでクラスターが存続できるように、クラスターの信頼性レベルを Platinum に設定することをお勧めします。
+> * 1 ゾーン ダウン シナリオでクラスターが存続できるようにするには、クラスターを **reliabilityLevel = Platinum** に設定してください。
 
 >[!NOTE]
 > ベスト プラクティスとして、sfZonalUpgradeMode を Hierarchical に設定するか、省略することをお勧めします。 デプロイは、影響を与えるレプリカやインスタンスを減らす VM のゾーン分布に従って、それらの安全性を高めます。

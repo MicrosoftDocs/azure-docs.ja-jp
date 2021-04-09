@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9dce61817bdd6b42223028a624cd6e237be28bfe
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: e740fdb9cd232892dadfe98c4d739759be66bf55
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953820"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488722"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-saml-protocol-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で SAML プロトコルを使用して Salesforce SAML プロバイダーでのサインインを設定する
 
@@ -33,7 +33,7 @@ ms.locfileid: "98953820"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-この記事では、Azure Active Directory B2C (Azure AD B2C) で[カスタム ポリシー](custom-policy-overview.md)を使用して Salesforce 組織からのユーザーのサインインを有効にする方法について説明します。 サインインを有効にするには、[SAML ID プロバイダー技術プロファイル](saml-identity-provider-technical-profile.md)をカスタム ポリシーに追加します。
+この記事では、Azure Active Directory B2C (Azure AD B2C) で[カスタム ポリシー](custom-policy-overview.md)を使用して Salesforce 組織からのユーザーのサインインを有効にする方法について説明します。 サインインを有効にするには、[SAML ID プロバイダー](identity-provider-generic-saml.md)をカスタム ポリシーに追加します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -60,11 +60,24 @@ ms.locfileid: "98953820"
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase
       ```
 
+      [カスタム ドメイン](custom-domain.md)を使用する場合は、次の形式を使用します。
+
+      ```
+      https://your-domain-name/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase
+      ```
+
 6. **[ACS URL]** フィールドに、次の URL を入力します。 `your-tenant` の値を、Azure AD B2C テナントの名前に置き換えます。
 
       ```
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
       ```
+
+      [カスタム ドメイン](custom-domain.md)を使用する場合は、次の形式を使用します。
+
+      ```
+      https://your-domain-name/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
+      ```
+
 7. リストの下までスクロールし、 **[保存]** をクリックします。
 
 ### <a name="get-the-metadata-url"></a>メタデータ URL の取得
@@ -77,7 +90,7 @@ ms.locfileid: "98953820"
 1. 接続されたアプリの **[Manage]\(管理\)** ページで、 **[Manage Profiles]\(プロファイルの管理\)** をクリックします。
 2. Azure AD B2C とフェデレーションするプロファイル (またはユーザーのグループ) を選択します。 システム管理者は、Salesforce アカウントを使用してフェデレーションを行うことができるように、 **[システム管理者]** のチェック ボックスをオンにします。
 
-## <a name="create-a-self-signed-certificate"></a>自己署名証明書を作成する
+## <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 
 [!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../includes/active-directory-b2c-create-self-signed-certificate.md)]
 
@@ -100,7 +113,7 @@ ms.locfileid: "98953820"
 
 ユーザーが Salesforce アカウントを使用してサインインするようにするには、そのアカウントを Azure AD B2C がエンドポイント経由で通信できる相手のクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
 
-Salesforce アカウントをクレーム プロバイダーとして定義するには、そのアカウントをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。 詳しくは、[SAML ID プロバイダー技術プロファイルの定義](saml-identity-provider-technical-profile.md)に関するページをご覧ください。
+Salesforce アカウントをクレーム プロバイダーとして定義するには、そのアカウントをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。 詳細については、[SAML ID プロバイダーの定義](identity-provider-generic-saml.md)に関するページをご覧ください。
 
 1. *TrustFrameworkExtensions.xml* を開きます。
 1. **ClaimsProviders** 要素を見つけます。 存在しない場合は、それをルート要素の下に追加します。
@@ -186,6 +199,13 @@ Salesforce アカウントをクレーム プロバイダーとして定義す�
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
+
+1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。
+1. **[アプリケーション]** には、[前に登録した](troubleshoot-custom-policies.md#troubleshoot-the-runtime) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[今すぐ実行]** ボタンを選択します。
+1. サインアップまたはサインイン ページで、 **[Salesforce]** を選択して、Salesforce アカウントを使用してサインインします。
+
+サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
 
 ::: zone-end

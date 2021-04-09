@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Azure Kubernetes Services で Azure Dev Spaces を実行するためのネットワーク要件について説明します。
 keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、コンテナー、CNI、kubenet、SDN、ネットワーク
 ms.openlocfilehash: 09114ab13555cbf9ef42b37c86ffb76a8fe3ab3f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91970340"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>さまざまなネットワーク トポロジで Azure Dev Spaces 用のネットワークを構成する
@@ -24,7 +24,7 @@ Azure Dev Spaces は、既定のネットワーク構成を使用して Azure Ku
 
 AKS クラスターには、その AKS クラスターへのイングレスまたはエグレス トラフィックを制限するための別の仮想ネットワークまたはサブネット構成が含まれている可能性があります。 たとえば、クラスターがファイアウォール (Azure Firewall など) の背後に存在したり、ネットワーク トラフィックを制限するためのネットワーク セキュリティ グループまたはカスタム ロールを使用したりすることがあります。 ネットワーク構成の例は、[GitHub の Azure Dev Spaces のサンプル リポジトリ][sample-repo]にあります。
 
-Azure Dev Spaces には、*イングレスおよびエグレス* ネットワーク トラフィックや、*イングレスのみ*のトラフィックに対する特定の要件があります。 AKS クラスターへのトラフィックを制限する仮想ネットワークまたはサブネット構成を含む AKS クラスター上で Azure Dev Spaces を使用している場合、Azure Dev Spaces が正しく機能するには、次のイングレスのみのトラフィックとイングレスおよびエグレス トラフィックの要件に従う必要があります。
+Azure Dev Spaces には、*イングレスおよびエグレス* ネットワーク トラフィックや、*イングレスのみ* のトラフィックに対する特定の要件があります。 AKS クラスターへのトラフィックを制限する仮想ネットワークまたはサブネット構成を含む AKS クラスター上で Azure Dev Spaces を使用している場合、Azure Dev Spaces が正しく機能するには、次のイングレスのみのトラフィックとイングレスおよびエグレス トラフィックの要件に従う必要があります。
 
 ### <a name="ingress-and-egress-network-traffic-requirements"></a>イングレスおよびエグレス ネットワーク トラフィックの要件
 
@@ -44,7 +44,7 @@ Azure Dev Spaces は、Kubernetes 名前空間レベルのルーティングや�
 
 ## <a name="aks-cluster-network-requirements"></a>AKS クラスター ネットワークの要件
 
-AKS では、[ネットワーク ポリシー][aks-network-policies]を使用して、クラスター上のポッド間のイングレスおよびエグレス トラフィックや、ポッドからのエグレス トラフィックを制御できます。 Azure Dev Spaces には、*イングレスおよびエグレス* ネットワーク トラフィックや、*イングレスのみ*のトラフィックに対する特定の要件があります。 AKS ネットワーク ポリシーを含む AKS クラスター上で Azure Dev Spaces を使用している場合、Azure Dev Spaces が正しく機能するには、次のイングレスのみのトラフィックとイングレスおよびエグレス トラフィックの要件に従う必要があります。
+AKS では、[ネットワーク ポリシー][aks-network-policies]を使用して、クラスター上のポッド間のイングレスおよびエグレス トラフィックや、ポッドからのエグレス トラフィックを制御できます。 Azure Dev Spaces には、*イングレスおよびエグレス* ネットワーク トラフィックや、*イングレスのみ* のトラフィックに対する特定の要件があります。 AKS ネットワーク ポリシーを含む AKS クラスター上で Azure Dev Spaces を使用している場合、Azure Dev Spaces が正しく機能するには、次のイングレスのみのトラフィックとイングレスおよびエグレス トラフィックの要件に従う必要があります。
 
 ### <a name="ingress-and-egress-network-traffic-requirements"></a>イングレスおよびエグレス ネットワーク トラフィックの要件
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 199ae9d9844149c1931da638633110f717fe0517
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97915897"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services のパーティション分割
@@ -234,7 +234,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     このサービスは、姓をクエリ文字列パラメーターとして受け取り、パーティション キーを決定し、Alphabet.Processing サービスに送信して処理するという、単純な Web インターフェイスとして機能します。
 11. 次のように、 **[Create a Service]** (サービスの作成) ダイアログ ボックスで **[ステートレス サービス]** を選択し、"Alphabet.Web" と名前を付けます。
     
-    ![ステートレス サービスのスクリーン ショット](./media/service-fabric-concepts-partitioning/createnewstateless.png)。
+    ![ステートレス サービスのスクリーン ショット](./media/service-fabric-concepts-partitioning/createnewstateless.png).
 12. Alphabet.WebApi サービスの ServiceManifest.xml のエンドポイント情報を更新し、次のようにポートを開きます。
     
     ```xml

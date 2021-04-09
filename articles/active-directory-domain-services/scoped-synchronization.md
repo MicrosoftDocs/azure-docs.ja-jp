@@ -13,10 +13,10 @@ ms.date: 01/20/2021
 ms.author: justinha
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 34692f5e563e4931a27ea59db84d9c88f27817da
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98660900"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure portal を使用して、Azure AD から Azure Active Directory Domain Services への範囲指定された同期を構成する
@@ -41,11 +41,11 @@ Azure Active Directory Domain Services (Azure AD DS) は、認証サービスを
 
 ## <a name="scoped-synchronization-overview"></a>範囲指定された同期の概要
 
-既定では、Azure AD ディレクトリのすべてのユーザーとグループがマネージド ドメインに同期されます。 マネージド ドメインにアクセスする必要のあるユーザーが少数しかいない場合は、それらのユーザー アカウントのみを同期することができます。 この範囲指定された同期はグループベースです。 グループベースの範囲指定された同期を構成した場合、指定したグループに属するユーザー アカウントのみがマネージド ドメインに同期されます。 入れ子になったグループは同期されず、選択した特定のグループのみが同期されます。
+既定では、Azure AD ディレクトリのすべてのユーザーとグループがマネージド ドメインに同期されます。 マネージド ドメインにアクセスする必要のあるユーザーが少数しかいない場合は、それらのユーザー アカウントのみを同期することができます。 この範囲指定された同期はグループベースです。 グループベースの範囲指定された同期を構成した場合、指定したグループに属するユーザー アカウントのみがマネージド ドメインに同期されます。 入れ子になったグループは同期されません。選択した特定のグループのみが同期されます。
 
 同期スコープは、マネージド ドメインを作成する前または後に変更できます。 同期のスコープは、アプリケーション識別子 2565bd9d-da50-47d4-8b85-4c97f669dc36 を使用してサービス プリンシパルによって定義されます。 スコープが失われないようにするには、サービス プリンシパルを削除または変更しないでください。 誤って削除された場合、同期スコープを復旧できません。 
 
-同期スコープを変更する場合は、次の点に注意してください。
+同期スコープを変更する場合は、次の点にご注意ください。
 
 - 完全同期が行われます。
 - マネージド ドメインで不要になったオブジェクトは削除されます。 新しいオブジェクトは、マネージド ドメインに作成されます。

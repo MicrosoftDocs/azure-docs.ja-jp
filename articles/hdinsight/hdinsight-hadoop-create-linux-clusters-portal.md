@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
-ms.openlocfilehash: c68d342cf21d69fa97ba3d5171ba596662fd845f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 98d18044693bc6f4d23e04e9403e71686df39451
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945817"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872202"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal を使用して HDInsight で Linux ベースのクラスターを作成する
 
@@ -32,13 +32,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 上部のメニューで、 **[+ リソースの作成]** を選択します。
 
-    ![Azure portal で新しいクラスターを作成する](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png "Azure Portal での新しいクラスターの作成")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png" alt-text="Azure portal で新しいクラスターを作成する":::
 
 1. **[分析]**  >  **[Azure HDInsight]** を選択して **[HDInsight クラスターの作成]** ページに移動します。
 
 ## <a name="basics"></a>基本
 
-![HDInsight でのクラスター作成の基本](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "Azure Portal での新しいクラスターの作成")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png" alt-text="HDInsight でのクラスター作成の基本":::
 
 **[基本]** タブで次の情報を指定します。
 
@@ -63,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > [!WARNING] 
 > 2020 年 6 月 15 日以降、HDInsight を使用して新しいサービス プリンシパルを作成することはできません。 Azure Active Directory 使用した[サービス プリンシパルと証明書の作成](../active-directory/develop/howto-create-service-principal-portal.md)に関する記事を参照してください。
 
-![HDInsight でのクラスター ストレージの作成](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Azure portal での新しいクラスターの作成 - ストレージ")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png" alt-text="HDInsight でのクラスター ストレージの作成":::
 
 ### <a name="primary-storage"></a>プライマリ ストレージ
 
@@ -90,7 +90,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="security--networking"></a>セキュリティとネットワーク
 
-![HDInsight でのクラスター セキュリティ ネットワークの作成](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-security-networking.png "HDInsight でのクラスター セキュリティ ネットワークの作成")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-security-networking.png" alt-text="HDInsight でのクラスター セキュリティ ネットワークの作成":::
 
 **[セキュリティとネットワーク]** タブで、次の情報を入力します。
 
@@ -107,7 +107,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="configuration--pricing"></a>構成と価格
 
-![HDInsight でのクラスターの構成の作成](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-configuration.png "[構成と価格] タブ")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-configuration.png" alt-text="HDInsight でのクラスターの構成の作成":::
 
 **[構成と価格]** タブで、次の情報を入力します。
 
@@ -123,7 +123,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review--create"></a>確認と作成
 
-![HDInsight でのクラスター作成の概要](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png "クラスター ノードの数を指定する")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png" alt-text="HDInsight でのクラスター作成の概要":::
 
 設定を確認します。 **[作成]** を選択して、クラスターを作成します。
 
@@ -133,7 +133,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 作成プロセスが完了したら、 **[デプロイが成功しました]** という通知から **[リソースに移動]** を選択します。 クラスター ウィンドウには、次の情報が表示されます。
 
-![HDI Azure portal クラスターの概要](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "クラスターのプロパティ")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png" alt-text="HDI Azure portal クラスターの概要":::
 
 ウィンドウのいくつかのアイコンの説明は以下のとおりです。
 

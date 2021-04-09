@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.openlocfilehash: 576ba945018d13db9cd24888f3c41a2215857694
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91316513"
 ---
 # <a name="design-with-intent-and-entity-models"></a>意図およびエンティティ モデルを使用した設計
@@ -32,7 +32,7 @@ LUIS の機械学習手法を使用すると、簡単に概念をコンピュー
 
 本を注文するためにユーザーの意図を判断する必要があるアプリ、および顧客の発送先住所が必要なアプリを考えてみましょう。 このアプリには、`OrderBook` と `ShippingLocation`の 2 つの意図があります。
 
-次の発話は、`OrderBook` 意図の**肯定的な例**と、`ShippingLocation` と `None` の意図の**否定的な例**です。
+次の発話は、`OrderBook` 意図の **肯定的な例** と、`ShippingLocation` と `None` の意図の **否定的な例** です。
 
 `Buy the top-rated book on bot architecture.`
 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 778424cbb81f8fe51a57dd41d94aa9015ffad94e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5d94625e3eb121e556b28038cf59626be1332966
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381513"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "102455807"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Functions における Azure Queue storage の出力バインド
 
@@ -480,7 +480,7 @@ C# と C# スクリプトで複数のキュー メッセージを書き込むに
 
 - **戻り値**:*function.json* 内の `name` プロパティを `$return` に設定します。 この構成では、関数の戻り値は Queue storage メッセージとして永続化されます。
 
-- **命令型**:[Out](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) 型として宣言されたパラメーターの [set](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true#set-val--t-----none) メソッドに値を渡します。 `set` に渡された値は、Queue storage メッセージとして永続化されます。
+- **命令型**:[Out](/python/api/azure-functions/azure.functions.out) 型として宣言されたパラメーターの [set](/python/api/azure-functions/azure.functions.out#set-val--t-----none) メソッドに値を渡します。 `set` に渡された値は、Queue storage メッセージとして永続化されます。
 
 ---
 

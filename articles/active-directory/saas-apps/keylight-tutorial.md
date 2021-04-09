@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 81949736603d22cac779d08d14bd6db65065d730
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92459086"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>チュートリアル: Azure Active Directory と LockPath Keylight の統合
@@ -41,8 +41,8 @@ LockPath Keylight と Azure AD の統合を構成するには、次のものが�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* LockPath Keylight では、 **SP** によって開始される SSO がサポートされます
-* LockPath Keylight では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* LockPath Keylight では、**SP** によって開始される SSO がサポートされます
+* LockPath Keylight では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-lockpath-keylight-from-the-gallery"></a>ギャラリーからの LockPath Keylight の追加
 
@@ -62,13 +62,13 @@ Azure AD への LockPath Keylight の統合を構成するには、ギャラリ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **LockPath Keylight** 」と入力し、結果ウィンドウで **LockPath Keylight** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**LockPath Keylight**」と入力し、結果ウィンドウで **LockPath Keylight** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果一覧の LockPath Keylight](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、LockPath Keylight で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、LockPath Keylight で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと LockPath Keylight 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 LockPath Keylight で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -191,7 +191,7 @@ LockPath Keylight で Azure AD シングル サインオンを構成するには
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

@@ -8,10 +8,10 @@ ms.custom: subject-armqs, devx-track-azurecli
 ms.author: zhshang
 ms.date: 10/02/2020
 ms.openlocfilehash: 4ab029048b37a4dcb44ef405249dcb9e20de70cf
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94841617"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>クイックスタート: ARM テンプレートを使用して Azure SignalR Service をデプロイする

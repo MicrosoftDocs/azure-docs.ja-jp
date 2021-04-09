@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: lajanuar
 ms.openlocfilehash: 6691c1b91a3d26312e279cadc97a1bb95838c04f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98895579"
 ---
 # <a name="what-is-a-bleu-score"></a>BLEU スコアとは

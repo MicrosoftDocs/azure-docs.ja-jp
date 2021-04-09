@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 11/19/2020
 ms.reviewer: mikarmar
 ms.openlocfilehash: b77e0613f502d003b5e4651e34be4cadbd4209a9
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96603004"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-sign-in-using-a-sign-in-with-apple-provider-preview"></a>Sign in with Apple プロバイダーを使用してサインインするように、App Service または Azure Functions アプリを構成する (プレビュー)

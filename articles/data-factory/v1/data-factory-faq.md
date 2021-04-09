@@ -3,16 +3,16 @@ title: Azure Data Factory - よく寄せられる質問
 description: Azure データ ファクトリについてよく寄せられる質問です。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 4ddadec327f1a4f6aa22d51ac073b9aebb0dee82
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 450a12ae5ae1e13c9cc9b5599a41b6c29d740a9f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383196"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785327"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory - よく寄せられる質問
 > [!NOTE]

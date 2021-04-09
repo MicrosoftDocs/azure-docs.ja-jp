@@ -2,14 +2,14 @@
 author: mikben
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 9/1/2020
+ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 3b2fb1c4e7a08619a0321e188b54bb581f97fd6d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8d4e573cefd595669d9cb2cf9a7b83595eea7971
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661549"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103622337"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -79,8 +79,8 @@ String userToken = '<user token>';
 CallClient callClient = new CallClient();
 CommunicationTokenCredential tokenCredential = new CommunicationTokenCredential(userToken);
 android.content.Context appContext = this.getApplicationContext(); // From within an Activity for instance
-CallAgent callAgent = callClient.createCallAgent((appContext, tokenCredential).get();
-DeviceManage deviceManager = callClient.getDeviceManager().get();
+CallAgent callAgent = callClient.createCallAgent(appContext, tokenCredential).get();
+DeviceManager deviceManager = callClient.getDeviceManager().get();
 ```
 呼び出し元の表示名を設定するには、この代替メソッドを使用します。
 
@@ -91,8 +91,8 @@ CommunicationTokenCredential tokenCredential = new CommunicationTokenCredential(
 android.content.Context appContext = this.getApplicationContext(); // From within an Activity for instance
 CallAgentOptions callAgentOptions = new CallAgentOptions();
 callAgentOptions.setDisplayName("Alice Bob");
-CallAgent callAgent = callClient.createCallAgent((appContext, tokenCredential, callAgentOptions).get();
-DeviceManage deviceManager = callClient.getDeviceManager().get();
+CallAgent callAgent = callClient.createCallAgent(appContext, tokenCredential, callAgentOptions).get();
+DeviceManager deviceManager = callClient.getDeviceManager().get();
 ```
 
 

@@ -1,24 +1,18 @@
 ---
 title: Azure Security Center におけるアダプティブ アプリケーション制御
 description: このドキュメントは、Azure マシンで実行されるアプリケーションの許可リストを定義するために、Azure Security Center で適応型アプリケーション制御を使用する場合に役に立ちます。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: a7ad5f661d4eca07deb0942c7684b89ac59931a2
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: de5c5fbb6673d022517bba2486ed4aa1f739d19b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834393"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102439580"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>適応型アプリケーション制御を使用して、マシンの攻撃対象領域を減らす
 
@@ -193,6 +187,12 @@ Security Center の機械学習で、以前は許可されていなかった、�
 
 1. 詳細および影響を受けるマシンのリストを表示するには、アラートを選択します。
 
+    アラート ページには、アラートの詳細が表示され、脅威を軽減するための推奨事項と共に **[アクションの実行]** リンクが表示されます。
+
+    :::image type="content" source="media/security-center-adaptive-application/adaptive-application-alerts-start-time.png" alt-text="適応型アプリケーション制御アラートの開始時刻":::
+
+    > [!NOTE]
+    > 適応型アプリケーション制御では、12 時間ごとにイベントが計算されます。 アラート ページに表示される [アクティビティの開始時刻] は、疑わしいプロセスがアクティブだった時間では **なく**、適応型アプリケーション制御によってアラートが作成された時刻です。
 
 
 ## <a name="move-a-machine-from-one-group-to-another"></a>グループ間でマシンを移動する
@@ -219,7 +219,7 @@ Security Center の機械学習で、以前は許可されていなかった、�
 
 適応型アプリケーション制御をプログラムで管理するには、REST API を使用します。 
 
-完全な API のドキュメントは[こちら](/rest/api/securitycenter/adaptiveapplicationcontrols)にあります。
+関連する API ドキュメントは、[Security Center の API ドキュメントの「適応型アプリケーション制御」セクション](/rest/api/securitycenter/adaptiveapplicationcontrols)で参照できます。
 
 REST API から使用できる関数をいくつか以下に示します。
 

@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 10/26/2020
 ms.author: alkohli
 ms.openlocfilehash: f16f33e9aadcc01427602a1bd81f81cb0710e4dd
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94578741"
 ---
 # <a name="iot-edge-role-management-changes-for-your-azure-stack-edge-device"></a>Azure Stack Edge デバイスの IoT Edge ロール管理の変更

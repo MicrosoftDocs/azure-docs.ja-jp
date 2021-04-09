@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/31/2018
 ms.author: cynthn
 ms.openlocfilehash: 1b9c0d50754d582ca7ada5d0b46c6f998b59d3ae
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102549568"
 ---
 # <a name="check-vcpu-quotas-using-the-azure-cli"></a>Azure CLI を使用して vCPU クォータを確認する

@@ -1,14 +1,14 @@
 ---
-title: Connected Machine Windows エージェントの概要
+title: Connected Machine エージェントの概要
 description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc 対応サーバー エージェントの詳細な概要を提供します。
-ms.date: 02/16/2021
+ms.date: 03/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 82562bf3b1f8392e56a53ba0f968a76b050e7b13
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 1fd863ccacc7768401e35254a98c7bb494b3d358
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558511"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103470491"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの概要
 
@@ -69,6 +69,10 @@ Windows および Linux 用の Azure Connected Machine エージェントは、�
 
 ## <a name="prerequisites"></a>前提条件
 
+### <a name="supported-environments"></a>サポートされている環境
+
+Arc 対応サーバーでは、Azure の *外部* でホストされている任意の物理サーバーと仮想マシンに対する Connected Machine エージェントのインストールがサポートされています。 これには、VMware、Azure Stack HCI、その他のクラウド環境などのプラットフォームで実行されている仮想マシンが含まれます。 Arc 対応サーバーは Azure VM として既にモデル化されているため、Azure 内で実行されている仮想マシン、または Azure Stack Hub または Azure Stack Edge 上で実行されている仮想マシンへの、エージェントのインストールはサポートされていません。
+
 ### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
 Azure Connected Machine エージェントでは、次のバージョンの Windows および Linux オペレーティング システムが正式にサポートされています。
@@ -86,9 +90,11 @@ Azure Connected Machine エージェントでは、次のバージョンの Wind
 
 ### <a name="required-permissions"></a>必要なアクセス許可
 
-* マシンをオンボードするには、**Azure Connected Machine のオンボード** ロールのメンバーである必要があります。
+* マシンをオンボードするには、リソース グループの **Azure Connected Machine のオンボード** または[共同作成者](../../role-based-access-control/built-in-roles.md#contributor) ロールのメンバーである必要があります。
 
-* マシンの読み取り、変更、および削除を行うには、**Azure Connected Machine のリソース管理者** ロールのメンバーである必要があります。 
+* マシンの読み取り、変更、および削除を行うには、リソース グループの **Azure Connected Machine のリソース管理者** ロールのメンバーである必要があります。
+
+* **スクリプトの生成** メソッドを使用するときにドロップダウン リストからリソース グループを選択するには、少なくともそのリソース グループの[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールのメンバーである必要があります。
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure サブスクリプションとサービスの制限
 
@@ -110,7 +116,7 @@ Azure に転送中のデータのセキュリティを確保するには、ト�
 Linux と Windows 用の Connected Machine エージェントは、TCP ポート 443 を介して安全に Azure Arc へのアウトバウンド通信を行います。 インターネット経由で通信するためにマシンがファイアウォールやプロキシ サーバーを介して接続されている場合は、次を確認してネットワーク構成の要件を把握してください。
 
 > [!NOTE]
-> Arc 対応サーバーでは、Connected Machine エージェントのプロキシとして [Log Analytics ゲートウェイ](../../azure-monitor/platform/gateway.md)を使用することはサポートされていません。
+> Arc 対応サーバーでは、Connected Machine エージェントのプロキシとして [Log Analytics ゲートウェイ](../../azure-monitor/agents/gateway.md)を使用することはサポートされていません。
 >
 
 アウトバウンド接続がファイアウォールやプロキシ サーバーによって制限されている場合は、以下に示す URL がブロックされていないことを確認してください。 エージェントがサービスと通信するために必要な IP 範囲またはドメイン名のみを許可する場合は、次のサービス タグおよび URL へのアクセスを許可する必要があります。

@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 83dc9e26e03eb955d88340d1ed21084d4e685ed8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "77019640"
 ---
 # <a name="cloudsimple-node-quota-limits"></a>CloudSimple ノードのクォータ制限
@@ -23,12 +23,12 @@ CloudSimple サービスのサブスクリプションが有効になったと�
 
 サポート リクエストを送信することで、ノード クォータを増やすことができます。 サービス運用チームが要求を評価し、お客様と連携してノード クォータを増やします。  新しいチケットをオープンするときは、次のオプションを選択してください。
 
-* 問題の種類:**テクニカル**
-* サブスクリプション:**ご使用のサブスクリプション ID**
-* サービスの種類:**VMware Solution by CloudSimple**
-* 問題の種類:**Dedicated Nodes quota (専用ノードのクォータ)**
-* 問題のサブタイプ:**Increase quota of dedicated nodes (専用ノードのクォータを増やす)**
-* 件名:**Quota increase (クォータの増加)**
+* 問題の種類: **技術**
+* サブスクリプション: **ご自身のサブスクリプション ID**
+* サービスの種類: **VMware Solution by CloudSimple**
+* 問題の種類: **専用ノードのクォータ**
+* 問題のサブタイプ: **専用ノードのクォータを増やす**
+* 件名: **クォータの増加**
 
 サポート チケットの詳細で、必要なノード数とノードの SKU を指定します。
 

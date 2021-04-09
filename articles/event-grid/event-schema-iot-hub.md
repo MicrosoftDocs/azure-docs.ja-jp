@@ -4,10 +4,10 @@ description: この記事では、Azure IoT Hub イベントのプロパティ�
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: 5f43b9d0041fa5842bc2557a61c5145ce588758a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100363528"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>Event Grid ソースとしての Azure IoT Hub
@@ -247,7 +247,7 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 
 すべてのイベントには、同じ最上位レベルのデータが格納されます。 
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `id` | string | イベントの一意識別子。 |
 | `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
@@ -263,7 +263,7 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 すべてのイベントには、同じ最上位レベルのデータが格納されます。 
 
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `id` | string | イベントの一意識別子。 |
 | `source` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
@@ -277,7 +277,7 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 
 すべての IoT Hub イベントの場合、データ オブジェクトには次のプロパティが含まれます。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `hubName` | string | デバイスが作成または削除された IoT Hub の名前。 |
 | `deviceId` | string | デバイスの一意識別子。 この文字列は大文字と小文字が区別され、最大 128 文字まで指定でき、ASCII 7 ビットの英数字と、特殊文字 (`- : . + % _ # * ? ! ( ) , = @ ; $ '`) を使うことができます。 |
@@ -286,7 +286,7 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 
 **デバイス接続** および **デバイス切断** IoT Hub イベントの場合、データ オブジェクトには次のプロパティが含まれます。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `moduleId` | string | モジュールの一意の識別子。 このフィールドは、モジュール デバイスに対してのみ出力されます。 この文字列は大文字と小文字が区別され、最大 128 文字まで指定でき、ASCII 7 ビットの英数字と、特殊文字 (`- : . + % _ # * ? ! ( ) , = @ ; $ '`) を使うことができます。 |
 | `deviceConnectionStateEventInfo` | object | デバイス接続状態イベント情報
@@ -294,7 +294,7 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 
 **デバイス テレメトリ** IoT Hub イベントでは、データ オブジェクトに [IoT ハブ メッセージ形式](../iot-hub/iot-hub-devguide-messages-construct.md)の device-to-cloud メッセージが含まれ、次のプロパティを含みます。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `body` | string | デバイスからのメッセージの内容。 |
 | `properties` | string | アプリケーション プロパティは、メッセージに追加できるユーザー定義の文字列です。 これらのフィールドは省略可能です。 |
@@ -302,7 +302,7 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 
 **デバイス接続** および **デバイス削除** IoT Hub イベントの場合、データ オブジェクトには次のプロパティが含まれます。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `twin` | object | デバイス ツインについての情報。アプリケーション デバイス メタデータのクラウド表現です。 | 
 | `deviceID` | string | デバイス ツインの一意識別子。 | 

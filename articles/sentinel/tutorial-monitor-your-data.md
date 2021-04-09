@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 63a9a6dc9f052c01a7440f616f0baeaab083ad73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a07670e3348f74fb5c6eaec57f5e9da627e8c09
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843075"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586722"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>チュートリアル: データの視覚化と監視
 
 
 
-Azure Sentinel に[データ ソースを接続](quickstart-onboard.md) した後、Azure Sentinel による Azure Monitor ブックの適用を使用して、データを視覚化および監視できます。これにより、多用途のカスタム ダッシュボードを作成できます。 ブックの表示は Azure Sentinel では異なりますが、[Azure Monitor ブックを使用して対話型レポートを作成する](../azure-monitor/platform/workbooks-overview.md)方法を確認すると役立つ場合があります。 Azure Sentinel を使用すると、データ全体に対してカスタム ブックを作成できます。また、用意されている組み込みのブック テンプレートを使用してデータ ソースに接続すると、すぐにデータ全体の分析情報をすばやく得ることもできます。
+Azure Sentinel に[データ ソースを接続](quickstart-onboard.md)した後、Azure Sentinel による Azure Monitor ブックの適用を使用して、データを視覚化および監視できます。これにより、多用途のカスタム ダッシュボードを作成できます。 ブックの表示は Azure Sentinel では異なりますが、[Azure Monitor ブックを使用して対話型レポートを作成する](../azure-monitor/visualize/workbooks-overview.md)方法を確認すると役立つ場合があります。 Azure Sentinel を使用すると、データ全体に対してカスタム ブックを作成できます。また、用意されている組み込みのブック テンプレートを使用してデータ ソースに接続すると、すぐにデータ全体の分析情報をすばやく得ることもできます。
 
 
 このチュートリアルは、Azure Sentinel でデータを視覚化するのに役立ちます。
@@ -52,7 +52,7 @@ Azure Sentinel に[データ ソースを接続](quickstart-onboard.md) した�
    > これにより、関連するテンプレートに基づいて Azure リソースが作成され、データではなく、ブックの JSON ファイルが保存されます。
 
 
-1. **[保存されたブックの表示]** を選択します。 次に、上部にある **[編集]** をクリックします。 ブックを編集し、必要に応じてカスタマイズできるようになりました。 ブックをカスタマイズする方法の詳細については、「[Azure Monitor ブックを使用した対話型レポートの作成](../azure-monitor/platform/workbooks-overview.md)」を参照してください。
+1. **[保存されたブックの表示]** を選択します。 次に、上部にある **[編集]** をクリックします。 ブックを編集し、必要に応じてカスタマイズできるようになりました。 ブックをカスタマイズする方法の詳細については、「[Azure Monitor ブックを使用した対話型レポートの作成](../azure-monitor/visualize/workbooks-overview.md)」を参照してください。
 ![ブックの表示](./media/tutorial-monitor-data/workbook-graph.png)
 1. 変更を行ったら、ブックを保存できます。 
 
@@ -64,7 +64,7 @@ Azure Sentinel に[データ ソースを接続](quickstart-onboard.md) した�
 1. 新しいブックを最初から作成するには、 **[ブック]** 、 **[Add workbook]\(ブックの追加\)** の順に選択します。
   ![新しいブック画面を示すスクリーンショット。](./media/tutorial-monitor-data/create-workbook.png)
 
-1. ブックを編集するには、 **[編集]** を選択し、必要に応じてテキスト、クエリ、およびパラメーターを追加します。 ブックをカスタマイズする方法の詳細については、「[Azure Monitor ブックを使用した対話型レポートの作成](../azure-monitor/platform/workbooks-overview.md)」を参照してください。 
+1. ブックを編集するには、 **[編集]** を選択し、必要に応じてテキスト、クエリ、およびパラメーターを追加します。 ブックをカスタマイズする方法の詳細については、「[Azure Monitor ブックを使用した対話型レポートの作成](../azure-monitor/visualize/workbooks-overview.md)」を参照してください。 
 
 1. クエリを作成するときに、 **[データ ソース]** が **[ログ]** に設定され、 **[リソース タイプ]** が **[Log Analytics]** に設定されていることを確認してから、関連するワークスペースを選択します。 
 

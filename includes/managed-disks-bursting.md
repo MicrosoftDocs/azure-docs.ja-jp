@@ -9,10 +9,10 @@ ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
 ms.openlocfilehash: 0f85f2770b98507618d5cbfdec1b55f397c7f514
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101749890"
 ---
 Azure には、ディスク記憶域の IOPS と帯域幅 (MB/秒) パフォーマンスを高めるバーストと呼ばれる機能が、仮想マシン (VM) とディスクの両方に用意されています。 VM とディスクのバーストを効果的に活用すれば、VM とディスクの両方でバースト パフォーマンスを高めることができます。

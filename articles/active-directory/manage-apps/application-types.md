@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/07/2021
 ms.author: kenwith
 ms.openlocfilehash: 443e8c83ec29f9f0478e3881b9e6d6a8eb0bf403
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99259788"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>ID 管理用の Azure AD テナントを使用してアプリを表示する

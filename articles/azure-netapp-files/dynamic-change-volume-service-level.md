@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/14/2021
 ms.author: b-juche
 ms.openlocfilehash: 7b5bbad1f0691f76c12f161d1dd1f9d6ddc43270
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102184323"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>ボリュームのサービス レベルを動的に変更する

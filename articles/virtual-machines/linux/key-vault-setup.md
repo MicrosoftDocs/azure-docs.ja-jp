@@ -10,10 +10,10 @@ ms.date: 02/24/2017
 ms.author: mimckitt
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 84a88c9c563141d6e6e9ba1584d577addcade8fe
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102565225"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>Azure CLI を使用して仮想マシン用に Key Vault を設定する方法

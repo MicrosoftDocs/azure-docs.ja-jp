@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 6836777c761fa2cce482cb000b6c86919e6b5613
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 829f89f716a29f09f88a2e02b257aba1b207d072
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834070"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102634194"
 ---
 # <a name="azure-stack-edge-mini-r-system-requirements"></a>Azure Stack Edge Mini R のシステム必要条件
 
@@ -38,7 +38,7 @@ Azure Stack Edge Mini R のシステム要件は次のとおりです。
 
 ## <a name="supported-edge-storage-accounts"></a>サポートされる Edge ストレージ アカウント
 
-次の Edge ストレージ アカウントは、デバイスの REST インターフェイスでサポートされます。 Edge ストレージ アカウントがデバイス上に作成されます。 詳細については、[Edge ストレージ アカウント](azure-stack-edge-j-series-manage-storage-accounts.md#about-edge-storage-accounts)に関する記事をご覧ください。
+次の Edge ストレージ アカウントは、デバイスの REST インターフェイスでサポートされます。 Edge ストレージ アカウントがデバイス上に作成されます。 詳細については、[Edge ストレージ アカウント](azure-stack-edge-gpu-manage-storage-accounts.md#about-edge-storage-accounts)に関する記事をご覧ください。
 
 |Type  |ストレージ アカウント  |説明  |
 |---------|---------|---------|

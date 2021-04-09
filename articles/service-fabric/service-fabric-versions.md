@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターのバージョンをアップグレ�
 description: Service Fabric チーム ブログからの最新リリースへのリンクなど、Azure Service Fabric のクラスターのバージョンについて説明します。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 5abfe83fcb68fcab7df22f1fd266cc695f2b9c80
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 7cb9a739572c667e0821a7a60f5c5d8cceb97957
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549070"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698384"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Azure Service Fabric クラスターのバージョンをアップグレードする
 
@@ -63,9 +63,9 @@ Azure インフラストラクチャでは、セキュリティと可用性を�
   
   - **Open ネットワーク機能を使用しない、6.3 より後のバージョンの Service Fabric を実行するクラスターの場合**、クラスターは稼働したままです。
 
- - **クラスターが、6.3 以上のバージョンの Service Fabric を実行し、[コンテナーの Open ネットワーク機能](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)を使用している場合**、クラスターが使用できなくなることがあり、機能しなくなって、ワークロードのサービス中断を招く可能性があります。
+ - **クラスターが、6.3 以上のバージョンの Service Fabric を実行し、[コンテナーの Open ネットワーク機能](./service-fabric-networking-modes.md#set-up-open-networking-mode)を使用している場合**、クラスターが使用できなくなることがあり、機能しなくなって、ワークロードのサービス中断を招く可能性があります。
  
- -   **[7.0.457 から 7.0.466 までの Windows バージョン (両端のバージョンを含む)](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-version-names) を実行するクラスターの場合、Windows OS では Windows コンテナー機能が有効になっています。注: Linux バージョン 7.0.457、7.0.464、7.0.465 は影響を受けません**。
+ -   **[7.0.457 から 7.0.466 までの Windows バージョン (両端のバージョンを含む)](#supported-version-names) を実行するクラスターの場合、Windows OS では Windows コンテナー機能が有効になっています。注: Linux バージョン 7.0.457、7.0.464、7.0.465 は影響を受けません**。
     - **影響**:クラスターは機能を停止し、それが原因でワークロードのサービスが中断される可能性があります。
     
 #### <a name="required-action"></a>必要なアクション
@@ -130,6 +130,7 @@ Azure インフラストラクチャでは、セキュリティと可用性を�
 | 7.2.433.* | 7.0.470.* |バージョン 4.2 以前 |最新バージョンのため、終了日なし |
 | 7.2.445.* | 7.0.470.* |バージョン 4.2 以前 |最新バージョンのため、終了日なし |
 | 7.2.452.* | 7.0.470.* |バージョン 4.2 以前 |最新バージョンのため、終了日なし |
+| 7.2.457.* | 7.0.470.* |バージョン 4.2 以前 |最新バージョンのため、終了日なし |
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
@@ -209,6 +210,7 @@ Azure インフラストラクチャでは、セキュリティと可用性を�
 | 7.1 CU10 | 7.1.510.9590 | NA |
 | 7.2 RTO | 7.2.413.9590 | NA |
 | 7.2 CU2 | 7.2.432.9590 | 7.2.431.1 |
-| 7.2 CU3 | 7.2.433.9590 | 適用なし|
+| 7.2 CU3 | 7.2.433.9590 | NA |
 | 7.2 CU4 | 7.2.445.9590 | 7.2.447.1 |
 | 7.2 CU5 | 7.2.452.9590 | 7.2.454.1 |
+| 7.2 CU6 | 7.2.457.9590 | 7.2.456.1 |

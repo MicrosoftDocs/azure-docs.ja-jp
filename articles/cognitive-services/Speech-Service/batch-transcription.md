@@ -12,10 +12,10 @@ ms.date: 12/23/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e48fead4d4364fd84f178388dbfb9158296e687b
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98659973"
 ---
 # <a name="how-to-use-batch-transcription"></a>バッチ文字起こしの使用方法

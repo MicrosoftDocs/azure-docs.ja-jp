@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 157922cf597ff110b8d66ddaa44917bf2cb76029
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96000795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartlpa"></a>チュートリアル: Azure Active Directory と SmartLPA の統合
@@ -61,7 +61,7 @@ Azure AD への SmartLPA の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**SmartLPA**」と入力し、結果ウィンドウで **SmartLPA** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**SmartLPA**」と入力し、結果ウィンドウで **SmartLPA** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の SmartLPA](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ SmartLPA で Azure AD のシングル サインオンを構成してテストす
 
 SmartLPA で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **SmartLPA** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **SmartLPA** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -155,7 +155,7 @@ SmartLPA で Azure AD シングル サインオンを構成するには、次の
 
 このセクションでは、Britta Simon に SmartLPA へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[SmartLPA]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[SmartLPA]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

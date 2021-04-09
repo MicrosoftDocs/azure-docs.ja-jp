@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: c4e838afa867a7fb1e7fa8f582bc8879c24056a9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92506090"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>チュートリアル: Azure Active Directory と RFPIO の統合
@@ -41,7 +41,7 @@ RFPIO と Azure AD の統合を構成するには、次のものが必要です�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* RFPIO では、 **SP と IDP** によって開始される SSO がサポートされます
+* RFPIO では、**SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-rfpio-from-the-gallery"></a>ギャラリーからの RFPIO の追加
 
@@ -61,13 +61,13 @@ Azure AD への RFPIO の統合を構成するには、ギャラリーから管�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **RFPIO** 」と入力し、結果パネルで **[RFPIO]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**RFPIO**」と入力し、結果パネルで **[RFPIO]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の RFPIO](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、RFPIO で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、RFPIO で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと RFPIO 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 RFPIO で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -134,7 +134,7 @@ RFPIO で Azure AD シングル サインオンを構成するには、次の手
 
 ### <a name="configure-rfpio-single-sign-on"></a>RFPIO シングル サインオンの構成
 
-1. 別の Web ブラウザー ウィンドウで、 **RFPIO** Web サイトに管理者としてサインインします。
+1. 別の Web ブラウザー ウィンドウで、**RFPIO** Web サイトに管理者としてサインインします。
 
 1. 左下隅にあるドロップダウンをクリックします。
 
@@ -159,7 +159,7 @@ RFPIO で Azure AD シングル サインオンを構成するには、次の手
     a. **ダウンロードしたメタデータ XML** の内容をコピーし、 **[ID 構成]** フィールドに貼り付けます。
 
     > [!NOTE]
-    >ダウンロードした **フェデレーション メタデータ XML** の内容をコピーするには、 **Notepad++** または適切な **XML エディター** を使用します。
+    >ダウンロードした **フェデレーション メタデータ XML** の内容をコピーするには、**Notepad++** または適切な **XML エディター** を使用します。
 
     b. **[検証]** をクリックします。
 
@@ -183,7 +183,7 @@ RFPIO で Azure AD シングル サインオンを構成するには、次の手
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

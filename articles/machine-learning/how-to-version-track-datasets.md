@@ -12,10 +12,10 @@ ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
 ms.openlocfilehash: fde25e4ba75bfb86c9837582d7168f85335836b6
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102520542"
 ---
 # <a name="version-and-track-azure-machine-learning-datasets"></a>Azure Machine Learning データセットをバージョン管理および追跡する

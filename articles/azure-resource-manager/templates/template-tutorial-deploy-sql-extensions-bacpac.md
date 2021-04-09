@@ -6,10 +6,10 @@ ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 1bd9f7408baf40791c31626ea9e87a73c65b999c
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97963999"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>チュートリアル:ARM テンプレートを使用して SQL BACPAC ファイルをインポートする
@@ -112,8 +112,8 @@ BACPAC ファイルは、ARM テンプレートを使用してインポートす
 
     テンプレートで定義されている 2 つのリソースがあります。
 
-   * `Microsoft.Sql/servers` [テンプレート リファレンス](/azure/templates/microsoft.sql/servers)をご覧ください。
-   * `Microsoft.SQL.servers/databases` [テンプレート リファレンス](/azure/templates/microsoft.sql/servers/databases)をご覧ください。
+   * `Microsoft.Sql/servers`. [テンプレート リファレンス](/azure/templates/microsoft.sql/servers)をご覧ください。
+   * `Microsoft.SQL.servers/databases`. [テンプレート リファレンス](/azure/templates/microsoft.sql/servers/databases)をご覧ください。
 
         カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
 1. **[ファイル]**  >  **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを *azuredeploy.json* という名前でローカル コンピューターに保存します。

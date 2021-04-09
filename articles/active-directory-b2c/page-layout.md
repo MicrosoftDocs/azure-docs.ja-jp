@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/24/2020
+ms.date: 03/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 491549933817a127a92180b0e4b455e461e4d3a2
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: b15c63545c71d4513abe9102b4de165e2ab5857a
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492248"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499851"
 ---
 # <a name="page-layout-versions"></a>ページ レイアウト バージョン
 
@@ -74,9 +74,12 @@ ms.locfileid: "99492248"
 
 ## <a name="unified-sign-in-sign-up-page-with-password-reset-link-unifiedssp"></a>パスワード リセット リンクがある統合されたサインアップまたはサインイン ページ (unifiedssp)
 
+> [!TIP]
+> 複数のロケールまたはユーザー フローの言語をサポートするようにページをローカライズする場合。 [ローカライズ ID](localization-string-ids.md) に関する記事に、選択したページ バージョンで使用できるローカライズ ID の一覧が記載されています。
+
 **2.1.2**
 - スペイン語やフランス語などの言語のローカライズ エンコードの問題を修正しました。
-- [パスワードを忘れた場合] リンクを、ソーシャル IDP などの要求交換として使用できるようにします。
+- [パスワードを忘れた場合] リンクを、要求交換として使用できるようにします。 詳細については、「[セルフサービス パスワード リセット](add-password-reset-policy.md#self-service-password-reset-recommended)」を参照してください。
 
 **2.1.1**
 - ページにタイトルとして表示するために、`intro` に加えて、UXString `heading` が追加されました。 これは既定では非表示です。

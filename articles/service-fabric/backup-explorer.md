@@ -5,12 +5,12 @@ author: athinanthny
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: atsenthi
-ms.openlocfilehash: 1da70c37c8a6ed93e7abe1b5d329e808c592e43a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0131960d356e4862d1379c308e240e19e76205c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86034749"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048070"
 ---
 # <a name="read-and-update-a-reliable-collections-backup-by-using-backup-explorer"></a>バックアップ エクスプローラーを使用したリライアブル コレクションのローカル バックアップの読み取りと更新
 
@@ -45,4 +45,4 @@ Service Fabric バックアップ エクスプローラーは、バックアッ�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Service Fabric ステートフル サービスのリライアブル コレクション](service-fabric-reliable-services-reliable-collections.md)の詳細を見る。
-* [Service Fabric のベスト プラクティス](service-fabric-best-practices-overview.md)を確認する。
+* [Service Fabric のベスト プラクティス](./service-fabric-best-practices-security.md)を確認する。

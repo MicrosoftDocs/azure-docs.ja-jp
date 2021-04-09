@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
-ms.openlocfilehash: f910054c803093eb62db494a596219c50791d136
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5e6bec71c44d7fbcf2841e087af9887d99c94e6f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945344"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867578"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Azure HDInsight でクラスター パフォーマンスを監視する
 
@@ -33,11 +33,11 @@ Hadoop クラスターでは、クラスターの負荷がすべてのノード�
 
 各ホストのコア数と RAM 合計の列と、ディスク使用量と負荷の平均の列も表示されます。
 
-![Apache Ambari の [ホスト] タブの概要](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png" alt-text="Apache Ambari の [ホスト] タブの概要":::
 
 そのホストで実行されているコンポーネントとそのメトリックの詳細を確認するには、いずれかのホスト名を選択します。 メトリックは、CPU 使用量、負荷、ディスク使用率、メモリ使用量、ネットワーク使用量、およびプロセス数の選択可能なタイムラインとして表示されます。
 
-![Apache Ambari ホストの詳細の概要](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png" alt-text="Apache Ambari ホストの詳細の概要":::
 
 アラートの設定とメトリックの表示の詳細については、「[Apache Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
 
@@ -53,19 +53,19 @@ ResourceManager は *純粋なスケジューラ* であり、すべての競合
 
 YARN を使用すると、これらのキューにリソースを割り当てることができます。また、使用できるすべてのリソースが割り当てられているかどうかがわかります。 キューに関する情報を確認するには、Ambari Web UI にサインインし、上部のメニューから **[YARN Queue Manager]** を選択します。
 
-![Apache Ambari YARN Queue Manager](./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png" alt-text="Apache Ambari YARN Queue Manager":::
 
 [YARN Queue Manager]\(YARN キュー マネージャー\) ページの左側にはキュー一覧と、それぞれに割り当てられている容量の割合が表示されます。
 
-![[YARN Queue Manager]\(YARN キュー マネージャー\) の詳細ページ](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png" alt-text="[YARN Queue Manager]\(YARN キュー マネージャー\) の詳細ページ":::
 
 キューの詳細を確認するには、Ambari ダッシュボードの左側の一覧から **[YARN]** を選択します。 **[Quick Links]** ドロップダウン メニューで、アクティブ ノードの下にある **[Resource Manager UI]** を選択します。
 
-![Resource Manager UI メニュー リンク](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png" alt-text="Resource Manager UI メニュー リンク":::
 
 ResourceManager UI の左側のメニューから **[Scheduler]** を選択します。 *[Application Queues]\(アプリケーション キュー\)* の下にキューの一覧が表示されます この一覧では、各キューに使用される容量、キュー間のジョブの分散状況、ジョブのリソースに制約があるかどうかを確認できます。
 
-![Apache HAdoop Resource Manager の UI メニュー](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png" alt-text="Apache HAdoop Resource Manager の UI メニュー":::
 
 ## <a name="storage-throttling"></a>ストレージの調整
 

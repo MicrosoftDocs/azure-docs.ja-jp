@@ -4,10 +4,10 @@ description: Azure VM で実行されている SQL Server データベースの 
 ms.topic: troubleshooting
 ms.date: 06/18/2019
 ms.openlocfilehash: 2cf0ed0200de9b2787f5d9f38bd343f93648bc78
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99557744"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup を使用した SQL Server データベースのバックアップのトラブルシューティング

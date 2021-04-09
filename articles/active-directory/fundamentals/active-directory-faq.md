@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a8fcb14ac397791822c3a9065275dbfb2b3b7dd
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: a3b9f76eba9697d6ad47ecf8dc51689538923f88
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860424"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094468"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directory についてよくあるご質問
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -51,7 +51,7 @@ Azure AD 有料サービス (Enterprise Mobility + セキュリティ など) �
 
 **A:** 既定では、Azure サブスクリプションにサインアップしたユーザーには、Azure リソースの所有者ロールが割り当てられます。 所有者は、Microsoft アカウントと、Azure サブスクリプションが関連付けられているディレクトリの職場または学校アカウントのどちらも使用できます。  このロールには、Azure Portal でのサービスの管理が許可されます。
 
-他のユーザーが同じサブスクリプションを使用してサービスにサインインしてアクセスする必要がある場合は、適切な[組み込みロール](../../role-based-access-control/built-in-roles.md)を割り当てることができます。 詳細については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+他のユーザーが同じサブスクリプションを使用してサービスにサインインしてアクセスする必要がある場合は、適切な[組み込みロール](../../role-based-access-control/built-in-roles.md)を割り当てることができます。 追加情報については、[Azure portal を使用して Azure ロールを割り当てる方法](../../role-based-access-control/role-assignments-portal.md)に関するページを参照してください。
 
 既定では、Azure サブスクリプションにサインアップしたユーザーには、ディレクトリの全体管理者ロールが割り当てられます。 全体管理者は、すべての Azure AD ディレクトリ機能にアクセスできます。 Azure AD には、ディレクトリおよび ID 関連の機能を管理するために異なる管理者ロールのセットがあります。 これらの管理者は、Azure portal のさまざまな機能にアクセスできるようになります。 管理者のロールによって、ユーザーの作成または編集、他のユーザーへの管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理など、管理者が実行できる操作が決まります。  Azure AD ディレクトリ管理者とそのロールの詳細については、「[Azure Active Directory でユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)」と「[Azure Active Directory での管理者ロールのアクセス許可](../roles/permissions-reference.md)」を参照してください。
 
@@ -134,7 +134,7 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 
 
 ---
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 **Q:何回か試行が失敗した後、アカウントはロックされますか。または、より高度な戦略はありますか?**
 
 アカウントは、より高度な戦略によってロックされます。  これは、使用の IP と入力したパスワードに基づいています。 また、ロックアウト期間は、攻撃されている可能性に応じて長くなります。  

@@ -1,14 +1,14 @@
 ---
 title: クエリ言語を理解する
 description: Resource Graph テーブルと、Azure Resource Graph で使用可能な Kusto データ型、演算子、関数について説明します。
-ms.date: 01/14/2021
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 137b5c40097d7de82e156b4a0869d7257d3e9964
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: f6cb13814fe725ff0253a0a5bf0098f0080fa407
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624760"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633803"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Resource Graph クエリ言語の概要
 
@@ -32,7 +32,9 @@ Resource Graph には、Azure Resource Manager のリソースの種類とその
 |ResourceContainers |Yes |サブスクリプション (プレビュー中 -- `Microsoft.Resources/subscriptions`) とリソース グループ (`Microsoft.Resources/subscriptions/resourcegroups`) のリソースの種類とデータが含まれています。 |
 |AdvisorResources |はい (プレビュー) |`Microsoft.Advisor` に "_関連する_" リソースが含まれています。 |
 |AlertsManagementResources |はい (プレビュー) |`Microsoft.AlertsManagement` に "_関連する_" リソースが含まれています。 |
+|ExtendedLocationResources |No |`Microsoft.ExtendedLocation` に "_関連する_" リソースが含まれています。 |
 |GuestConfigurationResources |No |`Microsoft.GuestConfiguration` に "_関連する_" リソースが含まれています。 |
+|KubernetesConfigurationResources |No |`Microsoft.KubernetesConfiguration` に "_関連する_" リソースが含まれています。 |
 |MaintenanceResources |一部、join _to_ のみ。 (プレビュー) |`Microsoft.Maintenance` に "_関連する_" リソースが含まれています。 |
 |PatchAssessmentResources|いいえ |Azure Virtual Machines パッチ評価に "_関連する_" リソースが含まれています。 |
 |PatchInstallationResources|いいえ |Azure Virtual Machines パッチのインストールに "_関連する_" リソースが含まれています。 |
@@ -40,6 +42,7 @@ Resource Graph には、Azure Resource Manager のリソースの種類とその
 |RecoveryServicesResources |一部、join _to_ のみ。 (プレビュー) |`Microsoft.DataProtection` および `Microsoft.RecoveryServices` に "_関連する_" リソースが含まれています。 |
 |SecurityResources |一部、join _to_ のみ。 (プレビュー) |`Microsoft.Security` に "_関連する_" リソースが含まれています。 |
 |ServiceHealthResources |No |`Microsoft.ResourceHealth` に "_関連する_" リソースが含まれています。 |
+|WorkloadMonitorResources |No |`Microsoft.WorkloadMonitor` に "_関連する_" リソースが含まれています。 |
 
 リソースの種類を含む、完全な一覧については、[リファレンス: サポートされているテーブルとリソースの種類](../reference/supported-tables-resources.md)に関するページを参照してください。
 

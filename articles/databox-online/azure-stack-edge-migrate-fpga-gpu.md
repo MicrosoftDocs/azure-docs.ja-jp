@@ -6,32 +6,32 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/10/2021
+ms.date: 03/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 1db6574f8ca22b6fe60899f00700ee19d61eab3b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 24d6528a105d593d1cb4c9c66d981c8787f85633
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382822"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573280"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro FPGA から Azure Stack Edge Pro GPU へのワークロードの移行
 
-この記事では、Azure Stack Edge Pro FPGA デバイスから Azure Stack Edge Pro GPU デバイスにワークロードとデータを移行する方法について説明します。 この移行手順には、2 つのデバイスの比較を含む移行の概要、移行に関する注意事項、詳細な手順、確認に続き、クリーンアップが記載されています。
+この記事では、Azure Stack Edge Pro FPGA デバイスから Azure Stack Edge Pro GPU デバイスにワークロードとデータを移行する方法について説明します。 移行プロセスは、2 つのデバイスの比較、移行計画、および移行に関する考慮事項の検討から開始します。 移行手順では、検証とデバイスのクリーンアップで終了する詳細な手順を実行します。
 
-<!--Azure Stack Edge Pro FPGA devices will reach end-of-life in February 2024. If you are considering new deployments, we recommend that you explore Azure Stack Edge Pro GPU devices for your workloads.-->
+[!INCLUDE [Azure Stack Edge Pro FPGA end-of-life](../../includes/azure-stack-edge-fpga-eol.md)]
 
 ## <a name="about-migration"></a>移行について
 
 移行は、ある保存場所から別の保存場所にワークロードとアプリケーション データを移動するプロセスです。 これには、できればアクティブなアプリケーションを中断したり無効にしたりすることなく、組織の現在のデータをストレージ デバイス間で正確にコピーし、すべての入出力 (I/O) アクティビティを新しいデバイスにリダイレクトすることが必要となります。 
 
-この移行ガイドでは、Azure Stack Edge Pro FPGA デバイスから Azure Stack Edge Pro GPU デバイスにデータを移行するために必要な手順について詳しく説明します。 このドキュメントは、データセンターで Azure Stack Edge デバイスの運用、展開、管理を担当する情報技術 (IT) プロフェッショナルとナレッジ ワーカーを対象としています。 
+この移行ガイドでは、Azure Stack Edge Pro FPGA デバイスから Azure Stack Edge Pro GPU デバイスにデータを移行するために必要な手順について詳しく説明します。 このドキュメントは、データセンターで Azure Stack Edge デバイスの運用、展開、管理を担当する情報技術 (IT) プロフェッショナルとナレッジ ワーカーを対象としています。
 
 この記事では、Azure Stack Edge Pro FPGA デバイスを "*ソース*" デバイス、Azure Stack Edge Pro GPU デバイスを "*ターゲット*" デバイスと呼びます。 
 
 ## <a name="comparison-summary"></a>比較の概要
 
-このセクションでは、Azure Stack Edge Pro GPU デバイスと Azure Stack Edge Pro FPGA デバイスの機能の比較概要を示します。 ソース デバイスとターゲット デバイスのハードウェアはほぼ同じであり、異なるのは、ハードウェア アクセラレータ カードとストレージ容量に関してのみです。 
+このセクションでは、Azure Stack Edge Pro GPU デバイスと Azure Stack Edge Pro FPGA デバイスの機能の比較概要を示します。 ソースとターゲットの両デバイスのハードウェアはほぼ同じであり、異なるのは、ハードウェア アクセラレータ カードとストレージ容量に関してのみです。<!--Please verify: These components MAY, but need not necessarily, differ?-->
 
 |    機能  | Azure Stack Edge Pro GPU (ターゲット デバイス)  | Azure Stack Edge Pro FPGA (ソース デバイス)|
 |----------------|-----------------------|------------------------|
@@ -100,14 +100,14 @@ Edge クラウド共有では、デバイスから Azure にデータが階層�
 - ソース デバイスのすべての Edge クラウド共有とユーザーのリストを作成します。
 - 作成済みのすべての帯域幅スケジュールのリストを作成します。 これらの帯域幅スケジュールは、ターゲット デバイスで再作成します。
 - 使用可能なネットワーク帯域幅に応じて、クラウドに階層化されるデータが最大化されるようにデバイスの帯域幅スケジュールを構成します。 これにより、デバイス上のローカル データが最小限に抑えられます。
-- 共有がクラウドに完全に階層化されていることを確認します。 これは、Azure portal で共有の状態を調べることで確認できます。  
+- 共有がクラウドに完全に階層化されていることを確認します。 階層化は、Azure portal で共有の状態を調べることで確認できます。  
 
 #### <a name="data-in-edge-local-shares"></a>Edge ローカル共有内のデータ
 
 Edge ローカル共有内のデータはデバイスに残ります。 次の手順は、Azure portal を使用して "*ソース*" デバイスで実行します。 
 
 - デバイスの Edge ローカル共有のリストを作成します。
-- これが 1 回限りのデータの移行であれば、Edge ローカル共有のデータのコピーを別のオンプレミス サーバーに作成します。 `robocopy` (SMB) や `rsync` (NFS) などのコピー ツールを使用してデータをコピーできます。 必要に応じて、ローカル共有内のデータをバックアップするために、サードパーティのデータ保護ソリューションを既にデプロイしている場合があります。 Azure Stack Edge Pro FPGA デバイスでの使用については、次のサードパーティ ソリューションがサポートされています。
+- 1 回限りのデータの移行を行うため、Edge ローカル共有のデータのコピーを別のオンプレミス サーバーに作成します。 `robocopy` (SMB) や `rsync` (NFS) などのコピー ツールを使用してデータをコピーできます。 必要に応じて、ローカル共有内のデータをバックアップするために、サードパーティのデータ保護ソリューションを既にデプロイしている場合があります。 Azure Stack Edge Pro FPGA デバイスでの使用については、次のサードパーティ ソリューションがサポートされています。
 
     | サードパーティ製ソフトウェア           | ソリューションへの参照                               |
     |--------------------------------|---------------------------------------------------------|
@@ -157,9 +157,9 @@ Edge ローカル共有内のデータはデバイスに残ります。 次の�
 
 次の手順に従って、ターゲット デバイスで Edge クラウド共有のデータを同期します。
 
-1. ソース デバイスに作成された共有名に対応する[共有を追加](azure-stack-edge-j-series-manage-shares.md#add-a-share)します。 共有を作成するときに、 **[BLOB コンテナーを選択]** が **[既存のものを使用]** オプションに設定されていることを確認した後、前のデバイスで使用されていたコンテナーを選択します。
+1. ソース デバイスに作成された共有名に対応する[共有を追加](azure-stack-edge-j-series-manage-shares.md#add-a-share)します。 共有を作成するときに、 **[BLOB コンテナーを選択]** が **[既存のものを使用]** に設定されていることを確認した後、前のデバイスで使用されていたコンテナーを選択します。
 1. 以前のデバイスへのアクセス権を持っていた[ユーザーを追加](azure-stack-edge-j-series-manage-users.md#add-a-user)します。
-1. Azure から[共有のデータを更新します](azure-stack-edge-j-series-manage-shares.md#refresh-shares)。 これにより、既存のコンテナーから共有にすべてのクラウド データが取り込まれます。
+1. Azure から[共有のデータを更新します](azure-stack-edge-j-series-manage-shares.md#refresh-shares)。 共有を更新することにより、既存のコンテナーから共有にすべてのクラウド データが取り込まれます。
 1. 共有に関連付ける帯域幅スケジュールを再作成します。 詳細な手順については、[帯域幅スケジュールの追加](azure-stack-edge-j-series-manage-bandwidth-schedules.md#add-a-schedule)に関するセクションを参照してください。
 
 
@@ -172,12 +172,12 @@ Edge ローカル共有内のデータはデバイスに残ります。 次の�
 次の手順のようにして、ローカル共有からデータを回復します。
 
 1. [デバイスでコンピューティングを構成します](azure-stack-edge-gpu-deploy-configure-compute.md)。
-1. ターゲット デバイスですべてのローカル共有を追加します。 詳細な手順については、「[ローカル共有を追加する](azure-stack-edge-j-series-manage-shares.md#add-a-local-share)」を参照してください。
+1. ターゲット デバイスですべてのローカル共有を追加します。 詳細な手順については、「[ローカル共有を追加する](azure-stack-edge-gpu-manage-shares.md#add-a-local-share)」を参照してください。
 1. ソース デバイスでの SMB 共有へのアクセスには IP アドレスを使用しますが、ターゲット デバイスではデバイス名を使用します。 [Azure Stack Edge Pro GPU での SMB 共有への接続](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-smb-share)に関するセクションを参照してください。 ターゲット デバイスで NFS 共有に接続するには、そのデバイスに関連付けられた新しい IP アドレスを使用する必要があります。 [Azure Stack Edge Pro GPU での NFS 共有への接続](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-nfs-share)に関するセクションを参照してください。 
 
-    SMB または NFS を介して、共有のデータを中間サーバーにコピーした場合は、このデータをターゲット デバイス上の共有にコピーできます。 ソース デバイスとターゲット デバイスの両方が "*オンライン*" の場合は、ソース デバイスから直接データをコピーすることもできます。
+    SMB または NFS を介して、共有のデータを中間サーバーにコピーした場合は、中間サーバーからのデータをターゲット デバイス上の共有にコピーできます。 ソースとターゲットのデバイスが両方とも "*オンライン*" の場合は、ソース デバイスから直接データをコピーすることもできます。
 
-    ローカル共有内のデータをバックアップするために、サードパーティ製ソフトウェアを使用していた場合は、選択したデータ保護ソリューションに用意されている復旧手順を実行する必要があります。 次の表で参照先を確認してください。
+    ローカル共有内のデータをバックアップするために、サードパーティ製ソフトウェアを使用している場合は、選択したデータ保護ソリューションに用意されている復旧手順を実行する必要があります。 次の表で参照先を確認してください。
 
     | サードパーティ製ソフトウェア           | ソリューションへの参照                               |
     |--------------------------------|---------------------------------------------------------|

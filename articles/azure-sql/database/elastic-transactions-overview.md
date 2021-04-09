@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 5504b9bc87f78682ff584006255d4e75e5e69fa7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92793349"
 ---
 # <a name="distributed-transactions-across-cloud-databases-preview"></a>クラウド データベースにまたがる分散トランザクション (プレビュー)
@@ -238,9 +238,9 @@ Transact-SQL を使用したサーバー側の分散トランザクションは�
 
 次の PowerShell コマンドレットを使って、エラスティック データベースのトランザクション用のサーバー間通信リレーションシップを管理できます。
 
-* **New-AzSqlServerCommunicationLink** :このコマンドレットを使用して Azure SQL Database で 2 つのサーバー間に新しい通信リレーションシップを構築します。 リレーションシップは対称です。つまり、いずれのサーバーも他方のサーバーとのトランザクションを開始できます。
-* **Get-AzSqlServerCommunicationLink** :このコマンドレットを使用して既存の通信リレーションシップとそのプロパティを取得します。
-* **Remove-AzSqlServerCommunicationLink** :このコマンドレットを使用して既存の通信リレーションシップを削除します。
+* **New-AzSqlServerCommunicationLink**:このコマンドレットを使用して Azure SQL Database で 2 つのサーバー間に新しい通信リレーションシップを構築します。 リレーションシップは対称です。つまり、いずれのサーバーも他方のサーバーとのトランザクションを開始できます。
+* **Get-AzSqlServerCommunicationLink**:このコマンドレットを使用して既存の通信リレーションシップとそのプロパティを取得します。
+* **Remove-AzSqlServerCommunicationLink**:このコマンドレットを使用して既存の通信リレーションシップを削除します。
 
 ## <a name="transactions-across-multiple-servers-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance の複数のサーバーにまたがるトランザクション
 
@@ -258,9 +258,9 @@ Transact-SQL を使用したサーバー側の分散トランザクションは�
 
 次の DMV が特に重要となります。
 
-* **sys.dm\_tran\_active\_transactions** :現在アクティブなトランザクションとその状態を一覧表示します。 同じ分散トランザクションに属している子トランザクションは、UOW (Unit Of Work: 作業単位) 列で確認できます。 同じ分散トランザクションに属しているトランザクションはすべて同じ UOW 値を共有します。 詳細については、[DMV ドキュメント](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-active-transactions-transact-sql)を参照してください。
-* **sys.dm\_tran\_database\_transactions** :トランザクションに関する追加情報 (ログにおけるトランザクションの位置など) が表示されます。 詳細については、[DMV ドキュメント](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-database-transactions-transact-sql)を参照してください。
-* **sys.dm\_tran\_locks** :実行中のトランザクションによって現在保持されているロックの情報が表示されます。 詳細については、[DMV ドキュメント](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql)を参照してください。
+* **sys.dm\_tran\_active\_transactions**:現在アクティブなトランザクションとその状態を一覧表示します。 同じ分散トランザクションに属している子トランザクションは、UOW (Unit Of Work: 作業単位) 列で確認できます。 同じ分散トランザクションに属しているトランザクションはすべて同じ UOW 値を共有します。 詳細については、[DMV ドキュメント](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-active-transactions-transact-sql)を参照してください。
+* **sys.dm\_tran\_database\_transactions**:トランザクションに関する追加情報 (ログにおけるトランザクションの位置など) が表示されます。 詳細については、[DMV ドキュメント](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-database-transactions-transact-sql)を参照してください。
+* **sys.dm\_tran\_locks**:実行中のトランザクションによって現在保持されているロックの情報が表示されます。 詳細については、[DMV ドキュメント](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql)を参照してください。
 
 ## <a name="limitations"></a>制限事項
 

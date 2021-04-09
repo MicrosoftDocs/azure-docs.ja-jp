@@ -5,25 +5,25 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/05/2019
 ms.openlocfilehash: 750232b19bd5ef0674a9df79fdf3972a679eda7d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98946781"
 ---
-# <a name="scenario-apache-ambari-ui-502-error-in-azure-hdinsight"></a>シナリオ:Azure HDInsight における Apache Ambari UI の 502 エラー
+# <a name="scenario-apache-ambari-ui-502-error-in-azure-hdinsight"></a>シナリオ: Azure HDInsight における Apache Ambari UI の 502 エラー
 
 この記事では、Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策について説明します。
 
 ## <a name="issue"></a>問題
 
-HDInsight クラスターの Apache Ambari UI にアクセスしようとすると、次のようなメッセージが表示される: "502 - Web server received an invalid response while acting as a gateway or proxy server (502 - Web サーバーがゲートウェイまたはプロキシ サーバーとして動作しているときに、無効な応答を受信しました)"
+HDInsight クラスターの Apache Ambari UI にアクセスしようとすると、次のようなメッセージが表示される: "502 - Web server received an invalid response while acting as a gateway or proxy server." (502 - Web サーバーがゲートウェイまたはプロキシ サーバーとして動作しているときに、無効な応答を受信しました。)
 
 ## <a name="cause"></a>原因
 
 一般に、HTTP 502 状態コードは、アクティブなヘッドノードで Ambari サーバーが正常に実行されていないことを意味します。 いくつかの根本原因が考えられます。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
 ほとんどの場合、問題を軽減するには、アクティブなヘッドノードを再起動します。 または、ヘッドノードにより大きな VM サイズを選択します。
 

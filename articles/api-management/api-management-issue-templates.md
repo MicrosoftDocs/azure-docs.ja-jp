@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85846861"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Azure API Management の問題テンプレート
@@ -98,7 +98,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`Issues`|[問題](api-management-template-data-model-reference.md#Issue)エンティティのコレクション。|現在のユーザーに表示される問題。|  
 |`Paging`|[Paging](api-management-template-data-model-reference.md#Paging) エンティティ。|アプリケーション コレクションのページング情報。|  

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 48ff32655b107958a3e8e42dbd7de0f405a6fffa
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: aa0da5721c577957b101ac8a2d9346c0536f0a88
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094864"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102424140"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Store Gen1 のアクセス制御
 
@@ -286,7 +286,11 @@ Azure portal 内で、 **[Azure Active Directory] > [エンタープライズ �
 
 ### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Data Lake Storage Gen1 は ACL の継承をサポートしていますか。
 
-いいえ。ただし、親フォルダーに新たに作成される子ファイルや子フォルダーについては、既定の ACL を使用して ACL を設定できます。  
+いいえ。ただし、親フォルダーに新たに作成される子ファイルや子フォルダーについては、既定の ACL を使用して ACL を設定できます。
+
+### <a name="what-are-the-limits-for-acl-entries-on-files-and-folders"></a>ACL エントリでは、ファイルとフォルダーにどのような上限がありますか?
+
+ファイルあたり、かつ、ディレクトリあたり 32 ACL を設定できます。 アクセス ACL と既定の ACL それぞれに、独自の 32 個の ACL エントリの制限があります。 可能であれば、ACL 割り当て用にセキュリティ グループを使用します。 グループを使用すると、ファイルやディレクトリごとの ACL エントリの最大数を超える可能性が低くなります。
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>POSIX アクセス制御モデルの詳細はどこで確認できますか
 

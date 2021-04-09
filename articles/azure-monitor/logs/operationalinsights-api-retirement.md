@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/29/2020
 ms.openlocfilehash: 7b5d105f6a93102ff1b9142fbdf690c3873d872f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102032026"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>OperationalInsights API バージョンの提供終了

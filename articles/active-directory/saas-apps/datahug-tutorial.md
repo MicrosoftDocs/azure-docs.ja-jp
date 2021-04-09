@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 94cafb5044dab8e5ce6f965df73972dc21fe2744
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454938"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>チュートリアル: Azure Active Directory と Datahug の統合
@@ -41,7 +41,7 @@ Datahug と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Datahug では、 **SP** と **IDP** によって開始される SSO がサポートされます
+* Datahug では、**SP** と **IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-datahug-from-the-gallery"></a>ギャラリーからの Datahug の追加
 
@@ -61,13 +61,13 @@ Azure AD への Datahug の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Datahug** 」と入力し、結果ウィンドウで **Datahug** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Datahug**」と入力し、結果ウィンドウで **Datahug** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果一覧の Datahug](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Datahug で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Datahug で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Datahug 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Datahug で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -160,9 +160,9 @@ Datahug で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

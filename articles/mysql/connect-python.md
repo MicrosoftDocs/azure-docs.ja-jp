@@ -11,12 +11,12 @@ ms.custom:
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: 8aa0ea4b1e01cc7363f49d5897695c7c237b339b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: a4391ecb7175b0e473b47cc3de43fd113795bc6b
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535590"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889027"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Python を使用して Azure Database for MySQL に接続してデータを照会する
 
@@ -96,8 +96,8 @@ config = {
   'user':'<myadmin>@<mydemoserver>',
   'password':'<mypassword>',
   'database':'<mydatabase>',
-  'client_flags': [ClientFlag.SSL],
-  'ssl_cert': '/var/wwww/html/DigiCertGlobalRootG2.crt.pem'
+  'client_flags': [mysql.connector.ClientFlag.SSL],
+  'ssl_ca': '/var/wwww/html/DigiCertGlobalRootG2.crt.pem'
 }
 
 # Construct connection string

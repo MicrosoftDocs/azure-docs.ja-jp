@@ -12,10 +12,10 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e81ac35555e6653cecb602e5af2f19aa3e2f05e9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94840595"
 ---
 # <a name="define-an-azure-ad-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C カスタム ポリシーで Azure AD MFA 技術プロファイルを定義する
@@ -74,7 +74,7 @@ Azure AD MFA プロトコル プロバイダーでは **OutputClaims** は返さ
 
 ### <a name="metadata"></a>Metadata
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Operation | はい | **OneWaySMS** になっている必要があります。  |
 
@@ -82,7 +82,7 @@ Azure AD MFA プロトコル プロバイダーでは **OutputClaims** は返さ
 
 次のメタデータを使用して、SMS 送信に失敗したときに表示されるエラー メッセージを構成できます。 メタデータは、[セルフアサート](self-asserted-technical-profile.md)技術プロファイルで構成する必要があります。 エラー メッセージは、[ローカライズ](localization-string-ids.md#azure-ad-mfa-error-messages)できます。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | UserMessageIfCouldntSendSms | いいえ | 指定された電話番号で SMS が受け付けられない場合のユーザー エラー メッセージ。 |
 | UserMessageIfInvalidFormat | いいえ | 指定された電話番号が有効な電話番号ではない場合のユーザー エラー メッセージ。 |
@@ -134,7 +134,7 @@ Azure AD MFA プロトコル プロバイダーでは **OutputClaims** は返さ
 
 ### <a name="metadata"></a>Metadata
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Operation | はい | **Verify** になっている必要があります |
 
@@ -142,7 +142,7 @@ Azure AD MFA プロトコル プロバイダーでは **OutputClaims** は返さ
 
 次のメタデータを使用して、コード確認に失敗したときに表示されるエラー メッセージを構成できます。 メタデータは、[セルフアサート](self-asserted-technical-profile.md)技術プロファイルで構成する必要があります。 エラー メッセージは、[ローカライズ](localization-string-ids.md#azure-ad-mfa-error-messages)できます。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | UserMessageIfMaxAllowedCodeRetryReached| いいえ | ユーザーによる確認コードの試行回数が多すぎる場合のユーザー エラー メッセージ。 |
 | UserMessageIfServerError | いいえ | サーバーで内部エラーが発生した場合のユーザー エラー メッセージ。 |

@@ -1,5 +1,5 @@
 ---
-title: ベスト プラクティス
+title: 推奨する運用方法
 description: Azure App Service で実行されているアプリのベスト プラクティスと一般的なトラブルシューティング シナリオについて説明します。
 author: dariagrigoriu
 ms.assetid: f3359464-fa44-4f4a-9ea6-7821060e8d0d
@@ -8,10 +8,10 @@ ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 91fd974c730037907258cb4a670f6fa836bfda6c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92144876"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Azure App Service のベスト プラクティス
@@ -31,7 +31,7 @@ Web アプリ、データベース、コンテンツやデータを保持する�
 ## <a name="when-apps-consume-more-cpu-than-expected"></a><a name="CPUresources"></a>アプリが予想よりも多くの CPU リソースを消費している場合
 監視またはサービスの推奨事項の説明を基に、アプリが予想よりも多くの CPU リソースを消費していること、または CPU スパイクが繰り返し発生していることに気が付いた場合は、App Service プランのスケール アップまたはスケール アウトを検討してください。 アプリケーションがステートフルである場合は、スケール アップが唯一のオプションとなります。一方、アプリケーションがステートレスである場合、スケール アウトにより、柔軟性と拡張性を高めることができます。 
 
-"ステートフル" アプリケーション対 "ステートレス" アプリケーションについて詳しくは、次のビデオをご覧ください:「[Planning a Scalable End-to-End Multi-Tier Application on Azure App Service (Azure App Service でスケーラブルなエンド ツー エンドの多層アプリケーションを計画する)](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid)」。 App Service のスケール オプションおよび自動スケール オプションについて詳しくは、[Azure App Service での Web アプリのスケーリング](manage-scale-up.md)に関する記事をご覧ください。  
+"ステートフル" アプリケーションと "ステートレス" アプリケーションについて詳しくは、ビデオ「[Planning a Scalable End-to-End Multi-Tier Application on Azure App Service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid)」(Azure App Service でスケーラブルなエンドツーエンドの多層アプリケーションを計画する) をご覧ください。 App Service のスケール オプションおよび自動スケール オプションについて詳しくは、[Azure App Service での Web アプリのスケーリング](manage-scale-up.md)に関する記事をご覧ください。  
 
 ## <a name="when-socket-resources-are-exhausted"></a><a name="socketresources"></a>ソケット リソースを使い果たした場合
 送信 TCP 接続を使い果たしてしまう理由としては、一般的には、使っているライブラリが TCP 接続を再利用するように実装されていないことや、HTTP - Keep-Alive などの上位レベルのプロトコルが使われていないことなどが挙げられます。 App Service プランでアプリによって参照される各ライブラリのドキュメントを再確認し、送信接続が効率的に再利用されるようにコード内でライブラリが構成またはアクセスされるようにしてください。 また、ライブラリのドキュメントのガイダンスに従って適切に作成しリリースするか、接続のリークを防ぐためにクリーンアップを行ってください。 このようなクライアント ライブラリの調査中は、複数のインスタンスにスケール アウトすることで影響を軽減することができます。
@@ -67,7 +67,7 @@ Node.js アプリ向けの Azure App Service の既定の構成は、最も一�
 
 
 ## <a name="next-steps"></a>次の手順
-ベスト プラクティスの詳細については、[App Service 診断](./overview-diagnostics.md)に関するページにアクセスして、お使いのリソースに固有の実行可能なベスト プラクティスを確認してください。
+ベスト プラクティスの詳細については、[App Service 診断](./overview-diagnostics.md)にアクセスして、リソース専用の実行可能なベスト プラクティスを確認してください。
 
 - [Azure portal](https://portal.azure.com) で Web App に移動します。
 - 左側のナビゲーションで **[問題の診断と解決]** をクリックすると、App Service 診断が開きます。

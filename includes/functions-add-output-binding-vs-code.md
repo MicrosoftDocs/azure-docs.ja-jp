@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/30/2020
 ms.author: glenga
 ms.openlocfilehash: 3759dce2ab527cab5b2d2afe8eae30461cbc9031
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99493949"
 ---
 Visual Studio Code では、便利な一連のプロンプトに従って、function.json ファイルにバインドを追加できます。 

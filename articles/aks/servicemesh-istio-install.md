@@ -7,10 +7,10 @@ ms.date: 10/02/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: c42e9c31397e9313898d7029366bc8de169d368e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94683830"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Istio をインストールして使用する
@@ -35,7 +35,7 @@ ms.locfileid: "94683830"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事で詳しく説明する手順では、AKS クラスターを (Kubernetes `1.16` 以上で Kubernetes RBAC を有効にして) 作成済みであり、そのクラスターとの `kubectl` 接続が確立されていることを前提としています。 いずれかの項目でヘルプが必要な場合、[AKS クイック スタート][aks-quickstart]を参照してください。
+この記事で詳しく説明する手順では、AKS クラスターを (Kubernetes `1.16` 以降で Kubernetes RBAC を有効にして) 作成済みであり、そのクラスターとの `kubectl` 接続が確立されていることを前提としています。 いずれかの項目でヘルプが必要な場合、[AKS クイック スタート][aks-quickstart]を参照してください。
 
 [Istio のパフォーマンスとスケーラビリティ](https://istio.io/docs/concepts/performance-and-scalability/)に関するドキュメントを読み、AKS クラスターで Istio を実行するための追加リソース要件を理解しておいてください。 コアとメモリの要件は、特定のワークロードに基づいて変わります。 セットアップに適したノード数と VM サイズを選択します。
 

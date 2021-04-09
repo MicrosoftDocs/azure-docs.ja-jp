@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
 ms.openlocfilehash: 11ddb2f40ee56b51c5ecbae11465093abb8e4feb
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93027484"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>マッピング データ フローのスキーマの誤差
@@ -43,7 +43,7 @@ Azure Data Factory は、実行ごとに変わる柔軟なスキーマをネイ�
 
 ![スキーマの誤差のソース](media/data-flow/schemadrift001.png "スキーマの誤差のソース")
 
-スキーマの誤差が有効な場合、すべての受信フィールドは実行中にソースから読み取られ、フロー全体を通じてシンクに渡されます。 既定では、" *誤差の列* " と呼ばれる新しく検出されたすべての列は文字列データ型として受信されます。 データ フローで誤差の列のデータ型を自動的に推定する場合は、ソース設定で **[Infer drifted column types]\(誤差の列の種類を推定する\)** をオンにします。
+スキーマの誤差が有効な場合、すべての受信フィールドは実行中にソースから読み取られ、フロー全体を通じてシンクに渡されます。 既定では、"*誤差の列*" と呼ばれる新しく検出されたすべての列は文字列データ型として受信されます。 データ フローで誤差の列のデータ型を自動的に推定する場合は、ソース設定で **[Infer drifted column types]\(誤差の列の種類を推定する\)** をオンにします。
 
 ## <a name="schema-drift-in-sink"></a>シンクのスキーマの誤差
 

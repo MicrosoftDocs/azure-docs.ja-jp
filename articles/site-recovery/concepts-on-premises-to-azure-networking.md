@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: harshacs
 ms.openlocfilehash: 123a68885346062b9e8a53b8d5066204b6b20f5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89568780"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>オンプレミスからフェールオーバー後に Azure VM に接続する 
@@ -106,21 +106,21 @@ IP アドレスを維持するには、次の手順を実行する必要があ�
     - 192.168.1.0/24
     - 192.168.2.0/24
     - 192.168.3.0/24
-- Azure で実行されているアプリは、次の 2 つのサブネット内の Azure VNet **Azure ネットワーク**にあります。
+- Azure で実行されているアプリは、次の 2 つのサブネット内の Azure VNet **Azure ネットワーク** にあります。
     - 172.16.1.0/24
     - 172.16.2.0/24
 
 これらのアドレスを維持するために、同社では次の操作を実行します。
 
-1. レプリケーションを有効にするときに、マシンが **Azure ネットワーク**にレプリケートするように指定します。
-2. Azure で **復旧ネットワーク**を作成します。 この VNet は、オンプレミス ネットワーク内の 192.168.1.0/24 サブネットをミラーリングします。
+1. レプリケーションを有効にするときに、マシンが **Azure ネットワーク** にレプリケートするように指定します。
+2. Azure で **復旧ネットワーク** を作成します。 この VNet は、オンプレミス ネットワーク内の 192.168.1.0/24 サブネットをミラーリングします。
 3. Woodgrove は、2 つのネットワークをつなぐ [VNet 間接続](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)を設定します。 
 
     > [!NOTE]
     > アプリケーションの要件に応じて、フェールオーバー前に VNet 間接続を Site Recovery [復旧計画](site-recovery-create-recovery-plans.md)の手動の手順/スクリプト化した手順/Azure Automation Runbook として設定できます。または、フェールオーバーが完了した後に設定します。
 
 4. フェールオーバー前に、次の手順で説明するように、Site Recovery のマシン プロパティで、ターゲット IP アドレスをオンプレミスのマシンのアドレスに設定します。
-5. フェールオーバー後、Azure VM は同じ IP アドレスを使用して作成されます。 Woodgrove は、VNet ピアリングを使用して (トランジット接続を有効にして) **Azure ネットワーク**から**復旧ネットワーク** VNet に接続します。
+5. フェールオーバー後、Azure VM は同じ IP アドレスを使用して作成されます。 Woodgrove は、VNet ピアリングを使用して (トランジット接続を有効にして) **Azure ネットワーク** から **復旧ネットワーク** VNet に接続します。
 6. オンプレミスで、Woodgrove はネットワークの変更を行う必要があります (192.168.1.0/24 が Azure に移動したことを反映するためのルートの変更など)。  
 
 **フェールオーバー前のインフラストラクチャ**

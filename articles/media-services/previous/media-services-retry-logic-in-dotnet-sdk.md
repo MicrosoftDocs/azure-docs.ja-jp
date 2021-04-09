@@ -1,7 +1,7 @@
 ---
 title: Media Services SDK for .NET の再試行ロジック | Microsoft Docs
 description: このトピックでは、Media Services SDK for .NET の再試行ロジックの概要を説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 144db6a5ceaf56a35d3ce11dd54e1dfb4c97d7e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: feda0ccfa1dc6d02153b98ad084bd775a055e9e3
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264115"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012906"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Media Services SDK for .NET の再試行ロジック
 
@@ -41,13 +41,13 @@ Microsoft Azure サービスの使用中に、一時的な障害が発生する�
 
 | 例外 | Web Request | ストレージ | クエリ | SaveChanges |
 | --- | --- | --- | --- | --- |
-| WebException<br/>詳細については、「[WebException 状態コード](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus)」のセクションを参照してください。 |はい |はい |はい |はい |
-| DataServiceClientException<br/> 詳細については、「[HTTP エラー状態コード](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)」を参照してください。 |いいえ |はい |はい |はい |
-| DataServiceQueryException<br/> 詳細については、「[HTTP エラー状態コード](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)」を参照してください。 |いいえ |はい |はい |はい |
-| DataServiceRequestException<br/> 詳細については、「[HTTP エラー状態コード](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)」を参照してください。 |いいえ |はい |はい |はい |
+| WebException<br/>詳細については、「[WebException 状態コード](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus)」のセクションを参照してください。 |はい |Yes |Yes |はい |
+| DataServiceClientException<br/> 詳細については、「[HTTP エラー状態コード](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)」を参照してください。 |いいえ |はい |Yes |はい |
+| DataServiceQueryException<br/> 詳細については、「[HTTP エラー状態コード](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)」を参照してください。 |いいえ |はい |Yes |はい |
+| DataServiceRequestException<br/> 詳細については、「[HTTP エラー状態コード](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)」を参照してください。 |いいえ |はい |Yes |はい |
 | DataServiceTransportException |いいえ |いいえ |はい |はい |
-| TimeoutException |はい |はい |はい |いいえ |
-| SocketException |はい |はい |はい |はい |
+| TimeoutException |はい |Yes |はい |いいえ |
+| SocketException |はい |Yes |Yes |はい |
 | StorageException |いいえ |はい |いいえ |いいえ |
 | IOException |いいえ |はい |いいえ |いいえ |
 
@@ -56,18 +56,18 @@ Microsoft Azure サービスの使用中に、一時的な障害が発生する�
 
 | Status | Web Request | ストレージ | クエリ | SaveChanges |
 | --- | --- | --- | --- | --- |
-| ConnectFailure |はい |はい |はい |はい |
-| NameResolutionFailure |はい |はい |はい |はい |
-| ProxyNameResolutionFailure |はい |はい |はい |はい |
-| SendFailure |はい |はい |はい |はい |
-| PipelineFailure |はい |はい |はい |いいえ |
-| ConnectionClosed |はい |はい |はい |いいえ |
-| KeepAliveFailure |はい |はい |はい |いいえ |
-| UnknownError |はい |はい |はい |いいえ |
-| ReceiveFailure |はい |はい |はい |いいえ |
-| RequestCanceled |はい |はい |はい |いいえ |
-| タイムアウト |はい |はい |はい |いいえ |
-| ProtocolError <br/>ProtocolError の再試行は、HTTP 状態コード処理によって制御されます。 詳細については、「[HTTP エラー状態コード](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)」を参照してください。 |はい |はい |はい |はい |
+| ConnectFailure |はい |Yes |Yes |はい |
+| NameResolutionFailure |はい |Yes |Yes |はい |
+| ProxyNameResolutionFailure |はい |Yes |Yes |はい |
+| SendFailure |はい |Yes |Yes |はい |
+| PipelineFailure |はい |Yes |はい |いいえ |
+| ConnectionClosed |はい |Yes |はい |いいえ |
+| KeepAliveFailure |はい |Yes |はい |いいえ |
+| UnknownError |はい |Yes |はい |いいえ |
+| ReceiveFailure |はい |Yes |はい |いいえ |
+| RequestCanceled |はい |Yes |はい |いいえ |
+| タイムアウト |はい |Yes |はい |いいえ |
+| ProtocolError <br/>ProtocolError の再試行は、HTTP 状態コード処理によって制御されます。 詳細については、「[HTTP エラー状態コード](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)」を参照してください。 |はい |Yes |Yes |はい |
 
 ### <a name="http-error-status-codes"></a><a name="HTTPStatusCode"></a> HTTP エラー状態コード
 Query および SaveChanges 操作が DataServiceClientException、DataServiceQueryException、または DataServiceQueryException をスローすると、StatusCode プロパティに HTTP エラー状態コードが返されます。  次の表では、再試行ロジックが実装されるエラー コードを示します。  
@@ -76,12 +76,12 @@ Query および SaveChanges 操作が DataServiceClientException、DataServiceQu
 | --- | --- | --- | --- | --- |
 | 401 |いいえ |はい |いいえ |いいえ |
 | 403 |いいえ |はい<br/>長い待機時間で再試行を処理します。 |いいえ |いいえ |
-| 408 |はい |はい |はい |はい |
-| 429 |はい |はい |はい |はい |
-| 500 |はい |はい |はい |いいえ |
-| 502 |はい |はい |はい |いいえ |
-| 503 |はい |はい |はい |はい |
-| 504 |はい |はい |はい |いいえ |
+| 408 |はい |Yes |Yes |はい |
+| 429 |はい |Yes |Yes |はい |
+| 500 |はい |Yes |はい |いいえ |
+| 502 |はい |Yes |はい |いいえ |
+| 503 |はい |Yes |Yes |はい |
+| 504 |はい |Yes |はい |いいえ |
 
 Media Services SDK for .NET 再試行ロジックの実際の実装を確認するには、「[azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services/tree/dev/src/net/Client/TransientFaultHandling)」を参照してください。
 

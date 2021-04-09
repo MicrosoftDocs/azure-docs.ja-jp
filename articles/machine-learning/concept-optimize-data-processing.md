@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
 ms.custom: data4ml
-ms.openlocfilehash: 77edac14ef13901725eed656835e1a937d4f4ddf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 5ab7bac635a0b670087800212727b0d2e2b96934
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360821"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103472211"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータ処理の最適化
 
@@ -42,7 +42,7 @@ CSV ファイルは、Excel での編集や読み取りが簡単であるため�
 
 ## <a name="dataframe-out-of-memory-error"></a>データフレーム: メモリ不足エラー 
 
-通常、 *メモリ不足* エラーは、お使いのマシンで利用可能な RAM を超えてデータフレームが膨張したときに発生します。 この概念は、`Modin` や `Dask` などの分散フレームワークにも適用されます。  つまり、操作ではクラスター内の各ノードのメモリにデータフレームを読み込もうとしますが、そのために必要な RAM が不足しています。
+通常、*メモリ不足* エラーは、お使いのマシンで利用可能な RAM を超えてデータフレームが膨張したときに発生します。 この概念は、`Modin` や `Dask` などの分散フレームワークにも適用されます。  つまり、操作ではクラスター内の各ノードのメモリにデータフレームを読み込もうとしますが、そのために必要な RAM が不足しています。
 
 解決策の 1 つは、データフレームに合わせて RAM を増設することです。 コンピューティング サイズと処理能力を RAM のサイズの 2 倍にすることをお勧めします。 つまりデータフレームが 10 GB の場合、データフレームがメモリ内に収まり、処理されるようにするには、少なくとも 20 GB の RAM を搭載したコンピューティング先を使用します。 
 
@@ -86,8 +86,6 @@ RAM 仕様については、[Dv2-Dsv2 シリーズ](../virtual-machines/dv2-dsv2
 `Spark` を希望する場合 | `PySpark`
 1 GB 未満のデータ | ローカルの `Pandas` **または** リモートの Azure Machine Learning コンピューティング インスタンス
 10 GB を超えるデータの場合| `Ray`、`Dask`、または `Spark` を使用してクラスターに移動
-
-[dask-cloudprovider](https://cloudprovider.dask.org/en/latest/#azure) パッケージを使用して、Azure ML コンピューティング クラスターで `Dask` クラスターを作成できます。 または、`Dask` をコンピューティング インスタンス上でローカルに実行することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

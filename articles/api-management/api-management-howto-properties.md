@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/09/2021
 ms.author: apimpm
 ms.openlocfilehash: 2bc9b1c5724fa7bab1fdf5ac9332d87ba03a6d11
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100545821"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Azure API Management ポリシーで名前付きの値を使用する

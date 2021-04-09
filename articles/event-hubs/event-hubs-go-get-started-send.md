@@ -1,16 +1,16 @@
 ---
-title: クイック スタート:Go を使用してイベントを送受信する - Azure Event Hubs
-description: クイック スタート:この記事では、Azure Event Hubs からイベントを送信する Go アプリケーションを作成するためのチュートリアルを提供します。
+title: 'クイックスタート: Go を使用してイベントを送受信する - Azure Event Hubs'
+description: 'クイックスタート: この記事では、Azure Event Hubs からイベントを送信する Go アプリケーションを作成するためのチュートリアルを提供します。'
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 59cd0d757108e7579ce389d216b0ee4d569e12fd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87002456"
 ---
-# <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>クイック スタート:Go を使用して Event Hubs との間でイベントを送受信する
+# <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>クイックスタート: Go を使用して Event Hubs との間でイベントを送受信する
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
 
 このチュートリアルでは、Go アプリケーションを作成し、イベント ハブとの間でイベントを送受信する方法について説明します。 
@@ -162,7 +162,7 @@ import (
 
 ### <a name="create-service-principal"></a>サービス プリンシパルの作成
 
-「[Azure CLI 2.0 で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli)」の手順に従って、新しいサービス プリンシパルを作成します。 次の名前を使用して指定された資格情報を環境内に保存します。Azure SDK for Go と Event Hubs パッケージは、どちらもこれらの変数名を検索するために事前に構成されています。
+「[Azure CLI 2.0 で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli)」の手順に従って、新しいサービス プリンシパルを作成します。 次の名前で指定された資格情報を環境に保存します。両方の Azure SDK for Go と Event Hubs パッケージは両方ともこれらの変数名を検索するように事前構成されます。
 
 ```bash
 export AZURE_CLIENT_ID=

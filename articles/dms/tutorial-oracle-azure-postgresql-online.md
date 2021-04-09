@@ -8,21 +8,22 @@ ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
+ms.subservice: migration-guide
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/24/2020
-ms.openlocfilehash: 09bcc85c0640bf0061ec0c872161cbc9afe51da6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2be824c89ac1e6b900dc9b67e046e2be2c7f8919
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742128"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103562826"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>チュートリアル:DMS を使用して Oracle を Azure Database for PostgreSQL にオンラインで移行する (プレビュー)
 
 > [!IMPORTANT]
-> 2021 年 5 月 1 以降、「Oracle から Azure Database for PostgreSQL へ」の移行シナリオ (現在プレビュー段階) は使用できなくなります。 引き続き別のツール (Ora2pg など) を使用してサポートを提供し、Oracle から PostgreSQL への移行に最適な移行エクスペリエンスを提供します。 移行のベスト プラクティスについては、[Oracle から Azure Database for PostgreSQL への移行ガイド](https://aka.ms/OracletoPGguide) を参照してください。 
+> 2021 年 5 月 1 以降、「**Oracle から Azure Database for PostgreSQL へ**」の移行シナリオ (現在プレビュー段階) は使用できなくなります。 引き続き別のツール (Ora2pg など) を使用してサポートを提供し、Oracle から PostgreSQL への移行に最適な移行エクスペリエンスを提供します。 移行のベスト プラクティスについては、「[Oracle から Azure Database for PostgreSQL への移行ガイド](https://aka.ms/OracletoPGguide)」を参照してください。 
 
 Azure Database Migration Service を使用して、最小限のダウンタイムでデータベースをオンプレミスまたは仮想マシンでホストされている Oracle データベースから [Azure Database for PostgreSQL](../postgresql/index.yml) に移行できます。 つまり、アプリケーションにとって最小限のダウンタイムで移行を完了できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、**HR** サンプル データベースを Oracle 11g のオンプレミスまたは仮想マシン インスタンスから Azure Database for PostgreSQL に移行します。
 

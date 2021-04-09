@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
 ms.openlocfilehash: 277faa2d47df9fddd1762d90d9aa2fb5bf00d4df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "82508133"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>マネージド ID を持つ Azure マネージド アプリケーション
@@ -29,7 +29,7 @@ ms.locfileid: "82508133"
 マネージド ID は、マネージド アプリケーションのための多数のシナリオを可能にします。 解決できるいくつかの一般的なシナリオには、次のものがあります。
 
 - 既存の Azure リソースにリンクされたマネージド アプリケーションのデプロイ。 例として、[既存のネットワーク インターフェイス](../../virtual-network/virtual-network-network-interface-vm.md)に接続されているマネージド アプリケーション内での Azure 仮想マシン (VM) のデプロイがあります。
-- マネージド アプリケーションやパブリッシャーへの**マネージド リソース グループ**の外部にある Azure リソースへのアクセスの付与。
+- マネージド アプリケーションやパブリッシャーへの **マネージド リソース グループ** の外部にある Azure リソースへのアクセスの付与。
 - アクティビティ ログや Azure 内のその他のサービスのためのマネージド アプリケーションの運用 ID の提供。
 
 ## <a name="adding-managed-identity"></a>マネージド ID の追加
@@ -50,7 +50,7 @@ ms.locfileid: "82508133"
 
 ### <a name="using-createuidefinition"></a>CreateUIDefinition の使用
 
-マネージド アプリケーションは、[CreateUIDefinition.json](./create-uidefinition-overview.md) を使用してマネージド ID で構成できます。 [outputs セクション](./create-uidefinition-overview.md#outputs)では、キー `managedIdentity` を使用して、マネージド アプリケーション テンプレートの identity プロパティをオーバーライドできます。 次のサンプルでは、マネージド アプリケーションで**システム割り当て** ID を有効にします。 コンシューマーに入力を求める CreateUIDefinition 要素を使用して、より複雑な ID オブジェクトを形成できます。 これらの入力を使用すると、**ユーザー割り当て ID** でマネージド アプリケーションを構築できます。
+マネージド アプリケーションは、[CreateUIDefinition.json](./create-uidefinition-overview.md) を使用してマネージド ID で構成できます。 [outputs セクション](./create-uidefinition-overview.md#outputs)では、キー `managedIdentity` を使用して、マネージド アプリケーション テンプレートの identity プロパティをオーバーライドできます。 次のサンプルでは、マネージド アプリケーションで **システム割り当て** ID を有効にします。 コンシューマーに入力を求める CreateUIDefinition 要素を使用して、より複雑な ID オブジェクトを形成できます。 これらの入力を使用すると、**ユーザー割り当て ID** でマネージド アプリケーションを構築できます。
 
 ```json
 "outputs": {
@@ -132,7 +132,7 @@ CreateUIDefinition では、組み込みの[マネージド ID コントロー�
 > Marketplace マネージド アプリケーション テンプレートは、Azure Portal の作成エクスペリエンスを実行する顧客のために自動的に生成されます。
 > これらのシナリオでは、ID を有効にするために CreateUIDefinition の `managedIdentity` 出力キーを使用する必要があります。
 
-マネージド ID は、Azure Resource Manager テンプレートを使用して有効にすることもできます。 次のサンプルでは、マネージド アプリケーションで**システム割り当て** ID を有効にします。 入力を指定する Azure Resource Manager テンプレート パラメーターを使用して、より複雑な ID オブジェクトを形成できます。 これらの入力を使用すると、**ユーザー割り当て ID** でマネージド アプリケーションを構築できます。
+マネージド ID は、Azure Resource Manager テンプレートを使用して有効にすることもできます。 次のサンプルでは、マネージド アプリケーションで **システム割り当て** ID を有効にします。 入力を指定する Azure Resource Manager テンプレート パラメーターを使用して、より複雑な ID オブジェクトを形成できます。 これらの入力を使用すると、**ユーザー割り当て ID** でマネージド アプリケーションを構築できます。
 
 #### <a name="when-to-use-azure-resource-manager-templates-for-managed-identity"></a>マネージド ID のために Azure Resource Manager テンプレートを使用する状況
 
@@ -197,20 +197,20 @@ CreateUIDefinition では、組み込みの[マネージド ID コントロー�
 
 ## <a name="granting-access-to-azure-resources"></a>Azure リソースへのアクセスの付与
 
-マネージド アプリケーションに ID が付与されると、それに既存の Azure リソースへのアクセスを付与できます。 このプロセスは、Azure Portal のアクセス制御 (IAM) インターフェイス経由で実行できます。 ロールの割り当てを追加するために、マネージド アプリケーションの名前または**ユーザー割り当て ID** を検索できます。
+マネージド アプリケーションに ID が付与されると、それに既存の Azure リソースへのアクセスを付与できます。 このプロセスは、Azure Portal のアクセス制御 (IAM) インターフェイス経由で実行できます。 ロールの割り当てを追加するために、マネージド アプリケーションの名前または **ユーザー割り当て ID** を検索できます。
 
 ![マネージド アプリケーションへのロールの割り当てを追加する](./media/publish-managed-identity/identity-role-assignment.png)
 
 ## <a name="linking-existing-azure-resources"></a>既存の Azure リソースのリンク
 
 > [!NOTE]
-> マネージド アプリケーションをデプロイする前に、**ユーザー割り当て ID** を[構成](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)する必要があります。 さらに、マネージド アプリケーションのリンクされたリソースのデプロイは、**マーケットプレース**の種類に対してのみサポートされます。
+> マネージド アプリケーションをデプロイする前に、**ユーザー割り当て ID** を [構成](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)する必要があります。 さらに、マネージド アプリケーションのリンクされたリソースのデプロイは、**マーケットプレース** の種類に対してのみサポートされます。
 
 マネージド ID を使用すると、デプロイ中に既存のリソースへのアクセスが必要なマネージド アプリケーションをデプロイすることもできます。 マネージド アプリケーションが顧客によってプロビジョニングされる場合は、**ユーザー割り当て ID** を追加して **mainTemplate** デプロイに追加の承認を提供できます。
 
 ### <a name="authoring-the-createuidefinition-with-a-linked-resource"></a>リンクされたリソースによる CreateUIDefinition の作成
 
-マネージド アプリケーションのデプロイを既存のリソースにリンクする場合は、既存の Azure リソースと、そのリソースに対する適用可能なロールの割り当てを持つ**ユーザー割り当て ID** の両方を指定する必要があります。
+マネージド アプリケーションのデプロイを既存のリソースにリンクする場合は、既存の Azure リソースと、そのリソースに対する適用可能なロールの割り当てを持つ **ユーザー割り当て ID** の両方を指定する必要があります。
 
  サンプルの CreateUIDefinition では、ネットワーク インターフェイス リソース ID とユーザー割り当て ID リソース ID の 2 つの入力が必要です。
 
@@ -260,7 +260,7 @@ CreateUIDefinition では、組み込みの[マネージド ID コントロー�
 }
 ```
 
-この CreateUIDefinition.json では、2 つのフィールドを含むユーザーの作成エクスペリエンスが生成されます。 最初のフィールドは、ユーザーがマネージド アプリケーションのデプロイにリンクされたリソースの Azure リソース ID を入力できるようにします。 2 番目は、コンシューマーが、リンクされた Azure リソースにアクセスできる**ユーザー割り当て ID** Azure リソース ID を入力するためのものです。 生成されたエクスペリエンスは次のようになります。
+この CreateUIDefinition.json では、2 つのフィールドを含むユーザーの作成エクスペリエンスが生成されます。 最初のフィールドは、ユーザーがマネージド アプリケーションのデプロイにリンクされたリソースの Azure リソース ID を入力できるようにします。 2 番目は、コンシューマーが、リンクされた Azure リソースにアクセスできる **ユーザー割り当て ID** Azure リソース ID を入力するためのものです。 生成されたエクスペリエンスは次のようになります。
 
 ![ネットワーク インターフェイス リソース ID とユーザー割り当て ID リソース ID の 2 つの入力を含むサンプルの CreateUIDefinition。](./media/publish-managed-identity/network-interface-cuid.png)
 
@@ -305,8 +305,8 @@ CreateUIDefinition の更新に加えて、メイン テンプレートも、渡
 マネージド アプリケーション パッケージが作成されたら、Azure Portal 経由でマネージド アプリケーションを消費できます。 消費する前に必要ないくつかの前提条件となる手順があります。
 
 - 必要なリンクされた Azure リソースのインスタンスを作成する必要があります。
-- **ユーザー割り当て ID** を[作成し、リンクされたリソースへのロールの割り当てを与える](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)必要があります。
-- 既存のリンクされたリソース ID と**ユーザー割り当て ID** が CreateUIDefinition に提供されます。
+- **ユーザー割り当て ID** を [作成し、リンクされたリソースへのロールの割り当てを与える](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)必要があります。
+- 既存のリンクされたリソース ID と **ユーザー割り当て ID** が CreateUIDefinition に提供されます。
 
 ## <a name="accessing-the-managed-identity-token"></a>マネージド ID トークンへのアクセス
 

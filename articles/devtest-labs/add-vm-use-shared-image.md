@@ -4,10 +4,10 @@ description: Azure DevTest Labs 内の接続されている共有イメージ �
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 9421a1e21be9446b0e59328bd9a3730b57655274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85483858"
 ---
 # <a name="add-a-vm-using-an-image-from-the-attached-shared-image-gallery"></a>接続されている共有イメージ ギャラリーのイメージを使って VM を追加する
@@ -20,14 +20,14 @@ Azure DevTest Labs では、共有イメージ ギャラリーをラボに接続
 
 ![ベースの共有イメージを選択する](./media/add-vm-use-shared-image/select-shared-image-for-base.png)
 
-次に、 **[Create lab resource]\(ラボ リソースの作成\)** ページの **[詳細設定]** タブで、基本イメージとして使用するイメージのバージョンを選択できます。
+次に、**[Create lab resource]\(ラボ リソースの作成\)** ページの **[詳細設定]** タブで、基本イメージとして使用するイメージのバージョンを選択できます。
 
 ![イメージのバージョンを選択する](./media/add-vm-use-shared-image/select-version-shared-image.png)
 
 VM の作成後に、別のバージョンのイメージを使用するように切り替えることができます。 
 
 ## <a name="resource-manager-template"></a>Resource Manager テンプレート
-Azure Resource Manager テンプレートを使用して、共有イメージ ギャラリーのイメージで仮想マシンを作成する場合は、 **[プロパティ]** セクションで **[sharedImageId]** の値を指定します。 次の例を参照してください。 
+Azure Resource Manager テンプレートを使用して、共有イメージ ギャラリーのイメージで仮想マシンを作成する場合は、**[プロパティ]** セクションで **[sharedImageId]** の値を指定します。 次の例を参照してください。 
 
 ```json
 "resources": [

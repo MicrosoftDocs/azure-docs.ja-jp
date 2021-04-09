@@ -9,19 +9,19 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: bfd5d42d83046c9c5b0bc3a78fabec08da5da646
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96025842"
 ---
 このセクションでは、.NET コンソール アプリから、タグ付けされたテンプレート通知としてニュース速報を送信します。
 
 1. Visual Studio で、Visual C# の新しいコンソール アプリケーションを作成します。
     1. メニューで、 **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]** を選択します。
-    1. **[新しいプロジェクトの作成]** で、テンプレートのリストで C# の **[コンソール アプリ (.NET Framework)]** を選択し、 **[次へ]** を選択します。
+    1. **[新しいプロジェクトの作成]** で、テンプレートのリストで C# の **[コンソール アプリ (.NET Framework)]** を選択し、**[次へ]** を選択します。
     1. アプリの名前を入力します。
-    1. **[ソリューション]** で、 **[ソリューションに追加]** を選択し、 **[作成]** を選択してプロジェクトを作成します。
+    1. **[ソリューション]** で、**[ソリューションに追加]** を選択し、**[作成]** を選択してプロジェクトを作成します。
 
 1. **[ツール]**  >  **[NuGet Package Manager]**  >  **[パッケージ マネージャー コンソール]** の順に選択してから、コンソール ウィンドウで次のコマンドを実行します。
 

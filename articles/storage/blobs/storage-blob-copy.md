@@ -10,10 +10,10 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 28b23555f97e58dde038c5e3e12a4b741b81776d
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98059043"
 ---
 # <a name="copy-a-blob-with-azure-storage-client-libraries"></a>Azure Storage クライアント ライブラリを使用して BLOB をコピーする

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/23/2020
 ms.author: jeedes
 ms.openlocfilehash: c39326074763a3ebcaec7682c10e6e1d39aa5f78
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459596"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iwt-procurement-suite"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と IWT Procurement Suite の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* IWT Procurement Suite では、 **IDP** Initiated SSO がサポートされます
+* IWT Procurement Suite では、**IDP** Initiated SSO がサポートされます
 * IWT Procurement Suite を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-iwt-procurement-suite-from-the-gallery"></a>ギャラリーからの IWT Procurement Suite の追加
@@ -50,7 +50,7 @@ Azure AD への IWT Procurement Suite の統合を構成するには、ギャラ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **IWT Procurement Suite** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**IWT Procurement Suite**」と入力します。
 1. 結果のパネルから **[IWT Procurement Suite]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -86,7 +86,7 @@ IWT Procurement Suite に対する Azure AD SSO を構成してテストする�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[IWT Procurement Suite クライアント サポート チーム](mailto:support@ionwave.net)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. IWT Procurement Suite アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **Emailaddress** は **user.mail** にマップされています。 IWT Procurement Suite アプリケーションでは、 **Emailaddress** が **user.userprincipalname** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. IWT Procurement Suite アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**Emailaddress** は **user.mail** にマップされています。 IWT Procurement Suite アプリケーションでは、**Emailaddress** が **user.userprincipalname** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/default-attributes.png)
 
@@ -127,7 +127,7 @@ IWT Procurement Suite に対する Azure AD SSO を構成してテストする�
 
 ## <a name="configure-iwt-procurement-suite-sso"></a>IWT Procurement Suite SSO の構成
 
-**IWT Procurement Suite** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [IWT Procurement Suite サポート チーム](mailto:support@ionwave.net)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**IWT Procurement Suite** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [IWT Procurement Suite サポート チーム](mailto:support@ionwave.net)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-iwt-procurement-suite-test-user"></a>IWT Procurement Suite テスト ユーザーの作成
 

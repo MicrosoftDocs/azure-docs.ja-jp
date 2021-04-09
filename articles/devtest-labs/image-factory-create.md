@@ -4,10 +4,10 @@ description: この記事では、Git リポジトリ (Azure DevTest Labs) に�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 14c8338d6a5ae21847da3a9c774ea6dcdac33ae4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85482073"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Azure DevTest Labs でカスタム イメージ ファクトリを作成する
@@ -43,10 +43,10 @@ DevTest Labs の拡張機能を使用することは、DevTest Labs でのカス
 
 より複雑なシナリオの場合、PowerShell スクリプトを代わりに使用して実装することもできます。 PowerShell を使用すると、イメージ ファクトリを DevTest Labs に基づいて完全に自動化し、継続的インテグレーションと継続的デリバリー (CI/CD) ツールチェーンで使用することができます。 この代替ソリューションで使用されている原則は次のとおりです。
 
-- 一般的な更新によりイメージ ファクトリの変更が必要になることはありません (たとえば、新しい種類のカスタム イメージの追加、古いイメージの自動削除、カスタム イメージを受信するための新しい ‘エンドポイント’ DevTest Labs の追加など)
+- 一般的な更新によりイメージ ファクトリの変更が必要になることはありません  (たとえば、新しい種類のカスタム イメージの追加、古いイメージの自動削除、カスタム イメージを受信するための新しい ‘エンドポイント’ DevTest Labs の追加など)
 - 一般的な変更はソース コード管理 (コードとしてのインフラストラクチャ) でサポートされます
 - DevTest Labs が受け取るカスタム イメージは、同じ Azure サブスクリプション (ラボにまたがるサブスクリプション) にない場合があります
 - 必要に応じて追加のファクトリを作成できるよう、PowerShell スクリプトは再利用可能である必要があります
 
 ## <a name="next-steps"></a>次のステップ
-このセクションから、次の記事に移動します。[Azure DevOps からイメージ ファクトリを実行する](image-factory-set-up-devops-lab.md)
+このセクションの次の記事「[Azure DevOps からイメージ ファクトリを実行する](image-factory-set-up-devops-lab.md)」に進んでください

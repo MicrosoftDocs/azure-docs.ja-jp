@@ -7,10 +7,10 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: overview
 ms.date: 03/02/2021
 ms.openlocfilehash: d99c62e7d88510c351f87d85b4f8c5c271767cb3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101747626"
 ---
 # <a name="what-is-azure-managed-instance-for-apache-cassandra-preview"></a>Azure Managed Instance for Apache Cassandra とは (プレビュー)
@@ -53,7 +53,7 @@ Azure Managed Instance for Apache Cassandra サービスでは、マネージド
 
 ## <a name="next-steps"></a>次のステップ
 
-以下のクイックスタートのいずれかに従って始めます。
+次のいずれかのクイックスタートに取り組みます。
 
 * [Azure portal からマネージド インスタンス クラスターを作成する](create-cluster-portal.md)
 * [Azure Databricks でマネージド Apache Spark クラスターをデプロイする](deploy-cluster-databricks.md)

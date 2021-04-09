@@ -10,10 +10,10 @@ ms.date: 01/24/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 4554ca64dccaa69e3a6fb63e5c28a6bcbb1a32e4
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96930842"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Azure App Configuration ストアの作成
@@ -67,7 +67,7 @@ echo "$appConfigConnectionString"
 
 このスクリプトでは、次のコマンドを使用して新しいリソース グループと App Configuration ストアを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| コマンド | Notes |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az appconfig create](/cli/azure/appconfig#az-appconfig-create) | App Configuration ストア リソースを作成します。 |

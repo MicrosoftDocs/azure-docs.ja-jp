@@ -9,10 +9,10 @@ ms.date: 12/16/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: a3ed7979584787627c97cfec3bb2e19c147f7152
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98872666"
 ---
 # <a name="discover-connect-and-explore-data-in-synapse-using-azure-purview"></a>Azure Purview を使用した Synapse でのデータの検出、接続、探索 

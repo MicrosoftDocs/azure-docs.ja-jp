@@ -6,10 +6,10 @@ ms.date: 02/04/2021
 ms.author: tomfitz
 author: tfitzmac
 ms.openlocfilehash: c59275fca1eb3037b48b7293fc9e507df46b7fcb
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99555942"
 ---
 # <a name="convert-template-gallery-in-portal-to-template-specs"></a>ポータルのテンプレート ギャラリーをテンプレート スペックに変換する

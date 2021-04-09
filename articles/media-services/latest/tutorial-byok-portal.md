@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: tutorial
 ms.date: 10/18/2020
 ms.openlocfilehash: e34649162c7a30d4ab43aa068d2c864b5c2d90e0
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98955702"
 ---
 # <a name="tutorial-use-the-azure-portal-to-use-customer-managed-keys-or-byok-with-media-services"></a>チュートリアル:Azure portal を使用して Media Services でカスタマー マネージド キーまたは BYOK を使用する

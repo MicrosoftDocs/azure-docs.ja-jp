@@ -1,95 +1,98 @@
 ---
 title: チュートリアル:Azure Data Factory を使用したフォーム データの一括抽出 - Form Recognizer
 titleSuffix: Azure Cognitive Services
-description: ドキュメントの大きなバックログをデジタル化するために、Form Recognizer モデルのトレーニングと実行をトリガーする Azure Data Factory アクティビティを設定します。
-author: PatrickFarley
+description: Form Recognizer モデルのトレーニングと実行をトリガーし、ドキュメントの大きなバックログをデジタル化するために Azure Data Factory アクティビティを設定します。
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/04/2021
-ms.author: pafarley
-ms.openlocfilehash: 6faa612f55b4114b4242c48d43aae9aac8c56582
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.author: lajanuar
+ms.openlocfilehash: 0c009a87a5834997cdc489efc75ebb16f9459754
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699999"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467104"
 ---
-# <a name="tutorial-extract-form-data-in-bulk-using-azure-data-factory"></a>チュートリアル:Azure Data Factory を使用したフォーム データの一括抽出
+# <a name="tutorial-extract-form-data-in-bulk-by-using-azure-data-factory"></a>チュートリアル: Azure Data Factory を使用してフォーム データを一括で抽出する
 
-このチュートリアルでは、各 Azure サービスを使用して大量のフォームをデジタル メディアに取り込む方法を確認します。 このチュートリアルでは、ドキュメントの Azure Data Lake から Azure SQL データベースへのデータ インジェストを自動化する方法について説明します。 数回クリックするだけで、すばやくモデルをトレーニングして新しいドキュメントを処理できるようになります。
+このチュートリアルでは、各 Azure サービスを使用して大量のフォームをデジタル メディアに取り込む方法を確認します。 このチュートリアルでは、ドキュメントの Azure データ レイク から Azure SQL データベースへのデータ インジェストを自動化する方法について説明します。 数回クリックするだけで、すばやくモデルをトレーニングして新しいドキュメントを処理できるようになります。
 
 ## <a name="business-need"></a>ビジネス ニーズ
 
-現在、ほとんどの組織では、異なる形式 (pdf、画像、ビデオ) で所有しているデータの価値が認識されています。 このような資産をデジタル化するためのベスト プラクティスおよびもっともコスト効果の高い方法が求められています。
+ほとんどの組織が今では、さまざまな形式 (PDF、画像、ビデオ) で所有しているデータの価値を認識するようになっています。 このような資産をデジタル化するためのベスト プラクティスおよびもっともコスト効果の高い方法が求められています。
 
-また、多くの場合、お客様は、多数のクライアントおよび顧客から送信されるさまざまな種類のフォームを使用しています。 [クイックスタート](./quickstarts/client-library.md)とは異なり、このチュートリアルではメタデータ駆動型のアプローチを使用して、新しい種類および異なる種類のフォームでモデルを自動的にトレーニングする方法について説明します。 特定の種類のフォームに対して既存のモデルがない場合は、システムによってモデルが作成され、モデル ID が付与されます。 
+また、多くの場合、Microsoft のお客様は多数のクライアントや顧客から送信されるさまざまな種類のフォームを使用しています。 [クイックスタート](./quickstarts/client-library.md)とは異なり、このチュートリアルではメタデータ駆動型のアプローチを使用して、新しいさまざまな種類のフォームでモデルを自動的にトレーニングする方法について説明します。 特定の種類のフォームに対して既存のモデルがない場合は、システムによって作成され、モデル ID が付与されます。 
 
 フォームからデータを抽出し、既存の運用システムやデータ ウェアハウスと組み合わせることにより、ビジネスでは分析情報を得たり、顧客やビジネス ユーザーに価値を提供したりすることができます。
 
-Azure Form Recognizer を使用することにより、組織ではデータを活用し、プロセス (請求書の支払い、税の処理など) を自動化し、コストと時間を節約し、データの精度を向上させることができます。
+Azure Form Recognizer を使用すると、組織におけるデータの使用、プロセス (請求書の支払い、税の処理など) の自動化、コストと時間の節約、およびデータの精度の向上に役立ちます。
 
-このチュートリアルでは、以下の内容を学習します。
+このチュートリアルでは、次の作業を行う方法について説明します。
 
 > [!div class="checklist"]
-> * フォームを保存するための Azure Data Lake を設定する
-> * Azure データベースを使用してパラメーター化テーブルを作成する
-> * Azure Key Vault を使用して機密性の高い資格情報を保存する
-> * Databricks ノートブックで Form Recognizer モデルをトレーニングする
-> * Databricks ノートブックを使用してフォーム データを抽出する
-> * Azure Data Factory を使用してフォームのトレーニングと抽出を自動化する
+> * フォームを格納するための Azure Data Lake を設定する。
+> * Azure データベースを使用してパラメーター化テーブルを作成する。
+> * Azure Key Vault を使用して機密性の高い資格情報を格納する。
+> * Azure Databricks ノートブックで Form Recognizer モデルをトレーニングする。
+> * Databricks ノートブックを使用してフォーム データを抽出する。
+> * Azure Data Factory を使用してフォームのトレーニングと抽出を自動化する。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
-* Azure サブスクリプションを用意できたら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Form Recognizer リソースを作成"  target="_blank">Form Recognizer リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、自分のキーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** を選択します。
-    * 自分のアプリケーションを Form Recognizer API に接続するには、作成したリソースのキーとエンドポイントが必要になります。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
-    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
-* 同じ種類の少なくとも 5 つのフォームのセット。 このワークフローは、大量のドキュメントをサポートするためのものであることが理想的です。 トレーニング データ セットをまとめるためのヒントとオプションについては、[トレーニング データ セットの作成](./build-training-data-set.md)に関するページを参照してください。 このチュートリアルでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2128080)の **Train** フォルダーにあるファイルを使用できます。
+* Azure サブスクリプション。 [無料で作成できます](https://azure.microsoft.com/free/cognitive-services/)。
+* Azure サブスクリプションを用意したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Form Recognizer リソースを作成"  target="_blank">Form Recognizer リソースを作成</a>し、自分のキーとエンドポイントを取得します。 リソースがデプロイされた後、**[リソースに移動]** を選択します。
+    * 自分のアプリケーションを Form Recognizer API に接続するには、作成したリソースのキーとエンドポイントが必要になります。 キーとエンドポイントは、このクイックスタートの後半でコードに貼り付けます。
+    * Free 価格レベル (F0) を利用して、サービスを試すことができます。 その後、運用環境用の有料レベルにアップグレードできます。
+* 同じ種類の少なくとも 5 つのフォームのセット。 このワークフローは、大量のドキュメントをサポートするためのものであることが理想的です。 トレーニング データ ットをまとめるためのヒントとオプションについては、[トレーニング データセットの作成](./build-training-data-set.md)に関するページを参照してください。 このチュートリアルでは、[サンプル データセット](https://go.microsoft.com/fwlink/?linkid=2128080)の Train フォルダーにあるファイルを使用できます。
+
 
 ## <a name="project-architecture"></a>プロジェクト アーキテクチャ 
 
-このプロジェクトでは、Azure Data Lake ストレージ アカウント内のドキュメントからデータをトレーニング、分析、および抽出する Python ノートブックをトリガーするための、一連の Azure Data Factory パイプラインを設定します。
+このプロジェクトでは、Azure Data Lake ストレージ アカウント内のドキュメントのデータをトレーニング、分析、および抽出する Python ノートブックをトリガーするための、一連の Azure Data Factory パイプラインを設定します。
 
-Form Recognizer REST API には、入力としていくつかのパラメーターが必要です。 セキュリティ上の理由により、これらのパラメーターの一部は Azure キー コンテナーに格納されますが、ストレージ BLOB フォルダー名など、機密性が低いその他のパラメーターは、Azure SQL データベース内のパラメーター化テーブルに格納されます。
+Form Recognizer REST API には、入力としていくつかのパラメーターが必要です。 セキュリティ上の理由から、これらのパラメーターの一部は Azure キー コンテナーに格納されます。 ストレージ BLOB フォルダー名など、機密性が低いその他のパラメーターは、Azure SQL データベース内のパラメーター化テーブルに格納されます。
 
-分析するフォームの種類については、データ エンジニアまたはデータ サイエンティストが、パラメーター テーブルの行を設定します。 次に、Azure Data Factory を使用して検出されたフォームの種類のリストを反復処理し、関連するパラメーターを Databricks ノートブックに渡して、Form Recognizer モデルをトレーニングまたは再トレーニングします。 ここでは、Azure 関数を使用することもできます。
+分析するフォームの種類ごとに、データ エンジニアまたはデータ科学者がパラメーター テーブルの行を設定します。 次に、彼らは Azure Data Factory を使用して、検出されたフォームの種類のリストを反復処理し、関連するパラメーターを Databricks ノートブックに渡して、Form Recognizer モデルをトレーニングまたは再トレーニングします。 ここでは、Azure 関数を使用することもできます。
 
-その後、Azure Databricks ノートブックでは、トレーニング済みのモデルを使用してフォーム データを抽出し、そのデータを Azure SQL データベースにエクスポートします。
+その後、Azure Databricks ノートブックでは、トレーニング済みのモデルを使用してフォーム データを抽出します。 そのデータは Azure SQL データベースにエクスポートされます。
 
-:::image type="content" source="./media/tutorial-bulk-processing/architecture.png" alt-text="プロジェクト アーキテクチャ":::
+:::image type="content" source="./media/tutorial-bulk-processing/architecture.png" alt-text="プロジェクト アーキテクチャを示す図。":::
 
 
 ## <a name="set-up-azure-data-lake"></a>Azure Data Lake の設定
 
-フォームのバックログは、オンプレミスの環境にある場合や、(s)FTP サーバー内にある場合があります。 このチュートリアルでは、Azure Data Lake Gen 2 ストレージ アカウント内のフォームを使用します。 そこには、Azure Data Factory、Azure Storage Explorer、または AzCopy を使用してファイルを転送できます。 トレーニング データセットとスコアリング データセットは異なるコンテナーに配置できますが、すべてのフォームの種類のトレーニング データセットは同じコンテナー内に配置する必要があります (ただし、異なるフォルダーでも構いません)。
+フォームのバックログは、オンプレミスの環境内、または (s)FTP サーバー上に存在する場合があります。 このチュートリアルでは、Azure Data Lake Storage Gen2 アカウントにあるフォームを使用します。 そこにファイルを転送するには、Azure Data Factory、Azure Storage Explorer、または AzCopy を使用します。 トレーニングとスコアリングのデータセットは異なるコンテナーに配置できますが、すべてのフォームの種類のトレーニング データセットは同じコンテナー内に配置する必要があります。 (それらを異なるフォルダーに配置することはできます。)
 
-新しい Data Lake を作成するには、「[Azure Data Lake Storage Gen2 で使用するストレージ アカウントを作成する](../../storage/blobs/create-data-lake-storage-account.md)」の手順に従います。
+新しいデータ レイクを作成するには、「[Azure Data Lake Storage Gen2 で使用するストレージ アカウントを作成する](../../storage/blobs/create-data-lake-storage-account.md)」の手順に従います。
 
 ## <a name="create-a-parameterization-table"></a>パラメーター化テーブルを作成する
 
-次に、Azure SQL データベースにメタデータ テーブルを作成します。 このテーブルには、Form Recognizer REST API に必要な機密性の低いデータを含めます。 データセットに新しい種類のフォームがある場合は常に、このテーブルに新しいレコードを挿入し、トレーニングおよびスコアリングのパイプライン (後で実装します) をトリガーします。
+次に、Azure SQL データベースにメタデータ テーブルを作成します。 このテーブルには、Form Recognizer REST API に必要な機密性の低いデータを含めます。 データセットに新しい種類のフォームがある場合は常に、このテーブルに新しいレコードを挿入し、トレーニングおよびスコアリングのパイプラインをトリガーします。 (これらのパイプラインは後で実装します。)
 
 このテーブルでは、次のフィールドが使用されます。
 
-* **form_description**:このフィールドは、トレーニングの一部として必須ではありません。 モデルをトレーニングするフォームの種類の説明 ("client A forms"、"Hotel B forms" など) を指定します。
-* **training_container_name**:このフィールドは、トレーニング データセットを格納したストレージ アカウントのコンテナー名です。 **scoring_container_name** と同じコンテナーにすることができます。
-* **training_blob_root_folder**:モデルのトレーニング用のファイルを格納するストレージ アカウント内のフォルダー。
-* **scoring_container_name**:このフィールドは、キーと値のペアを抽出するファイルを格納したストレージ アカウントのコンテナー名です。 **training_container_name** と同じコンテナーにすることができます。
-* **scoring_input_blob_folder**:データの抽出元のファイルを格納するストレージ アカウント内のフォルダー。
-* **model_id**:再トレーニングするモデルの ID。 最初の実行では、値を -1 に設定する必要があります。これにより、トレーニング ノートブックでトレーニングする新しいカスタム モデルが作成されます。 トレーニング ノートブックによって、新しく作成されたモデル ID が Azure Data Factory インスタンスに返されます。ストアド プロシージャ アクティビティを使用して、Azure SQL データベースでこの値を更新します。
+* **form_description**。 トレーニングの一部として必須ではありません。 このフィールドには、モデルをトレーニングするフォームの種類の説明 ("client A forms"、"Hotel B forms" など) を指定します。
+* **training_container_name**。 トレーニング データセットを格納したストレージ アカウント コンテナーの名前。 **scoring_container_name** と同じコンテナーにすることができます。
+* **training_blob_root_folder**。 モデルのトレーニング用のファイルを格納するストレージ アカウント内のフォルダー。
+* **scoring_container_name**。 キーと値のペアを抽出するファイルを格納したストレージ アカウント コンテナーの名前。 **training_container_name** と同じコンテナーにすることができます。
+* **scoring_input_blob_folder**。 データの抽出元のファイルを格納するストレージ アカウント内のフォルダー。
+* **model_id**。 再トレーニングするモデルの ID。 最初の実行では、値を -1 に設定する必要があります。これにより、トレーニング ノートブックでトレーニングする新しいカスタム モデルが作成されます。 トレーニング ノートブックによって、Azure Data Factory インスタンスに新しいモデル ID が返されます。 ストアド プロシージャ アクティビティを使用して、Azure SQL データベースでこの値を更新します。
 
-  新しいフォームの種類を取り込む場合は常に、モデルのトレーニングを行う前に、モデル ID を -1 に手動でリセットする必要があります。
+  新しいフォームの種類を取り込む場合は常に、モデルをトレーニングする前に、モデル ID を -1 に手動でリセットする必要があります。
 
-* **file_type**:サポートされているフォームの種類は、`application/pdf`、`image/jpeg`、`image/png`、および `image/tif` です。
+* **file_type**。 サポートされているフォームの種類は、`application/pdf`、`image/jpeg`、`image/png`、および `image/tif` です。
 
-  ファイルの種類が異なるフォームがある場合は、新しいフォームの種類をトレーニングするときに、この値と **model_id** を変更する必要があります。
-* **form_batch_group_id**:時間の経過と共に、同じモデルに対して複数のフォームの種類をトレーニングすることがあります。 **form_batch_group_id** を使用すると、特定のモデルを使用してトレーニングしてきたすべてのフォームの種類を指定できます。
+  他のファイルの種類のフォームがある場合は、新しいフォームの種類をトレーニングするときに、この値と **model_id** を変更する必要があります。
+* **form_batch_group_id**。 時間の経過と共に、同じモデルに対して複数のフォームの種類をトレーニングすることがあります。 **form_batch_group_id** フィールドを使用すると、特定のモデルでトレーニングしてきたすべてのフォームの種類を指定できます。
 
 ### <a name="create-the-table"></a>テーブルの作成
 
-[Azure SQL データベースを作成](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase)した後、[クエリ エディター](../../azure-sql/database/connect-query-portal.md)で次の SQL スクリプトを実行して、必要なテーブルを作成します。
+
+[Azure SQL データベースを作成](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase)した後、[クエリ エディター](../../azure-sql/database/connect-query-portal.md)でこの SQL スクリプトを実行して、必要なテーブルを作成します。
+
 
 ```sql
 CREATE TABLE dbo.ParamFormRecogniser(
@@ -105,7 +108,7 @@ CREATE TABLE dbo.ParamFormRecogniser(
 GO
 ```
 
-次のスクリプトを実行して、トレーニング後に **model_id** を自動的に更新するプロシージャを作成します。
+このスクリプトを実行して、トレーニング後に **model_id** を自動的に更新するプロシージャを作成します。
 
 ```SQL
 CREATE PROCEDURE [dbo].[update_model_id] ( @form_batch_group_id  varchar(50),@model_id varchar(50))
@@ -125,12 +128,12 @@ END
 
 [Key Vault リソースを作成します](https://ms.portal.azure.com/#create/Microsoft.KeyVault)。 次に、作成された Key Vault リソースに移動し、 **[設定]** セクションで、 **[シークレット]** を選択してパラメーターを追加します。
 
-新しいウィンドウが表示されたら、 **[生成/インポート]** を選択します。 パラメーターの名前とその値を入力し、[作成] をクリックします。 以下のパラメーターに対してこの操作を行ってください。
+新しいウィンドウが表示されます。 **[生成/インポート]** を選択します。 パラメーターの名前とその値を入力し、 **[作成]** を選択します。 次のパラメーターに対して、この手順を完了します。
 
-* **CognitiveServiceEndpoint**:Form Recognizer API のエンドポイント URL。
-* **CognitiveServiceSubscriptionKey**:Form Recognizer サービスのアクセス キー。 
-* **StorageAccountName**:トレーニング データセットとキーと値のペアを抽出するフォームが格納されているストレージ アカウント。 それらが異なるアカウントに配置されている場合は、それぞれのアカウント名を個別のシークレットとして入力します。 トレーニング データセットはすべてのフォームの種類に対して同じコンテナーに配置する必要がありますが、異なるフォルダーに配置しても構わないことを忘れないでください。
-* **StorageAccountSasKey**: ストレージ アカウントの Shared Access Signature (SAS)。 SAS URL を取得するには、ストレージ リソースにアクセスし、 **[ストレージ エクスプローラー]** タブを選択します。コンテナーに移動して右クリックし、 **[Get shared access signature]\(Shared Access Signature の取得\)** を選択します。 ストレージ アカウント自体ではなく、コンテナー用の SAS を取得することが重要です。 アクセス許可の **[読み取り]** と **[表示]** がオンになっていることを確認し、 **[作成]** をクリックします。 次に、その値を **URL** セクションにコピーします。 それは次の書式になります`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
+* **CognitiveServiceEndpoint。** Form Recognizer API のエンドポイント URL。
+* **CognitiveServiceSubscriptionKey**。 Form Recognizer サービスのアクセス キー。 
+* **StorageAccountName**。 トレーニング データセットと、キーと値のペアを抽出するフォームが格納されているストレージ アカウント。 これらの項目が異なるアカウントにある場合は、各アカウント名を個別のシークレットとして入力します。 すべてのフォームの種類のトレーニング データセットは同じコンテナーに配置する必要があることを忘れないでください。 それらを異なるフォルダーに配置することはできます。
+* **StorageAccountSasKey**。 ストレージ アカウントの Shared Access Signature (SAS)。 SAS URL を取得するには、ストレージ リソースにアクセスします。 **[ストレージ エクスプローラー]** タブでお使いのコンテナーに移動して右クリックし、 **[Shared Access Signature の取得]** を選択します。 ストレージ アカウント自体ではなく、コンテナー用の SAS を取得することが重要です。 アクセス許可の **[読み取り]** と **[リスト]** が選択されていることを確認し、 **[作成]** を選択します。 次に、その値を **URL** セクションにコピーします。 これは `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` の形式である必要があります。
 
 ## <a name="train-your-form-recognizer-model-in-a-databricks-notebook"></a>Databricks ノートブックで Form Recognizer モデルをトレーニングする
 
@@ -138,27 +141,28 @@ Form Recognizer サービスと対話する Python コードを格納して実�
 
 ### <a name="create-a-notebook-in-databricks"></a>Databricks でノートブックを作成する
 
-Azure portal で [Azure Databricks リソースを作成します](https://ms.portal.azure.com/#create/Microsoft.Databricks)。 作成されたリソースに移動し、ワークスペースを起動します。
+Azure portal で [Azure Databricks リソースを作成します](https://ms.portal.azure.com/#create/Microsoft.Databricks)。 作成したリソースに移動し、ワークスペースを開きます。
 
 ### <a name="create-a-secret-scope-backed-by-azure-key-vault"></a>Azure Key Vault によってサポートされるシークレットのスコープを作成する
 
-上記で作成した Azure Key Vault のシークレットを参照するには、Databricks でシークレットのスコープを作成する必要があります。 「[Azure Key Vault を利用するシークレットのスコープを作成する](/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope)」の手順に従ってください。
+
+上記で作成した Azure キー コンテナーのシークレットを参照するには、Databricks でシークレットのスコープを作成する必要があります。 「[Azure Key Vault を利用するシークレットのスコープを作成する](/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope)」の手順に従ってください。
 
 ### <a name="create-a-databricks-cluster"></a>Databricks クラスターを作成する
 
 クラスターは、Databricks コンピュテーション リソースのコレクションです。 クラスターを作成するには:
 
-1. サイド バーの **[クラスター]** ボタンをクリックします。
-1. **[クラスター]** ページで、 **[クラスターの作成]** をクリックします。
-1. **[クラスターの作成]** ページでクラスター名を指定し、[Databricks Runtime のバージョン] ドロップダウンで **[7.2 (Scala 2.12, Spark 3.0.0)]** を選択します。
-1. **[クラスターの作成]** をクリックします。
+1. 左側のペインで **[クラスター]** ボタンを選択します。
+1. **[クラスター]** ページで、 **[クラスターの作成]** を選択します。
+1. **[クラスターの作成]** ページでクラスター名を指定し、 **[Databricks Runtime Version]\(Databricks Runtime のバージョン\)** リストで **[7.2 (Scala 2.12, Spark 3.0.0)]** を選択します。
+1. **[クラスターの作成]** を選択します。
 
 ### <a name="write-a-settings-notebook"></a>設定ノートブックを作成する
 
-これで、Python ノートブックを追加する準備ができました。 まず、「**Settings**」という名前のノートブックを作成します。このノートブックにより、パラメーター化テーブル内の値をスクリプト内の変数に代入します。 この値は、後で Azure Data Factory によってパラメーターとして渡されます。 また、キー コンテナー内のシークレットの値も変数に代入します。 
+Python ノートブックを追加する準備ができました。 まず、「**Settings**」という名前のノートブックを作成します。 このノートブックにより、パラメーター化テーブル内の値がスクリプト内の変数に代入されます。 この値は、後でAzure Data Factory によってパラメーターとして渡されます。 また、キー コンテナー内のシークレットの値も変数に代入します。 
 
-1. **Settings** ノートブックを作成するには、 **[ワークスペース]** ボタンをクリックし、[新規] タブで、ドロップダウン リストをクリックして **[作成]** を選択した後、 **[ノートブック]** を選択します。
-1. ポップアップ ウィンドウでノートブックに付ける名前を入力し、既定の言語として **[Python]** を選択します。 使用する Databricks クラスターを選択し、 **[作成]** を選択します。
+1. **Settings** ノートブックを作成するには、 **[ワークスペース]** ボタンを選択します。 新しいタブで、ドロップダウン リストを選択し、 **[作成]** 、 **[ノートブック]** の順に選択します。
+1. ポップアップ ウィンドウでノートブックの名前を入力し、既定の言語として **[Python]** を選択します。 Databricks クラスターを選択し、 **[作成]** を選択します。
 1. 最初のノートブック セルでは、Azure Data Factory によって渡されたパラメーターを取得します。
 
     ```python 
@@ -196,7 +200,7 @@ Azure portal で [Azure Databricks リソースを作成します](https://ms.po
     file_to_score_name=  getArgument("file_to_score_name")
     ```
 
-1. 2 番目のセルでは、キー コンテナーからシークレットを取得し、変数に代入します。
+1. 2 番目のセルでは、Key Vault からシークレットを取得し、変数に代入します。
 
     ```python 
     cognitive_service_subscription_key = dbutils.secrets.get(scope = "FormRecognizer_SecretScope", key = "CognitiveserviceSubscriptionKey")
@@ -211,16 +215,16 @@ Azure portal で [Azure Databricks リソースを作成します](https://ms.po
 
 ### <a name="write-a-training-notebook"></a>トレーニング ノートブックを作成する
 
-**Settings** ノートブックが完成したので、モデルをトレーニングするためのノートブックを作成できます。 前述のように、Azure Data Lake Gen 2 ストレージ アカウント内のフォルダー (**training_blob_root_folder**) に格納されているファイルを使用します。 フォルダー名は変数として渡されています。 フォームの種類の各セットは同じフォルダー内にあり、パラメーター テーブルをループ処理しながら、すべてのフォームの種類を使用してモデルをトレーニングします。 
+**Settings** ノートブックが完成したので、モデルをトレーニングするためのノートブックを作成できます。 前述のように、Azure Data Lake Storage Gen2 アカウント内のフォルダー (**training_blob_root_folder**) に格納されているファイルを使用します。 フォルダー名は変数として渡されています。 フォームの種類の各セットは、同じフォルダーにあります。 パラメーター テーブルをループ処理しながら、そのフォームの種類すべてを使用してモデルをトレーニングします。 
 
-1. 「**TrainFormRecognizer**」という名前の新しいノートブックを作成します。 
-1. 最初のセルで、Settings ノートブックを実行します。
+1. 「**TrainFormRecognizer**」という名前のノートブックを作成します。 
+1. 最初のセルで、**Settings** ノートブックを実行します。
 
     ```python
     %run "./Settings"
     ```
 
-1. 次のセルでは、**Settings** ファイルから変数を代入し、[REST のクイックスタート](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md#get-training-results%20)に記載されているコードを応用して、フォームの種類ごとにモデルを動的にトレーニングします。
+1. 次のセルでは、Settings ファイルから変数を代入し、[REST のクイックスタート](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md#get-training-results%20)に記載されているコードを応用して、フォームの種類ごとにモデルを動的にトレーニングします。
 
     ```python
     import json
@@ -234,7 +238,7 @@ Azure portal で [Azure Databricks リソースを作成します](https://ms.po
     includeSubFolders=True
     useLabelFile=False
     headers = {
-        # Request headers
+        # Request headers.
         'Content-Type': file_type,
         'Ocp-Apim-Subscription-Key': cognitive_service_subscription_key,
     }
@@ -245,7 +249,7 @@ Azure portal で [Azure Databricks リソースを作成します](https://ms.po
             "includeSubFolders": includeSubFolders
        },
     }
-    if model_id=="-1": # if you don't already have a model you want to retrain. In this case, we create a model and use it to extract the key-value pairs
+    if model_id=="-1": # If you don't already have a model you want to retrain. In this case, we create a model and use it to extract the key/value pairs.
       try:
           resp = post(url = post_url, json = body, headers = headers)
           if resp.status_code != 201:
@@ -258,7 +262,7 @@ Azure portal で [Azure Databricks リソースを作成します](https://ms.po
       except Exception as e:
           print("POST model failed:\n%s" % str(e))
           quit()
-    else :# if you already have a model you want to retrain, we reuse it and (re)train with the new form types.  
+    else :# If you already have a model you want to retrain, we reuse it and (re)train with the new form types.  
       try:
         get_url =post_url+r"/"+model_id
           
@@ -267,7 +271,7 @@ Azure portal で [Azure Databricks リソースを作成します](https://ms.po
           quit()
     ```
 
-1. トレーニング プロセスの最後の手順は、トレーニング結果を json 形式で取得することです。
+1. トレーニング プロセスの最後の手順は、JSON 形式でトレーニング結果を取得することです。
 
     ```python
     n_tries = 10
@@ -305,22 +309,22 @@ Azure portal で [Azure Databricks リソースを作成します](https://ms.po
     print("Train operation did not complete within the allocated time.")
     ```
 
-## <a name="extract-form-data-using-a-notebook"></a>ノートブックを使用してフォーム データを抽出する
+## <a name="extract-form-data-by-using-a-notebook"></a>ノートブックを使用してフォーム データを抽出する
 
 ### <a name="mount-the-azure-data-lake-storage"></a>Azure Data Lake ストレージをマウントする
 
-次の手順は、トレーニング済みのモデルを使用して、さまざまなフォームをスコア付けすることです。 Azure Data Lake ストレージ アカウントを Databricks にマウントし、取り込みプロセス中にマウントを参照します。
+次の手順は、トレーニング済みのモデルを使用して、所有するさまざまなフォームをスコア付けすることです。 Azure Data Lake Storage アカウントを Databricks にマウントし、取り込みプロセス中にそのマウントを参照します。
 
-トレーニング段階と同様に、Azure Data Factory を使用して、フォームからのキーと値のペアの抽出を呼び出します。 パラメーター テーブルで指定されているフォルダー内のフォームに対してループ処理を行います。
+トレーニング段階で行ったように、Azure Data Factory を使用して、フォームからのキーと値のペアの抽出を呼び出します。 パラメーター テーブルで指定されているフォルダー内のフォームに対してループ処理を行います。
 
-1. Databricks にストレージ アカウントをマウントするノートブックを作成しましょう。 ここでは「**MountDataLake**」という名前を付けます。 
+1. Databricks にストレージ アカウントをマウントするノートブックを作成します。 これは「**MountDataLake**」という名前にします。 
 1. 最初に **Settings** ノートブックを呼び出す必要があります。
 
     ```python
     %run "./Settings"
     ```
 
-1. 2 番目のセルでは、機密性の高いパラメーター用の変数を定義します。これはキー コンテナーのシークレットから取得します。
+1. 2 番目のセルでは、機密性の高いパラメーター用の変数を定義します。これは Key Vault シークレットから取得します。
 
     ```python
     cognitive_service_subscription_key = dbutils.secrets.get(scope = "FormRecognizer_SecretScope", key = "CognitiveserviceSubscriptionKey")
@@ -335,7 +339,7 @@ Azure portal で [Azure Databricks リソースを作成します](https://ms.po
     
     ```
 
-1. 次に、以前にマウントされていた場合に備えて、ストレージ アカウントのマウントを解除します。
+1. 以前にマウントされていた場合に備えて、ストレージ アカウントのマウントを解除します。
 
     ```python
     try:
@@ -345,7 +349,7 @@ Azure portal で [Azure Databricks リソースを作成します](https://ms.po
     
     ```
 
-1. 最後に、ストレージ アカウントをマウントします。
+1. ストレージ アカウントをマウントします。
 
 
     ```python
@@ -361,21 +365,21 @@ Azure portal で [Azure Databricks リソースを作成します](https://ms.po
     ```
 
     > [!NOTE]
-    > マウントしたのはトレーニング ストレージ アカウントのみです&mdash;この場合、トレーニング ファイルとキーと値のペアを抽出するファイルは同じストレージ アカウント内にあります。 スコアリングとトレーニングのストレージ アカウントが異なる場合は、ここで両方のストレージ アカウントをマウントする必要があります。 
+    > マウントしたのは、トレーニング ストレージ アカウントのみです。 この場合、トレーニング ファイルと、キーと値のペアを抽出するファイルは同じストレージ アカウント内にあります。 スコアリングとトレーニングのストレージ アカウントが異なる場合は、両方のストレージ アカウントをマウントする必要があります。 
 
 ### <a name="write-the-scoring-notebook"></a>スコアリング ノートブックを作成する
 
-これで、スコアリング ノートブックを作成できるようになりました。 トレーニング ノートブックと同様に、先ほどマウントした Azure Data Lake ストレージ アカウント内のフォルダーに格納されているファイルを使用します。 フォルダー名は変数として渡されます。 指定されたフォルダー内のすべてのフォームに対してループ処理を行い、キーと値のペアを抽出します。 
+これでスコアリング ノートブックを作成できます。 トレーニング ノートブックで行った内容と同様のことを行います。先ほどマウントした Azure Data Lake Storage アカウント内のフォルダーに格納されているファイルを使用します。 フォルダー名は変数として渡されます。 指定されたフォルダー内のすべてのフォームに対してループ処理を行い、それらからキーと値のペアを抽出します。 
 
-1. 新しいノートブックを作成し、「**ScoreFormRecognizer**」という名前を付けます。 
-1. **Settings** ノートブックと **MountDataLake** ノートブックを実行します。
+1. ノートブックを作成し、「**ScoreFormRecognizer**」という名前を付けます。 
+1. **Settings** および **MountDataLake** ノートブックを実行します。
 
     ```python
     %run "./Settings"
     %run "./MountDataLake"
     ```
 
-1. 次に、[Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) API を呼び出す次のコードを追加します。
+1. [Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) API を呼び出すコードを追加します。
 
     ```python
     ########### Python Form Recognizer Async Analyze #############
@@ -394,7 +398,7 @@ Azure portal で [Azure Databricks リソースを作成します](https://ms.po
     }
     
     headers = {
-        # Request headers
+        # Request headers.
         'Content-Type': file_type,
         'Ocp-Apim-Subscription-Key': cognitive_service_subscription_key,
     }
@@ -414,7 +418,7 @@ Azure portal で [Azure Databricks リソースを作成します](https://ms.po
         quit() 
     ```
 
-1. 次のセルで、キーと値のペアの抽出の結果を取得します。 このセルによって結果が出力されます。 Azure SQL Database または Cosmos DB でさらに処理するために JSON 形式の結果が必要なので、結果は .json ファイルに書き込みます。 出力ファイル名は、スコアリングされたファイル名に "_output.json" を連結した名前になります。 ファイルは、ソース ファイルと同じフォルダーに格納されます。
+1. 次のセルで、キーと値のペアの抽出の結果を取得します。 このセルによって結果が出力されます。 Azure SQL Database または Azure Cosmos DB でさらに処理できるように、結果は JSON 形式にする必要があります。 そのため、結果を .json ファイルに書き込みます。 出力ファイル名は、スコアリングされたファイルの名前に "_output.json" を連結したものになります。 ファイルは、ソース ファイルと同じフォルダーに格納されます。
 
     ```python
     n_tries = 10
@@ -459,52 +463,52 @@ Azure portal で [Azure Databricks リソースを作成します](https://ms.po
     file.close()
     ```
 
-## <a name="automate-training-and-scoring-with-azure-data-factory"></a>Azure Data Factory でトレーニングとスコアリングを自動化する
+## <a name="automate-training-and-scoring-by-using-azure-data-factory"></a>Azure Data Factory を使用してトレーニングとスコアリングを自動化する
 
-残っている最後の手順は、トレーニングとスコアリングのプロセスを自動化するために Azure Data Factory (ADF) サービスを設定することです。 まず、「[Data Factory の作成](../../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)」の手順に従います。 ADF リソースを作成したら、3 つのパイプラインを作成する必要があります。1 つはトレーニング用で、もう 2 つはスコアリング用です (以下で説明します)。
+残っている唯一の手順は、トレーニングとスコアリングのプロセスを自動化するために Azure Data Factory サービスを設定することです。 まず、「[Data Factory の作成](../../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)」の手順に従います。 Azure Data Factory リソースを作成したら、3 つのパイプライン (トレーニング用に 1 つ、スコアリング用に 2 つ) を作成する必要があります。 (後で説明します。)
 
 ### <a name="training-pipeline"></a>トレーニング パイプライン
 
-トレーニング パイプラインの最初のアクティビティは、Azure SQL データベース内のパラメーター化テーブルの値を読み取って返すためのルックアップです。 すべてのトレーニング データセットは同じストレージ アカウントとコンテナー (ただし、場合によっては異なるフォルダー) に存在するので、ルックアップ アクティビティの設定で既定値 **[First row only]\(先頭行のみ\)** 属性を維持します。 モデルをトレーニングするフォームの種類ごとに、**training_blob_root_folder** 内のすべてのファイルを使用してモデルをトレーニングします。
+トレーニング パイプラインの最初のアクティビティは、Azure SQL データベース内のパラメーター化テーブルの値を読み取って返すためのルックアップです。 トレーニング データセットはすべて同じストレージ アカウントとコンテナーにあります (ただし、異なるフォルダーにある可能性はあります)。 そのため、Lookup アクティビティ設定では既定の属性値 **[First row only]\(先頭行のみ\)** のままにします。 モデルをトレーニングするフォームの種類ごとに、**training_blob_root_folder** 内のすべてのファイルを使用してモデルをトレーニングします。
 
-:::image type="content" source="./media/tutorial-bulk-processing/training-pipeline.png" alt-text="データ ファクトリのトレーニング パイプライン":::
+:::image type="content" source="./media/tutorial-bulk-processing/training-pipeline.png" alt-text="Data Factory のトレーニング パイプラインを示すスクリーンショット。":::
 
-ストアド プロシージャは、2 つのパラメーター **model_id** と **form_batch_group_id** を受け取ります。 Databricks ノートブックからモデル ID を返すコードは `dbutils.notebook.exit(model_id)`、データ ファクトリのストアド プロシージャ アクティビティでコードを読み取るコードは `@activity('GetParametersFromMetadaTable').output.firstRow.form_batch_group_id` です。
+ストアド プロシージャは、2 つのパラメーター **model_id** と **form_batch_group_id** を受け取ります。 Databricks ノートブックからモデル ID を返すコードは `dbutils.notebook.exit(model_id)` です。 Data Factory のストアド プロシージャ アクティビティのコードを読み取るコードは `@activity('GetParametersFromMetadaTable').output.firstRow.form_batch_group_id` です。
 
 ### <a name="scoring-pipelines"></a>スコアリング パイプライン
 
-キーと値のペアを抽出するには、パラメーター化テーブル内のすべてのフォルダーをスキャンし、各フォルダーに対して、含まれているすべてのファイルのキーと値のペアを抽出します。 現在のところ、ADF では入れ子になった ForEach ループはサポートされていません。 そのため、代わりに 2 つのパイプラインを作成します。 最初のパイプラインでは、パラメーター化テーブルから参照を行い、フォルダーの一覧をパラメーターとして 2 番目のパイプラインに渡します。
+キーと値のペアを抽出するには、パラメーター化テーブル内のすべてのフォルダーをスキャンします。 フォルダーごとに、その中にあるすべてのファイルのキーと値のペアを抽出します。 Azure Data Factory では、入れ子になった ForEach ループは現在サポートされていません。 代わりに、2 つのパイプラインを作成します。 最初のパイプラインでは、パラメーター化テーブルから参照を行い、フォルダーの一覧をパラメーターとして 2 番目のパイプラインに渡します。
 
-:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-1a.png" alt-text="データ ファクトリの最初のスコアリング パイプライン":::
+:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-1a.png" alt-text="Data Factory の最初のスコアリング パイプラインを示すスクリーンショット。":::
 
-:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-1b.png" alt-text="データ ファクトリの最初のスコアリング パイプライン (詳細)":::
+:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-1b.png" alt-text="Data Factory の最初のスコアリング パイプラインの詳細を示すスクリーンショット。":::
 
-2 番目のパイプラインでは、GetMeta アクティビティを使用してフォルダー内のファイルの一覧を取得し、それをパラメーターとして Databricks のスコアリング ノートブックに渡します。
+2 番目のパイプラインでは、GetMeta アクティビティを使用してフォルダー内のファイルの一覧を取得し、それをパラメーターとして Databricks スコアリング ノートブックに渡します。
 
-:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-2a.png" alt-text="データ ファクトリの 2 番目のスコアリング パイプライン":::
+:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-2a.png" alt-text="Data Factory の 2 番目のスコアリング パイプラインを示すスクリーンショット。":::
 
-:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-2b.png" alt-text="データ ファクトリの 2 番目のスコアリング パイプライン (詳細)":::
+:::image type="content" source="./media/tutorial-bulk-processing/scoring-pipeline-2b.png" alt-text="Data Factory の 2 番目のスコアリング パイプラインの詳細を示すスクリーンショット。":::
 
 ### <a name="specify-a-degree-of-parallelism"></a>並列処理の次数を指定する
 
-トレーニングとスコアリングの両方のパイプラインで、並列処理の次数を指定し、複数のフォームを同時に処理することができます。
+トレーニングとスコアリングの両方のパイプラインで並列処理の次数を指定できるため、複数のフォームを同時に処理できます。
 
-ADF パイプラインで並列処理の次数を設定するには:
+Azure Data Factory パイプラインで並列処理の次数を設定するには、次のようにします。
 
-* Foreach アクティビティを選択します。
-* **[シーケンシャル]** ボックスをオフにします。
-* **[Batch count]\(バッチ カウント\)** テキスト ボックスで並列処理の次数を設定します。 スコアリングには、最大バッチ カウントを 15 にすることをお勧めします。
+1. **ForEach** アクティビティを選択します。
+1. **[シーケンシャル]** ボックスをオフにします。
+1. **[バッチ カウント]** ボックスで並列処理の次数を設定します。 スコアリングには、最大バッチ カウントを 15 にすることをお勧めします。
 
-:::image type="content" source="./media/tutorial-bulk-processing/parallelism.png" alt-text="ADF のスコアリング アクティビティの並列処理の構成":::
+:::image type="content" source="./media/tutorial-bulk-processing/parallelism.png" alt-text="Azure Data Factory のスコアリング アクティビティの並列処理構成を示すスクリーンショット。":::
 
-## <a name="how-to-use"></a>使用方法
+## <a name="how-to-use-the-pipeline"></a>パイプラインの使用方法
 
-これで、フォームのバックログをデジタル化し、さらにいくつかの分析を実行する、自動化されたパイプラインが完成しました。 既存のストレージ フォルダーに使い慣れた種類の新しいフォームを追加するときは、スコアリング パイプラインを再実行するだけで、新しいフォームの出力ファイルを含むすべての出力ファイルが更新されます。 
+これで、フォームのバックログをデジタル化し、さらにいくつかの分析を実行する、自動化されたパイプラインが完成しました。 既存のストレージ フォルダーに使い慣れた種類の新しいフォームを追加するときは、スコアリング パイプラインを再度実行するだけです。 それにより、新しいフォームの出力ファイルを含むすべての出力ファイルが更新されます。 
 
-新しい種類の新しいフォームを追加する場合は、適切なコンテナーにトレーニング データセットをアップロードする必要もあります。 次に、パラメーター化テーブルに新しい行を追加し、新しいドキュメントとそのトレーニング データセットの場所を入力します。 これらのフォームに対して新しいモデルをトレーニングする必要があることを示すために、**model_ID** に値 -1 を入力します。 その後、ADF でトレーニング パイプラインを実行します。 テーブルからの読み取り、モデルのトレーニング、テーブル内のモデル ID の上書きが行われます。 その後、スコアリング パイプラインを呼び出して、出力ファイルの書き込みを開始できます。
+新しい種類の新しいフォームを追加する場合は、適切なコンテナーにトレーニング データセットをアップロードする必要もあります。 次に、パラメーター化テーブルに新しい行を追加し、新しいドキュメントとそのトレーニング データセットの場所を入力します。 フォームに対して新しいモデルをトレーニングする必要があることを示すために、**model_ID** に値 -1 を入力します。 その後、Azure Data Factory でトレーニングパイプラインを実行します。 パイプラインにより、テーブルからの読み取り、モデルのトレーニング、テーブル内のモデル ID の上書きが行われます。 その後、スコアリング パイプラインを呼び出して、出力ファイルの書き込みを開始できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、ファイルの大きなバックログをデジタル化するために、Form Recognizer モデルのトレーニングと実行をトリガーする Azure Data Factory パイプラインを設定しました。 次に、Form Recognizer API を調べて、他に何ができるかを確認します。
+このチュートリアルでは、Form Recognizer モデルのトレーニングと実行をトリガーし、ファイルの大きなバックログをデジタル化するために、Azure Data Factory パイプラインを設定しました。 次に、Form Recognizer API を調べて、他に何ができるかを確認します。
 
-* [Form Recognizer REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)
+* [Form Recognizer REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeBusinessCardAsync)

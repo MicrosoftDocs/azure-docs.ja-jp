@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2020
 ms.author: kumud
 ms.openlocfilehash: e0b17c7b707a7718428f63c334210a91759f00e3
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98223654"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell"></a>Azure で IPv6 デュアル スタック アプリケーションをデプロイする - PowerShell

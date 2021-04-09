@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 80011b2ae2a70ce4c540ac31897cc8be4a6580c3
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 4caf804a274956556d6e9ca396c8f08594b11a87
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618622"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092879"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>既知の問題:Azure Active Directory Domain Services での一般的なアラートと解決策
 
@@ -162,7 +162,7 @@ Azure AD DS の仮想ネットワーク サブネットには、自動的に作�
 
 自動的に生成されるサービス プリンシパルの中には、マネージド ドメインのリソースの管理と作成に使用されるものがあります。 これらのいずれかのサービス プリンシパルのアクセス許可が変更されると、ドメインではリソースを正しく管理できません。 次の手順では、サービス プリンシパルに対するアクセス許可を理解し、付与する方法について説明します。
 
-1. [ロールベースのアクセス制御と Azure portal を使ったアプリケーションへのアクセス権の付与方法](../role-based-access-control/role-assignments-portal.md)に関する記事を参照してください。
+1. [Azure ロールベースのアクセス制御と Azure portal を使ったアプリケーションへのアクセス権の付与方法](../role-based-access-control/role-assignments-portal.md)に関する記事を参照してください。
 2. ID *abba844e-bc0e-44b0-947a-dc74e5d09022* のサービス プリンシパルが持っているアクセス権を確認し、以前に拒否されたアクセス権を付与します。
 
 ## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112:マネージド ドメインに十分な数の IP アドレスがない

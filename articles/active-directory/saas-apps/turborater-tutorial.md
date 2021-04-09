@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
 ms.openlocfilehash: 7483e7a9300088d07e85d238ad897522d59c5464
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92519386"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>チュートリアル: Azure Active Directory と TurboRater の統合
@@ -60,13 +60,13 @@ Azure AD への TurboRater の統合を構成するには、Azure Marketplace �
 
     ![[新しいアプリケーション] オプション](common/add-new-app.png)
 
-1. 検索ボックスに「 **TurboRater** 」と入力します。 検索結果で **[TurboRater]** を選択し、 **[追加]** を選択してアプリケーションを追加します。
+1. 検索ボックスに「**TurboRater**」と入力します。 検索結果で **[TurboRater]** を選択し、 **[追加]** を選択してアプリケーションを追加します。
 
     ![結果一覧の TurboRater](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **B Simon** というテスト ユーザーに基づいて、TurboRater で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと TurboRater 内の関連ユーザーとの間にリンク関係を確立する必要があります。
+このセクションでは、**B Simon** というテスト ユーザーに基づいて、TurboRater で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと TurboRater 内の関連ユーザーとの間にリンク関係を確立する必要があります。
 
 TurboRater で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
@@ -91,7 +91,7 @@ TurboRater で Azure AD シングル サインオンを構成するには、次�
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **編集** (鉛筆アイコン) を選択して **[基本的な SAML 構成]** ウィンドウを開きます。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、**編集** (鉛筆アイコン) を選択して **[基本的な SAML 構成]** ウィンドウを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -145,13 +145,13 @@ TurboRater 側でシングル サインオンを構成するには、ダウン�
 
     ![[ユーザー] ウィンドウ](common/user-properties.png)
 
-    1. **[名前]** ボックスに、「 **BSimon** 」と入力します。
+    1. **[名前]** ボックスに、「**BSimon**」と入力します。
   
-    1. **[ユーザー名]** ボックスに「 **BSimon\@\<yourcompanydomain>.\<extension>** 」と入力します。 たとえば、「 **BSimon\@contoso.com** 」のように入力します。
+    1. **[ユーザー名]** ボックスに「**BSimon\@\<yourcompanydomain>.\<extension>** 」と入力します。 たとえば、「**BSimon\@contoso.com**」のように入力します。
 
     1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
 
-    1. **作成** を選択します。
+    1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

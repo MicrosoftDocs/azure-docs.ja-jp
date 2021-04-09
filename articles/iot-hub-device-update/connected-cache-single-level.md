@@ -8,10 +8,10 @@ ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
 ms.openlocfilehash: ae07926d7d8c768170e945e916367bee41999571
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101658741"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-samples"></a>Microsoft 接続キャッシュ プレビュー デプロイ シナリオのサンプル

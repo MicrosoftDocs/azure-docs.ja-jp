@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 656c7467507c105f492f266f06c05a9f41e8f76a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92458865"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kudos"></a>チュートリアル: Azure Active Directory と Kudos の統合
@@ -41,7 +41,7 @@ Kudos と Azure AD の統合を構成するには、次のものが必要です�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Kudos では、 **SP** によって開始される SSO がサポートされます
+* Kudos では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-kudos-from-the-gallery"></a>ギャラリーからの Kudos の追加
 
@@ -61,13 +61,13 @@ Azure AD への Kudos の統合を構成するには、ギャラリーから管�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Kudos** 」と入力し、結果パネルで **[Kudos]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Kudos**」と入力し、結果パネルで **[Kudos]** を選択してから、**[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果一覧の Kudos](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Kudos で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Kudos で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Kudos 内の関連ユーザーの間にリンク関係が確立されている必要があります。
 
 Kudos で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ Kudos で Azure AD のシングル サインオンを構成してテストする
 
 Kudos で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Kudos** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Kudos** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -126,7 +126,7 @@ Kudos で Azure AD シングル サインオンを構成するには、次の手
 
 1. 上部のメニューで **[設定] アイコン** をクリックします。
 
-    ![[設定]](./media/kudos-tutorial/ic787806.png "設定")
+    ![設定](./media/kudos-tutorial/ic787806.png "設定")
 
 1. **[Integrations]\(統合\) > [SSO]** をクリックして、次の手順に従います。
 
@@ -134,11 +134,11 @@ Kudos で Azure AD シングル サインオンを構成するには、次の手
 
     a. **[サインオン URL]** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    b. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、 **[X.509 証明書]** テキストボックスに貼り付けます。
+    b. base-64 でエンコードされた証明書をメモ帳で開き、内容をクリップボードにコピーし、[**X.509 証明書**] ボックスに貼り付けます。
 
     c. **[Logout To URL]\(ログアウト先 URL\)** ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
-    d. **[Your Kudos URL (Kudos の URL)]** テキストボックスに、企業名を入力します。
+    d. [**Your Kudos URL**] ボックスに、会社名を入力します。
 
     e. **[保存]** をクリックします。
 
@@ -158,7 +158,7 @@ Kudos で Azure AD シングル サインオンを構成するには、次の手
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -171,7 +171,7 @@ Kudos で Azure AD シングル サインオンを構成するには、次の手
 
 このセクションでは、Britta Simon に Kudos へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Kudos]** の順に選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Kudos]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -203,19 +203,19 @@ Azure AD ユーザーが Kudos にサインインできるようにするには�
 
 1. 上部のメニューで **[設定] アイコン** をクリックします。
 
-   ![[設定]](./media/kudos-tutorial/ic787806.png "設定")
+   ![設定](./media/kudos-tutorial/ic787806.png "設定")
 
-1. **[ユーザー管理者]** をクリックします。
+1. [**ユーザー管理者**] をクリックします。
 
 1. **[Users]\(ユーザー\)** タブをクリックして、 **[Add a User]\(ユーザーの追加\)** をクリックします。
 
    ![[ユーザー管理者]](./media/kudos-tutorial/ic787809.png "[ユーザー管理者]")
 
-1. **[ユーザーの追加]** セクションで、次の手順に従います。
+1. [**ユーザーの追加**] セクションで、次の手順を実行します。
 
     ![[ユーザーの追加]](./media/kudos-tutorial/ic787810.png "ユーザーを追加する")
 
-    a. プロビジョニングする有効な Azure Active Directory アカウントの **[名]** 、 **[姓]** 、 **[メール]** 、その他の詳細を該当するボックスに入力します。
+    a. 関連テキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの [**名**]、[**姓**]、[**電子メール**]、およびその他の詳細情報を入力します。
 
     b. **[Create User]** をクリックします。
 

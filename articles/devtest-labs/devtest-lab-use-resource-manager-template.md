@@ -4,10 +4,10 @@ description: 仮想マシンから Azure Resource Manager テンプレートを�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: fb7cb38dfb2c1664017f0e342fefecdd464df45f
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97696010"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して仮想マシンを作成する 

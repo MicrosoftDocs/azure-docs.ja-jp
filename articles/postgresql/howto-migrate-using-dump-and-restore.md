@@ -4,14 +4,15 @@ description: PostgreSQL データベースをダンプ ファイルに抽出し�
 author: sr-msft
 ms.author: srranga
 ms.service: postgresql
+ms.subservice: migration-guide
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 4fe15d1bd23f36b7289c54bedf575ae4760600e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16166183b56b371fe8338894f83dbacf2e659c53
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710806"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103563557"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>ダンプと復元を使用した PostgreSQL データベースの移行
 [!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
@@ -52,12 +53,12 @@ pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user-nam
 
 この例では、対象サーバー **mydemoserver.postgres.database.azure.com** 上のデータベース **mypgsqldb** に、ダンプ ファイル **testdb.dump** からデータを復元します。
 
-この **pg_restore** を**単一サーバー**で使用する方法の例を次に示します。
+この **pg_restore** を **単一サーバー** で使用する方法の例を次に示します。
 
 ```bash
 pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb testdb.dump
 ```
-この **pg_restore** を**フレキシブル サーバー**で使用する方法の例を次に示します。
+この **pg_restore** を **フレキシブル サーバー** で使用する方法の例を次に示します。
 
 ```bash
 pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin --dbname=mypgsqldb testdb.dump
@@ -86,11 +87,11 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 
 - -fc および -j *#* スイッチを付けて復元することで､復元を並列処理します。 *#* ターゲット サーバーのコアの数です。 *#* をターゲット サーバーのコア数の 2 倍に設定することで､その影響を確認することもできます｡ 次に例を示します。
 
-この **pg_restore** を**単一サーバー**で使用する方法の例を次に示します。
+この **pg_restore** を **単一サーバー** で使用する方法の例を次に示します。
 ```bash
  pg_restore -h my-target-server.postgres.database.azure.com -U azure-postgres-username@my-target-server -Fc -j 4 -d my-target-databasename Z:\Data\Backups\my-database-backup.dump
 ```
-この **pg_restore** を**フレキシブル サーバー**で使用する方法の例を次に示します。
+この **pg_restore** を **フレキシブル サーバー** で使用する方法の例を次に示します。
 ```bash
  pg_restore -h my-target-server.postgres.database.azure.com -U azure-postgres-username@my-target-server -Fc -j 4 -d my-target-databasename Z:\Data\Backups\my-database-backup.dump
  ```

@@ -8,10 +8,10 @@ ms.date: 01/26/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 4d31ce4b6086c44de913afd1083bae25fa3d44cd
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98898157"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>接続されていない Azure マネージド ディスクとアンマネージド ディスクを見つけて削除する - Azure portal

@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f92625131a35dc91c860923ec6523c189830f65
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: bab8e8c6dfb944e496c636d53217e63175be9fbc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102552152"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587850"
 ---
 # <a name="securing-service-principals"></a>サービス プリンシパルのセキュリティ保護
 
-Azure Active Directory (Azure AD) [サービス プリンシパル](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)は、単一のテナントまたはディレクトリ内のアプリケーション オブジェクトをローカルに表現したものです。  これは、アプリケーション インスタンスの ID として機能します。 サービス プリンシパルは、誰がアプリケーションにアクセスできるかと、アプリケーションがどのリソースにアクセスできるかを定義するものです。 サービス プリンシパルは、アプリケーションが使用される各テナント内に作成されて、グローバルに一意なアプリケーション オブジェクトを参照します。 テナントによって、サービス プリンシパルのサインインとリソースへのアクセスがセキュリティで保護されます。  
+Azure Active Directory (Azure AD) [サービス プリンシパル](../develop/app-objects-and-service-principals.md)は、単一のテナントまたはディレクトリ内のアプリケーション オブジェクトをローカルに表現したものです。  これは、アプリケーション インスタンスの ID として機能します。 サービス プリンシパルは、誰がアプリケーションにアクセスできるかと、アプリケーションがどのリソースにアクセスできるかを定義するものです。 サービス プリンシパルは、アプリケーションが使用される各テナント内に作成されて、グローバルに一意なアプリケーション オブジェクトを参照します。 テナントによって、サービス プリンシパルのサインインとリソースへのアクセスがセキュリティで保護されます。  
 
 ### <a name="tenant-service-principal-relationships"></a>テナントとサービス プリンシパルの関係
 シングルテナント アプリケーションには、そのホーム テナント内にサービス プリンシパルが 1 つだけあります。 マルチテナント Web アプリケーションまたは API では、各テナント内にサービス プリンシパルが 1 つ必要です。 サービス プリンシパルは、そのテナントのユーザーがアプリケーションまたは API の使用に同意したときに作成されます。 この同意によって、マルチテナント アプリケーションとそれに関連付けられたサービス プリンシパルの間に、一対多の関係が作成されます。
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) [サービス プリンシパル](https://docs
 
 ApplicationID は、グローバルなアプリケーションを表し、テナント全体のすべてのアプリケーション インスタンスで同一です。 ObjectID は、アプリケーション オブジェクトの一意の値であり、サービス プリンシパルを表します。 ユーザー、グループ、その他のリソースと同様に、ObjectID は、Azure AD 内のアプリケーション インスタンスを一意に識別するのに役立ちます。
 
-このトピックの詳細については、[アプリケーションとサービス プリンシパルの関係](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)に関するページを参照してください。
+このトピックの詳細については、[アプリケーションとサービス プリンシパルの関係](../develop/app-objects-and-service-principals.md)に関するページを参照してください。
 
 Azure PowerShell、Azure CLI、Microsoft Graph、Azure portal、およびその他のツールを使用して、テナント内にアプリケーションとそのサービス プリンシパル オブジェクト (ObjectID) を作成することもできます。 
 
@@ -63,7 +63,7 @@ Azure PowerShell、Azure CLI、Microsoft Graph、Azure portal、およびその�
 
 * パスワード 
 
-Azure Key Vault と、それを証明書とシークレットの管理に使用する方法の詳細については、「[Azure Key Vault について](https://docs.microsoft.com/azure/key-vault/general/overview)」と「[Azure portal を使用して Key Vault アクセス ポリシーを割り当てる](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)」を参照してください。 
+Azure Key Vault と、それを証明書とシークレットの管理に使用する方法の詳細については、「[Azure Key Vault について](../../key-vault/general/overview.md)」と「[Azure portal を使用して Key Vault アクセス ポリシーを割り当てる](../../key-vault/general/assign-access-policy-portal.md)」を参照してください。 
 
  ### <a name="challenges-and-mitigations"></a>課題と軽減策
 次の表に、サービス プリンシパルの使用時に発生する可能性がある課題の軽減策を示します。
@@ -89,7 +89,7 @@ PowerShell の使用
 `Get-AzureADServicePrincipal -All:$true` 
 
 
-詳細については、[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal) を参照してください。
+詳細については、[Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) を参照してください。
 
 ## <a name="assess-service-principal-security"></a>サービス プリンシパルのセキュリティを評価する
 
@@ -105,7 +105,7 @@ PowerShell の使用
 | 既定の Azure RBAC の役割は共同作成者です。 |ニーズを評価し、そのニーズを満たすために最小限のアクセス許可を持つ役割を適用します。|
 
 ## <a name="move-from-a-user-account-to-a-service-principal"></a>ユーザー アカウントからサービス プリンシパルに移行する  
-‎サービス プリンシパルとして Azure ユーザー アカウントを使用している場合は、[マネージド ID](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) またはサービス プリンシパルに移行できるかどうかを評価します。 マネージド ID を使用できない場合は、必要なタスクを実行するのに十分なアクセス許可とスコープだけを持つサービス プリンシパルをプロビジョニングします。 サービス プリンシパルは、[アプリケーションを登録する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)か、[PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell) を使用して作成できます。
+‎サービス プリンシパルとして Azure ユーザー アカウントを使用している場合は、[マネージド ID](../../app-service/overview-managed-identity.md?tabs=dotnet) またはサービス プリンシパルに移行できるかどうかを評価します。 マネージド ID を使用できない場合は、必要なタスクを実行するのに十分なアクセス許可とスコープだけを持つサービス プリンシパルをプロビジョニングします。 サービス プリンシパルは、[アプリケーションを登録する](../develop/howto-create-service-principal-portal.md)か、[PowerShell](../develop/howto-authenticate-service-principal-powershell.md) を使用して作成できます。
 
 Microsoft Graph の使用時は、[この例のように](/powershell/azure/create-azure-service-principal-azureps)、特定の API のドキュメントを確認し、‎アプリケーションのアクセス許可の種類がサポート対象として表示されていることを確認してください。
 
@@ -115,7 +115,7 @@ Microsoft Graph の使用時は、[この例のように](/powershell/azure/crea
 
 [サービス プリンシパルの作成](../develop/howto-create-service-principal-portal.md)
 
- [サービス プリンシパルのサインインの監視](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#sign-ins-report)
+ [サービス プリンシパルのサインインの監視](../reports-monitoring/concept-sign-ins.md#sign-ins-report)
 
 **サービス アカウントのセキュリティ保護の詳細を確認する場合:**
 

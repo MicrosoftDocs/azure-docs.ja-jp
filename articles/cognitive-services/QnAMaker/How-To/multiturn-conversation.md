@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: cef2e2ca9c7ad4640014d9b5a9a7da42d308ef7c
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 313d1a390c30e7e5612b8d9bab7783b6698c35fd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605146"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102618493"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>フォローアップ プロンプトを使用して、複数のターンを含む会話を作成します。
 
@@ -363,7 +363,7 @@ QnA Maker は、エクスポートされるファイルに複数ターンの会�
 
 ## <a name="next-steps"></a>次のステップ
 
-この[対話サンプル](https://github.com/microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/adaptive-dialog/07.qnamaker/QnAMaker.csproj)のコンテキスト会話について、または[複数ターン会話のための概念的ボット設計](/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0)について詳しく学習します。
+この[対話サンプル](https://github.com/microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/adaptive-dialog/07.qnamaker/QnAMaker.csproj)のコンテキスト会話について、または[複数ターン会話のための概念的ボット設計](/azure/bot-service/bot-builder-conversations)について詳しく学習します。
 
 > [!div class="nextstepaction"]
 > [ナレッジ ベースの移行](../Tutorials/migrate-knowledge-base.md)

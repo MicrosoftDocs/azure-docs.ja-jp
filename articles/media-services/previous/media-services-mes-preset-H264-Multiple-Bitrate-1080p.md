@@ -1,7 +1,7 @@
 ---
 title: H264 Multiple Bitrate 1080p Media Encoder Standard プリセット - Azure | Microsoft Docs
 description: このトピックでは、**H264 Multiple Bitrate 1080p** タスク プリセットの概要を説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: c19ff3bac285899033a4a68f3b3cb3773f9e8c61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 3740109c91845ba32d1102d27fba0ceb398eb803
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89257315"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103014624"
 ---
 # <a name="h264-multiple-bitrate-1080p"></a>H264 Multiple Bitrate 1080p
 

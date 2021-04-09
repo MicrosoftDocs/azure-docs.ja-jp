@@ -7,20 +7,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48c60878a6a58b2f4629768b81af894a741dab1c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 87415fc98bbcc9331ae4ff6282a65c85b570042d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509803"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579775"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OpenID Connect による Web サインイン
 
 OpenID Connect は、ユーザーを Web アプリケーションに安全にサインインさせるために使用できる、OAuth 2.0 に基づいて構築された認証プロトコルです。 OpenID Connect の Azure Active Directory B2C (Azure AD B2C) 実装を使用することにより、Web アプリケーションでのサインアップ、サインイン、その他の ID 管理エクスペリエンスを Azure Active Directory (Azure AD) にアウトソーシングできます。 このガイドでは、これを言語に依存しない方法で実行する方法について説明します。 オープンソース ライブラリを利用しないで、HTTP メッセージを送受信する方法について説明します。
+
+> [!NOTE]
+> オープンソース認証ライブラリのほとんどで、アプリケーションの JWT トークンの取得と検証が行われます。 独自のコードを実装するより、オープンソース ライブラリを試してみることをお勧めします。 詳しくは、「[Microsoft Authentication Library (MSAL) の概要](../active-directory/develop/msal-overview.md)」と「[Microsoft Identity Web 認証ライブラリ](../active-directory/develop/microsoft-identity-web.md)」を参照してください。
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 の "*認可*" プロトコルを "*認証*" プロトコルとして使用できるように拡張したものです。 この認証プロトコルでは、シングル サインオンを実行できます。 ここでは、クライアントがユーザーの ID を検証したり、ユーザーに関する基本的なプロファイル情報を取得したりできるようにする "*ID トークン*" の概念が導入されています。
 
@@ -57,6 +60,9 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | redirect_uri | いいえ | アプリケーションの `redirect_uri` パラメーター。これにより、アプリケーションは認証応答を送受信できます。 これは、URL でエンコードされている必要がある点を除き、Azure portal で登録した `redirect_uri` パラメーターのいずれかに正確に一致している必要があります。 |
 | response_mode | いいえ | 結果として得られた承認コードをアプリケーションに送り返すために使用される方法。 これは `query`、`form_post`、`fragment` のいずれかにできます。  最高のセキュリティを得るには、`form_post` 応答モードをお勧めします。 |
 | state | いいえ | 要求に含まれ、トークンの応答としても返される値。 任意の文字列を指定することができます。 クロスサイト リクエスト フォージェリ攻撃を防ぐために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリケーション内でユーザーの状態 (表示中のページなど) に関する情報をエンコードする目的にも使用されます。 |
+| login_hint | いいえ| サインインページのサインイン名フィールドに事前に入力するために使用できます。 詳細については、「[サインイン名を事前入力する](direct-signin.md#prepopulate-the-sign-in-name)」を参照してください。  |
+| domain_hint | いいえ| サインインに使用する必要があるソーシャル ID プロバイダーに関するヒントを Azure AD B2C に提供します。 有効な値が含まれている場合、ユーザーは直接 ID プロバイダーのサインイン ページに移動します。  詳細については、「[サインインをソーシャル プロバイダーにリダイレクトする](direct-signin.md#redirect-sign-in-to-a-social-provider)」を参照してください。 |
+| カスタム パラメーター | いいえ| [カスタムポリシー](custom-policy-overview.md)で使用できるカスタム パラメーター。 例: [動的なカスタム ページ コンテンツ URI](customize-ui-with-html.md?pivots=b2c-custom-policy#configure-dynamic-custom-page-content-uri)、または[キー値要求リゾルバー](claim-resolver-overview.md#oauth2-key-value-parameters)。 |
 
 この時点で、ユーザーはワークフローを完了するよう求められます。 ユーザー名とパスワードを入力したり、ソーシャル ID でサインインしたり、ディレクトリにサインアップしたりすることが必要な場合があります。 ユーザー フローの定義方法によっては、これ以外にもいくつかの手順が必要になる場合があります。
 
@@ -94,7 +100,10 @@ error=access_denied
 
 ## <a name="validate-the-id-token"></a>ID トークンの検証
 
-ユーザーを認証するには、ID トークンを受信するだけでは不十分です。 ID トークンの署名を検証し、アプリケーションの要件ごとにトークン内の要求を確認します。 Azure AD B2C は、[JSON Web トークン (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) と公開キー暗号を使用してトークンに署名し、それらが有効であることを証明します。 優先言語にもよりますが、JWT を検証するためのさまざまなオープンソース ライブラリを入手できます。 独自の検証ロジックを実装するより、オープンソース ライブラリを試してみることをお勧めします。
+ユーザーを認証するには、ID トークンを受信するだけでは不十分です。 ID トークンの署名を検証し、アプリケーションの要件ごとにトークン内の要求を確認します。 Azure AD B2C は、[JSON Web トークン (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) と公開キー暗号を使用してトークンに署名し、それらが有効であることを証明します。 
+
+> [!NOTE]
+> オープンソース認証ライブラリのほとんどで、アプリケーションの JWT トークンの検証が行われます。 独自の検証ロジックを実装するより、オープンソース ライブラリを試してみることをお勧めします。 詳しくは、「[Microsoft Authentication Library (MSAL) の概要](../active-directory/develop/msal-overview.md)」と「[Microsoft Identity Web 認証ライブラリ](../active-directory/develop/microsoft-identity-web.md)」を参照してください。
 
 Azure AD B2C には、OpenID Connect メタデータ エンドポイントがあって、アプリケーションは、このエンドポイントを使用することで、Azure AD B2C に関する情報を実行時に取得することができます。 この情報には、エンドポイント、トークンの内容、トークンの署名キーが含まれます。 ご利用の B2C テナントにはユーザー フロー別の JSON メタデータ ドキュメントがあります。 たとえば、`fabrikamb2c.onmicrosoft.com` 内の `b2c_1_sign_in` ユーザー フローのメタデータ ドキュメントは次の場所にあります。
 
@@ -126,7 +135,7 @@ ID トークンの署名を検証した後、確認する必要のあるいく�
 - 適切な承認/特権がユーザーにあることを確認する。
 - Azure AD Multi-Factor Authentication など特定の強度の認証が行われたことを確認する。
 
-ID トークンを検証した後、ユーザーとのセッションを開始できます。 ID トークン内の要求を使用して、アプリケーションでユーザーに関する情報を取得できます。 この情報の使用には、表示、記録、および承認が含まれます。
+ID トークンが検証された後、ユーザーとのセッションを開始できます。 ID トークン内の要求を使用して、アプリケーションでユーザーに関する情報を取得できます。 この情報の使用には、表示、記録、および承認が含まれます。
 
 ## <a name="get-a-token"></a>トークンを取得する
 

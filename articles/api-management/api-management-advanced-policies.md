@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 3a37cde79cef59eaf9c3ef130bfbae9cff958bd7
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 03529fd3c0231617c477f4f16773039a02386683
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919450"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562486"
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 
@@ -918,7 +918,7 @@ status code and media type. If no example or schema found, the content is empty.
 `trace` ポリシーによって、API Inspector の出力、Application Insights テレメトリ、リソース ログにカスタム トレースが追加されます。
 
 -   トレースがトリガーされたときに、ポリシーによって [API Inspector](./api-management-howto-api-inspector.md) の出力にカスタム トレースが追加されます。つまり、`Ocp-Apim-Trace` 要求ヘッダーが存在し、true に設定され、`Ocp-Apim-Subscription-Key` 要求ヘッダーが存在し、トレースを許可する有効なキーが保持されます。
--   [Application Insights の統合](./api-management-howto-app-insights.md)が有効で、ポリシーに指定されている `severity` のレベルが診断設定に指定されている `verbosity` レベル以上である場合、このポリシーによって Application Insights に[トレース](../azure-monitor/app/data-model-trace-telemetry.md) テレメトリが作成されます。
+-   [Application Insights の統合](./api-management-howto-app-insights.md)が有効で、ポリシーに指定されている `severity` が診断設定に指定されている `verbosity` 以上である場合、このポリシーによって Application Insights に[トレース](../azure-monitor/app/data-model-trace-telemetry.md) テレメトリが作成されます。
 -   [リソース ログ](./api-management-howto-use-azure-monitor.md#activity-logs)が有効で、ポリシーに指定されている重大度レベルが診断設定に指定されている詳細レベル以上である場合、このポリシーによってログ エントリにプロパティが追加されます。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント

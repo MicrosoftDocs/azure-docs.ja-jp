@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015402"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>StorSimple モニタリング インジケーターを使用してデバイスを管理する
@@ -129,7 +129,7 @@ EBOD エンクロージャには、580W PCM が搭載されています。予備
 StorSimple デバイスは、StorSimple デバイスのプライマリ コントローラーおよび EBOD コントローラー モジュールの LED を備えています。   
 
 ### <a name="monitoring-leds-for-the-primary-controller"></a>プライマリ コントローラーの監視 LED
-次の図を参考にして、プライマリ コントローラーの LED を識別してください (位置を把握できるようにすべてのコンポーネントが示されています)。  
+次の図を参考にして、プライマリ コントローラーの LED を識別してください  (位置を把握できるようにすべてのコンポーネントが示されています)。  
 
    ![LED の監視 - プライマリ コントローラー][4]
 
@@ -219,7 +219,7 @@ StorSimple デバイスは、主エンクロージャと EBOD エンクロージ
 次の表に、各種のアラーム状態を説明します。
 
 ### <a name="alarm-conditions"></a>アラーム状態
-| Status | 重大度 | アラーム | OPS パネル LED |
+| 状態 | 重大度 | アラーム | OPS パネル LED |
 | --- | --- | --- | --- |
 | PCM アラート - 1 つの PCM の DC 電源の喪失 |障害 - 冗長性は失われていない |S1 |モジュール障害 |
 | PCM アラート - 1 つの PCM の DC 電源の喪失 |障害 - 冗長性損失 |S1 |モジュール障害 |

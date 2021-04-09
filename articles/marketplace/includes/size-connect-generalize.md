@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: addc18a0ebf9e49d3474d3f40cb1e2a6e0f0b272
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: c60d2a9b13cce9251ff0f730081a9d677206770d
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826696"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630128"
 ---
 ## <a name="generalize-the-image"></a>イメージを汎用化する
 
@@ -38,60 +38,31 @@ Windows OS ディスクは、[sysprep](/windows-hardware/manufacture/desktop/sys
     1. Azure portal でリソース グループ (RG) を選択し、VM の割り当てを解除します。
     2. これで VM が一般化されたため、この VM ディスクを使用して新しい VM を作成できます。
 
-### <a name="take-a-snapshot-of-the-vm-disk"></a>VM ディスクのスナップショットを作成する
+### <a name="capture-image"></a>イメージをキャプチャする
 
-1. [Azure portal](https://ms.portal.azure.com/) にサインインします。
-2. 左上の **[リソースの作成]** を選択し、 **[スナップショット]** を検索して選択します。
-3. **[スナップショット]** ブレードで、[作成] を選択します。
-4. スナップショットの **[名前]** を入力します。
-5. 既存のリソース グループを選択するか、新しいものの名前を入力します。
-6. **[ソース ディスク]** で、スナップショットを作成するマネージド ディスクを選びます。
-7. スナップショットの保存に使う **[アカウントの種類]** を選びます。 高パフォーマンスの SSD に保存する必要がある場合を除き、 **[Standard HDD]** を使用します。
-8. **［作成］** を選択します
+VM の準備ができたら、Azure Shared Image Gallery でキャプチャできます。 キャプチャするには、次の手順に従います。
 
-#### <a name="extract-the-vhd"></a>VHD を抽出する
+1. [Azure portal](https://ms.portal.azure.com/) で、使用している仮想マシンのページにアクセスします。
+2. **[キャプチャ]** を選択します。
+3. **[Shared Image Gallery にイメージを共有する]** で、 **[Yes, share it to a gallery as an image version]\(はい、ギャラリーにイメージ バージョンとして共有します\)** を選択します。
+4. **[Operating system state]\(オペレーティング システムの状態\)** で、[一般化] を選択します。
+5. ターゲット イメージ ギャラリーまたは **[新規作成]** を選択します。
+6. ターゲット イメージ定義または **[新規作成]** を選択します。
+7. イメージの **[バージョン番号]** を指定します。
+8. **[確認と作成]** を選択して、選択内容を確認します。
+9. 検証に合格したら、 **[作成]** を選択します。
 
-次のスクリプトを使用して、スナップショットをストレージ アカウント内の VHD にエクスポートします。
+公開するには、公開元アカウントに SIG イメージへの Owner アクセス権が必要です。 アクセス権を付与するには、次のようにします。
 
-```azurecli-interactive
-#Provide the subscription Id where the snapshot is created
-$subscriptionId=yourSubscriptionId
+1. Shared Image Gallery にアクセスします。
+2. 左側のパネルで **[アクセス制御 (IAM)]** を選択します。
+3. **[追加]** 、 **[ロールの割り当ての追加]** の順に選択します。
+4. **[ロール]** または **[所有者]** を選択します。
+5. **[アクセス権の割り当て先]** で、 **[User, group, or service principal]\(ユーザー、グループ、またはサービス プリンシパル\)** を選択します。
+6. イメージを公開するユーザーの Azure メールを選択します。
+7. **[保存]** を選択します。
 
-#Provide the name of your resource group where the snapshot is created
-$resourceGroupName=myResourceGroupName
+:::image type="content" source="../media/create-vm/add-role-assignment.png" alt-text="ロール割り当ての追加ウィンドウを表示します。":::
 
-#Provide the snapshot name
-$snapshotName=mySnapshot
-
-#Provide Shared Access Signature (SAS) expiry duration in seconds (such as 3600)
-#Know more about SAS here: https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1
-$sasExpiryDuration=3600
-
-#Provide storage account name where you want to copy the underlying VHD file. 
-$storageAccountName=mystorageaccountname
-
-#Name of the storage container where the downloaded VHD will be stored.
-$storageContainerName=mystoragecontainername
-
-#Provide the key of the storage account where you want to copy the VHD 
-$storageAccountKey=mystorageaccountkey
-
-#Give a name to the destination VHD file to which the VHD will be copied.
-$destinationVHDFileName=myvhdfilename.vhd
-
-az account set --subscription $subscriptionId
-
-sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
-
-az storage blob copy start --destination-blob $destinationVHDFileName --destination-container $storageContainerName --account-name $storageAccountName --account-key $storageAccountKey --source-uri $sas
-```
-
-#### <a name="script-explanation"></a>スクリプトの説明
-
-このスクリプトでは、次のコマンドを使用してスナップショットの SAS URI を生成し、その SAS URI を使用して基になる VHD をストレージ アカウントにコピーします。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
-
-| コマンド | Notes |
-| --- | --- |
-| az ディスク アクセスの許可 | 基盤となる VHD ファイルをストレージ アカウントにコピーするか、オンプレミスにダウンロードするために使用される、読み取り専用の SAS を生成します。
-| az storage blob copy start | BLOB を、あるストレージ アカウントから別のストレージ アカウントに非同期的にコピーします。 `az storage blob show` を使用して、新しい BLOB の状態を確認します。 |
-|
+> [!NOTE]
+> パートナー センターで SIG イメージを公開できるようになったため、SAS URI を生成する必要はありません。 ただし、それでも SAS URI の生成手順を参照する必要がある場合は、「[VM イメージの SAS URI を生成する方法](../azure-vm-get-sas-uri.md)」を参照してください。

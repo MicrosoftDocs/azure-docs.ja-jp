@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/21/2019
 ms.openlocfilehash: c26baec66248ca00ef212acf3d773c2566b3aea9
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946365"
 ---
 # <a name="apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>Azure ストレージ コンテナーに Azure HDInsight のファイルが多数含まれる場合、Apache Spark ジョブの実行速度が低下する
@@ -29,7 +29,7 @@ Spark 2.1 では、書き込みのたびにキャッシュを更新する必要�
 
 Spark 2.2 では、追加モードでデータを書き込むときに、このパフォーマンスの問題を修正する必要があります。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解決方法
 
 パーティション分割されたデータ セットを作成する場合、重要なのは、`FileStatusCache` を更新するために Spark がリストする必要があるファイルの数を制限するパーティション構成を使用することです。
 

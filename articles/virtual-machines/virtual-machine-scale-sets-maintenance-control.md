@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
 ms.openlocfilehash: 55cbc5db534dd1b05f91a24e0104b1f2dc110547
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90532961"
 ---
 # <a name="preview-maintenance-control-for-azure-virtual-machine-scale-sets"></a>プレビュー:Azure 仮想マシン スケール セットのメンテナンス コントロール 
@@ -36,7 +36,7 @@ ms.locfileid: "90532961"
 ## <a name="limitations"></a>制限事項
 
 - VM はスケール セット内に存在する必要があります。
-- ユーザーは、**リソース共同作成者**のアクセス権を持っている必要があります。
+- ユーザーは、**リソース共同作成者** のアクセス権を持っている必要があります。
 - メンテナンス構成で、メンテナンス期間を 5 時間以上にする必要があります。
 - メンテナンス構成で、メンテナンスの繰り返しを 'Day' に設定する必要があります
 

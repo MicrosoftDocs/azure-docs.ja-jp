@@ -16,10 +16,10 @@ ms.date: 04/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 58ecdfefa79716bcc0a69063293d5a1067693a78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89182362"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>ユーザー プライバシーと Azure AD Connect Health 
@@ -30,12 +30,12 @@ ms.locfileid: "89182362"
 >この記事では、Azure AD Connect Health とユーザー プライバシーについて説明します。  Azure AD Connect とユーザー プライバシーについては、[こちら](reference-connect-user-privacy.md)の記事をご覧ください。
 
 ## <a name="user-privacy-classification"></a>ユーザー プライバシーの分類
-Azure AD Connect Health は、GDPR の**データ プロセッサ** カテゴリに分類されます。 このサービスは、データ プロセッサ パイプラインとして、重要なパートナーやエンド コンシューマーにデータ処理サービスを提供するものです。 Azure AD Connect Health は、ユーザー データを生成するものではなく、どのような個人データが収集されるかや、それらのデータの用途について、独立した制御を持つものでもありません。 Azure AD Connect Health でのデータの取得、集計、分析、およびレポートは、既存のオンプレミス データに基づいて行われます。 
+Azure AD Connect Health は、GDPR の **データ プロセッサ** カテゴリに分類されます。 このサービスは、データ プロセッサ パイプラインとして、重要なパートナーやエンド コンシューマーにデータ処理サービスを提供するものです。 Azure AD Connect Health は、ユーザー データを生成するものではなく、どのような個人データが収集されるかや、それらのデータの用途について、独立した制御を持つものでもありません。 Azure AD Connect Health でのデータの取得、集計、分析、およびレポートは、既存のオンプレミス データに基づいて行われます。 
 
 ## <a name="data-retention-policy"></a>データ リテンション期間ポリシー
 Azure AD Connect Health では、レポートの生成、分析の実行、またはインサイトの提供を、30 日間を超えて行うことはありません。 そのため Azure AD Connect Health では、いかなるデータも 30 日間を超えて格納、処理、保持されることはありません。 この設計は、GDPR の規制、Microsoft のプライバシー コンプライアンス規則、および Azure AD のデータ リテンション ポリシーに準拠したものです。 
 
-**Health サービス データが最新ではありません**という**エラー** アラートが30 日以上連続でアクティブになっている場合、そのサーバーでは、その期間中にデータが Connect Health に一切到達していません。 これらのサーバーは無効化され、Connect Health ポータルに表示されません。 サーバーを再度有効にするには、[正常性エージェントをアンインストールし、再インストールする](how-to-connect-health-agent-install.md)必要があります。 なお、このことは同じアラート タイプの**警告**には当てはまりません。 警告は、一部のデータがアラート対象のサーバーに見つからないことを示します。 
+**Health サービス データが最新ではありません** という **エラー** アラートが30 日以上連続でアクティブになっている場合、そのサーバーでは、その期間中にデータが Connect Health に一切到達していません。 これらのサーバーは無効化され、Connect Health ポータルに表示されません。 サーバーを再度有効にするには、[正常性エージェントをアンインストールし、再インストールする](how-to-connect-health-agent-install.md)必要があります。 なお、このことは同じアラート タイプの **警告** には当てはまりません。 警告は、一部のデータがアラート対象のサーバーに見つからないことを示します。 
  
 ## <a name="disable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Azure AD Connect Health でのデータの収集と 監視を無効にする
 Azure AD Connect Health では、各監視対象サーバーや、監視対象サービスのインスタンスについて、データ収集を停止させることができます。 たとえば、Azure AD Connect Health を使用して監視されている個々の AD FS (Active Directory フェデレーション サービス) サーバーについて、データ収集を停止することもできます。 また、Azure AD Connect Health を使用して監視されている ADFS インスタンス全体について、データ収集を停止することもできます。 これを行った場合は、データ収集が停止された後に、対応するサーバーが Azure AD Connect Health ポータルから削除されます。 
@@ -60,7 +60,7 @@ Azure AD Connect Health では、各監視対象サーバーや、監視対象�
 「[Azure AD Connect Health サービスからサーバーを削除するには](how-to-connect-health-operations.md#delete-a-server-from-the-azure-ad-connect-health-service)」をご覧ください。
 
 ### <a name="disable-data-collection-and-monitoring-for-all-monitored-services-in-azure-ad-connect-health"></a>Azure AD Connect Health でのすべての監視対象サービスのデータ収集と監視を無効にする
-Azure AD Connect Health では、テナントの**すべて**の登録済みサービスのデータ収集を停止することもできます。 操作を実行する前に、すべてのグローバル管理者の慎重な検討と十分な確認をお勧めします。 プロセスが開始されると、Connect Health サービスはすべてのサービスのすべてのデータの受信、処理、およびレポートを停止します。 Connect Health サービスの既存のデータは 30 日を超えない範囲で保持されます。
+Azure AD Connect Health では、テナントの **すべて** の登録済みサービスのデータ収集を停止することもできます。 操作を実行する前に、すべてのグローバル管理者の慎重な検討と十分な確認をお勧めします。 プロセスが開始されると、Connect Health サービスはすべてのサービスのすべてのデータの受信、処理、およびレポートを停止します。 Connect Health サービスの既存のデータは 30 日を超えない範囲で保持されます。
 特定のサーバーのデータ収集を停止する場合は、特定のサーバーの削除時の手順に従ってください。 テナントのデータ収集を停止するには、次の手順に従って、データの収集を停止し、テナントのすべてのサービスを削除します。
 
 1. メイン ブレードの構成で **[全般設定]** をクリックします。 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
 ms.openlocfilehash: f76d3b81c2d5425f7bb91c5c86a79faa097794e3
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96435002"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Azure Managed Applications 用のポータル インターフェイスをテストする

@@ -4,10 +4,10 @@ description: ラボ (Azure DevTest Labs) で Linux 仮想マシンに接続す�
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.openlocfilehash: 52fe245f85034a4c6300615ad8fb6040c1168298
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86528268"
 ---
 # <a name="connect-to-a-linux-vm-in-your-lab-azure-devtest-labs"></a>ラボ (Azure DevTest Labs) で Linux VM に接続する
@@ -15,18 +15,18 @@ ms.locfileid: "86528268"
 
 ## <a name="connect-to-a-linux-vm"></a>Linux VM に接続する
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 検索バーで **DevTest Labs** を検索して選択します。 
+1. 検索バーで "**DevTest Labs**" を検索して選択します。 
 
-    :::image type="content" source="./media/connect-linux-virtual-machine/search-select.png" alt-text="DevTest Labs を検索して選択する":::    
-1. ラボの一覧で、目的の**ラボ**を選択します。
+    :::image type="content" source="./media/connect-linux-virtual-machine/search-select.png" alt-text="DevTest Labs の検索と選択":::    
+1. ラボの一覧で、目的の **ラボ** を選択します。
 
-    :::image type="content" source="./media/connect-linux-virtual-machine/select-lab.png" alt-text="DevTest Labs を検索して選択する":::            
+    :::image type="content" source="./media/connect-linux-virtual-machine/select-lab.png" alt-text="目的のラボを選択する":::            
 1. ラボのホーム ページで、 **[仮想マシン]** の一覧から目的の Linux VM を選択します。 
 
-    :::image type="content" source="./media/connect-linux-virtual-machine/select-linux-vm.png" alt-text="DevTest Labs を検索して選択する":::        
+    :::image type="content" source="./media/connect-linux-virtual-machine/select-linux-vm.png" alt-text="目的の Linux VM を選択する":::        
 5. **[概要]** ページで、VM の完全修飾ドメイン名 (FQDN) または IP アドレスを確認できます。 次の図に示すように、ポートも確認できます。
 
-    :::image type="content" source="./media/connect-linux-virtual-machine/vm-overview.png" alt-text="DevTest Labs を検索して選択する":::    
+    :::image type="content" source="./media/connect-linux-virtual-machine/vm-overview.png" alt-text="VM の完全修飾ドメイン名":::    
 
     VM が起動されているのに **[接続]** ボタンがグレー表示になっていることに留意してください。 これは仕様です。
 6.  SSH を使用して Lunux VM に接続します。 次の例では、FQDN `mydtl07172452621450000.eastus.cloudapp.azure.com` の VM にユーザー名 `vmuser` とポート `51637` を使用して接続しています。 VM に接続するためのユーザーのパスワードを入力します。 

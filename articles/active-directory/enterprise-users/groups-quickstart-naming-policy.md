@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c6013d14d7639bf4f7fe318c9a2da96e4d8acbcb
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96546286"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>クイック スタート: Azure Active Directory におけるグループの名前付けポリシー
@@ -29,25 +29,25 @@ ms.locfileid: "96546286"
 * アドレス帳でグループを分類しやすいようにする。
 * グループ名やグループ エイリアスで特定の単語の使用を禁止する。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料のアカウントを作成](https://azure.microsoft.com/free/)してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="configure-the-group-naming-policy-in-the-azure-portal"></a>Azure portal でグループの名前付けポリシーを構成する
 
 1. ユーザー管理者アカウントを使用して [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-1. **[グループ]** を選択し、**[名前付けポリシー]** を選択して [名前付けポリシー] ページを開きます。
+1. **[グループ]** を選択し、 **[名前付けポリシー]** を選択して [名前付けポリシー] ページを開きます。
 
     ![管理センターで [名前付けポリシー] ページを開く](./media/groups-quickstart-naming-policy/policy.png)
 
 ### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>プレフィックス/サフィックス名前付けポリシーを表示または編集する
 
-1. **[名前付けポリシー]** ページで、**[グループの名前付けポリシー]** を選択します。
+1. **[名前付けポリシー]** ページで、 **[グループの名前付けポリシー]** を選択します。
 1. 名前付けポリシーの一部として強制する属性または文字列を選択することで、現在のプレフィックスまたはサフィックス名前付けポリシーを個別に表示または編集できます。
 1. プレフィックスまたはサフィックスを一覧から削除するには、プレフィックスまたはサフィックスを選択して **[削除]** を選択します。 複数の項目を同時に削除できます。
 1. **[保存]** を選択して、ポリシーへの変更を有効にします。
 
 ### <a name="view-or-edit-the-custom-blocked-words"></a>カスタム禁止単語を表示または編集する
 
-1. **[名前付けポリシー]** ページで、**[ブロックされている単語]** を選択します。
+1. **[名前付けポリシー]** ページで、 **[ブロックされている単語]** を選択します。
 
     ![名前付けポリシーのブロックされている単語の一覧の編集とアップロード](./media/groups-quickstart-naming-policy/blockedwords.png)
 

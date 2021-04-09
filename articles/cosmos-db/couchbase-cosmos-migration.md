@@ -9,10 +9,10 @@ ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
 ms.openlocfilehash: a15c6b5919f428b28daab86fea9c3b6473d19162
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97606200"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>CouchBase から Azure Cosmos DB SQL API に移行する
@@ -39,7 +39,7 @@ Azure Cosmos DB は、グローバルに分散された、スケーラブルな�
 
 * Azure Cosmos DB では、コレクション名が既に存在しているため、最上位の階層でコレクションを示す必要はありません。 この機能により、JSON 構造が非常に単純になります。 Couchbase と Azure Cosmos DB 間のデータ モデルの違いを示す例を次に示します。
 
-   **Couchbase**:ドキュメント ID =  "99FF4444"
+   **Couchbase**: Document ID = "99FF4444"
 
     ```json
     {
@@ -69,7 +69,7 @@ Azure Cosmos DB は、グローバルに分散された、スケーラブルな�
     }
    ```
 
-   **Azure Cosmos DB**:次に示すドキュメント内の "ID" を参照してください
+   **Azure Cosmos DB**: 次に示すドキュメント内の "ID" を参照してください
 
     ```json
     {

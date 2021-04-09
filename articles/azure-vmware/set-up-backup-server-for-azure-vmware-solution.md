@@ -4,10 +4,10 @@ description: Azure Backup Server を使用して仮想マシンをバックア�
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.openlocfilehash: e9204b9f86c7e9ef67d2e3d6b45ccf4248d00b32
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99581484"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure VMware Solution 向けに Azure Backup Server を設定する

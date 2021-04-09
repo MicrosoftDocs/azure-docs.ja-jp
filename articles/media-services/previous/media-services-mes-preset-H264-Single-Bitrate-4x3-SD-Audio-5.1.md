@@ -1,7 +1,7 @@
 ---
 title: H264 Single Bitrate 4x3 SD Audio 5.1 | Microsoft Docs
 description: このトピックでは、**H264 Single Bitrate 4x3 SD Audio 5.1** タスク プリセットの概要を説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 18e905078e527ead1f67f4d868cd356688e58d55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 2f96c2f10f6b947a0b327ff696ab24c5862b7d8a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261804"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103012736"
 ---
 # <a name="h264-single-bitrate-4x3-sd-audio-51"></a>H264 Single Bitrate 4x3 SD Audio 5.1
 

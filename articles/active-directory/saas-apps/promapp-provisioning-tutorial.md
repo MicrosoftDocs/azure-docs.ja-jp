@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Promapp を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
+title: 'チュートリアル: Promapp を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
 description: Promapp に対してユーザー アカウントの自動的なプロビジョニングとプロビジョニング解除を実行するように Azure Active Directory を構成する方法について説明します。
 services: active-directory
 author: zchia
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: Zhchia
 ms.openlocfilehash: 5ba9adbc8553e92eb76a4d3327681f798db19218
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359104"
 ---
-# <a name="tutorial-configure-promapp-for-automatic-user-provisioning"></a>チュートリアル:Promapp を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-promapp-for-automatic-user-provisioning"></a>チュートリアル: Promapp を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルの目的は、Azure Active Directory (Azure AD) が、ユーザー、グループ、またはその両方を Promapp に自動的にプロビジョニングおよびプロビジョニング解除するよう構成するために、Promapp と Azure AD で実行する手順を示すことです。
 
@@ -37,7 +37,7 @@ ms.locfileid: "94359104"
 
 ## <a name="assigning-users-to-promapp"></a>Promapp へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成し、有効にする前に、Promapp へのアクセスが必要な Azure AD のユーザー、グループ、またはその両方を特定する必要があります。 特定した後、次の手順に従い、これらのユーザー、グループ、またはその両方を Promapp に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -58,7 +58,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Promapp での SCIM の追加](media/promapp-provisioning-tutorial/addtoken.png)
 
-3.  **[Description]\(説明\)** フィールドに任意の名前を入力し、 **[Scope]\(スコープ\)** ドロップダウン メニューから **[Scim]** を選択します。 保存アイコンをクリックします。
+3.  **[Description]\(説明\)** フィールドに任意の名前を入力し、**[Scope]\(スコープ\)** ドロップダウン メニューから **[Scim]** を選択します。 保存アイコンをクリックします。
 
     ![Promapp での名前の追加](media/promapp-provisioning-tutorial/addname.png)
 
@@ -84,7 +84,7 @@ Azure AD での自動ユーザー プロビジョニング用に Promapp を構�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Promapp** 」と入力し、結果パネルで **[Promapp]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Promapp**」と入力し、結果パネルで **[Promapp]** を選択してから、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Promapp](common/search-new-app.png)
 
@@ -133,7 +133,7 @@ Azure AD での自動ユーザー プロビジョニング用に Promapp を構�
 
 11. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-12. Promapp に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+12. Promapp に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 

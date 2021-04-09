@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: d921bddf90c415cb244e2cc9ad98354392a537ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90530150"
 ---
 # <a name="manage-the-mobility-agent"></a>モビリティ エージェントを管理する 
@@ -76,7 +76,7 @@ UI またはコマンド プロンプトからアンインストールします�
     ```
 
 ### <a name="on-a-linux-machine"></a>Linux マシンの場合
-1. Linux マシンで**ルート** ユーザーとしてサインインします。
+1. Linux マシンで **ルート** ユーザーとしてサインインします。
 2. ターミナルで /user/local/ASR に移動します。
 3. 次のコマンドを実行します。
     ```

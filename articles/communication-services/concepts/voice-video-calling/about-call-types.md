@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 09/30/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 66a5ed65b0582aafd641473163e1b273d4a4263d
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: eea54be9d159c6aacbbc24e2fe8edf874f8e2d83
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102489652"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103492338"
 ---
 # <a name="voice-and-video-concepts"></a>音声とビデオの概念
 

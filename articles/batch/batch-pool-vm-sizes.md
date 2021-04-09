@@ -4,12 +4,12 @@ description: Azure Batch プールのコンピューティング ノード用に
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: de1f61bb2bdc83377887fda726a65c1900f36d55
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: f108e1347ef6c3c7df45c4b3d807a754f4867097
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576703"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800484"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズとイメージを選択する
 
@@ -102,6 +102,8 @@ Batch プールの VM サイズを選択するには、次のような例外と�
 - Batch Service REST API:[サポートされているイメージの一覧表示](/rest/api/batchservice/account/listsupportedimages)
 - PowerShell:[Get-AzBatchSupportedImage](/powershell/module/az.batch/get-azbatchsupportedimage)
 - Azure CLI: [az batch pool supported-images](/cli/azure/batch/pool/supported-images)
+
+Batch のサポート終了日 (EOL) が近いイメージは、使用しないようにすることを強くお勧めします。 このような日付は、[ `ListSupportedImages` API](https://docs.microsoft.com/rest/api/batchservice/account/listsupportedimages)、[PowerShell](https://docs.microsoft.com/powershell/module/az.batch/get-azbatchsupportedimage)、または [Azure CLI](https://docs.microsoft.com/cli/azure/batch/pool/supported-images) で確認することができます。 Batch プールの VM イメージの選択に関する詳細については、[Batch のベストプラクティス ガイド](best-practices.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

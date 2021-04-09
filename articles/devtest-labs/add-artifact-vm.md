@@ -4,10 +4,10 @@ description: Azure DevTest Labs のラボで成果物を仮想マシンを追加
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b4772755d8077f7a659c4d403961ffaeb9e1d483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483892"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>成果物を VM に追加する
@@ -15,7 +15,7 @@ VM を作成するとき、既存の成果物をその VM に追加できます�
 
 Azure DevTest Labs "*アーティファクト*" を使用すると、VM のプロビジョニング時に実行される "*アクション*" (Windows PowerShell スクリプトの実行、Bash コマンドの実行、ソフトウェアのインストールなど) を指定できます。 アーティファクト *パラメーター* を使用すると、特定のシナリオのアーティファクトをカスタマイズできます。
 
-カスタム成果物を作成する方法については、[カスタム成果物の作成](devtest-lab-artifact-author.md)に関するページをご覧ください。
+カスタム アーティファクトの作成方法に関する詳細については、[カスタム アーティファクトの作成](devtest-lab-artifact-author.md)に関する記事を参照してください。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -29,10 +29,10 @@ Azure DevTest Labs "*アーティファクト*" を使用すると、VM のプ�
 1. **[アーティファクトの適用]** を選択します。
 1. **[アーティファクトの適用]** ウィンドウで、VM に追加するアーティファクトを選択します。
 1. **[アーティファクトの追加]** ウィンドウで、必須のパラメーター値を入力します。必要に応じて、省略可能なパラメーターも入力します。  
-1. **[追加]** を選択してアーティファクトを追加し、 **[アーティファクトの適用]** ウィンドウに戻ります。
+1. **[追加]** を選択してアーティファクトを追加し、**[アーティファクトの適用]** ウィンドウに戻ります。
 1. VM に必要なアーティファクトを引き続き追加します。
 1. アーティファクトを追加したら、 [アーティファクトの実行順を変更する](#change-the-order-in-which-artifacts-are-run)ことができます。 [アーティファクトの表示または変更](#view-or-modify-an-artifact)に戻ることもできます。
-1. アーティファクトの追加が完了したら、 **[適用]** を選択します。
+1. アーティファクトの追加が完了したら、**[適用]** を選択します。
 
 ### <a name="change-the-order-in-which-artifacts-are-run"></a>アーティファクトの実行順序の変更
 既定では、アーティファクトのアクションは VM に追加された順序で実行されます。 次の手順では、アーティファクトの実行順序を変更する方法を示しています。
@@ -50,8 +50,8 @@ Azure DevTest Labs "*アーティファクト*" を使用すると、VM のプ�
    
     ![Number of artifacts added to VM](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
 1. **[選択されたアーティファクト]** ウィンドウで、表示または編集するアーティファクトを選択します。  
-1. **[アーティファクトの追加]** ウィンドウで必要な変更を行ったら、 **[OK]** を選択して **[アーティファクトの追加]** ウィンドウを閉じます。
-1. **[OK]** を選択して、 **[選択されたアーティファクト]** ウィドウを閉じます。
+1. **[アーティファクトの追加]** ウィンドウで必要な変更を行ったら、**[OK]** を選択して **[アーティファクトの追加]** ウィンドウを閉じます。
+1. **[OK]** を選択して、**[選択されたアーティファクト]** ウィドウを閉じます。
 
 ## <a name="use-powershell"></a>PowerShell の使用
 次のスクリプトでは、指定された成果物を指定された VM に適用します。 [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) コマンドは、この操作を実行するコマンドです。  
@@ -156,6 +156,6 @@ if ($virtualMachine -ne $null) {
 成果物に関する次の記事をご覧ください。
 
 - [ラボに必須の成果物の指定](devtest-lab-mandatory-artifacts.md)
-- [カスタム アーティファクトの作成](devtest-lab-artifact-author.md)
-- [ラボへの成果物リポジトリの追加](devtest-lab-artifact-author.md)
+- [カスタム アーティファクトを作成する](devtest-lab-artifact-author.md)
+- [アーティファクト リポジトリをラボに追加する](devtest-lab-artifact-author.md)
 - [アーティファクトの失敗の診断](devtest-lab-troubleshoot-artifact-failure.md)

@@ -16,10 +16,10 @@ ms.date: 05/16/2016
 ms.author: narayan
 ms.reviewer: aglick
 ms.openlocfilehash: 3f91d24bff0bec540ff0e7964f21c2f47c03638c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67876169"
 ---
 # <a name="virtual-network--business-continuity"></a>Virtual Network – ビジネス継続性
@@ -27,7 +27,7 @@ ms.locfileid: "67876169"
 ## <a name="overview"></a>概要
 Virtual Network (VNet) は、クラウド内のユーザーのネットワークを論理的に表したものです。 これにより、独自のプライベート IP アドレス空間を定義し、ネットワークをサブネットに分割することができます。 VNet は、Azure Virtual Machines や Cloud Services (web/worker ロール) などのコンピューティング リソースをホストする際に信頼の境界として機能します。 VNet の内部にホストされているリソースどうしは、プライベート IP で直接通信できます。 仮想ネットワークは、VPN Gateway または ExpressRoute を介してオンプレミス ネットワークにリンクできます。
 
-VNet は、1 つのリージョンの範囲内に作成します。 同じアドレス空間を持つ VNet を異なる 2 つのリージョン (たとえば米国東部と米国西部) に*作成*できますが、2 つのアドレス空間が同じであるため、2 つを互いに接続することはできません。 
+VNet は、1 つのリージョンの範囲内に作成します。 同じアドレス空間を持つ VNet を異なる 2 つのリージョン (たとえば米国東部と米国西部) に *作成* できますが、2 つのアドレス空間が同じであるため、2 つを互いに接続することはできません。 
 
 ## <a name="business-continuity"></a>ビジネス継続性
 

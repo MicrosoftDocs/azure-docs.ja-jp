@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 96b9754908f437ccf81e002e9e9dd17af0bab4e3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 46004d81756809958e359c2a0b72c143599c2853
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019077"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "101706760"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUIS アプリに対して良い発話を理解する
 
@@ -54,7 +54,7 @@ LUIS モデルに[発話の例を追加する](./luis-how-to-add-entities.md)こ
 |コンピューターを手に入れたいのですが、どうすればよいですか?|
 |いつコンピューターを入手できますか?|
 
-ここでのコア用語 "コンピューター" は全部同じです。 デスクトップ コンピューター、ラップトップ、ワークステーション、マシンなどの代替を使用します。 LUIS はコンテキストからシノニムをインテリジェントに推論できますが、それでもトレーニング用の発話を作成するときは、常に変更することをお勧めします。
+ここでのコア用語 "*コンピューター*" は全部同じです。 デスクトップ コンピューター、ラップトップ、ワークステーション、マシンなどの代替を使用します。 LUIS はコンテキストからシノニムをインテリジェントに推論できますが、それでもトレーニング用の発話を作成するときは、常に変更することをお勧めします。
 
 ## <a name="example-utterances-in-each-intent"></a>各意図での発話の例
 

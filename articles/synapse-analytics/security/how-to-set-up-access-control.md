@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 513d23de3d7f823ec934af32e5f3776e876f02d8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 97f9d0e0037090a8c058eb6e2393451d975e79c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369001"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103472260"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Synapse ワークスペースのアクセス制御を設定する方法 
 
@@ -124,7 +124,7 @@ Synapse では、パイプラインを実行してシステム タスクを実�
 
 ## <a name="step-5-grant-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>手順 5:ワークスペースの "Azure 共同作成者" ロールを Synapse 管理者に付与する 
 
-SQL プール、Apache Spark プールと統合ランタイムを作成するには、ユーザーはワークスペースに対して少なくとも "Azure 共同作成者" アクセス権を持っている必要があります。 共同作成者ロールでは、一時停止やスケーリングなど、リソースの管理もユーザーに許可されます。
+SQL プール、Apache Spark プールと統合ランタイムを作成するには、ユーザーはワークスペースで少なくとも Azure 共同作成者ロールを持っている必要があります。 共同作成者ロールでは、一時停止やスケーリングなど、リソースの管理もユーザーに許可されます。 Azure portal または Synapse Studio を使用して SQL プール、Apache Spark プール、統合ランタイムを作成する場合は、Azure 共同作成者ロールがリソース グループ レベルで必要になります。 
 
 - Azure ポータルを開きます
 - ワークスペース `workspace1` を見つけます
@@ -289,6 +289,6 @@ CI/CD を含む高度な開発シナリオのためにワークスペースの *
 
 **オペレーターによるコード成果物へのアクセスを制限する**。  Synapse コンピューティング リソースの動作状態を監視し、ログを表示する必要はあっても、コードにアクセスしたりサービスに更新を発行したりする必要はないオペレーター向けに、セキュリティ グループを作成してください。 これらのグループに、特定の Spark プールと統合ランタイムをスコープとする "コンピューティング オペレーター" ロールを割り当てます。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Synapse RBAC ロールの割り当てを管理する方法](./how-to-manage-synapse-rbac-role-assignments.md)方法を学習する。[Synapse ワークスペース](../quickstart-create-workspace.md)を作成する

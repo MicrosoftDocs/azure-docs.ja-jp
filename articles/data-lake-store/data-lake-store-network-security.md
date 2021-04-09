@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
 ms.openlocfilehash: 716e3766fdd7c1999efa12456346862a9902d7a0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92108713"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の仮想ネットワーク統合
@@ -75,7 +75,7 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
 
 - Data Lake Storage Gen1 仮想ネットワーク統合のサポートが利用可能になる前に作成された HDInsight クラスターは、この新機能をサポートするために作成し直す必要があります。
  
-- 新しい HDInsight クラスターを作成し、仮想ネットワーク統合が有効な Data Lake Storage Gen1 アカウントを選択すると、プロセスは失敗します。 最初に、仮想ネットワーク規則を無効にします。 または、Data Lake Storage アカウントの **[ファイアウォールと仮想ネットワーク]** ブレードで、 **[Allow access from all networks and services]\(すべてのネットワークとサービスからのアクセスを許可する\)** を選択します。 その後、最終的に仮想ネットワーク規則を再度有効にするか、 **[Allow access from all networks and services]\(すべてのネットワークとサービスからのアクセスを許可する\)** を選択解除する前に、HDInsight クラスターを作成します。 詳細については、「[例外](#exceptions)」セクションを参照してください。
+- 新しい HDInsight クラスターを作成し、仮想ネットワーク統合が有効な Data Lake Storage Gen1 アカウントを選択すると、プロセスは失敗します。 最初に、仮想ネットワーク規則を無効にします。 または、Data Lake Storage アカウントの **[ファイアウォールと仮想ネットワーク]** ブレードで、**[Allow access from all networks and services]\(すべてのネットワークとサービスからのアクセスを許可する\)** を選択します。 その後、最終的に仮想ネットワーク規則を再度有効にするか、**[Allow access from all networks and services]\(すべてのネットワークとサービスからのアクセスを許可する\)** を選択解除する前に、HDInsight クラスターを作成します。 詳細については、「[例外](#exceptions)」セクションを参照してください。
 
 - Data Lake Storage Gen1 仮想ネットワーク統合は、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) に対応していません。
   
@@ -89,7 +89,7 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
  
 2.  ご利用のサブスクリプションに[新しい仮想ネットワークを作成](../virtual-network/quick-create-portal.md)します。 または、既存の仮想ネットワークに移動できます。 仮想ネットワークは、Data Lake Storage Gen 1 アカウントと同じリージョンに属している必要があります。
  
-3.  **[仮想ネットワーク]** ブレードで、 **[サービス エンドポイント]** を選択します。
+3.  **[仮想ネットワーク]** ブレードで、**[サービス エンドポイント]** を選択します。
  
 4.  **[追加]** を選択して、新しいサービス エンドポイントを追加します。
 
@@ -140,9 +140,9 @@ az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resourc
 ## <a name="exceptions"></a>例外
 選択した仮想ネットワーク外の Azure サービスと VM からの接続を有効にすることができます。 **[ファイアウォールと仮想ネットワーク]** ブレードの **[例外]** 領域で、次の 2 つのオプションから選択します。
  
-- **[すべての Azure サービスによるこの Data Lake Storage Gen1 アカウントへのアクセスを許可します]** 。 このオプションを使用すると、Azure Data Factory、Azure Event Hubs、およびすべての Azure VM などの Azure サービスが Data Lake Storage アカウントと通信できます。
+- **[すべての Azure サービスによるこの Data Lake Storage Gen1 アカウントへのアクセスを許可します]**。 このオプションを使用すると、Azure Data Factory、Azure Event Hubs、およびすべての Azure VM などの Azure サービスが Data Lake Storage アカウントと通信できます。
 
-- **[Azure Data Lake Analytics によるこの Data Lake Storage Gen1 アカウントへのアクセスを許可します]** 。 このオプションを使用すると、この Data Lake Storage アカウントへの Data Lake Analytics の接続が許可されます。 
+- **[Azure Data Lake Analytics によるこの Data Lake Storage Gen1 アカウントへのアクセスを許可します]**。 このオプションを使用すると、この Data Lake Storage アカウントへの Data Lake Analytics の接続が許可されます。 
 
   ![ファイアウォールと仮想ネットワークの例外](media/data-lake-store-network-security/firewall-exceptions.png)
 

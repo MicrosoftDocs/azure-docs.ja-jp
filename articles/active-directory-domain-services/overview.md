@@ -12,10 +12,10 @@ ms.date: 01/20/2021
 ms.author: justinha
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: 194a5420f38e99d45f74241f67ae8cfbbaaee8f4
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98660999"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とは

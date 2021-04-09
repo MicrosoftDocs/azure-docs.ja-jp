@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
-ms.openlocfilehash: e1efd02d60ba874178f24da2b441fc122e4a1912
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 849127ed0846928a77795ac0a1ea3f7a091468b5
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218536"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635950"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Virtual Network とは
 
 Azure Virtual Network (VNet) は、Azure 内のプライベート ネットワークの基本的な構成要素です。 VNet により、Azure Virtual Machines (VM) などのさまざまな種類の Azure リソースが、他の Azure リソース、インターネット、およびオンプレミスのネットワークと安全に通信することができます。 VNet は、自社のデータ センターで運用する従来のネットワークと似ていますが、スケール、可用性、分離性など、Azure のインフラストラクチャのさらなる利点を提供します。
 
 ## <a name="why-use-an-azure-virtual-network"></a>Azure 仮想ネットワークを使用する理由
-Azure 仮想ネットワークにより、Azure リソースは、他の Azure リソース、インターネット、オンプレミス ネットワークと安全に通信できます。 仮想ネットワークを実現できる主なシナリオには、Azure リソースとインターネットの通信、Azure リソース間の通信、オンプレミス リソースとの通信、ネットワーク トラフィックのフィルタリング、ネットワーク トラフィックのルーティング、Azure サービスとの統合などがあります。
+Azure 仮想ネットワークにより、Azure リソースは、他の Azure リソース、インターネット、オンプレミス ネットワークと安全に通信できます。 仮想ネットワークを使用して実現できる主なシナリオには、Azure リソースとインターネットの通信、Azure リソース間の通信、オンプレミス リソースとの通信、ネットワーク トラフィックのフィルタリング、ネットワーク トラフィックのルーティング、Azure サービスとの統合などがあります。
 
 ### <a name="communicate-with-the-internet"></a>インターネットとの通信
 

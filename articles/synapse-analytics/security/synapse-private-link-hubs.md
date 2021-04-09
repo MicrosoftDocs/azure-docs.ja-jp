@@ -1,19 +1,19 @@
 ---
 title: プライベート リンクを使用して Synapse Studio に接続する
 description: この記事では、プライベート リンクを使用して Azure Synapse Studio に接続する方法について説明します
-author: NanditaV
+author: nanditavalsan
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: d49868199d8f9f2da97f08dd06f29afd8f553bd9
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: d39beca60264023c8eb7c1bc78cd1ac15c3b45dc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97586977"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586626"
 ---
 # <a name="connect-to-azure-synapse-studio-using-azure-private-link-hubs"></a>Azure Private Link ハブを使用して Azure Synapse Studio に接続する 
 
@@ -37,7 +37,9 @@ Synapse Studio へのエンドツーエンド接続をセキュリティで保�
 
 :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="プライベート エンドポイント接続ページを示すスクリーンショット。":::
 
-[リソース] タブで、"Microsoft.Synapse/privateLinkHubs" というリソースの種類を選択してください。:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="[プライベート エンドポイントの作成] ページのスクリーンショット。[リソースの種類] が強調されています。":::
+[リソース] タブで、"Microsoft.Synapse/privateLinkHubs" というリソースの種類を選択してください。
+
+:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="[プライベート エンドポイントの作成] ページのスクリーンショット。[リソースの種類] が強調されています。":::
 
 [構成] タブで、仮想ネットワークをプライベート DNS ゾーンと統合するときに、プライベート DNS ゾーンとして "privatelink.azuresynapse.net" を選択します。
 

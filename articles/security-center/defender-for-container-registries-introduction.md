@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3f358bebc1cc4eb17b8c50b1e3a13366717ae98c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: ab2ad15da9b1676924197d28e734f6baf59a02ef
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100714"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176639"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Azure Defender for container registries の概要
 
@@ -68,9 +68,9 @@ Security Center では、スキャナーによる検出結果がフィルター�
 ## <a name="faq-for-azure-container-registry-image-scanning"></a>Azure Container Registry のイメージ スキャンに関する FAQ
 
 ### <a name="how-does-security-center-scan-an-image"></a>Security Center ではどのような方法でイメージがスキャンされますか。
-イメージがレジストリから抽出されます。 その後、隔離されたサンドボックスの中で、既知の脆弱性の一覧を抽出する Qualys スキャナーによって実行されます。
+Security Center は、レジストリからイメージをプルし、Qualys スキャナーを使用してそれを分離されたサンドボックス内で実行します。 スキャナーにより、既知の脆弱性の一覧が抽出されます。
 
-Security Center では、スキャナーによる検出結果がフィルター処理および分類されます。 イメージが正常な場合、Security Center ではそのように示されます。 Security Center では、解決の必要な問題があるイメージに対してのみ、セキュリティに関する推奨事項が生成されます。 問題があるときにだけ通知することにより、Security Center では不要な情報アラートの可能性が減ります。
+Security Center では、スキャナーによる検出結果がフィルター処理および分類されます。 イメージが正常な場合、Security Center ではそのように示されます。 Security Center では、解決の必要な問題があるイメージに対してのみ、セキュリティに関する推奨事項が生成されます。 Security Center では、問題があるときにのみ通知することにより、発生する可能性のある不必要な情報アラートを削減しています。
 
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>REST API 経由でスキャン結果を取得できますか。
 はい。 結果は [Sub-Assessments Rest API](/rest/api/securitycenter/subassessments/list/) の下にあります。 また、Azure Resource Graph (ARG) を利用できます。これはすべてのリソースを対象とする Kusto のような API であり、1 つのクエリで特定のスキャンをフェッチできます。
@@ -78,7 +78,7 @@ Security Center では、スキャナーによる検出結果がフィルター�
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>どのようなレジストリの種類がスキャンされますか。 どのような種類が課金されますか。
 コンテナー レジストリ用 Azure Defender によってサポートされているコンテナー レジストリの種類の一覧については、「[可用性](#availability)」をご覧ください。
 
-サポートされていないレジストリを Azure サブスクリプションに接続している場合、これらはスキャンされず、課金対象にもなりません。
+サポートされていないレジストリを Azure サブスクリプションに接続した場合、Azure Defender はそれらをスキャンしないため、課金は発生しません。
 
 ### <a name="can-i-customize-the-findings-from-the-vulnerability-scanner"></a>脆弱性スキャナーの結果をカスタマイズすることはできますか。
 はい。 組織のニーズとして、検出結果を修復するのではなく無視する必要がある場合は、必要に応じて検出結果を無効にできます。 無効化された検出結果は、セキュリティ スコアに影響を与えたり、不要なノイズを生成したりすることはありません。

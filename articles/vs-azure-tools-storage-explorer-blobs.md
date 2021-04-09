@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
 ms.openlocfilehash: 48f00d964a87790b8d8c9b1d8eceaed26d15199e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95531969"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Storage Explorer を使用して Azure Blob Storage リソースを管理する
@@ -41,7 +41,7 @@ BLOB ストレージを使用すると、データを一般に公開すること
 
 次の手順では、Storage Explorer 内に BLOB コンテナーを作成する方法を説明します。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 2. 左側のウィンドウで、BLOB コンテナーを作成するストレージ アカウントを展開します。
 3. **[BLOB コンテナー]** を右クリックし、コンテキスト メニューの **[BLOB コンテナーの作成]** を選択します。
 
@@ -59,7 +59,7 @@ BLOB コンテナーには、BLOB とフォルダーが含まれます (フォ�
 
 次の手順では、Storage Explorer 内で BLOB コンテナーの内容を表示する方法を説明します。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 2. 左側のウィンドウで、表示する BLOB コンテナーが含まれているストレージ アカウントを展開します。
 3. ストレージ アカウントの **[BLOB コンテナー]** を展開します。
 4. 表示する BLOB コンテナーを右クリックし、コンテキスト メニューの **[BLOB コンテナー エディターを開く]** を選択します。
@@ -76,7 +76,7 @@ BLOB コンテナーは、必要に応じて、簡単に作成および削除で
 
 次の手順では、Storage Explorer 内の BLOB コンテナーを削除する方法を説明します。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 2. 左側のウィンドウで、表示する BLOB コンテナーが含まれているストレージ アカウントを展開します。
 3. ストレージ アカウントの **[BLOB コンテナー]** を展開します。
 4. 削除する BLOB コンテナーを右クリックし、コンテキスト メニューの **[削除]** を選択します。
@@ -93,7 +93,7 @@ Storage Explorer を使用すると、BLOB コンテナーをクリップボー�
 
 次の手順では、あるストレージ アカウントから別のストレージ アカウントに BLOB コンテナーをコピーする方法を説明します。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 2. 左側のウィンドウで、コピーする BLOB コンテナーが含まれているストレージ アカウントを展開します。
 3. ストレージ アカウントの **[BLOB コンテナー]** を展開します。
 4. コピーする BLOB コンテナーを右クリックし、コンテキスト メニューの **[Copy Blob Container (BLOB コンテナーのコピー)]** を選択します。
@@ -110,7 +110,7 @@ Storage Explorer を使用すると、BLOB コンテナーをクリップボー�
 
 次の手順では、BLOB コンテナーの SAS を作成する方法を説明します。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 2. 左側のウィンドウで、SAS を取得する BLOB コンテナーが含まれているストレージ アカウントを展開します。
 3. ストレージ アカウントの **[BLOB コンテナー]** を展開します。
 4. 目的の BLOB コンテナーを右クリックし、コンテキスト メニューの **[Get Shared Access Signature (Shared Access Signature の取得)]** を選択します。
@@ -130,7 +130,7 @@ Storage Explorer を使用すると、BLOB コンテナーをクリップボー�
 
 次の手順では、BLOB コンテナーのアクセス ポリシーを管理 (追加と削除) する方法を説明します。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 2. 左側のウィンドウで、アクセス ポリシーを管理する BLOB コンテナーが含まれているストレージ アカウントを展開します。
 3. ストレージ アカウントの **[BLOB コンテナー]** を展開します。
 4. 目的の BLOB コンテナーを選択し、コンテキスト メニューの **[Manage Access Policies (アクセス ポリシーの管理)]** を選択します。
@@ -151,7 +151,7 @@ Storage Explorer を使用すると、BLOB コンテナーをクリップボー�
 
 次の手順は、BLOB コンテナーのパブリック アクセス レベルを指定する方法を説明します。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 2. 左側のウィンドウで、アクセス ポリシーを管理する BLOB コンテナーが含まれているストレージ アカウントを展開します。
 3. ストレージ アカウントの **[BLOB コンテナー]** を展開します。
 4. 目的の BLOB コンテナーを選択し、コンテキスト メニューの **[Set Public Access Level (パブリック アクセス レベルの設定)]** を選択します。
@@ -168,7 +168,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
 
 次の手順では、BLOB コンテナー内の BLOB (およびフォルダー) を管理する方法を説明します。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 2. 左側のウィンドウで、管理する BLOB コンテナーが含まれているストレージ アカウントを展開します。
 3. ストレージ アカウントの **[BLOB コンテナー]** を展開します。
 4. 表示する BLOB コンテナーをダブルクリックします。
@@ -223,7 +223,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
      2. メイン ウィンドウのツール バーで、 **[削除]** を選択します。
      3. 確認のダイアログで **[はい]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [最新の Storage Explorer のリリース ノートとビデオ](https://www.storageexplorer.com)を確認します。
 * [Azure BLOB、テーブル、キュー、ファイルを使ってアプリケーションを作成する](https://azure.microsoft.com/documentation/services/storage/)方法について学習します。

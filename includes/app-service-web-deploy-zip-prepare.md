@@ -9,10 +9,10 @@ ms.date: 01/14/2020
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 035399924216434de85865102db8838ea3fa15a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85570131"
 ---
 ## <a name="create-a-project-zip-file"></a>プロジェクトの ZIP ファイルを作成する
@@ -27,7 +27,7 @@ ms.locfileid: "85570131"
 
 デプロイの自動化を App Service で自動的に実行したい場合を除き、すべてのビルド タスク (`npm`、`bower`、`gulp`、`composer`、`pip` など) を実行し、アプリの実行に必要なファイルがすべて揃っていることを確認してください。 [パッケージを直接実行](../articles/app-service/deploy-run-package.md)したい場合、この手順は必須です。
 
-プロジェクト内のすべての ZIP アーカイブを作成します。 `dotnet` プロジェクトの場合、このフォルダーは `dotnet publish` コマンドの出力フォルダーです。 次のコマンドには、お使いのターミナルの既定のツールを使用します。
+プロジェクト内のすべての ZIP アーカイブを作成します。 `dotnet` プロジェクトの場合、このフォルダーは `dotnet publish` コマンドの出力フォルダーです。 次のコマンドには、お使いの端末の既定のツールを使用します。
 
 ```
 # Bash

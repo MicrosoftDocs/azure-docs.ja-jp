@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: fa4d61599e102f9a2580e704ee7a02486067daa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86135789"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption 対応仮想マシンを別の Azure リージョンにレプリケートする
@@ -25,7 +25,7 @@ ms.locfileid: "86135789"
 ## <a name="required-user-permissions"></a><a id="required-user-permissions"></a>必要なユーザー アクセス許可
 Site Recovery では、ユーザーが、ターゲット リージョン内にキー コンテナーを作成し、ソース リージョンのキー コンテナーからターゲット リージョンのキー コンテナーにキーをコピーするアクセス許可を持っていることが必要です。
 
-Azure portal から Disk Encryption 対応 VM のレプリケーションを有効にするには、ユーザーは、**ソース リージョンとターゲット リージョン**の両方のキー コンテナーに対して次のアクセス許可を必要とします。
+Azure portal から Disk Encryption 対応 VM のレプリケーションを有効にするには、ユーザーは、**ソース リージョンとターゲット リージョン** の両方のキー コンテナーに対して次のアクセス許可を必要とします。
 
 - Key Vault のアクセス許可
     - List、Create、Get
@@ -64,8 +64,8 @@ Azure portal から Disk Encryption 対応 VM のレプリケーションを有�
 3. Windows PowerShell アプリケーションを開き、このファイルを保存したフォルダーに移動します。
 4. Copy-keys.ps1 を実行します。
 5. Azure の資格情報を入力してサインインします。
-6. お客様の VM の **Azure サブスクリプション**を選択します。
-7. リソース グループが読み込まれるのを待ってから、VM の**リソース グループ**を選択します。
+6. お客様の VM の **Azure サブスクリプション** を選択します。
+7. リソース グループが読み込まれるのを待ってから、VM の **リソース グループ** を選択します。
 8. 表示された一覧から VM を選択します。 ディスクの暗号化に対応した VM のみが一覧に表示されます。
 9. **[ターゲットの場所]** を選択します。
 
@@ -137,7 +137,7 @@ Site Recovery の既定のターゲット設定を変更するには、次の手
 
 Azure Site Recovery では、シークレットを読み取ってターゲット リージョンのキー コンテナーにコピーするために、ソース リージョンのキー コンテナーに対する読み取りアクセス許可と、ターゲット リージョンのキー コンテナーに対する書き込みアクセス許可が少なくとも必要です。 
 
-**原因 1:** **ソース リージョンのキー コンテナー**で、キーを読み取るための "GET" アクセス許可がない </br>
+**原因 1:** **ソース リージョンのキー コンテナー** で、キーを読み取るための "GET" アクセス許可がない </br>
 **修正方法:** サブスクリプション管理者であるかどうかに関係なく、キー コンテナーで GET アクセス許可があることが重要です。
 
 1. ソース リージョンのキー コンテナーに移動します (この例では、"ContososourceKeyvault" > **[アクセス ポリシー]** ) 
@@ -146,7 +146,7 @@ Azure Site Recovery では、シークレットを読み取ってターゲット
 4. **[Secret Permission]\(シークレットのアクセス許可\)** で、GET を選択します 
 5. アクセス ポリシーを保存します
 
-**原因 2:** **ターゲット リージョンのキー コンテナー**で、キーを書き込むために必要なアクセス許可がない。 </br>
+**原因 2:** **ターゲット リージョンのキー コンテナー** で、キーを書き込むために必要なアクセス許可がない。 </br>
 
 *例*: ソース リージョン上のキー コンテナー *ContososourceKeyvault* を持つ VM をレプリケートしようとしました。
 ソース リージョンのキー コンテナーに対するすべてのアクセス許可は持っています。 しかし、保護中に、アクセス許可を持たない作成済みのキー コンテナーである ContosotargetKeyvault を選択しました。 エラーが発生しました。

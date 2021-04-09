@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Cloud Service PICCO の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Cloud Service PICCO の統合 | Microsoft Docs'
 description: Azure Active Directory と Cloud Service PICCO の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
 ms.openlocfilehash: 1df8c6fa0877c20518be072674447d28d7f1ca0c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97670128"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cloud-service-picco"></a>チュートリアル:Azure Active Directory と Cloud Service PICCO の統合
+# <a name="tutorial-azure-active-directory-integration-with-cloud-service-picco"></a>チュートリアル: Azure Active Directory と Cloud Service PICCO の統合
 
 このチュートリアルでは、Cloud Service PICCO と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Cloud Service PICCO と Azure AD の統合には、次の利点があります。
@@ -62,7 +62,7 @@ Azure AD への Cloud Service PICCO の統合を構成するには、ギャラ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Cloud Service PICCO**」と入力して、結果パネルから **[Cloud Service PICCO]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Cloud Service PICCO**」と入力して、結果パネルから **[Cloud Service PICCO]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果リスト内の Cloud Service PICCO](common/search-new-app.png)
 
@@ -86,7 +86,7 @@ Cloud Service PICCO で Azure AD のシングル サインオンを構成して�
 
 Cloud Service PICCO で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Cloud Service PICCO** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Cloud Service PICCO** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -117,7 +117,7 @@ Cloud Service PICCO で Azure AD シングル サインオンを構成するに�
 
 ### <a name="configure-cloud-service-picco-single-sign-on"></a>Cloud Service PICCO のシングル サインオンの構成
 
-**Cloud Service PICCO** 側にシングル サインオンを構成するには、 **[アプリのフェデレーション メタデータ URL]** を [Cloud Service PICCO サポート チーム](mailto:picco.support@est.fujitsu.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Cloud Service PICCO** 側にシングル サインオンを構成するには、**[アプリのフェデレーション メタデータ URL]** を [Cloud Service PICCO サポート チーム](mailto:picco.support@est.fujitsu.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -148,7 +148,7 @@ Cloud Service PICCO で Azure AD シングル サインオンを構成するに�
 
 このセクションでは、Britta Simon に Cloud Service PICCO へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Cloud Service PICCO]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Cloud Service PICCO]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6586375d7db71274f40eb62aeb24f9daad0d7c2e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e247e372237572586e5a4647d24d9ed6067ea823
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688299"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104949789"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループで PostgreSQL 拡張機能を使用する
 
@@ -55,7 +55,7 @@ PostgreSQL は、拡張機能で使用する場合に最適です。 実際、�
 ## <a name="add-extensions-to-the-shared_preload_libraries"></a>拡張機能を shared_preload_libraries に追加する
 shared_preload_libraries の詳細については、[こちら](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-SHARED-PRELOAD-LIBRARIES)の PostgreSQL ドキュメントを参照してください。
 - この手順は、`contrib` に含まれる拡張機能については必要ありません
-- この手順は、shared_preload_libraries で事前に読み込む必要がない拡張機能については必要ありません。 これらの拡張機能については、次の段落「[拡張機能の作成](https://docs.microsoft.com/azure/azure-arc/data/using-extensions-in-postgresql-hyperscale-server-group#create-extensions)」を飛ばし進むことができます。
+- この手順は、shared_preload_libraries で事前に読み込む必要がない拡張機能については必要ありません。 これらの拡張機能については、次の段落「[拡張機能の作成](#create-extensions)」を飛ばし進むことができます。
 
 ### <a name="add-an-extension-at-the-creation-time-of-a-server-group"></a>サーバー グループの作成時に拡張機能を追加する
 ```console

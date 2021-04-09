@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 03/04/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: f833c0539d4aa28033cd6f76c1ca7cec7f11f6b5
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: f52aaa0636c453c0def7cb97c203f17f0b11a221
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124569"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104955297"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java"></a>クイックスタート: Java で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "102124569"
 > * [Python](search-get-started-python.md)
 > * [REST](search-get-started-rest.md)
 
-[IntelliJ](https://www.jetbrains.com/idea/)、[Java 11 SDK](/java/azure/jdk/)、[Azure Cognitive Search REST API](/rest/api/searchservice/) を使用して検索インデックスの作成、読み込み、クエリを実行する Java コンソール アプリケーションを作成します。 この記事では、アプリケーションを作成するための具体的な手順を紹介します。 代わりに、[完全なアプリケーションをダウンロードして実行する](hhttps://github.com/Azure-Samples/azure-search-java-samples)こともできます。
+[IntelliJ](https://www.jetbrains.com/idea/)、[Java 11 SDK](/java/azure/jdk/)、[Azure Cognitive Search REST API](/rest/api/searchservice/) を使用して検索インデックスの作成、読み込み、クエリを実行する Java コンソール アプリケーションを作成します。 この記事では、アプリケーションを作成するための具体的な手順を紹介します。 代わりに、[完全なアプリケーションをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-java-samples)こともできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

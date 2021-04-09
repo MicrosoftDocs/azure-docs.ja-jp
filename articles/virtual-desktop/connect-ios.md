@@ -7,10 +7,10 @@ ms.date: 02/08/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 87bb2cc53ce056552e8f44aac4ade96e603a8787
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89230043"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-ios-client"></a>iOS クライアントを使用して Windows Virtual Desktop に接続する

@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
 ms.openlocfilehash: c5485dacc4d9e3210ad69819caf4e36f96c626da
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92428380"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>チュートリアル:Firebase SDK バージョン 0.6 を使用して Android デバイスにプッシュ通知を送信する
@@ -128,7 +128,7 @@ ms.locfileid: "92428380"
 
 ### <a name="add-google-firebase-support"></a>Google Firebase のサポートを追加する
 
-1. アプリの Build.Gradle ファイルで、 **dependencies** セクションに次の行を追加します (まだ存在しない場合)。 
+1. アプリの Build.Gradle ファイルで、**dependencies** セクションに次の行を追加します (まだ存在しない場合)。 
 
     ```gradle
     implementation 'com.google.firebase:firebase-core:16.0.8'
@@ -171,12 +171,12 @@ ms.locfileid: "92428380"
 
 ### <a name="add-code"></a>コードの追加
 
-1. [Project (プロジェクト)] ビューで、 **[app]**  >  **[src]**  >  **[main]**  >  **[java]** の順に展開します。 **[java]** のパッケージ フォルダーを右クリックして、 **[New]\(新規\)** 、 **[Java Class]\(Java クラス\)** の順に選択します。 名前に「 **NotificationSettings** 」と入力して、 **[OK]** を選択します。
+1. [Project (プロジェクト)] ビューで、 **[app]**  >  **[src]**  >  **[main]**  >  **[java]** の順に展開します。 **[java]** のパッケージ フォルダーを右クリックして、 **[New]\(新規\)** 、 **[Java Class]\(Java クラス\)** の順に選択します。 名前に「**NotificationSettings**」と入力して、 **[OK]** を選択します。
 
     以下の `NotificationSettings` クラスのコード内にある次の 3 つのプレースホルダーを忘れずに更新してください。
 
-   * **HubListenConnectionString** : ハブの **DefaultListenAccessSignature** 接続文字列。 接続文字列をコピーするには、 [Azure portal] のハブにある **[アクセス ポリシー]** をクリックします。
-   * **HubName** : [Azure portal] のハブ ページに表示されるハブの名前を使用します。
+   * **HubListenConnectionString**: ハブの **DefaultListenAccessSignature** 接続文字列。 接続文字列をコピーするには、[Azure portal] のハブにある **[アクセス ポリシー]** をクリックします。
+   * **HubName**: [Azure portal] のハブ ページに表示されるハブの名前を使用します。
 
      `NotificationSettings` のコードは次のとおりです。
 
@@ -405,7 +405,7 @@ ms.locfileid: "92428380"
     }
     ```
 
-9. `ToastNotify` メソッドでは " *Hello World* " `TextView` コントロールを使用し、アプリで状態と通知を継続的にレポートします。 **res** > **layout** > **activity_main.xml** レイアウトで、そのコントロールに次の ID を追加します。
+9. `ToastNotify` メソッドでは "*Hello World*" `TextView` コントロールを使用し、アプリで状態と通知を継続的にレポートします。 **res** > **layout** > **activity_main.xml** レイアウトで、そのコントロールに次の ID を追加します。
 
     ```java
     android:id="@+id/text_hello"
@@ -555,9 +555,9 @@ ms.locfileid: "92428380"
 
 ### <a name="run-the-mobile-app-on-emulator"></a>エミュレーターでモバイル アプリを実行する
 
-エミュレーターの内部でプッシュ通知をテストする前に、エミュレーター イメージがアプリ用に選択した Google API レベルをサポートしていることを確認してください。 イメージでネイティブの Google API がサポートされていない場合、 **SERVICE\_NOT\_AVAILABLE** 例外を受け取ることがあります。
+エミュレーターの内部でプッシュ通知をテストする前に、エミュレーター イメージがアプリ用に選択した Google API レベルをサポートしていることを確認してください。 イメージでネイティブの Google API がサポートされていない場合、**SERVICE\_NOT\_AVAILABLE** 例外を受け取ることがあります。
 
-また、 **[設定]**  >  **[アカウント]** で、実行中のエミュレーターに Google アカウントを追加したことを確認してください。 そうでない場合、FCM で登録しようとすると、 **AUTHENTICATION\_FAILED** 例外が発生する可能性があります。
+また、 **[設定]**  >  **[アカウント]** で、実行中のエミュレーターに Google アカウントを追加したことを確認してください。 そうでない場合、FCM で登録しようとすると、**AUTHENTICATION\_FAILED** 例外が発生する可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7b683029b7fd05078755d4e8cd027f55c805f991
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97107262"
 ---
 # <a name="storage-configuration"></a>ストレージの構成
@@ -222,7 +222,7 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 |Azure SQL Managed Instance|5|5 * 2 = 10|
 |Azure Database for PostgreSQL インスタンス|5| 5 * 2 = 10|
 |Azure PostgreSQL HyperScale|2 (ワーカーの数 = インスタンスあたり 4)|2 * 2 * (1 + 4) = 20|
-|"***永続ボリュームの合計数** _"||8 + 10 + 10 + 20 = 48|
+|***永続ボリュームの合計数***||8 + 10 + 10 + 20 = 48|
 
 この計算を使用して、ストレージのプロビジョナーまたは環境に基づいて Kubernetes クラスターのストレージを計画することができます。 たとえば、5 つのノードを持つ Kubernetes クラスターにローカル ストレージ プロビジョナーが使用されている場合、上記のサンプル デプロイでは、各ノードに少なくとも 10 個の永続ボリュームのストレージが必要です。 同様に、5 つのノードを持つ Azure Kubernetes Service (AKS) クラスターをプロビジョニングする場合は、10 個のデータ ディスクを接続できるように、ノード プールに適した VM サイズを選択することが重要です。 AKS ノードのストレージのニーズに応じてノードのサイズを変更する方法の詳細については、[こちら](../../aks/operator-best-practices-storage.md#size-the-nodes-for-storage-needs)を参照してください。
 
@@ -238,6 +238,6 @@ Microsoft とその OEM、OS、Kubernetes パートナーは、Azure Arc デー�
 
 |パブリック クラウド サービス|推奨|
 |---|---|
-|_ *Azure Kubernetes Service (AKS)* *|Azure Kubernetes Service (AKS) には、2 種類のストレージ (Azure Files と Azure Managed Disks) があります。 それぞれの種類のストレージには、Standard (HDD) と Premium (SSD) の 2 つの価格/パフォーマンス レベルがあります。 したがって、AKS では、`azurefile` (Azure Files Standard レベル)、`azurefile-premium` (Azure Files Premium レベル)、`default` (Azure ディスク Standard レベル)、および `managed-premium` (Azure ディスク Premium レベル) の 4 つのストレージ クラスが提供されます。 既定のストレージ クラスは `default` (Azure ディスク Standard レベル) です。 種類とレベルの間には相当な **[価格の違い](https://azure.microsoft.com/en-us/pricing/details/storage/)** があり、決定時に考慮する必要があります。 高パフォーマンスの要件を持つ運用環境のワークロードの場合は、すべてのストレージ クラスに `managed-premium` を使用することをお勧めします。 開発/テスト ワークロード、概念実証などでコストを考慮する場合は、`azurefile` が最もコストのかからないオプションです。 4 つのオプションはすべて、Azure 内のネットワークに接続された記憶装置であるため、リモートの共有ストレージを必要とする状況に使用できます。 AKS Storage の詳細については、[こちら](../../aks/concepts-storage.md)をご覧ください。|
+|**Azure Kubernetes Service (AKS)**|Azure Kubernetes Service (AKS) には、2 種類のストレージ (Azure Files と Azure Managed Disks) があります。 それぞれの種類のストレージには、Standard (HDD) と Premium (SSD) の 2 つの価格/パフォーマンス レベルがあります。 したがって、AKS では、`azurefile` (Azure Files Standard レベル)、`azurefile-premium` (Azure Files Premium レベル)、`default` (Azure ディスク Standard レベル)、および `managed-premium` (Azure ディスク Premium レベル) の 4 つのストレージ クラスが提供されます。 既定のストレージ クラスは `default` (Azure ディスク Standard レベル) です。 種類とレベルの間には相当な **[価格の違い](https://azure.microsoft.com/en-us/pricing/details/storage/)** があり、決定時に考慮する必要があります。 高パフォーマンスの要件を持つ運用環境のワークロードの場合は、すべてのストレージ クラスに `managed-premium` を使用することをお勧めします。 開発/テスト ワークロード、概念実証などでコストを考慮する場合は、`azurefile` が最もコストのかからないオプションです。 4 つのオプションはすべて、Azure 内のネットワークに接続された記憶装置であるため、リモートの共有ストレージを必要とする状況に使用できます。 AKS Storage の詳細については、[こちら](../../aks/concepts-storage.md)をご覧ください。|
 |**AWS Elastic Kubernetes Service (EKS)**| Amazon の Elastic Kubernetes Service には、[EBS CSI ストレージ ドライバー](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html)に基づく 1 つのプライマリ ストレージ クラスがあります。 運用環境のワークロードにはこれをお勧めします。 EKS クラスターに追加できる新しいストレージ ドライバー ([EFS CSI ストレージ ドライバー](https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html)) もありますが、現在はベータ段階にあり、変更される可能性があります。 AWS はこのストレージ ドライバーが運用環境でサポートされると発表していますが、まだベータ版であり、変更される可能性があるため、使用しないことをお勧めします。 既定は EBS ストレージ クラスであり、`gp2` と呼ばれます。 EKS Storage の詳細については、[こちら](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html)をご覧ください。|
 |**Google Kubernetes Engine (GKE)**|Google Kubernetes Engine (GKE) には、[GCE 永続ディスク](https://kubernetes.io/docs/concepts/storage/volumes/#gcepersistentdisk)に使用される `standard` と呼ばれるストレージ クラスが 1 つだけあります。 唯一のものであり、既定値でもあります。 GKE 用の[ローカルの静的なボリューム プロビジョナー](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd#run-local-volume-static-provisioner)があり、直接接続された SSD で使用できますが、Google によって保守またはサポートされていないため、使用しないことをお勧めします。 GKE ストレージの詳細については、[こちら](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes)をご覧ください。

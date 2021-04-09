@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
 ms.openlocfilehash: 26618382223a87f779f95452000a39126f37efbb
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92675433"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Azure AD SAML Toolkit の統合
@@ -37,7 +37,7 @@ ms.locfileid: "92675433"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Azure AD SAML Toolkit では、 **SP** Initiated SSO がサポートされます
+* Azure AD SAML Toolkit では、**SP** Initiated SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -50,7 +50,7 @@ Azure AD への Azure AD SAML Toolkit の統合を構成するには、マネー
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Azure AD SAML Toolkit** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Azure AD SAML Toolkit**」と入力します。
 1. 結果のパネルから **[Azure AD SAML Toolkit]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-azure-ad-saml-toolkit"></a>Azure AD SAML Toolkit の Azure AD SSO の構成とテスト

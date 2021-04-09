@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Azure Arc 対応 Kubernetes エージェントのアップグレードを制御する
 keywords: Kubernetes、Arc、Azure、K8、コンテナー、エージェント、アップグレード
-ms.openlocfilehash: 172654f655e594c295a8807b417c32d7849bd4b1
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: d81a00ed4f30f446aeed96d59a455935c652b7d5
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102121917"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954549"
 ---
 # <a name="upgrading-azure-arc-enabled-kubernetes-agents"></a>Azure Arc 対応 Kubernetes エージェントをアップグレードする
 
@@ -84,6 +84,6 @@ Azure Arc 対応 Kubernetes エージェントの 1 つのマイナー バージ
 
 ## <a name="next-steps"></a>次のステップ
 
-* クイックスタートを利用して、[Kubernetes クラスターを Azure Arc に接続](./connect-cluster.md)します。
-* Kubernetes クラスターが既に Azure Arc に接続されていますか? [Arc 対応 Kubernetes クラスターの構成を作成する](./use-gitops-connected-cluster.md)。
+* クイックスタートを利用して、[Kubernetes クラスターを Azure Arc に接続](./quickstart-connect-cluster.md)します。
+* Kubernetes クラスターが既に Azure Arc に接続されていますか? [Arc 対応 Kubernetes クラスターの構成を作成する](./tutorial-use-gitops-connected-cluster.md)。
 * [Azure Policy を使用して構成を大規模に適用する](./use-azure-policy.md)方法について学ぶ。

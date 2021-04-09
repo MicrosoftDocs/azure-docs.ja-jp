@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: b2164f8927e5c3224f8b07c30d057f48fb7bbc32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87495975"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>セカンダリのオンプレミスのサイトに対して Hyper-V VM のディザスター リカバリーを設定する
@@ -123,7 +123,7 @@ Azure Site Recovery プロバイダーを VMM サーバーにインストール�
 開始する前に、そのポリシーを使用するすべてのホストのオペレーティング システムが同じであることを確認します。 ホストで実行されている Windows Server のバージョンが複数ある場合は、複数のレプリケーション ポリシーが必要です。
 
 1. 新しいレプリケーション ポリシーを作成するには、 **[インフラストラクチャの準備]**  >  **[レプリケーションの設定]**  >  **[+ 作成と関連付け]** の順にクリックします。
-2. **[ポリシーの作成と関連付け]** で、ポリシー名を指定します。 ソースとターゲットの種類は **Hyper-V**にする必要があります。
+2. **[ポリシーの作成と関連付け]** で、ポリシー名を指定します。 ソースとターゲットの種類は **Hyper-V** にする必要があります。
 3. **[Hyper-V ホストのバージョン]** で、ホストで実行されているオペレーティング システムを選択します。
 4. **[認証の種類]** と **[認証ポート]** で、プライマリおよび復旧用の Hyper-V ホスト サーバー間でトラフィックを認証する方法を指定します。
     - 動作している Kerberos 環境が既にある場合を除き、 **[証明書]** を選択してください。 Azure Site Recovery は、HTTPS 認証に使用する証明書を自動的に構成します 手動では何も行う必要はありません。

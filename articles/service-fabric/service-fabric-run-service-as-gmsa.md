@@ -4,15 +4,15 @@ description: Service Fabric の Windows スタンドアロン クラスターで
 ms.topic: how-to
 ms.date: 03/29/2018
 ms.openlocfilehash: 9750042764306c5df7a391429cc6926704db05ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91838910"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>グループ管理サービス アカウントでのサービスの実行
 
-Windows Server のスタンドアロン クラスターで、*RunAs* ポリシーを使用してサービスを*グループ管理サービスアカウント* (gMSA) として実行できます。  既定では、Service Fabric アプリケーションは、`Fabric.exe` プロセスを実行しているアカウントで実行されます。 異なるアカウントで実行中のアプリケーションは、共有のホスト環境にある場合でも、互いからより強固に保護されることになります。 gMSA を使用することで、パスワードや暗号化されたパスワードがアプリケーション マニフェストに格納されることがなくなります。  また、[Active Directory ユーザーまたはグループ](service-fabric-run-service-as-ad-user-or-group.md)としてサービスを実行することもできます。
+Windows Server のスタンドアロン クラスターで、*RunAs* ポリシーを使用してサービスを *グループ管理サービスアカウント* (gMSA) として実行できます。  既定では、Service Fabric アプリケーションは、`Fabric.exe` プロセスを実行しているアカウントで実行されます。 異なるアカウントで実行中のアプリケーションは、共有のホスト環境にある場合でも、互いからより強固に保護されることになります。 gMSA を使用することで、パスワードや暗号化されたパスワードがアプリケーション マニフェストに格納されることがなくなります。  また、[Active Directory ユーザーまたはグループ](service-fabric-run-service-as-ad-user-or-group.md)としてサービスを実行することもできます。
 
 次の例では、*svc-Test$* という名前の gMSA アカウントを作成する方法、クラスター ノードにその管理サービス アカウントをデプロイする方法、およびユーザー プリンシパルを構成する方法を示します。
 

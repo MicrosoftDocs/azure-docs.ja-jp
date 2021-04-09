@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 02/01/2021
+ms.date: 03/08/2021
 tags: connectors
-ms.openlocfilehash: e52c4acb4b59414e89e87bf5a6ee2cfae8207cae
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b9238d099c7b33e904c2fc8de3c4fc08369f1f36
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712455"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102489839"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
@@ -473,6 +473,23 @@ Logic Apps へのリモート関数呼び出し (RFC) を使用して SAP ABAP �
 > [!NOTE]
 > SAP トリガーはポーリング トリガーではなく、Webhook ベースのトリガーです。 データ ゲートウェイを使用している場合、トリガーはメッセージが存在するときにのみデータ ゲートウェイから呼び出されるため、ポーリングは必要ありません。
 
+**"service 'sapgw00' unknown"** というメッセージで **500 Bad Gateway** エラーが発生した場合は、API 接続とトリガーの構成のゲートウェイ サービス名をそのポート番号で置き換えます。 次のエラーの例では、`sapgw00`を実際のポート番号 (`3300` など) に置き換える必要があります。 
+
+```json
+"body": {
+   "error": {
+      "code": 500,
+      "source": "EXAMPLE-FLOW-NAME.eastus.environments.microsoftazurelogicapps.net",
+      "clientRequestId": "00000000-0000-0000-0000-000000000000",
+      "message": "BadGateway",
+      "innerError": {
+         "error": {
+            "code": "UnhandledException",
+            "message": "\nERROR service 'sapgw00' unknown\nTIME Wed Nov 11 19:37:50 2020\nRELEASE 721\nCOMPONENT NI (network interface)\nVERSION 40\nRC -3\nMODULE ninti.c\nLINE 933\nDETAIL NiPGetServByName: 'sapgw00' not found\nSYSTEM CALL getaddrinfo\nCOUNTER 1\n\nRETURN CODE: 20"
+         }
+      }
+```
+
 #### <a name="parameters"></a>パラメーター
 
 SAP コネクタは、単純な文字列と数値の入力と共に、次のテーブル パラメーター (`Type=ITAB` 入力) を受け取ります。
@@ -616,6 +633,14 @@ SAP から自分のロジック アプリに IDoc を送信するには、次の
     * **[RFC Destination]\(RFC 宛先\)** に名前を入力します。
     
     * **[Technical Settings]\(技術設定\)** タブの **[Activation Type]\(アクティブ化の種類\)** で、 **[Registered Server Program]\(登録済みサーバー プログラム\)** を選択します。 **[Program ID]\(プログラム ID\)** に値を入力します。 SAP では、この識別子を使用してロジック アプリのトリガーが登録されます。
+
+    > [!IMPORTANT]
+    > SAP の **プログラム ID** では大文字と小文字が区別されます。 ロジック アプリと SAP サーバーを構成するときに、**プログラム ID** に同じ大文字と小文字の形式を一貫して使用していることを確認してください。 そうしないと、IDoc を SAP に送信しようとしたときに、tRFC Monitor (T コード SM58) に次のエラーが表示されることがあります。
+    >
+    > * **関数 IDOC_INBOUND_ASYNCHRONOUS が見つかりません**
+    > * **非 ABAP RFC クライアント (パートナー タイプ) はサポートされていません**
+    >
+    > SAP の詳細については、注 (ログインが必要) <https://launchpad.support.sap.com/#/notes/2399329> と <https://launchpad.support.sap.com/#/notes/353597> を参照してください。
     
     * **[Unicode]** タブの **[Communication Type with Target System]\(ターゲット システムとの通信の種類\)** で、 **[Unicode]** を選択します。
 
@@ -727,11 +752,27 @@ SAP から自分のロジック アプリに IDoc を送信するには、次の
 
 次の例は、[`xpath()` 関数](./workflow-definition-language-functions-reference.md#xpath)を使用してパケットから個々の IDoc を抽出する方法を示しています。
 
-1. 開始する前に、SAP トリガーを使用したロジック アプリが必要です。 このロジック アプリがまだない場合は、このトピックの前の手順に従って、[SAP トリガーを使用したロジック アプリ](#receive-message-from-sap)を設定します。
+1. 開始する前に、SAP トリガーを使用したロジック アプリが必要です。 これがお使いのロジック アプリがまだない場合は、このトピックの前の手順に従って、[SAP トリガーを使用したロジック アプリ](#receive-message-from-sap)を設定します。
+
+    > [!IMPORTANT]
+    > SAP の **プログラム ID** では大文字と小文字が区別されます。 ロジック アプリと SAP サーバーを構成するときに、**プログラム ID** に同じ大文字と小文字の形式を一貫して使用していることを確認してください。 そうしないと、IDoc を SAP に送信しようとしたときに、tRFC Monitor (T コード SM58) に次のエラーが表示されることがあります。
+    >
+    > * **関数 IDOC_INBOUND_ASYNCHRONOUS が見つかりません**
+    > * **非 ABAP RFC クライアント (パートナー タイプ) はサポートされていません**
+    >
+    > SAP の詳細については、注 (ログインが必要) <https://launchpad.support.sap.com/#/notes/2399329> と <https://launchpad.support.sap.com/#/notes/353597> を参照してください。
 
    次に例を示します。
 
    ![ロジック アプリに SAP トリガーを追加する](./media/logic-apps-using-sap-connector/first-step-trigger.png)
+
+1. SAP 要求の状態をすぐに返信する[応答アクションをロジック アプリに追加](/azure/connectors/connectors-native-reqres#add-a-response-action)します。 SAP サーバーとの通信チャネルを解放するために、このアクションはトリガーの直後に追加することをお勧めします。 次の状態コード (`statusCode`) のうち応答アクションで使用するものを選択します。
+
+    * **202 Accepted**。これは、要求が処理に対して承認されたものの、処理はまだ完了していないことを意味します。
+
+    * **204 No Content**。これは、サーバーで要求が正常に処理され、送信する追加のコンテンツが応答ペイロード本文にないことを意味します。 
+
+    * **200 OK**。 サーバーで長さゼロのペイロード本文が生成された場合でも、この状態コードには常にペイロードが含まれます。 
 
 1. ご自身のロジック アプリで SAP から受け取る XML IDoc からルート名前空間を取得します。 この名前空間を XML ドキュメントから抽出するには、`xpath()` 式を使用して、ローカル文字列変数を作成してその名前空間を格納するステップを追加します。
 
@@ -1296,11 +1337,18 @@ Logic Apps から SAP にトランザクションを送信する場合、この�
 
 ## <a name="known-issues-and-limitations"></a>既知の問題と制限事項
 
-マネージド (ISE 以外の) SAP コネクタに関して現在知られている問題と制限は次のようになります。
+マネージド (ISE 以外の) SAP コネクタに関して現在知られている問題と制限は次のようになります。 
 
-* SAP トリガーでデータ ゲートウェイ クラスターがサポートされない。 フェールオーバーで、SAP システムと通信するデータ ゲートウェイ ノードがアクティブなノードと異なる場合があり、結果として、予想外の動作が発生します。 送信シナリオの場合、データ ゲートウェイ クラスターがサポートされます。
+* 一般に、SAP トリガーでデータ ゲートウェイ クラスターがサポートされない。 フェールオーバーで、SAP システムと通信するデータ ゲートウェイ ノードがアクティブなノードと異なる場合があり、結果として、予想外の動作が発生します。
+
+  * 送信シナリオの場合、フェールオーバー モードのデータ ゲートウェイ クラスターがサポートされます。 
+
+  * 負荷分散モードのデータ ゲートウェイ クラスターは、ステートフル SAP アクションではサポートされません。 このようなアクションには、**ステートフル セッションの作成**、**BAPI トランザクションのコミット**、**BAPI トランザクションのロールバック**、**ステートフル セッションの終了**、および **セッション ID** 値を指定するすべてのアクションがあります。 ステートフル通信は、同じデータ ゲートウェイ クラスター ノードに保持する必要があります。 
+
+  * ステートフル SAP アクションの場合は、非クラスター モードで、またはフェールオーバー用に設定されているクラスターで、データゲート ウェイを使用します。
 
 * 現在、SAP コネクタは SAP ルーター文字列をサポートしていない。 オンプレミス データ ゲートウェイは、接続する SAP システムと同じ LAN 上に存在する必要があります。
+
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 

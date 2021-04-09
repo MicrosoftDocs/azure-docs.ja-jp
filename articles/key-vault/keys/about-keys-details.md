@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: ambapat
 ms.openlocfilehash: 675c4f04ece322000ae0ebb44d6291c455db9397
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98133278"
 ---
 # <a name="key-types-algorithms-and-operations"></a>キーの種類、アルゴリズム、および操作

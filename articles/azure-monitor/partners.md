@@ -1,15 +1,14 @@
 ---
 title: Azure Monitor と統合するパートナー
 description: Azure Monitor のパートナーと、そのパートナーとの統合に関するドキュメントにアクセスする方法について説明します。
-ms.subservice: ''
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: 5f97097d21beab12c5f58161751a1bc340fa6cf7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/19/2021
+ms.openlocfilehash: ca58023510eb9329bc8ddf1339df4d8c27aae5e6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100601463"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101020"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor パートナーとの統合
 
@@ -101,6 +100,8 @@ Azure により、ユーザーは、多くのパートナー ソリューショ�
 -   Azure サブスクリプションの請求を通じて、Datadog サービスがまとめて請求されます。
 
 新しい Azure と Datadog の統合の[パブリック プレビュー](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4z3T2aGXUZPslUNJ3YpcapURFBHSUJIMVJTWDM5VUFPMVkyTVhMVlYzMS4u) にサインアップしてください。  パブリック プレビューは、2020 年 10 月以降、Azure Marketplace で利用できます。
+
+[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/datadog1591740804488.dd_liftr_v2?tab=Overview) で入手可能な "Azure と Datadog の統合" のプレビューをサブスクライブする
 
 以前に手動で構成した統合をまだ使用している場合は、[DataDog Web サイトのドキュメント](https://docs.datadoghq.com/integrations/azure/)を参照してください。
 
@@ -290,8 +291,7 @@ Site24x7 Azure Monitoring を使用すると、次のことができるように
 * SQL、Exchange、Active Directory、Office 365、IIS、Hyper-V アプリケーションなど、Microsoft エコスフィア全体を監視します。
 * Microsoft Teams、PagerDuty、Zapier などのサードパーティのサービスとシームレスに統合できます。
 
-[Site 24X7 のドキュメント](https://www.site24x7.com/)
-
+[Site24X7 のドキュメント](https://www.site24x7.com/azure/?utm_source=microsoft-partner-page&utm_medium=webpage&utm_campaign=ms-partner)
 
 ## <a name="solarwinds"></a>SolarWinds
 

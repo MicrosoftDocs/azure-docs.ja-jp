@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 02/18/2021
 ms.openlocfilehash: f4cb4807e6f2620bb76649fc7c7dcce7363cf4a4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101740989"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>PowerShell を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする

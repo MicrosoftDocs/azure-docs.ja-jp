@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
 ms.openlocfilehash: a8658242bca48ee490e7fd44582f46e7c9c78e5b
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94369799"
 ---
 # <a name="how-to-add-technical-details-for-your-azure-application-offer"></a>Azure アプリケーション オファーの技術的な詳細を追加する方法

@@ -8,12 +8,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: 77630ddcd61d17f3b47e6cb5d43396c1a6f0e904
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: d3f268a4ce2660350055367770e987a06828e2d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517871"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740122"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>NFS ボリュームのエクスポート ポリシーを構成する
 
@@ -40,7 +40,7 @@ Azure NetApp Files ボリュームへのアクセスを制御するために、�
       * 読み取りと書き込み
       * [読み取り専用]
 
-    * **[読み取り専用]** と **[読み取り/書き込み]** : NFSv4.1 で Kerberos 暗号化を使用する場合は、「[NFSv4.1 の Kerberos 暗号化を構成する](configure-kerberos-encryption.md)」の手順に従ってください。  Kerberos のパフォーマンスへの影響については、「[NFSv4.1 での Kerberos のパフォーマンスに対する影響](configure-kerberos-encryption.md#kerberos_performance)」を参照してください。 
+    * **[読み取り専用]** と **[読み取り/書き込み]** : NFSv4.1 で Kerberos 暗号化を使用する場合は、「[NFSv4.1 の Kerberos 暗号化を構成する](configure-kerberos-encryption.md)」の手順に従ってください。  Kerberos のパフォーマンスへの影響については、[NFSv4.1 ボリュームでの Kerberos のパフォーマンスに対する影響](performance-impact-kerberos.md)に関する記事を参照してください。 
 
       ![Kerberos のセキュリティ オプション](../media/azure-netapp-files/kerberos-security-options.png) 
 

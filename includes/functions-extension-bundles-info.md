@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/09/2020
 ms.author: glenga
 ms.openlocfilehash: 1fc37c6f93fba34944caa7a91c2a89ce5dcdc398
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "78201023"
 ---
 ::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  

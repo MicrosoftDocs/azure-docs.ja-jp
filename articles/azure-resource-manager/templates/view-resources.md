@@ -4,10 +4,10 @@ description: リソースのプロパティの確認方法について説明し�
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.openlocfilehash: c8bbe0dcb1bc9dc9751a1dc0d0b98a6368473546
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91327750"
 ---
 # <a name="discover-resource-properties"></a>リソースのプロパティについて

@@ -3,7 +3,7 @@ title: Azure Media Services REST API を使用したフィルターの作成 | M
 description: このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。 Media Services REST API は、この選択型ストリーミングを実現するために動的マニフェストを作成します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: f7d23daf-7cd2-49c7-a195-ab902912ab3c
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewr: cenkdin
-ms.openlocfilehash: 2b0271edbbd119e1d60f30cc149ba7772fd0cfa9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b9286260d0fead11c7f55eff213c8ad0241a8cba
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101730220"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103008792"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>Azure Media Services REST API を使用したフィルターの作成
 

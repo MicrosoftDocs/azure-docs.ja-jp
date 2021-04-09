@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 276d444239cb91f1bec2975506279721e6d0008c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459358"
 ---
 # <a name="tutorial-integrate-jobhub-with-azure-active-directory"></a>チュートリアル:JOBHUB と Azure Active Directory との統合
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 JOBHUB では、 **SP** によって開始される SSO がサポートされます。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 JOBHUB では、**SP** によって開始される SSO がサポートされます。
 
 ## <a name="adding-jobhub-from-the-gallery"></a>ギャラリーからの JOBHUB の追加
 
@@ -47,7 +47,7 @@ Azure AD への JOBHUB の統合を構成するには、ギャラリーから管
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに " **JOBHUB** " と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに "**JOBHUB**" と入力します。
 1. 結果のパネルから **[JOBHUB]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -98,7 +98,7 @@ JOBHUB で Azure AD SSO を構成してテストするには、次の構成要�
 
 ### <a name="configure-jobhub-sso"></a>JOBHUB SSO の構成
 
-**JOBHUB** 側でシングル サインオンを構成するには、 **サムプリントの値** と Azure portal からコピーした適切な URL を [JOBHUB サポート チーム](mailto:platform@pasonagroup.co.jp)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**JOBHUB** 側でシングル サインオンを構成するには、**サムプリントの値** と Azure portal からコピーした適切な URL を [JOBHUB サポート チーム](mailto:platform@pasonagroup.co.jp)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

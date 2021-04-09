@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: justinha
 ms.openlocfilehash: d8edafff9b6534e5f1ce1c4581595ee187dfd432
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96619901"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>Azure クラウド ソリューション プロバイダー向けの Azure Active Directory Domain Services のデプロイと管理

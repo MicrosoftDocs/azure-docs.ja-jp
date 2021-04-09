@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: c4e5dedf2075a2e13cc91c5eed2c0f03ba498b97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96021522"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service 環境での内部ロード バランサーの使用
@@ -43,7 +43,7 @@ ILB ASE を使用する際に実行できないことがいくつかあります
 * ポータルからのアプリの証明書の購入と使用。 もちろん、証明機関から証明書を直接取得してアプリでご利用いただけます。ただし、Azure Portal は使用できません。
 
 ## <a name="creating-an-ilb-ase"></a>ILB ASE の作成
-ILB ASE の作成は、ASE を作成する通常の方法と特に変わりません。 ASE 作成の詳細については、「[App Service 環境の作成方法][HowtoCreateASE]」を参照してください。 ILB ASE を作成するプロセスは、ASE 作成時に VNet を作成する場合も、既存の VNet を選択する場合も同じです。 ILB ASE を作成する方法は次のとおりです。 
+ILB ASE の作成は、ASE を作成する通常の方法と特に変わりません。 ASE 作成の詳細については、「[App Service Environment の作成方法][HowtoCreateASE]」を参照してください。 ILB ASE を作成するプロセスは、ASE 作成時に VNet を作成する場合も、既存の VNet を選択する場合も同じです。 ILB ASE を作成する方法は次のとおりです。 
 
 1. Azure Portal で、 **[リソースの作成] -> [Web + モバイル] -> [App Service Environment]** の順に選択します。
 2. サブスクリプションを選択します。
@@ -58,12 +58,12 @@ ILB ASE の作成は、ASE を作成する通常の方法と特に変わりま�
 
 [Virtual Network] ウィンドウに、外部 VIP または内部 VIP を選択できる VNet 構成オプションがあります。 既定値は[外部] です。 [外部] に設定した場合、ASE は、インターネット アクセス可能な VIP を使用します。 [内部] を選択した場合、ASE は、VNet 内の IP アドレスの ILB で構成されます。 
 
-[内部] を選択すると、ASE に IP アドレスを追加する機能がなくなり、代わりに ASE のサブドメインを指定する必要があります。 外部 VIP の ASE では、その ASE で作成されるアプリのためのサブドメイン内で ASE の名前が使用されます。 ASE の名前が *_contosotest_* で、その ASE 内のアプリの名前が _*_mytest_*_ の場合、サブドメインの形式は _*_contosotest.p.azurewebsites.net_*_ となり、そのアプリの URL は _*_mytest.contosotest.p.azurewebsites.net_*_ になります。 VIP タイプを [内部] に設定すると、ASE 名はその ASE のサブドメイン内で使用されません。 サブドメインを明示的に指定します。 ご使用のサブドメインが _*_contoso.corp.net_*_ で、その ASE 内に _*_timereporting_*_ という名前のアプリを作成した場合、そのアプリの URL は _*_timereporting.contoso.corp.net_*_ になります。
+[内部] を選択すると、ASE に IP アドレスを追加する機能がなくなり、代わりに ASE のサブドメインを指定する必要があります。 外部 VIP の ASE では、その ASE で作成されるアプリのためのサブドメイン内で ASE の名前が使用されます。 ASE の名前が ***contosotest** で、その ASE 内のアプリの名前が _*_mytest_*_ の場合、サブドメインの形式は _*_contosotest.p.azurewebsites.net_*_ となり、そのアプリの URL は _*_mytest.contosotest.p.azurewebsites.net_** になります。VIP タイプを [内部] に設定すると、ASE 名はその ASE のサブドメイン内で使用されません。サブドメインを明示的に指定します。ご使用のサブドメインが ***contoso.corp.net**_ で、その ASE 内に _*_timereporting_*_ という名前のアプリを作成した場合、そのアプリの URL は _*_timereporting.contoso.corp.net_** になります。
 
 ## <a name="apps-in-an-ilb-ase"></a>ILB ASE 内のアプリ
 ILB ASE でのアプリの作成は、通常の ASE でのアプリの作成と同じです。 
 
-1. Azure portal で、 *[リソースの作成] -> [Web + モバイル] -> [Web]* の順に選択するか、 **[モバイル]** または **[API アプリ]** を選択します。
+1. Azure Portal で、 **[リソースの作成] -> [Web + モバイル] -> [Web]** の順に選択するか、 **[モバイル]** または **[API アプリ]** を選択します。
 2. アプリの名前を入力します。
 3. サブスクリプションを選択します。
 4. リソース グループを選択または作成します。
@@ -104,14 +104,14 @@ ILB の IP アドレスは、仮想 IP アドレスとして [プロパティ] �
 #### <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
 ILB ASE によって、アプリをネットワークから分離できます。 アプリはインターネットからアクセスできず、認識されてもいません。 このアプローチは、基幹業務アプリケーションなどのイントラネット サイトをホストするうえで非常に便利です。 さらにアクセスを制限する必要がある場合は、ネットワーク セキュリティ グループ (NSG) を使用してネットワーク レベルでアクセスを制御できます。 
 
-NSG を使用してさらにアクセスを制限しようとするときは、ASE が作動するために必要な通信を切断しないように注意する必要があります。 HTTP/HTTPS アクセスは ASE によって使用される ILB を介してのみ行われますが、ASE は依然として VNet 外部のリソースに依存しています。 どのネットワーク アクセスが引き続き必要かを確認するには、「[App Service 環境への受信トラフィックを制御する方法][ControlInbound]」および「[ExpressRoute を使用した App Service 環境のネットワーク構成の詳細][ExpressRoute]」を参照してください。 
+NSG を使用してさらにアクセスを制限しようとするときは、ASE が作動するために必要な通信を切断しないように注意する必要があります。 HTTP/HTTPS アクセスは ASE によって使用される ILB を介してのみ行われますが、ASE は依然として VNet 外部のリソースに依存しています。 どのネットワーク アクセスが引き続き必要かを確認するには、「[App Service Environment への受信トラフィックを制御する方法][ControlInbound]」および「[ExpressRoute を使用した App Service Environment のネットワーク構成の詳細][ExpressRoute]」を参照してください。 
 
 NSG を構成するには、Azure が ASE を管理するために使用する IP アドレスを把握する必要があります。 この IP アドレスは、ASE がインターネット要求を行う場合の発信 IP アドレスでもあります。 ASE の送信 IP アドレスは、ASE が有効な限り、静的なままです。 ASE を削除して再作成すると、新しい IP アドレスを取得できます。 この IP アドレスを調べるには、 **[設定] -> [プロパティ]** の順に移動し、 **[送信 IP アドレス]** を確認します。 
 
 ![ASE の送信 IP アドレスを見つけることができる場所を示しています。][5]
 
 #### <a name="general-ilb-ase-management"></a>ILB ASE の一般的な管理
-ILB ASE の管理は、通常の ASE の管理方法とほぼ同じです。 ホストする ASP インスタンス数を増やすには、ワーカー プールをスケールアップします。また、処理する HTTP/HTTPS トラフィックの量を増やすには、フロントエンド サーバーをスケールアップします。 ASE の構成を管理するための一般的な情報については、「[App Service 環境の構成][ASEConfig]」を参照してください。 
+ILB ASE の管理は、通常の ASE の管理方法とほぼ同じです。 ホストする ASP インスタンス数を増やすには、ワーカー プールをスケールアップします。また、処理する HTTP/HTTPS トラフィックの量を増やすには、フロントエンド サーバーをスケールアップします。 ASE の構成を管理するための一般的な情報については、「[App Service Environment の構成][ASEConfig]」を参照してください。 
 
 追加の管理項目は、証明書の管理と DNS の管理です。 ILB ASE の作成後にHTTPS で使用する証明書を取得してアップロードし、期限が切れる前に置き換える必要があります。 Azure は基本のドメインを所有しているため、外部 VIP を含む ASE の証明書を提供できます。 ILB ASE で使用されるサブドメインは何でもよいため、HTTPS 用に独自の証明書を提供する必要があります。 
 
@@ -124,7 +124,7 @@ ILB ASE の管理は、通常の ASE の管理方法とほぼ同じです。 ホ
 - [発行]
 
 ## <a name="getting-started"></a>作業の開始
-App Service 環境の使用を開始するには、「[App Service 環境の概要][WhatisASE]」をご覧ください。
+App Service Environment の使用を開始するには、「[App Service Environment][WhatisASE]」をご覧ください。
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

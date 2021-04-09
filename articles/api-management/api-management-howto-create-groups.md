@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: ea674981036b4be292329a4b30b43180ed26d642
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92092785"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Azure API Management でグループを作成および使用して開発者アカウントを管理する方法
@@ -55,7 +55,7 @@ API Management には、次に示すシステム グループが用意されて�
 
     ![新しいグループを追加する](./media/api-management-howto-create-groups/groups001.png)
 
-グループが作成されると、それが **[グループ]** リストに追加されます。 <br/>グループの **[名前]** または **[説明]** を編集するには、そのグループの名前と **[設定]** をクリックします。<br/>グループを削除するには、そのグループの名前をクリックし、 **[削除]** を押します。
+グループが作成されると、それが **[グループ]** リストに追加されます。 <br/>グループの **[名前]** または **[説明]** を編集するには、そのグループの名前と **[設定]** をクリックします。<br/>グループを削除するには、そのグループの名前をクリックし、**[削除]** を押します。
 
 グループが作成されます。このグループは、成果物および開発者と関連付けることができます。
 
@@ -71,7 +71,7 @@ API Management には、次に示すシステム グループが用意されて�
 
     ![選択したグループが示され、[選択] ボタンが強調表示されているスクリーンショット。](./media/api-management-howto-create-groups/groups003.png)
 
-    成果物からグループを削除するには、 **[削除]** をクリックします。
+    成果物からグループを削除するには、**[削除]** をクリックします。
 
     ![グループを削除する](./media/api-management-howto-create-groups/groups004.png)
 

@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.date: 12/08/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 729b6ccf1092679a71aa35f49be7d3199d4f4918
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97936279"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>クイック スタート:Azure portal を使用してキー コンテナーを作成する

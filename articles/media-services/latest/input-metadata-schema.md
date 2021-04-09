@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1ca526b7ecbe20a54ec115521cdfbc93c713e0da
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0acb882410d103cf6f6c34bbecf2006094437b04
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360056"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102634687"
 ---
 # <a name="input-metadata"></a>入力メタデータ
 
@@ -39,9 +39,7 @@ JSON スキーマ の例は、この記事の最後に記載されています�
 エンコード ジョブの AssetFile 要素のコレクションが含まれます。  
 
 > [!NOTE]
-> 次の 4 つの子要素は順番に表示されます。  
-> 
-> 
+> 次の 4 つの子要素は順番に表示されます。
 
 | 名前  | 説明 |
 | --- | --- | 
@@ -53,9 +51,9 @@ JSON スキーマ の例は、この記事の最後に記載されています�
 
 | 名前 | 説明 |
 | --- | --- |
-| **Name**<br />必須 |資産ファイルの名前。 <br /><br />例: `"Name": "Ignite-short.mp4"` |
+| **名前**<br />必須 |資産ファイルの名前。 <br /><br />例: `"Name": "Ignite-short.mp4"` |
 | **Uri**<br />必須 |入力資産が配置されている URL。 出力資産が属している入力資産を特定するには、ID ではなく `Uri` フィールドを使用します。|
-| **Size**<br />必須 |資産ファイルのサイズ (バイト単位)。  <br /><br />例: `"Size": 75739259`|
+| **[サイズ]**<br />必須 |資産ファイルのサイズ (バイト単位)。  <br /><br />例: `"Size": 75739259`|
 | **Duration**<br />必須 |コンテンツの再生時間。 <br /><br />例: `"Duration": "PT1M10.304S"`. |
 | **NumberOfStreams**<br />必須 |資産ファイル内のストリーム数。  <br /><br />例: `"NumberOfStreams": 2`|
 | **FormatNames**<br />必須 |形式の名前。  <br /><br />例: `"FormatNames": "mov,mp4,m4a,3gp,3g2,mj2"`|
@@ -67,8 +65,8 @@ JSON スキーマ の例は、この記事の最後に記載されています�
 
 | 名前 | 説明 |
 | --- | --- |
-| **FourCC**<br />必須 |ffmpeg によって報告されるビデオ コーデックの FourCC コード。<br /><br />例: `"FourCC": "avc1"` |
-| **Profile** |ビデオ トラックのプロファイル。 <br /><br />例: `"Profile": "Main"`|
+| **FourCC**<br />必須 |ffmpeg によって報告されるビデオ コーデックの FourCC コード。<br /><br />例: `"FourCC": "avc1" | "hev1" | "hvc1"` |
+| **プロファイル** |ビデオ トラックのプロファイル。 <br /><br />例: `"Profile": "Main"`|
 | **Level** |ビデオ トラックのレベル。 <br /><br />例: `"Level": "3.2"`|
 | **PixelFormat** |ビデオ トラックのピクセル形式。 <br /><br />例: `"PixelFormat": "yuv420p"`|
 | **Width**<br />必須 |エンコードされたビデオの幅 (ピクセル単位)。 <br /><br />例: `"Width": "1280"`|
@@ -82,9 +80,9 @@ JSON スキーマ の例は、この記事の最後に記載されています�
 | **HasBFrames** |B フレームのビデオ トラック数。 <br /><br />例: `"HasBFrames": 2`|
 | **Metadata** |さまざまな情報を保持する際に使用できる汎用的なキー/値文字列。 <br />この記事の最後にある完全な例を参照してください。 |
 | **Id**<br />必須 |このオーディオまたはビデオ トラックの 0 から始まるインデックス。<br /><br /> この **Id** は、必ずしも MP4 ファイルで使用されている TrackID であるとは限りません。 <br /><br />例: `"Id": 2`|
-| **Codec** |ビデオ トラック コーデック文字列。 <br /><br />例: `"Codec": "h264"`|
+| **Codec** |ビデオ トラック コーデック文字列。 <br /><br />例: `"Codec": "h264 | hev1"`|
 | **CodecLongName** |オーディオまたはビデオ トラック コーデックの長い名前。 <br /><br />例: `"CodecLongName": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"`|
-| **Codec** |ビデオ トラック コーデック文字列。 <br /><br />例: `"Codec": "h264"`|
+| **Codec** |ビデオ トラック コーデック文字列。 <br /><br />例: `"Codec": "h264 | hev1"`|
 | **TimeBase**<br />必須 |時間ベース。<br /><br />例: `"TimeBase": "1/30000"`|
 | **NumberOfFrames** |フレームの数。 <br /><br />例: `"NumberOfFrames": 2107`|
 | **StartTime** |トラックの開始時刻。<br /><br />例: `"StartTime": "PT0.033S"` |

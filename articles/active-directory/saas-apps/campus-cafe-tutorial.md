@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/19/2020
 ms.author: jeedes
 ms.openlocfilehash: ec6addfb14f89b7acbc3c6d4ed62120d9af4612a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92456536"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-campus-caf"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Campus Café の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Campus Café では、 **SP** Initiated SSO がサポートされます
+* Campus Café では、**SP** Initiated SSO がサポートされます
 * Campus Café を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-campus-caf-from-the-gallery"></a>ギャラリーからの Campus Café の追加
@@ -50,7 +50,7 @@ Azure AD への Campus Café の統合を構成するには、ギャラリーか
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Campus Café** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Campus Café**」と入力します。
 1. 結果パネルで **[Campus Café]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -77,7 +77,7 @@ Campus Café で Azure AD SSO を構成してテストするには、次の構�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、 **サービス プロバイダー メタデータ ファイル** がある場合は、次の手順に従います。
+1. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル** がある場合は、次の手順に従います。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
@@ -87,7 +87,7 @@ Campus Café で Azure AD SSO を構成してテストするには、次の構�
 
     ![メタデータ ファイルを選択する](common/browse-upload-metadata.png)
 
-    c. メタデータ ファイルが正常にアップロードされると、 **識別子** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
+    c. メタデータ ファイルが正常にアップロードされると、**識別子** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
 
     ![[Campus Café のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 

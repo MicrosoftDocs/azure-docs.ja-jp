@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: aashishb
 author: aashishb
-ms.date: 01/04/2021
+ms.date: 03/11/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e0e25a804ac66ca33715906ce4d397b80887037d
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 71cb2e9e112c49d77a2a0b47c24c49cabfa86589
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518553"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103149020"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する
 
@@ -97,7 +97,7 @@ Microsoft 証明書または CA から購入したカスタム証明書を使用
     provisioning_config = AksCompute.provisioning_configuration()
 
     # Leaf domain label generates a name using the formula
-    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.com"
     #  where "######" is a random series of characters
     provisioning_config.enable_ssl(leaf_domain_label = "contoso")
 
@@ -107,7 +107,7 @@ Microsoft 証明書または CA から購入したカスタム証明書を使用
                                           cluster_name = cluster_name)
 
     # Leaf domain label generates a name using the formula
-    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.com"
     #  where "######" is a random series of characters
     attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
@@ -173,7 +173,7 @@ TLS/SSL 証明書には有効期限切れがあるため、更新する必要が
 
 > [!IMPORTANT]
 > * 既存の証明書がまだ有効な場合は、`renew=True` (SDK) か `--ssl-renew` (CLI) を使用して、構成によってこれを強制的に更新します。 たとえば、既存の証明書があと 10 日間有効で、`renew=True` を使用しない場合、証明書は更新されない可能性があります。
-> * サービスが最初にデプロイされたとき、`leaf_domain_label` が使用されて、`<leaf-domain-label>######.<azure-region>.cloudapp.azure.net` というパターンで DNS 名が作成されました。 既存の名前 (最初に生成された 6 桁を含む) を維持するには、元の `leaf_domain_label` 値を使用します。 生成された 6 桁の数字は含めないでください。
+> * サービスが最初にデプロイされたとき、`leaf_domain_label` が使用されて、`<leaf-domain-label>######.<azure-region>.cloudapp.azure.com` というパターンで DNS 名が作成されました。 既存の名前 (最初に生成された 6 桁を含む) を維持するには、元の `leaf_domain_label` 値を使用します。 生成された 6 桁の数字は含めないでください。
 
 **SDK の使用**
 

@@ -4,12 +4,12 @@ description: Application Insights でシステムとカスタムの .NET パフ�
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f1bd3ac4542dcce0d41f69a9c1664b747214554
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 423e17ef2b44286c28b464836075284929d8644c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100583884"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031363"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights のシステム パフォーマンス カウンター
 
@@ -21,7 +21,7 @@ Windows には、CPU 占有率や、メモリ、ディスク、ネットワー�
 
 ![Application Insights で表示されるパフォーマンス カウンター](./media/performance-counters/performance-counters.png)
 
-ASP.NET/ASP.NET Core Web アプリケーションについて収集するように構成されている現在の既定カウンターは次のとおりです。
+ASP.NET Web アプリケーションについて収集するように構成されている現在の既定カウンターは次のとおりです。
 - % Process\\Processor Time
 - % Process\\Processor Time Normalized
 - Memory\\Available Bytes
@@ -31,6 +31,14 @@ ASP.NET/ASP.NET Core Web アプリケーションについて収集するよう�
 - Process\\Private Bytes
 - Process\\IO Data Bytes/sec
 - ASP.NET Applications\\Requests In Application Queue
+- Processor(_Total)\\% Processor Time
+
+ASP.NET Core Web アプリケーションについて収集するように構成されている現在の既定カウンターは次のとおりです。
+- % Process\\Processor Time
+- % Process\\Processor Time Normalized
+- Memory\\Available Bytes
+- Process\\Private Bytes
+- Process\\IO Data Bytes/sec
 - Processor(_Total)\\% Processor Time
 
 ## <a name="add-counters"></a>カウンターを追加する

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 5c60407144b65966a9f570725327e4427cadd74e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92510826"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-simple-sign"></a>チュートリアル:Azure Active Directory と Simple Sign の統合
@@ -41,7 +41,7 @@ Simple Sign と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Simple Sign では、 **IDP** によって開始される SSO がサポートされます
+* Simple Sign では、**IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-simple-sign-from-the-gallery"></a>ギャラリーからの Simple Sign の追加
 
@@ -61,13 +61,13 @@ Azure AD への Simple Sign の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Simple Sign** 」と入力し、結果パネルで **[Simple Sign]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Simple Sign**」と入力し、結果パネルで **[Simple Sign]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの Simple Sign](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Simple Sign で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Simple Sign で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Simple Sign 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Simple Sign で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -142,7 +142,7 @@ Simple Sign で Azure AD シングル サインオンを構成するには、次
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

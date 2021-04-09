@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: 1d94e9f59062e4d730b8f3b71022442e81e6eeda
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98953023"
 ---
 # <a name="extend-app-at-prediction-runtime"></a>予測ランタイムにアプリを拡張する

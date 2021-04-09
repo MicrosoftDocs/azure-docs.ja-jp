@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/12/2020
 ms.author: alkohli
 ms.openlocfilehash: f1bb5662b48765c08ec58d1f7fa9d341de4937bc
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91992766"
 ---
 # <a name="azure-stack-edge-pro-limits"></a>Azure Stack Edge Pro の制限

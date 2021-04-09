@@ -10,10 +10,10 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.openlocfilehash: 9f768982e69f785c146f026040a91f7a63eef64c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98673453"
 ---
 # <a name="json-flattening-escaping-and-array-handling"></a>JSON のフラット化、エスケープ、および配列処理

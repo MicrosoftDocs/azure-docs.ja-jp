@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: kkrishna
 ms.openlocfilehash: 174946667885debc348370ef2c6f93206890e9c1
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94628024"
 ---
 不在のユーザーに代わって操作を続けられるよう、アクセス トークン キャッシュの使用をバックグラウンドのアプリ、API、サービスに許可するため、MSAL のトークン キャッシュ実装を利用できます。 これは特に、ユーザーがフロントエンド Web アプリを終了した後、バックグラウンドのアプリやサービスがユーザーの代わりに作業を続けなければならない場合に便利です。

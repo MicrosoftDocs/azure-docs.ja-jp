@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
 ms.openlocfilehash: 95c48bded224a40879328dba5861b3564f0ebcf8
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99979863"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>チュートリアル:.NET Core アプリで動的な構成を使用する
@@ -135,7 +135,7 @@ class Program
 
 1. **[Configuration Explorer]\(構成エクスプローラー)** を選択して次のキーの値を更新します。
 
-    | Key | Value |
+    | Key | 値 |
     |---|---|
     | TestApp:Settings:Message | Azure App Configuration からのデータ - 更新済み |
 

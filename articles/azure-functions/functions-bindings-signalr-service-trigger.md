@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
 ms.openlocfilehash: 2482a26987ec142880acc51bf470d844655b6e3f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97763517"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Azure Functions における SignalR Service のトリガー バインド
@@ -177,7 +177,7 @@ def main(invocation) -> None:
 |**direction**| 該当なし | `in` に設定する必要があります。|
 |**name**| 該当なし | トリガー呼び出しコンテキスト オブジェクトの関数コードで使用される変数名。 |
 |**hubName**|**HubName**| この値は、トリガーされる関数の SignalR ハブの名前に設定する必要があります。|
-|**category**|**Category**| この値は、トリガーされる関数のメッセージのCategoryとして設定する必要があります。 カテゴリには次のいずれかの値を指定することができます。 <ul><li>**connections**:*connected* および *disconnected* イベントを含む</li><li>**messages**:*connections* カテゴリ以外の他のすべてのイベントを含む</li></ul> |
+|**category**|**カテゴリ**| この値は、トリガーされる関数のメッセージのCategoryとして設定する必要があります。 カテゴリには次のいずれかの値を指定することができます。 <ul><li>**connections**:*connected* および *disconnected* イベントを含む</li><li>**messages**:*connections* カテゴリ以外の他のすべてのイベントを含む</li></ul> |
 |**event**|**Event**| この値は、トリガーされる関数のメッセージのイベントとして設定する必要があります。 *messages* カテゴリの場合、イベントは「[呼び出しメッセージ](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)」でクライアントが送信する *target* です。 *connections* カテゴリの場合、*connected* および *disconnected* のみが使用されます。 |
 |**parameterNames**|**ParameterNames**| (省略可能) パラメーターにバインドする名前のリスト。 |
 |**connectionStringSetting**|**ConnectionStringSetting**| SignalR Service 接続文字列を含むアプリ設定の名前 (既定値は "AzureSignalRConnectionString") |
@@ -192,15 +192,15 @@ InvocationContext には、SignalR サービスから送信されるメッセー
 
 |InvocationContext のプロパティ | 説明|
 |------------------------------|------------|
-|Arguments| *messages* カテゴリで使用可能。 「[呼び出しメッセージ](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)」の *arguments* が格納されています|
+|引数| *messages* カテゴリで使用可能。 「[呼び出しメッセージ](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)」の *arguments* が格納されています|
 |Error| *disconnected* イベントで使用可能。 接続がエラーなしで閉じられた場合、またはエラー メッセージが含まれている場合は、空になる場合があります。|
-|Hub| メッセージが属しているハブの名前。|
+|ハブ| メッセージが属しているハブの名前。|
 |カテゴリ| メッセージのカテゴリ。|
 |Event| メッセージのイベント。|
 |ConnectionId| メッセージを送信するクライアントの接続 ID。|
 |UserId| メッセージを送信するクライアントのユーザー ID。|
-|Headers| 要求のヘッダー。|
-|Query| クライアントがサービスに接続するときの要求のクエリ。|
+|ヘッダー| 要求のヘッダー。|
+|クエリ| クライアントがサービスに接続するときの要求のクエリ。|
 |Claims| クライアントのクレーム。|
 
 ## <a name="using-parameternames"></a>`ParameterNames` の使用

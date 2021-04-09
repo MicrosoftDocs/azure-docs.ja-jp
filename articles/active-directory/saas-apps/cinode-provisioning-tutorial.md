@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: Zhchia
 ms.openlocfilehash: dbed4eaabda34c1f35c21b8fe69db72c07f6d03f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96180134"
 ---
 # <a name="tutorial-configure-cinode-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために Cinode を構成する

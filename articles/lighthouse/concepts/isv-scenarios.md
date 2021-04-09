@@ -4,10 +4,10 @@ description: ISV は、Azure Lighthouse の機能を使用して、顧客への�
 ms.date: 12/18/2020
 ms.topic: conceptual
 ms.openlocfilehash: d6a12a51d360ad236563b871dbd94cc442ade434
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97696305"
 ---
 # <a name="azure-lighthouse-in-isv-scenarios"></a>ISV シナリオにおける Azure Lighthouse

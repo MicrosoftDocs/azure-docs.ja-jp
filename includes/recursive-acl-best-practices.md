@@ -9,10 +9,10 @@ ms.date: 02/03/2021
 ms.author: normesta
 ms.custom: include file
 ms.openlocfilehash: b0be074c995fcc62f63a4a2ebf4149d3040e7b6b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101751060"
 ---
 ## <a name="best-practices"></a>ベスト プラクティス

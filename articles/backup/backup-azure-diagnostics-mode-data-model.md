@@ -3,12 +3,12 @@ title: Azure Monitor ログのデータ モデル
 description: この記事では、Azure Backup データに使用する Azure Monitor Log Analytics データ モデルの詳細について説明します。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 1fcb4eb0c584f792132f19c8c4d66289342aa36e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 004c5a6c0c2c4dcfcf13134bd5a5143ba647048f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020951"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500990"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup データの Log Analytics データ モデル
 
@@ -18,7 +18,8 @@ Log Analytics からカスタム アラートを作成するには、Log Analyti
 
 > [!NOTE]
 >
-> このデータ モデルは、Log Analytics (LA) に診断イベントを送信する Azure Diagnostics モードを参照しています。 新しいリソース固有モード用のデータ モデルについては、次の記事を参照してください。[Azure Backup 診断イベントのデータ モデル](./backup-azure-reports-data-model.md)
+> * このデータ モデルは、Log Analytics (LA) に診断イベントを送信する Azure Diagnostics モードを参照しています。 新しいリソース固有モード用のデータ モデルについては、次の記事を参照してください。[Azure Backup 診断イベントのデータ モデル](./backup-azure-reports-data-model.md)
+> * カスタムのレポート ビューを作成する場合は、次に示す未加工のテーブルを操作するのではなく、[Azure Monitor ログでシステム関数](backup-reports-system-functions.md)を使用することをお勧めします。
 
 ## <a name="using-azure-backup-data-model"></a>Azure Backup データ モデルを使用する
 
@@ -96,7 +97,7 @@ Log Analytics からカスタム アラートを作成するには、Log Analyti
 | --- | --- | --- |
 | EventName_s |Text |このフィールドは、このイベントの名前を表します。 これは常に AzureBackupCentralReport です |  
 | BackupItemUniqueId_s |Text |バックアップ項目の一意の ID |
-| SchemaVersion_s |Text |このフィールドは、スキーマの現在のバージョンを表します これは **V2** です |
+| SchemaVersion_s |Text |このフィールドは、スキーマの現在のバージョンを表します。 これは **V2** です |
 | State_s |Text |バックアップ項目アソシエーション オブジェクトの現在の状態 (例: アクティブ、削除済み) |
 | BackupManagementType_s |Text |バックアップ ジョブを行うサーバーのプロバイダーの種類 (例: IaaSVM、FileFolder) |
 | BackupItemSourceSize_s |Text | バックアップ項目のフロント エンドのサイズ |
@@ -462,7 +463,7 @@ Azure Diagnostics テーブルにある Azure Backup データのクエリを作
 
 ## <a name="v1-schema-vs-v2-schema"></a>V1 スキーマと V2 スキーマ
 
-以前は、Azure Backup エージェントと Azure VM のバックアップの診断データは、"***V1 スキーマ***" と呼ばれるスキーマの Azure Diagnostics テーブルに送信されました。 その後、他のシナリオやワークロードをサポートするために新しい列が追加され、診断データは "***V2 スキーマ***" と呼ばれる新しいスキーマにプッシュされました。  
+以前は、Azure Backup エージェントと Azure VM のバックアップの診断データは、"***V1 スキーマ** _" と呼ばれるスキーマの Azure Diagnostics テーブルに送信されました。 その後、他のシナリオやワークロードをサポートするために新しい列が追加され、診断データは "_*_V2 スキーマ_**" と呼ばれる新しいスキーマにプッシュされました。  
 
 旧バージョンとの互換性の理由により、Azure Backup エージェントと Azure VM のバックアップの診断データは、現在、V1 スキーマと V2 スキーマの両方の Azure Diagnostics テーブルに送信されます (V1 スキーマは非推奨のパスになりました)。 ログ クエリで SchemaVersion_s=="V1" のレコードをフィルター処理すると、Log Analytics のどのレコードが V1 スキーマのものであるかを識別できます。
 
@@ -495,4 +496,4 @@ V1 スキーマは非推奨になる予定であるため、Azure Backup 診断�
 
 ## <a name="next-steps"></a>次のステップ
 
-データ モデルを確認した後、Azure Monitor ログで[カスタム クエリの作成](../azure-monitor/learn/tutorial-logs-dashboards.md)を開始して、独自のダッシュボードを構築することができます。
+データ モデルを確認した後、Azure Monitor ログで[カスタム クエリの作成](../azure-monitor/visualize/tutorial-logs-dashboards.md)を開始して、独自のダッシュボードを構築することができます。

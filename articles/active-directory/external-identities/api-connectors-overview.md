@@ -11,26 +11,25 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdb6e85b6d81de3d4b88ba315ddd35bd5b37ae7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a5563ff1f57f6b3684834a2488fc0665ac5eddd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88165211"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102610044"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-self-service-sign-up"></a>API コネクタを使用してセルフサービス サインアップをカスタマイズおよび拡張する 
 
 ## <a name="overview"></a>概要 
-開発者または IT 管理者は、API コネクタを使用すれば、Web API を活用して [セルフサービス サインアップ ユーザー フロー](self-service-sign-up-overview.md)を外部システムと統合することができます。 たとえば、API コネクタを使用して次のことを行うことができます。
+開発者または IT 管理者は、API コネクタを使用し、[セルフサービス サインアップ ユーザー フロー](self-service-sign-up-overview.md)と Web API を統合してサインアップ体験をカスタマイズしたり、外部システムと統合したりできます。 たとえば、API コネクタを使用すると、次のことができます。
 
-- [**カスタム承認ワークフローと統合します**](self-service-sign-up-add-approvals.md)。 アカウントの作成を管理するには、カスタム承認システムに接続します。
+- [**カスタム承認ワークフローと統合します**](self-service-sign-up-add-approvals.md)。 アカウントの作成を管理したり、制限したりするには、カスタム承認システムに接続します。
 - [**本人確認**](code-samples-self-service-sign-up.md#identity-verification)を実行します。 本人確認サービスを使用して、アカウント作成の決定のセキュリティ レベルを向上させます。
 - **ユーザー入力データの検証**。 不正な、または無効なユーザー データに対する検証を行います。 たとえば、ユーザーが提供したデータを外部データ ストア内の既存のデータまたは許可されている値の一覧と照らし合わせて検証することができます。 無効な場合は、有効なデータを提供するようユーザーに求めることも、ユーザーがサインアップ フローを続行できないようにすることもできます。
 - **ユーザー属性を上書する** ユーザーから収集された属性を再フォーマットし、それに値を割り当てます。 たとえば、ユーザーが名をすべて小文字または大文字で入力する場合に、名の最初の文字だけを大文字にするように書式設定できます。 
-<!-- - **Enrich user data**. Integrate with your external cloud systems that store user information to integrate them with the sign-up flow. For example, your API can receive the user's email address, query a CRM system, and return the user's loyalty number. Returned claims can be used to pre-fill form fields or return additional data in the application token.  -->
 - **カスタム ビジネス ロジックを実行します**。 ご利用のクラウド システム内で下流イベントをトリガーすれば、プッシュ通知の送信、企業データベースの更新、アクセス許可の管理、データベースの監査、およびその他のカスタム アクションの実行を行うことができます。
 
-API コネクタは、HTTP エンドポイントの URL と認証を定義することで、API エンドポイントを呼び出すために必要な情報を Azure Active Directory に提供します。 API コネクタを構成したら、それをユーザーフローの特定のステップに対して有効にすることができます。 サインアップ フローでユーザーがこのステップに達すると、API コネクタが呼び出され、HTTP POST 要求として具体化されて、ユーザー情報 ("クレーム") を JSON 本文のキーと値のペアとして送信します。 API 応答は、ユーザー フローの実行に影響を与える可能性があります。 たとえば、API 応答によって、ユーザーのサインアップがブロックされたり、ユーザーが情報の再入力を求められたり、ユーザー属性が上書きおよび追加されたりする可能性があります。
+API コネクタは、API 呼び出しに関する HTTP エンドポイントの URL と認証を定義することで、API エンドポイントを呼び出すために必要な情報を Azure Active Directory に提供します。 API コネクタを構成したら、それをユーザーフローの特定のステップに対して有効にすることができます。 サインアップ フローでユーザーがこのステップに達すると、API コネクタが呼び出され、HTTP POST 要求として具体化されて、ユーザー情報 ("クレーム") を JSON 本文のキーと値のペアとして送信します。 API 応答は、ユーザー フローの実行に影響を与える可能性があります。 たとえば、API 応答によって、ユーザーのサインアップがブロックされたり、ユーザーが情報の再入力を求められたり、ユーザー属性が上書きおよび追加されたりする可能性があります。
 
 ## <a name="where-you-can-enable-an-api-connector-in-a-user-flow"></a>ユーザー フロー内で API コネクタを有効にできる場所
 
@@ -40,26 +39,23 @@ API コネクタは、HTTP エンドポイントの URL と認証を定義する
 - ユーザーを作成する前
 
 > [!IMPORTANT]
-> どちらの場合も、API コネクタは、サインイン時ではなく、ユーザーの**サインアップ**時に呼び出されます。
+> どちらの場合も、API コネクタは、サインイン時ではなく、ユーザーの **サインアップ** 時に呼び出されます。
 
 ### <a name="after-signing-in-with-an-identity-provider"></a>ID プロバイダーを使用してサインインした後
 
-サインアップ プロセスのこのステップでの API コネクタは、ID プロバイダー (Google、Facebook、Azure AD) でユーザーが認証された直後に呼び出されます。 このステップは、***属性コレクション ページ*** (ユーザーに提示される、ユーザー属性を収集するためのフォーム) の前にあります。 このステップでお客様が有効する可能性がある API コネクタのシナリオの例を次に示します。
+サインアップ プロセスのこのステップでの API コネクタは、ID プロバイダー (Google、Facebook、Azure AD など) でユーザーが認証された直後に呼び出されます。 このステップは、***属性コレクション ページ*** (ユーザーに提示される、ユーザー属性を収集するためのフォーム) の前にあります。 ユーザーがローカル アカウントを使用して登録している場合、このステップは呼び出されません。 このステップでお客様が有効する可能性がある API コネクタのシナリオの例を次に示します。
 
 - ユーザーが入力した電子メールまたはフェデレーション ID を使用して、既存のシステム内でクレームを検索します。 既存のシステムからこれらのクレームを返し、属性コレクション ページを事前に入力して、それらをトークンで返すことができるようにします。
-- ユーザーが許可または拒否リストのいずれに含まれているかを検証し、彼らにサインアップ フローの続行を許可するかどうかを制御します。
+- ソーシャル ID に基づいて許可または禁止リストを実装します。
 
 ### <a name="before-creating-the-user"></a>ユーザーを作成する前
 
-サインアップ プロセスのこのステップでの API コネクタは、属性コレクション ページが含まれている場合、その後に呼び出されます。 このステップは、Azure AD でユーザー アカウントが作成される前に必ず呼び出されます。 お客様がサインアップ中にこのポイントで有効にする可能性があるシナリオの例を次に示します。
+サインアップ プロセスのこのステップでの API コネクタは、属性コレクション ページが含まれている場合、その後に呼び出されます。 このステップは、ユーザー アカウントが作成される前に必ず呼び出されます。 お客様がサインアップ中にこのポイントで有効にする可能性があるシナリオの例を次に示します。
 
 - ユーザー入力データを検証し、データの再送信をユーザーに求めます。
 - ユーザーが入力したデータに基づいてユーザーのサインアップをブロックします。
 - 本人確認を実行します。
 - 外部システムに対して、ユーザーに関する既存のデータをクエリして、それをアプリケーション トークンで返すか、Azure AD に格納します。
-
-<!-- > [!IMPORTANT]
-> If an invalid response is returned or another error occurs (for example, a network error), the user will be redirected to the app with the error re -->
 
 ## <a name="next-steps"></a>次のステップ
 - [API コネクタをユーザー フローに追加](self-service-sign-up-add-api-connector.md)する方法について説明します。

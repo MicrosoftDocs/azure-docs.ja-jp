@@ -16,10 +16,10 @@ ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 3f1dacb57931913edfb181f023bdf98717777d50
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97562244"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>チュートリアル:Azure App Service Web アプリへの Azure CDN の追加

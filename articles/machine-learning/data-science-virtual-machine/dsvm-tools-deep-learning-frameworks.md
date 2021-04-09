@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 3c720e2b033d07397f3b13c37e1b4e15251b0a17
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 0bfdea6c0bbbe40e4c72ab9da70a1b16d4bc4d3a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519492"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175670"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Azure Data Science VM 用のディープ ラーニングと AI のフレームワーク
 以下の一覧では、DSVM でのディープ ラーニング フレームワークを示します。
@@ -115,9 +115,9 @@ ms.locfileid: "100519492"
 
 | カテゴリ | 値 |
 | ------------- | ------------- |
-| サポートされるバージョン | 1.2.0 (Ubuntu 16.04)、1.4.0 (Ubuntu 18.04、Windows 2019) |
+| サポートされるバージョン | 1.2.0 (Ubuntu 16.04)、1.7.1 (Ubuntu 18.04、Windows 2019) |
 | サポートされている DSVM エディション      | Windows Server 2019<br>Ubuntu 18.04<br> Ubuntu 16.04 |
-| DSVM での構成/インストール方法  | [Python 3.5](dsvm-tools-languages.md#python-linux-edition) でインストールされます。 サンプルの Jupyter ノートブックが含まれており、サンプルは /dsvm/samples/pytorch にあります。 |
+| DSVM での構成/インストール方法  | py37_pytorch conda 環境で [Python 3.7](dsvm-tools-languages.md#python-linux-edition) にインストールします。 サンプルの Jupyter ノートブックが含まれており、サンプルは /dsvm/samples/pytorch にあります。 |
 | 実行方法      | ターミナル: 適切な環境をアクティブ化した後、Python を実行します。<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine): 接続した後、サンプル用の PyTorch ディレクトリを開きます。  |
 
 ## <a name="tensorflow"></a>[TensorFlow](https://www.tensorflow.org/)

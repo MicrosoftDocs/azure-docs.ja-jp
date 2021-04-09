@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 21fdd85c2b2a73ed5fd0bf65c5d745ac0cc97c9c
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: de1183c1364fcb7e5483559899c2939df15d26b6
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102200548"
+ms.locfileid: "102215784"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-partner-agreement-with-the-latest-apis"></a>最新の API を使用してプログラムで Microsoft Partner Agreement の Azure サブスクリプションを作成する
 
@@ -76,11 +76,37 @@ API の応答には、課金アカウントの一覧が含まれます。
 we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
 -->
 
-<!--
-### [Azure CLI](#tab/azure-cli-getBillingAccounts-MPA)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-getBillingAccounts-MPA)
 
-we're still working on enabling CLI SDK for billing APIs. Check back soon.
--->
+```azurecli
+> az billing account list
+```
+アクセスできる課金アカウントの一覧が返されます 
+
+```json
+[
+  {
+    "accountStatus": "Active",
+    "accountType": "Partner",
+    "agreementType": "MicrosoftPartnerAgreement",
+    "billingProfiles": {
+      "hasMoreResults": false,
+      "value": null
+    },
+    "departments": null,
+    "displayName": "Contoso",
+    "enrollmentAccounts": null,
+    "enrollmentDetails": null,
+    "hasReadAccess": true,
+    "id": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx",
+    "name": "99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx",
+    "soldTo": null,
+    "type": "Microsoft.Billing/billingAccounts"
+  }
+]
+```
+
+displayName プロパティを使用して、サブスクリプションを作成する課金アカウントを特定します。 アカウントの agreementType が MicrosoftPartnerAgreement であることを確認します。 アカウントの名前をコピーします。 たとえば、課金アカウント Contoso にサブスクリプションを作成する場合は、99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx をコピーします。 次の手順で使用できるように、値をどこかに貼り付けておきます。
 
 ---
 
@@ -133,11 +159,40 @@ API 応答には、課金アカウントの顧客のうち、Azure プランを�
 we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
 -->
 
-<!--
-### [Azure CLI](#tab/azure-cli-getCustomers)
 
-we're still working on enabling CLI SDK for billing APIs. Check back soon.
--->
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-getCustomers)
+
+```json
+> az billing customer list --account-name 99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx
+```
+
+API 応答には、課金アカウントの顧客のうち、Azure プランを利用している顧客が一覧表示されます。 これらの顧客のサブスクリプションを作成できます。
+
+```json
+[
+  {
+    "billingProfileDisplayName": "Fabrikam toys Billing Profile",
+    "billingProfileId": "providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/7d15644f-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "displayName": "Fabrikam toys",
+    "id": "providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/7d15644f-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "name": "acba85c9-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "resellers": null,
+    "type": "Microsoft.Billing/billingAccounts/customers"
+  },
+  {
+    "billingProfileDisplayName": "Contoso toys Billing Profile",
+    "billingProfileId": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/acba85c9-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "displayName": "Contoso toys",
+    "id": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/acba85c9-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "name": "d49c364c-f866-4cc2-a284-d89f369b7951",
+    "resellers": null,
+    "type": "Microsoft.Billing/billingAccounts/customers"
+  }
+]
+
+```
+
+`displayName` プロパティを使用して、サブスクリプションを作成する対象の顧客を指定します。 顧客の `id` をコピーします。 たとえば、`Fabrikam toys` のサブスクリプションを作成するには、`/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/7d15644f-xxxx-xxxx-xxxx-xxxxxxxxxxxx` をコピーします。 後の手順で使用するので、値をどこかに貼り付けておきます。
 
 ---
 
@@ -147,9 +202,9 @@ we're still working on enabling CLI SDK for billing APIs. Check back soon.
 
 CSP の 2 層モデルの間接プロバイダーである場合は、顧客のサブスクリプションを作成するときにリセラーを指定できます。
 
-2 番目の手順でコピーした `id` (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) を使用して次の要求を行い、顧客に対して利用できるすべてのリセラーの一覧を取得します。
-
 ### <a name="rest"></a>[REST](#tab/rest-getIndirectResellers)
+
+2 番目の手順でコピーした `id` (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) を使用して次の要求を行い、顧客に対して利用できるすべてのリセラーの一覧を取得します。
 
 ```json
 GET "https://management.azure.com/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx?$expand=resellers&api-version=2020-05-01"
@@ -185,11 +240,41 @@ API 応答には、顧客向けのリセラーが一覧表示されます。
 we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
 -->
 
-<!--
-### [Azure CLI](#tab/azure-cli-getIndirectResellers)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-getIndirectResellers)
 
-we're still working on enabling CLI SDK for billing APIs. Check back soon.
--->
+次の要求を行います。このとき、`name` は最初の手順でコピーしたもの (```99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx```)、顧客の `name` は 1 つ前の手順でコピーしたもの (```acba85c9-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) を、それぞれ使用します。
+
+```azurecli-interactive
+ > az billing customer show --expand "enabledAzurePlans,resellers" --account-name "99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx" --name "acba85c9-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+```
+
+API 応答には、顧客向けのリセラーが一覧表示されます。
+
+```json
+{
+  "billingProfileDisplayName": "Fabrikam toys Billing Profile",
+  "billingProfileId": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/YL4M-xxxx-xxx-xxx",
+  "displayName": "Fabrikam toys",
+  "enabledAzurePlans": [
+    {
+      "skuDescription": "Microsoft Azure Plan",
+      "skuId": "0001"
+    }
+  ],
+  "id": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2ed2c490-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "2ed2c490-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "resellers": [
+    {
+      "description": "Wingtip",
+      "resellerId": "3xxxxx"
+    }
+  ],
+  "type": "Microsoft.Billing/billingAccounts/customers"
+}
+
+```
+
+`description` プロパティを使用して、サブスクリプションに関連付けられているリセラーを特定します。 リセラーの `resellerId` をコピーします。 たとえば、`Wingtip` を関連付けるには、`3xxxxx` をコピーします。 次の手順で使用できるように、値をどこかに貼り付けておきます。
 
 ---
 

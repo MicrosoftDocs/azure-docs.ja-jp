@@ -7,10 +7,10 @@ ms.date: 02/27/2020
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 48f01058d8e879a9610e76638215214c059982fa
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99594216"
 ---
 # <a name="set-up-remote-rendering-for-unity"></a>Unity 向けに Remote Rendering を設定する

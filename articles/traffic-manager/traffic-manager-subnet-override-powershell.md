@@ -9,10 +9,10 @@ ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
 ms.openlocfilehash: 7dd7f43044a9643eb7e9d5296dfb209e425d5fb6
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102504782"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Azure Powershell を使用した Traffic Manager サブネットのオーバーライド

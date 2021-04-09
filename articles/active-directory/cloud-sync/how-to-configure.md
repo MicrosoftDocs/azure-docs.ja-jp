@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ffdd27b67a122f82cc5fdb5568f11c85387955e8
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98660798"
 ---
 # <a name="create-a-new-configuration-for-azure-ad-connect-cloud-sync"></a>Azure AD Connect クラウド同期の新しい構成を作成する
@@ -68,7 +68,7 @@ Azure AD Connect クラウド同期を使用すると、これらの変更を 1 
 ## <a name="accidental-deletions"></a>誤削除
 誤削除機能は、構成の変更とオンプレミス ディレクトリの変更を誤って行うことで多くのユーザーやグループに影響を与えることがないように保護するために設計されています。  この機能では次のことができます。
 
-- 自動的に誤って削除されないように保護する機能を構成する。 
+- 誤って削除しないように自動的に保護する機能を構成します。 
 - 構成を有効にするオブジェクトの数 (しきい値) を設定する 
 - このシナリオのために、問題の同期ジョブが隔離されたときに電子メールで通知を受け取ることができるように、通知の電子メールアドレスを設定する 
 

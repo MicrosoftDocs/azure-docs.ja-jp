@@ -1,7 +1,7 @@
 ---
 title: Bing Entity Search API を使用したカスタム スキルの例
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search の AI で強化されたインデックス作成パイプラインにマッピングされたカスタム スキルで、Bing Entity Search サービスを使用する方法を紹介します。
+description: Azure コグニティブ検索の AI で強化されたインデックス作成パイプラインにマッピングされたカスタム スキルで、Bing Entity Search サービスを使用する方法を紹介します。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5755e14e53d359fd8b322939bf1325d21536d593
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89020186"
 ---
-# <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>例:Bing Entity Search API を使用してカスタム スキルを作成する
+# <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>例: Bing Entity Search API を使用してカスタム スキルを作成する
 
-この例では、Web API カスタム スキルを作成する方法について説明します。 このスキルでは、場所、著名人、組織を受け入れ、それらの説明を返します。 この例では、[Azure Functions](https://azure.microsoft.com/services/functions/)を使用して、カスタム スキル インターフェイスを実装できるように [Bing Entity Search API](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) をラップします。
+この例では、Web API カスタム スキルを作成する方法について説明します。 このスキルでは、場所、著名人、組織を受け入れ、それらの説明を返します。 この例では、[Azure 関数](https://azure.microsoft.com/services/functions/)を使用して、カスタム スキル インターフェイスを実装できるように [Bing Entity Search API](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) をラップします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,25 +30,25 @@ ms.locfileid: "89020186"
 
 ## <a name="create-an-azure-function"></a>Azure Function の作成
 
-この例では Azure Functions を使用して Web API をホストしていますが、必須ではありません。  [コグニティブ スキルのインターフェイス要件](cognitive-search-custom-skill-interface.md)を満たしていれば、どのような方法を使用してもかまいません。 ただし、Azure Functions を使用すると、カスタム スキルを簡単に作成できます。
+この例では Azure 関数を使用して Web API をホストしていますが、必須ではありません。  [コグニティブ スキルのインターフェイス要件](cognitive-search-custom-skill-interface.md)を満たしていれば、どのような方法を使用してもかまいません。 ただし、Azure Functions を使用すると、カスタム スキルを簡単に作成できます。
 
-### <a name="create-a-function-app"></a>Function App を作成する
+### <a name="create-a-function-app"></a>関数アプリの作成
 
-1. Visual Studio で、[ファイル] メニューから **[新規]**  >  **[プロジェクト]** の順に選択します。
+1. Visual Studio で、 [ファイル] メニューから **[新規]**  >  **[プロジェクト]** の順に選択します。
 
-1. [新しいプロジェクト] ダイアログで、 **[インストール済み]** を選択し、 **[Visual C#]**  >  **[クラウド]** の順に展開して **[Azure Functions]** を選択します。プロジェクトの名前を入力して、 **[OK]** を選択します。 Functions アプリ名は、C# 名前空間として有効である必要があります。 そのため、アンダースコア、ハイフン、その他の英数字以外の文字は使用しないでください。
+1. [新しいプロジェクト] ダイアログで、**[インストール済み]** を選択し、**[Visual C#]** > **[クラウド]** の順に展開して **[Azure Functions]** を選択します。プロジェクトの名前を入力して、**[OK]** を選択します。 関数アプリ名は、C# 名前空間として有効である必要があります。そのため、アンダースコア、ハイフン、その他の英数字以外の文字は使用しないでください。
 
 1. **[Azure Functions v2 (.NET Core)]** を選択します。 バージョン 1 でも同様の手順を実行できますが、以下に記述したコードは、v2 テンプレートに基づいています。
 
 1. 種類として **[HTTP Trigger]\(HTTP トリガー\)** を選択します。
 
-1. ストレージ アカウントについては、この Functions にはストレージが不要なので、 **[なし]** を選択できます。
+1. ストレージ アカウントについては、この関数にはストレージが不要なので、**[なし]** を選択できます。
 
-1. **[OK]** を選択して、Functions プロジェクトと、HTTP でトリガーされる Functions を作成します。
+1. **[OK]** を選択して、関数プロジェクトと、HTTP でトリガーされる関数を作成します。
 
 ### <a name="modify-the-code-to-call-the-bing-entity-search-service"></a>Bing Entity Search サービスを呼び出すコードを変更する
 
-Visual Studio によってプロジェクトが作成されます。その中には、選択した Functions の種類のスケルトン コードが含まれているクラスがあります。 メソッドの *FunctionName* 属性は、Functions の名前を設定します *HttpTrigger* 属性は、Functions が HTTP 要求によってトリガーされることを指定します。
+Visual Studio によってプロジェクトが作成されます。その中には、選択した関数の種類のスケルトン コードが含まれているクラスがあります。 メソッドの *FunctionName* 属性は、関数の名前を設定します。 *HttpTrigger* 属性は、関数が HTTP 要求によってトリガーされることを指定します。
 
 次に、*Function1.cs* ファイルのすべての内容を次のコードに置き換えます。
 
@@ -318,9 +318,9 @@ Bing Entity Search API にサインアップしたときに取得したキーに
 
 もちろん、ファイル名を `Function1.cs` から `BingEntitySearch.cs` に変更できます。
 
-## <a name="test-the-function-from-visual-studio"></a>Visual Studio から Functions をテストする
+## <a name="test-the-function-from-visual-studio"></a>Visual Studio から関数をテストする
 
-**F5** キーを押して、プログラムを実行し、Functions の動作をテストします。 ここでは、次の Functions を使用して、2 つのエンティティを検索します。 Postman または Fiddler を使用して、以下に示すような呼び出しを発行します。
+**F5** キーを押して、プログラムを実行し、関数の動作をテストします。 ここでは、次の関数を使用して、2 つのエンティティを検索します。 Postman または Fiddler を使用して、以下に示すような呼び出しを発行します。
 
 ```http
 POST https://localhost:7071/api/EntitySearch
@@ -372,23 +372,23 @@ POST https://localhost:7071/api/EntitySearch
 }
 ```
 
-## <a name="publish-the-function-to-azure"></a>Azure に Functions を発行する
+## <a name="publish-the-function-to-azure"></a>Azure に関数を発行する
 
-Functions の動作に満足したら、発行できます。
+関数の動作に満足したら、発行できます。
 
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、 **[発行]** を選択します。 **[新規作成]**  >  **[発行]** の順に選択します。
+1. **ソリューション エクスプローラー** で、プロジェクトを右クリックし、 **[発行]** を選択します。 **[新規作成]**  >  **[発行]** の順に選択します。
 
 1. まだ Visual Studio を Azure アカウントに接続していない場合は、 **[アカウントの追加]** を選択します。
 
 1. 画面の指示に従います。 使用するアプリ サービス、Azure サブスクリプション、リソース グループ、ホスティング プラン、ストレージ アカウントに対して一意の名前を指定するように求められます。 リソース グループ、ホスティング プラン、ストレージ アカウントをまだ作成していない場合は新しく作成できます。 終わったら、 **[作成]** を選択します。
 
-1. デプロイが完了したら、サイトの URL を書き留めておきます。 これが Azure における Functions アプリのアドレスになります。 
+1. デプロイが完了したら、サイトの URL を書き留めておきます。 これが Azure における関数アプリのアドレスになります。 
 
-1. [Azure portal](https://portal.azure.com) でリソース グループに移動し、発行した `EntitySearch` Functions を探します。 **[管理]** セクションに [ホスト キー] が表示されます。 "*既定*" のホスト キーの **[コピー]** アイコンを選択します。  
+1. [Azure portal](https://portal.azure.com) でリソース グループに移動し、発行した `EntitySearch` 関数を探します。 **[管理]** セクションに [ホスト キー] が表示されます。 "*既定*" のホスト キーの **[コピー]** アイコンを選択します。  
 
-## <a name="test-the-function-in-azure"></a>Azure で Functions をテストする
+## <a name="test-the-function-in-azure"></a>Azure で関数をテストする
 
-既定のホスト キーが用意できたので、次のように Functions をテストします。
+既定のホスト キーが用意できたので、次のように関数をテストします。
 
 ```http
 POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?code=[enter default host key here]
@@ -416,7 +416,7 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 }
 ```
 
-この例では、以前にローカル環境で Functions を実行したときと同じ結果が得られるはずです。
+この例では、以前にローカル環境で関数を実行したときと同じ結果が得られるはずです。
 
 ## <a name="connect-to-your-pipeline"></a>パイプラインに接続する
 新しいカスタム スキルが作成できたので、スキルセットに追加できます。 次の例では、スキルを呼び出して、ドキュメント内の組織に説明を追加する方法を示しています (これは場所および人の操作にも拡張できる可能性があります)。 `[your-entity-search-app-name]` をご自分のアプリの名前に置き換えます。

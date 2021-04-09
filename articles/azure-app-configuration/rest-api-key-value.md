@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
 ms.openlocfilehash: 95081d6f8c2770d01f7836e08b6851860bf47ba8
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96932559"
 ---
 # <a name="key-values"></a>キー値
@@ -178,13 +178,13 @@ GET /kv?key={key}&label={label}&api-version={api-version}
 |`label=prod*`|**prod** で始まるラベルに一致します|
 |`label=prod,test`|**prod** または **test** というラベルに一致します (CSV の上限は 5 つ)|
 
-"**_予約文字_* _"
+***予約文字***
 
-`_`, `\`, `,`
+`*`, `\`, `,`
 
 予約文字が値の一部である場合は、`\{Reserved Character}` を使用してエスケープする必要があります。 予約されていない文字もエスケープできます。
 
-"***フィルター検証** _"
+***フィルター検証***
 
 フィルター検証エラーが発生した場合、応答は HTTP `400` で、次のようなエラー詳細が含まれます。
 
@@ -203,7 +203,7 @@ Content-Type: application/problem+json; charset=utf-8
 }
 ```
 
-"_ *例**"
+**使用例**
 
 - All
 

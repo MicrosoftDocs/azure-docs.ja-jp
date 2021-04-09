@@ -12,10 +12,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c60cecb9d6bfeeefc0569a1a57185d13f0c6442f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94953119"
 ---
 # <a name="social-accounts-claims-transformations"></a>ソーシャル アカウント要求変換
@@ -41,7 +41,7 @@ Azure Active Directory B2C (Azure AD B2C) では、ソーシャル アカウン�
 
 Azure Active Directory の呼び出しで使用できる、ユーザーの alternativeSecurityId プロパティの JSON 表現を作成します。 詳細については、「[AlternativeSecurityId](/graph/api/resources/alternativesecurityid)のスキーマ」を参照してください。
 
-| アイテム | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | key | string | ソーシャル ID プロバイダーによって使われる一意のユーザー識別子を指定する ClaimType。 |
 | InputClaim | identityProvider | string | ソーシャル アカウント ID プロバイダー名(facebook.com など) を指定する ClaimType。 |
@@ -73,7 +73,7 @@ Azure Active Directory の呼び出しで使用できる、ユーザーの alter
 
 `AlternativeSecurityId` を `alternativeSecurityIdCollection` 要求に追加します。
 
-| アイテム | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | item | string | 出力要求に追加される ClaimType。 |
 | InputClaim | collection | alternativeSecurityIdCollection | 要求変換で使用される ClaimTypes (ポリシーで使用可能な場合)。 指定されている場合は、要求変換によってコレクションの最後に `item` が追加されます。 |
@@ -110,7 +110,7 @@ Azure Active Directory の呼び出しで使用できる、ユーザーの alter
 
 発行者の一覧を **alternativeSecurityIdCollection** 要求から新しい **stringCollection** 要求に返します。
 
-| アイテム | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | alternativeSecurityIdCollection | alternativeSecurityIdCollection | ID プロバイダー (発行者) の一覧を取得するために使用される ClaimType。 |
 | OutputClaim | identityProvidersCollection | stringCollection | この ClaimsTransformation が呼び出された後に生成される ClaimTypes。 alternativeSecurityIdCollection 入力要求に関連付けられている ID プロバイダーの一覧。 |
@@ -137,7 +137,7 @@ Azure Active Directory の呼び出しで使用できる、ユーザーの alter
 
 **AlternativeSecurityId** を **alternativeSecurityIdCollection** 要求から削除します。
 
-| アイテム | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | identityProvider | string | コレクションから削除する ID プロバイダー名を含む ClaimType。 |
 | InputClaim | collection | alternativeSecurityIdCollection | 要求変換で使用される ClaimTypes。 要求変換により、コレクションから identityProvider が削除されます。 |

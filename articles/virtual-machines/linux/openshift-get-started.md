@@ -3,18 +3,19 @@ title: Azure の OpenShift の概要
 description: Azure の OpenShift の概要について説明します。
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 989c67d0d1b1cd8257da089ec9c31f247228018e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aba01fc2317372438bc0d93a6618d518ab03ed0d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87367947"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672308"
 ---
 # <a name="openshift-in-azure"></a>Azure の OpenShift
 
@@ -26,7 +27,7 @@ OpenShift には、コンテナーのオーケストレーションと管理の�
 - 容易なデプロイとスケール変更。
 - チームおよびアプリケーション向けの長期的なライフサイクル メンテナンス。
 
-複数のバージョンの OpenShift を使用できます。  これらのバージョンのうち、現時点でお客様が Azure にデプロイできるのは OpenShift Container Platform と OKD (旧 OpenShift Origin) の 2 つのみです。
+複数のバージョンの OpenShift を使用できます。  これらのバージョンのうち、現時点でお客様が Azure にデプロイできるのは、OpenShift Container Platform と OKD (旧 OpenShift Origin) の 2 つのみです。
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 

@@ -4,10 +4,10 @@ description: ブラウザーを使用して仮想マシンに接続する方法�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 352fc5fd3ff53a00d9f62966ecf21417ad898706
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87288061"
 ---
 # <a name="connect-to-your-virtual-machines-through-a-browser"></a>ブラウザーを使用して仮想マシンに接続する 
@@ -18,13 +18,13 @@ DevTest Labs は [Azure Bastion](../bastion/index.yml) と統合されたこと�
 
 ## <a name="create-a-lab-virtual-machine"></a>ラボ仮想マシンの作成
 
-まず、Bastion が構成されている仮想ネットワーク内にラボ仮想マシンを作成する必要があります。 AzureBastionSubnet ではなく、作成した 2 番目の**サブネット**を選択します。 仮想マシンの作成中に **[詳細設定]** タブに移動することによって仮想ネットワークを選択できます。
+まず、Bastion が構成されている仮想ネットワーク内にラボ仮想マシンを作成する必要があります。 AzureBastionSubnet ではなく、作成した 2 番目の **サブネット** を選択します。 仮想マシンの作成中に **[詳細設定]** タブに移動することによって仮想ネットワークを選択できます。
 
 ![仮想マシンの作成](./media/connect-virtual-machine-through-browser/create-virtual-machine.png)
 
 ## <a name="launch-virtual-machine-in-a-browser"></a>ブラウザーでの仮想マシンの起動
 
-仮想マシンを作成したら、 *[ブラウザー接続]* ボタンをクリックして、マシンのユーザー名とパスワードを入力すると、ブラウザーで起動できます。  
+仮想マシンを作成したら、*[ブラウザー接続]* ボタンをクリックして、マシンのユーザー名とパスワードを入力すると、ブラウザーで起動できます。  
 
 ![ブラウザーでの起動](./media/connect-virtual-machine-through-browser/browser-connect.png)
 

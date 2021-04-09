@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスターの静的パブリッ
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 58cda3f2bfc76f00deaa85347c059040e39f9ef5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: fa6572ddc694cb892f48cb3e618c176f087524f6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729015"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102506567"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の静的パブリック IP アドレスを使用してイングレス コントローラーを作成する
 
@@ -50,7 +50,7 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 ```
 
 > [!NOTE]
-> 上記のコマンドでは、AKS クラスターを削除すると削除される IP アドレスが作成されます。 または、AKS クラスターとは別に管理できる別のリソース グループに IP アドレスを作成することもできます。 別のリソース グループに IP アドレスを作成する場合は、AKS クラスターによって使用されるサービス プリンシパルで、アクセス許可が他のリソース グループ ("*ネットワーク共同作成者*" など) に委任されていることを確認します。 詳細については、「[Azure Kubernetes Service (AKS) ロード バランサーで静的パブリック IP アドレスと DNS ラベルを使用する][aks-static-ip]」を参照してください。
+> 上記のコマンドでは、AKS クラスターを削除すると削除される IP アドレスが作成されます。 または、AKS クラスターとは別に管理できる別のリソース グループに IP アドレスを作成することもできます。 別のリソース グループに IP アドレスを作成する場合は、AKS クラスターによって使用されるクラスター ID で、アクセス許可が他のリソース グループ ("*ネットワーク共同作成者*" など) に委任されていることを確認します。 詳細については、「[Azure Kubernetes Service (AKS) ロード バランサーで静的パブリック IP アドレスと DNS ラベルを使用する][aks-static-ip]」を参照してください。
 
 次に、Helm を使用して *nginx-ingress* グラフをデプロイします。 追加された冗長性については、NGINX イングレス コントローラーの 2 つのレプリカが `--set controller.replicaCount` パラメーターでデプロイされています。 イングレス コントローラーのレプリカの実行から十分にメリットを享受するには、AKS クラスターに複数のノードが存在していることを確認します。
 

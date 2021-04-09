@@ -4,10 +4,10 @@ description: Azure Resource Manager テンプレートでテナントのスコ�
 ms.topic: conceptual
 ms.date: 01/13/2021
 ms.openlocfilehash: fd5a9ae60c578a3be7f70d82baae0a15e406b9db
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99491488"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>ARM テンプレートを使用したテナントのデプロイ

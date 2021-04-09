@@ -20,17 +20,17 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 376cece922ca424ec78011224852b1fa5499da16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88934839"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Azure Cognitive Search の OData 地理空間関数 - `geo.distance` および `geo.intersects`
 
 Azure Cognitive Search では、[OData フィルター式](query-odata-filter-orderby-syntax.md)で `geo.distance` および `geo.intersects` 関数を介した地理空間クエリがサポートされています。 `geo.distance` 関数では、フィルターの一部として渡される 2 つのポイント (1 つはフィールドまたは範囲変数、もう 1 つは定数) の間の距離がキロメートル単位で返されます。 `geo.intersects` 関数からは、指定されたポイントが指定された多角形の内部にある場合、`true` が返されます。ポイントはフィールドまたは範囲変数として、多角形は定数として指定されて、フィルターの一部として渡されます。
 
-また、[**$orderby** パラメーター](search-query-odata-orderby.md)内で `geo.distance` 関数を使用することで、指定されたポイントからの距離によって検索結果を並べ替えることもできます。 **$orderby** の `geo.distance` の構文は **$filter** の場合と同じになります。 **$orderby** で `geo.distance` を使用するとき、それが適用されるフィールドは `Edm.GeographyPoint` 型にする必要があり、また**並べ替え可能**である必要があります。
+また、[**$orderby** パラメーター](search-query-odata-orderby.md)内で `geo.distance` 関数を使用することで、指定されたポイントからの距離によって検索結果を並べ替えることもできます。 **$orderby** の `geo.distance` の構文は **$filter** の場合と同じになります。 **$orderby** で `geo.distance` を使用するとき、それが適用されるフィールドは `Edm.GeographyPoint` 型にする必要があり、また **並べ替え可能** である必要があります。
 
 > [!NOTE]
 > **$orderby** パラメーターで `geo.distance` を使用する場合、関数に渡すフィールドには 1 つの geo ポイントのみを含める必要があります。 言い換えると、`Collection(Edm.GeographyPoint)` ではなく `Edm.GeographyPoint` 型である必要があります。 Azure Cognitive Search のコレクション フィールドに対して並べ替えることはできません。

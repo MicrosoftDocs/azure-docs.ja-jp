@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 12/10/2018
 ms.author: allensu
 ms.openlocfilehash: 3bb42bf1a1a7e80a141d2476ead62a29f8c7188c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86201568"
 ---
 # <a name="azure-powershell-samples-for-load-balancer"></a>Load Balancer に関する Azure PowerShell のサンプル

@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.openlocfilehash: f679d6fbab57bcbcccc09b722f6b2f670df49eb2
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97516587"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での単純なクエリ構文
 
 Azure Cognitive Search は、2 つの Lucene ベースのクエリ言語を実装します。[Simple Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) と [Lucene Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) です。 単純なパーサーは、より柔軟であり、完全に構成されていない場合でも要求の解釈が試みられます。 この柔軟性により、Azure Cognitive Search のクエリの既定値になっています。
 
-単純な構文は、[ドキュメントの検索 (REST API)](/rest/api/searchservice/search-documents) 要求の **`search`** パラメーターで渡されるクエリ式に使用されます。同じ要求の [ **`$filter`**](search-filters.md) および [ **`$orderby`** ](search-query-odata-orderby.md) に使用される [OData 構文](query-odata-filter-orderby-syntax.md)と混同しないでください。 OData パラメーターにはさまざまな構文があり、クエリの作成や文字列のエスケープなどを行うための規則があります。
+単純な構文は、[ドキュメントの検索 (REST API)](/rest/api/searchservice/search-documents) 要求の **`search`** パラメーターで渡されるクエリ式に使用されます。同じ要求の [ **`$filter`**](search-filters.md) および [ **`$orderby`**](search-query-odata-orderby.md) に使用される [OData 構文](query-odata-filter-orderby-syntax.md)と混同しないでください。 OData パラメーターにはさまざまな構文があり、クエリの作成や文字列のエスケープなどを行うための規則があります。
 
 単純なパーサーは [Apache Lucene Simple Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) クラスに基づいていますが、Cognitive Search における実装では、あいまい検索が除外されています。 [あいまい検索](search-query-fuzzy.md)を使用する必要がある場合は、代わりに代替の[完全な Lucene クエリ構文](query-lucene-syntax.md)をお勧めします。
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/05/2021
 ms.author: alkohli
 ms.openlocfilehash: 27ca190f3bad7f75175e5206d48e13dae1f5687e
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97913328"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro-fpga"></a>Azure portal を使用して Azure Stack Edge Pro FPGA のユーザーを管理する

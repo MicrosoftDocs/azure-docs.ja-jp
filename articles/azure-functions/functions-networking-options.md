@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: 2c3f207e98f574bb6c43f87d34b0a404e263e83c
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: f826c947b1e47c1c996a8e9102492e85adafa326
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806993"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215155"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -87,7 +87,7 @@ Azure Functions の仮想ネットワーク統合では、App Service Web アプ
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>お使いのストレージ アカウントを仮想ネットワークに制限する 
 
-関数アプリを作成するときは、BLOB、Queue、および Table Storage をサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。  このストレージ アカウントは、サービス エンドポイントまたはプライベート エンドポイントで保護されているものに置き換えることができます。  現在、この機能は、Windows Premium プランでのみ機能します。  プライベート ネットワークに制限されたストレージ アカウントを使用して関数を設定するには、次のようにします。
+関数アプリを作成するときは、BLOB、Queue、および Table Storage をサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 このストレージ アカウントは、サービス エンドポイントまたはプライベート エンドポイントで保護されているものに置き換えることができます。 この機能は現在、Standard および Premium が含まれている仮想ネットワークでサポートされているすべての SKU に対して機能します。ただし、仮想ネットワークが Premium SKU に対してのみ使用可能なフレックス スタンプは除きます。 プライベート ネットワークに制限されたストレージ アカウントを使用して関数を設定するには、次のようにします。
 
 1. サービス エンドポイントが有効になっていないストレージ アカウントを使用して関数を作成します。
 1. ご使用の仮想ネットワークに接続するように関数を構成します。
@@ -96,7 +96,7 @@ Azure Functions の仮想ネットワーク統合では、App Service Web アプ
 1. ストレージ アカウントのサービス エンドポイントまたはプライベート エンドポイントを有効にします。  
     * プライベート エンドポイント接続を使用する場合、ストレージ アカウントには、`file` と `blob` のサブリソース用のプライベート エンドポイントが必要です。  Durable Functions のような特定の機能を使用する場合は、プライベート エンドポイント接続を介して `queue` と `table` にアクセスできる必要もあります。
     * サービス エンドポイントを使用する場合は、ストレージ アカウントに対して関数アプリ専用のサブネットを有効にします。
-1. (省略可能) 関数アプリのストレージ アカウントから、セキュリティで保護されたストレージ アカウントとファイル共有に、ファイルと BLOB の内容をコピーします。
+1. 関数アプリのストレージ アカウントから、セキュリティで保護されたストレージ アカウントとファイル共有に、ファイルと BLOB の内容をコピーします。
 1. このストレージ アカウントの接続文字列をコピーします。
 1. 関数アプリの **[構成]** の下の **[アプリケーションの設定]** を次のように更新します。
     - `AzureWebJobsStorage` をセキュリティで保護されたストレージ アカウントの接続文字列にします。
@@ -121,7 +121,7 @@ Azure Key Vault 参照を使用すると、コードの変更を必要とせず�
 現時点では、次の 2 つの方法のいずれかで、仮想ネットワーク内から非 HTTP トリガー関数を使用できます。
 
 + Premium プランで関数アプリを実行し、仮想ネットワーク トリガーのサポートを有効にする。
-+ App Service プランまたは App Service 環境で関数アプリを実行する。
++ App Service プランまたは App Service Environment で関数アプリを実行する。
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>仮想ネットワーク トリガーを使用した Premium プラン
 

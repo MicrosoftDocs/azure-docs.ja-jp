@@ -3,16 +3,16 @@ title: Eav4 シリーズおよび Easv4 シリーズ
 description: Eav4 および Easv4 シリーズ VM の仕様。
 author: migerdes
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: e6a4098d0b3da30448f5dd23a709b13ffebae032
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: ec320d7eeebbe5eab14061cd5c194f15acf5638a
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100554907"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102557932"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 および Easv4 シリーズ
 

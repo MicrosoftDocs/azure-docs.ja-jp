@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.openlocfilehash: 98d8395236bf955eed88f36c03c96981fa0e4b6b
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98745636"
 ---
 # <a name="example-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>例:Azure Machine Learning を使用してカスタム スキルを作成およびデプロイする 

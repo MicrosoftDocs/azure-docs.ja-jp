@@ -1,25 +1,26 @@
 ---
 title: NVIDIA GPU ドライバー拡張機能 - Azure Linux VM
 description: Linux を実行中の N シリーズのコンピューティング VM に NVIDIA GPU ドライバーをインストールする Microsoft Azure 拡張機能です。
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: vermagit
 manager: gwallace
 editor: ''
 ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.subservice: extensions
+ms.service: virtual-machines
+ms.subservice: hpc
+ms.collection: linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/21/2021
 ms.author: amverma
-ms.openlocfilehash: a241086e6a590096cf40cbdb7a84838b14889f73
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: fa2b82f3246fd87830010f572ba23aa2df075053
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678290"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102566228"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Linux 用の NVIDIA GPU ドライバー拡張機能
 

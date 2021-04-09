@@ -4,10 +4,10 @@ description: リソースのコンプライアンス違反には多くの理由�
 ms.date: 09/30/2020
 ms.topic: how-to
 ms.openlocfilehash: a8168bf22aceaf5cbdec4b1346801aa62b7aa4ee
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102439835"
 ---
 # <a name="determine-causes-of-non-compliance"></a>コンプライアンス違反の原因の特定

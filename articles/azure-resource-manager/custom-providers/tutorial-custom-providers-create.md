@@ -7,10 +7,10 @@ ms.date: 06/19/2019
 ms.author: jobreen
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 4f425af7681b666b42fbcc70ac0e4c31d9df6d49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87503754"
 ---
 # <a name="create-and-use-a-custom-provider"></a>カスタム プロバイダーを作成して使用する
@@ -160,7 +160,7 @@ az resource create --is-full-object \
 パラメーター | 必須 | 説明
 ---|---|---
 *is-full-object* | はい | properties オブジェクトに、場所、タグ、SKU、プランなどの他のオプションが含まれるかどうかを示します。
-*id* | はい | カスタム リソースのリソース ID。 この ID は、カスタム プロバイダーのリソース ID の拡張情報です。
+*ID* | はい | カスタム リソースのリソース ID。 この ID は、カスタム プロバイダーのリソース ID の拡張情報です。
 *properties* | はい | エンドポイントに送信される要求本文。
 
 #### <a name="delete-a-custom-resource"></a>カスタム リソースを削除する
@@ -171,7 +171,7 @@ az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resource
 
 パラメーター | 必須 | 説明
 ---|---|---
-*id* | はい | カスタム リソースのリソース ID。 この ID は、カスタム プロバイダーのリソース ID の拡張情報です。
+*ID* | はい | カスタム リソースのリソース ID。 この ID は、カスタム プロバイダーのリソース ID の拡張情報です。
 
 #### <a name="retrieve-a-custom-resource"></a>カスタム リソースの取得
 
@@ -181,7 +181,7 @@ az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGr
 
 パラメーター | 必須 | 説明
 ---|---|---
-*id* | はい | カスタム リソースのリソース ID。 この ID は、カスタム プロバイダーのリソース ID の拡張情報です。
+*ID* | はい | カスタム リソースのリソース ID。 この ID は、カスタム プロバイダーのリソース ID の拡張情報です。
 
 # <a name="template"></a>[テンプレート](#tab/template)
 

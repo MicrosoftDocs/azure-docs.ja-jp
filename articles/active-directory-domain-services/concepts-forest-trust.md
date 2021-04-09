@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: 5c72ab7d085de558ee95f3c602ccc6be6160b322
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96620207"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services のリソース フォレストに対する信頼関係のしくみ
@@ -280,7 +280,7 @@ LSA セキュリティ サブシステムでは、オブジェクトへのアク
 
 リソース フォレストの詳細については、[Azure AD DS でのフォレストの信頼のしくみ][concepts-trust]に関するページを参照してください
 
-リソース フォレストを使用するマネージド ドメインの作成を開始する場合は、[Azure AD DS マネージド ドメインの作成と構成][tutorial-create-advanced]に関するページを参照してください。 その後、[オンプレミス ドメインに対して出力方向のフォレストの信頼を作成する][create-forest-trust]ことができます。
+リソース フォレストを使用するマネージド ドメインの作成を開始する場合は、[Azure AD DS マネージド ドメインの作成と構成][tutorial-create-advanced]に関するページを参照してください。 その後、[オンプレミス ドメインに対して出力方向のフォレストの信頼を作成][create-forest-trust]できます。
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

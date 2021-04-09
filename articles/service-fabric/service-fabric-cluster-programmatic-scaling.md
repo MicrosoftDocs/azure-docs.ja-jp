@@ -7,10 +7,10 @@ ms.date: 01/23/2018
 ms.author: mikerou
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9f39bd874c1f5a1be42ca1c88e6ea2fe8df22f87
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94648210"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>プログラムによる Service Fabric クラスターのスケール 

@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09c86e23379cf9ccecf77d88a99ad6b3a7019a87
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: f6858c7350e6c72a096b2f2bd5f4a4ff606bf023
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100006991"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651359"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker をデプロイする
 
-Azure Automation のユーザー Hybrid Runbook Worker 機能を使用すると、Azure または Azure 以外のマシン ([Azure Arc 対応サーバー](../azure-arc/servers/overview.md)に登録されているサーバーを含む) 上で Runbook を直接実行することができます。 ロールをホストしているマシンまたはサーバーからは、環境内のリソースに対して Runbook を直接実行して、それらのローカル リソースを管理することができます。
+Azure Automation のユーザー Hybrid Runbook Worker 機能を使用すると、Azure または Azure 以外のマシン ([Azure Arc 対応サーバー](../azure-arc/servers/overview.md)に登録されているサーバーを含む) 上で Runbook を直接実行することができます。 ロールをホストしているマシンまたはサーバーで、環境内のリソースに対して Runbook を直接実行して、それらのローカル リソースを管理できます。
 
 Azure Automation によって Runbook が格納および管理された後、1 つ以上の指定されたマシンに配信されます。 この記事では、Windows マシンにユーザー Hybrid Runbook Worker をデプロイする方法、worker を削除する方法、および Hybrid Runbook Worker グループを削除する方法について説明します。
 
@@ -26,13 +26,13 @@ Runbook Worker が正常にデプロイされたら、「[Hybrid Runbook Worker 
 
 ### <a name="a-log-analytics-workspace"></a>Log Analytics ワークスペース
 
-Hybrid Runbook Worker ロールでは、Azure Monitor Log Analytics ワークスペースに依存してロールがインストールおよび構成されます。 [Azure Resource Manager](../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace)、[PowerShell](../azure-monitor/scripts/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)、[Azure portal](../azure-monitor/learn/quick-create-workspace.md) のいずれかを使用して作成できます。
+Hybrid Runbook Worker ロールでは、Azure Monitor Log Analytics ワークスペースに依存してロールがインストールおよび構成されます。 [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace)、[PowerShell](../azure-monitor/logs/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)、[Azure portal](../azure-monitor/logs/quick-create-workspace.md) のいずれかを使用して作成できます。
 
-Azure Monitor Log Analytics ワークスペースがない場合は、ワークスペースを作成する前に、[Azure Monitor ログの設計ガイダンス](../azure-monitor/platform/design-logs-deployment.md)を確認してください。
+Azure Monitor Log Analytics ワークスペースがない場合は、ワークスペースを作成する前に、[Azure Monitor ログの設計ガイダンス](../azure-monitor/logs/design-logs-deployment.md)を確認してください。
 
 ### <a name="log-analytics-agent"></a>Log Analytics エージェント
 
-Hybrid Runbook Worker ロールには、サポートされている Windows オペレーティング システム用の [Log Analytics エージェント](../azure-monitor/platform/log-analytics-agent.md)が必要です。 Azure の外部でホストされているサーバーまたはマシンの場合、[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用すれば Log Analytics エージェントをインストールできます。
+Hybrid Runbook Worker ロールには、サポートされている Windows オペレーティング システム用の [Log Analytics エージェント](../azure-monitor/agents/log-analytics-agent.md)が必要です。 Azure の外部でホストされているサーバーまたはマシンの場合、[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用すれば Log Analytics エージェントをインストールできます。
 
 ### <a name="supported-windows-operating-system"></a>サポートされている Windows オペレーティング システム
 

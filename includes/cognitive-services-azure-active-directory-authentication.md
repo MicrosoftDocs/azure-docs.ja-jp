@@ -4,17 +4,17 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: 1085daca153431a28fdcc2583d0e31308214bf91
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 2d186463f340be14113228baa583fdcf6ff55401
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95561177"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102510859"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Azure Active Directory を使用して認証する
 
 > [!IMPORTANT]
-> 1. 現時点では、Computer Vision API、Face API、Text Analytics API、Immersive Reader、Form Recognizer、Anomaly Detector、Bing Custom Search を除くすべての Bing **のみ** において、Azure Active Directory (AAD) を使用した認証がサポートされています。
+> 1. 現時点では、Computer Vision API、Face API、Text Analytics API、Immersive Reader、Form Recognizer、Anomaly Detector、QnA Maker、および Bing Custom Search を除くすべての Bing サービスにおいて **のみ**、Azure Active Directory (AAD) を使用した認証がサポートされています。
 > 2. AAD 認証は常に、Azure リソースのカスタム サブドメイン名と共に使用される必要があります。 [リージョン エンドポイント](../articles/cognitive-services/cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)では、AAD 認証はサポートされません。
 
 前のセクションでは、Azure Cognitive Services に対して単一サービスまたはマルチサービスのサブスクリプション キーを使用して認証する方法を説明しました。 これらのキーを使用すると、開発を迅速かつ簡単に開始できますが、Azure ロールベースのアクセス制御 (Azure RBAC) を必要とするより複雑なシナリオでは不十分です。 Azure Active Directory (AAD) を使用して認証を行うために何が必要なのかを確認しましょう。
@@ -25,13 +25,13 @@ ms.locfileid: "95561177"
 
 最初の手順で、カスタム サブドメインを作成します。 カスタム サブドメイン名のない既存の Cognitive Services リソースを使用する場合は、[Cognitive Services カスタム サブドメイン](../articles/cognitive-services/cognitive-services-custom-subdomains.md#how-does-this-impact-existing-resources)に関する記事の手順に従って、リソースのカスタム サブドメインを有効にします。
 
-1. まず、Azure Cloud Shell を開きます。 [サブスクリプションを選択](/powershell/module/az.accounts/set-azcontext?view=azps-3.3.0)します。
+1. まず、Azure Cloud Shell を開きます。 [サブスクリプションを選択](/powershell/module/az.accounts/set-azcontext)します。
 
    ```powershell-interactive
    Set-AzContext -SubscriptionName <SubscriptionName>
    ```
 
-2. 次に、カスタム サブドメインを使用して [Cognitive Services リソースを作成](/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0)します。 サブドメイン名は、グローバルに一意である必要があり、"."、"!"、"," などの特殊文字を含めることはできません。
+2. 次に、カスタム サブドメインを使用して [Cognitive Services リソースを作成](/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount)します。 サブドメイン名は、グローバルに一意である必要があり、"."、"!"、"," などの特殊文字を含めることはできません。
 
    ```powershell-interactive
    $account = New-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <ACCOUNT_NAME> -Type <ACCOUNT_TYPE> -SkuName <SUBSCRIPTION_TYPE> -Location <REGION> -CustomSubdomainName <UNIQUE_SUBDOMAIN>
@@ -47,7 +47,7 @@ ms.locfileid: "95561177"
 > [!NOTE]
 > Azure ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。
 
-1. まず、[AAD アプリケーション](/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0)を登録してみましょう。
+1. まず、[AAD アプリケーション](/powershell/module/Az.Resources/New-AzADApplication)を登録してみましょう。
 
    ```powershell-interactive
    $SecureStringPassword = ConvertTo-SecureString -String <YOUR_PASSWORD> -AsPlainText -Force
@@ -57,7 +57,7 @@ ms.locfileid: "95561177"
 
    次の手順では、**ApplicationId** が必要になります。
 
-2. 次に、AAD アプリケーションの[サービス プリンシパルを作成](/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0)する必要があります。
+2. 次に、AAD アプリケーションの[サービス プリンシパルを作成](/powershell/module/az.resources/new-azadserviceprincipal)する必要があります。
 
    ```powershell-interactive
    New-AzADServicePrincipal -ApplicationId <APPLICATION_ID>
@@ -66,7 +66,7 @@ ms.locfileid: "95561177"
    >[!NOTE]
    > Azure portal でアプリケーションを登録したら、この手順は完了です。
 
-3. 最後の手順では、(リソースにスコープが設定された) サービス プリンシパルに ["Cognitive Services ユーザー" ロールを割り当て](/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0)ます。 ロールを割り当てて、このリソースにサービス プリンシパル アクセス権を付与します。 同じサービス プリンシパル アクセスをサブスクリプション内の複数のリソースに対して許可できます。
+3. 最後の手順では、(リソースにスコープが設定された) サービス プリンシパルに ["Cognitive Services ユーザー" ロールを割り当て](/powershell/module/az.Resources/New-azRoleAssignment)ます。 ロールを割り当てて、このリソースにサービス プリンシパル アクセス権を付与します。 同じサービス プリンシパル アクセスをサブスクリプション内の複数のリソースに対して許可できます。
    >[!NOTE]
    > アプリケーションの ObjectId ではなく、サービス プリンシパルの ObjectId が使用されます。
    > ACCOUNT_ID は、作成した Cognitive Services アカウントの Azure リソース ID になります。 Azure portal でリソースの "プロパティ" から Azure リソース ID を検索できます。

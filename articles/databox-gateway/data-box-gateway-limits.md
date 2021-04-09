@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/20/2020
 ms.author: alkohli
 ms.openlocfilehash: 15b01f92fe0d39d099c10c7c086790a4dbb91379
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96581200"
 ---
 # <a name="azure-data-box-gateway-limits"></a>Azure Data Box Gateway の制限

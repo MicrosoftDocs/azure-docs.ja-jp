@@ -9,10 +9,10 @@ ms.date: 04/11/2019
 ms.author: asrastog
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 90b7b6aebfce1c37bef76d371d829048d755e39e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92147263"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける
@@ -39,7 +39,7 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
    ![ストアド プロシージャを作成する](./media/iot-hub-how-to-order-connection-state-events/create-stored-procedure.png)
 
-2. ストアド プロシージャ ID に **LatestDeviceConnectionState** を入力し、**ストアド プロシージャの本文**に次のコードを貼り付けます。 このコードでストアド プロシージャ本文のすべての既存のコードを置き換える必要があることに注意してください。 このコードでは、デバイス ID ごとに 1 行を維持し、最も大きなシーケンス番号を識別することによってそのデバイス ID の最新の接続状態を記録します。
+2. ストアド プロシージャ ID に **LatestDeviceConnectionState** を入力し、**ストアド プロシージャの本文** に次のコードを貼り付けます。 このコードでストアド プロシージャ本文のすべての既存のコードを置き換える必要があることに注意してください。 このコードでは、デバイス ID ごとに 1 行を維持し、最も大きなシーケンス番号を識別することによってそのデバイス ID の最新の接続状態を記録します。
 
     ```javascript
     // SAMPLE STORED PROCEDURE
@@ -257,7 +257,7 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
 
 1. Azure Portal で、お使いの IoT ハブに移動します。
 
-2. **イベント**を選択します。
+2. **イベント** を選択します。
 
    ![Event Grid の詳細を表示する](./media/iot-hub-how-to-order-connection-state-events/event-grid.png)
 
@@ -323,7 +323,7 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
    ![アプリケーションの実行](./media/iot-hub-how-to-order-connection-state-events/raspmsg.png)
 
-   **[Stop]\(停止\)** をクリックしてシミュレーターを停止して、**デバイス切断**イベントをトリガーします。
+   **[Stop]\(停止\)** をクリックしてシミュレーターを停止して、**デバイス切断** イベントをトリガーします。
 
 サンプル アプリケーションを実行した結果、センサー データが収集され、IoT Hub に送信されました。
 

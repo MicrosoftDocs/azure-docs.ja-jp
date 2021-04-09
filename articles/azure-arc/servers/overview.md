@@ -4,12 +4,12 @@ description: Azure Arc 対応サーバーを使用して、Azure の外部でホ
 keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新管理, 変更追跡, インベントリ, Runbook, Python, グラフィカル, ハイブリッド
 ms.date: 02/18/2021
 ms.topic: overview
-ms.openlocfilehash: 5692dfaceb15086b04ee951b8ecdf88f73c7d122
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 863cab073018c5a592cba6e94451a9af038ebd52
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686225"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023335"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーとは
 
@@ -23,7 +23,7 @@ Azure の外部でホストされているハイブリッド マシンでこの�
 
 - Azure 仮想マシンのポリシーの割り当てと同じエクスペリエンスを使用して [Azure Policy のゲスト構成](../../governance/policy/concepts/guest-configuration.md)を割り当てます。 今日、ほとんどのゲスト構成ポリシーでは、構成は適用されず、マシン内の設定の監査のみが行われます。 Arc 対応サーバーで Azure Policy ゲスト構成ポリシーを使用するコストについては、Azure Policy の[価格ガイド](https://azure.microsoft.com/pricing/details/azure-policy/)を参照してください。
 
-- 監視対象サーバー上にインストールされているソフトウェア、Microsoft サービス、Windows レジストリとファイル、および Linux デーモンの構成の変更について、Azure Automation の[変更履歴とインベントリ](../../automation/change-tracking/overview.md)を使用してレポートします。
+- [Azure Defender for servers](../../security-center/defender-for-servers-introduction.md) が有効になっているサーバーに対し、Azure Automation の[変更履歴とインベントリ](../../automation/change-tracking/overview.md)および [Azure Security Center のファイルの整合性の監視](../../security-center/security-center-file-integrity-monitoring.md)を使用して、監視対象サーバー上にインストールされているソフトウェア、Microsoft サービス、Windows レジストリとファイル、および Linux デーモンの構成の変更について、レポートします。
 
 - [Azure Monitor for VMs](../../azure-monitor/vm/vminsights-overview.md) を使用して、接続されているマシンのゲスト オペレーティング システムのパフォーマンスを監視します。また、アプリケーション コンポーネントを検出してそのプロセスや、アプリケーションが通信する他のリソースとの依存関係を監視します。
 

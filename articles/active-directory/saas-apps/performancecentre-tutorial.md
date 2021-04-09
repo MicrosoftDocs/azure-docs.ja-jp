@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 79255b98312b16fa21e07abad701e08578c6ca89
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92515510"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>チュートリアル: Azure Active Directory と PerformanceCentre の統合
@@ -41,7 +41,7 @@ PerformanceCentre と Azure AD の統合を構成するには、次のものが�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* PerformanceCentre では、 **SP** Initiated SSO がサポートされます
+* PerformanceCentre では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-performancecentre-from-the-gallery"></a>ギャラリーからの PerformanceCentre の追加
 
@@ -61,13 +61,13 @@ Azure AD への PerformanceCentre の統合を構成するには、ギャラリ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **PerformanceCentre** 」と入力し、結果パネルで **PerformanceCentre** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**PerformanceCentre**」と入力し、結果パネルで **PerformanceCentre** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの PerformanceCentre](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、PerformanceCentre で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、PerformanceCentre で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと PerformanceCentre 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 PerformanceCentre で Azure AD のシングル サインオンを構成し、テストするには、次の要素を完了する必要があります。
@@ -162,7 +162,7 @@ PerformanceCentre で Azure AD シングル サインオンを構成するには
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

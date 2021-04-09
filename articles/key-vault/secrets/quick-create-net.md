@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d6f1746eee101a1dcf030e980c8a6469147a0166
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a82c2cdf7084b31eb6ba861e48ecffb81e6d1363
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362201"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102453701"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-net-sdk-v4"></a>クイックスタート: .NET 用 Azure Key Vault シークレット クライアント ライブラリ (SDK v4)
 
@@ -21,7 +21,7 @@ ms.locfileid: "100362201"
 
 Key Vault クライアント ライブラリのリソースは、次のとおりです。
 
-[API リファレンスのドキュメント](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet&preserve-view=true) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
+[API リファレンスのドキュメント](/dotnet/api/azure.security.keyvault.secrets) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
 Key Vault とシークレットの詳細については、以下を参照してください。
 - [Key Vault の概要](../general/overview.md)

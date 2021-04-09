@@ -11,17 +11,17 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 8ac69e6961af4991b250320b7af7cf5a345d3efb
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 24c0d57490ecd039039992310f93ca3e21c47b3b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526468"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103563489"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 
 
-このガイドでは、[Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) を使用して、自動機械学習の実験のさまざまな構成設定を定義する方法について説明します。 自動機械学習は、アルゴリズムとハイパーパラメーターを自動的に選択して、デプロイできる状態のモデルを生成します。 自動機械学習の実験の構成に使用できるオプションはいくつかあります。
+このガイドでは、[Azure Machine Learning SDK](/python/api/overview/azure/ml/intro) を使用して、自動機械学習の実験のさまざまな構成設定を定義する方法について説明します。 自動機械学習は、アルゴリズムとハイパーパラメーターを自動的に選択して、デプロイできる状態のモデルを生成します。 自動機械学習の実験の構成に使用できるオプションはいくつかあります。
 
 自動機械学習の実験の例を確認するには、[自動機械学習を使用した分類モデルのトレーニングのチュートリアル](tutorial-auto-train-models.md)に関するページか、「[クラウドで自動機械学習を使用してモデルをトレーニングする](how-to-auto-train-remote.md)」をご覧ください。
 
@@ -46,7 +46,7 @@ ms.locfileid: "99526468"
     SDK をインストールするには、次のいずれかを行います。 
     * コンピューティング インスタンスを作成します。これにより、SDK が自動的にインストールされ、ML ワークフロー用に事前構成されます。 詳細については、「[Azure Machine Learning コンピューティング インスタンスの作成と管理](how-to-create-manage-compute-instance.md)」を参照してください。 
 
-    * SDK の[既定のインストール](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py#default-install)が含まれる、[`automl` パッケージを自分でインストール](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)します。
+    * SDK の[既定のインストール](/python/api/overview/azure/ml/install#default-install)が含まれる、[`automl` パッケージを自分でインストール](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)します。
 
 ## <a name="select-your-experiment-type"></a>実験の種類を選択する
 
@@ -69,7 +69,7 @@ automl_config = AutoMLConfig(task = "classification")
 - データは表形式である必要があります。
 - 予測する値、ターゲット列は、データ内にある必要があります。
 
-**リモート実験の場合**、トレーニング データにリモート コンピューティングからアクセスできる必要があります。 AutoML により、リモート コンピューティングでの作業時に [Azure Machine Learning TabularDatasets](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) のみが受け入れられます。 
+**リモート実験の場合**、トレーニング データにリモート コンピューティングからアクセスできる必要があります。 AutoML により、リモート コンピューティングでの作業時に [Azure Machine Learning TabularDatasets](/python/api/azureml-core/azureml.data.tabulardataset) のみが受け入れられます。 
 
 Azure Machine Learning のデータセットによって、次の機能が公開されます。
 
@@ -396,9 +396,29 @@ run = experiment.submit(automl_config, show_output=True)
 > 自動 ML のアルゴリズムには特有のランダム性があり、推奨モデルの最終的なメトリック スコア (精度など) にわずかな変動が生じる可能性があります。 自動 ML によって、トレーニングとテストの分割、トレーニングと検証の分割、クロス検証などのデータに対する操作も必要に応じて実行されます。 そのため、同じ構成設定とプライマリ メトリックを使用して実験を複数回実行した場合、これらの要因により、各実験の最終的なメトリック スコアに変動が見られる可能性があります。 
 
 ## <a name="register-and-deploy-models"></a>モデルを登録してデプロイする
+モデルは登録できます。そのため、後で使用するためにモデルに戻ることができます。 
 
-Web サービスにデプロイするためのモデルをダウンロードまたは登録する方法の詳細については、[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)に関するページを参照してください。
+自動化された ML 実行からモデルを登録するには、[`register_model()`](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) メソッドを使用します。 
 
+```Python
+
+best_run, fitted_model = run.get_output()
+print(fitted_model.steps)
+
+model_name = best_run.properties['model_name']
+description = 'AutoML forecast example'
+tags = None
+
+model = remote_run.register_model(model_name = model_name, 
+                                  description = description, 
+                                  tags = tags)
+```
+
+
+デプロイ構成を作成し、登録済みのモデルを Web サービスにデプロイする方法の詳細については、[モデルをデプロイする方法と場所](how-to-deploy-and-where.md?tabs=python#define-a-deployment-configuration)に関するページを参照してください。
+
+> [!TIP]
+> 登録済みのモデルの場合、[Azure Machine Learning スタジオ](https://ml.azure.com)を使用してワンクリックでデプロイできます。 [登録済みのモデルをスタジオからデプロイする](how-to-use-automated-ml-for-ml-models.md#deploy-your-model)方法に関するページを参照してください。 
 <a name="explain"></a>
 
 ## <a name="model-interpretability"></a>モデルの解釈可能性
@@ -412,111 +432,6 @@ Web サービスにデプロイするためのモデルをダウンロードま�
 > [!NOTE]
 > 現在、ForecastTCN モデルは説明クライアントではサポートされていません。 このモデルが最適なモデルとして返された場合、説明ダッシュボードは返されず、オンデマンドでの説明の実行はサポートされません。
 
-## <a name="troubleshooting"></a>トラブルシューティング
-
-* **`AutoML` 依存関係の新しいバージョンへの最近のアップグレードで互換性がなくなります**:SDK のバージョン 1.13.0 以降、前のパッケージでピン留めした旧バージョンと今回ピン留めする新バージョンとの間に互換性がないことに起因し、古い SDK でモデルが読み込まれません。 次のようなエラーが表示されます。
-  * モジュールが見つかりません:例: `No module named 'sklearn.decomposition._truncated_svd`、
-  * インポート エラー:例: `ImportError: cannot import name 'RollingOriginValidator'`、
-  * 属性エラー:例: `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
-  
-  この問題を回避するには、`AutoML` SDK トレーニングのバージョンに応じて次の 2 つの手順のいずれかを行います。
-    * `AutoML` SDK トレーニングのバージョンが 1.13.0 より新しい場合、`pandas == 0.25.1` と `scikit-learn==0.22.1` が必要です。 バージョンが一致しない場合、下に示すように、scikit-learn と pandas を適切なバージョンにアップグレードします。
-      
-      ```bash
-         pip install --upgrade pandas==0.25.1
-         pip install --upgrade scikit-learn==0.22.1
-      ```
-      
-    * `AutoML` SDK トレーニングのバージョンが 1.12.0 以前の場合、`pandas == 0.23.4` と `sckit-learn==0.20.3` が必要です。 バージョンが一致しない場合、下に示すように、scikit-learn と pandas を適切なバージョンにダウングレードします。
-  
-      ```bash
-        pip install --upgrade pandas==0.23.4
-        pip install --upgrade scikit-learn==0.20.3
-      ```
-
-* **失敗したデプロイ**:SDK のバージョン 1.18.0 以降の場合、デプロイ用に作成された基本イメージが、次のエラーで失敗することがあります: "インポート エラー: `werkzeug` から名前 `cached_property` をインポートできません"。 
-
-  この問題を回避するには、次の手順を実行します。
-  1. モデル パッケージをダウンロードする
-  2. パッケージの解凍
-  3. 解凍した資産を使用してデプロイする
-
-* **R2 スコアの予測は常にゼロになります**。この問題は、指定されたトレーニング データに、最後の `n_cv_splits` + `forecasting_horizon` データポイントと同じ値を含む時系列がある場合に発生します。 時系列でこのパターンが想定される場合は、プライマリ メトリックを正規化された二乗平均平方根誤差に切り替えることができます。
- 
-* **TensorFlow**: SDK のバージョン 1.5.0 以降の自動機械学習では、TensorFlow モデルは既定ではインストールされません。 自動 ML 実験で TensorFlow をインストールして使用するには、CondaDependecies を使用して tensorflow==1.12.0 をインストールしてください。 
- 
-   ```python
-   from azureml.core.runconfig import RunConfiguration
-   from azureml.core.conda_dependencies import CondaDependencies
-   run_config = RunConfiguration()
-   run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['tensorflow==1.12.0'])
-  ```
-
-* **実験グラフ**:自動化された ML の実験のイテレーションで示される二項分類グラフ (精度と再現率、ROC、ゲイン カーブなど) は、4/12 以降のユーザー インターフェイスでは正しくレンダリングされません。 グラフのプロットは現在、逆の結果を示しており、パフォーマンスが良いモデルほど低い結果で示されています。 解決策を調査中です。
-
-* **Databricks での自動化された機械学習の実行をキャンセルする**:自動化された機械学習機能を Azure Databricks で使用しているときに、実行をキャンセルして新しい実験の実行を開始するには、Azure Databricks クラスターを再起動してください。
-
-* **Databricks での自動化された機械学習の 10 回を超える繰り返し**:自動化された機械学習の設定で、繰り返し回数が 10 回を超えている場合は、実行を送信するときに `show_output` を `False` に設定します。
-
-* **Azure Machine Learning SDK 用の Databricks ウィジェットと自動化された機械学習**:Azure Machine Learning SDK ウィジェットは、Databricks ノートブックではサポートされていません。この理由は、ノートブックが HTML ウィジェットを解析できないからです。 Azure Databricks のノートブック セルで次の Python コードを使用することにより、portal でウィジェットを表示することができます。
-
-    ```
-    displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
-    ```
-* **automl_setup が失敗する**: 
-    * Windows の場合は、Anaconda プロンプトから automl_setup を実行します。 このリンクを使用して、[Miniconda をインストール](https://docs.conda.io/en/latest/miniconda.html)します。
-    * `conda info` コマンドを実行して、Conda 64 ビット (32 ビットではなく) がインストールされていることを確認します。 `platform` は、Windows の場合は `win-64`、Mac の場合は `osx-64` にする必要があります。
-    * Conda 4.4.10 以降がインストールされていることを確認します。 バージョンは、コマンド `conda -V` を使用して確認できます。 以前のバージョンがインストールされている場合は、`conda update conda` コマンドを使用して更新できます。
-    * Linux - `gcc: error trying to exec 'cc1plus'`
-      *  `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` エラーが発生した場合は、コマンド `sudo apt-get install build-essential` を使用して build essential をインストールします。
-      * 新しい名前を最初のパラメーターとして automl_setup に渡して、新しい Conda 環境を作成します。 `conda env list` を使用して既存の Conda 環境を表示し、`conda env remove -n <environmentname>` を使用してそれらを削除します。
-      
-* **automl_setup_linux が失敗する**:Ubuntu Linux で automl_setup_linus.sh がエラーで失敗する場合: `unable to execute 'gcc': No such file or directory`-
-  1. 送信ポート 53 および 80 が有効になっていることを確認します。 Azure VM でこれを行うには、Azure portal で VM を選択し、[ネットワーク] をクリックします。
-  2. `sudo apt-get update` コマンドを実行します
-  3. `sudo apt-get install build-essential --fix-missing` コマンドを実行します
-  4. `automl_setup_linux.sh` をもう一度実行します
-
-* **configuration.ipynb が失敗する**:
-  * ローカル Conda の場合は、最初に automl_setup が正常に実行されていることを確実にします。
-  * subscription_id が正しいことを確認します。 Azure portal で [すべてのサービス]、[サブスクリプション] の順に選択して、subscription_id を見つけます。 subscription_id 値に文字 "<" と ">" を含めることはできません。 たとえば、`subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` は有効な形式です。
-  * 共同作成者または所有者がサブスクリプションにアクセスできることを確認します。
-  * リージョンがサポートされているリージョン (`eastus2`、`eastus`、`westcentralus`、`southeastasia`、`westeurope`、`australiaeast`、`westus2`、`southcentralus`) のいずれかであることを確認します。
-  * Azure portal を使用してリージョンにアクセスできることを確認します。
-  
-* **`import AutoMLConfig` が失敗する**:自動機械学習バージョン 1.0.76 にはパッケージの変更があり、新しいバージョンに更新する前に、以前のバージョンをアンインストールする必要があります。 v1.0.76 より前の SDK バージョンから v1.0.76 以降にアップグレードした後で `ImportError: cannot import name AutoMLConfig` が発生した場合は、`pip uninstall azureml-train automl` を実行してから `pip install azureml-train-auotml` を実行してエラーを解決します。 これは、automl_setup.cmd スクリプトによって自動的に行われます。 
-
-* **workspace.from_config が失敗する**:呼び出し ws = Workspace.from_config()' が失敗する場合 -
-  1. configuration.ipynb ノートブックが正常に実行されていることを確認します。
-  2. ノートブックが、`configuration.ipynb` が実行されたフォルダーの配下ではないフォルダーから実行されている場合は、フォルダー aml_config と、それに含まれているファイル config.json を新しいフォルダーにコピーします。 Workspace.from_config により、ノートブック フォルダーまたはその親フォルダーの config.json が読み取られます。
-  3. 新しいサブスクリプション、リソース グループ、ワークスペース、またはリージョンが使用されている場合は、もう一度 `configuration.ipynb` ノートブックを実行してください。 指定されたサブスクリプションの指定されたリソース グループにワークスペースが既に存在する場合にのみ、config.json を直接変更することができます。
-  4. リージョンを変更する場合は、ワークスペース、リソース グループ、またはサブスクリプションを変更します。 指定されたリージョンが異なる場合でも、ワークスペースが既に存在する場合は、`Workspace.create` によりワークスペースが作成または更新されることはありません。
-  
-* **サンプル ノートブックが失敗する**:プロパティ、メソッド、またはライブラリが存在しないというエラーでサンプル ノートブックが失敗する場合:
-  * Jupyter Notebook で正しいカーネルが選択されていることを確認します。 カーネルがノートブック ページの右上に表示されます。 既定値は azure_automl です。 カーネルはノートブックの一部として保存されます。 そのため、新しい Conda 環境に切り替える場合は、ノートブックで新しいカーネルを選択する必要があります。
-      * Azure Notebooks の場合は、Python 3.6 にする必要があります。 
-      * ローカルの Conda 環境の場合は、automl_setup で指定した Conda 環境名にする必要があります。
-  * ノートブックが、使用している SDK のバージョンに対応していることを確認します。 SDK のバージョンは、Jupyter Notebook のセルで `azureml.core.VERSION` を実行することで確認できます。 GitHub から以前のバージョンのサンプル ノートブックをダウンロードするには、[`Branch`] ボタンをクリックし、[`Tags`] タブを選択して、バージョンを選択します。
-
-* **`import numpy` が Windows で失敗する**:一部の Windows 環境で、Python の最新バージョン 3.6.8 を使用した NumPy の読み込みでエラーが発生することがあります。 この問題が発生した場合は、Python バージョン 3.6.7 を試してください。
-
-* **`import numpy` が失敗する**:自動 ML Conda 環境で TensorFlow のバージョンを確認します。 サポートされているバージョンは、1.13 未満です。 バージョンが 1.13 以降の場合は、環境から TensorFlow をアンインストールします。 TensorFlow のバージョンを確認し、アンインストールするには、次のようにします。
-  1. コマンド シェルを起動し、自動 ML パッケージがインストールされている Conda 環境をアクティブにします。
-  2. `pip freeze` を入力して `tensorflow`を探します。見つかった場合は、表示されるバージョンは 1.13 未満になるはずです。
-  3. 表示されているバージョンがサポート対象のバージョンでない場合は、コマンド シェルで `pip uninstall tensorflow` を入力し、確認のために「y」を入力します。
-  
- * **実行が `jwt.exceptions.DecodeError` で失敗する**:正確なエラー メッセージ: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()`。
-
-    SDK のバージョンが 1.17.0 以前の場合、インストールによってサポートされていないバージョンの PyJWT がインストールされる可能性があります。 自動 ML Conda 環境で PyJWT のバージョンを確認します。 サポートされているバージョンは、2.0.0 未満です。 PyJWT のバージョンは次のようにして確認できます。
-    1. コマンド シェルを起動し、自動 ML パッケージがインストールされている Conda 環境をアクティブにします。
-    2. `pip freeze` を入力して `PyJWT`を探します。見つかった場合は、表示されるバージョンは 2.0.0 未満になるはずです。
-
-    表示されているバージョンがサポートされているバージョンでない場合:
-    1. 最新バージョンの AutoML SDK へのアップグレードを検討してください: `pip install -U azureml-sdk[automl]`。
-    2. それが実行できない場合は、次のように環境から PyJWT をアンインストールし、適切なバージョンをインストールします。
-        - コマンド シェルで `pip uninstall PyJWT` を実行し、確認のために「`y`」を入力します。
-        - `pip install 'PyJWT<2.0.0'` を使用してインストールします。
-
 ## <a name="next-steps"></a>次のステップ
 
 + [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)についてさらに詳しく学習する。
@@ -524,3 +439,5 @@ Web サービスにデプロイするためのモデルをダウンロードま�
 + [自動機械学習を使用して回帰モデルをトレーニングする方法](tutorial-auto-train-models.md)または[リモート リソースに対して自動機械学習を使用してトレーニングする方法](how-to-auto-train-remote.md)についてさらに詳しく学習する。
 
 + [多数モデル ソリューション アクセラレータ](https://aka.ms/many-models)で AutoML を使用して複数のモデルをトレーニングする方法について学習する。
+
++ [自動 ML 実験のトラブルシューティング](how-to-troubleshoot-auto-ml.md)。 

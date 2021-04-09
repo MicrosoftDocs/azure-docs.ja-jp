@@ -11,10 +11,10 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick; azure-synapse
 ms.openlocfilehash: e137611809e2d2beefecfeaea11b4295bf6ba141
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98678493"
 ---
 # <a name="performance-tune-with-materialized-views"></a>マテリアライズドビューを使用したパフォーマンスのチューニング
@@ -31,9 +31,9 @@ Azure Synapse の SQL プールでは、標準ビューとマテリアライズ�
 
 標準ビューの要件のほとんどは、マテリアライズドビューにも当てはまります。 マテリアライズドビューの構文とその他の要件の詳細については、[CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関するページを参照してください
 
-| 比較                     | ビュー                                         | マテリアライズドビュー
+| 比較                     | 表示                                         | 具体化されたビュー
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
-|ビューの表示                 | SQL プールに格納されます。              | SQL プールに格納されます。
+|定義の表示                 | SQL プールに格納されます。              | SQL プールに格納されます。
 |ビューの内容                    | ビューが使用されるたびに生成されます。   | ビューの作成中に前処理されて SQL プールに格納されます。 基になるテーブルにデータが追加されると更新されます。
 |データ更新                    | 常時更新                               | 常時更新
 |複雑なクエリからビューのデータを取得する速度     | 遅い                                         | 速い  

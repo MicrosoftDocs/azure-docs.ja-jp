@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
 ms.openlocfilehash: 748eaca93eaee5ec858ea43261995111cef8ceda
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98676853"
 ---
 # <a name="data-storage"></a>データ ストレージ
@@ -36,7 +36,7 @@ Azure Time Series Insights Gen2 環境を作成するときには、次のオプ
 [![ストレージの概要](media/concepts-storage/pipeline-to-storage.png)](media/concepts-storage/pipeline-to-storage.png#lightbox)
 
 > [!WARNING]
-> コールド ストア データが存在する Azure Blob Storage アカウントの所有者は、アカウント内のすべてのデータに対するフルアクセス権を持っています。 このアクセスには、書き込みおよび削除のアクセス許可が含まれます。 Azure Time Series Insights Gen2 によって書き込まれたデータを編集または削除しないでください。データが失われる原因になる可能性があります。
+> コールド ストア データが存在する Azure Blob ストレージ アカウントの所有者は、アカウント内のすべてのデータに対するフルアクセス権を持っています。 このアクセスには、書き込みおよび削除のアクセス許可が含まれます。 Azure Time Series Insights Gen2 によって書き込まれたデータを編集または削除しないでください。データが失われる原因になる可能性があります。
 
 ## <a name="data-availability"></a>データの可用性
 

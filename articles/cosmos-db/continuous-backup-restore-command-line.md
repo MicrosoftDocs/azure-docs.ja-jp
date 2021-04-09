@@ -8,10 +8,10 @@ ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 9ea71dae746ac423e7b17b6235b4d5cd3e143cd7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100377331"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-cli"></a>継続的バックアップとポイントインタイム リストア (プレビュー) を構成および管理する - Azure CLI を使用
@@ -22,7 +22,7 @@ ms.locfileid: "100377331"
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-Azure Cosmos DB のポイントインタイム リストア機能 (プレビュー) は、コンテナー内の誤った変更からの回復、削除されたアカウント、データベース、またはコンテナーの復元、任意のリージョン (バックアップが存在していた場所) への復元に役立ちます。 継続的バックアップ モードにより、過去 30 日以内の任意の時点に復元できます。
+Azure Cosmos DB の特定の時点への復元機能 (プレビュー) を使用すると、コンテナー内で誤って行われた変更から回復し、削除されたアカウント、データベース、またはコンテナーの復元や、任意のリージョン (バックアップが存在していた場所) への復元が行えます。 継続的バックアップ モードにより、過去 30 日以内の任意の時点に復元できます。
 
 この記事では、Azure CLI を使用して、継続的バックアップとデータの復元を行うアカウントをプロビジョニングする方法について説明します。
 

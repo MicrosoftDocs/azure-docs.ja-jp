@@ -9,10 +9,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
 ms.openlocfilehash: 23dfee7b78f2606c54525391e1260af69a9b0779
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90898401"
 ---
 # <a name="score-vowpal-wabbit-model"></a>Vowpal Wabbit モデルのスコアリング
@@ -39,7 +39,7 @@ ms.locfileid: "90898401"
 
 6. **Specify file type (ファイルの種類を指定)** : トレーニング データで使用する形式を指定します。 Vowpal Wabbit では、次の 2 つの入力ファイル形式がサポートされています。  
 
-   - **VW** は、Vowpal Wabbit によって使用される内部形式を表します。 詳細については、[Vowpal Wabbit wiki ページ](https://github.com/JohnLangford/vowpal_wabbit/wiki/Input-format)を参照してください。 
+   - **[VW]** は、Vowpal Wabbit によって使用される内部形式を表します。 詳細については、[Vowpal Wabbit wiki ページ](https://github.com/JohnLangford/vowpal_wabbit/wiki/Input-format)を参照してください。 
    - **SVMLight** は、他のいくつかの機械学習ツールで使用される形式です。 
 
 7. スコアと一緒にラベルを出力する場合は、 **[ラベルを含む余分な列を含める]** オプションを選択します。  
@@ -76,9 +76,9 @@ Vowpal Wabbit には、アルゴリズムを選択およびチューニングす
 
 -   [https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments) で指定された入力/出力オプション  
   
-     これらのプロパティは、モジュールによってあらかじめ自動的に構成されています。  
+     これらのプロパティは、モジュールによってあらかじめ自動的に構成されます。  
   
--   また、複数の出力を生成したり、複数の入力を受け取ったりするオプションは許可されません。 これらには、 *`--cbt`* 、 *`--lda`* 、および *`--wap`* が含まれます。  
+-   また、複数の出力を生成したり、複数の入力を受け取ったりするオプションは許可されていません。 これらには、 *`--cbt`* 、 *`--lda`* 、および *`--wap`* が含まれます。  
   
 -   教師あり学習アルゴリズムのみがサポートされています。 これにより、 *`–active`* 、`--rank`、 *`--search`* などのオプションが禁止されます。  
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: df8722e8160538daa1535711092790dbb2405097
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84807030"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>AKS クラスター用の Application Gateway 上の LetsEncrypt.org に証明書を使用する
@@ -25,7 +25,7 @@ ms.locfileid: "84807030"
     次のスクリプトを実行して、`cert-manager` Helm Chart をインストールします。 リセットすると、以下のようになります。
 
     - AKS に新しい `cert-manager` 名前空間が作成される
-    - 次の CRD が作成される:Certificate、Challenge、ClusterIssuer、Issuer、Order
+    - 次の CRDs を作成します: Certificate、Challenge、ClusterIssuer、Issuer、Order
     - cert-manager チャートが ([docs.cert-manager.io](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html#steps) から) インストールされる
 
     ```bash
@@ -127,7 +127,7 @@ ms.locfileid: "84807030"
     EOF
     ```
 
-    数秒後に、自動的に発行された **ステージング**`Lets Encrypt` 証明書を使用して、Application Gateway HTTPS URL を介して `guestbook` サービスにアクセスできるようになります。
+    数秒後に、自動的に発行された **ステージング** `Lets Encrypt` 証明書を使用して、Application Gateway HTTPS URL を介して `guestbook` サービスにアクセスできるようになります。
     ブラウザーから、無効な証明機関について警告される場合があります。 ステージング証明書は `CN=Fake LE Intermediate X1` から発行されます。 これは、システムが想定どおりに機能し、運用環境の証明書を準備できたことを示します。
 
 4. 運用証明書

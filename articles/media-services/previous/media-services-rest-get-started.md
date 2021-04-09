@@ -3,7 +3,7 @@ title: REST を使用したオンデマンド コンテンツ配信の概要 | M
 description: このチュートリアルでは、Azure Media Services と REST API を使用したオンデマンド コンテンツ配信アプリケーションの実装手順を紹介します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 88194b59-e479-43ac-b179-af4f295e3780
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: fe35cd39af9b2fe7d547b463b6432b0b54344794
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: ccf4bc18270dcdbcae02f7b45bea2a05ed663227
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696246"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103008877"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>REST を使用したオンデマンド コンテンツ配信の概要
 
@@ -869,7 +869,7 @@ Date: Mon, 14 May 2012 21:41:32 GMT
 AccessPolicy と Locator を設定したら、Azure Storage REST API を使用してファイルをダウンロードできます。  
 
 > [!NOTE]
-> 前のセクションで受信した Locator の **Path** 値にダウンロードするファイルのファイル名を追加する必要があります。 例: `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4`? 。 。 .
+> 前のセクションで受信した Locator の **Path** 値にダウンロードするファイルのファイル名を追加する必要があります。 例: `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4`? . . .
 
 Azure ストレージ BLOB の使用の詳細については、 [BLOB サービス REST API](/rest/api/storageservices/blob-service-rest-api)をご覧ください。
 

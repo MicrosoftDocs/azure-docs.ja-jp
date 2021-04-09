@@ -3,12 +3,12 @@ title: コマンドライン ツールを使用した Azure DevTest Labs VM の�
 description: コマンドライン ツールを使用して、Azure DevTest Labs 内の仮想マシンを開始および停止する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e5a42658f2b83f101271f158c9af70833601b56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ddc1620cf86fa203b2f0e31359f9fd262df8916
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476418"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102499545"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>コマンドライン ツールを使用した Azure DevTest Labs 仮想マシンの開始と停止
 この記事では、Azure PowerShell または Azure CLI を使用して、Azure DevTest Labs 内のラボにある仮想マシンを開始または停止する方法について説明します。 PowerShell/CLI スクリプトを作成してこの操作を自動化することができます。 
@@ -29,7 +29,7 @@ Azure DevTest Labs を使用すると、高速で簡単な無駄のない開発/
 > [!NOTE]
 > 次のスクリプトは Azure PowerShell Az モジュールを使用します。 
 
-次の PowerShell スクリプトは、ラボ内の VM を開始します。 [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) が、このスクリプトの主な目的です。 **ResourceId** パラメーターは、ラボ内の VM の完全修飾リソース ID です。 **Action** パラメーターには、**Start** または **Stop** オプションが必要に応じて設定されます。
+次の PowerShell スクリプトは、ラボ内の VM を開始します。 [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) が、このスクリプトの主な目的です。 **ResourceId** パラメーターは、ラボ内の VM の完全修飾リソース ID です。 **Action** パラメーターには、**Start** または **Stop** オプションが必要に応じて設定されます。
 
 ```powershell
 # The id of the subscription
@@ -66,7 +66,7 @@ else {
 
 
 ## <a name="azure-cli"></a>Azure CLI
-[Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) は、DevTest Labs の VM を自動的に開始および停止するための、もう 1 つの方法です。 Azure CLI は別のオペレーティング システムに[インストール](/cli/azure/install-azure-cli?view=azure-cli-latest)することができます。 次のスクリプトは、ラボ内の VM を開始および停止するコマンドを示しています。 
+[Azure CLI](/cli/azure/get-started-with-azure-cli) は、DevTest Labs の VM を自動的に開始および停止するための、もう 1 つの方法です。 Azure CLI は別のオペレーティング システムに[インストール](/cli/azure/install-azure-cli)することができます。 次のスクリプトは、ラボ内の VM を開始および停止するコマンドを示しています。 
 
 ```azurecli
 # Sign in to Azure
@@ -84,4 +84,4 @@ az lab vm stop --lab-name yourlabname --name vmname --resource-group labResource
 
 
 ## <a name="next-steps"></a>次のステップ
-次の記事で、これらの操作を Azure portal を使用して行う方法について確認します: [VM の再起動](devtest-lab-restart-vm.md)に関する記事。
+Azure portal を使用してこれらの操作を行う方法については、[VM の再起動](devtest-lab-restart-vm.md)に関する記事を参照してください。

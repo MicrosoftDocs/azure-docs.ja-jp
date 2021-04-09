@@ -1,20 +1,20 @@
 ---
 title: Azure CLI とテンプレートを使用してリソースをデプロイする
-description: Azure Resource Manager と Azure CLI を使用してリソースを Azure にデプロイします。 リソースは Resource Manager テンプレートで定義されます。
+description: Azure Resource Manager と Azure CLI を使用してリソースを Azure にデプロイします。 リソースは、Resource Manager テンプレートまたは Bicep ファイルに定義されています。
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: 6a8efcebcd6ae18eaf91c6ec1e7df184db8c244c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/04/2021
+ms.openlocfilehash: d0c48a5cf05d6cec495a7a96e181910a0849a1ac
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378674"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521698"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>ARM テンプレートと Azure CLI でリソースをデプロイする
 
-この記事では、Azure CLI と Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure にリソースをデプロイする方法について説明します。 Azure ソリューションのデプロイと管理の概念について詳しくない場合、「[テンプレートのデプロイの概要](overview.md)」をご覧ください。
+この記事では、Azure CLI と Azure Resource Manager テンプレート (ARM テンプレート) または Bicep ファイルを使用して、Azure にリソースをデプロイする方法について説明します。 Azure ソリューションのデプロイと管理の概念を熟知していない場合は、[テンプレートのデプロイの概要](overview.md)または [Bicep の概要](bicep-overview.md)に関するページをご覧ください。
 
-デプロイ コマンドは Azure CLI バージョン 2.2.0 で変更されました。 この記事の例では、Azure CLI バージョン 2.2.0 以降が必要です。
+デプロイ コマンドは Azure CLI バージョン 2.2.0 で変更されました。 この記事の例では、Azure CLI バージョン 2.2.0 以降が必要です。 Bicep ファイルをデプロイするには、[Azure CLI version 2.20.0 以降](/cli/azure/install-azure-cli)が必要です。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -27,13 +27,13 @@ Azure CLI がインストールされていない場合は、Azure Cloud Shell �
 * **リソース グループ** にデプロイするには、[az deployment group create](/cli/azure/deployment/group#az-deployment-group-create) を使用します。
 
   ```azurecli-interactive
-  az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
+  az deployment group create --resource-group <resource-group-name> --template-file <path-to-template-or-bicep>
   ```
 
 * **サブスクリプション** にデプロイするには、[az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create) を使用します。
 
   ```azurecli-interactive
-  az deployment sub create --location <location> --template-file <path-to-template>
+  az deployment sub create --location <location> --template-file <path-to-template-or-bicep>
   ```
 
   サブスクリプション レベルでのデプロイの詳細については、「[サブスクリプション レベルでリソース グループとリソースを作成する](deploy-to-subscription.md)」を参照してください。
@@ -41,7 +41,7 @@ Azure CLI がインストールされていない場合は、Azure Cloud Shell �
 * **管理グループ** にデプロイするには、[az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create) を使用します。
 
   ```azurecli-interactive
-  az deployment mg create --location <location> --template-file <path-to-template>
+  az deployment mg create --location <location> --template-file <path-to-template-or-bicep>
   ```
 
   管理グループ レベルでのデプロイの詳細については、「[管理グループ レベルでリソースを作成する](deploy-to-management-group.md)」を参照してください。
@@ -49,14 +49,14 @@ Azure CLI がインストールされていない場合は、Azure Cloud Shell �
 * **テナント** にデプロイするには、[az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create) を使用します。
 
   ```azurecli-interactive
-  az deployment tenant create --location <location> --template-file <path-to-template>
+  az deployment tenant create --location <location> --template-file <path-to-template-or-bicep>
   ```
 
   テナント レベルでのデプロイの詳細については、「[テナント レベルでリソースを作成する](deploy-to-tenant.md)」を参照してください。
 
-各スコープに対して、テンプレートをデプロイするユーザーにはリソースを作成するためのアクセス許可が必要です。
+各スコープに対して、テンプレートまたは Bicep ファイルをデプロイするユーザーにはリソースを作成するためのアクセス許可が必要です。
 
-## <a name="deploy-local-template"></a>ローカル テンプレートのデプロイ
+## <a name="deploy-local-template-or-bicep-file"></a>ローカル テンプレートまたは Bicep ファイルをデプロイする
 
 ローカル コンピューターから、または外部に格納されているテンプレートを使用して、テンプレートをデプロイできます。 ここでは、ローカル テンプレートのデプロイについて説明します。
 
@@ -66,13 +66,13 @@ Azure CLI がインストールされていない場合は、Azure Cloud Shell �
 az group create --name ExampleGroup --location "Central US"
 ```
 
-ローカル テンプレートをデプロイするには、デプロイ コマンドで `--template-file` パラメーターを使用します。 次の例では、テンプレートから取得したパラメーター値を設定する方法も示しています。
+ローカル テンプレートまたは Bicep ファイルをデプロイするには、デプロイ コマンドで `--template-file` パラメーターを使用します。 次の例では、パラメーター値を設定する方法も示しています。
 
 ```azurecli-interactive
 az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
-  --template-file azuredeploy.json \
+  --template-file <path-to-template-or-bicep> \
   --parameters storageAccountType=Standard_GRS
 ```
 
@@ -83,6 +83,9 @@ az deployment group create \
 ```
 
 ## <a name="deploy-remote-template"></a>リモート テンプレートのデプロイ
+
+> [!NOTE]
+> 現在、Azure CLI ではリモート Bicep ファイルのデプロイはサポートされていません。 リモート Bicep ファイルをデプロイするには、まず CLI Bicep を使用して、Bicep ファイルを JSON テンプレートにコンパイルします。
 
 ARM テンプレートをローカル コンピューターに格納する代わりに、外部の場所に格納することもできます。 ソース管理リポジトリ (GitHub など) にテンプレートを格納できます。 または、組織内の共有アクセス用の Azure ストレージ アカウントに格納することができます。
 
@@ -144,6 +147,9 @@ deploymentName='ExampleDeployment'$(date +"%d-%b-%Y")
 
 ## <a name="deploy-template-spec"></a>テンプレート スペックのデプロイ
 
+> [!NOTE]
+> 現在、Azure CLI では、Bicep ファイルを指定してテンプレート スペックを作成することはサポートされていません。 ただし、[Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) リソースを使用して Bicep ファイルを作成し、テンプレート スペックをデプロイできます。こちらに[例](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep)があります。
+
 ローカルまたはリモートのテンプレートをデプロイする代わりに、[テンプレート スペック](template-specs.md)を作成できます。テンプレート スペックは、ARM テンプレートが含まれる Azure サブスクリプションのリソースです。 これにより、組織内のユーザーとテンプレートを安全に共有することが容易になります。 テンプレート スペックへのアクセス権を付与するには、Azure ロールベースのアクセス制御 (Azure RBAC) を使用します。現在、この機能はプレビュー段階にあります。
 
 次の例では、テンプレート スペックの作成とデプロイの方法を示します。
@@ -186,7 +192,7 @@ az deployment group create \
 ```azurecli-interactive
 az deployment group create \
   --resource-group testgroup \
-  --template-file demotemplate.json \
+  --template-file <path-to-template-or-bicep> \
   --parameters exampleString='inline string' exampleArray='("value1", "value2")'
 ```
 
@@ -197,7 +203,7 @@ Windows コマンド プロンプト (CMD) または PowerShell で Azure CLI �
 ```azurecli-interactive
 az deployment group create \
   --resource-group testgroup \
-  --template-file demotemplate.json \
+  --template-file <path-to-template-or-bicep> \
   --parameters exampleString=@stringContent.txt exampleArray=@arrayContent.json
 ```
 
@@ -236,7 +242,7 @@ az deployment group create --name addstorage  --resource-group myResourceGroup \
 
 ### <a name="parameter-files"></a>パラメーター ファイル
 
-スクリプト内のインライン値としてパラメーターを渡すよりも、パラメーター値を含む JSON ファイルを使用するほうが簡単な場合もあります。 パラメーター ファイルはローカル ファイルである必要があります。 外部パラメーター ファイルは、Azure CLI ではサポートされていません。
+スクリプト内のインライン値としてパラメーターを渡すよりも、パラメーター値を含む JSON ファイルを使用するほうが簡単な場合もあります。 パラメーター ファイルはローカル ファイルである必要があります。 外部パラメーター ファイルは、Azure CLI ではサポートされていません。 ARM テンプレートと Bicep ファイルのどちらでも、JSON パラメーター ファイルが使用されます。
 
 パラメーター ファイルの詳細については、「[Resource Manager パラメーター ファイルを作成する](parameter-files.md)」を参照してください。
 
@@ -274,7 +280,7 @@ az deployment group create \
 
 ## <a name="next-steps"></a>次のステップ
 
-- エラーが発生したときに正常なデプロイにロールバックするには、「[エラー発生時に正常なデプロイにロールバックする](rollback-on-error.md)」を参照してください。
-- リソース グループに存在するが、テンプレートで定義されていないリソースの処理方法を指定するには、「[Azure Resource Manager のデプロイ モード](deployment-modes.md)」を参照してください。
-- テンプレートでパラメーターを定義する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
-- 一般的なデプロイ エラーを解決するうえでのヒントについては、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](common-deployment-errors.md)」を参照してください。
+* エラーが発生したときに正常なデプロイにロールバックするには、「[エラー発生時に正常なデプロイにロールバックする](rollback-on-error.md)」を参照してください。
+* リソース グループに存在するが、テンプレートで定義されていないリソースの処理方法を指定するには、「[Azure Resource Manager のデプロイ モード](deployment-modes.md)」を参照してください。
+* テンプレートでパラメーターを定義する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
+* 一般的なデプロイ エラーを解決するうえでのヒントについては、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](common-deployment-errors.md)」を参照してください。

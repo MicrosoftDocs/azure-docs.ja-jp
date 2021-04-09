@@ -1,31 +1,31 @@
 ---
-title: Azure Migrate Server Assessment を使用して物理サーバーを検出する
-description: Azure Migrate Server Assessment を使用して、オンプレミスの物理サーバーを検出する方法について説明します。
+title: Azure Migrate Discovery and Assessment を使用して物理サーバーを検出する
+description: Azure Migrate Discovery and Assessment を使用して、オンプレミスの物理サーバーを検出する方法について説明します。
 author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: 548cee262d874f5bc0f6024a857c2bb8a5466106
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: 4f6dc61b0e05fcb16a03a1183518069b98aa575f
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541344"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771415"
 ---
-# <a name="tutorial-discover-physical-servers-with-server-assessment"></a>チュートリアル:Server Assessment を使用して物理サーバーを検出する
+# <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>チュートリアル: Azure Migrate: Discovery and Assessment を使用して物理サーバーを検出する
 
 Azure への移行の一環として、評価と移行のためにサーバーを検出します。
 
-このチュートリアルでは、軽量の Azure Migrate アプライアンスを使用して、Azure Migrate: Server Assessment ツールでオンプレミスの物理サーバーを検出する方法について説明します。 アプライアンスを物理サーバーとしてデプロイし、マシンとパフォーマンスのメタデータを継続的に検出します。
+このチュートリアルでは、軽量の Azure Migrate アプライアンスを使用して、Azure Migrate: Discovery and Assessment ツールでオンプレミスの物理サーバーを検出する方法について説明します。 アプライアンスを物理サーバーとしてデプロイし、サーバーとパフォーマンスのメタデータを継続的に検出します。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure アカウントを設定します。
 > * 検出のために物理サーバーを準備します。
-> * Azure Migrate プロジェクトを作成します。
+> * プロジェクトを作成します。
 > * Azure Migrate アプライアンスを設定します。
 > * 継続的な検出を開始します。
 
@@ -40,13 +40,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **要件** | **詳細**
 --- | ---
-**アプライアンス** | Azure Migrate アプライアンスを実行するマシンが必要です。 このマシンには以下が必要です。<br/><br/> - Windows Server 2016 がインストールされていること。<br/> _(現在のところ、アプライアンスは Windows Server 2016 でのみデプロイできます。)_<br/><br/> - 16 GB RAM、8 個の vCPU、約 80 GB のディスク記憶域<br/><br/> - 直接またはプロキシ経由でインターネットにアクセスできる、静的または動的 IP アドレス。
+**アプライアンス** | Azure Migrate アプライアンスを実行するサーバーが必要です。 サーバーには次が必要です。<br/><br/> - Windows Server 2016 がインストールされていること。<br/> _(現在のところ、アプライアンスは Windows Server 2016 でのみデプロイできます。)_<br/><br/> - 16-GB RAM、8 個の vCPU、約 80 GB のディスク記憶域<br/><br/> - 直接またはプロキシ経由でインターネットにアクセスできる、静的または動的 IP アドレス。
 **Windows サーバー** | WinRM ポート 5985 (HTTP) で受信接続を許可して、アプライアンスが構成とパフォーマンスのメタデータをプルできるようにします。
 **Linux サーバー** | ポート22 (TCP) で受信接続を許可します。
 
 ## <a name="prepare-an-azure-user-account"></a>Azure ユーザー アカウントを準備する
 
-Azure Migrate プロジェクトを作成し、Azure Migrate アプライアンスを登録するには、以下を備えたアカウントが必要です。
+プロジェクトを作成し、Azure Migrate アプライアンスを登録するには、次を備えたアカウントが必要です。
 - Azure サブスクリプションに対する共同作成者または所有者のアクセス許可。
 - Azure Active Directory (AAD) アプリを登録するためのアクセス許可。
 
@@ -56,7 +56,7 @@ Azure Migrate プロジェクトを作成し、Azure Migrate アプライアン�
 
     ![Azure サブスクリプションを検索するための検索ボックス](./media/tutorial-discover-physical/search-subscription.png)
 
-2. **[サブスクリプション]** ページで、Azure Migrate プロジェクトを作成するサブスクリプションを選択します。 
+2. **[サブスクリプション]** ページで、プロジェクトを作成するサブスクリプションを選択します。
 3. サブスクリプションで、 **[アクセス制御 (IAM)]**  >  **[アクセスの確認]** の順に選択します。
 4. **[アクセスの確認]** で、適切なユーザー アカウントを検索します。
 5. **[ロールの割り当てを追加する]** で、 **[追加]** をクリックします。
@@ -79,7 +79,7 @@ Azure Migrate プロジェクトを作成し、Azure Migrate アプライアン�
 
 アプライアンスが物理サーバーへのアクセスに使用できるアカウントを設定します。
 
-- **Windows サーバー** の場合、ドメイン参加済みのマシンにはドメイン アカウントを、ドメインに参加していないマシンにはローカル アカウントを使用します。 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。
+- **Windows サーバー** の場合、ドメイン参加済みのサーバーにはドメイン アカウントを、ドメインに参加していないサーバーにはローカル アカウントを使用します。 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。
 - **Linux サーバー** の場合、検出する Linux サーバーのルート アカウントが必要です。 または、次のコマンドを使用して、必要な機能を持つ非ルート アカウントを設定することもできます。
 
 **コマンド** | **目的**
@@ -92,7 +92,7 @@ chmod a+r /sys/class/dmi/id/product_uuid | BIOS の GUID を収集するため
 
 ## <a name="set-up-a-project"></a>プロジェクトの設定
 
-新しい Azure Migrate プロジェクトを設定します。
+新しいプロジェクトを設定します。
 
 1. Azure portal の **[すべてのサービス]** で、**Azure Migrate** を検索します。
 2. **[サービス]** で **[Azure Migrate]** を選択します。
@@ -103,7 +103,7 @@ chmod a+r /sys/class/dmi/id/product_uuid | BIOS の GUID を収集するため
    ![プロジェクト名とリージョンのボックス](./media/tutorial-discover-physical/new-project.png)
 
 7. **［作成］** を選択します
-8. Azure Migrate プロジェクトがデプロイされるまで数分待ちます。 **Azure Migrate: Server Assessment** ツールは、新しいプロジェクトに既定で追加されます。
+8. プロジェクトがデプロイされるまで数分待ちます。 **Azure Migrate: Discovery and Assessment** ツールは、新しいプロジェクトに既定で追加されます。
 
 ![既定で追加された Server Assessment ツールを示すページ](./media/tutorial-discover-physical/added-tool.png)
 
@@ -112,22 +112,23 @@ chmod a+r /sys/class/dmi/id/product_uuid | BIOS の GUID を収集するため
 
 ## <a name="set-up-the-appliance"></a>アプライアンスを設定する
 
-Azure Migrate アプライアンスによって、サーバー検出が実行され、サーバーの構成とパフォーマンスのメタデータが Azure Migrate に送信されます。 このアプライアンスは、Azure Migrate プロジェクトからダウンロードできる PowerShell スクリプトを実行することで設定できます。
+Azure Migrate アプライアンスによって、サーバー検出が実行され、サーバーの構成とパフォーマンスのメタデータが Azure Migrate に送信されます。 このアプライアンスは、プロジェクトからダウンロード可能な PowerShell スクリプトを実行することで設定できます。
 
 アプライアンスを設定するには、次のようにします。
-1. アプライアンス名を指定し、ポータルで Azure Migrate プロジェクト キーを生成します。
+
+1. アプライアンス名を指定し、ポータルでプロジェクト キーを生成します。
 2. Azure portal から、Azure Migrate インストーラー スクリプトが含まれた ZIP ファイルをダウンロードします。
 3. ZIP ファイルの内容を抽出します。 管理特権で PowerShell コンソールを起動します。
 4. PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。
-5. アプライアンスを初めて構成し、Azure Migrate プロジェクト キーを使用して Azure Migrate プロジェクトに登録します。
+5. アプライアンスを初めて構成し、プロジェクト キーを使用してプロジェクトに登録します。
 
-### <a name="1-generate-the-azure-migrate-project-key"></a>1. Azure Migrate プロジェクト キーを生成する
+### <a name="1-generate-the-project-key"></a>1. プロジェクト キーを生成する
 
-1. **移行の目標** > **サーバー** > **Azure Migrate: Server Assessment** で、**検出** を選択します。
-2. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[物理またはその他 (AWS、GCP、Xen など)]** を選択します。
-3. **[1:Azure Migrate プロジェクト キーを生成します]** で、物理サーバーまたは仮想サーバーの検出用に設定する Azure Migrate アプライアンスの名前を指定します。名前は 14 文字以内の英数字にする必要があります。
-1. **[キーの生成]** をクリックして、必要な Azure リソースの作成を開始します。 リソースの作成中に [マシンの検出] ページを閉じないでください。
-1. Azure リソースが正常に作成されると、**Azure Migrate プロジェクト キー** が生成されます。
+1. **[移行の目標]**  >  **[サーバー]**  >  **[Azure Migrate: Discovery and Assessment]** で、 **[検出]** を選択します。
+2. **[サーバーの検出]**  >  **[Are your servers virtualized?]\(サーバーは仮想化されていますか?\)** で、 **[物理またはその他 (AWS、GCP、Xen など)]** を選択します。
+3. **[1: プロジェクト キーを生成します]** で、物理または仮想サーバーの検出用に設定する Azure Migrate アプライアンスの名前を指定します。 名前は、14 文字以下の英数字にする必要があります。
+1. **[キーの生成]** をクリックして、必要な Azure リソースの作成を開始します。 リソースの作成中に [サーバーの検出] ページを閉じないでください。
+1. Azure リソースが正常に作成されると、**プロジェクト キー** が生成されます。
 1. このキーはアプライアンスを設定する際、登録を完了するために必要なので、コピーしておきます。
 
 ### <a name="2-download-the-installer-script"></a>2. インストーラー スクリプトをダウンロードする
@@ -138,7 +139,7 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
 
 圧縮されたファイルをデプロイする前に、それが安全であることを確認します。
 
-1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
+1. ファイルをダウンロードしたサーバーで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します。
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例 (パブリック クラウドの場合): ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
@@ -170,7 +171,7 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
 
 次のようにスクリプトを実行します。
 
-1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。  既存の Azure Migrate アプライアンス マシンでスクリプトを実行しないよう注意してください。
+1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。  既存の Azure Migrate アプライアンスが存在するサーバー上でスクリプトを実行しないよう注意してください。
 2. 管理 (昇格された) 特権を使用して上記のサーバーで PowerShell を起動します。
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
 4. 次のコマンドを実行して、**AzureMigrateInstaller.ps1** という名前のスクリプトを実行します。
@@ -188,13 +189,13 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
 
 ### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 
-[パブリック](migrate-appliance.md#public-cloud-urls) クラウドと[政府機関向け](migrate-appliance.md#government-cloud-urls)クラウドの Azure URL にアプライアンス VM から接続できることを確認します。
+[パブリック](migrate-appliance.md#public-cloud-urls) クラウドと[政府機関向け](migrate-appliance.md#government-cloud-urls)クラウドの Azure URL にアプライアンスから接続できることを確認します。
 
 ### <a name="4-configure-the-appliance"></a>4. アプライアンスを構成する
 
 アプライアンスを初めて設定します。
 
-1. アプライアンスに接続できる任意のマシン上でブラウザーを開き、アプライアンス Web アプリの URL を開きます (**https://*アプライアンス名または IP アドレス*:44368**)。
+1. アプライアンスに接続できる任意のサーバー上でブラウザーを開き、アプライアンス Web アプリの URL (**https://*アプライアンス名または IP アドレス*: 44368**) を開きます。
 
    または、アプリのショートカットをクリックして、デスクトップからアプリを開くこともできます。
 2. **ライセンス条項** に同意し、サード パーティの情報を確認します。
@@ -205,11 +206,11 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
         - サポートされるのは HTTP プロキシのみです。
         - プロキシの詳細を追加した場合、またはプロキシまたは認証を無効にした場合は、 **[保存]** をクリックして接続チェックを再度トリガーします。
     - **時刻同期**:時刻が確認されます。 サーバーの検出を正常に機能させるには、アプライアンス上の時刻がインターネットの時刻と同期している必要があります。
-    - **更新プログラムのインストール**:Azure Migrate Server Assessment では、アプライアンスに最新の更新プログラムがインストールされているかどうかの確認が行われます。チェックが完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、アプライアンスで実行されているコンポーネントの状態とバージョンを確認できます。
+    - **更新プログラムのインストール**:Azure Migrate: Discovery and Assessment によって、アプライアンスに最新の更新プログラムがインストールされていることが確認されます。 確認が完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、アプライアンスで実行されているコンポーネントの状態とバージョンを確認できます。
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
-1. ポータルからコピーした **Azure Migrate プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Server Assessment] > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
+1. ポータルからコピーした **プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Azure Migrate: Discovery and Assessment] > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
 1. Azure で認証するには、デバイス コードが必要です。 **[ログイン]** をクリックすると、次に示すように、デバイス コードを含むモーダルが開きます。
 
     ![デバイス コードを示すモーダル](./media/tutorial-discover-vmware/device-code.png)
@@ -229,12 +230,12 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
 次に、アプライアンスから検出対象の物理サーバーに接続し、検出を開始します。
 
 1. **[ステップ 1:Provide credentials for discovery of Windows and Linux physical or virtual servers]\(Windows および Linux 物理サーバーまたは仮想サーバーを検出するための資格情報を指定する\)** で、 **[資格情報の追加]** をクリックします。
-1. Windows サーバーの場合、ソースの種類として **[Windows サーバー]** を選択し、資格情報のフレンドリ名を指定して、ユーザー名とパスワードを追加します。 **[保存]** をクリックします。
-1. Linux サーバーでパスワードベースの認証を使用している場合は、ソースの種類として **[Linux Server (Password-based)]\(Linux サーバー (パスワードベース)\)** を選択し、資格情報のフレンドリ名を指定して、ユーザー名とパスワードを追加します。 **[保存]** をクリックします。
+1. Windows サーバーの場合、ソースの種類として **[Windows サーバー]** を選択し、資格情報のフレンドリ名を指定して、ユーザー名とパスワードを追加します。 **[Save]** をクリックします。
+1. Linux サーバーでパスワードベースの認証を使用している場合は、ソースの種類として **[Linux Server (Password-based)]\(Linux サーバー (パスワードベース)\)** を選択し、資格情報のフレンドリ名を指定して、ユーザー名とパスワードを追加します。 **[Save]** をクリックします。
 1. Linux サーバーで SSH キーベースの認証を使用している場合は、ソースの種類として **[Linux Server (SSH key-based)]\(Linux サーバー (SSH キーベース)\)** を選択し、資格情報のフレンドリ名を指定して、ユーザー名を追加します。SSH 秘密キー ファイルを参照して選択します。 **[Save]** をクリックします。
 
     - Azure Migrate では、RSA、DSA、ECDSA、ed25519 の各アルゴリズムを使用して、ssh-keygen コマンドによって生成された SSH 秘密キーがサポートされています。
-    - 現在、Azure Migrate では、パスフレーズ ベースの SSH キーはサポートされていません。 パスフレーズなしで SSH キーを使用してください。
+    - 現在、Azure Migrate では、パスフレーズベースの SSH キーはサポートされていません。 パスフレーズなしで SSH キーを使用してください。
     - 現在、Azure Migrate では、PuTTY によって生成された SSH 秘密キー ファイルはサポートされていません。
     - Azure Migrate では、次に示すように、OpenSSH 形式の SSH 秘密キー ファイルがサポートされています。
     
@@ -245,8 +246,8 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
 1. 一度に **1 つの項目を追加** するか、一括で **複数の項目を追加** することができます。 また、 **[Import CSV]\(CSV のインポート\)** を使用して、サーバーの詳細を指定することもできます。
 
 
-    - **[Add single item]\(1 つの項目を追加\)** を選択した場合は、OS のタイプ、資格情報のフレンドリ名を指定し、サーバーの **[IP address/FQDN]\(IP アドレスまたは FQDN\)** を追加して、 **[保存]** をクリックします。
-    - **[Add multiple items]\(複数の項目を追加\)** を選択した場合は、テキスト ボックスでサーバーの **[IP address/FQDN]\(IP アドレスまたは FQDN\)** を資格情報のフレンドリ名と共に指定することで、一度に複数のレコードを追加できます。追加したレコードを **[Verify]\(検証\)** し、 **[保存]** をクリックします。
+    - **[Add single item]\(1 つの項目を追加\)** を選択した場合は、OS のタイプ、資格情報のフレンドリ名を指定し、サーバーの **IP アドレスまたは FQDN** を追加して、 **[保存]** をクリックします。
+    - **[Add multiple items]\(複数の項目を追加\)** を選択した場合は、テキスト ボックスでサーバーの **[IP address/FQDN]\(IP アドレスまたは FQDN\)** を資格情報のフレンドリ名と共に指定することで、一度に複数のレコードを追加できます。 ** 追加したレコードを確認し、 **[保存]** をクリックします。
     - **[Import CSV]\(CSV のインポート\)** _(既定で選択)_ を選択した場合は、CSV テンプレート ファイルをダウンロードし、そのファイルにサーバーの **[IP address/FQDN]\(IP アドレスまたは FQDN\)** および資格情報のフレンドリ名を入力します。 その後、ファイルをアプライアンスにインポートし、ファイル内のレコードを **[Verify]\(検証\)** して、 **[保存]** をクリックします。
 
 1. [保存] をクリックすると、アプライアンスによって追加されたサーバーへの接続が検証され、各サーバーの **[Validation status]\(検証状態\)** が表に表示されます。
@@ -263,7 +264,7 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
 検出の完了後、サーバーがポータルに表示されることを確認できます。
 
 1. Azure Migrate ダッシュボードを開きます。
-2. **[Azure Migrate - サーバー]**  >  **[Azure Migrate: Server Assessment]** ページで、 **[検出済みサーバー]** の数を表示するアイコンをクリックします。
+2. **[Azure Migrate - サーバー]**  >  **[Azure Migrate: Discovery and Assessment]** ページで、 **[検出済みサーバー]** の数を表示するアイコンをクリックします。
 ## <a name="next-steps"></a>次のステップ
 
 - Azure VM への移行のために[物理サーバーを評価](tutorial-assess-physical.md)します。

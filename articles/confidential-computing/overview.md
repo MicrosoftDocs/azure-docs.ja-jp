@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.author: JenCook
 ms.openlocfilehash: c3ef6a764123f52583f081a3b152651b9bb8b8b7
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102554192"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure におけるコンフィデンシャル コンピューティング

@@ -1,6 +1,6 @@
 ---
 title: iOS - Azure からオブジェクト (BLOB) ストレージを使用する方法 | Microsoft Docs
-description: Azure Blob Storage (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。
+description: Azure BLOB ストレージ (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 11/20/2018
@@ -8,15 +8,15 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.openlocfilehash: 7fc1b2638c2ab17c4cd58ca8d4508d2e6d244cfa
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95996817"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>iOS から BLOB ストレージを使用する方法
 
-この記事では、Microsoft Azure Blob Storage を使用して一般的なシナリオを実行する方法について説明します。 サンプルは Objective-C で記述され、 [iOS 用 Azure Storage クライアント ライブラリ](https://github.com/Azure/azure-storage-ios)を使用しています。 紹介するシナリオは、BLOB のアップロード、一覧の取得、ダウンロード、および削除です。 BLOB の詳細については、「 [次のステップ](#next-steps) 」のセクションを参照してください。 また、 [サンプル アプリ](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) をダウンロードし、iOS アプリケーションでの Azure Storage の使用例をすぐに確認することもできます。
+この記事では、Microsoft Azure BLOB ストレージを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Objective-C で記述され、 [iOS 用 Azure Storage クライアント ライブラリ](https://github.com/Azure/azure-storage-ios)を使用しています。 紹介するシナリオは、BLOB のアップロード、一覧の取得、ダウンロード、および削除です。 BLOB の詳細については、「 [次のステップ](#next-steps) 」のセクションを参照してください。 また、 [サンプル アプリ](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) をダウンロードし、iOS アプリケーションでの Azure Storage の使用例をすぐに確認することもできます。
 
 Blob Storage の詳細については、「[Azure Blob Storage の概要](storage-blobs-introduction.md)」をご覧ください。
 

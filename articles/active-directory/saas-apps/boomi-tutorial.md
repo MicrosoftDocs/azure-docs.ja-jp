@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/07/2020
+ms.date: 02/25/2021
 ms.author: jeedes
-ms.openlocfilehash: e14ef0c039fdf07d50c09fe57dc3cac222be524d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c58566c628eedd1dbc3d86ae6a142156cbf31211
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456876"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104585198"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Boomi の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "92456876"
 * Boomi にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Boomi に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,26 +37,25 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Boomi では、 **IDP** によって開始される SSO がサポートされます
-* Boomi を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Boomi では、**IDP** Initiated SSO がサポートされます。
 
-## <a name="adding-boomi-from-the-gallery"></a>ギャラリーからの Boomi の追加
+## <a name="add-boomi-from-the-gallery"></a>ギャラリーからの Boomi の追加
 
 Azure AD への Boomi の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Boomi を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Boomi** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Boomi**」と入力します。
 1. 結果のパネルから **[Boomi]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-boomi"></a>Boomi の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-boomi"></a>Boomi の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Boomi に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Boomi の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-Boomi に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+Boomi に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -71,13 +68,13 @@ Boomi に対する Azure AD SSO を構成してテストするには、次の構
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Boomi** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. Azure portal の **Boomi** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **サービス プロバイダー メタデータ ファイル** を保持しており、 **IDP** Initiated モードに構成したい場合は、 **[基本的な SAML 構成]** セクション上で次の手順を実行します。
+1. **サービス プロバイダー メタデータ ファイル** を保持しており、**IDP** Initiated モードに構成したい場合は、 **[基本的な SAML 構成]** セクション上で次の手順を実行します。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
@@ -87,14 +84,12 @@ Boomi に対する Azure AD SSO を構成してテストするには、次の構
 
     ![メタデータ ファイルを選択する](common/browse-upload-metadata.png)
 
-    c. メタデータ ファイルが正常にアップロードされると、 **識別子** と **応答 URL** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
-
-    ![スクリーンショットは、[基本的な SAML 構成] を示しています。ここに、識別子と応答 URL の値が表示されます。](common/idp-intiated.png)
+    c. メタデータ ファイルが正常にアップロードされると、**識別子** と **応答 URL** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
 
     d. **サインオン URL** を入力します (例: `https://platform.boomi.com/AtomSphere.html#build;accountId={your-accountId}`)。
 
     > [!Note]
-    > **サービス プロバイダーのメタデータ ファイル** は、このチュートリアルで後述する「 **Boomi SSO の構成** 」セクションで取得します。 **識別子** と **応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
+    > **サービス プロバイダーのメタデータ ファイル** は、このチュートリアルで後述する「**Boomi SSO の構成**」セクションで取得します。 **識別子** と **応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
 
 1. Boomi アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -133,26 +128,20 @@ Boomi に対する Azure AD SSO を構成してテストするには、次の構
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[Boomi]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-boomi-sso"></a>Boomi SSO の構成
 
 1. 別の Web ブラウザー ウィンドウで、Boomi 企業サイトに管理者としてサインインします。
 
-1. **[会社名]** 、 **[セットアップ]** の順に進みます。
+1. **[会社名]**、**[セットアップ]** の順に進みます。
 
 1. **[SSO オプション]** タブをクリックして以下の手順に従います。
 
-    ![アプリ側でのシングル サインオンの構成](./media/boomi-tutorial/tutorial_boomi_11.png)
+    ![アプリ側でのシングル サインオンの構成](./media/boomi-tutorial/import.png)
 
     a. **[Enable SAML Single Sign-On]\(SAML シングル サインオンの有効化)** のチェックボックスをオンにします。
 
@@ -160,29 +149,29 @@ Boomi に対する Azure AD SSO を構成してテストするには、次の構
 
     c. **[ID プロバイダーのログイン URL]** ボックスに、Azure AD アプリケーションの構成ウィンドウの **[ログイン URL]** の値を入力します。
 
-    d. **[Federation Id Location]** で、 **[Federation Id is in FEDERATION_ID Attribute element]** オプションを選択します。
+    d. **[Federation Id Location]** で、**[Federation Id is in FEDERATION_ID Attribute element]** オプションを選択します。
 
     e. **[AtomSphere MetaData URL]\(AtomSphere メタデータ URL\)** をコピーし、任意のブラウザーで **[MetaData URL]\(メタデータ URL\)** に移動して、出力をファイルに保存します。 Azure portal の **[基本的な SAML 構成]** セクションで **メタデータ URL** をアップロードします。
 
     f. **[保存]** ボタンをクリックします。
 
-### <a name="create-boomi-test-user"></a>Boomi のテスト ユーザーの作成
+### <a name="create-boomi-test-user&quot;></a>Boomi のテスト ユーザーの作成
 
 Azure AD ユーザーが Boomi にサインインできるようにするには、ユーザーを Boomi にプロビジョニングする必要があります。 Boomi の場合、プロビジョニングは手動で行います。
 
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
+### <a name=&quot;to-provision-a-user-account-perform-the-following-steps&quot;></a>ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
 
 1. Boomi 企業サイトに管理者としてサインインします。
 
-1. **[ユーザー管理]** 、 **[ユーザー]** の順に進みます。
+1. **[ユーザー管理]**、**[ユーザー]** の順に進みます。
 
-    ![スクリーンショットは、[ユーザー] が選択されている [ユーザー管理] ページを示しています。](./media/boomi-tutorial/tutorial_boomi_001.png "ユーザー")
+    ![スクリーンショットは、[ユーザー] が選択されている [ユーザー管理] ページを示しています。](./media/boomi-tutorial/user.png &quot;ユーザー")
 
 1. **+** アイコンをクリックすると **[Add/Maintain User Roles]\(ユーザーの役割の追加と管理)** ダイアログが開きます。
 
-    ![スクリーンショットでは、[+] アイコンが選択されています。](./media/boomi-tutorial/tutorial_boomi_002.png "ユーザー")
+    ![スクリーンショットでは、[+] アイコンが選択されています。](./media/boomi-tutorial/add.png "ユーザー")
 
-    ![スクリーンショットは [Add / Maintain User Roles]\(ユーザー ロールの追加および管理\) を示しています。ここでユーザーを構成します。](./media/boomi-tutorial/tutorial_boomi_003.png "ユーザー")
+    ![スクリーンショットは [Add / Maintain User Roles]\(ユーザー ロールの追加および管理\) を示しています。ここでユーザーを構成します。](./media/boomi-tutorial/roles.png "ユーザー")
 
     a. **[ユーザーのメール アドレス]** ボックスに、ユーザーのメール アドレスを入力します (この例では B.Simon@contoso.com)。
 
@@ -201,18 +190,13 @@ Azure AD ユーザーが Boomi にサインインできるようにするには�
 
 ## <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Boomi] タイルをクリックすると、SSO を設定した Boomi に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Boomi に自動的にサインインされます。
 
-## <a name="additional-resources"></a>その他のリソース
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Boomi] タイルをクリックすると、SSO を設定した Boomi に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
-
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
-
-- [Azure AD で Boomi を試す](https://aad.portal.azure.com/)
+Boomi を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

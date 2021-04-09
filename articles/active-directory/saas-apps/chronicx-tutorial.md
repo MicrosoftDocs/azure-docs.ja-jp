@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 0603e04424acfe979f44110b973b79f6c07e0b81
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97673617"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>チュートリアル: Azure Active Directory と ChronicX® の統合
@@ -62,7 +62,7 @@ Azure AD への ChronicX® の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**ChronicX®**」と入力し、結果パネルで **ChronicX®** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**ChronicX®**」と入力し、結果パネルで **ChronicX®** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの ChronicX®](common/search-new-app.png)
 
@@ -86,7 +86,7 @@ ChronicX® で Azure AD のシングル サインオンを構成してテスト�
 
 ChronicX® を利用して Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) 内の **[ChronicX®]** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) 内の **[ChronicX®]** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -156,7 +156,7 @@ ChronicX® を利用して Azure AD シングル サインオンを構成する�
 
 このセクションでは、Britta Simon に ChronicX® へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[ChronicX®]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[ChronicX®]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

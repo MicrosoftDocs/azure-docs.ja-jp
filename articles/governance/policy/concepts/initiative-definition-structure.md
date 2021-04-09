@@ -1,14 +1,14 @@
 ---
 title: イニシアチブ定義の構造の詳細
 description: ポリシー イニシアチブ定義を使用し、組織の Azure リソースのデプロイのポリシー定義をグループ化する方法について説明します。
-ms.date: 10/07/2020
+ms.date: 03/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8f9c6146e1dde5b5a7f6595c61638319de60a82d
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: edd3f25dd528d1a718c9287c9f30988b87fb73e2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876177"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587221"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Azure Policy イニシアチブ定義の構造
 
@@ -105,7 +105,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 ## <a name="metadata"></a>Metadata
 
 オプションの `metadata` プロパティには、イニシアチブ ポリシー定義に関する情報が格納されています。
-お客様は `metadata` で組織にとって有用なすべてのプロパティと値を定義できます。 ただし、Azure Policy と組み込みで使用される_一般的_なプロパティがいくつかあります。
+お客様は `metadata` で組織にとって有用なすべてのプロパティと値を定義できます。 ただし、Azure Policy と組み込みで使用される _一般的_ なプロパティがいくつかあります。
 
 ### <a name="common-metadata-properties"></a>一般的なメタデータのプロパティ
 
@@ -113,7 +113,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 - `category` (string):ポリシー定義が表示される Azure portal 内のカテゴリを指定します。
 
   > [!NOTE]
-  > [規制コンプライアンス](./regulatory-compliance.md) イニシアチブの場合、`category` は**規制コンプライアンス**である必要があります。
+  > [規制コンプライアンス](./regulatory-compliance.md) イニシアチブの場合、`category` は **規制コンプライアンス** である必要があります。
 
 - `preview` (boolean):イニシアチブ ポリシー定義が _preview_ であるかどうかを示す true または false フラグです。
 - `deprecated` (boolean):イニシアチブ ポリシー定義が _deprecated_ とマークされているかどうかを示す true または false フラグです。
@@ -212,11 +212,11 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 ## <a name="policy-definitions"></a>ポリシーの定義
 
-イニシアチブ定義の `policyDefinitions` 部分は、イニシアチブに含まれる既存のポリシー定義の_配列_ です。 「[パラメーター値をポリシー定義に渡す](#passing-a-parameter-value-to-a-policy-definition)」で説明したように、このプロパティで[イニシアチブ パラメーター](#parameters)がポリシー定義に渡されます。
+イニシアチブ定義の `policyDefinitions` 部分は、イニシアチブに含まれる既存のポリシー定義の _配列_ です。 「[パラメーター値をポリシー定義に渡す](#passing-a-parameter-value-to-a-policy-definition)」で説明したように、このプロパティで[イニシアチブ パラメーター](#parameters)がポリシー定義に渡されます。
 
 ### <a name="policy-definition-properties"></a>ポリシー定義のプロパティ
 
-ポリシー定義を表す各_配列_要素には、次のプロパティがあります。
+ポリシー定義を表す各 _配列_ 要素には、次のプロパティがあります。
 
 - `policyDefinitionId` (string):含めるカスタムまたは組み込みのポリシー定義の ID。
 - `policyDefinitionReferenceId` (string):含まれているポリシー定義の短い名前。
@@ -250,20 +250,20 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 ## <a name="policy-definition-groups"></a>ポリシー定義グループ
 
-イニシアチブ定義のポリシー定義グループをグループ化して分類できます。 Azure Policy の[規制コンプライアンス](./regulatory-compliance.md) (プレビュー) 機能では、このプロパティを使用して定義が**コントロール**と**コンプライアンス ドメイン**にグループ化されます。 これらの情報は、 `policyDefinitionGroups` _配列_プロパティで定義されます。 追加のグループ化の詳細については、Microsoft によって作成された **policyMetadata** オブジェクトを参照してください。 詳細については、[メタデータ オブジェクト](#metadata-objects)に関するページを参照してください。
+イニシアチブ定義のポリシー定義グループをグループ化して分類できます。 Azure Policy の [規制コンプライアンス](./regulatory-compliance.md) (プレビュー) 機能では、このプロパティを使用して定義が **コントロール** と **コンプライアンス ドメイン** にグループ化されます。 これらの情報は、 `policyDefinitionGroups` _配列_ プロパティで定義されます。 追加のグループ化の詳細については、Microsoft によって作成された **policyMetadata** オブジェクトを参照してください。 詳細については、[メタデータ オブジェクト](#metadata-objects)に関するページを参照してください。
 
 ### <a name="policy-definition-groups-parameters"></a>ポリシー定義グループのパラメーター
 
-`policyDefinitionGroups` の各_配列_要素は、次のプロパティを両方持つ必要があります。
+`policyDefinitionGroups` の各 _配列_ 要素は、次のプロパティを両方持つ必要があります。
 
-- `name` (string) \[必要\]:**グループ**の短い名前。 規制コンプライアンスでは、**コントロール**。 このプロパティの値は `policyDefinitions` で `groupNames` により使用されます。
-- `category` (string):グループが属している階層。 規制コンプライアンスでは、コントロールの**コンプライアンス ドメイン**。
-- `displayName` (string):**グループ**または**コントロール**のフレンドリ名。 ポータルで使用されます。
-- `description` (string):**グループ**または**コントロール**の対象の説明です。
-- `additionalMetadataId` (string):[policyMetadata](#metadata-objects) オブジェクトの場所。 **コントロール**および**コンプライアンス ドメイン**に関する追加情報が含まれています。
+- `name` (string) \[必要\]:**グループ** の短い名前。 規制コンプライアンスでは、**コントロール**。 このプロパティの値は `policyDefinitions` で `groupNames` により使用されます。
+- `category` (string):グループが属している階層。 規制コンプライアンスでは、コントロールの **コンプライアンス ドメイン**。
+- `displayName` (string):**グループ** または **コントロール** のフレンドリ名。 ポータルで使用されます。
+- `description` (string):**グループ** または **コントロール** の対象の説明です。
+- `additionalMetadataId` (string):[policyMetadata](#metadata-objects) オブジェクトの場所。 **コントロール** および **コンプライアンス ドメイン** に関する追加情報が含まれています。
 
   > [!NOTE]
-  > ユーザーは、既存の [policyMetadata](#metadata-objects) オブジェクトをポイントすることがあります。 しかし、これらのオブジェクトは_読み取り専用_であり、Microsoft によってのみ作成されます。
+  > ユーザーは、既存の [policyMetadata](#metadata-objects) オブジェクトをポイントすることがあります。 しかし、これらのオブジェクトは _読み取り専用_ であり、Microsoft によってのみ作成されます。
 
 NIST の組み込みのイニシアチブ定義の `policyDefinitionGroups` プロパティの例は次のようになります。
 
@@ -281,18 +281,18 @@ NIST の組み込みのイニシアチブ定義の `policyDefinitionGroups` プ�
 Microsoft によって作成された規制コンプライアンスの組み込みには、各コントロールに関する追加情報が含まれています。
 この情報については以下のとおりです。
 
-- 規制コンプライアンス イニシアチブの**コントロール**の概要について Azure portal に表示されます。
-- REST API 経由で入手できます。 `Microsoft.PolicyInsights` リソース プロバイダーおよび [policyMetadata 操作グループ](/rest/api/policy-insights/policymetadata/getresource)を参照してください。
+- 規制コンプライアンス イニシアチブの **コントロール** の概要について Azure portal に表示されます。
+- REST API 経由で入手できます。 `Microsoft.PolicyInsights` リソース プロバイダーおよび [policyMetadata 操作グループ](/rest/api/policy/policymetadata/getresource)を参照してください。
 - Azure CLI 経由で入手できます。 [az policy metadata](/cli/azure/policy/metadata) コマンドを参照してください。
 
 > [!IMPORTANT]
-> 規制コンプライアンスのためのメタデータ オブジェクトは_読み取り専用_であるため、顧客が作成することはできません。
+> 規制コンプライアンスのためのメタデータ オブジェクトは _読み取り専用_ であるため、顧客が作成することはできません。
 
 ポリシー グループのメタデータには、`properties` ノードに次の情報が含まれています。
 
-- `metadataId`:グループ化に関連する**コントロール ID**。
-- `category` (必須):**コントロール**が含まれる **コンプライアンス ドメイン**。
-- `title` (必須):**コントロール ID**のフレンドリ名です。
+- `metadataId`:グループ化に関連する **コントロール ID**。
+- `category` (必須):**コントロール** が含まれる **コンプライアンス ドメイン**。
+- `title` (必須):**コントロール ID** のフレンドリ名です。
 - `owner` (必須):Azure でのコントロールの責任者を識別します。_顧客_、_Microsoft_、_共有_。
 - `description`:コントロールに関する追加情報。
 - `requirements`:コントロールの実装の責任についての詳細。

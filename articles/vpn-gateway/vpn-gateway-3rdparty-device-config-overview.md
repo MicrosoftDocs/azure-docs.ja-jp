@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: 484dad65310efaa60e8744b2f122b5e44ae13565
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98880154"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>パートナー VPN デバイス構成の概要
@@ -119,7 +119,7 @@ VPN デバイスが任意の環境間のトラフィック セレクター (ル�
 
 
 このサンプル スクリプトでは、次のアルゴリズムとパラメーターを使用して IPsec/IKE ポリシーが作成されます。
-* IKEv2: AES256、SHA384、DHGroup24
+* IKEv2:AES256、SHA384、DHGroup24
 * IPsec: AES256、SHA1、PFS24、SA の有効期間 7,200 秒および 20,480,000 KB (20 GB)
 
 このスクリプトでは、接続に IPsec/IKE ポリシーを適用して **UsePolicyBasedTrafficSelectors** オプションを有効にします。
@@ -142,7 +142,7 @@ S2S VPN 接続を作成するとき、必要に応じて [VPN ゲートウェイ
     New-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP5 -AddressPrefix $LNGPrefix50 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP5
     ```
 
-* 接続を作成するときに、 **-EnableBGP** オプションを $True に設定する必要があります。
+* 接続を作成するときに、**-EnableBGP** オプションを $True に設定する必要があります。
 
     ```powershell
     New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True

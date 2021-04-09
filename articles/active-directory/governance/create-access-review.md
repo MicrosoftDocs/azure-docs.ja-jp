@@ -2,7 +2,7 @@
 title: グループとアプリケーションのアクセス レビューを作成する - Azure AD
 description: グループ メンバーまたはアプリケーション アクセスのアクセス レビューを Azure Active Directory アクセス レビューで作成する方法について説明します。
 services: active-directory
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 12/07/2020
-ms.author: barclayn
+ms.date: 3/3/2021
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b12eb95a7840bdbb902701fc644eee30ffe9900f
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 7143c3f9786d41c32ae954ab219197a9cfaa1050
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778591"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176877"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>グループとアプリケーションのアクセス レビューを Azure AD アクセス レビューで作成する
 
@@ -80,7 +80,7 @@ ms.locfileid: "96778591"
     - **Group owner(s) (グループ所有者)** (チームまたはグループでレビューを実行する場合のみ使用可能)
     - **Selected user(s) or groups(s) (選択したユーザーまたはグループ)**
     - **Users review own access (ユーザーが自分のアクセスを確認する)**
-    - **(プレビュー) Managers of users (ユーザーの管理者)。**
+    - **ユーザーの管理者。**
     **[Managers of user]\(ユーザーの管理者\)** または **[Group owner(s)]\(グループ所有者\)** を選択した場合は、フォールバック レビュー担当者を指定することもできます。 フォールバック レビュー担当者は、ユーザーにディレクトリでマネージャーが指定されていないか、グループに所有者がいない場合に、レビューを行うように求められます。
 
     ![新しいアクセス レビュー](./media/create-access-review/new-access-review.png)

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
 ms.openlocfilehash: a9bcda4affa19cf8793cd078fdc5b96d842eb42b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92893598"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sd-elements"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SD Elements の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* SD Elements では、 **IDP** Initiated SSO がサポートされます
+* SD Elements では、**IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-sd-elements-from-the-gallery"></a>ギャラリーから SD Elements を追加します。
 
@@ -49,7 +49,7 @@ Azure AD への SD Elements の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **SD Elements** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**SD Elements**」と入力します。
 1. 結果のパネルから **[SD Elements]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -181,7 +181,7 @@ SD Elements で Azure AD SSO を構成してテストするには、次の構成
 
     b. **[First Name]\(名\)** テキストボックスに、ユーザーの名前 (名) を入力します (この例では **B.** )。
 
-    c. **[姓]** ボックスに、ユーザーの姓を入力します (この例では **Simon** )。
+    c. **[姓]** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
     d. **[ロール]** として **[ユーザー]** を選びます。
 

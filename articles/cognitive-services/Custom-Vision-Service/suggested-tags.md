@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: pafarley
 ms.openlocfilehash: 94ca47e6114e4f8c3485f6072facd07c25e4b96a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "73647761"
 ---
 # <a name="label-images-faster-with-smart-labeler"></a>Smart Labeler を使用して画像により早くラベルを付ける
@@ -41,13 +41,13 @@ ms.locfileid: "73647761"
     > [!TIP]
     > 後で提案を必要とするすべてのタグを使用するようにしてください。
 1. トレーニング プロセスを開始します。
-1. トレーニングが完了したら、 **[タグなし]** ビューに移動し、左側のウィンドウの **[Get suggested tags]\(推奨タグを取得\)** ボタンを選択します。
+1. トレーニングが完了したら、**[タグなし]** ビューに移動し、左側のウィンドウの **[Get suggested tags]\(推奨タグを取得\)** ボタンを選択します。
     > [!div class="mx-imgBorder"]
     > ![推奨タグのボタンはタグなし画像のタブの下に表示されます。](./media/suggested-tags/suggested-tags-button.png)
 1. 表示されるポップアップ ウィンドウで、候補として表示する画像の数を設定します。 タグなし画像の一部に対する最初のタグの提案のみを取得する必要があります。 このプロセスを反復処理するにつれて、タグの提案が改善されます。
 1. 推奨タグを確認し、正しくないものがあれば修正します。
     > [!TIP]
-    > 推奨タグ付きの画像は、予測不確実性によって並べ替えられます (低い値は信頼度が高いことを示します)。 並べ替え順序は、 **[Sort by uncertainty]\(不確実性で並べ替え\)** オプションを使用して変更できます。 順序を **[high to low]\(高から低\)** に設定すると、まず、不確実性の高い予測を修正してから、不確実性の低いものをすばやく確認できます。
+    > 推奨タグ付きの画像は、予測不確実性によって並べ替えられます (低い値は信頼度が高いことを示します)。 並べ替え順序は、**[Sort by uncertainty]\(不確実性で並べ替え\)** オプションを使用して変更できます。 順序を **[high to low]\(高から低\)** に設定すると、まず、不確実性の高い予測を修正してから、不確実性の低いものをすばやく確認できます。
     * 画像分類プロジェクトでは、タグの選択と確認をバッチで行うことができます。 特定の推奨タグによってビューをフィルター処理し、誤ってタグ付けされている画像を選択解除してから、残りをバッチで確認します。
         > [!div class="mx-imgBorder"]
         > ![フィルター設定された IC のバッチ モードで推奨タグが表示されています。](./media/suggested-tags/ic-batch-mode.png)

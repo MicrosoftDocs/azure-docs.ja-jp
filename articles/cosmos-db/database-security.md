@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: mjbrown
 ms.openlocfilehash: 19b4c8466e88159839ce1f43a5ba282b1bb3ec9e
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94636930"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のセキュリティ - 概要

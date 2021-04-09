@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/03/2021
 ms.author: jeedes
 ms.openlocfilehash: 9e233e30521e5c1fa05509fa6dc42a567f6ac4e2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101653101"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>チュートリアル:Bynder と Azure Active Directory の統合

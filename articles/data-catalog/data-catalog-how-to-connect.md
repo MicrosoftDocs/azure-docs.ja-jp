@@ -6,14 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 5c8c545f01eb0df53ce9677b7db6f931b4d21af9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: da3302ac25aaac6202f42cee400b307fc701fe50
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021930"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674973"
 ---
 # <a name="how-to-connect-to-data-sources"></a>データ ソースへの接続方法
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 ## <a name="introduction"></a>はじめに
 **Microsoft Azure Data Catalog** は、フル マネージドのクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。 つまり、 **Azure Data Catalog** を使用すると、ユーザーはデータ ソースを検出、理解、使用でき、組織は既存のデータからより多くの価値を引き出すことができます。 このシナリオの主な特徴はデータを使用することです。ユーザーがデータ ソースを検出しその目的を理解したら、次の手順としてデータ ソースに接続し、データを使用します。
 
@@ -59,5 +62,5 @@ Azure Data Catalog ポータルでデータ ソースの "開く" メニュー�
 ## <a name="summary"></a>まとめ
 **Azure Data Catalog** にデータ ソースを登録すると、構造メタデータと記述メタデータがデータ ソースから Catalog サービスにコピーされ、データの探索が可能になります。 データ ソースが登録され探索されると、ユーザーは **Azure Data Catalog** ポータルの "開く" メニューから、 または適切なデータ ツールを使用してデータソースに接続できるようになります。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 * [Azure Data Catalog の概要](data-catalog-get-started.md) 」チュートリアルをご覧ください。

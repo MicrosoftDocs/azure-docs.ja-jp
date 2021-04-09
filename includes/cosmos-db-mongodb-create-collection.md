@@ -9,10 +9,10 @@ ms.date: 04/15/2020
 ms.author: lbosq
 ms.custom: include file
 ms.openlocfilehash: 37cdb6b466417add8dae69464304ce2f32247c8d
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95556063"
 ---
 Azure portal でデータ エクスプローラー ツールを使用して、Azure Cosmos DB の MongoDB データベースとコンテナー用の API を作成できるようになりました。 

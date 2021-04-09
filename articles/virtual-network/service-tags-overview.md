@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 41db671e4ab76dc56dc2c01f4852640acfe3fd83
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 18b79b105bcc4b5b0b65fc6f7d6b602ffff55561
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389741"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455824"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
@@ -53,6 +53,7 @@ ms.locfileid: "100389741"
 | **AzureActiveDirectory** | Azure Active Directory。 | 送信 | いいえ | はい |
 | **AzureActiveDirectoryDomainServices** | Azure Active Directory Domain Services 専用デプロイのための管理トラフィック。 | 両方 | いいえ | はい |
 | **AzureAdvancedThreatProtection** | Azure Advanced Threat Protection。 | 送信 | いいえ | いいえ |
+| **AzureAPIForFHIR** | Azure API for FHIR (高速ヘルスケア相互運用性リソース)。<br/><br/> *注: 現在、このタグは Azure portal で構成することはできません。*| 送信 | いいえ | いいえ |
 | **AzureArcInfrastructure** | Azure Arc 対応サーバー、Azure Arc 対応 Kubernetes、ゲスト構成トラフィック。<br/><br/>*注:* このタグは、**AzureActiveDirectory**、**AzureTrafficManager**、**AzureResourceManager** の各タグに依存しています。 *現在、このタグは Azure portal で構成することはできません。*| 送信 | いいえ | はい |
 | **AzureBackup** |Azure Backup。<br/><br/>*注:* このタグは、**Storage** タグと **AzureActiveDirectory** タグに依存します。 | 送信 | いいえ | はい |
 | **AzureBotService** | Azure Bot Service。 | 送信 | いいえ | いいえ |
@@ -130,7 +131,7 @@ ms.locfileid: "100389741"
 サービス タグの現在の一覧を IP アドレス範囲の詳細と共にプログラムで取得できます。
 
 - [REST](/rest/api/virtualnetwork/servicetags/list)
-- [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag?viewFallbackFrom=azps-2.3.2)
+- [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
 - [Azure CLI](/cli/azure/network#az-network-list-service-tags)
 
 > [!NOTE]
@@ -152,7 +153,7 @@ ms.locfileid: "100389741"
 
 ### <a name="tips"></a>ヒント 
 - ある公開からその次の公開に更新されたかどうかは、JSON ファイル内の *changeNumber* の値の増加に注目することで理解できます。 各サブセクション (たとえば **Storage.WestUS**) には、変更が発生するたびに増えていく固有の *changeNumber* があります。 ファイルの *changeNumber* の最上位レベルは、サブセクションのいずれかが変更されると増加します。
-- サービス タグ情報を解析する方法の例 (WestUS のストレージについてのすべてのアドレス範囲を取得する方法など) については、[Service Tag Discovery API PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag?viewFallbackFrom=azps-2.3.2) のドキュメントを参照してください。
+- サービス タグ情報を解析する方法の例 (WestUS のストレージについてのすべてのアドレス範囲を取得する方法など) については、[Service Tag Discovery API PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag) のドキュメントを参照してください。
 - 新しい IP アドレスがサービス タグに追加されると、それらは少なくとも 1 週間は Azure で使用されません。 これにより、サービス タグに関連付けられた IP アドレスを追跡する必要がある可能性のあるシステムを更新する時間が得られます。
 
 ## <a name="next-steps"></a>次のステップ

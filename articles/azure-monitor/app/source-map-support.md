@@ -7,10 +7,10 @@ ms.author: daberry
 ms.date: 06/23/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 79462dcb503e5835254b89f7ebaa7a9ee34946d3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98933935"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>JavaScript アプリケーションに対するソース マップのサポート

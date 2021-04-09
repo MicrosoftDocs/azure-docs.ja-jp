@@ -4,10 +4,10 @@ description: ユーザーが選択した成果物のラボの仮想マシン (VM
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 0677f8bea35cb34735fdcf34e717eea349fad8bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85480305"
 ---
 # <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>Azure DevTest Labs のラボに対する必須成果物を指定する
@@ -20,27 +20,27 @@ ms.locfileid: "85480305"
 ## <a name="specify-mandatory-artifacts"></a>必須アーティファクトの指定
 Windows マシンと Linux マシン用の必須成果物を個別に選択できます。 適用する順序に応じて、これらの成果物の順序を変更することもできます。 
 
-1. ラボの [ホーム] ページで、 **[設定]** の下の **[構成とポリシー]** を選択します。 
+1. ラボの [ホーム] ページで、**[設定]** の下の **[構成とポリシー]** を選択します。 
 3. **[外部リソース]** の下の **[Mandatory artifacts]\(必須成果物\)** を選択します。 
-4. **[Windows]** セクションまたは **[Linux]** セクションの **[編集]** を選択します。 この例では、 **[Windows]** オプションを使用します。 
+4. **[Windows]** セクションまたは **[Linux]** セクションの **[編集]** を選択します。 この例では、**[Windows]** オプションを使用します。 
 
     ![[Mandatory artifacts]\(必須成果物\) ページ - [編集] ボタン](media/devtest-lab-mandatory-artifacts/mandatory-artifacts-edit-button.png)
-4. 成果物を選択します。 この例では、 **[7-Zip]** オプションを使用します。 
-5. **[成果物の追加]** ページで、 **[追加]** を選択します。 
+4. 成果物を選択します。 この例では、**[7-Zip]** オプションを使用します。 
+5. **[成果物の追加]** ページで、**[追加]** を選択します。 
 
     ![[Mandatory artifacts]\(必須成果物\) ページ - [7-Zip] の追加](media/devtest-lab-mandatory-artifacts/add-seven-zip.png)
-6. 別の成果物を追加するには、成果物を選択し、 **[追加]** を選択します。 この例では、2 番目の必須成果物として **[Chrome]** を追加します。
+6. 別の成果物を追加するには、成果物を選択し、**[追加]** を選択します。 この例では、2 番目の必須成果物として **[Chrome]** を追加します。
 
     ![[Mandatory artifacts]\(必須成果物\) ページ - [Chrome] の追加](media/devtest-lab-mandatory-artifacts/add-chrome.png)
-7. **Mandatory artifacts\(必須成果物\)** ページに、選択した成果物の数を示すメッセージが表示されます。 このメッセージをクリックすると、選択した成果物が表示されます。 **[保存]** を選択して変更を保存します。 
+7. **[Mandatory artifacts]\(必須成果物\)**] ページに、選択した成果物の数を示すメッセージが表示されます。 このメッセージをクリックすると、選択した成果物が表示されます。 **[保存]** を選択して変更を保存します。 
 
     ![[Mandatory artifacts]\(必須成果物\) ページ - 成果物の保存](media/devtest-lab-mandatory-artifacts/save-artifacts.png)
 8. Linux VM 用の必須成果物を指定するには、これらの手順を繰り返します。 
     
     ![[Mandatory artifacts]\(必須成果物\) ページ - Windows と Linux の成果物](media/devtest-lab-mandatory-artifacts/windows-linux-artifacts.png)
-9. 一覧から成果物を**削除**するには、行の末尾にある **[...]** (省略記号) を選択し、 **[削除]** を選択します。 
-10. 一覧の成果物を**並べ替える**には、成果物の上にマウスを移動し、行の先頭に表示される **[...]** (省略記号) を選択し、項目を新しい位置にドラッグします。 
-11. 必須成果物をラボに保存するには、 **[保存]** を選択します。 
+9. 一覧から成果物を **削除** するには、行の末尾にある **[...]** (省略記号) を選択し、**[削除]** を選択します。 
+10. 一覧の成果物を **並べ替える** には、成果物の上にマウスを移動し、行の先頭に表示される **[...]** (省略記号) を選択し、項目を新しい位置にドラッグします。 
+11. 必須成果物をラボに保存するには、**[保存]** を選択します。 
 
     ![[Mandatory artifacts]\(必須成果物\) ページ - ラボへの成果物の保存](media/devtest-lab-mandatory-artifacts/save-to-lab.png)
 12. **[構成とポリシー]** ページを閉じて (右上隅にある **[X]** を選択して)、ラボのホーム ページに戻ります。  
@@ -50,14 +50,14 @@ Windows マシンと Linux マシン用の必須成果物を個別に選択で�
 
 1. **[設定]** の下の **[構成とポリシー]** を選択します。 
 2. **[外部リソース]** の下の **[Mandatory artifacts]\(必須成果物\)** を選択します。 
-3. **[Windows]** セクションまたは **[Linux]** セクションの **[編集]** を選択します。 この例では、 **[Windows]** オプションを使用します。 
+3. **[Windows]** セクションまたは **[Linux]** セクションの **[編集]** を選択します。 この例では、**[Windows]** オプションを使用します。 
 4. 上部にある必須成果物の数を示しているメッセージを選択します。 
 
     ![[Mandatory artifacts]\(必須成果物\) ページ - メッセージの選択](media/devtest-lab-mandatory-artifacts/select-message-artifacts.png)
-5. **[選択した成果物]** ページで、削除する成果物の **[...]** (省略記号) を選択し、 **[削除]** を選択します。 
+5. **[選択した成果物]** ページで、削除する成果物の **[...]** (省略記号) を選択し、**[削除]** を選択します。 
     
     ![[Mandatory artifacts]\(必須成果物\) ページ - 成果物の削除](media/devtest-lab-mandatory-artifacts/remove-artifact.png)
-6. **[OK]** を選択して、 **[選択した成果物]** ページを閉じます。 
+6. **[OK]** を選択して、**[選択した成果物]** ページを閉じます。 
 7. **[Mandatory artifacts]\(必須成果物\)** ページで **[保存]** を選択します。
 8. 必要に応じて、**Linux** イメージに対してこれらの手順を繰り返します。 
 9. **[保存]** を選択して、すべての変更をラボに保存します。 
@@ -66,11 +66,11 @@ Windows マシンと Linux マシン用の必須成果物を個別に選択で�
 ここでは、ラボ ユーザーとして、ラボ内に VM を作成するときに、必須成果物の一覧を表示できます。 ラボ所有者によってラボに設定されている必須成果物は、編集することも削除することもできません。
 
 1. ラボの [ホーム] ページで、メニューから **[概要]** を選択します。
-2. VM をラボに追加するには、 **[+ 追加]** を選択します。 
-3. **[基本イメージ]** を選択します。 この例では、 **[Windows Server, version 1709]** を使用します。
+2. VM をラボに追加するには、**[+ 追加]** を選択します。 
+3. **[基本イメージ]** を選択します。 この例では、**[Windows Server, version 1709]** を使用します。
 4. **[成果物]** に、選択された必須成果物の数を示すメッセージが表示されます。 
 5. **[アーティファクト]** を選択します。 
-6. ラボの構成とポリシーに指定されている**必須成果物**の表示を確認します。 
+6. ラボの構成とポリシーに指定されている **必須成果物** の表示を確認します。 
 
     ![VM の作成 - 必須成果物](media/devtest-lab-mandatory-artifacts/create-vm-artifacts.png)
 

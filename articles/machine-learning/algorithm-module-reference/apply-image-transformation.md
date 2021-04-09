@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: a64d5cebfd8e70e2f54a66193a7041c47887c54a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90898911"
 ---
 # <a name="apply-image-transformation"></a>イメージ変換の適用 
@@ -24,9 +24,9 @@ ms.locfileid: "90898911"
 
 ## <a name="how-to-use-apply-image-transformation"></a>イメージ変換の適用の使用方法  
 
-1. **イメージ変換の適用**モジュールをパイプラインに追加します。 このモジュールは *[Computer Vision/Image Data Transformation]\(Computer Vision/イメージ データ変換\)* カテゴリにあります。 
+1. **イメージ変換の適用** モジュールをパイプラインに追加します。 このモジュールは *[Computer Vision/Image Data Transformation]\(Computer Vision/イメージ データ変換\)* カテゴリにあります。 
 
-2. **イメージ変換の初期化**の出力を**イメージ変換の適用**の左側の入力に接続します。
+2. **イメージ変換の初期化** の出力を **イメージ変換の適用** の左側の入力に接続します。
 
      > [!NOTE]
      > このモジュールには、[イメージ変換の初期化](init-image-transformation.md)モジュールによって生成されたイメージ変換のみが受け入れられます。 その他の種類の変換の場合は、それを [変換の適用](apply-transformation.md)に接続してください。そうしないと、'InvalidTransformationDirectoryError' がスローされます。

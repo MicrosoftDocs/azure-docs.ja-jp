@@ -4,10 +4,10 @@ description: Azure Portal を使って Azure DevTest Labs でライセンスさ�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: e2b6e495be2257548782143517f5a970b424860c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91276358"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボのライセンスされたイメージの有効化
@@ -43,7 +43,7 @@ Azure DevTest Labs では、ライセンスされたイメージとは、イメ�
 
 次の手順に従って、ライセンスされたイメージのプログラムによるデプロイを有効にすることができます。
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) で、**Marketplace イメージ**の一覧に移動します。
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) で、**Marketplace イメージ** の一覧に移動します。
 
 1. ユーザーがアクセスできるようにしたいが条件に同意されていないライセンスされたイメージを特定します。 たとえば、 **[同意した条件]** または **[確認が必要な条件]** のいずれかの状態を示すデータ サイエンス仮想マシンが表示される可能性があります。
 

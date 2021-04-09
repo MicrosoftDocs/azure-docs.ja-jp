@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/30/2019
 ms.openlocfilehash: 2d6e660459d9f350cc5c63fb8d312bcbcb300a64
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98930755"
 ---
-# <a name="scenario-apache-hive-zeppelin-interpreter-gives-a-zookeeper-error-in-azure-hdinsight"></a>シナリオ:Azure HDInsight で Apache Hive Zeppelin インタープリターから Zookeeper エラーが発生する
+# <a name="scenario-apache-hive-zeppelin-interpreter-gives-a-zookeeper-error-in-azure-hdinsight"></a>シナリオ: Azure HDInsight で Apache Hive Zeppelin インタープリターから Zookeeper エラーが発生する
 
 この記事では、Azure HDInsight クラスターで Interactive Query コンポーネントを使用するときのトラブルシューティングの手順と問題の可能な解決策について説明します。
 
@@ -27,7 +27,7 @@ java.sql.SQLException: org.apache.hive.jdbc.ZooKeeperHiveClientException: Unable
 
 The Zeppelin Hive JDBC Interpreter is pointing to the wrong URL. (Zeppelin Hive JDBC インタープリターが間違った URL を指しています。)
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
 1. Hive コンポーネントの概要に移動し、"Hive JDBC Url" をクリップボードにコピーします。
 

@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:デスクトップ アプリのサインインを設定する
+title: 'クイック スタート: デスクトップ アプリのサインインを設定する'
 titleSuffix: Azure AD B2C
 description: このクイックスタートでは、Azure Active Directory B2C を使用してアカウント サインインを提供するサンプル WPF デスクトップ アプリケーションを実行します。
 services: active-directory-b2c
@@ -13,13 +13,13 @@ ms.date: 09/12/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ebed2f5e8664bd4336219f9387b8d27c8f3a1c59
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78187306"
 ---
-# <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>クイック スタート:Azure Active Directory B2C を使用したデスクトップ アプリのサインインの設定
+# <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>クイック スタート: Azure Active Directory B2C を使用したデスクトップ アプリのサインインの設定
 
 Azure Active Directory B2C (Azure AD B2C) は、アプリケーション、ビジネス、顧客を保護するためのクラウド ID 管理を提供します。 Azure AD B2C に対応したアプリケーションは、オープンな標準プロトコルを使用し、ソーシャル アカウントやエンタープライズ アカウントで認証を行うことができます。 このクイック スタートでは、WPF (Windows Presentation Foundation) デスクトップ アプリケーションにソーシャル ID プロバイダーを使ってサインインし、Azure AD B2C で保護された Web API を呼び出します。
 
@@ -27,7 +27,7 @@ Azure Active Directory B2C (Azure AD B2C) は、アプリケーション、ビ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- **[ASP.NET および Web の開発]** ワークロードを含む [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) と **ASP.NET と Web 開発** ワークロード。
 - Facebook、Google、Microsoft のいずれかのソーシャル アカウント。
 - GitHub から [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/msalv3.zip)するか、[Azure-Samples/active-directory-b2c-dotnet-desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) リポジトリをクローンします。
 
@@ -69,7 +69,7 @@ Azure AD B2C には、ユーザーが自分のプロファイルを更新する�
 
 2. 作成したアカウントに関連付けられている ID プロバイダーを選択します。 たとえば、アカウントの作成時に ID プロバイダーとして Facebook を使用した場合は、Facebook を選択して、関連付けられているプロファイルの詳細を変更します。
 
-3. **表示名**や**都市**を変更し、 **[Continue]\(続行\)** をクリックします。
+3. **表示名** や **都市** を変更し、**[Continue]\(続行\)** をクリックします。
 
     新しいアクセス トークンが *[Token info]\(トークン情報\)* テキスト ボックスに表示されます。 プロファイルに対する変更を確認する場合は、アクセス トークンをコピーしてトークン デコーダー https://jwt.ms に貼り付けます。
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/16/2020
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: 0ed5a4aa8993f52d42b97288cd143e6114ff36ff
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97033308"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>サービス マニフェストにリソースを指定する

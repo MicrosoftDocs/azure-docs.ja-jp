@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: abd27e15ccf5b421e69e78b2b726d192ffdecacb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92372363"
 ---
 # <a name="connect-to-azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance に接続する
@@ -47,7 +47,7 @@ AKS、kubeadm、OpenShift などを使用している場合は、ここから外
 
 Azure Data Studio または SQL Server Management Studio、または SQLCMD を使用して接続する
 
-Azure Data Studio を開き、上記の外部エンドポイント IP アドレスとポート番号を使用してインスタンスに接続します。 Azure VM を使用している場合は、 _パブリック_ IP アドレスが必要になります。これを識別する方法については、「 [Azure 仮想マシンのデプロイに関する特別な注意事項](#special-note-about-azure-virtual-machine-deployments)」を参照してください。
+Azure Data Studio を開き、上記の外部エンドポイント IP アドレスとポート番号を使用してインスタンスに接続します。 Azure VM を使用している場合は、_パブリック_ IP アドレスが必要になります。これを識別する方法については、「[Azure 仮想マシンのデプロイに関する特別な注意事項](#special-note-about-azure-virtual-machine-deployments)」を参照してください。
 
 次に例を示します。
 
@@ -82,7 +82,7 @@ az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o 
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
-NSG の名前を取得したら、次のコマンドを使用してファイアウォール規則を追加できます。 この例の値は、ポート 30913 に対する NSG 規則を作成し、 **任意の** ソース IP アドレスからの接続を許可します。  これは、セキュリティ上、ベスト プラクティスとはいえません。  クライアントの IP アドレスや、チームまたは組織の IP アドレスが含まれる IP アドレス範囲に固有の -source-address-prefixes 値を指定すると、適切にロックダウンできます。
+NSG の名前を取得したら、次のコマンドを使用してファイアウォール規則を追加できます。 この例の値は、ポート 30913 に対する NSG 規則を作成し、**任意の** ソース IP アドレスからの接続を許可します。  これは、セキュリティ上、ベスト プラクティスとはいえません。  クライアントの IP アドレスや、チームまたは組織の IP アドレスが含まれる IP アドレス範囲に固有の -source-address-prefixes 値を指定すると、適切にロックダウンできます。
 
 次の `--destination-port-ranges` パラメーターの値を、上記の `azdata sql instance list`F コマンドから受け取ったポート番号に置き換えます。
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 59dfd1020b65923ebbcee6bc8c80fab92f23b4f1
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92635968"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>チュートリアル: Azure Active Directory と Vibe HCM の統合
@@ -41,7 +41,7 @@ Vibe HCM と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Vibe HCM では、 **SP** と **IDP** によって開始される SSO がサポートされます
+* Vibe HCM では、**SP** と **IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-vibe-hcm-from-the-gallery"></a>ギャラリーからの Vibe HCM の追加
 
@@ -61,13 +61,13 @@ Azure AD への Vibe HCM の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Vibe HCM** 」と入力し、結果パネルで **[Vibe HCM]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Vibe HCM**」と入力し、結果パネルで **[Vibe HCM]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧での Vibe HCM](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Vibe HCM で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Vibe HCM で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Vibe HCM 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Vibe HCM で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ Vibe HCM で Azure AD のシングル サインオンを構成してテストす
 
 Vibe HCM で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Vibe HCM** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Vibe HCM** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -97,7 +97,7 @@ Vibe HCM で Azure AD シングル サインオンを構成するには、次の
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **IDP** 開始モードでアプリケーションを構成する場合は、アプリケーションが Azure と既に統合されているため、 **[基本的な SAML 構成]** セクションで実行する必要がある手順はありません。
+4. **IDP** 開始モードでアプリケーションを構成する場合は、アプリケーションが Azure と既に統合されているため、**[基本的な SAML 構成]** セクションで実行する必要がある手順はありません。
 
     ![スクリーンショットは、[メタデータ ファイルをアップロードする] リンクを含む、[基本的な SAML 構成] を示しています。](common/preintegrated.png)
 
@@ -116,7 +116,7 @@ Vibe HCM で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="configure-vibe-hcm-single-sign-on"></a>Vibe HCM シングル サインオンの構成
 
-**Vibe HCM** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Vibe HCM サポート チーム](mailto:support@vibehcm.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Vibe HCM** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Vibe HCM サポート チーム](mailto:support@vibehcm.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -134,7 +134,7 @@ Vibe HCM で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -146,7 +146,7 @@ Vibe HCM で Azure AD シングル サインオンを構成するには、次の
 
 このセクションでは、Britta Simon に Vibe HCM へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Vibe HCM]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Vibe HCM]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

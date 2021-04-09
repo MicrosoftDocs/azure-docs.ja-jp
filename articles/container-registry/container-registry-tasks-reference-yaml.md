@@ -4,10 +4,10 @@ description: YAML で ACR タスク用のタスクを定義するための参照
 ms.topic: article
 ms.date: 07/08/2020
 ms.openlocfilehash: 042310d29f5561c2cd77b0b9cccfc587ca4aa767
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88067585"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR タスクの参照:YAML
@@ -20,7 +20,7 @@ ACR タスクでの複数ステップのタスク定義では、コンテナー�
 
 ACR タスクでは、標準の YAML 構文で複数ステップのタスク宣言をサポートしています。 タスクのステップは YAML ファイルで定義します。 その後、ファイルを [az acr run][az-acr-run] コマンドに渡すことでタスクを手動で実行できます。 または、このファイルを使用して、Git コミットやベース イメージの更新時、またはスケジュールに基づいて自動的にトリガーされる [az acr task create][az-acr-task-create] でタスクを作成します。 この記事では、ステップを含むファイルとして `acr-task.yaml` を参照していますが、ACR タスクは、[サポートされる拡張子](#supported-task-filename-extensions)を持つ任意の有効なファイル名をサポートしています。
 
-最上位レベルの `acr-task.yaml` プリミティブは、**タスク プロパティ**、**ステップの種類**、および**ステップ プロパティ**です。
+最上位レベルの `acr-task.yaml` プリミティブは、**タスク プロパティ**、**ステップの種類**、および **ステップ プロパティ** です。
 
 * [タスク プロパティ](#task-properties)は、タスクの実行を通じてすべてのステップに適用されます。 次を含む複数のグローバル タスク プロパティがあります。
   * `version`
@@ -51,7 +51,7 @@ steps: # A collection of image or container actions.
 
 ### <a name="supported-task-filename-extensions"></a>サポートされているタスクのファイル名拡張子
 
-ACR タスクでは、タスク ファイルとして処理する、複数のファイル名拡張子 (`.yaml` など) が予約されています。 次の一覧内に*ない*拡張子は、ACR タスクではすべて Dockerfile と見なされます: .yaml .yml、.toml、.json、.sh、.bash、.zsh、.ps1、.ps、.cmd、.bat、.ts、.js、.php、.py、.rb .lua
+ACR タスクでは、タスク ファイルとして処理する、複数のファイル名拡張子 (`.yaml` など) が予約されています。 次の一覧内に *ない* 拡張子は、ACR タスクではすべて Dockerfile と見なされます: .yaml .yml、.toml、.json、.sh、.bash、.zsh、.ps1、.ps、.cmd、.bat、.ts、.js、.php、.py、.rb .lua
 
 YAML は、ACR タスクで現在サポートされている唯一のファイル形式です。 その他のファイル名拡張子は、将来のサポートの可能性のために予約されています。
 

@@ -3,15 +3,15 @@ title: 概要 - Azure Database for MariaDB
 description: MySQL Community Edition をベースとした、Microsoft クラウドのリレーショナル データベース サービス、Azure Database for MariaDB サービスについて説明します。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
 ms.date: 3/18/2020
-ms.openlocfilehash: 7c365dee2b3ac32a62b38d0b3273f2f13e402936
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 8115625099543d378728a6313a8cc4c95fec0cd2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98662019"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Azure Database for MariaDB とは
@@ -53,7 +53,7 @@ Azure の業界をリードする可用性 99.99% の SLA は、Microsoft が管
 
 ## <a name="secure-your-data"></a>データのセキュリティ保護
 
-Azure データベース サービスは、Azure Database for MariaDB によって、データ セキュリティを維持してきました。 アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能が Azure Database for MariaDB には備わっています。 Azure のプラットフォーム セキュリティについては、[Azure Trust Center](https://www.microsoft.com/trustcenter/security)をご覧ください。 Azure Database for MariaDB のセキュリティ機能の詳細については、[セキュリティの概要](concepts-security.md)に関するページを参照してください。
+Azure データベース サービスは、Azure Database for MariaDB によって、データ セキュリティを維持してきました。 アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能が Azure Database for MariaDB には備わっています。 Azure のプラットフォーム セキュリティについては、[Azure セキュリティ センター](https://www.microsoft.com/trustcenter/security)をご覧ください。 Azure Database for MariaDB のセキュリティ機能の詳細については、[セキュリティの概要](concepts-security.md)に関するページを参照してください。
 
 ## <a name="contacts"></a>連絡先
 

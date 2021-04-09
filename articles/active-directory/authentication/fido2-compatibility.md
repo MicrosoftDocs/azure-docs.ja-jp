@@ -11,12 +11,12 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e5eb77a27a7c74ad9738a0e1784066a6a859e43
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3f90edd5729ff5229be09bc3798082c33bdeead2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175370"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102632103"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>FIDO2 パスワードレス認証のブラウザー サポート
 
@@ -54,8 +54,7 @@ Azure Active Directory では、[FIDO2 セキュリティ キー](./concept-auth
 | ---- | ---- |
 | Chrome | 76 |
 | Edge | Windows 10 バージョン 1903<sup>1</sup> |
-| Firefox | Chrome |
-| ChromeOS | 66 |
+| Firefox | 66 |
 
 <sup>1</sup>Chromium ベースの新しい Microsoft Edge では、すべてのバージョンが FIDO2 をサポートしています。 Microsoft Edge レガシでのサポートは 1903 で追加されました。
 

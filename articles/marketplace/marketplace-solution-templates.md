@@ -8,10 +8,10 @@ author: msjogarrig
 ms.author: jogarrig
 ms.date: 04/22/2020
 ms.openlocfilehash: c7074981c8491460d6f2a8e7d40d086f261dfeb3
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98879345"
 ---
 # <a name="publishing-guide-for-azure-applications-solution-template-offers"></a>Azure アプリケーション ソリューション テンプレート プランの発行ガイド

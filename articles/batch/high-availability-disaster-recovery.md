@@ -4,10 +4,10 @@ description: リージョン障害に対処できるように Batch アプリケ
 ms.topic: how-to
 ms.date: 12/30/2020
 ms.openlocfilehash: 51bcb0cfa35aacd24c0f79082491ef1fc7040889
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97831008"
 ---
 # <a name="design-your-batch-application-for-high-availability"></a>高可用性を実現するように Batch アプリケーションを設計する

@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: aahi
 ms.openlocfilehash: c882e3e4d0cd6ba594a700f4fd53c14103a8d1d1
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94381254"
 ---
 # <a name="web-search-endpoint"></a>Web Search エンドポイント
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
-**Web Search API** は、Web ページ、ニュース、画像、動画、 [エンティティ](../bing-entities-search/overview.md)を返します。 エンティティには、人物、場所、またはトピックに関する概要情報があります。
+**Web Search API** は、Web ページ、ニュース、画像、動画、[エンティティ](../bing-entities-search/overview.md)を返します。 エンティティには、人物、場所、またはトピックに関する概要情報があります。
 
 ## <a name="endpoint"></a>エンドポイント
 

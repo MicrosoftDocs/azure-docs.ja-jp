@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecfa9186ef42d4822c9b3053d76b7c0160841621
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 1fc0c4bf9f71a8fe7e8cf49b83d32ac594dbe062
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740399"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103011395"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>スコープ付きロールを管理単位に割り当てる
 
@@ -72,23 +72,27 @@ Azure portal、PowerShell、または Microsoft Graph を使用して、スコ�
 ### <a name="use-powershell"></a>PowerShell の使用
 
 ```powershell
-$AdminUser = Get-AzureADUser -ObjectId "Use the user's UPN, who would be an admin on this unit"
-$Role = Get-AzureADDirectoryRole | Where-Object -Property DisplayName -EQ -Value "User Account Administrator"
-$administrativeUnit = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
-$RoleMember = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo
-$RoleMember.ObjectId = $AdminUser.ObjectId
-Add-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
+$adminUser = Get-AzureADUser -ObjectId "Use the user's UPN, who would be an admin on this unit"
+$role = Get-AzureADDirectoryRole | Where-Object -Property DisplayName -EQ -Value "User Account Administrator"
+$adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+$roleMember = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo
+$roleMember.ObjectId = $adminUser.ObjectId
+Add-AzureADMSScopedRoleMembership -ObjectId $adminUnitObj.ObjectId -RoleObjectId $role.ObjectId -RoleMemberInfo $roleMember
 ```
 
 強調表示されているセクションを、特定の環境で必要なように変更できます。
 
 ### <a name="use-microsoft-graph"></a>Microsoft Graph の使用
 
+要求
+
 ```http
-Http request
-POST /directory/administrativeUnits/{id}/scopedRoleMembers
+POST /directory/administrativeUnits/{admin-unit-id}/scopedRoleMembers
+```
     
-Request body
+Body
+
+```http
 {
   "roleId": "roleId-value",
   "roleMemberInfo": {
@@ -114,18 +118,23 @@ Azure portal、PowerShell、または Microsoft Graph を使用して、スコ�
 ### <a name="use-powershell"></a>PowerShell の使用
 
 ```powershell
-$administrativeUnit = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
-Get-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
+$adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+Get-AzureADMSScopedRoleMembership -ObjectId $adminUnitObj.ObjectId | fl *
 ```
 
 強調表示されているセクションを、ご利用の環境で必要なように変更できます。
 
 ### <a name="use-microsoft-graph"></a>Microsoft Graph の使用
 
+要求
+
 ```http
-Http request
-GET /directory/administrativeUnits/{id}/scopedRoleMembers
-Request body
+GET /directory/administrativeUnits/{admin-unit-id}/scopedRoleMembers
+```
+
+Body
+
+```http
 {}
 ```
 

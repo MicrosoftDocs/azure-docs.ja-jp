@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 12/10/2020
 ms.custom: mvc
 ms.openlocfilehash: 6e8effee91eed73193319238c2ad2f6eaf6d0473
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102211279"
 ---
 # <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>チュートリアル:Azure Database for PostgreSQL - フレキシブル サーバーを使用して Django アプリを AKS にデプロイする

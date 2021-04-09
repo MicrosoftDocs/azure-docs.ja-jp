@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1ee631e3e4a13a18bb61ee6237ff67a49f663179
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 545331fdea56aef3d7b9dac8062d4fc2d6891254
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693902"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102501570"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールのストレージ アカウント アクセスを制御する
 
@@ -104,14 +104,14 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 
 ストレージ アカウントのファイアウォールを構成し、Synapse ワークスペースの例外を追加するには、次の手順に従います。
 
-1. Powershell を開くか [PowerShell をインストール](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)します
-2. Az.Storage 3.0.1 モジュールと Az.Synapse 0.7.0 をインストールします。 
+1. Powershell を開くか [PowerShell をインストール](/powershell/scripting/install/installing-powershell-core-on-windows)します
+2. Az.Storage 3.4.0 モジュールと Az.Synapse 0.7.0 をインストールします。 
     ```powershell
-    Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    Install-Module -Name Az.Storage -RequiredVersion 3.4.0
     Install-Module -Name Az.Synapse -RequiredVersion 0.7.0
     ```
     > [!IMPORTANT]
-    > **バージョン 3.0.1** を使用していることを確認してください。 次のコマンドを実行して、Az.Storage のバージョンを確認できます。  
+    > **バージョン 3.4.0** を使用していることを確認してください。 次のコマンドを実行して、Az.Storage のバージョンを確認できます。  
     > ```powershell 
     > Get-Module -ListAvailable -Name  Az.Storage | select Version
     > ```

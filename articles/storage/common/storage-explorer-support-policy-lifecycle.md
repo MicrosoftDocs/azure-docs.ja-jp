@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: marayerm
 ms.openlocfilehash: dc89631208c6a72c4b48d49260f584149d6c4260
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97679937"
 ---
 # <a name="azure-storage-explorer-support-lifecycle-and-policy"></a>Azure Storage Explorer のサポート ライフサイクルとポリシー

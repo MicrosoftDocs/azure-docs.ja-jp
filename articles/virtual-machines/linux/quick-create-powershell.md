@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5711e3f406af04d0dc3a233031379c9ef18244ba
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 2cef611fe79ca04303840076b09b4cf6344b7e7d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102549653"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102616232"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>クイック スタート:PowerShell を使用して Azure に Linux 仮想マシンを作成する
 
@@ -34,7 +34,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 
 ```azurepowershell-interactive
-ssh-keygen -m PEM -t rsa -b 4096
+ssh-keygen -t rsa -b 4096
 ```
 
 キーの組のファイル名を入力するように求められます。または、**Enter** キーを押して、既定の場所 `/home/<username>/.ssh/id_rsa` を使用することもできます。 必要に応じて、キーのパスワードを作成することもできます。

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 392e930dcb69392b6f9425abba0efa516d5c82b8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94967059"
 ---
 # <a name="storsimple-virtual-array-update-04-release-notes"></a>StorSimple Virtual Array Update 0.4 のリリース ノート
@@ -53,7 +53,7 @@ Update 0.4 は、バグ修正を中心とするビルドですが、いくつか
 
 次の表に、このリリースで修正された問題の概要を示します。
 
-| いいえ。 | 機能 | 問題 |
+| いいえ。 | 特徴量 | 問題 |
 | --- | --- | --- |
 | 1 |バックアップ パフォーマンス|以前のリリースでは、大量のファイルを含むバックアップが完了するまでに長い時間がかかりました (数日単位)。 このリリースでは、完全バックアップと増分バックアップの両方で、完了までの時間が大幅に短縮されています。 |
 | 2 |サポート パッケージ|ディスク、CPU、メモリ、ネットワーク、およびクラウドの統計情報がサポート ログに記録されるようになり、あらゆるデバイスの問題のトラブルシューティングにサポート パッケージが非常に効果的な手段となりました。|
@@ -65,7 +65,7 @@ Update 0.4 は、バグ修正を中心とするビルドですが、いくつか
 
 次の表では、StorSimple Virtual Array の既知の問題の概要と、以前のリリースのリリース ノートに記載されていた問題を説明します。 
 
-| いいえ。 | 機能 | 問題 | 対応策/コメント |
+| いいえ。 | 特徴量 | 問題 | 対応策/コメント |
 | --- | --- | --- | --- |
 | **1.** |更新プログラム |プレビュー リリースで作成された仮想デバイスは、サポートされている一般提供版に更新することはできません。 |これらの仮想デバイスは、障害復旧 (DR) ワークフローを使用して一般提供リリースにフェールオーバーする必要があります。 |
 | **2.** |プロビジョニング済みのデータ ディスク |特定の指定されたサイズのデータ ディスクをプロビジョニングし、対応する StorSimple 仮想デバイスを作成した後は、データ ディスクを拡張または縮小することはできません。 これを行おうとすると、デバイスのローカル層のすべてのデータが失われます。 | |
@@ -87,7 +87,7 @@ Update 0.4 は、バグ修正を中心とするビルドですが、いくつか
 ## <a name="next-step"></a>次のステップ
 StorSimple Virtual Array に [Update 0.4 をインストール](storsimple-virtual-array-install-update-04.md)します。
 
-## <a name="references"></a>References
+## <a name="references"></a>リファレンス
 以前のリリース ノートをお探しですか。 参照先: 
 
 * [StorSimple Virtual Array Update 0.3 のリリース ノート](storsimple-ova-update-03-release-notes.md)

@@ -8,10 +8,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 08/30/2019
 ms.openlocfilehash: 7310c67ef20a4134d4f613ea969c96802958bf62
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96015232"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Azure Data Lake Analytics コードのテスト
@@ -26,7 +26,7 @@ U-SQL スクリプトは実行可能コードにコンパイルおよび最適�
 
 Azure Data Lake Tools for Visual Studio では、U-SQL スクリプトのテスト ケースを作成できます。
 
-1. ソリューション エクスプローラーで U-SQL スクリプトを右クリックし、 **[Create Unit Test]\(単体テストの作成\)** を選択します。
+1. ソリューション エクスプローラーで U-SQL スクリプトを右クリックし、**[Create Unit Test]\(単体テストの作成\)** を選択します。
 
 1. 新しいテスト プロジェクトを作成するか、既存のテスト プロジェクトにテスト ケースを挿入します。
 
@@ -34,7 +34,7 @@ Azure Data Lake Tools for Visual Studio では、U-SQL スクリプトのテス�
 
 ### <a name="manage-the-test-data-source"></a>テスト データ ソースの管理
 
-U-SQL スクリプトをテストするときは、テスト入力ファイルが必要です。 テスト データを管理するには、**ソリューション エクスプローラー** で、U-SQL プロジェクトを右クリックし、 **[プロパティ]** を選択します。 **[Test Data Source]\(テスト データ ソース\)** にソースを入力できます。
+U-SQL スクリプトをテストするときは、テスト入力ファイルが必要です。 テスト データを管理するには、**ソリューション エクスプローラー** で、U-SQL プロジェクトを右クリックし、**[プロパティ]** を選択します。 **[Test Data Source]\(テスト データ ソース\)** にソースを入力できます。
 
 ![Data Lake Tools for Visual Studio - プロジェクトのテスト データ ソースを構成する](./media/data-lake-analytics-cicd-test/data-lake-tools-configure-project-test-data-source.png)
 
@@ -52,7 +52,7 @@ U-SQL プロジェクトの U-SQL データベース プロジェクト参照を
 
 ### <a name="run-test-cases-in-visual-studio"></a>Visual Studio でのテスト ケースの実行
 
-U-SQL スクリプトのテスト プロジェクトは、C# 単体テスト フレームワークの上に構築されます。 プロジェクトをビルドしたら、 **[テスト]**  >  **[Windows]**  >  **[テスト エクスプローラー]** の順に選択します。 **テスト エクスプローラー** からテスト ケースを実行できます。 または、単体テスト内で .cs ファイルを右クリックし、 **[テストの実行]** を選択します。
+U-SQL スクリプトのテスト プロジェクトは、C# 単体テスト フレームワークの上に構築されます。 プロジェクトをビルドしたら、 **[テスト]**  >  **[Windows]**  >  **[テスト エクスプローラー]** の順に選択します。 **テスト エクスプローラー** からテスト ケースを実行できます。 または、単体テスト内で .cs ファイルを右クリックし、**[テストの実行]** を選択します。
 
 ## <a name="test-c-udos"></a>C# UDO のテスト
 
@@ -105,7 +105,7 @@ UDO 関数を呼び出した後、C# assert 関数を使用したスキーマお
 
 ### <a name="run-test-cases-in-visual-studio"></a>Visual Studio でのテスト ケースの実行
 
-プロジェクトをビルドしたら、 **[テスト]**  >  **[Windows]**  >  **[テスト エクスプローラー]** の順に選択します。 **テスト エクスプローラー** からテスト ケースを実行できます。 または、単体テスト内で .cs ファイルを右クリックし、 **[テストの実行]** を選択します。
+プロジェクトをビルドしたら、 **[テスト]**  >  **[Windows]**  >  **[テスト エクスプローラー]** の順に選択します。 **テスト エクスプローラー** からテスト ケースを実行できます。 または、単体テスト内で .cs ファイルを右クリックし、**[テストの実行]** を選択します。
 
 ## <a name="run-test-cases-in-azure-pipelines"></a>Azure Pipelines でのテスト ケースの実行<a name="run-test-cases-in-azure-devops"></a>
 
@@ -129,7 +129,7 @@ CPPSDK の依存関係を Azure Pipelines で準備する最も一般的な方�
 
 1. CPPSDK ライブラリを含むフォルダーを zip 圧縮します。
 
-1. ソース管理システムに .zip ファイルをチェックインします zip ファイルにより、`.gitignore` ファイルが理由でファイルが無視されることなく、CPPSDK フォルダー下のすべてのライブラリを確実にチェックインできます。
+1. ソース管理システムに .zip ファイルをチェックインします  zip ファイルにより、`.gitignore` ファイルが理由でファイルが無視されることなく、CPPSDK フォルダー下のすべてのライブラリを確実にチェックインできます。
 
 1. zip ファイルをビルド パイプラインに解凍します。
 

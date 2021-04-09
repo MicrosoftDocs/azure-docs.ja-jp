@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.openlocfilehash: f729828627fdb0be18f220d34227aac756ed4e13
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92894884"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>チュートリアル: Azure Active Directory と XaitPorter の統合
@@ -41,7 +41,7 @@ XaitPorter と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* XaitPorter では、 **SP** によって開始される SSO がサポートされます
+* XaitPorter では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-xaitporter-from-the-gallery"></a>ギャラリーから XaitPorter を追加する
 
@@ -67,7 +67,7 @@ Azure AD への XaitPorter の統合を構成するには、ギャラリーか�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、XaitPorter で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、XaitPorter で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと XaitPorter 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 XaitPorter で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -162,7 +162,7 @@ XaitPorter で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
 ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84691086"
 ---
 # <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリー後の VMware VM のフェールバック
@@ -21,7 +21,7 @@ ms.locfileid: "84691086"
 - 元の場所にフェールバックする 
 - 別の場所にフェールバックする
 
-オンプレミスにソース仮想マシンが残っているようであれば、VMware 仮想マシンをフェールオーバーする際に、元の仮想マシンにフェールバックできます。 このシナリオでは、変更部分のみがレプリケートされます。 このシナリオは、**元の場所への復旧**と呼ばれます。 オンプレミスの仮想マシンが存在しない場合、シナリオは**別の場所への復旧**となります。
+オンプレミスにソース仮想マシンが残っているようであれば、VMware 仮想マシンをフェールオーバーする際に、元の仮想マシンにフェールバックできます。 このシナリオでは、変更部分のみがレプリケートされます。 このシナリオは、**元の場所への復旧** と呼ばれます。 オンプレミスの仮想マシンが存在しない場合、シナリオは **別の場所への復旧** となります。
 
 > [!NOTE]
 > 元の vCenter および構成サーバーのみにフェールバックすることができます。 新しい構成サーバーをデプロイし、それを使ってフェールバックすることはできません。 また、新しい vCenter を既存の構成サーバーに追加し、新しい vCenter にフェールバックすることもできません。

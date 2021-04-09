@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b2342ed978204284bee4d2be0f1c983aa10ade36
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 35e8efa269ab72477b06e86824d368d0a3dced03
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585039"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103197322"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用した直接サインインの設定
 
@@ -79,7 +79,7 @@ Facebook、LinkedIn、Google などのソーシャル アカウントを含む�
 
 ::: zone pivot="b2c-custom-policy"
 
-ドメイン ヒンジ パラメーターをサポートするには、任意の `<ClaimsProvider>` の `<Domain>domain name</Domain>` XML 要素を使用してドメイン名を構成できます。
+ドメイン ヒント パラメーターをサポートするには、任意の `<ClaimsProvider>` の `<Domain>domain name</Domain>` XML 要素を使用してドメイン名を構成できます。
 
 ```xml
 <ClaimsProvider>

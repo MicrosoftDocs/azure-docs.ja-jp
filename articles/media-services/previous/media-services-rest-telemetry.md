@@ -3,7 +3,7 @@ title: REST での Azure Media Services テレメトリの構成 | Microsoft Doc
 description: この記事では、REST API を使用して Azure Media Services テレメトリを使用する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: e1a314fb-cc05-4a82-a41b-d1c9888aab09
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 7fec4a958e730c485c998d1f0591b8e4d61df050
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 37276240835fe1a06928ee54383f81fa95690ece
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264200"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103015491"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>REST での Azure Media Services テレメトリの構成
 

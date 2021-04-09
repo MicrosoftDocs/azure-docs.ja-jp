@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fc7bcab04da005fd0d46d18e7b708dcb1c9d58e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89230519"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Azure Monitor を使用して Azure Active Directory のログを ArcSight と統合する
@@ -41,7 +41,7 @@ ms.locfileid: "89230519"
 ## <a name="integrate-azure-ad-logs-with-arcsight"></a>Azure AD ログと ArcSight の統合
 
 1. まず構成ガイドの「**Prerequisites**」(前提条件) セクションの手順を完了します。 このセクションには、次の手順が記載されています。
-    * Azure でユーザー アクセス許可を設定し、コネクタのデプロイと構成を行うことができる**所有者**ロールを持つユーザーを用意します。
+    * Azure でユーザー アクセス許可を設定し、コネクタのデプロイと構成を行うことができる **所有者** ロールを持つユーザーを用意します。
     * Syslog NG Daemon SmartConnector がインストールされているサーバー上のポートを開き、Azure からアクセスできるようにします。 
     * デプロイによって Windows PowerShell スクリプトが実行されるため、コネクタをデプロイするマシン上で PowerShell がスクリプトを実行できるようにする必要があります。
 

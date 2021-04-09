@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/09/2020
 ms.author: allensu
 ms.openlocfilehash: c498a3d69b24fd104d24a3627a8e9d88b495c053
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91873967"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>Azure CDN from Verizon Premium ルール エンジンの条件式

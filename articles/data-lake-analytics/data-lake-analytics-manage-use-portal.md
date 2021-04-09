@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: c1057478d9ae7d63bef9477a0b1297fa2c507ffa
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92218427"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure portal を使用した Azure Data Lake Analytics の管理
@@ -28,9 +28,9 @@ ms.locfileid: "92218427"
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[リソースの作成]**  >  **[インテリジェンス + 分析]**  > **Data Lake Analytics** をクリックします。
 3. 次の項目の値を選択します。 
-   1. **Name** :Data Lake Analytics アカウントの名前。
-   2. **サブスクリプション** :アカウントに使用する Azure サブスクリプション。
-   3. **リソース グループ** :アカウントの作成先の Azure リソース グループ。 
+   1. **Name**:Data Lake Analytics アカウントの名前。
+   2. **サブスクリプション**:アカウントに使用する Azure サブスクリプション。
+   3. **リソース グループ**:アカウントの作成先の Azure リソース グループ。 
    4. **[場所]** :Data Lake Analytics アカウントの Azure データセンター。 
    5. **[Data Lake Store]** :Data Lake Analytics アカウントのために使用される既定のストア。 Azure Data Lake Store アカウントと Data Lake Analytics アカウントは、同じ場所にある必要があります。
 4. **Create** をクリックしてください。 
@@ -83,7 +83,7 @@ Azure Data Factory や VM など、他の Azure サービスが Data Lake Analyt
 1. Azure Portal で Data Lake Analytics アカウントに移動します。
 2. 左側の **[作業の開始]** で、 **[ユーザー追加ウィザード]** をクリックします。
 3. ユーザーを選択し、 **[選択]** をクリックします。
-4. ロールを選択し、 **[選択]** をクリックします。 Azure Data Lake を使用する新しい開発者を設定するには、 **Data Lake Analytics の開発者** ロールを選択します。
+4. ロールを選択し、 **[選択]** をクリックします。 Azure Data Lake を使用する新しい開発者を設定するには、**Data Lake Analytics の開発者** ロールを選択します。
 5. U-SQL データベースのアクセス制御リスト (ACL) を選択します。 正しく選択できたら、 **[選択]** をクリックします。
 6. ファイルの ACL を選択します。 既定のストアの場合は、ルート フォルダー "/" と /system フォルダーの ACL を変更しないでください。 **[選択]** をクリックします。
 7. 選択したすべての変更を確認し、 **[実行]** をクリックします。
@@ -94,9 +94,9 @@ Azure Data Factory や VM など、他の Azure サービスが Data Lake Analyt
 他の Azure サービスと同様に、Azure ロールベースのアクセス制御 (RBAC) を使用して、ユーザーがサービスと対話する方法を制御できます。
 
 標準の Azure ロールには、次のような機能があります。
-* **所有者** :ジョブの送信、ジョブの監視、任意のユーザーのジョブの取り消し、アカウントの構成を行えます。
-* **共同作成者** :ジョブの送信、ジョブの監視、任意のユーザーのジョブの取り消し、アカウントの構成を行えます。
-* **閲覧者** :ジョブを監視できます。
+* **所有者**:ジョブの送信、ジョブの監視、任意のユーザーのジョブの取り消し、アカウントの構成を行えます。
+* **共同作成者**:ジョブの送信、ジョブの監視、任意のユーザーのジョブの取り消し、アカウントの構成を行えます。
+* **閲覧者**:ジョブを監視できます。
 
 U-SQL 開発者が Data Lake Analytics サービスを使用できるようにするには、Data Lake Analytics の開発者ロールを使用します。 Data Lake Analytics の開発者ロールを使用すると、次の操作を行えます。
 * ジョブを送信する。

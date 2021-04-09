@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: 197423670ffe05f15fdc5bfd351efdfba33b53cd
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96533776"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する

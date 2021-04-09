@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 0720e6b55cec8150eea9d41ca89b2c9b21a0bc94
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c7948230164258aa785f3dd6c1f487c51ece9333
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287696"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102487187"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Azure Key Vault の証明書の更新
 
@@ -73,7 +73,10 @@ Azure Key Vault を使用すると、任意の CA から証明書をインポー
 Azure Key Vault は、自己署名証明書の自動更新にも対応しています。 発行ポリシーの変更と、証明書のライフサイクル属性の更新については、[Key Vault における証明書の自動ローテーションの構成](./tutorial-rotate-certificates.md#update-lifecycle-attributes-of-a-stored-certificate)に関するページを参照してください。
 
 ## <a name="troubleshoot"></a>トラブルシューティング
-発行された証明書が Azure portal で " *無効* " 状態になっている場合は、 **[証明書の操作]** に移動して、その証明書のエラー メッセージを確認します。
+* 発行された証明書が Azure portal で "*無効*" 状態になっている場合は、 **[証明書の操作]** に移動して、その証明書のエラー メッセージを確認します。
+* エラーの種類 "The CSR used to get your certificate has already been used. (証明書の取得に使用された CSR は既に使用されています。) Please try to generate a new certificate with a new CSR. (新しい CSR で新しい証明書を生成してください。)"
+  証明書の [Advanced Policy]\(詳細ポリシー\) セクションに移動し、 **[reuse key on renewal]\(更新時にキーを再利用する\)** オプションがオフになっているかどうかを確認します。
+
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

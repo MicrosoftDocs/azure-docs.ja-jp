@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
 ms.openlocfilehash: f5890ddb2a4b1599dbcfd1e624c9fbe71a564de7
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102442759"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>MySQL での認証に Azure Active Directory を使用する

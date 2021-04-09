@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.openlocfilehash: edc773ec2db078b6c50b55c81ad6570758a3f5f7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100389248"
 ---
 # <a name="data-access-strategies"></a>データ アクセス戦略
@@ -47,16 +47,16 @@ Azure Integration Runtime とセルフホステッド統合ランタイムのデ
 
     | データ ストア                  | データ ストアでサポートされているネットワーク セキュリティ メカニズム | Private Link     | 信頼できるサービス     | 静的 IP 範囲 | サービス タグ | Azure サービスの許可 |
     |------------------------------|-------------------------------------------------------------|---------------------|-----------------|--------------|----------------------|-----------------|
-    | Azure PaaS データ ストア       | Azure Cosmos DB                                     | ○              | -                   | [はい]             | -            | はい                  |
+    | Azure PaaS データ ストア       | Azure Cosmos DB                                     | はい              | -                   | はい             | -            | はい                  |
     |                              | Azure Data Explorer                                 | -                | -                   | はい*            | はい*         | -                    |
-    |                              | Azure Data Lake Gen1                                | -                | -                   | ○             | -            | はい                  |
-    |                              | Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL       | -                | -                   | ○             | -            | [はい]                  |
-    |                              | Azure File Storage                                  | ○              | -                   | [はい]             | -            | .                    |
+    |                              | Azure Data Lake Gen1                                | -                | -                   | はい             | -            | はい                  |
+    |                              | Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL       | -                | -                   | はい             | -            | はい                  |
+    |                              | Azure File Storage                                  | はい              | -                   | はい             | -            | .                    |
     |                              | Azure Storage (BLOB、ADLS Gen2)                     | はい              | はい (MSI 認証のみ) | はい             | -            | .                    |
-    |                              | Azure SQL DB、Azure Synapse Analytics)、SQL   Ml  | はい (Azure SQL DB/DW のみ)        | -                   | ○             | -            | [はい]                  |
-    |                              | Azure Key Vault (シークレットまたは接続文字列をフェッチするため) | はい      | ○                 | [はい]             | -            | -                    |
+    |                              | Azure SQL DB、Azure Synapse Analytics)、SQL   Ml  | はい (Azure SQL DB/DW のみ)        | -                   | ○             | -            | はい                  |
+    |                              | Azure Key Vault (シークレットまたは接続文字列をフェッチするため) | はい      | ○                 | はい             | -            | -                    |
     | その他の PaaS/SaaS データ ストア | AWS S3、SalesForce、Google Cloud Storage など    | -                | -                   | はい             | -            | -                    |
-    | Azure laaS                   | SQL Server、Oracle など                          | -                | -                   | ○             | [はい]          | -                    |
+    | Azure laaS                   | SQL Server、Oracle など                          | -                | -                   | はい             | はい          | -                    |
     | オンプレミスの laaS              | SQL Server、Oracle など                          | -                | -                   | はい             | -            | -                    |
     
     **Azure Data Explorer が仮想ネットワークに挿入され、IP 範囲を NSG またはファイアウォールに適用できる場合にのみ適用されます。* 
@@ -72,7 +72,7 @@ Azure Integration Runtime とセルフホステッド統合ランタイムのデ
     |                                | Azure File Storage                                            | はい       | -                   |
     |                                | Azure Storage (Blog、ADLS Gen2)                             | はい       | はい (MSI 認証のみ) |
     |                                | Azure SQL DB、Azure Synapse Analytics)、SQL   Ml          | はい       | -                   |
-    |                                | Azure Key Vault (シークレットまたは接続文字列をフェッチするため) | ○       | はい                 |
+    |                                | Azure Key Vault (シークレットまたは接続文字列をフェッチするため) | はい       | はい                 |
     | その他の PaaS/SaaS データ ストア | AWS S3、SalesForce、Google Cloud Storage など              | はい       | -                   |
     | Azure laaS                     | SQL Server、Oracle など                                  | はい       | -                   |
     | オンプレミスの laaS              | SQL Server、Oracle など                                  | はい       | -                   |    

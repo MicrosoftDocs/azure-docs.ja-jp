@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: cgronlun
 author: cjgronlund
 ms.reviewer: larryfr
-ms.date: 06/11/2020
+ms.date: 03/11/2021
 ms.custom: deploy
-ms.openlocfilehash: 9336dbd4d5615a93bbc029ba51b561b18f5a1c15
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 22c8880cbcde1f1a55fa66beee0323e0348e1164
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521987"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103149615"
 ---
 # <a name="deploy-a-model-for-use-with-cognitive-search"></a>Cognitive Search で使用するモデルをデプロイする
 
@@ -98,7 +98,7 @@ prov_config = AksCompute.provisioning_configuration()
 
 # Enable TLS (sometimes called SSL) communications
 # Leaf domain label generates a name using the formula
-#  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+#  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.com"
 #  where "######" is a random series of characters
 prov_config.enable_ssl(leaf_domain_label = "contoso")
 

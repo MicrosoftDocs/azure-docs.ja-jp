@@ -5,10 +5,10 @@ ms.date: 02/23/2021
 ms.service: virtual-wan
 ms.topic: include
 ms.openlocfilehash: 567c0bb75c30a1f0ccdcde7ec1b0f04f5d6e54c5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102048261"
 ---
 [!INCLUDE [Portal feature rollout](virtual-wan-portal-feature-rollout.md)]

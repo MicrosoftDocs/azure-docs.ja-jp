@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
 ms.openlocfilehash: 91b6d432042aa37a1b929f61e9742f814fb9dc40
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94369829"
 ---
 # <a name="how-to-configure-your-azure-application-offer-listing-details"></a>Azure アプリケーション オファー登録情報の詳細を構成する方法
@@ -33,9 +33,9 @@ Azure アプリケーション オファーの **[オファー登録情報]** �
 1. (省略可能) **[検索キーワード]** に、コマーシャル マーケットプレースで顧客がオファーを見つけるために使用できる検索キーワードを最大 3 つ入力します。 オファーの **名前** と **説明** のテキストは検索に自動的に含められるため、含める必要はありません。
 1. **[プライバシー ポリシーの リンク]** ボックスに、組織のプライバシー ポリシーへの (https から始まる) リンクを入力します。 プライバシーに関する法律および規制にアプリが準拠していることを保証し、有効なプライバシー ポリシーを提供する責任があります。
 
-## <a name="add-supplemental-links-optional"></a>補助的なリンクを追加する (省略可能)
+## <a name="add-supplemental-links-optional"></a>補足リンクを追加する (省略可能)
 
-次の手順を完了して、補助的オンライン ドキュメントへのリンクを追加します。
+補足のオンライン ドキュメントへのリンクを追加するには、次の手順を実行します。
 
 1. アプリまたは関連サービスに関する省略可能な補助的オンライン ドキュメントを追加するには、 **[役に立つリンク]** で **[リンクの追加]** を選択します。
 1. 表示されるフィールドに、タイトル (最大 255 文字) とオンライン ドキュメントへのリンク (`https://` で開始) を入力します。

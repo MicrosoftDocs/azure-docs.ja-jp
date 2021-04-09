@@ -5,12 +5,12 @@ description: サービスを Azure Kubernetes Service (AKS) を使用して公�
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: ec8fd1f1b32d5bba6dc4dc756e1f95f4a74f9a96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c2c0866aa9a721a73e1eb8fa230f0022cf6b8ca
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87285885"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102505632"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で内部ロード バランサーを使用する
 
@@ -23,11 +23,11 @@ Azure Kubernetes Service (AKS) でアプリケーションへのアクセスを�
 
 この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
-また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
-既存のサブネットまたはリソース グループを使用する場合、AKS クラスターのサービス プリンシパルにはネットワーク リソースを管理するアクセス許可が必要です。 詳細については、「[Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する][use-kubenet]」または「[Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する][advanced-networking]」を参照してください。 [別のサブネット内の IP アドレス][different-subnet]を使用するようにロード バランサーを構成している場合は、AKS クラスターのサービス プリンシパルにもそのサブネットへの読み取りアクセスがあることを確認します。
+既存のサブネットまたはリソース グループを使用する場合、AKS クラスターのクラスター ID にはネットワーク リソースを管理するためのアクセス許可が必要です。 詳細については、「[Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する][use-kubenet]」または「[Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する][advanced-networking]」を参照してください。 [別のサブネット内の IP アドレス][different-subnet]を使用するようにロード バランサーを構成している場合は、AKS クラスターの ID にもそのサブネットへの読み取りアクセスがあることを確認します。
 
-サービス プリンシパルの代わりに、システム割り当てのマネージド ID もアクセス許可に使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。 アクセス許可の詳細については、[他の Azure リソースへの AKS アクセスの委任][aks-sp]に関する記事を参照してください。
+アクセス許可の詳細については、[他の Azure リソースへの AKS アクセスの委任][aks-sp]に関する記事を参照してください。
 
 ## <a name="create-an-internal-load-balancer"></a>内部ロード バランサーを作成します。
 
@@ -110,7 +110,7 @@ internal-app   LoadBalancer   10.1.15.188   10.0.0.35     80:31669/TCP   1m
 ```
 
 > [!NOTE]
-> AKS クラスターのサービス プリンシパルに対して、Azure 仮想ネットワーク リソースがデプロイされるリソース グループへの*ネットワーク共同作成者*ロールを付与しなければならない場合があります。 [az aks show][az-aks-show] を使用してサービス プリンシパルを表示します (例: `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"`)。 ロールの割り当てを作成するには、[az role assignment create][az-role-assignment-create] コマンドを使用します。
+> AKS クラスターのクラスター ID に対して、Azure 仮想ネットワーク リソースがデプロイされるリソース グループへの "*ネットワーク共同作成者*" ロールを付与しなければならない場合があります。 [az aks show][az-aks-show] を使用してクラスター ID を表示します (例: `az aks show --resource-group myResourceGroup --name myAKSCluster --query "identity"`)。 ロールの割り当てを作成するには、[az role assignment create][az-role-assignment-create] コマンドを使用します。
 
 ## <a name="specify-a-different-subnet"></a>別のサブネットを指定する
 

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 0c4cff7583f08fe27649cee464fcef802cddd88f
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93234047"
 ---
 # <a name="get-logs-to-troubleshoot-azure-arc-enabled-data-services"></a>ログを取得して Azure Arc 対応データ サービスのトラブルシューティングを行う

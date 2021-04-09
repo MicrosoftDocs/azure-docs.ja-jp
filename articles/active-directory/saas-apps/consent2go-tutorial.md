@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.openlocfilehash: ac77203d395a76079fcf2a44b2081193d0e7fd72
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97671456"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-consent2go"></a>チュートリアル: Azure Active Directory と Consent2Go の統合
@@ -61,7 +61,7 @@ Azure AD への Consent2Go の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Consent2Go**」と入力し、結果パネルで **[Consent2Go]** を選び、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Consent2Go**」と入力し、結果パネルで **[Consent2Go]** を選び、**[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果一覧の Consent2Go](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ Consent2Go で Azure AD シングル サインオンを構成してテストす�
 
 Consent2Go で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Consent2Go** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Consent2Go** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -140,7 +140,7 @@ Consent2Go で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に Consent2Go へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Consent2Go]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Consent2Go]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

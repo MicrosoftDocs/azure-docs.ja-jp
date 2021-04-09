@@ -8,12 +8,12 @@ ms.date: 01/22/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: dc23dec8a8d59a7762e93cdfaa2a39d824506e7b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b085b9991175d8cd43e2dac0db80c5af4e703c34
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382125"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102521239"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS 共有を作成する方法
 Azure ファイル共有は、クラウド内に存在するフル マネージドのファイル共有です。 この記事では、NFS プロトコルを使用するファイル共有の作成について説明します。 両方のプロトコルの詳細については、[Azure ファイル共有のプロトコル](storage-files-compare-protocols.md)に関するページを参照してください。
@@ -31,7 +31,7 @@ Azure ファイル共有は、クラウド内に存在するフル マネージ�
     - [Azure Files で使用するサイト間 VPN を構成](storage-files-configure-s2s-vpn.md)します。
     - [ExpressRoute](../../expressroute/expressroute-introduction.md) を構成します。
 
-- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](/cli/azure/install-azure-cli)。
 
 ## <a name="register-the-nfs-41-protocol"></a>NFS 4.1 プロトコルを登録する
 Azure PowerShell モジュールまたは Azure CLI を使用している場合は、次のコマンドを使用して機能を登録します。
@@ -192,7 +192,7 @@ az storage account create \
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   お使いの PowerShell のバージョンをアップグレードするには、「[既存の Windows PowerShell をアップグレードする](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true#upgrading-existing-windows-powershell)」を参照してください。
+   お使いの PowerShell のバージョンをアップグレードするには、「[既存の Windows PowerShell をアップグレードする](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)」を参照してください。
     
 1. PowerShellGet モジュールの最新バージョンをインストールします。
 
@@ -208,7 +208,7 @@ az storage account create \
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
    ```
 
-   PowerShell モジュールのインストール方法の詳細については、「[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps?view=azps-3.0.0&preserve-view=true)」を参照してください。
+   PowerShell モジュールのインストール方法の詳細については、「[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)」を参照してください。
    
 1. Azure PowerShell モジュールを使用して Premium ファイル共有を作成するには、[New-AzRmStorageShare](/powershell/module/az.storage/new-azrmstorageshare) コマンドレットを使用します。
 

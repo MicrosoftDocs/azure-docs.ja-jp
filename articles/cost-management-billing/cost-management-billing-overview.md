@@ -4,17 +4,17 @@ description: Azure Cost Management と Billing の機能を使用して、請求
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/28/2021
+ms.date: 03/03/2021
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a070b2329777accab6f62b767f74dbc28e5d2623
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 9fe658a1755ce3731f220ec656845da1f861fa9b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051095"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050539"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>Azure Cost Management と Billing とは
 
@@ -33,6 +33,8 @@ Azure の製品とサービスでは、使用した分に応じて料金が発�
 
 組織としてコスト管理にアプローチする方法の詳細については、「[Azure Cost Management のベスト プラクティス](./costs/cost-mgt-best-practices.md)」記事を参照してください。
 
+![Cost Management + Billing の最適化プロセスの図。](./media/cost-management-optimization-process.png)
+
 ## <a name="understand-azure-billing"></a>Azure Billing の概念
 
 Azure Billing 機能は、請求されたコストを確認し、請求情報へのアクセスを管理するために使用します。 大規模な組織では、通常、請求タスクを実行するのは、調達チームや財務チームです。
@@ -48,32 +50,6 @@ Azure を使用するためにサインアップすると、課金アカウン�
 - **マイクロソフト エンタープライズ契約**:組織が Azure を使用するために Enterprise Agreement (EA) を締結すると、Enterprise Agreement の課金アカウントが作成されます。
 
 - **Microsoft Customer Agreement**: 組織が Microsoft 担当者と連携して Microsoft Customer Agreement を締結すると、Microsoft Customer Agreement の課金アカウントが作成されます。 一部のリージョンでは、Azure Web サイトから従量課金制料金のアカウントにサインアップしたお客様や、[Azure 無料アカウント](./manage/create-free-services.md)をアップグレードしたお客様にも、Microsoft Customer Agreement の課金アカウントが作成される場合があります。
-
-### <a name="scopes-for-billing-accounts"></a>課金アカウントのスコープ
-スコープとは、請求の表示および管理に使用する、課金アカウント内のノードです。 ユーザーが課金データ、支払い、請求書を管理し、アカウントの全般的な管理を行う場所です。
-
-#### <a name="microsoft-online-services-program"></a>Microsoft Online Services Program
-
-|Scope  |定義  |
-|---------|---------|
-|請求先アカウント     | 1 つまたは複数の Azure サブスクリプションの 1 人の所有者 (アカウント管理者) を表します。 アカウント管理者には、サブスクリプションの作成、請求書の表示、サブスクリプションの請求先の変更など、さまざまな課金タスクを実行する権限があります。  |
-|サブスクリプション     |  Azure リソースのグループを表します。 請求書は、サブスクリプション スコープで生成されます。 請求書の支払いに使用される独自の支払方法があります。|
-
-#### <a name="enterprise-agreement"></a>Enterprise Agreement
-
-|Scope  |定義  |
-|---------|---------|
-|請求先アカウント    | Enterprise Agreement 加入契約を表します。 請求書は、課金アカウント スコープで生成されます。 これは、部署と登録アカウントを使用して構成されます。  |
-|部署     |  登録アカウントの任意のグループです。      |
-|登録アカウント     |  1 人のアカウント所有者を表します。 Azure サブスクリプションは、登録アカウント スコープの下に作成されます。  |
-
-#### <a name="microsoft-customer-agreement"></a>Microsoft 顧客契約
-
-|Scope  |タスク  |
-|---------|---------|
-|請求先アカウント     |   複数の Microsoft 製品およびサービスの顧客契約を表します。 課金アカウントは、課金プロファイルと請求書セクションを使用して構成されます。   |
-|請求プロファイル     |  請求書とその支払い方法を表します。 請求書はこのスコープで生成されます。 課金プロファイルには、複数の請求書セクションを含めることができます。      |
-|請求書セクション     |   請求書内のコストのグループを表します。 サブスクリプションとその他の購入は、請求書セクション スコープに関連付けられます。    |
 
 ## <a name="understand-azure-cost-management"></a>Azure Cost Management の概念
 

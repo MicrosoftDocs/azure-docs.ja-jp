@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: bf1ab01b39d594002bc5e677ffe6c3049fbb91ce
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95521021"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>PHP で音声および SMS 機能に Twilio を使用する方法
@@ -43,14 +43,14 @@ API では、Twilio 動詞を使用します。たとえば、 **&lt;Say&gt;** �
 Twilio 動詞の一覧を次に示します。 他の動詞と機能については、 [Twilio Markup Language のドキュメント](https://www.twilio.com/docs/api/twiml)を参照してください。
 
 * **&lt;Dial&gt;** : 呼び出し元を別の電話に接続します。
-* **&lt;Gather&gt;** : 電話キーパッドで入力された数字を収集します。
+* **&lt;Gather&gt;** : 電話キーパッドに入力された数字を収集します。
 * **&lt;Hangup&gt;** : 通話を終了します。
-* **&lt;Play&gt;** : オーディオ ファイルを再生します。
-* **&lt;Pause&gt;** : 指定された秒数だけ静かに待ちます。
+* **&lt;Play&gt;** : 音声ファイルを再生します。
+* **&lt;Pause&gt;** : 何も行わずに指定された秒数待機します。
 * **&lt;Record&gt;** : 呼び出し元の声を録音し、声が録音されたファイルの URL を返します。
-* **&lt;Redirect&gt;** : 通話または SMS の制御を別の URL に存在する TwiML に転送します。
-* **&lt;Reject&gt;** : Twilio 番号への受信通話を、課金することなく拒否します。
-* **&lt;Say&gt;** : テキストを通話で流れる音声に変換します。
+* **&lt;Redirect&gt;** : 通話または SMS の制御を別の URL の TwiML に転送します。
+* **&lt;Reject&gt;** : Twilio 番号への着信通話を拒否します。課金はされません。
+* **&lt;Say&gt;** : テキストを音声に変換して返します。
 * **&lt;Sms&gt;** : SMS メッセージを送信します。
 
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
@@ -98,9 +98,9 @@ PHP 用 Twilio ライブラリをインストールしたら、ライブラリ�
 require_once 'Services/Twilio.php';
 ```
 
-詳細については、[https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme] を参照してください。
+詳細については、「[https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme]」を参照してください。
 
-## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>発信通話する
+## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>方法: 発信通話する
 次のコードでは、**Services_Twilio** クラスを使用して発信通話を行う方法を示しています。 このコードは、Twilio から提供されるサイトも使用して、Twilio Markup Language (TwiML) 応答を返します。 コードを実行する前に、**From** および **To** の電話番号の値を置き換えて、Twilio アカウントの **From** の電話番号を確認します。
 
 ```php
@@ -146,9 +146,9 @@ catch (Exception $e)
 
 既に説明したように、このコードは Twilio から提供されるサイトを使用して、TwiML 応答を返します。 代わりに独自のサイトを使用して TwiML 応答を返すことができます。詳細については、「[方法: 独自の Web サイトから TwiML 応答を返す](#howto_provide_twiml_responses)」を参照してください。
 
-* **注**:TLS/SSL 証明書の検証エラーをトラブルシューティングするには、[https://www.twilio.com/docs/api/errors][ssl_validation] を参照してください。 
+* **注**: TLS/SSL 証明書の検証エラーをトラブルシューティングするには、[https://www.twilio.com/docs/api/errors][ssl_validation] を参照してください 
 
-## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>SMS メッセージを送信する
+## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>方法: SMS メッセージを送信する
 次のコードでは、**Services_Twilio** クラスを使用して SMS メッセージを送信する方法を示しています。 試用アカウントで SMS メッセージを送信できるように、 **From** の番号が Twilio から提供されます。 コードを実行する前に、Twilio アカウントの **To** の番号を確認する必要があります。
 
 ```php
@@ -242,8 +242,8 @@ catch (Exception $e)
 
 Azure の PHP での Twilio の使用の詳細については、「[Azure 上の PHP アプリケーションで Twilio を使用して通話する方法][howto_phonecall_php]」を参照してください。
 
-## <a name="how-to-use-additional-twilio-services"></a><a id="AdditionalServices"></a>その他の Twilio サービスを使用する
-ここに示す例以外にも、Twilio が提供する Web ベースの API を使用して、Azure アプリケーションからその他の Twilio 機能を利用することができます。 詳細については、[Twilio API のドキュメント][twilio_api_documentation]を参照してください。
+## <a name="how-to-use-additional-twilio-services"></a><a id="AdditionalServices"></a>方法: その他の Twilio サービスを使用する
+ここに示す例以外にも、Twilio が提供する Web ベースの API を使用して、Azure アプリケーションからその他の Twilio 機能を利用することができます。 詳細については、[Twilio API に関するドキュメント][twilio_api_documentation]を参照してください。
 
 ## <a name="next-steps"></a><a id="NextSteps"></a>次のステップ
 これで、Twilio サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先をご覧ください。
@@ -251,8 +251,8 @@ Azure の PHP での Twilio の使用の詳細については、「[Azure 上の
 * [Twilio のセキュリティ ガイドライン][twilio_security_guidelines]
 * [Twilio のハウツー ガイドとコード例][twilio_howtos]
 * [Twilio のクイックスタート チュートリアル][twilio_quickstarts] 
-* [GitHub 上の Twilio][twilio_on_github]
-* [Twilio サポートへの問い合わせ][twilio_support]
+* [GitHub 上の Twilio に関するページ][twilio_on_github]
+* [Twilio に関するサポートへの連絡のページ][twilio_support]
 
 [twilio_php]: https://github.com/twilio/twilio-php
 [twilio_lib_docs]: https://www.twilio.com/docs/libraries/php

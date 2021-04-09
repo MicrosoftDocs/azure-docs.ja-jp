@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 423ac882c81582f2843eeba37d11c660662ad6e2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519403"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netvision-compas"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Netvision Compas の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Netvision Compas では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Netvision Compas では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 * Netvision Compas を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 
@@ -51,7 +51,7 @@ Azure AD への Netvision Compas の統合を構成するには、ギャラリ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Netvision Compas** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Netvision Compas**」と入力します。
 1. 結果のパネルから **[Netvision Compas]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -129,7 +129,7 @@ Netvision Compas で Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-netvision-compas-sso"></a>Netvision Compas の SSO の構成
 
-このセクションでは、 **Netvision Compas** の SAML SSO を有効にします。
+このセクションでは、**Netvision Compas** の SAML SSO を有効にします。
 1. 管理者アカウントを使用して **Netvision Compas** にログインし、管理領域にアクセスします。
 
     ![管理領域](media/netvision-compas-tutorial/admin.png)
@@ -138,7 +138,7 @@ Netvision Compas で Azure AD SSO を構成してテストするには、次の�
 
     ![IDP の管理](media/netvision-compas-tutorial/admin-idps.png)
 
-1. Azure AD を新しい IDP として登録するには、 **追加** アクションを選択します。
+1. Azure AD を新しい IDP として登録するには、**追加** アクションを選択します。
 
     ![IDP の追加](media/netvision-compas-tutorial/idps-add.png)
 

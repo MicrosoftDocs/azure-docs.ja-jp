@@ -1,7 +1,7 @@
 ---
 title: H264 Single Bitrate 16x9 SD Media Encoder Standard プリセット - Azure | Microsoft Docs
 description: このトピックでは、**H264 Single Bitrate 16x9 SD** タスク プリセットの概要を説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: e52caca9e5da91947d7a97f42cd689a655020a6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 03ba7fe9785119050759da501d55c2decd693428
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261973"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103015609"
 ---
 # <a name="h264-single-bitrate-16x9-sd"></a>H264 Single Bitrate 16x9 SD
 

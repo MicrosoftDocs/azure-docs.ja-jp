@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 91e75b60f5324288c9f1adac59e31b9c1a1b0e9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89289173"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Power BI を使用してナレッジ ストアに接続する
@@ -59,7 +59,7 @@ ms.locfileid: "89289173"
 
 1. **[読み込み]** をクリックします。
 
-1. 上部のリボンの **[クエリを編集]** をクリックして **Power Query エディター**を開きます。
+1. 上部のリボンの **[クエリを編集]** をクリックして **Power Query エディター** を開きます。
 
    ![Power Query を開く](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Power Query を開く")
 

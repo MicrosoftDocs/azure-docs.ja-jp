@@ -15,10 +15,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6ca42137192fefbc669fca775b0deff2f5226c5c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99253834"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する
@@ -40,7 +40,7 @@ Azure AD のアプリケーション プロキシは、ますます多くのシ�
 
 次の手順を使用して、コネクタ グループを必要な数だけ作成します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  >  **[アプリケーション プロキシ]** を選択します。
 1. **[新しいコネクタ グループ]** を選択します。 [New Connector Group (新しいコネクタ グループ)] ブレードが表示されます。
 

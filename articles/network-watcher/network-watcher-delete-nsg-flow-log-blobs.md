@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: 1b73b8fa14271619d07fca63b01e4197f4f7c8cb
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98017852"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Network Watcher のネットワーク セキュリティ グループ フロー ログのストレージ BLOB の削除
@@ -126,9 +126,9 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
 ```
 
 1. 必要に応じて、スクリプトに次のパラメーターを入力します。
-   - **SubscriptionId** [必須]:NSG フロー ログの BLOB を削除するサブスクリプションの ID です。
-   - **Location** [必須]:NSG フロー ログの BLOB を削除する NSG のリージョンの "_場所を示す文字列_" です。 この情報は、Azure portal または [GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23) で確認できます。
-   - **Confirm** [省略可能]:各ストレージ BLOB の削除を手動で確認する場合は、この確認フラグを渡します。
+   - **SubscriptionId** [必須]: NSG フロー ログの BLOB を削除するサブスクリプションの ID です。
+   - **Location** [必須]: NSG フロー ログの BLOB を削除する NSG のリージョンの _場所を示す文字列_ です。 この情報は、Azure portal または [GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23) で確認できます。
+   - **Confirm** [省略可能]: 各ストレージ BLOB の削除を手動で確認する場合は、この確認フラグを渡します。
 
 1. 次の例に示すように、保存したスクリプトを実行します (スクリプト ファイルは **Delete-NsgFlowLogsBlobs.ps1** として保存されています)。
    ```

@@ -4,10 +4,10 @@ description: この記事では、Kubernetes クラスターで Prometheus か�
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.openlocfilehash: 8affeb472b9452e4d234e99e5ea6bb4509770fac
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101731733"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-container-insights"></a>Container insights で Prometheus メトリックのスクレイピングを構成する

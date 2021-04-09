@@ -2,18 +2,19 @@
 title: チュートリアル - Windows 仮想マシンの構成を Azure で管理する
 description: このチュートリアルでは、Windows 仮想マシン上の変更を特定したりパッケージの更新プログラムを管理したりする方法について説明します。
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a478d9c620219a768983570897715f924565a80f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: db7c0f2dbc547d78e3caa9ab37450c86278929bd
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100594310"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102555943"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>チュートリアル:Azure で変更を監視し、Windows 仮想マシンを更新する
 

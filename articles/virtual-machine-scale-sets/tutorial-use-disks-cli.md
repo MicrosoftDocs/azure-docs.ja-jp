@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: adaa7d1c2cf4a78a680ef4fbbec06975ceda812b
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96433488"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した仮想マシン スケール セットのディスクの作成および使用
@@ -40,7 +40,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 **一時ディスク** - 一時ディスクは、VM インスタンスと同じ Azure ホストに配置されているソリッド ステート ドライブを使用します。 これらは高パフォーマンスのディスクであり、一時的なデータ処理などの操作に使用される場合があります。 ただし、VM インスタンスを新しいホストに移動すると、一時ディスクに格納されているデータはすべて削除されます。 一時ディスクのサイズは VM インスタンスのサイズによって決まります。 一時ディスクには */dev/sdb* のラベルが付けられており、 */mnt* というマウント ポイントがあります。
 
 ### <a name="temporary-disk-sizes"></a>一時ディスクのサイズ
-| Type | 一般的なサイズ | 一時ディスクの最大サイズ (GiB) |
+| 種類 | 一般的なサイズ | 一時ディスクの最大サイズ (GiB) |
 |----|----|----|
 | [汎用](../virtual-machines/sizes-general.md) | A、B、D シリーズ | 1600 |
 | [コンピューティングの最適化](../virtual-machines/sizes-compute.md) | F シリーズ | 576 |

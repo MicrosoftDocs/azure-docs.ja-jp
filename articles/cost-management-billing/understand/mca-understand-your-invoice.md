@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 766136731cb92b1bd4f0965d4929b1ac5eda14dc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 996c974473c53833dd26abae2fb61585999f33b4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690495"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050445"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Microsoft 顧客契約の請求書の用語
 
@@ -22,9 +22,13 @@ ms.locfileid: "88690495"
 
 請求書は、料金の概要と支払いの手順を提示しています。 請求書は、[Azure Portal](https://portal.azure.com/) から Portable Document Format (.pdf) のダウンロードで入手するか、電子メール経由で受信することができます。 詳細については、[Microsoft Azure の請求書の表示とダウンロード](download-azure-invoice.md)を参照してください。
 
+請求書、およびその料金の分析方法については、ビデオ「[Microsoft 顧客契約の請求書を理解する](https://www.youtube.com/watch?v=e2LGZZ7GubA)」をご覧ください。
+
+>[!VIDEO https://www.youtube.com/embed/e2LGZZ7GubA]
+
 ## <a name="billing-period"></a>請求期間
 
-ユーザーへの請求は月単位で行われます。 [Azure portal](https://portal.azure.com/) の課金プロファイルのプロパティで*請求日*を調べることで、その月の何日に請求書を受け取るかを確認できます。 請求期間の終わりと請求日の間に発生する料金は、次の請求期間内にあるため、次月の請求書に含められます。 各請求書の請求期間開始日と終了日は、上記の **[課金の要約]** の請求書 PDF に記載されています。
+ユーザーへの請求は月単位で行われます。 [Azure portal](https://portal.azure.com/) の課金プロファイルのプロパティで *請求日* を調べることで、その月の何日に請求書を受け取るかを確認できます。 請求期間の終わりと請求日の間に発生する料金は、次の請求期間内にあるため、次月の請求書に含められます。 各請求書の請求期間開始日と終了日は、上記の **[課金の要約]** の請求書 PDF に記載されています。
 
 ## <a name="invoice-terms-and-descriptions"></a>請求書の用語と説明
 
@@ -44,7 +48,7 @@ ms.locfileid: "88690495"
 | 発注 number |追跡のために割り当てられる、省略可能な発注書番号 |
 | 請求書番号 |追跡のために使用される、Microsoft で生成した一意の請求書番号 |
 | 請求日 |請求書が生成された日付。通常は、請求期間が終了してから 5 から 12 日後。 請求書の日付は、課金プロファイルのプロパティで確認できます。|
-| 支払い条件 |Microsoft の請求に対する支払い方法。 *30 日払い*とは、請求書の日付から 30 日以内に支払うことを意味します。 |
+| 支払条件 |Microsoft の請求に対する支払い方法。 *30 日払い* とは、請求書の日付から 30 日以内に支払うことを意味します。 |
 
 ### <a name="billing-summary"></a>課金の要約
 
@@ -71,7 +75,7 @@ ms.locfileid: "88690495"
 
 詳細には、製品の注文ごとに分けられた各請求書セクションのコストが表示されます。 各製品の注文では、コストがサービスのタイプごとに分けられています。 製品およびサービスの日単位の料金は、Azure portal と、Azure の利用状況および請求金額 CSV で確認できます。 詳細については、[Microsoft 顧客契約の請求書の料金を理解する](review-customer-agreement-bill.md)ことに関する記事をご覧ください。
 
-各サービス ファミリの合計支払金額は、*クレジット/料金*から *Azure クレジット*を差し引き、*税*を加算して計算されます。
+各サービス ファミリの合計支払金額は、*クレジット/料金* から *Azure クレジット* を差し引き、*税* を加算して計算されます。
 
 
 ![請求書セクションごとの詳細](./media/mca-understand-your-invoice/invoicesectiondetails.png)

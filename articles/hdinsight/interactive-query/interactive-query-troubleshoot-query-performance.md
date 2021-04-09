@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/30/2019
 ms.openlocfilehash: 80fe51c2131da5a6fcb69eb5526b5d4f33a45e03
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98930899"
 ---
-# <a name="scenario-poor-performance-in-apache-hive-llap-queries-in-azure-hdinsight"></a>シナリオ:Azure HDInsight での Apache Hive LLAP クエリのパフォーマンスの低下
+# <a name="scenario-poor-performance-in-apache-hive-llap-queries-in-azure-hdinsight"></a>シナリオ: Azure HDInsight での Apache Hive LLAP クエリのパフォーマンスの低下
 
 この記事では、Azure HDInsight クラスターで Interactive Query コンポーネントを使用するときのトラブルシューティングの手順と問題の可能な解決策について説明します。
 
@@ -23,7 +23,7 @@ ms.locfileid: "98930899"
 
 これは、さまざまな理由で発生する可能性があります。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
 LLAP は、結合と集計を含むクエリに対して最適化されています。 対話型 Hive クラスターでは、次のようなクエリはうまく動作しません。
 

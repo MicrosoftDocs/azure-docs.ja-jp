@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 266dc5d62f6224495075546528ad71d806d415ac
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: a23c492d4a81703c0dc6612928a56b5b31d52cae
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903447"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726319"
 ---
 # <a name="implement-dynamic-styling-for-creator-preview-indoor-maps"></a>Creator (プレビュー) の屋内マップに動的スタイル設定を実装する
 
@@ -54,11 +54,11 @@ map.events.add("click", function(e){
 
     var features = map.layers.getRenderedShapes(e.position, "indoor");
 
-    var result = features.reduce(function (ids, feature) {
-        if (feature.layer.id == "indoor_unit_office") {
+    features.forEach(function (feature) {
+        if (feature.layer.id == 'indoor_unit_office') {
             console.log(feature);
         }
-    }, []);
+    });
 });
 ```
 
@@ -78,7 +78,7 @@ map.events.add("click", function(e){
     https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetId}&featureID=UNIT26&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. **POST** 要求の **[Headers]\(ヘッダー\)** で、`Content-Type` を `application/json` に設定します。 **POST** 要求の **[BODY]\(本文\)** で、地物の更新を含む次の JSON を記述します。 POST されたタイム スタンプが、同じ地物 `ID` に対する以前の地物状態の更新要求で使用されたタイム スタンプより後の場合にのみ、更新は保存されます。 "occupied" の `keyName` を渡して値を更新します。
+3. **POST** 要求の **[Headers]\(ヘッダー\)** で、`Content-Type` を `application/json` に設定します。 **POST** 要求の **[BODY]\(本文\)** で、地物の更新を含む次の未加工の JSON を記述します。 POST されたタイム スタンプが、同じ地物 `ID` に対する以前の地物状態の更新要求で使用されたタイム スタンプより後の場合にのみ、更新は保存されます。 "occupied" の `keyName` を渡して値を更新します。
 
     ```json
     {
@@ -108,9 +108,11 @@ map.events.add("click", function(e){
 
 ### <a name="visualize-dynamic-styles-on-a-map"></a>マップ上で動的スタイルを視覚化する
 
-以前にブラウザーで開いた Web アプリケーションには、マップ地物の更新された状態が反映されているはずです。 `UNIT27`(151) は緑色で表示され、`UNIT26`(157) は赤色で表示されます。
+以前にブラウザーで開いた Web アプリケーションには、マップ地物の更新された状態が反映されているはずです。 `UNIT27`(142) は緑色で表示され、`UNIT26`(143) は赤色で表示されます。
 
 ![緑の空き部屋と赤の空いていない部屋](./media/indoor-map-dynamic-styling/room-state.png)
+
+[ライブ デモを見る](https://azuremapscodesamples.azurewebsites.net/?sample=Creator%20indoor%20maps)
 
 ## <a name="next-steps"></a>次のステップ
 

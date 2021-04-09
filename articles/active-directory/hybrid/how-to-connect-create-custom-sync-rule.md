@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e2bb86988454141dc692b4a9967997c4ff7574a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90530490"
 ---
 # <a name="how-to-customize-a-synchronization-rule"></a>同期規則をカスタマイズする方法
@@ -40,7 +40,7 @@ ms.locfileid: "90530490"
 
 * 変更した属性の計算値が複製した規則では NULL であり、既定値の標準規則では NULL ではない場合、NULL ではない値が優先され、NULL 値と置き換えられることに注意してください。 NULL 値を NULL ではない値に置き換えない場合は、複製した規則で AuthoritativeNull を割り当てます。
 
-* **アウトバウンド**規則を変更するには、同期規則エディターからフィルターを変更します。
+* **アウトバウンド** 規則を変更するには、同期規則エディターからフィルターを変更します。
 
 ## <a name="recommended-documents"></a>**推奨されるドキュメント**
 * [Azure AD Connect 同期:技術的概念](./how-to-connect-sync-technical-concepts.md)

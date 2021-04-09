@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/07/2021
 ms.author: jeedes
 ms.openlocfilehash: 402dede34324d4837b3a18ad80df289ad903c6de
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98735114"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ephoto-dam"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と EPHOTO DAM の統合

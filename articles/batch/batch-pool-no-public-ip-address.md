@@ -7,10 +7,10 @@ ms.date: 12/9/2020
 ms.author: peshultz
 ms.custom: references_regions
 ms.openlocfilehash: 806e85fca0a509d56e248fc7779fba0f0a59a61d
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97007672"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>パブリック IP アドレスのない Azure Batch プールを作成する

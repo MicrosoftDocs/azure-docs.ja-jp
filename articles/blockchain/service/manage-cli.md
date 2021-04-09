@@ -5,10 +5,10 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: 36b012c486c0c7d3303a81998e88f1605999c899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87170859"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Azure CLI を使用して Azure Blockchain Service を管理する
@@ -216,7 +216,7 @@ az role assignment create \
 
 **例:**
 
-Azure AD ユーザーにブロックチェーンの**メンバー**へのノード アクセスを許可します。
+Azure AD ユーザーにブロックチェーンの **メンバー** へのノード アクセスを許可します。
 
 ```azurecli
 az role assignment create \
@@ -227,7 +227,7 @@ az role assignment create \
 
 **例:**
 
-Azure AD ユーザーにブロックチェーンの**トランザクション ノード**へのノード アクセスを許可します。
+Azure AD ユーザーにブロックチェーンの **トランザクション ノード** へのノード アクセスを許可します。
 
 ```azurecli
 az role assignment create \
@@ -252,7 +252,7 @@ az role assignment create \
 
 **例:**
 
-**アプリケーション ロール**にノード アクセスを許可する
+**アプリケーション ロール** にノード アクセスを許可する
 
 ```azurecli
 az role assignment create \

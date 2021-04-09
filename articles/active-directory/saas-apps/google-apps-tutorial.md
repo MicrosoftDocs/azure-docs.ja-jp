@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/11/2021
 ms.author: jeedes
 ms.openlocfilehash: a846899ba8f9b9e7c0d2e54744f5e5044ca7a2d6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98732057"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Google Cloud (G Suite) Connector の統合

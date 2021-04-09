@@ -1,24 +1,14 @@
 ---
 title: セキュリティ エージェントを選択してデプロイする
 description: Defender for IoT セキュリティ エージェントを選択して IoT デバイスに展開する方法について説明します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/23/2019
-ms.author: mlottner
-ms.openlocfilehash: 2634ed819b8818632c58b9e471b0f26190e5f16b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c71c92ffa79c844f3529265320b46eadd0c158cf
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339967"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778850"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>IoT デバイスにセキュリティ エージェントを選択してデプロイする
 
@@ -28,11 +18,9 @@ Defender for IoT を使用すると、IoT デバイスを監視してデータ�
 エージェントはオープン ソース プロジェクトとして開発されており、2 つのフレーバーがあります。 <br> それは、[C](https://aka.ms/iot-security-github-c) と [C#](https://aka.ms/iot-security-github-cs) です。
 
 この記事では、次のことについて説明します。
-
-> [!div class="checklist"]
-> * セキュリティ エージェントのフレーバーを比較します
-> * サポートされているエージェント プラットフォームを確認します
-> * ソリューションに適したエージェントのフレーバーを選択します
+- セキュリティ エージェントのフレーバーを比較します
+- サポートされているエージェント プラットフォームを確認します
+- ソリューションに適したエージェントのフレーバーを選択します
 
 ## <a name="understand-security-agent-options"></a>セキュリティ エージェントのオプションを理解する
 
@@ -53,7 +41,7 @@ C ベースのセキュリティ エージェントはメモリ占有領域が�
 | **IoT Hub に対する [認証](concept-security-agent-authentication-methods.md)** | はい | はい |
 | **セキュリティ データの [収集](how-to-agent-configuration.md#supported-security-events)** | はい | はい |
 | **イベントの集計** | はい | はい |
-| **[セキュリティ モジュール ツイン](concept-security-module.md)によるリモート構成** | はい | はい |
+| **[Defender-IoT-micro-agent ツイン](concept-security-module.md)によるリモート構成** | はい | はい |
 
 ## <a name="security-agent-installation-guidelines"></a>セキュリティ エージェントのインストール ガイドライン
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/16/2019
 ms.author: victorh
 ms.openlocfilehash: 355caeb54f09797ae719f21401ceebb7d53d745a
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99592722"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Application Gateway のカスタム エラー ページを作成する

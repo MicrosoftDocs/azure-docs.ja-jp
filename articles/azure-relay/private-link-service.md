@@ -4,10 +4,10 @@ description: Azure Relay を Azure Private Link サービスと統合する方�
 ms.date: 09/24/2020
 ms.topic: article
 ms.openlocfilehash: 13644082160704ba9918e6bd6257fa314bb463a6
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98134383"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link"></a>Azure Relay と Azure Private Link の統合 

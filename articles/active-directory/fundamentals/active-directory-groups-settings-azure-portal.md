@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c346877d29c5fef03b45c895cbf8d462f90d0979
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92369133"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>Azure Active Directory を使用してグループ情報を編集する
@@ -31,13 +31,13 @@ Azure Active Directory (Azure AD) を使用すると、名前、説明、また�
 
     **[グループ - すべてのグループ]** ページが表示され、ご自分のアクティブなグループがすべて表示されます。
 
-3. **[グループ - すべてのグループ]** ページから、 **[検索]** ボックスに必要なだけグループ名を入力します。 この記事では、 **[MDM policy - West]\(MDM ポリシー - 西部\)** グループを検索します。
+3. **[グループ - すべてのグループ]** ページから、**[検索]** ボックスに必要なだけグループ名を入力します。 この記事では、**[MDM policy - West]\(MDM ポリシー - 西部\)** グループを検索します。
 
-    検索結果が、文字を入力すると更新されて、 **[検索]** ボックスの下に表示されます。
+    検索結果が、文字を入力すると更新されて、**[検索]** ボックスの下に表示されます。
 
     ![[検索] ボックスに検索テキストを含む [すべてのグループ] ページ](media/active-directory-groups-settings-azure-portal/search-for-specific-group.png)
 
-4. グループの **[MDM policy - West]\(MDM ポリシー - 西部\)** を選択して、 **[管理]** 領域から **[プロパティ]** を選択します。
+4. グループの **[MDM policy - West]\(MDM ポリシー - 西部\)** を選択して、**[管理]** 領域から **[プロパティ]** を選択します。
 
     ![[メンバー] オプションと情報が強調表示されている、グループの概要ページ](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
 
@@ -51,7 +51,7 @@ Azure Active Directory (Azure AD) を使用すると、名前、説明、また�
 
     - **[グループの種類]。** グループの種類が作成されると、変更することはできません。 **[グループの種類]** を変更するには、グループを削除して、新しいグループを作成する必要があります。
     
-    - **[メンバーシップの種類]。** メンバーシップの種類を変更します。 利用可能なさまざまなメンバーシップの種類については、「[How to:Azure Active Directory ポータルを使用して基本グループを作成してメンバーを追加する](active-directory-groups-create-azure-portal.md)」を参照してください。
+    - **[メンバーシップの種類]。** メンバーシップの種類を変更します。 利用可能なさまざまなメンバーシップの種類に関する詳細については、[Azure Active Directory ポータルを使用して基本グループを作成してメンバーを追加する方法](active-directory-groups-create-azure-portal.md)に関する記事を参照してください。
     
     - **[オブジェクト ID]。** オブジェクト ID は変更できませんが、コピーして PowerShell コマンドでグループに対して使用できます。 PowerShell コマンドレットの使用に関する詳細については、[グループ設定の構成用の Azure Active Directory コマンドレット](../enterprise-users/groups-settings-v2-cmdlets.md)に関するページをご覧ください。
 
@@ -70,4 +70,4 @@ Azure Active Directory (Azure AD) を使用すると、名前、説明、また�
 
 - [グループを使用したリソースへのアクセス管理](active-directory-manage-groups.md)
 
-- [Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する](active-directory-how-subscriptions-associated-directory.md)
+- [Azure サブスクリプションの Azure Active Directory への関連付けまたは追加](active-directory-how-subscriptions-associated-directory.md)

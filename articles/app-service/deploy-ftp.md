@@ -3,15 +3,15 @@ title: FTP/S を使用したコンテンツのデプロイ
 description: FTP または FTPS を使用して Azure App Service にアプリをデプロイする方法について説明します。 暗号化されていない FTP を無効にして Web サイトのセキュリティを強化します。
 ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
 ms.topic: article
-ms.date: 09/18/2019
+ms.date: 02/26/2021
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: cfec5ec5f14afc8c4eba5c21c5904687c9b187cc
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: c7427a1f8f528fdf405b22c4e91941ea7a915ffa
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209255"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045804"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>FTP/S を使用した Azure App Service へのアプリのデプロイ
 
@@ -19,35 +19,49 @@ ms.locfileid: "98209255"
 
 アプリの FTP/S エンドポイントは既にアクティブです。 FTP/S デプロイを有効にするための構成は必要ありません。
 
-## <a name="open-ftp-dashboard"></a>FTP ダッシュボードを開く
-
-1. [Azure portal](https://portal.azure.com) で、**App Services** を検索して選択します。
-
-    ![App Services を検索します。](media/app-service-continuous-deployment/search-for-app-services.png)
-
-2. デプロイする Web アプリを選択します。
-
-    ![アプリを選択します。](media/app-service-continuous-deployment/select-your-app.png)
-
-3. **[デプロイ センター]**  >  **[FTP]**  >  **[ダッシュボード]** を選択します。
-
-    ![FTP ダッシュボードを開く](./media/app-service-deploy-ftp/open-dashboard.png)
-
-## <a name="get-ftp-connection-information"></a>FTP の接続情報を取得する
-
-FTP ダッシュボードで、 **[コピー]** を選択して、FTPS エンドポイントとアプリの資格情報をコピーします。
-
-![FTP 情報のコピー](./media/app-service-deploy-ftp/ftp-dashboard.png)
-
-アプリごとに一意であるため、**アプリの資格情報** を使用してデプロイすることをお勧めします。 ただし、 **[ユーザーの資格情報]** をクリックした場合は、サブスクリプション内のすべての App Service アプリへの FTP/S のログインで使用できるユーザー レベルの資格情報を設定できます。
-
 > [!NOTE]
-> ユーザーレベルの資格情報を使用した FTP または FTPS エンドポイントの認証には、次の形式のユーザー名が必要です。 
->
->`<app-name>\<user-name>`
->
-> ユーザーレベルの資格情報は、特定のリソースではなく、ユーザーにリンクされているため、適切なアプリのエンドポイントに対してサインイン アクションを実行するには、ユーザー名はこの形式でなければなりません。
->
+> Azure portal の **[開発センター (クラシック)]** ページ (以前のデプロイ エクスペリエンス) は、2021 年 3 月に非推奨となる予定です。 この変更はアプリの既存のデプロイ設定には影響せず、 **[デプロイ センター]** ページで引き続きアプリのデプロイを管理できます。
+
+## <a name="get-deployment-credentials"></a>デプロイ資格情報を取得する
+
+1. 「[Azure App Service のデプロイ資格情報の構成](deploy-configure-credentials.md)」の指示に従って、アプリケーション スコープの資格情報をコピーするか、ユーザー スコープの資格情報を設定します。 いずれかの資格情報を使用して、アプリの FTP/S エンドポイントに接続できます。
+
+1. 選択した資格情報のスコープに応じて、次の形式で FTP ユーザー名を作成します。
+
+    | アプリケーション スコープ | ユーザー スコープ |
+    | - | - |
+    |`<app-name>\$<app-name>`|`<app-name>\<deployment-user>`|
+
+    ---
+
+    App Service では、FTP/S エンドポイントはアプリ間で共有されます。 ユーザー スコープの資格情報は特定のリソースにリンクされていないため、前述のように、ユーザースコープのユーザー名の前にアプリ名を付加する必要があります。
+
+## <a name="get-ftps-endpoint"></a>FTP/S エンドポイントを取得する
+    
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+デプロイ資格情報をコピーしたアプリの同じ管理ページ ( **[デプロイ センター]**  >  **[FTP 資格情報]** ) で、**FTPS エンドポイント** をコピーします。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
+
+[az webapp deployment list-publishing-profiles](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_profiles) コマンドを実行します。 次の例では、[JMES パス](https://jmespath.org/) を使用して、出力から FTP/S エンドポイントを抽出します。
+
+```azurecli-interactive
+az webapp deployment list-publishing-profiles --name <app-name> --resource-group <group-name> --query "[?ends_with(profileName, 'FTP')].{profileName: profileName, publishUrl: publishUrl}"
+```
+
+各アプリには、2 つの FTP/S エンドポイントがあります。1 つは読み取り/書き込みで、もう 1 つは読み取り専用 (`profileName` に `ReadOnly` が含まれます) で、データ復旧シナリオ用です。 FTP を使用してファイルをデプロイするには、読み取り/書き込みエンドポイントの URL をコピーします。
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+[Get-AzWebAppPublishingProfile](/powershell/module/az.websites/get-azwebapppublishingprofile) コマンドを実行します。 次の例では、XML 出力から FTP/S エンドポイントを抽出します。
+
+```azurepowershell-interactive
+$xml = [xml](Get-AzWebAppPublishingProfile -Name <app-name> -ResourceGroupName <group-name> -OutputFile null)
+$xml.SelectNodes("//publishProfile[@publishMethod=`"FTP`"]/@publishUrl").value
+```
+
+-----
 
 ## <a name="deploy-files-to-azure"></a>ファイルを Azure にデプロイする
 
@@ -56,7 +70,7 @@ FTP ダッシュボードで、 **[コピー]** を選択して、FTPS エンド
 3. アプリの URL を参照して、アプリが正しく動作していることを確認します。 
 
 > [!NOTE] 
-> [git ベース デプロイ](deploy-local-git.md)とは異なり、FTP デプロイでは、次のデプロイ自動化はサポートされません。 
+> [Git ベースのデプロイ](deploy-local-git.md)や[Zip デプロイ](deploy-zip.md)とは異なり、FTP デプロイでは次のようなビルド オートメーションはサポートされていません。 
 >
 > - 依存関係の復元 (NuGet、NPM、PIP、Composer の自動化など)
 > - .NET バイナリのコンパイル
@@ -69,36 +83,45 @@ FTP ダッシュボードで、 **[コピー]** を選択して、FTPS エンド
 
 セキュリティを強化するには、FTP over TLS/SSL のみを許可する必要があります。 FTP デプロイを使用していない場合は、FTP と FTPS の両方を無効にすることもできます。
 
-[Azure portal](https://portal.azure.com) のご使用のアプリのリソース ページで、左側のナビゲーションの **[構成]**  >  **[全般設定]** を選択します。
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-暗号化されていない FTP を無効にするには、 **[FTP state]\(FTP の状態\)** で **[FTPS のみ]** を選択します。 FTP と FTPS の両方を完全に無効にするには、 **[無効にする]** を選択します。 完了したら、 **[保存]** をクリックします。 **[FTPS のみ]** を使用する場合は、Web アプリの **[TLS/SSL 設定]** ブレードに移動して TLS 1.2 以降を適用する必要があります。 TLS 1.0 と 1.1 は、 **[FTPS のみ]** ではサポートされません。
+1. [Azure portal](https://portal.azure.com) のご使用のアプリのリソース ページで、左側のナビゲーションの **[構成]**  >  **[全般設定]** を選択します。
 
-![FTP/S の無効化](./media/app-service-deploy-ftp/disable-ftp.png)
+2. 暗号化されていない FTP を無効にするには、 **[FTP state]\(FTP の状態\)** で **[FTPS のみ]** を選択します。 FTP と FTPS の両方を完全に無効にするには、 **[無効にする]** を選択します。 完了したら、 **[保存]** をクリックします。 **[FTPS のみ]** を使用する場合は、Web アプリの **[TLS/SSL 設定]** ブレードに移動して TLS 1.2 以降を適用する必要があります。 TLS 1.0 と 1.1 は、 **[FTPS のみ]** ではサポートされません。
 
-## <a name="automate-with-scripts"></a>スクリプトで自動化する
+    ![FTP/S の無効化](./media/app-service-deploy-ftp/disable-ftp.png)
 
-[Azure CLI](/cli/azure) を使用した FTP の展開については、[Web アプリの作成と FTP を使用したファイルの展開 (Azure CLI)](./scripts/cli-deploy-ftp.md) に関する記事を参照してください。
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-[Azure PowerShell](/cli/azure)を使用した FTP のデプロイについては、「[FTP を使用して Web アプリにファイルをアップロードする (PowerShell)](./scripts/powershell-deploy-ftp.md)」を参照してください。
+`--ftps-state` 引数を指定して [az webapp config set](/cli/azure/webapp/deployment#az_webapp_deployment_list_publishing_profiles) コマンドを実行します。
+
+```azurecli-interactive
+az webapp config set --name <app-name> --resource-group <group-name> --ftps-state FtpsOnly
+```
+
+`--ftps-state` に指定できる値は、`AllAllowed` (FTP および FTPS が有効)、`Disabled` (FTP および FTPS が無効)、`FtpsOnly` (FTPS のみ) です。
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+`-FtpsState` パラメーターを指定して [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) コマンドを実行します。
+
+```azurepowershell-interactive
+Set-AzWebApp -Name <app-name> -ResourceGroupName <group-name> -FtpsState FtpsOnly
+```
+
+`--ftps-state` に指定できる値は、`AllAllowed` (FTP および FTPS が有効)、`Disabled` (FTP および FTPS が無効)、`FtpsOnly` (FTPS のみ) です。
+
+-----
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
 ## <a name="troubleshoot-ftp-deployment"></a>FTP デプロイのトラブルシューティング
 
-- [FTP/S を使用した Azure App Service へのアプリのデプロイ](#deploy-your-app-to-azure-app-service-using-ftps)
-  - [FTP ダッシュボードを開く](#open-ftp-dashboard)
-  - [FTP の接続情報を取得する](#get-ftp-connection-information)
-  - [ファイルを Azure にデプロイする](#deploy-files-to-azure)
-  - [FTPS を強制する](#enforce-ftps)
-  - [スクリプトで自動化する](#automate-with-scripts)
-  - [FTP デプロイのトラブルシューティング](#troubleshoot-ftp-deployment)
-    - [FTP デプロイをトラブルシューティングするには、どうすればよいですか。](#how-can-i-troubleshoot-ftp-deployment)
-    - [FTP 接続してコードを発行できません。問題を解決するには、どうすればよいですか。](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
-    - [パッシブ モードを使用して Azure App Service で FTP に接続するには、どうすればよいですか。](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
-  - [次の手順](#next-steps)
-  - [その他のリソース](#more-resources)
+- [FTP デプロイをトラブルシューティングするには、どうすればよいですか。](#how-can-i-troubleshoot-ftp-deployment)
+- [FTP 接続してコードを発行できません。問題を解決するには、どうすればよいですか。](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+- [パッシブ モードを使用して Azure App Service で FTP に接続するには、どうすればよいですか。](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
 
-### <a name="how-can-i-troubleshoot-ftp-deployment"></a>FTP デプロイをトラブルシューティングするには、どうすればよいですか。
+#### <a name="how-can-i-troubleshoot-ftp-deployment"></a>FTP デプロイをトラブルシューティングするには、どうすればよいですか。
 
 FTP デプロイのトラブルシューティングを行うための最初の手順は、デプロイの問題を、ランタイム アプリケーションの問題から切り離すことです。
 
@@ -108,19 +131,18 @@ FTP デプロイのトラブルシューティングを行うための最初の�
 
 デプロイの問題かランタイムの問題かを判断するには、「[Deployment vs. runtime issues (デプロイの問題とランタイムの問題)](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues)」を参照してください。
 
-### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>FTP 接続してコードを発行できません。 問題を解決するには、どうすればよいですか。
-入力したホスト名と[資格情報](#open-ftp-dashboard)が正しいかどうかを確認してください。 また、使用しているマシン上の次の FTP ポートが、ファイアウォールによってブロックされていないことも確認します。
+#### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>FTP 接続してコードを発行できません。 問題を解決するには、どうすればよいですか。
+入力した[ホスト名](#get-ftps-endpoint)と[資格情報](#get-deployment-credentials)が正しいことを確認してください。 また、使用しているマシン上の次の FTP ポートが、ファイアウォールによってブロックされていないことも確認します。
 
 - FTP コントロール接続ポート: 21、990
 - FTP データ接続ポート: 989、10001-10300
  
-### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>パッシブ モードを使用して Azure App Service で FTP に接続するには、どうすればよいですか。
+#### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>パッシブ モードを使用して Azure App Service で FTP に接続するには、どうすればよいですか。
 Azure App Service では、アクティブ モードとパッシブ モードの両方を使用した接続がサポートされます。 お使いのデプロイ マシンは、通常、(オペレーティング システム内の、またはホーム ネットワークまたはビジネス ネットワークの一部として) ファイアウォールの内側にあるため、パッシブ モードをお勧めします。 [WinSCP ドキュメントに記載された使用例](https://winscp.net/docs/ui_login_connection)をご覧ください。 
-
-## <a name="next-steps"></a>次のステップ
-
-高度なデプロイ シナリオの詳細については、[Git を使用した Azure へのデプロイ](deploy-local-git.md)に関するページをご覧ください。 Azure への Git ベース デプロイでは、バージョン管理、パッケージの復元、MSBuild などが可能です。
 
 ## <a name="more-resources"></a>その他のリソース
 
+* [Azure App Service へのローカル Git デプロイ](deploy-local-git.md)
 * [Azure App Service のデプロイ資格情報](deploy-configure-credentials.md)
+* [サンプル: Web アプリを作成し、FTP を使用してファイルをデプロイする (Azure CLI)](./scripts/cli-deploy-ftp.md)。
+* [サンプル: FTP を使用して Web アプリにファイルをアップロードする (PowerShell)](./scripts/powershell-deploy-ftp.md)。

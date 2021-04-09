@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.custom: mqtt
-ms.openlocfilehash: 03e05eb2bc56a07c2bda3d3fb224012abb3c9e4a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1fcf560ba1fef137a28ab1872635cc2182cd07e1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735940"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103009200"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT Hub 開発者ガイド
 
@@ -56,7 +56,7 @@ Azure IoT Hub は、以下を提供します。
 
 * [IoT Hub へのアクセスの制御](iot-hub-devguide-security.md): IoT Hub の機能へのアクセスを許可するために使用する、デバイスとクラウド コンポーネントの両方のセキュリティ モデルについて説明します。 この記事には、トークンと X.509 証明書の使用方法および付与できるアクセス許可の詳細情報が含まれています。
 
-* [デバイス ツインを使って状態と構成を同期する](iot-hub-devguide-device-twins.md): " *デバイス ツイン* " の概念について説明します。 この記事では、デバイス ツインの機能 (デバイスのそのデバイス ツインとの同期など) についても説明します。 この記事には、デバイス ツインに保存されるデータに関する情報が含まれています。
+* [デバイス ツインを使って状態と構成を同期する](iot-hub-devguide-device-twins.md): "*デバイス ツイン*" の概念について説明します。 この記事では、デバイス ツインの機能 (デバイスのそのデバイス ツインとの同期など) についても説明します。 この記事には、デバイス ツインに保存されるデータに関する情報が含まれています。
 
 * [デバイス上のダイレクト メソッドを呼び出す](iot-hub-devguide-direct-methods.md): ダイレクト メソッドのライフ サイクルについて説明します。 この記事では、バックエンド アプリからデバイス上のメソッドを呼び出し、デバイス上のダイレクト メソッドを処理する方法について説明します。
 
@@ -75,5 +75,3 @@ Azure IoT Hub は、以下を提供します。
 * [リファレンス - デバイス SDK とサービス SDK](iot-hub-devguide-sdks.md): IoT Hub と対話するデバイス アプリとサービス アプリを開発するための Azure IoT SDK を一覧で示します。 この記事には、オンライン API ドキュメントへのリンクが含まれています。
 
 * [リファレンス - IoT Hub の MQTT のサポート](iot-hub-mqtt-support.md): IoT Hub での MQTT プロトコルのサポート方法について詳しく説明します。 この記事では、Azure IoT SDK に組み込まれている MQTT プロトコルのサポートと、MQTT プロトコルを直接使用する方法について説明します。
-
-* [用語集](iot-hub-devguide-glossary.md): IoT Hub に関連する一般的な用語の一覧です。

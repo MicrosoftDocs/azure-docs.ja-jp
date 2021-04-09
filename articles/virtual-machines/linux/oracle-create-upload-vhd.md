@@ -2,17 +2,19 @@
 title: Oracle Linux VHD の作成とアップロード
 description: Oracle Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
+ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: 34ebc126ba4a1ae725325f8d888899af2dd72a59
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 9984589b19f15ab00e895bca75c295a92a68d0fe
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875670"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102557796"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Azure 用の Oracle Linux 仮想マシンの準備
 
@@ -258,15 +260,15 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 
 14. スワップの構成オペレーティング システム ディスクにスワップ領域を作成しないでください。
 
-    以前は、Azure で仮想マシンがプロビジョニングされた後に、仮想マシンに接続されたローカル リソース ディスクを使用してスワップ領域を自動的に構成するために、Azure Linux エージェントが使用されていました。 ただし、これは cloud-init によって処理されるようになったので、リソース ディスクをフォーマットしたり、スワップ ファイルを作成したりするために、Linux エージェントを使用 **しないでください**。`/etc/waagent.conf` の次のパラメーターを適切に変更します。
+    以前は、Azure で仮想マシンがプロビジョニングされた後に、仮想マシンに接続されたローカル リソース ディスクを使用してスワップ領域を自動的に構成するために、Azure Linux エージェントが使用されていました。 しかし、これは cloud-init によって処理されるようになったので、Linux エージェントを使用して、スワップ ファイルを作成するリソース ディスクをフォーマット **しないでください**。`/etc/waagent.conf` で次のパラメーターを適切に変更します。
 
     ```console
     sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
     sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
     ```
 
-    スワップのマウント、フォーマット、作成を行う場合は、次のいずれかの方法を使用できます。
-    * VM を作成するたびに、cloud-init 構成としてこれを渡します
+    スワップをマウント、フォーマット、作成する場合は、次のいずれかの方法を使用できます。
+    * VM を作成するたびに、cloud-init 構成としてこれを渡す
     * VM が作成されるたびに、これを実行するイメージに組み込まれている cloud-init ディレクティブを使用します。
 
         ```console

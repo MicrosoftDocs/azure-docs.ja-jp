@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: f02cbdc7ca8822c5fcc91b106856d7f8f547536b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91565107"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Azure Logic Apps で B2B エンタープライズ統合用の RosettaNet メッセージを交換する
@@ -57,7 +57,7 @@ ms.locfileid: "91565107"
 
 * ご利用の契約およびその他の B2B 成果物を格納する[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。 この統合アカウントは、ご利用の Azure サブスクリプションに関連付けられている必要があります。
 
-* 統合アカウントで定義され、**ビジネス ID** の "DUNS" 修飾子を使用して構成されている 2 つ以上の[パートナー](../logic-apps/logic-apps-enterprise-integration-partners.md)
+* 統合アカウントで定義され、**ビジネス ID** の "DUNS" 修飾子を使用して構成されている 2 つ以上の [パートナー](../logic-apps/logic-apps-enterprise-integration-partners.md)
 
 * RosettaNet メッセージの送受信に必要な、統合アカウントでの PIP プロセス構成。 プロセス構成には、すべての PIP 構成特性が格納されます。 後でパートナーとの契約を作成するときにこの構成を参照できます。 統合アカウントに PIP プロセス構成を作成するには、[PIP プロセス構成の追加](#add-pip)に関する項目を参照してください。
 
@@ -206,7 +206,7 @@ PIP プロセス構成を統合アカウントに追加するには、次の手�
    | **ロール** | はい | PIP でのホスト パートナーのロール |
    ||||
 
-   RosettaNet の [デコード] アクションからの出力には、他のプロパティに加えて**アウトバウンド シグナル**が含まれており、これを選択して、エンコードしてパートナーに送り返す、またはその出力に対して他のアクションを実行することができます。
+   RosettaNet の [デコード] アクションからの出力には、他のプロパティに加えて **アウトバウンド シグナル** が含まれており、これを選択して、エンコードしてパートナーに送り返す、またはその出力に対して他のアクションを実行することができます。
 
 ## <a name="send-or-encode-rosettanet-messages"></a>RosettaNet メッセージを送信またはエンコードする
 

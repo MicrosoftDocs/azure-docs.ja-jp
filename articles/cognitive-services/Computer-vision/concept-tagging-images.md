@@ -12,10 +12,10 @@ ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: a75e55cd51890173b6733ab5f8c0f1bcbfeef0f5
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96532977"
 ---
 # <a name="applying-content-tags-to-images"></a>コンテンツ タグの画像への適用
@@ -28,7 +28,7 @@ Computer Vision では、数千個の認識可能なオブジェクト、生物�
 
 次の JSON 応答は、サンプル イメージで検出された視覚的特徴のタグを付けるときに、Computer Vision から返される内容を示します。
 
-![青い家と前庭](./Images/house_yard.png)。
+![青い家と前庭](./Images/house_yard.png).
 
 ```json
 {

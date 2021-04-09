@@ -10,10 +10,10 @@ ms.subservice: azure-arc-data
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.openlocfilehash: 8100d9e12f107e0c4598876c46453b46c6ee4d0e
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102122002"
 ---
 # <a name="known-issues---azure-arc-enabled-data-services-preview"></a>既知の問題 - Azure Arc 対応データ サービス (プレビュー)

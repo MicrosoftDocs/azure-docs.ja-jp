@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 521fd61f18d6673e21c23dbca4cfc12d2ee4bf0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9cbfc30b10373ad2a4f4304987dac426b5dcabe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931502"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101643577"
 ---
 # <a name="migrate-postgresql-database-to-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループに PostgreSQL データベースを移行する
 
@@ -53,20 +53,20 @@ Azure Arc 対応 PostgreSQL Hyperscale サーバー グループは、PostgreSQL
 
 - **ターゲット:**  
     Azure Arc 環境で実行されている、postgres01 という名前の Postgres サーバー。 バージョン 12 です。 標準の Postgres データベース以外のデータベースはありません。  
-    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination.jpg" alt-text="Migrate-source":::
+    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination.jpg" alt-text="Migrate-destination":::
 
 
 ### <a name="take-a-backup-of-the-source-database-on-premises"></a>オンプレミスのソース データベースのバックアップを作成する
 
-:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup.jpg" alt-text="Migrate-source":::
+:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup.jpg" alt-text="Migrate-source-backup":::
 
 それを構成します。
 1. ファイル名を指定します。**MySourceBackup**
-2. 形式を **カスタム**に設定します
-:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup2.jpg" alt-text="Migrate-source":::
+2. 形式を **カスタム** に設定します
+:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup2.jpg" alt-text="Migrate-source-backup-configure":::
 
 バックアップが正常に完了します。  
-:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup3.jpg" alt-text="Migrate-source":::
+:::image type="content" source="media/postgres-hyperscale/Migrate-PG-Source-Backup3.jpg" alt-text="Migrate-source-backup-completed":::
 
 ### <a name="create-an-empty-database-on-the-destination-system-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループの移行先システムに空のデータベースを作成する
 
@@ -94,21 +94,23 @@ azdata arc postgres endpoint list -n postgres01
 ]
 ```
 
-移行先データベースに **RESTORED_MyOnPremPostgresDB** という名前を付けます  
-:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg" alt-text="Migrate-destination-db-create"lightbox="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg":::
+移行先データベースに **RESTORED_MyOnPremPostgresDB** という名前を付けます。
+
+:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg" alt-text="Migrate-destination-db-create" lightbox="media/postgres-hyperscale/migrate-pg-destination-dbcreate.jpg":::
 
 ### <a name="restore-the-database-in-your-arc-setup"></a>Arc セットアップでデータベースを復元する
-:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore.jpg" alt-text="Migrate-source":::
+
+:::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore.jpg" alt-text="Migratre-db-restore":::
 
 復元を構成します。
 1. 復元するバックアップが含まれているファイルを指定します。**MySourceBackup**
 2. 形式は **カスタムまたは tar** に設定したままにします
-   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore2.jpg" alt-text="Migrate-source":::
+   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore2.jpg" alt-text="Migrate-db-restore-configure":::
 
 3. **[復元]** をクリックします。  
 
    復元が成功します。  
-   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore3.jpg" alt-text="Migrate-source":::
+   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore3.jpg" alt-text="Migrate-db-restore-completed":::
 
 ### <a name="verify-that-the-database-was-successfully-restored-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループで、データベースが正常に復元されたことを確認します
 
@@ -118,7 +120,20 @@ azdata arc postgres endpoint list -n postgres01
 
 Azure Arc のセットアップでホストされている Postgres インスタンスを展開します。 復元したデータベースのテーブルが表示され、データを選択すると、オンプレミスのインスタンスと同じ行が表示されます。
 
-   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestoreverif.jpg" alt-text="Migrate-source"
+   :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestoreverif.jpg" alt-text="Migrate-db-restore-verification":::
+
+**Azure Arc セットアップ内の `psql` から:**  
+
+Arc セットアップ内では、`psql` を使用して Postgres インスタンスに接続し、データベース コンテキストを `RESTORED_MyOnPremPostgresDB` に設定して、データのクエリを実行できます。
+
+1. `psql` の接続文字列から役に立つエンド ポイントの一覧を表示します。
+
+   ```console
+   azdata arc postgres endpoint list -n postgres01
+   [
+     {
+       "Description": "PostgreSQL Instance",
+       "Endpoint": "postgresql://postgres:<replace with password>@12.345.123.456:1234"
      },
      {
        "Description": "Log Search Dashboard",
@@ -179,6 +194,6 @@ Azure Arc のセットアップでホストされている Postgres インスタ
     * [マルチテナント データベースを設計する](../../postgresql/tutorial-design-database-hyperscale-multi-tenant.md)*
     * [リアルタイム分析ダッシュボードを設計する](../../postgresql/tutorial-design-database-hyperscale-realtime.md)*
 
-> \* これらのドキュメントで、**Azure portal へのサインイン**および **Azure Database for PostgreSQL - Hyperscale (Citus) の作成**に関するセクションはスキップしてください。 Azure Arc デプロイの残りの手順を実装します。 これらのセクションは Azure クラウドで PaaS サービスとして提供される Azure Database for PostgreSQL Hyperscale (Citus) に固有のものですが、ドキュメントの他の部分は Azure Arc 対応 PostgreSQL Hyperscale に直接適用できます。
+> \* これらのドキュメントで、**Azure portal へのサインイン** および **Azure Database for PostgreSQL - Hyperscale (Citus) の作成** に関するセクションはスキップしてください。 Azure Arc デプロイの残りの手順を実装します。 これらのセクションは Azure クラウドで PaaS サービスとして提供される Azure Database for PostgreSQL Hyperscale (Citus) に固有のものですが、ドキュメントの他の部分は Azure Arc 対応 PostgreSQL Hyperscale に直接適用できます。
 
 - [Azure Database for PostgreSQL Hyperscale サーバー グループのスケールアウト](scale-out-postgresql-hyperscale-server-group.md)

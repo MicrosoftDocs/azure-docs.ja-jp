@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 3806578f5d1af61329e2e32fa3e8eceb9afa4d42
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e58d69634712a9cc640ba9e4785a7bf1effaf88c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713968"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103224658"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>構成オプション - Azure Monitor Application Insights for Java
 
@@ -61,7 +61,7 @@ Application Insights Java 3.0 は、既定では構成ファイルが `applicati
 }
 ```
 
-環境変数 `APPLICATIONINSIGHTS_CONNECTION_STRING` を使用して、接続文字列を設定することもできます。
+環境変数 `APPLICATIONINSIGHTS_CONNECTION_STRING` を使用して接続文字列を設定することもできます (接続文字列が JSON 構成でも指定されている場合に優先されます)。
 
 接続文字列を設定しないと、Java エージェントが無効になります。
 
@@ -81,7 +81,7 @@ Application Insights Java 3.0 は、既定では構成ファイルが `applicati
 
 クラウド ロール名が設定されていない場合は、アプリケーション マップのコンポーネントにラベルを付けるために、Application Insights リソースの名前が使用されます。
 
-環境変数 `APPLICATIONINSIGHTS_ROLE_NAME` を使用して、クラウド ロール名を設定することもできます。
+環境変数 `APPLICATIONINSIGHTS_ROLE_NAME` を使用してクラウド ロール名を設定することもできます (クラウド ロール名が JSON 構成でも指定されている場合に優先されます)。
 
 ## <a name="cloud-role-instance"></a>クラウド ロール インスタンス
 
@@ -98,7 +98,7 @@ Application Insights Java 3.0 は、既定では構成ファイルが `applicati
 }
 ```
 
-環境変数 `APPLICATIONINSIGHTS_ROLE_INSTANCE` を使用して、クラウド ロール インスタンスを設定することもできます。
+環境変数 `APPLICATIONINSIGHTS_ROLE_INSTANCE` を使用してクラウド ロール インスタンスを設定することもできます (クラウド ロール インスタンスが JSON 構成でも指定されている場合に優先されます)。
 
 ## <a name="sampling"></a>サンプリング
 
@@ -117,7 +117,7 @@ Application Insights Java 3.0 は、既定では構成ファイルが `applicati
 }
 ```
 
-環境変数 `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` を使用してサンプリング率を設定することもできます。
+環境変数 `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` を使用してサンプリング率を設定することもできます (サンプリング率が JSON 構成でも指定されている場合に優先されます)。
 
 > [!NOTE]
 > サンプリング率には、N を整数として 100/N に近い割合を選択します。 サンプリングでは現在、その他の値はサポートされていません。
@@ -150,9 +150,6 @@ Application Insights Java 3.0 は、既定では構成ファイルが `applicati
 `attribute` は、収集する JMX MBean 内の属性名です。
 
 数値およびブール型の JMX メトリック値がサポートされています。 ブール型の JMX メトリックは、false の場合は `0` に、true の場合は `1` にマップされます。
-
-[//]: # "注: APPLICATIONINSIGHTS_JMX_METRICS に関する説明がここに記載されていません"
-[//]: # "env var に埋め込まれている json は整理されておらず、コード不要のアタッチ シナリオについてのみ記載する方がよいと考えられます"
 
 ## <a name="custom-dimensions"></a>カスタム ディメンション
 
@@ -187,9 +184,11 @@ Application Insights Java 3.0 は、既定では構成ファイルが `applicati
 
 Log4j、Logback、java.util.logging は自動的にインストルメント化され、これらのログ記録フレームワークを介して実行されるログは自動収集されます。
 
-ログ記録は、最初にログ記録フレームワークの構成されたしきい値を満たし、次に Application Insights の構成されたしきい値も満たす場合にのみキャプチャされます。
+ログ記録は、ログ記録フレームワークに構成されているレベルを最初に満たし、次に Application Insights に構成されているレベルも満たす場合にのみキャプチャされます。
 
-既定の Application Insights のしきい値は `INFO` です。 このレベルを変更する場合:
+たとえば、パッケージ `com.example` から `WARN` (以上) をログに記録するようにログ記録フレームワークが構成されており、`INFO` (以上) をキャプチャするように Application Insights が構成されている場合、Application Insights では、パッケージ `com.example` から `WARN` (以上) しかキャプチャしません。
+
+Application Insights に構成されている既定のレベルは `INFO` です。 このレベルを変更する場合:
 
 ```json
 {
@@ -201,7 +200,7 @@ Log4j、Logback、java.util.logging は自動的にインストルメント化�
 }
 ```
 
-環境変数 `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` を使用してしきい値を設定することもできます。
+環境変数 `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` を使用してレベルを設定することもできます (レベルが JSON 構成でも指定されている場合に優先されます)。
 
 以下に、`applicationinsights.json` ファイルに指定できる有効な `level` 値と、それらが各種ログ フレームワークのログ レベルにどのように対応するかを示します。
 
@@ -219,7 +218,7 @@ Log4j、Logback、java.util.logging は自動的にインストルメント化�
 | ALL               | ALL    | ALL     | ALL     |
 
 > [!NOTE]
-> ロガーに例外が渡されると、Azure portal 内で `traces` テーブルではなく `exceptions` テーブルの下にログ メッセージ (および例外) が表示されます。
+> ロガーに例外オブジェクトが渡されると、Azure portal 内で `traces` テーブルではなく `exceptions` テーブルの下にログ メッセージ (および例外オブジェクトの詳細) が表示されます。
 
 ## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>自動収集される Micrometer メトリック (Spring Boot アクチュエータ メトリックを含む)
 
@@ -284,7 +283,7 @@ Application Insights Java 3.0 は、既定では 15 分ごとにハートビー�
 ```
 
 > [!NOTE]
-> ハートビート データは Application Insights の使用状況を追跡するためにも使用されるため、ハートビートの頻度を下げることはできません。
+> ハートビート データは Application Insights の使用状況の追跡にも使用されるため、間隔を 15 分より長くすることはできません。
 
 ## <a name="http-proxy"></a>HTTP Proxy
 
@@ -300,6 +299,30 @@ Application Insights Java 3.0 は、既定では 15 分ごとにハートビー�
 ```
 
 グローバルの `-Dhttps.proxyHost` と `-Dhttps.proxyPort` が設定されている場合、Application Insights Java 3.0 によってそれらも考慮されます。
+
+## <a name="metric-interval"></a>メトリックの間隔
+
+この機能はプレビュー段階にあります。
+
+既定では、メトリックは 60 秒ごとにキャプチャされます。
+
+バージョン 3.0.3-BETA 以降では、この間隔を変更できます。
+
+```json
+{
+  "preview": {
+    "metricIntervalSeconds": 300
+  }
+}
+```
+
+この設定は、次のすべてのメトリックに適用されます。
+
+* 既定のパフォーマンス カウンター (CPU やメモリなど)
+* 既定のカスタム メトリック (ガベージ コレクションのタイミングなど)
+* 構成済み JMX メトリック ([上記を参照](#jmx-metrics))
+* Micrometer メトリック ([上記を参照](#auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics))
+
 
 [//]: # "注: OpenTelemetry API が 1.0 になるまで、OpenTelemetry のサポートはプライベート プレビュー段階です"
 
@@ -349,7 +372,7 @@ Application Insights Java 3.0 は、既定では `applicationinsights.log` フ�
 
 `maxHistory` は、(現在のログ ファイルに加えて) 保持される、ロールオーバーされたログ ファイルの数です。
 
-バージョン 3.0.2 以降では、環境変数 `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` を使用して自己診断 `level` を設定することもできます。
+バージョン 3.0.2 以降では、環境変数 `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` を使用して自己診断 `level` を設定することもできます (自己診断 `level` が JSON 構成でも指定されている場合に優先されます)。
 
 ## <a name="an-example"></a>使用例
 

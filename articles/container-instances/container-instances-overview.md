@@ -2,14 +2,14 @@
 title: Azure のサーバーレス コンテナー
 description: Azure Container Instances サービスには、仮想マシンを管理したり、より高度なオーケストレーターを採用したりせずに、Azure で最も高速かつ簡単に別個のコンテナーを実行する方法が用意されています。
 ms.topic: overview
-ms.date: 08/10/2020
+ms.date: 03/22/2021
 ms.custom: seodec18, mvc
-ms.openlocfilehash: bd68fab380754eca38eebf3fd52634508f282cf6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c445687db7a154b6fc86e962d2c2340ad6297431
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88121665"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799073"
 ---
 # <a name="what-is-azure-container-instances"></a>Azure Container Instances とは
 
@@ -21,10 +21,7 @@ Azure Container Instances は、単純なアプリケーション、タスク自
 
 コンテナーは、スタートアップにおいて、仮想マシン (VM) よりもはるかに優れています。 Azure Container Instances を使用すると、VM をプロビジョニングして管理する必要なく、数秒で Azure でコンテナーを開始できます。
 
-Docker Hub、プライベート [Azure コンテナー レジストリ](../container-registry/index.yml)、または別のクラウドベースの Docker レジストリから、Linux または Windows のコンテナー イメージを取り込みます。 Azure Container Instances によって複数の一般的な基本 OS イメージがキャッシュされるため、カスタム アプリケーション イメージのデプロイを高速化するのに役立ちます。
-
-> [!NOTE]
-> 現時点では、オンプレミスのレジストリから Azure Container Instances にイメージをデプロイすることはできません。
+Docker Hub、プライベート [Azure コンテナー レジストリ](../container-registry/index.yml)、または別のクラウドベースの Docker レジストリから、Linux または Windows のコンテナー イメージを取り込みます。 ACI でサポートされているレジストリについては、[FAQ](container-instances-faq.md) を参照してください。 Azure Container Instances によって複数の一般的な基本 OS イメージがキャッシュされるため、カスタム アプリケーション イメージのデプロイを高速化するのに役立ちます。
 
 ## <a name="container-access"></a>コンテナー アクセス
 
@@ -43,7 +40,7 @@ Azure Container Instances では、アプリケーションの開発とトラブ
 
 ### <a name="customer-data"></a>顧客データ
 
-ACI サービスは、コンテナー グループが想定どおりに実行されていることを保証するために必要な最小限の顧客データを格納します。 顧客データを 1 つのリージョンに格納する機能は、現在、アジア太平洋地域の東南アジア リージョン (シンガポール) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは[地域](https://azure.microsoft.com/global-infrastructure/geographies/)内に格納されます。 詳細については、Azure サポートまでお問い合わせください。
+ACI サービスは、コンテナー グループが想定どおりに実行されていることを保証するために必要な最小限の顧客データを格納します。 現在、顧客データを 1 つのリージョンに格納することは、アジア太平洋地域の東南アジア リージョン (シンガポール) と、ブラジル地域のブラジル南部リージョン (サンパウロ州) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは[地域](https://azure.microsoft.com/global-infrastructure/geographies/)内に格納されます。 詳細については、Azure サポートまでお問い合わせください。
 
 ## <a name="custom-sizes"></a>カスタム サイズ
 
@@ -68,9 +65,6 @@ Azure Container Instances では、同じ API で、Windows と Linux の両方�
 * [GPU リソース](container-instances-gpu.md) (プレビュー)
 
 Windows コンテナーのデプロイでは、一般的な [Windows ベースのイメージ](container-instances-faq.md#what-windows-base-os-images-are-supported)に基づくイメージを使用します。
-
-> [!NOTE]
-> Azure Container Instances での Windows Server 2019 ベースのイメージの使用は、プレビュー段階です。
 
 ## <a name="co-scheduled-groups"></a>共同スケジュール グループ
 

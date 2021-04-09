@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d71c44ebaba5b0cbcb03afa41ad15237dceaef
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 4a2a69b5013ab8e1bc4637f21ce484a132d37834
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547476"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102455714"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 グループの有効期限ポリシーを構成する
 
@@ -42,7 +42,7 @@ Azure AD PowerShell コマンドレットをダウンロードしてインスト
 
 ## <a name="activity-based-automatic-renewal"></a>アクティビティベースの自動更新
 
-Azure AD インテリジェンスを使うと、最近使用されたかどうかに基づいてグループが自動的に更新されるようになります。 この機能は、Outlook、SharePoint、Teams などの Microsoft 365 サービス全体のグループに含まれるユーザー アクティビティに基づいているため、グループ所有者による手動操作は不要になります。 たとえば、所有者またはグループ メンバーが、SharePoint でドキュメントをアップロードする、Teams チャンネルにアクセスする、Outlook でグループにメールを送信するなどの操作を行うと、グループは自動的に更新され、所有者には更新通知が送信されません。
+Azure AD インテリジェンスを使うと、最近使用されたかどうかに基づいてグループが自動的に更新されるようになります。 この機能は、Outlook、SharePoint、Teams などの Microsoft 365 サービス全体のグループに含まれるユーザー アクティビティに基づいているため、グループ所有者による手動操作は不要になります。 たとえば、所有者またはグループ メンバーが、SharePoint でドキュメントをアップロードする、Teams チャンネルにアクセスする、Outlook でグループにメールを送信するなどの操作を行うと、グループはその有効期限が終了する 35 日前くらいに自動的に更新され、所有者には更新通知が送信されません。
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>グループの有効期限を自動的に更新するアクティビティ
 
@@ -172,7 +172,7 @@ PowerShell コマンドレットを使用して、Azure AD 組織の Microsoft 3
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
    ```
   
-次のコマンドレットは、ポリシーをさらに細かく構成するために使用できます。 詳細については、[PowerShell のドキュメント](/powershell/module/azuread/?branch=master&view=azureadps-2.0-preview#groups)を参照してください。
+次のコマンドレットは、ポリシーをさらに細かく構成するために使用できます。 詳細については、[PowerShell のドキュメント](/powershell/module/azuread/?view=azureadps-2.0-preview#groups)を参照してください。
 
 - Get-AzureADMSGroupLifecyclePolicy
 - New-AzureADMSGroupLifecyclePolicy

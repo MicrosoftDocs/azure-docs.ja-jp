@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/29/2021
 ms.author: apimpm
 ms.openlocfilehash: 54a46e999391507f5ec7d927f62b88fcd2169b75
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99499427"
 ---
 # <a name="backends-in-api-management"></a>API Management のバックエンド

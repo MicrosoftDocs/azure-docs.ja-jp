@@ -12,10 +12,10 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
 ms.openlocfilehash: 13f91fdd9e2d9501fba426bd6facbf9824a39285
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99257019"
 ---
 # <a name="how-to-use-self-service-application-access"></a>アプリケーションのセルフサービス アクセスの使用方法

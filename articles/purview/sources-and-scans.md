@@ -8,12 +8,12 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9a73f9b734d5404d07e05dd37d5ad8571c1aab2e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3b19fab33d0c8f53025605fd14fe65f08e660392
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383893"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677928"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Azure Purview でサポートされているデータ ソースとファイルの種類
 
@@ -43,9 +43,12 @@ Azure Purview では、次のソースがサポートされています。
 
 次のファイルの種類は、スキャンと、該当する場合はスキーマの抽出と分類がサポートされています。
 
-- 拡張子でサポートされる構造化ファイル形式: AVRO、ORC、PARQUET、CSV、JSON、PSV、SSV、TSV、TXT、XML
+- 拡張子でサポートされる構造化ファイル形式: AVRO、ORC、PARQUET、CSV、JSON、PSV、SSV、TSV、TXT、XML、GZIP
 - 拡張子でサポートされるドキュメント ファイル形式: DOC、DOCM、DOCX、DOT、ODP、ODS、ODT、PDF、POT、PPS、PPSX、PPT、PPTM、PPTX、XLC、XLS、XLSB、XLSM、XLSX、XLT
 - Purview では、カスタム ファイル拡張子とカスタム パーサーもサポートされています。
+ 
+> [!Note]
+> すべての Gzip ファイルは、内部の 1 つの csv ファイルにマップする必要があります。 Gzip ファイルは、システムおよびカスタムの分類ルールの対象となります。 現在、内部の複数のファイルにマップされた gzip ファイル、または csv 以外の任意のファイルの種類のスキャンはサポートされていません。 
 
 ## <a name="sampling-within-a-file"></a>ファイル内のサンプリング
 

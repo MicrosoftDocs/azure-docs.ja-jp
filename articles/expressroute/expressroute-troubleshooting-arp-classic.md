@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 01/30/2017
 ms.author: duau
 ms.openlocfilehash: 7c83b6d25936e184c70d4bf0a51636a3986bf4b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89394841"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>クラシック デプロイ モデルでの ARP テーブルの取得

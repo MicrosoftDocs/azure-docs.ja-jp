@@ -5,14 +5,14 @@ author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 06/21/2018
+ms.date: 03/08/2021
 ms.custom: seodec18
-ms.openlocfilehash: 3356e0bdd45b6a213ef5ef4a814e64585d8e8924
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6d3558511721a91c3a195cb510a1a00d5d8a9a51
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726769"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102487880"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Stream Analytics ジョブ監視とクエリの監視方法の概要
 
@@ -30,7 +30,7 @@ Azure portal は、クエリとジョブ パフォーマンスの監視とトラ
 | ---------------------- | ---------------------------------------- |
 | バックログされた入力イベント       | バックログされた入力イベントの数。 このメトリックの 0 以外の値は、ジョブが受信イベントの数についていけないことを意味しています。 この値がゆっくり増加する場合や一貫して 0 以外である場合は、ジョブをスケールアウトする必要があります。 「[ストリーミング ユニットの理解と調整](stream-analytics-streaming-unit-consumption.md)」を参照すると、より深く学習できます。 |
 | データ変換エラー | 想定の出力スキーマに変換できなかった出力イベントの数。 ラー ポリシーを "削除" に変更すると、このシナリオが発生するイベントを削除できます。 |
-| CPU 使用率 (%) (プレビュー)       | ジョブで使用されている CPU の割合。 このメトリックが常に 80% を超えている場合、そのジョブが CPU の使用でボトルネックになっており、入力イベントでバックログが発生する原因になる可能性があります。 そのジョブに割り当てられる SU の数を増やすことにより、このような問題を軽減することができます。 |
+| CPU 使用率 (%) (プレビュー)       | ジョブで使用されている CPU の割合。 この値が非常に高い (90% 以上) 場合であっても、このメトリックだけに基づいて SU の数を増やすことはしないでください。 バックログされた入力イベントまたは透かしの遅延の数が増えた場合、この CPU% 使用率メトリックを使用し、CPU がボトルネックかどうかを判断できます。 このメトリックは間欠的に急変化することがあります。 CPU ボトルネックに起因し、入力がバックログされたり、透かしの遅延が増えたりするとき、その境目となるジョブの上限を判断する目的でスケール テストを実行することをお勧めします。 |
 | 初期入力イベント       | アプリケーション タイムスタンプが受信時間より 5 分より前のイベント。 |
 | 失敗した関数の要求 | 失敗した Azure Machine Learning 関数呼び出しの数 (存在する場合)。 |
 | 関数のイベント        | Azure Machine Learning 関数に送られたイベントの数 (存在する場合)。 |

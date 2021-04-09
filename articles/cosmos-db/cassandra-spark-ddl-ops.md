@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 10/07/2020
 ms.openlocfilehash: 73d31fff362807937cbd87b8e1313cf601909802
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93092179"
 ---
 # <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>Spark からの Azure Cosmos DB Cassandra API での DDL 操作
@@ -141,7 +141,7 @@ DESCRIBE tables;
 キースペースとテーブルを作成した後は、CRUD 操作などに関する次の記事に進んでください。
  
 * [操作を作成/挿入する](cassandra-spark-create-ops.md)  
-* [操作を読み取る](cassandra-spark-read-ops.md)  
+* [操作を読み取ります。](cassandra-spark-read-ops.md)  
 * [操作を Upsert する](cassandra-spark-upsert-ops.md)  
 * [操作を削除する](cassandra-spark-delete-ops.md)  
 * [集計操作](cassandra-spark-aggregation-ops.md)  

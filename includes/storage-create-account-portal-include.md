@@ -9,10 +9,10 @@ ms.date: 01/11/2021
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 3da4fd26b3f985e034ca60039c09412e8237e965
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98109275"
 ---
 Azure Portal で汎用 v2 ストレージ アカウントを作成するには、次の手順に従います。

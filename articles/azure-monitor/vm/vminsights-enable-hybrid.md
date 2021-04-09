@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
 ms.openlocfilehash: c3c8495b7355ee5d9ee8c28b4e0097a0080964d4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102046640"
 ---
 # <a name="enable-vm-insights-for-a-hybrid-virtual-machine"></a>ハイブリッド仮想マシンで VM 分析情報を有効にする
@@ -176,8 +176,8 @@ C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log ファイル (Windo
 
 ## <a name="next-steps"></a>次のステップ
 
-これで、仮想マシンに対する監視が有効になったので、この情報を VM 分析情報での分析に使用できます。
+これで、仮想マシンに対する監視が有効になったので、この情報を VM insights での分析に使用できます。
 
-- 検出されたアプリケーションの依存関係を表示するには、[VM 分析情報のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。
+- 検出されたアプリケーションの依存関係を表示するには、[VM insights マップの表示](vminsights-maps.md)に関する記事を参照してください。
 
 - VM のパフォーマンスでのボトルネックや全体的な使用率を識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関する記事をご覧ください。

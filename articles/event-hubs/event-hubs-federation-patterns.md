@@ -4,10 +4,10 @@ description: この記事では、特定のイベント レプリケーション
 ms.topic: article
 ms.date: 12/12/2020
 ms.openlocfilehash: 438964c228f060dede93abf582c9504b698db8b0
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97934613"
 ---
 # <a name="event-replication-tasks-patterns"></a>イベント レプリケーション タスクのパターン
@@ -124,7 +124,7 @@ DNS (具体的には [Azure DNS](../dns/dns-overview.md)) を使用する利点�
 
 切り替え元のイベント ハブのチェックポイント ストアに引き続きアクセスできる場合は、既に処理されているイベントをスキップし、最後に中断した場所から正確に再開するのに、前述の[伝達されたメタデータ](#service-assigned-metadata)が役立ちます。
 
-## <a name="merge"></a>Merge
+## <a name="merge"></a>マージする
 
 マージ パターンには、1 つのターゲットを指す 1 つまたは複数のレプリケーション タスクがあります。また、通常のプロデューサーと同時に、同じターゲットにイベントが送信される場合もあります。
 

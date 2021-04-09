@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js, devx-track-azurecli
 ms.openlocfilehash: b791d3f37809c2eca53f5a3cd34f7c44dd11ce40
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98028881"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>コンテナー インスタンスを Azure 仮想ネットワークにデプロイする
@@ -120,10 +120,10 @@ YAML ファイル、[Resource Manager テンプレート](https://github.com/Azu
 
 たとえば、YAML ファイルを使用する場合、Azure Container Instances に委任されたサブネットを持つ仮想ネットワークにデプロイできます。 次のプロパティを指定します。
 
-* `ipAddress`:コンテナー グループのプライベート IP アドレス設定。
+* `ipAddress`: コンテナー グループのプライベート IP アドレス設定。
   * `ports`:開くポート (もしあれば)。
   * `protocol`:開いたポートのプロトコル (TCP または UDP)。
-* `networkProfile`:VM の仮想ネットワークとサブネットのネットワーク設定。
+* `networkProfile`: VM の仮想ネットワークとサブネットのネットワーク設定。
   * `id`:`networkProfile` の完全な Resource Manager リソース ID。
 
 ネットワーク プロファイルの ID を取得するには、仮想ネットワークと委任されたサブネットを含んでいるリソース グループの名前を指定して、[az network profile list][az-network-profile-list] コマンドを実行します。

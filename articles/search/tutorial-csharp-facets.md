@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/26/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 44a05ed5b4386f2787a1c84dfeb61a5d539c7cb5
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98789805"
 ---
 # <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用してファセット ナビゲーションを追加する

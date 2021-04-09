@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: ebd8839fd17f79bc53b5093af83d457bb23712d9
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 5b645efe2bbaadeca31b4a0a3b957ff53f5ed3aa
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102452052"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775512"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory アプリケーション管理: 新機能
 
@@ -33,7 +33,6 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 - [アプリケーションへのテナント全体の管理者の同意の付与](grant-admin-consent.md)
 - [アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する](migrate-adfs-apps-to-azure.md)
 - [チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)
-- [SAML ベースのシングル サインオンで構成されたアプリへのサインインに関する問題](application-sign-in-problem-federated-sso-gallery.md)
 - [テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する](tenant-restrictions.md)
 
 ## <a name="january-2021"></a>2021 年 1 月
@@ -84,7 +83,6 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 
 ### <a name="updated-articles"></a>更新された記事
 - [Azure Active Directory アプリケーション管理: 新機能](whats-new-docs.md)
-- [SAML ベースのシングル サインオンで構成されたアプリへのサインインに関する問題](application-sign-in-problem-federated-sso-gallery.md)
 
 
 ## <a name="october-2020"></a>2020 年 10 月
@@ -99,7 +97,6 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [SAML ベースのシングル サインオンで構成されたアプリへのサインインに関する問題](application-sign-in-problem-federated-sso-gallery.md)
 - [アプリケーション プロキシ エージェント コネクタのインストールに関する問題](application-proxy-connector-installation-problem.md)
 - [アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する](migrate-adfs-apps-to-azure.md)
 - [エンド ユーザーがアプリケーションに同意する方法の構成](configure-user-consent.md)
@@ -144,7 +141,6 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 
 ### <a name="new-articles"></a>新しい記事
 - [SAML ベースのシングル サインオンの構成](configure-saml-single-sign-on.md)
-- [アプリ ギャラリーに記載されていないアプリケーションで Azure AD を使用する](non-gallery-apps.md)
 - [[今すぐ入手する] - Azure Marketplace からアプリを追加する](get-it-now-azure-marketplace.md)
 - [クイック スタート:Azure Active Directory (Azure AD) テナントのアプリケーションのプロパティを構成する](add-application-portal-configure.md)
 - [クイック スタート:Azure Active Directory (Azure AD) テナント内のアプリケーションへのシングル サインオン (SSO) を設定する](add-application-portal-setup-sso.md)

@@ -4,10 +4,10 @@ description: この記事では、ラボ作成者が Azure Lab Services でラ�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 5c81c8d7a15d67055729a29e98f5b7e30f3d0764
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96434738"
 ---
 # <a name="specify-marketplace-images-available-to-lab-creators"></a>ラボ作成者が利用できる Marketplace イメージを指定する

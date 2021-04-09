@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 04/07/2020
 ms.author: curtand
 ms.openlocfilehash: 016e0de26bf3a9513940be161cfecf6d1c2b9d02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88798501"
 ---
 # <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>サインイン プロンプトから自分のセキュリティ情報を設定する
@@ -52,7 +52,7 @@ ms.locfileid: "88798501"
 >[!Important]
 >これは、あくまでもプロセスの例です。 組織の要件によっては、このプロセスの間に設定する必要がある他の確認メソッドが管理者によって設定されている可能性があります。 この例では、Microsoft Authenticator アプリと、確認の呼び出しまたはテキスト メッセージのための携帯電話番号の、2 つのメソッドを要求しています。
 
-1. プロンプトで **[次へ]** を選択した後、**アカウントのセキュリティ保護ウィザード**が表示されて、管理者と組織が設定するよう要求している最初のメソッドが示されます。 この例では、Microsoft Authenticator アプリです。
+1. プロンプトで **[次へ]** を選択した後、**アカウントのセキュリティ保護ウィザード** が表示されて、管理者と組織が設定するよう要求している最初のメソッドが示されます。 この例では、Microsoft Authenticator アプリです。
 
    > [!Note]
    > Microsoft Authenticator アプリ以外の認証アプリを使用する場合は、 **[別の認証アプリを使用します]** リンクを選択します。
@@ -115,7 +115,7 @@ ms.locfileid: "88798501"
     ![ウィザードの正常完了ページ](media/security-info/securityinfo-prompt-setup-success.png)
 
     >[!Note]
-    >組織でアプリ パスワードを使用するように要求されている場合は、このウィザードに追加のセクションが表示され、そこで設定することができます。 **アプリ パスワード**と呼ばれる 3 番目のセクションが表示された場合は、ウィザードを完了する前に、これを入力する必要があります。 アプリ パスワードを追加する手順については、この記事の「[アプリ パスワードを管理する](#manage-your-app-passwords)」セクションを参照してください。
+    >組織でアプリ パスワードを使用するように要求されている場合は、このウィザードに追加のセクションが表示され、そこで設定することができます。 **アプリ パスワード** と呼ばれる 3 番目のセクションが表示された場合は、ウィザードを完了する前に、これを入力する必要があります。 アプリ パスワードを追加する手順については、この記事の「[アプリ パスワードを管理する](#manage-your-app-passwords)」セクションを参照してください。
 
 ### <a name="manage-your-app-passwords"></a>アプリ パスワードを管理する
 

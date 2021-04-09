@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7882fc6a6823a93d09c04a8ae2c19005df4843d8
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 37768b994d4b61ee728e04352f027a6f5a478341
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917095"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031618"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Azure Synapse Analytics とは
 
@@ -64,12 +64,12 @@ Azure Synapse は、エンタープライズが分析リソースを管理し、
 * データとコードに対するきめ細かなアクセス制御
 * SQL と Spark 全体のリソース、使用状況、およびユーザーを監視するための単一のダッシュボード
 
-### <a name="synapse-studio"></a>Synapse Studio
+### <a name="unified-experience"></a>統合エクスペリエンス
 
-**Synapse Studio** は、データ エンジニアのためにすべてを結び付け、完全なソリューションを構築するために必要なすべてのタスクを 1 か所で行うことができるようにする Web ネイティブのエクスペリエンスです。
+**Synapse Studio** のユーザー エクスペリエンスには、データ エンジニアに必要なすべてのものがまとまっています。 優れた分析ソリューションを構築するために必要なすべてのタスクを実行できます。
 
-* エンドツーエンドの分析ソリューションを 1 か所で構築: 取り込み、探索、準備、調整、視覚化
-* SQL または Spark コードを記述するデータ エンジニアのための業界最高水準の生産性: オーサリング、デバッグ、およびパフォーマンスの最適化
+* データ エンジニアの主要なタスクを 1 か所に集約: 取り込み、探索、準備、調整、視覚化
+* SQL または Spark コードを記述するための業界最高水準の生産性: 作成、デバッグ、およびパフォーマンスの最適化
 * エンタープライズ CI/CD プロセスとの統合
 
 ## <a name="engage-with-the-synapse-engineering-team"></a>Synapse エンジニアリング チームとの連携

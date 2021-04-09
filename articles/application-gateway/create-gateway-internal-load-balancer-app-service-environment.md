@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/09/2020
 ms.author: genli
 ms.openlocfilehash: 8861e850e168169762d95c44a54b6a88a036f396
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84628528"
 ---
 # <a name="back-end-server-certificate-is-not-allow-listed-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Environment で内部ロード バランサーを使用するアプリケーション ゲートウェイの許可リストにバックエンド サーバー証明書が登録されない

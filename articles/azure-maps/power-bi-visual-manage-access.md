@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 2f7372d522c02eb86f1cc6470cefa9cb299605a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86261449"
 ---
 # <a name="manage-the-azure-maps-visual-within-your-organization"></a>組織内で Azure Maps ビジュアルを管理する
@@ -35,7 +35,7 @@ PowerBI.com で、テナント管理者はすべてのユーザーを対象に A
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Maps Power BI ビジュアルの詳細:
+Azure Maps Power BI ビジュアルについて詳しく確認します。
 
 > [!div class="nextstepaction"]
 > [Azure Maps Power BI ビジュアルのレイヤー](power-bi-visual-understanding-layers.md)に関する記事

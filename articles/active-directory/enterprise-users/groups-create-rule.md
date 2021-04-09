@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a25caa3b59d242b8dcc8a52e1a5d684815cf7bf
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 8525e9a76fa2439692cdb26b36c0bb761d63177c
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547782"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102550231"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Azure Active Directory で動的グループを作成または更新する
 
@@ -80,7 +80,7 @@ Azure AD には、重要なルールをすばやく作成したり更新した�
 
 ## <a name="turn-on-or-off-welcome-email"></a>ウェルカム メールをオンまたはオフにする
 
-新しい Microsoft 365 グループが作成されると、グループに追加されたユーザー宛にメールのウェルカム通知が送信されます。 後で、ユーザーまたはデバイスのいずれかの属性が変更される場合は、組織内のすべての動的グループ ルールが、メンバーシップの変更のために処理されます。 追加されたユーザーは、ウェルカム通知も受け取ります。 この動作は、[Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps&preserve-view=true) を使用してオフにすることができます。
+新しい Microsoft 365 グループが作成されると、グループに追加されたユーザー宛にメールのウェルカム通知が送信されます。 後で、ユーザーまたはデバイスのいずれかの属性が変更される場合は、組織内のすべての動的グループ ルールが、メンバーシップの変更のために処理されます。 追加されたユーザーは、ウェルカム通知も受け取ります。 この動作は、[Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup) を使用してオフにすることができます。
 
 ## <a name="check-processing-status-for-a-rule"></a>ルールの処理状態をチェックする
 

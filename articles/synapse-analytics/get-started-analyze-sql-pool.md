@@ -9,18 +9,34 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 683da659dcfa07c0a105382f4cc93d1f4dfb21b5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 03/18/2020
+ms.openlocfilehash: f03fa84c02c4b3894efe069289b0ecbb9e90dfdb
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219539"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654630"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>専用の SQL プールを使用してデータを分析する
 
-Azure Synapse Analytics には、専用 SQL プールを使用してデータを分析する機能が用意されています。 このチュートリアルでは、NYC タクシーのデータを使用して、専用 SQL プールの機能を探索します。
+このチュートリアルでは、NYC タクシーのデータを使用して、専用 SQL プールの機能を探索します。
 
+## <a name="create-a-dedicated-sql-pool"></a>専用 SQL プールを作成する
+
+1. Synapse Studio の左側のペインで、 **[管理]**  >  **[SQL プール]** を選択します。
+1. **[新規]** を選択します。
+1. **[SQL プール名]** で **[SQLPOOL1]** を選択します。
+1. **[パフォーマンス レベル]** で **[DW100C]** を選択します。
+1. **[確認と作成]**  >  **[作成]** の順に選択します。 専用 SQL プールの準備は数分で完了します。 
+
+専用 SQL プールは、**SQLPOOL1** とも呼ばれる SQL データベースに関連付けられます。
+1. **[データ]**  >  **[ワークスペース]** の順に移動します。
+1. **SQLPOOL1** という名前のデータベースが表示されます。 表示されない場合は、 **[最新の情報に更新]** をクリックします。
+
+専用 SQL プールがアクティブである限り、課金対象のリソースが消費されます。 コストを削減するために、後でプールを一時停止できます。
+
+> [!NOTE] 
+> ワークスペースに新しい専用 SQL プール (以前の SQL DW) を作成すると、専用の SQL プールのプロビジョニング ページが開きます。 プロビジョニングは、論理 SQL サーバー上で行われます。
 ## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>NYC タクシー データを SQLPOOL1 に読み込む
 
 1. Synapse Studio で **[開発]** ハブに移動し、新しいリソースを追加するための **+** ボタンをクリックして、新しい SQL スクリプトを作成します。
@@ -78,10 +94,10 @@ Azure Synapse Analytics には、専用 SQL プールを使用してデータを
 
 1. Synapse Studio で、 **[データ]** ハブに移動します。
 1. **[SQLPOOL1]**  >  **[テーブル]** の順に移動します。 
-1. **dbo.Trip** テーブルを右クリックし、 **[New SQL Script]\(新しい SQL スクリプト\)**  >  **[Select TOP 100 Rows]\(上位 100 行の選択\)** を選択します。
-1. 新しい SQL スクリプトが作成されて実行されるまで待ちます。
-1. SQL スクリプトの上部の **Connect to** が自動的に **SQLPOOL1** という SQL プールに設定されることに注意してください。
-1. SQL スクリプトのテキストをこのコードで置き換えて実行します。
+3. **dbo.Trip** テーブルを右クリックし、 **[New SQL Script]\(新しい SQL スクリプト\)**  >  **[Select TOP 100 Rows]\(上位 100 行の選択\)** を選択します。
+4. 新しい SQL スクリプトが作成されて実行されるまで待ちます。
+5. SQL スクリプトの上部の **Connect to** が自動的に **SQLPOOL1** という SQL プールに設定されることに注意してください。
+6. SQL スクリプトのテキストをこのコードで置き換えて実行します。
 
     ```sql
     SELECT PassengerCount,
@@ -102,4 +118,4 @@ Azure Synapse Analytics には、専用 SQL プールを使用してデータを
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Spark を使用して分析する](get-started-analyze-spark.md)
+> [Azure Storage アカウントでデータを分析する](get-started-analyze-storage.md)

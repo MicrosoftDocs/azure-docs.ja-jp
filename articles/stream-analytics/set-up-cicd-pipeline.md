@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: b601a3586cfa971b2e8337a914f4e10bb0178ba0
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: dbd6a1a0c8643adc4918cc15e214e903dfb1ccb6
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014248"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775937"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Azure DevOps を使用して Stream Analytics ジョブの CI/CD パイプラインを作成する
 
@@ -20,13 +20,13 @@ ms.locfileid: "98014248"
 
 ## <a name="commit-your-stream-analytics-project"></a>Stream Analytics プロジェクトをコミットする
 
-開始する前に、Stream Analytics プロジェクトをソース ファイルとして [Azure DevOps](/azure/devops/user-guide/source-control) リポジトリにコミットします。 この[サンプル リポジトリ](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo)と [Stream Analytics プロジェクト ソース コード](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject)を Azure Pipelines で参照できます。
+開始する前に、Stream Analytics プロジェクトをソース ファイルとして [Azure DevOps](/azure/devops/user-guide/source-control) リポジトリにコミットします。 この[サンプル リポジトリ](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo)と [Stream Analytics プロジェクト ソース コード](https://dev.azure.com/ASA-CICD-sample/_git/azure-streamanalytics-cicd-demo)を Azure Pipelines で参照できます。
 
 この記事の手順では、Stream Analytics Visual Studio Code プロジェクトを使用します。 Visual Studio プロジェクトを使用している場合は、「[CI/CD ツールを使用して Azure Stream Analytics ジョブのビルド、テスト、デプロイを自動化する](cicd-tools.md)」の手順に従ってください。
 
 ## <a name="create-a-build-pipeline"></a>ビルド パイプラインを作成する
 
-このセクションでは、ビルド パイプラインを作成する方法について説明します。 この[ビルドとテストの自動パイプライン](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject) サンプルは、Azure DevOps から参照できます。
+このセクションでは、ビルド パイプラインを作成する方法について説明します。 この[ビルドとテストの自動パイプライン](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo/_build) サンプルは、Azure DevOps から参照できます。
 
 1. Web ブラウザーを開き、Azure DevOps で目的のプロジェクトに移動します。  
 
@@ -55,6 +55,22 @@ ms.locfileid: "98014248"
    ```
 
    :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="npm タスクの構成の入力":::
+
+ホストされている Linux エージェントを使用する必要がある場合は、次の手順を使用します。
+1.  該当する **エージェントの指定** を選択します
+   
+    :::image type="content" source="media/set-up-cicd-pipeline/select-linux-agent.png" alt-text="エージェントの指定を選択しているスクリーンショット。":::
+
+2.  **[タスク]** ページで、**[Agent job 1]\(エージェントジョブ 1\)** の横にあるプラス記号を選択します。 タスク検索で「*コマンド ライン*」と入力し、 **[コマンド ライン]** を選択します。
+   
+    :::image type="content" source="media/set-up-cicd-pipeline/cmd-search.png" alt-text="コマンドライン タスクを検索しているスクリーンショット。":::
+
+3.  タスクに **表示名** を付けます。 **[スクリプト]** に次のコマンドを入力します。 他の既定のオプションはそのまま使用します。
+
+      ```bash
+      sudo npm install -g azure-streamanalytics-cicd --unsafe-perm=true --allow-root
+      ```
+      :::image type="content" source="media/set-up-cicd-pipeline/cmd-scripts.png" alt-text="cmd タスクのスクリプトを入力しているスクリーンショット。":::
 
 ## <a name="add-a-build-task"></a>ビルド タスクの追加
 
@@ -139,7 +155,7 @@ npm パッケージ、コマンド ライン、ファイルのコピー、およ
 
 ## <a name="release-with-azure-pipelines"></a>Azure Pipelines を使用したリリース
 
-このセクションでは、リリース パイプラインを作成する方法について説明します。 この[リリース パイプライン](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo/_release?_a=releases&view=mine&definitionId=2&preserve-view=true) サンプルは、Azure DevOps から参照できます。
+このセクションでは、リリース パイプラインを作成する方法について説明します。 この[リリース パイプライン](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo/_release?_a=releases&view=mine&definitionId=2) サンプルは、Azure DevOps から参照できます。
 
 Web ブラウザーを開き、Azure Stream Analytics Visual Studio Code プロジェクトに移動します。
 

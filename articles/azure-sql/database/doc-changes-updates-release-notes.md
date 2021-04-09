@@ -9,14 +9,14 @@ ms.subservice: service
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 03/10/2021
 ms.author: sstein
-ms.openlocfilehash: 607b588d3371b20c2b3fa9854e27a7ccdfe2e551
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0ddd2c96be3513d253537cefd5b9eb83da2b3c12
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703769"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634840"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の新機能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -41,7 +41,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 |**Azure SQL Managed Instance** | Azure SQL Database *マネージド インスタンス*| Azure SQL Managed Instance は、Azure SQL Database 内のデプロイ オプションではなく、Azure SQL ファミリ内の独自の製品です。 | 
 |**Azure SQL Database**|Azure SQL Database *単一データベース*| 明示的に指定しない限り、"Azure SQL Database" という製品名には、単一データベースと、エラスティック プールにデプロイされたデータベースの両方が含まれます。 |
 |**Azure SQL Database**|Azure SQL Database *エラスティック プール*| 明示的に指定しない限り、"Azure SQL Database" という製品名には、単一データベースと、エラスティック プールにデプロイされたデータベースの両方が含まれます。  |
-|**Azure SQL Database** |Azure SQL Database | この用語は同じままですが、単一データベースとエラスティック プールのデプロイにのみ適用され、マネージド インスタンスは含まれません。 |
+|**Azure SQL Database** |Azure SQL データベース | この用語は同じままですが、単一データベースとエラスティック プールのデプロイにのみ適用され、マネージド インスタンスは含まれません。 |
 | **Azure SQL**| 該当なし | これは、Azure で使用可能な SQL Server データベース エンジン製品のファミリを指します。Azure SQL Database、Azure SQL Managed Instance、および Azure VM 上の SQL Server。 | 
 
 ## <a name="features-in-public-preview"></a>パブリック プレビュー段階の機能
@@ -50,13 +50,10 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 
 | 機能 | 詳細 |
 | ---| --- |
-| 単一データベースとエラスティック プールでの高速データベース復旧 | 詳しくは、「[高速データベース復旧](../accelerated-database-recovery.md)」をご覧ください。|
-| データの検出と分類  |詳しくは、[Azure SQL Database と Azure Synapse Analytics のデータ検出と分類](data-discovery-and-classification-overview.md)に関する記事をご覧ください。|
 | Elastic Database ジョブ (プレビュー) | 詳しくは、「[エラスティック ジョブの作成、構成、および管理](elastic-jobs-overview.md)」をご覧ください。 |
 | エラスティック クエリ | 詳しくは、[エラスティック クエリの概要](elastic-query-overview.md)に関する記事をご覧ください。 |
 | エラスティック トランザクション | [クラウド データベースにまたがる分散トランザクション](elastic-transactions-overview.md)。 |
 | Azure portal のクエリ エディター |詳しくは、「[Azure portal の SQL クエリ エディターを使用した接続とデータの照会](connect-query-portal.md)」をご覧ください。|
-| 単一データベースとエラスティック プールでの R サービス/機械学習 |詳しくは、「[Machine Learning Services in Azure SQL Database (Azure SQL Database での Machine Learning Services)](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database)」をご覧ください。|
 |SQL Analytics|詳細については、[Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) に関するページをご覧ください。|
 | &nbsp; |
 
@@ -66,7 +63,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 | ---| --- |
 | <a href="/azure/azure-sql/database/elastic-transactions-overview">分散トランザクション</a> | マネージド インスタンスにまたがる分散トランザクション。 |
 | <a href="/azure/sql-database/sql-database-instance-pools">インスタンス プール</a> | 比較的小規模な SQL インスタンスをクラウドに移行するための、便利かつ費用対効果に優れた方法です。 |
-| <a href="/en-gb/sql/t-sql/statements/create-login-transact-sql">インスタンス レベルの Azure AD サーバー プリンシパル (ログイン)</a> | <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> ステートメントを使って、インスタンスレベルのログインを作成します。 |
+| <a href="/en-gb/sql/t-sql/statements/create-login-transact-sql">インスタンス レベルの Azure AD サーバー プリンシパル (ログイン)</a> | <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true">CREATE LOGIN FROM EXTERNAL PROVIDER</a> ステートメントを使って、インスタンスレベルのログインを作成します。 |
 | [トランザクション レプリケーション](../managed-instance/replication-transactional-overview.md) | テーブルの変更を、SQL Managed Instance、SQL Database、または SQL Server の他のデータベースにレプリケートします。 または、SQL Managed Instance や SQL Server の他のインスタンスで一部の行が変更されたときに、テーブルを更新します。 詳しくは、[Azure SQL Managed Instance にレプリケーションを構成する方法](../managed-instance/replication-between-two-instances-configure-tutorial.md)に関する記事をご覧ください。 |
 | 脅威の検出 |詳しくは、[Azure SQL Managed Instance で脅威検出を構成する方法](../managed-instance/threat-detection-configure.md)に関する記事をご覧ください。|
 | 長期のバックアップ リテンション期間 | 詳細については、現在は制限付きパブリック プレビュー段階である [Azure SQL Managed Instance での長期のバックアップ リテンション期間の構成](../managed-instance/long-term-backup-retention-configure.md)に関するページをご覧ください。 | 
@@ -89,7 +86,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
   - <a href="/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016、SharePoint 2019</a>、および <a href="/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance">Dynamics 365 Business Central</a> のサポート。
   - 選択した<a href="/azure/azure-sql/managed-instance/scripts/create-powershell-azure-resource-manager-template">インスタンスレベルの照合順序</a>と<a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">タイム ゾーン</a>を使用して、マネージド インスタンスを作成します。
   - マネージド インスタンスは現在、[組み込みのファイアウォール](../managed-instance/management-endpoint-verify-built-in-firewall.md)によって保護されています。
-  - より優れたネットワーク パフォーマンスと、<a href="https://aka.ms/four-cores-sql-mi-update">Gen5 ハードウェア世代における 4 仮想コア</a>またはポイントインタイム リストアのための<a href="/azure/azure-sql/database/automated-backups-overview">最大 35 日間のバックアップ リテンション期間の構成</a>を得るために、[パブリック エンドポイント](../managed-instance/public-endpoint-configure.md)と [Proxy Override](connectivity-architecture.md#connection-policy) 接続を使用するように、SQL Managed Instance を構成します。 [長期のバックアップ リテンション期間](long-term-retention-overview.md#sql-managed-instance-support) (最長 10 年間) は、現在、制限付きパブリック プレビュー段階です。  
+  - より優れたネットワーク パフォーマンスと、<a href="https://aka.ms/four-cores-sql-mi-update">Gen5 ハードウェア世代における 4 仮想コア</a>またはポイントインタイム リストアのための<a href="/azure/azure-sql/database/automated-backups-overview">最大 35 日間のバックアップ リテンション期間の構成</a>を得るために、[パブリック エンドポイント](../managed-instance/public-endpoint-configure.md)と [Proxy Override](connectivity-architecture.md#connection-policy) 接続を使用するように、SQL Managed Instance を構成します。 [長期のバックアップ リテンション期間](long-term-retention-overview.md) (最長 10 年間) は現在、パブリック プレビュー段階です。  
   - 新しい機能を利用すると、<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">PowerShell を使用してお使いのデータベースを別のデータ センターに geo リストアして</a>、[データベース名を変更し](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/)、[仮想クラスターを削除する](../managed-instance/virtual-cluster-delete.md)ことができます。
   - 新しい組み込みの[インスタンス共同作成者ロール](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)を使用すると、セキュリティ原則による職務の分離 (SoD) のコンプライアンスとエンタープライズ標準によるコンプライアンスを有効にできます。
   - SQL Managed Instance は、次の Azure Government リージョン (US Gov テキサス、US Gov アリゾナ) で GA として、さらに中国北部 2 と中国東部 2 で使用できます。 また、次のパブリック リージョンでも利用できます。オーストラリア中部、オーストラリア中部 2、ブラジル南部、フランス南部、アラブ首長国連邦中部、アラブ首長国連邦北部、南アフリカ北部、南アフリカ西部です。
@@ -101,7 +98,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 |[@query パラメーターの使用時、プロシージャ sp_send_dbmail が一時的に失敗する可能性がある](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|2021 年 1 月|回避策あり||
 |[サーバー信頼グループからマネージド インスタンスを削除した後、分散トランザクションを実行できる](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|2020 年 10 月|回避策あり||
 |[マネージド インスタンスのスケーリング操作の後、分散トランザクションを実行できない](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|2020 年 10 月|回避策あり||
-|Azure SQL の [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql)/[OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15)、およびマネージド インスタンスの `BACKUP`/`RESTORE` ステートメントで、Azure AD の Manage Identity を使用して Azure Storage に対する認証を実行できない|2020 年 9 月|回避策あり||
+|Azure SQL の [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql)/[OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql)、およびマネージド インスタンスの `BACKUP`/`RESTORE` ステートメントで、Azure AD の Manage Identity を使用して Azure Storage に対する認証を実行できない|2020 年 9 月|回避策あり||
 |[サービス プリンシパルから Azure AD および AKV にアクセスできません](#service-principal-cannot-access-azure-ad-and-akv)|2020 年 8 月|回避策あり||
 |[CHECKSUM を使用せずに手動バックアップを復元すると失敗することがある](#restoring-manual-backup-without-checksum-might-fail)|2020 年 5 月|解決済み|2020 年 6 月|
 |[既存のジョブを変更、無効化、または有効化するとエージェントが応答しなくなる](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020 年 5 月|解決済み|2020 年 6 月|
@@ -116,7 +113,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 |[Business Critical サービス レベルの Resource Governor をフェールオーバー後に再構成しなければならない場合がある](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|2019 年 9 月|回避策あり||
 |[サービス レベルのアップグレード後は、複数データベースにまたがる Service Broker のダイアログを再初期化する必要がある](#cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade)|2019 年 8 月|回避策あり||
 |[Azure AD ログイン タイプの偽装がサポートされない](#impersonation-of-azure-ad-login-types-is-not-supported)|2019 年 7 月|回避策なし||
-|[sp_send_db_mail の @query パラメーターはサポートされない](#query-parameter-not-supported-in-sp_send_db_mail)|2019 年 4 月|解決済み|2021 年 1 月|
+|[sp_send_db_mail の @query パラメーターはサポートされない](#-parameter-not-supported-in-sp_send_db_mail)|2019 年 4 月|解決済み|2021 年 1 月|
 |[geo フェールオーバー後、トランザクション レプリケーションを再構成する必要がある](#transactional-replication-must-be-reconfigured-after-geo-failover)|2019 年 3 月|回避策なし||
 |[一時的なデータベースが RESTORE 操作中に使用される](#temporary-database-is-used-during-restore-operation)||回避策あり||
 |[TEMPDB の構造と内容は再作成される](#tempdb-structure-and-content-is-re-created)||回避策なし||
@@ -174,7 +171,7 @@ GO
 BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzureBlobStorage');
 ```
 
-**回避策**:[Shared Access Signature を使用して、ストレージに対する認証を実行します](/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage)。
+**回避策**:[Shared Access Signature を使用して、ストレージに対する認証を実行します](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage)。
 
 ### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>サービス プリンシパルから Azure AD および AKV にアクセスできません
 

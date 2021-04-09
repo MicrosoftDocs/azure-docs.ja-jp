@@ -7,10 +7,10 @@ ms.date: 08/03/2020
 ms.service: signalr
 ms.topic: conceptual
 ms.openlocfilehash: 37c2e41b5c81f941245b895ecd144baee3b9db6d
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97797414"
 ---
 # <a name="authorize-access-to-azure-signalr-service-resources-using-azure-active-directory"></a>Azure Active Directory を使用して Azure SignalR Service リソースへのアクセスを承認する

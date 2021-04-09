@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: eab1ebb3bf66b28bae80fbf16eaf24dbbc63bfb0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 588c6548afb07fb8ee3de5152c240ddd9ea2293b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690534"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102430192"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database トラフィックの新しいゲートウェイへの移行
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,6 +29,18 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 ## <a name="status-updates"></a>ステータスの更新
 
 # <a name="in-progress"></a>[[実行中]](#tab/in-progress-ip)
+
+## <a name="april-2021"></a>2021 年 4 月
+新しい SQL ゲートウェイが、次のリージョンに追加されます。
+- ノルウェー東部: 51.120.96.33
+- 東南アジア: 13.67.16.193
+- 南アフリカ北部: 102.133.152.32
+- 韓国南部: 52.231.151.96
+- 米国中北部: 52.162.105.9
+- オーストラリア東南部: 13.77.49.32 
+
+これらの SQL ゲートウェイは、2021 年 4 月 5 日にお客様のトラフィックの受け入れを開始します。
+
 ## <a name="march-2021"></a>2021 年 3 月
 複数のリージョンにある次の SQL ゲートウェイは、非アクティブ化の処理中です。
 

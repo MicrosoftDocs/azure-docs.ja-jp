@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: victorh
 ms.openlocfilehash: 906687e08c9f31890a9ecec9154079e704512832
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96485724"
 ---
 # <a name="deploy-a-security-partner-provider"></a>セキュリティ パートナー プロバイダーのデプロイ

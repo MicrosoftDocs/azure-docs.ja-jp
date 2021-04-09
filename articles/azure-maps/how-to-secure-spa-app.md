@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 3b647a02731a4fa404aab4bb648853eea766d92e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 9d2af0bf731ab069a8512cb10feccf5ba18d3fa0
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684074"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092729"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>非対話型サインインでシングル ページ アプリケーションをセキュリティで保護する方法
 
@@ -111,7 +111,7 @@ Azure AD の認証を行うセキュリティで保護された Web サービス
 
 2. **[ロールの割り当て]** タブの **[ロール]** で、 **[Azure Maps データ閲覧者]** や **[Azure Maps データ共同作成者]** などの組み込みの Azure Maps ロールの定義を選択します。 **[アクセスの割り当て先]** で、 **[関数アプリ]** を選択します。 プリンシパルを名前で選択します。 次に、 **[保存]** を選択します。
 
-   * 詳細については、「[ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+   * 詳細については、[Azure ロールの割り当て](../role-based-access-control/role-assignments-portal.md)に関する記事をご覧ください。
 
 > [!WARNING]
 > Azure Maps の組み込みロールの定義は、多くの Azure Maps REST API に対する非常に大きな承認アクセスを提供します。 API のアクセスを最小限に制限するには、[カスタム ロールの定義を作成して、システム割り当て ID をカスタム ロールの定義に割り当てる](../role-based-access-control/custom-roles.md)方法に関する記事を参照してください。 これにより、アプリケーションが Azure Maps にアクセスするために必要な最小限の権限が有効になります。

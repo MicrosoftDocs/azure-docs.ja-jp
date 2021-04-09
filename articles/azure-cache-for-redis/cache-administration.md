@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 156dfd1d9553e369357eb68225e722222a59d847
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a79b0b5b5f21d1c75fec6b062f1ca91cfe9dd1f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91838672"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102219201"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Azure Cache for Redis を管理する方法
 このトピックでは、Azure Cache for Redis インスタンスについて、[再起動](#reboot)、[更新スケジュール](#schedule-updates)などの管理タスクを実行する方法について説明します。
@@ -57,8 +57,10 @@ ms.locfileid: "91838672"
 > 
 > 
 
+
+
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>再起動すると、キャッシュのデータは失われますか。
-**マスター** ノードと**レプリカ** ノードの両方を再起動すると、キャッシュ (または、クラスタリングが有効になっている Premium キャッシュを使用している場合はそのシャード) のすべてのデータが失われる可能性がありますが、どちらも確実ではありません。 [データの永続化](cache-how-to-premium-persistence.md)を構成した場合、キャッシュがオンラインに戻ったときに最新のバックアップが復元されますが、バックアップ作成後に発生したキャッシュへの書き込みは失われます。
+**マスター** ノードと **レプリカ** ノードの両方を再起動すると、キャッシュ (または、クラスタリングが有効になっている Premium キャッシュを使用している場合はそのシャード) のすべてのデータが失われる可能性がありますが、どちらも確実ではありません。 [データの永続化](cache-how-to-premium-persistence.md)を構成した場合、キャッシュがオンラインに戻ったときに最新のバックアップが復元されますが、バックアップ作成後に発生したキャッシュへの書き込みは失われます。
 
 ノードのいずれかを 1 つだけ再起動しても、通常、データが失われることはありませんが、失われる可能性もあります。 たとえば、プライマリ ノードが再起動されたときに、キャッシュの書き込みが実行中だと、そのキャッシュの書き込みのデータは失われます。 また、一方のノードを再起動した場合に、もう一方のノードが偶然同じタイミングで故障しダウンした場合もやはりデータが失われます。 データが失われるさまざまな原因について詳しくは、「[Redis のデータが正常ではない](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)」をご覧ください。
 
@@ -69,8 +71,9 @@ PowerShell での手順については、「[To reboot an Azure Cache for Redis]
 **[更新のスケジュール]** ブレードでは、キャッシュ インスタンスのメンテナンス時間を指定できます。 メンテナンス期間を使用すると、キャッシュをホストしている VM を更新できる曜日と時間を制御できます。 Azure Cache for Redis では、定義された時間枠の中で Redis サーバー ソフトウェアの更新を開始して完了するための最大限の努力が行われます。
 
 > [!NOTE] 
-> このメンテナンス時間は、Redis サーバーの更新にのみ適用されます。Azure の更新や、キャッシュをホストする VM のオペレーティング システムへの更新には適用されません。
+> メンテナンス期間は Redis サーバーの更新と、キャッシュをホストしている VM のオペレーティング システムの更新に適用されます。 メンテナンス期間は、キャッシュ VM やその他の Azure ネットワーク コンポーネントをホストしているホストのホスト OS 更新には適用されません。 滅多にありませんが、以前のモデルでキャッシュがホストされている場合 (キャッシュが以前のモデル上にあるかどうかは、キャッシュの DNS 名が "cloudapp.net"、"chinacloudapp.cn"、"usgovcloudapi.net" または "cloudapi.de" の接頭辞で解決されるかどうかで判断できます)、メンテナンス期間はゲスト OS 更新にも適用されません。
 >
+
 
 ![更新のスケジュール](./media/cache-administration/redis-schedule-updates.png)
 
@@ -98,7 +101,7 @@ PowerShell での手順については、「[To reboot an Azure Cache for Redis]
 * [Remove-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/remove-azrediscachepatchschedule)
 
 ## <a name="next-steps"></a>次のステップ
-Azure Cache for Redis の機能について説明します。
+Azure Cache for Redis の機能について
 
 * [Azure Cache for Redis サービス レベル](cache-overview.md#service-tiers)
 

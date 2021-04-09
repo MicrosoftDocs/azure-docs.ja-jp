@@ -12,10 +12,10 @@ ms.author: joke
 ms.reviwer: sstein
 ms.date: 10/21/2020
 ms.openlocfilehash: 95e9ef340328bb4c1835e966cc9c3019bca88c09
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100368831"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>PowerShell を使用してエラスティック ジョブ エージェントを作成する (プレビュー)

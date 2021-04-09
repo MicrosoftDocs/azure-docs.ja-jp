@@ -10,10 +10,10 @@ ms.workload: media
 ms.date: 1/14/2021
 ms.author: inhenkel
 ms.openlocfilehash: 640b9b40295ae9b9aea865f7b6159da6ff4a3251
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98898309"
 ---
 # <a name="media-services-migration-code-sample-comparison"></a>Media Services 移行のコード サンプルの比較

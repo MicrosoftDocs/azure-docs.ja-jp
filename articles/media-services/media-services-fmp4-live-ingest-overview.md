@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 7323ae611431e1d91fd1a8471914be388fcc4712
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92019513"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services の Fragmented MP4 ライブ インジェスト仕様 
@@ -47,7 +47,7 @@ Azure Media Services にライブ インジェストを適用する特殊形式�
 1. **ftyp**、**Live Server Manifest Box**、**moov** ボックスは、各要求 (HTTP POST) と共に送信しなければなりません。 これらのボックスをストリームの開始時に送信し、ストリームの取り込みを再開するたびにエンコーダーを再接続しなければなりません。 詳細については、[1] のセクション 6 をご覧ください。
 1. [1] のセクション 3.3.2 では、**StreamManifestBox** と呼ばれるオプションのボックスをライブ インジェストに定義します。 Azure ロード バランサーのルーティング ロジックにより、このボックスの使用は非推奨になりました。 このボックスは Media Services へのインジェスト時に存在すべきではありません。 このボックスが存在しても、Media Services は何も行わずに無視します。
 1. [1] の 3.2.3.2 で定義された **TrackFragmentExtendedHeaderBox** ボックスは、各フラグメントに存在しなければなりません。
-1. **TrackFragmentExtendedHeaderBox**ボックスのバージョン 2 は、複数のデータセンターで同一の URL を使用するメディア セグメントを生成するために使用する必要があります。 フラグメントのインデックス フィールドは、Apple HLS や インデックス ベースの MPEG DASH などのインデックス ベースのストリーミング形式のデータセンター間のフェールオーバーで必要です。 データセンター間のフェールオーバーを有効にするには、フラグメントのインデックスを複数のエンコーダー間で同期しなければなりません。また、エンコーダーが再起動または失敗した場合でも、連続するメディア フラグメントごとにフラグメントのインデックスを 1 ずつ増やさなければなりません。
+1. **TrackFragmentExtendedHeaderBox** ボックスのバージョン 2 は、複数のデータセンターで同一の URL を使用するメディア セグメントを生成するために使用する必要があります。 フラグメントのインデックス フィールドは、Apple HLS や インデックス ベースの MPEG DASH などのインデックス ベースのストリーミング形式のデータセンター間のフェールオーバーで必要です。 データセンター間のフェールオーバーを有効にするには、フラグメントのインデックスを複数のエンコーダー間で同期しなければなりません。また、エンコーダーが再起動または失敗した場合でも、連続するメディア フラグメントごとにフラグメントのインデックスを 1 ずつ増やさなければなりません。
 1. [1] のセクション 3.3.6 では、チャネルに EOS (ストリームの終わり) を示すためにライブ インジェストの最後に送信される場合がある、**MovieFragmentRandomAccessBox** (**mfra**) というボックスを定義します。 Media Services のインジェスト ロジックにより、EOS (ストリームの終わり) の使用は非推奨になりました。ライブ インジェストの **mfra** ボックスを送信すべきではありません。 送信されても、Media Services は何も行わずに無視します。 取り込みポイントの状態をリセットするには、[Channel のリセット](/rest/api/media/operations/channel#reset_channels)の使用をお勧めします。 また、プレゼンテーションとストリームを終了するには、[Program の停止](/rest/api/media/operations/program#stop_programs)の使用をお勧めします。
 1. MP4 フラグメントの継続時間は、クライアント マニフェストのサイズを小さくするために定数にする必要があります。 MP4 フラグメントの継続時間を定数にすることで、繰り返しタグの使用によりクライアントのダウンロードのヒューリスティックも改善されます。 整数以外のフレーム レートを補正するため、継続時間は変動する場合があります。
 1. MP4 フラグメントの継続時間は約 2 ～ 6 秒間にする必要があります。

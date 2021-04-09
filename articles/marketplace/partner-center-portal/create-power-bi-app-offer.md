@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.openlocfilehash: bff20468e8185073f5c192c1e115bc405dd089eb
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97693620"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI アプリ オファーを作成する
@@ -36,7 +36,7 @@ ms.locfileid: "97693620"
 
 ## <a name="new-offer"></a>新しいプラン
 
-**[オファー ID]** を入力します。 これは、ご自分のアカウント内の各オファーに対する一意の識別子です。
+**[オファー ID]** を入力します。 これは、アカウントのオファーごとに一意の識別子です。
 
 - この ID は、マーケットプレース オファーの Web アドレスと Azure Resource Manager テンプレート (該当する場合) で顧客に表示されます。
 - 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。 たとえば、ここに「**test-offer-1**」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
@@ -75,7 +75,7 @@ ms.locfileid: "97693620"
     > [!NOTE]
     > 自分の CRM システムがこの一覧にない場合は、[Azure テーブル](commercial-marketplace-lead-management-instructions-azure-table.md)または [HTTPS エンドポイント](commercial-marketplace-lead-management-instructions-https.md)を使用して、顧客リードのデータを格納します。 その後、そのデータをご利用の CRM システムにエクスポートします。
 
-2. パートナー センターで発行する際は、オファーをリードの宛先に接続します。
+2. パートナー センターで公開する際は、オファーをリードの宛先に接続します。
 3. リードの宛先への接続が正しく構成されていることを確認します。 パートナー センターで公開すると、Microsoft で接続を検証して、テスト リードを送信します。 オファーの公開前に行うプレビュー中は、プレビュー環境でオファーを自分で購入してみることで、リードの接続をテストすることもできます。
 4. リードが失われないように、リードの宛先への接続が確実に最新の状態に保たれているようにします。
 
@@ -96,8 +96,8 @@ ms.locfileid: "97693620"
 
 オファーを適切なマーケットプレース検索領域に配置するために、カテゴリとサブカテゴリを選択します。 オファーでこれらのカテゴリがどのようにサポートされるかを、必ずオファーの説明に記述してください。 選択:
 
-- 少なくとも 1 つ、最大で 2 つのカテゴリ。プライマリおよびセカンダリのカテゴリを 1 つずつ含めますが、セカンダリは省略できます。
-- プライマリまたはセカンダリのカテゴリごとに最大 2 つのサブカテゴリ。 オファーに適用できるサブカテゴリがない場合は、 **[該当なし]** を選択します。
+- 少なくとも 1 つ、最大で 2 つのカテゴリ。プライマリ カテゴリとセカンダリ カテゴリを含みます (省略可能)。
+- プライマリ カテゴリ、セカンダリ カテゴリ、またはその両方についてそれぞれ最大 2 つのサブカテゴリ。 オファーに適用できるサブカテゴリがない場合は、 **[該当なし]** を選択します。
 
 「[オファーの掲載のベスト プラクティス](../gtm-offer-listing-best-practices.md)」でカテゴリとサブカテゴリの完全な一覧を参照してください。
 

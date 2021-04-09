@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/15/2021
 ms.author: Zhchia
 ms.openlocfilehash: 43b783d9462205b01d3ac4de0c5779fdc9864470
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99550458"
 ---
 # <a name="tutorial-configure-fortes-change-cloud-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために Fortes Change Cloud を構成する

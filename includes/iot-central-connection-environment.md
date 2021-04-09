@@ -9,10 +9,10 @@ ms.date: 11/03/2020
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: a3c85a7c76115ff72e5042788ad83fd31f601c9c
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96122675"
 ---
 サンプルを構成するための環境変数を設定します。 以下のスニペットは、Windows コマンド プロンプトから環境変数を設定する方法を示したものです。 **bash** シェルを使用する場合は、`set` コマンドを `export` コマンドに置き換えてください。

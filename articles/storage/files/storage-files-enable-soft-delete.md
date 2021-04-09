@@ -8,12 +8,12 @@ ms.date: 12/01/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 22e4d0998cde14d4461141a53f05cbc19d1ab671
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 77381700f4257006b50e56ab7ffc037ef99d297c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878971"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102218555"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Azure ファイル共有で論理的な削除を有効にする
 
@@ -35,7 +35,7 @@ Azure Storage では、アプリケーションまたは他のストレージ �
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-論理的な削除のコマンドレットは、バージョン 2.1.3 以降の [Azure CLI モジュール](/cli/azure/install-azure-cli?view=azure-cli-latest)で使用できます。
+論理的な削除のコマンドレットは、バージョン 2.1.3 以降の [Azure CLI モジュール](/cli/azure/install-azure-cli)で使用できます。
 
 ## <a name="getting-started-with-cli"></a>CLI の概要
 

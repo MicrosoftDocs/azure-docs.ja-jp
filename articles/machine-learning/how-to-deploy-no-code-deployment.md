@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: deploy
 ms.reviewer: larryfr
 ms.openlocfilehash: a17126695aa5138d1df7fd17cfaa2f5f75ad1004
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93324914"
 ---
 # <a name="preview-no-code-model-deployment"></a>(プレビュー) コードなしのモデル デプロイ
@@ -132,7 +132,7 @@ print(output)
 
 * [失敗したデプロイのトラブルシューティング](how-to-troubleshoot-deployment.md)
 * [Azure Kubernetes Service にデプロイする](how-to-deploy-azure-kubernetes-service.md)
-* [Web サービスを使用するクライアント アプリケーションの作成](how-to-consume-web-service.md)
+* [Web サービスを使用するクライアント アプリケーションを作成する](how-to-consume-web-service.md)
 * [Web サービスを更新する](how-to-deploy-update-web-service.md)
 * [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)
 * [TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)

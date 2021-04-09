@@ -9,10 +9,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 44a9d5b273e13886b0674b3b2e9f5f7a75e72fcc
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93338579"
 ---
 # <a name="log-azure-cosmos-db"></a>LOG (Azure Cosmos DB)
@@ -42,7 +42,7 @@ LOG (<numeric_expr> [, <base>])
   
   既定では、LOG() は自然対数を返します。 省略可能な底パラメーターを使用して、対数の底を別の値に変更できます。  
   
-  自然対数は **e** を底とする対数です。ここで、 **e** は 2.718281828 にほぼ等しい無理定数です。  
+  自然対数は **e** を底とする対数です。ここで、**e** は 2.718281828 にほぼ等しい無理定数です。  
   
   数値の指数の自然対数は数自体です: LOG( EXP( n ) ) = n。 数値の自然対数の指数は数自体です: EXP( LOG( n ) ) = n。
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: zhchia
 ms.openlocfilehash: 07c476c0de644ac63c577d466f4691b5cf415334
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94357938"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>チュートリアル:StarLeaf を構成し、自動ユーザー プロビジョニングに対応させる
@@ -80,7 +80,7 @@ Azure AD を使用した自動ユーザー プロビジョニング用に StarLe
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **StarLeaf** 」と入力し、結果パネルで **[StarLeaf]** を選択します。
+4. 検索ボックスに「**StarLeaf**」と入力し、結果パネルで **[StarLeaf]** を選択します。
     ![結果一覧の StarLeaf](common/search-new-app.png)
 
 ## <a name="configure-automatic-user-provisioning-to-starleaf"></a>StarLeaf への自動ユーザー プロビジョニングを構成する

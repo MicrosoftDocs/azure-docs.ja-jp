@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: reference
 ms.date: 03/03/2020
 ms.openlocfilehash: 258874ffdbc471305b76f7d52406d2f45e708829
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99575739"
 ---
 # <a name="services-and-tools-available-for-data-migration-scenarios"></a>データ移行のシナリオで利用できるサービスとツール
@@ -54,7 +54,7 @@ ms.locfileid: "99575739"
 
 ## <a name="pre-migration-phase"></a>移行前フェーズ
 
-| source | 移行先 | アプリ データ アクセス<br/>レイヤー評価 | データベース<br/>評価 | パフォーマンス<br/>評価 |
+| source | 移行先 | アプリ データ アクセス<br/>レイヤー評価 | データベース<br/>評価 | [パフォーマンス]<br/>評価 |
 | --- | --- | --- | --- | --- |
 | SQL Server | Azure SQL DB | [DAMT](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) / [DMA](/sql/dma/dma-overview?view=sql-server-2017) | [DMA](/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DEA](https://www.microsoft.com/download/details.aspx?id=54090)<br/>[Cloudamize*](https://www.cloudamize.com/) |
 | SQL Server | Azure SQL DB MI | [DAMT](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) / [DMA](/sql/dma/dma-overview?view=sql-server-2017) | [DMA](/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DEA](https://www.microsoft.com/download/details.aspx?id=54090)<br/>[Cloudamize*](https://www.cloudamize.com/) |

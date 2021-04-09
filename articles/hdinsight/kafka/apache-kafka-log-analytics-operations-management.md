@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: d577e96c3ae95103a412b96eba3e1293142f1acd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 74db121c33864ee72ad984b49c8fa43afa0f598c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932765"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870519"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>HDInsight で Apache Kafka のログを分析する
 
@@ -34,7 +34,7 @@ Azure Monitor ログを使用して、HDInsight 上の Apache Kafka によって
 
 HDInsight の Azure Monitor ログを有効にする手順は、すべての HDInsight クラスターで同じです。 必要なサービスを作成して構成する方法を理解するために、次のリンクを使用してください。
 
-1. Log Analytics ワークスペースを作成します。 詳細については、「[Azure Monitor のログ](../../azure-monitor/platform/data-platform-logs.md)」ドキュメントをご覧ください。
+1. Log Analytics ワークスペースを作成します。 詳細については、「[Azure Monitor のログ](../../azure-monitor/logs/data-platform-logs.md)」ドキュメントをご覧ください。
 
 2. HDInsight クラスターに Kafka を作成します。 詳細については、「[HDInsight での Apache Kafka の開始](apache-kafka-get-started.md)」をご覧ください。
 
@@ -47,7 +47,7 @@ HDInsight の Azure Monitor ログを有効にする手順は、すべての HDI
 
 1. [Azure Portal](https://portal.azure.com) から、Log Analytics のワークスペースを選択します。
 
-2. 左側のメニューの **[全般]** で、 **[ログ]** を選択します。 ここでは、Kafka から収集されたデータを検索できます。 クエリ ウィンドウでクエリを入力し、 **[実行]** を選択します。 次に検索例をいくつか示します。
+2. 左側のメニューの **[全般]** で、**[ログ]** を選択します。 ここでは、Kafka から収集されたデータを検索できます。 クエリ ウィンドウでクエリを入力し、**[実行]** を選択します。 次に検索例をいくつか示します。
 
 * ディスク使用量:
 
@@ -65,7 +65,7 @@ HDInsight の Azure Monitor ログを有効にする手順は、すべての HDI
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
 
-* 1 秒あたりの受信メッセージ:(`your_kafka_cluster_name` をご使用のクラスター名に置き換えます。)
+* 1 秒あたりの受信メッセージ数: (`your_kafka_cluster_name` をクラスター名に置き換えます。)
 
     ```kusto
     metrics_kafka_CL 
@@ -73,7 +73,7 @@ HDInsight の Azure Monitor ログを有効にする手順は、すべての HDI
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s, bin(TimeGenerated, 1h)
     ```
 
-* 1 秒あたりの受信バイト数:(`wn0-kafka` をワーカー ノードのホスト名に置き換えます。)
+* 1 秒あたりの受信バイト数: (`wn0-kafka` ワーカー ノードのホスト名に置き換えます。)
 
     ```kusto
     metrics_kafka_CL 
@@ -81,7 +81,7 @@ HDInsight の Azure Monitor ログを有効にする手順は、すべての HDI
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-* 1 秒あたりの送信バイト数:(`your_kafka_cluster_name` をご使用のクラスター名に置き換えます。)
+* 1 秒あたりの送信バイト数: (`your_kafka_cluster_name` をクラスター名に置き換えます。)
 
     ```kusto
     metrics_kafka_CL 
@@ -97,7 +97,7 @@ HDInsight の Azure Monitor ログを有効にする手順は、すべての HDI
     | log\_kafkacontroller\_CL | Kafka ブローカーの controller.log |
     | metrics\_kafka\_CL | Kafka JMX メトリック |
 
-    ![Apache Kafka の Log Analytics の CPU 使用率](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
+    :::image type="content" source="./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png" alt-text="Apache Kafka の Log Analytics の CPU 使用率" border="true":::
 
 ## <a name="next-steps"></a>次のステップ
 

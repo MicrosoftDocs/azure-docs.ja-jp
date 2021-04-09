@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
 ms.openlocfilehash: 76bbe60397ebb01aed5694d933b3067f778a4c21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85505598"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>vFXT クラスターへのデータの移動 - 並列データ取り込み
@@ -168,7 +168,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ### <a name="create-file-manifests"></a>ファイル マニフェストの作成
 
-上記のアプローチ (コピー先あたり複数のコピー スレッド、クライアントあたり複数のコピー先、ネットワーク アクセス可能なソース ファイルシステムあたり複数のクライアント) を理解したら、この推奨事項を検討してください。ファイル マニフェストを作成し、それらを複数のクライアント全体でコピー コマンドと一緒に使用します。
+上記のアプローチ (コピー先あたり複数のコピー スレッド、クライアントあたり複数のコピー先、ネットワーク アクセス可能なソース ファイルシステムあたり複数のクライアント) を理解したら、この推奨事項を検討してください。つまり、ファイル マニフェストを作成し、作成したマニフェストを複数のクライアント全体でコピー コマンドと一緒に使用します。
 
 このシナリオでは UNIX の ``find`` コマンドを使用して、ファイルまたはディレクトリのマニフェストを作成します。
 
@@ -274,7 +274,7 @@ for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt
 rsync -azh --inplace <source> <destination> && rsync -azh <source> <destination>
 ```
 
-この方法は、内部ディレクトリ マネージャーによって処理可能なファイル数までのデータセットに対しては、単純かつ時間効率の高い方法です (これは通常、3 ノード クラスターに対しては 2 億ファイル、6 ノード クラスタに対しては 5 億ファイルなどとなります)。
+この方法は、内部ディレクトリ マネージャーによって処理可能なファイル数までのデータセットに対しては、単純かつ時間効率の高い方法です  (これは通常、3 ノード クラスターに対しては 2 億ファイル、6 ノード クラスタに対しては 5 億ファイルなどとなります)。
 
 ## <a name="use-the-msrsync-utility"></a>msrsync ユーティリティを使用する
 

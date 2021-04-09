@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/04/2020
 ms.reviewer: sngun
 ms.openlocfilehash: b0d27cb2f941db374a144cbd5c026444730e24e8
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98247490"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB の課金内容を理解する
@@ -220,7 +220,7 @@ ms.locfileid: "98247490"
 Azure Cosmos DB の Free レベルでは、アカウント レベルに適用されている最初の 400 RU/秒と 5 GB のストレージを、お使いのアカウントで無料でご利用いただけます。 400 RU/秒 と 5 GB を超える RU/秒 とストレージには、価格ページの通常の価格レートで課金されます。 請求書には、無料の 400 RU/秒と 5 GB の料金や品目は表示されません。Free レベルの対象を超えた RU/秒 とストレージのみが表示されます。 秒あたり 400 RU は、どのタイプの秒あたり RU (プロビジョニングされたスループット、自動スケーリング、複数リージョン書き込み) にも適用されます。  
 
 > [!NOTE]
-> Azure Cosmos DB 無料レベルは、Azure 無料アカウントとは異なります。 Azure 無料アカウントでは、Azure クレジットおよびリソースが一定の期間、無料で提供されます。 この無料アカウントの一部として Azure Cosmos DB を使用する場合、25 GB のストレージと 400 RU/s のプロビジョニング済みスループットが 12 か月間利用できます。
+> Azure Cosmos DB 無料レベルは、Azure 無料アカウントとは異なります。 Azure 無料アカウントでは、Azure クレジットおよびリソースが一定の期間無料で提供されます。 この無料アカウントの一部として Azure Cosmos DB を使用する場合、25 GB のストレージと 400 RU/s のプロビジョニング済みスループットが 12 か月間利用できます。
 
 ### <a name="billing-example---container-or-database-with-provisioned-throughput"></a>課金の例 - プロビジョニングされたスループットでのコンテナーまたはデータベース
 - Free レベルのアカウントで 400 RU/秒と 5 GB のストレージを使用してデータベースまたはコンテナーを作成したとします。

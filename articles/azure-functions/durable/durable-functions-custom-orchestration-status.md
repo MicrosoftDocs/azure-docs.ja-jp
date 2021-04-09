@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/10/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 4a95e7c74fac7043d0adb5f31d2bdcdd73b9577a
-ms.sourcegitcommit: 489ce69c0ff3f5188889ecfef5ffa76f7121e0d3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97766330"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Durable Functions でのカスタムオーケストレーションの状態 (Azure Functions)

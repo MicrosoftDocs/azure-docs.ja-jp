@@ -1,34 +1,24 @@
 ---
-title: Azure RTOS 用のセキュリティ モジュールの基本についての概念的な説明
-description: Azure RTOS 用のセキュリティ モジュールの概念とワークフローについての基本を説明します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
+title: Azure RTOS 用の Defender-IoT-micro-agent の基本についての概念的な説明
+description: Azure RTOS 用の Defender-IoT-micro-agent の概念とワークフローについての基本を説明します。
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 8f521bd593369509fd520831f90ce9c601227f09
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 83557930aeeccbb557382583e4d6666a000ce52c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340052"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779275"
 ---
-# <a name="security-module-for-azure-rtos-preview"></a>Azure RTOS 用のセキュリティ モジュール (プレビュー)
+# <a name="defender-iot-micro-agent-for-azure-rtos-preview"></a>Azure RTOS 用の Defender-IoT-micro-agent (プレビュー段階)
 
-この記事を使用して、機能と利点に加え、関連する構成と参照リソースへのリンクなど、Azure RTOS 用のセキュリティ モジュールについて理解を深めてください。 
+この記事を使用して、機能と利点に加え、関連する構成と参照リソースへのリンクなど、Azure RTOS 用の Defender-IoT-micro-agent について理解を深めてください。 
 
-## <a name="azure-rtos-iot-security-module"></a>Azure RTOS IoT セキュリティ モジュール
+## <a name="azure-rtos-iot-defender-iot-micro-agent"></a>Azure RTOS IoT Defender-IoT-micro-agent
 
-Azure RTOS 用のセキュリティ モジュールでは、NetX Duo オファリングの一部として、Azure RTOS デバイス向けの包括的なセキュリティ ソリューションが提供されます。 NetX Duo オファリングには Azure RTOS と組み込みの Azure IoT セキュリティ モジュールが付属しており、アクティブ化されると、リアルタイムのオペレーティング システム デバイスでの一般的な脅威への対応が提供されます。 
+Azure RTOS 用の Defender-IoT-micro-agent では、NetX Duo オファリングの一部として、Azure RTOS デバイス向けの包括的なセキュリティ ソリューションが提供されます。 NetX Duo オファリングには Azure RTOS と組み込みの Azure IoT Defender-IoT-micro-agent が付属しており、アクティブ化されると、リアルタイムのオペレーティング システム デバイスでの一般的な脅威への対応が提供されます。 
 
-Azure RTOS 用のセキュリティ モジュールはバックグラウンドで実行され、各顧客の IoT Hub への一意の接続を使用してセキュリティ メッセージが送信されると同時に、シームレスなユーザー エクスペリエンスが提供されます。 Azure RTOS 用のセキュリティ モジュールは、既定で有効になっています。  
+Azure RTOS 用の Defender-IoT-micro-agent はバックグラウンドで実行され、各顧客の IoT Hub への一意の接続を使用してセキュリティ メッセージが送信されると同時に、シームレスなユーザー エクスペリエンスが提供されます。 Azure RTOS 用の Defender-IoT-micro-agent は、既定で有効になっています。  
 
 ## <a name="azure-rtos-netx-duo"></a>Azure RTOS NetX Duo
 
@@ -40,13 +30,13 @@ Azure RTOS NetX Duo は、特に深く埋め込まれるリアルタイムの Io
 - **カスタム アラートに基づくデバイスの動作のベースライン**
 - **デバイス セキュリティの検疫の強化**
 
-## <a name="security-module-for-azure-rtos-architecture"></a>Azure RTOS 用のセキュリティ モジュールのアーキテクチャ
+## <a name="defender-iot-micro-agent-for-azure-rtos-architecture"></a>Azure RTOS 用の Defender-IoT-micro-agent のアーキテクチャ
 
-Azure RTOS 用のセキュリティ モジュールは Azure IoT ミドルウェア プラットフォームによって初期化され、IoT Hub クライアントを使用してセキュリティ テレメトリをハブに送信します。
+Azure RTOS 用の Defender-IoT-micro-agent は Azure IoT ミドルウェア プラットフォームによって初期化され、IoT Hub クライアントを使用してセキュリティ テレメトリをハブに送信します。
 
-:::image type="content" source="media/architecture/security-module-state-diagram.png" alt-text="Azure IoT セキュリティ モジュールの状態の図と情報フロー":::
+:::image type="content" source="media/architecture/security-module-state-diagram.png" alt-text="Azure IoT Defender-IoT-micro-agent の状態の図と情報フロー":::
 
-Azure RTOS 用のセキュリティ モジュールでは、3 つのコレクターを使用して、次のデバイスのアクティビティと情報が監視されます。
+Azure RTOS 用の Defender-IoT-micro-agent では、3 つのコレクターを使用して、次のデバイスのアクティビティと情報が監視されます。
 - デバイス ネットワーク アクティビティ **TCP**、**UDP**、および **ICM**
 - **Threadx** と **NetX Duo** のバージョンとしてのシステム情報
 - ハートビートのイベント
@@ -57,14 +47,14 @@ Azure RTOS 用のセキュリティ モジュールでは、3 つのコレクタ
 
 ## <a name="supported-security-alerts-and-recommendations"></a>サポートされているセキュリティ アラートと推奨事項
 
-Azure RTOS 用のセキュリティ モジュールでは、特定のセキュリティ アラートと推奨事項がサポートされています。 初期構成を完了した後、サービスに[関連するアラートと推奨事項の値を確認してカスタマイズ](concept-rtos-security-alerts-recommendations.md)します。
+Azure RTOS 用の Defender-IoT-micro-agent では、特定のセキュリティ アラートと推奨事項がサポートされています。 初期構成を完了した後、サービスに[関連するアラートと推奨事項の値を確認してカスタマイズ](concept-rtos-security-alerts-recommendations.md)します。
 
 ## <a name="ready-to-begin"></a>開始する準備ができましたか?
 
-Azure RTOS 用のセキュリティ モジュールは、IoT デバイス用の無料ダウンロードとして提供されています。 Defender for IoT クラウド サービスは、Azure サブスクリプションごとに 30 日間の試用版で利用できます。 [セキュリティ モジュールを今すぐダウンロード](https://github.com/azure-rtos/azure-iot-preview/releases)して開始しましょう。 
+Azure RTOS 用の Defender-IoT-micro-agent は、IoT デバイス用の無料ダウンロードとして提供されています。 Defender for IoT クラウド サービスは、Azure サブスクリプションごとに 30 日間の試用版で利用できます。 [Defender-IoT-micro-agent を今すぐダウンロード](https://github.com/azure-rtos/azure-iot-preview/releases)して開始しましょう。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- Azure RTOS 用のセキュリティ モジュールを使用して作業を開始する ([前提条件と設定](quickstart-azure-rtos-security-module.md))。
-- Azure RTOS 用のセキュリティ モジュールの詳細を確認する ([セキュリティ アラートと推奨事項のサポート](concept-rtos-security-alerts-recommendations.md))。 
-- Azure RTOS 用のセキュリティ モジュールの[リファレンス API](azure-rtos-security-module-api.md) を使用する。
+- Azure RTOS 用の Defender-IoT-micro-agent を使用して作業を開始する ([前提条件と設定](quickstart-azure-rtos-security-module.md))。
+- Azure RTOS 用の Defender-IoT-micro-agent の[セキュリティ アラートと推奨事項のサポート](concept-rtos-security-alerts-recommendations.md)の詳細を確認する。 
+- Azure RTOS 用の Defender-IoT-micro-agent の[リファレンス API](azure-rtos-security-module-api.md) を使用する。

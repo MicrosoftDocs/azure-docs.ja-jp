@@ -5,10 +5,10 @@ ms.date: 10/02/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: a6f399e19cadf3d6ce9edfaecb3d904e62c498aa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96006877"
 ---
 このコンテナーには、次の構成設定があります。

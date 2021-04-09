@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 7f0e994cd41fc55824cf347a51ccfed25589a310
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91539539"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Azure Search .NET SDK バージョン 5 へのアップグレード
@@ -95,7 +95,7 @@ Azure Search .NET SDK のパッケージにおける変更のため、バージ�
 - `ParseJsonArrays`
 - `ParseDelimitedTextFiles`
 
-アプリケーションにこれらの機能に対するハードの依存関係が存在する場合、Azure Search .NET SDK のバージョン 5 にアップグレードすることはできません。 バージョン 4.0-preview を引き続き使用できますが、 **実稼働アプリケーションでのプレビュー版 SDK の使用は推奨されない**ことに注意してください。 プレビュー機能は評価のみを目的としており、変更される場合があります。
+アプリケーションにこれらの機能に対するハードの依存関係が存在する場合、Azure Search .NET SDK のバージョン 5 にアップグレードすることはできません。 バージョン 4.0-preview を引き続き使用できますが、 **実稼働アプリケーションでのプレビュー版 SDK の使用は推奨されない** ことに注意してください。 プレビュー機能は評価のみを目的としており、変更される場合があります。
 
 ## <a name="conclusion"></a>まとめ
 Azure Search .NET SDK の使い方について詳しくは、[.NET の方法](search-howto-dotnet-sdk.md)に関する記事をご覧ください。

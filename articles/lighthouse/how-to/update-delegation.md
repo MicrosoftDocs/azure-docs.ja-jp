@@ -4,10 +4,10 @@ description: Azure Lighthouse に以前オンボードされた顧客の委任�
 ms.date: 02/16/2021
 ms.topic: how-to
 ms.openlocfilehash: f0ed5222cdbac3d0e4d193941c2a6f233d15938c
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100555770"
 ---
 # <a name="update-a-delegation"></a>委任を更新する

@@ -14,10 +14,10 @@ ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e4b06cbcbef79e243116bddb33adbcf6476fac8a
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102213370"
 ---
 # <a name="kdump-for-sap-hana-on-azure-large-instances-hli"></a>SAP HANA on Azure Large Instances (HLI) の Kdump

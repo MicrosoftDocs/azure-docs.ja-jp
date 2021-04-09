@@ -4,13 +4,13 @@ description: Azure Toolkit for IntelliJ を使用して Scala で記述された
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 04/13/2020
-ms.openlocfilehash: 0b2c2a91ba9d029bcf24b0980d0a2339194e6d8a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 04/14/2020
+ms.openlocfilehash: ced066623d23c6894745374ace812454c52f3109
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931038"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103420019"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "98931038"
 * Azure HDInsight Spark クラスター リソースにアクセスする。
 * Scala Spark アプリケーションをローカルで開発して実行する。
 
-この記事では、次の方法について説明します。
+この記事では、次のことについて説明します。
 > [!div class="checklist"]
 > * Azure Toolkit for IntelliJ プラグインを使用する
 > * Apache Spark アプリケーションを開発する

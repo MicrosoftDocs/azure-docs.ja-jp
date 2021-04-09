@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: twooley
 ms.openlocfilehash: c6520036f3ddb8799025129391330268b0604886
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97723808"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>リージョン間での Azure Data Lake Storage Gen1 の移行

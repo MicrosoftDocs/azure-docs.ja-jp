@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: duau
 ms.openlocfilehash: 1fad1bca18d16ac3b6a654a3c289d0a14e3cd2e2
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92204794"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute の前提条件とチェック リスト
@@ -31,7 +31,7 @@ ExpressRoute を使用して Microsoft クラウド サービスに接続する�
 ## <a name="network-requirements"></a>ネットワークの要件
 * **ピアリングの場所ごとの冗長性**: Microsoft から、([クラウド エクスチェンジへの物理接続が 1 つ](expressroute-faqs.md#onep2plink)しかない場合でも) 各 ExpressRoute 回線上の Microsoft のルーターとピアリング ルーターの間に冗長 BGP セッションを設定することが求められます。
 * **ディザスター リカバリーの冗長性**: Microsoft は、単一障害点を回避するために別々のピアリングの場所に少なくとも 2 つの ExpressRoute 回線を設定することを強くお勧めします。
-* **ルーティング**: Microsoft Cloud への接続方法に応じて、自社またはプロバイダーで[ルーティング ドメイン](expressroute-circuit-peerings.md)用の BGP セッションを設定および管理する必要があります。 一部のイーサネット接続プロバイダーまたはクラウド エクスチェンジ プロバイダーでは、BGP 管理を付加価値サービスとして提供している場合があります。
+* **ルーティング**: Microsoft Cloud への接続方法に応じて、自社またはプロバイダーで [ルーティング ドメイン](expressroute-circuit-peerings.md)用の BGP セッションを設定および管理する必要があります。 一部のイーサネット接続プロバイダーまたはクラウド エクスチェンジ プロバイダーでは、BGP 管理を付加価値サービスとして提供している場合があります。
 * **NAT**:Microsoft では、パブリック IP アドレスのみを Microsoft ピアリング経由で受け入れます。 オンプレミス ネットワークでプライベート IP アドレスを使用している場合、自社またはプロバイダーで [NAT を使用して](expressroute-nat.md)プライベート IP アドレスをパブリック IP アドレスに変換する必要があります。
 * **QoS**:Skype for Business にはさまざまなサービス (音声、ビデオ、テキストなど) があり、それぞれに特化した QoS 処理を必要とします。 自社またはプロバイダーで [QoS 要件](expressroute-qos.md)に従うことが必要です。
 * **ネットワーク セキュリティ**: ExpressRoute を介して Microsoft Cloud に接続する場合は、[ネットワーク セキュリティ](/azure/cloud-adoption-framework/reference/networking-vdc)について考慮してください。

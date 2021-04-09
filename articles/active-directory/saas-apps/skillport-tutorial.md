@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 8b49e3594754e8eed38e3b1ef44648bc065558b8
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97608360"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>チュートリアル: Azure Active Directory と Skillport の統合
@@ -61,7 +61,7 @@ Azure AD への Skillport の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Skillport**」と入力し、結果パネルで **[Skillport]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Skillport**」と入力し、結果パネルで **[Skillport]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Skillport](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ Skillport で Azure AD のシングル サインオンを構成してテスト�
 
 Skillport で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Skillport** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Skillport** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 

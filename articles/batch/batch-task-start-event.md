@@ -4,10 +4,10 @@ description: Batch タスクの開始イベントのリファレンス情報で�
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: 3a57ffbb1e1659cff54d101aa4b90ca1bd5d3a57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91851018"
 ---
 # <a name="task-start-event"></a>タスク開始イベント
@@ -40,7 +40,7 @@ ms.locfileid: "91851018"
 }
 ```
 
-|要素名|種類|メモ|
+|要素名|Type|Notes|
 |------------------|----------|-----------|
 |`jobId`|String|タスクを含むジョブの ID です。|
 |`id`|String|タスクの ID です。|

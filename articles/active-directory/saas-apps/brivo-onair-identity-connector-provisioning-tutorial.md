@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory での自動ユーザー プロビジョニング用に Brivo Onair Identity Connector を構成する | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory での自動ユーザー プロビジョニング用に Brivo Onair Identity Connector を構成する | Microsoft Docs'
 description: Brivo Onair Identity Connector に対してユーザー アカウントが自動的にプロビジョニングおよびプロビジョニング解除されるように、Azure Active Directory を構成する方法について説明します。
 services: active-directory
 author: zchia
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: Zhchia
 ms.openlocfilehash: 4f230a70ae87c7c0ec9db347e7cf975c0252bb18
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95998091"
 ---
-# <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Brivo Onair Identity Connector を構成する
+# <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニング用に Brivo Onair Identity Connector を構成する
 
 このチュートリアルの目的は、ユーザーまたはグループの Brivo Onair Identity Connector へのプロビジョニングとプロビジョニング解除が自動的に行われるよう Azure AD を構成するために、Brivo Onair Identity Connector と Azure Active Directory (Azure AD) で実行する手順を示すことです。
 
@@ -58,7 +58,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
    ![Brivo Onair Identity Connector での Azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
 
-3. **[Copy Token]\(トークンのコピー\)** ボタンをクリックし、 **[Secret Token]\(シークレット トークン\)** を保存します。 この値を、Azure portal で Brivo Onair Identity Connector アプリケーションの [プロビジョニング] タブにある [シークレット トークン] フィールドに入力します。
+3. **[Copy Token]\(トークンのコピー\)** ボタンをクリックし、**[Secret Token]\(シークレット トークン\)** を保存します。 この値を、Azure portal で Brivo Onair Identity Connector アプリケーションの [プロビジョニング] タブにある [シークレット トークン] フィールドに入力します。
 
    ![Brivo Onair Identity Connector でのトークン](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
 
@@ -80,7 +80,7 @@ Azure AD を使用して自動的にユーザー プロビジョニングを行�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Brivo Onair Identity Connector**」と入力して、結果パネルから **Brivo Onair Identity Connector** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Brivo Onair Identity Connector**」と入力して、結果パネルから **Brivo Onair Identity Connector** を選択し、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果リストでの Brivo Onair Identity Connector](common/search-new-app.png)
 
@@ -94,7 +94,7 @@ Azure AD を使用して自動的にユーザー プロビジョニングを行�
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、 **[Brivo Onair Identity Connector]** を選択します。
+2. アプリケーションの一覧で、**[Brivo Onair Identity Connector]** を選択します。
 
     ![アプリケーション一覧での Brivo Onair Identity Connector のリンク](common/all-applications.png)
 
@@ -134,7 +134,7 @@ Azure AD を使用して自動的にユーザー プロビジョニングを行�
 
 12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-13. Brivo Onair Identity Connector に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+13. Brivo Onair Identity Connector に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 

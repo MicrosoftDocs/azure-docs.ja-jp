@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 83e9ae4aa68bc0c819d02a0cc6c39758549811cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88928855"
 ---
 # <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Azure Cognitive Search の OData 式構文リファレンス
@@ -214,7 +214,7 @@ Azure Cognitive Search でサポートされている OData 言語の文法を�
 > [!div class="nextstepaction"]
 > [Azure Cognitive Search の OData 構文ダイアグラム](https://azuresearch.github.io/odata-syntax-diagram/)
 
-## <a name="see-also"></a>参照  
+## <a name="see-also"></a>関連項目  
 
 - [Azure Cognitive Search のフィルター](search-filters.md)
 - [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)

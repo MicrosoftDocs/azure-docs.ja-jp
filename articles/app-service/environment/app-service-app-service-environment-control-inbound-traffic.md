@@ -8,15 +8,15 @@ ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: fe9326ea9ebd5afe981b7ba6c34b1a5d51e084b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88962062"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>App Service 環境への受信トラフィックを制御する方法
 ## <a name="overview"></a>概要
-App Service 環境は、Azure Resource Manager 仮想ネットワーク**または**クラシック デプロイ モデル[仮想ネットワーク][virtualnetwork]の**どちらにでも**作成できます。  App Service 環境の作成時に、新しい仮想ネットワークと新しいサブネットを定義できます。 その代わりに、既存の仮想ネットワークと既存のサブネットに App Service 環境を作成することもできます。  2016 年 6 月の時点で、ASE はパブリック アドレス範囲または RFC1918 アドレス空間 (プライベート アドレス) のいずれかを使用する仮想ネットワークにもデプロイすることができます。  詳細については、「[App Service Environment の作成方法][HowToCreateAnAppServiceEnvironment]」を参照してください。
+App Service 環境は、Azure Resource Manager 仮想ネットワーク **または** クラシック デプロイ モデル [仮想ネットワーク][virtualnetwork]の **どちらにでも** 作成できます。  App Service 環境の作成時に、新しい仮想ネットワークと新しいサブネットを定義できます。 その代わりに、既存の仮想ネットワークと既存のサブネットに App Service 環境を作成することもできます。  2016 年 6 月の時点で、ASE はパブリック アドレス範囲または RFC1918 アドレス空間 (プライベート アドレス) のいずれかを使用する仮想ネットワークにもデプロイすることができます。  詳細については、「[App Service Environment の作成方法][HowToCreateAnAppServiceEnvironment]」を参照してください。
 
 App Service 環境は常にサブネット内に作成します。 サブネットには、アップストリーム デバイスおよびサービスの背後にある受信トラフィックをロック ダウンするために使用できるネットワーク境界が用意されています。 このセットアップでは、特定のアップストリーム IP アドレスのみに対して、HTTP および HTTPS トラフィックの受け入れを許可します。
 
@@ -31,8 +31,8 @@ App Service 環境は常にサブネット内に作成します。 サブネッ�
 
 App Service 環境で使用されるポートの一覧を次に示します。 特に断りのない限り、すべてのポートは **TCP** です。
 
-* 454:TLS を介した App Service Environment の管理および保守のために Azure インフラストラクチャによって使用される**必須ポート**。  このポートへのトラフィックはブロックしないでください。  このポートは常に、ASE のパブリック VIP にバインドします。
-* 455:TLS を介した App Service Environment の管理および保守のために Azure インフラストラクチャによって使用される**必須ポート**。  このポートへのトラフィックはブロックしないでください。  このポートは常に、ASE のパブリック VIP にバインドします。
+* 454:TLS を介した App Service Environment の管理および保守のために Azure インフラストラクチャによって使用される **必須ポート**。  このポートへのトラフィックはブロックしないでください。  このポートは常に、ASE のパブリック VIP にバインドします。
+* 455:TLS を介した App Service Environment の管理および保守のために Azure インフラストラクチャによって使用される **必須ポート**。  このポートへのトラフィックはブロックしないでください。  このポートは常に、ASE のパブリック VIP にバインドします。
 * 80:App Service Environment において App Service プランで実行されているアプリへの受信 HTTP トラフィック用の既定のポート。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
 * 443:App Service 環境において App Service プランで実行されているアプリへの受信 TLS トラフィック用の既定のポート。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
 * 21:FTP 用のコントロール チャネル。  FTP が使用されていない場合は、このポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドできます。
@@ -97,7 +97,7 @@ Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityR
 ```
 
 ## <a name="assigning-a-network-security-group-to-a-subnet"></a>サブネットへのネットワーク セキュリティ グループの割り当て
-ネットワーク セキュリティ グループには、すべての外部トラフィックへのアクセスを拒否する既定のセキュリティ ルールがあります。 上記のネットワーク セキュリティ ルールとこのルールを組み合わせると、*許可*アクションに関連付けられた送信元アドレス範囲からのトラフィックのみが、App Service 環境で実行中のアプリにトラフィックを送信できるようになります。
+ネットワーク セキュリティ グループには、すべての外部トラフィックへのアクセスを拒否する既定のセキュリティ ルールがあります。 上記のネットワーク セキュリティ ルールとこのルールを組み合わせると、*許可* アクションに関連付けられた送信元アドレス範囲からのトラフィックのみが、App Service 環境で実行中のアプリにトラフィックを送信できるようになります。
 
 ネットワーク セキュリティ グループは、セキュリティ ルールが設定された後に、App Service 環境を含むサブネットに割り当てられる必要があります。  割り当てコマンドは、App Service 環境が存在する仮想ネットワークの名前と、App Service 環境が作成されたサブネットの名前の 2 つを参照します。  
 
@@ -107,7 +107,7 @@ Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityR
 Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-test'
 ```
 
-割り当ては実行時間の長い操作であり、完了するまでに数分かかる場合があります。 ネットワーク セキュリティ グループの割り当てが成功すると、*許可*ルールに一致する受信トラフィックのみが App Service 環境内のアプリに正常に到達します。
+割り当ては実行時間の長い操作であり、完了するまでに数分かかる場合があります。 ネットワーク セキュリティ グループの割り当てが成功すると、*許可* ルールに一致する受信トラフィックのみが App Service 環境内のアプリに正常に到達します。
 
 完全を期すため、次の例では、サブネットからネットワーク セキュリティ グループを削除し、関連付けを解除する方法を示します。
 

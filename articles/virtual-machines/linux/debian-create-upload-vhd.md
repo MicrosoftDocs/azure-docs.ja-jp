@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2018
 ms.author: guybo
 ms.openlocfilehash: 7dcb6dbc62513535c562a430f5958a62dae9d005
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102554515"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Azure 用の Debian VHD の準備

@@ -9,10 +9,10 @@ ms.date: 11/11/2020
 ms.author: cynthn
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 32d15730557c96362602b5e324254c76637ecb55
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98897444"
 ---
 # <a name="how-to-tag-a-vm-using-the-cli"></a>CLI を使用して VM にタグを付ける方法

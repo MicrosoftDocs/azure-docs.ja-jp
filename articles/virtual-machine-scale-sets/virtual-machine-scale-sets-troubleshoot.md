@@ -10,10 +10,10 @@ ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
 ms.openlocfilehash: 11302c301bee466f678d544d0c4838c39cec9c8e
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91818534"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットの自動スケールに関するトラブルシューティング
@@ -26,7 +26,7 @@ ms.locfileid: "91818534"
   上の例の Azure クイックスタート テンプレートには do_work.php スクリプトが含まれ、1 つの vCPU が読み込まれます。 Standard_A1 や D1 などの単一 vCPU の VM よりも大きいサイズの VM を使用する場合は、この負荷を複数回読み込む必要があります。 VM の vCPU 数を確認する方法については、「[Azure の Windows 仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 * 仮想マシン スケール セット内の VM 数はいくつですか。VM ごとに設定を行っていませんか。
   
-    自動スケール規則で定義された時間内に、スケール セット内の**すべての** VM における平均 CPU 使用率がしきい値を超えた場合にのみ、スケールアウト イベントが発生します。
+    自動スケール規則で定義された時間内に、スケール セット内の **すべての** VM における平均 CPU 使用率がしきい値を超えた場合にのみ、スケールアウト イベントが発生します。
 * スケール イベントを見逃していませんか。
   
     Azure ポータルで監査ログを確認し、スケール イベントを探してください。 スケールアップやスケールダウンを見逃している可能性があります。 "Scale" でフィルター処理できます。

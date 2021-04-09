@@ -3,7 +3,7 @@ title: Media Encoder Standard を使用して Azure 資産をエンコードす�
 description: Media Encoder Standard を使用して Azure Media Services でメディア コンテンツをエンコードする方法について説明します。 コード サンプルでは REST API を使用しています。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 2a7273c6-8a22-4f82-9bfe-4509ff32d4a4
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: b0bff0c6b3ef7934188b548bd06c35d83b323fde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: d4b7a188a9509c3510de2843b232f57e3437177b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91359598"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103009829"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Media Encoder Standard を使用して資産をエンコードする方法
 

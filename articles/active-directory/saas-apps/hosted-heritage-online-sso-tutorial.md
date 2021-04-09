@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
 ms.openlocfilehash: fe09da61f4d87fbef4ce6c8739cd79c7bcda6796
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92442756"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hosted-heritage-online-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Hosted Heritage Online SSO の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Hosted Heritage Online SSO では、 **SP** Initiated SSO がサポートされます
+* Hosted Heritage Online SSO では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-hosted-heritage-online-sso-from-the-gallery"></a>ギャラリーからの Hosted Heritage Online SSO の追加
 
@@ -49,7 +49,7 @@ Azure AD への Hosted Heritage Online SSO の統合を構成するには、ギ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Hosted Heritage Online SSO** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Hosted Heritage Online SSO**」と入力します。
 1. 結果パネルから **[Hosted Heritage Online SSO]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-hosted-heritage-online-sso"></a>Hosted Heritage Online SSO の Azure AD シングル サインオンの構成とテスト
@@ -120,7 +120,7 @@ Hosted Heritage Online SSO で Azure AD の SSO を構成してテストする�
 
 ## <a name="configure-hosted-heritage-online-sso-sso"></a>Hosted Heritage Online SSO の SSO の構成
 
-**Hosted Heritage Online SSO** 側でシングル サインオンを構成するには、 **アプリケーション フェデレーション メタデータ URL** を [Hosted Heritage Online SSO サポート チーム](mailto:support@isoxford.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Hosted Heritage Online SSO** 側でシングル サインオンを構成するには、**アプリケーション フェデレーション メタデータ URL** を [Hosted Heritage Online SSO サポート チーム](mailto:support@isoxford.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-hosted-heritage-online-sso-test-user"></a>Hosted Heritage Online SSO テスト ユーザーの作成
 

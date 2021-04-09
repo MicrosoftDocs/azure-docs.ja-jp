@@ -1,24 +1,14 @@
 ---
 title: Defender for IoT についてよく寄せられる質問
 description: Azure Defender for IoT の機能とサービスに関してよく寄せられる質問に対する回答を確認します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: rkarlin
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/07/2020
-ms.author: rkarlin
-ms.openlocfilehash: 678b50ffb2df2cd16312548109b93f6f1a7f08ff
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.date: 03/02/2021
+ms.openlocfilehash: 0ce8ded3eea344d72679e0f8b805f45b00279b58
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247467"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778595"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>Azure Defender for IoT についてよく寄せられる質問
 
@@ -57,23 +47,17 @@ Azure Defender for IoT センサーを SPAN ポートまたはネットワーク
 
 ## <a name="how-does-defender-for-iot-compare-to-the-competition"></a>Defender for IoT は、競争他社製品とどのように比較されますか?
 
-他社のソリューションには、顧客が独自のソリューションを作成できるようにする一連の機能が用意されていますが、Defender for IoT には、関連するすべての Azure リソースのセキュリティ全体の広範囲なビューを提供する、一意のエンド ツー エンド IoT セキュリティ ソリューションが用意されています。 Azure により、既存のデバイスの管理ツールとの簡単な統合のために、高速なデプロイと IoT Hub モジュール ツインとの完全な統合が実現します。
+Azure Defender for IoT によって、IoT または OT デバイス全体に包括的なセキュリティが与えられます。 **エンドユーザー組織** のためには、Azure Defender for IoT からは、エージェントがなく、短期間でデプロイされるネットワーク層セキュリティが提供されます。また、商標登録されているさまざまな OT 機器やレガシ Windows システムと連動し、Azure Sentinel やその他の SOC ツールと相互運用されます。 オンプレミスまたは Azure が接続されている環境でデプロイできます。 **Iot デバイスの開発者** のためには、Azure Defender for IoT からは、デバイス層セキュリティを新しい IoT または OT イニシアティブに組み込むための軽量のエージェントが提供されます。
 
+## <a name="do-i-have-to-be-an-azure-customer"></a>Azure の顧客になる必要がありますか。
 
-## <a name="do-i-have-to-be-an-azure-iot-customer"></a>Azure IoT の顧客になる必要がありますか?
+いいえ。エージェントレス バージョンの Azure Defender for IoT では、Azure のお客様である必要はありません。 ただし、Azure Sentinel にアラートを送信する場合、ネットワーク センサーをプロビジョニングし、クラウドからその正常性を監視する場合、また、ソフトウェアや脅威インテリジェンスの自動更新を活用する場合、Azure IoT Hub にセンサーを接続する必要があります。
 
-はい。 クラウドに接続されたデプロイの場合、Azure Defender for IoT は Azure IoT の接続とインフラストラクチャに依存します。
+エージェントベース バージョンの Azure Defender for IoT の場合、Azure のお客様になる必要があります。
+
 ## <a name="can-i-create-my-own-alerts"></a>独自のアラートを作成できますか?
 
-はい。 IP アドレスやオープン ポートなどの事前に決められた一連の動作に関する、カスタマイズされたアラートを設定できます。 「[カスタム アラートの作成](quickstart-create-custom-alerts.md)」を参照して、カスタム アラートとその作成方法の詳細について学習してください。
-
-## <a name="where-can-i-see-logs-can-i-customize-logs"></a>ログはどこに表示できますか? ログはカスタマイズできますか?
-
-- 接続されている Log Analytics ワークスペースを使用して、アラートと推奨事項を表示します。 ワークスペースで、ストレージのサイズと持続期間を構成します。
-
-- セキュリティ エージェントからの生データは、Log Analytics アカウントにも格納できます。 このオプションの構成を変更する前に、サイズ、持続期間、ストレージの要件、および関連するコストを考慮してください。
-
-
+はい。IP アドレス、MAC アドレス、プロトコルの種類、クラス、サービス、関数、コマンドなどに加え、ペイロードに含まれるカスタム タグの値など、複数のパラメーターに基づきカスタム アラートを作成できます。  「[カスタム アラートの作成](quickstart-create-custom-alerts.md)」を参照し、カスタム アラートとその作成方法の詳細について学習してください。
 
 ## <a name="what-happens-when-the-internet-connection-stops-working"></a>インターネット接続が機能を停止すると何が起きますか?
 

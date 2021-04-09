@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/03/2021
+ms.date: 03/03/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d759ad0ebb1aa4f1b6a5f404812ab8149ed69e2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a212975817eefe75443bad98ccb72e0a8c3bf58c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671852"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038630"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -83,6 +83,7 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 
 ## <a name="change-log"></a>変更履歴
 
+- 03/03/2021: [WSFC と Azure NetApp Files (SMB) を使用する SAP ASCS/SCS のための HA ガイド](./high-availability-guide-windows-netapp-files-smb.md)が変更され、SAP システムのインストール時、SWPM を実行しているユーザーには昇格された特権が必要になるという注意書きを追加されました。
 - 2021 年 2 月 11 日[Red Hat Enterprise Linux Server 上の Azure vm で IBM DB2 LUW の高可用性](./high-availability-guide-rhel-ibm-db2-luw.md) を変更し、RHEL 8.x 用の pacemaker クラスターコマンドを修正します。
 - 2021 年 2 月 3 日: stonith create コマンドの pcmk_host_map を更新するために、「[Azure での RHEL に対する Pacemaker の設定](./high-availability-guide-rhel-pacemaker.md)」を変更
 - 2021 年 2 月 3 日: stonith create コマンドの pcmk_host_map を追加するために、「[Azure での SLES に対する Pacemaker の設定](./high-availability-guide-suse-pacemaker.md)」を変更 

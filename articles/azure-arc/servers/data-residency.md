@@ -5,10 +5,10 @@ ms.topic: reference
 ms.date: 02/16/2021
 ms.custom: references_regions
 ms.openlocfilehash: d4764772473bbf2e5aafe2607a9462c9a6a15203
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100559510"
 ---
 # <a name="azure-arc-enabled-servers-data-residency"></a>Azure Arc 対応サーバー:データの保存場所

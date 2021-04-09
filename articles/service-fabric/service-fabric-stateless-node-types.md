@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 3767a16656ac4d11511c0928be8b2703c4e94c7c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: eb19005019a6e4e878f6b0bd6a145048d4a2804c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680605"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103563778"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>ステートレス専用ノード タイプを使用した Azure Service Fabric クラスターのデプロイ (プレビュー)
 Service Fabric ノード タイプには、ある時点でステートフル サービスがノードに配置されるという固有の前提があります。 ステートレス ノード タイプを使用することで、ノード タイプに対するこの仮定を緩和します。これにより、ノード タイプでスケールアウト操作の高速化、ブロンズ持続性での自動 OS アップグレードのサポート、および単一の仮想マシン スケール セット内の 100 以上のノードへのスケールアウトなどの他の機能を使用することができます。
@@ -75,6 +75,10 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
 * スケール セットの **upgradePolicy** の **モード** は、**Rolling** に設定する必要があります。
 * ローリング アップグレード モードを使用するには、アプリケーション正常性拡張機能または正常性プローブが構成されている必要があります。 次に示すように、ステートレス ノード タイプの既定の構成を使用して正常性プローブを構成します。 アプリケーションがノード タイプにデプロイされると、正常性プローブまたは正常性拡張機能のポートを変更して、アプリケーションの正常性を監視できます。
 
+>[!NOTE]
+> ステートレス ノード タイプが、複数のゾーンにまたがる仮想マシン スケール セットに基づいている場合は、プラットフォーム障害ドメイン数を 5 に更新する必要があります。 詳細は、こちらの[テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure)を参照してください。
+> 
+> **platformFaultDomainCount:5**
 ```json
 {
     "apiVersion": "2018-10-01",

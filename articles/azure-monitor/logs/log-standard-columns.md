@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2021
-ms.openlocfilehash: 3e12bef7569110084cd059b0dfde8562bd914823
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5b906bdbd07d59d2acc88f6b30f0db6b6cbc961a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030768"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103562248"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Azure Monitor ログ内の標準列
 Azure Monitor ログ内のデータは、[Log Analytics ワークスペースまたは Application Insights アプリケーションのどちらかに一連のレコードとして格納され](../logs/data-platform-logs.md)、各レコードが固有の列のセットを備えた特定のデータ型を持っています。 多くのデータ型には、複数の型にわたって共通の標準列があります。 この記事では、これらの列について説明し、それらの列をクエリで使用する方法の例を示します。
@@ -132,7 +132,7 @@ union withsource = tt *
 
 \_ResourceId 列を解析して抽出するのではなく、\_SubscriptionId 列を使用する方が効率的です。
 
-## <a name="_substriptionid"></a>\_SubstriptionId
+## <a name="_subscriptionid"></a>\_SubscriptionId
 **\_SubscriptionId** 列には、そのレコードが関連付けられているリソースのサブスクリプション ID が保持されます。 これにより、クエリのスコープを特定のサブスクリプションからのレコードのみに設定したり、異なるサブスクリプションを比較するために使用する標準列が提供されます。
 
 Azure リソースの場合、 **__SubscriptionId** の値は [Azure リソース ID の URL](../../azure-resource-manager/templates/template-functions-resource.md) のサブスクリプションの部分です。 この列は、[Azure Arc](../../azure-arc/overview.md) リソースを含む Azure リソース、またはインジェスト時にリソース ID が示されたカスタム ログに限定されます。

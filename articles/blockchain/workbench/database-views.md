@@ -5,15 +5,15 @@ ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri
 ms.openlocfilehash: e715bd2297c1e051ae92b15d73c945c9e80c3d94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87003323"
 ---
 # <a name="azure-blockchain-workbench-database-views"></a>Azure Blockchain Workbench のデータベース ビュー
 
-Azure Blockchain Workbench Preview は、分散型台帳から*オフチェーン* SQL DB データベースにデータを配信します。 オフチェーン データベースにより、SQL や既存のツール ([SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) など) を使用して、ブロックチェーン データと対話できるようになります。
+Azure Blockchain Workbench Preview は、分散型台帳から *オフチェーン* SQL DB データベースにデータを配信します。 オフチェーン データベースにより、SQL や既存のツール ([SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) など) を使用して、ブロックチェーン データと対話できるようになります。
 
 Azure Blockchain Workbench に備わった一連のデータベース ビューを使用すると、クエリの実行時に役立つデータにアクセスできます。 これらのビューは、迅速なレポートの作成や分析を簡単にするために頻繁に非正規化され、それ以外の場合は、既存のツールを使ってブロックチェーン データを使用し、データベースを再トレーニングする必要がありません。
 
@@ -25,7 +25,7 @@ Azure Blockchain Workbench に備わった一連のデータベース ビュー�
 
 ## <a name="vwapplication"></a>vwApplication
 
-このビューは、Azure Blockchain Workbench にアップロードされた**アプリケーション**の詳細を示します。
+このビューは、Azure Blockchain Workbench にアップロードされた **アプリケーション** の詳細を示します。
 
 | 名前                             | Type          | Null にできるか | 説明                                                                                                                                                                                                                                                   |
 |----------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

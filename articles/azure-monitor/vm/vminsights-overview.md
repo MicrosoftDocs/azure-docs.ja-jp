@@ -1,23 +1,22 @@
 ---
 title: VM insights とは
 description: Azure VM の正常性とパフォーマンスを監視し、アプリケーション コンポーネントとその依存関係を自動的に検出およびマッピングする VM insights の概要。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2020
-ms.openlocfilehash: 967ff9672f55af3e9c5d2e7c3c3dbc7d2ff6cb3c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 18e1fdcdee347a057c452f6170f36ec7f1f43244
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707372"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102046416"
 ---
 # <a name="overview-of-vm-insights"></a>VM insights の概要
 
 VM insights により、実行中のプロセスや他のリソースへの依存関係など、仮想マシンと仮想マシン スケール セットのパフォーマンスと正常性が監視されます。 それは、パフォーマンスのボトルネックとネットワークの問題を識別することによって、重要なアプリケーションのパフォーマンスと可用性を予測するのに役立ち、問題が他の依存関係に関連しているかどうかを把握することにも役立つ可能性があります。
 
-VM insights は、以下で実行される Windows および Linux オペレーティング システムをサポートしています。
+VM insights は、次のマシンで実行される Windows および Linux オペレーティング システムをサポートしています。
 
 - Azure の仮想マシン
 - Azure Virtual Machine Scale Sets

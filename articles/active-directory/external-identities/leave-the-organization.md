@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fc3ef7d168c17ec10fe64925adbda7044a2a4c82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87907448"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>ゲスト ユーザーとして組織を脱退する
@@ -31,13 +31,13 @@ ms.locfileid: "87907448"
 
 1. 次のいずれかの手順を実行して、[アクセス パネル プロファイル] ページに移動します。
    
-   - [Azure portal](https://portal.azure.com) で右上の自分の名前をクリックし、 **[View account]\(アカウントの表示\)** を選択します。
-   - [アクセス パネル](https://myapps.microsoft.com)を開き、右上の自分の名前をクリックし、 **[組織]** の横にある設定アイコン (歯車) を選択します。
+   - [Azure portal](https://portal.azure.com) で右上の自分の名前をクリックし、**[View account]\(アカウントの表示\)** を選択します。
+   - [アクセス パネル](https://myapps.microsoft.com)を開き、右上の自分の名前をクリックし、**[組織]** の横にある設定アイコン (歯車) を選択します。
  
    ![アクセス パネルのユーザー設定のスクリーンショット](media/leave-the-organization/UserSettings.png) 
 
    > [!NOTE]
-   > 脱退する組織にまだサインインしていない場合、 **[組織]** の下で、組織名の横にある **[サインインして組織から脱退する]** リンクをクリックします。 サインインしたら、右上の **[組織]** の横にある自分の名前をもう一度クリックし、設定アイコン (歯車) を選択します。
+   > 脱退する組織にまだサインインしていない場合、**[組織]** の下で、組織名の横にある **[サインインして組織から脱退する]** リンクをクリックします。 サインインしたら、右上の **[組織]** の横にある自分の名前をもう一度クリックし、設定アイコン (歯車) を選択します。
 
 3. **Organizations** のところで脱退する組織を確認し、**Leave organization** を選択します。
 

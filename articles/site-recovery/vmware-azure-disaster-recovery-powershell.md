@@ -8,10 +8,10 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86129902"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>PowerShell を使用して VMware VM の Azure へのディザスター リカバリーを設定する
@@ -172,7 +172,7 @@ Set-ASRVaultContext コマンドレットの代替として、Import-AzRecoveryS
    1     ConfigurationServer
    ```
 
-   上の出力で、***$ProcessServers[0]*** は *ScaleOut-ProcessServer* に対応し、***$ProcessServers[1]*** は *ConfigurationServer* 上のプロセス サーバーの役割に対応します
+   上の出力で、* **$ProcessServers[0]** _ は _ScaleOut-ProcessServer* に対応し、* **$ProcessServers[1]**_ は _ConfigurationServer* 上のプロセス サーバーの役割に対応します
 
 3. 構成サーバーで設定されているアカウントを識別します。
 
@@ -189,7 +189,7 @@ Set-ASRVaultContext コマンドレットの代替として、Import-AzRecoveryS
    3         LinuxAccount
    ```
 
-   上の出力で、***$AccountHandles[0]*** はアカウント *vCenter_account* に、***$AccountHandles[1]*** はアカウント *WindowsAccount* に、***$AccountHandles[2]*** はアカウント *LinuxAccount* にそれぞれ対応します
+   上の出力で、* **$AccountHandles[0]** _ はアカウント _vCenter_account* に、* **$AccountHandles[1]**_ はアカウント _WindowsAccount* に、* **$AccountHandles[2]**_ はアカウント _LinuxAccount* にそれぞれ対応します
 
 ## <a name="create-a-replication-policy"></a>レプリケーション ポリシーを作成する
 
@@ -342,7 +342,7 @@ $ReplicationStdStorageAccount= New-AzStorageAccount -ResourceGroupName "VMwareDR
 * レプリケートする保護可能項目。
 * 仮想マシンをレプリケートするストレージ アカウント (ストレージ アカウントにレプリケートする場合のみ)。 
 * Premium ストレージ アカウントまたはマネージド ディスクに仮想マシンを保護するには、ログ ストレージが必要です。
-* レプリケーションに使われるプロセス サーバー。 利用可能なプロセス サーバーの一覧が取得されて、***$ProcessServers[0]*** *(ScaleOut-ProcessServer)* 変数および ***$ProcessServers[1]*** *(ConfigurationServer)* 変数に格納されています。
+* レプリケーションに使われるプロセス サーバー。 利用可能なプロセス サーバーの一覧が取得されて、* **$ProcessServers[0]** _  _(ScaleOut-ProcessServer)* 変数および * **$ProcessServers[1]**_ _(ConfigurationServer)* 変数に格納されています。
 * マシンにモビリティ サービス ソフトウェアをプッシュ インストールするために使うアカウント。 利用可能なアカウントの一覧が取得されて、***$AccountHandles*** 変数に格納されています。
 * レプリケーションに使われるレプリケーション ポリシーの保護コンテナー マッピング。
 * フェールオーバー時に仮想マシンを作成する必要があるリソース グループ。

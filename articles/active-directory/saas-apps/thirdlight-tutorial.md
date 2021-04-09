@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と ThirdLight の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と ThirdLight の統合 | Microsoft Docs'
 description: このチュートリアルでは、Azure Active Directory と ThirdLight の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: f15d00f1050177c6255fb5528f03314153c3ed9a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92514664"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>チュートリアル:Azure Active Directory と ThirdLight の統合
+# <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>チュートリアル: Azure Active Directory と ThirdLight の統合
 
 このチュートリアルでは、ThirdLight と Azure Active Directory (Azure AD) を統合する方法について説明します。 この統合には、次の利点があります。
 
@@ -59,7 +59,7 @@ Azure AD への ThirdLight の統合を設定するには、ギャラリーか�
 
     ![[新しいアプリケーション] を選択する](common/add-new-app.png)
 
-4. 検索ボックスに「 **ThirdLight** 」と入力します。 検索結果で **[ThirdLight]** を選択し、 **[追加]** を選択します。
+4. 検索ボックスに「**ThirdLight**」と入力します。 検索結果で **[ThirdLight]** を選択し、**[追加]** を選択します。
 
      ![[検索結果]](common/search-new-app.png)
 
@@ -91,7 +91,7 @@ ThirdLight に対する Azure AD シングル サインオンを構成するに�
 
     ![シングル サインオン方式の選択](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **編集** アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**編集** アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
 
     ![[編集] アイコン](common/edit-urls.png)
 
@@ -138,7 +138,7 @@ ThirdLight に対する Azure AD シングル サインオンを構成するに�
 
     1. **[Enable SAML2 Single Sign-On]** を選択します。
 
-    1. **[Source for IdP Metadata]\(IdP メタデータのソース\)** で、 **[Load IdP Metadata from XML]\(XML から IdP メタデータをダウンロードする\)** を選択します。
+    1. **[Source for IdP Metadata]\(IdP メタデータのソース\)** で、**[Load IdP Metadata from XML]\(XML から IdP メタデータをダウンロードする\)** を選択します。
 
     1. 前のセクションで Azure portal からダウンロードしたメタデータ ファイルを開きます。 **[IdP Metadata XML]\(IdP メタデータ XML\)** ボックスにファイルの内容をコピーして貼り付けます。
 
@@ -160,9 +160,9 @@ ThirdLight に対する Azure AD シングル サインオンを構成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    1. **[名前]** ボックスに「 **BrittaSimon** 」と入力します。
+    1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    1. **[ユーザー名]** ボックスに「 **BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します (例: BrittaSimon@contoso.com)。
+    1. **[ユーザー名]** ボックスに「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します (例: BrittaSimon@contoso.com)。
 
     1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
 
@@ -172,11 +172,11 @@ ThirdLight に対する Azure AD シングル サインオンを構成するに�
 
 このセクションでは、Britta Simon に ThirdLight へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[ThirdLight]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[ThirdLight]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、 **[ThirdLight]** を選択します。
+2. アプリケーションの一覧で、**[ThirdLight]** を選択します。
 
     ![アプリケーションの一覧](common/all-applications.png)
 

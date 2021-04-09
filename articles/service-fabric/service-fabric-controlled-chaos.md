@@ -4,12 +4,12 @@ description: フォールト挿入とクラスター分析サービス API を�
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ff3c88b7f86294badb76ec1e8dde0c34b942509
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 72b8f7e9e4934b516f843ae8bc9bb7adc1c349ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588992"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720512"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Service Fabric クラスターでの制御された混乱の誘発
 クラウド インフラストラクチャのような大規模な分散システムは、本質的に信頼性の低いものです。 Azure Service Fabric を使用すると、開発者が、信頼性の低いインフラストラクチャ上で信頼できる分散サービスのコードを記述できます。 信頼性の低いインフラストラクチャ上に強固な分散サービスを作成するために、開発者は、基になる信頼性の低いインフラストラクチャで障害のために複雑な状態遷移が発生している状態で、サービスの安定性をテストできる必要があります。
@@ -40,7 +40,7 @@ ms.locfileid: "100588992"
 
 混乱は複数回にわたり反復して実行されます。 それぞれの反復が、一定の期間にわたる障害とクラスター検証で構成されています。 クラスターが安定し、検証が成功するまでの時間を設定できます。 クラスター検証で 1 つの障害が見つかると、混乱により、ValidationFailedEvent が UTC タイムスタンプと障害の詳細と共に生成され、保持されます。 たとえば、1 時間実行して、最大 3 つの障害が同時に発生するように設定された混乱のインスタンスを考えてみます。 混乱では 3 つの障害が誘発されてから、クラスターの正常性が検証されます。 混乱は StopChaosAsync API によって明示的に停止されるまで、または 1 時間が経過するまで、前述の手順で反復処理されます。 反復処理中にクラスターの状態が異常になる (安定しなくなるか、渡された MaxClusterStabilizationTimeout 時間内に正常な状態にならなくなる) と、混乱は ValidationFailedEvent を生成します。 このイベントは、問題が発生しており詳細な調査が必要であることを示します。
 
-混乱が誘発させた障害を取得するには、GetChaosReport API (Powershell、C#、または REST) を使用できます。 この API は、渡された継続トークン、または渡された時間範囲に基づく混乱レポートの次のセグメントを取得します。 混乱レポートの次のセグメントを取得するように ContinuationToken を指定するか、StartTimeUtc と EndTimeUtc を使用して時間範囲を指定することができますが、同じ呼び出しで、ContinuationToken と時間範囲の両方を指定することはできません。 100 を超える混乱イベントが存在する場合、混乱レポートがセグメントで返され、セグメントに 100 を超える混乱イベントが含まれています。
+混乱が誘発させた障害を取得するには、GetChaosReport API (PowerShell、C#、または REST) を使用できます。 この API は、渡された継続トークン、または渡された時間範囲に基づく混乱レポートの次のセグメントを取得します。 混乱レポートの次のセグメントを取得するように ContinuationToken を指定するか、StartTimeUtc と EndTimeUtc を使用して時間範囲を指定することができますが、同じ呼び出しで、ContinuationToken と時間範囲の両方を指定することはできません。 100 を超える混乱イベントが存在する場合、混乱レポートがセグメントで返され、セグメントに 100 を超える混乱イベントが含まれています。
 
 ## <a name="important-configuration-options"></a>重要な構成オプション
 * **TimeToRun**:混乱が正常に完了するまでの実行時間の合計。 実行中の混乱は、TimeToRun で指定された期間が経過する前に、StopChaos API で停止できます。

@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 01/02/2020
 ms.openlocfilehash: 8bf50c1ea81cdf5246c47646d1a55926fe7d58d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91776699"
 ---
 # <a name="urls-supported-for-importing-documents"></a>ドキュメントのインポートでサポートされている URL

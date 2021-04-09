@@ -1,18 +1,14 @@
 ---
 title: 脅威インテリジェンス データを更新する
 description: 脅威インテリジェンス データ パッケージは、新しい Defender for IoT バージョンごとに、またはリリース間で必要に応じて提供されます。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/14/2020
-ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: a210771d99d28a0e9c15d7952d491a5e5f94e704
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 386d59d33c4f9695b8fc5243dab345321cff4a5f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521409"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784052"
 ---
 # <a name="threat-intelligence-research-and-packages"></a>脅威インテリジェンスの調査とパッケージ
 
@@ -73,6 +69,6 @@ Defender for IoT ポータルからダウンロードしたパッケージは、
 
 7. パッケージをアップロードします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
 [バージョンの更新](how-to-manage-sensors-from-the-on-premises-management-console.md#update-versions)

@@ -3,12 +3,12 @@ title: Azure Site Recovery の最新情報
 description: Azure Site Recovery サービスの新機能と最新の更新プログラムの概要について説明します。
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 51d54ca4d46af3b9e0746f36114fadc47edd5b1f
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 423fbc563878d0cc2a63a5366d2226281a204e87
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805047"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102454600"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
@@ -22,6 +22,7 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 
 **アップデート** |  **統合セットアップ** | **構成サーバー ova** | **モビリティ サービス エージェント** | **Site Recovery プロバイダー** | **Recovery Services エージェント**
 --- | --- | --- | --- | --- | ---
+[ロールアップ 54](https://support.microsoft.com/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)  | 9.41.5888.1 | 5.1.6620.0 | 9.41.5888.1 | 5.1.6620.0  | 2.0.9202.0
 [ロールアップ 53](https://support.microsoft.com/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 9.40.5850.1 | 5.1.6537.0 | 9.40.5850.1 | 5.1.6537.0  | 2.0.9202.0
 [ロールアップ 52](https://support.microsoft.com/help/4597409/)  | 9.39.5796.1 | 5.1.6458.0 | 9.39.5796.1 | 5.1.6458.0  | 2.0.9196.0
 [ロールアップ 51](https://support.microsoft.com/help/4590304)  | 9.38.5761.1 | 5.1.6400.0 | 9.38.5761.1 | 5.1.6400.0  | 2.0.9193.0
@@ -30,6 +31,21 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 
 
 更新プログラムのインストールとサポートの詳細については、[こちら](service-updates-how-to.md)を参照してください。
+
+## <a name="updates-february-2021"></a>更新プログラム (2021 年 2 月)
+
+### <a name="update-rollup-54"></a>更新プログラム ロールアップ 54
+
+[更新プログラム ロールアップ 54](https://support.microsoft.com/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533) では、以下の更新が提供されます。
+
+**アップデート** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
+**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照) 
+**Azure VM のディザスター リカバリー** | Azure Site Recovery を使用したゾーンからゾーンへのディザスター リカバリーは、北ヨーロッパ、米国東部、米国中部、米国西部 2 の 4 つのリージョンで一般提供が開始されました。<br/>
+**VMware VM/物理の Azure へのディザスター リカバリー** | この更新プログラムには、レプリケーションを有効にした後、VMware/物理マシンの近接配置グループを選択するためのポータルのサポートが含まれています。<br/><br/> データ ディスクのサイズが 32 TB までの VMware マシンの保護がサポートされるようになりました。
+**Azure への Hyper-V のディザスター リカバリー** | この更新プログラムには、レプリケーションを有効にした後、Hyper-V マシンの近接配置グループを選択するためのポータルのサポートが含まれています。
+
 
 ## <a name="updates-january-2021"></a>更新プログラム (2021 年 1 月)
 

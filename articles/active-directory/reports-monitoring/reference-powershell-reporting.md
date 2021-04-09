@@ -18,17 +18,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9ff923d0231a1b00493a54996c2fcd489012bbe7
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 329036f3ed815eaaba94f441e372f4be86edd629
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862039"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102558085"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>レポート用の Azure AD PowerShell コマンドレット
 
 > [!NOTE] 
-> 現時点では、これらの PowerShell コマンドレットは [Azure AD プレビュー](/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing) モジュールでのみ使用できます。 プレビュー モジュールは運用環境では推奨されないことに注意してください。 
+> 現時点では、これらの PowerShell コマンドレットは [Azure AD プレビュー](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#directory_auditing) モジュールでのみ使用できます。 プレビュー モジュールは運用環境では推奨されないことに注意してください。 
 
 パブリック プレビュー リリースをインストールするには、以下を使用します。 
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.custom: references_regions
 ms.openlocfilehash: 3bba1155ec57db67968aec95d1d3386fc6cda006
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100634449"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes"></a>Azure Kubernetes Service (AKS) クラスターを作成し、仮想ノードを使用できるように構成する

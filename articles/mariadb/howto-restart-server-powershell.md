@@ -3,15 +3,15 @@ title: サーバーを再起動する - Azure PowerShell - Azure Database for Ma
 description: この記事では、PowerShell を使用して Azure Database for MariaDB サーバーを再起動する方法について説明します。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 5/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0311111285d7dc0d60bc63ce9cef2be3f0ddfb19
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 14cde5b1302c46b819bb7d841fb5b84a43c580c0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98664870"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-powershell"></a>PowerShell を使用して Azure Database for MariaDB サーバーを再起動する

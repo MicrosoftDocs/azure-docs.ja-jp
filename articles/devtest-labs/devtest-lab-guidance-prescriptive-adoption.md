@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 81767c36b2a5b46eb41be1e516a14fb3ebe3fb7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85476990"
 ---
 # <a name="devtest-labs-in-the-enterprise"></a>企業内での DevTest Labs
@@ -29,7 +29,7 @@ ms.locfileid: "85476990"
 
 ## <a name="enterprise-customers"></a>企業顧客
 
-DevTest Labs の現行の企業顧客の多くは、自社の組織での開発およびワークロードのテストに DevTest Labs をうまく使用しています。 詳細については、[こちら](https://azure.microsoft.com/case-studies/?term=DevTest+labs)をご覧ください。
+DevTest Labs の現行の企業顧客の多くは、自社の組織での開発およびワークロードのテストに DevTest Labs をうまく使用しています。 [詳細については、こちらを参照してください](https://azure.microsoft.com/case-studies/?term=DevTest+labs)。
 
 ## <a name="next-steps"></a>次のステップ
 - [エンタープライズ向け参照アーキテクチャ](devtest-lab-reference-architecture.md)

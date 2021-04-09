@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 11/20/2020
 ms.author: victorh
 ms.openlocfilehash: 59ca0b85ba2aff29bdb2ad3379c1054041d2b4cb
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96518738"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web アプリケーション ファイアウォール (WAF) ポリシーの概要

@@ -7,12 +7,12 @@ ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: b9685081c0beacd745a83067b9d9876384933377
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9be90cdac742a581c6346f923f44e769c8a70f76
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131243"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102613631"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 Finance and Operations の機能検証
 
@@ -29,7 +29,7 @@ ms.locfileid: "93131243"
 機能検証には、次の 2 つのオプションがあります。
 
 - 太平洋標準時 (PST) の営業時間中に 30 分間の電話会議を開催して、[LCS](https://lcs.dynamics.com/) 環境とソリューションのデモンストレーションと記録を行います。
-- パートナー センターで、 [[コマーシャル マーケットプレース]](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) >  **[概要]** にアクセスし、プランの [Supplemental Content]\(補足コンテンツ\) タブでデモ ビデオ (URL から) と LCS のスクリーンショットをアップロードします。
+- パートナー センターで、[[コマーシャル マーケットプレース]](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) >  **[概要]** にアクセスし、プランの [Supplemental Content]\(補足コンテンツ\) タブでデモ ビデオ (URL から) と LCS のスクリーンショットをアップロードします。
 
 Microsoft 認定チームはビデオとファイルをレビューしてから、ソリューションを承認するか、次の手順について電子メールで通知します。
 
@@ -56,7 +56,7 @@ Microsoft 認定チームはビデオとファイルをレビューしてから�
 
       2. **[LCS]**  >  **[ソリューション管理]**  >  **[ソリューション パッケージのテスト]** に移動します。 次の例に示すように、パッケージの概要と内容を含むスクリーンショットを取得します。
 
-    | フィールド | Image <img src="" width="400px">|
+    | フィールド | Image |
     | --- | --- |
     | パッケージの概要 | [![[パッケージの概要] ウィンドウを示すスクリーンショット。](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
     | <ul><li>ソリューションの承認者</li></ul> | [![[パッケージの概要] 画面](media/dynamics-365-finance-operations/solution-approvers-45.png)](media/dynamics-365-finance-operations/solution-approvers.png#lightbox) |

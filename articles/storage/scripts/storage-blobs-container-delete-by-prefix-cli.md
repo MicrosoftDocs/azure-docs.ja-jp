@@ -11,10 +11,10 @@ ms.date: 06/22/2017
 ms.author: tamram
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: aeccf255004cd4512fbc591942324341504b20f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87901880"
 ---
 # <a name="use-an-azure-cli-script-to-delete-containers-based-on-container-name-prefix"></a>Azure CLI スクリプトを使用して、コンテナー名のプレフィックスに基づいてコンテナーを削除する

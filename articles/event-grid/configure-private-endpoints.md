@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: f8a9ac46596b1c2611ce9df387ac995e8149e7b9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102425347"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid のトピックまたはドメインに対してプライベート エンドポイントを構成する

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: victorh
 ms.openlocfilehash: 3c61dc689d19e1a7d6f9b6dbefae846e9458d750
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93146860"
 ---
 # <a name="secure-virtual-hubs-using-check-point-cloudguard-connect"></a>Check Point Cloudguard Connect を使用して仮想ハブをセキュリティで保護する
@@ -20,7 +20,7 @@ Check Point CloudGuard Connect は Azure Firewall Manager の信頼されたセ�
 
 Azure Firewall Manager での簡単な構成により、ブランチ ハブおよび仮想ネットワークの接続を、CloudGuard Connect のサービスとしてのセキュリティ (SECaaS) を通してインターネットにルーティングできます。 ハブから Check Point クラウド サービスに IPsec VPN トンネル内を転送中のトラフィックが保護されます。
 
-Check Point ポータルで自動同期を有効にすると、Azure portal で " *保護付き* " とマークされたリソースは自動的にセキュリティで保護されます。 アセットを 2 回管理する必要はありません。 セキュリティで保護することを Azure portal で 1 回選択するだけです。
+Check Point ポータルで自動同期を有効にすると、Azure portal で "*保護付き*" とマークされたリソースは自動的にセキュリティで保護されます。 アセットを 2 回管理する必要はありません。 セキュリティで保護することを Azure portal で 1 回選択するだけです。
 
 Check Point により、複数のセキュリティ サービスが 1 つにまとめられます。 統合されたセキュリティ トラフィックは、1 回だけ解読されて、1 つのパスで検査されます。 アプリケーション制御、URL フィルター、コンテンツ認識 (DLP) により、安全な Web の使用が強制され、データが保護されます。 IPS とウイルス対策により、ユーザーは既知のネットワーク攻撃から保護されます。 ボット対策により、コマンド アンド コントロール サーバーへの接続はブロックされ、ホストが感染した場合はユーザーに警告されます。
 

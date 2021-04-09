@@ -10,10 +10,10 @@ ms.date: 09/09/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 2db281f1b3278e37deca8486971a7f7a83f85ccf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86503083"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Visual Studio による仮想マシン スケール セットの作成方法
@@ -38,9 +38,9 @@ Visual Studio で Virtual Machine Scale Sets をデプロイするには、次�
 
 1. Visual Studio を開き、 **[新しいプロジェクトの作成]** を選択します。
 
-1. **[新しいプロジェクトの作成]** で、C# の **[Azure リソース グループ]** を選択し、 **[次へ]** を選択します。
+1. **[新しいプロジェクトの作成]** で、C# の **[Azure リソース グループ]** を選択し、**[次へ]** を選択します。
 
-1. **[新しいプロジェクトの構成]** で、名前を入力し、 **[作成]** を選択します。
+1. **[新しいプロジェクトの構成]** で、名前を入力し、**[作成]** を選択します。
 
     ![プロジェクトの名前を指定して作成する](media/virtual-machine-scale-sets-vs-create/configure-azure-resource-group.png)
 
@@ -48,7 +48,7 @@ Visual Studio で Virtual Machine Scale Sets をデプロイするには、次�
 
    ![仮想マシン テンプレートを作成する](media/virtual-machine-scale-sets-vs-create/select-vm-template.png)
 
-プロジェクトを作成した後、**ソリューション エクスプローラー**には、PowerShell デプロイ スクリプト、Azure Resource Manager テンプレート、仮想マシン スケール セットのパラメーター ファイルが含まれるようになります。
+プロジェクトを作成した後、**ソリューション エクスプローラー** には、PowerShell デプロイ スクリプト、Azure Resource Manager テンプレート、仮想マシン スケール セットのパラメーター ファイルが含まれるようになります。
 
 ## <a name="customize-your-project"></a>プロジェクトのカスタマイズ
 
@@ -56,7 +56,7 @@ Visual Studio で Virtual Machine Scale Sets をデプロイするには、次�
 
 ロード バランサーにより、SSH (Linux) または RDP (Windows) で仮想マシン インスタンスに接続できます。 フロントエンド ポートの範囲は 50000 からです。 Linux の場合、ポート 50000 に SSH 接続すると、負荷分散により、スケール セット内の最初の仮想マシンのポート 22 にルーティングされます。 ポート 50001 に接続すると、2 つ目の仮想マシンのポート 22 にルーティングされます。以降も同様です。
 
- Visual Studio でテンプレートを編集するときは、**JSON アウトライン**を使用することをお勧めします。 パラメーター、変数、リソースを整理ことができます。 スキーマを認識させることによって、デプロイするテンプレートのエラーを事前に Visual Studio で検出することができます。
+ Visual Studio でテンプレートを編集するときは、**JSON アウトライン** を使用することをお勧めします。 パラメーター、変数、リソースを整理ことができます。 スキーマを認識させることによって、デプロイするテンプレートのエラーを事前に Visual Studio で検出することができます。
 
 ![JSON Explorer](media/virtual-machine-scale-sets-vs-create/json-explorer.png)
 
@@ -64,27 +64,27 @@ Visual Studio で Virtual Machine Scale Sets をデプロイするには、次�
 
 Azure Resource Manager テンプレートをデプロイして、仮想マシン スケール セット リソースを作成します。
 
-1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[配置]**  >  **[新規]** を選択します。
+1. **ソリューション エクスプローラー** でプロジェクトを右クリックし、**[配置]** > **[新規]** を選択します。
 
     ![プロジェクトのデプロイ](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
 
 1. **[リソース グループに配置する]** で、使用するサブスクリプションを選択し、リソース グループを選択します。 必要な場合は、リソース グループを作成できます。
 
-1. 次に、 **[パラメーターの編集]** を選択して、テンプレートに渡すパラメーターを入力します。
+1. 次に、**[パラメーターの編集]** を選択して、テンプレートに渡すパラメーターを入力します。
 
    ![サブスクリプションとリソース グループを入力する](media/virtual-machine-scale-sets-vs-create/deploy-to-resource-group.png)
 
-1. オペレーティング システムのユーザー名とパスワードを指定します。 デプロイを作成するにはこれらの値が必要です。 PowerShell Tools for Visual Studio がインストールされていない場合は、**パスワードの保存**を指定するチェック ボックスをオンにして PowerShell コマンド プロンプトが非表示にならないようにするか、または [KeyVault のサポート](https://azure.microsoft.com/blog/keyvault-support-for-arm-templates/)を使用します。 **[保存]** を選択して続行します。
+1. オペレーティング システムのユーザー名とパスワードを指定します。 デプロイを作成するにはこれらの値が必要です。 PowerShell Tools for Visual Studio がインストールされていない場合は、**パスワードの保存** を指定するチェック ボックスをオンにして PowerShell コマンド プロンプトが非表示にならないようにするか、または [KeyVault のサポート](https://azure.microsoft.com/blog/keyvault-support-for-arm-templates/)を使用します。 **[保存]** を選択して続行します。
 
     ![デプロイのパラメーターを編集する](media/virtual-machine-scale-sets-vs-create/edit-deployment-parameters.png)
 
-1. **[リソース グループに配置する]** で、 **[配置]** を選択します。 これにより、**Deploy-AzureResourceGroup.ps1** スクリプトが実行されます。 **[出力]** ウィンドウにデプロイの進行状況が表示されます。
+1. **[リソース グループに配置する]** で、**[配置]** を選択します。 これにより、**Deploy-AzureResourceGroup.ps1** スクリプトが実行されます。 **[出力]** ウィンドウにデプロイの進行状況が表示されます。
 
    ![出力で結果が表示される](media/virtual-machine-scale-sets-vs-create/deployment-output.png)
 
 ## <a name="explore-your-virtual-machine-scale-set"></a>仮想マシン スケール セットを確認する<a name="exploring-your-virtual-machine-scale-set"></a>
 
-**[表示]**  >  **[Cloud Explorer]** を選択して、新しい仮想マシン スケール セットを表示します。 必要に応じて、 **[すべてを最新の情報に更新]** を使用します。
+**[表示]**  >  **[Cloud Explorer]** を選択して、新しい仮想マシン スケール セットを表示します。 必要に応じて、**[すべてを最新の情報に更新]** を使用します。
 
 ![Cloud Explorer](media/virtual-machine-scale-sets-vs-create/cloud-explorer.png)
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 5bbc770fa6ae5ac69b2aa939f9d2c70bb01f5403
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ef7e0450725b456a7fb2b1ab61c50d7edece52ce
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945299"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867561"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>SSH トンネリングを使用して Apache Ambari Web UI、JobHistory、NameNode、Apache Oozie、およびその他の UI にアクセスする
 
@@ -92,7 +92,7 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 1. **[保存]** を選びます。
 
-    ![HDInsight での putty セッションの作成](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
+    :::image type="content" source="./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png" alt-text="HDInsight での putty セッションの作成":::
 
 1. ダイアログの左にある **[カテゴリ]** セクションで、 **[接続]** 、 **[SSH]** の順に展開し、 **[トンネル]** を選択します。
 
@@ -104,7 +104,7 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     |宛先|HDInsight クラスターの SSH アドレス。 (**mycluster-ssh.azurehdinsight.net** など)。|
     |動的|動的な SOCKS プロキシ ルーティングを有効にします。|
 
-    ![PuTTY の構成トンネリング オプション](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
+    :::image type="content" source="./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png" alt-text="PuTTY の構成トンネリング オプション":::
 
 1. **[Add]\(追加\)** を選択して設定を追加し、 **[Open]\(開く\)** を選択して SSH 接続を開きます。
 
@@ -117,7 +117,7 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 1. ブラウザーを、**localhost** とトンネルの作成時に使用したポートを **SOCKS v5** プロキシとして使用するように構成します。 Firefox の設定は次のようになります。 9876 以外のポートを使用する場合は、そのポート番号に変更します。
 
-    ![firefox ブラウザーのプロキシ設定](./media/hdinsight-linux-ambari-ssh-tunnel/firefox-proxy-settings.png)
+    :::image type="content" source="./media/hdinsight-linux-ambari-ssh-tunnel/firefox-proxy-settings.png" alt-text="firefox ブラウザーのプロキシ設定":::
 
    > [!NOTE]  
    > **リモート DNS** を選択すると、ドメイン ネーム システム (DNS) 要求は HDInsight クラスターを使用して解決されます。 この設定は、クラスターのヘッド ノードを使って DNS を解決します。
@@ -135,11 +135,11 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 2. Ambari Web UI でページの左側にある一覧から [HDFS] を選択します。
 
-    ![選択されている Apache Ambari hdfs サービス](./media/hdinsight-linux-ambari-ssh-tunnel/hdfs-service-selected.png)
+    :::image type="content" source="./media/hdinsight-linux-ambari-ssh-tunnel/hdfs-service-selected.png" alt-text="選択されている Apache Ambari hdfs サービス":::
 
 3. HDFS サービスの情報が表示されたら、 **[Quick Links]** を選択します。 クラスターのヘッド ノードの一覧が表示されます。 ヘッド ノードのいずれかを選択し、 **[NameNode UI]** を選択します。
 
-    ![QuickLinks メニューが展開された画像](./media/hdinsight-linux-ambari-ssh-tunnel/namenode-drop-down-menu.png)
+    :::image type="content" source="./media/hdinsight-linux-ambari-ssh-tunnel/namenode-drop-down-menu.png" alt-text="QuickLinks メニューが展開された画像":::
 
     > [!NOTE]  
     > __[Quick Links]\(クイック リンク\)__ を選択すると、待機インジケーターが表示されることがあります。 この状態は、低速のインターネット接続を使っている場合に発生する可能性があります。 サーバーからデータが取得されるまで 1 ～ 2 分待ってから、改めて一覧を表示してみてください。
@@ -148,7 +148,7 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 4. 次の図ようなページが表示されます。
 
-    ![Hadoop NameNode UI の画像](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png)
+    :::image type="content" source="./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png" alt-text="Hadoop NameNode UI の画像":::
 
     > [!NOTE]  
     > このページの URL に注意してください。`http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster` に類似しています。 この URI は、ノードの内部の完全修飾ドメイン名 (FQDN) を使っているので、SSH トンネルを使うことによってのみアクセスできます。

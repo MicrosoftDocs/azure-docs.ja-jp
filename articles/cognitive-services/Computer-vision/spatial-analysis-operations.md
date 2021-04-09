@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
 ms.openlocfilehash: af220106c415165a0dbe7cda64a31a6068f53164
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99981784"
 ---
 # <a name="spatial-analysis-operations"></a>空間分析操作
@@ -87,7 +87,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 }
 ```
 
-| Name | 型| 説明|
+| Name | Type| 説明|
 |---------|---------|---------|
 | `gpu_index` | string| この操作が実行される GPU インデックス。|
 | `do_calibration` | string | 調整がオンになっていることを示します。 **cognitiveservices.vision.spatialanalysis-persondistance** が正しく機能するには、`do_calibration` が true である必要があります。 do_calibration は、既定では True に設定されています。 |
@@ -122,7 +122,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 }
 ```
 
-| 名前 | 型| 説明|
+| 名前 | Type| 説明|
 |---------|---------|---------|
 | `zones` | list| ゾーンのリスト。 |
 | `name` | string| このゾーンのフレンドリ名。|

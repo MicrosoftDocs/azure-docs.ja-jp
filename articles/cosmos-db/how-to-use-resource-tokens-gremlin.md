@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/06/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 22c048b748806404ccfa580e660552a1744f3781
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93361695"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Gremlin SDK で Azure Cosmos DB リソース トークンを使用する
@@ -22,7 +22,7 @@ ms.locfileid: "93361695"
 
 ## <a name="create-a-resource-token"></a>リソース グループを作成する
 
-Apache TinkerPop Gremlin SDK には、リソース トークンを作成するための API がありません。 " *リソース トークン* " という用語は、Azure Cosmos DB の概念です。 リソース トークンを作成するには、[Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) をダウンロードします。 ご利用のアプリケーションでリソース トークンを作成し、それらを使用して Graph データベースにアクセスする必要がある場合は、個別の SDK が 2 つ必要です。
+Apache TinkerPop Gremlin SDK には、リソース トークンを作成するための API がありません。 "*リソース トークン*" という用語は、Azure Cosmos DB の概念です。 リソース トークンを作成するには、[Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) をダウンロードします。 ご利用のアプリケーションでリソース トークンを作成し、それらを使用して Graph データベースにアクセスする必要がある場合は、個別の SDK が 2 つ必要です。
 
 リソース トークンの上位にあるオブジェクト モデル階層を次のアウトラインで示します。
 

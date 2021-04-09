@@ -3,7 +3,7 @@ title: REST でコンテンツ キーを作成する | Microsoft Docs
 description: この記事では、アセットに安全にアクセスできるコンテンツ キーを作成する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 95e9322b-168e-4a9d-8d5d-d7c946103745
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 5038a6d70f3293dfa1556d72b2f85aa930794949
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: a9960ece05b7cab4ddd26fdac7516f4adbccf5b0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256975"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103017258"
 ---
 # <a name="create-content-keys-with-rest"></a>REST でコンテンツ キーを作成する
 
@@ -31,13 +31,13 @@ ms.locfileid: "89256975"
 > 
 > 
 
-Media Services では、暗号化されたアセットを送信できます。 **ContentKey** により、**アセット**に安全にアクセスすることができます。 
+Media Services では、暗号化されたアセットを送信できます。 **ContentKey** により、**アセット** に安全にアクセスすることができます。 
 
 新しいアセットを作成するときは ([ファイルをアップロード](media-services-rest-upload-files.md)する前など)、次の暗号化オプションを指定できます:**StorageEncrypted**、**CommonEncryptionProtected**、または **EnvelopeEncryptionProtected**。 
 
-クライアントにアセットを配信するときは、次の 2 つの暗号化のどちらかを使用して[アセットが動的に暗号化されるように構成できます](media-services-rest-configure-asset-delivery-policy.md):**DynamicEnvelopeEncryption** または **DynamicCommonEncryption**。
+クライアントにアセットを配信するときは、次の 2 つの暗号化のどちらかを使用して [アセットが動的に暗号化されるように構成できます](media-services-rest-configure-asset-delivery-policy.md):**DynamicEnvelopeEncryption** または **DynamicCommonEncryption**。
 
-暗号化されたアセットには、 **ContentKey**を関連付ける必要があります。 この記事では、コンテンツ キーの作成方法について説明します。
+暗号化されたアセットには、 **ContentKey** を関連付ける必要があります。 この記事では、コンテンツ キーの作成方法について説明します。
 
 暗号化する資産に関連付けるコンテンツ キーを生成する一般的な手順を次に示します。 
 

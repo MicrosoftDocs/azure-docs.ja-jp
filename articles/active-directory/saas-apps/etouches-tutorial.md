@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Aventri の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Aventri の統合 | Microsoft Docs'
 description: Azure Active Directory と Aventri の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 03/10/2020
 ms.author: jeedes
 ms.openlocfilehash: 28dff02bea6f27b0da96c9a852ec5a62fe643151
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453911"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aventri"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Aventri の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aventri"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Aventri の統合
 
 このチュートリアルでは、Aventri と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Aventri を統合すると、次のことができます。
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Aventri では、 **SP** Initiated SSO がサポートされます
+* Aventri では、**SP** Initiated SSO がサポートされます
 * Aventri を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 
@@ -51,7 +51,7 @@ Azure AD への Aventri の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Aventri** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Aventri**」と入力します。
 1. 結果のパネルから **[Aventri]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 

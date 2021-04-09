@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: a7283ad4c4c61ecc293a55ffc4cb9626bb28d630
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92108730"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Azure Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する
@@ -22,7 +22,7 @@ ms.locfileid: "92108730"
 >
 >
 
-Azure PowerShell を使用して、Azure Data Lake Storage Gen1 を**追加のストレージとして**使用する HDInsight クラスターを構成する方法について説明します。
+Azure PowerShell を使用して、Azure Data Lake Storage Gen1 を **追加のストレージとして** 使用する HDInsight クラスターを構成する方法について説明します。
 
 サポートされている種類のクラスターでは、Data Lake Storage Gen1 を既定のストレージまたは追加のストレージ アカウントとして使用できます。 Data Lake Storage Gen1 を追加のストレージとして使用した場合、クラスター用の既定のストレージ アカウントは Azure Blob Storage (WASB) のままであり、クラスター関連のファイル (ログなど) は引き続きその既定のストレージに書き込まれますが、一方で処理対象のデータは Data Lake Storage Gen1 アカウントに格納することができます。 Data Lake Storage Gen1 を追加のストレージ アカウントとして使用しても、クラスターからストレージに対する読み取り/書き込みのパフォーマンスや機能は何も変化しません。
 
@@ -46,7 +46,7 @@ HDInsight で Data Lake Storage Gen1 を使用するための重要な考慮事�
 * **Azure PowerShell 1.0 以上**。 「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/)」を参照してください。
 * **Azure Active Directory Service のプリンシパル**。 このチュートリアルの手順では、Azure AD でサービス プリンシパルを作成する方法を説明します。 ただし、サービス プリンシパルを作成するには、Azure AD 管理者である必要があります。 Azure AD 管理者である場合は、この前提条件をスキップしてチュートリアルを進めることができます。
 
-    **Azure AD 管理者でない場合**は、サービス プリンシパルの作成に必要な手順を実行することはできません。 その場合は、Data Lake Storage Gen1 で HDInsight クラスターを作成する前に、まず Azure AD 管理者がサービス プリンシパルを作成する必要があります。 また、「[Create a service principal with certificate](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)」 (証明書でサービス プリンシパルを作成する) で説明しているように、サービス プリンシパルは証明書を使って作成する必要があります。
+    **Azure AD 管理者でない場合** は、サービス プリンシパルの作成に必要な手順を実行することはできません。 その場合は、Data Lake Storage Gen1 で HDInsight クラスターを作成する前に、まず Azure AD 管理者がサービス プリンシパルを作成する必要があります。 また、「[Create a service principal with certificate](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)」 (証明書でサービス プリンシパルを作成する) で説明しているように、サービス プリンシパルは証明書を使って作成する必要があります。
 
 ## <a name="create-an-hdinsight-cluster-with-data-lake-storage-gen1"></a>Data Lake Storage Gen1 を使用する HDInsight クラスターの作成
 Resource Manager テンプレートおよびテンプレート使用の前提条件は、GitHub の[新しい Data Lake Storage Gen1 での HDInsight Linux クラスターのデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-hdinsight-datalake-store-azure-storage)に関するページにあります。 このリンクで示されている手順に従って、Data Lake Storage Gen1 を追加ストレージとして使用する HDInsight クラスターを作成します。

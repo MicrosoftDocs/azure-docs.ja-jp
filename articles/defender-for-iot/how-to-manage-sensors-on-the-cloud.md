@@ -1,18 +1,14 @@
 ---
 title: Defender for IoT ポータルでセンサーとサブスクリプションをオンボードして管理する
 description: Defender for IoT ポータルでセンサーのオンボード、表示、管理を行う方法について説明します。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 2/18/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 63b3b450e289b40aa9acbfb0d5170e8eb57f9e58
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5c529a5679e8b3d4879b003fa3d168e911f9b518
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733263"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781825"
 ---
 # <a name="onboard-and-manage-sensors-and-subscriptions-in-the-defender-for-iot-portal"></a>Defender for IoT ポータルでセンサーとサブスクリプションをオンボードして管理する
 

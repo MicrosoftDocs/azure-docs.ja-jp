@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3101cf3650fcfb7f9313b13c1c07a03dd734e9dd
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 71291458eec0aec13542d3e0dfaf04a96f391a23
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089226"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103466118"
 ---
 # <a name="understand-roles-in-azure-active-directory"></a>Azure Active Directory のロールについて
 
@@ -68,4 +68,4 @@ Azure AD 固有のロール | アプリケーション管理者<br>アプリケ�
 
 - [Azure AD ロールベースのアクセス制御の概要](custom-overview.md)
 - [Azure portal、Azure AD PowerShell、および Graph API](custom-create.md) を使用してロールの割り当てを作成する
-- [ロールの割り当てを表示する](custom-view-assignments.md)
+- [ロールの割り当てを一覧表示する](view-assignments.md)

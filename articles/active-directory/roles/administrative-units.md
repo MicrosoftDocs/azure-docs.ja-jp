@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e82be52cff824c69dd2fe4ea5e7e1c0d7489be1d
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 49f2c290c69fcadd594d6cbd5879e7d9f5304a42
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740331"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102558017"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Azure Active Directory の管理単位
 
@@ -47,8 +47,8 @@ ms.locfileid: "98740331"
 管理単位は、Azure portal、PowerShell コマンドレットおよびスクリプト、または Microsoft Graph を使用して管理できます。 詳細については、次を参照してください。
 
 - [ロールを作成、削除、設定し、管理単位に追加する](admin-units-manage.md):詳細な操作方法に関する手順が記載されています。
-- [管理単位を使用する](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true): PowerShell を使用して管理単位を操作する方法が記載されています。
-- [管理単位での Graph のサポート](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true): Microsoft Graph で管理単位を使用するための詳細なドキュメントが提供されています。
+- [管理単位を使用する](/powershell/azure/active-directory/working-with-administrative-units): PowerShell を使用して管理単位を操作する方法が記載されています。
+- [管理単位での Graph のサポート](/graph/api/resources/administrativeunit): Microsoft Graph で管理単位を使用するための詳細なドキュメントが提供されています。
 
 ### <a name="plan-your-administrative-units"></a>管理単位を計画する
 

@@ -1,21 +1,23 @@
 ---
-title: Azure Stack Edge Pro GPU デバイス上の Arc 対応 Kubernetes で`PHP Guestbook` アプリをデプロイする | Microsoft Docs
+title: Azure Stack Edge Pro GPU デバイス上の Arc 対応 Kubernetes で PHP `Guestbook` アプリをデプロイする | Microsoft Docs
 description: Azure Stack Edge Pro デバイスの Arc 対応 Kubernetes クラスターで GitOps を使用して、Redis を使った PHP `Guestbook` ステートレス アプリケーションをデプロイする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: ba72617444a2c7ec30e4d1d25afe1edcda16ff35
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 920f7912a1289fe92618d893b94943784e4a9a3a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804872"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102520729"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 上の Arc 対応 Kubernetes クラスターで Redis を使用した PHP `Guestbook` ステートレス アプリケーションをデプロイする
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 この記事では、Kubernetes と Azure Arc を使用してシンプルな多層 Web アプリケーションを構築してデプロイする方法について説明します。この例は、次のコンポーネントで構成されています。
 
@@ -49,9 +51,9 @@ ms.locfileid: "98804872"
 
 1. Azure Stack Edge Pro デバイスへのアクセスに使用される Windows クライアント システムがある。
   
-    - クライアントでは、Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、「[Windows PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view = true)」を参照してください。
+    - クライアントでは、Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、「[Windows PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell)」を参照してください。
     
-    - [オペレーティング システムがサポートされている](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
+    - [サポートされているオペレーティング システム](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)が搭載されている他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
     
 1. [Azure Stack Edge Pro デバイス上の Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関する記事で説明されている手順を完了している。 完了した内容:
     

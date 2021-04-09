@@ -11,10 +11,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 ms.openlocfilehash: 83c290adea02915db1dc52bd359b4d3165611522
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92547709"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub メッセージ ルーティングのクエリ構文
@@ -53,7 +53,7 @@ IoT ハブでは、各種プロトコルにおける相互運用性を確保す�
 
 システム プロパティは、メッセージのコンテンツとソースを特定するのに役立ちます。 
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | contentType | string | ユーザーはメッセージのコンテンツの種類を指定します。 メッセージ本文に基づいてクエリを実行するには、この値を application/json に設定する必要があります。 |
 | contentEncoding | string | ユーザーはメッセージのエンコードの種類を指定します。 contentType が application/json に設定されている場合に使用できる値は、UTF-8、UTF-16、UTF-32 です。 |
@@ -62,7 +62,7 @@ IoT ハブでは、各種プロトコルにおける相互運用性を確保す�
 | dt-dataschema | string |  この値は、IoT Hub で、device-to-cloud メッセージに対して設定されます。 デバイス接続で設定されたデバイス モデル ID が含まれます。 クエリを実行するには、`$dt-dataschema` を使用します。 |
 | dt-subject | string | device-to-cloud メッセージを送信しているコンポーネントの名前。 クエリを実行するには、`$dt-subject` を使用します。 |
 
-[IoT Hub のメッセージ](iot-hub-devguide-messages-construct.md)に関するページで説明されているように、メッセージには他にもシステム プロパティがあります。 前の表の上記のプロパティに加えて、 **connectionDeviceId** 、 **connectionModuleId** のクエリを実行することもできます。
+[IoT Hub のメッセージ](iot-hub-devguide-messages-construct.md)に関するページで説明されているように、メッセージには他にもシステム プロパティがあります。 前の表の上記のプロパティに加えて、**connectionDeviceId**、**connectionModuleId** のクエリを実行することもできます。
 
 ### <a name="application-properties"></a>Application properties
 

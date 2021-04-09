@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: c68e01e0eb7c926f47c99b16efa87d23a10b6711
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91537035"
 ---
 # <a name="set-up-text-messaging-as-your-verification-method"></a>テキスト メッセージを検証方法として設定する
@@ -77,7 +77,7 @@ ms.locfileid: "91537035"
 
     ![セキュリティ情報から電話番号とテキスト メッセージ メソッドを削除するためのリンク](media/security-info/securityinfo-myprofile-phonetext-delete.png)
 
-2. 確認ボックスで **[はい]** を選択して、**電話**番号を削除します。 電話番号を削除すると、セキュリティ情報から削除され、 **[セキュリティ情報]** ページから消去されます。 **電話番号**が既定のメソッドである場合、既定値は、別の使用可能なメソッドに変更されます。
+2. 確認ボックスで **[はい]** を選択して、**電話** 番号を削除します。 電話番号を削除すると、セキュリティ情報から削除され、 **[セキュリティ情報]** ページから消去されます。 **電話番号** が既定のメソッドである場合、既定値は、別の使用可能なメソッドに変更されます。
 
 ## <a name="change-your-default-security-info-method"></a>既定のセキュリティ情報メソッドを変更する
 

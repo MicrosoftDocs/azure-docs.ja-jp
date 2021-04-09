@@ -4,10 +4,10 @@ description: この記事では、Azure API Management を Service Fabric アプ
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.openlocfilehash: 32f47d62cc9dda7cc88421dbf616bf69ffe152fc
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96575688"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Azure Service Fabric と API Management の概要

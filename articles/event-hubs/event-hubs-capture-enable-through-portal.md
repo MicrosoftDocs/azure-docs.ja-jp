@@ -4,10 +4,10 @@ description: この記事では、Azure portal を使用し、Azure Event Hubs �
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 8c89a6e56c2d0bc7b7ff09d5fd63737009239eb9
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "100653953"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Azure Event Hubs からストリーム配信されるイベントのキャプチャを有効にする

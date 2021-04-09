@@ -16,10 +16,10 @@ ms.date: 05/09/2018
 ms.author: duau
 ms.custom: mvc
 ms.openlocfilehash: 54ee903b490e10f7ea4ca3bca91f742b5811404d
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102563304"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Azure 上のコンテンツ配信ネットワークとは

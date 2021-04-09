@@ -4,10 +4,10 @@ description: この記事では、CloudShell Colony と Microsoft Azure を使�
 ms.topic: how-to
 ms.date: 11/26/2020
 ms.openlocfilehash: 88244f268d5ed038e9bb7082d3d5cc1179e5ec4e
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94918017"
 ---
 # <a name="create-an-application-centric-environment"></a>アプリケーション中心の環境を作成

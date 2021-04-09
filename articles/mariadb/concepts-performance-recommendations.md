@@ -3,14 +3,14 @@ title: パフォーマンスに関する推奨事項 - Azure Database for MariaD
 description: この記事では、Azure Database for MariaDB のパフォーマンスの推奨事項機能について説明します。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 5949c6ba1ed176a609d3ceed4150ac06855440e9
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: a20b8a43c8955e1afea7a7157e3e73425fb0d806
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98664318"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB のパフォーマンスの推奨事項
@@ -29,7 +29,7 @@ ms.locfileid: "98664318"
 
 Azure portal の MariaDB サーバーに関するページで、メニュー バーの **[インテリジェント パフォーマンス]** セクションから、 **[パフォーマンスの推奨事項]** を開きます。
 
-:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="パフォーマンスに関する推奨事項ランディング ページ":::
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="パフォーマンスに関する推奨事項のランディング ページ":::
 
 **[解析]** を選択してデータベースを選択すると、分析が開始されます。 ワークロードによっては、分析が完了するまでに数分かかる場合があります。 分析が完了すると、ポータルで通知があります。 分析では、データベースの詳細な検査が行われます。 分析はピーク時を避けて実行することをお勧めします。
 

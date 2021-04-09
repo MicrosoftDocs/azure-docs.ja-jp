@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: cherylmc
 ms.openlocfilehash: e602905b461e370189cefed706ddc3a47e0199fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91839641"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Azure Virtual WAN に移行する
@@ -33,7 +33,7 @@ Contoso は、ヨーロッパとアジアの両方にオフィスを持つグロ
 
 次の図は、複数の Azure リージョンへの接続を含む、既存のグローバル ネットワークの概要を示しています。
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/contoso-pre-migration.png" alt-text="ハブ アンド スポーク":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/contoso-pre-migration.png" alt-text="Contoso の既存のネットワーク トポロジ":::
 **図:Contoso の既存のネットワーク トポロジ**
 
 既存のネットワーク トポロジからは、次のことを理解できます。
@@ -61,7 +61,7 @@ Contoso は、ヨーロッパとアジアの両方にオフィスを持つグロ
 
 次の図は、前のセクションで詳しく説明した要件を満たす、Azure Virtual WAN を使用した更新されたターゲット トポロジの概要を示しています。
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/vwan-architecture.png" alt-text="ハブ アンド スポーク":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/vwan-architecture.png" alt-text="Contoso の仮想 WAN アーキテクチャ":::
 **図:Azure Virtual WAN のアーキテクチャ**
 
 概要:
@@ -82,7 +82,7 @@ Contoso は、ヨーロッパとアジアの両方にオフィスを持つグロ
 
 次の図は、Azure Virtual WAN をロールアウトする前の Contoso の単一リージョン トポロジを示しています。
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure1.png" alt-text="ハブ アンド スポーク":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure1.png" alt-text="単一リージョン トポロジ":::
 "**図 1:単一リージョンの手動ハブ アンド スポーク**
 
 ハブ アンド スポーク アプローチに従い、カスタマー マネージド ハブ仮想ネットワークにはいくつかの機能ブロックが含まれています。
@@ -103,14 +103,14 @@ Contoso は、ヨーロッパとアジアの両方にオフィスを持つグロ
 > Azure Virtual WAN では、この記事で説明されているトラフィック パスの一部を有効にするために Standard SKU が使用されている必要があります。
 >
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure2.png" alt-text="ハブ アンド スポーク":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure2.png" alt-text="Virtual WAN ハブをデプロイする":::
 "**図 2:カスタマー マネージド ハブ アンド スポークから Virtual WAN への移行**
 
 ### <a name="step-3-connect-remote-sites-expressroute-and-vpn-to-virtual-wan"></a>手順 3:リモート サイト (ExpressRoute と VPN) を Virtual WAN に接続する
 
 Virtual WAN ハブを既存の ExpressRoute 回線に接続し、インターネット経由で任意のリモート ブランチにサイト間 VPN を設定します。
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure3.png" alt-text="ハブ アンド スポーク":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure3.png" alt-text="リモート サイトを Virtual WAN に接続する":::
 "**図 3:カスタマー マネージド ハブ アンド スポークから Virtual WAN への移行**
 
 この時点で、オンプレミスのネットワーク機器は、Virtual WAN で管理されているハブ VNet に割り当てられた IP アドレス空間を反映したルートの受信を開始します。 この段階で、VPN 接続されたリモート ブランチは、スポーク仮想ネットワーク内の既存のアプリケーションへの 2 つのパスを認識します。 これらのデバイスは、移行フェーズ中に対称ルーティングを確保するように、引き続きカスタマー マネージド ハブへのトンネルを使用するように構成する必要があります。
@@ -119,14 +119,14 @@ Virtual WAN ハブを既存の ExpressRoute 回線に接続し、インターネ
 
 運用環境の接続にマネージド Virtual WAN ハブを利用する前に、テスト スポークの仮想ネットワークと Virtual WAN VNet 接続を設定することをお勧めします。 次の手順に進む前に、このテスト環境への接続が ExpressRoute とサイト間 VPN 経由で動作することを確認してください。
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure4.png" alt-text="ハブ アンド スポーク":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure4.png" alt-text="Virtual WAN を使用してハイブリッド接続をテストする":::
 "**図 4:カスタマー マネージド ハブ アンド スポークから Virtual WAN への移行**
 
 このステージでは、元のカスタマー マネージド ハブ仮想ネットワークと新しい Virtual WAN ハブの両方が、同じ ExpressRoute 回線に接続されていることを認識することが重要です。 このため、両方の環境のスポークが通信できるようにするために使用できるトラフィック パスがあります。 たとえば、カスタマー マネージド ハブ仮想ネットワークに接続されているスポークからのトラフィックは、ExpressRoute 回線に使用されている MSEE デバイスを横断して、新しい Virtual WAN ハブに VNet 接続経由で接続されたすべてのスポークに到達します。 これにより、手順 5 でスポークを段階的に移行することができます。
 
 ### <a name="step-5-transition-connectivity-to-virtual-wan-hub"></a>手順 5:仮想 WAN ハブへの接続を移行する
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure5.png" alt-text="ハブ アンド スポーク":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure5.png" alt-text="接続を Virtual WAN ハブに移行する":::
 **図 5:カスタマー マネージド ハブ アンド スポークから Virtual WAN への移行**
 
 **a**。 スポーク仮想ネットワークから古いカスタマー マネージド ハブへの既存のピアリング接続を削除します。 スポーク仮想ネットワーク内のアプリケーションへのアクセスは、手順 a ~ c が完了するまで使用できません。
@@ -143,7 +143,7 @@ Virtual WAN ハブを既存の ExpressRoute 回線に接続し、インターネ
 
 Azure ネットワークを再設計し、Virtual WAN ハブが新しいトポロジの中心点となるようにしました。
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure6.png" alt-text="ハブ アンド スポーク":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure6.png" alt-text="古いハブが共有サービスのスポークになる":::
 **図 6:カスタマー マネージド ハブ アンド スポークから Virtual WAN への移行**
 
 Virtual WAN ハブはマネージド エンティティであるため、仮想マシンなどのカスタム リソースのデプロイが許可されていません。そのため、共有サービス ブロックは、スポーク仮想ネットワークとして存在するようになり、Azure Application Gateway やネットワーク仮想化アプライアンスを経由したインターネット イングレスなどの機能をホストします。 共有サービス環境とバックエンド仮想マシン間のトラフィックは、Virtual WAN で管理されるハブを経由するようになりました。
@@ -152,7 +152,7 @@ Virtual WAN ハブはマネージド エンティティであるため、仮想�
 
 この段階では、Contoso は Microsoft Cloud へのビジネス アプリケーションの移行をほぼ完了し、オンプレミスの DC 内にいくつかのレガシ アプリケーションだけが残っています。
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure7.png" alt-text="ハブ アンド スポーク":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure7.png" alt-text="オンプレミスの接続を最適化して Virtual WAN を完全に活用する":::
 **図 7:カスタマー マネージド ハブ アンド スポークから Virtual WAN への移行**
 
 Contoso は、Azure Virtual WAN の機能を十分に活用するために、レガシのオンプレミス VPN 接続の使用を停止することを決定します。 HQ ネットワークまたは DC ネットワークにアクセスし続けるすべてのブランチは、Azure Virtual WAN の組み込みのトランジット ルーティングを使用して Microsoft グローバル ネットワークを経由することができます。
@@ -163,7 +163,7 @@ Contoso は、Azure Virtual WAN の機能を十分に活用するために、レ
 
 ## <a name="end-state-architecture-and-traffic-paths"></a>終了状態のアーキテクチャおよびトラフィック パス
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure8.png" alt-text="ハブ アンド スポーク":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/figure8.png" alt-text="終了状態のアーキテクチャおよびトラフィック パス":::
 **図:2 つのリージョンの Virtual WAN**
 
 このセクションでは、トラフィック フローの例をいくつか見ることで、このトポロジが元の要件をどのように満たすかを要約して説明します。
@@ -178,7 +178,7 @@ Contoso は、Azure Virtual WAN の機能を十分に活用するために、レ
 
 * アジアの仮想 WAN ハブは、接続された VNet に対してトラフィックをローカルにルーティングします。
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow1.png" alt-text="ハブ アンド スポーク":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow1.png" alt-text="フロー 1":::
 
 ### <a name="path-2"></a>パス 2
 
@@ -190,7 +190,7 @@ Contoso は、Azure Virtual WAN の機能を十分に活用するために、レ
 
 * Virtual WAN のハブからハブへのグローバル接続により、リモート リージョンで接続されている VNet へのトラフィックの転送が可能になります。
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow2.png" alt-text="ハブ アンド スポーク":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow2.png" alt-text="フロー 2":::
 
 ### <a name="path-3"></a>パス 3
 
@@ -204,7 +204,7 @@ Contoso は、Azure Virtual WAN の機能を十分に活用するために、レ
 
 * Virtual WAN のハブからハブへのグローバル接続により、トラフィックの転送が可能になります。
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow3.png" alt-text="ハブ アンド スポーク":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow3.png" alt-text="フロー 3":::
 
 ### <a name="path-4"></a>パス 4
 
@@ -214,7 +214,7 @@ Contoso は、Azure Virtual WAN の機能を十分に活用するために、レ
 
 * Virtual WAN のハブからハブへのグローバル接続により、ユーザーが追加構成することなく、接続されているすべての Azure VNet のネイティブ転送が可能になります。
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow4.png" alt-text="ハブ アンド スポーク":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow4.png" alt-text="フロー 4":::
 
 ### <a name="path-5"></a>パス 5
 
@@ -226,13 +226,13 @@ Contoso は、Azure Virtual WAN の機能を十分に活用するために、レ
 
 * 西ヨーロッパの仮想 WAN ハブは、接続された VNet に対してトラフィックをローカルにルーティングします。
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow5.png" alt-text="ハブ アンド スポーク":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow5.png" alt-text="フロー 5":::
 
 ## <a name="security-and-policy-control-via-azure-firewall"></a>Azure Firewall によるセキュリティとポリシーの制御
 
 Contoso は、この記事で説明済みの要件に従って、すべてのブランチと VNet の間の接続を検証しました。 セキュリティ制御とネットワーク分離の要件を満たすには、ハブ ネットワークを介して引き続きトラフィックを分離し、ログに記録する必要があります。 この機能は、以前はネットワーク仮想アプライアンス (NVA) によって実行されていました。 また、Contoso は、既存のプロキシ サービスを使用停止にし、発信インターネット フィルター処理にネイティブ Azure サービスを使用したいと考えています。
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/security-policy.png" alt-text="ハブ アンド スポーク":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/security-policy.png" alt-text="Azure Firewall によるセキュリティとポリシーの制御":::
 **図:Virtual WAN での Azure Firewall (セキュリティ保護付き仮想ハブ)**
 
 次の大まかな手順は、Azure Firewall を Virtual WAN ハブに導入し、ポリシー制御の統合ポイントを有効にするために必要です。 この手順およびセキュリティ保護付き仮想ハブの概要については、[Azure Firewall Manager](../firewall-manager/index.yml) に関する記事を参照してください。
@@ -256,7 +256,7 @@ Contoso は、この記事で説明済みの要件に従って、すべてのブ
 
 * Azure Firewall はポリシーをこれらのフローに適用できます。
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow6.png" alt-text="ハブ アンド スポーク":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow6.png" alt-text="フロー 6":::
 
 ### <a name="path-7"></a>パス 7
 
@@ -268,7 +268,7 @@ Contoso は、この記事で説明済みの要件に従って、すべてのブ
 
 * このトラフィックは、Azure Firewall の FQDN 規則を使用してローカルでフィルター処理するか、または検査のためにサードパーティのセキュリティ サービスに送信することができます。
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow7.png" alt-text="ハブ アンド スポーク":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow7.png" alt-text="フロー 7":::
 
 ### <a name="path-8"></a>パス 8
 
@@ -280,7 +280,7 @@ Contoso は、この記事で説明済みの要件に従って、すべてのブ
 
 * このトラフィックは、Azure Firewall の FQDN 規則を使用してローカルでフィルター処理するか、または検査のためにサードパーティのセキュリティ サービスに送信することができます。
 
-:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow8.png" alt-text="ハブ アンド スポーク":::
+:::image type="content" source="./media/migrate-from-hub-spoke-topology/flow8.png" alt-text="フロー 8":::
 
 ## <a name="next-steps"></a>次のステップ
 

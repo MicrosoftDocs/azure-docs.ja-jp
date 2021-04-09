@@ -2,22 +2,22 @@
 title: チュートリアル - Azure Linux Virtual Machines のカナリア デプロイを構成する
 description: このチュートリアルでは、継続的デプロイ (CD) パイプラインを設定する方法について説明します。 このパイプラインは、カナリア デプロイ戦略を使用して Azure Linux 仮想マシンのグループを更新します。
 author: moala
-manager: jpconnock
 tags: azure-devops-pipelines
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: fafe2ba9ae65f95d8a2258ead5715cc0630202ba
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: bbfe6571cf075b2ce4930eea91bfd1e239470c5a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963484"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102552509"
 ---
 # <a name="tutorial---configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>チュートリアル - Azure Linux Virtual Machines のカナリア デプロイ戦略を構成する
 

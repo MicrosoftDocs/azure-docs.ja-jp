@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/26/2020
+ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 08b08e3e799ff7b579889a62ecec70677a3cbce9
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 8d3343838216522abfc11ec3f202ae2da1c0e38f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059060"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102611880"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C のカスタム ポリシーでセルフ アサート技術プロファイルを定義します。
 
@@ -212,11 +212,13 @@ PersistedClaims 要素は使用されません。 セルフ アサート技術�
 | setting.enableRememberMe <sup>2</sup>| いいえ| [[サインインしたままにする]](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) チェックボックスを表示します。 指定できる値: `true` または `false` (既定値)。 |
 | setting.inputVerificationDelayTimeInMilliseconds <sup>3</sup>| いいえ| ユーザーが入力を停止するのを待って、値を検証することで、ユーザー エクスペリエンスを向上させます。 既定値は、2000 ミリ秒です。 |
 | IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
+|forgotPasswordLinkOverride <sup>4</sup>| いいえ | 実行されるパスワード リセット要求の交換。 詳細については、「[セルフサービス パスワード リセット](add-password-reset-policy.md)」を参照してください。 |
 
 メモ:
 1. コンテンツ定義 [DataUri](contentdefinitions.md#datauri) `unifiedssp`または`unifiedssd`の種類に使用できます。
 1. コンテンツ定義 [DataUri](contentdefinitions.md#datauri) `unifiedssp`または`unifiedssd`の種類に使用できます。 [ページ レイアウトバージョン](page-layout.md) 1.1.0 以降。
 1. [ページ レイアウト バージョン](page-layout.md) 1.2.0 以降に使用できます。
+1. コンテンツ定義 [DataUri](contentdefinitions.md#datauri) `unifiedssp` の種類に使用できます。 [ページ レイアウト バージョン](page-layout.md) 2.1.2 以降。
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 

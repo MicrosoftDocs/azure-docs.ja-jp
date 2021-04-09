@@ -4,10 +4,10 @@ description: Azure Active Directory Access Control Service から Shared Access 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: e8cd12ac97020417f9958beded1fd198dd485fff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88064623"
 ---
 # <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus - Azure Active Directory Access Control Service から Shared Access Signature 承認への移行
@@ -22,15 +22,15 @@ ACS に依存しているすべての既存アプリケーションに対して�
 
 ## <a name="migration-scenarios"></a>移行シナリオ
 
-ACS と Service Bus は、共有知識である*署名キー*を通して統合されます。 ACS 名前空間は署名キーを使用して認証トークンを署名します。Service Bus は署名キーを使用して、ペアの ACS 名前空間によってトークンが発行されていることを確認します。 ACS 名前空間は、サービス ID と承認規則を保持します。 承認ルールでは、外部 ID プロバイダーによって発行されたどのサービス ID とトークンが、Service Bus 名前空間グラフの一部に対しどのようなタイプのアクセスが可能かを、最長プレフィックス一致の形で定義します。
+ACS と Service Bus は、共有知識である *署名キー* を通して統合されます。 ACS 名前空間は署名キーを使用して認証トークンを署名します。Service Bus は署名キーを使用して、ペアの ACS 名前空間によってトークンが発行されていることを確認します。 ACS 名前空間は、サービス ID と承認規則を保持します。 承認ルールでは、外部 ID プロバイダーによって発行されたどのサービス ID とトークンが、Service Bus 名前空間グラフの一部に対しどのようなタイプのアクセスが可能かを、最長プレフィックス一致の形で定義します。
 
-たとえば ACS ルールでは、パス プレフィックス `/` への**送信**要求をサービス ID に付与できます。つまり、そのルールに基づいて ACS により発行されたトークンは、名前空間内のすべてのエンティティに対して送信する権限をクライアントに付与します。 パス プレフィックスが `/abc` の場合、ID による送信は `abc` という名前のエンティティか、またはそのプレフィックスの下に編成されたエンティティに制限されます。 この移行ガイドの読者は、すでにこれらの概念についてよく知っていることを前提としています。
+たとえば ACS ルールでは、パス プレフィックス `/` への **送信** 要求をサービス ID に付与できます。つまり、そのルールに基づいて ACS により発行されたトークンは、名前空間内のすべてのエンティティに対して送信する権限をクライアントに付与します。 パス プレフィックスが `/abc` の場合、ID による送信は `abc` という名前のエンティティか、またはそのプレフィックスの下に編成されたエンティティに制限されます。 この移行ガイドの読者は、すでにこれらの概念についてよく知っていることを前提としています。
 
 移行シナリオは、大きく分けて 3 つのカテゴリに分類されます。
 
-1.  **既定値を変更しない**。 自動生成される**所有者**サービス ID と ACS 名前空間の秘密キーを Service Bus 名前空間と組み合わせて渡す [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) オブジェクトを使用し、新しいルールを追加していない場合があります。
+1.  **既定値を変更しない**。 自動生成される **所有者** サービス ID と ACS 名前空間の秘密キーを Service Bus 名前空間と組み合わせて渡す [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) オブジェクトを使用し、新しいルールを追加していない場合があります。
 
-2.  **単純なルールのカスタム サービス ID**。 新しいサービス ID を追加し、新しいサービス ID それぞれに、ある特定のエンティティに対する **送信**、**リッスン**、および**管理**のアクセス許可を付与している場合があります。
+2.  **単純なルールのカスタム サービス ID**。 新しいサービス ID を追加し、新しいサービス ID それぞれに、ある特定のエンティティに対する **送信**、**リッスン**、および **管理** のアクセス許可を付与している場合があります。
 
 3.  **複雑なルールのカスタム サービス ID**。 外部で発行されたトークンをリレーの権限にマップする、または 1 つのサービス ID を複数のルールを通して複数の名前空間パスの異なる権限に割り当てる複雑なルール セットを設定している場合がごくまれにあります。
 
@@ -38,7 +38,7 @@ ACS と Service Bus は、共有知識である*署名キー*を通して統合�
 
 ### <a name="unchanged-defaults"></a>既定値を変更しない
 
-アプリケーションで ACS の既定値を変更していない場合は、すべての [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) の使用を [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) オブジェクトに置き換えることができます。ACS **所有者**アカウントの代わりに、あらかじめ構成された名前空間 **RootManageSharedAccessKey** を使用できます。 ACS **所有者**アカウントの場合であっても、この構成は一般的に推奨されるものではありませんでした (現在でも推奨されていません) が、それは、このアカウント/ルールにより、あらゆるエンティティの削除権限を含め、名前空間の完全な管理権限が付与されるためです。
+アプリケーションで ACS の既定値を変更していない場合は、すべての [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) の使用を [SharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) オブジェクトに置き換えることができます。ACS **所有者** アカウントの代わりに、あらかじめ構成された名前空間 **RootManageSharedAccessKey** を使用できます。 ACS **所有者** アカウントの場合であっても、この構成は一般的に推奨されるものではありませんでした (現在でも推奨されていません) が、それは、このアカウント/ルールにより、あらゆるエンティティの削除権限を含め、名前空間の完全な管理権限が付与されるためです。
 
 ### <a name="simple-rules"></a>単純なルール
 

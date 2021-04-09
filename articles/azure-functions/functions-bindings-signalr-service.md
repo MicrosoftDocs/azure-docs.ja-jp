@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
 ms.openlocfilehash: 9e60fd9a20720d75f96a0b78ee783bd5509a8f90
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97763491"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions における SignalR サービスのバインド

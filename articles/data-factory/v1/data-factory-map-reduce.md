@@ -3,16 +3,16 @@ title: Azure Data Factory から MapReduce プログラムを起動する
 description: Azure Data Factory から Azure HDInsight クラスターで MapReduce プログラムを実行してデータを処理する方法について説明します。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f5ad917609d6f9ea401abc898f80631474a44475
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f1f54e972d59d3de3b0f93b3150ee1150eb6f612
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371075"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104786398"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Data Factory から MapReduce プログラムを起動する
 > [!div class="op_single_selector" title1="変換アクティビティ"]
@@ -45,10 +45,10 @@ HDInsight Pig と Hive アクティビティを使用してパイプラインか
 HDInsight アクティビティの JSON の定義で、以下を設定します。 
 
 1. **activity** の **type** を **HDInsight** に設定します。
-2. **className** プロパティでクラスの名前を指定します。
-3. **jarFilePath** プロパティでファイル名を含む JAR ファイルへのパスを指定します。
-4. **jarLinkedService** プロパティで、JAR ファイルを含む Azure BLOB Storage を参照する、リンクされたサービスを指定します。   
-5. **arguments** セクションで MapReduce プログラムに任意の引数を指定します。 実行時に、MapReduce フレームワークのいくつかの引数 (mapreduce.job.tags など) が表示されます。 MapReduce の引数と区別するために、次の例のように、オプションと値の両方を引数として使用することを検討してください (-s、--input、--output などがオプションであり、直後に値が続きます)。
+2. クラスの名前を **className** プロパティに対して指定します。
+3. ファイル名を含む JAR ファイルへのパスを **jarFilePath** プロパティに対して指定します。
+4. JAR ファイルを含む Azure Blob Storage を参照するリンクされたサービスを **jarLinkedService** プロパティに対して指定します。   
+5. **arguments** セクションでは MapReduce プログラムの引数を指定します。 実行時に、MapReduce フレームワークのいくつかの引数 (mapreduce.job.tags など) が表示されます。 MapReduce の引数と区別するために、次の例のように、オプションと値の両方を引数として使用することを検討してください (-s、--input、--output などがオプションであり、直後に値が続きます)。
 
     ```JSON   
     {
@@ -176,7 +176,7 @@ HDInsight アクティビティの JSON の定義で、以下を設定します�
 ### <a name="pipeline"></a>パイプライン
 この例のパイプラインには、HDInsightMapReduce という種類のアクティビティが 1 つだけあります。 JSON の重要なプロパティの一部を次に示します。 
 
-| プロパティ | メモ |
+| プロパティ | Notes |
 |:--- |:--- |
 | type |type には、 **HDInsightMapReduce** を設定する必要があります。 |
 | className |クラスの名前は **wordcount** |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: jeedes
-ms.openlocfilehash: e1cf12d676de84bc18a123fbdf05b1170725eda8
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 330c02f15c0818f0a5c69088757c92a91a523589
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072462"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952645"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsung-knox-and-business-services"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Samsung Knox およびビジネス サービスの統合
 
@@ -31,7 +31,7 @@ ms.locfileid: "99072462"
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* Samsung Knox およびビジネス サービスでのシングル サインオン (SSO) が有効なサブスクリプション。
+* Samsung Knox アカウント。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -55,7 +55,7 @@ Azure AD への Samsung Knox およびビジネス サービスの統合を構�
 
 ## <a name="configure-and-test-azure-ad-sso-for-samsung-knox-and-business-services"></a>Samsung Knox およびビジネス サービスの Azure AD SSO の構成とテスト
 
-**B.Simon** というテスト ユーザーを使用して、Samsung Knox およびビジネス サービスに対する Azure AD SSO を構成してテストします。 SSO を機能させるには、Azure AD ユーザーと Samsung Knox およびビジネス サービスの関連ユーザーとの間にリンク関係を確立する必要があります。
+**B.Simon** というテスト ユーザーを使用して、Samsung Knox およびビジネス サービスに対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと [SamsungKnox.com](https://samsungknox.com/) の関連ユーザーとの間にリンク関係を確立する必要があります。
 
 Samsung Knox およびビジネス サービスに対する Azure AD SSO を構成してテストするには、次の手順を実行します。
 
@@ -78,7 +78,10 @@ Samsung Knox およびビジネス サービスに対する Azure AD SSO を構�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    **[サインオン URL]** ボックスに、URL として「`https://www.samsungknox.com`」を入力します。
+    * **[サインオン URL]** ボックスに、URL として「`https://www.samsungknox.com`」と入力します。
+    * **[応答 URL (Assertion Consumer Service URL)]** ボックスに、URL として「`https://central.samsungknox.com/ams/ad/saml/acs`」を入力します
+    
+    ![基本的な SAML 構成値](https://docs.samsungknox.com/assets/merge/ad-sso/basic-saml-configuration.png)
 
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
@@ -110,7 +113,7 @@ Samsung Knox およびビジネス サービスに対する Azure AD SSO を構�
 
 ## <a name="configure-samsung-knox-and-business-services-sso"></a>Samsung Knox およびビジネス サービス SSO の構成
 
-1. Web ブラウザーの別のウィンドウで、Samsung Knox およびビジネス サービス企業サイトに管理者としてサインインします。
+1. 別の Web ブラウザー ウィンドウで、管理者として [SamsungKnox.com](https://samsungknox.com/) にサインインします。
 
 1. 右上隅にある **[Avatar]\(アバター\)** をクリックします。
 
@@ -118,7 +121,7 @@ Samsung Knox およびビジネス サービスに対する Azure AD SSO を構�
 
 1. 左側のサイド バーで **[ACTIVE DIRECTORY SETTINGS]\(Active Directory の設定\)** をクリックし、次の手順を実行します。
 
-    ![Active Directory の設定](./media/samsung-knox-and-business-services-tutorial/sso-settings.png)
+    ![Active Directory の設定](https://docs.samsungknox.com/assets/merge/ad-sso/ad-5.png)
 
     a. **[Identifier(entity ID)]\(識別子 (エンティティ ID)\)** ボックスに、Azure portal で入力した **[ID]** の値を貼り付けます。
 
@@ -128,21 +131,18 @@ Samsung Knox およびビジネス サービスに対する Azure AD SSO を構�
 
 ### <a name="create-samsung-knox-and-business-services-test-user"></a>Samsung Knox およびビジネス サービスのテスト ユーザーの作成
 
-このセクションでは、Samsung Knox およびビジネス サービスで Britta Simon というユーザーを作成します。 [Samsung Knox およびビジネス サービスのサポート チーム](mailto:noreplyk.sec@samsung.com)と連携して、Samsung Knox およびビジネス サービス プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Samsung Knox およびビジネス サービスで Britta Simon というユーザーを作成します。 Samsung Knox 組織にサブ管理者またはテスト ユーザーを招待する方法については、[Knox の構成](https://docs.samsungknox.com/admin/knox-configure/Administrators.htm)または [Knox モバイルの登録](https://docs.samsungknox.com/admin/knox-mobile-enrollment/kme-add-an-admin.htm)に関する管理者ガイドを参照してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Samsung Knox およびビジネス サービスのサインオン URL にリダイレクトされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる [SamsungKnox.com](https://samsungknox.com/) にリダイレクトされます。 
 
-* Samsung Knox およびビジネス サービスのサインオン URL に直接移動し、そこからログイン フローを開始します。
+* [SamsungKnox.com](https://samsungknox.com/) に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Samsung Knox およびビジネス サービス] タイルをクリックすると、Samsung Knox およびビジネス サービスのサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
-
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Samsung Knox およびビジネス サービス] タイルをクリックすると、[SamsungKnox.com](https://samsungknox.com/) にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Samsung Knox およびビジネス サービスを構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+Samsung Knox およびビジネス サービスを構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

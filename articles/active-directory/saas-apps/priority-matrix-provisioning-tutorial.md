@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory での自動ユーザー プロビジョニング用に Priority Matrix を構成する | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory での自動ユーザー プロビジョニング用に Priority Matrix を構成する | Microsoft Docs'
 description: Priority Matrix に対してユーザー アカウントが自動的にプロビジョニングおよびプロビジョニング解除されるように、Azure Active Directory を構成する方法について説明します。
 services: active-directory
 author: zchia
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 10/08/2019
 ms.author: Zhchia
 ms.openlocfilehash: e79f21300325c6b451dd564bf2c69830f003f55c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94357863"
 ---
-# <a name="tutorial-configure-priority-matrix-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Priority Matrix を構成する
+# <a name="tutorial-configure-priority-matrix-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニング用に Priority Matrix を構成する
 
 このチュートリアルの目的は、ユーザーまたはグループの Priority Matrix へのプロビジョニングとプロビジョニング解除が自動的に行われるよう Azure AD を構成するために、Priority Matrix と Azure Active Directory (Azure AD) で実行する手順を示すことです。
 
@@ -79,7 +79,7 @@ Azure AD で自動ユーザー プロビジョニング用に Priority Matrix �
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Priority Matrix** 」と入力し、結果パネルで **Priority Matrix** を選択します。 
+4. 検索ボックスに「**Priority Matrix**」と入力し、結果パネルで **Priority Matrix** を選択します。 
 
     ![結果一覧の Priority Matrix](common/search-new-app.png)
 
@@ -140,7 +140,7 @@ Azure AD で自動ユーザー プロビジョニング用に Priority Matrix �
 
 10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-11. Priority Matrix に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+11. Priority Matrix に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 

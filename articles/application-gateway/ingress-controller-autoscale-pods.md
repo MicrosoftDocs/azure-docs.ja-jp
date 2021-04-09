@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: a8f015085baa8fffa6f208e9d8dd749e397c76c3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93397435"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Application Gateway のメトリックを使用した AKS ポッドの自動スケーリング (ベータ版)
@@ -122,4 +122,4 @@ ab -n10000 http://<applicaiton-gateway-ip-address>/
 ```
 
 ## <a name="next-steps"></a>次のステップ
-- [**イングレス コントローラーの問題のトラブルシューティング**](ingress-controller-troubleshoot.md):イングレス コントローラーに関する問題のトラブルシューティングを行います。
+- [**イングレス コントローラーの問題のトラブルシューティング**](ingress-controller-troubleshoot.md): イングレス コントローラーに関する問題のトラブルシューティングを行います。

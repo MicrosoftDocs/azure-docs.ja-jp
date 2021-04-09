@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperf-fy20q4, tracking-python
-ms.openlocfilehash: 3f128b7ee7fa8f690c2097a5d27e274ec1eb2a8a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: da8007a651b62430055f263f082fabf2aa4bf610
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559541"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103574290"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure 仮想ネットワークで Azure Machine Learning Studio を使用する
 
@@ -38,7 +38,6 @@ ms.locfileid: "97559541"
 
 > [!IMPORTANT]
 > ワークスペースが Azure Government や Azure China 21Vianet などの __ソブリン クラウド__ にある場合、統合ノートブックでは仮想ネットワーク内のストレージを使用 "_できません_"。 代わりに、コンピューティング インスタンスから Jupyter Notebook を使用できます。 詳細については、「[コンピューティング インスタンス ノートブック内のデータにアクセスする](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook)」のセクションを参照してください。
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -107,7 +106,6 @@ Azure Machine Learning では、[データストア](concept-data.md#datastores)
 >
 > この問題を解決するには、仮想ネットワークから ファイルストア アカウントを削除してから、仮想ネットワークに追加し直します。
 
-
 ### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>ストレージ プライベート リンクにワークスペースのマネージド ID __閲覧者__ アクセス権を付与する
 
 Azure ストレージ アカウントでプライベート エンドポイントを使用している場合は、プライベート リンクへの **閲覧者** アクセス権をワークスペースのマネージド ID に付与する必要があります。 詳細については、[閲覧者](../role-based-access-control/built-in-roles.md#reader)組み込みロールに関するページを参照してください。 
@@ -162,9 +160,11 @@ SQL 包含ユーザーを作成したら、これに対してアクセス許可�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事は、全 4 パートからなる仮想ネットワーク シリーズのオプションの部分です。 仮想ネットワークをセキュリティで保護する方法については、記事の残りの部分を参照してください。
+この記事は、全 5 パートからなる仮想ネットワーク シリーズのパート 5 です。 仮想ネットワークをセキュリティで保護する方法については、記事の残りの部分を参照してください。
 
 * [パート 1: 仮想ネットワークの概要](how-to-network-security-overview.md)
 * [パート 2: ワークスペース リソースをセキュリティで保護する](how-to-secure-workspace-vnet.md)
 * [パート 3: トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
 * [パート 4: 推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
+
+名前の解決については、[カスタム DNS](how-to-custom-dns.md) の使用に関する記事も参照してください。

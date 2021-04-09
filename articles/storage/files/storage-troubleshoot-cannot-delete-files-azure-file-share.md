@@ -11,10 +11,10 @@ ms.subservice: files
 services: storage
 tags: ''
 ms.openlocfilehash: 3d4f10745d90ccd83e7251af40d3e92a230f2fcd
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94629684"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure ファイル共有 - Azure ファイル共有からファイルを削除できない
@@ -36,7 +36,7 @@ Azure ファイル共有からのファイルの削除に失敗すると、次�
 
 エラー 1816 は、ファイル共有がマウントされているコンピューター上のファイルに対して許可されている、同時に開くことのできるハンドルの上限に達したときに発生します。 詳しくは、[Azure Storage のパフォーマンスとスケーラビリティのチェック リスト](../blobs/storage-performance-checklist.md)に関するページをご覧ください。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解決方法
 
 ハンドルをいくつか閉じて、同時に開いているハンドルの数を減らします。
 

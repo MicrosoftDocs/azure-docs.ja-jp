@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: marsma, negoe,celested
 ms.custom: aaddev,references_regions
-ms.openlocfilehash: da1ea6462d22242d23629bcec192d7760314dfed
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 719d89fafe57e7f5132698404bcc0a41a9f9db37
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444810"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780074"
 ---
 # <a name="national-clouds"></a>各国のクラウド
 
@@ -55,7 +55,7 @@ ms.locfileid: "96444810"
 |----------------|-------------------------|
 | 米国政府向け Azure AD | `https://login.microsoftonline.us` |
 | Azure AD Germany| `https://login.microsoftonline.de` |
-| 21Vianet が運営する Azure AD China | `https://login.chinacloudapi.cn` |
+| 21Vianet が運営する Azure AD China | `https://login.partner.microsoftonline.cn/common` |
 | Azure AD (グローバル サービス)| `https://login.microsoftonline.com` |
 
 適切なリージョン固有のベース URL を使用して、Azure AD 承認またはトークン エンドポイントへの要求を構成できます。 例として、Azure Germany の場合を示します。

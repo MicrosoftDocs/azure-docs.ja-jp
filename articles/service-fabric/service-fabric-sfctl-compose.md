@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: e84b35ff3dfa7be0c848a4d7b906c622d9b88914
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86257335"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
@@ -17,7 +17,7 @@ Docker Compose アプリケーションを作成、削除、および管理し�
 
 ## <a name="commands"></a>コマンド
 
-|command|説明|
+|コマンド|説明|
 | --- | --- |
 | 作成 | Service Fabric Compose のデプロイを作成します。 |
 | list | Service Fabric クラスターで作成された Compose デプロイの一覧を取得します。 |

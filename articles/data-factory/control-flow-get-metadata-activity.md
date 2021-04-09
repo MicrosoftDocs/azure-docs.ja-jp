@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: jingwang
-ms.openlocfilehash: 91cb10d601f0a44cf9895fffe558c03fdbe06eef
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bd8fc3383d6d9a0afb7733cb94643623e6879d23
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710228"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178543"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory のメタデータの取得アクティビティ
 
@@ -83,8 +83,14 @@ ms.locfileid: "101710228"
 | columnCount | ファイルまたはリレーショナル テーブル内の列の数です。 |
 | exists| ファイル、フォルダー、またはテーブルが存在するかどうかを示します。 メタデータの取得フィールドの一覧内で `exists` が指定されている場合、ファイル、フォルダー、またはテーブルが存在しない場合でもアクティビティは失敗しません。 代わりに、`exists: false` が出力に返されます。 |
 
->[!TIP]
->ファイル、フォルダー、またはテーブルが存在することを検証する場合は、メタデータの取得フィールドの一覧内で `exists` を指定します。 その後、アクティビティ出力内の `exists: true/false` の結果を確認できます。 フィールドの一覧内で `exists` が指定されていない場合、オブジェクトが見つからないとメタデータの取得アクティビティは失敗します。
+> [!TIP]
+> ファイル、フォルダー、またはテーブルが存在することを検証する場合は、メタデータの取得フィールドの一覧内で `exists` を指定します。 その後、アクティビティ出力内の `exists: true/false` の結果を確認できます。 フィールドの一覧内で `exists` が指定されていない場合、オブジェクトが見つからないとメタデータの取得アクティビティは失敗します。
+
+> [!NOTE]
+> ファイル ストアからメタデータを取得し、`modifiedDatetimeStart` または `modifiedDatetimeEnd` を構成した場合、出力内の `childItems` には、指定されたパスにあるファイルのうち、最終変更時刻が指定された範囲内のものだけが含まれます。 サブフォルダー内の項目は含まれません。
+
+> [!NOTE]
+> **structure** フィールド リストに区切りテキストと Excel 形式のデータセットの実際のデータ構造を示すには、`First Row as Header` プロパティを有効にする必要があります。これは、これらのデータ ソースでのみサポートされています。
 
 ## <a name="syntax"></a>構文
 
@@ -160,7 +166,7 @@ ms.locfileid: "101710228"
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
 fieldList | 必要なメタデータ情報の種類です。 サポートされているメタデータに関する詳細は、この記事の「[メタデータのオプション](#metadata-options)」セクションを参照してください。 | はい 
-dataset | メタデータの取得アクティビティによってメタデータが取得される参照データセット。 サポートされているコネクタの詳細については、「[機能](#capabilities)」セクションを参照してください。 データセットの構文の詳細については、特定のコネクタのトピックを参照してください。 | はい
+dataset | メタデータの取得アクティビティによってメタデータが取得される参照データセット。 サポートされているコネクタの詳細については、「[機能](#supported-capabilities)」セクションを参照してください。 データセットの構文の詳細については、特定のコネクタのトピックを参照してください。 | はい
 formatSettings | 書式の種類のデータセットを使用するときに適用します。 | いいえ
 storeSettings | 書式の種類のデータセットを使用するときに適用します。 | いいえ
 

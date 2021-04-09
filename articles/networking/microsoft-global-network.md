@@ -14,10 +14,10 @@ ms.date: 01/05/2020
 ms.author: kumud
 ms.reviewer: ypitsch
 ms.openlocfilehash: a33c7e7d637b519b249c250481a73d04c661d4d5
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97915846"
 ---
 # <a name="microsoft-global-network"></a>マイクロソフトのグローバル ネットワーク

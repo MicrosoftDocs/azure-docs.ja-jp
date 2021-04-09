@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2020
+ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: e1ac2a2408e16c3f8057c49c69c354ebb1e377c7
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 7eb4647ae5ba40688cbf39cbfe8449f59275e7e6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348493"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103014317"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>方法: メディア プロセッサ インスタンスを取得する
 
@@ -51,7 +51,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
 
 ## <a name="get-a-media-processor"></a>メディア プロセッサを取得する
 
-次の REST 呼び出しは、メディア プロセッサ インスタンスを名前 (ここでは **Media Encoder Standard** ) で取得する方法を示しています。 
+次の REST 呼び出しは、メディア プロセッサ インスタンスを名前 (ここでは **Media Encoder Standard**) で取得する方法を示しています。 
 
 要求:
 

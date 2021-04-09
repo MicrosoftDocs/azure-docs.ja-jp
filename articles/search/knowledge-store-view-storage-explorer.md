@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: ba0b02067c032f9038051c169866588ded44af73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85566023"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Storage Explorer でナレッジ ストアを表示する
@@ -31,17 +31,17 @@ ms.locfileid: "85566023"
 
 1. ストレージ アカウントの左側のナビゲーション ウィンドウで、 **[Storage Explorer]** をクリックします。
 
-1. **[TABLES]\(テーブル\)** リストを展開し、ホテル レビュー サンプル データに対して**データ インポート** ウィザードを実行するときに作成した Azure テーブル プロジェクションを一覧表示します。
+1. **[テーブル]** リストを展開し、ホテル レビュー サンプル データに対して **データ インポート** ウィザードを実行するときに作成した Azure テーブル プロジェクションを一覧表示します。
 
 いずれかのテーブルを選択すると、エンリッチされたデータ (キー フレーズ、センチメント スコアなど) が表示されます。
 
    ![Storage Explorer でテーブルを表示する](media/knowledge-store-view-storage-explorer/storage-explorer-tables.png "Storage Explorer でテーブルを表示する")
 
-テーブルの値のデータ型を変更したり、テーブル内の値を個別に変更したりするには、 **[Edit]\(編集\)** をクリックします。 1 つのテーブル行について列のデータ型を変更すると、すべての行に適用されます。
+テーブルの値のデータ型を変更したり、テーブル内の値を個別に変更したりするには、 **[編集]** をクリックします。 1 つのテーブル行について列のデータ型を変更すると、すべての行に適用されます。
 
    ![Storage Explorer でテーブルを編集する](media/knowledge-store-view-storage-explorer/storage-explorer-edit-table.png "Storage Explorer でテーブルを編集する")
 
-クエリを実行するには、コマンド バーの **[Query]\(クエリ\)** をクリックして条件を入力します。  
+クエリを実行するには、コマンド バーの **[クエリ]** をクリックして条件を入力します。  
 
    ![Storage Explorer のクエリ テーブル](media/knowledge-store-view-storage-explorer/storage-explorer-query-table.png "Storage Explorer のクエリ テーブル")
 
@@ -49,7 +49,7 @@ ms.locfileid: "85566023"
 
 独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
-ポータルの左側のナビゲーション ウィンドウにある **[All resources]\(すべてのリソース\)** または **[Resource groups]\(リソース グループ\)** リンクを使って、リソースを検索および管理できます。
+ポータルの左側のナビゲーション ウィンドウにある **[すべてのリソース]** または **[リソース グループ]** リンクを使って、リソースを検索および管理できます。
 
 無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。
 

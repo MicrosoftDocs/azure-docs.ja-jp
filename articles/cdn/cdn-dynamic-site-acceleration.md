@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
 ms.openlocfilehash: 5387fdc224cd77ee5273767df5033a51dc27608c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96008363"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Azure CDN による動的サイトの高速化
@@ -27,7 +27,7 @@ ms.locfileid: "96008363"
 
 標準の Content Delivery Network (CDN) 機能には、エンド ユーザーに近い場所にファイルをキャッシュすることで、静的ファイルの配信を高速化する機能が含まれています。 ただし、動的な Web アプリケーションでは、サーバーがユーザーの行動に応答してコンテンツを生成するため、コンテンツを特定の場所にキャッシュすることはできません。 このようなコンテンツの配信速度を向上させることは、従来のエッジ キャッシュよりも複雑であり、その発端から配信までのデータ パス全体で各要素を微調整するエンド ツー エンド ソリューションが必要です。 Azure CDN の DSA (動的サイトの高速化) 最適化を使用すると、動的コンテンツを含む Web ページのパフォーマンスがある程度まで向上します。
 
-**Azure CDN from Akamai** と **Azure CDN from Verizon** では、エンドポイントの作成中に、 **[最適化の対象]** メニューを使用して DSA 最適化を提供します。 Microsoft の動的サイト アクセラレーションは、[Azure Front Door Service](../frontdoor/front-door-overview.md) により提供されます。
+**Azure CDN from Akamai** と **Azure CDN from Verizon** では、エンドポイントの作成中に、**[最適化の対象]** メニューを使用して DSA 最適化を提供します。 Microsoft の動的サイト アクセラレーションは、[Azure Front Door Service](../frontdoor/front-door-overview.md) により提供されます。
 
 > [!Important]
 > **Azure CDN from Akamai** プロファイルでは、CDN エンドポイントの作成後にエンドポイントの最適化を変更できます。
@@ -40,7 +40,7 @@ ms.locfileid: "96008363"
 
 **Azure Portal を使用して、DSA 最適化を使用するように CDN エンドポイントを構成するには**
 
-1. **[CDN プロファイル]** ページで、 **[エンドポイント]** を選択します。
+1. **[CDN プロファイル]** ページで、**[エンドポイント]** を選択します。
 
    ![新しい CDN エンドポイントの追加](./media/cdn-dynamic-site-acceleration/cdn-endpoint-profile.png) 
 
@@ -54,7 +54,7 @@ ms.locfileid: "96008363"
 
     プローブのパスは DSA に固有の機能であり、エンドポイントを作成するには有効なパスが必要です。 DSA では、配信元サーバーに配置された小さな "*プローブ パス*" ファイルを使用して、CDN のネットワーク ルーティング構成を最適化します。 プローブ パス ファイルについては、サンプル ファイルをダウンロードしてサイトにアップロードすることも、配信元にあるサイズが約 10 KB の既存の資産を使用することもできます。
 
-4. 必要な他のエンドポイント オプションを入力し (詳細については、「[新しい CDN エンドポイントの作成](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)」を参照)、 **[追加]** をクリックします。
+4. 必要な他のエンドポイント オプションを入力し (詳細については、「[新しい CDN エンドポイントの作成](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)」を参照)、**[追加]** をクリックします。
 
    CDN エンドポイントが作成されると、特定の条件に一致するすべてのファイルに DSA 最適化が適用されます。 
 
@@ -67,7 +67,7 @@ ms.locfileid: "96008363"
 
    **[最適化]** ページが表示されます。
 
-3. **[最適化の対象]** で **[動的サイトの高速化]** を選択し、 **[保存]** をクリックします。
+3. **[最適化の対象]** で **[動的サイトの高速化]** を選択し、**[保存]** をクリックします。
 
 > [!Note]
 > DSA には追加料金が発生します。 詳細については、「[Content Delivery Network の価格](https://azure.microsoft.com/pricing/details/cdn/)」をご覧ください。
@@ -157,7 +157,7 @@ DSA では、配信元の応答に `Cache-Control` ヘッダーまたは `Expire
 
 キャッシュ規則にアクセスするには:
 
-1. **[CDN のプロファイル]** ページの設定で、 **[キャッシュ規則]** を選びます。  
+1. **[CDN のプロファイル]** ページの設定で、**[キャッシュ規則]** を選びます。  
     
     ![CDN の [キャッシュ規則] ボタン](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
@@ -175,7 +175,7 @@ DSA では、配信元の応答に `Cache-Control` ヘッダーまたは `Expire
 
     CDN 管理ポータルが開きます。
 
-2. CDN 管理ポータルで、 **[ADN]** を選択し、 **[ルール エンジン]** を選択します。 
+2. CDN 管理ポータルで、**[ADN]** を選択し、**[ルール エンジン]** を選択します。 
 
     ![DSA のルール エンジン](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
 
@@ -183,4 +183,4 @@ DSA では、配信元の応答に `Cache-Control` ヘッダーまたは `Expire
 
 2 つの CDN エンドポイントを使用することもできます。DSA を使用して最適化された一方のエンドポイントでは動的資産を配信し、静的な最適化 (一般的な Web 配信など) を使用して最適化されたもう一方のエンドポイントではキャッシュ可能な資産を配信します。 Web ページの URL を変更して、使用する予定の CDN エンドポイントの資産に直接リンクします。 
 
-例: `mydynamic.azureedge.net/index.html` は動的ページであり、DSA エンドポイントから読み込まれます。    この html ページは、静的な CDN エンドポイント (`mystatic.azureedge.net/banner.jpg` や `mystatic.azureedge.net/scripts.js` など) から読み込まれる JavaScript ライブラリや画像などの複数の静的資産を参照しています。
+例: `mydynamic.azureedge.net/index.html` は動的ページであり、DSA エンドポイントから読み込まれます。  この html ページは、静的な CDN エンドポイント (`mystatic.azureedge.net/banner.jpg` や `mystatic.azureedge.net/scripts.js` など) から読み込まれる JavaScript ライブラリや画像などの複数の静的資産を参照しています。

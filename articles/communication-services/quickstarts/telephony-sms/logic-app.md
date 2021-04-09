@@ -6,15 +6,15 @@ author: tophpalmer
 manager: anvalent
 services: azure-communication-services
 ms.author: chpalm
-ms.date: 10/06/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 24926640de3b50823dfeaf195500f33b49aebc18
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 11cce223a0802c20c5fc144eed681327f989a949
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652719"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103488382"
 ---
 # <a name="quickstart-send-sms-messages-in-azure-logic-apps-with-azure-communication-services"></a>クイックスタート: Azure Communication Services を使用して Azure Logic Apps で携帯ショートメール (SMS) メッセージを送信する
 

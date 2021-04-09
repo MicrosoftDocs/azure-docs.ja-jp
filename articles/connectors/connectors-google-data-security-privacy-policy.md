@@ -7,22 +7,22 @@ ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.openlocfilehash: 2a5204be638f108b40e431b148c9cb97788c4a52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91400759"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Azure Logic Apps における Google コネクタのデータ セキュリティとプライバシー ポリシー
 
-**2020 年 5 月 1 日**以降、Google の[データ セキュリティとプライバシー ポリシー](https://www.blog.google/technology/safety-security/project-strobe/)による変更が、[Gmail コネクタ](/connectors/gmail/)を使用するロジック アプリのワークフローに影響を与える可能性があります。 ロジック アプリで Gmail コンシューマー アカウント (@gmail.com または @googlemail.com で終わる電子メール アドレス) を使用して Gmail コネクタを使用している場合、ロジック アプリで使用できるのは、特定の [Google によって承認されたトリガー、アクション、およびコネクタ](#approved-connectors)のみになります。
+**2020 年 5 月 1 日** 以降、Google の [データ セキュリティとプライバシー ポリシー](https://www.blog.google/technology/safety-security/project-strobe/)による変更が、[Gmail コネクタ](/connectors/gmail/)を使用するロジック アプリのワークフローに影響を与える可能性があります。 ロジック アプリで Gmail コンシューマー アカウント (@gmail.com または @googlemail.com で終わる電子メール アドレス) を使用して Gmail コネクタを使用している場合、ロジック アプリで使用できるのは、特定の [Google によって承認されたトリガー、アクション、およびコネクタ](#approved-connectors)のみになります。
 
 > [!NOTE]
 > ロジック アプリで、G-Suite ビジネス アカウント (カスタム ドメインを使用した電子メール アドレス) を使用して Gmail コネクタを使用している場合、ロジック アプリは影響を受けず、Gmail コネクタの使用に関する制限はありません。
 
 ## <a name="affected-logic-apps"></a>影響を受けるロジック アプリ
 
-Gmail コネクタを使用するロジック アプリがある場合は、影響を受ける可能性のあるロジック アプリに関する電子メールを送信します。 ただし、**2020 年 6 月 15 日**以降、非対応のワークフローはすべて無効になります。 次のいずれかのアクションを取ることができます。
+Gmail コネクタを使用するロジック アプリがある場合は、影響を受ける可能性のあるロジック アプリに関する電子メールを送信します。 ただし、**2020 年 6 月 15 日** 以降、非対応のワークフローはすべて無効になります。 次のいずれかのアクションを取ることができます。
 
 * [このトピックの手順に従って](#update-affected-workflows)、影響を受けるロジック アプリを更新します。 Gmail のトリガーまたはアクションで認証に使用するクライアント ID とクライアント シークレットを提供する Google クライアント アプリを作成する必要があります。
 
@@ -80,7 +80,7 @@ Gmail コンシューマー アカウント、または Google によって承�
 
 クライアント アプリのプロジェクトをセットアップするには、[Google API コンソール ウィザード](https://console.developers.google.com/start/api?id=gmail&credential=client_key)を使用して、指示に従います。 または、詳細な手順については、[Gmail コネクタのテクニカル リファレンス ドキュメント](/connectors/gmail/#authentication-and-bring-your-own-application)の手順を確認してください。
 
-完了すると、独自の**クライアント ID** と**クライアント シークレット**の値を除き、画面は次の例のようになります。これらの値は、ロジック アプリで後ほど使用します。
+完了すると、独自の **クライアント ID** と **クライアント シークレット** の値を除き、画面は次の例のようになります。これらの値は、ロジック アプリで後ほど使用します。
 
 ![Google クライアント アプリのクライアント ID とクライアント シークレット](./media/connectors-google-data-security-privacy-policy/google-api-console.png)
 

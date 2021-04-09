@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: tisande
 ms.openlocfilehash: cb7b2e62a9fabeeca675edb8e6aa356213e0999e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98011396"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB での結合

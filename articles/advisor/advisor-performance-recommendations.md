@@ -4,10 +4,10 @@ description: Azure Advisor のパフォーマンスに関する推奨事項を�
 ms.topic: article
 ms.date: 07/29/2020
 ms.openlocfilehash: 69fd86226375073c71903af5704ef3a635eeaffb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100579913"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる

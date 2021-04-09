@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 8e97fe287335837ad79e6446bb7abf196cda6f75
-  ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+  ms.openlocfilehash: be3cbee5bee706bc10036349950c3b128d007a34
+  ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/03/2021
-  ms.locfileid: "99508118"
+  ms.lasthandoff: 03/13/2021
+  ms.locfileid: "103419628"
 highlightedContent:
   items:
   - title: 音声サービスとは
@@ -44,7 +44,7 @@ conceptualContent:
       text: 音声変換の概要
       url: get-started-speech-to-text.md
     - itemType: overview
-      text: Custom Speech について
+      text: Custom Speech を使用して精度を向上させる
       url: custom-speech-overview.md
     footerLink:
       text: 詳細
@@ -60,6 +60,12 @@ conceptualContent:
     - itemType: how-to-guide
       text: SSML を使用して合成を改善する
       url: speech-synthesis-markup.md
+    - itemType: overview
+      text: カスタム音声を作成する
+      url: custom-neural-voice.md
+    - itemType: how-to-guide
+      text: テキスト読み上げを自然にする
+      url: how-to-audio-content-creation.md
     footerLink:
       text: 詳細
       url: index-text-to-speech.yml
@@ -74,20 +80,6 @@ conceptualContent:
     footerLink:
       text: 詳細
       url: index-speech-translation.yml
-  - title: 意図認識
-    links:
-    - itemType: quickstart
-      text: 音声、意図、エンティティを認識する
-      url: quickstarts/intent-recognition.md
-    - itemType: how-to-guide
-      text: LUIS と C# を使用して音声から意図を認識する
-      url: how-to-recognize-intents-from-speech-csharp.md
-    - itemType: reference
-      text: Language Understanding (LUIS) ポータル
-      url: https://www.luis.ai
-    footerLink:
-      text: 詳細
-      url: index-intent-recognition.yml
   - title: Speaker Recognition
     links:
     - itemType: overview
@@ -107,6 +99,20 @@ conceptualContent:
     - itemType: quickstart
       text: Custom Keyword の概要
       url: custom-keyword-basics.md
+  - title: 意図認識
+    links:
+    - itemType: quickstart
+      text: 音声、意図、エンティティを認識する
+      url: quickstarts/intent-recognition.md
+    - itemType: how-to-guide
+      text: LUIS と C# を使用して音声から意図を認識する
+      url: how-to-recognize-intents-from-speech-csharp.md
+    - itemType: reference
+      text: Language Understanding (LUIS) ポータル
+      url: https://www.luis.ai
+    footerLink:
+      text: 詳細
+      url: index-intent-recognition.yml
   - title: シナリオの詳細
     links:
     - itemType: overview

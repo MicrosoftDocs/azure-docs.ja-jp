@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: harshacs
 ms.custom: MVC
 ms.openlocfilehash: 60c268ba837540eda86a4cbaf6e0ab1c425d90b4
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91814224"
 ---
 # <a name="fail-over--azure-vmware-solution-vms"></a>Azure VMware Solution VM をフェールオーバーする
@@ -69,7 +69,7 @@ ms.locfileid: "91814224"
 ## <a name="run-a-failover-to-azure"></a>Azure へのフェールオーバーを実行する
 
 1. **[設定]**  >  **[レプリケートされたアイテム]** で、フェールオーバーする VM を選択してから、 **[フェールオーバー]** を選びます。
-2. **[フェールオーバー]** で、フェールオーバー先の**復旧ポイント**を選択します。 次のいずれかのオプションを使うことができます。
+2. **[フェールオーバー]** で、フェールオーバー先の **復旧ポイント** を選択します。 次のいずれかのオプションを使うことができます。
    * **Latest**:最初に、Site Recovery に送信されるすべてのデータを処理します。 フェールオーバー後に作成された Azure VM では、フェールオーバーがトリガーされた時点で Site Recovery にレプリケートされたすべてのデータが保持されているため、最も低い復旧ポイントの目標 (RPO) が提供されます。
    * **最後に処理があった時点**:Site Recovery によって処理された最新の復旧ポイントに VM をフェールオーバーします。 このオプションでは、未処理のデータの処理に時間がかからないため、低い RTO (回復ポイントの目標) が提供されます。
    * **最新のアプリ整合性**:このオプションでは、Site Recovery によって処理されたアプリ整合性の最新の復旧ポイントに VM をフェールオーバーします。

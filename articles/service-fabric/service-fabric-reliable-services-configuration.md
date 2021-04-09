@@ -7,10 +7,10 @@ ms.date: 10/02/2017
 ms.author: sumukhs
 ms.custom: devx-track-csharp
 ms.openlocfilehash: cda0a9f988afae58a60bff051885a5eec8afe434
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96023586"
 ---
 # <a name="configure-stateful-reliable-services"></a>ステートフル Reliable Services の構成
@@ -117,7 +117,7 @@ ReplicatorConfig
 | MaxAccumulatedBackupLogSizeInMB |MB |800 |1 つのバックアップ ログ チェーンに含まれるバックアップ ログの最大累積サイズ (MB)。 増分バックアップを実行してバックアップ ログが生成されると関連する完全バックアップ以降の累積バックアップ ログがこのサイズを超える場合は、増分バックアップ要求が失敗します。 そのような場合には、ユーザーは完全バックアップを取得する必要があります。 |
 | SharedLogId |GUID |"" |このレプリカで使用される共有ログ ファイルの識別に使用する一意の GUID を指定します。 通常、サービスではこの設定を使用しないはずですが、 SharedLogId を指定した場合は、SharedLogPath も指定する必要があります。 |
 | SharedLogPath |完全修飾パス名 |"" |このレプリカの共有ログ ファイルが作成される完全修飾パスを指定します。 通常、サービスではこの設定を使用しないはずですが、 SharedLogPath を指定した場合は、SharedLogId も指定する必要があります。 |
-| SlowApiMonitoringDuration |Seconds |該当なし |マネージド API 呼び出しの監視間隔を設定します。 たとえば、バックアップのコールバック関数を用意しておき、 一定時間が経過したときに、警告の状態レポートを Health Manager に送信します。 |
+| SlowApiMonitoringDuration |Seconds |300 |マネージド API 呼び出しの監視間隔を設定します。 たとえば、バックアップのコールバック関数を用意しておき、 一定時間が経過したときに、警告の状態レポートを Health Manager に送信します。 |
 | LogTruncationIntervalSeconds |Seconds |0 |各レプリカでログの切り捨てが開始される、構成可能な間隔です。 ログのサイズだけでなく時間に基づいてログが切り捨てられるようにする場合にも使用されます。 この設定により、リライアブル ディクショナリの削除済みエントリも強制的に消去されます。 そのため、この設定を使用すると、削除済みの項目を適切なタイミングで消去できます。 |
 | EnableStableReads |Boolean |False |安定した読み取りを有効にすると、セカンダリ レプリカは、クォーラムで確認された戻り値に限定されます。 |
 

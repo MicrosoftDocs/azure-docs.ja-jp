@@ -5,10 +5,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 10/13/2016
 ms.openlocfilehash: 3fba7bdaa5db1d812fbcd479e5f1eab50c8d1032
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92215860"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio での頂点実行ビューの使用
@@ -29,7 +29,7 @@ Data Lake Tools for Visual Studio で U-SQL ジョブを開きます。 左下�
   
 !["すべての頂点の実行中の状態" を表示する、頂点実行ビューの上部中央のウィンドウを示すスクリーンショット。](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane2.png)
 
-上部中央のウィンドウには、**すべての頂点の実行中の状態**も表示されます。
+上部中央のウィンドウには、**すべての頂点の実行中の状態** も表示されます。
   
 ![各頂点に関する情報を表示する、頂点実行ビューの下部中央のウィンドウを示すスクリーンショット。](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane3.png)
 

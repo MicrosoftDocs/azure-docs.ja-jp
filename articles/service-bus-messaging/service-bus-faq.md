@@ -4,10 +4,10 @@ description: この記事では、Azure Service Bus に関連する、よく寄�
 ms.topic: article
 ms.date: 01/20/2021
 ms.openlocfilehash: 3a96cf94ca4a7edd115f12b3e2eded11a5894e04
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98693404"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus - よく寄せられる質問 (FAQ)

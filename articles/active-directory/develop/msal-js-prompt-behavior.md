@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 85f5269c3c2616070b826ecc38735c31617db537
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85477551"
 ---
 # <a name="prompt-behavior-in-msaljs-interactive-requests"></a>MSAL.js の対話型要求におけるプロンプト動作
@@ -40,13 +40,13 @@ userAgentApplication.loginRedirect(request);
 
 Azure AD での認証時に、次のプロンプト値が渡されます。
 
-**login**:この値では、認証要求時に資格情報を入力することをユーザーに強制します。
+**login:** 認証要求時に資格情報を入力することをユーザーに強制します。
 
-**select_account**:この値では、セッション内のすべてのアカウントを一覧表示するアカウント選択エクスペリエンスをユーザーに提供します。
+**select_account:** セッション内のすべてのアカウントを一覧表示するアカウント選択エクスペリエンスをユーザーに提供します。
 
-**consent:** この値では、ユーザーがアプリへのアクセス許可を付与できる OAuth 承認のダイアログを起動します。
+**consent:** ユーザーがアプリへのアクセス許可を付与できる OAuth 承認のダイアログを起動します。
 
-**none:** この値では、ユーザーに対話型のプロンプトを常に表示しません。 予期しない動作が発生する可能性があるため、この値を MSAL.js 内の対話型メソッドに渡すことはお勧めしません。 代わりに、`acquireTokenSilent` メソッドを使用して、サイレント呼び出しを実現します。
+**none:** ユーザーに対話型のプロンプトが表示されなくなります。 予期しない動作が発生する可能性があるため、この値を MSAL.js 内の対話型メソッドに渡すことはお勧めしません。 代わりに、`acquireTokenSilent` メソッドを使用して、サイレント呼び出しを実現します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,10 +4,10 @@ description: 専用の App Service ホスティング プランで Azure Functio
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.openlocfilehash: a9f976eda4a551c302ba7df92fbdbbf7a4fce1d7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101704567"
 ---
 # <a name="dedicated-hosting-plans-for-azure-functions"></a>Azure Functions の専用ホスティング プラン
@@ -41,7 +41,7 @@ App Service プランを使用し、VM インスタンスを追加して、手�
 
 ## <a name="app-service-environments"></a>App Service Environment
 
-App Service Environment (ASE) で実行すると、関数を完全に分離し、App Service プランより多い数のインスタンスを利用できます。 開始するには、「[App Service 環境の概要](../app-service/environment/intro.md)」を参照してください。
+App Service Environment (ASE) で実行すると、関数を完全に分離し、App Service プランより多い数のインスタンスを利用できます。 開始するには、「[App Service Environment の概要](../app-service/environment/intro.md)」を参照してください。
 
 関数アプリを仮想ネットワークで実行するだけであれば、[Premium プラン](functions-premium-plan.md)を使用してそれを行うことができます。 詳細については、[Azure Functions のプライベート サイト アクセスの設定](functions-create-private-site-access.md)に関するページを参照してください。 
 

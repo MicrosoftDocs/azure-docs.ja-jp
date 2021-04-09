@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: f5865646200a783e7139bb5e22576ea404f58203
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 733d441705c7c77f0667f88151e96f76975ee0b2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216651"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596401"
 ---
 # <a name="enable-on-demand-bursting"></a>オンデマンドのバーストを有効にする
 
@@ -61,7 +61,7 @@ New-AzDiskUpdateConfig -BurstingEnabled $true | Update-AzDisk -ResourceGroupName
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-オンデマンドのバーストのコマンドレットは、バージョン 2.19.0 以降の [Azure CLI モジュール](https://docs.microsoft.com/cli/azure/install-azure-cli)で使用できます。 別の方法として、[Azure Cloud Shell](https://shell.azure.com/) を使用することもできます。
+オンデマンドのバーストのコマンドレットは、バージョン 2.19.0 以降の [Azure CLI モジュール](/cli/azure/install-azure-cli)で使用できます。 別の方法として、[Azure Cloud Shell](https://shell.azure.com/) を使用することもできます。
 
 ### <a name="create-and-attach-a-on-demand-bursting-data-disk"></a>オンデマンドのバーストを有効にしたデータ ディスクを作成して接続する
 

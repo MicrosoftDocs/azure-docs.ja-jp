@@ -7,10 +7,10 @@ ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
 ms.openlocfilehash: 46a1e99a7bc75efa85fcb5eff649c14af5abd17b
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96930502"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>カスタマー マネージド キーを使用して App Configuration データを暗号化する

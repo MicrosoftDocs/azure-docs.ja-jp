@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
 ms.openlocfilehash: 602bb98f2cdc8a96874eba8dadfa33f3267d19ac
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97746560"
 ---
 # <a name="azure-ddos-protection-standard-features"></a>Azure DDoS Protection Standard の機能

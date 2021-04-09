@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
 ms.openlocfilehash: b22ef4ee0a8b5978bb2ec1c02fadf368815f3014
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102095784"
 ---
 # <a name="configure-voice-assistant-application-using-azure-iot-hub"></a>Azure IoT Hub を使用した音声アシスタント アプリケーションの構成

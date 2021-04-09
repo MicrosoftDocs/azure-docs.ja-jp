@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 02/09/2021
 ms.author: justinha
 ms.openlocfilehash: 3d0f2b44f37cb318be2117b5dc5d8b42b418ff19
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100090991"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) Domain Services に関してよく寄せられる質問 (FAQ)

@@ -17,10 +17,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 10/02/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3f8f9357fff4773467dd93046ece8533514eb444
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92313900"
 ---
 # <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>Azure Notification Hubs を使用してクロスプラットフォーム通知を送信する
@@ -41,7 +41,7 @@ ms.locfileid: "92313900"
 
 テンプレートを使用してクロスプラットフォーム通知を送信するには、次の手順を実行します。
 
-1. Visual Studio の**ソリューション エクスプローラー**で、**Controllers** フォルダーを展開して、*RegisterController.cs* ファイルを開きます。
+1. Visual Studio の **ソリューション エクスプローラー** で、**Controllers** フォルダーを展開して、*RegisterController.cs* ファイルを開きます。
 
 1. `Put` メソッドで新しい登録を作成するコード ブロックを検索し、`switch` の内容を次のコードに置き換えます。
 
@@ -76,7 +76,7 @@ ms.locfileid: "92313900"
 
     このコードは、プラットフォーム固有のメソッドを呼び出して、ネイティブ登録の代わりにテンプレート登録を作成します。 テンプレート登録はネイティブ登録から派生しているため、既存の登録を変更する必要はありません。
 
-1. **ソリューション エクスプローラー**で **Controllers** フォルダーを展開し、**NotificationsController.cs** ファイルを開きます。 `Post` メソッドを次のコードに置き換えます。
+1. **ソリューション エクスプローラー** で **Controllers** フォルダーを展開し、**NotificationsController.cs** ファイルを開きます。 `Post` メソッドを次のコードに置き換えます。
 
     ```csharp
     public async Task<HttpResponseMessage> Post()

@@ -8,10 +8,10 @@ author: mksuni
 ms.author: sumuth
 ms.date: 09/22/2020
 ms.openlocfilehash: 0414aaad5a1cf6edb9c2152eed70f8753946cca1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92546434"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-mysql--single-server"></a>Azure Database for MySQL - 単一サーバーへの接続とクエリの概要
@@ -23,7 +23,7 @@ ms.locfileid: "92546434"
 | クイック スタート | 説明 |
 |---|---|
 |[MySQL Workbench](connect-workbench.md)|このクイックスタートでは、MySQL Workbench クライアントを使用してデータベースに接続する方法を示します。 その後、MySQL ステートメントを使用して、データベース内のデータの照会、挿入、更新、削除を実行できます。|
-|[Azure Cloud Shell](./quickstart-create-mysql-server-database-using-azure-cli.md#connect-to-azure-database-for-mysql-server-using-mysql-command-line-client)|この記事では、 [Azure Cloud Shell](../cloud-shell/overview.md) で **mysql.exe** を実行してサーバーに接続し、ステートメントを実行してデータベース内のデータを照会、挿入、更新、削除する方法について説明します。|
+|[Azure Cloud Shell](./quickstart-create-mysql-server-database-using-azure-cli.md#connect-to-azure-database-for-mysql-server-using-mysql-command-line-client)|この記事では、[Azure Cloud Shell](../cloud-shell/overview.md) で **mysql.exe** を実行してサーバーに接続し、ステートメントを実行してデータベース内のデータを照会、挿入、更新、削除する方法について説明します。|
 |[Visual Studio での MySQL](https://www.mysql.com/why-mysql/windows/visualstudio)|Visual Studio で MySQL を使用して、MySQL サーバーに接続できます。 Visual Studio 用の MySQL はサーバー エクスプローラーに直接統合されており、新しい接続を簡単にセットアップして、データベース オブジェクトを操作できます。|
 |[PHP](connect-php.md)|このクイックスタートでは、PHP を使用してプログラムを作成してデータベースに接続し、MySQL ステートメントを使用してデータに対してクエリを実行する方法について説明します。|
 |[Java](connect-java.md)|このクイックスタートでは、Java を使用してデータベースに接続した後、MySQL ステートメントを使用してデータに対してクエリを実行する方法について説明します。|

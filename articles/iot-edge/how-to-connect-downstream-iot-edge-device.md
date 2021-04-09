@@ -4,7 +4,7 @@ description: Azure IoT Edge ゲートウェイ デバイスに接続するよう
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
@@ -12,19 +12,23 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 1258fd4b5c69b399b70d1f2db1be63765771e631
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 382cdf87016044748685e5e64ff04ebac53f018d
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629405"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199137"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>ダウンストリーム IoT Edge デバイスを Azure IoT Edge ゲートウェイに接続する (プレビュー)
+
+[!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 この記事では、IoT Edge ゲートウェイとダウンストリーム IoT Edge デバイス間の信頼関係接続を確立する手順について説明します。
 
 >[!NOTE]
 >この機能には、Linux コンテナーを実行している IoT Edge バージョン 1.2 (プレビュー段階) が必要です。
+>
+>この記事は、IoT Edge バージョン 1.2 の最新のプレビュー リリースを反映しています。 デバイスで [1.2.0-rc4](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc4) 以降のバージョンが実行されていることを確認します。 デバイスで最新のプレビュー バージョンを取得する手順については、[Azure IoT Edge For Linux (バージョン 1.2) のインストール](how-to-install-iot-edge.md)または [IoT Edge をバージョン 1.2 への更新](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12)に関する記事を参照してください。
 
 ゲートウェイのシナリオでは、IoT Edge デバイスはゲートウェイとダウンストリーム デバイスの両方になることができます。 複数の IoT Edge ゲートウェイを階層化して、デバイスの階層を作成することができます。 ダウンストリーム (または子) デバイスは、そのゲートウェイ (または親) デバイスを介してメッセージの認証や送受信を行うことができます。
 
@@ -103,9 +107,6 @@ Azure CLI の [azure-iot](/cli/azure/ext/azure-iot) 拡張機能には、IoT リ
 * ルート証明書チェーンに含める **中間証明書**。
 * ルートおよび中間証明書によって生成される **デバイス CA 証明書** とその **秘密キー**。 ゲートウェイ階層内の IoT Edge デバイスごとに、一意のデバイス CA 証明書が 1 つ必要です。
 
->[!NOTE]
->現時点では、libiothsm の制限により、2038 年 1 月 1 日以降に有効期限が切れる証明書は使用できません。
-
 自己署名証明機関を使用するか、Baltimore、Verisign、Digicert、GlobalSign などの信頼できる商用証明機関から購入することができます。
 
 使用できる独自の証明書がない場合は、[IoT Edge デバイスの機能をテストするためのデモ証明書を作成](how-to-create-test-certificates.md)できます。 その記事の手順に従って、ルートと中間証明書のセットを 1 つ作成し、デバイスごとに IoT Edge デバイス CA 証明書を作成します。
@@ -124,7 +125,7 @@ IoT Edge は自分のデバイスに既にインストールされている必�
 
 次の手順を使用して、お使いのデバイスで IoT Edge を構成します。
 
-Linux では、ユーザー **iotedge** に、証明書とキーが保持されているディレクトリの読み取り権限があることを確認します。
+ユーザー **iotedge** に、証明書とキーが保持されているディレクトリの読み取り権限があることを確認します。
 
 1. この IoT Edge デバイスに **ルート CA 証明書** をインストールします。
 
@@ -140,19 +141,16 @@ Linux では、ユーザー **iotedge** に、証明書とキーが保持され�
 
    このコマンドにより、1 つの証明書が /etc/ssl/certs に追加されたことが出力されます。
 
-1. IoT Edge セキュリティ デーモン構成ファイルを開きます。
+1. IoT Edge 構成ファイルを開きます。
 
    ```bash
-   sudo nano /etc/iotedge/config.yaml
+   sudo nano /etc/aziot/config.toml
    ```
 
-1. config.yaml ファイルで **certificates** セクションを見つけます。 目的の証明書を参照するように 3 つの証明書フィールドを更新します。 ファイルの URI パスを指定します。これは、`file:///<path>/<filename>` の形式を取ります。
+   >[!TIP]
+   >構成ファイルがデバイスにまだ存在しない場合は、`/etc/aziot/config.toml.edge.template` をテンプレートとして使用して作成します。
 
-   * **device_ca_cert**: このデバイスに固有のデバイス CA 証明書へのファイル URI パス。
-   * **device_ca_pk**: このデバイスに固有のデバイス CA 秘密キーへのファイル URI パス。
-   * **trusted_ca_certs**: ゲートウェイ階層内のすべてのデバイスで共有されているルート CA 証明書へのファイル URI パス。
-
-1. config.yaml ファイルで **hostname** パラメーターを見つけます。 hostname を、IoT Edge デバイスの完全修飾ドメイン名 (FQDN) または IP アドレスになるように更新します。
+1. 構成ファイルで **ホスト名** セクションを見つけます。 `hostname` パラメーターが含まれる行をコメント解除し、IoT Edge デバイスの完全修飾ドメイン名 (FQDN) または IP アドレスになるように、値を更新します。
 
    このパラメーターの値は、このゲートウェイに接続するためにダウンストリーム デバイスによって使用されるものです。 hostname には既定でマシン名が使用されますが、ダウンストリーム デバイスを接続するために FQDN または IP アドレスが必要です。
 
@@ -160,33 +158,38 @@ Linux では、ユーザー **iotedge** に、証明書とキーが保持され�
 
    ゲートウェイ階層全体のホスト名パターンとの一貫性を確保します。 FQDN または IP アドレスのいずれか (両方ではない) を使用します。
 
-1. **このデバイスが子デバイスの場合は**、**parent_hostname** パラメーターを見つけます。 親デバイスの FQDN または IP アドレスになるように **parent_hostname** フィールドを更新します (親の config.yaml ファイルに hostname として指定されたものと一致させます)。
+1. "*このデバイスが子デバイスの場合は*"、**親ホスト名** セクションを見つけます。 コメント解除して、`parent_hostname` パラメーターが、親デバイスの FQDN または IP アドレスになるように更新します (親デバイスの構成ファイルでホスト名として指定されたものと一致させます)。
+
+1. **信頼バンドル証明書** セクションを見つけます。 コメント解除し、ファイルの URI を使用して、`trust_bundle_cert` パラメーターをデバイスのルート CA 証明書に更新します。
 
 1. この機能はパブリック プレビュー段階にありますが、起動したときに IoT Edge エージェントのパブリック プレビュー バージョンが使用されるように IoT Edge デバイスを構成する必要があります。
 
-   **agent** yaml セクションを見つけ、イメージ値をパブリック プレビュー イメージに更新します。
+   **既定の Edge エージェント** セクションを見つけ、イメージ値をパブリック プレビュー イメージに更新します。
 
-   ```yml
-   agent:
-     name: "edgeAgent"
-     type: "docker"
-     env: {}
-     config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
-       auth: {}
+   ```toml
+   [agent.config]
+   image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4"
    ```
 
-1. config.yaml ファイルを保存 (`Ctrl+O`) して閉じます (`Ctrl+X`)。
+1. 構成ファイルで、**Edge CA 証明書** セクションを見つけます。 このセクションの行をコメント解除し、IoT Edge デバイス上の証明書とキー ファイルにファイル URI パスを指定します。
+
+   ```toml
+   [edge_ca]
+   cert = "file:///<path>/<device CA cert>"
+   pk = "file:///<path>/<device CA key>"
+   ```
+
+1. 構成ファイルを保存 (`Ctrl+O`) して閉じます(`Ctrl+X`)。
 
 1. 以前に IoT Edge に他の証明書を使用していた場合は、次の 2 つのディレクトリ内のファイルを削除して、新しい証明書が適用されるようにします。
 
-   * `/var/lib/iotedge/hsm/certs`
-   * `/var/lib/iotedge/hsm/cert_keys`
+   * `/var/lib/aziot/certd/certs`
+   * `/var/lib/aziot/keyd/keys`
 
-1. IoT Edge サービスを再起動して、変更を適用します。
+1. 変更を適用します。
 
    ```bash
-   sudo systemctl restart iotedge
+   sudo iotedge config apply
    ```
 
 1. 構成にエラーがあるかどうかを確認します。
@@ -202,7 +205,7 @@ Linux では、ユーザー **iotedge** に、証明書とキーが保持され�
 
 この機能はパブリック プレビュー段階にありますが、IoT Edge ランタイム モジュールのパブリック プレビュー バージョンが使用されるように IoT Edge デバイスを構成する必要があります。 前のセクションで、起動時に edgeAgent を構成する手順について説明しています。 また、デバイスのデプロイでランタイム モジュールを構成する必要もあります。
 
-1. パブリック プレビュー イメージが使用されるように edgeHub モジュールを構成します: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2`。
+1. パブリック プレビュー イメージが使用されるように edgeHub モジュールを構成します: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`。
 
 1. EdgeHub モジュールに対して次の環境変数を構成します。
 
@@ -211,7 +214,7 @@ Linux では、ユーザー **iotedge** に、証明書とキーが保持され�
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. パブリック プレビュー イメージが使用されるように edgeAgent モジュールを構成します: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2`。
+1. パブリック プレビュー イメージが使用されるように edgeAgent モジュールを構成します: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`。
 
 ## <a name="network-isolate-downstream-devices"></a>ネットワークでダウンストリーム デバイスを分離する
 
@@ -356,21 +359,20 @@ API プロキシ モジュールは、1 つのレジストリ モジュールに
 
 IoT Edge エージェントは、すべての IoT Edge デバイス上で起動する最初のランタイム コンポーネントです。 ダウンストリームの IoT Edge デバイスが起動時に edgeAgent モジュール イメージにアクセスし、その後、デプロイにアクセスして残りのモジュール イメージを開始できるようにする必要があります。
 
-IoT Edge デバイス上の config.yaml ファイルにアクセスして認証情報、証明書、および親ホスト名を指定するときに、edgeAgent コンテナーイメージも更新します。
+IoT Edge デバイス上の構成ファイルにアクセスして認証情報、証明書、および親ホスト名を指定するときに、edgeAgent コンテナーイメージも更新します。
 
 コンテナー イメージ要求を処理するように最上位レベルのゲートウェイ デバイスが構成されている場合は、`mcr.microsoft.com` を親ホスト名と API プロキシのリスニング ポートに置き換えます。 配置マニフェストで `$upstream` をショートカットとして使用できますが、そのためには、ルーティングを処理するために edgeHub モジュールが必要であり、この時点ではそのモジュールは開始されていません。 次に例を示します。
 
-```yml
-agent:
-  name: "edgeAgent"
-  type: "docker"
-  env: {}
-  config:
-    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc2"
-    auth: {}
+```toml
+[agent]
+name = "edgeAgent"
+type = "docker"
+
+[agent.config]
+image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc4"
 ```
 
-ローカル コンテナー レジストリを使用している場合、またはデバイスでコンテナー イメージを手動で提供している場合は、それに応じて config.yaml ファイルを更新してください。
+ローカル コンテナー レジストリを使用している場合、またはデバイスでコンテナー イメージを手動で提供している場合は、それに応じて構成ファイルを更新してください。
 
 #### <a name="configure-runtime-and-deploy-proxy-module"></a>ランタイムを構成してプロキシ モジュールをデプロイする
 

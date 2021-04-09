@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 061b190af6e66cf0c7e8095251a3ef77d9aaf247
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 3a8429d9dc6820b1f79c49d325872b61833f988d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341687"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095546"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>FAQ - Azure Security Center に関する一般的な質問
 
@@ -46,14 +46,14 @@ Azure Security Center は、次の Azure リソースを監視します。
 
 
 
-## <a name="what-is-a-security-policy"></a>セキュリティ ポリシーとは何ですか。
-セキュリティ ポリシーは、指定されたサブスクリプション内のリソースに対して推奨されるコントロールのセットを定義します。 Azure Security Center では、セキュリティに関する会社の要件、各サブスクリプションでのアプリケーションの種類やデータの機密度に合わせて Azure サブスクリプションのポリシーを定義します。
+## <a name="what-is-a-security-initiative"></a>セキュリティ イニシアチブとは
+セキュリティ イニシアチブは、指定されたサブスクリプション内のリソースに対して推奨されるコントロール (ポリシー) のセットを定義します。 Azure Security Center では、セキュリティに関する会社の要件、各サブスクリプションでのアプリケーションの種類やデータの機密度に合わせて Azure サブスクリプションにイニシアチブを割り当てます。
 
-Azure Security Center で有効になっているセキュリティ ポリシーが、セキュリティに関する推奨事項と監視を促進します。 セキュリティ ポリシーの詳細については、 [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) を参照してください。
+Azure Security Center で有効になっているセキュリティ ポリシーが、セキュリティに関する推奨事項と監視を促進します。 詳細については、「[セキュリティ ポリシー、イニシアチブ、および推奨事項とは](security-policy-concept.md)」を参照してください。
 
 
 ## <a name="who-can-modify-a-security-policy"></a>セキュリティ ポリシーを変更できるのは誰ですか。
-セキュリティ ポリシーを変更するには、**セキュリティ管理者**であるか、そのサブスクリプションの**所有者**である必要があります。
+セキュリティ ポリシーを変更するには、**セキュリティ管理者** であるか、そのサブスクリプションの **所有者** である必要があります。
 
 セキュリティ ポリシーを構成する方法については、 [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) を参照してください。
 

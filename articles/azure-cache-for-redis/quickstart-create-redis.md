@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
 ms.openlocfilehash: 24de9e4eabfbc03e942868cce7560b5df093e1ad
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100365125"
 ---
 # <a name="quickstart-create-an-open-source-redis-cache"></a>クイックスタート: オープンソースの Redis キャッシュを作成する

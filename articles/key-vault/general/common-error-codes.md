@@ -10,10 +10,10 @@ ms.topic: reference
 ms.date: 09/29/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 9ae13b88d767e43c425ceb86d0be455cebc0e6ac
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96462532"
 ---
 # <a name="common-error-codes-for-azure-key-vault"></a>Azure Key Vault の一般的なエラー コード

@@ -10,10 +10,10 @@ ms.date: 04/05/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurepowershell
 ms.openlocfilehash: dc76798ff97aa49d358b639557255b41872bab4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89070906"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-powershell"></a>PowerShell を使用して単一ゾーン仮想マシン スケール セットを作成する

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 3d102b492326971ef186ba50a557ad8d1df5b6ec
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454199"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egnyte"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Egnyte の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Egnyte では、 **SP** Initiated SSO がサポートされます
+* Egnyte では、**SP** Initiated SSO がサポートされます
 * Egnyte を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 > [!NOTE]
@@ -53,12 +53,12 @@ Azure AD への Egnyte の統合を構成するには、ギャラリーから管
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Egnyte** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Egnyte**」と入力します。
 1. 結果のパネルから **[Egnyte]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Egnyte で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Egnyte で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Egnyte 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Egnyte で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -145,11 +145,11 @@ Egnyte に対する Azure AD SSO を構成してテストするには、次の�
    
     ![設定 1](./media/egnyte-tutorial/ic787819.png "設定")
 
-3. メニューで、[ **設定** ] をクリックします。
+3. メニューで、[**設定**] をクリックします。
 
     ![設定](./media/egnyte-tutorial/ic787820.png "設定")
 
-4. **[構成]** タブをクリックし、 **[セキュリティ]** をクリックします。
+4. **[構成]** タブをクリックし、**[セキュリティ]** をクリックします。
 
     ![Security](./media/egnyte-tutorial/ic787821.png "セキュリティ")
 
@@ -157,9 +157,9 @@ Egnyte に対する Azure AD SSO を構成してテストするには、次の�
 
     ![シングル サインオン認証](./media/egnyte-tutorial/ic787822.png "シングル サインオン認証")   
     
-    a. [ **シングル サインオン認証** ] として [ **SAML 2.0** ] を選択します。
+    a. [**シングル サインオン認証**] として [**SAML 2.0**] を選択します。
    
-    b. [ **Id プロバイダー** ] として [ **AzureAD** ] を選択します。
+    b. [**Id プロバイダー**] として [**AzureAD**] を選択します。
    
     c. Azure portal からコピーした **ログイン URL** を **[ID プロバイダーのログイン URL]** テキスト ボックス内に貼り付けます。
    
@@ -169,7 +169,7 @@ Egnyte に対する Azure AD SSO を構成してテストするには、次の�
    
     f. **[既定のユーザー マッピング]** として **[電子メール アドレス]** を選択します。
    
-    g. **[ドメイン固有の発行者の値を使用]** として、 **[無効]** を選択します。
+    g. **[ドメイン固有の発行者の値を使用]** として、**[無効]** を選択します。
    
     h. **[保存]** をクリックします。
 
@@ -191,9 +191,9 @@ Azure AD ユーザーが Egnyte にサインインできるようにするには
     
     ![新しい標準ユーザー](./media/egnyte-tutorial/ic787825.png "[新しい標準ユーザー]")   
 
-    a. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **Brittasimon\@contoso.com** ) を入力します。
+    a. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **Brittasimon\@contoso.com**) を入力します。
 
-    b. **[ユーザー名]** テキスト ボックスにユーザー名 ( **Brittasimon** など) を入力します。
+    b. **[ユーザー名]** テキスト ボックスにユーザー名 (**Brittasimon** など) を入力します。
 
     c. **[Authentication Type]\(認証の種類\)** として **[シングル サインオン]** を選択します。
    

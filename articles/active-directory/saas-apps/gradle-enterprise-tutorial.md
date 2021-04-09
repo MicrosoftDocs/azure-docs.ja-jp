@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 3a13b6dbe5834dd4400f4aa105c4e1faed1d8d0e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96178859"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-gradle-enterprise"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Gradle Enterprise の統合

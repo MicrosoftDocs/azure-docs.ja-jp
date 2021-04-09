@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4c26d5accce77ce6fd8c9b6c2b519b93f95013ce
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97895174"
 ---
 # <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>Azure VMware Solution by CloudSimple ポータルでアカウントを管理する
@@ -27,11 +27,11 @@ Cloudsimple ポータルでアカウントを管理するには、[ポータル�
 
 プライベート クラウドの構成への変更について通知するユーザーのメール アドレスを追加することができます。
 
-1. **[Additional email alerts]\(追加のメール アラート\)** 領域で、 **[新規追加]** をクリックします。
+1. **[Additional email alerts]\(追加のメール アラート\)** 領域で、**[新規追加]** をクリックします。
 2. メール アドレスを入力します。
 3. Return キーを押します。  
 
-エントリを削除するには、 **[X]** をクリックします。
+エントリを削除するには、**[X]** をクリックします。
 
 ## <a name="cloudsimple-operator-access"></a>CloudSimple 演算子へのアクセス
 

@@ -9,10 +9,10 @@ ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 1b233028b52175842c73660ff116ac592d8296e0
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90603358"
 ---
 # <a name="choose-a-tool-for-moving-azure-resources"></a>Azure リソースを移動するためのツールを選択する

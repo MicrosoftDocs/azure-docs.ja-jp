@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: e69a55fa5ead1a6fe2788f0ea29dbf9434d2fe27
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92457590"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atomic-learning"></a>チュートリアル: Azure Active Directory と Atomic Learning の統合
@@ -41,8 +41,8 @@ Atomic Learning と Azure AD の統合を構成するには、次のものが必
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Atomic Learning では、 **SP** によって開始される SSO がサポートされます
-* Atomic Learning では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Atomic Learning では、**SP** によって開始される SSO がサポートされます
+* Atomic Learning では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-atomic-learning-from-the-gallery"></a>ギャラリーからの Atomic Learning の追加
 
@@ -62,13 +62,13 @@ Azure AD への Atomic Learning の統合を構成するには、ギャラリー
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Atomic Learning** 」と入力し、結果パネルで **[Atomic Learning]** を選んでから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Atomic Learning**」と入力し、結果パネルで **[Atomic Learning]** を選んでから、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Atomic Learning](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** という名前のテスト ユーザーに基づいて、Atomic Learning で Azure AD のシングル サインオンを構成およびテストします。
+このセクションでは、**Britta Simon** という名前のテスト ユーザーに基づいて、Atomic Learning で Azure AD のシングル サインオンを構成およびテストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Atomic Learning 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Atomic Learning で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -86,7 +86,7 @@ Atomic Learning で Azure AD のシングル サインオンを構成してテ�
 
 Atomic Learning で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Atomic Learning** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Atomic Learning** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -141,7 +141,7 @@ Atomic Learning で Azure AD シングル サインオンを構成するには�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -153,7 +153,7 @@ Atomic Learning で Azure AD シングル サインオンを構成するには�
 
 このセクションでは、Atomic Learning へのアクセス権を付与することによって、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Atomic Learning]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Atomic Learning]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

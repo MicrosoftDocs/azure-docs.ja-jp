@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ff2d7f45626055cdbc98ca944eecaa01f9bd052b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: be86e04359c29696d208994d85d36b7740b60cc3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459205"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101646216"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-confluence"></a>チュートリアル:Azure Active Directory と Kantega SSO for Confluence の統合
 
@@ -41,7 +41,7 @@ Kantega SSO for Confluence と Azure AD の統合を構成するには、次の�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Kantega SSO for Confluence では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Kantega SSO for Confluence では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-kantega-sso-for-confluence-from-the-gallery"></a>ギャラリーからの Kantega SSO for Confluence の追加
 
@@ -61,13 +61,13 @@ Azure AD への Kantega SSO for Confluence の統合を構成するには、ギ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Kantega SSO for Confluence** 」と入力し、結果パネルで **[Kantega SSO for Confluence]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Kantega SSO for Confluence**」と入力し、結果パネルで **[Kantega SSO for Confluence]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Kantega SSO for Confluence](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーを基に、Kantega SSO for Confluence で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーを基に、Kantega SSO for Confluence で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Kantega SSO for Confluence 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Kantega SSO for Confluence で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -130,7 +130,7 @@ Kantega SSO for Confluence で Azure AD のシングル サインオンを構成
 
 ### <a name="configure-kantega-sso-for-confluence-single-sign-on"></a>Kantega SSO for Confluence のシングル サインオンの構成
 
-1. 別の Web ブラウザー ウィンドウで、 **Confluence 管理者ポータル** に管理者としてサインインします。
+1. 別の Web ブラウザー ウィンドウで、**Confluence 管理者ポータル** に管理者としてサインインします。
 
 1. 歯車をポイントし、 **[Add-ons]\(アドオン\)** をクリックします。
 
@@ -238,7 +238,7 @@ Kantega SSO for Confluence で Azure AD のシングル サインオンを構成
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

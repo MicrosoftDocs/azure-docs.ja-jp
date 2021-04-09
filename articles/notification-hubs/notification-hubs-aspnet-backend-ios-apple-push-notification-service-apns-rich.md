@@ -16,10 +16,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 33626b7aee615d07ef88dd9fbca46e6512e2cafc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90090365"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs のリッチなプッシュ
@@ -135,7 +135,7 @@ ms.locfileid: "90090365"
     ```
 
 8. 次に、このアプリを Azure Web サイトにもう一度デプロイして、すべてのデバイスからアクセスできるようにします。 **AppBackend** プロジェクトを右クリックして **[発行]** を選択します。
-9. 発行先として **Azure Web サイト**を選択します。 Azure アカウントでサインインし、既存または新規の Web サイトを選択します。 **[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。この URL は、このチュートリアルの後半で "*バックエンド エンドポイント*" として参照します。 **[発行]** を選びます。
+9. 発行先として **Azure Web サイト** を選択します。 Azure アカウントでサインインし、既存または新規の Web サイトを選択します。 **[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。この URL は、このチュートリアルの後半で "*バックエンド エンドポイント*" として参照します。 **[発行]** を選びます。
 
 ## <a name="modify-the-ios-project"></a>iOS プロジェクトを変更する
 
@@ -146,7 +146,7 @@ ms.locfileid: "90090365"
 
     ![[Capabilities]\(機能\) 画面が表示されている iOS プロジェクトのスクリーンショット。 [Background Modes]\(バックグラウンド モード\) がオンになっており、[Remote notifications]\(リモート通知\) チェックボックスがオンになっている。][IOS3]
 3. `Main.storyboard` を開き、[ユーザーへの通知](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)に関するチュートリアルの View Controller (このチュートリアルでは Home View Controller) があることを確認します。
-4. **Navigation Controller** をストーリーボードに追加し、Home View Controller を Control キーを押しながらドラッグして、ナビゲーションの**ルート ビュー**にします。 Attributes inspector の **[Is Initial View Controller]** が選択されているのが、Navigation Controller のみであることを確認します。
+4. **Navigation Controller** をストーリーボードに追加し、Home View Controller を Control キーを押しながらドラッグして、ナビゲーションの **ルート ビュー** にします。 Attributes inspector の **[Is Initial View Controller]** が選択されているのが、Navigation Controller のみであることを確認します。
 5. **View Controller** をストーリボードに追加し、**Image View** を追加します。 これは、ユーザーが情報を得るために通知をクリックすると表示されるページです。 ストーリーボードは次のようになります。
 
     ![ストーリーボードのスクリーンショット。 ナビゲーション ビュー、ホーム ビュー、および画像ビューの 3 つのアプリ画面が表示されている。][IOS4]

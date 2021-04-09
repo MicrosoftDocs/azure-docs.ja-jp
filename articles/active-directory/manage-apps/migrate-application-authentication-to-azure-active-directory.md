@@ -14,12 +14,12 @@ ms.date: 02/05/2021
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd33f9e0b249db6b7c6bd0a0a556d0bb4cf79312
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 1e05a7af3f0b95470432b4fb9602e1b41da9f72f
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101010"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952968"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>アプリケーション認証を Azure Active Directory に移行する
 
@@ -55,13 +55,13 @@ ms.locfileid: "100101010"
 
 **確実にユーザーがアプリケーションに簡単かつ安全にアクセスできるようにするための目標は、オンプレミスとクラウドの環境全体で 1 セットのアクセス制御とポリシーを使用することです。**
 
-[Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) によって提供されるユニバーサル ID プラットフォームでは、ユーザー、パートナー、顧客に対し、任意のプラットフォームやデバイスから必要なアプリケーションにアクセスして共同作業を行うための 1 つの ID が提供されます。
+[Azure Active Directory (Azure AD)](../fundamentals/active-directory-whatis.md) によって提供されるユニバーサル ID プラットフォームでは、ユーザー、パートナー、顧客に対し、任意のプラットフォームやデバイスから必要なアプリケーションにアクセスして共同作業を行うための 1 つの ID が提供されます。
 
 ![Azure Active Directory の接続の図](media/migrating-application-authentication-to-azure-active-directory-1.jpg)
 
-Azure AD には、[ID 管理機能の完全なスイート](/azure/active-directory/fundamentals/active-directory-whatis#which-features-work-in-azure-ad)が備わっています。 アプリの認証と承認を Azure AD に標準化することで、これらの機能によって提供される利点が得られます。
+Azure AD には、[ID 管理機能の完全なスイート](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad)が備わっています。 アプリの認証と承認を Azure AD に標準化することで、これらの機能によって提供される利点が得られます。
 
-その他の移行リソースについては、[https://aka.ms/migrateapps](https://aka.ms/migrateapps) を参照してください
+その他の移行リソースについては、[https://aka.ms/migrateapps](./migration-resources.md) を参照してください
 
 ## <a name="benefits-of-migrating-app-authentication-to-azure-ad"></a>Azure AD にアプリ認証を移行する利点
 
@@ -71,9 +71,9 @@ Azure AD には、[ID 管理機能の完全なスイート](/azure/active-direct
 
 アプリを保護するには、すべてのリスク要因を完全に把握する必要があります。 アプリを Azure AD に移行すると、セキュリティ ソリューションが統合されます。 これを使用すると、次のことができます。
 
-- [条件付きアクセス ポリシー](/azure/active-directory/active-directory-conditional-access-azure-portal)、[多要素認証](/azure/active-directory/authentication/concept-mfa-howitworks)、リアルタイムのリスクベースの [Identity Protection](/azure/active-directory/active-directory-identityprotection) テクノロジを使用して、アプリケーションおよび関連する企業データへのセキュリティで保護されたユーザー アクセスを強化する。
+- [条件付きアクセス ポリシー](../conditional-access/overview.md)、[多要素認証](../authentication/concept-mfa-howitworks.md)、リアルタイムのリスクベースの [Identity Protection](../identity-protection/overview-identity-protection.md) テクノロジを使用して、アプリケーションおよび関連する企業データへのセキュリティで保護されたユーザー アクセスを強化する。
 
-- [Just-In-Time](/azure/managed-applications/request-just-in-time-access) の管理者アクセスを使用して、環境への特権ユーザーのアクセスを保護する。
+- [Just-In-Time](../../azure-resource-manager/managed-applications/request-just-in-time-access.md) の管理者アクセスを使用して、環境への特権ユーザーのアクセスを保護する。
 
 - 最も重要なビジネス ニーズに応じて、[Azure AD のマルチテナント型で地理的に分散した高可用性の設計](https://cloudblogs.microsoft.com/enterprisemobility/2014/09/02/azure-ad-under-the-hood-of-our-geo-redundant-highly-available-distributed-cloud-directory/)を使用する。
 
@@ -81,34 +81,34 @@ Azure AD には、[ID 管理機能の完全なスイート](/azure/active-direct
 
 ### <a name="manage-cost"></a>コストを管理する
 
-組織に、複数の ID アクセス管理 (IAM) ソリューションが設置されている場合があります。 1 つの Azure AD インフラストラクチャに移行することは、IAM ライセンスへの依存関係 (オンプレミスまたはクラウド内) とインフラストラクチャ コストを削減する機会になります。 M365 ライセンス経由で既に Azure AD に支払っている場合、別の IAM ソリューションの追加コストを支払う理由はありません。
+組織に、複数の ID アクセス管理 (IAM) ソリューションが設置されている場合があります。 1 つの Azure AD インフラストラクチャに移行することは、IAM ライセンスへの依存関係 (オンプレミスまたはクラウド内) とインフラストラクチャ コストを削減する機会になります。 Microsoft 365 ライセンス経由で既に Azure AD に支払っている場合、別の IAM ソリューションの追加コストを支払う理由はありません。
 
 **Azure AD を使用すると、次のようにしてインフラストラクチャのコストを削減できます。**
 
-- [Azure AD アプリケーション プロキシ](/azure/active-directory/manage-apps/application-proxy)を使用して、オンプレミス アプリへのセキュリティで保護されたリモート アクセスを提供する。
+- [Azure AD アプリケーション プロキシ](./application-proxy.md)を使用して、オンプレミス アプリへのセキュリティで保護されたリモート アクセスを提供する。
 
-- [信頼されたユニバーサル ID プロバイダーとして Azure AD を設定する](/azure/active-directory/hybrid/plan-connect-user-signin#choosing-the-user-sign-in-method-for-your-organization)ことによって、テナントのオンプレミスの資格情報アプローチからアプリを分離する。
+- [信頼されたユニバーサル ID プロバイダーとして Azure AD を設定する](../hybrid/plan-connect-user-signin.md#choosing-the-user-sign-in-method-for-your-organization)ことによって、テナントのオンプレミスの資格情報アプローチからアプリを分離する。
 
 ### <a name="increase-productivity"></a>生産性の向上
 
 経済上およびセキュリティ上の利点により、組織での Azure AD の導入が促進されますが、ユーザーも利点を得られる場合は、完全な導入とコンプライアンスの可能性が高くなります。 Azure AD では、次のことができます。
 
-- 任意のデバイスや場所から、任意のアプリケーションにシームレスかつ安全にアクセスすることにより、エンドユーザーの[シングル サインオン (SSO)](/azure/active-directory/manage-apps/what-is-single-sign-on) エクスペリエンスを向上させる。
+- 任意のデバイスや場所から、任意のアプリケーションにシームレスかつ安全にアクセスすることにより、エンドユーザーの[シングル サインオン (SSO)](./what-is-single-sign-on.md) エクスペリエンスを向上させる。
 
-- [セルフサービス パスワード リセット](/azure/active-directory/authentication/concept-sspr-howitworks)や[セルフサービス グループ管理](/azure/active-directory/users-groups-roles/groups-self-service-management)など、セルフサービスの IAM 機能を活用する。
+- [セルフサービス パスワード リセット](../authentication/concept-sspr-howitworks.md)や[セルフサービス グループ管理](../enterprise-users/groups-self-service-management.md)など、セルフサービスの IAM 機能を使用する。
 
 - クラウドとオンプレミスの環境全体のユーザーごとに 1 つの ID のみを管理することで、管理オーバーヘッドを減らす。
 
-  - Azure AD ID に基づく ([Azure AD ギャラリー](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)の) ユーザー アカウントの[自動プロビジョニング](/azure/active-directory/active-directory-saas-app-provisioning)
+  - Azure AD ID に基づく ([Azure AD ギャラリー](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)の) ユーザー アカウントの[自動プロビジョニング](../app-provisioning/user-provisioning.md)
   - [Azure portal](https://portal.azure.com/) の MyApps パネルからすべてのアプリにアクセスする
 
-- 開発者が自分のアプリへのアクセスをセキュリティで保護し、Microsoft Authentication Library (MSAL) で [Microsoft ID プラットフォーム](/azure/active-directory/develop/about-microsoft-identity-platform)を使用して、エンドユーザー エクスペリエンスの向上を可能にする。
+- 開発者が自分のアプリへのアクセスをセキュリティで保護し、Microsoft Authentication Library (MSAL) で [Microsoft ID プラットフォーム](../develop/v2-overview.md)を使用して、エンドユーザー エクスペリエンスの向上を可能にする。
 
-- [Azure AD B2B コラボレーション](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)を使用して、パートナーがクラウド リソースにアクセスできるようにする。 これにより、パートナーとのポイントツーポイント フェデレーションを構成するオーバーヘッドがなくなります。
+- [Azure AD B2B コラボレーション](../external-identities/what-is-b2b.md)を使用して、パートナーがクラウド リソースにアクセスできるようにする。 クラウド リソースにより、パートナーとのポイントツーポイント フェデレーションを構成するオーバーヘッドがなくなります。
 
 ### <a name="address-compliance-and-governance"></a>コンプライアンスとガバナンスに対応する
 
-企業アクセス ポリシーを適用し、統合された監査ツールと API を使用してアプリケーションおよび関連データへのユーザー アクセスを監視することにより、規制要件に確実に準拠するようにします。 Azure AD では、[セキュリティ情報とイベント管理 (SIEM) ツール](/azure/active-directory/reports-monitoring/plan-monitoring-and-reporting)を活用したレポート経由で、アプリケーション サインインを監視できます。 ポータルまたは API からレポートにアクセスし、アプリケーションにアクセスできるユーザーをプログラムで監査し、アクセス レビューを通じて非アクティブなユーザーへのアクセスを削除できます。
+企業アクセス ポリシーを適用し、統合された監査ツールと API を使用してアプリケーションおよび関連データへのユーザー アクセスを監視することにより、規制要件に確実に準拠するようにします。 Azure AD では、[セキュリティ情報とイベント管理 (SIEM) ツール](../reports-monitoring/plan-monitoring-and-reporting.md)を使用したレポート経由で、アプリケーション サインインを監視できます。 ポータルまたは API からレポートにアクセスし、アプリケーションにアクセスできるユーザーをプログラムで監査し、アクセス レビューを通じて非アクティブなユーザーへのアクセスを削除できます。
 
 ## <a name="plan-your-migration-phases-and-project-strategy"></a>移行フェーズとプロジェクト戦略を計画する
 
@@ -214,11 +214,11 @@ Azure AD には、[ID 管理機能の完全なスイート](/azure/active-direct
 
 **Active Directory フェデレーション サービス (AD FS) を使用して、正しいアプリ インベントリを収集するには、次のようにします。**
 
-- **Azure AD Connect Health を使用する**。 Azure AD Premium ライセンスをお持ちの場合は、オンプレミス環境でアプリの使用状況を分析するために [Azure AD Connect Health](/azure/active-directory/hybrid/how-to-connect-health-adfs) をデプロイすることをお勧めします。 [ADFS アプリケーション レポート](/azure/active-directory/manage-apps/migrate-adfs-application-activity) (プレビュー) を使用して、移行可能な ADFS アプリケーションを検出し、移行するアプリケーションの準備状況を評価することができます。 移行の完了後にクラウドに移動したら、組織内のシャドウ IT を継続的に監視できるように [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery) をデプロイします。
+- **Azure AD Connect Health を使用する**。 Azure AD Premium ライセンスをお持ちの場合は、オンプレミス環境でアプリの使用状況を分析するために [Azure AD Connect Health](../hybrid/how-to-connect-health-adfs.md) をデプロイすることをお勧めします。 [ADFS アプリケーション レポート](./migrate-adfs-application-activity.md) (プレビュー) を使用して、移行可能な ADFS アプリケーションを検出し、移行するアプリケーションの準備状況を評価することができます。 移行の完了後にクラウドに移動したら、組織内のシャドウ IT を継続的に監視できるように [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery) をデプロイします。
 
-- **AD FS ログの解析**。 Azure AD Premium ライセンスをお持ちでない場合は、[PowerShell](https://github.com/AzureAD/Deployment-Plans/tree/master/ADFS%20to%20AzureAD%20App%20Migration) に基づく ADFS から Azure AD へのアプリの移行ツールを使用することをお勧めします。 この[ソリューション ガイド](https://aka.ms/migrateapps/adfssolutionguide)を参照してください:
+- **AD FS ログの解析**。 Azure AD Premium ライセンスをお持ちでない場合は、[PowerShell](https://github.com/AzureAD/Deployment-Plans/tree/master/ADFS%20to%20AzureAD%20App%20Migration) に基づく ADFS から Azure AD へのアプリの移行ツールを使用することをお勧めします。 この[ソリューション ガイド](./migrate-adfs-apps-to-azure.md)を参照してください:
 
-[Active Directory フェデレーション サービス (AD FS) から Azure AD へのアプリの移行](https://aka.ms/migrateapps/adfssolutionguide)に関するページ。
+[Active Directory フェデレーション サービス (AD FS) から Azure AD へのアプリの移行](./migrate-adfs-apps-to-azure.md)に関するページ。
 
 ### <a name="using-other-identity-providers-idps"></a>他の ID プロバイダー (IdP) の使用
 
@@ -234,10 +234,10 @@ Azure AD には、[ID 管理機能の完全なスイート](/azure/active-direct
 
 - **API** - クラウド インフラストラクチャに接続されているアプリでは、それらのシステム上の API とツールを使用して、ホストされているアプリのインベントリを確認できます。 Azure 環境では、次のことを行います。
 
-  - [Get-AzureWebsite](/powershell/module/servicemanagement/azure/get-azurewebsite?view=azuresmps-4.0.0&redirectedfrom=MSDN&preserve-view=true) コマンドレットを使用して、Azure Web サイトに関する情報を取得する。
+  - [Get-AzureWebsite](/powershell/module/servicemanagement/azure.service/get-azurewebsite) コマンドレットを使用して、Azure Web サイトに関する情報を取得する。
 
-  - [Get-AzureRMWebApp](/powershell/module/azurerm.websites/get-azurermwebapp?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.2.0&preserve-view=true) コマンドレットを使用して、Azure Web Apps に関する情報を取得する。
-
+  - [Get-AzureRMWebApp](/powershell/module/azurerm.websites/get-azurermwebapp) コマンドレットを使用して、Azure Web Apps に関する情報を取得する。
+D
   - [Appcmd.exe](/iis/get-started/getting-started-with-iis/getting-started-with-appcmdexe#working-with-sites-applications-virtual-directories-and-application-pools) を使用して、Windows コマンド ラインから Microsoft IIS で実行されているすべてのアプリを見つけることができます。
 
   - [アプリケーション](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)と[サービス プリンシパル](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)を使用して、Azure AD のディレクトリにあるアプリとアプリ インスタンスに関する情報を取得する。
@@ -270,7 +270,7 @@ Azure AD には、[ID 管理機能の完全なスイート](/azure/active-direct
 
 既に最新化されているアプリは、Azure AD に移行される可能性が最も高くなります。 これらのアプリでは既に先進認証プロトコル (SAML や OpenID Connect など) を使用しており、Azure AD で認証するように再構成することができます。
 
-[Azure AD アプリ ギャラリー](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)の選択項目に加えて、組織内に既に存在するアプリや、Azure AD ギャラリーに含まれていないベンダーからのサードパーティ製アプリ ([ギャラリー以外のアプリケーション](/azure/active-directory/manage-apps/add-non-gallery-app)) もあります。
+[Azure AD アプリ ギャラリー](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)の選択項目に加えて、組織内に既に存在するアプリや、Azure AD ギャラリーに含まれていないベンダーからのサードパーティ製アプリ ([ギャラリー以外のアプリケーション](./add-application-portal.md)) もあります。
 
 最新化することを選択したレガシ アプリ
 
@@ -288,13 +288,13 @@ Azure AD には、[ID 管理機能の完全なスイート](/azure/active-direct
 
 - 移動する予定がないオンプレミスの認証標準を使用して開発されたアプリ
 
-Azure AD はこれらのレガシ アプリに大きな利点をもたらすことができます。これらのアプリに対して、そのアプリにまったく触れることなく、[多要素認証](/azure/active-directory/authentication/concept-mfa-howitworks)、[条件付きアクセス](/azure/active-directory/conditional-access/overview)、[Identity Protection](/azure/active-directory/identity-protection/)、[委任されたアプリケーション アクセス](/azure/active-directory/manage-apps/access-panel-manage-self-service-access)、[アクセス レビュー](https://docs.microsoft.com/azure/active-directory/governance/manage-user-access-with-access-reviews#create-and-perform-an-access-review)など、最新の Azure AD セキュリティとガバナンス機能を有効にすることができるからです。
+Azure AD はこれらのレガシ アプリに大きな利点をもたらすことができます。これらのアプリに対して、そのアプリにまったく触れることなく、[多要素認証](../authentication/concept-mfa-howitworks.md)、[条件付きアクセス](../conditional-access/overview.md)、[Identity Protection](../identity-protection/index.yml)、[委任されたアプリケーション アクセス](./access-panel-manage-self-service-access.md)、[アクセス レビュー](../governance/manage-user-access-with-access-reviews.md#create-and-perform-an-access-review)など、最新の Azure AD セキュリティとガバナンス機能を有効にすることができるからです。
 
-まず、シンプルな認証方法 (パスワード保管など) を使用し、Azure AD の [アプリケーション プロキシ](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-password-vaulting)で **これらのアプリをクラウドに拡張** してユーザーを迅速に移行するか、既にデプロイされている可能性のあるアプリケーション配信コントローラーとの[パートナー統合](https://azure.microsoft.com/services/active-directory/sso/secure-hybrid-access/)を利用します。
+まず、シンプルな認証方法 (パスワード保管など) を使用し、Azure AD の [アプリケーション プロキシ](./application-proxy-configure-single-sign-on-password-vaulting.md)で **これらのアプリをクラウドに拡張** してユーザーを迅速に移行するか、既にデプロイされている可能性のあるアプリケーション配信コントローラーとの [パートナー統合](https://azure.microsoft.com/services/active-directory/sso/secure-hybrid-access/)を利用します。
 
 ### <a name="new-line-of-business-lob-apps"></a>新しい基幹業務 (LoB) アプリ
 
-通常は、組織の社内で使用する LoB アプリを開発します。 パイプラインに新しいアプリがある場合は、[Microsoft ID プラットフォーム](/azure/active-directory/develop/about-microsoft-identity-platform)を使用して OpenID Connect を実装することをお勧めします。
+通常は、組織の社内で使用する LoB アプリを開発します。 パイプラインに新しいアプリがある場合は、[Microsoft ID プラットフォーム](../develop/v2-overview.md)を使用して OpenID Connect を実装することをお勧めします。
 
 ### <a name="apps-to-deprecate"></a>非推奨にするアプリ
 
@@ -304,7 +304,7 @@ Azure AD はこれらのレガシ アプリに大きな利点をもたらすこ�
 
 - **使用されていないこと** が明らかである。
 
-当然のことですが、**影響が大きい、ビジネスクリティカル アプリケーションは非推奨にしないでください**。 そのような場合は、ビジネス所有者と協力して適切な戦略を決定してください。
+**影響が大きい、ビジネスクリティカル アプリケーションは非推奨にしない** ことをお勧めします。 そのような場合は、ビジネス所有者と協力して適切な戦略を決定してください。
 
 ### <a name="exit-criteria"></a>終了基準
 
@@ -314,12 +314,12 @@ Azure AD はこれらのレガシ アプリに大きな利点をもたらすこ�
 
 - 以下を含むアプリの一覧がある:
 
-  - これらのアプリの接続先はどのシステムか、または、ユーザーはどこからどのデバイスでそれらにアクセスするのか
-
-  - それらを移行するか、非推奨にするか、[Azure AD Connect](/azure/active-directory/hybrid/whatis-azure-ad-connect) に接続するか。
+  - これらのアプリの接続先はどのシステムか
+  - ユーザーはどこからどのデバイスでそれらにアクセスするのか
+  - それらを移行するか、非推奨にするか、[Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) に接続するか。
 
 > [!NOTE]
-> [アプリケーション検出ワークシート](https://download.microsoft.com/download/2/8/3/283F995C-5169-43A0-B81D-B0ED539FB3DD/Application%20Discovery%20worksheet.xlsx)をダウンロードして、Azure AD 認証に移行するアプリケーションと、移動はするが [Azure AD Connect](/azure/active-directory/hybrid/whatis-azure-ad-connect) を使用して管理するものを記録できます。
+> [アプリケーション検出ワークシート](https://download.microsoft.com/download/2/8/3/283F995C-5169-43A0-B81D-B0ED539FB3DD/Application%20Discovery%20worksheet.xlsx)をダウンロードして、Azure AD 認証に移行するアプリケーションと、移動はするが [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) を使用して管理するものを記録できます。
 
 ## <a name="phase-2-classify-apps-and-plan-pilot"></a>フェーズ 2:アプリを分類し、パイロットを計画する
 
@@ -351,7 +351,7 @@ Azure AD はこれらのレガシ アプリに大きな利点をもたらすこ�
 
 Azure AD と ID サービスの使用経験がないと思われるシナリオでは、**優先度の最も低いアプリ** を最初に Azure AD に移行することを検討してください。 これにより、ビジネスへの影響が最小限に抑えられ、勢いをつけることができます。 これらのアプリを正常に移動し、利害関係者の信頼を得たら、他のアプリの移行を続けることができます。
 
-明確な優先度がない場合は、最初に [Azure AD ギャラリー](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)にあり、複数の ID プロバイダー (ADFS または Okta) をサポートするアプリを移動することを検討する必要があります。これらは統合が容易であるためです。 これらのアプリは、組織内で **優先度の最も高いアプリ** である可能性があります。 SaaS アプリケーションを Azure AD と統合するのに役立つように、構成手順を示す一連の[チュートリアル](/azure/active-directory/saas-apps/tutorial-list)を作成しました。
+明確な優先度がない場合は、最初に [Azure AD ギャラリー](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)にあり、複数の ID プロバイダー (ADFS または Okta) をサポートするアプリを移動することを検討する必要があります。これらは統合が容易であるためです。 これらのアプリは、組織内で **優先度の最も高いアプリ** である可能性があります。 SaaS アプリケーションを Azure AD と統合するのに役立つように、構成手順を示す一連の[チュートリアル](../saas-apps/tutorial-list.md)を作成しました。
 
 アプリの移行期限がある場合、これらの優先度の最も高いアプリのバケットが主なワークロードになります。 期限をずらしてもコストは変わらないため、最終的に優先度の低いアプリを選択できます。 ライセンスを更新する必要がある場合でも、それはわずかなものです。
 
@@ -399,7 +399,7 @@ Azure AD と ID サービスの使用経験がないと思われるシナリオ�
 
 ### <a name="plan-a-pilot"></a>パイロットを計画する
 
-パイロット用に選択したアプリでは、組織の主要な ID とセキュリティ要件を表す必要があります。また、アプリケーションの所有者からの明確な同意が必要です。 パイロットは通常、別個のテスト環境で実行されます。 デプロイの計画に関するページの「[パイロットのベスト プラクティス](/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot)」を参照してください。
+パイロット用に選択したアプリでは、組織の主要な ID とセキュリティ要件を表す必要があります。また、アプリケーションの所有者からの明確な同意が必要です。 パイロットは通常、別個のテスト環境で実行されます。 デプロイの計画に関するページの「[パイロットのベスト プラクティス](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot)」を参照してください。
 
 **外部のパートナーを忘れないでください。** 彼らが移行スケジュールとテストに参加していることをご確認ください。 最後に、問題が発生した場合に、ヘルプ デスクにアクセスする方法があることを確認します。
 
@@ -409,7 +409,7 @@ Azure AD と ID サービスの使用経験がないと思われるシナリオ�
 
 多くの SaaS アプリ ベンダーは、SSO 接続の変更料を請求します。 彼らに確認し、これについて計画してください。
 
-Azure AD には、注意する必要がある[サービスの制限と制約](/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)もあります。
+Azure AD には、注意する必要がある[サービスの制限と制約](../enterprise-users/directory-service-limits-restrictions.md)もあります。
 
 ### <a name="app-owner-sign-off"></a>アプリ所有者の承認
 
@@ -417,13 +417,13 @@ Azure AD には、注意する必要がある[サービスの制限と制約](/a
 
 ### <a name="plan-the-security-posture"></a>セキュリティ体制を計画する
 
-移行プロセスを開始する前に、企業の ID システム用に開発するセキュリティ体制を十分に検討してください。 これは、これらの重要な情報のセットを収集することに基づいています: **ID とデータ、誰がデータにアクセスしているか、およびデバイスと場所**。
+移行プロセスを開始する前に、企業の ID システム用に開発するセキュリティ体制を十分に検討してください。 これは、これらの重要な情報のセットを収集することに基づいています: **データにアクセスしている ID、デバイス、および場所。**
 
 ### <a name="identities-and-data"></a>ID とデータ
 
-ほとんどの組織には、業界や組織内の職務によって異なる ID とデータ保護に関する特定の要件があります。 [条件付きアクセス ポリシー](/azure/active-directory/active-directory-conditional-access-azure-portal)および関連する機能の所定のセットを含む推奨事項については、「[ID とデバイスのアクセス構成](/microsoft-365/enterprise/microsoft-365-policies-configurations)」を参照してください。
+ほとんどの組織には、業界や組織内の職務によって異なる ID とデータ保護に関する特定の要件があります。 [条件付きアクセス ポリシー](../conditional-access/overview.md)および関連する機能の所定のセットを含む推奨事項については、「[ID とデバイスのアクセス構成](/microsoft-365/enterprise/microsoft-365-policies-configurations)」を参照してください。
 
-この情報を使用して、Azure AD に統合されているすべてのサービスへのアクセスを保護できます。 これらの推奨事項は、[Azure AD の ID スコア](/azure/active-directory/fundamentals/identity-secure-score)だけでなく、Microsoft セキュリティ スコアにも準拠しています。 このスコアは、次のために役立ちます。
+この情報を使用して、Azure AD に統合されているすべてのサービスへのアクセスを保護できます。 これらの推奨事項は、Microsoft セキュリティ スコアと [Azure AD の ID スコア](../fundamentals/identity-secure-score.md)に準拠しています。 このスコアは、次のために役立ちます。
 
 - ID セキュリティ体制を客観的に測定する
 
@@ -431,7 +431,7 @@ Azure AD には、注意する必要がある[サービスの制限と制約](/a
 
 - 強化の成功を確認する
 
-これは、[ID インフラストラクチャをセキュリティで保護するために 5 つの手順](/azure/security/azure-ad-secure-steps)を実装する場合にも役立ちます。 組織の出発点としてガイダンスを使用し、組織固有の要件を満たすようにポリシーを調整します。
+これは、[ID インフラストラクチャをセキュリティで保護するために 5 つの手順](../../security/fundamentals/steps-secure-identity.md)を実装する場合にも役立ちます。 組織の出発点としてガイダンスを使用し、組織固有の要件を満たすようにポリシーを調整します。
 
 ### <a name="who-is-accessing-your-data"></a>誰がデータにアクセスしているか
 
@@ -439,11 +439,11 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 
 - **内部:** ID プロバイダー内にアカウントを持つ従業員、請負業者、およびベンダー。 これには、マネージャーまたはリーダーと他の従業員では規則が異なるピボットがさらに必要になる可能性があります。
 
-- **外部:** [Azure AD B2B コラボレーション](/azure/active-directory/b2b/what-is-b2b)を使用して通常のビジネスで組織とやりとりするベンダー、供給元、販売代理店、またはその他のビジネス パートナー。
+- **外部:** [Azure AD B2B コラボレーション](../external-identities/what-is-b2b.md)を使用して通常のビジネスで組織とやりとりするベンダー、供給元、販売代理店、またはその他のビジネス パートナー。
 
-これらのユーザーのグループを定義し、さまざまな方法でこれらのグループを設定することができます。 管理者がグループにメンバーを手動で追加する必要があるようにするか、あるいは自分でセルフサービス グループのメンバーシップを有効にできるようにするかを選択できます。 [動的グループ](/azure/active-directory/users-groups-roles/groups-dynamic-membership)を使用して、指定された条件に基づいてメンバーをグループに自動的に追加する規則を確立できます。
+これらのユーザーのグループを定義し、さまざまな方法でこれらのグループを設定することができます。 管理者がグループにメンバーを手動で追加する必要があるようにするか、あるいは自分でセルフサービス グループのメンバーシップを有効にできるようにするかを選択できます。 [動的グループ](../enterprise-users/groups-dynamic-membership.md)を使用して、指定された条件に基づいてメンバーをグループに自動的に追加する規則を確立できます。
 
-外部ユーザーは、特別な考慮が必要な顧客を指す場合があります。 [Azure AD B2C](/azure/active-directory-b2c/active-directory-b2c-overview) という別の製品でカスタマー認証がサポートされています。 しかし、本書ではこれについて説明しません。
+外部ユーザーが顧客を参照する場合もあります。 [Azure AD B2C](../../active-directory-b2c/overview.md) という別の製品でカスタマー認証がサポートされています。 しかし、本書ではこれについて説明しません。
 
 ### <a name="devicelocation-used-to-access-data"></a>データへのアクセスに使用されるデバイスまたは場所
 
@@ -451,7 +451,7 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 
 ![ユーザーの場所とデータ アクセスの関係を示す図](media/migrating-application-authentication-to-azure-active-directory-6.jpg)
 
-リソース、ユーザー、およびデバイスのこれらの側面を考慮して、[Azure AD 条件付きアクセス](/azure/active-directory/active-directory-conditional-access-azure-portal)機能を使用することを選択できます。 条件付きアクセスはユーザーのアクセス許可を超えています。これは、ユーザーまたはグループの ID、ユーザーが接続されているネットワーク、使用しているデバイスとアプリケーション、およびアクセスしようとしているデータの種類などの要素の組み合わせに基づいています。 ユーザーに付与されたアクセス権は、このより広範な条件セットに適応します。
+リソース、ユーザー、およびデバイスのこれらの側面を考慮して、[Azure AD 条件付きアクセス](../conditional-access/overview.md)機能を使用することを選択できます。 条件付きアクセスはユーザーのアクセス許可を超えています。これは、ユーザーまたはグループの ID、ユーザーが接続されているネットワーク、使用しているデバイスとアプリケーション、およびアクセスしようとしているデータの種類などの要素の組み合わせに基づいています。 ユーザーに付与されたアクセス権は、このより広範な条件セットに適応します。
 
 ### <a name="exit-criteria"></a>終了基準
 
@@ -475,13 +475,13 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 
 以下のツールとガイダンスを使用して、Azure AD にアプリケーションを移行するために必要となる正確な手順に従います。
 
-- **一般的な移行ガイダンス** – [Azure AD アプリの移行ツールキット](https://aka.ms/migrateapps)のホワイトペーパー、ツール、電子メール テンプレート、およびアプリケーションのアンケートを使用して、アプリの検出、分類、および移行を行います。
+- **一般的な移行ガイダンス** – [Azure AD アプリの移行ツールキット](./migration-resources.md)のホワイトペーパー、ツール、電子メール テンプレート、およびアプリケーションのアンケートを使用して、アプリの検出、分類、および移行を行います。
 
-- **SaaS アプリケーション** – [数百の SaaS アプリ チュートリアル](/azure/active-directory/active-directory-saas-tutorial-list)の一覧と、完全な [Azure AD SSO デプロイ計画](https://aka.ms/ssodeploymentplan)を参照し、エンドツーエンド プロセスをご確認ください。
+- **SaaS アプリケーション** – [数百の SaaS アプリ チュートリアル](../saas-apps/tutorial-list.md)の一覧と、完全な [Azure AD SSO デプロイ計画](https://aka.ms/ssodeploymentplan)を参照し、エンドツーエンド プロセスをご確認ください。
 
-- **オンプレミスで実行するアプリケーション** – [Azure AD アプリケーション プロキシに関する](/azure/active-directory/manage-apps/application-proxy)詳細を確認し、完全な [Azure AD アプリケーション プロキシのデプロイ計画](https://aka.ms/AppProxyDPDownload)を使用して、すぐに作業を開始します。
+- **オンプレミスで実行するアプリケーション** – [Azure AD アプリケーション プロキシに関する](./application-proxy.md)詳細を確認し、完全な [Azure AD アプリケーション プロキシのデプロイ計画](https://aka.ms/AppProxyDPDownload)を使用して、すぐに作業を開始します。
 
-- **開発中のアプリ** – 詳細な[統合](/azure/active-directory/develop/active-directory-integrating-applications)と[登録](/azure/active-directory/develop/active-directory-v2-app-registration)のガイダンスを参照してください。
+- **開発中のアプリ** – 詳細な[統合](../develop/quickstart-register-app.md)と[登録](../develop/quickstart-register-app.md)のガイダンスを参照してください。
 
 移行後に、ユーザーにデプロイが成功したことを知らせ、行う必要がある新しい手順について通知することができます。
 
@@ -489,28 +489,29 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 
 移行プロセス時に、アプリには通常のデプロイ中に使用されるテスト環境が既に存在する場合があります。 移行のテストにこの環境を引き続き使用することができます。 テスト環境を現在使用できない場合は、アプリケーションのアーキテクチャに応じて、Azure App Service または Azure Virtual Machines を使用して設定できることがあります。 アプリの構成を開発するときに使用するテスト Azure AD テナントを別に設定することもできます。 このテナントはクリーンな状態で開始され、どのシステムとも同期するように構成されません。
 
-テスト ユーザーでログインすることで各アプリをテストし、すべての機能が移行前と同じであることを確認できます。 テスト中に、ユーザーが [MFA](/active-directory/authentication/howto-mfa-userstates) または [SSPR](/azure/active-directory/authentication/quickstart-sspr) の設定を更新する必要があることがわかった場合、または移行中にこの機能を追加する場合は、必ず、エンド ユーザーのコミュニケーション計画にそれを追加してください。 [MFA](https://aka.ms/mfatemplates) と [SSPR](https://aka.ms/ssprtemplates) のエンド ユーザー通信テンプレートを参照してください。
+テスト ユーザーでログインすることで各アプリをテストし、すべての機能が移行前と同じであることを確認できます。 テスト中に、ユーザーが [MFA](/azure/active-directory/authentication/howto-mfa-userstates) または [SSPR](../authentication/tutorial-enable-sspr.md) の設定を更新する必要があることがわかった場合、または移行中にこの機能を追加する場合は、必ず、エンド ユーザーのコミュニケーション計画にそれを追加してください。 [MFA](https://aka.ms/mfatemplates) と [SSPR](https://aka.ms/ssprtemplates) のエンド ユーザー通信テンプレートを参照してください。
 
-アプリを移行したら、[Azure Portal](https://aad.portal.azure.com/) に移動して、移行が成功したかどうかをテストします。 次の手順に従ってください。
+アプリを移行したら、[Azure portal](https://aad.portal.azure.com/) に移動して、移行が成功したかどうかをテストします。 次の手順に従ってください。
 
 - **[エンタープライズ アプリケーション] &gt; [すべてのアプリケーション]** の順に選択し、一覧から対象のアプリを見つけます。
 
 - **[管理] &gt; [ユーザーとグループ]** の順に選択し、アプリに少なくとも 1 人のユーザーまたは 1 つのグループを割り当てます。
 
-- **[管理] &gt; [条件付きアクセス]** の順に選択します。 ポリシーの一覧を調べて、[条件付きアクセス ポリシー](/azure/active-directory/active-directory-conditional-access-azure-portal)によってアプリケーションへのアクセスがブロックされないことを確認します。
+- **[管理] &gt; [条件付きアクセス]** の順に選択します。 ポリシーの一覧を調べて、[条件付きアクセス ポリシー](../conditional-access/overview.md)によってアプリケーションへのアクセスがブロックされないことを確認します。
 
 アプリの構成方法に応じて、SSO が正常に機能することを確認します。
 
 | 認証の種類      | テスト                                             |
 | ------------------------ | --------------------------------------------------- |
 | **OAuth/OpenID Connect** | **[エンタープライズ アプリケーション] &gt; [アクセス許可]** の順に選択し、アプリのユーザー設定において組織内で使用されるアプリケーションに確実に同意しているようにします。 |
-| **SAML ベースの SSO** | **[シングル サインオン]** の下にある [[SAML 設定のテスト]](/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) ボタンを使用します。 |
-| **パスワードベースの SSO** | [マイ アプリによるセキュリティで保護されたサインイン拡張機能](/azure/active-directory/user-help/active-directory-saas-access-panel-introduction#my-apps-secure-sign-in-extension)をダウンロードしてインストールします。 この拡張機能は、SSO プロセスを使用する必要がある組織の任意のクラウド アプリを開始する場合に役立ちます。 |
-| **[アプリケーション プロキシ](/azure/active-directory/manage-apps/application-proxy)** | コネクタが実行されていて、アプリケーションに割り当てられていることを確認します。 詳細については、[アプリケーション プロキシのトラブルシューティング ガイド](/azure/active-directory/manage-apps/application-proxy-troubleshoot)に関する記事をご覧ください。 |
+| **SAML ベースの SSO** | **[シングル サインオン]** の下にある [[SAML 設定のテスト]](./debug-saml-sso-issues.md) ボタンを使用します。 |
+| **パスワードベースの SSO** | [マイ アプリによるセキュリティで保護されたサインイン拡張機能](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)をダウンロードしてインストールします。 この拡張機能は、SSO プロセスを使用する必要がある組織の任意のクラウド アプリを開始する場合に役立ちます。 |
+
+|  **[アプリケーション プロキシ](./application-proxy.md)** | コネクタが実行されていて、アプリケーションに割り当てられていることを確認します。 詳細については、[アプリケーション プロキシのトラブルシューティング ガイド](./application-proxy-troubleshoot.md)に関する記事をご覧ください。 |
 
 ### <a name="troubleshoot"></a>トラブルシューティング
 
-問題が発生した場合は、[アプリのトラブルシューティング ガイド](https://aka.ms/troubleshoot-apps)のヘルプを参照してください。 [カスタム開発されたアプリケーションへのサインインに関する問題](/azure/active-directory/manage-apps/application-sign-in-problem-custom-dev)についてのページも参照してください。
+問題が発生した場合は、[アプリのトラブルシューティング ガイド](../app-provisioning/isv-automatic-provisioning-multi-tenant-apps.md)のヘルプを参照してください。 トラブルシューティングの記事を確認することもできます。「[SAML ベースのシングル サインオンで構成されたアプリへのサインインに関する問題](/troubleshoot/azure/active-directory/troubleshoot-sign-in-saml-based-apps)」を参照してください。
 
 ### <a name="plan-rollback"></a>ロールバックを計画する
 
@@ -524,7 +525,7 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 
 - まず、**複数の IdP をサポートするアプリ** を移行します。 問題が発生した場合は、いつでも優先される IdP の構成に変更できます。
 
-- アプリのエクスペリエンスに、 **[フィードバック] ボタン**、または問題が発生した場合の **ヘルプ デスク** へのポインターを確保します。
+- アプリのエクスペリエンスに、 **[フィードバック] ボタン** または問題が発生したときの **ヘルプ デスク** へのポインターがあることを確認します。
 
 ### <a name="exit-criteria"></a>終了基準
 
@@ -554,23 +555,25 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 
 **アプリを検出できるようにする**
 
-[MyApps](/azure/active-directory/user-help/my-apps-portal-end-user-access#my-apps-secure-sign-in-extension) ポータル エクスペリエンスを **ユーザーに示します**。 ここで、すべてのクラウドベースのアプリ、[Azure AD Connect](/azure/active-directory/hybrid/whatis-azure-ad-connect) を使用して利用できるアプリ、およびこれらのアプリにアクセスする権限がある場合は[アプリケーション プロキシ](/azure/active-directory/manage-apps/application-proxy)を使用しているアプリにアクセスできます。
+[MyApps](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) ポータル エクスペリエンスを **ユーザーに示します**。 ここで、すべてのクラウドベースのアプリ、[Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) を使用して利用できるアプリ、およびこれらのアプリにアクセスする権限がある場合は[アプリケーション プロキシ](./application-proxy.md)を使用しているアプリにアクセスできます。
+
 
 次のようにして、ユーザーにアプリを検出する方法を説明できます。
 
-- [既存のシングル サインオン](/azure/active-directory/active-directory-saas-custom-apps#existing-single-sign-on)機能を使用して、**ユーザーを任意のアプリにリンクする**
+- [既存のシングル サインオン](./view-applications-portal.md)機能を使用して、**ユーザーを任意のアプリにリンクする**
 
-- アプリに対して [アプリケーションのセルフサービス アクセス](/azure/active-directory/application-access-self-service-how-to)を有効にし、**キュレーションしたアプリをユーザーが追加できるようにする**
 
-- [エンドユーザーに対してアプリケーションを非表示にし](/azure/active-directory/manage-apps/hide-application-from-user-portal) (既定の Microsoft アプリまたはその他のアプリ)、**必要なアプリを見つけやすくする**
+- アプリに対して [アプリケーションのセルフサービス アクセス](./manage-self-service-access.md)を有効にし、**キュレーションしたアプリをユーザーが追加できるようにする**
+
+- [エンドユーザーに対してアプリケーションを非表示にし](./hide-application-from-user-portal.md) (既定の Microsoft アプリまたはその他のアプリ)、**必要なアプリを見つけやすくする**
 
 ### <a name="make-apps-accessible"></a>アプリにアクセスできるようにする
 
-**ユーザーが自分のモバイル デバイスからアプリにアクセスできるようにします**。 ユーザーは、[iOS](/azure/active-directory/manage-apps/hide-application-from-user-portal) 7.0 以降または [Android](/azure/active-directory/manage-apps/hide-application-from-user-portal) デバイス上で Intune で管理されたブラウザーを使用して、MyApps ポータルにアクセスできます。
+**ユーザーが自分のモバイル デバイスからアプリにアクセスできるようにします**。 ユーザーは、[iOS](./hide-application-from-user-portal.md) 7.0 以降または [Android](./hide-application-from-user-portal.md) デバイス上で Intune で管理されたブラウザーを使用して、MyApps ポータルにアクセスできます。
 
 ユーザーは次のようにして、**Intune で管理されているブラウザー** をダウンロードできます。
 
-- **Android デバイスの場合は**、[Google Play ストア](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)から
+- **Android デバイスの場合は**、[Google Play ストア](https://play.google.com/store/apps/details?id=com.microsoft.intune)から
 
 - **Apple デバイスの場合は**、[Apple App Store から](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)。または [iOS 用のマイ アプリ モバイル アプリ](https://apps.apple.com/us/app/my-apps-azure-active-directory/id824048653)をダウンロードできます
 
@@ -580,7 +583,7 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 
 - **アプリを検索して、最近使用したアプリを表示する**
 
-- 適切な外部 URL に、[アプリケーション プロキシ](/azure/active-directory/manage-apps/application-proxy)で構成した **内部 URL を自動的に変換** する。 これで、ユーザーはどこにいるかに関係なく、使い慣れたリンクを使用できるようになります。
+- 適切な外部 URL に、[アプリケーション プロキシ](./application-proxy.md)で構成した **内部 URL を自動的に変換** する。 これで、ユーザーはどこにいるかに関係なく、使い慣れたリンクを使用できるようになります。
 
 **ユーザーが Office.com からアプリを開けるようにします。**
 
@@ -590,11 +593,11 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 
 Azure AD によって、移行されたアプリを管理するための一元的なアクセスの場所が提供されます。 [Azure portal](https://portal.azure.com/) に移動して、次の機能を有効にします。
 
-- **アプリへのユーザー アクセスをセキュリティで保護する。** デバイスの状態や場所などに基づいてアプリケーションへのユーザー アクセスをセキュリティで保護するには、[条件付きアクセスポリシー](/azure/active-directory/active-directory-conditional-access-azure-portal)または [Identity Protection](/azure/active-directory/active-directory-identityprotection) を有効にします。
+- **アプリへのユーザー アクセスをセキュリティで保護する。** デバイスの状態や場所などに基づいてアプリケーションへのユーザー アクセスをセキュリティで保護するには、[条件付きアクセスポリシー](../conditional-access/overview.md)または [Identity Protection](../identity-protection/overview-identity-protection.md) を有効にします。
 
-- **自動プロビジョニング。** ユーザーがアクセスする必要があるさまざまなサードパーティ製の SaaS アプリを使用して、[ユーザーの自動プロビジョニング](/azure/active-directory/manage-apps/user-provisioning)を設定します。 これには、ユーザー ID の作成に加えて、状態または役割が変化したときのユーザー ID のメンテナンスおよび削除が含まれます。
+- **自動プロビジョニング。** ユーザーがアクセスする必要があるさまざまなサードパーティ製の SaaS アプリを使用して、[ユーザーの自動プロビジョニング](../app-provisioning/user-provisioning.md)を設定します。 これには、ユーザー ID の作成に加えて、状態または役割が変化したときのユーザー ID のメンテナンスおよび削除が含まれます。
 
-- **ユーザー アクセス** **管理を委任する**。 必要に応じて、ご利用のアプリに対してアプリケーションのセルフサービス アクセスを有効にし、"*それらのアプリへのアクセスを承認するビジネス承認者を割り当てます*"。 アプリのコレクションに割り当てられたグループには、[セルフサービス グループ管理](/azure/active-directory/users-groups-roles/groups-self-service-management)を使用します。
+- **ユーザー アクセス** **管理を委任する**。 必要に応じて、ご利用のアプリに対してアプリケーションのセルフサービス アクセスを有効にし、"*それらのアプリへのアクセスを承認するビジネス承認者を割り当てます*"。 アプリのコレクションに割り当てられたグループには、[セルフサービス グループ管理](../enterprise-users/groups-self-service-management.md)を使用します。
 
 - **管理者アクセスを委任する。** **ディレクトリ ロール** を使用して、管理者ロール (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション開発者など) をユーザーに割り当てます。
 
@@ -602,13 +605,13 @@ Azure AD によって、移行されたアプリを管理するための一元�
 
 [Azure portal](https://portal.azure.com/) を使用して、一元化された場所からすべてのアプリを監査することもできます。
 
-- **[エンタープライズ アプリケーション] の [監査]** を使用して **アプリを監査** したり、[Azure AD Reporting API](/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) から同じ情報にアクセスして、お気に入りのツールに統合したりします。
+- **[エンタープライズ アプリケーション] の [監査] を使用して **アプリを監査** したり、[Azure AD Reporting API](../reports-monitoring/concept-reporting-api.md) から同じ情報にアクセスして、お気に入りのツールに統合したりします。
 
 - OAuth または OpenID Connect を使用するアプリの場合は、 **[エンタープライズ アプリケーション] の [アクセス許可]** を使用して、**アプリのアクセス許可を表示します**。
 
-- **[エンタープライズ アプリケーション] の [サインイン]** を使用して、**サインインの分析情報を取得します**。[Azure AD Reporting API](/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) から同じ情報にアクセスします。
+- **[エンタープライズ アプリケーション] の [サインイン]** を使用して、**サインインの分析情報を取得します**。[Azure AD Reporting API](../reports-monitoring/concept-reporting-api.md) から同じ情報にアクセスします。
 
-- [Azure AD PowerBI コンテンツ パック](/azure/active-directory/active-directory-reporting-power-bi-content-pack-how-to)から **アプリの使用状況を視覚化する**
+- [Azure AD Power BI コンテンツ パック](../reports-monitoring/howto-use-azure-monitor-workbooks.md)から **アプリの使用状況を視覚化する**
 
 ### <a name="exit-criteria"></a>終了基準
 
@@ -622,7 +625,7 @@ Azure AD によって、移行されたアプリを管理するための一元�
 
 デプロイ計画では、アプリの移行シナリオを含む、Azure AD ソリューションのビジネス価値、計画、実装手順、および管理について説明します。 デプロイおよび Azure AD 機能から価値を得る作業を開始するのに必要なすべてをまとめます。 デプロイ ガイドには、Microsoft が推奨するベスト プラクティス、エンドユーザーのコミュニケーション、計画ガイド、実装手順、テスト ケースなどの内容が含まれています。
 
-使用できる[デプロイ計画](https://aka.ms/deploymentplans)は多数ありますが、常にさらに多くのもの策定しています。
+使用できる[デプロイ計画](../fundamentals/active-directory-deployment-plans.md)は多数ありますが、常にさらに多くのもの策定しています。
 
 ### <a name="contact-support"></a>サポートにお問い合せください
 

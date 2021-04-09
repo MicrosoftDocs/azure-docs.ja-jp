@@ -8,10 +8,10 @@ ms.author: magoedte
 ms.date: 02/11/2021
 ms.topic: troubleshooting
 ms.openlocfilehash: 15a18cbfc3a80bbfea0b92e5b616104dc0f593af
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100580994"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hybrid Runbook Worker の問題のトラブルシューティング
@@ -67,7 +67,7 @@ Hybrid Runbook Worker で、クエリ結果が有効でないことを示すイ�
 
 Hybrid Runbook Worker が、Update Management など、機能の自動デプロイ用に正しく構成されていません。 このデプロイには、VM を Log Analytics ワークスペースに接続する部分が含まれています。 PowerShell スクリプトにより、指定された名前のサブスクリプション内でワークスペースが検索されます。 このケースでは、Log Analytics ワークスペースは別のサブスクリプションにあります。 スクリプトでワークスペースが見つからず、作成が試みられますが、その名前は既に使用されています。 結果として、デプロイが失敗します。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 この問題を解決するには、2 つの方法があります。
 
@@ -85,7 +85,7 @@ Hybrid Runbook Worker が、Update Management など、機能の自動デプロ�
 
 Hybrid Runbook Worker マシンで、Azure Automation に対する ping が 30 日以上行われていません。 その結果、Automation によって Hybrid Runbook Worker グループまたはシステム ワーカー グループが削除されました。 
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 ワーカー マシンを起動し、Azure Automation に登録します。 Runbook 環境をインストールして Azure Automation に接続する方法の手順については、「[Windows Hybrid Runbook Worker をデプロイする](../automation-windows-hrw-install.md)」を参照してください。
 
@@ -106,7 +106,7 @@ Hybrid Runbook Worker で実行される Runbook が次のエラー メッセー
 
 このエラーは、Hybrid Runbook Worker 上で実行される Runbook 内で[実行アカウント](../automation-security-overview.md#run-as-accounts)を使用しようとしたが、その実行アカウントの証明書が存在しない場合に発生します。 Hybrid Runbook Workers には、既定では証明書資産はローカルにありません。 実行アカウントでは、この資産が適切に動作していることが要求されます。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 お使いの Hybrid Runbook Worker が Azure VM である場合は、代わりに、[マネージド ID による Runbook 認証](../automation-hrw-run-runbooks.md#runbook-auth-managed-identities)を使用できます。 このシナリオでは、実行アカウントの代わりに Azure VM のマネージド ID を使用して Azure リソースへの認証を可能にすることで、認証を簡素化します。 Hybrid Runbook Worker がオンプレミスのコンピューターである場合は、実行アカウント証明書をコンピューターにインストールする必要があります。 証明書をインストールする方法については、「[Hybrid Runbook Worker での Runbook の実行](../automation-hrw-run-runbooks.md)」で、PowerShell Runbook の **Export-RunAsCertificateToHybridWorker** を実行するための手順を参照してください。
 
@@ -125,7 +125,7 @@ Hybrid Runbook Worker で実行される Runbook が次のエラー メッセー
 * エージェントの設定で、ワークスペース ID かワークスペース キー (プライマリ) に入力ミスがあります。 
 * Hybrid Runbook Worker で構成をダウンロードできず、それがアカウント リンク エラーの原因となっています。 Azure では、マシンで機能を有効にしたときに、Log Analytics ワークスペースと Automation アカウントをリンクするために特定のリージョンのみがサポートされます。 コンピューターで、誤った日付または時刻が設定されている可能性もあります。 時刻が現在の時刻の 15 分後または前である場合、機能のデプロイは失敗します。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 ##### <a name="mistyped-workspace-id-or-key"></a>ワークスペース ID またはキーの入力ミス
 エージェントのワークスペース ID またはワークスペース キーに入力ミスがあったかどうかを確認するには、Windows エージェントの場合は [Windows エージェントでのワークスペースの追加または削除](../../azure-monitor/agents/agent-manage.md#windows-agent)に関する記事を、Linux エージェントの場合は [Linux エージェントでのワークスペースの追加または削除](../../azure-monitor/agents/agent-manage.md#linux-agent)に関する記事を参照してください。 Azure portal から完全な文字列を選択し、注意深くコピーと貼り付けを行うようにします。
@@ -181,7 +181,7 @@ Linux Hybrid Runbook Worker で `sudo` コマンドを実行すると、パス�
 
 Linux 用 Log Analytics エージェントの **nxautomationuser** アカウントが、**sudoers** ファイルで正しく構成されていません。 Hybrid Runbook Worker では、Linux Runbook Worker で Runbook に署名できるように、アカウントのアクセス許可やその他のデータが適切に構成されている必要があります。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 * マシン上で、Hybrid Runbook Worker に GnuPG (GPG) の実行可能ファイルがあることを確認します。
 
@@ -197,7 +197,7 @@ Linux 用 Log Analytics エージェントが実行されていません。
 
 エージェントが実行されていない場合、Linux Hybrid Runbook Worker は Azure Automation と通信できません。 さまざまな理由で、エージェントが実行されていない可能性があります。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
  `ps -ef | grep python` コマンドを入力して、このエージェントが実行されていることを確認します。 次のような出力が表示されます。 Python では、**nxautomation** ユーザー アカウントを使用して処理が行われます。 Azure Automation 機能が有効になっていない場合、次のどのプロセスも実行されていません。
 
@@ -237,7 +237,7 @@ Windows Hybrid Runbook Worker は、[Windows 用 Log Analytics エージェン�
 
 Windows サービス用の Log Analytics が実行されていない場合、Hybrid Runbook Worker は Azure Automation と通信できません。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 PowerShell で次のコマンドを入力して、このエージェントが実行されていることを確認します: `Get-Service healthservice`。 サービスが停止している場合は、PowerShell で次のコマンドを入力してサービスを開始します: `Start-Service healthservice`。
 
@@ -269,7 +269,7 @@ Windows Hybrid Runbook Worker で実行されるスクリプトを、想定ど�
 
 サーバー上の Active Directory フェデレーション サービス (AD FS) への接続でプロキシをバイパスすることはできません。 PowerShell サンドボックスはログインしたユーザーとして実行されることに注意してください。 ただし、Orchestrator サンドボックスは大幅にカスタマイズされており、**Orchestrator.Sandbox.exe.config** ファイルの設定は無視されることがあります。 それにはマシンまたは Log Analytics エージェントのプロキシ設定を処理するための特殊なコードが含まれていますが、それら以外のカスタム プロキシ設定は処理されません。 
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 PowerShell コマンドレットのスクリプトを、MSOnline モジュールではなく Azure Active Directory モジュールを使用するように移行することで、Orchestrator サンドボックスの問題を解決できます。 詳細については、「[Orchestrator から Azure Automation (ベータ版) へ移行する](../automation-orchestrator-migration.md)」を参照してください。
 
@@ -303,7 +303,7 @@ Heartbeat
 
 この問題は、Hybrid Runbook Worker 上のキャッシュの破損が原因である可能性があります。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 この問題を解決するには、Hybrid Runbook Worker にサインインし、次のスクリプトを実行します。 このスクリプトは、Windows 用 Log Analytics エージェントを停止し、そのキャッシュを削除して、サービスを再起動します。 この操作により、Hybrid Runbook Worker の構成が Azure Automation から強制的に再ダウンロードされます。
 
@@ -327,7 +327,7 @@ Start-Service -Name HealthService
 
 この問題は、マシンが既に別の Automation アカウントに登録されている場合や、マシンから Hybrid Runbook Worker を削除した後にそれを再度追加しようとした場合に発生する可能性があります。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 この問題を解決するには、次のレジストリ キーを削除し、`HealthService` を再起動して、もう一度 `Add-HybridRunbookWorker` コマンドレットを試します。
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
-ms.openlocfilehash: 5d308bfbe605e5ec3bed3bf5d6506ccafc53836e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 33171527f03b0cc386f683f55f6cf9a70913abdb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942825"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871216"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する
 
@@ -36,7 +36,7 @@ HDInsight 上の 既存の Apache Hadoop クラスター。  「[Azure Portal �
 
 [ **[HDInsight クラスター]**](#showClusters) ページから、ご自身のクラスター名を選択します。  これにより、次の図のような **[概要]** ビューが開きます。
 
-![Azure Portal HDInsight クラスター 基本情報](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png)
+:::image type="content" source="./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png" alt-text="Azure Portal HDInsight クラスター 基本情報":::
 
 **上部のメニュー:**  
 
@@ -54,7 +54,7 @@ HDInsight 上の 既存の Apache Hadoop クラスター。  「[Azure Portal �
     |---|---|
     |概要|クラスターの全般的な情報が表示されます。|
     |アクティビティ ログ|アクティビティ ログを表示およびクエリします。|
-    |アクセス制御 (IAM)|ロールの割り当てを使用します。  「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。|
+    |アクセス制御 (IAM)|ロールの割り当てを使用します。  「[Azure サブスクリプション リソースへのアクセスを管理するための Azure ロールの割り当て](../role-based-access-control/role-assignments-portal.md)」を参照してください。|
     |Tags|キーと値のペアを設定して、クラウド サービスのカスタム分類を定義できます。 たとえば、 **プロジェクト** という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスに共通の値を使用できます。|
     |問題の診断と解決|トラブルシューティング情報を表示します。|
     |クイック スタート|HDInsight の操作を開始するために役立つ情報を表示します。|
@@ -173,7 +173,7 @@ Ambari は、RESTful API がサポートする直感的で使いやすい Hadoop
 
 1. **[クラスター ダッシュボード]** を選択します。
 
-    ![HDInsight Apache Hadoop クラスター メニュー](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png)
+    :::image type="content" source="./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png" alt-text="HDInsight Apache Hadoop クラスター メニュー":::
 
 1. 新しいページから **[Ambari ホーム]** を選択します。
 1. クラスターのユーザー名とパスワードを入力します。  既定のクラスター ユーザー名は _admin_ です。

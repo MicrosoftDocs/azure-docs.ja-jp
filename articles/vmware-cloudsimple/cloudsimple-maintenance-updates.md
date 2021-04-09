@@ -4,17 +4,17 @@ titleSuffix: Azure VMware Solution by CloudSimple
 description: 計画したメンテナンスと更新のための CloudSimple サービス プロセスについて説明します
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 03/04/2021
+ms.date: 03/09/2021
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 814a901fba065e36ea3ba9e3a6fe1175365de6c5
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 1cbd708f6c1f5159655099d5d72900ab0c608147
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120710"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102522310"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple のメンテナンスと更新
 
@@ -102,8 +102,8 @@ CloudSimple は、プライベート クラウド内の VMware ソフトウェ�
 
 CloudSimple は、VMware から重要なセキュリティ パッチが利用できるようになると、直後にそれをテストします。 
 
-CloudSimple は、VMware ソフトウェア コンポーネントに四半期ごとのメンテナンス更新を提供します。 新しいメジャー バージョンの VMware ソフトウェアが利用できるようになると、CloudSimple は顧客と連携し、アップグレードに適したメンテナンス期間を調整します。
+次回スケジュールされている更新プログラムがデプロイされるまでは、対応する修正プログラムをインストールする代わりに、ドキュメントに記載されている VMware の回避策が実装されます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Veeam を使用してワークロード VM をバックアップする](backup-workloads-veeam.md)

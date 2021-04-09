@@ -19,10 +19,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 51ad23e67a77c28d0ad8a147168a0094f5de1796
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91578004"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>チュートリアル:Notification Hubs と Bing Spatial Data を使用して場所に基づいたプッシュ通知を送信する
@@ -97,7 +97,7 @@ ms.locfileid: "91578004"
 
     ![標準 JSON 応答のスクリーンショット。](./media/notification-hubs-geofence/bing-maps-json.png)
 
-    この応答が返されるのは、実際にその地点が、指定された境界の範囲内にあるときだけです。 存在しない場合は、空の**結果**のバケットが取得されます。
+    この応答が返されるのは、実際にその地点が、指定された境界の範囲内にあるときだけです。 存在しない場合は、空の **結果** のバケットが取得されます。
 
     ![結果バケットが空の JSON 応答のスクリーンショット。](./media/notification-hubs-geofence/bing-maps-nores.png)
 
@@ -114,12 +114,12 @@ ms.locfileid: "91578004"
     ```
     これを機能させるには、次のパラメーターを指定します。
 
-   * **データ ソース ID** と**データ ソース名** – Bing マップ API では、さまざまな分類のメタデータ (位置情報、企業の営業時間など) がデータ ソースに格納されます。  
+   * **データ ソース ID** と **データ ソース名** – Bing マップ API では、さまざまな分類のメタデータ (位置情報、企業の営業時間など) がデータ ソースに格納されます。  
    * **エンティティ名** – 通知の基準点として使用するエンティティです。
    * **Bing Maps API キー** – 前に Bing デベロッパー センター アカウントを作成するときに取得したキー。
 
      これでデータ ソースが準備できたので、UWP アプリケーションの操作を開始できます。
-2. アプリケーションの場所サービスを有効にします。 **ソリューション エクスプローラー**で `Package.appxmanifest` ファイルを開きます。
+2. アプリケーションの場所サービスを有効にします。 **ソリューション エクスプローラー** で `Package.appxmanifest` ファイルを開きます。
 
     ![Package.appxmanifest ファイルが強調表示された、ソリューション エクスプローラーのスクリーンショット。](./media/notification-hubs-geofence/vs-package-manifest.png)
 3. 開いたばかりのパッケージ プロパティ タブで、 **[機能]** タブに切り替えてから、 **[場所]** を選択します。
@@ -356,11 +356,11 @@ ms.locfileid: "91578004"
 4. デベロッパー センターに移動し、作成したアプリを開きます。 **[サービス]**  >  **[プッシュ通知]**  >  **[Live Services site]\(Live サービス サイト\)** の順に選択します。
 
     !["Live Services site" が強調表示された、Windows デベロッパー センターの [プッシュ通知] ページのスクリーンショット。](./media/notification-hubs-geofence/ms-live-services.png)
-5. このサイトで、**アプリケーションのシークレット**と**パッケージ SID** をメモします。 Azure Portal では、この両方が必要です。通知ハブを開いて、 **[設定]**  >  **[Notification Services]**  >  **[Windows (WNS)]** を選択し、必要なフィールドに情報を入力します。
+5. このサイトで、**アプリケーションのシークレット** と **パッケージ SID** をメモします。 Azure Portal では、この両方が必要です。通知ハブを開いて、 **[設定]**  >  **[Notification Services]**  >  **[Windows (WNS)]** を選択し、必要なフィールドに情報を入力します。
 
     ![[Notification Services] オプションと [Windows (WNS)] オプションが強調表示され、パッケージ SID とセキュリティ キーの値が入力された [設定] ページを示すスクリーンショット。](./media/notification-hubs-geofence/notification-hubs-wns.png)
 6. **[保存]** を選択します。
-7. **ソリューション エクスプローラー**で **[参照設定]** を開いて、 **[NuGet パッケージの管理]** を選択します。 **Microsoft Azure Service Bus マネージド ライブラリ**への参照を追加します。単純に `WindowsAzure.Messaging.Managed` を検索し、それをプロジェクトに追加します。
+7. **ソリューション エクスプローラー** で **[参照設定]** を開いて、 **[NuGet パッケージの管理]** を選択します。 **Microsoft Azure Service Bus マネージド ライブラリ** への参照を追加します。単純に `WindowsAzure.Messaging.Managed` を検索し、それをプロジェクトに追加します。
 
     ![WindowsAzure.Messaging.Managed パッケージが強調表示された、[Nuget パッケージの管理] ダイアログ ボックスのスクリーンショット。](./media/notification-hubs-geofence/vs-nuget.png)
 8. テストのために、再度 `MainPage_Loaded` イベント ハンドラーを作成し、そこに次のコード スニペットを追加します。

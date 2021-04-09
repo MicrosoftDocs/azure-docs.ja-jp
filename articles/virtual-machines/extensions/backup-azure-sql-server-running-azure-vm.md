@@ -1,19 +1,19 @@
 ---
 title: Azure VM で実行されている SQL Server 用の Azure Backup
 description: この記事では、Azure 仮想マシンで実行されている SQL Server で Azure Backup を登録する方法について説明します。
-author: dcurwin
-manager: carmonm
+ms.topic: article
 ms.service: virtual-machines
 ms.subservice: extensions
-ms.topic: conceptual
-ms.date: 07/05/2019
+author: dcurwin
 ms.author: dacurwin
-ms.openlocfilehash: c6a071956565a8bbc31e5be362c41a7c39d8f551
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.collection: windows
+ms.date: 07/05/2019
+ms.openlocfilehash: 46cc4b23ca7dd70da3f917a3399406480dc9fdbd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738052"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102557099"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure VM で実行されている SQL Server 用の Azure Backup
 
@@ -85,7 +85,7 @@ Azure Backup では、NSG タグ、プロキシ サーバーの展開、また�
 
 ### <a name="property-values"></a>プロパティ値
 
-Name | 値/例 | データ型
+名前 | 値/例 | データ型
  --- | --- | ---
 locale | ja-JP  |  string
 taskId | "1c0ae461-9d3b-418c-a505-bb31dfe2095d"  | string

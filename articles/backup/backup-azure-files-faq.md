@@ -4,10 +4,10 @@ description: この記事では、Azure Backup サービスを使用して Azure
 ms.date: 04/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: e2b6afb25e189ee2848f25c0ba59d843baf37090
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91940837"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Files のバックアップに関する質問

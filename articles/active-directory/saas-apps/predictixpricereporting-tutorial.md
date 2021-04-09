@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 801197a171b5be2cfe46c249398381e1b25857ff
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92515357"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>チュートリアル:Azure Active Directory と Predictix Price Reporting の統合
@@ -61,7 +61,7 @@ Azure AD への Predictix Price Reporting の統合を設定するには、ギ�
 
     ![[新しいアプリケーション] を選択する](common/add-new-app.png)
 
-4. 検索ボックスに、「 **Predictix Price Reporting** 」と入力します。 検索結果で **[Predictix Price Reporting]** を選択し、 **[追加]** を選択します。
+4. 検索ボックスに、「**Predictix Price Reporting**」と入力します。 検索結果で **[Predictix Price Reporting]** を選択し、 **[追加]** を選択します。
 
      ![[検索結果]](common/search-new-app.png)
 
@@ -93,7 +93,7 @@ Predictix Price Reporting で Azure AD のシングル サインオンを構成�
 
     ![シングル サインオン方式の選択](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **編集** アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**編集** アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
 
     ![[編集] アイコン](common/edit-urls.png)
 
@@ -149,9 +149,9 @@ Predictix Price Reporting 側でシングル サインオンを構成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    1. **[名前]** ボックスに「 **BrittaSimon** 」と入力します。
+    1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    1. **[ユーザー名]** ボックスに「 **BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します (例: BrittaSimon@contoso.com)。
+    1. **[ユーザー名]** ボックスに「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します (例: BrittaSimon@contoso.com)。
 
     1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
 

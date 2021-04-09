@@ -4,10 +4,10 @@ description: この記事では、他の記事で説明されていない Apache
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: dc6a12b2098a1fdf33adda92b4347f91ab4e5489
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91828102"
 ---
 # <a name="frequently-asked-questions---event-hubs-for-apache-kafka"></a>よく寄せられる質問 - Apache Kafka 用 Event Hubs 
@@ -32,7 +32,7 @@ Event Hubs 上のイベント ハブ コンシューマー グループと Kafka
 - Event Hubs サービスにオフセットを格納できます。
 - これらは、実質的にオフセット キー値ストアのキーとして使用されます。 `group.id` と `topic-partition` の一意のペアについて、Azure Storage にオフセットを格納します (3 倍のレプリケーション)。 Kafka オフセットを格納しても、Event Hubs ユーザーに追加の格納コストは発生しません。 オフセットは Kafka コンシューマー グループ API を介して操作できますが、Event Hub ユーザーがオフセット ストレージ "*アカウント*" を直接表示したり、操作したりすることはできません。  
 - これらは名前空間にまたがります。 複数のアプリケーションに複数のトピックに関して同じ Kafka グループ名を使用すると、1 つのアプリケーションの再調整のみが必要な場合でも、すべてのアプリケーションとその Kafka クライアントが再調整されます。  グループ名はよく考えて選択してください。
-- これは Event Hubs コンシューマー グループとはまったく異なります。 '$Default' を使用する必要は**ありません**。また、AMQP ワークロードに干渉する Kafka クライアントについて心配する必要もありません。
+- これは Event Hubs コンシューマー グループとはまったく異なります。 '$Default' を使用する必要は **ありません**。また、AMQP ワークロードに干渉する Kafka クライアントについて心配する必要もありません。
 - これらは、Azure portal では表示できません。 コンシューマー グループ情報には、Kafka API を介してアクセスできます。
 
 ## <a name="next-steps"></a>次のステップ

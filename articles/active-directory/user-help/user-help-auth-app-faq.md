@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 84dde96276414e98cbde05d6e046dce03227f60d
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 8ddc02075d2cdeba4a4fa83a2475ec20c3f18d6e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547861"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103418081"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリに関してよく寄せられる質問 (FAQ)
 
@@ -260,7 +260,7 @@ Microsoft Authenticator アプリは、Azure AD Authenticator アプリに置き
 
 **Q**: 従業員または学生は、Authenticator アプリでパスワードのオートフィルを使用できますか?
 
-**A**: はい。オートフィルは、職場または学校アカウントが Authenticator アプリに追加されている場合でも、ほとんどのエンタープライズ ユーザーで機能するようになりました。 組織に対してオートフィルを構成 (許可または拒否) するフォームに入力して、[それを Authenticator チームに送信](https://aka.ms/ConfigureAutofillInAuthenticator)してください。
+**A**: はい。[個人用 Microsoft アカウント](https://go.microsoft.com/fwlink/?linkid=2144423)のオートフィルは、職場または学校アカウントが Authenticator アプリに追加されている場合でも、ほとんどのエンタープライズ ユーザーで機能するようになりました。 組織に対してオートフィルを許可または拒否するフォームに入力して、[それを Authenticator チームに送信](https://aka.ms/ConfigureAutofillInAuthenticator)してください。 オートフィルは、現在、職場または学校アカウントでは使用できません。
 
 **Q**: ユーザーの職場または学校アカウントのパスワードは、自動的に同期されますか?
 

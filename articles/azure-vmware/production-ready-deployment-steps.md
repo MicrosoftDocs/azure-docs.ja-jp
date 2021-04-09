@@ -2,19 +2,19 @@
 title: Azure VMware Solution のデプロイの計画
 description: この記事では、Azure VMware Solution のデプロイ ワークフローの概要について説明します。  最終的な結果として、仮想マシン (VM) の作成と移行に向けて環境の準備が整います。
 ms.topic: tutorial
-ms.date: 02/22/2021
-ms.openlocfilehash: f9d49d7ff8109364c9fc1eee4388b30ccc1a61b6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/13/2021
+ms.openlocfilehash: f1895f14361b7121ae0d78950cdf8eca3cf7eb52
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733664"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462424"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware Solution のデプロイの計画
 
-この記事では、デプロイ中に使用されるデータを特定して収集するための計画プロセスについて説明します。 デプロイを計画する際は、収集した情報をデプロイ中に参照しやすいよう必ず文書化してください。
+この記事では、デプロイ中に使用される情報を特定して収集するための計画プロセスについて説明します。 デプロイを計画する際は、収集した情報をデプロイ中に参照しやすいよう必ず文書化してください。
 
-このクイック スタートのプロセスにより、仮想マシン (VM) の作成と移行のための運用準備ができた環境が得られます。 
+このクイック スタートで説明されているプロセスにより、仮想マシン (VM) の作成と移行のための運用準備ができた環境が得られます。 
 
 >[!IMPORTANT]
 >Azure VMware Solution リソースを作成する前に、「[Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)」に従い、サポート チケットを提出してホストの割り当てを依頼してください。 サポート チームがリクエストを受け取った後、リクエストが確認され、ホストが割り当てられるまでに、最大 5 営業日かかります。 Azure VMware Solution の既存のプライベート クラウドがあり、さらに多くのホストを割り当てる必要がある場合は、同じプロセスを実行します。 
@@ -46,21 +46,30 @@ Azure VMware Solution のデプロイ先リージョンを特定します。  �
 
 Azure VMware Solution のデプロイ時に使用するサイズ ホストを特定します。  完全な一覧については、[Azure VMware Solution プライベート クラウドとクラスター](concepts-private-clouds-clusters.md#hosts)に関するドキュメントを参照してください。
 
-## <a name="number-of-hosts"></a>ホストの数
+## <a name="number-of-clusters-and-hosts"></a>クラスターとホストの数
 
-Azure VMware Solution プライベート クラウドにデプロイするホストの数を定義します。  最小ホスト数は 3 で、最大はクラスターあたり 16 個です。  詳細については、[Azure VMware Solution プライベート クラウドとクラスター](concepts-private-clouds-clusters.md#clusters)に関するドキュメントを参照してください。
+Azure VMware Solution では、1 つのプライベート クラウドをデプロイし、複数のクラスターを作成します。 実際のデプロイでは、各クラスターにデプロイするクラスターとホストの数を定義する必要があります。 クラスターあたりのホストの最小数は 3 で、最大数は 16 です。 プライベート クラウドあたりのクラスターの最大数は 4 です。 プライベート クラウドあたりのノードの最大数は 64 です。
 
-当初のデプロイ数を超える数にする必要がある場合は、後でいつでもクラスターを拡張できます。
+詳細については、[Azure VMware Solution プライベート クラウドとクラスター](concepts-private-clouds-clusters.md#clusters)に関するドキュメントを参照してください。
 
-## <a name="ip-address-segment"></a>IP アドレス セグメント
+>[!TIP]
+>当初のデプロイ数を超える数にする必要がある場合は、後でいつでもクラスターを拡張できます。
 
-デプロイを計画する際の最初の手順は、IP のセグメント化を計画することです。  Azure VMware Solution は、管理者が提供する /22 ネットワークを取り込みます。 次に、それを小さなセグメントに分割してから、それらの IP セグメントを vCenter、VMware HCX、NSX-T、および vMotion のために使用します。
+## <a name="vcenter-admin-password"></a>vCenter 管理者パスワード
+vCenter 管理者パスワードを定義します。 デプロイ時に vCenter 管理者パスワードを作成します。 このパスワードは、vCenter のビルド時に管理者アカウント (cloudadmin@vsphere.local) に割り当られます。 これらの資格情報を使用して vCenter にサインインします。
 
-Azure VMware Solution は、内部の ExpressRoute 回線を介して Microsoft Azure Virtual Network に接続します。 ほとんどの場合、ExpressRoute Global Reach 経由でデータ センターに接続します。 
+## <a name="nsx-t-admin-password"></a>NSX-T 管理者パスワード
+NSX-T 管理者パスワードを定義します。 デプロイ時に NSX-T 管理者パスワードを作成します。 パスワードは、NSX のビルド時に、NSX アカウントの管理者ユーザーに割り当てられます。 これらの資格情報を使用して NSX-T Manager にサインインします。
 
-Azure VMware Solution、お使いの既存の Azure 環境、およびオンプレミス環境はすべて、ルートを (一般的には) やり取りします。 それに該当する場合、この手順で定義する/22 CIDR ネットワーク アドレス ブロックは、オンプレミスまたは Azure で利用中のどのブロックとも重複してはいけません。
+## <a name="ip-address-segment-for-private-cloud-management"></a>プライベート クラウド管理用の IP アドレス セグメント
+
+デプロイを計画する際の最初の手順は、IP のセグメント化を計画することです。 Azure VMware Solution には、/22 CIDR ネットワークが必要です。 このアドレス空間が小さなネットワーク セグメント (サブネット) に分割され、vCenter、VMware HCX、NSX-T、vMotion の各機能に使用されます。
+
+この /22 CIDR ネットワーク アドレス ブロックは、既にオンプレミスまたは Azure にある既存のネットワーク セグメントと重複することはできません。
 
 **例:** 10.0.0.0/22
+
+Azure VMware Solution は、内部の ExpressRoute Global Reach 回線 (下の図の D-MSEE) を介して Microsoft Azure Virtual Network に接続します。 この機能は Azure VMware Solution サービスの一部であり、課金されることはありません。
 
 詳細については、「[ネットワーク計画のチェックリスト](tutorial-network-checklist.md#routing-and-subnet-considerations)」を参照してください。
 
@@ -68,12 +77,12 @@ Azure VMware Solution、お使いの既存の Azure 環境、およびオンプ�
 
 ## <a name="ip-address-segment-for-virtual-machine-workloads"></a>仮想マシンのワークロードの IP アドレス セグメント
 
-プライベート クラウド内に最初のネットワーク (NSX セグメント) を作成するための IP セグメントを特定します。  言い換えると、Azure VMware Solution に VM をデプロイできるように、Azure VMware Solution 上にネットワーク セグメントを作成する必要があります。   
+プライベート クラウド内にワークロード用の最初のネットワーク (NSX セグメント) を作成するための IP セグメントを特定します。 言い換えると、Azure VMware Solution に VM をデプロイできるように、Azure VMware Solution 上にネットワーク セグメントを作成する必要があります。
 
-L2 ネットワークの拡張だけを計画している場合でも、環境を検証するネットワーク セグメントを作成します。
+オンプレミスから Azure VMware Solution (L2) にネットワークを拡張する予定であっても、環境を検証するネットワーク セグメントを作成する必要があります。
 
-作成されるどの IP セグメントも、Azure とオンプレミスのフットプリント全体で一意である必要があることに注意してください。  
-
+作成されるどの IP セグメントも、Azure とオンプレミスのフットプリント全体で一意である必要があることに注意してください。
+  
 **例:** 10.0.4.0/24
 
 :::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="特定する - 仮想マシンのワークロードの IP アドレス セグメント" border="false":::     
@@ -87,9 +96,9 @@ L2 ネットワークの拡張だけを計画している場合でも、環境�
 - オンプレミスからネットワークを拡張する予定の場合、これらのネットワークはオンプレミスの VMware 環境内の [vSphere Distributed Switch (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) に接続する必要があります。  
 - 拡張したいネットワークが [vSphere Standard Switch](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html) 上で機能している場合、それらは拡張できません。
 
-## <a name="attach-virtual-network-to-azure-vmware-solution"></a>仮想ネットワークを Azure VMware Solution に接続する
+## <a name="attach-azure-virtual-network-to-azure-vmware-solution"></a>Azure Virtual Network を Azure VMware Solution に接続する
 
-この手順では、ExpressRoute 仮想ネットワーク ゲートウェイと、Azure VMware Solution の ExpressRoute 回線の接続に使用されるサポートする Azure 仮想ネットワークを特定します。  ExpressRoute 回路により、Azure VMware Solution プライベート クラウドと他の Azure サービス、Azure リソース、オンプレミス環境との間の接続が容易になります。
+この手順では、ExpressRoute 仮想ネットワーク ゲートウェイと、Azure VMware Solution の ExpressRoute 回線の接続に使用される、サポートする Azure 仮想ネットワークを特定します。  ExpressRoute 回路により、Azure VMware Solution プライベート クラウドと他の Azure サービス、Azure リソース、オンプレミス環境との間の接続が容易になります。
 
 使用する ExpressRoute 仮想ネットワーク ゲートウェイは、"*既存の*" ものでも "*新しい*" ものでもかまいません。
 

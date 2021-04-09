@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
-ms.openlocfilehash: e12b96883ae26b6c10e3622c35914ce498afca48
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f909f5714a049f63032c8a23ca1731777a40d332
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944429"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702863"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Azure HDInsight のクラスター作成に失敗する問題のトラブルシューティング
 
@@ -65,7 +65,7 @@ Express Route または独自のカスタム DNS サーバーを使用してい�
 
 ## <a name="unsupported-component-versions"></a>コンポーネントのバージョンがサポート対象外
 
-[サポートされているバージョンの Azure HDInsight](../hdinsight-component-versioning.md) と [Apache Hadoop コンポーネント](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)をソリューションで使用していることを確認してください。  
+[サポートされているバージョンの Azure HDInsight と Apache Hadoop コンポーネント](../hdinsight-component-versioning.md)をソリューションで使用していることを確認してください。  
 
 ## <a name="storage-account-name-restrictions"></a>ストレージ アカウント名の制限
 

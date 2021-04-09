@@ -4,10 +4,10 @@ description: この記事では、Azure Backup の新旧の診断イベントの
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.openlocfilehash: b2130f06e17dd2b5cf8461d4e58342ee41c14f96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100575415"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Recovery Services コンテナーの診断設定を使用する

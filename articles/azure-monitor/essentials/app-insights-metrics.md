@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
-ms.openlocfilehash: bd28fa9f20775be659de6cef99f9ceda29fe52cc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bae7980137c1da5e1755450863af4f9029d6ed62
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049136"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583464"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights ログベースのメトリック
 
@@ -95,6 +95,8 @@ availabilityResults
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>ブラウザーのページ読み込み時間 (browserTimings/totalDuration)
 
+ユーザーが要求を出してから DOM、スタイル シート、スクリプト、およびイメージが読み込まれるまでの時間。
+
 |Unit of measure|サポートされる集計|事前に集計されたディメンション|
 |---|---|---|
 |ミリ秒|平均、最小、最大|なし|
@@ -110,6 +112,8 @@ browserTimings
 ```
 
 ### <a name="client-processing-time-browsertimingprocessingduration"></a>クライアントの処理時間 (browserTiming/processingDuration)
+
+ドキュメントの最終バイトを受信してから、DOM が読み込まれるまでの時間。 非同期要求がまだ処理されている可能性があります。
 
 |Unit of measure|サポートされる集計|事前に集計されたディメンション|
 |---|---|---|
@@ -127,6 +131,8 @@ browserTimings
 
 ### <a name="page-load-network-connect-time-browsertimingsnetworkduration"></a>ページ読み込みのネットワーク接続時間 (browserTimings/networkDuration)
 
+ユーザー要求からネットワーク接続までの時間。 DNS の参照とトランスポートの接続が含まれます。
+
 |Unit of measure|サポートされる集計|事前に集計されたディメンション|
 |---|---|---|
 |ミリ秒|平均、最小、最大|なし|
@@ -143,6 +149,8 @@ browserTimings
 
 ### <a name="receiving-response-time-browsertimingsreceiveduration"></a>受信側の応答時間 (browserTimings/receiveDuration)
 
+最初のバイトから最後のバイトまで、または切断までの時間。
+
 |Unit of measure|サポートされる集計|事前に集計されたディメンション|
 |---|---|---|
 |ミリ秒|平均、最小、最大|なし|
@@ -158,6 +166,8 @@ browserTimings
 ```
 
 ### <a name="send-request-time-browsertimingssendduration"></a>送信要求時間 (browserTimings/sendDuration)
+
+ネットワーク接続から、最初のバイトを受信するまでの時間。
 
 |Unit of measure|サポートされる集計|事前に集計されたディメンション|
 |---|---|---|

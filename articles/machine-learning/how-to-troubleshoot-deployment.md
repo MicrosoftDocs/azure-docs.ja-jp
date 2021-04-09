@@ -10,22 +10,30 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 2b953fd040b9ba76eacddb91a89ac65d51e340a0
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 8bec083e62bec6a0311487c1e64e780ad14f451b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071665"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102518265"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>リモートでのモデル デプロイのトラブルシューティング 
 
 Azure Machine Learning を使用する Azure Container Instances (ACI) と Azure Kubernetes Service (AKS) にモデルをデプロイする際に発生する可能性がある一般的なエラーをトラブルシューティング、解決、または回避する方法について説明します。
 
+> [!NOTE]
+> Azure Kubernetes Service (AKS) にモデルをデプロイする場合は、そのクラスターで [Azure Monitor](../azure-monitor/containers/container-insights-enable-existing-clusters.md) を有効にすることをお勧めします。 これは、全体的なクラスターの正常性とリソースの使用状況を把握するのに役立ちます。 また、次のリソースも役立つ場合があります。
+>
+> * [AKS クラスターに影響する Resource Health イベントを確認する](../aks/aks-resource-health.md)
+> * [Azure Kubernetes Service 診断](../aks/concepts-diagnostics.md)
+>
+> 異常または過負荷のクラスターにモデルをデプロイしようとすると、問題が発生することが予想されます。 AKS クラスターでの問題のトラブルシューティングに関するヘルプが必要な場合は、AKS サポートにお問い合わせください。
+
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
-* [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
-* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+* [Azure Machine Learning SDK](/python/api/overview/azure/ml/install)。
+* [Azure CLI](/cli/azure/install-azure-cli)。
 * [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 
 ## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>機械学習モデルの Docker デプロイの手順
@@ -91,7 +99,7 @@ Azure Kubernetes Service コンピューティング ターゲットにサービ
 
 ## <a name="function-fails-get_model_path"></a>get_model_path() 関数が失敗する
 
-多くの場合、スコアリング スクリプトの `init()` 関数では、コンテナー内のモデル ファイルまたはモデル ファイルのフォルダーを見つける目的で [Model.get_model_path()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) 関数が呼び出されます。 モデル ファイルまたはフォルダーが見つからない場合、この関数は失敗します。 このエラーをデバッグする最も簡単な方法は、Container シェルで以下の Python コードを実行することです。
+多くの場合、スコアリング スクリプトの `init()` 関数では、コンテナー内のモデル ファイルまたはモデル ファイルのフォルダーを見つける目的で [Model.get_model_path()](/python/api/azureml-core/azureml.core.model.model#get-model-path-model-name--version-none---workspace-none-) 関数が呼び出されます。 モデル ファイルまたはフォルダーが見つからない場合、この関数は失敗します。 このエラーをデバッグする最も簡単な方法は、Container シェルで以下の Python コードを実行することです。
 
 ```python
 from azureml.core.model import Model
@@ -169,7 +177,7 @@ Azure Kubernetes Service のデプロイでは、自動スケールがサポー�
     > [!NOTE]
     > 受信する要求の量が、新しい最小レプリカ数で対処できるレベルを超えて急増した場合、再び 503 が発生する可能性があります。 たとえば、ご利用のサービスへのトラフィックが増えた場合、レプリカの最小個数を増やすことが必要な場合があります。
 
-`autoscale_target_utilization`、`autoscale_max_replicas`、`autoscale_min_replicas` の設定方法の詳細については、[AksWebservice](/python/api/azureml-core/azureml.core.webservice.akswebservice?preserve-view=true&view=azure-ml-py) モジュール リファレンスを参照してください。
+`autoscale_target_utilization`、`autoscale_max_replicas`、`autoscale_min_replicas` の設定方法の詳細については、[AksWebservice](/python/api/azureml-core/azureml.core.webservice.akswebservice) モジュール リファレンスを参照してください。
 
 ## <a name="http-status-code-504"></a>HTTP 状態コード 504
 

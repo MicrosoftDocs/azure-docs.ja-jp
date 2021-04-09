@@ -1,16 +1,16 @@
 ---
 title: バックアップ センターを使用してアクションを実行する
-description: この記事では、バックアップ センターを使用してアクションを実行する方法について説明します。
+description: この記事では、バックアップ センターを使用してアクションを実行する方法について説明します
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 06229eb0b8cb76482035d3dfe1949c3ab8354f17
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 8c21475e5a52cdce7e38bbeb9d00df3c3ac3a752
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98894577"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102506451"
 ---
-# <a name="perform-actions-using-backup-center-preview"></a>バックアップ センター (プレビュー) を使用してアクションを実行する
+# <a name="perform-actions-using-backup-center"></a>バックアップ センターを使用してアクションを実行する
 
 バックアップ センターを使用すると、個々のコンテナーに移動することなく、中央のインターフェイスからバックアップ関連の主要なアクションを実行できます。 バックアップ センターから実行できるいくつかのアクションを次に示します。
 
@@ -23,7 +23,7 @@ ms.locfileid: "98894577"
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
-* バックアップ センターでは現在、Azure VM のバックアップ、Azure VM 内の SQL のバックアップ、Azure VM 内の SAP HANA のバックアップ、Azure Files のバックアップ、および Azure Database for PostgreSQL サーバーのバックアップがサポートされています。
+* バックアップ センターでは現在、Azure VM のバックアップ、Azure VM 内の SQL のバックアップ、Azure VM 内の SAP HANA のバックアップ、Azure Files のバックアップ、Azure Database for PostgreSQL サーバーのバックアップがサポートされています。
 * サポートされるシナリオとサポートされないシナリオの詳細な一覧については、[サポート マトリックス](backup-center-support-matrix.md)を参照してください。
 
 ## <a name="configure-backup"></a>バックアップの構成

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/11/2020
 ms.author: duau
 ms.openlocfilehash: 7a5da35da35b2f447256bc742681ccd7a7d403da
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99091568"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute の監視、メトリック、およびアラート

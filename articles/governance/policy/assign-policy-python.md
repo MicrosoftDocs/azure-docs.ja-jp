@@ -1,15 +1,15 @@
 ---
 title: クイック スタート:Python を使用した新しいポリシー割り当て
 description: このクイックスタートでは、Python を使用して、準拠していないリソースを特定するための Azure Policy 割り当てを作成します。
-ms.date: 10/14/2020
+ms.date: 03/02/2021
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: aa67b3a2bae2beb62daa6e64871411ee760f802b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e600f97dafdd1040c22b6e4d9e333f638334b663
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832200"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742332"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>クイック スタート:Python を使用して準拠していないリソースを特定するためのポリシー割り当てを作成する
 
@@ -40,7 +40,7 @@ Python で Azure Policy を使用できるようにするには、ライブラ�
    az login
    ```
 
-1. 選択した Python 環境で、Azure Resource Graph に必要なライブラリをインストールします。
+1. 選択した Python 環境で、Azure Policy に必要なライブラリをインストールします。
 
    ```bash
    # Add the Python library for Python

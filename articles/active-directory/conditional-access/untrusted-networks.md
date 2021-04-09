@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4c020a9be7683bf045dbcc747dad3cb45058dd7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93077678"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>方法:条件付きアクセスを使用して信頼されていないネットワークからのアクセスに対して MFA を必須にする   
@@ -42,7 +42,7 @@ Azure AD 条件付きアクセスを使用すると、アクセス許可を付�
 
 ## <a name="implementation"></a>実装
 
-このシナリオの課題は、 *信頼されていないネットワークの場所からのアクセス* を、条件付きアクセスの条件に変換することです。 条件付きアクセス ポリシーでは、[場所の条件](location-condition.md)を構成して、ネットワークの場所に関連するシナリオに対応できます。 場所の条件を利用して、IP アドレスの範囲、国、およびリージョンの論理グループ化であるネームド ロケーションを選択できます。  
+このシナリオの課題は、*信頼されていないネットワークの場所からのアクセス* を、条件付きアクセスの条件に変換することです。 条件付きアクセス ポリシーでは、[場所の条件](location-condition.md)を構成して、ネットワークの場所に関連するシナリオに対応できます。 場所の条件を利用して、IP アドレスの範囲、国、およびリージョンの論理グループ化であるネームド ロケーションを選択できます。  
 
 通常、組織では、1 つまたは複数アドレスの範囲 (たとえば、199.30.16.0 から 199.30.16.15) を保持しています。
 ネームド ロケーションは、次の方法で構成できます。

@@ -6,14 +6,14 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: ac5d864d98742c6884f9511b6956e4166e2c19da
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 98f53ec1b6506a6d47146377e837576254f445e2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037474"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103601068"
 ---
-# <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
+# <a name="connect-azure-to-itsm-tools-by-using-it-service-management-solution"></a>IT Service Management ソリューションを使用して Azure を ITSM ツールに接続する
 
 :::image type="icon" source="media/itsmc-overview/itsmc-symbol.png":::
 
@@ -90,7 +90,7 @@ ITSM 接続を作成した後、ITSM を使用して、Azure アラートに基�
 
 ## <a name="define-a-template"></a>テンプレートを定義する
 
-特定の作業項目の種類では、ITSM ツールで定義したテンプレートを使用できます。 テンプレートを使用すると、アクション グループの固定値に従って自動的に入力されるフィールドを定義できます。 アクション グループの定義の一部として使用するテンプレートを定義できます。
+特定の作業項目の種類では、ITSM ツールで定義したテンプレートを使用できます。 テンプレートを使用すると、アクション グループの固定値に従って自動的に入力されるフィールドを定義できます。 アクション グループの定義の一部として使用するテンプレートを定義できます。 テンプレートの作成方法については、ServiceNow ドキュメントの情報を参照してください - (こちらに記載されています)[https://docs.servicenow.com/bundle/paris-platform-administration/page/administer/form-administration/task/t_CreateATemplateUsingTheTmplForm.html ]。
 
 アクション グループを作成するには:
 

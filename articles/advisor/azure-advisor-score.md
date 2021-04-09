@@ -4,10 +4,10 @@ description: Azure Advisor スコアを使用して Azure を最大限に活用�
 ms.topic: article
 ms.date: 09/09/2020
 ms.openlocfilehash: 11b20bc3b4d604d3a7ff4608cd1c21f129c1cb6d
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97630124"
 ---
 # <a name="optimize-azure-workloads-by-using-advisor-score"></a>Advisor スコアを使用して Azure ワークロードを最適化する

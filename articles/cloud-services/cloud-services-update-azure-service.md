@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 5d85003ca7b4307c308914484502ae03269f66ac
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98741113"
 ---
 # <a name="how-to-update-an-azure-cloud-service-classic"></a>Azure Cloud Services (クラシック) の更新方法
@@ -51,18 +51,18 @@ Azure では、ロール インスタンスが、アップグレード ドメイ
 
 | ホスティング、サービス、ロールに対して許可される変更 | インプレース更新 | ステージング (VIP スワップ) | 削除と再デプロイ |
 | --- | --- | --- | --- |
-| オペレーティング システムのバージョン |はい |Yes |はい |
-| .NET 信頼レベル |はい |Yes |Yes |
+| オペレーティング システムのバージョン |はい |はい |はい |
+| .NET 信頼レベル |はい |はい |Yes |
 | 仮想マシンのサイズ<sup>1</sup> |はい<sup>2</sup> |はい |Yes |
 | ローカル ストレージの設定 |増加のみ<sup>2</sup> |Yes |はい |
-| サービス内のロールの追加または削除 |はい |Yes |はい |
-| 特定のロールのインスタンスの数 |はい |Yes |Yes |
+| サービス内のロールの追加または削除 |はい |はい |はい |
+| 特定のロールのインスタンスの数 |はい |はい |Yes |
 | サービスのエンドポイントの数または種類 |はい<sup>2</sup> |いいえ |はい |
-| 構成設定の名前と値 |はい |Yes |はい |
-| 構成設定の値 (名前は不可) |はい |Yes |はい |
-| 新しい証明書の追加 |はい |Yes |はい |
-| 既存の証明書の変更 |はい |Yes |はい |
-| 新しいコードのデプロイ |はい |Yes |Yes |
+| 構成設定の名前と値 |はい |はい |はい |
+| 構成設定の値 (名前は不可) |はい |はい |はい |
+| 新しい証明書の追加 |はい |はい |はい |
+| 既存の証明書の変更 |はい |はい |はい |
+| 新しいコードのデプロイ |はい |はい |Yes |
 
 <sup>1</sup> サイズ変更は、クラウド サービスで使用できるサイズのサブセットに制限されます。
 

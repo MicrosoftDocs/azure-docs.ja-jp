@@ -2,7 +2,7 @@
 title: チュートリアル - Azure CLI を使用したカスタム VM イメージの作成
 description: このチュートリアルでは、Azure CLI を使用して、Azure でカスタム仮想マシン イメージを作成する方法について説明します
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: tutorial
 ms.workload: infrastructure
@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: 956e7c18deb597f6347dfd5dfdca99709a7052a0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 40ec86030e136a06fe240e473a469681dcfa7c4f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880980"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102557763"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure VM のカスタム イメージを作成する
 
@@ -112,13 +112,13 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>イメージ バージョンの作成
 
-[az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) を使用して、VM からイメージのバージョンを作成します。  
+[az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) を使用して、VM からイメージ バージョンを作成します。  
 
 イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion*.*MinorVersion*.*Patch*。
 
 この例では、イメージのバージョンは *1.0.0* であり、ゾーン冗長ストレージを使用して "*米国中西部*" リージョンに 2 個のレプリカ、"*米国中南部*" リージョンに 1 個のレプリカ、および "*米国東部 2*" リージョンに 1 個のレプリカを作成しています。 レプリケーション リージョンには、ソース VM が配置されているリージョンが含まれている必要があります。
 
-この例の `--managed-image` の値を、前の手順の VM の ID に置き換えます。
+この例の `--managed-image` の値を、前の手順の VM の ID で置き換えます。
 
 ```azurecli-interactive 
 az sig image-version create \

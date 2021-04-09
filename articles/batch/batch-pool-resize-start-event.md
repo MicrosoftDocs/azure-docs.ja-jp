@@ -4,10 +4,10 @@ description: Batch のプール サイズ変更開始イベントのリファレ
 ms.topic: reference
 ms.date: 12/28/2020
 ms.openlocfilehash: be64a2ef30cbe3c404633b29202a4adf1e49ea9e
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97803614"
 ---
 # <a name="pool-resize-start-event"></a>プールのサイズ変更の開始イベント
@@ -29,7 +29,7 @@ ms.locfileid: "97803614"
 }
 ```
 
-|要素|種類|メモ|
+|要素|Type|Notes|
 |-------------|----------|-----------|
 |`id`|String|プールの ID。|
 |`nodeDeallocationOption`|String|プールからノードが削除されるとき、プールのサイズが減少するかを指定します。<br /><br /> 次のいずれかの値になります。<br /><br /> **requeue** – 実行中のタスクを終了して、再度キューに入れます。 このタスクは、ジョブが有効になると再び実行されます。 タスクが終了するとすぐにノードを削除します。<br /><br /> **terminate** – 実行中のタスクを終了します。 タスクは再び実行されることがありません。 タスクが終了するとすぐにノードを削除します。<br /><br /> **taskcompletion** – 現在実行中のタスクが完了することを許可します。 待機中に新しいタスクをスケジュールしません。 すべてのタスクが完了するとノードを削除します。<br /><br /> **Retaineddata** - 現在実行中のタスクを完了できるようにしてから、すべてのタスク データ保有期間が終了するまで待機します。 待機中に新しいタスクをスケジュールしません。 すべてのタスク保有期間が終了したとき、ノードを削除します。<br /><br /> 既定値は requeue です。<br /><br /> プールのサイズが増加している場合、値は **無効** に設定されます。|

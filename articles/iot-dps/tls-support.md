@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: wesmc
 ms.openlocfilehash: 3a8910cf0e81bd041d74ef95f45220f1c1e0b34c
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91761296"
 ---
 # <a name="tls-support-in-azure-iot-hub-device-provisioning-service-dps"></a>Azure IoT Hub Device Provisioning Service (DPS) の TLS サポート
@@ -62,7 +62,7 @@ Resource Manager テンプレートで DPS リソースを作成する詳細に�
 この構成を使用して作成された DPS リソースは、TLS バージョン 1.0 および 1.1 を使用して接続を試みるデバイスを拒否します。 同様に、デバイス クライアントの HELLO メッセージに[推奨される暗号](#recommended-ciphers)が示されていない場合、TLS ハンドシェイクは拒否されます。
 
 > [!NOTE]
-> `minTlsVersion` プロパティは読み取り専用であり、DPS リソースの作成後は変更できません。 したがって、*すべての* IoT デバイスが TLS 1.2 および[推奨される暗号](#recommended-ciphers)と互換性があることを、事前に適切にテストし、検証する必要があります。
+> `minTlsVersion` プロパティは読み取り専用であり、DPS リソースの作成後は変更できません。 したがって、*すべての* IoT デバイスが TLS 1.2 および [推奨される暗号](#recommended-ciphers)と互換性があることを、事前に適切にテストし、検証する必要があります。
 
 
 > [!NOTE]

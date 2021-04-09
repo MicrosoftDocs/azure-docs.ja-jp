@@ -3,7 +3,7 @@ title: Azure Media Services のエンコード エラー コード | Microsoft D
 description: このトピックでは、エンコード タスクの実行中にエラーが発生した場合に返される可能性があるエラー コードの一覧を示しています。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ce4e939f-5aee-41f9-859d-e4429815e9f2
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 6e56dbe1d1236a567ed6f59acfcca325a6c9ee7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 7e6848fb49dd63fa67a639d09754a28dd5953a32
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269031"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103013484"
 ---
 # <a name="encoding-error-codes"></a>エラー コードのエンコード
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 16c0b3e6dc4bd9097312e3a8c43618e66781ef85
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92092887"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法
@@ -47,7 +47,7 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 ![開発者ポータル テンプレート][api-management-templates-menu]
 
-テンプレートをクリックすると、そのテンプレートによってカスタマイズできる開発者ポータルのページが表示されます。 この例では、 **製品リスト** テンプレートが表示されています。 **製品リスト** テンプレートは、赤色の四角形によって示されている画面の領域を制御します。
+テンプレートをクリックすると、そのテンプレートによってカスタマイズできる開発者ポータルのページが表示されます。 この例では、**製品リスト** テンプレートが表示されています。 **製品リスト** テンプレートは、赤色の四角形によって示されている画面の領域を制御します。
 
 ![製品リスト テンプレート][api-management-developer-portal-templates-overview]
 
@@ -147,7 +147,7 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 ![テンプレートを有効にするための [はい] を選択する場所を示すスクリーンショット。][api-management-publish-template-confirm]
 
-現在未発行のテンプレートのすべてのバージョンを発行するには、テンプレートの一覧で **[発行]** をクリックします。 未発行のテンプレートは、テンプレート名の後ろのアスタリスクによって示されます。 この例では、 **製品リスト** テンプレートと **製品** テンプレートが発行されます。
+現在未発行のテンプレートのすべてのバージョンを発行するには、テンプレートの一覧で **[発行]** をクリックします。 未発行のテンプレートは、テンプレート名の後ろのアスタリスクによって示されます。 この例では、**製品リスト** テンプレートと **製品** テンプレートが発行されます。
 
 ![テンプレートを発行する][api-management-publish-templates]
 

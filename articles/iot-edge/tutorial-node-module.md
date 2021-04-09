@@ -9,18 +9,20 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-python, devx-track-js
-ms.openlocfilehash: 5c8918995675cae8e70ca9fc1efb0cf4c7cb233b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a8a6d09819aaa65645da3d4d697866609c226723
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959409"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103461149"
 ---
-# <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の Node.js IoT Edge モジュールを開発およびデプロイする
+# <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-using-linux-containers"></a>チュートリアル: Linux コンテナーを使用して Node.js の IoT Edge モジュールを開発してデプロイする
 
-Visual Studio Code を使用して Node.js コードを開発し、Azure IoT Edge を実行している Linux デバイスにデプロイします。
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、センサー データをフィルター処理する IoT Edge モジュールを作成および展開する方法について説明します。 ここでは、クイック スタートで作成した、シミュレートされた IoT Edge デバイスを使用します。 このチュートリアルでは、以下の内容を学習します。
+Visual Studio Code を使用して Node.js コードを開発し、Azure IoT Edge を実行しているデバイスにデプロイします。
+
+IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、センサー データをフィルター処理する IoT Edge モジュールを作成および展開する方法について説明します。 ここでは、クイック スタートで作成した IoT Edge デバイスを使用します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 >
@@ -35,7 +37,9 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、**Visual Studio Code** を使用して **Node.js** でモジュールを開発し、それを **Linux デバイス** にデプロイする方法について説明します。 IoT Edge は、Windows デバイス用 Node.js モジュールをサポートしていません。
+このチュートリアルでは、**Visual Studio Code** を使用して **Node.js** でモジュールを開発し、それを IoT Edge デバイスにデプロイする方法について説明します。
+
+IoT Edge は、Windows コンテナーを使用した Node.js モジュールをサポートしていません。
 
 次の表を使用し、Node.js モジュールを開発してデプロイする際のオプションをご確認ください。
 
@@ -44,10 +48,10 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 | **Linux AMD64** | ![Linux AMD64 の Node.js モジュール用の VS Code を使用します](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Linux ARM32 の Node.js モジュール用の VS Code を使用します](./media/tutorial-c-module/green-check.png) |  |
 
-このチュートリアルを開始する前に、前のチュートリアルを完了して、Linux コンテナー開発用の開発環境を設定しておく必要があります。[Linux デバイス用の IoT Edge モジュールを開発する](tutorial-develop-for-linux.md)。 これらのチュートリアルのいずれかを完了すると、次の前提条件が満たされます。
+このチュートリアルを開始する前に、前のチュートリアル「[Linux コンテナーを使用して IoT Edge モジュールを開発する](tutorial-develop-for-linux.md)」を完了して、Linux コンテナー開発用の開発環境を設定しておく必要があります。 このチュートリアルを完了すると、次の前提条件が満たされます。
 
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
-* [Azure IoT Edge を実行している Linux デバイス](quickstart-linux.md)
+* Azure IoT Edge を実行しているデバイス。 クイックスタートを使用して、[Linux デバイス](quickstart-linux.md)または [Windows デバイス](quickstart.md)を設定できます。
 * コンテナー レジストリ ([Azure Container Registry](../container-registry/index.yml) など)。
 * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して構成された [Visual Studio Code](https://code.visualstudio.com/)。
 * Linux コンテナーを実行するように構成された [Docker CE](https://docs.docker.com/install/)。

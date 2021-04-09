@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 3b816ddc0eccf8c406cfed37d6bfc594e27d3629
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85850349"
 ---
 # <a name="expose-an-aks-service-over-http-or-https-using-application-gateway"></a>Application Gateway を使用して HTTP または HTTPS 経由で AKS サービスを公開する 
@@ -21,8 +21,8 @@ ms.locfileid: "85850349"
 ## <a name="prerequisites"></a>前提条件
 
 - `ingress-azure` Helm Chart がインストールされている。
-  - [**グリーンフィールド デプロイ**](ingress-controller-install-new.md):最初から開始する場合は、次のインストール手順を参照してください。Application Gateway を利用して AKS クラスターをデプロイし、AKS クラスター上に Application Gateway のイングレス コントローラーをインストールするおおまかな手順を示しています。
-  - [**ブラウンフィールド デプロイ**](ingress-controller-install-existing.md):既存の AKS クラスターと Application Gateway がある場合は、次の手順を参照して、AKS クラスター上に Application Gateway イングレス コントローラーをインストールしてください。
+  - [**グリーンフィールド デプロイ**](ingress-controller-install-new.md): 最初から開始する場合は、次のインストール手順を参照してください。Application Gateway を利用して AKS クラスターをデプロイし、AKS クラスター上に Application Gateway のイングレス コントローラーをインストールするおおまかな手順を示しています。
+  - [**ブラウンフィールド デプロイ**](ingress-controller-install-existing.md): 既存の AKS クラスターと Application Gateway がある場合は、次の手順を参照して、AKS クラスター上に Application Gateway イングレス コントローラーをインストールしてください。
 - このアプリケーション上で HTTPS を使用する場合は、x509 証明書とその秘密キーが必要になります。
 
 ## <a name="deploy-guestbook-application"></a>`guestbook` アプリケーションのデプロイ

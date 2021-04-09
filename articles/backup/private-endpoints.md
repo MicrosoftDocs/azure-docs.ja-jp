@@ -3,12 +3,12 @@ title: プライベート エンドポイント
 description: Azure Backup のプライベート エンドポイントを作成するプロセスと、プライベート エンドポイントを使用することでリソースのセキュリティが維持しやすくなるシナリオについて説明します。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 9363aaf45a7c092d8a773a07803c8c1bce1eedd7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7423157abbc0833394af055f5e31f724caa10b46
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728214"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103224709"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup のプライベート エンドポイント
 
@@ -24,7 +24,7 @@ Azure Backup で[プライベート エンドポイント](../private-link/priva
 - Backup 用のプライベート エンドポイント接続には、ストレージ用に Azure Backup で使用されるものなど、サブネットで合計 11 個のプライベート IP が使用されます。 一部の Azure リージョンでは、この数がさらに多い場合があります (最大 25)。 そのため、Backup 用のプライベート エンドポイントを作成する場合は、十分な数のプライベート IP を用意することをお勧めします。
 - Recovery Services コンテナーは Azure Backup と Azure Site Recovery (の両方) に使用されますが、この記事では、Azure Backup だけのためにプライベート エンドポイントを使用する場合について説明します。
 - Azure Active Directory では、現在、プライベート エンドポイントがサポートされていません。 したがって、Azure Active Directory がリージョンで機能するために必要な IP と FQDN には、Azure VM でのデータベースのバックアップおよび MARS エージェントを使用したバックアップを実行するときに、セキュリティで保護されたネットワークからの発信アクセスが許可される必要があります。 また、必要に応じて、NSG タグと Azure Firewall タグを使用して、Azure AD へのアクセスを許可することもできます。
-- ネットワーク ポリシーが適用されている仮想ネットワークは、プライベート エンドポイント用にサポートされません。 続行する前に、ネットワーク ポリシーを無効にする必要があります。
+- ネットワーク ポリシーが適用されている仮想ネットワークは、プライベート エンドポイント用にサポートされません。 続行する前に、[ネットワーク ポリシーを無効にする](https://docs.microsoft.com/azure/private-link/disable-private-endpoint-network-policy)必要があります。
 - Recovery Services リソース プロバイダーをサブスクリプションに 2020 年 5 月 1 日より前に登録した場合は、再登録する必要があります。 プロバイダーを再登録するには、Azure portal のサブスクリプションに移動し、左側のナビゲーションバーで **[リソース プロバイダー]** に移動し、 **[Microsoft.RecoveryServices]** を選択し、 **[再登録]** を選択します。
 - コンテナーでプライベート エンドポイントが有効になっている場合、SQL および SAP HANA データベース バックアップの[リージョンをまたがる復元](backup-create-rs-vault.md#set-cross-region-restore)はサポートされていません。
 - 既にプライベート エンドポイントを使用している Recovery Services コンテナーを新しいテナントに移動する場合、Recovery Services コンテナーを更新して、コンテナーのマネージド ID を再作成および再構成し、新しいプライベート エンドポイント (新しいテナント内にあるはずです) を作成する必要があります。 これを実行しないと、バックアップおよび復元操作が失敗するようになります。 また、サブスクリプション内に設定されているすべてのロールベースのアクセス制御 (RBAC) アクセス許可も再構成する必要があります。
@@ -297,6 +297,10 @@ MARS エージェントを使用してオンプレミスのリソースをバッ
 
 MARS エージェントの登録後にそのボールト用のプライベート エンドポイントを削除した場合は、コンテナーをボールトに再登録する必要があります。 それらに対する保護を停止する必要はありません。
 
+## <a name="deleting-private-endpoints"></a>プライベート エンドポイントを削除する
+
+プライベート エンドポイントを削除する方法については、[こちらのセクション](https://docs.microsoft.com/rest/api/virtualnetwork/privateendpoints/delete)を参照してください。
+
 ## <a name="additional-topics"></a>関連トピック
 
 ### <a name="create-a-recovery-services-vault-using-the-azure-resource-manager-client"></a>Azure Resource Manager クライアントを使用して Recovery Services コンテナーを作成する
@@ -554,4 +558,4 @@ A. この記事で詳しく説明されているプロセスに従った後、�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Backup のセキュリティ機能](security-overview.md)に関する記事を読む
+- [Azure Backup のセキュリティ機能](security-overview.md)に関する記事を確認します。

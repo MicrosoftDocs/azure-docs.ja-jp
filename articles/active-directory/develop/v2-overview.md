@@ -13,12 +13,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40, contperf-fy21q2
-ms.openlocfilehash: 662523b1544fe3ca9e8bda993efa7b578b9f69cc
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: a4ce8242bd3110fee038ac826973e6a134413344
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752573"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102426843"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームとは
 
@@ -38,6 +38,8 @@ Microsoft ID プラットフォームは、次のようないくつかのコン�
 開発者は Microsoft ID プラットフォームにより、パスワードレス認証、ステップアップ認証、条件付きアクセスなど、ID およびセキュリティ領域における最新の革新的技術を統合できます。 このような機能を自分で実装する必要はありません。Microsoft ID プラットフォームと統合されたアプリケーションは、このような革新的技術をネイティブに利用します。
 
 Microsoft ID プラットフォームでは、一度コードを記述すればすべてのユーザーに対応できます。 アプリを一度ビルドすれば、多数のプラットフォームで動作させたり、リソース アプリケーション (API) と同様にクライアントとして機能するアプリを構築できます。
+
+プラットフォームの概要ビデオと認証エクスペリエンスのデモについては、「[開発者向けの Microsoft ID プラットフォームとは](https://youtu.be/uDU1QTSw7Ps)」をご覧ください。
 
 ## <a name="getting-started"></a>作業の開始
 

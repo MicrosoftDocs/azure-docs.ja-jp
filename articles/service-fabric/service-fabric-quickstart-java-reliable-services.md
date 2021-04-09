@@ -1,17 +1,17 @@
 ---
-title: クイック スタート:Azure Service Fabric で Java アプリを作成する
+title: 'クイックスタート: Azure Service Fabric で Java アプリを作成する'
 description: このクイック スタートでは、Service Fabric Reliable Services サンプル アプリケーションを使用して、Azure 用の Java アプリケーションを作成します。
 ms.topic: quickstart
 ms.date: 01/29/2019
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 2f1e5f8f73f74d4b427e574b9e6a75aaf84a4211
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91529859"
 ---
-# <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>クイック スタート:Azure Service Fabric on Linux に Java アプリをデプロイする
+# <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>クイックスタート: Azure Service Fabric on Linux に Java アプリをデプロイする
 
 このクイックスタートでは、Linux 開発者マシンで Eclipse IDE を使用して、Azure Service Fabric に Java アプリケーションをデプロイします。 最後まで読み進めていけば、Java Web フロントエンドからクラスター内のステートフルなバックエンド サービスに投票結果を保存するアプリケーションが完成します。
 
@@ -50,7 +50,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
     ![Gradle プロジェクトを Eclipse にインポートする](./media/service-fabric-quickstart-java/eclipse-import-gradle-project.png)
 
 5. これで、Eclipse のパッケージ エクスプローラーに `Voting` プロジェクトが配置されました。
-6. プロジェクトを右クリックして、 **[Service Fabric]** ドロップダウンの **[Publish Application]\(アプリケーションの発行\)** を選択します。 ターゲット プロファイルとして **[PublishProfiles/Local.json]** を選択し、 **[発行]** を選択します。
+6. プロジェクトを右クリックして、**[Service Fabric]** ドロップダウンの **[Publish Application]\(アプリケーションの発行\)** を選択します。 ターゲット プロファイルとして **[PublishProfiles/Local.json]** を選択し、**[発行]** を選択します。
 
     ![Azure Service Fabric がローカル JSON を発行する](./media/service-fabric-quickstart-java/service-fabric-publish-local-json.png)
 
@@ -71,13 +71,13 @@ Service Fabric Explorer は、すべての Service Fabric クラスターで動�
 Web フロントエンド サービスをスケーリングするには、以下を実行します。
 
 1. クラスターで Service Fabric Explorer を開きます。 たとえば、「 `https://localhost:19080` 」のように入力します。
-2. ツリービューで **fabric:/Voting/VotingWeb** ノードの横にある省略記号 ( **...** ) を選択し、 **[サービスのスケール]** を選択します。
+2. ツリービューで **fabric:/Voting/VotingWeb** ノードの横にある省略記号 (**...**) を選択し、**[サービスのスケール]** を選択します。
 
     ![Azure Service Fabric でサービスのスケーリングを行う](./media/service-fabric-quickstart-java/service-fabric-scale-service.png)
 
     これで Web フロントエンド サービスのインスタンス数をスケールできる状態になりました。
 
-3. 数値を **2** に変更し、 **[サービスのスケール]** を選択します。
+3. 数値を **2** に変更し、**[サービスのスケール]** を選択します。
 4. ツリービューの **fabric:/Voting/VotingWeb** ノードを選択し、パーティション ノード (GUID で表されます) を展開します。
 
     ![Azure Service Fabric でスケーリングされたサービス](./media/service-fabric-quickstart-java/service-fabric-explorer-service-scaled.png)

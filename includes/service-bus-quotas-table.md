@@ -5,15 +5,15 @@ services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 07/15/2020
+ms.date: 02/17/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 46e5400627e4d2896265ed95410c8afcb918043b
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: ee066ff46f319749469a41e6decf12b35c0ee27e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100105860"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651947"
 ---
 次の表に、Azure Service Bus メッセージングに固有のクォータ情報を示します。 Service Bus の価格と他のクォータについては、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」をご覧ください。
 
@@ -28,15 +28,15 @@ ms.locfileid: "100105860"
 | 名前空間あたりの[パーティション分割されたトピックまたはキュー](../articles/service-bus-messaging/service-bus-partitioning.md)の数 |名前空間 |以後、名前空間でのパーティション分割されたトピックまたはキューの新規作成要求が拒否されます。 その結果、([Azure portal][Azure portal] で構成されていれば) エラー メッセージが生成されます。 管理 API から呼び出された場合、呼び出し元コードが **QuotaExceededException** 例外を受け取ります。 |Basic レベルと Standard レベル: 100。<br/><br/>パーティション分割されたエンティティは、[Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md) レベルではサポートされていません。<br/><br />パーティション分割された各キューまたはトピックは、名前空間あたり 1,000 エンティティのクォータに加算されます。 |
 | メッセージング エンティティのパスの最大サイズ: キューまたはトピック |Entity |- |260 文字。 |
 | メッセージング エンティティ名の最大サイズ: 名前空間、サブスクリプション、またはサブスクリプション規則 |Entity |- |50 文字。 |
-| [メッセージ ID](/dotnet/api/microsoft.azure.servicebus.message.messageid) の最大サイズ | Entity |- | 128 |
-| メッセージ [セッション ID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) の最大サイズ | Entity |- | 128 |
+| メッセージ ID の最大サイズ | Entity |- | 128 |
+| メッセージ セッション ID の最大サイズ | Entity |- | 128 |
 | キュー、トピック、またはサブスクリプション エンティティのメッセージ サイズ |Entity |これらのクォータを超える受信メッセージは拒否され、呼び出し元コードが例外を受け取ります。 |メッセージの最大サイズ:[Standard レベル](../articles/service-bus-messaging/service-bus-premium-messaging.md)では 256 KB、[Premium レベル](../articles/service-bus-messaging/service-bus-premium-messaging.md)では 1 MB。 <br /><br />システムのオーバーヘッドのため、この制限はこれらの値よりも小さくなります。<br /><br />ヘッダーの最大サイズ:64 KB。<br /><br />プロパティ バッグ内のヘッダー プロパティの最大数: **バイト/int.MaxValue**。<br /><br />プロパティ バッグ内のプロパティの最大サイズ:明示的な制限はありません。 ヘッダーの最大サイズによって制限されます。 |
-| キュー、トピック、またはサブスクリプション エンティティのメッセージ プロパティ サイズ |Entity | 例外 `SerializationException` が生成されます。 |各プロパティの最大メッセージ プロパティ サイズは 32,000 です。 すべてのプロパティの合計サイズが 64,000 を超えることはできません。 この制限は、[Brokered Message](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) のヘッダー全体に適用されます。このヘッダーには、ユーザー プロパティとシステム プロパティ ([Sequence Number](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber)、[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label)、[Message ID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid) など) の両方が含まれます。 |
+| キュー、トピック、またはサブスクリプション エンティティのメッセージ プロパティ サイズ |Entity | 例外 `SerializationException` が生成されます。 |各プロパティの最大メッセージ プロパティ サイズは 32,000 です。 すべてのプロパティの合計サイズが 64,000 を超えることはできません。 この制限は、ブローカー メッセージのヘッダー全体に適用されます。このヘッダーには、ユーザー プロパティとシステム プロパティ (ログ シーケンス番号、ラベル、メッセージ ID など) の両方が含まれます。 |
 | トピックごとのサブスクリプション数 |Entity |以後、そのトピックに対するサブスクリプションの新規作成要求は拒否されます。 その結果、ポータルで構成されている場合は、エラー メッセージが表示されます。 管理 API から呼び出された場合は、呼び出し元のコードが例外を受け取ります。 |Standard レベルおよび Premium レベルのトピックあたり 2,000。 |
 | トピックごとの SQL フィルターの数 |Entity |そのトピックに追加のフィルターを作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |2,000 |
 | トピックごとの関連付けフィルターの数 |Entity |そのトピックに追加のフィルターを作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |100,000 |
 | SQL フィルターまたはアクションのサイズ |名前空間 |追加のフィルターを作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |フィルター条件文字列の最大長:1,024 (1 K)。<br /><br />規則アクション文字列の最大長:1,024 (1 K)。<br /><br />規則アクションごとの式の最大数:32. |
-| 名前空間、キュー、トピックごとの [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 規則の数 |エンティティ、名前空間 |追加の規則を作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |エンティティ型ごとの規則の最大数:12. <br /><br /> Service Bus 名前空間に構成されている規則は、キューやトピックのすべての型に適用されます。 |
+| 名前空間、キュー、トピックごとの共有アクセス承認規則の数 |エンティティ、名前空間 |追加の規則を作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |エンティティ型ごとの規則の最大数:12. <br /><br /> Service Bus 名前空間に構成されている規則は、キューやトピックのすべての型に適用されます。 |
 | トランザクションあたりのメッセージ数 | トランザクション | それ以上の受信メッセージは拒否され、呼び出し元コードが "1 回のトランザクションで 100 個を超えるメッセージを送信することができない" ことを示す例外を受け取ります。 | 100 <br /><br /> **Send()** 操作および **SendAsync()** 操作両方に対して。 |
 | 仮想ネットワークと IP フィルター規則の数 | 名前空間 | &nbsp; | 128 | 
 

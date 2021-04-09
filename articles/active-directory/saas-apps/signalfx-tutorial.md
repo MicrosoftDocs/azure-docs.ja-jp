@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
 ms.openlocfilehash: 1fbc42864761360d252ed62cea1aef6f2937b599
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92516071"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SignalFx の統合
@@ -40,8 +40,8 @@ SaaS アプリケーションと Azure AD の統合の詳細については、[A
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* SignalFx では、 **IDP** によって開始される SSO がサポートされます
-* SignalFx では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* SignalFx では、**IDP** によって開始される SSO がサポートされます
+* SignalFx では、**Just In Time** ユーザー プロビジョニングがサポートされます
 * SignalFx を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="step-1-add-the-signalfx-application-in-azure"></a>手順 1:SignalFx アプリケーションを Azure に追加する
@@ -52,7 +52,7 @@ SaaS アプリケーションと Azure AD の統合の詳細については、[A
 1. 左側のナビゲーション ウィンドウで **[Azure Active Directory]** を選択します。
 1. **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションの検索ボックスで、「 **SignalFx** 」と入力して選択します。
+1. **[ギャラリーから追加する]** セクションの検索ボックスで、「**SignalFx**」と入力して選択します。
      * アプリケーションがテナントに追加されるまでに数分待つ場合があります。
 1. Azure portal は開いたままで、新しい Web タブを開きます。    
 
@@ -62,13 +62,13 @@ SaaS アプリケーションと Azure AD の統合の詳細については、[A
 
 1. 新しく開いたタブで、SignalFx UI にアクセスしてログインします。 
 1. トップ メニューの **[Integrations]\(統合\)** をクリックします。 
-1. 検索フィールドに「 **Azure Active Directory** 」と入力して選択します。
+1. 検索フィールドに「**Azure Active Directory**」と入力して選択します。
 1. **[Create New Integration]\(新しい統合の作成\)** をクリックします。
 1. **[Name]\(名前\)** に、ユーザーにとってわかりやすく認識しやすい名前を入力します。
 1. **[Show on login page]\(ログイン ページに表示する\)** をマークします。
     * この機能により、ユーザーがクリックできるカスタマイズされたボタンがログイン ページに表示されます。 
     * **[Name]\(名前\)** に入力した情報がボタンに表示されます。 したがって、ユーザーが認識しやすい **名前** を入力してください。 
-    * このオプションが機能するのは、SignalFx アプリケーションにカスタム サブドメイン ( **yourcompanyname.signalfx.com** など) を使用している場合のみです。 カスタム サブドメインを取得するには、SignalFx サポートにお問い合わせください。 
+    * このオプションが機能するのは、SignalFx アプリケーションにカスタム サブドメイン (**yourcompanyname.signalfx.com** など) を使用している場合のみです。 カスタム サブドメインを取得するには、SignalFx サポートにお問い合わせください。 
 1. **[Integration ID]\(統合 ID\)** をコピーします。 この情報は後の手順で必要になります。 
 1. SignalFx UI は開いたままにしておきます。 
 
@@ -76,7 +76,7 @@ SaaS アプリケーションと Azure AD の統合の詳細については、[A
 
 次の手順を使用して、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) に戻り、 **SignalFx** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) に戻り、**SignalFx** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** のペン (編集) アイコンをクリックして設定を編集します。
 
@@ -159,7 +159,7 @@ SSO のテスト方法および SignalFx への初回ログインに対する期
         * アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 * SignalFx アプリケーションにはアクセス パネルから、または組織に割り当てられたカスタム ログイン ページを介してアクセスできます。 テスト ユーザーは、そのいずれかの場所から統合をテストする必要があります。
-    * テスト ユーザーは、先ほどこのプロセスで作成された、 **b.simon\@contoso.com** の資格情報を使用できます。
+    * テスト ユーザーは、先ほどこのプロセスで作成された、**b.simon\@contoso.com** の資格情報を使用できます。
 
 ### <a name="first-time-logins"></a>初回ログイン
 

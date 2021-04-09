@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/14/2020
 ms.author: justinha
 ms.openlocfilehash: d33698ed2f9ac53aae3c836acd54f19a4b72ceef
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96619030"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の一般的なユースケースとシナリオ

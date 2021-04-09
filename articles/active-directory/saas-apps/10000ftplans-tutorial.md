@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: fc2a2c557ff9738051b9d9f38ad8947d2edd6a36
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92319249"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>チュートリアル: Azure Active Directory と 10,000ft Plans の統合
@@ -62,7 +62,7 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**10,000ft Plans**」と入力し、結果パネルで **[10,000ft Plans]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**10,000ft Plans**」と入力し、結果パネルで **[10,000ft Plans]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の 10,000ft Plans](common/search-new-app.png)
 
@@ -86,7 +86,7 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
 
 10,000ft Plans で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **10,000ft Plans** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **10,000ft Plans** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -109,7 +109,7 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
     > [!NOTE]
     > カスタム ドメインがある場合は、 **[識別子]** の値が異なります。 この値を取得するには、[10,000ft Plans クライアント サポート チーム](https://www.10000ft.com/plans/support)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificateraw.png)
 
@@ -125,7 +125,7 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
 
 ### <a name="configure-10000ft-plans-single-sign-on"></a>10000ft Plans のシングル サインオンの構成
 
-**10,000ft Plans** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (未加工)** と Azure portal からコピーした適切な URL を [10,000ft Plans サポート チーム](https://www.10000ft.com/plans/support)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**10,000ft Plans** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (未加工)** と Azure portal からコピーした適切な URL を [10,000ft Plans サポート チーム](https://www.10000ft.com/plans/support)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -155,7 +155,7 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
 
 このセクションでは、Britta Simon に 10,000ft Plans へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[10,000ft Plans]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[10,000ft Plans]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
 ms.openlocfilehash: 23b7a66afcc91cf1cf4a5dd9f720aad24ad40071
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98133992"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Azure Bastion のトラブルシューティング

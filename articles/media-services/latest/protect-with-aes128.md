@@ -2,7 +2,7 @@
 title:AES-128 によるビデオの暗号化:Azure Media Services の説明:Azure Media Service で AES 128 ビット暗号化によりビデオを暗号化し、キー配信サービスを使用する方法を説明します。
 services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
 
-ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na ms.topic: tutorial ms.date:08/31/2020 ms.author: inhenkel
+ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na ms.topic: tutorial ms.date: 03/17/2021 ms.author: inhenkel
 
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>チュートリアル:AES-128 でビデオを暗号化し、キー配信サービスを使用する
@@ -89,7 +89,7 @@ Media Services では、AES 128 ビット暗号化キーを使用して暗号化
 
 ## <a name="wait-for-the-job-to-complete"></a>ジョブが完了するのを待つ
 
-ジョブが完了するまでに、一定の時間がかかります。 完了したら通知を受け取りたいでしょう。 次のコード例では、[ジョブ](/rest/api/media/jobs)の状態をサービスに対してポーリングする方法を示します。 待機時間が発生する可能性があるため、ポーリングは運用アプリに推奨されるベスト プラクティスではありません。 アカウントで過剰に使った場合、ポーリングはスロットルされる可能性があります。 開発者は、代わりに Event Grid を使う必要があります。 詳細については、[カスタム Web エンドポイントにイベントをルーティングする方法](job-state-events-cli-how-to.md)に関するページを参照してください。
+ジョブが完了するまでに、一定の時間がかかります。 完了したら通知を受け取りたいでしょう。 次のコード例では、[ジョブ](/rest/api/media/jobs)の状態をサービスに対してポーリングする方法を示します。 待機時間が発生する可能性があるため、ポーリングは運用アプリに推奨されるベスト プラクティスではありません。 アカウントで過剰に使った場合、ポーリングはスロットルされる可能性があります。 開発者は、代わりに Event Grid を使う必要があります。 詳細については、[カスタム Web エンドポイントにイベントをルーティングする方法](monitoring/job-state-events-cli-how-to.md)に関するページを参照してください。
 
 **Job** には通常、**Scheduled**、**Queued**、**Processing**、**Finished** (最終状態) という状態があります。 ジョブでエラーが発生すると、**Error** 状態が返されます。 ジョブがキャンセル処理中の場合は **Canceling** を受け取り、完了すると **Canceled** を受け取ります。
 

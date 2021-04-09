@@ -7,10 +7,10 @@ ms.author: evternov
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 933280b5d3b81098f18f22a72bd2c7f942869e6a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100578321"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Application Insights のデータをカスタム データ ソースと関連付ける

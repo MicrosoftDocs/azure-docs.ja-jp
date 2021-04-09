@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Airtable の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Airtable の統合 | Microsoft Docs'
 description: Azure Active Directory と Airtable の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: jeedes
 ms.openlocfilehash: f73e372318e690e1446eef1974c7a93c79d4e2d9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92318976"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-airtable"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Airtable の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-airtable"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Airtable の統合
 
 このチュートリアルでは、Airtable と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Airtable を統合すると、次のことができます。
 
@@ -74,7 +74,7 @@ Airtable に対する Azure AD SSO を構成してテストするには、次の
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Airtable** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Airtable** アプリケーション統合ページで、**[管理]** セクションを探して、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 

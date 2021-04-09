@@ -4,10 +4,10 @@ description: この記事では、gRPC 推論サーバーを開発およびデ�
 ms.topic: how-to
 ms.date: 12/02/2020
 ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98881654"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>攻略ガイド - gRPC 推論サーバーの開発とデプロイ

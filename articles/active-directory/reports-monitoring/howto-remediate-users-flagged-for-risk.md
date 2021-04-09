@@ -16,10 +16,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23bd7a26bc6215f50a2860ab4aac84f1b46301f5
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92308952"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでリスクのフラグ付きユーザーを修復する
@@ -44,13 +44,13 @@ Microsoft は、お客様の環境のセキュリティの保持に努めてい�
 
 ### <a name="azure-ad-subscription-for-microsoft-365-customers"></a>Microsoft 365 のお客様の Azure AD サブスクリプション
 
-Microsoft 365 の資格情報を使用して **Azure 管理センター**にアクセスすることもできます。 Azure AD へのアクセスをアクティブにすると、Azure AD ポータルにリダイレクトされます。 Basic サブスクリプション レベルでは、レポートで提供される詳細情報の量が限定されます。 追加のデータと分析を使用できるのは、Azure Premium サブスクライバーのみです。
+Microsoft 365 の資格情報を使用して **Azure 管理センター** にアクセスすることもできます。 Azure AD へのアクセスをアクティブにすると、Azure AD ポータルにリダイレクトされます。 Basic サブスクリプション レベルでは、レポートで提供される詳細情報の量が限定されます。 追加のデータと分析を使用できるのは、Azure Premium サブスクライバーのみです。
 
-Microsoft 365 管理センターで**リスクのフラグ付きユーザー**のレポートにアクセスするには:
+Microsoft 365 管理センターで **リスクのフラグ付きユーザー** のレポートにアクセスするには:
 
 1.  左側のナビゲーション メニューで、 **[管理センター]** を選択します。 
 2.  **[Azure AD ]** を選びます。
-3.  **Azure Active Directory 管理センター**にログインします。
+3.  **Azure Active Directory 管理センター** にログインします。
 4.  ページ上部に **[新しいポータルの確認]** というバナーが表示される場合は、そのリンクを選択します。
 4.  左側のナビゲーション メニューで、 **[Azure Active Directory]** を選択します。 
 5.  ナビゲーション ウィンドウの **[セキュリティ]** セクションから、 **[リスクのフラグ付きユーザー]** を選択します。

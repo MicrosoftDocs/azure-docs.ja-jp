@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: jeedes
 ms.openlocfilehash: c5778f39a5091753a1658ec121379a4ed29a7542
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101648375"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>チュートリアル: Azure Active Directory と Zoho の統合
@@ -88,7 +88,7 @@ Zoho に対して Azure AD SSO を構成してテストするには、次の手�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
+### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成 
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -100,7 +100,7 @@ Zoho に対して Azure AD SSO を構成してテストするには、次の手�
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に Zoho へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -112,13 +112,13 @@ Zoho に対して Azure AD SSO を構成してテストするには、次の手�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-### <a name="configure-zoho-sso"></a>Zoho SSO の構成
+### <a name=&quot;configure-zoho-sso&quot;></a>Zoho SSO の構成
 
 1. 別の Web ブラウザー ウィンドウで、Zoho Mail 企業サイトに管理者としてログインします。
 
 2. **コントロール パネル** に移動します。
    
-    ![コントロール パネル](./media/zoho-mail-tutorial/control-panel.png "コントロール パネル")
+    ![コントロール パネル](./media/zoho-mail-tutorial/control-panel.png &quot;コントロール パネル")
 
 3. **[SAML 認証]** タブをクリックします。
    

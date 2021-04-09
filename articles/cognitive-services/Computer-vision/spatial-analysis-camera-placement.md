@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 849afe54125588cb7664ee221e4f229e83be8f96
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 4c2d1cd1c73b377d85501fd31d0f5a1893df5183
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185480"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102487425"
 ---
 # <a name="camera-placement-guide"></a>カメラ配置ガイド
 
@@ -72,12 +72,12 @@ _カメラと焦点間の距離_ とは、地表で測定した、焦点 (また
 
 | カメラの高さ | カメラと焦点間の距離 (最小/最大) |  
 | ------------- | ---------------------------------------- |  
-| 8'            | 10'-13'                                  |  
-| 10'           | 7'-13'                                   |  
-| 12'           | 10'-17'                                  |  
-| 14'           | 11'-18'                                  |  
-| 16'           | 12'-22'                                  |  
-| 20'           | 15'-30'                                  |  
+| 8'            | 4.6'-8'                                  |  
+| 10'           | 5.8'-10'                                 |  
+| 12'           | 7'-12'                                   |  
+| 14'           | 8'-14''                                  |  
+| 16'           | 9.2'-16'                                 |  
+| 20'           | 11.5'-20'                                |  
 
 次の図は、最も近いカメラと焦点間の距離から最も遠いカメラと焦点間の距離までのカメラの視野をシミュレートしています。
 
@@ -91,15 +91,9 @@ _カメラと焦点間の距離_ とは、地表で測定した、焦点 (また
 
 ### <a name="line-configuration"></a>ライン構成
 
-次の表は、 **cognitiveservices.vision.spatialanalysis-personcrossingline** 操作に対して構成されたカメラの推奨事項を示しています。 フェイス マスク検出の場合、カメラの高さが 8 フィートから 12 フィートの場合、+/-30 度が最適なカメラ取り付け角度です。
+**cognitiveservices.vision.spatialanalysis-personcrossingline** 操作の場合、精度を最大にするために最適なカメラのマウント角度は +/-5°です。
 
-| カメラの高さ | カメラと焦点間の距離 | 最適なカメラのマウント角度 (最小/最大) |  
-| ------------- | ------------------------------ | ------------------------------------------ |  
-| 8'            | 9'                             | +/-40°                                     |  
-| 10'           | 10'                            | +/-30°                                     |  
-| 12'           | 13'                            | +/-20°                                     |  
-| 16'           | 18'                            | +/-10°                                     |  
-| 20'           | 22'                            | +/-10°                                     |  
+フェイス マスク検出の場合、カメラの高さが 8 フィートから 12 フィートの場合、+/-30 度が最適なカメラ取り付け角度です。
 
 次の図は、**cognitiveservices.vision.spatialanalysis-personcrossingline** を使用して、出入り口での入出のカウントを行うために、左端 (-) および右端 (+) のマウント角度の推奨事項を使用してカメラの視野をシミュレートしています。
 

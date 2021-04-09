@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 10/13/2020
 ms.author: marsma
 ms.openlocfilehash: 744e26741d3960b25fbb533e7e125ce7a9a6972c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92055369"
 ---
 > [!WARNING]

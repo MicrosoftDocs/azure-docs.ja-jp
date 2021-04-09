@@ -7,10 +7,10 @@ ms.date: 11/26/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
 ms.openlocfilehash: ef8b40be366afe24b960f7419d84cc2a9976b592
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99625703"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Service Fabric Mesh アプリケーションでのネットワークの概要

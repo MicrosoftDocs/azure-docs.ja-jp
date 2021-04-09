@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 02/18/2021
 ms.custom: template-quickstart
 ms.openlocfilehash: 660f03ce248a27a00fdd443964fbdba2fe3adeb0
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179274"
 ---
 # <a name="azure-percept-audio-setup"></a>Azure Percept Audio の設定

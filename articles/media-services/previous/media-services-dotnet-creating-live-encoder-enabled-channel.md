@@ -3,7 +3,7 @@ title: Azure Media Services を使用してライブ ストリーミングを実
 description: このチュートリアルでは、.NET SDK を使用して、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードするチャネルを作成する手順について説明します。
 services: media-services
 documentationcenter: ''
-author: anilmur
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 4df5e690-ff63-47cc-879b-9c57cb8ec240
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 03/10/2021
 ms.author: anilmur
 ms.reviewer: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: be98ab20fb29ae50445494a3c5f1558fd43420a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7bf00abfaa56453303fa85e3062a7fafc7e0ac56
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268702"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103014170"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>Azure Media Services を使用してライブ ストリーミングを実行し、.NET でマルチビットレートのストリームを作成する方法
 
@@ -70,7 +70,7 @@ ms.locfileid: "89268702"
 11. OnDemand ロケーターを作成して、プログラムに関連付けられた資産を発行します。
 
     >[!NOTE]
-    >AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミング元のストリーミング エンドポイントは、**実行中**状態である必要があります。 
+    >AMS アカウントの作成時に、**既定** のストリーミング エンドポイントが自分のアカウントに追加され、**停止** 状態になっています。 コンテンツのストリーミング元のストリーミング エンドポイントは、**実行中** 状態である必要があります。 
 
 12. ストリーミングとアーカイブの開始を準備するときにプログラムを開始します。
 13. 必要に応じて、ライブ エンコーダーは、広告の開始を信号通知できます。 広告が出力ストリームに挿入されます。

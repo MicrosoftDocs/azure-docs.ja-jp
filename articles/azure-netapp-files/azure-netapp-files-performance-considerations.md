@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 02/19/2021
 ms.author: b-juche
-ms.openlocfilehash: edfebe3d9470defbe70b3694d5574e58ca3b5938
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f963c87148c08a4855befc5afb79d9c5ea0f4481
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325523"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101713390"
 ---
 # <a name="performance-considerations-for-azure-netapp-files"></a>Azure NetApp Files のパフォーマンスに関する考慮事項
 
@@ -72,5 +72,6 @@ ms.locfileid: "91325523"
 
 ## <a name="next-steps"></a>次のステップ
 
+- [Azure NetApp Files パフォーマンス計算ツール](https://cloud.netapp.com/azure-netapp-files/tco?hs_preview=tIKQbfoF-41214739590)
 - [Azure NetApp Files のサービス レベル](azure-netapp-files-service-levels.md)
 - [Linux のパフォーマンス ベンチマーク](performance-benchmarks-linux.md)

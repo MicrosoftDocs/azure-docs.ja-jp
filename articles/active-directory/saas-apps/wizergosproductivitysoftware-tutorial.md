@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: b4cddae25bbf7ff113d2ea67700e28eb81c0e7c4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92638025"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>チュートリアル: Azure Active Directory と Wizergos Productivity Software の統合
@@ -41,7 +41,7 @@ Wizergos Productivity Software と Azure AD の統合を構成するには、次
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Wizergos Productivity Software では、 **IDP** によって開始される SSO がサポートされます
+* Wizergos Productivity Software では、**IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-wizergos-productivity-software-from-the-gallery"></a>ギャラリーからの Wizergos Productivity Software の追加
 
@@ -61,13 +61,13 @@ Azure AD への Wizergos Productivity Software の統合を構成するには、
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Wizergos Productivity Software** 」と入力し、結果ウィンドウで **Wizergos Productivity Software** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Wizergos Productivity Software**」と入力し、結果ウィンドウで **Wizergos Productivity Software** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Wizergos Productivity Software](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Wizergos Productivity Software で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Wizergos Productivity Software で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Wizergos Productivity Software 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Wizergos Productivity Software で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -159,7 +159,7 @@ Wizergos Productivity Software で Azure AD シングル サインオンを構�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

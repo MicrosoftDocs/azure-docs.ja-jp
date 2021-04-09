@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/9/2020
 ms.openlocfilehash: 1aaeed1973ebd15af312b722ab61938aa4271947
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97696254"
 ---
 # <a name="register-and-scan-azure-cosmos-database-sql-api"></a>Azure Cosmos Database (SQL API) の登録とスキャン
@@ -24,7 +24,7 @@ Azure Cosmos Database (SQL API) では、フル スキャンと増分スキャ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[Azure Purview アカウントの作成](create-catalog-portal.md)に関するクイックスタートを参照してください。
+- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[クイック スタート: Azure Purview アカウントの作成](create-catalog-portal.md)に関する記事を参照してください。
 - Azure Purview データ ソース管理者である必要があります
 
 ## <a name="setting-up-authentication-for-a-scan"></a>スキャンでの認証の設定
@@ -41,10 +41,10 @@ Azure Cosmos Database (SQL API) の認証を設定する方法は 1 つだけで
 1. **[設定]**  >  **[キー]** を選択します 
 1. "*キー*" をコピーし、次の手順のためにどこかに保存します
 1. お使いのキー コンテナーに移動する
-1. **[設定] > [シークレット]** を選択します
-1. **[生成/インポート]** を選択し、 **[名前]** と *[値]* にストレージ アカウントの **キー** を入力します
-1. **[作成]** を選択して完了します
-1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります
+1. **[設定] > [シークレット]** の順に選択します。
+1. **[+ 生成/インポート]** を選択し、 **[名前]** と *[値]* にストレージ アカウントの **キー** を入力します
+1. **[作成]** を選択して完了します。
+1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
 1. 最後に、キーを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
 
 ## <a name="register-an-azure-cosmos-database-sql-api-account"></a>Azure Cosmos Database (SQL API) アカウントを登録する
@@ -52,7 +52,7 @@ Azure Cosmos Database (SQL API) の認証を設定する方法は 1 つだけで
 新しい Azure Cosmos Database (SQL API) アカウントをデータ カタログに登録するには、次の手順を実行します。
 
 1. Purview アカウントに移動します
-1. 左側のナビゲーションで **[ソース]** を選択します
+1. 左側のナビゲーションで **[ソース]** を選択します。
 1. **[登録]** を選択します
 1. **[ソースの登録]** で、 **[Azure Cosmos DB (SQL API)]** を選択します
 1. **[続行]** を選択します
@@ -75,4 +75,4 @@ Azure Cosmos Database (SQL API) の認証を設定する方法は 1 つだけで
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Purview データ カタログを参照する](how-to-browse-catalog.md)
-- [Azure Purview Data Catalog を検索する](how-to-search-catalog.md)
+- [Azure Purview データ カタログを検索する](how-to-search-catalog.md)

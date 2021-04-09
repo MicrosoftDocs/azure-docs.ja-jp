@@ -10,10 +10,10 @@ ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
 ms.openlocfilehash: c4d6de1b3406e6d82bdac5ff9b5c72a2286da988
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92747742"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure 仮想マシン スケール セット インスタンスの通知を終了する
@@ -63,9 +63,9 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 
 ```
 
-上のブロックでは、スケール セット内のすべてのインスタンスに対する任意の終了操作について、( *PT5M* で示されているように) タイムアウトの遅延が 5 分間に指定されています。 フィールド *notBeforeTimeout* は、ISO 8601 形式の 5 から 15 分の範囲の任意の値を受け取ることができます。 前述の *terminateNotificationProfile* の *notBeforeTimeout* プロパティを変更することで、終了操作の既定のタイムアウトを変更できます。
+上のブロックでは、スケール セット内のすべてのインスタンスに対する任意の終了操作について、(*PT5M* で示されているように) タイムアウトの遅延が 5 分間に指定されています。 フィールド *notBeforeTimeout* は、ISO 8601 形式の 5 から 15 分の範囲の任意の値を受け取ることができます。 前述の *terminateNotificationProfile* の *notBeforeTimeout* プロパティを変更することで、終了操作の既定のタイムアウトを変更できます。
 
-スケール セット モデルで *scheduledEventsProfile* を有効にし、 *notBeforeTimeout* を設定してから、変更を反映するように個々のインスタンスを [最新のモデル](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)に更新します。
+スケール セット モデルで *scheduledEventsProfile* を有効にし、*notBeforeTimeout* を設定してから、変更を反映するように個々のインスタンスを [最新のモデル](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)に更新します。
 
 > [!NOTE]
 >スケール セット インスタンスの終了通知は、API バージョン 2019-03-01 以降でのみ有効にすることができます
@@ -137,7 +137,7 @@ Scheduled Events は、ユーザーが初めてイベントを要求したとき
 VNET が有効な VM の場合は、静的でルーティング不可能な IP アドレス 169.254.169.254 から Metadata Service を利用できます。
 
 スケジュールされたイベントの最新バージョンのフル エンドポイントは次のとおりです。
-> 'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 '
+> 'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01'
 
 ### <a name="query-response"></a>クエリ応答
 応答には、スケジュールされたイベントの配列が含まれています。 空の配列は、現在スケジュールされているイベントがないことを意味します。
@@ -194,10 +194,10 @@ POST 要求の本文には、次のような json が含まれます。 要求�
 
 ### <a name="failure-to-get-terminate-events"></a>Terminate イベントを取得できない
 Scheduled Events を介して **Terminate** イベントを取得していない場合は、イベントの取得に使用された API バージョンを確認します。 Terminate イベントには Metadata Service API バージョン **2019-01-01** 以降が必要です。
->'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 '
+>'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01'
 
 ### <a name="getting-terminate-event-with-incorrect-notbefore-time"></a>無効な NotBefore 時間での Terminate イベントを受け取る  
-スケール セット モデルで *scheduledEventsProfile* を有効にし、 *notBeforeTimeout* を設定してから、変更を反映するように個々のインスタンスを [最新のモデル](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)に更新します。
+スケール セット モデルで *scheduledEventsProfile* を有効にし、*notBeforeTimeout* を設定してから、変更を反映するように個々のインスタンスを [最新のモデル](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)に更新します。
 
 ## <a name="next-steps"></a>次のステップ
 仮想マシン スケール セットに[ご自身のアプリケーションをデプロイする](virtual-machine-scale-sets-deploy-app.md)方法を学習します。

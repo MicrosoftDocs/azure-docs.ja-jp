@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:PowerShell を使用してゲスト ユーザーを追加する - Azure AD
+title: 'クイックスタート: PowerShell を使用してゲスト ユーザーを追加する - Azure AD'
 description: このクイック スタートでは、PowerShell を使用して、外部の Azure AD B2B コラボレーション ユーザーに招待状を送信する方法について説明します。
 services: active-directory
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0faaf0394bddc2e443afc194bbd0ecef72625f9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87910599"
 ---
-# <a name="quickstart-add-a-guest-user-with-powershell"></a>クイック スタート:PowerShell を使用してゲスト ユーザーを追加する
+# <a name="quickstart-add-a-guest-user-with-powershell"></a>クイック スタート: PowerShell を使用してゲスト ユーザーを追加する
 
 Azure Active Directory B2B コラボレーションで外部パートナーを自社のアプリとサービスに招待できる方法は多数あります。 前のクイック スタートでは、Azure Active Directory 管理ポータルでゲスト ユーザーを直接追加する方法を説明しました。 ゲスト ユーザーは、PowerShell を使用して、一度に 1 人づつ、または一括で追加することもできます。 このクイック スタートでは、New-AzureADMSInvitation コマンドを使用して、1 人のゲスト ユーザーを Azure テナントに追加します。
 
@@ -75,7 +75,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 
 ## <a name="send-an-invitation"></a>招待状を送信する
 
-1. テスト用の電子メール アカウントに招待状を送信するには、次の PowerShell コマンドを実行します ( **"Sanda"** と **sanda\@fabrikam.com** をテスト用の電子メール アカウント名と電子メール アドレスに置き換えます)。 
+1. テスト用の電子メール アカウントに招待状を送信するには、次の PowerShell コマンドを実行します (**"Sanda"** と **sanda\@fabrikam.com** をテスト用の電子メール アカウント名と電子メール アドレスに置き換えます)。 
 
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.microsoft.com -SendInvitationMessage $true

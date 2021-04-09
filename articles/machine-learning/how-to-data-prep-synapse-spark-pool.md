@@ -1,7 +1,7 @@
 ---
-title: Apache Spark プールを使用したデータ準備 (プレビュー)
+title: Apache Spark プールを使用したデータ ラングリング (プレビュー)
 titleSuffix: Azure Machine Learning
-description: Azure Synapse Analytics と Azure Machine Learning のデータ準備用に Apache Spark プールをアタッチする方法について説明します
+description: Azure Synapse Analytics と Azure Machine Learning のデータ ラングリング用に Apache Spark プールをアタッチして起動する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,24 +10,26 @@ ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
-ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 22945cdaff2696a15d5b119bd0f32fd0a179ebf7
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
+ms.openlocfilehash: acd8df620e23ee4ebc103d8910c6443f47ffa141
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202095"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503829"
 ---
-# <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-preparation-preview"></a>データ準備用に (Azure Synapse Analytics によって機能する) Apache Spark プール をアタッチする (プレビュー)
+# <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>データ ラングリング用に (Azure Synapse Analytics によって機能する) Apache Spark プールをアタッチする (プレビュー)
 
-この記事では、[Azure Synapse Analytics](/synapse-analytics/overview-what-is.md) によって機能する Apache Spark プールを、データ準備用にアタッチして起動する方法について説明します。 
+この記事では、[Azure Synapse Analytics](/synapse-analytics/overview-what-is.md) によって機能する Apache Spark プールを、大規模なデータ ラングリング用にアタッチして起動する方法について説明します。 
+
+この記事には、Jupyter Notebook の専用 Synapse セッション内で対話形式でデータ ラングリング タスクを実行するためのガイダンスが含まれています。 Azure Machine Learning パイプラインを使用する場合は、「[機械学習パイプライン内で (Azure Synapse Analytics で実行される) Apache Spark を使用する方法 (プレビュー)](how-to-use-synapsesparkstep.md)」を参照してください。
 
 >[!IMPORTANT]
-> Azure Machine Learning と Azure Synapse Analytics の統合はプレビュー段階です。 この記事で紹介している機能には、[試験的](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental)なプレビュー機能を含んだ `azureml-synapse` パッケージが採用されており、それらは随時変更される可能性があります。
+> Azure Machine Learning と Azure Synapse Analytics の統合はプレビュー段階です。 この記事で紹介している機能には、[試験的](/python/api/overview/azure/ml/#stable-vs-experimental)なプレビュー機能を含んだ `azureml-synapse` パッケージが採用されており、それらは随時変更される可能性があります。
 
 ## <a name="azure-machine-learning-and-azure-synapse-analytics-integration-preview"></a>Azure Machine Learning と Azure Synapse Analytics の統合 (プレビュー)
 
-Azure Synapse Analytics と Azure Machine Learning の統合 (プレビュー) によって、Azure Synapse によってサポートされる Apache Spark プールをアタッチし、インタラクティブなデータ探索とデータ準備を行うことができます。 この統合により、大規模なデータ準備を行うための専用のコンピューティングが得られ、機械学習モデルのトレーニングにも使用する Python ノートブック内からそのすべてを利用することができます。
+Azure Synapse Analytics と Azure Machine Learning の統合 (プレビュー) によって、Azure Synapse によってサポートされる Apache Spark プールをアタッチし、インタラクティブなデータ探索とデータ準備を行うことができます。 この統合により、大規模なデータ ラングリングを行うための専用のコンピューティングが得られ、機械学習モデルのトレーニングにも使用する Python ノートブック内からそのすべてを利用することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,109 +39,43 @@ Azure Synapse Analytics と Azure Machine Learning の統合 (プレビュー) �
 
 * [Azure portal、Web ツール、Synapse Studio のいずれかを使用して Apache Spark プールを作成](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)します
 
-* `azureml-synapse` パッケージ (プレビュー) を含む [Azure Machine Learning Python SDK をインストール](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)します。 
-    * これをご自身でインストールすることもできますが、互換性があるのは、SDK バージョン 1.20 以降のみです。 
-        ```python
-        pip install azureml-synapse
-        ```
+* [開発環境を構成](how-to-configure-environment.md)して Azure Machine Learning SDK をインストールするか、SDK が既にインストールされている [Azure Machine Learning コンピューティング インスタンス](concept-compute-instance.md#create)を使用します。 
 
-## <a name="link-machine-learning-workspace-and-synapse-analytics-assets"></a>Machine Learning ワークスペースと Synapse Analytics 資産をリンクさせる
+* 次のコードを使用して、`azureml-synapse` パッケージ (プレビュー) をインストールします。
 
-データ準備用の Apache Synapse Spark プールをアタッチする前に、Azure Machine Learning ワークスペースを Azure Synapse Analytics ワークスペースにリンクさせる必要があります。 
+  ```python
+  pip install azureml-synapse
+  ```
 
-Machine Learning ワークスペースと Synapse Analytics ワークスペースのリンクは、[Python SDK](#link-sdk) または [Azure Machine Learning スタジオ](#link-studio)から行うことができます。 
-
-> [!IMPORTANT]
-> Azure Synapse Analytics ワークスペースに正常にリンクするには、Azure Synapse Analytics ワークスペースの **所有者** ロールを付与されている必要があります。 [Azure portal](https://ms.portal.azure.com/) でご自身のアクセス権を確認してください。
->
-> Azure Synapse Analytics ワークスペースの **所有者** 以外で、既にあるリンクされたサービスの利用を希望される方は、「[既にあるリンクされたサービスを取得する](#get-an-existing-linked-service)」を参照してください。
-
-
-<a name="link-sdk"></a>
-### <a name="link-workspaces-with-the-python-sdk"></a>Python SDK にワークスペースをリンクさせる
-
-以下のコードでは、次の目的に [`LinkedService`](/python/api/azureml-core/azureml.core.linked_service.linkedservice?preserve-view=true&view=azure-ml-py) クラスと [`SynapseWorkspaceLinkedServiceConfiguration`](/python/api/azureml-core/azureml.core.linked_service.synapseworkspacelinkedserviceconfiguration?preserve-view=true&view=azure-ml-py) クラスを使用しています。 
-
-* Azure Machine Learning ワークスペース (`ws`) と Azure Synapse Analytics ワークスペースをリンクする。 
-* リンクされたサービスとして Azure Machine Learning に Azure Synapse Analytics ワークスペースを登録する。
-
-``` python
-import datetime  
-from azureml.core import Workspace, LinkedService, SynapseWorkspaceLinkedServiceConfiguration
-
-# Azure Machine Learning workspace
-ws = Workspace.from_config()
-
-#link configuration 
-synapse_link_config = SynapseWorkspaceLinkedServiceConfiguration(
-    subscription_id=ws.subscription_id,
-    resource_group= 'your resource group',
-    name='mySynapseWorkspaceName')
-
-# Link workspaces and register Synapse workspace in Azure Machine Learning
-linked_service = LinkedService.register(workspace = ws,              
-                                            name = 'synapselink1',    
-                                            linked_service_config = synapse_link_config)
-```
-> [!IMPORTANT] 
-> リンクされたサービスごとにマネージド ID (`system_assigned_identity_principal_id`) が作成されます。 このマネージド ID には、Apache Spark セッションを開始する前に、Azure Synapse Analytics ワークスペースの **Synapse Apache Spark 管理者** ロールが付与されている必要があります。 [Synapse Studio のマネージド ID に Synapse Apache Spark 管理者ロールを割り当てます](../synapse-analytics/security/how-to-manage-synapse-rbac-role-assignments.md)。
->
-> 特定のリンクされたサービスの `system_assigned_identity_principal_id` を見つけるには、`LinkedService.get('<your-mlworkspace-name>', '<linked-service-name>')` を使用します。
-
-<a name="link-studio"></a>
-### <a name="link-workspaces-via-studio"></a>スタジオを使用してワークスペースをリンクさせる
-
-Azure Machine Learning スタジオを使用して Azure Machine Learning ワークスペースと Azure Synapse Analytics ワークスペースをリンクさせるには、次の手順に従います。 
-
-1. [Azure Machine Learning スタジオ](https://ml.azure.com/)にサインインします。
-1. 左ペインの **[管理]** セクションにある **[リンクされたサービス]** を選択します。
-1. **[Add integration]\(統合の追加\)** を選択します。
-1. **[Link workspace]\(ワークスペースのリンク\)** フォームの各フィールドの内容を入力します。
-
-   |フィールド| 説明    
-   |---|---
-   |名前| リンクされたサービスの名前を入力します。 この特定のリンクされたサービスを参照する際に、この名前を使用します。
-   |サブスクリプション名 | Machine Learning ワークスペースに関連付けられているサブスクリプションの名前を選択します。 
-   |Synapse ワークスペース | リンク先の Synapse ワークスペースを選択します。 
-   
-1. **[次へ]** を選択して **[Select Spark pools (optional)]\(Spark プールの選択 (省略可)\)** フォームを開きます。 このフォームで、ワークスペースにアタッチする Synapse Apache Spark プールを選択します
-
-1. **[次へ]** を選択して **[Review]\(レビュー\)** フォームを開き、選択内容を確認します。 
-1. **[作成]** を選択して、リンクされたサービスの作成プロセスを完了します。
+* [Azure Machine Learning ワークスペースと Azure Synapse Analytics ワークスペースをリンクします](how-to-link-synapse-ml-workspaces.md)。
 
 ## <a name="get-an-existing-linked-service"></a>既にあるリンクされたサービスを取得する
+データ ラングリング専用のコンピューティングをアタッチする前に、Azure Synapse Analytics ワークスペースにリンクされている ML ワークスペースが必要です。これは、リンクされたサービスと呼ばれます。 
 
 既にあるリンクされたサービスを取得して使用するためには、Azure Synapse Analytics ワークスペースに対する **ユーザーまたは共同作成者** のアクセス許可が必要です。
-
-この例では、[`get()`](/python/api/azureml-core/azureml.core.linkedservice?preserve-view=true&view=azure-ml-py#get-workspace--name-) メソッドを使用して、既にあるリンクされたサービス (`synapselink1`) をワークスペース (`ws`) から取得します。
-```python
-linked_service = LinkedService.get(ws, 'synapselink1')
-```
-
-### <a name="manage-linked-services"></a>リンクされたサービスの管理
-
-ワークスペースのリンクを解除するには、`unregister()` メソッドを使用します
-
-``` python
-linked_service.unregister()
-```
 
 Machine Learning ワークスペースに関連付けられているリンクされたサービスをすべて表示します。 
 
 ```python
 LinkedService.list(ws)
 ```
+
+この例では、[`get()`](/python/api/azureml-core/azureml.core.linkedservice#get-workspace--name-) メソッドを使用して、既にあるリンクされたサービス (`synapselink1`) をワークスペース (`ws`) から取得します。
+```python
+linked_service = LinkedService.get(ws, 'synapselink1')
+```
  
 ## <a name="attach-synapse-spark-pool-as-a-compute"></a>Synapse Spark プールをコンピューティングとしてアタッチする
 
-ワークスペースがリンクされたら、データ準備タスクの専用のコンピューティング リソースとして Synapse Apache Spark プールをアタッチします。 
+リンクされたサービスを取得したら、データ ラングリング タスク専用のコンピューティング リソースとして Synapse Apache Spark プールをアタッチします。 
 
 Apache Spark プールは、次の手段でアタッチできます。
 * Azure Machine Learning Studio
 * [Azure Resource Manager (ARM) テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)
 * Python SDK 
 
-スタジオを使用して Apache Spark プールをアタッチするには、次の手順に従います。 
+### <a name="attach-a-pool-via-the-studio"></a>スタジオを使用してプールをアタッチする
+次の手順に従います。 
 
 1. [Azure Machine Learning スタジオ](https://ml.azure.com/)にサインインします。
 1. 左ペインの **[管理]** セクションにある **[リンクされたサービス]** を選択します。
@@ -151,6 +87,7 @@ Apache Spark プールは、次の手段でアタッチできます。
     1. 新しい Synapse Spark プールを作成するには、[Synapse Studio を使用して Apache Spark プールを作成する](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)方法に関するページを参照してください。
 1. **[Attach selected]\(選択されたアタッチ\)** を選択します。 
 
+### <a name="attach-a-pool-with-the-python-sdk"></a>Python SDK を使用してプールをアタッチする
 
 **Python SDK** を使用して Apache Spark プールをアタッチすることもできます。 
 
@@ -175,7 +112,7 @@ attach_config = SynapseCompute.attach_configuration(linked_service, #Linked syna
                                                     pool_name="<Synapse Spark pool name>") #Name of Synapse spark pool 
 
 synapse_compute = ComputeTarget.attach(workspace= ws,                
-                                       name='<Synapse Spark pool alias in Azure ML>', 
+                                       name="<Synapse Spark pool alias in Azure ML>", 
                                        attach_configuration=attach_config
                                       )
 
@@ -212,7 +149,7 @@ env.register(workspace=ws)
 Apache Spark プールを使用したデータ準備を開始するには、Apache Spark プールの名前を指定し、サブスクリプション ID、Machine Learning ワークスペースのリソース グループ、Machine Learning ワークスペースの名前、Apache Spark セッション中に使用する環境を入力します。 
 
 > [!IMPORTANT]
-> 引き続き Apache Spark プールを使用するためには、データ準備タスクで使用するコンピューティング リソースを `%synapse` (１ 行のコードの場合) および `%%synapse` (複数行の場合) で指定する必要があります。 
+> 引き続き Apache Spark プールを使用するためには、データ ラングリング タスクで使用するコンピューティング リソースを `%synapse` (1 行のコードの場合) および `%%synapse` (複数行の場合) で指定する必要があります。 
 
 ```python
 %synapse start -c SynapseSparkPoolAlias -s AzureMLworkspaceSubscriptionID -r AzureMLworkspaceResourceGroupName -w AzureMLworkspaceName -e myenv
@@ -247,7 +184,7 @@ Apache Spark セッションが開始されたら、準備するデータを読�
 
 # setup access key or SAS token
 sc._jsc.hadoopConfiguration().set("fs.azure.account.key.<storage account name>.blob.core.windows.net", "<access key>")
-sc._jsc.hadoopConfiguration().set("fs.azure.sas.<container name>.<storage account name>.blob.core.windows.net", "sas token")
+sc._jsc.hadoopConfiguration().set("fs.azure.sas.<container name>.<storage account name>.blob.core.windows.net", "<sas token>")
 
 # read from blob 
 df = spark.read.option("header", "true").csv("wasbs://demo@dprepdata.blob.core.windows.net/Titanic.csv")
@@ -302,9 +239,9 @@ dset = Dataset.get_by_name(ws, "blob_dset")
 spark_df = dset.to_spark_dataframe()
 ```
 
-## <a name="perform-data-preparation-tasks"></a>データ準備タスクを実行する
+## <a name="perform-data-wrangling-tasks"></a>データ ラングリング タスクを実行する
 
-データを取得して調査した後、データ準備タスクを実行することができます。
+データを取得して調査した後、データ ラングリング タスクを実行することができます。
 
 次のコードは、前セクションで見た HDFS の例を応用し、**Survivor** 列に基づいて Spark データフレーム (`df`) のデータをフィルター選択し、そのリストを **Age** でグループ化します。
 
@@ -362,4 +299,3 @@ input1 = train_ds.as_mount()
 
 * [モデルをトレーニングします](how-to-set-up-training-targets.md)。
 * [Azure Machine Learning データセットをトレーニングする](how-to-train-with-datasets.md)
-* [Azure Machine Learning データセットを作成する](how-to-create-register-datasets.md)。

@@ -3,7 +3,7 @@ title: Azure オンデマンド ストリーミング操作による Postman コ
 description: Azure Media Services REST API を呼び出すグループ化された HTTP 要求を含む Postman コレクションについて説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 30a139ca0569a2ada4a66befbf7c56a9f8edaab9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 64e7dd754f09a60163decfd419ce6c2cd2c6182d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656735"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103007806"
 ---
 # <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>オンデマンド ストリーミング操作による Postman コレクションのインポート
 

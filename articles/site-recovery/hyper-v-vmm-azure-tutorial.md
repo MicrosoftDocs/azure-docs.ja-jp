@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.custom: MVC
 ms.openlocfilehash: c806f968bc6530879f64ddbf6fd4c7d45aa7a8d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89442822"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Azure に VMM クラウドのオンプレミス Hyper-V VM のディザスター リカバリーを設定する
@@ -25,7 +25,7 @@ ms.locfileid: "89442822"
 > * VM のレプリケーションを有効にします。
 
 > [!NOTE]
-> チュートリアルでは、シナリオの最も簡単なデプロイ パスを示します。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 詳細な手順については、「[Site Recovery のドキュメント](./index.yml)」の**ハウツー ガイド** セクションにある記事を確認してください。
+> チュートリアルでは、シナリオの最も簡単なデプロイ パスを示します。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 詳細な手順については、「[Site Recovery のドキュメント](./index.yml)」の **ハウツー ガイド** セクションにある記事を確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -86,7 +86,7 @@ Microsoft Azure Recovery Services Agent セットアップ ウィザードで、
 1. **[インストールの設定]** : インストール場所をそのまま使用します。 その後、 **[インストール]** を選択します。
 
     >[!NOTE]
-    >Azure Site Recovery の場合、**キャッシュの場所**は必要ありません。
+    >Azure Site Recovery の場合、**キャッシュの場所** は必要ありません。
 
 1. **[インストール]** : インストールが完了したら、 **[閉じる]** を選択してウィザードを終了します。
 
@@ -96,7 +96,7 @@ Microsoft Azure Recovery Services Agent セットアップ ウィザードで、
 
 1. **[インフラストラクチャの準備]**  >  **[ターゲット]** の順に選択します。
 1. サブスクリプションと、フェールオーバー後に Azure VM が作成されるリソース グループ (**ContosoRG**) を選択します。
-1. **Resource Manager**デプロイ モデルを選択します。
+1. **Resource Manager** デプロイ モデルを選択します。
 
 Site Recovery によって、互換性のある Azure ストレージ アカウントとネットワークが 1 つ以上あるかどうかが確認されます。
 

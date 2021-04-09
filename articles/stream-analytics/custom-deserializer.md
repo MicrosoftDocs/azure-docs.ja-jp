@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/17/2020
 ms.openlocfilehash: 6db65d85b5d5d72e7b4764949abcffed004cae85
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98018209"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>チュートリアル:Azure Stream Analytics 用のカスタム .NET 逆シリアライザー

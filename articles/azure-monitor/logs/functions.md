@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
-ms.openlocfilehash: 9b2466bbe061dc147d020104b13da197840fe40a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 07a959d4e8ba41652ba4e31ad59cf852659a5926
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030785"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103199766"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでの関数の使用
 
@@ -27,7 +27,7 @@ Azure portal の Log Analytics で **[保存]** をクリックした後、次�
 | 関数のエイリアス | この関数を他のクエリの中で使用するための短い名前。 スペースを含めることはできず、一意である必要があります。 |
 | カテゴリ       | 保存したクエリと関数を **クエリ エクスプローラー** 内で整理するためのカテゴリ。 |
 
-
+[REST API](/rest/api/loganalytics/savedsearches/createorupdate) または [PowerShell](/powershell/module/az.operationalinsights/new-azoperationalinsightssavedsearch) を使用して関数を作成することもできます。
 
 
 ## <a name="use-a-function"></a>関数を使用する

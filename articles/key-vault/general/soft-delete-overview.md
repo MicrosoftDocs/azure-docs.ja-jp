@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: 331a7b1bef3621a080fe2fa891cf83565a1e55ac
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7aeca89ed09182b7947b10f24c65b0cb58ed67ea
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702574"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102452137"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault の論理的な削除の概要
 
@@ -30,7 +30,7 @@ Key Vault の論理的な削除機能を使用すると、削除されたコン�
 
 ## <a name="supporting-interfaces"></a>インターフェイスのサポート
 
-論理的な削除機能は、[REST API](/rest/api/keyvault/)、[Azure CLI](./key-vault-recovery.md)、[Azure PowerShell](./key-vault-recovery.md)、[.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet&preserve-view=true) の各インターフェイスの他に、[ARM テンプレート](/azure/templates/microsoft.keyvault/2019-09-01/vaults)でも使用できます。
+論理的な削除機能は、[REST API](/rest/api/keyvault/)、[Azure CLI](./key-vault-recovery.md)、[Azure PowerShell](./key-vault-recovery.md)、[.NET/C#](/dotnet/api/microsoft.azure.keyvault) の各インターフェイスの他に、[ARM テンプレート](/azure/templates/microsoft.keyvault/2019-09-01/vaults)でも使用できます。
 
 ## <a name="scenarios"></a>シナリオ
 

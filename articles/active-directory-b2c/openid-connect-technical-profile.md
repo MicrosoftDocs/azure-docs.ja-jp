@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/01/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f6b6fb18ce086c2eadc829f03460452deb0a12b9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 670fbeeb006d21e29675f88895018d1a453a1c54
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675154"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120302"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OpenID Connect 技術プロファイルを定義する
 
@@ -74,7 +74,7 @@ Azure Active Directory B2C (Azure AD B2C) では、[OpenID Connect](https://open
 
 ## <a name="metadata"></a>Metadata
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | client_id | はい | ID プロバイダーのアプリケーション識別子。 |
 | IdTokenAudience | いいえ | id_token の対象ユーザー。 指定される場合、Azure AD B2C により、ID プロバイダーによって返されたトークンの `aud` クレームが IdTokenAudience メタデータで指定されているものと等しいかどうかを確認します。  |
@@ -92,9 +92,10 @@ Azure Active Directory B2C (Azure AD B2C) では、[OpenID Connect](https://open
 | MarkAsFailureOnStatusCode5xx | いいえ | Http 状態コードが 5xx の範囲にある場合、外部サービスへの要求を失敗としてマークする必要があるかどうかを示します。 既定では、 `false`です。 |
 | DiscoverMetadataByTokenIssuer | いいえ | JWT トークンで発行者を使用して OIDC メタデータを検出する必要があるかどうかを示します。 |
 | IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
-| token_endpoint_auth_method | No | Azure AD B2C からトークン エンドポイントに認証ヘッダーを送信する方法を指定します。 指定できる値は、`client_secret_post` (既定値) と `client_secret_basic` (パブリック プレビュー) です。 詳細については、[OpenID Connect クライアント認証](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)に関するセクションをご覧ください。 |
+| token_endpoint_auth_method | いいえ | Azure AD B2C からトークン エンドポイントに認証ヘッダーを送信する方法を指定します。 指定できる値は、`client_secret_post` (既定値) と `client_secret_basic` (パブリック プレビュー) です。 詳細については、[OpenID Connect クライアント認証](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)に関するセクションをご覧ください。 |
 | token_signing_algorithm | いいえ | **token_endpoint_auth_method** メタデータが `private_key_jwt` に設定されている場合にクライアント アサーションに使用される署名アルゴリズム。 指定できる値: `RS256` (既定)。 |
 | SingleLogoutEnabled | いいえ | サインイン中に技術プロファイルがフェデレーション ID プロバイダーからサインアウトを試行しているかどうかを示します。 詳しくは、[Azure AD B2C のセッション サインアウト](./session-behavior.md#sign-out)に関する記事をご覧ください。指定できる値は `true`(既定値) または`false`です。 |
+|ReadBodyClaimsOnIdpRedirect| いいえ| ID プロバイダー リダイレクトで応答本文から要求を読み取るには、`true` に設定します。 このメタデータは [Apple ID](identity-provider-apple-id.md) と共に使用されます。要求は応答ペイロードで返されます。|
 
 ```xml
 <Metadata>

@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/26/2019
 ms.openlocfilehash: a438401ff93c20d8759e6128936c3626bd3de484
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98012684"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Azure Stream Analytics を使用したリアルタイム IoT データ ストリームの処理
@@ -43,13 +43,13 @@ Contoso は工業オートメーションの領域で活動する会社で、自
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics のジョブの作成
 
-1. [Azure portal](https://portal.azure.com) の左側のナビゲーション メニューで **[+ リソースの作成]** を選択します。 次に、 **[分析]** から **[Stream Analytics ジョブ]** を選択します。
+1. [Azure portal](https://portal.azure.com) の左側のナビゲーション メニューで **[+ リソースの作成]** を選択します。 次に、**[分析]** から **[Stream Analytics ジョブ]** を選択します。
    
     ![Create a new Stream Analytics job](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 
 1. 一意のジョブ名を入力し、サブスクリプションがジョブに適したものであることを確認します。 新しいリソース グループを作成するか、サブスクリプションから既存のリソース グループを選択します。
 
-1. ジョブの場所を選択します。 リソース グループとすべてのリソースに同じ場所を使用すると、処理速度が向上し、コストが削減されます。 構成が完了したら、 **[作成]** を選択します。
+1. ジョブの場所を選択します。 リソース グループとすべてのリソースに同じ場所を使用すると、処理速度が向上し、コストが削減されます。 構成が完了したら、**[作成]** を選択します。
    
     ![新しい Stream Analytics ジョブの作成](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.png)
 
@@ -59,7 +59,7 @@ Contoso は工業オートメーションの領域で活動する会社で、自
 GitHub から [HelloWorldASA-InputStream.json](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
 ) をダウンロードします。 次に、Azure portal で Azure Stream Analytics ジョブに移動します。
 
-左側のメニューで、 **[ジョブ トポロジ]** の下にある **[クエリ]** を選択します。 次に、 **[サンプル入力のアップロード]** を選択します｡ `HelloWorldASA-InputStream.json` ファイルをアップロードし、 **[OK]** をクリックします。
+左側のメニューで、**[ジョブ トポロジ]** の下にある **[クエリ]** を選択します。 次に、**[サンプル入力のアップロード]** を選択します｡ `HelloWorldASA-InputStream.json` ファイルをアップロードし、**[OK]** をクリックします。
 
 ![Stream Analytics ダッシュボードのクエリ タイル](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
@@ -80,7 +80,7 @@ FROM
     InputStream
 ```
 
-**[クエリのテスト]** を選択し、 **[テスト結果]** の表で結果を確認します。
+**[クエリのテスト]** を選択し、**[テスト結果]** の表で結果を確認します。
 
 ![Stream Analytics クエリのテスト結果](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
@@ -101,7 +101,7 @@ FROM
 WHERE dspl='sensorA'
 ```
 
-クエリをエディターに貼り付け、 **[クエリのテスト]** を選択して結果を確認ます。
+クエリをエディターに貼り付け、**[クエリのテスト]** を選択して結果を確認ます。
 
 ![データ ストリームのフィルタリング](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-08.png)
 

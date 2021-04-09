@@ -4,12 +4,12 @@ description: ドメイン参加済みの Apache Hadoop クラスターの認証�
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 47ba11260c3b58566963e5a3ffac80ca461a8a23
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c5bc5bc702dbd54bbad43aa4e1c6c8650c18e088
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946821"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104863192"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight ID ブローカー (HIB)
 
@@ -34,7 +34,7 @@ HDInsight ID ブローカーにより、パスワード ハッシュを Azure AD
 
 次の図は、HDInsight ID ブローカーが有効になった後の、フェデレーション ユーザーを含むすべてのユーザーの、最新の OAuth ベースの認証フローを示しています。
 
-:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="HDInsight ID ブローカーによる認証フローを示す図。":::
+:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="HDInsight ID ブローカーによる認証フローを示す図。" border="false":::
 
 この図では、まず最初にクライアント (つまり、ブラウザーまたはアプリ) で OAuth トークンを取得する必要があります。 次に、HTTP 要求でゲートウェイにトークンが提示されます。 Azure portal などの他の Azure サービスに既にサインインしている場合は、シングル サインオン エクスペリエンスによって HDInsight クラスターにサインインできます。
 
@@ -42,8 +42,7 @@ HDInsight ID ブローカーにより、パスワード ハッシュを Azure AD
 
 次の図は、フェデレーション ユーザーの基本認証フローを示しています。 まず、ゲートウェイで [ROPC フロー](../../active-directory/develop/v2-oauth-ropc.md)を使用した認証が試みられます。 Azure AD に同期されたパスワード ハッシュがない場合は、フォールバックして AD FS エンドポイントを検出し、AD FS エンドポイントへアクセスすることで認証が完了します。
 
-:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="基本認証を使用したアーキテクチャを示す図。":::
-
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="基本認証を使用したアーキテクチャを示す図。" border="false":::
 
 ## <a name="enable-hdinsight-id-broker"></a>HDInsight ID ブローカーを有効にする
 
@@ -55,7 +54,7 @@ HDInsight ID ブローカーが有効になっている Enterprise セキュリ�
 
 HDInsight ID ブローカー機能によって、クラスターに追加の VM が 1 つ追加されます。 この VM は HDInsight ID ブローカー ノードであり、認証をサポートするサーバー コンポーネントが含まれています。 HDInsight ID ブローカー ノードは、Azure AD DS ドメインに参加しているドメインです。
 
-![HDInsight ID ブローカーを有効にするオプションを示す図。](./media/identity-broker/identity-broker-enable.png)
+:::image type="content" source="./media/identity-broker/identity-broker-enable.png" alt-text="HDInsight ID ブローカーを有効にするオプションを示す図。" border="true":::
 
 ### <a name="use-azure-resource-manager-templates"></a>Azure リソース マネージャー テンプレートの使用
 

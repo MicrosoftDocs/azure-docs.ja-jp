@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ccff5b4dc6ed5a571e25ab0569b9fa92674e1340
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88140736"
 ---
 # <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>Azure VMware Solution by CloudSimple 用のノードをプロビジョニングする

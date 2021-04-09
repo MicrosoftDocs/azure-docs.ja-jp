@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 3278c9956dd5017572f063059250c97727656923
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 44a838bdce4721d24bd0bdbb45ac7b36ceb34e71
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99252374"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102488371"
 ---
 # <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>クイックスタート:Azure Active Directory (Azure AD) テナント内のアプリケーションへの SAML ベースのシングル サインオン (SSO) を設定する
 
@@ -39,7 +39,7 @@ Azure AD テナントに追加したアプリケーションへの SSO を設定
 
 ## <a name="enable-single-sign-on-for-an-app"></a>アプリへのシングル サインオンを有効にする
 
-Azure AD テナントへのアプリケーションの追加が完了すると、概要ページが表示されます。 既に追加されているアプリケーションを構成する場合は、最初のクイックスタートを参照してください。 テナントに追加されているアプリケーションを表示する手順が説明されています。 
+Azure AD テナントへのアプリケーションの追加が完了すると、概要ページが表示されます。 既に追加されているアプリケーションを構成する場合は、最初のクイックスタートを参照してください。 テナントに追加されているアプリケーションを表示する手順が説明されています。
 
 アプリケーションへのシングル サインオンを設定するには、次を行います。
 

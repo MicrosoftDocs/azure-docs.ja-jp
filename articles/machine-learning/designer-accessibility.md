@@ -11,10 +11,10 @@ author: peterclu
 ms.date: 01/09/2020
 ms.custom: designer
 ms.openlocfilehash: 86cb5260a59f864658fbb7ac1c1da2d943c6253e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90893430"
 ---
 # <a name="use-a-keyboard-to-use-azure-machine-learning-designer"></a>キーボードを使用して Azure Machine Learning デザイナーを使用する
@@ -53,7 +53,7 @@ ms.locfileid: "90893430"
 
 ## <a name="navigation-shortcuts"></a>ナビゲーション ショートカット
 
-| キー入力 | 説明 |
+| キー操作 | 説明 |
 |-|-|
 | Ctrl + F6 | キャンバスとモジュール ツリー間でフォーカスを切り替える |
 | Ctrl + F1   | モジュール ツリーのノードにフォーカスがあるときに情報カードを開く |
@@ -63,11 +63,11 @@ ms.locfileid: "90893430"
 
 ## <a name="action-shortcuts"></a>アクションのショートカット
 
-次のショートカットをアクセス キーと共に使用します。 アクセス キーの詳細については、 https://en.wikipedia.org/wiki/Access_key を参照してください。
+次のショートカットをアクセス キーと共に使用します。 アクセス キーの詳細については、https://en.wikipedia.org/wiki/Access_key を参照してください。
 
-| キー入力 | アクション |
+| キー操作 | アクション |
 |-|-|
-| アクセス キー + R | ラン |
+| アクセス キー + R | 実行 |
 | アクセス キー + P | 発行 |
 | アクセス キー + C | 複製 |
 | アクセス キー + D | 配置 |

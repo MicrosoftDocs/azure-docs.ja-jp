@@ -4,10 +4,10 @@ description: DoD 影響レベル 5 ブループリント サンプルのコン�
 ms.date: 01/08/2021
 ms.topic: sample
 ms.openlocfilehash: 01f786684e5f8d73f57eb9f4741593c01fe1c8d4
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98034783"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>DoD 影響レベル 5 ブループリント サンプルのコントロール マッピング

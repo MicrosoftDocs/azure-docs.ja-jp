@@ -11,10 +11,10 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: e924a5f6c765b5b964fe3b1492393b063d9d23b4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92783574"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Azure から独立しているクラウドでの Azure PowerShell によるストレージの管理
@@ -31,7 +31,7 @@ ms.locfileid: "92783574"
 
 いずれかの独立したクラウドの Azure Storage を使用するには、Azure パブリックではなく、そのクラウドに接続します。 Azure パブリックではなく、いずれかの独立したクラウドを使用するには:
 
-* 接続する " *環境* " を指定します。
+* 接続する "*環境*" を指定します。
 * 使用可能なリージョンを判断して、そのリージョンを使用します。
 * Azure パブリックとは異なる適切なエンドポイント サフィックスを使用します。
 
@@ -51,7 +51,7 @@ Get-AzEnvironment
 Connect-AzAccount –Environment AzureUSGovernment
 ```
 
-China Cloud にアクセスするには、 **AzureChinaCloud** 環境を使用します。 German Cloud にアクセスするには、 **AzureGermanCloud** を使用します。
+China Cloud にアクセスするには、**AzureChinaCloud** 環境を使用します。 German Cloud にアクセスするには、**AzureGermanCloud** を使用します。
 
 この時点で、ストレージ アカウントまたは別のリソースを作成する場所の一覧が必要な場合は、選択したクラウドで使用できる場所を [Get-AzLocation](/powershell/module/az.resources/get-azlocation) でクエリできます。
 
@@ -92,7 +92,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 | AzureGermanCloud | core.cloudapi.de|
 | AzureUSGovernment | core.usgovcloudapi.net |
 
-指定した環境のすべてのプロパティを取得するには、 **Get AzEnvironment** を呼び出してクラウドの名前を指定します。 次のコード スニペットは、プロパティの一覧を返します。一覧から **StorageEndpointSuffix** を探します。 次の例は German Cloud に対するものです。
+指定した環境のすべてのプロパティを取得するには、**Get AzEnvironment** を呼び出してクラウドの名前を指定します。 次のコード スニペットは、プロパティの一覧を返します。一覧から **StorageEndpointSuffix** を探します。 次の例は German Cloud に対するものです。
 
 ```powershell
 Get-AzEnvironment -Name AzureGermanCloud
@@ -168,6 +168,6 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 * [PowerShell セッション間でのユーザー ログインの保持](/powershell/azure/context-persistence)
 * [Azure Government ストレージ](../../azure-government/compare-azure-government-global-azure.md)
-* [Microsoft Azure Government 開発者向けガイド](../../azure-government/documentation-government-developer-guide.md)
+* [「Microsoft Azure Government Developer Guide (Microsoft Azure Government 開発者向けガイド)」をご覧ください](../../azure-government/documentation-government-developer-guide.md)
 * [Azure China 21Vianet アプリケーション開発者向けのメモ](https://msdn.microsoft.com/library/azure/dn578439.aspx)
 * [Azure Germany ドキュメント](../../germany/germany-welcome.md)

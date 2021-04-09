@@ -3,15 +3,15 @@ title: Azure リソースを管理および監視するための自動化タス�
 description: Azure Logic Apps で実行されるワークフローを作成して、Azure リソースを管理し、コストを監視するための自動化タスクを設定します。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, jonfan, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: 2b3b40b5958df52dabf92155a1de809578f1d374
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.date: 02/19/2021
+ms.openlocfilehash: 8180fe8554e5fff83e4caef8c245839518649ca1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201122"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719051"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>自動化タスクを作成して Azure リソースを管理し、コストを監視する (プレビュー)
 
@@ -71,13 +71,15 @@ ms.locfileid: "92201122"
 
    ![ツール バーの [追加] が選択されているストレージ アカウントの [タスク] ウィンドウを示すスクリーンショット](./media/create-automation-tasks-azure-resources/add-automation-task.png)
 
-1. **[タスクの追加]** ウィンドウの **[テンプレートの選択]** で、作成するタスクのテンプレートを選択し、 **[Next:Authentication] (次: 認証)** をクリックします。
+1. **[タスクの追加]** ペインの **[テンプレートの選択]** で、作成するタスクのテンプレートを選択します。 次のページが表示されない場合は、 **[次へ: 認証]** を選択します。
 
    この例では、 **[リソースの月額料金を送信]** タスク テンプレートを選択することで続行します。
 
    !["リソースの月額料金を送信" と "Next:Authentication" (次へ: 認証) を示すスクリーンショット](./media/create-automation-tasks-azure-resources/select-task-template.png)
 
-1. **[認証]** の **[接続]** セクションで、接続ごとに **[作成]** を選択して、その接続の認証資格情報を指定できるようにします。 各タスクの接続の種類は、タスクによって異なります。
+1. **[認証]** の **[接続]** セクションで、タスクに表示されるすべての接続について **[作成]** を選択して、すべての接続の認証資格情報を指定できるようにします。 各タスクの接続の種類は、タスクによって異なります。
+
+   この例では、このタスクに必要な接続のうちの 1 つだけを示します。
 
    ![Azure Resource Manager 接続で選択された [作成] オプションを示すスクリーンショット](./media/create-automation-tasks-azure-resources/create-authenticate-connections.png)
 
@@ -89,7 +91,7 @@ ms.locfileid: "92201122"
 
    ![正常に作成された接続を示すスクリーンショット](./media/create-automation-tasks-azure-resources/create-connection-success.png)
 
-1. すべての必要な接続を認証したら、 **[次へ:構成]** を選択します。
+1. すべての接続を認証した後、次のページが表示されない場合は **[次へ: 構成]** を選択します。
 
 1. **[構成]** で、タスクの名前と、タスクに必要なその他の情報を指定します。 完了したら **[作成]** を選択します。
 
@@ -148,7 +150,7 @@ ms.locfileid: "92201122"
 
    **[ロジック アプリの実行]** ウィンドウが開き、基になる実行されたワークフローが表示されます。
 
-   * ワークフローは、常に[*トリガー*](../connectors/apis-list.md#triggers-actions)で開始されます。 このタスクでは、ワークフローは[**繰り返し**トリガー](../connectors/connectors-native-recurrence.md)で開始されます。
+   * ワークフローは、常に [*トリガー*](../connectors/apis-list.md#triggers-actions)で開始されます。 このタスクでは、ワークフローは [**繰り返し** トリガー](../connectors/connectors-native-recurrence.md)で開始されます。
 
    * 各ステップには、状態と実行継続時間が表示されます。 継続時間が 0 秒のステップは、実行が 1 秒未満であったものです。
 
@@ -265,7 +267,7 @@ ms.locfileid: "92201122"
 
 ## <a name="provide-feedback"></a>ご意見とご感想
 
-皆様からのご意見をお待ちしております。 バグを報告したり、フィードバックを提供したり、このプレビュー機能について質問したりするには、[Azure Logic Apps チームにお問い合わせ](mailto:logicapps@microsoft.com)ください。
+皆様からのご意見をお待ちしております。 バグを報告したり、フィードバックを提供したり、このプレビュー機能について質問したりするには、[Azure Logic Apps チームにお問い合わせ](mailto:logicappspm@microsoft.com)ください。
 
 ## <a name="next-steps"></a>次のステップ
 

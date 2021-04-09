@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
 ms.openlocfilehash: fd9a811fd1c19d115f3ff15194b7e632114140df
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790255"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>DTU 購入モデルを使用した単一データベースのリソース制限 - Azure SQL Database
@@ -41,7 +41,7 @@ ms.locfileid: "92790255"
 | 最大ストレージ (GB) | 2 |
 | 最大インメモリ OLTP ストレージ容量 (GB) |該当なし |
 | 最大同時実行ワーカー (要求) 数 | 30 |
-| 最大同時セッション数 | 該当なし |
+| 最大同時セッション数 | 300 |
 |||
 
 > [!IMPORTANT]

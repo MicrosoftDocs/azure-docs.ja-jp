@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 426220f38e6ddfaaf8b24bf4f7d34473d881ae56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86245604"
 ---
 # <a name="sfctl-service"></a>sfctl service
@@ -17,7 +17,7 @@ ms.locfileid: "86245604"
 
 ## <a name="commands"></a>コマンド
 
-|command|説明|
+|コマンド|説明|
 | --- | --- |
 | app-name | サービスの Service Fabric アプリケーションの名前を取得します。 |
 | code-package-list | Service Fabric ノードにデプロイされているコード パッケージの一覧を取得します。 |

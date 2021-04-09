@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/02/2021
 ms.author: yelevin
 ms.openlocfilehash: 2010b21a3cdb81f2b2aa4180f87857862cd02bf5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101743560"
 ---
 # <a name="connect-your-nxlog-linuxaudit-to-azure-sentinel"></a>NXLog LinuxAudit を Azure Sentinel に接続する
@@ -39,7 +39,7 @@ JSON 形式でイベントを Azure Sentinel に直接送信するように NXLo
 
 1. **[Open connector page]\(コネクタ ページを開く\)** を選択します。
 
-1. "*NXLog ユーザー ガイド*" の統合に関するトピック「[Microsoft Azure Sentinel](https://nxlog.co/documentation/nxlog-user-guide/sentinel.html)」に記載されている手順に従って、REST API 経由での転送を構成します。
+1. 『*NXLog ユーザー ガイド*』の統合に関するトピック「[Microsoft Azure Sentinel](https://nxlog.co/documentation/nxlog-user-guide/sentinel.html)」に記載されている手順に従って、REST API 経由での転送を構成します。
 
 ## <a name="find-your-data"></a>データの検索
 

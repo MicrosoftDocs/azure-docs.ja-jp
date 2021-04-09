@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 4f570f9f18f9c9d484a9bc9c1a5c64d42dbdc714
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93397452"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>Application Gateway イングレス コントローラーの注釈 
@@ -22,9 +22,9 @@ Kubernetes イングレス リソースには、任意のキー/値のペアを�
 
 ## <a name="list-of-supported-annotations"></a>サポートされている注釈の一覧
 
-イングレス リソースを AGIC によって監視するためには、`kubernetes.io/ingress.class: azure/application-gateway` を使用してリソースに **注釈を付ける必要があります** 。 そうしないと、AGIC は問題のイングレス リソースに対して機能しません。
+イングレス リソースを AGIC によって監視するためには、`kubernetes.io/ingress.class: azure/application-gateway` を使用してリソースに **注釈を付ける必要があります**。 そうしないと、AGIC は問題のイングレス リソースに対して機能しません。
 
-| 注釈キー | 値の型 | Default value | 使用できる値
+| 注釈キー | 値の種類 | 既定値 | 使用できる値
 | -- | -- | -- | -- |
 | [appgw.ingress.kubernetes.io/backend-path-prefix](#backend-path-prefix) | `string` | `nil` | |
 | [appgw.ingress.kubernetes.io/ssl-redirect](#tls-redirect) | `bool` | `false` | |
@@ -107,8 +107,8 @@ spec:
 
 ## <a name="connection-draining"></a>接続のドレイン
 
-`connection-draining`:この注釈では、接続のドレインを有効にするかどうかをユーザーが指定できます。
-`connection-draining-timeout`:この注釈では、ユーザーがタイムアウトを指定できます。この時間の経過後、Application Gateway は、ドレイン状態のバックエンド エンドポイントへの要求を終了します。
+`connection-draining`: この注釈によりユーザーは、接続のドレインを有効にするかどうかを指定できます。
+`connection-draining-timeout`: この注釈により、ユーザーはタイムアウトを指定できます。この時間の経過後に Application Gateway は、ドレイン状態のバックエンド エンドポイントへの要求を終了します。
 
 ### <a name="usage"></a>使用法
 
@@ -206,7 +206,7 @@ spec:
 この注釈では、このエンドポイントを Application Gateway のプライベート IP で公開するかどうかを指定できます。
 
 > [!NOTE]
-> * Application Gateway は、同じポート上の複数の IP をサポートしていません (例: 80/443)。 `HTTP` で、`appgw.ingress.kubernetes.io/use-private-ip: "false"` という注釈を持つイングレスと、`appgw.ingress.kubernetes.io/use-private-ip: "true"` という注釈を持つ別のイングレスがある場合、AGIC は Application Gateway の更新に失敗します。
+> * Application Gateway では、同じポート上の複数の IP (例: 80/443) はサポートされません。 `HTTP` で、`appgw.ingress.kubernetes.io/use-private-ip: "false"` という注釈を持つイングレスと、`appgw.ingress.kubernetes.io/use-private-ip: "true"` という注釈を持つ別のイングレスがある場合、AGIC は Application Gateway の更新に失敗します。
 > * プライベート IP を持たない Application Gateway では、`appgw.ingress.kubernetes.io/use-private-ip: "true"` という注釈を持つイングレスは無視されます。 `NoPrivateIP` 警告が有効なイングレスの場合、これはコントローラーのログとイングレス イベントに反映されます。
 
 

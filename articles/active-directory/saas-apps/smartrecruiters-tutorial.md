@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: b7de874cc074faa63203c58638fb04cc5cb2282b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92514930"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>チュートリアル: Azure Active Directory と SmartRecruiters の統合
@@ -41,7 +41,7 @@ SmartRecruiters と Azure AD の統合を構成するには、次のものが必
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* SmartRecruiters では、 **SP と IDP** によって開始される SSO がサポートされます
+* SmartRecruiters では、**SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-smartrecruiters-from-the-gallery"></a>ギャラリーから SmartRecruiters を追加する
 
@@ -67,7 +67,7 @@ Azure AD への SmartRecruiters の統合を構成するには、ギャラリー
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、SmartRecruiters で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、SmartRecruiters で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと SmartRecruiters 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 SmartRecruiters で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -170,7 +170,7 @@ SmartRecruiters で Azure AD シングル サインオンを構成するには�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

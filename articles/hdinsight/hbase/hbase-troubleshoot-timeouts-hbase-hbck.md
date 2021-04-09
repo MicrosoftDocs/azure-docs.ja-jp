@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/16/2019
 ms.openlocfilehash: acf4d1237841f8c20c014598e00a5e8961e2a012
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98936703"
 ---
-# <a name="scenario-timeouts-with-hbase-hbck-command-in-azure-hdinsight"></a>シナリオ:Azure HDInsight での "hbase hbck" コマンド使用時のタイムアウト
+# <a name="scenario-timeouts-with-hbase-hbck-command-in-azure-hdinsight"></a>シナリオ: Azure HDInsight での "hbase hbck" コマンド使用時のタイムアウト
 
 この記事では、Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策について説明します。
 
@@ -23,7 +23,7 @@ ms.locfileid: "98936703"
 
 `hbck` コマンドを使用したときのタイムアウトの問題の原因として、複数のリージョンが長時間にわたって "移行中" 状態にあることが考えられます。 これらのリージョンは、HBase Master UI にオフラインとして表示されていることがわかります。 多数のリージョンが移行を試行中であるために、HBase Master がタイムアウトし、それらのリージョンをオンラインに戻すことができなくなります。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
 1. SSH を使用して HDInsight HBase クラスターにサインインします。
 

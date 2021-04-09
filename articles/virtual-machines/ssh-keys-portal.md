@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2020
 ms.author: cynthn
 ms.openlocfilehash: abc9a2ae130d987c90ce87ffaecbf2bb44b06010
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88929442"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>Azure portal で SSH キーを生成して格納する
@@ -48,7 +48,7 @@ Linux VM で SSH キーを作成し、使用することの詳細については
 
 1. 次にポップアップ ウィンドウが表示されるので、 **[秘密キーをダウンロードしてリソースを作成する]** を選択します。 これで、SSH キーが .pem ファイルとしてダウンロードされます。
 
-   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="新しいリソース グループを作成し、SSH キー ペアを生成する":::
+   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="秘密キーを .pem ファイルとしてダウンロードする":::
 
 1. .pem ファイルがダウンロードされたら、SSH クライアントから容易に参照できるコンピューター上の任意の場所に、このファイルを移動できます。
 
@@ -74,7 +74,7 @@ SSH 公開キーをアップロードして Azure に格納することもでき
 
 1. **[SSH キー]** ページで、 **[作成]** を選択します。
 
-   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="新しいリソース グループを作成し、SSH キー ペアを生成する":::
+   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Azure に格納される SSH 公開キーをアップロードする":::
 
 1. **[リソース グループ]** で、 **[新規作成]** を選択して、キーを格納するための新しいリソース グループを作成します。 リソース グループの名前を入力し、 **[OK]** を選択します。
 
@@ -98,7 +98,7 @@ SSH 公開キーをアップロードして Azure に格納することもでき
 1. フィルターで **[タイプ]** を選択し、 **[すべて選択]** オプションを選択解除して一覧をクリアします。
 1. フィルターに「**SSH**」と入力し、 **[SSH キー]** を選択します。
 
-   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="新しいリソース グループを作成し、SSH キー ペアを生成する":::
+   :::image type="content" source="./media/ssh-keys/filter.png" alt-text="すべての SSH キーを表示するように一覧をフィルター処理する方法を示したスクリーンショット。":::
 
 ## <a name="get-the-public-key"></a>公開キーを取得する
 

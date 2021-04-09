@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/30/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 2396aac67a17352987d9d6e3b49535c19ffe8917
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92792380"
 ---
 # <a name="key-vault-versions"></a>Key Vault のバージョン

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Nintex Promapp の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Nintex Promapp の統合 | Microsoft Docs'
 description: Azure Active Directory と Nintex Promapp の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/30/2020
 ms.author: jeedes
 ms.openlocfilehash: fc31195e7f544bdce7fe2f135a39cb9992875d0a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92505886"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nintex-promapp"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Nintex Promapp の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nintex-promapp"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Nintex Promapp の統合
 
 このチュートリアルでは、Nintex Promapp と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Nintex Promapp を統合すると、次のことができます。
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Nintex Promapp では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Nintex Promapp では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* Nintex Promapp では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Nintex Promapp では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-nintex-promapp-from-the-gallery"></a>ギャラリーから Nintex Promapp を追加する
 
@@ -50,7 +50,7 @@ Azure AD への Nintex Promapp の統合を構成するには、ギャラリー�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Nintex Promapp** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Nintex Promapp**」と入力します。
 1. 結果のパネルから **[Nintex Promapp]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-nintex-promapp"></a>Nintex Promapp の Azure AD シングル サインオンの構成とテスト
@@ -70,7 +70,7 @@ Nintex Promapp で Azure AD SSO を構成してテストするには、次の構
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Nintex Promapp** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Nintex Promapp** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -89,7 +89,7 @@ Nintex Promapp で Azure AD SSO を構成してテストするには、次の構
         ```
 
        > [!NOTE]
-       > Nintex Promapp と Azure AD の統合は、現在、サービスによって開始される認証向けにのみ構成されています (つまり、Nintex Promapp URL に移動することで、認証プロセスが開始されます)。ただし、 **[応答 URL]** フィールドは必須です。
+       > Nintex Promapp と Azure AD の統合は、現在、サービスによって開始される認証向けにのみ構成されています  (つまり、Nintex Promapp URL に移動することで、認証プロセスが開始されます)。ただし、 **[応答 URL]** フィールドは必須です。
 
     1. **[応答 URL]** ボックスに、次のパターンで URL を入力します。
 
@@ -161,9 +161,9 @@ Nintex Promapp で Azure AD SSO を構成してテストするには、次の構
     1. **[SSO - Single Sign-on Mode]\(SSO - シングル サインオン モード\)** の一覧で **[Optional]\(省略可能\)** を選択します。 **[保存]** を選択します。
 
        > [!NOTE]
-       > [Optional]\(省略可能\) モードはテスト目的専用です。 構成が完了したら、 **[SSO - Single Sign-on Mode]\(SSO - シングル サインオン モード\)** の一覧で **[Required]\(必須\)** を選択して、すべてのユーザーに強制的に Azure AD による認証が実施されるようにします。
+       > [Optional]\(省略可能\) モードはテスト目的専用です。 構成が完了したら、**[SSO - Single Sign-on Mode]\(SSO - シングル サインオン モード\)** の一覧で **[Required]\(必須\)** を選択して、すべてのユーザーに強制的に Azure AD による認証が実施されるようにします。
 
-    1. メモ帳で、前のセクションでダウンロードした証明書を開きます。 証明書の内容の、最初の行 ( **-----BEGIN CERTIFICATE-----** ) と最後の行 ( **-----END CERTIFICATE-----** ) 以外の部分をコピーします。 証明書の内容を **[SSO-x.509 Certificate]\(SSO-x.509 証明書\)** ボックスに貼り付けてから、 **[Save]\(保存\)** を選択します。
+    1. メモ帳で、前のセクションでダウンロードした証明書を開きます。 証明書の内容の、最初の行 (**-----BEGIN CERTIFICATE-----**) と最後の行 (**-----END CERTIFICATE-----**) 以外の部分をコピーします。 証明書の内容を **[SSO-x.509 Certificate]\(SSO-x.509 証明書\)** ボックスに貼り付けてから、**[Save]\(保存\)** を選択します。
 
 ### <a name="create-nintex-promapp-test-user"></a>Nintex Promapp のテスト ユーザーの作成
 

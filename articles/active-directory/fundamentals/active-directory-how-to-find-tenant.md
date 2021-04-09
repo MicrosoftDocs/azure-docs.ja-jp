@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, devx-track-azurecli
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 910e68e5b8933875f252faf65fb58e514dee8254
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96326592"
 ---
 # <a name="how-to-find-your-azure-active-directory-tenant-id"></a>Azure Active Directory のテナント ID を見つける方法

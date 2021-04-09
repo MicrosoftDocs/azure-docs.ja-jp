@@ -15,16 +15,16 @@ ms.date: 04/20/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: ae217352b83617600fd983a747d578f8f28e7ddd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92779239"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>チュートリアル:Azure CDN キャッシュ規則の設定
 
 > [!NOTE] 
-> キャッシュ規則は、 **Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルでのみ使用できます。 **Microsoft の Azure CDN** プロファイルの場合は、 [Standard ルール エンジン](cdn-standard-rules-engine-reference.md)を使用する必要があります。 **Azure CDN Premium from Verizon** プロファイルの場合は、同様の機能に対して **管理** ポータルで [Verizon Premium ルール エンジン](./cdn-verizon-premium-rules-engine.md)を使用する必要があります。
+> キャッシュ規則は、**Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルでのみ使用できます。 **Microsoft の Azure CDN** プロファイルの場合は、[Standard ルール エンジン](cdn-standard-rules-engine-reference.md)を使用する必要があります。**Azure CDN Premium from Verizon** プロファイルの場合は、同様の機能に対して **管理** ポータルで [Verizon Premium ルール エンジン](./cdn-verizon-premium-rules-engine.md)を使用する必要があります。
  
 
 このチュートリアルでは、Azure Content Delivery Network (CDN) のキャッシュ規則を使って、グローバルと、URL パスやファイル拡張子などのカスタム条件の両方で、既定のキャッシュ期限切れ動作を設定または変更する方法について説明します。 Azure CDN では、2 種類のキャッシュ規則が提供されます。

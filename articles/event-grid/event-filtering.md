@@ -2,13 +2,13 @@
 title: Azure Event Grid でのイベントのフィルター処理
 description: Azure Event Grid サブスクリプションを作成するときにイベントをフィルター処理する方法について説明します。
 ms.topic: conceptual
-ms.date: 02/26/2021
-ms.openlocfilehash: 7253c4a38660b0041f27918309efae21675fdc8f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/04/2021
+ms.openlocfilehash: 94445341891149d5d02c7f33caef20bf45123e9b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721958"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197777"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid サブスクリプションでのイベントのフィルター処理を理解します
 
@@ -58,13 +58,27 @@ ms.locfileid: "101721958"
 * 値 - キーと比較する 1 つ以上の値。
 
 ## <a name="key"></a>Key
-キーは、フィルター処理のために使用するイベント データ内のフィールドです。 数値、ブール値、文字列、または配列を指定できます。 **Event Grid スキーマ** 内のイベントの場合、キーには `ID`、`Topic`、`Subject`、`EventType`、`DataVersion`、またはイベント データ (例: `data.key1`) の値を使用します。
+キーは、フィルター処理のために使用するイベント データ内のフィールドです。 これは、次のいずれかの型になります。
+
+- Number
+- Boolean
+- String
+- Array 型。 この機能を使用するには、`enableAdvancedFilteringOnArrays` プロパティを true に設定する必要があります。 現時点では、Azure portal でこの機能を有効にすることはサポートされていません。 
+
+    ```json
+    "filter":
+    {
+        "subjectBeginsWith": "/blobServices/default/containers/mycontainer/log",
+        "subjectEndsWith": ".jpg",
+        "enableAdvancedFilteringOnArrays": true
+    }
+    ```
+
+**Event Grid スキーマ** 内のイベントの場合、キーには `ID`、`Topic`、`Subject`、`EventType`、`DataVersion`、またはイベント データ (例: `data.key1`) の値を使用します。
 
 **Cloud Events スキーマ** 内のイベントの場合、キーには `eventid`、`source`、`eventtype`、`eventtypeversion`、またはイベント データ (例: `data.key1`) の値を使用します。
 
-**カスタム入力スキーマ** の場合は、イベント データ フィールドを使用します (例: `data.key1`)。
-
-data セクション内のフィールドにアクセスするには、`.` (ドット) 表記を使用します。 たとえば、次のサンプル イベントの `sitename` または `action` にアクセスするには、それぞれ `data.sitename`、`data.appEventTypeDetail.action` を使用します。
+**カスタム入力スキーマ** の場合は、イベント データ フィールドを使用します (例: `data.key1`)。 data セクション内のフィールドにアクセスするには、`.` (ドット) 表記を使用します。 たとえば、次のサンプル イベントの `sitename` または `action` にアクセスするには、それぞれ `data.sitename`、`data.appEventTypeDetail.action` を使用します。
 
 ```json
     "data": {
@@ -80,10 +94,8 @@ data セクション内のフィールドにアクセスするには、`.` (ド�
     },
 ```
 
-
 ## <a name="values"></a>値
 値には、数値、文字列、ブール値、または配列を指定できます。
-
 
 ## <a name="operators"></a>オペレーター
 

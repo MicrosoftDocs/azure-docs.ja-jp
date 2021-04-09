@@ -4,13 +4,13 @@ description: この記事では、Azure FarmBeats でユーザーを管理する
 author: uhabiba04
 ms.topic: article
 ms.date: 12/02/2019
-ms.author: v-umha
-ms.openlocfilehash: e2769e97dde7f0b99bd29da9c6eb65954bc84dd2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.author: v-ummehabiba
+ms.openlocfilehash: de9a11cac9856417422bd72579cbca44233ab422
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677558"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179903"
 ---
 # <a name="manage-users"></a>ユーザーの管理
 
@@ -30,20 +30,20 @@ Azure FarmBeats では、認証、アクセス制御、およびロールのた�
 
 Azure FarmBeats では、2 種類のユーザー ロールがサポートされています。
 
- - **管理者** : Azure FarmBeats データ ハブ API への完全なアクセス権。 このロールのユーザーは、すべての Azure FarmBeats データ ハブ オブジェクトにクエリを実行したり、すべての操作を FarmBeats Accelerator から実行したりできます。
- - **読み取り専用** : FarmBeats データ ハブ API への読み取り専用アクセス。 ユーザーは、データ ハブ API、Accelerator ダッシュボード、およびマップを表示できます。 読み取り専用アクセス権を持つユーザーは、マップの生成、デバイスの関連付け、ファームの作成などの操作を実行できません。
+ - **管理**: Azure FarmBeats データハブ API への完全なアクセス権。 このロールのユーザーは、すべての Azure FarmBeats データ ハブ オブジェクトにクエリを実行したり、すべての操作を FarmBeats Accelerator から実行したりできます。
+ - **読み取り専用**: FarmBeats データハブ API への読み取り専用アクセス。 ユーザーは、データ ハブ API、Accelerator ダッシュボード、およびマップを表示できます。 読み取り専用アクセス権を持つユーザーは、マップの生成、デバイスの関連付け、ファームの作成などの操作を実行できません。
 
 ## <a name="add-users-to-azure-farmbeats"></a>Azure FarmBeats にユーザーを追加する
 
 Azure FarmBeats にユーザーを追加するには:
 
-1. Accelerator にサインインし、 **[設定]** アイコンを選択します。
+1. Accelerator にサインインし、**[設定]** アイコンを選択します。
 2. **[アクセス制御]** を選択します。
 
     ![[ファームの設定] ペイン](./media/create-farms-in-azure-farmbeats/settings-users-1.png)
 
 3. アクセスを付与する対象であるユーザーの電子メール ID を入力します。
-4. 目的のロール ( **[管理者]** または **[読み取り専用]** ) を選択します。
+4. 目的のロール (**[管理者]** または **[読み取り専用]**) を選択します。
 5. **[ロールの追加]** を選択します。
 
 これで、追加されたユーザーは Azure FarmBeats (データ ハブと Accelerator の両方) にアクセスできます。
@@ -52,7 +52,7 @@ Azure FarmBeats にユーザーを追加するには:
 
 Azure FarmBeats システムからユーザーを削除するには:
 
-1. Accelerator にサインインし、 **[設定]** アイコンを選択します。
+1. Accelerator にサインインし、**[設定]** アイコンを選択します。
 2. **[アクセス制御]** を選択します。
 3. **[削除]** を選択します。
 
@@ -73,7 +73,7 @@ Azure AD にユーザーを追加するには、次の手順に従います。
 
     Azure AD ユーザーの一覧が表示されます。
 
-4. ディレクトリにユーザーを追加するには、 **[新しいユーザー]** を選択します。 外部ユーザーを追加するには、 **[新しいゲスト ユーザー]** を選択します。
+4. ディレクトリにユーザーを追加するには、**[新しいユーザー]** を選択します。 外部ユーザーを追加するには、**[新しいゲスト ユーザー]** を選択します。
 
     ![[すべてのユーザー] ペイン](./media/create-farms-in-azure-farmbeats/manage-users-3.png)
 

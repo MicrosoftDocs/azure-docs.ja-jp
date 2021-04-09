@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/17/2020
+ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2029ec2d0b0f27d7078f381880cf7ca177d24ca0
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7d416810f6a39fb36bfa3c5225301fe87fdd128c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020205"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103013467"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Azure Media Analytics で顔を編集する
 

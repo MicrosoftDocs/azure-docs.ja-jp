@@ -6,15 +6,15 @@ ms.author: brbell
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 656b2e44ec4a4e9de0d594301cb3e4c1b9a33b13
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: d6edee1f349b37c274f71c9db7abac35f9c88c4a
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558624"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102557116"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 および Edsv4 シリーズ
 

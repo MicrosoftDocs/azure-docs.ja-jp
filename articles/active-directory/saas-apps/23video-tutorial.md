@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 5ade2f0c2afcb15541003cc8c1e5fccdb22de35b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92319144"
 ---
 # <a name="tutorial-integrate-23-video-with-azure-active-directory"></a>チュートリアル:23 Video と Azure Active Directory の統合
@@ -94,7 +94,7 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 
 ### <a name="configure-23-video-sso"></a>23 Video SSO の構成
 
-**23 Video** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [23 Video サポート チーム](mailto:support@23company.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**23 Video** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [23 Video サポート チーム](mailto:support@23company.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/02/2020
 ms.author: Zhchia
 ms.openlocfilehash: 6b00067e7f13e609c2999d6949429038e9a7dfd8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96181749"
 ---
 # <a name="tutorial-configure-printerlogic-saas-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に PrinterLogic SaaS を構成する

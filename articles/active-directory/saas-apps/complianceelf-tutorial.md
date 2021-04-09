@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: jeedes
 ms.openlocfilehash: c27add82766516157d56fcf0a5c94123930112fc
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97672943"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>チュートリアル: Azure Active Directory と Compliance ELF の統合
@@ -61,7 +61,7 @@ Azure AD への Compliance ELF の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Compliance ELF**」と入力し、結果ウィンドウで **Compliance ELF** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Compliance ELF**」と入力し、結果ウィンドウで **Compliance ELF** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Compliance ELF](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ Compliance ELF で Azure AD のシングル サインオンを構成してテス
 
 Compliance ELF で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Compliance ELF** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Compliance ELF** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -118,7 +118,7 @@ Compliance ELF で Azure AD シングル サインオンを構成するには、
 
 ### <a name="configure-compliance-elf-single-sign-on"></a>Compliance ELF のシングル サインオンの構成
 
-**Compliance ELF** 側でシングル サインオンを構成するには、 **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** を [Compliance ELF サポート チーム](mailto:support@complianceelf.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Compliance ELF** 側でシングル サインオンを構成するには、**[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** を [Compliance ELF サポート チーム](mailto:support@complianceelf.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -149,7 +149,7 @@ Compliance ELF で Azure AD シングル サインオンを構成するには、
 
 このセクションでは、Britta Simon に Compliance ELF へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Compliance ELF]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Compliance ELF]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

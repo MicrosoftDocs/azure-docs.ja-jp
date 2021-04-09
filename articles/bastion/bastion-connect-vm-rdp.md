@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/21/2020
 ms.author: cherylmc
 ms.openlocfilehash: 708bd1f61da2f3973333f8e68cabdceee0717bee
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92521538"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Azure Bastion を使用して Windows 仮想マシンに接続する
@@ -30,9 +30,9 @@ Azure Bastion は、プロビジョニングされる仮想ネットワーク内
 * 仮想ネットワーク内の Windows 仮想マシン。
 * 次の必須ロール:
   * 仮想マシンに対する閲覧者ロール。
-  * 仮想マシンのプライベート IP を持つ NIC に対する閲覧者ロール。
+  * 仮想マシンのプライベート IP を使用する NIC に対する閲覧者ロール。
   * Azure Bastion リソースに対する閲覧者ロール。
-* ポート:Windows VM に接続するには、お使いの Windows VM で次のポートを開いておく必要があります。
+* ポート: Windows VM に接続するには、お使いの Windows VM で次のポートを開いておく必要があります。
   * 受信ポート:RDP (3389)
 
 ## <a name="connect"></a><a name="rdp"></a>接続

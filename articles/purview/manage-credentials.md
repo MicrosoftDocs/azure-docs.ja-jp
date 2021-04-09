@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 1857eab485e8651c05959f82cf11e69b6353c575
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3802d25ebd8f21ab5b8991a66ceb6650f2f276a9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673527"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103461710"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Azure Purview でのソース認証用の資格情報
 
@@ -41,7 +41,7 @@ Purview マネージド ID を使用してスキャンを設定する場合は�
 
 資格情報を作成する前に、まず既存の Azure Key Vault インスタンスの 1 つまたは複数を Azure Purview アカウントに関連付けます。
 
-1. [Azure portal](https://portal.azure.com) で Azure Purview アカウントを選択します。 **[管理センター]** に移動してから、**資格情報** に移動します。
+1. [Azure portal](https://portal.azure.com) で、Azure Purview アカウントを選択して Azure Purview Studio を開きます。 Azure Purview Studio の **[管理センター]** に移動してから、**資格情報** に移動します。
 
 2. **[資格情報]** ページで、 **[Key Vault 接続の管理]** を選択します。
 

@@ -6,10 +6,10 @@ author: cawams
 ms.author: cawa
 ms.date: 02/11/2021
 ms.openlocfilehash: 7200978ce31a47f7bd0d023cecf359b10a1c96de
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100520827"
 ---
 # <a name="troubleshoot-application-change-analysis-preview"></a>アプリケーション変更分析のトラブルシューティング (プレビュー)

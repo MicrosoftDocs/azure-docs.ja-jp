@@ -9,10 +9,10 @@ ms.date: 10/07/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: e40f421c0fa45d772cd333dac51fe2bdf2779f48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91828973"
 ---
 Windows 10 VPN クライアントの新機能である Always On は、VPN 接続を維持する機能です。 Always On を使用すると、アクティブな VPN プロファイルは、ユーザーのサインイン、ネットワーク状態の変更、またはデバイス画面のアクティブ化などのトリガーに基づいて、自動的に接続し、接続を維持することができます。

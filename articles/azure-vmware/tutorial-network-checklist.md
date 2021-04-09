@@ -2,13 +2,13 @@
 title: チュートリアル - ネットワーク計画のチェックリスト
 description: Azure VMware Solution のネットワーク接続とネットワーク ポートのネットワーク要件について説明します。
 ms.topic: tutorial
-ms.date: 01/27/2021
-ms.openlocfilehash: f493443da617f5f76771e5d1b2b3b190b37f9b5d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.date: 03/13/2021
+ms.openlocfilehash: 8cee5fa24aab8bd7fe6a9527f9c8e7cdff997511
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918587"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462067"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Azure VMware Solution のネットワーク計画のチェックリスト 
 
@@ -89,13 +89,12 @@ Azure VMware Solution プライベート クラウドでは、次に示すよう
 
 ブロードキャスト DHCP トラフィックを WAN 経由でオンプレミスにルーティングして戻すのではなく、NSX に組み込まれている DHCP サービスを使用するか、プライベート クラウドのローカル DHCP サーバーを使用します。
 
+詳細については、「[DHCP サービスを NSX-T ネットワーク セグメントに提供する](deploy-azure-vmware-solution.md#optional-provide-dhcp-services-to-nsx-t-network-segment)」の記事を参照してください。
+
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure VMware Solution プライベート クラウドをデプロイするための考慮事項と要件について説明しました。 
-
-
-適切なネットワークを準備できたら、次のチュートリアルに進んで Azure VMware Solution のプライベート クラウドを作成します。
+このチュートリアルでは、Azure VMware Solution プライベート クラウドをデプロイするための考慮事項と要件について説明しました。 適切なネットワークを準備できたら、次のチュートリアルに進んで Azure VMware Solution のプライベート クラウドを作成します。
 
 > [!div class="nextstepaction"]
 > [Azure VMware Solution のプライベート クラウドを作成する](tutorial-create-private-cloud.md)

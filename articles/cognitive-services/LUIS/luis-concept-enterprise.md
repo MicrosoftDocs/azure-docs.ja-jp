@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 2e2165b81c7cd634fe79ec4438a550ad365f5a30
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3f52dc502233cbab42ae5decff70b77c41c38e0e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019179"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102609687"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>LUIS アプリのエンタープライズ戦略
 エンタープライズ アプリについて以下の設計戦略を確認してください。
@@ -48,10 +48,10 @@ LUIS アプリで、1 つのキーのクォータで許可されているより�
 アクティブ ラーニングのために定期的な (2 週間ごとなど) [エンドポイントの発話の確認](luis-how-to-review-endpoint-utterances.md)をスケジュール設定し、再トレーニングして再公開します。 
 
 ## <a name="when-you-need-to-have-more-than-500-intents"></a>500 を超える意図が必要な場合
-500 以上の意図を含むオフィス アシスタントを開発しているとします。 200 の意図は会議のスケジュール関連、200 がリマインダーについて、200 が同僚に関する情報の取得、200 がメール送信用である場合、各グループが 1 つのアプリに収まるように意図をグループ化し、各意図を含むトップ レベルのアプリを作成します。 [ディスパッチ モデル](#dispatch-tool-and-model)を使用して、トップ レベルのアプリをビルドします。 [ディスパッチ モデルのチュートリアル](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0)で示されているように、カスケード型の呼び出しを使用するようにボットを変更します。 
+500 以上の意図を含むオフィス アシスタントを開発しているとします。 200 の意図は会議のスケジュール関連、200 がリマインダーについて、200 が同僚に関する情報の取得、200 がメール送信用である場合、各グループが 1 つのアプリに収まるように意図をグループ化し、各意図を含むトップ レベルのアプリを作成します。 [ディスパッチ モデル](#dispatch-tool-and-model)を使用して、トップ レベルのアプリをビルドします。 [ディスパッチ モデルのチュートリアル](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs)で示されているように、カスケード型の呼び出しを使用するようにボットを変更します。 
 
 ## <a name="when-you-need-to-combine-several-luis-and-qna-maker-apps"></a>複数の LUIS と QnA Maker のアプリを結合する必要がある場合
-ボットに応答する必要がある LUIS アプリと QnA Maker アプリが複数ある場合、[ディスパッチ モデル](#dispatch-tool-and-model)を使用してトップ レベルのアプリを構築します。  [ディスパッチ モデルのチュートリアル](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0)で示されているように、カスケード型の呼び出しを使用するようにボットを変更します。 
+ボットに応答する必要がある LUIS アプリと QnA Maker アプリが複数ある場合、[ディスパッチ モデル](#dispatch-tool-and-model)を使用してトップ レベルのアプリを構築します。  [ディスパッチ モデルのチュートリアル](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs)で示されているように、カスケード型の呼び出しを使用するようにボットを変更します。 
 
 ## <a name="dispatch-tool-and-model"></a>ディスパッチ ツールとモデル
 [BotBuilder ツール](https://github.com/Microsoft/botbuilder-tools)内にある[ディスパッチ][dispatch-tool] コマンドライン ツールを使用して、複数の LUIS アプリや QnA Maker アプリを親 LUIS アプリに結合します。 この方法を使用すると、すべてのサブジェクトを含む親ドメインと、さまざまな子サブジェクト ドメインを、別々のアプリに指定できます。 
@@ -62,7 +62,7 @@ LUIS では、親ドメインはアプリ一覧で `Dispatch` という名前の
 
 チャット ボットは発話を受信し、予測するために親 LUIS アプリに送信します。 親アプリで予測されたトップの意図によって、次に呼び出す LUIS 子アプリが決定されます。 チャット ボットは、より具体的な予測を得るために、発話を子アプリに送信します。
 
-この呼び出しの階層が、Bot Builder v4 [ディスパッチャー アプリケーション チュートリアル](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0)で、どのように作成されているかを理解します。  
+この呼び出しの階層が、Bot Builder v4 [ディスパッチャー アプリケーション チュートリアル](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs)で、どのように作成されているかを理解します。  
 
 ### <a name="intent-limits-in-dispatch-model"></a>ディスパッチ モデルでの意図の制限
 ディスパッチ アプリケーションには最大 500 のディスパッチ ソースが用意されており、これは 500 の意図に相当します。 
@@ -70,7 +70,7 @@ LUIS では、親ドメインはアプリ一覧で `Dispatch` という名前の
 ## <a name="more-information"></a>詳細情報
 
 * [Bot Framework SDK](https://github.com/Microsoft/botframework)
-* [ディスパッチ モデルのチュートリアル](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0)
+* [ディスパッチ モデルのチュートリアル](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs)
 * [Dispatch CLI](https://github.com/Microsoft/botbuilder-tools)
 * ディスパッチ モデル ボットのサンプル - [.NET](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch)、[Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
 
@@ -78,5 +78,5 @@ LUIS では、親ドメインはアプリ一覧で `Dispatch` という名前の
 
 * [バッチをテストする](luis-how-to-batch-test.md)方法を学習します。
 
-[dispatcher-application-tutorial]: /azure/bot-service/bot-builder-tutorial-dispatch?branch=master
+[dispatcher-application-tutorial]: /azure/bot-service/bot-builder-tutorial-dispatch
 [dispatch-tool]: https://aka.ms/dispatch-tool

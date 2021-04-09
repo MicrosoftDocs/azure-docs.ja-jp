@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 0819f5196fffca25a840dc16d1df04cdd0a55029
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86223314"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>ASP.NET を使用した現在のユーザーのプッシュ通知への登録
@@ -46,7 +46,7 @@ ms.locfileid: "86223314"
 
      ![コンポーネントが追加された MainStoryboard_iPhone.storyboard アプリのスクリーンショット。][0]
 
-2. アシスタント エディターで、すべての switched コントロールのアウトレットを作成してそれらを呼び出し、テキスト フィールドとビュー コントローラー (デリゲート) を接続して、**ログイン** ボタンの**アクション**を作成します。
+2. アシスタント エディターで、すべての switched コントロールのアウトレットを作成してそれらを呼び出し、テキスト フィールドとビュー コントローラー (デリゲート) を接続して、**ログイン** ボタンの **アクション** を作成します。
 
     ![MainStoryboard_iPhone.storyboard アプリのアシスタント エディターのスクリーンショット][1]
 

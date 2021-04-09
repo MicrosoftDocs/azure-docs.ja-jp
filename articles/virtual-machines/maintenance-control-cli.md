@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 11/20/2020
 ms.author: cynthn
 ms.openlocfilehash: 9425759de1e08bc83cac80cd1b56c602edb59fb1
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102562964"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>メンテナンス コントロールと Azure CLI を使用して更新を制御する

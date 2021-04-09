@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 7a203bfc9b1317bc258e4a93ae4ac03ecbdc7a15
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92148433"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>チュートリアル:Geo レプリケートされている Azure コンテナー レジストリから Web アプリをデプロイする
@@ -33,7 +33,7 @@ Azure Container Registry では、コンテナー化されたアプリケーシ�
 
 ## <a name="deploy-a-web-app-for-containers-instance"></a>Web App for Containers インスタンスのデプロイ
 
-この手順では、*米国西部*リージョンに Web App for Containers インスタンスを作成します。
+この手順では、*米国西部* リージョンに Web App for Containers インスタンスを作成します。
 
 [Azure Portal](https://portal.azure.com) にサインインし、前のチュートリアルで作成したレジストリに移動します。
 
@@ -76,7 +76,7 @@ geo レプリケーション コンテナー レジストリから Docker イメ
 
 ## <a name="deploy-second-web-app-for-containers-instance"></a>2 つめの Web App for Containers インスタンスのデプロイ
 
-前のセクションで説明した手順を使用して、2 つめの Web アプリを*米国東部*リージョンにデプロイします。 **[Web App for Containers]** で、次の値を指定します。
+前のセクションで説明した手順を使用して、2 つめの Web アプリを *米国東部* リージョンにデプロイします。 **[Web App for Containers]** で、次の値を指定します。
 
 | 設定 | Value |
 |---|---|

@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
 ms.openlocfilehash: 9e995e88b80bf14f9c7784f465bcd3d89d0bed65
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92367960"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した仮想マシン スケール セットのディスクの作成および使用
@@ -37,12 +37,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="default-azure-disks"></a>既定の Azure ディスク
 スケール セットが作成またはスケーリングされると、2 つのディスクが各 VM インスタンスに自動的に接続されます。 
 
-**オペレーティング システム ディスク** - オペレーティング システム ディスクは、最大 2 TB までサイズを変更でき、VM インスタンスのオペレーティング システムをホストします。 OS ディスクには既定で */dev/sda* というラベルが付けられています。 OS ディスクのディスク キャッシュ構成は、OS パフォーマンスの向上のために最適化されています。 この構成では、OS ディスクでアプリケーションやデータをホスト**しないでください**。 アプリケーションとデータには、この記事の後半で説明するデータ ディスクを使用してください。 
+**オペレーティング システム ディスク** - オペレーティング システム ディスクは、最大 2 TB までサイズを変更でき、VM インスタンスのオペレーティング システムをホストします。 OS ディスクには既定で */dev/sda* というラベルが付けられています。 OS ディスクのディスク キャッシュ構成は、OS パフォーマンスの向上のために最適化されています。 この構成では、OS ディスクでアプリケーションやデータをホスト **しないでください**。 アプリケーションとデータには、この記事の後半で説明するデータ ディスクを使用してください。 
 
 **一時ディスク** - 一時ディスクは、VM インスタンスと同じ Azure ホストに配置されているソリッド ステート ドライブを使用します。 これらは高パフォーマンスのディスクであり、一時的なデータ処理などの操作に使用される場合があります。 ただし、VM インスタンスを新しいホストに移動すると、一時ディスクに格納されているデータはすべて削除されます。 一時ディスクのサイズは VM インスタンスのサイズによって決まります。 一時ディスクには */dev/sdb* のラベルが付けられており、 */mnt* というマウント ポイントがあります。
 
 ### <a name="temporary-disk-sizes"></a>一時ディスクのサイズ
-| 種類 | 一般的なサイズ | 一時ディスクの最大サイズ (GiB) |
+| Type | 一般的なサイズ | 一時ディスクの最大サイズ (GiB) |
 |----|----|----|
 | [汎用](../virtual-machines/sizes-general.md) | A、B、D シリーズ | 1600 |
 | [コンピューティングの最適化](../virtual-machines/sizes-compute.md) | F シリーズ | 576 |
@@ -88,7 +88,7 @@ Premium ディスクは、SSD ベースの高パフォーマンスで待機時�
 ## <a name="create-and-attach-disks"></a>ディスクを作成して接続する
 ディスクは、スケール セットの作成時に作成および接続できます。また、既存のスケール セットに対してディスクを作成および接続することもできます。
 
-API バージョン `2019-07-01` 以降では、[storageProfile.osDisk.diskSizeGb](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk) プロパティを使用して、仮想マシン スケール セットの OS ディスクのサイズを設定できます。 プロビジョニング後、ディスク領域全体を活用するために、ディスクの拡張またはパーティション再分割を行うことが必要な場合があります。 ディスクの拡張の詳細については、[こちら](../virtual-machines/windows/expand-os-disk.md#expand-the-volume-within-the-os)をご覧ください。
+API バージョン `2019-07-01` 時点では、[storageProfile.osDisk.diskSizeGb](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk) プロパティを使用して、仮想マシン スケール セットの OS ディスクのサイズを設定できます。 プロビジョニング後、領域全体を活用するために、ディスクの拡張またはパーティション再分割を行う必要がある場合があります。 ディスクの拡張の詳細については、[こちら](../virtual-machines/windows/expand-os-disk.md#expand-the-volume-within-the-os)を参照してください。
 
 ### <a name="attach-disks-at-scale-set-creation"></a>スケール セットの作成時にディスクを接続する
 [New-AzVmss](/powershell/module/az.compute/new-azvmss) を使用して仮想マシン スケール セットを作成します。 メッセージが表示されたら、VM インスタンスのユーザー名とパスワードを入力します。 個々の VM インスタンスにトラフィックを分散するために、ロード バランサーも作成されます。 ロード バランサーには、TCP ポート 80 上のトラフィックを分散するルールだけでなく、TCP ポート 3389 上のリモート デスクトップ トラフィックと TCP ポート 5985 上の PowerShell リモート処理を許可するルールも含まれています。

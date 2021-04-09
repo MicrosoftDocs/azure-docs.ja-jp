@@ -1,20 +1,18 @@
 ---
 title: Azure 仮想マシンの拡張機能とその機能
 description: Azure VM の拡張機能について詳しく説明します
-services: virtual-machines
-author: amjads1
+ms.topic: article
 ms.service: virtual-machines
 ms.subservice: extensions
-ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 08/03/2020
+author: amjads1
 ms.author: amjads
-ms.openlocfilehash: dd3b713a027df80908e1a8a3ae53e8dc526d7d6e
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.date: 08/03/2020
+ms.openlocfilehash: e1b96293db0389201fdab3340d8f0e74fefc4c52
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936949"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102559717"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure 仮想マシンの拡張機能とその機能
 拡張機能は、Azure VM でのデプロイ後の構成と自動化を提供する小さなアプリケーションです。 Azure プラットフォームでは、VM の構成、監視、セキュリティ、およびユーティリティのアプリケーションを対象とする多くの拡張機能をホストします。 公開元は、アプリケーションを取得し、それを拡張機能にまとめて、インストールを簡略化します。 ユーザーは必須パラメーターを指定するだけで済みます。 

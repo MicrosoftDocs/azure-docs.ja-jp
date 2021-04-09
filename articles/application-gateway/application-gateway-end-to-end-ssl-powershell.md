@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: victorh
 ms.openlocfilehash: 47891dfa7fc0c9b30ccdbf2ed7710125eb36e4a3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93397809"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>Application Gateway での PowerShell を使用したエンド ツー エンド TLS の構成
@@ -20,7 +20,7 @@ ms.locfileid: "93397809"
 
 Azure Application Gateway は、トラフィックのエンド ツー エンド暗号化をサポートしています。 Application Gateway では、アプリケーション ゲートウェイで TLS または SSL 接続が終端処理されます。 ゲートウェイでは、その後、トラフィックへのルーティング規則の適用、パケットの再暗号化、定義済みのルーティング規則に基づいた適切なバックエンド サーバーへのパケットの転送が実行されます。 Web サーバーからの応答は、同じ手順でエンドユーザーに移動します。
 
-Application Gateway は、カスタム TLS オプションの定義をサポートしています。 また、 **TLSv1.0** 、 **TLSv1.1** 、および **TLSv1.2** のバージョンのプロトコルの無効化と、使用する暗号スイートとその優先順位の定義もサポートしています。 構成できる TLS オプションの詳細については、[TLS ポリシーの概要](application-gateway-SSL-policy-overview.md)に関するページを参照してください。
+Application Gateway は、カスタム TLS オプションの定義をサポートしています。 また、**TLSv1.0**、**TLSv1.1**、および **TLSv1.2** のバージョンのプロトコルの無効化と、使用する暗号スイートとその優先順位の定義もサポートしています。 構成できる TLS オプションの詳細については、[TLS ポリシーの概要](application-gateway-SSL-policy-overview.md)に関するページを参照してください。
 
 > [!NOTE]
 > SSL 2.0 と SSL 3.0 は既定で無効になっており、有効にすることはできません。 これらはセキュリティで保護されておらず、Application Gateway では使用できません。
@@ -167,7 +167,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    > [!NOTE]
    > 既定のプローブは、バックエンドの IP アドレスでの *既定の* TLS バインドから公開キーを取得し、取得した公開キー値をここで指定した公開キー値と比較します。 
    > 
-   > バックエンドでホスト ヘッダーと Server Name Indication (SNI) を使用している場合、取得した公開キーがトラフィックの送信先となる目的のサイトであるとは限りません。 確かでない場合は、バックエンド サーバーで https://127.0.0.1/ にアクセスして、 *既定* の TLS バインドにどの証明書が使用されているかを確認します。 このセクションでその要求の公開キーを使用します。 HTTPS バインドでホスト ヘッダーと SNI を使用しており、バックエンド サーバーでの https://127.0.0.1/ に対する手動のブラウザー要求から応答と証明書を受信していない場合は、バックエンド サーバーで既定の TLS バインドを設定する必要があります。 これを行わないと、プローブは失敗し、バックエンドは許可されません。
+   > バックエンドでホスト ヘッダーと Server Name Indication (SNI) を使用している場合、取得した公開キーがトラフィックの送信先となる目的のサイトであるとは限りません。 確かでない場合は、バックエンド サーバーで https://127.0.0.1/ にアクセスして、*既定* の TLS バインドにどの証明書が使用されているかを確認します。 このセクションでその要求の公開キーを使用します。 HTTPS バインドでホスト ヘッダーと SNI を使用しており、バックエンド サーバーでの https://127.0.0.1/ に対する手動のブラウザー要求から応答と証明書を受信していない場合は、バックエンド サーバーで既定の TLS バインドを設定する必要があります。 これを行わないと、プローブは失敗し、バックエンドは許可されません。
    
    Application Gateway の SNI の詳細については、「[Application Gateway での TLS 終了とエンド ツー エンド TLS の概要](ssl-overview.md)」を参照してください。
 
@@ -202,7 +202,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. Application Gateway のインスタンスのサイズを構成します。 利用可能なサイズは、 **Standard\_Small** 、 **Standard\_Medium** 、および **Standard\_Large** です。  容量に使用可能な値は **1** ～ **10** です。
+10. Application Gateway のインスタンスのサイズを構成します。 利用可能なサイズは、**Standard\_Small**、**Standard\_Medium**、および **Standard\_Large** です。  容量に使用可能な値は **1** ～ **10** です。
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -219,7 +219,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
     - **TLSV1_1**
     - **TLSV1_2**
     
-    次の例では、最小のプロトコルのバージョンを **TLSv1_2** に設定し、 **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256** 、 **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384** 、および **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** のみを有効にします。
+    次の例では、最小のプロトコルのバージョンを **TLSv1_2** に設定し、**TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**、**TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**、および **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** のみを有効にします。
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -312,7 +312,7 @@ HTTP 設定から使用されていない期限切れ証明書を削除するに
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. TLS ポリシーを定義します。 次の例では、 **TLSv1.0** および **TLSv1.1** は無効で、暗号スイート **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256** 、 **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384** 、および **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** のみが許可されています。
+2. TLS ポリシーを定義します。 次の例では、 **TLSv1.0** および **TLSv1.1** は無効で、暗号スイート **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**、**TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**、および **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** のみが許可されています。
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw

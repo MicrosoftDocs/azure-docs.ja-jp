@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 80abe036ef4a08f7ed6f0f19cffc2abde70a6ea9
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 1a1a9158c06a12caaeb5702f2fdf7da3c801c143
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981308"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103573440"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning 推論環境をセキュリティで保護する
 
@@ -34,7 +34,6 @@ ms.locfileid: "99981308"
 > - プライベート AKS クラスター
 > - プライベート リンクを使用する AKS クラスター
 > - Azure Container Instances (ACI)
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,7 +57,6 @@ ms.locfileid: "99981308"
 > [!div class="checklist"]
 > * [Azure Kubernetes サービス (AKS) における高度なネットワークの構成](../aks/configure-azure-cni.md#prerequisites)に記載されている前提条件に従っている必要があります。
 > * AKS インスタンスと仮想ネットワークは同じリージョンに存在する必要があります。 仮想ネットワークでワークスペースによって使用される Azure Storage アカウントをセキュリティで保護する場合、それらもまた AKS インスタンスと同じ仮想ネットワークに存在する必要があります。
-
 
 仮想ネットワーク内の AKS をワークスペースに追加するには、次の手順を使用します。
 
@@ -223,7 +221,7 @@ az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalance
 > [!IMPORTANT]
 > CLI を使用して作成できるのは、内部ロード バランサーを使用する AKS クラスターのみです。 内部ロード バランサーを使用するように既存のクラスターをアップグレードする az ml コマンドはありません。
 
-詳細については、[az ml computetarget create aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) に関するリファレンスを参照してください。
+詳細については、[az ml computetarget create aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-aks) に関するリファレンスを参照してください。
 
 ---
 
@@ -266,7 +264,7 @@ Azure Container Instances は、モデルのデプロイ時に動的に作成さ
     > [!IMPORTANT]
     > 委任を有効にする場合は、 __[サブネットをサービスに委任]__ の値として `Microsoft.ContainerInstance/containerGroups` を使用します。
 
-2. [AciWebservice.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?preserve-view=true&view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true) を使用してモデルをデプロイします。`vnet_name` パラメーターと `subnet_name` パラメーターを使用します。 これらのパラメーターには、委任を有効にした仮想ネットワークの名前とサブネットを設定します。
+2. [AciWebservice.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-) を使用してモデルをデプロイします。`vnet_name` パラメーターと `subnet_name` パラメーターを使用します。 これらのパラメーターには、委任を有効にした仮想ネットワークの名前とサブネットを設定します。
 
 ## <a name="limit-outbound-connectivity-from-the-virtual-network"></a> 仮想ネットワークからのアウトバウンド接続を制限する
 
@@ -274,9 +272,11 @@ Azure Container Instances は、モデルのデプロイ時に動的に作成さ
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事は、全 4 パートからなる仮想ネットワーク シリーズのパート 3 です。 仮想ネットワークをセキュリティで保護する方法については、記事の残りの部分を参照してください。
+この記事は、全 5 パートからなる仮想ネットワーク シリーズのパート 4 です。 仮想ネットワークをセキュリティで保護する方法については、記事の残りの部分を参照してください。
 
 * [パート 1: 仮想ネットワークの概要](how-to-network-security-overview.md)
 * [パート 2: ワークスペース リソースをセキュリティで保護する](how-to-secure-workspace-vnet.md)
 * [パート 3: トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
-* [パート 5: Studio の機能を有効にする](how-to-enable-studio-virtual-network.md)
+* [パート 5: スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
+
+名前の解決については、[カスタム DNS](how-to-custom-dns.md) の使用に関する記事も参照してください。

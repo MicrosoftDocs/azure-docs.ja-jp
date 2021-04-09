@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/17/2017
 ms.author: alkohli
 ms.openlocfilehash: de4cae90f2cc1223271672d9fc5ba5b42e4409e4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94962435"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを監視する

@@ -9,15 +9,15 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: d68abe8548dac3306228683e4b6ce8935a248ebc
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92331789"
 ---
 # <a name="understand-the-digital-twins-model-parser"></a>Digital Twins モデル パーサーについて理解する
 
-Digital Twins Definition Language (DTDL) については、[DTDL の仕様](https://github.com/Azure/opendigitaltwins-dtdl)に関する記事で説明されています。 ユーザーは、 _Digital Twins モデル パーサー_ NuGet パッケージを使用して、複数のファイルで定義されているモデルを検証し、クエリを実行できます。
+Digital Twins Definition Language (DTDL) については、[DTDL の仕様](https://github.com/Azure/opendigitaltwins-dtdl)に関する記事で説明されています。 ユーザーは、_Digital Twins モデル パーサー_ NuGet パッケージを使用して、複数のファイルで定義されているモデルを検証し、クエリを実行できます。
 
 ## <a name="install-the-dtdl-model-parser"></a>DTDL モデル パーサーをインストールする
 

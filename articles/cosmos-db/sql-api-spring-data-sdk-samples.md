@@ -9,10 +9,10 @@ ms.date: 09/23/2020
 ms.custom: devx-track-java
 ms.author: anfeldma
 ms.openlocfilehash: 378bb891c8539a6cf3d61f6511a0f58377d2bfd2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93091142"
 ---
 # <a name="azure-cosmos-db-sql-api-spring-data-azure-cosmos-db-v3-examples"></a>Azure Cosmos DB SQL API: Spring Data Azure Cosmos DB v3 のサンプル
@@ -30,7 +30,7 @@ ms.locfileid: "93091142"
 > 
 
 > [!IMPORTANT]  
-> これらのリリース ノートは、Spring Data Azure Cosmos DB のバージョン 3 に関するものです。 バージョン 2 のリリース ノートについては、[こちら](sql-api-sdk-java-spring-v2.md)を参照してください。 
+> これらのリリース ノートは、Spring Data Azure Cosmos DB のバージョン 3 に関するものです。 [バージョン 2 のリリース ノートについてはこちら](sql-api-sdk-java-spring-v2.md)を参照してください。 
 >
 > Spring Data Azure Cosmos DB では、SQL API のみがサポートされています。
 >
@@ -60,7 +60,7 @@ Azure Cosmos DB リソースに対する CRUD 操作などの一般的な操作�
 * Java Development Kit 8
 * Spring Data Azure Cosmos DB v3
 
-プロジェクトで使用する最新の Spring Data Azure Cosmos DB v3 バイナリが必要な場合は、Maven を使用して取得することもできます。 必要な依存関係は Maven によって自動的に追加されます。 または、 **pom.xml** ファイルに一覧表示されている依存関係を直接ダウンロードして、ビルドのパスに追加することもできます。
+プロジェクトで使用する最新の Spring Data Azure Cosmos DB v3 バイナリが必要な場合は、Maven を使用して取得することもできます。 必要な依存関係は Maven によって自動的に追加されます。 または、**pom.xml** ファイルに一覧表示されている依存関係を直接ダウンロードして、ビルドのパスに追加することもできます。
 
 ```bash
 <dependency>

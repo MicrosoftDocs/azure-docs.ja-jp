@@ -2,13 +2,13 @@
 title: Azure リソース情報の表示とフィルター処理
 description: 情報をフィルター処理し、さまざまなビューを使用して、Azure リソースをより深く理解します。
 ms.topic: how-to
-ms.date: 09/11/2020
-ms.openlocfilehash: d3ad0c225a260fd0ae6b131b951b53c28042f4d9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/16/2021
+ms.openlocfilehash: bb48d0b0a7bf6017fbf407a95c33ef17729e34e3
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738635"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771636"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>Azure リソース情報の表示とフィルター処理
 
@@ -48,7 +48,7 @@ Azure portal を使用すると、Azure サブスクリプション全体でリ�
 
 1. **[ビューの管理]** 、 **[すべてのビューを参照]** の順に選択します。
 
-1. **[すべてのリソース] の保存済みビュー** ペインで、ビューを選択して **[削除]** アイコン ![ビューの削除アイコン](media/manage-filter-resource-views/icon-delete.png) を選択します。
+1. **[保存済みビュー]** ペインで、ビューを選択して **[削除]** アイコン ![ビューの削除アイコン](media/manage-filter-resource-views/icon-delete.png) を選択します。
 
 ## <a name="export-information-from-a-view"></a>ビューから情報をエクスポートする
 
@@ -64,7 +64,7 @@ Azure portal を使用すると、Azure サブスクリプション全体でリ�
 
 ## <a name="summarize-resources-with-visuals"></a>ビジュアルを使用してリソースを集計する
 
-これまでに見たビューは _リスト ビュー_ になっていますが、ビジュアルを含む _概要ビュー_ もあります。 ビューを一覧表示できるのと同じように、これらのビューを保存して使用できます。 フィルターは 2 種類のビューの間で保持されます。 次に示す **場所** ビューなどの標準的なビューや、Azure Storage の **状態** ビューなど、特定のサービスに関連するビューがあります。
+これまでに見たビューは _リスト ビュー_ になっていますが、ビジュアルを含む _概要ビュー_ もあります。 これらのビューは、リスト ビューと同じように保存して使用できます。 フィルターは 2 種類のビューの間で保持されます。 次に示す **場所** ビューなどの標準的なビューや、Azure Storage の **状態** ビューなど、特定のサービスに関連するビューがあります。
 
 :::image type="content" source="media/manage-filter-resource-views/summary-map.png" alt-text="マップ ビュー内のリソースの概要":::
 

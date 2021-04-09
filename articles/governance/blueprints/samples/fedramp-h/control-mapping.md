@@ -4,10 +4,10 @@ description: FedRAMP High ブループリント サンプルのコントロー�
 ms.date: 01/08/2021
 ms.topic: sample
 ms.openlocfilehash: ee2988e94422c96be52d0bc4fc7266ccab38780e
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98034885"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>FedRAMP High ブループリント サンプルのコントロール マッピング。
@@ -101,7 +101,7 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 - 診断設定の監査
 - SQL Server の高度なデータ セキュリティ設定で監査を有効にする必要がある
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
-- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- Advanced Data Security を、SQL サーバー上で有効にする必要がある
 
 ## <a name="au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>AU-6 (4) 監査の確認、分析、およびレポート | 集中的な確認と分析
 
@@ -122,10 +122,10 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 - \[プレビュー\]:Virtual Machines で脆弱性評価を有効にする必要がある
 - \[プレビュー\]:Azure Monitor for VMs の有効化
 - \[プレビュー\]:VM スケール セット (VMSS) 用の Azure Monitor を有効にする
-- 脆弱性評価を SQL Server 上で有効にする必要がある
+- 脆弱性評価を SQL サーバー上で有効にする必要がある
 - 診断設定の監査
-- 脆弱性評価を SQL Managed Instance 上で有効にする必要がある
-- 脆弱性評価を SQL Server 上で有効にする必要がある
+- 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
+- 脆弱性評価を SQL サーバー上で有効にする必要がある
 - 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
 - SQL データベースの脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
@@ -134,7 +134,7 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 ## <a name="au-12-audit-generation"></a>AU-12 監査の生成
 
 このブループリントは、Azure 仮想マシンにおける Log Analytics エージェントのデプロイのほか、他の Azure リソース タイプの監査設定の構成を監査および実施するポリシー定義を提供します。
-また、これらのポリシー定義では、診断ログの構成も監査され、Azure リソース内で実行された処理に関する分析情報が提供されます。 さらに、SQL Server には監査と Advanced Data Security が構成されます。
+また、これらのポリシー定義では、診断ログの構成も監査され、Azure リソース内で実行された処理に関する分析情報が提供されます。 さらに、SQL サーバーには監査と Advanced Data Security が構成されます。
 
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
 - \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
@@ -146,10 +146,9 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 - 診断設定の監査
 - SQL Server の高度なデータ セキュリティ設定で監査を有効にする必要がある
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
-- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL Server に対する Advanced Data Security のデプロイ
 - SQL Server での監査のデプロイ
-
 - ネットワーク セキュリティ グループの診断設定のデプロイ
 
 ## <a name="au-12-01-audit-generation--system-wide--time-correlated-audit-trail"></a>AU-12 (01) 監査の生成 | システム全体/時間相関の監査証跡
@@ -240,7 +239,7 @@ Azure Site Recovery では、仮想マシンで実行中のワークロードが
 Azure Security Center では、デプロイされた Azure リソースのセキュリティ状態をリアルタイムに分析するためのレポート機能が提供されます。 このブループリントでは、他にも、SQL サーバー上で Advanced Data Security を監査および強制するポリシー定義が割り当てられます。 Advanced Data Security には、脆弱性の評価機能と高度な脅威に対する保護機能が含まれており、デプロイ済みのリソースに存在する脆弱性について理解を深めるうえで役立ちます。
 
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
-- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL Server に対する Advanced Data Security のデプロイ
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 使用している仮想マシン上のセキュリティ構成の脆弱性を修復する必要がある
@@ -291,7 +290,7 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 このブループリントは、特定の暗号化コントロールを適用し、脆弱な暗号化設定の使用を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、保存情報の保護のための暗号化コントロールの使用に関するポリシーの実施を支援するものです。 最適でない暗号化構成が Azure リソースのどこに存在しているかを把握することにより、適切な是正措置を実施し、リソースの構成を情報セキュリティ ポリシーに準拠させることができます。 具体的には、このブループリントにより割り当てられるポリシー定義では、Data Lake Storage アカウントの暗号化と SQL データベースでの Transparent Data Encryption が必須になるほか、SQL データベース、仮想マシン ディスク、Automation アカウント変数の暗号化に漏れがないかどうかが監査されます。
 
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
-- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL Server に対する Advanced Data Security のデプロイ
 - SQL DB Transparent Data Encryption のデプロイ
 - 仮想マシンでディスク暗号化を適用する必要がある
@@ -337,12 +336,12 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - \[プレビュー\]:Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
-- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL Server に対する Advanced Data Security のデプロイ
 - ストレージ アカウントに対する Advanced Threat Protection のデプロイ
 - SQL Server での監査のデプロイ
 - 仮想ネットワーク作成時の Network Watcher のデプロイ
-- SQL Server での脅威検出のデプロイ
+- SQL サーバーでの脅威検出のデプロイ
 - 許可される場所
 - リソース グループが許可される場所
 

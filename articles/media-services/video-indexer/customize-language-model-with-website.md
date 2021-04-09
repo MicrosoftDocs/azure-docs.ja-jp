@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 08/10/2020
 ms.author: kumud
 ms.openlocfilehash: dd8b36340deb6c785989107461dd420e7fc0d985
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97722574"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>Video Indexer Web サイトを使用して言語モデルをカスタマイズする

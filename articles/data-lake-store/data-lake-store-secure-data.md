@@ -13,10 +13,10 @@ ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: ac7666f4c4e68d24499f9c097dc9bd021d270355
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92370697"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 に格納されているデータのセキュリティ保護
@@ -32,8 +32,8 @@ Azure Data Lake Storage Gen1 のデータをセキュリティで保護するに
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-* **Azure サブスクリプション** 。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Data Lake Storage Gen1 アカウント** 。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](data-lake-store-get-started-portal.md)に関するページを参照してください。
+* **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+* **Data Lake Storage Gen1 アカウント**。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](data-lake-store-get-started-portal.md)に関するページを参照してください。
 
 ## <a name="create-security-groups-in-azure-active-directory"></a>Azure Active Directory でセキュリティ グループを作成する
 Azure AD セキュリティ グループを作成する手順およびグループにユーザーを追加する手順については、「[Azure Active Directory のセキュリティ グループの管理](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
@@ -68,7 +68,7 @@ Azure AD セキュリティ グループを作成する手順およびグルー�
     データ操作の場合、ユーザーが実行できる操作はファイル システムの個々のアクセス許可によって定義されます。 そのため、閲覧者ロールを持つユーザーはアカウントに関連付けられた管理設定しか表示できません。しかし、場合によっては、そのユーザーに割り当てられているファイル システムのアクセス許可に基づいて、データの読み取りおよび書き込みができます。 Data Lake Storage Gen1 ファイル システムのアクセス許可については、[セキュリティ グループを ACL として Azure Data Lake Storage Gen1 ファイル システムに割り当てる](#filepermissions)方法に関するセクションをご覧ください。
 
     > [!IMPORTANT]
-    > ファイル システムへのアクセスが自動的に有効になるのは **所有者** ロールだけです。 **共同作成者** 、 **閲覧者** 、および他のすべてのロールでは、ACL でフォルダーとファイルへの任意のアクセス レベルを有効にする必要があります。  **所有者** ロールでは、ACL によってオーバーライドできない、ファイルとフォルダーのスーパー ユーザーのアクセス許可が付与されます。 Azure RBAC ポリシーをデータ アクセスにマップする方法の詳細については、「[Azure RBAC を使用したアカウント管理](data-lake-store-security-overview.md#azure-rbac-for-account-management)」をご覧ください。
+    > ファイル システムへのアクセスが自動的に有効になるのは **所有者** ロールだけです。 **共同作成者**、**閲覧者**、および他のすべてのロールでは、ACL でフォルダーとファイルへの任意のアクセス レベルを有効にする必要があります。  **所有者** ロールでは、ACL によってオーバーライドできない、ファイルとフォルダーのスーパー ユーザーのアクセス許可が付与されます。 Azure RBAC ポリシーをデータ アクセスにマップする方法の詳細については、「[Azure RBAC を使用したアカウント管理](data-lake-store-security-overview.md#azure-rbac-for-account-management)」をご覧ください。
 
 4. **[アクセス許可の追加]** ブレードに表示されていないグループ/ユーザーを追加する場合は、 **[選択]** ボックスにそのグループ/ユーザーの電子メール アドレスを入力し、一覧からグループ/ユーザーを選択することで招待できます。
    

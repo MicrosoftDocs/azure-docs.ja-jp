@@ -6,10 +6,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
 ms.openlocfilehash: ace3fe7aee6b9ffc7226448b455bcfea1f931458
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85964874"
 ---
 # <a name="rendering-applications"></a>アプリケーションをレンダリングする
@@ -37,7 +37,7 @@ ms.locfileid: "85964874"
 3dsmaxcmdio.exe -v:5 -rfw:0 -start:{0} -end:{0} -bitmapPath:"%AZ_BATCH_JOB_PREP_WORKING_DIR%\sceneassets\images" -outputName:dragon.jpg -w:1280 -h:720 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scenes\dragon.max"
 ```
 
-注:
+メモ:
 
 * アセット ファイルが見つかるように細心の注意を払う必要があります。  **[資産管理]** ウィンドウ、またはコマンド ラインで `-bitmapPath` パラメーターを使用して、パスが正しくかつ相対的であることを確認します。
 * タスクが実行されるときに 3ds Max によって記述された `stdout.txt` ファイルをチェックすることで、アセットが見つからないなど、レンダーに問題がないかどうかを確認します。

@@ -4,10 +4,10 @@ description: REST API を使用して、Azure Backup によって作成された
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 60c73caa5db684e38b94b4d5786f2fd24aa65d08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88761799"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>REST API を使用して Azure ファイル共有を復元する
@@ -404,7 +404,7 @@ Properties | AzureFileShareRestoreRequest | RestoreRequestResource プロパテ�
 
 ### <a name="restore-to-alternate-location-for-item-level-recovery-using-rest-api"></a>REST API を使用し、アイテムレベル復元の別の場所に復元する
 
-次の要求本文では、*afsaccount* ストレージ アカウントの *azurefiles* ファイル共有の内の *Restoretest.txt* ファイルが、*afaccount1*ストレージ アカウントの *azurefiles1* ファイル共有内の *restoredata* フォルダーに復元されます。
+次の要求本文では、*afsaccount* ストレージ アカウントの *azurefiles* ファイル共有の内の *Restoretest.txt* ファイルが、*afaccount1* ストレージ アカウントの *azurefiles1* ファイル共有内の *restoredata* フォルダーに復元されます。
 
 要求本文を作成する
 

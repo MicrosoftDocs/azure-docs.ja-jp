@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.custom: seodec18
 ms.openlocfilehash: fcfc70f7bfb9e2bb1b1a0edbffdc1282056e5fa7
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102214050"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>回答の信頼度スコア

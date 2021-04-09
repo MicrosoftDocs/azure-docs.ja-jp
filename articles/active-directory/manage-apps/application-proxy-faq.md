@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 19a5d223b587e47c562977cc9fea34f990eb0e46
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: edd2ec633bd78ce1a596782deab57105e9d7f1c3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370820"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487748"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問
 
@@ -37,6 +37,21 @@ Azure AD アプリケーション プロキシを使用するには、Azure AD P
 少なくとも Azure AD Premium P1 または P2 ライセンスと、Azure AD アプリケーション プロキシ コネクタがインストールされていることを確認します。 最初のコネクタを正常にインストールすると、Azure AD アプリケーション プロキシ サービスが自動的に有効になります。
 
 ## <a name="connector-configuration"></a>コネクタの構成
+
+### <a name="why-is-my-connector-still-using-an-older-version-and-not-auto-upgraded-to-latest-version"></a>コネクタでまだ古いバージョンが使用されていて、最新バージョンに自動アップグレードされていないのはなぜですか?
+
+アップデーター サービスが正常に動作していないか、このサービスでインストールできる新しい更新プログラムがないことが原因の可能性があります。
+
+アップデーター サービスが実行されていて、イベント ログにエラーが記録されていない場合は、正常です ([アプリケーションとサービス ログ] -> [Microsoft] -> [AadApplicationProxy] -> [アップデーター] -> [管理者])。 
+
+> [!IMPORTANT]
+> 自動アップグレードでは、メジャー バージョンのみがリリースされます。 定期的なスケジュールでコネクタを手動で更新することをお勧めします。 新しいリリース、リリースの種類 (ダウンロード、自動アップグレード)、バグ修正、および新機能の詳細については、「[Azure AD アプリケーション プロキシ: バージョンのリリース履歴](application-proxy-release-version-history.md)」を参照してください。
+
+コネクタを手動でアップグレードするには、次の手順を実行します。
+
+-  最新バージョンのコネクタをダウンロードします。 Azure portal の [アプリケーション プロキシ] の下に表示されます。 「[Azure AD アプリケーション プロキシ: バージョンのリリース履歴](application-proxy-release-version-history.md)」でもリンクを見つけることができます。
+-   インストーラーによって、Azure AD アプリケーション プロキシのコネクタ サービスが再起動されます。 場合によっては、インストーラーですべてのファイルを置き換えることができない場合、サーバーの再起動が必要になることがあります。 そのため、アップグレードを開始する前に、すべてのアプリケーション (つまり、イベント ビューアー) を終了することをお勧めします。
+-   インストーラーを実行します。 アップグレード プロセスは迅速であり、資格情報を提供する必要がないため、コネクタは再登録されません。
 
 ### <a name="can-application-proxy-connector-services-run-in-a-different-user-context-than-the-default"></a>アプリケーション プロキシ コネクタ サービスを、既定とは異なるユーザー コンテキストで実行することはできますか。
 

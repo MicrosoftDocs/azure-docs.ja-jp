@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
 ms.openlocfilehash: 9ed060c1f3fc47aa7050c0f9b25c757953fa22fe
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98220339"
 ---
 # <a name="plan-virtual-networks"></a>仮想ネットワークを計画する
@@ -64,7 +64,7 @@ Azure のすべてのリソースには名前があります。 名前はスコ�
 - Azure ストレージ アカウントや Azure SQL Database などの Azure リソースへのアクセスを、仮想ネットワーク サービス エンドポイントのある特定のサブネットに制限することができます。 さらに、インターネットからのリソースへのアクセスを拒否することができます。 複数のサブネットを作成し、一部のサブネットではサービス エンドポイントを有効にして、それ以外では無効にすることができます。 詳しくは、[サービス エンドポイント](virtual-network-service-endpoints-overview.md)およびサービス エンドポイントを有効にできる Azure リソースに関するページをご覧ください。
 - 仮想ネットワーク内の各サブネットには、0 個または 1 個のネットワーク セキュリティ グループを関連付けることができます。 各サブネットに関連付けるネットワーク セキュリティ グループは、同じでも、異なっていてもかまいません。 各ネットワーク セキュリティ グループには規則が含まれ、送信元と送信先の間でやり取りされるトラフィックを許可または拒否できます。 [ネットワーク セキュリティ グループ](#traffic-filtering)の詳細を確認する。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 仮想ネットワーク内のリソースが送受信するネットワーク トラフィックを、ネットワーク セキュリティ グループおよびネットワーク仮想アプライアンスを使ってフィルター処理できます。 サブネットからのトラフィックを Azure がルーティングする方法を制御できます。 また、仮想ネットワーク内のリソースを使用できる組織内のユーザーを制限することもできます。
 

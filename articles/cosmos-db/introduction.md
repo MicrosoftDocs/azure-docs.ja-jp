@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2020
-ms.openlocfilehash: 37ba5fc7ce118e2e8532ea4db18634265aaacb64
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 9df5c63ef175d0cf736ce16036466158ab6565f9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556864"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102618306"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -19,6 +19,9 @@ ms.locfileid: "99556864"
 現在のアプリケーションには、優れた応答性と、常時接続が求められます。 待機時間の短縮と高可用性を実現するには、これらのアプリケーションのインスタンスをそのユーザーの近くにあるデータ センターにデプロイする必要があります。 アプリケーションには、ピーク時の使用量の大きな変化に即応し、増え続けるデータを格納し、ミリ秒単位でユーザーがこうしたデータを利用できるようにすることが求められます。
 
 Azure Cosmos DB は、最新のアプリ開発に対応するフル マネージドの NoSQL データベースです。 数ミリ秒 (1 桁台) の応答時間と、自動および即時のスケーラビリティにより、あらゆるスケールで速度が保証されます。 [SLA に基づいた](https://azure.microsoft.com/support/legal/sla/cosmos-db)可用性とエンタープライズグレードのセキュリティにより、ビジネス継続性が保証されます。 世界中のあらゆる場所でのターンキー マルチ リージョン データ分散と、人気のある言語用のオープン ソース API シリーズと SDK により、アプリの開発をより速く、より生産的に行うことができるようになります。 Azure Cosmos DB では、フル マネージド サービスとして、管理、更新、およびパッチ適用が自動的に行われるため、ユーザー側でのデータベース管理が不要になります。 また、アプリケーションのニーズに対応して需要に容量を一致させるコスト効果の高いサーバーレスおよび自動スケーリング オプションにより、容量管理が処理されます。
+
+> [!NOTE]
+> Azure Cosmos DB のドキュメントの品質向上のためのユーザー調査にご協力ください。 こちらの 5 分間の[事前アンケート](https://aka.ms/cosmosdb-documentation-screener-survey)にご記入ください。 条件に一致した方は、スケジューラにリダイレクトされます。このスケジューラで、対話型の調査セッションに参加するスロットを予約できます。 Microsoft [プライバシー ステートメント](https://go.microsoft.com/fwlink/?LinkId=521839)に従い、この過程で個人データが収集されることはありません。
 
 Azure サブスクリプション、課金、契約がなくても [Azure Cosmos DB を無料でお試し](https://azure.microsoft.com/try/cosmosdb/)いただけます。または、[Azure Cosmos DB Free レベル](optimize-dev-test.md#azure-cosmos-db-free-tier)を使用してアカウントを取得し、最初の 400 RU/秒と 5 GB のストレージを無料でご利用いただけます。
 

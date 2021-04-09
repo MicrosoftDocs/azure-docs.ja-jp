@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 00aaa5bdc0d48adb735679fc4a71b3431970ef09
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 458f4d3f29cb08a94095167ed45133f5cd70f5f4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737169"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869193"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool-preview"></a>Azure アプリケーション整合性スナップショット ツールをインストールする (プレビュー)
 
@@ -239,71 +239,6 @@ IP アドレス、ユーザー名、およびパスワード (必要に応じて
     ENV : <IP_address_of_host>:
     USER: AZACSNAP
     ```
-
-### <a name="additional-instructions-for-using-the-log-trimmer-sap-hana-20-and-later"></a>ログ トリマーを使用するための追加の手順 (SAP HANA 2.0 以降)
-
-ログ トリマーを使用する場合、次のコマンド例では、SAP HANA 2.0 データベース システムのテナント データベースでユーザー (AZACSNAP) を設定します。 必ず、IP アドレス、ユーザー名、およびパスワード (必要に応じて) を変更してください。
-
-1. テナント データベースに接続してユーザーを作成します。テナント固有の詳細情報は `<IP_address_of_host>` および `<SYSTEM_USER_PASSWORD>` です。  また、テナント データベースとの通信に必要なポート (`30015`) にもご注意ください。
-
-    ```bash
-    hdbsql -n <IP_address_of_host>:30015 - i 00 -u SYSTEM -p <SYSTEM_USER_PASSWORD>
-    ```
-
-    ```output  
-    Welcome to the SAP HANA Database interactive terminal.
-
-    Type: \h for help with commands
-    \q to quit
-
-    hdbsql TENANTDB=>
-    ```
-
-1. ユーザーを作成します
-
-    この例では、SYSTEMDB に AZACSNAP ユーザーを作成します。
-
-    ```sql
-    hdbsql TENANTDB=> CREATE USER AZACSNAP PASSWORD <AZACSNAP_PASSWORD_CHANGE_ME> NO FORCE_FIRST_PASSWORD_CHANGE;
-    ```
-
-1. ユーザーにアクセス許可を付与します
-
-    この例では、データベース整合性ストレージ スナップショットを実行できるようにするために、AZACSNAP ユーザーに対してアクセス許可を設定します。
-
-    ```sql
-    hdbsql TENANTDB=> GRANT BACKUP ADMIN, CATALOG READ, MONITORING TO AZACSNAP;
-    ```
-
-1. "*省略可能*" - ユーザーのパスワードの有効期限が切れないようにします
-
-    > [!NOTE]
-    > この変更を行う前に、企業のポリシーをご確認ください。
-
-   この例では、AZACSNAP ユーザーのパスワードの有効期限を無効にします。この変更を行わないと、ユーザーのパスワードの有効期限が切れ、スナップショットが正しく取得されなくなります。  
-
-   ```sql
-   hdbsql TENANTDB=> ALTER USER AZACSNAP DISABLE PASSWORD LIFETIME;
-   ```
-
-> [!NOTE]  
-> すべてのテナント データベースに対して、これらの手順を繰り返します。 SYSTEMDB に対して次の SQL クエリを使用して、すべてのテナントの接続の詳細を取得することができます。
-
-```sql
-SELECT HOST, SQL_PORT, DATABASE_NAME FROM SYS_DATABASES.M_SERVICES WHERE SQL_PORT LIKE '3%'
-```
-
-次のクエリと出力の例を参照してください。
-
-```bash
-hdbsql -jaxC -n 10.90.0.31:30013 -i 00 -u SYSTEM -p <SYSTEM_USER_PASSWORD> " SELECT HOST,SQL_PORT, DATABASE_NAME FROM SYS_DATABASES.M_SERVICES WHERE SQL_PORT LIKE '3%' "
-```
-
-```output
-sapprdhdb80,30013,SYSTEMDB
-sapprdhdb80,30015,H81
-sapprdhdb80,30041,H82
-```
 
 ### <a name="using-ssl-for-communication-with-sap-hana"></a>SAP HANA との通信での SSL の使用
 

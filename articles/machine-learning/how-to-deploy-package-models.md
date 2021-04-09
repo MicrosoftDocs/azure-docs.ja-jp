@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
 ms.openlocfilehash: 299eb316b534ddc9d5eee934cc15eae841276038
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93312627"
 ---
 # <a name="how-to-package-a-registered-model-with-docker"></a>Docker を使用して登録済みモデルをパッケージ化する方法

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 9b8dc635781c96dcbd7aa423c77f60ff0556bd71
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: fc3774a01665b88ccae2e25ae8382497f8010c35
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634067"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096974"
 ---
 # <a name="continuously-export-security-center-data"></a>Security Center のデータを連続的にエクスポートする
 
@@ -44,7 +44,7 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
 |リリース状態:|一般提供 (GA)|
 |価格:|Free|
 |必要なロールとアクセス許可:|<ul><li>リソース グループに対する **セキュリティ管理者** または **所有者**</li><li>ターゲット リソースに対する書き込みアクセス許可</li><li>後述する Azure Policy の "DeployIfNotExist" ポリシーを使用する場合は、ポリシーを割り当てるためのアクセス許可も必要です。</li></ul>|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov、その他の Gov<br>![はい](./media/icons/yes-icon.png) China Gov (Event Hub に)|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov、その他の Gov<br>![はい](./media/icons/yes-icon.png) China Gov|
 |||
 
 
@@ -171,7 +171,7 @@ Azure Security Center のデータを Log Analytics ワークスペースの内�
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics のテーブルとスキーマ
 
-セキュリティのアラートと推奨事項はそれぞれ、*SecurityAlert* テーブルと *SecurityRecommendations* テーブルに格納されます。 
+セキュリティのアラートと推奨事項はそれぞれ、*SecurityAlert* テーブルと *SecurityRecommendation* テーブルに格納されます。 
 
 これらのテーブルを含む Log Analytics ソリューションの名前は、Azure Defender を有効にしたかどうかによって異なります。Security ("Security and Audit") または SecurityCenterFree。 
 

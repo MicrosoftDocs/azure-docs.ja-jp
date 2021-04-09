@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
 ms.openlocfilehash: 1c28f549cf93d77f6aef6bcde6a2225345a79cc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91612950"
 ---
 # <a name="plan-the-aggregated-namespace"></a>集約された名前空間を計画する
@@ -61,7 +61,7 @@ NFS ソース パスは同じエクスポートのサブディレクトリであ
 
 別のアプローチとして、親ディレクトリ `acme2017` にリンクする `/templates` のような仮想パスを作成して、キャッシュのマウント後にクライアントを個々の `sku798` および `sku980` ディレクトリに移動させることもできます。 ただし、別の名前空間パスのサブディレクトリである名前空間パスを作成することはできません。 そのため、`acme2017` ディレクトリへのパスを作成する場合、そのサブディレクトリに直接アクセスするための名前空間パスも作成することはできません。
 
-Azure HPC Cache **名前空間**設定ページには、クライアント側のファイルシステムが表示されるので、パスを追加または編集できます。 詳細については、「[集約された名前空間を設定する](add-namespace-paths.md)」を参照してください。
+Azure HPC Cache **名前空間** 設定ページには、クライアント側のファイルシステムが表示されるので、パスを追加または編集できます。 詳細については、「[集約された名前空間を設定する](add-namespace-paths.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

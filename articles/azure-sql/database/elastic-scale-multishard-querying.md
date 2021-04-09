@@ -10,10 +10,10 @@ author: stevestein
 ms.author: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 5a0dd12efb9d94bda264b3bd04b05cdc3df917e5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92786634"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>Elastic Database ツールを使用したマルチシャード クエリ
@@ -23,12 +23,12 @@ ms.locfileid: "92786634"
 
 [Elastic Database ツール](elastic-scale-introduction.md)を利用すれば、シャード化されたデータベース ソリューションを作成できます。 **マルチシャード クエリ実行** は、複数のシャードにまたがるクエリの実行が必要となるデータ収集/レポート作成などのタスクに使用されます (すべての操作を単一のシャード上で実行する[データ依存ルーティング](elastic-scale-data-dependent-routing.md)と比べてください)。
 
-1. **TryGetRangeShardMap** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap))、 **TryGetListShardMap** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap))、または **GetShardMap** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap)) メソッドを使用して、 **RangeShardMap** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) または **ListShardMap** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) を取得します。 「[ShardMapManager の作成](elastic-scale-shard-map-management.md#constructing-a-shardmapmanager)」と「[RangeShardMap または ListShardMap の取得](elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap)」を参照してください。
-2. **MultiShardConnection** ( [Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardconnection)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection)) オブジェクトを作成します。
-3. **MultiShardStatement または MultiShardCommand** ( [Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) を作成します。
-4. **CommandText プロパティ** ( [Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) を T-SQL コマンドに設定します。
-5. **ExecuteQueryAsync または ExecuteReader** ( [Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement.executeQueryAsync)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) メソッドを呼び出してコマンドを実行します。
-6. **MultiShardResultSet または MultiShardDataReader** ( [Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardresultset)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader)) クラスを使用して結果を表示します。
+1. **TryGetRangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap))、**TryGetListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap))、または **GetShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap)) メソッドを使用して、**RangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) または **ListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) を取得します。 「[ShardMapManager の作成](elastic-scale-shard-map-management.md#constructing-a-shardmapmanager)」と「[RangeShardMap または ListShardMap の取得](elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap)」を参照してください。
+2. **MultiShardConnection** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardconnection)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection)) オブジェクトを作成します。
+3. **MultiShardStatement または MultiShardCommand** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) を作成します。
+4. **CommandText プロパティ** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) を T-SQL コマンドに設定します。
+5. **ExecuteQueryAsync または ExecuteReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement.executeQueryAsync)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) メソッドを呼び出してコマンドを実行します。
+6. **MultiShardResultSet または MultiShardDataReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardresultset)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader)) クラスを使用して結果を表示します。
 
 ## <a name="example"></a>例
 
@@ -57,7 +57,7 @@ using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards
 }
 ```
 
-主な相違点は、マルチシャード接続の構築です。 **SqlConnection** が 1 つのデータベースに作用する一方、 **MultiShardConnection** は入力として " **_シャードのコレクション_ *" を受け取ります。シャードのコレクションは、シャード マップから設定します。次に、_* UNION ALL** セマンティクスを使用してシャードのコレクションに対するクエリを実行して、単一の全体的な結果を生成します。 必要に応じて、コマンドの **ExecutionOptions** プロパティを使用して、行の元になっているシャードの名前を出力に追加できます。
+主な相違点は、マルチシャード接続の構築です。 **SqlConnection** が 1 つのデータベースに作用する一方、**MultiShardConnection** は入力として "**_シャードのコレクション_ *" を受け取ります。シャードのコレクションは、シャード マップから設定します。次に、_* UNION ALL** セマンティクスを使用してシャードのコレクションに対するクエリを実行して、単一の全体的な結果を生成します。 必要に応じて、コマンドの **ExecutionOptions** プロパティを使用して、行の元になっているシャードの名前を出力に追加できます。
 
 ここで、 **myShardMap.GetShards()** の呼び出しに注目してください。 このメソッドは、シャード マップからすべてのシャードを取得し、すべての関連データベースを対象にクエリを実行する簡単な方法を提供します。 マルチシャード クエリのためのシャードのコレクションは、 **myShardMap.GetShards()** 呼び出しから返されたコレクションに対して LINQ クエリを実行することによって、さらに絞り込むことができます。 部分的な結果のポリシーとの組み合わせにおいて、マルチシャード クエリ実行の現在の機能は、数十から最大で数百のシャードで適切に動作するように設計されています。
 

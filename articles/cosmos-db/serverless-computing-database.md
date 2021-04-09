@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
 ms.openlocfilehash: 73a34cc27eaba33d04f4d31585c7f494f58e7274
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93334074"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB と Azure Functions を使用したサーバーレス データベース コンピューティング
@@ -26,7 +26,7 @@ ms.locfileid: "93334074"
 Azure Cosmos DB と Azure Functions を使用して、次の方法でデータベースとサーバーレス アプリケーションを統合できます。
 
 * イベント ドリブンの **Cosmos DB 用 Azure Functions トリガー** を作成します。 このトリガーは、[変更フィード](change-feed.md) ストリームを使用して Azure Cosmos コンテナーの変更を監視します。 コンテナーに変更が加えられると、変更フィード ストリームがトリガーに送信され、それによって Azure Functions が呼び出されます。
-* あるいは、 **入力バインディング** を使用して、Azure 関数を Azure Cosmos コンテナーにバインドします。 関数が実行されると、入力バインディングはコンテナーのデータを読み取ります。
+* あるいは、**入力バインディング** を使用して、Azure 関数を Azure Cosmos コンテナーにバインドします。 関数が実行されると、入力バインディングはコンテナーのデータを読み取ります。
 * **出力バインディング** を使用して、関数を Azure Cosmos コンテナーにバインドします。 関数が完了すると、出力バインディングはコンテナーにデータを書き込みます。
 
 > [!NOTE]
@@ -71,7 +71,7 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 **実装:** タイマー トリガーと Azure Cosmos DB 入力バインディング
 
-1. [タイマー トリガー](../azure-functions/functions-bindings-timer.md)を使用すると、 **入力バインディング** を使用して、Azure Cosmos コンテナーに格納されている銀行口座残高の情報を一定の間隔で取得できます。
+1. [タイマー トリガー](../azure-functions/functions-bindings-timer.md)を使用すると、**入力バインディング** を使用して、Azure Cosmos コンテナーに格納されている銀行口座残高の情報を一定の間隔で取得できます。
 2. ユーザーが設定した残高の下限しきい値を下回った場合、Azure Functions のアクションが実行されます。
 3. 出力バインディングは、サービス アカウントから、低い残高の各口座に指定された電子メール アドレスに対して電子メールが送信される [SendGrid 統合](../azure-functions/functions-bindings-sendgrid.md)です。
 
@@ -124,11 +124,11 @@ Azure Functions には、スケーラブルなユニットの作業や、オン�
 
 Azure Cosmos DB は、サーバーレス コンピューティング アーキテクチャに推奨されるデータベースです。その理由は次のとおりです。
 
-* **すべてのデータにすぐにアクセス** :Azure Cosmos DB の既定では、すべてのデータの [インデックスが自動的に作成され](index-policy.md)、それらのインデックスをすぐに使用できるため、格納されているすべての値に対するアクセス権を細かくすることができます。 つまり、データベースに対して新しい項目のクエリ、更新、追加をいつでも実行し、Azure Functions 経由ですぐにアクセスできます。
+* **すべてのデータにすぐにアクセス**:Azure Cosmos DB の既定では、すべてのデータの [インデックスが自動的に作成され](index-policy.md)、それらのインデックスをすぐに使用できるため、格納されているすべての値に対するアクセス権を細かくすることができます。 つまり、データベースに対して新しい項目のクエリ、更新、追加をいつでも実行し、Azure Functions 経由ですぐにアクセスできます。
 
-* **スキーマレス** 。 Azure Cosmos DB はスキーマレスです。そのため、Azure Functions からすべてのデータ出力を一意に処理できます。 この "すべてを処理する" アプローチによって、すべてを Azure Cosmos DB に出力する多様な関数を簡単に作成できます。
+* **スキーマレス**。 Azure Cosmos DB はスキーマレスです。そのため、Azure Functions からすべてのデータ出力を一意に処理できます。 この "すべてを処理する" アプローチによって、すべてを Azure Cosmos DB に出力する多様な関数を簡単に作成できます。
 
-* **スケーラブルなスループット** 。 Azure Cosmos DB のスループットのスケール アップとスケール ダウンはすぐに行うことができます。 数百から数千単位の Functions のクエリがあり、同じコンテナーに書き込む場合、負荷を処理する [RU/秒](request-units.md)をスケール アップできます。 すべての関数は、割り当てられた RU/秒を使用して並列処理できます。また、データの[整合性](consistency-levels.md)が保証されます。
+* **スケーラブルなスループット**。 Azure Cosmos DB のスループットのスケール アップとスケール ダウンはすぐに行うことができます。 数百から数千単位の Functions のクエリがあり、同じコンテナーに書き込む場合、負荷を処理する [RU/秒](request-units.md)をスケール アップできます。 すべての関数は、割り当てられた RU/秒を使用して並列処理できます。また、データの[整合性](consistency-levels.md)が保証されます。
 
 * **グローバル レプリケーション** ユーザーのいる場所に最も近いデータの位置を特定することで、[世界中](distribute-data-globally.md)の Azure Cosmos DB データをレプリケートして待機時間を短縮できます。 すべての Azure Cosmos DB クエリと同様に、イベント ドリブン トリガーのデータは、ユーザーに最も近い Azure Cosmos DB から読み取られます。
 
@@ -138,9 +138,9 @@ Azure Functions の利点:
 
 * **イベント ドリブン** です。 Azure Functions はイベント ドリブンです。また、Azure Cosmos DB の変更フィードをリッスンできます。 つまり、リッスン ロジックを作成する必要はなく、リッスンしている変更のみに注目するだけで済みます。 
 
-* **無制限** 。 関数は並列して実行され、必要な数のサービスを起動できます。 また、必要に応じてパラメーターを設定します。
+* **無制限**。 関数は並列して実行され、必要な数のサービスを起動できます。 また、必要に応じてパラメーターを設定します。
 
-* **クイック タスクに適しています** 。 イベントが発生するたびに、サービスは関数の新しいインスタンスを起動します。関数が完了すると、イベントは直ちに閉じられます。 ユーザーは、関数が実行された時間に対してだけ支払います。
+* **クイック タスクに適しています**。 イベントが発生するたびに、サービスは関数の新しいインスタンスを起動します。関数が完了すると、イベントは直ちに閉じられます。 ユーザーは、関数が実行された時間に対してだけ支払います。
 
 Flow、Logic Apps、Azure Functions、または WebJobs が実装に適しているかどうかがわからない場合は、「[Flow、Logic Apps、Functions、WebJobs の比較](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md)」を参照してください。
 

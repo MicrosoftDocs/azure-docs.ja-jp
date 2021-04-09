@@ -4,12 +4,12 @@ description: オンプレミスまたは Microsoft Azure Web アプリケーシ�
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 05b6c29b121cbf42cf0ebe12b2879e50735db7ea
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 124b8d3de59d1645379d50360e69a5fdbd5587e5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652005"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045294"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights での依存関係の追跡 
 
@@ -88,6 +88,9 @@ SDK で自動追跡されない依存関係については、標準の自動収�
 Web ページの場合、Application Insights JavaScript SDK によって AJAX 呼び出しが依存関係として自動収集されます。
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>詳細な SQL 追跡で完全な SQL クエリを取得する
+
+> [!NOTE]
+> Azure Functions には、SQL テキスト コレクションを有効にするための別の設定が必要です。詳細については、[Azure Functions の監視の構成](../../azure-functions/configure-monitoring.md)に関するページを参照してください。
 
 SQL 呼び出しの場合、サーバーとデータベースの名前が常に収集され、収集された `DependencyTelemetry` の名前として保存されます。 "データ" という名称の追加フィールドがあります。これに完全な SQL クエリ テキストを含めることができます。
 

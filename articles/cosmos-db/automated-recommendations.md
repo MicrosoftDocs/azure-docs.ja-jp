@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.reviewer: sngun
 ms.openlocfilehash: d9eb55030c7ec52f9b2ac79fbab19944f0a3e190
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93087827"
 ---
 # <a name="automated-recommendations-for-azure-cosmos-db"></a>Azure Cosmos DB の自動化された推奨事項
@@ -27,7 +27,7 @@ Azure Cosmos DB に関する推奨事項は、次の方法で表示できます�
 
    :::image type="content" source="./media/automated-recommendations/cosmos-db-pane-recommendations.png" alt-text="Azure Cosmos DB ペインからの推奨事項の表示":::
 
-- また、コスト、セキュリティ、信頼性、パフォーマンス、オペレーショナル エクセレンスなどのさまざまなバケット別に分類された、[Azure Advisor](../advisor/advisor-overview.md) による推奨事項を確認することもできます。 特定のサブスクリプションを選択し、リソースの種類 ( **Azure Cosmos DB アカウント** ) でフィルター処理できます。  特定の推奨事項を選択すると、ワークロードを活用するために実行できるアクションが表示されます。
+- また、コスト、セキュリティ、信頼性、パフォーマンス、オペレーショナル エクセレンスなどのさまざまなバケット別に分類された、[Azure Advisor](../advisor/advisor-overview.md) による推奨事項を確認することもできます。 特定のサブスクリプションを選択し、リソースの種類 (**Azure Cosmos DB アカウント**) でフィルター処理できます。  特定の推奨事項を選択すると、ワークロードを活用するために実行できるアクションが表示されます。
 
    :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Azure Advisor ペインからの推奨事項の表示":::
 

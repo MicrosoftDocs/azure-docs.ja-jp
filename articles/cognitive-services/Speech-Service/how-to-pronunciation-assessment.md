@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 8602d43113f4ce21cdb430e1fa3e83f006c64753
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: dc1ab8bd1a851f7fafd5c001ac73e66973e1b64c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185565"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102051890"
 ---
 # <a name="pronunciation-assessment"></a>発音評価
 
@@ -28,7 +28,7 @@ ms.locfileid: "98185565"
 この記事では、`PronunciationAssessmentConfig` を設定し、Speech SDK を利用して `PronunciationAssessmentResult` を取得する方法について説明します。
 
 > [!NOTE]
-> 発音評価機能は現在、`westus`、`eastasia`、`centralindia` でのみ利用できます。また、言語 `en-US` のみがサポートされています。
+> 発音評価機能では現在、言語 `en-US` のみがサポートされています。
 
 ## <a name="pronunciation-assessment-with-the-speech-sdk"></a>Speech SDK による発音評価
 
@@ -140,8 +140,8 @@ pronunciationAssessmentConfig.applyTo(speechRecognizer);
 
 speechRecognizer.recognizeOnceAsync((result: SpeechSDK.SpeechRecognitionResult) => {
         var pronunciationAssessmentResult = SpeechSDK.PronunciationAssessmentResult.fromResult(result);
-        var pronunciationScore = pronResult.pronunciationScore;
-        var wordLevelResult = pronResult.detailResult.Words;
+        var pronunciationScore = pronunciationAssessmentResult.pronunciationScore;
+        var wordLevelResult = pronunciationAssessmentResult.detailResult.Words;
 },
 {});
 ```

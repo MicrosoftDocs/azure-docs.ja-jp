@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: charwen
 ms.openlocfilehash: 001d2ff6789ec4cfcc391171f0859b67ab1ee0a5
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92077781"
 ---
 # <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>Azure Bastion を使用して仮想マシン スケール セットに接続する
@@ -27,13 +27,13 @@ ms.locfileid: "92077781"
 1. [Azure Portal](https://portal.azure.com)を開きます。 接続先の仮想マシン スケール セットに移動します。
 
    ![移動](./media/bastion-connect-vm-scale-set/1.png)
-2. 接続先の仮想マシン スケール セットのインスタンスに移動し、 **[接続]** を選択します。 RDP 接続を使用するときは、仮想マシン スケール セットは Windows 仮想マシン スケール セットである必要があります。
+2. 接続先の仮想マシン スケール セットのインスタンスに移動し、**[接続]** を選択します。 RDP 接続を使用するときは、仮想マシン スケール セットは Windows 仮想マシン スケール セットである必要があります。
 
    ![仮想マシン スケール セット](./media/bastion-connect-vm-scale-set/2.png)
 3. **[接続]** を選択すると、RDP、SSH、Bastion の 3 つのタブがあるサイド バーが表示されます。 サイド バーの **[Bastion]** タブを選択します。 Bastion を仮想ネットワーク用にプロビジョニングしていない場合は、リンクを選択して Bastion を構成できます。 構成手順については、[Bastion の構成](./tutorial-create-host-portal.md)に関する記事をご覧ください。
 
    ![[Bastion] タブ](./media/bastion-connect-vm-scale-set/3.png)
-4. [Bastion] タブで、仮想マシン スケール セットのユーザー名とパスワードを入力し、 **[接続]** を選択します。
+4. [Bastion] タブで、仮想マシン スケール セットのユーザー名とパスワードを入力し、**[接続]** を選択します。
 
    ![接続する](./media/bastion-connect-vm-scale-set/4.png)
 5. Bastion を使用したこの仮想マシンへの RDP 接続は、ポート 443 と Bastion サービスを使用して (HTML5 を介して) Azure portal で直接開きます。

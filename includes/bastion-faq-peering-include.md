@@ -9,10 +9,10 @@ ms.date: 11/05/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 57b0bb9ab8ceb34021a38db0d0abf2c9c919e808
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94356654"
 ---
 ### <a name="can-i-still-deploy-multiple-bastion-hosts-across-peered-virtual-networks"></a>ピアリングされた仮想ネットワークで複数の Bastion ホストをデプロイすることはできますか?

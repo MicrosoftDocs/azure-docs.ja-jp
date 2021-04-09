@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 772be332af1476975d91eb270bec24d6d241a616
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: e878be5351362923e163c0a6f617b96ab72a36d8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706111"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177551"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage からデータをエクスポートする
 
@@ -43,48 +43,66 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 以下の手順を実行して、Azure portal でエクスポート ジョブを作成します。
 
 1. <https://portal.azure.com/> にログオンします。
-2. **[すべてのサービス] > [ストレージ] > [インポート/エクスポート ジョブ]** の順に移動します。
+2. **インポート/エクスポート ジョブ** を検索します。
 
-    ![インポート/エクスポートへの移動](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
+    ![インポート/エクスポート ジョブを検索する](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
-3. **[インポート/エクスポート ジョブの作成]** をクリックします。
+3. **[+新規]** を選択します。
 
-    ![[インポート/エクスポート ジョブ] をクリックします](./media/storage-import-export-data-from-blobs/export-from-blob2.png)
+    ![[+新規] を選択して新しく作成する ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. **[基本]** で次のようにします。
 
-    - **[Azure からエクスポート]** を選択します。
-    - エクスポート ジョブのわかりやすい名前を入力します。 選択した名前は、ジョブの進行状況の追跡に使用します。
-        - この名前には、小文字のアルファベット、数字、ハイフン、アンダースコアのみを使用できます。
-        - 名前はアルファベットから始める必要があります。スペースを含めることはできません。
-    - サブスクリプションを選択します。
-    - リソース グループを入力または選択します。
+   1. サブスクリプションを選択します。
+   1. リソース グループを選択するか、 **[新規作成]** を選択して新しく作成します。
+   1. インポート ジョブのわかりやすい名前を入力します。 この名前は、ジョブの進行状況の追跡に使用します。
+       * 名前には小文字、数字、ハイフンのみを含めることができます。
+       * 名前はアルファベットから始める必要があります。スペースを含めることはできません。
 
-        ![基本](./media/storage-import-export-data-from-blobs/export-from-blob3.png)
+   1. **[Azure からエクスポート]** を選択します。
+
+    ![エクスポート注文の [基本] オプション](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
+
+    **[次へ: ジョブの詳細 >]** を選択して続行します。
 
 5. **[ジョブの詳細]** で次の操作を実行します。
 
-    - エクスポートするデータが存在するストレージ アカウントを選択します。 所在地に近いストレージ アカウントを使用します。
-    - 配送場所は、選んだストレージ アカウントのリージョンに基づいて自動的に入力されます。
-    - ストレージ アカウントから空のドライブにエクスポートする BLOB データを指定します。
-    - ストレージ アカウントの BLOB データについて **[すべてをエクスポートする]** を選択します。
+   1. データが現在存在する Azure リージョンを選択します。
+   1. エクスポートするデータがあるストレージ アカウントを選択します。 所在地に近いストレージ アカウントを使用します。
 
-         ![[すべてをエクスポートする]](./media/storage-import-export-data-from-blobs/export-from-blob4.png)
+      配送場所は、選んだストレージ アカウントのリージョンに基づいて自動的に入力されます。
 
-    - エクスポートするコンテナーと BLOB を指定できます。
-        - **エクスポートする BLOB を指定するには**: **[等しい]** セレクターを使用します。 コンテナー名から始まる BLOB への相対パスを指定します。 ルート コンテナーを指定するには、" *$root* " を使用します。
-        - **プレフィックスで始まるすべての BLOB を指定するには**: **[指定値で始まる]** セレクターを使用します。 スラッシュ "/" で始まるプレフィックスを指定します。 プレフィックスには、コンテナー名のプレフィックス、コンテナー名全体、またはコンテナー名全体の後に BLOB 名のプレフィックスを付けた名前を指定できます。 次のスクリーンショットで示すように、処理中にエラーが発生しないように、有効な形式で BLOB のパスを指定する必要があります。 詳細については、「[有効な BLOB パスの例](#examples-of-valid-blob-paths)」を参照してください。
+   1. ストレージ アカウントから空のドライブにエクスポートする BLOB データを指定します。 以下の 3 つの方法のいずれかを選択します。
 
-           ![選択したコンテナーと BLOB をエクスポートする](./media/storage-import-export-data-from-blobs/export-from-blob5.png)
+      - ストレージ アカウントの BLOB データについて **[すべてをエクスポートする]** を選択します。
 
-    - BLOB リスト ファイルからエクスポートすることができます。
+        ![[すべてをエクスポートする]](./media/storage-import-export-data-from-blobs/export-from-blob-4.png)
 
-        ![BLOB リスト ファイルからエクスポートする](./media/storage-import-export-data-from-blobs/export-from-blob6.png)
+      - **[選択されているコンテナーと BLOB]** を選択し、エクスポートするコンテナーと BLOB を指定します。 複数の選択方法を使用できます。 **[追加]** オプションを選択すると右側のパネルが開き、選択文字列を追加できます。
+
+        |オプション|説明|
+        |------|-----------|      
+        |**コンテナーの追加**|コンテナー内のすべての BLOB をエクスポートします。<br>**[コンテナーの追加]** を選択し、各コンテナーの名前を入力します。|
+        |**BLOB の追加**|エクスポートする個々の BLOB を指定します。<br>**[BLOB の追加]** を選択します。 その後、コンテナー名から始まる BLOB への相対パスを指定します。 ルート コンテナーを指定するには、" *$root* " を使用します。<br>次のスクリーンショットで示すように、処理中にエラーが発生しないように、有効な形式で BLOB のパスを指定する必要があります。 詳細については、「[有効な BLOB パスの例](#examples-of-valid-blob-paths)」を参照してください。|
+        |**プレフィックスの追加**|似た名前のコンテナーやコンテナー内の似た名前の BLOB のセットを選択するには、プレフィックスを使用します。 プレフィックスには、コンテナー名のプレフィックス、コンテナー名全体、またはコンテナー名全体の後に BLOB 名のプレフィックスを付けた名前を指定できます。 |
+
+        ![選択したコンテナーと BLOB をエクスポートする](./media/storage-import-export-data-from-blobs/export-from-blob-5.png)
+
+    - **[BLOB リスト ファイルからエクスポートする (XML 形式)]** を選択し、ストレージ アカウントからエクスポートする BLOB のパスとプレフィックスの一覧を含む XML ファイルを選択します。 XML ファイルを作成し、ストレージ アカウントのコンテナーに格納する必要があります。 このファイルは空にできません。
+
+      > [!IMPORTANT]
+      > XML ファイルを使用してエクスポートする BLOB を選択する場合は、XML に有効なパスまたはプレフィックスが含まれていることを確認してください。 ファイルが無効な場合、または指定されたパスと一致するデータがない場合は、一部のデータまたはすべてのデータがエクスポートされずに終了します。
+
+       XML ファイルをコンテナーに追加する方法については、「[XML ファイルを使用した注文のエクスポート](../databox/data-box-deploy-export-ordered.md#export-order-using-xml-file)」を参照してください。
+
+      ![BLOB リスト ファイルからエクスポートする](./media/storage-import-export-data-from-blobs/export-from-blob-6.png)
 
    > [!NOTE]
-   > データ コピー時にエクスポートする BLOB が使用中の場合、Azure Import/Export サービスは BLOB のスナップショットを作成し、スナップショットをコピーします。
+   > データ コピー時にエクスポートする BLOB が使用中の場合、Azure Import/Export サービスによって BLOB のスナップショットが作成され、そのスナップショットがコピーされます。
 
-6. **[差出人住所の詳細]** で次の操作を実行します。
+   **[次へ: 出荷 >]** を選択して続行します。
+
+6. **[出荷]** で、次の手順に従います。
 
     - ドロップダウン リストから運送業者を選択します。 FedEx または DHL 以外の運送業者を使用する場合は、ドロップダウンから既存のオプションを選びます。 `adbops@microsoft.com` で Azure Data Box Operations チームに使用する予定の運送業者に関する情報を連絡してください。
     - その運送業者で作成した有効な運送業者アカウント番号を入力します。 Microsoft は、エクスポート ジョブの完了後、このアカウントを使ってドライブを返送します。
@@ -93,15 +111,76 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
         > [!TIP]
         > 1 人のユーザーの電子メール アドレスを指定する代わりに、グループ メール アドレスを提供します。 これにより、管理者が離れる場合でも、通知を受信します。
 
-7. **[概要]** で次の操作を実行します。
+    **[確認と作成]** を選択して続行します。
 
-    - ジョブの詳細を確認します。
-    - ジョブ名と、Azure にディスクを送付するために使用する Azure データセンターの送付先住所をメモします。
+7. **[確認と作成]** では、以下を行います。
+
+   1. ジョブの詳細を確認します。
+   1. ジョブ名と、Azure にディスクを送付するために使用する Azure データセンターの送付先住所をメモします。
+
+      > [!NOTE]
+      > ディスクは常に、Azure Portal に示されているデータ センターに送付します。 誤って別のデータ センターにディスクが発送された場合、ジョブは処理されません。
+
+   1. プライバシーとソース データの削除に関する注文の **使用条件** を確認します。 使用条件に同意する場合は、使用条件の下にあるチェック ボックスをオンにします。 注文の検証が開始されます。
+
+   ![エクスポート注文を確認して作成する](./media/storage-import-export-data-from-blobs/export-from-blob-6-a.png)
+
+ 1. 検証に合格した後、 **[作成]** を選択します。
+
+<!--Replaced text: Steps 4 - end of "Create an export job." Wizard design changes required both screen and text updates.
+
+4. In **Basics**:
+
+    - Select **Export from Azure**.
+    - Enter a descriptive name for the export job. Use the name you choose to track the progress of your jobs.
+        - The name may contain only lowercase letters, numbers, hyphens, and underscores.
+        - The name must start with a letter, and may not contain spaces.
+    - Select a subscription.
+    - Enter or select a resource group.
+
+        ![Basics](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
+
+5. In **Job details**:
+
+    - Select the storage account where the data to be exported resides. Use a storage account close to where you are located.
+    - The dropoff location is automatically populated based on the region of the storage account selected.
+    - Specify the blob data you wish to export from your storage account to your blank drive or drives.
+    - Choose to **Export all** blob data in the storage account.
+
+         ![Export all](./media/storage-import-export-data-from-blobs/export-from-blob-4.png)
+
+    - You can specify which containers and blobs to export.
+        - **To specify a blob to export**: Use the **Equal To** selector. Specify the relative path to the blob, beginning with the container name. Use *$root* to specify the root container.
+        - **To specify all blobs starting with a prefix**: Use the **Starts With** selector. Specify the prefix, beginning with a forward slash '/'. The prefix may be the prefix of the container name, the complete container name, or the complete container name followed by the prefix of the blob name. You must provide the blob paths in valid format to avoid errors during processing, as shown in this screenshot. For more information, see [Examples of valid blob paths](#examples-of-valid-blob-paths).
+
+           ![Export selected containers and blobs](./media/storage-import-export-data-from-blobs/export-from-blob-5.png)
+
+    - You can export from  the blob list file.
+
+        ![Export from blob list file](./media/storage-import-export-data-from-blobs/export-from-blob-6.png)
+
+   > [!NOTE]
+   > If the blob to be exported is in use during data copy, Azure Import/Export service takes a snapshot of the blob and copies the snapshot.
+
+6. In **Return shipping info**:
+
+    - Select the carrier from the dropdown list. If you want to use a carrier other than FedEx/DHL, choose an existing option from the dropdown. Contact Azure Data Box Operations team at `adbops@microsoft.com`  with the information regarding the carrier you plan to use.
+    - Enter a valid carrier account number that you have created with that carrier. Microsoft uses this account to ship the drives back to you once your export job is complete.
+    - Provide a complete and valid contact name, phone, email, street address, city, zip, state/province, and country/region.
+
+        > [!TIP]
+        > Instead of specifying an email address for a single user, provide a group email. This ensures that you receive notifications even if an admin leaves.
+
+7. In **Summary**:
+
+    - Review the details of the job.
+    - Make a note of the job name and provided Azure datacenter shipping address for shipping disks to Azure.
 
         > [!NOTE]
-        > ディスクは常に、Azure Portal に示されているデータ センターに送付します。 誤って別のデータ センターにディスクが発送された場合、ジョブは処理されません。
+        > Always send the disks to the datacenter noted in the Azure portal. If the disks are shipped to the wrong datacenter, the job will not be processed.
 
-    - **[OK]** をクリックして、エクスポート ジョブの作成を完了します。
+    - Click **OK** to complete export job creation.
+-->
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -306,11 +385,11 @@ Install-Module -Name Az.ImportExport
 
 ## <a name="check-the-number-of-drives"></a>ドライブ数を確認する
 
-この *省略可能* な手順は、エクスポート ジョブに必要なドライブ数を決定するために役立ちます。 [サポートされている OS バージョン](storage-import-export-requirements.md#supported-operating-systems)を実行している Windows システム上でこの手順を実行します。
+この "*省略可能*" な手順は、エクスポート ジョブに必要なドライブ数を決定するために役立ちます。 [サポートされている OS バージョン](storage-import-export-requirements.md#supported-operating-systems)を実行している Windows システム上でこの手順を実行します。
 
 1. Windows システムに [WAImportExport バージョン 1 をダウンロード](https://www.microsoft.com/download/details.aspx?id=42659)します。
 2. 既定のフォルダー `waimportexportv1` に解凍します。 たとえば、「 `C:\WaImportExportV1` 」のように入力します。
-3. 管理者特権を使用して PowerShell またはコマンド ライン ウィンドウを開きます。 解凍されたフォルダーにディレクトリを変更するには、次のコマンドを実行します。
+3. 管理特権を使用して PowerShell またはコマンド ライン ウィンドウを開きます。 解凍されたフォルダーにディレクトリを変更するには、次のコマンドを実行します。
 
    `cd C:\WaImportExportV1`
 

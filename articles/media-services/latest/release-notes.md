@@ -9,20 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 10/21/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: f14328567fdc9840b0a3d07aa23fe2496fd537ca
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 9e5a6737d2e37392efd305910ff5370adc84940f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102213098"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596741"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
-
->URL `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` をコピーして、お使いの RSS フィード リーダーに貼り付け、更新内容を確認するためにこのページに再度アクセスするタイミングに関する通知を受け取るようにしてください。
 
 常に最新の開発情報を把握していただけるよう、この記事では以下に関する情報を提供します。
 
@@ -31,12 +29,112 @@ ms.locfileid: "102213098"
 * バグの修正
 * 非推奨の機能
 
-## <a name="known-issues"></a>既知の問題
+## <a name="march-2021"></a>2021 年 3 月
 
-> [!NOTE]
-> [Azure portal](https://portal.azure.com/) を使用して、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)とジョブの表示、API へのアクセスに関する情報の取得、コンテンツの暗号化を行うことができます。 他のすべての管理タスク (変換とジョブの管理など) については、[REST API](/rest/api/media/accountfilters)、[CLI](/cli/azure/ams)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
->
-> 詳細については、[Media Services v3 に関する Azure portal の制限事項](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)に関する記事を参照してください。
+### <a name="new-language-support-added-to-the-audioanalyzer-preset"></a>AudioAnalyzer プリセットに追加された新しい言語サポート
+
+AudioAnalyzer プリセット (基本と標準モードの両方) に、ビデオの文字起こしと字幕に使用できる言語が新しく追加されました。
+
+* 英語 (オーストラリア): en-AU
+* フランス語 (カナダ): fr-CA
+* アラビア語 (バーレーン) 現代標準: ar-BH
+* アラビア語 (エジプト): ar-EG
+* アラビア語 (イラク): ar-IQ
+* アラビア語 (イスラエル): ar-IL
+* アラビア語 (ヨルダン): ar-JO
+* アラビア語 (クウェート): ar-KW
+* アラビア語 (レバノン): ar-LB
+* アラビア語 (オマーン): ar-OM
+* アラビア語 (カタール): ar-QA
+* アラビア語 (サウジアラビア): ar-SA
+* デンマーク語: da-DK
+* ノルウェー語: nb-NO
+* スウェーデン語: sv-SE
+* フィンランド語: fi-FI
+* タイ語: th-TH
+* トルコ語: tr-TR
+
+[ビデオとオーディオ ファイルの概念の分析に関する記事](analyzing-video-audio-files-concept.md)で、利用可能な最新の言語をご確認ください。
+
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="hevc-encoding-support-in-standard-encoder"></a>Standard Encoder での HEVC エンコードのサポート
+
+Standard Encoder で、8 ビットの HEVC (H.265) エンコードがサポートされるようになりました。 HEVC コンテンツは、'hev1' 形式を使用して、Dynamic Packager を通じて配信およびパッケージ化できます。  
+
+HEVC サンプルを含む新しい .NET カスタム エンコードは、[media-services-v3-dotnet Git Hub リポジトリ](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_HEVC)で入手できます。
+カスタム エンコードに加えて、次の組み込み HEVC エンコード プリセットを新しく使用できるようになりました。
+
+- H265ContentAwareEncoding
+- H265AdaptiveStreaming
+- H265SingleBitrate720P
+- H265SingleBitrate1080p
+- H265SingleBitrate4K
+
+v2 API の Premium Encoder で HEVC を使用していたお客様は、Standard Encoder で新しい HEVC エンコード サポートを使用するように移行する必要があります。
+
+### <a name="azure-media-services-v2-api-and-sdks-deprecation-announcement"></a>Azure Media Services v2 API と SDK の廃止に関するお知らせ
+
+#### <a name="update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024"></a>2024 年 2 月 29 日までに Azure Media Services REST API と SDK を v3 に更新してください
+
+.NET および Java 用のバージョン 3 の Azure Media Services REST API とクライアント SDK では、バージョン 2 よりも多くの機能を提供しているため、.NET および Java 用のバージョン 2 の Azure Media Services REST API とクライアント SDK を廃止する予定です。
+
+.NET および Java 用のバージョン 3 の Azure Media Services REST API とクライアント SDK の豊富なメリットを活用するために、早めに切り替えを行うことをお勧めします。
+バージョン 3 では次のものが提供されます。
+ 
+- 24 時間 365 日体制のライブ イベント サポート
+- ARM REST API、.NET Core 用のクライアント SDK、Node.js、Python、Java、Go、Ruby。
+- カスタマー マネージド キー、信頼されたストレージ統合、プライベート リンクのサポート、[その他](https://docs.microsoft.com/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+
+#### <a name="action-required"></a>必要な操作
+
+ワークロードの中断を最小限に抑えるために、[移行ガイド](https://go.microsoft.com/fwlink/?linkid=2149150&clcid=0x409)を参照して、2024 年 2 月 29 日までにコードをバージョン 2 の API と SDK からバージョン 3 の API と SDK に移行してください。
+**2024 年 2 月 29 日以降** は、Azure Media Services は、バージョン 2 の REST API、ARM アカウント管理 API バージョン 2015-10-01、またはバージョン 2 の .NET クライアント SDK からのトラフィックを受け入れなくなります。 これには、バージョン 2 の API を呼び出す可能性があるサードパーティ製のオープンソースのクライアント SDK が含まれます。  
+
+公式の [Azure の更新情報に関するお知らせ](https://azure.microsoft.com/updates/update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024/)をご確認ください。
+
+### <a name="standard-encoder-support-for-v2-api-features"></a>Standard Encoder での v2 API 機能のサポート
+
+新しく追加された HEVC (H.265) エンコードのサポートに加えて、2020-05-01 バージョンのエンコード API では次の機能を使用できるようになりました。
+
+- 新しい **Jobinputclip** サポートを使用して、複数の入力ファイルを結合できるようになりました。
+    - .NET 用の例では、[2 つのアセットを結合](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomStitchTwoAssets)する方法を示しています。
+- オーディオ トラックのオプションにより、お客様は着信オーディオ トラックを選択してマップし、出力にルーティングしてエンコードできます
+    - **Audiotrackdescriptor** とトラックのオプションの詳細については、[REST API OpenAPI](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L385) に関するセクションを参照してください。
+- エンコードでのトラックの選択 - お客様は、ABR ソース ファイル、または複数のビットレート トラックを含むライブ アーカイブからトラックを選択できます。 ライブ イベント アーカイブ ファイルから MP4 を生成する場合に非常に便利です。
+    - [Videotrackdescriptor](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L1562) に関するセクションを参照してください
+- FaceDetector に追加された編集 (ぼかし) 機能
+    - FaceDetector プリセットの [Redact](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L634) と [Combined](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L649) の各モードを参照してください
+
+### <a name="new-client-sdk-releases-for-2020-05-01-version-of-the-azure-media-services-api"></a>2020-05-01 バージョンの Azure Media Services API の新しいクライアント SDK リリース
+
+使用可能な全言語の新しいクライアント SDK バージョン、および前述の機能を使用できるようになりました。
+パッケージ マネージャーを使用して、コード ベースで最新クライアント SDK に更新してください。
+
+- [.NET SDK パッケージ 3.0.4](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/)
+- [Node.js Typescript バージョン 8.1.0](https://www.npmjs.com/package/@azure/arm-mediaservices)
+- [Python azure-mgmt-media 3.1.0](https://pypi.org/project/azure-mgmt-media/)
+- [Java SDK 1.0.0-beta.2](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-mediaservices/1.0.0-beta.2/jar)
+
+### <a name="new-security-features-available-in-the-2020-05-01-version-of-the-azure-media-services-api"></a>2020-05-01 バージョンの Azure Media Services API で使用できる新しいセキュリティ機能
+
+- **[カスタマー マネージド キー](concept-use-customer-managed-keys-byok.md)** : "2020-05-01" バージョンの API を使用して作成されたアカウントに保存されているコンテンツ キーと他のデータは、アカウント キーを使用して暗号化されます。 お客様は、アカウント キーを暗号化するためのキーを提供できます。
+
+- **[信頼されたストレージ](concept-trusted-storage.md)** : Media Services は、Media Services アカウントに関連付けられているマネージド ID を使用して Azure Storage にアクセスするように構成できます。 マネージド ID を使用してストレージ アカウントにアクセスする場合、お客様は Media Services シナリオをブロックすることなく、より制限の厳しいネットワーク ACL をストレージ アカウントで構成できます。
+
+- **[マネージド ID](concept-managed-identities.md)** : お客様は、Media Services アカウントのシステム割り当てマネージド ID を有効にして、キーコンテナー (カスタマー マネージド キーの場合) とストレージ アカウント (信頼されるストレージの場合) にアクセスできるようにすることができます。
+
+### <a name="updated-typescript-nodejs-samples-using-isomorphic-sdk-for-javascript"></a>Isomorphic SDK for JavaScript を使用した Typescript Node.js のサンプルの更新
+
+Node.js のサンプルは、最新の Isomorphic SDK を使用するように更新されています。 このサンプルでは、Typescript の使用方法が示されています。 また、Node.js/Typescript 用に、新しいライブ ストリーミング サンプルが追加されました。
+
+**[media-services-v3-node-tutorials](https://github.com/Azure-Samples/media-services-v3-node-tutorials)** Git Hub リポジトリで、最新のサンプルを確認してください。
+
+### <a name="new-live-stand-by-mode-to-support-faster-startup-from-warm-state"></a>ウォーム状態からの高速な起動をサポートする新しいライブ スタンバイ モード
+
+ライブ イベントで、"スタンバイ" に低コスト課金モードが適用されるようになりました。 このため、お客様は、"ホット プール" の作成時に、ライブ イベントをより低コストで事前割り当てすることができます。 その後、お客様は、スタンバイ ライブ イベントを使用することで、作成時のコールドな状態から開始するよりも速く実行中の状態に移行することができます。  このため、チャネルの開始にかかる時間が大幅に短縮され、低価格モードで実行されているマシンをホットプールに高速に割り当てることができます。
+最新の料金の詳細については、[こちら](https://azure.microsoft.com/pricing/details/media-services)を参照してください。
+スタンバイ状態とライブ イベントのその他の状態の詳細については、記事「[ライブ イベントの状態と課金](https://docs.microsoft.com/azure/media-services/latest/live-event-states-billing)」を参照してください。
 
 ## <a name="december-2020"></a>2020 年 12 月
 
@@ -72,7 +170,8 @@ Azure Media Services は、ノルウェー東部リージョンの Azure portal 
 ## <a name="august-2020"></a>2020 年 8 月
 
 ### <a name="dynamic-encryption"></a>動的暗号化
-レガシ PlayReady Protected Interoperable File Format (PIFF 1.1) 暗号化のサポートが Dynamic Packager で利用できるようになりました。 これにより、Microsoft が公開した Common Encryption 標準 (CENC) の早期ドラフトを実装した Samsung 製および LG 製のレガシ スマート TV セットのサポートが提供されます。  PIFF 1.1 形式は、Silverlight クライアント ライブラリによって以前サポートされていた暗号化形式としても知られています。 現在、この暗号化形式の唯一のユース ケース シナリオは、PIFF 1.1 暗号化によるスムーズ ストリーミングのみがサポートされている一部のリージョンで相当な数のスマート テレビが残っているレガシ スマート TV 市場をターゲットにすることです。 
+
+レガシ PlayReady Protected Interoperable File Format (PIFF 1.1) 暗号化のサポートが Dynamic Packager で利用できるようになりました。 これにより、Microsoft が公開した Common Encryption 標準 (CENC) の早期ドラフトを実装した Samsung 製および LG 製のレガシ スマート TV セットのサポートが提供されます。  PIFF 1.1 形式は、Silverlight クライアント ライブラリによって以前サポートされていた暗号化形式としても知られています。 現在、この暗号化形式の唯一のユース ケース シナリオは、PIFF 1.1 暗号化によるスムーズ ストリーミングのみがサポートされている一部のリージョンで相当な数のスマート テレビが残っているレガシ スマート TV 市場をターゲットにすることです。
 
 新しい PIFF 1.1 暗号化サポートを使用するには、ストリーミング ロケーターの URL パスで暗号化値を "piff" に変更します。 詳細については、[コンテンツ保護の概要](content-protection-overview.md)に関するページを参照してください。
 例: `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
@@ -237,7 +336,7 @@ Media Services で出力されたテレメトリ データを Azure Monitor を�
 * Azure Monitor の診断ログを使用して、Media Services のキー配信エンドポイントによって送信された要求を監視します。 
 * Media Services の[ストリーミング エンドポイント](streaming-endpoint-concept.md)によって出力されたメトリックを監視します。   
 
-詳細については、「[Media Services のメトリックと診断ログの監視](media-services-metrics-diagnostic-logs.md)」を参照してください。
+詳細については、「[Media Services のメトリックと診断ログの監視](monitoring/monitor-media-services-data-reference.md)」を参照してください。
 
 ### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>ダイナミック パッケージでの複数のオーディオ トラックのサポート 
 
@@ -273,7 +372,7 @@ Media Services のパフォーマンス向上を含む更新が追加されま�
 
 Media Services v3 が Azure 国内クラウドでサポートされるようになりました。 まだすべてのクラウドですべての機能が使用できるわけではありません。 詳細については、「[Azure Media Services v3 が存在するクラウドとリージョン](azure-clouds-regions.md)」を参照してください。
 
-[Microsoft.Media.JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) イベントが Media Services の Azure Event Grid スキーマに追加されました。
+[Microsoft.Media.JobOutputProgress](monitoring/media-services-event-schemas.md#monitoring-job-output-progress) イベントが Media Services の Azure Event Grid スキーマに追加されました。
 
 ## <a name="january-2019"></a>2019 年 1 月
 

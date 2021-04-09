@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
 ms.openlocfilehash: 5abe92120c8b822ac86ced90658869a0858d4ff4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92487689"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-and-arm-template"></a>クイックスタート: Azure Data Share と ARM テンプレートを使用してデータを共有する
@@ -71,7 +71,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     * **[サブスクリプション]** : データ共有とその他のリソースの作成に使用する Azure サブスクリプションを選択します。
     * **[リソース グループ]** : **[新規作成]** を選択して新しいリソース グループを作成するか、既存のリソース グループを選択します。
-    * **場所** : リソース グループの場所を選択します。
+    * **場所**: リソース グループの場所を選択します。
     * **[プロジェクト名]** : プロジェクト名を入力します。  プロジェクト名は、リソース名を生成するために使用されます。  前のテンプレートの変数の定義を確認してください。
     * **[場所]** : リソースの場所を選択します。  リソース グループに対して同じ場所を使用できます。
     * **[Invitation Email]\(招待メール\)** : データ共有の受信者の Azure ログイン用メール アドレスを入力します。  メールの別名は機能しません。

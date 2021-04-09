@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
 ms.openlocfilehash: 097db6683127b410e713be53e6de838cf7734ddc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91400725"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Azure Logic Apps を使用して Excel Online データを管理する
@@ -40,7 +40,7 @@ ms.locfileid: "91400725"
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
-* Excel Online データにアクセスするためのロジック アプリ。 このコネクタではアクションのみが提供されるため、ロジック アプリを開始するには、**繰り返し**トリガーなどのトリガーを別に選択してください。
+* Excel Online データにアクセスするためのロジック アプリ。 このコネクタではアクションのみが提供されるため、ロジック アプリを開始するには、**繰り返し** トリガーなどのトリガーを別に選択してください。
 
 ## <a name="add-excel-action"></a>Excel アクションを追加する
 

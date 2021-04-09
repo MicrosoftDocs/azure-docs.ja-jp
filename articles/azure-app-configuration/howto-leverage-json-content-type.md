@@ -10,12 +10,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
-ms.openlocfilehash: ee262c0eb2431085e71d8ee0035bcdab9833d1cf
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 19de46bc87b72ada221c63e36e87d0545304d344
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565774"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122155"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>コンテンツ タイプを利用して App Configuration に JSON キー値を格納する
 
@@ -175,12 +175,28 @@ az appconfig kv export -d file --format json --path "~/Export.json" --separator 
 
 ## <a name="consuming-json-key-values-in-applications"></a>アプリケーションでの JSON キー値の使用
 
-アプリケーションで JSON キー値を使用する最も簡単な方法は、App Configuration プロバイダー ライブラリを使用することです。 プロバイダー ライブラリを使用する場合、アプリケーションで JSON キー値の特別な処理を実装する必要はありません。 これらは、他の JSON 構成プロバイダー ライブラリと同じように、常にアプリケーションに対して逆シリアル化されます。 
+アプリケーションで JSON キー値を使用する最も簡単な方法は、App Configuration プロバイダー ライブラリを使用することです。 プロバイダー ライブラリを使用する場合、アプリケーションで JSON キー値の特別な処理を実装する必要はありません。 これらは解析され、アプリケーションのネイティブ構成に一致するように変換されます。
+
+たとえば、アプリ構成に次のキー値がある場合:
+
+| Key | 値 | コンテンツの種類 |
+|---|---|---|
+| 設定 | {"FontSize":24,"UseDefaultRouting":false} | application/json |
+
+.NET アプリケーション構成では、キー値が次のようになります。
+
+| Key | 値 |
+|---|---|
+| Settings:FontSize | 24 |
+| Settings:UseDefaultRouting | false |
+
+新しいキーに直接アクセスするか、[構成値を .NET オブジェクトのインスタンスにバインドする](/aspnet/core/fundamentals/configuration/#bind-hierarchical-configuration-data-using-the-options-pattern)ことを選択できます。
+
 
 > [!Important]
 > JSON キー値のネイティブ サポートは、.NET 構成プロバイダー バージョン 4.0.0 (またはそれ以降) で利用できます。 詳細については、「[*次のステップ*](#next-steps)」セクションを参照してください。
 
-SDK または REST API を使用して、コンテンツ タイプに基づいて App Configuration からキー値を読み取る場合、アプリケーションで標準の JSON デシリアライザーを使用して、JSON キー値の値を逆シリアル化する必要があります。
+SDK または REST API を使用して、コンテンツ タイプに基づいて App Configuration からキー値を読み取る場合、アプリケーションで JSON キー値の値を解析する必要があります。
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

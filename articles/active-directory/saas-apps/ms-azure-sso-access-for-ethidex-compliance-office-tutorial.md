@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 7ef219ca147fe96fc65f14bbf3ba6a565adc95ec
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92520916"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ms-azure-sso-access-for-ethidex-compliance-office"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と MS Azure SSO Access for Ethidex Compliance Office™ の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* MS Azure SSO Access for Ethidex Compliance Office™ では、 **IDP** Initiated SSO がサポートされます
+* MS Azure SSO Access for Ethidex Compliance Office™ では、**IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-ms-azure-sso-access-for-ethidex-compliance-office-from-the-gallery"></a>ギャラリーからの MS Azure SSO Access for Ethidex Compliance Office™ の追加
 
@@ -49,7 +49,7 @@ Azure AD への MS Azure SSO Access for Ethidex Compliance Office™ の統合�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **MS Azure SSO Access for Ethidex Compliance Office™** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**MS Azure SSO Access for Ethidex Compliance Office™**」と入力します。
 1. 結果のパネルから **MS Azure SSO Access for Ethidex Compliance Office™** を選択し、そのアプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-ms-azure-sso-access-for-ethidex-compliance-office"></a>MS Azure SSO Access for Ethidex Compliance Office™ の Azure AD シングル サインオンの構成とテスト
@@ -84,7 +84,7 @@ MS Azure SSO Access for Ethidex Compliance Office™ に対する Azure AD SSO �
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 この値を取得するには、[MS Azure SSO Access for Ethidex Compliance Office™ サポート チーム](mailto:support@ethidex.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. MS Azure SSO Access for Ethidex Compliance Office™ アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 MS Azure SSO Access for Ethidex Compliance Office™ アプリケーションでは、 **nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. MS Azure SSO Access for Ethidex Compliance Office™ アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 MS Azure SSO Access for Ethidex Compliance Office™ アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 

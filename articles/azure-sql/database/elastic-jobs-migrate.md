@@ -12,10 +12,10 @@ ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
 ms.openlocfilehash: e8c222d7cdcdb203cd323cde38818e5b51643159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91443371"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs-preview"></a>新しい Elastic Database ジョブへの移行 (プレビュー)
@@ -46,7 +46,7 @@ Find-Package PowerShellGet -RequiredVersion 1.6.5 | Install-Package -Force
 # Restart your powershell session with administrative access
 
 # Places Az.Sql preview cmdlets side by side with existing Az.Sql version
-Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease
+Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease
 
 # Import the Az.Sql module
 Import-Module Az.Sql -RequiredVersion 1.1.1
@@ -71,7 +71,7 @@ $agent = $db | New-AzSqlElasticJobAgent -Name <agentName>
 
 ### <a name="install-the-old-elastic-database-jobs-cmdlets"></a>古い Elastic Database ジョブ コマンドレットをインストールする
 
-移行を行うには*古い*エラスティック ジョブ コマンドレットがいくつか必要であるため、それらがまだインストールされていない場合は、次のコマンドを実行してください。
+移行を行うには *古い* エラスティック ジョブ コマンドレットがいくつか必要であるため、それらがまだインストールされていない場合は、次のコマンドを実行してください。
 
 ```powershell
 # Install the old elastic job cmdlets if necessary and initialize the old jobs cmdlets
@@ -91,7 +91,7 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 ## <a name="migration"></a>移行
 
-これで、古いエラスティック ジョブ コマンドレットと新しいエラスティック ジョブ コマンドレットが初期化されたので、ジョブの資格情報、ターゲット、およびジョブを新しい*ジョブ データベース*に移行します。
+これで、古いエラスティック ジョブ コマンドレットと新しいエラスティック ジョブ コマンドレットが初期化されたので、ジョブの資格情報、ターゲット、およびジョブを新しい *ジョブ データベース* に移行します。
 
 ### <a name="setup"></a>セットアップ
 
@@ -605,7 +605,7 @@ Job job4
 
 ## <a name="migration-complete"></a>移行の完了
 
-これで、ジョブの資格情報、ターゲット、ジョブ トリガー、ジョブ スケジュール、ジョブ コンテンツ、およびジョブがすべて*ジョブ データベース*に移行されました。
+これで、ジョブの資格情報、ターゲット、ジョブ トリガー、ジョブ スケジュール、ジョブ コンテンツ、およびジョブがすべて *ジョブ データベース* に移行されました。
 
 すべてが正しく移行されたことを確認するには、次のスクリプトを使用します。
 

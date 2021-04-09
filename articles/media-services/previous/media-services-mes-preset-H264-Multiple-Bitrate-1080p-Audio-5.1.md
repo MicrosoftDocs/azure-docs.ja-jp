@@ -1,7 +1,7 @@
 ---
 title: H264 Multiple Bitrate 1080p Audio 5.1 | Microsoft Docs
 description: このトピックでは、**H264 Multiple Bitrate 1080p Audio 5.1** タスク プリセットの概要を説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 806f175db2abefd6bebcd875c7adf4eb22f57f58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 8c69d581cff9a71dc56df34ca76fdc95535d097e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89257366"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103014776"
 ---
 # <a name="h264-multiple-bitrate-1080p-audio-51"></a>H264 Multiple Bitrate 1080p Audio 5.1
 
@@ -32,7 +32,7 @@ ms.locfileid: "89257366"
  このプリセットにより、GOP 単位でアラインメントされた 6,000 kbps から 400 kbps までの一連の MP4 ファイル 8 個と、AAC 5.1 オーディオが生成されます。 このプリセットのプロファイル、ビットレート、サンプリング レートなどの詳細については、下に定義されている XML または JSON を確認してください。 各要素の意味と各要素に有効な値の説明については、「[Media Encoder Standard スキーマ](media-services-mes-schema.md)」を参照してください。  
   
 > [!NOTE]
->  レイヤー間で `Width` と `Height` の値を変更する際は、縦横比が変わらないようにしてください。 たとえば、1920 x 1080、1280 x 720、1080 x 576、640 x 360 のようにします。 1280 x 720、720 x 480、640 x 360 などの縦横比を組み合わせて使用しないでください。  
+>  レイヤー間で `Width` と `Height` の値を変更する際は、縦横比が変わらないようにしてください。 次に例を示します。1920x1080、1280x720、1080x576、640x360。 1280x720、720x480、640x360 などの縦横比を混在させて使用しないでください。  
   
  XML  
   

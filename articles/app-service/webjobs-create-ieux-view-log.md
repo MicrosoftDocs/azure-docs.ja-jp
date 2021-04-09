@@ -7,10 +7,10 @@ ms.date: 10/16/2018
 ms.author: glenga
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 4b4e421458438aecc7c08e397f1fc919a8cc2225
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101743840"
 ---
 # <a name="view-webjob-history-in-the-azure-portal"></a>Azure portal で Web ジョブの履歴を表示する

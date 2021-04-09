@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 04/16/2020
 ms.openlocfilehash: 465f00400c28de9642a95ebcb7bc6b2349d64bc5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98878716"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>AppSource および Azure Marketplace でおすすめになる方法

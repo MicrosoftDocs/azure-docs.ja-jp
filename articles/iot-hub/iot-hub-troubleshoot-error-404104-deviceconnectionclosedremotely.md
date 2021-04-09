@@ -10,21 +10,21 @@ ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
 ms.openlocfilehash: 673a76417739fa59a91979cca7c6807a584868f0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92538257"
 ---
 # <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely
 
-この記事では、 **404104 DeviceConnectionClosedRemotely** エラーの原因と解決策について説明します。
+この記事では、**404104 DeviceConnectionClosedRemotely** エラーの原因と解決策について説明します。
 
 ## <a name="symptoms"></a>現象
 
 ### <a name="symptom-1"></a>現象 1
 
-定期的な間隔 (たとえば 65 分間隔) でデバイスが切断され、IoT Hub リソース ログに **404104 DeviceConnectionClosedRemotely** が記録されます。 場合によっては、 **401003 IoTHubUnauthorized** が発生し、1 分経たないうちにデバイス接続イベントが成功することもあります。
+定期的な間隔 (たとえば 65 分間隔) でデバイスが切断され、IoT Hub リソース ログに **404104 DeviceConnectionClosedRemotely** が記録されます。 場合によっては、**401003 IoTHubUnauthorized** が発生し、1 分経たないうちにデバイス接続イベントが成功することもあります。
 
 ### <a name="symptom-2"></a>現象 2
 
@@ -32,7 +32,7 @@ ms.locfileid: "92538257"
 
 ### <a name="symptom-3"></a>現象 3
 
-一度に多くのデバイスが切断され、 ["接続されているデバイス (connectedDeviceCount) メトリック"](monitor-iot-hub-reference.md) が低下し、Azure Monitor ログには通常よりも多く **404104 DeviceConnectionClosedRemotely** と [500xxx 内部エラー](iot-hub-troubleshoot-error-500xxx-internal-errors.md)が記録されています。
+一度に多くのデバイスが切断され、["接続されているデバイス (connectedDeviceCount) メトリック"](monitor-iot-hub-reference.md) が低下し、Azure Monitor ログには通常よりも多く **404104 DeviceConnectionClosedRemotely** と [500xxx 内部エラー](iot-hub-troubleshoot-error-500xxx-internal-errors.md)が記録されています。
 
 ## <a name="causes"></a>原因
 

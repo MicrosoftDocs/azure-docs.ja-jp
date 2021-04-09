@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
 ms.openlocfilehash: 3adbd292d42fd6fd2a0e149e103c17968a6f084b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94950756"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>StorSimple デバイスを安全にインストールして操作する
@@ -35,10 +35,10 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 | ![危険アイコン](./media/storsimple-safety/IC740879.png) **危険!** |回避しなければ、死亡事故または重大な負傷を招く危険な状況を示します。 この記号の文字は、最も重大な状況の場合にのみ使用されます。 |
 | ![警告アイコン](./media/storsimple-safety/IC740879.png) **警告!** |回避しなければ、死亡事故または重大な負傷を招く可能性のある危険な状況を示します。 |
 | ![警告アイコン](./media/storsimple-safety/IC740879.png) **注意!** |回避しなければ、軽度または中程度の負傷を招く可能性のある危険な状況を示します。 |
-| ![通知のアイコン](./media/storsimple-safety/IC740881.png) **通知:** |重要だが、危険に関連するものではない情報を示します。 |
+| ![注意アイコン](./media/storsimple-safety/IC740881.png) **注意:** |重要だが、危険に関連するものではない情報を示します。 |
 | ![感電のアイコン](./media/storsimple-safety/IC740882.png) **感電の危険あり** |高電圧 |
 | ![重量物のアイコン](./media/storsimple-safety/IC740883.png) **重量物注意** | |
-| ![ユーザーによる保守不可能な部品のアイコン](./media/storsimple-safety/IC740879.png) **ユーザーによる保守不可能な部品** |適切な訓練を受けている場合を除き、触らないでください。 |
+| ![ユーザーによる保守が不可能な部品アイコン](./media/storsimple-safety/IC740879.png) **ユーザーによる保守が不可能な部品** |適切な訓練を受けている場合を除き、触らないでください。 |
 | ![安全上の注意の確認を促すアイコン](./media/storsimple-safety/IC740885.png)**最初にすべての指示を確認してください** | |
 | ![転倒の危険のアイコン](./media/storsimple-safety/IC740886.png) **転倒の危険あり** | |
 

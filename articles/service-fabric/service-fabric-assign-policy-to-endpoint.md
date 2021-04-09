@@ -4,10 +4,10 @@ description: ご利用の Service Fabric サービスの HTTP または HTTPS �
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.openlocfilehash: c7d30e85848f045b5724bb8bdc6e5c810102c044
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75614657"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>HTTP と HTTPS エンドポイントのセキュリティ アクセス ポリシーを割り当てる
@@ -21,7 +21,7 @@ ms.locfileid: "75614657"
 </Policies>
 ```
 
-HTTPS エンドポイントの場合は、クライアントに返す証明書の名前も指示します。 証明書を参照するには、**EndpointBindingPolicy** を使用します。  証明書は、アプリケーション マニフェストの**証明書**セクションに定義されています。
+HTTPS エンドポイントの場合は、クライアントに返す証明書の名前も指示します。 証明書を参照するには、**EndpointBindingPolicy** を使用します。  証明書は、アプリケーション マニフェストの **証明書** セクションに定義されています。
 
 ```xml
 <Policies>

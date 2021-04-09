@@ -9,10 +9,10 @@ ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
 ms.openlocfilehash: 8f21f5fa8ee9035fe594cecff37a63b1ef2115cc
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97563468"
 ---
 # <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>サーバーでレンダリングされた Nuxt.js の Web サイトを Azure Static Web Apps プレビューにデプロイする
@@ -120,7 +120,7 @@ Azure Static Web Apps により、GitHub リポジトリからアプリがデプ
 
 1. [Azure Portal](https://portal.azure.com) に移動します
 1. **[リソースの作成]** をクリックします
-1. **Static Web Apps** を検索します
+1. **[Static Web Apps]** を探します
 1. **[Static Web Apps (Preview)]\(Static Web Apps (プレビュー)\)** をクリックします
 1. **[作成]**
 

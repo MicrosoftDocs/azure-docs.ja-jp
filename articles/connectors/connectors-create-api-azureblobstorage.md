@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: cd23ff0f5ad9912440d38903a344011b069aaf16
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92677725"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Azure Blob Storage に BLOB を作成して管理する
@@ -33,7 +33,7 @@ ms.locfileid: "92677725"
 
 * Azure Blob Storage トリガーではチャンクはサポートされていません。 ファイルのコンテンツを要求すると、トリガーによって 50 MB 以下のファイルのみが選択されます。 50 MB より大きいファイルを取得するには、次のパターンに従います。
 
-  * ファイルのプロパティを返す Azure Blob Storage トリガーを使用します ( **BLOB が追加または変更されたとき (プロパティのみ)** など)。
+  * ファイルのプロパティを返す Azure Blob Storage トリガーを使用します (**BLOB が追加または変更されたとき (プロパティのみ)** など)。
 
   * Azure Blob Storage トリガーの **BLOB コンテンツの取得** アクションに従います。これは、暗黙的にチャンクを使用してファイル全体を読み取ります。
 
@@ -57,7 +57,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 2. 検索ボックスに、フィルターとして「azure blob」と入力します。 トリガーの一覧から、目的のトリガーを選択します。
 
-   この例では、次のトリガーを使用します。 **BLOB が追加または変更されたとき (プロパティのみ)**
+   この例では、**BLOB が追加または変更されたとき (プロパティのみ)** トリガーを使用します。
 
    ![Azure Blob Storage トリガーを選択する](./media/connectors-create-api-azureblobstorage/add-azure-blob-storage-trigger.png)
 
@@ -73,7 +73,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
    3. トリガーがフォルダーの変更をチェックする間隔と頻度を選択します。
 
-4. 操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
+4. 操作が完了したら、デザイナーのツールバーで、**[保存]** を選択します。
 
 5. トリガーの結果を使用して実行するタスクの 1 つまたは複数のアクションをロジック アプリに追加する操作に進みます。
 
@@ -85,7 +85,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 1. [Azure portal](https://portal.azure.com) または Visual Studio で、ロジック アプリをロジック アプリ デザイナーで開きます。 この例では、Azure Portal を使用します。
 
-2. Logic Apps デザイナーのトリガーまたはアクションで、 **[新しいステップ]** を選択します。
+2. Logic Apps デザイナーのトリガーまたはアクションで、**[新しいステップ]** を選択します。
 
    ![ロジック アプリのワークフローに新しいステップを追加する](./media/connectors-create-api-azureblobstorage/add-new-step-logic-app-workflow.png) 
 
@@ -93,7 +93,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 3. 検索ボックスに、フィルターとして「azure blob」と入力します。 アクションの一覧から、目的のアクションを選択します。
 
-   この例では、次のアクションを使用します。 **BLOB コンテンツの取得**
+   この例では、**BLOB コンテンツの取得** アクションを使用します。
 
    ![Azure Blob Storage アクションを選択する](./media/connectors-create-api-azureblobstorage/add-azure-blob-storage-action.png)
 
@@ -129,7 +129,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
    次に例を示します。
 
-   ![Azure Blob Storage アカウント接続を作成する](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png) 
+   ![Azure BLOB ストレージ アカウント接続を作成する](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png) 
 
 1. 準備ができたら、 **[作成]** を選択します
 
@@ -179,13 +179,13 @@ Azure Blob Storage コネクタまたは他のソリューションを使用し�
 
 ### <a name="access-storage-accounts-as-a-trusted-service-with-managed-identities"></a>マネージド ID を使用して、信頼されたサービスとしてストレージ アカウントにアクセスする
 
-Microsoft の信頼されたサービスがファイアウォールを介してストレージ アカウントにアクセスできるようにするには、それらのサービスについてストレージ アカウントで例外を設定します。 この解決策によって、[認証用のマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) をサポートする Azure サービスは、信頼されたサービスとして、ファイアウォールの背後にあるストレージ アカウントにアクセスできます。 具体的には、グローバルなマルチテナント Azure 内のロジック アプリがこれらのストレージ アカウントにアクセスできるよう、まずロジック アプリで[マネージド ID のサポートを有効にします](../logic-apps/create-managed-service-identity.md)。 次に、自分のロジック アプリで HTTP アクションまたはトリガーを使用し、[ロジック アプリのマネージド ID を使用するよう認証の種類を設定します](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 このシナリオでは、HTTP アクションまたはトリガー " *のみ* " を使用できます。
+Microsoft の信頼されたサービスがファイアウォールを介してストレージ アカウントにアクセスできるようにするには、それらのサービスについてストレージ アカウントで例外を設定します。 この解決策によって、[認証用のマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) をサポートする Azure サービスは、信頼されたサービスとして、ファイアウォールの背後にあるストレージ アカウントにアクセスできます。 具体的には、グローバルなマルチテナント Azure 内のロジック アプリがこれらのストレージ アカウントにアクセスできるよう、まずロジック アプリで[マネージド ID のサポートを有効にします](../logic-apps/create-managed-service-identity.md)。 次に、自分のロジック アプリで HTTP アクションまたはトリガーを使用し、[ロジック アプリのマネージド ID を使用するよう認証の種類を設定します](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 このシナリオでは、HTTP アクションまたはトリガー "*のみ*" を使用できます。
 
 例外とマネージド ID のサポートを設定するには、これらの一般的な手順に従います。
 
-1. 自分のストレージ アカウントの **[設定]** で、 **[ファイアウォールと仮想ネットワーク]** を選択します。 **[許可するアクセス元]** で、 **[選択されたネットワーク]** オプションを選択して、関連する設定を表示します。
+1. 自分のストレージ アカウントの **[設定]** で、**[ファイアウォールと仮想ネットワーク]** を選択します。 **[許可するアクセス元]** で、**[選択されたネットワーク]** オプションを選択して、関連する設定を表示します。
 
-1. **[例外]** で、 **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** を選択し、 **[保存]** を選択します。
+1. **[例外]** で、**[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** を選択し、**[保存]** を選択します。
 
    ![Microsoft の信頼されたサービスを許可する例外を選択する](./media/connectors-create-api-azureblobstorage/allow-trusted-services-firewall.png)
 

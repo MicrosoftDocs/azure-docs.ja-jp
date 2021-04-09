@@ -98,6 +98,6 @@
     - name: Sensor API
       href: 'https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/index.html'
     - name: Body Tracking API
-      href: 'https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/index.html'
+      href: 'https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.1.x/index.html'
     - name: 記録ファイルの形式
       href: record-file-format.md

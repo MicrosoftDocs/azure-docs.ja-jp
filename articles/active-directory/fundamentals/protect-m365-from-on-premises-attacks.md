@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 319ab7343792be92005611d26acc382df711bf1e
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: e6d548f4d792d8980e2aa5040b09530eaf7868c4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102565067"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102609908"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>オンプレミスの攻撃から Microsoft 365 を保護する
 
@@ -203,7 +203,7 @@ Azure AD の条件付きアクセスを使用して、信号を解釈し、そ�
 
 * 可能な場合は常に、条件付きアクセスを使用して、[レガシ認証プロトコルをブロック](../conditional-access/howto-conditional-access-policy-block-legacy.md)します。 また、アプリケーション固有の構成を使用して、アプリケーション レベルでレガシ認証プロトコルを無効にします。
 
-   詳細については、[レガシ認証プロトコル](../fundamentals/auth-sync-overview.md)に関するページを参照してください。 または、[Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) と [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps) に固有の詳細を参照してください。
+   詳細については、[レガシ認証プロトコル](../fundamentals/auth-sync-overview.md)に関するページを参照してください。 または、[Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) と [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant) に固有の詳細を参照してください。
 
 * 推奨される [ID とデバイスのアクセス構成](/microsoft-365/security/office-365-security/identity-access-policies)を実装します。
 

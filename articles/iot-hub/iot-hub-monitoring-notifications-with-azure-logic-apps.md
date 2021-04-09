@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
 ms.openlocfilehash: cd14ff0688f4230aeedac748ca4b32609bdd2938
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92490324"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Azure Logic Apps で IoT Hub とメールボックスに接続した状態での IoT リモート監視と通知
@@ -74,9 +74,9 @@ Service Bus の名前空間とキューを作成します。 このトピック�
 
 1. **[名前空間の作成]** ウィンドウで、次の情報を指定します。
 
-   **Name** :Service Bus 名前空間の名前。 この名前空間は Azure 全体で一意である必要があります。
+   **Name**:Service Bus 名前空間の名前。 この名前空間は Azure 全体で一意である必要があります。
 
-   **価格レベル** :ドロップダウン リストから **[Basic]** を選択します。 このチュートリアルでは、[基本] レベルで十分です。
+   **価格レベル**:ドロップダウン リストから **[Basic]** を選択します。 このチュートリアルでは、[基本] レベルで十分です。
 
    **[リソース グループ]** :IoT ハブと同じリソース グループを使用します。
 
@@ -132,13 +132,13 @@ IoT ハブに Service Bus キューのカスタム エンドポイントを追�
 
 1. **[ルートを追加する]** ウィンドウで、次の情報を入力します。
 
-   **Name** :ルーティング規則の名前。
+   **Name**:ルーティング規則の名前。
 
-   **エンドポイント** : 作成したエンドポイントを選択します。
+   **エンドポイント**: 作成したエンドポイントを選択します。
 
-   **データ ソース** : **[Device Telemetry Messages] (デバイス テレメトリ メッセージ)** を選択します。
+   **データ ソース**: **[Device Telemetry Messages] (デバイス テレメトリ メッセージ)** を選択します。
 
-   **ルーティング クエリ** :「`temperatureAlert = "true"`」と入力します。
+   **ルーティング クエリ**:「`temperatureAlert = "true"`」と入力します。
 
    ![Azure Portal でルーティングの規則を追加する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/4-add-routing-rule-azure-portal.png)
 
@@ -154,7 +154,7 @@ IoT ハブに Service Bus キューのカスタム エンドポイントを追�
 
 1. 次の情報を入力します。
 
-   **Name** :ロジック アプリの名前。
+   **Name**:ロジック アプリの名前。
 
    **[リソース グループ]** :IoT ハブと同じリソース グループを使用します。
 

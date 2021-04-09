@@ -3,16 +3,16 @@ title: Azure Data Factory の式と関数
 description: この記事では、Data Factory エンティティの作成で使用できる式と関数に関する情報を提供します。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 997700b27f52af174dab914097ceeef8d20ff148
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e89cb847bcd5d0137354c07fe97148bcbeca2714
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385627"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104786296"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory の式と関数
 
@@ -59,13 +59,33 @@ ms.locfileid: "100385627"
 |"Answer is: @{pipeline().parameters.myNumber}"| string `Answer is: 42` が返されます。|  
 |"\@concat('Answer is: ', string(pipeline().parameters.myNumber))"| string `Answer is: 42` が返されます。|  
 |"Answer is: \@\@{pipeline().parameters.myNumber}"| string `Answer is: @{pipeline().parameters.myNumber}` が返されます。|  
-  
+
 ## <a name="examples"></a>例
 
 ### <a name="complex-expression-example"></a>複合式の例
 次の例は、アクティビティの出力の詳細サブフィールドを参照する複雑な例を示しています。 サブフィールドと評価されるパイプライン パラメーターを参照するには、ドット (.) 演算子ではなく、[] 構文を使用します (subfield1 と subfield2 の場合と同様)
 
-@activity('*activityName*').output.*subfield1*.*subfield2*[pipeline().parameters.*subfield3*].*subfield4*
+`@activity('*activityName*').output.*subfield1*.*subfield2*[pipeline().parameters.*subfield3*].*subfield4*`
+
+### <a name="dynamic-content-editor"></a>動的コンテンツ エディター
+
+編集が完了すると、動的コンテンツ エディターによってコンテンツ内の文字が自動的にエスケープされます。 たとえば、コンテンツ エディター内の次のコンテンツは、2 つの式関数を使用する文字列補間です。 
+
+```json
+{ 
+  "type": "@{if(equals(1, 2), 'Blob', 'Table' )}",
+  "name": "@{toUpper('myData')}"
+}
+```
+
+動的コンテンツ エディターは、上記のコンテンツを式 `"{ \n  \"type\": \"@{if(equals(1, 2), 'Blob', 'Table' )}\",\n  \"name\": \"@{toUpper('myData')}\"\n}"` に変換します。 この式の結果は、次に示す JSON 形式の文字列になります。
+
+```json
+{
+  "type": "Table",
+  "name": "MYDATA"
+}
+```
 
 ### <a name="a-dataset-with-a-parameter"></a>パラメーターを備えたデータセット
 次の例では、BlobDataset は **path** という名前のパラメーターを受け取ります。 その値は、`dataset().path` という式を使用して **folderPath** プロパティの値を設定するために使用されます。 

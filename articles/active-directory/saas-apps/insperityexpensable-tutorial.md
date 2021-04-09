@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 4a1680eab345cd78f13860249d6cc0f97c52e56e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92460021"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insperity-expensable"></a>チュートリアル: Azure Active Directory と Insperity ExpensAble の統合
@@ -41,7 +41,7 @@ Insperity ExpensAble と Azure AD の統合を構成するには、次のもの�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Insperity ExpensAble では、 **SP** Initiated SSO がサポートされます
+* Insperity ExpensAble では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-insperity-expensable-from-the-gallery"></a>ギャラリーからの Insperity ExpensAble の追加
 
@@ -61,13 +61,13 @@ Azure AD への Insperity ExpensAble の統合を構成するには、ギャラ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Insperity ExpensAble** 」と入力し、結果パネルで **[Insperity ExpensAble]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Insperity ExpensAble**」と入力し、結果パネルで **[Insperity ExpensAble]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Insperity ExpensAble](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Insperity ExpensAble で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Insperity ExpensAble で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Insperity ExpensAble 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Insperity ExpensAble で Azure AD のシングル サインオンを構成し、テストするには、次の要素を完了する必要があります。
@@ -140,7 +140,7 @@ Insperity ExpensAble で Azure AD シングル サインオンを構成するに
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

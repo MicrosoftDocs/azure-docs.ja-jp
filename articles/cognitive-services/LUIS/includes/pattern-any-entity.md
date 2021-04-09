@@ -9,10 +9,10 @@ ms.subservice: language-understanding
 ms.date: 02/14/2020
 ms.topic: include
 ms.openlocfilehash: 5eb2517b4b71b61dd70406f345c005d007d9e3ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91535961"
 ---
 pattern.any エンティティは、エンティティの表現が原因で発話の残りの部分からエンティティの終わりを判別するのが難しい自由形式データを見つけるために使用できます。

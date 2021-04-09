@@ -3,18 +3,18 @@ title: CLI - Shared Image Gallery 内のスナップショットまたはマネ�
 description: Azure CLI を使用して、Shared Image Gallery 内のスナップショットまたはマネージド ディスクからイメージを作成する方法について説明します。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 9cfb1fe6d2050a63070e9c21e4b8c3ef59efcb15
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: c809edd3699d0b9827fe15da53d5d18b12cbe6e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682683"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102556963"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Azure CLI を使用して、Shared Image Gallery 内のマネージド ディスクまたはスナップショットからイメージを作成する
 
@@ -27,7 +27,7 @@ Shared Image Gallery に移行したい既存のスナップショットまた�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事を完了するには、スナップショットまたはマネージド ディスクが必要です。 
+この記事を完了するには、スナップショットまたは Managed Disk が必要です。 
 
 データ ディスクを含める場合、データ ディスクのサイズが 1 TB を超えてはなりません。
 
@@ -67,7 +67,7 @@ az sig list -o table
 
 イメージ定義では、イメージの論理グループを作成します。 イメージに関する情報を管理する目的で使用されます。 イメージ定義名は、大文字または小文字、数字、ドット、ダッシュおよびピリオドで構成できます。 
 
-イメージ定義を作成する際は、正しい情報がすべて含まれていることを確認してください。 この例では、スナップショットまたはマネージド ディスクが使用中の VM からのものであり、一般化されていないことを前提としています。 (Windows では Sysprep、Linux では [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` または `-deprovision+user` を実行した後の) 一般化された OS からマネージド ディスクまたはスナップショットを取得した場合は、`-OsState` を `generalized` に変更します。 
+イメージ定義を作成する際は、正しい情報がすべて含まれていることを確認してください。 この例では、スナップショットまたは Managed Disk が使用中の VM からのものであり、一般化されていないことを前提としています。 (Windows では Sysprep、Linux では [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` または `-deprovision+user` を実行した後の) 一般化された OS から Managed Disk またはスナップショットを取得した場合は、`-OsState` を `generalized` に変更します。 
 
 イメージ定義に指定できる値の詳細については、[イメージ定義](./shared-image-galleries.md#image-definitions)に関するページを参照してください。
 

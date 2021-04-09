@@ -3,14 +3,15 @@ title: 仮想マシンのコンテンツの監査を学習する
 description: Azure Policy がゲスト構成クライアントを使用して仮想マシン内の設定を監査するしくみについて説明します。
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5d1503680ea2ca7d0ff7c8adae19c05abfe441c0
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 33a492eb3c8c175bfcdc6a13cb467ed2f180c1e1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104809"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702880"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
+
 
 Azure Policy では、Azure 内で実行するマシンと [Arc に接続されたマシン](../../../azure-arc/servers/overview.md)の両方に対して、マシン内の設定を監査できます。 検証は、クライアントとゲスト構成拡張機能によって実行されます。 クライアントを介した拡張機能によって、次のような設定が検証されます。
 
@@ -20,13 +21,15 @@ Azure Policy では、Azure 内で実行するマシンと [Arc に接続され�
 
 現時点では、ほとんどの Azure Policy ゲスト構成ポリシーの定義では、コンピューター内の設定の監査のみが行われます。 構成は適用されません。 例外は、[以下で参照されている](#applying-configurations-using-guest-configuration) 1 つの組み込みポリシーです。
 
+[このドキュメントのビデオ チュートリアルを利用できます](https://youtu.be/Y6ryD3gTHOs)。
+
 ## <a name="enable-guest-configuration"></a>ゲスト構成を有効にする
 
 環境内のマシン (Azure 内のマシンと Arc に接続されたマシンを含む) の状態を監査するには、以下の詳細を確認してください。
 
 ## <a name="resource-provider"></a>リソース プロバイダー
 
-ゲストの構成を使用するには、リソース プロバイダーを登録する必要があります。 ポータルを使用してゲスト構成ポリシーを割り当てる場合、リソース プロバイダーは自動的に登録されます。 [ポータル](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)、[Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)、または [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli) を使用して手動で登録できます。
+ゲストの構成を使用するには、リソース プロバイダーを登録する必要があります。 ゲスト構成ポリシーの割り当てがポータルを通じて行われた場合、またはサブスクリプションが Azure Security Center に登録されている場合は、リソース プロバイダーが自動的に登録されます。 [ポータル](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)、[Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)、または [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli) を使用して手動で登録できます。
 
 ## <a name="deploy-requirements-for-azure-virtual-machines"></a>Azure 仮想マシンの要件をデプロイする
 
@@ -62,13 +65,13 @@ Azure Policy では、Azure 内で実行するマシンと [Arc に接続され�
 
 |Publisher|名前|バージョン|
 |-|-|-|
-|Canonical|Ubuntu Server|14.04 - 18.04|
-|Credativ|Debian|8 以降|
-|Microsoft|Windows Server|2012 以降|
+|Canonical|Ubuntu Server|14.04 - 20.04|
+|Credativ|Debian|8 - 10|
+|Microsoft|Windows Server|2012 - 2019|
 |Microsoft|Windows クライアント|Windows 10|
-|OpenLogic|CentOS|7.3 以降|
-|Red Hat|Red Hat Enterprise Linux|7.4 - 7.8|
-|Suse|SLES|12 SP3 - SP5|
+|OpenLogic|CentOS|7.3 -8|
+|Red Hat|Red Hat Enterprise Linux|7.4 - 8|
+|Suse|SLES|12 SP3-SP5、15|
 
 カスタム仮想マシン イメージについては、上記の表にあるいずれかのオペレーティング システムであれば、ゲスト構成ポリシー定義でサポートされます。
 
@@ -116,7 +119,24 @@ Azure のゲスト構成リソース プロバイダーと通信するには、�
 > [!IMPORTANT]
 > 以前のリリースのゲスト構成では、**DeployIfNoteExists** 定義と **AuditIfNotExists** 定義を組み合わせるためにイニシアチブが必要でした。 **DeployIfNotExists** 定義は不要になりました。 定義とイニシアチブには `[Deprecated]` ラベルが付けられていますが、既存の割り当ては引き続き機能します。 詳細については、ブログ記事の「[ゲスト構成の監査ポリシーに関してリリースされた重要な変更](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)」をご覧ください。
 
-Azure Policy は、ゲスト構成リソース プロバイダーの **complianceStatus** プロパティを使用して **コンプライアンス** ノードでコンプライアンスを報告します。 詳細については、[コンプライアンス データを取得する](../how-to/get-compliance-data.md)を参照してください。
+### <a name="what-is-a-guest-assignment"></a>ゲストの割り当てとは
+
+Azure Policy が割り当てられている場合で、それが "Guest Configuration" カテゴリに属している場合は、ゲスト割り当てを記述するために含められたメタデータが存在します。
+ゲスト割り当ては、コンピューターと Azure Policy シナリオとの間のリンクだと考えてください。
+たとえば、次のスニペットでは、Azure Windows ベースライン構成が、最小バージョンを `1.0.0` として、ポリシーのスコープ内のすべてのコンピューターに関連付けられています。 既定では、ゲスト割り当てはコンピューターの監査のみを実行します。
+
+```json
+"metadata": {
+    "category": "Guest Configuration",
+    "guestConfiguration": {
+        "name": "AzureWindowsBaseline",
+        "version": "1.*"
+    }
+//additional metadata properties exist
+```
+
+ゲスト割り当ては、ゲスト構成サービスによってマシンごとに自動で作成されます。 リソースの種類は `Microsoft.GuestConfiguration/guestConfigurationAssignments` です。
+Azure Policy は、ゲスト割り当てリソースの **complianceStatus** プロパティを使用して、コンプライアンスの状態を報告します。 詳細については、[コンプライアンス データを取得する](../how-to/get-compliance-data.md)を参照してください。
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>業界の基準に従ってオペレーティング システムの設定を監査する
 
@@ -201,6 +221,12 @@ Linux: `/var/lib/guestconfig/configurations`
 - [組み込みのポリシー定義 - ゲスト構成](../samples/built-in-policies.md#guest-configuration)
 - [組み込みのイニシアチブ - ゲスト構成](../samples/built-in-initiatives.md#guest-configuration)
 - [Azure Policy サンプルの GitHub リポジトリ](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest%20Configuration)
+
+### <a name="video-overview"></a>ビデオの概要
+
+次に示す Azure Policy ゲスト構成の概要は、ITOps Talks 2021 で配信されたものです。
+
+[Azure Policy のゲスト構成を使用したハイブリッド サーバー環境でのベースラインの管理](https://techcommunity.microsoft.com/t5/itops-talk-blog/ops114-governing-baselines-in-hybrid-server-environments-using/ba-p/2109245)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,10 +4,10 @@ description: この記事では、カスタム トピックにイベントを投
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: ed126487938e524264c94544903460854ffc4d41
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98681619"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Azure Event Grid のカスタム トピックに投稿する

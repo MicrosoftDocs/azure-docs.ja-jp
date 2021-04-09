@@ -15,10 +15,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 42afa073da9197c12e4cbd316d311a7699d9a95f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96013033"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure Portal でアクティビティ レポートを見つける
@@ -176,7 +176,7 @@ Azure Portal でいくつかの操作を実行したので、`Activity logs > Au
 | ディレクトリ監査 | 2 分 | 5 分 |
 | サインイン アクティビティ | 2 分 | 5 分 |
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解決方法
 
 15 分から 2 時間待ってから、操作がログに表示されるかどうかを確認します。 2 時間が経過した後もログが表示されない場合は、[サポート チケットを発行](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。Microsoft が調査します。
 
@@ -197,7 +197,7 @@ Azure Portal でいくつかの操作を実行したので、`Activity logs > Au
 | ディレクトリ監査 | 2 分 | 5 分 |
 | サインイン アクティビティ | 2 分 | 5 分 |
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解決方法
 
 15 分から 2 時間待ってから、操作がログに表示されるかどうかを確認します。 2 時間が経過した後もログが表示されない場合は、[サポート チケットを発行](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。Microsoft が調査します。
 
@@ -220,7 +220,7 @@ Azure Active Directory Actions には、ライセンスに応じて次の期間�
 
 詳細については、「[Azure Active Directory レポートのアイテム保持ポリシー](reference-reports-data-retention.md)」を参照してください。  
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解決方法
 
 30 日を超えてデータを保持するには、2 つの方法があります。 [Azure AD レポート API](concept-reporting-api.md) を使用してデータをプログラムで取得し、データベースに保存することができます。 また、監査ログを Splunk や SumoLogic などのサード パーティの SIEM システムに統合することもできます。
 

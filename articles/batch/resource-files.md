@@ -4,10 +4,10 @@ description: さまざまな入力ソースから Batch リソースファイル
 ms.date: 03/18/2020
 ms.topic: how-to
 ms.openlocfilehash: 84a5e9780b4fa0abfec5b736e04d385f14716873
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92109291"
 ---
 # <a name="creating-and-using-resource-files"></a>リソース ファイルを作成して使用する

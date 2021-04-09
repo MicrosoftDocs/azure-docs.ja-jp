@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 7420ffbe5b365c635c1eac2620cfd54ceb649ebf
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102211806"
 ---
 # <a name="managed-hsm-logging"></a>Managed HSM のログ 

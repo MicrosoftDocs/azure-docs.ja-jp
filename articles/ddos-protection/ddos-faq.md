@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
 ms.openlocfilehash: 89685d1b8c3a57fa142bbbfd1114f9aa0ff0c400
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98611119"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection Standard のよくあるご質問
@@ -29,7 +29,7 @@ ms.locfileid: "98611119"
 Azure DDoS Protection Standard は、アプリケーションの設計に関するベスト プラクティスと組み合わせることにより、DDoS 攻撃から保護するための強化された DDoS 軽減機能が提供されます。 この機能は、仮想ネットワーク内にあるお客様固有の Azure リソースを保護するために、自動的に調整されます。 保護は新規または既存の仮想ネットワークで簡単に有効にでき、アプリケーションやリソースの変更は必要ありません。 ログ、アラート、テレメトリなど、基本サービスにはない利点がいくつかあります。 詳細については、「[Azure DDoS Protection Standard の概要](ddos-protection-overview.md)」を参照してください。 
 
 ## <a name="how-does-pricing-work"></a>価格体系について
-DDoS 保護プランには、1 か月あたり $2,944 の固定月額料金が適用されます。これは、最大 100 のパブリック IP アドレスに対応しています。 追加のリソースを保護すると、リソースごとに月額 $30 の追加料金が発生します。 
+DDoS 保護プランには、1 か月あたり $2,944 の固定月額料金が適用されます。これは、最大 100 のパブリック IP アドレスに対応しています。 追加のリソースを保護すると、1 か月あたりリソースごとに $30 の追加料金が発生します。 
 
 テナントの場合、複数のサブスクリプションに対して 1 つの DDoS 保護プランを使用できるため、複数の DDoS 保護プランを作成する必要はありません。
 

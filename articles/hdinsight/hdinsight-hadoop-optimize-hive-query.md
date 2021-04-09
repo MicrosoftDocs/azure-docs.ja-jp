@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 10/28/2020
-ms.openlocfilehash: a15c3e0fb3550c6e50b3fba2279611fdba25bc84
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 551d985ea78e83397e507676c5fd7ecfce12ff7b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945563"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864246"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive クエリの最適化
 
@@ -34,11 +34,11 @@ HDInsight クラスター内のワーカー ノードの数を増やすと、並
 
 * クラスターを作成する場合は、Azure portal、Azure PowerShell、またはコマンド ライン インターフェイスを使用してワーカー ノードの数を指定できます。  詳細については、[HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。 次のスクリーンショットは、Azure Portal 上に表示されたワーカー ノード構成を示しています。
   
-    ![Azure portal のクラスター サイズ ノード](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
+    :::image type="content" source="./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png" alt-text="Azure portal のクラスター サイズ ノード":::
 
 * 作成後にワーカー ノードの数を編集して、クラスターを再作成せずにスケールアウトすることもできます。
 
-    ![Azure portal のスケール クラスター サイズ](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png "scaleout_2")
+    :::image type="content" source="./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png " alt-text="Azure portal のスケール クラスター サイズ":::
 
 HDInsight のスケーリングについて詳しくは、[HDInsight クラスターのスケーリング](hdinsight-scaling-best-practices.md)に関するページをご覧ください
 
@@ -46,7 +46,7 @@ HDInsight のスケーリングについて詳しくは、[HDInsight クラス�
 
 [Apache Tez](https://tez.apache.org/) は、MapReduce エンジンに代わる実行エンジンです。 Linux ベースの HDInsight クラスターでは、Tez は既定で有効になっています。
 
-![HDInsight Apache Tez の概要図](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
+:::image type="content" source="./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png" alt-text="HDInsight Apache Tez の概要図":::
 
 Tez はより高速です。それは次の理由によります。
 
@@ -70,7 +70,7 @@ I/O 操作は、Hive クエリを実行するための主なパフォーマン�
 
 Hive パーティション分割は、生データを新しいディレクトリに再編成することによって実装されます。 各パーティションには、独自のファイル ディレクトリが編成されます。 パーティション分割はユーザーによって定義されます。 次の図は、列 *Year* による Hive テーブルのパーティション分割を示しています。 年ごとに新しいディレクトリが作成されます。
 
-![HDInsight Apache Hive のパーティション分割](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
+:::image type="content" source="./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png" alt-text="HDInsight Apache Hive のパーティション分割":::
 
 パーティション分割に関するいくつかの考慮事項:
 

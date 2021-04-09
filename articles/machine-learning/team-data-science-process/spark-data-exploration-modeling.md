@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 06/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
-ms.openlocfilehash: 1ef6c678110037a4aed24ef40631b73a04ca6a9d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 531e5cf274d40eae19075514d50aec5a6524aeec
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028089"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775342"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Spark を使用したデータ探索とモデリング
 
@@ -495,7 +495,8 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 ### <a name="feature-scaling"></a>特徴のスケーリング
 
-この特徴のスケーリングはデータの正規化とも呼ばれ、目標関数において幅広く分散した値を持つ特徴に過大な重みが与えられないようにします。 特徴のスケーリングのコードでは、[StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) を使用して特徴を単価差異にスケーリングします。 これは、確率的勾配降下 (SGD) による線形回帰に使用するために、MLlib で提供されています。SGD は、正規化回帰やサポート ベクター マシン (SVM) などの他のさまざまな機械学習モデルのトレーニングに広く使用されているアルゴリズムです。
+この特徴のスケーリングはデータの正規化とも呼ばれ、目標関数において幅広く分散した値を持つ特徴に過大な重みが与えられないようにします。 特徴のスケーリングのコードでは、[StandardScaler](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.classification.LogisticRegressionWithLBFGS.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS
+) を使用して特徴を単価差異にスケーリングします。 これは、確率的勾配降下 (SGD) による線形回帰に使用するために、MLlib で提供されています。SGD は、正規化回帰やサポート ベクター マシン (SVM) などの他のさまざまな機械学習モデルのトレーニングに広く使用されているアルゴリズムです。
 
 > [!NOTE]
 > LinearRegressionWithSGD アルゴリズムは特徴のスケーリングの影響を受けやすいことがわかりました。

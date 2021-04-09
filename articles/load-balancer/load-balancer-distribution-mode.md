@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2021
 ms.author: allensu
 ms.openlocfilehash: 2d8d5d84d32cdb8cc813d033f3f3fbb453b538fe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101739918"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer の分散モードを構成する

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: tisande
 ms.openlocfilehash: 122c95fe9ac017ad7a6957dcdb8323837be34f21
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96545385"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ から SQL への変換

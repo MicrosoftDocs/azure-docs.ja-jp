@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 02/24/2021
 ms.author: banders
-ms.openlocfilehash: 8c69f477f363654b8bd707949f0a5b4c46a4e8df
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 477dff9db28672f8231710af34786ac387f43b71
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561106"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050343"
 ---
 # <a name="view-azure-reservations"></a>Azure の予約を表示する
 
@@ -47,8 +47,15 @@ ms.locfileid: "97561106"
 
 ### <a name="how-billing-administrators-view-or-manage-reservations"></a>課金管理者が予約を表示または管理する方法
 
-1. **[コストの管理と請求]** に移動し、ページの左側にある **[予約トランザクション]** を選択します。
-2. 必要な課金アクセス許可がある場合は、予約を表示および管理できます。 予約が表示されない場合は、予約が作成された Azure AD テナントを使用してサインインしていることを確認してください。
+Azure RBAC アクセスを使用して予約または予約注文にアクセスできる場合、[予約] に移動すると、予約トランザクションのサブセットだけが表示されたり、何も表示されなかったりすることがあります。 すべての予約および予約トランザクションを表示して管理するには、次の手順を使用します。
+
+1. [Azure portal](https://portal.azure.com) にサインインし、 **[Cost Management + Billing]** に移動します。
+    - EA 管理者の場合は、左側のメニューで **[課金スコープ]** を選択し、課金スコープの一覧でスコープを選択します。
+    - Microsoft 顧客契約の課金プロファイル所有者の場合は、左側のメニューで **[課金プロファイル]** を選択します。 課金プロファイルの一覧でプロファイルを選択します。
+1. 左側のメニューで **[予約トランザクション]** を選択します。 予約トランザクションの一覧が表示されます。
+1. ページの上部にあるバナーに、"*Now billing administrators can manage reservations.Click here to manage reservations.\(課金管理者が予約を管理できるようになりました。予約を管理するには、ここをクリックしてください。\)* " と表示されます。 そのバナーを選択します。
+1. EA 加入契約または課金プロファイルの予約の完全な一覧が表示されます。
+1. 予約の所有権を取得する場合は、その予約を選択します。 次に、[Setting up permissions]\(アクセス許可の設定\) ページで、 **[アクセス権の付与]** を選択します。 予約および予約注文への所有者アクセス権が付与されます。
 
 ## <a name="view-reservation-and-utilization-in-the-azure-portal"></a>Azure portal で予約と使用率を表示する
 

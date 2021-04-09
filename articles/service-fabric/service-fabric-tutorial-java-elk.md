@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 5faf26230618161a5b908c9a544a43ec5c33b807
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91532024"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>チュートリアル: ELK を使用して Service Fabric アプリケーションを監視する
@@ -48,7 +48,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 ## <a name="create-an-elk-server-in-azure"></a>Azure で ELK サーバーを作成する
 
-このチュートリアルでは、構成済みの ELK 環境を使用できます。また、既にお持ちの場合、**Logstash の設定**に関するセクションまでスキップできます。 しかし、お持ちでない場合は、次の手順に従って Azure で作成してください。
+このチュートリアルでは、構成済みの ELK 環境を使用できます。また、既にお持ちの場合、**Logstash の設定** に関するセクションまでスキップできます。 しかし、お持ちでない場合は、次の手順に従って Azure で作成してください。
 
 1. Azure で ELK Certified by [Bitnami](https://ms.portal.azure.com/#create/bitnami.elk4-6) を作成します。 チュートリアルの目的上、このサーバーを作成するために従わなければならない仕様は特にありません。
 
@@ -138,7 +138,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
     curl 'localhost:9200/_cat/indices?v'
     ```
 
-8. **http:\//SERVER-IP** で Kibana ダッシュボードにアクセスし、Kibana のユーザー名とパスワードを入力します。 Azure で ELK イメージを使用した場合、既定のユーザー名は "user" になり、パスワードは**ブート診断**で取得したものになります。
+8. **http:\//SERVER-IP** で Kibana ダッシュボードにアクセスし、Kibana のユーザー名とパスワードを入力します。 Azure で ELK イメージを使用した場合、既定のユーザー名は "user" になり、パスワードは **ブート診断** で取得したものになります。
 
     ![プラットフォームとアプリケーション ログを視覚化する Kibana ダッシュボードを示すスクリーンショット。](./media/service-fabric-tutorial-java-elk/kibana.png)
 

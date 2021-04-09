@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 4a22602dd9638b981cfe3d8bae9b5cdaacbf90dc
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91652042"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
@@ -22,7 +22,7 @@ ms.locfileid: "91652042"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure 開発**ワークロードと共に [Visual Studio 2019 をインストール](/visualstudio/install/)します。 Visual Studio は既にあるものの、必要なワークロードがない場合は、 **[ツール] > [Get Tools and Features]\(ツールと機能の取得\)** を選択してワークロードを追加してください。
+* **Azure 開発** ワークロードと共に [Visual Studio 2019 をインストール](/visualstudio/install/)します。 Visual Studio は既にあるものの、必要なワークロードがない場合は、 **[ツール] > [Get Tools and Features]\(ツールと機能の取得\)** を選択してワークロードを追加してください。
 
 * WebJobs SDK プロジェクトを Azure に発行するには、[Azure アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)が必要です。
 
@@ -190,23 +190,23 @@ ASP.NET Core では、ホストの構成は [`HostBuilder`](/dotnet/api/microsof
 
 ローカルで実行する Azure ストレージ エミュレーターには、WebJobs SDK に必要な機能がすべてあるわけではありません。 そのため、ここでは、Azure にストレージ アカウントを作成し、それを使用するようにプロジェクトを構成します。 ストレージ アカウントが既にある場合、手順 6 までスキップします。
 
-1. Visual Studio で**サーバー エクスプローラー**を開き、Azure にサインインします。 **[Azure]** ノードを右クリックし、 **[Microsoft Azure サブスクリプションへの接続]** を選択します。
+1. Visual Studio で **サーバー エクスプローラー** を開き、Azure にサインインします。 **[Azure]** ノードを右クリックし、 **[Microsoft Azure サブスクリプションへの接続]** を選択します。
 
    ![Azure へのサインイン](./media/webjobs-sdk-get-started/sign-in.png)
 
-1. **サーバー エクスプローラー**の **Azure** ノードで **[Storage]** を右クリックし、 **[ストレージ アカウントの作成]** をクリックします。
+1. **サーバー エクスプローラー** の **Azure** ノードで **[Storage]** を右クリックし、 **[ストレージ アカウントの作成]** をクリックします。
 
    ![[ストレージ アカウントの作成] メニュー](./media/webjobs-sdk-get-started/create-storage-account-menu.png)
 
 1. **[ストレージ アカウントの作成]** ダイアログ ボックスで、ストレージ アカウントの一意の名前を入力します。
 
-1. App Service アプリを作成したのと同じ**リージョン**または近くのリージョンを選択します。
+1. App Service アプリを作成したのと同じ **リージョン** または近くのリージョンを選択します。
 
 1. **［作成］** を選択します
 
    ![ストレージ アカウントの作成](./media/webjobs-sdk-get-started/create-storage-account.png)
 
-1. **サーバー エクスプローラー**の **[Storage]** ノードで、新しいストレージ アカウントを選択します。 **[プロパティ]** ウィンドウで、 **[接続文字列]** 値フィールドの右側にある省略記号 ( **...** ) を選択します。
+1. **サーバー エクスプローラー** の **[Storage]** ノードで、新しいストレージ アカウントを選択します。 **[プロパティ]** ウィンドウで、 **[接続文字列]** 値フィールドの右側にある省略記号 ( **...** ) を選択します。
 
    ![接続文字列の省略記号](./media/webjobs-sdk-get-started/conn-string-ellipsis.png)
 
@@ -238,7 +238,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 ここでは、プロジェクトをローカルでビルドおよび実行し、キュー メッセージを作成して関数をトリガーします。
 
-1. **Ctrl キーを押しながら F5 キー**を押してプロジェクトを実行します。
+1. **Ctrl キーを押しながら F5 キー** を押してプロジェクトを実行します。
 
    コンソールは、ランタイムが関数を見つけ、キュー メッセージのトリガーを待機していることを示します。 v3.x のホストでは、次の出力が生成されます。
 
@@ -258,7 +258,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. コンソール ウィンドウを閉じます。
 
-1. Visual Studio の**サーバー エクスプローラー**で、新しいストレージ アカウントのノードを展開し、 **[キュー]** を右クリックします。
+1. Visual Studio の **サーバー エクスプローラー** で、新しいストレージ アカウントのノードを展開し、 **[キュー]** を右クリックします。
 
 1. **[キューの作成]** を選択します。
 
@@ -268,7 +268,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. 新しいキューのノードを右クリックし、 **[キューの表示]** を選択します。
 
-1. **メッセージの追加**アイコンを選択します。
+1. **メッセージの追加** アイコンを選択します。
 
    ![メッセージの追加アイコンが強調表示されているスクリーンショット。](./media/webjobs-sdk-get-started/create-queue-message.png)
 
@@ -319,7 +319,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 ### <a name="configure-app-settings"></a>アプリケーションの設定の構成 
 
-1. Visual Studio の**サーバー エクスプローラー**で、 **[Azure]** の下の **[App Service]** ノードを展開します。
+1. Visual Studio の **サーバー エクスプローラー** で、 **[Azure]** の下の **[App Service]** ノードを展開します。
 
 1. App Service アプリがあるリソース グループを展開し、App Service アプリを右クリックします。
 
@@ -407,7 +407,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 ここでは、もう一度ローカル環境で実行して、ログ データが Application Insights とコンソールに記録されることを確認します。
 
-1. 「*Hello App Insights!* 」をメッセージ テキストとして入力すること以外は[前](#test-locally)に行ったときと同様に、Visual Studio の**サーバー エクスプローラー**を使用してキュー メッセージを 作成します。
+1. 「*Hello App Insights!* 」をメッセージ テキストとして入力すること以外は [前](#test-locally)に行ったときと同様に、Visual Studio の **サーバー エクスプローラー** を使用してキュー メッセージを 作成します。
 
 1. プロジェクトを実行します。
 
@@ -482,13 +482,13 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. ストレージ アカウントで BLOB コンテナーを作成します。
 
-   a. Visual Studio の**サーバー エクスプローラー**で、ストレージ アカウントのノードを展開し、 **[BLOB]** を右クリックして **[BLOB コンテナーの作成]** を選択します。
+   a. Visual Studio の **サーバー エクスプローラー** で、ストレージ アカウントのノードを展開し、 **[BLOB]** を右クリックして **[BLOB コンテナーの作成]** を選択します。
 
    b. **[BLOB コンテナーの作成]** ダイアログで、コンテナー名として「*container*」を入力し、 **[OK]** をクリックします。
 
 1. BLOB コンテナーに *Program.cs* ファイルをアップロードします (このファイルは、ここでは例として使用しています。任意のテキスト ファイルをアップロードし、そのファイルの名前でキュー メッセージを作成できます)。
 
-   a. **サーバー エクスプローラー**で、作成したコンテナーのノードをダブルクリックします。
+   a. **サーバー エクスプローラー** で、作成したコンテナーのノードをダブルクリックします。
 
    b. **[コンテナー]** ウィンドウで **アップロード** ボタンをクリックします。
 
@@ -540,7 +540,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 ## <a name="republish-the-updates-to-azure"></a>Azure に更新プログラムを再発行する
 
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、 **[発行]** を選択します。
+1. **ソリューション エクスプローラー** で、プロジェクトを右クリックし、 **[発行]** を選択します。
 
 1. **[発行]** ダイアログ ボックスで、現在のプロファイルが選択されていることを確認し、 **[発行]** を選択します。 発行の結果は **[出力]** ウィンドウに詳しく表示されます。
  

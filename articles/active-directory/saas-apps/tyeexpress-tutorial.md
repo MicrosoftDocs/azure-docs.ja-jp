@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: f44a67b4943c6897f82aedf47d493b36e5e2d3b9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92521888"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>チュートリアル: Azure Active Directory と T&E Express の統合
@@ -41,7 +41,7 @@ T&E Express と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* T&E Express では、 **IDP** によって開始される SSO がサポートされます
+* T&E Express では、**IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-te-express-from-the-gallery"></a>ギャラリーから T&E Express を追加する
 
@@ -61,13 +61,13 @@ Azure AD への T&E Express の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **T&E Express** 」と入力し、結果パネルで **[T&E Express]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**T&E Express**」と入力し、結果パネルで **[T&E Express]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の T&E Express](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、T&E Express で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、T&E Express で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと T&E Express 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 T&E Express で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -152,7 +152,7 @@ T&E Express で Azure AD シングル サインオンを構成するには、次
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

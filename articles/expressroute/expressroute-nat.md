@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: duau
 ms.openlocfilehash: a2c322c765d39a3afe4974ed88bf4dc18fd467a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89569647"
 ---
 # <a name="expressroute-nat-requirements"></a>ExpressRoute NAT の要件
@@ -35,7 +35,7 @@ Microsoft ピアリング パスにより、Azure パブリック ピアリン�
 
 ### <a name="traffic-originating-from-microsoft-destined-to-your-network"></a>Microsoft からあなたのネットワークに送信されるトラフィック
 * 一部のシナリオでは、あなたのネットワーク内でホストされているサービス エンドポイントへの接続を Microsoft が開始する必要があります。 そのようなシナリオの典型的な例は、Microsoft 365 からあなたのネットワークでホストされている ADFS サービスに接続する場合です。 そのような場合は、ネットワークから Microsoft ピアリングに適切なプレフィックスをリークする必要があります。 
-* [非対称ルーティング](expressroute-asymmetric-routing.md)を回避するために、ご利用のネットワーク内のサービス エンドポイント向けのインターネット エッジで Microsoft トラフィックを SNAT 変換する必要があります。 ExpressRoute 経由で受信したルートと一致する宛先 IP を持つ要求**と応答**は、常に ExpressRoute 経由で送信されます。 要求がインターネット経由で受信され、応答が ExpressRoute 経由で送信される場合に、非対称ルーティングが見られます。 インターネット エッジで受信した Microsoft トラフィックを SNAT 変換すると、応答トラフィックは強制的にインターネット エッジに返されるため、問題は解決します。
+* [非対称ルーティング](expressroute-asymmetric-routing.md)を回避するために、ご利用のネットワーク内のサービス エンドポイント向けのインターネット エッジで Microsoft トラフィックを SNAT 変換する必要があります。 ExpressRoute 経由で受信したルートと一致する宛先 IP を持つ要求 **と応答** は、常に ExpressRoute 経由で送信されます。 要求がインターネット経由で受信され、応答が ExpressRoute 経由で送信される場合に、非対称ルーティングが見られます。 インターネット エッジで受信した Microsoft トラフィックを SNAT 変換すると、応答トラフィックは強制的にインターネット エッジに返されるため、問題は解決します。
 
 ![ExpressRoute を使用した非対称ルーティング](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 

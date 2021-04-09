@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e0a45bde32fed651c4b38d203b3c75a6d928e7c5
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: f2a33b4011b0bb89ca17010fc787aebe8c17fc92
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327085"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183932"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault のキー、シークレット、証明書の概要
 
@@ -44,7 +44,7 @@ HSM で保護されたキー|/keys|サポートされています|サポート�
 **他のオブジェクトの種類**||
 シークレット|/secrets|サポートされています|サポートされていません
 証明書|/certificates|サポートされています|サポートされていません
-ストレージ アカウント キー|/storageaccount|サポートされています|サポートされていません
+ストレージ アカウント キー|/storage|サポートされています|サポートされていません
 |||
 - **暗号化キー**: 複数のキーの種類とアルゴリズムをサポートし、ソフトウェアによって保護されるキーと HSM によって保護されるキーを使用できるようにします。 詳細については、[キーについて](../keys/about-keys.md)のページを参照してください。
 - **シークレット**: パスワードやデータベース接続文字列などのシークレットのセキュリティで保護されたストレージを提供します。 詳細については、[シークレットについて](../secrets/about-secrets.md)のページを参照してください。

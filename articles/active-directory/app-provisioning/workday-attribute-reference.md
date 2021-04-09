@@ -12,10 +12,10 @@ ms.date: 05/25/2020
 ms.author: kenwith
 ms.reviewer: celested
 ms.openlocfilehash: 0ff9b3d4cc3bee28c8e5e95d8854f64eaa546b0c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99255476"
 ---
 # <a name="workday-attribute-reference"></a>Workday 属性のリファレンス

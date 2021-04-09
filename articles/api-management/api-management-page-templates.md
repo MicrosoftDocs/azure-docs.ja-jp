@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 24d026785025dba4ae45de404edec67c2cf3871a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91335587"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API Management のページ テンプレート
@@ -227,7 +227,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |referenceCode|string|このページが内部エラーの結果として表示された場合に生成されるコード。|  
 |errorCode|string|このページが内部エラーの結果として表示された場合に生成されるコード。|  

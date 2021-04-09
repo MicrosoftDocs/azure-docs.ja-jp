@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba8ecf5442ea3da6db02335520eef3856ea48c62
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 0e0e1543f18c18c7fdf97c39f35ba38ded658392
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740161"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103007819"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Azure Active Directory でカスタム ロールを作成して割り当てる
 
@@ -58,18 +58,18 @@ ms.locfileid: "98740161"
 Azure AD PowerShell モジュールをインストールするには、次のコマンドを使用します。
 
 ``` PowerShell
-install-module azureadpreview 
-import-module azureadpreview 
+Install-Module -Name AzureADPreview 
+Import-Module -Name AzureADPreview 
 ```
 
 モジュールを使用する準備ができているかどうかを確認するには、次のコマンドを使用します。
 
 ``` PowerShell
-get-module azureadpreview 
+Get-Module -Name AzureADPreview 
 
   ModuleType Version      Name                         ExportedCommands 
   ---------- ---------    ----                         ---------------- 
-  Binary     2.0.0.115    azureadpreview               {Add-AzureADAdministrati...} 
+  Binary     2.0.0.115    AzureADPreview               {Add-AzureADAdministrati...} 
 ```
 
 ### <a name="connect-to-azure"></a>Azure に接続する

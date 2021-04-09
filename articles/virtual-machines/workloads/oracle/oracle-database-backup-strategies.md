@@ -10,10 +10,10 @@ ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
 ms.openlocfilehash: 8a1eb1c21663e0294cd384daa0ba644adf78007a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101673210"
 ---
 # <a name="oracle-database-in-azure-linux-vm-backup-strategies"></a>Azure Linux VM での Oracle Database のバックアップ戦略

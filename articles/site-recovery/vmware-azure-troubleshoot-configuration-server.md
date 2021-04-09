@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
 ms.openlocfilehash: b5fd014732fd4cdfaa52f971b5e4d2c74db580d2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92371955"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>構成サーバーの問題のトラブルシューティング
@@ -24,32 +24,32 @@ ms.locfileid: "92371955"
 
 1. C:\ProgramData\ASR\home\svsystems\var\configurator_register_host_static_info.log ファイルを開きます (ProgramData フォルダーは非表示のフォルダーである場合があります。 ProgramData フォルダーが表示されない場合は、エクスプローラーの **[表示]** タブにある **[表示/非表示]** セクションで、 **[Hidden items]\(非表示の項目\)** チェック ボックスをオンにします)。エラーは、複数の問題が原因で発生する可能性があります。
 
-2. 文字列「 **No Valid IP Address found (有効な IP アドレスが見つかりません)** 」を検索します。 この文字列が見つかった場合:
+2. 文字列「**No Valid IP Address found (有効な IP アドレスが見つかりません)** 」を検索します。 この文字列が見つかった場合:
    1. 要求されているホスト ID がソース マシンのホスト ID と同じであることを確認します。
    2. 物理 NIC に 1 つ以上の IP アドレスが割り当てられていることを確認します。 構成サーバーへのエージェントの登録が成功するためには、ソース マシンの物理 NIC に 1 つ以上の有効な IP v4 アドレスが割り当てられている必要があります。
    3. ソース マシン上で次のいずれかのコマンドを実行して、ソース マシンのすべての IP アドレスを取得します。
       - Windows の場合: `> ipconfig /all`
       - Linux の場合: `# ifconfig -a`
 
-3. 文字列「 **No Valid IP Address found (有効な IP アドレスが見つかりません)** 」が見つからない場合は、文字列「 **Reason=>NULL (理由 =>NULL)** 」を検索します。 このエラーは、ソース マシンが空のホストを使用して構成サーバーに登録された場合に発生します。 この文字列が見つかった場合:
+3. 文字列「**No Valid IP Address found (有効な IP アドレスが見つかりません)** 」が見つからない場合は、文字列「**Reason=>NULL (理由 =>NULL)** 」を検索します。 このエラーは、ソース マシンが空のホストを使用して構成サーバーに登録された場合に発生します。 この文字列が見つかった場合:
     - 問題を解決した後で、「[ソース マシンを構成サーバーに登録する](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)」に記載されたガイドラインに従って、登録を手動で再試行してください。
 
-4. 文字列「 **Reason=>NULL (理由 =>NULL)** 」が見つからない場合は、ソース マシン上で C:\ProgramData\ASRSetupLogs\UploadedLogs\ASRUnifiedAgentInstaller.log ファイルを開きます (ProgramData フォルダーは非表示のフォルダーである場合があります。 ProgramData フォルダーが表示されない場合は、エクスプローラーの **[表示]** タブにある **[表示/非表示]** セクションで、 **[Hidden items]\(非表示の項目\)** チェック ボックスをオンにします)。エラーは、複数の問題が原因で発生する可能性があります。 
+4. 文字列「**Reason=>NULL (理由 =>NULL)** 」が見つからない場合は、ソース マシン上で C:\ProgramData\ASRSetupLogs\UploadedLogs\ASRUnifiedAgentInstaller.log ファイルを開きます (ProgramData フォルダーは非表示のフォルダーである場合があります。 ProgramData フォルダーが表示されない場合は、エクスプローラーの **[表示]** タブにある **[表示/非表示]** セクションで、 **[Hidden items]\(非表示の項目\)** チェック ボックスをオンにします)。エラーは、複数の問題が原因で発生する可能性があります。 
 
-5. 文字列「 **post request:(7) - Couldn't connect to server (POST 要求: (7) - サーバーに接続できませんでした)** 」を検索します。 この文字列が見つかった場合:
+5. 文字列「**post request:(7) - Couldn't connect to server (POST 要求: (7) - サーバーに接続できませんでした)** 」を検索します。 この文字列が見つかった場合:
     1. ソース マシンと構成サーバーの間におけるネットワークの問題を解決します。 ping、traceroute、Web ブラウザーなどのネットワーク ツールを使用して、ソース マシンから構成サーバーにアクセスできることを確認します。 ソース マシンがポート 443 経由で構成サーバーにアクセスできることを確認します。
     2. ソース マシン上のファイアウォール規則によって、ソース マシンと構成サーバー間の接続がブロックされていないかどうかを調べます。 接続の問題がある場合は、お客様のネットワーク管理者と協力して解決してください。
     3. 「[ウイルス対策プログラムからの Azure Site Recovery フォルダーの除外](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)」の一覧に記載されているフォルダーがウイルス対策プログラムから除外されていることを確認します。
     4. ネットワークの問題を解決したら、「[ソース マシンを構成サーバーに登録する](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)」に記載されたガイドラインに従って、登録を再試行してください。
 
-6. 文字列「 **post request:(7) - Couldn't connect to server (POST 要求: (7) - サーバーに接続できませんでした)** 」が見つからない場合は、同じログ ファイル内で文字列「 **request:(60) - Peer certificate cannot be authenticated with given CA certificates (要求: (60) - ピア証明書は与えられた CA 証明書で認証できません)** 」を検索します。 このエラーは、構成サーバーの証明書の有効期限が切れているか、またはソース マシンで TLS 1.0 以降のプロトコルがサポートされていないことが原因で発生する可能性があります。 また、ファイアウォールによってソース マシンと構成サーバー間の TLS 通信がブロックされている場合にも発生する可能性があります。 この文字列が見つかった場合: 
+6. 文字列「**post request:(7) - Couldn't connect to server (POST 要求: (7) - サーバーに接続できませんでした)** 」が見つからない場合は、同じログ ファイル内で文字列「**request:(60) - Peer certificate cannot be authenticated with given CA certificates (要求: (60) - ピア証明書は与えられた CA 証明書で認証できません)** 」を検索します。 このエラーは、構成サーバーの証明書の有効期限が切れているか、またはソース マシンで TLS 1.0 以降のプロトコルがサポートされていないことが原因で発生する可能性があります。 また、ファイアウォールによってソース マシンと構成サーバー間の TLS 通信がブロックされている場合にも発生する可能性があります。 この文字列が見つかった場合: 
     1. 解決するには、ソース マシン上の Web ブラウザーを使用して構成サーバーの IP アドレスに接続します。 URI https:\/\/<configuration server IP address\>:443/ を使用します。 ソース マシンがポート 443 経由で構成サーバーにアクセスできることを確認します。
     2. ソース マシンから構成サーバーにアクセスするためにソース マシン上のファイアウォール規則を追加または削除する必要がないかどうかを調べます。 使用されている可能性のあるファイアウォール ソフトウェアにはさまざまな種類があるため、必要なすべてのファイアウォール構成の一覧をここで示すことはできません。 接続の問題がある場合は、お客様のネットワーク管理者と協力して解決してください。
     3. 「[ウイルス対策プログラムからの Azure Site Recovery フォルダーの除外](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)」の一覧に記載されているフォルダーがウイルス対策プログラムから除外されていることを確認します。  
     4. 問題を解決したら、「[ソース マシンを構成サーバーに登録する](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)」に記載されたガイドラインに従って、登録を再試行してください。
 
-7. Linux では、<INSTALLATION_DIR\>/etc/drscout.conf 内のプラットフォームの値が破損していると登録に失敗します。 この問題を特定するには、/var/log/ua_install.log ファイルを開きます。 文字列「 **Aborting configuration as VM_PLATFORM value is either null or it is not VmWare/Azure (VM_PLATFORM の値が null であるか、VmWare/Azure でないため、構成を中止しています)** 」を検索します。 プラットフォームは **VmWare** または **Azure** に設定する必要があります。 drscout.conf ファイルが破損している場合は、[モビリティ エージェントをアンインストール](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)してから再インストールすることをお勧めします。 アンインストールに失敗した場合は、次の手順を実行します。 a. Installation_Directory/uninstall.sh ファイルを開き、 **StopServices** 関数の呼び出しをコメントアウトします。
-    b. Installation_Directory/Vx/bin/uninstall.sh ファイルを開き、 **stop_services** 関数の呼び出しをコメントアウトします。
+7. Linux では、<INSTALLATION_DIR\>/etc/drscout.conf 内のプラットフォームの値が破損していると登録に失敗します。 この問題を特定するには、/var/log/ua_install.log ファイルを開きます。 文字列「**Aborting configuration as VM_PLATFORM value is either null or it is not VmWare/Azure (VM_PLATFORM の値が null であるか、VmWare/Azure でないため、構成を中止しています)** 」を検索します。 プラットフォームは **VmWare** または **Azure** に設定する必要があります。 drscout.conf ファイルが破損している場合は、[モビリティ エージェントをアンインストール](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)してから再インストールすることをお勧めします。 アンインストールに失敗した場合は、次の手順を実行します。 a. Installation_Directory/uninstall.sh ファイルを開き、**StopServices** 関数の呼び出しをコメントアウトします。
+    b. Installation_Directory/Vx/bin/uninstall.sh ファイルを開き、**stop_services** 関数の呼び出しをコメントアウトします。
     c. Installation_Directory/Fx/uninstall.sh ファイルを開き、Fx サービスの停止を試行するセクション全体をコメントアウトします。
     d. モビリティ エージェントを[アンインストール](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)します。 アンインストールが成功したら、システムを再起動して、モビリティ エージェントの再インストールを試みます。
 
@@ -67,7 +67,7 @@ vCenter の検出エラーを解決するには、バイパス リスト プロ�
 - コマンド ライン psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe" を実行して、インターネット エクスプローラーでシステム ユーザーのコンテンツを開きます。
 - IE にプロキシ設定を追加し、tmanssvc サービスを再開します。
 - DRA プロキシ設定を構成するために、cd C:\Program Files\Microsoft Azure Site Recovery Provider を実行します。
-- 次に、DRCONFIGURATOR.EXE /configure /AddBypassUrls を実行します (「 [構成サーバーをデプロイする](vmware-azure-deploy-configuration-server.md#configure-settings)」の **vCenter Server/vSphere ESXi Server を構成する** 手順の間に提供された vCenter Server の IP アドレス/FQDN を追加します)。
+- 次に、DRCONFIGURATOR.EXE /configure /AddBypassUrls を実行します (「[構成サーバーをデプロイする](vmware-azure-deploy-configuration-server.md#configure-settings)」の **vCenter Server/vSphere ESXi Server を構成する** 手順の間に提供された vCenter Server の IP アドレス/FQDN を追加します)。
 
 ## <a name="change-the-ip-address-of-the-configuration-server"></a>構成サーバーの IP アドレスの変更
 

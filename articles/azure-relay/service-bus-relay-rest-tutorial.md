@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
 ms.openlocfilehash: 0620f55650d0e4da0cd7a616649df952f3017455
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88922329"
 ---
 # <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>チュートリアル:Azure WCF Relay REST のチュートリアル
@@ -58,12 +58,12 @@ WCF コントラクトと REST スタイルのコントラクトの主な違い�
 
    C# プロジェクトの場合、Visual Studio によって *Program.cs* ファイルが作成されます。 このクラスには、空の `Main()` メソッドが含まれています。このメソッドは、コンソール アプリケーション プロジェクトを正常にビルドするために必要です。
 
-1. **ソリューション エクスプローラー**で **ImageListener** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
+1. **ソリューション エクスプローラー** で **ImageListener** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
 1. **[参照]** を選択し、**WindowsAzure.ServiceBus** を探して選択します。 **[インストール]** を選択して、使用条件に同意します。
 
     この手順では、Service Bus と *System.ServiceModel.dll* への参照を追加します。 Service Bus ライブラリと WCF の `System.ServiceModel` への参照が、このパッケージによって自動的に追加されます。
 
-1. `System.ServiceModel.Web.dll` への参照をプロジェクトに明示的に追加します。 **ソリューション エクスプローラー**で、プロジェクト フォルダーの **[参照]** を右クリックし、 **[参照の追加]** を選択します。
+1. `System.ServiceModel.Web.dll` への参照をプロジェクトに明示的に追加します。 **ソリューション エクスプローラー** で、プロジェクト フォルダーの **[参照]** を右クリックし、 **[参照の追加]** を選択します。
 1. **[参照の追加]** で **[フレームワーク]** を選択し、 **[検索]** に「*System.ServiceModel.Web*」と入力します。 **[System.ServiceModel.Web]** チェック ボックスをオンにし、 **[OK]** をクリックします。
 
 次に、次のコードの変更をプロジェクトに加えます。
@@ -204,7 +204,7 @@ REST スタイルの WCF Relay サービスを作成するには、最初にイ�
 
    以降、このチュートリアルでは、画像名が *image.jpg* という前提で説明します。 別のファイルを使用する場合は、画像のファイル名を変更するか、ファイル名に合わせてコードを変更する必要があります。
 
-1. 実行中のサービスから画像ファイルを検出できるようにするには、**ソリューション エクスプローラー**で画像ファイルを右クリックし、 **[プロパティ]** を選択します。 **[プロパティ]** で **[出力ディレクトリにコピー]** を **[新しい場合はコピーする]** に設定します。
+1. 実行中のサービスから画像ファイルを検出できるようにするには、**ソリューション エクスプローラー** で画像ファイルを右クリックし、 **[プロパティ]** を選択します。 **[プロパティ]** で **[出力ディレクトリにコピー]** を **[新しい場合はコピーする]** に設定します。
 
 1. 「[インターフェイスを使用してコントラクトを作成するには](#to-create-a-contract-with-an-interface)」の手順を使用して、*System.Drawing.dll* アセンブリへの参照をプロジェクトに追加します。
 
@@ -254,7 +254,7 @@ REST スタイルの WCF Relay サービスを作成するには、最初にイ�
 
 ### <a name="to-define-the-configuration-for-running-the-web-service-on-service-bus"></a>Service Bus で Web サービスを実行するための構成を定義するには
 
-1. **ソリューション エクスプローラー**で、**App.config** をダブルクリックして、Visual Studio エディターでそのファイルを開きます。
+1. **ソリューション エクスプローラー** で、**App.config** をダブルクリックして、Visual Studio エディターでそのファイルを開きます。
 
     *App.config* ファイルには、サービス名、エンドポイント、およびバインドが含まれています。 エンドポイントは、クライアントとホストの相互通信用に Azure Relay により公開されている場所です。 バインドは、通信に使用されるプロトコルの種類です。 主な違いは、構成されているサービス エンドポイントが [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) バインドを参照している点です。
 

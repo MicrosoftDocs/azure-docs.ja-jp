@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
 ms.openlocfilehash: beef52641b9744b39873a7f48e39eb2f94ed4c9f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92459732"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iqnavigator-vms"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と IQNavigator VMS の統合
@@ -40,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 
-* IQNavigator VMS では、 **IDP** によって開始される SSO がサポートされます
+* IQNavigator VMS では、**IDP** によって開始される SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -55,7 +55,7 @@ Azure AD への IQNavigator VMS の統合を構成するには、ギャラリー
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **IQNavigator VMS** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**IQNavigator VMS**」と入力します。
 1. 結果のパネルから **IQNavigator VMS** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -135,7 +135,7 @@ IQNavigator VMS で Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-iqnavigator-vms-sso"></a>IQNavigator VMS の SSO の構成
 
-**IQNavigator VMS** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [IQNavigator VMS サポート チーム](https://www.beeline.com/support-iqn/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**IQNavigator VMS** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [IQNavigator VMS サポート チーム](https://www.beeline.com/support-iqn/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-iqnavigator-vms-test-user"></a>IQNavigator VMS テスト ユーザーの作成
 

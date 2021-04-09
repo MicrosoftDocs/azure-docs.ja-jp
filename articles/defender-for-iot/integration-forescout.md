@@ -1,19 +1,14 @@
 ---
 title: Forescout の統合について
-titleSuffix: Azure Defender for IoT
 description: Azure Defender for IoT と Forescout プラットフォームを統合することで、IoT と OT のランドスケープで、一元的な可視性、監視、制御を新たなレベルで実現することができます。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/17/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: faa53c770d0d6caac471e770c80b4dfd5c5ff603
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 07e5187970d193502b95b49c5517a8e3824767be
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557007"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784069"
 ---
 # <a name="about-the-forescout-integration"></a>Forescout の統合について
 
@@ -183,4 +178,4 @@ Defender for IoT プロパティにアクセスするには、次の手順を実
 
 ## <a name="next-steps"></a>次の手順
 
-[アラート情報を転送する](how-to-forward-alert-information-to-partners.md)方法を確認する。
+[アラート情報を転送する](how-to-forward-alert-information-to-partners.md)方法を学習します。

@@ -8,10 +8,10 @@ ms.subservice: workloads
 ms.topic: how-to
 ms.date: 02/08/2021
 ms.openlocfilehash: 99e9994d01e4579bf6ef2e369e0fe85c48af52ef
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102182436"
 ---
 # <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>SAP on RHEL のための Azure Large Instances の高可用性

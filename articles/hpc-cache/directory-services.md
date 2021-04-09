@@ -4,14 +4,14 @@ description: Azure HPC Cache でストレージ ターゲットへのクライ�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/22/2020
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 28265861c98cceaedf7d2662f6526a9f62fe68de
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: fd5dce0760953bf19c72e1a1062a9c03ffe861e7
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803767"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563377"
 ---
 # <a name="configure-directory-services"></a>ディレクトリ サービスを構成する
 
@@ -75,13 +75,13 @@ LDAP の動作に必要な設定はサーバーとベース DN だけですが�
 
 **[Secure access]\(セキュリティで保護されたアクセス\)** セクションでは、LDAP 接続の暗号化と証明書の検証を有効にすることができます。 **[はい]** をクリックして暗号化を有効にした後は、次のオプションがあります。
 
-* **[Require valid certificate]\(有効な証明書が必要\)** - これを設定すると、LDAP サーバーの証明書は、下の URI フィールドの証明機関で検証されます。
+* **[証明書の検証]** - これを設定すると、LDAP サーバーの証明書は、下の URI フィールドの証明機関で検証されます。
 
 * **[CA certificate URI]\(CA 証明書の URI\)** - 権限のある証明書へのパスを指定します。 これには、CA で検証された証明書または自己署名証明書へのリンクを指定できます。 外部で検証された証明書の設定を使用するには、このフィールドが必要です。
 
 * **[Auto-download certificate]\(証明書の自動ダウンロード\)** - これらの設定を送信したらすぐに証明書のダウンロードを試みる場合は、 **[はい]** を選択します。
 
-LDAP セキュリティに静的な資格情報を使用する場合は、 **[資格情報]** セクションに入力します。
+LDAP セキュリティに静的な資格情報を使用する場合は、 **[資格情報]** セクションに入力します。 この情報は、保存時には暗号化され、クエリを行うことはできません。
 
 * **[バインド DN]** - LDAP サーバーへの認証に使用するバインド識別名を入力します。 (DN 形式を使用します。)
 * **[バインド パスワード]** - バインド DN のパスワードを指定します。

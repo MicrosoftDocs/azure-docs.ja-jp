@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64fe4b8c217ec46cbb6dd046339c3ac65eebb121
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98724679"
 ---
 # <a name="build-resilience-in-your-identity-and-access-management-infrastructure"></a>ID およびアクセス管理インフラストラクチャで回復性を強化する
@@ -51,7 +51,7 @@ Azure AD のようなトークンベースの認証システムでは、ユー�
   
 ![管理の回復性の概要を示す図](./media/resilience-in-infrastructure/admin-resilience-overview.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 管理者とアーキテクト向けの回復性に関するリソース
  
 * [資格情報管理を使用して回復性を強化する](resilience-in-credentials.md)
@@ -60,7 +60,7 @@ Azure AD のようなトークンベースの認証システムでは、ユー�
 
 * [継続的アクセス評価 (CAE) を使用して回復性を強化する](resilience-with-continuous-access-evaluation.md)
 
-* [外部ユーザー認証で回復性を強化する](resilience-b2b-authentication.md)
+* [外部ユーザー認証の回復性を強化する](resilience-b2b-authentication.md)
 
 * [ハイブリッド認証で回復性を強化する](resilience-in-hybrid.md)
 

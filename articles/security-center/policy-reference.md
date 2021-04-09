@@ -1,18 +1,18 @@
 ---
 title: Azure Security Center 用の組み込みポリシー定義
 description: Azure Security Center 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 02/09/2021
+ms.date: 03/17/2021
 ms.topic: reference
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: ab6556bc391eb3136fa8c4ba40f5a5d71da956e7
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: d6afafef2bb09855fb50f67fcc1054043fa725ef
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093064"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596501"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Azure Security Center 用の Azure Policy 組み込み定義
 
@@ -32,7 +32,7 @@ Security Center によって監視される組み込みのイニシアチブの�
 
 [!INCLUDE [azure-policy-reference-policyset-security-center](../../includes/policy/reference/bycat/policysets-security-center.md)]
 
-## <a name="azure-security-center-default-initiative"></a>Azure Security Center の既定のイニシアチブ
+## <a name="security-centers-default-initiative-azure-security-benchmark"></a>Security Center の既定のイニシアチブ (Azure セキュリティ ベンチマーク)
 
 Security Center によって監視される組み込みのポリシーの詳細については、次の表を参照してください。
 
@@ -44,13 +44,4 @@ Security Center によって監視される組み込みのポリシーの詳細�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Security Center での Azure Policy のセキュリティ ポリシー定義について説明しました。 詳細については、以下の記事をお読みください。
-
-- [Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のビルトインを参照します。
-- 「[Azure Policy の定義の構造](../governance/policy/concepts/definition-structure.md)」を確認します。
-- 「[Policy の効果について](../governance/policy/concepts/effects.md)」を確認します。
-- [Azure Security Center 計画および運用ガイド](./security-center-planning-and-operations-guide.md):Azure Security Center で計画し、設計上の考慮事項を理解する方法について説明しています。
-- [Azure Security Center でのセキュリティ ヘルスの監視](./security-center-monitoring.md):Azure リソースの正常性を監視する方法について説明しています。
-- [Azure Security Center でのセキュリティの警告の管理と対応](./security-center-managing-and-responding-alerts.md): セキュリティの警告の管理と対応の方法について説明しています。
-- [Azure Security Center を使用したパートナー ソリューションの監視](./security-center-partner-integration.md): パートナー ソリューションの正常性状態を監視する方法について説明しています。
-- [Azure Policy](../governance/policy/overview.md):Azure リソースの監査と管理について説明しています。
+この記事では、Security Center での Azure Policy のセキュリティ ポリシー定義について説明しました。 イニシアチブ、ポリシー、およびそれらが Security Center の推奨事項とどのように関連しているかについて詳しくは、「[セキュリティポリシー、イニシアチブ、および推奨事項とは](security-policy-concept.md)」をご覧ください。

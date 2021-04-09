@@ -1,17 +1,17 @@
 ---
-title: クイック スタート:カスタム イベントを Event Hubs に送信する - Event Grid、Azure CLI
+title: 'クイックスタート: カスタム イベントを Event Hubs に送信する - Event Grid、Azure CLI'
 description: クイック スタート:Azure Event Grid と Azure CLI を使用して、トピックを発行したり、そのイベントをサブスクライブしたりします。 イベント ハブは、エンドポイントで使用されます。
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 7c236025f31e10c00b324e5ff3374bd6504b2b7e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91324112"
 ---
-# <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>クイック スタート:Azure CLI と Event Grid を使用してカスタム イベントを Azure Event Hubs にルーティングする
+# <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>クイックスタート: Azure CLI と Event Grid を使用してカスタム イベントを Azure Event Hubs にルーティングする
 
 Azure Event Grid は、クラウドのイベント処理サービスです。 Azure Event Hubs は、サポートされているイベント ハンドラーの 1 つです。 この記事では、Azure CLI からカスタム トピックを作成してカスタム トピックにサブスクライブし、イベントをトリガーして結果を表示します。 イベント ハブにイベントを送信します。
 
@@ -98,7 +98,7 @@ done
 
 通常は、イベント ハブからイベントを取得するアプリケーションを作成します。 イベント ハブからメッセージを取得するアプリケーションを作成するには、以下を参照してください。
 
-* .[NET Standard で イベント プロセッサ ホストを使用したメッセージ受信を開始する](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+* [.NET Standard で EventProcessorHost を使用したメッセージ受信を開始する](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 * [Java を使用して Azure Event Hubs からイベントを受信する](../event-hubs/event-hubs-java-get-started-send.md)
 * [Apache Storm を使用して Azure Event Hubs からイベントを受信する](../event-hubs/event-hubs-storm-getstarted-receive.md)
 

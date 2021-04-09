@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/16/2019
 ms.openlocfilehash: f3a314f55d45a888dde08ddc275953e7f9bbf3b2
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94594149"
 ---
 # <a name="use-the-azure-cli-to-add-a-database-to-a-failover-group"></a>Azure CLI を使用してフェールオーバー グループにデータベースを追加する
@@ -44,7 +44,7 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
-リソース グループと、それに関連付けられているすべてのリソースを削除するには、次のコマンドを使用します。
+次のコマンドを使用して、リソース グループと、それに関連付けられているすべてのリソースを削除します。
 
 ```azurecli-interactive
 az group delete --name $resource
@@ -54,7 +54,7 @@ az group delete --name $resource
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | 説明 |
+| コマンド | 説明 |
 |---|---|
 | [az sql db](/cli/azure/sql/db) | データベースのコマンド。 |
 | [az sql failover-group](/cli/azure/sql/failover-group) | フェールオーバー グループのコマンド。 |

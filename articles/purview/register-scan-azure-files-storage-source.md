@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.openlocfilehash: a0bd7a4cd8afafc16f05b4a37cd5723304ad931e
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96550901"
 ---
 # <a name="register-and-scan-azure-files"></a>Azure Files の登録とスキャン
@@ -62,4 +62,4 @@ Azure Files では、フル スキャンと増分スキャンがサポートさ�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Purview データ カタログを参照する](how-to-browse-catalog.md)
-- [Azure Purview Data Catalog を検索する](how-to-search-catalog.md)
+- [Azure Purview データ カタログを検索する](how-to-search-catalog.md)

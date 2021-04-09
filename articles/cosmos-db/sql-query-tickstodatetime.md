@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: f40286a39694307ac43ecd60f6861d509f760990
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9adf525f4edb4104978bae32bbbef15ffb131f68
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340799"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587255"
 ---
 # <a name="tickstodatetime-azure-cosmos-db"></a>TicksToDateTime (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,7 +28,7 @@ TicksToDateTime (<Ticks>)
 
 ## <a name="arguments"></a>引数
 
-" *ティック* "  
+"*ティック*"  
 
 Unix エポックから経過した現在の 100 ナノ秒ティック数を示す符号付き数値です。 つまり、1970 年 1 月 1 日木曜日 00 時 00 分 00 秒から経過した 100 ナノ秒ティック数です。
 
@@ -36,17 +36,17 @@ Unix エポックから経過した現在の 100 ナノ秒ティック数を示�
 
 UTC での日付と時刻を ISO 8601 文字列値として `YYYY-MM-DDThh:mm:ss.fffffffZ` の形式で返します。内訳は以下のとおりです。
   
-  |Format|説明|
-  |-|-|
-  |YYYY|4 桁の年|
-  |mm|2 桁の月 (例: 01 = 1 月)|
-  |DD|2 桁の日付 (01 から 31)|
-  |T|時間要素の開始を表します|
-  |hh|2 桁の時間 (00 から 23)|
-  |mm|2 桁の分 (00 から 59)|
-  |ss|2 桁の秒 (00 から 59)|
-  |.fffffff|秒の 7 桁の小数部|
-  |Z|UTC (協定世界時) 指定子||
+|Format|説明|
+|-|-|
+|YYYY|4 桁の年|
+|mm|2 桁の月 (例: 01 = 1 月)|
+|DD|2 桁の日付 (01 から 31)|
+|T|時間要素の開始を表します|
+|hh|2 桁の時間 (00 から 23)|
+|mm|2 桁の分 (00 から 59)|
+|ss|2 桁の秒 (00 から 59)|
+|.fffffff|秒の 7 桁の小数部|
+|Z|UTC (協定世界時) 指定子|
   
   ISO 8601 形式の詳細については、「[ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)」を参照してください
 

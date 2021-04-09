@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/24/2021
 ms.author: alkohli
 ms.openlocfilehash: eca26934605ff70ecb26c10604fc9b493e88f2cf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101727446"
 ---
 # <a name="deployment-checklist-for-your-azure-stack-edge-pro-r-device"></a>Azure Stack Edge Pro R デバイスの配置チェックリスト  
@@ -29,7 +29,7 @@ ms.locfileid: "101727446"
 | デバイスのインストール               | パッケージ内の電源ケーブル。 <br>米国の場合、定格 125 V、15 アンペアの SVE 18/3 ケーブルと NEMA 5-15P to C13 (入力から出力) コネクタが付属しています。 | 詳細については、[国別のサポートされている電源コード](azure-stack-edge-technical-specifications-power-cords-regional.md)の一覧を参照してください。  |
 |                                   | <li>ポート 1 用の少なくとも 1 本の 1 GbE RJ-45 ネットワーク ケーブル  </li><li> ポート 3、ポート 4 用の少なくとも 1 本の 25 GbE SFP+ 銅線ケーブル</li>| これらのケーブルはお客様が調達する必要があります。<br>デバイス ネットワーク カードでサポートされているネットワーク ケーブル、スイッチ、トランシーバーの詳細な一覧については、[Cavium FastlinQ 41000 シリーズの相互運用性マトリックス](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)および [Mellanox デュアル ポート 25G ConnectX-4 チャネル ネットワーク アダプター互換製品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)に関するドキュメントを参照してください。| 
 | 初回のデバイス接続      | <li>IPv4 設定を変更できるラップトップ。 このラップトップは、スイッチまたは USB イーサネット アダプターを介してポート 1 に接続します。  </li><!--<li> A minimum of 1 GbE switch must be used for the device once the initial setup is complete. The local web UI will not be accessible if the connected switch is not at least 1 Gbe.</li>-->|   |
-| デバイスへのサインイン                      | デバイス管理者のパスワード。8 文字から 16 文字で、大文字、小文字、数字、特殊文字のうち、3 種類を含めます。                                            | 既定のパスワードは *Password1* であり、最初のサインイン時に有効期限が切れます。                                                     |
+| デバイスへのサインイン                      | デバイス管理者のパスワード。8 文字から 16 文字で、大文字、小文字、数字、特殊文字のうち、3 種類を含みます。                                            | 既定のパスワードは *Password1* であり、最初のサインイン時に有効期限が切れます。                                                     |
 | ネットワーク設定                  | デバイスには、2 x 1-GbE、4 x 25-GbE ネットワーク ポートが付属しています。 <li>ポート 1 は、管理設定の構成にのみ使用されます。 1 つ以上のデータ ポートを接続して構成できます。 </li><li> 少なくとも 1 つのデータ ネットワーク インターフェイス (ポート 2 からポート 6) がインターネットに接続されている必要があります (Azure への接続が可能なもの)。</li><li> DHCP と静的 IPv4 構成がサポートされています。 | 静的 IPv4 構成には、IP、DNS サーバーと既定のゲートウェイが必要です。   |
 | ネットワーク設定を計算する     | <li>Kubernetes ノード用に 2 つの連続した静的空き IP と、IoT Edge サービス用に 1 つの静的 IP が必要です。</li><li>デプロイする追加のサービスまたはモジュールごとに、追加の IP が 1 つ必要です。</li>| 静的 IPv4 構成のみがサポートされています。|
 | (省略可能) Web プロキシ設定     | <li>Web プロキシ サーバーの IP または FQDN、ポート </li><li>Web プロキシのユーザー名、パスワード</li> |  |

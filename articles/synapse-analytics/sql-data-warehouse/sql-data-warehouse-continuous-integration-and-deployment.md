@@ -2,21 +2,21 @@
 title: 専用 SQL プールのための継続的インテグレーションと継続的デプロイ
 description: Azure Pipelines を使用した継続的インテグレーションおよび継続的デプロイの組み込みサポートによって Azure Synapse Analytics の専用 SQL プールでエンタープライズ クラス データベースの DevOps エクスペリエンスを実現します。
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql-dw
 ms.date: 02/04/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: cb80f2d21246a75d41fc5753e72995d409d5c6b4
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: d43039c98e991cd23a8e5c4fb866a8e3dcab6fc2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119188"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585640"
 ---
 # <a name="continuous-integration-and-deployment-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールのための継続的インテグレーションと継続的デプロイ
 

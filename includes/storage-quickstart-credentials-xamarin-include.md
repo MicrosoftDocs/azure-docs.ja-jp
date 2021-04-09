@@ -9,10 +9,10 @@ ms.date: 11/23/2019
 ms.author: masoucou
 ms.custom: include file
 ms.openlocfilehash: 02586d38903c60ba8982753ca0bd3e15192d5deb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "83006378"
 ---
 ### <a name="copy-your-credentials-from-the-azure-portal"></a>Azure Portal で資格情報をコピーする

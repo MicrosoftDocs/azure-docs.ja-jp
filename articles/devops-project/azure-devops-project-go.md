@@ -14,10 +14,10 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 6d6181686eaeb90d4fcdae0231430623b84e2c1c
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102548514"
 ---
 # <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>Azure DevOps Starter を使用して Go 用の CI/CD パイプラインを作成する

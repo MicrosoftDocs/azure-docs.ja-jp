@@ -4,10 +4,10 @@ description: Batch ワークロードの実行に使用される、基になる�
 ms.topic: how-to
 ms.date: 01/29/2021
 ms.openlocfilehash: d1fc2d15a7037e56a8056efa67d2017badb77ffd
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99091329"
 ---
 # <a name="get-cost-analysis-and-set-budgets-for-azure-batch"></a>Azure Batch のコスト分析の取得と予算の設定

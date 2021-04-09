@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 9e7d45a588e60cd082f1eef43d1d1b6681b9e912
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98117743"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>PREDICT を使用した機械学習モデルのスコア付け

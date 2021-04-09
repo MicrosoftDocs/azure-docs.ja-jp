@@ -16,10 +16,10 @@ ms.topic: reference
 ms.date: 09/08/2020
 ms.author: yelevin
 ms.openlocfilehash: 4cd97aef5d8c959aeb2e0314e051790fd0421585
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99806937"
 ---
 # <a name="azure-sentinel-data-normalization-schema-reference"></a>Azure Sentinel データ正規化スキーマ リファレンス

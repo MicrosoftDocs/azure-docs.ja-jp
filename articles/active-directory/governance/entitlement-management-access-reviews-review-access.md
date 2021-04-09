@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d1115c08214db19227b4b8d7be671ce4da1cf2b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87798599"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でのアクセス パッケージのアクセスのレビュー
@@ -47,7 +47,7 @@ ms.locfileid: "87798599"
 
 1. **[Review user access]** \(ユーザー アクセスのレビュー) リンクをクリックして、アクセス レビューを開きます。 
 
-1. メールが届いていない場合は、 https://myaccess.microsoft.com に直接移動して、保留中のアクセス レビューを見つけることができます。  (米国政府の場合は、代わりに `https://myaccess.microsoft.us` を使用します)。
+1. メールが届いていない場合は、https://myaccess.microsoft.com に直接移動して、保留中のアクセス レビューを見つけることができます。  (米国政府の場合は、代わりに `https://myaccess.microsoft.us` を使用します)。
 
 1. 左側のナビゲーション バーの **[アクセス レビュー]** をクリックして、割り当てられている保留中のアクセス レビューの一覧を表示します。
     
@@ -74,11 +74,11 @@ ms.locfileid: "87798599"
 
     ![ユーザーを選択する](./media/entitlement-management-access-reviews-review-access/review-access-select-users.png)
 
-1. わからない場合は、 **[不明]** ボタンをクリックします。
+1. わからない場合は、**[不明]** ボタンをクリックします。
 
     このオプションを選択した場合、ユーザーはアクセスを維持し、この選択は監査ログに記録されます。 このログには、レビューを完了している他のレビュー担当者が表示されます。
 
-1. 場合によっては決定の理由を入力する必要があります。 理由を入力し、 **[送信]** をクリックします。
+1. 場合によっては決定の理由を入力する必要があります。 理由を入力し、**[送信]** をクリックします。
 
     ![アクセスの承認または拒否](./media/entitlement-management-access-reviews-review-access/review-access-decision-approve.png)
 
@@ -93,7 +93,7 @@ ms.locfileid: "87798599"
 
 複数のユーザーのアクセスをより迅速に確認するには、システムによって生成された推奨事項を使用して、1 回のクリックで推奨事項を承認することができます。 推奨事項は、ユーザーのサインイン アクティビティに基づいて生成されます。
 
-1.  ページの上部にあるバーで、 **[推奨事項の承認]** をクリックします。
+1.  ページの上部にあるバーで、**[推奨事項の承認]** をクリックします。
     
     ![推奨事項の承認を選択する](./media/entitlement-management-access-reviews-review-access/review-access-use-recommendations.png)
     

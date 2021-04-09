@@ -8,18 +8,22 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 6424fc0ff49566fad949b3fba4718acb2bad4cd3
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: c3ee643d525cb5394369aba3b0e803bd1a94c852
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362775"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036238"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>課金アカウントをカスタマイズしてコストを整理する
 
 Microsoft 顧客契約の課金アカウントでは、部門、プロジェクト、または開発環境別のいずれであっても、必要に応じてコストを柔軟に整理できます。
 
 この記事では、Azure portal を使用してコストを整理する方法について説明します。 これは、Microsoft 顧客契約の課金アカウントに適用されます。 [Microsoft 顧客契約にアクセスできるかどうかを確認してください](#check-access-to-a-microsoft-customer-agreement)。
+
+課金アカウントのコストを整理する方法については、「[Microsoft 顧客契約の課金アカウントをカスタマイズしてコストを整理する](https://www.youtube.com/watch?v=7RxTfShGHwU)」のビデオをご覧ください。
+
+>[!VIDEO https://www.youtube.com/embed/7RxTfShGHwU]
 
 ## <a name="structure-your-account-with-billing-profiles-and-invoice-sections"></a>課金プロファイルと請求書セクションを使用してアカウントを構成する
 
@@ -69,7 +73,7 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 
 ## <a name="create-a-new-invoice-section"></a>新しい請求書セクションを作成する
 
-請求書セクションを作成するには、**課金プロファイルの所有者**または**課金プロファイルの共同作成者**である必要があります。 詳細については、「[課金プロファイルの請求書セクションを管理する](understand-mca-roles.md#manage-invoice-sections-for-billing-profile)」をご覧ください。
+請求書セクションを作成するには、**課金プロファイルの所有者** または **課金プロファイルの共同作成者** である必要があります。 詳細については、「[課金プロファイルの請求書セクションを管理する](understand-mca-roles.md#manage-invoice-sections-for-billing-profile)」をご覧ください。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
@@ -93,7 +97,7 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 
 ## <a name="create-a-new-billing-profile"></a>新しい課金プロファイルを作成する
 
-課金プロファイルを作成するには、**課金アカウントの所有者**または**課金アカウントの共同作成者**である必要があります。 詳細については、「[請求先アカウントの課金プロファイルを管理する](understand-mca-roles.md#manage-billing-profiles-for-billing-account)」をご覧ください。
+課金プロファイルを作成するには、**課金アカウントの所有者** または **課金アカウントの共同作成者** である必要があります。 詳細については、「[請求先アカウントの課金プロファイルを管理する](understand-mca-roles.md#manage-billing-profiles-for-billing-account)」をご覧ください。
 
 > [!IMPORTANT]
 >
@@ -134,7 +138,7 @@ Azure にサインアップすると、課金プロファイルが課金アカ�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. **サブスクリプション**を検索します。
+2. **サブスクリプション** を検索します。
 
    [![Azure portal でのサブスクリプションの検索を示すスクリーンショット。](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
 

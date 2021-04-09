@@ -8,10 +8,10 @@ ms.date: 05/05/2020
 ms.topic: article
 ms.service: digital-twins
 ms.openlocfilehash: 165fa23cf3965d3017b15c27fedc2846f97d8d11
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99054401"
 ---
 # <a name="azure-digital-twins-service-limits"></a>Azure Digital Twins サービスの制限

@@ -5,17 +5,17 @@ author: njray
 manager: edprice
 editor: edprice
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: mainframe-rehosting
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 08e7a594fba3e660ea1a2a8561bcdeed236b1dfb
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 4ab0dfabc5fc4773413e7009bb8a16e6b77d5c09
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561587"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950197"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 上の IBM DB2 pureScale
 

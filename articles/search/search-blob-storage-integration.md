@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: f61bf635cc61a2153a7bb016ef4b4711d7ba7391
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91355297"
 ---
 # <a name="search-over-azure-blob-storage-content"></a>Azure Blob Storage のコンテンツを検索する
@@ -26,7 +26,7 @@ Azure Blob Storage に格納されているさまざまなコンテンツの種�
 
 Azure Cognitive Search は、クラウドでホストされているリモート検索可能なコンテンツを含むユーザー定義のインデックスに対して、インデックス作成とクエリ ワークロードをサポートする検索サービスです。 検索可能なコンテンツとクエリ エンジンを併置することは、パフォーマンス上必要であり、これにより、ユーザーが検索クエリに期待する速度で結果を返すことができます。
 
-Cognitive Search はインデックス層で Azure Blob Storage と統合されます。これにより、ご利用の BLOB コンテンツは、*逆インデックス*や、自由形式のテキスト クエリおよびフィルター式をサポートするその他のクエリ構造体に、インデックスが作成された検索ドキュメントとしてインポートされます。 ご利用の BLOB コンテンツは検索インデックスに対してインデックスが作成されるため、Azure Cognitive Search 内のすべてのクエリ機能を使用して、BLOB コンテンツ内の情報を見つけることができます。
+Cognitive Search はインデックス層で Azure Blob Storage と統合されます。これにより、ご利用の BLOB コンテンツは、*逆インデックス* や、自由形式のテキスト クエリおよびフィルター式をサポートするその他のクエリ構造体に、インデックスが作成された検索ドキュメントとしてインポートされます。 ご利用の BLOB コンテンツは検索インデックスに対してインデックスが作成されるため、Azure Cognitive Search 内のすべてのクエリ機能を使用して、BLOB コンテンツ内の情報を見つけることができます。
 
 Azure Blob Storage 内の単一コンテナーにあるご利用の BLOB が入力となります。 BLOB は、ほぼ任意の種類のテキスト データとすることができます。 ご利用の BLOB に画像が含まれている場合は、[AI エンリッチメントを BLOB インデックス作成](search-blob-ai-integration.md)に追加することで、画像からテキストを作成し、抽出することができます。
 
@@ -44,7 +44,7 @@ Azure Cognitive Search と Azure Blob Storage の両方が必要です。 BLOB �
 
 ## <a name="use-a-blob-indexer"></a>BLOB インデクサーを使用する
 
-*インデクサー*は、Cognitive Search のデータソースに対応したサブサービスであり、データのサンプリング、メタデータ データの読み取り、データの取得、および後続のインポートに備えたネイティブ形式から JSON ドキュメントへのデータのシリアル化、などを行うための内部ロジックを備えています。 
+*インデクサー* は、Cognitive Search のデータソースに対応したサブサービスであり、データのサンプリング、メタデータ データの読み取り、データの取得、および後続のインポートに備えたネイティブ形式から JSON ドキュメントへのデータのシリアル化、などを行うための内部ロジックを備えています。 
 
 Azure Storage 内の BLOB は、[Azure Cognitive Search Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)を使用してインデックス作成されます。 このインデクサーを呼び出すには、 **[データのインポート]** ウィザード、REST API、または .NET SDK を使用します。 コード内でこのインデクサーを使用するには、種類を設定してから、Azure Storage アカウントおよび BLOB コンテナーを含む接続情報を指定します。 ご利用の BLOB のサブセットを作成するには、パラメーターとして渡すことができる仮想ディレクトリを作成するか、ファイルの種類の拡張子に基づいてフィルター処理を行います。
 

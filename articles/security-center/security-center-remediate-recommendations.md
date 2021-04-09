@@ -1,24 +1,18 @@
 ---
 title: Azure Security Center でレコメンデーションを修復する | Microsoft Docs
 description: この記事では、リソースを保護してセキュリティ ポリシーを満たすために、Azure Security Center でレコメンデーションに対応する方法について説明します。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 8be947cc-cc86-421d-87a6-b1e23077fd50
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/08/2020
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: dabd7e9e2c3c74225efc4611c7ad3523a6c76ba5
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: f382646c889d004738064cae2d09fd66d897b110
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97807992"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102438269"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Azure Security Center の修復レコメンデーション
 
@@ -81,5 +75,5 @@ ms.locfileid: "97807992"
 
 このドキュメントでは、Security Center でレコメンデーションを修復する方法について説明しました。 セキュリティ センターの詳細については、次のページを参照してください。
 
-* 「[Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md)」 - Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
-* 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」 - Azure リソースの正常性を監視する方法について説明しています。
+* [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) - Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています
+* [セキュリティ ポリシー、イニシアティブ、および推奨事項とは](security-policy-concept.md)

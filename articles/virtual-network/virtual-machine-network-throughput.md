@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 280b3cbef8307691b0d50c4a26f6dca18b7fb65b
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: cb128f9269895f04d1e0dad8e0c8d06c481e86c6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233867"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576159"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>仮想マシンのネットワーク帯域幅
 
@@ -55,12 +55,12 @@ VM の各サイズで想定される送信スループットとサポートさ�
 ## <a name="flow-limits-and-active-connections-recommendations"></a>フローの制限とアクティブな接続に関する推奨事項
 
 現在、Azure のネットワーク スタックでは、1 つの VM について合計 100 万個のフロー (50 万個の受信と 50 万個の送信) がサポートされています。 異なるシナリオで 1 つの VM によって処理できるアクティブな接続の合計数は以下のとおりです。
-- VNET に属している VM では、すべての VM サイズについて、50 万個の "*_アクティブな接続_*" を処理できます。"_*_各方向のアクティブ フロー数_*_" は 50 万個です。  
-- ゲートウェイ、プロキシ、ファイアウォールなどのネットワーク仮想アプライアンス (NVA) を使用している VM では、上の図に示されているように、ネクスト ホップへの新しい接続のセットアップ時に転送と追加の新しいフローが作成されるため、25 万個の "_*_アクティブな接続_*_" を処理できます。"*_各方向のアクティブ フロー数_*" は 50 万個です。 
+- VNET に属している VM では、すべての VM サイズについて、50 万個の "**アクティブな接続**" を処理できます。"_各方向のアクティブ フロー数_" は 50 万個です。  
+- ゲートウェイ、プロキシ、ファイアウォールなどのネットワーク仮想アプライアンス (NVA) を使用している VM では、上の図に示されているように、ネクスト ホップへの新しい接続のセットアップ時に転送と追加の新しいフローが作成されるため、25 万個の "**アクティブな接続**" を処理できます。"*_各方向のアクティブ フロー数_*" は 50 万個です。 
 
 この制限に達すると、追加の接続は切断されます。 接続の確立と終了はパケット処理ルーチンと CPU を共有するため、接続の確立と終了の頻度もネットワーク パフォーマンスに影響を与える場合があります。 予測されるトラフィック パターンに対してワークロードをベンチマークし、パフォーマンスのニーズを満たすようにワークロードを適切にスケールアウトすることをお勧めします。
 
-[Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) では、ネットワーク フローの数や、VM または VMSS インスタンスでのフロー作成の頻度を追跡するためのメトリックを使用できます。
+[Azure Monitor](../azure-monitor/essentials/metrics-supported.md#microsoftcomputevirtualmachines) では、ネットワーク フローの数や、VM または VMSS インスタンスでのフロー作成の頻度を追跡するためのメトリックを使用できます。
 
 ![折れ線グラフと、受信フローと送信フローの合計が表示されている Azure Monitor の [メトリック] ページを示すスクリーンショット。](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 

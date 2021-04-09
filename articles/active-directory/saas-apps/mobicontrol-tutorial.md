@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 19ba6f81ab7aef8ebe6669e98b5d24d6debed737
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92521213"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobicontrol"></a>チュートリアル:Azure Active Directory と MobiControl の統合
@@ -41,7 +41,7 @@ MobiControl と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* MobiControl では、 **SP** Initiated SSO がサポートされます
+* MobiControl では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-mobicontrol-from-the-gallery"></a>ギャラリーからの MobiControl の追加
 
@@ -61,13 +61,13 @@ Azure AD への MobiControl の統合を構成するには、マネージド Saa
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **MobiControl** 」と入力し、結果ウィンドウで **[MobiControl]** を選択してから **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**MobiControl**」と入力し、結果ウィンドウで **[MobiControl]** を選択してから **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
      ![結果一覧の MobiControl](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、MobiControl で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、MobiControl で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと MobiControl 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 MobiControl で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -114,7 +114,7 @@ MobiControl で Azure AD シングル サインオンを構成するには、次
 
 ### <a name="configure-mobicontrol-single-sign-on"></a>MobiControl シングル サインオンの構成
 
-**MobiControl** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [MobiControl サポート チーム](https://www.soti.net/about/contact-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**MobiControl** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [MobiControl サポート チーム](https://www.soti.net/about/contact-us/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -132,7 +132,7 @@ MobiControl で Azure AD シングル サインオンを構成するには、次
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

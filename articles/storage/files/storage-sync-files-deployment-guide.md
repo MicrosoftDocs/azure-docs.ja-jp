@@ -8,10 +8,10 @@ ms.date: 11/05/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4814a12a870d5317ad91c3514327ba0daad7ed69
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99225372"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure File Sync のデプロイ

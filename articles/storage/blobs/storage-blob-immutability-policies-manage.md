@@ -9,10 +9,10 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: a09dbd7d778a4f7ea2a9aac9ca07b9e6d06bc1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84463622"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>BLOB ストレージの不変ポリシーを設定および管理する
@@ -27,7 +27,7 @@ Azure Blob Storage の不変ストレージを使用すると、ユーザーは�
 
 1. 新しいコンテナーを作成するか、既存のコンテナーを選択して、不変状態に維持する必要がある BLOB を格納します。 コンテナーは、汎用 v2 ストレージ アカウントまたは BLOB ストレージ アカウントに存在する必要があります。
 
-2. [コンテナーの設定] 内にある **[アクセス ポリシー]** を選択します。 次に、 **[Immutable blob storage]\(不変 BLOB ストレージ\)** の下で **[Add policy]\(ポリシーの追加\)** を選択します。
+2. [コンテナーの設定] 内にある **[アクセス ポリシー]** を選択します。 次に、**[Immutable blob storage]\(不変 BLOB ストレージ\)** の下で **[Add policy]\(ポリシーの追加\)** を選択します。
 
     ![ポータルでコンテナーの設定](media/storage-blob-immutability-policies-manage/portal-image-1.png)
 
@@ -41,7 +41,7 @@ Azure Blob Storage の不変ストレージを使用すると、ユーザーは�
 
     ポリシーの初期状態のロックが解除されて、ロックする前に機能をテストし、ポリシーに変更を加えることができます。 ポリシーのロックは、SEC 17a-4 などの規制に準拠するために必要です。
 
-5. ポリシーをロックします。 省略記号 ( **...** ) を右クリックすると、追加のアクションと共に次のメニューが表示されます。
+5. ポリシーをロックします。 省略記号 (**...**) を右クリックすると、追加のアクションと共に次のメニューが表示されます。
 
     ![メニュー上の [ポリシーのロック]](media/storage-blob-immutability-policies-manage/portal-image-4-lock-policy.png)
 
@@ -49,7 +49,7 @@ Azure Blob Storage の不変ストレージを使用すると、ユーザーは�
 
     ![メニューで [ポリシーのロック] を確認する](media/storage-blob-immutability-policies-manage/portal-image-5-lock-policy.png)
 
-7. 訴訟ホールドを有効にするには、 **[Add Policy]\(ポリシーの追加\)** を選択します。 ドロップダウン メニューから **[訴訟ホールド]** を選択します。
+7. 訴訟ホールドを有効にするには、**[Add Policy]\(ポリシーの追加\)** を選択します。 ドロップダウン メニューから **[訴訟ホールド]** を選択します。
 
     ![[ポリシーの種類] の下のメニューにある [訴訟ホールド]](media/storage-blob-immutability-policies-manage/portal-image-legal-hold-selection-7.png)
 

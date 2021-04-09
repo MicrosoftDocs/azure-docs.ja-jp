@@ -4,10 +4,10 @@ description: Azure Backup サービスを使用して Azure VM のバックア�
 ms.topic: conceptual
 ms.date: 08/02/2020
 ms.openlocfilehash: 51ce88bb67d64ce129a3479d38db9a66dfe65d0a
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100635079"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup サービスで Azure VM のバックアップを管理する

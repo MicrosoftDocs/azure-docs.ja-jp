@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: 95b5cc191ac6857bf8e1b09e70b22d928473fe03
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92314854"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Azure Logic Apps でスコープを使用してグループの状態に基づいてアクションを実行する
@@ -130,7 +130,7 @@ ms.locfileid: "92314854"
 
       ![[Travel Duration Traffic]\(移動時間の交通量\) フィールドを選択する](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-2.png)
 
-   1. フィールドが JSON 形式に解決された後、数字 ```60``` に続けて**カンマ** (```,```) を追加して、 **[Travel Duration Traffic]\(移動時間の交通量\)** の値を秒から分に変換します。 
+   1. フィールドが JSON 形式に解決された後、数字 ```60``` に続けて **カンマ** (```,```) を追加して、 **[Travel Duration Traffic]\(移動時間の交通量\)** の値を秒から分に変換します。 
    
       ```
       div(body('Get_route')?['travelDurationTraffic'],60)
@@ -205,7 +205,7 @@ ms.locfileid: "92314854"
 
       次に、条件によってスコープの状態が確認され、後の手順で定義する照合アクションが実行されるように、条件の `runAfter` プロパティを設定します。
 
-   1. **[If scope failed]** 条件で**省略記号** (...) ボタンを選択し、 **[実行条件の構成]** を選択します。
+   1. **[If scope failed]** 条件で **省略記号** (...) ボタンを選択し、 **[実行条件の構成]** を選択します。
 
       !["runAfter" プロパティを構成する](./media/logic-apps-control-flow-run-steps-group-scopes/configure-run-after.png)
 

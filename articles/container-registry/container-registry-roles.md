@@ -4,10 +4,10 @@ description: Azure のロールベースのアクセス制御 (Azure RBAC) と I
 ms.topic: article
 ms.date: 10/14/2020
 ms.openlocfilehash: 097ccf89caf63d2a504d072cf04c2b534a57a031
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92207956"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry のロールとアクセス許可
@@ -36,15 +36,15 @@ Azure Container Registry サービスは、Azure コンテナー レジストリ
 
 ### <a name="cicd-solutions"></a>CI/CD ソリューション
 
-CI/CD ソリューションから `docker build` コマンドを自動化するときは、`docker push` の機能が必要です。 これらのヘッドレス サービス シナリオでは、 **AcrPush** ロールを割り当てることをお勧めします。 このロールでは、さらに範囲の広い **共同作成者** ロールとは異なり、アカウントによる他のレジストリ操作の実行または Azure Resource Manager へのアクセスは禁止されます。
+CI/CD ソリューションから `docker build` コマンドを自動化するときは、`docker push` の機能が必要です。 これらのヘッドレス サービス シナリオでは、**AcrPush** ロールを割り当てることをお勧めします。 このロールでは、さらに範囲の広い **共同作成者** ロールとは異なり、アカウントによる他のレジストリ操作の実行または Azure Resource Manager へのアクセスは禁止されます。
 
 ### <a name="container-host-nodes"></a>コンテナー ホスト ノード
 
-同様に、コンテナーを実行するノードでは、 **AcrPull** ロールは必要ですが、 **閲覧者** の機能は必要ないはずです。
+同様に、コンテナーを実行するノードでは、**AcrPull** ロールは必要ですが、**閲覧者** の機能は必要ないはずです。
 
 ### <a name="visual-studio-code-docker-extension"></a>Visual Studio Code Docker 拡張機能
 
-Visual Studio Code [Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)などのツールでは、使用可能な Azure コンテナー レジストリの一覧を取得するために、追加のリソース プロバイダー アクセスが必要です。 この場合は、 **閲覧者** または **共同作成者** ロールへのアクセスをユーザーに提供します。 これらのロールでは、`docker pull`、`docker push`、`az acr list`、`az acr build`、およびその他の機能が許可されます。 
+Visual Studio Code [Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)などのツールでは、使用可能な Azure コンテナー レジストリの一覧を取得するために、追加のリソース プロバイダー アクセスが必要です。 この場合は、**閲覧者** または **共同作成者** ロールへのアクセスをユーザーに提供します。 これらのロールでは、`docker pull`、`docker push`、`az acr list`、`az acr build`、およびその他の機能が許可されます。 
 
 ## <a name="access-resource-manager"></a>Resource Manager へのアクセス
 

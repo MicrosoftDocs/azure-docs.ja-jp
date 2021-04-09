@@ -2,14 +2,14 @@
 title: Azure portal の設定を管理する
 description: 独自の基本設定を実現するために Azure portal の既定の設定を変更できます。 設定には、非アクティブ セッションのタイムアウト、既定のビュー、メニュー モード、コントラスト、テーマ、通知、言語と地域の形式が含まれます
 keywords: 設定, タイムアウト, 言語, 地域
-ms.date: 08/05/2020
+ms.date: 03/15/2021
 ms.topic: how-to
-ms.openlocfilehash: 591b1ce6c2c069f9c0266588bf32f7303bf49708
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 067b9808a91b8e5e22fb940095779b099bad0d58
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588795"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775089"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Azure portal の設定を管理する
 

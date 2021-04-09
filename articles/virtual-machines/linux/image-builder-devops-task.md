@@ -6,13 +6,14 @@ ms.author: danis
 ms.date: 01/27/2021
 ms.topic: article
 ms.service: virtual-machines
-ms.subservice: imaging
-ms.openlocfilehash: 56f1e78e0f2bbba15b50664b88bd8808731e6836
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.subservice: image-builder
+ms.collection: linux
+ms.openlocfilehash: d02a5c6bc194009d459647721dab16be0dcade84
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807616"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670474"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure Image Builder サービスの DevOps タスク
 
@@ -21,7 +22,7 @@ ms.locfileid: "99807616"
 ## <a name="devops-task-versions"></a>DevOps タスクのバージョン
 Azure VM Image Builder (AIB) には、次の 2 つの DevOps タスクがあります。
 
-* ["安定した" AIB タスク](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder)。最新の更新プログラムと機能を取り入れ、お客様にそれらのテストを許可してから、約 1 週間後に "安定した" タスクに昇格させることができます。 
+* ["安定した" AIB タスク](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder)。これはテスト済みの最新の安定したビルドです。テレメトリには問題は示されていません。 
 
 
 * ["不安定な" AIB タスク](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary)。最新の更新プログラムと機能を取り入れ、お客様にそれらのテストを許可してから、"安定した" タスクに昇格させることができます。 問題が報告されず、テレメトリにも問題がない場合は、約 1 週間後にタスク コードを "安定" に昇格させます。 

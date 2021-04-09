@@ -11,16 +11,16 @@ ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: rohink
 ms.openlocfilehash: 2d3989b3c477a35d602f1ccf3e45d6f597f5d78d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96011569"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Azure CLI を使用して Azure DNS の DNS レコードおよびレコードセットを管理する
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](dns-operations-recordsets-portal.md)
+> * [Azure portal](dns-operations-recordsets-portal.md)
 > * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
@@ -36,7 +36,7 @@ Azure DNS で DNS レコードを作成する前に、まず、Azure DNS にお�
 
 Azure DNS における DNS レコードの詳細については、「[DNS ゾーンとレコード](dns-zones-records.md)」を参照してください。
 
-## <a name="create-a-dns-record"></a>DNS レコードの作成
+## <a name="create-a-dns-record"></a>DNS レコードを作成する
 
 DNS レコードを作成するには、`az network dns record-set <record-type> add-record` コマンドを使用します (`<record-type>` は srv や txt など、 レコードの種類です)。`az network dns record-set --help` を使用すると、ヘルプが表示されます。
 

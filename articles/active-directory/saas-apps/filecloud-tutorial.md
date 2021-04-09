@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.openlocfilehash: 34a63ce51870e32ec6e0d8398eda7114b5fcd42b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92453503"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>チュートリアル: Azure Active Directory と FileCloud の統合
@@ -41,9 +41,9 @@ FileCloud と Azure AD の統合を構成するには、次のものが必要で
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* FileCloud では、 **SP** Initiated SSO がサポートされます
+* FileCloud では、**SP** Initiated SSO がサポートされます
 
-* FileCloud では、 **Just-In-Time** ユーザー プロビジョニングがサポーされます
+* FileCloud では、**Just-In-Time** ユーザー プロビジョニングがサポーされます
 
 ## <a name="adding-filecloud-from-the-gallery"></a>ギャラリーからの FileCloud の追加
 
@@ -63,13 +63,13 @@ Azure AD への FileCloud の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **FileCloud** 」と入力し、結果ウィンドウで **[FileCloud]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**FileCloud**」と入力し、結果ウィンドウで **[FileCloud]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の FileCloud](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、FileCloud で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、FileCloud で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと FileCloud 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 FileCloud で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -166,9 +166,9 @@ FileCloud で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

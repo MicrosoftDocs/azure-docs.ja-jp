@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/04/2021
 ms.author: alkohli
 ms.openlocfilehash: 7fbb5ca43d2877e2e14914b71df7cc1bcdf27f88
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97898379"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro-fpga"></a>Azure portal を使用して Azure Stack Edge Pro FPGA の共有を管理する 
@@ -72,7 +72,7 @@ ms.locfileid: "97898379"
 
 ## <a name="add-a-local-share"></a>ローカル共有を追加する
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\) > [共有]** に移動します。 コマンド バーの **+ [共有の追加]** を選択します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[クラウド ストレージ ゲートウェイ] > [共有]** の順に移動します。 コマンド バーの **+ [共有の追加]** を選択します。
 
    ![[共有の追加] を選択する 2](media/azure-stack-edge-manage-shares/add-local-share-1.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "97898379"
 
 Azure Stack Edge Pro デバイス上でコンピューティングを構成する前に共有を作成した場合、その共有をマウントする必要があります。 共有をマウントするには、次の手順を行います。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\) > [共有]** に移動します。 共有の一覧からマウントする共有を選択します。 **[コンピューティングに使用]** 列で、選択した共有の状態に **無効** と表示されます。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[クラウド ストレージ ゲートウェイ] > [共有]** の順に移動します。 共有の一覧からマウントする共有を選択します。 **[コンピューティングに使用]** 列で、選択した共有の状態に **無効** と表示されます。
 
    ![共有を選択する 3](media/azure-stack-edge-manage-shares/select-share-mount.png)
 

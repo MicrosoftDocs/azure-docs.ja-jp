@@ -5,13 +5,14 @@ author: sread
 ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
-ms.service: multiple
-ms.openlocfilehash: 2d48c767b836771600b3491299e0bdb33aacb75b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
+ms.openlocfilehash: 7c9a9f355def492f04f47b49045fadb5afb6acd6
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733151"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950537"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Azure で Micro Focus Enterprise Developer 4.0 用の Micro Focus CICS BankDemo を設定する
 

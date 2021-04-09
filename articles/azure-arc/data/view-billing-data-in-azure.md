@@ -9,17 +9,17 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 16546432c8c0a23d5c9dc471fe8c62ced5eca993
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7ef1cd43d2efbc5ab92cc2b4cba4d237805d8921
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687534"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202656"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>課金データを Azure にアップロードして Azure portal に表示する
 
 > [!IMPORTANT] 
->  Azure Arc 対応データ サービスの使用コストは、プレビュー期間中は発生しません。 課金システムはエンド ツー エンドで動作しますが、課金メーターは $0 に設定されます。  このシナリオに従った場合、請求書の現在のエントリでは、サービスの名前は **hybrid data services (ハイブリッド データ サービス)** になり、リソースの種類は **microsoft.AzureData/`<resource type>`** という名前になります。 作成した各データ サービス - Azure Arc のレコードを表示できますが、各レコードの請求額は $0 になります。
+>  Azure Arc 対応データ サービスの使用コストは、プレビュー期間中は発生しません。 課金システムはエンド ツー エンドで動作しますが、課金メーターは $0 に設定されます。  このシナリオに従った場合、請求書の現在のエントリでは、サービスの名前は **hybrid data services (ハイブリッド データ サービス)** になり、リソースの種類は **Microsoft.AzureArcData/`<resource type>`** という名前になります。 作成した各データ サービス - Azure Arc のレコードを表示できますが、各レコードの請求額は $0 になります。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -119,7 +119,7 @@ Azure portal で課金データを表示するには、次の手順のように�
 1. スコープが、データ サービス リソースが作成されたサブスクリプションに設定されていることを確認します。
 1. ビューの上部近くにある [スコープ] セレクターの横の [ビュー] ドロップダウンで、 **[リソースごとのコスト]** を選択します。
 1. 日付フィルターが、 **[今月]** またはデータ サービス リソースを作成したときのタイミングによって意味のある他の時間範囲に設定されていることを確認します。
-1. Azure Arc 対応データ サービスの 1 つの種類にフィルターを絞り込む場合は、 **[フィルターの追加]** をクリックし、 **[リソースの種類]**  = `microsoft.azuredata/<data service type>` でフィルターを追加します。
+1. Azure Arc 対応データ サービスの 1 つの種類にフィルターを絞り込む場合は、 **[フィルターの追加]** をクリックし、 **[リソースの種類]**  = `Microsoft.AzureArcData/<data service type>` でフィルターを追加します。
 1. 作成されて Azure にアップロードされたすべてのリソースの一覧が表示されます。 課金メーターは $0 であるため、コストは常に $0 であることがわかります。
 
 ## <a name="download-billing-data"></a>課金データをダウンロードする
@@ -159,5 +159,5 @@ Azure portal で課金データ ファイルを検証できます。
 7. 生成されたフォルダーとファイルにドリルダウンし、生成された .csv ファイルの 1 つをクリックします。
 8. **[ダウンロード]** ボタンをクリックすると、ファイルがローカル環境のダウンロード フォルダーに保存されます。
 9. Excel などの .csv ファイル ビューアーを使用してファイルを開きます。
-10. 結果をフィルター処理して、**リソースの種類** = `Microsoft.AzureData/<data service resource type` の行のみを表示します。
+10. 結果をフィルター処理して、**リソースの種類** = `Microsoft.AzureArcData/<data service resource type` の行のみを表示します。
 11. 現在の 24 時間の期間中にインスタンスが使用された時間数が、UsageQuantity 列に表示されます。

@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 09/30/2020
 ms.author: mbullwin
 ms.openlocfilehash: 777e3261bd6f842861ed6622b78589eedaaf65d7
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "92043207"
 ---
 クエリ内で `@StartTime` パラメーターを使用し、1 つのタイムスタンプのメトリック データを取得します。 Metrics Advisor によって、クエリの実行時、パラメーターが `yyyy-MM-ddTHH:mm:ss` 形式の文字列に置換されます。

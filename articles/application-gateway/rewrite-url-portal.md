@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 7/16/2020
 ms.author: surmb
 ms.openlocfilehash: ec58c6f97efdbcb91071bcea98bbbc614833246d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92215775"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>Azure Application Gateway を使用して URL を書き換える - Azure portal (プレビュー)
@@ -53,13 +53,13 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
     
     c. **[次へ]** を選択します。
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="書き換えセットを追加する":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="ルールに関連付ける":::
 
 5. 書き換えルールを作成します。
 
     a. **[書き換え規則の追加]** を選択します。
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="書き換えセットを追加する":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="[書き換え規則の追加] が強調表示されたスクリーンショット。":::
     
     b. 書き換え規則の名前を **[書き換えルール名]** ボックスに入力します。 **[規則のシーケンス]** ボックスに値を入力します。
 
@@ -81,7 +81,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
     g. **[OK]** を選択します。
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-4.png" alt-text="書き換えセットを追加する":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-4.png" alt-text="Condition":::
 
  
 
@@ -95,26 +95,26 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
    d. **[URL パスの値]** に、パスの新しい値を入力します。 この例では、 **/article.aspx** を使用します 
 
-   e. **[URL クエリ文字列の値]** に、URL クエリ文字列の新しい値を入力します。 この例では、 **id={var_uri_path_1}&title={var_uri_path_2}** を使用します
+   e. **[URL クエリ文字列の値]** に、URL クエリ文字列の新しい値を入力します。 この例では、**id={var_uri_path_1}&title={var_uri_path_2}** を使用します
     
     `{var_uri_path_1}` と `{var_uri_path_1}` は、この式 `.*article/(.*)/(.*)` で条件を評価しているときに取得された部分文字列を取り込むために使用されます
     
    f. **[OK]** を選択します。
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="書き換えセットを追加する":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="操作":::
 
 8. **[作成]** をクリックして、書き換えセットを作成します。
 
 9. 新しい書き換えセットが、書き換えセットの一覧に表示されていることを確認します
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="書き換えセットを追加する":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="書き換え規則の追加":::
 
 ## <a name="verify-url-rewrite-through-access-logs"></a>アクセス ログを使用して URL の書き換えを確認する
 
 アクセス ログの以下のフィールドを確認し、想定どおりに URL の書き換えが行われたかどうか確かめます。
 
-* **originalRequestUriWithArgs** :このフィールドには元の要求 URL が含まれています
-* **requestUri** :このフィールドには、Application Gateway での書き換え操作後の URL が含まれています
+* **originalRequestUriWithArgs**:このフィールドには元の要求 URL が含まれています
+* **requestUri**:このフィールドには、Application Gateway での書き換え操作後の URL が含まれています
 
 アクセス ログのすべてのフィールドの詳細については、[こちら](application-gateway-diagnostics.md#for-application-gateway-and-waf-v2-sku)を参照してください。
 

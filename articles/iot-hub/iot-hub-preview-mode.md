@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: jlian
 ms.openlocfilehash: 864870c4392b12477c321c86afd9da848120490c
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96621707"
 ---
 # <a name="turn-on-preview-mode-for-iot-hub-to-try-select-new-features"></a>IoT Hub のプレビュー モードをオンにして、選択された新しい機能を試してみる

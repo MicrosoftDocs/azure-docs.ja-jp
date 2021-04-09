@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95996629"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同期: 既定の構成について
@@ -42,9 +42,9 @@ ms.locfileid: "95996629"
 
 次のユーザー オブジェクトは Azure AD に同期 **されません** 。
 
-* `IsPresent([isCriticalSystemObject])` 組み込み管理者アカウントなど、Active Directory の既定のオブジェクトの多くは同期されません。
-* `IsPresent([sAMAccountName]) = False` sAMAccountName 属性のないユーザー オブジェクトは同期されません。 このような局面は、現実的には NT4 からアップグレードされたドメインでのみ発生します。
-* `Left([sAMAccountName], 4) = "AAD_"`、`Left([sAMAccountName], 5) = "MSOL_"`。 Azure AD Connect 同期と以前のバージョンで使用されるサービス アカウントは同期しないでください。
+* `IsPresent([isCriticalSystemObject])`. 組み込み管理者アカウントなど、Active Directory の既定のオブジェクトの多くは同期されません。
+* `IsPresent([sAMAccountName]) = False`. sAMAccountName 属性のないユーザー オブジェクトは同期されません。 このような局面は、現実的には NT4 からアップグレードされたドメインでのみ発生します。
+* `Left([sAMAccountName], 4) = "AAD_"`, `Left([sAMAccountName], 5) = "MSOL_"`. Azure AD Connect 同期と以前のバージョンで使用されるサービス アカウントは同期しないでください。
 * Exchange Online で機能しない Exchange アカウントは同期しないでください。
   * `[sAMAccountName] = "SUPPORT_388945a0"`
   * `Left([mailNickname], 14) = "SystemMailbox{"`
@@ -60,11 +60,11 @@ ms.locfileid: "95996629"
   * 非ユニバーサル グループ (ユーザーには適用されませんが、旧システムのために存在します)
   * メールボックス プラン
   * 探索メールボックス
-* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)` レプリケーション対象オブジェクトは同期しないでください。
+* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. レプリケーション対象オブジェクトは同期しないでください。
 
 次の属性ルールが適用されます。
 
-* `sourceAnchor <- IIF([msExchRecipientTypeDetails]=2,NULL,..)` sourceAnchor 属性は、リンクされているメールボックスから提供されません。 リンクされているメールボックスが見つかった場合、後で実際のアカウントが結合されるものと想定されています。
+* `sourceAnchor <- IIF([msExchRecipientTypeDetails]=2,NULL,..)`. sourceAnchor 属性は、リンクされているメールボックスから提供されません。 リンクされているメールボックスが見つかった場合、後で実際のアカウントが結合されるものと想定されています。
 * Exchange 関連属性は、属性 **mailNickName** に値が含まれる場合にのみ同期されます。
 * 複数のフォレストが存在するとき、属性は次の順序で利用されます。
   1. サインイン関連の属性 (userPrincipalName など) はアカウントが有効になっているフォレストから提供されます。
@@ -77,17 +77,17 @@ ms.locfileid: "95996629"
 連絡先オブジェクトは次の要件を満たさないと同期されません。
 
 * 連絡先はメール対応である必要があります。 次のルールで検証されます。
-  * `IsPresent([proxyAddresses]) = True)` proxyAddresses 属性に入力する必要があります。
+  * `IsPresent([proxyAddresses]) = True)`. proxyAddresses 属性に入力する必要があります。
   * プライマリ電子メール アドレスは proxyAddresses 属性とメール属性のいずれかにあります。 \@ が存在することで、コンテンツが電子メールであることが確認されます。 これら 2 つの規則のいずれかを評価した結果、True になる必要があります。
-    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))` "SMTP:" が含まれるエントリはありますか。エントリがある場合、文字列に \@ は含まれますか。
-    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)` メール属性は入力されますか。入力される場合、文字列に \@ は含まれますか。
+    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`. "SMTP:" が含まれるエントリはありますか。エントリがある場合、文字列に \@ は含まれますか。
+    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`. メール属性は入力されますか。入力される場合、文字列に \@ は含まれますか。
 
 次の連絡先オブジェクトは Azure AD に同期 **されません** 。
 
-* `IsPresent([isCriticalSystemObject])` クリティカルとしてマークされている連絡先オブジェクトは同期されないようにします。 既定の構成を含むオブジェクトにはなりません。
-* `((InStr([displayName], "(MSOL)") > 0) && (CBool([msExchHideFromAddressLists])))`
-* `(Left([mailNickname], 4) = "CAS_" && (InStr([mailNickname], "}") > 0))` これらのオブジェクトは Exchange Online では動作しません。
-* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)` レプリケーション対象オブジェクトは同期しないでください。
+* `IsPresent([isCriticalSystemObject])`. クリティカルとしてマークされている連絡先オブジェクトは同期されないようにします。 既定の構成を含むオブジェクトにはなりません。
+* `((InStr([displayName], "(MSOL)") > 0) && (CBool([msExchHideFromAddressLists])))`.
+* `(Left([mailNickname], 4) = "CAS_" && (InStr([mailNickname], "}") > 0))`. これらのオブジェクトは Exchange Online では動作しません。
+* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. レプリケーション対象オブジェクトは同期しないでください。
 
 ### <a name="group-out-of-box-rules"></a>グループの既定のルール
 グループ オブジェクトは次の要件を満たさないと同期されません。
@@ -100,10 +100,10 @@ ms.locfileid: "95996629"
 
 次のグループ オブジェクトは Azure AD に同期 **されません** 。
 
-* `IsPresent([isCriticalSystemObject])` 組み込み管理者グループなど、Active Directory の既定のオブジェクトの多くは同期されません。
-* `[sAMAccountName] = "MSOL_AD_Sync_RichCoexistence"` DirSync で使用される旧グループ。
-* `BitAnd([msExchRecipientTypeDetails],&amp;H40000000)` ロール グループ。
-* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)` レプリケーション対象オブジェクトは同期しないでください。
+* `IsPresent([isCriticalSystemObject])`. 組み込み管理者グループなど、Active Directory の既定のオブジェクトの多くは同期されません。
+* `[sAMAccountName] = "MSOL_AD_Sync_RichCoexistence"`. DirSync で使用される旧グループ。
+* `BitAnd([msExchRecipientTypeDetails],&amp;H40000000)`. ロール グループ。
+* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. レプリケーション対象オブジェクトは同期しないでください。
 
 ### <a name="foreignsecurityprincipal-out-of-box-rules"></a>ForeignSecurityPrincipal の既定のルール
 FSP はメタバースの "あらゆる" (\*) オブジェクトに参加します。 この結合は、現実的にはユーザーとセキュリティ グループのみで発生します。 この構成により、フォレスト間のメンバーシップが解決され、Azure AD に正しく表示されます。
@@ -111,7 +111,7 @@ FSP はメタバースの "あらゆる" (\*) オブジェクトに参加しま�
 ### <a name="computer-out-of-box-rules"></a>コンピューターの既定のルール
 コンピューター オブジェクトは次の要件を満たさないと同期されません。
 
-* `userCertificate ISNOTNULL` Windows 10 コンピューターでのみこの属性が入力されます。 この属性に値があるすべてのコンピューター オブジェクトが同期されます。
+* `userCertificate ISNOTNULL`. Windows 10 コンピューターでのみこの属性が入力されます。 この属性に値があるすべてのコンピューター オブジェクトが同期されます。
 
 ## <a name="understanding-the-out-of-box-rules-scenario"></a>既定のルールのシナリオを理解する
 この例では、1 つのアカウント フォレスト (A)、1 つのリソース フォレスト (R)、1 つの Azure AD ディレクトリが含まれるデプロイを使用します。

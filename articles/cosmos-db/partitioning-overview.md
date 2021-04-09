@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/12/2020
-ms.openlocfilehash: b91c846b5a79125c1cee9c36ce81b5c3d3229ba9
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.date: 03/19/2021
+ms.openlocfilehash: ab1b7028ce5f1afef861e696c98f25b56e78ef36
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627774"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104772469"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割と水平スケーリング
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -63,8 +63,6 @@ Azure Cosmos DB では、論理パーティションの物理パーティショ�
 Azure Cosmos DB は、ハッシュベースのパーティション分割を使用して、論理パーティションを物理パーティションに分散します。 Azure Cosmos DB では、項目のパーティション キー値をハッシュします。 ハッシュの結果で、物理パーティションが決定します。 次に、Azure Cosmos DB が物理パーティションに対し、パーティション キー ハッシュのキー空間を均等に割り当てます。
 
 ストアド プロシージャまたはトリガー内のトランザクションは、1 つの論理パーティション内の項目に対してのみ使用できます。
-
-[Azure Cosmos DB でパーティションを管理する方法](partitioning-overview.md)の詳細を参照できます。 (アプリケーションをビルドまたは実行するために内部の詳細を理解する必要はありませんが、興味がある方のためにここに追加されています。)
 
 ## <a name="replica-sets"></a>レプリカ セット
 

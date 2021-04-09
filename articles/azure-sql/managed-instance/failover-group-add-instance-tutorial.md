@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: sashan
 ms.date: 08/27/2019
 ms.openlocfilehash: 1609f188af8ffb58251edc806e19f7820a6b0869
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99525723"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>チュートリアル:フェールオーバー グループに SQL Managed Instance を追加する
@@ -386,7 +386,7 @@ PowerShell を使用して、リソース グループとプライマリ マネ�
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| コマンド | メモ |
+| コマンド | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Azure リソース グループを作成します。  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 仮想ネットワークを作成します。  |
@@ -716,7 +716,7 @@ PowerShell を使用してセカンダリ マネージド インスタンスを�
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| コマンド | メモ |
+| コマンド | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Azure リソース グループを作成します。  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 仮想ネットワークを作成します。  |
@@ -1121,7 +1121,7 @@ Write-host "Removing residual resources and resource group..."
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| コマンド | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Azure リソース グループを作成します。  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 仮想ネットワークを作成します。  |

@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: windows
 ms.date: 03/30/2018
-ms.openlocfilehash: eb1b05afbaa57fb86033c568142da32443adc1f9
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: b9b10e2ed58a41cee99e7e6ef1c3994035460407
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102559784"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601862"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
 
@@ -120,7 +120,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "West US"
 ```
 
-次の例では、VM アクセス拡張機能を使って、Windows VM の管理パスワードを一時パスワードにリセットします。 VM アクセス拡張機能について詳しくは、[Windows VM でのリモート デスクトップ サービスのリセット](../troubleshooting/reset-rdp.md)に関する記事をご覧ください。 これを実行した後は、最初のログイン時にパスワードをリセットします。
+次の例では、VM アクセス拡張機能を使って、Windows VM の管理パスワードを一時パスワードにリセットします。 VM アクセス拡張機能について詳しくは、[Windows VM でのリモート デスクトップ サービスのリセット](/troubleshoot/azure/virtual-machines/reset-rdp)に関する記事をご覧ください。 これを実行した後は、最初のログイン時にパスワードをリセットします。
 
 ```powershell
 $cred=Get-Credential

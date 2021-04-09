@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 05/13/2020
 ms.author: aahi
 ms.openlocfilehash: 2cfef9626983ed0fa120e11bbfebdc2a38d91096
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97506319"
 ---
 Text Analytics v3 クライアント ライブラリの最新バージョンを使用するには、`Azure.AI.TextAnalytics` 名前空間で最新のソフトウェア パッケージをダウンロードする必要があります。 [クイックスタートの記事](../quickstarts/client-libraries-rest-api.md)の「**設定**」セクションには、目的の言語に使用できるコマンドと共に、コード例が記載されています。

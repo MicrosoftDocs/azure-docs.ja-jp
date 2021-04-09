@@ -16,13 +16,13 @@ ms.author: kenwith
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 32a6034f407bd81e5d2d2ab8227d08a67f034d4c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99258644"
 ---
-# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>方法:Azure AD SAML トークン暗号化の構成
+# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Azure AD SAML トークン暗号化の構成方法
 
 > [!NOTE]
 > トークン暗号化は、Azure Active Directory (Azure AD) のプレミアム機能です。 Azure AD のエディション、機能、および価格について詳しくは、[Azure AD の価格](https://azure.microsoft.com/pricing/details/active-directory/)に関するページをご覧ください。
@@ -59,7 +59,7 @@ Azure portal 内で、アプリケーション構成にパブリック証明書�
 
 1. **[Azure Active Directory] > [エンタープライズ アプリケーション]** ブレードに移動し、トークン暗号化を構成するアプリケーションを選択します。
 
-1. アプリケーションのページで、 **[トークン暗号化]** を選択します。
+1. アプリケーションのページで、**[トークン暗号化]** を選択します。
 
     ![Azure portal のトークン暗号化オプション](./media/howto-saml-token-encryption/token-encryption-option-small.png)
 
@@ -78,9 +78,9 @@ Azure portal 内で、アプリケーション構成にパブリック証明書�
 
 ### <a name="to-deactivate-token-encryption-in-the-azure-portal"></a>Azure portal でトークン暗号化を非アクティブ化するには
 
-1. Azure portal で、 **[Azure Active Directory] > [エンタープライズ アプリケーション]** に移動し、SAML トークン暗号化が有効化されたアプリケーションを選択します。
+1. Azure portal で、**[Azure Active Directory] > [エンタープライズ アプリケーション]** に移動し、SAML トークン暗号化が有効化されたアプリケーションを選択します。
 
-1. アプリケーションのページで、 **[トークン暗号化]** を選択し、証明書を検索した後、 **[...]** オプションを選択してドロップダウン メニューを表示します。
+1. アプリケーションのページで、**[トークン暗号化]** を選択し、証明書を検索した後、**[...]** オプションを選択してドロップダウン メニューを表示します。
 
 1. **[トークン暗号化証明書の非アクティブ化]** を選択します。
 
@@ -88,7 +88,7 @@ Azure portal 内で、アプリケーション構成にパブリック証明書�
 
 暗号化証明書は、`encrypt` 使用タグを使用して Azure AD 内のアプリケーション オブジェクトに格納されます。 暗号化証明書は複数構成できます。トークンの暗号化用にアクティブ化された証明書は、`tokenEncryptionKeyID` 属性によって識別されます。
 
-Microsoft Graph API または PowerShell を使用してトークン暗号化を構成するには、アプリケーションのオブジェクト ID が必要になります。 この値はプログラムによって検索することもでき、Azure portal でアプリケーションの **[プロパティ]** に移動して、 **[オブジェクト ID]** の値を見て確認することもできます。
+Microsoft Graph API または PowerShell を使用してトークン暗号化を構成するには、アプリケーションのオブジェクト ID が必要になります。 この値はプログラムによって検索することもでき、Azure portal でアプリケーションの **[プロパティ]** に移動して、**[オブジェクト ID]** の値を見て確認することもできます。
 
 Graph、PowerShell、またはアプリケーション マニフェストを使用して keyCredential を構成する場合は、keyId に使用する GUID を生成する必要があります。
 
@@ -140,11 +140,11 @@ Graph、PowerShell、またはアプリケーション マニフェストを使�
 
 ### <a name="to-configure-token-encryption-using-the-application-manifest"></a>アプリケーション マニフェストを使用してトークン暗号化を構成するには
 
-1. Azure portal から、 **[Azure Active Directory] > [アプリの登録]** に移動します。
+1. Azure portal から、**[Azure Active Directory] > [アプリの登録]** に移動します。
 
 1. ドロップダウン リストから **[すべてのアプリ]** 選択してすべてのアプリを表示し、構成するエンタープライズ アプリケーションを選択します。
 
-1. アプリケーションのページで、 **[マニフェスト]** を選択して [アプリケーション マニフェスト](../develop/reference-app-manifest.md)を編集します。
+1. アプリケーションのページで、**[マニフェスト]** を選択して [アプリケーション マニフェスト](../develop/reference-app-manifest.md)を編集します。
 
 1. `tokenEncryptionKeyId` 属性の値を設定します。
 

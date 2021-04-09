@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/22/2020
-ms.openlocfilehash: 010cfc307d2b2c10c31168fce73673fb1fb611b8
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.date: 03/08/2021
+ms.openlocfilehash: 8812806e535e8e34ca07fdb13e6223bfa0c91d6b
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807650"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449613"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory と Azure Purview を接続する方法
 
@@ -73,7 +73,7 @@ ms.locfileid: "99807650"
 
 Purview ユーザーがアクセス権を持つ Data Factory を登録すると、バックエンドで以下が実行されます。
 
-1. **Data Factory MSI** が次の Purview RBAC ロールに追加されます: **Purview データ キュレーター**。
+1. **Data Factory マネージド ID** が次の Purview RBAC ロールに追加されます: **Purview データ キュレーター**。
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="Azure Data Factory MSI を示すスクリーンショット。" lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
      
@@ -88,76 +88,92 @@ Data Factory 接続を削除するには、次の操作を行います。
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="接続を削除する Data Factory を選択する方法を示すスクリーンショット。" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 
-## <a name="configure-a-self-hosted-ir-to-collect-lineage-from-on-prem-sql"></a>オンプレミスの SQL から系列を収集するようにセルフホステッド IR を構成する
+## <a name="configure-a-self-hosted-integration-runtime-to-collect-lineage"></a>系列を収集するようにセルフホステッド統合ランタイムを構成する
 
-Data Factory のコピー アクティビティの系列は、オンプレミスの SQL データベースで使用できます。 Azure Data Factory でのデータ移動のためにセルフホステッド統合ランタイムを実行しており、Azure Purview で系列をキャプチャしたい場合は、バージョンが 4.8.7418.1 以降であることを確認してください。 セルフホステッド統合ランタイムの詳細については、「[セルフホステッド統合ランタイムを作成して構成する](../data-factory/create-self-hosted-integration-runtime.md)」を参照してください。
+Data Factory のコピー アクティビティの系列は、SQL データベースなどのオンプレミス データ ストアで使用できます。 Azure Data Factory でのデータ移動のためにセルフホステッド統合ランタイムを実行しており、Azure Purview で系列をキャプチャしたい場合は、バージョンが 5.0 以降であることを確認してください。 セルフホステッド統合ランタイムの詳細については、「[セルフホステッド統合ランタイムを作成して構成する](../data-factory/create-self-hosted-integration-runtime.md)」を参照してください。
 
 ## <a name="supported-azure-data-factory-activities"></a>サポートされる Azure Data Factory アクティビティ
 
 Azure Purview は、次の Azure Data Factory アクティビティからランタイムの系列をキャプチャします。
 
-- データをコピーする
-- Data Flow
-- SSIS パッケージの実行
+- [[データのコピー]](../data-factory/copy-activity-overview.md)
+- [データ フロー](../data-factory/concepts-data-flow-overview.md)
+- [SSIS パッケージの実行](../data-factory/how-to-invoke-ssis-package-ssis-activity.md)
 
 > [!IMPORTANT]
 > ソースまたは宛先でサポートされていないデータ ストレージ システムが使用されている場合、Azure Purview は系列を削除します。
 
 以降のセクションで説明されているように、Data Factory と Purview の間の統合では、Data Factory がサポートするデータ システムのサブセットのみがサポートされています。
 
-### <a name="data-factory-copy-data-support"></a>Data Factory のデータ コピーのサポート
+### <a name="data-factory-copy-activity-support"></a>Data Factory のコピー アクティビティのサポート
 
-| データ ストレージ システム | ソースとしてサポート | 
+| データ ストア | サポートされています | 
 | ------------------- | ------------------- | 
-| ADLS Gen1 | はい | 
-| ADLS Gen2 | はい | 
-| Azure BLOB | はい |
-| Azure Cosmos DB (SQL API) | はい | 
-| Azure Cosmos DB (Mongo API) | はい |
+| Azure Blob Storage | はい |
 | Azure Cognitive Search | はい | 
-| Azure Data Explorer | はい | 
+| Azure Cosmos DB (SQL API) \* | はい | 
+| Azure Cosmos DB の MongoDB 用 API \* | はい |
+| Azure Data Explorer \* | はい | 
+| Azure Data Lake Storage Gen1 | はい | 
+| Azure Data Lake Storage Gen2 | はい | 
 | Azure Database for Maria DB \* | はい | 
-| Azure Database for MYSQL \* | はい | 
+| Azure Database for MySQL \* | はい | 
 | Azure Database for PostgreSQL \* | はい |
 | Azure File Storage | はい | 
-| Azure Table Storage | はい |
 | Azure SQL Database \* | はい | 
-| Azure SQL MI \* | はい | 
-| Azure Synapse Analytics (以前の SQL DW) \* | はい | 
-| オンプレミスの SQL Server \* | はい | 
+| Azure SQL Managed Instance \* | はい | 
+| Azure Synapse Analytics \* | はい | 
+| Azure Table Storage | はい |
 | Amazon S3 | はい | 
-| Teradata | はい | 
-| SAP テーブル コネクタ | はい |
-| SAP ECC | はい | 
-| Hive | はい | 
+| Hive \* | はい | 
+| SAP ECC \* | はい |
+| SAP テーブル | はい |
+| SQL Server \* | はい | 
+| Teradata \* | はい |
+
+*\* Azure Purview は現在、系列またはスキャンのためのクエリやストアド プロシージャをサポートしていません。系列は、テーブルとビューのソースだけに制限されています。*
 
 > [!Note]
 > Data Factory のコピー アクティビティでは、系列の機能で特定のパフォーマンスのオーバーヘッドが発生します。 Purview で Data Factory 接続を設定している場合は、特定のコピー ジョブが完了するまでの時間が長くなることがあります。 この影響は多くの場合、とても無視できません。 コピー ジョブが完了するまでの時間が通常より大幅に長くなっている場合は、その時間の比較をサポートに連絡してください。
 
+#### <a name="known-limitations-on-copy-activity-lineage"></a>コピー アクティビティの系列に関する既知の制限事項
+
+現在、次のコピー アクティビティの機能を使用する場合、系列はまだサポートされていません。
+
+- バイナリ形式を使用して Azure Data Lake Storage Gen1 にデータをコピーする。
+- PolyBase または COPY ステートメントを使用して、Azure Synapse Analytics にデータをコピーする。
+- バイナリ、区切りテキスト、Excel、JSON、および XML ファイルの圧縮設定。
+- Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics、SQL Server、および SAP テーブルのソース パーティション オプション。
+- ファイルベースのストアのソース パーティション検出オプション。
+- ファイルごとの最大行数設定を使用して、ファイルベースのシンクにデータをコピーする。
+- コピー中に列を追加する。
+
 ### <a name="data-factory-data-flow-support"></a>Data Factory Data Flow のサポート
 
-| データ ストレージ システム | サポートされています |
+| データ ストア | サポートされています |
 | ------------------- | ------------------- | 
-| ADLS Gen1 | はい |
-| ADLS Gen2 | はい |
-| Azure BLOB | はい |
+| Azure Blob Storage | はい |
+| Azure Data Lake Storage Gen1 | はい |
+| Azure Data Lake Storage Gen2 | はい |
 | Azure SQL Database \* | はい |
-| Azure Synapse Analytics (以前の SQL DW) \* | はい |
+| Azure Synapse Analytics \* | はい |
+
+*\* Azure Purview は現在、系列またはスキャンのためのクエリやストアド プロシージャをサポートしていません。系列は、テーブルとビューのソースだけに制限されています。*
 
 ### <a name="data-factory-execute-ssis-package-support"></a>Data Factory の SSIS パッケージの実行のサポート
 
-| データ ストレージ システム | サポートされています |
+| データ ストア | サポートされています |
 | ------------------- | ------------------- |
-| Azure BLOB | はい |
-| ADLS Gen1 | はい |
-| ADLS Gen2 | はい |
-| Azure SQL Database \* | はい |
-| Azure SQL MI \*| はい |
-| Azure Synapse Analytics (以前の SQL DW) \* | はい |
-| オンプレミスの SQL Server \* | はい |
+| Azure Blob Storage | はい |
+| Azure Data Lake Storage Gen1 | はい |
+| Azure Data Lake Storage Gen2 | はい |
 | Azure File Storage | はい |
+| Azure SQL Database \* | はい |
+| Azure SQL Managed Instance \*| はい |
+| Azure Synapse Analytics \* | はい |
+| SQL Server \* | はい |
 
-*\* SQL (Azure およびオンプレミス) のシナリオの場合、Azure Purview は、系列またはスキャンのためのストアド プロシージャやスクリプトをサポートしていません。系列は、テーブルとビューのソースだけに制限されています。*
+*\* Azure Purview は現在、系列またはスキャンのためのクエリやストアド プロシージャをサポートしていません。系列は、テーブルとビューのソースだけに制限されています。*
 
 > [!Note]
 > Azure Data Lake Storage Gen2 の一般提供が開始されました。 今すぐ使用を開始することをお勧めします。 詳細については、[製品に関するページ](https://azure.microsoft.com/en-us/services/storage/data-lake-storage/)を参照してください。
@@ -172,7 +188,7 @@ Azure Purview でサポートされる系列のパターンはいくつかあり
 
 - **[系列]** タブで、図形をマウスでポイントすると、そのアセットに関する追加情報がツールヒントにプレビューされます。
 - ノードまたはエッジを選択すると、それが属するアセットの種類が表示されるか、またはアセットが切り替えられます。
-- **[系列]** タブの左側には、データセットの列が表示されます。列レベルの系列の詳細については、「[列レベルの系列](catalog-lineage-user-guide.md#column-level-lineage)」を参照してください。
+- **[系列]** タブの左側には、データセットの列が表示されます。列レベルの系列の詳細については、「[データセット列の系列](catalog-lineage-user-guide.md#dataset-column-lineage)」を参照してください。
 
 ### <a name="data-lineage-for-11-operations"></a>1:1 の操作のデータ系列
 

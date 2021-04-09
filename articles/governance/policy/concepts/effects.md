@@ -1,14 +1,14 @@
 ---
 title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
-ms.date: 10/05/2020
+ms.date: 02/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: e72e94766dce2660409e729bc43eb107fb9ab39a
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 67445b3d0d63b3827f82822de00412bdab67c5ab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883080"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741822"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -17,7 +17,7 @@ Azure Policy 内の各ポリシー定義には単一の効果があります。 
 現在、ポリシー定義では次の効果がサポートされています。
 
 - [Append](#append)
-- [Audit](#audit)
+- [監査](#audit)
 - [AuditIfNotExists](#auditifnotexists)
 - [Deny](#deny)
 - [DeployIfNotExists](#deployifnotexists)
@@ -208,7 +208,7 @@ AuditIfNotExists 効果の **details** プロパティは、照合する関連�
 }
 ```
 
-## <a name="deny"></a>Deny
+## <a name="deny"></a>拒否
 
 Deny は、ポリシーを通して定義された基準に一致していないために失敗するリソース要求を防ぐために使用されます。
 
@@ -266,8 +266,7 @@ AuditIfNotExists と同様に、DeployIfNotExists ポリシー定義は条件が
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists の評価
 
-DeployIfNotExists は、リソースプロバイダーでリソースの作成または更新要求が処理され、成功を示す状態コードが返されてから約 15 分後に実行されます。 関連するリソースがない場合、または **ExistenceCondition** によって定義されたリソースが true と評価されない場合、テンプレートのデプロイが発生します。
-デプロイの時間は、テンプレートに含まれるリソースの複雑さによって異なります。
+DeployIfNotExists は、リソースプロバイダーによって、サブスクリプションまたはリソースの作成または更新要求が処理され、成功を示す状態コードが返されてから約 15 分後に実行されます。 関連するリソースがない場合、または **ExistenceCondition** によって定義されたリソースが true と評価されない場合、テンプレートのデプロイが発生します。 デプロイの時間は、テンプレートに含まれるリソースの複雑さによって異なります。
 
 評価サイクル中は、リソースを照合する DeployIfNotExists 効果があるポリシー定義は非準拠としてマークされ、リソースに対するアクションは実行されません。 準拠していない既存のリソースは、[修復タスク](../how-to/remediate-resources.md)で修復できます。
 
@@ -482,8 +481,7 @@ EnforceRegoPolicy 効果の **details** プロパティには、Gatekeeper v2 �
 
 ## <a name="modify"></a>変更
 
-Modify は、作成時または更新時にリソースのプロパティまたはタグを追加、更新、または削除するために使用されます。
-一般的な例としては、コスト センターなどのリソースでタグを更新することが挙げられます。 準拠していない既存のリソースは、[修復タスク](../how-to/remediate-resources.md)で修復できます。 1 つの Modify 規則には、任意の数の操作を含めることができます。
+Modify は、作成時または更新時に、サブスクリプションまたはリソースのプロパティまたはタグを追加、更新、または削除するために使用されます。 一般的な例としては、コスト センターなどのリソースでタグを更新することが挙げられます。 準拠していない既存のリソースは、[修復タスク](../how-to/remediate-resources.md)で修復できます。 1 つの Modify 規則には、任意の数の操作を含めることができます。
 
 Modify では次の操作がサポートされています。
 
@@ -571,7 +569,7 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
 
 **operation** プロパティには、次のオプションが用意されています。
 
-|操作 |説明 |
+|Operation |説明 |
 |-|-|
 |addOrReplace |プロパティまたはタグが別の値で既に存在する場合でも、定義されたプロパティまたはタグと値をリソースに追加します。 |
 |追加 |定義されたプロパティまたはタグと値をリソースに追加します。 |

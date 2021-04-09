@@ -3,21 +3,22 @@ title: Azure Image Builder テンプレートを作成する (プレビュー)
 description: Azure Image Builder で使用するテンプレートを作成する方法について説明します。
 author: danielsollondon
 ms.author: danis
-ms.date: 08/13/2020
+ms.date: 03/02/2021
 ms.topic: reference
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: image-builder
+ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: 9ae477dd04237e285915157615dcb6a6b841ca99
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: aaaabe758b036335062907c8e5549ae876c63997
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678257"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594735"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>プレビュー:Azure Image Builder テンプレートを作成する 
 
-Azure Image Builder では、.json ファイルを使って Image Builder サービスに情報を渡します。 この記事では、独自のテンプレートを作成できるように、json ファイルの各セクションについて説明します。 完全な .json ファイルの例を確認するには、[Azure Image Builder の GitHub](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts) をご覧ください。
+Azure Image Builder では、.json ファイルを使って Image Builder サービスに情報を渡します。 この記事では、独自のテンプレートを作成できるように、json ファイルの各セクションについて説明します。 完全な .json ファイルの例を確認するには、[Azure Image Builder の GitHub](https://github.com/Azure/azvmimagebuilder/tree/main/quickquickstarts) をご覧ください。
 
 テンプレートの基本的な形式を次に示します。
 
@@ -248,7 +249,7 @@ Image Builder では、複数の "カスタマイザー" がサポートされ�
 - 1 つのカスタマイザーが失敗した場合、カスタマイズ コンポーネント全体が失敗し、エラーが報告されます。
 - テンプレートで使う前に、スクリプトを十分にテストすることを強くお勧めします。 独自の VM でスクリプトをデバッグする方が簡単です。
 - スクリプト内には機密データを記述しないでください。 
-- [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage) を使っていない場合は、パブリックにアクセスできる場所にスクリプトを置く必要があります。
+- [MSI](./image-builder-user-assigned-identity.md) を使っていない場合は、パブリックにアクセスできる場所にスクリプトを置く必要があります。
 
 ```json
         "customize": [
@@ -308,11 +309,28 @@ OS のサポート: Linux
 - **sha256Checksum** - ファイルの sha256 チェックサムの値。これをローカルで生成すると、Image Builder によってチェックサムと検証が実行されます。
     * Mac/Linux のターミナルを使用して sha256Checksum を生成するには、`sha256sum <fileName>` を実行します。
 
-
-スーパー ユーザー特権で実行するコマンドについては、`sudo` を先頭に付ける必要があります。
-
 > [!NOTE]
 > インライン コマンドはイメージ テンプレート定義の一部として格納されます。イメージ定義をダンプ出力したときに、これらのコマンドを確認できます。また、トラブルシューティングのためにサポート ケースが発生した場合に、Microsoft サポートでこれらのコマンドを表示することもできます。 機密性の高いコマンドまたは値がある場合は、それらをスクリプトに移動し、ユーザー ID を使用して Azure Storage に対する認証を行うことを強くお勧めします。
+
+#### <a name="super-user-privileges"></a>スーパー ユーザー特権
+先頭に `sudo` がある、スーパーユーザー特権で実行するコマンドは、スクリプトに追加したり、次の例のように inline コマンドで使用したりすることができます。
+```json
+                "type": "Shell",
+                "name": "setupBuildPath",
+                "inline": [
+                    "sudo mkdir /buildArtifacts",
+                    "sudo cp /tmp/index.html /buildArtifacts/index.html"
+```
+sudo を使用したスクリプトの例。scriptUri を使用して参照できます。
+```bash
+#!/bin/bash -e
+
+echo "Telemetry: creating files"
+mkdir /myfiles
+
+echo "Telemetry: running sudo 'as-is' in a script"
+sudo touch /myfiles/somethingElevated.txt
+```
 
 ### <a name="windows-restart-customizer"></a>Windows 再起動カスタマイザー 
 再起動カスタマイザーでは、Windows VM を再起動して、オンラインに戻るのを待機することができます。これにより、再起動が必要なソフトウェアをインストールできます。  
@@ -373,7 +391,7 @@ OS のサポート: Windows と Linux
 - **validExitCodes** - 省略可能。スクリプト/インライン コマンドから返すことができる有効なコード。これにより、スクリプト/インライン コマンドの報告済みエラーが回避されます。
 - **runElevated** - 省略可能。ブール値。昇格されたアクセス許可でコマンドとスクリプトを実行するためのサポート。
 - **sha256Checksum** - ファイルの sha256 チェックサムの値。これをローカルで生成すると、Image Builder によってチェックサムと検証が実行されます。
-    * Windows で PowerShell を使用して sha256Checksum を生成するには、[Get-Hash](/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6) を実行します。
+    * Windows で PowerShell を使用して sha256Checksum を生成するには、[Get-Hash](/powershell/module/microsoft.powershell.utility/get-filehash) を実行します。
 
 
 ### <a name="file-customizer"></a>ファイル カスタマイザー
@@ -397,6 +415,10 @@ OS のサポート: Linux、Windows
 ファイル カスタマイザーのプロパティ:
 
 - **sourceUri** - アクセス可能なストレージ エンドポイント。GitHub または Azure Storage を指定できます。 ダウンロードできるのは 1 つのファイルだけであり、ディレクトリ全体はできません。 ディレクトリをダウンロードする必要がある場合は、圧縮されたファイルを使用し、シェルまたは PowerShell カスタマイザーを使って圧縮を解除します。 
+
+> [!NOTE]
+> sourceUri が Azure Storage アカウントの場合、BLOB が public としてマークされているかどうかにかかわらず、BLOB での読み取りアクセス許可をマネージド ユーザー ID に付与します。 ストレージのアクセス許可を設定するには、この[例](./image-builder-user-assigned-identity.md#create-a-resource-group)を参照してください。
+
 - **destination** - これは、ターゲットの完全なパスとファイル名です。 参照されているすべてのパスとサブディレクトリが存在する必要があり、事前にたこれらを設定するにはシェルまたは PowerShell カスタマイザーを使います。 スクリプト カスタマイザーを使ってパスを作成できます。 
 
 これは Windows のディレクトリと Linux のパスでサポートされていますが、いくつか違いがあります。 
@@ -408,8 +430,6 @@ OS のサポート: Linux、Windows
 
 > [!NOTE]
 > ファイル カスタマイザーは、小さいファイルのダウンロード (20 MB 未満) にのみ適しています。 大きいファイルをダウンロードする場合は、スクリプトまたはインライン コマンド (ファイルをダウンロードするための使用コード) を使用します。たとえば、Linux の場合は `wget` または `curl`、Windows の場合は `Invoke-WebRequest` などがあります。
-
-ファイル カスタマイザーのファイルは、[MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage) を使って Azure Storage からダウンロードできます。
 
 ### <a name="windows-update-customizer"></a>Windows Update カスタマイザー
 このカスタマイザーは、Packer の[コミュニティ Windows Update Provisioner](https://packer.io/docs/provisioners/community-supported.html) に基づいて構築されたオープン ソース プロジェクトで、Packer コミュニティによって管理されています。 Microsoft では、Image Builder サービスを使ってプロビジョナーをテストおよび検証し、問題の調査を支援して、解決に取り組んでいきますが、正式にはこのオープン ソース プロジェクトをサポートしていません。 Windows Update Provisioner の詳細なドキュメントとヘルプについては、プロジェクトのリポジトリを参照してください。
@@ -436,7 +456,7 @@ OS support: Windows
 - **updateLimit** – 省略可能。インストールできる更新プログラムの数を定義します。既定値は 1000 です。
  
 > [!NOTE]
-> Windows Update カスタマイザーは、保留中の Windows の再起動や、まだ実行中のアプリケーションのインストールがある場合に失敗する可能性があります。このエラー `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` は、通常、customization.log で確認できます。 Windows Update を実行する前に、Windows の再起動を取り入れることや、インライン コマンドやスクリプトに "sleep" や待機のコマンド (https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep?view=powershell-7) を追加して、アプリケーションにインストールを完了するのに十分な時間を与えることをお勧めします。
+> Windows Update カスタマイザーは、保留中の Windows の再起動や、まだ実行中のアプリケーションのインストールがある場合に失敗する可能性があります。このエラー `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` は、通常、customization.log で確認できます。 Windows Update を実行する前に、Windows の再起動を取り入れることや、インライン コマンドやスクリプトに [sleep](/powershell/module/microsoft.powershell.utility/start-sleep) や待機のコマンドを追加して、アプリケーションにインストールを完了するのに十分な時間を与えることを強くお勧めします。
 
 ### <a name="generalize"></a>Generalize 
 既定の Azure Image Builder では、イメージを "一般化" するため、各イメージ カスタマイズ フェーズの最後に "プロビジョニング解除" コードも実行されます。 一般化とは、複数の VM を作成するために再利用できるようにイメージを設定するプロセスです。 Windows VM の Azure Image Builder では、Sysprep が使われます。 Linux の Azure Image Builder では、"waagent -deprovision" が使われます。 
@@ -677,4 +697,4 @@ az resource invoke-action \
 
 ## <a name="next-steps"></a>次のステップ
 
-さまざまなシナリオの .json ファイルのサンプルが、[Azure Image Builder の GitHub](https://github.com/danielsollondon/azvmimagebuilder) にあります。
+さまざまなシナリオの .json ファイルのサンプルが、[Azure Image Builder の GitHub](https://github.com/azure/azvmimagebuilder) にあります。

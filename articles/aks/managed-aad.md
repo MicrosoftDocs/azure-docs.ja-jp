@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 7f6cf503a459175e3109a515b666bbeaa3a25b4d
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 2cf72da8f7ca82c37088cd6456f094ada2580982
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550001"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103418965"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS マネージド Azure Active Directory 統合
 
@@ -25,6 +25,7 @@ AKS マネージド Azure AD 統合は、Azure AD の統合エクスペリエン
 ## <a name="limitations"></a>制限事項 
 
 * AKS マネージド Azure AD 統合は無効にできません
+* AKS マネージド Azure AD 統合クラスターをレガシ AAD に変更することはできません
 * AKS マネージド Azure AD 統合では、Kubernetes RBAC に対応していないクラスターはサポートされません
 * AKS マネージド Azue AD 統合に関連付けられている Azure AD テナントの変更はサポートされません
 
@@ -35,7 +36,7 @@ AKS マネージド Azure AD 統合は、Azure AD の統合エクスペリエン
 * [helm](https://github.com/helm/helm) を使用している場合は、helm 3.3 以降
 
 > [!Important]
-> バージョン 1.18.1 以降の kubectl、または kubelogin を使用する必要があります。 適切なバージョンを使用しない場合は、認証の問題が発生します。
+> バージョン 1.18.1 以降の kubectl、または kubelogin を使用する必要があります。 Kubernetes と kubectl のマイナー バージョンの差は、1 バージョンを超えることはできません。 適切なバージョンを使用しない場合は、認証の問題が発生します。
 
 kubectl および kubelogin をインストールするには、次のコマンドを使用します。
 
@@ -231,6 +232,70 @@ Azure portal で [Azure Active Directory] に移動し、 *[エンタープラ�
 
 :::image type="content" source="./media/managed-aad/conditional-access-sign-in-activity.png" alt-text="条件付きアクセス ポリシーにより失敗したサインインのエントリ":::
 
+## <a name="configure-just-in-time-cluster-access-with-azure-ad-and-aks"></a>Azure AD と AKS を使用して Just-In-Time クラスター アクセスを構成する
+
+クラスター アクセス制御のもう 1 つの選択肢は、Just-In-Time 要求に Privileged Identity Management (PIM) を使用することです。
+
+>[!NOTE]
+> PIM は、Premium P2 SKU を必要とする Azure AD Premium 機能です。 Azure AD SKU の詳細については、[料金ガイド][aad-pricing]を参照してください。
+
+AKS マネージド Azure AD 統合を使用して、Just-In-Time アクセス要求を AKS クラスターに統合するには、次の手順を実行します。
+
+1. Azure portal の上部で、[Azure Active Directory] を検索して選択します。
+1. テナント ID (以下の残りの手順にある `<tenant-id>`) をメモしておきます。:::image type="content" source="./media/managed-aad/jit-get-tenant-id.png" alt-text="Web ブラウザーで、Azure Active Directory の Azure portal 画面にテナント ID が強調表示されています。":::
+1. 左側の Azure Active Directory のメニューにある *[管理]* で *[グループ]* を選択し、 *[新しいグループ]* を選択します。
+    :::image type="content" source="./media/managed-aad/jit-create-new-group.png" alt-text="[新しいグループ] オプションが強調表示されている Azure portal の Active Directory グループ画面を示します。":::
+1. グループの種類として *[セキュリティ]* が選択されていることを確認し、*myJITGroup* などのグループ名を入力します。 *[グループに Azure AD ロールを割り当てることができる (プレビュー)]* で *[はい]* を選択します。 最後に、 *[作成]* を選択します。
+    :::image type="content" source="./media/managed-aad/jit-new-group-created.png" alt-text="Azure portal の新しいグループ作成画面を示します。":::
+1. *[グループ]* ページに戻ります。 新しく作成したグループを選択し、オブジェクト ID (残りの手順では `<object-id>`) をメモします。
+    :::image type="content" source="./media/managed-aad/jit-get-object-id.png" alt-text="作成したグループの Azure portal 画面でオブジェクト ID が強調表示されている状態を示す":::
+1. 前の `<tenant-id>` および `<object-id>` の値を使用して、AKS マネージド Azure AD 統合を使用した AKS クラスターを配置します。
+    ```azurecli-interactive
+    az aks create -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-group-object-ids <object-id> --aad-tenant-id <tenant-id>
+    ```
+1. Azure portal に戻り、左側の *[アクティビティ]* メニューで、 *[特権アクセス (プレビュー)]* を選択し、 *[特権アクセスの有効化]* を選択します。
+    :::image type="content" source="./media/managed-aad/jit-enabling-priv-access.png" alt-text="[特権アクセスの有効化] が強調表示された Azure portal の [特権アクセス (プレビュー)] ページを示す":::
+1. *[割り当ての追加]* を選択してアクセスの付与を開始します。
+    :::image type="content" source="./media/managed-aad/jit-add-active-assignment.png" alt-text="有効化後の Azure portal の [特権アクセス (プレビュー)] 画面を示します。[割り当ての追加] のオプションが強調表示されています。":::
+1. *メンバー* ロールを選択し、クラスターへのアクセス権を付与するユーザーとグループを選択します。 これらの割り当ては、グループ管理者によっていつでも変更できます。先に進む準備ができたら、 *[次へ]* を選択します。
+    :::image type="content" source="./media/managed-aad/jit-adding-assignment.png" alt-text="Azure portal の [割り当ての追加] メンバーシップ画面が表示され、サンプル ユーザーがメンバーとして追加されるように選択されています。[次へ] オプションが強調表示されています。":::
+1. 割り当ての種類として *[アクティブ]* を選択し、目的の期間を選択して、理由を指定します。 続行する準備ができたら、 *[割り当て]* を選択します。 割り当ての種類の詳細については、「[Privileged Identity Management で特権アクセス グループ (プレビュー) の資格を割り当てる][aad-assignments]」を参照してください。
+    :::image type="content" source="./media/managed-aad/jit-set-active-assignment-details.png" alt-text="Azure portal の [割り当ての追加] の設定画面を示しています。割り当ての種類として [アクティブ] が選択されており、サンプルの理由が指定されています。オプションの [割り当て] が強調表示されています。":::
+
+割り当てが完了したら、クラスターにアクセスして、Just-In-Time アクセスが機能していることを確認します。 次に例を示します。
+
+```azurecli-interactive
+ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
+```
+
+手順に従ってサインインします。
+
+`kubectl get nodes` コマンドを使用してクラスター内のノードを表示します。
+
+```azurecli-interactive
+kubectl get nodes
+```
+
+認証要件を確認し、手順に従って認証します。 成功した場合は、次のような出力が表示されます。
+
+```output
+To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code AAAAAAAAA to authenticate.
+NAME                                STATUS   ROLES   AGE     VERSION
+aks-nodepool1-61156405-vmss000000   Ready    agent   6m36s   v1.18.14
+aks-nodepool1-61156405-vmss000001   Ready    agent   6m42s   v1.18.14
+aks-nodepool1-61156405-vmss000002   Ready    agent   6m33s   v1.18.14
+```
+
+### <a name="troubleshooting"></a>トラブルシューティング
+
+`kubectl get nodes` から次のようなエラーが表示されます。
+
+```output
+Error from server (Forbidden): nodes is forbidden: User "aaaa11111-11aa-aa11-a1a1-111111aaaaa" cannot list resource "nodes" in API group "" at the cluster scope
+```
+
+セキュリティ グループの管理者によって、アカウントに *[アクティブ]* な割り当てが付与されていることを確認します。
+
 ## <a name="next-steps"></a>次のステップ
 
 * [Kubernetes 承認用の Azure RBAC 統合][azure-rbac-integration]について学習する。
@@ -243,14 +308,15 @@ Azure portal で [Azure Active Directory] に移動し、 *[エンタープラ�
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
+[aad-pricing]: /azure/pricing/details/active-directory
 
 <!-- LINKS - Internal -->
 [aad-conditional-access]: ../active-directory/conditional-access/overview.md
 [azure-rbac-integration]: manage-azure-rbac.md
 [aks-concepts-identity]: concepts-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
 [open-id-connect]:../active-directory/develop/v2-protocols-oidc.md
 [az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
@@ -260,3 +326,4 @@ Azure portal で [Azure Active Directory] に移動し、 *[エンタープラ�
 [azure-ad-cli]: azure-ad-integration-cli.md
 [access-cluster]: #access-an-azure-ad-enabled-cluster
 [aad-migrate]: #upgrading-to-aks-managed-azure-ad-integration
+[aad-assignments]: ../active-directory/privileged-identity-management/groups-assign-member-owner.md#assign-an-owner-or-member-of-a-group

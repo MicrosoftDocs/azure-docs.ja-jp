@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と AppBlade の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と AppBlade の統合 | Microsoft Docs'
 description: Azure Active Directory と AppBlade の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 49fa266319423b4c1a0bc56ad2a32b49c18f168e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97672629"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-appblade"></a>チュートリアル:Azure Active Directory と AppBlade の統合
+# <a name="tutorial-azure-active-directory-integration-with-appblade"></a>チュートリアル: Azure Active Directory と AppBlade の統合
 
 このチュートリアルでは、AppBlade と Azure Active Directory (Azure AD) を統合する方法について説明します。
 AppBlade と Azure AD の統合には、次の利点があります。
@@ -62,7 +62,7 @@ Azure AD への AppBlade の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**AppBlade**」と入力し、結果ウィンドウで **[AppBlade]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**AppBlade**」と入力し、結果ウィンドウで **[AppBlade]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の AppBlade](common/search-new-app.png)
 
@@ -86,7 +86,7 @@ AppBlade で Azure AD のシングル サインオンを構成してテストす
 
 AppBlade で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **[AppBlade]** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **[AppBlade]** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -123,7 +123,7 @@ AppBlade で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="configure-appblade-single-sign-on"></a>AppBlade のシングル サインオンの構成
 
-**AppBlade** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [AppBlade サポート チーム](mailto:support@appblade.com)に送信する必要があります。 また、 **[SSO Issuer URL] \(SSO 発行者の URL)** を `https://appblade.com/saml` として構成することも依頼してください。 この設定は、シングル サインオンが動作するために必要です。
+**AppBlade** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [AppBlade サポート チーム](mailto:support@appblade.com)に送信する必要があります。 また、**[SSO Issuer URL] \(SSO 発行者の URL)** を `https://appblade.com/saml` として構成することも依頼してください。 この設定は、シングル サインオンが動作するために必要です。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -154,7 +154,7 @@ AppBlade で Azure AD シングル サインオンを構成するには、次の
 
 このセクションでは、AppBlade へのアクセス権を付与することによって、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[AppBlade]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[AppBlade]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

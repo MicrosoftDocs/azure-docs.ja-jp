@@ -4,10 +4,10 @@ description: ブループリント定義をコードとして使用する方法�
 ms.date: 01/27/2021
 ms.topic: how-to
 ms.openlocfilehash: a5b1adda0b02e2e2490441c5958ca9334febc24c
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98919988"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>PowerShell を使用したブループリント定義のインポートとエクスポート

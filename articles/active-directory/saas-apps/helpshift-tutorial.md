@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
 ms.openlocfilehash: b20d47962bf5467b9a5d69327e7fc152215edaa7
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92445054"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-helpshift"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Helpshift の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Helpshift では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Helpshift では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-helpshift-from-the-gallery"></a>ギャラリーからの Helpshift の追加
 
@@ -49,7 +49,7 @@ Azure AD への Helpshift の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Helpshift** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Helpshift**」と入力します。
 1. 結果ウィンドウで **Helpshift** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-helpshift"></a>Helpshift の Azure AD シングル サインオンの構成とテスト
@@ -132,7 +132,7 @@ Helpshift に対する Azure AD SSO を構成してテストするには、次�
 
 1. 別の Web ブラウザーで、Helpshift アプリケーションに管理者としてサインインします。
 
-1. Helpshift の **ダッシュボード** を開き、 **設定アイコン** をクリックします。
+1. Helpshift の **ダッシュボード** を開き、**設定アイコン** をクリックします。
 
     ![Helpshift の設定アイコンを示すスクリーンショット。](./media/helpshift-tutorial/configuration01.png)
 

@@ -8,10 +8,10 @@ ms.custom: devx-track-dotnet
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 90853b5ff769b710c6c95e4f6e62b3a4aa19fadf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92151082"
 ---
 # <a name="scale-aspnet-core-signalr-applications-with-azure-signalr-service"></a>Azure SignalR サービスによる ASP.NET Core SignalR アプリケーションのスケーリング

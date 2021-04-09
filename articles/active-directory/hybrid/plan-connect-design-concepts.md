@@ -18,17 +18,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: baa03499cc11bda24ead986dd64621572484cbb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89279654"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: 設計概念
 このドキュメントの目的は、Azure AD Connect の実装設計時に検討する必要がある領域について説明することです。 このドキュメントでは特定の領域について詳しく説明しますが、これらの概念については、他のドキュメントでも簡単に説明しています。
 
 ## <a name="sourceanchor"></a>sourceAnchor
-sourceAnchor 属性は、 *オブジェクトの有効期間中に変更できない属性*として定義されています。 この属性により、オブジェクトは、オンプレミスと Azure AD で同じオブジェクトとして一意に識別されます。 また、この属性は、 **immutableId** とも呼ばれており、この 2 つの名前のどちらを使ってもかまいません。
+sourceAnchor 属性は、 *オブジェクトの有効期間中に変更できない属性* として定義されています。 この属性により、オブジェクトは、オンプレミスと Azure AD で同じオブジェクトとして一意に識別されます。 また、この属性は、 **immutableId** とも呼ばれており、この 2 つの名前のどちらを使ってもかまいません。
 
 "immutable" (変更できない) という単語は、このドキュメントで大きな意味を持ちます。 この属性の値は、一度設定すると変更できないため、シナリオに対応する設計を選ぶことが重要です。
 
@@ -56,13 +56,13 @@ sourceAnchor 属性は、 *オブジェクトの有効期間中に変更でき�
 
 sourceAnchor 属性では、大文字小文字が区別されます。 値 "JohnDoe" と "johndoe" は同じではありません。 ただし、大文字と小文字が異なるだけの 2 つのオブジェクトは作成しないでください。
 
-オンプレミスの単一フォレストがある場合、使用する必要がある属性は **objectGUID**です。 これは、Azure AD Connect で簡単設定を使用する際に使用される属性でもあり、DirSync で使用される属性でもあります。
+オンプレミスの単一フォレストがある場合、使用する必要がある属性は **objectGUID** です。 これは、Azure AD Connect で簡単設定を使用する際に使用される属性でもあり、DirSync で使用される属性でもあります。
 
 複数のフォレストがあり、フォレスト間およびドメイン間でユーザーを移動しない場合でも、 **objectGUID** 属性を使用することをお勧めします。
 
 フォレスト間およびドメイン間でユーザーを移動する場合は、変更されない属性、または移動時にユーザーと共に移動できる属性を探す必要があります。 お勧めする方法は、合成属性を導入することです。 GUID のような情報を保持可能な属性が適しています。 オブジェクトの作成中に、新しい GUID が作成され、ユーザーに設定されます。 同期エンジン サーバーでは、 **objectGUID** に基づいてこの値を作成し、ADDS の選択した属性を更新するカスタム同期ルールを作成できます。 オブジェクトを移動するときは、この値の内容も必ずコピーしてください。
 
-別の方法は、変更されないことがわかっている既存の属性を選択することです。 一般的に使用される属性に **employeeID**があります。 文字が含まれる属性を採用する場合は、属性値の文字 (大文字と小文字) が変更される可能性がないことを確認します。 使用しない方がよい属性として、ユーザーの名前を含む属性があります。 名前は、結婚や離婚によって変更されることが予想されるため、この属性には使用できません。 これは、**userPrincipalName**、**mail**、**targetAddress** などの属性を Azure AD Connect のインストール ウィザードで選択できない理由の 1 つでもあります。 これらの属性に含まれる "\@" 文字も sourceAnchor では使用できません。
+別の方法は、変更されないことがわかっている既存の属性を選択することです。 一般的に使用される属性に **employeeID** があります。 文字が含まれる属性を採用する場合は、属性値の文字 (大文字と小文字) が変更される可能性がないことを確認します。 使用しない方がよい属性として、ユーザーの名前を含む属性があります。 名前は、結婚や離婚によって変更されることが予想されるため、この属性には使用できません。 これは、**userPrincipalName**、**mail**、**targetAddress** などの属性を Azure AD Connect のインストール ウィザードで選択できない理由の 1 つでもあります。 これらの属性に含まれる "\@" 文字も sourceAnchor では使用できません。
 
 ### <a name="changing-the-sourceanchor-attribute"></a>sourceAnchor 属性の変更
 Azure AD でオブジェクトを作成して、ID を同期した後に、sourceAnchor 属性の値を変更することはできません。
@@ -132,19 +132,19 @@ Azure AD Connect を高速モードでインストールする場合、sourceAnc
 
 ソース アンカー属性を ObjectGuid から ConsistencyGuid に切り替えるには:
 
-1. Azure AD Connect ウィザードを起動し、 **[構成]** をクリックしてタスク画面に移動します。
+1. Azure AD Connect ウィザードを起動し、[**構成**] をクリックしてタスク画面に移動します。
 
-2. **[Configure Source Anchor\(ソース アンカーを構成\)]** タスク オプションを選択して、 **[次へ]** をクリックします。
+2. [**Configure Source Anchor\(ソース アンカーを構成\)**] タスク オプションを選択して、[**次へ**] をクリックします。
 
    ![既存のデプロイで ConsistencyGuid を有効にする - 手順 2](./media/plan-connect-design-concepts/consistencyguidexistingdeployment01.png)
 
-3. Azure AD の管理者資格情報を入力し、 **[次へ]** をクリックします。
+3. Azure AD の管理者資格情報を入力し、[**次へ**] をクリックします。
 
-4. オンプレミスの Active Directory で ms-DS-ConsistencyGuid 属性の状態が Azure AD Connect ウィザードによって解析されます。 属性がディレクトリ内のどのオブジェクトにも構成されていない場合、Azure AD Connect はその属性を使用しているアプリケーションは現在なく、ソース アンカー属性として使用しても問題がないと判断します。 **[次へ]** をクリックして次に進みます。
+4. オンプレミスの Active Directory で ms-DS-ConsistencyGuid 属性の状態が Azure AD Connect ウィザードによって解析されます。 属性がディレクトリ内のどのオブジェクトにも構成されていない場合、Azure AD Connect はその属性を使用しているアプリケーションは現在なく、ソース アンカー属性として使用しても問題がないと判断します。 **[次へ]** をクリックして、続行します。
 
    ![既存のデプロイで ConsistencyGuid を有効にする - 手順 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 
-5. **[構成の準備完了]** 画面で、 **[構成]** をクリックし構成を変更します。
+5. [**構成の準備完了**] 画面で、[**構成**] をクリックし構成を変更します。
 
    ![既存のデプロイで ConsistencyGuid を有効にする - 手順 5](./media/plan-connect-design-concepts/consistencyguidexistingdeployment03.png)
 
@@ -156,7 +156,7 @@ Azure AD Connect を高速モードでインストールする場合、sourceAnc
 
 ![既存のデプロイで ConsistencyGuid を有効にする - エラー](./media/plan-connect-design-concepts/consistencyguidexistingdeploymenterror.png)
 
- 属性が他の既存のアプリケーションで使用されていないことがわかっている場合は、 **/SkipLdapSearch** スイッチを指定して Azure AD Connect ウィザードを再起動することで、エラーを抑制することができます。 これを行うには、コマンド プロンプトで次のコマンドを実行します。
+ 属性が他の既存のアプリケーションで使用されていないことがわかっている場合は、**/SkipLdapSearch** スイッチを指定して Azure AD Connect ウィザードを再起動することで、エラーを抑制することができます。 これを行うには、コマンド プロンプトで次のコマンドを実行します。
 
 ```
 "c:\Program Files\Microsoft Azure Active Directory Connect\AzureADConnect.exe" /SkipLdapSearch
@@ -183,7 +183,7 @@ Azure で使用する UPN の値を指定するための属性を選択する場
 * 属性値が UPN の構文 (RFC 822) に準拠していること (つまり、username\@domain の形式になっていること)
 * 値のサフィックスが、Azure AD で確認済みのカスタム ドメインのいずれかに一致すること
 
-簡単設定では、属性の値として userPrincipalName が想定されます。 Azure にサインインする必要のあるユーザーの値が userPrincipalName 属性に含まれていない場合は、 **カスタム インストール**を行う必要があります。
+簡単設定では、属性の値として userPrincipalName が想定されます。 Azure にサインインする必要のあるユーザーの値が userPrincipalName 属性に含まれていない場合は、 **カスタム インストール** を行う必要があります。
 
 ### <a name="custom-domain-state-and-upn"></a>カスタム ドメインの状態と UPN
 確認済みのドメインを UPN のサフィックスとして使用することが重要です。

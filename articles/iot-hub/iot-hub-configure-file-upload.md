@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: robinsh
 ms.openlocfilehash: da28bfa31c74ff33a200967267500033dd6a9b1b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92535877"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Azure Portal を使用して IoT Hub ファイルのアップロードを構成する
@@ -25,13 +25,13 @@ ms.locfileid: "92535877"
 
 ![ポータルで IoT Hub ファイル アップロード設定を表示する](./media/iot-hub-configure-file-upload/file-upload-settings.png)
 
-* **ストレージ コンテナー** : Azure Portal を使用して現在の Azure サブスクリプションの Azure Storage アカウントの BLOB コンテナーを選択し、IoT Hub に関連付けます。 必要に応じて、 **[ストレージ アカウント]** ブレードで Azure Storage アカウントを作成し、 **[コンテナー]** ブレードで BLOB コンテナーを作成できます。 IoT Hub により、ファイルをアップロードするときにデバイスで使用する、この BLOB コンテナーへの書き込みアクセス許可を含む SAS URI が自動的に生成します。
+* **ストレージ コンテナー**: Azure Portal を使用して現在の Azure サブスクリプションの Azure Storage アカウントの BLOB コンテナーを選択し、IoT Hub に関連付けます。 必要に応じて、 **[ストレージ アカウント]** ブレードで Azure Storage アカウントを作成し、 **[コンテナー]** ブレードで BLOB コンテナーを作成できます。 IoT Hub により、ファイルをアップロードするときにデバイスで使用する、この BLOB コンテナーへの書き込みアクセス許可を含む SAS URI が自動的に生成します。
 
    ![ポータルでファイル アップロードのストレージ コンテナーを表示する](./media/iot-hub-configure-file-upload/file-upload-container-selection.png)
 
 * **Receive notifications for uploaded files (アップロードされたファイルに関する通知を受け取る)** : トグル ボタンを使用して、ファイルのアップロードに関する通知を有効または無効にします。
 
-* **SAS TTL** : IoT Hub によりデバイスに返される SAS URI の有効期間を設定します。 既定で 1 時間に設定されますが、スライダーを使用して、他の値にカスタマイズできます。
+* **SAS TTL**: IoT Hub によりデバイスに返される SAS URI の有効期間を設定します。 既定で 1 時間に設定されますが、スライダーを使用して、他の値にカスタマイズできます。
 
 * **File notification settings default TTL (ファイルの通知設定 既定の TTL)** : 有効期限が切れるまでのファイルのアップロード通知の有効期間です。 既定で 1 時間に設定されますが、スライダーを使用して、他の値にカスタマイズできます。
 

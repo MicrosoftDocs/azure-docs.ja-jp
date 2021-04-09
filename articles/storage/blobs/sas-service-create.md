@@ -12,10 +12,10 @@ ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f55cfcf6d6ec369cdf871e8ba38bd81774dacd8e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97092314"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob"></a>コンテナーまたは BLOB のサービス SAS を作成する

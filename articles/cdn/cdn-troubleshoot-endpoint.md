@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d6ad0b8b37bd4f04c22ed52d4ac6717202f22889
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88192493"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>404 状態コードを返す Azure CDN エンドポイントのトラブルシューティング
@@ -71,7 +71,7 @@ CDN プロファイルとエンドポイントを作成しましたが、コン�
 **[配信元の種類]** と **[配信元のホスト名]** の値が正しいことを確認します。 この例の https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt という URL のホスト名部分は *cdndocdemo.blob.core.windows.net* で、これは正しい値です。 Azure Storage、Web アプリ、クラウド サービスの配信元として、 **[配信元のホスト名]** フィールドではドロップダウン リスト値が使用されているため、スペル ミスを気にする必要はありません。 ただし、カスタムの配信元を使用する場合は、ホスト名のスペルが正しいことを確認してください。
 
 #### <a name="http-and-https-ports"></a>HTTP および HTTPS ポート
-お使いの **HTTP ポート**および **HTTPS ポート**を確認してください。 ほとんどの場合、80 と 443 は正しいポートであるため、変更する必要はありません。  ただし、配信元サーバーが別のポートでリッスンしている場合は、ここに示す必要があります。 不明な場合は、配信元のファイルの URL を表示します。 HTTP および HTTPS の仕様では、既定値としてポート 80 と 443 が使用されます。 この例の URL https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt では、ポートは指定されていないため、既定値の 443 が想定され、正しい設定になっています。  
+お使いの **HTTP ポート** および **HTTPS ポート** を確認してください。 ほとんどの場合、80 と 443 は正しいポートであるため、変更する必要はありません。  ただし、配信元サーバーが別のポートでリッスンしている場合は、ここに示す必要があります。 不明な場合は、配信元のファイルの URL を表示します。 HTTP および HTTPS の仕様では、既定値としてポート 80 と 443 が使用されます。 この例の URL https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt では、ポートは指定されていないため、既定値の 443 が想定され、正しい設定になっています。  
 
 ただし、前にテストした配信元のファイルの URL は http:\//www.contoso.com:8080/file.txt です。 ホスト名セグメントの末尾の *:8080* の部分に注意してください。 この数値は、ブラウザーに対して、ポート 8080 を使用して www\.contoso.com の Web サーバーに接続するよう指示します。したがって、**[HTTP ポート]** フィールドには「*8080*」と入力する必要があります。 これらのポート設定が影響するのは、配信元から情報を取得するためにエンドポイントが使用するポートのみであることに注意してください。
 

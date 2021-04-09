@@ -3,40 +3,47 @@ title: Azure Kubernetes Service の概要
 description: Azure でコンテナー ベースのアプリケーションを簡単にデプロイして管理するための、Azure Kubernetes Service の機能とメリットついて説明します。
 services: container-service
 ms.topic: overview
-ms.date: 02/09/2021
+ms.date: 02/24/2021
 ms.custom: mvc
-ms.openlocfilehash: 1505366d9a91eac596b21804f93abb8245a84605
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bb4adac1f59370959830f418d27bc27f9aaf63d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590014"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103493018"
 ---
-# <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
+# <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-Azure Kubernetes Service (AKS) は、複雑さと運用上のオーバーヘッドの多くを Azure にオフロードすることで、Azure でのマネージド Kubernetes クラスターのデプロイを簡素化します。 ホストされた Kubernetes サービスとして、Azure は正常性監視やメンテナンスなどの重要なタスクを自動的に処理します。  
+Azure Kubernetes Service (AKS) を使用すると、運用上のオーバーヘッドが Azure にオフロードされるため、Azure でのマネージド Kubernetes クラスターのデプロイが簡素化されます。 ホストされた Kubernetes サービスとして、Azure によって正常性監視やメンテナンスなどの重要なタスクが処理されます。 Kubernetes マスターは Azure によって管理されるので、お客様はエージェント ノードの管理と保守のみを行います。 このため、AKS は無料です。料金は、マスターではなく、クラスター内のエージェント ノードに対してのみ発生します。  
 
-Kubernetes マスターは Azure によって管理されるので、お客様はエージェント ノードの管理と保守のみを行います。 そのため、マネージド Kubernetes サービスである AKS は無料です。料金は、マスターではなく、クラスター内のエージェント ノードに対してのみ発生します。  
+次のものを使用して、AKS クラスターを作成できます。
+* [Azure CLI](kubernetes-walkthrough.md)
+* [Azure ポータル](kubernetes-walkthrough-portal.md)
+* [Azure PowerShell](kubernetes-walkthrough-powershell.md)
+* テンプレート駆動型デプロイ オプションの使用 ([Azure Resource Manager テンプレート](kubernetes-walkthrough-rm-template.md)や Terraform など) 
 
-Azure portal、Azure CLI、Azure PowerShell、または Resource Manager テンプレートや Terraform などのテンプレート駆動型のデプロイ オプションを使用して、AKS クラスターを作成できます。 AKS クラスターをデプロイすると、Kubernetes マスターとすべてのノードが自動的にデプロイされ、構成されます。 デプロイ プロセス中に、高度なネットワーク、Azure Active Directory 統合、監視などの追加機能も構成できます。 AKS では、Windows Server のコンテナーがサポートされています。
+AKS クラスターをデプロイすると、Kubernetes マスターとすべてのノードが自動的にデプロイされ、構成されます。 デプロイ プロセス中に、高度なネットワーク、Azure Active Directory (Azure AD) 統合、監視、およびその他の機能を構成できます。 
 
 Kubernetes の基礎の詳細については、[AKS における Kubernetes の中心概念][concepts-clusters-workloads]に関するページを参照してください。
 
-開始するには、[Azure portal][aks-portal] または [Azure CLI][aks-cli] を使用して、AKS のクイックスタートを完了します。
-
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
+> AKS では、Windows Server コンテナーもサポートされています。
 
 ## <a name="access-security-and-monitoring"></a>アクセス、セキュリティ、および監視
 
-セキュリティと管理を強化するために、AKS では、Azure Active Directory (Azure AD) と統合し、以下を行うことができます。
+セキュリティと管理を強化するために、AKS を Azure AD と統合し、以下を行うことができます。
 * Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC) を使用する。 
 * クラスターとリソースの正常性を監視する。
 
 ### <a name="identity-and-security-management"></a>ID とセキュリティ管理
 
-クラスター リソースへのアクセスを制限するために、AKS では [Kubernetes RBAC][kubernetes-rbac] がサポートされています。 Kubernetes RBAC を使用すると、Kubernetes のリソースおよび名前空間へのアクセスとアクセス許可を制御できます。  
+#### <a name="kubernetes-rbac"></a>Kubernetes RBAC
 
-また、Azure AD と統合するように AKS クラスターを構成することもできます。 Azure AD の統合により、既存の ID とグループ メンバーシップに基づいて、Kubernetes アクセスを構成できます。 Azure AD の既存のユーザーとグループには、統合されたサインオン エクスペリエンスと AKS リソースへのアクセスを提供できます。  
+クラスター リソースへのアクセスを制限するために、AKS では [Kubernetes RBAC][kubernetes-rbac] がサポートされています。 Kubernetes RBAC によって、Kubernetes のリソースおよび名前空間へのアクセスとアクセス許可が制御されます。  
+
+#### <a name="azure-ad"></a>Azure AD
+
+Azure AD と統合するように AKS クラスターを構成できます。 Azure AD との統合により、既存の ID とグループ メンバーシップに基づいて、Kubernetes アクセスを設定できます。 Azure AD の既存のユーザーとグループには、統合されたサインオン エクスペリエンスと AKS リソースへのアクセスを提供できます。  
 
 ID の詳細については、[AKS でのアクセスと ID オプション][concepts-identity]に関するページを参照してください。
 
@@ -44,7 +51,9 @@ ID の詳細については、[AKS でのアクセスと ID オプション][con
 
 ### <a name="integrated-logging-and-monitoring"></a>ログ記録と監視の統合
 
-コンテナーの正常性に関する Azure Monitor では、AKS クラスター内のコンテナー、ノード、コン ローラーと、デプロイされているアプリケーションから、メモリとプロセッサのパフォーマンス メトリックを収集します。 コンテナー ログと [Kubernetes マスター ログ][aks-master-logs]の両方を確認できます。 この監視データは、Azure Log Analytics ワークスペースに保存され、Azure portal、Azure CLI、または REST エンドポイントを介して使用できます。
+コンテナーの正常性に関する Azure Monitor では、AKS クラスター内のコンテナー、ノード、コン ローラーと、デプロイされているアプリケーションから、メモリとプロセッサのパフォーマンス メトリックを収集します。 コンテナー ログと [Kubernetes マスター ログ][aks-master-logs]の両方を確認できます。これらの特徴は次のとおりです。
+* Azure Log Analytics ワークスペースに保存されます。
+* Azure portal、Azure CLI、または REST エンドポイントを介して使用できます。
 
 詳細については、[Azure Kubernetes Service コンテナーの正常性の監視][container-health]に関するページを参照してください。
 
@@ -56,7 +65,7 @@ Kubernetes クラスター、ノード、ノード プールの機能の詳細�
 
 ### <a name="cluster-node-and-pod-scaling"></a>クラスター ノードとポッドのスケーリング
 
-リソースに対する需要は変化するため、サービスを実行するクラスター ノードやポッドの数を、自動的にスケールアップまたはスケールダウンすることができます。 ポッドの水平オートスケーラーとクラスター オートスケーラーの両方を使用できます。 このスケーリング方法では、AKS クラスターは需要に対して自動的に調整され、必要とされるリソースのみを実行します。
+リソースに対する需要は変化するため、サービスを実行するクラスター ノードやポッドの数は自動的にスケールアップまたはスケールダウンされます。 需要に合わせてポッドの水平オートスケーラーとクラスター オートスケーラーの両方を調整し、必要なリソースのみを実行できます。
 
 詳細については、[Azure Kubernetes Service (AKS) クラスターのスケーリング][aks-scale]に関するページを参照してください。
 
@@ -80,7 +89,9 @@ AKS では、Intel SGX ベースのコンフィデンシャル コンピュー�
 
 ### <a name="storage-volume-support"></a>ストレージ ボリュームのサポート
 
-アプリケーション ワークロードをサポートするため、永続的なデータ用にストレージ ボリュームをマウントできます。 静的ボリュームと動的ボリュームの両方を使用できます。 ストレージ ボリュームを共有すると予想される接続されているポッドの数に応じて、単一ポッドへのアクセスに対応する Azure Disks、または複数のポッドへの同時アクセスに対応する Azure Files によってサポートされたストレージを使用できます。
+アプリケーション ワークロードをサポートするため、永続的なデータ用に静的または動的ストレージ ボリュームをマウントできます。 ストレージ ボリュームを共有すると予想される接続されているポッドの数に応じて、以下のいずれかによってサポートされるストレージを使用できます。
+* 単一ポッドへのアクセスに対応する Azure Disks 
+* 複数のポッドへの同時アクセスに対応する Azure Files
 
 詳細については、[AKS でのアプリケーションのストレージ オプション][concepts-storage]に関するページを参照してください。
 
@@ -88,7 +99,11 @@ AKS では、Intel SGX ベースのコンフィデンシャル コンピュー�
 
 ## <a name="virtual-networks-and-ingress"></a>仮想ネットワークとイングレス
 
-AKS クラスターは、既存の仮想ネットワークにデプロイできます。 この構成では、クラスター内のすべてのポッドは、仮想ネットワーク内の IP アドレスが割り当てられるので、クラスター内の他のポッドや仮想ネットワーク内の他のノードと直接通信できます。 また、ポッドは、ピアリングされた仮想ネットワーク内の他のサービスに接続することも、ExpressRoute またはサイト間 (S2S) VPN 接続を介してオンプレミス ネットワークに接続することもできます。  
+AKS クラスターは、既存の仮想ネットワークにデプロイできます。 この構成では、クラスター内のすべてのポッドに、仮想ネットワーク内の IP アドレスが割り当てられ、以下と直接通信できます。
+* クラスター内の他のポッド 
+* 仮想ネットワーク内の他のノード 
+
+また、ポッドは、ピアリングされた仮想ネットワーク内の他のサービスに接続することも、ExpressRoute またはサイト間 (S2S) VPN 接続を介してオンプレミス ネットワークに接続することもできます。  
 
 詳細については、[AKS のアプリケーションにおけるネットワークの概念][aks-networking]に関するページを参照してください。
 
@@ -102,11 +117,15 @@ HTTP アプリケーション ルーティング アドオンを利用すると�
 
 ## <a name="development-tooling-integration"></a>開発ツールの統合
 
-Kubernetes には、AKS とシームレスに連携する開発および管理ツールの豊富なエコシステムがあります。 これらのツールには、Helm や Visual Studio Code 用 Kubernetes 拡張機能が含まれます。 これらのツールは、AKS でシームレスに動作します。  
+Kubernetes には、AKS とシームレスに連携する開発および管理ツールの豊富なエコシステムがあります。 これらのツールには、Helm や Visual Studio Code 用 Kubernetes 拡張機能が含まれます。   
 
-さらに、Azure には、Azure Dev Spaces や DevOps Starter など、Kubernetes の効率化に役立つツールがいくつか用意されています。  
+Azure には、Azure Dev Spaces や DevOps Starter など、Kubernetes の効率化に役立つツールがいくつか用意されています。  
+
+### <a name="azure-dev-spaces"></a>Azure Dev Spaces
 
 Azure Dev Spaces は、高速で反復的な Kubernetes 開発エクスペリエンスをチームに提供します。 最小限の構成で、AKS 内で直接、コンテナーの実行とデバッグを行えます。 始める際には、[Azure Dev Spaces][azure-dev-spaces] に関するページを参照してください。
+
+### <a name="devops-starter"></a>DevOps Starter
 
 DevOps Starter では、既存のコードおよび Git リポジトリを Azure に取り込むための簡単なソリューションを提供しています。 DevOps Starter では、次のことが自動的に実行されます。
 * Azure リソース (AKS など) を作成する。 
@@ -135,12 +154,12 @@ AKS は、SOC、ISO、PCI DSS、HIPAA に準拠しています。 詳細につ�
 Azure CLI のクイックスタートで、AKS のデプロイと管理の詳細を学習します。
 
 > [!div class="nextstepaction"]
-> [AKS クイックスタート][aks-cli]
+> [Azure CLI を使用して AKS クラスターをデプロイする][aks-cli]
 
 <!-- LINKS - external -->
 [aks-engine]: https://github.com/Azure/aks-engine
 [kubectl-overview]: https://kubernetes.io/docs/user-guide/kubectl-overview/
-[compliance-doc]: https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942
+[compliance-doc]: https://azure.microsoft.com/en-us/overview/trusted-cloud/compliance/
 
 <!-- LINKS - internal -->
 [acr-docs]: ../container-registry/container-registry-intro.md
@@ -157,7 +176,7 @@ Azure CLI のクイックスタートで、AKS のデプロイと管理の詳細
 [azure-disk]: ./azure-disks-dynamic-pv.md
 [azure-files]: ./azure-files-dynamic-pv.md
 [container-health]: ../azure-monitor/containers/container-insights-overview.md
-[aks-master-logs]: view-master-logs.md
+[aks-master-logs]: ./view-control-plane-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
 [kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac

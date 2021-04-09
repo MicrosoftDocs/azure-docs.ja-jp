@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.openlocfilehash: 8b97221de4921e06ddfab610618f37683b990181
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87132740"
 ---
 # <a name="what-is-reinforcement-learning"></a>強化学習とは
@@ -62,7 +62,7 @@ Personalizer では、現在、機械学習の基盤として [Vowpal Wabbit](ht
 * [Making Contextual Decisions with Low Technical Debt (少ない技術的負債でコンテキストに応じた判断を下す)](https://arxiv.org/abs/1606.03966)
 * [A Reductions Approach to Fair Classification (公正な分類への削減アプローチ)](https://arxiv.org/abs/1803.02453)
 * [Efficient Contextual Bandits in Non-stationary Worlds (非定常世界における効率的な Contextual Bandits)](https://arxiv.org/abs/1708.01799)
-* [Residual Loss Prediction: Reinforcement: learning With No Incremental Feedback (Residual Loss Prediction: 強化: インクリメンタル フィードバックなしでの学習)](https://openreview.net/pdf?id=HJNMYceCW)
+* [Reinforcement: learning With No Incremental Feedback (強化: インクリメンタル フィードバックなしでの学習)](https://openreview.net/pdf?id=HJNMYceCW)
 * [Mapping Instructions and Visual Observations to Actions with Reinforcement Learning (強化学習による手順と視覚的観察のアクションへのマッピング)](https://arxiv.org/abs/1704.08795)
 * [Learning to Search Better Than Your Teacher (教師よりも優れた検索を行うための学習)](https://arxiv.org/abs/1502.02206)
 

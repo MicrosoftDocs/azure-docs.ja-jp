@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7275d115210100bdd4a3a2eb683c867a6a4a4f4a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95996612"
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Azure AD Connect で使用するインストールの種類の選択
@@ -50,7 +50,7 @@ Azure AD Connect には、簡易とカスタマイズの 2 種類のインスト
 ## <a name="custom"></a>Custom
 カスタマイズされたインストールを使用すると、簡易より多くのオプションを使用できます。 このインストールは、組織で主に使用されている構成が、前の簡易のセクションで説明した構成と異なるすべてのケースで使用します。
 
-たとえば、次のような場合です。
+次の場合に使用します。
 
 - Active Directory のエンタープライズ管理者アカウントへのアクセス権がない。
 - 複数のフォレストが存在する。または今後複数のフォレストと同期する予定がある。

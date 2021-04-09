@@ -6,16 +6,16 @@ author: metanMSFT
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/14/2020
 ms.author: metang
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: fd92de3bc5f306cd5ebbcd80b9f1d92af3a9e45d
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e79ae3914e32038e2823fb37e3eee658c95e0003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633317"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102608769"
 ---
 # <a name="how-to-cache-the-authentication-token"></a>認証トークンをキャッシュする方法
 

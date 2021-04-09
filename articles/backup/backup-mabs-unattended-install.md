@@ -4,10 +4,10 @@ description: PowerShell スクリプトを使用して、Azure Backup Server V2 
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 1539089e713bcf8e959707c6ff4a608f062a7c00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74172242"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Azure Backup Server の無人インストールの実行

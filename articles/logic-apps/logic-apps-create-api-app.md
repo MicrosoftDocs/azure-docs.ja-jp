@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
 ms.openlocfilehash: 3fe98160cc10eb3607b8309a9a263d63380dcfb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89073218"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps から呼び出しできるカスタム API の作成
@@ -23,7 +23,7 @@ Azure Logic Apps が提供する[数百個の組み込みコネクタ](../connec
 
 基本的に、コネクタはプラグ可能インターフェイスの REST、ドキュメント用の [Swagger メタデータ形式](https://swagger.io/specification/)、さらにデータ交換形式として JSON を利用する Web API です。 コネクタは HTTP エンドポイント経由で通信する REST API であるため、コネクタの構築には、.NET、Java、Python、Node.js など、任意の言語を利用できます。 [Azure App Service](../app-service/overview.md) で API をホストすることもできます。Azure App Service は、最も効果的で簡単、かつ拡張可能な方法で API ホスティングを提供する PaaS (サービスとしてのプラットフォーム) です。 
 
-カスタム API をロジック アプリで利用するために、API はロジック アプリ ワークフローで特定のタスクを実行する[*アクション*](./logic-apps-overview.md#logic-app-concepts)を提供できます。 API は、新しいデータ、またはあるイベントが指定の条件を満たすときにロジック アプリ ワークフローを開始する[*トリガー*](./logic-apps-overview.md#logic-app-concepts)として機能させることもできます。 このトピックでは、API のアクションやトリガーを構築するときに採用できる、動作に基づく共通パターンについて説明します。
+カスタム API をロジック アプリで利用するために、API はロジック アプリ ワークフローで特定のタスクを実行する [*アクション*](./logic-apps-overview.md#logic-app-concepts)を提供できます。 API は、新しいデータ、またはあるイベントが指定の条件を満たすときにロジック アプリ ワークフローを開始する [*トリガー*](./logic-apps-overview.md#logic-app-concepts)として機能させることもできます。 このトピックでは、API のアクションやトリガーを構築するときに採用できる、動作に基づく共通パターンについて説明します。
 
 API は [Azure App Service](../app-service/overview.md) でホストできます。Azure App Service は、高い拡張性と容易な API ホスティングを提供するサービスとしてのプラットフォーム (PaaS) です。
 
@@ -66,7 +66,7 @@ API の操作やパラメーターを説明する [Swagger ドキュメント](h
 
 ## <a name="action-patterns"></a>アクション パターン
 
-ロジック アプリがタスクを実行するには、カスタム API で[*アクション*](./logic-apps-overview.md#logic-app-concepts)を提供する必要があります。 API の各操作はアクションにマッピングされます。 基本アクションは、HTTP 要求を受け取り、HTTP 応答を返すコントローラーです。 そのため、たとえば、あるロジック アプリは HTTP 要求を Web アプリまたは API アプリに送信します。 次に、アプリはロジック アプリが処理できるコンテンツと共に HTTP 応答を返します。
+ロジック アプリがタスクを実行するには、カスタム API で [*アクション*](./logic-apps-overview.md#logic-app-concepts)を提供する必要があります。 API の各操作はアクションにマッピングされます。 基本アクションは、HTTP 要求を受け取り、HTTP 応答を返すコントローラーです。 そのため、たとえば、あるロジック アプリは HTTP 要求を Web アプリまたは API アプリに送信します。 次に、アプリはロジック アプリが処理できるコンテンツと共に HTTP 応答を返します。
 
 標準的アクションの場合、API に HTTP 要求メソッドを記述し、そのメソッドについて Swagger ファイルで説明できます。 その後、[HTTP アクション](../connectors/connectors-native-http.md)または [HTTP + Swagger](../connectors/connectors-native-http-swagger.md) アクションで API を直接呼び出すことができます。 既定では、応答は[要求のタイムアウト期限](./logic-apps-limits-and-config.md)内に返す必要があります。 
 
@@ -148,13 +148,13 @@ API がこのパターンに従うとき、ロジック アプリ ワークフ�
 
 ## <a name="trigger-patterns"></a>トリガー パターン
 
-カスタム API は、新しいデータ、またはあるイベントが指定の条件を満たすときにロジック アプリを開始する[*トリガー*](./logic-apps-overview.md#logic-app-concepts)として機能させることができます。 このトリガーはサービス エンドポイントの新しいデータまたはイベントを定期的に確認するか、待ち受けることができます。 新しいデータ、またはあるイベントが指定の条件を満たした場合、トリガーが発動し、トリガーを待ち受けていたロジック アプリが起動します。 この方法でロジック アプリを開始するには、API で[*ポーリング トリガー*](#polling-triggers) パターンまたは [*webhook トリガー*](#webhook-triggers) パターンを利用します。 これらのパターンは、[ポーリング アクション](#async-pattern)と [webhook アクション](#webhook-actions)のそれに似ています。 トリガーの使用状況測定については、[こちら](logic-apps-pricing.md)をご覧ください。
+カスタム API は、新しいデータ、またはあるイベントが指定の条件を満たすときにロジック アプリを開始する [*トリガー*](./logic-apps-overview.md#logic-app-concepts)として機能させることができます。 このトリガーはサービス エンドポイントの新しいデータまたはイベントを定期的に確認するか、待ち受けることができます。 新しいデータ、またはあるイベントが指定の条件を満たした場合、トリガーが発動し、トリガーを待ち受けていたロジック アプリが起動します。 この方法でロジック アプリを開始するには、API で [*ポーリング トリガー*](#polling-triggers) パターンまたは [*webhook トリガー*](#webhook-triggers) パターンを利用します。 これらのパターンは、[ポーリング アクション](#async-pattern)と [webhook アクション](#webhook-actions)のそれに似ています。 トリガーの使用状況測定については、[こちら](logic-apps-pricing.md)をご覧ください。
 
 <a name="polling-triggers"></a>
 
 ### <a name="check-for-new-data-or-events-regularly-with-the-polling-trigger-pattern"></a>ポーリング トリガー パターンで新しいデータまたはイベントを定期的に確認する
 
-*ポーリング トリガー*は、このトピックの前半で説明した[ポーリング アクション](#async-pattern)に似た動作をします。 ロジック アプリ エンジンはトリガー エンドポイントに定期的に問い合わせ、新しいデータまたはイベントがないか確認します。 指定の条件に一致する新しいデータまたはあるイベントをエンジンが見つけると、トリガーが発動します。 データを入力として処理するロジック アプリ インスタンスをエンジンが作成します。 
+*ポーリング トリガー* は、このトピックの前半で説明した [ポーリング アクション](#async-pattern)に似た動作をします。 ロジック アプリ エンジンはトリガー エンドポイントに定期的に問い合わせ、新しいデータまたはイベントがないか確認します。 指定の条件に一致する新しいデータまたはあるイベントをエンジンが見つけると、トリガーが発動します。 データを入力として処理するロジック アプリ インスタンスをエンジンが作成します。 
 
 ![ポーリング トリガー パターン](./media/logic-apps-create-api-app/custom-api-polling-trigger-pattern.png)
 
@@ -191,7 +191,7 @@ API がこのパターンに従うとき、ロジック アプリ ワークフ�
 
 ### <a name="wait-and-listen-for-new-data-or-events-with-the-webhook-trigger-pattern"></a>webhook トリガー パターンで新しいデータまたはイベントを待ち受ける
 
-webhook トリガーは、サービス エンドポイントで新しいデータまたはイベントを待ち受ける*プッシュ トリガー*です。 新しいデータまたはあるイベントが指定の条件を満たす場合、トリガーが発動し、ロジック アプリ インスタンスが作成されます。このインスタンスはデータを入力として処理します。
+webhook トリガーは、サービス エンドポイントで新しいデータまたはイベントを待ち受ける *プッシュ トリガー* です。 新しいデータまたはあるイベントが指定の条件を満たす場合、トリガーが発動し、ロジック アプリ インスタンスが作成されます。このインスタンスはデータを入力として処理します。
 webhook トリガーはこのトピックの前半で説明した [webhook アクション](#webhook-actions)に似た動作をします。`subscribe` エンドポイントと `unsubscribe` エンドポイントで設定されます。 
 
 * `subscribe` エンドポイント:ロジック アプリに webhook トリガーを追加し、保存するとき、ロジック アプリ エンジンは `subscribe` エンドポイントを呼び出します。 この手順により、API が保存するコールバック URL をロジック アプリが作成します。 新しいデータまたはあるイベントが指定の条件を満たす場合、API は URL に HTTP POST でコールバックします。 コンテンツ ペイロードとヘッダーは入力としてロジック アプリに渡されます。

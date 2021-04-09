@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
 ms.openlocfilehash: 0ec50165ebdeaad83dd230ab378a9a31c9be508c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92519196"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wirewheel"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と WireWheel の統合
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* WireWheel では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* WireWheel では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* WireWheel では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* WireWheel では、**Just In Time** ユーザー プロビジョニングがサポートされます
 * WireWheel を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-wirewheel-from-the-gallery"></a>ギャラリーからの WireWheel の追加
@@ -51,7 +51,7 @@ Azure AD への WireWheel の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **WireWheel** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**WireWheel**」と入力します。
 1. 結果のパネルから **[WireWheel]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 

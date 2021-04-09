@@ -4,16 +4,17 @@ description: 自動的にオンボードされ、Linux マシン用に構成さ�
 author: deanwe
 ms.service: virtual-machines
 ms.subservice: automanage
+ms.collection: linux
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: b4ca9a69ab56a81e192560a3a61ec90f82cbbe80
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3aab43be49cb98fbe136e1f0216590785d650392
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688401"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953251"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices---linux"></a>Azure Automanage for virtual machines のベスト プラクティス - Linux
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a84942337b3c8eb5f7509f61f9ba5bcd564d8bb3
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: ceac1e7b5e8efa7e87ecf6e1f4c9dd8286c87e98
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653080"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102614073"
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>DevOps 向け Team Data Science Process
 
@@ -74,7 +74,7 @@ ms.locfileid: "97653080"
 |  |  | [このリファレンスでは、ご利用のソリューション用のデータ パイプラインを作成する方法と、それを JSON テンプレートの "パッケージ" として保存できることについて説明します](../../data-factory/v1/data-factory-introduction.md) | Azure Data Factory | 中級 | 一般的なコンピューティングの背景知識、データ プロジェクト経験 |
 |  |  | [このトピックでは、Azure Resource Manager テンプレートの構造について説明します](../../azure-resource-manager/templates/template-syntax.md) | Azure Resource Manager | 中級 | Microsoft Azure Platform に関する知識 |
 |  |  | [DSC は、IT と開発インフラストラクチャをコードとして構成し、パッケージとして保存できる PowerShell の管理プラットフォームです。このリファレンスはそのトピックの概要です](/powershell/scripting/dsc/overview/overview) | PowerShell Desired State Configuration | 中級 | PowerShell コーディング経験、エンタープライズ アーキテクチャとスクリプトに関する知識 |
-|  | Release | [このヘッド リファレンス記事では、CI/CD 環境でのビルド、テスト、リリースの概念について説明します](/azure/devops/pipelines/?view=azure-devops) | Visual Studio Codespace | 上級 | ソフトウェア開発経験、CI/CD 環境に関する知識、SDLC に関する知識 |
+|  | Release | [このヘッド リファレンス記事では、CI/CD 環境でのビルド、テスト、リリースの概念について説明します](/azure/devops/pipelines/) | Visual Studio Codespace | 上級 | ソフトウェア開発経験、CI/CD 環境に関する知識、SDLC に関する知識 |
 |  |  | [Runbooks に関するこの過去のリファレンスを使用して、System Center でリリース管理を自動化できます](/system-center/orchestrator/automate-runbooks) | System Center | 上級 | System Center Orchestrator の使用経験 |
 |  |  | [この記事は、Web アプリ、モバイル アプリ バックエンド、または API アプリのファイルを Azure App Service にデプロイする際の最適なオプションを判断するのに役立ちます。また、選択したオプションの固有の手順が記載された適切なリソースも紹介しています](../../app-service/deploy-local-git.md) | Microsoft Azure のデプロイ | 中級 | ソフトウェア開発経験、Microsoft Azure Platform の使用経験 |
 |  | モニター | [このリファレンスでは、Application Insights と、それを Advanced Analytics Solutions に追加する方法について説明します](../../azure-monitor/app/app-insights-overview.md) | Application Insights | 中級 | ソフトウェア開発経験、Microsoft Azure Platform に関する知識 |

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/07/2020
-ms.openlocfilehash: 1ef7943586123a1870ed9a2d0c21aa8b5fd38c1c
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 139852949a3744fd603cb197b2e27fa32679aae0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360001"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042422"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>SQL IaaS Agent 拡張機能への自動登録
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,7 +30,7 @@ Azure portal で自動登録機能を有効にすると、Azure Virtual Machines
 
 自動登録が有効になっている場合、サブスクリプション内のすべての未登録の VM に SQL Server がインストールされているかどうかを検出するため、ジョブが毎日実行されます。 これを行うには、SQL IaaS Agent 拡張機能バイナリを VM にコピーし、SQL Server レジストリ ハイブをチェックする 1 回限りのユーティリティを実行します。 SQL Server ハイブが検出された場合、仮想マシンは軽量モードで拡張機能に登録されます。 レジストリに SQL Server ハイブが存在しない場合は、バイナリが削除されます。
 
-サブスクリプションに対して自動登録を有効にすると、SQL Server が既にインストールされている、または今後インストールされる VM が、軽量モードで SQL IaaS Agent 拡張機能に登録されます。 完全な機能セットを使用するには、[完全管理モードに手動でアップグレードする](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full)必要があります。 
+サブスクリプションに対して自動登録を有効にすると、SQL Server が既にインストールされている、または今後インストールされる VM が、**軽量モードでダウンタイムがなく、また、SQL Server サービスを再起動することなく**、SQL IaaS Agent 拡張機能に登録されます。 完全な機能セットを使用するには、[完全管理モードに手動でアップグレードする](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full)必要があります。 
 
 > [!IMPORTANT]
 > SQL IaaS Agent 拡張機能を使用すると、Azure 仮想マシン内で SQL Server を使用する際に、お客様に追加のメリットを提供するという明確な目的のためにデータが収集されます。 Microsoft は、お客様の事前の同意なく、ライセンスの監査にこのデータを使用することはありません。 詳細については、「[SQL Server のプライバシーの補足情報](/sql/sql-server/sql-server-privacy#non-personal-data)」を参照してください。

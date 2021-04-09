@@ -8,14 +8,16 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e38b3c617ded9c0001b01e481d4d3c1120be62ef
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 218c0f345e4ea453a2300b3de85ac8856a09c6ee
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634755"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103199287"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Azure IoT Edge デバイスに対する継続的インテグレーションと継続的配置 (クラシック エディター)
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure Pipelines 内の組み込み Azure IoT Edge タスクを使用して、Azure IoT Edge アプリケーションで DevOps を簡単に導入できます。 この記事では、Azure Pipelines の継続的インテグレーションと継続的配置の機能を使用し、クラシック エディターを使用してアプリケーションを迅速かつ効率的に Azure IoT Edge にビルド、テスト、および配置する方法について説明します。 代わりに、[YAML を使用](how-to-continuous-integration-continuous-deployment.md)することもできます。
 

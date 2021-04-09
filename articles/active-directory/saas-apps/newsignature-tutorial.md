@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 950744e0b8b2f722d801c911d6fd2c9112f035ec
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92522497"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>チュートリアル: Azure Active Directory と Cloud Management Portal for Microsoft Azure の統合
@@ -41,7 +41,7 @@ Cloud Management Portal for Microsoft Azure と Azure AD の統合を構成す�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Cloud Management Portal for Microsoft Azure では、 **SP** によって開始される SSO がサポートされます
+* Cloud Management Portal for Microsoft Azure では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-cloud-management-portal-for-microsoft-azure-from-the-gallery"></a>ギャラリーからの Cloud Management Portal for Microsoft Azure の追加
 
@@ -61,13 +61,13 @@ Azure AD への Cloud Management Portal for Microsoft Azure の統合を構成�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Cloud Management Portal for Microsoft Azure** 」と入力し、結果パネルで **[Cloud Management Portal for Microsoft Azure]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Cloud Management Portal for Microsoft Azure**」と入力し、結果パネルで **[Cloud Management Portal for Microsoft Azure]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの Cloud Management Portal for Microsoft Azure](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Cloud Management Portal for Microsoft Azure で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Cloud Management Portal for Microsoft Azure で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Cloud Management Portal for Microsoft Azure 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Cloud Management Portal for Microsoft Azure での Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -160,9 +160,9 @@ Cloud Management Portal for Microsoft Azure との Azure AD シングル サイ�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

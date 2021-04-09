@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 12/07/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
 ms.openlocfilehash: 7b0e471e32650490e1896bb6ea171c8223b21378
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96854718"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>チュートリアル:ビッグ データをデータ ウェアハウスにストリーミングする

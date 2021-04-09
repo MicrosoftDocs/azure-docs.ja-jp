@@ -4,10 +4,10 @@ description: Windows クラスターでの暗号化証明書の設定とシー�
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.openlocfilehash: eb4909d62a2627c368f24dab572b25c6f1df30ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "82583296"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Windows クラスターでの暗号化証明書の設定とシークレットの暗号化
@@ -32,7 +32,7 @@ ms.locfileid: "82583296"
 この証明書は、クラスターの各ノードにインストールする必要があります。 セットアップ手順については、[Azure Resource Manager を使用してクラスターを作成する方法][service-fabric-cluster-creation-via-arm]に関する記事を参照してください。 
 
 ## <a name="encrypt-application-secrets"></a>アプリケーション シークレットの暗号化
-次の PowerShell コマンドを使用して、シークレットを暗号化します。 このコマンドは値を暗号化するだけであり、暗号化テキストの署名は**行いません**。 クラスターにインストールされている同じ暗号化証明書を使用して、シークレット値の暗号化テキストを生成する必要があります。
+次の PowerShell コマンドを使用して、シークレットを暗号化します。 このコマンドは値を暗号化するだけであり、暗号化テキストの署名は **行いません**。 クラスターにインストールされている同じ暗号化証明書を使用して、シークレット値の暗号化テキストを生成する必要があります。
 
 ```powershell
 Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text "mysecret" -StoreLocation CurrentUser -StoreName My

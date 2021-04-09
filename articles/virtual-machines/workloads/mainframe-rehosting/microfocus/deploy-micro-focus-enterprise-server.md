@@ -1,7 +1,7 @@
 ---
 title: Micro Focus Enterprise Server 5.0 を AKS にデプロイする |Microsoft Docs
 description: Azure 仮想マシン (VM) 上で Micro Focus 開発およびテスト環境を使用して IBM z/OS メインフレーム ワークロードをリホストします。
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: maggsl
 ms.author: edprice
@@ -11,13 +11,14 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 tags: ''
 keywords: ''
-ms.service: multiple
-ms.openlocfilehash: 6780942d922f885c7afebd8e64f4f28654c3800e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
+ms.openlocfilehash: 58ba530e434a9dc141ba8cb98120f6325eb06f7e
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87042541"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950475"
 ---
 # <a name="deploy-micro-focus-enterprise-server-50-to-aks"></a>Micro Focus Enterprise Server 5.0 を AKS にデプロイする
 
@@ -39,7 +40,7 @@ Azure Kubernetes Service は、Kubernetes に基づく管理されたオーケ�
 
 ## <a name="create-the-azure-container-registry"></a>Azure Container Registry を作成する
 
-Azure portal で、左上隅にある **[リソースの作成]** を選択します。 Marketplace のダッシュボードで、 **[コンテナー]** を選択し、次に **[Container Registry]** を選択します。 これにより、 **[コンテナー レジストリの作成]** ウィンドウが表示されます。ここで、**レジストリ名**、**Azure サブスクリプション**、**リソース グループ**、**場所**を入力する必要があります。 **レジストリ名**は解決する必要があるため、一意である必要があります。 前のブログ投稿で使用した **リソース グループ**と、それに対応する**場所**を選択します。 **管理者ユーザー**に対して **[有効にする]** を選択し、**SKU** には **[Basic]** を選択します。 すべての情報を入力したら、 **[作成する]** を選択 ます。
+Azure portal で、左上隅にある **[リソースの作成]** を選択します。 Marketplace のダッシュボードで、 **[コンテナー]** を選択し、次に **[Container Registry]** を選択します。 これにより、 **[コンテナー レジストリの作成]** ウィンドウが表示されます。ここで、**レジストリ名**、**Azure サブスクリプション**、**リソース グループ**、**場所** を入力する必要があります。 **レジストリ名** は解決する必要があるため、一意である必要があります。 前のブログ投稿で使用した **リソース グループ** と、それに対応する **場所** を選択します。 **管理者ユーザー** に対して **[有効にする]** を選択し、**SKU** には **[Basic]** を選択します。 すべての情報を入力したら、 **[作成する]** を選択 ます。
 
 ![コンテナー レジストリ インターフェイスの作成](media/deploy-image-1.png)
 
@@ -57,7 +58,7 @@ Azure portal で、左上隅にある **[リソースの作成]** を選択し�
 
 5.  **レジストリからプルする** - このチュートリアルには関係ありませんが、別の Docker イメージを実行する必要があるかどうかを把握しておくことをお勧めします。
 
-ポータルから移動する前に、ログインできるように、レジストリの資格情報を取得する必要があります。 **[クイック スタート]** ブレードを終了し、[レジストリ] メニューから **[アクセス キー]** を選択します。 **ユーザー名**と**パスワード**の 1 つ (2 つあります) をクリップボードまたはメモ帳にコピーします。 この情報は後でログインするために必要になります。
+ポータルから移動する前に、ログインできるように、レジストリの資格情報を取得する必要があります。 **[クイック スタート]** ブレードを終了し、[レジストリ] メニューから **[アクセス キー]** を選択します。 **ユーザー名** と **パスワード** の 1 つ (2 つあります) をクリップボードまたはメモ帳にコピーします。 この情報は後でログインするために必要になります。
 
 実行する必要があることを確認したので、VM にログインします。
 
@@ -73,7 +74,7 @@ Windows 2016 サーバーに Docker イメージを既に作成しているた�
 
 -   **docker login acrmf50.azurecr.io** - ここでの正しい形式は、*docker login\<registry name\>* です。 レジストリの作成時に使用した名前に置き換えます。
 
-    -   Azure portal からコピーした**ユーザー名**と**パスワード**が必要になります。 次のような画像が表示されます。
+    -   Azure portal からコピーした **ユーザー名** と **パスワード** が必要になります。 次のような画像が表示されます。
 
     ![管理者コマンド プロンプトのスクリーンショット](media/deploy-image-2.png)
 
@@ -89,11 +90,11 @@ Windows 2016 サーバーに Docker イメージを既に作成しているた�
 
 ## <a name="create-the-azure-kubernetes-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターを作成する
 
-Azure portal から、 **[リソースの作成]** を選択し、 **[Marketplace]** メニューから **[コンテナー/Kubernetes Service]** を選択します。 次に、 **[Kubernetes クラスターを作成]** ブレードに入力する必要があります。 クラスターは、使用してきたものと同じリージョンとリソース グループに保持してください。 残りの既定値をそのまま使用することができます。ただし、**ノード数**は 1 にする必要があります。 完了したら、 **[確認および作成]** を選択します。
+Azure portal から、 **[リソースの作成]** を選択し、 **[Marketplace]** メニューから **[コンテナー/Kubernetes Service]** を選択します。 次に、 **[Kubernetes クラスターを作成]** ブレードに入力する必要があります。 クラスターは、使用してきたものと同じリージョンとリソース グループに保持してください。 残りの既定値をそのまま使用することができます。ただし、**ノード数** は 1 にする必要があります。 完了したら、 **[確認および作成]** を選択します。
 
 ![Kubernetes クラスターを作成する画面](media/deploy-image-5.png)
 
-完了すると、デプロイはブレードで選択した**リソースグループ**に **Kubernetes Service** アーティファクトを配置します。 ただし、実際のクラスターには、デプロイ時に独自のリソース グループが作成されます。 左側のメニューから **[リソースグループ]** を選択した場合は、名前付け規則に基づいていることが確認できます。 画像は私のものです。一覧の最後にあります。
+完了すると、デプロイはブレードで選択した **リソースグループ** に **Kubernetes Service** アーティファクトを配置します。 ただし、実際のクラスターには、デプロイ時に独自のリソース グループが作成されます。 左側のメニューから **[リソースグループ]** を選択した場合は、名前付け規則に基づいていることが確認できます。 画像は私のものです。一覧の最後にあります。
 
 ![リソース グループのスクリーンショット](media/deploy-image-6.png)
 

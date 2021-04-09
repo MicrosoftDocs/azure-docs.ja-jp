@@ -4,10 +4,10 @@ description: レジストリのパフォーマンスに関する一般的な問�
 ms.topic: article
 ms.date: 08/11/2020
 ms.openlocfilehash: 15129ebe1da2e52fac106a34863f609c440549ad
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92148414"
 ---
 # <a name="troubleshoot-registry-performance"></a>レジストリのパフォーマンスのトラブルシューティング

@@ -7,12 +7,12 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: 5c33ef9559d9ce67eea62ee7f78425d18010c1cb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d96c467807af868c07be12f52d913f881b82f732
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727959"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175874"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>ADF での CI-CD、Azure DevOps、および GitHub の問題のトラブルシューティング 
 
@@ -91,7 +91,7 @@ CI/CD リリース パイプラインが次のエラーで失敗しています�
 
 #### <a name="issue"></a>問題
 
-Data Factory に変更を発行しようとすると、次のエラーメッセージが表示されます。
+Data Factory に変更を発行しようとすると、次のエラー メッセージが表示されます。
 
 `
 "error": {
@@ -190,7 +190,7 @@ ADF に OAuth が構成されていません。 URL が正しく構成されて�
 
 ##### <a name="resolution"></a>解決方法
 
-最初に、ADF への OAuth アクセスを許可します。 次に、正しい URL を使用して Git Enterprise に接続する必要があります。 ADF サービスによって最初に https://hostname/api/v3/search/repositories?q=user%3<customer credential>.... が試されて失敗するため、構成を顧客組織に設定する必要があります。 このようにすると、 https://hostname/api/v3/orgs/<vaorg>/<repo> が試されて成功します。 
+最初に、ADF への OAuth アクセスを許可します。 次に、正しい URL を使用して Git Enterprise に接続する必要があります。 構成は、顧客組織に設定する必要があります。 たとえば、ADF はまず *https://hostname/api/v3/search/repositories?q=user%3<customer credential>....* を試行し、失敗します。 その後、 *https://hostname/api/v3/orgs/<org>/<repo>...* を試行し、成功します。 
  
 ### <a name="recover-from-a-deleted-data-factory"></a>削除されたデータ ファクトリから復旧する
 
@@ -203,7 +203,8 @@ ADF に OAuth が構成されていません。 URL が正しく構成されて�
 
 ソース管理が使用されていない場合は、サービスが削除コマンドを受け取ると、インスタンスが削除されて、バックアップは格納されないため、削除されたデータ ファクトリをバックエンドから復旧することはできません。
 
-#### <a name="resoloution"></a>解決方法
+#### <a name="resolution"></a>解決方法
+
 ソース管理が使用されている場合に削除されたデータ ファクトリを復旧するには、次の手順のようにします。
 
  * 新しい Azure データ ファクトリを作成します。

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: b9b27a432776635290c7e8e796e84d8c1e0e8675
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92168343"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft.Common.DropDown UI 要素
@@ -26,19 +26,19 @@ DropDown 要素には、ポータルでの外観を決定するさまざまな�
 
 説明が含まれている場合、コントロールは次のように表示されます。
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Microsoft.Common.DropDown の単一選択":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Microsoft.Common.DropDown の説明付きの単一選択":::
 
 複数選択が有効になっている場合、コントロールにより **[すべて選択]** オプションと複数の項目を選択するためのチェックボックスが追加されます。
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft.Common.DropDown の単一選択":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft.Common.DropDown の複数選択":::
 
 複数選択を有効にしながら説明を含めることができます。
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Microsoft.Common.DropDown の単一選択":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="複数選択を有効にしながら説明を含める方法がわかるスクリーンショット。":::
 
 フィルター処理が有効になっている場合、コントロールには、フィルター処理の値を追加するためのテキスト ボックスが含まれます。
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft.Common.DropDown の単一選択":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft.Common.DropDown の説明付きの複数選択":::
 
 ## <a name="schema"></a>スキーマ
 

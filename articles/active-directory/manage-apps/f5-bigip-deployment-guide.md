@@ -12,10 +12,10 @@ ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f962bf131b87f17712186145b8c8b8e6090f7002
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98730659"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>セキュリティで保護されたハイブリッド アクセスのために F5 BIG-IP Virtual Edition VM を Azure IaaS にデプロイするチュートリアル
@@ -248,7 +248,7 @@ BIG-IP の **アクセス ガイド付き構成** を使用して SHA を実装�
  |送信先 IP アドレス|BIG-IP-VM のすべてのセカンダリ プライベート IP のコンマ区切りリスト|
  |宛先ポート| 80,443|
  |プロトコル| TCP |
- |アクション| 許可|
+ |アクション| Allow|
  |優先度|100 ～ 4096 の範囲の使用可能な最小値|
  |名前 | わかりやすい名前 (たとえば、「`BIG-IP-VM_Web_Services_80_443`」)|
 

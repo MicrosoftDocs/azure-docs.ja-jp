@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bb38a76de41885b6f39a1c6dce7c44bcb52a4d60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 659f61734001163ada6fd26caabe2fb007892f61
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86027445"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104774492"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Spark で構築した機械学習モデルの操作
 
@@ -266,7 +266,8 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>モデルに入力する特徴配列を含む RDD オブジェクトの作成
 このセクションのコードでは、RDD オブジェクトとしてカテゴリ テキスト データのインデックスを作成し、それをワン ホット エンコーディングすることで、MLlib ロジスティック回帰モデルやツリーベース モデルのトレーニングおよびテストに使用できるようにする方法を示します。 インデックス付きデータは、 [Resilient Distributed Dataset (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) オブジェクトに格納されます。 RDD は、Spark における基本的な抽象化です。 RDD オブジェクトは、パーティション分割された変更できない要素のコレクションであり、Spark と平行して処理することができます。
 
-さらにここでは、確率的勾配降下 (SGD) による線形回帰に使用できるように、MLlib の `StandardScalar` を使ってデータをスケーリングする方法を示すコードも示しています。SGD はさまざまな機械学習モデルのトレーニングに広く使用されているアルゴリズムです。 [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) を使用して、特徴を単価差異にスケーリングします。 この特徴のスケーリングはデータの正規化とも呼ばれ、目標関数において幅広く分散した値を持つ特徴に過大な重みが与えられないようにします。 
+さらにここでは、確率的勾配降下 (SGD) による線形回帰に使用できるように、MLlib の `StandardScalar` を使ってデータをスケーリングする方法を示すコードも示しています。SGD はさまざまな機械学習モデルのトレーニングに広く使用されているアルゴリズムです。 [StandardScaler](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.tree.RandomForest.html#pyspark.mllib.tree.RandomForest
+) を使用して、特徴を単価差異にスケーリングします。 この特徴のスケーリングはデータの正規化とも呼ばれ、目標関数において幅広く分散した値を持つ特徴に過大な重みが与えられないようにします。 
 
 ```python
 # CREATE RDD OBJECTS WITH FEATURE ARRAYS FOR INPUT INTO MODELS
@@ -545,7 +546,7 @@ BoostedTreeRegressionFileLoc:GradientBoostingTreeRegression_2016-05-0317_23_56.8
 Spark には、Livy と呼ばれるコンポーネントを使用して、REST インターフェイス経由でバッチ ジョブや対話型クエリをリモートから送信できるメカニズムが備えられています。 HDInsight Spark クラスターでは Livy が既定で有効になっています。 Livy の詳細については、[Livy を使用した Spark ジョブのリモート送信](../../hdinsight/spark/apache-spark-livy-rest-interface.md)に関する記事をご覧ください。 
 
 Livy を使用して、Azure BLOB に格納されているファイルをバッチ処理でスコア付けし、結果を別の BLOB に書き込むジョブをリモートから送信できます。 それには、  
-[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) の Python スクリプトを Spark クラスターの BLOB にアップロードします。 **Microsoft Azure Storage Explorer** や **AzCopy** などのツールを使って、スクリプトをクラスターの BLOB にコピーできます。 この例では、スクリプトを ***wasb:///example/python/ConsumeGBNYCReg.py*** にアップロードしています。   
+[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) の Python スクリプトを Spark クラスターの BLOB にアップロードします。 **Microsoft Azure Storage Explorer** や **AzCopy** などのツールを使って、スクリプトをクラスターの BLOB にコピーできます。 この例では、スクリプトを **_wasb:///example/python/ConsumeGBNYCReg.py_** にアップロードしました。   
 
 > [!NOTE]
 > 必要なアクセス キーは、Spark クラスターに関連付けられているストレージ アカウント用のポータルで見つけることができます。 
@@ -599,10 +600,10 @@ conn.close()
 
 この Python コードを [Azure Functions](https://azure.microsoft.com/documentation/services/functions/) に追加することで、タイマー、BLOB の作成、BLOB の更新などのさまざまなイベントに基づいて BLOB をスコア付けする Spark ジョブの送信をトリガーすることもできます。 
 
-コードを使用しないクライアント エクスペリエンスを実現するには、[Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) を使用し、**Logic Apps デザイナー**で HTTP 操作を定義してそのパラメーターを設定することで、Spark バッチ スコアリングを呼び出します。 
+コードを使用しないクライアント エクスペリエンスを実現するには、[Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) を使用し、**Logic Apps デザイナー** で HTTP 操作を定義してそのパラメーターを設定することで、Spark バッチ スコアリングを呼び出します。 
 
 * Azure Portal で、 **[+ 新規]**  ->  **[Web + モバイル]**  ->  **[ロジック アプリ]** の順に選択して、新しいロジック アプリを作成します。 
-* ロジック アプリと App Service プランの名前を入力して、**Logic Apps デザイナー**を起動します。
+* ロジック アプリと App Service プランの名前を入力して、**Logic Apps デザイナー** を起動します。
 * HTTP 操作を選択して、次の図に示すようにパラメーターを入力します。
 
 ![Logic Apps デザイナー](./media/spark-model-consumption/spark-logica-app-client.png)

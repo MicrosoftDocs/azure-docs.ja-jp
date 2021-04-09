@@ -13,10 +13,10 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
 ms.openlocfilehash: 9c6272901600886958d4339d067ca75bb9a73793
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101649123"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>新しいマルチテナント アプリケーションを構成する方法

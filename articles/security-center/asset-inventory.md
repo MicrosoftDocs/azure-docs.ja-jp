@@ -9,17 +9,17 @@ ms.date: 02/10/2021
 ms.service: security-center
 ms.topic: how-to
 ms.openlocfilehash: 873fdba1d24db55b3269cc2c13f0140da4a9b4e3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100393355"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory"></a>資産インベントリを使用してリソースの調査と管理を行う
 
 Azure Security Center の資産インベントリ ページを使用すると、Security Center に接続したリソースのセキュリティ態勢が 1 つのページに表示されます。 
 
-Security Center では、Azure リソースのセキュリティの状態が定期的に分析されて、潜在的なセキュリティ脆弱性が特定されます。 その後、これらの脆弱性を修正する方法に関するレコメンデーションが提供されます。
+Security Center では、Azure リソースのセキュリティの状態が定期的に分析されて、潜在的なセキュリティ脆弱性が特定されます。 その後、これらの脆弱性を修正する方法に関する推奨事項が提供されます。
 
 いずれかのリソースに未処理のレコメンデーションがある場合は、インベントリに表示されます。
 

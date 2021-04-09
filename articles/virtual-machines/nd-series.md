@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 750d99655098628ef0d72ae3208289f57e625f3d
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 5516e17a74fffd28f432df305dfa7f592644d4a7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102562267"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102611574"
 ---
 # <a name="nd-series"></a>ND シリーズ
 
@@ -24,7 +24,7 @@ ND シリーズは、AI やディープ ラーニングのワークロードを�
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされていません<br>
-[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
 Nvidia NVLink Interconnect:サポートされていません<br>
 
 > [!IMPORTANT]

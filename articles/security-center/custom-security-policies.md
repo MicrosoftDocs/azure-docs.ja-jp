@@ -1,27 +1,32 @@
 ---
 title: Azure Security Center でのカスタム セキュリティ ポリシーの作成 | Microsoft Docs
 description: Azure Security Center で監視される Azure カスタム ポリシー定義。
-services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 12/03/2020
+ms.date: 02/25/2021
 ms.author: memildin
-ms.openlocfilehash: 8d2b43ab57ea7a3b1dc1d13bcdea9932ccecb9dc
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+zone_pivot_groups: manage-asc-initiatives
+ms.openlocfilehash: a901e71da640f8413e5714ad59073324f582c1b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559033"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102441059"
 ---
-# <a name="using-custom-security-policies"></a>カスタム セキュリティ ポリシーの使用
+# <a name="create-custom-security-initiatives-and-policies"></a>カスタム セキュリティ イニシアチブとポリシーを作成する
 
 システムと環境のセキュリティ保護を支援するために、Azure Security Center ではセキュリティに関する推奨事項が生成されます。 これらの推奨事項は業界のベスト プラクティスに基づいており、すべてのお客様に提供される既定の汎用セキュリティ ポリシーに組み込まれています。 また、業界標準と規制基準に関する Security Center のナレッジから提供される場合もあります。
 
 この機能を使用して、独自の "*カスタム*" イニシアティブを追加できます。 作成したポリシーに環境が従っていない場合は、推奨事項が提供されます。 作成したカスタム イニシアチブは、「[規制に対するコンプライアンスの向上](security-center-compliance-dashboard.md)」チュートリアルで説明されている規制コンプライアンス ダッシュボードの組み込みイニシアチブと一緒に表示されます。
 
 [Azure Policy のドキュメント](../governance/policy/concepts/definition-structure.md#definition-location)で説明されているように、カスタム イニシアチブの場所を指定するとき、その場所は管理グループまたはサブスクリプションである必要があります。 
+
+> [!TIP]
+> このページの主要な概念の概要については、「[セキュリティポリシー、イニシアチブ、推奨事項とは](security-policy-concept.md)」を参照してください。
+
+::: zone pivot="azure-portal"
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>イニシアティブをサブスクリプションに追加するには 
 
@@ -68,6 +73,113 @@ ms.locfileid: "96559033"
 1. ポリシーの生成された推奨事項を表示するには、サイドバーの **[推奨事項]** をクリックして推奨事項ページを開きます。 推奨事項は [カスタム] ラベル付きで表示され、約 1 時間以内に提供されます。
 
     [![カスタム推奨事項](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
+
+::: zone-end
+
+::: zone pivot="rest-api"
+
+## <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>REST API を使用して Azure Policy でセキュリティ ポリシーを構成する
+
+Azure Policy とのネイティブ統合の一環として、Azure Security Center では、Azure Policy の REST API を利用してポリシー割り当てを作成できます。 次の手順では、ポリシー割り当ての作成と既存の割り当てのカスタマイズの手順について説明します。 
+
+Azure Policy で重要な概念: 
+
+- **ポリシー定義** はルールです 
+
+- **イニシアティブ** はポリシー定義 (ルール) のコレクションです 
+
+- **割り当て** は、特定のスコープ (管理グループ、サブスクリプションなど) にイニシアティブまたはポリシーを適用することです 
+
+Security Center では、そのセキュリティ ポリシーをすべて含んだ組み込みイニシアチブ (Azure セキュリティ ベンチマーク) があります。 Azure リソースに対する Security Center のポリシーを評価するには、評価する管理グループやサブスクリプションで割り当てを作成する必要があります。
+
+組み込みイニシアティブでは、既定で Security Center のポリシーがすべて有効になっています。 組み込みのイニシアチブから特定のポリシーを無効にすることもできます。 たとえば、**Web アプリケーション ファイアウォール** を除くすべての Security Center のポリシーを適用するには、ポリシーの effect パラメーターの値を **Disabled** に変更します。
+
+## <a name="api-examples"></a>API の例
+
+以下の例では、次のように変数を置き換えてください。
+
+- **{scope}** には、ポリシーを適用する管理グループまたはサブスクリプションの名前を入力します
+- **{poicyAssignmentName}** には、関連するポリシー割り当ての名前を入力します
+- **{name}** には、名前、またはポリシーの変更を承認した管理者の名前を入力します
+
+この例では、サブスクリプションまたは管理グループで組み込み Security Center イニシアティブを割り当てる方法を示します
+ 
+ ```
+    PUT  
+    https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+
+    Request Body (JSON) 
+
+    { 
+
+      "properties":{ 
+
+    "displayName":"Enable Monitoring in Azure Security Center", 
+
+    "metadata":{ 
+
+    "assignedBy":"{Name}" 
+
+    }, 
+
+    "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
+
+    "parameters":{}, 
+
+    } 
+
+    } 
+ ```
+
+この例では、次のポリシーを無効にして、サブスクリプションで組み込み Security Center イニシアティブを割り当てる方法を示します。 
+
+- システムの更新プログラム ("systemUpdatesMonitoringEffect") 
+
+- セキュリティ構成 ("systemConfigurationsMonitoringEffect") 
+
+- エンドポイント保護 ("endpointProtectionMonitoringEffect") 
+
+ ```
+    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+    
+    Request Body (JSON) 
+    
+    { 
+    
+      "properties":{ 
+    
+    "displayName":"Enable Monitoring in Azure Security Center", 
+    
+    "metadata":{ 
+    
+    "assignedBy":"{Name}" 
+    
+    }, 
+    
+    "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
+    
+    "parameters":{ 
+    
+    "systemUpdatesMonitoringEffect":{"value":"Disabled"}, 
+    
+    "systemConfigurationsMonitoringEffect":{"value":"Disabled"}, 
+    
+    "endpointProtectionMonitoringEffect":{"value":"Disabled"}, 
+    
+    }, 
+    
+     } 
+    
+    } 
+ ```
+この例では、割り当てを削除する方法を示します。
+ ```
+    DELETE   
+    https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+ ```
+
+::: zone-end
+
 
 ## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>詳細情報でのカスタム推奨事項の拡張
 

@@ -11,10 +11,10 @@ ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 5f408699cae9580188a3780fc8f8654eaa97c26b
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97108435"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して LexisNexis を構成するためのチュートリアル
@@ -80,7 +80,7 @@ ThreatMetrix 統合には、次のコンポーネントが含まれています�
 
 ### <a name="part-2---configure-the-api"></a>パート 2 - API を構成する
 
-アプリケーション設定は、[Azure の App Service で構成](../app-service/configure-common.md#configure-app-settings)できます。  この方法では、リポジトリにチェックインせずに、安全に設定を構成できます。 REST API に次の設定を指定する必要があります。
+アプリケーション設定は、[Azure の App Service で構成](../app-service/configure-common.md#configure-app-settings)できます。  この方法では、設定をリポジトリにチェックインすることなく、安全に構成できます。 REST API に次の設定を指定する必要があります。
 
 | アプリケーションの設定 | source | Notes |
 | :-------- | :------------| :-----------|

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: 1ebba3231a7b3a86b98bcc14d1257412d1557ff3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bcb4408df08f3854b067c8b805b78433a3d5075c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738193"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103491250"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>音声テキスト変換についてよく寄せられる質問
 
@@ -57,7 +57,7 @@ ms.locfileid: "101738193"
 
 **Q:異なる基本モデルがあるのはなぜですか。**
 
-**A**: 音声サービスでは、複数の基本モデルから選択できます。 各モデルの名前には、追加された日付が含まれています。 カスタム モデルのトレーニングを開始するときは、最適な精度を得られるように最新のモデルを使用してください。 新しいモデルを使用できるようになっても、しばらくは以前の基本モデルを利用できます。 使用していたモデルは、廃止されるまで引き続き使用できます (「[モデルのライフサイクル](custom-speech-overview.md#model-lifecycle)」を参照してください)。 ただし、精度を高めるために、最新の基本モデルに切り替えることをお勧めします。
+**A**: 音声サービスでは、複数の基本モデルから選択できます。 各モデルの名前には、追加された日付が含まれています。 カスタム モデルのトレーニングを開始するときは、最適な精度を得られるように最新のモデルを使用してください。 新しいモデルを使用できるようになっても、しばらくは以前の基本モデルを利用できます。 使用していたモデルは、廃止されるまで引き続き使用できます (「[モデルとエンドポイントのライフサイクル](./how-to-custom-speech-model-and-endpoint-lifecycle.md)」を参照してください)。 ただし、精度を高めるために、最新の基本モデルに切り替えることをお勧めします。
 
 **Q:既存のモデル (モデル スタッキング) を更新できますか。**
 
@@ -71,7 +71,7 @@ ms.locfileid: "101738193"
 
 モデルを適応させてデプロイした場合、そのデプロイはそのまま残ります。 デプロイ済みのモデルを解除し、新しいバージョンの基本モデルを使用し、再び適応させて再デプロイすると、精度を高めることができます。
 
-基本モデルとカスタム モデルはしばらくすると廃止されます (「[モデルのライフサイクル](custom-speech-overview.md#model-lifecycle)」を参照してください)。
+基本モデルとカスタム モデルはしばらくすると廃止されます (「[モデルとエンドポイントのライフサイクル](./how-to-custom-speech-model-and-endpoint-lifecycle.md)」を参照してください)。
 
 **Q:自分のモデルをダウンロードしてローカルで実行できますか。**
 

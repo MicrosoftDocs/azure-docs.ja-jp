@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: cc44c7121cfc03b78ff820f6c50a88f646d599e0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 68fcf8a8feb046fca2c26041d92264dd8b3a638e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100579001"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103465499"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>Azure 以外のマシンを Security Center に接続する
 
@@ -40,7 +40,7 @@ Azure Arc 対応サーバーがあるマシンは Azure リソースになり、
 
 **Azure Arc をデプロイするには:**
 
-- マシン 1 台の場合は、「[クイック スタート:Azure Arc 対応サーバーにハイブリッド マシンを接続する」](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)の手順に従います。
+- マシン 1 台の場合は、「[クイックスタート: Azure Arc 対応サーバーにハイブリッド マシンを接続する](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)」の手順に従います。
 - 複数のマシンを大規模に Arc 対応サーバーに接続するには、「[ハイブリッド マシンを大規模に Azure に接続する](../azure-arc/servers/onboard-service-principal.md)」を参照してください
 
 > [!TIP]
@@ -75,24 +75,24 @@ Azure Arc 対応サーバーがあるマシンは Azure リソースになり、
 
     ここから、オンボードするマシンの種類に応じて、以下の関連する手順を選択します。
 
-    - [Azure Stack VM のオンボード](#onboard-your-azure-stack-vms)
+    - [Azure Stack Hub VM のオンボード](#onboard-your-azure-stack-hub-vms)
     - [Linux マシンのオンボード](#onboard-your-linux-machines)
     - [Windows マシンのオンボード](#onboard-your-windows-machines)
 
-### <a name="onboard-your-azure-stack-vms"></a>Azure Stack VM のオンボード
+### <a name="onboard-your-azure-stack-hub-vms"></a>Azure Stack Hub VM のオンボード
 
-Azure Stack VM を追加するには、 **[エージェント管理]** ページに情報が必要です。また、Azure Stack 上で実行されている仮想マシンで、**Azure Monitor, Update and Configuration Management** という仮想マシンの拡張機能を構成する必要があります。
+Azure Stack Hub VM を追加するには、 **[エージェント管理]** ページの情報が必要です。また、Azure Stack Hub インスタンス上で実行されている仮想マシンで、**Azure Monitor, Update and Configuration Management** という仮想マシンの拡張機能を構成する必要があります。
 
 1. **[エージェント管理]** ページで、**ワークスペース ID** および **主キー** をメモ帳にコピーします。
-1. **Azure Stack** ポータルにログインし、 **[仮想マシン]** ページを開きます。
+1. **Azure Stack Hub** ポータルにログインし、 **[仮想マシン]** ページを開きます。
 1. Security Center で保護する仮想マシンを選択します。
     >[!TIP]
-    > Azure Stack に仮想マシンを作成する方法については、[Windows 仮想マシンの場合はこのクイック スタート](/azure-stack/user/azure-stack-quick-windows-portal)、[Linux 仮想マシンの場合はこのクイック スタート](/azure-stack/user/azure-stack-quick-linux-portal)を参照してください。
+    > Azure Stack Hub 上に仮想マシンを作成する方法については、[Windows 仮想マシン用のこちらのクイック スタート](/azure-stack/user/azure-stack-quick-windows-portal)または [Linux 仮想マシン用のこちらのクイック スタート](/azure-stack/user/azure-stack-quick-linux-portal)を参照してください。
 1. **[拡張機能]** を選択します。 この仮想マシンにインストールされている仮想マシン拡張機能の一覧が表示されます。
 1. **[追加]** タブを選択します。 **[新しいリソース]** メニューに、使用可能な仮想マシン拡張機能の一覧が表示されます。
 1. **Azure Monitor, Update and Configuration Management** 拡張機能を選択し、 **[作成]** を選択します。 **[拡張機能のインストール]** 構成ページが開きます。
     >[!NOTE]
-    > **Azure Monitor, Update and Configuration Management** 拡張機能が Marketplace に一覧表示されていない場合は、該当の Azure Stack オペレーターに連絡して使用可能にしてください。
+    > **Azure Monitor, Update and Configuration Management** 拡張機能がマーケットプレースに一覧表示されていない場合は、該当の Azure Stack Hub オペレーターに連絡して使用可能にしてください。
 1. **[拡張機能のインストール]** 構成ページに、前の手順でメモ帳にコピーしておいた **ワークスペース ID** と **ワークスペース キー (主キー)** を貼り付けます。
 1. 構成が完了したら、 **[OK]** を選択します。 拡張機能の状態は、**プロビジョニング成功** として表示されます。 Security Center に仮想マシンが表示されるまでに、最大で 1 時間かかる場合があります。
 

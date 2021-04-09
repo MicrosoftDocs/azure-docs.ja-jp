@@ -4,10 +4,10 @@ description: クイック スタート:Azure Event Grid と Azure CLI (または
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: 4fe4753de41443a0537636933364c7b69b25cb27
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98791729"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>クイック スタート:Event Grid を使用して Azure Functions にカスタム イベントをルーティングする
@@ -16,7 +16,7 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 Az
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-azure-function"></a>Azure Functions の作成
+## <a name="create-azure-function"></a>Azure 関数の作成
 カスタム トピックをサブスクライブする前に、イベントを処理する関数を作成します。 
 
 1. 「[関数アプリを作成する](../azure-functions/functions-get-started.md)」の手順に従って関数アプリを作成します。

@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6a5460a691658bda1cd60e503be8c98433c9c343
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: de003025e98109599ecd69c0459e29950c9bd1fd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720156"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950571"
 ---
 # <a name="examples-of-an-attestation-policy"></a>構成証明ポリシーの例
 
@@ -35,9 +35,9 @@ c:[type=="x-ms-sgx-mrsigner"] => issue(type="<custom-name>", value=c.value);
 };
 
 ```
-Azure Attestation によって生成される入力方向の要求の詳細については、「[要求セット](/azure/attestation/claim-sets)」をご覧ください。 入力方向の要求は、カスタム ポリシーに承認規則を定義するために、ポリシーの作成者によって使用されることがあります。 
+Azure Attestation によって生成される入力方向の要求の詳細については、「[要求セット](./claim-sets.md)」をご覧ください。 入力方向の要求は、カスタム ポリシーに承認規則を定義するために、ポリシーの作成者によって使用されることがあります。 
 
-発行規則セクションは必須ではありません。 ユーザーはこのセクションを使用して、構成証明トークン内に生成された追加の出力方向の要求を、カスタム名で指定できます。 サービスによって構成証明トークン内に生成された出力方向の要求の詳細については、「[要求セット](/azure/attestation/claim-sets)」をご覧ください。
+発行規則セクションは必須ではありません。 ユーザーはこのセクションを使用して、構成証明トークン内に生成された追加の出力方向の要求を、カスタム名で指定できます。 サービスによって構成証明トークン内に生成された出力方向の要求の詳細については、「[要求セット](./claim-sets.md)」をご覧ください。
 
 ## <a name="default-policy-for-an-sgx-enclave"></a>SGX エンクレーブの既定のポリシー
 
@@ -59,7 +59,7 @@ issuancerules
 };
 ```
 
-既定のポリシーで使用されている要求は非推奨と見なされてはいますが、完全にサポートされており、今後も引き続き追加されます。 非推奨となっていない要求名の使用をお勧めします。 推奨される要求名の詳細については、「[要求セット](/azure/attestation/claim-sets)」をご覧ください。 
+既定のポリシーで使用されている要求は非推奨と見なされてはいますが、完全にサポートされており、今後も引き続き追加されます。 非推奨となっていない要求名の使用をお勧めします。 推奨される要求名の詳細については、「[要求セット](./claim-sets.md)」をご覧ください。 
 
 ## <a name="sample-custom-policy-to-support-multiple-sgx-enclaves"></a>複数の SGX エンクレーブをサポートするサンプル カスタム ポリシー
 

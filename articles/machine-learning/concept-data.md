@@ -11,16 +11,16 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 9e4722933ec224712c8d649c0d9d850a9ee3e322
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 601be8409db22162a410d481e6609d378718a7b4
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98872011"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102503591"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning でのデータ アクセスをセキュリティ保護する
 
-Azure Machine Learning を使用すると、クラウド内のデータに簡単に接続できます。  基になるストレージ サービスに抽象レイヤーが用意されているため、ストレージの種類に固有のコードを記述しなくても、データに安全にアクセスし、操作することができます。 Azure Machine Learning には、次のデータ機能も用意されています。
+Azure Machine Learning を使用すると、クラウド内のデータに簡単に接続できます。 基になるストレージ サービスに抽象レイヤーが用意されているため、ストレージの種類に固有のコードを記述しなくても、データに安全にアクセスし、操作することができます。 Azure Machine Learning には、次のデータ機能も用意されています。
 
 *    Pandas および Spark DataFrames による相互運用性
 *    データ系列のバージョン管理と追跡
@@ -53,7 +53,7 @@ Azure Machine Learning を使用すると、クラウド内のデータに簡単
 <a name="datastores"></a>
 ## <a name="connect-to-storage-with-datastores"></a>データストアを使用してストレージに接続する
 
-Azure Machine Learning データストアには、Azure ストレージ サービスへの接続情報が安全に保持されるため、ご自身のスクリプトでそのコードを書く必要はありません。 ストレージ アカウントに簡単に接続し、下位の Azure ストレージ サービスのデータにアクセスするために、[データストアを登録および作成します](how-to-access-data.md)。 
+Azure Machine Learning データストアでは、Azure のデータ ストレージへの接続情報が安全に保持されるため、ご自身のスクリプトでそのコードを書く必要はありません。 [データストアを登録および作成](how-to-access-data.md)すると、ストレージ アカウントに簡単に接続し、基になるストレージ サービスのデータにアクセスできます。 
 
 データストアとして登録可能な、Azure 内でサポートされているクラウドベースのストレージ サービスは次のとおりです。
 
@@ -65,6 +65,9 @@ Azure Machine Learning データストアには、Azure ストレージ サー�
 + Azure Database for PostgreSQL
 + Databricks ファイル システム
 + Azure Database for MySQL
+
+>[!TIP]
+> データストア作成のために一般提供されている機能では、ストレージ サービスにアクセスするために、サービス プリンシパルや Shared Access Signature (SAS) トークンなどの資格情報ベースの認証が必要です。 これらの資格情報には、ワークスペースへの "*閲覧者*" アクセス権を持つユーザーがアクセスできます。 <br><br>これに問題がある場合は、[ストレージ サービスへの ID ベースのデータ アクセス (プレビュー) を使用するデータストアを作成](how-to-identity-based-data-access.md)します。 この機能は[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、随時変更される可能性があります。
 
 <a name="datasets"></a>
 ## <a name="reference-data-in-storage-with-datasets"></a>データセットを使用してストレージ内のデータを参照する
@@ -83,9 +86,9 @@ Azure Machine Learning のデータセットは、データのコピーではあ
 
 データセットには、次の 2 つの種類があります。 
 
-+ [FileDataset](/python/api/azureml-core/azureml.data.file_dataset.filedataset?preserve-view=true&view=azure-ml-py) は、データストアまたはパブリック URL 内の 1 つまたは複数のファイルを参照します。 データがクレンジング済みで、トレーニング実験で使用できる状態になっている場合は、コンピューティング先に、FileDatasets によって参照されている[ファイルをダウンロードまたはマウント](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)できます。
++ [FileDataset](/python/api/azureml-core/azureml.data.file_dataset.filedataset) は、データストアまたはパブリック URL 内の 1 つまたは複数のファイルを参照します。 データがクレンジング済みで、トレーニング実験で使用できる状態になっている場合は、コンピューティング先に、FileDatasets によって参照されている[ファイルをダウンロードまたはマウント](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)できます。
 
-+ [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) は、指定されたファイルまたはファイルのリストを解析して、データを表形式で表します。 TabularDataset を Pandas または Spark DataFrame に読み込んで、さらに操作とクレンジングを行うことができます。 TabularDatasets を作成できるデータ形式の完全な一覧については、[TabularDatasetFactory クラス](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)に関するページをご覧ください。
++ [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) は、指定されたファイルまたはファイルのリストを解析して、データを表形式で表します。 TabularDataset を Pandas または Spark DataFrame に読み込んで、さらに操作とクレンジングを行うことができます。 TabularDatasets を作成できるデータ形式の完全な一覧については、[TabularDatasetFactory クラス](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)に関するページをご覧ください。
 
 追加のデータセット機能については、次のドキュメントを参照してください。
 

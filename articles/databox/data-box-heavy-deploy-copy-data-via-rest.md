@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: e2fc174147b99b7b952c6d10084cfc969dacf5a6
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91949141"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>チュートリアル:REST API 経由で Azure Data Box BLOB ストレージにデータをコピーする  
@@ -92,7 +92,7 @@ Azure portal を使用して証明書をダウンロードします。
 
 1. Azure portal にサインインします。
 2. お客様の Data Box の注文に移動し、 **[全般]、[デバイスの詳細]** の順に移動します。
-3. **[デバイスの資格情報]** で **[デバイスの API アクセス]** に移動します。 **[Download]** をクリックします。 この操作によって、 **\<your order name>.cer** 証明書ファイルがダウンロードされます。 このファイルを**保存**します。 デバイスに接続するために使用するクライアントまたはホスト コンピューターにこの証明書をインストールします。
+3. **[デバイスの資格情報]** で **[デバイスの API アクセス]** に移動します。 **[Download]** をクリックします。 この操作によって、 **\<your order name>.cer** 証明書ファイルがダウンロードされます。 このファイルを **保存** します。 デバイスに接続するために使用するクライアントまたはホスト コンピューターにこの証明書をインストールします。
 
     ![Azure portal での証明書のダウンロード](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
@@ -153,7 +153,7 @@ RHEL、Fedora、および CentOS の最近のバージョンでは、`update-ca-
 
 ### <a name="configure-partner-software-and-verify-connection"></a>パートナー ソフトウェアを構成し、接続を確認する
 
-[*http* 経由での接続時に使用したパートナー ソフトウェアの構成](#configure-partner-software-and-verify-connection)手順に従います。 唯一の違いは、*http を使用するオプション*をオフにしておく必要があることです。
+[*http* 経由での接続時に使用したパートナー ソフトウェアの構成](#configure-partner-software-and-verify-connection)手順に従います。 唯一の違いは、*http を使用するオプション* をオフにしておく必要があることです。
 
 ## <a name="copy-data-to-data-box-heavy"></a>データを Data Box Heavy にコピーする
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 3547de9ce307686e8796b1b3ad0f4fdfff18c9c2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92511904"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qumu-cloud"></a>チュートリアル: Azure Active Directory と Qumu Cloud の統合
@@ -41,9 +41,9 @@ Qumu Cloud と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Qumu Cloud では、 **SP** Initiated SSO と **IDP** Initiated SSO がサポートされます
+* Qumu Cloud では、**SP** Initiated SSO と **IDP** Initiated SSO がサポートされます
 
-* Qumu Cloud では、 **Just-In-Time** ユーザー プロビジョニングがサポーされます
+* Qumu Cloud では、**Just-In-Time** ユーザー プロビジョニングがサポーされます
 
 ## <a name="adding-qumu-cloud-from-the-gallery"></a>ギャラリーからの Qumu Cloud の追加
 
@@ -63,13 +63,13 @@ Azure AD への Qumu Cloud の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Qumu Cloud** 」と入力し、結果パネルで **[Qumu Cloud]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Qumu Cloud**」と入力し、結果パネルで **[Qumu Cloud]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リスト内の Qumu Cloud](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Qumu Cloud で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Qumu Cloud で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Qumu Cloud 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Qumu Cloud での Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -87,7 +87,7 @@ Qumu Cloud での Azure AD シングル サインオンを構成してテスト�
 
 Qumu Cloud との Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Qumu Cloud** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Qumu Cloud** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -122,7 +122,7 @@ Qumu Cloud との Azure AD シングル サインオンを構成するには、�
 
 7. その他に、Qumu Cloud アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ---------------| --------------- |    
     | urn:oid:2.5.4.42 | User.givenname |
     | urn:oid:2.5.4.4 | User.surname |
@@ -179,7 +179,7 @@ Qumu Cloud との Azure AD シングル サインオンを構成するには、�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -191,7 +191,7 @@ Qumu Cloud との Azure AD シングル サインオンを構成するには、�
 
 このセクションでは、Britta Simon に Qumu Cloud へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Qumu Cloud]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Qumu Cloud]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

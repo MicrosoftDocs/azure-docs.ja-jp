@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/24/2020
 ms.author: Zhchia
 ms.openlocfilehash: d2c1704182a2a59f8e3f79c2d4e671167ce661d8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96183075"
 ---
 # <a name="tutorial-configure-zapier-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Zapier を構成する

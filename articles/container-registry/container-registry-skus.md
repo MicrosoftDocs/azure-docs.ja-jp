@@ -4,10 +4,10 @@ description: Azure Container Registry の Basic、Standard、および Premium �
 ms.topic: article
 ms.date: 05/18/2020
 ms.openlocfilehash: b55fc16dcd6dcb544ed4597ce4bdc6ba17b52646
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98015668"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry サービス階層

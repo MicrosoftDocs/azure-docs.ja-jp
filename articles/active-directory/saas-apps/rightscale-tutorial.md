@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 013eadedc00dee23a09eff89147406cc14f017ab
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516585"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>チュートリアル: Azure Active Directory と Rightscale の統合
@@ -41,7 +41,7 @@ Azure AD と Rightscale の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Rightscale では、 **SP と IDP** によって開始される SSO がサポートされます。
+* Rightscale では、**SP と IDP** によって開始される SSO がサポートされます。
 
 ## <a name="adding-rightscale-from-the-gallery"></a>ギャラリーからの Rightscale の追加
 
@@ -61,13 +61,13 @@ Azure AD への Rightscale の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Rightscale** 」と入力し、結果パネルから **[Rightscale]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Rightscale**」と入力し、結果パネルから **[Rightscale]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果一覧の Rightscale](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Rightscale で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Rightscale で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Rightscale の関連ユーザーの間にリンク関係が確立されている必要があります。
 
 Rightscale で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -129,7 +129,7 @@ Rightscale で Azure AD のシングル サインオンを構成するには、�
 
     ![[Settings]\(設定\) の [Single Sign-On]\(シングル サインオン\) が選択されている画面のスクリーンショット。](./media/rightscale-tutorial/tutorial_rightscale_001.png)
 
-3. **[new] (新規)** ボタンをクリックして、 **SAML ID プロバイダー** を追加します。
+3. **[new] (新規)** ボタンをクリックして、**SAML ID プロバイダー** を追加します。
 
     ![SAML ID プロバイダーを追加するための新しいボタンが選択されている画面のスクリーンショット。](./media/rightscale-tutorial/tutorial_rightscale_002.png)
 
@@ -171,7 +171,7 @@ Rightscale で Azure AD のシングル サインオンを構成するには、�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

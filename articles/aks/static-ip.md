@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) ロード バランサーで静的 I
 services: container-service
 ms.topic: article
 ms.date: 11/14/2020
-ms.openlocfilehash: 22fd099633556fa9ddce575c2ac238b4950667cb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 102df48ca22fb996e0f4d9c402b8ce8f0fa80f2c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651891"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102509474"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Azure Kubernetes Service (AKS) ロード バランサーで静的パブリック IP アドレスと DNS ラベルを使用する
 
@@ -63,16 +63,14 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>静的 IP アドレスを使用してサービスを作成する
 
-サービスを作成する前に、AKS クラスターで使用されるサービス プリンシパルに、該当する他のリソース グループへの委任されたアクセス許可が含まれていることを確認してください。 次に例を示します。
+サービスを作成する前に、AKS クラスターで使用されるクラスター ID に、該当する他のリソース グループへの委任されたアクセス許可が含まれていることを確認してください。 次に例を示します。
 
 ```azurecli-interactive
 az role assignment create \
-    --assignee <SP Client ID> \
+    --assignee <Client ID> \
     --role "Network Contributor" \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
-
-または、サービス プリンシパルの代わりに、システム割り当てマネージド ID をアクセス許可のために使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。
 
 > [!IMPORTANT]
 > 送信 IP をカスタマイズした場合は、クラスター ID に、送信パブリック IP とこの受信パブリック IP の両方に対するアクセス許可があることを確認します。

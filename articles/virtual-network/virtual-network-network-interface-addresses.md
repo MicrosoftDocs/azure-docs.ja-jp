@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
-ms.openlocfilehash: 3fd0cfe644ad78059e25d5386cd1a01f56ad9fba
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 1df132e558421d2ec6e26c3883c89457716dfc42
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216990"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103419016"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure ネットワーク インターフェイスの IP アドレスの追加、変更、削除
 
@@ -192,8 +192,6 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 
 > [!NOTE]
 > ポータルを使用して IPv6 アドレスを割り当てたネットワーク インターフェイスを作成することはできますが、ポータルを使用して既存のネットワーク インターフェイスを新規または既存の仮想マシンに追加することはできません。 プライベート IPv6 アドレスが割り当てられたネットワーク インターフェイスを作成し、仮想マシンを作成するときにそのネットワーク インターフェイスをアタッチするには、PowerShell または Azure CLI を使用します。 プライベート IPv6 アドレスが割り当てられたネットワーク インターフェイスを既存の仮想マシンにアタッチすることはできません。 どのツール (ポータル、CLI、PowerShell) を使っても、仮想マシンにアタッチされたネットワーク インターフェイスの IP 構成にプライベート IPv6 アドレスを追加することはできません。
-
-プライマリ IP 構成またはセカンダリ IP 構成に、パブリック IPv6 アドレスを割り当てることはできません。
 
 ## <a name="skus"></a>SKU
 

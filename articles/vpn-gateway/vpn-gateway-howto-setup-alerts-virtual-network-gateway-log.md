@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: alzam
 ms.openlocfilehash: 70cac6ef566ef52409cd9667708c2fc297e046f7
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97656616"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>VPN Gateway からのリソース ログ イベントにアラートを設定する
@@ -20,7 +20,7 @@ ms.locfileid: "97656616"
 
 Azure では、次のリソース ログを使用できます。
 
-|"***名前** | _*_説明_*_ |
+|"***名前** | _ *_説明_** |
 |--- | --- |
 |GatewayDiagnosticLog | ゲートウェイ構成イベント、主要な変更、メンテナンス イベントのリソース ログが含まれています |
 |TunnelDiagnosticLog | トンネルの状態変更イベントが含まれています。 トンネルの接続/切断イベントには、状態変更の理由の概要があります (該当する場合) |
@@ -33,7 +33,7 @@ Azure では、次のリソース ログを使用できます。
 次の手順の例では、サイト対サイト VPN トンネルを含む切断イベントのアラートを作成します。
 
 
-1. Azure portal の **[すべてのサービス]** で *[Log Analytics]* を検索し、 **[Log Analytics ワークスペース]** を選択します。
+1. Azure portal の **[すべてのサービス]** で **[Log Analytics]** を検索し、 **[Log Analytics ワークスペース]** を選択します。
 
    ![Log Analytics ワークスペースに移動するための選択](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "作成")
 

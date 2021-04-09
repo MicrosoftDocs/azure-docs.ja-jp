@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: a77a870304e20c179e22b4a4ffe404315894d8a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91743694"
 ---
 # <a name="create-and-set-custom-ipsec-policies-for-point-to-site-preview"></a>ポイント対サイトのカスタム IPsec ポリシーの作成と設定 (プレビュー)
@@ -25,7 +25,7 @@ ms.locfileid: "91743694"
 
 ご使用の環境が次の前提条件を満たしていることを確認します。
 
-* ポイント対サイト VPN が既に構成されています。 そうでない場合は、[PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md) または [Azure portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md) を使用して、**ポイント対サイト VPN の作成**に関する記事の手順に従って構成します。
+* ポイント対サイト VPN が既に構成されています。 そうでない場合は、[PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md) または [Azure portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md) を使用して、**ポイント対サイト VPN の作成** に関する記事の手順に従って構成します。
 
 ### <a name="working-with-azure-powershell"></a>Azure PowerShell を使用する
 

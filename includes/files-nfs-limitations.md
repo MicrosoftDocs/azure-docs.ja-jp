@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/04/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 372342611265640a2a64100f003880a430d61ca0
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 4b708e80bf335ba8bdce074285857a6f8b77b972
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620947"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103439042"
 ---
 プレビュー段階では、NFS には次の制限事項があります。
 
@@ -25,6 +25,7 @@ ms.locfileid: "96620947"
 - Premium レベルでのみ使用できます。
 - NFS 共有は、数値 UID/GID のみを受け入れます。 クライアントが英数字の UID/GID を送信しないようにするには、ID マッピングを無効にする必要があります。
 - プライベート リンクを使用する場合は、個々の VM の 1 つのストレージ アカウントからのみ共有をマウントできます。 他のストレージ アカウントから共有をマウントしようとすると失敗します。
+- プライマリ グループに割り当てられたアクセス許可に依存することが最善です。 場合によっては、ユーザーの非プライマリ グループに割り当てられたアクセス許可が原因で、既知のバグによってアクセスが拒否されることがあります。
 
 ### <a name="azure-storage-features-not-yet-supported"></a>まだサポートされていない Azure Storage の機能
 

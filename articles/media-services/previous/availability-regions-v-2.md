@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: 458927afc78c46ad365d437a574d0b40b32fc11e
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 125f2be205760618ab6ffa3175f719f5e91e8c05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695799"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103012260"
 ---
 # <a name="media-services-regional-availability"></a>Media Services のリージョン別の提供状況
 

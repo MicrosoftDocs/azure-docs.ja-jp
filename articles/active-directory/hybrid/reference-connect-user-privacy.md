@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8f1d1bf35d03f0f7c4d11e4cc7e9b6f98f38d8ab
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95997700"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>ユーザー プライバシーと Azure AD Connect 
@@ -67,16 +67,16 @@ If ($File.ToUpper() -ne "$env:programdata\aadconnect\PERSISTEDSTATE.XML".toupper
 ### <a name="schedule-this-script-to-run-every-48-hours"></a>このスクリプトを 48 時間おきに実行するようにスケジュールする
 スクリプトを 48 時間おきに実行するようスケジュールするには、次の手順に従います。
 
-1.  スクリプトを **&#46;PS1** という拡張子のファイルに保存した後、コントロール パネルを開き、 **[システムとセキュリティ]** をクリックします。
+1.  スクリプトを **&#46;PS1** という拡張子のファイルに保存した後、コントロール パネルを開き、**[システムとセキュリティ]** をクリックします。
     ![システム](./media/reference-connect-user-privacy/gdpr2.png)
 
 2.  [管理ツール] で、 **[タスクのスケジュール]** をクリックします。
     ![タスク](./media/reference-connect-user-privacy/gdpr3.png)
-3.  タスク スケジューラで、 **[Task Schedule Library]\(タスク スケジュール ライブラリ\)** を右クリックし、 **[基本タスクの作成...]** をクリックします
-4.  新しいタスクの名前を入力し、 **[次へ]** をクリックします。
-5.  タスク トリガーとして **[毎日]** を選択し、 **[次へ]** をクリックします。
-6.  繰り返しを **[2 日]** に設定し、 **[次へ]** をクリックします。
-7.  アクションとして **[プログラムを起動する]** を選択し、 **[次へ]** をクリックします。
+3.  タスク スケジューラで、**[Task Schedule Library]\(タスク スケジュール ライブラリ\)** を右クリックし、**[基本タスクの作成...]** をクリックします
+4.  新しいタスクの名前を入力し、**[次へ]** をクリックします。
+5.  タスク トリガーとして **[毎日]** を選択し、**[次へ]** をクリックします。
+6.  繰り返しを **[2 日]** に設定し、**[次へ]** をクリックします。
+7.  アクションとして **[プログラムを起動する]** を選択し、**[次へ]** をクリックします。
 8.  プログラム/スクリプトのボックスに「**PowerShell**」と入力し、 **[引数の追加 (オプション)]** というラベルの付いたボックスに、先ほど作成したスクリプトへの完全なパスを入力して、 **[次へ]** をクリックします。
 9.  次の画面に、作成しようとしているタスクの概要が表示されます。 値を確認し、 **[完了]** をクリックしてタスクを作成します。
 

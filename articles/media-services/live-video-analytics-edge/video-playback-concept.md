@@ -4,10 +4,10 @@ description: プレースホルダー
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 17b1f93c18dfb013916c4c0d3756fb97a73e2675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87042965"
 ---
 # <a name="video-playback"></a>ビデオ再生 
@@ -15,7 +15,7 @@ ms.locfileid: "87042965"
 ## <a name="suggested-pre-reading"></a>推奨される事前読み取り 
 
 * [IoT Edge の Live Video Analytics (プレビュー)](overview.md)
-* [IoT Edge の Live Video Analytics の用語](terminology.md)
+* [Live Video Analytics on IoT Edge の用語](terminology.md)
 * [メディア グラフの概念](media-graph-concept.md)
 
 ## <a name="overview"></a>概要  

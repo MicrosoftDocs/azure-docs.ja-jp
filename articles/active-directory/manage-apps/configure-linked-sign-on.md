@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.openlocfilehash: 3e2d3ab6a23ce588c3aa393e5096ac75e88a5365
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99255287"
 ---
 # <a name="understand-linked-sign-on"></a>リンクされたサインオンの概要

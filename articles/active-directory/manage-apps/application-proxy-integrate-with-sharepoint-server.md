@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b5895d016e2d9d9b471218bc083ea7585254b45
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99258683"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化
@@ -51,15 +51,15 @@ ms.locfileid: "99258683"
 - 外部 URL: `https://spsites-demo1984.msappproxy.net/`
 - SharePoint Web アプリケーションのアプリケーション プール アカウント: `Contoso\spapppool`
 
-## <a name="step-1-configure-an-application-in-azure-ad-that-uses-application-proxy"></a>手順 1:Azure AD でアプリケーション プロキシを使用するアプリケーションを構成する
+## <a name="step-1-configure-an-application-in-azure-ad-that-uses-application-proxy"></a>ステップ 1: Azure AD でアプリケーション プロキシを使用するアプリケーションを構成する
 
 この手順では、アプリケーション プロキシを使用するアプリケーションを Azure Active Directory テナントに作成します。 外部 URL を設定し、内部 URL を指定します。どちらも、後で SharePoint において使用します。
 
 1. 次の設定で説明されているように、アプリを作成します。 詳細な手順については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)」をご覧ください。
    * **[内部 URL]** : 後で SharePoint において設定される SharePoint の内部 URL (`https://sharepoint` など)。
-   * **事前認証**:Azure Active Directory
-   * **ヘッダーの URL の変換**:いいえ
-   * **アプリケーション本文の URL を変換する**:いいえ
+   * **[事前認証]** : [Azure Active Directory]
+   * **[Translate URLs in Headers]\(ヘッダーの URL を変換する\)** : [いいえ]
+   * **[Translate URLs in Application Body]\(アプリケーション本文の URL を変換する\)** : [いいえ]
 
    ![アプリケーションとして SharePoint を発行する](./media/application-proxy-integrate-with-sharepoint-server/publish-app.png)
 
@@ -68,13 +68,13 @@ ms.locfileid: "99258683"
    1. ポータルのアプリケーション ページで **[シングル サインオン]** を選択します。
    1. **シングル サインオン モード** の場合、 **[統合 Windows 認証]** を選択します。
    1. **[内部アプリケーション SPN]** には前に設定した値を設定します。 この例では、値は `HTTP/sharepoint` です。
-   1. **[委任されたログイン ID]** で、お使いの Active Directory フォレストの構成に最も適したオプションを選択します。 たとえば、フォレスト内に単一の Active Directory ドメインがある場合は、 **[オンプレミスのソフトウェア アセット管理アカウント名]** を選択します (次のスクリーンショットを参照)。 ただし、ユーザーが SharePoint およびアプリケーション プロキシ コネクタ サーバーと同じドメインに属していない場合は、 **[オンプレミス ユーザー プリンシパル名]** を選択します (スクリーンショットには示されていません)。
+   1. **[委任されたログイン ID]** で、お使いの Active Directory フォレストの構成に最も適したオプションを選択します。 たとえば、フォレスト内に単一の Active Directory ドメインがある場合は、**[オンプレミスのソフトウェア アセット管理アカウント名]** を選択します (次のスクリーンショットを参照)。 ただし、ユーザーが SharePoint およびアプリケーション プロキシ コネクタ サーバーと同じドメインに属していない場合は、**[オンプレミス ユーザー プリンシパル名]** を選択します (スクリーンショットには示されていません)。
 
    ![SSO のための統合 Windows 認証の構成](./media/application-proxy-integrate-with-sharepoint-server/configure-iwa.png)
 
 1. アプリケーションの設定を完了するには、 **[ユーザーとグループ]** セクションに移動し、このアプリケーションにアクセスするユーザーを割り当てます。 
 
-## <a name="step-2-configure-the-sharepoint-web-application"></a>手順 2:SharePoint Web アプリケーションを構成する
+## <a name="step-2-configure-the-sharepoint-web-application"></a>ステップ 2: SharePoint Web アプリケーションを構成する
 
 SharePoint Web アプリケーションが Azure AD アプリケーション プロキシで正しく動作するには、Kerberos と適切な代替アクセス マッピングを使用して構成する必要があります。 次の 2 つのオプションを使用できます。
 
@@ -103,7 +103,7 @@ SharePoint Web アプリケーションが Azure AD アプリケーション プ
        ```
 
     2. **[SharePoint サーバーの全体管理]** サイトを開きます。
-    1. **[システム設定]** で、 **[代替アクセス マッピングの構成]** を選択します。 **[代替アクセス マッピング コレクション]** ボックスが開きます。
+    1. **[システム設定]** で、**[代替アクセス マッピングの構成]** を選択します。 **[代替アクセス マッピング コレクション]** ボックスが開きます。
     1. 新しい Web アプリケーションで表示をフィルター処理し、次のような内容が表示されることを確認します。
 
        ![Web アプリケーションの代替アクセス マッピング](./media/application-proxy-integrate-with-sharepoint-server/new-webapp-aam.png)
@@ -126,7 +126,7 @@ SharePoint Web アプリケーションが Azure AD アプリケーション プ
        ```
 
     2. **[SharePoint サーバーの全体管理]** サイトを開きます。
-    1. **[システム設定]** で、 **[代替アクセス マッピングの構成]** を選択します。 **[代替アクセス マッピング コレクション]** ボックスが開きます。
+    1. **[システム設定]** で、**[代替アクセス マッピングの構成]** を選択します。 **[代替アクセス マッピング コレクション]** ボックスが開きます。
     1. 拡張された Web アプリケーションで表示をフィルター処理し、次のような内容が表示されることを確認します。
 
         ![拡張されたアプリケーションの代替アクセス マッピング](./media/application-proxy-integrate-with-sharepoint-server/extend-webapp-aam.png)
@@ -136,7 +136,7 @@ SharePoint Web アプリケーションが Azure AD アプリケーション プ
 SharePoint Web アプリケーションのアプリケーション プールが実行されているアカウントを特定し、それがドメイン アカウントであることを確認するには、次の手順を実行します。
 
 1. **[SharePoint サーバーの全体管理]** サイトを開きます。
-1. **[セキュリティ]** に移動し、 **[サービス アカウントの構成]** を選択します。
+1. **[セキュリティ]** に移動し、**[サービス アカウントの構成]** を選択します。
 1. **[Web アプリケーション プール - <Web アプリケーション名>]** を選択します。
 
    ![サービス アカウントを構成するための選択肢](./media/application-proxy-integrate-with-sharepoint-server/service-web-application.png)
@@ -159,13 +159,13 @@ SharePoint Web アプリケーションのアプリケーション プールが�
    > 自己署名証明書はテスト目的にのみ適しています。 運用環境では、代わりに証明機関が発行した証明書を使用することを強くお勧めします。
 
 1. インターネット インフォメーション サービス マネージャー コンソールを開きます。
-1. ツリー ビューでサーバーを展開し、 **[サイト]** を展開し、 **[SharePoint - AAD Proxy]** サイトを選択して **[バインド]** を選択します。
-1. **https バインド** を選択して、 **[編集]** を選択します。
+1. ツリー ビューでサーバーを展開し、**[サイト]** を展開し、**[SharePoint - AAD Proxy]** サイトを選択して **[バインド]** を選択します。
+1. **https バインド** を選択して、**[編集]** を選択します。
 1. TLS/SSL 証明書フィールドで、**SharePoint** 証明書を選択してから **[OK]** をクリックします。
 
 これで、Azure AD アプリケーション プロキシ経由で外部から SharePoint サイトにアクセスできるようになりました。
 
-## <a name="step-3-configure-kerberos-constrained-delegation"></a>手順 3:Kerberos の制約付き委任を構成する
+## <a name="step-3-configure-kerberos-constrained-delegation"></a>ステップ 3: Kerberos の制約付き委任 (KCD) を構成する
 
 ユーザーは、最初に Azure AD で認証を行った後、Azure AD プロキシ コネクタ経由で Kerberos を使用して SharePoint に対する認証を行います。 Azure AD ユーザーに代わってコネクタで Kerberos トークンを取得できるようにするには、プロトコルの切り替えで Kerberos の制約付き委任 (KCD) を構成する必要があります。 KCD の詳細については、「[Kerberos の制約付き委任の概要](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj553400(v=ws.11))」をご覧ください。
 
@@ -176,7 +176,7 @@ SharePoint アプリケーション プール アカウント `Contoso\spapppool
 
 `setspn -S HTTP/sharepoint Contoso\spapppool`
 
-`Setspn` コマンドでは、追加前にその SPN が検索されます。 SPN が既に存在する場合は、 **"Duplicate SPN Value" (重複する SPN 値)** エラーが発生します。 この場合、既存の SPN が正しいアプリケーション プール アカウントで設定されていない場合は、それを削除することを検討してください。 -L オプションを使用して `Setspn` コマンドを実行すると、SPN が正常に追加されたことを確認できます。 このコマンドについて詳しくは、「[Setspn](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11))」をご覧ください。
+`Setspn` コマンドでは、追加前にその SPN が検索されます。 SPN が既に存在する場合は、**"Duplicate SPN Value" (重複する SPN 値)** エラーが発生します。 この場合、既存の SPN が正しいアプリケーション プール アカウントで設定されていない場合は、それを削除することを検討してください。 -L オプションを使用して `Setspn` コマンドを実行すると、SPN が正常に追加されたことを確認できます。 このコマンドについて詳しくは、「[Setspn](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11))」をご覧ください。
 
 ### <a name="make-sure-the-connector-is-trusted-for-delegation-to-the-spn-that-was-added-to-the-sharepoint-application-pool-account"></a>SharePoint アプリケーション プール アカウントに追加された SPN への委任に対してコネクタが信頼されていることを確認する
 
@@ -188,7 +188,7 @@ KCD を構成するには、コネクタ コンピューターごとに以下の
 1. Azure AD プロキシ コネクタが実行されているコンピューターを見つけます。 この例では、SharePoint サーバー自体です。
 1. そのコンピューターをダブルクリックし、 **[委任]** タブを選択します。
 1. 委任オプションが **[指定されたサービスへの委任でのみこのコンピューターを信頼する]** に設定されていることを確認します。 **[任意の認証プロトコルを使う]** を選択します。
-1. **[追加]** ボタンを選択し、 **[ユーザーまたはコンピューター]** を選択して、SharePoint アプリケーション プール アカウントを特定します。 (例: `Contoso\spapppool`)。
+1. **[追加]** ボタンを選択し、**[ユーザーまたはコンピューター]** を選択して、SharePoint アプリケーション プール アカウントを特定します。 たとえば、`Contoso\spapppool` のように指定します。
 1. SPN の一覧で、先ほどサービス アカウント用に作成した SPN を選びます。
 1. **[OK]** を選択してから、もう一度 **[OK]** を選択して変更を保存します。
   
@@ -198,7 +198,7 @@ KCD を構成するには、コネクタ コンピューターごとに以下の
 
 ## <a name="troubleshoot-sign-in-errors"></a>サインイン エラーのトラブルシューティング
 
-サイトへのサインインが機能していない場合は、コネクタのログで問題に関する詳細情報を取得できます。コネクタが実行されているコンピューターでイベント ビューアーを開き、 **[アプリケーションとサービス ログ]**  >  **[Microsoft]**  >  **[AadApplicationProxy]**  >  **[Connector]** に移動して、 **[管理者]** のログを調べます。
+サイトへのサインインが機能していない場合は、コネクタ ログで問題に関する詳細情報を取得できます。コネクタを実行しているコンピューターから、イベント ビューアーを開き、 **[アプリケーションとサービス ログ]**  >  **[Microsoft]**  >  **[AadApplicationProxy]**  >  **[Connector]** に移動して、 **[管理者]** のログを調べます。
 
 ## <a name="next-steps"></a>次のステップ
 

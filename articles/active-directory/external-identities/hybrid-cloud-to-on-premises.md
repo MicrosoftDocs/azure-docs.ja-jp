@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd91d1d2c9f5a4a413f9ea64cfdef649823d0f09
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93131022"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 以下の両方を行う必要があります。
 
 - 「[SAML ベースのシングル サインオンの構成](../manage-apps/configure-saml-single-sign-on.md)」で説明されているように、SAML を使用してアプリを統合します。 **[サインオン URL]** 値に使用する URL をメモしておきます。
--  Azure AD アプリケーション プロキシを使用して、 **Azure Active Directory** を認証ソースとして構成して、オンプレミス アプリを発行します。 手順については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](../manage-apps/application-proxy-add-on-premises-application.md)」を参照してください。 
+-  Azure AD アプリケーション プロキシを使用して、**Azure Active Directory** を認証ソースとして構成して、オンプレミス アプリを発行します。 手順については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](../manage-apps/application-proxy-add-on-premises-application.md)」を参照してください。 
 
    **[内部 URL]** 設定を構成するときは、ギャラリー以外のアプリケーション テンプレートで指定したサインオン URL を使用します。 このような方法で、ユーザーは組織の境界外からアプリにアクセスできるようになります。 アプリケーション プロキシは、オンプレミス アプリの SAML シングル サインオンを実行します。
  
@@ -39,11 +39,11 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 
 統合 Windows 認証と Kerberos の制約付き委任を使用してセキュリティで保護されたオンプレミス アプリケーションへのアクセス権を B2B ユーザーに付与するには、次のコンポーネントが必要です。
 
-- **Azure AD アプリケーション プロキシを介した認証** 。 B2B ユーザーは、オンプレミス アプリケーションに対して認証できる必要があります。 これを行うには、Azure AD アプリケーション プロキシを介してオンプレミス アプリを発行する必要があります。 詳細については、[アプリケーション プロキシを使用したリモート アクセスを行うためのオンプレミス アプリケーションの追加に関するチュートリアル](../manage-apps/application-proxy-add-on-premises-application.md)を参照してください。
-- **オンプレミス ディレクトリの B2B ユーザー オブジェクトを介した承認** 。 アプリケーションは、ユーザー アクセス チェックを実行し、正しいリソースへのアクセス権を付与できる必要があります。 IWA と KCD がこの承認を完了するには、オンプレミスの Windows Server Active Directory 内のユーザー オブジェクトが必要です。 「[KCD を使ったシングル サインオンのしくみ](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)」で説明されているように、アプリケーション プロキシはこのユーザー オブジェクトを使用してユーザーを偽装し、アプリに対する Kerberos トークンを取得する必要があります。 
+- **Azure AD アプリケーション プロキシを介した認証**。 B2B ユーザーは、オンプレミス アプリケーションに対して認証できる必要があります。 これを行うには、Azure AD アプリケーション プロキシを介してオンプレミス アプリを発行する必要があります。 詳細については、[アプリケーション プロキシを使用したリモート アクセスを行うためのオンプレミス アプリケーションの追加に関するチュートリアル](../manage-apps/application-proxy-add-on-premises-application.md)を参照してください。
+- **オンプレミス ディレクトリの B2B ユーザー オブジェクトを介した承認**。 アプリケーションは、ユーザー アクセス チェックを実行し、正しいリソースへのアクセス権を付与できる必要があります。 IWA と KCD がこの承認を完了するには、オンプレミスの Windows Server Active Directory 内のユーザー オブジェクトが必要です。 「[KCD を使ったシングル サインオンのしくみ](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)」で説明されているように、アプリケーション プロキシはこのユーザー オブジェクトを使用してユーザーを偽装し、アプリに対する Kerberos トークンを取得する必要があります。 
 
    > [!NOTE]
-   > Azure AD アプリケーション プロキシを構成する場合は、 **委任されたログオン ID** が、統合 Windows 認証 (IWA) に対するシングル サインオン構成で、 **ユーザー プリンシパル名** (既定) に確実に設定されているようにします。
+   > Azure AD アプリケーション プロキシを構成する場合は、**委任されたログオン ID** が、統合 Windows 認証 (IWA) に対するシングル サインオン構成で、**ユーザー プリンシパル名** (既定) に確実に設定されているようにします。
 
    B2B ユーザーのシナリオでは、オンプレミス ディレクトリでの承認に必要なゲスト ユーザー オブジェクトの作成に使用できる方法が 2 つあります。
 
@@ -77,7 +77,7 @@ MIM 2016 Service Pack 1 および Microsoft Graph の MIM 管理エージェン�
 
 オンプレミスの Active Directory にゲスト ユーザー オブジェクトを作成する場合の出発点として使用できる PowerShell サンプル スクリプトがあります。
 
-スクリプトと Readme ファイルは、「[Connector for Microsoft Identity Manager 2016 および Forefront Identity Manager 2010 R2](https://www.microsoft.com/download/details.aspx?id=51495)」からダウンロードできます。 ダウンロード パッケージで、 **スクリプトと Readme を選択して、Azure AD B2B ユーザーの on-prem.zip** ファイルを取得します。
+スクリプトと Readme ファイルは、「[Connector for Microsoft Identity Manager 2016 および Forefront Identity Manager 2010 R2](https://www.microsoft.com/download/details.aspx?id=51495)」からダウンロードできます。 ダウンロード パッケージで、**スクリプトと Readme を選択して、Azure AD B2B ユーザーの on-prem.zip** ファイルを取得します。
 
 スクリプトを使用する前に、関連する Readme ファイルの前提条件と重要な考慮事項を確認してください。 また、スクリプトはサンプルとしてのみ提供されている点を理解してください。 開発チームまたはパートナーは、スクリプトを実行する前にカスタマイズして確認する必要があります。
 

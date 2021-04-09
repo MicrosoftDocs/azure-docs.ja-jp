@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: f2294ccb1d958b229a71e45bb502b8134d8d5c7f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93305657"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクルの顧客による受け入れステージ
@@ -34,18 +34,18 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 
 
 ## <a name="goal"></a>目標
-**プロジェクトの成果物を完成させる** :パイプライン、モデル、およびそれらの運用環境でのデプロイが顧客の目標を満たしていることを確認します。
+**プロジェクトの成果物を完成させる**: パイプライン、モデル、およびそれらの運用環境でのデプロイが顧客の目標を満たしていることを確認します。
 
 ## <a name="how-to-do-it"></a>方法
 このステージでは、以下に示す 2 つの主な課題に取り組みます。
 
-   * **システムの検証** :デプロイ済みのモデルとパイプラインが顧客のニーズを満たしていることを確認します。
-   * **プロジェクトのハンドオフ** :運用環境でシステムを運用することになっている組織にプロジェクトをハンドオフします。
+   * **システムの検証**: デプロイ済みのモデルとパイプラインが顧客のニーズを満たしていることを確認します。
+   * **プロジェクトのハンドオフ**: 運用環境でシステムを運用することになっている組織にプロジェクトをハンドオフします。
 
 顧客は、システムを運用環境にデプロイして独自のクライアント アプリケーションで利用できるようにするため、そのシステムがビジネス ニーズを満たし、許容可能な精度で質問に回答できるかどうかを検証します。 すべてのドキュメントに対して最終処理とレビューが行われます。 運用を担う組織にプロジェクトがハンドオフされます。 この場合の組織とは、たとえば運用環境でのシステム運用を担当する IT 部門、顧客のデータ サイエンス チーム、顧客の代理業者などです。 
 
-## <a name="artifacts"></a>アーティファクト
-この最終ステージで生成される主なアーティファクトは、 **顧客向けプロジェクトの終了レポート** です。 この技術的なレポートには、システムの運用方法を学習するために役立つプロジェクトのすべての詳細が含まれています。 TDSP には、[終了レポート](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) テンプレートが用意されています。 このテンプレートをそのまま使用することも、特定のクライアントのニーズに合わせてカスタマイズすることもできます。 
+## <a name="artifacts"></a>Artifacts
+この最終ステージで生成される主なアーティファクトは、**顧客向けプロジェクトの終了レポート** です。 この技術的なレポートには、システムの運用方法を学習するために役立つプロジェクトのすべての詳細が含まれています。 TDSP には、[終了レポート](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) テンプレートが用意されています。 このテンプレートをそのまま使用することも、特定のクライアントのニーズに合わせてカスタマイズすることもできます。 
 
 
 ## <a name="next-steps"></a>次のステップ

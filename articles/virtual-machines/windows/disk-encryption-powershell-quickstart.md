@@ -3,17 +3,18 @@ title: Azure PowerShell を使用して Windows VM を作成、暗号化する
 description: このクイックスタートでは、Azure PowerShell を使用して Windows 仮想マシンを作成および暗号化する方法について説明します
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a50b62a7c6064672dfbf7d609b6053d7be6fdb77
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4aed2ce182e535ebb60eae0007353c9c7bddef78
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89079491"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102555263"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-in-azure-with-powershell"></a>クイック スタート:PowerShell を使用して Azure で Windows 仮想マシンを作成、暗号化する
 

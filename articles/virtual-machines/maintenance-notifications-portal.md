@@ -3,16 +3,17 @@ title: メンテナンス通知にポータルを使用する
 description: ポータルを使用して Azure で実行されている仮想マシンのメンテナンス通知を表示し、セルフサービス メンテナンスを開始します。
 author: shants123
 ms.service: virtual-machines
+ms.subservice: maintenance-control
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 318095e6cf68ec100dc9ea5221ecd93cba8f7c1e
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: a13d79a28ac07d736b1eaf0d0e6b7f7b1ba4a4ec
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656820"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102557711"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>ポータルを使用した計画済みメンテナンスの通知の処理
 

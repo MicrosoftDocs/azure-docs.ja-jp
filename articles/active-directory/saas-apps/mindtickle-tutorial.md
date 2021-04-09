@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル:チュートリアル: Azure Active Directory と MindTickle の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure Active Directory と MindTickle の統合 | Microsoft Docs'
 description: Azure Active Directory と MindTickle の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.openlocfilehash: db2cfc8ba0389f98d6f9407d7b4a31612e28b46a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519012"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mindtickle"></a>チュートリアル:Azure Active Directory と MindTickle の統合
+# <a name="tutorial-azure-active-directory-integration-with-mindtickle"></a>チュートリアル: Azure Active Directory と MindTickle の統合
 
 このチュートリアルでは、MindTickle と Azure Active Directory (Azure AD) を統合する方法について説明します。
 MindTickle と Azure AD の統合には、次の利点があります。
@@ -41,9 +41,9 @@ MindTickle と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* MindTickle では、 **SP** によって開始される SSO がサポートされます
+* MindTickle では、**SP** によって開始される SSO がサポートされます
 
-* MindTickle では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* MindTickle では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-mindtickle-from-the-gallery"></a>ギャラリーからの MindTickle の追加
 
@@ -63,13 +63,13 @@ Azure AD への MindTickle の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **MindTickle** 」と入力し、結果パネルで **[MindTickle]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**MindTickle**」と入力し、結果パネルで **[MindTickle]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の MindTickle](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、MindTickle で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、MindTickle で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと MindTickle 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 MindTickle で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -87,7 +87,7 @@ MindTickle で Azure AD のシングル サインオンを構成してテスト�
 
 MindTickle で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **MindTickle** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **MindTickle** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -99,7 +99,7 @@ MindTickle で Azure AD シングル サインオンを構成するには、次�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、 **サービス プロバイダー メタデータ ファイル** がある場合は、次の手順に従います。
+4. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル** がある場合は、次の手順に従います。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
@@ -109,7 +109,7 @@ MindTickle で Azure AD シングル サインオンを構成するには、次�
 
     ![メタデータ ファイルを選択する](common/browse-upload-metadata.png)
 
-    c. メタデータ ファイルが正常にアップロードされると、 **識別子** の値が、 **[基本的な SAML 構成]** セクションに自動的に設定されます。
+    c. メタデータ ファイルが正常にアップロードされると、**識別子** の値が、 **[基本的な SAML 構成]** セクションに自動的に設定されます。
 
     ![[MindTickle のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
@@ -152,9 +152,9 @@ MindTickle で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -165,7 +165,7 @@ MindTickle で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に MindTickle へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[MindTickle]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[MindTickle]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -189,7 +189,7 @@ MindTickle で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="create-mindtickle-test-user"></a>MindTickle のテスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを MindTickle に作成します。 MindTickle では、 **Just-In-Time** ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 MindTickle にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+このセクションでは、Britta Simon というユーザーを MindTickle に作成します。 MindTickle では、**Just-In-Time** ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 MindTickle にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

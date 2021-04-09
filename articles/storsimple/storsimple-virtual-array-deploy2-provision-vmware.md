@@ -9,14 +9,14 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9810a34021aa039354aad24f84aff373229c0190
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87021479"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple Virtual Array をデプロイする - VMware でプロビジョニングする
-![仮想アレイをデプロイするために必要な手順を示す図。 2 番目の手順の 2 番目の部分は、"VMware でのプロビジョニング" というラベルが付けられ、強調表示されています。](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
+![仮想アレイをデプロイするために必要な手順を示す図。  2 番目の手順の 2 番目の部分は、"VMware でのプロビジョニング" というラベルが付けられ、強調表示されています。](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
 
 ## <a name="overview"></a>概要
 
@@ -196,7 +196,7 @@ VMware ESXi 5.0、5.5、6.0、または 6.5 を実行しているホスト シ�
    ![vSphere クライアントの [Console]\(コンソール\) タブのスクリーンショット。[Password]\(パスワード\) ボックスは空です。](./media/storsimple-virtual-array-deploy2-provision-vmware/image38.png)
 3. セキュリティ上の理由から、デバイス管理者のパスワードは初回ログオン後に有効期限が切れます。 このため、パスワードを変更するよう求められます。
 
-   ![vSphere クライアントの [Console]\(コンソール\) タブのスクリーンショット。ページ上のテキストは、パスワードを変更する必要があることを示しています。](./media/storsimple-virtual-array-deploy2-provision-vmware/image39.png)
+   ![vSphere クライアントの [コンソール] タブのスクリーンショット。ページ上のテキストは、パスワードを変更する必要があることを示しています。](./media/storsimple-virtual-array-deploy2-provision-vmware/image39.png)
 4. 8 文字以上を含むパスワードを入力します。 パスワードは、4 つの要件 (大文字、小文字、数字、および特殊文字) のうち 3 つを満たす必要があります。 確認のためにパスワードを再入力します。 パスワードが変更されたことが通知されます。
 
    ![vSphere クライアントの [Console]\(コンソール\) タブのスクリーンショット。ページ上のテキストは、パスワードが変更されたことを示しています。](./media/storsimple-virtual-array-deploy2-provision-vmware/image40.png)
@@ -205,7 +205,7 @@ VMware ESXi 5.0、5.5、6.0、または 6.5 を実行しているホスト シ�
    ![進行状況バーが表示されたコンソール ウィンドウを示すスクリーンショット。 ウィンドウ内のテキストは、初期設定が進行中であり、ユーザーに待機するように求めています。](./media/storsimple-virtual-array-deploy2-provision-vmware/image41.png)
 6. 手順 6. ～ 8. は、非 DHCP 環境での起動時にのみ適用されます。 DHCP 環境の場合は、手順 6 ～ 8 をスキップし、手順 9 に進みます。 非 DHCP 環境でデバイスを起動した場合は、次の画面が表示されます。
 
-   ![デバイスを説明するテキストを含むコンソール ウィンドウを示すスクリーンショット。 コマンド プロンプトに "Controller"(コントローラー) と表示され、入力できる状態です。](./media/storsimple-virtual-array-deploy2-provision-vmware/image42m.png)
+   ![デバイスを説明するテキストを含むコンソール ウィンドウを示すスクリーンショット。 コマンド プロンプトに "コントローラー" と表示され、入力できる状態です。](./media/storsimple-virtual-array-deploy2-provision-vmware/image42m.png)
 
    次に、ネットワークを構成します。
 7. `Get-HcsIpAddress` コマンドを使用して、仮想デバイスで有効なネットワーク インターフェイスの一覧を表示します。 デバイスで単一のネットワーク インターフェイスが有効になっている場合、このインターフェイスに割り当てられる既定の名前は `Ethernet`です。

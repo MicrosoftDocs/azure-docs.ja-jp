@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: d612b796f85c9eaab1600c55cde7e79acb49f352
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87292947"
 ---
 # <a name="go-live"></a>Go Live
@@ -36,7 +36,7 @@ ms.locfileid: "87292947"
 ## <a name="header"></a>ヘッダー
 ------
 
-|  **Name**       |     **Value**       |
+|  **名前**       |     **Value**       |
 |  ---------      |     ----------      |
 | Content-Type    | `application/json`  |
 | 承認   | `Bearer YOUR_TOKEN` |

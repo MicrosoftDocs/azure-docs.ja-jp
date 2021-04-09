@@ -5,19 +5,19 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
 ms.openlocfilehash: 72ebe6186da179bc5a1effddcc14327455eb7557
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89612415"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances のコンテナー グループ
 
-Azure Container Instances の最上位のリソースは、*コンテナー グループ*です。 この記事では、コンテナー グループとは何か、およびそれらによってどのような種類のシナリオが有効になるかを説明します。
+Azure Container Instances の最上位のリソースは、*コンテナー グループ* です。 この記事では、コンテナー グループとは何か、およびそれらによってどのような種類のシナリオが有効になるかを説明します。
 
 ## <a name="what-is-a-container-group"></a>コンテナー グループとは
 
-コンテナー グループは、同じホスト コンピューター上にスケジュール設定されるコンテナーのコレクションです。 コンテナー グループ内のコンテナーでは、ライフサイクル、リソース、ローカル ネットワーク、ストレージ ボリュームを共有します。 これは、[Kubernetes][kubernetes-pod] における*ポッド*の概念に似ています。
+コンテナー グループは、同じホスト コンピューター上にスケジュール設定されるコンテナーのコレクションです。 コンテナー グループ内のコンテナーでは、ライフサイクル、リソース、ローカル ネットワーク、ストレージ ボリュームを共有します。 これは、[Kubernetes][kubernetes-pod] における *ポッド* の概念に似ています。
 
 次の図は、複数のコンテナーを含むコンテナー グループの例を示しています。
 
@@ -63,9 +63,9 @@ Azure Container Instances では、グループにインスタンスの[リソ�
 
 ### <a name="minimum-and-maximum-allocation"></a>最小値と最大値の割り当て
 
-* **最小値**の 1 CPU と 1 GB メモリをコンテナー グループに割り当てます。 グループ内の個々のコンテナー インスタンスは、1 CPU と 1 GB メモリ未満でプロビジョニングできます。 
+* **最小値** の 1 CPU と 1 GB メモリをコンテナー グループに割り当てます。 グループ内の個々のコンテナー インスタンスは、1 CPU と 1 GB メモリ未満でプロビジョニングできます。 
 
-* コンテナー グループ内の**最大**リソースについては、デプロイ リージョンでの Azure Container Instances に対する[リソースの可用性][region-availability]に関するページを参照してください。
+* コンテナー グループ内の **最大** リソースについては、デプロイ リージョンでの Azure Container Instances に対する [リソースの可用性][region-availability]に関するページを参照してください。
 
 ## <a name="networking"></a>ネットワーク
 

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/27/2018
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 4e29104f0586a8e18afb7a640903c57ce988b692
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91531974"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>チュートリアル:Service Fabric 上の Java アプリケーションに対して CI/CD を有効にするように Jenkins 環境を構成する

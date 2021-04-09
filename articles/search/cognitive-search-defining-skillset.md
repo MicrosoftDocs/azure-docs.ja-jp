@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 39a7c92ca6c83684658cf767722698806ed994ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88935451"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Cognitive Search で AI エンリッチメント パイプラインにスキルセットを作成する方法 
@@ -21,7 +21,7 @@ ms.locfileid: "88935451"
 
 スキルセットは、データを抽出して、データを検索できるようにする操作を定義します。 スキルセットが実行されるのは、テキストとイメージのコンテンツがソース ドキュメントから抽出された後と、ソース ドキュメントのフィールドがインデックスまたはナレッジ ストアのコピー先フィールドに (必要に応じて) マップされた後です。
 
-スキルセットには、特定の強化操作を表す 1 つ以上の*コグニティブ スキル*が含まれています (テキストの翻訳、キー フレーズの抽出、画像ファイルからの光学式文字認識の実行など)。 スキルセットを作成するには、Microsoft の[組み込みスキル](cognitive-search-predefined-skills.md)使用するか、ユーザーが作成したモデルまたは処理ロジックを含むカスタム スキルを使用します ([例:AI エンリッチメント パイプラインにカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)を参照してください)。
+スキルセットには、特定の強化操作を表す 1 つ以上の *コグニティブ スキル* が含まれています (テキストの翻訳、キー フレーズの抽出、画像ファイルからの光学式文字認識の実行など)。 スキルセットを作成するには、Microsoft の[組み込みスキル](cognitive-search-predefined-skills.md)使用するか、ユーザーが作成したモデルまたは処理ロジックを含むカスタム スキルを使用します ([例:AI エンリッチメント パイプラインにカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)を参照してください)。
 
 この記事では、使用するスキル用にエンリッチメント パイプラインを作成する方法を学習します。 スキルセットは、Azure Cognitive Search [インデクサー](search-indexer-overview.md)にアタッチされます。 この記事で取り上げているパイプライン デザインの一環として、スキルセット自体を構築します。 
 

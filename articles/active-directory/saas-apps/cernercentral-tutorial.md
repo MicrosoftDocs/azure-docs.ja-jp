@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 8979d71dd1ebb23a42c67de905df77c6aeef8706
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92456369"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>チュートリアル: Azure Active Directory と Cerner Central の統合
@@ -41,8 +41,8 @@ Azure AD と Cerner Central の統合を構成するには、次のものが必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Cerner Central では、 **IDP** によって開始される SSO がサポートされます
-* Cerner Central では、 [**自動化された** ユーザー プロビジョニング](cernercentral-provisioning-tutorial.md)がサポートされます
+* Cerner Central では、**IDP** によって開始される SSO がサポートされます
+* Cerner Central では、[**自動化された** ユーザー プロビジョニング](cernercentral-provisioning-tutorial.md)がサポートされます
 
 ## <a name="adding-cerner-central-from-the-gallery"></a>ギャラリーからの Cerner Central の追加
 
@@ -62,13 +62,13 @@ Azure AD への Cerner Central の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Cerner Central** 」と入力し、結果パネルで **[Cerner Central]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Cerner Central**」と入力し、結果パネルで **[Cerner Central]** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果一覧での Cerner Central](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Cerner Central で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Cerner Central で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Cerner Central 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Cerner Central で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -86,7 +86,7 @@ Cerner Central で Azure AD のシングル サインオンを構成してテス
 
 Cerner Central で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Cerner Central** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Cerner Central** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -125,7 +125,7 @@ Cerner Central で Azure AD シングル サインオンを構成するには、
 
 ### <a name="configure-cerner-central-single-sign-on"></a>Cerner Central シングル サインオンの構成
 
-**Cerner Central** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Cerner Central サポート チーム](mailto:SISupport@cbre.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Cerner Central** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Cerner Central サポート チーム](mailto:SISupport@cbre.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -143,7 +143,7 @@ Cerner Central で Azure AD シングル サインオンを構成するには、
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -155,7 +155,7 @@ Cerner Central で Azure AD シングル サインオンを構成するには、
 
 このセクションでは、Cerner Central へのアクセスを許可することで、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Cerner Central]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Cerner Central]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

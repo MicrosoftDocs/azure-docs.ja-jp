@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 114be810ea50f984c3211291691b4c4dd45ac2c7
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93395242"
 ---
 # <a name="back-up-and-restore-databases-in-azure-sql-edge"></a>Azure SQL Edge でのデータベースのバックアップと復元 
@@ -43,7 +43,7 @@ Azure SQL Edge では、SQL Server でサポートされているのと同じバ
     sudo docker exec -it <AzureSQLEdge_Container_Name> mkdir /var/opt/mssql/backup
     ```
 
-2. SQL Server Management Studio (SSMS) または Azure Data Studio を使用して、Azure SQL Edge インスタンスに接続します。 `BACKUP DATABASE` コマンドを実行して、ユーザー データベースのバックアップを作成します。 次の例では、 *IronOreSilicaPrediction* データベースのバックアップを作成します。
+2. SQL Server Management Studio (SSMS) または Azure Data Studio を使用して、Azure SQL Edge インスタンスに接続します。 `BACKUP DATABASE` コマンドを実行して、ユーザー データベースのバックアップを作成します。 次の例では、*IronOreSilicaPrediction* データベースのバックアップを作成します。
 
     ```sql
     BACKUP DATABASE [IronOreSilicaPrediction] 
@@ -122,7 +122,7 @@ Azure SQL Edge では、ページ BLOB とブロック BLOB の両方へのバ�
        SECRET = '<SAS_TOKEN>';
     ```
 
-3. 次のコマンドを実行すると、 *IronOreSilicaPrediction* のバックアップが Azure ストレージ コンテナーに作成されます。
+3. 次のコマンドを実行すると、*IronOreSilicaPrediction* のバックアップが Azure ストレージ コンテナーに作成されます。
 
     ```sql
     BACKUP DATABASE IronOreSilicaPrediction
@@ -142,13 +142,13 @@ Azure SQL Edge では、ローカル ディスク、ネットワークの場所�
 
 この例では、前の例で作成した *IronOreSilicaPrediction* バックアップを使用します。 次に、別の名前の新しいデータベースとして復元します。
 
-1. データベースのバックアップ ファイルがコンテナー内にまだ存在していない場合は、次のコマンドを使用してコンテナー内にファイルをコピーできます。 次の例は、バックアップ ファイルがローカル ホスト上に存在し、 *sql1* という名前の Azure SQL Edge コンテナー内の /var/opt/mssql/backup フォルダーにコピーされることを前提としています。
+1. データベースのバックアップ ファイルがコンテナー内にまだ存在していない場合は、次のコマンドを使用してコンテナー内にファイルをコピーできます。 次の例は、バックアップ ファイルがローカル ホスト上に存在し、*sql1* という名前の Azure SQL Edge コンテナー内の /var/opt/mssql/backup フォルダーにコピーされることを前提としています。
 
     ```bash
     sudo docker cp IronOrePredictDB.bak sql1:/var/opt/mssql/backup
     ```
 
-2. SSMS または Azure Data Studio を使用して Azure SQL Edge インスタンスに接続し、復元コマンドを実行します。 次の例では、 **IronOrePredictDB.bak** が復元され、新しいデータベース **IronOreSilicaPrediction_2** が作成されます。
+2. SSMS または Azure Data Studio を使用して Azure SQL Edge インスタンスに接続し、復元コマンドを実行します。 次の例では、**IronOrePredictDB.bak** が復元され、新しいデータベース **IronOreSilicaPrediction_2** が作成されます。
 
     ```sql
     Restore FilelistOnly from disk = N'/var/opt/mssql/backup/IronOrePredictDB.bak'

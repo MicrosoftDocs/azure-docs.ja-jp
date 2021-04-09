@@ -1,18 +1,14 @@
 ---
 title: 傾向と統計のレポートを生成する
 description: Defender for IoT の Trends and Statistics (傾向と統計) ウィジェットを使用し、ネットワークのアクティビティ、統計、傾向に関する分析情報を取得します。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 2/21/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 7cb3848f3711b6bf10c316ba4f5321286e2260fb
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b4539e20ff485f1b6be69fee8e6849298540adcb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "101706481"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104779003"
 ---
 # <a name="sensor-trends-and-statistics-reports"></a>センサーの傾向と統計のレポート
 

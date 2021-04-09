@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
 ms.openlocfilehash: f83ff3d1d03354daef3466c1f48eaa505e378634
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94693751"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Azure portal を使用して外部ロード バランサーを別のリージョンに移動する
@@ -180,10 +180,10 @@ ms.locfileid: "94693751"
 
 6.  前の手順で移動した移動先パブリック IP の値を編集するには、まず、リソース ID を取得し、それを parameters.json ファイルに貼り付ける必要があります。 ID を取得するには、次の手順に従います。
 
-    1. 別のブラウザー タブまたはウィンドウで、[Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。
+    1. 別のブラウザー タブまたはウィンドウで、[Azure portal](https://portal.azure.com) にサインインし、**[リソース グループ]** を選択します。
     2. 前の手順で移動したパブリック IP が含まれている移動先リソース グループを探します。 それを選択します。
-    3. **[設定]**  >  **[プロパティ]** の順に選択します。
-    4. 右側のブレードで **リソース ID** を強調表示し、それをクリップボードにコピーします。 または、 **[リソース ID]** パスの右側にある **[クリップボードにコピー]** を選択することもできます。
+    3. **[設定]** > **[プロパティ]** の順に選択します。
+    4. 右側のブレードで **リソース ID** を強調表示し、それをクリップボードにコピーします。 または、**[リソース ID]** パスの右側にある **[クリップボードにコピー]** を選択することもできます。
     5. 別のブラウザー ウィンドウまたはタブで開いた **[パラメーターの編集]** エディターで、**value** プロパティにリソース ID を貼り付けます。
 
         ```json

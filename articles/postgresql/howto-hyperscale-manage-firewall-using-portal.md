@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/11/2020
 ms.openlocfilehash: dadd04497eae0e91bdf5ea3caad38beda35f7fa3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91275423"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) のファイアウォール規則を管理する
@@ -30,13 +30,18 @@ ms.locfileid: "91275423"
 
 1. PostgreSQL サーバー グループのページで、[セキュリティ] 見出しの下の **[ネットワーク]** をクリックして、ファイアウォール規則を開きます。
 
-   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png" alt-text="Azure portal - [ネットワーク] タブ":::
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png" alt-text="Azure portal - [ネットワーク] のクリック":::
 
 2. **[現在のクライアント IP アドレスを追加する]** をクリックすると、Azure システムによって認識されたコンピューターのパブリック IP アドレスでファイアウォール規則が作成されます。
 
-   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure portal - [ネットワーク] タブ" を検索します)。
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure portal - [クライアント IP の追加] のクリック":::
 
-   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png" alt-text="Azure portal - [ネットワーク] タブ":::
+あるいは、(オプション B の右側にある) **[+ Add 0.0.0.0 - 255.255.255.255]** をクリックすると、IP だけでなく、インターネット全体でコーディネーター ノードのポート 5432 にアクセスできるようになります。 この場合も、クライアントでは、クラスターを使用するために正しいユーザー名とパスワードでログインする必要があります。 ただし、世界中からのアクセスは短時間のみ、運用環境以外のデータベースだけに許可することをお勧めします。
+
+3. 構成を保存する前に、IP アドレスを確認します。 場合によっては、Azure Portal で見られる IP アドレスは、インターネットおよび Azure サーバーにアクセスするときに使用する IP アドレスと異なることがあります。 そのため、開始 IP と終了 IP を変更してルール関数を予想どおりにする必要があります。
+   検索エンジンまたはその他のオンライン ツールを使用して、自分の IP アドレスを確認します (たとえば、"what is my IP" を検索します)。
+
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png" alt-text="「What is my IP」の Bing 検索":::
 
 4. アドレス範囲を追加します。 このファイアウォール規則では、単一の IP アドレスまたはアドレスの範囲を指定できます。 規則を単一の IP アドレスに限定する場合は、[開始 IP] と [終了 IP] のフィールドに同じアドレスを入力します。 ファイアウォールを開くと、管理者、ユーザー、およびアプリケーションは、ポート 5432 でコーディネーター ノードにアクセスできるようになります。
 

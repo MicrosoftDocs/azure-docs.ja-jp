@@ -5,19 +5,21 @@ author: chpalm
 manager: anvalent
 services: azure-communication-services
 ms.author: chpalm
-ms.date: 10/03/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8e08c531cd46d5112138a3feedf97b27307e3dca
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 933b5605cf38be90d419673a94e23e4c36f0ef36
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656195"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103495710"
 ---
 # <a name="region-availability-and-data-residency"></a>利用可能なリージョンとデータの保存場所
 
-Azure Communication Services は、お客様が自身のプライバシーおよび個人データの要件を満たせるよう支援することを約束します。 アプリケーションの使用者と直接的な関係がある、Communication Services を使用する開発者は、場合によってはデータの管理者になります。 Azure Communication Services が代理でこのデータを格納しているため、Microsoft はこのデータの処理担当になる可能性が高くなります。 このページには、このサービスがデータを保持するしくみと、このデータを識別、エクスポート、削除する方法がまとめられています。
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+
+Azure Communication Services は、お客様が自身のプライバシーおよび個人データの要件を満たせるよう支援することを約束します。 アプリケーションの使用者と直接的な関係がある、Communication Services を使用する開発者は、場合によってはデータの管理者になります。 Azure Communication Services が代理でこの保存データを格納および暗号化しているため、Microsoft がこのデータの処理担当になる可能性が高くなります。 このページには、このサービスがデータを保持するしくみと、このデータを識別、エクスポート、削除する方法がまとめられています。
 
 ## <a name="data-residency"></a>データの保存場所
 
@@ -49,12 +51,14 @@ Communication Services と共に Azure portal または Azure Resource Manager A
 
 ### <a name="telephone-number-management"></a>電話番号の管理
 
-Azure Communication Services では、Communication Services リソースに関連付けられた電話番号のディレクトリが保持されます。 これらの API を使用して、電話番号を取得して削除します。
+Azure Communication Services では、Communication Services リソースに関連付けられた電話番号のディレクトリが保持されます。 次の[電話番号の管理 API](/rest/api/communication/phonenumberadministration) を使用して、電話番号を取得して削除します。
+
+- `Get All Phone Numbers`
 - `Release Phone Number`
 
 ### <a name="chat"></a>チャット
 
-チャットのスレッドとメッセージは、明示的に削除されるまで保持されます。 完全にアイドル状態のスレッドは 30 日後に自動的に削除されます。 [チャット API シリーズ](/rest/api/communication/chat/deletechatmessage/deletechatmessage)を使用すると、メッセージの取得、一覧表示、更新、削除を実行できます。
+チャットのスレッドとメッセージは、明示的に削除されるまで保持されます。 完全にアイドル状態のスレッドは 30 日後に自動的に削除されます。 [チャット API シリーズ](/rest/api/communication/chat/chatthread)を使用すると、メッセージの取得、一覧表示、更新、削除を実行できます。
 
 - `Get Thread`
 - `Get Message`
@@ -79,6 +83,6 @@ Azure Communication Services は、サービスの動作の正常性と使用状
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [GDPR および CCPA のための Azure データ主体要求](/microsoft-365/compliance/gdpr-dsr-azure?preserve-view=true&view=o365-worldwide)
+- [GDPR および CCPA のための Azure データ主体要求](/microsoft-365/compliance/gdpr-dsr-azure)
 - [Microsoft セキュリティ センター](https://www.microsoft.com/trust-center/privacy/data-location)
 - [Azure の対話型マップ - 顧客データの場所](https://azuredatacentermap.azurewebsites.net/)

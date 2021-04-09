@@ -4,10 +4,10 @@ description: この記事では、Event Grid イベント ソースとして Azu
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: a64c6fead5e6d95ba11bc98d7e9a52e3021c3be2
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100366774"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>Event Grid ソースとしての Azure App Configuration
@@ -107,7 +107,7 @@ Azure App Configuration は次のイベントの種類を発行します。
 # <a name="event-grid-event-schema"></a>[Event Grid イベント スキーマ](#tab/event-grid-event-schema)
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -123,7 +123,7 @@ Azure App Configuration は次のイベントの種類を発行します。
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `source` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -137,7 +137,7 @@ Azure App Configuration は次のイベントの種類を発行します。
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `key` | string | 変更または削除されたキー/値のキー。 |
 | `label` | string | 変更または削除されたキー/値のラベル (存在する場合)。 |

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
 ms.openlocfilehash: 6454bc863cb5fd628d581fff380c5ab61354f762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87053055"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC のための Smooth Streaming Protocol (MS-SSTR) の変更 
@@ -46,15 +46,15 @@ HTTP 経由での MPEG-4 ([[MPEG4-RA])](https://go.microsoft.com/fwlink/?LinkId=
 > 
 >   **デコード時間:** [[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695) で定義されている、クライアント上でサンプルのデコードにかかる時間。
 
-**フラグメント:** 1 つまたは複数の**サンプル**を構成する**メディア**の個別にダウンロード可能な単位。
+**フラグメント:** 1 つまたは複数の **サンプル** を構成する **メディア** の個別にダウンロード可能な単位。
 
 >   **HEVC:** High Efficiency Video Coding、[ISO/IEC 23008-2] で定義。
 > 
->   **マニフェスト**: クライアントが**メディア**を要求することを許可する、**プレゼンテーション**に関するメタデータ。 **メディア:** **プレゼンテーション**を再生するためにクライアントによって使用されるオーディオ、ビデオ、およびテキストの圧縮データ。 **メディア フォーマット:** オーディオまたはビデオを圧縮された**サンプル**として表すために適切に定義されたフォーマット。
+>   **マニフェスト**: クライアントが **メディア** を要求することを許可する、**プレゼンテーション** に関するメタデータ。 **メディア:** **プレゼンテーション** を再生するためにクライアントによって使用されるオーディオ、ビデオ、およびテキストの圧縮データ。 **メディア フォーマット:** オーディオまたはビデオを圧縮された **サンプル** として表すために適切に定義されたフォーマット。
 > 
->   **プレゼンテーション**1 つのムービーを再生するために必要なすべての**ストリーム**と関連メタデータのセット。 **要求:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) に定義されている、クライアントからサーバーに送信される HTTP メッセージ **応答:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) で定義されている、サーバーからクライアントに送信される HTTP メッセージ
+>   **プレゼンテーション** 1 つのムービーを再生するために必要なすべての **ストリーム** と関連メタデータのセット。 **要求:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) に定義されている、クライアントからサーバーに送信される HTTP メッセージ **応答:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) で定義されている、サーバーからクライアントに送信される HTTP メッセージ
 > 
->   **サンプル:** **メディア**が格納および処理される最小の基本単位 (フレームなど)。
+>   **サンプル:** **メディア** が格納および処理される最小の基本単位 (フレームなど)。
 > 
 >   **MAY、SHOULD、MUST、SHOULD NOT、MUST NOT:** これらの用語 (すべて大文字) は、[[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) の説明に従って使用されます。省略可能な動作のすべてのステートメントには MAY、SHOULD、または SHOULD NOT が使用されます。
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: prmitiki
 ms.openlocfilehash: 6a1fa7f582511a2089bab2694f9f5ec47634ff54
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97592383"
 ---
 # <a name="direct-peering-walkthrough"></a>Direct ピアリングのチュートリアル

@@ -9,10 +9,10 @@ ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 5a13993b06d1a7da8ffdb027deb6ade328d48955
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94426756"
 ---
 ## <a name="version-the-device-template"></a>デバイス テンプレートをバージョン管理する

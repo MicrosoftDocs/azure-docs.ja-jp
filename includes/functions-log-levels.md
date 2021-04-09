@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 05/04/2020
 ms.author: glenga
 ms.openlocfilehash: 72588ccfd9ad00305cbdeaf8132999731d86b9b1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92164918"
 ---
-" *ログ レベル* " がすべてのログに割り当てられます。 値は、相対的な重要度を示す整数です。
+"*ログ レベル*" がすべてのログに割り当てられます。 値は、相対的な重要度を示す整数です。
 
 |LogLevel    |コード| 説明 |
 |------------|---|--------------|

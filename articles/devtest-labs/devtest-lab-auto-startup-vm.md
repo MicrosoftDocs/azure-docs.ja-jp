@@ -4,10 +4,10 @@ description: ラボで VM の自動開始設定を構成する方法について
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 83e7b0836273a59eaaf66471bd0cb42d63ccf1c3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91328482"
 ---
 # <a name="auto-startup-lab-virtual-machines"></a>ラボの仮想マシンの自動スタートアップ  
@@ -26,14 +26,14 @@ Azure DevTest Labs を使用すると、ラボ内の仮想マシンを、スケ�
     
     1. **[仮想マシンの自動開始のスケジュールを許可する]** で **[オン]** を選択し、このラボで自動開始機能を有効にします。 
     2. 開始時刻 (例: 8:00:00 AM) を **[スケジュールの開始時刻]** フィールドで選択します。 
-    3. 使用する**タイム ゾーン**を選択します。 
-    4. VM を自動的に開始する必要がある**曜日**を選択します。 
+    3. 使用する **タイム ゾーン** を選択します。 
+    4. VM を自動的に開始する必要がある **曜日** を選択します。 
     5. 次に、ツールバーの **[保存]** を選択して設定を保存します。 
 
         ![自動開始の設定](./media/devtest-lab-auto-startup-vm/auto-start-configuration.png)
 
         > [!IMPORTANT]
-        > このポリシーでは、ラボ内の仮想マシンに自動的に自動開始が適用されません。 個々の仮想マシンを**オプトイン**するには、仮想マシンのページに移動し、その VM に対して**自動開始**を有効にします。
+        > このポリシーでは、ラボ内の仮想マシンに自動的に自動開始が適用されません。 個々の仮想マシンを **オプトイン** するには、仮想マシンのページに移動し、その VM に対して **自動開始** を有効にします。
 
 ## <a name="enable-autostart-for-a-vm-in-the-lab"></a>ラボ内の VM の自動開始を有効にする
 次の手順では、ラボの自動開始ポリシーに VM をオプトインする手順を示します。 

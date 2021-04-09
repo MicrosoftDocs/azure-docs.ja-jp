@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 1c6b7ec6c4ef24ec00fbfc55a65a968e00561c2e
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 793b4da8fcf46ba4d5618f8ada86f9c3c8026ffd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632174"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865266"
 ---
 # <a name="restore-using-azure-application-consistent-snapshot-tool-preview"></a>Azure アプリケーション整合性スナップショット ツールを使用して復元する (プレビュー)
 
@@ -41,7 +41,7 @@ ms.locfileid: "97632174"
 - `--restore revertvolume` 最新のスナップショットに基づいて、ターゲット ボリュームを前の状態に戻します。  対になっている DR リージョンへの DR フェールオーバーの一部としてこのコマンドを使用します。 このコマンドを実行すると、プライマリ サイトからセカンダリ サイトへのストレージ レプリケーションが **停止** され、回復された DR ボリュームに対して推奨されるファイルシステム マウントポイントと共に、DR ボリュームで使用可能な最新のスナップショットに、ターゲットの DR ボリュームが戻されます。 このコマンドは、**DR リージョン** の Azure Large Instance システムで実行する必要があります (つまり、ターゲット フェールオーバー システム)。
     > [!NOTE]
     > サブコマンド (`--restore revertvolume`) は、Azure Large Instance でのみ使用でき、Azure NetApp Files では使用できません。
-- `--hanasid <SAP HANA SID>` は、ボリューム復元コマンドの適用対象の SAP HANA SID であり、構成ファイルから選択されます。
+- `--dbsid <SAP HANA SID>` は、ボリューム復元コマンドの適用対象の SAP HANA SID であり、構成ファイルから選択されます。
 
 - `[--configfile <config filename>]` は省略可能なパラメーターであり、カスタム構成ファイル名を使用できます。
 
@@ -64,7 +64,7 @@ ms.locfileid: "97632174"
 ### <a name="output-of-the-azacsnap--c-restore---restore-snaptovol-command-for-single-node-scenario"></a>`azacsnap -c restore --restore snaptovol` コマンドの出力 (単一ノード シナリオの場合)
 
 ```output
-> azacsnap --configfile DR.json -c restore --restore snaptovol --hanasid H80
+> azacsnap --configfile DR.json -c restore --restore snaptovol --dbsid H80
 * This program is designed for those customers who have previously installed the
   Production HANA instance in the Disaster Recovery Location either as a
   stand-alone instance or as part of a multi-purpose environment.

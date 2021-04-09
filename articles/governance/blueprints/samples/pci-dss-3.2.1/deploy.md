@@ -4,10 +4,10 @@ description: ブループリント アーティファクトのパラメーター
 ms.date: 01/08/2021
 ms.topic: sample
 ms.openlocfilehash: 37e39231ee7395b951f69035cd98f2e14028ba1c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98045055"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 のブループリント サンプルのデプロイ

@@ -5,10 +5,10 @@ ms.date: 07/15/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: be078e7149ba008ab8b7ad44a016a0d1cf82df0e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91263013"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Azure Blockchain Workbench でのユーザーの管理
@@ -35,9 +35,9 @@ Azure AD 内のユーザーの管理方法について詳しくは、[Azure AD](
 
 ## <a name="manage-blockchain-workbench-administrators"></a>Blockchain Workbench 管理者の管理
 
-ディレクトリにユーザーを追加したら、次の手順に従って、Blockchain Workbench の管理者となるユーザーをを選択します。 **管理者**グループ内のユーザーは、Blockchain Workbench 内の**管理者アプリケーション ロール**に関連付けられます。 管理者は、ユーザーを追加したり、削除したり、ユーザーを特定のシナリオに割り当てたり、新しいアプリケーションを作成したりすることができます。
+ディレクトリにユーザーを追加したら、次の手順に従って、Blockchain Workbench の管理者となるユーザーをを選択します。 **管理者** グループ内のユーザーは、Blockchain Workbench 内の **管理者アプリケーション ロール** に関連付けられます。 管理者は、ユーザーを追加したり、削除したり、ユーザーを特定のシナリオに割り当てたり、新しいアプリケーションを作成したりすることができます。
 
-Azure AD ディレクトリ内の**管理者**グループにユーザーを追加するには、次の手順に従います。
+Azure AD ディレクトリ内の **管理者** グループにユーザーを追加するには、次の手順に従います。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 右上隅で自分のアカウントを選択して、Blockchain Workbench に関連付けられた Azure AD テナントに自分が属していることを確認します。
@@ -52,7 +52,7 @@ Azure AD ディレクトリ内の**管理者**グループにユーザーを追�
 
     ![割り当ての追加](./media/manage-users/add-user-assignment.png)
 
-1. **ロール**が**管理者**に設定されていることを確認します
+1. **ロール** が **管理者** に設定されていることを確認します
 1. **[割り当て]** を選択します。 追加したユーザーに管理者ロールが割り当てられ、一覧に表示されます。
 
     ![Blockchain クライアント アプリのユーザー](./media/manage-users/blockchain-admin-list.png)
@@ -85,7 +85,7 @@ Azure AD ディレクトリ内の**管理者**グループにユーザーを追�
 
     ![メンバーを追加する](./media/manage-users/find-user.png)
 
-1. ドロップダウン メニューから**ロール**を選択します。
+1. ドロップダウン メニューから **ロール** を選択します。
 
     ![ロール メンバーの選択](./media/manage-users/application-select-role.png)
 

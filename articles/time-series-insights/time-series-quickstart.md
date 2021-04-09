@@ -11,10 +11,10 @@ ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 09/30/2020
 ms.openlocfilehash: dd5ed52187a7cd23142b59e20c91c6d125946a72
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91613783"
 ---
 # <a name="quickstart-explore-azure-time-series-insights-gen1"></a>クイック スタート:Azure Time Series Insights Gen1 の探索
@@ -45,7 +45,7 @@ Azure Time Series Insights は、数十億件の IoT イベントを同時に簡
 
 ## <a name="explore-the-demo-environment"></a>デモ環境を調査する
 
-1. **日時選択パネル**が表示されます。 このパネルを使用して、視覚化する期間を選択します。
+1. **日時選択パネル** が表示されます。 このパネルを使用して、視覚化する期間を選択します。
 
    [![日時選択パネル](media/quickstart/quickstart-time-selection-panel.png)](media/quickstart/quickstart-time-selection-panel.png#lightbox)
 
@@ -55,11 +55,11 @@ Azure Time Series Insights は、数十億件の IoT イベントを同時に簡
 
    Azure Time Series Insights には、指定した期間を視覚化したグラフが表示されます。 その折れ線グラフ内でさまざまなアクションを実行できます。 たとえば、フィルター処理、ピン留め、並べ替え、積み重ねができます。
 
-   **日時選択パネル**に戻るには、次に示すように下矢印を選択します。
+   **日時選択パネル** に戻るには、次に示すように下矢印を選択します。
 
    [![グラフ](media/quickstart/quickstart-select-down-arrow.png)](media/quickstart/quickstart-select-down-arrow.png#lightbox)
 
-1. 新しい検索条件を追加するには、**条件パネル**で **[追加]** を選択します。
+1. 新しい検索条件を追加するには、**条件パネル** で **[追加]** を選択します。
 
    [![検索条件の追加パネル](media/quickstart/quickstart-add-terms.png)](media/quickstart/quickstart-add-terms.png#lightbox)
 

@@ -4,10 +4,10 @@ description: Azure Resource Manager テンプレートと PowerShell を使用�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 645f1d0717514d2c7e7b16844513327127e4e1a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87272642"
 ---
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>Azure Resource Manager テンプレートと PowerShell を使ってラボを自動的に作成または変更する
@@ -32,8 +32,8 @@ DevTest ラボが提供する数多くの Azure Resource Manager テンプレー
 PowerShell を使用して自動化できる一般的タスクが他にも多数あります。 ドキュメントの以下のセクションで、これらのタスクを実行するために必要な手順を概説します。
 
 * [PowerShell を使用して VHD ファイルからカスタム イメージを作成する](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
-* [PowerShell を使用してラボのストレージ アカウントに VHD ファイルをアップロードする](devtest-lab-upload-vhd-using-powershell.md)
-* [PowerShell を使用してラボに外部ユーザーを追加する](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell)
+* [PowerShell を使用してラボのストレージ アカウントに VHD ファイルをアップロードします](devtest-lab-upload-vhd-using-powershell.md)
+* [PowerShell を使用して、ラボに外部ユーザーを追加します。](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell)
 * [PowerShell を使用してラボ カスタム ロールを作成する](devtest-lab-grant-user-permissions-to-specific-lab-policies.md#creating-a-lab-custom-role-using-powershell)
 
 ### <a name="next-steps"></a>次のステップ

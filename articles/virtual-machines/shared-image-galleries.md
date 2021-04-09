@@ -3,18 +3,18 @@ title: 共有ギャラリーを使用して VM イメージを共有する
 description: 共有イメージ ギャラリーを使用して、組織全体で Linux VM イメージを共有する方法について説明します。
 author: axayjo
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 3022e9c694d70359a90e71ecd1232e9274f92f10
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 32b4cf1555a2d0e074ae1551a5c0085f2758fa2b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730324"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102609143"
 ---
 # <a name="shared-image-galleries-overview"></a>共有イメージ ギャラリーの概要
 
@@ -24,7 +24,7 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
 - 容易な管理のためのバージョン管理とグループ化。
 - Availability Zones がサポートされるリージョンでのゾーン冗長ストレージ (ZRS) アカウントによる高可用性イメージ。 ZRS では、ゾーンの障害に対する回復性の向上が提供されます。
 - Premium Storage のサポート (Premium_LRS)。
-- RBAC を使用したサブスクリプションとの間、および Active Directory (AD) テナント間の共有。
+- Azure RBAC を使用した、サブスクリプション間、および Active Directory (AD) テナント間の共有。
 - 各リージョン内のイメージ レプリカを使用したデプロイのスケーリング。
 
 共有イメージ ギャラリーを使用すると、組織内のさまざまなユーザー、サービス プリンシパル、AD グループに対してイメージを共有できます。 共有イメージを複数のリージョンにレプリケートすることで、デプロイのスケーリングにかかる時間を短縮することができます。
@@ -104,7 +104,7 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
 
 ## <a name="regional-support"></a>リージョン サポート
 
-すべてのパブリック リージョンをターゲット リージョンにできますが、オーストラリア中部およびオーストラリア中部 2 にレプリケートするには、サブスクリプションが許可リストに追加されている必要があります。 許可リストへのサブスクリプションの追加を要求するには、 https://azure.microsoft.com/global-infrastructure/australia/contact/ にアクセスしてください。
+すべてのパブリック リージョンはターゲット リージョンにすることができますが、一部のリージョンでは、アクセスするために顧客が要求プロセスを経る必要があります。 オーストラリア中部、オーストラリア中部 2 などのリージョンの許可リストにサブスクリプションを追加する要求をするには、[アクセス要求](/troubleshoot/azure/general/region-access-request-process)を送信します
 
 ## <a name="limits"></a>制限 
 
@@ -146,14 +146,14 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
 
 ## <a name="access"></a>アクセス
 
-共有イメージ ギャラリー、イメージ定義、イメージ バージョンはすべてリソースなので、組み込みのネイティブ Azure RBAC コントロールを使用して共有できます。 RBAC を使用して、他のユーザー、サービス プリンシパル、およびグループに、これらのリソースを共有できます。 それらが作成されたテナントの外部の個人とアクセスを共有することもできます。 共有されたイメージ バージョンにアクセスできるユーザーは、VM または仮想マシン スケール セットをデプロイできます。  ユーザーが取得するアクセスを理解するための共有マトリックスを次に示します。
+共有イメージ ギャラリー、イメージ定義、イメージ バージョンはすべてリソースなので、組み込みのネイティブ Azure RBAC コントロールを使用して共有できます。 Azure RBAC を使用して、他のユーザー、サービス プリンシパル、グループなどに、これらのリソースを共有できます。 それらが作成されたテナントの外部の個人とアクセスを共有することもできます。 共有されたイメージ バージョンにアクセスできるユーザーは、VM または仮想マシン スケール セットをデプロイできます。  ユーザーが取得するアクセスを理解するための共有マトリックスを次に示します。
 
 | ユーザーによる共有     | 共有イメージ ギャラリー | イメージの定義 | イメージ バージョン |
 |----------------------|----------------------|--------------|----------------------|
-| 共有イメージ ギャラリー | はい                  | ○          | はい                  |
-| イメージの定義     | いいえ                   | ○          | はい                  |
+| 共有イメージ ギャラリー | はい                  | はい          | はい                  |
+| イメージの定義     | いいえ                   | はい          | はい                  |
 
-最良のエクスペリエンスのため、ギャラリー レベルで共有することをお勧めします。 個別のイメージ バージョンの共有はお勧めできません。 RBAC について詳しくは、[RBAC を使用した Azure リソースへのアクセスの管理](../role-based-access-control/role-assignments-portal.md)に関する記事をご覧ください。
+最良のエクスペリエンスのため、ギャラリー レベルで共有することをお勧めします。 個別のイメージ バージョンの共有はお勧めできません。 Azure RBAC の詳細については、[Azure のロールの割り当て](../role-based-access-control/role-assignments-portal.md)に関するページを参照してください。
 
 マルチテナント アプリ登録を使って、テナント間で大規模にイメージを共有することもできます。 テナント間でのイメージの共有について詳しくは、[Azure CLI](./linux/share-images-across-tenants.md) または [PowerShell](./windows/share-images-across-tenants.md) を使用した Azure テナント間でのギャラリー VM イメージの共有に関する記事をご覧ください。
 
@@ -325,4 +325,3 @@ CLI で共通レプリカ数を指定するには、`az sig image-version create
 ## <a name="next-steps"></a>次のステップ
 
 [Azure CLI](shared-images-cli.md) または [PowerShell](shared-images-powershell.md) を使用して共有イメージをデプロイする方法について学習します。
-

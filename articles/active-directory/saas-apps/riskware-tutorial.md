@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: e33664501483280978c67b100cd56a714ef63a30
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92520763"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>チュートリアル: Azure Active Directory と Riskware の統合
@@ -41,7 +41,7 @@ Riskware と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Riskware では、 **SP** によって開始される SSO がサポートされます
+* Riskware では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-riskware-from-the-gallery"></a>ギャラリーからの Riskware の追加
 
@@ -61,13 +61,13 @@ Azure AD への Riskware の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Riskware** 」と入力し、結果パネルで **[Riskware]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Riskware**」と入力し、結果パネルで **[Riskware]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Riskware](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Riskware で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Riskware で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Riskware 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Riskware で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ Riskware で Azure AD のシングル サインオンを構成してテストす
 
 Riskware で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Riskware** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Riskware** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -110,7 +110,7 @@ Riskware で Azure AD シングル サインオンを構成するには、次の
     | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
     |||
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、URL として次のように入力します:
+    b. **[識別子 (エンティティ ID)]** ボックスに  という URL を入力します。
     
     | 環境| URL パターン|
     |--|--|
@@ -144,7 +144,7 @@ Riskware で Azure AD シングル サインオンを構成するには、次の
 
     ![Riskware 構成、メンテナンス](./media/riskware-tutorial/tutorial_riskware_maintain.png)
 
-1. メンテナンス ページで、 **[Authentication]\(認証\)** をクリックします。
+1. メンテナンス ページで、**[Authentication]\(認証\)** をクリックします。
 
     ![Riskware 構成、認証](./media/riskware-tutorial/tutorial_riskware_authen.png)
 
@@ -197,7 +197,7 @@ Riskware で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -210,7 +210,7 @@ Riskware で Azure AD シングル サインオンを構成するには、次の
 
 このセクションでは、Britta Simon に Riskware へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Riskware]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Riskware]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -244,7 +244,7 @@ Azure AD ユーザーが Riskware にサインインできるようにするに�
 
     ![Riskware 構成、メンテナンス](./media/riskware-tutorial/tutorial_riskware_maintain.png)
 
-1. メンテナンス ページで、 **[People]\(ユーザー\)** をクリックします。
+1. メンテナンス ページで、**[People]\(ユーザー\)** をクリックします。
 
     ![Riskware 構成、ユーザー](./media/riskware-tutorial/tutorial_riskware_people.png)
 
@@ -254,9 +254,9 @@ Azure AD ユーザーが Riskware にサインインできるようにするに�
 
     a. **[Person Type]\(ユーザーの種類\)** で、ユーザーの種類を選択します (例: [Employee]\(従業員\))。
 
-    b. **[First Name]\(名\)** ボックスに、ユーザーの名前を入力します (例: **Britta** )。
+    b. **[First Name]\(名\)** ボックスに、ユーザーの名前を入力します (例: **Britta**)。
 
-    c. **[Surname]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon** )。
+    c. **[Surname]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon**)。
 
 1. **[セキュリティ]** タブで、次の手順に従います。
 
@@ -274,9 +274,9 @@ Azure AD ユーザーが Riskware にサインインできるようにするに�
 
     a. **Level1** 組織としてオプションを選択します。
 
-    b. **[Person's Primary Workplace]\(ユーザーのプライマリ ワークプレース\)** セクションで、 **[Location]\(場所\)** ボックスに場所を入力します。
+    b. **[Person's Primary Workplace]\(ユーザーのプライマリ ワークプレース\)** セクションで、**[Location]\(場所\)** ボックスに場所を入力します。
 
-    c. **[Employee]\(従業員\)** セクションで、 **[Employee Status]\(従業員のステータス\)** を選択します (例: [Casual]\(カジュアル\))。
+    c. **[Employee]\(従業員\)** セクションで、**[Employee Status]\(従業員のステータス\)** を選択します (例: [Casual]\(カジュアル\))。
 
     d. **[保存]** をクリックします。
 

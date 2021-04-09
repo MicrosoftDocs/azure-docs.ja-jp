@@ -9,10 +9,10 @@ ms.subservice: extensions
 ms.collection: windows
 ms.date: 12/15/2015
 ms.openlocfilehash: e242a45e2c0f8247a1c23bf4d43a6e8b0a033d9b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102560094"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>PowerShell を使用して Windows を実行している仮想マシンで Azure Diagnostics を有効にする
@@ -205,6 +205,6 @@ Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Update.VM
     </PublicConfig>
     ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Azure Diagnostics 機能と他の手法を使用した問題のトラブルシューティングに関するその他のガイダンスについては、「 [Azure Cloud Services および Virtual Machines での診断の有効化](../../cloud-services/cloud-services-dotnet-diagnostics.md)」をご覧ください。
 * [Azure 診断構成スキーマ](../../azure-monitor/agents/diagnostics-extension-versions.md) 」では、診断拡張機能の各種 XML 構成オプションについて説明しています。

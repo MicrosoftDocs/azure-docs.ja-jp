@@ -6,10 +6,10 @@ ms.date: 01/07/2021
 author: lgayhardt
 ms.author: lagayhar
 ms.openlocfilehash: 2d1abe6d77dd4293dc70a07f3b8fd5d9da78d01e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100601155"
 ---
 # <a name="link-actions"></a>リンク アクション

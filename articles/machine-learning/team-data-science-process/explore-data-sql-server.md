@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 33b55afb7796b197f7130ec9288abb01cc115651
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "86085652"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Azure の SQL Server Virtual Machine に格納されているデータを探索する
@@ -35,7 +35,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 1. 1 日ごとの所見の数を取得する
    
     `SELECT CONVERT(date, <date_columnname>) as date, count(*) as c from <tablename> group by CONVERT(date, <date_columnname>)` 
-2. カテゴリ列内のレベルを取得する
+2. カテゴリ列内のレベルを取得する 
    
     `select  distinct <column_name> from <databasename>`
 3. 2 つのカテゴリ列の組み合わせ内のレベルの数を取得する 

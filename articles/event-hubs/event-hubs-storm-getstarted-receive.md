@@ -1,20 +1,20 @@
 ---
-title: クイック スタート:Apache Storm を使用してイベントを受信する - Azure Event Hubs
-description: クイック スタート:この記事では、Apache Storm を使用して Azure Event Hubs からイベントを受信する方法について説明します。
+title: 'クイックスタート: Apache Storm を使用してイベントを受信する - Azure Event Hubs'
+description: 'クイックスタート: この記事では、Apache Storm を使用して Azure Event Hubs からイベントを受信する方法について説明します。'
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 099a3ff1ad57616de0d7929d787b82e9d55c9e00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87087579"
 ---
-# <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>クイック スタート:Apache Storm を使用して Azure Event Hubs からイベントを受信する
+# <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>クイックスタート: Apache Storm を使用して Event Hubs からイベントを受信する
 
 [Apache Storm](https://storm.incubator.apache.org) は、境界のないデータ ストリームを確実かつ容易に処理する分散型リアルタイム計算システムです。 このセクションでは、Azure Event Hubs Storm スパウトを使用して、Event Hub からイベントを受信する方法を示します。 Apache Storm を使用して、別々のノードにホストされている複数のプロセスでイベントを分割することができます。 Storm と Event Hub の統合は、Storm の Zookeeper のインストールを使用して、進行状況への透過的なチェックポイントの設定、永続的なチェックポイントの管理、並行した Event Hub からの受信によって、イベントの利用を簡略化します。
 
-Event Hub の受信パターンの詳細については、「 [Event Hub の概要][Event Hubs overview]」を参照してください。
+Event Hub の受信パターンの詳細については、「[Event Hub の概要][Event Hubs overview]」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 クイックスタートを始める前に、**Event Hubs 名前空間とイベント ハブを作成します**。 [Azure portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。 
@@ -30,12 +30,12 @@ Event Hub の受信パターンの詳細については、「 [Event Hub の概�
     ```shell
     mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
     ```
-4. Eclipse で、新しい Maven プロジェクトを作成します ( **[ファイル]** 、 **[新規作成]** 、 **[プロジェクト]** の順にクリックします)。
+4. Eclipse で、新しい Maven プロジェクトを作成します (**[ファイル]**、**[新規作成]**、**[プロジェクト]** の順にクリックします)。
    
     ![[ファイル] > [新規作成] > [プロジェクト]][12]
-5. **[既定のワークスペースの場所を使用する]** を選択し、 **[次へ]** をクリックします。
-6. **maven-archetype-quickstart** アーキタイプを選択し、 **[次へ]** をクリックします。
-7. **GroupID** と **ArtifactID** を挿入し、 **[完了]** をクリックします。
+5. **[既定のワークスペースの場所を使用する]** を選択し、**[次へ]** をクリックします。
+6. **maven-archetype-quickstart** アーキタイプを選択し、**[次へ]** をクリックします。
+7. **GroupID** と **ArtifactID** を挿入し、**[完了]** をクリックします。
 8. **pom.xml** で、`<dependency>` ノードに次の依存関係を追加します。
 
     ```xml  

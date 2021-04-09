@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/11/2019
+ms.date: 03/06/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: edbd36ad3444795ade4b3f8d29d8473b21a2fda8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b6ed39c11e3f90b986ef904ff3f8e9ff3158d0d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651515"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103574171"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell を使用して ExpressRoute およびサイト間の共存接続を構成する
 > [!div class="op_single_selector"]
@@ -36,16 +36,18 @@ ms.locfileid: "91651515"
 >
 
 ## <a name="limits-and-limitations"></a>制限と制限事項
-* **トランジット ルーティングはサポートされていません。** サイト間 VPN 経由で接続されたローカル ネットワークと ExpressRoute 経由で接続されたローカル ネットワーク間で (Azure 経由で) ルーティングすることはできません。
-* **Basic SKU ゲートウェイはサポートされていません。** [ExpressRoute ゲートウェイ](expressroute-about-virtual-network-gateways.md)と [VPN ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md)のどちらについても、Basic SKU 以外のゲートウェイを使用する必要があります。
 * **サポートされているのはルート ベースの VPN ゲートウェイのみです。** ルート ベースの [VPN ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md)を使用する必要があります。 「[複数のポリシーベース VPN デバイスへの接続](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)」で説明されているように、"ポリシーベース トラフィック セレクタ" に VPN 接続が設定されているルートベースの VPN ゲートウェイを使用することもできます。
-* **VPN ゲートウェイのために静的ルートを構成する必要があります。** ローカル ネットワークが ExpressRoute とサイト間 VPN の両方に接続されている場合は、ローカル ネットワーク内で静的ルートを構成して、サイト間 VPN 接続をパブリック インターネットへルーティングする必要があります。
-* **指定されていない場合、VPN Gateway の既定値は ASN 65515 です。** Azure VPN Gateway は、BGP ルーティング プロトコルをサポートします。 -Asn スイッチを追加することによって、仮想ネットワークの ASN (AS 番号) を指定できます。 このパラメーターを指定しない場合、既定の AS 番号は 65515 です。 構成には任意の ASN を使用できますが、65515 以外を選択した場合は、その設定を有効にするためにゲートウェイをリセットする必要があります。
+* **Azure VPN Gateway の AS 番号は 65515 に設定する必要があります。** Azure VPN Gateway は、BGP ルーティング プロトコルをサポートします。 ExpressRoute と Azure VPN を連動させるには、Azure VPN Gateway の自律システム番号を既定値 65515 のままで維持する必要があります。 以前に 65515 以外の AS 番号を選択し、設定を 65515 に変更する場合、設定を適用するには VPN Gateway をリセットする必要があります。
 * **ゲートウェイ サブネットは /27 またはそれより短いプレフィックス** (/26、/25 など) でなければなりません。そうでないと、ExpressRoute 仮想ネットワーク ゲートウェイを追加するときに、エラー メッセージが表示されます。
+* **デュアルスタック VNet での共存はサポートされていません。** ExpressRoute IPv6 サポートとデュアルスタック ExpressRoute ゲートウェイを使用している場合、VPN Gateway とは共存できません。
 
 ## <a name="configuration-designs"></a>構成の設計
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>ExpressRoute のフェールオーバー パスとしてサイト間 VPN を構成する
 ExpressRoute のバックアップとしてサイト間 VPN 接続を構成することができます。 この接続は、Azure のプライベート ピアリング パスにリンクされている仮想ネットワークにのみ適用されます。 Azure Microsoft ピアリングを介してアクセスできるサービスの VPN ベースのフェールオーバー ソリューションはありません。 ExpressRoute 回線は常にプライマリ リンクです。 データは、ExpressRoute 回線で障害が発生した場合にのみ、サイト間 VPN パスを通過します。 非対称なルーティングを回避するには、ローカル ネットワーク構成でも、サイト間 VPN よりも ExpressRoute 回線を優先するようにします。 ExpressRoute を受け取るルートの優先度を高く設定すると、ExpressRoute パスを優先することができます。 
+
+>[!NOTE]
+> ExpressRoute Microsoft ピアリングを有効にしている場合、ExpressRoute 接続で Azure VPN Gateway のパブリック IP アドレスを受け取ることができます。 バックアップとしてサイト間 VPN 接続を設定するには、VPN 接続がインターネットにルーティングされるように、オンプレミス ネットワークを構成する必要があります。
+>
 
 > [!NOTE]
 > 両方のルートが同じである場合は、ExpressRoute 回線がサイト間 VPN よりも優先されますが、Azure では最長プレフィックスの一致を使用してパケットの宛先へのルートを選択します。
@@ -248,9 +250,9 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 
    ```azurepowershell-interactive
    $azureVpn = Get-AzVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName
-   Set-AzVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $azureVpn -VpnClientAddressPool "10.251.251.0/24"
+   Set-AzVirtualNetworkGateway -VirtualNetworkGateway $azureVpn -VpnClientAddressPool "10.251.251.0/24"
    ```
-2. VPN ゲートウェイ用に、Azure に VPN ルート証明書をアップロードします。 この例では、次の PowerShell コマンドレットを実行しているローカル コンピューターにルート証明書が保存されていて、PowerShell をローカルで実行していることを前提としています。 Azure portal を使用して証明書をアップロードすることもできます。
+2. VPN ゲートウェイ用に、Azure に VPN [ルート証明書](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#Certificates)をアップロードします。 この例では、次の PowerShell コマンドレットを実行しているローカル コンピューターにルート証明書が保存されていて、PowerShell をローカルで実行していることを前提としています。 Azure portal を使用して証明書をアップロードすることもできます。
 
    ```powershell
    $p2sCertFullName = "RootErVpnCoexP2S.cer" 
@@ -260,8 +262,11 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
    $p2sCertData = [System.Convert]::ToBase64String($p2sCertToUpload.RawData) 
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $p2sCertFullName -VirtualNetworkGatewayname $azureVpn.Name -ResourceGroupName $resgrp.ResourceGroupName -PublicCertData $p2sCertData
    ```
-
 ポイント対サイト VPN の詳細については、 [ポイント対サイト接続の構成](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)に関するページを参照してください。
+
+## <a name="to-enable-transit-routing-between-expressroute-and-azure-vpn"></a>ExpressRoute と Azure VPN の間でトランジット ルーティングを有効にするには
+ExpressRoute に接続されているローカル ネットワークのいずれかと、サイト間 VPN 接続に接続されている別のローカル ネットワークの間で接続を有効にする場合、[Azure Route Server](../route-server/expressroute-vpn-support.md) を設定する必要があります。
+
 
 ## <a name="next-steps"></a>次のステップ
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。

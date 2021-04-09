@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/13/2020
 ms.author: justinha
 ms.openlocfilehash: 285a972936bfdf4b173e2a20223143883cd8b7d3
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96619557"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Red Hat Enterprise Linux 仮想マシンを Azure Active Directory Domain Services のマネージド ドメインに参加させる
@@ -46,7 +46,7 @@ RHEL Linux VM を作成する必要がある場合、またはこの記事で使
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
-VM を作成するときは、VM がマネージド ドメインと通信できるように、仮想ネットワークの設定にご注意ください。
+VM を作成するときは、VM がマネージド ドメインと通信できるように、仮想ネットワークの設定に注意してください。
 
 * Azure AD Domain Services を有効にしたのと同じ仮想ネットワーク、またはピアリングされた仮想ネットワークに、VM をデプロイします。
 * Azure AD Domain Services マネージド ドメインとは別のサブネットに VM をデプロイします。
@@ -105,12 +105,12 @@ sudo yum install adcli sssd authconfig krb5-workstation
    `realm discover` コマンドでマネージド ドメインが見つからない場合は、次のトラブルシューティング手順を確認してください。
 
     * ドメインに VM からアクセスできることを確認します。 `ping aaddscontoso.com` を試し、肯定応答が返されるかどうかを確認します。
-    * VM が、マネージド ドメインを利用可能な仮想ネットワークと同じ、またはそれとピアリングされた仮想ネットワークに、デプロイされていることを確認します。
+    * VM が、マネージド ドメインを利用可能な仮想ネットワークと同じ仮想ネットワーク、またはそれとピアリングされた仮想ネットワークに、デプロイされていることを確認します。
     * 仮想ネットワークに対する DNS サーバーの設定が、マネージド ドメインのドメイン コントローラーを指すように更新されていることを確認します。
 
 1. 次に、`kinit` コマンドを使用して Kerberos を初期化します。 マネージド ドメインの一部であるユーザーを指定します。 必要に応じて、[Azure AD のグループにユーザー アカウントを追加します](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
 
-    再度、マネージド ドメインの名前をすべて大文字で入力する必要があります。 次の例では、`contosoadmin@aaddscontoso.com` という名前のアカウントを使用して Kerberos を初期化しています。 マネージド ドメインの一部である独自のユーザー アカウントを入力します。
+    やはり、マネージド ドメインの名前をすべて大文字で入力する必要があります。 次の例では、`contosoadmin@aaddscontoso.com` という名前のアカウントを使用して Kerberos を初期化しています。 マネージド ドメインの一部である独自のユーザー アカウントを入力します。
 
     ```console
     kinit contosoadmin@AADDSCONTOSO.COM
@@ -139,7 +139,7 @@ Successfully enrolled machine in realm
    `adcli info` コマンドでマネージド ドメインが見つからない場合は、次のトラブルシューティング手順を確認してください。
 
     * ドメインに VM からアクセスできることを確認します。 `ping aaddscontoso.com` を試し、肯定応答が返されるかどうかを確認します。
-    * VM が、マネージド ドメインを利用可能な仮想ネットワークと同じ、またはそれとピアリングされた仮想ネットワークに、デプロイされていることを確認します。
+    * VM が、マネージド ドメインを利用可能な仮想ネットワークと同じ仮想ネットワーク、またはそれとピアリングされた仮想ネットワークに、デプロイされていることを確認します。
     * 仮想ネットワークに対する DNS サーバーの設定が、マネージド ドメインのドメイン コントローラーを指すように更新されていることを確認します。
 
 1. まず、`adcli join` コマンドを使用してドメインに参加します。このコマンドにより、マシンを認証するためのキータブも作成されます。 マネージド ドメインの一部であるユーザー アカウントを使用します。

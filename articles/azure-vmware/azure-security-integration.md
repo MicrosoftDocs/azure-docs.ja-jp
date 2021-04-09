@@ -4,10 +4,10 @@ description: Azure Security Center のダッシュボードから Azure のネ�
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.openlocfilehash: 7292ea4486a61f5b0cfd8f656d2763a3ce655e79
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100578256"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Azure Security Center 統合を使用して Azure VMware Solution VM を保護する

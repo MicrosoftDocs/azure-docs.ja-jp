@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: b-juche
 ms.openlocfilehash: a61d6ba1f908a7dae56db066bfae329fc26f1c5c
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97696122"
 ---
 # <a name="register-for-azure-netapp-files"></a>Azure NetApp Files に登録する

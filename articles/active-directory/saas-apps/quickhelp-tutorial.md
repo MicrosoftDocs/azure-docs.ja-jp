@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 2f74314f28e4f2f7c8c084169356c8fa7992519d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92515238"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>チュートリアル: Azure Active Directory と QuickHelp の統合
@@ -41,9 +41,9 @@ QuickHelp と Azure AD の統合を構成するには、次のものが必要で
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* QuickHelp では、 **SP** Initiated SSO がサポートされます
+* QuickHelp では、**SP** Initiated SSO がサポートされます
 
-* QuickHelp では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* QuickHelp では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-quickhelp-from-the-gallery"></a>ギャラリーからの QuickHelp の追加
 
@@ -63,13 +63,13 @@ Azure AD への QuickHelp の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **QuickHelp** 」と入力し、結果パネルで **[QuickHelp]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**QuickHelp**」と入力し、結果パネルで **[QuickHelp]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の QuickHelp](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、QuickHelp で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、QuickHelp で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと QuickHelp 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 QuickHelp で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -170,7 +170,7 @@ QuickHelp で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

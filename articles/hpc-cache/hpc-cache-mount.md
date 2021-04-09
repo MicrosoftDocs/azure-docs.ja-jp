@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
 ms.openlocfilehash: 7f1d8d34d6351fc344fdb101ac8e9a96678df9d5
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91651430"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Azure HPC Cache をマウントする
@@ -71,13 +71,13 @@ mount コマンドを作成するには、次の手順に従います。
 
    フィールドの編集が完了すると、ページの下部にある mount コマンドが新しいクライアント パスで更新されます。
 
-1. 一覧から**キャッシュのマウント アドレス**を選択します。 このメニューには、キャッシュの[クライアント マウント ポイント](#find-mount-command-components)がすべて一覧表示されます。
+1. 一覧から **キャッシュのマウント アドレス** を選択します。 このメニューには、キャッシュの[クライアント マウント ポイント](#find-mount-command-components)がすべて一覧表示されます。
 
    キャッシュのパフォーマンスを向上させるために、使用可能なすべてのマウント アドレスでクライアントの負荷を分散させます。
 
    ![[キャッシュのマウント アドレス] フィールドのスクリーンショット (選択できる 3 つの IP アドレスがセレクターに表示されている)](media/mount-select-ip.png)
 
-1. クライアントに使用する**仮想名前空間のパス**を選択します。 これらのパスは、バックエンド ストレージ システム上のエクスポートにリンクします。
+1. クライアントに使用する **仮想名前空間のパス** を選択します。 これらのパスは、バックエンド ストレージ システム上のエクスポートにリンクします。
 
    ![セレクターが開かれている [仮想名前空間のパス] フィールドを示すスクリーンショット。](media/mount-select-target.png)
 

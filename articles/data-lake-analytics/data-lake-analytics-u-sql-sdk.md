@@ -7,10 +7,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
 ms.openlocfilehash: 8fb60e62a63bfc4562f19d483dc84c99c37676b0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92215537"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Azure Data Lake U-SQL SDK を使用して U-SQL の実行およびテストする
@@ -170,7 +170,7 @@ LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
 ```
 
-**compile**の省略可能な引数を次に示します。
+**compile** の省略可能な引数を次に示します。
 
 |引数|説明|
 |--------|-----------|
@@ -241,7 +241,7 @@ LocalRunHelper execute -Algebra d:\test\workdir\C6A101DDCB470506\Script_66AE4909
 
    ![Azure Data Lake U-SQL SDK での参照の追加](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-add-reference.png)
 
-- U-SQL SDK は **x64 環境のみ**をサポートするため、ビルドのプラットフォーム ターゲットが [x64] に設定されていることを確認します。 これは、[プロジェクトのプロパティ]、[ビルド]、[プラットフォーム ターゲット] の順に選択することで設定できます。
+- U-SQL SDK は **x64 環境のみ** をサポートするため、ビルドのプラットフォーム ターゲットが [x64] に設定されていることを確認します。 これは、[プロジェクトのプロパティ]、[ビルド]、[プラットフォーム ターゲット] の順に選択することで設定できます。
 
    ![Azure Data Lake U-SQL SDK での x64 プロジェクトの構成](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-x64.png)
 

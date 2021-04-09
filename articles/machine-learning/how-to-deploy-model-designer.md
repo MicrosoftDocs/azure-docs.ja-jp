@@ -12,10 +12,10 @@ ms.date: 10/29/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy, studio, designer
 ms.openlocfilehash: 35acfc51ae76fdacef11f03b1fbd91ad58650ae6
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97722625"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>スタジオを使用して、デザイナーでトレーニングされたモデルをデプロイする

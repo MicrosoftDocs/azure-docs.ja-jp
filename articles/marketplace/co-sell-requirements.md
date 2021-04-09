@@ -6,17 +6,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 2/24/2021
-ms.openlocfilehash: 9fb86b3d4a46a70d71aa0c3fe9fd1b4a1ea6f298
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.reviewer: stmummer
+ms.date: 3/17/2021
+ms.openlocfilehash: e67219e0b029ce401ffc05c009a5cc4a96680a9f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120132"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104593392"
 ---
 # <a name="co-sell-requirements"></a>共同販売の要件
 
-この記事では、さまざまなレベルの共同販売ステータスの要件を説明します。 共同販売をサポートするプランの種類の最新の一覧については、「[コマーシャル マーケットプレース プランの共同販売を構成する](commercial-marketplace-co-sell.md)」を参照してください。 共同販売の概要については、「[Microsoft のセールス チームとパートナーによる共同販売の概要](marketplace-co-sell.md)」を参照してください。
+この記事では、さまざまなレベルの共同販売ステータスの要件を説明します。 共同販売をサポートするプランの種類の最新の一覧については、「[コマーシャル マーケットプレース プランの共同販売を構成する](co-sell-configure.md)」を参照してください。 共同販売の概要については、「[Microsoft のセールス チームとパートナーによる共同販売の概要](co-sell-overview.md)」を参照してください。
 
 この表には、考えられるすべての共同販売ステータスが示されています。
 
@@ -24,8 +25,8 @@ ms.locfileid: "102120132"
 | ------------ | ------------- |
 | 共同販売の準備が未完了 | [共同販売の準備完了ステータスの最小要件](#requirements-for-co-sell-ready-status)が満たされていません。 |
 | 共同販売の準備完了 | [共同販売の準備完了ステータスの要件](#requirements-for-co-sell-ready-status)がすべて満たされています。 |
-| Azure IP 共同販売インセンティブ対象 | [これらの追加の要件](#requirements-for-ip-co-sell-incentivized-status)に加えて、共同販売の準備完了の要件が満たされています。 |
-| ビジネス アプリケーション ISV コネクト Premium インセンティブ  | このステータスは、Dynamics 365 と Power Apps のプランに適用されます。[このステータスの要件](#requirements-for-biz-apps-isv-connect-premium-incentive-status)がすべて満たされていることを示します。 |
+| Azure IP 共同販売インセンティブ対象 | [これらの追加の要件](#requirements-for-azure-ip-co-sell-incentivized-status)に加えて、共同販売の準備完了の要件が満たされています。 |
+| Business Applications 共同販売インセンティブ対象 | このステータスは、[Microsoft ビジネス アプリケーション ISV コネクト プログラム](business-applications-isv-program.md)の Dynamics 365 と Power Apps のプランに適用されます。[このステータスの要件](#requirements-for-business-applications-co-sell-incentivized-status)がすべて満たされていることを示します。 |
 |||
 
 ## <a name="requirements-for-co-sell-ready-status"></a>共同販売の準備完了ステータスの要件
@@ -35,17 +36,17 @@ ms.locfileid: "102120132"
 **すべてのパートナー**:
 
 - MPN ID と[アクティブなコマーシャル マーケット アカウントをパートナー センターで](./partner-center-portal/create-account.md)用意する。
-- パートナー センターで万全な[ビジネス プロファイル](/partner-center/create-a-marketing-profile.md)を用意する。 認定 Microsoft パートナーは、ビジネス ニーズに合った独自のソリューションと専門知識を探しているお客様に自社のビジネスを示すためにビジネス プロファイルを役立てて、[紹介](/partner-center/referrals.md)につなげることができます。
+- パートナー センターで万全な[ビジネス プロファイル](/partner-center/create-a-marketing-profile)を用意する。 認定 Microsoft パートナーは、ビジネス ニーズに合った独自のソリューションと専門知識を探しているお客様に自社のビジネスを示すためにビジネス プロファイルを役立てて、[紹介](/partner-center/referrals)につなげることができます。
 - **[Microsoft と共同販売する]** タブを完了し、プランをコマーシャル マーケットプレースに公開する。
 - 共同販売の対象地域ごとの営業担当者と必要な部品表を用意する。
 
 **サービス パートナー**:
 
 - プランの種類が "_サービス ソリューション_" の場合、任意のコンピテンシー領域でアクティブな Gold コンピテンシーを取得している必要があります。
- 
+
 **ビジネス アプリケーション ISV**:
 
-- Dynamics 365 Customer Engagement & Power Apps と Dynamics 365 Finance & Ops (Dynamics 365 Business Central を除く)、および Power Apps ソリューションでは、ISV コネクトの登録が必要です。
+- Dynamics 365 & Power Apps (Dynamics 365 Business Central を除く) ソリューションでは、ISV Connect の登録が必要です。
 
 ### <a name="complete-the-co-sell-with-microsoft-tab"></a>[Microsoft と共同販売する] タブの完了
 
@@ -60,7 +61,7 @@ Microsoft は、これらのドキュメントの作成に役立つテンプレ�
 
 共同販売の準備完了ステータスの資格を得るには、自分のプランまたはソリューションがコマーシャル マーケットプレースのオンライン ストアの少なくともいずれか (Azure Marketplace または Microsoft AppSource) に実際に公開されている必要があります。 コマーシャル マーケットプレースへのプランの公開については、「[プランの種類別の公開ガイド](publisher-guide-by-offer-type.md)」を参照してください。 これまでコマーシャル マーケットプレースでプランを公開したことがない場合は、[コマーシャル マーケットプレース アカウント](./partner-center-portal/create-account.md)を持っていることを確認してください。
 
-## <a name="requirements-for-ip-co-sell-incentivized-status"></a>IP 共同販売インセンティブ対象ステータスの要件
+## <a name="requirements-for-azure-ip-co-sell-incentivized-status"></a>Azure IP 共同販売インセンティブ対象ステータスの要件
 
 Azure IP 共同販売インセンティブ対象ステータスは、次のプランの種類に適用されます。
 
@@ -82,13 +83,9 @@ Azure IP 共同販売インセンティブ対象ステータスは、次のプ�
 要件 3 - 参照アーキテクチャ図の提供:
 - 参照アーキテクチャ図を共同販売のドキュメントと一緒にパートナー センターにアップロードし、審査を受けます。 この図の作成のガイダンスについては、「[参照アーキテクチャ図](reference-architecture-diagram.md)」を参照してください。 図のアップロードの詳細については、「[コマーシャル マーケットプレース プランの共同販売を構成する](commercial-marketplace-co-sell.md)」を参照してください。
 
-## <a name="requirements-for-biz-apps-isv-connect-premium-incentive-status"></a>ビジネス アプリケーション ISV コネクト Premium インセンティブ ステータスの要件
+## <a name="requirements-for-business-applications-co-sell-incentivized-status"></a>Business Applications 共同販売インセンティブ対象ステータスの要件
 
-このステータスは、Dynamics 365 または Power Apps に基づいて構築された IP ベースのソリューション、アプリ、サービスに適用されます。
-
-ビジネス アプリケーション ISV コネクト Standard インセンティブを得るために (上記の) 共同販売の準備完了ステータスを取得する必要はありません。 しかし、アプリで共同販売の準備完了ステータスを取得した後は、過去 12 か月の収益の共有および共同販売の結果またはしきい値に基づいて、ビジネス アプリケーション ISV コネクト Premium インセンティブ ステータスについて考慮される場合があります。
-
-要件 - [ISV コネクト](business-applications-isv-program.md) Premium レベルのアクティブな登録があることが必要です。
+このステータスは、ISV コネクト プログラムに登録されている、Dynamics 365 または Power Apps を基盤とする IP ベースのソリューションに適用されます (Dynamics 365 Business Central を除く)。 ただし、Microsoft 販売者がプランを貴社と共同販売するためには、そのプランが共同販売の準備完了ステータス (前述) の要件を満たしていることも必要です。
 
 ## <a name="next-steps"></a>次のステップ
 

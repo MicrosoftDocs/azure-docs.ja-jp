@@ -4,10 +4,10 @@ description: VM サイズ、ユーザーごとの VM の最大数、シャット
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a7ada980b2a251b8164f2e1a20f65da54c89ba72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90530354"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボのすべてのポリシーを管理
@@ -124,7 +124,7 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 ラボに対して各種の VM ポリシー設定を定義および適用した後は、次に示すいくつかの操作を試してみてください。
 
 * [共有 IP アドレスについて](devtest-lab-shared-ip.md) - DevTest Labs で共有 IP アドレスを使用して、ラボの VM への接続に必要なパブリック IP アドレスの数を最小限に抑える方法について説明します。
-* [コスト管理を構成する](devtest-lab-configure-cost-management.md) - **月間推定コスト傾向**グラフを使用して  
+* [コスト管理を構成する](devtest-lab-configure-cost-management.md) - **月間推定コスト傾向** グラフを使用して  
   現在のカレンダー月の現時点までの推定コストと月末の予測コストを表示する方法を示します。
 * [カスタム イメージを作成する](devtest-lab-create-template.md) - VM を作成する場合は、ベースとしてカスタム イメージまたは Marketplace イメージを指定します。 この記事では、VHD ファイルからカスタム イメージを作成する方法について説明します。
 * [Marketplace イメージを構成する](devtest-lab-configure-marketplace-images.md) - Azure DevTest Labs では、Azure Marketplace イメージを基にした VM を作成することができます。 この記事では、ラボで VM を作成する際に使用できるようにする Azure Marketplace イメージ (該当するものがある場合) を指定する方法について説明します。

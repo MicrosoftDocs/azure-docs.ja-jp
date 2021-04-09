@@ -7,10 +7,10 @@ ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: ead4c0aa7d8d71642fd8a4635edbabcafee5b6c2
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97563247"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>チュートリアル:サービスの更新プログラムを検証するためのホスト プールを作成する

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.openlocfilehash: d848c1ed1ab9d4cb24dec9423d93ec62ab45633b
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99537223"
 ---
 # <a name="estimate-and-manage-capacity-of-an-azure-cognitive-search-service"></a>Azure Cognitive Search サービスの容量の見積もりと管理を行う
@@ -184,7 +184,7 @@ Basic サービスは、3 SU の上限に対して厳密に 1 個のパーティ
 | **4 つのレプリカ** |4 SU |8 SU |12 SU |16 SU |24 SU |該当なし |
 | **5 つのレプリカ** |5 SU |10 SU |15 SU |20 SU |30 SU |該当なし |
 | **6 つのレプリカ** |6 SU |12 SU |18 SU |24 SU |36 SU |該当なし |
-| **12 レプリカ** |12 SU |24 SU |36 SU |N/A |N/A |なし |
+| **12 レプリカ** |12 SU |24 SU |36 SU |該当なし |該当なし |該当なし |
 
 SU、価格、および容量の詳細については、Azure Web サイトをご覧ください。 詳細については、「[料金の詳細](https://azure.microsoft.com/pricing/details/search/)」をご覧ください。
 

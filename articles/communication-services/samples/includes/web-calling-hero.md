@@ -6,16 +6,16 @@ author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 9/1/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: d3586e03a3c6214390f4a8b72b1db5871d2d1900
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: f3da6fd75ac485a3e22a428934928795f1feae28
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510695"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487935"
 ---
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
@@ -101,7 +101,7 @@ Communication Services サブスクリプションをクリーンアップして
 
 ### <a name="additional-reading"></a>その他の情報
 
-- [Azure Communication GitHub](https://github.com/Azure/communication) - 他の例や情報は公式 GitHub ページで見つかります。
+- [サンプル](./../overview.md) - その他のサンプルと例については、「サンプルの概要」ページを参照してください。
 - [Redux](https://redux.js.org/) - クライアント側の状態管理
 - [FluentUI](https://aka.ms/fluent-ui) - Microsoft が提供する UI ライブラリ
 - [React](https://reactjs.org/) - ユーザー インターフェイスを構築するためのライブラリ

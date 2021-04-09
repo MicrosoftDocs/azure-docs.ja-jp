@@ -1,26 +1,16 @@
 ---
-title: セキュリティ モジュールの従来のイベントの集計
+title: Defender-IoT-micro-agent クラシック イベントの集計
 description: Defender for IoT のイベント集計について説明します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 1/20/2021
-ms.author: shhazam
-ms.openlocfilehash: 0718c2637658e5519760a68f29c7a816b2aa61a1
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.date: 3/23/2021
+ms.openlocfilehash: e6c0f0e6e1f4027716ff8e3ca99f1c8803f33260
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809220"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779139"
 ---
-# <a name="security-module-classic-event-aggregation"></a>セキュリティ モジュールの従来のイベントの集計
+# <a name="defender-iot-micro-agent-classic-event-aggregation"></a>Defender-IoT-micro-agent クラシック イベントの集計
 
 Defender for IoT セキュリティ エージェントにより、ローカル デバイスからデータとシステム イベントを収集し、処理と分析を行うためにこのデータを Azure クラウドに送信します。 セキュリティ エージェントは、新しいプロセスや新しい接続イベントなど、さまざまな種類のデバイス イベントを収集します。 新しいプロセスと新しい接続のイベントは両方とも、正当に、1 秒以内にデバイス上で頻繁に発生することがあります。堅牢で包括的なセキュリティのために重要ですが、これによってセキュリティ エージェントが送信を強制されるメッセージの量は、IoT Hub のクォータとコストの制限にすぐに達する、またはそれを超える可能性があります。 ただし、これらのイベントには、デバイスの保護に不可欠な重要なセキュリティ情報が含まれています。
 

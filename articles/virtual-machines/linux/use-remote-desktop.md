@@ -1,27 +1,29 @@
 ---
 title: Linux で xrdp を使用する
 description: リモート デスクトップ (xrdp) をインストールして、Azure の Linux VM に接続するように構成する方法を説明します。
-services: virtual-machines-linux
+services: virtual-machines
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 03/01/2021
+ms.date: 03/03/2021
 ms.author: cynthn
-ms.openlocfilehash: 448e9f6487b5afc51be9b3dee8e07007c8534a0b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 84960e6247edc708bedb899c96ebf7522397269a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695177"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580370"
 ---
-# <a name="install-and-configure-xrdp-to-use-remote-desktop-with-a-linux-vm"></a>xrdp をインストールして、Linux VM でリモート デスクトップを使用するように構成する
+# <a name="install-and-configure-xrdp-to-use-remote-desktop-with-ubuntu"></a>xrdp をインストールして、Ubuntu でリモート デスクトップを使用するように構成する
 
-Azure の Linux 仮想マシン (VM) は、通常、セキュリティで保護された shell (SSH) 接続を使用してコマンド ラインから管理します。 Linux にまだ慣れていない場合や、簡単にトラブルシューティングする場合などは、リモート デスクトップを使用する方が操作が簡単なことがあります。 この記事では、Resource Manager デプロイ モデルを使用して、Linux VM のデスクトップ環境 ([xfce](https://www.xfce.org)) とリモート デスクトップ ([xrdp](http://xrdp.org)) をインストールして構成する方法を詳しく説明します。
+Azure の Linux 仮想マシン (VM) は、通常、セキュリティで保護された shell (SSH) 接続を使用してコマンド ラインから管理します。 Linux にまだ慣れていない場合や、簡単にトラブルシューティングする場合などは、リモート デスクトップを使用する方が操作が簡単なことがあります。 この記事では、Ubuntu を実行している Linux VM のデスクトップ環境 ([xfce](https://www.xfce.org)) とリモート デスクトップ ([xrdp](http://xrdp.org)) をインストールして構成する方法を詳しく説明します。
 
+この記事は、Ubuntu 18.04 VM を使用して記載され、テストされています。 
 
 ## <a name="prerequisites"></a>前提条件
+
 この記事は、Ubuntu 18.04 LTS VM が Azure にあることを前提としています。 VM を作成する必要がある場合は、次のいずれかの方法を実行してください。
 
 - [Azure CLI](quick-create-cli.md)
@@ -136,7 +138,7 @@ tail -f /var/log/syslog
 
 Red Hat Enterprise Linux SUSE など他の Linux ディストリビューションでは、サービスの再開方法や確認するログ ファイルの場所が異なる場合があります。
 
-リモート デスクトップ クライアントから応答がなく、システム ログにもイベントが表示されない場合は、リモート デスクトップ トラフィックが VM に到達できないことを示しています。 ネットワーク セキュリティ グループ ルールを確認し、ポート 3389 で TCP を許可するルールが設定されていることをご確認ください。 詳細については、[アプリケーションの接続の問題のトラブルシューティング](../troubleshooting/troubleshoot-app-connection.md)に関するページをご覧ください。
+リモート デスクトップ クライアントから応答がなく、システム ログにもイベントが表示されない場合は、リモート デスクトップ トラフィックが VM に到達できないことを示しています。 ネットワーク セキュリティ グループ ルールを確認し、ポート 3389 で TCP を許可するルールが設定されていることをご確認ください。 詳細については、[アプリケーションの接続の問題のトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-app-connection)に関するページをご覧ください。
 
 
 ## <a name="next-steps"></a>次のステップ

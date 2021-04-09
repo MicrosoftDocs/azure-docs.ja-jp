@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Storegate を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
+title: 'チュートリアル: Storegate を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
 description: Azure Active Directory を構成して、ユーザー アカウントを Storegate に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 author: zchia
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 10/15/2019
 ms.author: Zhchia
 ms.openlocfilehash: c984beff630ef90ea33a13e2fef1bca0189c2314
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94357943"
 ---
-# <a name="tutorial-configure-storegate-for-automatic-user-provisioning"></a>チュートリアル:Storegate を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-storegate-for-automatic-user-provisioning"></a>チュートリアル: Storegate を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルの目的は、Azure AD によって自動的にユーザーまたはグループが Storegate にプロビジョニングされる、または Storegate からプロビジョニング解除されるように構成するため、Storegate と Azure Active Directory (Azure AD) で実行する手順を示すことです。
 
@@ -53,11 +53,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 Azure AD での自動ユーザー プロビジョニング用に Storegate を構成する前に、Storegate からプロビジョニング情報を取得する必要があります。
 
-1. [Storegate 管理コンソール](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367)にサインインし、右上隅にあるユーザー アイコンをクリックして設定に移動して、 **[Account Settings]\(アカウントの設定\)** を選択します。
+1. [Storegate 管理コンソール](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367)にサインインし、右上隅にあるユーザー アイコンをクリックして設定に移動して、**[Account Settings]\(アカウントの設定\)** を選択します。
 
     ![Storegate: SCIM の追加](media/storegate-provisioning-tutorial/admin.png)
 
-2. 設定で **[Team]\(チーム\) > [Settings]\(設定\)** に移動し、 **[Single sign-on]\(シングル サインオン\)** セクションでトグル スイッチがオンになっていることを確認します。
+2. 設定で **[Team]\(チーム\) > [Settings]\(設定\)** に移動し、**[Single sign-on]\(シングル サインオン\)** セクションでトグル スイッチがオンになっていることを確認します。
 
     ![Storegate: 設定](media/storegate-provisioning-tutorial/team.png)
 
@@ -83,7 +83,7 @@ Azure AD で自動ユーザー プロビジョニング用に Storegate を構�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Storegate** 」と入力し、結果パネルで **Storegate** を選択します。 
+4. 検索ボックスに「**Storegate**」と入力し、結果パネルで **Storegate** を選択します。 
 
     ![結果一覧の Storegate](common/search-new-app.png)
 
@@ -91,7 +91,7 @@ Azure AD で自動ユーザー プロビジョニング用に Storegate を構�
 
     ![Storegate: OIDC の追加](media/storegate-provisioning-tutorial/signup.png)
 
-6.  [Storegate 管理コンソール](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367)にサインインし、右上隅にあるユーザー アイコンをクリックして設定に移動して、 **[Account Settings]\(アカウントの設定\)** を選択します。
+6.  [Storegate 管理コンソール](https://ws1.storegate.com/identity/core/login?signin=c71fb8fe18243c571da5b333d5437367)にサインインし、右上隅にあるユーザー アイコンをクリックして設定に移動して、**[Account Settings]\(アカウントの設定\)** を選択します。
 
     ![Storegate: ログイン](media/storegate-provisioning-tutorial/admin.png)
 
@@ -156,7 +156,7 @@ Azure AD で自動ユーザー プロビジョニング用に Storegate を構�
 
 10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-11. Storegate に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+11. Storegate に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 

@@ -9,10 +9,10 @@ ms.date: 08/28/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
 ms.openlocfilehash: e60c829831bde3b454ab180d1a39ec46cb346963
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94658657"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
@@ -42,7 +42,7 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
 * 仮想マシンの作成
 * ファイアウォールをテストする
 
-このチュートリアルを完了する代わりに Azure portal を使用する場合は、「[チュートリアル: Azure portal を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する](tutorial-hybrid-portal.md)」を参照してください。
+このチュートリアルの実行に、代わりに Azure portal を使用する場合は、「[チュートリアル: Azure portal を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する](tutorial-hybrid-portal.md)」を参照してください。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -292,7 +292,7 @@ New-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupNam
 
 #### <a name="verify-the-connection"></a>接続を確認する
 
-*Get-AzVirtualNetworkGatewayConnection* コマンドレットを使用して、接続が成功したことを確認できます。 *-Debug* は指定しても指定しなくてもかまいません。 次のコマンドレットを使用します。値は実際の値に置き換えてください。 プロンプトが表示されたら、**A** を選択して **All** を実行します。 この例では、テストする接続の名前が *-Name* で示されています。
+*Get-AzVirtualNetworkGatewayConnection* コマンドレットを使用して、接続が成功したことを確認できます。*-Debug* は指定しても指定しなくてもかまいません。 次のコマンドレットを使用します。値は実際の値に置き換えてください。 プロンプトが表示されたら、**A** を選択して **All** を実行します。 この例では、テストする接続の名前が *-Name* で示されています。
 
 ```azurepowershell
 Get-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupName $RG1

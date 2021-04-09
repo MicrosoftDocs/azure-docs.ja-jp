@@ -7,10 +7,10 @@ ms.date: 12/10/2019
 ms.author: mayg
 ms.topic: conceptual
 ms.openlocfilehash: c4842172ff181b5cdbe7f6fecf69da8755ae43fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86129883"
 ---
 # <a name="exclude-disks-from-vmware-vm-replication-to-azure"></a>Azure への VMware VM レプリケーションからディスクを除外する
@@ -42,7 +42,7 @@ ms.locfileid: "86129883"
 
 ## <a name="exclude-disks-from-replication"></a>レプリケーションからディスクを除外する
 
-1. VMware VM の[レプリケーションを有効にする](./hyper-v-azure-tutorial.md)場合、レプリケートする VM を選択した後、 **[レプリケーションを有効にする]**  >  **[プロパティ]**  >  **[プロパティの構成]** ページで、 **[レプリケートするディスク]** 列を確認します。 既定では、すべてのディスクがレプリケーションの対象として選択されます。
+1. VMware VM の [レプリケーションを有効にする](./hyper-v-azure-tutorial.md)場合、レプリケートする VM を選択した後、 **[レプリケーションを有効にする]**  >  **[プロパティ]**  >  **[プロパティの構成]** ページで、 **[レプリケートするディスク]** 列を確認します。 既定では、すべてのディスクがレプリケーションの対象として選択されます。
 2. 特定のディスクをレプリケートしない場合は、 **[レプリケートするディスク]** で、除外するディスクの選択を解除します。 
 
     ![レプリケーションからディスクを除外する](./media/vmware-azure-exclude-disk/enable-replication-exclude-disk1.png)

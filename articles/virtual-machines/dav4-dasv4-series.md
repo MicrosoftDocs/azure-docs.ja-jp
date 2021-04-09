@@ -3,16 +3,16 @@ title: Dav4 および Dasv4 シリーズ
 description: Dav4 および Dasv4 シリーズ VM の仕様。
 author: migerdes
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: c78bcfe316f543cd6408c24a9ed140b60daad22d
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: d68e5b7406b2cfa32b06f4731180684bae0c4334
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558085"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102554107"
 ---
 # <a name="dav4-and-dasv4-series"></a>Dav4 および Dasv4 シリーズ
 
@@ -26,7 +26,7 @@ Dav4 シリーズと Dasv4 シリーズは、マルチスレッド構成で AMD 
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
 [VM 世代サポート](generation-2.md): 第 1 世代<br>
-[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています ("*最低でも 4 vCPU が必要*")<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています ("*4 vCPU 以上が必要*")<br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
 <br>
 
@@ -51,7 +51,7 @@ Dav4 シリーズのサイズは、2.35Ghz AMD EPYC<sup>TM</sup> 7452 プロセ�
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
-[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています ("*最低でも 4 vCPU が必要*")<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています ("*4 vCPU 以上が必要*")<br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
 <br>
 

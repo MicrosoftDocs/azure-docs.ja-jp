@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: b826c986a0af26bb79fb0823e4e8626f0165d460
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86250024"
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API Management のページ コントロール
@@ -86,7 +86,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 ### <a name="developer-portal-templates"></a>開発者ポータル テンプレート  
  `basic-signin` コントロールは、以下の開発者ポータル テンプレートで使用できます。  
   
--   [サインイン](api-management-page-templates.md#SignIn)  
+-   [サインインする](api-management-page-templates.md#SignIn)  
   
 ##  <a name="paging-control"></a><a name="paging-control"></a> paging-control  
  `paging-control` は、項目の一覧を表示する開発者ポータル ページでページング機能を提供します。  
@@ -128,7 +128,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 ### <a name="developer-portal-templates"></a>開発者ポータル テンプレート  
  `providers` コントロールは、以下の開発者ポータル テンプレートで使用できます。  
   
--   [サインイン](api-management-page-templates.md#SignIn)  
+-   [サインインする](api-management-page-templates.md#SignIn)  
   
 ##  <a name="search-control"></a><a name="search-control"></a> search-control  
  `search-control` は、項目の一覧を表示する開発者ポータル ページで検索機能を提供します。  

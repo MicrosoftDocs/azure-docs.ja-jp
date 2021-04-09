@@ -2,16 +2,16 @@
 title: Azure Stream Analytics 地理空間関数の概要
 description: この記事では、Azure Stream Analytics ジョブで使用される地理空間関数について説明します。
 ms.service: stream-analytics
-author: jasonwhowell
-ms.author: jasonh
+author: enkrumah
+ms.author: ebnkruma
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 2835918cf381cb0fbd917ce9bf4650730878d711
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: a5e65ddacfd4c168d4b97816e448951bacc2b534
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178502"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102438542"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Stream Analytics 地理空間関数の概要
 

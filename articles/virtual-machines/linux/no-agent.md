@@ -11,10 +11,10 @@ ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.openlocfilehash: c7ca147f0a5b907ee0c5c66d53a219fe75ab2179
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102551710"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>プロビジョニング エージェントを使用せずに一般化されたイメージを作成する

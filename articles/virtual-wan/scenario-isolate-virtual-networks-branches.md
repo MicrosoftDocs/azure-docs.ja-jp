@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.author: wellee
 ms.openlocfilehash: e8e5a5a1b9325f40fdd51133155a0daffaa55a7b
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99396244"
 ---
 # <a name="scenario-custom-isolation-for-virtual-networks-and-branches"></a>シナリオ:仮想ネットワークとブランチのカスタム分離
@@ -98,7 +98,7 @@ Virtual WAN の仮想ハブ ルーティングを使用する場合、多くの�
 これで、ルーティング構成が次の図に示すように変更されます。
 
 **図 1**
-[ ![図 1](./media/routing-scenarios/custom-branch-vnet/custom-branch.png) ](./media/routing-scenarios/custom-branch-vnet/custom-branch.png#lightbox)
+[ ![図 1](./media/routing-scenarios/custom-branch-vnet/custom-branch.png)](./media/routing-scenarios/custom-branch-vnet/custom-branch.png#lightbox)
 
 ## <a name="next-steps"></a>次のステップ
 

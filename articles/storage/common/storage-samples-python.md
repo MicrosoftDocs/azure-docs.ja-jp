@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-python
 ms.openlocfilehash: f57fa1b668cacdaaceb2026f9e5d7fff0cc56d7f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92371360"
 ---
 # <a name="azure-storage-samples-using-v12-python-client-libraries"></a>v12 Python クライアント ライブラリを使用した Azure Storage サンプル

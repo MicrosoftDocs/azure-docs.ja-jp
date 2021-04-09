@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/14/2020
 ms.author: jeedes
 ms.openlocfilehash: de41e1ef021ea3da2b3a5bef4268469aab448a21
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92637940"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-visibly"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Visibly の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Visibly では、 **SP** によって開始される SSO がサポートされています。
+* Visibly では、**SP** によって開始される SSO がサポートされています。
 
 * Visibly を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
@@ -51,7 +51,7 @@ Azure AD への Visibly の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Visibly** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Visibly**」と入力します。
 1. 結果パネルから **[Visibly]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -140,7 +140,7 @@ Visibly で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. 資格情報を使用して Visibly にログインします。
 
-1. ナビゲーション メニューから、 **設定** オプションに移動します。
+1. ナビゲーション メニューから、**設定** オプションに移動します。
 
     ![設定オプションが選択されていることを示すスクリーンショット。](./media/visibly-tutorial/settings.png)
 
@@ -162,7 +162,7 @@ Visibly で Azure AD SSO を構成してテストするには、次の構成要�
 
     c. **[SSO name]\(SSO 名\)** ボックスに、有効な名前を指定します。
 
-    d. Azure portal からダウンロードした **証明書 (Base64)** をメモ帳で開き、その内容を **[Certificate]\(証明書\)** ボックスに貼り付けます。または、 **[Upload Certificate]\(証明書のアップロード)** を選択して、 **証明書** をアップロードすることもできます。
+    d. Azure portal からダウンロードした **証明書 (Base64)** をメモ帳で開き、その内容を **[Certificate]\(証明書\)** ボックスに貼り付けます。または、 **[Upload Certificate]\(証明書のアップロード)** を選択して、**証明書** をアップロードすることもできます。
 
     e. [設定] メニューの **[保存]**
 

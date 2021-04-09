@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.openlocfilehash: 9592b03f5bd9e9436db5665e040b4afd3b68b764
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87562737"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクォータ、仮想マシンのサイズの制限、およびリージョンの可用性
@@ -31,7 +31,7 @@ ms.locfileid: "87562737"
 
 ## <a name="restricted-vm-sizes"></a>制限されている VM サイズ
 
-AKS クラスター内の各ノードには、vCPU やメモリなどの一定量のコンピューティング リソースが含まれています。 AKS ノード内のコンピューティング リソースが不十分な場合、ポッドが正しく実行できないことがあります。 必要な *kube システム*のポッドおよびアプリケーションのスケジュールを確実に設定するには、**AKS で次の VM SKU を使用しないでください**。
+AKS クラスター内の各ノードには、vCPU やメモリなどの一定量のコンピューティング リソースが含まれています。 AKS ノード内のコンピューティング リソースが不十分な場合、ポッドが正しく実行できないことがあります。 必要な *kube システム* のポッドおよびアプリケーションのスケジュールを確実に設定するには、**AKS で次の VM SKU を使用しないでください**。
 
 - Standard_A0
 - Standard_A1

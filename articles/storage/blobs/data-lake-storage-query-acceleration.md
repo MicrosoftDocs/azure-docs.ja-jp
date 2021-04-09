@@ -9,10 +9,10 @@ ms.date: 09/09/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: dc1d217dba64c36aa219abbd4d2220a494347689
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95912758"
 ---
 # <a name="azure-data-lake-storage-query-acceleration"></a>Azure Data Lake Storage のクエリ アクセラレーション

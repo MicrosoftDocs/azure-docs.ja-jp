@@ -4,12 +4,12 @@ description: デバッグ中および運用環境の Web アプリのパフォ�
 ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: d2de29d897c84496fd44d74d88d58decbc64b7f8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 2507dbf7bb8294c949f434d5fa96ccc0af9a7eb3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532904"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103563540"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Visual Studio の Azure Application Insights でアプリケーションをデバッグする
 Visual Studio (2015 以降) では、[Azure Application Insights](./app-insights-overview.md) からのテレメトリを使用して、ASP.NET Web アプリのパフォーマンスの分析と問題の診断を、デバッグ中と運用環境の両方において実行できます。
@@ -65,17 +65,6 @@ Web アプリに対する要求では、クリックしてコードを表示で�
 >
 
 [CodeLens での Application Insights の詳細については、こちらを参照してください。](./visual-studio-codelens.md)
-
-## <a name="trends"></a>Trends
-傾向とは、時間経過に伴うアプリの動作を視覚化するためのツールです。 
-
-Application Insights のツール バー ボタンか [Application Insights の検索] ウィンドウから、 **[テレメトリの傾向を調べる]** を選択します。 5 つの一般的なクエリから 1 つ選択して開始します。 テレメトリの種類、時間範囲、およびその他のプロパティに基づき、さまざまなデータセットを分析できます。 
-
-データ内の異常を見つけるには、[ビューの種類] ボックスでいずれかの異常オプションを選択します。 ウィンドウの下部にあるフィルター オプションを使用すると、テレメトリの特定の部分に対象を絞り込みやすくなります。
-
-![Trends](./media/visual-studio/51.png)
-
-傾向について詳しくは、[こちら](./visual-studio-trends.md)を参照してください。
 
 ## <a name="local-monitoring"></a>ローカル監視
 Visual Studio 2015 Update 2 以降、Application Insights ポータルにテレメトリを送信するように SDK を構成していない (ApplicationInsights.config にインストルメンテーション キーが存在しない) 場合、診断ウィンドウには、直近のデバッグ セッションからのテレメトリが表示されます。 

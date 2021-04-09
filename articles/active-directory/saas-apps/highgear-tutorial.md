@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
 ms.openlocfilehash: b3806d768e8335801e2dd097eac7a440b157de38
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92444708"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>チュートリアル:Azure Active Directory と HighGear の統合
@@ -41,7 +41,7 @@ Azure AD と HighGear の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストする方法を学習できます。
 
-* HighGear では、 **SP と IdP** によって開始される SSO がサポートされます
+* HighGear では、**SP と IdP** によって開始される SSO がサポートされます
 
 ## <a name="adding-highgear-from-the-gallery"></a>ギャラリーからの HighGear の追加
 
@@ -61,13 +61,13 @@ Azure AD への HighGear の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **HighGear** 」と入力し、結果パネルで **HighGear** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**HighGear**」と入力し、結果パネルで **HighGear** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
      ![結果リストの HighGear](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーを基に、お客様の HighGear システムで Azure AD のシングル サインオンを構成してテストする方法について学習できます。
+このセクションでは、**Britta Simon** というテスト ユーザーを基に、お客様の HighGear システムで Azure AD のシングル サインオンを構成してテストする方法について学習できます。
 シングル サインオンを機能させるには、Azure AD ユーザーとお客様の HighGear システム内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 お客様の HighGear システムで Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -133,11 +133,11 @@ Azure AD への HighGear の統合を構成するには、ギャラリーから�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-    a. [ログイン URL]。 この値は、次の「 **HighGear シングル サインオンの構成** 」の手順 2. で必要になります。
+    a. [ログイン URL]。 この値は、次の「**HighGear シングル サインオンの構成**」の手順 2. で必要になります。
 
-    b. [Azure AD 識別子]。 この値は、次の「 **HighGear シングル サインオンの構成** 」の手順 3. で必要になります。
+    b. [Azure AD 識別子]。 この値は、次の「**HighGear シングル サインオンの構成**」の手順 3. で必要になります。
 
-    c. [ログアウト URL]。 この値は、次の「 **HighGear シングル サインオンの構成** 」の手順 4. で必要になります。
+    c. [ログアウト URL]。 この値は、次の「**HighGear シングル サインオンの構成**」の手順 4. で必要になります。
 
 ### <a name="configure-highgear-single-sign-on"></a>HighGear シングル サインオンの構成
 
@@ -175,9 +175,9 @@ HighGear のシングル サインオンを構成するには、お客様の Hig
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -188,7 +188,7 @@ HighGear のシングル サインオンを構成するには、お客様の Hig
 
 このセクションでは、HighGear へのアクセスを許可することで、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **HighGear** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、**HighGear** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

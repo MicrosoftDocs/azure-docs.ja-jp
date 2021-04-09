@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.openlocfilehash: cedb0b99f04df00763a3ee83287eec90bd5fb45d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100387514"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB からデータを移動する
@@ -51,7 +51,7 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 2. コピー操作用の入力データと出力データを表す **データセット** を作成します。
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む **パイプライン** を作成します。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの MongoDB データ ストアからデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON の使用例: MongoDB から Azure BLOB にデータをコピーする](#json-example-copy-data-from-mongodb-to-azure-blob)」セクションを参照してください。
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの MongoDB データ ストアからデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、この記事のセクション、「[JSON の使用例: MongoDB から Azure BLOB へのデータのコピー](#json-example-copy-data-from-mongodb-to-azure-blob)」をご覧ください。
 
 次のセクションでは、MongoDB ソースに固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
@@ -60,7 +60,7 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**OnPremisesMongoDb** |はい |
+| type |type プロパティを **OnPremisesMongoDb** |はい |
 | server |MongoDB サーバーの IP アドレスまたはホスト名。 |はい |
 | port |MongoDB サーバーがクライアント接続のリッスンに使用する TCP ポート。 |省略可能、既定値: 27017 |
 | authenticationType |Basic または Anonymous。 |はい |
@@ -93,7 +93,7 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 
 
 
-## <a name="json-example-copy-data-from-mongodb-to-azure-blob"></a>JSON の使用例:MongoDB から Azure BLOB にデータをコピーする
+## <a name="json-example-copy-data-from-mongodb-to-azure-blob"></a>JSON の使用例: MongoDB から Azure BLOB へのデータのコピー
 次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 このサンプルでは、オンプレミスの MongoDB から Azure Blob Storage にデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。
 
 このサンプルでは、次の Data Factory のエンティティがあります。
@@ -145,7 +145,7 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 }
 ```
 
-**MongoDB の入力データセット:** "external": true の設定により、このテーブルが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
+**MongoDB 入力データセット** external を true に設定すると、テーブルが Data Factory に対して外部にあり、Data Factory のアクティビティでは生成されていないことが Data Factory のサービスに通知されます。
 
 ```json
 {
@@ -303,7 +303,7 @@ MongoDB にデータを移動する場合、MongoDB 型から .NET 型に対す�
 > [!NOTE]
 > 仮想テーブルを使用した配列に対するサポートの詳細については、下の「 [仮想テーブルを使用した複合型のサポート](#support-for-complex-types-using-virtual-tables) 」セクションをご覧ください。
 
-現時点では、次の MongoDB データ型はサポートされていません: DBPointer、JavaScript、Max/Min key、Regular Expression、Symbol、Timestamp、Undefined
+現時点では、次の MongoDB データ型はサポートされていません: DBPointer、JavaScript、Max/Min key、Regular Expression、Symbol、Timestamp、Undefined。
 
 ## <a name="support-for-complex-types-using-virtual-tables"></a>仮想テーブルを使用した複合型のサポート
 Azure Data Factory では、ビルトインの ODBC ドライバーを使用して、MongoDB データベースへの接続や、MongoDB データベースからのデータのコピーを行います。 複数のドキュメントのさまざまな型が含まれた配列やオブジェクトなどの複合型については、ODBC ドライバーによって、対応する仮想テーブルへのデータの再正規化が行われます。 具体的には、テーブルにそのような列が含まれている場合に、ドライバーによって次の仮想テーブルが生成されます。

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
 ms.openlocfilehash: 29fff3a6a430e3bc1a0b3a13876b55d22f7cb545
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94566471"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>Virtual WAN パートナー向けの自動化のガイドライン

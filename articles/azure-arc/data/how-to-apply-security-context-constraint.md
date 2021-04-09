@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 01/15/2021
 ms.topic: how-to
 ms.openlocfilehash: a6751a9ff96b82f9d4fdaacd449c8a766afaa381
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98697747"
 ---
 # <a name="apply-a-security-context-constraint-for-azure-arc-enabled-data-services-on-openshift"></a>OpenShift で Azure Arc 対応データ サービスのセキュリティ コンテキスト制約を適用する

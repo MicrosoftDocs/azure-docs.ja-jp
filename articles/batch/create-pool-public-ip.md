@@ -4,10 +4,10 @@ description: 独自のパブリック IP アドレスを使用する Batch プ�
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.openlocfilehash: e822311718847e173763847d503335f71457308b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91849330"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>特定のパブリック IP アドレスの Azure Batch プールを作成する
@@ -34,7 +34,7 @@ Azure Batch プールを作成すると、指定した [Azure 仮想ネットワ
 パブリック IP アドレスを作成する場合は、次の要件に注意してください。
 
 - パブリック IP アドレスが存在するサブスクリプションとリージョンは、プールの作成に使用する Batch アカウントと同じである必要があります。
-- **IP アドレスの割り当て**は、**静的**に設定する必要があります。
+- **IP アドレスの割り当て** は、**静的** に設定する必要があります。
 - **SKU** は **Standard** に設定する必要があります。
 - DNS 名を指定する必要があります。
 - パブリック IP アドレスは、仮想マシン構成プールにのみ使用する必要があります。 他のリソースがこれらの IP アドレスを使用することはできません。使用した場合、プールに割り当てエラーが発生する可能性があります。

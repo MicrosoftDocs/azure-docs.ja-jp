@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/21/2019
 ms.openlocfilehash: d2b45f5b51f4656294632aa46f679a7a09c06ed3
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94593928"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>チュートリアル:Azure SQL Managed Instance と SQL Server の間にトランザクション レプリケーションを構成する

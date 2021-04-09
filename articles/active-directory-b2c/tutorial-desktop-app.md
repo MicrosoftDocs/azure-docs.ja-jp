@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:ネイティブのクライアント アプリケーションでユーザーを認証する
+title: 'チュートリアル: ネイティブのクライアント アプリケーションでユーザーを認証する'
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C を使用して .NET デスクトップ アプリケーションのユーザー ログインを提供する方法に関するチュートリアルです。
 services: active-directory-b2c
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 06d27c3a3daa4702653a2063d0ac70fd094e2d74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78186201"
 ---
-# <a name="tutorial-authenticate-users-in-a-native-desktop-client-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してネイティブ デスクトップ クライアントでユーザーを認証する
+# <a name="tutorial-authenticate-users-in-a-native-desktop-client-using-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用してネイティブ デスクトップ クライアントでユーザーを認証する
 
 このチュートリアルでは、Azure Active Directory B2C (Azure AD B2C) を使用して Windows Presentation Foundation (WPF) デスクトップ アプリケーションでユーザーをサインインおよびサインアップする方法を紹介します。 Azure AD B2C を使用すると、アプリケーションはオープンな標準プロトコルを使用してソーシャル アカウント、エンタープライズ アカウント、Azure Active Directory アカウントに対する認証を行うことができます。
 
@@ -91,7 +91,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.g
 
 **[API 呼び出し]** ボタンを選択すると、**エラー メッセージ** が表示されます。 アプリケーションがアクセスしようとしている API は、現在デモ テナント `fabrikamb2c.onmicrosoft.com` によって保護されているため、エラーが発生します。 お使いのアクセス トークンは、ご利用の Azure AD B2C テナントに対してのみ有効であるため、この API 呼び出しは承認されません。
 
-次のチュートリアルに進み、保護された Web API を独自のテナントに登録し、**API 呼び出し**機能を有効にします。
+次のチュートリアルに進み、保護された Web API を独自のテナントに登録し、**API 呼び出し** 機能を有効にします。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -102,7 +102,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.g
 > * アプリケーションを使用するようにサンプルを構成する
 > * ユーザー フローを使用してサインアップする
 
-次は、 **[API 呼び出し]** ボタンの機能を有効にするために、独自の Azure AD B2C テナントの登録済み Web API に WPF デスクトップ アプリケーションがアクセスできるようにします。
+次は、**[API 呼び出し]** ボタンの機能を有効にするために、独自の Azure AD B2C テナントの登録済み Web API に WPF デスクトップ アプリケーションがアクセスできるようにします。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:デスクトップ アプリから Node.js Web API へのアクセスを許可する >](tutorial-desktop-app-webapi.md)
+> [チュートリアル: デスクトップ アプリから Node.js Web API へのアクセスを許可する >](tutorial-desktop-app-webapi.md)

@@ -1,20 +1,20 @@
 ---
 title: Dynamics でデータをコピーする (Common Data Service)
-description: Data Factory パイプラインでコピー アクティビティを使用して、Microsoft Dynamics CRM または Microsoft Dynamics 365 (Common Data Service) からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから Dynamics CRM または Dynamics 365 にデータをコピーする方法について説明します。
+description: データ ファクトリ パイプラインでコピー アクティビティを使用して、Microsoft Dynamics CRM または Microsoft Dynamics 365 (Common Data Service (Microsoft Dataverse)) からサポート対象のシンク データ ストアに、またはサポート対象のソース データ ストアから Dynamics CRM または Dynamics 365 にデータをコピーする方法について説明します。
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
 ms.custom: seo-lt-2019
-ms.date: 02/02/2021
-ms.openlocfilehash: d238a232d719c75244e6f9b825272957d2a4a4bc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/08/2021
+ms.openlocfilehash: b1e7511f7666455592b6d5f463a316c3354ec76b
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381003"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447437"
 ---
-# <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
+# <a name="copy-data-from-and-to-dynamics-365-common-data-servicemicrosoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service (Microsoft Dataverse)) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -27,7 +27,7 @@ ms.locfileid: "100381003"
 - [サポートされるソースとシンクのマトリックス](copy-activity-overview.md)に従う[コピー アクティビティ](copy-activity-overview.md)
 - [Lookup アクティビティ](control-flow-lookup-activity.md)
 
-Dynamics 365 (Common Data Service) または Dynamics CRM から、サポートされている任意のシンク データ ストアにデータをコピーできます。 サポートされている任意のソース データ ストアから Dynamics 365 (Common Data Service) または Dynamics CRM にデータをコピーすることもできます。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表を参照してください。
+Dynamics 365 (Common Data Service (Microsoft Dataverse)) または Dynamics CRM から、サポート対象の任意のシンク データ ストアにデータをコピーできます。 サポートされている任意のソース データ ストアから Dynamics 365 (Common Data Service) または Dynamics CRM にデータをコピーすることもできます。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表を参照してください。
 
 この Dynamics コネクタでは、オンラインとオンプレミスの両方で Dynamics バージョン 7 から 9 がサポートされます。 具体的には次のとおりです。
 
@@ -363,6 +363,32 @@ Dynamics 365 オンラインでは、[1 組織あたりの同時バッチ呼び�
         }
     }
 ]
+```
+
+## <a name="retrieving-data-from-views"></a>ビューからデータを取得する
+
+Dynamics ビューからデータを取得するには、ビューの保存されているクエリを取得し、そのクエリを使用してデータを取得する必要があります。
+
+異なる種類のビューを格納する 2 つのエンティティがあります。"保存されたクエリ" はシステム ビューを格納し、"ユーザー クエリ" はユーザー ビューを格納します。 ビューの情報を取得するには、次の FetchXML クエリを参照し、"TARGETENTITY" を `savedquery` または `userquery` に置き換えます。 各エンティティ型には、必要に応じてクエリに追加できる、より多くの属性が用意されています。 [savedquery エンティティ](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/savedquery)と [userquery エンティティ](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/userquery)に関する詳細を確認してください。
+
+```xml
+<fetch top="5000" >
+  <entity name="<TARGETENTITY>">
+    <attribute name="name" />
+    <attribute name="fetchxml" />
+    <attribute name="returnedtypecode" />
+    <attribute name="querytype" />
+  </entity>
+</fetch>
+```
+
+また、フィルターを追加してビューをフィルター処理することもできます。 たとえば、アカウント エンティティの "My Active Accounts" という名前のビューを取得するには、次のフィルターを追加します。
+
+```xml
+<filter type="and" >
+    <condition attribute="returnedtypecode" operator="eq" value="1" />
+    <condition attribute="name" operator="eq" value="My Active Accounts" />
+</filter>
 ```
 
 ## <a name="data-type-mapping-for-dynamics"></a>Dynamics のデータ型のマッピング

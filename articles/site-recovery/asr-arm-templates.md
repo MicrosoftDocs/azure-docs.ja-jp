@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/04/2021
 ms.author: rishjai
 ms.openlocfilehash: efd5c1ab3e23348373be76c79d1b9689bc5f4941
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101720530"
 ---
 # <a name="azure-resource-manager-templates-for-azure-site-recovery"></a>Azure Site Recovery 用 Azure Resource Manager テンプレート

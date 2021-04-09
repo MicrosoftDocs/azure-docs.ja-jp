@@ -4,12 +4,12 @@ description: Azure HDInsight で Apache Hadoop クラスターを使用して Gr
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: cd2a09b6c3196302dcb74fd363481706021a4d4d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 81fd3b368f9405192c164ed7a0638caad0cd75fc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940870"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869754"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Azure HDInsight で Grafana にアクセスする
 
@@ -31,13 +31,13 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. Grafana ダッシュボードが表示され、次の例のようになります:
 
-    ![HDInsight Grafana Web ダッシュボード](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana ダッシュボード")
+    :::image type="content" source="./media/hdinsight-grafana/hdinsight-grafana-dashboard.png " alt-text="HDInsight Grafana Web ダッシュボード" border="true":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このアプリケーションを引き続き使用しない場合は、次の手順で作成したクラスターを削除します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. 上部の **検索** ボックスに「**HDInsight**」と入力します。
 

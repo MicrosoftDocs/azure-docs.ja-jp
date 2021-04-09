@@ -1,24 +1,14 @@
 ---
 title: Azure Defender for IoT エージェントについてよく寄せられる質問
 description: Azure Defender for IoT エージェントについて最もよく寄せられる質問に対する回答を確認します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: rkarlin
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/07/2020
-ms.author: rkarlin
-ms.openlocfilehash: f584f11603e41b63f3c96749ed6c720eb5ce07a8
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 4bd7d3c9b76dfb37e53cc51e5e16b660545cb7f0
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835059"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778663"
 ---
 # <a name="azure-defender-for-iot-agent-frequently-asked-questions"></a>Azure Defender for IoT エージェントについてよく寄せられる質問
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/12/2021
+ms.date: 03/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 9a7e02955d7784feb57d7e9ccc7e337b6a939380
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8409a4d897ea9b20528a5b30273819e6962774cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651554"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184493"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kendis---azure-ad-integration"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Kendis - Azure AD Integration の統合
 
@@ -123,13 +123,21 @@ Kendis - Azure AD Integration に対する Azure AD SSO を構成してテスト
 
 ## <a name="configure-kendis-azure-ad-integration-sso"></a>Kendis - Azure AD Integration の SSO の構成
 
-1. 別の Web ブラウザー ウィンドウで、Kendis - Azure AD Integration 企業サイトに管理者としてサインインします。
+1. Kendis - Azure AD Integration 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
-1. **[Settings]\(設定)\、[SAML Configurations]\(SAML 構成\)** に移動します。
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+2. ブラウザーに拡張機能を追加した後、 **[Kendis - Azure AD Integration のセットアップ]** をクリックすると、Kendis - Azure AD Integration アプリケーションに移動します。 そこから、管理者の資格情報を入力して Kendis - Azure AD Integration にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 5 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+3. Kendis - Azure AD Integration を手動でセットアップする場合は、別の Web ブラウザー ウィンドウで、Kendis - Azure AD Integration 企業サイトに管理者としてサインインします。
+
+4. **[Settings]\(設定)\、[SAML Configurations]\(SAML 構成\)** に移動します。
 
     ![SAML 構成の設定](./media/kendis-scaling-agile-platform-tutorial/settings.png)
 
-1. ページの下部にある **[Edit]\(編集\)** ボタンをクリックして、次の手順を実行します。
+5. ページの下部にある **[Edit]\(編集\)** ボタンをクリックして、次の手順を実行します。
 
     ![SAML 構成](./media/kendis-scaling-agile-platform-tutorial/saml-configuration-settings.png)
 

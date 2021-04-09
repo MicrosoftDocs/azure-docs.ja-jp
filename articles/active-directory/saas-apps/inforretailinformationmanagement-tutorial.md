@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 1b23ee92fb691af6152d16c94dad59f0751810fc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92460174"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-retail--information-management"></a>チュートリアル: Azure Active Directory と Infor Retail - Information Management の統合
@@ -41,7 +41,7 @@ Infor Retail - Information Management と Azure AD の統合を構成するに�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Infor Retail - Information Management では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Infor Retail - Information Management では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-infor-retail--information-management-from-the-gallery"></a>ギャラリーからの Infor Retail - Information Management の追加
 
@@ -61,13 +61,13 @@ Azure AD への Infor Retail - Information Management の統合を構成する�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Infor Retail – Information Management** 」と入力し、結果パネルで **Infor Retail – Information Management** を選び、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Infor Retail – Information Management**」と入力し、結果パネルで **Infor Retail – Information Management** を選び、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Infor Retail – Information Management](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Infor Retail - Information Management で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Infor Retail - Information Management で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Infor Retail - Information Management 内の対応するユーザーの間で、リンク関係が確立されている必要があります。
 
 Infor Retail – Information Management で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -153,7 +153,7 @@ Infor Retail - Information Management との Azure AD シングル サインオ�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

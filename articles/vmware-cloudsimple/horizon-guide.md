@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 513af1ba2e354412278fb88af4ee6527c236fae3
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97895599"
 ---
 # <a name="use-cloudsimple-private-cloud-site-to-host-a-virtual-desktop-infrastructure-using-vmware-horizon"></a>CloudSimple プライベート クラウド サイトを使用し、VMware Horizon を使用して仮想デスクトップ インフラストラクチャをホストする
@@ -40,7 +40,7 @@ CloudSimple ソリューションでは、次の操作を行う必要があり�
 ### <a name="verify-that-vmware-product-versions-are-compatible"></a>VMware 製品のバージョンに互換性があることを確認する
 
 * Horizon、App Volumes、Unified Access Gateway、User Environment Manager の現在のバージョンと予定されているバージョンが相互に互換で、プライベート クラウド内の vCenter および PSC とも互換性があることを確認します。 互換性情報については、[Horizon 7.5 に関する VMware の互換性マトリックス](https://www.vmware.com/resources/compatibility/sim/interop_matrix.php#interop&260=2877&0=)のページをご覧ください。
-* プライベート クラウド内の vCenter および PSC の現在のバージョンを確認するには、[CloudSimple ポータル](access-cloudsimple-portal.md)内で **[リソース]** に移動し、ご自身のプライベート クラウドを選択して、 **[vSphere 管理ネットワーク]** タブをクリックします。
+* プライベート クラウド内の vCenter および PSC の現在のバージョンを確認するには、[CloudSimple ポータル](access-cloudsimple-portal.md)内で **[リソース]** に移動し、ご自身のプライベート クラウドを選択して、**[vSphere 管理ネットワーク]** タブをクリックします。
 
 ![vCenter と PSC のバージョン](media/private-cloud-vsphere-versions.png)
 
@@ -73,7 +73,7 @@ CloudSimple ソリューションでは、次の操作を行う必要があり�
 * オンプレミス環境内のエンドユーザー サブネットから CloudSimple プライベート クラウド サブネットへの IP の到達可能性。
 * プライベート クラウド用にインストールされた AD/DHCP/DNS。
 
-#### <a name="cloudsimple-portal-create-a-dedicated-vlansubnet-for-desktop-pools"></a>CloudSimple ポータル:デスクトップ プール用の専用 VLAN/サブネットを作成する
+#### <a name="cloudsimple-portal-create-a-dedicated-vlansubnet-for-desktop-pools"></a>CloudSimple ポータル: デスクトップ プール用の専用 VLAN/サブネットを作成する
 
 Horizon デスクトップ プール用の VLAN を作成し、それをサブネット CIDR に割り当てます。 手順については、[VLAN/サブネットの作成と管理](create-vlan-subnet.md)に関する記事をご覧ください。 これは、すべてのデスクトップ仮想マシンが実行されるネットワークです。
 
@@ -85,7 +85,7 @@ Horizon デスクトップ プール用の VLAN を作成し、それをサブ�
 
 CloudSimple ポータルから[ファイアウォール規則](firewall.md)を構成することにより、これらのベスト プラクティスを適用できます。
 
-#### <a name="cloudsimple-portal-configure-firewall-rules-to-secure-horizon-management-plane"></a>CloudSimple ポータル:セキュリティで保護された Horizon 管理プレーンに対するファイアウォール規則を構成する
+#### <a name="cloudsimple-portal-configure-firewall-rules-to-secure-horizon-management-plane"></a>CloudSimple ポータル: セキュリティで保護された Horizon 管理プレーンに対するファイアウォール規則を構成する
 
 CloudSimple ポータル内で、次の規則を設定します。 手順については、[ファイアウォールのテーブルと規則の設定](firewall.md)に関する記事をご覧ください。
 
@@ -93,23 +93,23 @@ CloudSimple ポータル内で、次の規則を設定します。 手順につ�
 
 2. プライベート クラウド内で、Horizon 管理 VLAN とデスクトップ プール VLAN の間に E-W ファイアウォール規則を作成します。
 
-#### <a name="cloudsimple-portal-create-a-public-ip-address-for-unified-access-gateway"></a>CloudSimple ポータル:Unified Access Gateway 用のパブリック IP アドレスを作成する
+#### <a name="cloudsimple-portal-create-a-public-ip-address-for-unified-access-gateway"></a>CloudSimple ポータル: Unified Access Gateway 用のパブリック IP アドレスを作成する
 
 Unified Access Gateway アプライアンス用のパブリック IP アドレスを作成して、インターネットからのデスクトップ クライアント接続を有効にします。 手順については、[パブリック IP アドレスの割り当て](public-ips.md)に関する記事をご覧ください。
 
 セットアップが完了すると、パブリック IP アドレスが割り当てられ、[パブリック IP] ページに一覧表示されます。
 
-#### <a name="cloudsimple-portal-escalate-privileges"></a>CloudSimple ポータル:権限をエスカレートする
+#### <a name="cloudsimple-portal-escalate-privileges"></a>CloudSimple ポータル: 特権をエスカレートする
 
 既定の "cloudowner" ユーザーには、Horizon をインストールするための十分な特権がプライベート クラウド vCenter にないため、ユーザーの vCenter 特権をエスカレートする必要があります。 詳しくは、[特権のエスカレート](escalate-private-cloud-privileges.md)に関する記事をご覧ください。
 
-#### <a name="vcenter-ui-create-a-user-in-private-cloud-for-horizon-installation"></a>vCenter UI:Horizon のインストール用のユーザーをプライベート クラウドに作成する
+#### <a name="vcenter-ui-create-a-user-in-private-cloud-for-horizon-installation"></a>vCenter UI: Horizon のインストール用のユーザーをプライベート クラウドに作成する
 
 1. "cloudowner" ユーザー資格情報を使用して vCenter にサインインします。
 2. VCenter 内で新しいユーザー "horizon-soln-admin" を作成し、そのユーザーを vCenter 内の Administrators グループに追加します。
 3. "cloudowner" ユーザーとして vCenter からサインアウトし、"horizon-soln-admin" ユーザーとしてサインインします。
 
-#### <a name="vcenter-ui-install-vmware-horizon"></a>vCenter UI:VMware Horizon をインストールする
+#### <a name="vcenter-ui-install-vmware-horizon"></a>vCenter UI: VMware Horizon をインストールする
 
 前の論理アーキテクチャのセクションで説明したように、Horizon ソリューションには以下のコンポーネントがあります。
 

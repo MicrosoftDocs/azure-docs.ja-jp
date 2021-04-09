@@ -5,10 +5,10 @@ ms.date: 09/02/2020
 ms.topic: conceptual
 ms.customer: generated
 ms.openlocfilehash: 019541f034ce8f0c3728c38d2ae4425308b4e2a1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96350281"
 ---
 # <a name="recommended-policies-for-azure-services"></a>Azure サービスの推奨ポリシー

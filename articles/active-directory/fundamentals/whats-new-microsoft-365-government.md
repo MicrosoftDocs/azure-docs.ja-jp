@@ -14,10 +14,10 @@ ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0efc4bc8f89b0fbefbba171d80a3f8a1ed5e7f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89318932"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Microsoft 365 Government における Azure Active Directory の最新情報
@@ -61,11 +61,11 @@ Microsoft Azure Government、Microsoft 365 Government - GCC High、Microsoft 365
 | Microsoft 365 Government - GCC High エンドポイント | 詳細については、「[Office 365 U.S. Government GCC High エンドポイント](/office365/enterprise/office-365-u-s-government-gcc-high-endpoints)」を参照してください。 |
 | Microsoft 365 Government - DoD | 詳細については、「[Office 365 U.S. Government DoD エンドポイント](/office365/enterprise/office-365-u-s-government-dod-endpoints)」を参照してください。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-詳細と例については、次の記事をご覧ください。
+詳細については、次の記事を参照してください。
 
-- [Azure Government とは](../../azure-government/documentation-government-welcome.md)
+- [Azure Government とは?](../../azure-government/documentation-government-welcome.md)
 
 - [Azure Government AAD オーソリティ エンドポイントの更新](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)
 

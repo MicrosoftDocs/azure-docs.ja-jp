@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 234a0137f0a9487a56b3e0343eaea375d2f9a1af
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: c088625528190ad116676fbb51cec9f8de4b1578
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043016"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600804"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Azure Cognitive Search のクエリ
 
@@ -24,10 +24,11 @@ Cognitive Search では、クエリには、ラウンド トリップ **`search`
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-    "queryType": "simple"
-    "search": "`New York` +restaurant",
-    "searchFields": "Description, Address/City, Tags",
-    "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
+    "queryType": "simple",
+    "searchMode": "all",
+    "search": "restaurant +view",
+    "searchFields": "HotelName, Description, Address/City, Address/StateProvince, Tags",
+    "select": "HotelName, Description, Address/City, Address/StateProvince, Tags",
     "top": "10",
     "count": "true",
     "orderby": "Rating desc"
@@ -38,9 +39,11 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 + **`queryType`** にはパーサーを設定します。設定できるのは、[既定の単純なクエリ パーサー](search-query-simple-examples.md) (フル テキスト検索に最適) または、正規表現、近接検索、ファジー検索、ワイルドカード検索など高度なクエリ構成で使用される [完全な Lucene クエリ パーサー](search-query-lucene-examples.md)です。
 
++ **`searchMode`** は、一致が式の "all" 条件または "any" 条件に基づいているかどうかを指定します。 既定値は any です。
+
 + **`search`** には一致条件を指定します。通常は用語全体またはフレーズですが、演算子が伴う場合も伴わない場合もあります。 インデックス スキーマ内で "*検索可能*" の属性を持つフィールドは、このパラメーターの候補になります。
 
-+ **`searchFields`** は、クエリの実行を特定の検索可能なフィールドに制限します。
++ **`searchFields`** は、クエリの実行を特定の検索可能なフィールドに制限します。 開発時には、選択と検索に同じフィールド リストを使用すると便利です。 そうしないと、一致が結果に表示されないフィールド値に基づく可能性があり、ドキュメントが返された理由に対して不確実性が生じます。
 
 応答を形成するために使用するパラメーター:
 
@@ -68,7 +71,7 @@ Cognitive Search では、フルテキスト検索は Apache Lucene クエリ �
 
 一致する用語が見つかった場合、クエリ エンジンは、ドキュメント キーまたは ID を使用してフィールド値をアセンブルする一致を含む検索ドキュメントを再構築し、ドキュメントを関連性の順にランク付けし、応答の上位 50 (既定) を返すか、 **`top`** を指定した場合は別の番号を返します。
 
-フルテキスト検索を実装している場合は、コンテンツがトークン化される方法を理解すると、クエリの異常のデバッグに役立ちます。 ハイフンでつながれた文字列または特殊文字に対するクエリでは、既定の Standard Lucene 以外のアナライザーを使用してインデックスに正しいトークンが含まれていることを確認することが必要になります。 既定値をオーバーライドして、[言語アナライザー](index-add-language-analyzers.md#language-analyzer-list)や、字句解析を変更する[特別なアナライザー](index-add-custom-analyzers.md#AnalyzerTable)を使用できます。 たとえば、フィールドの内容全体を 1 つのトークンとして扱う [keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) です。 これは、郵便番号、ID、製品名などのデータで役立ちます。 詳細については、「[部分的な用語検索と特殊文字を含むパターン](search-query-partial-matching.md)」をご覧ください。
+フルテキスト検索を実装している場合は、コンテンツがトークン化される方法を理解すると、クエリの異常のデバッグに役立ちます。 ハイフンでつながれた文字列または特殊文字に対するクエリでは、既定の Standard Lucene 以外のアナライザーを使用してインデックスに正しいトークンが含まれていることを確認することが必要になります。 既定値をオーバーライドして、[言語アナライザー](index-add-language-analyzers.md#language-analyzer-list)や、字句解析を変更する[特別なアナライザー](index-add-custom-analyzers.md#built-in-analyzers)を使用できます。 たとえば、フィールドの内容全体を 1 つのトークンとして扱う [keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) です。 これは、郵便番号、ID、製品名などのデータで役立ちます。 詳細については、「[部分的な用語検索と特殊文字を含むパターン](search-query-partial-matching.md)」をご覧ください。
 
 大きなテキスト ブロック (コンテンツ フィールドや長い説明) が含まれているインデックスでブール演算子が頻繁な使用されることが多いですが、これが予想される場合は、 **`searchMode=Any|All`** パラメーターを使用してクエリをテストし、その設定がブール検索に与える影響を評価してください。
 
@@ -114,4 +117,4 @@ Cognitive Search では、フルテキスト検索は Apache Lucene クエリ �
 
 + [簡易クエリの例](search-query-simple-examples.md)
 + [高度なクエリを作成するための Lucene 構文のクエリの例](search-query-lucene-examples.md)
-+ [Azure Cognitive Search でのフルテキスト検索のしくみ](search-lucene-query-architecture.md)
++ [Azure Cognitive Search でのフルテキスト検索のしくみ](search-lucene-query-architecture.md)git

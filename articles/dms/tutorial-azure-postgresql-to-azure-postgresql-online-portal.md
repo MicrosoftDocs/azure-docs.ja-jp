@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 545359cd68c18fea8bf1369a57226d024489f293
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 996523d507f0a4f2850e936df39a38769bc47cde
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258933"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091297"
 ---
 # <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>チュートリアル:Azure portal を介して DMS を使用し、Azure DB for PostgreSQL - 単一サーバーを Azure DB for PostgreSQL - 単一サーバーにオンラインで移行または更新する
 
@@ -54,7 +54,7 @@ Azure Database Migration Service を使用すると、[Azure Database for Postgr
 * データの移行先となるターゲット データベース サーバーとして、[Azure Database for PostgreSQL サーバーを作成](../postgresql/quickstart-create-server-database-portal.md)するか、[Azure Database for PostgreSQL - Hyperscale (Citus) サーバーを作成](../postgresql/quickstart-create-hyperscale-portal.md)します。
 * Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](../virtual-network/index.yml)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
 
-* 仮想ネットワークのネットワーク セキュリティ グループ (NSG) の規則によって、Azure Database Migration Service への以下のアウトバウンド通信ポートが確実にブロックされないようにします。443、53、9354、445、12000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事を参照してください。
+* 仮想ネットワークのネットワーク セキュリティ グループ (NSG) の規則によって、ServiceBus、Storage、AzureMonitor の ServiceTag の送信ポート 443 がブロックされていないことを確認します。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事を参照してください。
 * Azure Database for PostgreSQL ソースのサーバーレベルの[ファイアウォール規則](../azure-sql/database/firewall-configure.md)を作成して、Azure Database Migration Service がソース データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
 * Azure Database for PostgreSQL ターゲットのサーバーレベルの[ファイアウォール規則](../azure-sql/database/firewall-configure.md)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
 * Azure DB for PostgreSQL ソースで[論理レプリケーションを有効に](../postgresql/concepts-logical.md)します。 

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ce41edd2c0048a20368dd02c2dd6101248e26c14
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 05307fe2ad9e0a59fa11c30f2dc7154ba5076603
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400015"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174667"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -35,7 +35,7 @@ ms.locfileid: "97400015"
 
 **UserJourney** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | ポリシー内の他の要素から参照するために使用できるユーザー体験の識別子。 [証明書利用者ポリシー](relyingparty.md)の **DefaultUserJourney** 要素は、この属性をポイントします。 |
 
@@ -58,7 +58,7 @@ ms.locfileid: "97400015"
 
 **AuthorizationTechnicalProfile** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | TechnicalProfileReferenceId | Yes | 実行される技術プロファイルの識別子。 |
 
@@ -119,18 +119,23 @@ ms.locfileid: "97400015"
 
 #### <a name="precondition"></a>Precondition
 
+オーケストレーション ステップは、オーケストレーション ステップで定義されている前提条件に基づいて、条件付きで実行できます。 2 種類の前提条件があります。
+ 
+- **Claims exist** - 指定した要求がユーザーの現在の要求バッグに存在する場合に、アクションを実行することが指定されます。
+- **Claim equals** - 指定した要求が存在し、その値が指定した値と等しい場合に、アクションを実行することが指定されます。 このチェックでは、大文字と小文字を区別する順序比較が実行されます。 要求の型がブール値の場合は、`True` または `False` を使用します。
+
 **Precondition** 要素には、次の属性が含まれています。
 
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | `Type` | はい | この前提条件に対して実行するチェックまたはクエリの種類。 値に **ClaimsExist** を指定すると、指定した要求がユーザーの現在の要求セット内に存在する場合にアクションが実行されます。または、**ClaimEquals** を指定すると、指定した要求が存在し、その値が指定値と等しい場合にアクションが実行されます。 |
-| `ExecuteActionsIf` | Yes | 前提条件内のアクションを実行する必要があるかどうかを true または false を使用して決定します。 |
+| `ExecuteActionsIf` | Yes | 前提条件内のアクションを実行する必要があるかどうかを `true` または `false` のテストを使用して決定します。 |
 
 **Precondition** 要素には、次の要素が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| 値 | 1:n | クエリされる ClaimTypeReferenceId。 別の値要素には、チェック対象の値が含まれています。</li></ul>|
+| 値 | 1:2 | 要求の種類の識別子。 要求は、ポリシー ファイルまたは親ポリシー ファイルの要求スキーマ セクションで、既に定義されています。 前提条件の種類が `ClaimEquals` の場合、2 番目の `Value` 要素には、チェックする値が含まれます。 |
 | アクション | 1:1 | オーケストレーション手順内の前提条件チェックが true の場合に実行する必要があるアクション。 `Action` の値を `SkipThisOrchestrationStep` に設定すると、関連付けられている `OrchestrationStep` は実行されません。 |
 
 #### <a name="preconditions-examples"></a>前提条件の例
@@ -189,9 +194,12 @@ Preconditions では複数の前提条件を確認できます。 次の例で�
 </OrchestrationStep>
 ```
 
-## <a name="claimsproviderselection"></a>ClaimsProviderSelection
+## <a name="claims-provider-selection"></a>要求プロバイダーの選択
 
-`ClaimsProviderSelection` または `CombinedSignInAndSignUp` タイプのオーケストレーション手順は、ユーザーがサインインに使用する要求プロバイダーの一覧を含む場合があります。 `ClaimsProviderSelections` 要素内の要素の順序は、ユーザーに提示される ID プロバイダーの順序を制御します。
+ID プロバイダーの選択一覧では、ユーザーはオプションの一覧からアクションを選択できます。 ID プロバイダーの選択一覧は、次の 2 つのオーケストレーション ステップのペアで構成されます。 
+
+1. **ボタン** - ユーザーが選択可能なオプション一覧を含む `ClaimsProviderSelection` または `CombinedSignInAndSignUp` の種類から始まります。 `ClaimsProviderSelections` 要素コントロール内のオプションの順序は、ユーザーに表示されるボタンの順序です。
+2. **アクション** - `ClaimsExchange` の種類が続きます。 ClaimsExchange にはアクション一覧が含まれます。 アクションは、[OAuth2](oauth2-technical-profile.md)、[OpenID Connect](openid-connect-technical-profile.md)、[claims transformation](claims-transformation-technical-profile.md)、[self-asserted](self-asserted-technical-profile.md) などの技術プロファイルへの参照です。 ユーザーがいずれかのボタンをクリックすると、対応するアクションが実行されます。
 
 **ClaimsProviderSelections** 要素には、次の要素が含まれています。
 
@@ -212,7 +220,7 @@ Preconditions では複数の前提条件を確認できます。 次の例で�
 | TargetClaimsExchangeId | いいえ | 要求プロバイダー選定の次のオーケストレーション手順で実行される、要求交換の識別子。 この属性、または ValidationClaimsExchangeId 属性を指定する必要がありますが、両方を指定することはできません。 |
 | ValidationClaimsExchangeId | No | 要求プロバイダー選定を検証するために現在のオーケストレーション手順で実行される、要求交換の識別子。 この属性、または TargetClaimsExchangeId 属性を指定する必要がありますが、両方を指定することはできません。 |
 
-### <a name="claimsproviderselection-example"></a>ClaimsProviderSelection の例
+### <a name="claims-provider-selection-example"></a>要求プロバイダーの選択の例
 
 次のオーケストレーション手順では、ユーザーはFacebook、LinkedIn、Twitter、Google、またはローカル アカウントでサインインすることを選択できます。 ユーザーがいずれかのソーシャル ID プロバイダーを選択すると、`TargetClaimsExchangeId` 属性で指定された選定要求交換を使用して 2 番目のオーケストレーション手順が実行されます。 2 番目のオーケストレーション手順は、ユーザーをソーシャル ID プロバイダーにリダイレクトしてサインイン プロセスを完了します。 ユーザーがローカル アカウントを使用してサインインすることを選択した場合、Azure AD B2C は同じオーケストレーション手順にとどまり (同じサインアップ ページまたはサインイン ページ)、2 番目の手順をスキップします。
 
@@ -242,7 +250,7 @@ Preconditions では複数の前提条件を確認できます。 次の例で�
   <ClaimsExchanges>
     <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
     <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
-  <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
+    <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
     <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
   </ClaimsExchanges>

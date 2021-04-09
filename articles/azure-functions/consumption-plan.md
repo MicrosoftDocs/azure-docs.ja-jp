@@ -4,10 +4,10 @@ description: Azure Function の従量課金プラン ホスティングを使用
 ms.date: 8/31/2020
 ms.topic: conceptual
 ms.openlocfilehash: d292a70a8dfaa4cebdb99f2bcb5420c8b8ab9cd8
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98760541"
 ---
 # <a name="azure-functions-consumption-plan-hosting"></a>Azure Functions の従量課金プラン ホスティング

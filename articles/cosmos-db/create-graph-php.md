@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 01/05/2019
 ms.author: chrande
 ms.openlocfilehash: dfb7b530ce7d907407eef987b5df8af245c90950
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93360838"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>クイック スタート:PHP と Azure portal を使用して Azure Cosmos DB にグラフ データベースを作成する
@@ -192,7 +192,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 今度はデータ エクスプローラーに戻って、グラフに追加された頂点を確認し、さらにデータ ポイントを追加してみましょう。
 
-1. **[データ エクスプローラー]** をクリックし、 **sample-graph** を展開して、 **[グラフ]** 、 **[フィルターの適用]** の順にクリックします。 
+1. **[データ エクスプローラー]** をクリックし、**sample-graph** を展開して、 **[グラフ]** 、 **[フィルターの適用]** の順にクリックします。 
 
    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png" alt-text="A P I から選択された [グラフ] と、[フィルターの適用] オプションを示すスクリーンショット。":::
 
@@ -204,7 +204,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="[New Vertex]\(新しい頂点\) ペインを示すスクリーンショット。ここで値を入力できます。":::
 
-4. 「 *person* 」というラベルを入力します。
+4. 「*person*」というラベルを入力します。
 
 5. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。 グラフ内の person ごとに一意のプロパティを作成できることに注目してください。 必須のキーは **id** のみです。
 
@@ -221,7 +221,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 7. もう一度 **[New Vertex]\(新しい頂点\)** をクリックして、新しいユーザーを追加します。 
 
-8. 「 *person* 」というラベルを入力します。
+8. 「*person*」というラベルを入力します。
 
 9. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。
     
@@ -241,7 +241,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
     :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png" alt-text="グラフ内の頂点のターゲットを変更する":::
 
-13. **[Target]\(ターゲット\)** ボックスに「 *rakesh* 」と入力し、 **[Edge label]\(辺ラベル\)** ボックスに「 *knows* 」と入力して、チェック ボックスをオンにします。
+13. **[Target]\(ターゲット\)** ボックスに「*rakesh*」と入力し、 **[Edge label]\(辺ラベル\)** ボックスに「*knows*」と入力して、チェック ボックスをオンにします。
 
     :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png" alt-text="データ エクスプローラーで ashley と rakesh との間の接続を追加する":::
 

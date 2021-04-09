@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d8119c56c26ed32db136064d93775d21a71f238f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92778662"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Microsoft Azure CDN でのエッジ ノード パフォーマンスの分析
@@ -81,7 +81,7 @@ ms.locfileid: "92778662"
 
 * 配信元サーバーの負荷を軽減します。それによって、次のような効果があります。
   * Web サーバーのパフォーマンスが向上する。
-  * 運用コストが削減される。
+  * 運用コストが削減されます。
 * より多くの要求に CDN が直接対応するため、データ配信速度が向上します。
 
 | フィールド | 説明 |
@@ -91,7 +91,7 @@ ms.locfileid: "92778662"
 | リモート バイトの割合 - キャッシュ構成なし |発信元サーバーから CDN (エッジ サーバー) に提供されたトラフィックのうち、バイパス キャッシュ機能 (HTTP ルール エンジン) の結果としてキャッシュされないトラフィックの割合を示します。 |
 | リモート バイトの割合 - 期限切れのキャッシュ |古くなったコンテンツの再検証の結果として、発信元サーバーから CDN (エッジ サーバー) に提供されたトラフィックの割合を示します。 |
 
-#### <a name="usage-metrics"></a>使用状況のメトリック
+#### <a name="usage-metrics"></a>使用状況メトリック
 これらのメトリックの目的は、以下のコスト削減方法に関する情報を提供することです。
 
 * CDN を通じて運用コストを最小限に抑える。
@@ -111,7 +111,7 @@ ms.locfileid: "92778662"
 | 入力バイト数 |要求者 (Web ブラウザーなど) から CDN (エッジ サーバー) に送信されたデータの量をバイト単位で示します。 |
 | リモート バイト数 |CDN および顧客の配信元サーバーから CDN (エッジ サーバー) に送信されたデータの量をバイト単位で示します。 |
 
-#### <a name="performance-metrics"></a>パフォーマンスのメトリック
+#### <a name="performance-metrics"></a>パフォーマンス メトリック
 これらのメトリックの目的は、トラフィックに対する CDN の全体的なパフォーマンスを追跡することです。
 
 | フィールド | 説明 |
@@ -183,7 +183,7 @@ ms.locfileid: "92778662"
 | 502 エラー |502 Bad Gateway 応答コードが返された上位 10 件の要求を表示できる棒グラフが含まれています。 502 Bad Gateway 応答コードは、サーバーと HTTP プロキシの間で HTTP プロトコル エラーが起きたときに発生します。 CDN の場合、502 Bad Gateway 応答コードは、通常、顧客の配信元サーバーがエッジ サーバーに無効な応答を返す場合に発生します。 応答は、解析できない場合、または不完全な場合に無効になります。 |
 | 5xx エラー |500 の範囲の応答コードが返された上位 10 件の要求を表示できる棒グラフが含まれています。  502 Bad Gateway および 504 Gateway Timeout 応答コードは、このレポートから除外されます。 |
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 * [Azure CDN の概要](cdn-overview.md)
 * [Microsoft Azure CDN でのリアルタイム統計情報](cdn-real-time-stats.md)
 * [規則エンジンを使用した既定の HTTP 動作のオーバーライド](./cdn-verizon-premium-rules-engine.md)

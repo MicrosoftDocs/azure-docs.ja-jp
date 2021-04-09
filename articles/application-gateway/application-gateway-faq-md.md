@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 90c20c1f463cf5143460510b9a409ad5ed3ba9f7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 83779dcd319614ae15de6b7e3e4e3abfd9599089
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576128"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619156"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -470,9 +470,9 @@ PowerShell コマンドレット `Get-AzApplicationGatewayBackendHealth` とポ�
 
 現在のプラットフォームの制限により、Application Gateway v2 (Standard_v2、WAF_v2) サブネットに NSG があり、NSG フロー ログが有効になっている場合は、非決定的な動作が発生するため、このシナリオは現在サポートされていません。
 
-### <a name="does-application-gateway-store-customer-data"></a>Application Gateway によって顧客データが保存されますか?
+### <a name="where-does-application-gateway-store-customer-data"></a>Application Gateway によって顧客データはどこに保存されますか?
 
-いいえ、Azure Application Gateway でお客様のデータが保存されることはありません。
+Application Gateway によって、顧客データがデプロイされているリージョン外に移動または格納されることはありません。
 
 ## <a name="next-steps"></a>次のステップ
 

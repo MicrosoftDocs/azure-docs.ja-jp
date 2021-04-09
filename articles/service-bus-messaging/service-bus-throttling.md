@@ -4,10 +4,10 @@ description: Service Bus スロットルの概要 - Standard および Premium �
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 436f9a40269f7eea4e31b55b9657d38849876eb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85340956"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Azure Service Bus でのスロットル操作
@@ -25,7 +25,7 @@ Azure Service Bus Standard レベルは、従量課金制の価格モデルを�
 同じリソースを使用するすべての Azure Service Bus Standard 名前空間のあいだでリソースの公平な使用と配分を担保するために、スロットル ロジックがクレジットベースに変更されました。
 
 > [!NOTE]
-> 重要な注意点として、スロットルは、Azure Service Bus やクラウド ネイティブ サービスにとって***目新しいものではありません***。
+> 重要な注意点として、スロットルは、Azure Service Bus やクラウド ネイティブ サービスにとって ***目新しいものではありません***。
 >
 > クレジットベースのスロットルは、単純に、マルチテナントの Standard レベル環境でさまざまな名前空間がリソースを共有する方法を改良し、リソースを共有するすべての名前空間による公平な使用を実現します。
 
@@ -115,13 +115,13 @@ Azure Service Bus は永続化のために最適化されており、Service Bus
 
 要求が Service Bus によって正常に "ACK" (肯定応答) されると、それは Service Bus が要求を正常に処理したことを意味します。 Service Bus が "NACK" (失敗) を返す場合、それは Service Bus が要求を処理できなかったことを意味し、クライアント アプリケーションは要求を再試行する必要があります。
 
-ただし、要求がスロットルされている場合、サービスが意味しているのは、リソース制限のためサービスは今すぐに要求を受け入れて処理することはできない、ということです。 これは、Service Bus が単に要求を確認していないという意味であり、いかなる種類のデータ損失も意味**しません**。 この場合、Service Bus SDK の既定の再試行ポリシーに従うことで、要求が最終的には処理されることが保証されます。
+ただし、要求がスロットルされている場合、サービスが意味しているのは、リソース制限のためサービスは今すぐに要求を受け入れて処理することはできない、ということです。 これは、Service Bus が単に要求を確認していないという意味であり、いかなる種類のデータ損失も意味 **しません**。 この場合、Service Bus SDK の既定の再試行ポリシーに従うことで、要求が最終的には処理されることが保証されます。
 
 ## <a name="next-steps"></a>次のステップ
 
 Service Bus のメッセージングの詳細と使用例については、次の詳細トピックをご覧ください。
 
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-* [クイック スタート: Azure Portal と .NET を使用してメッセージを送受信する](service-bus-quickstart-portal.md)
-* [チュートリアル: Azure Portal とトピック/サブスクリプションを使用して在庫を更新する](service-bus-tutorial-topics-subscriptions-portal.md)
+* [クイック スタート: Microsoft Azure portal と .NET を使用してメッセージを送受信する](service-bus-quickstart-portal.md)
+* [チュートリアル:Microsoft Azure portal とトピック/サブスクリプションを使用して在庫を更新する](service-bus-tutorial-topics-subscriptions-portal.md)
 

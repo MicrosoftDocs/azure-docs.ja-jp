@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 04edf2eeb231ff1444c732840def2b78b1373e79
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: b3e0bcad7beccc31e1772fbb24ffad7f502b8140
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565927"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102454245"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>App Configuration ストアを自動的にバックアップする
 
@@ -137,7 +137,7 @@ az eventgrid event-subscription create \
 
 前に示したサンプル コードが要件を満たさない場合は、独自の関数を作成することもできます。 ご自分の関数で、バックアップを完了するために次のタスクを実行できる必要があります。
 - キューの内容を定期的に読み取り、Event Grid からの通知が含まれているかどうかを確認します。 実装の詳細については、[ストレージ キュー SDK](../storage/queues/storage-quickstart-queues-dotnet.md)に関するページを参照してください。
-- キューに [Event Grid からのイベント通知](./concept-app-configuration-event.md?branch=pr-en-us-112982#event-schema)が含まれている場合は、イベント メッセージから一意の `<key, label>` の情報をすべて抽出します。 キーとラベルの組み合わせは、プライマリ ストアでのキー値の変更に対する一意識別子です。
+- キューに [Event Grid からのイベント通知](./concept-app-configuration-event.md#event-schema)が含まれている場合は、イベント メッセージから一意の `<key, label>` の情報をすべて抽出します。 キーとラベルの組み合わせは、プライマリ ストアでのキー値の変更に対する一意識別子です。
 - プライマリ ストアからすべての設定を読み取ります。 キューに対応するイベントがあるセカンダリ ストアの設定のみを更新します。 キューには存在しているが、プライマリ ストアには存在していないすべての設定を、セカンダリ ストアから削除します。 [App Configuration SDK](https://github.com/Azure/AppConfiguration#sdks) を使用して、構成ストアにプログラムでアクセスできます。
 - 処理中に例外が発生しなかった場合は、キューからメッセージを削除します。
 - 必要に応じて、エラー処理を実装します。 処理する必要があるいくつかの一般的な例外については、上記のコード サンプルを参照します。
@@ -177,7 +177,7 @@ az functionapp identity assign --name $functionAppName --resource-group $resourc
 ```
 
 > [!NOTE]
-> 必要なリソース作成およびロール管理を実行するために、お使いのアカウントには、適切な範囲 (サブスクリプションまたはリソース グループ) を対象とする `Owner` アクセス許可が必要です。 ロールの割り当てについてのサポートが必要な場合は、[Azure portal を使用して Azure でのロールの割り当てを追加または削除する方法](../role-based-access-control/role-assignments-portal.md)に関するページを参照してください。
+> 必要なリソース作成およびロール管理を実行するために、お使いのアカウントには、適切な範囲 (サブスクリプションまたはリソース グループ) を対象とする `Owner` アクセス許可が必要です。 ロールの割り当てでお困りの場合、[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)方法をご確認ください。
 
 次のコマンドまたは [Azure portal](./howto-integrate-azure-managed-service-identity.md#grant-access-to-app-configuration) を使用して、関数アプリのマネージド ID に App Configuration ストアへのアクセス権を付与します。 これらのロールを使用します。
 - プライマリ App Configuration ストアに `App Configuration Data Reader` ロールを割り当てます。

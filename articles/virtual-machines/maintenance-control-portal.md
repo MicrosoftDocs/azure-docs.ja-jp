@@ -3,16 +3,17 @@ title: Azure portal を使用した Azure 仮想マシンのメンテナンス �
 description: メンテナンス コントロールと Azure portal を使用して、ご利用の Azure VM にメンテナンスを適用するタイミングを制御する方法について説明します。
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: maintenance-control
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: b174e2631131e6bf26d7b1cb62442c8a99102e2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dea30723a3ebe1598d6304ac3c98bfe1b55b466
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397285"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102563015"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>メンテナンス コントロールと Azure portal を使用して更新を制御する
 

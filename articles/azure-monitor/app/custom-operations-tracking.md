@@ -6,10 +6,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 42a5318325f9961483465357403089755feb130d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88933309"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK でカスタム操作を追跡する
@@ -264,7 +264,7 @@ public async Task Enqueue(CloudQueue queue, string message)
 
 アプリケーションから報告されるテレメトリの量を減らすため、またはその他の理由で `Enqueue` 操作を追跡しない場合は、`Activity` API を直接使用します。
 
-- Application Insights 操作を開始する代わりに、新しい `Activity` を作成 (および開始) します。 操作名以外のプロパティを割り当てる必要は*ありません*。
+- Application Insights 操作を開始する代わりに、新しい `Activity` を作成 (および開始) します。 操作名以外のプロパティを割り当てる必要は *ありません*。
 - `operation.Telemetry.Id` ではなく `yourActivity.Id` をメッセージ ペイロードに対してシリアル化します。 `Activity.Current.Id` を使用することもできます。
 
 
@@ -426,7 +426,7 @@ public async Task RunMyTaskAsync()
 
 操作を破棄すると操作が停止されるため、`StopOperation` を呼び出す代わりに実行することもできます。
 
-*警告*: 場合によっては、未処理の例外で `finally` が[呼び出されなくなる](/dotnet/csharp/language-reference/keywords/try-finally)ことがあるため、操作が追跡されない可能性があります。
+*警告*: 場合によっては、未処理の例外で `finally` が [呼び出されなくなる](/dotnet/csharp/language-reference/keywords/try-finally)ことがあるため、操作が追跡されない可能性があります。
 
 ### <a name="parallel-operations-processing-and-tracking"></a>並列操作の処理と追跡
 

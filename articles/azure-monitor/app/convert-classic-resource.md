@@ -4,10 +4,10 @@ description: Azure Monitor Application Insights のクラシック リソース�
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 5791abe33dee2e62aadb00ae1024338e1e44a900
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100584263"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>ワークスペースベースの Application Insights リソースに移行する

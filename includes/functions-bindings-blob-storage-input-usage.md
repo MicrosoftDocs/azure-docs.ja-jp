@@ -10,10 +10,10 @@ ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: 938f55ae0ba911ea3a97cd49e6424bf8aaefdc76
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100381692"
 ---
 ### <a name="default"></a>Default
@@ -39,7 +39,7 @@ Storage SDK タイプの 1 つにバインドしようとしてエラー メッ�
 
 ### <a name="additional-types"></a>その他の型
 
-[Storage 拡張機能の 5.0.0 またはそれ以降のバージョン](../articles/azure-functions/functions-bindings-storage-blob.md#storage-extension-5x-and-higher)を使用するアプリでは、[Azure SDK for .NET](/dotnet/api/overview/azure/storage.blobs-readme) の型を使用することもできます。 このバージョンでは、次の型を優先して、レガシ `CloudBlobContainer`、`CloudBlobDirectory`、`ICloudBlob`、`CloudBlockBlob`、`CloudPageBlob`、`CloudAppendBlob` 型のサポートがなくなります。
+[ストレージ拡張機能の 5.0.0 またはそれ以降のバージョン](../articles/azure-functions/functions-bindings-storage-blob.md#storage-extension-5x-and-higher)を使用するアプリでは、[Azure SDK for .NET](/dotnet/api/overview/azure/storage.blobs-readme) の型を使用することもできます。 このバージョンでは、次の型を優先して、レガシ `CloudBlobContainer`、`CloudBlobDirectory`、`ICloudBlob`、`CloudBlockBlob`、`CloudPageBlob`、`CloudAppendBlob` 型のサポートがなくなります。
 
 - [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient)
 - [BlobClient](/dotnet/api/azure.storage.blobs.blobclient)<sup>1</sup>

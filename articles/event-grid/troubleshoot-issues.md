@@ -3,12 +3,12 @@ title: Event Grid の問題のトラブルシューティング
 description: この記事では、Azure Event Grid の問題をトラブルシューティングするためのさまざまな方法を紹介します。
 ms.topic: conceptual
 ms.date: 02/11/2021
-ms.openlocfilehash: 9c52ba8561c10dd94ec6ef51c78b8534c6c58e96
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d30b8464de90474ad74853cc423de700b41226a4
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416661"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720561"
 ---
 # <a name="troubleshoot-azure-event-grid-issues"></a>Azure Event Grid の問題のトラブルシューティング
 この記事では、Azure Event Grid の問題をトラブルシューティングするのに役立つ情報を提供します。 
@@ -32,7 +32,7 @@ Azure Event Grid メトリックとアクティビティ ログ操作に関す�
 400、409、403 などのエラー コードを含むエラー メッセージが表示された場合は、[Event Grid エラーのトラブルシューティング](troubleshoot-errors.md)に関するページを参照してください。 
 
 ## <a name="distributed-tracing-net"></a>分散トレース (.NET)
-Event Grid .NET ライブラリでは、分散トレースをサポートしています。 分散トレースに関する [CloudEvents 仕様のガイダンス](https://github.com/cloudevents/spec/blob/master/extensions/distributed-tracing.md)に従うため、分散トレースが有効になっている場合、ライブラリでは `CloudEvent` の [ExtensionAttributes](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventgrid/Azure.Messaging.EventGrid/src/Customization/CloudEvent.cs#L126) で `traceparent` および `tracestate` を設定します。 アプリケーションで分散トレースを有効にする方法の詳細については、Azure SDK の[分散トレースに関するドキュメント](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Azure.Core/samples/Diagnostics.md#Distributed-tracing)を参照してください。
+Event Grid .NET ライブラリでは、分散トレースをサポートしています。 分散トレースに関する [CloudEvents 仕様のガイダンス](https://github.com/cloudevents/spec/blob/master/extensions/distributed-tracing.md)に従うため、分散トレースが有効になっている場合、ライブラリでは `CloudEvent` の [ExtensionAttributes](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventgrid/Azure.Messaging.EventGrid/src/Customization#L126) で `traceparent` および `tracestate` を設定します。 アプリケーションで分散トレースを有効にする方法の詳細については、Azure SDK の[分散トレースに関するドキュメント](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Azure.Core/samples/Diagnostics.md#Distributed-tracing)を参照してください。
 
 ### <a name="sample"></a>サンプル
 [行カウンターに関するサンプル](/samples/azure/azure-sdk-for-net/line-counter/)を参照してください。 このサンプル アプリでは、Storage、Event Hubs、および Event Grid クライアントを ASP.NET Core 統合、分散トレース、ホステッド サービスと共に使用する方法を示しています。 ユーザーはファイルを BLOB にアップロードでき、これにより、ファイル名を含む Event Hubs イベントがトリガーされます。 Event Hubs プロセッサはイベントを受け取り、その後、アプリは BLOB をダウンロードし、ファイル内の行数をカウントします。 アプリには、行数を含むページへのリンクが表示されます。 リンクをクリックすると、Event Grid を使用してファイルの名前を含む CloudEvent が発行されます。

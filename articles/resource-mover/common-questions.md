@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 02/21/2021
 ms.author: raynew
-ms.openlocfilehash: a75cd3c5dbf205f49aa606bfe96623a61bce39db
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: e900250aea84b4a9c9112fa54632a2be8b9cb49c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007058"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102564273"
 ---
 # <a name="common-questions"></a>一般的な質問
 
@@ -24,6 +24,15 @@ ms.locfileid: "100007058"
 ### <a name="can-i-move-resources-across-any-regions"></a>リージョン間でリソースを移動できますか?
 
 現時点では、[そのリージョンで使用可能なリソースの種類](https://azure.microsoft.com/global-infrastructure/services/)によっては、任意のソース パブリック リージョンから任意のターゲット パブリック リージョンにリソースを移動できます。 Azure Government リージョンでのリソースの移動は現在サポートされていません。
+
+### <a name="what-regions-are-currently-supported"></a>現時点ではどのリージョンがサポートされていますか。
+
+Azure Resource Mover は、現在次のように使用できます。
+
+**サポート** | **詳細**
+--- | ---
+移動のサポート | Resource Mover での移動がサポートされている Azure リソースは、任意のパブリック リージョンから別のパブリック リージョンに移動できます。
+メタデータのサポート |  移動するマシンに関するメタデータの格納についてサポートされているリージョンには、メタデータ リージョンとして、米国東部 2、北ヨーロッパ、東南アジア、東日本、英国南部、オーストラリア東部などがあります。 <br/><br/> Azure 中国リージョン内でのリソースの移動も、中国北部 2 のメタデータ リージョンでサポートされています。
 
 ### <a name="what-resources-can-i-move-across-regions-using-resource-mover"></a>Resource Mover を使用して、リージョン間でどのようなリソースを移動できますか?
 
@@ -44,15 +53,14 @@ Resource Mover を使用すると、現在、リージョン間で次のリソ�
 
 ### <a name="what-does-it-mean-to-move-a-resource-group"></a>リソース グループを移動することは何を意味しますか。
 
-移動対象としてリソースが選択されると、それに対応するリソース グループが自動的に移動対象として追加されます。 このような動作が必要になるのは、宛先リソースを、ターゲットに置かれていたときと同じように、リソース グループの下に置く必要があるためです。 移動対象として追加された後、既存のリソース グループのカスタマイズと指定を選択できます。 リソース グループを移動しても、ソースのリソース グループに含まれるすべてのリソースが移動するとは **限らない** ことにご注意ください。
+移動対象としてリソースが選択されると、それに対応するリソース グループが自動的に移動対象として追加されます。 これは、宛先リソースをリソース グループ内に配置できるようにするためです。 移動対象として追加された後、既存のリソース グループのカスタマイズと指定を選択できます。 リソース グループを移動しても、ソースのリソース グループに含まれるすべてのリソースが移動するとは限りません。
 
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>リージョン間でリソースを移動するときに、サブスクリプション間でそれらのリソースを移動できますか?
 
 宛先リージョンにリソースを移動した後、サブスクリプションを変更できます。 別のサブスクリプションへのリソースの移動に関する[詳細](../azure-resource-manager/management/move-resource-group-and-subscription.md)を参照してください。 
 
-### <a name="does-azure-resource-move-service-store-customer-data"></a>Azure Resource Move サービスでは、顧客のデータが保存されますか。 
-いいえ。 Resource Move サービスでは、顧客のデータは保存されません。顧客が移動対象として選択したリソースの追跡と進捗を促進するメタデータ情報だけが格納されます。
-
+### <a name="does-azure-resource-mover-store-customer-data"></a>Azure Resource Mover では、顧客のデータが保存されますか。 
+いいえ。 Resource Mover サービスでは顧客のデータが保存されず、移動するリソースの追跡と進行に役立つメタデータ情報のみが保存されます。
 
 ### <a name="where-is-the-metadata-for-moving-across-regions-stored"></a>リージョン間で移動するためのメタデータはどこに格納されていますか?
 
@@ -85,13 +93,15 @@ Azure Resource Mover マネージド ID には、少なくとも次のアクセ�
 > [!IMPORTANT]
 > ID ロールの割り当ては、変更または削除しないようにすることを強くお勧めします。 
 
-### <a name="what-should-i-do-if-i-dont-have-permissions-to-assign-role-identity"></a>ロール ID を割り当てるアクセス許可がない場合はどうすればよいですか?
+### <a name="what-if-i-dont-have-permissions-to-assign-role-identity"></a>ロール ID を割り当てるアクセス許可がない場合はどうすればよいですか?
+
+いくつかの理由により、アクセス許可がない場合があります。
 
 **考えられる原因** | **推奨**
 --- | ---
 リソースを初めて追加するときに、*共同作成者* および *ユーザー アクセス管理者* (または *所有者*) ではない。 | サブスクリプションに対して、*共同作成者* および *ユーザー アクセス管理者* (または *所有者*) アクセス許可のあるアカウントを使用します。
 Resource Mover のマネージド ID に必要なロールがない。 | "共同作成者" ロールと "ユーザー アクセス管理者" ロールを追加します。
-Resource Mover のマネージド ID が *[なし]* にリセットされた。 | 移動コレクション > **[ID]** でシステム割り当て ID を再度有効にします。 または、 **[リソースの追加]** でもう一度リソースを追加します。これにより、同じことが行われます。  
+Resource Mover のマネージド ID が *[なし]* にリセットされた。 | 移動コレクション設定 > **[ID]** でシステム割り当て ID を再度有効にします。 または、 **[リソースの追加]** でもう一度リソースを追加します。これにより、同じことが行われます。  
 サブスクリプションが別のテナントに移動された。 | 移動コレクションのマネージド ID を無効にし、その後有効にします。
 
 ### <a name="how-can-i-do-multiple-moves-together"></a>複数の移動をまとめて行うにはどうすればよいですか?
@@ -100,7 +110,7 @@ Resource Mover のマネージド ID が *[なし]* にリセットされた。 
 
 ### <a name="what-happens-when-i-remove-a-resource-from-a-list-of-move-resources"></a>リソース移動の一覧からリソースを削除すると、どうなりますか。
 
-移動一覧に追加したリソースは削除できます。 一覧からリソースを削除したときの動作は、リソースの状態に左右されます。 [詳細については、こちらを参照してください](remove-move-resources.md#vm-resource-state-after-removing)。
+移動一覧に追加したリソースは削除できます。 正確な削除動作は、リソースの状態によって異なります。 [詳細については、こちらを参照してください](remove-move-resources.md#vm-resource-state-after-removing)。
 
 
 

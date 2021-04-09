@@ -9,10 +9,10 @@ ms.date: 04/30/2020
 ms.author: vitrinh
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7ed06eeb7330989b4a251dc77e516eb8ac578bff
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93342047"
 ---
 # <a name="convert-session-token-formats-in-net-sdk"></a>.NET SDK でセッション トークン形式を変換する
@@ -28,7 +28,7 @@ ms.locfileid: "93342047"
 
 ## <a name="session-token-formats"></a>セッション トークン形式
 
-セッション トークン形式には、 **シンプル** と **ベクター** の 2 つがあります。  これらの 2 つの形式は互換性がないため、バージョンが異なるクライアント アプリケーションに渡すときに形式を変換する必要があります。
+セッション トークン形式には、**シンプル** と **ベクター** の 2 つがあります。  これらの 2 つの形式は互換性がないため、バージョンが異なるクライアント アプリケーションに渡すときに形式を変換する必要があります。
 - **シンプル** セッション トークン形式は、.NET SDK V1 (Microsoft.Azure.DocumentDB バージョン 1.x) で使用されます。
 - **ベクター** セッション トークン形式は、.NET SDK V2 (Microsoft.Azure.DocumentDB バージョン 2.x) で使用されます。
 
@@ -42,7 +42,7 @@ ms.locfileid: "93342047"
 
 ## <a name="convert-to-simple-session-token"></a>シンプル セッション トークンに変換する
 
-.NET SDK V1 を使用してセッション トークンをクライアントに渡すには、 **シンプル** セッション トークン形式を使用します。  たとえば、次のサンプル コードを使用して変換します。
+.NET SDK V1 を使用してセッション トークンをクライアントに渡すには、**シンプル** セッション トークン形式を使用します。  たとえば、次のサンプル コードを使用して変換します。
 
 ```csharp
 private static readonly char[] SegmentSeparator = (new[] { '#' });
@@ -76,7 +76,7 @@ else
 
 ## <a name="convert-to-vector-session-token"></a>ベクター セッション トークンに変換する
 
-.NET SDK V2 を使用してセッション トークンをクライアントに渡すには、 **ベクター** セッション トークン形式を使用します。  たとえば、次のサンプル コードを使用して変換します。
+.NET SDK V2 を使用してセッション トークンをクライアントに渡すには、**ベクター** セッション トークン形式を使用します。  たとえば、次のサンプル コードを使用して変換します。
 
 ```csharp
 

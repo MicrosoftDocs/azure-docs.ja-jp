@@ -8,10 +8,10 @@ ms.date: 10/24/2019
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: e18193b40bb7c59a21a279f451673dc7d11140e4
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92092904"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure Spring Cloud のディザスター リカバリー

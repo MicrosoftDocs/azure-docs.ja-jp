@@ -6,10 +6,10 @@ ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
 ms.openlocfilehash: a22a0d112671019d73eb4c9a3853462e4e9c8c75
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98937353"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights のテレメトリ チャネル

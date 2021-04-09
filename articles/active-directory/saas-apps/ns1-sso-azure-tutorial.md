@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と NS1 SSO for Azure の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と NS1 SSO for Azure の統合 | Microsoft Docs'
 description: Azure Active Directory と NS1 SSO for Azure の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 02/12/2020
 ms.author: jeedes
 ms.openlocfilehash: a7fad0af26d15bc77a52d55309c594937ba3be13
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518621"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ns1-sso-for-azure"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と NS1 SSO for Azure の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ns1-sso-for-azure"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と NS1 SSO for Azure の統合
 
 このチュートリアルでは、NS1 SSO for Azure と Azure Active Directory (Azure AD) を統合する方法について説明します。 NS1 SSO for Azure と Azure AD を統合すると、次のことができます。
 
@@ -51,7 +51,7 @@ Azure AD への NS1 SSO for Azure の統合を構成するには、ギャラリ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **NS1 SSO for Azure** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**NS1 SSO for Azure**」と入力します。
 1. 結果のパネルから **[NS1 SSO for Azure]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -92,7 +92,7 @@ NS1 SSO for Azure で Azure AD SSO を構成してテストする一般的な手
     **[サインオン URL]** ボックスに、次の URL を入力します: `https://my.nsone.net/#/login/sso`
 
     > [!NOTE]
-    > 応答 URL 値は、実際の値ではありません。 応答 URL 値を実際の応答 URL で更新します。 この値を取得するには、[NS1 SSO for Azure クライアント サポート チーム](mailto:techops@nsone.net)に問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > 応答 URL は、実際の値ではありません。 応答 URL 値を実際の応答 URL で更新します。 この値を取得するには、[NS1 SSO for Azure クライアント サポート チーム](mailto:techops@nsone.net)に問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. NS1 SSO for Azure アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性とクレーム]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、鉛筆アイコンを選択して **[ユーザー属性]** ダイアログ ボックスを開きます。
 
@@ -118,7 +118,7 @@ NS1 SSO for Azure で Azure AD SSO を構成してテストする一般的な手
 
     1. **[保存]** を選択します。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、コピー ボタンを選択します。 これにより、 **アプリのフェデレーション メタデータ URL** がコピーされ、お使いのコンピューターに保存されます。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、コピー ボタンを選択します。 これにより、**アプリのフェデレーション メタデータ URL** がコピーされ、お使いのコンピューターに保存されます。
 
     ![コピー ボタンが強調表示された [SAML 署名証明書] セクションのスクリーンショット](common/copy-metadataurl.png)
 

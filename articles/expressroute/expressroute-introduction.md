@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 10/05/2020
 ms.author: duau
 ms.openlocfilehash: 82562eae748753cd785851c5d91f5f152b4c9960
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92206953"
 ---
 # <a name="what-is-azure-expressroute"></a>Azure ExpressRoute とは

@@ -12,10 +12,10 @@ ms.date: 09/26/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e5184698cab1874f327173fb30cf527feee48cad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85384976"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でリソースやデータに対する脅威を管理する
@@ -41,15 +41,15 @@ Azure AD B2C では高度な戦略を使用して、アカウントをロック�
 1. [Azure ポータル](https://portal.azure.com)
 1. 上部のメニューにある **[ディレクトリとサブスクリプション]** フィルターを使用して、お使いの Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-1. **[セキュリティ]** で、 **[認証方法 (プレビュー)]** を選択し、 **[パスワード保護]** を選択します。
-1. 必要なパスワード保護設定を入力し、 **[保存]** を選択します。
+1. **[セキュリティ]** で、**[認証方法 (プレビュー)]** を選択し、**[パスワード保護]** を選択します。
+1. 必要なパスワード保護設定を入力し、**[保存]** を選択します。
 
     ![Azure portal の Azure AD 設定内パスワード保護ページ](./media/threat-management/portal-02-password-protection.png)
-    <br />" ***[パスワード保護]** 設定でロックアウトしきい値を 5 に設定*"
+    <br />"***[パスワード保護]** 設定でロックアウトしきい値を 5 に設定*"
 
 ## <a name="view-locked-out-accounts"></a>ロックアウトされたアカウントを表示する
 
-ロックアウトされたアカウントについての情報を取得するには、Active Directory の[サインイン アクティビティ レポート](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)を確認します。 **[状態]** で、 **[失敗]** を選択します。 **[サインインのエラー コード]** が `50053` の失敗したサインイン試行は、ロックされたアカウントを示しています。
+ロックアウトされたアカウントについての情報を取得するには、Active Directory の[サインイン アクティビティ レポート](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)を確認します。 **[状態]** で、**[失敗]** を選択します。 **[サインインのエラー コード]** が `50053` の失敗したサインイン試行は、ロックされたアカウントを示しています。
 
 ![ロックアウトされたアカウントを示している Azure AD サインイン レポートのセクション](./media/threat-management/portal-01-locked-account.png)
 

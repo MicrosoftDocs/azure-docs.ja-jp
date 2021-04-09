@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: この記事では、Azure Arc 対応 Kubernetes の GitOps と構成の機能の概念的な概要を示します。
 keywords: Kubernetes, Arc, Azure, コンテナー, 構成, GitOps
-ms.openlocfilehash: 88a30876b25730e4cb0b4b1e19fac94b9e556adc
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: a4193783a976f205b46cb8c5df29d4cef9da1d2c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102121798"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105022876"
 ---
 # <a name="configurations-and-gitops-with-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes に関する構成と GitOps
 
@@ -50,6 +50,6 @@ Azure Resource Manager によって構成が管理されるので、Azure Policy
 
 ## <a name="next-steps"></a>次のステップ
 
-* クイックスタートを利用して、[Kubernetes クラスターを Azure Arc に接続](./connect-cluster.md)します。
-* Kubernetes クラスターが既に Azure Arc に接続されていますか? [Arc 対応 Kubernetes クラスターの構成を作成する](./use-gitops-connected-cluster.md)。
+* クイックスタートを利用して、[Kubernetes クラスターを Azure Arc に接続](./quickstart-connect-cluster.md)します。
+* Kubernetes クラスターが既に Azure Arc に接続されていますか? [Arc 対応 Kubernetes クラスターの構成を作成する](./tutorial-use-gitops-connected-cluster.md)。
 * [Azure Policy を使用して構成を大規模に適用する](./use-azure-policy.md)方法について学ぶ。

@@ -4,15 +4,15 @@ description: この Azure Policy のパターンでは、ポリシー定義の�
 ms.date: 08/17/2020
 ms.topic: sample
 ms.openlocfilehash: 3f644cdbfc45b06d1ad5db8e7727c0fa69742f00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88545592"
 ---
 # <a name="azure-policy-pattern-logical-operators"></a>Azure Policy パターン: 論理演算子
 
-ポリシー定義には、条件付きステートメントをいくつか含めることができます。 各ステートメントが true である必要がある場合や、一部のステートメントのみが true である必要がある場合があります。 これらのニーズに対応するために、言語には、**not**、**allOf**、**anyOf** の[論理演算子](../concepts/definition-structure.md#logical-operators)があります。 これらは省略可能であり、入れ子にして複雑なシナリオを作成することもできます。
+ポリシー定義には、条件付きステートメントをいくつか含めることができます。 各ステートメントが true である必要がある場合や、一部のステートメントのみが true である必要がある場合があります。 これらのニーズに対応するために、言語には、**not**、**allOf**、**anyOf** の [論理演算子](../concepts/definition-structure.md#logical-operators)があります。 これらは省略可能であり、入れ子にして複雑なシナリオを作成することもできます。
 
 ## <a name="sample-1-one-logical-operator"></a>サンプル 1:1 つの論理演算子
 

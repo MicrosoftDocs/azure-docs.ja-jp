@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d7bc92af31eb179155fd473356c741f365a07a35
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: b7b7f1c5fb0a7991707a26b4a7f54fb3ffaf7bab
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525146"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033522"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Azure Active Directory B2C の多要素認証 | Microsoft Docs
 
@@ -43,7 +43,7 @@ Azure Active Directory B2C (Azure AD B2C) は [Azure AD Multi-Factor Authenticat
 1. **[多要素認証]** セクションで、目的の **[MFA メソッド]** を選択し、 **[MFA enforcement]\(MFA の適用\)** で **[常にオン]** または [**Conditional (Recommended)]\(条件付き (推奨)\)** を選択します。
    > [!NOTE]
    >
-   > - **[Conditional (Recommended)]\(条件付き (推奨)\)** を選択した場合、[条件付きアクセス ポリシーを追加](conditional-access-identity-protection-setup.md#add-a-conditional-access-policy)し、ポリシーを適用するアプリを指定する必要もあります。
+   > - **[Conditional (Recommended)]\(条件付き (推奨)\)** を選択した場合、[条件付きアクセスをユーザー フローに追加](conditional-access-user-flow.md)し、ポリシーを適用するアプリを指定する必要もあります。
    > - サインアップのユーザー フローでは、多要素認証 (MFA) は既定で無効になっています。 電話でのサインアップを使用したユーザー フローで MFA を有効にすることはできますが、電話番号がプライマリ ID として使用されるため、2 番目の認証要素に使用できる唯一のオプションは電子メールによるワンタイム パスコードです。
 
 1. **[保存]** を選択します。 このユーザー フローに対して MFA が有効になります。

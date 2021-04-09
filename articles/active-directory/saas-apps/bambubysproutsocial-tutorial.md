@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 403d04039deef7890bdd5dba1ef337a4b26e86ac
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97671779"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>チュートリアル: Azure Active Directory と Bambu by Sprout Social の統合
@@ -48,7 +48,7 @@ Azure AD と Bambu by Sprout Social の統合を構成するには、次のも�
 
 Azure AD への Bambu by Sprout Social の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Bambu by Sprout Social を追加する必要があります。
 
-**ギャラリーから Bambu by Sprout Social を追加するには、次の手順に従います。**
+**ギャラリーから Bambu by Sprout Social を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
@@ -62,7 +62,7 @@ Azure AD への Bambu by Sprout Social の統合を構成するには、ギャ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 結果ボックスに「**Bambu by Sprout Social**」と入力し、結果パネルから **[Bambu by Sprout Social]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 結果ボックスに「**Bambu by Sprout Social**」と入力し、結果パネルから **[Bambu by Sprout Social]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの Bambu by Sprout Social](common/search-new-app.png)
 
@@ -86,7 +86,7 @@ Bambu by Sprout Social で Azure AD のシングル サインオンを構成し�
 
 Bambu by Sprout Social で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Bambu by Sprout Social** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Bambu by Sprout Social** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -149,7 +149,7 @@ Bambu by Sprout Social で Azure AD シングル サインオンを構成する�
 
 このセクションでは、Britta Simon に Bambu by Sprout Social へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Bambu by Sprout Social]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Bambu by Sprout Social]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

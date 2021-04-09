@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: a9bb87206ccb0dca56c1744d5578eac7a17418c7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e8641cada03577cf22e6627bdf53b2a8a0e836ef
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726395"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102216385"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions の HTTP トリガー
 
@@ -596,7 +596,7 @@ HTTP トリガーの入力バインドで省略可能な `route` プロパティ
 http://<APP_NAME>.azurewebsites.net/api/products/electronics/357
 ```
 
-この構成により、関数コードではアドレスに _category_ と _id_ の 2 つのパラメーターをサポートできます。
+この構成により、関数コードではアドレスに _category_ と _id_ の 2 つのパラメーターをサポートできます。URL でルート パラメーターをトークン化する方法の詳細については、「[ASP.NET Core のルーティング](https://docs.microsoft.com/aspnet/core/fundamentals/routing#route-constraint-reference)」を参照してください。
 
 # <a name="c"></a>[C#](#tab/csharp)
 

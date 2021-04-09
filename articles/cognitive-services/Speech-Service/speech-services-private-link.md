@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: alexeyo
 ms.openlocfilehash: c9af0cda14261e8eab7f1ecc05c50a289d7ddfdb
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99559649"
 ---
 # <a name="use-speech-services-through-a-private-endpoint"></a>プライベート エンドポイント経由で Speech Services を使用する

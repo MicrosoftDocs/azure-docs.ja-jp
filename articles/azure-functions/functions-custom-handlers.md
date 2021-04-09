@@ -6,10 +6,10 @@ ms.author: antchu
 ms.date: 12/1/2020
 ms.topic: article
 ms.openlocfilehash: dd112c74ea9f013a0e14bddd735060ddbf73c14e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100578528"
 ---
 # <a name="azure-functions-custom-handlers"></a>Azure Functions のカスタム ハンドラー

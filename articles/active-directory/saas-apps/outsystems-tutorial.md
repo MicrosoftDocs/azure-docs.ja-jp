@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と OutSystems Azure AD の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と OutSystems Azure AD の統合 | Microsoft Docs'
 description: Azure Active Directory と OutSystems Azure AD の間でシングル サインオンを構成する方法について学習します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 97d74a1a2e309b85ebad529b797dd4af9c1554ef
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92513723"
 ---
-# <a name="tutorial-integrate-outsystems-azure-ad-with-azure-active-directory"></a>チュートリアル:OutSystems Azure AD と Azure Active Directory を統合します
+# <a name="tutorial-integrate-outsystems-azure-ad-with-azure-active-directory"></a>チュートリアル: OutSystems Azure AD と Azure Active Directory の統合
 
 このチュートリアルでは、OutSystems Azure AD と Azure Active Directory (Azure AD) を統合する方法について学習します。 OutSystems Azure AD と Azure AD を統合すると、次のことが可能になります。
 
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 OutSystems Azure AD では、 **SP と IDP** によって開始される SSO と、 **Just-In-Time** ユーザー プロビジョニングがサポートされます。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 OutSystems Azure AD では、**SP と IDP** によって開始される SSO と、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
 ## <a name="adding-outsystems-azure-ad-from-the-gallery"></a>ギャラリーからの OutSystems Azure AD の追加
 
@@ -47,7 +47,7 @@ Azure AD への OutSystems Azure AD の統合を構成するには、ギャラ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **OutSystems Azure AD** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**OutSystems Azure AD**」と入力します。
 1. 結果のパネルから **[OutSystems Azure AD]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -67,7 +67,7 @@ OutSystems Azure AD に対する Azure AD SSO を構成してテストするに�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **OutSystems Azure AD** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **OutSystems Azure AD** アプリケーション統合ページで、**[管理]** セクションを探して、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
 

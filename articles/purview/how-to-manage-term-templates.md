@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.openlocfilehash: b1b811d0817d5e23adc208da14719d64d53830dd
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96551052"
 ---
 # <a name="how-to-manage-term-templates-for-business-glossary"></a>ビジネス用語集の用語テンプレートを管理する方法
@@ -54,4 +54,4 @@ Azure Purview を使用すると、データを強化するために重要であ
 
 ## <a name="next-steps"></a>次のステップ
 
-次のチュートリアルを修了してください。[チュートリアル:用語集の用語の作成とインポート](tutorial-import-create-glossary-terms.md)。
+次のチュートリアルを修了してください。[チュートリアル:用語集の用語の作成とインポート](tutorial-import-create-glossary-terms.md)

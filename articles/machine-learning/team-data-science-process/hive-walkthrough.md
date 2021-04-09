@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 53f50e98bcec4b8ace342808f0bcfd96770834b0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96002223"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process の実行:Azure HDInsight Hadoop クラスターの使用
@@ -117,23 +117,23 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 次の AzCopy コマンドでは、Hadoop クラスターを作成してデータ ファイルを解凍したときに指定した実際の値で次のパラメーターを置き換えます。
 
-* * **\<path_to_data_folder>** _ ご使用のマシン上の解凍されたデータ ファイルを含むディレクトリ (およびパス)。  
-_ * **\<storage account name of Hadoop cluster>** _ HDInsight クラスターに関連付けられているストレージ アカウント。
-_ * **\<default container of Hadoop cluster>** _ クラスターで使用される既定のコンテナー。 通常、既定のコンテナーの名前は、クラスター自体と同じ名前です。 たとえば、"abc123.azurehdinsight.net" というクラスターの場合、既定のコンテナーは abc123 です。
-_ * **\<storage account key>** _ クラスターで使用するストレージ アカウントのキー。
+* "***\<path_to_data_folder>***" を、解凍されたデータ ファイルがあるコンピューター上のディレクトリ (パス) で置き換えます。  
+* "***\<storage account name of Hadoop cluster>***" を、HDInsight クラスターに関連付けられているストレージ アカウントで置き換えます。
+* "***\<default container of Hadoop cluster>***" を、クラスターで使用される既定のコンテナーで置き換えます。 通常、既定のコンテナーの名前は、クラスター自体と同じ名前です。 たとえば、"abc123.azurehdinsight.net" というクラスターの場合、既定のコンテナーは abc123 です。
+* "***\<storage account key>***" を、クラスターで使用するストレージ アカウントのキーで置き換えます。
 
 コマンド プロンプトまたは Windows PowerShell ウィンドウで、次の 2 つの AzCopy コマンドを実行します。
 
-このコマンドは、Hadoop クラスターの既定のコンテナーの _*_nyctaxitripraw_*_ ディレクトリに乗車データをアップロードします。
+このコマンドは、Hadoop クラスターの既定のコンテナーの ***nyctaxitripraw*** ディレクトリに乗車データをアップロードします。
 
 ```console
-"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data__.csv
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
 ```
 
-このコマンドは、Hadoop クラスターの既定のコンテナーの ***nyctaxifareraw** _ ディレクトリに料金データをアップロードします。
+このコマンドは、Hadoop クラスターの既定のコンテナーの ***nyctaxifareraw*** ディレクトリに料金データをアップロードします。
 
 ```console
-"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare__.csv
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
 ```
 
 これで、データが BLOB ストレージに格納され、HDInsight クラスター内で利用できるようになりました。
@@ -156,7 +156,7 @@ set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataSc
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 ```
 
-この 2 つのコマンドによって、このチュートリアルで必要なすべての ".hql" ファイルが、ヘッド ノード上のローカル ディレクトリ ***C:\temp&#92;** _ にダウンロードされます。
+この 2 つのコマンドによって、このチュートリアルで必要なすべての ".hql" ファイルが、ヘッド ノード上のローカル ディレクトリ ***C:\temp&#92;*** にダウンロードされます。
 
 ## <a name="create-hive-database-and-tables-partitioned-by-month"></a><a name="#hive-db-tables"></a>Hive データベースと月ごとにパーティション分割されたテーブルを作成する
 > [!NOTE]
@@ -182,7 +182,7 @@ Hive ディレクトリ プロンプトから、ヘッド ノードの Hadoop �
 hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 ```
 
-_ *C:\temp\sample\_hive\_create\_db\_and\_tables.hql** ファイルの内容を以下に示します。このファイルでは、Hive データベース **nyctaxidb** と、テーブル **trip**、**fare** が作成されます。
+**C:\temp\sample\_hive\_create\_db\_and\_tables.hql** ファイルの内容を以下に示します。このファイルでは、Hive データベース **nyctaxidb** と、テーブル **trip**、**fare** が作成されます。
 
 ```hiveql
 create database if not exists nyctaxidb;

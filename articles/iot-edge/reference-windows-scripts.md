@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Edge 用の Windows スクリプト | Microsoft Docs
+title: Windows コンテナーを使用した Azure IoT Edge 用のスクリプト | Microsoft Docs
 description: Windows デバイスで IoT Edge PowerShell スクリプトのインストール、アンインストール、更新を行うためのリファレンス情報
 author: kgremban
 manager: philmea
@@ -8,14 +8,17 @@ ms.date: 10/06/2020
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2878d682d0f2025a50f26baf87476f66aa236e2c
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+monikerRange: =iotedge-2018-06
+ms.openlocfilehash: a919238e4a62ae8954e101cb21a2fd4943191f6a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630618"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103489526"
 ---
-# <a name="powershell-scripts-for-iot-edge-on-windows"></a>Windows での IoT Edge 用 PowerShell スクリプト
+# <a name="powershell-scripts-for-iot-edge-with-windows-containers"></a>Windows コンテナーを使用した IoT Edge 用の PowerShell スクリプト
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Windows デバイスで IoT Edge をインストール、更新、またはアンインストールする PowerShell スクリプトについて説明します。
 

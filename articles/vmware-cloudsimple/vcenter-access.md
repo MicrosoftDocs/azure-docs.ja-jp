@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 2e62042a84f7ac2615762e3d9b036e4340bd8c73
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97899118"
 ---
 # <a name="access-your-private-cloud-vcenter-portal"></a>プライベート クラウドの vCenter ポータルへのアクセス
@@ -30,7 +30,7 @@ vCenter ポータルにアクセスするには、ネットワーク接続を確
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="access-vcenter-from-azure-portal"></a>Azure Portal から vCenter にアクセスする
 
@@ -42,11 +42,11 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 3. 接続するプライベート クラウドの CloudSimple サービスを選択します。
 
-4. **[概要]** ページで、 **[View VMware Private Clouds]\(VMware プライベート クラウドの表示\)** をクリックします
+4. **[概要]** ページで、**[View VMware Private Clouds]\(VMware プライベート クラウドの表示\)** をクリックします
 
     ![CloudSimple サービスの概要](media/cloudsimple-service-overview.png)
 
-5. プライベート クラウドのリストからプライベート クラウドを選択し、 **[Launch vSphere Client]\(vSphere クライアントを起動\)** をクリックします。
+5. プライベート クラウドのリストからプライベート クラウドを選択し、**[Launch vSphere Client]\(vSphere クライアントを起動\)** をクリックします。
 
     ![vSphere Client を起動する](media/cloudsimple-service-launch-vsphere-client.png)
 
@@ -56,7 +56,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 1. [CloudSimple ポータル](access-cloudsimple-portal.md)にアクセスします。
 
-2. **[リソース]** から、アクセスするプライベート クラウドを選択し、 **[Launch vSphere Client]\(vSphere クライアントを起動\)** をクリックします。
+2. **[リソース]** から、アクセスするプライベート クラウドを選択し、**[Launch vSphere Client]\(vSphere クライアントを起動\)** をクリックします。
 
     ![vSphere クライアントの起動 - リソース](media/cloudsimple-portal-resources-launch-vcenter.png)
 

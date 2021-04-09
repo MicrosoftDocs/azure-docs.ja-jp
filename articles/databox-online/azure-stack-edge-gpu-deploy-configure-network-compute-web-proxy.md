@@ -10,10 +10,10 @@ ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: 07a4c06b840d41455beea9be4ed0343b4946ddb3
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99594605"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro 用のネットワークを構成する
@@ -29,7 +29,7 @@ ms.locfileid: "99594605"
 > * 前提条件
 > * ネットワークを構成する
 > * コンピューティング ネットワークを有効にする
-> * Web プロキシの
+> * Web プロキシを構成する
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -124,7 +124,7 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
     **[次へ: Web プロキシ]** を選択して、Web プロキシを構成します。  
 
   
-## <a name="configure-web-proxy"></a>Web プロキシの
+## <a name="configure-web-proxy"></a>Web プロキシを構成する
 
 これはオプション構成です。
 
@@ -161,7 +161,7 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 > * 前提条件
 > * ネットワークを構成する
 > * コンピューティング ネットワークを有効にする
-> * Web プロキシの
+> * Web プロキシを構成する
 
 
 Azure Stack Edge Pro デバイスを設定する方法については、以下を参照してください。

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
 ms.openlocfilehash: a8a7e8954f3c9d5b54c2e1ed9caa330ef92d4512
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100099508"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Service Fabric クラスターでの証明書管理

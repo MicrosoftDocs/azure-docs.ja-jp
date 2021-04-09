@@ -7,20 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 7551ef88c2251b64cf6f6db1de4fed22db2c69e2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/18/2021
+ms.openlocfilehash: c33739124092a17acf0590f00b2f9c3c09bf894e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693647"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104654664"
 ---
-# <a name="create-a-semantic-query-in-cognitive-search"></a>Cognitive Search でセマンティック クエリを作成する
+# <a name="create-a-query-for-semantic-captions-in-cognitive-search"></a>Cognitive Search でセマンティック キャプションに対するクエリを作成する
 
 > [!IMPORTANT]
-> セマンティック クエリ型はパブリック プレビュー段階にあり、プレビューの REST API および Azure portal を通じて利用できます。 プレビュー機能は、[補足利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に基づいて、現状のまま提供されます。 最初のプレビュー期間中は、セマンティック検索に対して料金は発生しません。 詳細については、[可用性と価格](semantic-search-overview.md#availability-and-pricing)に関するページを参照してください。
+> セマンティック検索はパブリック プレビュー段階にあり、プレビューの REST API と Azure portal を介して利用できます。 プレビュー機能は、[補足利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に基づいて、現状のまま提供されます。 これらの機能は課金対象です。 詳細については、[可用性と価格](semantic-search-overview.md#availability-and-pricing)に関するページを参照してください。
 
-この記事では、セマンティック ランク付けを使用する検索要求を作成し、セマンティック キャプションと回答を生成する方法について説明します。
+この記事では、セマンティック ランク付けを使用して、関連する用語と語句を強調したセマンティック キャプション (および必要に応じて[セマンティック回答](semantic-answers.md)) を返す検索要求を作成する方法について説明します。 "セマンティック" クエリの種類を使用して作成されたクエリでは、キャプションと回答の両方が返されます。
+
+キャプションと回答は、検索ドキュメント内のテキストから逐語的に抽出されます。 セマンティック サブシステムでは、コンテンツのどの部分がキャプションまたは回答の特性を持つかは特定されますが、新しい文や語句は作成されません。 このため、セマンティック検索には、説明または定義を含むコンテンツが最も適しています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,15 +34,15 @@ ms.locfileid: "101693647"
 
 + クエリを送信するための検索クライアント
 
-  検索クライアントは、クエリ要求でプレビューの REST API をサポートする必要があります。 [Postman](search-get-started-rest.md)、[Visual Studio Code](search-get-started-vs-code.md)、または自分で変更したコードを使用して、プレビュー API への REST 呼び出しを行うことができます。 Azure portal で [Search エクスプローラー](search-explorer.md)を使用してセマンティック クエリを送信することもできます。
+  検索クライアントは、クエリ要求でプレビューの REST API をサポートする必要があります。 [Postman](search-get-started-rest.md)、[Visual Studio Code](search-get-started-vs-code.md)、またはプレビューの API への REST 呼び出しを行うコードを使用できます。 Azure portal で [Search エクスプローラー](search-explorer.md)を使用してセマンティック クエリを送信することもできます。
 
-+ この記事で説明するセマンティック オプションやその他のパラメーターを使用した [Search Documents](/rest/api/searchservice/preview-api/search-documents) 要求。
++ [クエリ要求](/rest/api/searchservice/preview-api/search-documents)には、この記事で説明するセマンティック オプションやその他のパラメーターを含める必要があります。
 
 ## <a name="whats-a-semantic-query"></a>セマンティック クエリとは
 
-Cognitive Search では、クエリは、クエリ処理と応答の形を決定するパラメーター化された要求です。 "*セマンティック クエリ*" では、一致する結果のコンテキストと意味を評価し、関連性の高い一致を最上位に昇格させることができるセマンティック ランク付けアルゴリズムを呼び出すパラメーターが追加されます。
+Cognitive Search では、クエリは、クエリ処理と応答の形を決定するパラメーター化された要求です。 "*セマンティック クエリ*" では、一致する結果のコンテキストと意味を評価し、関連性の高い一致を最上位に昇格させ、セマンティック回答とキャプションを返すことができるセマンティック再ランク付けモデルを呼び出すパラメーターが追加されます。
 
-次の要求は、基本的なセマンティック クエリ (回答なし) を表しています。
+次の要求は、最小限のセマンティック クエリ (回答なし) を表しています。
 
 ```http
 POST https://[service name].search.windows.net/indexes/[index name]/docs/search?api-version=2020-06-30-Preview      
@@ -48,19 +50,33 @@ POST https://[service name].search.windows.net/indexes/[index name]/docs/search?
     "search": " Where was Alan Turing born?",    
     "queryType": "semantic",  
     "searchFields": "title,url,body",  
-    "queryLanguage": "en-us",  
+    "queryLanguage": "en-us"  
 }
 ```
 
-Cognitive Search のすべてのクエリと同様に、要求は、単一インデックスのドキュメント コレクションを対象とします。 さらに、セマンティック クエリでは、非セマンティック クエリと同じ解析、分析、およびスキャンのシーケンスが実行されます。 違いは、関連性の計算方法にあります。 このプレビュー リリースで定義されているように、セマンティック クエリでは、高度なアルゴリズムを使用して "*結果*" が再処理されます。これにより、既定の類似性ランク付けアルゴリズムによって割り当てられるスコアではなく、セマンティック ランカーによって最も関連性があると見なされる一致を明らかにする方法が提供されます。 
+Cognitive Search のすべてのクエリと同様に、要求は、単一インデックスのドキュメント コレクションを対象とします。 さらに、セマンティック クエリによって実行される分析、スキャン、およびスコアリングのシーケンスは、非セマンティック クエリと同じです。 
 
-最初の結果の上位 50 件の一致のみを意味的にランク付けすることができます。すべての結果には応答にキャプションが含まれます。 必要に応じて、要求に **`answer`** パラメーターを指定して、可能性のある回答を抽出できます。 このモデルでは、クエリに対して可能性のある回答を最大で 5 つ作成します。これは、検索ページの最上部に表示するために選択できます。
+違いは、関連性とスコアリングにあります。 このプレビュー リリースで定義されているように、セマンティック クエリとは、その "*結果*" がセマンティック言語モデルを使用して再ランク付けされるものであり、既定の類似性ランク付けアルゴリズムによって割り当てられるスコアではなく、セマンティック ランカーによって最も関連性があると見なされる一致を明らかにする方法がとられます。
 
-## <a name="query-using-rest-apis"></a>REST API を使用してクエリを実行する
+最初の結果の上位 50 件の一致のみを意味的にランク付けすることができます。すべての結果には応答にキャプションが含まれます。 必要に応じて、要求に **`answer`** パラメーターを指定して、可能性のある回答を抽出できます。 詳細については、[セマンティック回答](semantic-answers.md)に関するページを参照してください。
 
-REST API の完全な仕様については、「[Search Documents (REST プレビュー)](/rest/api/searchservice/preview-api/search-documents)」を参照してください。
+## <a name="query-with-search-explorer"></a>検索エクスプローラーを使用したクエリ実行
 
-セマンティック クエリは、"花粉媒介者に最適な植物は何か" や "卵を揚げる方法" などの自由形式の質問を対象としています。 応答に回答を含める場合は、省略可能な **`answer`** パラメーターを要求に追加できます。
+[検索エクスプローラー](search-explorer.md)は更新され、セマンティック クエリ用のオプションが含められました。 これらのオプションは、次の手順を完了した後にポータルに表示されます。
+
+1. [サインアップ](https://aka.ms/SemanticSearchPreviewSignup)して、お使いの検索サービスがプレビュー プログラムに参加する許可を得ます
+
+1. 構文 `https://portal.azure.com/?feature.semanticSearch=true` を使用してポータルを開きます
+
+クエリ オプションには、セマンティック クエリ、searchFields、およびスペル修正を有効にするスイッチが含まれています。 必要なクエリ パラメーターをクエリ文字列に貼り付けることもできます。
+
+:::image type="content" source="./media/semantic-search-overview/search-explorer-semantic-query-options.png" alt-text="検索エクスプローラー内のクエリ オプション" border="true":::
+
+## <a name="query-using-rest"></a>REST を使用してクエリを実行する
+
+[ドキュメントの検索 (REST プレビュー)](/rest/api/searchservice/preview-api/search-documents) を使用して、プログラムで要求を作成します。
+
+応答には、キャプションと強調表示が自動的に含められます。 スペル修正または回答を応答に含める場合は、省略可能なパラメーターである **`speller`** または **`answers`** を要求に追加します。
 
 次の例では、hotels-sample-index を使用して、セマンティック回答およびキャプションを含むセマンティック クエリ要求を作成します。
 
@@ -80,163 +96,96 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 }
 ```
 
-### <a name="formulate-the-request"></a>要求を作成する
-
-1. **`"queryType"`** を "semantic" に、 **`"queryLanguage"`** を "en-us" に設定します。 どちらのパラメーターも必須です。
-
-   queryLanguage は、インデックス スキーマのフィールド定義に割り当てられている[言語アナライザー](index-add-language-analyzers.md)と一致している必要があります。 queryLanguage が "en-us" の場合、言語アナライザーも英語のバリアント ("en.microsoft" または "en.lucene") である必要があります。 keyword や simple など、言語に依存しないアナライザーは、queryLanguage 値と競合しません。
-
-   クエリ要求で[スペル修正](speller-how-to-add.md)も使用している場合、設定した queryLanguage は、speller、answers、および captions に等しく適用されます。 個々のパーツに対するオーバーライドはありません。 
-
-   検索インデックスのコンテンツは複数の言語で構成できますが、通常、クエリ入力は 1 つの言語で行われます。 検索エンジンでは、queryLanguage、言語アナライザー、およびコンテンツが構成されている言語の互換性が確認されません。そのため、誤った結果が生成されないように、適切にクエリのスコープを設定してください。
-
-<a name="searchfields"></a>
-
-1. **`"searchFields"`** を設定します (省略可能ですが、設定することをお勧めします)。
-
-   セマンティック クエリでは、"searchFields" 内のフィールドの順序は、セマンティック ランク付けでのフィールドの優先度または相対的な重要性を反映したものとなります。 最上位レベルの文字列フィールド (スタンドアロンまたはコレクション内) のみが使用されます。 searchFields は単純および完全な Lucene クエリでは他の動作をするため (暗黙の優先順位はありません)、非文字列フィールドおよびサブフィールドによってエラーが発生することはありませんが、これらはセマンティック ランク付けでは使用されません。
-
-   searchFields を指定する場合は、次のガイドラインに従ってください。
-
-   + HotelName やタイトルなどの簡潔なフィールドは、Description などの詳細フィールドの前に置く必要があります。
-
-   + インデックスにテキスト (`www.domain.com/?id=23463&param=eis` のようにマシンにフォーカスされている形式ではなく、`www.domain.com/name-of-the-document-and-other-details` のように人間が読める形式) の URL フィールドがある場合は、これをリストの 2 番目に配置します (簡潔なタイトル フィールドがない場合は先頭に配置します)。
-
-   + 指定されたフィールドが 1 つしかない場合、そのフィールドはドキュメントのセマンティック ランク付けの説明フィールドと見なされます。  
-
-   + フィールドが指定されていない場合は、すべての検索可能なフィールドがドキュメントのセマンティック ランク付けの対象と見なされます。 ただし、検索インデックスから最適な結果が得られない可能性があるため、これはお勧めしません。
-
-1. 既存の要求に **`"orderBy"`** 句が存在する場合は削除します。 結果の順序付けにはセマンティック スコアが使用されます。明示的な並べ替えロジックを含めると、HTTP 400 エラーが返されます。
-
-1. 必要に応じて、 **`"answers"`** を追加して "extractive" に設定し、複数の回答が必要な場合はその数を指定します。
-
-1. 必要に応じて、キャプションに適用される強調表示のスタイルをカスタマイズします。 キャプションでは、ドキュメント内の重要な一説 (応答を要約する部分) に強調の書式設定が適用されます。 既定では、 `<em>`です。 書式設定の種類 (黄色の背景など) を指定する場合は、highlightPreTag と highlightPostTag を設定できます。
-
-1. 要求で必要なその他のパラメーターを指定します。 [speller](speller-how-to-add.md)、[select](search-query-odata-select.md)、count などのパラメーターを使用すると、要求の品質と応答の読みやすさが向上します。
-
-### <a name="review-the-response"></a>応答を確認する
-
-上記のクエリに対する応答では、最上位の選択として次の一致が返されます。 キャプションについては、プレーンテキスト バージョンと強調表示されたバージョンが自動的に返されます。 セマンティック応答の詳細については、[セマンティック ランク付けと応答](semantic-how-to-query-response.md)に関するページを参照してください。
-
-```json
-"@odata.count": 29,
-"value": [
-    {
-        "@search.score": 1.8920634,
-        "@search.rerankerScore": 1.1091284966096282,
-        "@search.captions": [
-            {
-                "text": "Oceanside Resort. Budget. New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
-                "highlights": "<strong>Oceanside Resort.</strong> Budget. New Luxury Hotel. Be the first to stay.<strong> Bay views</strong> from every room, location near the pier, rooftop pool, waterfront dining & more."
-            }
-        ],
-        "HotelId": "18",
-        "HotelName": "Oceanside Resort",
-        "Description": "New Luxury Hotel.  Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
-        "Category": "Budget"
-    },
-```
-
-### <a name="parameters-used-in-a-semantic-query"></a>セマンティック クエリで使用されるパラメーター
-
 次の表は、セマンティック クエリで使用されるクエリ パラメーターを全体的に参照できるようにまとめたものです。 すべてのパラメーターの一覧については、「[Search Documents (REST プレビュー)](/rest/api/searchservice/preview-api/search-documents)」を参照してください
 
-| パラメーター | 種類 | 説明 |
+| パラメーター | Type | 説明 |
 |-----------|-------|-------------|
 | queryType | String | 有効な値は、simple、full、semantic です。 セマンティック クエリには、"semantic" の値が必要です。 |
 | queryLanguage | String | セマンティック クエリに必要です。 現在、"en-us" のみが実装されています。 |
-| searchFields | String | 検索可能なフィールドのコンマ区切りの一覧。 省略可能ですが、指定することをお勧めします。 セマンティック ランク付けを行うフィールドを指定します。 </br></br>単純および完全なクエリの種類とは対照的に、フィールドの順番によって優先順位が決まります。|
-| answers |String | セマンティック回答を結果に含めるかどうかを指定する省略可能なフィールド。 現在、"extractive" のみが実装されています。 回答は、最大 5 つを返すように構成できます。 この例の "extractive|count3" は回答の数が 3 であることを示しています。 既定値は 1 です。|
+| searchFields | String | 検索可能なフィールドのコンマ区切りの一覧。 セマンティック ランク付けを行うフィールドを指定します。ここから、キャプションと回答が抽出されます。 </br></br>単純および完全なクエリの種類とは対照的に、フィールドの順番によって優先順位が決まります。 使用方法の詳細については、「[手順 2: searchFields を設定する](#searchfields)」を参照してください。 |
+| スペル チェック | String | 検索エンジンに到達する前にスペルミスを修正する省略可能なパラメーターであり、セマンティック クエリに固有のものではない。 詳細については、[クエリへのスペル修正の追加](speller-how-to-add.md)に関するページを参照してください。 |
+| answers |String | セマンティック回答を結果に含めるかどうかを指定する省略可能なパラメーター。 現在、"extractive" のみが実装されています。 回答は、最大 5 つを返すように構成できます。 既定値は 1 です。 この例は、回答の数が 3 であることを示しています: "extractive\|count3"。 詳細については、[セマンティック回答を返す](semantic-answers.md)に関するページを参照してください。|
 
-## <a name="query-with-search-explorer"></a>検索エクスプローラーを使用したクエリ実行
+### <a name="formulate-the-request"></a>要求を作成する
 
-次のクエリは、API バージョン 2020-06-30-Preview を使用して組み込みの Hotels サンプル インデックスを対象としています。このクエリは、Search エクスプローラーで実行されます。 `$select` 句によって結果が少数のフィールドに制限されます。これにより、Search エクスプローラーの詳細な JSON でのスキャンが容易になります。
+このセクションでは、セマンティック検索に必要なクエリ パラメーターについて、順を追って説明します。
 
-### <a name="with-querytypesemantic"></a>With queryType=semantic
+#### <a name="step-1-set-querytype-and-querylanguage"></a>Step 1: queryType と queryLanguage を設定する
+
+REST に次のパラメーターを追加します。 どちらのパラメーターも必須です。
 
 ```json
-search=I want a nice hotel on the water with a great restaurant&$select=HotelId,HotelName,Description,Tags&queryType=semantic&queryLanguage=english&searchFields=Description,Tags
+"queryType": "semantic",
+"queryLanguage": "en-us",
 ```
 
-最初の少数の結果は次のようになります。
+queryLanguage は、インデックス スキーマのフィールド定義に割り当てられている[言語アナライザー](index-add-language-analyzers.md)と一致している必要があります。 queryLanguage が "en-us" の場合、言語アナライザーも英語のバリアント ("en.microsoft" または "en.lucene") である必要があります。 keyword や simple など、言語に依存しないアナライザーは、queryLanguage 値と競合しません。
+
+クエリ要求で[スペル修正](speller-how-to-add.md)も使用している場合、設定した queryLanguage は、speller、answers、および captions に等しく適用されます。 個々のパーツに対するオーバーライドはありません。 
+
+検索インデックスのコンテンツは複数の言語で構成できますが、通常、クエリ入力は 1 つの言語で行われます。 検索エンジンでは、queryLanguage、言語アナライザー、およびコンテンツが構成されている言語の互換性が確認されません。そのため、誤った結果が生成されないように、適切にクエリのスコープを設定してください。
+
+<a name="searchfields"></a>
+
+#### <a name="step-2-set-searchfields"></a>手順 2: searchFields を設定する
+
+searchFields パラメーターは、クエリに対する "セマンティックの類似性" について評価すべき一節を識別するために使用されます。 プレビューでは、処理すべき最も重要なフィールドに関するヒントがモデルに必要なため、searchFields を空白のままにすることはお勧めしません。
+
+searchFields の順序は重要です。 単純および完全な Lucene クエリの既存のコードで既に searchFields を使用している場合は、セマンティック クエリの種類に切り替えるときにこのパラメーターを見直してフィールドの順序を確認してください。
+
+2 つ以上の searchFields の場合:
+
++ コレクションには、文字列フィールドと最上位の文字列フィールドのみを含めます。 文字列以外のフィールドまたは下位のフィールドをコレクションに含めると、エラーは発生しませんが、セマンティック ランク付けでそれらのフィールドは使用されません。
+
++ 最初のフィールドは、常に簡潔 (タイトルや名前など) にする必要があります。25 単語未満であると理想的です。
+
++ インデックスにテキスト (`www.domain.com/?id=23463&param=eis` のようにマシンにフォーカスされている形式ではなく、`www.domain.com/name-of-the-document-and-other-details` のように人間が読める形式) の URL フィールドがある場合は、これをリストの 2 番目に配置します (または、簡潔なタイトル フィールドがない場合は先頭)。
+
++ これらのフィールドの後に、セマンティック クエリの回答が見つかる可能性がある説明フィールドを配置します (ドキュメントの主な内容など)。
+
+フィールドが 1 つしか指定されていない場合は、ドキュメントの主な内容など、セマンティック クエリに対する回答が見つかる可能性のある説明フィールドを使用します。 
+
+#### <a name="step-3-remove-orderby-clauses"></a>手順 3: orderBy 句を削除する
+
+既存の要求に orderBy 句が存在する場合はすべて削除します。 結果の順序付けにはセマンティック スコアが使用されます。明示的な並べ替えロジックを含めると、HTTP 400 エラーが返されます。
+
+#### <a name="step-4-add-answers"></a>手順 4: 回答を追加する
+
+回答を提供する追加の処理を含める場合は、必要に応じて "answers" を追加します。 回答 (およびキャプション) は、searchFields にリストされているフィールド内の節から抽出されます。 応答で最適な回答を得るために、十分な内容を持つフィールドを searchFields に含めてください。 詳細については、[セマンティック回答を戻す方法](semantic-answers.md)に関するページを参照してください。
+
+#### <a name="step-5-add-other-parameters"></a>手順 5: その他のパラメーターを追加する
+
+要求で必要なその他のパラメーターを設定します。 [speller](speller-how-to-add.md)、[select](search-query-odata-select.md)、count などのパラメーターを使用すると、要求の品質と応答の読みやすさが向上します。
+
+必要に応じて、キャプションに適用される強調表示のスタイルをカスタマイズできます。 キャプションでは、ドキュメント内の重要な一説 (応答を要約する部分) に強調の書式設定が適用されます。 既定では、 `<em>`です。 書式設定の種類 (黄色の背景など) を指定する場合は、highlightPreTag と highlightPostTag を設定できます。
+
+## <a name="evaluate-the-response"></a>応答を評価する
+
+すべてのクエリと同様に、応答は、取得可能としてマークされているすべてのフィールド、または select パラメーターに指定されているフィールドのみで構成されます。 これには、元の関連性スコアが含まれます。また、要求の作成方法に応じて、カウントまたはバッチ結果が含まれる場合もあります。
+
+セマンティック クエリでは、次の追加の要素が応答に含められます: 意味的にランク付けされた新しい関連性スコア、プレーン テキスト内の強調表示されたキャプション、および必要に応じて回答。
+
+クライアント アプリでは、特定のフィールドの内容全体ではなく、キャプションを一致の説明として含めるように、検索ページを構成することができます。 これは、検索結果ページにおいて個々のフィールドの密度が高すぎる場合に役立ちます。
+
+上記のクエリ例に対する応答では、最上位の選択として次の一致が返されます。 キャプションについては、プレーンテキスト バージョンと強調表示されたバージョンが自動的に返されます。 この例では回答が省略されています。この特定のクエリとコーパスに対してそれを特定できなかったためです。
 
 ```json
-{
-    "@search.score": 0.38330218,
-    "@search.rerankerScore": 0.9754053303040564,
-    "HotelId": "18",
-    "HotelName": "Oceanside Resort",
-    "Description": "New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
-    "Tags": [
-        "view",
-        "laundry service",
-        "air conditioning"
-    ]
-},
-{
-    "@search.score": 1.8920634,
-    "@search.rerankerScore": 0.8829904259182513,
-    "HotelId": "36",
-    "HotelName": "Pelham Hotel",
-    "Description": "Stunning Downtown Hotel with indoor Pool. Ideally located close to theatres, museums and the convention center. Indoor Pool and Sauna and fitness centre. Popular Bar & Restaurant",
-    "Tags": [
-        "view",
-        "pool",
-        "24-hour front desk service"
-    ]
-},
-{
-    "@search.score": 0.95706713,
-    "@search.rerankerScore": 0.8538530203513801,
-    "HotelId": "22",
-    "HotelName": "Stone Lion Inn",
-    "Description": "Full breakfast buffet for 2 for only $1.  Excited to show off our room upgrades, faster high speed WiFi, updated corridors & meeting space. Come relax and enjoy your stay.",
-    "Tags": [
-        "laundry service",
-        "air conditioning",
-        "restaurant"
-    ]
-},
-```
-
-### <a name="with-querytype-default"></a>With queryType (既定値)
-
-比較のために、`&queryType=semantic&queryLanguage=english&searchFields=Description,Tags` を削除して上記と同じクエリを実行します。 これらの結果に `"@search.rerankerScore"` が含まれていないこと、および上位 3 件に異なるホテルが表示されていることに注意してください。
-
-```json
-{
-    "@search.score": 8.633856,
-    "HotelId": "3",
-    "HotelName": "Triple Landscape Hotel",
-    "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
-    "Tags": [
-        "air conditioning",
-        "bar",
-        "continental breakfast"
-    ]
-},
-{
-    "@search.score": 6.407289,
-    "HotelId": "40",
-    "HotelName": "Trails End Motel",
-    "Description": "Only 8 miles from Downtown.  On-site bar/restaurant, Free hot breakfast buffet, Free wireless internet, All non-smoking hotel. Only 15 miles from airport.",
-    "Tags": [
-        "continental breakfast",
-        "view",
-        "view"
-    ]
-},
-{
-    "@search.score": 5.843788,
-    "HotelId": "14",
-    "HotelName": "Twin Vertex Hotel",
-    "Description": "New experience in the Making.  Be the first to experience the luxury of the Twin Vertex. Reserve one of our newly-renovated guest rooms today.",
-    "Tags": [
-        "bar",
-        "restaurant",
-        "air conditioning"
-    ]
-},
+"@odata.count": 35,
+"@search.answers": [],
+"value": [
+    {
+        "@search.score": 1.8810667,
+        "@search.rerankerScore": 1.1446577133610845,
+        "@search.captions": [
+            {
+                "text": "Oceanside Resort. Luxury. New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
+                "highlights": "<strong>Oceanside Resort.</strong> Luxury. New Luxury Hotel. Be the first to stay.<strong> Bay</strong> views from every room, location near the pier, rooftop pool, waterfront dining & more."
+            }
+        ],
+        "HotelName": "Oceanside Resort",
+        "Description": "New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
+        "Category": "Luxury"
+    },
 ```
 
 ## <a name="next-steps"></a>次のステップ
@@ -244,7 +193,7 @@ search=I want a nice hotel on the water with a great restaurant&$select=HotelId,
 セマンティック ランク付けと応答は最初の結果セットを基に構築されていることを思い出してください。 最初の結果の品質を向上させるロジックは、セマンティック検索に引き継がれます。 次の手順として、最初の結果に寄与する機能を確認します。これには、文字列のトークン化の方法に影響を与えるアナライザー、結果を調整できるスコアリング プロファイル、および既定の関連性アルゴリズムが含まれます。
 
 + [テキスト処理のためのアナライザー](search-analyzers.md)
-+ [Cognitive Search での類似性とスコアリング](index-similarity-and-scoring.md)
-+ [スコアリング プロファイルの追加](index-add-scoring-profiles.md)
++ [類似性ランク付けアルゴリズム](index-similarity-and-scoring.md)
++ [スコアリング プロファイル](index-add-scoring-profiles.md)
 + [セマンティック検索の概要](semantic-search-overview.md)
-+ [クエリ用語にスペル チェックを追加する](speller-how-to-add.md)
++ [セマンティック ランク付けアルゴリズム](semantic-ranking.md)

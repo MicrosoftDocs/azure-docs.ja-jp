@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 03/02/2021
 ms.author: thvankra
 ms.openlocfilehash: f9b6e586879b8697660ced7aa6f1e75083e3ee29
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101658573"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API の一般的な問題のトラブルシューティング

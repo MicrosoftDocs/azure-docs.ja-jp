@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
 ms.openlocfilehash: 9fe4988b5499943f4b11ec5d640209ceb68e84ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87040221"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して OneDrive コネクタ内のファイルにアクセスして管理する
@@ -70,7 +70,7 @@ Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic
 
    ![[Microsoft のマネージド API を表示] というタイトルのダイアログ ボックスには、"onedrive" と表示されているボックスがあります。 以下は、8 個のアクションの一覧です。 1 つ目は [OneDrive - ファイルの作成] で、これが選択されています。](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 
-4. この例では、 **[OneDrive - Create file (OneDrive - ファイルを作成する)]** を選択します。 接続が既に存在する場合は、 **[フォルダー パス]** で、ファイルを配置する場所を選択し、 **[ファイル名]** に入力して、**目的のファイルのコンテンツ**を選択します。  
+4. この例では、 **[OneDrive - Create file (OneDrive - ファイルを作成する)]** を選択します。 接続が既に存在する場合は、 **[フォルダー パス]** で、ファイルを配置する場所を選択し、 **[ファイル名]** に入力して、**目的のファイルのコンテンツ** を選択します。  
 
    ![[ファイルの作成] というタイトルのダイアログ ボックスには、[フォルダーのパス]、[ファイル名]、および [フォルダーの内容] というラベルの付いた 3 つのボックスが表示されます。 [フォルダーのパス] ボックスの横には、ディレクトリの参照ボタンがあります。](./media/connectors-create-api-onedrive/sample-action.png)
 

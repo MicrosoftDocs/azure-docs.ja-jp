@@ -4,12 +4,12 @@ description: コマンド ラインから JavaScript 関数を作成し、ロー
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3b14b7d9f97be12a73ffcb2416a00cd4a51bca5f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: c9810b1eb9e5f6bc65843d65f2f2452eac1be703
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937248"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102447318"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に JavaScript 関数を作成する
 
@@ -96,7 +96,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-HTTP トリガーの場合、この関数は、*function.json* に定義された変数 `req` で要求データを受け取ります。 *function.json* で `$return` として定義されている返されるオブジェクトが応答です。 詳細については、「[Azure Functions の HTTP トリガーとバインド](./functions-bindings-http-webhook.md?tabs=javascript)」を参照してください。
+HTTP トリガーの場合、この関数は、*function.json* に定義された変数 `req` で要求データを受け取ります。 応答は *function.json* で `res` として定義されており、`context.res` を使用してアクセスできます。 詳細については、「[Azure Functions の HTTP トリガーとバインド](./functions-bindings-http-webhook.md?tabs=javascript)」を参照してください。
 
 #### <a name="functionjson"></a>function.json
 

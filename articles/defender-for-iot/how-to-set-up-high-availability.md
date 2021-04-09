@@ -1,18 +1,14 @@
 ---
 title: 高可用性のセットアップ
 description: オンプレミス管理コンソールに高可用性アプライアンスをインストールすることによって、Defender for IoT デプロイの回復性を高めます。 高可用性デプロイでは、マネージド センサーによってアクティブなオンプレミス管理コンソールに継続的に報告されます。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 8b647d5e97439db4805a7346a02db3f845dc9e37
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: d0e09cd37fbae91d1903ca8f175c0592b567da6e
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523891"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781655"
 ---
 # <a name="about-high-availability"></a>高可用性について
 
@@ -149,6 +145,6 @@ cyberx-management-deploy-ssh-key <Primary ip>
 
 3. センサーを更新します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
 [オンプレミス管理コンソールをアクティブにしてセットアップする](how-to-activate-and-set-up-your-on-premises-management-console.md)

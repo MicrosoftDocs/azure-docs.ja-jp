@@ -10,10 +10,10 @@ ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 9e5bb037b88b7c370e31d05c2d20fc6f558a8b39
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93422197"
 ---
 # <a name="deploy-ml-model-on-azure-sql-edge-using-onnx"></a>ONNX を使用して Azure SQL Edge に ML モデルをデプロイする 

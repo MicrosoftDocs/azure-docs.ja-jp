@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: fb3e09cefa7f87fe2eb1e5013854c7965ea9330e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b6d51e05598f60de0e9c8fb85472b7c14bba990e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698843"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598390"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>ステップ 1 - Media Services API V3 に移行する利点を理解する
 
@@ -58,8 +58,8 @@ Media Services の V3 は大幅に改善されました。
 |**コンテンツ保護** ||
 | [コンテンツ保護](content-key-policy-concept.md) でマルチキー機能をサポート。 | お客様は、ストリーミング ロケーターで複数のコンテンツ暗号化キーを使用できるようになりました。 |
 | **Monitoring** | |
-| [Azure EventGrid](reacting-to-media-services-events.md) 通知のサポート | EventGrid 通知の機能がより充実しています。 より多くの種類の通知、独自のアプリケーションで通知を受信するためのより広範な SDK サポートがあり、イベント ハンドラーとして機能できる既存の Azure サービスも増えています。 |
-| [Azure portal での Azure Monitor のサポートと統合](monitor-events-portal-how-to.md) | これにより、お客様は、Media Services アカウントのクォータの使用率、ストリーミング エンドポイントのリアルタイム統計、ライブ イベントの取り込みとアーカイブの統計を視覚化できます。 お客様は、アラートを設定し、リアルタイムのメトリック データに基づいて必要なアクションを実行できるようになりました。 |
+| [Azure EventGrid](monitoring/reacting-to-media-services-events.md) 通知のサポート | EventGrid 通知の機能がより充実しています。 より多くの種類の通知、独自のアプリケーションで通知を受信するためのより広範な SDK サポートがあり、イベント ハンドラーとして機能できる既存の Azure サービスも増えています。 |
+| [Azure portal での Azure Monitor のサポートと統合](monitoring/monitor-events-portal-how-to.md) | これにより、お客様は、Media Services アカウントのクォータの使用率、ストリーミング エンドポイントのリアルタイム統計、ライブ イベントの取り込みとアーカイブの統計を視覚化できます。 お客様は、アラートを設定し、リアルタイムのメトリック データに基づいて必要なアクションを実行できるようになりました。 |
 
 ## <a name="next-steps"></a>次のステップ
 

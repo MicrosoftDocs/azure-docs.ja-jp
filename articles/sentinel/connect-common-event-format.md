@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 6010242e7fbd14aa117c481dee0d05e92928ef1b
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 54fd6c0c085c0055f3114fde606f8f7d2f2e055e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747493"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104772061"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>共通イベント形式を使用して外部ソリューションを接続する
 
@@ -99,5 +99,7 @@ Syslog ソースと Syslog フォワーダーの間で TLS 通信を使用する
 - 手順 3: [接続を検証する](connect-cef-verify.md)
 
 Azure Sentinel で収集したデータの処理に関する詳細については、次の記事を参照してください。
+
+- [CEF および CommonSecurityLog フィールド マッピング](cef-name-mapping.md)についての説明。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。

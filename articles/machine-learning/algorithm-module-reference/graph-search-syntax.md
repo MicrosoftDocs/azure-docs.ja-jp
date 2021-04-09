@@ -10,10 +10,10 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 8/24/2020
 ms.openlocfilehash: 762581ea5b3183d62913e9ea6935bf7e4c4ae67f
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93420769"
 ---
 # <a name="graph-search-query-syntax"></a>グラフ検索のクエリ構文
@@ -36,7 +36,7 @@ Lucene クエリとフィルター クエリのどちらも使用できます。
 
  
 - AND/OR
-- **?** および * *\** _ 演算子を使用したワイルドカードでの照合。
+- **?** および **\*** 演算子を使用したワイルドカードでの照合。
 
 ### <a name="examples"></a>例
 
@@ -49,7 +49,7 @@ Lucene クエリとフィルター クエリのどちらも使用できます。
  
 - ワイルドカードでの照合: 
     - `machi?e learning`
-    - `mach_ing`
+    - `mach*ing`
  
 >[!NOTE]
 > Lucene クエリを "*" 文字で開始することはできません。

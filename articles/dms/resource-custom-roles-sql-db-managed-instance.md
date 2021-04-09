@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.openlocfilehash: 1228234b6a2904c453ec92f3c09a7b3f55604953
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100363765"
 ---
 # <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>SQL Server から Azure SQL Managed Instance へオンライン移行するためのカスタム ロール

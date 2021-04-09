@@ -2,23 +2,23 @@
 title: カスタム モデルのトレーニング データ セットを作成する方法 - Form Recognizer
 titleSuffix: Azure Cognitive Services
 description: お使いのトレーニング データ セットが Form Recognizer モデルのトレーニングに最適化されていることを確認する方法を学習します。
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.author: pafarley
-ms.openlocfilehash: ee57ccb82e771ee8ab93b09e476a94df32278069
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.author: lajanuar
+ms.openlocfilehash: b33ac3cb710a2d2a9d92efadf14dc829cb5da6e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585111"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103467495"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>カスタム モデルのトレーニング データ セットを作成する
 
-Form Recognizer のカスタム モデルを使用する場合は、モデルを業界固有のフォームに合わせてトレーニングできるように、独自のトレーニング データを [Train Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) 操作に提供します。 このガイドに従い、モデルを効果的にトレーニングするためにデータを収集し、準備する方法について学習してください。
+Form Recognizer のカスタム モデルを使用する場合は、モデルを業界固有のフォームに合わせてトレーニングできるように、独自のトレーニング データを [Train Custom Model](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/TrainCustomModelAsync) 操作に提供します。 このガイドに従い、モデルを効果的にトレーニングするためにデータを収集し、準備する方法について学習してください。
 
 同じ種類の少なくとも 5 つの入力フォームが必要です。
 
@@ -47,7 +47,7 @@ Form Recognizer のカスタム モデルを使用する場合は、モデルを
 
 ### <a name="organize-your-data-in-subfolders-optional"></a>データをサブフォルダーに整理する (オプション)
 
-既定では、[カスタムモデルのトレーニング](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) API は、ストレージ コンテナーのルートにあるフォーム ドキュメントのみが使用されます。 ただし、API 呼び出しで指定した場合は、サブフォルダー内のデータを使用してトレーニングすることができます。 通常、[カスタム モデルのトレーニング](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)呼び出しの本文は次の形式になります。`<SAS URL>` は、コンテナーの Shared Access Signature URL です。
+既定では、[カスタムモデルのトレーニング](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/TrainCustomModelAsync) API は、ストレージ コンテナーのルートにあるフォーム ドキュメントのみが使用されます。 ただし、API 呼び出しで指定した場合は、サブフォルダー内のデータを使用してトレーニングすることができます。 通常、[カスタム モデルのトレーニング](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/TrainCustomModelAsync)呼び出しの本文は次の形式になります。`<SAS URL>` は、コンテナーの Shared Access Signature URL です。
 
 ```json
 {

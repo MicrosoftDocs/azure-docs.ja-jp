@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 660f6dfae23331455408ae7127274550a3a4cc3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90019837"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>Azure IoT Central の UI をカスタマイズする
@@ -29,7 +29,7 @@ ms.locfileid: "90019837"
 
 ## <a name="create-theme"></a>テーマの作成
 
-カスタム テーマを作成するには、 **[管理]** セクションの **[アプリケーションのカスタマイズ]** ページに移動します。
+カスタム テーマを作成するには、**[管理]** セクションの **[アプリケーションのカスタマイズ]** ページに移動します。
 
 ![IoT Central のテーマ](./media/howto-customize-ui/themes.png)
 
@@ -47,20 +47,20 @@ ms.locfileid: "90019837"
 
 ### <a name="browser-colors"></a>ブラウザーの色
 
-ページ ヘッダーの色と、ボタンやその他の強調対象を目立たせるために使用される色を変更できます。 6 文字の 16 進カラー値を `##ff6347` の形式で使用します。 **16 進値**の色表記の詳細については、「[HTML Colors (HTML の色)](https://www.w3schools.com/html/html_colors.asp)」を参照してください。
+ページ ヘッダーの色と、ボタンやその他の強調対象を目立たせるために使用される色を変更できます。 6 文字の 16 進カラー値を `##ff6347` の形式で使用します。 **16 進値** の色表記の詳細については、「[HTML Colors (HTML の色)](https://www.w3schools.com/html/html_colors.asp)」を参照してください。
 
 > [!NOTE]
 > **[アプリケーションのカスタマイズ]** ページで、いつでも既定のオプションに戻すことができます。
 
 ### <a name="changes-for-operators"></a>オペレーターのための変更
 
-管理者がカスタム テーマを作成すると、アプリケーションのオペレーターと他のユーザーは、 **[設定]** でテーマを選択できなくなります。
+管理者がカスタム テーマを作成すると、アプリケーションのオペレーターと他のユーザーは、**[設定]** でテーマを選択できなくなります。
 
 ## <a name="replace-help-links"></a>ヘルプ リンクの置き換え
 
 オペレーターや他のユーザーにカスタム ヘルプ情報を提供するには、アプリケーションの **[ヘルプ]** メニューのリンクを変更します。
 
-ヘルプのリンクを変更するには、 **[管理]** セクションの **[ヘルプのカスタマイズ]** ページに移動します。
+ヘルプのリンクを変更するには、**[管理]** セクションの **[ヘルプのカスタマイズ]** ページに移動します。
 
 ![IoT Central のヘルプのリンクをカスタマイズする](./media/howto-customize-ui/help-links.png)
 
@@ -71,9 +71,9 @@ ms.locfileid: "90019837"
 > [!NOTE]
 > **[ヘルプのカスタマイズ]** ページで、いつでも既定のヘルプのリンクに戻すことができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ここでは、IoT Central アプリケーションの UI をカスタマイズする方法について説明しました。推奨される次の手順は以下のとおりです。
 
 - [アプリケーションを管理する](./howto-administer.md)
-- [ダッシュボードにタイルを追加する](howto-add-tiles-to-your-dashboard.md)
+- [ダッシュボードへのタイルの追加](howto-add-tiles-to-your-dashboard.md)

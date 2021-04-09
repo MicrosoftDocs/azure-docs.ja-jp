@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 03/15/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9430066ad92b4d0b69bd07c763e3f7b5d6e889a
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 8e9052502eba71f025bb6724278b7001173c5217
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693538"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103491619"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>Azure Active Directory を使用して SMS ベース認証用にユーザーを構成して有効にする 
 
@@ -34,9 +34,9 @@ ms.locfileid: "98693538"
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * SMS ベース認証を有効にするには、Azure AD テナントでの "*全体管理者*" 特権が必要です。
 * テキスト メッセージ認証方法ポリシーで有効になっている各ユーザーは、その方法を使用しない場合でも、ライセンスを取得している必要があります。 有効な各ユーザーは、次の Azure AD、EMS、または Microsoft 365 ライセンスのいずれかを保持している必要があります。
-    * [Azure AD Premium P1 または P2][azuread-licensing]
     * [Microsoft 365 (M365) F1 または F3][m365-firstline-workers-licensing]
     * [Enterprise Mobility + Security (EMS) E3 または E5][ems-licensing] または [Microsoft 365 (M365) E3 または E5][m365-licensing]
+    * [Office 365 F3][o365-f3]
 
 ## <a name="limitations"></a>制限事項
 
@@ -86,7 +86,7 @@ Azure AD テナントで SMS ベース認証が有効になっている状態で
 
 ## <a name="set-a-phone-number-for-user-accounts"></a>ユーザー アカウントに電話番号を設定する
 
-これで、SMS ベース認証に対してユーザーが有効になりましたが、サインインするには、事前にユーザーの電話番号が Azure AD 上でユーザー プロファイルに関連付けられている必要があります。 ユーザーは " *[マイ アカウント]* " で[この電話番号を自分で設定](../user-help/sms-sign-in-explainer.md)することができます。または、管理者が Azure portal を使用して電話番号を割り当ててもかまいません。 電話番号は、"*全体管理者*"、"*authentication admins (認証管理者)* "、または "*privileged authentication admins (特権認証管理者)* " によって設定できます。
+これで、SMS ベース認証に対してユーザーが有効になりましたが、サインインするには、事前にユーザーの電話番号が Azure AD 上でユーザー プロファイルに関連付けられている必要があります。 ユーザーは " *[マイ アカウント]* " で [この電話番号を自分で設定](../user-help/sms-sign-in-explainer.md)することができます。または、管理者が Azure portal を使用して電話番号を割り当ててもかまいません。 電話番号は、"*全体管理者*"、"*authentication admins (認証管理者)* "、または "*privileged authentication admins (特権認証管理者)* " によって設定できます。
 
 電話番号が SMS サインイン用に設定されている場合は、[Azure AD Multi-Factor Authentication][tutorial-azure-mfa] および[セルフサービス パスワード リセット][tutorial-sspr]にその電話番号を使用することもできます。
 

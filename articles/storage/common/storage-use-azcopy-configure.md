@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: 244012f0945f467fe79e95d652ba22e3b62a1b7a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100596935"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
@@ -30,7 +30,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 AzCopy v10 のプロキシ設定を構成するには、`HTTPS_PROXY` 環境変数を設定します。 Windows で AzCopy を実行すると、AzCopy によって自動的にプロキシ設定が検出されるため、Windows でこの設定を使用する必要はありません。 Windows でこの設定を使用することを選択した場合は、自動検出がオーバーライドされます。
 
-| オペレーティング システム | コマンド  |
+| オペレーティング システム | command  |
 |--------|-----------|
 | **Windows** | コマンド プロンプトでは、`set HTTPS_PROXY=<proxy IP>:<proxy port>` を使用します<br> PowerShell では、`$env:HTTPS_PROXY="<proxy IP>:<proxy port>"` を使用します|
 | **Linux** | `export HTTPS_PROXY=<proxy IP>:<proxy port>` |
@@ -91,7 +91,7 @@ azcopy jobs resume <job-id> --cap-mbps 10
 
 コンピューターの CPU が 5 個未満の場合、この変数の値は `32` に設定されます。 それ以外の場合、既定値は CPU の数に 16 を掛けた数です。 この変数の最大の既定値は `3000` ですが、この値は手動で高い値または低い値に設定できます。 
 
-| オペレーティング システム | コマンド  |
+| オペレーティング システム | command  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
@@ -106,7 +106,7 @@ azcopy jobs resume <job-id> --cap-mbps 10
 `AZCOPY_BUFFER_GB` 環境変数を設定して、ファイルをダウンロードおよびアップロードするときに AzCopy で使用するシステム メモリの最大量を指定します。
 この値はギガバイト (GB) 単位で指定します。
 
-| オペレーティング システム | コマンド  |
+| オペレーティング システム | command  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
@@ -189,7 +189,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 これらのコマンドのいずれかを使用します。
 
-| オペレーティング システム | コマンド  |
+| オペレーティング システム | command  |
 |--------|-----------|
 | **Windows** | PowerShell:`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> コマンド プロンプトでは次を使用します: `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
@@ -201,7 +201,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 これらのコマンドのいずれかを使用します。
 
-| オペレーティング システム | コマンド  |
+| オペレーティング システム | command  |
 |--------|-----------|
 | **Windows** | PowerShell:`$env:AZCOPY_LOG_LOCATION="<value>"` <br> コマンド プロンプトでは次を使用します: `set AZCOPY_LOG_LOCATION=<value>`|
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |

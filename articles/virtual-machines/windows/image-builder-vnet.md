@@ -10,10 +10,10 @@ ms.subervice: image-builder
 ms.colletion: windows
 ms.reviewer: danis
 ms.openlocfilehash: 3695732f81463efcadb3d8d8b49e367501cb6e29
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034083"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>Windows VM の Azure Image Builder を使用して既存の Azure VNET へのアクセスを許可する

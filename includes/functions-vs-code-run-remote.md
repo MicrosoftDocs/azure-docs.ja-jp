@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/28/2021
 ms.author: glenga
 ms.openlocfilehash: 121b10cc568cce089c90e66b9c6f292c74f4acbe
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99809569"
 ---
 ## <a name="run-the-function-in-azure"></a>Azure で関数を実行する

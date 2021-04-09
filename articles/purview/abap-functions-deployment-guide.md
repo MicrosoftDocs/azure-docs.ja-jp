@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
-ms.openlocfilehash: 1d9f1c5beafb7b54c5fd0189dd738ff8e346a3e8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 911238efafb948b304455cf75cc4ec2c3c605c76
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695881"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042097"
 ---
 # <a name="deploy-the-metadata-extraction-abap-function-module-for-the-sap-r3-family-of-bridges"></a>SAP R3 ブリッジ ファミリ用のメタデータ抽出 ABAP 関数モジュールをデプロイする 
 この記事では、SAP サーバーに ABAP 関数モジュールをデプロイする手順の概要について説明します
@@ -74,7 +74,7 @@ Sap Business Suite 4 HANA (S/4HANA)、ECC、R/3 ERP ブリッジを使用して�
 
 3.  \"[Source code]\(ソース コード\)\" タブに移動します。関数のコードをデプロイするには 2 つの方法があります。
 
-    a.  メイン メニューから [Utilities]\(ユーティリティ\) \> [More Utilities]\(その他のユーティリティ\) \> [Upload/Download]\(アップロード/ダウンロード\) \> [Upload]\(アップロード\) を選択して、Z\_MITI\_DOWNLOAD.txt ファイルをアップロードします。
+    a.  メイン メニューから [ユーティリティ]、[その他のユーティリティ]、[アップロード/ダウンロード]、[アップロード] の順に選択して、[Z\_MITI\_DOWNLOAD](https://github.com/Azure/Purview-Samples/tree/master/connectors/sap) テキスト ファイルをアップロードします。
 
     b.  または、ファイルを開き、その内容をコピーして、\"[Source code]\(ソース コード\)\" 領域に貼り付けます。
 

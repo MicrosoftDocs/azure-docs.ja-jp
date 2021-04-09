@@ -3,16 +3,16 @@ title: バックアップと復元 - Azure PowerShell - Azure Database for Maria
 description: Azure PowerShell を使用して Azure Database for MariaDB サーバーをバックアップおよび復元する方法について説明します。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 211285a0ae8aaa9b82bca914f3add7fbaa700146
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 0207be2c983fd986d5852403e36462d2d7d2cdda
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98664853"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mariadb-server-using-powershell"></a>PowerShell を使用して Azure Database for MariaDB サーバーをバックアップおよび復元する方法
@@ -27,8 +27,8 @@ Azure Database for MariaDB サーバーは、復元機能が有効になるよ�
 - [Azure Database for MariaDB サーバー](quickstart-create-mariadb-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> Az.MariaDb PowerShell モジュールがプレビュー段階にある間は、次のコマンドを使用して、Az PowerShell モジュールとは別にインストールする必要があります: `Install-Module -Name Az.MariaDb -AllowPrerelease`。
-> Az.MariaDb PowerShell モジュールは一般提供されると、将来の Az PowerShell モジュール リリースの一部となり、Azure Cloud Shell 内からネイティブに使用できるようになります。
+> Az.MariaDb PowerShell モジュールがプレビュー段階にある間は、次のコマンドを使用して、Az PowerShell モジュールとは別にこれをインストールする必要があります: `Install-Module -Name Az.MariaDb -AllowPrerelease`。
+> Az.MariaDb PowerShell モジュールは、一般提供された段階で将来の Az PowerShell モジュール リリースの一部となり、Azure Cloud Shell 内からネイティブに使用できるようになります。
 
 PowerShell をローカルで使用する場合は、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して Azure アカウントに接続します。
 

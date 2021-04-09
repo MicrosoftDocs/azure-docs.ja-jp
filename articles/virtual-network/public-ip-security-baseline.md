@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b26a020b9b4b1641d67a4f5ca55908b8d37f31e4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7f8633d791e2dd0f0723b272aefcb343d758b248
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596503"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612356"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Azure パブリック IP の Azure セキュリティ ベースライン
 
@@ -114,9 +114,9 @@ Azure アクティビティ ログを使用して、構成を監視し、パブ�
 
 特定のリソースに対して、Azure CLI、Azure PowerShell、Azure portal などのツールを使用してインベントリされた、あるいはクエリが事前定義された Azure 組み込みロールがあります。
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure Security Center の監視**: はい
 
@@ -242,7 +242,7 @@ Azure ID アクセス レビューを使用して、グループ メンバーシ
 
 - [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription)
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -350,9 +350,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: カスタムの Azure Policy 定義を使用する場合は、Azure DevOps または Azure Repos を使用して、コードを安全に格納して管理します。
 
-- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow)
 
-- [Azure Repos のドキュメント](/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos のドキュメント](/azure/devops/repos/index)
 
 **Azure Security Center の監視**: 適用なし
 

@@ -1,18 +1,18 @@
 ---
-title: Azure Percept Audio と音声モジュールに関する問題をトラブルシューティングする
-description: オンボーディング エクスペリエンス中に多く見られるいくつかの問題について、トラブルシューティングのヒントを取り上げます
+title: Azure Percept Audio と音声モジュールに関する問題のトラブルシューティング
+description: Azure Percept Audio と azureearspeechclientmodule のトラブルシューティングのヒントを得る
 author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: a3877ea680e7b4c705f127c54e0fa10c45d3b51d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: f34013bdb14481bfe872a9b3c4234d603bc2d7ec
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097977"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102635571"
 ---
 # <a name="azure-percept-audio-and-speech-module-troubleshooting"></a>Azure Percept Audio と音声モジュールのトラブルシューティング
 
@@ -23,13 +23,13 @@ ms.locfileid: "102097977"
 これらのコマンドを実行するには、[Azure Percept DK Wi-Fi アクセス ポイントに接続して SSH で開発キットに接続](./how-to-ssh-into-percept-dk.md)し、SSH ターミナルでコマンドを入力します。
 
 ```console
- iotedge logs azureearspeechclientmodule
+sudo iotedge logs azureearspeechclientmodule
 ```
 
 詳しく分析するために、出力を .txt ファイルにリダイレクトするには、次の構文を使用します。
 
 ```console
-[command] > [file name].txt
+sudo [command] > [file name].txt
 ```
 
 出力を .txt ファイルにリダイレクトしたら、SCP を使用してファイルをホスト PC にコピーします。
@@ -52,18 +52,18 @@ scp [remote username]@[IP address]:[remote file path]/[file name].txt [local hos
 
 LED インジケーターを使用して、デバイスの状態を把握できます。 通常、"*電源投入*" 後、モジュールの初期化が完了するまでに約 2 分かかります。 初期化の手順を終えると、次のことが確認できます。
 
-1. 中央の 1 つの LED が白色 - デバイスの電源がオンです。 
-2. 中央の 1 つの LED が白色で点滅 - 認証が進行中です。 
+1. 中央の 1 つの LED が白色 - デバイスの電源がオンです。
+2. 中央の 1 つの LED が白色で点滅 - 認証が進行中です。
 3. デバイスが認証されて使用できる状態になると、3 つの LED がすべて青色に変化します。
 
-|LED|   LED の状態|  Ear SoM 状態|
-|---|------------|----------------| 
-|L02|   1 つが白色、静的オン |電源投入 |
-|L02|   1 つが白色、0.5 Hz 点滅|  認証が進行中 |
-|L01、L02、L03|   3 つが青色、静的オン|     キーワードの待機中|
-|L01、L02、L03|   LED アレイ点滅、20fps | リッスン中または話し中|
-|L01、L02、L03|   LED アレイ レーシング、20fps|    処理中|
-|L01、L02、L03|   3 つが赤色、静的オン | Mute|
+|LED|LED の状態|Ear SoM 状態|
+|---|---------|--------------|
+|L02|1 つが白色、静的オン|電源投入 |
+|L02|1 つが白色、0.5 Hz 点滅|認証が進行中 |
+|L01、L02、L03|3 つが青色、静的オン|キーワードの待機中|
+|L01、L02、L03|LED アレイ点滅、20fps |リッスン中または話し中|
+|L01、L02、L03|LED アレイ レーシング、20fps|処理中|
+|L01、L02、L03|3 つが赤色、静的オン |Mute|
 
 ## <a name="next-steps"></a>次のステップ
 

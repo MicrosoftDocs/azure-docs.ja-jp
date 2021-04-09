@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 67ba4f12aec9e987d79109b7197d03301bf40650
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89004784"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Azure Data Lake Storage Gen1 での .NET SDK を使用したエンドユーザー認証
@@ -47,7 +47,7 @@ ms.locfileid: "89004784"
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - このチュートリアルでは、v2.2.12 を使用します。
 
         ![NuGet ソースを追加する](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "新しい Azure Data Lake アカウントの作成")
-   4. **NuGet パッケージ マネージャー**を閉じます。
+   4. **NuGet パッケージ マネージャー** を閉じます。
 
 5. **Program.cs** を開きます。
 6. using ステートメントを次の行に置き換えます。
@@ -68,7 +68,7 @@ ms.locfileid: "89004784"
     ```     
 
 ## <a name="end-user-authentication"></a>エンドユーザー認証
-このスニペットを .NET クライアント アプリケーションに追加します。 プレースホルダーの値を、Azure AD のネイティブ アプリケーション (前提条件として一覧表示) から取得した値で置き換えます。 このスニペットを使用すると、Data Lake Storage Gen1 でアプリケーションを**対話的**に認証できます。つまり、Azure 資格情報を入力するように求められます。
+このスニペットを .NET クライアント アプリケーションに追加します。 プレースホルダーの値を、Azure AD のネイティブ アプリケーション (前提条件として一覧表示) から取得した値で置き換えます。 このスニペットを使用すると、Data Lake Storage Gen1 でアプリケーションを **対話的** に認証できます。つまり、Azure 資格情報を入力するように求められます。
 
 使いやすくするために、次のスニペットでは、クライアント ID とリダイレクト URI について、すべての Azure サブスクリプションで有効な既定値を使用しています。 次のスニペットでは、入力する必要があるのはテナント ID の値のみです。 テナント ID は、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)」で説明されている指示に従って取得できます。
     
@@ -93,7 +93,7 @@ ms.locfileid: "89004784"
 上記のスニペットに関して、以下のいくつかの点に留意してください。
 
 * 上記のスニペットでは、ヘルパー関数 `GetTokenCache` と `GetCreds_User_Popup` を使用しています。 これらのヘルパー関数のコードは[こちらの GitHub で](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache)入手できます。
-* できるだけ短時間でチュートリアルを終了できるよう、このスニペットでは、すべての Azure サブスクリプションで既定で使用できるネイティブ アプリケーション クライアント ID を使用しています。 そのため、**このスニペットを実際のアプリケーションで使用するときは、現状のままで使用**してください。
+* できるだけ短時間でチュートリアルを終了できるよう、このスニペットでは、すべての Azure サブスクリプションで既定で使用できるネイティブ アプリケーション クライアント ID を使用しています。 そのため、**このスニペットを実際のアプリケーションで使用するときは、現状のままで使用** してください。
 * ただし、独自の Azure AD ドメインとアプリケーション クライアント ID を使う必要がある場合は、Azure AD ネイティブ アプリケーションを作成したうえで、作成したアプリケーションの Azure AD テナント ID、クライアント ID、およびリダイレクト URI を使用する必要があります。 手順については、[Data Lake Storage Gen1 でのエンド ユーザー認証のための Active Directory アプリケーションの作成](data-lake-store-end-user-authenticate-using-active-directory.md)に関するページを参照してください。
 
   

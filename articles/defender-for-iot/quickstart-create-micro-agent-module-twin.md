@@ -1,21 +1,16 @@
 ---
-title: Defender for IoT マイクロ エージェントのモジュール ツインを作成する
-titleSuffix: Azure Defender for IoT
+title: Defender for IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)
 description: 新しいデバイス用に個別の DefenderIotMicroAgent モジュール ツインを作成する方法について説明します。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: quickstart
-ms.service: azure
-ms.openlocfilehash: ea82fea89a9e81e66be6b3060aad067d3ceb8f5f
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 5036eefbd77a22d492f6ce7d3c7d15f50a081490
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123005"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781060"
 ---
-# <a name="create-a-defender-iot-micro-agent-module-twin"></a>Defender for IoT マイクロ エージェントのモジュール ツインを作成する 
+# <a name="create-a-defender-iot-micro-agent-module-twin-preview"></a>Defender for IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)
 
 新しいデバイス用に個別の  **DefenderIotMicroAgent** モジュール ツインを作成できます。 IoT Hub 内のすべてのデバイスに対して、モジュール ツインを一括作成することもできます。 
 
@@ -27,9 +22,9 @@ Defender for IoT には、既存の IoT デバイス管理プラットフォー�
 
 Azure IoT Hub の [デバイス ツイン](../iot-hub/iot-hub-devguide-device-twins.md) の概念の詳細について学習してください。 
 
-## <a name="security-module-twins"></a>セキュリティ モジュール ツイン 
+## <a name="defender-iot-micro-agent-twins"></a>Defender-IoT-micro-agent ツイン 
 
-Defender for IoT では、各デバイスに対してセキュリティ モジュール ツインが使用されます。 セキュリティ モジュール ツインでは、ソリューション内の特定のデバイスごとに、デバイスのセキュリティに関連するすべての情報が保持されます。 デバイスのセキュリティのプロパティは、通信の安全性を高め、更新を可能にし、必要なリソースが少なくて済むメンテナンスを可能にするために、専用のセキュリティ モジュール ツインを通じて構成されます。 
+Defender for IoT により、各デバイスの Defender-IoT-micro-agent ツインが使用されます。 Defender-IoT-micro-agent ツインでは、ソリューション内の特定のデバイスごとに、デバイスのセキュリティに関連するすべての情報が保持されます。 デバイスのセキュリティのプロパティは、通信の安全性を高め、更新を可能にし、必要なリソースが少なくて済むメンテナンスを可能にするために、専用の Defender-IoT-micro-agent ツインを通じて構成されます。 
 
 ## <a name="understanding-defenderiotmicroagent-module-twins"></a>DefenderIotMicroAgent モジュール ツインについて 
 
@@ -39,9 +34,9 @@ Defender for IoT には、既存の IoT デバイス管理プラットフォー�
 
 Azure IoT Hub でのモジュール ツインの一般的な概念の詳細については、 [IoT Hub モジュール ツイン](../iot-hub/iot-hub-devguide-module-twins.md)に関するページを参照してください。
 
-Defender for IoT では、モジュール ツイン メカニズムを利用して、各デバイス用の `DefenderIotMicroAgent` というセキュリティ モジュール ツインが維持されます。 
+Defender for IoT では、モジュール ツイン メカニズムを利用して、各デバイス用に `DefenderIotMicroAgent` という Defender-IoT-micro-agent ツインが維持されます。 
 
-Defender for IoT の機能を最大限に活用するには、サービス内のすべてのデバイスに対してセキュリティ モジュール ツインを作成、構成、および使用する必要があります。 
+Defender for IoT の機能を最大限に活用するには、サービス内のすべてのデバイスに対して Defender-IoT-micro-agent ツインを作成、構成、使用する必要があります。 
 
 ## <a name="create-defenderiotmicroagent-module-twin"></a>DefenderIotMicroAgent モジュール ツインの作成 
 
@@ -49,7 +44,7 @@ Defender for IoT の機能を最大限に活用するには、サービス内の
 
 デバイス用の新しい  **DefenderIotMicroAgent** モジュール ツインを手動で作成するには、以下の操作を実行します。 
 
-1. IoT Hub で、セキュリティ モジュール ツインの作成対象のデバイスを探して選択します。 
+1. IoT ハブで、Defender-IoT-micro-agent ツインの作成対象のデバイスを探して選択します。 
 
 1.  **[モジュール ID の追加]** を選択します。 
 
@@ -59,7 +54,7 @@ Defender for IoT の機能を最大限に活用するには、サービス内の
 
 ## <a name="verify-the-creation-of-a-module-twin"></a>モジュール ツインの作成の確認 
 
-特定のデバイスのセキュリティ モジュール ツインが存在するかどうかを確認するには、以下の操作を行います。 
+特定のデバイスの Defender-IoT-micro-agent ツインが存在するかどうかを確認するには、以下の操作を行います。 
 
 1. Azure IoT Hub で、 **[エクスプローラー]**   メニューの  **[IoT デバイス]**   を選択します。 
 

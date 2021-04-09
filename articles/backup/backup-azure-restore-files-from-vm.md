@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンの復旧ポイントか�
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9bd66c1e3c89c8974adc3970f8595e5100878088
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: c5a027773a55347b71c1e6a66d24d7fdb99220d0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567137"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725511"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -76,6 +76,11 @@ Windows 記憶域スペース用に構成されている VM では、ダウン�
 ### <a name="virtual-machine-backups-having-large-disks"></a>大容量ディスクを含む仮想マシンのバックアップ
 
 バックアップ対象のマシンに多数のディスク (16 個超) または大容量ディスク (それぞれ 4 TB 超) がある場合は、復元のために同じマシンでスクリプトを実行することはお勧めしません。これは、VM に大きな影響が及ぶためです。 代わりに、ファイルの回復専用の個別 VM (Azure VM D2v3 VM) を使用することをお勧めします。使用後、この VM が不要になったら、シャットダウンします。 
+
+大きなディスクがあるバックアップ VM からファイルを復元するための要件を参照してください。<br>
+[Windows OS](#for-backed-up-vms-with-large-disks-windows)<br>
+[Linux OS](#for-backed-up-vms-with-large-disks-linux)
+
 
 ## <a name="step-3-os-requirements-to-successfully-run-the-script"></a>手順 3:スクリプトを正常に実行するための OS の要件
 

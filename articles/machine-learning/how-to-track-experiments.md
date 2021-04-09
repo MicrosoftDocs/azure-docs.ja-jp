@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 9e5f64d9ef61a272da488ad70e690db4c07ddccc
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 9576730d9c4f8d4d237dce9ce8f207ea14b04f45
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625079"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103471590"
 ---
 # <a name="enable-logging-in-ml-training-runs"></a>ML のトレーニングの実行でログ記録を有効にする
 
@@ -37,17 +37,48 @@ Azure Machine Learning Python SDK を使用すると、既定の Python ログ �
 
 ## <a name="data-types"></a>データ型
 
-複数のデータ型 (スカラー値、リスト、テーブル、イメージ、ディレクトリなど) をログに記録できます。 詳細と、さまざまなデータ型の Python コード例については、[Run クラスの参照ページ](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)を参照してください。
+複数のデータ型 (スカラー値、リスト、テーブル、イメージ、ディレクトリなど) をログに記録できます。 詳細と、さまざまなデータ型の Python コード例については、[Run クラスの参照ページ](/python/api/azureml-core/azureml.core.run%28class%29)を参照してください。
+
+### <a name="logging-run-metrics"></a>実行メトリックのログ 
+
+ログ API で次のメソッドを使用して、メトリックの視覚化に影響を与えます。 これらのログに記録されたメトリックの[サービスの制限](https://docs.microsoft.com/azure/machine-learning/resource-limits-quotas-capacity#metrics)に注意してください。 
+
+|ログに記録される値|コード例| ポータルでの形式|
+|----|----|----|
+|数値の配列をログに記録します| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|単一変数の折れ線グラフ|
+|(for ループ内からのように) 繰り返し使用される、同じメトリック名を持つ単一数値をログに記録します| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| 単一変数の折れ線グラフ|
+|2 つの数値列が繰り返し含まれる 1 行をログに記録します|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|変数が 2 つの折れ線グラフ|
+|2 つの数値列を含むテーブルをログに記録します|`run.log_table(name='Sine Wave', value=sines)`|変数が 2 つの折れ線グラフ|
+|イメージをログに記録します|`run.log_image(name='food', path='./breadpudding.jpg', plot=None, description='desert')`|このメソッドを使用してイメージ ファイルをログに記録するか、matplotlib を使用して実行にプロットします。 これらのイメージは実行レコードで表示して比較できます|
+
+### <a name="logging-with-mlflow"></a>MLflow を使用したログ
+MLFlowLogger を使用してメトリックをログに記録します。
+
+```python
+from azureml.core import Run
+# connect to the workspace from within your running code
+run = Run.get_context()
+ws = run.experiment.workspace
+
+# workspace has associated ml-flow-tracking-uri
+mlflow_url = ws.get_mlflow_tracking_uri()
+
+#Example: PyTorch Lightning
+from pytorch_lightning.loggers import MLFlowLogger
+
+mlf_logger = MLFlowLogger(experiment_name=run.experiment.name, tracking_uri=mlflow_url)
+mlf_logger._run_id = run.id
+```
 
 ## <a name="interactive-logging-session"></a>対話型のログ セッション
 
-対話型のログ セッションは、通常、ノートブック環境で使用されます。 メソッド [Experiment.start_logging()](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) を使用すると、対話型のログ セッションが開始されます。 セッション中にログに記録されるすべてのメトリックは、実験の実行レコードに追加されます。 メソッド [run.complete()](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) を使用すると、セッションが終了し、実行が完了としてマークされます。
+対話型のログ セッションは、通常、ノートブック環境で使用されます。 メソッド [Experiment.start_logging()](/python/api/azureml-core/azureml.core.experiment%28class%29#start-logging--args----kwargs-) を使用すると、対話型のログ セッションが開始されます。 セッション中にログに記録されるすべてのメトリックは、実験の実行レコードに追加されます。 メソッド [run.complete()](/python/api/azureml-core/azureml.core.run%28class%29#complete--set-status-true-) を使用すると、セッションが終了し、実行が完了としてマークされます。
 
 ## <a name="scriptrun-logs"></a>ScriptRun ログ
 
-このセクションでは、ScriptRunConfig を使用して構成したときに作成される実行の内部にログ記録のコードを追加する方法について説明します。 [**ScriptRunConfig**](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) クラスを使用して、反復可能な実行のためにスクリプトと環境をカプセル化できます。 このオプションを使用して、監視用の視覚的な Jupyter Notebook ウィジェットを表示することもできます。
+このセクションでは、ScriptRunConfig を使用して構成したときに作成される実行の内部にログ記録のコードを追加する方法について説明します。 [**ScriptRunConfig**](/python/api/azureml-core/azureml.core.scriptrunconfig) クラスを使用して、反復可能な実行のためにスクリプトと環境をカプセル化できます。 このオプションを使用して、監視用の視覚的な Jupyter Notebook ウィジェットを表示することもできます。
 
-この例では、アルファ値に対してパラメーター スイープを実行し、[run.log()](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truelog-name--value--description----) メソッドを使用して結果をキャプチャします。
+この例では、アルファ値に対してパラメーター スイープを実行し、[run.log()](/python/api/azureml-core/azureml.core.run%28class%29#log-name--value--description----) メソッドを使用して結果をキャプチャします。
 
 1. ログ記録ロジック `train.py` を含むトレーニング スクリプトを作成します。
 

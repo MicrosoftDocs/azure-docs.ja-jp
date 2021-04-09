@@ -9,10 +9,10 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.openlocfilehash: 57cb1c405e00acb346421d64190a71e9211d21ff
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96938836"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-purview"></a>Azure Purview を使用する、リソースのクォータの管理と引き上げ

@@ -6,10 +6,10 @@ author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
 ms.openlocfilehash: 276ea1e2f083da7ab4a6ab44e60bc7e0832e8651
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102030938"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>Log Analytics ダッシュボードの視覚化のアップグレード

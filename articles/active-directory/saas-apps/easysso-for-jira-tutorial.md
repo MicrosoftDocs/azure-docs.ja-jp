@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/28/2020
 ms.author: jeedes
 ms.openlocfilehash: b813f1f77b7bda2627f5275e772a3ee7c9d12834
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454356"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-jira"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と EasySSO for Jira の統合
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* EasySSO for Jira では、 **SP および IDP** Initiated SSO がサポートされます
-* EasySSO for Jira では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* EasySSO for Jira では、**SP および IDP** Initiated SSO がサポートされます
+* EasySSO for Jira では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 * EasySSO for Jira を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-easysso-for-jira-from-the-gallery"></a>ギャラリーからの EasySSO for Jira の追加
@@ -51,7 +51,7 @@ Azure AD への EasySSO for Jira の統合を構成するには、ギャラリ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **EasySSO for Jira** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**EasySSO for Jira**」と入力します。
 1. 結果のパネルから **[EasySSO for Jira]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -105,7 +105,7 @@ EasySSO for Jira で Azure AD SSO を構成してテストするには、次の�
     | urn:oid:2.5.4.4 | User.surname |
     | urn:oid:2.5.4.42 | User.givenname |
     
-    Azure AD ユーザーに対して既に **sAMAccountName** を構成済みの場合には、 **sAMAccountName** 属性に **urn:oid:0.9.2342.19200300.100.1.1** をマップする必要があります。
+    Azure AD ユーザーに対して既に **sAMAccountName** を構成済みの場合には、**sAMAccountName** 属性に **urn:oid:0.9.2342.19200300.100.1.1** をマップする必要があります。
     
 1. **[SAML によるシングル サインオンのセットアップ]** ページの **[SAML 署名証明書]** セクションで **[証明書 (Base64)]** または **[フェデレーション メタデータ XML]** オプションの **[ダウンロード]** リンクをクリックし、そのいずれかまたは両方をコンピューターに保存します。 これは、後で Jira EasySSO を構成するために必要になります。
 
@@ -210,7 +210,7 @@ Azure AD からのリダイレクト後に、次の画面が表示される可�
 
 ![EasySSO のエラー画面](media/easysso-for-jira-tutorial/jira-admin-8.png)
 
-このような場合には、 [こちらのページの手順]( https://techtime.co.nz/display/TECHTIME/EasySSO+How+to+get+the+logs#EasySSOHowtogetthelogs-RETRIEVINGTHELOGS)に従って **atlassian-jira.log** ファイルにアクセスする必要があります。 EasySSO エラー ページにある参照 ID を使って、エラーの詳細を確認できます。
+このような場合には、[こちらのページの手順]( https://techtime.co.nz/display/TECHTIME/EasySSO+How+to+get+the+logs#EasySSOHowtogetthelogs-RETRIEVINGTHELOGS)に従って **atlassian-jira.log** ファイルにアクセスする必要があります。 EasySSO エラー ページにある参照 ID を使って、エラーの詳細を確認できます。
 
 ログ メッセージの内容について疑問がある場合には、[EasySSO サポート チーム](mailto:support@techtime.co.nz)にお問い合わせください。
 

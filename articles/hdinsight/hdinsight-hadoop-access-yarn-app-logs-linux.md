@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 882384b5e57db27cff981f80e790dfd41b624c93
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 9558e6c5ddd58b1d5fd70da03187caef50d1275d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980696"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865572"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする
 
@@ -152,11 +152,11 @@ YARN `ResourceManager` UI はクラスターのヘッド ノードで実行さ�
 
 2. 左側のサービスの一覧で、 **[YARN]** を選択します。
 
-    ![選択された Apache Ambari Yarn サービス](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
+    :::image type="content" source="./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png" alt-text="選択された Apache Ambari Yarn サービス":::
 
 3. **[クイック リンク]** ドロップダウンから、クラスター ヘッド ノードのいずれかを選択し、 **`ResourceManager Log`** を選択します。
 
-    ![Apache Ambari Yarn のクイック リンク](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
+    :::image type="content" source="./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png" alt-text="Apache Ambari Yarn のクイック リンク":::
 
     YARN のログへのリンクの一覧が表示されます。
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
 ms.openlocfilehash: 43ae21d97bc9d8292270ae62006e649f4bcf540b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93316162"
 ---
 # <a name="design-for-querying"></a>クエリに対応した設計
@@ -46,13 +46,13 @@ Table service ソリューションでは、読み取り、書き込み、また
 
 「[Azure Table Storage の概要](table-storage-overview.md)」の記事では、クエリの設計に直接影響を与える Azure Table service の主な機能の一部について説明します。 ここから、Table service のクエリを設計する際には、次のような一般的なガイドラインが考えられます。 以下の例で使用しているフィルター構文は、Table service REST API の構文です。詳細については、「[Query Entities (エンティティの照会)](/rest/api/storageservices/Query-Entities)」をご覧ください。  
 
-* "* **ポイント クエリ** _" は、最も効率的な検索です。大量の参照または短い待機時間が求められる参照に使用することをお勧めします。 このようなクエリでは、_ *PartitionKey* * と **RowKey** 値の両方を指定することでインデックスを使用し、個別のエンティティを非常に効率よく検索することができます。 例: $filter (PartitionKey eq 'Sales') = および (RowKey eq '2')  
-* 2 番目に良い方法は、_ *PartitionKey* * を使用する "* **範囲クエリ** _" と、 **RowKey** 値の範囲にフィルターをかけ、1 つ以上のエンティティを返すというものです。 **PartitionKey** 値は特定のパーティションを識別し、 **RowKey** 値はそのパーティション内のエンティティのサブセットを識別します。 例: $filter=PartitionKey eq 'Sales' および RowKey ge 'S' および RowKey lt 'T'  
-* 3 番目に良い方法は、_ *PartitionKey* * を使用し、他のキーを持たないプロパティにフィルターをかけ、1 つ以上のエンティティを返すことが可能な "* **パーティション スキャン** _" です。 **PartitionKey** 値は特定のパーティションを識別し、プロパティ値はそのパーティション内のエンティティのサブセットを選択します。 例: $filter = PartitionKey eq '販売'、および LastName eq 'Smith'  
-* "* **テーブル スキャン** _ " に _ *PartitionKey* * は含まれません。また、一致するエンティティのテーブルを構成するパーティションのすべてを検索するため、非常に非効率的です。 フィルターが **RowKey** を使用する / しないにかかわらず、テーブルのスキャンが実行されます。 例: $filter = LastName eq 'Jones'  
+* "***ポイント クエリ** _" は、最も効率的な検索です。大量の参照または短い待機時間が求められる参照に使用することをお勧めします。 このようなクエリでは、_ *PartitionKey** と **RowKey** 値の両方を指定することでインデックスを使用し、個別のエンティティを非常に効率よく検索することができます。 例: $filter (PartitionKey eq 'Sales') = および (RowKey eq '2')  
+* 2 番目に良い方法は、_ *PartitionKey** を使用する "***範囲クエリ** _" と、**RowKey** 値の範囲にフィルターをかけ、1 つ以上のエンティティを返すというものです。 **PartitionKey** 値は特定のパーティションを識別し、**RowKey** 値はそのパーティション内のエンティティのサブセットを識別します。 例: $filter=PartitionKey eq 'Sales' および RowKey ge 'S' および RowKey lt 'T'  
+* 3 番目に良い方法は、_ *PartitionKey** を使用し、他のキーを持たないプロパティにフィルターをかけ、1 つ以上のエンティティを返すことが可能な "***パーティション スキャン** _" です。 **PartitionKey** 値は特定のパーティションを識別し、プロパティ値はそのパーティション内のエンティティのサブセットを選択します。 例: $filter = PartitionKey eq '販売'、および LastName eq 'Smith'  
+* "***テーブル スキャン** _ " に _ *PartitionKey** は含まれません。また、一致するエンティティのテーブルを構成するパーティションのすべてを検索するため、非常に非効率的です。 フィルターが **RowKey** を使用する / しないにかかわらず、テーブルのスキャンが実行されます。 例: $filter = LastName eq 'Jones'  
 * クエリは複数のエンティティを **PartitionKey** と **RowKey** の順序で並べ替えて返します。 クライアント内でエンティティを再度並べ替えるのを防ぐため、最も一般的な並べ替え順序を定義する **RowKey** を選択します。  
 
-" **or** " を使用して **RowKey** 値に基づいてフィルターを指定した場合はパーティション スキャンが行われます。範囲クエリとしては扱われません。 そのため、$filter = PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322') のようなフィルターを使用するクエリの使用は避ける必要があります。  
+"**or**" を使用して **RowKey** 値に基づいてフィルターを指定した場合はパーティション スキャンが行われます。範囲クエリとしては扱われません。 そのため、$filter = PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322') のようなフィルターを使用するクエリの使用は避ける必要があります。  
 
 ストレージ クライアント ライブラリを使って効率的なクエリを実行するクライアント側コードの例については、  
 
@@ -79,7 +79,7 @@ Table service ソリューションでは、読み取り、書き込み、また
 選択した **PartitionKey** についてエンティティの挿入、更新、削除方法に関連する追加の検討事項があります。 詳細については、[データ変更のためのテーブルの設計](table-storage-design-for-modification.md)に関するセクションを参照してください。  
 
 ## <a name="optimizing-queries-for-the-table-service"></a>クエリを Table service 向けに最適化する
-Table service は 1 つのクラスター化インデックス内の **PartitionKey** と **RowKey** 値を使用して自動的にインデックスを作成します。そのため、ポイント クエリの使用が最も効果的です。 ただし、 **PartitionKey** と **RowKey** のクラスター化インデックス以外にはインデックスはありません。
+Table service は 1 つのクラスター化インデックス内の **PartitionKey** と **RowKey** 値を使用して自動的にインデックスを作成します。そのため、ポイント クエリの使用が最も効果的です。 ただし、**PartitionKey** と **RowKey** のクラスター化インデックス以外にはインデックスはありません。
 
 多くの設計で、複数の条件に基づいてエンティティを参照できるようにするという要件を満たす必要があります。 たとえば、電子メール、従業員 ID、姓に基づいて従業員エンティティを特定する場合などです。 「[テーブルの設計パターン](table-storage-design-patterns.md)」で説明されているパターンでは、このような要件の種類に対応しています。また、Table service がセカンダリ インデックスを提供しないことへの対処方法について説明します。  
 
@@ -88,7 +88,7 @@ Table service は 1 つのクラスター化インデックス内の **Partition
 * [インデックス エンティティのパターン](table-storage-design-patterns.md#index-entities-pattern) エンティティ一覧を返す、効率的な検索を有効にするインデックスのエンティティを管理します。  
 
 ## <a name="sorting-data-in-the-table-service"></a>Table service でデータを並べ替える
-Table service は、 **PartitionKey** 次に **RowKey** に基づいた昇順で並べ替え、エンティティを返します。 これらのキーは文字列値であり、数値を正しく並べ替えるには、固定長の値に変換し、ゼロ パディングを施す必要があります。 たとえば、従業員 ID 値を整数値の **RowKey** として使用する場合、従業員 ID を **123** から **00000123** に変換する必要があります。  
+Table service は、**PartitionKey** 次に **RowKey** に基づいた昇順で並べ替え、エンティティを返します。 これらのキーは文字列値であり、数値を正しく並べ替えるには、固定長の値に変換し、ゼロ パディングを施す必要があります。 たとえば、従業員 ID 値を整数値の **RowKey** として使用する場合、従業員 ID を **123** から **00000123** に変換する必要があります。  
 
 さまざまな順序 (名前、入社日など) で並べ替えられたデータを使う必要のあるアプリケーションは多数あります。 次のパターンでは、エンティティの並べ替え順序を代替する方法に対応しています。  
 

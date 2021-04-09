@@ -1,6 +1,6 @@
 ---
-title: Azure AD アプリケーション プロキシは:バージョンのリリース履歴
-description: この記事では、Azure AD アプリケーション プロキシのすべてのリリースを一覧表示し、新機能と修正された問題について説明します
+title: 'Azure Active Directory アプリケーション プロキシ: バージョン リリース履歴'
+description: この記事では、Azure Active Directory アプリケーション プロキシのすべてのリリースを一覧表示し、新機能と修正された問題について説明します。
 services: active-directory
 author: kenwith
 manager: daveba
@@ -8,15 +8,16 @@ ms.assetid: ''
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 07/22/2020
+ms.date: 02/17/2021
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.openlocfilehash: 6ba622bd52dc13fb0053b61b65529db6e6912611
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.reviewer: japere
+ms.openlocfilehash: 0244e0ca66f452649d3136eb122d1c2666182ae2
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686718"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200966"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD アプリケーション プロキシは:バージョンのリリース履歴
 この記事では、これまでにリリースされた Azure Active Directory (Azure AD) アプリケーション プロキシのバージョンと機能を示します。 Azure AD チームは、アプリケーション プロキシを新機能で定期的に更新しています。 アプリケーション プロキシ コネクタは、新しいバージョンがリリースされると自動的に更新されます。 
@@ -25,11 +26,11 @@ ms.locfileid: "101686718"
 
 以下は、関連リソースの一覧です。
 
-リソース |  詳細
---------- | --------- |
-アプリケーション プロキシを有効にする方法 | この[チュートリアル](application-proxy-add-on-premises-application.md)では、アプリケーション プロキシを有効にし、コネクタをインストールして登録するための前提条件について説明します。
-Azure AD アプリケーション プロキシ コネクタを理解する | [コネクタ管理](application-proxy-connectors.md)とコネクタの[自動アップグレード](application-proxy-connectors.md#automatic-updates)について詳しく説明します。
-Azure AD アプリケーション プロキシ コネクタのダウンロード |  [最新のコネクタをダウンロードします](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)。
+| リソース                                         | 詳細                                                      |
+| ------------------------------------------------ | ------------------------------------------------------------ |
+| アプリケーション プロキシを有効にする方法                  | この[チュートリアル](application-proxy-add-on-premises-application.md)では、アプリケーション プロキシを有効にし、コネクタをインストールして登録するための前提条件について説明します。 |
+| Azure AD アプリケーション プロキシ コネクタを理解する | [コネクタ管理](application-proxy-connectors.md)とコネクタの[自動アップグレード](application-proxy-connectors.md#automatic-updates)について詳しく説明します。 |
+| Azure AD アプリケーション プロキシ コネクタのダウンロード    | [最新のコネクタをダウンロードします](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)。 |
 
 ## <a name="1519750"></a>1.5.1975.0
 
@@ -41,6 +42,7 @@ Azure AD アプリケーション プロキシ コネクタのダウンロード
 -   Azure Government クラウド環境のサポートが強化されました。 Azure Government クラウドのコネクタを正しくインストールする手順については、[前提条件](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls)と[インストール手順](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud)を確認してください。
 - リモート デスクトップ サービス Web クライアントとアプリケーション プロキシの連携がサポートされます。 詳細については、「[Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行](application-proxy-integrate-with-remote-desktop-services.md)」を参照してください。
 - Websocket 拡張機能のネゴシエーションが改善されました。 
+- コネクタ グループと、リージョンに基づくアプリケーション プロキシ クラウド サービスとの間の最適化されたルーティングがサポートされます。 詳細については、[Azure Active Directory アプリケーション プロキシを使用したトラフィック フローの最適化](application-proxy-network-topology.md)に関する記事を参照してください。 
 
 ### <a name="fixed-issues"></a>修正された問題
 - 小文字の文字列を強制する Websocket の問題を修正しました。

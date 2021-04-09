@@ -11,10 +11,10 @@ ms.topic: include
 ms.reviewer: hux
 ms.custom: include file
 ms.openlocfilehash: a369eb7000fb8622a69f4205ffcc232ae9c9d242
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95545935"
 ---
 アーカイブ ストレージ内のデータを読み取るには、まず、BLOB の層をホットまたはクールに変更する必要があります。 このプロセスはリハイドレートと呼ばれ、完了までに数時間かかることがあります。 リハイドレートのパフォーマンスを最適化するために、サイズの大きい BLOB を使用することをお勧めします。 複数の小さな BLOB を同時にリハイドレートすると、余分に時間がかかる場合があります。 現在、High と Standard という 2 つのリハイドレート優先度があります。これは、[BLOB 層の設定](/rest/api/storageservices/set-blob-tier)操作または [BLOB のコピー](/rest/api/storageservices/copy-blob)操作に対するオプションの *x-ms-rehydrate-priority* プロパティを使用して設定できます。

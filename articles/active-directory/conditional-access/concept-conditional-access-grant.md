@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f0a84af0c7a4105327405cfb809f5101ab42931
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d01a750948f8e3c264b9bcffdaad3ae72fa40ac0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98938393"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579112"
 ---
 # <a name="conditional-access-grant"></a>条件付きアクセス:Grant
 
@@ -51,6 +51,8 @@ ms.locfileid: "98938393"
 ### <a name="require-multi-factor-authentication"></a>多要素認証が必要です
 
 このチェックボックスをオンにすると、ユーザーは Azure AD Multi-Factor Authentication を実行する必要があります。 Azure AD Multi-factor Authentication のデプロイの詳細については、「[クラウド ベースの Azure AD Multi-Factor Authentication のデプロイの計画](../authentication/howto-mfa-getstarted.md)」の記事を参照してください。
+
+[Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-overview) は、条件付きアクセス ポリシーでの多要素認証の要件を満たしています。 
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>デバイスは準拠としてマーク済みである必要がある
 

@@ -4,10 +4,10 @@ description: 名前空間の自動インフレを有効にしてスループッ�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1be564472011622b71b3066495748dfdbe6cc791
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96020808"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Azure Event Hubs のスループット単位を自動的にスケールアップする
@@ -52,7 +52,7 @@ Standard レベルの Event Hubs 名前空間の自動インフレを有効ま�
 1. **[Event Hubs 名前空間**] ページの **[Auto-inflate throughput units]\(自動インフレのスループット ユニット)** で **[無効]** を選択します。  
 
     ![[Event Hubs 名前空間] ページでスループット ユニットを選択する](./media/event-hubs-auto-inflate/select-throughput-units.png)
-2. **[スケールの設定**] ページで、 **[有効]** のチェック ボックスをオンにします (自動スケール機能が有効になっていなかった場合)。
+2. **[スケールの設定**] ページで、**[有効]** のチェック ボックスをオンにします (自動スケール機能が有効になっていなかった場合)。
 
     ![[有効] を選択する](./media/event-hubs-auto-inflate/scale-settings.png)
 3. スループット ユニットの **最大** 数を入力するか、スクロール バーを使用して値を設定します。 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f70116847a8743cf8b3cb56ff35f9d913f13f359
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: de179ab2fe1c02b3912262ee57fbb41a23d56164
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562354"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715464"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して VM の負荷を分散する内部ロード バランサーを作成する
 
@@ -32,7 +32,7 @@ Azure portal を使用して内部ロード バランサーと 3 つの仮想マ
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ---
 
@@ -68,7 +68,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
     | リソース グループ   | **CreateIntLBQS-rg** を選択します |
     | **インスタンスの詳細** |                                                                 |
     | 名前             | 「**myVNet**」と入力します                                    |
-    | リージョン           | **[西ヨーロッパ]** を選択します |
+    | リージョン           | **[(ヨーロッパ) 西ヨーロッパ]** を選択します |
 
 3. **[IP アドレス]** タブを選択するか、ページの下部にある **[Next: IP Addresses]\(次へ: IP アドレス\)** ボタンを選択します。
 
@@ -106,16 +106,17 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="create-load-balancer"></a>ロード バランサーの作成
 
-1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[Load Balancer]** を選択します。
-
-2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力または選択します。 
+1. **[リソースの作成]** を選択します。 
+2. 検索ボックスに「**ロード バランサー**」と入力します。 検索結果で **[ロード バランサー]** を選択します。
+3. **[ロード バランサー]** ページで、 **[作成]** を選択します。
+4. **[ロード バランサーの作成]** ページで、次の情報を入力または選択します。 
 
     | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | 前の手順で作成した **CreateIntLBQS-rg** を選択します。|
     | 名前                   | 「**myLoadBalancer**」と入力します                                   |
-    | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
+    | リージョン         | **[(ヨーロッパ) 西ヨーロッパ]** を選択します。                                        |
     | Type          | **[内部]** を選択します。                                        |
     | SKU           | **[Standard]** を選択します。 |
     | 仮想ネットワーク | 前のステップで作成した **myVNet** を選択します。 |
@@ -228,7 +229,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
     | リソース グループ | **CreateIntLBQS-rg** を選択します |
     | **インスタンスの詳細** |  |
     | 仮想マシン名 | 「**myVM1**」と入力します |
-    | リージョン | **[西ヨーロッパ]** を選択します |
+    | リージョン | **[(ヨーロッパ) 西ヨーロッパ]** を選択します |
     | 可用性オプション | **[可用性ゾーン]** を選択します |
     | 可用性ゾーン | **[1]** を選択します |
     | Image | **[Windows Server 2019 Datacenter]** を選択します |
@@ -303,7 +304,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
     | リソース グループ   | **CreateIntLBQS-rg** を選択します |
     | **インスタンスの詳細** |                                                                 |
     | 名前             | 「**myVNet**」と入力します                                    |
-    | リージョン           | **[西ヨーロッパ]** を選択します |
+    | リージョン           | **[(ヨーロッパ) 西ヨーロッパ]** を選択します |
 
 3. **[IP アドレス]** タブを選択するか、ページの下部にある **[Next: IP Addresses]\(次へ: IP アドレス\)** ボタンを選択します。
 
@@ -350,7 +351,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
     | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | 前の手順で作成した **CreateIntLBQS-rg** を選択します。|
     | 名前                   | 「**myLoadBalancer**」と入力します                                   |
-    | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
+    | リージョン         | **[(ヨーロッパ) 西ヨーロッパ]** を選択します。                                        |
     | Type          | **[内部]** を選択します。                                        |
     | SKU           | **[Basic]** を選択します |
     | 仮想ネットワーク | 前のステップで作成した **myVNet** を選択します。 |

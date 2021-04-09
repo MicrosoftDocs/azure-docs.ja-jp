@@ -7,10 +7,10 @@ ms.date: 02/16/2021
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 5dd6183bf88c167adb2f084c319cd90b94351dfb
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100560489"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service へのローカル Git デプロイ
@@ -123,7 +123,7 @@ Set-AzResource -PropertyObject $PropertiesObject -ResourceGroupName <group-name>
    
 1. `git push azure master` を使用して Azure リモートにプッシュします。 
    
-1. **[Git Credential Manager]\(Git 資格情報マネージャー\)** ウィンドウには、自分の Azure サインイン資格情報ではなく、自分の[ユーザースコープまたはアプリケーションスコープの資格情報](#configure-a-deployment-user)を入力します。
+1. **[Git Credential Manager]\(Git 資格情報マネージャー\)** ウィンドウには、自分の Azure サインイン資格情報ではなく、自分の [ユーザースコープまたはアプリケーションスコープの資格情報](#configure-a-deployment-user)を入力します。
 
     自分の Git リモート URL に既にユーザー名とパスワードが含まれている場合、プロンプトは表示されません。 
    

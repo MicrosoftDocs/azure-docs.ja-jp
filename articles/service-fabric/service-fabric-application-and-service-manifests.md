@@ -4,10 +4,10 @@ description: マニフェストを使って Service Fabric のアプリケーシ
 ms.topic: conceptual
 ms.date: 8/12/2019
 ms.openlocfilehash: fcf4c7611f0a6f52c28b234717b9244ac58ad2d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86248222"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric のアプリケーション マニフェストとサービス マニフェスト
@@ -74,7 +74,7 @@ SetupEntryPoint の構成方法について詳しくは、「[エントリ ポ�
 
 **DataPackage** (前の例では設定されていません) は、実行時にプロセスで消費される任意の静的データを含む **Name** 属性で名前が付けられたフォルダーを宣言します。
 
-**ConfigPackage** は、*Settings.xml* ファイルを含む **Name** 属性を使用して名前が付けられたフォルダーを宣言します。 この設定ファイルには、実行時にプロセスが読み取るユーザー定義のキー値ペアの設定のセクションが含まれています。 アップグレード中に **ConfigPackage** の**バージョン**のみが変更された場合、実行中のプロセスは再起動されません。 代わりに、コールバックは構成設定が変更されたことをプロセスに通知して、動的に再読み込みされるようにします。 次に *Settings.xml* ファイルの一例を示します。
+**ConfigPackage** は、*Settings.xml* ファイルを含む **Name** 属性を使用して名前が付けられたフォルダーを宣言します。 この設定ファイルには、実行時にプロセスが読み取るユーザー定義のキー値ペアの設定のセクションが含まれています。 アップグレード中に **ConfigPackage** の **バージョン** のみが変更された場合、実行中のプロセスは再起動されません。 代わりに、コールバックは構成設定が変更されたことをプロセスに通知して、動的に再読み込みされるようにします。 次に *Settings.xml* ファイルの一例を示します。
 
 ```xml
 <Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -85,11 +85,11 @@ SetupEntryPoint の構成方法について詳しくは、「[エントリ ポ�
 </Settings>
 ```
 
-Service Fabric のサービス **エンドポイント**は、Service Fabric リソースの例です。 Service Fabric リソースは、コンパイルしたコードを変更せずに宣言/変更することができます。 サービス マニフェストで指定した Service Fabric リソースへのアクセスは、**SecurityGroup** を使ってアプリケーション マニフェスト内で制御できます。 サービス マニフェストでエンドポイント リソースが定義されていると、ポートが明示的に指定されていない場合、Service Fabric は予約済みのアプリケーション ポートの範囲からポートを割り当てます。 詳しくは、[エンドポイント リソースの指定またはオーバーライド](service-fabric-service-manifest-resources.md)に関するページをご覧ください。
+Service Fabric のサービス **エンドポイント** は、Service Fabric リソースの例です。 Service Fabric リソースは、コンパイルしたコードを変更せずに宣言/変更することができます。 サービス マニフェストで指定した Service Fabric リソースへのアクセスは、**SecurityGroup** を使ってアプリケーション マニフェスト内で制御できます。 サービス マニフェストでエンドポイント リソースが定義されていると、ポートが明示的に指定されていない場合、Service Fabric は予約済みのアプリケーション ポートの範囲からポートを割り当てます。 詳しくは、[エンドポイント リソースの指定またはオーバーライド](service-fabric-service-manifest-resources.md)に関するページをご覧ください。
 
  
 > [!WARNING]
-> 設計上、静的ポートは、ClusterManifest で指定されたアプリケーションのポート範囲と重複しないようにします。 静的ポートを指定する場合は、アプリケーションのポート範囲外に割り当てる必要があります。そうしないと、ポートの競合が発生します。 リリース 6.5CU2 では、このような競合が検出された場合に**正常性に関する警告**が発行されますが、デプロイは配布された 6.5 の動作と同期して続行されます。 ただし、次のメジャー リリースからはアプリケーションをデプロイできなくなる可能性があります。
+> 設計上、静的ポートは、ClusterManifest で指定されたアプリケーションのポート範囲と重複しないようにします。 静的ポートを指定する場合は、アプリケーションのポート範囲外に割り当てる必要があります。そうしないと、ポートの競合が発生します。 リリース 6.5CU2 では、このような競合が検出された場合に **正常性に関する警告** が発行されますが、デプロイは配布された 6.5 の動作と同期して続行されます。 ただし、次のメジャー リリースからはアプリケーションをデプロイできなくなる可能性があります。
 >
 
 <!--
@@ -155,9 +155,9 @@ For more information about other features supported by service manifests, refer 
 
 **DefaultServices** は、アプリケーションがこのアプリケーションの種類に対してインスタンス化されるたびに自動的に作成されるサービス インスタンスを宣言します。 既定のサービスは便利で、作成後はすべての面で通常のサービスと同様に動作します。 アプリケーション インスタンスの他のサービスと共にアップグレードされ、削除することもできます。 アプリケーション マニフェストは、複数の既定サービスを含むことができます。
 
-**Certificates** (前の例では設定されていません) では、[HTTPS エンドポイントのセットアップ](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service)または[アプリケーション マニフェストでのシークレットの暗号化](service-fabric-application-secret-management.md)に使われる証明書を宣言します。
+**Certificates** (前の例では設定されていません) では、[HTTPS エンドポイントのセットアップ](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service)または [アプリケーション マニフェストでのシークレットの暗号化](service-fabric-application-secret-management.md)に使われる証明書を宣言します。
 
-**配置の制約**は、サービスを実行する場所を定義するステートメントです。 これらのステートメントは、1 つまたは複数のノードのプロパティに対して選択した個々のサービスに接続されます。 詳細については、「[配置の制約とノードのプロパティの構文](./service-fabric-cluster-resource-manager-cluster-description.md#placement-constraints-and-node-property-syntax)」を参照してください。
+**配置の制約** は、サービスを実行する場所を定義するステートメントです。 これらのステートメントは、1 つまたは複数のノードのプロパティに対して選択した個々のサービスに接続されます。 詳細については、「[配置の制約とノードのプロパティの構文](./service-fabric-cluster-resource-manager-cluster-description.md#placement-constraints-and-node-property-syntax)」を参照してください。
 
 **Policies** (前の例では設定されていません) では、サービスが Service Fabric ランタイムにアクセスできるかどうかなど、アプリケーション レベルで設定するログ コレクション、[既定の実行アカウント](service-fabric-application-runas-security.md)、[正常性](service-fabric-health-introduction.md#health-policies)、[セキュリティ アクセス](service-fabric-application-runas-security.md)の各ポリシーを記述します。
 

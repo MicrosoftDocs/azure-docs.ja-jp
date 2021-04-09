@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: a26cfaca466e01b154c65b27895f3004f6320e5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91326339"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル:CI/CD を使用して Service Fabric クラスターへアプリケーションをデプロイする
@@ -36,7 +36,7 @@ ms.locfileid: "91326339"
 このチュートリアルを開始する前に
 
 * Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
-* [Visual Studio 2019 をインストール](https://www.visualstudio.com/)し、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
+* [Visual Studio 2019 をインストール](https://www.visualstudio.com/)し、**Azure 開発** ワークロードと **ASP.NET および Web 開発** ワークロードをインストールします。
 * [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
 * [このチュートリアルに従って](service-fabric-tutorial-create-vnet-and-windows-cluster.md)、たとえば、Azure 上に Windows Service Fabric クラスターを作成します。
 * [Azure DevOps 組織](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)を作成します。 これにより、Azure DevOps でプロジェクトを作成し、Azure Pipelines を使用することができます。
@@ -51,7 +51,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="prepare-a-publish-profile"></a>発行プロファイルの準備
 
-ここまでで、[アプリケーションを作成し](service-fabric-tutorial-create-dotnet-app.md)、[アプリケーションを Azure にデプロイ](service-fabric-tutorial-deploy-app-to-party-cluster.md)しました。これで、継続的インテグレーションをセットアップする準備ができました。  まず、Azure Pipelines 内で実行されるデプロイ プロセスで使用する発行プロファイルを、アプリケーション内に準備します。  発行プロファイルは、あらかじめ作成したクラスターを対象とするように構成する必要があります。  Visual Studio を起動し、既存の Service Fabric アプリケーション プロジェクトを開きます。  **ソリューション エクスプローラー**で、プロジェクトを右クリックし、 **[発行]** を選択します。
+ここまでで、[アプリケーションを作成し](service-fabric-tutorial-create-dotnet-app.md)、[アプリケーションを Azure にデプロイ](service-fabric-tutorial-deploy-app-to-party-cluster.md)しました。これで、継続的インテグレーションをセットアップする準備ができました。  まず、Azure Pipelines 内で実行されるデプロイ プロセスで使用する発行プロファイルを、アプリケーション内に準備します。  発行プロファイルは、あらかじめ作成したクラスターを対象とするように構成する必要があります。  Visual Studio を起動し、既存の Service Fabric アプリケーション プロジェクトを開きます。  **ソリューション エクスプローラー** で、プロジェクトを右クリックし、 **[発行]** を選択します。
 
 継続的インテグレーション ワークフローに使用するアプリケーション プロジェクト内で目標一覧表 (たとえば Cloud) を選択します。  クラスター接続エンドポイントを指定します。  Azure DevOps 内の各デプロイ用にアプリケーションがアップグレードされるよう、 **[アプリケーションのアップグレード]** チェックボックスをオンにします。  **[保存]** ハイパーリンクをクリックして設定を発行プロファイルに保存し、 **[キャンセル]** をクリックしてダイアログ ボックスを閉じます。
 
@@ -63,7 +63,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 Visual Studio の右下隅のステータス バーにある **[ソース管理** ->  **Git に追加]** を選択して、プロジェクトの新しいローカル Git リポジトリを作成します。
 
-**チーム エクスプローラー**の **[プッシュ]** ビューで、 **[Push to Azure DevOps]\(Azure DevOps へのプッシュ\)** の下にある **[Git リポジトリの発行]** ボタンを選択します。
+**チーム エクスプローラー** の **[プッシュ]** ビューで、 **[Push to Azure DevOps]\(Azure DevOps へのプッシュ\)** の下にある **[Git リポジトリの発行]** ボタンを選択します。
 
 ![Visual Studio でのチーム エクスプローラーの同期ウィンドウのスクリーンショット。 [Azure DevOps へプッシュ] の [Git リポジトリの発行] ボタンが強調表示されています。][push-git-repo]
 
@@ -117,9 +117,9 @@ Web ブラウザーを開き、新しいプロジェクト ([https://&lt;myaccou
 
 **[Add new Service Fabric Connection]\(新しい Service Fabric 接続\)** ビューで、**[証明書ベース]** または **[Azure Active Directory]** 認証を選択します。  接続名 "mysftestcluster" とクラスター エンドポイント "tcp://mysftestcluster.southcentralus.cloudapp.azure.com:19000" (またはデプロイ先のクラスターのエンドポイント) を指定します。
 
-証明書ベースの認証の場合は、クラスターの作成に使用したサーバー証明書の**サーバー証明書拇印**を追加します。  **[クライアント証明書]** で、クライアント証明書ファイルの Base 64 エンコーディングを追加します。 証明書の Base 64 でエンコードされた表現を取得する方法については、そのフィールドのヘルプ ポップアップをご覧ください。 また、証明書の**パスワード**も追加します。  別のクライアント証明書がない場合は、クラスター証明書またはサーバー証明書を使用できます。
+証明書ベースの認証の場合は、クラスターの作成に使用したサーバー証明書の **サーバー証明書拇印** を追加します。  **[クライアント証明書]** で、クライアント証明書ファイルの Base 64 エンコーディングを追加します。 証明書の Base 64 でエンコードされた表現を取得する方法については、そのフィールドのヘルプ ポップアップをご覧ください。 また、証明書の **パスワード** も追加します。  別のクライアント証明書がない場合は、クラスター証明書またはサーバー証明書を使用できます。
 
-Azure Active Directory の資格情報の場合は、クラスターの作成に使用したサーバー証明書の**サーバー証明書拇印**を追加し、**[ユーザー名]** フィールドと **[パスワード]** フィールドにクラスターへの接続で使用する資格情報を指定します。
+Azure Active Directory の資格情報の場合は、クラスターの作成に使用したサーバー証明書の **サーバー証明書拇印** を追加し、**[ユーザー名]** フィールドと **[パスワード]** フィールドにクラスターへの接続で使用する資格情報を指定します。
 
 **[追加]** をクリックして、クラスター接続を保存します。
 
@@ -151,7 +151,7 @@ Azure DevOps へのコード変更をチェックインして、継続的イン�
 
 Azure Pipelines へ変更をプッシュすると、ビルドが自動的にトリガーされます。  ビルド パイプラインが正常に完了すると、リリースは自動的に作成され、クラスター上のアプリケーションのアップグレードが開始されます。
 
-ビルドの進行状況を確認するには、Visual Studio の**チーム エクスプローラー**で **[ビルド]** タブに切り替えます。  ビルドが正常に実行されることを確認したら、クラスターにアプリケーションをデプロイするリリース パイプラインを定義します。
+ビルドの進行状況を確認するには、Visual Studio の **チーム エクスプローラー** で **[ビルド]** タブに切り替えます。  ビルドが正常に実行されることを確認したら、クラスターにアプリケーションをデプロイするリリース パイプラインを定義します。
 
 デプロイが成功し、アプリケーションがクラスターで実行されていることを確認します。  Web ブラウザーを開き、`http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/` に移動します。  この例では、アプリケーション バージョンが "1.0.0.20170815.3" である点に注意してください。
 

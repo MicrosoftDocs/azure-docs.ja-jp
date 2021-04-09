@@ -3,12 +3,12 @@ title: 複数のラボとサブスクリプションにわたる Azure DevTest L
 description: 複数のラボとサブスクリプションにわたって Azure DevTest Labs の使用状況を報告する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d789b9849ec798a396e99420649792937422470f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 1e4d1f0abb5596c7fd9d22740bf052827c2ca666
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789940"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "102452647"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>複数のラボとサブスクリプションにわたって Azure DevTest Labs の使用状況を報告する
 
@@ -25,7 +25,7 @@ ms.locfileid: "98789940"
 DevTest Labs のリソース使用率をエクスポートする前に、Azure Storage アカウントを設定し、使用状況データを含むさまざまなファイルを格納できるようにしておく必要があります。 データのエクスポートを実行するには、次の 2 つの一般的な方法があります。
 
 * [DevTest Labs REST API](/rest/api/dtl/labs/exportresourceusage) 
-* アクション `exportResourceUsage`、ラボ リソース ID、および必要なパラメーターを指定した PowerShell Az.Resource モジュール [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2)。 
+* アクション `exportResourceUsage`、ラボ リソース ID、および必要なパラメーターを指定した PowerShell Az.Resource モジュール [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction)。 
 
     [個人データのエクスポートまたは削除](personal-data-delete-export.md)に関する記事には、サンプル PowerShell スクリプトとエクスポートされるデータに関する詳細情報が記載されています。 
 
@@ -65,7 +65,7 @@ Azure 関数では、長期的なストレージにデータをプッシュす�
 * 複合グループの作成
 * データの集計。
 
-一般的なストレージ ソリューションとして[SQL Server](https://azure.microsoft.com/services/sql-database/)、[Azure Data Lake](https://azure.microsoft.com/services/storage/data-lake-storage/)、および [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) があります。 どの長期的なストレージ ソリューションを選択するかは、優先事項によって変わります。 データを視覚化するときに、相互作用の可用性に関して提供される機能に応じて、ツールを選択することを検討してください。
+いくつかの一般的なストレージ ソリューションとして、[SQL Server](https://azure.microsoft.com/services/sql-database/)、[Azure Data Lake](https://azure.microsoft.com/services/storage/data-lake-storage/)、および [Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) があります。 どの長期的なストレージ ソリューションを選択するかは、優先事項によって変わります。 データを視覚化するときに、相互作用の可用性に関して提供される機能に応じて、ツールを選択することを検討してください。
 
 ## <a name="visualizing-data-and-gathering-insights"></a>データの視覚化と分析情報の収集
 

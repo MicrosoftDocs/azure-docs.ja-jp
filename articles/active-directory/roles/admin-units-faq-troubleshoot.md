@@ -14,16 +14,16 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fb61388b13b912166c9c07b9ee28b365c4a63b9
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: c1f41dca3b52ce75ba2342506f621cca0618a3bf
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740382"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102565888"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD の管理単位:トラブルシューティングと FAQ
 
-Azure Active Directory (Azure AD) では、きめ細かい管理制御を行うために、1 つ以上の管理単位に制限されたスコープでユーザーを Azure AD ロールに割り当てることができます。 一般的なタスク用の PowerShell スクリプトのサンプルについては、「[管理単位の操作](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true)」を参照してください。
+Azure Active Directory (Azure AD) では、きめ細かい管理制御を行うために、1 つ以上の管理単位に制限されたスコープでユーザーを Azure AD ロールに割り当てることができます。 一般的なタスク用の PowerShell スクリプトのサンプルについては、「[管理単位の操作](/powershell/azure/active-directory/working-with-administrative-units)」を参照してください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -69,9 +69,9 @@ Windows Server Active Directory の組織単位などの管理単位は、さま
 
 **Q:PowerShell と Graph API では管理単位はサポートされていますか?**
 
-**A:** はい。 管理単位のサポートについては、[PowerShell コマンドレットのドキュメント](/powershell/module/Azuread/?view=azureadps-2.0&preserve-view=true)と[サンプル スクリプト](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true)を参照してください。
+**A:** はい。 管理単位のサポートについては、[PowerShell コマンドレットのドキュメント](/powershell/module/Azuread/)と[サンプル スクリプト](/powershell/azure/active-directory/working-with-administrative-units)を参照してください。
 
-Microsoft Graph で [administrativeUnit リソースの種類](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true)のサポートを検索してください。
+Microsoft Graph で [administrativeUnit リソースの種類](/graph/api/resources/administrativeunit)のサポートを検索してください。
 
 ## <a name="next-steps"></a>次のステップ
 

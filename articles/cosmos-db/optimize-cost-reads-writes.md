@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 3f4c33a88d9a8fbf2c3d64135d93da54cf75fab3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 36ecef007e10f9a090dbabc8b5a91fd473930141
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097507"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102633854"
 ---
 # <a name="optimize-request-cost-in-azure-cosmos-db"></a>Azure Cosmos DB での要求コストを最適化する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -105,7 +105,7 @@ Azure Cosmos DB では、プロビジョニング済みスループット モデ
 - 項目のサイズ。
 - [インデックス作成ポリシー](index-policy.md)の対象となり、インデックスを作成する必要があるプロパティの数。
 
-プロパティが 5 つ未満の 1 KB 項目を挿入するには、約 5 RU のコストがかかります。 項目を置換するには、同じ項目を挿入するのに必要な使用量の 2 倍のコストがかかります。
+インデックスを作成せずに 1 KB の項目を挿入すると、約 5.5 RU のコストがかかります。 項目を置換するには、同じ項目を挿入するのに必要な使用量の 2 倍のコストがかかります。
 
 ### <a name="optimizing-writes"></a>書き込みの最適化
 

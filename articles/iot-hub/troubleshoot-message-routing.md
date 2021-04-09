@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: asrastog
-ms.openlocfilehash: 29127a9dff42c0f733e3721d1ea5fea7350e774e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3abff5645775d724042acba3ee2461c7cad771a7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547361"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103149666"
 ---
 # <a name="troubleshooting-message-routing"></a>メッセージ ルーティングのトラブルシューティング
 
@@ -20,7 +20,7 @@ ms.locfileid: "92547361"
 
 ## <a name="monitoring-message-routing"></a>メッセージ ルーティングの監視
 
-[メッセージ ルーティングとエンドポイントに関連する IoT Hub メトリック](monitor-iot-hub-reference.md#routing-metrics)を監視して、送信されたメッセージの概要を確認することをお勧めします。 また、 [IoT Hub リソース ログの **ルート**](monitor-iot-hub-reference.md#routes)に対する操作を、カスタム処理を実行するために、Azure Monitor ログ、Event Hubs、Azure Storage に送信するための診断設定を作成することもできます。 メトリック、リソース ログ、診断設定の使用の詳細については、[IoT Hub の監視](monitor-iot-hub.md)に関する記事を参照してください。 チュートリアルについては、[IoT Hub でのメトリックとリソース ログの設定と使用](tutorial-use-metrics-and-diags.md)に関するページを参照してください。
+[メッセージ ルーティングとエンドポイントに関連する IoT Hub メトリック](monitor-iot-hub-reference.md#routing-metrics)を監視して、送信されたメッセージの概要を確認することをお勧めします。 また、[IoT Hub リソース ログの **ルート**](monitor-iot-hub-reference.md#routes)に対する操作を、カスタム処理を実行するために、Azure Monitor ログ、Event Hubs、Azure Storage に送信するための診断設定を作成することもできます。 メトリック、リソース ログ、診断設定の使用の詳細については、[IoT Hub の監視](monitor-iot-hub.md)に関する記事を参照してください。 チュートリアルについては、[IoT Hub でのメトリックとリソース ログの設定と使用](tutorial-use-metrics-and-diags.md)に関するページを参照してください。
 
 また、どのルートでもクエリに一致しないメッセージを維持する場合は、[フォールバック ルート](iot-hub-devguide-messages-d2c.md#fallback-route)を有効にすることをお勧めします。 これらは、構成されている保持日数の間、[組み込みエンドポイント](iot-hub-devguide-messages-read-builtin.md)に保持できます。
 
@@ -37,15 +37,15 @@ ms.locfileid: "92547361"
 
 #### <a name="the-routing-metrics-for-this-endpoint"></a>このエンドポイントのルーティング メトリック
 
-[ルーティングに関連するすべての IoT Hub メトリック](monitor-iot-hub-reference.md#routing-metrics)には、 *Routing* がプレフィックスとして付けられます。 複数のメトリックから得た情報を組み合わせることで、問題の根本原因を特定することができます。 たとえば、メトリック **Routing Delivery Attempts** (ルーティングの配信試行) を使用すると、エンドポイントに配信されたメッセージの数、またはどのルートのクエリにも一致せず、フォールバック ルートが無効になっていたときに破棄されたメッセージの数を特定できます。 **Routing Latency** (ルーティングの待機時間) メトリックを調べて、メッセージ配信の待機時間が一定または増加しているかどうかを確認します。 待機時間が長くなると、特定のエンドポイントに問題があることを示している可能性があります。[エンドポイントの正常性](#the-health-of-the-endpoint)を確認することをお勧めします。 これらのルーティング メトリックには、エンドポイントの種類、特定のエンドポイント名、メッセージが配信されなかった理由など、メトリックに関する詳細情報を提供する[ディメンション](monitor-iot-hub-reference.md#metric-dimensions)もあります。
+[ルーティングに関連するすべての IoT Hub メトリック](monitor-iot-hub-reference.md#routing-metrics)には、*Routing* がプレフィックスとして付けられます。 複数のメトリックから得た情報を組み合わせることで、問題の根本原因を特定することができます。 たとえば、メトリック **Routing Delivery Attempts** (ルーティングの配信試行) を使用すると、エンドポイントに配信されたメッセージの数、またはどのルートのクエリにも一致せず、フォールバック ルートが無効になっていたときに破棄されたメッセージの数を特定できます。 **Routing Latency** (ルーティングの待機時間) メトリックを調べて、メッセージ配信の待機時間が一定または増加しているかどうかを確認します。 待機時間が長くなると、特定のエンドポイントに問題があることを示している可能性があります。[エンドポイントの正常性](#the-health-of-the-endpoint)を確認することをお勧めします。 これらのルーティング メトリックには、エンドポイントの種類、特定のエンドポイント名、メッセージが配信されなかった理由など、メトリックに関する詳細情報を提供する[ディメンション](monitor-iot-hub-reference.md#metric-dimensions)もあります。
 
 #### <a name="the-resource-logs-for-any-operational-issues"></a>運用上の問題のリソース ログ
 
-[**ルート** リソース ログ](monitor-iot-hub-reference.md#routes)を確認して、ルーティングとエンドポイントの[操作](#operation-names)に関する詳細情報を取得するか、エラーおよび関連する[エラー コード](#common-error-codes)を特定して問題をより深く理解します。 たとえば、ログ内の操作名 **RouteEvaluationError** は、メッセージ形式に問題があるため、ルートを評価できなかったことを示します。 この問題を軽減するには、特定の[操作名](#operation-names)に関するヒントを参考にしてください。 イベントがエラーとしてログに記録される場合、そのログにより、評価が失敗した理由に関する詳細情報も提供されます。 たとえば、操作名が **EndpointUnhealthy** の場合、[エラー コード](#common-error-codes) 403004 は、エンドポイントの領域が不足していることを示します。
+[**ルート** リソース ログ](monitor-iot-hub-reference.md#routes)を確認して、ルーティングとエンドポイントの [操作](#operation-names)に関する詳細情報を取得するか、エラーおよび関連する [エラー コード](#common-error-codes)を特定して問題をより深く理解します。 たとえば、ログ内の操作名 **RouteEvaluationError** は、メッセージ形式に問題があるため、ルートを評価できなかったことを示します。 この問題を軽減するには、特定の[操作名](#operation-names)に関するヒントを参考にしてください。 イベントがエラーとしてログに記録される場合、そのログにより、評価が失敗した理由に関する詳細情報も提供されます。 たとえば、操作名が **EndpointUnhealthy** の場合、[エラー コード](#common-error-codes) 403004 は、エンドポイントの領域が不足していることを示します。
 
 #### <a name="the-health-of-the-endpoint"></a>エンドポイントの正常性
 
-エンドポイントの[正常性状態](iot-hub-devguide-endpoints.md#custom-endpoints)を取得するには、REST API の [Get Endpoint Health](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) を使用します。 *Get Endpoint Health* API によって、最後にメッセージがエンドポイントに正常に送信された時刻、 [最新の既知のエラー](#last-known-errors-for-iot-hub-routing-endpoints)、最新の既知のエラーの時刻、およびこのエンドポイントに対して送信が試行された最後の時刻に関する情報も提供されます。 特定の[最新の既知のエラー](#last-known-errors-for-iot-hub-routing-endpoints)に対して提供される軽減策を使用します。
+エンドポイントの[正常性状態](iot-hub-devguide-endpoints.md#custom-endpoints)を取得するには、REST API の [Get Endpoint Health](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) を使用します。 *Get Endpoint Health* API によって、最後にメッセージがエンドポイントに正常に送信された時刻、[最新の既知のエラー](#last-known-errors-for-iot-hub-routing-endpoints)、最新の既知のエラーの時刻、およびこのエンドポイントに対して送信が試行された最後の時刻に関する情報も提供されます。 特定の[最新の既知のエラー](#last-known-errors-for-iot-hub-routing-endpoints)に対して提供される軽減策を使用します。
 
 ### <a name="i-suddenly-stopped-getting-messages-at-the-built-in-endpoint"></a>組み込みのエンドポイントでのメッセージの受信が突然停止しました
 
@@ -53,7 +53,7 @@ ms.locfileid: "92547361"
 
 #### <a name="was-a-new-route-created"></a>新しいルートは作成されましたか?
 
-ルートの作成後、組み込みのエンドポイントへのルートが作成されていないと、そのエンドポイントへのデータ フローは停止します。 新しいルートが追加された場合に、確実にメッセージが組み込みのエンドポイントに引き続き流れるようにするには、" *イベント* " エンドポイントへのルートを構成します。 
+ルートの作成後、組み込みのエンドポイントへのルートが作成されていないと、そのエンドポイントへのデータ フローは停止します。 新しいルートが追加された場合に、確実にメッセージが組み込みのエンドポイントに引き続き流れるようにするには、"*イベント*" エンドポイントへのルートを構成します。 
 
 #### <a name="was-the-fallback-route-disabled"></a>フォールバック ルートは無効になっていましたか?
 
@@ -82,4 +82,4 @@ Azure portal の [メッセージ ルーティング] ブレードで、フォ�
 
 ## <a name="next-steps"></a>次のステップ
 
-さらに支援が必要な場合は、[MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。
+さらにサポートが必要な場合は、[Microsoft Q&A と Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートにお問い合わせください。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。

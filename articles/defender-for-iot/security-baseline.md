@@ -8,10 +8,10 @@ ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: adb9cb234e76da5dab4503c59eb19ba6645e56c8
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101092654"
 ---
 # <a name="azure-security-baseline-for-azure-defender-for-iot"></a>Azure Defender for IoT 用の Azure セキュリティ ベースライン

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jeedes
 ms.openlocfilehash: 5543fa8525c85bdc866143f04f55eca5b4a6e0ee
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92517669"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-verme"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Verme の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Verme では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* Verme では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
 
 * Verme を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
@@ -51,7 +51,7 @@ Azure AD への Verme の統合を構成するには、ギャラリーからマ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Verme** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Verme**」と入力します。
 1. 結果のパネルから **[Verme]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -129,7 +129,7 @@ Verme に対する Azure AD SSO を構成してテストするには、次の構
 
 ## <a name="configure-verme-sso"></a>Verme SSO の構成
 
-**Verme** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Verme サポート チーム](mailto:support@verme.ru)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Verme** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Verme サポート チーム](mailto:support@verme.ru)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-verme-test-user"></a>Verme テスト ユーザーの作成
 

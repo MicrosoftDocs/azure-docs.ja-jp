@@ -4,12 +4,12 @@ description: Azure Backup サービスの概要を紹介し、このサービス
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 6a30e31dd1462e427faf64966a38c94f9fa56df6
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 2879d104d534733651ba76ab5521541adad0a51c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624474"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725358"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Azure Backup サービスとは
 
@@ -26,6 +26,7 @@ Azure Backup サービスは、データをバックアップし、それを Mic
 - **Azure VM 内の SQL Server** -  [Azure VM 上で動作する SQL Server データベースをバックアップします](backup-azure-sql-database.md)。
 - **Azure VM 内の SAP HANA データベース** - [Azure VM 上で動作する SAP HANA データベースをバックアップします](backup-azure-sap-hana-database.md)。
 - **Azure Database for PostgreSQL サーバー (プレビュー)**  -  [Azure PostgreSQL データベースをバックアップして最大 10 年保持します。](backup-azure-database-postgresql.md)
+- **Azure BLOB (プレビュー)**  - [Azure BLOB の運用バックアップの概要 (プレビュー)](blob-backup-overview.md)
 
 ![Azure Backup の概要](./media/backup-overview/azure-backup-overview.png)
 

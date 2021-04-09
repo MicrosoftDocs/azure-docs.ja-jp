@@ -4,10 +4,10 @@ description: この記事では、Azure Virtual Machines 上で実行されて�
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: c502b7741acd343baefe5e2bf8b95cfc02e46688
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96021675"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Azure VM 上の SAP HANA データベースの復元
@@ -262,7 +262,7 @@ CRR が有効になっているかどうかを確認するには、「[リージ
 
 CRR が有効になっている場合は、セカンダリ リージョンのバックアップ項目を表示できます。
 
-1. ポータルから **[Recovery Services コンテナー]**  >  **[バックアップ項目]** に移動します。
+1. ポータルから **[Recovery Services コンテナー]** 、 **[バックアップ項目]** の順に移動します。
 1. セカンダリ リージョンの項目を表示するには、 **[セカンダリ リージョン]** を選択します。
 
 >[!NOTE]

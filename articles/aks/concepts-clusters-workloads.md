@@ -4,12 +4,12 @@ description: Kubernetes の基本のクラスターおよびワークロード�
 services: container-service
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 7485631660395e03c558167c321e6091c6fac755
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2a1718d906ab5f51ea71be9b304028576c9fffa0
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373234"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122444"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 
@@ -61,7 +61,7 @@ AKS は、専用の API サーバーや Scheduler などを備えたシングル
 
 - `kubelet` は、コントロール プレーンからのオーケストレーション要求と、要求されたコンテナーの実行のスケジュール設定を処理する Kubernetes エージェントです。
 - 仮想ネットワークは、各ノード上の *kube-proxy* によって処理されます。 プロキシはネットワーク トラフィックをルーティングして、サービスとポッドの IP アドレスを管理します。
-- *コンテナー ランタイム* は、コンテナー化されたアプリケーションが仮想ネットワークやストレージなどの追加リソースを実行して操作できるようにするためのコンポーネントです。 AKS では、Moby はコンテナー ランタイムとして使用されます。
+- *コンテナー ランタイム* は、コンテナー化されたアプリケーションが仮想ネットワークやストレージなどの追加リソースを実行して操作できるようにするためのコンポーネントです。 Kubernetes バージョン 1.19 以降のノード プールを使用する AKS クラスターでは、コンテナー ランタイムとして `containerd` が使用されます。 Kubernetes v1.19 よりも前のノード プールを使用する AKS クラスターでは、コンテナー ランタイムとして [Moby](https://mobyproject.org/) (アップストリーム Docker) が使用されます。
 
 ![Kubernetes ノードの Azure 仮想マシンとサポート対象リソース](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
@@ -69,7 +69,7 @@ AKS は、専用の API サーバーや Scheduler などを備えたシングル
 
 AKS では、クラスター内のノードに対する VM イメージは現在、Ubuntu Linux または Windows Server 2019 に基づいています。 AKS クラスターを作成するか、またはノード数をスケールアウトすると、Azure プラットフォームが、要求された数の VM を作成して構成します。 手動の構成を実行する必要はありません。 エージェント ノードは、標準の仮想マシンとして課金されるので、使用している VM サイズに対して付与されている割引 ([Azure の予約][reservation-discounts]を含む) は、自動的に適用されます。
 
-別のホスト OS、コンテナー ランタイムを使用する必要がある場合や、クラスター パッケージを組み入れる必要がある場合、[aks-engine][aks-engine] を使用して独自の Kubernetes クラスターをデプロイできます。 アップストリームの `aks-engine` リリースでは構成オプションに注目し、AKS クラスターで公式にサポートされる前にそれらを提供しています。 たとえば、Moby 以外のコンテナー ランタイムの使用を検討している場合、`aks-engine` を使用して、現在のニーズに合った Kubernetes クラスターを構成してデプロイできます。
+別のホスト OS、コンテナー ランタイムを使用する必要がある場合や、クラスター パッケージを組み入れる必要がある場合、[aks-engine][aks-engine] を使用して独自の Kubernetes クラスターをデプロイできます。 アップストリームの `aks-engine` リリースでは構成オプションに注目し、AKS クラスターで公式にサポートされる前にそれらを提供しています。 たとえば、`containerd` または Moby 以外のコンテナー ランタイムの使用を検討している場合、`aks-engine` を使用して、現在のニーズに合った Kubernetes クラスターを構成してデプロイできます。
 
 ### <a name="resource-reservations"></a>リソース予約
 

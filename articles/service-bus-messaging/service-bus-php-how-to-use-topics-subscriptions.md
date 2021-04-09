@@ -5,13 +5,13 @@ ms.devlang: PHP
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 706f523fdfb3c710bb16b048cfc68ce98875adb1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88066204"
 ---
-# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>クイック スタート:PHP で Service Bus のトピックとサブスクリプションを使用する方法
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>クイックスタート: PHP で Service Bus のトピックとサブスクリプションを使用する方法
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
@@ -25,10 +25,10 @@ ms.locfileid: "88066204"
 
 ## <a name="prerequisites"></a>前提条件
 1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
-2. 「[Quickstart:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認して、Service Bus の**名前空間**を作成し、**接続文字列**を取得します。
+2. 「[Quickstart:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認して、Service Bus の **名前空間** を作成し、**接続文字列** を取得します。
 
     > [!NOTE]
-    > このクイック スタートでは、**PHP** を使用して **トピック**とその中に含まれる**サブスクリプション**を作成します。 
+    > このクイック スタートでは、**PHP** を使用して **トピック** とその中に含まれる **サブスクリプション** を作成します。 
 
 ## <a name="create-a-php-application"></a>PHP アプリケーションの作成
 Microsoft Azure Blob service にアクセスする PHP アプリケーションを作成するための要件は、コード内から [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) のクラスを参照することのみです。 アプリケーションの作成には任意の開発ツールまたはメモ帳を使用できます。
@@ -88,7 +88,7 @@ Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAcce
 
 ここで、`Endpoint` の一般的な形式は `https://[yourNamespace].servicebus.windows.net` です。
 
-いずれかの Azure サービス クライアントを作成するには、`ServicesBuilder` クラスを使用する必要があります。 次のようにすることができます。
+いずれかの Azure サービス クライアントを作成するには、`ServicesBuilder` クラスを使用する必要があります。 次の操作を行うことができます。
 
 * 接続文字列を直接渡す
 * **CloudConfigurationManager (CCM)** を使用して複数の外部ソースに対して接続文字列を確認する
@@ -177,7 +177,7 @@ catch(ServiceException $e){
 トピックに送信されたメッセージのうち、特定のトピック サブスクリプション内に表示されるメッセージを指定できるフィルターを設定することもできます。 サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) です。 SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。 SqlFilter について詳しくは、「[SqlFilter.SqlExpression プロパティ][sqlfilter]」をご覧ください。
 
 > [!NOTE]
-> サブスクリプションのルールごとに受信メッセージが個別に処理され、処理後のメッセージがサブスクリプションに追加されます。 さらに、新しいサブスクリプションにはそれぞれ、既定の**ルール** オブジェクトがあり、トピックからのすべてのメッセージをサブスクリプションに追加するフィルターが設定されています。 独自のフィルターに一致するメッセージのみ受信するには、この既定のルールを削除する必要があります。 `ServiceBusRestProxy->deleteRule` メソッドを使用して既定のルールを削除できます。
+> サブスクリプションのルールごとに受信メッセージが個別に処理され、処理後のメッセージがサブスクリプションに追加されます。 さらに、新しいサブスクリプションにはそれぞれ、既定の **ルール** オブジェクトがあり、トピックからのすべてのメッセージをサブスクリプションに追加するフィルターが設定されています。 独自のフィルターに一致するメッセージのみ受信するには、この既定のルールを削除する必要があります。 `ServiceBusRestProxy->deleteRule` メソッドを使用して既定のルールを削除できます。
 > 
 > 
 
@@ -242,7 +242,7 @@ catch(ServiceException $e){
 }
 ```
 
-Service Bus トピックに送信されたメッセージは、[BrokeredMessage][BrokeredMessage] クラスのインスタンスです。 [BrokeredMessage][BrokeredMessage] オブジェクトには、一連の標準的なプロパティとメソッドだけでなく、アプリケーションに固有のカスタム プロパティの保持に使用できるプロパティも用意されています。 次の例は以前に作成した `mytopic` トピックに 5 つのテスト メッセージを送信する方法を示しています。 `setProperty` メソッドを使用して、カスタム プロパティ (`MessageNumber`) を各メッセージに追加します。 `MessageNumber` プロパティの値がメッセージごとに異なります (「[サブスクリプションを作成する](#create-a-subscription)」のセクションで説明したように、この値を使用して、メッセージを受信するサブスクリプションを決定できます)。
+Service Bus トピックに送信されるメッセージは、[BrokeredMessage][BrokeredMessage] クラスのインスタンスです。 [BrokeredMessage][BrokeredMessage] オブジェクトには、一連の標準的なプロパティとメソッドだけでなく、アプリケーションに固有のカスタム プロパティの保持に使用できるプロパティも用意されています。 次の例は以前に作成した `mytopic` トピックに 5 つのテスト メッセージを送信する方法を示しています。 `setProperty` メソッドを使用して、カスタム プロパティ (`MessageNumber`) を各メッセージに追加します。 `MessageNumber` プロパティの値がメッセージごとに異なります (「[サブスクリプションを作成する](#create-a-subscription)」のセクションで説明したように、この値を使用して、メッセージを受信するサブスクリプションを決定できます)。
 
 ```php
 for($i = 0; $i < 5; $i++){
@@ -261,7 +261,7 @@ for($i = 0; $i < 5; $i++){
 Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピック サイズの上限は 5 GB です。 クォータの詳細については、「[Service Bus のクォータ][Service Bus quotas]」を参照してください。
 
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
-サブスクリプションからメッセージを受信する最適な方法は、`ServiceBusRestProxy->receiveSubscriptionMessage` メソッドを使用する方法です。 メッセージは 2 つの異なるモードで受信できます。[*ReceiveAndDelete* と *PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode) です。 **PeekLock** が既定値です。
+サブスクリプションからメッセージを受信する最適な方法は、`ServiceBusRestProxy->receiveSubscriptionMessage` メソッドを使用する方法です。 メッセージは、[*ReceiveAndDelete* と *PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode) の 2 つの異なるモードで受信できます。 **PeekLock** が既定値です。
 
 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) モードを使用する場合、受信は 1 回ずつの動作になります。つまり、Service Bus は、サブスクリプション内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode)* モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークしているため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされます。
 

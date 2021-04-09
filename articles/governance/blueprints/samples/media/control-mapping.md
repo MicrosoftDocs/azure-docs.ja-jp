@@ -4,10 +4,10 @@ description: メディア ブループリント サンプルのコントロー�
 ms.date: 01/08/2021
 ms.topic: sample
 ms.openlocfilehash: e1356acfd7b6b9693322000077b221781b58681f
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98035038"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>メディア ブループリント サンプルのコントロール マッピング
@@ -178,7 +178,7 @@ ms.locfileid: "98035038"
 
 ### <a name="sp-113--threats-must-be-identified-that-could-negatively-impact-the-confidentiality-integrity-or-availability-of-company-information-and-content-along-with-the-likelihood-of-their-occurrence"></a>SP-11.3 - 会社の情報とコンテンツの機密性、整合性、可用性に悪影響を及ぼす脅威とその発生の可能性を特定する
 
-- SQL Managed Instance の Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
+- SQL マネージド インスタンスの Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
 
 ### <a name="security-continuity"></a>セキュリティ継続性
 

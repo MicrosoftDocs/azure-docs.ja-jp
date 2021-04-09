@@ -3,14 +3,14 @@ title: サーバー パラメーター - Azure Database for MariaDB
 description: このトピックでは、Azure Database for MariaDB でのサーバー パラメーターの構成に関するガイドラインを示します。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: ca1acfd6891c9389363fceb7eccec6f460537399
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 7797ee9d20b33a25c1b51289036651c7ad9f22a1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98664148"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのサーバー パラメーター

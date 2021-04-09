@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.date: 03/15/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 608401858c0119d281ab6ff46156fc7bdccd9d84
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a51f874d09aebfcb2c0b73e0b484f68042d1bb6d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675336"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103496203"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Azure のファイル共有を使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する
 
@@ -147,10 +147,14 @@ _**図 4:** SAP グローバル ホスト ファイルの保護に使われる�
 
 ### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>2 つのクラスターで SAP ASCS/SCS インスタンスとスケールアウト ファイル共有を構成する
 
-1 つのクラスターに SAP ASCS/SCS インスタンスをデプロイし、専用の SAP \<SID\> クラスター ロールを設定できます。 この場合は、別のクラスターに別のクラスター ロールでスケールアウト ファイル共有を構成します。
+別々のクラスターに SAP ASCS/SCS インスタンスをデプロイする必要があります。専用の SAP \<SID\> クラスター ロールを設定します。 この場合は、別のクラスターに別のクラスター ロールでスケールアウト ファイル共有を構成します。
+
 
 > [!IMPORTANT]
->このシナリオの SAP ASCS/SCS インスタンスは、UNC パス \\\\&lt;SAP グローバル ホスト&gt;\sapmnt\\&lt;SID&gt;\SYS\. を使って SAP グローバル ホストにアクセスするように構成されます。
+> セットアップでは、SAP ASCS/SCS インスタンスと SOFS 共有は別々のクラスターにデプロイしてあるという要件を満たしていなければなりません。    
+>
+> [!IMPORTANT] 
+> このシナリオの SAP ASCS/SCS インスタンスは、UNC パス \\\\&lt;SAP グローバル ホスト&gt;\sapmnt\\&lt;SID&gt;\SYS\. を使って SAP グローバル ホストにアクセスするように構成されます。
 >
 
 ![図 5:2 つのクラスターにデプロイされた SAP ASCS/SCS インスタンスとスケールアウト ファイル共有][sap-ha-guide-figure-8007]

@@ -4,10 +4,10 @@ description: Azure DevTest Labs でカスタム タグを作成し、タグを�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a4d2b328626f0d0f096082fa88bb170894ccf3e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88270735"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボにタグを追加する
@@ -25,7 +25,7 @@ ms.locfileid: "88270735"
 
 [ラボを作成](devtest-lab-create-lab.md)するときにタグを適用すると、あとで [Configuration and settings]\(構成と設定\) の[タグ] ブレードから管理できます。
 
-すべてのタグは **名前**/**値**ペアで構成されています。 たとえば、*costcenter* という名前の、*34543* という値を持つタグを作成するとします。 このようなタグは後々、所属組織の特定の領域に対して課金できるラボ リソースを識別するのに役立つ場合があります。 サブスクリプションを整理するうえで意味のある名前と値を選ぶようにします。
+すべてのタグは **名前**/**値** ペアで構成されています。 たとえば、*costcenter* という名前の、*34543* という値を持つタグを作成するとします。 このようなタグは後々、所属組織の特定の領域に対して課金できるラボ リソースを識別するのに役立つ場合があります。 サブスクリプションを整理するうえで意味のある名前と値を選ぶようにします。
 
 ## <a name="steps-to-manage-tags-in-an-existing-lab"></a>既存のラボのタグを管理する手順
 
@@ -37,7 +37,7 @@ ms.locfileid: "88270735"
     ![[Configuration and policies]\(構成とポリシー\) ボタン](./media/devtest-lab-add-tag/devtestlab-config-and-policies.png)
 
 1. 左側の **[管理]** で、**[タグ]** を選択します。
-1. このラボ用の新しいタグを作成するには、**名前**/**値**ペアを入力し、 **[保存]** を選択します。 一覧から既存のタグを選択すると、そのタグに関連付けられているリソースの表示や管理もできます。
+1. このラボ用の新しいタグを作成するには、**名前**/**値** ペアを入力し、 **[保存]** を選択します。 一覧から既存のタグを選択すると、そのタグに関連付けられているリソースの表示や管理もできます。
 
     ![タグの管理](./media/devtest-lab-add-tag/devtestlab-manage-tags.png)
 

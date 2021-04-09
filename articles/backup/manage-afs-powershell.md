@@ -4,10 +4,10 @@ description: PowerShell を使用して、Azure Backup サービスによって�
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: e2f07e56fb9a8715b1b53165ab5f4b45b4e20ccb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89000228"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>PowerShell を使用して Azure ファイル共有のバックアップを管理する

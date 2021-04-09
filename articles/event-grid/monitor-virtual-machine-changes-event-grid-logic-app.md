@@ -10,10 +10,10 @@ ms.reviewer: estfan, LADocs
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.openlocfilehash: 1a5d8c36382433024efd1f1cc6ba9fd878d28ddc
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92329527"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>チュートリアル:Azure Event Grid と Logic Apps を使用して仮想マシンの変更を監視する
@@ -95,7 +95,7 @@ Azure やサードパーティのリソースに生じた特定のイベント�
    ![Event Grid に接続するための Azure サインイン プロンプトが示されている、Logic Apps デザイナーのスクリーンショット。](./media/monitor-virtual-machine-changes-event-grid-logic-app/sign-in-event-grid.png)
 
    > [!NOTE]
-   > @outlook.com または @hotmail.com などの個人用の Microsoft アカウントでサインインした場合、Event Grid トリガーが正しく表示されないことがあります。 この問題を回避するには、 [[サービス プリンシパルを使用して接続する]](../active-directory/develop/howto-create-service-principal-portal.md) を選択するか、 *<ユーザー名>* @emailoutlook.onmicrosoft.com などの Azure サブスクリプションに関連する Azure Active Directory のメンバーとして認証します。
+   > @outlook.com または @hotmail.com などの個人用の Microsoft アカウントでサインインした場合、Event Grid トリガーが正しく表示されないことがあります。 この問題を回避するには、[[サービス プリンシパルを使用して接続する]](../active-directory/develop/howto-create-service-principal-portal.md) を選択するか、 *<ユーザー名>* @emailoutlook.onmicrosoft.com などの Azure サブスクリプションに関連する Azure Active Directory のメンバーとして認証します。
 
 1. 次に、イベントを発行者からサブスクライブするようにロジック アプリを設定します。 以下の表で指定したように、イベント サブスクリプションの詳細を指定します。その例を次に示します。
 
@@ -103,11 +103,11 @@ Azure やサードパーティのリソースに生じた特定のイベント�
 
    | プロパティ | 必須 | 値 | 説明 |
    | -------- | -------- | ----- | ----------- |
-   | **サブスクリプション** | はい | <*イベント発行者の Azure サブスクリプション名*> | " *イベント発行者* " に関連付けられている Azure サブスクリプションの名前を選択します。 このチュートリアルでは、自分の仮想マシンの Azure サブスクリプション名を選択します。 |
+   | **サブスクリプション** | はい | <*イベント発行者の Azure サブスクリプション名*> | "*イベント発行者*" に関連付けられている Azure サブスクリプションの名前を選択します。 このチュートリアルでは、自分の仮想マシンの Azure サブスクリプション名を選択します。 |
    | **リソースの種類** | はい | <*イベント発行者の Azure リソースの種類*> | イベント発行者の Azure リソースの種類を選択します。 Azure リソースの種類の詳細については、「[Azure リソースプロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)」を参照してください このチュートリアルでは、Azure リソース グループを監視するために `Microsoft.Resources.ResourceGroups` 値を選択します。 |
    | **リソース名** |  はい | <*イベント発行者の Azure リソース名*> | イベント発行者の Azure リソース名を選択します。 この一覧は、選択したリソースの種類によって異なります。 このチュートリアルでは、自分の仮想マシンがある Azure リソース グループの名前を選択します。 |
    | **イベントの種類の項目** |  いいえ | <*イベントの種類*> | フィルター処理してイベント グリッドに送信する特定のイベントの種類を 1 つ以上選択します。 たとえば、リソースが変更または削除された場合にそれを検出するために、これらのイベントの種類を必要に応じて追加することができます。 <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>詳細については、以下のトピックを参照してください。 <p><p>- [Azure Event Grid のリソース グループ用のイベント スキーマ](../event-grid/event-schema-resource-groups.md) <br>- [イベントのフィルター処理について](../event-grid/event-filtering.md) <br>- [Event Grid のイベントのフィルター処理](../event-grid/how-to-filter-events.md) |
-   | オプションのプロパティを追加するには、 **[新しいパラメーターの追加]** を選択して、目的のプロパティを選択します。 | いいえ | {説明を参照} | * **プレフィックス フィルター** :このチュートリアルでは、このプロパティは空のままにします。 既定の動作はすべての値と一致します。 ただし、フィルターとしてプレフィックス文字列を指定できます。たとえば、特定のリソースのパスとパラメーターを指定できます。 <p>* **サフィックス フィルター** :このチュートリアルでは、このプロパティは空のままにします。 既定の動作はすべての値と一致します。 ただし、フィルターとしてサフィックス文字列を指定できます。たとえば、特定の種類のファイルが必要なときは、ファイル名拡張子を指定できます。 <p>* **サブスクリプション名** :このチュートリアルでは、イベント サブスクリプションの一意の名前を指定します。 |
+   | オプションのプロパティを追加するには、 **[新しいパラメーターの追加]** を選択して、目的のプロパティを選択します。 | いいえ | {説明を参照} | * **プレフィックス フィルター**:このチュートリアルでは、このプロパティは空のままにします。 既定の動作はすべての値と一致します。 ただし、フィルターとしてプレフィックス文字列を指定できます。たとえば、特定のリソースのパスとパラメーターを指定できます。 <p>* **サフィックス フィルター**:このチュートリアルでは、このプロパティは空のままにします。 既定の動作はすべての値と一致します。 ただし、フィルターとしてサフィックス文字列を指定できます。たとえば、特定の種類のファイルが必要なときは、ファイル名拡張子を指定できます。 <p>* **サブスクリプション名**:このチュートリアルでは、イベント サブスクリプションの一意の名前を指定します。 |
    |||
 
 1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。 ロジック アプリでアクションの詳細を折りたたんで非表示にするには、アクションのタイトル バーを選択します。
@@ -170,7 +170,7 @@ Azure やサードパーティのリソースに生じた特定のイベント�
 
 ## <a name="send-email-notifications"></a>メール通知を送信する
 
-次は、指定した条件が true の場合に電子メールを受信できるよう " [*アクション*](../logic-apps/logic-apps-overview.md#logic-app-concepts)" を追加します。
+次は、指定した条件が true の場合に電子メールを受信できるよう "[*アクション*](../logic-apps/logic-apps-overview.md#logic-app-concepts)" を追加します。
 
 1. 条件の **[true の場合]** ボックスで、 **[アクションの追加]** を選択します。
 

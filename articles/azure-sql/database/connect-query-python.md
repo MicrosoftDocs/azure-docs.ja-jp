@@ -12,14 +12,15 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/19/2020
-ms.openlocfilehash: 8fb6d319cacf85630b2c400cd18d14487725f925
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: f21e11e33d3ddf1489dba3419766a8adaa878d5f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703971"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103491964"
 ---
 # <a name="quickstart-use-python-to-query-a-database"></a>クイックスタート: Python を使用してデータベースを照会する
+
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 このクイックスタートでは、Python を使用して Azure SQL Database、Azure SQL Managed Instance、または Synapse SQL データベースに接続し、T-SQL ステートメントを使用してデータに対してクエリを実行します。
@@ -35,28 +36,16 @@ ms.locfileid: "97703971"
   [!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
 
 - [Python](https://python.org/downloads) 3 および関連するソフトウェア
+    
 
-  # <a name="macos"></a>[macOS](#tab/macos)
+    |**操作**|**macOS**|**Ubuntu**|**Windows**|
+    |----------|-----------|------------|---------|
+    |ODBC ドライバー、SQLCMD、SQL Server 用 Python ドライバーをインストールする|[macOS で SQL Server を使用した Python アプリを作成する](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)手順 **1.2**、**1.3**、**2.1** を使用してください。 これにより、Homebrew と Python もインストールされます。       |[pyodbc Python 開発用に環境を構成します](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux)|[pyodbc Python 開発用に環境を構成します](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows)。|
+    |Python とその他の必要なパッケージをインストールする|    |`sudo apt-get install python python-pip gcc g++ build-essential` を使用してください。|    |
+    |詳細情報|[macOS の Microsoft ODBC ドライバー](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)  |[Linux の Microsoft ODBC ドライバー](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)|[Linux の Microsoft ODBC ドライバー](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)|
 
-  Homebrew と Python、ODBC ドライバーと SQLCMD、および SQL Server 用の Python ドライバーをインストールするには、[macOS での SQL Server を使用した Python アプリの作成](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)に関するページの手順 **1.2**、**1.3**、および **2.1** を使用します。
 
-  詳細については、[macOS の Microsoft ODBC ドライバー](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)に関するページを参照してください。
 
-  # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
-
-  Python とその他の必要なパッケージをインストールするには、`sudo apt-get install python python-pip gcc g++ build-essential` を使用します。
-
-  ODBC ドライバー、SQLCMD、および SQL Server 用の Python ドライバーをインストールするには、[pyodbc Python 開発用の環境の構成](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux)に関するページを参照してください。
-
-  詳細については、[Linux の Microsoft ODBC ドライバー](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)に関するページを参照してください。
-
-  # <a name="windows"></a>[Windows](#tab/windows)
-
-  Python、ODBC ドライバー、SQLCMD、および SQL Server 用の Python ドライバーをインストールするには、[pyodbc Python 開発用の環境の構成](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows)に関するページを参照してください。
-
-  詳細については、[Microsoft ODBC ドライバー](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server)に関するページを参照してください。
-
----
 Python と Azure SQL Database のデータベースの詳細については、「[Python 用 Azure SQL Database ライブラリ](/python/api/overview/azure/sql)」、[pyodbc リポジトリ](https://github.com/mkleehammer/pyodbc/wiki/)、および [pyodbc のサンプル](https://github.com/mkleehammer/pyodbc/wiki/Getting-started)を参照してください。
 
 ## <a name="create-code-to-query-your-database"></a>データベースに対してクエリを実行するコードを作成する 

@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89fa3bb94f72ab04c2ea68641b8d1dff7695aa53
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 78ed23f563fce9760768a99e5bbf58f68500d665
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741028"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103012022"
 ---
 # <a name="remove-role-assignments-from-a-group-in-azure-active-directory"></a>Azure Active Directory でグループからロールの割り当てを削除する
 
@@ -28,9 +28,9 @@ ms.locfileid: "98741028"
 
 1. Azure AD 組織の特権ロール管理者またはグローバル管理者のアクセス許可を使用して [Azure AD 管理センター](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)にサインインします。
 
-1. **[ロールと管理]** > [**_ロール名_* _] を選択します。
+1. **[ロールと管理者]**  >  **" _<ロール名>_ "** の順に選択します。
 
-1. ロールの割り当てを削除するグループを選択し、[_*割り当ての削除**] を選択します。
+1. ロールの割り当てを削除するグループを選択し、 **[割り当ての削除]** を選択します。
 
    ![選択したグループからロールの割り当てを削除します。](./media/groups-remove-assignment/remove-assignment.png)
 
@@ -66,9 +66,8 @@ Remove-AzureAdMSRoleAssignment -Id $roleAssignment.Id
 
 ### <a name="create-a-group-that-can-be-assigned-an-azure-ad-role"></a>Azure AD ロールを割り当てることができるグループを作成する
 
-```powershell
+```http
 POST https://graph.microsoft.com/beta/groups
-
 {
 "description": "This group is assigned to Helpdesk Administrator built-in role of Azure AD",
 "displayName": "Contoso_Helpdesk_Administrators",
@@ -84,25 +83,25 @@ POST https://graph.microsoft.com/beta/groups
 
 ### <a name="get-the-role-definition"></a>ロールの定義を取得する
 
-```powershell
-GET https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions?$filter = displayName eq ‘Helpdesk Administrator’
+```http
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions?$filter=displayName+eq+'Helpdesk Administrator'
 ```
 
 ### <a name="create-the-role-assignment"></a>ロールの割り当てを作成する
 
-```powershell
+```http
 POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 {
-"principalId":"<Object Id of Group>",
-"roleDefinitionId":"<Id of role definition>",
+"principalId":"{object-id-of-group}",
+"roleDefinitionId":"{role-definition-id}",
 "directoryScopeId":"/"
 }
 ```
 
 ### <a name="delete-role-assignment"></a>ロール割り当ての削除
 
-```powershell
-DELETE https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/<Id of role assignment>
+```http
+DELETE https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/{role-assignment-id}
 ```
 
 ## <a name="next-steps"></a>次のステップ

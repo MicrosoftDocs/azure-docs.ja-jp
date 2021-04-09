@@ -5,19 +5,19 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: cost-management-billing
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 03/15/2021
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: ad0c532c2ac80fd8a3bb3e68431ff7fc274d73e0
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 97d80e999ac61a2c2f8f561dc19213419014beb8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792374"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103471011"
 ---
 | リソース | 制限 |
 | --- | --- |
-| Azure Active Directory テナントごとのサブスクリプション | 無制限 |
+| [Azure Active Directory テナントに関連付けられている](../articles/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)サブスクリプション | 無制限 |
 | サブスクリプションあたりの[共同管理者](../articles/cost-management-billing/manage/add-change-subscription-administrator.md)数 |無制限 |
 | サブスクリプションあたりの[リソース グループ数](../articles/azure-resource-manager/management/overview.md) |980 |
 | Azure Resource Manager API 要求サイズ |4,194,304 バイト |

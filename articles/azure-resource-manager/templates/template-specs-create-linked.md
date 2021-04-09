@@ -3,12 +3,12 @@ title: リンクされたテンプレートを使用してテンプレート ス
 description: リンクされたテンプレートを使用してテンプレート スペックを作成する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/05/2021
-ms.openlocfilehash: e5725ece165f5716480afbcb4ef9098274c09993
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 31764b9adb1d0fc28a170fa2e6b5073812533083
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900639"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889843"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>チュートリアル:リンクされたテンプレートを使用してテンプレート スペックを作成する (プレビュー)
 
@@ -19,7 +19,7 @@ ms.locfileid: "97900639"
 アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> テンプレート スペックは現在プレビュー段階にあります。 Azure PowerShell でこれを使用するには、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)をインストールする必要があります。 Azure CLI でこれを使用するには、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
+> Template Specs は現在プレビューの段階です。 Azure PowerShell でこれを使用するには、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)をインストールする必要があります。 Azure CLI でこれを使用するには、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
 
 ## <a name="create-linked-templates"></a>リンク済みテンプレートの作成
 
@@ -83,7 +83,7 @@ ms.locfileid: "97900639"
         },
         {
           "type": "Microsoft.Resources/deployments",
-          "apiVersion": "2020-06-01",
+          "apiVersion": "2020-10-01",
           "name": "createStorage",
           "properties": {
             "mode": "Incremental",

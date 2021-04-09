@@ -1,16 +1,16 @@
 ---
 title: Azure Kubernetes Service (AKS) 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Kubernetes Service (AKS) に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 03/05/2021
+ms.date: 03/17/2021
 ms.topic: sample
 ms.service: container-service
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 7d271316662af4d631af65f674c617fb019fcf54
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: cea5a9cf4b2750960adb011d8f500e68400082bc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102437581"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581620"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 用の Azure Policy 規制コンプライアンス コントロール
 

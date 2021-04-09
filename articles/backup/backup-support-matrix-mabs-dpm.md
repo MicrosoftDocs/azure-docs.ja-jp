@@ -3,12 +3,12 @@ title: MABS と System Center DPM のサポート マトリックス
 description: この記事では、Microsoft Azure Backup Server (MABS) または System Center DPM を使用してオンプレミスおよび Azure VM のリソースをバックアップする場合の、Azure Backup のサポートについてまとめます。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: aaa68dba0bbd1f3f5ffb5480a2bdb0a48ae85656
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: e888b43ea5641f1943a096f045747d547c52fcfa
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986058"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102609755"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server または System Center DPM を使用したバックアップのサポート マトリックス
 
@@ -60,9 +60,9 @@ DPM/MABS は、次の表に要約されているようにデプロイできま�
 
 **デプロイ** | **サポート** | **詳細**
 --- | --- | ---
-**オンプレミスでデプロイ** | 物理サーバー<br/><br/>Hyper-V VM<br/><br/> VMware VM | 詳細については、[保護マトリックス](backup-mabs-protection-matrix.md)を参照してください。 
+**オンプレミスでデプロイ** | 物理サーバーですが、物理クラスターにはありません。<br/><br/>Hyper-V VM。 MABS は、スタンドアロンのハイパーバイザーまたはクラスター上のゲスト マシンとしてデプロイできます。 クラスターまたはスタンドアロンのハイパーバイザーのノードにデプロイすることはできません。 Azure Backup Server は、単一目的の専用サーバーで動作するように設計されています。<br/><br/> VMware 環境内の Windows 仮想マシンとして。 | オンプレミスの MABS サーバーでは、Azure ベースのワークロードを保護できません。 <br><br> 詳細については、[保護マトリックス](backup-mabs-protection-matrix.md)に関する記事を参照してください。
 **Azure Stack VM としてデプロイ** | MABS のみ | DPM を使用して Azure Stack VM をバックアップすることはできません。
-**Azure VM としてデプロイ** | Azure VM とそれらの VM 上で実行されているワークロードを保護します。 | Azure で実行されている DPM/MABS は、オンプレミスのコンピューターをバックアップできません。
+**Azure VM としてデプロイ** | Azure VM とそれらの VM 上で実行されているワークロードを保護します。 | Azure で実行されている DPM/MABS は、オンプレミスのコンピューターをバックアップできません。 Azure IaaS VM で実行されているワークロードのみを保護できます。
 
 ## <a name="supported-mabs-and-dpm-operating-systems"></a>サポートされている MABS および DPM オペレーティング システム
 
@@ -87,6 +87,9 @@ Azure Backup は、次のいずれかのオペレーティング システムを
 **Storage** | Modern Backup Storage (MBS) は、DPM 2016/MABS v2 以降でサポートされています。 MABS v1 では使用できません。
 **MABS のアップグレード** | MABS v3 を直接インストールすることも、MABS v2 から MABS v3 にアップグレードすることもできます。 [詳細については、こちらを参照してください](backup-azure-microsoft-azure-backup.md#upgrade-mabs)。
 **MABS の移動** | MBS を使用している場合、ストレージを保持したまま MABS を新しいサーバーに移動できます。<br/><br/> このサーバーは元のサーバーと同じ名前でなければなりません。 同じ記憶域プールを保持し、同じ MABS データベースを使用してデータ復旧ポイントを格納する場合、この名前は変更できません。<br/><br/> MABS データベースを復元する必要があるため、このデータベースのバックアップが必要です。
+
+>[!NOTE]
+>DPM/MABS サーバーの名前変更はサポートされていません。
 
 ## <a name="mabs-support-on-azure-stack"></a>Azure Stack での MABS のサポート
 
@@ -168,11 +171,19 @@ Microsoft ピアリングの使用時には、サービス、リージョン、�
 |要件 |詳細 |
 |---------|---------|
 |Domain    | DPM/MABS サーバーは、Windows Server 2019、Windows Server 2016、Windows Server 2012 R2、Windows Server 2012 ドメインに存在する必要があります。        |
-|ドメインの信頼   |  DPM/MABS では、異なるフォレスト間にフォレスト レベルの双方向信頼関係が確立されていれば、フォレストをまたがるデータ保護がサポートされます。   <BR><BR>   DPM/MABS サーバー ドメインとの双方向の信頼関係を持つフォレスト内において、DPM/MABS ではドメインをまたいでサーバーとワークステーションを保護できます。 ワークグループまたは信頼されていないドメイン内のコンピューターを保護するには、[ワークグループと信頼されていないドメイン内のワークロードのバックアップと復元](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains)に関する記事を参照してください。  |
+|ドメインの信頼   |  DPM/MABS では、異なるフォレスト間にフォレスト レベルの双方向信頼関係が確立されていれば、フォレストをまたがるデータ保護がサポートされます。   <BR><BR>   DPM/MABS サーバー ドメインとの双方向の信頼関係を持つフォレスト内において、DPM/MABS ではドメインをまたいでサーバーとワークステーションを保護できます。 ワークグループまたは信頼されていないドメイン内のコンピューターを保護するには、[ワークグループと信頼されていないドメイン内のワークロードのバックアップと復元](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains)に関する記事を参照してください。 <br><br> Hyper-V サーバー クラスターをバックアップするには、そのサーバー クラスターが MABS サーバーと同じドメインか、信頼されたドメインまたは子ドメインに配置されている必要があります。 1 台のサーバーの場合は NTLM または証明書の認証を、クラスターの場合は証明書の認証のみを使用することにより、信頼されていないドメインにあるサーバーおよびクラスターまたはワークロードをバックアップできます。  |
 
 ## <a name="dpmmabs-storage-support"></a>DPM/MABS ストレージのサポート
 
 DPM/MABS にバックアップされたデータは、ローカル ディスク ストレージに格納されます。
+
+USB ドライブまたはリムーバブル ドライブはサポートされていません。
+
+DPM/MABS ボリュームで NTFS 圧縮はサポートされていません。
+
+BitLocker は、記憶域プールにディスクを追加した後でのみ有効にすることができます。 BitLocker を追加する前に有効にしないでください。
+
+DPM 記憶域プールでは、ネットワーク接続記憶域 (NAS) の使用はサポートされていません。
 
 **Storage** | **詳細**
 --- | ---
@@ -199,6 +210,38 @@ Data Protection Manager で保護できる各種サーバーとワークロー�
 
 - DPM/MABS によってバックアップされるクラスター化されたワークロードは DPM/MABS と同じドメインか、または子/信頼できるドメインに存在する必要があります。
 - NTLM/証明書認証を使用して、信頼されていないドメインまたはワークグループのデータをバックアップできます。
+
+## <a name="deduplicated-volumes-support"></a>重複除去されたボリュームのサポート
+
+>[!NOTE]
+> MABS の重複除去のサポートは、オペレーティング システムのサポートによって異なります。
+
+### <a name="for-ntfs-volumes"></a>NTFS ボリュームの場合
+
+| 保護されたサーバーのオペレーティング システム  | MABS サーバーのオペレーティング システム  | MABS のバージョン  | 重複除去のサポート |
+| ------------------------------------------ | ------------------------------------- | ------------------ | -------------------- |
+| Windows Server 2019                       | Windows Server 2019                  | MABS v3            | Y                    |
+| Windows Server 2016                       | Windows Server 2019                  | MABS v3            | Y*                   |
+| Windows Server 2012 R2                    | Windows Server 2019                  | MABS v3            | N                    |
+| Windows Server 2012                       | Windows Server 2019                  | MABS v3            | N                    |
+| Windows Server 2019                       | Windows Server 2016                  | MABS v3            | Y**                  |
+| Windows Server 2016                       | Windows Server 2016                  | MABS v3            | Y                    |
+| Windows Server 2012 R2                    | Windows Server 2016                  | MABS v3            | Y                    |
+| Windows Server 2012                       | Windows Server 2016                  | MABS v3            | Y                    |
+
+- \* WS 2019 上で MABS v3 が実行された WS 2016 NTFS 重複除去ボリュームを保護する場合、回復に影響が出る可能性があります。 非重複除去の方法で回復を実行するための修正プログラムがあります。 MABS v3 UR1 でこの修正プログラムが必要な場合は、MABS サポートにお問い合わせください。
+- \** WS 2016 上の MABS v3 を使用して WS 2019 NTFS 重複除去ボリュームを保護する場合、バックアップと復元は非重複除去になります。 これは、元の NTFS 重複除去ボリュームよりも多くの MABS サーバー上の領域がバックアップに要することを意味します。
+
+**問題**: 保護されたサーバーのオペレーティング システムを Windows Server 2016 から Windows Server 2019 にアップグレードすると、重複除去ロジックの変更により、NTFS 重複除去ボリュームのバックアップが影響を受けます。
+
+**回避策**: MABS v3 UR1 にこの修正プログラムが必要な場合は、MABS サポートにお問い合わせください。
+
+### <a name="for-refs-volumes"></a>ReFS ボリュームの場合
+
+>[!NOTE]
+> 重複除去 ReFS ボリュームのバックアップに関していくつかの問題を特定しました。 これらの修正に取り組んでおり、修正プログラムが利用可能になり次第、このセクションを更新します。 それまでは、重複除去された ReFS ボリュームのバックアップ サポートを MABSv3 から削除します。
+>
+> MABS v3 UR1 以降では、通常の ReFS ボリュームの保護と回復が引き続きサポートされます。
 
 ## <a name="next-steps"></a>次のステップ
 

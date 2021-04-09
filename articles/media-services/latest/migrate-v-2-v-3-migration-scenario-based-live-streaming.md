@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 327673d0765fa807f782494562c995278be4782f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 6a2c6495ca3685aec1bc132ec7f8a88809ad2d87
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955294"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598288"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>ライブ ストリーミングのシナリオベースの移行ガイダンス
 
@@ -42,7 +42,7 @@ Azure portal では、ライブ イベントの設定と管理がサポートさ
 - ライブ イベントの高速起動が必要な場合は、新しい[スタンバイ モード](live-events-outputs-concept.md#standby-mode)機能を検討してください。
 - ライブ イベントの進行中に、その文字起こしを行う場合は、新しい[ライブ文字起こし](live-transcription.md)機能を検討してください。
 - より長いストリーミング期間が必要な場合は、v3 で 24 時間 365 日のライブ イベントを作成します。
-- ライブ イベントを監視するには、[Event Grid](monitor-events-portal-how-to.md) を使用します。
+- ライブ イベントを監視するには、[Event Grid](monitoring/monitor-events-portal-how-to.md) を使用します。
 
 具体的な手順については、下の「ライブ イベントの概念、チュートリアル、およびハウツー ガイド」を参照してください。
 
@@ -69,7 +69,7 @@ Azure portal では、ライブ イベントの設定と管理がサポートさ
 
 ## <a name="samples"></a>サンプル
 
-[コード サンプルで V2 と V3 のコードを比較する](migrate-v-2-v-3-migration-samples.md)こともできます。
+[V2 と V3 のコードをコード サンプルで比較する](migrate-v-2-v-3-migration-samples.md)こともできます。
 
 ## <a name="next-steps"></a>次のステップ
 

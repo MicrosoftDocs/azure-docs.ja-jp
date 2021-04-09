@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/17/2018
 ms.author: cynthn
 ms.openlocfilehash: bc87b0ec9cf41b2ddc5746a9734463f544b0cc2a
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102550690"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>管理イメージから VM を作成する

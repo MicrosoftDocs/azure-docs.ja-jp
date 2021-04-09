@@ -4,10 +4,10 @@ description: Azure Advisor を使用すると、Bus Critical な Azure デプロ
 ms.topic: article
 ms.date: 09/27/2020
 ms.openlocfilehash: c96b47f1ee145129f4c14c6646f93abeb8a5aac9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100579971"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Azure Advisor を使用してアプリケーションの信頼性を向上させる

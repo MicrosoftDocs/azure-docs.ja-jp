@@ -4,10 +4,10 @@ description: この記事では、Azure Active Directory を使用して Azure E
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.openlocfilehash: 25ec5f11ca7b5e801e18155f1a3da6474c8e66e2
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92913315"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Event Hubs リソースにアクセスするために Azure Active Directory でアプリケーションを認証する
@@ -84,7 +84,7 @@ Azure AD へのアプリケーションの登録について詳しくは、「[A
     1. **[保存]** を選択して、ロールの割り当てを保存します。 
 
         ![ユーザーにロールを割り当てる](./media/authenticate-application/assign-role-to-user.png)
-    4. **[ロールの割り当て]** タブに切り替えて、ロールの割り当てを確認します。 たとえば、次の画像は、 **mywebapp** が **[Azure Event Hubs のデータ送信者]** ロールに含まれていることを示しています。 
+    4. **[ロールの割り当て]** タブに切り替えて、ロールの割り当てを確認します。 たとえば、次の画像は、**mywebapp** が **[Azure Event Hubs のデータ送信者]** ロールに含まれていることを示しています。 
         
         ![リスト内のユーザー](./media/authenticate-application/user-in-list.png)
 

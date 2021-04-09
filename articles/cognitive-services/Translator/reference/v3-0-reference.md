@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
 ms.author: lajanuar
-ms.openlocfilehash: 021a65ba69b9d1909df4a86d92b660c0c1033a3b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 567e28ee7f698565d6ad0020db7abdca0557f053
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895460"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100650764"
 ---
 # <a name="translator-v30"></a>Translator v3.0
 
@@ -35,7 +35,7 @@ Microsoft Translator のサービスは、複数のデータセンター拠点�
 
 * **アメリカ合衆国:** 米国東部、米国中南部、米国中西部、および米国西部 2 
 * **アジア太平洋:** 韓国南部、東日本、東南アジア、オーストラリア東部
-* **ヨーロッパ:** 北ヨーロッパおよび西ヨーロッパ
+* **ヨーロッパ:** 北ヨーロッパ、西ヨーロッパ、スイス北部 <sup> 1、2</sup>、スイス西部 <sup>1、2</sup>
 
 Microsoft Translator への要求は、ほとんどの場合、その要求の送信元に最も近いデータセンターによって処理されます。 データセンターに障害が発生している場合は、その Azure 地域以外に要求がルーティングされます。
 
@@ -44,9 +44,20 @@ Microsoft Translator への要求は、ほとんどの場合、その要求の�
 |説明|Azure 地域|ベース URL (地域のエンドポイント)|
 |:--|:--|:--|
 |Azure|グローバル (リージョンなし)|   api.cognitive.microsofttranslator.com|
-|Azure|米国|   api-nam.cognitive.microsofttranslator.com|
+|Azure|United States|   api-nam.cognitive.microsofttranslator.com|
 |Azure|ヨーロッパ|  api-eur.cognitive.microsofttranslator.com|
 |Azure|アジア太平洋|    api-apc.cognitive.microsofttranslator.com|
+
+<sup>1</sup> スイス北部またはスイス西部にあるリソースを使用しているお客様は、そのテキスト API 要求が確実にスイス内で処理されるようにすることができます。 要求がスイスで処理されるようにするには、[リソース リージョン] の [Switzerland North]\(スイス北部\) または [Switzerland West]\(スイス西部\) で Translator リソースを作成し、API 要求でそのリソースのカスタム エンドポイントを使用します。 たとえば、Azure portal で [リソース リージョン] を [Switzerland North]\(スイス北部\) として Translator リソースを作成し、リソース名が ‘my-ch-n’ である場合、カスタム エンドポイントは “https://my-ch-n.cognitiveservices.azure.com” です。 翻訳する要求の例を次に示します。
+```curl
+// Pass secret key and region using headers to a custom endpoint
+curl -X POST " my-ch-n.cognitiveservices.azure.com/translator/text/v3.0/translate?to=fr" \
+-H "Ocp-Apim-Subscription-Key: xxx" \
+-H "Ocp-Apim-Subscription-Region: switzerlandnorth" \
+-H "Content-Type: application/json" \
+-d "[{'Text':'Hello'}]" -v
+```
+<sup>2</sup> カスタム翻訳ツールは、現在スイスでは使用できません。
 
 ## <a name="authentication"></a>認証
 
@@ -230,7 +241,7 @@ curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translato
 | 503000| サービスが一時的に利用できません。 もう一度試してください。 エラーが解決しない場合は、エラーの発生日時と応答ヘッダーの要求識別子 X-RequestID、要求ヘッダーのクライアント識別子 X-ClientTraceID を添えてその旨をご報告ください。|
 
 ## <a name="metrics"></a>メトリック 
-メトリックを使用すると、次のスクリーンショットに示すように、Azure portal の [メトリック] セクションで、トランスレーターの使用状況と可用性の情報を表示できます。 詳細については、[データとプラットフォームのメトリック](../../../azure-monitor/platform/data-platform-metrics.md)に関するページを参照してください。
+メトリックを使用すると、次のスクリーンショットに示すように、Azure portal の [メトリック] セクションで、トランスレーターの使用状況と可用性の情報を表示できます。 詳細については、[データとプラットフォームのメトリック](../../../azure-monitor/essentials/data-platform-metrics.md)に関するページを参照してください。
 
 ![トランスレーター メトリック](../media/translatormetrics.png)
 

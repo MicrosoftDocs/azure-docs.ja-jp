@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: 2c528859ea5abc6267c10a2ede9c2ca99f84e22f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c7125e25c9716a9934c97f9f8f85666d264d5f89
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946808"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866949"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用して Excel を Azure HDInsight 上の Apache Hadoop に接続する
 
@@ -37,7 +37,7 @@ Microsoft Power Query for Excel アドインを使用して、HDInsight クラ�
 
 1. Windows で、 **[スタート] > [Windows 管理ツール] > [ODBC データ ソース (32 ビット)] または [ODBC データ ソース (64 ビット)]** の順に移動します。  このアクションにより、 **[ODBC データ ソース アドミニストレーター]** ウィンドウが開きます。
 
-    ![ODBC データ ソース アドミニストレーター](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-datasourceadmin1.png "ODBC データ ソース アドミニストレーターを使用して DSN を構成する")
+   :::image type="content" source="./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-datasourceadmin1.png" alt-text="ODBC データ ソース アドミニストレーター" border="true":::
 
 1. **[ユーザー DSN]** タブで、 **[追加]** を選択して **[データ ソースの新規作成]** ウィンドウを開きます。
 
@@ -63,7 +63,7 @@ Microsoft Power Query for Excel アドインを使用して、HDInsight クラ�
    |  ブロック単位でフェッチされた行 |大量のレコードをフェッチする場合、このパラメーターを調整してパフォーマンスを最適化する必要がある場合があります。 |
    |  既定の文字列の列の長さ、バイナリ列の長さ、10 進数の列の桁数 |データ型の長さおよび精度は、データが返される方法に影響する可能性があります。 精度が失われたり、切り捨てられたりするために間違った情報が返されます。 |
 
-    ![DSN 詳細構成オプション](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "DSN 詳細構成オプション")
+    :::image type="content" source="./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png" alt-text="DSN 詳細構成オプション" border="true":::
 
 1. **[テスト]** を選択して、データ ソースをテストします。 データ ソースが正しく構成された場合、テスト結果に "**成功!** " と表示されます
 
@@ -81,7 +81,7 @@ Microsoft Power Query for Excel アドインを使用して、HDInsight クラ�
 
 2. **[データ]** タブで **[データの取得]**  >  **[その他のデータ ソース]**  >  **[ODBC]** の順に移動して、 **[ODBC]** ウィンドウを起動します。
 
-    ![Excel データ接続ウィザードを開く](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Excel データ接続ウィザードを開く")
+   :::image type="content" source="./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png" alt-text="Excel データ接続ウィザードを開く" border="true":::
 
 3. ドロップダウン リストから、前のセクションで作成したデータ ソース名を選択して、 **[OK]** を選択します。
 
@@ -89,7 +89,7 @@ Microsoft Power Query for Excel アドインを使用して、HDInsight クラ�
 
 5. **[ナビゲーター]** で、 **[HIVE]**  >  **[既定値]**  >  **[hivesampletable]** の順に移動し、次に **[読み込み]** を選択します。 データが Excel にインポートされるまでに、しばらく時間がかかります。
 
-    ![HDInsight Excel Hive ODBC ナビゲーター](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "HDInsight Excel Hive ODBC ナビゲーター")
+   :::image type="content" source="./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png" alt-text="HDInsight Excel Hive ODBC ナビゲーター" border="true":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 1d2dde4e77a39b114f721cd6d2be250141984e7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86231711"
 ---
 # <a name="virtual-appliance-scenario"></a>仮想アプライアンスを使用するシナリオ
@@ -72,7 +72,7 @@ ms.locfileid: "86231711"
 ## <a name="user-defined-routing-udr"></a>ユーザー定義ルーティング (UDR)
 Azure の各サブネットは、そのサブネットで開始されたトラフィックをどのようにルーティングするかを定義するために使用される UDR テーブルにリンクすることができます。 UDR が定義されていない場合、Azure では、既定のルートを使用してあるサブネットから別のサブネットにトラフィックが送信されることを許可します。 UDR の理解を深めるには、「 [ユーザー定義ルートと IP 転送](virtual-networks-udr-overview.md)」をご覧ください。
 
-上記の要件に基づいて、適切なファイアウォール アプライアンスを経由して通信が行われることを保証するには、UDR を含む次のルート テーブルを **azurevnet**内に作成する必要があります。
+上記の要件に基づいて、適切なファイアウォール アプライアンスを経由して通信が行われることを保証するには、UDR を含む次のルート テーブルを **azurevnet** 内に作成する必要があります。
 
 ### <a name="azgwudr"></a>azgwudr
 このシナリオでは、**AZF3** に接続してファイアウォールを管理するためにオンプレミスから Azure に送信されるトラフィックのみが使用され、そのトラフィックを内部ファイアウォール **AZF2** 経由で送信する必要があります。 したがって、 **GatewaySubnet** には、次に示す 1 つのルートのみが必要です。
@@ -163,8 +163,8 @@ AZF2 は、次のルールを含む Azure の仮想アプライアンスを表�
 このシナリオをデプロイするには、次の概要手順に従います。
 
 1. Azure サブスクリプションにログインします。
-2. オンプレミス ネットワークを模倣するために VNet をデプロイする場合は、 **ONPREMRG**の一部であるリソースをプロビジョニングします。
-3. **AZURERG**の一部であるリソースをプロビジョニングします。
+2. オンプレミス ネットワークを模倣するために VNet をデプロイする場合は、 **ONPREMRG** の一部であるリソースをプロビジョニングします。
+3. **AZURERG** の一部であるリソースをプロビジョニングします。
 4. **onpremvnet** から **azurevnet** へのトンネルをプロビジョニングします。
 5. すべてのリソースがプロビジョニングされた後、**onpremvm2** にサインインし、10.0.3.101 への ping を実行して、**onpremsn2** と **azsn3** 間の接続をテストします。
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/16/2020
 ms.openlocfilehash: 56024fd0aac2f9fbefb7fe919eef2481550e573f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100367828"
 ---
 # <a name="window-transformation-in-mapping-data-flow"></a>マッピング データ フローでのウィンドウ変換

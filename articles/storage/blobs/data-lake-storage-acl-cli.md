@@ -10,12 +10,12 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9814dc06e7e570a923ba3ea5b3b0df7ade99bb28
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 5ec7d2b243a5eadab2d22dea14ebeac8eabb1722
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653707"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563166"
 ---
 # <a name="use-azure-cli-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で Azure CLI を使用して ACL を管理する
 
@@ -31,7 +31,7 @@ ACL の継承は、親ディレクトリの下に作成された新しい子項�
 
 - 階層型名前空間が有効になっているストレージ アカウント。 作成するには、[こちら](create-data-lake-storage-account.md)の手順に従います。
 
-- Azure CLI バージョン `2.6.0` 以上。
+- Azure CLI バージョン `2.14.0` 以上。
 
 - 次のセキュリティのアクセス許可のいずれか。
 
@@ -137,6 +137,9 @@ az storage fs access set --acl "default:user::rw-,group::rw-,other::-wx" -p my-d
 az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
+> [!NOTE]
+> 特定のグループまたはユーザーの ACL を設定するには、それぞれのオブジェクト ID を使用します。 たとえば、`group:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` または `user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` です。
+
 次の画像は、ファイルの ACL を設定した後の出力を示しています。
 
 ![ACL 出力を取得する 2](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
@@ -184,6 +187,9 @@ az storage fs access set --permissions rwxrwxrwx -p my-directory -f my-file-syst
 ```azurecli
 az storage fs access set --permissions rwxrwxrwx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
+
+> [!NOTE]
+> 特定のグループまたはユーザーの ACL を更新するには、それぞれのオブジェクト ID を使用します。 たとえば、`group:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` または `user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` です。
 
 `--owner` または `group` パラメーターをユーザーのエンティティ ID またはユーザー プリンシパル名 (UPN) に設定して、ディレクトリまたはファイルの所有ユーザーとグループを更新することもできます。
 

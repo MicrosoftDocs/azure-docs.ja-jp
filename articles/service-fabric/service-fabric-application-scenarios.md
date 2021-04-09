@@ -4,10 +4,10 @@ description: Service Fabric のクラウド アプリケーションのカテゴ
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: 6c3cc931a85b91fc02b8086ca5c2481153691e54
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575671"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric アプリケーションのシナリオ
@@ -20,19 +20,19 @@ Service Fabric 独自のアーキテクチャでは、リアルタイムに近�
 
 次の種類のアプリケーションに Service Fabric プラットフォームを使用することを検討してください。
 
-* **データの収集、処理、IoT**: Service Fabric では大規模な処理が行われ、そのステートフル サービスによって待機時間が短縮されます。 これは、デバイスのデータと計算用のデータが併置されている多数のデバイスでのデータ処理に役立ちます。
+* **データ収集、プロセッシングおよび IoT**: Service Fabric では大規模な処理が行われ、そのステートフル サービスによって待機時間が短縮されます。 これは、デバイスのデータと計算用のデータが併置されている多数のデバイスでのデータ処理に役立ちます。
 
     Service Fabric を利用して IoT サービスを構築されているお客様としては、[Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure)、[PCL Construction](https://customers.microsoft.com/story/pcl-construction-professional-services-azure)、[Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure)、[BMW](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/)、[Schneider Electric](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric)、[Mesh Systems](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions) などがあります。
 
-* **ゲームおよびセッション ベースの対話型アプリケーション**: オンライン ゲームやインスタント メッセージングなど、低待機時間の読み取りと書き込みが必要なアプリケーションの場合は、Service Fabric が有用です。 Service Fabric では、専用のストアやキャッシュを作成する必要なしに、対話型のステートフルなアプリケーションを構築できます。 [ゲーム サービスでの Service Fabric の使用](/gaming/azure/reference-architectures/multiplayer-synchronous-sf)に関する設計ガイダンスについては、[Azure のゲーム ソリューション](https://azure.microsoft.com/solutions/gaming/)に関するページをご覧ください。
+* **ゲームおよびセッション ベースの対話型アプリケーション**: Service Fabric は、オンライン ゲームやインスタント メッセージングなどのアプリケーションで低遅延の読み取りや書き込みが必要な場合に便利です。 Service Fabric では、専用のストアやキャッシュを作成する必要なしに、対話型のステートフルなアプリケーションを構築できます。 [ゲーム サービスでの Service Fabric の使用](/gaming/azure/reference-architectures/multiplayer-synchronous-sf)に関する設計ガイダンスについては、[Azure のゲーム ソリューション](https://azure.microsoft.com/solutions/gaming/)に関するページをご覧ください。
 
     ゲーム サービスを構築されているお客様としては、[Next Games](https://customers.microsoft.com/story/next-games-media-telecommunications-azure) や [Digamore](https://customers.microsoft.com/story/digamore-entertainment-scores-with-a-new-gaming-platform-based-on-azure-service-fabric/) などがあります。 対話型セッションを構築されているお客様としては、[Honeywell with Hololens](https://customers.microsoft.com/story/honeywell-manufacturing-hololens) などがあります
 
-* **データ分析とワークフロー処理**: イベントやデータのストリームを確実に処理する必要のあるアプリケーションには、Service Fabric での最適化された読み取りや書き込みによるメリットがあります。 また、Service Fabric では、信頼できる結果を、損失なく次の処理ステージに渡す必要がある、アプリケーション処理パイプラインがサポートされています。 これらのパイプラインには、データの一貫性と確実な計算が不可欠となる取引システムや金融システムが含まれます。
+* **データ分析とワークフロー プロセッシング**: イベントやデータのストリームを確実に処理する必要のあるアプリケーションには、Service Fabric での最適化された読み取りや書き込みによるメリットがあります。 また、Service Fabric では、信頼できる結果を、損失なく次の処理ステージに渡す必要がある、アプリケーション処理パイプラインがサポートされています。 これらのパイプラインには、データの一貫性と確実な計算が不可欠となる取引システムや金融システムが含まれます。
 
     ビジネス ワークフロー サービスを構築されているお客様としては、[Zeiss Group](https://customers.microsoft.com/story/zeiss-group-focuses-on-azure-service-fabric-for-key-integration-platform)、[Quorum Business Solutions](https://customers.microsoft.com/en-us/story/quorum-business-solutions-expand-energy-managemant-solutions-using-azure-service-fabric)、および [Société General](https://customers.microsoft.com/en-us/story/societe-generale-speeds-real-time-market-quotes-using-azure-service-fabric) などがあります。
 
-* **データの計算**: Service Fabric では、集中型のデータ計算処理を行うステートフル アプリケーションを構築できます。 Service Fabric では、アプリケーションでの処理 (計算) とデータの併置を実現できます。 
+* **データにおける評価**: Service Fabric では、集中型のデータ計算処理を行うステートフル アプリケーションを構築できます。 Service Fabric では、アプリケーションでの処理 (計算) とデータの併置を実現できます。 
 
    通常、アプリケーションでデータにアクセスする必要があるときは、外部のデータ キャッシュまたはストレージ階層に関連するネットワーク待機時間により、計算時間が制限されます。 ステートフルな Service Fabric サービスでは、その待機時間をなくして、いっそう最適化された読み取りと書き込みを実現できます。
 
@@ -40,7 +40,7 @@ Service Fabric 独自のアーキテクチャでは、リアルタイムに近�
 
     計算サービスを構築されているお客様としては、[Solidsoft Reply](https://customers.microsoft.com/story/solidsoft-reply-platform-powers-e-verification-of-pharmaceuticals) や [Infosupport](https://customers.microsoft.com/story/service-fabric-customer-profile-info-support-and-fudura) などがあります。
 
-* **高可用性サービス**: Service Fabric では、複数のセカンダリ サービス レプリカを作成することによって、高速のフェールオーバーが提供されます。 ハードウェアまたはその他の障害によってノード、プロセス、または個々のサービスがダウンした場合、セカンダリ レプリカの 1 つが最小限のサービス中断でプライマリ レプリカに昇格されます。
+* **高可用性サービス**: Service Fabric は、複数のセカンダリ サービス レプリカを作成することによって、高速のフェールオーバーを実現します。 ハードウェアまたはその他の障害によってノード、プロセス、または個々のサービスがダウンした場合、セカンダリ レプリカの 1 つが最小限のサービス中断でプライマリ レプリカに昇格されます。
 
 * **スケーラブルなサービス**: クラスター間でスケールアウトの状態になれるよう個々のサービスをパーティション分割できます。 個々のサービスは、その場で作成したり削除したりすることもできます。 数個のノード上の数個のインスタンスから、多数のノード上の数千個のインスタンスまで、サービスをスケールアウトし、必要に応じて再びそれらをスケールインすることができます。 Service Fabric を使用することで、このようなサービスを構築し、その完全なライフサイクルを管理することができます。
 
@@ -60,9 +60,9 @@ Service Fabric のステートフル サービスは、データベースや他�
 
 次の図では、ステートレスとステートフルなアプリケーション設計の違いを示しています。 [Reliable Services](service-fabric-reliable-services-introduction.md) と [Reliable Actors](service-fabric-reliable-actors-introduction.md) のプログラミング モデルを利用することで、高スループットと低待機時間を実現しながら、ステートフル サービスによりアプリケーションの複雑さが軽減されます。
 
-ステートレス サービスを使用するアプリケーション例を次に示します。![ステートフル サービスを使用するアプリケーション][Image1]
+ステートレス サービスを使用するアプリケーションの例を次に示します。![ ステートレス サービスを使用するアプリケーション][Image1]
 
-ステートフル サービスを使用するアプリケーション例を次に示します。![ステートフル サービスを使用するアプリケーション][Image2]
+ステートフル サービスを使用するアプリケーションの例を次に示します。![ステートフル サービスを使用するアプリケーション][Image2]
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -70,7 +70,7 @@ Service Fabric のステートフル サービスは、データベースや他�
 * [Azure でのマイクロサービスの構築](/azure/architecture/microservices/)に関するガイダンスについては、Azure アーキテクチャ センターをご覧ください。
 * アプリケーションの設計のガイダンスについては、「[Azure Service Fabric のアプリケーションとクラスターに関するベスト プラクティス](service-fabric-best-practices-overview.md)」をご覧ください。
 
-* 関連項目:
+* 次の用語も参照:
   * [マイクロサービスについて](service-fabric-overview-microservices.md)
   * [サービスの状態を定義し、管理する](service-fabric-concepts-state.md)
   * [サービスの可用性](service-fabric-availability-services.md)

@@ -6,14 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 9d035417b613c81487c493bde90cdcc461f04412
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0182f744e038bc8080b9fb96bfdb1eeda16b86c0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017289"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674854"
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>Azure Data Catalog でデータ資産を管理する
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 ## <a name="introduction"></a>はじめに
 Azure Data Catalog は、データ ソースを検出して、分析や意思決定を行うために必要なデータ ソースを容易に検出できるように設計されています。 この検出機能が最も高い利便性を発揮するのは、あなたや他のユーザーが、利用できる最大範囲のデータ ソースを探し出し、把握できたときです。 これらの要素を考慮して、Data Catalog の既定の動作は、登録されているすべてのデータ ソースをカタログの全ユーザーが見える状態にし、全ユーザーが検出できるように設定されています。
 
@@ -53,7 +56,7 @@ Data Catalog 内のデータ資産に所有権が設定されている場合、�
 資産の所有者が自分自身を所有者として削除した場合、以後、資産を管理できなくなります。 資産の所有者が自分自身を所有者として削除したとき、他に共同所有者が存在しなかった場合は、資産は未所有の状態に戻ります。
 
 ## <a name="control-visibility"></a>可視性の制御
-データ資産の所有者は、自分が所有するデータ資産の可視性を制御できます。 既定では、Data Catalog のすべてのユーザーがデータ資産を検出して表示できます。この既定の可視性を制限するには、資産所有者が、資産のプロパティで可視性の設定を **[全ユーザー]** から **[所有者とこれらのユーザー]** に切り替えます。 そのうえで所有者が特定のユーザーやセキュリティ グループを追加できます。
+データ資産の所有者は、自分が所有するデータ資産の可視性を制御できます。 既定では、Data Catalog のすべてのユーザーがデータ資産を検出して表示できます。この既定の可視性を制限するには、資産所有者が、資産のプロパティで可視性の設定を [**全ユーザー**] から [**所有者とこれらのユーザー**] に切り替えます。 そのうえで所有者が特定のユーザーやセキュリティ グループを追加できます。
 
 > [!NOTE]
 > 資産の所有権と可視性の権限は、個々のユーザーにではなく、できるだけセキュリティ グループに割り当てるようにしてください。

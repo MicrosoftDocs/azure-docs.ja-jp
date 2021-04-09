@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 11/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: beed3ec50d0c7990168ee75976c732796cdbe246
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93324422"
 ---
 # <a name="configure-runbook-output-and-message-streams"></a>Runbook の出力ストリームとメッセージ ストリームを構成する
@@ -119,7 +119,7 @@ Runbook には出力型 `Microsoft.Azure.Commands.Profile.Models.PSAzureContext`
 
 この例の **Test-ChildOutputType** という 2 番目の Runbook では、2 つのアクティビティが定義されています。<br> ![Example Child Output Type Runbook](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png)
 
-最初のアクティビティでは、 **AuthenticateTo-Azure** Runbook が呼び出されます。 2 番目のアクティビティの実行では、 **[データ ソース]** が **[アクティビティの出力]** に設定設定された `Write-Verbose` コマンドレットが実行されます。 また、 **[フィールド パス]** は **Context.Subscription.SubscriptionName** に設定されています。これは、 **AuthenticateTo-Azure** Runbook からのコンテキスト出力です。<br> ![Write-Verbose コマンドレットのパラメーター データ ソース](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
+最初のアクティビティでは、**AuthenticateTo-Azure** Runbook が呼び出されます。 2 番目のアクティビティの実行では、 **[データ ソース]** が **[アクティビティの出力]** に設定設定された `Write-Verbose` コマンドレットが実行されます。 また、 **[フィールド パス]** は **Context.Subscription.SubscriptionName** に設定されています。これは、**AuthenticateTo-Azure** Runbook からのコンテキスト出力です。<br> ![Write-Verbose コマンドレットのパラメーター データ ソース](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
 
 結果の出力は、サブスクリプションの名前です。<br> ![Test-ChildOutputType Runbook Results](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
 
@@ -151,7 +151,7 @@ Azure Automation では、対話型ユーザーにデバッグ メッセージ �
 
 1. 変数 `$GLOBAL:DebugPreference="Continue"` を設定します。これにより、デバッグ メッセージが検出されたときは常に続行するように PowerShell に指示されます。  **$GLOBAL:** の部分により、ステートメントの実行時にスクリプトが存在するローカル スコープではなく、グローバル スコープでこれを実行するように PowerShell に指示されます。
 
-1. キャプチャされないデバッグ ストリームを、" *出力* " などのキャプチャされるストリームにリダイレクトします。 これを行うには、実行されるステートメントに対して PowerShell のリダイレクトを設定します。 PowerShell のリダイレクトの詳細については、「[リダイレクトについて](/powershell/module/microsoft.powershell.core/about/about_redirection)」を参照してください。
+1. キャプチャされないデバッグ ストリームを、"*出力*" などのキャプチャされるストリームにリダイレクトします。 これを行うには、実行されるステートメントに対して PowerShell のリダイレクトを設定します。 PowerShell のリダイレクトの詳細については、「[リダイレクトについて](/powershell/module/microsoft.powershell.core/about/about_redirection)」を参照してください。
 
 #### <a name="examples"></a>例
 

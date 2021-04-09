@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: 5fedb9d09e61540d0ee8a1fe21fbd25f31390f5d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0133d6cc54038a56847556a83242114c78e09321
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742451"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574410"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 接続パートナーとピアリングの場所
 
@@ -115,6 +115,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **[GlobalConnect]()** | サポートされています |サポートされています | オスロ、スタバンゲル | 
 | **GTT** |サポートされています |サポートされています |ロンドン 2 |
 | **[Global Cloud Xchange (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | サポートされています| サポートされています | チェンナイ、ムンバイ |
+| **[iAdvantage](https://www.scx.sunevision.com/)** | サポートされています | サポートされています | 香港特別行政区 2 |
 | **Intelsat** | サポートされています | サポートされています | ワシントン DC 2 |
 | **[InterCloud](https://www.intercloud.com/)** |サポートされています |サポートされています |アムステルダム、シカゴ、フランクフルト、香港特別行政区、ロンドン、ニューヨーク、パリ、シリコン バレー、シンガポール、ワシントン DC、チューリッヒ |
 | **[Internet2](https://internet2.edu/services/cloud-connect/#service-cloud-connect)** |サポートされています |サポートされています |シカゴ、ダラス、シリコン バレー、ワシントン DC |

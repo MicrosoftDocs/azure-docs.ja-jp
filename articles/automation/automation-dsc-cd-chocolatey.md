@@ -7,10 +7,10 @@ ms.date: 08/08/2018
 ms.topic: conceptual
 ms.custom: references_regions
 ms.openlocfilehash: bb5f7b5e8214bd3b04bd7b9544ab4bc589f6c4bf
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98896327"
 ---
 # <a name="set-up-continuous-deployment-with-chocolatey"></a>Chocolatey を使用して継続的配置を設定する

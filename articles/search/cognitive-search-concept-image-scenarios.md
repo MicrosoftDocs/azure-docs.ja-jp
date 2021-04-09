@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 56ec893de159f4c8a90c5a229ccf7669856fb066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e77bbd6e82d0d4a48b72e13e60b60608f2d7674
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020220"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103419593"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>AI エンリッチメントのシナリオで画像の情報を処理し、抽出する方法
 
@@ -213,6 +213,77 @@ OCR ステップは正規化された画像に対して実行されるため、�
             return original;
         }
 ```
+## <a name="passing-images-to-custom-skills"></a>カスタム スキルに画像を渡す
+
+画像を操作するためにカスタム スキルが必要なシナリオでは、画像をカスタム スキルに渡したり、スキルからテキストまたは画像が返されるようにしたりできます。 [Python サンプル](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Image-Processing) image-processing で、ワークフローを示しています。 次のスキルセットはサンプルからのものです。
+
+次のスキルセットでは、(ドキュメント解析中に取得した) 正規化された画像を取得し、画像のスライスを出力します。
+
+#### <a name="sample-skillset"></a>サンプル スキルセット
+```json
+{
+  "description": "Extract text from images and merge with content text to produce merged_text",
+  "skills":
+  [
+    {
+          "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+          "name": "ImageSkill",
+          "description": "Segment Images",
+          "context": "/document/normalized_images/*",
+          "uri": "https://your.custom.skill.url",
+          "httpMethod": "POST",
+          "timeout": "PT30S",
+          "batchSize": 100,
+          "degreeOfParallelism": 1,
+          "inputs": [
+            {
+              "name": "image",
+              "source": "/document/normalized_images/*"
+            }
+          ],
+          "outputs": [
+            {
+              "name": "slices",
+              "targetName": "slices"
+            }
+          ],
+          "httpHeaders": {}
+        }
+  ]
+}
+```
+
+#### <a name="custom-skill"></a>カスタム スキル
+
+カスタム スキル自体は、スキルセットの外部にあります。 この場合、まずカスタム スキル形式で要求レコードのバッチをループ処理してから、base64 エンコード文字列を画像に変換するのは Python コードです。
+
+```python
+# deserialize the request, for each item in the batch
+for value in values:
+  data = value['data']
+  base64String = data["image"]["data"]
+  base64Bytes = base64String.encode('utf-8')
+  inputBytes = base64.b64decode(base64Bytes)
+  # Use numpy to convert the string to an image
+  jpg_as_np = np.frombuffer(inputBytes, dtype=np.uint8)
+  # you now have an image to work with
+```
+同様に、画像を返すには、JSON オブジェクト内で `file` の `$type` プロパティを使用して base64 エンコード文字列を返します。
+
+```python
+def base64EncodeImage(image):
+    is_success, im_buf_arr = cv2.imencode(".jpg", image)
+    byte_im = im_buf_arr.tobytes()
+    base64Bytes = base64.b64encode(byte_im)
+    base64String = base64Bytes.decode('utf-8')
+    return base64String
+
+ base64String = base64EncodeImage(jpg_as_np)
+ result = { 
+  "$type": "file", 
+  "data": base64String 
+}
+```
 
 ## <a name="see-also"></a>参照
 + [インデクサーの作成 (REST)](/rest/api/searchservice/create-indexer)
@@ -221,3 +292,4 @@ OCR ステップは正規化された画像に対して実行されるため、�
 + [テキスト マージ スキル](cognitive-search-skill-textmerger.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [エンリッチされたフィールドをマップする方法](cognitive-search-output-field-mapping.md)
++ [画像をカスタム スキルに渡す方法](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Image-Processing)

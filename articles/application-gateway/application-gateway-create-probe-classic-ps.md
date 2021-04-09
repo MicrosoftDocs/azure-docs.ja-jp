@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 13441899eeb5ca2b7c60977ab2858fe40a398d1a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93397860"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>PowerShell を使用して Azure Application Gateway (クラシック) のカスタム プローブを作成する
@@ -57,7 +57,7 @@ Get-AzureApplicationGateway AppGwTest
 > 
 > 
 
-ゲートウェイがまだ起動していないため、 *VirtualIPs* と *DnsName* は空白のまま表示されます。 これらの値は、ゲートウェイが実行中の状態になったときに作成されます。
+ゲートウェイがまだ起動していないため、*VirtualIPs* と *DnsName* は空白のまま表示されます。 これらの値は、ゲートウェイが実行中の状態になったときに作成されます。
 
 ### <a name="configure-an-application-gateway-by-using-xml"></a>XML を使用してアプリケーション ゲートウェイを構成する
 
@@ -147,7 +147,7 @@ Get-AzureApplicationGateway AppGwTest
 | **Host** と **Path** | インスタンスの状態を判断するためにアプリケーション ゲートウェイによって呼び出される完全な URL パス。 たとえば、http:\//contoso.com/ という Web サイトがある場合、HTTP 応答が正常かどうかをプローブでチェックするために、"http:\//contoso.com/path/custompath.htm" に対してカスタム プローブを構成します。|
 | **間隔** | プローブのチェック間隔を秒単位で指定します。|
 | **タイムアウト** | プローブの HTTP 応答チェックのタイムアウト期間を定義します。|
-| **UnhealthyThreshold** | バックエンド インスタンスに " *異常* " というフラグを設定するために必要な HTTP 応答の失敗数。|
+| **UnhealthyThreshold** | バックエンド インスタンスに "*異常*" というフラグを設定するために必要な HTTP 応答の失敗数。|
 
 プローブの名前は、どのバックエンド プールがカスタム プローブ設定を使用するかを割り当てる \<BackendHttpSettings\> 構成で参照されます。
 

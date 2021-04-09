@@ -16,10 +16,10 @@ ms.date: 02/16/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 3923394e76d5ce4001d3652ae9cbc263df08e4e2
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100545617"
 ---
 # <a name="create-an-asset"></a>アセットを作成する

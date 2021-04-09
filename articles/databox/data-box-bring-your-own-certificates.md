@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 12/11/2020
 ms.author: alkohli
 ms.openlocfilehash: 1836ed57305fd7e168961eb81670b56d4ce296cd
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100545175"
 ---
 # <a name="use-your-own-certificates-with-data-box-and-data-box-heavy-devices"></a>Data Box/Data Box Heavy デバイスで独自の証明書を使用する

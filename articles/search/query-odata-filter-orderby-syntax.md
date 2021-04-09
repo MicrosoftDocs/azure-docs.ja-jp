@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: d04311fce81d147a0830918aee1d4a2a9c0808d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88923400"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Azure Cognitive Search での `$filter`、`$orderby`、および `$select` 用の OData 言語の概要
@@ -117,7 +117,7 @@ OData では、定数は特定の [Entity Data Model](/dotnet/framework/data/ado
 | --- | --- |
 | `Edm.Boolean` | `true`, `false` |
 | `Edm.DateTimeOffset` | `2019-05-06T12:30:05.451Z` |
-| `Edm.Double` | `3.14159`、`-1.2e7`、`NaN`、`INF`、`-INF` |
+| `Edm.Double` | `3.14159`, `-1.2e7`, `NaN`, `INF`, `-INF` |
 | `Edm.GeographyPoint` | `geography'POINT(-122.131577 47.678581)'` |
 | `Edm.GeographyPolygon` | `geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'` |
 | `Edm.Int32` | `123`, `-456` |

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 53334dfdcdb917c754c9bc4205b0918c6d207da8
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 1be8afb58b22435f4f43b2d6884332a38b7f1e11
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584789"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103467478"
 ---
 # <a name="install-and-run-form-recognizer-containers-retiring"></a>Form Recognizer コンテナーのインストールと実行 (廃止)
 
@@ -84,7 +84,7 @@ Form Recognizer コンテナーを使用する前に、次の前提条件を満�
 > [!Note]
 > 最小値と推奨値は、Docker の制限に基づくもので、ホスト マシンのリソースに基づくものでは *ありません*。
 
-Form Recognizer とテキスト認識の両方のコンテナーが必要になります。**テキスト認識** コンテナー[の詳細は、この記事の範囲に含まれないことに注意してください。](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull)
+Form Recognizer とテキスト認識の両方のコンテナーが必要になります。**テキスト認識** コンテナー [の詳細は、この記事の範囲に含まれないことに注意してください。](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull)
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -264,7 +264,7 @@ formrecognizer_config =
 
 ### <a name="form-recognizer"></a>Form Recognizer
 
-コンテナーは、REST エンドポイント API を提供します。これは、[Form Recognizer API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel) のページにあります。
+コンテナーには、REST エンドポイント API が用意されています。これは、Form Recognizer API リファレンス ページ (https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm) ) にあります。
 
 
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]

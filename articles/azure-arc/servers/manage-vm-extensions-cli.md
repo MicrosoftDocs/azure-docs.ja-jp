@@ -5,10 +5,10 @@ ms.date: 01/05/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 6edb7d55e542f963c75693d535fa3b50dc5b827b
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97916203"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>Azure CLI を使用して Azure VM 拡張機能を有効にする

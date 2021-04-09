@@ -12,22 +12,18 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: 音声翻訳
-ms.openlocfilehash: 36c2943d7cd5ce2c5c7c4a8501dc0033aa8c9cbc
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 94ddd06068513261b5b73b313877e273c7251d62
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015207"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104954962"
 ---
 # <a name="what-is-speech-translation"></a>音声翻訳とは何か
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-この概要では、多言語のオーディオ ストリームをリアルタイムで音声間の翻訳または音声テキスト変換できる音声翻訳サービスの利点と機能について説明します。 Speech SDK を使用すると、アプリケーション、ツール、およびデバイスから、提供されたオーディオのソース トランスクリプションや翻訳出力にアクセスすることができます。 音声の検出中には中間トランスクリプションと翻訳結果が返され、最終的な結果は、合成された音声に変換することができます。
-
-Microsoft の翻訳エンジンは、統計的機械翻訳 (SMT) とニューラル機械翻訳 (NMT) という 2 つのアプローチによって強化されています。 SMT では、高度な統計分析を使用して、いくつかの単語の文脈から考えられる最善の翻訳が推定されます。 NMT では、ニューラル ネットワークを使用して、文全体のコンテキストを踏まえた、正確で自然な翻訳が提供されます。
-
-現在、Microsoft では、特に一般的な言語への翻訳に NMT を使用しています。 [音声間翻訳に使用できるすべての言語](language-support.md#speech-translation)で、NMT が導入されています。 音声テキスト変換では、言語ペアに応じて SMT または NMT を使用できます。 ターゲット言語が NMT によってサポートされている場合、翻訳全体が NMT によって処理されます。 ターゲット言語が NMT によってサポートされていない場合は、2 つの言語間の "ピボット" として英語を使用する NMT と SMT のハイブリッド翻訳となります。
+この概要では、[多言語のオーディオ ストリームをリアルタイムで音声間の](language-support.md#speech-translation)翻訳または音声テキスト変換できる音声翻訳サービスの利点と機能について説明します。 Speech SDK を使用すると、アプリケーション、ツール、およびデバイスから、提供されたオーディオのソース トランスクリプションや翻訳出力にアクセスすることができます。 音声の検出中には中間トランスクリプションと翻訳結果が返され、最終的な結果は、合成された音声に変換することができます。
 
 ## <a name="core-features"></a>コア機能
 

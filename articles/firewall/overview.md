@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 02/16/2021
+ms.date: 03/10/2021
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 56d04abe73020cef09383d4f79a58f037c266a93
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 0982f0293b452c29a1c9fbb46cb24d47e70c0f5e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547998"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615569"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -55,7 +55,8 @@ Azure Firewall には、次の既知の問題があります。
 
 |問題  |説明  |対応策  |
 |---------|---------|---------|
-TCP/UDP 以外のプロトコル (ICMP など) に関するネットワーク フィルタリング規則が、インターネットへのトラフィックで機能しない|TCP/UDP 以外のプロトコルに関するネットワーク フィルタリング規則は、パブリック IP アドレスへの SNAT で機能しません。 TCP/UDP 以外のプロトコルは、スポーク サブネットと VNet との間でサポートされます。|Azure Firewall では Standard Load Balancer が使用されます。[現在 Standard Load Balancer では、IP プロトコルの SNAT はサポートされていません](../load-balancer/load-balancer-overview.md)。 Microsoft は、将来のリリースでこのシナリオに対応できるよう方法を模索しています。|
+|ポータルを使用して、IP アドレスから IP グループに、またはその逆に規則を更新した場合、両方の種類が保存はされるが、どちらか一方しかポータルに表示されない。|この問題は、クラシック ルールで発生します。<br><br>ポータルを使用して、NAT 規則の送信元の種類を IP アドレスから IP グループまたはその逆に更新すると、両方の種類がバックエンドに保存はされますが、新しく更新した種類しか表示されません。<br><br>ネットワークまたはアプリケーションの規則の送信先の種類を IP アドレスから IP グループまたはその逆に更新した場合にも、同じ問題が発生します。|ポータルの修正は、2021 年 3 月に予定されています。<br><br>それまでの間は、Azure PowerShell、Azure CLI、または API を使用して、IP アドレスから IP グループまたはその逆に規則を変更してください。|
+|TCP/UDP 以外のプロトコル (ICMP など) に関するネットワーク フィルタリング規則が、インターネットへのトラフィックで機能しない|TCP/UDP 以外のプロトコルに関するネットワーク フィルタリング規則は、パブリック IP アドレスへの SNAT で機能しません。 TCP/UDP 以外のプロトコルは、スポーク サブネットと VNet との間でサポートされます。|Azure Firewall では Standard Load Balancer が使用されます。[現在 Standard Load Balancer では、IP プロトコルの SNAT はサポートされていません](../load-balancer/load-balancer-overview.md)。 Microsoft は、将来のリリースでこのシナリオに対応できるよう方法を模索しています。|
 |PowerShell と CLI では ICMP がサポートされない|Azure PowerShell と CLI は、ネットワーク ルールの有効なプロトコルとして ICMP をサポートしていません。|それでも、ポータルと REST API を介して ICMP をプロトコルとして使用することが可能です。 近いうちに PowerShell と CLI に ICMP を追加するよう取り組んでいます。|
 |FQDN タグで port:protocol を設定する必要がある|FQDN タグを使用するアプリケーション ルールには、port:protocol の定義が必要です。|port:protocol 値として、**https** を使用できます。 FQDN タグの使用時にこのフィールドを省略可能にするため、取り組みを進めています。|
 |ファイアウォールを別のリソース グループまたはサブスクリプションへ移動することはサポートされていません|ファイアウォールを別のリソース グループまたはサブスクリプションへ移動することはサポートされていません。|この機能は今後サポートされる予定です。 ファイアウォールを別のリソース グループまたはサブスクリプションに移動するには、現在のインスタンスを削除して、新しいリソース グループまたはサブスクリプション内に再作成する必要があります。|
@@ -82,6 +83,6 @@ TCP/UDP 以外のプロトコル (ICMP など) に関するネットワーク �
 
 ## <a name="next-steps"></a>次のステップ
 
+- [クイックスタート: Azure ファイアウォールとファイアウォール ポリシーを作成する - ARM テンプレート](../firewall-manager/quick-firewall-policy.md)
+- [クイック スタート:可用性ゾーンを使用して Azure Firewall をデプロイする - ARM テンプレート](deploy-template.md)
 - [チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する](tutorial-firewall-deploy-portal.md)
-- [テンプレートを使用して Azure Firewall をデプロイする](deploy-template.md)
-- [Azure Firewall のテスト環境を作成する](scripts/sample-create-firewall-test.md)

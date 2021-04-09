@@ -1,24 +1,25 @@
 ---
 title: ElasticSearch を Azure の開発仮想マシンにデプロイする
 description: チュートリアル - Elastic Stack を Azure の開発 Linux VM にインストールする
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: virtual-machines
 author: rloutlaw
 manager: justhe
 tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: 54ef051b7d8778e2eecd85bef2e57b62239ba114
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b3213d7de9aee88486fa1db1388c51948fbde430
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435316"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102557813"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>Elastic Stack を Azure VM にインストールする
 

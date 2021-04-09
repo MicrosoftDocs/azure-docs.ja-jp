@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Helper Helper の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Helper Helper の統合 | Microsoft Docs'
 description: Azure Active Directory と Helper Helper の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 05/31/2019
 ms.author: jeedes
 ms.openlocfilehash: 0f85f3c747c634e0118ac516fc83284350fc2584
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92445023"
 ---
-# <a name="tutorial-integrate-helper-helper-with-azure-active-directory"></a>チュートリアル:Helper Helper と Azure Active Directory の統合
+# <a name="tutorial-integrate-helper-helper-with-azure-active-directory"></a>チュートリアル: Helper Helper と Azure Active Directory の統合
 
 このチュートリアルでは、Helper Helper と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Helper Helper を統合すると、次のことができます。
 
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Helper Helper では、 **SP と IDP** によって開始される SSO と、 **Just-In-Time** ユーザー プロビジョニングがサポートされます。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Helper Helper では、**SP と IDP** によって開始される SSO と、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
 ## <a name="adding-helper-helper-from-the-gallery"></a>ギャラリーからの Helper Helper の追加
 
@@ -47,7 +47,7 @@ Azure AD への Helper Helper の統合を構成するには、管理対象の S
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Helper Helper** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Helper Helper**」と入力します。
 1. 結果のパネルから **[Helper Helper]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -67,13 +67,13 @@ Helper Helper に対する Azure AD SSO を構成してテストするには、�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Helper Helper** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Helper Helper** アプリケーション統合ページで、**[管理]** セクションを探して、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **サービス プロバイダー メタデータ ファイル** を保持しており、 **IDP** によって開始されるモードに構成したい場合は、 **[基本的な SAML 構成]** セクション上で次の手順を実行します。
+1. **サービス プロバイダー メタデータ ファイル** を保持しており、**IDP** によって開始されるモードに構成したい場合は、 **[基本的な SAML 構成]** セクション上で次の手順を実行します。
 
     >[!NOTE]
     >URL `https://sso.helperhelper.com/saml/<customer_id>` に移動し、サービス プロバイダーのメタデータ ファイルを入手します。 `<customer_id>` については、[Helper Helper クライアント サポート チーム](mailto:info@helperhelper.com)にお問い合わせください。
@@ -82,7 +82,7 @@ Helper Helper に対する Azure AD SSO を構成してテストするには、�
 
     b. **フォルダー ロゴ** をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
-    c. メタデータ ファイルが正常にアップロードされると、 **識別子** と **応答 URL** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
+    c. メタデータ ファイルが正常にアップロードされると、**識別子** と **応答 URL** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
 
     > [!Note]
     > **識別子** と **応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
@@ -104,7 +104,7 @@ Helper Helper に対する Azure AD SSO を構成してテストするには、�
 
 ### <a name="configure-helper-helper"></a>Helper Helper の構成
 
-**Helper Helper** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Helper Helper サポート チーム](mailto:info@helperhelper.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Helper Helper** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Helper Helper サポート チーム](mailto:info@helperhelper.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

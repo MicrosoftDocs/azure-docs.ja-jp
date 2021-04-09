@@ -4,10 +4,10 @@ description: Service Fabric でアプリケーション用の環境変数を使�
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: 610e44ac98b8b8a2ce5a91fdbcfda145ae36a94b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96576742"
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Service Fabric のサービス用に環境変数を指定する方法

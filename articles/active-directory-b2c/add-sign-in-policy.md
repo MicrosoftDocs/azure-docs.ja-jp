@@ -8,16 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/12/2021
+ms.date: 03/04/2021
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2956f0ffb562214477249da3198ebbe42ef9bb45
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 2310bd39c39036b6d6ac919517fa5539d7b70779
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660371"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581866"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でサインイン フローを設定する
 
@@ -30,7 +31,7 @@ ms.locfileid: "98660371"
 * ユーザーは Azure AD B2C ローカルアカウントでサインインできる
 * ソーシャル アカウントでサインアップまたはサインインする
 * パスワードのリセット
-* ユーザーは Azure AD B2C ローカル アカウントに新規登録できない - アカウントを作成するために、管理者が [MS Graph API](microsoft-graph-operations.md) を使用できます。
+* ユーザーは Azure AD B2C ローカル アカウントにサインインできません。 アカウントを作成するために、管理者は [Azure portal](manage-users-portal.md#create-a-consumer-user)、または [MS Graph API](microsoft-graph-operations.md) を使用できます。
 
 ![プロファイル編集フロー](./media/add-sign-in-policy/sign-in-user-flow.png)
 
@@ -75,26 +76,34 @@ ms.locfileid: "98660371"
 1. 次のクレーム プロバイダーを `ClaimsProviders` 要素に追加します。
 
     ```xml
-    <ClaimsProvider>
-      <DisplayName>Local Account</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
-          <Metadata>
-            <Item Key="setting.showSignupLink">false</Item>
-          </Metadata>
-        </TechnicalProfile>
-      </TechnicalProfiles>
-    </ClaimsProvider>
+    <!--
+    <ClaimsProviders> -->
+      <ClaimsProvider>
+        <DisplayName>Local Account</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
+            <Metadata>
+              <Item Key="setting.showSignupLink">false</Item>
+            </Metadata>
+          </TechnicalProfile>
+        </TechnicalProfiles>
+      </ClaimsProvider>
+    <!--
+    </ClaimsProviders> -->
     ```
 
 1. `<BuildingBlocks>` 要素内で、1.2.0 以降のデータ URI を参照するように次の [ContentDefinition](contentdefinitions.md) を追加します。
 
     ```XML
-    <ContentDefinitions>
-     <ContentDefinition Id="api.localaccountsignup">
-        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0</DataUri>
-      </ContentDefinition>
-    </ContentDefinitions>
+    <!-- 
+    <BuildingBlocks> 
+      <ContentDefinitions>-->
+        <ContentDefinition Id="api.localaccountsignup">
+          <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0</DataUri>
+        </ContentDefinition>
+      <!--
+      </ContentDefinitions>
+    </BuildingBlocks> -->
     ```
 
 ## <a name="update-and-test-your-policy"></a>ポリシーを更新してテストする
@@ -103,7 +112,7 @@ ms.locfileid: "98660371"
 1. ご利用の Azure AD テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターをクリックして、ご利用の Azure AD テナントを含むディレクトリを選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
 1. **[Identity Experience Framework]** を選択します。
-1. **[カスタム ポリシーのアップロード]** を選択し、変更した 2 つのポリシー ファイルをアップロードします。
+1. **[カスタム ポリシーのアップロード]** を選択し、変更したポリシー ファイルである *TrustFrameworkExtensions.xml* をアップロードします。
 1. アップロードしたサインイン ポリシーを選択し、 **[今すぐ実行]** ボタンをクリックします。
 1. サインアップ リンクなしで、(MS Graph API を使用して) 作成したアカウントでサインインできるはずです。
 

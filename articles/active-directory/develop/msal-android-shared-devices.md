@@ -13,17 +13,14 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: ea902b8b609d226f6bb9e61ec0bfd60f75a3825d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a67e0d851ab544f737097eff9a884752cff9f5fc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038579"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491553"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Android デバイスの共有デバイス モード
-
->[!IMPORTANT]
-> この機能 [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 現場の最前線で働く従業員 (小売店員、航空機乗組員、フィールド サービス ワーカーなど) は多くの場合、共有モバイル デバイスを使用して作業を行います。 これは、これらの従業員が共有デバイス上の顧客およびビジネス データにアクセスするためにパスワードまたは PIN 番号の共有を開始するときに問題になります。
 

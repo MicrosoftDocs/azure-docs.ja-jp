@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
 ms.openlocfilehash: a2065286581b6e7de61e4d1a29382b98563cdbb8
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895059"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-scalex-enterprise"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ScaleX Enterprise の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* ScaleX Enterprise では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* ScaleX Enterprise では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-scalex-enterprise-from-the-gallery"></a>ギャラリーからの ScaleX Enterprise の追加
 
@@ -49,7 +49,7 @@ Azure AD への ScaleX Enterprise の統合を構成するには、ギャラリ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **ScaleX Enterprise** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**ScaleX Enterprise**」と入力します。
 1. 結果のパネルから **[ScaleX Enterprise]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -89,7 +89,7 @@ ScaleX Enterprise に対する Azure AD SSO を構成してテストするには
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[ScaleX Enterprise クライアント サポート チーム](https://info.rescale.com/contact_sales)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. ScaleX Enterprise アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **emailaddress** は **user.mail** にマップされています。 ScaleX Enterprise アプリケーションでは、 **emailaddress** が **user.userprincipalname** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. ScaleX Enterprise アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**emailaddress** は **user.mail** にマップされています。 ScaleX Enterprise アプリケーションでは、**emailaddress** が **user.userprincipalname** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -160,9 +160,9 @@ ScaleX Enterprise に対する Azure AD SSO を構成してテストするには
 
     a. **[Create any user who can authenticate with SSO]\(SSO で認証できるユーザーを作成する\)** を選択します。
 
-    b. **[Service Provider saml]\(サービス プロバイダー SAML\)** :値 * *_urn:oasis:names:tc:SAML:2.0:nameid-format:persistent_* _ を貼り付けます
+    b. **[Service Provider saml]\(サービス プロバイダー SAML\)** : 値 **_urn:oasis:names:tc:SAML:2.0:nameid-format:persistent_** を貼り付けます
 
-    c. [_*Name of Identity Provider email field in ACS response]\(ACS 応答での ID プロバイダーの電子メール フィールドの名前\)**:値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` を貼り付けます
+    c. **[Name of Identity Provider email field in ACS response (ACS 応答での ID プロバイダーの電子メール フィールドの名前)]** : 値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` を貼り付けます。
 
     d. **[Identity Provider EntityDescriptor Entity ID]\(ID プロバイダーの EntityDescriptor エンティティ ID\):** Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
 

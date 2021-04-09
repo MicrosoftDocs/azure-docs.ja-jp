@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 03/13/2020
 ms.openlocfilehash: 39f893e9375970ff4bb6e3cfa2c93ceea48ec896
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92331806"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>クイック スタート:Azure portal と Azure Database Migration Service を使用してハイブリッド モード インスタンスを作成する
@@ -55,7 +55,7 @@ Azure Database Migration Service の最初のインスタンスを作成する�
 
     ![リソース プロバイダーを検索する](media/quickstart-create-data-migration-service-hybrid-portal/dms-portal-search-resource-provider.png)
 
-2. 移行を検索し、 **Microsoft.DataMigration** の右側にある **[登録]** を選択します。
+2. 移行を検索し、**Microsoft.DataMigration** の右側にある **[登録]** を選択します。
 
     ![リソース プロバイダーの登録](media/quickstart-create-data-migration-service-hybrid-portal/dms-portal-register-resource-provider.png)
 
@@ -125,7 +125,7 @@ Azure Database Migration Service の最初のインスタンスを作成する�
     > [!IMPORTANT]
     > Azure Database Migration Service ハイブリッド インストーラーには .NET 4.7.2 以降が必要です。 最新バージョンの .NET については、「[.NET Framework のダウンロード](https://dotnet.microsoft.com/download/dotnet-framework)」ページで確認してください。
 
-4. インストール フォルダーで **dmsSettings.json** ファイルを見つけて開き、 **ApplicationId** と **resourceId** を指定して、ファイルを保存します。
+4. インストール フォルダーで **dmsSettings.json** ファイルを見つけて開き、**ApplicationId** と **resourceId** を指定して、ファイルを保存します。
 
     ![Azure Database Migration Service ハイブリッド worker の設定](media/quickstart-create-data-migration-service-hybrid-portal/dms-settings.png)
 

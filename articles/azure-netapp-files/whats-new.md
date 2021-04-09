@@ -12,22 +12,32 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 12/04/2020
+ms.date: 03/19/2021
 ms.author: b-juche
-ms.openlocfilehash: b40bbd6c470302b78b78744307805021a3649376
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f2167159b03cd0387acfccf4bbd0a2e840f739df
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571023"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955234"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files の新機能
 
 Azure NetApp Files は定期的に更新されています。 この記事では、最新の新機能と機能強化の概要について説明します。 
 
+## <a name="march-2021"></a>2021 年 3 月
+
+* [SMB 継続的可用性 (CA) 共有](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (プレビュー)  
+
+    SMB 透過フェールオーバーを使用すると、SMB ボリュームにデータを格納してアクセスするサーバー アプリケーションへの接続を中断することなく、Azure NetApp Files サービスでメンテナンス操作を行うことができます。 SMB 透過フェールオーバーをサポートするために、Azure NetApp Files では、Azure VM で実行されている SMB を介して SQL Server アプリケーションで使用する SMB 継続的可用性共有オプションがサポートされるようになりました。 この機能は現在、Windows SQL Server でサポートされています。 Linux SQL Server では現在サポートされていません。 この機能を有効にすると、[単一インスタンス、Always-On フェールオーバー クラスター インスタンス、Always-On 可用性グループの展開](azure-netapp-files-solution-architectures.md#sql-server)において、SQL Server のパフォーマンスが大幅に向上し、スケーリングとコスト面の利点が得られます。 「[SQL Server の展開に Azure NetApp Files を使用する利点](solutions-benefits-azure-netapp-files-sql-server.md)」を参照してください。
+
+* [リージョン間レプリケーションの宛先ボリュームの自動サイズ変更](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
+
+    リージョン間のレプリケーション関係では、宛先ボリュームは、ソース ボリュームのサイズに基づいて、自動的にサイズ変更されます。 そのため、宛先ボリュームを個別にサイズ変更する必要はありません。 この自動サイズ変更の動作は、ボリュームがアクティブなレプリケーション関係にある場合、または再同期操作でレプリケーション ピアリングが切断された場合に適用されます。 この機能を使用するには、ソースと宛先の両方のボリュームの容量プールに十分なヘッドルームを確保する必要があります。
+
 ## <a name="december-2020"></a>2020 年 12 月
 
-* [Azure アプリケーション整合性スナップショット ツール](azacsnap-introduction.md) (パブリック プレビュー)    
+* [Azure アプリケーション整合性スナップショット ツール](azacsnap-introduction.md) (プレビュー)    
 
     Azure アプリケーション整合性スナップショット ツール (AzAcSnap) は、Linux 環境 (SUSE、RHEL など) におけるサードパーティ データベース (SAP HANA) のデータ保護を省力化するコマンドライン ツールです。   
 
@@ -47,7 +57,7 @@ Azure NetApp Files は定期的に更新されています。 この記事では
 
 ## <a name="september-2020"></a>2020 年 9 月
 
-* [Azure NetApp Files のリージョン間レプリケーション](cross-region-replication-introduction.md) (パブリック プレビュー)
+* [Azure NetApp Files のリージョン間レプリケーション](cross-region-replication-introduction.md) (プレビュー)
 
   Azure NetApp Files で、リージョン間レプリケーションがサポートされるようになりました。 この新しいディザスター リカバリー機能を使用することで、Azure NetApp Files のボリュームをある Azure リージョンから別のリージョンに、素早くかつコスト効率の良い方法でレプリケートすることができます。これにより、予測不可能なリージョンの障害からデータを保護することができます。 Azure NetApp Files のリージョン間レプリケーションでは、NetApp の SnapMirror® 技術を活用しています。これにより、変更されたブロックのみが、圧縮された効率的な形式でネットワーク経由で送信されます。 この独自のテクノロジにより、リージョン間でのレプリケーションに必要なデータ量が最小化されるため、データ転送コストが削減されます。 また、レプリケーションにかかる時間が短縮されるため、より小さい回復ポイントの目標 (RPO) を実現できます。
 

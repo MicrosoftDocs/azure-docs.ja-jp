@@ -10,10 +10,10 @@ ms.date: 06/23/2020
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: bc0ac1a6e882f4197828bf79c7989c16b2eb16f7
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98217670"
 ---
 # <a name="quickstart-create-a-virtual-network---resource-manager-template"></a>クイック スタート:仮想ネットワークを作成する - Resource Manager テンプレート

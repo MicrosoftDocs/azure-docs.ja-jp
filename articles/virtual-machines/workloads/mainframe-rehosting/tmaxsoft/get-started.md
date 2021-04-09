@@ -5,14 +5,14 @@ author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
-ms.service: virtual-machines-linux
-ms.subservice: workloads
-ms.openlocfilehash: 215a17ced6be4cc8792ac1a06115450bfbccac99
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
+ms.openlocfilehash: 346c331596f984cbb068c03110997c2478499488
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963268"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950673"
 ---
 # <a name="get-started-with-tmaxsoft-openframe-on-azure"></a>Azure 上の TmaxSoft OpenFrame の概要
 

@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 01/27/2020
 ms.openlocfilehash: 4027b2ca66b4d4319f7df347df6d671e6d48b772
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101735133"
 ---
 # <a name="enable-and-review-kubernetes-control-plane-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Kubernetes コントロール プレーンのログを有効にして表示する

@@ -4,10 +4,10 @@ description: ベスト プラクティスに従って、Service Fabric アプリ
 ms.topic: conceptual
 ms.date: 6/05/2019
 ms.openlocfilehash: a03df40a8ce213c5de9ed7017d47713c4de3449d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87835869"
 ---
 # <a name="production-readiness-checklist"></a>運用環境の準備状況チェックリスト

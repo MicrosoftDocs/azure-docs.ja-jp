@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein, srbozovi, bonova
 ms.date: 02/18/2019
 ms.openlocfilehash: a1f496d59fa626dc8750493591128f7363afa40d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91620258"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>クイック スタート:Azure SQL Managed Instance に接続するように Azure VM を構成する
@@ -138,7 +138,7 @@ SQL Managed Instance はご自分のプライベートの仮想ネットワー�
 1. 仮想マシンで、SQL Server Management Studio を開きます。
 
    SSMS の初回起動時は、構成を完了する必要があるために起動にしばらく時間がかかります。
-2. **[サーバーに接続]** ダイアログ ボックスで、 **[サーバー名]** ボックスにご自分のマネージド インスタンスの完全修飾**ホスト名**を入力します。 **[SQL Server 認証]** を選択し、ユーザー名とパスワードを入力して、 **[接続]** を選択します。
+2. **[サーバーに接続]** ダイアログ ボックスで、 **[サーバー名]** ボックスにご自分のマネージド インスタンスの完全修飾 **ホスト名** を入力します。 **[SQL Server 認証]** を選択し、ユーザー名とパスワードを入力して、 **[接続]** を選択します。
 
     ![SSMS 接続](./media/connect-vm-instance-configure/ssms-connect.png)  
 
@@ -148,4 +148,4 @@ SQL Managed Instance はご自分のプライベートの仮想ネットワー�
 
 - ポイント対サイト接続を使用して、オンプレミスのクライアント コンピューターから接続する方法を示すクイック スタートについては、[ポイント対サイト接続の構成](point-to-site-p2s-configure.md)に関するページをご覧ください。
 - アプリケーションの接続オプションの概要については、[SQL Managed Instance にお使いのアプリケーションを接続する](connect-application-instance.md)方法に関するページを参照してください。
-- 既存の SQL Server データベースをオンプレミスからマネージド インスタンスに復元するには、[移行に Azure Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md) を使用するか、データベース バックアップ ファイルから復元するには、[T-SQL RESTORE コマンド](restore-sample-database-quickstart.md)を使用します。
+- 既存の SQL Server データベースをオンプレミスからマネージド インスタンスに復元するには、[移行のために Azure Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md) を使用するか、データベース バックアップ ファイルから復元するために [T-SQL RESTORE コマンド](restore-sample-database-quickstart.md)を使用します。

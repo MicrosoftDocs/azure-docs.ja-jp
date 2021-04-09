@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
 ms.openlocfilehash: eb7062b745ae6eb97dc2cd4ba2051cc221031630
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96179165"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と ExpenseIn の統合

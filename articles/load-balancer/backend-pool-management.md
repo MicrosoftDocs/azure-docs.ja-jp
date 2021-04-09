@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 0218bfef66e779a31d999c8d58bc1ce2691f46d4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: c49a721a4db758965c9cf8d71f5d73b5754b6088
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102179223"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654477"
 ---
 # <a name="backend-pool-management"></a>バックエンド プールの管理
 バックエンド プールは、ロード バランサーの重要なコンポーネントです。 バックエンド プールは、指定された負荷分散規則のトラフィックを処理するリソースのグループを定義します。
@@ -156,117 +156,17 @@ az vm create \
 --generate-ssh-keys
 ```
 
-### <a name="rest-api"></a>REST API
-バックエンド プールを作成します。
-
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
-```
-
-ネットワーク インターフェイスを作成し、ネットワーク インターフェイスの IP 構成プロパティを使用して作成したバックエンド プールに追加します。
-
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/networkInterfaces/{nic-name}?api-version=2020-05-01
-```
-
-JSON 要求本文:
-```json
-{
-  "properties": {
-    "enableAcceleratedNetworking": true,
-    "ipConfigurations": [
-      {
-        "name": "ipconfig1",
-        "properties": {
-          "subnet": {
-            "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}/subnets/{subnet-name}"
-          },
-          "loadBalancerBackendAddressPools": [
-            {
-              "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  "location": "eastus"
-}
-```
-
-ロード バランサーのバックエンド プール情報を取得して、このネットワーク インターフェイスがバックエンド プールに追加されていることを確認します。
-
-```
-GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name/providers/Microsoft.Network/loadBalancers/{load-balancer-name/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
-```
-
-VM を作成し、バックエンド プールを参照する NIC をアタッチします。
-
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}?api-version=2019-12-01
-```
-
-JSON 要求本文:
-```JSON
-{
-  "location": "easttus",
-  "properties": {
-    "hardwareProfile": {
-      "vmSize": "Standard_D1_v2"
-    },
-    "storageProfile": {
-      "imageReference": {
-        "sku": "2016-Datacenter",
-        "publisher": "MicrosoftWindowsServer",
-        "version": "latest",
-        "offer": "WindowsServer"
-      },
-      "osDisk": {
-        "caching": "ReadWrite",
-        "managedDisk": {
-          "storageAccountType": "Standard_LRS"
-        },
-        "name": "myVMosdisk",
-        "createOption": "FromImage"
-      }
-    },
-    "networkProfile": {
-      "networkInterfaces": [
-        {
-          "id": "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{nic-name}",
-          "properties": {
-            "primary": true
-          }
-        }
-      ]
-    },
-    "osProfile": {
-      "adminUsername": "{your-username}",
-      "computerName": "myVM",
-      "adminPassword": "{your-password}"
-    }
-  }
-}
-```
-
 ### <a name="resource-manager-template"></a>Resource Manager テンプレート
+
 この[クイックスタート Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/)に従って、ロード バランサーと仮想マシンをデプロイし、ネットワーク インターフェイスを使用して仮想マシンをバックエンド プールに追加します。
+
+この[クイックスタート Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-ip-configured-backend-pool)に従って、ロード バランサーと仮想マシンをデプロイし、IP アドレスを使用して仮想マシンをバックエンド プールに追加します。
+
 
 ## <a name="configure-backend-pool-by-ip-address-and-virtual-network"></a>IP アドレスと仮想ネットワークを使用してバックエンド プールを構成する
 事前に設定されたバックエンド プールのシナリオでは、IP と仮想ネットワークを使用します。
 
 バックエンド プールのすべての管理は、次の例で強調されているように、バックエンド プール オブジェクトで直接実行されます。
-
-### <a name="limitations"></a>制限事項
-IP アドレスで構成されたバックエンド プールには、次の制限があります。
-  * 使用できるのは Standard ロード バランサーのみ
-  * バックエンド プール内の IP アドレスの上限は 100 個
-  * バックエンド リソースは、ロード バランサーと同じ仮想ネットワークに存在する必要がある
-  * IP ベースのバックエンド プールを使用するロード バランサーは、Private Link サービスとして機能することはできない
-  * この機能は Azure portal では現在サポートされていない
-  * この機能では、ACI コンテナーは現在サポートされていない
-  * ロード バランサーまたはロード バランサーに面するサービスは、ロード バランサーのバックエンド プールに配置できない
-  * インバウンド NAT 規則を IP アドレスで指定することはできない
 
 ### <a name="powershell"></a>PowerShell
 新しいバックエンド プールを作成します。
@@ -407,128 +307,21 @@ az vm create \
   --admin-username azureuser \
   --generate-ssh-keys
 ```
+ 
+### <a name="limitations"></a>制限事項
+IP アドレスで構成されたバックエンド プールには、次の制限があります。
+  * 使用できるのは Standard ロード バランサーのみ
+  * バックエンド プール内の IP アドレスの上限は 100 個
+  * バックエンド リソースは、ロード バランサーと同じ仮想ネットワークに存在する必要がある
+  * IP ベースのバックエンド プールを使用するロード バランサーは、Private Link サービスとして機能することはできない
+  * この機能は Azure portal では現在サポートされていない
+  * この機能では、ACI コンテナーは現在サポートされていない
+  * Application Gateway などのロード バランサーやサービスは、ロード バランサーのバックエンド プールに配置できない
+  * インバウンド NAT 規則を IP アドレスで指定することはできない
 
-### <a name="rest-api"></a>REST API
-
-PUT バックエンド プール要求を使用してバックエンド プールを作成し、バックエンド アドレスを定義します。 次のいずれかを使用して PUT 要求の JSON 本文にバックエンド アドレスを構成します。
-
-* アドレス名
-* IP アドレス
-* 仮想ネットワーク ID 
-
-```
-PUT https://management.azure.com/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/backend?api-version=2020-05-01
-```
-
-JSON 要求本文:
-```JSON
-{
-  "properties": {
-    "loadBalancerBackendAddresses": [
-      {
-        "name": "address1",
-        "properties": {
-          "virtualNetwork": {
-            "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}"
-          },
-          "ipAddress": "10.0.0.4"
-        }
-      },
-      {
-        "name": "address2",
-        "properties": {
-          "virtualNetwork": {
-            "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}"
-          },
-          "ipAddress": "10.0.0.5"
-        }
-      }
-    ]
-  }
-}
-```
-
-ロード バランサーのバックエンド プール情報を取得して、そのバックエンド アドレスがバックエンド プールに追加されていることを確認します。
-```
-GET https://management.azure.com/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
-```
-
-ネットワーク インターフェイスを作成して、バックエンド プールに追加します。 IP アドレスをバックエンド アドレスの 1 つに設定します。
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/networkInterfaces/{nic-name}?api-version=2020-05-01
-```
-
-JSON 要求本文:
-```JSON
-{
-  "properties": {
-    "enableAcceleratedNetworking": true,
-    "ipConfigurations": [
-      {
-        "name": "ipconfig1",
-        "properties": {
-          "privateIPAddress": "10.0.0.4",
-          "subnet": {
-            "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}/subnets/{subnet-name}"
-          }
-        }
-      }
-    ]
-  },
-  "location": "eastus"
-}
-```
-
-VM を作成し、バックエンド プールの IP アドレスで NIC をアタッチします。
-
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}?api-version=2019-12-01
-```
-
-JSON 要求本文:
-```JSON
-{
-  "location": "eastus",
-  "properties": {
-    "hardwareProfile": {
-      "vmSize": "Standard_D1_v2"
-    },
-    "storageProfile": {
-      "imageReference": {
-        "sku": "2016-Datacenter",
-        "publisher": "MicrosoftWindowsServer",
-        "version": "latest",
-        "offer": "WindowsServer"
-      },
-      "osDisk": {
-        "caching": "ReadWrite",
-        "managedDisk": {
-          "storageAccountType": "Standard_LRS"
-        },
-        "name": "myVMosdisk",
-        "createOption": "FromImage"
-      }
-    },
-    "networkProfile": {
-      "networkInterfaces": [
-        {
-          "id": "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{nic-name}",
-          "properties": {
-            "primary": true
-          }
-        }
-      ]
-    },
-    "osProfile": {
-      "adminUsername": "{your-username}",
-      "computerName": "myVM",
-      "adminPassword": "{your-password}"
-    }
-  }
-}
-```
-  
 ## <a name="next-steps"></a>次のステップ
 この記事では、Azure Load Balancer のバックエンド プール管理についてと、IP アドレスと仮想ネットワークを使用してバックエンド プールを構成する方法について学習しました。
 
 [Azure Load Balancer](load-balancer-overview.md) についてさらに詳しく学習する。
+
+IP ベースのバックエンド プール管理用の [REST API](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerbackendaddresspools/createorupdate) を確認する。

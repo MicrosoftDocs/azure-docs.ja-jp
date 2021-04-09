@@ -4,10 +4,10 @@ description: Azure Arc 対応サーバーに関するセキュリティ情報。
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: aa8653b783e7eb3e211b7514831604dd5642cfbe
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98117029"
 ---
 # <a name="azure-arc-for-servers-security-overview"></a>Azure Arc for servers のセキュリティの概要

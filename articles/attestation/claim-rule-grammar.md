@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 3ed5c3f8232047787c6f05628f1eef35a7533999
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91285420"
 ---
 # <a name="claim-and-claim-rules"></a>要求と要求規則
@@ -30,7 +30,7 @@ ms.locfileid: "91285420"
   - **AttestationPolicy**: 入力された証拠には、処理の過程で、(管理者によって定義された) ポリシー自体が要求を追加できます。 このケースでは、issuer が "AttestationPolicy" に設定されます。
   - **CustomClaim**: 証明者 (クライアント) は、構成証明の証拠に対して別の要求を追加することもできます。 このケースでは、issuer が "CustomClaim" に設定されます。
 
-定義されなかった場合は、"CustomClaim" が既定値となります。 the default value will be "CustomClaim".
+定義されなかった場合は、"CustomClaim" が既定値となります。 "CustomClaim" が既定値となります。
 
 ## <a name="claim-rule"></a>要求規則
 

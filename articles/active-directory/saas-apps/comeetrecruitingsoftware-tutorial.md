@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.openlocfilehash: d458d94a4bee4fce523819af2fd3e555db6e70df
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97672115"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comeet-recruiting-software"></a>チュートリアル: Azure Active Directory と Comeet Recruiting Software の統合
@@ -120,7 +120,7 @@ Comeet Recruiting Software で Azure AD シングル サインオンを構成す
 
 6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
 
-    | Name |  ソース属性|
+    | 名前 |  ソース属性|
     | ---------------| --------------- |
     | nameidentifier | User.mail |
     | comeet_id | user.userprincipalname |

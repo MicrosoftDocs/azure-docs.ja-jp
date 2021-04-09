@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 882ba60e16f770651a1d9fe3b02b61be2b4c34c8
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99531464"
 ---
 Live Video Analytics on IoT Edge モジュールを使用して、受信したライブ ビデオ ストリーム内で動きを検出し、イベントを IoT ハブに送信します。 それらのイベントを確認するには、次の手順に従います。

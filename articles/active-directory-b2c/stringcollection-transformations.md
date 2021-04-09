@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1ad9cc3d6d07c8d744ec667e2fffb035848121b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9104fb4598eb62ed96d0b21734053fa118b5237
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203250"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120284"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 要求変換
 
@@ -31,7 +31,7 @@ ms.locfileid: "85203250"
 | Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | item | string | 出力要求に追加される ClaimType。 |
-| InputClaim | collection | stringCollection | （省略可能）これを指定すると、要求変換によってこのコレクションから項目がコピーされ、出力コレクション要求の最後に項目が追加されます。 |
+| InputClaim | collection | stringCollection | 出力要求に追加される文字列コレクション。 コレクションに項目が含まれる場合、要求変換によって項目がコピーされ、出力コレクション要求の最後に項目が追加されます。 |
 | OutputClaim | collection | stringCollection | この ClaimType は、要求変換が呼び出された後に生成され、入力パラメータに指定された値で呼び出されます。 |
 
 この要求変換を使用して、新しい stringCollection または既存の stringCollection に文字列を追加します。 通常、これは **AAD-UserWriteUsingAlternativeSecurityId** 技術プロファイルで使用されます。 新しいソーシャル アカウントが作成される前に、**CreateOtherMailsFromEmail** 要求変換によって ClaimType が読み取られ、**otherMails** ClaimType に値が追加されます。
@@ -64,7 +64,7 @@ ms.locfileid: "85203250"
 
 | Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | collection | stringCollection | （省略可能）これを指定すると、要求変換によってこのコレクションから項目がコピーされ、出力コレクション要求の最後に項目が追加されます。 |
+| InputClaim | collection | stringCollection | 出力要求に追加される文字列コレクション。 コレクションに項目が含まれる場合、要求変換によって項目がコピーされ、出力コレクション要求の最後に項目が追加されます。 |
 | InputParameter | item | string | 出力要求に追加される値。 |
 | OutputClaim | collection | stringCollection | この要求変換が呼び出された後に生成される ClaimType は、入力パラメーターに指定された値で呼び出されています。 |
 
@@ -125,7 +125,7 @@ ms.locfileid: "85203250"
 
 ## <a name="stringcollectioncontains"></a>StringCollectionContains
 
-StringCollection 要求の種類に要素が含まれているかどうかをチェックします
+StringCollection 要求の種類に要素が含まれているかどうかをチェックします。
 
 | Item | TransformationClaimType | データ型 | Notes |
 | ---- | ----------------------- | --------- | ----- |

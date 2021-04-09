@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 01/12/2021
 ms.openlocfilehash: e9607a71ed6b045ac704c43bf4ea54c9f181bbf4
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98179777"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>クイック スタート:Search エクスプローラーを使用してポータルでクエリを実行する
@@ -27,7 +27,7 @@ ms.locfileid: "98179777"
 
 + アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/)。
 
-+ Azure Cognitive Search サービス。 [サービスを作成する](search-create-service-portal.md)か、現在のサブスクリプションで[既存のサービスを探してください](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
++ Azure Cognitive Search サービス。 [サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)します。 このクイック スタート用には、無料のサービスを使用できます。 
 
 + このクイックスタートでは、*realestate-us-sample-index* を使用します。 [インデックスの作成に関するクイックスタート](search-import-data-portal.md)に従い、既定値を使用してインデックスを作成してください。 データは、Microsoft がホストしている組み込みのサンプル データ ソース (**realestate-us-sample**) から得ます。
 

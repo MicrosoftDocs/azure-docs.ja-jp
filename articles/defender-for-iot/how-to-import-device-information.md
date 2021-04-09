@@ -1,18 +1,14 @@
 ---
 title: デバイス情報をインポートする
 description: Defender for IoT センサーでは、ミラー化されたトラフィックの監視と分析を行います。 これらの場合は、データをインポートして、検出済みのデバイスに関する情報をエンリッチすることができます。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 53c342005d2c33e2ee18057fe0e667ebdec5166c
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: eb82a3e5d360913acfead06adc03194d80f7fccb
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522242"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785632"
 ---
 # <a name="import-device-information-to-a-sensor"></a>デバイス情報をセンサーにインポートする
 
@@ -188,7 +184,7 @@ IP アドレス、OS、パッチ レベルをインポートするには:
 
 情報をインポートすると、この一覧に記載されていないすべてのデバイスについて、認可されていないデバイスに関するアラートが表示されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
 [監視するトラフィックを制御する](how-to-control-what-traffic-is-monitored.md)
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/28/2020
 ms.author: larryfr
 ms.openlocfilehash: a03f71adc99063fee4374b1436b08adf5bab783d
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102511034"
 ---
 `inferenceconfig.json` ドキュメント内のエントリは、[InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) クラスのパラメーターにマップされます。 次の表は、JSON ドキュメントのエントリとメソッド用パラメーターの間のマッピングについてまとめたものです。
@@ -16,8 +16,8 @@ ms.locfileid: "102511034"
 | JSON エンティティ | メソッド パラメーター | 説明 |
 | ----- | ----- | ----- |
 | `entryScript` | `entry_script` | イメージに対して実行するコードを含むローカル ファイルのパス。 |
-| `sourceDirectory` | `source_directory` | 任意。 イメージを作成するためのすべてのファイルを含むフォルダーへのパス。パスにより、このフォルダーまたはサブ フォルダー内の任意のファイルへのアクセスが簡単になります。 ローカル コンピューターから Webservice の依存関係として、フォルダー全体をアップロードできます。 注: entry_script、conda_file、および extra_docker_file_steps パスは、source_directory パスへの相対パスです。 |
-| `environment` | `environment` | 任意。  Azure Machine Learning [環境](/python/api/azureml-core/azureml.core.environment.environment)。|
+| `sourceDirectory` | `source_directory` | 省略可能。 イメージを作成するためのすべてのファイルを含むフォルダーへのパス。パスにより、このフォルダーまたはサブ フォルダー内の任意のファイルへのアクセスが簡単になります。 ローカル コンピューターから Webservice の依存関係として、フォルダー全体をアップロードできます。 注: entry_script、conda_file、および extra_docker_file_steps パスは、source_directory パスへの相対パスです。 |
+| `environment` | `environment` | 省略可能。  Azure Machine Learning [環境](/python/api/azureml-core/azureml.core.environment.environment)。|
 
 Azure Machine Learning [環境](/python/api/azureml-core/azureml.core.environment.environment)の完全な仕様を、推論構成ファイルに含めることができます。 この環境がワークスペースに存在しない場合は、Azure Machine Learning によって作成されます。 それ以外の場合は、必要に応じて Azure Machine Learning によって環境が更新されます。 次の JSON は例です。
 

@@ -9,10 +9,10 @@ ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
 ms.openlocfilehash: 682394329205d74859c1af0c0a68a37539da7872
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98881030"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>チュートリアル:AzCopy を使用してオンプレミスのデータをクラウド ストレージに移行する
@@ -141,7 +141,7 @@ azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycont
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
-Linux 上で cron ジョブを作成するには、ターミナルで次のコマンドを入力します。
+Linux 上で cron ジョブを作成するには、端末で次のコマンドを入力します。
 
 ```bash
 crontab -e

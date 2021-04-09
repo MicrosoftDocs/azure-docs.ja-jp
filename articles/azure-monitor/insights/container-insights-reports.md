@@ -2,19 +2,19 @@
 title: Container Insights のレポート
 description: Container Insights によって収集されたデータを分析するために使用できるレポートについて説明します。
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: ab704ed184d9d67ddfba5aede385899faf2a56de
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/02/2021
+ms.openlocfilehash: ca74521a08d4edaa498e00e6452d8f69912e4bb9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704278"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032800"
 ---
 # <a name="reports-in-container-insights"></a>Container Insights のレポート
 Container Insights のレポートは、推奨されるすぐに使える [Azure ブック](../visualize/workbooks-overview.md)です。 この記事では、使用できるさまざまなレポートと、それらにアクセスする方法について説明します。
 
 ## <a name="viewing-reports"></a>レポートの閲覧
-Azure portal の **[Azure Monitor]** メニューから、 **[コンテナー]** を選択します。 **[監視]** セクションで **[分析情報]** を選択し、特定のクラスターを選択してから、 **[レポート (プレビュー)]** ページを選択します。 
+Azure portal の **[Azure Monitor]** メニューから、 **[コンテナー]** を選択します。 **[監視]** セクションで **[分析情報]** を選択し、特定のクラスターを選択してから、 **[レポート]** ページを選択します。 
 
 [![[レポート] ページ](media/container-insights-reports/reports-page.png)](media/container-insights-reports/reports-page.png#lightbox)
 

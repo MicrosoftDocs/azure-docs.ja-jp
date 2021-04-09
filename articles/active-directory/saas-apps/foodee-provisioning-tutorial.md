@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 8b4bfa7e9bf457d79c6c4a0b5255bce4fe36dff4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94358680"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>チュートリアル:Foodee を構成し、自動ユーザー プロビジョニングに対応させる
@@ -83,7 +83,7 @@ Azure AD アプリケーション ギャラリーから Foodee を追加する�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-1. 検索ボックスに「 **Foodee** 」と入力し、結果パネルで **[Foodee]** を選択してから、 **[追加]** ボタンを選択してアプリケーションを追加します。
+1. 検索ボックスに「**Foodee**」と入力し、結果パネルで **[Foodee]** を選択してから、 **[追加]** ボタンを選択してアプリケーションを追加します。
 
     ![結果一覧の Foodee](common/search-new-app.png)
 

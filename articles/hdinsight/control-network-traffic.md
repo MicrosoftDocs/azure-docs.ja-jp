@@ -4,12 +4,12 @@ description: Azure HDInsight クラスターへのインバウンドおよびア
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 0cbda0b533a64e627bfeef9589ab95c4163ae73e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 66b078e8dfa1daa100978f04283e9bba7158bddf
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943378"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867034"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Azure HDInsight のネットワーク トラフィックを制御する
 
@@ -21,7 +21,7 @@ Azure Virtual Network のネットワーク トラフィックは次のメソッ
 
 マネージド サービスとして HDInsight には、VNET からの受信および送信トラフィックの両方に対して、HDInsight の正常性および管理サービスへの無制限アクセスが必要です。 NSG を使用する場合は、これらのサービスが引き続き HDInsight クラスターと通信できることを確認する必要があります。
 
-![Azure のカスタム VNET に作成された HDInsight のエンティティの図](./media/control-network-traffic/hdinsight-vnet-diagram.png)
+:::image type="content" source="./media/control-network-traffic/hdinsight-vnet-diagram.png" alt-text="Azure のカスタム VNET に作成された HDInsight のエンティティの図" border="false":::
 
 ## <a name="hdinsight-with-network-security-groups"></a>HDInsight とネットワーク セキュリティ グループ
 

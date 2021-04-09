@@ -9,18 +9,18 @@ ms.subservice: autoscale
 ms.date: 04/26/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 549f8fbc1e3acf435011f223faeb5b8240f0c55d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0605780651e1a3c54ae53d13a3f99e1124fa76db
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080422"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585005"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Linux スケール セット テンプレートのゲスト メトリックを使用した自動スケール
 
-VM とスケール セットから収集された Azure のメトリックの広範な種類が 2 つあります。ホスト メトリックとゲスト メトリック。 一般には、標準的な CPU、ディスク、ネットワーク メトリックを使用している場合、ホスト メトリックは適合します。 ただし、メトリックの選択の幅を大きくする必要がある場合は、ゲスト メトリックの方を使用すべきです。
+VM とスケール セットから収集される Azure のメトリックには、ホスト メトリックとゲスト メトリックの 2 つの大きな種類があります。 一般には、標準的な CPU、ディスク、ネットワーク メトリックを使用している場合、ホスト メトリックは適合します。 ただし、メトリックの選択の幅を大きくする必要がある場合は、ゲスト メトリックの方を使用すべきです。
 
-ホスト メトリックの場合は、ホスト VM によってメトリックが収集されるので、特別な設定は必要ありません。ゲスト メトリックの場合は、ゲスト VM に [Windows 版の Azure Diagnostics の拡張機能](../virtual-machines/extensions/diagnostics-template.md)か、[Linux 版の Azure Diagnostics の拡張機能](../virtual-machines/extensions/diagnostics-linux.md)をインストールする必要があります。 一般に、ホスト メトリックではなくゲスト メトリックを使用する理由の 1 つとして、ゲスト メトリックではホスト メトリックよりも多くのメトリックが提供される点が挙げられます。 たとえば、メモリ消費に関するメトリックは、ゲスト メトリックでしか利用できません。 サポートされているホスト メトリックについては[こちら](../azure-monitor/platform/metrics-supported.md)を、よく使用されるゲスト メトリックについては[こちら](../azure-monitor/platform/autoscale-common-metrics.md)をご覧ください。 この記事では、Linux スケール セットのゲストのメトリックに基づいた自動スケール規則を使用するよう、[実行可能な基本のスケール セットのテンプレート](virtual-machine-scale-sets-mvss-start.md)を編集する方法を説明します。
+ホスト メトリックの場合は、ホスト VM によってメトリックが収集されるので、特別な設定は必要ありません。ゲスト メトリックの場合は、ゲスト VM に [Windows 版の Azure Diagnostics の拡張機能](../virtual-machines/extensions/diagnostics-template.md)か、[Linux 版の Azure Diagnostics の拡張機能](../virtual-machines/extensions/diagnostics-linux.md)をインストールする必要があります。 一般に、ホスト メトリックではなくゲスト メトリックを使用する理由の 1 つとして、ゲスト メトリックではホスト メトリックよりも多くのメトリックが提供される点が挙げられます。 たとえば、メモリ消費に関するメトリックは、ゲスト メトリックでしか利用できません。 サポートされているホスト メトリックについては[こちら](../azure-monitor/essentials/metrics-supported.md)を、よく使用されるゲスト メトリックについては[こちら](../azure-monitor/autoscale/autoscale-common-metrics.md)をご覧ください。 この記事では、Linux スケール セットのゲストのメトリックに基づいた自動スケール規則を使用するよう、[実行可能な基本のスケール セットのテンプレート](virtual-machine-scale-sets-mvss-start.md)を編集する方法を説明します。
 
 ## <a name="change-the-template-definition"></a>テンプレートの定義を変更する
 
@@ -105,7 +105,7 @@ VM とスケール セットから収集された Azure のメトリックの広
        }
 ```
 
-最後に、`autoscaleSettings` リソースを追加して、これらのメトリックに基づいて自動スケールを構成します。 このリソースには、自動スケールの前にスケール セットが存在することを確認できるよう、スケール セットを参照する `dependsOn` 句が含まれています。 自動スケールに別のメトリックを選択した場合は、診断の拡張機能の構成の `counterSpecifier` を、自動スケールの構成の `metricName` として使用します。 自動スケールの構成の詳細については、「[自動スケールのベスト プラクティス](../azure-monitor/platform/autoscale-best-practices.md)」と [Azure Monitor REST API リファレンス ドキュメント](/rest/api/monitor/autoscalesettings)を参照してください。
+最後に、`autoscaleSettings` リソースを追加して、これらのメトリックに基づいて自動スケールを構成します。 このリソースには、自動スケールの前にスケール セットが存在することを確認できるよう、スケール セットを参照する `dependsOn` 句が含まれています。 自動スケールに別のメトリックを選択した場合は、診断の拡張機能の構成の `counterSpecifier` を、自動スケールの構成の `metricName` として使用します。 自動スケールの構成の詳細については、「[自動スケールのベスト プラクティス](../azure-monitor/autoscale/autoscale-best-practices.md)」と [Azure Monitor REST API リファレンス ドキュメント](/rest/api/monitor/autoscalesettings)を参照してください。
 
 ```diff
 +    },

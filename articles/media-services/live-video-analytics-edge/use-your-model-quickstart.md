@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
 ms.openlocfilehash: d3ba937abcc7bbfd9bb2afe7b15aec28ebb57446
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99508513"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-http-model"></a>クイック スタート:独自の HTTP モデルを使用してライブ ビデオを分析する

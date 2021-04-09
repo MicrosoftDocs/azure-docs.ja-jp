@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 11e6eb1a2dbf24ba9deb6977a69e30e0e19473d1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92521630"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zephyrsso"></a>チュートリアル: Azure Active Directory と ZephyrSSO の統合
@@ -41,7 +41,7 @@ ZephyrSSO と Azure AD の統合を構成するには、次のものが必要で
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* ZephyrSSO では、 **IDP** によって開始される SSO がサポートされます
+* ZephyrSSO では、**IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-zephyrsso-from-the-gallery"></a>ギャラリーからの ZephyrSSO の追加
 
@@ -61,13 +61,13 @@ Azure AD への ZephyrSSO の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **ZephyrSSO** 」と入力し、結果パネルで **[ZephyrSSO]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**ZephyrSSO**」と入力し、結果パネルで **[ZephyrSSO]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の ZephyrSSO](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、ZephyrSSO で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、ZephyrSSO で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと ZephyrSSO 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 ZephyrSSO で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ ZephyrSSO で Azure AD のシングル サインオンを構成してテスト�
 
 ZephyrSSO で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **ZephyrSSO** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **ZephyrSSO** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -142,7 +142,7 @@ ZephyrSSO で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -154,7 +154,7 @@ ZephyrSSO で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に ZephyrSSO へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[ZephyrSSO]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[ZephyrSSO]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

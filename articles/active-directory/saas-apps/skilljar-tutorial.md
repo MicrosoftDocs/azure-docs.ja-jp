@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: bd7d6ae1af85bd483c96c8425c55c3c92a1b8ec2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92520627"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skilljar"></a>チュートリアル: Azure Active Directory と Skilljar の統合
@@ -41,8 +41,8 @@ Azure AD と Skilljar の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Skilljar では、 **SP** によって開始される SSO がサポートされます
-* Skilljar では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* Skilljar では、**SP** によって開始される SSO がサポートされます
+* Skilljar では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-skilljar-from-the-gallery"></a>ギャラリーからの Skilljar の追加
 
@@ -62,13 +62,13 @@ Azure AD への Skilljar の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Skilljar** 」と入力し、結果パネルの **[Skilljar]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Skilljar**」と入力し、結果パネルの **[Skilljar]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果一覧の Skilljar](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Skilljar で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Skilljar で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Skilljar 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Skilljar で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -86,7 +86,7 @@ Skilljar で Azure AD のシングル サインオンを構成してテストす
 
 Skilljar で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Skilljar** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Skilljar** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -125,7 +125,7 @@ Skilljar で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="configure-skilljar-single-sign-on"></a>Skilljar のシングル サインオンの構成
 
-**Skilljar** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と、 **名前識別子形式の値 - urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress** を、 [Skilljar サポート チーム](https://support.skilljar.com/hc/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Skilljar** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と、**名前識別子形式の値 - urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress** を、[Skilljar サポート チーム](https://support.skilljar.com/hc/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -143,7 +143,7 @@ Skilljar で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -156,7 +156,7 @@ Skilljar で Azure AD シングル サインオンを構成するには、次の
 
 このセクションでは、Britta Simon に Skilljar へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Skilljar]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Skilljar]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

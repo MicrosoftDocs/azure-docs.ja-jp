@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
 ms.openlocfilehash: e34e1f589442be41e2a4eac3ac893f377675e4b5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100379507"
 ---
 # <a name="how-to-run-self-hosted-integration-runtime-in-windows-container"></a>Windows コンテナーでセルフホステッド統合ランタイムを実行する方法

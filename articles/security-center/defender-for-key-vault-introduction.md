@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: b1dd559db2d736fa27de2884d2fe82edaaeaaf3c
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: f127a24bec5567a3868ae77cb8a52f0af2a19603
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916644"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100680"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>Azure Defender for Key Vault の概要
 
@@ -26,7 +26,7 @@ Azure ネイティブの場合は、**Azure Defender for Key Vault** を有効�
 |側面|詳細|
 |----|:----|
 |リリース状態:|一般提供 (GA)|
-|価格:|**Azure Defender for Key Vault** は、[価格ページ](security-center-pricing.md)に示されているように課金されます|
+|価格:|**Azure Defender for Key Vault** の課金については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
 

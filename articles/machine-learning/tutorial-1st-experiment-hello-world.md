@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 18f76480d1327d6ab41c475395a689f8024d7b25
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4f2b01b7a04958c4bd1f97332b54a1ff4fc32356
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369028"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522327"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>チュートリアル:"Hello world!" Python スクリプトを実行する (パート 2/4) Python script (part 2 of 4)
 
@@ -92,7 +92,7 @@ print(aml_url)
       `ws = Workspace.from_config()`
    :::column-end:::
    :::column span="2":::
-      [Workspace](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) は Azure Machine Learning ワークスペースに接続して、Azure Machine Learning リソースと通信できるようにします。
+      [Workspace](/python/api/azureml-core/azureml.core.workspace.workspace) は Azure Machine Learning ワークスペースに接続して、Azure Machine Learning リソースと通信できるようにします。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -100,7 +100,7 @@ print(aml_url)
       `experiment =  Experiment( ... )`
    :::column-end:::
    :::column span="2":::
-      [Experiment](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) は、複数の実行を 1 つの名前で整理する簡単な方法を提供します。 後で実験を使用して、多数の実行の間でメトリックを簡単に比較する方法を確認できます。
+      [Experiment](/python/api/azureml-core/azureml.core.experiment.experiment) は、複数の実行を 1 つの名前で整理する簡単な方法を提供します。 後で実験を使用して、多数の実行の間でメトリックを簡単に比較する方法を確認できます。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -108,7 +108,7 @@ print(aml_url)
       `config = ScriptRunConfig( ... )` 
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) は、`hello.py` コードをラップしてワークスペースに渡します。 名前に示されているように、このクラスを使用して、Azure Machine Learning で _スクリプト_ を _実行_ する方法を _構成_ できます。 スクリプトを実行するコンピューティング ターゲットも指定します。 このコードでは、ターゲットは[セットアップ チュートリアル](tutorial-1st-experiment-sdk-setup-local.md)で作成したコンピューティング クラスターです。
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) は、`hello.py` コードをラップしてワークスペースに渡します。 名前に示されているように、このクラスを使用して、Azure Machine Learning で _スクリプト_ を _実行_ する方法を _構成_ できます。 スクリプトを実行するコンピューティング ターゲットも指定します。 このコードでは、ターゲットは[セットアップ チュートリアル](tutorial-1st-experiment-sdk-setup-local.md)で作成したコンピューティング クラスターです。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -116,7 +116,7 @@ print(aml_url)
       `run = experiment.submit(config)`
    :::column-end:::
    :::column span="2":::
-       スクリプトを送信します。 この送信は[実行](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)と呼ばれます。 実行には、コードの 1 回の実行がカプセル化されています。 実行を使用して、スクリプトの進行状況を監視したり、出力をキャプチャしたり、結果を分析したり、メトリックを視覚化したりすることができます。
+       スクリプトを送信します。 この送信は[実行](/python/api/azureml-core/azureml.core.run%28class%29)と呼ばれます。 実行には、コードの 1 回の実行がカプセル化されています。 実行を使用して、スクリプトの進行状況を監視したり、出力をキャプチャしたり、結果を分析したり、メトリックを視覚化したりすることができます。
    :::column-end:::
 :::row-end:::
 :::row:::

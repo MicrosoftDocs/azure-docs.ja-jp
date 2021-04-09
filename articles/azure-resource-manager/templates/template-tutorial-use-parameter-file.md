@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: b6257161017afc9dab692c43fcc64e5d961a90ba
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97368428"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>チュートリアル:パラメーター ファイルを使用して ARM テンプレートをデプロイする

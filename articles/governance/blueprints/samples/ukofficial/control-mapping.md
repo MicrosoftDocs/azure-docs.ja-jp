@@ -4,10 +4,10 @@ description: UK OFFICIAL および UK NHS のブループリント サンプル�
 ms.date: 02/05/2021
 ms.topic: sample
 ms.openlocfilehash: bf10bcf7064306094664c1ff560187ef77645d4d
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99627568"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL および UK NHS のブループリント サンプルのコントロール マッピング
@@ -53,11 +53,11 @@ ms.locfileid: "99627568"
 - 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
 - SQL データベースの脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
-- 脆弱性評価を SQL Server 上で有効にする必要がある
+- 脆弱性評価を SQL サーバー上で有効にする必要がある
 - SQL Managed Instance で脆弱性評価を有効にする必要があります
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - SQL マネージド インスタンスで Advanced Data Security を有効にする必要があります
-- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- Advanced Data Security を、SQL サーバー上で有効にする必要がある
 
 ## <a name="53-protective-monitoring"></a>5.3 保護的監視
 
@@ -148,7 +148,7 @@ Azure リソースにできるユーザーとそのアクセス許可は、Azure
 このブループリントでは、Azure リソースのログ設定を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、システム イベントのログ記録の徹底を支援します。
 割り当てられたポリシーでは、指定された Log Analytics ワークスペースにログを送信していない仮想マシンがないかどうかも監査されます。
 
-- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - 診断設定の監査
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ

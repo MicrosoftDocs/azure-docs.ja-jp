@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
 ms.openlocfilehash: 84f6473c25a5be11eeda7cd2b311d93a7226a78c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96488393"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Azure File Storage での Storage Explorer の使用
@@ -39,7 +39,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 次の手順では、Storage Explorer 内にファイル共有を作成する方法を説明します。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 
 1. 左側のウィンドウで、ファイル共有を作成するストレージ アカウントを展開します。
 
@@ -61,7 +61,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 次の手順では、Storage Explorer 内でファイル共有の内容を表示する方法を説明します。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 
 1. 左側のウィンドウで、表示するファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -81,7 +81,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 次の手順では、Storage Explorer からファイル共有を削除する方法を説明します。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 
 1. 左側のウィンドウで、表示するファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -101,7 +101,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
 次の手順では、あるストレージ アカウントから別のストレージ アカウントにファイル共有をコピーする方法を説明します。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 
 1. 左側のウィンドウで、コピーするファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -121,7 +121,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
 次の手順では、ファイル共有の SAS を作成する方法を説明します。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 
 1. 左側のウィンドウで、SAS を取得するファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -147,7 +147,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
 次の手順では、ファイル共有のアクセス ポリシーを管理 (追加と削除) する方法を説明します。 アクセス ポリシーは、決められた期間、ストレージ ファイル リソースにアクセスするために利用者が使用する SAS URL の作成に使用されます。
 
-1. Storage Explorer を開きます。
+1. ストレージ エクスプローラーを開きます。
 
 1. 左側のウィンドウで、アクセス ポリシーを管理するファイル共有が含まれているストレージ アカウントを展開します。
 
@@ -181,7 +181,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
 次の手順では、ファイル共有内のファイル (とフォルダー) を管理する方法を説明します。
 
-1.  Storage Explorer を開きます。
+1.  ストレージ エクスプローラーを開きます。
 
 1.  左側のウィンドウで、管理するファイル共有が含まれているストレージ アカウントを展開します。
 

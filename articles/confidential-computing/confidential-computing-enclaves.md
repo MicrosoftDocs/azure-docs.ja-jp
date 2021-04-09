@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 9/3/2020
 ms.author: JenCook
 ms.openlocfilehash: 554260b2a2760380d3bb2d91ee25b4a03bf2f1ae
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102551370"
 ---
 # <a name="azure-confidential-computing-virtual-machines-vms-overview"></a>Azure Confidential Computing 仮想マシン (VM) の概要

@@ -4,10 +4,10 @@ description: Microsoft Azure Storage Explorer を使用して、ラボのスト�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d4e421932ebba5d4f389000c12bcf44ac2f37599
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91282529"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer を使用して、ラボのストレージ アカウントに VHD ファイルをアップロードします
@@ -54,7 +54,7 @@ Azure DevTest Labs では、VHD ファイルを使用してカスタム イメ�
     > 
     > Storage Explorer では、複数の接続オプションがサポートされます。 このセクションでは、Azure サブスクリプションに関連付けられているストレージ アカウントへの接続を示します。 Storage Explorer でサポートされるその他の接続オプションについては、「[Storage Explorer の概要](../vs-azure-tools-storage-manage-with-storage-explorer.md)」を参照してください。
  
-    1. Storage Explorer を開きます。
+    1. ストレージ エクスプローラーを開きます。
     
     1. Storage Explorer で、 **[Azure アカウントの設定]** を選択します。 
     

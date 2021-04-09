@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 50dbe9ab649a708fb36b1c9e4fe89bccadc7ea90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86209177"
 ---
 # <a name="audit-logs-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box と Azure Data Box Heavy の監査ログ
@@ -65,9 +65,9 @@ Data Box では、次のログが収集されます。
 
 次のアプリケーション ログのイベント ID は、Data Box でパッケージ監査ログの一部として収集されます。     
 
-- **Microsoft-Azure-DataBox-OOBE-Auditing** - ローカル UI で発生するイベントが含まれます。 
+- **Microsoft-Azure-DataBox-OOBE-Auditing** - ローカル UI で発生するイベントが含まれます。 
 - **Microsoft-Azure-DataBox-Reprovision-Audit** - Data Box デバイスの再プロビジョニングに関するイベントが含まれます。 Data Box の再プロビジョニングは、ローカル UI を使用してデバイスがリセットされたときに発生します。 このオプションは、既存の共有を削除し、再プロビジョニングまたはデバイスのリセットの一環として共有を再作成することによって、コピーしたデータを消去する場合に選択します。
-- **Microsoft-Azure-DataBox-HcsMgmt-Audit** - デバイスが Azure データセンターに返送される前の、**発送準備**の手順のみに関するイベントが含まれます。 
+- **Microsoft-Azure-DataBox-HcsMgmt-Audit** - デバイスが Azure データセンターに返送される前の、**発送準備** の手順のみに関するイベントが含まれます。 
 - **Microsoft-Azure-DataBox-IfxAudit** - ジョブに関する製品のさまざまなエンティティによってログに記録されたメッセージが含まれます。このログには、一部のフローで発生している内容の詳しい情報が示されます。
 
 次の表は、さまざまなイベント プロバイダーと、それぞれのケースで収集される対応するイベント ID をまとめたものです。

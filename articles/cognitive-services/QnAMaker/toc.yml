@@ -14,8 +14,6 @@
           href: Quickstarts/create-publish-knowledge-base.md
         - name: クライアント ライブラリまたは REST API
           href: Quickstarts/quickstart-sdk.md
-    - name: REST API を使用してナレッジ ベースにクエリを実行する
-      href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
 - name: チュートリアル
   items:
     - name: Power 仮想エージェントとの統合
@@ -32,14 +30,16 @@
       href: Concepts/data-sources-and-content.md
     - name: Azure ロールベースのアクセス制御 (Azure RBAC)
       href: Concepts/role-based-access-control.md
+    - name: 正確な回答
+      href: reference-precise-answering.md
+    - name: アクティブ ラーニングを有効にする
+      href: How-To/use-active-learning.md
     - name: ランカー プロセス
       displayName: 'DefaultAnswer, Default answer'
       href: Concepts/query-knowledge-base.md
     - name: 開発ライフサイクル
       href: Concepts/development-lifecycle-knowledge-base.md
       displayName: 'version control, test, index, publish, monitor usage, create'
-    - name: 正確な回答
-      href: reference-precise-answering.md
     - name: ベスト プラクティス
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
@@ -47,13 +47,17 @@
       href: choose-natural-language-processing-service.md
 - name: 操作方法ガイド
   items:
-    - name: Azure のリソースを管理する
-      href: How-To/set-up-qnamaker-service-azure.md
-      displayName: 'azure, resource, key, upgrade, pricing, tier,'
-    - name: Azure リソースのためのネットワークの分離
-      href: How-To/network-isolation.md
-    - name: QnA Maker のリソース アクセスを管理する
-      href: How-To/manage-qna-maker-app.md
+    - name: QnA Maker のリソースを管理する
+      items:
+        - name: QnA Maker のリソースを設定する
+          href: How-To/set-up-qnamaker-service-azure.md
+          displayName: 'azure, resource, key, upgrade, pricing, tier,'
+        - name: QnA Maker のリソース アクセスを管理する
+          href: How-To/manage-qna-maker-app.md
+        - name: QnA Maker のリソースを構成する
+          href: How-To/configure-qna-maker-resources.md
+        - name: Azure リソースのためのネットワークの分離
+          href: How-To/network-isolation.md
     - name: ナレッジ ベースの管理
       items:
         - name: ナレッジ ベースを作成する
@@ -63,7 +67,7 @@
         - name: 新しいナレッジ ベースへの移行
           href: Tutorials/migrate-knowledge-base.md
           displayName: 'metadata, pair'
-        - name: テスト
+        - name: ナレッジ ベースのテスト
           href: How-To/test-knowledge-base.md
     - name: QnA ペアの管理
       items:
@@ -77,15 +81,17 @@
         - name: 既定の回答の変更
           href: How-To/change-default-answer.md
     - name: ナレッジ ベースの照会
-      href: How-To/metadata-generateanswer-usage.md
-      displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
-    - name: ナレッジ ベースを強化するようアクティブ ラーニングを設定する
       items:
-        - name: アクティブ ラーニングを有効にする
-          href: How-To/use-active-learning.md
-        - name: 推奨される代わりの質問の取得
-          href: How-to/improve-knowledge-base.md
-          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
+        - name: REST API を使用したクエリ
+          href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
+        - name: GenerateAnswer API の使用
+          href: How-To/metadata-generateanswer-usage.md
+          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+        - name: メタデータによる QnA のフィルター処理
+          href: How-To/query-knowledge-base-with-metadata.md
+    - name: アクティブ ラーニングによって提案される代わりの質問の取得
+      href: How-to/improve-knowledge-base.md
+      displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
     - name: 分析とテレメトリ
       href: How-To/get-analytics-knowledge-base.md
 - name: リファレンス
@@ -124,7 +130,7 @@
         - name: C#
           items:
             - name: リファレンス ドキュメント
-              href: /dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet
+              href: /dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker
             - name: NuGet パッケージ
               href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/'
             - name: サンプル
@@ -140,7 +146,7 @@
         - name: JavaScript
           items:
             - name: リファレンス ドキュメント
-              href: /javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest
+              href: /javascript/api/%40azure/cognitiveservices-qnamaker/index
             - name: NPM - 作成
               href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker'
             - name: NPM - クエリ ランタイム
@@ -150,7 +156,7 @@
         - name: Python
           items:
             - name: リファレンス ドキュメント
-              href: /python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python
+              href: /python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker
             - name: pip
               href: 'https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/'
             - name: サンプル

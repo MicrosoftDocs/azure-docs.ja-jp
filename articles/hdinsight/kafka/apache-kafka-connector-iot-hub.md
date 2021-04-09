@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: 7980003dd63e5e51d87f85542029a1f25e7223df
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: feada70c7a461bb4a9cd621c76b5606a7f0e19d5
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932869"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865283"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>HDInsight 上の Apache Kafka を Azure IoT Hub と共に使用する
 
@@ -22,7 +22,7 @@ IoT Hub からプルする場合は、__ソース__ コネクタを使用しま�
 
 次の図は、コネクタを使用するときの Azure IoT Hub と HDInsight 上の Kafka の間のデータ フローを示しています。
 
-![コネクタを通じた IoT Hub から Kafka へのデータ フローを示すイメージ](./media/apache-kafka-connector-iot-hub/iot-hub-kafka-connector-hdinsight.png)
+:::image type="content" source="./media/apache-kafka-connector-iot-hub/iot-hub-kafka-connector-hdinsight.png" alt-text="コネクタを通じた IoT Hub から Kafka へのデータ フローを示すイメージ" border="false":::
 
 Connect API について詳しくは、[https://kafka.apache.org/documentation/#connect](https://kafka.apache.org/documentation/#connect) をご覧ください。
 
@@ -120,7 +120,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
     |`bootstrap.servers=localhost:9092`|`localhost:9092` 値を前の手順のブローカー ホストに置き換えます。|エッジ ノードのスタンドアロン構成を設定して、Kafka ブローカーを検索します。|
     |`key.converter=org.apache.kafka.connect.json.JsonConverter`|`key.converter=org.apache.kafka.connect.storage.StringConverter`|この変更により、Kafka に含まれているコンソール プロデューサーを使用してテストすることができます。 他のプロデューサーとコンシューマーには別のコンバーターが必要な場合があります。 他のコンバーター値の使用について、[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) をご覧ください。|
     |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|上記と同じです。|
-    |該当なし|`consumer.max.poll.records=10`|ファイルの末尾に追加します。 この変更により、一度に 10 個のレコードに限定することによって、シンク コネクタでのタイムアウトを防ぎます。 詳細については、[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) を参照してください。|
+    |該当なし|`consumer.max.poll.records=10`|ファイルの末尾に追加します。 この変更により、一度に 10 個のレコードに限定することによって、シンク コネクタでのタイムアウトを防ぎます。 詳細については、「[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)」を参照してください。|
 
 1. ファイルを保存するには、__Ctrl + X__ キー、__Y__ キー、__Enter__ キーの順に押します。
 
@@ -148,12 +148,12 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
 
    * __[Azure Portal](https://portal.azure.com/) で__、次の手順に従います。
 
-     1. IoT ハブに移動し、 __[エンドポイント]__ を選択します。
-     2. __[組み込みのエンドポイント]__ から、 __[イベント]__ を選択します。
+     1. IoT ハブに移動し、__[エンドポイント]__ を選択します。
+     2. __[組み込みのエンドポイント]__ から、__[イベント]__ を選択します。
      3. __[プロパティ]__ から、次のフィールドの値をコピーします。
 
          * __イベント ハブ互換の名前__
-         * __イベント ハブ互換エンドポイント__
+         * __Event Hub と互換性があるエンドポイント__
          * __パーティション__
 
         > [!IMPORTANT]  
@@ -177,7 +177,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
 
     * __[Azure Portal](https://portal.azure.com/) で__、次の手順に従います。
 
-        1. __[共有アクセス ポリシー]__ を選択してから、 __[サービス]__ を選択します。
+        1. __[共有アクセス ポリシー]__ を選択してから、__[サービス]__ を選択します。
         2. __[主キー]__ の値をコピーします。
         3. __[接続文字列 -- 主キー]__ の値をコピーします。
 
@@ -217,7 +217,7 @@ IoT ハブを使用するようにソースを構成するには、エッジ ノ
 
 1. エディターで、次のエントリを検索し、変更します。
 
-    |現在の値 |[編集]|
+    |現在の値 |編集|
     |---|---|
     |`Kafka.Topic=PLACEHOLDER`|`PLACEHOLDER` を `iotin` で置き換え IoT ハブから受信したメッセージは `iotin` トピックに配置されます。|
     |`IotHub.EventHubCompatibleName=PLACEHOLDER`|`PLACEHOLDER` をイベント ハブ互換の名前に置き換えます。|
@@ -252,7 +252,7 @@ IoT ハブを使用するようにシンク接続を構成するには、エッ�
 
 1. エディターで、次のエントリを検索し、変更します。
 
-    |現在の値 |[編集]|
+    |現在の値 |編集|
     |---|---|
     |`topics=PLACEHOLDER`|`PLACEHOLDER` を `iotout` で置き換え `iotout` トピックに書き込まれたメッセージが IoT ハブに転送されます。|
     |`IotHub.ConnectionString=PLACEHOLDER`|`PLACEHOLDER` を `service` ポリシーの接続文字列に置き換えます。|

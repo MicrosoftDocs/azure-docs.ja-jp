@@ -4,10 +4,10 @@ description: Azure Active Directory サービス プリンシパルを使用し�
 ms.topic: article
 ms.date: 10/04/2019
 ms.openlocfilehash: 8d49628576a1c337efaea3e5286fef00e39def17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86259148"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>サービス プリンシパルによる Azure Container Registry 認証
@@ -16,7 +16,7 @@ Azure Active Directory (Azure AD) サービス プリンシパルを使って、
 
 ## <a name="what-is-a-service-principal"></a>サービス プリンシパルとは
 
-Azure AD の*サービス プリンシパル*は、サブスクリプション内の Azure リソースへのアクセスを提供します。 サービス プリンシパルはサービスのユーザー ID と考えることができます。ここで "サービス" は、リソースへのアクセスが必要なアプリケーション、サービス、またはプラットフォームです。 指定したそれらのリソースのみをスコープとするアクセス権を持つサービス プリンシパルを構成できます。 その後、サービス プリンシパルの資格情報を使用してそれらのリソースにアクセスするようにアプリケーションまたはサービスを構成します。
+Azure AD の *サービス プリンシパル* は、サブスクリプション内の Azure リソースへのアクセスを提供します。 サービス プリンシパルはサービスのユーザー ID と考えることができます。ここで "サービス" は、リソースへのアクセスが必要なアプリケーション、サービス、またはプラットフォームです。 指定したそれらのリソースのみをスコープとするアクセス権を持つサービス プリンシパルを構成できます。 その後、サービス プリンシパルの資格情報を使用してそれらのリソースにアクセスするようにアプリケーションまたはサービスを構成します。
 
 Azure Container Registry のコンテキストでは、Azure 内のプライベート レジストリに対するプル、プッシュとプル、またはその他のアクセス許可を持つ Azure AD サービス プリンシパルを作成できます。 完全な一覧については、[Azure Container Registry のロールとアクセス許可](container-registry-roles.md)に関するページを参照してください。
 
@@ -28,9 +28,9 @@ Azure AD サービス プリンシパルを使うことで、スコープを設�
 
 ## <a name="when-to-use-a-service-principal"></a>サービス プリンシパルを使う場合
 
-サービス プリンシパルは、**ヘッドレス シナリオ**でレジストリへのアクセスを提供する際に使う必要があります。 つまり、自動的にまたはそれ以外の無人の方法でコンテナー イメージをプッシュまたはプルする必要があるすべてのアプリケーション、サービス、またはスクリプトが対象です。 次に例を示します。
+サービス プリンシパルは、**ヘッドレス シナリオ** でレジストリへのアクセスを提供する際に使う必要があります。 つまり、自動的にまたはそれ以外の無人の方法でコンテナー イメージをプッシュまたはプルする必要があるすべてのアプリケーション、サービス、またはスクリプトが対象です。 次に例を示します。
 
-  * *プル*:レジストリからオーケストレーション システム (Kubernetes、DC/OS、Docker Swarm など) にコンテナーをデプロイします。 また、コンテナー レジストリから、[Azure Kubernetes Service (AKS)](../aks/cluster-container-registry-integration.md)、[Azure Container Instances](container-registry-auth-aci.md)、[App Service](../app-service/index.yml)、[Batch](../batch/index.yml)、[Service Fabric](../service-fabric/index.yml) などの関連する Azure サービスにプルすることもできます。
+  * *Pull*: レジストリからオーケストレーション システム (Kubernetes、DC/OS、Docker Swarm など) にコンテナーをデプロイします。 また、コンテナー レジストリから、[Azure Kubernetes Service (AKS)](../aks/cluster-container-registry-integration.md)、[Azure Container Instances](container-registry-auth-aci.md)、[App Service](../app-service/index.yml)、[Batch](../batch/index.yml)、[Service Fabric](../service-fabric/index.yml) などの関連する Azure サービスにプルすることもできます。
 
   * *Push*: コンテナー イメージを作成し、継続的インテグレーションと Azure Pipelines や Jenkins などのデプロイ ソリューションを使用してレジストリにプッシュします。
 
@@ -50,7 +50,7 @@ Azure CLI の以前のサンプル スクリプトを GitHub 上で検索でき�
 コンテナー レジストリへのアクセスが許可されているサービス プリンシパルがある場合は、"ヘッドレス" サービスおよびアプリケーションにアクセスするための資格情報を構成するか、`docker login` コマンドを使用してそれらを入力することができます。 次の値を使用します。
 
 * **ユーザー名** - サービス プリンシパルのアプリケーション ID (*クライアント ID* とも呼ばれます)
-* **パスワード** - サービス プリンシパルのパスワード (*クライアント シークレット*とも呼ばれます)
+* **パスワード** - サービス プリンシパルのパスワード (*クライアント シークレット* とも呼ばれます)
 
 各値は、`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` という形式の GUID です。 
 

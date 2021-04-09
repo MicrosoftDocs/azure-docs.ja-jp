@@ -4,10 +4,10 @@ description: Azure CLI を使用して既存の VM バックアップ ポリシ�
 ms.topic: conceptual
 ms.date: 12/31/2020
 ms.openlocfilehash: 33083d6585d2b9296cd184ba258b8d2143d685b4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98728580"
 ---
 # <a name="update-the-existing-vm-backup-policy-using-cli"></a>CLI を使用した既存の VM バックアップ ポリシーの更新

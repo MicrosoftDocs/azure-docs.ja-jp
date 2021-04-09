@@ -11,10 +11,10 @@ ms.author: lazzeri
 ms.date: 03/05/2020
 adobe-target: true
 ms.openlocfilehash: 730fcf3fb552b92a02b255ad654f64d5ff7a92fa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100367058"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーの機械学習アルゴリズム チート シート

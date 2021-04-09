@@ -10,12 +10,12 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 99dc7a2350631f662e1c993908f7ef56e4f9a194
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04446243ed827cca4972a4b606c4930e74a2c704
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88648566"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774968"
 ---
 # <a name="design-considerations-for-scale-sets"></a>スケール セットの設計上の考慮事項
 この記事では、仮想マシン スケール セットの設計に関する考慮事項について説明します。 仮想マシン スケール セットに関する情報については、「 [仮想マシン スケール セットの概要](./overview.md)」を参照してください。
@@ -67,4 +67,4 @@ Marketplace イメージ (プラットフォーム イメージとも呼ばれ�
 
 (自分でビルドした) カスタム イメージ上に構築されたスケール セットは、Azure マネージド ディスクで構成した場合に最大 600 個の VM の容量を持つことができます。 スケール セットがユーザー管理のストレージ アカウントで構成されている場合は、1 つのストレージ アカウント内にすべての OS ディスク VHD を作成する必要があります。 その結果、カスタム イメージとユーザー管理のストレージで構築されたスケール セットの VM の推奨される最大数は 20 になります。 オーバープロビジョニングをオフにすると、最大 40 になります。
 
-VM の数が、これらの制限で許可されている数を超える場合は、 [こちらのテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale)に示すように、複数のスケール セットをデプロイする必要があります。
+VM の数が、これらの制限で許可されている数を超える場合は、 [こちらのテンプレート](https://azure.microsoft.com/resources/templates/301-custom-images-at-scale/)に示すように、複数のスケール セットをデプロイする必要があります。

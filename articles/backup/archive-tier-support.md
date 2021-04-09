@@ -3,12 +3,12 @@ title: アーカイブ層のサポート (プレビュー)
 description: Azure Backup のアーカイブ層のサポートについて説明します
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: cd9cfc5722dc644dd257738be797f162ac6dc995
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6c597d640f24dc4c680bfd5db16f9df09017ee54
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743928"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609854"
 ---
 # <a name="archive-tier-support-preview"></a>アーカイブ層のサポート (プレビュー)
 
@@ -35,20 +35,46 @@ Azure Backup は、スナップショットと Standard 層に加えて、アー
 
 - この機能は PowerShell を使用して提供されます。
 
+>[!NOTE]
+>Azure VM と Azure VM 内の SQL Server に対するアーカイブ層サポートは、限定パブリック プレビューの段階にあり、新規登録も限定されています。 アーカイブ サポートに新規登録するには、[こちら](https://aka.ms/ArchivePreviewInterestForm)のリンクをご利用ください。
+
 ## <a name="get-started-with-powershell"></a>PowerShell の使用を開始する
 
-1. [最新の PowerShell モジュール](https://github.com/Azure/azure-powershell/tree/Az.RecoveryServices-preview) (プレビュー) をダウンロードします。
+1. PowerShell で次のコマンドを実行します。
+  
+    ```azurepowershell
+    install-module -name Az.RecoveryServices -Repository PSGallery -RequiredVersion 4.0.0-preview -AllowPrerelease -force
+    ```
+
 1. [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して Azure に接続します。
 1. サブスクリプションにサインインします。
 
    `Set-AzContext -Subscription "SubscriptionName"`
+
+1. コンテナーの取得:
+
+    `$vault =  Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName"`
+
+1. バックアップ項目の一覧の取得:
+
+    `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureVM/AzureWorkload" -WorkloadType "AzureVM/MSSQL"`
+
+1. バックアップ項目を取得します。
+
+    - Azure 仮想マシンの場合:
+
+        `$bckItm = $BackupItemList | Where-Object {$_.Name -match '<vmName>'}`
+
+    - Azure 仮想マシン内の SQL Server の場合:
+
+        `$bckItm = $BackupItemList | Where-Object {$_.Name -match '<dbName>' -and $_.ContainerName -match '<vmName>'}`
 
 ## <a name="use-powershell"></a>PowerShell の使用
 
 ### <a name="check-archivable-recovery-points"></a>アーカイブ可能な復旧ポイントを確認する
 
 ```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate (Get-Date).AddDays(-180).ToUniversalTime() -EndDate (Get-Date).AddDays(0).ToUniversalTime() -VaultId $vault.ID -Item $bckItm  -IsReadyForMove $true -TargetTier VaultArchive
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm  -IsReadyForMove $true -TargetTier VaultArchive
 ```
 
 これにより、アーカイブに移動する準備ができている特定のバックアップ項目に関連するすべての復旧ポイントが一覧表示されます。
@@ -56,7 +82,7 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate (Get-Date).AddDays(-1
 ### <a name="check-why-a-recovery-point-cannot-be-moved-to-archive"></a>復旧ポイントをアーカイブに移動できない理由を確認する
 
 ```azurepowershell
-$rp.RecoveryPointMoveReadinessInfo["ArchivedRP"]
+$rp[0].RecoveryPointMoveReadinessInfo["ArchivedRP"]
 ```
 
 ここで `$rp[0]` は、アーカイブ可能でない理由を確認する復旧ポイントです。
@@ -79,13 +105,13 @@ False           Recovery-Point Type is not eligible for archive move as it is al
 >コスト節約はさまざまな理由に依存するため、どの 2 つのインスタンスでも同じになるとは限りません。
 
 ```azurepowershell
-$recommendedRPs = SGet-AzRecoveryServicesRecommendedArchivableRPGroup -Item $BackupItem -StartDate $Startdate.ToUniversalTime() -EndDate $Enddate.ToUniversalTime() -VaultId $vault.ID 
+$RecommendedRecoveryPointList = Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup -Item $bckItm -VaultId $vault.ID
 ```
 
 ### <a name="move-to-archive"></a>アーカイブに移動する
 
 ```azurepowershell
-Move-AzRecoveryServicesRecoveryPoint -VaultId $vault.ID - RecoveryPoint $RecoveryPoint[10] -SourceTier VaultStandard -DestinationTier VaultArchive 
+Move-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -RecoveryPoint $rp[2] -SourceTier VaultStandard -DestinationTier VaultArchive
 ```
 
 このコマンドは、アーカイブ可能な復旧ポイントをアーカイブに移動します。 これによって返されるジョブを使用して、ポータルと PowerShell の両方から移動操作を追跡することができます。
@@ -95,7 +121,7 @@ Move-AzRecoveryServicesRecoveryPoint -VaultId $vault.ID - RecoveryPoint $Recover
 このコマンドは、アーカイブされたすべての復旧ポイントを返します。
 
 ```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate (Get-Date).AddDays(-180).ToUniversalTime() -EndDate (Get-Date).AddDays(0).ToUniversalTime() -VaultId $vault.ID -Item $bckItm -Tier VaultArchive
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -Tier VaultArchive
 ```
 
 ### <a name="restore-with-powershell"></a>PowerShell で復元する
@@ -122,7 +148,7 @@ SQL Server を復元するには、[これらの手順](backup-azure-sql-automat
 移動と復元の各ジョブを表示するには、次の PowerShell コマンドレットを使用します。
 
 ```azurepowershell
-Get-AzRecoveryservicesBackupJob -VaultId $targetVault.ID
+Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 ```
 
 ## <a name="use-the-portal"></a>ポータルの使用
@@ -170,7 +196,7 @@ Get-AzRecoveryservicesBackupJob -VaultId $targetVault.ID
 
 **説明** - このエラー コードは、選択した復旧ポイントの種類がアーカイブへの移動資格を持たないときに表示されます。
 
-**推奨される操作** – 復旧ポイントの適格性を[こちら](#scope-for-preview)で確認してください。
+**推奨される操作** – 復旧ポイントの適格性を [こちら](#scope-for-preview)で確認してください。
 
 ### <a name="recoverypointhaveactivedependencies"></a>RecoveryPointHaveActiveDependencies
 
@@ -178,7 +204,7 @@ Get-AzRecoveryservicesBackupJob -VaultId $targetVault.ID
 
 **説明 –** 選択した復旧ポイントにはアクティブな依存関係があるため、アーカイブに移動できません。
 
-**推奨される操作** – 復旧ポイントの適格性を[こちら](#scope-for-preview)で確認してください。
+**推奨される操作** – 復旧ポイントの適格性を [こちら](#scope-for-preview)で確認してください。
 
 ### <a name="minlifespaninstandardrequiredforarchive"></a>MinLifeSpanInStandardRequiredForArchive
 
@@ -186,7 +212,7 @@ Get-AzRecoveryservicesBackupJob -VaultId $targetVault.ID
 
 **説明** – 復旧ポイントは Standard 層で、Azure 仮想マシンの場合は最低 3 か月間、Azure 仮想マシンの SQL Server の場合は 45 日間を経過する必要があります。
 
-**推奨される操作** – 復旧ポイントの適格性を[こちら](#scope-for-preview)で確認してください。
+**推奨される操作** – 復旧ポイントの適格性を [こちら](#scope-for-preview)で確認してください。
 
 ### <a name="minremaininglifespaninarchiverequired"></a>MinRemainingLifeSpanInArchiveRequired
 
@@ -194,7 +220,7 @@ Get-AzRecoveryservicesBackupJob -VaultId $targetVault.ID
 
 **説明** – アーカイブ移動適格性に準拠するために復旧ポイントに必要な最小存続期間は 6 か月です。
 
-**推奨される操作** – 復旧ポイントの適格性を[こちら](#scope-for-preview)で確認してください。
+**推奨される操作** – 復旧ポイントの適格性を [こちら](#scope-for-preview)で確認してください。
 
 ### <a name="usererrorrecoverypointalreadyinarchivetier"></a>UserErrorRecoveryPointAlreadyInArchiveTier
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 3c08555120758584f41587bd96d754b325cdc48b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92520882"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pavaso-digital-close"></a>チュートリアル:Azure Active Directory と Pavaso Digital Close の統合
@@ -41,7 +41,7 @@ Pavaso Digital Close と Azure AD の統合を構成するには、次のもの�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Pavaso Digital Close では、 **SP と IDP** によって開始される SSO がサポートされます
+* Pavaso Digital Close では、**SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-pavaso-digital-close-from-the-gallery"></a>ギャラリーからの Pavaso Digital Close の追加
 
@@ -61,13 +61,13 @@ Azure AD への Pavaso Digital Close の統合を構成するには、ギャラ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Pavaso Digital Close** 」と入力し、結果パネルで **[Pavaso Digital Close]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Pavaso Digital Close**」と入力し、結果パネルで **[Pavaso Digital Close]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果一覧の Pavaso Digital Close](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、[アプリケーション名] を使用して Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、[アプリケーション名] を使用して Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと [アプリケーション名] 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 [アプリケーション名] を使用して Azure AD のシングル サインオンを構成し、テストするには、次の構成要素を完了する必要があります。
@@ -148,9 +148,9 @@ Azure AD への Pavaso Digital Close の統合を構成するには、ギャラ�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

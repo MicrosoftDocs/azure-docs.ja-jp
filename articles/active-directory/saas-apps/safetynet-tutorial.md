@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と SafetyNet の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と SafetyNet の統合 | Microsoft Docs'
 description: Azure Active Directory と SafetyNet の間のシングル サインオンを構成する方法について確認します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
 ms.openlocfilehash: aeedb10071ab53a7b3f5f2a688590bf245074892
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92676755"
 ---
-# <a name="tutorial-integrate-safetynet-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と SafetyNet の統合
+# <a name="tutorial-integrate-safetynet-with-azure-active-directory"></a>チュートリアル: Azure Active Directory と SafetyNet の統合
 
 このチュートリアルでは、SafetyNet と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と SafetyNet を統合すると、次のことができます。
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* SafetyNet では、 **SP および IDP** Initiated SSO がサポートされます
+* SafetyNet では、**SP および IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-safetynet-from-the-gallery"></a>ギャラリーからの SafetyNet の追加
 
@@ -49,7 +49,7 @@ Azure AD への SafetyNet の統合を構成するには、ギャラリーから
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **SafetyNet** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**SafetyNet**」と入力します。
 1. 結果ウィンドウで **[SafetyNet]** を選択し、アプリケーションを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -69,7 +69,7 @@ SafetyNet で Azure AD SSO を構成してテストするには、次の構成�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **SafetyNet** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **SafetyNet** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
 
@@ -94,7 +94,7 @@ SafetyNet で Azure AD SSO を構成してテストするには、次の構成�
 
 ### <a name="configure-safetynet-sso"></a>SafetyNet SSO の構成
 
-**SafetyNet** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [SafetyNet サポート チーム](mailto:dev@predictivesolutions.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**SafetyNet** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [SafetyNet サポート チーム](mailto:dev@predictivesolutions.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

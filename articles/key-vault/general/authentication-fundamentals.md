@@ -7,18 +7,18 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: a75ecac20c553f697585648c5654d375b85e5183
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 25f00024fb7371fd08bf6c4ceec3177cfaca029b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100535197"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103572810"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault 認証の基礎
 
 Azure Key Vault を使用すると、シークレット、キー、証明書などのアプリケーションの資格情報を、中央のセキュリティ保護されたクラウド リポジトリに安全に格納して管理することができます。 Key Vault を使用すると、アプリケーションに資格情報を保存する必要がなくなります。 アプリケーションで実行時に Key Vault に対して認証を行うことで、資格情報を取得できます。
 
-管理者は、キー コンテナーにアクセスできるユーザーとアプリケーションを厳しく制御し、実行される操作を制限および監査することができます。 このドキュメントでは、Key Vault のアクセス モデルの基本的な概念について説明します。 入門レベルの知識が得られ、Key Vault に対してユーザーまたはアプリケーションの認証を行う方法が最初から最後までわかります。
+管理者は、キー コンテナーにアクセスできるユーザーとアプリケーションを厳しく制御し、実行される操作を制限および監査することができます。 このドキュメントでは、Key Vault のアクセス モデルの基本的な概念について説明します。 入門レベルの知識が得られ、キー コンテナーに対してユーザーまたはアプリケーションの認証を行う方法が最初から最後までわかります。
 
 ## <a name="required-knowledge"></a>必要な知識
 

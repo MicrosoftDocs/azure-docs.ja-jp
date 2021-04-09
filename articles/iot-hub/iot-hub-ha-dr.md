@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
 ms.openlocfilehash: c665e30ed9b284f7c93cf8588b710c9f22457a0a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92151677"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub の高可用性とディザスター リカバリー
@@ -62,7 +62,7 @@ IoT Hub のフェールオーバー操作が完了すると、デバイスおよ
 > [!CAUTION]
 > - そのIoT Hub の組み込みイベント エンドポイントのイベント ハブと互換性のある名前とエンドポイントは、フェールオーバー後に変更されます。 イベント ハブ クライアントまたはイベント プロセッサ ホストを使用して組み込みエンドポイントからテレメトリ メッセージを受信する場合は、[その IoT ハブの接続文字列を使用](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)して接続を確立する必要があります。 これにより、フェールオーバー後に手動操作することなく、バックエンド アプリケーションは継続的に動作します。 アプリケーションでイベント ハブと互換性のある名前とエンドポイントを直接使用する場合、フェールオーバー後も運用を継続するには、[新しいイベント ハブと互換性のあるエンドポイントをフェッチする](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)必要があります。 
 >
-> - Azure Functions または Azure Stream Analytics を使用して組み込みイベント エンドポイントを接続する場合は、**再起動**が必要になる場合があります。 これは、フェールオーバー中に以前のオフセットが無効になるためです。
+> - Azure Functions または Azure Stream Analytics を使用して組み込みイベント エンドポイントを接続する場合は、**再起動** が必要になる場合があります。 これは、フェールオーバー中に以前のオフセットが無効になるためです。
 >
 > - ストレージにルーティングするときは、パーティションを想定せずにすべての BLOB またはファイルを確実に読み取るために、BLOB またはファイルの一覧を取得したうえでそれらを反復処理することをお勧めします。 Microsoft が開始するフェールオーバー中や手動フェールオーバー中にパーティションの範囲が変化する可能性があります。 [List Blobs API](/rest/api/storageservices/list-blobs) を使用して BLOB の一覧を、または [List ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/list) を使用してファイルの一覧を列挙できます。 詳細については、「[ルーティング エンドポイントとしての Azure Storage](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)」を参照してください。
 

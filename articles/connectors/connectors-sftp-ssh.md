@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 01/07/2021
+ms.date: 03/08/2021
 tags: connectors
-ms.openlocfilehash: 388d747da692160ab6d0a89c0c35de348d921486
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 983e0d34692d67302e11c35abac590fefd610b2e
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016764"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449630"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH と Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う
 
@@ -103,10 +103,10 @@ SFTP-SSH コネクタと SFTP コネクタの違いについては、このト�
   >
   > * **フィンガープリント**: MD5
   >
-  > ご利用のロジック アプリに必要な SFTP-SSH トリガーまたはアクションを追加した後、SFTP サーバーの接続情報を指定する必要があります。 この接続に SSH 秘密キーを指定する場合、"**_キーを手動で入力したり編集したりしないでください_* _"。これにより、接続が失敗する可能性があります。 代わりに、必ず、ご利用の SSH 秘密キー ファイルから "_*_キーをコピー_*_" し、そのキーを接続の詳細に "_*_貼り付け_*_" てください。 
+  > ご利用のロジック アプリに必要な SFTP-SSH トリガーまたはアクションを追加した後、SFTP サーバーの接続情報を指定する必要があります。 この接続に SSH 秘密キーを指定する場合、***キーを手動で入力したり編集したりしないでください***。これにより、接続が失敗する可能性があります。 代わりに、必ず、ご利用の SSH 秘密キー ファイルから ***キーをコピー*** し、そのキーを接続の詳細に ***貼り付け*** てください。 
   > 詳細については、この記事の後の「[SSH で SFTP に接続する](#connect)」セクションを参照してください。
 
-[ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
 * SFTP アカウントにアクセスするロジック アプリ。 SFTP-SSH トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 SFTP-SSH アクションを使用するには、**繰り返し** トリガーなど、別のトリガーでロジック アプリを開始します。
 
@@ -170,7 +170,15 @@ SFTP-SSH トリガーは SFTP ファイル システムをポーリングし、�
 
 ## <a name="considerations"></a>考慮事項
 
-このセクションでは、このコネクタのトリガーとアクションについて確認すべき考慮事項について説明します。
+このセクションでは、このコネクタのトリガーとアクションを使用する際に確認すべき考慮事項について説明します。
+
+<a name="different-folders-trigger-processing-file-storage"></a>
+
+### <a name="use-different-sftp-folders-for-file-upload-and-processing"></a>ファイルのアップロードと処理に、異なる SFTP フォルダーを使用する
+
+SFTP サーバーでは、アップロードされたファイルを格納するフォルダーと、トリガーが処理のためにそれらのファイルを監視するフォルダーは、必ず別々のものを使用してください。これは、これらのフォルダー間でファイルを移動する方法が必要であることを意味します。 そうしないと、トリガーは起動せず、予期しない動作が発生します。たとえば、トリガーが処理するファイルのうち、ランダムな数がスキップされるなどです。
+
+この問題が発生した場合は、トリガーによって監視されているフォルダーからファイルを削除し、アップロードしたファイルの保存用に別のフォルダーを使用してください。
 
 <a name="create-file"></a>
 
@@ -208,9 +216,9 @@ SFTP サーバーにファイルを作成するには、SFTP-SSH の **[ファ�
 
    1. **[編集]**  >  **[コピー]** を選択します。
 
-   1. 追加した SFTP-SSH トリガーまたはアクションで、コピーした *完全な* キーを **SSH 秘密キー** プロパティ (これは、複数行をサポートします) に貼り付けます。キーは  **_貼り付けるようにしてください_* _。 _*_キーを手動で入力または編集しないでください_*_。
+   1. 追加した SFTP-SSH トリガーまたはアクションで、コピーした *完全な* キーを **SSH 秘密キー** プロパティ (これは、複数行をサポートします) に貼り付けます。  **"*キー*" は、_必ず貼り付けてください_。_手動でキーを入力したり編集したりしないでください_**。
 
-1. 接続の詳細の入力を完了したら、_*[作成]** を選択します。
+1. 接続の詳細の入力が完了したら、 **[作成]** を選択します。
 
 1. ここから、選択したトリガーまたはアクションのために必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
 

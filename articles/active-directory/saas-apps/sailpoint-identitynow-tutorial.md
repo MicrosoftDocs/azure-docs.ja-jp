@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/04/2020
 ms.author: jeedes
 ms.openlocfilehash: 04e1dbdd0a84fd8950ca2ebe05b1389767ed77c9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96181545"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sailpoint-identitynow"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SailPoint IdentityNow の統合

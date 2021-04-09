@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7338fb480f76ed1a5edbf9502dc0946d08618a63
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4545e92767a427b8cd89af07ed4d06053685977a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644920"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578007"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -58,6 +58,9 @@ Azure AD に自分のデバイスを取り込んで、クラウドとオンプ�
 > Azure AD は、マネージド ドメインでのスマートカードや証明書をサポートしていません。
 
 Azure AD Connect で、ハイブリッド Azure AD 参加済みにするデバイスのコンピュータ オブジェクトを Azure AD に対して同期済みであることを確認します。 コンピューター オブジェクトが特定の組織単位 (OU) に属している場合は、これらの OU を Azure AD Connect で同期するように構成します。 Azure AD Connect を使用してコンピューター オブジェクトを同期する方法の詳細については、「[組織単位ベースのフィルター処理](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)」を参照してください。
+
+> [!NOTE]
+> デバイス登録構成の過程でデバイス登録の同期参加を成功させるには、Azure AD Connect 同期構成から既定のデバイス属性を除外しないでください。 AAD と同期される既定のデバイス属性について詳しくは、[Azure AD Connect によって同期される属性](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10)に関するセクションを参照してください。
 
 バージョン 1.1.819.0 以降の Azure AD Connect には、Hybrid Azure AD Join を構成するためのウィザードが用意されています。 このウィザードを使用すると、構成プロセスを大幅に簡略化できます。 このウィザードで、デバイス登録のためのサービス接続ポイント (SCP) を構成します。
 

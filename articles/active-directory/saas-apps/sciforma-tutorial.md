@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 469cfcd39ff606c6ed828d490f26e6e3e027993e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95993195"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciforma"></a>チュートリアル: Azure Active Directory と Sciforma の統合
@@ -62,7 +62,7 @@ Azure AD への Sciforma の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Sciforma**」と入力し、結果パネルの **[Sciforma]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Sciforma**」と入力し、結果パネルの **[Sciforma]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果一覧の Sciforma](common/search-new-app.png)
 
@@ -86,7 +86,7 @@ Sciforma で Azure AD のシングル サインオンを構成してテストす
 
 Sciforma で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Sciforma** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Sciforma** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -156,7 +156,7 @@ Sciforma で Azure AD シングル サインオンを構成するには、次の
 
 このセクションでは、Britta Simon に Sciforma へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Sciforma]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Sciforma]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

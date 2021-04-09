@@ -11,10 +11,10 @@ ms.subservice: translator-text
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.openlocfilehash: a0d8532d19aff41bc5e7defb3b58462e81018749
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101712931"
 ---
 # <a name="create-a-translator-resource"></a>Translator リソースを作成する

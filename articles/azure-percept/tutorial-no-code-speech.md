@@ -7,18 +7,18 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 3c5e6fd62e4f4db9ccc1306d32d09b8338cbf963
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 76333e11916641be71c72ce6142cd59b496a17e9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098028"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023165"
 ---
 # <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>Azure Percept DK と Azure Percept Audio を使用して音声アシスタントを作成する
 
 このチュートリアルでは、Azure Percept DK と Azure Percept Audio で使用する音声アシスタントをテンプレートから作成します。 音声アシスタントのデモは [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) 内で動作し、音声で制御される選りすぐりの仮想オブジェクトを含んでいます。 オブジェクトを制御するには、まずキーワード (デバイスを目覚めさせる単語または短いフレーズ) を発話し、続けてコマンドを発話します。 それぞれのテンプレートは、具体的な一連のコマンドに応答します。
 
-このガイドでは、デバイスのセットアップから、音声アシスタントと必要な [Speech Services](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview) リソースの作成、音声アシスタントのテスト、キーワードの構成、カスタム キーワードの作成までのプロセスを紹介します。
+このガイドでは、デバイスのセットアップから、音声アシスタントと必要な [Speech Services](../cognitive-services/speech-service/overview.md) リソースの作成、音声アシスタントのテスト、キーワードの構成、カスタム キーワードの作成までのプロセスを紹介します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -172,7 +172,7 @@ Inventory (在庫) デモには、仮想在庫アプリと共に、対話的に�
 
     :::image type="content" source="./media/tutorial-no-code-speech/speech-studio.png" alt-text="Speech Studio のホーム画面のスクリーンショット。":::
 
-カスタム コマンドの開発について詳しくは、[Speech Service のドキュメント](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-commands)を参照してください。
+カスタム コマンドの開発について詳しくは、[Speech Service のドキュメント](../cognitive-services/speech-service/custom-commands.md)を参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 8d86728eefc46c74b49ac610e2207ce5e7ae6a9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87289358"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure DevTest Labs インフラストラクチャのガバナンス - アプリケーションの移行と統合
@@ -22,7 +22,7 @@ ms.locfileid: "87289358"
 ### <a name="question"></a>Question
 Azure Marketplace イメージと組織独自のカスタム イメージをどのように使い分ける必要がありますか。
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>回答
 特定の問題または組織の要件がない限り、Azure Marketplace を既定で使用する必要があります。 問題や要件とは、たとえば次のようなものです。
 
 - 基本イメージの一部としてアプリケーションを含める必要がある複雑なソフトウェアのセットアップ。
@@ -37,7 +37,7 @@ Azure Marketplace イメージと組織独自のカスタム イメージをど�
 ### <a name="question"></a>Question
 定型イメージとカスタム イメージをどのように使い分ける必要がありますか。
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>回答
 通常、このシナリオでの決定要因はコストと再利用です。
 
 基本イメージに多くのソフトウェアが追加されたイメージを多くのユーザー/ラボが必要とするシナリオでは、カスタム イメージを作成することによってコストを減らすことができます。 つまり、イメージを 1 回だけ作成します。 仮想マシンのセットアップ時間が短縮され、セットアップ時に仮想マシンの実行が原因で発生するコストが減ります。
@@ -49,14 +49,14 @@ Azure Marketplace イメージと組織独自のカスタム イメージをど�
 ### <a name="question"></a>Question
 カスタム組織イメージを DevTest Labs 環境に展開する簡単に反復可能なプロセスをセットアップするにはどうすればよいですか。
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>回答
 [イメージ ファクトリ パターンに関するこちらのビデオ](./devtest-lab-faq.md#blog-post)をご覧ください。 これは高度なシナリオであり、提供されているスクリプトはサンプル スクリプトのみです。 何らかの変更が必要な場合は、環境で使用されるスクリプトを自分で管理および保守する必要があります。
 
 DevTest Labs を使用して、Azure Pipelines でカスタムのイメージ パイプラインを作成します。
 
-- [概要:Azure DevTest Labs でイメージ ファクトリを設定して数分で VM を準備する](./devtest-lab-faq.md#blog-post)
+- [概要: Azure DevTest Labs でイメージ ファクトリを設定して数分で VM を準備する](./devtest-lab-faq.md#blog-post)
 - [イメージ ファクトリ – パート 2:Azure Pipelines とファクトリ ラボを設定して VM を作成する](./devtest-lab-faq.md#blog-post)
-- [イメージ ファクトリ – パート 3:カスタム イメージを保存して複数のラボに配布する](./devtest-lab-faq.md#blog-post)
+- [イメージ ファクトリ – パート 3: カスタム イメージを保存して複数のラボに配布する](./devtest-lab-faq.md#blog-post)
 - [ビデオ: Azure DevTest Labs でのカスタム イメージ ファクトリ](./devtest-lab-faq.md#blog-post)
 
 ## <a name="patterns-to-set-up-network-configuration"></a>ネットワーク構成を設定するパターン
@@ -64,7 +64,7 @@ DevTest Labs を使用して、Azure Pipelines でカスタムのイメージ �
 ### <a name="question"></a>Question
 開発用とテスト用の仮想マシンがパブリック インターネットに接続できないようにするにはどうすればよいですか。 ネットワーク構成の設定に推奨されるパターンはありますか。
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>回答
 はい。 受信トラフィックと送信トラフィックの 2 つの側面を考慮する必要があります。
 
 **受信トラフィック** – 仮想マシンがパブリック IP アドレスを持っていない場合、その仮想マシンにはインターネットから到達できません。 ユーザーがパブリック IP アドレスを作成できないように、サブスクリプション レベルのポリシーを設定するのが、一般的なアプローチです。
@@ -81,7 +81,7 @@ DevTest Labs を使用して、Azure Pipelines でカスタムのイメージ �
 ### <a name="question"></a>Question
 どのような場合に DevTest ラボ環境用の新しい仮想ネットワークを作成する必要があり、どのような場合に既存の仮想ネットワークを使用できますか。
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>回答
 VM で既存のインフラストラクチャとやりとりする必要がある場合は、DevTest Labs 環境内の既存の仮想ネットワークの使用を検討する必要があります。 さらに、ExpressRoute を使用する場合は、サブスクリプションで割り当てられている IP アドレス空間がフラグメント化しないように、VNet/サブネットの量を最小限に抑えることが必要な場合があります。 また、ここでは VNET ピアリング パターンの使用も考慮する必要があります (ハブ - スポーク モデル)。 この方法では、特定のリージョン内のサブスクリプション間で VNET/サブネット通信できますが、リージョンをまただピアリングは将来の Azure ネットワークで可能になります。
 
 それ以外の場合は、各 DevTest Labs 環境で専用の仮想ネットワークを使用できます。 ただし、サブスクリプションあたりの仮想ネットワークの数には[制限](../azure-resource-manager/management/azure-subscription-service-limits.md)があることに注意してください。 既定の数は 50 ですが、この制限は 100 まで増やすことができます。
@@ -91,7 +91,7 @@ VM で既存のインフラストラクチャとやりとりする必要があ�
 ### <a name="question"></a>Question
 共有 IP アドレス、パブリック IP アドレス、プライベート IP アドレスはどのように使い分ける必要がありますか。
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>回答
 サイト間 VPN または ExpressRoute を使用する場合は、マシンが内部ネットワーク経由ではアクセスできてもパブリック インターネット経由ではアクセスできないように、プライベート IP アドレスの使用を検討します。
 
 > [!NOTE]
@@ -104,19 +104,19 @@ VM で既存のインフラストラクチャとやりとりする必要があ�
 ### <a name="question"></a>Question
 ユーザーごと、またはラボごとに設定する必要がある仮想マシンの数に関するルールはありますか。
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>回答
 ユーザーごと、またはラボごとの仮想マシンの数を検討するときは、3 つの主な懸案事項があります。
 
-- ラボのリソースにチームが費やすことのできる**総コスト**。 多くのマシンを起動するのは簡単です。 コストを制御するための 1 つのメカニズムは、ユーザーごとおよびラボごとの VM の数を制限することです。
+- ラボのリソースにチームが費やすことのできる **総コスト**。 多くのマシンを起動するのは簡単です。 コストを制御するための 1 つのメカニズムは、ユーザーごとおよびラボごとの VM の数を制限することです。
 - ラボ内の仮想マシンの総数は、使用できる[サブスクリプション レベルのクォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)の影響を受けます。 上限値の 1 つは、サブスクリプションあたり 800 リソース グループです。 現在、DevTest Labs では (共有パブリック IP アドレスが使用されていない場合) VM ごとに新しいリソース グループが作成されます。 サブスクリプションに 10 個のラボがある場合、ラボごとの仮想マシンの数は約 79 になります (上限値 800 から、10 個のラボ自体のリソース グループの数 10 を引いた値)。
-- たとえば、ラボが ExpressRoute 経由でオンプレミスに接続されている場合は、VNET/サブネット用に**使用可能な IP アドレス空間が定義されています**。 ラボ内の VM の作成が失敗しないようにするには (エラー: IP アドレスを取得できない)、ラボの所有者は、使用可能な IP アドレス空間に合わせて、ラボあたりの最大 VM 数を指定できます。
+- たとえば、ラボが ExpressRoute 経由でオンプレミスに接続されている場合は、VNET/サブネット用に **使用可能な IP アドレス空間が定義されています**。 ラボ内の VM の作成が失敗しないようにするには (エラー: IP アドレスを取得できない)、ラボの所有者は、使用可能な IP アドレス空間に合わせて、ラボあたりの最大 VM 数を指定できます。
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager テンプレートを使用する
 
 ### <a name="question"></a>Question
 DevTest Labs 環境で Resource Manager テンプレートを使用するにはどうすればよいですか。
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>回答
 [DevTest Labs での環境機能](devtest-lab-test-env.md)に関する記事で説明されている手順を使用して、DevTest Labs 環境に Resource Manager テンプレートをデプロイします。 基本的には、Resource Manager テンプレートを Git リポジトリ (Azure Repos または GitHub) にチェックインし、[テンプレート用のプライベート リポジトリ](devtest-lab-test-env.md)をラボに追加します。
 
 このシナリオは、開発マシンをホストするために DevTest Labs を使用している場合は役に立たないことがありますが、運用環境の典型であるステージング環境を構築している場合は役立つことがあります。

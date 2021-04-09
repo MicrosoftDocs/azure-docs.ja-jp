@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d47e98273e696a4b6e827d8ebbc71a297f2861cb
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9c973859c8b7a3d04693946f50377837c3538b85
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905317"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094106"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Maps による認証
 
@@ -84,7 +84,7 @@ Azure Maps では、Azure AD ユーザー、グループ、アプリケーショ
 
 次のセクションでは、Azure Maps と Azure RBAC との統合の概念とコンポーネントについて説明します。 Azure Maps アカウントを設定するプロセスの一環として、Azure AD ディレクトリが、Azure Maps アカウントがある Azure サブスクリプションに関連付けられます。 
 
-Azure RBAC を構成する場合、セキュリティ プリンシパルを選択して、それをロールの割り当てに適用します。 Azure portal でロールの割り当てを追加する方法については、[Azure ロールの割り当ての追加と削除](../role-based-access-control/role-assignments-portal.md)に関するページを参照してください。
+Azure RBAC を構成する場合、セキュリティ プリンシパルを選択して、それをロールの割り当てに適用します。 Azure portal でロールの割り当てを追加する方法については、「[Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」に関するページを参照してください。
 
 ### <a name="picking-a-role-definition"></a>ロールの定義の選択
 

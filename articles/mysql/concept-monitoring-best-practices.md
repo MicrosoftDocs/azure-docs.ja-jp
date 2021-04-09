@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.openlocfilehash: 59301e26f4d42056322ba5a7cdaff1555c531096
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96354887"
 ---
 # <a name="best-practices-for-monitoring-azure-database-for-mysql--single-server"></a>Azure Database for MySQL を監視するためのベスト プラクティス - 単一サーバー

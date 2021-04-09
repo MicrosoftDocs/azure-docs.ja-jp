@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/17/2019
 ms.author: Zhchia
 ms.openlocfilehash: ec39e4796d2a06ad88a8e88ea99b953064eb6d21
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96348332"
 ---
 # <a name="tutorial-configure-workgrid--for-automatic-user-provisioning"></a>チュートリアル:Workgrid を構成し、自動ユーザー プロビジョニングに対応させる

@@ -2,18 +2,19 @@
 title: チュートリアル - Azure Site Recovery を使用して Windows VM のディザスター リカバリーを設定する
 description: Azure Site Recovery サービスを使用して、別の Azure リージョンへの Windows VM のディザスター リカバリーを有効にする方法について説明します。
 author: rayne-wiselman
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.subservice: recovery
 ms.topic: tutorial
 ms.date: 11/05/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 53cc0b820bd2ffb9fc28b37f44bb71a7b9d3cd30
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: e9f44ea2af832729a47bf4b719b90f9b14e401b9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379935"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102555858"
 ---
 # <a name="tutorial-enable-disaster-recovery-for-windows-vms"></a>チュートリアル:Windows VM のディザスター リカバリーを有効にする
 

@@ -3,18 +3,18 @@ title: Azure Media Services で推奨されるエンコーダーについて知�
 description: この記事では、Azure Media Services によって推奨されるオンプレミス エンコーダーの一覧を示します。
 services: media-services
 keywords: エンコード;エンコーダー;メディア
-author: dbgeorge
+author: IngridAtMicrosoft
 manager: johndeu
 ms.author: johndeu
-ms.date: 03/20/2019
+ms.date: 03/10/2021
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 11456a8dc55a98778bf44225bf659e506e2d3a3f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 98d78a105bf06a2e49dee0b8c2be710b220a0023
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510058"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103009438"
 ---
 # <a name="recommended-on-premises-encoders"></a>推奨のオンプレミス エンコーダー
 

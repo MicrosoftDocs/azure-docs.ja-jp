@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbullwin
 ms.openlocfilehash: ecbfb2d9acf6c62f95c264a14e306442db25e483
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101703424"
 ---
 # <a name="how-to-diagnose-an-incident-using-metrics-advisor"></a>方法: Metrics Advisor を使用してインシデントを診断する

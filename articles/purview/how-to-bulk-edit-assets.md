@@ -7,12 +7,12 @@ ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 77bfa3d22d628cf179e95cd4892ec030f22ab35f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 493d3ceb596bb29da0e60ab08518375412417a0e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693766"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049486"
 ---
 # <a name="how-to-bulk-edit-assets-to-tag-glossary-terms"></a>資産を一括編集して用語集の用語にタグを付ける方法
 
@@ -65,13 +65,13 @@ ms.locfileid: "101693766"
 
 7. classifications、owners、experts に対して上の手順を繰り返します。
 
-    :::image type="content" source="media/how-to-bulk-edit-assets/all-list.png" alt-text="用語の削除のスクリーンショット。":::
+    :::image type="content" source="media/how-to-bulk-edit-assets/all-list.png" alt-text="分類と連絡先のスクリーンショット。":::
 
 8. 完了したら、 **[閉じる]** または **[Remove all and close]\(すべて削除して閉じる\)** を選択して一括編集ブレードを閉じます。 [閉じる] では、選択された資産は削除されません。一方、[Remove all and close]\(すべて削除して閉じる\) では、すべての選択された資産が削除されます。
     :::image type="content" source="media/how-to-bulk-edit-assets/close-list.png" alt-text="閉じるのスクリーンショット。":::
 
    > [!Important]
-   > 一括編集で推奨される資産の数は 15 です。 25 を超える数を選択すると、パフォーマンスの問題が発生する可能性があります。
+   > 一括編集で推奨される資産の数は 25 です。 25 を超える数を選択すると、パフォーマンスの問題が発生する可能性があります。
    > **[選択対象の表示]** ボックスは、少なくとも 1 つの資産が選択されている場合にのみ表示されます。
 
 

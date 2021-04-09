@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/8/2020
 ms.author: allensu
 ms.openlocfilehash: e1080aea12e70f4312fbee07b063d5a5cfbd1201
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89596222"
 ---
 # <a name="azure-load-balancer-portal-settings"></a>Azure Load Balancer ポータルの設定
@@ -47,7 +47,7 @@ Azure Load Balancer は、バックエンド プール内の VM インスタン�
 | ---------- | ---------- |
 | パブリック IP アドレス | **[新規作成]** を選択して、パブリック ロード バランサーのパブリック IP アドレスを作成します。 </br> パブリック IP が既にある場合は、 **[既存のものを使用]** を選択します。  |
 | パブリック IP アドレス名 | パブリック IP アドレスの名前。|
-| パブリック IP アドレスの SKU | パブリック IP アドレスには、次の 2 つの SKU があります。**Basic** と **Standard**。 </br> Basic では、ゾーンの回復性とゾーンの属性がサポートされていません。 </br> 運用環境のワークロードには **Standard** をお勧めします。 </br> ロード バランサーとパブリック IP アドレスの SKU は**一致している必要があります**。 |
+| パブリック IP アドレスの SKU | パブリック IP アドレスには、次の 2 つの SKU があります。**Basic** と **Standard**。 </br> Basic では、ゾーンの回復性とゾーンの属性がサポートされていません。 </br> 運用環境のワークロードには **Standard** をお勧めします。 </br> ロード バランサーとパブリック IP アドレスの SKU は **一致している必要があります**。 |
 | 割り当て | Standard には **[静的]** が自動的に選択されます。 </br> Basic のパブリック IP には、次の 2 種類があります。 **[動的]** と **[静的]** 。 </br> 動的パブリック IP アドレスは、作成されるまで割り当てられません。 </br> リソースが削除されると、IP が失われる可能性があります。 </br> 静的 IP アドレスをお勧めします。 |
 | 可用性ゾーン | 回復性があるロード バランサーを作成するには、 **[ゾーン冗長]** を選択します。 </br> ゾーン間ロード バランサーを作成するには、**1**、**2**、**3** の中から特定のゾーンを選択します。 </br> Standard ロード ランサーとパブリック IP により、ゾーンがサポートされています。 </br> ロード バランサーと可用性ゾーンの詳細については、[こちら](load-balancer-standard-availability-zones.md)を参照してください。 </br> Basic にはゾーンの選択は表示されません。 Basic Load Balancer では、ゾーンがサポートされていません。 |
 | パブリック IPv6 アドレスを追加する | ロード バランサーによって、フロントエンドの **IPv6** アドレスがサポートされています。 </br> ロード バランサーと IPv6 の詳細については、[こちら](load-balancer-ipv6-overview.md)を参照してください。
@@ -63,7 +63,7 @@ Azure Load Balancer は、バックエンド プール内の VM インスタン�
 | IP アドレスの割り当て | 選択肢は **[静的]** または **[動的]** です。 </br> [静的] を選択すると、IP は変更されません。 動的 IP は変わる可能性があります。 |
 | 可用性ゾーン | 次のようなオプションがあります。 </br> **ゾーン冗長** </br> **ゾーン 1** </br> **ゾーン 2** </br> **ゾーン 3** </br> 可用性ゾーンの障害に対して高可用性と回復力を備えたロード バランサーを作成するには、 **[ゾーン冗長]** IP を選択します。 |
 
-:::image type="content" source="./media/manage/create-internal-load-balancer-basics.png" alt-text="ロード バランサー (パブリック) を作成する。" border="true":::
+:::image type="content" source="./media/manage/create-internal-load-balancer-basics.png" alt-text="ロード バランサー (内部) の作成。" border="true":::
 
 ## <a name="frontend-ip-configuration"></a>フロントエンド IP の構成
 
@@ -80,7 +80,7 @@ Azure Load Balancer の IP アドレスです。 クライアントにとって�
 | IP の種類 | IP の種類により、1 つの IP アドレスが、フロントエンドに関連付けられているか、IP プレフィックスを使用して IP アドレスの範囲に関連付けられているかが決定されます。 </br> [パブリック IP プレフィックス](../virtual-network/public-ip-address-prefix.md)は、同じエンドポイントに繰り返し接続する必要がある場合に役立ちます。 プレフィックスによって、SNAT ポートの問題を支援するための十分なポートが提供されます。 |
 | パブリック IP アドレス (上記のプレフィックスを選択した場合はプレフィックス) | ロード バランサー フロントエンドの新しいパブリック IP (またはプレフィックス) を選択または作成します。 |
 
-:::image type="content" source="./media/manage/frontend.png" alt-text="ロード バランサー (パブリック) を作成する。" border="true":::
+:::image type="content" source="./media/manage/frontend.png" alt-text="フロントエンド IP 構成の作成ページ。" border="true":::
 
 ## <a name="backend-pools"></a>バックエンド プール
 
@@ -96,7 +96,7 @@ Azure Load Balancer の IP アドレスです。 クライアントにとって�
 
 Azure Load Balancer のバックエンド プールに、仮想マシンまたは仮想マシン スケール セットを追加できます。 まず、仮想マシンまたは仮想マシン スケール セットを作成します。 次に、それらをポータルのロード バランサーに追加します。
 
-:::image type="content" source="./media/manage/backend.png" alt-text="ロード バランサー (パブリック) を作成する。" border="true":::
+:::image type="content" source="./media/manage/backend.png" alt-text="バックエンド プールの作成ページ。" border="true":::
 
 ## <a name="health-probes"></a>正常性プローブ
 
@@ -112,7 +112,7 @@ Azure Load Balancer のバックエンド プールに、仮想マシンまた�
 | Interval | プローブの試行の間隔を示す秒数。 </br> この間隔によって、正常性プローブがバックエンド インスタンスに接続を試行する頻度が決まります。 </br> 5 を選択した場合、2 番目のプローブ試行は 5 秒後に実行されます。 |
 | 異常のしきい値 | VM が異常であると見なされるまでに、プローブが連続して失敗する回数。</br> 2 を選択した場合、2 回連続して失敗した後は、新しいフローがこのバックエンド インスタンスに設定されなくなります。 |
 
-:::image type="content" source="./media/manage/health-probe.png" alt-text="ロード バランサー (パブリック) を作成する。" border="true":::
+:::image type="content" source="./media/manage/health-probe.png" alt-text="正常性プローブの追加。" border="true":::
 
 ## <a name="load-balancing-rules"></a>負荷分散規則
 
@@ -136,7 +136,7 @@ Azure Load Balancer のバックエンド プールに、仮想マシンまた�
 | フローティング IP | フローティング IP は、**Direct Server Return (DSR)** と呼ばれるものの一部に対する Azure の用語です。 </br> DSR は次の 2 つの部分から構成されます。 <br> 1.フロー トポロジ </br> 2.プラットフォーム レベルの IP アドレス マッピング スキーム。 </br></br> Azure Load Balancer は、フローティング IP が有効かどうかにかかわらず、常に DSR フロー トポロジで動作します。 </br> この動作は、フローの送信部分は常に起点に直接フローするように正しく書き換えられることを意味します。 </br> フローティング IP がない場合、従来の負荷分散 IP アドレス マッピング スキームである VM インスタンスの IP が Azure によって公開されます。 </br> フローティング IP を有効にすると、IP アドレス マッピングがロード バランサーのフロントエンド IP に変更され、柔軟性が向上します。 </br> 詳細については、「[Azure Load Balancer の複数のフロントエンド](load-balancer-multivip-overview.md)」を参照してください。|
 | 暗黙的なアウトバウンド規則の作成 | このため、 **[いいえ]** を選択します。 </br> 既定値: **disableOutboundSnat = false**  </br> この場合、送信は同じフロントエンド IP を介して行われます。 </br></br> **disableOutboundSnat = true** </br>この場合、送信にはアウトバウンド規則が必要です。 |
 
-:::image type="content" source="./media/manage/load-balancing-rule.png" alt-text="ロード バランサー (パブリック) を作成する。" border="true":::
+:::image type="content" source="./media/manage/load-balancing-rule.png" alt-text="負荷分散規則の追加。" border="true":::
 
 ## <a name="inbound-nat-rules"></a>受信 NAT のルール
 
@@ -163,7 +163,7 @@ Azure Load Balancer のバックエンド プールに、仮想マシンまた�
 | ターゲット仮想マシン | この規則を関連付けるバックエンド プールの仮想マシン部分。 |
 | ポートのマッピング | この設定は、既定値のままにすることも、アプリケーションの設定に基づいてカスタマイズすることもできます。 |
 
-:::image type="content" source="./media/manage/inbound-nat-rule.png" alt-text="ロード バランサー (パブリック) を作成する。" border="true":::
+:::image type="content" source="./media/manage/inbound-nat-rule.png" alt-text="インバウンド NAT 規則の追加。" border="true":::
 
 ## <a name="outbound-rules"></a>アウトバウンド規則
 
@@ -193,7 +193,7 @@ Azure Load Balancer のバックエンド プールに、仮想マシンまた�
 | 選択基準 | **[インスタンスごとのポート]** を選択します |
 | インスタンスあたりのポート数 | 「**10,000**」と入力します。 |
 
-:::image type="content" source="./media/manage/outbound-rule.png" alt-text="ロード バランサー (パブリック) を作成する。" border="true":::
+:::image type="content" source="./media/manage/outbound-rule.png" alt-text="インバウンド アウトバウンド規則の追加。" border="true":::
 
 ## <a name="next-steps"></a>次の手順
 

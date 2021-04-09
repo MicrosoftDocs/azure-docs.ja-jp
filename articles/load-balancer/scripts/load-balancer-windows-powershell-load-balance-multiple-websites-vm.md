@@ -11,10 +11,10 @@ ms.date: 04/20/2018
 ms.author: allensu
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 3a260887b169c8feecd304996ea57d1aec46aedc
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94696559"
 ---
 # <a name="azure-powershell-script-example-load-balance-multiple-websites"></a>Azure PowerShell スクリプトの例: 複数の Web サイトを負荷分散する
@@ -43,7 +43,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想ネットワーク、ロード バランサー、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) | 高可用性を実現する Azure 可用性セットを作成します。 |

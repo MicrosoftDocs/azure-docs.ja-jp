@@ -3,15 +3,16 @@ title: 制約付き vCPU サイズ
 description: 制約付き vCPU 数に対応する VM サイズを示します。
 author: mimckitt
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 03/09/2018
 ms.author: mimckitt
-ms.openlocfilehash: 530ae08dabe54ed279a4055e52109aad0ef4f842
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 7faeec8494a908b9aab00be9b63904354b5e0994
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426155"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102557082"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>制約付き vCPU 対応の VM サイズ
 

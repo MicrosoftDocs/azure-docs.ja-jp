@@ -11,10 +11,10 @@ ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 02/08/2021
 ms.openlocfilehash: 7d5f40be895aea26a234d9ae622aa5bf22528231
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99981444"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Azure SQL Managed Instance のパブリック エンドポイントを構成する

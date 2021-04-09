@@ -11,16 +11,20 @@ ms.custom:
 - seo-python-october2019
 - devx-track-python
 ms.date: 11/05/2019
-ms.openlocfilehash: 79add54478e9cd52ffd3041d5f85bf588929b44f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 048c31bedb56bdb66dc3b80d12c3014652e34625
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008873"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121152"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-python"></a>クイックスタート: Python で Azure Cache for Redis を使用する
 
 この記事では、Azure 内の任意のアプリケーションからアクセスできるセキュリティで保護された専用キャッシュにアクセスするために、Azure Cache for Redis を Python アプリに組み込みます。
+
+## <a name="skip-to-the-code-on-github"></a>GitHub のコードにスキップする
+
+この記事をスキップしてすぐにコードをご覧になりたい方は、GitHub にある [Python のクイックスタート](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/python)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

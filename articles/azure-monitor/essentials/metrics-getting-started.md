@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
-ms.openlocfilehash: e3d8d6529eb943566118cc67eab549cb32891cd8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fee71f9ebfc69c19adc026fce5cd78b6a8b5240b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037236"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103490299"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure メトリックス エクスプローラーの概要
 
@@ -63,6 +63,20 @@ Azure Monitor メトリックス エクスプローラーは、グラフの描�
 - **分割** を使用すると、グラフ内でディメンションの値ごとに個別のラインを表示するか、それとも値を集計して 1 本のラインとして表示するかを制御できます。 たとえば、すべてのサーバー インスタンスの応答時間を平均した 1 本のラインを表示することも、サーバーごとに個別のラインを表示することもできます。 個別のラインを表示する場合は、"*サーバー インスタンス*" ディメンションに対して分割を適用する必要があります。
 
 フィルター処理と分割が適用されたグラフの例については、[こちら](../essentials/metric-chart-samples.md)を参照してください。 その記事では、グラフを構成するために使用した手順が示されています。
+
+## <a name="share-your-metric-chart"></a>メトリック グラフを共有する
+現在、メトリック グラフの共有には 2 つの方法があります。 Excel とリンクを使用してメトリック グラフの情報を共有する方法について、以下に示します。
+ 
+### <a name="download-to-excel"></a>Excel へのダウンロード
+[共有] をクリックし、[Excel にダウンロード] を選択します。 ダウンロードはすぐに開始します。
+
+![Excel を使用してメトリック グラフを共有する方法に関連するスクリーンショット](./media/metrics-getting-started/share-excel.png)
+
+### <a name="share-a-link"></a>リンクの共有
+[共有] をクリックし、[リンクのコピー] を選択します。 リンクが正常にコピーされたことを示す通知が表示されます。
+
+![リンクを使用してメトリック グラフを共有する方法に関連するスクリーンショット](./media/metrics-getting-started/share-link.png)
+
 
 ## <a name="advanced-chart-settings"></a>グラフの詳細設定
 

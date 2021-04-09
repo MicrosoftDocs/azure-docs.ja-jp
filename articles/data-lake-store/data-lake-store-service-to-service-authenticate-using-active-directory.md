@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 9dc195f98310e63cbde06885effe86ea3c239249
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91576100"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Active Directory を使用した Azure Data Lake Storage Gen1 に対するサービス間認証
@@ -27,7 +27,7 @@ Azure Data Lake Storage Gen1 では、認証するために Azure Active Directo
 
 どちらのオプションでも、OAuth 2.0 トークンがアプリケーションに提供され、このトークンが Data Lake Storage Gen1 に対するすべての要求にアタッチされます。
 
-この記事では、**サービス間認証用の Azure AD Web アプリケーション**の作成方法について説明します。 エンド ユーザー認証用に Azure AD アプリケーションを構成する方法については、[Data Lake Storage Gen1 に対する Azure Active Directory を使用したエンドユーザーの認証](data-lake-store-end-user-authenticate-using-active-directory.md)に関するページを参照してください。
+この記事では、**サービス間認証用の Azure AD Web アプリケーション** の作成方法について説明します。 エンド ユーザー認証用に Azure AD アプリケーションを構成する方法については、[Data Lake Storage Gen1 に対する Azure Active Directory を使用したエンドユーザーの認証](data-lake-store-end-user-authenticate-using-active-directory.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
@@ -73,7 +73,7 @@ Azure Active Directory を使用して Azure Data Lake Storage Gen1 でのサー
     ![[カスタム アクセス] セクションで新しく追加されたグループが強調表示されている [アクセス] ブレードのスクリーンショット。](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "グループにアクセス許可を割り当てる")
 
 > [!NOTE]
-> Azure Active Directory アプリケーションを特定のフォルダーに制限する予定の場合は、その同じ Azure Active ディレクトリ アプリケーションに、root に対する**実行**アクセス許可も付与する必要があります。これにより、.NET SDK 経由でファイル作成アクセスが可能になります。
+> Azure Active Directory アプリケーションを特定のフォルダーに制限する予定の場合は、その同じ Azure Active ディレクトリ アプリケーションに、root に対する **実行** アクセス許可も付与する必要があります。これにより、.NET SDK 経由でファイル作成アクセスが可能になります。
 
 > [!NOTE]
 > SDK を使用して Data Lake Storage Gen1 アカウントを作成する場合、その作成先となるリソース グループに Azure AD Web アプリケーションをロールとして割り当てる必要があります。

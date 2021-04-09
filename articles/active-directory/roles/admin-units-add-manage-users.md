@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3dc7b37c96d2d82ae42d9bce32a97beab2d91e9
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 7a9d80344a31023d174935e7f785e36102e99eba
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740518"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103011563"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Azure Active Directory で管理単位のユーザーを追加して管理する
 
@@ -70,9 +70,9 @@ Azure Active Directory (Azure AD) では、きめ細かい管理スコープで�
 PowerShell では、次の例の `Add-AzureADAdministrativeUnitMember` コマンドレットを使用して、ユーザーを管理単位に追加します。 ユーザーが追加される管理単位のオブジェクト ID と、追加するユーザーのオブジェクト ID が、引数として使用されます。 必要に応じて、実際の環境用に強調表示されているセクションを変更します。
 
 ```powershell
-$administrativeunitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-$UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
-Add-AzureADMSAdministrativeUnitMember -Id $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
+$adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+$userObj = Get-AzureADUser -Filter "UserPrincipalName eq 'bill@example.onmicrosoft.com'"
+Add-AzureADMSAdministrativeUnitMember -Id $adminUnitObj.ObjectId -RefObjectId $userObj.ObjectId
 ```
 
 
@@ -80,20 +80,25 @@ Add-AzureADMSAdministrativeUnitMember -Id $administrativeunitObj.ObjectId -RefOb
 
 プレースホルダーをテスト情報に置き換え、次のコマンドを実行します。
 
+要求
+
 ```http
-Http request
-POST /administrativeUnits/{Admin Unit id}/members/$ref
-Request body
+POST /administrativeUnits/{admin-unit-id}/members/$ref
+```
+
+Body
+
+```http
 {
-  "@odata.id":"https://graph.microsoft.com/v1.0/users/{id}"
+  "@odata.id":"https://graph.microsoft.com/v1.0/users/{user-id}"
 }
 ```
 
-例:
+例
 
 ```http
 {
-  "@odata.id":"https://graph.microsoft.com/v1.0/users/johndoe@fabidentity.com"
+  "@odata.id":"https://graph.microsoft.com/v1.0/users/john@example.com"
 }
 ```
 
@@ -118,6 +123,7 @@ Azure portal では、次の操作を行うことでユーザーのプロファ�
 ```powershell
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -Id $_.ObjectId | where {$_.RefObjectId -eq $userObjId} }
 ```
+
 > [!NOTE]
 > 既定では、`Get-AzureADAdministrativeUnitMember` では管理単位の 100 人のメンバーのみが返されます。 さらに多くのメンバーを取得するために、`"-All $true"` を追加できます。
 
@@ -126,7 +132,7 @@ Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember 
 プレースホルダーをテスト情報に置き換え、次のコマンドを実行します。
 
 ```http
-https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.AdministrativeUnit
+https://graph.microsoft.com/v1.0/users/{user-id}/memberOf/$/Microsoft.Graph.AdministrativeUnit
 ```
 
 ## <a name="remove-a-single-user-from-an-administrative-unit"></a>管理単位から単一のユーザーを削除する
@@ -152,14 +158,16 @@ https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.Administr
 次のコマンドを実行します。
 
 ```powershell
-Remove-AzureADMSAdministrativeUnitMember -Id $auId -MemberId $memberUserObjId
+Remove-AzureADMSAdministrativeUnitMember -Id $adminUnitId -MemberId $memberUserObjId
 ```
 
 ### <a name="use-microsoft-graph"></a>Microsoft Graph の使用
 
 プレースホルダーをテスト情報に置き換え、次のコマンドを実行します。
 
-`https://graph.microsoft.com/v1.0/directory/administrativeUnits/{adminunit-id}/members/{user-id}/$ref`
+```http
+https://graph.microsoft.com/v1.0/directory/administrativeUnits/{admin-unit-id}/members/{user-id}/$ref
+```
 
 ## <a name="remove-multiple-users-as-a-bulk-operation"></a>一括操作としてユーザーを削除する
 

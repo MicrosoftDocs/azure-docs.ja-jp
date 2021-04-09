@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
 ms.openlocfilehash: 8ef2dadfc0099822d68a5b1cfb2cc35759e1a866
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92457667"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askspoke"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と askSpoke の統合
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* askSpoke では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされています
-* askSpoke では、 **Just-In-Time** ユーザー プロビジョニングがサポートされています
+* askSpoke では、**SP Initiated SSO と IDP Initiated SSO** がサポートされています
+* askSpoke では、**Just-In-Time** ユーザー プロビジョニングがサポートされています
 * askSpoke を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 > [!NOTE]
@@ -54,7 +54,7 @@ Azure AD に askSpoke を統合するには、ギャラリーからご自分の�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **askSpoke** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**askSpoke**」と入力します。
 1. 結果のパネルから **[askSpoke]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-askspoke"></a>askSpoke の Azure AD SSO の構成とテスト
@@ -158,7 +158,7 @@ askSpoke で Azure AD SSO を構成してテストするには、次の構成要
 
     1. **[シングル サインオン URL]** テキストボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    1. **[発行者]** テキストボックスに、Azure portal からコピーした、 **Azure AD ID** の値を貼り付けます。
+    1. **[発行者]** テキストボックスに、Azure portal からコピーした、**Azure AD ID** の値を貼り付けます。
 
     1. Azure portal からダウンロードした **証明書 (Base64)** ファイルをメモ帳で開き、証明書ファイルの内容をコピーして **[公開証明書]** テキストボックスに貼り付けます。
 

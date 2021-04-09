@@ -2,17 +2,19 @@
 title: Azure で特殊化された VHD から Windows VM を作成する
 description: Resource Manager デプロイ モデルを使用して、特殊化されたマネージド ディスクを OS ディスクとして接続して新しい Windows VM を作成します。
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: imaging
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 577b8527d95a6410deca8002cddfaae31be1fc97
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 642a28d5eea6a89de31247ed715c0b352b9ff7d1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197491"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102552220"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>PowerShell を使用して特殊化されたディスクから Windows VM を作成する
 

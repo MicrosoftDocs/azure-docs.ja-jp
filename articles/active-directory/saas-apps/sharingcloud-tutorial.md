@@ -1,22 +1,22 @@
 ---
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と SharingCloud の統合 | Microsoft Docs
-description: Azure Active Directory と SharingCloud の間でシングル サインオンを構成する方法について説明します。
+description: Azure Active Directory と Instant Suite の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
-ms.reviewer: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/09/2021
+ms.date: 03/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 09db59a00d1eec01356f2b24204cef1bd9086968
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f663a81a86aae2fe11611aa1d6ab19f89ebcf6d1
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650568"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950044"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharingcloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SharingCloud の統合
 
@@ -31,7 +31,8 @@ ms.locfileid: "101650568"
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* SharingCloud でのシングル サインオン (SSO) が有効なサブスクリプション。
+* シングル サインオン (SSO) が有効な Sapient サブスクリプション。
+
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -75,34 +76,31 @@ SharingCloud に対して Azure AD SSO を構成してテストするには、�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[識別子]** ボックスに、`https://<CustomerName>.sharingcloud.net/adfs/<CustomerName>/saml/federation.xml` の形式で URL を入力します。
+    SharingCloud から提供された XML ファイルを含むメタデータ ファイルをアップロードします。 このファイルを取得するには、[SharingCloud クライアント サポート チーム](mailto:support@sharingcloud.com)に連絡してください。
 
-    b. **[応答 URL]** ボックスに、`https://<CustomerName>.sharingcloud.net/social/complete/saml/` のパターンを使用して URL を入力します
+    ![**[メタデータ ファイルをアップロードする]** リンクが強調表示された [基本的な SAML 構成] ユーザー インターフェイスのスクリーンショット。](common/upload-metadata.png)
+    
+    提供されたメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
-1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
-
-    **[サインオン URL]** ボックスに、`https://<CustomerName>.sharingcloud.net/accounts/login/` という形式で URL を入力します。
-
-    > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[SharingCloud クライアント サポート チーム](mailto:support@sharingcloud.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    ![ファイルの選択アイコンと **[アップロード]** ボタンが強調表示された、提供されたメタデータ ファイルのユーザー インターフェイスのスクリーンショット。](common/browse-upload-metadata.png)
 
 1. SharingCloud アプリケーションでは、特定の形式の SAML アサーションを受け取るため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
-    ![image](common/default-attributes.png)
+    ![編集アイコンが強調表示された [ユーザー属性] ユーザー インターフェイスのスクリーンショット。](common/edit_attribute.png)
 
 1. その他に、SharingCloud アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
-    
-    | 名前 |  ソース属性|
-    | --------------- | --------- |
-    | urn:sharingcloud:sso:email | User.mail |
+
+    | 名前 | ソース属性|
+    | ---------------| --------- |
     | urn:sharingcloud:sso:firstname | User.givenname |
     | urn:sharingcloud:sso:lastname | User.surname |
+    | urn:sharingcloud:sso:email | User.mail |
 
-1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションに表示されたオプションの **[コピー]** アイコンをクリックし、要件に従って **フェデレーション メタデータ URL** をコピーします。
 
-    ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
+    ![コピーするメタデータ URL](common/copy_metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -130,7 +128,7 @@ SharingCloud に対して Azure AD SSO を構成してテストするには、�
 
 ## <a name="configure-sharingcloud-sso"></a>SharingCloud の SSO の構成
 
-**SharingCloud** 側にシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [SharingCloud サポート チーム](mailto:support@sharingcloud.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**SharingCloud** 側でシングル サインオンを構成するには、Azure portal からコピーした **フェデレーション メタデータ URL** を [SharingCloud サポート チーム](mailto:support@sharingcloud.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-sharingcloud-test-user"></a>SharingCloud テスト ユーザーの作成
 

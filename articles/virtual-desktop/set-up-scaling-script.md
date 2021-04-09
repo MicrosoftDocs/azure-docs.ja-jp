@@ -3,21 +3,21 @@ title: Azure Automation によるセッション ホストのスケーリング 
 description: Azure Automation を使用して Windows Virtual Desktop のセッション ホストを自動的にスケーリングする方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 03/09/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 12a15ab1a4c7369c448e9f65862121b03ca05bba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f60341ea51f1cf4e856b1b4598887da3dc37ebb2
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078556"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102613121"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Azure Automation を使用してセッション ホストをスケーリングする
 
 仮想マシン (VM) をスケーリングすると、Windows Virtual Desktop の総デプロイ コストを削減できます。 これは、ピーク時以外の使用時間帯にセッション ホスト VM をシャットダウンして割り当て解除し、ピーク時間帯に再びオンにして再割り当てすることを意味します。
 
-この記事では、Azure Automation アカウントで構築されたスケーリング ツールと、Windows Virtual Desktop 環境でセッション ホスト VM を自動的にスケーリングする Azure Logic Apps について説明します。 スケーリング ツールの使用方法を確認するには、「[前提条件](#prerequisites)」に進んでください。
+この記事では、Azure Automation アカウントで構築されたスケーリング ツールと、Windows Virtual Desktop 環境でセッション ホスト VM を自動的にスケーリングする Azure Logic Appsについて説明します。 スケーリング ツールの使用方法を確認するには、「[前提条件](#prerequisites)」に進んでください。
 
 ## <a name="how-the-scaling-tool-works"></a>スケーリング ツールのしくみ
 
@@ -29,7 +29,7 @@ ms.locfileid: "89078556"
 - CPU コアあたりのセッション数に基づいて VM をスケールアウトします。
 - ピーク時以外の時間帯に VM をスケールインして、最低限の数のセッション ホスト VM だけを実行状態のままにします。
 
-スケーリング ツールは、Azure Automation アカウント、PowerShell Runbook、Webhook、Azure Logic Apps を組み合わせて使用することで機能します。 ツールが実行されると、Azure Logic Apps によって Webhook が呼び出されて Azure Automation Runbook が起動します。 その後、Runbook によってジョブが作成されます。
+スケーリング ツールは、Azure Automation アカウント、PowerShell Runbook、Webhook、Azure Logic Appsを組み合わせて使用することで機能します。 ツールが実行されると、Azure Logic Appsによって Webhook が呼び出されて Azure Automation Runbook が起動します。 その後、Runbook によってジョブが作成されます。
 
 ピーク時の使用時間帯は、このジョブによって現在のセッション数と現在実行中のセッション ホストの VM 容量が、ホスト プールごとにチェックされます。 この情報を使用して、実行中のセッション ホスト VM が既存のセッションをサポートできるかどうかが、**CreateOrUpdateAzLogicApp.ps1** ファイルに定義された *SessionThresholdPerCPU* パラメーターに基づいて計算されます。 セッション ホスト VM が既存のセッションをサポートできない場合は、このジョブによってホスト プール内の追加のセッション ホスト VM が起動されます。
 
@@ -50,8 +50,11 @@ ms.locfileid: "89078556"
 ただし、このツールには次の制限事項もあります。
 
 - このソリューションは、プールされたマルチセッションのセッション ホスト VM にのみ適用されます。
-- このソリューションでは任意のリージョンの VM が管理されますが、Azure Automation アカウントおよび Azure Logic Apps と同じサブスクリプションでのみ使用できます。
+- このソリューションでは任意のリージョンの VM が管理されますが、Azure Automation アカウントおよび Azure Logic Appsと同じサブスクリプションでのみ使用できます。
 - Runbook 内のジョブの最長実行時間は、3 時間です。 ホスト プール内の VM の起動または停止に時間がかかる場合、ジョブは失敗します。 詳細については、「[共有リソース](../automation/automation-runbook-execution.md#fair-share)」を参照してください。
+- スケーリング アルゴリズムが適切に機能するためには、少なくとも 1 つの VM またはセッション ホストをオンにする必要があります。
+- スケーリング ツールでは、CPU またはメモリに基づくスケーリングはサポートされていません。
+- スケーリングは、ホスト プール内の既存のホストでのみ機能します。 スケーリング ツールでは、新しいセッション ホストのスケーリングはサポートされていません。
 
 >[!NOTE]
 >スケーリング ツールにより、現在スケーリングされているホスト プールの負荷分散モードが制御されます。 このツールでは、ピーク時とピーク時以外の両方に対して、幅優先の負荷分散モードが使用されます。
@@ -115,9 +118,9 @@ ms.locfileid: "89078556"
     .\CreateOrUpdateAzAutoAccount.ps1 @Params
     ```
 
-5. コマンドレットの出力には、Webhook の URI が含まれています。 Azure Logic Apps の実行スケジュールを設定するときにパラメーターとして使用するため、必ずこの URI を記録しておいてください。
+5. コマンドレットの出力には、Webhook の URI が含まれています。 Azure Logic Appsの実行スケジュールを設定するときにパラメーターとして使用するため、必ずこの URI を記録しておいてください。
 
-6. Log Analytics に **WorkspaceName** パラメーターを指定した場合、コマンドレットの出力には、Log Analytics ワークスペース ID とその主キーも含まれます。 後で Azure Logic Apps の実行スケジュールを設定するときにパラメーターとしてまた使用する必要があるため、必ずこの URI を覚えておいてください。
+6. Log Analytics に **WorkspaceName** パラメーターを指定した場合、コマンドレットの出力には、Log Analytics ワークスペース ID とその主キーも含まれます。 後で Azure Logic Appsの実行スケジュールを設定するときにパラメーターとしてまた使用する必要があるため、必ずこの URI を覚えておいてください。
 
 7. Azure Automation アカウントの設定が完了したら、Azure サブスクリプションにサインインし、次の図に示すように、指定のリソースグループに Azure Automation アカウントと関連する Runbook が表示されていることを確認します。
 
@@ -230,12 +233,12 @@ Azure Automation アカウントで実行アカウントを作成するには、
     .\CreateOrUpdateAzLogicApp.ps1 @Params
     ```
 
-    スクリプトを実行すると、次の図に示すように、Azure Logic Apps がリソース グループに表示されます。
+    スクリプトを実行すると、次の図に示すように、Azure Logic Appsがリソース グループに表示されます。
 
     >[!div class="mx-imgBorder"]
-    >![Azure Logic Apps の例を表す概要ページの画像。](media/logic-app.png)
+    >![Azure Logic Appsの例を表す概要ページの画像。](media/logic-app.png)
 
-    繰り返し間隔やタイム ゾーンを変更するなど、実行スケジュールに変更を加えるには、Azure Logic Apps の自動スケーリングのスケジューラにアクセスし、 **[編集]** を選択して Azure Logic Apps デザイナーに移動します。
+    繰り返し間隔やタイム ゾーンを変更するなど、実行スケジュールに変更を加えるには、Azure Logic Appsの自動スケーリングのスケジューラにアクセスし、 **[編集]** を選択して Azure Logic Apps デザイナーに移動します。
 
     >[!div class="mx-imgBorder"]
     >![Azure Logic Apps デザイナーの画像。 ユーザーが繰り返し時間と Webhook ファイルを編集するための [繰り返し] および [Webhook] メニューが開いています。](media/logic-apps-designer.png)

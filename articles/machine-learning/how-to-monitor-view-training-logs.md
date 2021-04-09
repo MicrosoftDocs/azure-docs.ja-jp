@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ea96e1056e6157cfddbdc2f0b6451ed55a74d1de
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 47531da9c1e508281a57074df7aa10ffffe78810
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97756060"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102518740"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML 実行のログとメトリックを監視および表示する
 
@@ -39,7 +39,7 @@ Azure Machine Learning の実行を監視し、そのログを表示する方法
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>Jupyter Notebook ウィジェットを使用して実行を監視する
 
-**ScriptRunConfig** メソッドを使用して実行を送信するときに、[Jupyter ウィジェット](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)を使用して実行の進行状況を確認できます。 実行の送信と同様に、このウィジェットも非同期です。また、ジョブが完了するまで 10 秒から 15 秒ごとにライブ更新を提供します。
+**ScriptRunConfig** メソッドを使用して実行を送信するときに、[Jupyter ウィジェット](/python/api/azureml-widgets/azureml.widgets)を使用して実行の進行状況を確認できます。 実行の送信と同様に、このウィジェットも非同期です。また、ジョブが完了するまで 10 秒から 15 秒ごとにライブ更新を提供します。
 
 実行が完了するのを待っている間、Jupyter ウィジェットを表示します。
     
@@ -78,9 +78,23 @@ RunDetails(run).show()
 
 <a id="queryrunmetrics"></a>
 
-## <a name="query-run-metrics"></a>実行のメトリックのクエリを行う
+## <a name="view-run-metrics"></a>実行メトリックを表示する
 
-```run.get_metrics()``` を使用して、トレーニング済みモデルのメトリックを表示できます。 たとえば、上記の例と共にこれを使用すると、平均二乗誤差 (mse) の値が最小のモデルを探して最適なモデルを決定できます。
+## <a name="via-the-sdk"></a>SDK を使用
+```run.get_metrics()``` を使用して、トレーニング済みモデルのメトリックを表示できます。 次の例を見てください。 
+
+```python
+from azureml.core import Run
+run = Run.get_context()
+run.log('metric-name', metric_value)
+
+metrics = run.get_metrics()
+# metrics is of type Dict[str, List[float]] mapping mertic names
+# to a list of the values for that metric in the given run.
+
+metrics.get('metric-name')
+# list of metrics in the order they were recorded
+```
 
 <a name="view-the-experiment-in-the-web-portal"></a>
 
@@ -95,18 +109,6 @@ RunDetails(run).show()
 また、実行一覧テーブルを編集して、複数の実行を選択し、特定の実行に関してログに記録された直近の値や、最小値、最大値を表示することができます。 グラフをカスタマイズして、ログに記録されたメトリック値と集計を複数の実行にわたって比較します。 
 
 ![Azure Machine Learning Studio での実行の詳細](media/how-to-track-experiments/experimentation-tab.gif)
-
-### <a name="format-charts"></a>グラフを書式設定する 
-
-ログ API で次のメソッドを使用して、メトリックの視覚化に影響を与えます。
-
-|ログに記録される値|コード例| ポータルでの形式|
-|----|----|----|
-|数値の配列をログに記録します| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|単一変数の折れ線グラフ|
-|(for ループ内からのように) 繰り返し使用される、同じメトリック名を持つ単一数値をログに記録します| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| 単一変数の折れ線グラフ|
-|2 つの数値列が繰り返し含まれる 1 行をログに記録します|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|変数が 2 つの折れ線グラフ|
-|2 つの数値列を含むテーブルをログに記録します|`run.log_table(name='Sine Wave', value=sines)`|変数が 2 つの折れ線グラフ|
-
 
 ### <a name="view-log-files-for-a-run"></a>実行のログ ファイルを表示する 
 

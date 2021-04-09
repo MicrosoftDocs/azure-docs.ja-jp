@@ -11,10 +11,10 @@ ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3165b72ae5612aaeaa66a95299db97182fef2232
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101677580"
 ---
 # <a name="connect-to-synapse-sql"></a>Synapse SQL に接続する

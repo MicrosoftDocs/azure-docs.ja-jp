@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d215c2e200308664f24daa28a0054c8f1bcfc09c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91319879"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Azure AD Connect の Sync Service Manager でコネクタを使用する
@@ -69,7 +69,7 @@ ms.locfileid: "91319879"
 ![[Scope]\(スコープ\) ドロップダウン メニューを示すスクリーンショット。](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
 たとえば、サブツリー検索を行うと、1 つの OU のすべてのオブジェクトが取得されます。  
 ![[Sub-Tree]\(サブツリー\) 検索の例を示すスクリーンショット。](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
-このグリッドからオブジェクトを選択し、 **[プロパティ]** を選択して、ソース コネクタ スペースからメタバースを経てターゲット コネクタ スペースまで[フォロー](tshoot-connect-object-not-syncing.md)できます。
+このグリッドからオブジェクトを選択し、 **[プロパティ]** を選択して、ソース コネクタ スペースからメタバースを経てターゲット コネクタ スペースまで [フォロー](tshoot-connect-object-not-syncing.md)できます。
 
 ### <a name="changing-the-ad-ds-account-password"></a>AD DS アカウント パスワードの変更
 アカウントのパスワードを変更すると、Synchronization Service でオンプレミスの AD に変更をインポートまたはエクスポートできなくなります。   次のように表示されます。

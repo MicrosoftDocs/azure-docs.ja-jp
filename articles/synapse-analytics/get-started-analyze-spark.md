@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 7410fcbc890780281763a91f33525562e9de1853
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 6b3c1ac2ea3625a768e16a3465230a5386c98ddc
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182487"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423715"
 ---
 # <a name="analyze-with-apache-spark"></a>Apache Spark を使用して分析を行う
 
@@ -38,7 +38,7 @@ ms.locfileid: "102182487"
     display(df.limit(10))
     ```
 1. ノートブックの **[アタッチ先]** メニューで、前に作成した **Spark1** サーバーレス Spark プールを選択します。
-1. セルで **[実行]** を選択します。
+1. セルで **[実行]** を選択します。 このセルを実行するために必要であれば、Synapse によって新しい Spark セッションが開始されます。 新しい Spark セッションが必要な場合、最初は作成に約 2 秒かかります。 
 1. データフレームのスキーマを表示するだけの場合は、次のコードを使用してセルを実行します。
     ```
 

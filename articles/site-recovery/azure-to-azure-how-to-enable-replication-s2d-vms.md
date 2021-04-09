@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
 ms.openlocfilehash: f438fadb73f7e3bd25cd7ab9aef0bc46285e30e2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92424825"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>記憶域スペース ダイレクトを実行している Azure VM を別のリージョンにレプリケートする

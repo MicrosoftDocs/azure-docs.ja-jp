@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/02/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: c8221a15ddd92276c105f1e441c8da722655d576
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 914fe0bbf04fa8835cbe96e5bbb83604f0d07bc2
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444738"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103622170"
 ---
 Computer Vision REST API を使用して、次のことを行います。
 
@@ -40,17 +40,21 @@ Computer Vision REST API を使用して、次のことを行います。
 さまざまな視覚的特徴について画像を分析するには、次の手順を実行します。
 
 1. テキスト エディターに次のコマンドをコピーします。
+1. Azure Portal にアクセスします。 「**前提条件**」セクションで作成した Computer Vision リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 サブスクリプション キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。
 1. 必要に応じて、コマンドに次の変更を加えます。
-    1. `<subscriptionKey>` 値を、サブスクリプション キーに置き換えます。
-    1. 要求 URL (`westcentralus`) の最初の部分を独自のエンドポイント URL 内のテキストに置き換えます。
+    1. `PASTE_YOUR_COMPUTER_VISION_SUBSCRIPTION_KEY_HERE` 値を、サブスクリプション キーに置き換えます。
+    1. 要求 URL (`PASTE_YOUR_COMPUTER_VISION_ENDPOINT_HERE`) の最初の部分を、独自の Computer Vision エンドポイントに置き換えます。 Computer Vision エンドポイントの形式は `https://<your_computer_vision_resource_name>.cognitiveservices.azure.com/` です。
         [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
     1. 必要に応じて、要求本文の画像 URL (`http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\`) を、分析する別の画像の URL に変更します。
 1. コマンド プロンプト ウィンドウを開きます。
 1. テキスト エディターからコマンド プロンプト ウィンドウにコマンドを貼り付けて、コマンドを実行します。
 
 ```bash
-curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v3.1/analyze?visualFeatures=Categories,Description&details=Landmarks" -d "{\"url\":\"http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\"}"
+curl -H "Ocp-Apim-Subscription-Key: PASTE_YOUR_COMPUTER_VISION_SUBSCRIPTION_KEY_HERE" -H "Content-Type: application/json" "PASTE_YOUR_COMPUTER_VISION_ENDPOINT_HERE/vision/v3.1/analyze?visualFeatures=Categories,Description&details=Landmarks" -d "{\"url\":\"http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\"}"
 ```
+
+> [!IMPORTANT]
+> 終わったらコードからサブスクリプション キーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 たとえば、[Azure Key Vault](../../../key-vault/general/overview.md) が考えられます。
 
 ### <a name="examine-the-response"></a>結果の確認
 

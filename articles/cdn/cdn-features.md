@@ -10,10 +10,10 @@ ms.date: 11/15/2019
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 3a794d8915c820abecd530911f05ac649e5e538c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100379915"
 ---
 # <a name="what-are-the-comparisons-between-azure-cdn-product-features"></a>Azure CDN 製品の機能比較

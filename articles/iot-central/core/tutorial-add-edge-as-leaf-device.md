@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - device-developer
 - iot-edge
-ms.openlocfilehash: 9b4bb462c94ab5a59dbd9d8fdd4cf619e311df56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 373d144b4df818a075f0088e9cbf31cb5027e747
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987024"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724882"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Edge デバイスを Azure IoT Central アプリケーションに追加する
 
@@ -61,6 +61,9 @@ IoT Edge マニフェストからデバイス テンプレートを作成する�
 
 :::image type="content" source="media/tutorial-add-edge-as-leaf-device/imported-manifest.png" alt-text="IoT Edge マニフェストから作成されたデバイス テンプレート":::
 
+> [!TIP]
+> このデプロイ マニフェストは、接続のために資格情報を必要としない Azure Container Registry リポジトリからモジュール イメージをプルします。 プライベート リポジトリのモジュール イメージを使用する場合は、マニフェストでコンテナー レジストリの資格情報を設定します。
+
 ### <a name="add-telemetry-to-manifest"></a>マニフェストにテレメトリを追加する
 
 IoT Edge マニフェストでは、モジュールが送信するテレメトリが定義されていません。 IoT Central で、デバイス テンプレートにテレメトリの定義を追加します。 **SimulatedTemperatureSensor** モジュールは、次の JSON のようなテレメトリ メッセージを送信します。
@@ -99,7 +102,7 @@ IoT Edge マニフェストでは、モジュールが送信するテレメト�
 
 これで、 **[管理]** インターフェイスにテレメトリの種類として **machine**、**ambient**、および **timeCreated** が表示されるようになりました。
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="IoT Edge マニフェストから作成されたデバイス テンプレート":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="テレメトリの種類 machine と ambient が表示されているインターフェイス":::
 
 ### <a name="add-views-to-template"></a>ビューをテンプレートに追加する
 
@@ -115,7 +118,7 @@ IoT Edge マニフェストでは、モジュールが送信するテレメト�
 
 1. **[保存]** を選択して、**View IoT Edge device telemetry** ビューを保存します。
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="IoT Edge マニフェストから作成されたデバイス テンプレート":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="テレメトリ ビューが表示されたデバイス テンプレート":::
 
 ### <a name="publish-the-template"></a>テンプレートを発行する
 
@@ -123,7 +126,7 @@ IoT Edge マニフェストでは、モジュールが送信するテレメト�
 
 **[Environmental Sensor Edge Device]** テンプレートに移動し、 **[発行]** を選択します。 **[このデバイス テンプレートのアプリケーションへの発行]** パネルで **[発行]** を選択し、テンプレートを発行します。
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="IoT Edge マニフェストから作成されたデバイス テンプレート":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="デバイス テンプレートを発行する":::
 
 ## <a name="add-iot-edge-device"></a>IoT Edge デバイスを追加する
 
@@ -135,7 +138,7 @@ IoT Edge マニフェストでは、モジュールが送信するテレメト�
 
 これで、状態が **[登録済み]** の新しいデバイスが作成されました。
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="IoT Edge マニフェストから作成されたデバイス テンプレート":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="新しい登録済みのデバイス":::
 
 ### <a name="get-the-device-credentials"></a>デバイスの資格情報を取得する
 
@@ -165,7 +168,7 @@ IoT Edge マニフェストでは、モジュールが送信するテレメト�
 
 1. 近くのリージョンを選択します。
 
-1. 一意の **DNS ラベル プレフィックス**を追加します (例: *contoso-central-edge*)。
+1. 一意の **DNS ラベル プレフィックス** を追加します (例: *contoso-central-edge*)。
 
 1. 仮想マシンの管理者ユーザー名を選択します。
 
@@ -181,7 +184,7 @@ IoT Edge マニフェストでは、モジュールが送信するテレメト�
 
 1. 選択内容を確認し、 **[作成]** を選択します。
 
-    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="IoT Edge マニフェストから作成されたデバイス テンプレート":::
+    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="IoT Edge VM を作成する":::
 
 デプロイが完了するまでに数分かかります。 デプロイが完了したら、Azure portal で **central-edge-rg** リソース グループに移動します。
 
@@ -233,11 +236,11 @@ DPS を使用して IoT Central アプリケーションに登録、接続する
     > [!TIP]
     > `provisioning:` の前にスペースがないことを確認してください。
 
-1. `{scope_id}` を、前に書き留めておいた **ID スコープ**に置き換えます。
+1. `{scope_id}` を、前に書き留めておいた **ID スコープ** に置き換えます。
 
-1. `{registration_id}` を、前に書き留めておいた**デバイス ID** に置き換えます。
+1. `{registration_id}` を、前に書き留めておいた **デバイス ID** に置き換えます。
 
-1. `{symmetric_key}` を、前に書き留めておいた**主キー**に置き換えます。
+1. `{symmetric_key}` を、前に書き留めておいた **主キー** に置き換えます。
 
 1. 変更内容を保存し (**Ctrl + O** キー)、`nano` エディターを終了します (**Ctrl + X** キー)。
 
@@ -269,15 +272,15 @@ DPS を使用して IoT Central アプリケーションに登録、接続する
 
 シミュレートされた IoT Edge デバイスが VM で実行されるようになりました。 お使いの IoT Central アプリケーションの **[デバイス]** ページでは、デバイスの状態が **[プロビジョニング済み]** になっています。
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="IoT Edge マニフェストから作成されたデバイス テンプレート":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="プロビジョニングされた IoT Edge デバイス":::
 
 デバイスからのテレメトリは、 **[View IoT Edge device telemetry]** ページで確認できます。
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="IoT Edge マニフェストから作成されたデバイス テンプレート":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="デバイス テレメトリ":::
 
 **[モジュール]** ページには、デバイス上の IoT Edge モジュールの状態が表示されます。
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="IoT Edge マニフェストから作成されたデバイス テンプレート":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="デバイスのモジュールの状態":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

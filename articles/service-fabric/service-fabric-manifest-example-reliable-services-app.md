@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: pepogors
 ms.openlocfilehash: f40e54f5260f827f0b18c833d23d1f57b5ebc3a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84701100"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Reliable Services のアプリケーション マニフェストとサービス マニフェストの例
@@ -17,7 +17,7 @@ ASP.NET Core Web フロント エンドとステートフルなバックエン�
 
 次の機能が示されます。
 
-|Manifest|[機能]|
+|Manifest|特徴|
 |---|---|
 |[アプリケーション マニフェスト](#application-manifest)| [リソース ガバナンス](service-fabric-resource-governance.md)、[ローカル管理者アカウントとしてサービスを実行する](service-fabric-application-runas-security.md)、[すべてのサービス コード パッケージに既定のポリシーを適用する](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages)、[ユーザーとグループのプリンシパルを作成する](service-fabric-application-runas-security.md)、サービス インスタンス間でデータ パッケージを共有する、[サービス エンドポイントをオーバーライドする](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
 |FrontEndService サービス マニフェスト| [サービスの起動時にスクリプトを実行する](service-fabric-run-script-at-service-startup.md)、[HTTPS エンドポイントを定義する](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 

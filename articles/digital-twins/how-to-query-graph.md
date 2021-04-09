@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 47883c742d77a88adb662e8dded0723f0e105385
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3fd504ec36abae3f00cd2a7eb4e1f7b639be0cea
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044188"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103462679"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital Twins ツイン グラフに対してクエリを実行する
 
@@ -21,7 +21,7 @@ ms.locfileid: "98044188"
 
 この記事では、デジタル ツインのクエリ言語の構造および共通のクエリ操作を示すサンプル クエリについて冒頭で説明します。 次に、Azure Digital Twins の [Query API](/rest/api/digital-twins/dataplane/query) または [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) を使用して、クエリを作成した後にそのクエリを実行する方法について説明します。
 
-> [!TIP]
+> [!NOTE]
 > 次のサンプル クエリを、API または SDK の呼び出しで実行している場合は、クエリ テキストを 1 行にまとめる必要があります。
 
 ## <a name="show-all-digital-twins"></a>すべてのデジタル ツインを表示する
@@ -36,8 +36,10 @@ ms.locfileid: "98044188"
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty1":::
 
-> [!TIP]
-> デジタル ツインの ID のクエリ実行には、メタデータ フィールド `$dtId` を使用します。
+上記のクエリに示されているように、デジタル ツインの ID は、メタデータ フィールド `$dtId` を使用してクエリが実行されます。
+
+>[!TIP]
+> Cloud Shell を使用して、`$` で始まるメタデータ フィールドでクエリを実行する場合は、バッククォートで `$` をエスケープして、それが変数ではなく、クエリ テキスト内のリテラルとして使用する必要があることを Cloud Shell に通知する必要があります。
 
 **特定のプロパティが定義されているかどうか** に基づいて Twins を取得することもできます。 次は、*Location* プロパティが定義されているツインを取得するクエリです。
 
@@ -50,6 +52,10 @@ ms.locfileid: "98044188"
 **プロパティの型** に基づいてツインを取得することもできます。 次は、*Temperature* プロパティが数字であるツインを取得するクエリです。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty3":::
+
+>[!TIP]
+> プロパティの型が `Map` の場合は、次のように、クエリでマップのキーと値を直接使用できます。
+> :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty4":::
 
 ## <a name="query-by-model"></a>モデルでクエリを実行する
 
@@ -216,11 +222,16 @@ Azure Digital Twins ストア言語を使用すると、`JOIN` 句内のリレ�
 
 API を直接呼び出すか、Azure Digital Twins で使用可能な [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) のいずれかを使用することができます。
 
-次のコード スニペットは、クライアント アプリからの [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 呼び出しを示しています。
+次のコード スニペットは、クライアント アプリからの [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 呼び出しを示しています。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="RunQuery":::
 
-この呼び出しからは、[BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) オブジェクトの形式でクエリ結果が返されます。
+この呼び出しで使用されるクエリでは、デジタル ツインの一覧が返されます。これは、上記の例で [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin) オブジェクトによって表されています。 各クエリのデータの戻り値の型は、`SELECT` ステートメントで指定する項目によって異なります。
+* `SELECT * FROM ...` で始まるクエリでは、デジタル ツイン (`BasicDigitalTwin` オブジェクトとして、または独自に作成した他のカスタム デジタル ツインの種類としてシリアル化可能) の一覧が返されます。
+* `SELECT <A>, <B>, <C> FROM ...` の形式で始まるクエリでは、キー `<A>`、`<B>`、`<C>` を含むディクショナリが返されます。
+* カスタム データを返すように、他の形式の `SELECT` ステートメントを作成できます。 独自のクラスを作成して、細かくカスタマイズされた結果セットが処理されるようにすることを検討してください。 
+
+### <a name="query-with-paging"></a>ページングを使用したクエリ
 
 クエリ呼び出しはページングをサポートしています。 エラー処理とページングを含むクエリ結果の種類として `BasicDigitalTwin` を使用した完全な例を以下に示します。
 

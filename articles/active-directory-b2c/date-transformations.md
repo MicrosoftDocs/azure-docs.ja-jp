@@ -11,10 +11,10 @@ ms.date: 02/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eaf58b964517162ee7f7eb925e1e64830eedc087
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85202553"
 ---
 # <a name="date-claims-transformations"></a>日付要求変換
@@ -35,7 +35,7 @@ ms.locfileid: "85202553"
 | InputParameter | AssertIfRightOperandIsNotPresent | boolean | 右オペランドがない場合にこのアサーションを渡すかどうかを指定します。 |
 | InputParameter | TreatAsEqualIfWithinMillseconds | INT | 2 つの日時の間で時刻が等しいと見なすことができるミリ秒数を指定します (たとえば、時刻の誤差を説明)。 |
 
-**AssertDateTimeIsGreaterThan** 要求変換は、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md)から常に実行する必要があります。 **DateTimeGreaterThan** セルフアサート技術プロファイル メタデータでは、技術プロファイルによってユーザーに表示されるエラー メッセージを制御します。 エラー メッセージは、[ローカライズ](localization-string-ids.md#claims-transformations-error-messages)できます。
+**AssertDateTimeIsGreaterThan** 要求変換は、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される [検証技術プロファイル](validation-technical-profile.md)から常に実行する必要があります。 **DateTimeGreaterThan** セルフアサート技術プロファイル メタデータでは、技術プロファイルによってユーザーに表示されるエラー メッセージを制御します。 エラー メッセージは、[ローカライズ](localization-string-ids.md#claims-transformations-error-messages)できます。
 
 ![AssertStringClaimsAreEqual の実行](./media/date-transformations/assert-execution.png)
 
@@ -110,9 +110,9 @@ ms.locfileid: "85202553"
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **inputClaim**:2020-15-03
+    - **inputClaim**: 2020-15-03
 - 出力要求:
-    - **outputClaim**:2020-15-03T00:00:00.0000000Z
+    - **outputClaim**: 2020-15-03T00:00:00.0000000Z
 
 ## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim
 
@@ -139,9 +139,9 @@ ms.locfileid: "85202553"
 ### <a name="example"></a>例
 
 - 入力要求:
-  - **inputClaim**:2020-15-03T11:34:22.0000000Z
+  - **inputClaim**: 2020-15-03T11:34:22.0000000Z
 - 出力要求:
-  - **outputClaim**:2020-15-03
+  - **outputClaim**: 2020-15-03
 
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 

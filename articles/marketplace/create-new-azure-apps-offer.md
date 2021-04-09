@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
 ms.openlocfilehash: 3cc5e5114b435965eee4aa096e5898538b0a56e7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94369797"
 ---
 # <a name="how-to-create-an-azure-application-offer-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースで Azure アプリケーション オファーを作成する方法

@@ -12,10 +12,10 @@ ms.author: lazzeri
 ms.reviewer: cgronlun
 ms.date: 05/07/2020
 ms.openlocfilehash: 27b18fdc2dda40f8361483e6ecce28d0ccbd0310
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93308234"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Azure Machine Learning のアルゴリズムの選択方法
@@ -123,7 +123,7 @@ Machine Learning デザイナーでは、機械学習モデルの作成と使用
 
 ![非線形クラス境界](./media/how-to-select-algorithms/nonlinear-class-boundary.png)
 
-**_非線形クラス境界_* _: _線形分類アルゴリズムに従うと精度が低下します。*
+***非線形クラス境界** _: _線形分類アルゴリズムに従うと精度が低下します。*
 
 ![非線形傾向のデータ](./media/how-to-select-algorithms/nonlinear-trend.png)
 

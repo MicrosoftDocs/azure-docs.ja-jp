@@ -11,10 +11,10 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2ff43408cfa6d95dbd5a235a950269c47d57a416
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97654032"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
@@ -42,18 +42,18 @@ ms.locfileid: "97654032"
 
 **ClaimType** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 要求の種類に使用される識別子です。 その他の要素は、ポリシーでこの識別子を使用することができます。 |
 
 **ClaimType** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | Description |
+| 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | さまざまな画面上のユーザーに表示されるタイトル。 値を[ローカライズ](localization.md)することができます。 |
 | DataType | 1:1 | 要求の種類です。 |
 | DefaultPartnerClaimTypes | 0:1 | パートナーの既定要求は、指定されたプロトコルに使用する種類です。 **InputClaim** または **OutputClaim** 要素で指定されている **PartnerClaimType** 内の値を上書きすることができます。 この要素を使用すると、プロトコルの既定の名前を指定できます。  |
-| Mask | 0:1 | 要求を表示するときに適用できる、文字をマスクするのに使用されるオプショナルな文字列。 たとえば、電話番号 324-232-4343 をXXX-XXX-4343 としてマスクすることができます。 |
+| マスク | 0:1 | 要求を表示するときに適用できる、文字をマスクするのに使用されるオプショナルな文字列。 たとえば、電話番号 324-232-4343 をXXX-XXX-4343 としてマスクすることができます。 |
 | UserHelpText | 0:1 | 要求の目的を理解するのにユーザーに役立つ種類の説明。 値を[ローカライズ](localization.md)することができます。 |
 | UserInputType | 0:1 | 要求の種類の要求データを手動で入力するときに、ユーザーが利用できるような入力コントロールの種類。 このページの後半で定義されている、ユーザーにより入力された種類を参照してください。 |
 | AdminHelpText | 0:1 | 管理者がその目的を理解するのに役立つ要求の種類の説明。 |
@@ -70,12 +70,12 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput** 要素への�
 | ------- | ----------- |
 |boolean|ブール値 (`true` または `false`) を表します。|
 |date| 特定の時点を表します。通常は日付で表されます。 date の値は ISO 8601 規則に準拠します。|
-|dateTime|特定の時点を表します。通常、日時形式で表されます。 date の値は ISO 8601 規則に準拠します。|
+|dateTime|通常、日付や時刻として表現される瞬間を表します。 date の値は ISO 8601 規則に準拠します。|
 |duration|年、月、日、時、分、および秒単位の時間間隔を表します。 形式は `PnYnMnDTnHnMnS` です。 `P` は正の値を示し、`N` は負の値を示します。 `nY` は、年数の後にリテラル `Y` が付いたものです。 `nMo` は、月数の後にリテラル `Mo` が付いたものです。 `nD` は、日数の後にリテラル `D` が付いたものです。 例: `P21Y` は、21 年を表します。 `P1Y2Mo` は、1 年 2 か月を表します。 `P1Y2Mo5D` は、1 年、2 か月、および 5 日を表します。  `P1Y2M5DT8H5M620S` は、1 年、2 か月、5 日、8 時間、5 分、および 20 秒を表します。  |
 |phoneNumber|電話番号を表します。 |
 |INT| -2,147,483,648 から 2,147,483,647 までの数値を表します|
 |long| -9,223,372,036,854,775,808 から 9,223,372,036,854,775,807 までの数値を表します |
-|string| テキストを一連の UTF-16 コード単位として表します。|
+|string| テキストを一連の UTF-16 コード単位として表現します。|
 |stringCollection|`string` のコレクションを表します。|
 |userIdentity| ユーザー ID を表します。|
 |userIdentityCollection|`userIdentity` のコレクションを表します。|
@@ -90,9 +90,9 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput** 要素への�
 
 **Protocol** 要素には、次の属性が含まれています。
 
-| 属性 | Required | Description |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| 名前 | はい | Azure AD B2C によってサポートされている有効なプロトコルの名前。 次のいずれかの値になります。OAuth1、OAuth2、SAML2、OpenIdConnect。 |
+| 名前 | はい | Azure AD B2C によってサポートされている有効なプロトコルの名前。 指定できる値: OAuth1、OAuth2、SAML2、OpenIdConnect。 |
 | PartnerClaimType | はい | 使用する要求種類の名。 |
 
 次の例で、Identity Experience Framework は SAML2 id プロバイダーまたは証明書利用者アプリケーションと相互作用するときに、 **surname** 要求が`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`にマップされ、OpenIdConnect と OAuth2 とともに、要求は、`family_name`にマップされます。
@@ -121,11 +121,11 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput** 要素への�
 }
 ```
 
-### <a name="mask"></a>Mask
+### <a name="mask"></a>マスク
 
 **マスク** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | `Type` | はい | 要求マスクの種類です。 指定できる値: `Simple` または `Regex`。 `Simple`値は、単純なテキスト マスクが要求の文字列の先頭部分に適用されることを示します。 `Regex`値は、正規表現が全体として、要求の文字列に適用されることを示します。  `Regex`値が指定されている場合、オプショナルな属性も正規表現で定義することが必要となります。 |
 | `Regex` | いいえ | **`Type`** が `Regex` に設定されている場合、使用される正規表現を指定します。
@@ -165,7 +165,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 
 **制限** 要素は、次の属性を含めることがあります。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | MergeBehavior | いいえ | 同じ識別子を持つ親ポリシー内の ClaimType に列挙値をマージするために使用するメソッド。 基本ポリシーで指定された要求を上書きする場合は、この属性を使用します。 指定できる値: `Append`、`Prepend`、または `ReplaceAll`。 `Append`値は、親ポリシーで指定したコレクションの末尾に追加する必要があるデータのコレクション。 `Prepend`値は、親ポリシーで指定したコレクションの前に追加する必要があるデータのコレクション。 `ReplaceAll`値が無視される親ポリシーで指定されたデータのコレクション。 |
 
@@ -173,16 +173,16 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| Enumeration | 1:n | ドロップダウン リストの値など、要求に指定するオプションを選択するためにユーザーのユーザー インターフェイスで使用可能なオプションです。 |
+| 列挙 | 1:n | ドロップダウン リストの値など、要求に指定するオプションを選択するためにユーザーのユーザー インターフェイスで使用可能なオプションです。 |
 | Pattern | 1:1 | 使用できる正規表現。 |
 
-#### <a name="enumeration"></a>Enumeration
+#### <a name="enumeration"></a>列挙
 
 **Enumeration** 要素は、ユーザーが要求についてユーザー インターフェイスで選択可能なオプション (`CheckboxMultiSelect`、`DropdownSingleSelect`、または `RadioSingleSelect` の値など) を定義します。 または、[LocalizedCollections](localization.md#localizedcollections) 要素を使用して、使用可能なオプションを定義してローカライズすることもできます。 要求 **Enumeration** コレクションから項目を検索するには、[GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection) 要求変換を使用します。
 
 **列挙型** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Text | はい | このオプションのユーザー インターフェイスでユーザーに表示される表示文字列。 |
 |Value | はい | このオプションの選択に関連付けられている要求の値。 |
@@ -211,7 +211,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 
 **パターン** 要素には、次の属性が含まれることがあります。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | RegularExpression | はい | この種類の要求が有効になるのに一致する必要がある正規表現。 |
 | HelpText | いいえ | 正規表現のチェックが失敗した場合にユーザーに表示されるエラー メッセージ。 |
@@ -249,11 +249,11 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 |DateTimeDropdown | `date`, `dateTime` |日、月、および年を選択するドロップダウン。 |
 |DropdownSingleSelect |`string` |単一選択ドロップダウン ボックス。 要求の値は、選択された値です。|
 |EmailBox | `string` |電子メールの入力フィールド。 |
-|段落 | `boolean`､`date`、`dateTime`、`duration`、`int`、`long`、`string`|段落タグ内のテキストのみを表示するフィールド。 |
+|段落 | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`|段落タグ内のテキストのみを表示するフィールド。 |
 |Password | `string` |パスワード テキスト ボックス。|
 |RadioSingleSelect |`string` | ラジオ ボタンのコレクション。 要求の値は、選択された値です。|
-|Readonly | `boolean`､`date`、`dateTime`、`duration`、`int`、`long`、`string`| 読み取り専用テキスト ボックス。 |
-|TextBox |`boolean`、`int`、`string` |1 行のテキスト ボックス。 |
+|Readonly | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`| 読み取り専用テキスト ボックス。 |
+|TextBox |`boolean`, `int`, `string` |1 行のテキスト ボックス。 |
 
 
 #### <a name="textbox"></a>TextBox

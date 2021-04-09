@@ -3,7 +3,7 @@ title: Azure Media Services リリース ノート | Microsoft Docs
 description: この記事では、Microsoft Azure Media Services v2 のリリース ノートについて説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/01/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e1700489b4f3ee37d95b87b1bf026d47c9f1de4d
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 019f0bc98de45fa1fe6f9b8c72ef74beb50ea2c2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694886"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103017360"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 
@@ -49,6 +49,26 @@ ms.locfileid: "98694886"
 ## <a name="rest-api-version-history"></a><a name="rest_version_history"></a>REST API バージョン履歴
 Media Services REST API バージョン履歴の詳細については、[Azure Media Services REST API リファレンス]をご覧ください。
 
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="azure-media-services-v2-api-and-sdks-deprecation-announcement"></a>Azure Media Services v2 API と SDK の廃止に関するお知らせ
+
+#### <a name="update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024"></a>2024 年 2 月 29 日までに Azure Media Services REST API と SDK を v3 に更新してください
+
+.NET および Java 用のバージョン 3 の Azure Media Services REST API とクライアント SDK では、バージョン 2 よりも多くの機能を提供しているため、.NET および Java 用のバージョン 2 の Azure Media Services REST API とクライアント SDK を廃止する予定です。 .NET および Java 用のバージョン 3 の Azure Media Services REST API とクライアント SDK の豊富なメリットを活用するために、早めに切り替えを行うことをお勧めします。
+バージョン 3 では次のものが提供されます。
+ 
+- 24 時間 365 日体制のライブ イベント サポート
+- ARM REST API、.NET Core 用のクライアント SDK、Node.js、Python、Java、Go、Ruby。
+- カスタマー マネージド キー、信頼されたストレージ統合、プライベート リンクのサポート、[その他](https://review.docs.microsoft.com/en-us/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+
+#### <a name="action-required"></a>必須のアクション:
+
+ワークロードの中断を最小限に抑えるために、[移行ガイド](https://go.microsoft.com/fwlink/?linkid=2149150&clcid=0x409)を参照して、2024 年 2 月 29 日までにコードをバージョン 2 の API と SDK からバージョン 3 の API と SDK に移行してください。
+**2024 年 2 月 29 日以降** は、Azure Media Services は、バージョン 2 の REST API、ARM アカウント管理 API バージョン 2015-10-01、またはバージョン 2 の .NET クライアント SDK からのトラフィックを受け入れなくなります。 これには、バージョン 2 の API を呼び出す可能性があるサードパーティ製のオープンソースのクライアント SDK が含まれます。  
+
+公式の [Azure の更新情報に関するお知らせ](https://azure.microsoft.com/updates/update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024/)をご確認ください。
+
 ## <a name="september-2020"></a>2020 年 9 月
 
 次の v2 プロパティには、ジョブの進行状況データが設定されなくなります。
@@ -58,7 +78,7 @@ Media Services REST API バージョン履歴の詳細については、[Azure M
 
 タスクの履歴を取得するには、Webhook を介して v2 ジョブ通知を使用するか、通知エンドポイントを使用してメッセージをキューに格納する必要があります。 詳細については次を参照してください:
 
-* [Azure Queue Storage を使用して Media Services ジョブ通知を監視する](media-services-dotnet-check-job-progress-with-queues.md)
+* [Azure キュー ストレージを使用して Media Services ジョブ通知を監視する](media-services-dotnet-check-job-progress-with-queues.md)
 * [Azure webhook を使用して Media Services ジョブ通知を監視する](media-services-dotnet-check-job-progress-with-webhooks.md)
 
 ## <a name="february-2020"></a>2020 年 2 月

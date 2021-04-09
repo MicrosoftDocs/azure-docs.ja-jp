@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 01/14/2020
 ms.openlocfilehash: ecb1049d64197f2a60438df7eedfb244907f7327
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "76046205"
 ---
 # <a name="deploy-and-manage-azure-container-instances-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Azure Container Instances をデプロイおよび管理する
@@ -29,7 +29,7 @@ Azure Logic Apps と Azure Container Instance コネクタを使用すると、[
 
 Logic Apps トリガーに応答してコンテナー ワークロードを実行する、といったタスクに対し、ロジック アプリでこれらのアクションを使用します。 また、コンテナー インスタンス アクションからの出力を、他のアクションで使用することもできます。 
 
-このコネクタではアクションのみが提供されます。そのため、ロジック アプリを開始するには、定期的にコンテナー ワークロードを実行するための**繰り返し**トリガーなど、別のトリガーを使用します。 または、Outlook 電子メールの着信などのイベントの後で、コンテナー グループのデプロイをトリガーすることが必要になる場合があります。 
+このコネクタではアクションのみが提供されます。そのため、ロジック アプリを開始するには、定期的にコンテナー ワークロードを実行するための **繰り返し** トリガーなど、別のトリガーを使用します。 または、Outlook 電子メールの着信などのイベントの後で、コンテナー グループのデプロイをトリガーすることが必要になる場合があります。 
 
 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
 
@@ -39,7 +39,7 @@ Logic Apps トリガーに応答してコンテナー ワークロードを実�
 
 * [ロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)および[コンテナー インスタンスを作成して管理する方法](../container-instances/container-instances-quickstart.md)に関する基本的な知識
 
-* コンテナー インスタンスにアクセスするロジック アプリ。 アクションを使用するには、**繰り返し**トリガーなどの別のトリガーでロジック アプリを開始します。
+* コンテナー インスタンスにアクセスするロジック アプリ。 アクションを使用するには、**繰り返し** トリガーなどの別のトリガーでロジック アプリを開始します。
 
 ## <a name="add-a-container-instance-action"></a>コンテナー インスタンス アクションを追加する
 
@@ -62,7 +62,7 @@ Logic Apps トリガーに応答してコンテナー ワークロードを実�
 
 1. 選択したアクションのために必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
 
-  たとえば、次の図に示すように (部分的な詳細)、 **[Create container group]\(コンテナー グループの作成\)** を選択し、コンテナー グループと、グループ内の 1 つ以上のコンテナー インスタンスのプロパティを入力します。
+  たとえば、次の図に示すように (部分的な詳細)、**[Create container group]\(コンテナー グループの作成\)** を選択し、コンテナー グループと、グループ内の 1 つ以上のコンテナー インスタンスのプロパティを入力します。
 
   ![コンテナー グループを作成する](./media/connectors-create-api-container-instances/logic-apps-aci-connector.png)
 

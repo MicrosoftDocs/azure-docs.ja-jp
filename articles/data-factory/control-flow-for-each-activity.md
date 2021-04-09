@@ -3,16 +3,16 @@ title: Azure Data Factory の ForEach アクティビティ
 description: ForEach アクティビティは、パイプライン内の繰り返し制御フローを定義します。 これは、コレクションに対する反復処理に使用され、指定されたアクティビティを実行します。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: c59108752677fc33e28578c3c679be24108806d5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a0c3a3cbaa71d627f54550cf92c067afbb1eb3f0
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385610"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786211"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure Data Factory の ForEach アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -483,6 +483,7 @@ ForEach アクティビティと提案される回避策のいくつかの制限
 |---|---|
 | 別の ForEach ループ (または Until ループ) 内に ForEach ループを入れ子にすることはできません。 | 入れ子にされたループが含まれる内側パイプライン上で外側の ForEach ループが含まれる外側パイプラインが反復される 2 段のパイプラインを設計します。 |
 | ForEach アクティビティには並列処理のために最大 50 の `batchCount` と、最大 100,000 の項目が含まれています。 | 内側パイプライン上で ForEach アクティビティが含まれる外側パイプラインが反復される 2 段のパイプラインを設計します。 |
+| SetVariable は、並列で実行される ForEach アクティビティ内では使用できません。この変数は、パイプライン全体に対してグローバルであるため、ForEach やその他のアクティビティは対象とされません。 | 順次 ForEach を使用するか、ForEach (子パイプラインで処理される変数/パラメーター) 内で Execute パイプラインを使用することを検討してください。|
 | | |
 
 ## <a name="next-steps"></a>次のステップ

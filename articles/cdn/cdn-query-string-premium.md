@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 06/11/2018
 ms.author: allensu
 ms.openlocfilehash: a799309b6e5d00db3b6c206187eec7097c9dc11a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96018598"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>クエリ文字列による Azure CDN キャッシュ動作の制御 - Premium レベル
@@ -50,17 +50,17 @@ Azure コンテンツ配信ネットワーク (CDN) を使用すると、クエ�
     > セッション ID やユーザー名など、要求ごとに変わるパラメーターがクエリ文字列に含まれる場合は、キャッシュ ヒット率が低くなるので、このモードを使わないでください。
 
 ## <a name="changing-query-string-caching-settings-for-premium-cdn-profiles"></a>Premium CDN プロファイル用にクエリ文字列のキャッシュ設定を変更する
-1. CDN プロファイルを開き、 **[管理]** をクリックします。
+1. CDN プロファイルを開き、**[管理]** をクリックします。
    
     ![[CDN プロファイル] の [管理] ボタン](./media/cdn-query-string-premium/cdn-manage-btn.png)
    
     CDN 管理ポータルが開きます。
-2. **[HTTP Large]\(HTTP ラージ\)** タブ、 **[キャッシュの設定]** フライアウトの順にマウスのカーソルを合わせます。 **[クエリ文字列のキャッシュ]** をクリックします。
+2. **[HTTP Large]\(HTTP ラージ\)** タブ、**[キャッシュの設定]** フライアウトの順にマウスのカーソルを合わせます。 **[クエリ文字列のキャッシュ]** をクリックします。
    
     クエリ文字列のキャッシュ オプションが表示されます。
    
     ![CDN クエリ文字列のキャッシュ オプション](./media/cdn-query-string-premium/cdn-query-string.png)
-3. クエリ文字列モードを選択し、 **[更新]** をクリックします。
+3. クエリ文字列モードを選択し、**[更新]** をクリックします。
 
 > [!IMPORTANT]
 > 設定の変更が CDN に反映されるまでに時間がかかるので、変更がすぐに表示されないことがあります。 通常、反映は 10 分で完了します。

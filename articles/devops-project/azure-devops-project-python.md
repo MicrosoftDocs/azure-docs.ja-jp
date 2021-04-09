@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: dec41f1b9de6920338360edeb18b9878a8c86432
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 99ca60f2610d34d194c50e92501c0126a7c80323
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588932"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102566551"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-starter"></a>Azure DevOps Starter を使用して Python 用の CI/CD パイプラインを作成する
 
@@ -129,4 +129,4 @@ Azure App Service とその関連リソースが必要なくなったら、削�
 CI/CD プロセスを構成したときに、ビルドとリリース パイプラインが自動的に作成されました。 チームのニーズを満たすようにこれらのビルドおよびリリース パイプラインを変更できます。 CI/CD パイプラインの詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [CD プロセスをカスタマイズする](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [CD プロセスをカスタマイズする](/azure/devops/pipelines/release/define-multistage-release-process)

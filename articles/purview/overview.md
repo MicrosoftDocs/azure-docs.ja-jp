@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 11/30/2020
-ms.openlocfilehash: 77da3406897c31e48d808541f1f9d579eb0a9cb7
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 3fadfa9d4467209ddbe997afabba27a3752f685d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401544"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103419934"
 ---
 # <a name="what-is-azure-purview"></a>Azure Purview とは
 
@@ -69,6 +69,9 @@ Azure Purview には、データ ソースを登録できるクラウドベー�
 データ ソースとその用途の検出することは、ソースの登録の主な目的です。 企業ユーザーは、ビジネス インテリジェンス、アプリケーション開発、データ サイエンス、または適切なデータが必要な他のタスクを行うためにデータを必要とすることがあります。 これらのユーザーは、データ カタログの検出機能を使用して、各自のニーズを満たすデータをすぐに見つけ出し、データを理解してそれが目的に適合するかどうかを評価し、各自が選択したツールでデータ ソースを開いてデータを利用します。
 
 同時に、ユーザーは、登録されているデータ ソースに対してタグ付けやドキュメント作成、注釈付けを行うことで、カタログを充実させることができます。 ユーザーは新しいデータ ソースを登録することもできます。それらはカタログ ユーザーのコミュニティで検出され、解釈され、利用されます。
+
+## <a name="in-region-data-residency"></a>リージョンのデータ所在地
+Azure Purview によって、顧客データがデプロイされているリージョン外に移動されたり格納されたりすることはありません。
 
 ## <a name="next-steps"></a>次のステップ
 

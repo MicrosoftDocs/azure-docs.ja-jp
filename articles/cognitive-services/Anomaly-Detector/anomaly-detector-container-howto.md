@@ -13,10 +13,10 @@ ms.author: mbullwin
 ms.custom: cog-serv-seo-aug-2020
 keywords: オンプレミス, Docker, コンテナー, ストリーミング, アルゴリズム
 ms.openlocfilehash: 70e5950f6577ce2cca2f28be070f3ba372d46a7e
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97862311"
 ---
 # <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>Anomaly Detector API 向けの Docker コンテナーをインストールし、実行する 

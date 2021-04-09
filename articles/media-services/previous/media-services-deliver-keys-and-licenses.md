@@ -3,7 +3,7 @@ title: Azure Media Services を使用して DRM ライセンスまたはAES キ�
 description: この記事では、Azure Media Services を使用して PlayReady または Widevine のライセンスと AES キーを配信するが、残りの処理 (エンコード、暗号化、ストリーミング) はオンプレミスのサーバーで行う方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 8546c2c1-430b-4254-a88d-4436a83f9192
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e564feadfdb1d3cb6943d76b4b39ba0ec814e0d6
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 10ff568ede601c57369f8c942ed61cb7a39ba703
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693641"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103465710"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Media Services を使用して DRM ライセンスまたは AES キーを配信する
 
@@ -41,9 +41,6 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
 次の図は、AMS を使用して PlayReady または Widevine のライセンスを配信するが、残りの処理はオンプレミスのサーバーで行うための主な手順を示しています。
 
 ![PlayReady による保護](./media/media-services-deliver-keys-and-licenses/media-services-diagram1.png)
-
-## <a name="download-sample"></a>サンプルのダウンロード
-この記事で説明するサンプルをダウンロードするには、[.NET で Azure Media Services を使用して PlayReady または Widevine のライセンスを配信する方法](https://github.com/Azure/media-services-dotnet-deliver-drm-licenses)に関する記事をご覧ください。
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
 

@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 12/23/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 749dea2d9d46cb69d0c7c8a799a3f82c04d020e8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: cccb42041ece65ad4f245c28dd7c5cf356d5e63c
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936177"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775155"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Python で最初の永続関数を作成する
 
@@ -58,22 +58,7 @@ ms.locfileid: "97936177"
 
 Azure Functions Core Tools は、必要に応じて Visual Studio Code によりインストールされます。 また、関数アプリ プロジェクトがフォルダーに作成されます。 このプロジェクトには、[host.json](../functions-host-json.md) および [local.settings.json](../functions-run-local.md#local-settings-file) 構成ファイルが含まれています。
 
-また、ルート フォルダーには、requirements.txt ファイルが作成されます。 関数アプリを実行するために必要な Python パッケージを指定します。
-
-## <a name="update-azure-functions-extension-bundles-version"></a>Azure Functions 拡張機能バンドルのバージョンを更新する
-
-Python Azure Functions を使用するには、[Azure Functions 拡張機能バンドル](../functions-bindings-register.md#access-extensions-in-non-net-languages)のバージョン 2.x が必要です。 拡張機能バンドルは、*host.json* 内で構成します。
-
-1. プロジェクトの *host.json* を開きます。 拡張機能バンドル `version` を `[2.*, 3.0.0)` に更新します。 これにより、2.0 以上かつ 3.0 未満のバージョン範囲が指定されます。
-
-    ```json
-    "extensionBundle": {
-        "id": "Microsoft.Azure.Functions.ExtensionBundle",
-        "version": "[2.*, 3.0.0)"
-    }
-    ```
-
-1. 更新された拡張機能バンドルのバージョンを反映するには、VS Code を再度読み込む必要があります。 コマンド パレットで、*Developer: Reload Window* コマンドを検索して実行します。
+また、ルート フォルダーに *requirements.txt* ファイルが作成されます。 関数アプリを実行するために必要な Python パッケージを指定します。
 
 ## <a name="install-azure-functions-durable-from-pypi"></a>PyPI からの azure-functions-durable のインストール
 
@@ -83,7 +68,7 @@ Python Azure Functions を使用するには、[Azure Functions 拡張機能バ�
 
     ```
     azure-functions
-    azure-functions-durable>=1.0.0b12
+    azure-functions-durable
     ```
 
 1. 現在のフォルダーで、エディターの統合ターミナルを開きます (<kbd>Ctrl + Shift + `</kbd> キー)。
@@ -228,7 +213,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 ## <a name="test-your-function-in-azure"></a>Azure で関数をテストする
 
-1. **出力** パネルから HTTP トリガーの URL をコピーします。 HTTP によってトリガーされる関数を呼び出す URL は、次の形式である必要があります: `http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
+1. **出力** パネルから HTTP トリガーの URL をコピーします。 HTTP によってトリガーされる関数を呼び出す URL は、次の形式である必要があります: `http://<functionappname>.azurewebsites.net/api/orchestrators/HelloOrchestrator`
 
 2. HTTP 要求のこの新しい URL をブラウザーのアドレス バーに貼り付けます。 以前の発行済みアプリの使用時と同じ状態応答を受け取るはずです。
 

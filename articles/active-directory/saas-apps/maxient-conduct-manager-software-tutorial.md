@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 4b57b3fbb338774eb8d66fc4d3c0c817e19aff4c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92458202"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Maxient Conduct Manager Software の統合
@@ -40,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、Maxient Conduct Manager Software で使用する Azure AD を構成します。
 
 
-* Maxient Conduct Manager Software では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Maxient Conduct Manager Software では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -53,7 +53,7 @@ Azure AD への Maxient Conduct Manager Software の統合を構成するには�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Maxient Conduct Manager Software** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Maxient Conduct Manager Software**」と入力します。
 1. 結果のパネルから **Maxient Conduct Manager Software** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -92,7 +92,7 @@ Maxient Conduct Manager Software を使用して Azure AD の SSO を構成し�
 
 ### <a name="assign-all-users-to-be-able-to-authenticate-for-the-maxient-conduct-manager-software"></a>Maxient Conduct Manager Software の認証を行えるようにすべてのユーザーを割り当てる
 
-このセクションでは、Azure システムを使用して Maxient Conduct Manager Software を認証するために、すべてのアカウントにアクセス権を付与します。  Maxient が正常に機能するためには、この手順が **必須** であることに注意することが重要です。  Maxient では Azure AD システムを活用してユーザーが " *認証* " されます。 ユーザーの " *承認* " は、実行しようとしている特定の関数に対して、Maxient システム内で実行されます。 Maxient では、これらの決定を行うためにディレクトリの属性は使用されません。
+このセクションでは、Azure システムを使用して Maxient Conduct Manager Software を認証するために、すべてのアカウントにアクセス権を付与します。  Maxient が正常に機能するためには、この手順が **必須** であることに注意することが重要です。  Maxient では Azure AD システムを活用してユーザーが "*認証*" されます。 ユーザーの "*承認*" は、実行しようとしている特定の関数に対して、Maxient システム内で実行されます。 Maxient では、これらの決定を行うためにディレクトリの属性は使用されません。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[Maxient Conduct Manager Software]** を選択します。
@@ -108,7 +108,7 @@ Maxient Conduct Manager Software を使用して Azure AD の SSO を構成し�
 
 ## <a name="test-with-maxient"></a>Maxient でテストする 
 
-Maxient の実装およびサポート担当者がまだサポート チケットを開いていない場合は、"キャンパス ベースの認証および Azure セットアップ - \<\<School Name\>\>" という件名の電子メールを [support@maxient.com](mailto:support@maxient.com) に送信してください。 電子メールの本文に、 **アプリのフェデレーション メタデータ URL** を記載してください。 Maxient のスタッフから、適切な属性がリリースされていることを確認できるテスト リンクを記載した応答を受け取ります。  
+Maxient の実装およびサポート担当者がまだサポート チケットを開いていない場合は、"キャンパス ベースの認証および Azure セットアップ - \<\<School Name\>\>" という件名の電子メールを [support@maxient.com](mailto:support@maxient.com) に送信してください。 電子メールの本文に、**アプリのフェデレーション メタデータ URL** を記載してください。 Maxient のスタッフから、適切な属性がリリースされていることを確認できるテスト リンクを記載した応答を受け取ります。  
     
 ## <a name="additional-resources"></a>その他のリソース
 

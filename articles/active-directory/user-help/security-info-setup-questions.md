@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: 0c55f15d12ddc51573f59f56c742a8cac525af0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83744432"
 ---
 # <a name="set-up-security-questions-as-your-verification-method"></a>セキュリティの質問を検証方法として設定する
@@ -86,7 +86,7 @@ ms.locfileid: "83744432"
 
     ![セキュリティ情報から電話番号メソッドを削除するためのリンク](media/security-info/securityinfo-myprofile-questionsdelete.png)
 
-2. 確認ボックスで **[はい]** を選択して、**セキュリティの質問**を削除します。 セキュリティの質問を削除すると、メソッドがセキュリティ情報から削除され、 **[セキュリティ情報]** ページから消去されます。
+2. 確認ボックスで **[はい]** を選択して、**セキュリティの質問** を削除します。 セキュリティの質問を削除すると、メソッドがセキュリティ情報から削除され、 **[セキュリティ情報]** ページから消去されます。
 
 ## <a name="additional-security-info-methods"></a>追加のセキュリティ情報メソッド
 

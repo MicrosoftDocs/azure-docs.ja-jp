@@ -11,31 +11,31 @@ ms.date: 09/15/2020
 ms.author: mbaldwin
 author: msmbaldwin
 ms.openlocfilehash: 95feeebf009cae22cf3952df80596c12e75cbe4b
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94357574"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm-preview"></a>Azure Key Vault Managed HSM (プレビュー) とは
 
-Azure Key Vault Managed HSM は、フル マネージド、高可用性、シングル テナント、標準準拠を特徴とするクラウド サービスで、 **FIPS 140-2 レベル 3** 適合の HSM を使用してクラウド アプリケーションの暗号化キーを保護することができます。  
+Azure Key Vault Managed HSM は、フル マネージド、高可用性、シングル テナント、標準準拠を特徴とするクラウド サービスで、**FIPS 140-2 レベル 3** 適合の HSM を使用してクラウド アプリケーションの暗号化キーを保護することができます。  
 
 ## <a name="why-use-managed-hsm"></a>Managed HSM を使用する理由
 
 ### <a name="fully-managed-highly-available-single-tenant-hsm-as-a-service"></a>フル マネージド、高可用性、シングル テナントのサービスとしての HSM
 
-- **フル マネージド** : HSM のプロビジョニング、構成、パッチ適用、メンテナンスはサービスによって管理されます。 
+- **フル マネージド**: HSM のプロビジョニング、構成、パッチ適用、メンテナンスはサービスによって管理されます。 
 - **高可用性とゾーン回復性** (可用性ゾーンがサポートされる): 各 HSM クラスターは、少なくとも 2 つの可用性ゾーンにまたがって存在する複数の HSM パーティションから成ります。 ハードウェアに障害が発生すると、HSM クラスターのメンバー パーティションが自動的に正常なノードに移行されます。
-- **シングルテナント** : 各 Managed HSM インスタンスはお客様ごとに確保され、複数の HSM パーティションのクラスターから成ります。 各 HSM クラスターでは、個々のお客様を対象としたセキュリティ ドメインが使用され、お客様ごとに HSM クラスターが暗号的に分離されます。
+- **シングルテナント**: 各 Managed HSM インスタンスはお客様ごとに確保され、複数の HSM パーティションのクラスターから成ります。 各 HSM クラスターでは、個々のお客様を対象としたセキュリティ ドメインが使用され、お客様ごとに HSM クラスターが暗号的に分離されます。
 
 
 ### <a name="access-control-enhanced-data-protection--compliance"></a>アクセスの制御、強化されたデータ保護とコンプライアンス
 
-- **キーの集中管理** : 組織のいたるところにあるきわめて重要で価値の高いキーが一元管理されます。 粒度の細かいキーごとのアクセス許可により、各キーに対するアクセスが "最低特権アクセス" の原則で管理されます。
-- **分離されたアクセスの制御** : Managed HSM の "ローカル RBAC" アクセス制御モデルにより、指定された HSM クラスタ アドミニストレーターには、HSM に対する完全な制御権が与えられます。その権限は、管理グループやサブスクリプション管理者、リソース グループ管理者でもオーバーライドできません。
-- **FIPS 140-2 レベル 3 適合の HSM** : FIPS (Federal Information Protection Standard) 140-2 レベル 3 適合の HSM によってデータを保護し、コンプライアンス要件を満たすことができます。 Managed HSM には、Marvell LiquidSecurity の HSM アダプターが使用されます。
-- **監視と監査** : Azure Monitor と完全に統合されます。 すべてのアクティビティの完全なログを Azure Monitor 経由で取得できます。 分析とアラートには Azure Log Analytics を使用できます。
+- **キーの集中管理**: 組織のいたるところにあるきわめて重要で価値の高いキーが一元管理されます。 粒度の細かいキーごとのアクセス許可により、各キーに対するアクセスが "最低特権アクセス" の原則で管理されます。
+- **分離されたアクセスの制御**: Managed HSM の "ローカル RBAC" アクセス制御モデルにより、指定された HSM クラスタ アドミニストレーターには、HSM に対する完全な制御権が与えられます。その権限は、管理グループやサブスクリプション管理者、リソース グループ管理者でもオーバーライドできません。
+- **FIPS 140-2 レベル 3 適合の HSM**: FIPS (Federal Information Protection Standard) 140-2 レベル 3 適合の HSM によってデータを保護し、コンプライアンス要件を満たすことができます。 Managed HSM には、Marvell LiquidSecurity の HSM アダプターが使用されます。
+- **監視と監査**: Azure Monitor と完全に統合されます。 すべてのアクティビティの完全なログを Azure Monitor 経由で取得できます。 分析とアラートには Azure Log Analytics を使用できます。
 
 ### <a name="integrated-with-azure-and-microsoft-paassaas-services"></a>Azure と Microsoft PaaS (または SaaS) サービスとの統合 
 

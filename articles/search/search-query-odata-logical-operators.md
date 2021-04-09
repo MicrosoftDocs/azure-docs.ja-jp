@@ -20,19 +20,19 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 27d5427d34de591f9cfeab2310d79a2fde217624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88917875"
 ---
 # <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Azure Cognitive Search での OData 論理演算子 - `and`、`or`、`not`
 
 Azure Cognitive Search での [OData フィルター式](query-odata-filter-orderby-syntax.md)は、`true` または `false` に評価されるブール式です。 一連の[よりシンプルなフィルター](search-query-odata-comparison-operators.md)を記述し、それらを[ブール代数](https://en.wikipedia.org/wiki/Boolean_algebra)の論理演算子を使って作成することで、複雑なフィルターを記述することができます。
 
-- `and`:左と右のサブ式が両方とも `true` に評価された場合に `true` に評価される 2 項演算子です。
-- `or`:左または右のサブ式のいずれかが `true` に評価された場合に `true` に評価される 2 項演算子です。
-- `not`:サブ式が `false` に評価された場合に `true` に評価される、またはその逆が当てはまる単項演算子です。
+- `and`: 左と右のサブ式が両方とも `true` に評価された場合に `true` に評価される 2 項演算子です。
+- `or`: 左または右のサブ式のいずれかが `true` に評価された場合に `true` に評価される 2 項演算子です。
+- `not`: サブ式が `false` に評価された場合に `true` に評価される、またはその逆が当てはまる単項演算子です。
 
 これらを、[コレクション演算子 `any` および `all`](search-query-odata-collection-operators.md) と組み合わせることで、非常に複雑な検索条件を表現するフィルターを作成することができます。
 

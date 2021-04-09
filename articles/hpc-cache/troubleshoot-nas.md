@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: v-erkel
-ms.openlocfilehash: efa163a2c10a7dc93bf5d26865a0e7eb43f11dea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb17918774d23dbeb2747fa55eefc4956812e254
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082768"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104775699"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>NAS 構成および NFS ストレージ ターゲットに関する問題のトラブルシューティング
 
@@ -64,7 +64,7 @@ rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+t
 エクスポート ルールを使用する場合は、キャッシュではキャッシュ サブネットからの複数の異なる IP アドレスを使用できることに注意してください。 すべての使用可能なサブネット IP アドレスからのアクセスを許可します。
 
 > [!NOTE]
-> 既定では、Azure HPC Cache はルート アクセスを許可します。 詳細については、[追加のキャッシュ設定の構成](configuration.md#configure-root-squash)に関する記事を参照してください。
+> キャッシュにはバックエンド ストレージ システムへのルート アクセスが必要ですが、キャッシュを介して接続するクライアントのアクセスを制限することができます。 詳細については、[クライアント アクセスの制御](access-policies.md#root-squash)に関するページをご覧ください。
 
 NAS ストレージ ベンダーと協力して、適切なレベルのアクセスをキャッシュに対して有効にしてください。
 
@@ -91,16 +91,15 @@ NAS ストレージ ベンダーと協力して、適切なレベルのアクセ
 
 複数のエクスポートでのファイルについて考えられるこのようなファイルの競合を回避するために、Azure HPC Cache ではパス内の使用可能な最も浅いエクスポートが自動的にマウントされ (例では ``/ifs``)、そのエクスポートから与えられたファイル ハンドルが使用されます。 複数のエクスポートで同じベース パスが使用される場合、Azure HPC Cache ではそのパスへのルート アクセスが必要です。
 
-## <a name="enable-export-listing"></a>エクスポートの一覧表示を有効にする
-<!-- link in prereqs article -->
+<!-- ## Enable export listing
 
-NAS では、そのエクスポートが Azure HPC Cache によってクエリされた場合、一覧表示する必要があります。
+The NAS must list its exports when the Azure HPC Cache queries it.
 
-ほとんどの NFS ストレージ システムでは、Linux クライアントから次のクエリを送信することで、これをテストできます: ``showmount -e <storage IP address>``
+On most NFS storage systems, you can test this by sending the following query from a Linux client: ``showmount -e <storage IP address>``
 
-可能な場合は、ご利用のキャッシュと同じ仮想ネットワークから Linux クライアントを使用します。
+Use a Linux client from the same virtual network as your cache, if possible.
 
-このコマンドを実行してもエクスポートが表示されない場合、そのキャッシュではご利用のストレージ システムへの接続時に問題が発生しています。 NAS ベンダーと協力して、エクスポートの一覧表示を有効にしてください。
+If that command doesn't list the exports, the cache will have trouble connecting to your storage system. Work with your NAS vendor to enable export listing.  -->
 
 ## <a name="adjust-vpn-packet-size-restrictions"></a>VPN パケット サイズの制限を調整する
 <!-- link in prereqs article and configuration article -->

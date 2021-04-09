@@ -2,13 +2,13 @@
 title: テンプレートの構造と構文
 description: 宣言型 JSON 構文を使用した Azure Resource Manager テンプレート (ARM テンプレート) の構造とプロパティについて説明します。
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: 31576c72fb845677f132fd9cd6ee776db922d436
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: da64eb8abeaf45f58933dfbddaf954cad8e66f4a
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722706"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120418"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>ARM テンプレートの構造と構文について
 
@@ -46,62 +46,6 @@ ms.locfileid: "101722706"
 
 各要素には、設定できるプロパティがあります。 この記事では、テンプレートのセクションについて詳しく説明します。
 
-## <a name="data-types"></a>データ型
-
-ARM テンプレート内では、次のデータ型を使用できます。
-
-* string
-* securestring
-* INT
-* [bool]
-* object
-* secureObject
-* array
-
-次のテンプレートは、データ型の形式を示しています。 各型には、正しい形式の既定値があります。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringParameter": {
-      "type": "string",
-      "defaultValue": "option 1"
-    },
-    "intParameter": {
-      "type": "int",
-      "defaultValue": 1
-    },
-    "boolParameter": {
-      "type": "bool",
-      "defaultValue": true
-    },
-    "objectParameter": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b"
-      }
-    },
-    "arrayParameter": {
-      "type": "array",
-      "defaultValue": [ 1, 2, 3 ]
-    }
-  },
-  "resources": [],
-  "outputs": {}
-}
-```
-
-セキュリティで保護された文字列では文字列と同じ形式が使用され、セキュリティで保護されたオブジェクトではオブジェクトと同じ形式が使用されます。 パラメーターをセキュリティで保護された文字列またはセキュリティで保護されたオブジェクトに設定した場合、パラメーターの値はデプロイ履歴に保存されず、ログにも記録されません。 ただし、セキュリティで保護された値を、セキュリティで保護された値を想定していないプロパティに設定した場合、その値は保護されません。 たとえば、セキュリティで保護された文字列をタグに設定すると、その値はプレーンテキストとして格納されます。 パスワードとシークレットにはセキュリティで保護された文字列を使用します。
-
-インライン パラメーターとして渡される整数の場合、値の範囲はデプロイに使用する SDK またはコマンドライン ツールによって制限されることがあります。 たとえば、PowerShell を使用してテンプレートをデプロイする場合、整数型は -2147483648 から 2147483647 の範囲で指定できます。 この制限を回避するには、[パラメーター ファイル](parameter-files.md)で大きな整数値を指定します。 リソースの種類によって、整数プロパティに独自の制限が適用されます。
-
-テンプレートでブール値と整数値を指定する場合は、値を引用符で囲まないでください。 文字列値は二重引用符で始めて終わります (`"string value"`)。
-
-オブジェクトは左中かっこ (`{`) で始めて、右中かっこ (`}`) で終わります。 配列は左大かっこ (`[`) で始めて、右大かっこ (`]`) で終わります。
-
 ## <a name="parameters"></a>パラメーター
 
 テンプレートの `parameters` セクションでは、リソースをデプロイするときにどのような値を入力できるかを指定します。 テンプレートではパラメーターが 256 個に制限されます。 複数のプロパティを含むオブジェクトを使用すると、パラメーター数を減らすことができます。
@@ -128,7 +72,7 @@ ARM テンプレート内では、次のデータ型を使用できます。
 | 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
 | parameter-name |はい |パラメーターの名前。 有効な JavaScript 識別子で指定する必要があります。 |
-| type |はい |パラメーター値の型。 使用できる型および値は、**string**、**securestring**、**int**、**bool**、**object**、**secureObject**、**array** です。 「[データの種類](#data-types)」を参照してください。 |
+| type |はい |パラメーター値の型。 使用できる型および値は、**string**、**securestring**、**int**、**bool**、**object**、**secureObject**、**array** です。 「[ARM テンプレートのデータ型](data-types.md)」を参照してください。 |
 | defaultValue |いいえ |パラメーターに値が指定されない場合のパラメーターの既定値。 |
 | allowedValues |いいえ |適切な値が確実に指定されるように、パラメーターに使用できる値の配列。 |
 | minValue |いいえ |int 型パラメーターの最小値。 |
@@ -141,7 +85,7 @@ ARM テンプレート内では、次のデータ型を使用できます。
 
 ## <a name="variables"></a>変数
 
-テンプレート内で使用できる値は、`variables` セクションで作成します。 必ずしも変数を定義する必要はありませんが、変数を定義することによって複雑な式が減り、テンプレートが単純化されることはよくあります。 各変数の形式は、いずれかの[データ型](#data-types)に一致します。
+テンプレート内で使用できる値は、`variables` セクションで作成します。 必ずしも変数を定義する必要はありませんが、変数を定義することによって複雑な式が減り、テンプレートが単純化されることはよくあります。 各変数の形式は、いずれかの[データ型](data-types.md)に一致します。
 
 次の例では、変数の定義に使用できるオプションを示します。
 

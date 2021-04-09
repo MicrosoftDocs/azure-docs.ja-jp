@@ -6,10 +6,10 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.openlocfilehash: 2b40cc3d4cea4476ffde8bee8cec694975eb5083
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97724274"
 ---
 # <a name="azure-automation-frequently-asked-questions"></a>Azure Automation についてよく寄せられる質問

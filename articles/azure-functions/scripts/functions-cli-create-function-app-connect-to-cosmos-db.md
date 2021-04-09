@@ -5,10 +5,10 @@ ms.topic: sample
 ms.date: 07/03/2018
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 9ec4d3cb9d47608aa98075ba98aacfde51f341cd
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97934426"
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>Azure Cosmos DB に接続する Azure 関数の作成

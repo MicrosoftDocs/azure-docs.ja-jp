@@ -11,10 +11,10 @@ ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/08/2019
 ms.openlocfilehash: d9c1828732b9a4e0e85c3af2263f097edd54437d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91332850"
 ---
 # <a name="use-azure-sql-managed-instance-securely-with-public-endpoints"></a>パブリック エンドポイントで安全に Azure SQL Managed Instance を使用する

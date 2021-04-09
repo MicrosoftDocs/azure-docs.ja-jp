@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と ACLP の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と ACLP の統合 | Microsoft Docs'
 description: Azure Active Directory と ACLP の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: bb91322df315d60adddf184905d0c619f5be8d6a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92313558"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-aclp"></a>チュートリアル:Azure Active Directory と ACLP の統合
+# <a name="tutorial-azure-active-directory-integration-with-aclp"></a>チュートリアル: Azure Active Directory と ACLP の統合
 
 このチュートリアルでは、ACLP と Azure Active Directory (Azure AD) を統合する方法について説明します。
 ACLP と Azure AD の統合には、次の利点があります。
@@ -61,7 +61,7 @@ Azure AD への ACLP の統合を構成するには、ギャラリーから管�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**ACLP**」と入力し、結果パネルで **[ACLP]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**ACLP**」と入力し、結果パネルで **[ACLP]** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果一覧の ACLP](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ ACLP で Azure AD のシングル サインオンを構成してテストする�
 
 ACLP で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **ACLP** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **ACLP** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -142,7 +142,7 @@ ACLP で Azure AD シングル サインオンを構成するには、次の手�
 
 このセクションでは、Britta Simon に ACLP へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[ACLP]** の順に選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[ACLP]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -166,7 +166,7 @@ ACLP で Azure AD シングル サインオンを構成するには、次の手�
 
 ### <a name="create-aclp-test-user"></a>ACLP テスト ユーザーの作成
 
-このセクションでは、ACLP で Britta Simon というユーザーを作成します。  [ACLP サポート チーム](mailto:mrichards@sans.org)と連携し、ACLP プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、ACLP で Britta Simon というユーザーを作成します。 [ACLP サポート チーム](mailto:mrichards@sans.org)と連携して、ACLP プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

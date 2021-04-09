@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f06a1e9ea83fc7ad758ad17245ffa5d7ca973f6
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 9bf0a9ca193be9fd61d0b284338c0f581c9f91e3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742100"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103012056"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>Azure Active Directory でロールを割り当て可能なグループを作成する
 
@@ -51,14 +51,14 @@ ms.locfileid: "98742100"
 ### <a name="install-the-azure-ad-preview-module"></a>Azure AD プレビュー モジュールをインストールする
 
 ```powershell
-install-module azureadpreview
-import-module azureadpreview
+Install-Module -Name AzureADPreview
+Import-Module -Name AzureADPreview
 ```
 
 モジュールを使用する準備ができているかどうかを確認するため、次のコマンドを実行します。
 
 ```powershell
-get-module azureadpreview
+Get-Module -Name AzureADPreview
 ```
 
 ### <a name="create-a-group-that-can-be-assigned-to-role"></a>ロールに割り当てることができるグループを作成する
@@ -73,9 +73,9 @@ $group = New-AzureADMSGroup -DisplayName "Contoso_Helpdesk_Administrators" -Desc
 
 ```powershell
 #Basic set up
-install-module azureadpreview
-import-module azureadpreview
-get-module azureadpreview
+Install-Module -Name AzureADPreview
+Import-Module -Name AzureADPreview
+Get-Module -Name AzureADPreview
 
 #Connect to Azure AD. Sign in as Privileged Role Administrator or Global Administrator. Only these two roles can create a role-assignable group.
 Connect-AzureAD
@@ -107,7 +107,7 @@ Add-AzureADGroupMember -ObjectId $roleAssignablegroup.Id -RefObjectId $member.Ob
 
 ### <a name="create-a-role-assignable-group-in-azure-ad"></a>ロールを割り当て可能なグループを Azure AD で作成する
 
-```powershell
+```http
 POST https://graph.microsoft.com/beta/groups
 {
 "description": "This group is assigned to Helpdesk Administrator built-in role of Azure AD.",

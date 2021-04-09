@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
 ms.openlocfilehash: 322f5f6a79bdce23706b2211ccc04ef2451675d0
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94515729"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Threat Modeling Tool の概要
@@ -27,7 +27,7 @@ ms.locfileid: "94515729"
 Microsoft Threat Modeling Tool 2018 は、無料で **[クリックしてダウンロードできる](https://aka.ms/threatmodelingtool)** ツールとして 2018 年 9 月に GA としてリリースされました。 配布のしくみが変わり、ユーザーがツールを開くたびに、最新の改善とバグの修正をプッシュできるようになりました。そのため、保守と使用が簡単になりました。
 この記事では、Microsoft SDL 脅威モデリング アプローチの基本的なプロセスについて説明します。また、ツールを使用して、セキュリティ プロセスのバックボーンとして優れた脅威モデルを作成する方法について説明します。
 
-この記事は、SDL の脅威モデリング アプローチの既存の知識に基づいています。 短時間で復習するには、「 **[Web アプリケーションの脅威モデル](/previous-versions/msp-n-p/ff648006(v=pandp.10))** 」と、2006 年に公開されたアーカイブ版の MSDN 記事「 **[Uncover Security Flaws Using the STRIDE Approach](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** 」(STRIDE アプローチを使用してセキュリティ上の欠陥を見つける) を参照してください。
+この記事は、SDL の脅威モデリング アプローチの既存の知識に基づいています。 短時間で復習するには、「**[Web アプリケーションの脅威モデル](/previous-versions/msp-n-p/ff648006(v=pandp.10))**」と、2006 年に公開されたアーカイブ版の MSDN 記事「**[Uncover Security Flaws Using the STRIDE Approach](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)**」(STRIDE アプローチを使用してセキュリティ上の欠陥を見つける) を参照してください。
 
 簡単にまとめると、このアプローチにはダイアグラムの作成、脅威の特定、脅威の軽減、各軽減策の検証が含まれます。 このプロセスをまとめた図を次に示します。
 
@@ -87,7 +87,7 @@ Threat Modeling Tool チームはツールの機能と操作性を改善する�
 
 ## <a name="analyzing-threats"></a>脅威の分析
 
-高橋さんがアイコン メニュー項目から分析ビュー (ファイルと虫眼鏡のアイコン) をクリックすると、既定のテンプレートに基づいて Threat Modeling Tool が検出し、生成した脅威の一覧が表示されます。このテンプレートでは、 **[STRIDE (スプーフィング、改ざん、情報漏えい、否認、サービス拒否、特権の昇格)](https://en.wikipedia.org/wiki/STRIDE_(security))** という SDL アプローチを使用しています。 STRIDE は、予測可能な特定の組み合わせ脅威をソフトウェアが受け、脅威はこれら 6 つのカテゴリを使用して検出できる、という考えです。
+高橋さんがアイコン メニュー項目から分析ビュー (ファイルと虫眼鏡のアイコン) をクリックすると、既定のテンプレートに基づいて Threat Modeling Tool が検出し、生成した脅威の一覧が表示されます。このテンプレートでは、**[STRIDE (スプーフィング、改ざん、情報漏えい、否認、サービス拒否、特権の昇格)](https://en.wikipedia.org/wiki/STRIDE_(security))** という SDL アプローチを使用しています。 STRIDE は、予測可能な特定の組み合わせ脅威をソフトウェアが受け、脅威はこれら 6 つのカテゴリを使用して検出できる、という考えです。
 
 このアプローチは、自宅を守るために、アラーム システムを追加したり、泥棒を追いかける前に、個々のドアと窓にロックのしくみを確実に持たせることに似ています。
 

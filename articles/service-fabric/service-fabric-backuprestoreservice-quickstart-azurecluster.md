@@ -3,12 +3,12 @@ title: Azure Service Fabric での定期的なバックアップと復元
 description: アプリケーションデータの定期バックアップを可能にする Service Fabric の定期バックアップと復元機能を使用します。
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: 2d167b261f9b5915a970b4c219113f0765c039cb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 42097b50277e78b3f0e8f5e61a2bf70cc08dbc02
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927981"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103198726"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターでの定期的なバックアップと復元
 > [!div class="op_single_selector"]
@@ -215,6 +215,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 ``` 
 
 #### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer の使用
+Service Fabric Explorer の [詳細設定モード](service-fabric-visualizing-your-cluster.md#backup-and-restore) が有効になっていることを確認します 
 
 1. アプリケーションを選択し、アクションを実行します。 [Enable/Update Application Backup]\(アプリケーションのバックアップを有効化/更新する\) をクリックします。
 

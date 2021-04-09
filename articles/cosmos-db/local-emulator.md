@@ -8,10 +8,10 @@ ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperf-fy21q1
 ms.openlocfilehash: 89e82e210dbf7c404ebd5978d87bf391d8565ee2
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97033971"
 ---
 # <a name="install-and-use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストのために Azure Cosmos DB Emulator をインストールして使用する

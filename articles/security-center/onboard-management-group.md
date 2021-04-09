@@ -1,23 +1,18 @@
 ---
 title: 管理グループを Azure Security Center にオンボードする
 description: 提供されている Azure Policy 定義を使用して、管理グループ内のすべてのサブスクリプションで Azure Security Center を有効にする方法について説明します。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
-ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/10/2020
+ms.topic: how-to
+ms.date: 03/11/2021
 ms.author: memildin
-ms.openlocfilehash: 31472b0a0eedee03d5cfcb6ff47a97033a8c78e0
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 01036343e2585adf7c09ad3f0d236948a537fc29
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796065"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016561"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>管理グループ内のすべてのサブスクリプションで Security Center を有効にする
 
@@ -60,7 +55,7 @@ Azure Policy の定義を変更するには、さまざまな方法がありま�
     提供されている定義では、以下の "価格" 設定の "*いずれか*" が準拠として定義されます。 これは、"standard" または "free" に設定されているサブスクリプションが準拠していることを意味します。
 
     > [!TIP]
-    > Azure Defender プランが有効な場合は、"Standard" 設定になるように記述されます。 無効な場合は、"Free" になります。 [Azure Defender プランの詳細情報を確認してください](security-center-pricing.md)。
+    > Azure Defender プランが有効な場合は、"Standard" 設定としてポリシー定義に記述されます。 無効な場合は、"Free" になります。 これらのプランの違いについては、[Security Center (無料) と有効化された Azure Defender](security-center-pricing.md) に関するセクションをご覧ください。 
 
     ```
     "existenceCondition": {
@@ -98,4 +93,4 @@ Azure Policy の定義を変更するには、さまざまな方法がありま�
 管理グループ全体をオンボードしたので、Azure Defender の高度な保護を有効にします。 
 
 > [!div class="nextstepaction"]
-> [Azure Defender を有効にする](security-center-pricing.md#enable-azure-defender)
+> [Azure Defender を有効にする](enable-azure-defender.md)

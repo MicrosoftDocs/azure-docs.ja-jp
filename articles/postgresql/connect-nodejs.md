@@ -14,10 +14,10 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
 ms.openlocfilehash: 7569606429740de23b56767d490b9bb14283d468
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93331694"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:Node.js を使用して Azure Database for PostgreSQL - Single Server に接続し、データにクエリを実行する
@@ -48,9 +48,9 @@ npm list
 ## <a name="get-connection-information"></a>接続情報の取得
 Azure Database for PostgreSQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
 
-1. [Azure portal](https://portal.azure.com/) で、作成したサーバー (たとえば、 **mydemoserver** ) を検索して選択します。
+1. [Azure portal](https://portal.azure.com/) で、作成したサーバー (たとえば、**mydemoserver**) を検索して選択します。
 
-1. サーバーの **[概要]** パネルから、 **サーバー名** と **管理者ユーザー名** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
+1. サーバーの **[概要]** パネルから、**サーバー名** と **管理者ユーザー名** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
 
    :::image type="content" source="./media/connect-nodejs/server-details-azure-database-postgresql.png" alt-text="Azure Database for PostgreSQL の接続文字列":::
 
@@ -58,7 +58,7 @@ Azure Database for PostgreSQL に接続するために必要な接続情報を�
 Node.js は、Bash シェル、ターミナル、または Windows コマンド プロンプトから「`node`」と入力して起動できます。起動後、サンプルの JavaScript コードをコピーし、プロンプトに貼り付けて対話形式で実行してください。 または、JavaScript コードをテキスト ファイルに保存し、パラメーターとしてそのファイル名を使用して `node filename.js` を起動して実行することもできます。
 
 ## <a name="connect-create-table-and-insert-data"></a>接続、テーブルの作成、データの挿入
-接続し、 **CREATE TABLE** および **INSERT INTO** SQL ステートメントを使用してデータを読み込むには、次のコードを使用します。
+接続し、**CREATE TABLE** および **INSERT INTO** SQL ステートメントを使用してデータを読み込むには、次のコードを使用します。
 PostgreSQL サーバーとのインターフェイスには、[pg.Client](https://github.com/brianc/node-postgres/wiki/Client) オブジェクトを使用します。 サーバーへの接続を確立するには、[pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) 関数を使用します。 PostgreSQL データベースに対して SQL クエリを実行するには、[pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) 関数を使用します。 
 
 host、dbname、user、password の各パラメーターは、サーバーとデータベースの作成時に指定した値に置き換えてください。
@@ -110,7 +110,7 @@ function queryDatabase() {
 ```
 
 ## <a name="read-data"></a>データの読み取り
-接続し、 **SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 PostgreSQL サーバーとのインターフェイスには、[pg.Client](https://github.com/brianc/node-postgres/wiki/Client) オブジェクトを使用します。 サーバーへの接続を確立するには、[pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) 関数を使用します。 PostgreSQL データベースに対して SQL クエリを実行するには、[pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) 関数を使用します。 
+接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 PostgreSQL サーバーとのインターフェイスには、[pg.Client](https://github.com/brianc/node-postgres/wiki/Client) オブジェクトを使用します。 サーバーへの接続を確立するには、[pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) 関数を使用します。 PostgreSQL データベースに対して SQL クエリを実行するには、[pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) 関数を使用します。 
 
 host、dbname、user、password の各パラメーターは、サーバーとデータベースの作成時に指定した値に置き換えてください。 
 
@@ -158,7 +158,7 @@ function queryDatabase() {
 ```
 
 ## <a name="update-data"></a>データの更新
-接続し、 **UPDATE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 PostgreSQL サーバーとのインターフェイスには、[pg.Client](https://github.com/brianc/node-postgres/wiki/Client) オブジェクトを使用します。 サーバーへの接続を確立するには、[pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) 関数を使用します。 PostgreSQL データベースに対して SQL クエリを実行するには、[pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) 関数を使用します。 
+接続し、**UPDATE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 PostgreSQL サーバーとのインターフェイスには、[pg.Client](https://github.com/brianc/node-postgres/wiki/Client) オブジェクトを使用します。 サーバーへの接続を確立するには、[pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) 関数を使用します。 PostgreSQL データベースに対して SQL クエリを実行するには、[pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) 関数を使用します。 
 
 host、dbname、user、password の各パラメーターは、サーバーとデータベースの作成時に指定した値に置き換えてください。 
 
@@ -205,7 +205,7 @@ function queryDatabase() {
 ```
 
 ## <a name="delete-data"></a>データの削除
-接続し、 **DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 PostgreSQL サーバーとのインターフェイスには、[pg.Client](https://github.com/brianc/node-postgres/wiki/Client) オブジェクトを使用します。 サーバーへの接続を確立するには、[pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) 関数を使用します。 PostgreSQL データベースに対して SQL クエリを実行するには、[pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) 関数を使用します。 
+接続し、**DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 PostgreSQL サーバーとのインターフェイスには、[pg.Client](https://github.com/brianc/node-postgres/wiki/Client) オブジェクトを使用します。 サーバーへの接続を確立するには、[pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) 関数を使用します。 PostgreSQL データベースに対して SQL クエリを実行するには、[pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) 関数を使用します。 
 
 host、dbname、user、password の各パラメーターは、サーバーとデータベースの作成時に指定した値に置き換えてください。 
 

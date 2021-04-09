@@ -1,7 +1,8 @@
 ---
 title: Azure 仮想マシンでのメインフレーム リホスト
 description: Microsoft Azure の仮想マシン (VM) を使用して、IBM Z ベースのシステムなどのメインフレーム ワークロードをリホストします。
-services: virtual-machines
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
 documentationcenter: ''
 author: njray
 manager: edprice
@@ -9,13 +10,12 @@ editor: edprice
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
-ms.service: multiple
-ms.openlocfilehash: 7ae20b484b4c22c19b856c237d85efe31dc01407
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 7e4b41497a0ed49ab0b39ab2c93c0142fce6416e
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102553546"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951319"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Azure 仮想マシンでのメインフレーム リホスト
 

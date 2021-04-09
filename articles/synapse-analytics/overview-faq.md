@@ -10,10 +10,10 @@ ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
 ms.openlocfilehash: 9a0fb8ed8ac54fa866b6db7d8f808c011c0c6758
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101695823"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure Synapse Analytics についてよく寄せられる質問

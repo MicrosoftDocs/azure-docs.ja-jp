@@ -1,18 +1,14 @@
 ---
 title: データ マイニング レポートの作成
 description: さまざまなレイヤーのネットワーク デバイスに関する包括的で詳細な情報 (プロトコル、ファームウェア バージョン、プログラミング コマンドなど) を生成します。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 01/20/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 0738dc7f2b7012002fc6ddf5cc68dd0c8e42b04d
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 99754959e7a3a08b4d763b85b0b9315476969774
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522481"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104779071"
 ---
 # <a name="sensor-data-mining-queries"></a>センサーのデータ マイニング クエリ
 
@@ -285,7 +281,3 @@ CVE レポートで手動の変更を行うには、次のようにします。
 3. 右側のドロップダウン リストから、生成するレポートを選択します。
 
 4. レポート結果の PDF を作成するには、:::image type="icon" source="media/how-to-generate-reports/pdf-report-icon.png" border="false"::: を選択します。
-
-## <a name="next-steps"></a>次のステップ
-
-[センサーの傾向と統計のレポート](how-to-create-trends-and-statistics-reports.md)。

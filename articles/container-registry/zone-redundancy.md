@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 02/23/2021
 ms.custom: references_regions
 ms.openlocfilehash: a190ea68f41196fb11c20259b9953f516d6f5370
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102203863"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>回復性と高可用性のために Azure Container Registry でゾーン冗長を有効にする

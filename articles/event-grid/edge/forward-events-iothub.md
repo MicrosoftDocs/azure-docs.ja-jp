@@ -8,13 +8,13 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 36dc7d098892fb2be7c2ba3d75de7c7adef1a4f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86171552"
 ---
-# <a name="tutorial-forward-events-to-iothub"></a>チュートリアル:イベントを IoTHub に転送する
+# <a name="tutorial-forward-events-to-iothub"></a>チュートリアル: イベントを IoTHub に転送する
 
 この記事では、ルートを使用して Event Grid イベントを他の IoT Edge モジュール、IoTHub に転送するために必要な手順をすべて説明します。 このようなことが必要になる理由としては、以下が考えられます。
 
@@ -212,4 +212,4 @@ ms.locfileid: "86171552"
 * [Linux](persist-state-linux.md) または [Windows](persist-state-windows.md) で Event Grid モジュールの永続化を設定します
 * [ドキュメント](configure-client-auth.md)に従って、クライアント認証を構成します
 * この[チュートリアル](forward-events-event-grid-cloud.md)に従って、クラウド内の Azure Event Grid にイベントを転送します
-* [エッジでのトピックとサブスクリプションの監視](monitor-topics-subscriptions.md)
+* [Edge でのトピックとサブスクリプションの監視](monitor-topics-subscriptions.md)

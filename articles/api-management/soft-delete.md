@@ -7,10 +7,10 @@ author: vladvino
 ms.author: apimpm
 ms.date: 11/27/2020
 ms.openlocfilehash: e2842f3e428abb4f0eb628dbb8e446f2714d5d89
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101652387"
 ---
 # <a name="api-management-soft-delete-preview"></a>API Management の論理的な削除 (プレビュー)

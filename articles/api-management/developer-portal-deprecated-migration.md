@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
 ms.openlocfilehash: f5105c685de4b3ccdffe69eec8ee8eeb32976c1f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92325931"
 ---
 # <a name="migrate-to-the-new-developer-portal"></a>新しい開発者ポータルへの移行
@@ -55,9 +55,9 @@ ms.locfileid: "92325931"
     - 選択した Web Application Firewall 規則を無効にします。
 
 - 明示的に定義された非推奨のポータル URL を含めるように既定の電子メール通知テンプレートを変更した場合は、ポータルの URL パラメーターを使用するか、新しいポータルの URL を指すようにそれらを変更します。 代わりに組み込みポータルの URL パラメーターがテンプレートで使用されている場合、変更は必要ありません。
-- " *イシュー* " と " *アプリケーション* " は、新しい開発者ポータルではサポートされていません。
+- "*イシュー*" と "*アプリケーション*" は、新しい開発者ポータルではサポートされていません。
 - ID プロバイダーとしての Facebook、Microsoft、Twitter、および Google との直接統合は、新しい開発者ポータルではサポートされていません。 Azure AD B2C を経由してこれらのプロバイダーと統合できます。
-- 委任を使用する場合は、アプリケーションの戻り先 URL を変更し、" *SSO URL の生成* " エンドポイントの代わりに、" [*共有アクセス トークンの取得* " API エンドポイント](/rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken)を使用します。
+- 委任を使用する場合は、アプリケーションの戻り先 URL を変更し、"*SSO URL の生成*" エンドポイントの代わりに、"[*共有アクセス トークンの取得*" API エンドポイント](/rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken)を使用します。
 - Azure AD を ID プロバイダーとして使用する場合は、次のことを行います。
 
     - アプリケーションの戻り先 URL を、新しい開発者ポータル ドメインを指すように変更します。
@@ -67,7 +67,7 @@ ms.locfileid: "92325931"
 
     - アプリケーションの戻り先 URL を、新しい開発者ポータル ドメインを指すように変更します。
     - アプリケーションの戻り先 URL のサフィックスを `/signin-aad` から `/signin` に変更します。
-    - アプリケーション要求に、" *名* "、" *姓* "、" *ユーザーのオブジェクト ID* " を含めます。
+    - アプリケーション要求に、"*名*"、"*姓*"、"*ユーザーのオブジェクト ID*" を含めます。
 
 - 対話型テスト コンソールで OAuth 2.0 を使用する場合は、アプリケーションの戻り先 URL を変更して、新しい開発者ポータル ドメインを指定し、次のようにサフィックスを変更します。
 

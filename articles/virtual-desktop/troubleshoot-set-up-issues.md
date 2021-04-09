@@ -3,15 +3,16 @@ title: Windows Virtual Desktop 環境のホスト プールの作成 - Azure
 description: Windows Virtual Desktop 環境のセットアップ中にテナントとホスト プールの問題をトラブルシューティングおよび解決する方法。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.custom: references_regions
+ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a5439a9d1fd43154379c1dc1a95a6e98b6e877b
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: c31a32b32a685087c53198ec52af1188d0071cab
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539644"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652447"
 ---
 # <a name="host-pool-creation"></a>ホスト プールの作成
 
@@ -49,9 +50,21 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 
 ### <a name="error-cant-see-user-assignments-in-app-groups"></a>エラー:アプリ グループでユーザー割り当てが表示されない。
 
-原因: このエラーは通常、ある Azure Active Directory (AD) テナントから別のテナントにサブスクリプションを移した後に発生します。 以前の割り当てが古い Azure AD テナントにまだ関連付けられている場合、Azure portal はこれらを見失います。
+**原因**: このエラーは通常、ある Azure Active Directory (AD) テナントから別のテナントにサブスクリプションを移した後に発生します。 以前の割り当てが古い Azure AD テナントにまだ関連付けられている場合、Azure portal はこれらを見失います。
 
-解決策:ユーザーをアプリ グループに再割り当てする必要があります。
+**解決策**: ユーザーをアプリ グループに再割り当てする必要があります。
+
+### <a name="i-only-see-us-when-setting-the-location-for-my-service-objects"></a>サービス オブジェクトの場所を設定する際、米国以外が表示されない
+
+**原因**: 現時点では、Azure は Windows Virtual Desktop サービスのリージョンをサポートしていません。 サポートされている地域の詳細については、[データの場所](data-locations.md)に関するページを参照してください。 特定の場所が Windows Virtual Desktop でサポートされているにもかかわらず、場所の選択時に表示されない場合は、リソース プロバイダーがまだ更新されていないことを意味します。
+
+**解決策**: リージョンの最新の一覧を取得するには、リソース プロバイダーを再登録します。
+
+1. **[サブスクリプション]** に移動し、関連するサブスクリプションを選択します。
+2. **[リソース プロバイダー]** を選択します。
+3. **[Microsoft.DesktopVirtualization]** を見つけて選択し、アクション メニューから **[再登録]** を選択します。
+
+リソース プロバイダーを再登録すると、特定の UI フィードバックや更新状態は表示されません。 再登録プロセスでも、既存の環境に干渉することはありません。
 
 ## <a name="azure-resource-manager-template-errors"></a>Azure Resource Manager テンプレート エラー
 

@@ -6,17 +6,20 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 09/30/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b3bdbef5680561d60ab4db6ee42033553e691ed3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6db817999b415ebe2c4bb7cb4216ed1e9ad9c325
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660125"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655990"
 ---
 # <a name="quickstart-handle-sms-events"></a>クイック スタート:SMS イベントの処理
+
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
@@ -24,7 +27,7 @@ Azure Event Grid を使用して Communication Services の SMS イベントを�
 
 ## <a name="about-azure-event-grid"></a>Azure Event Grid について
 
-[Azure Event Grid](../../../event-grid/overview.md) は、クラウドベースのイベント処理サービスです。 この記事では、[通信サービス イベント](../../concepts/event-handling.md)のイベントをサブスクライブし、イベントをトリガーして結果を表示する方法について説明します。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 この記事では、メッセージを収集して表示する Web アプリにイベントを送信します。
+[Azure Event Grid](../../../event-grid/overview.md) は、クラウドベースのイベント処理サービスです。 この記事では、[通信サービス イベント](../../../event-grid/event-schema-communication-services.md)のイベントをサブスクライブし、イベントをトリガーして結果を表示する方法について説明します。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 この記事では、メッセージを収集して表示する Web アプリにイベントを送信します。
 
 ## <a name="prerequisites"></a>前提条件
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -65,7 +68,7 @@ Azure Portal で次の操作を行います。
 
 **システム トピック名** の入力を求められた場合は、一意の文字列を自由に指定してかまいません。 このフィールドはエクスペリエンスに影響を与えず、内部テレメトリの目的で使用されます。
 
-[Azure Communication Services でサポートされているイベント](../../concepts/event-handling.md)の完全な一覧を確認してください。
+[Azure Communication Services でサポートされているイベント](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)の完全な一覧を確認してください。
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="SMS Received および SMS Delivery Report Received のイベントの種類が選択されていることを示すスクリーンショット。":::
 
@@ -90,7 +93,7 @@ Azure Portal で次の操作を行います。
 - `SMS Received` イベントは、Communication Services の電話番号がテキスト メッセージを受信したときに生成されます。 イベントをトリガーするには、お使いの電話から、Communication Services リソースに接続されている電話番号にメッセージを送信するだけです。
 - `SMS Delivery Report Received` イベントは、Communication Services の電話番号を使用してユーザーに SMS を送信したときに生成されます。 イベントをトリガーするには、[送信された SMS](../telephony-sms/send.md) のオプションで `Delivery Report` を有効にする必要があります。 `Delivery Report` を使用して、お使いの電話にメッセージを送信してみてください。 このアクションを完了すると、ご利用の Azure アカウントでわずかな (数セント未満の) コストが発生します。
 
-[Azure Communication Services でサポートされているイベント](../../concepts/event-handling.md)の完全な一覧を確認してください。
+[Azure Communication Services でサポートされているイベント](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)の完全な一覧を確認してください。
 
 ### <a name="receiving-sms-events"></a>SMS イベントの受信
 
@@ -100,7 +103,7 @@ Azure Portal で次の操作を行います。
 
 :::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="SMS Delivery Report Event の Event Grid スキーマを示すスクリーンショット。":::
 
-詳細については、[イベント スキーマとその他のイベントの概念](../../concepts/event-handling.md)に関する記事を参照してください。
+詳細については、[イベント スキーマとその他のイベントの概念](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)に関する記事を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -115,5 +118,5 @@ Communication Services サブスクリプションをクリーンアップして
 
 次のことも実行できます。
 
- - [イベント処理の概念の詳細を確認する](../../concepts/event-handling.md)
+ - [イベント処理の概念の詳細を確認する](../../../event-grid/event-schema-communication-services.md)
  - [Event Grid の詳細を確認する](../../../event-grid/overview.md)

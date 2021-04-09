@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: cfbe5cf8c19bfafb38f6149391e09350785ebf9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91303609"
 ---
 # <a name="how-personalizer-works"></a>Personalizer のしくみ
@@ -20,10 +20,10 @@ Personalizer のリソースである "_学習ループ_" は、機械学習を�
 
 "_特徴のあるアクション_" と "_コンテキストの特徴_" を Rank API に送信します。 **Rank** API では、次のいずれかを使用することを決定できます。
 
-* "_活用_": 過去のデータに基づいて最善のアクションを決定するための現在のモデル。
-* "_探索_": 最上位のアクションではなく、別のアクションを選択します。 Azure portal で Personalizer リソースに対して[このパーセンテージを構成](how-to-settings.md#configure-exploration-to-allow-the-learning-loop-to-adapt)します。
+* _悪用_: 過去のデータに基づいて最善のアクションを決定するための現在のモデル。
+* _探索_: 最上位のアクションではなく、別のアクションを選択します。 Azure portal で Personalizer リソースに対して[このパーセンテージを構成](how-to-settings.md#configure-exploration-to-allow-the-learning-loop-to-adapt)します。
 
-報酬スコアを判別し、そのスコアを Reward API に送信します。 **Reward** API:
+報酬スコアを判別し、そのスコアを Reward API に送信します。 **Reward** API: 
 
 * 各 Rank 呼び出しの特徴と報酬スコアを記録することによってモデルをトレーニングするためのデータを収集します。
 * そのデータを使用して、"_学習ポリシー_" に指定された構成に基づいてモデルを更新します。
@@ -48,9 +48,9 @@ Personalizer のリソースである "_学習ループ_" は、機械学習を�
 
 ## <a name="personalizer-retrains-your-model"></a>Personalizer はモデルを再トレーニングする
 
-Personalizer は、Azure portal 内の Personalizer リソースの**モデルの更新頻度**設定に基づいて、モデルを再トレーニングします。
+Personalizer は、Azure portal 内の Personalizer リソースの **モデルの更新頻度** 設定に基づいて、モデルを再トレーニングします。
 
-Personalizer は、Azure portal 内の Personalizer リソースに対する**データ保持**設定の日数に基づいて、現在保持されているすべてのデータを使用します。
+Personalizer は、Azure portal 内の Personalizer リソースに対する **データ保持** 設定の日数に基づいて、現在保持されているすべてのデータを使用します。
 
 ## <a name="research-behind-personalizer"></a>Personalizer の背後にある研究
 

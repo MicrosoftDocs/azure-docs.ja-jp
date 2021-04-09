@@ -9,10 +9,10 @@ ms.author: brwrigh
 ms.reviewer: anbene
 ms.date: 12/23/2020
 ms.openlocfilehash: f096e53f8054039f361bde1c5f2adffac615c53d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371942"
 ---
 # <a name="how-to-plan-a-managed-service-offer-for-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレース向けのマネージド サービス オファーを計画する方法

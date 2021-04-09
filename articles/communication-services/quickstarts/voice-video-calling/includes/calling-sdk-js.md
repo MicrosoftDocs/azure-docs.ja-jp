@@ -2,18 +2,18 @@
 author: mikben
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 9/1/2020
+ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 4a9454abc2c4e41d711a4aef6a30438a72d27edb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 41a5f05f016a876894949c35a6610b2b49f9eb9d
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750909"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488116"
 ---
 ## <a name="prerequisites"></a>前提条件
 
-- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - デプロイ済みの Communication Services リソース。 [Communication Services リソースを作成します](../../create-communication-resource.md)。
 - 通話クライアントを有効にするための `User Access Token`。 [`User Access Token` を取得する方法](../../access-tokens.md)についての詳細
 - 省略可能:[アプリケーションへの通話の追加の概要](../getting-started-with-calling.md)に関するクイックスタートを完了します
@@ -26,7 +26,6 @@ ms.locfileid: "101750909"
 > このドキュメントでは、呼び出し元のクライアント ライブラリのバージョン 1.0.0-beta.6 を使用します。
 
 `npm install` コマンドを使用して、JavaScript 用の Azure Communication Services 通話および共通クライアント ライブラリをインストールします。
-このドキュメントでは、呼び出し元ライブラリのバージョン 1.0.0-beta.5 の型を参照しています。
 
 ```console
 npm install @azure/communication-common --save
@@ -63,14 +62,14 @@ const deviceManager = await callClient.getDeviceManager()
 
 ## <a name="place-an-outgoing-call"></a>発信通話を行う
 
-通話を作成して開始するには、CallAgent で API の 1 つを使用し、Communication Services 管理クライアント ライブラリを使用して作成したユーザーを指定する必要があります。
+通話を作成して開始するには、CallAgent で API の 1 つを使用し、Communication Services ID クライアント ライブラリを使用して作成したユーザーを指定する必要があります。
 
 通話の作成と開始は同期的に行います。 Call インスタンスを使用すると、通話イベントをサブスクライブできます。
 
 ## <a name="place-a-call"></a>通話を行う
 
 ### <a name="place-a-11-call-to-a-user-or-pstn"></a>ユーザーまたは PSTN と 1:1 の通話を行う
-別の Communication Services ユーザーへの通話を行うには、`callAgent` で `startCall` メソッドを呼び出し、[Communication Services 管理ライブラリで作成した](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens)呼び出し先の CommunicationUserIdentifier を渡します。
+別の Communication Services ユーザーへの通話を行うには、`callAgent` の `startCall` メソッドを呼び出し、[Communication Services ID ライブラリで作成した](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens)呼び出し先の CommunicationUserIdentifier を渡します。
 
 ```js
 const userCallee = { communicationUserId: '<ACS_USER_ID>' }
@@ -254,10 +253,10 @@ call.on('callEnded', callEndHander);
 
 ```js
 
-//mute local device 
+//mute local device
 await call.mute();
 
-//unmute local device 
+//unmute local device
 await call.unmute();
 
 ```
@@ -401,7 +400,7 @@ await call.removeParticipant(pstnIdentifier);
 const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStreams[0];
 const streamType: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
- 
+
 `RemoteVideoStream` をレンダリングするには、`isAvailableChanged` イベントをサブスクライブする必要があります。
 `isAvailable` プロパティが `true` に変更された場合、リモート参加者はストリームを送信しています。
 それが発生したら、`Renderer` の新しいインスタンスを作成し、非同期 `createView` メソッドを使用して新しい `RendererView` インスタンスを作成します。  その後、任意の UI 要素に `view.target` をアタッチできます。
@@ -561,6 +560,8 @@ console.log(result.video);
 
 ## <a name="call-recording-management"></a>通話記録の管理
 
+[!INCLUDE [Private Preview Notice](../../../includes/private-preview-include-section.md)]
+
 通話記録は、コア `Call` API の拡張機能です。 まず、記録機能 API オブジェクトを取得する必要があります。
 
 ```js
@@ -581,7 +582,7 @@ const isRecordingActiveChangedHandler = () => {
 };
 
 callRecordingApi.on('isRecordingActiveChanged', isRecordingActiveChangedHandler);
-               
+
 ```
 
 ## <a name="call-transfer-management"></a>通話転送の管理

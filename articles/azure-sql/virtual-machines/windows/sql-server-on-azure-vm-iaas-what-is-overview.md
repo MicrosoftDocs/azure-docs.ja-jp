@@ -14,10 +14,10 @@ ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: b4b1234b88eafedbd03b78241baaa40231a6cbd6
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97356805"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Virtual Machines 上の SQL Server とは何か (Windows)
@@ -114,7 +114,7 @@ Azure portal には、SQL 仮想マシンを含む[すべての Azure SQL リソ
 ![Azure SQL を検索する](./media/sql-server-on-azure-vm-iaas-what-is-overview/search-for-azure-sql.png)
 
 > [!NOTE]
-> Azure SQL には、すべての Azure SQL Database、エラスティック プール、論理サーバー、マネージド インスタンス、および仮想マシンにすばやく簡単にアクセスできる方法が用意されています。 Azure SQL はサービスでもリソースでもありません。 
+> Azure SQL には、すべての Azure SQL データベース、エラスティック プール、論理サーバー、マネージド インスタンス、および仮想マシンにすばやく簡単にアクセスできる方法が用意されています。 Azure SQL はサービスでもリソースでもありません。 
 
 既存のリソースを管理するには、一覧から目的の項目を選択します。 新しい Azure SQL リソースを作成するには、 **[+ 追加]** を選択します。 
 

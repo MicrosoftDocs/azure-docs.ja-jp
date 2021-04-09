@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4af29df27a109a9e1e26a720c190ab9d119fc4d1
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: f793f96f55a258b2d7cb11f214984416557618df
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033797"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453004"
 ---
 # <a name="azure-table-storage-output-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage の出力バインド
 
@@ -418,7 +418,7 @@ public static MyPoco TableOutput(
 
 # <a name="java"></a>[Java](#tab/java)
 
-[TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet&preserve-view=true) 注釈を使用して関数から Table Storage 行を出力するには、次の 2 つのオプションがあります。
+[TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput) 注釈を使用して関数から Table Storage 行を出力するには、次の 2 つのオプションがあります。
 
 - **戻り値**:関数自体に注釈を適用すると、関数の戻り値が Table Storage 行として永続化されます。
 
@@ -438,7 +438,7 @@ public static MyPoco TableOutput(
 
 - **戻り値**:*function.json* 内の `name` プロパティを `$return` に設定します。 この構成では、関数の戻り値は Table Storage 行として永続化されます。
 
-- **命令型**:[Out](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) 型として宣言されたパラメーターの [set](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true#set-val--t-----none) メソッドに値を渡します。 `set` に渡された値は、イベント ハブ メッセージとして永続化されます。
+- **命令型**:[Out](/python/api/azure-functions/azure.functions.out) 型として宣言されたパラメーターの [set](/python/api/azure-functions/azure.functions.out#set-val--t-----none) メソッドに値を渡します。 `set` に渡された値は、イベント ハブ メッセージとして永続化されます。
 
 ---
 

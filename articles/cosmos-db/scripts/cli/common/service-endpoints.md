@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 07/29/2020
 ms.openlocfilehash: 09dce9658dc602e68d87f7b989301f6934efbce9
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94563071"
 ---
 # <a name="create-an-azure-cosmos-account-with-virtual-network-service-endpoints-using-azure-cli"></a>Azure CLI を使用して、仮想ネットワーク サービス エンドポイントを使用する Azure Cosmos アカウントを作成する

@@ -11,127 +11,227 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 02/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: c6ea238edd68413646dda59b22d1c0dc2557d57e
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 33d84ca86ac3cd4696dce3797b015b861884182a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916833"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102216430"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Media Services v3 API に接続する - Node.js
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-この記事では、サービス プリンシパルによるサインイン方式を使用して Azure Media Services v3 Node.js SDK に接続する方法を説明します。
+この記事では、サービス プリンシパルによるサインイン方式を使用して Azure Media Services v3 Node.js SDK に接続する方法を説明します。 *media-services-v3-node-tutorials* サンプルのリポジトリにあるファイルを使用します。 *HelloWorld-ListAssets* サンプルには、接続してからアカウントの資産を一覧表示するためのコードが含まれています。
 
 ## <a name="prerequisites"></a>前提条件
 
+- Visual Studio Code のインストール。
 - [Node.js](https://nodejs.org/en/download/) をインストールします。
+- [Typescript](https://www.typescriptlang.org/download) をインストールします。
 - [Media Services アカウントを作成する](./create-account-howto.md) リソース グループ名と Media Services アカウント名を覚えておいてください。
+- アプリケーションのサービス プリンシパルを作成します。 [API へのアクセスする](./access-api-howto.md)に関するページを参照してください。<br/>**Pro ヒント!** このウィンドウを開いたままにするか、JSON タブ内のすべてをメモ帳にコピーします。 
+- [AzureMediaServices SDK for JavaScript](https://www.npmjs.com/package/@azure/arm-mediaservices) の最新バージョンを入手していることを確認してください。
 
 > [!IMPORTANT]
-> [命名規則](media-services-apis-overview.md#naming-conventions)を確認してください。
+> エンティティの名前付けに関する重要な制限事項を理解するには、Azure Media Services の「[名前付け規則](media-services-apis-overview.md#naming-conventions)」を確認してください。
 
-## <a name="create-packagejson"></a>package.json を作成する
+## <a name="clone-the-nodejs-samples-repo"></a>Node.JS のサンプル リポジトリを複製する
 
-1. 好みのエディターを使用して package.json ファイルを作成します。
+Azure のサンプルのいくつかのファイルを使用します。 Node.JS のサンプル リポジトリを複製します。
+
+```git
+git clone https://github.com/Azure-Samples/media-services-v3-node-tutorials.git
+```
+
+## <a name="install-the-packages"></a>パッケージのインストール
+
+### <a name="install-azurearm-mediaservices"></a>@azure/arm-mediaservices のインストール
+
+```bash
+npm install @azure/arm-mediaservices
+```
+
+### <a name="install-azurems-rest-nodeauth"></a>@azure/ms-rest-nodeauth のインストール
+
+"@azure/ms-rest-nodeauth" の最小バージョン ("^3.0.0") をインストールしてください。
+
+```bash
+npm install @azure/ms-rest-nodeauth@"^3.0.0"
+```
+
+この例では、`package.json` ファイル内の次のパッケージを使用します。
+
+|Package|説明|
+|---|---|
+|`@azure/arm-mediaservices`|Azure Media Services SDK。 <br/>最新の Azure Media Services パッケージを使用していることを確認するには、[npm install @azure/arm-mediaservices](https://www.npmjs.com/package/@azure/arm-mediaservices) を確認してください。|
+|`@azure/ms-rest-nodeauth` | サービス プリンシパルまたはマネージド ID を使用した AAD 認証に必要です|
+|`@azure/storage-blob`|Storage SDK。 ファイルを資産にアップロードするときに使用します。|
+|`@azure/ms-rest-js`| サインインするために使用します。|
+|`@azure/storage-blob` | エンコードのために Azure Media Services の資産にファイルをアップロードおよびダウンロードするために使用します。|
+|`@azure/abort-controller`| 長時間実行されるダウンロード操作をタイムアウトにするために、ストレージ クライアントと共に使用されます|
+
+### <a name="create-the-packagejson-file"></a>package.json ファイルを作成する
+
+1. 好みのエディターを使用して `package.json` ファイルを作成します。
 1. ファイルを開き、次のコードを貼り付けます。
-
-   [AzureMediaServices SDK for JavaScript](https://www.npmjs.com/package/@azure/arm-mediaservices) の最新バージョンを入手していることを確認してください。
 
 ```json
 {
   "name": "media-services-node-sample",
   "version": "0.1.0",
   "description": "",
-  "main": "./index.js",
+  "main": "./index.ts",
   "dependencies": {
-    "azure-arm-mediaservices": "^8.0.0",
-    "azure-storage": "^2.8.0",
-    "ms-rest": "^2.3.3",
-    "ms-rest-azure": "^2.5.5"
+    "@azure/arm-mediaservices": "^8.0.0",
+    "@azure/abort-controller": "^1.0.2",
+    "@azure/ms-rest-nodeauth": "^3.0.6",
+    "@azure/storage-blob": "^12.4.0",
   }
 }
 ```
 
-次のパッケージを指定する必要があります。
+## <a name="connect-to-nodejs-client-using-typescript"></a>TypeScript を使用して Node.js クライアントに接続する
 
-|Package|説明|
-|---|---|
-|`azure-arm-mediaservices`|Azure Media Services SDK。 <br/>最新の Azure Media Services パッケージを使用していることを確認するには、[NPM install azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/) をチェックします。|
-|`azure-storage`|Storage SDK。 ファイルを資産にアップロードするときに使用します。|
-|`ms-rest-azure`| サインインするために使用します。|
 
-最新のパッケージを使用していることを確認するには、次のコマンドを実行します。
 
-```
-npm install azure-arm-mediaservices
-```
+### <a name="sample-env-file"></a>サンプルの *.env* ファイル
 
-## <a name="connect-to-nodejs-client"></a>Node.js クライアントに接続する
+このファイルの内容を、" *.env*" という名前のファイルにコピーします。 これは、作業リポジトリのルートに格納されている必要があります。 これらは、ポータルの Media Services アカウントの [API アクセス] ページから取得した値です。
 
-1. 好みのエディターを使用して .js ファイルを作成します。
-1. ファイルを開き、次のコードを貼り付けます。
-1. "endpoint config" セクションの値を、[アクセス API](./access-api-howto.md) から取得した値に設定します。
+" *.env*" ファイルを作成したら、サンプルの使用を開始できます。
 
-```js
-'use strict';
+```nodejs
+# Values from the API Access page in the portal
+AZURE_CLIENT_ID=""
+AZURE_CLIENT_SECRET= ""
+AZURE_TENANT_ID= ""
 
-const MediaServices = require('azure-arm-mediaservices');
-const msRestAzure = require('ms-rest-azure');
-const msRest = require('ms-rest');
-const azureStorage = require('azure-storage');
+# Change this to match your AAD Tenant domain name. 
+AAD_TENANT_DOMAIN = "microsoft.onmicrosoft.com"
 
-// endpoint config
-// make sure your URL values end with '/'
-const armAadAudience = "";
-const aadEndpoint = "";
-const armEndpoint = "";
-const subscriptionId = "";
-const accountName = "";
-const region = "";
-const aadClientId = "";
-const aadSecret = "";
-const aadTenantId = "";
-const resourceGroup = "";
+# Set this to your Media Services Account name, resource group it is contained in, and location
+AZURE_MEDIA_ACCOUNT_NAME = ""
+AZURE_LOCATION= ""
+AZURE_RESOURCE_GROUP= ""
 
-let azureMediaServicesClient;
+# Set this to your Azure Subscription ID
+AZURE_SUBSCRIPTION_ID= ""
 
-///////////////////////////////////////////
-//     Entrypoint for sample script      //
-///////////////////////////////////////////
+# You must change these if you are using Gov Cloud, China, or other non standard cloud regions
+AZURE_ARM_AUDIENCE= "https://management.core.windows.net"
+AZURE_ARM_ENDPOINT="https://management.azure.com"
 
-msRestAzure.loginWithServicePrincipalSecret(aadClientId, aadSecret, aadTenantId, {
-  environment: {
-    activeDirectoryResourceId: armAadAudience,
-    resourceManagerEndpointUrl: armEndpoint,
-    activeDirectoryEndpointUrl: aadEndpoint
-  }
-}, async function(err, credentials, subscriptions) {
-    if (err) return console.log(err);
-    azureMediaServicesClient = new MediaServices(credentials, subscriptionId, armEndpoint, { noRetryPolicy: true });
-    
-    console.log("connected");
-
-});
+# DRM Testing
+DRM_SYMMETRIC_KEY="add random base 64 encoded string here"
 ```
 
-## <a name="run-your-app"></a>アプリを実行する
+## <a name="run-the-sample-application-helloworld-listassets"></a>サンプル アプリケーション *HelloWorld-ListAssets* を実行する
 
-コマンド プロンプトを開きます。 サンプルのディレクトリに移動して、以下のコマンドを実行します。
+1. *AMSv3Samples* フォルダーに移動します
+
+```bash
+cd AMSv3Samples
+```
+
+2. *packages.json* ファイルに使用されているパッケージをインストールします。
 
 ```
 npm install 
-node index.js
 ```
+
+3. *HelloWorld-ListAssets* フォルダーに移動します。
+
+```bash
+cd HelloWorld-ListAssets
+```
+
+4. AMSv3Samples フォルダーから Visual Studio Code を起動します。 これは、".vscode" フォルダーと tsconfig.json ファイルが格納されているフォルダーから起動するために必要です
+
+```dotnetcli
+cd ..
+code .
+```
+
+*HelloWorld-ListAssets* のフォルダーを開き、Visual Studio Code エディターで *index.ts* ファイルを開きます。
+
+*index.ts* ファイルで F5 キーを押してデバッガーを起動します。 アカウントに資産が既に存在する場合は、表示される資産の一覧が表示されます。 アカウントが空の場合は、空の一覧が表示されます。  
+
+一覧表示される資産をすばやく確認するには、ポータルを使用して、いくつかのビデオ ファイルをアップロードします。 資産はそれぞれ自動的に作成され、このスクリプトを再度実行すると、それらの名前が返されます。
+
+### <a name="a-closer-look-at-the-helloworld-listassets-sample"></a>*HelloWorld-ListAssets* サンプルの詳細
+
+*HelloWorld-ListAssets* サンプルでは、サービス プリンシパルを使用して Media Services クライアントに接続し、アカウントの資産を一覧表示する方法が示されています。 実行される内容の詳細については、コード内のコメントを参照してください。
+
+```ts
+import * as msRestNodeAuth from "@azure/ms-rest-nodeauth";
+import { AzureMediaServices } from '@azure/arm-mediaservices';
+import { AzureMediaServicesOptions } from "@azure/arm-mediaservices/esm/models";
+// Load the .env file if it exists
+import * as dotenv from "dotenv";
+dotenv.config();
+
+export async function main() {
+  // Copy the samples.env file and rename it to .env first, then populate it's values with the values obtained 
+  // from your Media Services account's API Access page in the Azure portal.
+  const clientId = process.env.AZURE_CLIENT_ID as string;
+  const secret = process.env.AZURE_CLIENT_SECRET as string;
+  const tenantDomain = process.env.AAD_TENANT_DOMAIN as string;
+  const subscriptionId = process.env.AZURE_SUBSCRIPTION_ID as string;
+  const resourceGroup = process.env.AZURE_RESOURCE_GROUP as string;
+  const accountName = process.env.AZURE_MEDIA_ACCOUNT_NAME as string;
+
+  let clientOptions: AzureMediaServicesOptions = {
+    longRunningOperationRetryTimeout: 5, // set the time out for retries to 5 seconds
+    noRetryPolicy: false // use the default retry policy.
+  }
+
+  const creds = await msRestNodeAuth.loginWithServicePrincipalSecret(clientId, secret, tenantDomain);
+  const mediaClient = new AzureMediaServices(creds, subscriptionId, clientOptions);
+
+  // List Assets in Account
+  console.log("Listing Assets Names in account:")
+  var assets = await mediaClient.assets.list(resourceGroup, accountName);
+
+  assets.forEach(asset => {
+    console.log(asset.name);
+  });
+
+  if (assets.odatanextLink) {
+    console.log("There are more than 1000 assets in this account, use the assets.listNext() method to continue listing more assets if needed")
+    console.log("For example:  assets = await mediaClient.assets.listNext(assets.odatanextLink)");
+  }
+}
+
+main().catch((err) => {
+  console.error("Error running sample:", err.message);
+});
+```
+
+## <a name="more-samples"></a>その他のサンプル
+
+次のサンプルは、[リポジトリ](https://github.com/Azure-Samples/media-services-v3-node-tutorials)で入手可能です
+
+|プロジェクト名|ユース ケース|
+|---|---|
+|Live/index.ts| ライブ ストリーミングの基本的な例。 **警告**: ライブを使用する場合は、すべてのリソースがクリーンアップされていて、ポータルで課金されなくなっていることを確認してください|
+|StreamFilesSample/index.ts| ソース URL からローカル ファイルまたはエンコードをアップロードするための基本的な例。 サンプルでは、Storage SDK を使用してコンテンツをダウンロードする方法と、プレーヤーにストリーミングする方法が示されています |
+|StreamFilesWithDRMSample/index.ts| Widevine と PlayReady DRM を使用したエンコードとストリーミングの方法を示しています |
+|VideoIndexerSample/index.ts| ビデオおよびオーディオ アナライザーのプリセットを使用して、ビデオまたはオーディオ ファイルからメタデータと分析情報を生成する例 |
 
 ## <a name="see-also"></a>関連項目
 
+- [Node.js 用 Azure Media Services モジュールのリファレンス ドキュメント](/javascript/api/overview/azure/media-services)
+- [JavaScript および Node.js 開発者向けの Azure](/azure/developer/javascript/)
+- [@azure/azure-sdk-for-js GitHub リポジトリにおける Media Services のソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
+- [Node.js 開発者向けの Azure パッケージのドキュメント](/javascript/api/overview/azure/)
 - [Media Services の概念](concepts-overview.md)
-- [NPM インストール azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)
+- [npm install @azure/arm-mediaservices](https://www.npmjs.com/package/@azure/arm-mediaservices)
+- [JavaScript および Node.js 開発者向けの Azure](/azure/developer/javascript/)
+- [@azure/azure-sdk-for-js リポジトリにおける Media Services のソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
 
 ## <a name="next-steps"></a>次のステップ
 

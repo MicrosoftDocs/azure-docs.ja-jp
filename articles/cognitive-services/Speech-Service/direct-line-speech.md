@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 501a0e954efbdbc9a0396fd94c915efaf0fde9fc
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6eb689c2e93b5a9cac932e428245410ba35e77d6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601122"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102611795"
 ---
 # <a name="what-is-direct-line-speech"></a>Direct Line Speech とは
 
@@ -60,11 +60,11 @@ Direct Line Speech と音声アシスタントのための関連する機能は�
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
 * [Speech SDK](./speech-sdk.md)
-* [Azure Bot Service](/azure/bot-service/?view=azure-bot-service-4.0)
+* [Azure Bot Service](/azure/bot-service/)
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Speech サービスのサブスクリプション キーを無料で取得する](overview.md#try-the-speech-service-for-free)
 * [Speech SDK を取得する](speech-sdk.md)
-* [基本ボットの作成とデプロイ](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+* [基本ボットの作成とデプロイ](/azure/bot-service/bot-builder-tutorial-basic-deploy)
 * [仮想アシスタント ソリューションとエンタープライズ テンプレートの入手](https://github.com/Microsoft/AI)

@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abb7f93437cd45914d3824e9f557241ba0d71162
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94835392"
 ---
 # <a name="configure-privileged-access-group-settings-preview-in-privileged-identity-management"></a>Privileged Identity Management で特権アクセス グループの設定 (プレビュー) を構成する
@@ -92,13 +92,13 @@ Azure 特権アクセス グループ ロールの設定を開くには、次の
 
 ## <a name="require-multi-factor-authentication"></a>多要素認証が必要です
 
-Privileged Identity Management では、2 つの異なるシナリオで、必要に応じて Azure AD Multi-factor Authentication を強制できます。
+Privileged Identity Management では、2 つの異なるシナリオで、Azure AD Multi-factor Authentication の強制を選択できます。
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>アクティブな割り当てに多要素認証が必要
 
 場合によっては、ユーザーまたはグループをロールに短期間 (たとえば 1 日) 割り当てる必要があります。 この場合、割り当てられたユーザーがアクティブ化を要求する必要はありません。 このシナリオでは、ユーザーは割り当てられた時点からそのロールでアクティブになるため、各自がそのロールの割り当てを使用するときに、Privileged Identity Management で Multi-Factor Authentication を強制することができません。
 
-割り当てを実行するリソース管理者が、確かに本人が言うような人物であることを保証するために、**[アクティブな割り当てに多要素認証が必要]** チェックボックスをオンにして、アクティブな割り当てに Multi-Factor Authentication を強制することができます。
+割り当てを実行するリソース管理者が、確かに本人が言うような人物であることを保証するために、 **[アクティブな割り当てに多要素認証が必要]** チェックボックスをオンにして、アクティブな割り当てに Multi-Factor Authentication を強制することができます。
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>アクティブ化に Multi-Factor Authentication を要求する
 

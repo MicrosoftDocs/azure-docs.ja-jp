@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: ab819239572fd99fdf5ff3bf23f81eb3cdff3b9a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 915fdcb059d9e7bf9e1853040b90b82a0457652e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940098"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598407"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>エンコードのシナリオ ベースの移行ガイダンス
 
@@ -41,7 +41,7 @@ V2 と V3 のエンコード ワークフローを視覚的に比較するため
 
 次の画像をクリックすると、より大きなバージョンが表示されます。
 
-[ ![V2 のエンコード ワークフロー](./media/migration-guide/V2-pretty.svg) ](./media/migration-guide/V2-pretty.svg#lightbox)
+[![V2 のエンコード ワークフロー](./media/migration-guide/V2-pretty.svg) ](./media/migration-guide/V2-pretty.svg#lightbox)
 
 1. セットアップ
     1. 資産を作成するか、または既存の資産を使用します。 新しい資産を使用している場合は、コンテンツをその資産にアップロードします。 既存の資産を使用している場合は、その資産内に既に存在するファイルをエンコードする必要があります。
@@ -58,7 +58,7 @@ V2 と V3 のエンコード ワークフローを視覚的に比較するため
 
 ### <a name="v3-encoding-workflow"></a>V3 のエンコード ワークフロー
 
-[ ![V3 のエンコード ワークフロー](./media/migration-guide/V3-pretty.svg) ](./media/migration-guide/V3-pretty.svg#lightbox)
+[![V3 のエンコード ワークフロー](./media/migration-guide/V3-pretty.svg)](./media/migration-guide/V3-pretty.svg#lightbox)
 
 1. 設定
     1. 資産を作成するか、または既存の資産を使用します。 新しい資産を使用している場合は、コンテンツをその資産にアップロードします。 既存の資産を使用している場合は、その資産内に既に存在するファイルをエンコードする必要があります。 "*その資産にさらにコンテンツをアップロードすることはやめてください。* "
@@ -76,7 +76,7 @@ V2 と V3 のエンコード ワークフローを視覚的に比較するため
         - 出力資産
         - リソース グループ
         - AMS アカウント名  
-1. ジョブを監視するために [Event Grid](monitor-events-portal-how-to.md) を使用します。
+1. ジョブを監視するために [Event Grid](monitoring/monitor-events-portal-how-to.md) を使用します。
 1. ジョブを送信します。
 
 ## <a name="custom-presets-from-v2-to-v3-encoding"></a>V2 から V3 エンコードへのカスタム プリセット
@@ -84,17 +84,6 @@ V2 と V3 のエンコード ワークフローを視覚的に比較するため
 V2 コードでカスタム プリセットを使用して Standard Encoder を呼び出した場合は、ジョブを送信する前に、まず、カスタム Standard Encoder プリセットを使用して新しい変換を作成する必要があります。
 
 カスタム プリセットは現在 JSON であり、XML ベースではなくなりました。 [Transform Open API (Swagger)](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/examples/transforms-create.json) のドキュメントで定義されているカスタム プリセット スキーマに従って、JSON でプリセットを再作成します。
-
-
-<!-- removed because this is covered in the tutorials
-Common custom [encoding](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json) scenarios:
-        1. Create a custom Single Bitrate MP4 encode
-        1. Create a custom [Adaptive Bitrate Encoding Ladder](autogen-bitrate-ladder.md)
-        1. Creating Sprite Thumbnails
-        1. Creating Thumbnails (see below for your preferred method)
-        1. [Sub Clipping](subclip-video-rest-howto.md)
-        1. Cropping
--->
 
 ## <a name="input-and-output-metadata-files-from-an-encoding-job"></a>エンコード ジョブからの入力および出力メタデータ ファイル
 

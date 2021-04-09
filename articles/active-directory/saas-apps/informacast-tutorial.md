@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/24/2020
 ms.author: jeedes
 ms.openlocfilehash: 893cf0d55d9e2d3e60c7b4f15346362e37827230
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98732863"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-informacast"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と InformaCast の統合

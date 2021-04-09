@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 69b122196cbeb7508cddf3a890768f83fdcd4727
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88030930"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps のレンダリング範囲
@@ -32,7 +32,7 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 ## <a name="africa"></a>アフリカ 
 
 
-| 国/地域 | ラスター タイルの統合 | ベクター タイルの統合 |
+| 国/リージョン | ラスター タイルの統合 | ベクター タイルの統合 |
 | ------ | :------------------: | :------------------: |
 | アルジェリア                          | ✓ | ✓ |
 | アンゴラ                           | ✓ | ✓ |

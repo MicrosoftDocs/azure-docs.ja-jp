@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 42f6107ff79d6262cdc0a35cf972cf65d3a9a802
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86171382"
 ---
 # <a name="security-and-authentication"></a>セキュリティと認証
@@ -147,7 +147,7 @@ Event Grid モジュールの既定では、サブスクライバーのサーバ
 
 ## <a name="summary"></a>まとめ
 
-Event Grid モジュールは、**既定ではセキュリティで保護**されています。 運用環境のデプロイには、これらの既定値をそのまま使用することをお勧めします。
+Event Grid モジュールは、**既定ではセキュリティで保護** されています。 運用環境のデプロイには、これらの既定値をそのまま使用することをお勧めします。
 
 構成中に使用する基本原則を次に示します。
 

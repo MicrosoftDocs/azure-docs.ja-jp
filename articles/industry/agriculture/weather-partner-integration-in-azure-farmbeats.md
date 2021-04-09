@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
 ms.openlocfilehash: f0fbd93e2a5f4e92089e10e75dc17e304ff80bf6
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93147081"
 ---
 # <a name="weather-partner-integration-with-farmbeats"></a>気象パートナーと FarmBeats の統合
@@ -142,8 +142,8 @@ Docker プログラムには、ブートストラップとジョブという 2 �
 
 WeatherDataModel | [説明] |
 --- | ---
-Name  | 気象データ モデルの名前。 |
-Description  | モデルについてのわかりやすい説明。 |
+名前  | 気象データ モデルの名前。 |
+説明  | モデルについてのわかりやすい説明。 |
 Properties  | データ プロバイダーによって定義される追加プロパティ。 |
 weatherMeasures > Name  | 気象メジャーの名前。 たとえば、humidity_max。 |
 weatherMeasures > DataType  | Double または Enum。 Enum の場合は、measureEnumDefinition が必要です。 |
@@ -156,7 +156,7 @@ weatherMeasures > Description  | メジャーについてのわかりやすい�
 
 JobType | 説明 |
 --- | ---
-Name  | ジョブの名前。 たとえば、Get_Daily_Forecast。 顧客は、このジョブを実行して気象データを取得します。|
+名前  | ジョブの名前。 たとえば、Get_Daily_Forecast。 顧客は、このジョブを実行して気象データを取得します。|
 pipelineDetails > parameters > name  | パラメーターの名前。 |
 pipelineDetails > parameters > type | パラメーターの型。 指定できる値は、String、Int、Float、Bool、Array です。 |
 pipelineDetails > parameters > isRequired | パラメーターのブール値。 パラメーターが必須の場合、値は true です。 それ以外の場合、値は false です。 既定値は true です。 |
@@ -169,7 +169,7 @@ WeatherDataLocation | 説明 |
 --- | ---
 weatherDataModelId  | ブートストラップ プロセスの間に作成された対応する WeatherDataModel の ID。|
 location  | 緯度、経度、高度。 |
-Name | オブジェクト名。 |
+名前 | オブジェクト名。 |
 説明 | 気象データの場所の説明。 |
 farmId | (省略可能) ファームの ID。 顧客は、この ID をジョブ パラメーターの一部として指定します。 |
 Properties  | 製造元から提供されるその他のプロパティ。

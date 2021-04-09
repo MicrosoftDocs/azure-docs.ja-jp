@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 02/12/2021
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 2e00c9429ab3e39f95bc5ce6df072a99e4f02b86
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100559569"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>特定の仮想ネットワークから Azure Service Bus 名前空間へのアクセスを許可する

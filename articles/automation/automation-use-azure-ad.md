@@ -5,10 +5,10 @@ services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 336c0387ac9febcc517c2ce358d0b04c80d10678
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99576805"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Azure AD を使用して Azure に対する認証を行う

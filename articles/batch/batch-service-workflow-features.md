@@ -4,10 +4,10 @@ description: 開発の観点から、Batch サービスの機能とその高レ�
 ms.topic: conceptual
 ms.date: 05/12/2020
 ms.openlocfilehash: 76a0b140f3bea4b07a6de632abbcbc3fd26e582d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85965214"
 ---
 # <a name="batch-service-workflow-and-resources"></a>Batch サービスのワークフローとリソース
@@ -23,8 +23,8 @@ ms.locfileid: "85965214"
 
 以下に示したのは、Batch サービスを使って並列ワークロードを処理するアプリケーションやサービスでほぼ例外なく使用する基本的なワークフローです。
 
-1. 処理対象の**データ ファイル**を [Azure Storage](../storage/index.yml) アカウントにアップロードします。 Batch には、Azure Blob Storage へのアクセスのサポートが組み込まれており、これらのファイルは、タスクの実行時に [コンピューティング ノード](nodes-and-pools.md#nodes) にダウンロードすることができます。
-2. タスクで実行する**アプリケーション ファイル**をアップロードします。 たとえばジョブのタスクによって実行されるバイナリやスクリプト、さらには、その依存関係をアップロードできます。 これらのファイルは、タスクによって Storage アカウントからダウンロードできます。また、Batch の[アプリケーション パッケージ](nodes-and-pools.md#application-packages)機能をアプリケーションの管理とデプロイに利用することもできます。
+1. 処理対象の **データ ファイル** を [Azure Storage](../storage/index.yml) アカウントにアップロードします。 Batch には、Azure Blob Storage へのアクセスのサポートが組み込まれており、これらのファイルは、タスクの実行時に [コンピューティング ノード](nodes-and-pools.md#nodes) にダウンロードすることができます。
+2. タスクで実行する **アプリケーション ファイル** をアップロードします。 たとえばジョブのタスクによって実行されるバイナリやスクリプト、さらには、その依存関係をアップロードできます。 これらのファイルは、タスクによって Storage アカウントからダウンロードできます。また、Batch の[アプリケーション パッケージ](nodes-and-pools.md#application-packages)機能をアプリケーションの管理とデプロイに利用することもできます。
 3. コンピューティング ノードの [プール](nodes-and-pools.md#pools) を作成します。 プールを作成するときに、プールのコンピューティング ノードの数とサイズ、オペレーティング システムを指定します。 ジョブに含まれる各タスクは、その実行時に、プール内のいずれかのノードで実行されるように割り当てられます。
 4. [ジョブ](jobs-and-tasks.md#jobs)を作成します。 ジョブはタスクのコレクションを管理するものです。 各ジョブは、ジョブのタスクの実行場所とする特定のプールに関連付けて使用します。
 5. ジョブに [タスク](jobs-and-tasks.md#tasks) を追加します。 各タスクは、アップロードされたアプリケーション (またはスクリプト) を実行し、ストレージ アカウントからダウンロードしたデータ ファイルを処理します。 完了した各タスクは、その出力を Azure Storage にアップロードすることができます。

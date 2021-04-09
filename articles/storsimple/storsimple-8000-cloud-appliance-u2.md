@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: d78051c1a5af82a986152c8244d25b68dd65d552
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94968844"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Azure での StorSimple Cloud Appliance のデプロイと管理 (Update 3 以降)
@@ -65,7 +65,7 @@ StorSimple Cloud Appliance と StorSimple 物理デバイスの主な相違点�
 |  | 物理デバイス | クラウド アプライアンス |
 | --- | --- | --- |
 | **場所** |データ センター内に存在します。 |Azure で実行されます。 |
-| **ネットワーク インターフェイス** |6 つのネットワーク インターフェイスがあります (DATA 0 から DATA 5)。 |ネットワーク インターフェイスは 1 つのみです (DATA 0)。 |
+| **ネットワーク インターフェイス** |6 つのネットワーク インターフェイス (DATA 0 から DATA 5) があります。 |ネットワーク インターフェイスは DATA 0 ただ 1 つです。 |
 | **登録** |初期構成手順の中で登録を行います。 |登録は別の作業です。 |
 | **サービス データ暗号化キー** |物理デバイスで再生成し、新しいキーでクラウド アプライアンスを更新します。 |クラウド アプライアンスから再生成することはできません。 |
 | **サポートされるボリュームの種類** |ローカル固定ボリュームと階層化ボリュームの両方がサポートされます。 |階層化ボリュームのみサポートされます。 |
@@ -110,7 +110,7 @@ StorSimple Cloud Appliance と StorSimple 物理デバイスの主な相違点�
 
 StorSimple Cloud Appliance を作成するには、次の手順を実行します。
 
-### <a name="step-1-create-a-cloud-appliance"></a>手順 1:クラウド アプライアンスの作成
+### <a name="step-1-create-a-cloud-appliance"></a>手順 1. クラウド アプライアンスを作成する
 
 StorSimple Cloud Appliance を作成するには、次の手順を実行します。
 
@@ -118,7 +118,7 @@ StorSimple Cloud Appliance を作成するには、次の手順を実行しま�
 
 この手順でクラウド アプライアンスを作成できない場合は、インターネットに接続されていない可能性があります。 詳しくは、「[インターネット接続エラーのトラブルシューティング](#troubleshoot-internet-connectivity-errors)」をご覧ください。
 
-### <a name="step-2-configure-and-register-the-cloud-appliance"></a>手順 2:クラウド アプライアンスの構成と登録
+### <a name="step-2-configure-and-register-the-cloud-appliance"></a>手順 2. クラウド アプライアンスを構成して登録する
 
 この手順を開始する前に、サービス データ暗号化キーのコピーがあることを確認してください。 StorSimple デバイス マネージャー サービスに最初の StorSimple 物理デバイスを登録すると、サービス データ暗号化キーが作成されます。 キーは安全な場所に保存するよう指示されます。 サービス データ暗号化キーのコピーがない場合は、Microsoft サポートに支援を依頼する必要があります。
 
@@ -126,7 +126,7 @@ StorSimple Cloud Appliance を構成して登録するには、次の手順を�
 
 [!INCLUDE [Configure and register a cloud appliance](../../includes/storsimple-8000-configure-register-cloud-appliance.md)]
 
-### <a name="step-3-optional-modify-the-device-configuration-settings"></a>手順 3:(オプション) デバイスの構成設定の変更
+### <a name="step-3-optional-modify-the-device-configuration-settings"></a>手順 3. (オプション) デバイスの構成設定の変更
 
 次のセクションでは、CHAP を使用する場合や StorSimple Snapshot Manager のパスワードまたはデバイス管理者パスワードを変更する場合に StorSimple Cloud Appliance に必要なデバイス構成設定について説明します。
 
@@ -162,13 +162,13 @@ Windows PowerShell インターフェイス経由でのクラウド アプライ
 
 クラウド アプライアンスにリモート接続するための 2 つの手順を以下で説明します。
 
-### <a name="step-1-configure-remote-management"></a>手順 1:リモート管理の構成
+### <a name="step-1-configure-remote-management"></a>手順 1. リモート管理の構成
 
 StorSimple Cloud Appliance のリモート管理を構成するには、次の手順を実行します。
 
 [!INCLUDE [Configure remote management via HTTP for cloud appliance](../../includes/storsimple-8000-configure-remote-management-http-device.md)]
 
-### <a name="step-2-remotely-access-the-cloud-appliance"></a>手順 2:クラウド アプライアンスへのリモート アクセス
+### <a name="step-2-remotely-access-the-cloud-appliance"></a>手順 2. クラウド アプライアンスへのリモート アクセス
 
 クラウド アプライアンスのリモート管理を有効にしたら、Windows PowerShell リモート処理を使って、同じ仮想ネットワーク内の別の仮想マシンからクラウド アプライアンスに接続できます。 たとえば、iSCSI に接続するよう構成して使用しているホスト VM から接続することができます。 ほとんどのデプロイでは、ホスト VM にアクセスするためのパブリック エンドポイントを開き、それを使用してクラウド アプライアンスにアクセスできます。
 
@@ -231,7 +231,7 @@ StorSimple Cloud Appliance の作成と構成が終了したので、操作を�
 
 詳しい手順については、「 [StorSimple デバイスの非アクティブ化と削除](storsimple-8000-deactivate-and-delete-device.md)」をご覧ください。
 
-クラウド アプライアンスは、StorSimple デバイス マネージャー サービス ブレードで非アクティブと表示されたら、 **[デバイス]** ブレードのデバイス一覧から削除できます。
+クラウド アプライアンスは、StorSimple デバイス マネージャー サービス ブレードで非アクティブと表示されたら、**[デバイス]** ブレードのデバイス一覧から削除できます。
 
 ### <a name="start-stop-and-restart-a-cloud-appliance"></a>クラウド アプライアンスの開始、停止、および再起動
 StorSimple 物理デバイスとは異なり、StorSimple Cloud Appliance には電源をオンまたはオフにするボタンはありません。 ただし、クラウド アプライアンスを停止して再起動する必要がある場合があります。

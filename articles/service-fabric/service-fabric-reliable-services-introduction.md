@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: masnider
 ms.openlocfilehash: 50b8cae11cef5ee8670e2e0270fd8506b1dad4d4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96576538"
 ---
 # <a name="reliable-services-overview"></a>Reliable Services の概要

@@ -12,10 +12,10 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 90ed91caa1c4b71ae90b86f5b0783a6d5c1c669e
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102552798"
 ---
 # <a name="create-a-shared-image-gallery-using-the-portal"></a>ポータルを使用して共有イメージ ギャラリーを作成する

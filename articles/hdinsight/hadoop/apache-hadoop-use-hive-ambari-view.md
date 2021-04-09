@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 1f2dbef014f1b48b554e6bc30af83b936fe532a7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 87a4d3960937450713747fa16bd473b4c34eff0e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944876"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867867"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で Apache Ambari Hive ビューを使用する
 
@@ -30,11 +30,11 @@ HDInsight 上の Hadoop クラスター。 [Linux での HDInsight の概要](./
 
 1. ビューの一覧で、__Hive ビュー__ を選択します。
 
-    ![Apache Ambari の Apache Hive ビューの選択](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png" alt-text="Apache Ambari の Apache Hive ビューの選択" border="true":::
 
     Hive ビュー ページは次の図のようになります。
 
-    ![Hive ビューのクエリ ワークシートの画像](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
+    :::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png" alt-text="Hive ビューのクエリ ワークシートの画像" border="true":::
 
 1. __[Query]\(クエリ\)__ タブから、次の HiveQL ステートメントをワークシートに貼り付けます。
 
@@ -99,19 +99,19 @@ HDInsight 上の Hadoop クラスター。 [Linux での HDInsight の概要](./
 
 __[Jobs]\(ジョブ\)__ タブには、Hive クエリの履歴が表示されます。
 
-![Apache Hive の [ジョブ] タブの履歴の表示](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png" alt-text="Apache Hive の [ジョブ] タブの履歴の表示" border="true":::
 
 ## <a name="database-tables"></a>データベース テーブル
 
 __[Tables]\(テーブル\)__ タブを使用して、Hive データベース内のテーブルを操作できます。
 
-![Apache Hive の [テーブル] タブの画像](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png" alt-text="Apache Hive の [テーブル] タブの画像" border="true":::
 
 ## <a name="saved-queries"></a>保存済みのクエリ
 
 **[Query]\(クエリ\)** タブでは、必要に応じてクエリを保存できます。 クエリを保存すると、 __[Saved Queries]\(保存済みクエリ\)__ タブでそのクエリを再利用できます。
 
-![Apache Hive ビューの [保存済みクエリ] タブ](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png" alt-text="Apache Hive ビューの [保存済みクエリ] タブ" border="true":::
 
 > [!TIP]  
 > 保存済みのクエリは、既定のクラスター記憶域に格納されます。 保存済みのクエリは、パス `/user/<username>/hive/scripts` の下にあります。 これらはプレーンテキストの `.hql` ファイルとして格納されます。
@@ -124,7 +124,7 @@ __[Tables]\(テーブル\)__ タブを使用して、Hive データベース内�
 
 Hive ビューの上部にある **[UDF]** タブを使用して、UDF のセットを宣言および保存します。 これらの UDF は **クエリ エディター** で使用できます。
 
-![Apache Hive の [UDF] タブの表示](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
+:::image type="content" source="./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png" alt-text="Apache Hive の [UDF] タブの表示" border="true":::
 
 **[Insert udfs] (UDF の挿入)** ボタンは、**クエリ エディター** の下部に表示されます。 このエントリには、Hive ビューで定義された UDF のドロップダウン リストが表示されます。 UDF を選択すると、HiveQL ステートメントがクエリに追加され、UDF が有効になります。
 

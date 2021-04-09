@@ -4,10 +4,10 @@ description: Azure Pipelines の継続的インテグレーションと配信パ
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 96f99d41d0a7ea07bf3854292f9c3bd6245414b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87288924"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Azure DevTest Labs を Azure Pipelines CI/CD パイプラインに統合する
@@ -16,7 +16,7 @@ ms.locfileid: "87288924"
 
 - 仮想マシン (VM) の作成
 - VM からカスタム イメージを作成する
-- VM の削除 
+- VM を削除する 
 
 これらのタスクにより、たとえば特定のテスト タスク用の "*ゴールデン イメージ*" VM をすばやくデプロイし、テストの終了時にその VM を削除することが簡単になります。
 
@@ -32,7 +32,7 @@ ms.locfileid: "87288924"
   
   1. [Azure DevTest Labs タスク](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)に移動します。
   1. **[Get it free]\(無料で入手\)** を選択します。
-  1. ドロップダウンから Azure DevOps 組織を選択し、 **[インストール]** を選択します。 
+  1. ドロップダウンから Azure DevOps 組織を選択し、**[インストール]** を選択します。 
   
 ## <a name="create-the-template-to-build-an-azure-vm"></a>Azure VM を構築するためのテンプレートを作成する 
 
@@ -40,7 +40,7 @@ ms.locfileid: "87288924"
 
 1. Resource Manager テンプレートをサブスクリプション内に作成するには、[Resource Manager テンプレートの使用](devtest-lab-use-resource-manager-template.md)に関する記事に記載されている手順に従います。
    
-1. Resource Manager テンプレートを生成する前に、VM 作成の一部として [WinRM 成果物](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-winrm)を追加します。 "*Azure File Copy (Azure ファイル コピー)* " や "*PowerShell on Target Machines (ターゲット コンピューターでの PowerShell)* " などのデプロイ タスクには、WinRM へのアクセスが必要です。 WinRM 成果物には、パラメーターとしてホスト名が必要です。これは、VM の完全修飾ドメイン名 (FQDN) である必要があります。 
+1. Resource Manager テンプレートを生成する前に、VM 作成の一部として [WinRM 成果物](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-winrm)を追加します。 "*Azure File Copy (Azure ファイル コピー)*" や "*PowerShell on Target Machines (ターゲット コンピューターでの PowerShell)*" などのデプロイ タスクには、WinRM へのアクセスが必要です。 WinRM 成果物には、パラメーターとしてホスト名が必要です。これは、VM の完全修飾ドメイン名 (FQDN) である必要があります。 
    
    > [!NOTE]
    > WinRM を共有 IP アドレスで使用する場合は、外部ポートを WinRM ポートにマップする NAT 規則を追加する必要があります。 パブリック IP アドレスを使用して VM を作成する場合は、NAT 規則は不要です。
@@ -52,7 +52,7 @@ ms.locfileid: "87288924"
 
 ## <a name="create-a-script-to-get-vm-properties"></a>VM のプロパティを取得するスクリプトを作成する
 
-リリース パイプラインの "*Azure File Copy (Azure ファイル コピー)* " や "*PowerShell on Target Machines (ターゲット コンピューターでの PowerShell)* " などのタスク ステップを実行するときに、次のスクリプトによって、アプリを VM にデプロイするために必要な値が収集されます。 通常は、これらのタスクを使用して、アプリを Azure VM にデプロイします。 これらのタスクには、VM リソース グループ名、IP アドレス、FQDN などの値が必要です。
+リリース パイプラインの "*Azure File Copy (Azure ファイル コピー)*" や "*PowerShell on Target Machines (ターゲット コンピューターでの PowerShell)*" などのタスク ステップを実行するときに、次のスクリプトによって、アプリを VM にデプロイするために必要な値が収集されます。 通常は、これらのタスクを使用して、アプリを Azure VM にデプロイします。 これらのタスクには、VM リソース グループ名、IP アドレス、FQDN などの値が必要です。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -97,7 +97,7 @@ ms.locfileid: "87288924"
 
 1. Azure DevOps プロジェクト ページの左側のナビゲーションで **[パイプライン]**  >  **[リリース]** を選択します。
 1. **[新しいパイプライン]** を選択します。
-1. **[テンプレートの選択]** で下にスクロールして **[Empty Job]\(空のジョブ\)** を選択し、 **[適用]** を選択します。
+1. **[テンプレートの選択]** で下にスクロールして **[Empty Job]\(空のジョブ\)** を選択し、**[適用]** を選択します。
 
 ### <a name="add-and-set-variables"></a>変数の追加と設定
 
@@ -105,7 +105,7 @@ ms.locfileid: "87288924"
 
 値の変数を追加するには、次の手順を実行します。 
 
-1. パイプライン ページで、 **[変数]** タブを選択します。
+1. パイプライン ページで、**[変数]** タブを選択します。
    
 1. 変数ごとに **[追加]** を選択し、名前と値を入力します。
    
@@ -119,9 +119,9 @@ ms.locfileid: "87288924"
 
 次の手順で、将来のデプロイに使用するゴールデン イメージ VM を作成します。 *[Azure DevTest Labs Create VM]\(Azure DevTest Labs: VM の作成\)* タスクを使用して、Azure DevTest Labs インスタンス内に VM を作成します。
 
-1. リリース パイプラインの **[パイプライン]** タブで、 **[ステージ 1]** のハイパーリンク テキストを選択して**ステージ タスクを表示**し、 **[Agent job]\(エージェント ジョブ\)** の横にあるプラス記号 **+** を選択します。 
+1. リリース パイプラインの **[パイプライン]** タブで、**[ステージ 1]** のハイパーリンク テキストを選択して **ステージ タスクを表示** し、**[Agent job]\(エージェント ジョブ\)** の横にあるプラス記号 **+** を選択します。 
    
-1. **[Add tasks]\(タスクの追加\)** で、 **[Azure DevTest Labs Create VM]\(Azure DevTest Labs: VM の作成\)** を選択し、 **[追加]** を選択します。 
+1. **[Add tasks]\(タスクの追加\)** で、**[Azure DevTest Labs Create VM]\(Azure DevTest Labs: VM の作成\)** を選択し、**[追加]** を選択します。 
    
 1. 左側のウィンドウで **[Azure DevTest Labs Create VM]\(Azure DevTest Labs: VM の作成\)** を選択します。 
 
@@ -129,7 +129,7 @@ ms.locfileid: "87288924"
    
    |フィールド|値|
    |---|---|
-   |**Azure RM サブスクリプション**|必要に応じて、ドロップダウンリストの **[利用可能な Azure サービス接続]** または **[利用可能な Azure サブスクリプション]** からサービス接続またはサブスクリプションを選択し、 **[承認]** を選択します。<br /><br />**注:** Azure サブスクリプションへのさらに制限されたアクセス許可を持つ接続の作成方法については、[Azure Resource Manager サービス エンドポイント](/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)に関するページを参照してください。|
+   |**Azure RM サブスクリプション**|必要に応じて、ドロップダウンリストの **[利用可能な Azure サービス接続]** または **[利用可能な Azure サブスクリプション]** からサービス接続またはサブスクリプションを選択し、**[承認]** を選択します。<br /><br />[注:](/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager) Azure サブスクリプションへのさらに制限されたアクセス許可を持つ接続の作成方法については、**Azure Resource Manager サービス エンドポイント** に関するページを参照してください。|
    |**ラボ名**|ラボ VM が作成される既存のラボの名前を選択します。|
    |**テンプレート名**|ソース コード リポジトリに保存したテンプレート ファイルの完全なパスと名前を入力します。 組み込みのプロパティを使用して、パスを簡略化できます。次に例を示します。<br /><br />`$(System.DefaultWorkingDirectory)/Templates/CreateVMTemplate.json`|
    |**テンプレート パラメーター**|前に定義した変数のパラメーターを次のように入力します。<br /><br />`-newVMName '$(vmName)' -userName '$(userName)' -password (ConvertTo-SecureString -String '$(password)' -AsPlainText -Force)`|
@@ -139,11 +139,11 @@ ms.locfileid: "87288924"
 
 先ほど作成したスクリプトを実行して、DevTest Labs VM の詳細情報を収集します。 
 
-1. リリース パイプラインの **[パイプライン]** タブで、 **[ステージ 1]** のハイパーリンク テキストを選択して**ステージ タスクを表示**し、 **[Agent job]\(エージェント ジョブ\)** の横にあるプラス記号 **+** を選択します。 
+1. リリース パイプラインの **[パイプライン]** タブで、**[ステージ 1]** のハイパーリンク テキストを選択して **ステージ タスクを表示** し、**[Agent job]\(エージェント ジョブ\)** の横にあるプラス記号 **+** を選択します。 
    
-1. **[Add tasks]\(タスクの追加\)** で、 **[Azure PowerShell]** を選択し、 **[追加]** を選択します。 
+1. **[Add tasks]\(タスクの追加\)** で、**[Azure PowerShell]** を選択し、**[追加]** を選択します。 
    
-1. **[Azure PowerShell スクリプト: FilePath]** を左側のペインで選択します。 
+1. 左側のウィンドウの **[Azure PowerShell スクリプト: FilePath]** を選択します。 
    
 1. 右側のウィンドウのフォームに、次のとおりに入力します。
    
@@ -161,9 +161,9 @@ ms.locfileid: "87288924"
 
 次のタスクは、新しくデプロイされた VM のイメージを Azure DevTest Labs インスタンス内に作成することです。 この後、開発タスクやいくつかのテストを実行するときに、要求に応じてこのイメージを使用して VM のコピーを作成できます。 
 
-1. リリース パイプラインの **[パイプライン]** タブで、 **[ステージ 1]** のハイパーリンク テキストを選択して**ステージ タスクを表示**し、 **[Agent job]\(エージェント ジョブ\)** の横にあるプラス記号 **+** を選択します。 
+1. リリース パイプラインの **[パイプライン]** タブで、**[ステージ 1]** のハイパーリンク テキストを選択して **ステージ タスクを表示** し、**[Agent job]\(エージェント ジョブ\)** の横にあるプラス記号 **+** を選択します。 
    
-1. **[Add tasks]\(タスクの追加\)** で、 **[Azure DevTest Labs Create Custom Image]\(Azure DevTest Labs: カスタム イメージの作成\)** を選択し、 **[追加]** を選択します。 
+1. **[Add tasks]\(タスクの追加\)** で、**[Azure DevTest Labs Create Custom Image]\(Azure DevTest Labs: カスタム イメージの作成\)** を選択し、**[追加]** を選択します。 
    
 1. 次に示すようにタスクを構成します。
    
@@ -178,7 +178,7 @@ ms.locfileid: "87288924"
    
 ### <a name="deploy-your-app-to-the-devtest-labs-vm-optional"></a>DevTest Labs VM へのアプリのデプロイ (省略可能)
 
-アプリを新しい DevTest Labs VM にデプロイするタスクを追加できます。 アプリをデプロイするために通常使用するタスクは、"*Azure File Copy (Azure ファイル コピー)* " と "*PowerShell on Target Machines (ターゲット コンピューターでの PowerShell)* " です。
+アプリを新しい DevTest Labs VM にデプロイするタスクを追加できます。 アプリをデプロイするために通常使用するタスクは、"*Azure File Copy (Azure ファイル コピー)*" と "*PowerShell on Target Machines (ターゲット コンピューターでの PowerShell)*" です。
 
 これらのタスクのパラメーターに必要な VM 情報は、リリース パイプライン内の **labVmRgName**、**labVMIpAddress**、**labVMFqdn** という名前の 3 つの構成変数に格納されます。 DevTest Labs VM とカスタム イメージの作成を実験するだけで、アプリを展開しない場合は、この手順をスキップできます。
 
@@ -186,9 +186,9 @@ ms.locfileid: "87288924"
 
 最後のタスクは、Azure DevTest Labs インスタンスにデプロイした VM を削除することです。 通常は、開発タスクの実行や、展開した VM で必要なテストを実行した後、VM を削除します。 
 
-1. リリース パイプラインの **[パイプライン]** タブで、 **[ステージ 1]** のハイパーリンク テキストを選択して**ステージ タスクを表示**し、 **[Agent job]\(エージェント ジョブ\)** の横にあるプラス記号 **+** を選択します。 
+1. リリース パイプラインの **[パイプライン]** タブで、**[ステージ 1]** のハイパーリンク テキストを選択して **ステージ タスクを表示** し、**[Agent job]\(エージェント ジョブ\)** の横にあるプラス記号 **+** を選択します。 
    
-1. **[Add tasks]\(タスクの追加\)** で、 **[Azure DevTest Labs Delete VM]\(Azure DevTest Labs: VM の削除\)** を選択し、 **[追加]** を選択します。 
+1. **[Add tasks]\(タスクの追加\)** で、**[Azure DevTest Labs Delete VM]\(Azure DevTest Labs: VM の削除\)** を選択し、**[追加]** を選択します。 
    
 1. 次に示すようにタスクを構成します。
    
@@ -209,7 +209,7 @@ ms.locfileid: "87288924"
 
 1. リリース パイプラインのページの右上にある **[Create release]\(リリースの作成\)** を選択します。 
    
-1. **[成果物]** で、最新のビルドを選択し、 **[作成]** を選択します。
+1. **[成果物]** で、最新のビルドを選択し、**[作成]** を選択します。
    
 1. 各リリース ステージで、Azure portal の DevTest Labs インスタンスのビューを更新して、VM の作成、イメージの作成、および VM の削除を表示します。
 

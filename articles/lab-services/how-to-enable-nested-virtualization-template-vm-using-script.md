@@ -4,10 +4,10 @@ description: スクリプトを使用して、内部に複数の VM を持つテ
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 5ae50bd11ab9a8adb769920f6d473a2ff2ce9342
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91251497"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-using-a-script"></a>スクリプトを使用して Azure Lab Services のテンプレート仮想マシンで入れ子になった仮想化を有効にする
@@ -37,7 +37,7 @@ ms.locfileid: "91251497"
     >[!TIP]
     >Git リポジトリ ([https://github.com/Azure/azure-devtestlab.git](https://github.com/Azure/azure-devtestlab.git)) を複製することもできます。
 
-1. **管理者**モードで **PowerShell** を起動します。
+1. **管理者** モードで **PowerShell** を起動します。
 1. PowerShell ウィンドウで、ダウンロードしたスクリプトがあるフォルダーに移動します。 リポジトリ ファイルの先頭のフォルダーから移動する場合、スクリプトは `azure-devtestlab\samples\ClassroomLabs\Scripts\HyperV\` にあります。
 1. スクリプトを正常に実行するには、実行ポリシーを変更する必要がある場合があります。 次のコマンドを実行します。
 

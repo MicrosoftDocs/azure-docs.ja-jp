@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/25/2021
 ms.author: apimpm
 ms.openlocfilehash: 48abce693ca22163c0a1742ba71faf36fc6156a1
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99989093"
 ---
 # <a name="self-hosted-gateway-overview"></a>セルフホステッド ゲートウェイの概要

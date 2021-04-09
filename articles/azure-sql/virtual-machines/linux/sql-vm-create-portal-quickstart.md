@@ -11,10 +11,10 @@ ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: fd5c289f2b441b5862d863d9a390a1cd054acbfa
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790153"
 ---
 # <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>Azure portal で SQL Server を実行している Linux 仮想マシンをプロビジョニングする
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![VM イメージをすべて表示する](./media/sql-vm-create-portal-quickstart/azure-compute-blade.png)
 
-1. 検索ボックスに「 **SQL Server 2019** 」と入力し、 **Enter** キーを押して検索を開始します。
+1. 検索ボックスに「**SQL Server 2019**」と入力し、**Enter** キーを押して検索を開始します。
 
 1. **[オペレーティング システム]**  >  **[Redhat]** の順に選択して検索結果を限定します。
 
@@ -64,7 +64,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="set-up-your-linux-vm"></a>Linux VM の設定
 
-1. **[基本]** タブで、 **サブスクリプション** と **リソース グループ** を選択します。 
+1. **[基本]** タブで、**サブスクリプション** と **リソース グループ** を選択します。 
 
     ![[基本] ウィンドウ](./media/sql-vm-create-portal-quickstart/basics.png)
 
@@ -77,7 +77,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
      ![VM サイズを選択する](./media/sql-vm-create-portal-quickstart/vmsizes.png)
 
    > [!TIP]
-   > 開発と機能テストには、 **DS2** 以上の VM サイズを使用してください。 パフォーマンス テストには、 **DS13** 以上を使用してください。
+   > 開発と機能テストには、**DS2** 以上の VM サイズを使用してください。 パフォーマンス テストには、**DS13** 以上を使用してください。
 
    * **[認証の種類]** : **[SSH 公開キー]** を選択します。
 
@@ -102,7 +102,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="connect-to-the-linux-vm"></a><a id="connect"></a>Linux VM への接続
 
-BASH シェルを既に使用している場合、 **ssh** コマンドを使用して Azure VM に接続します。 次のコマンドの VM ユーザー名と IP アドレスを置き換えて、Linux VM に接続します。
+BASH シェルを既に使用している場合、**ssh** コマンドを使用して Azure VM に接続します。 次のコマンドの VM ユーザー名と IP アドレスを置き換えて、Linux VM に接続します。
 
 ```bash
 ssh azureadmin@40.55.55.555
@@ -150,7 +150,7 @@ Linux VM への接続の詳細については、[ポータルを使用して Azu
 
 ## <a name="add-the-tools-to-your-path-optional"></a>パスへのツールの追加 (オプション)
 
-既定では、SQL Server コマンドライン ツール パッケージなど、いくつかの SQL Server [パッケージ](sql-server-on-linux-vm-what-is-iaas-overview.md#packages)がインストールされています。 このツール パッケージには、 **sqlcmd** ツールと **bcp** ツールが含まれています。 便宜上、必要に応じてツールのパス `/opt/mssql-tools/bin/` を **PATH** 環境変数に追加することができます。
+既定では、SQL Server コマンドライン ツール パッケージなど、いくつかの SQL Server [パッケージ](sql-server-on-linux-vm-what-is-iaas-overview.md#packages)がインストールされています。 このツール パッケージには、**sqlcmd** ツールと **bcp** ツールが含まれています。 便宜上、必要に応じてツールのパス `/opt/mssql-tools/bin/` を **PATH** 環境変数に追加することができます。
 
 1. 次のコマンドを実行し、ログイン セッションと対話型/非ログイン セッションの両方の **PATH** を変更します。
 
@@ -194,7 +194,7 @@ Azure VM 上の SQL Server にリモートで接続する必要がある場合�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure に SQL Server 2017 仮想マシンを作成できたので、 **sqlcmd** を使用してローカルで接続し、Transact-SQL クエリを実行できます。
+Azure に SQL Server 2017 仮想マシンを作成できたので、**sqlcmd** を使用してローカルで接続し、Transact-SQL クエリを実行できます。
 
 SQL Server のリモート接続用に Azure VM を構成した場合は、リモート接続が可能になります。 Windows から SQL Server on Linux にリモートで接続する方法の例については、[Windows 上の SSMS を使用した SQL Server on Linux への接続](/sql/linux/sql-server-linux-develop-use-ssms)に関するページを参照してください。 Visual Studio Code を使用して接続するには、「[Use Visual Studio Code to create and run Transact-SQL scripts for SQL Server (Visual Studio Code を使用して SQL Server の Transact-SQL スクリプトを作成して実行する)](/sql/linux/sql-server-linux-develop-use-vscode)」を参照してください。
 

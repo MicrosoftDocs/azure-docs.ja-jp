@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: Zhchia
 ms.openlocfilehash: b18ec2531b26574357f56c11558f2afd84467495
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102437691"
 ---
 # <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>チュートリアル:Envoy を構成し、自動ユーザー プロビジョニングに対応させる

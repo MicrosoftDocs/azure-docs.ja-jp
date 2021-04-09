@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7b3dcfc51df7f0fe4291e9c5babccc1444ad32e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "81730750"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>AMQP プロトコルを使用した IoT Hub との通信
@@ -375,6 +375,6 @@ AMQP プロトコルの詳細については、[AMQP v1.0 の仕様](https://www
 
 IoT Hub のメッセージングの詳細については、以下を参照してください。
 
-* [cloud-to-device メッセージ](./iot-hub-devguide-messages-c2d.md)
+* [クラウドからデバイスへのメッセージ](./iot-hub-devguide-messages-c2d.md)
 * [Support for additional protocols](iot-hub-protocol-gateway.md) (その他のプロトコルのサポート)
 * [Support for the Message Queuing Telemetry Transport (MQTT) Protocol](./iot-hub-mqtt-support.md) (Message Queuing Telemetry Transport (MQTT) プロトコルのサポート)

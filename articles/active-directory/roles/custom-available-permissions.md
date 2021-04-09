@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb854c8b9ac3b4ee527c9a117edde13479bfeb4
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 1af2c1b912afbcf44cefbfb021c592836dbde5b8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740195"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103466288"
 ---
 # <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory のカスタム ロールに対するアプリケーションの登録のアクセス許可
 
@@ -170,4 +170,4 @@ microsoft.directory/applications/permissions/update と同じアクセス許可�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure portal、Azure AD PowerShell、および Graph API](custom-create.md) を使用してカスタム ロールを作成する
-- [カスタム ロールの割り当てを表示する](custom-view-assignments.md)
+- [ロールの割り当てを一覧表示する](view-assignments.md)

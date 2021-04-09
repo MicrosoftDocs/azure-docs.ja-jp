@@ -4,10 +4,10 @@ description: この記事では、SQL Server を Azure に バックアップす
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: 510d9637031928e31abaa5f82a5bf58c6ef44719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91316845"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM での SQL Server Backup について
@@ -103,13 +103,13 @@ SQL Server インスタンスに **NT AUTHORITY\SYSTEM** および **NT Service\
 
     ![SSMS でのロールの選択](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
 
-6. *[状態]* に移動します。 データベース エンジンに接続するためのアクセス許可を*付与*し、ログインを*有効*にします。
+6. *[状態]* に移動します。 データベース エンジンに接続するためのアクセス許可を *付与* し、ログインを *有効* にします。
 
     ![SSMS でのアクセス許可の付与](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
 
 7. [OK] を選択します。
 8. 同じ一連の手順 (上記の 1 から 7) を繰り返して、SQL Server インスタンスに NT Service\AzureWLBackupPluginSvc ログインを追加します。 ログインが既に存在する場合は、そのログインに sysadmin サーバー ロールがあることを確認します。また [状態] で、そのログインにデータベース エンジンに接続するためのアクセス許可が付与されていること、およびそのログインが有効になっていることを確認します。
-9. アクセス許可を付与した後、ポータルで **DB を再検出**します: コンテナー **->** バックアップ インフラストラクチャ **->** Azure VM でのワークロード。
+9. アクセス許可を付与した後、ポータルで **DB を再検出** します: コンテナー **->** バックアップ インフラストラクチャ **->** Azure VM でのワークロード。
 
     ![Azure portal での DB の再検出](media/backup-azure-sql-database/sql-rediscover-dbs.png)
 

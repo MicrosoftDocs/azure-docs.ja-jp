@@ -13,10 +13,10 @@ ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
 ms.openlocfilehash: efaf6060c0b09e071546038d9e30f2c8065059e7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98600136"
 ---
 # <a name="what-are-security-defaults"></a>セキュリティの既定値群とは
@@ -130,12 +130,12 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 | 電話の呼び出し |   | X |
 | アプリ パスワード |   | X*** |
 
-- ** ユーザーは Microsoft Authenticator アプリの確認コードを使用できますが、通知オプションを使用した場合にのみ登録できます。
+- ** ユーザーは Microsoft Authenticator アプリの確認コードを使用できますが、通知オプションを使用した場合のみ登録できます。
 - *** アプリ パスワードは、管理者が有効にした場合にのみ、レガシ認証シナリオでのユーザーごとの MFA でのみ使用できます。
 
 ### <a name="disabled-mfa-status"></a>無効な MFA の状態
 
-組織が以前からユーザー ベースの Azure AD Multi-Factor Authentication のユーザーである場合は、多要素認証の状態のページを確認したときに、 *[有効]* 状態または **[強制]** 状態にあるユーザーが表示されなくても問題ありません。 セキュリティの既定値群または条件付きアクセス ベースの Azure AD Multi-Factor Authentication を使用しているユーザーの場合は、 **[無効]** が適切な状態です。
+組織が以前からユーザー ベースの Azure AD Multi-Factor Authentication のユーザーである場合は、多要素認証の状態のページを確認したときに、 **[有効]** または **[強制]** 状態にあるユーザーが表示されなくても問題ありません。 セキュリティの既定値群または条件付きアクセス ベースの Azure AD Multi-Factor Authentication を使用しているユーザーの場合は、 **[無効]** が適切な状態です。
 
 ### <a name="conditional-access"></a>条件付きアクセス
 
@@ -156,7 +156,7 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 ディレクトリでセキュリティの既定値群を有効にするには、次のようにします。
 
 1. セキュリティ管理者、条件付きアクセス管理者、またはグローバル管理者として、 [Azure portal](https://portal.azure.com)  にサインインします。
-1.  **[Azure Active Directory]**  > **[プロパティ]** の順に移動します。
+1. **\[Azure Active Directory]**  > **\[プロパティ]** の順に移動します。
 1. **[セキュリティの既定値群の管理]** を選択します。
 1. **[セキュリティの既定値群の有効化]** トグルを **[はい]** に設定します。
 1. **[保存]** を選択します。
@@ -170,7 +170,7 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 ディレクトリでセキュリティの既定値群を無効にするには、次のようにします。
 
 1. セキュリティ管理者、条件付きアクセス管理者、またはグローバル管理者として、 [Azure portal](https://portal.azure.com)  にサインインします。
-1.  **[Azure Active Directory]**  > **[プロパティ]** の順に移動します。
+1. **\[Azure Active Directory]**  > **\[プロパティ]** の順に移動します。
 1. **[セキュリティの既定値群の管理]** を選択します。
 1. **[セキュリティの既定値群の有効化]** トグルを **[いいえ]** に設定します。
 1. **[保存]** を選択します。

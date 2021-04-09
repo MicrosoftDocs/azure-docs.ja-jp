@@ -1,18 +1,18 @@
 ---
-title: クイック スタート:Apache HBase と Apache Phoenix - Azure HDInsight
+title: 'クイックスタート: Apache HBase と Apache Phoenix - Azure HDInsight'
 description: このクイックスタートでは、HDInsight 内で Apache Phoenix を使用する方法を説明します。 また、コンピューターに SQLLine をインストールして設定し、HDInsight の HBase クラスターに接続する方法を説明します。
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.openlocfilehash: 6b9196d9ad5cf07cd210726bc1af7121c08094a8
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98935989"
 ---
-# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>クイック スタート:Apache Phoenix を使用して Azure HDInsight で Apache HBase にクエリを実行する
+# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>クイックスタート: Apache Phoenix を使用して Azure HDInsight で Apache HBase に対してクエリを実行する
 
 このクイック スタートでは、Apache Phoenix を使用して Azure HDInsight で HBase クエリを実行する方法を学習します。 Apache Phoenix は、Apache HBase 用の SQL クエリ エンジンです。 SQL を使用して HBase テーブルの照会と管理ができます。 [SQLLine](http://sqlline.sourceforge.net/) は、SQL を実行するためのコマンド ライン ユーティリティです。
 

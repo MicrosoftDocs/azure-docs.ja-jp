@@ -1,6 +1,6 @@
 ---
 title: 専用 SQL プール (旧称 SQL DW) のコンピューティング リソースを管理する
-description: Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のパフォーマンス スケールアウト機能について説明します。 DWU を調整してスケールアウトしたり、専用 SQL プールを一時停止してコストを削減したりします。
+description: Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のパフォーマンス スケールアウト機能について説明します。 DWU を調整してスケールアウトしたり、専用 SQL プール (以前の SQL DW) を一時停止してコストを削減したりします。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 11/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4a2ce18f4a02ccaadf66a96049b00f3837b927e4
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 20087fbf4d5c37f1501df08cc294a10ddb9118e1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677039"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103601816"
 ---
 # <a name="manage-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プール (旧称 SQL DW) のコンピューティングを管理する
 

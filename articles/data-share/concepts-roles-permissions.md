@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 10/15/2020
 ms.openlocfilehash: f5c5d6da239d302b57bdb37e9d49116a29c1ccb4
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100558126"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Data Share のロールと要件 

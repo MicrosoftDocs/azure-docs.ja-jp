@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 2d5aedf24034c9ba5ee865dd0d2289169ea5f859
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92520661"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>チュートリアル: Azure Active Directory と Rollbar の統合
@@ -41,7 +41,7 @@ Rollbar と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Rollbar では、 **SP と IDP** によって開始される SSO がサポートされます
+* Rollbar では、**SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-rollbar-from-the-gallery"></a>ギャラリーからの Rollbar の追加
 
@@ -61,13 +61,13 @@ Azure AD への Rollbar の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Rollbar** 」と入力し、結果ウィンドウで **[Rollbar]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Rollbar**」と入力し、結果ウィンドウで **[Rollbar]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Rollbar](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Rollbar で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Rollbar で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Rollbar 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Rollbar で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -180,7 +180,7 @@ Rollbar で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -235,7 +235,7 @@ Azure AD ユーザーが Rollbar にサインインできるようにするに�
 
     ![[Invite Team Members]\(チーム メンバーの招待\) オプションが選択された画面のスクリーンショット。](./media/rollbar-tutorial/user2.png)
 
-1. ボックスにユーザー名 (例: **brittasimon\@contoso.com** ) を入力し、 **[Add/Invite]\(追加/招待\)** をクリックします。
+1. ボックスにユーザー名 (例: **brittasimon\@contoso.com**) を入力し、 **[Add/Invite]\(追加/招待\)** をクリックします。
 
     ![メンバーの [Add/Invite]\(追加/招待\) および指定されたアドレスを示すスクリーンショット。](./media/rollbar-tutorial/user3.png)
 

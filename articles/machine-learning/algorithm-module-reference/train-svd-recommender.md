@@ -1,5 +1,5 @@
 ---
-title: SVD レコメンダーのトレーニング:モジュール リファレンス
+title: 'Train SVD Recommender (SVD レコメンダーのトレーニング): モジュール リファレンス'
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning で SVD レコメンダーのトレーニング モジュールと SVD アルゴリズムを使用してベイジアン レコメンダーをトレーニングする方法について説明します。
 services: machine-learning
@@ -8,34 +8,34 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: a5740e851fbd8f7ba82e179f7e5299d6c7090596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/17/2021
+ms.openlocfilehash: 77407f253bb347160ea331bd7384d8085f21b040
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890244"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104654460"
 ---
 # <a name="train-svd-recommender"></a>SVD レコメンダーのトレーニング
 
 この記事では、Azure Machine Learning デザイナーで Train SVD Recommender (SVD レコメンダーのトレーニング) モジュールを使用する方法について説明します。 このモジュールを使用すると、単一値分解 (SVD) アルゴリズムに基づいてレコメンデーション モデルをトレーニングできます。  
 
-Train SVD Recommender (SVD レコメンダーのトレーニング) モジュールは、ユーザー、項目、評価を表す 3 つの要素からなるデータセットを読み取ります。 これにより、トレーニング済みの SVD レコメンダーが返されます。 その後、トレーニング済みのモデルを使用して、[SVD レコメンダーのスコア付け](score-svd-recommender.md)モジュールを使用して評価を予測したり提案を生成したりすることができます。  
+Train SVD Recommender (SVD レコメンダーのトレーニング) モジュールは、ユーザー、項目、評価を表す 3 つの要素からなるデータセットを読み取ります。 これにより、トレーニング済みの SVD レコメンダーが返されます。 その後、トレーニング済みのモデルを使用して、[Score SVD Recommender (SVD レコメンダーのスコア付け)](score-svd-recommender.md) モジュールを接続することで、評価の予測やレコメンデーションの生成ができます。  
 
 
   
 ## <a name="more-about-recommendation-models-and-the-svd-recommender"></a>推奨モデルと SVD レコメンダーの詳細  
 
-レコメンデーション システムの主な目的は、システムの*ユーザー*に対して 1 つ以上の*項目*を推奨することです。 項目の例として、映画、レストラン、本、曲などがあります。 ユーザーは、個人、個人のグループ、または項目の好みがあるその他のエンティティにすることができます。  
+レコメンデーション システムの主な目的は、システムの *ユーザー* に対して 1 つ以上の *項目* を推奨することです。 項目の例として、映画、レストラン、本、曲などがあります。 ユーザーは、個人、個人のグループ、または項目の好みがあるその他のエンティティにすることができます。  
 
 レコメンダー システムには、主に 2 つのアプローチがあります。 
 
-+ **コンテンツベース**のアプローチは、ユーザーと項目の両方の特徴を利用します。 ユーザーは、年齢や性別などのプロパティによって記述される場合があります。 項目は、作成者や製造元などのプロパティによって記述される場合があります。 コンテンツベースのレコメンデーション システムの一般的な例は、出会い系のサイトです。 
-+ **協調フィルタリング**では、ユーザーと項目の識別子のみを使用します。 ユーザーが項目に対して指定した (疎な) 評価マトリックスから、これらのエンティティについての暗黙的な情報を取得します。 ユーザーについての情報は、そのユーザーが評価した項目や、同じ項目を評価した他のユーザーから学ぶことができます。  
++ **コンテンツベース** のアプローチは、ユーザーと項目の両方の特徴を利用します。 ユーザーは、年齢や性別などのプロパティによって記述される場合があります。 項目は、作成者や製造元などのプロパティによって記述される場合があります。 コンテンツベースのレコメンデーション システムの一般的な例は、出会い系のサイトです。 
++ **協調フィルタリング** では、ユーザーと項目の識別子のみを使用します。 ユーザーが項目に対して指定した (疎な) 評価マトリックスから、これらのエンティティについての暗黙的な情報を取得します。 ユーザーについての情報は、そのユーザーが評価した項目や、同じ項目を評価した他のユーザーから学ぶことができます。  
 
 SVD レコメンダーは、ユーザーと項目の識別子、およびユーザーが項目に対して指定した評価マトリックスを使用します。 つまり、これは "*協調レコメンダー*" です。 
 
-SVD レコメンダーの詳細については、関連する論文[Matrix factorization techniques for recommender systems (レコメンダー システムの行列因子分解手法)](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf) を参照してください。
+SVD レコメンダーの詳細については、関連するリサーチ ペーパー「[レコメンダー システムの行列因子分解手法](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf)」を参照してください。
 
 
 ## <a name="how-to-configure-train-svd-recommender"></a>SVD レコメンダーのトレーニングを構成する方法  
@@ -70,6 +70,9 @@ Azure Machine Learning デザイナーの **Movie Ratings** (映画の評価) �
   
 5.  パイプラインを送信します。  
 
+## <a name="results"></a>結果
+
+パイプラインの実行が完了した後、モデルをスコアリングに使用するには、[Train SVD Recommender (SVD レコメンダーのトレーニング)](train-svd-recommender.md) を [Score SVD Recommender (SVD レコメンダーのスコア付け)](score-svd-recommender.md) に接続し、新しい入力例の値を予測します。
 
 ## <a name="next-steps"></a>次のステップ
 

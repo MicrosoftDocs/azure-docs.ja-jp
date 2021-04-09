@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 03/11/2021
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: e4a5803b3d04b59316f71e50af24945efc87cb69
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b7290abe102d22bb87c87c3c9d13ee99c127b942
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677565"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103199911"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Azure ストレージ アカウントの共有キーによる承認を禁止する (プレビュー)
 
@@ -22,12 +22,8 @@ Azure ストレージ アカウントに対するセキュリティで保護さ�
 
 ストレージ アカウントの共有キーによる承認を禁止すると、それ以降、そのアカウントに対するアカウント アクセスキーによる承認の要求はすべて、Azure Storage によって拒否されます。 Azure AD によって承認されるセキュリティで保護された要求のみが成功します。 Azure AD の使用に関する詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](storage-auth-aad.md)」を参照してください。
 
-> [!WARNING]
-> Azure Storage では、Azure AD の承認は、Blob Storage と Queue storage に対する要求についてだけサポートされています。 ストレージ アカウントの共有キーによる承認を禁止した場合、共有キーによる承認を使用する Azure Files Storage または Table Storage への要求は失敗します。 Azure portal は常に共有キー認証を使用してファイルおよびテーブル データにアクセスするため、ストレージ アカウントに対する共有キーを使用した認証を許可しない場合は、Azure portal のファイルまたはテーブル データにアクセスできません。
->
-> 共有キーによるアカウントへのアクセスを禁止する前に、Azure Files Storage または Table Storage のデータを別のストレージ アカウントに移行すること、または Azure Files Storage または Table Storage のワークロードをサポートするストレージ アカウントに対しては、この設定を適用しないことをお勧めします。
->
-> ストレージ アカウントに対する共有キー アクセスを禁止しても、Azure Files への SMB 接続には影響しません。
+> [!IMPORTANT]
+> 共有キーによる承認の禁止は、現在 "**プレビュー**" 段階にあります。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 この記事では、共有キーによる承認を使用して送信された要求を検出する方法と、ストレージ アカウントの共有キーによる承認を修正する方法について説明します。 プレビューに登録する方法については、「[プレビューについて](#about-the-preview)」を参照してください。
 
@@ -41,7 +37,7 @@ Azure ストレージ アカウントに対するセキュリティで保護さ�
 
 ### <a name="monitor-how-many-requests-are-authorized-with-shared-key"></a>共有キーを使用して承認された要求の数を監視する
 
-ストレージ アカウントへの要求がどのように承認されているかを追跡するには、Azure portal で Azure メトリックス エクスプローラーを使用します。 メトリックス エクスプローラーの詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/platform/metrics-getting-started.md)」を参照してください。
+ストレージ アカウントへの要求がどのように承認されているかを追跡するには、Azure portal で Azure メトリックス エクスプローラーを使用します。 メトリックス エクスプローラーの詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/essentials/metrics-getting-started.md)」を参照してください。
 
 共有キーまたは SAS を使用して行われた要求を追跡するメトリックを作成するには、次の手順のようにします。
 
@@ -67,7 +63,7 @@ Azure ストレージ アカウントに対するセキュリティで保護さ�
 
 :::image type="content" source="media/shared-key-authorization-prevent/metric-shared-key-requests.png" alt-text="共有キーを使用して承認された要求の集計を示すスクリーンショット":::
 
-ストレージ アカウントで共有キーを使用して承認された要求が一定数に達したら通知する警告ルールを構成することもできます。 詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-metric.md)」を参照してください。
+ストレージ アカウントで共有キーを使用して承認された要求が一定数に達したら通知する警告ルールを構成することもできます。 詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../azure-monitor/alerts/alerts-metric.md)」を参照してください。
 
 ### <a name="analyze-logs-to-identify-clients-that-are-authorizing-requests-with-shared-key-or-sas"></a>ログを分析し、共有キーまたは SAS による要求を承認しているクライアントを特定する
 
@@ -75,14 +71,14 @@ Azure Storage のログには、要求の承認方法など、ストレージ �
 
 承認方法を評価するために、Azure ストレージ アカウントに対する要求をログに記録するには、Azure Monitor の Azure Storage ログ (プレビュー) を使用できます。 詳細については、「[Azure Storage を監視する](../blobs/monitor-blob-storage.md)」を参照してください。
 
-Azure Monitor の Azure Storage ログ記録では、ログ クエリを使用したログ データの分析がサポートされています。 ログに対してクエリを実行するために、Azure Log Analytics ワークスペースを使用できます。 ログ クエリの詳細については、「[チュートリアル: Log Analytics クエリの使用方法](../../azure-monitor/log-query/log-analytics-tutorial.md)」を参照してください。
+Azure Monitor の Azure Storage ログ記録では、ログ クエリを使用したログ データの分析がサポートされています。 ログに対してクエリを実行するために、Azure Log Analytics ワークスペースを使用できます。 ログ クエリの詳細については、「[チュートリアル: Log Analytics クエリの使用方法](../../azure-monitor/logs/log-analytics-tutorial.md)」を参照してください。
 
 #### <a name="create-a-diagnostic-setting-in-the-azure-portal"></a>Azure portal での診断設定の作成
 
 Azure Monitor で Azure Storage のデータをログに記録し、Azure Log Analytics で分析するには、まず、データをログに記録する要求の種類とストレージ サービスを指示する診断設定を作成する必要があります。 Azure portal で診断設定を作成するには、これらの手順に従います。
 
 1. [Azure Monitor の Azure Storage ログ記録 (プレビュー)](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u) に登録します。
-1. Azure ストレージ アカウントが含まれるサブスクリプションに新しい Log Analytics ワークスペースを作成するか、既存の Log Analytics ワークスペースを使用します。 ストレージ アカウントのログ記録を構成した後、Log Analytics ワークスペースでログを使用できるようになります。 詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。
+1. Azure ストレージ アカウントが含まれるサブスクリプションに新しい Log Analytics ワークスペースを作成するか、既存の Log Analytics ワークスペースを使用します。 ストレージ アカウントのログ記録を構成した後、Log Analytics ワークスペースでログを使用できるようになります。 詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../azure-monitor/logs/quick-create-workspace.md)」を参照してください。
 1. Azure Portal のストレージ アカウントに移動します。
 1. [監視] セクションで、 **[診断設定 (プレビュー)]** を選択します。
 1. 要求をログに記録する Azure Storage サービスを選択します。 たとえば、Blob Storage に対する要求をログに記録するには、 **[Blob]** を選択します。
@@ -95,7 +91,7 @@ Azure Monitor で Azure Storage のデータをログに記録し、Azure Log An
 
 ストレージ アカウント内の Azure Storage リソースの種類ごとに、診断設定を作成できます。
 
-診断設定を作成した後、ストレージ アカウントに対する要求が、その設定に従ってログに記録されるようになります。 詳細については、[Azure でリソース ログとメトリックを収集するための診断設定の作成](../../azure-monitor/platform/diagnostic-settings.md)に関するページを参照してください。
+診断設定を作成した後、ストレージ アカウントに対する要求が、その設定に従ってログに記録されるようになります。 詳細については、[Azure でリソース ログとメトリックを収集するための診断設定の作成](../../azure-monitor/essentials/diagnostic-settings.md)に関するページを参照してください。
 
 Azure Monitor の Azure Storage ログで使用できるフィールドのリファレンスについては、「[リソース ログ (プレビュー)](../blobs/monitor-blob-storage-reference.md#resource-logs-preview)」を参照してください。
 
@@ -110,7 +106,7 @@ StorageBlobLogs
 | top 10 by count_ desc
 ```
 
-このクエリに基づいて警告ルールを構成し、共有キーまたは SAS で承認された要求に関する通知を受け取ることもできます。 詳細については、「[Azure Monitor を使用してログ アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-log.md)」を参照してください。
+このクエリに基づいて警告ルールを構成し、共有キーまたは SAS で承認された要求に関する通知を受け取ることもできます。 詳細については、「[Azure Monitor を使用してログ アラートを作成、表示、管理する](../../azure-monitor/alerts/alerts-log.md)」を参照してください。
 
 ## <a name="remediate-authorization-via-shared-key"></a>共有キーによる承認を修正する
 
@@ -133,30 +129,29 @@ Azure portal でストレージ アカウントに対する共有キーによる
 
     :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="アカウントに対する共有キーによるアクセスを禁止する方法を示すスクリーンショット":::
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+PowerShell を使用して、ストレージ アカウントに対する共有キーによる承認を禁止するには、[Az.Storage PowerShell モジュール](https://www.powershellgallery.com/packages/Az.Storage)、バージョン 3.4.0 以降をインストールします。 次に、新規または既存のストレージ アカウントに対して **AllowSharedKeyAccess** プロパティを構成します。
+
+次の例は、PowerShell を使用して既存のストレージ アカウントに対して共有キーでアクセスを禁止する方法を示しています。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
+
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource-group> `
+    -AccountName <storage-account> `
+    -AllowSharedKeyAccess $false
+```
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用して、ストレージ アカウントに対する共有キーによる承認を禁止するには、Azure CLI バージョン 2.9.1 以降をインストールします。 詳細については、「 [Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。 次に、新規または既存のストレージ アカウントに対して **allowSharedKeyAccess** プロパティを構成します。
+Azure CLI を使用して、ストレージ アカウントに対する共有キーによる承認を禁止するには、Azure CLI バージョン 2.20.0 以降をインストールしてください。 詳細については、「 [Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。 次に、新規または既存のストレージ アカウントに対して **allowSharedKeyAccess** プロパティを構成します。
 
-次の例では、Azure CLI で **allowSharedKeyAccess** プロパティを設定する方法を示します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
+次の例では、Azure CLI を使用して既存のストレージ アカウントに対して共有キーでアクセスを禁止する方法を示します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
 ```azurecli-interactive
-$storage_account_id=$(az resource show \
+az storage account update \
     --name <storage-account> \
     --resource-group <resource-group> \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query id \
-    --output tsv)
-
-az resource update \
-    --ids $storage_account_id \
-    --set properties.allowSharedKeyAccess=false
-
-az resource show \
-    --name <storage-account> \
-    --resource-group <resource-group> \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query properties.allowSharedKeyAccess \
-    --output tsv
+    --allow-shared-key-access false
 ```
 
 ---
@@ -171,7 +166,7 @@ az resource show \
 az storage container create \
     --account-name <storage-account> \
     --name sample-container \
-    --account-key <key>
+    --account-key <key> \
     --auth-mode key
 ```
 
@@ -193,13 +188,13 @@ resources
 
 ## <a name="permissions-for-allowing-or-disallowing-shared-key-access"></a>共有キー アクセスを許可または禁止するためのアクセス許可
 
-ストレージ アカウントの **AllowSharedKeyAccess** プロパティを設定するには、ストレージ アカウントを作成および管理するためのアクセス許可が必要です。 これらのアクセス許可を提供する Azure ロールベースのアクセス制御 (Azure RBAC) ロールには、**Microsoft.Storage/storageAccounts/write** または **Microsoft.Storage/storageAccounts/\** _ アクションが含まれます。 このアクションの組み込みロールには、次のようなロールがあります。
+ストレージ アカウントの **AllowSharedKeyAccess** プロパティを設定するには、ストレージ アカウントを作成および管理するためのアクセス許可が必要です。 これらのアクセス許可を提供する Azure ロールベースのアクセス制御 (Azure RBAC) ロールには、**Microsoft.Storage/storageAccounts/write** または **Microsoft.Storage/storageAccounts/\*** アクションが含まれます。 このアクションの組み込みロールには、次のようなロールがあります。
 
 - Azure Resource Manager の[所有者](../../role-based-access-control/built-in-roles.md#owner)ロール
 - Azure Resource Manager の[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロール
 - [Storage Account の共同作成者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)ロール
 
-これらのロールでは、Azure Active Directory (Azure AD) を使用してストレージ アカウントのデータにアクセスすることはできません。 ただし、アカウント アクセス キーへのアクセスを許可する _*Microsoft.Storage/storageAccounts/listkeys/action** が含まれています。 このアクセス許可では、ユーザーがアカウント アクセス キーを使用して、ストレージ アカウント内のすべてのデータにアクセスできます。
+これらのロールでは、Azure Active Directory (Azure AD) を使用してストレージ アカウントのデータにアクセスすることはできません。 ただし、アカウント アクセス キーへのアクセスを許可する **Microsoft.Storage/storageAccounts/listkeys/action** が含まれています。 このアクセス許可では、ユーザーがアカウント アクセス キーを使用して、ストレージ アカウント内のすべてのデータにアクセスできます。
 
 ユーザーがストレージ アカウントに対する共有キー アクセスを許可または禁止できるようにするには、ロール割り当てのスコープをストレージ アカウント以上のレベルにする必要があります。 ロール スコープの詳細については、「[Azure RBAC のスコープについて](../../role-based-access-control/scope-overview.md)」を参照してください。
 
@@ -236,12 +231,17 @@ Shared Access Signature の詳細については、「[Shared Access Signatures 
 | Azure IoT Hub | サポートされています。 詳細については、[IoT Hub による仮想ネットワークのサポート](../../iot-hub/virtual-network-support.md)に関する記事を参照してください。 |
 | Azure Cloud Shell | Azure Cloud Shell は、Azure portal の統合シェルです。 Azure Cloud Shell では、ストレージ アカウントの Azure ファイル共有で永続化するためのファイルがホストされています。 そのストレージ アカウントで共有キーによる承認が許可されていない場合、これらのファイルはアクセスできなくなります。 詳細については、「[Microsoft Azure Files ストレージの接続](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage)」を参照してください。 <br /><br /> Azure Cloud Shell でコマンドを実行して、共有キーによるアクセスが禁止されているストレージ アカウントを管理するには、最初に、Azure RBAC でこれらのアカウントに必要なアクセス許可が付与されていることを確認します。 詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。 |
 
+## <a name="transition-azure-files-and-table-storage-workloads"></a>Azure Files および Table Storage のワークロードの移行
+
+Azure Storage では、Azure AD の承認は、Blob Storage と Queue storage に対する要求についてだけサポートされています。 ストレージ アカウントの共有キーによる承認を禁止した場合、共有キーによる承認を使用する Azure Files Storage または Table Storage への要求は失敗します。 Azure portal は常に共有キー認証を使用してファイルおよびテーブル データにアクセスするため、ストレージ アカウントに対する共有キーを使用した認証を許可しない場合は、Azure portal のファイルまたはテーブル データにアクセスできません。
+
+共有キーによるアカウントへのアクセスを禁止する前に、Azure Files Storage または Table Storage のデータを別のストレージ アカウントに移行すること、または Azure Files Storage または Table Storage のワークロードをサポートするストレージ アカウントに対しては、この設定を適用しないことをお勧めします。
+
+ストレージ アカウントに対する共有キー アクセスを禁止しても、Azure Files への SMB 接続には影響しません。
+
 ## <a name="about-the-preview"></a>プレビューについて
 
 共有キーによる認証の禁止に関するプレビューは、Azure パブリック クラウドで利用できます。 Azure Resource Manager デプロイ モデルを使用するストレージ アカウントのみでサポートされています。 Azure Resource Manager デプロイ モデルを使用しているストレージ アカウントの詳細については、「[ストレージ アカウントの種類](storage-account-overview.md#types-of-storage-accounts)」を参照してください。
-
-> [!IMPORTANT]
-> このプレビューは、非運用環境でのみの使用を意図しています。
 
 プレビューには、次のセクションで説明する制限が含まれています。
 

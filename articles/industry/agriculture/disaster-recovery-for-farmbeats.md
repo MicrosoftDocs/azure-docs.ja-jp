@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-ummehabiba
 ms.openlocfilehash: 9ece624546cab1b8b6fab8c19f4401bd050f6267
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179886"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>FarmBeats のディザスター リカバリー

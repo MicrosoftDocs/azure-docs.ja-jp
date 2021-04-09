@@ -9,13 +9,13 @@ ms.date: 03/28/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 8b5cf3caaaf8c2360bc8555b38713d21aaf811ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84424743"
 ---
-| Premium SSD のサイズ | P1 | P2 | P3 | P4 | P6 | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 |
+| Premium SSD のサイズ | P1 | P2 | P3 | P4 | P6 | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 |
 |-------------------|----|----|----|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
 | ディスク サイズ (GiB) | 4 | 8 | 16 | 32 | 64 | 128 | 256 | 512 | 1,024 | 2,048 | 4,096 | 8,192 | 16,384 | 32,767 |
 | ディスクあたりのプロビジョニング済み IOPS | 120 | 120 | 120 | 120 | 240 | 500 | 1,100 | 2,300 | 5,000 | 7,500 | 7,500 | 16,000 | 18,000 | 20,000 |

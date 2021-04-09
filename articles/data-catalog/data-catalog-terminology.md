@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 6e636a039302d2ea61c7135bff1fceb4763f25df
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 008d0f106b07d61f0989a479457b12398000b5d9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151451"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674575"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure Data Catalog の用語集
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 この記事では、Azure Data Catalog のドキュメントで使用される概念と用語について説明します。
 
@@ -69,7 +71,7 @@ Azure Data Catalog では、登録されているデータ資産を説明する�
 
 このような各観点は本質的に価値があり、各ユーザーは Azure Data Catalog を使用して、自分にとって意味がある情報を指定できます。また、すべてのユーザーは、その情報を使用して、データとその用途を理解することができます。
 
-## <a name="expert"></a>エキスパート
+## <a name="expert"></a>Expert
 
 エキスパートとは、データ資産について知識がある "専門家" の観点を持つ人物と認められたユーザーです。 すべてのユーザーは、自分または他のユーザーを資産のエキスパートとして追加することができます。 エキスパートに登録された場合でも、Azure Data Catalog に追加の特権は付与されませんが、観点を簡単に特定できるようになります。たとえば、資産の記述メタデータを確認するときに役に立ちます。
 
@@ -86,4 +88,4 @@ Azure Data Catalog では、登録されているデータ資産を説明する�
 
 ## <a name="next-steps"></a>次のステップ
 
-[クイック スタート: Azure データ カタログを作成する](data-catalog-get-started.md)
+[クイック スタート:Azure データ カタログを作成する](data-catalog-get-started.md)

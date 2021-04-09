@@ -8,10 +8,10 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 15cd0979fdc2468ab50451042cd99a8442470139
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92148177"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ASE を作成する
@@ -47,7 +47,7 @@ ASE および関連するパラメーター ファイルを作成する Resource
 ILB ASE を作成する場合は、これらの Resource Manager テンプレートの[例][quickstartilbasecreate]を使用します。 これらのテンプレートは、ILB ASE の作成に対応します。 *azuredeploy.parameters.json* ファイルのほとんどのパラメーターは、ILB ASE と外部 ASE の作成に共通するパラメーターです。 以下の一覧では、ILB ASE を作成するうえで特に注意が必要なパラメーターや、固有のパラメーターについて説明します。
 
 * *internalLoadBalancingMode*:ほとんどの場合、これは 3 に設定します。この設定により、ポート 80/443 の HTTP/HTTPS トラフィックと、ASE 上の FTP サービスによってリッスンされているコントロール/データ チャネル ポートは、ILB が割り当てられた仮想ネットワークの内部アドレスにバインドされます。 このプロパティを 2 に設定すると、FTP サービスに関連するポート (コントロール チャネルとデータ チャネルの両方) のみが ILB アドレスにバインドされます。 HTTP/HTTPS トラフィックは、パブリック VIP 上に留まります。
-* *dnsSuffix*:このパラメーターでは、ASE に割り当てられる既定のルート ドメインを定義します。 Azure App Service のパブリック版では、すべての Web アプリの既定のルート ドメインは *azurewebsites.net*です。 ILB ASE はユーザーの仮想ネットワークの内部にあるため、パブリック サービスの既定のルート ドメインを使用しても意味がありません。 ILB ASE には、会社の内部仮想ネットワーク内での使用に適した既定のルート ドメインを用意する必要があります。 たとえば、Contoso Corporation では、Contoso の仮想ネットワーク内でのみ解決およびアクセス可能になるよう設計されたアプリに対して、*internal-contoso.com* という既定のルート ドメインを使用できます。 
+* *dnsSuffix*:このパラメーターでは、ASE に割り当てられる既定のルート ドメインを定義します。 Azure App Service のパブリック版では、すべての Web アプリの既定のルート ドメインは *azurewebsites.net* です。 ILB ASE はユーザーの仮想ネットワークの内部にあるため、パブリック サービスの既定のルート ドメインを使用しても意味がありません。 ILB ASE には、会社の内部仮想ネットワーク内での使用に適した既定のルート ドメインを用意する必要があります。 たとえば、Contoso Corporation では、Contoso の仮想ネットワーク内でのみ解決およびアクセス可能になるよう設計されたアプリに対して、*internal-contoso.com* という既定のルート ドメインを使用できます。 
 * *ipSslAddressCount*:ILB ASE には単一の ILB アドレスしかないため、このパラメーターは、*azuredeploy.json* ファイル内で自動的に既定値の 0 に設定されます。 ILB ASE 向けの明示的な IP SSL アドレスはありません。 そのため、ILB ASE の IP SSL アドレス プールは、0 に設定する必要があります。 それ以外の場合、プロビジョニングのエラーが発生します。 
 
 *azuredeploy.parameters.json* ファイルに入力した後で、PowerShell コード スニペットを使用して、ASE を作成します。 ファイル パスは、コンピューター上の Resource Manager テンプレート ファイルの場所に一致するように変更してください。 Resource Manager のデプロイ名とリソース グループ名に独自の値を指定することも忘れずに行ってください。
@@ -105,7 +105,7 @@ TLS/SSL 証明書が正常に生成され、base64 でエンコードされた�
 * *pfxBlobString*:based64 でエンコードされた .pfx ファイルの文字列表現。 前述のコード スニペットを使用し、"exportedcert.pfx.b64" に含まれる文字列をコピーします。 *pfxBlobString* 属性の値として貼り付けます。
 * *password*:pfx ファイルの保護に使用されるパスワード。
 * *certificateThumbprint*:証明書のサムプリント。 この値 (前述のコード スニペットにある *$certificate.Thumbprint* など) を PowerShell から取得した場合、値はそのまま使用できます。 この値を Windows 証明書のダイアログ ボックスからコピーした場合は、忘れずに余分なスペースを削除してください。 *certificateThumbprint* は、AF3143EB61D43F6727842115BB7F17BBCECAECAE のようになります。
-* *certificateName*:証明書の識別に使用される、独自に選択したわかりやすい文字列識別子。 この名前は、TLS/SSL 証明書を表す *Microsoft.Web/certificates* エンティティで、一意の Resource Manager 識別子の一部として使用されます。 この名前は、サフィックス \_yourASENameHere_InternalLoadBalancingASE で終わる*必要があります*。 このサフィックスは、ILB が有効な ASE を保護するためにこの証明書が使用されることを示す標識として、Azure Portal で使用されます。
+* *certificateName*:証明書の識別に使用される、独自に選択したわかりやすい文字列識別子。 この名前は、TLS/SSL 証明書を表す *Microsoft.Web/certificates* エンティティで、一意の Resource Manager 識別子の一部として使用されます。 この名前は、サフィックス \_yourASENameHere_InternalLoadBalancingASE で終わる *必要があります*。 このサフィックスは、ILB が有効な ASE を保護するためにこの証明書が使用されることを示す標識として、Azure Portal で使用されます。
 
 一部省略した *azuredeploy.parameters.json* の例を次に示します。
 

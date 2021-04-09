@@ -4,10 +4,10 @@ description: Batch のタスク完了イベントのリファレンスです。 
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: 11f727b07723f32cd08130b4af17e57ede3d264f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91850893"
 ---
 # <a name="task-complete-event"></a>タスク完了イベント
@@ -44,7 +44,7 @@ ms.locfileid: "91850893"
 }
 ```
 
-|要素名|種類|メモ|
+|要素名|Type|Notes|
 |------------------|----------|-----------|
 |`jobId`|String|タスクを含むジョブの ID です。|
 |`id`|String|タスクの ID です。|
@@ -79,7 +79,7 @@ ms.locfileid: "91850893"
 
 |要素名|Type|メモ|
 |------------------|----------|-----------|
-|`startTime`|DateTime|タスクの実行が開始した時刻です。 '実行中' は**実行している**状態に対応するため、タスクがリソース ファイルやアプリケーション パッケージを指定する場合、開始時刻はタスクがこれらのファイルやパッケージのダウンロードやデプロイを開始した時刻を反映します。  タスクが再起動または再実行された場合は、タスクが実行を開始したつい最近の時刻となります。|
+|`startTime`|DateTime|タスクの実行が開始した時刻です。 '実行中' は **実行している** 状態に対応するため、タスクがリソース ファイルやアプリケーション パッケージを指定する場合、開始時刻はタスクがこれらのファイルやパッケージのダウンロードやデプロイを開始した時刻を反映します。  タスクが再起動または再実行された場合は、タスクが実行を開始したつい最近の時刻となります。|
 |`endTime`|DateTime|タスクが完了した時間です。|
 |`exitCode`|Int32|タスクの終了コード。|
 |`retryCount`|Int32|Batch サービスによりタスクが再試行された回数。 タスクは、0 以外の終了コードで終了すると、指定された MaxTaskRetryCount まで再試行されます。|

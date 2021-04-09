@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
 ms.openlocfilehash: 1217d3af855e96b6d6a0f403c2ff351a6b957d9a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96459667"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance で一般的なセキュリティ要件を解決するためのプレイブック
@@ -112,7 +112,7 @@ ID の中央管理には、次のような利点があります。
 > - Azure AD アクセス トークンはクライアント側にキャッシュされ、その有効期間はトークンの構成によって異なります。 「[Azure Active Directory における構成可能なトークンの有効期間](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)」という記事を参照してください。
 > - Azure AD Authentication の問題のトラブルシューティングのガイダンスについては、次のブログを参照してください。[Azure AD のトラブルシューティング](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991)。
 
-### <a name="azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication
+### <a name="azure-ad-multi-factor-authentication"></a>Azure AD の Multi-Factor Authentication
 
 > 次で言及されています: OSA プラクティス #2、ISO アクセス制御 (AC)
 

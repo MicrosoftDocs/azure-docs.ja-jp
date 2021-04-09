@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/30/2019
 ms.author: wolfma
 ms.openlocfilehash: c7332177795a45331749225e0f3dc3856e28a6a2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001103"
 ---
 Windows 開発用に Visual Studio プロジェクトを作成するためには、プロジェクトの作成、.NET デスクトップ開発用の Visual Studio 設定、Speech SDK のインストール、ターゲット アーキテクチャの選択が必要となります。
@@ -19,17 +19,17 @@ Windows 開発用に Visual Studio プロジェクトを作成するためには
 
 1. Visual Studio 2019 を開きます。
 
-1. [スタート] ウィンドウで、 **[新しいプロジェクトの作成]** を選択します。 
+1. [開始] ウィンドウで、 **[新しいプロジェクトの作成]** を選択します。 
 
-1. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** を選択してから、 **[次へ]** を選択します。
+1. **[新しいプロジェクトの作成]** ウィンドウで、**[コンソール アプリ (.NET Framework)]** を選択してから、**[次へ]** を選択します。
 
-1. **[新しいプロジェクトの構成]** ウィンドウの **[プロジェクト名]** に「*helloworld*」と入力し、**保存先** となるディレクトリのパスを選択するか作成して、 **[作成]** を選択します。
+1. **[新しいプロジェクトの構成]** ウィンドウの **[プロジェクト名]** に「*helloworld*」と入力し、**保存先** となるディレクトリのパスを選択するか作成して、**[作成]** を選択します。
 
 1. Visual Studio のメニュー バーから、 **[ツール]**  >  **[ツールと機能を取得]** の順に選択して Visual Studio インストーラーを開き、 **[変更中]** ダイアログ ボックスを表示します。
 
-1. **[.NET デスクトップ開発]** ワークロードが利用できるかどうかを確認します。 このワークロードがまだインストールされていない場合は、その横にあるチェック ボックスをオンにし、 **[変更]** を選択してインストールを開始してください。 ダウンロードとインストールに数分かかる場合があります。
+1. **[.NET デスクトップ開発]** ワークロードが利用できるかどうかを確認します。 このワークロードがまだインストールされていない場合は、その横にあるチェック ボックスをオンにし、**[変更]** を選択してインストールを開始してください。 ダウンロードとインストールに数分かかる場合があります。
 
-   **[.NET デスクトップ開発]** の横のチェック ボックスが既にオンになっている場合は、 **[閉じる]** を選択してダイアログ ボックスを終了します。
+   **[.NET デスクトップ開発]** の横のチェック ボックスが既にオンになっている場合は、**[閉じる]** を選択してダイアログ ボックスを終了します。
 
    ![.NET デスクトップ環境を有効にする](../articles/cognitive-services/speech-service/media/sdk/vs-enable-net-desktop-workload.png)
 
@@ -43,13 +43,13 @@ Windows 開発用に Visual Studio プロジェクトを作成するためには
 
    ![NuGet パッケージ マネージャー](../articles/cognitive-services/speech-service/media/sdk/vs-nuget-package-manager.png)
 
-1. 右上隅で **[パッケージ ソース]** ドロップダウン ボックスを探し、 **[nuget.org]** が選択されていることを確認します。
+1. 右上隅で **[パッケージ ソース]** ドロップダウン ボックスを探し、**[nuget.org]** が選択されていることを確認します。
 
 1. 左上隅で **[参照]** を選択します。
 
 1. 検索ボックスに「*Microsoft.CognitiveServices.Speech*」と入力し、**Enter** キーを押します。
 
-1. 検索結果から **[Microsoft.CognitiveServices.Speech]** パッケージを選択し、 **[インストール]** を選択して最新の安定バージョンをインストールします。
+1. 検索結果から **[Microsoft.CognitiveServices.Speech]** パッケージを選択し、**[インストール]** を選択して最新の安定バージョンをインストールします。
 
    ![Microsoft.CognitiveServices.Speech NuGet パッケージをインストールする](../articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-03-nuget-install-1.0.0.png)
 
@@ -71,4 +71,4 @@ Windows 開発用に Visual Studio プロジェクトを作成するためには
    - 64 ビット Windows を実行している場合、**x64** を選択します。
    - 32 ビット Windows を実行している場合、**x86** を選択します。
 
-1. **[OK]** 、 **[閉じる]** の順に選択します。
+1. **[OK]**、**[閉じる]** の順に選択します。

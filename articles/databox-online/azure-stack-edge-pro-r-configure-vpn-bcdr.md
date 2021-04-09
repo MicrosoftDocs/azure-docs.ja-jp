@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/17/2020
 ms.author: alkohli
 ms.openlocfilehash: a35a7e5e5c7eccf006f18badad88656e8bc73453
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100367692"
 ---
 # <a name="configure-business-continuity-and-disaster-recovery-for-azure-stack-edge-vpn"></a>Azure Stack Edge VPN に対して事業継続とディザスター リカバリーを構成する

@@ -6,12 +6,12 @@ ms.author: lichris
 ms.date: 2/11/2021
 ms.topic: conceptual
 ms.service: iot-hub
-ms.openlocfilehash: cf05d5f93180db91658d0e94a23359edd5b0f7ad
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 86b2dbe6a28d1440f93788eb40e133d9b62d3f0c
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678606"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102489431"
 ---
 # <a name="device-update-security-model"></a>Device Update のセキュリティ モデル
 
@@ -54,7 +54,7 @@ Device Update エージェントでは、上記のように定義された情報
 
 ### <a name="json-web-signature-jws"></a>JSON Web Signature (JWS)
 
-`updateManifestSignature` は、`updateManifest` 内に含まれる情報が改ざんされていないことを保証するために使用されます。 `updateManifestSignature` は、JSON Web Key を備えた JSON Web Signature を使用して生成されるため、ソースの検証が可能になっています。 署名は Base64Url エンコード文字列であり、"." で区切られた 3 つのセクションがあります。  JSON キーおよびトークンの解析と検証については、jws_util.h のヘルパー メソッドを参照してください。
+`updateManifestSignature` は、`updateManifest` 内に含まれる情報が改ざんされていないことを保証するために使用されます。 `updateManifestSignature` は、JSON Web Key を備えた JSON Web Signature を使用して生成されるため、ソースの検証が可能になっています。 署名は Base64Url エンコード文字列であり、"." で区切られた 3 つのセクションがあります。  JSON キーおよびトークンの解析と検証については、[jws_util.h のヘルパー メソッド](https://github.com/Azure/iot-hub-device-update/tree/main/src/utils/jws_utils)を参照してください。
 
 JSON Web Signature は、JSON ベースのデータ構造を使用してコンテンツに署名するために広く使用されている、[提案済みの IETF 標準](https://tools.ietf.org/html/rfc7515)です。 これは、データの署名を検証することによってデータの整合性を保証する方法です。 詳細については、JSON Web Signature (JWS) [RFC 7515](https://www.rfc-editor.org/info/rfc7515) を参照してください。
 

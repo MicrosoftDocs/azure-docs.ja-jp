@@ -12,10 +12,10 @@ ms.author: datrigan
 ms.reviewer: sstein, vanto
 ms.date: 04/28/2020
 ms.openlocfilehash: 1dc4630e429641fad1ef9efa96bbfa920c6d8963
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91321529"
 ---
 # <a name="use-powershell-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>PowerShell を使用して SQL Database の監査と Advanced Threat Protection を構成する
@@ -45,7 +45,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | Notes |
+| command | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | サーバーを作成します。 |

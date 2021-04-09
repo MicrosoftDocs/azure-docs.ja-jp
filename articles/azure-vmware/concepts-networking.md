@@ -2,25 +2,25 @@
 title: 概念 - ネットワークの相互接続性
 description: Azure VMware Solution におけるネットワークと相互接続性の重要な側面とユース ケースについて説明します。
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: ddf8f5b6aa06154a6edde7b4a78902d8f13eab78
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/11/2021
+ms.openlocfilehash: 4c964151c49e2fea56031dd24bacf4655753a18d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364904"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103491811"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware Solution におけるネットワークと相互接続性の概念
 
 [!INCLUDE [avs-networking-description](includes/azure-vmware-solution-networking-description.md)]
 
-相互接続性に関する有益な観点は、2 種類の Azure VMware Solution プライベート クラウドの実装について検討することです。
+Azure VMware Solution プライベート クラウドにおける相互接続性には、次の 2 つの方法があります。
 
-1. [**Azure のみの基本的な相互接続性**](#azure-virtual-network-interconnectivity)では、Azure の仮想ネットワークを 1 つだけ使用してプライベート クラウドを管理および使用できます。 この実装は、Azure VMware Solution の評価、またはオンプレミス環境からのアクセスを必要としない実装に最適です。
+- [**Azure のみの基本的な相互接続性**](#azure-virtual-network-interconnectivity)では、Azure の仮想ネットワークを 1 つだけ使用してプライベート クラウドを管理および使用できます。 この実装は、Azure VMware Solution の評価、またはオンプレミス環境からのアクセスを必要としない実装に最適です。
 
-1. [**オンプレミスからプライベート クラウドへの完全な相互接続性**](#on-premises-interconnectivity)では、Azure のみの基本的な実装を拡張して、オンプレミスと Azure VMware Solution プライベート クラウドの間の相互接続性が含まれるようにします。
+- [**オンプレミスからプライベート クラウドへの完全な相互接続性**](#on-premises-interconnectivity)では、Azure のみの基本的な実装を拡張して、オンプレミスと Azure VMware Solution プライベート クラウドの間の相互接続性が含まれるようにします。
  
-この記事では、要件や制限事項など、ネットワークと相互接続性を確立するいくつかの重要な概念について説明します。 また、2 種類の Azure VMware Solution プライベート クラウドの相互接続性の実装についても詳しく説明します。 この記事では、Azure VMware Solution で適切に動作するようにネットワークを構成するうえで把握しておく必要のある情報について説明します。
+この記事では、要件や制限事項など、ネットワークと相互接続性を確立する重要な概念について説明します。 この記事では、Azure VMware Solution で動作するようにネットワークを構成するうえで把握しておく必要のある情報について説明します。
 
 ## <a name="azure-vmware-solution-private-cloud-use-cases"></a>Azure VMware Solution プライベート クラウドのユース ケース
 
@@ -36,26 +36,32 @@ Azure VMware Solution プライベート クラウドには、次のようなユ
 
 ## <a name="azure-virtual-network-interconnectivity"></a>Azure 仮想ネットワークの相互接続性
 
-仮想ネットワークからプライベート クラウドへの実装では、Azure VMware Solution プライベート クラウドの管理、プライベート クラウドのワークロードの使用、ExpressRoute 接続経由での Azure サービスへのアクセスが可能になります。 
+Azure 仮想ネットワークを、Azure VMware Solution のプライベート クラウド実装と相互接続できます。 自分の Azure VMware Solution プライベート クラウドを管理し、プライベート クラウドでワークロードを使用して、他の Azure サービスにアクセスできます。
 
-下の図は、プライベート クラウドのデプロイ時に確立される、基本的なネットワークの相互接続性を示しています。 これは、Azure 内の仮想ネットワークとプライベート クラウド間の ExpressRoute ベースの論理ネットワークを示しています。 相互接続性により、主要なユース ケースのうち次の 3 つが実現します。
-* オンプレミス システムからではなく Azure サブスクリプション内の VM からアクセス可能な vCenter Server と NSX-T Manager への受信アクセス。 
-* VM から Azure サービスへの発信アクセス。 
-* プライベート クラウドを実行するワークロードの受信アクセスと消費。
+下の図は、プライベート クラウドのデプロイ時に確立される、基本的なネットワークの相互接続性を示しています。 これは、Azure 内の仮想ネットワークとプライベート クラウド間の論理ネットワークを示しています。 この接続は、Azure VMware Solution サービスの一部であるバックエンド ExpressRoute を介して確立されます。 相互接続性により、次の主要なユース ケースが実現します。
+
+- Azure サブスクリプション内の VM からアクセス可能な vCenter Server と NSX-T Manager への受信アクセス。
+- プライベート クラウド上の VM から Azure サービスへの発信アクセス。
+- プライベート クラウドで実行中のワークロードの受信アクセス。
+
 
 :::image type="content" source="media/concepts/adjacency-overview-drawing-single.png" alt-text="仮想ネットワークからプライベート クラウドへの基本的な接続" border="false":::
 
 ## <a name="on-premises-interconnectivity"></a>オンプレミスの相互接続性
 
-仮想ネットワークおよびオンプレミスからプライベート クラウドへの完全な実装では、オンプレミス環境から Azure VMware Solution のプライベート クラウドにアクセスできます。 この実装は、前のセクションで説明した基本的な実装を拡張したものです。 この実装では、基本的な実装と同様に ExpressRoute 回線が必要ですが、これはオンプレミス環境から Azure 内のプライベート クラウドに接続するために使用されます。 
+完全に相互接続されたシナリオでは、Azure VMware Solution に Azure 仮想ネットワークとオンプレミスからアクセスできます。 この実装は、前のセクションで説明した基本的な実装を拡張したものです。 オンプレミスから Azure のAzure VMware Solution プライベート クラウドに接続するには、ExpressRoute 回線が必要です。
 
 下の図は、オンプレミスからプライベート クラウドへの相互接続性を示しています。これにより、次のユース ケースが実現されます。
-* ホット/コールド Cross-vCenter vMotion
-* オンプレミスから Azure VMware Solution プライベート クラウドへの管理アクセス
+
+- オンプレミスと Azure VMware Solution の間のホット/コールド vCenter vMotion。
+- オンプレミスから Azure VMware Solution プライベート クラウドへの管理アクセス。
 
 :::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="仮想ネットワークおよびオンプレミスからプライベート クラウドへの完全な接続" border="false":::
 
-プライベート クラウドへの完全な相互接続性を実現するには、ExpressRoute Global Reach を有効にしてから、Azure portal で Global Reach の承認キーとプライベート ピアリング ID を要求します。 この承認キーとピアリング ID を使用して、サブスクリプション内の ExpressRoute 回線と新しいプライベート クラウド用の ExpressRoute 回線との間の Global Reach を確立します。 リンクされると、2 つの ExpressRoute 回線によって、オンプレミス環境からプライベート クラウドへとネットワーク トラフィックがルーティングされます。  承認キーとピアリング ID を要求して使用する手順については、[プライベート クラウドへの ExpressRoute Global Reach ピアリングの作成に関するチュートリアル](tutorial-expressroute-global-reach-private-cloud.md)を参照してください。
+プライベート クラウドへの完全な相互接続性を実現するには、ExpressRoute Global Reach を有効にしてから、Azure portal で Global Reach の承認キーとプライベート ピアリング ID を要求する必要があります。 この承認キーとピアリング ID を使用して、サブスクリプション内の ExpressRoute 回線とプライベート クラウド用の ExpressRoute 回線との間の Global Reach を確立します。 リンクされると、2 つの ExpressRoute 回線によって、オンプレミス環境からプライベート クラウドへとネットワーク トラフィックがルーティングされます。 手順については、[プライベート クラウドへの ExpressRoute Global Reach ピアリングの作成に関するチュートリアル](tutorial-expressroute-global-reach-private-cloud.md)を参照してください。
+
+## <a name="limitations"></a>制限事項
+[!INCLUDE [azure-vmware-solutions-limits](includes/azure-vmware-solutions-limits.md)]
 
 ## <a name="next-steps"></a>次のステップ 
 

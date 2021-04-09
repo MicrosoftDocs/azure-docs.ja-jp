@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 0850830e6f8101feae80154a0e245196a690f276
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/08/2021
+ms.openlocfilehash: f7f8082cc9120345336610d5cb49741140d3b606
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050241"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102557014"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (プレビュー) 拡張機能を使用して Visual Studio Code でステートフルおよびステートレスのワークフローを作成する
 
@@ -33,6 +33,8 @@ Visual Studio Code でまず、Azure Logic Apps (プレビュー) 拡張機能�
 * トリガーとアクションを追加します。
 
 * ローカル環境で実行、テスト、デバッグを行い、実行履歴を確認します。
+
+* ファイアウォール アクセス用のドメイン名の詳細を検索します。
 
 * Azure にデプロイします。必要に応じて、Application Insights を有効にします。
 
@@ -280,6 +282,7 @@ macOS または Linux を使用している場合、Visual Studio Code でロジ
    1. `AzureWebJobsStorage` プロパティの値を、前に保存したストレージ アカウントの接続文字列に置き換えます。次に例を示します。
 
       次の処理の前
+
       ```json
       {
          "IsEncrypted": false,
@@ -291,6 +294,7 @@ macOS または Linux を使用している場合、Visual Studio Code でロジ
       ```
 
       次の処理の後
+
       ```json
       {
          "IsEncrypted": false,
@@ -302,6 +306,25 @@ macOS または Linux を使用している場合、Visual Studio Code でロジ
       ```
 
    1. 完了したら、変更を保存してください。
+
+<a name="enable-built-in-connector-authoring"></a>
+
+## <a name="enable-built-in-connector-authoring"></a>組み込みコネクタの作成を有効にする
+
+[プレビュー リリースの機能拡張フレームワーク](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272)を使用して、必要なサービス用の独自の組み込みコネクタを作成できます。 Azure Service Bus や SQL Server などの組み込みコネクタと同様に、これらのコネクタは、より高いスループット、短い待機時間、ローカル接続を実現し、プレビュー ランタイムと同じプロセスでネイティブに実行されます。
+
+作成機能は現在 Visual Studio Code でのみ使用できますが、既定では有効になっていません。 これらのコネクタを作成するには、まず、プロジェクトを拡張バンドルベース (Node.js) から NuGet パッケージベース (.NET) に変換する必要があります。
+
+> [!IMPORTANT]
+> この操作は一方向の操作であり、元に戻すことはできません。
+
+1. [エクスプローラー] ウィンドウのプロジェクトのルートで、他のすべてのファイルとフォルダーの下にある空白の領域の上にマウス ポインターを移動し、ショートカット メニューを開いて、 **[Nuget ベースのロジック アプリ プロジェクトに変換]** を選択します。
+
+   ![[エクスプローラー] ウィンドウに、プロジェクト ウィンドウの空白の領域から開いたプロジェクトのショートカット メニューが表示されているスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/convert-logic-app-project.png)
+
+1. プロンプトが表示されたら、プロジェクトの変換を確認します。
+
+1. 続行するには、[あらゆる場所で実行される Azure Logic Apps - 組み込みコネクタの拡張性](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272)に関する記事の手順を確認して実行してください。
 
 <a name="open-workflow-definition-designer"></a>
 
@@ -555,7 +578,7 @@ Visual Studio Code で Webhook ベースのトリガーとアクションをロ�
 
 1. ブレークポイントにヒットしたときに使用可能な情報を確認するには、[実行] ビューで、 **[変数]** ペインを調べます。
 
-1. ワークフローの実行を続けるには、[デバッグ] ツール バーの **[続行]** (再生ボタン) を選択します。 
+1. ワークフローの実行を続けるには、[デバッグ] ツール バーの **[続行]** (再生ボタン) を選択します。
 
 ブレークポイントは、ワークフローの実行中いつでも追加および削除できます。 ただし、実行の開始後に **workflow.json** ファイルを更新した場合、ブレークポイントは自動的に更新されません。 ブレークポイントを更新するには、ロジック アプリを再起動します。
 
@@ -738,6 +761,55 @@ Visual Studio Code で Webhook ベースのトリガーとアクションをロ�
 
 1. デバッグ セッションを停止するには、 **[実行]** メニューで、 **[デバッグの停止]** (Shift + F5) を選択します。
 
+<a name="firewall-setup"></a>
+
+##  <a name="find-domain-names-for-firewall-access"></a>ファイアウォール アクセス用のドメイン名を検索する
+
+ロジック アプリのワークフローをデプロイして Azure portal で実行する前に、環境内にトラフィックを制限する厳しいネットワーク要件またはファイアウォールがある場合は、ワークフロー内に存在するすべてのトリガーまたはアクション接続に対するアクセス許可を設定する必要があります。
+
+これらの接続の完全修飾ドメイン名 (FQDN) を検索するには、次の手順を実行します。
+
+1. ロジック アプリ プロジェクトで、**connections.js** ファイル (最初の接続ベースのトリガーまたはアクションをワークフローに追加した後に作成されます) を開いて、`managedApiConnections` オブジェクトを検索します。
+
+1. 作成した接続ごとに、`connectionRuntimeUrl` プロパティ値を見つけてコピーし、安全な場所に保存して、この情報を使用してファイアウォールを設定できるようにします。
+
+   この例の **connections.js** ファイルには、これらの `connectionRuntimeUrl` 値を含む 2 つの接続 (AS2 接続と Office 365 接続) が含まれています。
+
+   * AS2: `"connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/as2/11d3fec26c87435a80737460c85f42ba`
+
+   * Office 365: `"connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/office365/668073340efe481192096ac27e7d467f`
+
+   ```json
+   {
+      "managedApiConnections": {
+         "as2": {
+            "api": {
+               "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/as2"
+            },
+            "connection": {
+               "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Web/connections/{connection-resource-name}"
+            },
+            "connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/as2/11d3fec26c87435a80737460c85f42ba,
+            "authentication": {
+               "type":"ManagedServiceIdentity"
+            }
+         },
+         "office365": {
+            "api": {
+               "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/office365"
+            },
+            "connection": {
+               "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Web/connections/{connection-resource-name}"
+            },
+            "connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/office365/668073340efe481192096ac27e7d467f,
+            "authentication": {
+               "type":"ManagedServiceIdentity"
+            }
+         }
+      }
+   }
+   ```
+
 <a name="deploy-azure"></a>
 
 ## <a name="deploy-to-azure"></a>Azure にデプロイ
@@ -775,7 +847,7 @@ Visual Studio Code からは、プロジェクトを Azure に直接発行する
 
       ![[Azure:Logic Apps (プレビュー)] ウィンドウと、作成する新しいロジック アプリの名前を入力するプロンプトを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/enter-logic-app-name.png)
 
-   1. 新しいロジック アプリの [ホスティング プラン](../app-service/overview-hosting-plans.md)として、[ **[App Service プラン]** (Dedicated)](../azure-functions/dedicated-plan.md) または [ **[Premium]** ](../azure-functions/functions-premium-plan.md) を選択します。
+   1. 新しいロジック アプリの [ホスティング プラン](../app-service/overview-hosting-plans.md)として、[ **[App Service プラン]** (Dedicated)](../azure-functions/dedicated-plan.md) または [ **[Premium]**](../azure-functions/functions-premium-plan.md) を選択します。
 
       > [!IMPORTANT]
       > このリソースの種類には、従量課金プランはサポートされておらず、使用できません。 選択したプランは、後で利用できる機能と価格レベルに影響します。 詳細については、次のトピックをご覧ください。 
@@ -1348,6 +1420,7 @@ Azure Logic Apps プレビューでは、 **[XML の検証]** や **[XML の変�
 1. 次のタスクで、`"dependsOn: "generateDebugSymbols"` という行と、前の行の末尾のコンマを削除し、次のようにします。
 
    次の処理の前
+
    ```json
     {
       "type": "func",
@@ -1359,6 +1432,7 @@ Azure Logic Apps プレビューでは、 **[XML の検証]** や **[XML の変�
    ```
 
    次の処理の後
+
    ```json
     {
       "type": "func",

@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 766dd13f58268c044435a22fb30c1de816d4d151
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97531919"
 ---
 サンプル コードを実行するには、これらの手順に従います。

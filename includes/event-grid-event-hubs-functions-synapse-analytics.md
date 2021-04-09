@@ -9,10 +9,10 @@ ms.date: 12/07/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: d6b8b35b36830568d6ff8c46a381fec0cfc57e84
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96854270"
 ---
 :::image type="content" source="media/event-grid-event-hubs-functions-synapse-analytics/overview.png" alt-text="アプリケーションの概要":::

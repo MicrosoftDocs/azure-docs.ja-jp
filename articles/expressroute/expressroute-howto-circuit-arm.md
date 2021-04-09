@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 10/12/2020
 ms.author: duau
 ms.openlocfilehash: 5397dd2745a0d4e61804cf631014846ae15ec4e1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91971542"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-powershell"></a>クイックスタート: Azure PowerShell を使用した ExpressRoute 回線の作成と変更
@@ -288,7 +288,7 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 * ExpressRoute 回線の ExpressRoute Premium アドオンを有効または無効にします。 SKU を *[Standard] または [Premium]* から *[Local]* に変更することはサポートされていません。
 * ポートに使用可能な容量があれば、ExpressRoute 回線の帯域幅を増やします。 回線の帯域幅のダウングレードはサポートされていません。
 * 課金プランを従量制課金データから無制限データに変更します。 無制限データから従量制課金データへの課金プランの変更はサポートされていません。
-* *従来の操作の許可*を有効または無効にできます。
+* *従来の操作の許可* を有効または無効にできます。
 
 制限と制約事項の詳細は、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
 
@@ -368,8 +368,8 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 次の情報をメモしておきます。
 
 * ExpressRoute 回線からすべての仮想ネットワークのリンクを解除する必要があります この操作が失敗した場合は、回線にリンクされている仮想ネットワークがないか確認してください。
-* ExpressRoute 回線サービス プロバイダーのプロビジョニング状態が**プロビジョニング中**または**プロビジョニング済み**の場合、サービス プロバイダー側の回線のプロビジョニングを解除するには、サービス プロバイダーに連絡する必要があります。 Microsoft は、サービス プロバイダーが回線のプロビジョニング解除を完了し、通知するまで、リソースの予約と課金を続行します。
-* サービス プロバイダーが回線のプロビジョニングを解除済みである場合 (つまり、サービス プロバイダーのプロビジョニング状態が**未プロビジョニング**に設定されている場合)、回線を削除することができます。 それにより、回線の課金は停止します。
+* ExpressRoute 回線サービス プロバイダーのプロビジョニング状態が **プロビジョニング中** または **プロビジョニング済み** の場合、サービス プロバイダー側の回線のプロビジョニングを解除するには、サービス プロバイダーに連絡する必要があります。 Microsoft は、サービス プロバイダーが回線のプロビジョニング解除を完了し、通知するまで、リソースの予約と課金を続行します。
+* サービス プロバイダーが回線のプロビジョニングを解除済みである場合 (つまり、サービス プロバイダーのプロビジョニング状態が **未プロビジョニング** に設定されている場合)、回線を削除することができます。 それにより、回線の課金は停止します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

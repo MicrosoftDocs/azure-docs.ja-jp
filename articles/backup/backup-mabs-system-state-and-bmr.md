@@ -4,10 +4,10 @@ description: Azure Backup Server を使用して、システム状態をバッ�
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: c5096158ca0e76ca03577347d8dd3e1419a33ca0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021624"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Azure Backup Server を使用してシステム状態をバックアップし、ベア メタルに復元する
@@ -25,21 +25,21 @@ Azure Backup Server は、システム状態をバックアップし、ベア �
 
 |バックアップ|問題|Azure Backup Server バックアップからの復旧|システム状態のバックアップからの復旧|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
-|**ファイル データ**<br /><br />通常のデータのバックアップ<br /><br />BMR/システム状態のバックアップ|ファイル データの損失|Y|N|N|
-|**ファイル データ**<br /><br />ファイル データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|オペレーティング システムの損失または破損|N|Y|Y|
+|**ファイル データ**<br /><br />通常のデータ バックアップ<br /><br />BMR/システム状態のバックアップ|失われたファイル データ|Y|N|N|
+|**ファイル データ**<br /><br />ファイル データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|失われた、または壊れているオペレーティング システム|N|Y|Y|
 |**ファイル データ**<br /><br />ファイル データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|サーバーの損失 (データ ボリュームは正常)|N|N|Y|
-|**ファイル データ**<br /><br />ファイル データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|サーバーの損失 (データ ボリュームも損失)|Y|N|Y<br /><br />BMR (この後にバックアップ ファイル データの通常回復を実行)|
+|**ファイル データ**<br /><br />ファイル データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|失われたサーバー (データ ボリュームが失われた状態)|Y|N|Y<br /><br />BMR (この後にバックアップ ファイル データの通常回復を実行)|
 |**SharePoint データ**<br /><br />ファーム データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|サイト、リスト、リスト アイテム、ドキュメントの損失|Y|N|N|
-|**SharePoint データ**<br /><br />ファーム データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|オペレーティング システムの損失または破損|N|Y|Y|
+|**SharePoint データ**<br /><br />ファーム データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|失われた、または壊れているオペレーティング システム|N|Y|Y|
 |**SharePoint データ**<br /><br />ファーム データの Azure Backup Server のバックアップ<br /><br />BMR/システム状態のバックアップ|障害復旧|N|N|N|
-|Windows Server 2012 R2 Hyper-V<br /><br />HYPER-V ホストまたはゲストの Azure Backup Server のバックアップ<br /><br />BMR/ホストのシステム状態のバックアップ|VM の損失|Y|N|N|
-|Hyper-V<br /><br />HYPER-V ホストまたはゲストの Azure Backup Server のバックアップ<br /><br />BMR/ホストのシステム状態のバックアップ|オペレーティング システムの損失または破損|N|Y|Y|
-|Hyper-V<br /><br />HYPER-V ホストまたはゲストの Azure Backup Server のバックアップ<br /><br />BMR/ホストのシステム状態のバックアップ|HYPER-V ホストの損失 (VM は正常)|N|N|Y|
-|Hyper-V<br /><br />HYPER-V ホストまたはゲストの Azure Backup Server のバックアップ<br /><br />BMR/ホストのシステム状態のバックアップ|HYPER-V ホストの損失 (VM も損失)|N|N|Y<br /><br />BMR、この後に通常の Azure Backup Server の回復を実行|
-|SQL Server/Exchange<br /><br />Azure Backup Server のアプリのバックアップ<br /><br />BMR/システム状態のバックアップ|アプリ データの損失|Y|N|N|
-|SQL Server/Exchange<br /><br />Azure Backup Server のアプリのバックアップ<br /><br />BMR/システム状態のバックアップ|オペレーティング システムの損失または破損|N|Y|Y|
-|SQL Server/Exchange<br /><br />Azure Backup Server のアプリのバックアップ<br /><br />BMR/システム状態のバックアップ|サーバーの損失 (データベース/トランザクション ログは正常)|N|N|Y|
-|SQL Server/Exchange<br /><br />Azure Backup Server のアプリのバックアップ<br /><br />BMR/システム状態のバックアップ|サーバーの損失 (データベース/トランザクション ログも損失)|N|N|Y<br /><br />BMR 回復、この後に通常の Azure Backup Server の回復を実行|
+|Windows Server 2012 R2 Hyper-V<br /><br />HYPER-V ホストまたはゲストの Azure Backup Server のバックアップ<br /><br />BMR/ホストのシステム状態のバックアップ|失われた VM|Y|N|N|
+|Hyper-V<br /><br />HYPER-V ホストまたはゲストの Azure Backup Server のバックアップ<br /><br />BMR/ホストのシステム状態のバックアップ|失われた、または壊れているオペレーティング システム|N|Y|Y|
+|Hyper-V<br /><br />HYPER-V ホストまたはゲストの Azure Backup Server のバックアップ<br /><br />BMR/ホストのシステム状態のバックアップ|失われた Hyper-V ホスト (VM は完全な状態)|N|N|Y|
+|Hyper-V<br /><br />HYPER-V ホストまたはゲストの Azure Backup Server のバックアップ<br /><br />BMR/ホストのシステム状態のバックアップ|失われた Hyper-V ホスト (VM が失われた状態)|N|N|Y<br /><br />BMR、この後に通常の Azure Backup Server の回復を実行|
+|SQL Server/Exchange<br /><br />Azure Backup Server のアプリのバックアップ<br /><br />BMR/システム状態のバックアップ|失われたアプリ データ|Y|N|N|
+|SQL Server/Exchange<br /><br />Azure Backup Server のアプリのバックアップ<br /><br />BMR/システム状態のバックアップ|失われた、または壊れているオペレーティング システム|N|Y|Y|
+|SQL Server/Exchange<br /><br />Azure Backup Server のアプリのバックアップ<br /><br />BMR/システム状態のバックアップ|失われたサーバー (データベース/トランザクション ログは完全な状態)|N|N|Y|
+|SQL Server/Exchange<br /><br />Azure Backup Server のアプリのバックアップ<br /><br />BMR/システム状態のバックアップ|失われたサーバー (データベース/トランザクション ログが失われた状態)|N|N|Y<br /><br />BMR 回復、この後に通常の Azure Backup Server の回復を実行|
 
 ## <a name="how-system-state-backup-works"></a>システム状態のバックアップのしくみ
 

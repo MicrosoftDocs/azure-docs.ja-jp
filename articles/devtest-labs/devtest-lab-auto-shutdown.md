@@ -4,10 +4,10 @@ description: 使用されていないときに仮想マシンが自動的にシ�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: cd7974580ea30c9d0591c88380a4e626711bad1e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93318981"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Azure DevTest Labs でラボとコンピューティング仮想マシンの自動シャットダウンを構成する
@@ -72,7 +72,7 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 
 1. **[仮想マシン]** ページで、 **[操作]** セクションの左側のメニューにある **[自動シャットダウン]** を選択します。
 2. **[自動シャットダウン]** ページでこのポリシーを有効にするには **[オン]** を選択し、無効にするには **[オフ]** を選択します。
-3. このポリシーを有効にする場合、VM をシャットダウンする **時刻** を指定 (と **タイム ゾーン** ) します。
+3. このポリシーを有効にする場合、VM をシャットダウンする **時刻** を指定 (と **タイム ゾーン**) します。
 4. 指定した自動シャットダウン時刻の 30 分前に通知を送信するオプションに対して **[はい]** または **[いいえ]** を選択します。 **[はい]** を選択した場合は、通知が投稿または送信される Webhook URL のエンドポイントまたは電子メール アドレスを入力します。 ユーザーは通知を受信し、シャットダウンを遅らせるオプションが表示されます。 詳しくは、「[通知](#notifications)」セクションをご覧ください。
 5. **[保存]** を選択します。
 

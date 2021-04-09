@@ -4,10 +4,10 @@ description: この記事では、Azure イベント グリッド トピック�
 ms.topic: how-to
 ms.date: 01/28/2021
 ms.openlocfilehash: 3e643465db7cc918499ca962c4697cb61cb4b594
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100007773"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>マネージド ID を使用したイベント配信

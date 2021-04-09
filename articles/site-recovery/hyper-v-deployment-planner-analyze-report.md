@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: f230445ecdb046c2b631e89567df71e1d09c3234
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95999231"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Deployment Planner レポートの分析
@@ -25,23 +25,23 @@ ms.locfileid: "95999231"
 
 **[開始日]** / **[終了日]** : レポートの生成時に考慮されたプロファイリング データの開始日と終了日です。 既定では、プロファイリングを開始した日付が開始日に、プロファイリングを終了した日付が終了日になります。 この情報は、レポートの生成時に "StartDate" パラメーターと "EndDate" パラメーターで指定できます。
 
-**[Total number of profiling days (プロファイリングの合計日数)]** : レポートの生成対象期間 (開始日から終了日まで) におけるプロファイリングの合計日数です。
+**[Total number of profiling days]\(プロファイリングの合計日数\)** :レポートの生成対象期間 (開始日から終了日まで) におけるプロファイリングの合計日数です。
 
-**[Number of compatible virtual machines]\(適合する仮想マシンの数\)** : 適合する VM の総数です。この VM については、必要なネットワーク帯域幅、必要なストレージ アカウントの数、Azure コア数が計算されます。
+**[Number of compatible virtual machines]\(適合する仮想マシンの数\)**: 適合する VM の総数です。この VM については、必要なネットワーク帯域幅、必要なストレージ アカウントの数、Azure コア数が計算されます。
 
-**[Total number of disks across all compatible virtual machines]\(すべての適合仮想マシンにおけるディスクの総数\)** : 適合するすべての VM におけるディスクの総数です。
+**[Total number of disks across all compatible virtual machines]\(すべての適合仮想マシンにおけるディスクの総数\)**: 適合するすべての VM におけるディスクの総数です。
 
-**[Average number of disks per compatible virtual machine (適合する仮想マシン 1 台あたりの平均ディスク数)]** : 適合するすべての VM から割り出される平均ディスク数です。
+**[Average number of disks per compatible virtual machine]\(適合する仮想マシン 1 台あたりの平均ディスク数\)** : 適合するすべての VM から割り出される平均ディスク数です。
 
-**[Average disk size (GB) (平均ディスク サイズ (GB))]** : 適合するすべての VM から割り出される平均ディスク サイズです。
+**[Average disk size (GB)]\(平均ディスク サイズ (GB)\)** : 適合するすべての VM から割り出される平均ディスク サイズです。
 
 **[Desired RPO (minutes) (必要な RPO (分))]** : 必要な帯域幅の見積もりに使用された回復ポイントの目標です。既定の RPO またはレポートの生成時に "DesiredRPO" パラメーターに指定された値が該当します。
 
-**[Desired bandwidth (Mbps) (必要な帯域幅 (Mbps))]** : レポートの生成時に、達成可能な RPO (回復ポイントの目標) を見積もる目的で "Bandwidth" パラメーターに指定した値です。
+**[Desired bandwidth (Mbps) (必要な帯域幅 (Mbps))]**: レポートの生成時に、達成可能な RPO (回復ポイントの目標) を見積もる目的で "Bandwidth" パラメーターに指定した値です。
 
-**[Observed typical data churn per day (GB) (観察された 1 日あたりの標準的なデータの変更頻度 (GB))]** : プロファイリングの全日数にわたって観察されたデータ変更頻度の平均値です。
+**[Observed typical data churn per day (GB)]\(観察された 1 日あたりの標準的なデータの変更頻度 (GB\))** : プロファイリングの全日数にわたって観察されたデータ変更頻度の平均値です。
 
-## <a name="recommendations"></a>Recommendations 
+## <a name="recommendations"></a>推奨事項 
 Hyper-V to Azure レポートの [Recommendations]\(推奨事項\) シートには、[Desired RPO]\(必要な RPO\) の選択内容に応じて、次の情報が表示されます。
 
 ![Recommendations for Hyper-V to Azure レポート](media/hyper-v-deployment-planner-analyze-report/Recommendations-h2a.png)
@@ -49,31 +49,31 @@ Hyper-V to Azure レポートの [Recommendations]\(推奨事項\) シートに�
 ### <a name="profile-data"></a>Profile data (プロファイル データ)
 ![Profile data (プロファイル データ)](media/hyper-v-deployment-planner-analyze-report/profile-data-h2a.png)
 
-**[Profiled data period (プロファイリング データ期間)]** : プロファイリングが実行された期間です。 既定では、すべてのプロファイリング データが計算の対象となります。 レポートの生成に StartDate オプションと EndDate オプションを使用した場合、特定の期間のレポートが生成されます。 
+**[Profiled data period]\(プロファイリング データ期間\)** : プロファイリングが実行された期間です。 既定では、すべてのプロファイリング データが計算の対象となります。 レポートの生成に StartDate オプションと EndDate オプションを使用した場合、特定の期間のレポートが生成されます。 
 
-**[Number of Hyper-V servers profiled]\(プロファイリング対象 Hyper-V サーバーの数\)** : VM のレポートが生成される Hyper-V サーバーの数。 この数値を選択すると、該当する Hyper-V サーバーの名前が表示されます。 [On-premises Storage Requirement]\(オンプレミス ストレージ要件\) シートが開き、すべてのサーバーがそのストレージ要件と共に表示されます。 
+**[Number of Hyper-V servers profiled]\(プロファイリング対象 Hyper-V サーバーの数\)**: VM のレポートが生成される Hyper-V サーバーの数。 この数値を選択すると、該当する Hyper-V サーバーの名前が表示されます。 [On-premises Storage Requirement]\(オンプレミス ストレージ要件\) シートが開き、すべてのサーバーがそのストレージ要件と共に表示されます。 
 
-**[Desired RPO (必要な RPO)]** : 実際の環境で採用する回復ポイントの目標です。 既定では、15 分、30 分、60 分の 3 とおりの RPO 値について、必要なネットワーク帯域幅が計算されます。 選択した値に応じて、シート上で関連する値が更新されます。 レポートの生成中に DesiredRPOinMin パラメーターを使用した場合、その値がこの [Desired RPO]\(必要な RPO\) の結果に表示されます。
+**[Desired RPO]\(必要な RPO\)** : ご利用のデプロイに対する回復ポイントの目標です。 既定では、15 分、30 分、60 分の 3 とおりの RPO 値について、必要なネットワーク帯域幅が計算されます。 選択した値に応じて、シート上で関連する値が更新されます。 レポートの生成中に DesiredRPOinMin パラメーターを使用した場合、その値がこの [Desired RPO]\(必要な RPO\) の結果に表示されます。
 
 ### <a name="profiling-overview"></a>プロファイリングの概要
 ![プロファイリングの概要](media/hyper-v-deployment-planner-analyze-report/profiling-overview-h2a.png)
 
-**[Total Profiled Virtual Machines (プロファイリングされた仮想マシンの合計)]** : プロファイリング データがある VM の総数です。 プロファイリングされなかった VM の名前が VMListFile に含まれている場合、それらの VM はレポートの生成時に考慮されず、プロファイリングされた VM の合計からは除外されます。
+**[Total Profiled Virtual Machines]\(プロファイリングされた仮想マシンの合計\)** : プロファイリング データを使用できる VM の総数です。 プロファイリングされなかった VM の名前が VMListFile に含まれている場合、それらの VM はレポートの生成時に考慮されず、プロファイリングされた VM の合計からは除外されます。
 
-**[Compatible Virtual Machines]\(適合仮想マシン\)** : Azure Site Recovery を使用して Azure で保護できる VM の数です。 これは適合する VM の総数になります。この VM については、必要なネットワーク帯域幅、ストレージ アカウントの数、Azure コア数が計算されます。 適合する VM ごとの詳しい情報は、「Compatible VMs (適合 VM)」セクションで確認できます。
+**[Compatible Virtual Machines]\(適合仮想マシン\)**: Azure Site Recovery を使用して Azure で保護できる VM の数です。 これは適合する VM の総数になります。この VM については、必要なネットワーク帯域幅、ストレージ アカウントの数、Azure コア数が計算されます。 適合する VM ごとの詳しい情報は、「Compatible VMs (適合 VM)」セクションで確認できます。
 
-**[Incompatible Virtual Machines (不適合仮想マシン)]** : プロファイリングされた VM のうち、Site Recovery を使用した保護に適合しない VM の数です。 不適合の理由については、「Incompatible VMs (不適合 VM)」セクションで取り上げます。 プロファイリングされなかった VM の名前が VMListFile に含まれている場合、それらの VM は、不適合 VM の数から除外されます。 そのような VM は、[Incompatible VMs (不適合 VM)] セクションの最後に [Data not found (データが見つかりません)] として列挙されます。
+**[Incompatible Virtual Machines]\(不適合仮想マシン\)** : プロファイリングされた VM のうち、Site Recovery を使用した保護に適合しない VM の数です。 不適合の理由については、「Incompatible VMs (不適合 VM)」セクションで取り上げます。 プロファイリングされなかった VM の名前が VMListFile に含まれている場合、それらの VM は、不適合 VM の数から除外されます。 そのような VM は、[Incompatible VMs (不適合 VM)] セクションの最後に [Data not found (データが見つかりません)] として列挙されます。
 
-**[Desired RPO (必要な RPO)]** : 必要な回復ポイントの目標を分単位で指定します。 15 分 (既定値)、30 分、60 分の 3 とおりの RPO 値についてレポートが生成されます。 シートの右上にある **[Desired RPO (必要な RPO)]** ボックスの一覧での選択に応じて、レポートされる推奨帯域幅が変化します。 -DesiredRPO パラメーターに独自の値を指定してレポートを生成した場合、 **[Desired RPO]\(必要な RPO\)** ボックスの一覧には、その独自の値が既定値として表示されます。
+**[Desired RPO]\(必要な RPO\)** : 必要な回復ポイントの目標 (分単位) です。 次の 3 つの RPO 値についてレポートが生成されます: 15 分 (既定値)、30 分、60 分。 シートの右上にある **[Desired RPO (必要な RPO)]** ボックスの一覧での選択に応じて、レポートされる推奨帯域幅が変化します。 -DesiredRPO パラメーターに独自の値を指定してレポートを生成した場合、**[Desired RPO]\(必要な RPO\)** ボックスの一覧には、その独自の値が既定値として表示されます。
 
 ### <a name="required-network-bandwidth-mbps"></a>必要なネットワーク帯域幅 (Mbps)
 ![必要なネットワーク帯域幅](media/hyper-v-deployment-planner-analyze-report/required-network-bandwidth-h2a.png)
 
-**[To meet RPO 100% of the time]\(RPO を 100% の時間満たす場合\)** : 必要な RPO を 100% の時間満たす場合に割り当てる必要のある推奨帯域幅 (Mbps) です。 適合するすべての VM について、RPO からの逸脱 (RPO 違反) を防止し、安定した状態の差分レプリケーションを行うためには、この帯域幅を専用に確保する必要があります。
+**[To meet RPO 100% of the time]\(RPO を 100% の時間満たす場合\)**: 必要な RPO を 100% の時間満たす場合に割り当てる必要のある推奨帯域幅 (Mbps) です。 適合するすべての VM について、RPO からの逸脱 (RPO 違反) を防止し、安定した状態の差分レプリケーションを行うためには、この帯域幅を専用に確保する必要があります。
 
-**[To meet RPO 90% of the time]\(RPO を 90% の時間満たす場合\)** : ブロードバンドの料金やその他の理由から、必要な RPO を 100% の時間満たすうえで必要な帯域幅を設定できないことも考えられます。 その場合は、必要な RPO を 90% の時間満たすことができるレベルにまで、使用する帯域幅の設定を下げることができます。 設定する帯域幅を引き下げたことによって生じる影響を明らかにするために、レポートには RPO 違反の件数とその期間についての what-if 分析が示されます。
+**[To meet RPO 90% of the time]\(RPO を 90% の時間満たす場合\)**: ブロードバンドの料金やその他の理由から、必要な RPO を 100% の時間満たすうえで必要な帯域幅を設定できないことも考えられます。 その場合は、必要な RPO を 90% の時間満たすことができるレベルにまで、使用する帯域幅の設定を下げることができます。 設定する帯域幅を引き下げたことによって生じる影響を明らかにするために、レポートには RPO 違反の件数とその期間についての what-if 分析が示されます。
 
-**[Achieved Throughput]\(達成スループット\)** : GetThroughput コマンドが実行されたサーバーから、ストレージ アカウントが存在する Azure リージョンまでのスループットです。 このスループットは、Site Recovery を使用して適合 VM を保護した場合に得られる推定値を表しています。 Hyper-V サーバーのストレージとネットワークの特性が、ツールを実行したサーバーのそれと同じ状態に保たれていることが必要となります。
+**[Achieved Throughput]\(達成スループット\)**: GetThroughput コマンドが実行されたサーバーから、ストレージ アカウントが存在する Azure リージョンまでのスループットです。 このスループットは、Site Recovery を使用して適合 VM を保護した場合に得られる推定値を表しています。 Hyper-V サーバーのストレージとネットワークの特性が、ツールを実行したサーバーのそれと同じ状態に保たれていることが必要となります。
 
 企業による Site Recovery のデプロイでは、常に [ExpressRoute](https://aka.ms/expressroute) を使用することをお勧めします。
 
@@ -127,15 +127,15 @@ Site Recovery を使用してすべての適合 VM を Azure に保護する場�
  
 コストは月単位または年単位で表示することができます。 詳細については、「[サポートされるターゲット リージョン](./hyper-v-deployment-planner-cost-estimation.md#supported-target-regions)」と「[サポートされる通貨](./hyper-v-deployment-planner-cost-estimation.md#supported-currencies)」を参照してください。
 
-**[Cost by components]\(コンポーネントごとのコスト\)** : DR コストの合計が、コンピューティング、ストレージ、ネットワーク、Site Recovery ライセンス コストの 4 つのコンポーネントに分けて表示されます。 コストは、レプリケーション中および DR ドリル時に発生する消費量に基づいて計算されます。 計算には、コンピューティングとストレージ (Premium と Standard) のほか、オンプレミス サイトと Azure との間に構成されている ExpressRoute/VPN、Site Recovery ライセンスが考慮されます。
+**[Cost by components]\(コンポーネントごとのコスト\)**: DR コストの合計が、コンピューティング、ストレージ、ネットワーク、Site Recovery ライセンス コストの 4 つのコンポーネントに分けて表示されます。 コストは、レプリケーション中および DR ドリル時に発生する消費量に基づいて計算されます。 計算には、コンピューティングとストレージ (Premium と Standard) のほか、オンプレミス サイトと Azure との間に構成されている ExpressRoute/VPN、Site Recovery ライセンスが考慮されます。
 
-**[Cost by states]\(状態ごとのコスト\)** : ディザスター リカバリーの合計コストが、レプリケーションと DR ドリルという 2 種類の状態に基づいて分類されます。 
+**[Cost by states]\(状態ごとのコスト\)**: ディザスター リカバリーの合計コストが、レプリケーションと DR ドリルという 2 種類の状態に基づいて分類されます。 
 
-**[Replication cost]\(レプリケーション コスト\)** : レプリケーション時に発生するコスト。 ストレージ、ネットワーク、Site Recovery ライセンスのコストが含まれます。 
+**[Replication cost]\(レプリケーション コスト\)**: レプリケーション時に発生するコスト。 ストレージ、ネットワーク、Site Recovery ライセンスのコストが含まれます。 
 
-**[DR-Drill cost]\(DR ドリル コスト\)** : テスト フェールオーバー時に発生するコスト。 テスト フェールオーバー中は、Site Recovery によって VM がスピンアップされます。 DR ドリル コストには、実行中の VM のコンピューティング コストとストレージ コストが含まれます。 
+**[DR-Drill cost]\(DR ドリル コスト\)**: テスト フェールオーバー時に発生するコスト。 テスト フェールオーバー中は、Site Recovery によって VM がスピンアップされます。 DR ドリル コストには、実行中の VM のコンピューティング コストとストレージ コストが含まれます。 
 
-**[Azure storage cost per Month/Year]\(月/年単位の Azure Storage コスト\)** : Premium ストレージと Standard ストレージに関して、レプリケーションと DR ドリルで生じる合計ストレージ コストが棒グラフで表示されます。 VM ごとの詳細なコスト分析は、[[Cost Estimation]\(コスト見積もり\)](hyper-v-deployment-planner-cost-estimation.md) シートで確認できます。
+**[Azure storage cost per Month/Year]\(月/年単位の Azure Storage コスト\)**: Premium ストレージと Standard ストレージに関して、レプリケーションと DR ドリルで生じる合計ストレージ コストが棒グラフで表示されます。 VM ごとの詳細なコスト分析は、[[Cost Estimation]\(コスト見積もり\)](hyper-v-deployment-planner-cost-estimation.md) シートで確認できます。
 
 ### <a name="growth-factor-and-percentile-values-used"></a>増加率と使用パーセンタイル値
 シートの一番下にあるこのセクションには、プロファイリング対象 VM の全パフォーマンス カウンターに使用されるパーセンタイル値 (既定では 95 パーセンタイル) が表示されます。 また、すべての計算に使用される増加率 (%) (既定では 30%) も表示されます。
@@ -152,17 +152,17 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 ## <a name="vm-storage-placement-recommendation"></a>VM<->ストレージの配置に関する推奨情報 
 ![VM-Storage placement (VM<->ストレージの配置)](media/hyper-v-deployment-planner-analyze-report/vm-storage-placement-h2a.png)
 
-**[Disk Storage Type (ディスク ストレージの種類)]** : **[VMs to Place (配置する VM)]** 列に示されている該当 VM をすべてレプリケートするために使用される "Standard" または "Premium" のストレージ アカウントです。
+**[Disk Storage Type (ディスク ストレージの種類)]**: **[VMs to Place (配置する VM)]** 列に示されている該当 VM をすべてレプリケートするために使用される "Standard" または "Premium" のストレージ アカウントです。
 
-**[Suggested Prefix (推奨プレフィックス)]** : ストレージ アカウントの名前に使用できる 3 文字のプレフィックスです。 独自のプレフィックスを使用することもできますが、[ストレージ アカウントのパーティションの名前付け規則](/en-in/azure/storage/blobs/storage-performance-checklist)に準拠したプレフィックスがツールから提案されます。
+**[Suggested Prefix (推奨プレフィックス)]**: ストレージ アカウントの名前に使用できる 3 文字のプレフィックスです。 独自のプレフィックスを使用することもできますが、[ストレージ アカウントのパーティションの名前付け規則](/en-in/azure/storage/blobs/storage-performance-checklist)に準拠したプレフィックスがツールから提案されます。
 
-**[Suggested Account Name (推奨アカウント名)]** : 推奨されるプレフィックスを付けた場合のストレージ アカウントの名前が表示されます。 山かっこ (< と >) で囲まれた名前は、カスタムの入力値に置き換えてください。
+**[Suggested Account Name (推奨アカウント名)]**: 推奨されるプレフィックスを付けた場合のストレージ アカウントの名前が表示されます。 山かっこ (< と >) で囲まれた名前は、カスタムの入力値に置き換えてください。
 
-**[Log Storage Account (ログ ストレージ アカウント)]** : レプリケーションのログはすべて Standard ストレージ アカウントに格納されます。 レプリケーション先が Premium ストレージ アカウントである VM については、ログの格納用として別途 Standard ストレージ アカウントをセットアップしてください。 1 つの Standard ログ ストレージ アカウントを複数の Premium レプリケーション ストレージ アカウントで使用できます。 レプリケーション先が Standard ストレージ アカウントである VM では、同じストレージ アカウントがログに使用されます。
+**[Log Storage Account (ログ ストレージ アカウント)]**: レプリケーションのログはすべて Standard ストレージ アカウントに格納されます。 レプリケーション先が Premium ストレージ アカウントである VM については、ログの格納用として別途 Standard ストレージ アカウントをセットアップしてください。 1 つの Standard ログ ストレージ アカウントを複数の Premium レプリケーション ストレージ アカウントで使用できます。 レプリケーション先が Standard ストレージ アカウントである VM では、同じストレージ アカウントがログに使用されます。
 
-**[Suggested Log Account Name (推奨ログ アカウント名)]** : 推奨されるプレフィックスを付けた場合のストレージ ログ アカウントの名前が表示されます。 山かっこ (< と >) で囲まれた名前は、カスタムの入力値に置き換えてください。
+**[Suggested Log Account Name (推奨ログ アカウント名)]**: 推奨されるプレフィックスを付けた場合のストレージ ログ アカウントの名前が表示されます。 山かっこ (< と >) で囲まれた名前は、カスタムの入力値に置き換えてください。
 
-**[Placement Summary (配置の概要)]** : レプリケーションとフェールオーバー (テスト フェールオーバーを含む) 時にストレージ アカウントにかかる VM の総負荷の概要が表示されます。 表示される概要の例を次に示します。
+**[Placement Summary (配置の概要)]**: レプリケーションとフェールオーバー (テスト フェールオーバーを含む) 時にストレージ アカウントにかかる VM の総負荷の概要が表示されます。 表示される概要の例を次に示します。
 
 * ストレージ アカウントに関連付けられた VM の総数。 
 * そのストレージ アカウントに配置されている全 VM における読み取り/書き込み IOPS の合計。
@@ -170,16 +170,16 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 * 全ディスクの合計セットアップ サイズ。
 * ディスクの総数。
 
-**[VMs to Place (配置する VM)]** : パフォーマンスと稼働率を最大限に引き出すために、指定のストレージ アカウントに配置すべき全 VM が一覧表示されます。
+**[VMs to Place (配置する VM)]**: パフォーマンスと稼働率を最大限に引き出すために、指定のストレージ アカウントに配置すべき全 VM が一覧表示されます。
 
 ## <a name="compatible-vms"></a>Compatible VMs (適合 VM)
 Site Recovery Deployment Planner によって生成される Excel レポートでは、すべての適合 VM に関する詳しい情報が "Compatible VMs (適合 VM)" シートに表示されます。
 
 ![Compatible VMs (適合 VM)](media/hyper-v-deployment-planner-analyze-report/compatible-vms-h2a.png)
 
-**[VM 名]** : レポートの生成時に VMListFile で使った VM の名前です。 また、VM にアタッチされたディスク (VHD) もこの列に一覧表示されます。 この名前には、VM がプロファイリング期間中に検出された時点で配置されていた Hyper-V ホストの名前が含まれます。
+**[VM 名]**: レポートの生成時に VMListFile で使った VM の名前です。 また、VM にアタッチされたディスク (VHD) もこの列に一覧表示されます。 この名前には、VM がプロファイリング期間中に検出された時点で配置されていた Hyper-V ホストの名前が含まれます。
 
-**[VM Compatibility (VM 適合性)]** : **Yes** と **Yes**\* の 2 つの値があります。 **Yes**\* は、[Premium SSD](../virtual-machines/disks-types.md) に適した VM があるインスタンスに付けられます。 この場合、ディスクの変更頻度または IOPS が高く、現在ディスクにマップされているサイズよりも上位の Premium ディスク サイズが適していることをプロファイリングの結果は示しています。 ストレージ アカウントでは、Premium Storage のディスク タイプが、そのサイズに基づいて決定されます。 
+**[VM Compatibility (VM 適合性)]**: **Yes** と **Yes**\* の 2 つの値があります。 **Yes**\* は、[Premium SSD](../virtual-machines/disks-types.md) に適した VM があるインスタンスに付けられます。 この場合、ディスクの変更頻度または IOPS が高く、現在ディスクにマップされているサイズよりも上位の Premium ディスク サイズが適していることをプロファイリングの結果は示しています。 ストレージ アカウントでは、Premium Storage のディスク タイプが、そのサイズに基づいて決定されます。 
 * 128 GB 未満の場合は P10
 * 128 GB から 256 GB の場合は P15
 * 256 ～ 512 GB の場合は P20
@@ -189,38 +189,38 @@ Site Recovery Deployment Planner によって生成される Excel レポート�
 
 たとえば、ディスクのワークロード特性上は P20 または P30 に分類されるものの、サイズ上はそれよりも低い Premium Storage ディスク タイプに対応している VM は、Deployment Planner ツールによって **Yes**\* として表示されます。 そのうえで、推奨される適切な Premium Storage ディスク タイプに合わせてレプリケーション元のディスク サイズを変更するか、またはレプリケーション先のディスク タイプをフェールオーバー後に変更するように促されます。
 
-**[ストレージの種類]** : Standard または Premium があります。
+**[ストレージの種類]**: Standard または Premium があります。
 
-**[Suggested Prefix (推奨プレフィックス)]** : ストレージ アカウントの 3 文字のプレフィックスです。
+**[Suggested Prefix (推奨プレフィックス)]**: ストレージ アカウントの 3 文字のプレフィックスです。
 
-**[ストレージ アカウント]** : ストレージ アカウントの推奨プレフィックスを使用した名前です。
+**[ストレージ アカウント]**: ストレージ アカウントの推奨プレフィックスを使用した名前です。
 
-**[Peak R/W IOPS (with Growth Factor)]\(ピーク読み取り/書き込み IOPS (増加率を考慮)\)** : 将来的な増加率 (既定では 30%) を加味した、ディスクに対するピーク ワークロードの読み取り/書き込み IOPS (既定では 95 パーセンタイル) です。 VM のトータルな読み取り/書き込み IOPS は、その個々のディスクの読み取り/書き込み IOPS を足した値になるとは限りません。 VM の読み取り/書き込みのピーク IOPS は、プロファイリングの全期間を通じての、その各ディスクにおける読み取り/書き込み IOPS の合計のピークです。
+**[Peak R/W IOPS (with Growth Factor)]\(ピーク読み取り/書き込み IOPS (増加率を考慮)\)**: 将来的な増加率 (既定では 30%) を加味した、ディスクに対するピーク ワークロードの読み取り/書き込み IOPS (既定では 95 パーセンタイル) です。 VM のトータルな読み取り/書き込み IOPS は、その個々のディスクの読み取り/書き込み IOPS を足した値になるとは限りません。 VM の読み取り/書き込みのピーク IOPS は、プロファイリングの全期間を通じての、その各ディスクにおける読み取り/書き込み IOPS の合計のピークです。
 
-**[Peak Data Churn in MB/s (with Growth Factor)]\(データの変更頻度のピーク (MB/秒) (増加率を考慮)\)** : 将来的な増加率 (既定では 30%) を加味した、ディスクに対する変更頻度のピーク値 (既定では 95 パーセンタイル) です。 VM のトータルなデータ変更頻度は、その個々のディスクのデータ変更頻度を足した値になるとは限りません。 VM のデータ変更頻度のピークは、プロファイリングの全期間を通じての、その各ディスクにおける変更頻度の合計のピークです。
+**[Peak Data Churn in MB/s (with Growth Factor)]\(データの変更頻度のピーク (MB/秒) (増加率を考慮)\)**: 将来的な増加率 (既定では 30%) を加味した、ディスクに対する変更頻度のピーク値 (既定では 95 パーセンタイル) です。 VM のトータルなデータ変更頻度は、その個々のディスクのデータ変更頻度を足した値になるとは限りません。 VM のデータ変更頻度のピークは、プロファイリングの全期間を通じての、その各ディスクにおける変更頻度の合計のピークです。
 
-**[Azure VM Size (Azure VM サイズ)]** : オンプレミス VM に対応する Azure Cloud Services の VM として理想的なサイズです。 この判断は、オンプレミス VM のメモリ、ディスク数/コア数/NIC 数、読み取り/書き込みの IOPS に基づいて行われます。 オンプレミスの VM が備えているこうした特性をすべて満たした最小の Azure VM サイズが確実に提案されます。
+**[Azure VM Size (Azure VM サイズ)]**: オンプレミス VM に対応する Azure Cloud Services の VM として理想的なサイズです。 この判断は、オンプレミス VM のメモリ、ディスク数/コア数/NIC 数、読み取り/書き込みの IOPS に基づいて行われます。 オンプレミスの VM が備えているこうした特性をすべて満たした最小の Azure VM サイズが確実に提案されます。
 
-**[ディスク数]** : VM の仮想マシン ディスク (VHD) の総数です。
+**[ディスク数]**: VM の仮想マシン ディスク (VHD) の総数です。
 
 **[ディスク サイズ (GB)]** : VM の全ディスクの合計サイズです。 VM に含まれる個々のディスクのサイズも表示されます。
 
-**[コア]** : VM に搭載されている CPU コアの数です。
+**[コア]**: VM に搭載されている CPU コアの数です。
 
-**[メモリ (MB)]** : VM に搭載されている RAM です。
+**[メモリ (MB)]**: VM に搭載されている RAM です。
 
-**[NIC]** : VM に搭載されている NIC の数です。
+**[NIC]**: VM に搭載されている NIC の数です。
 
-**[ブートの種類]** : VM のブートの種類です。 BIOS と EFI のどちらかになります。
+**[ブートの種類]**: VM のブートの種類です。 BIOS と EFI のどちらかになります。
 
 ## <a name="incompatible-vms"></a>Incompatible VMs (不適合 VM)
 Site Recovery Deployment Planner によって生成される Excel レポートでは、すべての不適合 VM に関する詳しい情報が "Incompatible VMs (不適合 VM)" シートに表示されます。
 
 ![Incompatible VMs (不適合 VM)](media/hyper-v-deployment-planner-analyze-report/incompatible-vms-h2a.png)
 
-**[VM 名]** : レポートの生成時に VMListFile で使った VM の名前です。 また、VM にアタッチされたディスク (VHD) もこの列に一覧表示されます。 この名前には、VM がプロファイリング期間中に検出された時点で配置されていた Hyper-V ホストの名前が含まれます。
+**[VM 名]**: レポートの生成時に VMListFile で使った VM の名前です。 また、VM にアタッチされたディスク (VHD) もこの列に一覧表示されます。 この名前には、VM がプロファイリング期間中に検出された時点で配置されていた Hyper-V ホストの名前が含まれます。
 
-**[VM Compatibility (VM 適合性)]** : 指定された VM が Site Recovery での使用に不適合である理由が表示されます。 理由は VM の不適合ディスクごとに記述され、公開されている[ストレージの制限](/en-in/azure/storage/common/scalability-targets-standard-account)に基づく次のいずれかの状況に該当します。
+**[VM Compatibility (VM 適合性)]**: 指定された VM が Site Recovery での使用に不適合である理由が表示されます。 理由は VM の不適合ディスクごとに記述され、公開されている[ストレージの制限](/en-in/azure/storage/common/scalability-targets-standard-account)に基づく次のいずれかの状況に該当します。
 
 * ディスク サイズが 4,095 GB を超えている。 Azure Storage では現在、4,095 GB を超えるデータ ディスク サイズがサポートされません。
 
@@ -252,21 +252,21 @@ Site Recovery Deployment Planner によって生成される Excel レポート�
 
 * 算出されたスナップショット ストレージが、スナップショット ストレージに関してサポートされている上限 (10 TB) を超えている。
 
-**[Peak R/W IOPS (with Growth Factor)]\(ピーク読み取り/書き込み IOPS (増加率を考慮)\)** : 将来的な増加率 (既定では 30%) を加味した、ディスクに対するピーク ワークロードの IOPS (既定では 95 パーセンタイル) です。 VM のトータルな読み取り/書き込み IOPS は、その個々のディスクの読み取り/書き込み IOPS を足した値になるとは限りません。 VM の読み取り/書き込みのピーク IOPS は、プロファイリングの全期間を通じての、その各ディスクにおける読み取り/書き込み IOPS の合計のピークです。
+**[Peak R/W IOPS (with Growth Factor)]\(ピーク読み取り/書き込み IOPS (増加率を考慮)\)**: 将来的な増加率 (既定では 30%) を加味した、ディスクに対するピーク ワークロードの IOPS (既定では 95 パーセンタイル) です。 VM のトータルな読み取り/書き込み IOPS は、その個々のディスクの読み取り/書き込み IOPS を足した値になるとは限りません。 VM の読み取り/書き込みのピーク IOPS は、プロファイリングの全期間を通じての、その各ディスクにおける読み取り/書き込み IOPS の合計のピークです。
 
-**[Peak Data Churn (MB/s) (with Growth Factor)]\(データの変更頻度のピーク (MB/秒) (増加率を考慮)\)** : 将来的な増加率 (既定では 30%) を加味した、ディスクに対する変更頻度のピーク値 (既定では 95 パーセンタイル) です。 VM のトータルなデータ変更頻度は、その個々のディスクのデータ変更頻度を足した値になるとは限らないことに注意してください。 VM のデータ変更頻度のピークは、プロファイリングの全期間を通じての、その各ディスクにおける変更頻度の合計のピークです。
+**[Peak Data Churn (MB/s) (with Growth Factor)]\(データの変更頻度のピーク (MB/秒) (増加率を考慮)\)**: 将来的な増加率 (既定では 30%) を加味した、ディスクに対する変更頻度のピーク値 (既定では 95 パーセンタイル) です。 VM のトータルなデータ変更頻度は、その個々のディスクのデータ変更頻度を足した値になるとは限らないことに注意してください。 VM のデータ変更頻度のピークは、プロファイリングの全期間を通じての、その各ディスクにおける変更頻度の合計のピークです。
 
-**[ディスク数]** : VM の VHD の総数です。
+**[ディスク数]**: VM の VHD の総数です。
 
 **[ディスク サイズ (GB)]** : VM の全ディスクの合計セットアップ サイズです。 VM に含まれる個々のディスクのサイズも表示されます。
 
-**[コア]** : VM に搭載されている CPU コアの数です。
+**[コア]**: VM に搭載されている CPU コアの数です。
 
-**[メモリ (MB)]** : VM に搭載されている RAM のサイズです。
+**[メモリ (MB)]**: VM に搭載されている RAM のサイズです。
 
-**[NIC]** : VM に搭載されている NIC の数です。
+**[NIC]**: VM に搭載されている NIC の数です。
 
-**[ブートの種類]** : VM のブートの種類です。 BIOS と EFI のどちらかになります。
+**[ブートの種類]**: VM のブートの種類です。 BIOS と EFI のどちらかになります。
 
 ## <a name="azure-site-recovery-limits"></a>Azure Site Recovery の制限
 以下の表は、Site Recovery の制限を示したものです。 上記の制限は、弊社のテストに基づいて公開されていますが、アプリケーション I/O として想定されるすべての組み合わせを網羅したものではありません。 実際の結果は、ご使用のアプリケーションで発生するさまざまな I/O によって異なることが考えられます。 理想的な結果を得るために、デプロイ計画後も必ず、テスト フェールオーバーを実行してアプリケーションのテストを徹底し、そのパフォーマンスの真の姿を把握してください。
@@ -296,15 +296,15 @@ Premium Storage | 16 KB 以上| VM あたり 20 MB/秒 | VM あたり 1,684 GB
     ログ ファイルを格納するために必要な空き領域がない場合、レプリケーションは一時停止されます。 その後、VM のレプリケーションは "再同期が必要" な状態に移行します。
 * Azure にログ ファイルをプッシュできるだけの十分なネットワーク帯域幅がない場合、ログ ファイルがボリューム上にたまっていきます。 最悪のケースでは、ログ ファイルが VHD の 50% の大きさにまで増えたとき、VM のレプリケーションは "再同期が必要" な状態に移行します。 最悪のケースでは、差分レプリケーションに、VHD サイズの 50% の空き領域が追加で必要になります。
 
-**[Hyper-V host]\(Hyper-V ホスト\)** : プロファイリングされた Hyper-V サーバーの一覧です。 サーバーが Hyper-V クラスターに属している場合、すべてのクラスター ノードが 1 つにまとめられます。
+**[Hyper-V host]\(Hyper-V ホスト\)**: プロファイリングされた Hyper-V サーバーの一覧です。 サーバーが Hyper-V クラスターに属している場合、すべてのクラスター ノードが 1 つにまとめられます。
 
-**[Volume (VHD path)]\(ボリューム (VHD パス)\)** : VHD/VHDX が存在する Hyper-V ホストの各ボリュームです。 
+**[Volume (VHD path)]\(ボリューム (VHD パス)\)**: VHD/VHDX が存在する Hyper-V ホストの各ボリュームです。 
 
-**[Free space available (GB)]\(空き領域 (GB)\)** : ボリューム上の空き領域です。
+**[Free space available (GB)]\(空き領域 (GB)\)**: ボリューム上の空き領域です。
 
 **[Total storage space required on the volume (GB)]\(ボリュームに必要な合計記憶域 (GB)\)** : 初回レプリケーションと差分レプリケーションを正常に完了させるためにボリューム上に必要な合計空き記憶域です。 
 
-**[Total additional storage to be provisioned on the volume for successful replication (GB)]\(レプリケーションを正常に完了するためにボリュームに別途プロビジョニングする必要のあるストレージの合計 (GB)\)** : 初回レプリケーションと差分レプリケーションを正常に完了させるために、ボリュームに別途プロビジョニングされる必要のある領域の合計です。
+**[Total additional storage to be provisioned on the volume for successful replication (GB)]\(レプリケーションを正常に完了するためにボリュームに別途プロビジョニングする必要のあるストレージの合計 (GB)\)**: 初回レプリケーションと差分レプリケーションを正常に完了させるために、ボリュームに別途プロビジョニングされる必要のある領域の合計です。
 
 ## <a name="initial-replication-batching"></a>初回レプリケーションのバッチ分割 
 
@@ -321,25 +321,25 @@ Premium Storage | 16 KB 以上| VM あたり 20 MB/秒 | VM あたり 1,684 GB
 ![IR バッチ分割の詳細 (追加情報)](media/hyper-v-deployment-planner-analyze-report/ir-batching-for-rpo2-h2a.png)
 
 ### <a name="each-batch-provides-the-following-information"></a>それぞれのバッチについて、次の情報が得られます。 
-**[Hyper-V host]\(Hyper-V ホスト\)** : 保護の対象となる VM の Hyper-V ホスト。
+**[Hyper-V host]\(Hyper-V ホスト\)**: 保護の対象となる VM の Hyper-V ホスト。
 
 **[Virtual Machine]\(仮想マシン\)** : 保護の対象となる VM。 
 
-**[Comments]\(コメント\)** : VM の特定のボリュームに関して必要なアクションがあれば、ここにコメントとして記載されます。 たとえば、必要な空き領域がボリュームに存在しない場合、その VM を保護するためのストレージを追加するよう促すコメントが表示されます。
+**[Comments]\(コメント\)**: VM の特定のボリュームに関して必要なアクションがあれば、ここにコメントとして記載されます。 たとえば、必要な空き領域がボリュームに存在しない場合、その VM を保護するためのストレージを追加するよう促すコメントが表示されます。
 
-**[Volume (VHD path)]\(ボリューム (VHD パス)\)** : VM の VHD が存在するボリュームの名前。 
+**[Volume (VHD path)]\(ボリューム (VHD パス)\)**: VM の VHD が存在するボリュームの名前。 
 
 **[Free space available on the volume (GB)]\(ボリューム上の空き領域 (GB)\)** : VM のボリューム上の空きディスク領域。 ボリューム上で使用できる空き領域を計算するときは、同じボリュームに VHD が存在する先行バッチの各 VM による差分レプリケーション用のディスク領域が考慮されます。 
 
 たとえば、VM1、VM2、VM3 が同じボリューム (E:\VHDpath など) に存在するとします。 レプリケーション前の時点で、このボリュームに存在する空き領域は 500 GB です。 VM1 はバッチ 1 に、VM2 はバッチ 2 に、VM3 はバッチ 3 に属しています。 VM1 については、利用できる空き領域は 500 GB です。 VM2 については、利用できる空き領域は、VM1 の差分レプリケーションに必要なディスク領域を 500 から差し引いた値となります。 VM1 の差分レプリケーションに 300 GB が必要である場合、VM2 で利用できる空き領域は 200 GB (500 GB - 300 GB) です。 同様に、VM2 の差分レプリケーションに 300 GB の領域が必要であるとしましょう。 VM3 で利用できる空き領域は -100 GB (200 GB - 300 GB) となります。
 
-**[Storage required on the volume for initial replication (GB)]\(初回レプリケーションに関してボリュームに必要な空き記憶域 (GB)\)** : VM の初回レプリケーションに関してボリュームに必要な空き記憶域。
+**[Storage required on the volume for initial replication (GB)]\(初回レプリケーションに関してボリュームに必要な空き記憶域 (GB)\)**: VM の初回レプリケーションに関してボリュームに必要な空き記憶域。
 
 **[Storage required on the volume for delta replication (GB)]\(差分レプリケーションに関してボリュームに必要な空き記憶域 (GB)\)** : VM の差分レプリケーションに関してボリュームに必要な空き記憶域。
 
-**[Additional storage required based on deficit to avoid replication failure (GB)]\(レプリケーション エラーを防ぐために領域不足に基づいて追加する必要のある記憶域 (GB)\)** : VM のボリュームに別途必要な記憶域。 初回レプリケーションと差分レプリケーションの記憶域要件のどちらか大きい方から、ボリューム上の空き領域を差し引いた値となります。
+**[Additional storage required based on deficit to avoid replication failure (GB)]\(レプリケーション エラーを防ぐために領域不足に基づいて追加する必要のある記憶域 (GB)\)**: VM のボリュームに別途必要な記憶域。 初回レプリケーションと差分レプリケーションの記憶域要件のどちらか大きい方から、ボリューム上の空き領域を差し引いた値となります。
 
-**[Minimum bandwidth required for initial replication (Mbps)]\(初回レプリケーションに必要な最小帯域幅 (Mbps)\)** : VM の初回レプリケーションに必要な最小帯域幅。
+**[Minimum bandwidth required for initial replication (Mbps)]\(初回レプリケーションに必要な最小帯域幅 (Mbps)\)**: VM の初回レプリケーションに必要な最小帯域幅。
 
 **[Minimum bandwidth required for delta replication (Mbps)]\(差分レプリケーションに必要な最小帯域幅 (Mbps)\)** : VM の差分レプリケーションに必要な最小帯域幅。
 
@@ -348,9 +348,9 @@ Premium Storage | 16 KB 以上| VM あたり 20 MB/秒 | VM あたり 1,684 GB
 
 **[Bandwidth available for Batch]\(バッチで使用可能な帯域幅\)** : バッチに使用できる帯域幅。先行するバッチの差分レプリケーションの帯域幅を考慮したうえで求められます。
 
-**[Approximate bandwidth available for initial replication of batch]\(バッチの初回レプリケーションで使用できるおおよその帯域幅\)** : バッチの VM の初回レプリケーションで使用できる帯域幅。 
+**[Approximate bandwidth available for initial replication of batch]\(バッチの初回レプリケーションで使用できるおおよその帯域幅\)**: バッチの VM の初回レプリケーションで使用できる帯域幅。 
 
-**[Approximate bandwidth consumed for delta replication of batch]\(バッチの差分レプリケーションで消費されるおおよその帯域幅\)** : バッチの VM の差分レプリケーションに必要な帯域幅。 
+**[Approximate bandwidth consumed for delta replication of batch]\(バッチの差分レプリケーションで消費されるおおよその帯域幅\)**: バッチの VM の差分レプリケーションに必要な帯域幅。 
 
 **[Estimated initial replication time for batch (HH:MM)]\(バッチの初回レプリケーションの推定時間 (時:分)\)** : 初回レプリケーションの推定時間 (時:分)。
 

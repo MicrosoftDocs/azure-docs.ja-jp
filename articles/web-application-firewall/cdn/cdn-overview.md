@@ -7,14 +7,14 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: victorh
-ms.openlocfilehash: 6949c1e8f83ebf47878a3d449796ccc03920756a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd1f21f150094094a6bf856b04a64a02963f35a8
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225154"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102521715"
 ---
-# <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure Content Delivery Network の Azure Web アプリケーション ファイアウォール
+# <a name="azure-web-application-firewall-on-azure-content-delivery-network-from-microsoft"></a>Microsoft の Azure Content Delivery Network の Azure Web Application Firewall
 
 Microsoft の Azure Content Delivery Network (CDN) の Azure Web アプリケーション ファイアウォール (WAF) では、Web コンテンツが一元的に保護されます。 WAF は、一般的な悪用や脆弱性から Web サービスを守ります。 ユーザーに対するサービスの高可用性が維持され、コンプライアンス要件を満たしやすくなります。
 

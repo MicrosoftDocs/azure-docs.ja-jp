@@ -2,19 +2,19 @@
 title: チュートリアル - Azure PowerShell を使用してカスタム VM イメージを作成する
 description: このチュートリアルでは、Azure PowerShell を使用して、Azure 共有イメージ ギャラリーに格納される Windows カスタム仮想マシン イメージを作成する方法を学習します。
 author: cynthn
-ms.service: virtual-machines-windows
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subservice: shared-image-gallery
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0e3521603c4651133f1420809e4921ad27279860
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 145b7300272243099cfccad0c99d8f69e83e6762
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98873191"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102555824"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Windows VM イメージを作成する
 

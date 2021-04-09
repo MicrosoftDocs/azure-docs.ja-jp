@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: b6a14ba3f905fbef3fc3796b616cd594941a3d60
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97028633"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric の概要

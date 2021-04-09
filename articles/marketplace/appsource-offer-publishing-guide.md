@@ -8,17 +8,17 @@ author: trkeya
 ms.author: trkeya
 ms.date: 09/04/2020
 ms.openlocfilehash: 8b500a87613dee094c63e71fc76fb751d72aa049
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94491156"
 ---
 # <a name="offer-publishing-guide-for-microsoft-365-dynamics-365-power-apps-and-power-bi"></a>Microsoft 365、Dynamics 365、Power Apps、Power BI のオファーの公開ガイド
 
 Microsoft AppSource には、Microsoft 365、Dynamics 365、Power Apps、Power BI 上に構築される、またはそれらを拡張するオファーが含まれています。 これらの製品にはそれぞれ、公開プロセスをガイドする固有のドキュメントが用意されています。 
 
-AppSource には、有料、一覧、試用版のオファーがあり、" *今すぐ入手* "、" *連絡する* "、" *今すぐ試す* " のリスト オプションが使用されています。
+AppSource には、有料、一覧、試用版のオファーがあり、"*今すぐ入手*"、"*連絡する*"、"*今すぐ試す*" のリスト オプションが使用されています。
 
 ## <a name="product-specific-guides"></a>製品固有のガイド
 

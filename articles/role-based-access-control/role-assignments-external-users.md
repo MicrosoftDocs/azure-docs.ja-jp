@@ -14,10 +14,10 @@ ms.date: 02/15/2021
 ms.author: rolyon
 ms.custom: it-pro
 ms.openlocfilehash: d834f4ccd8dba26c895e0578f161813fc49332ea
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100556300"
 ---
 # <a name="assign-azure-roles-to-external-guest-users-using-the-azure-portal"></a>Azure portal を使用して外部ゲスト ユーザーに Azure ロールを割り当てる

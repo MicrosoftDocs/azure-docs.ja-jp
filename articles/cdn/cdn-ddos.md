@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: allensu
 ms.openlocfilehash: ac00491a34e6e7d18c74827afc6647358794a8be
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96351692"
 ---
 # <a name="azure-cdn-ddos-protection"></a>Azure CDN DDoS Protection
@@ -37,6 +37,6 @@ Azure CDN from Verizon は、Verzion の独自の DDoS 対応策プラットフ�
 
 Azure CDN from Akamai は、Akamai の独自の DDoS 対応策プラットフォームによって保護されます。 これは既定で、追加コストなしに Azure CDN from Akamai に統合されています。 特に一般的で頻繁に発生するレイヤー 7 への DNS クエリ フラッド攻撃や、CDN エンドポイントを標的とするレイヤー 3 および 4 への帯域幅消費型攻撃に対する基本的な保護機能も提供します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure DDoS](../ddos-protection/ddos-protection-overview.md) の詳細を学習する。

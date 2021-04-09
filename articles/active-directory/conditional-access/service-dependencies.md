@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c6592add5e33ba240c0f1d9fdbd23d82adfe5229
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91258610"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスのサービス依存関係の概要 
@@ -31,8 +31,8 @@ ms.locfileid: "91258610"
 
 サービス依存関係を構成している場合は、事前バインディングまたは遅延バインディングを使用してポリシーを適用できます。 
 
-- **事前バインディング ポリシー適用**では、ユーザーが呼び出し元のアプリにアクセスする前に依存サービス ポリシーを満たす必要があります。 たとえば、ユーザーが MS Teams にサインインする前に SharePoint ポリシーを満たす必要があります。 
-- **遅延バインディング ポリシー適用**は、ユーザーが呼び出し元アプリにサインインした後で行われます。 呼び出し元アプリがダウンストリーム サービスのトークンを要求するまで、適用が延期されます。 例としては、Planner にアクセスする MS Teams や SharePoint にアクセスする Office.com があります。 
+- **事前バインディング ポリシー適用** では、ユーザーが呼び出し元のアプリにアクセスする前に依存サービス ポリシーを満たす必要があります。 たとえば、ユーザーが MS Teams にサインインする前に SharePoint ポリシーを満たす必要があります。 
+- **遅延バインディング ポリシー適用** は、ユーザーが呼び出し元アプリにサインインした後で行われます。 呼び出し元アプリがダウンストリーム サービスのトークンを要求するまで、適用が延期されます。 例としては、Planner にアクセスする MS Teams や SharePoint にアクセスする Office.com があります。 
 
 次の図は、MS Teams のサービス依存関係を示しています。 実線矢印は事前バインディング適用を示し、Planner を指す破線矢印は遅延バインディング適用を示します。 
 

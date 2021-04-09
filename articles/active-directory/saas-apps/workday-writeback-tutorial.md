@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
 ms.openlocfilehash: 3a623a487dd31caf8c85b18771d90e3a6306df68
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98954006"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>チュートリアル:Azure AD から Workday への属性の書き戻しを構成する
@@ -74,7 +74,7 @@ Workday 統合システム ユーザー アカウントとワーカー データ
 
    * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 この値は `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources` のようになります。*contoso4* は適切なテナント名に置き換え、*wd3-impl* は適切な環境文字列に置き換えます (必要な場合)。
 
-   * **メール通知** - メール アドレスを入力し、[send email if failure occurs]\(失敗した場合にメールを送信する\) チェック ボックスをオンにします。
+   * **メール通知** - メール アドレスを入力し、[send email if failure occurs]\(失敗した場合にメールを送信する\) チェックボックスをオンにします。
 
    * **[接続のテスト]** ボタンをクリックします。 接続テストが成功した場合、上部の **[保存]** ボタンをクリックします。 失敗した場合は、Workday URL と資格情報が Workday で有効であることを再度確認します。
 

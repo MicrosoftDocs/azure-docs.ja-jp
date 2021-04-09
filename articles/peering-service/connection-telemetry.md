@@ -10,10 +10,10 @@ ms.tgt_pltfrm: na
 ms.date: 05/18/2020
 ms.author: derekol
 ms.openlocfilehash: 0e54b20cc6aefa69226c24f557ae02166dc4b4b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84871302"
 ---
 # <a name="peering-service-connection-telemetry"></a>Peering Service 接続テレメトリ

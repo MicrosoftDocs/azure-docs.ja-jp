@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Managed Instance:長期的なバックアップ保有期間 (PowerShell)
+title: Azure SQL Managed Instance:長期的なバックアップ保有期間
 description: PowerShell を使用して、Azure SQL Managed Instance の個別の Azure BLOB ストレージ コンテナーに自動バックアップを格納して復元する方法について説明します。
 services: sql-database
 ms.service: sql-managed-instance
@@ -7,28 +7,88 @@ ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: how-to
-author: anosov1960
-ms.author: sashan
+author: shkale-msft
+ms.author: shkale
 ms.reviewer: mathoma, sstein
-ms.date: 04/29/2020
-ms.openlocfilehash: bb74a2e271473666332c627f6ad4324ca597e40c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/25/2021
+ms.openlocfilehash: f298f0f9d76750be932db79b5a08b6385e984f88
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593360"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102052028"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>Azure SQL Managed Instance の長期的なバックアップ保有期間を管理する (PowerShell)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Azure SQL Managed Instance では、[長期的なバックアップ保有期間](../database/long-term-retention-overview.md#sql-managed-instance-support)ポリシー (LTR) を、限定されたパブリック プレビュー機能として構成できます。 これにより、データベースのバックアップを個別の Azure BLOB ストレージ コンテナーに最大 10 年間自動的に保持できます。 そして、PowerShell でこれらのバックアップを使用して、データベースを復旧できます。
+Azure SQL Managed Instance では、[長期的なバックアップ保有期間](../database/long-term-retention-overview.md)ポリシー (LTR) を、パブリック プレビュー機能として構成できます。 これにより、データベースのバックアップを個別の Azure BLOB ストレージ コンテナーに最大 10 年間自動的に保持できます。 そして、PowerShell でこれらのバックアップを使用して、データベースを復旧できます。
 
    > [!IMPORTANT]
-   > 現在、マネージド インスタンスの LTR は限定プレビュー段階にあり、個々のケースに応じて EA および CSP サブスクリプションで使用できます。 登録を要求するには、[Azure サポート チケット](https://azure.microsoft.com/support/create-ticket/)を作成してください。 [問題の種類] については [技術的な問題] を選択し、[サービス] には [SQL Database Managed Instance] を選択し、[問題の種類] には **[Backup, Restore, and Business Continuity/Long-term backup retention]\(バックアップ、復元、およびビジネス継続性/長期的なバックアップ保有期間\)** を選択します。 要求に、マネージド インスタンスの LTR の限定パブリック プレビューに登録したい旨を明記してください。
+   > マネージド インスタンスの LTR は現在、Azure パブリック リージョンでパブリック プレビューとして利用できます。 
 
 以下のセクションでは、PowerShell を使用して長期的なバックアップ保有期間を構成し、Azure SQL ストレージ内のバックアップを表示し、Azure SQL ストレージ内のバックアップから復元する方法について説明します。
 
-## <a name="azure-roles-to-manage-long-term-retention"></a>長期保有を管理するための Azure ロール
+
+## <a name="using-the-azure-portal"></a>Azure ポータルの使用
+
+以下のセクションでは、Azure portal を使用して長期保有ポリシーを設定する方法、使用可能な長期保有バックアップを管理する方法、使用可能なバックアップから復元する方法について説明します。
+
+### <a name="configure-long-term-retention-policies"></a>長期保存ポリシーを構成する
+
+ご利用のサービス レベルのリテンション期間より長く[自動バックアップを保持](../database/long-term-retention-overview.md)するように SQL Managed Instance を構成できます。
+
+1. Azure portal で、マネージド インスタンスを選択し、 **[バックアップ]** をクリックします。 **[アイテム保持ポリシー]** タブで、長期的なバックアップ保持ポリシーを設定または変更するデータベースを選択します。 変更は、選択されていないデータベースには適用されません。 
+
+   ![バックアップの管理リンク](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
+
+2. **[ポリシーの構成]** ウィンドウで、週単位、月単位、または年単位のバックアップに必要な保有期間を指定します。 長期的なバックアップ保有期間を設定しないことを示すには、保有期間を "0" にします。
+
+   ![ポリシーを構成する](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
+
+3. 完了したら、 **[適用]** をクリックします。
+
+> [!IMPORTANT]
+> 長期的なバックアップ保有期間ポリシーを有効にすると、初回バックアップが表示されて復元に利用できる状態になるまでに、最大 7 日かかる場合があります。 LTR バックアップ周期の詳細については、[長期的なバックアップ保有期間](../database/long-term-retention-overview.md)に関するページを参照してください。
+
+### <a name="view-backups-and-restore-from-a-backup"></a>バックアップを表示してバックアップから復元する
+
+LTR ポリシーを使用して保持されている特定のデータベースのバックアップを表示し、それらのバックアップから復元します。
+
+1. Azure portal で、マネージド インスタンスを選択し、 **[バックアップ]** をクリックします。 **[利用可能なバックアップ]** タブで、利用可能なバックアップを表示するデータベースを選択します。 **Manage** をクリックします。
+
+   ![データベースを選択する](./media/long-term-backup-retention-configure/ltr-available-backups-select-database.png)
+
+1. **[バックアップの管理]** ウィンドウで、利用可能なバックアップを確認します。
+
+   ![バックアップを確認する](./media/long-term-backup-retention-configure/ltr-available-backups.png)
+
+1. 復元元になるバックアップを選択し、 **[復元]** をクリックします。次に、復元ページで新しいデータベース名を指定します。 バックアップとソースはこのページにあらかじめ入力されます。 
+
+   ![復元するバックアップの選択](./media/long-term-backup-retention-configure/ltr-available-backups-restore.png)
+   
+   ![復元](./media/long-term-backup-retention-configure/ltr-restore.png)
+
+1. **[確認および作成]** をクリックし、復元の詳細を確認します。 次に **[作成]** をクリックし、選択したバックアップからデータベースを復元します。
+
+1. ツール バーの通知アイコンをクリックして、復元ジョブの状態を確認します。
+
+   ![復元ジョブの進行状況](./media/long-term-backup-retention-configure/restore-job-progress-long-term.png)
+
+1. 復元ジョブが完了したら、 **[マネージド インスタンスの概要]** ページを開き、新しく復元されたデータベースを確認します。
+
+> [!NOTE]
+> ここから、SQL Server Management Studio を使用して、復元されたデータベースに接続し、必要なタスクを実行できます。たとえば、[復元されたデータベースからデータを少し抽出して既存のデータベースにコピーしたり、既存のデータベースを削除し、復元されたデータベースの名前を既存のデータベース名に変更したり](../database/recovery-using-backups.md#point-in-time-restore)できます。
+
+
+## <a name="using-powershell"></a>PowerShell の使用
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発は Az.Sql モジュールで行われます。 これらのコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+
+以下のセクションでは、PowerShell を使用して長期的なバックアップ保有期間を構成し、Azure ストレージ内のバックアップを表示し、Azure ストレージ内のバックアップから復元する方法について説明します。
+
+### <a name="azure-rbac-roles-to-manage-long-term-retention"></a>長期保有を管理するための Azure RBAC ロール
 
 **Get-AzSqlInstanceDatabaseLongTermRetentionBackup** および **Restore-AzSqlInstanceDatabase** の場合は、次のいずれかのロールが必要です。
 
@@ -52,7 +112,7 @@ Azure RBAC のアクセス許可は、"*サブスクリプション*" または 
 
 - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 
-## <a name="create-an-ltr-policy"></a>LTR ポリシーを作成する
+### <a name="create-an-ltr-policy"></a>LTR ポリシーを作成する
 
 ```powershell
 # get the Managed Instance
@@ -88,7 +148,7 @@ $LTRPolicy = @{
 Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy @LTRPolicy
 ```
 
-## <a name="view-ltr-policies"></a>LTR ポリシーを表示する
+### <a name="view-ltr-policies"></a>LTR ポリシーを表示する
 
 次の例は、1 つのデータベースのインスタンス内の LTR ポリシーを一覧表示する方法を示しています
 
@@ -119,7 +179,7 @@ foreach($database in $Databases.Name){
  }
 ```
 
-## <a name="clear-an-ltr-policy"></a>LTR ポリシーをクリアする
+### <a name="clear-an-ltr-policy"></a>LTR ポリシーをクリアする
 
 LTR ポリシーをデータベースから消去する例を次に示します
 
@@ -134,7 +194,7 @@ $LTRPolicy = @{
 Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy @LTRPolicy
 ```
 
-## <a name="view-ltr-backups"></a>LTR バックアップを表示する
+### <a name="view-ltr-backups"></a>LTR バックアップを表示する
 
 次の例は、インスタンス内の LTR バックアップを一覧表示する方法を示しています。
 
@@ -177,7 +237,7 @@ $LTRBackupParam = @{
 Get-AzSqlInstanceDatabaseLongTermRetentionBackup @LTRBackupParam 
 ```
 
-## <a name="delete-ltr-backups"></a>LTR バックアップを削除する
+### <a name="delete-ltr-backups"></a>LTR バックアップを削除する
 
 バックアップの一覧から LTR バックアップを削除する例を次に示します。
 
@@ -197,7 +257,7 @@ Remove-AzSqlInstanceDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.Resou
 > [!IMPORTANT]
 > LTR バックアップの削除は、元に戻せません。 インスタンスが削除された後に LTR バックアップを削除するには、サブスクリプション スコープのアクセス許可が必要です。 Azure Monitor では、"長期保有バックアップを削除します" という操作をフィルター処理することで、それぞれの削除に関する通知を設定できます。 アクティビティ ログには、どのユーザーがいつ要求を行ったかに関する情報が含まれています。 詳しい手順については、[アクティビティ ログ アラートの作成](../../azure-monitor/alerts/alerts-activity-log.md)に関するページを参照してください。
 
-## <a name="restore-from-ltr-backups"></a>LTR バックアップから復元する
+### <a name="restore-from-ltr-backups"></a>LTR バックアップから復元する
 
 LTR バックアップから復元する例を次に示します。 このインターフェイスは変更されませんでしたが、リソース ID パラメーターでは LTR バックアップ リソース ID が必須になりました。
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 40e20ad4bab0275b44cd868521c7dc70dec52567
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88936131"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>例:Python を使用してカスタム スキルを作成する
@@ -38,7 +38,7 @@ Python でのカスタム スキルの開発に使用されるツールと手法
 
 この例では、Azure 関数を使用して、Web API をホストするという概念を示していますが、その他の方法も可能です。 [コグニティブ スキルのインターフェイス要件](cognitive-search-custom-skill-interface.md)を満たしていれば、どのような方法を使用してもかまいません。 ただし、Azure Functions を使用すると、カスタム スキルを簡単に作成できます。
 
-### <a name="create-a-function-app"></a>Function App を作成する
+### <a name="create-a-function-app"></a>関数アプリの作成
 
 Visual Studio Code の Azure Functions プロジェクト テンプレートでは、Azure の関数アプリに発行できるプロジェクトを作成します。 関数アプリを使用すると、リソースを管理、デプロイ、および共有するための論理ユニットとして関数をグループ化できます。
 
@@ -49,12 +49,12 @@ Visual Studio Code の Azure Functions プロジェクト テンプレートで�
     > [!NOTE]
     > これらの手順は、ワークスペースの外部で実行するように設計されています。 この理由により、ワークスペースの一部であるプロジェクト フォルダーは選択しないでください。
 
-1. 関数アプリ プロジェクトの言語を選択します。 このチュートリアルでは、 **[Python]** を選択します。
+1. 関数アプリ プロジェクトの言語を選択します。 このチュートリアルでは、**[Python]** を選択します。
 1. Python のバージョンを選択します (Azure Functions では、バージョン 3.7.5 がサポートされています)。
 1. プロジェクトの最初の関数のテンプレートを選択します。 **[HTTP トリガー]** を選択して、HTTP によってトリガーされる関数を新しい関数アプリに作成します。
 1. 関数名を指定します。 このケースでは、「**Concatenator**」を使用しましょう。 
 1. 認証レベルとして **[関数]** を選択します。 これは、関数の HTTP エンドポイントを呼び出すために[関数キー](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)を指定することを意味します。 
-1. プロジェクトを開く方法を選択します。 この手順では、 **[ワークスペースに追加]** を選択して、現在のワークスペースに関数アプリを作成します。
+1. プロジェクトを開く方法を選択します。 この手順では、**[ワークスペースに追加]** を選択して、現在のワークスペースに関数アプリを作成します。
 
 Visual Studio Code によって、新しいワークスペースに関数アプリ プロジェクトが作成されます。 このプロジェクトには、[host.json](../azure-functions/functions-host-json.md) および [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file) 構成ファイルと、言語固有のプロジェクト ファイルが含まれています。 
 
@@ -172,7 +172,7 @@ def transform_value(value):
 
 ### <a name="debug-your-code-locally"></a>コードをローカルでデバッグする
 
-Visual Studio Code では、コードを簡単にデバッグすることができます。 F5 キーを押すか、 **[デバッグ]** メニューにアクセスして、 **[デバッグの開始]** を選択します。
+Visual Studio Code では、コードを簡単にデバッグすることができます。 F5 キーを押すか、**[デバッグ]** メニューにアクセスして、**[デバッグの開始]** を選択します。
 
 目的の行で F9 キーを押すと、コードにブレークポイントを設定できます。
 
@@ -182,7 +182,7 @@ Visual Studio Code では、コードを簡単にデバッグすることがで�
 
 関数の動作に満足したら、発行できます。
 
-1. Visual Studio Code で、F1 キーを押してコマンド パレットを開きます。 コマンド パレットで、 **[Deploy to Function App...]\(関数アプリにデプロイする...\)** を検索して選択します。 
+1. Visual Studio Code で、F1 キーを押してコマンド パレットを開きます。 コマンド パレットで、**[Deploy to Function App...]\(関数アプリにデプロイする...\)** を検索して選択します。 
 
 1. アプリケーションをデプロイする Azure サブスクリプションを選択します。
 

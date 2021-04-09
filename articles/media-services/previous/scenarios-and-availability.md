@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/3/2020
+ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: d195ad6715c47b9b4c14dc2e65ba1d07ebf79ce8
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: cb7500489cc4516b8cf44dd029c0831103dc53a8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696263"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103007936"
 ---
 # <a name="microsoft-azure-media-services-common-scenarios"></a>Microsoft Azure Media Services の一般的なシナリオ
 

@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 9ff64f57e61002101b4e2c560bdcd91863cc461e
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91626967"
 ---
 # <a name="tutorial-import-and-publish-your-first-api"></a>チュートリアル:最初の API のインポートと発行
@@ -48,10 +48,10 @@ ms.locfileid: "91626967"
 
    API の値は、作成時に、または後で **[設定]** タブに移動して設定できます。
 
-   :::image type="content" source="media/import-and-publish/create-api.png" alt-text="API Management の新しい API":::
+   :::image type="content" source="media/import-and-publish/create-api.png" alt-text="API の作成":::
 
 
-   |設定|Value|説明|
+   |設定|[値]|説明|
    |-------|-----|-----------|
    |**OpenAPI の仕様**|*https:\//conferenceapi.azurewebsites.net?format=json*|API を実装するサービス。 要求は、API Management によってこのアドレスに転送されます。|
    |**表示名**|前述のサービス URL を入力すると、JSON に基づく値が API Management によってこのフィールドに入力されます。|[開発者ポータル](api-management-howto-developer-portal.md)に表示される名前。|
@@ -60,8 +60,8 @@ ms.locfileid: "91626967"
    |**URL スキーム**|**HTTPS**|API にアクセスできるプロトコル。|
    |**API URL サフィックス**|*conference*|API Management サービスのベース URL に付加されるサフィックス。 API Management では API がサフィックスによって識別されるため、サフィックスは、特定の発行者のすべての API で一意である必要があります。|
    |**タグ**| |検索、グループ化、フィルター処理を目的に API を整理するためのタグ。|
-   |**成果物**|**無制限**|1 つまたは複数の API の関連付け。 すべての API Management インスタンスは、次の 2 つのサンプル成果物を備えています: **スターター**と**無制限**。 API の発行は、API に成果物 (この例では "**無制限**") を関連付けることで行います。<br/><br/> 1 つの成果物に複数の API を追加し、開発者ポータルを通じて開発者に提供できます。 この API を別の成果物に追加するには、成果物名を入力または選択します。 複数の成果物に API を追加するには、この手順を繰り返します。 後で **[設定]** ページから成果物に API を追加することもできます。<br/><br/>  成果物の詳細については、[成果物の作成と発行](api-management-howto-add-products.md)に関する記事を参照してください。|
-   |**ゲートウェイ**|**マネージド**|API を公開する API ゲートウェイ。 このフィールドは、**Developer** レベルおよび **Premium** レベルのサービスでのみ使用できます。<br/><br/>**マネージド**とは、API Management サービスに組み込まれ、Microsoft によって Azure でホストされるゲートウェイを意味します。 [セルフホステッド ゲートウェイ](self-hosted-gateway-overview.md)は、Premium および Developer サービス レベルでのみ使用できます。 これらはオンプレミスまたは他のクラウドにデプロイできます。<br/><br/> ゲートウェイが選択されていない場合、API は使用できず、API 要求は成功しません。|
+   |**成果物**|**無制限**|1 つまたは複数の API の関連付け。 すべての API Management インスタンスは、次の 2 つのサンプル成果物を備えています: **スターター** と **無制限**。 API の発行は、API に成果物 (この例では "**無制限**") を関連付けることで行います。<br/><br/> 1 つの成果物に複数の API を追加し、開発者ポータルを通じて開発者に提供できます。 この API を別の成果物に追加するには、成果物名を入力または選択します。 複数の成果物に API を追加するには、この手順を繰り返します。 後で **[設定]** ページから成果物に API を追加することもできます。<br/><br/>  成果物の詳細については、[成果物の作成と発行](api-management-howto-add-products.md)に関する記事を参照してください。|
+   |**ゲートウェイ**|**マネージド**|API を公開する API ゲートウェイ。 このフィールドは、**Developer** レベルおよび **Premium** レベルのサービスでのみ使用できます。<br/><br/>**マネージド** とは、API Management サービスに組み込まれ、Microsoft によって Azure でホストされるゲートウェイを意味します。 [セルフホステッド ゲートウェイ](self-hosted-gateway-overview.md)は、Premium および Developer サービス レベルでのみ使用できます。 これらはオンプレミスまたは他のクラウドにデプロイできます。<br/><br/> ゲートウェイが選択されていない場合、API は使用できず、API 要求は成功しません。|
    |**この API をバージョン管理しますか?**|選択または選択解除|詳細については、[複数のバージョンの API の公開](api-management-get-started-publish-versions.md)に関する記事をご覧ください。|
 
    > [!NOTE]
@@ -79,7 +79,7 @@ Azure portal には、API の操作を表示およびテストするための便
 1. **[テスト]** タブを選択し、 **[GetSpeakers]** を選択します。 クエリ パラメーターとヘッダーがあれば、このページの **[クエリ パラメーター]** と **[ヘッダー]** に表示されます。 **Ocp-Apim-Subscription-Key** には、この API に関連付けられているサブスクリプション キーの値が自動的に入力されます。
 1. **[送信]** を選択します。
 
-   :::image type="content" source="media/import-and-publish/01-import-first-api-01.png" alt-text="API Management の新しい API":::
+   :::image type="content" source="media/import-and-publish/01-import-first-api-01.png" alt-text="Azure portal で API をテストする":::
 
    バックエンドは **200 OK** といくつかのデータで応答します。
 

@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 14d352a4b960395753b34ddb527955ef35220867
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 9d057afc130b75bdd62031e6d2b9372bc9a37615
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102562420"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102615025"
 ---
 # <a name="ncv2-series"></a>NCv2 シリーズ
 
@@ -26,7 +26,7 @@ NC24rs v2 構成には、密結合並列コンピューティングのワーク�
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされていません<br>
-[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
 Nvidia NVLink Interconnect:サポートされていません
 
 > [!IMPORTANT]

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 2af446c222691784d8f108c78ff2c018cabee107
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92453690"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-exponenthr"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ExponentHR の統合
@@ -39,9 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* ExponentHR では、 **SP** Initiated SSO がサポートされます
+* ExponentHR では、**SP** Initiated SSO がサポートされます
 
-* ExponentHR では、 **WS-Fed** プロトコルがサポートされます
+* ExponentHR では、**WS-Fed** プロトコルがサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -54,7 +54,7 @@ Azure AD への ExponentHR の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **ExponentHR** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**ExponentHR**」と入力します。
 1. 結果ウィンドウで **[ExponentHR]** を選択し、アプリケーションを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-exponenthr"></a>ExponentHR の Azure AD シングル サインオンの構成とテスト
@@ -120,7 +120,7 @@ ExponentHR で Azure AD SSO を構成してテストするには、次の構成�
 
 ## <a name="configure-exponenthr-sso"></a>ExponentHR SSO の構成
 
-**ExponentHR** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [ExponentHR サポート チーム](mailto:support@exponenthr.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**ExponentHR** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [ExponentHR サポート チーム](mailto:support@exponenthr.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-exponenthr-test-user"></a>ExponentHR テスト ユーザーの作成
 

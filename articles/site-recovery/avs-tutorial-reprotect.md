@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: harshacs
 ms.custom: MVC
 ms.openlocfilehash: 80ff2f3f3d5fdcf61770889dcdaaf075941b90ff
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91814240"
 ---
 # <a name="reprotect-from-azure-to-azure-vmware-solution-private-cloud"></a>Azure から Azure VMware Solution プライベート クラウドに再保護する

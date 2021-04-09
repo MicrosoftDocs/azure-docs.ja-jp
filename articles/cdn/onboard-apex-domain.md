@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/07/2020
 ms.author: allensu
 ms.openlocfilehash: 8ab4f698c7149d8d57f790e221ccbe35ec090fe6
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94369890"
 ---
 # <a name="onboard-a-root-or-apex-domain-to-an-existing-azure-cdn-endpoint"></a>既存の Azure CDN エンドポイントにルート ドメインまたは頂点ドメインをオンボードする
@@ -68,7 +68,7 @@ Azure portal を使って、頂点ドメインをお使いの CDN にオンボ�
     
 3. **[+ カスタム ドメイン]** を選択します。 
 
-   :::image type="content" source="media/onboard-apex-domain/cdn-custom-domain-button.png" alt-text="[カスタム ドメインの追加] ボタン" border="true":::
+   :::image type="content" source="media/onboard-apex-domain/cdn-custom-domain-button.png" alt-text="カスタム ドメインの追加ボタン" border="true":::
 
 4. **[カスタム ドメインの追加]** の **[エンドポイントのホスト名]** は自動的に入力されます。これは、CDN エンドポイントの URL ( **\<endpoint-hostname>** .azureedge.net) から得られます。 この値は変更しないでください。
 

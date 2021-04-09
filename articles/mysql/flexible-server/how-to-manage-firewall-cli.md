@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 9/21/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 84fdd3045d5a1d44ff611134d88fc9793ee203de
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92545074"
 ---
 # <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL - フレキシブル サーバーのファイアウォール規則を作成および管理する
@@ -29,21 +29,21 @@ Azure Database for MySQL フレキシブル サーバーでは、フレキシブ
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
-[Azure Cloud Shell](../../cloud-shell/overview.md) は無料の対話型シェルで、これを使用してこの記事の手順を行うことができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。
+[Azure Cloud Shell](../../cloud-shell/overview.md) は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。
 
 Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/bash](https://shell.azure.com/bash) に移動して、別のブラウザー タブで Cloud Shell を開くこともできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、 **[入力]** を選択して実行します。
 
-ローカルに CLI をインストールして使用する場合は、このクイックスタートのために Azure CLI バージョン 2.0 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このクイックスタートでは、Azure CLI バージョン 2.0 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-[az login](/cli/azure/reference-index#az-login) コマンドを使用してアカウントにサインインする必要があります。 **ID** プロパティにご注意ください。これは、お使いの Azure アカウントの **サブスクリプション ID** のことです。
+[az login](/cli/azure/reference-index#az-login) コマンドを使用してアカウントにサインインする必要があります。 **ID** プロパティに注意してください。これは、お使いの Azure アカウントの **サブスクリプション ID** のことです。
 
 ```azurecli-interactive
 az login
 ```
 
-[az account set](/cli/azure/account#az-account-set) コマンドを使用して、アカウントの特定のサブスクリプションを選択します。 **az login** 出力の **ID** 値をメモして、コマンドの **subscription** 引数の値として使用します。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 すべてのサブスクリプションを取得するには、[az account list](/cli/azure/account#az-account-list) を使用します。
+[az account set](/cli/azure/account#az-account-set) コマンドを使用して、アカウントの特定のサブスクリプションを選択します。 **az login** 出力の **ID** の値をメモしておいて、このコマンドの **subscription** 引数の値として使用します。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 すべてのサブスクリプションを取得するには、[az account list](/cli/azure/account#az-account-list) を使用します。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -51,7 +51,7 @@ az account set --subscription <subscription id>
 
 ## <a name="create-firewall-rule-during-flexible-server-create-using-azure-cli"></a>Azure CLI を使用してフレキシブル サーバーの作成時にファイアウォール規則を作成する
 
-`az mysql flexible-server --public access` コマンドを使用して、" *パブリック アクセス (許可された IP アドレス)* " を指定してフレキシブル サーバーを作成し、フレキシブル サーバーの作成時にファイアウォール規則を構成できます。 **--public-access** スイッチを使用して、サーバーに接続できる許可された IP アドレスを指定できます。 IP アドレスの許可リストに含める 1 つの IP アドレス、または IP アドレスの範囲を指定できます。 IP アドレスの範囲はダッシュで区切る必要があり、スペースは含めません。 次の例に示すように、CLI を使用してフレキシブル サーバーを作成するためのさまざまなオプションがあります。
+`az mysql flexible-server --public access` コマンドを使用して、"*パブリック アクセス (許可された IP アドレス)* " を指定してフレキシブル サーバーを作成し、フレキシブル サーバーの作成時にファイアウォール規則を構成できます。 **--public-access** スイッチを使用して、サーバーに接続できる許可された IP アドレスを指定できます。 IP アドレスの許可リストに含める 1 つの IP アドレス、または IP アドレスの範囲を指定できます。 IP アドレスの範囲はダッシュで区切る必要があり、スペースは含めません。 次の例に示すように、CLI を使用してフレキシブル サーバーを作成するためのさまざまなオプションがあります。
 
 Azure CLI の[リファレンス ドキュメント](/cli/azure/mysql/flexible-server)で、構成可能な CLI パラメーターの完全な一覧を参照してください。 たとえば、次のコマンドでは、必要に応じてリソース グループを指定できます。
 
@@ -89,11 +89,11 @@ Azure CLI の[リファレンス ドキュメント](/cli/azure/mysql/flexible-s
 Azure CLI の **az mysql flexible-server firewall-rule** コマンドで、ファイアウォール規則を作成、削除、一覧表示、表示、更新します。
 
 コマンド:
-- **create** :フレキシブル サーバーのファイアウォール規則を作成します。
-- **list** :フレキシブル サーバーのファイアウォール規則を一覧表示します。
-- **update** :フレキシブル サーバーのファイアウォール規則を更新します。
-- **show** :フレキシブル サーバーのファイアウォール規則の詳細を表示します。
-- **delete** :フレキシブル サーバーのファイアウォール規則を削除します。
+- **create**:フレキシブル サーバーのファイアウォール規則を作成します。
+- **list**:フレキシブル サーバーのファイアウォール規則を一覧表示します。
+- **update**:フレキシブル サーバーのファイアウォール規則を更新します。
+- **show**:フレキシブル サーバーのファイアウォール規則の詳細を表示します。
+- **delete**:フレキシブル サーバーのファイアウォール規則を削除します。
 
 Azure CLI の[リファレンス ドキュメント](/cli/azure/mysql/flexible-server)で、構成可能な CLI パラメーターの完全な一覧を参照してください。 たとえば、次のコマンドでは、必要に応じてリソース グループを指定できます。
 

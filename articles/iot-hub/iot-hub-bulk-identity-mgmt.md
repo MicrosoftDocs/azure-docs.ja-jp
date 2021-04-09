@@ -10,10 +10,10 @@ ms.date: 10/02/2019
 ms.author: robinsh
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8e7a725b78fa828ce1286e212ee7de0205968156
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92536081"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub デバイス ID の一括でのインポートおよびエクスポート
@@ -21,13 +21,13 @@ ms.locfileid: "92536081"
 各 IoT ハブには、デバイスごとのリソースをサービス内に作成するために使用できる ID レジストリがあります。 この ID レジストリを使って、デバイス向けエンドポイントへのアクセスを制御することもできます。 この記事では、ID レジストリとの間でデバイス ID を一括でインポートおよびエクスポートする方法について説明します。 実際に動作する C# のサンプルを見て、ハブを別のリージョンで複製するときにこの機能を使用する方法を学習するには、[IoT Hub を複製する方法](iot-hub-how-to-clone.md)に関するページを参照してください。
 
 > [!NOTE]
-> IoT Hub は最近、いくつかのリージョンにおいて仮想ネットワークのサポートを追加しました。 この機能により、インポート操作とエクスポート操作がセキュリティで保護され、認証のためのキーを渡す必要がなくなります。  初期の時点で仮想ネットワークのサポートが利用できるのは、次のリージョンのみです。 *米国西部 2* 、 *米国東部* 、および *米国中南部* 。 仮想ネットワークのサポートおよび実装のための API 呼び出しの詳細については、「[仮想ネットワークのための IoT Hub サポート](virtual-network-support.md)」を参照してください。
+> IoT Hub は最近、いくつかのリージョンにおいて仮想ネットワークのサポートを追加しました。 この機能により、インポート操作とエクスポート操作がセキュリティで保護され、認証のためのキーを渡す必要がなくなります。  初期の時点で仮想ネットワークのサポートが利用できるのは、次のリージョンのみです: *WestUS2*、*EastUS*、*SouthCentralUS*。 仮想ネットワークのサポートおよび実装のための API 呼び出しの詳細については、「[仮想ネットワークのための IoT Hub サポート](virtual-network-support.md)」を参照してください。
 
-インポートおよびエクスポート操作は、IoT Hub に対する一括サービス操作を実行するのを可能にする " *ジョブ* " のコンテキストで行われます。
+インポートおよびエクスポート操作は、IoT Hub に対する一括サービス操作を実行するのを可能にする "*ジョブ*" のコンテキストで行われます。
 
-**RegistryManager** クラスには、 **ジョブ** フレームワークを使用する **ExportDevicesAsync** および **ImportDevicesAsync** メソッドが含まれています。 これらのメソッドを使用すると、IoT Hub ID レジストリ全体のエクスポート、インポート、および同期化を行うことができます。
+**RegistryManager** クラスには、**ジョブ** フレームワークを使用する **ExportDevicesAsync** および **ImportDevicesAsync** メソッドが含まれています。 これらのメソッドを使用すると、IoT Hub ID レジストリ全体のエクスポート、インポート、および同期化を行うことができます。
 
-このトピックでは、 **RegistryManager** クラスと **ジョブ** システムを使用して、IoT Hub の ID レジストリとの間でデバイスの一括インポートおよびエクスポートを実行する方法について説明します。 また、Azure IoT Hub Device Provisioning サービスを使用して、1 つまたは複数の IoT ハブに対してノータッチの Just-In-Time プロビジョニングを実現できるため、人の手を介する必要がなくなります。 詳しくは、[Provisioning Service のドキュメント](../iot-dps/index.yml)をご覧ください。
+このトピックでは、**RegistryManager** クラスと **ジョブ** システムを使用して、IoT Hub の ID レジストリとの間でデバイスの一括インポートおよびエクスポートを実行する方法について説明します。 また、Azure IoT Hub Device Provisioning サービスを使用して、1 つまたは複数の IoT ハブに対してノータッチの Just-In-Time プロビジョニングを実現できるため、人の手を介する必要がなくなります。 詳しくは、[Provisioning Service のドキュメント](../iot-dps/index.yml)をご覧ください。
 
 ## <a name="what-are-jobs"></a>ジョブとは
 
@@ -48,9 +48,9 @@ JobProperties exportJob = await
 ```
 
 > [!NOTE]
-> C# コードで **RegistryManager** クラスを使用するには、プロジェクトに **Microsoft.Azure.Devices** NuGet パッケージを追加します。 **RegistryManager** クラスは、 **Microsoft.Azure.Devices** 名前空間にあります。
+> C# コードで **RegistryManager** クラスを使用するには、プロジェクトに **Microsoft.Azure.Devices** NuGet パッケージを追加します。 **RegistryManager** クラスは、**Microsoft.Azure.Devices** 名前空間にあります。
 
-**RegistryManager** クラスを使用すると、返された **JobProperties** メタデータを基に **ジョブ** の状態を照会することができます。 **RegistryManager** クラスのインスタンスを作成するには、 **CreateFromConnectionString** メソッドを使用します。
+**RegistryManager** クラスを使用すると、返された **JobProperties** メタデータを基に **ジョブ** の状態を照会することができます。 **RegistryManager** クラスのインスタンスを作成するには、**CreateFromConnectionString** メソッドを使用します。
 
 ```csharp
 RegistryManager registryManager =
@@ -102,14 +102,14 @@ while(true)
 
 **ExportDevicesAsync** メソッドには、次の 2 つのパラメーターが必要です。
 
-* BLOB コンテナーの URI が格納される *文字列* 。 この URI には、コンテナーに対する書き込みアクセスを付与する SAS トークンを含める必要があります。 ジョブでは、デバイスのシリアル化されたエクスポート データを格納するために、このコンテナー内にブロック BLOB を作成します。 SAS トークンには、次のアクセス許可を含める必要があります。
+* BLOB コンテナーの URI が格納される *文字列*。 この URI には、コンテナーに対する書き込みアクセスを付与する SAS トークンを含める必要があります。 ジョブでは、デバイスのシリアル化されたエクスポート データを格納するために、このコンテナー内にブロック BLOB を作成します。 SAS トークンには、次のアクセス許可を含める必要があります。
 
    ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 
      | SharedAccessBlobPermissions.Delete
    ```
 
-* エクスポート データから認証キーを除外するかどうかを示す *ブール値* 。 **false** の場合、認証キーはエクスポート出力に含められます。 それ以外の場合、キーは **null** としてエクスポートされます。
+* エクスポート データから認証キーを除外するかどうかを示す *ブール値*。 **false** の場合、認証キーはエクスポート出力に含められます。 それ以外の場合、キーは **null** としてエクスポートされます。
 
 次の C# コード スニペットは、エクスポート データにデバイスの認証キーを含むエクスポート ジョブを開始し、ポーリングを実行して完了する方法を示します。
 
@@ -211,7 +211,7 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 
 ## <a name="import-devices"></a>デバイスのインポート
 
-**RegistryManager** クラスの **ImportDevicesAsync** メソッドを使用すると、IoT Hub ID レジストリの一括インポートおよび同期化操作を実行することができます。 **ExportDevicesAsync** メソッドと同様に、 **ImportDevicesAsync** メソッドでも **ジョブ** フレームワークを使用します。
+**RegistryManager** クラスの **ImportDevicesAsync** メソッドを使用すると、IoT Hub ID レジストリの一括インポートおよび同期化操作を実行することができます。 **ExportDevicesAsync** メソッドと同様に、**ImportDevicesAsync** メソッドでも **ジョブ** フレームワークを使用します。
 
 **ImportDevicesAsync** メソッドを使用する場合は注意が必要です。このメソッドでは、ID レジストリ内に新しいデバイスをプロビジョニングするほか、既存のデバイスを更新および削除する可能性もあるためです。
 
@@ -220,13 +220,13 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 
 **ImportDevicesAsync** メソッドには、次の 2 つのパラメーターが必要です。
 
-* [Azure Storage](../storage/index.yml) BLOB コンテナーの URI を、ジョブへの *入力* として使用するために格納する *文字列* 。 この URI には、コンテナーに対する読み取りアクセスを付与する SAS トークンを含める必要があります。 このコンテナーには、ID レジストリにインポートするシリアル化されたデバイス データが入っている **devices.txt** という名前の BLOB を含める必要があります。 インポート データには、 **ExportImportDevice** ジョブが **devices.txt** BLOB を作成する際に使用するのと同じ JSON 形式でデバイス情報を含める必要があります。 SAS トークンには、次のアクセス許可を含める必要があります。
+* [Azure Storage](../storage/index.yml) BLOB コンテナーの URI を、ジョブへの *入力* として使用するために格納する *文字列*。 この URI には、コンテナーに対する読み取りアクセスを付与する SAS トークンを含める必要があります。 このコンテナーには、ID レジストリにインポートするシリアル化されたデバイス データが入っている **devices.txt** という名前の BLOB を含める必要があります。 インポート データには、**ExportImportDevice** ジョブが **devices.txt** BLOB を作成する際に使用するのと同じ JSON 形式でデバイス情報を含める必要があります。 SAS トークンには、次のアクセス許可を含める必要があります。
 
    ```csharp
    SharedAccessBlobPermissions.Read
    ```
 
-* [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) BLOB コンテナーの URI を、ジョブからの *出力* として格納する *文字列* 。 ジョブは、このコンテナー内にブロック BLOB を作成して、完了したインポート **ジョブ** からのエラー情報を格納します。 SAS トークンには、次のアクセス許可を含める必要があります。
+* [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) BLOB コンテナーの URI を、ジョブからの *出力* として格納する *文字列*。 ジョブは、このコンテナー内にブロック BLOB を作成して、完了したインポート **ジョブ** からのエラー情報を格納します。 SAS トークンには、次のアクセス許可を含める必要があります。
 
    ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 
@@ -243,7 +243,7 @@ JobProperties importJob =
    await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 ```
 
-この方法を使用して、デバイス ツインのデータをインポートすることもできます。 データ入力の形式は、 **ExportDevicesAsync** セクションに示されている形式と同じです。 この方法で、エクスポートされたデータを再インポートすることができます。 **$metadata** はオプションです。
+この方法を使用して、デバイス ツインのデータをインポートすることもできます。 データ入力の形式は、**ExportDevicesAsync** セクションに示されている形式と同じです。 この方法で、エクスポートされたデータを再インポートすることができます。 **$metadata** はオプションです。
 
 ## <a name="import-behavior"></a>インポートの動作
 
@@ -266,8 +266,8 @@ JobProperties importJob =
 | --- | --- |
 | **createOrUpdate** |指定した **ID** を持つデバイスが存在しない場合は、新たに登録されます。 <br/>該当するデバイスが既に存在する場合、既存の情報は、 **ETag** 値に関係なく、指定した入力データで上書きされます。 <br> 必要に応じて、デバイス データと共にツイン データを指定できます。 ツインの etag が指定された場合は、デバイスの etag とは別個に処理されます。 既存のツインの etag と一致しない場合は、ログ ファイルにエラーが書き込まれます。 |
 | **create** |指定した **ID** を持つデバイスが存在しない場合は、新たに登録されます。 <br/>該当するデバイスが既に存在する場合は、エラーがログ ファイルに書き込まれます。 <br> 必要に応じて、デバイス データと共にツイン データを指定できます。 ツインの etag が指定された場合は、デバイスの etag とは別個に処理されます。 既存のツインの etag と一致しない場合は、ログ ファイルにエラーが書き込まれます。 |
-| **update** |指定した **ID** を持つデバイスが既に存在する場合、 **ETag** 値に関係なく、既存の情報は指定した入力データで上書きされます。 <br/>該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。 |
-| **updateIfMatchETag** |指定した **ID** を持つデバイスが既に存在する場合、 **ETag** 値が一致した場合に限り、既存の情報は指定した入力データで上書きされます。 <br/>該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。 <br/>**ETag** 値が不一致である場合は、ログ ファイルにエラーが書き込まれます。 |
+| **update** |指定した **ID** を持つデバイスが既に存在する場合、**ETag** 値に関係なく、既存の情報は指定した入力データで上書きされます。 <br/>該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。 |
+| **updateIfMatchETag** |指定した **ID** を持つデバイスが既に存在する場合、**ETag** 値が一致した場合に限り、既存の情報は指定した入力データで上書きされます。 <br/>該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。 <br/>**ETag** 値が不一致である場合は、ログ ファイルにエラーが書き込まれます。 |
 | **createOrUpdateIfMatchETag** |指定した **ID** を持つデバイスが存在しない場合は、新たに登録されます。 <br/>該当するデバイスが既に存在する場合、 **ETag** 値が一致した場合に限り、既存の情報は指定した入力データで上書きされます。 <br/>**ETag** 値が不一致である場合は、ログ ファイルにエラーが書き込まれます。 <br> 必要に応じて、デバイス データと共にツイン データを指定できます。 ツインの etag が指定された場合は、デバイスの etag とは別個に処理されます。 既存のツインの etag と一致しない場合は、ログ ファイルにエラーが書き込まれます。 |
 | **delete** |指定した **ID** を持つデバイスが既に存在する場合、そのデバイスは **ETag** 値に関係なく削除されます。 <br/>該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。 |
 | **deleteIfMatchETag** |指定した **ID** を持つデバイスが既に存在する場合、そのデバイスは **ETag** 値が一致した場合に限り削除されます。 該当するデバイスが存在しない場合は、エラーがログ ファイルに書き込まれます。 <br/>ETag 値が不一致である場合は、ログ ファイルにエラーが書き込まれます。 |

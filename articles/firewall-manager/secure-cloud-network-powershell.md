@@ -8,10 +8,10 @@ ms.service: firewall-manager
 ms.date: 10/22/2020
 ms.author: victorh
 ms.openlocfilehash: 093b962bb9f42b660fb8cc5c0584ec67ebc87e48
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98789164"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して仮想ハブをセキュリティで保護する

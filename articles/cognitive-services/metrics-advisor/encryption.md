@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbullwin
 ms.openlocfilehash: 5d41500a9c53e38cd36f0feba602e0e1baa5da2c
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "92909745"
 ---
 # <a name="metrics-advisor-service-encryption-of-data-at-rest"></a>Metrics Advisor サービスによる保存データの暗号化

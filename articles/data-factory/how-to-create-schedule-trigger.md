@@ -3,19 +3,20 @@ title: Azure Data Factory でのスケジュール トリガーの作成
 description: スケジュールでパイプラインを実行するトリガーを Azure Data Factory で作成する方法について説明します。
 author: chez-charlie
 ms.author: chez
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3673dd9eba717d2bdb569b4248936bbb59a8eae7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4bf5e9e1e890b2f91377075c4c8b7c8ff6c50fa0
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387582"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779853"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>スケジュールどおりにパイプラインを実行するトリガーの作成
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、スケジュール トリガーの概要と、スケジュール トリガーを作成、起動、監視する手順について説明します。 他の種類のトリガーについては、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関するページを参照してください。
@@ -25,6 +26,7 @@ ms.locfileid: "100387582"
 以下のセクションでは、さまざまな方法でスケジュール トリガーを作成する手順を説明します。 
 
 ## <a name="data-factory-ui"></a>Data Factory UI
+
 **スケジュール トリガー** を作成して、パイプラインを定期的 (毎時、毎日など) に実行するようにスケジュールできます。 
 
 > [!NOTE]
@@ -89,7 +91,7 @@ ms.locfileid: "100387582"
     > [!IMPORTANT]
     > JSON ファイルを保存する前に、**startTime** 要素の値を現在の UTC 時間に設定します。 **endTime** 要素の値を現在の UTC 時間の 1 時間後に設定します。
 
-    ```json   
+    ```json
     {
         "properties": {
             "name": "MyTrigger",
@@ -167,9 +169,8 @@ ms.locfileid: "100387582"
 
     Azure Portal でトリガー実行とパイプライン実行を監視するには、[パイプライン実行の監視](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)に関するセクションをご覧ください。
 
-
-
 ## <a name="net-sdk"></a>.NET SDK
+
 このセクションでは、.NET SDK を使用してトリガーを作成、起動、監視する方法について説明します。 このサンプルの動作を確認するには、まず[.NET SDK を使用してデータ ファクトリを作成する方法のクイック スタート](quickstart-create-data-factory-dot-net.md)に関する記事を参照してください。 続いて、メインのメソッドに以下のコードを追加します。このコードは、15 分ごとに実行するスケジュールのトリガーを作成して起動します。 このトリガーは、クイック スタートの一環として作成する **Adfv2QuickStartPipeline** という名前のパイプラインに関連付けられます。
 
 15 分ごとに実行されるスケジュール トリガーを作成して起動するには、メイン メソッドに次のコードを追加します。
@@ -258,8 +259,8 @@ UTC 以外の別のタイムゾーンでトリガーを作成するには、次�
 
 Azure Portal でトリガー実行とパイプライン実行を監視するには、[パイプライン実行の監視](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)に関するセクションをご覧ください。
 
-
 ## <a name="python-sdk"></a>Python SDK
+
 このセクションでは、Python SDK を使用してトリガーを作成、起動、監視する方法について説明します。 このサンプルの動作を確認するには、まず[Python SDK を使用したデータ ファクトリの作成に関するクイック スタート](quickstart-create-data-factory-python.md)に目を通します。 次に、Python スクリプトの "パイプライン実行を監視する" コード ブロックの後に次のコード ブロックを追加します。 このコードは、指定された開始時刻と終了時刻の間で 15 分ごとに実行するスケジュールのトリガーを作成します。 **start_time** 変数を現在の UTC 時間に更新し、**end_time** 変数を現在の UTC 時間の 1 時間後に更新します。
 
 ```python
@@ -280,9 +281,11 @@ Azure Portal でトリガー実行とパイプライン実行を監視するに�
 Azure Portal でトリガー実行とパイプライン実行を監視するには、[パイプライン実行の監視](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)に関するセクションをご覧ください。
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
+
 Azure Resource Manager テンプレートを使用してトリガーを作成できます。 詳しい手順については、[Resource Manager テンプレートを使用した Azure データ ファクトリの作成](quickstart-create-data-factory-resource-manager-template.md)に関する記事をご覧ください。  
 
 ## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>トリガーの開始時刻をパイプラインに渡す
+
 Azure Data Factory バージョン 1 では、次の各システム変数を使用することによって、パーティション分割されたデータの読み取りと書き込みをサポートします:**SliceStart**、**SliceEnd**、**WindowStart**、**WindowEnd**。 現在のバージョンの Azure Data Factory では、パイプライン パラメーターを使用してこの動作を実現できます。 トリガーの開始時刻とスケジュールされた時刻を、パイプライン パラメーターの値として設定します。 次の例では、トリガーのスケジュールされた時刻が、**scheduledRunTime** パイプライン パラメーターに値として渡されます。
 
 ```json
@@ -292,6 +295,7 @@ Azure Data Factory バージョン 1 では、次の各システム変数を使�
 ```
 
 ## <a name="json-schema"></a>JSON スキーマ
+
 次の JSON 定義は、スケジュールと繰り返しを指定してスケジュール トリガーを作成する方法を示しています。
 
 ```json
@@ -343,6 +347,7 @@ Azure Data Factory バージョン 1 では、次の各システム変数を使�
 
 
 ### <a name="schema-overview"></a>スキーマの概要
+
 次の表に、トリガーの繰り返しとスケジュール設定に関連する主要なスキーマ要素の概要を示します。
 
 | JSON プロパティ | 説明 |
@@ -405,6 +410,7 @@ Azure Data Factory バージョン 1 では、次の各システム変数を使�
 最後に、トリガーのスケジュールに時間または分が設定されていない場合は、最初の実行の時間または分が既定値として使用されます。
 
 ### <a name="schedule-property"></a>schedule プロパティ
+
 一方で、schedule を使用することで、トリガーの実行回数を制限できます。 たとえば、月単位の頻度を指定したトリガーを 31 日にのみ実行するようにスケジュールすると、トリガーは 31 日がある月にのみ実行されます。
 
 他方、schedule によりトリガーの実行回数を増やすこともできます。 たとえば、月単位の頻度を指定したトリガーを月の 1 日と 2 日に実行するようにスケジュールすると、トリガーは月に 1 回ではなく、月の 1 日と 2 日に実行されます。
@@ -412,7 +418,6 @@ Azure Data Factory バージョン 1 では、次の各システム変数を使�
 **schedule** の複数の要素を指定した場合、最も大きいスケジュール設定から最も小さいスケジュール設定の順序で評価されます。 まず週番号が評価され、日にち、曜日、時間、分の順に評価されます。
 
 次の表に、**schedule** の要素の詳細を示します。
-
 
 | JSON 要素 | 説明 | 有効な値 |
 |:--- |:--- |:--- |
@@ -422,8 +427,8 @@ Azure Data Factory バージョン 1 では、次の各システム変数を使�
 | **monthlyOccurrences** | トリガーが実行される月の特定曜日。 この値を指定できるのは、頻度が月単位の場合のみです。 | <ul><li>**monthlyOccurrence** オブジェクトの配列: `{ "day": day,  "occurrence": occurrence }`。</li><li>**day** 属性は、トリガーが実行される曜日を表します。 たとえば、**monthlyOccurrences** プロパティの **day** 値が `{Sunday}` の場合は、月の毎週日曜日を意味します。 **day** 属性は必須です。</li><li>**occurrence** 属性は、月の指定した **day** の出現を表します。 たとえば、**monthlyOccurrences** プロパティの **day** 値と **occurrence** 値が `{Sunday, -1}` の場合、月の最後の日曜日を意味します。 **occurrence** 属性は省略可能です。</li></ul> |
 | **monthDays** | トリガーが実行される日にち。 この値を指定できるのは、頻度が月単位の場合のみです。 | <ul><li>-1 以下かつ -31 以上の任意の値</li><li>1 以上かつ 31 以下の任意の値</li><li>値の配列</li></ul> |
 
-
 ## <a name="examples-of-trigger-recurrence-schedules"></a>トリガーの繰り返しのスケジュールの例
+
 このセクションでは、**schedule** オブジェクトとその要素に注目して、繰り返しのスケジュールの例を示します。
 
 各例は、**interval** 値が 1 であり、schedule の定義に従って **frequency** に適切な値が指定されていることを前提としています。 たとえば、**frequency** 値に "day" を指定し、**schedule** オブジェクトで "monthDays" の変更を指定することはできません。 このような制限事項は、前のセクションの表に記載されています。
@@ -457,6 +462,7 @@ Azure Data Factory バージョン 1 では、次の各システム変数を使�
 | `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` | 月の最後の金曜日に 15 分ごとに実行されます。 |
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | 毎月第 3 水曜日の午前 5 時 15 分、午前 5 時 45 分、午後 5 時 15 分、午後 5 時 45 分に実行されます。 |
 
-
 ## <a name="next-steps"></a>次のステップ
-トリガーについて詳しくは、「[Azure Data Factory でのパイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md#trigger-execution)」をご覧ください。
+
+- トリガーについて詳しくは、「[Azure Data Factory でのパイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md#trigger-execution)」をご覧ください。
+- パイプラインでトリガー メタデータを参照する方法については、[パイプライン実行でのトリガー メタデータの参照](how-to-use-trigger-parameterization.md)に関する記事を参照してください

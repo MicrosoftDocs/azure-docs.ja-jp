@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 6289f335234c9b7efec02a18e12b40a1140c1b3f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94956553"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>StorSimple Virtual Array をデプロイする - Azure Portal を介して iSCSI サーバーとしてセットアップする
@@ -90,7 +90,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
       > iSCSI サーバーをドメインに参加させるには、仮想アレイが Microsoft Azure Active Directory の独自の組織単位 (OU) にあり、グループ ポリシー オブジェクト (GPO) が適用されていないことを確認します。
       > 
       > 
-   4. ダイアログ ボックスが表示されます。 ドメインの資格情報を指定された形式で入力します。 操作を完了するには、チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png)。 ドメインの資格情報が検証されます。 資格情報が間違っていると、エラー メッセージが表示されます。
+   4. ダイアログ ボックスが表示されます。 ドメインの資格情報を指定された形式で入力します。 操作を完了するには、チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png). ドメインの資格情報が検証されます。 資格情報が間違っていると、エラー メッセージが表示されます。
       
        ![資格情報](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
    5. **[Apply]** をクリックします。 これにより、デバイスの設定が適用、検証されます。

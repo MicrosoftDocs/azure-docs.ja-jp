@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
 ms.openlocfilehash: eeb9a71854f52da5c1a9f4befae93c377ad67b05
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98920309"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>専用エージェント プールで ACR タスクを実行する

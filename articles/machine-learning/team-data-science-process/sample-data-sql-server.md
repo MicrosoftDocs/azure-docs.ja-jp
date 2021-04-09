@@ -12,13 +12,13 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7ac1fc5688dad3406041f36ff858e6fd27c7272f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93321868"
 ---
-# <a name="sample-data-in-sql-server-on-azure"></a><a name="heading"></a>Azure の SQL Server 内のデータのサンプリング
+# <a name="sample-data-in-sql-server-on-azure"></a><a name="heading"></a>Azure の SQL Server のデータをサンプリングする
 
 この記事では、SQL または Python プログラミング言語を使って、Azure の SQL Server に格納されているデータをサンプリングする方法について説明します。 また、サンプリングしたデータをファイルを保存し、Azure BLOB にアップロードして、Azure Machine Learning Studio に読み込むことで、データを Azure Machine Learning に移動する方法についても説明します。
 

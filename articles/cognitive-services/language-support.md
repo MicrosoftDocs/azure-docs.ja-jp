@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 8d518d540e50d96486fa98eea3c3267685776668
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c2c2b57ebf4e2a5cd96efce49da87cf42929e96c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706284"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103472056"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure Cognitive Services の自然言語のサポート
 
@@ -48,16 +48,6 @@ Azure Cognitive Services では、見る、聞く、話す、そして、ユー�
 * [Speech Service:音声テキスト変換](./speech-service/language-support.md#speech-to-text)
 * [音声サービス: Text-to-Speech](./speech-service/language-support.md#text-to-speech)
 * [Speech Service:音声翻訳](./speech-service/language-support.md#speech-translation)
-
-## <a name="search"></a>検索
-
-* [Bing Custom Search](./bing-custom-search/language-support.md)
-* [Bing Image Search](./bing-image-search/language-support.md)
-* [Bing News Search](./bing-news-search/language-support.md)
-* [Bing Autosuggest](./bing-autosuggest/language-support.md)
-* [Bing Spell Check](./bing-spell-check/language-support.md)
-* [Bing Visual Search](./bing-visual-search/language-support.md)
-* [Bing Web Search](./bing-web-search/language-support.md)
 
 ## <a name="decision"></a>決定
 

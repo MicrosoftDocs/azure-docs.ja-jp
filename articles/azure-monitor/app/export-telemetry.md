@@ -2,16 +2,20 @@
 title: Application Insights からのテレメトリの連続エクスポート | Microsoft Docs
 description: 診断および利用状況データを Microsoft Azure のストレージにエクスポートし、そこからダウンロードします。
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.openlocfilehash: 23405faeb7d2151ce0f6492c0d522e0a7f9b84a8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/19/2021
+ms.custom: references_regions
+ms.openlocfilehash: e7831123834df9186310453106c50261373160ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584234"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737037"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights からのテレメトリのエクスポート
 標準的なリテンション期間より長くテレメトリを残しておきたい、 または特別な方法でテレメトリを処理したい、 そのようなケースには、連続エクスポートが最適です。 Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。 そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。  
+
+> [!IMPORTANT]
+> 連続エクスポートは非推奨となりました。 テレメトリをエクスポートするために[診断設定](#diagnostic-settings-based-export)を使用するには、[ワークスペースベースの Application Insights リソースに移行](convert-classic-resource.md)します。
 
 > [!NOTE]
 > 連続エクスポートは、従来の Application Insights リソースに対してのみサポートされます。 [ワークスペース ベースの Application Insights リソース](./create-workspace-resource.md)では、[診断設定](./create-workspace-resource.md#export-telemetry)を使用する必要があります。
@@ -27,6 +31,44 @@ ms.locfileid: "100584234"
 * [PowerShell を使用して連続エクスポート](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)の設定にアクセスすることもできます。
 
 連続エクスポートによってストレージ (必要な期間の保持が可能) にコピーされたデータは、通常の[リテンション期間](./data-retention-privacy.md)が過ぎるまで引き続き Application Insights で使用できます。
+
+## <a name="supported-regions"></a>サポートされているリージョン
+
+連続エクスポートは、次のリージョンでサポートされています。
+
+* 東南アジア
+* カナダ中部
+* インド中部
+* 北ヨーロッパ
+* 英国南部
+* オーストラリア東部
+* 東日本
+* 韓国中部
+* フランス中部
+* 東アジア
+* 米国西部
+* 米国中部
+* 米国東部 2
+* 米国中南部
+* 米国西部 2
+* 南アフリカ北部
+* 米国中北部
+* ブラジル南部
+* スイス北部
+* オーストラリア南東部
+* 英国西部
+* ドイツ中西部
+* スイス西部
+* オーストラリア中部 2
+* アラブ首長国連邦中部
+* ブラジル南東部
+* オーストラリア中部
+* アラブ首長国連邦北部
+* ノルウェー東部
+* 西日本
+
+> [!NOTE]
+> **西ヨーロッパ** と **米国東部** で既に構成されているアプリケーションはサポートされますが、これらのリージョンへの新しいアプリケーションのオンボードはサポートされていません。
 
 ## <a name="continuous-export-advanced-storage-configuration"></a>連続エクスポートの高度なストレージ構成
 

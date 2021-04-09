@@ -11,10 +11,10 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.date: 03/12/2020
 ms.openlocfilehash: 67b398194d9094cd99fccaa85ed0df3be362ce2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91618015"
 ---
 # <a name="enabling-service-aided-subnet-configuration-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance のサービス支援サブネット構成の有効化
@@ -22,7 +22,7 @@ ms.locfileid: "91618015"
 
 サービス支援サブネット構成を使用すると、マネージ インスタンスをホストしているサブネットのネットワーク構成管理を自動化できます。 サービス支援サブネット構成では、ユーザーがデータへのアクセス (TDS トラフィック フロー) を完全に制御できる状態を維持しつつ、管理トラフィックが中断されないようにするための処理はマネージド インスタンスによって行われ、それによって SLA の履行が支援されます。
 
-自動的に構成されたネットワーク セキュリティ グループとルート テーブル規則は、お客様に表示され、_Microsoft.Sql-managedInstances_UseOnly__ というプレフィックスで注釈が付けられます。
+自動的に構成されたネットワーク セキュリティ グループとルート テーブル規則は、お客様に表示され、_Microsoft.Sql-managedInstances_UseOnly_ _ というプレフィックスで注釈が付けられます。
 
 サービス支援構成は、`Microsoft.Sql/managedInstances` リソース プロバイダーの [サブネット委任](../../virtual-network/subnet-delegation-overview.md)をオンにすると、自動的に有効になります。
 

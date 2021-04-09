@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: jlian
 ms.openlocfilehash: fb2cc0b81083936a67bcd465e0408b9f4b53996b
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96603051"
 ---
 # <a name="iot-hub-mqtt-5-support-overview-preview"></a>IoT Hub の MQTT 5 のサポートの概要 (プレビュー)

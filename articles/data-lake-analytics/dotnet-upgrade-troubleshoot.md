@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.date: 10/11/2019
 ms.openlocfilehash: ab03ea8a88187289f5dce55f8a396a9d51346a3f
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92217679"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics が .NET Framework v4.7.2 にアップグレード中
@@ -35,7 +35,7 @@ U-SQL カスタム アセンブリの .NET コードに対して .NET 互換性�
 1. 次のいずれかの方法で、.NET DLL に対して下位互換性チェックを実行します。
    1. [.NET Portability Analyzer の Visual Studio 拡張機能](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer)に関するページに従って、Visual Studio 拡張機能を使用する。
    1. [GitHub dotnetapiport](https://github.com/microsoft/dotnet-apiport) からスタンドアロン ツールをダウンロードして使用する。 スタンドアロン ツールの実行手順については、[GitHub dotnetapiport の破壊的変更](https://github.com/microsoft/dotnet-apiport/blob/dev/docs/HowTo/BreakingChanges.md)に関するページを参照してください。
-   1. 4\.7.2 では、 互換性、`read isRetargeting == True` は、潜在的な問題を特定します。
+   1. 4.7.2 では、 互換性、`read isRetargeting == True` は、潜在的な問題を特定します。
 2. このツールにより、コードが何らかの考えられる下位非互換性 (非互換性の一般的な例を以下に示します) の影響を受ける可能性があることが示される場合は、次の方法で詳細を確認できます。
    1. コードを分析し、影響を受ける API にコードによって値が渡されるかどうかを識別する。
    1. ランタイム チェックを実行する。 ADLA では、ランタイムのデプロイはサイド バイ サイドで実行されません。 代表的なデータ セットに対して Visual Studio のローカル実行をローカルの .NET Framework 4.7.2 と共に使用して、アップグレード前にランタイム チェックを実行できます。
@@ -53,49 +53,49 @@ U-SQL カスタム アセンブリの .NET コードに対して .NET 互換性�
 
 ### <a name="what-are-the-most-common-backwards-compatibility-issues-you-may-encounter"></a>発生する可能性のある最も一般的な下位互換性の問題
 
-チェッカーによって識別される可能性の高い最も一般的な下位非互換性 (この一覧は、独自の内部 ADLA ジョブに対してチェッカーを実行して生成しました)、影響を受けるライブラリ (注: ライブラリは間接的にのみ呼び出すことができるため、ジョブが影響を受けるかどうかを確認するには、必要な最良のアクションを実行することが重要です)、および修正に使用できるアクションを次に示します。 注:ほとんどの破壊的変更は範囲が限られているため、独自のジョブのほぼすべてにおいて、警告は誤検出となります。
+チェッカーによって識別される可能性の高い最も一般的な下位非互換性 (この一覧は、独自の内部 ADLA ジョブに対してチェッカーを実行して生成しました)、影響を受けるライブラリ (注: ライブラリは間接的にのみ呼び出すことができるため、ジョブが影響を受けるかどうかを確認するには、必要な最良のアクションを実行することが重要です)、および修正に使用できるアクションを次に示します。 注: ほとんどの破壊的変更は範囲が限られているため、独自のジョブのほぼすべてにおいて、警告は誤検出となります。
 
-- 結果のタスクを完了するには、IAsyncResult.CompletedSynchronously プロパティが正しくなければならない
-  - TaskFactory.FromAsync を呼び出した場合、結果のタスクが完了するには、IAsyncResult.CompletedSynchronously プロパティの実装が正しくなければなりません。 つまり、実装が同期的に完了した場合に限り、このプロパティによって true が返される必要があります。 以前は、このプロパティはチェックされていませんでした。
+- IAsyncResult.CompletedSynchronously プロパティが正しくなければ、結果のタスクは完了しません
+  - TaskFactory.FromAsync を呼び出した場合、結果のタスクが完了するには、IAsyncResult.CompletedSynchronously プロパティの実装が正しくなければなりません。 つまり、実装が同期的に完了した場合にのみ、このプロパティは true を返す必要があります。 以前は、このプロパティは確認されていませんでした。
   - 影響を受けるライブラリ: mscorlib、System.Threading.Tasks
-  - 推奨アクション:TaskFactory.FromAsync によって true が正しく返されることを確認する
+  - 推奨されるアクション: TaskFactory.FromAsync によって true が正しく返されることを確認する
 
-- DataObject.GetData によってデータが UTF-8 として取得されるようになった
-  - .NET Framework 4 を対象とするアプリ、または .NET Framework 4.5.1 以前のバージョンで実行されるアプリでは、DataObject.GetData によって HTML 形式のデータが ASCII 文字列として取得されます。 その結果、非 ASCII 文字 (ASCII コードが 0x7F よりも大きい文字) は、2 つのランダムな文字で表されます.NET Framework 4.5 以降を対象とし、.NET Framework 4.5.2 で実行されるアプリでは、`DataObject.GetData` によって HTML 形式のデータが UTF-8 として取得されますこの場合、0x7F よりも大きい文字が正しく表されます。
-  - 影響を受けるライブラリ:Glo
-  - 推奨アクション:取得されたデータが必要な形式であることを確認する
+- DataObject.GetData は、データを UTF-8 として取得するようになりました
+  - .NET Framework 4 を対象とするアプリ、または .NET Framework 4.5.1 以前のバージョンで実行されるアプリでは、DataObject.GetData によって HTML 形式のデータが ASCII 文字列として取得されます。 その結果、非 ASCII 文字 (ASCII コードが 0x7F よりも大きい文字) は、2 つのランダムな文字で表されます。.NET Framework 4.5 以降を対象とし、.NET Framework 4.5.2 で実行されるアプリでは、`DataObject.GetData` によって HTML 形式のデータが UTF-8 として取得されます。この場合、0x7F よりも大きい文字が正しく表されます。
+  - 影響を受けるライブラリ: Glo
+  - 推奨されるアクション: 取得されたデータが必要な形式であることを確認する
 
 - 無効なサロゲート ペアで XmlWriter がスローされる
-  - .NET Framework 4.5.2 以前のバージョンを対象とするアプリでは、例外フォールバック処理を使用して無効なサロゲート ペアを記述しても、常に例外がスローされるとは限りません。 .NET Framework 4.6 を対象とするアプリでは、無効なサロゲート ペアを作成しようとすると、`ArgumentException` がスローされます。
-  - 影響を受けるライブラリ:System.Xml、System.Xml.ReaderWriter
-  - 推奨アクション:引数の例外の原因となる無効なサロゲート ペアを記述していないことを確認する
+  - .NET Framework 4.5.2 またはそれ以前のバージョンをターゲットとするアプリケーションの場合、例外フォールバック処理を使用した無効なサロゲート ペアを作成しても、必ず例外がスローされるとは限りません。 .NET Framework 4.6 を対象とするアプリでは、無効なサロゲート ペアを作成しようとすると、`ArgumentException` がスローされます。
+  - 影響を受けるライブラリ: System.Xml、System.Xml.ReaderWriter
+  - 推奨されるアクション: 引数の例外の原因となる無効なサロゲート ペアを記述していないことを確認する
 
 - HtmlTextWriter によって `<br/>` 要素が正しく表示されない
   - .NET Framework 4.6 以降では、`<BR />` 要素を指定して `HtmlTextWriter.RenderBeginTag()` と `HtmlTextWriter.RenderEndTag()` を呼び出すと、`<BR />` が 1 つのみ (2 つではなく) 正しく挿入されます。
-  - 影響を受けるライブラリ:System.Web
-  - 推奨アクション:予想される数の `<BR />` が挿入されていることを確認し、運用ジョブでランダムな動作が生じないようにする
+  - 影響を受けるライブラリ: System.Web
+  - 推奨されるアクション: 予想される数の `<BR />` が挿入されていることを確認し、運用ジョブでランダムな動作が生じないようにする
 
-- null 引数による CreateDefaultAuthorizationContext の呼び出しが変更された
+- null 引数を指定した CreateDefaultAuthorizationContext の呼び出しが変更されました
   - null の authorizationPolicies 引数を指定して `CreateDefaultAuthorizationContext(IList<IAuthorizationPolicy>)` への呼び出しによって返される AuthorizationContext の実装が、.NET Framework 4.6 で変更されました。
-  - 影響を受けるライブラリ:System.IdentityModel
-  - 推奨アクション:null の認証ポリシーが存在する場合に予期される新しい動作を処理していることを確認する
+  - 影響を受けるライブラリ: System.IdentityModel
+  - 推奨されるアクション: null の認証ポリシーが存在する場合に予期される新しい動作を処理していることを確認する
   
-- RSACng で非標準のキー サイズの RSA キーが正しく読み込まれるようになった
-  - 4\.6.2 より前のバージョンの .NET Framework では、RSA 証明書の非標準のキー サイズを使用しているお客様は、`GetRSAPublicKey()` および `GetRSAPrivateKey()` 拡張メソッドを使用してこれらのキーにアクセスすることはできません。 "要求されたキー サイズはサポートされていません" というメッセージと共に `CryptographicException` がスローされます。 .NET Framework 4.6.2 では、この問題は修正されています。 同様に、`RSA.ImportParameters()` と `RSACng.ImportParameters()` は非標準のキー サイズで動作するようになり、`CryptographicException` はスローされなくなりました。
+- RSACng でキー サイズが非標準の RSA キーが正しく読み込まれるようになりました
+  - 4\.6.2 より前の .NET Framework バージョンでは、RSA 証明書のキー サイズが標準ではない顧客は、拡張メソッドの `GetRSAPublicKey()` や `GetRSAPrivateKey()` でそのキーにアクセスできません。 "要求されたキー サイズはサポートされていません" というメッセージと共に `CryptographicException` がスローされます。 .NET Framework 4.6.2 では、この問題は修正されています。 同様に、`RSA.ImportParameters()` と `RSACng.ImportParameters()` は非標準のキー サイズで動作するようになり、`CryptographicException` はスローされなくなりました。
   - 影響を受けるライブラリ: mscorlib、System.Core
-  - 推奨アクション:RSA キーが想定どおりに動作していることを確認する
+  - 推奨されるアクション: RSA キーが想定どおりに動作していることを確認する
 
-- パスのコロン チェックがより厳密になった
-  - .NET Framework 4.6.2 では、以前にサポートされていなかったパス (長さと形式の両方) をサポートするためにいくつかの変更が加えられました。 ドライブの適切な区切り記号 (コロン) の構文に対するチェックが、より正確になりました。これにより、許容されていた少数の select Path API で一部の URI パスがブロックされるという副作用が生じました。
+- パスのコロン確認が厳密化
+  - .NET Framework 4.6.2 では、以前はサポートされていなかったパスをサポートするために (長さと形式の両方で) 数多くの変更が加えられました。 適切なドライブ区切り (コロン) 構文の確認がより正確に行われました。その結果、それ以前は許容されていた、ごく少数のパス API の一部の URI パスがブロックされました。
   - 影響を受けるライブラリ: mscorlib、System.Runtime.Extensions
   - 推奨アクション:
 
-- ClaimsIdentity コンストラクターの呼び出し
-  - .NET Framework 4.6.2 以降では、`T:System.Security.Principal.IIdentity` パラメーターを指定した場合に `T:System.Security.Claims.ClaimsIdentity` コンストラクターによって `P:System.Security.Claims.ClaimsIdentify.Actor` プロパティがどのように設定されるかが変更されています。 `T:System.Security.Principal.IIdentity` 引数が `T:System.Security.Claims.ClaimsIdentity` オブジェクトで、その `T:System.Security.Claims.ClaimsIdentity` オブジェクトの `P:System.Security.Claims.ClaimsIdentify.Actor` プロパティが `null` でない場合、`M:System.Security.Claims.ClaimsIdentity.Clone` メソッドを使用して `P:System.Security.Claims.ClaimsIdentify.Actor` プロパティがアタッチされます。 Framework 4.6.1 以前のバージョンでは、`P:System.Security.Claims.ClaimsIdentify.Actor` プロパティは既存の参照としてアタッチされます。 この変更により、.NET Framework 4.6.2 以降では、新しい `T:System.Security.Claims.ClaimsIdentity` オブジェクトの `P:System.Security.Claims.ClaimsIdentify.Actor` プロパティはコンストラクターの `T:System.Security.Principal.IIdentity` 引数の `P:System.Security.Claims.ClaimsIdentify.Actor` プロパティと同じではなくなりました。 .NET Framework 4.6.1 以前のバージョンでは、これは同じになります。
+- ClaimsIdentity コンストラクターを呼び出す
+  - .NET Framework 4.6.2 以降、`T:System.Security.Claims.ClaimsIdentity` コンストラクターと `T:System.Security.Principal.IIdentity` パラメーターの組み合わせで `P:System.Security.Claims.ClaimsIdentify.Actor` プロパティが設定されるしくみに変更があります。 `T:System.Security.Principal.IIdentity` 引数が `T:System.Security.Claims.ClaimsIdentity` オブジェクトで、その `T:System.Security.Claims.ClaimsIdentity` オブジェクトの `P:System.Security.Claims.ClaimsIdentify.Actor` プロパティが `null` ではない場合、`M:System.Security.Claims.ClaimsIdentity.Clone` メソッドを使用して `P:System.Security.Claims.ClaimsIdentify.Actor` プロパティがアタッチされます。 Framework 4.6.1 以前のバージョンでは、`P:System.Security.Claims.ClaimsIdentify.Actor` プロパティは既存の参照としてアタッチされます。 この変更により、.NET Framework 4.6.2 以降では、新しい `T:System.Security.Claims.ClaimsIdentity` オブジェクトの `P:System.Security.Claims.ClaimsIdentify.Actor` プロパティはコンストラクターの `T:System.Security.Principal.IIdentity` 引数の `P:System.Security.Claims.ClaimsIdentify.Actor` プロパティと同じではなくなりました。 .NET Framework 4.6.1 以前のバージョンでは、等しくなります。
   - 影響を受けるライブラリ: mscorlib
-  - 推奨アクション:新しいランタイムで ClaimsIdentity が想定どおりに動作していることを確認する
+  - 推奨されるアクション: 新しいランタイムで ClaimsIdentity が想定どおりに動作していることを確認する
 
-- DataContractJsonSerializer による制御文字のシリアル化が、ECMAScript V6 および V8 と互換性を持つようになった
+- DataContractJsonSerializer による制御文字のシリアル化が ECMAScript V6 および V8 対応に
   - .NET framework 4.6.2 以前のバージョンでは、DataContractJsonSerializer によって、\b、\f、\t などの一部の特殊制御文字が、ECMAScript V6 および V8 標準と互換性のある方法でシリアル化されませんでした。 .NET Framework 4.7 以降では、これらの制御文字のシリアル化は ECMAScript V6 および V8 と互換性があります。
-  - 影響を受けるライブラリ:System.Runtime.Serialization.Json
-  - 推奨アクション:DataContractJsonSerializer と同じ動作を保証する
+  - 影響を受けるライブラリ: System.Runtime.Serialization.Json
+  - 推奨されるアクション: DataContractJsonSerializer と同じ動作を保証する

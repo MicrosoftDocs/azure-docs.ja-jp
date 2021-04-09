@@ -4,20 +4,20 @@ description: AKS と Azure Container Registry で Helm を使用して、クラ�
 services: container-service
 author: zr-msft
 ms.topic: article
-ms.date: 01/12/2021
+ms.date: 03/15/2021
 ms.author: zarhoads
-ms.openlocfilehash: 5656051ecd6e3fd39b051d2d0288e9762c83d9ad
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 4f5232920853908aa5ad714313ead201494caa0d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249926"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103493080"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>クイック スタート:Helm を使用して Azure Kubernetes Service (AKS) で開発する
 
-[Helm][helm] は、Kubernetes アプリケーションのライフサイクルをインストールおよび管理するのに役立つオープン ソースのパッケージ化ツールです。 *APT* や *Yum* などの Linux パッケージ マネージャーと同様に、Helm は、構成済みの Kubernetes リソースのパッケージである Kubernetes チャートの管理に使用されます。
+[Helm][helm] は、Kubernetes アプリケーションのライフサイクルをインストールおよび管理するのに役立つオープン ソースのパッケージ化ツールです。 *APT* や *Yum* などの Linux パッケージ マネージャーと同様に、Helm を使用すると、構成済みの Kubernetes リソースのパッケージである Kubernetes チャートが管理されます。
 
-この記事では、Helm を使用して、AKS 上でアプリケーションをパッケージ化して実行する方法を示します。 Helm を使用した既存のアプリケーションのインストールの詳細については、「[AKS で Helm を使用して既存のアプリケーションをインストールする][helm-existing]」を参照してください。
+このクイックスタートでは、Helm を使用して、AKS でアプリケーションをパッケージ化して実行します。 Helm を使用した既存のアプリケーションのインストールの詳細については、[AKS での Helm を使用した既存のアプリケーションのインストール][helm-existing]に関する攻略ガイドを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -26,7 +26,9 @@ ms.locfileid: "98249926"
 * [Helm v3 がインストールされていること][helm-install]。
 
 ## <a name="create-an-azure-container-registry"></a>Azure Container Registry を作成する
-ご利用の AKS クラスターで Helm を使用して自分のアプリケーションを実行するには、お使いのコンテナー イメージを格納するための Azure Container Registry が必要です。 次の例では、[az acr create][az-acr-create] を使用して、*MyResourceGroup* リソース グループ内に *Basic* SKU を使用する *MyHelmACR* という名前の ACR が作成されます。 独自の一意のレジストリ名を指定する必要があります。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 *Basic* SKU は、ストレージとスループットのバランスが取れた、開発目的のコスト最適化されたエントリ ポイントです。
+Helm を使用してご利用の AKS クラスターで自分のアプリケーションを実行するには、お使いのコンテナー イメージを Azure Container Registry (ACR) に格納する必要があります。 Azure 内で一意となる、5 から 50 文字の英数字を含むレジストリ名を指定します。 *Basic* SKU は、ストレージとスループットのバランスが取れた、開発目的のコスト最適化されたエントリ ポイントです。
+
+下の例では、[az acr create][az-acr-create] を使用して、*MyResourceGroup* 内に *Basic* SKU を使用する *MyHelmACR* という名前の ACR を作成します。
 
 ```azurecli
 az group create --name MyResourceGroup --location eastus
@@ -57,31 +59,32 @@ az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
 }
 ```
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成する
+## <a name="create-an-aks-cluster"></a>AKS クラスターを作成する
 
-AKS クラスターを作成します。 次のコマンドは、MyAKS という名前の AKS クラスターを作成し、MyHelmACR をアタッチします。
+新しい AKS クラスターでは、お使いの ACR にアクセスしてコンテナー イメージをプルして実行する必要があります。 次のコマンドを使用します。
+* *MyAKS* という名前の AKS クラスターを作成し、*MyHelmACR* をアタッチします。
+* *MyAKS* クラスターに *MyHelmACR* ACR へのアクセスを許可します。
+
 
 ```azurecli
 az aks create -g MyResourceGroup -n MyAKS --location eastus  --attach-acr MyHelmACR --generate-ssh-keys
 ```
 
-AKS クラスターでは、お使いの ACR にアクセスしてコンテナー イメージをプルして実行する必要があります。 上記のコマンドでは、*MyAKS* クラスターに *MyHelmACR* ACR へのアクセスも許可します。
-
 ## <a name="connect-to-your-aks-cluster"></a>ご利用の AKS クラスターに接続する
 
-お使いのローカル コンピューターから Kubernetes クラスターに接続するには、[kubectl][kubectl] (Kubernetes コマンドライン クライアント) を使用します。
+Kubernetes クラスターにローカルで接続するには、Kubernetes のコマンドライン クライアントである [kubectl][kubectl] を使用します。 Azure Cloud Shell を使用している場合、`kubectl` は既にインストールされています。 
 
-Azure Cloud Shell を使用している場合、`kubectl` は既にインストールされています。 [az aks install-cli][] コマンドを使用してローカルにインストールすることもできます。
+1. `az aks install-cli` コマンドを使用して、`kubectl` をローカルにインストールします。
 
-```azurecli
-az aks install-cli
-```
+    ```azurecli
+    az aks install-cli
+    ```
 
-Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials][] コマンドを使用します。 次の例では、*MyResourceGroup* の *MyAKS* という名前の AKS クラスター用の資格情報が取得されます。
+2. `az aks get-credentials` コマンドを使用して、Kubernetes クラスターに接続するように `kubectl` を構成します。 次のコマンド例では、*MyResourceGroup* の *MyAKS* という名前の AKS クラスター用の資格情報が取得されます。  
 
-```azurecli
-az aks get-credentials --resource-group MyResourceGroup --name MyAKS
-```
+    ```azurecli
+    az aks get-credentials --resource-group MyResourceGroup --name MyAKS
+    ```
 
 ## <a name="download-the-sample-application"></a>サンプル アプリケーションのダウンロード
 
@@ -94,7 +97,7 @@ cd dev-spaces/samples/nodejs/getting-started/webfrontend
 
 ## <a name="create-a-dockerfile"></a>Dockerfile を作成する
 
-以下を使用して、新しい *Dockerfile* ファイルを作成します。
+以下のコマンドを使用して、新しい *Dockerfile* ファイルを作成します。
 
 ```dockerfile
 FROM node:latest
@@ -113,7 +116,7 @@ CMD ["node","server.js"]
 
 ## <a name="build-and-push-the-sample-application-to-the-acr"></a>サンプル アプリケーションをビルドして ACR にプッシュする
 
-[az acr build][az-acr-build] コマンドを使用して、前の手順で作成した Dockerfile を使用してイメージをビルドし、レジストリにプッシュします。 コマンドの最後にある `.` では、Dockerfile の位置を設定します。この場合は現在のディレクトリです。
+上記の Dockerfile を使用して [az acr build][az-acr-build] コマンドを実行し、イメージをビルドしてレジストリにプッシュします。 コマンドの最後にある `.` では、Dockerfile の位置を設定します (この場合は現在のディレクトリです)。
 
 ```azurecli
 az acr build --image webfrontend:v1 \
@@ -129,8 +132,8 @@ az acr build --image webfrontend:v1 \
 helm create webfrontend
 ```
 
-*webfrontend/values.yaml* に以下の更新を加えます。 前の手順でメモしたレジストリの loginServer を *myhelmacr.azurecr.io* のように置き換えます。
-
+*webfrontend/values.yaml* を更新します。
+* 前の手順でメモしたレジストリの loginServer を *myhelmacr.azurecr.io* のように置き換えます。
 * `image.repository` を `<loginServer>/webfrontend` に変更します。
 * `service.type` を `LoadBalancer` に変更します。
 
@@ -172,7 +175,7 @@ appVersion: v1
 helm install webfrontend webfrontend/
 ```
 
-サービスからパブリック IP アドレスが返されるまで数分かかります。 進行状況を監視するには、`kubectl get service` コマンドと *watch* パラメーターを使用します。
+サービスからパブリック IP アドレスが返されるまで数分かかります。 `kubectl get service` コマンドと `--watch` 引数を使用して、進行状況を監視します。
 
 ```console
 $ kubectl get service --watch
@@ -187,14 +190,16 @@ webfrontend         LoadBalancer  10.0.141.72   <EXTERNAL-IP> 80:32150/TCP   7m
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 
-クラスターが不要になったら、[az group delete][az-group-delete] コマンドを使用して、リソース グループ、AKS クラスター、コンテナー レジストリ、そこに格納されているコンテナー イメージ、および関連するすべてのリソースを削除します。
+[az group delete][az-group-delete] コマンドを使用して、リソース グループ、AKS クラスター、コンテナー レジストリ、ACR に格納されているコンテナー イメージ、および関連するすべてのリソースを削除します。
 
 ```azurecli-interactive
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> クラスターを削除したとき、AKS クラスターで使用される Azure Active Directory サービス プリンシパルは削除されません。 サービス プリンシパルを削除する手順については、[AKS のサービス プリンシパルに関する考慮事項と削除][sp-delete]に関するページを参照してください。 マネージド ID を使用した場合、ID はプラットフォームによって管理されるので、削除する必要はありません。
+> クラスターを削除したとき、AKS クラスターで使用される Azure Active Directory サービス プリンシパルは削除されません。 サービス プリンシパルを削除する手順については、[AKS のサービス プリンシパルに関する考慮事項と削除][sp-delete]に関するページを参照してください。
+> 
+> マネージド ID を使用した場合、ID はプラットフォームによって管理されるので、削除する必要はありません。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,16 +6,16 @@ ms.service: virtual-machines
 ms.subservice: proximity-placement-groups
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 04/24/2020
+ms.date: 3/8/2021
 ms.author: cynthn
-ms.openlocfilehash: 201f2f585c907ff82f28b96562efe3622dae6422
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: daf844870670c14db5208f45fbd9c9adf46be985
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666031"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102504628"
 ---
-# <a name="create-a-proximity-placement-group-using-the-portal"></a>ポータルを使用して、近接通信配置グループを作成します。
+# <a name="create-a-proximity-placement-group-using-the-azure-portal"></a>Azure portal を使用して、近接通信配置グループを作成します。
 
 各 VM をできるだけ近くに配置して、可能性のある最も短い待ち時間を実現するには、それらを[近接通信配置グループ](../co-location.md#proximity-placement-groups)内にデプロイするようにしてください。
 

@@ -4,10 +4,10 @@ description: この記事では、Azure Event Hubs メッセージングの例�
 ms.topic: article
 ms.date: 02/10/2021
 ms.openlocfilehash: a76c98ec7d6d1f3370ed8787bf10d1d16a7baaa5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100390897"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>Event Hubs メッセージングの例外 - .NET (レガシ)

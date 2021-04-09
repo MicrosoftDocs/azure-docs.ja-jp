@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: caya
 ms.openlocfilehash: d8940d791920daca6ef0af186a4bb5e17009637b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100586106"
 ---
 # <a name="application-gateway-high-traffic-support"></a>Application Gateway の高トラフィックのサポート

@@ -15,10 +15,10 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 319bca74c8e781e5dc5022e9fb901b2edca24a80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87485645"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure カスタム ロールを作成する

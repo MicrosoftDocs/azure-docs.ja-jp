@@ -8,10 +8,10 @@ ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: dea88bf93000422ce1d832be4a0f60474ff27938
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94629786"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>クイック スタート: Azure Storage Explorer を使用した Azure ファイル共有の作成および管理
@@ -36,7 +36,7 @@ Storage Explorer を初めて起動すると、 **[Microsoft Azure Storage Explo
 - **接続文字列または SAS トークンを使用して特定のストレージ アカウントに接続する**: 接続文字列は、ストレージ アカウント名とストレージ アカウント キー/SAS トークンを含む特別な文字列です。 Storage Explorer は、トークンを使用して、(単に Azure アカウント内のすべてのストレージ アカウントを表示するのではなく) ストレージ アカウントに直接アクセスします。 接続文字列の詳細については、「[Azure Storage の接続文字列を構成する](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照してください。
 - **ストレージ アカウントの名前とキーを使用して、特定のストレージ アカウントに接続する**: ストレージ アカウントの名前とキーを使用して、Azure Storage に接続します。
 
-このクイック スタートでは、Azure アカウントを使用してサインインします。 **[Add an Azure Account]\(Azure アカウントの追加\)** を選択し、 **[サインイン]** を選択します。 プロンプトに従って Azure アカウントにサインインします。
+このクイック スタートでは、Azure アカウントを使用してサインインします。 **[Add an Azure Account]\(Azure アカウントの追加\)** を選択し、**[サインイン]** を選択します。 プロンプトに従って Azure アカウントにサインインします。
 
 ![[Microsoft Azure Storage Explorer - 接続] ウィンドウのスクリーンショット](./media/storage-how-to-use-files-storage-explorer/connect-to-azure-storage-1.png)
 
@@ -44,7 +44,7 @@ Storage Explorer を初めて起動すると、 **[Microsoft Azure Storage Explo
 最初の Azure ファイル共有を `storageacct<random number>` ストレージ アカウント内に作成するには:
 
 1. 作成したストレージ アカウントを展開します。
-2. **[ファイル共有]** を右クリックして、 **[ファイル共有の作成]** を選択します。  
+2. **[ファイル共有]** を右クリックして、**[ファイル共有の作成]** を選択します。  
     ![実際のファイル共有フォルダーとコンテキスト メニューのスクリーンショット](media/storage-how-to-use-files-storage-explorer/create-file-share-1.png)
 
 3. ファイル共有名として「*myshare*」と入力して、Enter キーを押します。
@@ -59,24 +59,24 @@ Azure ファイル共有を作成したところで、SMB でファイル共有�
 ### <a name="create-a-directory"></a>ディレクトリを作成する
 ディレクトリを追加すると、ファイル共有を管理するための階層構造が生じます。 ディレクトリには複数のレベルを作成できます。 ただし、サブディレクトリを作成する前に、親ディレクトリが存在することを確認する必要があります。 たとえば、パス myDirectory/mySubDirectory の場合は、最初に *myDirectory* ディレクトリを作成する必要があります。 その後、*mySubDirectory* を作成できます。 
 
-1. ファイル共有のタブの上部のメニューで、 **[新しいフォルダー]** ボタンを選択します。 **[新しいディレクトリの作成]** ウィンドウが開きます。
+1. ファイル共有のタブの上部のメニューで、**[新しいフォルダー]** ボタンを選択します。 **[新しいディレクトリの作成]** ウィンドウが開きます。
     ![コンテキストの [新しいフォルダー] ボタンのスクリーンショット](media/storage-how-to-use-files-storage-explorer/create-directory-1.png)
 
-2. ディレクトリ名として「*myDirectory*」と入力し、 **[OK]** を選択します。 
+2. ディレクトリ名として「*myDirectory*」と入力し、**[OK]** を選択します。 
 
 *myDirectory* ディレクトリが *myshare* ファイル共有のタブに表示されます。
 
 ### <a name="upload-a-file"></a>ファイルをアップロードする 
 ローカル コンピューターからファイル共有の新しいディレクトリにファイルをアップロードできます。 フォルダー全体をアップロードすることも、単一のファイルをアップロードすることもできます。
 
-1. 上部のメニューで、 **[アップロード]** を選択します。 これにより、フォルダーまたはファイルをアップロードするオプションが表示されます。
+1. 上部のメニューで、**[アップロード]** を選択します。 これにより、フォルダーまたはファイルをアップロードするオプションが表示されます。
 2. **[ファイルのアップロード]** を選択して、ローカル コンピューターからアップロードするファイルを選択します。
-3. **[Upload to a directory]\(ディレクトリにアップロードする\)** で「*myDirectory*」と入力し、 **[アップロード]** を選択します。 
+3. **[Upload to a directory]\(ディレクトリにアップロードする\)** で「*myDirectory*」と入力し、**[アップロード]** を選択します。 
 
 完了すると、ファイルが *myDirectory* ウィンドウの一覧に表示されます。
 
 ### <a name="download-a-file"></a>ファイルをダウンロードする
-ファイル共有からファイルのコピーをダウンロードするには、ファイルを右クリックして、 **[ダウンロード]** を選択します。 ファイルの保存先にするローカル コンピューター上の場所を選択して、 **[保存]** を選択します。
+ファイル共有からファイルのコピーをダウンロードするには、ファイルを右クリックして、**[ダウンロード]** を選択します。 ファイルの保存先にするローカル コンピューター上の場所を選択して、**[保存]** を選択します。
 
 ウィンドウの下部にある **[アクティビティ]** ウィンドウに、ダウンロードの進行状況が表示されます。
 

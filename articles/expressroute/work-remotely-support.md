@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/22/2020
 ms.author: duau
 ms.openlocfilehash: d51f47b73fe572ce81d3e7b54f902f94fcd11b5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89567675"
 ---
 # <a name="using-azure-expressroute-to-create-hybrid-connectivity-to-support-remote-users"></a>リモート ユーザーをサポートするためのハイブリッド接続を Azure ExpressRoute を使用して作成する

@@ -4,10 +4,10 @@ description: Windows Server または Linux を実行する任意の VM また�
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: d83ec139c367d9a539db173a42ae909f57d5d71a
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96576130"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Windows Server と Linux での Azure とスタンドアロン Service Fabric クラスターの比較

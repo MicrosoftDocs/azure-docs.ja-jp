@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 42c425963f0915004c4cd33c45429bf785baa5bc
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: c2a6a71365b48fa4349306ce632f5762c38dacf7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255069"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597472"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>チュートリアル:DMS を使用してオンラインで RDS PostgreSQL を Azure DB for PostgreSQL に移行する
 
@@ -52,12 +52,12 @@ Azure Database Migration Service を使用して、RDS PostgreSQL インスタ�
    また、ターゲットの Azure Database for PostgreSQL バージョンは、RDS PostgreSQL のバージョンと同じかそれ以降である必要があることに注意してください。 たとえば、RDS PostgreSQL 9.6 は Azure Database for PostgreSQL 9.6、10、または 11 にのみ移行でき、Azure Database for PostgreSQL 9.5 には移行できません。
 
 * [Azure Database for PostgreSQL](../postgresql/quickstart-create-server-database-portal.md) または [Azure Database for PostgreSQL - Hyperscale (Citus) サーバー](../postgresql/quickstart-create-hyperscale-portal.md)のインスタンスを作成します。 pgAdmin を使用して PostgreSQL サーバーに接続する方法の詳細については、ドキュメントのこの[セクション](../postgresql/quickstart-create-server-database-portal.md#connect-to-the-server-with-psql)を参照してください。
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure Virtual Network を作成します。これで、[ExpressRoute](../expressroute/expressroute-introduction.md) または [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。 仮想ネットワークの作成方法の詳細については、「[Virtual Network のドキュメント](../virtual-network/index.yml)」を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
-* 仮想ネットワークのネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への次のアウトバウンド通信ポートが確実にブロックされないようにします: 443、53、9354、445、12000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事を参照してください。
-* [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules)を構成します。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure Virtual Network を作成します。これで、[ExpressRoute](../expressroute/expressroute-introduction.md) または [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](../virtual-network/index.yml)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
+* 仮想ネットワークのネットワーク セキュリティ グループの規則によって、ServiceBus、Storage、AzureMonitor の ServiceTag の送信ポート 443 がブロックされていないことを確認します。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事を参照してください。
+* [データベース エンジン アクセスのために Windows ファイアウォール](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
 * Azure Database Migration Service がソース PostgreSQL サーバーにアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 5432 が使用されています。
 * ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
-* Azure Database for PostgreSQL サーバーのサーバーレベルの[ファイアウォール規則](https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules)を作成して、Azure Database Migration Service でターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
+* Azure Database for PostgreSQL サーバーのサーバーレベルの[ファイアウォール規則](../postgresql/concepts-firewall-rules.md)を作成して、Azure Database Migration Service でターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用する仮想ネットワークのサブネット範囲を指定します。
 
 ### <a name="set-up-aws-rds-postgresql-for-replication"></a>レプリケーションのために AWS RDS PostgreSQL を設定する
 
@@ -141,7 +141,7 @@ Azure Database Migration Service を使用して、RDS PostgreSQL インスタ�
     ターゲット データベース内のトリガーを無効にするには、次のように指定します。
 
     ```
-    SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
+    SELECT Concat('DROP TRIGGER ', Trigger_Name,' ON ', event_object_table, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
     ```
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する

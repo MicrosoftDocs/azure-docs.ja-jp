@@ -8,10 +8,10 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.openlocfilehash: 1fc21b6338accef8e22b2e41ad2017d24ab8bd38
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101710466"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services と機械学習

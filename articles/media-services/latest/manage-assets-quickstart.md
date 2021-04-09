@@ -6,21 +6,18 @@ ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 3831892b6cd241643b3e5753689f768d59e27704
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 9b66fa6cd688cf0680e742ffa9fbe4d61a444ab2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955972"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102632999"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>クイック スタート:ポータルでコンテンツをアップロード、エンコード、およびストリーム配信する
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 このクイックスタートでは、Azure portal で Azure Media Services を使用してコンテンツをアップロード、エンコード、およびストリーム配信する方法を示します。
-
-> [!NOTE]
-> [Media Services v3 に関する Azure portal の制限事項](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)を必ず確認してください。
   
 ## <a name="overview"></a>概要
 

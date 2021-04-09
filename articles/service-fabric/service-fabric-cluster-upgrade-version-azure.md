@@ -4,10 +4,10 @@ description: Service Fabric クラスターを実行している Service Fabric 
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: 01fe916f0ee78c8481ac6b17b8f7409b47c852ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90564289"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>クラスターの Service Fabric バージョンをアップグレードする

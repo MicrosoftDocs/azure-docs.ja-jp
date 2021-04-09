@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: b5a1035f8a213a6ce02dd3252ff7d3ddea46faf7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92786583"
 ---
 # <a name="in-memory-sample"></a>In-Memory のサンプル
@@ -70,7 +70,7 @@ T-SQL スクリプトを実行するときにエラー 40536 が発生する場�
 SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 ```
 
-結果が **0** の場合、インメモリがサポートされていないことを示します。 **1** の場合はサポートされています。 問題を診断するには、データベースを Premium サービス レベルにします。
+結果が **0** の場合、インメモリがサポートされていないことを示します。**1** の場合はサポートされています。 問題を診断するには、データベースを Premium サービス レベルにします。
 
 ### <a name="about-the-created-memory-optimized-items"></a>作成されるメモリ最適化項目の概要
 
@@ -92,7 +92,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
     WHERE is_memory_optimized = 1;
 ```
 
-**ネイティブ コンパイル ストアド プロシージャ** :SalesLT.usp_InsertSalesOrder_inmem は、カタログ ビューのクエリを使用して確認できます。
+**ネイティブ コンパイル ストアド プロシージャ**:SalesLT.usp_InsertSalesOrder_inmem は、カタログ ビューのクエリを使用して確認できます。
 
 ```sql
 SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
@@ -246,7 +246,7 @@ OLTP ワークロードのリアルタイム分析では、多くの場合、非
    - このスクリプトでは、Dimension テーブルと 2 つのファクト テーブルを作成します。 fact テーブルには、それぞれ 350 万行のデータが設定されています。
    - スクリプトが完了するには約 15 分かかります。
 
-3. T-SQL スクリプトを SSMS に貼り付け、スクリプトを実行します。 次のように、 **CREATE INDEX** ステートメントの **COLUMNSTORE** キーワードが重要です。<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
+3. T-SQL スクリプトを SSMS に貼り付け、スクリプトを実行します。 次のように、**CREATE INDEX** ステートメントの **COLUMNSTORE** キーワードが重要です。<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
 
 4. AdventureWorksLT を互換性レベル 130 に設定します。<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
 
@@ -254,9 +254,9 @@ OLTP ワークロードのリアルタイム分析では、多くの場合、非
 
 #### <a name="key-tables-and-columnstore-indexes"></a>重要なテーブルと列ストア インデックス
 
-- dbo.FactResellerSalesXL_CCI は、クラスター化列ストア インデックスがあるテーブルで、" *データ* " レベルで高度に圧縮されます。
+- dbo.FactResellerSalesXL_CCI は、クラスター化列ストア インデックスがあるテーブルで、"*データ*" レベルで高度に圧縮されます。
 
-- dbo.FactResellerSalesXL_PageCompressed は、同等の標準のクラスター化されたインデックスがあるテーブルで、 *ページ* レベルでのみ圧縮されます。
+- dbo.FactResellerSalesXL_PageCompressed は、同等の標準のクラスター化されたインデックスがあるテーブルで、*ページ* レベルでのみ圧縮されます。
 
 #### <a name="key-queries-to-compare-the-columnstore-index"></a>列ストア インデックスを比較する重要なクエリ
 

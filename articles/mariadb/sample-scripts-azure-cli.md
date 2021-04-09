@@ -3,16 +3,16 @@ title: Azure CLI サンプル - Azure Database for MariaDB
 description: この記事では、Azure Database for MariaDB を操作する Azure CLI サンプル コードを紹介しています。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 3/18/2020
-ms.openlocfilehash: 5218d087a622c1f651785afd1ab7cb418732b093
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: aa9efba1c49063d40b4df0444fb3bc63b124a0a0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98664601"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mariadb"></a>Azure Database for MariaDB 用の Azure CLI サンプル 

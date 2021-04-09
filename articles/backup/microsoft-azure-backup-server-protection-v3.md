@@ -4,10 +4,10 @@ description: この記事では、Azure Backup Server V3 RTM によって保護�
 ms.date: 11/13/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1ec8240844061b9b250a3cbf92ffcc5f2b3f474b
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98986889"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server V3 RTM の保護マトリックス

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 02/12/2021
-ms.openlocfilehash: d7ed3fb268920d6f4d015886c560b2d9fcbdc632
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.date: 03/09/2021
+ms.openlocfilehash: 7b082c226b38633d6c34ee2fe4d5227252b2bfcb
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104503"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102556385"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -210,13 +210,17 @@ Azure portal または Azure Resource Manager テンプレートについて、�
 
    * 別のクレームの種類を追加するには、 **[Add standard claim]\(標準クレームの追加\)** を選択し、クレームの種類を選択して、クレームの値を指定します。
 
-   * 独自のクレームを追加するには、 **[Add custom claim]\(カスタム クレームの追加\)** を選択し、カスタム クレームの値を指定します。
+   * 独自の要求を追加するには、 **[カスタム要求の追加]** を選択します。 詳細については、[アプリに省略可能な要求を提供する方法](../active-directory/develop/active-directory-optional-claims.md)に関するページを参照してください。 カスタム要求は、その後、JWT ID の一部として格納されます (例: `"tid": "72f988bf-86f1-41af-91ab-2d7cd011db47"`)。 
 
 1. 別の承認ポリシーを追加するには **[ポリシーの追加]** を選択します。 ポリシーを設定するには、前の手順を繰り返します。
 
 1. 終了したら、 **[保存]** を選択します。
 
 1. 要求ベースのトリガー出力にアクセス トークンの `Authorization` ヘッダーを含めるには、「[要求トリガーの出力に "Authorization" ヘッダーを含める](#include-auth-header)」を参照してください。
+
+
+ポリシーなどのワークフロー プロパティは、Azure portal のロジック アプリのコード ビューに表示されません。 プログラムによってポリシーにアクセスするには、Azure Resource Manager (ARM) を使用して次の API を呼び出します: `https://management.azure.com/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group-name}/providers/Microsoft.Logic/workflows/{your-workflow-name}?api-version=2016-10-01&_=1612212851820`。 必ず、Azure サブスクリプション ID、リソース グループ名、およびワークフロー名のプレースホルダー値を置き換えてください。
+
 
 <a name="define-authorization-policy-template"></a>
 
@@ -349,9 +353,9 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 ARM テンプレートで、ロジック アプリのリソース定義で許可されている受信 IP アドレス範囲を、`accessControl` セクションを使用して指定します。 このセクションでは、`triggers`、`actions`、およびオプションの `contents` セクションを適宜使用し、`allowedCallerIpAddresses` セクションに `addressRange` プロパティを含め、プロパティ値に許可される IP 範囲を *x.x.x.x/x* または *x.x.x.x-x.x.x.x* 形式で設定します。
 
-* 入れ子になったロジック アプリで、Azure Logic Apps アクションを使用する他のロジック アプリからのみ着信呼び出しを許可する **[Only other Logic Apps]\(他のロジック アプリのみ\)** オプションが使用されている場合は、`addressRange` プロパティを空の配列 ( **[]** ) に設定します。
+* 入れ子になったロジック アプリで、組み込みの Azure Logic Apps アクションを使用する他のロジック アプリからのみ着信呼び出しを許可する **[他のロジック アプリのみ]** オプションが使用されている場合は、`allowedCallerIpAddresses` プロパティを空の配列 ( **[]** ) に設定し、 *プロパティを* 省略`addressRange`します。
 
-* 入れ子になったロジック アプリで、HTTP アクションを使用する他のロジック アプリなどの他の着信呼び出しに対して **[特定の IP 範囲]** オプションが使用されている場合は、`addressRange` プロパティを許可されている IP 範囲に設定します。
+* 入れ子になったロジック アプリで、HTTP アクションを使用する他のロジック アプリなどの他の着信呼び出しに対して **[特定の IP 範囲]** オプションが使用されている場合は、`allowedCallerIpAddresses` セクションを含めて、`addressRange` プロパティを許可されている IP 範囲に設定します。
 
 この例は、組み込みの Azure Logic Apps アクションを使用するロジック アプリからの着信呼び出しのみを許可する、入れ子になったロジック アプリのリソース定義を示しています。
 
@@ -378,18 +382,14 @@ ARM テンプレートで、ロジック アプリのリソース定義で許可
             },
             "accessControl": {
                "triggers": {
-                  "allowedCallerIpAddresses": [
-                     {
-                        "addressRange": []
-                     }
-                  ]
+                  "allowedCallerIpAddresses": []
                },
                "actions": {
-                  "allowedCallerIpAddresses": [
-                     {
-                        "addressRange": []
-                     }
-                  ]
+                  "allowedCallerIpAddresses": []
+               },
+               // Optional
+               "contents": {
+                  "allowedCallerIpAddresses": []
                }
             },
             "endpointsConfiguration": {}
@@ -933,7 +933,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 | [クライアント証明書](#client-certificate-authentication) | Azure API Management、Azure App Service、HTTP、HTTP + Swagger、HTTP Webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
 | [Raw](#raw-authentication) | Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
-| [管理対象 ID](#managed-identity-authentication) | **組み込みのトリガーとアクション** <p><p>Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP Webhook <p><p>**マネージド コネクタ** <p><p>Azure AD Identity Protection、Azure Automation、Azure コンテナー インスタンス、Azure Data Explorer、Azure Data Factory、Azure Data Lake、Azure Event Grid、Azure IoT Central V3、Azure Key Vault、 Azure Log Analytics、Azure Monitor ログ、Azure Resource Manager、Azure Sentinel、Azure AD を使用した HTTP <p><p>**注**:マネージド コネクタのサポートは、現在プレビュー段階です。 |
+| [管理対象 ID](#managed-identity-authentication) | **組み込みのトリガーとアクション** <p><p>Azure API Management、Azure App Service、Azure Functions、HTTP、HTTP Webhook <p><p>**マネージド コネクタ** <p><p>Azure AD Identity Protection、Azure Automation、Azure コンテナー インスタンス、Azure Data Explorer、Azure Data Factory、Azure Data Lake、Azure Event Grid、Azure IoT Central V3、Azure Key Vault、Azure Resource Manager、Azure Sentinel、Azure AD を使用した HTTP <p><p>**注**:マネージド コネクタのサポートは、現在プレビュー段階です。 |
 |||
 
 <a name="basic-authentication"></a>

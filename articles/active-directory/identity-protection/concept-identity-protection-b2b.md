@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c9ec9e110c3a476c9096ae3e216c9780da0e0f49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88949198"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Identity Protection と B2B ユーザー
@@ -35,7 +35,7 @@ B2B コラボレーション ユーザーのユーザー リスクは、ホー�
 
 - ゲスト ユーザーが Identity Protection のユーザー リスク ポリシーをトリガーしてパスワードのリセットを強制した場合、**そのユーザーはブロックされます**。 このブロックは、リソース ディレクトリ内ではパスワードをリセットできないことが原因です。
 - **ゲスト ユーザーは、危険なユーザー レポートには表示されません**。 この可視性の低下は、リスク評価が B2B ユーザーのホーム ディレクトリで実行されることに起因します。
-- 管理者は、リソース ディレクトリ内の**危険な B2B コラボレーション ユーザーを無視したり、修復したりすることはできません**。 この機能低下は、リソース ディレクトリ内の管理者が B2B ユーザーのホーム ディレクトリにアクセスできないことに起因します。
+- 管理者は、リソース ディレクトリ内の **危険な B2B コラボレーション ユーザーを無視したり、修復したりすることはできません**。 この機能低下は、リソース ディレクトリ内の管理者が B2B ユーザーのホーム ディレクトリにアクセスできないことに起因します。
 
 ### <a name="why-cant-i-remediate-risky-b2b-collaboration-users-in-my-directory"></a>ディレクトリ内の危険な B2B コラボレーション ユーザーを修復できないのはなぜですか?
 

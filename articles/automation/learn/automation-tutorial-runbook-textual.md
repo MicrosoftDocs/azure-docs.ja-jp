@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
 ms.openlocfilehash: e822e17f154b72854c5150e071301d7bbd53072e
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98890817"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook"></a>チュートリアル:PowerShell Workflow Runbook を作成する
@@ -79,7 +79,7 @@ Runbook を発行して運用環境で使用できるようにする前に、テ
 
 2. **[開始]** をクリックしてテストを開始し、有効になっているオプションのみをテストします。
 
-3. [Runbook ジョブ](../automation-runbook-execution.md)が作成され、その状態がウィンドウに表示されます。
+3. [Runbook ジョブ](../automation-runbook-execution.md)が作成され、その状態がペインに表示されることに注意してください。
 
    ジョブの最初の状態は "キュー済み" であり、クラウドで runbook worker が使用可能になるのをジョブが待機していることを示します。 worker がジョブを要求すると、状態は "開始中" になります。 最後に、Runbook が実際に実行を開始すると [実行中] になります。
 

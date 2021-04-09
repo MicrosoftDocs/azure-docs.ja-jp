@@ -7,10 +7,10 @@ ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e01ddf0690f11d41021e0a5ae5958c7c80646743
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99594419"
 ---
 # <a name="textures"></a>テクスチャ

@@ -9,10 +9,10 @@ ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.openlocfilehash: 0a53e8de8dd832e793ae12034c96ce9fe634ed7a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101694106"
 ---
 # <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-windows"></a>プレビュー:Windows で Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成する

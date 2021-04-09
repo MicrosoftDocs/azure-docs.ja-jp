@@ -3,7 +3,7 @@ title: Azure Portal を使用したコンテンツ キー承認ポリシーの�
 description: この記事では、コンテンツ キー承認ポリシーを構成する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ee82a3fa-c34b-48f2-a108-8ba321f1691e
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 0218c24637b9b49972e93b8dd53e5970c9ab89d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 68bd4bd2472e80a663294745368fb505767a230a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89260902"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103008316"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>コンテンツ キー承認ポリシーを構成する
 

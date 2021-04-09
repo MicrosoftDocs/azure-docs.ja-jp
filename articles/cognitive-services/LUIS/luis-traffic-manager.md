@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/20/2019
-ms.openlocfilehash: 6fc5bea71909d0e17b4ef0256ab0cad644dacbb3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 37c4bd2af080a76e93bc9599f06e4d502985979f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95993824"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102609653"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager を使用した複数のキーにわたるエンドポイント クォータの管理
 Language Understanding (LUIS) では、1 つのキーのクォータを超えて、エンドポイント要求クォータを増やすことができます。 そのためには、LUIS の複数のキーを作成し、 **公開** ページの **リソースとキー** セクションで LUIS アプリケーションに追加します。
@@ -102,7 +102,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
     |-Type|ExternalEndpoints|詳細については、「[Traffic Manager エンドポイント][traffic-manager-endpoints]」をご覧ください |
     |-Target|eastus.api.cognitive.microsoft.com|LUIS エンドポイントのドメイン|
     |-EndpointLocation|"eastus"|エンドポイントのリージョン|
-    |-EndpointStatus|有効|作成時にエンドポイントを有効にします。|
+    |-EndpointStatus|Enabled|作成時にエンドポイントを有効にします。|
 
     正常な応答は次のようになります。
 
@@ -171,7 +171,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
     |-Type|ExternalEndpoints|詳細については、「[Traffic Manager エンドポイント][traffic-manager-endpoints]」をご覧ください |
     |-Target|westus.api.cognitive.microsoft.com|LUIS エンドポイントのドメイン|
     |-EndpointLocation|"westus"|エンドポイントのリージョン|
-    |-EndpointStatus|有効|作成時にエンドポイントを有効にします。|
+    |-EndpointStatus|Enabled|作成時にエンドポイントを有効にします。|
 
     正常な応答は次のようになります。
 
@@ -237,7 +237,7 @@ Traffic Manager 親プロファイルを作成し、2 つの Traffic Manager 子
     |-TrafficManagerProfile|$parentprofile|このエンドポイントの割り当て先のプロファイル|
     |-Type|NestedEndpoints|詳しくは、「[Add-AzTrafficManagerEndpointConfig](/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig)」をご覧ください。 |
     |-TargetResourceId|$eastprofile.Id|子プロファイルの ID|
-    |-EndpointStatus|有効|親に追加した後のエンドポイントの状態|
+    |-EndpointStatus|Enabled|親に追加した後のエンドポイントの状態|
     |-EndpointLocation|"eastus"|リソースの [Azure リージョン名](https://azure.microsoft.com/global-infrastructure/regions/)|
     |-MinChildEndpoints|1|子エンドポイントの最小数|
 
@@ -274,7 +274,7 @@ Traffic Manager 親プロファイルを作成し、2 つの Traffic Manager 子
     |-TrafficManagerProfile|$parentprofile|このエンドポイントの割り当て先のプロファイル|
     |-Type|NestedEndpoints|詳しくは、「[Add-AzTrafficManagerEndpointConfig](/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig)」をご覧ください。 |
     |-TargetResourceId|$westprofile.Id|子プロファイルの ID|
-    |-EndpointStatus|有効|親に追加した後のエンドポイントの状態|
+    |-EndpointStatus|Enabled|親に追加した後のエンドポイントの状態|
     |-EndpointLocation|"westus"|リソースの [Azure リージョン名](https://azure.microsoft.com/global-infrastructure/regions/)|
     |-MinChildEndpoints|1|子エンドポイントの最小数|
 
@@ -371,7 +371,7 @@ Traffic Manager の[診断ログ](../../traffic-manager/traffic-manager-diagnost
 
 ## <a name="next-steps"></a>次のステップ
 
-このトラフィック管理コードを BotFramework ボットに追加する方法を理解するために、BotFramework v4 の[ミドルウェア](/azure/bot-service/bot-builder-create-middleware?tabs=csaddmiddleware%252ccsetagoverwrite%252ccsmiddlewareshortcircuit%252ccsfallback%252ccsactivityhandler&view=azure-bot-service-4.0) オプションを確認します。
+このトラフィック管理コードを BotFramework ボットに追加する方法を理解するために、BotFramework v4 の[ミドルウェア](/azure/bot-service/bot-builder-create-middleware?tabs=csaddmiddleware%252ccsetagoverwrite%252ccsmiddlewareshortcircuit%252ccsfallback%252ccsactivityhandler) オプションを確認します。
 
 [traffic-manager-marketing]: https://azure.microsoft.com/services/traffic-manager/
 [traffic-manager-docs]: ../../traffic-manager/index.yml

@@ -3,15 +3,16 @@ title: ダンプと復元を使用した移行 - Azure Database for MariaDB
 description: この記事では、mysqldump、MySQL Workbench、PHPMyAdmin などのツールを使用して、Azure Database for MariaDB でデータベースをバックアップして復元する一般的な 2 つの方法について説明します。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
+ms.subservice: migration-guide
 ms.topic: how-to
 ms.date: 2/27/2020
-ms.openlocfilehash: 8f7cb0710c11e0db9628ad19e2ede7ff05a19f88
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 8678304e72f11c486911ff4de00633224e878147
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664972"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103564475"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>ダンプと復元を使用した Azure Database for MariaDB への MariaDB データベースの移行
 この記事では、Azure Database for MariaDB でデータベースをバックアップして復元する一般的な 2 つの方法について説明します
@@ -81,7 +82,7 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 ```
 
 ## <a name="create-a-database-on-the-target-server"></a>対象サーバーでのデータベースの作成
-データを移行する Azure Database for MariaDB ターゲット サーバーに空のデータベースを作成します。 データベースは、MySQL Workbench などのツールを使用して作成します。 データベースの名前は、ダンプされたデータが含まれるデータベースと同じにすることも、別の名前でデータベースを作成することもできます。
+データを移行する Azure Database for MariaDB ターゲット サーバーに空のデータベースを作成します。 MySQL Workbench などのツールを使用して、データベースを作成します。 データベースの名前は、ダンプされたデータが含まれるデータベースと同じにすることも、別の名前でデータベースを作成することもできます。
 
 接続するために、Azure Database for MariaDB の **[概要]** で接続情報を見つけます。
 
@@ -113,7 +114,7 @@ $ mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p te
 ## <a name="import-using-phpmyadmin"></a>PHPMyAdmin を使用したインポート
 データベースのインポート操作は、エクスポートと似ています。 次の操作を実行してください。
 1. phpMyAdmin を開きます。 
-2. phpMyAdmin セットアップ ページで、 **[追加]** をクリックして Azure Database for MariaDB サーバーを追加します。 接続の詳細とログイン情報を入力します。
+2. phpMyAdmin セットアップ ページで、**[追加]** をクリックして Azure Database for MariaDB サーバーを追加します。 接続の詳細とログイン情報を入力します。
 3. データベースを作成して適切な名前を付けたら、画面の左側でそのデータベースを選択します。 既存のデータベースを再作成するには、データベース名をクリックし、テーブル名の横のすべてのチェック ボックスをオンにします。 **[ドロップ]** を選択して既存のテーブルを削除します。 
 4. **[SQL]** リンクをクリックします。表示されたページで、SQL コマンドを入力したり、SQL ファイルをアップロードしたりできます。 
 5. **参照** ボタンを使用して、データベース ファイルを検索します。 

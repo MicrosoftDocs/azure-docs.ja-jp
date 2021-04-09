@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.openlocfilehash: 4c10a91971357001723adcb783253c9867cf6d87
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98019059"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Azure でリアルタイム分析とストリーミング処理技術を選択する
@@ -49,7 +49,7 @@ Azure Stream Analytics では、クラウド ジョブの場合は JavaScript �
 
 Azure Stream Analytics は Microsoft の独占技術であり、Azure でのみ利用できます。 クラウドまたはオンプレミスをまたいでソリューションを移植する必要がある場合、Spark Structured Streaming や Storm など、オープンソース技術を検討してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
 * [Azure PowerShell を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-powershell.md)

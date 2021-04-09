@@ -8,10 +8,10 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナ
 manager: gwallace
 ms.custom: devx-track-js, devx-track-azurecli
 ms.openlocfilehash: 37ad621609f5a5631b498e55483e5d16e8ac4472
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102202112"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub のアクションと Azure Kubernetes Service (プレビュー)

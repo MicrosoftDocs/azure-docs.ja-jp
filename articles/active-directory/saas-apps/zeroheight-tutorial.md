@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: 678f35ffd6d37d8d2dd16665902ebf85d91b633b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521562"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zeroheight"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と zeroheight の統合
@@ -37,7 +37,7 @@ ms.locfileid: "92521562"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* zeroheight では、 **SP** Initiated SSO がサポートされます
+* zeroheight では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-zeroheight-from-the-gallery"></a>ギャラリーからの zeroheight の追加
 
@@ -47,7 +47,7 @@ Azure AD への zeroheight の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **zeroheight** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**zeroheight**」と入力します。
 1. 結果のパネルから **[zeroheight]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -125,7 +125,7 @@ zeroheight で Azure AD の SSO を構成してテストするには、次の構
 
 ## <a name="configure-zeroheight-sso"></a>zeroheight の SSO の構成
 
-**zeroheight** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [zeroheight サポート チーム](mailto:support@zeroheight.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**zeroheight** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [zeroheight サポート チーム](mailto:support@zeroheight.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-zeroheight-test-user"></a>zeroheight のテスト ユーザーの作成
 

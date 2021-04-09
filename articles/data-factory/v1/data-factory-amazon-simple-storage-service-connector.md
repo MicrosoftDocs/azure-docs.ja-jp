@@ -8,10 +8,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 6d254a535b1db53478772b481bd029a8c4db6f3c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100361348"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon Simple Storage Service からのデータの移動
@@ -37,7 +37,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 ## <a name="getting-started"></a>作業の開始
 さまざまなツールや API を使用して、Amazon S3 ソースからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**コピー ウィザード** を使うことです。 簡単なチュートリアルについては、「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード** を使うことです。 [コピー ウィザードを使用してパイプラインを作成するチュートリアル](data-factory-copy-data-wizard-tutorial.md)に関する記事で、簡単なチュートリアルをご覧いただけます。
 
 また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
@@ -47,7 +47,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 2. コピー操作用の入力データと出力データを表す **データセット** を作成します。
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む **パイプライン** を作成します。
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 Amazon S3 データ ストアからデータをコピーするために使用される Data Factory エンティティ用の JSON 定義のサンプルについては、この記事の「[JSON の使用例:Amazon S3 から Azure BLOB にデータをコピーする](#json-example-copy-data-from-amazon-s3-to-azure-blob-storage)」セクションを参照してください。
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 Amazon S3 データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例: Amazon S3 から Azure BLOB へのデータのコピー](#json-example-copy-data-from-amazon-s3-to-azure-blob-storage)」を参照してください。
 
 > [!NOTE]
 > コピー アクティビティでサポートされているファイルと使用する圧縮形式に関する詳細は、「[Azure Data Factory のファイルおよび圧縮形式](data-factory-supported-file-and-compression-formats.md)」を参照してください。
@@ -93,7 +93,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 | prefix |S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 キーが空の場合にのみ適用されます。 |String |いいえ |
 | version |S3 のバージョン管理が有効になっている場合の S3 オブジェクトのバージョン。 |String |いいえ |
 | format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text 形式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 形式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 形式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 形式](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet 形式](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 | |いいえ |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされている型は次のとおりです。**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 | |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 | |いいえ |
 
 
 > [!NOTE]
@@ -171,7 +171,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 | --- | --- | --- | --- |
 | recursive |ディレクトリで S3 オブジェクトを再帰的に一覧表示するかどうかを指定します。 |true/false |いいえ |
 
-## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>JSON の使用例:Amazon S3 から Azure Blob Storage にデータをコピーする
+## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>JSON の使用例: Amazon S3 から Azure Blob Storage へのデータのコピー
 このサンプルは、Amazon S3 から Azure Blob Storage にデータをコピーする方法を示します。 Data Factory のコピー アクティビティを使用して、[サポートされている任意のシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)データを直接コピーすることもできます。
 
 この例は、次の Data Factory エンティティの JSON 定義を示しています。 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) のいずれかで、この定義を使用して、Amazon S3 から Blob ストレージにデータをコピーするためのパイプラインを作成できます。   

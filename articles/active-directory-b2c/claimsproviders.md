@@ -7,21 +7,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/29/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1d1928de8c9731b54966e566d4dddf9c01073d41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 846394266b981c14788148be465912b14bc1fb3e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201261"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102447913"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-1 つのクレーム プロバイダーには、[技術プロファイル](technicalprofiles.md)のセットが含まれます。 どのクレーム プロバイダーも、そのクレーム プロバイダーと通信するために必要なエンドポイントとプロトコルを特定する技術プロファイルを 1 つ以上持っている必要があります。 1 つのクレーム プロバイダーが複数の技術プロファイルを持つことができます。 たとえば、クレーム プロバイダーが複数のプロトコルや異なる機能を持つ多様なエンドポイントをサポートしていること、異なる保証レベルでさまざまな要求をリリースしていることが理由で、技術プロファイルが複数定義される場合があります。 あるユーザー体験では変動しやすい要求をリリースすることが許されても、別のユーザー体験ではそうでないこともあります。
+クレーム プロバイダーは、その[技術プロファイル](technicalprofiles.md)を介してさまざまな種類の利用者と通信するためのインターフェイスです。 どのクレーム プロバイダーも、そのクレーム プロバイダーと通信するために必要なエンドポイントとプロトコルを特定する技術プロファイルを 1 つ以上持っている必要があります。 1 つのクレーム プロバイダーが複数の技術プロファイルを持つことができます。 たとえば、クレーム プロバイダーが複数のプロトコルや異なる機能を持つ多様なエンドポイントをサポートしていること、異なる保証レベルでさまざまな要求をリリースしていることが理由で、技術プロファイルが複数定義される場合があります。 あるユーザー体験では変動しやすい要求をリリースすることが許されても、別のユーザー体験ではそうでないこともあります。
+
+ユーザー体験により、オーケストレーション ステップを通じて呼び出し元の技術プロファイルが組み合わされて、ビジネス ロジックが定義されます。 
 
 ```xml
 <ClaimsProviders>

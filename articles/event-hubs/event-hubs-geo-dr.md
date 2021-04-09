@@ -3,12 +3,12 @@ title: geo ディザスター リカバリー - Azure Event Hubs| Microsoft Docs
 description: Azure Event Hubs で地理的リージョンを使用してフェールオーバーとディザスター リカバリーを実行する方法
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: 2fd13ac98e80aa67a2a3150e8406a0b0b1b08d13
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f3b74b89f47582fbb3f1640f315f413ab86b26b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390676"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602640"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs - geo ディザスター リカバリー 
 
@@ -44,11 +44,7 @@ geo ディザスター リカバリー機能は、[Standard SKU と専用 SKU](h
 -  *エイリアス*: 設定したディザスター リカバリー構成の名前です。 エイリアスは、1 つの不変の完全修飾ドメイン名 (FQDN) の接続文字列を示します。 アプリケーションでは、このエイリアスの接続文字列を使用して名前空間に接続します。 
 
 -  *プライマリ/セカンダリ名前空間*: エイリアスに対応する名前空間です。 プライマリ名前空間が "アクティブ" となり、メッセージを受け取ります (既存の名前空間の場合もあれば、新しい名前空間の場合もあります)。 セカンダリ名前空間は "パッシブ" で、メッセージを受け取りません。 両者間のメタデータは同期しているため、どちらでもアプリケーション コードや接続文字列を変更せずにメッセージをシームレスに受信できます。 確実にアクティブな名前空間にだけメッセージを送信するためには、エイリアスを使用する必要があります。
-
-    > [!IMPORTANT]
-    > geo ディザスター リカバリー機能では、プライマリ名前空間とセカンダリ名前空間のサブスクリプションとリソース グループを同じにする必要があります。 
 -  *Metadata*:名前空間に関連付けられているサービスのエンティティ (イベント ハブ、コンシューマー グループなど) とそのプロパティです。 自動的にレプリケートされるのはエンティティとその設定だけです。 メッセージやイベントはレプリケートされません。 
-
 -  *フェールオーバー*:セカンダリの名前空間をアクティブ化するプロセスです。
 
 ## <a name="supported-namespace-pairs"></a>サポートされている名前空間のペア
@@ -75,13 +71,13 @@ geo ディザスター リカバリー機能は、[Standard SKU と専用 SKU](h
 まず (新規作成または既存の) プライマリ名前空間と新しいセカンダリ名前空間をペアリングします。 このペアリングによって、接続に使用できる別名が決定されます。 別名を使用するので、接続文字列を変更する必要はありません。 フェールオーバーのペアリングに追加できるのは、新しい名前空間だけです。 
 
 1. プライマリ名前空間を作成します。
-1. サブスクリプションにセカンダリ名前空間と、プライマリ名前空間を持つリソース グループを作成しますが、別のリージョンにします。 この手順は省略可能です。 セカンダリ名前空間は、次の手順でペアリングを作成しているときに作成できます。 
+1. 別のリージョンにセカンダリ名前空間を作成します。 この手順は省略可能です。 セカンダリ名前空間は、次の手順でペアリングを作成しているときに作成できます。 
 1. Azure portal で、プライマリ名前空間に移動します。
 1. 左側のメニューの **[geo リカバリー]** を選択し、ツールバーの **[ペアリングの開始]** を選択します。 
 
     :::image type="content" source="./media/event-hubs-geo-dr/primary-namspace-initiate-pairing-button.png" alt-text="プライマリ名前空間からのペアリングの開始":::    
 1. **[ペアリングの開始]** ページで、次の手順に従います。
-    1. サブスクリプションに既存のセカンダリ名前空間を選択するか、新規作成し、プライマリ名前空間を持つリソース グループを選択します。 この例では、既存の名前空間が選択されています。  
+    1. 既存のセカンダリ名前空間を選択するか、別のリージョンで新規作成します。 この例では、既存の名前空間が選択されています。  
     1. **[エイリアス]** には、Geo DR のペアリングのエイリアスを入力します。 
     1. そのうえで **[Create]\(作成\)** を選択します。 
 
@@ -208,7 +204,7 @@ Event Hubs の詳細については、次のリンクを参照してください
     - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
     - [Java](event-hubs-java-get-started-send.md)
     - [Python](event-hubs-python-get-started-send.md)
-    - [JavaScript](event-hubs-java-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
 * [Event Hubs を使用するサンプル アプリケーション](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

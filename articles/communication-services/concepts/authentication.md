@@ -9,12 +9,12 @@ ms.author: jken
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 1267fc53bd6dcbae504b01610267059545353dc5
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b702afe9c4359d9f8711846d93fd79df9fc2f42e
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101655906"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485963"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Azure Communication Services に対する認証
 

@@ -4,10 +4,10 @@ description: Azure Event Grid のリソース グループ イベントに対し
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.openlocfilehash: 4c1990909dc555e9e2a6d09538b807ba7e07ce83
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100363221"
 ---
 # <a name="azure-resource-group-as-an-event-grid-source"></a>Event Grid ソースとしての Azure リソース グループ
@@ -417,7 +417,7 @@ Azure サブスクリプションとリソース グループは、同じ種類�
 # <a name="event-grid-event-schema"></a>[Event Grid イベント スキーマ](#tab/event-grid-event-schema)
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -432,7 +432,7 @@ Azure サブスクリプションとリソース グループは、同じ種類�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `source` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -446,7 +446,7 @@ Azure サブスクリプションとリソース グループは、同じ種類�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `authorization` | object | 操作の要求された承認。 |
 | `claims` | object | 要求のプロパティ。 詳細については、[JWT 認証](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)に関する記事を参照してください。 |

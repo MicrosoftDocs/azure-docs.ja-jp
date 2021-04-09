@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c20cfb96b5cd6e1d05e332fa7157fe6e0cde8656
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98612770"
 ---
 # <a name="install-the-azure-ad-connect-provisioning-agent-using-powershell-cmdlets"></a>PowerShell コマンドレットを使用した Azure AD Connect プロビジョニング エージェントのインストール 

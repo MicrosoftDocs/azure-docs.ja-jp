@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 19935037e98bbc7ce9c4152b034b664d802a8f3a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c373bb172be01594bb5642a626cad24838b66ea2
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588274"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102607987"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL の Azure セキュリティ ベースライン - Hyperscale (Citus)
 
@@ -544,9 +544,9 @@ Azure portal を使用してプロビジョニングされたすべての Azure 
 
 **ガイダンス**: Hyperscale (Citus) インスタンスと関連リソースにカスタム Azure Policy 定義を使用する場合は、Azure Repos を使ってコードを安全に格納および管理します。
 
-- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow)
 
-- [Azure Repos のドキュメント](/azure/devops/repos/index?view=azure-devops&preserve-view=true)
+- [Azure Repos のドキュメント](/azure/devops/repos/index)
 
 **Azure Security Center の監視**: 適用なし
 

@@ -16,10 +16,10 @@ ms.topic: how-to
 ms.date: 02/15/2018
 ms.author: allensu
 ms.openlocfilehash: d8eb450d2010bf2a525a26f1c5ff48f59732ce43
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93240972"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Azure CDN で Web コンテンツ有効期限を管理する
@@ -42,9 +42,9 @@ ms.locfileid: "93240972"
 Web サーバーの `Cache-Control` ヘッダーを設定するための推奨される方法は、Azure Portal でのキャッシュ規則の使用です。 CDN キャッシュ規則の詳細については、[キャッシュ規則による Azure CDN キャッシュ動作の制御](cdn-caching-rules.md)に関するページを参照してください。
 
 > [!NOTE] 
-> キャッシュ規則は、 **Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルでのみ使用できます。 **Azure CDN Premium from Verizon** プロファイルの場合は、同様の機能に対して **管理** ポータルで [Azure CDN ルール エンジン](./cdn-verizon-premium-rules-engine.md)を使用する必要があります。
+> キャッシュ規則は、**Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルでのみ使用できます。 **Azure CDN Premium from Verizon** プロファイルの場合は、同様の機能に対して **管理** ポータルで [Azure CDN ルール エンジン](./cdn-verizon-premium-rules-engine.md)を使用する必要があります。
 
-**[CDN キャッシュ規則] ページに移動するには** :
+**[CDN キャッシュ規則] ページに移動するには**:
 
 1. Azure Portal で、CDN プロファイルを選択してから、Web サーバーのエンドポイントを選択します。
 
@@ -107,10 +107,10 @@ Web サーバーの `Cache-Control` ヘッダーを設定するための推奨�
 </configuration>
 ```
 
-**cacheControlMaxAge** 属性を使用するには、 **cacheControlMode** 属性の値を `UseMaxAge` に設定する必要があります。 この設定により、HTTP ヘッダーとディレクティブ、`Cache-Control: max-age=<nnn>` が応答に追加されます。 **cacheControlMaxAge** 属性の期間の値の形式は `<days>.<hours>:<min>:<sec>` です。 その値は秒に変換され、`Cache-Control``max-age` ディレクティブの値として使用されます。 `<clientCache>` 要素の詳細については、[クライアント キャッシュ\<clientCache>](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)に関するページをご覧ください。  
+**cacheControlMaxAge** 属性を使用するには、**cacheControlMode** 属性の値を `UseMaxAge` に設定する必要があります。 この設定により、HTTP ヘッダーとディレクティブ、`Cache-Control: max-age=<nnn>` が応答に追加されます。 **cacheControlMaxAge** 属性の期間の値の形式は `<days>.<hours>:<min>:<sec>` です。 その値は秒に変換され、`Cache-Control``max-age` ディレクティブの値として使用されます。 `<clientCache>` 要素の詳細については、[クライアント キャッシュ\<clientCache>](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)に関するページをご覧ください。  
 
 ## <a name="setting-cache-control-headers-programmatically"></a>プログラムによる Cache-Control ヘッダーの設定
-ASP.NET アプリケーションでは、.NET API の **HttpResponse.Cache** プロパティを設定することによって、CDN のキャッシュ動作をプログラムで制御します。 **HttpResponse.Cache** プロパティの詳細については、 [HttpResponse.Cache プロパティ](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache)に関するページと [HttpCachePolicy クラス](/dotnet/api/system.web.httpcachepolicy)に関するページをご覧ください。  
+ASP.NET アプリケーションでは、.NET API の **HttpResponse.Cache** プロパティを設定することによって、CDN のキャッシュ動作をプログラムで制御します。 **HttpResponse.Cache** プロパティの詳細については、[HttpResponse.Cache プロパティ](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache)に関するページと [HttpCachePolicy クラス](/dotnet/api/system.web.httpcachepolicy)に関するページをご覧ください。  
 
 アプリケーションのコンテンツを ASP.NET でプログラムでキャッシュするには、次の手順に従います。
    1. `HttpCacheability` を `Public` に設定することで、コンテンツをキャッシュ可能とマークします。 
@@ -129,7 +129,7 @@ Response.Cache.SetLastModified(DateTime.Now);
 ```
 
 ## <a name="testing-the-cache-control-header"></a>Cache-Control ヘッダーのテスト
-Web コンテンツの TTL 設定を簡単に確認できます。 ブラウザーの[開発者ツール](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)を使って、Web コンテンツに `Cache-Control` 応答ヘッダーが含まれているかどうかをテストします。 **wget** 、 [Postman](https://www.getpostman.com/)、 [Fiddler](https://www.telerik.com/fiddler) などのツールを使って応答ヘッダーを確認することもできます。
+Web コンテンツの TTL 設定を簡単に確認できます。 ブラウザーの[開発者ツール](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)を使って、Web コンテンツに `Cache-Control` 応答ヘッダーが含まれているかどうかをテストします。 **wget**、[Postman](https://www.getpostman.com/)、[Fiddler](https://www.telerik.com/fiddler) などのツールを使って応答ヘッダーを確認することもできます。
 
 ## <a name="next-steps"></a>次の手順
 * [**clientCache** 要素の詳細を確認する](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)

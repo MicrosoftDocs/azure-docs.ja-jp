@@ -10,10 +10,10 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 948b0f411e64fadc1e4e48c08f427e5ce4b2229d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75476845"
 ---
 # <a name="scalability-targets-for-premium-block-blob-storage-accounts"></a>Premium ブロック BLOB ストレージ アカウントのスケーラビリティ ターゲット

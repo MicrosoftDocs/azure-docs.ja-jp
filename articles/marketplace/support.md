@@ -8,10 +8,10 @@ author: navits09
 ms.author: navits
 ms.date: 01/19/2020
 ms.openlocfilehash: a1726b29c153bf680d29fe821ac34aa958064335
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98879243"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>パートナー センターでのコマーシャル マーケットプレース プログラムのサポート

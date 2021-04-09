@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Terraform Enterprise の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Terraform Enterprise の統合 | Microsoft Docs'
 description: Azure Active Directory と Terraform Enterprise の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -13,13 +13,13 @@ ms.date: 01/10/2020
 ms.author: jeedes
 ms.custom: devx-track-terraform
 ms.openlocfilehash: 8b6678644008c7c5ba82f643aeafc61c67604713
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518172"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-terraform-enterprise"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Terraform Enterprise の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-terraform-enterprise"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Terraform Enterprise の統合
 
 このチュートリアルでは、Terraform Enterprise と Azure Active Directory (Azure AD) を統合する方法について説明します。 Terraform Enterprise と Azure AD を統合すると、次のことができます。
 
@@ -40,8 +40,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Terraform Enterprise では、 **SP** Initiated SSO がサポートされます
-* Terraform Enterprise では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* Terraform Enterprise では、**SP** Initiated SSO がサポートされます
+* Terraform Enterprise では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-terraform-enterprise-from-the-gallery"></a>ギャラリーからの Terraform Enterprise の追加
 
@@ -51,7 +51,7 @@ Azure AD への Terraform Enterprise の統合を構成するには、ギャラ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Terraform Enterprise** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Terraform Enterprise**」と入力します。
 1. 結果のパネルから **[Terraform Enterprise]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -72,7 +72,7 @@ Terraform Enterprise に対する Azure AD SSO を構成してテストするに
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Terraform Enterprise** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Terraform Enterprise** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -112,7 +112,7 @@ Terraform Enterprise に対する Azure AD SSO を構成してテストするに
 このセクションでは、B.Simon に Terraform Enterprise へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-1. アプリケーションの一覧で、 **[Terraform Enterprise]** を選択します。
+1. アプリケーションの一覧で、**[Terraform Enterprise]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)

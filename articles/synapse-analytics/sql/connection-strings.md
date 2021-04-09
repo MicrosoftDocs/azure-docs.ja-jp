@@ -11,10 +11,10 @@ ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5ce411f3a2f3be162f9af16422d20b3e8b536fee
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98120922"
 ---
 # <a name="connection-strings-for-synapse-sql"></a>Synapse SQL の接続文字列

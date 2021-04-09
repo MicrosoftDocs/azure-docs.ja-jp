@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: ff2ef8970afa21c0218da20a5b79ea2fb782dd5c
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: f6d2696a68643f87de0fcaf2e723da9365d9953e
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99053586"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953852"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>Start/Stop VMs during off-hours の問題のトラブルシューティング
 
@@ -149,7 +149,7 @@ Start/Stop VMs during off-hours を構成したが、構成されている一部
   ```
 
 * VM を起動および停止するには、Automation アカウントの実行アカウントが、VM に対する適切なアクセス許可を持っている必要があります。 リソースに対するアクセス許可を確認する方法については、「[クイック スタート:Azure portal を使用してユーザーに割り当てられているロールを表示する](../../role-based-access-control/check-access.md)」を参照してください。 実行アカウントで使用されるサービス プリンシパルのアプリケーション ID を指定する必要があります。 この値は、Azure portal の Automation アカウントに移動して取得できます。 **[アカウント設定]** で **[実行アカウント]** を選択し、適切な実行アカウントを選択します。
-* 起動または割り当て解除に関する問題が VM で発生している場合は、VM 自体に問題がある可能性があります。 たとえば、VM のシャットダウン試行時の更新プログラムの適用や、サービスのハングなどです。 VM リソースに移動し、**アクティビティ ログ** にエラーが記録されているかどうかを確認してください。 また、VM にログインしてイベント ログにエラーが記録されているかどうかを確認することもできます。 ご自分の VM のトラブルシューティングの詳細については、「[Azure Virtual Machines のトラブルシューティング](../../virtual-machines/troubleshooting/index.yml)」を参照してください。
+* 起動または割り当て解除に関する問題が VM で発生している場合は、VM 自体に問題がある可能性があります。 たとえば、VM のシャットダウン試行時の更新プログラムの適用や、サービスのハングなどです。 VM リソースに移動し、**アクティビティ ログ** にエラーが記録されているかどうかを確認してください。 また、VM にログインしてイベント ログにエラーが記録されているかどうかを確認することもできます。 ご自分の VM のトラブルシューティングの詳細については、「[Azure Virtual Machines のトラブルシューティング](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)」を参照してください。
 * [ジョブ ストリーム](../automation-runbook-execution.md#job-statuses)を確認してエラーを探します。 ポータルで Automation アカウントに移動し、 **[プロセス オートメーション]** の下で **[ジョブ]** を選択します。
 
 ## <a name="scenario-my-custom-runbook-fails-to-start-or-stop-my-vms"></a><a name="custom-runbook"></a>シナリオ:カスタム Runbook を使用して VM を起動または停止できない

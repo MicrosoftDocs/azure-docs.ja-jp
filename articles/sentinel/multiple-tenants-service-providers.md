@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/29/2020
 ms.author: yelevin
 ms.openlocfilehash: 011ddb883c028a954a8b0683c220bf6341eddb66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91578150"
 ---
 # <a name="manage-multiple-tenants-in-azure-sentinel-as-an-mssp"></a>Azure Sentinel で複数のテナントを MSSP として管理する
@@ -43,7 +43,7 @@ ms.locfileid: "91578150"
 
 1. **[ディレクトリ + サブスクリプション]** で、委任されたディレクトリ (ディレクトリとテナントは同じです) と、顧客の Azure Sentinel ワークスペースが配置されているサブスクリプションを選択します。
 
-    :::image type="content" source="media/multiple-tenants-service-providers/directory-subscription.png" alt-text="リソース プロバイダーを確認する":::
+    :::image type="content" source="media/multiple-tenants-service-providers/directory-subscription.png" alt-text="テナントとサブスクリプションを選択する":::
 
 1. Azure Sentinel を開きます。 選択したサブスクリプションのすべてのワークスペースが表示され、それらを自社のテナント内のワークスペースと同様にシームレスに操作できるようになります。
 

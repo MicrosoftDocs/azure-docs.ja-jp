@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: 02962e9c5be2c4b73d121a53a7b595c573ad6cd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87015223"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Azure Kubernetes Service にデプロイする
@@ -31,13 +31,13 @@ ms.locfileid: "87015223"
 
 1. **[Deployment and infrastructure]\(デプロイとインフラストラクチャ\)** から **[ゲートウェイ]** を選択します。
 2. デプロイするセルフホステッド ゲートウェイ リソースを選択します。
-3. **[Deployment]\(デプロイ\)** を選択します。
+3. **[Deployment]/(デプロイ/)** を選択します。
 4. 既定の **[有効期限]** および **[秘密鍵]** の値を使用して、 **[トークン]** テキスト ボックスの新しいトークンが自動生成されたことに注意してください。 必要に応じていずれかまたは両方を調整し、 **[生成]** を選択して新しいトークンを作成します。
 5. **[デプロイ スクリプト]** で **[Kubernetes]** が選択されていることを確認します。
-6. **[Deployment]\(デプロイ\)** の横にある **<gateway-name>.yml** ファイルのリンクを選択してファイルをダウンロードします。
+6. **[Deployment]/(デプロイ/)** の横にある **<gateway-name>.yml** ファイルのリンクを選択してファイルをダウンロードします。
 7. 必要に応じて、yml ファイルのポート マッピングとコンテナー名を調整します。
 8. シナリオによっては、[サービスの種類](../aks/concepts-network.md#services)の変更が必要になる場合があります。 既定値は `NodePort` です。
-9. **[Deploy]\(デプロイ\)** テキストボックスの右端にある **[コピー]** アイコンを選択して、`kubectl` コマンドをクリップボードに保存します。
+9. **[Deploy]/(デプロイ/)** テキストボックスの右端にある **[コピー]** アイコンを選択して、`kubectl` コマンドをクリップボードに保存します。
 10. コマンドをターミナル (またはコマンド) ウィンドウに貼り付けます。 コマンドでは、ダウンロードした環境ファイルが現在のディレクトリに存在する必要があることに注意してください。
 ```console
     kubectl apply -f <gateway-name>.yaml

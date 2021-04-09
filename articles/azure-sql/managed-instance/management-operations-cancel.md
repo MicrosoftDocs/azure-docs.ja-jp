@@ -13,10 +13,10 @@ ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
 ms.openlocfilehash: 342491178d55dacbdc68e6c9042623d381dff898
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96861546"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>Azure SQL Managed Instance の管理操作のキャンセル
@@ -36,7 +36,7 @@ Azure SQL Managed Instance には、新しいマネージド インスタンス�
 
 次の表に、各管理操作、キャンセル可能かどうか、および一般的な所要時間をまとめてあります。
 
-カテゴリ  |操作  |キャンセル可能  |推定キャンセル時間  |
+カテゴリ  |Operation  |キャンセル可能  |推定キャンセル時間  |
 |---------|---------|---------|---------|
 |デプロイ |インスタンスの作成 |はい |操作の 90% は 5 分以内に完了。 |
 |更新 |インスタンスのストレージのスケールアップとスケールダウン (General Purpose) |いいえ |  |

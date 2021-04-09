@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 341d3c6f0a2d84c2b7b725959db9f7e5dd80d3ff
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92542966"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでのビジネス継続性の概要
@@ -69,7 +69,7 @@ Azure Database for PostgreSQL - フレキシブル サーバーでの **ビジ�
 
 
 > [!IMPORTANT]
-> 削除したサーバーは、復元 **できません** 。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。 [Azure リソース ロック](../../azure-resource-manager/management/lock-resources.md)を使用すると、サーバーが誤って削除されるのを防ぐことができます。
+> 削除したサーバーは、復元 **できません**。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。 [Azure リソース ロック](../../azure-resource-manager/management/lock-resources.md)を使用すると、サーバーが誤って削除されるのを防ぐことができます。
 
 
 ## <a name="next-steps"></a>次のステップ

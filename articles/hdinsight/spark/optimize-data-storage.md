@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: 10f99bdc4a5d418ae1b432a6799c5979e473c5ed
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98926987"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Apache Spark のデータ ストレージの最適化

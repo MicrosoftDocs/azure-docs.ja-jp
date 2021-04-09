@@ -5,12 +5,13 @@ ms.devlang: r
 ms.topic: tutorial
 ms.date: 10/08/2020
 ms.custom: mvc
-ms.openlocfilehash: f157a3596992fc9d40179653cc1f9a070c6ef803
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7e74a3b02be35b40e1a92bef269a3aed0b2313e4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106363"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103491777"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>チュートリアル:Azure Batch で並列 R シミュレーションを実行する
 

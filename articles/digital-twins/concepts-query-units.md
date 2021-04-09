@@ -8,10 +8,10 @@ ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 0e1c5f08c4292e4f3dfec448d8bf54d5d5601840
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99050500"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Azure Digital Twins のクエリ ユニット 

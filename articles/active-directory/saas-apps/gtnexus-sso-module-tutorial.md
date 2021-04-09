@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: jeedes
 ms.openlocfilehash: 11439a8c93c0f1ef682e7104e989a3a2cbbdc28e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92446754"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>チュートリアル:Azure Active Directory と GTNexus SSO System の統合
@@ -41,7 +41,7 @@ GTNexus SSO System と Azure AD の統合を構成するには、次のものが
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* GTNexus SSO System では、 **IDP** によって開始される SSO がサポートされます
+* GTNexus SSO System では、**IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-gtnexus-sso-system-from-the-gallery"></a>ギャラリーからの GTNexus SSO System の追加
 
@@ -61,13 +61,13 @@ Azure AD への GTNexus SSO System の統合を構成するには、管理対象
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **GTNexus SSO System** 」と入力し、結果パネルから **[GTNexus SSO System]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**GTNexus SSO System**」と入力し、結果パネルから **[GTNexus SSO System]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果リスト内の GTNexus SSO System](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーを基に、GTNexus SSO System で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーを基に、GTNexus SSO System で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと GTNexus SSO System 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 GTNexus SSO System で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -97,7 +97,7 @@ GTNexus SSO System で Azure AD シングル サインオンを構成するに�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、 **サービス プロバイダー メタデータ ファイル** がある場合は、次の手順に従います。
+4. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル** がある場合は、次の手順に従います。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
@@ -107,7 +107,7 @@ GTNexus SSO System で Azure AD シングル サインオンを構成するに�
 
     !["フォルダー" ロゴと [アップロード] ボタンが選択されている [ファイルの選択] フィールドを示すスクリーンショット。](common/browse-upload-metadata.png)
 
-    c. メタデータ ファイルが正常にアップロードされると、 **識別子** と **応答 URL** の値が、GTNexus SSO System セクションのテキスト ボックスに自動的に設定されます。
+    c. メタデータ ファイルが正常にアップロードされると、**識別子** と **応答 URL** の値が、GTNexus SSO System セクションのテキスト ボックスに自動的に設定されます。
 
     ![image](common/idp-intiated.png)
 
@@ -120,7 +120,7 @@ GTNexus SSO System で Azure AD シングル サインオンを構成するに�
 
 ### <a name="configure-gtnexus-sso-system-single-sign-on"></a>GTNexus SSO System のシングル サインオンの構成
 
-**GTNexus SSO System** 側でシングル サインオンを構成するには、 **フェデレーション メタデータ XML** を [GTNexus SSO System サポート チーム](mailto:support@gtnexus.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**GTNexus SSO System** 側でシングル サインオンを構成するには、**フェデレーション メタデータ XML** を [GTNexus SSO System サポート チーム](mailto:support@gtnexus.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -138,9 +138,9 @@ GTNexus SSO System で Azure AD シングル サインオンを構成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

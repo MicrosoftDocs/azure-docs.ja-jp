@@ -4,10 +4,10 @@ description: この記事では、コンテナー分析情報による Azure Red
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: 09ca05a25ce9bb02b8a3d515acf060e2e9e7e8c2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101731801"
 ---
 # <a name="how-to-stop-monitoring-your-azure-and-red-hat-openshift-v4-cluster"></a>お使いの Azure および Red Hat OpenShift v4 クラスターの監視を停止する方法
@@ -29,7 +29,7 @@ ms.locfileid: "101731801"
     azmon-containers-release-1      default         3               2020-04-21 15:27:24.1201959 -0700 PDT   deployed        azuremonitor-containers-2.7.0   7.0.0-1
     ```
 
-    *azmon-containers-release-1* は、コンテナー分析情報の helm チャートのリリースです。
+    *azmon-containers-release-1* は、Container insights の helm チャートのリリースです。
 
 2. 次の helm コマンドを実行して、このチャート リリースを削除します。
 

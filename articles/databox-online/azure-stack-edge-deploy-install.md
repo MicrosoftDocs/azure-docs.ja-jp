@@ -10,10 +10,10 @@ ms.date: 01/17/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
 ms.openlocfilehash: 9aa02521d91d41380b1bdac3efe50ab3d196a856
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90894209"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro を設置する
@@ -170,9 +170,9 @@ ms.locfileid: "90894209"
 > [!NOTE]
 > - データ ネットワーク インターフェイスを 1 つだけ接続する場合は、Azure へのデータ送信には、ポート 3、ポート 4、ポート 5、ポート 6 などの 25/10 GbE ネットワーク インターフェイスを使用することをお勧めします。 
 > - 最善のパフォーマンスを実現し、大量のデータを処理するには、すべてのデータ ポートを接続することを検討してください。
-> - Azure Stack Edge Pro デバイスは、データ ソース サーバーからデータを取り込むことができるように、データセンター ネットワークに接続する必要があります。
+> - データ ソース サーバーからデータを取り込むことができるように、Azure Stack Edge Pro デバイスをデータセンター ネットワークに接続する必要があります。
 
-Azure Stack Edge Pro デバイスの仕様は次のとおりです。
+Azure Stack Edge Pro デバイスとは:
 
 - フロント パネルには、ディスク ドライブと電源ボタンがあります。
 

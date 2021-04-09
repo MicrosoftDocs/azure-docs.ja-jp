@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: aahi
 ms.openlocfilehash: 9a4e179767cc38169cd794f4cd629604bdcdaab0
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97955044"
 ---
 # <a name="frequently-asked-questions-faq-about-the-text-analytics-api"></a>Text Analytics API に関してよく寄せられる質問 (FAQ)

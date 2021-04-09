@@ -4,10 +4,10 @@ description: この記事では、Azure Instance Metadata Service での Arc 対
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.openlocfilehash: 49b70928ae972da8e0a0d14d711e4b6f246cca6a
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96939044"
 ---
 # <a name="authenticate-against-azure-resources-with-arc-enabled-servers"></a>Arc 対応サーバーでの Azure リソースに対する認証

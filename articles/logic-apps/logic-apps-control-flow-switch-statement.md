@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 62f147104cf9e0e1605b02a420cb6d20190361b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89657456"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Azure Logic Apps の特定の値に基づいてワークフロー アクションを実行する switch ステートメントを作成する
@@ -42,7 +42,7 @@ ms.locfileid: "89657456"
 
 1. この例では、サンプル ワークフローの末尾に switch ステートメントを追加します。 最後の手順の後ろで、 **[新しいステップ]** を選択します。
 
-   ステップとステップの間に switch ステートメントを追加するときは、switch ステートメントを追加する場所で矢印の上にポインターを重ねます。 表示される**プラス記号** ( **+** ) を選択し、 **[アクションの追加]** を選択します。
+   ステップとステップの間に switch ステートメントを追加するときは、switch ステートメントを追加する場所で矢印の上にポインターを重ねます。 表示される **プラス記号** ( **+** ) を選択し、 **[アクションの追加]** を選択します。
 
 1. 検索ボックスに、フィルターとして「switch」と入力します。 このアクションを選択: **[Switch - Control]\(スイッチ - 制御\)**
 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 1/26/2021
 ms.openlocfilehash: 83876f77e0d7ffc0ae20bc5a545c1f18f53f4a8f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98897987"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MySQL サーバーの管理

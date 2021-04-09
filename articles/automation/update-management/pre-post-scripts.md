@@ -3,14 +3,14 @@ title: Azure での Update Management のデプロイで事前スクリプトと
 description: この記事では、更新プログラムのデプロイのための事前スクリプトおよび事後スクリプトを構成および管理する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 12/17/2020
+ms.date: 03/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3ca1dec1b6139f3192edb09f8748c8f23a9d399e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ce60c773626d951062de3cc830b898e3b875f3cb
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701503"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102485539"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>事前スクリプトと事後スクリプトを管理する
 
@@ -19,6 +19,8 @@ ms.locfileid: "101701503"
 ## <a name="pre-script-and-post-script-requirements"></a>事前スクリプトと事後スクリプトの要件
 
 Runbook を事前スクリプトまたは事後スクリプトとして使用するには、Automation アカウントにインポートし、[Runbook を発行](../manage-runbooks.md#publish-a-runbook)する必要があります。
+
+現時点では、PowerShell Runbook と Python 2 Runbook のみが事前および事後スクリプトとしてサポートされています。 Python 3、グラフィカル、PowerShell ワークフロー、グラフィカル PowerShell ワークフローなどの他の種類の Runbook は、現在、事前スクリプトまたは事後スクリプトとしてサポートされていません。
 
 ## <a name="pre-script-and-post-script-parameters"></a>事前スクリプトと事後スクリプトのパラメーター
 
@@ -91,9 +93,6 @@ Runbook を事前スクリプトまたは事後スクリプトとして使用す
 > [!NOTE]
 > `SoftwareUpdateConfigurationRunContext` オブジェクトには、マシン用の重複するエントリを含めることができます。 これにより、同じマシンで事前スクリプトと事後スクリプトが複数回実行される可能性があります。 この動作を回避するには、`Sort-Object -Unique` を使用して一意の VM 名だけを選択します。
 
-> [!NOTE]
-> 現時点では、PowerShell Runbook のみが事前および事後スクリプトとしてサポートされています。 Python、グラフィカル、PowerShell ワークフロー、グラフィカル PowerShell ワークフローなどの他の種類の Runbook は、現在、事前スクリプトまたは事後スクリプトとしてサポートされていません。
-
 ## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>デプロイで事前スクリプトまたは事後スクリプトを使用する
 
 更新プログラムの展開において事前スクリプトまたは事後スクリプトを使用するには、更新プログラムの展開の作成から始めます。 **[事前スクリプトと事後スクリプト]** を選択します。 この操作で、 **[Select Pre-scripts + Post-scripts] (事前スクリプト + 事後スクリプトの選択)** ページが開きます。
@@ -120,7 +119,7 @@ Runbook を事前スクリプトまたは事後スクリプトとして使用す
 
 ## <a name="stop-a-deployment"></a>デプロイを停止する
 
-事前スクリプトに基づくデプロイを停止する場合は、例外を[スロー](../automation-runbook-execution.md#throw)する必要があります。 そうしないと、デプロイと事後スクリプトが引き続き実行されます。 次のコード スニペットは、例外をスローする方法を示しています。
+事前スクリプトに基づくデプロイを停止する場合は、例外を[スロー](../automation-runbook-execution.md#throw)する必要があります。 そうしないと、デプロイと事後スクリプトが引き続き実行されます。 次のコード スニペットは、PowerShell を利用して例外をスローする方法を示しています。
 
 ```powershell
 #In this case, we want to terminate the patch job if any run fails.
@@ -134,6 +133,8 @@ foreach($summary in $finalStatus)
     }
 }
 ```
+
+Python 2 では、例外処理は [try](https://www.python-course.eu/exception_handling.php) ブロックで管理されます。
 
 ## <a name="interact-with-machines"></a>マシンを操作する
 
@@ -169,6 +170,13 @@ if (<My custom error logic>)
     #Throw an error to fail the patch deployment.
     throw "There was an error, abort deployment"
 }
+```
+
+Python 2 では、特定の条件が発生したときにエラーをスローする場合、[raise](https://docs.python.org/2.7/reference/simple_stmts.html#the-raise-statement) ステートメントを使用します。
+
+```python
+If (<My custom error logic>)
+   raise Exception('Something happened.')
 ```
 
 ## <a name="samples"></a>サンプル

@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
 ms.openlocfilehash: 3ec94543a53e3e5b7709801de8f4cf1dde3fc3d9
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99428117"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>トークンの有効期間ポリシーを構成する (プレビュー)
@@ -85,7 +85,7 @@ Microsoft ID プラットフォームによって発行されたアクセス ト
 
 ## <a name="create-token-lifetime-policies-for-refresh-and-session-tokens"></a>更新トークンとセッション トークンのトークン有効期間ポリシーの作成
 > [!IMPORTANT]
-> 2021 年 1 月 30 日の時点で、更新およびセッション トークンの有効期間は構成できません。 Azure Active Directory では、既存のポリシーの更新およびセッション トークンの構成が考慮されなくなくなりました。  既存のトークンの有効期限が切れた後に発行された新しいトークンは、[既定の構成](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement)に設定されるようになりました。 更新およびセッション トークンの構成の廃止後も、アクセス、SAML、ID の各トークンの有効期間を構成することはできます。
+> 2021 年 1 月 30 日の時点で、更新およびセッション トークンの有効期間は構成できません。 Azure Active Directory では、既存のポリシーの更新およびセッション トークンの構成が考慮されなくなくなりました。  既存のトークンの有効期限が切れた後に発行される新しいトークンは、[既定の構成](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement)に設定されるようになりました。 更新およびセッション トークンの構成の廃止後も、アクセス、SAML、ID の各トークンの有効期間を構成することはできます。
 >
 > 既存のトークンの有効期間は変更されません。 有効期限が切れると、既定値に基づいて新しいトークンが発行されます。
 >

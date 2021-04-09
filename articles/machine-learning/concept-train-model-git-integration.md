@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 11/16/2020
-ms.openlocfilehash: 7c10d3066dc7b9ee0994de8c327b286bf8c917e7
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: cc844cbd2518bb131f6902d1da3e7653951224b5
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099474"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102547851"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning との Git 統合
 
@@ -89,7 +89,7 @@ cat ~/.ssh/id_rsa.pub
 
 + [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
 
-+ [Azure DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs&preserve-view=true) **手順 2** から開始します。
++ [Azure DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate#step-2--add-the-public-key-to-azure-devops-servicestfs) **手順 2** から開始します。
 
 + [BitBucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2)。 **手順 4** から開始します。
 
@@ -178,7 +178,7 @@ Git 情報は、トレーニング実行のプロパティに格納されます�
 
 ### <a name="python-sdk"></a>Python SDK
 
-トレーニング実行を送信すると、[Run](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) オブジェクトが返されます。 このオブジェクトの `properties` 属性には、ログに記録された git 情報が含まれています。 たとえば、次のコードではコミット ハッシュを取得します。
+トレーニング実行を送信すると、[Run](/python/api/azureml-core/azureml.core.run%28class%29) オブジェクトが返されます。 このオブジェクトの `properties` 属性には、ログに記録された git 情報が含まれています。 たとえば、次のコードではコミット ハッシュを取得します。
 
 ```python
 run.properties['azureml.git.commit']
@@ -192,7 +192,7 @@ CLI コマンド `az ml run` を使用して、実行からプロパティを取
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-詳細については、[az ml run](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest) のリファレンス ドキュメントを参照してください。
+詳細については、[az ml run](/cli/azure/ext/azure-cli-ml/ml/run) のリファレンス ドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

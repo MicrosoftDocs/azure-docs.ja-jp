@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/14/2020
 ms.author: duau
 ms.openlocfilehash: 254f5909e7ed8db4dc18ade2677a3213b268cf41
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97511265"
 ---
 # <a name="configure-bfd-over-expressroute"></a>ExpressRoute 経由の BFD の構成

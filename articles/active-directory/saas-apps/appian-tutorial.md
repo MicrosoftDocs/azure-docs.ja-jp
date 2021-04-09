@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/17/2020
 ms.author: jeedes
 ms.openlocfilehash: aef8eb429bf772dff4d4b0de629cb1118b140e10
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96180389"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-appian"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Appian の統合

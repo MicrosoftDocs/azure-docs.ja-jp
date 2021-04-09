@@ -17,10 +17,10 @@ ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 783de636d4520f48f624f3380f811f1f18366330
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99259238"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリのユーザー サインインを無効にする
@@ -33,8 +33,8 @@ Azure Active Directory (Azure AD) で、ユーザーがサインインできな�
 1. **[すべてのサービス]** を選択し、テキスト ボックスに「**Azure Active Directory**」と入力して、**Enter** キーを押します。
 1. **[Azure Active Directory** -  **_directoryname]_ *_ ウィンドウ (管理対象のディレクトリの Azure AD ウィンドウ) で、_* [エンタープライズ アプリケーション]** を選択します。
 1. **[エンタープライズ アプリケーション - すべてのアプリケーション]** ウィンドウには、管理できるアプリのリストが表示されます。 アプリを選択します。
-1. **_[appname]_ *ウィンドウ (選択したアプリの名前がタイトルに含まれるページ) で、_* [プロパティ]** を選択します。
-1. **_[appname_ *_* プロパティ]** ウィンドウで、 **[ユーザーのサインインが有効になっていますか?]** の **[いいえ]** を選択します。
+1. * **[appname]** _ ウィンドウ (選択したアプリの名前がタイトルに含まれている) で、[プロパティ] を選択します。
+1. ***appname** _ - _ *[プロパティ]* * ウィンドウで、 **[ユーザーのサインインが有効になっていますか?]** に対して **[いいえ]** を選択します。
 1. **[保存]** をクリックします。
 
 ## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>Azure AD PowerShell を使用して、一覧にないアプリを無効にする

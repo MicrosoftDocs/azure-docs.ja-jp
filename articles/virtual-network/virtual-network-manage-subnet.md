@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2020
 ms.author: kumud
 ms.openlocfilehash: d591194f09e85c3e34ed4b904249df994a14bff5
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100558580"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>仮想ネットワーク サブネットの追加、変更、削除
@@ -61,7 +61,7 @@ Azure へのサインインまたは接続に使用するアカウントは、[�
 
 ### <a name="commands"></a>コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) |
 | PowerShell | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) |
@@ -90,7 +90,7 @@ Azure へのサインインまたは接続に使用するアカウントは、[�
 
 ### <a name="commands"></a>コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) |
 | PowerShell | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) |
@@ -111,7 +111,7 @@ Azure へのサインインまたは接続に使用するアカウントは、[�
 
 ### <a name="commands"></a>コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network vnet subnet delete](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-delete) |
 | PowerShell | [Remove-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/remove-azvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json) |

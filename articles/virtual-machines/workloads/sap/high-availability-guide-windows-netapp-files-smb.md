@@ -13,14 +13,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/12/2020
+ms.date: 02/18/2021
 ms.author: radeltch
-ms.openlocfilehash: e8d58a74f9ce8489465934398014dd4af3309a9e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a4c4631a0a1263e5a5398c44a8570f92571102e8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669822"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045838"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files (SMB) を使用した Windows 上の Azure VM における SAP NetWeaver の高可用性
 
@@ -82,6 +82,9 @@ ms.locfileid: "101669822"
 * [フェールオーバー クラスターへの (A)SCS インスタンスのインストール](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
 * [Azure NetApp Files の SMB ボリュームを作成する](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)
 * [Azure NetApp Files を使用した Microsoft Azure 上の NetApp SAP アプリケーション][anf-sap-applications-azure]
+
+> [!IMPORTANT]
+> 注意: [Azure NetApp Files][anf-azure-doc] SMB ボリュームでホストされている SMB 共有に、SWPM を使用して SAP システムをインストールすると、不十分なアクセス許可に対する "warningPerm is not defined" (warningPerm が定義されていません) のようなインストール エラーが発生して失敗するおそれがあることにご注意ください。 このエラーを回避するには、コンテキスト SWPM が実行されるユーザーに、SAP システムのインストール時に昇格された特権 "ドメイン管理者" が必要です。  
 
 ## <a name="overview"></a>概要
 

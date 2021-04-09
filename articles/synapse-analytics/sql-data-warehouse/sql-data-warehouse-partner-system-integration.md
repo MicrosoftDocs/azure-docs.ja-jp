@@ -10,10 +10,10 @@ ms.date: 11/24/2020
 ms.author: procha
 ms.reviewer: jrasnick
 ms.openlocfilehash: 19941963b5200b3ffdb9f2360301d30fe9df4823
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96121841"
 ---
 # <a name="azure-synapse-analytics-system-integration-partners"></a>Azure Synapse Analytics システム統合パートナー

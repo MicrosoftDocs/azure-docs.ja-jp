@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:サーバーを設計する - Azure CLI - Azure Database for MySQL
+title: 'チュートリアル: サーバーを設計する - Azure CLI - Azure Database for MySQL'
 description: このチュートリアルでは、コマンド ラインから Azure CLI を使用して、Azure Database for MySQL サーバーとデータベースを作成および管理する方法について説明します。
 author: savjani
 ms.author: pariks
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 8546ba5c80a4c8909876ff755bc094f1aec96482
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96437084"
 ---
-# <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure Database for MySQL を設計する
+# <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>チュートリアル: Azure CLI を使用して Azure Database for MySQL を設計する
 
 Azure Database for MySQL は、Microsoft クラウドにおける、MySQL Community Edition のデータベース エンジンをベースとしたリレーショナル データベース サービスです。 このチュートリアルでは、Azure CLI (コマンド ライン インターフェイス) とその他のユーティリティを使用して、次のことを行う方法を説明します。
 

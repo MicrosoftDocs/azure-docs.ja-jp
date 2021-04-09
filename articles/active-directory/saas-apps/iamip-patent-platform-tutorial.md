@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: jeedes
 ms.openlocfilehash: dc9be41cd7975610f2779da09b94066c70a91652
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92460531"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iamip-patent-platform"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と IamIP Patent Platform の統合
@@ -52,7 +52,7 @@ Azure AD への IamIP Patent Platform の統合を構成するには、ギャラ
 1. 左ウィンドウで、 **[Azure Active Directory]** を選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **IamIP Patent Platform** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**IamIP Patent Platform**」と入力します。
 1. 結果のパネルから **[IamIP Patent Platform]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-iamip-patent-platform"></a>IamIP Patent Platform の Azure AD SSO の構成とテスト
@@ -99,7 +99,7 @@ IamIP Patent Platform に対する Azure AD SSO を構成してテストする�
 
 1. SP-Initiated モードでアプリケーションを構成したい場合は、 **[追加の URL を設定します]** を選択し、次の手順を実行します。
 
-    **[サインオン URL]** ボックスに、「 **https:\//patents.iamip.com/login-user** 」と入力します。
+    **[サインオン URL]** ボックスに、「**https:\//patents.iamip.com/login-user**」と入力します。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (未加工)]** の **[ダウンロード]** リンクを選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -116,7 +116,7 @@ IamIP Patent Platform に対する Azure AD SSO を構成してテストする�
 1. Azure portal の左ペインで、 **[Azure Active Directory]** を選択します。 **[ユーザー]** を選択し、 **[すべてのユーザー]** を選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、次の手順を実行します。
-   1. **[名前]** ボックスに「 **B.Simon** 」と入力します。  
+   1. **[名前]** ボックスに「**B.Simon**」と入力します。  
    1. **[ユーザー名]** ボックスに「\<username>@\<companydomain>.\<extension>」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
    1. **[パスワードを表示]** をオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **［作成］** を選択します
@@ -135,7 +135,7 @@ IamIP Patent Platform に対する Azure AD SSO を構成してテストする�
 
     ![[ユーザーの追加] を選択する](common/add-assign-user.png)
 
-1. **[ユーザーとグループ]** ダイアログ ボックスで、 **ユーザー** の一覧で **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. **[ユーザーとグループ]** ダイアログ ボックスで、**ユーザー** の一覧で **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. SAML アサーションにロール値が必要な場合は、 **[ロールの選択]** ダイアログ ボックスでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログ ボックスで、 **[割り当て]** ボタンを選択します。
 

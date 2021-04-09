@@ -12,10 +12,10 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 3838234f9f65fcf91f8de33e3d7196aa13f2b903
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83741733"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>アプリにアカウントを手動で追加する
@@ -29,7 +29,7 @@ ms.locfileid: "83741733"
 
 ## <a name="add-your-work-or-school-account"></a>職場または学校のアカウントを追加する
 
-1. コンピューター上で、 **[モバイル アプリケーションの構成]** ページの **[コード]** と **[URL]** の情報を書き留めます。 このページを開いたままにして、コードと URL を確認できるようにします。
+1. コンピューター上で、**[モバイル アプリケーションの構成]** ページの **[コード]** と **[URL]** の情報を書き留めます。 このページを開いたままにして、コードと URL を確認できるようにします。
 
     ![QR コードを提供する画面](./media/user-help-auth-app-add-account-manual/auth-app-barcode.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "83741733"
 
     ![QR コードをスキャンする画面](./media/user-help-auth-app-add-account-manual/auth-app-manual-code.png)
 
-4. 手順 1 の **[コード]** と **[URL]** を入力して、 **[完了]** を選択します。
+4. 手順 1 の **[コード]** と **[URL]** を入力して、**[完了]** を選択します。
 
     ![コードと URL を入力する画面](./media/user-help-auth-app-add-account-manual/auth-app-code-url.png)
 
@@ -51,11 +51,11 @@ ms.locfileid: "83741733"
 
     秘密コードが記載された **[Can't scan barcode]\(バーコードをスキャンできない\)** ページが表示されます。 このページを開いたままにして、秘密コードを確認できるようにします。
 
-2. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、 **[他のアカウント (Google、Facebook など)]** を選びます。次に、 **[またはコードを手動で入力]** を選択します。
+2. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、**[他のアカウント (Google、Facebook など)]** を選びます。次に、**[またはコードを手動で入力]** を選択します。
 
 3. **[アカウント名]** (Google など) を入力し、手順 1 の **[秘密鍵]** を入力してから **[完了]** を選択します。
 
-4. コンピューターの **[Set up Authenticator]\(Authenticator の設定\)** ページで、Google アカウント用にアプリで提供された 6 桁の確認コードを入力してから、 **[確認]** を選びます。
+4. コンピューターの **[Set up Authenticator]\(Authenticator の設定\)** ページで、Google アカウント用にアプリで提供された 6 桁の確認コードを入力してから、**[確認]** を選びます。
 
     アプリの **[アカウント]** 画面に、アカウント名と 6 桁の認証コードが表示されます。 セキュリティ強化のため、他のユーザーによってコードが複数回使用されないように、確認コードは 30 秒ごとに変更されます。
 
@@ -66,11 +66,11 @@ ms.locfileid: "83741733"
 
 1. **[Set up via Third Party Authenticator]\(サード パーティの Authenticator による設定)** ページを開きます。このページには、QR コードと、アプリに入力するためのコードが含まれています。 このページを開いたままにして、コードとを確認できるようにします。
 
-2. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、 **[他のアカウント (Google、Facebook など)]** を選びます。次に、 **[またはコードを手動で入力]** を選択します。
+2. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、**[他のアカウント (Google、Facebook など)]** を選びます。次に、**[またはコードを手動で入力]** を選択します。
 
 3. **[アカウント名]** (Facebook など) を入力し、手順 1 の **[秘密鍵]** を入力してから **[完了]** を選択します。
 
-4. コンピューターの **[2 要素認証]** ページで、Facebook アカウント用にアプリで提供された 6 桁の確認コードを入力してから、 **[確認]** を選択します。
+4. コンピューターの **[2 要素認証]** ページで、Facebook アカウント用にアプリで提供された 6 桁の確認コードを入力してから、**[確認]** を選択します。
 
     アプリの **[アカウント]** 画面に、アカウント名と 6 桁の認証コードが表示されます。 セキュリティ強化のため、他のユーザーによってコードが複数回使用されないように、確認コードは 30 秒ごとに変更されます。
 
@@ -83,9 +83,9 @@ ms.locfileid: "83741733"
 
 1. コンピューター上で、QR コードが記載された **[Choose how you'll receive codes]\(コードの受信方法の選択\)** ページから **[Can't scan barcode]\(バーコードをスキャンできない\)** を選択します。
 
-    秘密コードとともに、 **[Can't scan barcode]\(バーコードをスキャンできない\)** メッセージが表示されます。 このメッセージを開いたままにして、秘密コードを確認できるようにします。
+    秘密コードとともに、**[Can't scan barcode]\(バーコードをスキャンできない\)** メッセージが表示されます。 このメッセージを開いたままにして、秘密コードを確認できるようにします。
 
-2. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、 **[他のアカウント (Google、Facebook など)]** を選びます。次に、 **[またはコードを手動で入力]** を選択します。
+2. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、**[他のアカウント (Google、Facebook など)]** を選びます。次に、**[またはコードを手動で入力]** を選択します。
 
 3. **[アカウント名]** (Amazon など) を入力し、手順 1 の **[秘密鍵]** を入力してから **[完了]** を選択します。
 

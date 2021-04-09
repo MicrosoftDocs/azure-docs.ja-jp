@@ -1,14 +1,14 @@
 ---
 title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
-ms.date: 02/08/2021
+ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: 644cac70ef6459a1b0be45e9ab8f2757fafddeed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4a20f6efde9c3b01b4a2d7a1f111de23aec87647
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699251"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177921"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -67,6 +67,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 [Azure Backup](../../backup/index.yml):
 
 - [オンプレミスのワークロード、Azure VM、Azure ファイル共有などから](../..//backup/backup-overview.md#what-can-i-back-up)顧客データをバックアップして復元する
+- [Backup Center](../../backup/backup-center-overview.md) を使用して委任されたすべての顧客リソースのデータを表示する
 - [バックアップ エクスプローラー](../../backup/monitor-azure-backup-with-backup-explorer.md)を使用すると、バックアップ項目 (まだバックアップ対象として構成されていない Azure リソースを含む) の運用情報と、委任されたサブスクリプションの監視情報 (ジョブとアラート) を表示できます。 バックアップ エクスプローラーは、現在、Azure VM データに対してのみ使用できます。
 - 委任されたサブスクリプション全体で[バックアップ レポート](../../backup/configure-reports.md)を使用して、過去の傾向を追跡し、バックアップ ストレージの使用量を分析し、バックアップと復元を監査します。
 
@@ -113,9 +114,11 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 [Azure Policy](../../governance/policy/index.yml):
 
 - 委任されたサブスクリプション内でポリシー定義を作成および編集する
+- 複数のテナントにわたってポリシー定義とポリシー割り当てをデプロイする
 - 委任されたサブスクリプション内で顧客が定義したポリシー定義を割り当てる
 - 顧客には、サービス プロバイダーが作成したポリシーと顧客自身が作成したポリシーが並べて表示される
 - [管理対象のテナント内で deployIfNotExists の修復または割り当ての変更を行う](../how-to/deploy-policy-remediation.md)ことができる
+- 現在、顧客のテナント内にある準拠していないリソースのコンプライアンスの詳細を表示することはできません
 
 [Azure Resource Graph](../../governance/resource-graph/index.yml):
 

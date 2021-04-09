@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: aa5f908cdf25925db63054adaf1e6dab15f5260b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92459307"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>チュートリアル: Azure Active Directory と Kantega SSO for Bamboo の統合
@@ -41,7 +41,7 @@ Kantega SSO for Bamboo と Azure AD の統合を構成するには、次のも�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Kantega SSO for Bamboo では、 **SP と IDP** によって開始される SSO がサポートされます
+* Kantega SSO for Bamboo では、**SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-kantega-sso-for-bamboo-from-the-gallery"></a>ギャラリーからの Kantega SSO for Bamboo の追加
 
@@ -61,13 +61,13 @@ Azure AD への Kantega SSO for Bamboo の統合を構成するには、ギャ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Kantega SSO for Bamboo** 」と入力し、結果パネルで **[Kantega SSO for Bamboo]** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Kantega SSO for Bamboo**」と入力し、結果パネルで **[Kantega SSO for Bamboo]** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果一覧の Kantega SSO for Bamboo](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーを基に、Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーを基に、Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Kantega SSO for Bamboo 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -230,7 +230,7 @@ Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成す�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

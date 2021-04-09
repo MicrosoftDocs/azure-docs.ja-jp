@@ -9,10 +9,10 @@ ms.date: 05/11/2020
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: fe5c8129434ddb4eec2dd25a3f123f28b4db221b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83682618"
 ---
 検索サービスは、ディスク領域と、インデックスまたはインデクサーの最大数のハード制限のうち、先に達したものによって制約されます。 次の表では、ストレージの制限についてまとめています。 オブジェクトの上限については、[リソース別の制限](../articles/search/search-limits-quotas-capacity.md#index-limits)に関するセクションを参照してください。

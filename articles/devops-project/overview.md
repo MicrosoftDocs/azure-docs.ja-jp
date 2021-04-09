@@ -15,10 +15,10 @@ ms.workload: ''
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.openlocfilehash: 7c36539ef5be503b2cb7e14047e596522ef8e962
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92330650"
 ---
 # <a name="overview-of-devops-starter"></a>DevOps Starter の概要

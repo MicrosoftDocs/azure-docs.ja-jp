@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
 ms.openlocfilehash: 377abef31dbc4364f37161194923bbf74d272d80
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98012293"
 ---
-# <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Stream Analytics ジョブを作成する
+# <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>クイック スタート: Azure PowerShell を使用して Stream Analytics ジョブを作成する
 
 Azure PowerShell モジュールは、PowerShell コマンドレットまたはスクリプトを使用して Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure PowerShell モジュールを使用して Azure Stream Analytics ジョブをデプロイおよび実行する方法について詳しく説明します。
 

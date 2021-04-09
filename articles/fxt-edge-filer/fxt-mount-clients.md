@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: fa1f9da2c60aaf4c552916d16c266e984bf08892
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92340514"
 ---
 # <a name="tutorial-mount-the-cluster"></a>チュートリアル:クラスターのマウント
@@ -44,7 +44,7 @@ ms.locfileid: "92340514"
 
 小規模インストール用の単純な方法として、スクリプトを使用して、クライアントのマウント時に範囲全体に IP アドレスを割り当てる方法があります。
 
-大規模なシステや複雑なシステムには、他の負荷分散方法が適しています。 Microsoft の担当者に問い合わせるか、ヘルプの[サポート リクエスト](fxt-support-ticket.md)をオープンしてください。 (現在、Azure Load Balancer は Azure FXT Edge Filer で*サポートされていません*。)
+大規模なシステや複雑なシステムには、他の負荷分散方法が適しています。 Microsoft の担当者に問い合わせるか、ヘルプの[サポート リクエスト](fxt-support-ticket.md)をオープンしてください。 (現在、Azure Load Balancer は Azure FXT Edge Filer で *サポートされていません*。)
 
 ## <a name="create-the-mount-command"></a>mount コマンドを作成する
 

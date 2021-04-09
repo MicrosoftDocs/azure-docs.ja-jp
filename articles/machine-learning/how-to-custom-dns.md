@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 11/20/2020
+ms.date: 03/12/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 2215c47fcd250a9ac1d6621f7e4b434bd33b3832
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a5224aab8db65cf22e952185d07147f6f007e088
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871097"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956283"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>カスタム DNS サーバーでワークスペースを使用する方法
 
@@ -37,32 +37,32 @@ ms.locfileid: "98871097"
 
 - 必要に応じて、[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/install-az-ps)。
 
-## <a name="fqdns-in-use"></a>使用中の FQDN
-### <a name="these-fqdns-are-in-use-in-the-following-regions-eastus-southcentralus-and-westus2"></a>これらの FQDN は、eastus、southcentralus、westus2 の各リージョンで使用されています。
-次のリストには、ワークスペースで使用される完全修飾ドメイン名 (FQDN) が含まれています。
+## <a name="public-regions"></a>パブリック リージョン
+
+次のリストには、ワークスペースがパブリック リージョンにある場合に使用される完全修飾ドメイン名 (FQDN) が含まれています。
 
 * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
-* `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
-* `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
-* `<workspace-GUID>.workspace.<region>.aether.ms`
-* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.net`
-* コンピューティング インスタンスを作成する場合は、ワークスペースのプライベート エンドポイントのプライベート IP を持つ `<instance-name>.<region>.instances.azureml.ms` のエントリも追加する必要があります。
+* `ml-<workspace-name, truncated>-<region>-<workspace-guid>.notebooks.azure.net`
 
     > [!NOTE]
-    > コンピューティング インスタンスには、仮想ネットワーク内からのみアクセスできます。
-    
-### <a name="these-fqdns-are-in-use-in-all-other-regions"></a>これらの FQDN は、他のすべてのリージョンで使用されています
-次のリストには、ワークスペースで使用される完全修飾ドメイン名 (FQDN) が含まれています。
-
-* `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
-* `<workspace-GUID>.workspace.<region>.api.azureml.ms`
-* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.net`
+    > この FQDN のワークスペース名は切り詰められている可能性があります。 切り詰めは、FQDN が63文字以下になるように行われます。
 * `<instance-name>.<region>.instances.azureml.ms`
 
     > [!NOTE]
     > コンピューティング インスタンスには、仮想ネットワーク内からのみアクセスできます。
 
+## <a name="azure-china-21vianet-regions"></a>Azure China 21Vianet リージョン
+
+次の FQDN は、Azure China 21Vianet リージョン向けです。
+
+* `<workspace-GUID>.workspace.<region>.cert.api.ml.azure.cn`
+* `<workspace-GUID>.workspace.<region>.api.ml.azure.cn`
+* `ml-<workspace-name, truncated>-<region>-<workspace-guid>.notebooks.chinacloudapi.cn`
+
+    > [!NOTE]
+    > この FQDN のワークスペース名は切り詰められている可能性があります。 切り詰めは、FQDN が63文字以下になるように行われます。
+* `<instance-name>.<region>.instances.ml.azure.cn`
 ## <a name="find-the-ip-addresses"></a>IP アドレスを検索する
 
 VNet 内の FQDN の内部 IP アドレスを検索するには、次のいずれかの方法を使用します。
@@ -94,7 +94,7 @@ $workspaceDns.CustomDnsConfigs | format-table
 
 ---
 
-どの方法でも返される情報は同じで、リソースの FQDN とプライベート IP アドレスのリストです。
+どの方法でも返される情報は同じで、リソースの FQDN とプライベート IP アドレスのリストです。 次の例は、グローバル Azure リージョンのものです。
 
 | FQDN | IP アドレス |
 | ----- | ----- |
@@ -112,6 +112,12 @@ $workspaceDns.CustomDnsConfigs | format-table
 >
 > これらの IP アドレスのすべてに対して、前のステップで返された `*.api.azureml.ms` エントリと同じアドレスを使用します。
 
+次の表は、Azure China 21Vianet リージョンの IP の例を示しています。
+
+| FQDN | IP アドレス |
+| ----- | ----- |
+| `52882c08-ead2-44aa-af65-08a75cf094bd.workspace.chinaeast2.api.ml.azure.cn` | `10.1.0.5` |
+| `ml-mype-pltest-chinaeast2-52882c08-ead2-44aa-af65-08a75cf094bd.notebooks.chinacloudapi.cn` | `10.1.0.6` |
 ## <a name="next-steps"></a>次の手順
 
 仮想ネットワークでの Azure Machine Learning の使用の詳細については、[仮想ネットワークの概要](how-to-network-security-overview.md)に関するページを参照してください。

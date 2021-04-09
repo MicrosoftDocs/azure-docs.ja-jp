@@ -1,26 +1,16 @@
 ---
-title: Defender for IoT エージェントベースのソリューションにオンボードする
-description: Azure IoT Hub で Defender for IoT セキュリティ サービスをオンボードし、有効にする方法について説明します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
+title: 'クイックスタート: エージェントベースのソリューションに Defender for IoT をオンボードする'
+description: このクイックスタートでは、Azure IoT Hub で Defender for IoT セキュリティ サービスをオンボードし、有効にする方法について説明します。
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 1/20/2021
-ms.author: shhazam
-ms.openlocfilehash: 127e439a7740cb97cbe126071aaaa5245cd85782
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: b795773ae0eb667cf7f53f4209b6476ba937b17f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809135"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780958"
 ---
-# <a name="onboard-to-defender-for-iot-agent-based-solution"></a>Defender for IoT エージェントベースのソリューションにオンボードする
+# <a name="quickstart-onboard-defender-for-iot-to-an-agent-based-solution"></a>クイックスタート: エージェントベースのソリューションに Defender for IoT をオンボードする
 
 この記事では、既存の IoT Hub 上で Defender for IoT サービスを有効にする方法について説明します。 現在 IoT Hub がない場合、作業を開始するには、「[Azure portal を使用して IoT Hub を作成する](../iot-hub/iot-hub-create-through-portal.md)」を参照してください。
 
@@ -35,7 +25,11 @@ Defender for IoT の IoT Hub を使用して、IoT セキュリティを管理�
 > [!NOTE]
 > Defender for IoT では、現在、Standard レベルの IoT Hub だけがサポートされています。
 
-## <a name="onboard-to-defender-for-iot-in-iot-hub"></a>IoT Hub に Defender for IoT をオンボードする
+## <a name="prerequisites"></a>前提条件
+
+なし
+
+## <a name="onboard-defender-for-iot-to-an-iot-hub"></a>Defender for IoT を IoT ハブにオンボードする
 
 すべての新しい IoT hub に対して、Defender for IoT は既定で **[有効]** に設定されます。 IoT Hub の作成プロセス中に Defender for IoT が **[有効]** に切り替えられることを確認できます。
 
@@ -55,14 +49,23 @@ Defender for IoT の IoT Hub を使用して、IoT セキュリティを管理�
 
 ## <a name="onboard-defender-for-iot-to-an-existing-iot-hub"></a>Defender for IoT を既存の IoT Hub にオンボードする
 
-デバイス ID 管理およびデバイスとクラウド間の通信パターンを監視するには、次の操作を実行してサービスを開始します。 
+Defender for IoT を既存の IoT ハブにオンボードして、デバイス ID 管理、デバイスからクラウドおよびクラウドからデバイスへの通信パターンを監視できます。
 
-1. IoT Hub に移動します。 
+Defender for IoT を既存の IoT ハブにオンボードするには:
 
-1.  **[セキュリティの概要]**   メニューを選択します。 
+1. [IoT Hub] に移動します。 
 
-1. [Secure your IoT solution]\(IoT ソリューションのセキュリティ保護\) をクリックし、オンボード フォームの記入を完了します。 
+1. オンボードする IoT ハブを選択します。
 
+1. **[セキュリティ]** セクションで任意のオプションを選択します。
+
+1.  **[Secure your IoT solution]\(IoT ソリューションのセキュリティ保護\)**   をクリックし、オンボード フォームに記入します。 
+
+    :::image type="content" source="media/quickstart-onboard-iot-hub/secure-your-iot-solution.png" alt-text="ソリューションを保護するには、[Secure your IoT solution]\(IoT ソリューションのセキュリティ保護\) ボタンを選択します。":::
+
+**[Secure your IoT solution]\(IoT ソリューションのセキュリティ保護\)** ボタンは、IoT ハブがまだオンボードされていない場合、またはオンボード中に [Defender for IoT] トグルを **[オフ]** のままにしていた場合にのみ表示されます。
+
+:::image type="content" source="media/quickstart-onboard-iot-hub/toggle-is-off.png" alt-text="オンボード中にトグルが [オフ] に設定されていた場合。":::
 
 ## <a name="next-steps"></a>次のステップ
 

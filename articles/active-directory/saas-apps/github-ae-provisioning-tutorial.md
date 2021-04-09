@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4e43ebba9f5f3d0c52d1d03bbf6baca92d5b87a4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 0a9615e6bcb350732ccd7b2cf27dad3b46a7e4b3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96178740"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102427013"
 ---
 # <a name="tutorial-configure-github-ae-for-automatic-user-provisioning"></a>チュートリアル:GitHub AE を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -32,6 +32,7 @@ ms.locfileid: "96178740"
 > * GitHub AE でユーザーを作成する
 > * アクセスが不要になった場合に GitHub AE のユーザーを削除する
 > * Azure AD と GitHub AE の間でユーザー属性の同期を維持する
+> * GitHub AE でグループとグループ メンバーシップをプロビジョニングする
 > * [Github AE](./github-ae-tutorial.md) へのシングル サインオン (推奨)
 
 ## <a name="prerequisites"></a>前提条件
@@ -59,7 +60,7 @@ Azure AD アプリケーション ギャラリーから GitHub AE を追加し�
 
 Azure AD プロビジョニング サービスを使用すると、アプリケーションへの割り当て、ユーザーとグループのいずれかまたは両方の属性に基づいてプロビジョニングされるユーザーのスコープを設定できます。 割り当てに基づいてアプリにプロビジョニングされるユーザーのスコープを設定する場合、以下の[手順](../manage-apps/assign-user-or-group-access-portal.md)を使用して、ユーザーとグループのいずれかまたは両方をアプリケーションに割り当てることができます。 ユーザーとグループのいずれかまたは両方の属性のみに基づいてプロビジョニングされるユーザーのスコープを設定する場合、[こちら](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)で説明されているスコープ フィルターを使用できます。 
 
-* GitHub AE にユーザーを割り当てるときは、**既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](../develop/howto-add-app-roles-in-azure-ad-apps.md)してロールを追加することができます。 
+* GitHub AE にユーザーとグループを割り当てるときは、**既定のアクセス** 以外のロールを選択する必要があります。 既定のアクセス ロールを持つユーザーは、プロビジョニングから除外され、プロビジョニング ログで実質的に資格がないとマークされます。 アプリケーションで使用できる唯一のロールが既定のアクセス ロールである場合は、[アプリケーション マニフェストを更新](../develop/howto-add-app-roles-in-azure-ad-apps.md)してロールを追加することができます。 
 
 * 小さいところから始めましょう。 全員にロールアウトする前に、少数のユーザーとグループのいずれかまたは両方でテストします。 プロビジョニングのスコープが割り当て済みユーザーとグループのいずれかまたは両方に設定される場合、これを制御するには、1 つまたは 2 つのユーザーとグループのいずれかまたは両方をアプリに割り当てます。 スコープがすべてのユーザーとグループに設定されている場合は、[属性ベースのスコープ フィルター](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)を指定できます。 
 
@@ -111,17 +112,27 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
    |name.formatted|String|
    |displayName|String|
 
-10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
+10. **[マッピング]** セクションで、 **[Synchronize Azure Active Directory Groups to GitHub AE]\(Azure Active Directory グループを GitHub AE に同期する\)** を選択します。
 
-11. GitHub AE に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+11. **[属性マッピング]** セクションで、Azure AD から GitHub AE に同期されるグループ属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で GitHub AE のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+
+      |属性|Type|
+      |---|---|
+      |displayName|String|
+      |externalId|String|
+      |members|リファレンス|
+
+12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
+
+13. GitHub AE に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 
-12. **[設定]** セクションの **[スコープ]** で目的の値を選択することによって、GitHub AE にプロビジョニングするユーザーまたはグループ、あるいはその両方を定義します。
+14. **[設定]** セクションの **[スコープ]** で目的の値を選択することによって、GitHub AE にプロビジョニングするユーザーまたはグループ、あるいはその両方を定義します。
 
     ![プロビジョニングのスコープ](common/provisioning-scope.png)
 
-13. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
+15. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
 
     ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
 
@@ -133,6 +144,10 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 1. [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
 2. [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
 3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。  
+
+## <a name="change-log"></a>ログの変更
+
+* 2021 年 2 月 18 日 - グループ プロビジョニングのサポートを追加しました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

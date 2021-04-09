@@ -5,25 +5,27 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: mrohera
-ms.date: 4/3/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bfb61a5434089fffab9d8ceb9c7b0fbca528cac5
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: eb5cbc2f2db0ba9f92a637c7e9a905d2f746880a
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430613"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200834"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>対称キーの構成証明を使用して IoT Edge デバイスを作成およびプロビジョニングする
 
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
+
 Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.yml) を使用して、Edge に対応していないデバイスと同じように自動プロビジョニングできます。 自動プロビジョニングの処理に慣れていない場合は、[プロビジョニング](../iot-dps/about-iot-dps.md#provisioning-process)の概要を読んでから先に進んでください。
 
-この記事では、次の手順に従って、IoT Edge デバイスで対称キーの構成証明を使用して Device Provisioning Service の個別登録を作成する方法について説明します。
+この記事では、次の手順に従って、IoT Edge デバイスで対称キーの構成証明を使用して Device Provisioning Service の個別またはグループ登録を作成する方法について説明します。
 
 * IoT Hub Device Provisioning Service (DPS) のインスタンスを作成する。
-* デバイスの個別登録を作成する。
+* デバイスの登録を作成する。
 * IoT Edge ランタイムをインストールし、IoT Hub に接続する。
 
 対称キーの構成証明は、Device Provisioning Service インスタンスを使用してデバイスを認証する簡単なアプローチです。 この構成証明の方法では、初めてデバイスのプロビジョニングを行う開発者または厳密なセキュリティ要件がない開発者に対して、"Hello world" エクスペリエンスを提示します。 [TPM](../iot-dps/concepts-tpm-attestation.md) または [X.509 証明書](../iot-dps/concepts-x509-attestation.md)を使用するデバイス構成証明は、より安全であり、さらに厳格なセキュリティ要件に対して使用する必要があります。
@@ -72,8 +74,8 @@ DPS 内に登録を作成するときに、**デバイス ツインの初期状�
 
    1. **[True]** を選択して、その登録が IoT Edge デバイス用のものであることを宣言します。 グループ登録の場合、すべてのデバイスを IoT Edge デバイスにする必要があります。そうしない場合、いずれも IoT Edge デバイスにすることはできません。
 
-   > [!TIP]
-   > Azure CLI では、[登録](/cli/azure/ext/azure-iot/iot/dps/enrollment)または [登録グループ](/cli/azure/ext/azure-iot/iot/dps/enrollment-group)を作成し、**Edge 対応** フラグを使用して、デバイスまたはデバイスのグループが IoT Edge デバイスであることを指定できます。
+      > [!TIP]
+      > Azure CLI では、[登録](/cli/azure/ext/azure-iot/iot/dps/enrollment)または [登録グループ](/cli/azure/ext/azure-iot/iot/dps/enrollment-group)を作成し、**Edge 対応** フラグを使用して、デバイスまたはデバイスのグループが IoT Edge デバイスであることを指定できます。
 
    1. **デバイスをハブに割り当てる方法** について、Device Provisioning Service の割り当てポリシーの既定値をそのまま使用するか、その登録に固有の別の値を選択します。
 
@@ -169,10 +171,12 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 * DPS の登録からコピーした **プライマリ キー**
 
 > [!TIP]
-> グループ登録の場合、DPS の登録キーではなく、各デバイスの[派生キー](#derive-a-device-key)が必要となります。
+> グループ登録の場合、DPS 登録の主キーではなく、各デバイスの[派生キー](#derive-a-device-key)が必要となります。
 
 ### <a name="linux-device"></a>Linux デバイス
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 1. IoT Edge デバイスで構成ファイルを開きます。
 
    ```bash
@@ -197,15 +201,66 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
    #  dynamic_reprovisioning: false
    ```
 
-   必要に応じて、`always_reprovision_on_startup` または `dynamic_reprovisioning` の行を使用して、デバイスの再プロビジョニング動作を構成します。 起動時に再プロビジョニングするようにデバイスが設定されている場合、常に最初に DPS を使用してプロビジョニングが試行され、失敗した場合はプロビジョニングのバックアップにフォールバックします。 動的に再プロビジョニングするようにデバイスが設定されている場合、再プロビジョニング イベントが検出されると、IoT Edge が再起動し、再プロビジョニングされます。 詳細については、「[IoT Hub デバイスの再プロビジョニングの概念](../iot-dps/concepts-device-reprovision.md)」を参照してください。
-
 1. `scope_id`、`registration_id`、`symmetric_key` の値を DPS およびデバイス情報で更新します。
+
+1. 必要に応じて、`always_reprovision_on_startup` または `dynamic_reprovisioning` の行を使用して、デバイスの再プロビジョニング動作を構成します。 起動時に再プロビジョニングするようにデバイスが設定されている場合、常に最初に DPS を使用してプロビジョニングが試行され、失敗した場合はプロビジョニングのバックアップにフォールバックします。 動的に再プロビジョニングするようにデバイスが設定されている場合、再プロビジョニング イベントが検出されると、IoT Edge が再起動し、再プロビジョニングされます。 詳細については、「[IoT Hub デバイスの再プロビジョニングの概念](../iot-dps/concepts-device-reprovision.md)」を参照してください。
 
 1. デバイスで行ったすべての構成の変更が反映されるように、IoT Edge ランタイムを再起動します。
 
    ```bash
    sudo systemctl restart iotedge
    ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. IoT Edge のインストールの一部として提供されるテンプレート ファイルに基づいて、デバイスの構成ファイルを作成します。
+
+   ```bash
+   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   ```
+
+1. IoT Edge デバイスで構成ファイルを開きます。
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+1. ファイルの **プロビジョニング** セクションを見つけます。 対称キーによる DPS のプロビジョニング行をコメント解除し、他にもプロビジョニング行があれば、それらもコメント アウトするようにします。
+
+   ```toml
+   # DPS provisioning with symmetric key
+   [provisioning]
+   source = "dps"
+   global_endpoint = "https://global.azure-devices-provisioning.net"
+   id_scope = "<SCOPE_ID>"
+   
+   [provisioning.attestation]
+   method = "symmetric_key"
+   registration_id = "<REGISTRATION_ID>"
+
+   symmetric_key = "<PRIMARY_KEY OR DERIVED_KEY>"
+   ```
+
+1. `id_scope`、`registration_id`、`symmetric_key` の値を DPS およびデバイス情報で更新します。
+
+   対称キー パラメーターは、インライン キー、ファイル URI、または PKCS#11 URI の値を受け入れることができます。 使用している形式に基づいて、1 つの対称キー行だけをコメント解除します。
+
+   任意の PKCS#11 URI を使用する場合は、構成ファイルで **PKCS#11** セクションを見つけ、PKCS#11 構成に関する情報を提供します。
+
+1. config.toml ファイルを保存して閉じます。
+
+1. 加えた構成の変更を IoT Edge に適用します。
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ### <a name="windows-device"></a>Windows デバイス
 
@@ -228,6 +283,9 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 
 ### <a name="linux-device"></a>Linux デバイス
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 IoT Edge サービスの状態を確認します。
 
 ```cmd/sh
@@ -245,6 +303,31 @@ journalctl -u iotedge --no-pager --no-full
 ```cmd/sh
 iotedge list
 ```
+
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+IoT Edge サービスの状態を確認します。
+
+```cmd/sh
+sudo iotedge system status
+```
+
+サービス ログを調べます。
+
+```cmd/sh
+sudo iotedge system logs
+```
+
+実行中のモジュールを一覧表示します。
+
+```cmd/sh
+sudo iotedge list
+```
+
+:::moniker-end
 
 ### <a name="windows-device"></a>Windows デバイス
 

@@ -2,13 +2,13 @@
 title: パブリック レジストリ アクセスの構成
 description: 選択したパブリック IP アドレスまたはアドレス範囲から Azure Container Registry へのアクセスを有効にする IP ルールを構成します。
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 4e4ee817e2534bcca09cba89daafd379ff3f03f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/08/2021
+ms.openlocfilehash: 727aa1dc028b5f52a022e54c2cd252ae372e78fe
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488764"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773064"
 ---
 # <a name="configure-public-ip-network-rules"></a>パブリック IP ネットワーク ルールを構成する
 
@@ -17,6 +17,8 @@ ms.locfileid: "89488764"
 IP ネットワーク ルールは、パブリック レジストリ エンドポイントで構成されます。 IP ネットワーク ルールは、[Private Link](container-registry-private-link.md) を使用して構成されたプライベート エンドポイントには適用されません
 
 IP アクセス規則の構成は、**Premium** コンテナー レジストリ サービス レベルで利用できます。 レジストリ サービスのレベルと制限については、[Azure Container Registry のレベル](container-registry-skus.md)に関する記事を参照してください。
+
+各レジストリでは、最大 100 個のネットワーク アクセス規則がサポートされます。
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 

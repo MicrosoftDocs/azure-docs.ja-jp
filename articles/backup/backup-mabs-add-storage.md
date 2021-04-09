@@ -4,10 +4,10 @@ description: Azure Backup Server の新機能について説明します。 こ�
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: b077296e58e1193e454a686a392d802e905500a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91292899"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Azure Backup Server へのストレージの追加
@@ -64,7 +64,7 @@ Backup Server V2 以降ではストレージ ボリュームを使用できま�
 
 > [!NOTE]
 >
-> - 列カウントを 1 のままにするには、1 つのディスクのみをプールに追加します。 このようにすると、後で必要なディスクを追加することができます。
+> - 列カウントを 1 のままにするには、1 つのディスクのみをプールに追加します。 その後に、必要に応じてディスクを追加できます。
 > - 一度に複数のディスクをストレージ プールに追加する場合、ディスクの数が列の数として保存されます。 さらに多くのディスクを追加する場合、列数の倍数でのみ追加できます。
 
 Backup Server にボリュームを追加するには、 **[管理]** ウィンドウで、ストレージを再スキャンして **[追加]** を選択します。 Backup Server Storage に追加できるすべてのボリュームの一覧が表示されます。 選択したボリュームの一覧に使用可能なボリュームを追加したら、管理しやすいように、それらのボリュームにフレンドリ名をつけることができます。 これらのボリュームを ReFS にフォーマットして Backup Server が Modern Backup Storage の利点を活用できるようにするには、 **[OK]** を選択します。

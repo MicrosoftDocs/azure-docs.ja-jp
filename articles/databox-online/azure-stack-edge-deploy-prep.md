@@ -6,21 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/22/2021
+ms.date: 03/16/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 07b526d443b5f1b41bc6f811b7cccc0fbc6165ee
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 9ceba84cb3bbe52dc5ba51d0f4945f5bad0a5034
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761709"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573979"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro の配置を準備する  
 
-これは、Azure Stack Edge Pro を完全に配置するために必要な配置チュートリアル シリーズの最初のチュートリアルです。 このチュートリアルでは、Azure Stack Edge リソースを配置するために Azure portal を準備する方法を説明します。
+これは、Azure Stack Edge Pro を完全に配置するために必要な配置チュートリアル シリーズの最初のチュートリアルです。 このチュートリアルでは、Azure Stack Edge リソースを配置するために Azure portal を準備する方法を説明します。 
 
-セットアップと構成のプロセスを完了するには、管理者特権が必要です。 ポータルの準備は 10 分ほどで完了します。
+セットアップと構成のプロセスを完了するには、管理者特権が必要です。 ポータルの準備は 10 分ほどで完了します。  
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -53,7 +53,7 @@ Azure Stack Edge Pro を配置するには、次の順序どおりにチュー�
 
 開始する前に次の点を確認します。
 
-* ご利用の Microsoft Azure サブスクリプションで Azure Stack Edge リソースが有効になっていること。 [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/)、[クラウド ソリューション プロバイダー (CSP)](/partner-center/azure-plan-lp)、[Microsoft Azure スポンサープラン](https://azure.microsoft.com/offers/ms-azr-0036p/)など、サポートされているサブスクリプションを使用していることを確認してください。 従量課金制のサブスクリプションには対応していません。
+* ご利用の Microsoft Azure サブスクリプションで Azure Stack Edge リソースが有効になっていること。 [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/)、[クラウド ソリューション プロバイダー (CSP)](/partner-center/azure-plan-lp)、[Microsoft Azure スポンサープラン](https://azure.microsoft.com/offers/ms-azr-0036p/)など、サポートされているサブスクリプションを使用していることを確認してください。 従量課金制サブスクリプションはサポートされていません。
 
 * Azure Stack Edge/Data Box Gateway、IoT Hub、および Azure Storage のリソースに対してリソース グループ レベルで所有者または共同作成者のアクセス許可を持っていること。
 
@@ -87,68 +87,64 @@ Azure Stack Edge Pro を配置するには、次の順序どおりにチュー�
   * デバイスが常に最新の状態に保たれるように最低 10 Mbps のダウンロード帯域幅。
   * ファイル転送用に最低 20 Mbps の専用のアップロード/ダウンロード帯域幅。
 
-## <a name="create-a-new-resource"></a>新しいリソースを作成
+## <a name="create-new-resource-for-existing-device"></a>既存のデバイス用に新しいリソースを作成する
 
-物理デバイスを管理する既存の Azure Stack Edge リソースがある場合は、この手順をスキップして、「[アクティブ化キーの取得](#get-the-activation-key)」に進みます。
+Azure Stack Edge Pro の既存の顧客の場合、既存のデバイスを交換またはリセットする必要があるときは、次の手順に従って新しいリソースを作成します。
 
-Azure Stack Edge リソースを作成するには、Azure portal で次の手順を実行します。
+新しいお客様は、ワークロードに対して Azure Stack Edge Pro - GPU デバイスの使用を検討することをお勧めします。 詳細については、「[GPU 搭載の Azure Stack Edge Pro とは](azure-stack-edge-gpu-overview.md)」を参照してください。 GPU デバイス搭載の Azure Stack Edge Pro を注文する方法の詳細については、[Azure Stack Edge Pro - GPU 用に新しいリソースを作成する](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource)ことに関する記事を参照してください。
 
-1. Microsoft Azure の資格情報を使用して、次のサイトにサインインします。 
+既存のデバイス用に新しい Azure Stack Edge Pro リソースを作成するには、Azure portal で次の手順を実行します。
+
+1. Microsoft Azure の資格情報を使用して、次のサイトにサインインします。
 
     - Azure portal (URL: [https://portal.azure.com](https://portal.azure.com))。
     - または、Azure Government ポータル (URL: [https://portal.azure.us](https://portal.azure.us))。 詳細については、[ポータルを使用して Azure Government に接続する](../azure-government/documentation-government-get-started-connect-with-portal.md)方法に関するページを参照してください。
 
-2. 左側のウィンドウで、 **[+ リソースの作成]** を選択します。 **[Azure Stack Edge/Data Box Gateway]** を検索して選択します。 **［作成］** を選択します
-3. Azure Stack Edge Pro デバイスに使用するサブスクリプションを選択します。 Azure Stack Edge リソースをデプロイするリージョンを選択します。 Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関するページを参照してください。
+1. **[+ リソースの作成]** を選択します。 **[Azure Stack Edge]** を検索して選択します。 **[作成]** を選択します。
 
-    デバイスをデプロイする地理的リージョンに最も近い場所を選択します。 このリージョンには、デバイス管理用のメタデータのみが格納されます。 実際のデータは、任意のストレージ アカウントに格納できます。
+1. Azure Stack Edge Pro デバイスのサブスクリプションと、デバイスの出荷先の国を **[発送先]** から選択します。
+
+   ![デバイスのサブスクリプションと出荷先の国を選択する](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-01.png)
+
+
+1. 表示されるデバイスの種類の一覧で、 **[Azure Stack Edge Pro - FPGA]** を選択します。 次に **[選択]** を選択します。 
+
+   **[Azure Stack Edge Pro - FPGA]** のデバイスの種類は、既存のデバイスがある場合にのみ表示されます。 新しいデバイスを注文する必要がある場合は、[Azure Stack Edge Pro - GPU の新しいリソースを作成する](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource)ことに関する記事を参照してください。
+
+   ![Azure Stack Edge サービスを検索する](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-02.png)
+
+1. **[基本]** タブで、次の操作を行います。
+
+   1. 次の **プロジェクトの詳細** を入力または選択します。
     
-    **[Azure Stack Edge Pro]** のオプションで、 **[作成]** を選択します。
+       |設定  |値  |
+       |---------|---------|
+       |サブスクリプション    |この値は、事前に選択した内容に応じて自動的に設定されます。 サブスクリプションは、課金アカウントにリンクされます。 |
+       |Resource group  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/management/overview.md)をご覧ください。     |
 
-    ![Azure Stack Edge サービスを検索する](media/azure-stack-edge-deploy-prep/data-box-edge-sku.png)
+   1. 次の **インスタンス情報** を入力または選択します。
 
-3. **[基本]** タブで、次の **プロジェクト情報** を入力または選択します。
-    
-    |設定  |[値]  |
-    |---------|---------|
-    |サブスクリプション    |事前に選択した内容に応じて自動的に設定されます。 サブスクリプションは、課金アカウントにリンクされます。 |
-    |Resource group  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/management/overview.md)をご覧ください。     |
+       |設定  |値  |
+       |---------|---------|
+       |名前   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 から 50 文字で、英字、数字、ハイフンを含みます。<br> 名前の最初と最後には、英字か数字を使用します。        |
+       |リージョン     |Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関するページを参照してください。 Azure Government を使用している場合は、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」に記載されているすべての政府機関向けリージョンを選択できます。<br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
 
-4. 次の **インスタンス情報** を入力または選択します。
+   1. **[Review + create]\(レビュー + 作成\)** を選択します。
 
-    |設定  |値  |
-    |---------|---------|
-    |名前   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 から 50 文字で、英字、数字、ハイフンを含みます。<br> 名前の最初と最後には、英字か数字を使用します。        |
-    |リージョン     |Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関するページを参照してください。 Azure Government を使用している場合は、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」に記載されているすべての政府機関向けリージョンを選択できます。<br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
+    ![プロジェクトとインスタンスの詳細](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-03.png)
 
-    ![プロジェクトとインスタンスの詳細](media/azure-stack-edge-deploy-prep/data-box-edge-resource.png)
+1. **[確認と作成]** タブで、 **[使用条件]** 、 **[価格の詳細]** 、リソースの詳細を確認します。 **[作成]** を選択します。
 
-5. **配送先住所** を選択します。
+    ![Azure Stack Edge リソースの詳細とプライバシー条件を確認する](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-04.png)
 
-    - デバイスが既にある場合は、 **[I have an Azure Stack Edge device]\(Azure Stack Edge デバイスを持っています\)** のコンボ ボックスを選択します。
-    - 新しいデバイスを注文する場合は、連絡先名、会社、デバイスの配送先住所、連絡先情報を入力します。
+1. リソースの作成には数分かかります。 リソースが正常に作成されてデプロイされると通知が表示されます。 **[リソースに移動]** を選択します。
 
-    ![新しいデバイスの配送先住所](media/azure-stack-edge-deploy-prep/data-box-edge-resource1.png)
-
-6. **確認と作成** をクリックします。
-
-7. **[確認と作成]** タブで、**価格の詳細**、**使用条件**、リソースの詳細を確認します。 **[I have reviewed the privacy terms]\(プライバシー条件を確認しました\)** のコンボ ボックスを選択します。
-
-    ![Azure Stack Edge リソースの詳細とプライバシー条件を確認する](media/azure-stack-edge-deploy-prep/data-box-edge-resource2.png)
-
-8. **［作成］** を選択します
-
-   リソースの作成には数分かかります。 リソースが正常に作成されてデプロイされると通知が表示されます。 **[リソースに移動]** を選択します。
-
-   ![Azure Stack Edge リソースに移動する](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
+   ![Azure Stack Edge リソースに移動する](media/azure-stack-edge-deploy-prep/data-box-edge-resource-01.png)
 
 Microsoft は受け取った注文を確認し、発送の詳細と共にお客様に (メールで) 連絡します。
 
-![Azure Stack Edge Pro の注文確認通知](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
+![Azure Stack Edge Pro の注文確認通知](media/azure-stack-edge-deploy-prep/data-box-edge-resource-02.png)
 
-
-> [!NOTE]
-> 一度に複数の注文を作成したい場合や既存の注文を複製したい場合は、[「Azure サンプル」のスクリプト](https://github.com/Azure-Samples/azure-stack-edge-order)をご利用ください。 詳細については、Readme ファイルを参照してください。
 
 ## <a name="get-the-activation-key"></a>アクティブ化キーの取得
 
@@ -156,7 +152,7 @@ Azure Stack Edge リソースが起動して実行中になったら、アクテ
 
 1. 作成したリソースに移動し、 **[概要]** を選択します。 注文の処理結果に関する通知が表示されます。
 
-    ![[概要] を選択する](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
+    ![[概要] を選択する](media/azure-stack-edge-deploy-prep/data-box-edge-select-device-setup.png)
 
 2. 注文が処理されてデバイスが配送されると、 **[概要]** の情報が更新されます。 既定の **Azure Key Vault 名** をそのまま使用するか、新しい名前を入力します。 **[アクティブ化キーの生成]** を選択します。 コピー アイコンを選択してキーをコピーし、後で使用できるように保存します。
 

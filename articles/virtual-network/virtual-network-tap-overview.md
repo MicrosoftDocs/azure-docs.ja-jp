@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 8347dcd60dcdfbf03f52e25eb24744909c69465a
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 6160dd09edc57f2f52306d4dad0dde413fff0616
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804872"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102617184"
 ---
 # <a name="virtual-network-tap"></a>仮想ネットワーク TAP
 > [!IMPORTANT]
-> 仮想ネットワーク TAP プレビューは、現在、すべての Azure リージョンで保留にされています。 サブスクリプション ID を記入して <azurevnettap@microsoft.com> にメールを送信していただけば、プレビューに関する今後の更新についてお知らせします。 その間は、エージェント ベースの ソリューションまたは NVA ソリューションを使用できます。これらは、[Azure Marketplace オファリング](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/networking?page=1&subcategories=appliances%3Ball&search=Network%20Traffic&filters=partners)で入手できる[パケット ブローカー パートナー ソリューション](#virtual-network-tap-partner-solutions)を通して TAP/ネットワーク可視性機能を提供します。
+> 仮想ネットワーク TAP プレビューは、現在、すべての Azure リージョンで保留にされています。 サブスクリプション ID を記入して <azurevnettap@microsoft.com> にメールを送信していただけば、プレビューに関する今後の更新についてお知らせします。 その間は、エージェント ベースの ソリューションまたは NVA ソリューションを使用できます。これらは、[Azure Marketplace オファリング](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances%3Ball&search=Network%20Traffic&filters=partners)で入手できる[パケット ブローカー パートナー ソリューション](#virtual-network-tap-partner-solutions)を通して TAP/ネットワーク可視性機能を提供します。
 
 Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) を使用すると、仮想マシン ネットワークのトラフィックをネットワーク パケット コレクターまたは分析ツールに連続してストリーミングできます。 コレクターまたは分析ツールは、[ネットワーク仮想アプライアンス](https://azure.microsoft.com/solutions/network-appliances/) パートナーから提供されています。 仮想ネットワーク TAP を使用できることが検証されたパートナー ソリューションの一覧については、[パートナー ソリューション](#virtual-network-tap-partner-solutions)に関するページを参照してください。
 次の図は、仮想ネットワーク TAP のしくみを示しています。 仮想ネットワークにデプロイされている仮想マシンに接続された[ネットワーク インターフェイス](virtual-network-network-interface.md)に TAP 構成を追加できます。 接続先は、監視対象のネットワーク インターフェイスまたは [ピアリングされた仮想](virtual-network-peering-overview.md)ネットワークと同じ仮想ネットワーク内の仮想ネットワーク IP アドレスです。 仮想ネットワーク TAP 用のコレクター ソリューションは、高可用性のために Azure 内部ロード バランサーの背後にデプロイできます。
@@ -64,6 +64,7 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/marketplace-azure)
+- [Noname Security](https://nonamesecurity.com/)
 - [Riverbed SteelCentral AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
 - [RSA NetWitness® Platform](https://www.rsa.com/content/dam/en/solution-brief/rsa-netwitness-platform-overview-for-federal-agencies.pdf)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)

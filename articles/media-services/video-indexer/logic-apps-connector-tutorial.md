@@ -9,10 +9,10 @@ ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
 ms.openlocfilehash: f3504ca4a706e92081209f4eaaa86af9f71c52b3
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880913"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>チュートリアル: Logic Apps および Power Automate と共に Video Indexer コネクタを使用する

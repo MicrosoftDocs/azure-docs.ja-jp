@@ -3,7 +3,7 @@ title: Azure Media Services のよく寄せられる質問
 description: この記事では、Azure Media Services についてよく寄せられる質問に対する回答を提供します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: ff15206e2373ce6481cb65cbbeeb3c88cd2b7154
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 220aae64bd9ec493af8c8ee61901e27027dc9798
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269422"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103013382"
 ---
 # <a name="media-services-v2-frequently-asked-questions"></a>Media Services v2 のよく寄せられる質問
 
@@ -38,7 +38,7 @@ A:予約ユニットは、エンコーディング タスクとインデック�
 
 Q:ビデオをアップロード、エンコード、および公開しました。 ビデオをストリームしようとしても再生できない場合、どんな原因が考えられますか。
 
-A:最も一般的な原因の 1 つは、再生しようとしているストリーミング エンドポイントが**実行中**の状態になっていないことです。  
+A:最も一般的な原因の 1 つは、再生しようとしているストリーミング エンドポイントが **実行中** の状態になっていないことです。  
 
 Q:ライブ ストリーム上で合成は可能ですか。
 

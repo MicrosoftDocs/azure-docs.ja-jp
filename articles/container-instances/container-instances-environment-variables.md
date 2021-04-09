@@ -4,10 +4,10 @@ description: Azure Container Instances で実行するコンテナーで環境�
 ms.topic: article
 ms.date: 04/17/2019
 ms.openlocfilehash: 92ae59f69b7cb43fee1d3ce8190a85fc20a11f60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86169767"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>コンテナー インスタンスで環境変数を設定する
@@ -143,7 +143,7 @@ Azure:\
 
 Azure portal においてコンテナー開始時の環境変数を設定するには、コンテナーを作成するときに **[構成]** ページで指定します。
 
-1. **[詳細]** ページ上で、 **[再起動ポリシー]** を *[エラー時]* に設定します。
+1. **[詳細]** ページ上で、**[再起動ポリシー]** を *[エラー時]* に設定します。
 2. **[環境変数]** 下で、最初の変数には値 `5` を指定して `NumWords` を入力し、2 番目の変数には値 `8` を指定して `MinLength` を入力します。 
 1. **[確認と作成]** を選択して確定してから、コンテナーをデプロイします。
 

@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
 ms.openlocfilehash: b4a348bbc73e6cfb2fabaa8e401af0ddf7265354
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102561910"
 ---
 # <a name="enclave-aware-containers"></a>エンクレーブ対応コンテナー

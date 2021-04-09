@@ -4,12 +4,12 @@ description: Azure HDInsight ゲートウェイで Hive クエリを実行する
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 63484d882d8ccd387257c6f246c2048a09c77bc8
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 549eab1547b75eb9461b23df2c157290943b4ed9
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933112"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869788"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive のゲートウェイの詳細とベスト プラクティス
 
@@ -21,7 +21,7 @@ HDInsight ゲートウェイは、インターネット経由でパブリック�
 
 次の図は、HDInsight 内のさまざまなすべてのホスト解決の可能性の前に、ゲートウェイがどのように抽象化を提供するかを大ざっぱに示しています。
 
-![ホスト解決の図](./media/gateway-best-practices/host-resolution-diagram.png "ホスト解決の図")
+:::image type="content" source="./media/gateway-best-practices/host-resolution-diagram.png " alt-text="ホスト解決の図" border="true":::
 
 ## <a name="motivation"></a>目的
 
@@ -39,7 +39,7 @@ HDInsight クラスターの前にゲートウェイを配置する目的は、�
 
 次の図は、SELECT クエリで必要な手順を示しています。
 
-![結果の図](./media/gateway-best-practices/result-retrieval-diagram.png "結果の図")
+:::image type="content" source="./media/gateway-best-practices/result-retrieval-diagram.png " alt-text="結果の図" border="true":::
 
 Apache Hive は、HDFS と互換性のあるファイルシステム上のリレーショナル抽象化です。 この抽象化は、Hive 内の **SELECT** ステートメントが、ファイルシステム上の **READ** 操作に対応することを意味します。 **READ** 操作は、ユーザーに報告される前に適切なスキーマに変換されます。 このプロセスの待機時間は、データのサイズとエンド ユーザーに到達するために必要な合計ホップ数によって増加します。
 
@@ -53,9 +53,9 @@ Enterprise Security Pack 対応のクラスターでは、十分に複雑な Apa
 
 * 大きな **SELECT** クエリを実行する場合は、**LIMIT** 句を使用します。 **LIMIT** 句によって、クライアント ホストに報告される合計行数が減少します。 **LIMIT** 句は、結果の生成にのみ影響し、クエリ プランを変更しません。 **LIMIT** 句をクエリ プランに適用するには、構成 `hive.limit.optimize.enable` を使用します。 **LIMIT** は、引数形式  **x, y** を使用して、オフセットと組み合わせることができます。
 
-* **SELECT \** _ を使用する代わりに **SELECT** クエリを実行する場合、目的の列に名前を付けます。 選択する列が少ないほど、読み取られるデータの量が少なくなります。
+* **SELECT\*** を使用する代わりに **SELECT** クエリを実行する場合、目的の列に名前を付けます。 選択する列が少ないほど、読み取られるデータの量が少なくなります。
 
-_ Apache Beeline を使用して、目的のクエリを実行してみてください。 Apache Beeline による結果の取得に長時間かかる場合、外部ツールによって同じ結果を取得する際に、遅延が予想されます。
+* Apache Beeline を使用して、目的のクエリを実行してみてください。 Apache Beeline による結果の取得に長時間かかる場合、外部ツールによって同じ結果を取得する際に、遅延が予想されます。
 
 * 基本的な Hive クエリをテストして、HDInsight ゲートウェイへの接続を確立できることを確認します。 複数の外部ツールから基本的なクエリを実行して、個々のツールが問題なく動作することを確認してください。
 

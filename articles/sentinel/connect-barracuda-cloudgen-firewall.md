@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 9e0aa186e742318ab5793fa8390251d94327bf08
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98632709"
 ---
 # <a name="connect-barracuda-cloudgen-firewall"></a>Barracuda CloudGen Firewall の接続
@@ -39,7 +39,7 @@ Barracuda CloudGen Firewall (CGFW) コネクタを使用すると、Barracuda CG
 
 1. **[Barracuda CloudGen Firewall]** ページの指示に従います。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このドキュメントでは、Barracuda CloudGen Firewall を Azure Sentinel に接続する方法を説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 

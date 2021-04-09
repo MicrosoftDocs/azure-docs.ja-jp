@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
 ms.openlocfilehash: ebaedb5369f3b39372262bfde526706e8d069418
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98789618"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors の診断とパフォーマンス監視
@@ -20,10 +20,10 @@ Reliable Actors ランタイムの EventSource プロバイダー名は "Microso
 
 EventSource イベントの収集または表示に役立つツールとテクノロジの例には、[PerfView](https://www.microsoft.com/download/details.aspx?id=28567)、[Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md)、[セマンティック ログ記録](/previous-versions/msp-n-p/dn774980(v=pandp.10))、[Microsoft TraceEvent ライブラリ](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)があります。
 
-### <a name="keywords"></a>Keywords
+### <a name="keywords"></a>キーワード
 Reliable Actors EventSource に属しているすべてのイベントは、1 つまたは複数のキーワードに関連付けられます。 これにより、収集されたイベントをフィルター処理できます。 次のキーワードのビットが定義されています。
 
-| bit | 説明 |
+| ビット | 説明 |
 | --- | --- |
 | 0x1 |Fabric アクター ランタイムの操作を要約する重要なイベントのセット。 |
 | 0x2 |アクター メソッドの呼び出しを記述するイベントのセット。 詳細については、[アクターに関する入門のトピック](service-fabric-reliable-actors-introduction.md)を参照してください。 |
@@ -83,7 +83,7 @@ Reliable Actors ランタイムは、次のパフォーマンス カウンター
 ### <a name="actor-method-events-and-performance-counters"></a>アクター メソッド イベントとパフォーマンス カウンター
 Reliable Actors ランタイムは、[アクター メソッド](service-fabric-reliable-actors-introduction.md)に関連する次のイベントを出力します。
 
-| イベント名 | イベント ID | Level | Keyword | 説明 |
+| イベント名 | イベント ID | Level | キーワード | 説明 |
 | --- | --- | --- | --- | --- |
 | ActorMethodStart |7 |"詳細" |0x2 |アクター ランタイムがアクター メソッドを呼び出そうとしています。 |
 | ActorMethodStop |8 |"詳細" |0x2 |アクター メソッドが実行を完了しました。 つまり、アクター メソッドに対するランタイムの非同期呼び出しが返され、アクター メソッドによって返されたタスクが完了しました。 |
@@ -100,7 +100,7 @@ Reliable Actors ランタイムは、アクター メソッドの実行に関連
 ### <a name="concurrency-events-and-performance-counters"></a>コンカレンシー イベントとパフォーマンス カウンター
 Reliable Actors ランタイムは、 [コンカレンシー](service-fabric-reliable-actors-introduction.md#concurrency)に関連する次のイベントを出力します。
 
-| イベント名 | イベント ID | Level | Keyword | 説明 |
+| イベント名 | イベント ID | Level | キーワード | 説明 |
 | --- | --- | --- | --- | --- |
 | ActorMethodCallsWaitingForLock |12 |"詳細" |0x8 |このイベントは、アクター内の新しい各ターンの開始時に記述されます。 ターンベースのコンカレンシーを強制するアクターごとのロックを取得するために待機している、保留中のアクター呼び出しの数が含まれています。 |
 
@@ -115,7 +115,7 @@ Reliable Actors ランタイムは、コンカレンシーに関連する次の�
 ### <a name="actor-state-management-events-and-performance-counters"></a>アクター状態管理イベントとパフォーマンス カウンター
 Reliable Actors ランタイムは、 [アクター状態管理](service-fabric-reliable-actors-state-management.md)に関連する次のイベントを出力します。
 
-| イベント名 | イベント ID | Level | Keyword | 説明 |
+| イベント名 | イベント ID | Level | キーワード | 説明 |
 | --- | --- | --- | --- | --- |
 | ActorSaveStateStart |10 |"詳細" |0x4 |アクター ランタイムが、アクター状態を保存しようとしています。 |
 | ActorSaveStateStop |11 |"詳細" |0x4 |アクター ランタイムが、アクター状態の保存を完了しました。 |
@@ -130,7 +130,7 @@ Reliable Actors ランタイムは、アクター状態管理に関連する次�
 ### <a name="events-related-to-actor-replicas"></a>アクター レプリカに関連するイベント
 Reliable Actors ランタイムは、[アクター レプリカ](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors)に関連する次のイベントを出力します。
 
-| イベント名 | イベント ID | Level | Keyword | 説明 |
+| イベント名 | イベント ID | Level | キーワード | 説明 |
 | --- | --- | --- | --- | --- |
 | ReplicaChangeRoleToPrimary |1 |Informational |0x1 |アクター レプリカのロールがプライマリに変わりました。 これは、このパーティションのアクターが、このレプリカ内で作成されることを意味します。 |
 | ReplicaChangeRoleFromPrimary |2 |Informational |0x1 |アクター レプリカのロールがプライマリ以外に変わりました。 これは、このパーティションのアクターが、このレプリカ内で作成されなくなったことを意味します。 このレプリカ内で既に作成されているアクターに、新しい要求は配信されません。 アクターは、処理中のすべての要求が完了したら破棄されます。 |
@@ -138,7 +138,7 @@ Reliable Actors ランタイムは、[アクター レプリカ](service-fabric-
 ### <a name="actor-activation-and-deactivation-events-and-performance-counters"></a>アクターのアクティブ化イベントと非アクティブ化イベントおよびパフォーマンス カウンター
 Reliable Actors ランタイムは、 [アクターのアクティブ化と非アクティブ化](service-fabric-reliable-actors-lifecycle.md)に関連する次のイベントを出力します。
 
-| イベント名 | イベント ID | Level | Keyword | 説明 |
+| イベント名 | イベント ID | Level | キーワード | 説明 |
 | --- | --- | --- | --- | --- |
 | ActorActivated |5 |Informational |0x1 |アクターがアクティブ化されました。 |
 | ActorDeactivated |6 |Informational |0x1 |アクターが非アクティブ化されました。 |
@@ -162,5 +162,5 @@ Reliable Actors ランタイムは、アクターのアクティブ化と非ア�
 ## <a name="next-steps"></a>次のステップ
 * [Reliable Actors の Service Fabric プラットフォームの使用方法](service-fabric-reliable-actors-platform.md)
 * [Actor API リファレンス ドキュメント](/previous-versions/azure/dn971626(v=azure.100))
-* [コード サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [サンプル コード](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [PerfView での EventSource プロバイダー](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

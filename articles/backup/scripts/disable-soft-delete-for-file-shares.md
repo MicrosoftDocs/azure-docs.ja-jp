@@ -4,10 +4,10 @@ description: ストレージ アカウント内のファイル共有に対して
 ms.topic: sample
 ms.date: 02/02/2020
 ms.openlocfilehash: 172a7bd19ffd07ca7900a457c447362343e5f185
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84121285"
 ---
 # <a name="disable-soft-delete-for-file-shares-in-a-storage-account"></a>ストレージ アカウント内のファイル共有に対して論理的な削除を無効にする

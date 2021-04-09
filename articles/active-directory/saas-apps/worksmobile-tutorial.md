@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: jeedes
 ms.openlocfilehash: a8b344cd9e4428c3508534edaec4fd98fb67d832
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96182043"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-line-works"></a>チュートリアル: Azure Active Directory と LINE WORKS の統合

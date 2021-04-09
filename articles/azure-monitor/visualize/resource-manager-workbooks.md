@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
 ms.openlocfilehash: bcd477d30c74f12e2836f41facec23103547c31b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102043509"
 ---
 # <a name="resource-manager-template-samples-for-workbooks-in-azure-monitor"></a>Azure Monitor のブック用の Resource Manager テンプレートのサンプル

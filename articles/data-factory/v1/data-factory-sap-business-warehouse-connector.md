@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 robots: noindex
 ms.openlocfilehash: 513d6b28908b99594eaa525e86690fa75bffb103
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100386970"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用した SAP Business Warehouse からのデータ移動
@@ -31,7 +31,7 @@ ms.locfileid: "100386970"
 このコネクタは、SAP Business Warehouse バージョン 7.x のほか、 MDX クエリを使用した、InfoCubes および QueryCubes (BEx クエリなど) からのデータ コピーをサポートしています。
 
 SAP BW への接続を有効にするには、次のコンポーネントをインストールします。
-- **Data Management Gateway**:Data Factory サービスは、Data Management Gateway と呼ばれるコンポーネントを使用した、オンプレミスのデータ ストア (SAP Business Warehouse を含む) への接続をサポートしています。 Data Management Gateway の詳細およびゲートウェイの設定手順については、[オンプレミスのデータ ストアとクラウド データ ストアの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事をご覧ください。 SAP Business Warehouse が Azure IaaS 仮想マシン (VM) でホストされている場合でも、ゲートウェイは必要です。 ゲートウェイはデータ ストアと同じ VM にインストールできるほか、ゲートウェイがデータベースに接続できれば別の VM にインストールしてもかまいません。
+- **Data Management Gateway**: Data Factory サービスは、Data Management Gateway と呼ばれるコンポーネントを使用した、オンプレミスのデータ ストア (SAP Business Warehouse を含む) への接続をサポートしています。 Data Management Gateway の詳細およびゲートウェイの設定手順については、[オンプレミスのデータ ストアとクラウド データ ストアの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事をご覧ください。 SAP Business Warehouse が Azure IaaS 仮想マシン (VM) でホストされている場合でも、ゲートウェイは必要です。 ゲートウェイはデータ ストアと同じ VM にインストールできるほか、ゲートウェイがデータベースに接続できれば別の VM にインストールしてもかまいません。
 - **SAP NetWeaver ライブラリ**: ゲートウェイ コンピューターにインストールします。 SAP Netweaver ライブラリは SAP 管理者から入手します。また、[SAP ソフトウェアのダウンロード センター](https://support.sap.com/swdc)から直接取得することもできます。 最新のバージョンをダウンロードできる場所は、"**SAP Note #1025361**" を検索して確認してください。 SAP NetWeaver ライブラリ (32 ビットまたは 64 ビット) のアーキテクチャが、ゲートウェイのインストールと一致していることを確認してから、 SAP Note に従って、SAP NetWeaver RFC SDK に含まれるすべてのファイルをインストールします。 SAP NetWeaver ライブラリは、SAP Client Tools のインストールにも含まれます。
 
 > [!TIP]
@@ -49,7 +49,7 @@ SAP BW への接続を有効にするには、次のコンポーネントをイ�
 2. コピー操作用の入力データと出力データを表す **データセット** を作成します。 
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む **パイプライン** を作成します。 
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの SAP Business Warehouse からデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON の使用例: SAP Business Warehouse から Azure BLOB にデータをコピーする](#json-example-copy-data-from-sap-business-warehouse-to-azure-blob)」のセクションを参照してください。 
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの SAP Business Warehouse からデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、この記事のセクション、「[JSON の使用例: SAP Business Warehouse から Azure BLOB へのデータのコピー](#json-example-copy-data-from-sap-business-warehouse-to-azure-blob)」をご覧ください。 
 
 次のセクションでは、SAP BW データ ストアに固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
@@ -84,7 +84,7 @@ encryptedCredential | 暗号化された資格情報の文字列。 | string | �
 | query | SAP BW インスタンスからデータを読み取る MDX クエリを指定します。 | MDX クエリ。 | はい |
 
 
-## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON の使用例:SAP Business Warehouse から Azure BLOB にデータをコピーする
+## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON の使用例: SAP Business Warehouse から Azure BLOB へのデータのコピー
 次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 このサンプルは、オンプレミスの SAP Business Warehouse からAzure Blob Storage にデータをコピーする方法を示しています。 Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているシンクのいずれかにデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることもできます。  
 
 > [!IMPORTANT]
@@ -165,7 +165,7 @@ external プロパティを true に設定すると、このテーブルが Data
 
 
 ### <a name="azure-blob-output-dataset"></a>Azure BLOB の出力データセット
-このデータセットでは、出力 Azure BLOB データセットを定義します。 type プロパティは AzureBlob に設定されます。 typeProperties セクションは、SAP BW インスタンスからコピーしたデータの格納場所を示しています。 データは新しい BLOB に 1 時間おきに書き込まれます (frequency: hour、interval: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
+このデータセットでは、出力 Azure BLOB データセットを定義します。 type プロパティは AzureBlob に設定されます。 typeProperties セクションは、SAP BW インスタンスからコピーしたデータの格納場所を示しています。 データは新しい BLOB に 1 時間おき (頻度: 時間、間隔: 1) に書き込まれます。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
 ```json
 {

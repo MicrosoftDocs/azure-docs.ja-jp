@@ -7,10 +7,10 @@ ms.service: security
 ms.topic: article
 ms.date: 07/14/2020
 ms.openlocfilehash: 60ab9290dd204b9e65fcc612d1b590785450ebed
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94516868"
 ---
 # <a name="threat-modeling-tool-update-release-73007142---07142020"></a>Threat Modeling Tool 更新プログラム リリース 7.3.00714.2 - 2020 年 7 月 14 日

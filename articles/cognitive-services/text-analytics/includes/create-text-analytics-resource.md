@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 02/09/2021
 ms.author: aahi
 ms.openlocfilehash: 5b6479d48a51ba962f2f6bfba16dac3b0886a9ff
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101750071"
 ---
 ## <a name="create-a-cognitive-services-text-analytics-resource"></a>Cognitive Services Text Analytics リソースを作成する
@@ -30,7 +30,7 @@ ms.locfileid: "101750071"
     |サブスクリプション|適切なサブスクリプションを選択します。|
     |場所|近くの場所を選択します。|
     |Pricing tier| 「**S**」 (Standard 価格レベル) と入力します。|
-    |Resource group|使用可能なリソース グループを選択します。|
+    |リソース グループ|使用可能なリソース グループを選択します。|
 
 1. **[作成]** を選択し、リソースが作成されるまで待ちます。 ブラウザーが、新たに作成されたリソースのページに自動的にリダイレクトされます。
 1. 構成された `endpoint` と API キーを収集します。

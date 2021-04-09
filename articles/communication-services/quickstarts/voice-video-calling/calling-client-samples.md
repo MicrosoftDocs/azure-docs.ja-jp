@@ -6,18 +6,21 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/18/2020
+ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: e99af324e02e81e4b6888ee0e054ef466df899c1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b4689f9777cee99b5bd85f733812ba986162360c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661542"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103488112"
 ---
 # <a name="quickstart-use-the-communication-services-calling-client-library"></a>クイック スタート:Communication Services 通話クライアント ライブラリを使用する
+
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 
 Communication Services 通話クライアント ライブラリを使用して音声と動画の通話をアプリに追加することによって、Azure Communication Services の使用を開始します。
 

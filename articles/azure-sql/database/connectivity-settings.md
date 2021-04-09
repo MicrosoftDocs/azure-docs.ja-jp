@@ -10,10 +10,10 @@ ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
 ms.openlocfilehash: 84fdca96f2ce42c608e7def98f6a3400964cfe46
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101691928"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL の接続設定

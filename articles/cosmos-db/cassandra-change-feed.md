@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: thvankra
 ms.openlocfilehash: 10f037dddcce43a1e023982af816660bd325d57f
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97605095"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Cassandra 用 Azure Cosmos DB API でフィードを変更する

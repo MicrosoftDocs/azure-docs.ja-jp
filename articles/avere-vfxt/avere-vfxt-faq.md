@@ -8,10 +8,10 @@ ms.date: 12/19/2019
 ms.author: rohogue
 ms.custom: references_regions
 ms.openlocfilehash: 647a9792384a21dfc191371ef444cbdc098bc819
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92342367"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure の FAQ
@@ -26,7 +26,7 @@ Avere vFXT for Azure は、重要なワークロードの効率的な処理の�
 
 ### <a name="is-avere-vfxt-a-storage-solution"></a>Avere vFXT はストレージ ソリューションですか?
 
-いいえ。 Avere vFXT for Azure は、EMC や NetApp の NAS または Azure Blob コンテナーといったストレージ環境に接続するファイル システム*キャッシュ*です。 Avere vFXT は、クライアントからのデータ要求を効率化し、提供するデータをキャッシュすることによって大規模な環境のパフォーマンスを徐々に向上させます。 Avere vFXT 自体にはデータは保存されません。 その背後に保存されているデータの量に関する情報は保持されません。
+いいえ。 Avere vFXT for Azure は、EMC や NetApp の NAS または Azure Blob コンテナーといったストレージ環境に接続するファイル システム *キャッシュ* です。 Avere vFXT は、クライアントからのデータ要求を効率化し、提供するデータをキャッシュすることによって大規模な環境のパフォーマンスを徐々に向上させます。 Avere vFXT 自体にはデータは保存されません。 その背後に保存されているデータの量に関する情報は保持されません。
 
 ### <a name="is-avere-vfxt-a-tiering-solution"></a>Avere vFXT は階層化ソリューションですか?
 

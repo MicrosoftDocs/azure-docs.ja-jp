@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: c51a2a06-6e97-429b-a346-b433a785c9f0
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: 83c149e92276265b5b5236ae56c475d7307c18e4
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 54bfd7c6e691efbd754e9ea2b804e16b3e07ebbe
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093912"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670962"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>Azure Virtual Machines への SAP HANA のインストール
 ## <a name="introduction"></a>はじめに
@@ -57,19 +56,19 @@ ms.locfileid: "97093912"
 このフェーズでは、VM をデプロイして HANA をインストールする手順を実行し、インストール後に、選択したオペレーティング システムを最終的に最適化する必要があります。
 
 1. Azure ギャラリーから基本イメージを選択します。 SAP HANA 用に独自のオペレーティング システム イメージを構築する場合は、SAP HANA を正常にインストールするために必要なさまざまなパッケージをすべて把握しておく必要があります。 それ以外の場合は、Azure イメージ ギャラリーから SAP または SAP HANA 用の SUSE および Red Hat のイメージを使用することをお勧めします。 これらのイメージには、HANA を正常にインストールするために必要なパッケージが含まれています。 オペレーティング システム プロバイダーとのサポート契約に基づいて、ライセンスを持ち込むイメージを選択する必要があります。 または、サポートを含む OS イメージを選択します。
-2. ライセンスを持ち込む必要があるゲスト OS イメージを選択した場合は、最新の修正プログラムをダウンロードして適用できるように、その OS イメージをサブスクリプションに登録する必要があります。 この手順では、 たとえば、Azure に SMT サーバーなどのプライベート インスタンスを設定していない限り、パブリック インターネット アクセスが必要になります。
+2. ライセンスを持ち込む必要があるゲスト OS イメージを選択した場合は、最新の修正プログラムをダウンロードして適用できるように、その OS イメージをサブスクリプションに登録する必要があります。 この手順では、パブリック インターネット アクセスが必要になります。 ただし、Azure 内に (たとえば、SMT サーバーの) プライベート インスタンスを設定している場合を除きます。
 3. VM のネットワーク構成を決定します。 詳細については、「[Azure における SAP HANA インフラストラクチャの構成と運用](./hana-vm-operations.md)」ドキュメントを参照してください。 Azure の仮想ネットワーク カードに割り当てられるネットワーク スループット クォータはないことに注意してください。 そのため、さまざまな vNIC 経由でトラフィックを転送する唯一の目的は、セキュリティに関する考慮事項に基づいています。 複数の vNIC を経由するトラフィック ルーティングの複雑さと、セキュリティ面から適用される要件との間で、サポート可能な妥協点を見つけてください。
-3. VM をデプロイして サブスクリプションに登録したら、最新の修正プログラムをオペレーティング システムに適用します。 または、オペレーティング システムのサポートが含まれているイメージを選択した場合は、VM は既に修正プログラムにアクセスできます。 
+3. VM をデプロイして登録したら、最新の修正プログラムをオペレーティング システムに適用します。 登録は、独自のサブスクリプションに対するものです。 または、オペレーティング システムのサポートが含まれているイメージを選択した場合は、VM は既に修正プログラムにアクセスできます。 
 4. SAP HANA に必要なチューニングを適用します。 これらのチューニングは、次の SAP サポート ノートに記載されています。
 
     - [SAP サポート ノート #2694118 - Azure での Red Hat Enterprise Linux HA アドオン](https://launchpad.support.sap.com/#/notes/2694118)
-    - [SAP サポート ノート #1984787 – SUSE Linux Enterprise Server 12: インストールに関する注意事項](https://launchpad.support.sap.com/#/notes/1984787) 
+    - [SAP サポート ノート #1984787 - SUSE LINUX Enterprise Server 12: インストールに関する注意事項](https://launchpad.support.sap.com/#/notes/1984787) 
     - [SAP サポート ノート #2578899 - SUSE Linux Enterprise Server 15: インストールに関する注意事項](https://launchpad.support.sap.com/#/notes/2578899)
     - [SAP support note #2002167 - Red Hat Enterprise Linux 7.x: インストールとアップグレード](https://launchpad.support.sap.com/#/notes/0002002167)
     - [SAP support note #2292690 - SAP HANA DB:Recommended OS settings for RHEL 7 (SAP HANA DB: RHEL 7 に推奨される OS 設定)](https://launchpad.support.sap.com/#/notes/0002292690) 
     -  [SAP サポート ノート #2772999 - Red Hat Enterprise Linux 8.x: インストールと構成](https://launchpad.support.sap.com/#/notes/2772999) 
     -  [SAP サポート ノート #2777782 - SAP HANA DB: RHEL 8 に推奨される OS 設定](https://launchpad.support.sap.com/#/notes/2777782)
-    -  [SAP サポート ノート #2455582 - Linux: GCC 6.x でコンパイルされた SAP アプリケーションの実行](https://launchpad.support.sap.com/#/notes/0002455582)
+    -  [SAP サポート ノート #2455582 - Linux:GCC 6.x でコンパイルされた SAP アプリケーションの実行](https://launchpad.support.sap.com/#/notes/0002455582)
     -  [SAP サポート ノート #2382421 - HANA および OS レベルでのネットワーク構成の最適化](https://launchpad.support.sap.com/#/notes/2382421)
 
 1. SAP HANA の Azure Storage の種類を選択します。 この手順では、SAP HANA インストールのストレージ レイアウトを決定する必要があります。 接続されている Azure ディスクまたはネイティブ Azure NFS 共有のいずれかを使用します。 サポートされている Azure Storage の種類、および使用できるさまざまな Azure Storage の種類の組み合わせについては、「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」で説明されています。 記載されている構成を開始点とします。 非運用環境システムでは、より低いスループットまたは IOPS を構成できる場合があります。 運用を目的とする場合は、もう少し多くのスループットと IOPS の構成が必要になる可能性があります。

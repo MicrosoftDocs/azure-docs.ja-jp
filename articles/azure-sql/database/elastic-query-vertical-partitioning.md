@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: c507a4c618713ba83d25b9defa918092db1a3c8e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92792091"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>スキーマが異なるクラウド データベース間のクエリ (プレビュー)
@@ -121,7 +121,7 @@ select * from sys.external_tables;
 エラスティック クエリでは、既存の外部テーブル構文を拡張して、RDBMS 型の外部データ ソースを使用する外部テーブルを定義します。 列方向のパーティション分割のための外部テーブルの定義は、次の側面に対応しています。
 
 * **[スキーマ]** : 外部テーブル DDL では、ご利用のクエリで使用できるスキーマが定義されます。 外部テーブル定義に指定するスキーマは、実際のデータが格納されているリモート データベース内のテーブルのスキーマに一致する必要があります。
-* **リモート データベース参照** :外部テーブル DDL では、外部データ ソースが参照されます。 外部データ ソースは、実際のテーブル データが格納されているリモート データベースのサーバー名とデータベース名を指定します。
+* **リモート データベース参照**:外部テーブル DDL では、外部データ ソースが参照されます。 外部データ ソースは、実際のテーブル データが格納されているリモート データベースのサーバー名とデータベース名を指定します。
 
 前のセクションで説明したように外部データ ソースを使用する、外部テーブルを作成するための構文を次に示します。
 
@@ -135,7 +135,7 @@ SCHEMA_NAME 句と OBJECT_NAME 句は、外部テーブル定義をリモート 
 DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 ```
 
-**CREATE/DROP EXTERNAL TABLE に対するアクセス許可** : 外部テーブル DDL に ALTER ANY EXTERNAL DATA SOURCE アクセス許可が必要です。これは、基になるデータ ソースを参照する場合にも必要です。  
+**CREATE/DROP EXTERNAL TABLE に対するアクセス許可**: 外部テーブル DDL に ALTER ANY EXTERNAL DATA SOURCE アクセス許可が必要です。これは、基になるデータ ソースを参照する場合にも必要です。  
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 

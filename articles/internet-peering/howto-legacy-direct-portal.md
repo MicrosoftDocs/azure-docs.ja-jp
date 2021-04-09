@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 496774f034c861131624b552b1acefca9f399ea8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84700265"
 ---
 # <a name="convert-a-legacy-direct-peering-to-an-azure-resource-by-using-the-azure-portal"></a>Azure portal を使用してレガシの Direct ピアリングを Azure リソースに変換する

@@ -9,10 +9,10 @@ ms.date: 12/1/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: 950a786b29a8144c4bb192fa6078e8c88d67481d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100384454"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>Synapse で一般的なタスクを実行するために必要なロールについて理解する
@@ -118,7 +118,7 @@ Integration Runtime 状態を監視する|Synapse ユーザー|read、pipelines/
 >[!Note]
 >別のテナントのゲスト ユーザーは、割り当てられているロールに関係なく、ロールの割り当てを確認、追加、または変更できません。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Synapse RBAC ロールの割り当てを確認する方法](./how-to-review-synapse-rbac-role-assignments.md)について学習する
 

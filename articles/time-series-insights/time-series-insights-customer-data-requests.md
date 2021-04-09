@@ -10,10 +10,10 @@ services: time-series-insights
 ms.date: 10/02/2020
 ms.custom: seodec18
 ms.openlocfilehash: b5ecbabe4a5c3458c77d145fbce1281550470e00
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96019074"
 ---
 # <a name="summary-of-customer-data-request-features"></a>顧客データ要求機能の概要
@@ -56,7 +56,7 @@ Time Series Insights は、Azure Portal のポリシー ブレードと統合さ
 
 ### <a name="view-and-export-data"></a>データの表示とエクスポート
 
-Time Series Insights 内に格納されているデータを表示およびエクスポートするには、そのデータを検索する必要があります。 Time Series Insights エクスプローラーまたは Time Series Insights クエリ API を使用して、データを表示およびエクスポートできます。 Time Series Insights エクスプローラーを使用してデータを表示およびエクスポートするには、まず、対象のユーザー データを検索して見つけます。 検索後に、グラフを右クリックし、 **[イベントの探索]** を選択します。 イベント グリッドが表示され、CSV および JSON としてデータをエクスポートするオプションが示されます。
+Time Series Insights 内に格納されているデータを表示およびエクスポートするには、そのデータを検索する必要があります。 Time Series Insights エクスプローラーまたは Time Series Insights クエリ API を使用して、データを表示およびエクスポートできます。 Time Series Insights エクスプローラーを使用してデータを表示およびエクスポートするには、まず、対象のユーザー データを検索して見つけます。 検索後に、グラフを右クリックし、**[イベントの探索]** を選択します。 イベント グリッドが表示され、CSV および JSON としてデータをエクスポートするオプションが示されます。
 
 詳細については、「[Azure Time Series Insights エクスプローラー](time-series-insights-explorer.md)」をお読みください。
 

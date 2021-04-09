@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: ed9690a750ad6e1167ba0a0ae4a87b603c4a1f15
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a889275782388781eadffb7cf0a24771bf6e9e4f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717402"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030836"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Monitor ログのデプロイの設計
 
@@ -87,9 +87,9 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用すると、
 
     > [!NOTE]
     > リソース コンテキスト クエリでログを使用できるのは、関連するリソースにログが適切に関連付けられている場合のみです。 現在、次のリソースには制限があります。
-    > - Azure 外部のコンピューター
+    > - Azure の外部のコンピューター - [Azure Arc for Servers](../../azure-arc/servers/index.yml) 経由でのみ、リソースコンテキストに対してサポートされます
     > - Service Fabric
-    > - Application Insights
+    > - Application Insights - [ワークスペースベースの Application Insights リソース](../app/create-workspace-resource.md)の使用時にのみ、リソースコンテキストに対してサポートされます
     >
     > ログがリソースに適切に関連付けられているかをテストするために、クエリを実行して、関心があるレコードを調べることができます。 正しいリソース ID が [_ResourceId](./log-standard-columns.md#_resourceid) プロパティにあれば、リソース中心クエリでデータを使用できます。
 

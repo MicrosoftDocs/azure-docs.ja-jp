@@ -9,10 +9,10 @@ ms.custom: mvc, devx-track-azurecli
 ms.topic: sample
 ms.date: 08/07/2019
 ms.openlocfilehash: 6bbf5f3a0a7d32425f80687de10444ee0819b9df
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94660459"
 ---
 # <a name="monitor-and-scale-a-single-postgresql-server-using-azure-cli"></a>Azure CLI での単一の PostgreSQL サーバーの監視とスケーリング
@@ -46,5 +46,5 @@ ms.locfileid: "94660459"
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Database for PostgreSQL のコンピューティングとストレージ](../concepts-pricing-tiers.md)の詳細について学習します
-- 他のスクリプトを試す: [Azure Database for PostgreSQL の Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- さらに他のスクリプトも試す: [Azure Database for PostgreSQL 用 Azure CLI サンプル](../sample-scripts-azure-cli.md)
 - [Azure CLI](/cli/azure) の詳細について学習します

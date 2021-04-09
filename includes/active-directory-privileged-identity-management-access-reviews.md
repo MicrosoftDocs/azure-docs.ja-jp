@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: active-directory
-author: barclayn
+author: ajburnle
 ms.service: active-directory
 ms.topic: include
 ms.date: 12/07/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: cbcd4b459faa3bf67f591cc7afab0bf0027062e1
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 9c91eb6cfa18c5302a83347f671e4552befcf3e2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96842310"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623477"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>1 つ以上のアクセス レビューを作成する
 
@@ -38,6 +38,7 @@ ms.locfileid: "96842310"
     > [!NOTE]
     > - ここで選択されるロールには、[永続的なロールと資格のあるロール](../articles/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)の両方が含まれます。
     > - 複数のロールを選択すると、複数のアクセス レビューが作成されます。 たとえば、5 つのロールを選択すると、5 つの別々のアクセス レビューが作成されます。
+    > - グループが割り当てられているロールの場合、レビュー対象のロールにリンクされている各グループのアクセスは、アクセス レビューの一部としてレビューされます。
 
     **Azure AD ロール** のアクセス レビューを作成する場合の、レビューのメンバーシップ一覧の例を次に示します。
 
@@ -52,8 +53,8 @@ ms.locfileid: "96842310"
     ![選択したユーザーまたはメンバー (セルフ) のレビュー担当者の一覧](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
 
     - **選択したユーザー** - アクセスする必要があるユーザーがわからない場合は、このオプションを使用します。 このオプションでは、リソース所有者またはグループ マネージャーにレビューを割り当て、完了してもらうことができます。
-    - **メンバー (セルフ)** - ユーザーに自分のロール割り当てを確認してもらう場合は、このオプションを使用します。
-    - **(プレビュー) マネージャー** – ユーザーのマネージャーにロールの割り当てをレビューしてもらうには、このオプションを使用します。 (プレビュー) マネージャーを選択すると、フォールバック レビュー担当者を指定するオプションも表示されます。 フォールバック レビュー担当者は、ディレクトリにマネージャーが指定されていない場合に、ユーザーをレビューするように求められます。
+    - **メンバー (セルフ)** - ユーザーに自分のロール割り当てを確認してもらう場合は、このオプションを使用します。 このオプションが選択されている場合、ロールに割り当てられたグループはレビューに含まれません。
+    - **マネージャー** – ユーザーのマネージャーにロールの割り当てをレビューしてもらうには、このオプションを使用します。 マネージャーを選択すると、フォールバック レビュー担当者を指定するオプションも表示されます。 フォールバック レビュー担当者は、ディレクトリにマネージャーが指定されていない場合に、ユーザーをレビューするように求められます。 ロールに割り当てられたグループは、フォールバック レビュー担当者によってレビューされます (選択されている場合)。 
 
 ### <a name="upon-completion-settings"></a>完了時の設定
 

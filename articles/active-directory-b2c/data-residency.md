@@ -13,17 +13,17 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: references_regions
 ms.openlocfilehash: 9cb7a97b3f57ee7ac10babc53ee2263d51838777
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92309680"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C:利用可能なリージョンとデータの保存場所
 
 利用可能なリージョンとデータの保存場所は、まったく異なる 2 つの概念です。また、Azure AD B2C とそれ以外の Azure サービスとでは、利用可能なリージョンとデータの保存場所との関係が異なります。 この記事では、これら 2 つの概念の違いについて説明するとともに、Azure と Azure AD B2C に対してそれらがどのように適用されるかを比較します。
 
-Azure AD B2C は **世界中で一般提供** されており、 **データの保存場所** としては **米国、ヨーロッパ、またはアジア太平洋** を選択することができます。
+Azure AD B2C は **世界中で一般提供** されており、**データの保存場所** としては **米国、ヨーロッパ、またはアジア太平洋** を選択することができます。
 
 [利用可能なリージョン](#region-availability)とは、サービスを使用できる場所を指します。
 
@@ -73,9 +73,9 @@ Azure AD B2C のプレビュー期間中に B2C テナントを作成した場�
 
 その場合は、開発とテストの目的のみにテナントを使用する必要があります。 運用アプリケーションにはプレビュー テナントを使わないでください。
 
-プレビュー B2C テナントから運用スケール B2C テナントへの **移行パスはありません** 。 運用アプリケーション用の新しい B2C テナントを作成する必要があります。
+プレビュー B2C テナントから運用スケール B2C テナントへの **移行パスはありません**。 運用アプリケーション用の新しい B2C テナントを作成する必要があります。
 
-プレビュー B2C テナントを削除し、同じドメイン名で運用スケール B2C テナントを作成する場合、既知の問題があります。 *運用スケール B2C テナントは異なるドメイン名で作成する必要があります* 。
+プレビュー B2C テナントを削除し、同じドメイン名で運用スケール B2C テナントを作成する場合、既知の問題があります。 *運用スケール B2C テナントは異なるドメイン名で作成する必要があります*。
 
 ![[テナントの種類] (プレビュー テナント) のスクリーンショット。](./media/data-residency/preview-b2c-tenant.png)
 

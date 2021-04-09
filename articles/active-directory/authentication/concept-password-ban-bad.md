@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b019c12103a0324e21ef7c06b0c7a5d7fe14e6ec
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 740201b84323f5a01ab01bb21ec458a19832e499
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743889"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652022"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Azure Active Directory パスワード保護を使用して不適切なパスワードを排除する
 
@@ -174,7 +174,7 @@ Azure AD パスワード保護は、パスワード スプレー攻撃で使用�
 次の手順では、ユーザーの正規化された新しいパスワード内の、禁止されたパスワードのすべてのインスタンスを特定します。 次の基準に基づいてポイントが割り当てられます。
 
 1. ユーザーのパスワードに含まれる各禁止パスワードには、1 ポイントが与えられます。
-1. 残りの一意の各文字には、1 ポイントが与えられます。
+1. 禁止パスワードに含まれない残りの各文字には、1 ポイントが与えられます。
 1. パスワードが受け入れられるには、少なくとも 5 ポイント必要です。
 
 次の 2 つのシナリオ例では、Contoso が Azure AD パスワード保護を使用していて、カスタム禁止パスワード リストに "contoso" が含まれているとします。 また、グローバル リストに "blank" が含まれているとします。

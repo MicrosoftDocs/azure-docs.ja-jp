@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
 ms.openlocfilehash: a43c1092cd916877b24fc145ed05c92f50127cca
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92452727"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>チュートリアル: Azure Active Directory と FM:Systems の統合
@@ -41,7 +41,7 @@ FM:Systems と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* FM:Systems では、 **IDP** Initiated SSO がサポートされます
+* FM:Systems では、**IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-fmsystems-from-the-gallery"></a>ギャラリーからの FM:Systems の追加
 
@@ -61,13 +61,13 @@ Azure AD への FM:Systems の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **FM:Systems** 」と入力し、結果ウィンドウで **[FM:Systems]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**FM:Systems**」と入力し、結果ウィンドウで **[FM:Systems]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の FM:Systems](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、FM:Systems で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、FM:Systems で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと FM:Systems 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 FM:Systems で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ FM:Systems で Azure AD のシングル サインオンを構成してテスト�
 
 FM:Systems で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **FM:Systems** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **FM:Systems** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -140,7 +140,7 @@ FM:Systems で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -152,7 +152,7 @@ FM:Systems で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に FM:Systems へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[FM:Systems]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[FM:Systems]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -182,7 +182,7 @@ FM:Systems で Azure AD シングル サインオンを構成するには、次�
    
     ![システム管理](./media/fm-systems-tutorial/ic795905.png "システム管理")
 
-3. **[新しいユーザーの作成]** をクリックします。
+3. [**新規ユーザーの作成**] をクリックします。
    
     ![新しいユーザーの作成](./media/fm-systems-tutorial/ic795906.png "[新しいユーザーの作成]")
 
@@ -190,7 +190,7 @@ FM:Systems で Azure AD シングル サインオンを構成するには、次�
    
     ![ユーザーの作成](./media/fm-systems-tutorial/ic795907.png "[Create User]")
    
-    a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの **ユーザー名** 、 **パスワード** 、 **確認パスワード** 、 **電子メール** 、 **従業員 ID** を入力します。
+    a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの **ユーザー名**、**パスワード**、**確認パスワード**、**電子メール**、**従業員 ID** を入力します。
    
     b. **[次へ]** をクリックします。
 

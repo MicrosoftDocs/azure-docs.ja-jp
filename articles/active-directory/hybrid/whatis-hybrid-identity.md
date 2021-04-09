@@ -14,17 +14,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 895355b5acebffe6ad24b15b0c709d21e8f20be4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90016650"
 ---
 # <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Azure Active Directory でのハイブリッド ID とは
 
 今日、ビジネスや企業ではますます、オンプレミスのアプリケーションとクラウド アプリケーションが混在して使用されるようになっています。  ユーザーは、オンプレミスおよびクラウドの両方のアプリケーションへのアクセス権を必要とします。 オンプレミスとクラウドの両方でユーザーを管理するのは困難なシナリオです。 
 
-Microsoft の ID ソリューションは、オンプレミスおよびクラウドベースの機能を範囲とします。  これらのソリューションでは、場所に関係なく、すべてのリソースに対する認証と承認のための共通ユーザー ID を作成します。 これを**ハイブリッド ID** と呼んでいます。
+Microsoft の ID ソリューションは、オンプレミスおよびクラウドベースの機能を範囲とします。  これらのソリューションでは、場所に関係なく、すべてのリソースに対する認証と承認のための共通ユーザー ID を作成します。 これを **ハイブリッド ID** と呼んでいます。
 
 Azure AD に対するハイブリッド ID、およびハイブリッド ID 管理によって、これらのシナリオが可能になります。
 

@@ -4,14 +4,14 @@ description: Azure HPC Cache を使用するための前提条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: a31aee3f4548d3137fa1241aaa3a0f6171cf6895
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7d40dcf80d9ec566146bbe46bc2cb3c558584fcd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412512"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104775767"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache の前提条件
 
@@ -61,7 +61,7 @@ Azure HPC Cache には、次の条件を満たした専用のサブネットが�
 * Azure Blob Storage のエンドポイントなど内部のリソースにアクセスするには、Azure ベースの DNS サーバーが必要です。
 * オンプレミスのストレージにアクセスするためには、ストレージのホスト名を解決できるカスタム DNS サーバーを構成する必要があります。 キャッシュを作成する **前** に、これを実行する必要があります。
 
-Blob Storage にだけアクセスできればよいのであれば、Azure に用意されている既定の DNS サーバーをキャッシュに使用できます。 一方、他のリソースにアクセスする必要がある場合は、カスタム DNS サーバーを作成し、Azure 固有の解決要求は Azure DNS サーバーに転送するようそのカスタム DNS サーバーを構成する必要があります
+Blob Storage だけを使用するのであれば、Azure に用意されている既定の DNS サーバーをキャッシュに使用できます。 一方、Azure 外部のストレージまたは他のリソースにアクセスする必要がある場合は、カスタム DNS サーバーを作成し、Azure 固有の解決要求は Azure DNS サーバーに転送するようそのカスタム DNS サーバーを構成する必要があります。
 
 カスタム DNS サーバーを使用するには、キャッシュを作成する前に、次のセットアップ手順を行う必要があります。
 
@@ -91,14 +91,18 @@ Azure 仮想ネットワークと DNS サーバーの構成について詳しく
   ロールを追加するには、[ストレージ ターゲットを追加](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)する手順に従ってください。
 
 ## <a name="storage-infrastructure"></a>ストレージ インフラストラクチャ
+<!-- heading is linked in create storage target GUI as aka.ms/hpc-cache-prereq#storage-infrastructure - make sure to fix that if you change the wording of this heading -->
 
-キャッシュでは、Azure BLOB コンテナーまたは NFS ハードウェア ストレージ エクスポートがサポートされます。 キャッシュを作成した後で、ストレージ ターゲットを追加します。
+キャッシュは、Azure BLOB コンテナー、NFS ハードウェア ストレージのエクスポート、および NFS でマウントされた ADLS BLOB コンテナー (現在プレビュー段階) をサポートしています。 キャッシュを作成した後で、ストレージ ターゲットを追加します。
 
 ストレージの種類ごとに特定の前提条件があります。
 
 ### <a name="blob-storage-requirements"></a>Blob Storage の要件
 
 お使いのキャッシュで Azure Blob Storage の使用を希望する場合、互換性のあるストレージ アカウントに加え、空の BLOB コンテナーか、Azure HPC Cache フォーマットのデータが事前設定されたコンテナーが必要です ([Azure Blob Storage にデータを移動する](hpc-cache-ingest.md)方法を参照)。
+
+> [!NOTE]
+> NFS でマウントされた Blob Storage には、異なる要件が適用されます。 詳細については、[ADLS-NFS ストレージの要件](#nfs-mounted-blob-adls-nfs-storage-requirements-preview)に関するセクションを参照してください。
 
 ストレージ ターゲットを追加する前にアカウントを作成してください。 ターゲットを追加するときに、新しいコンテナーを作成できます。
 
@@ -153,13 +157,6 @@ NFS ストレージ システム (たとえば、オンプレミスのハード�
 
   * ファイアウォール設定で、これらのすべての必要なポートでトラフィックが許可されていることを確認します。 Azure で使用されているファイアウォールとデータ センターのオンプレミス ファイアウォールを必ず確認してください。
 
-* **ディレクトリ アクセス:** ストレージ システム上で `showmount` コマンドを有効にします。 Azure HPC Cache でこのコマンドを使用して、ストレージ ターゲット構成が有効なエクスポートを指していることを確認します。また、複数のマウントが同じサブディレクトリにアクセスしないようにします (ファイルの競合が発生するリスクがあります)。
-
-  > [!NOTE]
-  > NFS ストレージ システムが NetApp の ONTAP 9.2 オペレーティング システムを使用している場合は、 **`showmount` を有効にしないでください**。 [Microsoft サービスおよびサポートに問い合わせてください](hpc-cache-support-ticket.md)。
-
-  NFS ストレージ ターゲットの [トラブルシューティングのアーティクル](troubleshoot-nas.md#enable-export-listing) でディレクトリ リスト アクセスの詳細をご覧ください。
-
 * **ルート アクセス** (読み取り/書き込み): キャッシュからは、ユーザー ID 0 としてバックエンド システムに接続されます。 ストレージ システムで次の設定を確認します。
   
   * `no_root_squash`を有効にする: このオプションを選択すると、リモート ルート ユーザーは、ルートによって所有されているファイルにアクセスできるようになります。
@@ -169,6 +166,37 @@ NFS ストレージ システム (たとえば、オンプレミスのハード�
   * ストレージに別のエクスポートのサブディレクトリであるエクスポートがある場合、キャッシュにパスの最下位セグメントへのルート アクセスがあることをご確認ください。 詳細については、NFS ストレージ ターゲットのトラブルシューティングに関するアーティクルに記載されている[ディレクトリ パスのルートアクセス](troubleshoot-nas.md#allow-root-access-on-directory-paths) をご参照ください。
 
 * NFS バックエンド ストレージは、互換性のあるハードウェア プラットフォームおよびソフトウェア プラットフォームである必要があります。 詳細については、Azure HPC Cache チームにお問い合わせください。
+
+### <a name="nfs-mounted-blob-adls-nfs-storage-requirements-preview"></a>NFS でマウントされた Blob (ADLS-NFS) Storage の要件 (プレビュー段階)
+
+Azure HPC Cache では、NFS プロトコルでマウントされた BLOB コンテナーをストレージ ターゲットとして使用することもできます。
+
+> [!NOTE]
+> Azure Blob Storage での NFS 3.0 プロトコルのサポートはパブリック プレビューの段階にあります。 可用性は制限されており、機能は今後、一般公開された後で変更される可能性があります。 実稼働システムではプレビュー テクノロジを使用しないでください。
+>
+> このプレビュー機能の詳細については、[Azure Blob Storage での NFS 3.0 プロトコルのサポート](../storage/blobs/network-file-system-protocol-support.md)に関するページを参照してください。
+
+ストレージ アカウントの要件は、ADLS-NFS Blob Storage ターゲットと標準 Blob Storage ターゲットで異なります。 [ネットワーク ファイル システム (NFS) 3.0 プロトコルを使用した Blob Storage のマウント](../storage/blobs/network-file-system-protocol-support-how-to.md)に関するページの手順に従って、NFS 対応のストレージ アカウントを作成および構成します。
+
+ここでは、手順の概要について説明します。 これらの手順は変更される可能性があるため、現在の詳細については、常に [ADLS-NFS の手順](../storage/blobs/network-file-system-protocol-support-how-to.md)に関するページを参照してください。
+
+1. 必要な機能が、作業を予定しているリージョンで利用できることを確認します。
+
+1. サブスクリプションに対して NFS プロトコル機能を有効にします。 ストレージ アカウントを作成する *前に*、この手順を実行します。
+
+1. ストレージ アカウント用のセキュリティで保護された仮想ネットワーク (VNet) を作成します。 NFS が有効なストレージ アカウントと Azure HPC Cache には、同じ仮想ネットワークを使用する必要があります。 (キャッシュと同じサブネットは使用しないでください。)
+
+1. ストレージ アカウントを作成します。
+
+   * 標準 Blob Storage アカウント用のストレージ アカウント設定を使用する代わりに、[操作方法に関するドキュメント](../storage/blobs/network-file-system-protocol-support-how-to.md)に記載されている手順に従ってください。 サポートされているストレージ アカウントの種類は、Azure リージョンによって異なる場合があります。
+
+   * **[ネットワーク]** セクションで、作成したセキュリティで保護された仮想ネットワーク内のプライベート エンドポイントを選択します (推奨)。または、セキュリティで保護された VNet からのアクセスが制限されているパブリック エンドポイントを選択します。
+
+   * NFS アクセスを有効にする場合は、必ず **[詳細設定]** セクションを完了してください。
+
+   * 「[アクセス許可](#permissions)」で前述のように、キャッシュ アプリケーションには、Azure Storage アカウントへのアクセス権を与えます。 ストレージ ターゲットを初めて作成するときに、この操作を行うことができます。 「[ストレージ ターゲットの追加](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)」の手順に従い、必要なアクセス ロールをキャッシュに与えます。
+
+     ストレージ アカウント所有者ではない場合は、この手順を所有者に依頼してください。
 
 ## <a name="set-up-azure-cli-access-optional"></a>Azure CLI アクセスを設定する (省略可能)
 

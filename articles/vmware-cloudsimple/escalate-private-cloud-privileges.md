@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: c2215bd9a60fdcf76077c3a1f2a91631dc0dbe88
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97895824"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>CloudSimple ポータルからのプライベート クラウド vCenter 特権のエスカレート
@@ -27,7 +27,7 @@ vCenter SSO ドメインで新しいユーザーを作成し、vCenter へのア
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="escalate-privileges"></a>権限をエスカレートする
 
@@ -35,7 +35,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 2. **[Resources]\(リソース\)** ページを開き、特権をエスカレートするプライベート クラウドを選択します。
 
-3. 概要ページの下部付近の **[Change vSphere privileges]\(vSphere 特権を変更\)** で、 **[Escalate]\(エスカレート\)** をクリックします。
+3. 概要ページの下部付近の **[Change vSphere privileges]\(vSphere 特権を変更\)** で、**[Escalate]\(エスカレート\)** をクリックします。
 
     ![vSphere 特権を変更する](media/escalate-private-cloud-privilege.png)
 
@@ -49,7 +49,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 7. **[OK]** をクリックします。
 
-8. エスカレーション プロセスには数分かかる場合があります。 完了したら、 **[OK]** をクリックします。
+8. エスカレーション プロセスには数分かかる場合があります。 設定が完了したら **[OK]** をクリックします。
 
 特権エスカレーションが開始され、選択した期間が終了するまで継続します。  プライベート クラウド vCenter にサインインして管理タスクを実行することができます。
 
@@ -65,7 +65,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 1. CloudSimple ポータルの **[Resources]\(リソース\)**  >  **[Private Clouds]\(プライベート クラウド\)** で、特権エスカレーションを延長するプライベート クラウドを選択します。
 
-2. 概要タブの下部付近で、 **[Extend privilege escalation]\(特権エスカレーションを延長する\)** をクリックします。
+2. 概要タブの下部付近で、**[Extend privilege escalation]\(特権エスカレーションを延長する\)** をクリックします。
 
     ![特権エスカレーションを延長する](media/de-escalate-private-cloud-privilege.png)
 
@@ -86,7 +86,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 > [!IMPORTANT]
 > すべてのエラーを避けるためには、vCenter からサインアウトし、特権のエスカレートを解除した後にもう一度サインインします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Active Directory を使用するための vCenter ID ソースの設定](./set-vcenter-identity.md)
 * [ワークロード仮想マシンのバックアップ](./backup-workloads-veeam.md)を行うためのバックアップ ソリューションのインストール

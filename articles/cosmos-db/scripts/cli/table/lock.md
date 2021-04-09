@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 07/29/2020
 ms.openlocfilehash: 6df5f3842ba08b04dd82910d3762472f4ff4febd
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94566811"
 ---
 # <a name="create-resource-lock-for-a-azure-cosmos-db-table-api-table-using-azure-cli"></a>Azure CLI を使用して Azure Cosmos DB Table API テーブルのリソース ロックを作成する
@@ -32,7 +32,7 @@ ms.locfileid: "94566811"
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [az lock create](/cli/azure/lock#az-lock-create) | ロックを作成します。 |
 | [az lock list](/cli/azure/lock#az-lock-list) | ロック情報を一覧表示します。 |

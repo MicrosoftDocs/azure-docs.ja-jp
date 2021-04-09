@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: subject-monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 5337372b5e996798a5000e1c32ea8e372aa63ed4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3b497a8507fb82bfb69fbe7396e5a0d34006a7f1
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591767"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102502078"
 ---
 # <a name="monitoring-azure-blob-storage"></a>Azure Blob Storage の監視
 
@@ -110,6 +110,8 @@ Azure Monitor のメトリックとログでは、Azure Resource Manager スト�
 
 2. **[ストレージ アカウント]** ドロップダウン リストで、ログのアーカイブ先となるストレージ アカウントを選択し、 **[OK]** ボタンをクリックして、 **[保存]** ボタンをクリックします。
 
+   [!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
+
    > [!NOTE]
    > ストレージ アカウントをエクスポート先として選択する前に、[Azure リソース ログのアーカイブ](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)に関するページを参照して、ストレージ アカウントに関する前提条件をご確認ください。
 
@@ -128,7 +130,7 @@ Azure Monitor のメトリックとログでは、Azure Resource Manager スト�
 
 #### <a name="send-logs-to-azure-log-analytics"></a>Azure Log Analytics にログを送信する
 
-1. **[Send to Log Analytics]\(Log Analytics への送信\)** チェックボックスを オンにして Log Analytics ワークスペースを選択し、 **[保存]** ボタンをクリックします。
+1. **[Log Analytics への送信]** チェックボックスをオンにして Log Analytics ワークスペースを選択し、 **[保存]** ボタンをクリックします。
 
    > [!div class="mx-imgBorder"]   
    > ![[診断設定] ページの Log Analytics](media/monitor-blob-storage/diagnostic-logs-settings-pane-log-analytics.png)
@@ -154,12 +156,14 @@ Azure Monitor のメトリックとログでは、Azure Resource Manager スト�
 `StorageAccountId` パラメーターを指定した [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell コマンドレットを使用して、ログを有効にします。
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log>
 ```
 
 このスニペットの `<storage-service-resource--id>` プレースホルダーを BLOB サービスのリソース ID に置き換えます。 ストレージ アカウントの **[プロパティ]** ページを開くと、Azure portal 上でリソース ID を確認できます。
 
 **Category** パラメーターの値には、`StorageRead`、`StorageWrite`、および `StorageDelete` を使用できます。
+
+[!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
 
 次に例を示します。
 
@@ -216,16 +220,18 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <
 [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) コマンドを使用してログを有効にします。
 
 ```azurecli-interactive
-az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
+az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true }]'
 ```
 
 このスニペットの `<storage-service-resource--id>` プレースホルダーを BLOB ストレージ サービスのリソース ID に置き換えます。 ストレージ アカウントの **[プロパティ]** ページを開くと、Azure portal 上でリソース ID を確認できます。
 
 **category** パラメーターの値には、`StorageRead`、`StorageWrite`、および `StorageDelete` を使用できます。
 
+[!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
+
 次に例を示します。
 
-`az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
+`az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite}]'`
 
 各パラメーターの説明については、[Azure CLI を使用した Azure リソース ログのアーカイブ](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)に関するページを参照してください。
 

@@ -1,18 +1,14 @@
 ---
 title: 必要なアプライアンスを特定する
 description: 認定済みの Defender for IoT センサーとオンプレミス管理コンソールのハードウェアおよび仮想アプライアンスについて説明します。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 01/13/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 92bf066c9769cc4b2525923b9e18ed3c0e9c577a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 242e88e92d6197fd018c56fa55a4dd8166f5d027
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937131"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782760"
 ---
 # <a name="identify-required-appliances"></a>必要なアプライアンスを特定する
 
@@ -38,13 +34,13 @@ Defender for IoT では、物理および仮想デプロイの両方をサポー
 
 ここでは、入手可能な物理センサー モデルの概要を説明します。 事前構成済みのソフトウェアを備えたセンサーを購入することも、事前構成されていないセンサーを購入することもできます。
 
-| デプロイの種類 | 企業 | Enterprise | SMB |
-|--|--|--|--|
-| Image | :::image type="content" source="media/how-to-prepare-your-network/corporate-hpe-proliant-dl360-v2.png" alt-text="企業レベルのモデル。"::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="エンタープライズ レベルのモデル。"::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="SMB レベルのモデル。"::: |
-| モデル | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 |
-| 監視ポート | 最大 15 個の RJ45 または 8 個の OPT | 最大 8 個の RJ45 または 6 個の OPT | 4 個の RJ45 |
-| 最大帯域幅 [1](#anchortext) | 3 Gbps | 1 Gbps | 200 Mbps |
-| 保護される最大デバイス数 | 30,000 | 15,000 | 1,000 |
+| デプロイの種類 | 企業 | Enterprise | SMB ラック マウント| SMB ラグド|
+|--|--|--|--|--|
+| Image | :::image type="content" source="media/how-to-prepare-your-network/corporate-hpe-proliant-dl360-v2.png" alt-text="企業レベルのモデル。"::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="エンタープライズ レベルのモデル。"::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="SMB レベルのモデル。"::: | :::image type="content" source="media/how-to-prepare-your-network/office-ruggedized.png" alt-text="SMB ラグド レベルのモデル。"::: |
+| モデル | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 | HPE EL300 |
+| 監視ポート | 最大 15 個の RJ45 または 8 個の OPT | 最大 8 個の RJ45 または 6 個の OPT | 4 個の RJ45 | 最大 5 個 |
+| 最大帯域幅 [1](#anchortext) | 3 GB/秒 | 1 GB/秒 | 200 MB/秒 | 100 MB/秒 |
+| 保護される最大デバイス数 | 30,000 | 15,000 | 1,000 | 800 |
 
 ベンダーの詳細については、「[アプライアンスの仕様](#appliance-specifications)」をご覧ください。
 
@@ -195,6 +191,45 @@ Defender for IoT では、物理および仮想デプロイの両方をサポー
 | 512485-B21 | HPE iLO Adv 1-Server License (1 年間のサポート付き) | 1 |
 | 775612-B21 | HPE 1U Short Friction Rail Kit | 1 |
 
+## <a name="smb-rugged-hpe-edgeline-el300"></a>SMB ラグド: HPE Edgeline EL300
+
+| コンポーネント | 技術仕様 |
+|--|--|
+| 建設 | アルミニウム、ファンレス、防塵設計 |
+| 寸法 (高さ x 幅 x 奥行) | 高さ 200.5 mm (7.9 インチ)、幅 232 mm (9.14 インチ)、奥行 100 mm (3.9 インチ) |
+| Weight | 4.91 kg (10.83 ポンド) |
+| CPU | Intel Core i7-8650U (1.9 GHz/4 コア/15W) |
+| チップセット | Intel® Q170 プラットフォーム コントローラー ハブ |
+| メモリ | 8 GB DDR4 2133 MHz 広温度対応 SODIMM |
+| ストレージ | 128 GB 3ME3 広温度対応 mSATA SSD |
+| ネットワーク コントローラー | 6 x ギガビット イーサネット ポート (Intel® I219 に準拠) |
+| デバイス アクセス  | 4 つの USB: 前面に 2 つ、背面に 2 つ、内部に 1 つ |
+| 電源アダプター | 250V/10A |
+| 取り付け | 取り付けキット、DIN レール |
+| 動作温度 | 0C ～ + 70C  |
+| 湿度 | 10% - 90% (結露なし) |
+| 振動 | 軸あたり 0.3 grms 10 Hz ～ 300 Hz、15 分- DIN レール   |
+| 衝撃 | 10G 10 ms、正弦半波、軸ごとに 3。 (正パルスと負パルスの両方) – DIN レール |
+
+### <a name="appliance-bom"></a>アプライアンスの BOM
+| 製品 | 説明 |
+|--|--|
+| P25828-B21 | HPE Edgeline EL300 v2 Converged Edge System |
+| P25828-B21 B19 | HPE EL300 v2 Converged Edge System |
+| P25833-B21 | Intel Core i7-8650U (1.9 GHz/4-core/15W) FIO Basic Processor Kit for HPE Edgeline EL300 |
+| P09176-B21 | HPE Edgeline 8 GB (1 x 8 GB) Dual Rank x8 DDR4-2666 SODIMM WT CAS-19-19-19 Registered Memory FIO Kit |
+| P09188-B21 | HPE Edgeline 256 GB SATA 6G Read Intensive M.2 2242 3yr Wty Wide Temp SSD |
+| P04054-B21 | HPE Edgeline EL300 SFF to M.2 Enablement Kit |
+| P08120-B21 | HPE Edgeline EL300 12VDC FIO Transfer Board |
+| P08641-B21 | HPE Edgeline EL300 80W 12VDC Power Supply |
+| AF564A | HPE C13 - SI-32 IL 250V 10Amp 1.83 m Power Cord |
+| P25835-B21 | HPE EL300 v2 FIO Carrier Board |
+| R1P49AAE | HPE EL300 iSM Adv 3yr 24x7 Sup_Upd E-LTU |
+| P08018-B21 (オプション) | HPE Edgeline EL300 Low Profile Bracket Kit  |
+| P08019-B21 (オプション) | HPE Edgeline EL300 DIN Rail Mount Kit |
+| P08020-B21 (オプション) | HPE Edgeline EL300 Wall Mount Kit |
+| P03456-B21 (オプション) | HPE Edgeline 1 GbE 4-port TSN FIO Daughter Card |
+
 ## <a name="virtual-appliance-specifications"></a>仮想アプライアンスの仕様
 
 ### <a name="sensors"></a>Sensors
@@ -234,29 +269,9 @@ Defender for IoT では、物理および仮想デプロイの両方をサポー
 
 :::image type="content" source="media/how-to-prepare-your-network/azure-defender-for-iot-sensor-download-software-screen.png" alt-text="ネットワークセンサーの ISO。":::
 
-## <a name="enterprise-deployment-dell-poweredge-r340-xl"></a>エンタープライズでのデプロイ: Dell PowerEdge R340 XL
-
-| コンポーネント | 技術仕様 |
-|--|--|
-| シャーシ | 1U ラック サーバー |
-| Dimensions | 42.8 x 434.0 x 596 (mm)/1.67 x 17.09 x 23.5 (インチ) |
-| Weight | 最大 29.98 ポンド/13.6 kg |
-| プロセッサ | Intel Xeon E-2144G 3.6 GHz、8 M キャッシュ、4C/8T、ターボ (71 W) |
-| チップセット | Intel C246 |
-| メモリ | 32 GB = 2 x 16GB 2666MT/秒 DDR4 ECC UDIMM |
-| ストレージ | 3 x 2TB 7.2 K RPM SATA 6 Gbps 512n 3.5 インチ ホット プラグ対応ハード ドライブ - RAID 5 |
-| ネットワーク コントローラー | オンボード: 2 x 1Gb Broadcom BCM5720<br>オンボード LOM: iDRAC ポート カード 1Gb Broadcom BCM5720 <br><br>外部: 1 x Intel Ethernet i350 QP 1Gb サーバー アダプター、ロー プロファイル |
-| 管理 | iDRAC 9 Enterprise |
-| デバイス アクセス | 2 つの背面 USB 3.0 <br> 1 つの前面 USB 3.0 |
-| Power | デュアル 350 W ホット プラグ対応電源装置 |
-| ラック サポート | 角穴またはねじ溝なしの丸穴付き 4 ポスト ラックへの工具不要の取り付け、または 4 ポストねじ式ラックへの工具を使用した取り付け用の ReadyRails II スライド式レール。オプションの工具不要ケーブル管理アームがサポートされています。 |
-
-## <a name="dell-r340-bom"></a>Dell R340 の BOM
-
-:::image type="content" source="media/how-to-prepare-your-network/enterprise-deployment-for-azure-defender-for-iot-dell-r340-bom.png" alt-text="Dell R340 の BOM。":::
-
 ## <a name="next-steps"></a>次のステップ
 
 [Azure Defender for IoT のインストールについて](how-to-install-software.md)
 
 [Azure Defender for IoT のネットワーク設定について](how-to-set-up-your-network.md)
+

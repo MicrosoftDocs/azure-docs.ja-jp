@@ -4,10 +4,10 @@ description: IRS 1075 ブループリント サンプルのコントロール �
 ms.date: 01/08/2021
 ms.topic: sample
 ms.openlocfilehash: 08ce69d13f201e6f0bd1d649ebfe3bbf5c38f927
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98045225"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>IRS 1075 ブループリント サンプルのコントロール マッピング
@@ -131,8 +131,8 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 - SQL サーバー レベルの監査設定の監査
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
-- SQL サーバーに対する Advanced Data Security のデプロイ
-- SQL サーバーでの監査のデプロイ
+- SQL Server に対する Advanced Data Security のデプロイ
+- SQL Server での監査のデプロイ
 - ネットワーク セキュリティ グループの診断設定のデプロイ
 
 ## <a name="9357-cm-7-2-least-functionality--prevent-program-execution"></a>9.3.5.7 CM-7 (2) 最小限の機能 | プログラムの実行の防止
@@ -207,7 +207,7 @@ Azure Security Center では、デプロイされた Azure リソースのセキ
 
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
-- SQL サーバーに対する Advanced Data Security のデプロイ
+- SQL Server に対する Advanced Data Security のデプロイ
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 使用している仮想マシン上のセキュリティ構成の脆弱性を修復する必要がある
 - SQL データベースの脆弱性を修復する必要がある
@@ -258,7 +258,7 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
-- SQL サーバーに対する Advanced Data Security のデプロイ
+- SQL Server に対する Advanced Data Security のデプロイ
 - SQL DB Transparent Data Encryption のデプロイ
 - 仮想マシンでディスク暗号化を適用する必要がある
 - Data Lake Store アカウントの暗号化を要求する
@@ -304,9 +304,9 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
-- SQL サーバーに対する Advanced Data Security のデプロイ
+- SQL Server に対する Advanced Data Security のデプロイ
 - ストレージ アカウントに対する Advanced Threat Protection のデプロイ
-- SQL サーバーでの監査のデプロイ
+- SQL Server での監査のデプロイ
 - 仮想ネットワーク作成時の Network Watcher のデプロイ
 - SQL サーバーでの脅威検出のデプロイ
 

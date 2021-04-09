@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 51034fb5da5c8fd69ab3bb2b770a9bc88b90488b
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92636036"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-voyance"></a>チュートリアル: Azure Active Directory と Voyance の統合
@@ -41,9 +41,9 @@ Azure AD と Voyance の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Voyance では、 **SP** と **IDP** によって開始される SSO がサポートされます
+* Voyance では、**SP** と **IDP** によって開始される SSO がサポートされます
 
-* Voyance では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Voyance では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-voyance-from-the-gallery"></a>ギャラリーからの Voyance の追加
 
@@ -63,13 +63,13 @@ Azure AD への Voyance の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Voyance** 」と入力し、結果ウィンドウで **[Voyance]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Voyance**」と入力し、結果ウィンドウで **[Voyance]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Voyance](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Voyance で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Voyance で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Voyance 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Voyance で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -87,7 +87,7 @@ Voyance で Azure AD のシングル サインオンを構成してテストす�
 
 Voyance で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Microsoft Azure portal](https://portal.azure.com/) の **Voyance** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Microsoft Azure portal](https://portal.azure.com/) の **Voyance** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -120,7 +120,7 @@ Voyance で Azure AD シングル サインオンを構成するには、次の�
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-7. **[Set up Voyance]** (Voyance のセットアップ) セクションで、要件のとおりに適切な URL をコピーします。
+7. **[Set up Voyance]**(Voyance のセットアップ) セクションで、要件のとおりに適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -134,7 +134,7 @@ Voyance で Azure AD シングル サインオンを構成するには、次の�
 
 1. 別の Web ブラウザーのウィンドウで、管理者として Voyance テナントにサインオンします。
 
-2. ナビゲーション バーの右上隅に移動し、 **[プロファイル]** をクリックします。
+2. ナビゲーション バーの右上隅に移動し、**[プロファイル]** をクリックします。
     
     ![アプリ側でのシングル サインオンの構成: Acme University](./media/voyance-tutorial/tutorial_voyance_001.png) 
 
@@ -156,9 +156,9 @@ Voyance で Azure AD シングル サインオンを構成するには、次の�
     
     a. **[Enabled]** を選択します。
     
-    b. **[IdP Login UR]** (IdP ログイン URL) テキストボックスに、Microsoft Azure portal からコピーした **ログイン URL** を貼り付けます。
+    b. **[IdP Login UR]**(IdP ログイン URL) テキストボックスに、Microsoft Azure portal からコピーした **ログイン URL** を貼り付けます。
 
-    c. ダウンロード済みの Base64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、 **[IdP 証明書]** ボックスに貼り付けます。
+    c. ダウンロード済みの Base64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[IdP 証明書]** ボックスに貼り付けます。
     
     d. **[保存]** をクリックします。
 
@@ -178,7 +178,7 @@ Voyance で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -190,7 +190,7 @@ Voyance で Azure AD シングル サインオンを構成するには、次の�
 
 このセクションでは、Britta Simon に Voyance へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Microsoft Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Voyance]** を選択します。
+1. Microsoft Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Voyance]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

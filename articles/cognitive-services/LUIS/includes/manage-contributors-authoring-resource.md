@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.topic: include
-ms.openlocfilehash: 74509b161c4c20a4d7681b9803332434e47f3242
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 147a7868d99e8ba479ea490b5467fed3386fc161
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536046"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "101102973"
 ---
 他のユーザーによるアプリの作成が必要な場合は、関連付けられているメール アドレスを Azure portal の作成リソースに追加する必要があります。
 
@@ -23,5 +23,5 @@ ms.locfileid: "91536046"
 
 このロールの割り当てに問題がある場合は、以下を確認してください。
 
-* [Azure でのロールの割り当て](../../../role-based-access-control/role-assignments-portal.md)
+* [Azure ロールを割り当てる](../../../role-based-access-control/role-assignments-portal.md)
 * [Azure でのアクセス制御のトラブルシューティング](../../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments):

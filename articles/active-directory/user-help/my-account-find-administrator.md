@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
 ms.openlocfilehash: d1f52e09630ef06970d03ee6f5bce3a6f35acfa5
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99566647"
 ---
 # <a name="find-an-administrator-to-change-my-information-in-my-account"></a>マイ アカウントの自分の情報を変更する管理者を見つける

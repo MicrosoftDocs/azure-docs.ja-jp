@@ -10,10 +10,10 @@ ms.date: 02/04/2021
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: f98e28c89fa70831108cfbbbaca6e2f316d1b039
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99573400"
 ---
 # <a name="allowed-certificate-authorities-for-enabling-custom-https"></a>カスタム HTTPS を有効にするための許可された証明機関

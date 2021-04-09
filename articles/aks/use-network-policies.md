@@ -4,23 +4,23 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) の Kubernetes ネットワーク ポリシーを使用して、ポッドとの間で送受信されるトラフィックをセキュリティ保護する方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 598747c0d64db2ae62f740dca4c3e4141f2562f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/16/2021
+ms.openlocfilehash: 17e14859ecdfe11872d5b0526d755d01bc1b034a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050477"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104577854"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護
 
-Kubernetes で最新のマイクロサービス ベースのアプリケーションを実行するときは、どのコンポーネントが互いに通信できるかを制御したいことがよくあります。 最小特権の原則は、Azure Kubernetes Service (AKS) クラスター内のポッド間でトラフィックをどのように送受信できるかに対して適用する必要があります。 たとえば、バックエンド アプリケーションへの直接のトラフィックをブロックしたい場合があります。 Kubernetes の*ネットワーク ポリシー*機能を使用すると、クラスター内のポッド間のイングレスおよびエグレス トラフィックのルールを定義できます。
+Kubernetes で最新のマイクロサービス ベースのアプリケーションを実行するときは、どのコンポーネントが互いに通信できるかを制御したいことがよくあります。 最小特権の原則は、Azure Kubernetes Service (AKS) クラスター内のポッド間でトラフィックをどのように送受信できるかに対して適用する必要があります。 たとえば、バックエンド アプリケーションへの直接のトラフィックをブロックしたい場合があります。 Kubernetes の *ネットワーク ポリシー* 機能を使用すると、クラスター内のポッド間のイングレスおよびエグレス トラフィックのルールを定義できます。
 
 この記事では、ネットワーク ポリシー エンジンをインストールし、AKS 内のポッド間のトラフィック フローを制御するために Kubernetes ネットワーク ポリシーを作成する方法について説明します。 ネットワーク ポリシーは、AKS の Linux ベースのノードとポッドに対してのみ使用する必要があります。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-Azure CLI バージョン 2.0.61 以降がインストールされて構成されている必要があります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+Azure CLI バージョン 2.0.61 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 > [!TIP]
 > プレビュー期間中にネットワーク ポリシー機能を使用した場合は、[新しいクラスターを作成する](#create-an-aks-cluster-and-enable-network-policy)ことをお勧めします。
@@ -52,8 +52,8 @@ Azure には、ネットワーク ポリシーを実装する 2 つの方法が�
 
 | 機能                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
-| サポートされているプラットフォーム                      | Linux                      | Linux                       |
-| サポートされているネットワーク オプション             | Azure CNI                  | Azure CNI と Kubernetes       |
+| サポートされているプラットフォーム                      | Linux                      | Linux、Windows Server 2019 (プレビュー)  |
+| サポートされているネットワーク オプション             | Azure CNI                  | Azure CNI (Windows Server 2019 と Linux) および kubernet (Linux)  |
 | Kubernetes 仕様の準拠 | サポートされているすべてのポリシーの種類 |  サポートされているすべてのポリシーの種類 |
 | その他の機能                      | なし                       | グローバル ネットワーク ポリシー、グローバル ネットワーク セット、およびホスト エンドポイントで構成される拡張ポリシー モデル。 `calicoctl` CLI を使用した拡張機能の管理の詳細については、[calicoctl ユーザー リファレンス][calicoctl]を参照してください。 |
 | サポート                                  | Azure のサポートとエンジニアリング チームによってサポートされる | Calico コミュニティ サポート。 その他の有料サポートの詳細については、[Project Calico support options][calico-support] を参照してください。 |
@@ -67,7 +67,7 @@ Azure には、ネットワーク ポリシーを実装する 2 つの方法が�
 * ポッド ラベルに基づいてトラフィックを許可します。
 * 名前空間に基づいてトラフィックを許可します。
 
-最初に、ネットワーク ポリシーをサポートする AKS クラスターを作成しましょう。 
+最初に、ネットワーク ポリシーをサポートする AKS クラスターを作成しましょう。
 
 > [!IMPORTANT]
 >
@@ -79,7 +79,7 @@ Azure ネットワーク ポリシーを使用するには、[Azure CNI プラ�
 
 * 仮想ネットワークとサブネットを作成します。
 * AKS クラスターで使用するための Azure Active Directory (Azure AD) サービス プリンシパルを作成します。
-* 仮想ネットワーク上の AKS クラスター サービス プリンシパルに*共同作成者*のアクセス許可を割り当てます。
+* 仮想ネットワーク上の AKS クラスター サービス プリンシパルに *共同作成者* のアクセス許可を割り当てます。
 * 定義された仮想ネットワーク内に AKS クラスターを作成し、ネットワーク ポリシーを有効にします。
     * "_Azure ネットワーク_" ポリシー オプションが使用されます。 代わりに Calico をネットワーク ポリシー オプションとして使用するには、`--network-policy calico` パラメーターを使用します。 注:Calico は `--network-plugin azure` または `--network-plugin kubenet` で使用できます。
 
@@ -120,25 +120,104 @@ az role assignment create --assignee $SP_ID --scope $VNET_ID --role Contributor
 
 # Get the virtual network subnet resource ID
 SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP_NAME --vnet-name myVnet --name myAKSSubnet --query id -o tsv)
+```
 
-# Create the AKS cluster and specify the virtual network and service principal information
-# Enable network policy by using the `--network-policy` parameter
+### <a name="create-an-aks-cluster-for-azure-network-policies"></a>Azure ネットワーク ポリシー用の AKS クラスターを作成する
+
+AKS クラスターを作成し、仮想ネットワーク、サービス プリンシパル情報、およびネットワーク プラグインとネットワーク ポリシー用の *azure* を指定します。
+
+```azurecli
 az aks create \
     --resource-group $RESOURCE_GROUP_NAME \
     --name $CLUSTER_NAME \
     --node-count 1 \
     --generate-ssh-keys \
-    --network-plugin azure \
     --service-cidr 10.0.0.0/16 \
     --dns-service-ip 10.0.0.10 \
     --docker-bridge-address 172.17.0.1/16 \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal $SP_ID \
     --client-secret $SP_PASSWORD \
+    --network-plugin azure \
     --network-policy azure
 ```
 
 クラスターの作成には数分かかります。 クラスターの準備ができたら、[az aks get-credentials][az-aks-get-credentials] コマンドを使用して、Kubernetes クラスターに接続するように `kubectl` を構成します。 このコマンドは、資格情報をダウンロードし、それを使用するように Kubernetes CLI を構成します。
+
+```azurecli-interactive
+az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
+```
+
+### <a name="create-an-aks-cluster-for-calico-network-policies"></a>Calico ネットワーク ポリシー用の AKS クラスターを作成する
+
+AKS クラスターを作成し、仮想ネットワーク、サービスプリンシパル情報、ネットワーク プラグイン用の *azure*、およびネットワーク ポリシー用の *calico* を指定します。 *calico* をネットワーク ポリシーとして使用すると、Linux と Windows の両方のノード プールで Calico ネットワークが有効になります。
+
+クラスターに Windows ノード プールの追加を計画している場合は、`windows-admin-username` パラメーターと `windows-admin-password` パラメーターを含め、[Windows Server のパスワード要件][windows-server-password]を満たす必要があります。 Windows ノード プールとともに Calico を使用するには、`Microsoft.ContainerService/EnableAKSWindowsCalico` を登録する必要もあります。
+
+次の例に示すように [az feature register][az-feature-register] コマンドを使用して、`EnableAKSWindowsCalico` 機能フラグを登録します。
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "EnableAKSWindowsCalico"
+```
+
+ 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAKSWindowsCalico')].{Name:name,State:properties.state}"
+```
+
+準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+> [!IMPORTANT]
+> 現時点では、Windows ノードを伴う Calico ネットワーク ポリシーの使用は、Kubernetes バージョン 1.20 以降と Calico 3.17.2 を使用した新しいクラスターで利用できます。この場合、Azure CNI ネットワークの使用も必要です。 Calico が有効になっている AKS クラスターの Windows ノードでは、[Direct Server Return (DSR)][dsr] も既定で有効になっています。
+>
+> 以前のバージョンの Calico で Kubernetes 1.20 を実行している、Linux ノード プールのみを含むクラスターの場合、Calico バージョンは自動的に 3.17.2 にアップグレードされます。
+
+Windows ノードを使用した Calico ネットワーク ポリシーは、現在プレビューの段階です。
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+クラスターの Windows Server コンテナーの管理者資格情報として使用するユーザー名を作成します。 次のコマンドを実行すると、ユーザー名の入力が求められ、後のコマンドで使用できるように WINDOWS_USERNAME と設定されます (この記事に示すコマンドは BASH シェルで入力されます)。
+
+```azurecli-interactive
+echo "Please enter the username to use as administrator credentials for Windows Server containers on your cluster: " && read WINDOWS_USERNAME
+```
+
+```azurecli
+az aks create \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --name $CLUSTER_NAME \
+    --node-count 1 \
+    --generate-ssh-keys \
+    --service-cidr 10.0.0.0/16 \
+    --dns-service-ip 10.0.0.10 \
+    --docker-bridge-address 172.17.0.1/16 \
+    --vnet-subnet-id $SUBNET_ID \
+    --service-principal $SP_ID \
+    --client-secret $SP_PASSWORD \
+    --windows-admin-username $WINDOWS_USERNAME \
+    --vm-set-type VirtualMachineScaleSets \
+    --kubernetes-version 1.20.2 \
+    --network-plugin azure \
+    --network-policy calico
+```
+
+クラスターの作成には数分かかります。 既定では、クラスターは Linux ノード プールのみを使用して作成されます。 Windows ノード プールを使用する場合は、これを追加します。 次に例を示します。
+
+```azurecli
+az aks nodepool add \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --cluster-name $CLUSTER_NAME \
+    --os-type Windows \
+    --name npwin \
+    --node-count 1
+```
+
+クラスターの準備ができたら、[az aks get-credentials][az-aks-get-credentials] コマンドを使用して、Kubernetes クラスターに接続するように `kubectl` を構成します。 このコマンドは、資格情報をダウンロードし、それを使用するように Kubernetes CLI を構成します。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
@@ -158,13 +237,13 @@ kubectl label namespace/development purpose=development
 NGINX を実行するバックエンド ポッドの例を作成します。 このバックエンド ポッドは、サンプルのバックエンド Web ベース アプリケーションをシミュレートするために使用できます。 このポッドを *development* 名前空間に作成し、ポート *80* を開いて Web トラフィックを処理します。 次のセクションでネットワーク ポリシーを使用してターゲットに指定できるように、ポッドに *app=webapp,role=backend* のラベルを付けます。
 
 ```console
-kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80
+kubectl run backend --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --labels app=webapp,role=backend --namespace development --expose --port 80
 ```
 
 既定の NGINX Web ページに正常にアクセスできることをテストするために、別のポッドを作成し、ターミナル セッションをアタッチします。
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development
+kubectl run --rm -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 network-policy --namespace development
 ```
 
 シェル プロンプトで `wget` を使用して、既定の NGINX Web ページにアクセスできることを確認します。
@@ -220,7 +299,7 @@ kubectl apply -f backend-policy.yaml
 再びバックエンド ポッドで NGINX Web ページを使用できるかどうかを確認しましょう。 別のテスト ポッドを作成してターミナル セッションをアタッチします。
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development
+kubectl run --rm -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 network-policy --namespace development
 ```
 
 シェル プロンプトで `wget` を使用して、既定の NGINX Web ページにアクセスできるかどうかを確認します。 今回は、タイムアウト値を *2* 秒に設定します。 ネットワーク ポリシーがすべての受信トラフィックをブロックするようになったため、次の例に示すように、ページを読み込めません。
@@ -277,7 +356,7 @@ kubectl apply -f backend-policy.yaml
 *app=webapp,role=frontend* のラベルが付いたポッドをスケジュールし、ターミナル セッションをアタッチします。
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace development
 ```
 
 シェル プロンプトで `wget` を使用して、既定の NGINX Web ページにアクセスできるかどうかを確認します。
@@ -307,7 +386,7 @@ exit
 ネットワーク ポリシーは、*app: webapp,role: frontend* というラベルの付いたポッドからのトラフィックを許可しますが、その他のトラフィックはすべて拒否する必要があります。 これらのラベルのない別のポッドがバックエンド NGINX ポッドにアクセスできるかどうかをテストして確認しましょう。 別のテスト ポッドを作成してターミナル セッションをアタッチします。
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development
+kubectl run --rm -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 network-policy --namespace development
 ```
 
 シェル プロンプトで `wget` を使用して、既定の NGINX Web ページにアクセスできるかどうかを確認します。 ネットワーク ポリシーが受信トラフィックをブロックするため、次の例に示すように、ページを読み込めません。
@@ -340,7 +419,7 @@ kubectl label namespace/production purpose=production
 *app=webapp,role=frontend* とラベル付けされた *production* 名前空間でテスト ポッドをスケジュールします。 ターミナル セッションをアタッチします。
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace production
 ```
 
 シェル プロンプトで `wget` を使用して、既定の NGINX Web ページにアクセスできることを確認します。
@@ -404,7 +483,7 @@ kubectl apply -f backend-policy.yaml
 *production* 名前空間で別のポッドをスケジュールし、ターミナル セッションをアタッチします。
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace production
 ```
 
 シェル プロンプトで `wget` を使用して、ネットワーク ポリシーがトラフィックを拒否するようになったことを確認します。
@@ -426,7 +505,7 @@ exit
 *production* 名前空間からのトラフィックが拒否されたら、*development* 名前空間に戻ってテスト ポッドをスケジュールし、ターミナル セッションをアタッチします。
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
+kubectl run --rm -it frontend --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --labels app=webapp,role=frontend --namespace development
 ```
 
 シェル プロンプトで `wget` を使用して、ネットワーク ポリシーがトラフィックを許可することを確認します。
@@ -482,8 +561,12 @@ kubectl delete namespace development
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli
 [use-advanced-networking]: configure-azure-cni.md
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [concepts-network]: concepts-network.md
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[windows-server-password]: /windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[dsr]: ../load-balancer/load-balancer-multivip-overview.md#rule-type-2-backend-port-reuse-by-using-floating-ip

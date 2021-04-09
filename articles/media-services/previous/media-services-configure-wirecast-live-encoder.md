@@ -3,7 +3,7 @@ title: Telestream Wirecast エンコーダーを構成して単一ビットレ�
 description: 'このトピックでは、Wirecast ライブ エンコーダーを構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。 '
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: ecab0ee67dd1d5cee3fd9927c00c9f9d827b2f47
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a736270919f36cb7d4bbd4e686a98ddc57f402fa
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910051"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103016833"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Wirecast エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
 
@@ -76,7 +76,7 @@ ms.locfileid: "92910051"
 ## <a name="configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />Telestream Wirecast エンコーダーを構成する
 このチュートリアルでは、次の出力設定が使用されます。 このセクションの残りの部分では、構成の手順の詳細について説明します。
 
-**ビデオ** :
+**ビデオ**:
 
 * コーデック:H.264
 * プロファイル:高 (レベル 4.0)
@@ -84,7 +84,7 @@ ms.locfileid: "92910051"
 * キーフレーム:2 秒 (60 秒)
 * フレーム レート:30
 
-**オーディオ** :
+**オーディオ**:
 
 * コーデック:AAC (LC)
 * ビットレート:192 kbps
@@ -141,7 +141,7 @@ ms.locfileid: "92910051"
     ![スクリーンショットは、Wirecast ストリーム ボタンを示しています。](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
 
 > [!IMPORTANT]
-> **[ストリーム]** をクリックする前に、チャネルの準備が整っていることを確認する **必要があります** 。
+> **[ストリーム]** をクリックする前に、チャネルの準備が整っていることを確認する **必要があります**。
 > また、15 分を超える入力投稿フィードがある場合を除き、チャネルを準備可能のままにしないでください。
 >
 >

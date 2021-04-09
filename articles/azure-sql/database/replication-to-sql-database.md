@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
 ms.openlocfilehash: 6ff1d485ab4c0662ae8a9d754ce67b1446b76fcc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92780956"
 ---
 # <a name="replication-to-azure-sql-database"></a>Azure SQL Database へのレプリケーション
@@ -52,7 +52,7 @@ Azure SQL Database のすべての機能を使用するには、最新バージ�
 
 さまざまな[レプリケーションの種類](/sql/relational-databases/replication/types-of-replication)があります。
 
-| レプリケーション | Azure SQL Database | Azure SQL Managed Instance |
+| レプリケーション | Azure SQL データベース | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
 | [**標準トランザクション**](/sql/relational-databases/replication/transactional/transactional-replication) | はい (サブスクライバーとしてのみ) | はい | 
 | [**スナップショット**](/sql/relational-databases/replication/snapshot-replication) | はい (サブスクライバーとしてのみ) | はい|

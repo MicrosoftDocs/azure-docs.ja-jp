@@ -1,24 +1,18 @@
 ---
 title: Azure Security Center の脅威インテリジェンス レポート | Microsoft Docs
 description: このページでは、調査に Azure Security Center の脅威インテリジェンス レポートを使用し、セキュリティ アラートについての詳しい情報を確認する方法を説明します。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 5662e312-e8c2-4736-974e-576eeb333484
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: f9b3fd0000a1b5dbba00995c37f96a89319de0e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec6d227059c3f4fd1285f224e13169a2479bc65f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440487"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102438235"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure Security Center の脅威インテリジェンス レポート
 

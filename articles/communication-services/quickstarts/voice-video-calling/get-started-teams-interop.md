@@ -2,18 +2,18 @@
 title: クイック スタート - Azure Communication Services での Teams の相互運用
 titleSuffix: An Azure Communication Services quickstart
 description: このクイックスタートでは、Azure Communication Calling SDK を使用して、Teams の会議に参加する方法について説明します。
-author: matthewrobertson
+author: chpalm
 ms.author: chpalm
-ms.date: 10/10/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: f8daed736f1d7f5ecf77a5b44f95d191eb5930f8
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: a9ef74c04c1f709348ae1d6dd97558ee6bedccf3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120455"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654970"
 ---
 # <a name="quickstart-join-your-calling-app-to-a-teams-meeting"></a>クイックスタート: 通話アプリを Teams の会議に参加させる
 

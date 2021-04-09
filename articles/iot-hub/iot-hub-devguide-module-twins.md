@@ -11,10 +11,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 6e728eaf8335a102e38a3b4b07ab5e504d452294
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91996457"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>IoT Hub のモジュール ツインの理解と使用
@@ -217,7 +217,7 @@ ms.locfileid: "91996457"
     }
     ```
 
-上述の操作はすべて[オプティミスティック コンカレンシー](iot-hub-devguide-device-twins.md#optimistic-concurrency)をサポートしており、「[IoT Hub へのアクセスの制御](iot-hub-devguide-security.md)」の記事で定義されているとおり、**ServiceConnect** アクセス許可を必要とします。
+上述の操作はすべて [オプティミスティック コンカレンシー](iot-hub-devguide-device-twins.md#optimistic-concurrency)をサポートしており、「[IoT Hub へのアクセスの制御](iot-hub-devguide-security.md)」の記事で定義されているとおり、**ServiceConnect** アクセス許可を必要とします。
 
 これらの操作に加えて、ソリューション バックエンドでは SQL に似た [IoT Hub クエリ言語](iot-hub-devguide-query-language.md)を使用してモジュール ツインのクエリを実行できます。
 

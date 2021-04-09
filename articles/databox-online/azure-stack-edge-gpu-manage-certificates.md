@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/29/2020
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 06d3ebae80b34d6b3c7f4a23694fd9fba34e4b76
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 534870e6bd67b7aa5273289f3154a794a2b9bd22
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733501"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102519012"
 ---
 # <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスで証明書を使用する
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-この記事では、Azure Stack Edge Pro デバイスにインストールできる証明書の種類について説明します。 この記事には、各証明書の種類の詳細と、証明書をインストールして、有効期限を識別する手順も記載します。 
+この記事では、Azure Stack Edge Pro デバイスにインストールできる証明書の種類について説明します。 この記事には、各証明書の種類の詳細と、証明書をインストールして、有効期限を識別する手順も記載します。  
 
 ## <a name="about-certificates"></a>証明書について
 
@@ -400,7 +400,7 @@ Windows クライアントに証明書をインポートするには、次の手
 
 ## <a name="supported-certificate-algorithms"></a>サポートされる証明書アルゴリズム
 
- Azure Stack Edge Pro デバイスでは、Rivest–Shamir–Adleman (RSA) 証明書のみサポートされています。 楕円曲線デジタル署名アルゴリズム (ECDSA) 証明書を使用する場合、デバイスの動作は不確定です。
+ Azure Stack Edge Pro デバイスでは、Rivest–Shamir–Adleman (RSA) 証明書のみサポートされています。 楕円曲線デジタル署名アルゴリズム (ECDSA) 証明書はサポートされていません。
 
  RSA 公開キーを含む証明書は、RSA 証明書と呼ばれます。 楕円曲線暗号 (ECC) 公開キーを含む証明書は、ECDSA (楕円曲線デジタル署名アルゴリズム) 証明書と呼ばれます。 
 

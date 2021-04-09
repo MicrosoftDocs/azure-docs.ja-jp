@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
-ms.openlocfilehash: 78b93c05621754ae499e4ae8ca6b66c5bbfaad1b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2b405e7f6babf84ef8297310a5a7a34c3f2dc11
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025929"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102623521"
 ---
 Cognitive Services には、[Language Understanding](../luis/what-is-luis.md) と [QnA Maker](../qnamaker/overview/overview.md) という 2 つの自然言語処理サービスが用意されており、それぞれ異なる目的があります。 各サービスをどのようなときに使用し、それぞれのサービスがどのように補完されるかについて説明します。
 
@@ -71,7 +71,7 @@ QnA Maker のナレッジ ベースを構築しているのに、対象ドメイ
 
 いずれかのサービスで提供されるものより多くの情報が必要な場合、デシジョン ツリーを続けるには、クライアント アプリケーションで両方のサービスを使用して両方の応答を処理します。
 
-両方のサービスを使用するプロセスを構築するには、Bot Framework の **[Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** ツールを使用します。 このツールでは、子アプリとしての LUIS と QnA Maker の間でディスパッチを行う、意図の上位 LUIS アプリが構築されます。 LUIS、QnA Maker、Bot Framework との統合について詳しくは、[こちら](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0)を参照してください。
+両方のサービスを使用するプロセスを構築するには、Bot Framework の **[Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** ツールを使用します。 このツールでは、子アプリとしての LUIS と QnA Maker の間でディスパッチを行う、意図の上位 LUIS アプリが構築されます。 LUIS、QnA Maker、Bot Framework との統合について詳しくは、[こちら](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs)を参照してください。
 
 この種のチャット ボットを実装するには、Bot Builder のサンプル「**NLP とディスパッチ**」を使用してください ([C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) または [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch))。
 
@@ -88,6 +88,6 @@ QnA Maker のナレッジ ベースを構築しているのに、対象ドメイ
 * [QnA Maker](../qnamaker/overview/overview.md)
 * [Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
 * [Bot Framework のサンプル](https://github.com/Microsoft/BotBuilder-Samples)
-* [Azure Bot Service](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
+* [Azure Bot Service](/azure/bot-service/bot-service-overview-introduction)
 * [Azure Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator)
 * [Bot Framework Web チャット](https://github.com/microsoft/BotFramework-WebChat)

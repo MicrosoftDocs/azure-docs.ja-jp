@@ -1,25 +1,19 @@
 ---
 title: Windows 用の Azure Disk Encryption
 description: 仮想マシン拡張機能を使用して、Azure Disk Encryption を Windows 仮想マシンにデプロイします。
-services: virtual-machines-windows
-documentationcenter: ''
-author: ejarvi
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
-ms.date: 03/19/2020
+ms.service: virtual-machines
+ms.subservice: disks
+author: ejarvi
 ms.author: ejarvi
-ms.openlocfilehash: e7c7385f6a9b0afb5791299a1244011e6164a0a7
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.collection: windows
+ms.date: 03/19/2020
+ms.openlocfilehash: 10268f8041f21f74e8ebcfaee41d207a53618260
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805247"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566245"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Windows 用 Azure Disk Encryption (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -43,7 +37,7 @@ Azure Disk Encryption (ADE) 用の拡張機能のスキーマには、次の 2 �
 
 ターゲット スキーマを選択するには、`typeHandlerVersion` プロパティを、使用するスキーマのバージョンと同じ値に設定する必要があります。
 
-### <a name="schema-v22-no-aad-recommended"></a>スキーマ v2.2:AAD なし (推奨)
+### <a name="schema-v22-no-aad-recommended"></a>スキーマ v2.2: AAD なし (推奨)
 
 v2.2 スキーマはすべての新しい VM で推奨されており、Azure Active Directory のプロパティを必要としません。
 
@@ -75,7 +69,7 @@ v2.2 スキーマはすべての新しい VM で推奨されており、Azure Ac
 
 ### <a name="schema-v11-with-aad"></a>スキーマ v1.1: AAD を使用 
 
-1\.1 スキーマでは、`aadClientID` と、`aadClientSecret` または `AADClientCertificate` のいずれかを必要とします。新しい VM には推奨されません。
+1.1 スキーマでは、`aadClientID` と、`aadClientSecret` または `AADClientCertificate` のいずれかを必要とします。新しい VM には推奨されません。
 
 `aadClientSecret`の使用
 

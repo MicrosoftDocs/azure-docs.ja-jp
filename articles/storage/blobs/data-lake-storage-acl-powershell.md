@@ -10,12 +10,12 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b606e69baec8d159a6a3fa7373500176260ef0d7
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: dd522355d30564d84fec15bdc57c7397c1e6cfe4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100656381"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104702543"
 ---
 # <a name="use-powershell-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で PowerShell を使用して ACL を管理する
 
@@ -172,7 +172,7 @@ $dir.ACL
 ```
 
 > [!NOTE]
-> **既定の** ACL エントリを設定する場合は、**Set-AzDataLakeGen2ItemAclObject** コマンドを実行するときに **-DefaultScope** パラメーターを使用します。 (例: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`)。
+> **既定の** ACL エントリを設定する場合は、**Set-AzDataLakeGen2ItemAclObject** コマンドを実行するときに **-DefaultScope** パラメーターを使用します。 (例: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`)。 
 
 この例では、所有ユーザー、所有グループ、または他のユーザーの **ファイル** に ACL を設定し、その ACL をコンソールに出力します。
 
@@ -188,7 +188,7 @@ $file.ACL
 ```
 
 > [!NOTE]
-> **既定の** ACL エントリを設定する場合は、**Set-AzDataLakeGen2ItemAclObject** コマンドを実行するときに **-DefaultScope** パラメーターを使用します。 (例: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`)。
+> 特定のグループまたはユーザーの ACL を設定するには、それぞれのオブジェクト ID を使用します。 たとえば、`group:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` または `user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` です。
 
 次の画像は、ファイルの ACL を設定した後の出力を示しています。
 
@@ -267,7 +267,7 @@ Update-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Pat
 ```
 
 > [!NOTE]
-> **既定の** ACL エントリを更新する場合は、**Set-AzDataLakeGen2ItemAclObject** コマンドを実行するときに **-DefaultScope** パラメーターを使用します。 (例: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission rwx -DefaultScope`)。
+> 特定のグループまたはユーザーの ACL を設定するには、それぞれのオブジェクト ID を使用します。 たとえば、`group:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` または `user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` です。
 
 バッチ サイズを指定してバッチ内の ACL を再帰的に更新する例については、[Update-AzDataLakeGen2AclRecursive](/powershell/module/az.storage/update-azdatalakegen2aclrecursive) のリファレンス記事をご覧ください。
 

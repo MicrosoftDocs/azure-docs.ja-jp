@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: b3404c02dc159309ed1e9fcd6f9f6bb593fc7552
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92896941"
 ---
 # <a name="azure-maps-supported-built-in-map-styles"></a>Azure Maps でサポートされている組み込みのマップ スタイル
@@ -35,7 +35,7 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 
 ## <a name="blank-and-blank_accessible"></a>blank と blank_accessible
 
-**blank** と **blank_accessible** マップ スタイルでは、データを視覚化するための空白のキャンバスが提供されます。 基本マップが表示されていない場合でも、 **blank_accessible** スタイルでは、マップの場所の詳細を含むスクリーン リーダーの更新が引き続き提供されます。
+**blank** と **blank_accessible** マップ スタイルでは、データを視覚化するための空白のキャンバスが提供されます。 基本マップが表示されていない場合でも、**blank_accessible** スタイルでは、マップの場所の詳細を含むスクリーン リーダーの更新が引き続き提供されます。
 
 > [!Note]
 > Web SDK では、マップの DIV 要素の CSS `background-color` スタイルを設定することによって、マップの背景色を変更できます。

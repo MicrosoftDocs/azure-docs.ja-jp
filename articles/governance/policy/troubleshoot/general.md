@@ -4,10 +4,10 @@ description: ポリシー定義の作成、さまざまな SDK、および Kuber
 ms.date: 01/26/2021
 ms.topic: troubleshooting
 ms.openlocfilehash: 6e0e4067f07266bae9c87fd4443d27314cc28c0b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100592608"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Azure Policy の使用に関するエラーをトラブルシューティングする

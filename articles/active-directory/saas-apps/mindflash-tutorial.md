@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 4fbc79723dd484148ddf2f8836848aa9bc333341
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92522590"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>チュートリアル: Azure Active Directory と Mindflash の統合
@@ -41,7 +41,7 @@ Mindflash と Azure AD の統合を構成するには、次のものが必要で
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Mindflash では、 **SP** によって開始される SSO がサポートされます
+* Mindflash では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-mindflash-from-the-gallery"></a>ギャラリーからの Mindflash の追加
 
@@ -61,13 +61,13 @@ Azure AD への Mindflash の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Mindflash** 」と入力し、結果ウィンドウで **[Mindflash]** を選び、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Mindflash**」と入力し、結果ウィンドウで **[Mindflash]** を選び、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果一覧の Mindflash](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Mindflash で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Mindflash で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Mindflash 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Mindflash で Azure AD のシングル サインオンを構成してテストするには、次の一連の作業を完了させる必要があります。
@@ -85,7 +85,7 @@ Mindflash で Azure AD のシングル サインオンを構成してテスト�
 
 Mindflash で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Mindflash** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Mindflash** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -142,9 +142,9 @@ Mindflash で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -155,7 +155,7 @@ Mindflash で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に Mindflash へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Mindflash]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Mindflash]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -183,23 +183,23 @@ Azure AD ユーザーが Mindflash にログインできるようにするには
 
 ### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>ユーザー アカウントをプロビジョニングするには、次の手順に従います。
 
-1. **Mindflash** の企業サイトに管理者としてログインします。
+1. **Mindflash** 企業サイトに管理者としてログインします。
 
 1. **[ユーザーの管理]** に移動します。
    
-    ![ユーザーの管理](./media/mindflash-tutorial/ic787140.png "[Manage Users]")
+    ![[ユーザーを管理する]](./media/mindflash-tutorial/ic787140.png "[Manage Users]")
 
-1. **[ユーザーの追加]** をクリックし、 **[新規]** をクリックします。
+1. [**ユーザーの追加**] をクリックし、[**新規**] をクリックします。
 
 1. **[新規ユーザーを追加する]** セクションで、プロビジョニングしたい有効なAzure AD アカウントを次の手順で設定します。
    
     ![[新規ユーザーを追加する]](./media/mindflash-tutorial/ic787141.png "[新しいユーザーの追加]")
    
-    a. **[名]** ボックスに、ユーザーの **名** を、「 **Britta** 」と入力します。
+    a. **[名]** ボックスに、ユーザーの **名** を、「**Britta**」と入力します。
 
-    b. **[姓]** ボックスに、ユーザーの **姓** を、「 **Simon** 」と入力します。
+    b. **[姓]** ボックスに、ユーザーの **姓** を、「**Simon**」と入力します。
     
-    c. **[Email]\(メール\)** ボックスに、ユーザーの **メール アドレス** ( **BrittaSimon\@contoso.com** など) を入力します。
+    c. **[Email]\(メール\)** ボックスに、ユーザーの **メール アドレス** (**BrittaSimon\@contoso.com** など) を入力します。
 
     b. **[追加]** をクリックします。
 

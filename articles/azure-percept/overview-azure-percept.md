@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: overview
 ms.date: 02/18/2021
 ms.custom: template-overview
-ms.openlocfilehash: fd332ffbbca4987b52ce380c6fd893571e65fb1c
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: eca0c28b016b2e57f6fe47495c90bf113f0179a6
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435462"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490111"
 ---
 # <a name="introduction-to-azure-percept"></a>Azure Percept の概要
 
@@ -35,6 +35,9 @@ Azure Percept の主要なコンポーネントは次のとおりです。
 2. Azure Percept DK (開発キット)。
 
     - デバイス ビルダー、ソリューション ビルダー、およびお客様のさまざまなプロトタイプ作成シナリオをサポートするために十分な柔軟性を備えた開発キットです。
+
+        > [!div class="nextstepaction"]
+        > [今すぐ購入](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
 3. エッジ AI モデルとソリューション開発を加速させるためのサービスとワークフロー。
 

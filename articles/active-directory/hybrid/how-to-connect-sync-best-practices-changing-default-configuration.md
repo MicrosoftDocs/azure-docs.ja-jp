@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect 同期: 既定の構成を変更する | Microsoft Docs'
+title: 'Azure AD Connect Sync: 既定の構成の変更 | Microsoft Docs'
 description: Azure AD Connect Sync の既定の構成を変更するためのベスト プラクティスを紹介します。
 services: active-directory
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 70e91ff8fa3666a2dfc5aaad07be7927852b08bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85357700"
 ---
-# <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect 同期: 既定の構成の変更するためのベスト プラクティス
+# <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect Sync: 既定の構成を変更するためのベスト プラクティス
 このトピックの目的は、Azure AD Connect Sync に対する、サポートされている変更とサポートされていない変更について説明することです。
 
 Azure AD Connect で作成された構成は、オンプレミスの Active Directory を Azure AD と同期するほとんどの環境において "そのままで" 動作します。 ただし、場合によっては、特定のニーズや要件を満たすために構成にいくつか変更を適用する必要があります。

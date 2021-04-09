@@ -9,13 +9,13 @@ ms.date: 06/26/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: e208b52c67f173bd0d289715b63562df656b1ec9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88009780"
 ---
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、 **[発行]** を選択します。
+1. **ソリューション エクスプローラー** で、プロジェクトを右クリックし、 **[発行]** を選択します。
 
 1. **[発行]** ダイアログ ボックスの **[対象]** で **[Azure]** を選択してから、 **[次へ]** を選択します。 
 

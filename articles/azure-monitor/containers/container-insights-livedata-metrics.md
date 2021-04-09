@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
 ms.openlocfilehash: 2e3a8a417a934374c2c0b256bb65a471d98fdebe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101731852"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>メトリックをリアルタイムで表示する方法

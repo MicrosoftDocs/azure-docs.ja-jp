@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
 ms.openlocfilehash: ca75416a66bcf2c90028c7f1dc11fbe23a9a9bd9
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98631369"
 ---
 # <a name="common-errors"></a>一般的なエラー
@@ -25,9 +25,9 @@ Azure Database for MySQL は、MySQL のコミュニティ バージョンを利
 
 セッション レベルではサポートされないサーバー パラメーター (require_secure_transport など) がいくつかあります。そのため、MySQL サーバーへの接続時に、init_connect を使用してそれらのパラメーターを値を変更しようとすると、エラー 1184 が発生します。以下にその例を示します。
 
-mysql> show databases; ERROR 2006 (HY000):MySQL server has gone away No connection. Trying to reconnect...Connection id:  64897 Current database: *** NONE **_ ERROR 1184 (08S01):Aborted connection 22 to db: 'db-name' user: 'user' host: 'hostIP' (init_connect command failed)
+mysql> show databases; ERROR 2006 (HY000):MySQL server has gone away No connection. Trying to reconnect...Connection id:    64897 Current database: *** NONE *** ERROR 1184 (08S01): Aborted connection 22 to db: 'db-name' user: 'user' host: 'hostIP' (init_connect command failed)
 
-_ *解決方法**: Azure portal の [サーバー パラメーター] タブで init_connect の値をリセットし、サポートされているサーバー パラメーターのみを init_connect パラメーターで設定する必要があります。 
+**解決方法**: Azure portal の [サーバー パラメーター] タブで init_connect の値をリセットし、サポートされているサーバー パラメーターのみを init_connect パラメーターで設定する必要があります。 
 
 
 ## <a name="errors-due-to-lack-of-super-privilege-and-dba-role"></a>SUPER 権限と DBA ロールの欠如によるエラー

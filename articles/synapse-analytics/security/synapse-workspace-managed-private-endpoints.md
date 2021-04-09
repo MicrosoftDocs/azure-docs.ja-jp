@@ -9,10 +9,10 @@ ms.date: 01/12/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: 65794c695fa4b36586b23a308845b1f12a20b7cb
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98569948"
 ---
 # <a name="synapse-managed-private-endpoints"></a>Synapse マネージド プライベート エンドポイント

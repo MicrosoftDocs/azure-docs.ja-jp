@@ -1,18 +1,14 @@
 ---
 title: オンプレミスの管理コンソールを管理する
 description: バックアップと復元、ホスト名の定義、センサーへのプロキシの設定など、オンプレミスの管理コンソールのオプションについて説明します。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: d76db6830839902a46aaf6515f816fdcc36d0df5
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 871c74eee4b74538a8a09188953916ff7376bc8d
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523942"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781723"
 ---
 # <a name="manage-the-on-premises-management-console"></a>オンプレミスの管理コンソールを管理する
 
@@ -55,11 +51,11 @@ Azure Defender for IoT は、SSL と TLS 証明書を使用して次のことを
 
 #### <a name="ssl-certificates"></a>SSL 証明書の数
 
-Defender for IoT センサーとオンプレミスの管理コンソールでは、次の機能のために SSL と TLS 証明書を使用します。 
+Defender for IoT センサーとオンプレミスの管理コンソールは、次の機能のために SSL と TLS 証明書を使用します。 
 
  - ユーザーとアプライアンスの Web コンソールとの間のセキュリティで保護された通信。 
  
- - センサーとオンプレミスの管理コンソールの REST API へのセキュリティで保護された通信。
+ - センサーおよびオンプレミスの管理コンソール上での REST API へのセキュリティで保護された通信。
  
  - センサーとオンプレミスの管理コンソールとの間のセキュリティで保護された通信。 
 
@@ -134,7 +130,7 @@ Defender for IoT センサーとオンプレミスの管理コンソールでは
 
  > [!Note]
  > 4096 ビットのキー長を使用する場合:
- > - 各接続の開始時に SSL ハンドシェイクが遅くなります。  
+ > - 各接続の開始時の SSL ハンドシェイクが遅くなります。  
  > - ハンドシェイク中に CPU 使用率が増加します。 
 
 **証明書チェーン**
@@ -156,9 +152,9 @@ Defender for IoT センサーとオンプレミスの管理コンソールでは
 
 **.pem: 証明書コンテナー ファイル**
 
-Privacy Enhanced Mail (PEM) ファイルは、メールをセキュリティで保護するために使用される一般的なファイルの種類です。 最近、PEM ファイルは証明書と共に使用され、x509 ASN1 キーが使用されます。  
+Privacy Enhanced Mail (PEM) ファイルは、メールをセキュリティで保護するために使用される一般的なファイルの種類です。 最近では、PEM ファイルは証明書と共に使用され、x509 ASN1 キーを使用します。  
 
-コンテナー ファイルは、RFC 1421 から 1424 に定義され、公開証明書のみが含まれることがあるコンテナー形式です。 たとえば、Apache では、CA 証明書、ファイル、ETC、SSL、CERTS がインストールされます。 これには公開キー、秘密キー、ルート証明書など、証明書チェーン全体を含めることができます。  
+コンテナー ファイルは、RFC 1421 から 1424 で定義されています。これは、公開証明書のみを含む可能性があるコンテナー形式です。 たとえば、Apache では、CA 証明書、ファイル、ETC、SSL、CERTS がインストールされます。 これには公開キー、秘密キー、ルート証明書など、証明書チェーン全体が含まれる場合があります。  
 
 また、CSR を PKCS10 形式としてエンコードすることもでき、それを PEM に変換できます。
 
@@ -172,27 +168,27 @@ Privacy Enhanced Mail (PEM) ファイルは、メールをセキュリティで�
 
 #### <a name="additional-commonly-available-key-artifacts"></a>その他の一般的に利用可能な主要成果物
 
-**.csr  - 証明書署名要求**。  
+**.csr  - 証明書署名要求**  
 
-このファイルは、証明機関に送信するために使用されます。 実際の形式は、RFC 2986 で定義されている PKCS10 で、要求された証明書の一部またはすべての主要な詳細が含まれている場合があります。 たとえば、サブジェクト、組織、状態などです。 これは、CA によって署名され、引き換えに証明書を受け取る証明書の公開キーです。  
+このファイルは、証明機関に送信するために使用されます。 実際の形式は、RFC 2986 で定義されている PKCS10 で、要求された証明書の一部またはすべてのキーの詳細が含まれている場合があります。 たとえば、サブジェクト、組織、都道府県などです。 これは、CA によって署名され、引き換えに証明書を受け取る、証明書の公開キーです。  
 
-返される証明書は公開証明書であり、公開キーが含まれますが、秘密キーは含まれません。 
+返される証明書は公開証明書であり、公開キーは含まれていますが、秘密キーは含まれていません。 
 
-**.pkcs12 .pfx .p12 - パスワード コンテナー**. 
+**.pkcs12 .pfx .p12 - パスワード コンテナー** 
 
-本来、公開キー暗号化標準 (PKCS) で RSA によって定義されている 12 バリアントは、最初 Microsoft によって拡張され、その後 RFC 7292 として提出されました。  
+当初は公開キー暗号化標準 (PKCS) として RSA によって定義されましたが、12 バリアントは当初は Microsoft によって拡張され、その後 RFC 7292 として提出されました。  
 
-このコンテナー形式には、公開証明書と非公開証明書のペアを含むパスワードが必要です。 `.pem`  ファイルと異なり、このコンテナーは完全に暗号化されています。  
+このコンテナー形式では、公開とプライベートの証明書のペアを含むパスワードが必要です。 `.pem`  ファイルと異なり、このコンテナーは完全に暗号化されています。  
 
 OpenSSL を使用して、公開キーと秘密キーの両方を含む `.pem`  ファイルにファイルを変換できます。 `openssl pkcs12 -in file-to-convert.p12 -out converted-file.pem -nodes`  
 
 **.der - バイナリでエンコードされた PEM**。
 
-ASN.1 構文をバイナリでエンコードする方法は、単に Base64 でエンコードされた `.der` ファイルである `.pem`  ファイルを使用することです。 
+ASN.1 構文をバイナリでエンコードするには、`.pem`  ファイル (単に Base64 でエンコードされた `.der` ファイル) を使用します。 
 
-OpenSSL によって、これらのファイルを `.pem` ( `openssl x509 -inform der -in to-convert.der -out converted.pem`) に変換できます。  
+OpenSSL では、これらのファイルを `.pem` に変換できます:  `openssl x509 -inform der -in to-convert.der -out converted.pem`  
 
-これらのファイルは、Windows によって証明書ファイルとして認識されます。 既定で、Windows では、証明書は別の拡張子が付いた `.der` 形式のファイルとしてエクスポートされます。
+これらのファイルは、Windows によって証明書ファイルとして認識されます。 既定では、Windows では証明書は別の拡張子を持つ `.der` 形式のファイルとしてエクスポートされます。
 
 **.crl - 証明書の失効リスト**.  
 
@@ -231,10 +227,10 @@ CLI コマンドを使用する場合:
 | 新しい秘密キーと証明書署名要求を生成する | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
 | 自己署名証明書の生成 | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
 | 既存の秘密キーの証明書署名要求 (CSR) を生成する | `openssl req -out CSR.csr -key privateKey.key -new` |
-| 既存の証明書に基づいて証明書署名要求を生成する | `openssl x509 -x509toreq -in certificate.crt -out CSR.csr -signkey privateKey.key` |
+| 既存の証明書に基づく証明書署名要求を生成する | `openssl x509 -x509toreq -in certificate.crt -out CSR.csr -signkey privateKey.key` |
 | 秘密キーからパスフレーズを削除する | `openssl rsa -in privateKey.pem -out newPrivateKey.pem` |
 
-証明書、CSR、または秘密キー内の情報を確認する必要がある場合、次のコマンドを使用します。
+証明書、CSR、または秘密キー内の情報を確認する必要がある場合は、次のコマンドを使用します。
 
 | [説明] | CLI コマンド |
 |--|--|
@@ -254,7 +250,7 @@ CLI コマンドを使用する場合:
 |--|--|
 | DER ファイル (.crt .cer .der) を PEM に変換する  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
 | PEM ファイルを DER に変換する | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
-| 秘密キーと証明書を含む PKCS # 12 ファイル (.pfx .p12) を PEM に変換する | `openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes` <br />`-nocerts` を追加して秘密キーのみを出力するか、`-nokeys` を追加して証明書のみを出力することができます。 |
+| 秘密キーと証明書を含む PKCS#12 ファイル (.pfx. p12) を PEM に変換する | `openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes` <br />`-nocerts` を追加して秘密キーのみを出力するか、`-nokeys` を追加して証明書のみを出力することができます。 |
 | PEM 証明書ファイルと秘密キーを PKCS#12 (.pfx .p12) に変換する | `openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CACert.crt` |
 
 ## <a name="define-backup-and-restore-settings"></a>バックアップと復元の設定を定義する
@@ -272,7 +268,7 @@ CLI コマンドを使用する場合:
 
 最新のバックアップ ファイルを復元するには:
 
-- 管理アカウントにサインインし、「`$ sudo cyberx-management-system-restore`」と入力します。
+- 管理者アカウントにサインインし、「`$ sudo cyberx-management-system-restore`」と入力します。
 
 外部の SMB サーバーにバックアップを保存するには:
 
@@ -415,7 +411,21 @@ VLAN 名は、センサーと管理コンソールの間で同期されません
 
 1. Defender for IoT の **[更新プログラム]** ページからダウンロードしたファイルを選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="mail-server-settings"></a>メール サーバーの設定
+
+オンプレミス管理コンソールの SMTP メールサーバー設定を定義します。
+
+定義するには:
+
+1. 管理者資格情報を使用して、オンプレミス管理用の CLI にサインインします。
+1. 「```nano /var/cyberx/properties/remote-interfaces.properties```」と入力します。
+1. [Enter] を選択します。 次のプロンプトが表示されます。
+```mail.smtp_server= ```
+```mail.port=25 ```
+```mail.sender=```
+1. SMTP サーバーの名前と送信者を入力し、Enter キーを押します。
+
+## <a name="see-also"></a>関連項目
 
 [管理コンソールからセンサーを管理する](how-to-manage-sensors-from-the-on-premises-management-console.md)
 

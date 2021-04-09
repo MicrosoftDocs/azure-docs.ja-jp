@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 4b2777bfd9905a1caa8b69b78ff892b661e4dc4b
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 62801d40295762b0066f0d2887d7d528ee7b7c2a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097542"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656824"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>データのラベル付けプロジェクトを作成してラベルをエクスポートする 
 
@@ -107,12 +107,9 @@ Azure Blob Storage に既に格納済みのデータからデータセットを�
 
 プロジェクトにさらに多くのイメージを追加するには、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、BLOB ストレージ内の適切なフォルダーにアップロードします。 
 
-プロジェクトでデータストア内の新しいデータを継続的に監視する場合は、 **[Enable incremental refresh]\(増分更新を有効にする\)** チェックボックスをオンにします。 有効にした場合、このデータが 1 日 1 回プロジェクトにプルされます。
+プロジェクトでデータストア内の新しいデータを継続的に監視する場合は、 **[Enable incremental refresh]\(増分更新を有効にする\)** チェックボックスをオンにします。 有効にすると、このデータは 1 日に 1 回プロジェクトにプルされるため、データストアに追加した新しいデータがプロジェクトに表示されるまで待つ必要があります。  データが最後に更新されたときのタイムスタンプは、プロジェクトの **[詳細]** タブの **[増分更新]** セクションで確認できます。
 
 データストアに表示される新しい画像をプロジェクトに追加しない場合は、このチェックボックスをオフにします。
-
-最新の更新のタイムスタンプは、プロジェクトの **[詳細]** タブの **[増分更新]** セクションで確認できます。
-
 
 ## <a name="specify-label-classes"></a>ラベル クラスを指定する
 

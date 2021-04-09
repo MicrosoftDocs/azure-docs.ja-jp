@@ -5,12 +5,12 @@ author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
-ms.openlocfilehash: b8db69792b31fd82646757423e669e39e8539d06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caba864e77822ccab649f694df7e63e0ee5d6e51
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630704"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732566"
 ---
 # <a name="networking"></a>ネットワーク
 
@@ -39,7 +39,7 @@ Resource Manager テンプレートで *enableAcceleratedNetworking* プロパ�
 ```
 Service Fabric クラスターは、[高速ネットワークを導入した Linux](../virtual-network/create-vm-accelerated-networking-cli.md) と[高速ネットワークを導入した Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) でプロビジョニングできます。
 
-高速ネットワークは、Azure 仮想マシン シリーズの次の SKU でサポートされています。D/DSv2、D/DSv3、E/ESv3、F/FS、FSv2、Ms/Mms。 高速ネットワークのテストは、Service Fabric Windows クラスターについては 2019 年 1 月 23 日に Standard_DS8_v3 SKU を使用して、Service Fabric Linux クラスターについては 2019 年 1 月 29 日に Standard_DS12_v2 を使用して、問題なく行われました。
+高速ネットワークは、Azure 仮想マシン シリーズの次の SKU でサポートされています。D/DSv2、D/DSv3、E/ESv3、F/FS、FSv2、Ms/Mms。 高速ネットワークのテストは、Service Fabric Windows クラスターについては 2019 年 1 月 23 日に Standard_DS8_v3 SKU を使用して、Service Fabric Linux クラスターについては 2019 年 1 月 29 日に Standard_DS12_v2 を使用して、問題なく行われました。 高速ネットワークには 4 つ以上の vCPU が必要であることに注意してください。 
 
 既存の Service Fabric クラスターで高速ネットワークを有効にするには、最初に[仮想マシン スケール セットを追加することで Service Fabric クラスターをスケールアウト](./virtual-machine-scale-set-scale-node-type-scale-out.md)する必要があります。
 1. 高速ネットワークを有効にして 1 つの NodeType をプロビジョニングします

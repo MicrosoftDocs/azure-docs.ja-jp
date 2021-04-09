@@ -4,10 +4,10 @@ description: Azure Application insights を使用して、メモリ リークの
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.openlocfilehash: 3fe58cd7d61246c5565cd89fa782c8a977f09499
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86539892"
 ---
 # <a name="memory-leak-detection-preview"></a>メモリ リーク検出 (プレビュー)

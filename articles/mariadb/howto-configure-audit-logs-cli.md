@@ -3,15 +3,15 @@ title: 監査ログにアクセスする - Azure CLI - Azure Database for MariaD
 description: この記事では、Azure CLI から Azure Database for MariaDB の監査ログを構成し、それにアクセスする方法について説明します。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/24/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 57fc79e88e3268c37dd932a5618bd661f000e09c
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c1d446d8ee2863077ad84c361876758336f5a3cb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98665176"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-audit-logs-in-the-azure-cli"></a>Azure CLI で Azure Database for Maria DB の監査ログを構成しアクセスする

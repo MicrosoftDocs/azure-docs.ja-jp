@@ -2,16 +2,16 @@
 title: Azure Stream Analytics での異常検出
 description: この記事では、Azure Stream Analytics と Azure Machine Learning を併用して異常を検出する方法を説明します。
 ms.service: stream-analytics
-author: jasonwhowell
-ms.author: jasonh
+author: jseb225
+ms.author: jeanb
 ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: 78730b011e508f98779b9e00624882466d6a03a0
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ec37ea6cbb1c1c6693aab1f6855948d32b85e95b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178500"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102441195"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure Stream Analytics での異常検出
 
@@ -128,7 +128,7 @@ FROM AnomalyDetectionStep
 ### <a name="observations"></a>観測値
 次の表には、パーティション分割されていない場合の 1 つのノード (6 SU) のスループット観測値が含まれています。
 
-| 履歴のサイズ (イベント) | ウィンドウ期間 (ミリ秒) | 1 秒あたりの入力イベントの合計 |
+| 履歴のサイズ (イベント)    | ウィンドウ期間 (ミリ秒) | 1 秒あたりの入力イベントの合計 |
 | --------------------- | -------------------- | -------------------------- |
 | 60 | 55 | 2,200 |
 | 600 | 728 | 1,650 |

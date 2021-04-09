@@ -7,10 +7,10 @@ ms.date: 02/11/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c04f2312926d3b6d668dff712eedb57d816c8bf3
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99592009"
 ---
 # <a name="outline-rendering"></a>アウトライン レンダリング

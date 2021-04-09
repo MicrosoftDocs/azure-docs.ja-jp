@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: c90642e58c026c78ce854e7fe74dd36963d48b67
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 7d597c4dbb81562050e9523c61d47d0020fc9059
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944007"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869472"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の ML サービス クラスターの運用化
 
@@ -18,9 +18,9 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* HDInsight 上の ML Services クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照し、 **[クラスターの種類]** で **[ML Services]** を選択してください。
+* HDInsight 上の ML Services クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照し、**[クラスターの種類]** で **[ML Services]** を選択してください。
 
-* Secure Shell (SSH) クライアント:SSH クライアントは、HDInsight クラスターにリモート接続し、そのクラスター上でコマンドを直接実行するために使用されます。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+* Secure Shell (SSH) クライアント: SSH クライアントを使用して、HDInsight クラスターにリモート接続し、クラスター上でコマンドを直接実行します。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 ## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>ML サービス クラスターをワンボックス構成で運用化する
 
@@ -53,37 +53,37 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
 
 1. 選択できるオプションが表示されます。 次のスクリーンショットに示すように、最初のオプションを選択して、**ML Server を運用化のために構成** します。
 
-    ![R server の管理ユーティリティ (選択)](./media/r-server-operationalize/admin-util-one-box-1.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-1.png" alt-text="R server の管理ユーティリティ (選択)" border="true":::
 
 1. 次に表示されるオプションでは、ML Server を運用化する方法を選択します。 表示されたオプションから最初のオプションを選択します。それには「**A**」を入力します。
 
-    ![R server の管理ユーティリティ (運用化)](./media/r-server-operationalize/admin-util-one-box-2.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-2.png" alt-text="R server の管理ユーティリティ (運用化)" border="true":::
 
 1. メッセージが表示されたら、ローカル管理者ユーザーのパスワードを入力し、さらに、もう一度入力します。
 
 1. 操作が成功したことを示す出力が表示されます。 また、メニューから他のオプションを選択するよう求められます。 E を選択して、メイン メニューに戻ります。
 
-    ![R server の管理ユーティリティ (成功)](./media/r-server-operationalize/admin-util-one-box-3.png)
+    :::image type="content" source="./media/r-server-operationalize/admin-util-one-box-3.png" alt-text="R server の管理ユーティリティ (成功)" border="true":::
 
 1. 必要に応じて、次のように診断テストを実行することで、診断チェックを実行できます。
 
     a. メイン メニューから、**6** を選択して、診断テストを実行します。
 
-    ![R server の管理ユーティリティ (診断)](./media/r-server-operationalize/hdinsight-diagnostic1.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic1.png" alt-text="R server の管理ユーティリティ (診断)" border="true":::
 
     b. Diagnostic Tests メニューから、**A** を選択します。メッセージが表示されたら、ローカル管理者ユーザーに対して指定したパスワードを入力します。
 
-    ![R server の管理ユーティリティ (テスト)](./media/r-server-operationalize/hdinsight-diagnostic2.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic2.png" alt-text="R server の管理ユーティリティ (テスト)" border="true":::
 
     c. 出力を確認し、全体的な正常性が pass であることを確かめます。
 
-    ![R server の管理ユーティリティ (合格)](./media/r-server-operationalize/hdinsight-diagnostic3.png)
+    :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic3.png" alt-text="R server の管理ユーティリティ (合格)" border="true":::
 
     d. 表示されたメニュー オプションから「**E**」を入力して、メイン メニューに戻ります。次に、「**8**」を入力して、管理ユーティリティを終了します。
 
 ### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Apache Spark で Web サービスを実行しているときの長い待ち時間
 
-mrsdeploy の機能を使って作成された Web サービスを Apache Spark コンピューティング コンテキストで実行しようとしているときに長い待ち時間が生じた場合、いくつかの不足しているフォルダーを追加する必要があります。 Spark アプリケーションは、Web サービスから mrsdeploy の機能を使って呼び出された場合は常に、"*rserve2*" というユーザーに属します。 この問題を回避するには、次のようにします。
+mrsdeploy の機能を使って作成された Web サービスを Apache Spark コンピューティング コンテキストで実行しようとしているときに長い待ち時間が生じた場合、いくつかの不足しているフォルダーを追加する必要があります。 Spark アプリケーションは、Web サービスから mrsdeploy の機能を使って呼び出された場合は常に、"*rserve2*" というユーザーに属します。 この問題の回避方法:
 
 ```r
 # Create these required folders for user 'rserve2' in local and hdfs:
@@ -142,19 +142,19 @@ remoteLogin(
 
 コンピューティング ノードスケーリングするには、最初に worker ノードの使用を停止し、その worker ノードでコンピューティング ノードを構成します。
 
-### <a name="step-1-decommission-the-worker-nodes"></a>手順 1:ワーカー ノードを使用停止する
+### <a name="step-1-decommission-the-worker-nodes"></a>手順 1: worker ノードの使用を停止する
 
 ML サービス クラスターは [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) では管理されていません。 worker ノードの使用が停止されていないと、YARN リソース マネージャーは、サーバーによってリソースが使用されていることを認識しないため、想定どおりに機能しません。 この状況を防ぐため、コンピューティング ノードをスケールアウトする前に、ワーカー ノードの使用を停止することをお勧めします。
 
 次の手順に従って、worker ノードの使用を停止します。
 
-1. クラスターの Ambari コンソールにログインして、 **[ホスト]** タブをクリックします。
+1. クラスターの Ambari コンソールにログインして、**[ホスト]** タブをクリックします。
 
 1. (使用を停止する) worker ノードを選択します。
 
 1. **[アクション]**  >  **[選択したホスト]**  >  **[ホスト]**  >  **[メンテナンス モードの有効化]** の順にクリックします。 たとえば、次の画像では、使用停止の対象として wn3 と wn4 が選択されています。  
 
-   ![Apache Ambari、メンテナンス モードの有効化](./media/r-server-operationalize/get-started-operationalization.png)  
+   :::image type="content" source="./media/r-server-operationalize/get-started-operationalization.png" alt-text="Apache Ambari、メンテナンス モードの有効化" border="true":::  
 
 * **[アクション]**  >  **[選択したホスト]**  >  **[DataNodes]** の順に選択し、 **[使用停止]** をクリックします。
 * **[アクション]**  >  **[選択したホスト]**  >  **[NodeManagers]** の順に選択し、 **[使用停止]** をクリックします。
@@ -164,7 +164,7 @@ ML サービス クラスターは [Apache Hadoop YARN](https://hadoop.apache.or
 * ワーカー ノードの選択を解除し、ヘッド ノードを選択します。
 * **[アクション]**  >  **[選択したホスト]**  >  **[ホスト]** の順に選択し、 **[Restart All Components]\(すべてのコンポーネントを再起動\)** をクリックします。
 
-### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>手順 2:使用停止された各ワーカー ノード上でコンピューティング ノードを構成する
+### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>手順 2: 使用停止状態の各 worker ノードでコンピューティング ノードを構成する
 
 1. 使用停止されたワーカー ノードに SSH 接続します。
 
@@ -180,13 +180,13 @@ ML サービス クラスターは [Apache Hadoop YARN](https://hadoop.apache.or
 
 1. 管理ユーティリティを終了します。
 
-### <a name="step-3-add-compute-nodes-details-on-web-node"></a>手順 3:Web ノード上でコンピューティング ノードの詳細を追加する
+### <a name="step-3-add-compute-nodes-details-on-web-node"></a>手順 3: Web ノードにコンピューティング ノードの詳細を追加する
 
 使用停止状態の worker ノードすべてがコンピューティング ノードを実行するように構成されたら、エッジ ノードに戻って、使用が停止された worker ノードの IP アドレスを ML Server Web ノードの構成に追加します。
 
 1. エッジ ノードに SSH 接続します。
 
-1. `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json` を実行します。
+1. `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json` を実行する。
 
 1. "Uris" セクションを見つけて、worker ノードの IP とポートの詳細を追加します。
 

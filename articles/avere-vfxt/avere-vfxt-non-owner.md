@@ -7,15 +7,15 @@ ms.topic: how-to
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 0d9b1060ee35af6cbc2e1b95b0f7813072c52d2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85505377"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Avere vFXT のデプロイを所有者以外に承認する
 
-以下の手順は、サブスクリプション所有者特権のないユーザーが Avere vFXT for Azure システムを作成できるようにするための回避策です
+以下の手順は、サブスクリプション所有者特権のないユーザーが Avere vFXT for Azure システムを作成できるようにするための回避策です 
 
 (Avere vFXT システムをデプロイするための推奨される方法は、「[Prepare to create the Avere vFXT (Avere vFXT の作成準備)](avere-vfxt-prereqs.md)」で説明されているように、所有者特権を持つユーザーに作成手順を実行してもらう方法です)。  
 

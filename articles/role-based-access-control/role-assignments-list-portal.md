@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 12/09/2020
 ms.author: rolyon
 ms.openlocfilehash: 7d53df4159c071c17657e8a8367da605b6a5dc9e
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100556179"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure portal を使用して Azure でのロールの割り当てを一覧表示する
@@ -93,10 +93,10 @@ ms.locfileid: "100556179"
 
 1. セキュリティ プリンシパルをクリックして **[割り当て]** ウィンドウを開きます。
 
-    このウィンドウでは、このスコープで選択し、このスコープに継承された、セキュリティ プリンシパルのアクセス権を確認できます。 子スコープでの割り当ては表示されません。 次の割り当てが表示されます。
+    このペインでは、このスコープで選択されたセキュリティ プリンシパルと、このスコープに継承されたセキュリティ プリンシパルのアクセス権を確認できます。 子スコープでの割り当ては表示されません。 次の割り当てが表示されます。
 
-    - Azure RBAC で追加されたロール割り当て。
-    - Azure Blueprints または Azure マネージド アプリを使用して追加された拒否割り当て。
+    - Azure RBAC で追加されたロールの割り当て。
+    - Azure Blueprints または Azure マネージド アプリを使用して追加された拒否の割り当て。
     - 従来のデプロイ向けの、従来のサービス管理者または共同管理者の割り当て。 
 
     ![[割り当て] ウィンドウ](./media/shared/rg-check-access-assignments-user.png)

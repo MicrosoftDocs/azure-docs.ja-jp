@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/02/2021
 ms.author: crtreasu
 ms.openlocfilehash: d8dfc3d4b7a8447250481b98c1adadc865a29da1
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102532765"
 ---
 ### <a name="upload-your-model"></a>モデルをアップロードする

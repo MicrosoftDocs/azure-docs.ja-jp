@@ -1,16 +1,16 @@
 ---
-title: クイック スタート:PowerShell を使用した新しいポリシーの割り当て
+title: 'クイック スタート: PowerShell を使用した新しいポリシー割り当て'
 description: このクイックスタートでは、Azure PowerShell を使用して、Azure Policy の割り当てを作成し、準拠していないリソースを特定します。
 ms.date: 08/17/2020
 ms.topic: quickstart
 ms.openlocfilehash: e941b74101308af703f243197fb4043f8f32d233
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88548414"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して準拠していないリソースを識別するためのポリシー割り当てを作成する
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>クイックスタート: Azure PowerShell を使用して準拠していないリソースを識別するためのポリシー割り当てを作成する
 
 Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。 このクイック スタートでは、マネージド ディスクを使用していない仮想マシンを識別するためのポリシー割り当てを作成します。 完了すると、"_準拠していない_" 仮想マシンが特定されます。
 
@@ -51,7 +51,7 @@ $definition = Get-AzPolicyDefinition | Where-Object { $_.Properties.DisplayName 
 New-AzPolicyAssignment -Name 'audit-vm-manageddisks' -DisplayName 'Audit VMs without managed disks Assignment' -Scope $rg.ResourceId -PolicyDefinition $definition
 ```
 
-上記のコマンドでは次の情報を使用します。
+上記のコマンドでは次の情報が使用されています。
 
 - **Name** - 割り当ての実際の名前。 この例では、_audit-vm-manageddisks_ が使用されました。
 - **DisplayName** - ポリシーの割り当てに使用する表示名。 このケースでは、"_Audit VMs without managed disks Assignment_" を使用します。

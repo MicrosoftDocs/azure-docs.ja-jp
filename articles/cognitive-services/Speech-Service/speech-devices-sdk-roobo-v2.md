@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: v-anusp
 ms.openlocfilehash: 2f325c80877068c53d690bd7ff74f768dab3a174
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80371575"
 ---
-# <a name="device-roobo-smart-audio-dev-kit-v2"></a>デバイス:Roobo Smart Audio Dev Kit v2
+# <a name="device-roobo-smart-audio-dev-kit-v2"></a>デバイス: Roobo Smart Audio Dev Kit v2
 
 この記事では、Roobo Smart Audio Dev Kit2 のデバイス固有の情報を提供します。
 

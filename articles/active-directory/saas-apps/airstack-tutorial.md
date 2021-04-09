@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Airstack の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Airstack の統合 | Microsoft Docs'
 description: Azure Active Directory と Airstack の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 7e0b17c30985617791c1ce55a02f6a60253b43db
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92318946"
 ---
-# <a name="tutorial-integrate-airstack-with-azure-active-directory"></a>チュートリアル:Airstack と Azure Active Directory の統合
+# <a name="tutorial-integrate-airstack-with-azure-active-directory"></a>チュートリアル: Azure Active Directory と Airstack の統合
 
 このチュートリアルでは、Airstack と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Airstack を統合すると、次のことができます。
 
@@ -69,7 +69,7 @@ Airstack で Azure AD SSO を構成してテストするには、次の構成要
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Airstack** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Airstack** アプリケーション統合ページで、**[管理]** セクションを探して、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
 
@@ -128,7 +128,7 @@ Airstack で Azure AD SSO を構成してテストするには、次の構成要
 
 ### <a name="create-airstack-test-user"></a>Airstack のテスト ユーザーの作成
 
-このセクションでは、Airstack で B.Simon というユーザーを作成します。  [Airstack サポート チーム](mailto:jsinger@lenovo.com)と連携し、Airstack プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Airstack で B.Simon というユーザーを作成します。 [Airstack サポート チーム](mailto:jsinger@lenovo.com)と連携し、Airstack プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-sso"></a>SSO のテスト
 

@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.date: 1/31/2021
 ms.author: amberz
 ms.co-author: Donnana
-ms.openlocfilehash: 494fc2c227b6fe855e96a780d43cc6702722fa94
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: e8352b687a3cdfac7ea2a819e1217906598a6837
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520798"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563268"
 ---
 # <a name="process-data-from-automated-machine-learningautoml-models-using-data-flow"></a>データ フローを使用して自動機械学習 (AutoML) モデルのデータを処理する
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 自動機械学習 (AutoML) は、分類、回帰、および時系列予測に指定したターゲット メトリックを使用して、最適なモデルを自動的にトレーニング、調整、および取得するために、機械学習プロジェクトで採用されています。 
 

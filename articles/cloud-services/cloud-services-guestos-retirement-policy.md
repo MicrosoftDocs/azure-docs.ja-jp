@@ -14,10 +14,10 @@ ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
 ms.openlocfilehash: fbe9b3379799fe3cf0a56d921ab257bc87606ca9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "68945444"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Azure ゲスト OS のサポートと提供終了のポリシー
@@ -27,8 +27,8 @@ Microsoft では、 [ゲスト OS のサポート ポリシー](https://support.
 
 ポリシーは次のとおりです。
 
-1. Microsoft では、**少なくとも最新の 2 つのゲスト OS ファミリをサポートします**。 ファミリが提供終了になるときには、正式な提供終了日から 12 か月の猶予期間が設けられます。その間に、サポートされている新しいゲスト OS ファミリに更新する必要があります。
-2. Microsoft では、 **サポートされているゲスト OS ファミリの少なくとも最新の 2 つのバージョン**をサポートします。
+1. Microsoft では、**少なくとも最新の 2 つのゲスト OS ファミリ** をサポートします。 ファミリが提供終了になるときには、正式な提供終了日から 12 か月の猶予期間が設けられます。その間に、サポートされている新しいゲスト OS ファミリに更新する必要があります。
+2. Microsoft では、 **サポートされているゲスト OS ファミリの少なくとも最新の 2 つのバージョン** をサポートします。
 3. Microsoft では、**Azure SDK の少なくとも最新の 2 つのバージョンをサポートします**。 SDK のバージョンが提供終了になるときには、正式な提供終了日から 12 か月の猶予期間が設けられます。その間に、より新しいバージョンに更新する必要があります。
 
 ときには 3 つ以上のファミリやリリースがサポートされる場合もあります。 ゲスト OS のサポートに関する公式の情報については、 [Azure ゲスト OS リリースと SDK の互換性対応表](cloud-services-guestos-update-matrix.md)を参照してください。

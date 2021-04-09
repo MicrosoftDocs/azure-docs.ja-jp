@@ -6,10 +6,10 @@ manager: gwallace
 ms.topic: article
 ms.date: 10/19/2020
 ms.openlocfilehash: c0c1bf83bf5a816debe61cab0ceab856bfbd062f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102181178"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups"></a>近接配置グループを使用して待機時間を短縮する

@@ -12,18 +12,18 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 3d029f23a094646d20dd6ae8cb6560aeef4aed54
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 01854e7636f53ec1faab157b51cc84f3539582b4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954514"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596724"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>説明オーディオ トラックの通知
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-ナレーション トラックをビデオに追加することで、目が不自由なクライアントがナレーションを聞いて動画の内容を追うことができます。 Media Services v3 では、マニフェスト ファイルのオーディオ トラックに注釈を付けることによって、説明オーディオ トラックを通知します。
+ナレーション トラックをビデオに追加することで、目の不自由なお客様がナレーションを聞いて動画の内容を追うことができます。 Media Services v3 では、マニフェスト ファイルのオーディオ トラックに注釈を付けることによって、説明オーディオ トラックを通知します。
 
 この記事では、ビデオをエンコードし、説明オーディオを含む音声のみの MP4 ファイル (AAC コーデック) を出力アセットにアップロードし、.ism ファイルを編集して説明オーディオを含める方法について説明します。
 
@@ -80,7 +80,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 ジョブには通常、**Scheduled**、**Queued**、**Processing**、**Finished** (最終状態) という状態があります。 ジョブでエラーが発生すると、**Error** 状態を取得します。 ジョブがキャンセル処理中の場合は **Canceling** を受け取り、完了すると **Canceled** を受け取ります。
 
-詳細については、「[Event Grid イベントの処理](reacting-to-media-services-events.md)」を参照してください。
+詳細については、「[Event Grid イベントの処理](monitoring/reacting-to-media-services-events.md)」を参照してください。
 
 ## <a name="upload-the-audio-only-mp4-file"></a>オーディオのみの MP4 ファイルのアップロード
 

@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: contperf-fy21q2
 ms.date: 11/09/2020
 ms.openlocfilehash: bcaba4274b0e6b423e9fa490c80fc57204d4e153
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97708553"
 ---
 # <a name="manage-dhcp-for-azure-vmware-solution"></a>Azure VMware Solution 用の DHCP の管理

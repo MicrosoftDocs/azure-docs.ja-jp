@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/31/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a81f2b21545a5362168482f3f0a65fbbbf381c10
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5360057ec2dfbd2b40c6f086f5e910103c544b62
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929156"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865453"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用した Apache Storm の C# トポロジの開発
 
@@ -128,7 +128,7 @@ Visual Studio で C# トポロジ プロジェクトを作成するには:
 
 1. **[新しいプロジェクトの構成]** ウィンドウで、 **[プロジェクト名]** に「*WordCount*」と入力し、プロジェクトのディレクトリ パスの **[場所]** を選択または作成して、 **[作成]** を選択します。
 
-    ![Storm アプリケーション、[新しいプロジェクトの構成] ダイアログ ボックス、Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png" alt-text="Storm アプリケーション、[新しいプロジェクトの構成] ダイアログ ボックス、Visual Studio" border="true":::
 
 プロジェクトの作成が済むと、次のファイルが生成されます。
 
@@ -333,7 +333,7 @@ Visual Studio で C# トポロジ プロジェクトを作成するには:
 
 スパウトとボルトはコンポーネント間のデータ フローを定義するグラフに配置されます。 このトポロジのグラフは次のようになります。
 
-![スパウトとボルト コンポーネントの配置図、Storm トポロジ](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
+:::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png" alt-text="スパウトとボルト コンポーネントの配置図、Storm トポロジ" border="false":::
 
 スパウトからは、Splitter ボルトのインスタンスに配布されるセンテンスが出力されます。 Splitter ボルトがセンテンスを単語に分け、Counter ボルトに配布します。
 
@@ -413,7 +413,7 @@ return topologyBuilder;
 
     トポロジが正常に送信されると、クラスターの **[Storm Topology ビュー]** ウィンドウが表示されます。 一覧から **WordCount** トポロジを選択して、実行中のトポロジに関する情報を表示します。
 
-    ![[Storm Topology ビュー] ウィンドウ、HDInsight クラスター、Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png" alt-text="[Storm Topology ビュー] ウィンドウ、HDInsight クラスター、Visual Studio" border="true":::
 
     > [!NOTE]  
     > また、**サーバー エクスプローラー** から **Storm トポロジ** を表示することもできます。 その場合、 **[Azure]**  >  **[HDInsight]** の順に展開し、Storm on HDInsight クラスターを右クリックして、 **[Storm トポロジの表示]** を選択します。
@@ -567,7 +567,7 @@ Linux ベースの HDInsight クラスターでは、.NET 4.5 用にコンパイ
 
 1. **ソリューション エクスプローラー** で、プロジェクトを右クリックして **[プロパティ]** を選びます。 プロジェクトのプロパティで、 **[出力の種類]** を **[コンソール アプリケーション]** に変更します。
 
-   ![HDInsight Storm プリケーション、プロジェクトのプロパティ、出力の種類](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
+   :::image type="content" source="./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png" alt-text="HDInsight Storm プリケーション、プロジェクトのプロパティ、出力の種類" border="true":::
 
    > [!NOTE]
    > トポロジをクラスターにデプロイする前に、必ず **[出力の種類]** を **[クラス ライブラリ]** に戻すようにしてください。

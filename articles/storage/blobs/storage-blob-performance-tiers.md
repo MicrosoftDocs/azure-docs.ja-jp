@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
 ms.openlocfilehash: cf0b5d29e0dc375a07fe024ef0763c8200275055
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98880710"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>ブロック BLOB ストレージのパフォーマンス レベル
@@ -71,8 +71,8 @@ Standard パフォーマンスでは、最もコスト効率の高い方法で�
 
 Blob ストレージのライフサイクル管理には、ルールベースのポリシーが豊富に用意されています。
 
-- **Premium**:データは、そのライフサイクルの終了時に期限切れになります。
-- **Standard**:データを最適なアクセス層に移行し、そのライフサイクルの終了時にデータを期限切れにします
+- **Premium**: データは、そのライフサイクルの終了時に有効期限が切れます。
+- **Standard**: データは、最適なアクセス層に移行され、そのライフサイクルの終了時に有効期限が切れます。
 
 詳細については、「[Azure Blob Storage のライフサイクルを管理する](storage-lifecycle-management-concepts.md)」を参照してください。
 

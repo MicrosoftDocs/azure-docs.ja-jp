@@ -8,10 +8,10 @@ ms.date: 06/27/2018
 ms.author: twooley
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 485b14f85d68290c5447c885b9bc4974318f7952
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92103732"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Azure PowerShell を使用して Azure Data Lake Storage Gen1 の使用を開始する
@@ -108,7 +108,7 @@ Azure PowerShell を使用して、Azure Data Lake Storage Gen1 アカウント�
 
     ![ディレクトリを確認する](./media/data-lake-store-get-started-powershell/ADL.PS.Verify.Dir.Creation.png "ディレクトリを確認する")
 
-## <a name="upload-data"></a>データのアップロード
+## <a name="upload-data"></a>データをアップロードする
 
 データは、ルート レベルで直接 Data Lake Storage Gen1 に、またはアカウント内で作成したディレクトリにアップロードすることができます。 このセクションのスニペットは、前のセクションで作成したディレクトリ (**mynewdirectory**) にいくつかのサンプル データをアップロードする方法を示しています。
 

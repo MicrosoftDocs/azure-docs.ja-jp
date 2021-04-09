@@ -1,19 +1,19 @@
 ---
-title: Azure Private Link でプライベート リンク サービスを作成する
+title: 'クイックスタート: Azure Private Link でプライベート リンク サービスを作成する'
 description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用してプライベート リンク サービスを作成します。
 services: private-link
-author: mblanco77
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/29/2020
 ms.author: allensu
-ms.openlocfilehash: dce80d70af7cd711cf852a60b98ad65b6d21117f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 34993ad3d3d0494f89bd264a8b7194f52129ad7c
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88705250"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102555059"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用してプライベート リンク サービスを作成する
 
@@ -112,4 +112,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Private Link](private-link-overview.md) について学習します。
+
+プライベート エンドポイントをサポートするサービスの詳細については、以下を参照してください。
+> [!div class="nextstepaction"]
+> [Private Link の可用性](private-link-overview.md#availability)

@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: a8f06ce08c0df4cc86afe6fbbe7eb12fd866e61c
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 39fe439e37b1af4e833396ef83205729af8c7ad3
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743272"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102610418"
 ---
 # <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-classic-container"></a>Azure PowerShell コマンドを使用して空のクラウド サービス (クラシック) コンテナーを作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "98743272"
 
 1. [Azure PowerShell のダウンロード](https://aka.ms/webpi-azps) ページから Microsoft Azure PowerShell コマンドレットをインストールします。
 2. PowerShell コマンド プロンプトを開きます。
-3. [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-4.0.0&preserve-view=true) を使用してサインインします。
+3. [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount) を使用してサインインします。
 
    > [!NOTE]
    > Azure PowerShell コマンドレットをインストールして、Azure サブスクリプションに接続する手順の詳細については、「 [Azure PowerShell をインストールして構成する方法](/powershell/azure/)」を参照してください。
@@ -51,5 +51,5 @@ Get-help New-AzureService
 
 ### <a name="next-steps"></a>次のステップ
 
-* クラウド サービス デプロイの管理については、[Get-AzureService](/powershell/module/servicemanagement/azure.service/Get-AzureService?view=azuresmps-4.0.0&preserve-view=true)、[Remove-AzureService](/powershell/module/servicemanagement/azure.service/Remove-AzureService?view=azuresmps-4.0.0&preserve-view=true)、[Set-AzureService](/powershell/module/servicemanagement/azure.service/set-azureservice?view=azuresmps-4.0.0&preserve-view=true) の各コマンドの説明を参照してください。 詳細については、 [クラウド サービスを構成する方法](cloud-services-how-to-configure-portal.md) に関するページも参考になります。
+* クラウド サービス デプロイの管理については、[Get-AzureService](/powershell/module/servicemanagement/azure.service/Get-AzureService)、[Remove-AzureService](/powershell/module/servicemanagement/azure.service/Remove-AzureService)、[Set-AzureService](/powershell/module/servicemanagement/azure.service/set-azureservice) の各コマンドの説明を参照してください。 詳細については、 [クラウド サービスを構成する方法](cloud-services-how-to-configure-portal.md) に関するページも参考になります。
 * Azure にクラウド サービス プロジェクトを発行する方法については、[アーカイブ済みのクラウド サービス リポジトリ](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Scripts/cloud-services-continuous-delivery)に関するページの **PublishCloudService.ps1** コード サンプルを参照してください。

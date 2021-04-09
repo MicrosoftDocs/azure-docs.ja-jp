@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 0144e7e5cc9c6df376d78f39aab7fdb8cc70538e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92520474"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tonicdm"></a>チュートリアル: Azure Active Directory と TonicDM の統合
@@ -41,9 +41,9 @@ TonicDM と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* TonicDM では、 **SP** Initiated SSO がサポートされます
+* TonicDM では、**SP** Initiated SSO がサポートされます
 
-* TonicDM では、 **Just In Time** ユーザー プロビジョニングがサポートされます
+* TonicDM では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-tonicdm-from-the-gallery"></a>ギャラリーからの TonicDM の追加
 
@@ -63,13 +63,13 @@ Azure AD への TonicDM の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **TonicDM** 」と入力し、結果パネルで **[TonicDM]** を選び、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**TonicDM**」と入力し、結果パネルで **[TonicDM]** を選び、**[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果リストの TonicDM](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、TonicDM で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、TonicDM で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと TonicDM 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 TonicDM で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -87,7 +87,7 @@ TonicDM で Azure AD のシングル サインオンを構成してテストす�
 
 TonicDM で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **TonicDM** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **TonicDM** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -141,7 +141,7 @@ TonicDM で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -153,7 +153,7 @@ TonicDM で Azure AD シングル サインオンを構成するには、次の�
 
 このセクションでは、Britta Simon に TonicDM へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[TonicDM]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[TonicDM]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

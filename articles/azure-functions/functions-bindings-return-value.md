@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 01/14/2019
 ms.author: cshoe
 ms.openlocfilehash: 58ee9b682bc97dc4044d811392cf4ff5b51a69fd
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94491360"
 ---
 # <a name="using-the-azure-function-return-value"></a>Azure Function の戻り値の使用

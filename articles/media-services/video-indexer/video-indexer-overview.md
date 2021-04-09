@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/05/2021
 ms.author: juliako
 ms.openlocfilehash: 12d23ec471329bd4e0ecb502750198e946e58872
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100530231"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Azure Media Services Video Indexer とは

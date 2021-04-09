@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: allensu
 ms.openlocfilehash: 4fe4b99f9635ff254f1a75e03f13d7e6ffcb3c49
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100366519"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Azure CDN エンドポイントの消去

@@ -6,12 +6,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 1857f0e39cd5d9ddc616eed1db18cd58b98721a4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a800f78df26ce76144994bb9da2cac6271323eb4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031125"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103419424"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Azure Monitor を使用した Azure Data Explorer のクロスリソース クエリ
 Azure Monitor では、Azure Data Explorer、[Application Insights](../app/app-insights-overview.md)、および [Log Analytics](../logs/data-platform-logs.md) 間のクロスサービス クエリがサポートされています。 それにより、Log Analytics または Application Insights ツールを使用して Azure Data Explorer クラスターに対してクエリを実行し、それをクロスサービス クエリで参照することができます。 この記事では、クロスサービス クエリを作成する方法について説明します。
@@ -37,6 +37,7 @@ adx('https://help.kusto.windows.net/Samples').StormEvents
 > [!NOTE]
 >* データベース名は大文字と小文字が区別されます。
 >* アラートとしてのクロスリソース クエリはサポートされていません。
+>* クラスター内の Timestamp 列の特定はサポートされていません。Log Analytics クエリ API は時間フィルターを渡しません
 
 ## <a name="combine-azure-data-explorer-cluster-tables-with-a-log-analytics-workspace"></a>Azure Data Explorer クラスター テーブルを Log Analytics ワークスペースと結合する
 

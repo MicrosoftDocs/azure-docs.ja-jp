@@ -3,12 +3,12 @@ title: Azure CLI を使用して DevTest Labs で仮想マシンを作成して�
 description: Azure DevTest Labs を使って Azure CLI で仮想マシンを作成して管理する方法を説明します
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 57510a722ab6a34b9d498e74a140d6f350c8fc02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22ee6bf607fe1b66cece0e7ddb25a2da2830258b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85482838"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201466"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Azure CLI を使用して DevTest Labs で仮想マシンを作成して管理する
 このクイック スタートでは、ラボで開発用コンピューターを作成、起動、接続、更新、およびクリーンアップする方法について説明します。 
@@ -71,7 +71,7 @@ az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sam
 az lab vm start --lab-name sampleLabName --name sampleVMName --resource-group sampleLabResourceGroup
 ```
 
-VM に接続します: [SSH](../virtual-machines/linux/mac-create-ssh-keys.md) または [Remote Desktop](../virtual-machines/windows/connect-logon.md)。
+[SSH](../virtual-machines/linux/mac-create-ssh-keys.md) または[リモート デスクトップ](../virtual-machines/windows/connect-logon.md)を使って VM に接続します。
 ```bash
 ssh userName@ipAddressOrfqdn 
 ```
@@ -153,4 +153,4 @@ az lab vm delete --lab-name sampleLabName --name sampleVMName --resource-group s
 ```
 
 ## <a name="next-steps"></a>次のステップ
-次のコンテンツをご覧ください: [Azure DevTest Labs に関する Azure CLI のドキュメント](/cli/azure/lab?view=azure-cli-latest)。 
+次のコンテンツを参照してください: [Azure DevTest Labs の Azure CLI ドキュメント](/cli/azure/lab)。 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: a9e35c7d4d64279c65971dd512bcd2107dad6594
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92000066"
 ---
 # <a name="how-to-roll-x509-device-certificates-in-iot-central-application"></a>IoT Central アプリケーションで X.509 デバイス証明書を展開する方法

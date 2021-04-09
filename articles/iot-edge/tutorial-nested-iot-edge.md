@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: f1b1a94dc1d96e625947eef5730c24f080fc155a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c1b30a1eafe9af92c1ef3f81773d213ccf96555c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721414"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103462033"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>チュートリアル:IoT Edge デバイスの階層を作成する (プレビュー)
+
+[!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 階層レイヤーに編成された複数のネットワークに Azure IoT Edge ノードをデプロイします。 階層内の各レイヤーは、その下のレイヤーにあるデバイスからのメッセージと要求を処理するゲートウェイ デバイスです。
 
@@ -526,7 +528,7 @@ IoT Edge ランタイムを構成するには、構成ファイルのいくつ�
            "$edgeAgent": {
                "properties.desired": {
                    "modules": {
-                       "dockerContainerRegistry": {
+                       "registry": {
                            "settings": {
                                "image": "registry:latest",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5000/tcp\":[{\"HostPort\":\"5000\"}]}}}"

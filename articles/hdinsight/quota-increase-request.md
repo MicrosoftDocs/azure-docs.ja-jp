@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: a539acc423feeab500830fb33262d1b824101072
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b62e41f280d02664b3df631c3413960f1265356f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935833"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104863175"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Azure HDInsight のクォータの増加を要求する
 
@@ -34,7 +34,7 @@ CPU コア クォータは、確実に、特定の Azure リージョン内の�
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. ページの左下にある **[ヘルプとサポート]** を選択します。
 
-    ![[ヘルプとサポート] ボタン](./media/quota-increase-request/help-support-button.png)
+    :::image type="content" source="./media/quota-increase-request/help-support-button.png" alt-text="[ヘルプとサポート] ボタン" border="true":::
 
 1. **[新しいサポート リクエスト]** を選択します。
 1. **[新しいサポート要求]** ページの **[基本]** タブで、次のオプションを選択します。
@@ -43,20 +43,20 @@ CPU コア クォータは、確実に、特定の Azure リージョン内の�
    - **サブスクリプション**: 使用するサブスクリプション
    - **クォータの種類**: **HDInsight**
 
-     ![HDInsight コア クォータを増やすためのサポート要求を作成します。](./media/quota-increase-request/hdinsight-quota-support-request.png)
+     :::image type="content" source="./media/quota-increase-request/hdinsight-quota-support-request.png" alt-text="HDInsight コア クォータを増やすためのサポート要求を作成します。" border="true":::
 
 1. **ソリューション >>** を選択します。
 1. **[詳細]** ページで、問題に関する説明を入力し、問題の重大度、希望する連絡方法、およびその他の必須フィールドを選択します。 次に示すテンプレートを使用して、必要な情報を確実に提供てください。 クォータの増加要求は、HDInsight 製品チームではなく、Azure の容量チームによって評価されます。 詳細な情報を提供すれば、要求が承認される可能性が高くなります。
 
-    ```
-    I would like to request [SPECIFY DESIRED AMOUNT] on [DESIRED SKU] for [SUBSCRIPTION ID].
-    
-    My current quota on this subscription is [CURRENT QUOTA AMOUNT].
-    
-    I would like to use the extra cores for [DETAIL REASON].
-    ```
+   ```text
+   I would like to request [SPECIFY DESIRED AMOUNT] on [DESIRED SKU] for [SUBSCRIPTION ID].
+   
+   My current quota on this subscription is [CURRENT QUOTA AMOUNT].
+   
+   I would like to use the extra cores for [DETAIL REASON].
+   ```
 
-    ![問題の詳細](./media/quota-increase-request/problem-details.png)
+   :::image type="content" source="./media/quota-increase-request/problem-details.png" alt-text="問題の詳細" border="true":::
 
 1. **次へ:確認と作成 >>** を選択します。
 1. **[確認および作成]** タブで、 **[作成]** を選択します。

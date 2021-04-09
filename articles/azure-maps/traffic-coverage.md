@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 11aa0eb07ed9cb3a1a785b3155b832f8b447708f
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92896873"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps の交通情報の対象範囲
@@ -33,7 +33,7 @@ Azure Maps は、交通の **流れ** と **事故** の形式で豊富な交通
 |メキシコ     |✓         |✓         |
 |ペルー       |✓         |✓         | 
 |United States     |✓         |✓        |
-|+ プエルトリコ     |✓         |✓         |
+|\+ プエルトリコ     |✓         |✓         |
 |ウルグアイ |✓         |✓         |
 
 
@@ -109,7 +109,7 @@ Azure Maps は、交通の **流れ** と **事故** の形式で豊富な交通
 |トルコ     |✓         |✓         |
 |ウクライナ     |✓         |✓         |
 |イギリス     |✓         |✓         |
-|+ ジブラルタル     |✓         |✓         |
+|\+ ジブラルタル     |✓         |✓         |
 |+ガーンジー島とジャージー島     |✓         |✓         |
 |+マン島     |✓         |✓         |
 |バチカン   |✓         |✓         |

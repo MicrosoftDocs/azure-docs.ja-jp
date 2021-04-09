@@ -10,14 +10,16 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: e4043fd8b7c9571b62cbf65d7398754b27375efd
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 730680b0cb6e8a728ed3072419674346de649368
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633973"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103200685"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Aure IoT Edge を使用した発行とサブスクライブ
+
+[!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 Azure IoT Edge MQTT ブローカーを使用して、メッセージの発行とサブスクライブを行うことができます。 この記事では、このブローカーに接続し、ユーザー定義のトピックでメッセージを発行およびサブスクライブし、IoT Hub メッセージング プリミティブを使用する方法について説明します。 IoT Edge MQTT ブローカーは、IoT Edge ハブに組み込まれています。 詳細については、[IoT Edge ハブのブローカー機能](iot-edge-runtime.md)に関するページを参照してください。
 

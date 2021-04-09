@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: jingwang
 ms.openlocfilehash: bb773d01124b99b4837f393b610e00ecbfa510fb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100364615"
 ---
 # <a name="supported-file-formats-and-compression-codecs-by-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティでサポートされているファイル形式と圧縮コーデック

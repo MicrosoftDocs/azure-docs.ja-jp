@@ -9,10 +9,10 @@ ms.service: site-recovery
 ms.date: 6/4/2020
 ms.author: dapatil
 ms.openlocfilehash: feb4f6a24653aca8da825af90341c8016255e8b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86133800"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Azure Site Recovery Deployment Planner のバージョン履歴

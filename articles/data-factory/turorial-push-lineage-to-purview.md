@@ -10,10 +10,10 @@ ms.custom:
 - references_regions
 ms.date: 12/3/2020
 ms.openlocfilehash: 3f2297ae619145ec19b53ba79d70b7c085cbcaab
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100361453"
 ---
 # <a name="push-data-factory-lineage-data-to-azure-purview-preview"></a>Data Factory 系列データを Azure Purview にプッシュする (プレビュー)

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/8/2020
 ms.openlocfilehash: 199810f835924ccbb51948169244622a19c5e8ed
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98201435"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>リダイレクトを使用して Azure Database for MySQL に接続する

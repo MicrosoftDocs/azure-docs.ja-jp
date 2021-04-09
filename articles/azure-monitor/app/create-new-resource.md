@@ -3,19 +3,19 @@ title: 新しい Azure Application Insights リソースの作成 | Microsoft Do
 description: 新しいライブ アプリケーションを対象にした Application Insights 監視を手動でセットアップします。
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 1ec5e929f591c0b7ada36f345d86c6de591892c8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 459f61d9e13a2098403f3e78c7a529e49bf65e59
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575623"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100935"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 
 Azure Application Insights には、Microsoft Azure *リソース* のアプリケーションに関するデータが表示されます。 したがって、新しいリソースの作成は、[新しいアプリケーションを監視するための Application Insights の設定][start]の一部です。 新しいリソースを作成した後、そのインストルメンテーション キーを取得し、それを使用し Application Insights SDK を構成できます。 インストルメンテーション キーにより、リソースとテレメトリがリンクされます。
 
 > [!IMPORTANT]
-> クラシック Application Insights は非推奨となりました。 ワークスペースベースの Application Insights にアップグレードする方法については、[こちら](convert-classic-resource.md)の手順をご覧ください。
+> [クラシック Application Insights は非推奨となりました](https://azure.microsoft.com/updates/we-re-retiring-classic-application-insights-on-29-february-2024/)。 ワークスペースベースの Application Insights にアップグレードする方法については、[こちら](convert-classic-resource.md)の手順をご覧ください。
 
 ## <a name="sign-in-to-microsoft-azure"></a>Microsoft Azure にサインインする
 

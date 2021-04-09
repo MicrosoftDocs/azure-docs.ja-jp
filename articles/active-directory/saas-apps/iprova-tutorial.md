@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と iProva の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と iProva の統合 | Microsoft Docs'
 description: Azure Active Directory と iProva の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
 ms.openlocfilehash: 717696053a742abae6756655a15416ac81221144
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459749"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iprova"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と iProva の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iprova"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と iProva の統合
 
 このチュートリアルでは、iProva と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と iProva を統合すると、次のことができます。
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* iProva では、 **SP** によって開始される SSO がサポートされます
+* iProva では、**SP** によって開始される SSO がサポートされます
 
 * iProva を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
@@ -51,7 +51,7 @@ Azure AD への iProva の統合を構成するには、ギャラリーから管
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **iProva** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**iProva**」と入力します。
 1. 結果のパネルから **[iProva]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-iprova"></a>iProva の Azure AD シングル サインオンの構成とテスト
@@ -95,11 +95,11 @@ iProva で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **iProva の [SAML2 info]\(SAML2 の情報\)** ページで、 **[Sign-on URL]\(サインオン URL\)** というラベルの後にある **[Sign-on URL]\(サインオン URL\)** ボックスに値を入力します。 このページは他のブラウザー タブで開いたままです。
+    a. **iProva の [SAML2 info]\(SAML2 の情報\)** ページで、**[Sign-on URL]\(サインオン URL\)** というラベルの後にある **[Sign-on URL]\(サインオン URL\)** ボックスに値を入力します。 このページは他のブラウザー タブで開いたままです。
 
-    b. **iProva の [SAML2 info]\(SAML2 の情報\)** ページで、 **[EntityID]** というラベルの後にある **[Identifier]\(識別子\)** ボックスに値を入力します。 このページは他のブラウザー タブで開いたままです。
+    b. **iProva の [SAML2 info]\(SAML2 の情報\)** ページで、**[EntityID]** というラベルの後にある **[Identifier]\(識別子\)** ボックスに値を入力します。 このページは他のブラウザー タブで開いたままです。
 
-    c. **iProva の [SAML2 info]\(SAML2 の情報\)** ページで、 **[Reply URL]\(応答 URL\)** というラベルの後にある **[Reply-URL]** ボックスに値を入力します。 このページは他のブラウザー タブで開いたままです。
+    c. **iProva の [SAML2 info]\(SAML2 の情報\)** ページで、**[Reply URL]\(応答 URL\)** というラベルの後にある **[Reply-URL]** ボックスに値を入力します。 このページは他のブラウザー タブで開いたままです。
 
 1. iProva アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -159,13 +159,13 @@ iProva で Azure AD SSO を構成してテストするには、次の構成要�
 
 6. **[ユーザー名]** ボックスにユーザー名 (`B.Simon@contoso.com` など) を入力します。
 
-7. **[Full name]\(フル ネーム\)** ボックスにユーザーのフル ネームを入力します (「 **B.Simon** 」など)。
+7. **[Full name]\(フル ネーム\)** ボックスにユーザーのフル ネームを入力します (「**B.Simon**」など)。
 
 8. **[No password (use single sign-on)]\(パスワードなし (シングル サインオンを使用する)\)** オプションを選択します。
 
 9. **[E-mail address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (`B.Simon@contoso.com` など) を入力します。
 
-10. ページの一番下までスクロールし、 **[Finish]\(完了\)** を選択します。
+10. ページの一番下までスクロールし、**[Finish]\(完了\)** を選択します。
 
 ## <a name="configure-iprova-sso"></a>iProva の SSO の構成
 
@@ -183,9 +183,9 @@ iProva で Azure AD SSO を構成してテストするには、次の構成要�
 
     ![iProva のアクセス制御設定](media/iprova-tutorial/iprova-accesscontrol.png)
 
-7. **[Users are automatically logged on with their network accounts]\(ユーザーのネットワーク アカウントを使用して自動的にログオンする\)** 設定を探し、 **[Yes, authentication via SAML]\(はい、SAML 経由で認証します\)** に変更します。 これで、追加のオプションが表示されます。
+7. **[Users are automatically logged on with their network accounts]\(ユーザーのネットワーク アカウントを使用して自動的にログオンする\)** 設定を探し、**[Yes, authentication via SAML]\(はい、SAML 経由で認証します\)** に変更します。 これで、追加のオプションが表示されます。
 
-8. **[Set up]\(セットアップ\)** を選択します。
+8. **[セットアップ]** を選択します。
 
 9. **[次へ]** を選択します。
 
@@ -197,17 +197,17 @@ iProva で Azure AD SSO を構成してテストするには、次の構成要�
 
 12. 矢印形のボタンを選択して、Azure AD からメタデータをダウンロードします。
 
-13. ダウンロードが完了したら、 **Valid Federation Data file downloaded (有効なフェデレーション データ ファイルがダウンロードされました)** という確認メッセージが表示されます。
+13. ダウンロードが完了したら、**Valid Federation Data file downloaded (有効なフェデレーション データ ファイルがダウンロードされました)** という確認メッセージが表示されます。
 
 14. **[次へ]** を選択します。
 
-15. ここでは **[Test login]\(テスト ログイン\)** オプションをスキップし、 **[Next]\(次へ\)** を選択します。
+15. ここでは **[Test login]\(テスト ログイン\)** オプションをスキップし、**[Next]\(次へ\)** を選択します。
 
 16. **[Claim to use]\(使用する要求\)** ドロップダウン ボックスで **[windowsaccountname]** を選択します。
 
 17. **[完了]** を選択します。
 
-18. これで、 **[Edit general settings]\(全般設定の編集\)** 画面に戻ります。 ページの下部までスクロールし、 **[OK]** を選択して自分の構成を保存します。
+18. これで、**[Edit general settings]\(全般設定の編集\)** 画面に戻ります。 ページの下部までスクロールし、**[OK]** を選択して自分の構成を保存します。
 
 ## <a name="test-sso"></a>SSO のテスト
 

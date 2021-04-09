@@ -4,10 +4,10 @@ description: Service Fabric でマイクロサービス アプリケーション
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.openlocfilehash: f17840f31d2a4c12a1d4618bd16e81dcc2cc8a14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86256579"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric のアプリケーションとサービスのセキュリティ

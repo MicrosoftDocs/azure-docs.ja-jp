@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
 ms.openlocfilehash: b1d5f8ec628245756c53e4dfeeecdeb3a4bebc2e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93100730"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>サーバー管理者ロールへのサービス プリンシパルの追加 
@@ -44,7 +44,7 @@ ms.locfileid: "93100730"
 
 ## <a name="using-a-resource-manager-template"></a>Resource Manager テンプレートの使用
 
-Azure Resource Manager テンプレートを使用して Analysis Services サーバーを展開して、サーバー管理者を構成することも可能です。 この展開を実行する ID は、 [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) の **共同作成者** ロールに属している必要があります。
+Azure Resource Manager テンプレートを使用して Analysis Services サーバーを展開して、サーバー管理者を構成することも可能です。 この展開を実行する ID は、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) の **共同作成者** ロールに属している必要があります。
 
 > [!IMPORTANT]
 > サービス プリンシパルは `app:{service-principal-client-id}@{azure-ad-tenant-id}` の書式を使用して追加します。

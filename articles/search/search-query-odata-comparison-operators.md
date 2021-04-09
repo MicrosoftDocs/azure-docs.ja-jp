@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: fc5803f96c30ea1df362676aa8c4104bb0b69db3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88934873"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure Cognitive Search の OData 比較演算子 - `eq`、`ne`、`gt`、`lt`、`ge`、`le`
@@ -32,15 +32,15 @@ Azure Cognitive Search の [OData フィルター式](query-odata-filter-orderby
 
 等価演算子:
 
-- `eq`:フィールドが定数値**と等しい**かどうかをテストします
-- `ne`:フィールドが定数値**と等しくない**かどうかをテストします
+- `eq`: フィールドが定数値と **等しい** かどうかをテストします
+- `ne`: フィールドが定数値 **と等しくない** かどうかをテストします
 
 範囲演算子:
 
-- `gt`:フィールドが定数値**より大きい**かどうかをテストします
-- `lt`:フィールドが定数値**より小さい**かどうかをテストします
-- `ge`:フィールドが定数値**以上である**かどうかをテストします
-- `le`:フィールドが定数値**以下である**かどうかをテストします
+- `gt`: フィールドが定数値 **より大きい** かどうかをテストします
+- `lt`: フィールドが定数値 **より小さい** かどうかをテストします
+- `ge`: フィールドが定数値 **以上である** かどうかをテストします
+- `le`: フィールドが定数値 **以下である** かどうかをテストします
 
 範囲演算子を[論理演算子](search-query-odata-logical-operators.md)と組み合わせて使用すると、フィールドが特定の値の範囲内にあるかどうかをテストできます。 この記事の後半の[例](#examples)を参照してください。
 
@@ -71,7 +71,7 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 > [!NOTE]
 > 完全な EBNF については、[Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)に関するページをご覧ください。
 
-比較式には 2 つの形式があります。 この 2 つの形式の唯一の違いは、定数が演算子の左側に示されるか右側に示されるかです。 演算子の反対側の式は、**変数**または関数呼び出しでなければなりません。 変数は、フィールド名、または範囲変数 ([ラムダ式](search-query-odata-collection-operators.md)の場合) のいずれかです。
+比較式には 2 つの形式があります。 この 2 つの形式の唯一の違いは、定数が演算子の左側に示されるか右側に示されるかです。 演算子の反対側の式は、**変数** または関数呼び出しでなければなりません。 変数は、フィールド名、または範囲変数 ([ラムダ式](search-query-odata-collection-operators.md)の場合) のいずれかです。
 
 ## <a name="data-types-for-comparisons"></a>比較用のデータ型
 
@@ -89,7 +89,7 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 | `Edm.Int32` | `Edm.Int64` | 該当なし |
 | `Edm.Int32` | `Edm.Int32` | 該当なし |
 
-許可されていない比較 (たとえば、型 `Edm.Int64` のフィールドと `NaN` の比較) の場合、Azure Cognitive Search REST API では、"HTTP 400: 無効な要求のエラー" が返されます。
+許可されていない比較 (たとえば、型 `Edm.Int64` のフィールドと `NaN` の比較) が行われた場合、Azure Cognitive Search REST API は "HTTP 400: 無効な要求" のエラーを返します。
 
 > [!IMPORTANT]
 > 数値型の比較は柔軟ですが、定数値が比較対象の変数または関数と同じデータ型になるように、フィルターで比較を記述することを強くお勧めします。 このことは、浮動小数点値と整数値が混在し、精度の低下が発生する暗黙的な変換が行われる可能性がある場合に特に重要です。
@@ -102,10 +102,10 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 
 | 演算子 | フィールドまたは変数のみが `null` の場合の結果 | 定数のみが `null` の場合の結果 | フィールドまたは変数と定数の両方が `null` の場合の結果 |
 | --- | --- | --- | --- |
-| `gt` | `false` | HTTP 400:無効な要求のエラー | HTTP 400:無効な要求のエラー |
-| `lt` | `false` | HTTP 400:無効な要求のエラー | HTTP 400:無効な要求のエラー |
-| `ge` | `false` | HTTP 400:無効な要求のエラー | HTTP 400:無効な要求のエラー |
-| `le` | `false` | HTTP 400:無効な要求のエラー | HTTP 400:無効な要求のエラー |
+| `gt` | `false` | HTTP 400: 無効な要求エラー | HTTP 400: 無効な要求エラー |
+| `lt` | `false` | HTTP 400: 無効な要求エラー | HTTP 400: 無効な要求エラー |
+| `ge` | `false` | HTTP 400: 無効な要求エラー | HTTP 400: 無効な要求エラー |
+| `le` | `false` | HTTP 400: 無効な要求エラー | HTTP 400: 無効な要求エラー |
 | `eq` | `false` | `false` | `true` |
 | `ne` | `true` | `true` | `false` |
 

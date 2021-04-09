@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 1ee4e19a3e76a001a66f6498530fab4f4703fa85
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1d83a828829d27d85749b3fa7b283cad9683bffc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381607"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "102455919"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Blob Storage トリガー
 
@@ -351,7 +351,7 @@ _function.json_ ファイルのバインドの name パラメーターで指定�
 
 # <a name="python"></a>[Python](#tab/python)
 
-[InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python&preserve-view=true) に型指定したパラメーターを使用して BLOB データにアクセスします。 詳細については、「[トリガー - 例](#example)」を参照してください。
+[InputStream](/python/api/azure-functions/azure.functions.inputstream) に型指定したパラメーターを使用して BLOB データにアクセスします。 詳細については、「[トリガー - 例](#example)」を参照してください。
 
 ---
 

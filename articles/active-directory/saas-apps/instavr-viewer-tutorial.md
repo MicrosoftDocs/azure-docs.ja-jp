@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: e60e8c73c9f1da617851cc67fb2dbab7171f1cb0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92460007"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>チュートリアル:Azure Active Directory と InstaVR Viewer の統合
@@ -41,8 +41,8 @@ InstaVR Viewer と Azure AD の統合を構成するには、次のものが必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* InstaVR Viewer では、 **SP** によって開始される SSO がサポートされます
-* InstaVR Viewer は、 **Just-In-Time** ユーザー プロビジョニングをサポートしています
+* InstaVR Viewer では、**SP** によって開始される SSO がサポートされます
+* InstaVR Viewer は、**Just-In-Time** ユーザー プロビジョニングをサポートしています
 
 ## <a name="adding-instavr-viewer-from-the-gallery"></a>ギャラリーから InstaVR Viewer を追加する
 
@@ -62,13 +62,13 @@ Azure AD への InstaVR Viewer の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **InstaVR Viewer** 」と入力し、結果パネルで **[InstaVR Viewer]** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**InstaVR Viewer**」と入力し、結果パネルで **[InstaVR Viewer]** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
      ![結果一覧の InstaVR Viewer](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、InstaVR Viewer で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、InstaVR Viewer で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと InstaVR Viewer 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 InstaVR Viewer で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -166,9 +166,9 @@ InstaVR Viewer で Azure AD シングル サインオンを構成するには、
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -183,7 +183,7 @@ InstaVR Viewer で Azure AD シングル サインオンを構成するには、
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、「 **InstaVR Viewer** 」と入力して選択します。
+2. アプリケーションの一覧で、「**InstaVR Viewer**」と入力して選択します。
 
     ![アプリケーションの一覧の [InstaVR Viewer] リンク](common/all-applications.png)
 

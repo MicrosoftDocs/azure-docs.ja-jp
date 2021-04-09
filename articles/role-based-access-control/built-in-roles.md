@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/25/2021
 ms.custom: generated
-ms.openlocfilehash: 90c0be8e6df3e489595bdafed1f29d1ed0ef00f8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: baa783d0dfb54e0e606e3f6c6d5397941ae7b7bc
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724508"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011631"
 ---
 # <a name="azure-built-in-roles"></a>Azure 組み込みロール
 
@@ -6702,7 +6702,7 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 
 ### <a name="fhir-data-contributor"></a>FHIR データ共同作成者
 
-ユーザーまたはプリンシパルに FHIR データへのフル アクセスを許可するロールです。[詳細](../healthcare-apis/configure-azure-rbac.md)
+ユーザーまたはプリンシパルに FHIR データへのフル アクセスを許可するロールです。[詳細](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -6741,7 +6741,7 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 
 ### <a name="fhir-data-exporter"></a>FHIR データ エクスポーター
 
-ユーザーまたはプリンシパルに FHIR データの読み取りとエクスポートを許可するロールです。[詳細](../healthcare-apis/configure-azure-rbac.md)
+ユーザーまたはプリンシパルに FHIR データの読み取りとエクスポートを許可するロールです。[詳細](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -6782,7 +6782,7 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 
 ### <a name="fhir-data-reader"></a>FHIR データ リーダー
 
-ユーザーまたはプリンシパルに FHIR データの読み取りを許可するロールです。[詳細](../healthcare-apis/configure-azure-rbac.md)
+ユーザーまたはプリンシパルに FHIR データの読み取りを許可するロールです。[詳細](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -6821,7 +6821,7 @@ EventGrid のイベント サブスクリプションを読み取ることがで
 
 ### <a name="fhir-data-writer"></a>FHIR データ ライター
 
-ユーザーまたはプリンシパルに FHIR データの読み取りと書き込みを許可するロールです。[詳細](../healthcare-apis/configure-azure-rbac.md)
+ユーザーまたはプリンシパルに FHIR データの読み取りと書き込みを許可するロールです。[詳細](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |

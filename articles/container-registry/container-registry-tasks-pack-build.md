@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.custom: devx-track-js, devx-track-azurecli
 ms.openlocfilehash: 264fc7314c78088ebfefb9ddb8edbe38fa16581a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92736622"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Cloud Native Buildpacks を使用して、アプリからイメージをビルドしてプッシュする
@@ -33,7 +33,7 @@ Cloud Native Buildpacks を使用してコンテナー イメージをビルド�
 
 `az acr pack build` では、[Run 変数](container-registry-tasks-reference-yaml.md#run-variables)や、ストリーミングされ、後で取得できるように保存される[タスク実行ログ](container-registry-tasks-logs.md)など、ACR タスク コマンドの他の機能もサポートしています。
 
-## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>例:Cloud Foundry ビルダーを使用して Node.js イメージをビルドする
+## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>例: Cloud Foundry ビルダーを使用して Node.js イメージをビルドする
 
 次の例では、`cloudfoundry/cnb:0.0.34-cflinuxfs3` ビルダーを使用して、[Azure Samples/nodejs-docs-hello world リポジトリ](https://github.com/Azure-Samples/nodejs-docs-hello-world)の Node.js アプリからコンテナー イメージをビルドします。 このビルダーは Azure Container Registry によってキャッシュされているため、`--pull` パラメーターは必要ありません。
 
@@ -63,7 +63,7 @@ docker run --rm -p 1337:1337 myregistry.azurecr.io/node-app:1.0
 
 任意のブラウザーで `localhost:1337` を参照し、サンプル Web アプリを確認します。 `[Ctrl]+[C]` キーを押して、コンテナーを停止します。
 
-## <a name="example-build-java-image-with-heroku-builder"></a>例:Heroku ビルダーを使用して Java イメージをビルドする
+## <a name="example-build-java-image-with-heroku-builder"></a>例: Heroku ビルダーを使用して Java イメージをビルドする
 
 次の例では、`heroku/buildpacks:18` ビルダーを使用して、[buildpack/sample-java-app](https://github.com/buildpack/sample-java-app) リポジトリの Java アプリからコンテナー イメージをビルドします。 `--pull` パラメーターでは、コマンドによって最新のビルダー イメージをプルする必要があることを指定します。 
 

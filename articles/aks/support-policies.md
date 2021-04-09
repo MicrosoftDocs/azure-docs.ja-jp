@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 09/18/2020
 ms.openlocfilehash: 86b1c0bba30b41a2ee17cfbdf05286c4d2b3fb8a
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91892712"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes Service のサポート ポリシー
@@ -106,7 +106,7 @@ Microsoft では、イメージ ノードの更新プログラムと新しいイ
 > [!NOTE]
 > AKS エージェント ノードは、Azure portal で通常の Azure IaaS リソースとして表示されます。 しかし、これらの仮想マシンは、カスタムの Azure リソース グループ (通常は先頭に MC_\* が付加されている) にデプロイされます。 IaaS の API またはリソースを使用して、ベース OS イメージを変更したり、これらのノードを直接カスタマイズしたりすることはできません。 AKS API 経由で行われたのではないすべてのカスタム変更は、アップグレード、スケーリング、更新、および再起動後には保持されない可能性があります。 Microsoft サポートが変更を指示しない限り、エージェント ノードへの変更を実行しないでください。
 
-AKS は、ユーザーに代わってエージェント ノードのライフサイクルと操作を管理します。エージェント ノードに関連付けられている IaaS リソースを変更することは**サポートされていません**。 サポートされていない操作の例としては、ノード プールの仮想マシン スケール セットのカスタマイズを、仮想マシン スケール セット ポータルまたは API を使用して構成を手動で変更して行うことが挙げられます。
+AKS は、ユーザーに代わってエージェント ノードのライフサイクルと操作を管理します。エージェント ノードに関連付けられている IaaS リソースを変更することは **サポートされていません**。 サポートされていない操作の例としては、ノード プールの仮想マシン スケール セットのカスタマイズを、仮想マシン スケール セット ポータルまたは API を使用して構成を手動で変更して行うことが挙げられます。
  
 ワークロード固有の構成またはパッケージの場合、AKS では [Kubernetes `daemon sets`](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) を使用することをお勧めします。
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/09/2021
 ms.author: alkohli
 ms.openlocfilehash: 400c5f0b2281679c3ec913e94643ffec6082d9e6
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100552420"
 ---
 #### <a name="to-create-a-volume"></a>ボリュームを作成するには
@@ -42,8 +42,8 @@ ms.locfileid: "100552420"
 
       1. **[接続済みのホスト]** ブレードで既存の ACR を選択するか新しい ACR を追加します。具体的には、次の手順を実行します。
 
-         1. ACR の **[名前]** を入力します。
-         2. **[ISCSI イニシエーターの名前]** に Windows ホストの iSCSI 修飾名 (IQN) を指定します。 IQN がない場合は、「 [Windows Server ホストの IQN の取得](#get-the-iqn-of-a-windows-server-host)」を参照してください。
+         1. ACR の [**名前**] を入力します。
+         2. [**ISCSI イニシエーターの名前**] に Windows ホストの iSCSI 修飾名 (IQN) を指定します。 IQN がない場合は、「 [Windows Server ホストの IQN の取得](#get-the-iqn-of-a-windows-server-host)」を参照してください。
 
       1. **Create** をクリックしてください。 指定した設定でボリュームが作成されます。
 

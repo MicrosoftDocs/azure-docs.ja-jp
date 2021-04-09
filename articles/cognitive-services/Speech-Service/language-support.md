@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 4e626cb5cac29a0e5133eb77cbaff3f4131b8456
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 17511778f63a2d7270178042c4bb414cdd6630c3
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722349"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955467"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -74,7 +74,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | 英語 (南アフリカ)             | `en-ZA` | テキスト                                   |                           |
 | 英語 (タンザニア)                 | `en-TZ` | テキスト                                   |                           |
 | 英語 (イギリス)           | `en-GB` | オーディオ (20201019)<br>テキスト<br>発音| はい                          |
-| 英語 (米国)            | `en-US` | オーディオ (20201019)<br>テキスト<br>発音| はい                          |
+| 英語 (米国)            | `en-US` | Audio (20201019、20210223)<br>テキスト<br>発音| はい                          |
 | エストニア語 (エストニア)                  | `et-EE` | テキスト                                   |                           |
 | フィリピノ語 (フィリピン)             | `fil-PH`| テキスト                                   |                           |
 | フィンランド語 (フィンランド)                  | `fi-FI` | Text                                   |     はい                      |
@@ -94,6 +94,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | 韓国語 (韓国)                     | `ko-KR` | オーディオ (20201015)<br>Text                 |      はい                     |
 | ラトビア語 (ラトビア)                   | `lv-LV` | テキスト                                   |                           |
 | リトアニア語 (リトアニア)             | `lt-LT` | テキスト                                   |                           |
+| マレー語 (マレーシア)                    | `ms-MY` | テキスト                                   |                           |
 | マルタ語 (マルタ)                     | `mt-MT` | テキスト                                   |                           |
 | マラーティー語 (インド)                    | `mr-IN` | テキスト                                   |                           |
 | ノルウェー語 (ブークモール、ノルウェー)         | `nb-NO` | Text                                   |     はい                      |
@@ -193,8 +194,8 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | 英語 (イギリス) | `en-GB` | Female | `en-GB-MiaNeural` | 全般 |
 | 英語 (イギリス) | `en-GB` | Male | `en-GB-RyanNeural` | 全般 |
 | 英語 (米国) | `en-US` | Female | `en-US-AriaNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能  |
-| 英語 (米国) | `en-US` | Female | `en-US-JennyNeural` | 全般 |
-| 英語 (米国) | `en-US` | Male | `en-US-GuyNeural` | 全般 |
+| 英語 (米国) | `en-US` | Female | `en-US-JennyNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能  |
+| 英語 (米国) | `en-US` | Male | `en-US-GuyNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能  |
 | フィンランド語 (フィンランド) | `fi-FI` | Female | `fi-FI-NooraNeural` | 全般 |
 | フィンランド語 (フィンランド) | `fi-FI` | Female | `fi-FI-SelmaNeural` <sup>[新規作成]</sup> | 全般 |
 | フィンランド語 (フィンランド) | `fi-FI` | Male | `fi-FI-HarriNeural` <sup>[新規作成]</sup> | 全般 |

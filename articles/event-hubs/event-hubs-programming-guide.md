@@ -4,12 +4,12 @@ description: この記事では、Azure .NET SDK を使用して Azure Event Hub
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a299813620ee90591d8c9491991237f75f2e9382
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 32c3c05b61d2ee8fc79d7c863ddbe84de5fe7e2b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98623050"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102432742"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure Event Hubs の .NET プログラミング ガイド (レガシー Microsoft.Azure.EventHubs パッケージ)
 この記事では、Azure Event Hubs を使用してコードを作成する一般的なシナリオについて説明します。 Event Hubs の予備知識があることを前提としています。 Event Hub の概要/概念については、「 [Event Hubs 概要](./event-hubs-about.md)」を参照してください。
@@ -73,21 +73,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 > [!NOTE]
 > パーティションをよく知らない場合は、[この記事](event-hubs-features.md#partitions)を参照してください。 
 
-イベント データを送信するときに、パーティション割り当てを生成するためにハッシュされる値を指定できます。 [PartitionSender.PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) プロパティを使用して、パーティションを指定します。 ただし、パーティションを使用するという決定は、可用性と整合性のどちらを優先するかを選択することを意味します。 
-
-### <a name="availability-considerations"></a>可用性に関する考慮事項
-
-パーティション キーを使用するかどうかは任意であり、慎重に検討する必要があります。 イベントの発行時にパーティション キーを指定しない場合、Event Hubs によってパーティション間の負荷が分散されます。 多くの場合、イベントの順序設定が必要であればパーティション キーの使用をお勧めします。 パーティション キーを使用すると、これらのパーティションでは単一のノードに対する可用性が必要になるため、時間が経つにつれて、コンピューティング ノードの再起動時やパッチ適用時などに障害が発生する可能性があります。 そのため、パーティション ID を設定した場合にそのパーティションがなんらかの理由で使用不能になると、そのパーティション内のデータにアクセスできなくなります。 高可用性が最も重要な場合、パーティション キーを指定しないでください。 その場合、内部の負荷分散アルゴリズムを利用してイベントがパーティションに送信されます。 このシナリオでは、可用性 (パーティション ID なし) と整合性 (イベントをパーティション ID に固定) のどちらを優先するかを明確に選択することになります。
-
-別の検討事項として、イベントの処理の遅れへの対処があります。 場合によっては、処理が遅れないようにするよりも、データを破棄して再試行した方が良いこともあります。前者では、ダウンストリームの処理がさらに遅れる可能性があります。 たとえば、株式相場表示機では最新のデータが揃うまで待つ方が適切ですが、ライブ チャットや VOIP のシナリオでは不完全でもデータを素早く用意する必要があります。
-
-こうした可用性に関する考慮事項を踏まえて、これらのシナリオでは次のエラー処理方法のいずれかを選択してください。
-
-- 停止 (問題が解決するまで Event Hubs からの読み取りを停止する)
-- 破棄 (重要ではないメッセージを破棄する)
-- 再試行 (表示されるメッセージが適切になるまで再試行する)
-
-可用性と一貫性の間のトレードオフに関する情報と詳細については、「[Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)」を参照してください。 
+イベント データを送信するときに、パーティション割り当てを生成するためにハッシュされる値を指定できます。 [PartitionSender.PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) プロパティを使用して、パーティションを指定します。 ただし、パーティションを使用するという決定は、可用性と整合性のどちらを優先するかを選択することを意味します。 詳細については、[可用性と一貫性](event-hubs-availability-and-consistency.md)に関するページを参照してください。
 
 ## <a name="batch-event-send-operations"></a>イベントのバッチ送信処理
 

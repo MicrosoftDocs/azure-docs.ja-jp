@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 11/28/2020
 ms.author: juliako
 ms.openlocfilehash: 07e4b05e12a5994c707a171c5736aea04a9c9723
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98632928"
 ---
 # <a name="add-video-clips-to-your-projects"></a>ビデオ クリップをプロジェクトに追加する

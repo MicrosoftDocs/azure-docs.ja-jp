@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b37277c660562721273ff9ae86dd677ee7ac7d55
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f1ed4b9beda9848bba8fb12783f49dcf8016d3dd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050003"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590621"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>データを処理するために Azure Functions アプリを接続する
 
@@ -54,31 +54,16 @@ Visual Studio 2019 で、 _[ファイル] > [新規作成] > [プロジェクト
 
 ## <a name="write-a-function-with-an-event-grid-trigger"></a>Event Grid トリガーを使用して関数を作成する
 
-関数アプリに SDK を追加することによって、関数を作成できます。 関数アプリと Azure Digital Twins のやり取りには、[.NET (C#) 用の Azure Digital Twin SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) を使用します。 
+関数アプリに SDK を追加することによって、関数を作成できます。 関数アプリと Azure Digital Twins のやり取りには、[.NET (C#) 用の Azure Digital Twin SDK](/dotnet/api/overview/azure/digitaltwins/client) を使用します。 
 
-SDK を使用するには、次のパッケージをプロジェクトに含める必要があります。 Visual Studio の NuGet パッケージ マネージャーを使用してパッケージをインストールするか、コマンドライン ツールで `dotnet` を使用してパッケージを追加することができます。 お好みの方法で、次の手順に従ってください。
+SDK を使用するには、次のパッケージをプロジェクトに含める必要があります。 Visual Studio の NuGet パッケージ マネージャーを使用してパッケージをインストールするか、コマンドライン ツールで `dotnet` を使用してパッケージを追加することができます。
 
-**オプション 1: Visual Studio パッケージ マネージャーを使用してパッケージを追加する:**
-    
-プロジェクトを右クリックし、一覧から _[NuGet パッケージの管理]_ を選択します。 次に、開いたウィンドウで _[参照]_ タブを選択し、次のパッケージを検索します。 _[インストール]_ を選択し、使用許諾契約に _[同意]_ してパッケージをインストールします。
+* [Azure.DigitalTwins.Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core/)
+* [Azure.Identity](https://www.nuget.org/packages/Azure.Identity/)
+* [System.Net.Http](https://www.nuget.org/packages/System.Net.Http/)
+* [Azure.Core](https://www.nuget.org/packages/Azure.Core/)
 
-* `Azure.DigitalTwins.Core`
-* `Azure.Identity`
-* `System.Net.Http`
-* `Azure.Core.Pipeline`
-
-**オプション 2: `dotnet` コマンドライン ツールを使用してパッケージを追加する:**
-
-または、コマンド ライン ツールで次の `dotnet add` コマンドを使用することもできます。
-
-```cmd/sh
-dotnet add package Azure.DigitalTwins.Core
-dotnet add package Azure.Identity
-dotnet add package System.Net.Http
-dotnet add package Azure.Core.Pipeline
-```
-
-次に、Visual Studio のソリューション エクスプローラーで、サンプル コードが含まれる _Function1.cs_ ファイルを開きます。その関数に以下の `using` ステートメントを追加します。 
+次に、Visual Studio のソリューション エクスプローラーで、サンプル コードが含まれる _Function1.cs_ ファイルを開きます。その関数にこれらのパッケージの以下の `using` ステートメントを追加します。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
 
@@ -86,7 +71,7 @@ dotnet add package Azure.Core.Pipeline
 
 次に、クラス レベルの変数を宣言し、関数から Azure Digital Twins にアクセスできるようにする認証コードを追加します。 次のものを _Function1.cs_ ファイル内の関数に追加します。
 
-* Azure Digital Twins サービスの URL を環境変数として読み取るコード。 関数内にハードコーディングするのではなく、環境変数からサービス URL を読み取ることをお勧めします。
+* Azure Digital Twins サービスの URL を **環境変数** として読み取るコード。 関数内にハードコーディングするのではなく、環境変数からサービス URL を読み取ることをお勧めします。 この環境変数の値は、[この記事の後半で](#set-up-security-access-for-the-function-app)設定します。 環境変数の詳細については、「[*お使いの関数アプリの管理*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal)」を参照してください。
 
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="ADT_service_URL":::
 
@@ -112,112 +97,140 @@ dotnet add package Azure.Core.Pipeline
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
+### <a name="verify-function-publish"></a>関数の発行を確認する
+
+1. [Azure portal](https://portal.azure.com/) でご自分の資格情報を使用してサインインします。
+2. ウィンドウの上部にある検索バーで、目的の **関数アプリの名前** を検索します。
+
+    :::image type="content" source="media/how-to-create-azure-function/search-function-app.png" alt-text="Azure portal で関数アプリをその名前で検索する。" lightbox="media/how-to-create-azure-function/search-function-app.png":::
+
+3. 表示された *[関数アプリ]* ページの左側のメニュー オプションで *[関数]* を選択します。 関数が正常に発行されると、リストに関数名が表示されます。
+発行された関数のリストに関数が表示されるようになるまでに、数分待つか、ページを数回更新する必要がある場合があります。
+
+    :::image type="content" source="media/how-to-create-azure-function/view-published-functions.png" alt-text="Azure portal で発行された関数の表示。" lightbox="media/how-to-create-azure-function/view-published-functions.png":::
+
+関数アプリから Azure Digital Twins にアクセスできるようにするには、Azure Digital Twins インスタンスにアクセスできるアクセス許可を備えたシステム マネージド ID を割り当てる必要があります。 次はその設定をします。
+
 ## <a name="set-up-security-access-for-the-function-app"></a>関数アプリのセキュリティ アクセスを設定する
 
 Azure CLI または Azure portal のいずれかを使用して、関数アプリに対するセキュリティ アクセスを設定できます。 お好みのオプションで、次の手順に従ってください。
 
-### <a name="option-1-set-up-security-access-for-the-function-app-using-cli"></a>オプション 1: CLI を使用して関数アプリのセキュリティ アクセスを設定する
+# <a name="cli"></a>[CLI](#tab/cli)
 
-前の例の関数スケルトンでは、Azure Digital Twins で認証できるようにするために、ベアラー トークンを渡す必要があります。 このベアラー トークンが確実に渡されるようにするには、関数アプリの [マネージド サービス ID (MSI)](../active-directory/managed-identities-azure-resources/overview.md) を設定する必要があります。 これは、関数アプリごとに 1 回だけ実行する必要があります。
+これらのコマンドは、[Azure Cloud Shell](https://shell.azure.com) または[ローカルにインストールされた Azure CLI](/cli/azure/install-azure-cli) で実行できます。
+関数アプリのシステム マネージド ID を使用して、それに Azure Digital Twins インスタンスの "_**Digital Twins データ所有者**_" ロールを付与できます。 これにより、インスタンスでデータ プレーン アクティビティを実行するアクセス許可が、関数アプリに与えられます。 次に、環境変数を設定することで、関数から Azure Digital Twins インスタンスの URL にアクセスできるようにします。
 
-システム マネージド ID を作成し、関数アプリの ID を Azure Digital Twins インスタンスの _**Azure Digital Twins Data Owner (Azure Digital Twins データ所有者)**_ ロールに割り当てることができます。 これにより、インスタンスでデータ プレーン アクティビティを実行するアクセス許可が、関数アプリに与えられます。 次に、環境変数を設定することで、関数から Azure Digital Twins インスタンスの URL にアクセスできるようにします。
+### <a name="assign-access-role"></a>アクセス ロールの割り当て
 
-コマンドを実行するには、[Azure Cloud Shell](https://shell.azure.com) を使用します。
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
-次のコマンドを使用して、システムによって管理される ID を作成します。 出力の _principalId_ フィールドを書き留めてください。
+前の例の関数スケルトンでは、Azure Digital Twins で認証できるようにするために、ベアラー トークンを渡す必要があります。 このベアラー トークンが確実に渡されるようにするには、Azure Digital Twins にアクセスするための[マネージド サービス ID (MSI)](../active-directory/managed-identities-azure-resources/overview.md) アクセス許可を関数アプリに設定する必要があります。 これは、関数アプリごとに 1 回だけ実行する必要があります。
 
-```azurecli-interactive 
-az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>   
-```
-_principalId_ 値を次のコマンドで使用して、関数アプリの ID を Azure Digital Twins インスタンスの _Azure Digital Twins Data Owner (Azure Digital Twins データ所有者)_ ロールに割り当てます。
 
-```azurecli-interactive 
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
-```
-最後に、環境変数を設定することで、関数から Azure Digital Twins インスタンスの URL にアクセスできるようにします。 環境変数の設定の詳細については、「[*環境変数*](/sandbox/functions-recipes/environment-variables)」を参照してください。 
+1. 次のコマンドを使用して、関数のシステム マネージド ID の詳細を確認します。 出力の _principalId_ フィールドを書き留めてください。
+
+    ```azurecli-interactive 
+    az functionapp identity show -g <your-resource-group> -n <your-App-Service-(function-app)-name> 
+    ```
+
+    >[!NOTE]
+    > 結果が空の場合は、ID の詳細を表示する代わりに、次のコマンドを使用して関数の新しいシステム マネージド ID を作成します。
+    > 
+    >```azurecli-interactive    
+    >az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>  
+    >```
+    >
+    > これで、出力には、次の手順で必要な _principalId_ 値を含む、ID の詳細が表示されます。 
+
+1. _principalId_ 値を次のコマンドで使用して、関数アプリの ID を Azure Digital Twins インスタンスの _Azure Digital Twins Data Owner (Azure Digital Twins データ所有者)_ ロールに割り当てます。
+
+    ```azurecli-interactive 
+    az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
+    ```
+
+### <a name="configure-application-settings"></a>アプリケーション設定の構成
+
+最後に、**環境変数** を設定することで、関数から Azure Digital Twins インスタンスの URL にアクセスできるようにします。 環境変数の詳細については、「[*お使いの関数アプリの管理*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal)」を参照してください。 
 
 > [!TIP]
-> Azure Digital Twins インスタンスの URL を作成するには、Azure Digital Twins インスタンスの *hostName* の先頭に *https://* を追加します。 インスタンスのすべてのプロパティと共に hostName を表示する場合は、`az dt show --dt-name <your-Azure-Digital-Twins-instance>` を実行できます。
+> Azure Digital Twins インスタンスの URL を作成するには、Azure Digital Twins インスタンスの "*ホスト名*" の先頭に *https://* を追加します。 インスタンスのすべてのプロパティと共にホスト名を表示する場合は、`az dt show --dt-name <your-Azure-Digital-Twins-instance>` を実行できます。
 
 ```azurecli-interactive 
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-host-name>"
 ```
-### <a name="option-2-set-up-security-access-for-the-function-app-using-azure-portal"></a>オプション 2:Azure portal を使用して関数アプリのセキュリティ アクセスを設定する
 
-システム割り当てマネージド ID によって、コード内に資格情報を格納せずに、Azure リソースをクラウド サービス (Azure Key Vault など) に対して認証させることができます。 有効にすると、Azure ロールベースのアクセス制御を介して必要なすべてのアクセス許可を付与できます。 この種類のマネージド ID のライフサイクルは、このリソースのライフサイクルに関連付けられています。 また、各リソース (仮想マシンなど) は、システム割り当てマネージド ID を 1 つしか持つことができません。
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-[Azure portal](https://portal.azure.com/) で、前に作成した関数アプリの名前を使用して、検索バーで "_関数アプリ_" を検索します。 一覧から "*関数アプリ*" を選択します。 
+[Azure portal](https://portal.azure.com/) で次の手順を実行します。
 
-:::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Azure portal のスクリーンショット:関数アプリの名前をポータルの検索バーで検索し、検索結果が強調表示されています。":::
+### <a name="assign-access-role"></a>アクセス ロールの割り当て
 
-関数アプリ ウィンドウの左側のナビゲーション バーで _[ID]_ を選択して、マネージド ID を有効にします。
-_[システム割り当て済み]_ タブで、 _[状態]_ を [オン] に切り替えて、"_保存_" します。 _[システム割り当てマネージド ID を有効化する]_ というポップアップが表示されます。
-_[はい]_ ボタンを選択します。 
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
-:::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Azure portal のスクリーンショット:関数アプリの ID ページで、システム割り当てマネージド ID を有効にするオプションが [はい] に設定されています。[状態] オプションが [オン] に設定されています。":::
+システム割り当てマネージド ID によって、コード内に資格情報を格納せずに、Azure リソースをクラウド サービス (Azure Key Vault など) に対して認証させることができます。 有効にすると、Azure ロールベースのアクセス制御を介して必要なすべてのアクセス許可を付与できます。 この種類のマネージド ID のライフサイクルは、このリソースのライフサイクルに関連付けられています。 また、各リソースは、システム割り当てマネージド ID を 1 つしか持つことができません。
 
-関数が Azure Active Directory に正常に登録されたことを通知で確認できます。
+1. [Azure portal](https://portal.azure.com/) で、検索バーに名前を入力して関数アプリを検索します。 結果からアプリを選択します。 
 
-:::image type="content" source="media/how-to-create-azure-function/notifications-enable-managed-identity.png" alt-text="Azure portal のスクリーンショット: ポータルの上部バーにあるベルのアイコンが選択されて、通知の一覧が表示されています。ユーザーがシステム割り当てマネージド ID を有効にしたことを示す通知があります。":::
+    :::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Azure portal のスクリーンショット:関数アプリの名前をポータルの検索バーで検索し、検索結果が強調表示されています。":::
 
-また、次のセクションで使用するので、 _[ID]_ ページに表示される **オブジェクト ID** を記録しておきます。
+1. 関数アプリのページで、左側のナビゲーション バーの _[ID]_ を選択して、関数のマネージド ID を操作します。 _[システム割り当て済み]_ ページで、 _[状態]_ が **[オン]** に設定されていることを確認します (そうなっていない場合は、この時点で設定して、変更を "*保存*" します)。
 
-:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="Azure portal のスクリーンショット:Azure Functions の ID ページの &quot;オブジェクト ID&quot; フィールドの周囲が強調表示されています。":::
+    :::image type="content" source="media/how-to-create-azure-function/verify-system-managed-identity.png" alt-text="Azure portal のスクリーンショット: 関数アプリの [ID] ページで、[状態] オプションが [オン] に設定されています。" lightbox="media/how-to-create-azure-function/verify-system-managed-identity.png":::
 
-### <a name="assign-access-roles-using-azure-portal"></a>Azure portal を使用してアクセス ロールを割り当てる
+1. _[Azure ロールの割り当て]_ ボタンを選択し、 *[Azure ロールの割り当て]* ページを開きます。
 
-_[Azure ロールの割り当て]_ ボタンを選択し、 *[Azure ロールの割り当て]* ページを開きます。 次に、 _[+ ロールの割り当ての追加 (プレビュー)]_ を選択します。
+    :::image type="content" source="media/how-to-create-azure-function/add-role-assignment-1.png" alt-text="Azure portal のスクリーンショット:Azure Functions の ID ページの [アクセス許可] の下にある [Azure ロールの割り当て] ボタンの周囲が強調表示されています。" lightbox="media/how-to-create-azure-function/add-role-assignment-1.png":::
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Azure portal のスクリーンショット:Azure Functions の ID ページの [アクセス許可] の下にある [Azure ロールの割り当て] ボタンの周囲が強調表示されています。":::
+    _[+ ロールの割り当ての追加 (プレビュー)]_ を選択します。
 
-_[ロールの割り当ての追加 (プレビュー)]_ ページが開かれたら、以下を選択します。
+    :::image type="content" source="media/how-to-create-azure-function/add-role-assignment-2.png" alt-text="Azure portal のスクリーンショット: [Azure ロールの割り当て] ページで [+ ロールの割り当ての追加 (プレビュー)] の周囲が強調表示されています。" lightbox="media/how-to-create-azure-function/add-role-assignment-2.png":::
 
-* _スコープ_: リソース グループ
-* _[サブスクリプション]_ : Azure サブスクリプションを選択します
-* _[リソース グループ]_ : ドロップダウンからリソース グループを選択します
-* _[ロール]_ : ドロップダウンから _[Azure Digital Twins Data Owner]\(Azure Digital Twins データ所有者\)_ を選択します
+1. _[ロールの割り当ての追加 (プレビュー)]_ ページが開かれたら、次の値を選択します。
 
-次に、 _[保存]_ ボタンを押して詳細を保存します。
+    * **スコープ**: リソース グループ
+    * **[サブスクリプション]** : Azure サブスクリプションを選択します
+    * **[リソース グループ]** : ドロップダウンからリソース グループを選択します
+    * **[ロール]** : ドロップダウンから _[Azure Digital Twins Data Owner]\(Azure Digital Twins データ所有者\)_ を選択します
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignment.png" alt-text="Azure portal のスクリーンショット:新しいロールの割り当てを追加するためのダイアログ (プレビュー)。スコープ、サブスクリプション、リソース グループ、ロールのフィールドがあります。":::
+    次に、 _[保存]_ ボタンを押して詳細を保存します。
 
-### <a name="configure-application-settings-using-azure-portal"></a>Azure portal を使用してアプリケーションの設定を構成する
+    :::image type="content" source="media/how-to-create-azure-function/add-role-assignment-3.png" alt-text="Azure portal のスクリーンショット:新しいロールの割り当てを追加するためのダイアログ (プレビュー)。スコープ、サブスクリプション、リソース グループ、ロールのフィールドがあります。":::
 
-環境変数を設定することで、関数から Azure Digital Twins インスタンスの URL にアクセスできるようにします。 詳細については、「[*環境変数*](/sandbox/functions-recipes/environment-variables)」を参照してください。 Digital Twins インスタンスにアクセスするためのアプリケーション設定は、環境変数として公開されます。 
+### <a name="configure-application-settings"></a>アプリケーション設定の構成
+
+関数から Azure Digital Twins インスタンスの URL にアクセスできるようにする場合は、そのための **環境変数** を設定できます。 環境変数の詳細については、「[*お使いの関数アプリの管理*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal)」を参照してください。 Azure Digital Twins インスタンスにアクセスするためのアプリケーション設定は、環境変数として公開されます。 
 
 環境変数にインスタンスの URL を設定するには、まず、Azure Digital Twins インスタンスのホスト名を検索して URL を取得します。 [Azure portal](https://portal.azure.com) の検索バーでそのインスタンス名を検索します。 次に、左側のナビゲーション バーの _[概要]_ を選択して、 _[ホスト名]_ を表示します。 この値をコピーします。
 
-:::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Azure portal のスクリーンショット:Azure Digital Twins インスタンスの [概要] ページで、ホスト名の値が強調表示されています。":::
+:::image type="content" source="media/how-to-create-azure-function/instance-host-name.png" alt-text="Azure portal のスクリーンショット:Azure Digital Twins インスタンスの [概要] ページで、ホスト名の値が強調表示されています。":::
 
-これで、次の手順に従って、アプリケーションの設定を作成できるようになりました。
+これで、次の手順を使用してアプリケーション設定を作成できます。
 
-1. ポータルの検索バーで関数アプリを検索し、結果からそれを選択します
-1. 左側のナビゲーション バーで _[構成]_ を選択して、新しいアプリケーション設定を作成します
-1. _[アプリケーションの設定]_ タブで、 _[+ 新しいアプリケーション設定]_ を選択します
+1. ポータルの検索バーで関数アプリを検索し、結果からそれを選択します。
 
-:::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Azure portal のスクリーンショット:関数アプリの名前をポータルの検索バーで検索し、検索結果が強調表示されています。":::
+    :::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Azure portal のスクリーンショット:関数アプリの名前をポータルの検索バーで検索し、検索結果が強調表示されています。":::
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Azure portal のスクリーンショット:関数アプリの [構成] ページで、新しいアプリケーション設定を作成するためのボタンが強調表示されています。":::
+1. 左側のナビゲーション バーで _[構成]_ を選択します。 _[アプリケーションの設定]_ タブで、 _[+ 新しいアプリケーション設定]_ を選択します。
 
-開いたウィンドウで、上でコピーしたホスト名の値を使用して、アプリケーション設定を作成します。
-* **[名前]** : ADT_SERVICE_URL
-* **[値]** : https://{your-azure-digital-twins-host-name}
+    :::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Azure portal のスクリーンショット:関数アプリの [構成] ページで、新しいアプリケーション設定を作成するためのボタンが強調表示されています。":::
 
-_[OK]_ を選択して、アプリケーションの設定を作成します。
+1. 開いたウィンドウで、上でコピーしたホスト名の値を使用して、アプリケーション設定を作成します。
+    * **[名前]** : ADT_SERVICE_URL
+    * **[値]** : https://{your-azure-digital-twins-host-name}
+    
+    _[OK]_ を選択して、アプリケーションの設定を作成します。
+    
+    :::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Azure portal のスクリーンショット:[アプリケーション設定の追加/編集] ページで &quot;名前&quot; および &quot;値&quot; フィールドに入力した後、[OK] ボタンが強調表示されています。":::
 
-:::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Azure portal のスクリーンショット:[アプリケーション設定の追加/編集] ページで &quot;名前&quot; および &quot;値&quot; フィールドに入力した後、[OK] ボタンが強調表示されています。":::
+1. 設定を作成すると、先ほどの _[アプリケーションの設定]_ タブにその内容が表示されます。一覧に *ADT_SERVICE_URL* が表示されていることを確認し、 _[保存]_ ボタンを選択して新しいアプリケーション設定を保存します。
 
-_[名前]_ フィールドでアプリケーション名を使用して、アプリケーションの設定を確認できます。 その後、 _[保存]_ ボタンを選択して、アプリケーション設定を保存します。
+    :::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Azure portal のスクリーンショット:[アプリケーション設定] ページで、新しい ADT_SERVICE_URL 設定が強調表示されています。[保存] ボタンも強調表示されている。":::
 
-:::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Azure portal のスクリーンショット:[アプリケーション設定] ページで、新しい ADT_SERVICE_URL 設定が強調表示されています。[保存] ボタンも強調表示されている。":::
+1. アプリケーション設定に対する変更を有効にするには、アプリケーションの再起動が必要です。そのため、確認のメッセージが表示されたら _[続行]_ を選択してアプリケーションを再起動します。
 
-アプリケーション設定への変更を有効にするには、アプリケーションを再起動する必要があります。 _[続行]_ を選択して、アプリケーションを再起動します。
+    :::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Azure portal のスクリーンショット:アプリケーション設定を変更するとアプリケーションが再起動されるという注意書きが表示されています。[続行] ボタンが強調表示されています。":::
 
-:::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Azure portal のスクリーンショット:アプリケーション設定を変更するとアプリケーションが再起動されるという注意書きが表示されています。[続行] ボタンが強調表示されています。":::
-
-_[通知]_ アイコンを選択することで、アプリケーションの設定が更新されたことを確認できます。 アプリケーションの設定が作成されていない場合は、上記のプロセスに従って、アプリケーションの設定の追加を再度試みることができます。
-
-:::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Azure portal のスクリーンショット: ポータルの上部バーにあるベルのアイコンが選択されて、通知の一覧が表示されています。Web アプリの設定が正常に更新されたことを示す通知があります。":::
+---
 
 ## <a name="next-steps"></a>次のステップ
 

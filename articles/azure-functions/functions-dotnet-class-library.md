@@ -1,41 +1,62 @@
 ---
-title: Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
-description: C# を使用して Azure Functions を開発する方法について説明します。
+title: Azure Functions を使用する C# クラス ライブラリ関数を開発する
+description: C# を使用して、クラス ライブラリとしてコードを開発して公開する方法を理解します。これは、Azure Functions ランタイムを使用してインプロセスで実行されます。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 335cc3017e7b016666324306181c90a0e405a956
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: c7d14599ec1ebbcb94e0c0f3985a3b857f9353dc
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806323"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102563882"
 ---
-# <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
+# <a name="develop-c-class-library-functions-using-azure-functions"></a>Azure Functions を使用する C# クラス ライブラリ関数を開発する
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-reference-csharp.md -->
 
 この記事では、.NET クラス ライブラリの C# を使用した Azure Functions 開発の概要を示します。
 
+>[!IMPORTANT]
+>この記事では、ランタイムを使用してインプロセスで実行される .NET クラス ライブラリ関数をサポートしています。 Functions は、ランタイムから分離された C# 関数をアウトプロセスで実行することで、.NET 5.x もサポートします。 詳細については、[.NET 分離プロセス関数](dotnet-isolated-process-guide.md)に関する記事を参照してください。
+
 C# 開発者の方は、次の記事のいずれかに関心があるかもしれません。
 
 | 作業の開始 | 概念| ガイド付き学習とサンプル |
-| -- | -- | -- | 
+|--| -- |--| 
 | <ul><li>[Visual Studio の使用](functions-create-your-first-function-visual-studio.md)</li><li>[Visual Studio Code の使用](create-first-function-vs-code-csharp.md)</li><li>[コマンド ライン ツールの使用](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[ホスティング オプション](functions-scale.md)</li><li>[パフォーマンスに関する考慮事項&nbsp;](functions-best-practices.md)</li><li>[Visual Studio 開発](functions-develop-vs.md)</li><li>[依存関係の挿入](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[サーバーレス アプリケーションの作成](/learn/paths/create-serverless-applications/)</li><li>[C# のサンプル](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
 
 Azure Functions では、C# および C# スクリプト プログラミング言語をサポートします。 [Azure Portal での C# の使用](functions-create-function-app-portal.md)に関するガイダンスを探している場合は、[C# スクリプト (.csx) 開発者向けリファレンス](functions-reference-csharp.md)をご覧ください。
 
 ## <a name="supported-versions"></a>サポートされているバージョン
 
-Functions ランタイムの各バージョンは、.NET の特定のバージョンと動作します。 次の表は、プロジェクト内の特定のバージョンの Functions と共に使用できる最高レベルの .NET Core と .NET Framework を示しています。 
+Functions ランタイムの各バージョンは、.NET の特定のバージョンと動作します。 Functions バージョンの詳細については、「[Azure Functions ランタイム バージョンの概要](functions-versions.md)」を参照してください。
+
+次の表は、特定のバージョンの Functions と共に使用できる最上位レベルの .NET Core と .NET Framework を示しています。 
 
 | Functions ランタイムのバージョン | 最大の .NET バージョン |
 | ---- | ---- |
-| Functions 3.x | .NET Core 3.1 |
-| Functions 2.x | .NET Core 2.2 |
+| Functions 3.x | .NET Core 3.1<br/>.NET 5.0<sup>1</sup> |
+| Functions 2.x | .NET Core 2.2<sup>2</sup> |
 | Functions 1.x | .NET Framework 4.7 |
 
-詳細については、「[Azure Functions ランタイム バージョンの概要](functions-versions.md)」を参照してください
+<sup>1</sup> [アウトプロセス](dotnet-isolated-process-guide.md)で実行する必要があります。  
+<sup>2</sup> 詳細については、「[Functions v2. x に関する考慮事項](#functions-v2x-considerations)」を参照してください。   
+
+特定の古いマイナー バージョンの削除など、Azure Functions リリースに関する最新のニュースについては、[Azure App Service のお知らせ](https://github.com/Azure/app-service-announcements/issues)を閲覧してください。
+
+### <a name="functions-v2x-considerations"></a>Functions v2. x に関する考慮事項
+
+最新の 2.x バージョン (`~2`) を対象とする関数アプリは、.Net Core 3.1 で実行されるように自動的にアップグレードされます。 .Net Core バージョン間の破壊的変更のため、.NET Core 2.2 に対して開発およびコンパイルされたすべてのアプリが .NET Core 3.1 に安全にアップグレードできるとは限りません。 関数アプリを `~2.0` にピン留めすることで、このアップグレードをオプトアウトできます。 また、Functions は互換性のない API を検出し、.Net Core 3.1 での不適切な実行を防ぐために、お使いのアプリを `~2.0` にピン留めすることがあります。 
+
+>[!NOTE]
+>関数アプリが `~2.0` にピン留めされている状態で、このバージョンのターゲットを `~2` に変更した場合、関数アプリで中断が発生する可能性があります。 ARM テンプレートを使用してデプロイする場合は、テンプレートのバージョンを確認してください。 これが発生した場合は、バージョンをターゲット `~2.0` に戻し、互換性の問題を修正してください。 
+
+`~2.0` を対象とする関数アプリは、.Net Core 2.2 で引き続き実行されます。 このバージョンの .NET Core では、セキュリティおよびその他のメンテナンス更新プログラムが受信されなくなりました。 詳細については、[こちらのお知らせページ](https://github.com/Azure/app-service-announcements/issues/266)を参照してください。 
+
+できるだけ早く、お使いの関数を .NET Core 3.1 と互換性があるものにしてください。 これらの問題を解決した後は、バージョンを `~2` に戻すか、`~3` にアップグレードしてください。 Functions ランタイムのバージョンをターゲットにする方法の詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](set-runtime-version.md)」を参照してください。
+
+Premium または専用 (App Service) プランで Linux 上で実行している場合は、`linuxFxVersion` サイトの構成設定を `DOCKER|mcr.microsoft.com/azure-functions/dotnet:2.0.14786-appservice` に設定して、代わりに特定のイメージをターゲットにすることで、バージョンをピン留めします。`linuxFxVersion` の設定方法については、「[Linux 上でのバージョンの手動更新](set-runtime-version.md#manual-version-updates-on-linux)」を参照してください。
 
 ## <a name="functions-class-library-project"></a>関数クラス ライブラリ プロジェクト
 
@@ -85,18 +106,20 @@ public static class SimpleExample
 
 ## <a name="method-signature-parameters"></a>メソッド シグネチャのパラメーター
 
-メソッド シグネチャには、トリガー属性で使用されているもの以外のパラメーターが含まれる場合があります。 以下に、含めることができる追加のパラメーターの一部を示します。
+メソッド シグネチャには、トリガー属性で使用されているもの以外のパラメーターが含まれる場合があります。 含めることができるその他のパラメーターの一部を以下に示します。
 
 * 属性で修飾することによってそのようにマークした[入出力のバインド](functions-triggers-bindings.md)。  
 * [ログ記録](#logging)のための `ILogger` または `TraceWriter` ([バージョン 1.x のみ](functions-versions.md#creating-1x-apps)) パラメーター。
 * [グレースフル シャットダウン](#cancellation-tokens)のための `CancellationToken` パラメーター。
 * トリガー メタデータを取得するための[バインド式](./functions-bindings-expressions-patterns.md)パラメーター。
 
-関数シグネチャのパラメーターの順序は関係ありません。 たとえば、トリガー パラメーターは、他のバインドの前後に配置できます。また、ロガー パラメーターは、トリガー パラメーターまたはバインド パラメーターの前後に配置できます。
+関数シグネチャ内のパラメーターの順序は問題ではありません。 たとえば、トリガー パラメーターは、他のバインドの前後に配置できます。また、ロガー パラメーターは、トリガー パラメーターまたはバインド パラメーターの前後に配置できます。
 
-### <a name="output-binding-example"></a>出力バインドの例
+### <a name="output-bindings"></a>出力バインディング
 
-次の例では、出力キュー バインドを追加することで、前の属性を変更しています。 この関数は、関数をトリガーするキュー メッセージを、異なるキュー内の新しいキュー メッセージに書き込みます。
+関数では、出力パラメーターを使用して、0 個または 1 個の出力バインドを定義できます。 
+
+次の例では、`myQueueItemCopy` という名前の出力キュー バインドを追加することで、前のものを変更しています。 この関数は、関数をトリガーするメッセージの内容を、異なるキュー内の新しいメッセージに書き込みます。
 
 ```csharp
 public static class SimpleExampleWithOutput
@@ -112,6 +135,8 @@ public static class SimpleExampleWithOutput
     }
 }
 ```
+
+出力バインドに代入された値は、関数が終了したときに書き込まれます。 1 つの関数で複数の出力バインドを使用するには、複数の出力パラメーターに値を代入するだけです。 
 
 バインドの参照についての記事 (たとえば「[Storage キュー](functions-bindings-storage-queue.md)」) では、トリガー、入力、または出力のバインド属性で、どのパラメーターの種類を使用できるかを説明しています。
 
@@ -138,7 +163,7 @@ public static class BindingExpressionsExample
 
 ビルド処理では、ビルド フォルダー内の関数フォルダーに *function.json* ファイルを作成します。 前述のとおり、このファイルに対しては直接編集が行われません。 このファイルを編集して、バインド構成を変更したり、関数を無効にしたりすることはできません。 
 
-このファイルの目的は、[従量課金プランでのスケーリングの判断](event-driven-scaling.md)に使用するスケール コントローラーに情報を提供することです。 このため、ファイルはトリガー情報だけを含み、入力または出力バインドは含まれません。
+このファイルの目的は、[従量課金プランでのスケーリングの判断](event-driven-scaling.md)に使用するスケール コントローラーに情報を提供することです。 このため、ファイルにはトリガー情報のみが含まれ、入力および出力バインドは含まれません。
 
 生成された *function.json* ファイルには、*function.json* 構成ではなく、バインドの .NET 属性を使用するようにランタイムに指示する `configurationSource` プロパティが含まれます。 次に例を示します。
 
@@ -163,7 +188,7 @@ public static class BindingExpressionsExample
 
 *function.json* ファイルの生成は、NuGet パッケージ ([Microsoft\.NET\.Sdk\.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions)) によって実行されます。 
 
-Functions ランタイムのバージョン 1.x と 2.x では同じパッケージが使用されます。 1\.x プロジェクトと 2.x プロジェクトの違いはターゲット フレームワークです。 次に示すのは *.csproj* ファイルの関連する部分で、ターゲット フレームが異なっていることと、`Sdk` パッケージが同じであることがわかります。
+Functions ランタイムのバージョン 1.x と 2.x では同じパッケージが使用されます。 1\.x プロジェクトと 2.x プロジェクトの違いはターゲット フレームワークです。 以下は *.csproj* ファイルの関連する部分で、同じ `Sdk` パッケージで異なるターゲット フレームワークを示しています。
 
 # <a name="v2x"></a>[v2.x+](#tab/v2)
 
@@ -361,7 +386,7 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 }
 ```
 
-## <a name="log-custom-telemetry-in-c-functions"></a>C# 関数でカスタム テレメトリをログに記録する
+### <a name="log-custom-telemetry"></a><a name="log-custom-telemetry-in-c-functions"></a>カスタム テレメトリをログに記録する
 
 ご自身の関数からカスタム テレメトリ データを Application Insights に送信するときに使用できる、Application Insights SDK の Functions 固有のバージョンがあります。[Microsoft.Azure.WebJobs.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights). コマンド プロンプトから次のコマンドを使用して、このパッケージをインストールします。
 
@@ -616,7 +641,7 @@ public static class IBinderExample
 
 [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs) は [Storage Blob](functions-bindings-storage-blob.md) の入力バインドまたは出力バインドを定義します。[TextWriter](/dotnet/api/system.io.textwriter) はサポートされている出力バインドの種類です。
 
-### <a name="multiple-attribute-example"></a>複数属性の例
+### <a name="multiple-attributes-example"></a>複数属性の例
 
 前の例では、関数アプリのメイン ストレージ アカウント接続文字列 (`AzureWebJobsStorage`) のアプリ設定を取得します。 ストレージ アカウントに使用するカスタム アプリ設定を指定するには、[StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) を追加し、属性の配列を `BindAsync<T>()` に渡します。 `IBinder`ではなく、`Binder` パラメーターを使用します。  次に例を示します。
 

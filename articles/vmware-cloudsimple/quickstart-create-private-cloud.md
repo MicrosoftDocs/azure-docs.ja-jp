@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 487308aca3231650aee3fac5ae127006649e19b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87073909"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>クイックスタート - プライベート クラウドの環境を構成する
@@ -42,8 +42,8 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
     ![Azure からプライベート クラウドを作成する](media/create-private-cloud-from-azure.png)
 
 5. CloudSimple ポータルで、プライベート クラウドの名前を指定します。
-6. プライベート クラウドの**場所**を選択します。
-7. Azure 上にプロビジョンしたものと一貫性のある**ノードの種類**を選択します。
+6. プライベート クラウドの **場所** を選択します。
+7. Azure 上にプロビジョンしたものと一貫性のある **ノードの種類** を選択します。
 8. **[ノード数]** を指定します。  プライベート クラウドを作成するには、少なくとも 3 つのノードが必要です。
 
     ![プライベート クラウドを作成する - 基本情報](media/create-private-cloud-basic-info.png)

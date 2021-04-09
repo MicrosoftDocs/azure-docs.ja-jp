@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: victorh
 ms.openlocfilehash: c840bf9e82b8dcdb1fbf9b380ea847b3d1b08dd9
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91948070"
 ---
 # <a name="what-is-a-secured-virtual-hub"></a>セキュリティ保護付き仮想ハブとは
 
 仮想ハブは、他のリソースからの接続を可能にする Microsoft が管理する仮想ネットワークです。 Azure portal の仮想 WAN から仮想ハブを作成すると、仮想ハブ VNet とゲートウェイ (オプション) がそのコンポーネントとして作成されます。
 
-*セキュリティ保護付き*仮想ハブは、Azure Firewall Manager によって構成された関連するセキュリティ ポリシーとルーティング ポリシーを持つ [Azure Virtual WAN ハブ](../virtual-wan/virtual-wan-about.md#resources)です。 セキュリティ保護付き仮想ハブを使用すると、トラフィック ガバナンスと保護のためのネイティブ セキュリティ サービスを使用して、ハブアンドスポーク アーキテクチャと推移的アーキテクチャを簡単に作成できます。 
+*セキュリティ保護付き* 仮想ハブは、Azure Firewall Manager によって構成された関連するセキュリティ ポリシーとルーティング ポリシーを持つ [Azure Virtual WAN ハブ](../virtual-wan/virtual-wan-about.md#resources)です。 セキュリティ保護付き仮想ハブを使用すると、トラフィック ガバナンスと保護のためのネイティブ セキュリティ サービスを使用して、ハブアンドスポーク アーキテクチャと推移的アーキテクチャを簡単に作成できます。 
 
 セキュリティ保護付き仮想ハブを使用して、仮想ネットワーク (V2V)、仮想ネットワークおよびブランチ オフィス (B2V) の間のトラフィック、インターネットへのトラフィック (B2I/V2I) をフィルター処理できます。 セキュリティ保護付き仮想ハブには自動ルーティング機能があります。 ファイアウォールを介してトラフィックをルーティングするために、独自の UDR (ユーザー定義ルート) を構成する必要はありません。
 

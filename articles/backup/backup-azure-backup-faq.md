@@ -3,12 +3,12 @@ title: よく寄せられる質問に対する回答
 description: '一般的な質問への回答:Recovery Services コンテナーを含む Azure Backup の機能、バックアップの対象、しくみ、暗号化、制限。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: f819440001180a3c446f366e61e3ac0f983fa67f
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: ac58cee66aa2a89efb7194a051801b068628d3bc
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806640"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467631"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 
@@ -65,6 +65,13 @@ Data Box を使用して Recovery Services コンテナーからオンプレミ�
 ### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>geo 冗長ストレージ (GRS) コンテナーで、リージョンをまたがる復元 (CRR) 機能が有効になっている場合とそうでない場合では、どのような違いがありますか。
 
 [CRR](azure-backup-glossary.md#cross-region-restore-crr) 機能が有効になっていない [GRS](azure-backup-glossary.md#grs) コンテナーの場合、Azure によってプライマリ リージョンでの障害が宣言されるまで、セカンダリ リージョンのデータにはアクセスできません。 このような場合、セカンダリ リージョンから復元が行われます。 CRR が有効になっている場合、プライマリ リージョンが稼働している場合でも、セカンダリ リージョンでの復元をトリガーできます。
+
+### <a name="can-i-move-a-subscription-that-contains-a-vault-to-a-different-azure-active-directory"></a>コンテナーが含まれるサブスクリプションを別の Azure Active Directory に移動できますか。
+
+はい。 (コンテナーが含まれる) サブスクリプションを別の Azure Active Directory (AD) に移動するには、[サブスクリプションを別のディレクトリに移動する](../role-based-access-control/transfer-subscription.md)方法に関するページを参照してください。
+
+>[!IMPORTANT]
+>サブスクリプションの移動後、必ず次のアクションを実行してください。<ul><li>ロールベースのアクセス制御とカスタム役割は移動できません。 新しい Azure AD で、アクセス許可とロールを再作成する必要があります。</li><li>コンテナーのマネージド ID (MI) は無効にし、再び有効にすることで再作成する必要があります。 また、MI アクセス許可を昇格させ、再作成する必要があります。</li><li>[プライベート エンドポイント](private-endpoints.md#before-you-start)や[カスタマー マネージド キー](encryption-at-rest-with-cmk.md#before-you-start)など、MI を活用する機能がコンテナーで使用されている場合、その機能を再構成する必要があります。</li></ul>
 
 ## <a name="azure-backup-agent"></a>Azure Backup エージェント
 

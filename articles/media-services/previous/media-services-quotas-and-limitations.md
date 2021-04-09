@@ -3,7 +3,7 @@ title: Media Services のクォータと制限 | Microsoft Docs
 description: このトピックでは、Microsoft Azure Media Services に関連付けられているクォータと制限について説明します。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: d4c43afd-dba8-40a2-ad92-6de54152f7ec
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2020
-ms.author: juliako
-ms.openlocfilehash: a2e80fa8eaec1dbf4137ba72662dfb178b6c9b1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 89c8cae9a13225ec76b0a26954b6063332d76495
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329664"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103009472"
 ---
 # <a name="quotas-and-limitations"></a>クォータと制限
 

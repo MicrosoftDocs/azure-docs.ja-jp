@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 11/18/2020
-ms.openlocfilehash: 862d33e523562511796999d82b67d2b4b11efaf3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/10/2021
+ms.openlocfilehash: 5879c9107a0ab5a2ef150d119e8b5ac8e16ac01d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690621"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102609925"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動バックアップ - Azure SQL Database および SQL Managed Instance
 
@@ -140,9 +140,12 @@ SQL Database と SQL Managed Instance ではどちらも、最大 10 年間の�
 
 LTR の詳細については、[バックアップの長期保有](long-term-retention-overview.md)に関するページを参照してください。
 
-## <a name="storage-costs"></a>ストレージ コスト
+## <a name="backup-storage-costs"></a>バックアップ ストレージのコスト
 
 バックアップ ストレージの価格は、購入モデル (DTU または仮想コア) と選択したバックアップ ストレージ冗長性オプション、さらにリージョンによっても異なります。 バックアップ ストレージは、使用量 (GB/月) に応じて課金されます。価格については、「[Azure SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/single/)」と「[Azure SQL Managed Instance の価格](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)」のページを参照してください。
+
+> [!NOTE]
+> Azure 請求書では、バックアップ ストレージの全体の使用量ではなく、消費された超過分のバックアップ ストレージのみが表示されます。 たとえば仮に、4 TB のデータ ストレージをプロビジョニングした場合、4 TB の無料のバックアップ ストレージ領域が得られます。 合計 5.8 TB のバックアップ ストレージ領域を使用した場合、使用された超過分のバックアップ ストレージのみが課金されるため、Azure 請求書には 1.8 TB のみが表示されます。
 
 ### <a name="dtu-model"></a>DTU モデル
 
@@ -446,7 +449,7 @@ SQL Database と Managed Instance に対する組み込みポリシーの定義�
 データ所在地要件を組織レベルで適用するには、これらのポリシーをサブスクリプションに割り当てることができます。 これらをサブスクリプション レベルで割り当てると、指定したサブスクリプションのユーザーは、Azure portal または Azure PowerShell を使用して、geo 冗長バックアップ ストレージでデータベースまたはマネージド インスタンスを作成できなくなります。 
 
 > [!IMPORTANT]
-> T-SQL を使用してデータベースを作成する場合は、Azure ポリシーは適用されません。 T-SQL を使用してデータベースを作成するときにデータ所在地を適用するには、[CREATE DATABASE ステートメントの BACKUP_STORAGE_REDUNDANCY パラメーターに対する入力として "LOCAL" または "ZONE" を使用します](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#create-database-using-zone-redundancy-for-backups)。
+> T-SQL を使用してデータベースを作成する場合は、Azure ポリシーは適用されません。 T-SQL を使用してデータベースを作成するときにデータ所在地を適用するには、[CREATE DATABASE ステートメントの BACKUP_STORAGE_REDUNDANCY パラメーターに対する入力として "LOCAL" または "ZONE" を使用します](/sql/t-sql/statements/create-database-transact-sql#create-database-using-zone-redundancy-for-backups)。
 
 [Azure portal](../../governance/policy/assign-policy-portal.md) または [Azure PowerShell](../../governance/policy/assign-policy-powershell.md) を使用してポリシーを割り当てる方法を参照してください
 
@@ -458,4 +461,5 @@ SQL Database と Managed Instance に対する組み込みポリシーの定義�
 - [PowerShell を使用してデータベースを特定の時点に復元する](scripts/restore-database-powershell.md)方法について、詳細を確認してください。
 - Azure Blob Storage に長期保有される自動バックアップを Azure portal を使用して構成、管理、復元する方法の詳細については、[Azure portal を使用した長期的なバックアップ保有期間の管理](long-term-backup-retention-configure.md)に関する記事を参照してください。
 - Azure Blob Storage に長期保有される自動バックアップを PowerShell を使用して構成、管理、復元する方法については、[PowerShell を使用した長期的なバックアップ保有期間の管理](long-term-backup-retention-configure.md)に関する記事を参照してください。
+- Azure SQL Managed Instance でのバックアップ ストレージの消費に関する詳細については、「[説明されている Managed Instance でのバックアップ ストレージの消費](https://aka.ms/mi-backup-explained)」を参照してください。
 - バックアップ ストレージの保持期間と Azure SQL Managed Instance のコストを微調整する方法を学習するには、「[Fine tuning backup storage costs on Managed Instance (Managed Instance でのバックアップ ストレージ コストの微調整)](https://aka.ms/mi-backup-tuning)」を参照してください。

@@ -4,21 +4,23 @@ description: ダウンストリーム デバイスからの情報を処理でき
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/15/2020
+ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9ecb1c50fe99cc93417a37e892049e03585945a5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f7f05fb84ff6cbe320e8f479912bdcdefdc41021
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370429"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103201651"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 この記事では、他のデバイスが IoT Hub と通信するための透過的なゲートウェイとして機能するように IoT Edge デバイスを構成するための詳細な手順を提供します。 この記事では、*IoT Edge ゲートウェイ* という用語は、透過的ゲートウェイとして構成された IoT Edge デバイスを指します。 詳細は、[「IoT Edge デバイスをゲートウェイとして使用する方法」](./iot-edge-as-gateway.md)を参照してください。
 
@@ -26,10 +28,9 @@ ms.locfileid: "100370429"
 ::: moniker range="iotedge-2018-06"
 
 >[!NOTE]
->現時点では:
+>IoT Edge バージョン 1.1 以前では、IoT Edge デバイスを IoT Edge ゲートウェイのダウンストリームにすることはできません。
 >
-> * また、Edge 対応デバイスは、IoT Edge ゲートウェイに接続できません。
-> * ダウンストリーム デバイスではファイル アップロードを使用できません。
+>ダウンストリーム デバイスではファイル アップロードを使用できません。
 
 ::: moniker-end
 
@@ -37,9 +38,7 @@ ms.locfileid: "100370429"
 ::: moniker range=">=iotedge-2020-11"
 
 >[!NOTE]
->現時点では:
->
-> * ダウンストリーム デバイスではファイル アップロードを使用できません。
+>ダウンストリーム デバイスではファイル アップロードを使用できません。
 
 ::: moniker-end
 
@@ -51,7 +50,17 @@ ms.locfileid: "100370429"
 
 デバイスがゲートウェイとして機能するためには、そのダウンストリーム デバイスに安全に接続する必要があります。 Azure IoT Edge では、公開キー基盤 (PKI) を使用して、これらのデバイス間にセキュリティで保護された接続を設定することができます。 この場合、透過的なゲートウェイとして機能する IoT Edge デバイスにダウンストリーム デバイスが接続できるようにします。 妥当なセキュリティを維持するために、ダウン ストリーム デバイスはゲートウェイ デバイスの ID を確認する必要があります。 この ID 検査により、お使いのデバイスが悪意のある可能性のあるゲートウェイに接続することを防止できます。
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 [Azure IoT Hub](../iot-hub/index.yml) クラウド サービスを使って作成された ID を持つ任意のアプリケーションまたはプラットフォームを、ダウンストリーム デバイスにすることもできます。 多くの場合、これらのアプリケーションでは [Azure IoT device SDK](../iot-hub/iot-hub-devguide-sdks.md) が使用されます。 ダウンストリーム デバイスは、IoT Edge ゲートウェイ デバイスそのもので実行されているアプリケーションの場合もあります。 ただし、IoT Edge デバイスを IoT Edge ゲートウェイのダウンストリームにすることはできません。
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+[Azure IoT Hub](../iot-hub/index.yml) クラウド サービスを使って作成された ID を持つ任意のアプリケーションまたはプラットフォームを、ダウンストリーム デバイスにすることもできます。 多くの場合、これらのアプリケーションでは [Azure IoT device SDK](../iot-hub/iot-hub-devguide-sdks.md) が使用されます。 ダウンストリーム デバイスは、IoT Edge ゲートウェイ デバイスそのもので実行されているアプリケーションの場合もあります。
+:::moniker-end
+<!-- end 1.2 -->
 
 デバイス ゲートウェイ トポロジに必要な信頼を有効にする証明書インフラストラクチャを作成できます。 この記事では、IoT Hub で [X.509 CA セキュリティ](../iot-hub/iot-hub-x509ca-overview.md)を 有効にするために使用するのと同じ証明書のセットアップを前提としています。これには、特定の IoT ハブ (IoT ハブのルート CA) に関連付けられた X.509 CA 証明書、およびこの CA と IoT Edge デバイスの CA によって署名された一連の証明書が使用されます。
 
@@ -64,7 +73,7 @@ ms.locfileid: "100370429"
 
 IoT Edge がインストールされている Linux または Windows デバイス。
 
-準備ができたデバイスがない場合は、Azure 仮想マシンで作成できます。 「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](quickstart-linux.md)」の手順に従って IoT Hub を作成し、仮想マシンを作成して、IoT Edge ランタイムを構成します。 
+準備ができたデバイスがない場合は、Azure 仮想マシンで作成できます。 「[初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする](quickstart-linux.md)」の手順に従って IoT Hub を作成し、仮想マシンを作成して、IoT Edge ランタイムを構成します。
 
 ## <a name="set-up-the-device-ca-certificate"></a>デバイス CA 証明書をセットアップする
 
@@ -72,7 +81,7 @@ IoT Edge がインストールされている Linux または Windows デバイ�
 
 ![ゲートウェイ証明書の設定](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
-ルート CA 証明書とデバイス CA 証明書 (およびその秘密キー) が、IoT Edge ゲートウェイ デバイス上に存在し、IoT Edge の config.yaml ファイルで構成されている必要があります。 この場合の "*ルート CA 証明書*" は、この IoT Edge シナリオに対する最上位の証明機関であることに注意してください。 ゲートウェイ デバイスの CA 証明書とダウンストリーム デバイスの証明書は、同じルート CA 証明書にロールアップする必要があります。
+ルート CA 証明書とデバイス CA 証明書 (およびその秘密キー) が、IoT Edge ゲートウェイ デバイス上に存在し、IoT Edge の構成ファイルで構成されている必要があります。 この場合の "*ルート CA 証明書*" は、この IoT Edge シナリオに対する最上位の証明機関であることに注意してください。 ゲートウェイ デバイスの CA 証明書とダウンストリーム デバイスの証明書は、同じルート CA 証明書にロールアップする必要があります。
 
 >[!TIP]
 >ルート CA 証明書とデバイス CA 証明書を IoT Edge デバイスにインストールするプロセスの詳細については、「[IoT Edge デバイスで証明書を管理する](how-to-manage-device-certificates.md)」も参照してください。
@@ -85,7 +94,7 @@ IoT Edge がインストールされている Linux または Windows デバイ�
 
 運用シナリオでは、独自の証明機関を使用してこれらのファイルを生成する必要があります。 開発シナリオとテスト シナリオでは、デモ証明書を使用できます。
 
-1. デモ証明書を使用している場合は、「[IoT Edge デバイスの機能をテストするためのデモ用の証明書を作成する](how-to-create-test-certificates.md)」の手順に従ってファイルを作成します。 そのページでは、以下の手順を実行する必要があります。
+独自の証明機関がなく、デモ用の証明書を使用する場合は、「[IoT Edge デバイスの機能をテストするためのデモ用の証明書を作成する](how-to-create-test-certificates.md)」の手順に従ってファイルを作成します。 そのページでは、以下の手順を実行する必要があります。
 
    1. まず、デバイスで証明書を生成するためのスクリプトを設定します。
    2. ルート CA 証明書を作成します。 それらの手順を終えると、ルート CA 証明書ファイルが作成されます。
@@ -94,24 +103,55 @@ IoT Edge がインストールされている Linux または Windows デバイ�
       * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem`、および
       * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
-2. 別のマシンで証明書を作成した場合は、それらを IoT Edge デバイスにコピーします。
+別のマシンで証明書を作成した場合は、それらを IoT Edge デバイスにコピーしてから、次の手順に進みます。
 
-3. お使いの IoT Edge デバイスで、セキュリティ デーモン構成ファイルを開きます。
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+1. お使いの IoT Edge デバイスで、セキュリティ デーモン構成ファイルを開きます。
+
    * Windows: `C:\ProgramData\iotedge\config.yaml`
    * Linux: `/etc/iotedge/config.yaml`
 
-4. ファイルの **Certificate settings** セクションを見つけます。 **certificates:** で始まる 4 行をコメント解除し、以下のプロパティの値として、3 つのファイルへのファイル URI を指定します。
+1. ファイルの **Certificate settings** セクションを見つけます。 **certificates:** で始まる 4 行をコメント解除し、以下のプロパティの値として、3 つのファイルへのファイル URI を指定します。
    * **device_ca_cert**: デバイス CA 証明書
    * **device_ca_pk**: デバイス CA 秘密キー
    * **trusted_ca_certs**: ルート CA 証明書
 
    **certificates:** の行の前に空白文字がないこと、および他の行が 2 つの空白でインデントされていることを確認します。
 
-5. ファイルを保存して閉じます。
+1. ファイルを保存して閉じます。
 
-6. IoT Edge を再起動します。
+1. IoT Edge を再起動します。
    * Windows: `Restart-Service iotedge`
    * Linux: `sudo systemctl restart iotedge`
+:::moniker-end
+<!-- end 1.1 -->
+
+<!--1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. お使いの IoT Edge デバイスで、構成ファイル `/etc/aziot/config.toml` を開きます。
+
+   >[!TIP]
+   >構成ファイルがデバイスにまだ存在しない場合は、`/etc/aziot/config.toml.edge.template` をテンプレートとして使用して作成します。
+
+1. `trust_bundle_cert` パラメーターを見つけます。 この行をコメント解除し、デバイスのルート CA 証明書ファイルにファイルの URI を指定します。
+
+1. ファイルの`[edge_ca]` セクションを見つけます。 このセクションの 3 行をコメント解除し、次のプロパティの値として、証明書とキー ファイルにファイル URI を指定します。
+   * **cert**: デバイス CA 証明書
+   * **pk**: デバイス CA 秘密キー
+
+1. ファイルを保存して閉じます。
+
+1. 変更を適用します。
+
+   ```bash
+   sudo iotedge config apply
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="deploy-edgehub-and-route-messages"></a>edgeHub をデプロイしてメッセージをルーティングする
 

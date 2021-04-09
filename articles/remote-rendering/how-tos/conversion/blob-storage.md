@@ -6,10 +6,10 @@ ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: d8a6fd458cdcf79cdeb693b25acf72d4ec48def7
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102507519"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>モデルの変換に Azure Blob Storage を使用する
@@ -29,7 +29,7 @@ ms.locfileid: "102507519"
 
 - [Azure Portal](https://portal.azure.com)
 - [az コマン ドライン](/cli/azure/install-azure-cli)
-- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
+- [Azure 記憶域エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)
 - SDK (C#、Python ...)
 
 ## <a name="ensure-azure-remote-rendering-can-access-your-storage-account"></a>Azure Remote Rendering が自分のストレージ アカウントにアクセスできることを確認する
@@ -53,7 +53,7 @@ SAS URI は、次のいずれかを使用して生成できます。
 - az PowerShell モジュール
   - 「[PowerShell スクリプトの例](../../samples/powershell-example-scripts.md)」を参照
 - [az コマン ドライン](/cli/azure/install-azure-cli)
-- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
+- [Azure 記憶域エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)
   - コンテナーを右クリックして [Shared Access Signature の取得] を選択する (入力コンテナーに対しては読み取りとリスト アクセス、出力コンテナーに対しては書き込みアクセス)
 - SDK (C#、Python ...)
 

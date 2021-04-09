@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.openlocfilehash: ca4c4013e0044811a5bac8786996761b8a5c45f1
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97682743"
 ---
 # <a name="track-updated-files-with-a-watcher-task"></a>監視タスクによる更新されたファイルの追跡

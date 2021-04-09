@@ -6,15 +6,15 @@ ms.author: maquaran
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: tutorial
-ms.date: 09/21/2020
+ms.date: 03/15/2021
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6cf0e77657175449b126eeca02a12c164478e568
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1c178f57a31e02b3dac712a5425db226720200c5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548071"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103563625"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>.NET SDK を使用して Azure Cosmos DB SQL API アカウントにデータを一括インポートする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "96548071"
 
 Azure portal から [Azure Cosmos DB SQL API アカウントを作成](create-cosmosdb-resources-portal.md)します。または、[Azure Cosmos DB Emulator](local-emulator.md) を使用してアカウントを作成することもできます。
 
-## <a name="step-2-set-up-your-net-project"></a>手順 2:.NET プロジェクトを設定する
+## <a name="step-2-set-up-your-net-project"></a>手順 2: .NET プロジェクトを設定する
 
 ローカル コンピューターから Windows コマンド プロンプトまたはターミナル ウィンドウを開きます。 次のセクションではコマンド プロンプトまたはターミナルからすべてのコマンドを実行します。 次の dotnet new コマンドを実行して、*bulk-import-demo* という名前の新しいアプリを作成します。 `--langVersion` パラメーターによって、作成されたプロジェクト ファイル内に *LangVersion* プロパティが設定されます。
 
@@ -72,7 +72,7 @@ Azure portal から [Azure Cosmos DB SQL API アカウントを作成](create-co
    Time Elapsed 00:00:34.17
    ```
 
-## <a name="step-3-add-the-azure-cosmos-db-package"></a>手順 3:Azure Cosmos DB パッケージを追加する
+## <a name="step-3-add-the-azure-cosmos-db-package"></a>手順 3: Azure Cosmos DB パッケージを追加する
 
 アプリケーション ディレクトリ内で、dotnet add package コマンドを使用して .NET Core 用の Azure Cosmos DB クライアント ライブラリをインストールします。
 
@@ -80,7 +80,7 @@ Azure portal から [Azure Cosmos DB SQL API アカウントを作成](create-co
    dotnet add package Microsoft.Azure.Cosmos
    ```
 
-## <a name="step-4-get-your-azure-cosmos-account-credentials"></a>手順 4:Azure Cosmos アカウントの資格情報を取得する
+## <a name="step-4-get-your-azure-cosmos-account-credentials"></a>手順 4: Azure Cosmos アカウントの資格情報を取得する
 
 サンプル アプリケーションは、Azure Cosmos アカウントに対する認証を行う必要があります。 認証するには、Azure Cosmos アカウントの資格情報をアプリケーションに渡す必要があります。 次の手順に従って、Azure Cosmos アカウントの資格情報を取得します。
 
@@ -90,7 +90,7 @@ Azure portal から [Azure Cosmos DB SQL API アカウントを作成](create-co
 
 Azure Cosmos DB Emulator を使用している場合は、[こちらの記事からエミュレーターの資格情報](local-emulator.md#authenticate-requests)を取得してください。
 
-## <a name="step-5-initialize-the-cosmosclient-object-with-bulk-execution-support"></a>手順 5:一括実行のサポートを適用して CosmosClient オブジェクトを初期化する
+## <a name="step-5-initialize-the-cosmosclient-object-with-bulk-execution-support"></a>手順 5: 一括実行のサポートを適用して CosmosClient オブジェクトを初期化する
 
 生成された `Program.cs` ファイルをコード エディターで開きます。 一括実行を有効にした CosmosClient の新しいインスタンスを作成し、それを使用して Azure Cosmos DB に対して操作を実行します。 
 
@@ -112,7 +112,7 @@ Azure Cosmos DB Emulator を使用している場合は、[こちらの記事か
         private const string AuthorizationKey = "<your-account-key>";
         private const string DatabaseName = "bulk-tutorial";
         private const string ContainerName = "items";
-        private const int ItemsToInsert = 300000;
+        private const int AmountToInsert = 300000;
 
         static async Task Main(string[] args)
         {
@@ -131,7 +131,7 @@ Azure Cosmos DB Emulator を使用している場合は、[こちらの記事か
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Initialize)]
 
-## <a name="step-6-populate-a-list-of-concurrent-tasks"></a>手順 6:同時実行タスクのリストを設定する
+## <a name="step-6-populate-a-list-of-concurrent-tasks"></a>手順 6: 同時実行タスクのリストを設定する
 
 一括実行のサポートを利用するには、データのソースと実行する操作に基づいて非同期タスクのリストを作成し、`Task.WhenAll` を使用してそれらを同時に実行します。
 まず、"Bogus" データを使用して、データ モデルから項目のリストを生成します。 実際のアプリケーションでは、項目は目的のデータ ソースから取得されます。
@@ -150,20 +150,17 @@ Azure Cosmos DB Emulator を使用している場合は、[こちらの記事か
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Bogus)]
 
-項目を読み取り、`System.Text.Json` クラスを使用してそれらをストリーム インスタンスにシリアル化します。 自動生成されたデータの性質により、データをストリームとしてシリアル化します。 項目インスタンスを直接使用することもできますが、それらをストリームに変換することによって、CosmosClient でストリーム API のパフォーマンスを活用できます。 通常、パーティション キーがわかっていれば、データを直接使用できます。 
-
-
-データをストリーム インスタンスに変換するには、`Main` メソッド内で、コンテナーを作成した直後に次のコードを追加します。
+ヘルパー関数を使用して、操作するドキュメントのリストを初期化します。
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Operations)]
 
-次に、データ ストリームを使用して同時実行タスクを作成し、タスク リストを設定して項目をコンテナーに挿入します。 この操作を実行するには、`Program` クラスに次のコードを追加します。
+次に、ドキュメントのリストを使用して同時実行タスクを作成し、タスク リストを設定して項目をコンテナーに挿入します。 この操作を実行するには、`Program` クラスに次のコードを追加します。
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=ConcurrentTasks)]
 
 概要セクションで説明したように、これらの同時ポイント操作はすべてまとめて (つまり一括で) 実行されます。
 
-## <a name="step-7-run-the-sample"></a>手順 7:サンプルを実行する
+## <a name="step-7-run-the-sample"></a>手順 7: サンプルを実行する
 
 サンプルは、`dotnet` コマンドで簡単に実行できます。
 

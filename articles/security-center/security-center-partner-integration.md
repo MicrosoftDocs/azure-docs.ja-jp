@@ -2,23 +2,18 @@
 title: Azure Security Center でのセキュリティ ソリューションの統合 | Microsoft Docs
 description: Azure Security Center とパートナーの統合によって Azure リソースの全体的なセキュリティを強化する方法について説明します。
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
 ms.topic: conceptual
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/10/2020
 ms.author: memildin
-ms.openlocfilehash: ecfb4bdbd523dd1514333a2185186eab0a7e4aaa
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ff23a1fa4b631fc10163f22d94ccdbd8cbe657c2
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032679"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099252"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -39,7 +34,7 @@ Azure Defender のお客様が利用できる組み込みのスキャナーな�
 
 Security Center では、次の脆弱性分析も提供しています：
 
-* SQL データベース - 「[脆弱性評価ダッシュボードで脆弱性評価レポートの探索をする](defender-for-sql-usage.md#explore-vulnerability-assessment-reports) 」を参照する
+* SQL データベース - 「[脆弱性評価ダッシュボードで脆弱性評価レポートの探索をする](defender-for-sql-on-machines-vulnerability-assessment.md#explore-vulnerability-assessment-reports) 」を参照する
 * Azure Container Registry イメージ - 「[コンテナー レジストリ用の Azure Defender を使用してイメージの脆弱性をスキャンする](defender-for-container-registries-usage.md)」を参照する
 
 ## <a name="how-security-solutions-are-integrated"></a>セキュリティ ソリューションを統合するしくみ
@@ -88,8 +83,7 @@ Security Center からデプロイされている Azure セキュリティ ソ�
 Security Center は、Azure で実行されていても Security Center に接続されていないセキュリティ ソリューションを自動的に検出し、 **[検出されたソリューション]** セクションにそのソリューションを表示します。 これらのソリューションには、[Azure AD Identity Protection](../active-directory/identity-protection/overview-identity-protection.md) などの Azure ソリューションや、パートナー ソリューションが含まれます。
 
 > [!NOTE]
-> 検出されたソリューション機能に対して、サブスクリプション レベルで **Azure Defender** を有効にします。 価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
->
+> 検出されたソリューション機能に対して、サブスクリプション レベルで **Azure Defender** を有効にします。 詳細については、「[クイックスタート: Azure Defender を有効にする](enable-azure-defender.md)」を参照してください。
 
 ソリューションの下の **[接続]** を選択して、Security Center と統合し、セキュリティのアラートが通知されるようにします。
 
@@ -103,7 +97,4 @@ Security Center は、Azure で実行されていても Security Center に接�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Security Center でパートナー ソリューションを統合する方法について説明しました。 関連情報については、次の記事をご覧ください。
-
-* [Security Center のデータを連続的にエクスポートする](continuous-export.md)。 Azure Sentinel または任意の他の SIEM との統合を設定する方法について説明しています。
-* [Security Center でのセキュリティ正常性の監視](security-center-monitoring.md)。 Azure リソースの正常性を監視する方法について説明しています。
+この記事では、Security Center でパートナー ソリューションを統合する方法について説明しました。 Azure Sentinel またはその他の SIEM との統合をセットアップする方法については、「[Security Center のデータを連続的にエクスポートする](continuous-export.md)」を参照してください。

@@ -8,22 +8,22 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: 0dbf418d0a673dd0799f0f638e454c484f837fd7
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: fc3662d8198e6ab6ab215ac1e9e8eac585f4250b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516608"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104801589"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での Lucence クエリ構文
 
 クエリを作成する場合、ワイルドカード、あいまい検索、近接検索、正規表現など、特殊なクエリ フォームに対して [Lucene Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 構文を選択できます。 Lucene Query Parser 構文の多くは、[Azure Cognitive Search でそのまま実装](search-lucene-query-architecture.md)されています。ただし、*範囲検索* は例外で、これは **`$filter`** 式を介して構築されます。 
 
-完全な Lucene 構文は、[ドキュメントの検索 (REST API)](/rest/api/searchservice/search-documents) 要求の **`search`** パラメーターで渡されるクエリ式に使用されます。同じ要求の [ **`$filter`**](search-filters.md) および [ **`$orderby`** ](search-query-odata-orderby.md) に使用される [OData 構文](query-odata-filter-orderby-syntax.md)と混同しないでください。 OData パラメーターにはさまざまな構文があり、クエリの作成や文字列のエスケープなどを行うための規則があります。
+完全な Lucene 構文を使用するには、queryType を "full" に設定し、ワイルドカード、あいまい検索、または完全な構文でサポートされている他のクエリ形式のいずれかのクエリ式を渡します。 REST では、クエリ式は [ドキュメントの検索 (REST API)](/rest/api/searchservice/search-documents) 要求の **`search`** パラメーターで指定されます。
 
 ## <a name="example-full-syntax"></a>例 (完全な構文)
 
-完全な Lucene を指定するように、 **`queryType`** パラメーターを設定します。 次の例では、フィールド内の検索と用語ブーストを呼び出します。 このクエリは、カテゴリ フィールドに "budget" という用語が含まれているホテルを検索します。 "recently renovated (最近改修済み)" というフレーズを含むすべてのドキュメントは、用語ブースト値 (3) の結果、高いランキングになります。  
+次の例は、完全な構文を使用して構成された検索要求です。 この特定の例では、フィールド内検索と用語ブーストが示されています。 カテゴリ フィールドに "budget" という用語が含まれているホテルを検索します。 "recently renovated (最近改修済み)" というフレーズを含むすべてのドキュメントは、用語ブースト値 (3) の結果、高いランキングになります。  
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -34,9 +34,9 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 }
 ```
 
-**`searchMode`** パラメーターは、この例で関連しています。 クエリに演算子があるときは、通常 `searchMode=all` を設定して、*すべて* の条件が確実に一致するようにします。  
+どのクエリの種類にも固有ではありませんが、この例では **`searchMode`** パラメーターが関連しています。 クエリに演算子があるときは、通常 `searchMode=all` を設定して、*すべて* の条件が確実に一致するようにします。  
 
-その他の例については、「[Lucene クエリ構文例](search-query-lucene-examples.md)」をご覧ください。 クエリ要求とパラメーターの詳細については、「[ドキュメントの検索 (REST API)](/rest/api/searchservice/Search-Documents)」をご覧ください。
+その他の例については、「[Lucene クエリ構文例](search-query-lucene-examples.md)」をご覧ください。 searchMode を含む、クエリ要求とパラメーターの詳細については、[ドキュメントの検索 (REST API)](/rest/api/searchservice/Search-Documents) に関するページを参照してください。
 
 ## <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a> 構文の基礎  
 

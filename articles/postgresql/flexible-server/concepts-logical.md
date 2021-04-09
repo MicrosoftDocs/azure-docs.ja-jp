@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: b6689220873aaeb65337ba480e346e5d2c8020ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91707865"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでの論理レプリケーションと論理デコード
@@ -53,8 +53,8 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、Postgres
 
 ### <a name="logical-replication"></a>論理レプリケーション
 論理レプリケーションでは、"パブリッシャー" と "サブスクライバー" という用語を使用します。 
-* パブリッシャーは、データの送信**元**である PostgreSQL データベースです。 
-* サブスクライバーは、データの送信**先**である PostgreSQL データベースです。
+* パブリッシャーは、データの送信 **元** である PostgreSQL データベースです。 
+* サブスクライバーは、データの送信 **先** である PostgreSQL データベースです。
 
 論理レプリケーションを試すために使用できるサンプル コードを次に示します。
 
@@ -172,7 +172,7 @@ pg_replication_slots ビューの「active」列には、コンシューマー�
 SELECT * FROM pg_replication_slots;
 ```
 
-値が大きくなって通常のしきい値を超えたときに通知を受け取るには、フレキシブル サーバーのメトリック **Maximum Used Transaction IDs (使用されるトランザクション ID の最大数)** および **Storage Used (使用済みストレージ)** に[アラートを設定します](howto-alert-on-metrics.md)。 
+値が大きくなって通常のしきい値を超えたときに通知を受け取るには、フレキシブル サーバーのメトリック **Maximum Used Transaction IDs (使用されるトランザクション ID の最大数)** および **Storage Used (使用済みストレージ)** に [アラートを設定します](howto-alert-on-metrics.md)。 
 
 ## <a name="limitations"></a>制限事項
 * **読み取りレプリカ** - Azure Database for PostgreSQL の読み取りレプリカは、現在のところ、フレキシブル サーバーではサポートされていません。

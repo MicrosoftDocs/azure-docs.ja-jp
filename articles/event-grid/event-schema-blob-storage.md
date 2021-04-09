@@ -4,10 +4,10 @@ description: Blob Storage イベントに関して Azure Event Grid に用意さ
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: 893e86ecf220ceb327eed9c6f95be4c7ed1afb1c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100363646"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Blob Storage
@@ -512,7 +512,7 @@ BLOB ストレージ アカウントに階層型名前空間がある場合、�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -527,7 +527,7 @@ BLOB ストレージ アカウントに階層型名前空間がある場合、�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `source` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -541,7 +541,7 @@ BLOB ストレージ アカウントに階層型名前空間がある場合、�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `api` | string | イベントのトリガーとなった操作。 |
 | `clientRequestId` | string | ストレージ API 操作に対するクライアントで提供された要求 ID です。 この ID は、ログの "client-request-id" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、クライアント要求で "x-ms-client-request-id" ヘッダーを使って提供できます。 「[Storage Analytics のログの形式](/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。 |

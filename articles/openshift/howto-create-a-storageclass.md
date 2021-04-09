@@ -9,10 +9,10 @@ ms.author: b-grodel
 keywords: aro、openshift、az aro、red hat、cli、azure file
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 039aa3cce6615e71960db810ae383d22d7bcd909
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102212979"
 ---
 # <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 で Azure Files StorageClass を作成する

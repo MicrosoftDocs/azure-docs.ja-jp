@@ -6,10 +6,10 @@ ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: devx-track-java
 ms.openlocfilehash: f0e007fe8930b30cee1c95159d7e964e3792449f
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96905963"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>IntelliJ IDEA を使用して ARM テンプレートを作成およびデプロイする

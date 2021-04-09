@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: 9d81419721e94a2e181f094c0e0e64b1b23544a8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93073521"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
@@ -34,21 +34,21 @@ DATE_BUCKET (datePart, number, date, origin)
 
 *datePart*
 
-"number" パラメーターで使用される " *日付* " の部分。 例: Year、month、minute、second など。
+"number" パラメーターで使用される "*日付*" の部分。 例: Year、month、minute、second など。
 
 > [!NOTE]
-> `DATE_BUCKET` では、 *datepPart* 引数に対し、ユーザー定義変数に相当するものは受け付けられません。
+> `DATE_BUCKET` では、*datepPart* 引数に対し、ユーザー定義変数に相当するものは受け付けられません。
   
 |*datePart*|省略形|  
 |---|---|
-|**day**|**dd** 、 **d**|  
-|**week**|**wk** 、 **ww**| 
-|**month**|**mm** 、 **m**|
-|**quarter**|**qq** 、 **q**|  
-|**year**|**yy** 、 **yyyy**|  
+|**day**|**dd**、**d**|  
+|**week**|**wk**、**ww**| 
+|**month**|**mm**、**m**|
+|**quarter**|**qq**、**q**|  
+|**year**|**yy**、**yyyy**|  
 |**hour**|**hh**|  
-|**minute**|**mi** 、 **n**|  
-|**second**|**ss** 、 **s**|  
+|**minute**|**mi**、**n**|  
+|**second**|**ss**、**s**|  
 |**millisecond**|**ms**|  
 
 *number*
@@ -125,11 +125,11 @@ Select DATE_BUCKET(wk, 5, @date, @origin)
 
 ## <a name="datepart-argument"></a>datepart 引数
 
-**dayofyear** 、 **day** 、および **weekday** は同じ値を返します。 *-各日付構成要素とその省略形は、同じ値を返します。*
+**dayofyear**、**day**、および **weekday** は同じ値を返します。 *-各日付構成要素とその省略形は、同じ値を返します。*
   
 ## <a name="number-argument"></a>number 引数
 
-*number* 引数は、正の **int** 値の範囲を超えることはできません。 次のステートメントでは、 *number* の引数が **int** の範囲を 1 超えています。 以下のステートメントからは、次のメッセージが返されます: "`Msg 8115, Level 16, State 2, Line 2. Arithmetic overflow error converting expression to data type int."`
+*number* 引数は、正の **int** 値の範囲を超えることはできません。 次のステートメントでは、*number* の引数が **int** の範囲を 1 超えています。 以下のステートメントからは、次のメッセージが返されます: "`Msg 8115, Level 16, State 2, Line 2. Arithmetic overflow error converting expression to data type int."`
   
 ```sql
 declare @date datetime2 = '2020-04-30 00:00:00'
@@ -196,11 +196,11 @@ Seconds 2020-04-30 21:21:21.0000000
 
 ### <a name="b-using-expressions-as-arguments-for-the-number-and-date-parameters"></a>B. number パラメーターと date パラメーターの引数として式を使用する
 
-次の例では、 *number* パラメーターと *date* パラメーターの引数として、さまざまな種類の式を使用しています。 これらの例は、"AdventureWorksDW2017" データベースを使用して構築されています。
+次の例では、*number* パラメーターと *date* パラメーターの引数として、さまざまな種類の式を使用しています。 これらの例は、"AdventureWorksDW2017" データベースを使用して構築されています。
   
 #### <a name="specifying-user-defined-variables-as-number-and-date"></a>number および date にユーザー定義変数を指定する  
 
-次の例では、 *number* と *date* の引数としてユーザー定義変数を指定しています。
+次の例では、*number* と *date* の引数としてユーザー定義変数を指定しています。
   
 ```sql
 DECLARE @days int = 365,
@@ -250,7 +250,7 @@ ShippedDateBucket           SumOrderQuantity SumUnitPrice
 
 #### <a name="specifying-scalar-system-function-as-date"></a>スカラー システム関数を date として指定する
 
-この例では、 *date* の `SYSDATETIME` を指定しています。 返される厳密な値は、ステートメント実行の日時によって変わります。
+この例では、*date* の `SYSDATETIME` を指定しています。 返される厳密な値は、ステートメント実行の日時によって変わります。
   
 ```sql
 SELECT Date_Bucket(wk, 10, SYSDATETIME());  
@@ -267,7 +267,7 @@ SELECT Date_Bucket(wk, 10, SYSDATETIME());
 
 #### <a name="specifying-scalar-subqueries-and-scalar-functions-as-number-and-date"></a>number および date にスカラー サブクエリやスカラー関数を指定する
 
-次の例では、 *number* と *date* の引数として、スカラー サブクエリ (`MAX(OrderDate)`) を使用しています。 `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` は、値リストから *number* 引数を選択する方法を紹介するために用意した、数値パラメーターの架空の引数です。
+次の例では、*number* と *date* の引数として、スカラー サブクエリ (`MAX(OrderDate)`) を使用しています。 `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` は、値リストから *number* 引数を選択する方法を紹介するために用意した、数値パラメーターの架空の引数です。
   
 ```sql
 SELECT DATE_BUCKET(week,(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100),  
@@ -284,7 +284,7 @@ SELECT Date_Bucket(week,(10/2), SYSDATETIME());
 
 #### <a name="specifying-an-aggregate-window-function-as-number"></a>number として集計関数を指定する
 
-次の例では、 *number* の引数として集計関数を使用しています。
+次の例では、*number* の引数として集計関数を使用しています。
   
 ```sql
 Select 

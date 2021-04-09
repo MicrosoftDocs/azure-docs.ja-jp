@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: 1d4e6f0d6a0242cda919364965a61e4314927d87
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98945588"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Apache Ambari REST API を使用した HDInsight クラスターの管理
@@ -30,7 +30,7 @@ Apache Ambari は、[REST API](https://github.com/apache/ambari/blob/trunk/ambar
 
 * jq。コマンド ライン JSON プロセッサです。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)に関するページを参照してください。
 
-* Windows PowerShell。  または、Bash を使用することもできます。
+* Windows PowerShell。  または、Bash を使うこともできます。
 
 ## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Ambari Rest API のベース URI
 

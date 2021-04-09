@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: rohink
 ms.openlocfilehash: 51e17812e1116f1e625685d5a818c18e25cdb2da
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94965801"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Azure Portal で DNS ゾーンを管理する方法
@@ -31,32 +31,32 @@ ms.locfileid: "94965801"
 ## <a name="create-a-dns-zone"></a>DNS ゾーンの作成
 
 1. Azure portal にサインインする
-2. [ハブ] メニューで、 **[リソースの作成] > [ネットワーキング] > [DNS ゾーン]** に移動して **[DNS ゾーンの作成]** ブレードを開きます。
+2. [ハブ] メニューで、**[リソースの作成] > [ネットワーキング] > [DNS ゾーン]** に移動して **[DNS ゾーンの作成]** ブレードを開きます。
 
     ![[DNS ゾーン]](./media/dns-operations-dnszones-portal/openzone650.png)
 
-4. **[DNS ゾーンの作成]** ブレードで次の値を入力してから、 **[作成]** をクリックします。
+4. **[DNS ゾーンの作成]** ブレードで次の値を入力してから、**[作成]** をクリックします。
 
 
    | **設定** | **Value** | **詳細** |
    |---|---|---|
-   |**Name**|contoso.com|DNS ゾーンの名前です。|
-   |**サブスクリプション**|<該当するサブスクリプション>|DNS ゾーンを作成するサブスクリプションを選択します。|
-   |**リソース グループ**|**[新規作成]** : contosoDNSRG|リソース グループを作成します。 選択したサブスクリプション内で一意となるリソース グループ名を使用してください。 リソース グループについて詳しくは、[Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) の概要に関する記事をご覧ください。|
-   |**Location**|米国西部||
+   |**名前**|contoso.com|DNS ゾーンの名前です。|
+   |**[サブスクリプション]**|<該当するサブスクリプション>|DNS ゾーンを作成するサブスクリプションを選択します。|
+   |**リソース グループ**|**[新規作成]**: contosoDNSRG|リソース グループを作成します。 選択したサブスクリプション内で一意となるリソース グループ名を使用してください。 リソース グループについて詳しくは、[Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) の概要に関する記事をご覧ください。|
+   |**場所**|米国西部||
 
 > [!NOTE]
 > リソース グループの設定はリソース グループの場所を指定するものであり、DNS ゾーンには影響しません。 DNS ゾーンの場所は常に "グローバル" であり、それは表示されません。
 
 ## <a name="list-dns-zones"></a>DNS ゾーンの一覧表示
 
-Azure Portal で、 **[その他のサービス]**  >  **[ネットワーク]**  >  **[DNS ゾーン]** の順に移動します。 各 DNS ゾーンは独自のリソースであり、レコード セットやネーム サーバーの数などの情報をこのビューから表示できます。 **[NAME SERVERS] (ネーム サーバー)** 列は、既定のビューに含まれていません。 それを追加するには、 **[列]** をクリックし、 **[Name servers] (ネーム サーバー)** を選択して **[完了]** をクリックします。
+Azure Portal で、 **[その他のサービス]**  >  **[ネットワーク]**  >  **[DNS ゾーン]** の順に移動します。 各 DNS ゾーンは独自のリソースであり、レコード セットやネーム サーバーの数などの情報をこのビューから表示できます。 **[NAME SERVERS] (ネーム サーバー)** 列は、既定のビューに含まれていません。 それを追加するには、**[列]** をクリックし、**[Name servers] (ネーム サーバー)** を選択して **[完了]** をクリックします。
 
 ![DNS ゾーンの一覧表示](./media/dns-operations-dnszones-portal/listzones.png)
 
 ## <a name="delete-a-dns-zone"></a>DNS ゾーンの削除
 
-Portal で DNS ゾーンに移動します。 **[DNS ゾーン]** ブレードで、 **[ゾーンを削除する]** をクリックします。 その後、DNS ゾーンを削除することを確認するよう求められます。 DNS ゾーンを削除すると、そのゾーンに含まれているレコードもすべて削除されます。
+Portal で DNS ゾーンに移動します。 **[DNS ゾーン]** ブレードで、**[ゾーンを削除する]** をクリックします。 その後、DNS ゾーンを削除することを確認するよう求められます。 DNS ゾーンを削除すると、そのゾーンに含まれているレコードもすべて削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 

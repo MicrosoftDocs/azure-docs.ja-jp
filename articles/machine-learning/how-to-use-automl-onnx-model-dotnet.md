@@ -11,10 +11,10 @@ ms.service: machine-learning
 ms.subservice: core
 ms.custom: how-to, automl
 ms.openlocfilehash: 4fb147dc5c57c3a98607a025f566fa583bf87460
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93358815"
 ---
 # <a name="make-predictions-with-an-automl-onnx-model-in-net"></a>.NET で AutoML ONNX モデルを使用して予測を行う
@@ -42,7 +42,7 @@ ONNX は AI モデル用のオープンソースの形式です。 ONNX は、�
     dotnet new console -o AutoMLONNXConsoleApp
     ```
 
-1. ターミナルで、 *AutoMLONNXConsoleApp* ディレクトリに移動します。
+1. ターミナルで、*AutoMLONNXConsoleApp* ディレクトリに移動します。
 
     ```bash
     cd AutoMLONNXConsoleApp
@@ -50,7 +50,7 @@ ONNX は AI モデル用のオープンソースの形式です。 ONNX は、�
 
 ## <a name="add-software-packages"></a>ソフトウェア パッケージを追加する
 
-1. .NET Core CLI を使用して、 **Microsoft.ML** 、 **Microsoft.ML.OnnxRuntime** 、 **Microsoft.ML.OnnxTransformer** の各 NuGet パッケージをインストールします。
+1. .NET Core CLI を使用して、**Microsoft.ML**、**Microsoft.ML.OnnxRuntime**、**Microsoft.ML.OnnxTransformer** の各 NuGet パッケージをインストールします。
 
     ```dotnetcli
     dotnet add package Microsoft.ML
@@ -122,7 +122,7 @@ Netron などのツールを使用して、モデルの入力と出力を調べ�
 
 1. Netron を開きます。
 1. 上部のメニュー バーで **[File]\(ファイル\) > [Open]\(開く\)** を選択し、ファイル ブラウザーを使用してモデルを選択します。
-1. モデルが開きます。 たとえば、 *automl-model.onnx* モデルの構造は次のようになります。
+1. モデルが開きます。 たとえば、*automl-model.onnx* モデルの構造は次のようになります。
 
     :::image type="content" source="media/how-to-use-automl-onnx-model-dotnet/netron-automl-onnx-model.png" alt-text="Netron AutoML ONNX モデル":::
 

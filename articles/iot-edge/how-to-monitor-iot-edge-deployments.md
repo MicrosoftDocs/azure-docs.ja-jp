@@ -10,14 +10,16 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 45df700cc1772250e42a0e007fb4ea91b49471ba
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f4f2f8522f6d3d1039673803d946323deb485db9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684205"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103200264"
 ---
 # <a name="monitor-iot-edge-deployments"></a>IoT Edge デプロイの監視
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge には、IoT Edge デバイスにデプロイされているモジュールに関するリアルタイムの情報を監視するためのレポート機能が用意されています。 IoT Hub サービスでは、デバイスからステータスを取得し、オペレーターが利用できるようにします。 また、自動デプロイや多層デプロイなどの[大規模なデプロイ](module-deployment-monitoring.md)でも監視は重要です。
 

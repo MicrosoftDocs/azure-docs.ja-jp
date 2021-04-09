@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 09/14/2020
 ms.author: apimpm
 ms.openlocfilehash: eb2c42d26a85a07518a018ba5b8817f13d3cd17f
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90707067"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-powershell"></a>クイック スタート」を参照してください。PowerShell を使用して新しい Azure API Management サービス インスタンスを作成する

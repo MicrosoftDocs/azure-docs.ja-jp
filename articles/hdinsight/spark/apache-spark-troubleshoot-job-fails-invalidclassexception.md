@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/29/2019
 ms.openlocfilehash: 0b0889ac1e71ce33406e89ead62370a0c0168763
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98929252"
 ---
 # <a name="apache-spark-job-fails-with-invalidclassexception-class-version-mismatch-in-azure-hdinsight"></a>Azure HDInsight で、Apache Spark ジョブが InvalidClassException で失敗し、クラスバージョンが一致しない
@@ -36,7 +36,7 @@ org.apache.commons.lang3.time.FastDateFormat; local class incompatible: stream c
 > [!TIP]
 > ライブラリのシェーディングとは、その内容を独自の jar に配置し、パッケージを変更することです。 これは、ライブラリのパッケージ化とは異なり、再パッケージせずに独自の jar にライブラリを配置します。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解決方法
 
 jar を削除するか、カスタマイズした jar (AzureLogAppender) を再コンパイルし、[maven-shade-plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/class-relocation.html) を使用してクラスを再配置します。
 

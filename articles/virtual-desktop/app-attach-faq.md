@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 78c21e9515965f1c15315967f6a19a0df2838dc2
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 395c274630131c2ae5f451443913e1e69c7c422a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591197"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738703"
 ---
 # <a name="msix-app-attach-faq"></a>MSIX アプリ アタッチに関するごよくある質問
 
@@ -61,7 +61,7 @@ MSIX アプリ アタッチを使用するホスト プール内のすべての�
 
 ## <a name="can-i-use-msix-app-attach-for-http-or-https"></a>HTTP または HTTPs で MSIX アプリ アタッチを使用できますか。
 
-MSIX アプリ アタッチを使用するホスト プールに含まれているすべての VM に、MSIX イメージが格納されているファイル共有に対する読み取りアクセス許可が必要です。 Azure Files が使用されている場合は、RBAC と NTFS の両方のアクセス許可が付与されている必要があります。
+HTTP または HTTPs で MSIX アプリ アタッチを使用することは、現在サポートされていません。
 
 ## <a name="can-i-restage-the-same-msix-application"></a>同じ MSIX アプリケーションを再ステージングすることはできますか。
 
@@ -69,7 +69,7 @@ MSIX アプリ アタッチを使用するホスト プールに含まれてい�
 
 ## <a name="does-msix-app-attach-support-self-signed-certificates"></a>MSIX アプリ アタッチで自己署名証明書はサポートされていますか。
 
-HTTP または HTTPs で MSIX アプリ アタッチを使用することは、現在サポートされていません。
+はい。 MSIX アプリのアタッチを使用して自己署名アプリケーションをホストするすべてのセッション ホスト VM に、自己署名証明書をインストールする必要があります。
 
 
 ## <a name="next-steps"></a>次のステップ

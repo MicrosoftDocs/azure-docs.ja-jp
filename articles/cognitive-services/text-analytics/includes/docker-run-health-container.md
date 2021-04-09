@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 11/12/2020
 ms.author: aahi
 ms.openlocfilehash: af8fec56c32b52e2af584e59f08db6cc7129c9c5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98947578"
 ---
 ## <a name="install-the-container"></a>コンテナーをインストールする

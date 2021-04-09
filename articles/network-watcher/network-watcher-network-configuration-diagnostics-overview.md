@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2020
 ms.author: damendo
 ms.openlocfilehash: 5feef79a08789ad381b0c93cb938abd9effdfcc8
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102502010"
 ---
 # <a name="introduction-to-network-configuration-diagnostics-in-azure-network-watcher"></a>Azure Network Watcher のネットワーク構成診断の概要

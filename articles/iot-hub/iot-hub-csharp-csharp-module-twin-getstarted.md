@@ -10,10 +10,10 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: amqp, devx-track-csharp
 ms.openlocfilehash: daba400b9daadf464c4c125ad266745237e71367
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92142512"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>IoT Hub モジュール ID とモジュール ツイン (.NET) の概要
@@ -167,7 +167,7 @@ ms.locfileid: "92142512"
 
 これで、アプリケーションを実行できます。
 
-1. Visual Studio の**ソリューション エクスプローラー**でソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** を選択します。
+1. Visual Studio の **ソリューション エクスプローラー** でソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** を選択します。
 
 1. **[共通プロパティ]** の下の **[スタートアップ プロジェクト]** を選択します。
 

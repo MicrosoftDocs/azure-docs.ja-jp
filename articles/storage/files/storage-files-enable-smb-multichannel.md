@@ -8,10 +8,10 @@ ms.date: 11/16/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 2f867fa6d4b7e1d864a85106b5d957a53d38eb76
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101732542"
 ---
 # <a name="enable-smb-multichannel-on-a-filestorage-account-preview"></a>FileStorage アカウントで SMB マルチチャネルを有効にする (プレビュー) 

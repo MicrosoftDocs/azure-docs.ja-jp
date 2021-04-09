@@ -11,10 +11,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/25/2020
 ms.openlocfilehash: b917e3fc93c59de85c5236c18e31d7bbc9d891f0
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98065475"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>デザイナーの例外とエラー コード

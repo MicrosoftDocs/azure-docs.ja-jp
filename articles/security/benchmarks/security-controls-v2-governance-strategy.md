@@ -8,10 +8,10 @@ ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 277033e41ec7e02b89eca8cf74fe6854acb51cc1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101727024"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>セキュリティ コントロール V2:ガバナンスと戦略

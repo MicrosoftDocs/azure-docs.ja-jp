@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: 4f0ea55149fc8cfeeb6ef719d67346019b81078a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83744463"
 ---
 # <a name="set-up-an-email-address-as-your-verification-method"></a>メール アドレスを検証方法として設定する
@@ -87,7 +87,7 @@ ms.locfileid: "83744463"
 
     ![セキュリティ情報から電話番号メソッドを削除するためのリンク](media/security-info/securityinfo-myprofile-emaildelete.png)
 
-2. 確認ボックスで **[はい]** を選択して、**メール アドレス**を削除します。 電子メール アカウントを削除すると、セキュリティ情報から削除され、 **[セキュリティ情報]** ページから消去されます。
+2. 確認ボックスで **[はい]** を選択して、**メール アドレス** を削除します。 電子メール アカウントを削除すると、セキュリティ情報から削除され、 **[セキュリティ情報]** ページから消去されます。
 
 ## <a name="additional-security-info-methods"></a>追加のセキュリティ情報メソッド
 

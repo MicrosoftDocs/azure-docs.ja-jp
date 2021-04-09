@@ -4,10 +4,10 @@ description: Azure Service Fabric では、Service Fabric を使用して既存�
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84691290"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric での Docker Compose のデプロイメントのサポート (プレビュー)
@@ -127,8 +127,8 @@ sfctl compose upgrade-status --deployment-name TestContainerApp
 ### <a name="ports-section"></a>ポート セクション
 
 Service Fabric サービス リスナーによって使用されるポート セクションでは、http または https プロトコルを指定します。 これにより、エンドポイント プロトコルがネーム サービスによって正常に公開され、リバース プロキシが要求の転送を許可されるようになります。
-* セキュリティで保護されていない Service Fabric Compose サービスをルーティングするには、 **/http** を指定します。 例 - **"80:80/http"** 。
-* セキュリティで保護された Service Fabric Compose サービスをルーティングするには、 **/https** を指定します。 例 - **"443:443/https"** 。
+* セキュリティで保護されていない Service Fabric Compose サービスをルーティングするには、**/http** を指定します。 例 - **"80:80/http"**。
+* セキュリティで保護された Service Fabric Compose サービスをルーティングするには、**/https** を指定します。 例 - **"443:443/https"**。
 
 > [!NOTE]
 > /http および /https ポート セクションの構文は、適切な Service Fabric リスナーの URL を登録する Service Fabric に固有です。  Docker Compose ファイルの構文がプログラムによって検証される場合、検証エラーが発生する可能性があります。

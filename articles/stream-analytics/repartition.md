@@ -4,15 +4,15 @@ description: この記事では、パーティション再分割を使用して�
 ms.service: stream-analytics
 author: sidramadoss
 ms.author: sidram
-ms.date: 09/19/2019
+ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 72f81a0eac81acdca71c8ed81695789c417898ca
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 95749f2acea6b605cfdba5a4f3d4f5526e751c5a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014197"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182538"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>パーティション再分割を使用して Azure Stream Analytics での処理を最適化する
 
@@ -23,25 +23,47 @@ ms.locfileid: "98014197"
 * 入力ストリームのパーティション キーを制御できない。
 * ソースが入力を複数のパーティションに分散させ、それらを後でマージする必要がある。
 
-Event Hubs の **PartitionId** など、自然な入力スキームに従ってシャード化されていないストリームのデータを処理する場合は、パーティション再分割または再シャッフルが必要です。 パーティションを再分割すると、各シャードを個別に処理できるため、ストリーミング パイプラインを直線的にスケールアウトできます。
+Event Hubs の **PartitionId** など、自然な入力スキームに従ってシャード化されていないストリームのデータを処理する場合は、パーティション再分割または再シャッフルが必要です。 パーティションを再分割すると、各シャードを個別に処理できるため、ストリーミング パイプラインを直線的にスケールアウトできます。 
 
 ## <a name="how-to-repartition"></a>パーティションを再分割する方法
+入力をパーティション再分割するには、次の 2 つの方法があります。
+1. パーティション再分割を行う別の Stream Analytics ジョブを使用する
+2. パーティション再分割してからカスタム分析ロジックを行う 1 つのジョブを使用する
 
-パーティションを再分割するには、クエリの **PARTITION BY** ステートメントの後にキーワード **INTO** を使用します。 次の例では、**DeviceID** によってデータをパーティション数 10 に分割します。 **DeviceID** のハッシュを使用して、どのパーティションがどのサブストリームを受け入れるかを決定します。 出力がパーティション分割された書き込みをサポートし、10 個のパーティションがあると仮定して、データはパーティション分割されたストリームごとに個別にフラッシュされます。
-
+### <a name="creating-a-separate-stream-analytics-job-to-repartition-input"></a>入力をパーティション再分割するための別の Stream Analytics ジョブを作成する
+入力を読み取り、パーティション キーを使用してイベント ハブ出力への書き込みを行うジョブを作成できます。 このイベント ハブは、分析ロジックを実装する別の Stream Analytics ジョブの入力として機能します。 ジョブにこのイベント ハブ出力を構成する場合は、Stream Analytics でデータをパーティション再分割するときに使用するパーティション キーを指定する必要があります。 
 ```sql
+-- For compat level 1.2 or higher
 SELECT * 
 INTO output
 FROM input
-PARTITION BY DeviceID 
-INTO 10
+
+--For compat level 1.1 or lower
+SELECT *
+INTO output
+FROM input PARTITION BY PartitionId
+```
+
+### <a name="repartition-input-within-a-single-stream-analytics-job"></a>単一の Stream Analytics ジョブ内での入力のパーティション再分割
+最初に入力を再分割するステップをクエリに導入し、これをクエリ内の他のステップで使用することもできます。 たとえば、**DeviceId** に基づいて入力をパーティション再分割する場合、クエリは次のようになります。
+```sql
+WITH RepartitionedInput AS 
+( 
+SELECT * 
+FROM input PARTITION BY DeviceID
+)
+
+SELECT DeviceID, AVG(Reading) as AvgNormalReading  
+INTO output
+FROM RepartitionedInput  
+GROUP BY DeviceId, TumblingWindow(minute, 1)  
 ```
 
 次のクエリ例では、パーティション再分割された 2 つのデータ ストリームを結合します。 パーティション再分割された 2 つのデータ ストリームを結合する場合、これらのストリームのパーティション キーとカウントが同じである必要があります。 結果は、同じパーティション スキームを持つストリームです。
 
 ```sql
-WITH step1 AS (SELECT * FROM input1 PARTITION BY DeviceID INTO 10),
-step2 AS (SELECT * FROM input2 PARTITION BY DeviceID INTO 10)
+WITH step1 AS (SELECT * FROM input1 PARTITION BY DeviceID),
+step2 AS (SELECT * FROM input2 PARTITION BY DeviceID)
 
 SELECT * INTO output FROM step1 PARTITION BY DeviceID UNION step2 PARTITION BY DeviceID
 ```

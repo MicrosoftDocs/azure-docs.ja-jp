@@ -3,26 +3,47 @@ title: Spring Boot アプリで動的な構成を使用する
 titleSuffix: Azure App Configuration
 description: Spring Boot アプリの構成データを動的に更新する方法について説明します
 services: azure-app-configuration
-author: AlexandraKemperMS
+author: mrm9084
 ms.service: azure-app-configuration
 ms.topic: tutorial
-ms.date: 08/06/2020
+ms.date: 12/09/2020
 ms.custom: devx-track-java
-ms.author: alkemper
-ms.openlocfilehash: c32e928bd4a83b4884c99e3ec3a9c647f5433e87
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.author: mametcal
+ms.openlocfilehash: 076ab0bb7dbc85a31b626a24d977e6fea558143e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929159"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102636540"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>チュートリアル:Java Spring アプリで動的構成を使用する
 
-App Configuration Spring Boot クライアント ライブラリでは、アプリケーションを再起動せずに、必要に応じて一連の構成設定を更新できます。 クライアント ライブラリでは、構成ストアへの呼び出しが多くなりすぎないようにするため、個々の設定がキャッシュされます。 構成ストア内の値が変更されたとしても、キャッシュされた値の有効期限が切れるまでは、更新操作で値は更新されません。 各要求の既定の有効期限は 30 秒です。 その設定は、必要に応じてオーバーライドできます。
+App Configuration には、Spring  用のライブラリが 2 つあります。 `spring-cloud-azure-appconfiguration-config` は Spring Boot を必要とし、`spring-cloud-context` に依存します。 `spring-cloud-azure-appconfiguration-config-web` は Spring Boot と共に Spring Web を必要とします。 どちらのライブラリも、更新された構成値をチェックするための手動トリガーをサポートしています。 `spring-cloud-azure-appconfiguration-config-web` によって、構成の更新の自動チェックに対するサポートも追加されます。
 
-`AppConfigurationRefresh` の `refreshConfigurations()` メソッドを呼び出すことで、更新された設定をオンデマンドでチェックすることができます。
+更新により、アプリケーションを再起動することなく構成値を更新できますが、`@RefreshScope` のすべての Bean が再作成されることになります。 クライアント ライブラリは、現在読み込まれている構成のハッシュ ID をキャッシュすることで、構成ストアへの過剰な呼び出しが行われないようにします。 構成ストア内の値が変更されたとしても、キャッシュされた値の有効期限が切れるまでは、更新操作で値は更新されません。 各要求の既定の有効期限は 30 秒です。 その設定は、必要に応じてオーバーライドできます。
 
-または、`spring-web` に依存する `spring-cloud-azure-appconfiguration-config-web` パッケージを使用して自動更新を処理することもできます。
+`spring-cloud-azure-appconfiguration-config-web` の自動更新は、アクティビティ (特に Spring Web の `ServletRequestHandledEvent`) に基づいてトリガーされます。 `ServletRequestHandledEvent` がトリガーされない場合は、キャッシュの有効期限が切れても、`spring-cloud-azure-appconfiguration-config-web` の自動更新によって更新がトリガーされることはありません。
+
+## <a name="use-manual-refresh"></a>手動更新を使用する
+
+App Configuration は `AppConfigurationRefresh` を公開します。これは、キャッシュの有効期限が切れているかどうかを確認し、有効期限が切れていれば更新をトリガーするために使用できます。
+
+```java
+import com.microsoft.azure.spring.cloud.config.AppConfigurationRefresh;
+
+...
+
+@Autowired
+private AppConfigurationRefresh appConfigurationRefresh;
+
+...
+
+public void myConfigurationRefreshCheck() {
+    Future<Boolean> triggeredRefresh = appConfigurationRefresh.refreshConfigurations();
+}
+```
+
+`AppConfigurationRefresh` の `refreshConfigurations()` は、更新がトリガーされている場合は true、そうでない場合は false である `Future` を返します。 False は、キャッシュの有効期限が切れていないか、変更がなかったか、または別のスレッドが現在更新をチェック中であることを意味します。
 
 ## <a name="use-automated-refresh"></a>自動更新を使用する
 
@@ -59,7 +80,7 @@ App Configuration Spring Boot クライアント ライブラリでは、アプ�
     mvn spring-boot:run
     ```
 
-1. ブラウザー ウィンドウを開き、`http://localhost:8080` に移動します。  キーに関連付けられているメッセージが表示されます。 
+1. ブラウザー ウィンドウを開き、`http://localhost:8080` に移動します。  キーに関連付けられているメッセージが表示されます。
 
     *curl* を使用してアプリケーションをテストすることもできます。次に例を示します。 
     

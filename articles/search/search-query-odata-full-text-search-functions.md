@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 78f9e4d8fa80fdf74bdb5cd79f4489d12696fcc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88935791"
 ---
 # <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Azure Cognitive Search での OData フルテキスト検索関数 - `search.ismatch` および `search.ismatchscoring`
@@ -69,7 +69,7 @@ search_mode ::= "'any'" | "'all'"
 
 次の表では、各パラメーターを定義しています。
 
-| パラメーター名 | 種類 | 説明 |
+| パラメーター名 | Type | 説明 |
 | --- | --- | --- |
 | `search` | `Edm.String` | 検索クエリ ([simple](query-simple-syntax.md) または [full](query-lucene-syntax.md) Lucene クエリ構文)。 |
 | `searchFields` | `Edm.String` | 検索する検索可能フィールドのコンマ区切りリスト。既定値はインデックスのすべての検索可能フィールドになります。 `search` パラメーター内で[フィールド検索](query-lucene-syntax.md#bkmk_fields)を使用すると、このパラメーターで指定したフィールドはいずれも Lucene クエリ内のフィールド指定子によってオーバーライドされます。 |

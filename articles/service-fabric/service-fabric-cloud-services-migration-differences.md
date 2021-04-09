@@ -4,10 +4,10 @@ description: アプリケーションを Cloud Services から Service Fabric �
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.openlocfilehash: c7e7d346b5a39a262d1d55265becadb1c718cc04
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575773"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>アプリケーションの移行前に、Cloud Services と Service Fabric の違いについて学習する。
@@ -70,7 +70,7 @@ Service Fabric には、サービスのエンドポイント アドレスを解�
 ![Service Fabric によって、サービスのエンドポイント アドレスを解決するために使用できる、Naming Service というサービス検出メカニズムが提供されることを示す図。][6]
 
 ### <a name="queues"></a>キュー
-Cloud Services などのステートレスな環境での階層間の一般的な通信メカニズムでは、1 つの階層から別の階層に作業タスクを持続的に保存する外部ストレージ キューが使用されます。 一般的なシナリオは、Azure Queue または Service Bus にジョブを送信する Web 層です。これでは Worker ロール インスタンスが、ジョブをキューから削除し、処理します。
+Cloud Services などのステートレスな環境での階層間の一般的な通信メカニズムでは、1 つの階層から別の階層に作業タスクを持続的に保存する外部ストレージ キューが使用されます。 一般的なシナリオは、Azure キューまたは Service Bus にジョブを送信する Web 層です。これでは Worker ロール インスタンスが、ジョブをキューから削除し、処理します。
 
 ![Cloud Services のキューの通信][7]
 

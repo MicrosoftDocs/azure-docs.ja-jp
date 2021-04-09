@@ -15,10 +15,10 @@ ms.date: 01/14/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f4f56ce9fa86dc27b77ad6b463479d13c8e4e7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91856514"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure SQL にアクセスする
@@ -49,7 +49,7 @@ Azure SQL Database 内のデータベースに対するアクセス権を VM に
 VM にデータベースへのアクセス権を付与するには次の 2 つの手順があります。
 
 1. サーバーに対する Azure AD 認証を有効にします。
-2. VM のシステム割り当て ID を表す**包含ユーザー**をデータベースに作成します。
+2. VM のシステム割り当て ID を表す **包含ユーザー** をデータベースに作成します。
 
 ### <a name="enable-azure-ad-authentication"></a>Azure AD 認証を有効にする
 
@@ -80,7 +80,7 @@ SQL DB では、一意の AAD 表示名が必要です。 このため、ユー�
 5. **[オプション]** をクリックします。
 6. **[データベースに接続]** フィールドに、構成する非システム データベースの名前を入力します。
 7. **[Connect]** をクリックします。 サインイン プロセスを完了します。
-8. **オブジェクト エクスプローラー**で、 **[データベース]** フォルダーを展開します。
+8. **オブジェクト エクスプローラー** で、 **[データベース]** フォルダーを展開します。
 9. ユーザー データベースを右クリックし、 **[新しいクエリ]** をクリックします。
 10. クエリ ウィンドウで、次の行を入力し、ツールバーの **[実行]** をリックします。
 
@@ -107,7 +107,7 @@ SQL DB では、一意の AAD 表示名が必要です。 このため、ユー�
 
 ## <a name="access-data"></a>データにアクセスする
 
-このセクションでは、VM のシステム割り当てマネージド ID を使用してアクセス トークンを取得し、それを使用して Azure SQL を呼び出す方法を説明します。 Azure SQL は Azure AD 認証をネイティブにサポートするため、Azure リソースのマネージド ID を使用して取得されたアクセス トークンを直接受け入れることができます。 SQL への接続を作成する**アクセス トークン** メソッドを使用します。 これは Azure SQL の Azure AD との統合の一部であり、接続文字列に資格情報を提供することとは異なります。
+このセクションでは、VM のシステム割り当てマネージド ID を使用してアクセス トークンを取得し、それを使用して Azure SQL を呼び出す方法を説明します。 Azure SQL は Azure AD 認証をネイティブにサポートするため、Azure リソースのマネージド ID を使用して取得されたアクセス トークンを直接受け入れることができます。 SQL への接続を作成する **アクセス トークン** メソッドを使用します。 これは Azure SQL の Azure AD との統合の一部であり、接続文字列に資格情報を提供することとは異なります。
 
 アクセス トークンを使用して SQL への接続を開く .NET のコード例を次に示します。 このコードは、VM のシステム割り当てマネージド ID のエンドポイントにアクセスできる VM 上で実行する必要があります。 アクセス トークン メソッドを使用するには、 **.NET Framework 4.6** 以降または **.NET Core 2.2** 以降が必要です。 AZURE-SQL-SERVERNAME と DATABASE の値を適切な値に置き換えます。 Azure SQL のリソース ID が `https://database.windows.net/` であることにご注意ください。
 
@@ -156,8 +156,8 @@ if (accessToken != null) {
 または、アプリの記述と VM へのデプロイなしでエンド ツー エンドの設定をテストする簡単な方法は、PowerShell を使用することです。
 
 1. ポータルで **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、 **[概要]** の **[接続]** をクリックします。
-2. Windows VM を作成したときに追加した**ユーザー名**と**パスワード**を入力します。
-3. これで、仮想マシンを使用する**リモート デスクトップ接続**が作成されました。リモート セッションで **PowerShell** を開きます。
+2. Windows VM を作成したときに追加した **ユーザー名** と **パスワード** を入力します。
+3. これで、仮想マシンを使用する **リモート デスクトップ接続** が作成されました。リモート セッションで **PowerShell** を開きます。
 4. Powershell の `Invoke-WebRequest` を使用して、ローカルのマネージド ID のエンドポイントに Azure SQL のアクセス トークンを取得するよう要求します。
 
     ```powershell

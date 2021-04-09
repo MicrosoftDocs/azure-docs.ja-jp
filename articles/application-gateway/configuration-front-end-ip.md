@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: 732054ae2cd8f93d17694e9ea1bdd85680e9c314
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: eff63510f70dd7b4cdd522cc5a2a68096cda7166
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98058652"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102548718"
 ---
 # <a name="application-gateway-front-end-ip-address-configuration"></a>Application Gateway のフロントエンド IP アドレスの構成
 
@@ -30,7 +30,7 @@ ms.locfileid: "98058652"
 
 パブリック IP アドレスは、インターネットに公開されない内部エンドポイントには必要ありません。 これは、"*内部ロード バランサー*" (ILB) エンドポイントまたはプライベート フロントエンド IP と呼ばれます。 アプリケーション ゲートウェイ ILB は、インターネットに接続されていない内部の基幹業務アプリケーションで便利です。 また、インターネットに接続されていないセキュリティの境界にある多階層アプリケーション内のサービスや階層に役立ちますが、ラウンド ロビンの負荷分散、セッションの持続性、または TLS ターミネーションが必要です。
 
-1 つのパブリック IP アドレスまたは 1 つのプライベート IP アドレスしかサポートされません。 アプリケーション ゲートウェイを作成するときにフロントエンド IP を選択します。
+1 つのパブリック IP アドレスと 1 つのプライベート IP アドレスしかサポートされません。 アプリケーション ゲートウェイを作成するときにフロントエンド IP を選択します。
 
 - パブリック IP アドレスの場合は、新しいパブリック IP アドレスの作成またはアプリケーション ゲートウェイと同じ場所にある既存のパブリック IP を使用できます。 詳細については、[静的なパブリック IP アドレスと動的なパブリック IP アドレス](./application-gateway-components.md#static-versus-dynamic-public-ip-address)に関するページを参照してください。
 

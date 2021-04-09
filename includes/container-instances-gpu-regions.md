@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: danlep
 ms.openlocfilehash: 7f5b6780fd330489a893354143dc866bf416c8e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75445804"
 ---
 ### <a name="region-availability"></a>利用可能なリージョン

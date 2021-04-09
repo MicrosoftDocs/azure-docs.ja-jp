@@ -3,14 +3,14 @@ title: 高可用性 - Azure Database for MariaDB
 description: この記事では、Azure Database for MariaDB での高可用性について情報を提供します
 author: mksuni
 ms.author: sumuth
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: dc37474a56ddb7d2c48c7acfce881fb812f0b8a4
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 4dcb1ac7ce4b468374993c11578bce553f766a42
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98664335"
 ---
 # <a name="high-availability-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での高可用性

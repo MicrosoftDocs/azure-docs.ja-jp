@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
 ms.date: 04/20/2020
-ms.openlocfilehash: 1634731381be6ebbb8750746f88b8ff9e761025d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 0d0fa88fdf182ae2214da40ee3fe8b20ced025e4
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879192"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956062"
 ---
 # <a name="azure-media-player-quickstart"></a>Azure Media Player クイックスタート
 Azure Media Player は簡単にセットアップできます。 たった数分で、Azure Media Services アカウントからメディア コンテンツの基本的な再生機能が利用できます。 このセクションでは、詳細は説明せず、基本的な手順を示します。 以降のセクションで、Azure Media Player を設定および構成する方法の詳細を説明します。  以下の組み込みをドキュメントの `<head>` に追加するだけです。
@@ -39,7 +39,7 @@ Azure Media Player は簡単にセットアップできます。 たった数分
 
 自動セットアップの使用を希望しない場合は、`data-setup` 属性を省略し、video 要素を手動で初期化することができます。
 
-```html
+```javascript
     var myPlayer = amp('vid1', { /* Options */
             "nativeControlsForTouch": false,
             autoplay: false,
@@ -52,7 +52,7 @@ Azure Media Player は簡単にセットアップできます。 たった数分
                // add an event listener
               this.addEventListener('ended', function() {
                 console.log('Finished!');
-            }
+            });
           }
     );
     myPlayer.src([{

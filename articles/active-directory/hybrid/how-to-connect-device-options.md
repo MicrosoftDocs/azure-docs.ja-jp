@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:デバイス オプション | Microsoft Docs
+title: 'Azure AD Connect: デバイス オプション | Microsoft Docs'
 description: このドキュメントでは、Azure AD Connect で使用できるデバイス オプションについて詳しく説明します
 services: active-directory
 documentationcenter: ''
@@ -17,21 +17,21 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 90d8cc39174f6392b0c532948305fa713535f0c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89279229"
 ---
-# <a name="azure-ad-connect-device-options"></a>Azure AD Connect:デバイス オプション
+# <a name="azure-ad-connect-device-options"></a>Azure AD Connect: デバイス オプション
 
 このドキュメントでは、Azure AD Connect で使用できるさまざまなデバイス オプションについて説明します。 Azure AD Connect を使うと、次の 2 つの操作を構成できます。 
-* **Hybrid Azure AD 参加**:環境にオンプレミスの AD フットプリントがあるときに、Azure AD のメリットを活用したい場合は、Hybrid Azure AD 参加済みデバイスを実装できます。 これらのデバイスは、オンプレミスの Active Directory と Azure Active Directory の両方に参加します。
+* **Hybrid Azure AD の参加**: 環境にオンプレミスの AD フットプリントがあるときに、Azure AD のメリットを活用したい場合は、Hybrid Azure AD 参加済みデバイスを実装できます。 これらのデバイスは、オンプレミスの Active Directory と Azure Active Directory の両方に参加します。
 * **デバイス ライトバック**:デバイス ライトバックを使うと、AD FS (2012 R2 以降) で保護されているデバイスへの、デバイスに基づく条件付きアクセスを有効にできます。
 
 ## <a name="configure-device-options-in-azure-ad-connect"></a>Azure AD Connect でデバイス オプションを構成する
 
-1.  Azure AD Connect を実行します。 **[追加のタスク]** ページで、 **[デバイス オプションの構成]** を選びます。  **[次へ]** をクリックします。
+1.  Azure AD Connect を実行します。 **[追加のタスク]** ページで、**[デバイス オプションの構成]** を選びます。  **[次へ]** をクリックします。
     ![デバイス オプションの構成](./media/how-to-connect-device-options/deviceoptions.png) 
 
     **[概要]** ページに詳細が表示されます。

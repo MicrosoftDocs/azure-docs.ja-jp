@@ -9,10 +9,10 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: df8a7fde9114f03521f0e57e072f81a867efcf39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89075258"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する
@@ -48,7 +48,7 @@ Azure Resource Manager テンプレートを使用すると、ソリューショ
 6. 必要に応じて、デプロイ モードを設定します。
 7. テンプレートをデプロイします。
 
-Azure Resource Manager テンプレートのデプロイの詳細については、[「Azure リソース マネージャーのテンプレートを使用したリソースのデプロイ」][Deploy resources with Azure Resource Manager templates]を参照してください。
+Azure Resource Manager テンプレートのデプロイの詳細については、[Azure Resource Manager テンプレートを使用したリソースのデプロイ][Deploy resources with Azure Resource Manager templates]に関する記事をご覧ください。
 
 ### <a name="install-powershell"></a>PowerShell をインストールする
 

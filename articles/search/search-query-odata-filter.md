@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 0f33b5a28d7c83be7e546c3f61bc517047c51312
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88934856"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での OData $filter 構文
@@ -75,10 +75,10 @@ variable ::= identifier | field_path
 
 サブ式をかっこで囲まずにフィルター式を記述した場合、Azure Cognitive Search では一連の演算子の優先順位規則に従って式が評価されます。 これらの規則は、どの演算子を使用してサブ式が結合されているかに基づいています。 次の表に、優先順位の最も高いものから最も低いものへの順に演算子のグループを一覧表示します。
 
-| Group | 演算子 |
+| グループ | 演算子 |
 | --- | --- |
 | 論理演算子 | `not` |
-| 比較演算子 | `eq`、`ne`、`gt`、`lt`、`ge`、`le` |
+| 比較演算子 | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
 | 論理演算子 | `and` |
 | 論理演算子 | `or` |
 

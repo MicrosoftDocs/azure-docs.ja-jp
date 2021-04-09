@@ -1,15 +1,15 @@
 ---
-title: セキュリティ
+title: Security
 description: App Service でアプリをセキュリティで保護する方法と、アプリを脅威からさらに保護する方法について説明します。
 keywords: azure app service, web アプリ, モバイル アプリ, api アプリ, 関数アプリ, セキュリティ, セキュア, セキュリティ保護, コンプライアンス, 準拠, 証明書, https, ftps, tls, 信頼, 暗号化, 暗号化する, 暗号化済み, ip の制限, 認証, 認可, authn, autho, msi, マネージド サービス ID, マネージド ID, シークレット, 秘密, パッチ処理, パッチ, バージョン, 分離, ネットワークの分離, ddos, mitm
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
 ms.openlocfilehash: 61bffcfa8b98ed666e450c344023258b752e4880
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98736107"
 ---
 # <a name="security-in-azure-app-service"></a>Azure App Service のセキュリティ

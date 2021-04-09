@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: references_regions
 ms.openlocfilehash: b46a35b45a51d0cc76942c4ca142c4c7792a28b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87077013"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Azure Blockchain Workbench Preview のデプロイ
@@ -276,7 +276,7 @@ API アプリケーションは、ディレクトリにアクセスするため�
 
 ## <a name="configuring-the-reply-url"></a>応答 URL の構成
 
-Azure Blockchain Workbench をデプロイした後は、デプロイした Blockchain Workbench Web URL について Azure Active Directory (Azure AD) クライアント アプリケーションの**応答 URL** を構成する必要があります。
+Azure Blockchain Workbench をデプロイした後は、デプロイした Blockchain Workbench Web URL について Azure Active Directory (Azure AD) クライアント アプリケーションの **応答 URL** を構成する必要があります。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. Azure AD クライアント アプリケーションを登録したテナントにいることを確認します。

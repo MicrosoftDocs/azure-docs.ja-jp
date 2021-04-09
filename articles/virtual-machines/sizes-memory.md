@@ -10,17 +10,18 @@ tags: azure-resource-manager,azure-service-management
 keywords: VM の分離,分離された VM,分離,分離された
 ms.assetid: ''
 ms.service: virtual-machines
+ms.subservice: vm-sizes-memory
 ms.devlang: na
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 1e27ee2c045404d13b10945ac65484281b0cd967
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 08a14a1c97a1eae9c07c50334929fb16304e635a
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019717"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102556521"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>メモリ最適化済み仮想マシンのサイズ
 

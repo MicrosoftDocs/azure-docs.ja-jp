@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 0c1273f4a2025658520118ed843d90b3378a129f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4cf3709574e2055f40759fd2d7026c93ac9db098
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577889"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102608021"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Azure Traffic Manager でリソースログを有効にする
 
@@ -39,14 +39,14 @@ Azure Traffic Manager のリソース ログからは、Traffic Manager プロ�
 
 2. **Traffic Manager プロファイルのリソース ログを有効にする:**
 
-    前のステップで取得した ID を使用して Traffic Manager プロファイルのリソース ログを有効にするには、[Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest) を使用します。 次のコマンドでは、指定した Azure ストレージ アカウントに、Traffic Manager プロファイルの詳細ログが格納されます。 
+    前のステップで取得した ID を使用して Traffic Manager プロファイルのリソース ログを有効にするには、[Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) を使用します。 次のコマンドでは、指定した Azure ストレージ アカウントに、Traffic Manager プロファイルの詳細ログが格納されます。 
 
       ```azurepowershell-interactive
     Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
       ``` 
 3. **診断の設定を検証する:**
 
-      [Get-AzDiagnosticSetting](/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest) を使用して、Traffic Manager プロファイルの診断の設定を検証します。 次のコマンドでは、リソースのログに記録されるカテゴリが表示されます。
+      [Get-AzDiagnosticSetting](/powershell/module/az.monitor/get-azdiagnosticsetting) を使用して、Traffic Manager プロファイルの診断の設定を検証します。 次のコマンドでは、リソースのログに記録されるカテゴリが表示されます。
 
      ```azurepowershell-interactive
      Get-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>

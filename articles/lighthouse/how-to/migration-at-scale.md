@@ -4,10 +4,10 @@ description: 委任された顧客リソースで Azure Migrate を効果的に�
 ms.date: 01/29/2021
 ms.topic: how-to
 ms.openlocfilehash: ed2fc8ae1a3b87a3b2501c3a390fe7a1822003e4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100393583"
 ---
 # <a name="manage-azure-migrate-projects-at-scale-with-azure-lighthouse"></a>Azure Lighthouse による大規模な Azure Migrate プロジェクトの管理

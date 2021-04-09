@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/13/2020
 ms.author: memildin
 ms.openlocfilehash: 0c21c916d152188031212b47704dfb41d3f64a82
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100596281"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center のデータ セキュリティ

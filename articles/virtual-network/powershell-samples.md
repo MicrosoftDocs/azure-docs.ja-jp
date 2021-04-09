@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: kumud
 ms.openlocfilehash: b3107d521fb79e3ea6cfe190abd2ec3fb7859cb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87288231"
 ---
 # <a name="azure-powershell-samples-for-virtual-network"></a>仮想ネットワーク用の Azure PowerShell サンプル

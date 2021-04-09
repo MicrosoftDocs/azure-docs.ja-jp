@@ -5,19 +5,21 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/11/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 43c201150ab0b2d5d350aa228a4ade5e2faf3461
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f3293ada549351cc7273847cde48c0531f06f028
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123115"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675809"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Azure IoT Central アプリケーションを CSP ポータルから作成して管理する
 
 Microsoft クラウド ソリューション プロバイダー (CSP) プログラムは、Microsoft リセラー プログラムです。 これは、すべての Microsoft Commercial Online Services を再販売するためのワンストップ プログラムをチャネル パートナーに提供することを目的としています。 詳しくは、「[Cloud Solution Provider プログラムの詳細](https://partner.microsoft.com/cloud-solution-provider)」をご覧ください。
+
+[!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
 
 CSP として、[Microsoft パートナー センター](https://partnercenter.microsoft.com/partner/home)を通じて、顧客に代わって Microsoft Azure IoT Central アプリケーションを作成して管理できます。 顧客に代わって CSP によって Azure IoT Central アプリケーションが作成される場合、Azure サービスによって管理される他の CSP と同様に、CSP が顧客の課金を管理します。 Azure IoT Central の料金は、Microsoft パートナー センターの請求金額の合計に表示されます。
 
@@ -75,7 +77,7 @@ Azure サブスクリプションがない場合は、Microsoft パートナー 
 
 ## <a name="location"></a>場所
 
-"**場所**" は、アプリケーションを作成する[地域](https://azure.microsoft.com/global-infrastructure/geographies/)です。 通常、最適なパフォーマンスを得るには、ご利用のデバイスに物理的に最も近い場所を選択する必要があります。 現時点では、IoT Central アプリケーションは、**オーストラリア**、**アジア太平洋**、**ヨーロッパ**、または**米国**、**イギリス**、**日本**の地域で作成できます。 いったん場所を選択すると、後でアプリケーションを別の場所に移動することはできません。
+"**場所**" は、アプリケーションを作成する [地域](https://azure.microsoft.com/global-infrastructure/geographies/)です。 通常、最適なパフォーマンスを得るには、ご利用のデバイスに物理的に最も近い場所を選択する必要があります。 現時点では、IoT Central アプリケーションは、**オーストラリア**、**アジア太平洋**、**ヨーロッパ**、または **米国**、**イギリス**、**日本** の地域で作成できます。 いったん場所を選択すると、後でアプリケーションを別の場所に移動することはできません。
 
 ## <a name="application-template"></a>アプリケーション テンプレート
 

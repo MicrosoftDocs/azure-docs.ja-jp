@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2020
+ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 330bffebb870635fd473e88a8eadb300eed40b9b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eb4f662a4b34d748da0e97da9b64a386be3f5c49
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012137"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103016425"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Media Indexer と Media Indexer 2 から Video Indexer に移行する
 

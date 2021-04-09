@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Azure Dev Spaces を動作させるプロセスと、ルーティングがどのように機能するかについて説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 ms.openlocfilehash: 2d2c6f336222b4ae0907d6579289a8cad8d73aa6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91977971"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Azure Dev Spaces でルーティングがどのように機能するか
@@ -28,7 +28,7 @@ Azure Dev Spaces には、Kubernetes アプリケーションを迅速に反復�
 
 クラスター内のあるサービスに対して別のサービスから行われた HTTP 要求は、呼び出し元のサービスの devspaces-proxy コンテナーを最初に通過します。 devspaces-proxy コンテナーでは、HTTP 要求を調べて `azds-route-as` ヘッダーをチェックします。 devspaces-proxy コンテナーでは、ヘッダーに基づいて、そのヘッダー値に関連付けられているサービスの IP アドレスを検索します。 IP アドレスが見つかった場合、devspaces-proxy コンテナーは要求をその IP アドレスに再ルーティングします。 IP アドレスが見つからなかった場合、devspaces-proxy コンテナーは要求を親アプリケーション コンテナーにルーティングします。
 
-たとえば、アプリケーション *serviceA* および *serviceB* が*default* という名前の親開発スペースにデプロイされるとします。 *serviceA* は *serviceB* に依存しており、そのサービスに対する HTTP 呼び出しを行います。 Azure ユーザーは、*default* スペースに基づいて、*azureuser* という子開発スペースを作成します。 また、Azure ユーザーは、独自のバージョンの *serviceA* をその子スペースにデプロイします。 *http://azureuser.s.default.serviceA.fedcba09...azds.io* に対する要求は以下のような手順で行われます。
+たとえば、アプリケーション *serviceA* および *serviceB* が *default* という名前の親開発スペースにデプロイされるとします。 *serviceA* は *serviceB* に依存しており、そのサービスに対する HTTP 呼び出しを行います。 Azure ユーザーは、*default* スペースに基づいて、*azureuser* という子開発スペースを作成します。 また、Azure ユーザーは、独自のバージョンの *serviceA* をその子スペースにデプロイします。 *http://azureuser.s.default.serviceA.fedcba09...azds.io* に対する要求は以下のような手順で行われます。
 
 ![Azure Dev Spaces のルーティング](media/how-dev-spaces-works/routing.svg)
 

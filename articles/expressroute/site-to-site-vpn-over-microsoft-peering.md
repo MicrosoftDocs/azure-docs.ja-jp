@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 366f27a0e2a22e9aa10dda20e105bf644255bdd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89393141"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>ExpressRoute Microsoft ピアリング経由のサイト間 VPN を構成する
@@ -239,7 +239,7 @@ VPN ゲートウェイの各インスタンスにパブリック IP アドレス
 
 ### <a name="34-specify-the-on-premises-vpn-tunnel-termination-local-network-gateway"></a><a name="termination"></a>3.4 オンプレミスの VPN トンネルの終了を指定する (ローカル ネットワーク ゲートウェイ)
 
-オンプレミスの VPN デバイスは、**ローカル ネットワーク ゲートウェイ**と呼ばれます。 次の JSON スニペットは、リモート BGP ピアの詳細も指定します。
+オンプレミスの VPN デバイスは、**ローカル ネットワーク ゲートウェイ** と呼ばれます。 次の JSON スニペットは、リモート BGP ピアの詳細も指定します。
 
 ```json
 {

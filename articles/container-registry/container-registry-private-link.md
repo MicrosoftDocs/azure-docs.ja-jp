@@ -4,10 +4,10 @@ description: コンテナー レジストリにプライベート エンドポ�
 ms.topic: article
 ms.date: 10/01/2020
 ms.openlocfilehash: 3193c65a2021d29f03bd9ae6cbc00fd6c349d9bf
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93342302"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Azure Private Link を使用して Azure Container Registry にプライベートで接続する
@@ -15,9 +15,9 @@ ms.locfileid: "93342302"
 
 [Azure Private Link](../private-link/private-link-overview.md) を利用し、レジストリ エンドポイントに仮想ネットワーク プライベート IP アドレスを割り当てることでレジストリへのアクセスを制限します。 仮想ネットワーク上のクライアントとレジストリのプライベート エンドポイント間のネットワーク トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベート リンクを経由することで、パブリック インターネットにさらされないようにします。 また、Private Link を使用すると、[Azure ExpressRoute](../expressroute/expressroute-introduction.MD) プライベート ピアリングまたは [VPN ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md)を介して、オンプレミスからのプライベート レジストリへのアクセスを有効にすることもできます。
 
-設定がレジストリの割り当てられたプライベート IP アドレスに解決されるように、レジストリのプライベート エンドポイント用に [DNS 設定を構成する](../private-link/private-endpoint-overview.md#dns-configuration)ことができます。 DNS 構成では、ネットワーク内のクライアントとサービスは、レジストリの完全修飾ドメイン名 ( *myregistry.azurecr.io* など) で引き続きレジストリにアクセスできます。 
+設定がレジストリの割り当てられたプライベート IP アドレスに解決されるように、レジストリのプライベート エンドポイント用に [DNS 設定を構成する](../private-link/private-endpoint-overview.md#dns-configuration)ことができます。 DNS 構成では、ネットワーク内のクライアントとサービスは、レジストリの完全修飾ドメイン名 (*myregistry.azurecr.io* など) で引き続きレジストリにアクセスできます。 
 
-この機能は、 **Premium** コンテナー レジストリ サービス レベルで使用できます。 現時点では、1 つのレジストリに対して最大 10 個のプライベート エンドポイントを設定できます。 レジストリ サービスのレベルと制限については、[Azure Container Registry のレベル](container-registry-skus.md)に関するページを参照してください。
+この機能は、**Premium** コンテナー レジストリ サービス レベルで使用できます。 現時点では、1 つのレジストリに対して最大 10 個のプライベート エンドポイントを設定できます。 レジストリ サービスのレベルと制限については、[Azure Container Registry のレベル](container-registry-skus.md)に関するページを参照してください。
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
@@ -91,7 +91,7 @@ az network private-dns zone create \
 
 ### <a name="create-an-association-link"></a>関連付けリンクを作成する
 
-[az network private-dns link vnet create][az-network-private-dns-link-vnet-create] を実行して、プライベート ゾーンを仮想ネットワークに関連付けます。 この例では、 *myDNSLink* というリンクを作成します。
+[az network private-dns link vnet create][az-network-private-dns-link-vnet-create] を実行して、プライベート ゾーンを仮想ネットワークに関連付けます。 この例では、*myDNSLink* というリンクを作成します。
 
 ```azurecli
 az network private-dns link vnet create \
@@ -113,7 +113,7 @@ REGISTRY_ID=$(az acr show --name $REGISTRY_NAME \
 
 [az network private endpoint create][az-network-private-endpoint-create] コマンドを実行して、レジストリのプライベート エンドポイントを作成します。
 
-次の例では、 *myPrivateEndpoint* というエンドポイントと *myConnection* というサービス接続を作成します。 エンドポイントのコンテナー レジストリ リソースを指定するには、`--group-ids registry` を渡します。
+次の例では、*myPrivateEndpoint* というエンドポイントと *myConnection* というサービス接続を作成します。 エンドポイントのコンテナー レジストリ リソースを指定するには、`--group-ids registry` を渡します。
 
 ```azurecli
 az network private-endpoint create \
@@ -159,7 +159,7 @@ DATA_ENDPOINT_PRIVATE_IP=$(az resource show \
 
 ### <a name="create-dns-records-in-the-private-zone"></a>プライベート ゾーンに DNS レコードを作成する
 
-次のコマンドでは、レジストリ エンドポイントとそのデータ エンドポイントのプライベート ゾーンに DNS レコードを作成します。 たとえば、 *westeurope* リージョンに *myregistry* という名前のレジストリがある場合、エンドポイント名は `myregistry.azurecr.io` と `myregistry.westeurope.data.azurecr.io` になります。 
+次のコマンドでは、レジストリ エンドポイントとそのデータ エンドポイントのプライベート ゾーンに DNS レコードを作成します。 たとえば、*westeurope* リージョンに *myregistry* という名前のレジストリがある場合、エンドポイント名は `myregistry.azurecr.io` と `myregistry.westeurope.data.azurecr.io` になります。 
 
 > [!NOTE]
 > レジストリが [geo レプリケートされている](container-registry-geo-replication.md)場合、レプリカのデータ エンドポイント IP ごとに追加の DNS レコードを作成します。
@@ -267,7 +267,7 @@ az network private-dns record-set a add-record \
     |||
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。 
-2. " **証に成功しました** " というメッセージが表示されたら、 **[作成]** を選択します。
+2. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。
 
 プライベート エンドポイントが作成された後、ポータルの **[プライベート エンドポイント]** ページにプライベート ゾーンの DNS 設定が表示されます。
 

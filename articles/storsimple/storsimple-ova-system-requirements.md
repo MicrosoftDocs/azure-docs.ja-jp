@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 5970e82619667a47ba160c84df2cdeb145b0dab8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94966175"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Virtual Array のシステム要件
@@ -49,9 +49,9 @@ ms.locfileid: "94966175"
 | --- | --- |
 | 最小仮想プロセッサ (コア) 数 |4 |
 | 最小メモリ (RAM) |8 GB <br> ファイル サーバーの場合、処理するファイル数が 200 万個未満の場合は 8 GB、200 ～ 400 万個の場合は 16 GB|
-| ディスク領域<sup>1</sup> |OS ディスク - 80 GB <br></br>データ ディスク - 500 GB ～ 8 TB |
+| ディスク領域<sup>1</sup> |OS ディスク - 80 GB  <br></br>データ ディスク - 500 GB ～ 8 TB |
 | 最小ネットワーク インターフェイス数 |1 |
-| インターネット帯域幅 <sup>2</sup> |必要な最小帯域幅:5 Mbps <br> 推奨する帯域幅:100 Mbps <br> データ転送速度は、インターネットの帯域幅に対応します。 たとえば、100 GB のデータは、5 Mbps で転送すると 2 日かかります。するとバックアップが 1 日で完了しないため、バックアップ エラーを招く可能性があります。 100 Mbps の帯域幅では、100 GB のデータが 2.5 時間で転送できます。   |
+| インターネット帯域幅 <sup>2</sup> |必要な最小帯域幅: 5 Mbps <br> 推奨する帯域幅: 100 Mbps <br> データ転送速度は、インターネットの帯域幅に対応します。 たとえば、100 GB のデータは、5 Mbps で転送すると 2 日かかります。するとバックアップが 1 日で完了しないため、バックアップ エラーを招く可能性があります。 100 Mbps の帯域幅では、100 GB のデータが 2.5 時間で転送できます。   |
 
 <sup>1</sup> - 仮想プロビジョニング対応
 

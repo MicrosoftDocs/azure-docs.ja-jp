@@ -4,10 +4,10 @@ description: この記事では、メディア グラフでシグナル ゲー�
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.openlocfilehash: afcec7c03f1353f08b58311278f5a533e0c911bc
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94410795"
 ---
 # <a name="configure-a-signal-gate-for-event-based-video-recording"></a>イベントベースのビデオ記録用にシグナル ゲートを構成する

@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: marsma, rayluo, nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 42ffc7ffba20868b23675fd8613fd3ef11b0924a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 60d6e40b568c1189cdc01ef4239612d3717063b7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755051"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104578840"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Python 用の ADAL から MSAL への移行に関するガイド
 
@@ -107,7 +107,7 @@ app = msal.PublicClientApplication(
     "client_id", authority="...",
     # token_cache=...  # Default cache is in memory only.
                        # You can learn how to use SerializableTokenCache from
-                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+                       # https://msal-python.readthedocs.io/en/latest/#msal.SerializableTokenCache
     )
 
 # We choose a migration strategy of migrating all RTs in one loop

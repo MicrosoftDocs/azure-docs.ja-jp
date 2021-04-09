@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
 ms.openlocfilehash: 050dfa737ad04127f8c72158fbecb2e8e70e05c1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89075343"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>クイック スタート:Azure Firewall Manager を使用して仮想ハブのセキュリティを保護する - Resource Manager テンプレート
@@ -55,7 +55,7 @@ Azure Firewall Manager の詳細については、[Azure Firewall Manager の概
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-Resource Manager テンプレートを Azure にデプロイします。
+ARM テンプレートを Azure にデプロイします。
 
 1. **[Azure に配置する]** を選択して Azure にサインインし、テンプレートを開きます。 このテンプレートによって、Azure Firewall、仮想 WAN と仮想ハブ、ネットワーク インフラストラクチャ、2 つの仮想マシンが作成されます。
 

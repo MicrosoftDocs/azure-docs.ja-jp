@@ -8,10 +8,10 @@ ms.date: 1/28/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 8010581667354f2e8484bc7341227ec41713d10f
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99072935"
 ---
 # <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-original-version-2018"></a>新しい Azure Digital Twins と以前のバージョン (2018) との違い 元のバージョン (2018) とどのように違うか

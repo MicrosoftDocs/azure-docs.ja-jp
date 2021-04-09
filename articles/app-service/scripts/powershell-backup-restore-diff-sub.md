@@ -1,5 +1,5 @@
 ---
-title: PowerShell:バックアップを別のサブスクリプションに復元する
+title: 'PowerShell: バックアップを別のサブスクリプションに復元する'
 description: Azure PowerShell を使用して App Service のデプロイと管理を自動化する方法について説明します。 このサンプルでは、バックアップを別のサブスクリプションに復元する方法を紹介しています。
 author: msangapu-msft
 tags: azure-service-management
@@ -9,10 +9,10 @@ ms.date: 11/21/2018
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurepowershell
 ms.openlocfilehash: a0728d9926cc7f5d8b200a9003353b015dd3a97c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89075919"
 ---
 # <a name="restore-a-web-app-from-a-backup-in-another-subscription-using-powershell"></a>PowerShell を使用して Web アプリを別のサブスクリプションのバックアップから復元する
@@ -39,9 +39,9 @@ Remove-AzResourceGroup -Name $resourceGroupName -Force
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
-| [Add-AzAccount](/powershell/module/az.accounts/connect-azaccount) | 認証済みアカウントを追加して、Azure Resource Manager コマンドレットの要求に使用します。  |
+| [Add-AzAccount](/powershell/module/az.accounts/connect-azaccount) | Azure Resource Manager コマンドレットの要求に使用する認証済みアカウントを追加します。  |
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Web アプリのバックアップの一覧を取得します。 |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Web アプリを作成します。 |
 | [Restore-AzWebAppBackup](/powershell/module/az.websites/restore-azwebappbackup) | 以前に完了したバックアップから Web アプリを復元します。 |

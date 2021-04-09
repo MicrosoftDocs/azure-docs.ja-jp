@@ -4,10 +4,10 @@ description: Recovery Services コンテナーに保護しているデータを�
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.openlocfilehash: ed8c937f97ec7a74662a8b46a354b0a6db39a2b0
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98806016"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Azure Backup Server からデータを回復する

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: dddf56edf2037d87a28589a59834db32f8d04a4c
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98598360"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Azure Maps Search Service を使用して場所を検索する
@@ -98,7 +98,7 @@ Azure Maps [Fuzzy Search API](/rest/api/maps/search/getsearchfuzzy) では、標
 
     これで、結果が国コードによってバインドされ、クエリでは米国のピザ レストランが返されます。
 
-5. さらに絞り込んだ検索結果を取得するには、緯度と経度の座標ペアを範囲として検索できます。 座標ペア。 この例では、シアトル スペース ニードルの緯度と経度を使用します。 of the Seattle Space Needle. 半径 400 メートル以内の結果のみを取得したいので、`radius` パラメーターを追加します。 また、`limit` パラメーターを追加して、最寄りの 5 つのピザ屋に結果を制限します。
+5. さらに絞り込んだ検索結果を取得するには、緯度と経度の座標ペアを範囲として検索できます。 座標ペア。 この例では、シアトル スペース ニードルの緯度と経度を使用します。 (訳文なし) 半径 400 メートル以内の結果のみを取得したいので、`radius` パラメーターを追加します。 また、`limit` パラメーターを追加して、最寄りの 5 つのピザ屋に結果を制限します。
 
     **[パラメーター]** セクションに次のキー/値のペアを追加します。
 

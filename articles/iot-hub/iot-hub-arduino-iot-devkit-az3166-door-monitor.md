@@ -9,10 +9,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
 ms.openlocfilehash: e3649ac786c07459695a1e6ca6ad52620e23d59f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92148797"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>ドア モニター -- Azure Functions と SendGrid を使用して、ドアが開いたときに電子メールを送信する           
@@ -121,7 +121,7 @@ API キーは 1 回だけ表示されます。 次の手順で使用するため
 
 ### <a name="start-vs-code"></a>VS Code の起動
 
-- DevKit がお使いのコンピューターに接続されて**いない**ことを確認します。
+- DevKit がお使いのコンピューターに接続されて **いない** ことを確認します。
 - VS Code を起動します。
 - DevKit をコンピューターに接続します。
 

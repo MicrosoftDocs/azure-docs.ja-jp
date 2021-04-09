@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: yexu
 ms.openlocfilehash: 18d61c7f51547a524e64fc44c98e70e0f5bc2752
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100372996"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure Data Factory のデータのコピー ツール

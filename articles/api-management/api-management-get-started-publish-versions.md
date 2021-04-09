@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.author: apimpm
-ms.openlocfilehash: f6ea02c32ec7fcb694d63f29c63c3880a7cfff9e
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: dc3d3b4658bd9a26363b6d41377d448059e30c0f
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546654"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889673"
 ---
 # <a name="tutorial-publish-multiple-versions-of-your-api"></a>チュートリアル:API の複数のバージョンを発行する 
 
@@ -33,7 +33,7 @@ API のすべての呼び出し元がまったく同じバージョンを使用�
 ## <a name="prerequisites"></a>前提条件
 
 + [Azure API Management の用語](api-management-terminology.md)について学習します。
-+ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
++ 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
 + また、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」のチュートリアルも完了します。
 
 ## <a name="add-a-new-version"></a>新しいバージョンを追加する
@@ -105,7 +105,7 @@ az apim api versionset list --resource-group apim-hello-word-resource-group \
 
 Azure portal によってバージョン セットが自動的に作成されると、英数字の名前が割り当てられ、一覧の **[名前]** 列に表示されます。 他の Azure CLI コマンドでこの名前を使用します。
 
-バージョン セットの詳細を表示するには、[az apim api versionset show](/api/versionset#az_apim_api_versionset_show) コマンドを実行します。
+バージョン セットの詳細を表示するには、[az apim api versionset show](/cli/azure/apim/api/versionset#az_apim_api_versionset_show) コマンドを実行します。
 
 ```azurecli
 az apim api versionset show --resource-group apim-hello-word-resource-group \

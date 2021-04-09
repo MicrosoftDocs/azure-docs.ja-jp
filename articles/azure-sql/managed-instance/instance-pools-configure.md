@@ -13,10 +13,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
 ms.openlocfilehash: 732a9bab018103321a9a3a759b31495bd67a209e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92793111"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Azure SQL Managed Instance をインスタンス プールにデプロイする
@@ -54,7 +54,7 @@ ms.locfileid: "92793111"
 
 Powershell を使用するには、[最新バージョンの PowerShell Core をインストール](/powershell/scripting/install/installing-powershell#powershell)し、指示に従って [Azure PowerShell モジュールをインストール](/powershell/azure/install-az-ps)します。
 
-プール内のインスタンスと単一インスタンスの両方に関連する操作では、標準の [マネージド インスタンス コマンド](api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances)を使用しますが、プール内のインスタンスでこれらのコマンドを使用する場合は、" *インスタンス プール名* " プロパティを設定する必要があります。
+プール内のインスタンスと単一インスタンスの両方に関連する操作では、標準の [マネージド インスタンス コマンド](api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances)を使用しますが、プール内のインスタンスでこれらのコマンドを使用する場合は、"*インスタンス プール名*" プロパティを設定する必要があります。
 
 ## <a name="deployment-process"></a>デプロイ プロセス
 
@@ -62,7 +62,7 @@ Powershell を使用するには、[最新バージョンの PowerShell Core を
 
 パブリック プレビューでは、どちらのアクションも、PowerShell および Azure Resource Manager のテンプレートを使用した場合のみサポートされます。 Azure portal エクスペリエンスは現在使用できません。
 
-プールにマネージド インスタンスがデプロイされた後は、Azure portal を使用して、価格レベル ページでそのプロパティを変更 " *できます* "。
+プールにマネージド インスタンスがデプロイされた後は、Azure portal を使用して、価格レベル ページでそのプロパティを変更 "*できます*"。
 
 ## <a name="create-a-virtual-network-with-a-subnet"></a>サブネットを含む仮想ネットワークを作成する 
 

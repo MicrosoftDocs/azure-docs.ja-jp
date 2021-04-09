@@ -9,14 +9,13 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 03431d861ca6d469b894e45c36fe2a3d7904c3a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88935536"
 ---
 # <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Azure Cognitive Searchスキルセットで注釈を参照する方法
-
 
 この記事では、さまざまなシナリオを説明する例を使用して、スキル定義で注釈を参照する方法を学習します。 ドキュメントの内容がスキルのセットを通過するにつれて、注釈が豊富になっていきます。 注釈は、ダウンストリームをさらに豊富にするための入力として使用することも、インデックスの出力フィールドにマッピングすることもできます。 
  

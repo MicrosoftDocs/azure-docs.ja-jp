@@ -3,12 +3,12 @@ title: Azure Event Grid SDK
 description: Azure Event Grid の SDK について説明します。 これらの SDK は、管理、発行、および使用の機能を提供します。
 ms.topic: reference
 ms.date: 07/07/2019
-ms.openlocfilehash: c5b79f7cb7ae0112e2dacd077289786fc7b5c956
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: aa53aaa89a703bb88df6611cdb0dd38341248a55
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516759"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955926"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>管理と発行のための Event Grid SDK
 
@@ -30,13 +30,13 @@ Event Grid の SDK を使うと、プログラムでリソースの管理やイ�
 データ プレーン SDK を使うと、トピックにイベントを投稿でき、認証、イベントの形成、指定されたエンドポイントへの非同期の投稿が行われます。 これを使ってファースト パーティのイベントを使用することもできます。 現時点では、次の SDK を利用できます。
 
 | プログラミング言語 | SDK | 
-| -------------------- | ---------- | ---------- | 
+| -------------------- | ---------- | 
 | .NET | 安定版 SDK:[Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)<p>プレビュー版 SDK:[Azure.Messaging.EventGrid](https://www.nuget.org/packages/Azure.Messaging.EventGrid/) |
 | Java | 安定版 SDK: [azure-eventgrid](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)<p>プレビュー版 SDK: [azure-messaging-eventgrid](https://search.maven.org/artifact/com.azure/azure-messaging-eventgrid/)</p> |  
 | Python | [azure-eventgrid](https://pypi.org/project/azure-eventgrid/#history) ( **[Release history]\(リリース履歴\)** ページの最新の安定版とプレリリース版を参照してください) |
 | JavaScript | [@azure/eventgrid](https://www.npmjs.com/package/@azure/eventgrid/) ( **[Versions]\(バージョン\)** タブに切り替えて、最新の安定版とベータ版のパッケージを確認してください)。 | 
-| Go | [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) | | 
-| Ruby | [azure_event_grid](https://rubygems.org/gems/azure_event_grid) | | 
+| Go | [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) |
+| Ruby | [azure_event_grid](https://rubygems.org/gems/azure_event_grid) |
 
 
 ## <a name="next-steps"></a>次の手順

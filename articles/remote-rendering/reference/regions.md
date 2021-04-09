@@ -7,10 +7,10 @@ ms.date: 02/11/2020
 ms.topic: reference
 ms.custom: references_regions
 ms.openlocfilehash: 1b20f7134f1b39853a78ee5b709e732ccf35acac
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96571115"
 ---
 # <a name="regions"></a>リージョン

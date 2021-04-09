@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 tags: connectors
 ms.openlocfilehash: 5348ade1ba6eec6cbd360849411b4520cb3c2b19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74787338"
 ---
 # <a name="delay-running-the-next-action-in-azure-logic-apps"></a>Azure Logic Apps で次のアクションの実行を遅延させる
@@ -78,7 +78,7 @@ ms.locfileid: "74787338"
 
    | プロパティ | JSON での名前 | 必須 | Type | 説明 |
    |----------|-----------|----------|------|-------------|
-   | Timestamp | timestamp | はい | String | ワークフローを再開するための終了の日付と時刻であり、 <p>YYYY-MM-DDThh:mm:ssZ の形式を使用 <p>たとえば、2017 年 9 月 18 日午後 2:00 にする場合は、"2017-09-18T14:00:00Z" と指定します。 <p>**注:** この時間の形式は、[UTC の日付と時刻の形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (ただし、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除く) で[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従っている必要があります。 タイム ゾーンがない場合は、最後にスペースなしで文字 "Z" を追加する必要があります。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 |
+   | Timestamp | timestamp | はい | String | ワークフローを再開するための終了の日付と時刻であり、 <p>YYYY-MM-DDThh:mm:ssZ の形式を使用 <p>たとえば、2017 年 9 月 18 日午後 2:00 にする場合は、"2017-09-18T14:00:00Z" と指定します。 <p>**注:** この時間の形式は、[UTC の日付と時刻の形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (ただし、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除く) で [日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従っている必要があります。 タイム ゾーンがない場合は、最後にスペースなしで文字 "Z" を追加する必要があります。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 |
    ||||||
 
 1. ワークフローで実行する他のすべてのアクションを追加します。

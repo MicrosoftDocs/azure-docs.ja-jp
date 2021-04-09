@@ -8,10 +8,10 @@ ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: f60c91d31b7a97d2a17414cf42e85c27451ad4ce
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97372027"
 ---
 # <a name="supported-browsers"></a>サポートされているブラウザー 

@@ -12,10 +12,10 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: ea0bed0884a3a03e2cd15b274b2afb0f054b0cbd
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96523301"
 ---
 # <a name="managing-concurrency-in-blob-storage"></a>BLOB ストレージ内でのコンカレンシーの管理

@@ -7,14 +7,23 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: f95585237bbee743083b855dd78cc850c4daffe8
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: ff26318cafdf493579961fc718643f831ae9efeb
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202690"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102564256"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Azure File Sync を使用して Linux からハイブリッド クラウド デプロイに移行する
+
+この移行に関する記事は、NFS および Azure File Sync というキーワードに関連するものの 1 つです。この記事がご使用のシナリオに当てはまるかどうかを確認してください。
+
+> [!div class="checklist"]
+> * データ ソース: ネットワーク接続ストレージ (NAS)
+> * 移行ルート: SAMBA を搭載した Linux サーバー &rArr; Windows Server 2012R2 またはそれ以降 &rArr; Azure ファイル共有と同期
+> * オンプレミスのファイルのキャッシュ: はい、最終的な目標は Azure File Sync のデプロイです。
+
+シナリオが異なる場合は、[移行ガイドの表](storage-files-migration-overview.md#migration-guides)を参照してください。
 
 Azure File Sync は、Windows Server インスタンスでは直接接続記憶域 (DAS) を使用して機能します。 Linux クライアント、リモート Server Message Block (SMB) 共有、Network File System (NFS) 共有との間の同期はサポートされていません。
 
@@ -28,7 +37,7 @@ Azure File Sync は、Windows Server インスタンスでは直接接続記憶�
 
 Azure Files の[移行の概要に関する記事](storage-files-migration-overview.md)で説明されているように、適切なコピー ツールと方法を使用することが重要です。 Linux Samba サーバーでは、SMB 共有がローカル ネットワークに直接公開されています。 この移行シナリオでファイルを移動するには、Windows Server に組み込まれている Robocopy が最適です。
 
-Linux サーバー上で Samba を実行しておらず、フォルダーを Windows Server 上のハイブリッド デプロイに移行したい場合は、Robocopy ではなく Linux のコピー ツールを使用できます。 その場合は、ファイル コピー ツールの忠実性の機能に注意してください。 コピー ツールで探す内容については、移行の概要の記事で[移行の基本に関するセクション](storage-files-migration-overview.md#migration-basics)を参照してください。
+Linux サーバー上で Samba を実行しておらず、フォルダーを Windows Server 上のハイブリッド デプロイに移行したい場合は、Robocopy ではなく Linux のコピー ツールを使用できます。 コピー ツールの忠実性の機能に注意してください。 コピー ツールで探す内容については、移行の概要の記事で[移行の基本に関するセクション](storage-files-migration-overview.md#migration-basics)を参照してください。
 
 ## <a name="phase-1-identify-how-many-azure-file-shares-you-need"></a>フェーズ 1:必要な Azure ファイル共有の数を特定する
 
@@ -39,11 +48,13 @@ Linux サーバー上で Samba を実行しておらず、フォルダーを Win
 * 仮想マシンまたは物理サーバーとして、Windows Server 2019 インスタンスを作成します。 Windows Server 2012 R2 が最小要件です。 また、Windows Server フェールオーバー クラスターもサポートされています。
 * 直接接続ストレージ (DAS) をプロビジョニングまたは追加します。 ネットワーク接続ストレージ (NAS) はサポートされていません。
 
-  Azure File Syncs の[クラウドを使った階層化](storage-sync-cloud-tiering-overview.md)機能を使用する場合、プロビジョニングするストレージの容量は、現在 Linux Samba サーバー上で使用している量より少なくてもかまいません。 ただし、後のフェーズで、大きい Linux Samba サーバー領域から小さい Windows Server ボリュームにファイルをコピーする場合は、バッチ処理を行う必要があります。
+  Azure File Syncs の[クラウドを使った階層化](storage-sync-cloud-tiering-overview.md)機能を使用する場合、プロビジョニングするストレージの容量は、現在 Linux Samba サーバー上で使用している量より少なくてもかまいません。 
+
+プロビジョニングするストレージの容量は、現在 Linux Samba サーバーで使用している量より小さくてもかまいません。 この構成を選択する場合、Azure File Sync の[クラウドを使った階層化](storage-sync-cloud-tiering-overview.md)機能も使用する必要があります。 ただし、後のフェーズで、大きい Linux Samba サーバー領域から小さい Windows Server ボリュームにファイルをコピーする場合は、バッチ処理を行う必要があります。
 
   1. ディスクに収まるファイルのセットを移動します。
   2. ファイル同期とクラウドを使った階層化が連携するようにします。
-  3. ボリュームにより多くの空き領域が作成されたら、次のファイルのバッチに進みます。 
+  3. ボリュームにより多くの空き領域が作成されたら、次のファイルのバッチに進みます。 または、新しい `/LFSM` スイッチを使用するために、後に続く [RoboCopy セクション](#phase-7-robocopy)にある RoboCopy コマンドを確認してください。 `/LFSM` を使用すると、RoboCopy ジョブを大幅に簡略化できますが、依存する可能性がある他の RoboCopy スイッチとの互換性はありません。
     
   Linux Samba サーバー上でファイルが占めているのと同等の領域を Windows Server インスタンス上でプロビジョニングすることにより、このバッチ処理手法を回避できます。 Windows で重複除去を有効にすることを検討します。 この大量のストレージを Windows Server インスタンスに永続的にコミットしたくない場合は、移行後、クラウドを使った階層化ポリシーを調整する前に、ボリューム サイズを小さくすることができます。 それにより、Azure ファイル共有の小規模なオンプレミス キャッシュが作成されます。
 
@@ -102,76 +113,7 @@ Linux Samba サーバー上でファイルが占める量より少ないスト�
 
 Robocopy によるファイルの移動が速すぎて、クラウドへの同期とローカルでの階層化が追いつかず、ローカル ディスク領域の不足が引き起こされる可能性があります。 そうなると、Robocopy は失敗します。 問題が回避される順序で共有を処理することをお勧めします。 たとえば、すべての共有に対して Robocopy ジョブを同時に開始しないことを検討してください。 または、Windows Server インスタンス上の現在の空き領域に合った共有を移動することを検討してください。 Robocopy ジョブが失敗した場合、次のミラー/パージ オプションを使用すれば、いつでもコマンドを再実行できます。
 
-```console
-Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
-```
-
-背景:
-
-:::row:::
-   :::column span="1":::
-      /MT
-   :::column-end:::
-   :::column span="1":::
-      Robocopy でマルチスレッドを実行できるようにします。 既定値は 8 で、最大値は 128 です。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /UNILOG:\<file name\>
-   :::column-end:::
-   :::column span="1":::
-      状態を Unicode 形式でログ ファイルに出力します (既存のログを上書きします)。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /TEE
-   :::column-end:::
-   :::column span="1":::
-      コンソール ウィンドウに出力します。 ログ ファイルへの出力と組み合わせて使用されます。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /B
-   :::column-end:::
-   :::column span="1":::
-      バックアップ アプリケーションが使用するのと同じモードで Robocopy を実行します。 現在のユーザーがアクセス許可を持っていないファイルを、Robocopy によって移動できます。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /MIR
-   :::column-end:::
-   :::column span="1":::
-      同じターゲット、つまりコピー先に対して、この Robocopy コマンドを複数回順番に実行できます。 前にコピーされたものが識別されて、省略されます。 前回の実行以降に発生した変更、追加、および削除だけが処理されます。 コマンドが以前に実行されていない場合は、何も省略されません。 **/MIR** フラグは、まだアクティブに使用および変更されているソースの場所に適したオプションです。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPY:copyflag[s]
-   :::column-end:::
-   :::column span="1":::
-      ファイル コピーの忠実性 (既定値は /COPY:DAT)。 コピー フラッグ:D = データ、A = 属性、T = タイムスタンプ、S = セキュリティ = NTFS ACL、O = 所有者情報、U = 監査情報
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPYALL
-   :::column-end:::
-   :::column span="1":::
-      すべてのファイル情報をコピーします (/COPY:DATSOU と同等)。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /DCOPY:copyflag[s]
-   :::column-end:::
-   :::column span="1":::
-      ディレクトリのコピーの忠実性 (既定値は /DCOPY:DA)。 コピー フラッグ:D = データ、A = 属性、T = タイムスタンプ
-   :::column-end:::
-:::row-end:::
+[!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
 ## <a name="phase-8-user-cut-over"></a>フェーズ 8: ユーザーのカットオーバー
 

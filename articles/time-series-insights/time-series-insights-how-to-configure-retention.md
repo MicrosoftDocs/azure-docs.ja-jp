@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 468b4f7ca7b0af4abc32df5d9ef64a74154d3de1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91569412"
 ---
 # <a name="configuring-retention-in-azure-time-series-insights-gen1"></a>Azure Time Series Insights Gen1 のリテンション期間の構成
@@ -22,11 +22,11 @@ ms.locfileid: "91569412"
 > [!CAUTION]
 > これは Gen1 の記事です。
 
-この記事では、Azure Time Series Insights の**データ リテンション期間**と**ストレージ制限を超過したときの動作**の構成方法について説明します。
+この記事では、Azure Time Series Insights の **データ リテンション期間** と **ストレージ制限を超過したときの動作** の構成方法について説明します。
 
 ## <a name="summary"></a>まとめ
 
-各 Azure Time Series Insights 環境には、**データ リテンション期間**を構成するための設定があります。 この値は 1 から 400 日間となっています。 環境の記憶域容量に達したとき、またはリテンション期間 (1 から 400 日) が終了したときのいずれか早い方でデータが削除されます。
+各 Azure Time Series Insights 環境には、**データ リテンション期間** を構成するための設定があります。 この値は 1 から 400 日間となっています。 環境の記憶域容量に達したとき、またはリテンション期間 (1 から 400 日) が終了したときのいずれか早い方でデータが削除されます。
 
 Azure Time Series Insights 環境ごとに、 **[ストレージ制限を超過したときの動作]** という追加設定があります。 この設定によって、環境の最大容量に到達したときのイングレスと消去の動作が制御されます。 次の 2 つの動作の選択肢があります。
 

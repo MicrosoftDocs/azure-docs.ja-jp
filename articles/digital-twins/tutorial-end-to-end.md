@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: cff40385edc89c0f6d2d105d089b66c046b0c04b
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 30b30697750a0b9068cfcde19ea4bf9c474f9ad9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545940"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424578"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>チュートリアル:エンド ツー エンドのソリューションを構築する
 
@@ -48,7 +48,7 @@ Azure Digital Twins インスタンスは、環境のライブ データによ�
 
 ビルディング シナリオの *AdtSampleApp* サンプル アプリに実装されているコンポーネントは次のとおりです。
 * デバイスの認証 
-* [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) の使用例 (*CommandLoop.cs* 内で確認可能)
+* [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) の使用例 (*CommandLoop.cs* 内で確認可能)
 * Azure Digital Twins API を呼び出すためのコンソール インターフェイス
 * *SampleClientApp* - サンプル Azure Digital Twins ソリューション
 * *SampleFunctionsApp* - IoT Hub および Azure Digital Twins のイベントから受け取ったテレメトリの結果として Azure Digital Twins グラフを更新する Azure Functions アプリ
@@ -107,7 +107,7 @@ _**AdtE2ESample**_ プロジェクトが開かれた状態の Visual Studio ウ�
 
 アプリを発行する前に、依存関係が最新であることを確認するようにお勧めします。含まれているすべてのパッケージが最新バージョンであることを確認してください。
 
-*[ソリューション エクスプローラー]* ペインで、 *[SampleFunctionsApp] > [依存関係]* の順に展開します。 *[パッケージ]* を右クリックし、 *[NuGet パッケージの管理]* を選択します。
+*[ソリューション エクスプローラー]* ペインで、_**[SampleFunctionsApp]** > [依存関係]_ の順に展開します。 *[パッケージ]* を右クリックし、 *[NuGet パッケージの管理]* を選択します。
 
 :::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio: SampleFunctionsApp プロジェクトの [NuGet パッケージの管理]" border="false":::
 
@@ -131,15 +131,17 @@ Azure Cloud Shell で次のコマンドを使用して、関数アプリが Azur
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
-出力は、Azure 関数の設定の一覧です。ここには、*ADT_SERVICE_URL* というエントリが含まれているはずです。
+出力は、Azure 関数の設定の一覧です。ここには、**ADT_SERVICE_URL** というエントリが含まれているはずです。
 
-次のコマンドを使用して、システムによって管理される ID を作成します。 出力の *principalId* フィールドを書き留めてください。
+次のコマンドを使用して、システムによって管理される ID を作成します。 出力内で **principalId** フィールドを探します。
 
 ```azurecli-interactive
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-出力からの *principalId* 値を次のコマンドで使用して、関数アプリの ID を Azure Digital Twins インスタンスの "*Azure Digital Twins データ所有者*" ロールに割り当てます。
+出力の **principalId** 値を次のコマンドで使用して、関数アプリの ID を Azure Digital Twins インスタンスの "*Azure Digital Twins データ所有者*" ロールに割り当てます。
+
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 ```azurecli-interactive
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
@@ -176,7 +178,7 @@ az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku 
 
 このコマンドからは、作成された IoT ハブについての情報が出力されます。
 
-IoT ハブに付けた名前は保存しておいてください。 これは後で使用します。
+IoT ハブに付けた **名前** は保存しておいてください。 これは後で使用します。
 
 ### <a name="connect-the-iot-hub-to-the-azure-function"></a>IoT ハブを Azure 関数に接続する
 
@@ -269,7 +271,10 @@ Azure Digital Twins 側からデータを確認するには、_**AdtE2ESample**_
 ObserveProperties thermostat67 Temperature
 ```
 
-"*Azure Digital Twins インスタンスから*"、ライブで更新される温度が 10 秒おきにコンソールに記録されるのを確認できます。
+"*Azure Digital Twins インスタンスから*" のライブ更新された温度が 2 秒ごとにコンソールにログされていることを確認できます。
+
+>[!NOTE]
+> デバイスからのデータがツインに伝達されるまでに数秒かかることがあります。 最初のいくつかの温度の測定値は、データが到着し始めるまで 0 と表示される場合があります。
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry.png" alt-text="デジタル ツイン thermostat67 からの温度メッセージのログを表示するコンソール出力":::
 
@@ -327,7 +332,7 @@ az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-nam
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="エンドポイントの provisioningState が Succeeded であることを示すクエリの結果":::
 
-Event Grid トピックと Azure Digital Twins の Event Grid エンドポイントに付けた名前は保存しておいてください。 これらは後で使用します。
+**イベント グリッド トピック** と Azure Digital Twins の Event Grid **エンドポイント** に付けた名前は保存しておいてください。 これらは後で使用します。
 
 ### <a name="set-up-route"></a>ルートを設定する
 
@@ -346,7 +351,7 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 
 次に、先ほど作成した Event Grid トピックを Azure 関数 (*ProcessDTRoutedData*) からサブスクライブします。そうすることで、テレメトリ データは *thermostat67* ツインから Event Grid トピックを介して関数へと流れることができ、関数が再び Azure Digital Twins に作用して *room21* ツインを適宜更新します。
 
-そのためには、Event Grid トピックからエンドポイントとしての Azure 関数 (*ProcessDTRoutedData*) への **Event Grid サブスクリプション** を作成します。
+これを行うには、先ほど作成した **イベント グリッド トピック** から *ProcessDTRoutedData* Azure 関数にデータを送信する **Event Grid サブスクリプション** を作成します。
 
 [Azure portal](https://portal.azure.com/) の上部の検索バーで、Event Grid トピックの名前を検索してそのトピックに移動します。 *[+ イベント サブスクリプション]* を選択します。
 
@@ -381,7 +386,7 @@ Azure Digital Twins 側からデータを確認するには、_**AdtE2ESample**_
 ObserveProperties thermostat67 Temperature room21 Temperature
 ```
 
-"*Azure Digital Twins インスタンスから*"、ライブで更新される温度が 10 秒おきにコンソールに記録されるのを確認できます。 *thermostat67* への変更に合わせて *room21* の温度が更新されていることがわかります。
+"*Azure Digital Twins インスタンスから*" のライブ更新された温度が 2 秒ごとにコンソールにログされていることを確認できます。 *thermostat67* への変更に合わせて *room21* の温度が更新されていることがわかります。
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry-b.png" alt-text="thermostat と room からの温度メッセージのログを示すコンソール出力":::
 
@@ -403,9 +408,9 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-* **この記事でセットアップした Azure Digital Twins インスタンスは引き続き使用するものの、そのモデル、ツイン、関係の一部または全部を削除する場合** は、[Azure Cloud Shell](https://shell.azure.com) ウィンドウから [az dt](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true) という CLI コマンドを使用して、目的の要素を削除することができます。
+* **この記事でセットアップした Azure Digital Twins インスタンスは引き続き使用するものの、そのモデル、ツイン、関係の一部または全部を削除する場合** は、[Azure Cloud Shell](https://shell.azure.com) ウィンドウから [az dt](/cli/azure/ext/azure-iot/dt) という CLI コマンドを使用して、目的の要素を削除することができます。
 
-    この方法では、このチュートリアルで作成した他の Azure リソース (IoT ハブ、Azure Functions アプリなど) は一切削除されません。 これらのリソースは、それぞれの種類に合った適切な [dt コマンド](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true)を使用して個別に削除できます。
+    この方法では、このチュートリアルで作成した他の Azure リソース (IoT ハブ、Azure Functions アプリなど) は一切削除されません。 これらのリソースは、それぞれの種類に合った適切な [dt コマンド](/cli/azure/reference-index)を使用して個別に削除できます。
 
 さらに、プロジェクト フォルダーもローカル コンピューターから削除してください。
 

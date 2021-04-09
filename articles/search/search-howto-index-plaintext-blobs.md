@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.openlocfilehash: b8881d3fa7ade08da103c5af4b828a12e74cc355
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99509454"
 ---
 # <a name="how-to-index-plain-text-blobs-in-azure-cognitive-search"></a>Azure Cognitive Search でプレーンテキスト BLOB のインデックスを作成する方法

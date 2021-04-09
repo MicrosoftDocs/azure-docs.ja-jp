@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/21/2020
+ms.date: 03/05/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 2f57e801720c6b546a58b216422629d192e8d2e6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f9be9272a898ad48f3553d4c5e48952e1fcdde81
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843317"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102218640"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>Azure Key Vault Managed HSM (プレビュー) に格納されているカスタマー マネージド キーによる暗号化を構成する
 
@@ -24,7 +24,10 @@ Azure Storage は、保存されているストレージ アカウント内の�
 
 この記事では、Azure CLI を使用して、マネージド HSM に格納されているカスタマー マネージド キーによる暗号化を構成する方法について説明します。 キー コンテナーに格納されているカスタマー マネージド キーを使用して暗号化を構成する方法については、「[Azure Key Vault に格納されているカスタマー マネージド キーによる暗号化を構成する](customer-managed-keys-configure-key-vault.md)」を参照してください。
 
-> [!NOTE]
+> [!IMPORTANT]
+>
+> Azure Key Vault Managed HSM に格納されているカスタマー マネージド キーによる暗号化は、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+>
 > Azure Key Vault と Azure Key Vault Managed HSM では、構成用に同じ API と管理インターフェイスがサポートされています。
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>ストレージ アカウントに ID を割り当てる

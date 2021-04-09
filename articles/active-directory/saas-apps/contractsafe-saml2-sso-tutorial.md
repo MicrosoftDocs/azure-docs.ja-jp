@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と ContractSafe Saml2 SSO の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と ContractSafe Saml2 SSO の統合 | Microsoft Docs'
 description: Azure Active Directory と ContractSafe Saml2 SSO の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 2d236b9910e2eda8e574d020544d625a68aefb81
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92455316"
 ---
-# <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ContractSafe Saml2 SSO の統合
+# <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と ContractSafe Saml2 SSO の統合
 
 このチュートリアルでは、ContractSafe Saml2 SSO と Azure Active Directory (Azure AD) を統合する方法について説明します。 ContractSafe Saml2 SSO と Azure AD を統合すると、次のことができます。
 
@@ -37,7 +37,7 @@ ms.locfileid: "92455316"
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 ContractSafe Saml2 SSO では、 **IDP** Initiated SSO がサポートされます。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 ContractSafe Saml2 SSO では、**IDP** Initiated SSO がサポートされます。
 
 ## <a name="add-contractsafe-saml2-sso-from-the-gallery"></a>ギャラリーからの ContractSafe Saml2 SSO の追加
 
@@ -47,7 +47,7 @@ Azure AD への ContractSafe Saml2 SSO の統合を構成するには、ギャ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **ContractSafe Saml2 SSO** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**ContractSafe Saml2 SSO**」と入力します。
 1. 結果のパネルから **ContractSafe Saml2 SSO** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-contractsafe-saml2-sso"></a>ContractSafe Saml2 SSO の Azure AD SSO の構成とテスト
@@ -57,8 +57,8 @@ Azure AD への ContractSafe Saml2 SSO の統合を構成するには、ギャ�
 ContractSafe Saml2 SSO で Azure AD SSO を構成してテストするには、次の項目を完了する必要があります。
 
 1. [Azure AD SSO を構成](#configure-azure-ad-sso)して、ユーザーがこの機能を使用できるようにします。
-   * [Azure AD のテスト ユーザーを作成](#create-an-azure-ad-test-user)し、 **B.Simon** のアカウントを使用して Azure AD SSO をテストします。
-   * [Azure AD テスト ユーザーを割り当て](#assign-the-azure-ad-test-user)て、 **B.Simon** が Azure AD SSO を使用できるようにします。
+   * [Azure AD のテスト ユーザーを作成](#create-an-azure-ad-test-user)し、**B.Simon** のアカウントを使用して Azure AD SSO をテストします。
+   * [Azure AD テスト ユーザーを割り当て](#assign-the-azure-ad-test-user)て、**B.Simon** が Azure AD SSO を使用できるようにします。
 
 1. [ContractSafe Saml2 SSO の構成](#configure-contractsafe-saml2-sso) - アプリケーション側で SSO 設定を構成します。
    * [ContractSafe Saml2 SSO のテスト ユーザーの作成](#create-a-contractsafe-saml2-sso-test-user) - ContractSafe Saml2 SSO で **B.Simon** に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
@@ -68,9 +68,9 @@ ContractSafe Saml2 SSO で Azure AD SSO を構成してテストするには、�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **ContractSafe Saml2 SSO** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **ContractSafe Saml2 SSO** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンを選択して設定を編集します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、**[基本的な SAML 構成]** の編集 (ペン) アイコンを選択して設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -106,7 +106,7 @@ ContractSafe Saml2 SSO で Azure AD SSO を構成してテストするには、�
 
 このセクションでは、Azure portal 内で **B.Simon** というテスト ユーザーを作成します。
 
-1. Azure portal の左ペインで、 **[Azure Active Directory]** を選択します。 **[ユーザー]** を選択し、 **[すべてのユーザー]** を選択します。
+1. Azure portal の左ペインで、**[Azure Active Directory]** を選択します。 **[ユーザー]** を選択し、 **[すべてのユーザー]** を選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
    1. **[名前]** フィールドに「`B.Simon`」と入力します。  
@@ -116,7 +116,7 @@ ContractSafe Saml2 SSO で Azure AD SSO を構成してテストするには、�
 
 ## <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、 **B.Simon** に ContractSafe Saml2 SSO へのアクセスを許可することで、このユーザーが Azure SSO を使用できるようにします。
+このセクションでは、**B.Simon** に ContractSafe Saml2 SSO へのアクセスを許可することで、このユーザーが Azure SSO を使用できるようにします。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[ContractSafe Saml2 SSO]** を選択します。

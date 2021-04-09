@@ -6,10 +6,10 @@ ms.author: dbradish
 manager: barbkess
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: adcb235500d6f0a32cf304d8f316b3915318b943
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99628887"
 ---
 - [Azure Cloud Shell](../articles/cloud-shell/quickstart.md) で Bash 環境を使用します。

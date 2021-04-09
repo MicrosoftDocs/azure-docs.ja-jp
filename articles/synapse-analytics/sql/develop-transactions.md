@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ceb242dcd05105b533e365e91afd9601cc550392
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 8af6802f785718ca6064a34c98d9f6dafc046a2c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116730"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104594769"
 ---
 # <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールでトランザクションを使用する
 
@@ -204,4 +204,4 @@ THROW は、専用 SQL プールで例外を発生させるための最新の実
 
 ## <a name="next-steps"></a>次のステップ
 
-トランザクションの最適化について詳しくは、[トランザクションのベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事をご覧ください。 [専用 SQL プール](best-practices-sql-pool.md)と[サーバーレス SQL プール](best-practices-sql-on-demand.md) のベスト プラクティス ガイドも用意されています。
+トランザクションの最適化について詳しくは、[トランザクションのベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事をご覧ください。 [専用 SQL プール](best-practices-dedicated-sql-pool.md)と[サーバーレス SQL プール](best-practices-serverless-sql-pool.md) のベスト プラクティス ガイドも用意されています。

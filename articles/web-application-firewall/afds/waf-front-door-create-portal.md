@@ -5,14 +5,14 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 02/18/2021
 ms.author: victorh
-ms.openlocfilehash: ba344c3b1570c041e1602bdfcde1b3a4055dc396
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 8b1d1007e817bafe3d75f0f0d7c3fc6eb5470854
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132756"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729472"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Front Door で Web アプリケーション ファイアウォール ポリシーを作成する
 
@@ -33,10 +33,10 @@ Front Door プロファイルを作成するには、[Front Door プロファイ
 
 最初に、ポータルを使用して管理された既定の規則セット (DRS) で基本的な WAF ポリシーを作成します。 
 
-1. 画面の左上で **[リソースの作成]** を選択し、 **WAF** を検索して、 **[Web application firewall (Preview)]\(Web アプリケーション ファイアウォール (プレビュー)\)** を選択して、 **[作成]** を選択します。
+1. 画面の左上で **[リソースの作成]** を選択し、**WAF** を検索して、 **[Web application firewall (Preview)]\(Web アプリケーション ファイアウォール (プレビュー)\)** を選択して、 **[作成]** を選択します。
 2. **[Create a WAF policy]\(WAF ポリシーの作成\)** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[確認と作成]** を選択します。
 
-    | 設定                 | Value                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | サブスクリプション            |Front Door のサブスクリプションの名前を選択します。|
     | Resource group          |Front Door のリソース グループの名前を選択します。|
@@ -62,19 +62,21 @@ Front Door プロファイルを作成するには、[Front Door プロファイ
 WAF ポリシーを作成するとき、既定では WAF ポリシーは **検出** モードになります。 **検出** モードでは、WAF はすべての要求をブロックせず、代わりに、WAF 規則に一致する要求は WAF ログに記録されます。
 WAF の動作を確認するには、モードの設定を **[検出]** から **[防止]** に変更できます。 **防止** モードでは、既定の規則セット (DRS) で定義されている規則に一致する要求はブロックされ、WAF ログに記録されます。
 
- :::image type="content" source="../media/waf-front-door-create-portal/policy.png" alt-text="[Create a W A F policy]\(W A F ポリシーの作成\) ページのスクリーンショット。[確認と作成] ボタンのほか、サブスクリプション、リソース グループ、ポリシー名の各リスト ボックスが表示されています。" border="false":::
+ :::image type="content" source="../media/waf-front-door-create-portal/policy.png" alt-text="[ポリシー設定] セクションのスクリーンショット。[モード] トグルが [防止] に設定されています。" border="false":::
 
 ### <a name="custom-rules"></a>カスタム規則
 
 **[カスタム ルール]** セクションの下の **[Add custom rule]\(カスタム ルールの追加\)** を選択することで、カスタム ルールを作成できます。 これで、カスタム ルールの構成ページが起動されます。 次に示すのは、クエリ文字列に **blockme** が含まれているときに要求をブロックするというカスタム ルールの構成方法の例です。
 
-:::image type="content" source="../media/waf-front-door-create-portal/customquerystring2.png" alt-text="[Create a W A F policy]\(W A F ポリシーの作成\) ページのスクリーンショット。[確認と作成] ボタンのほか、サブスクリプション、リソース グループ、ポリシー名の各リスト ボックスが表示されています。" border="false":::
+:::image type="content" source="../media/waf-front-door-create-portal/customquerystring2.png" alt-text="カスタム ルールの構成ページのスクリーンショット。QueryString 変数に blockme という値が含まれているかどうかを調べるルールの設定が表示されています。" border="false":::
 
 ### <a name="default-rule-set-drs"></a>既定の規則セット (DRS)
 
-Azure で管理される既定の規則セットは既定で有効になります。 規則グループ内の個々の規則を無効にするには、その規則グループ内の規則を展開し、規則番号の前の **チェック ボックス** をオンにして、上のタブの **[無効]** を選択します。 規則セット内の個々の規則のアクションの種類を変更するには、規則番号の前にあるチェック ボックスをオンにして、上のタブの **[Change action]\(アクションの変更\)** を選択します。
+Azure で管理される既定の規則セットは既定で有効になります。 現在の既定のバージョンは DefaultRuleSet_1.0 です。 WAF の **[管理されているルール]** 、 **[割り当て]** のドロップダウン リストで、最近提供されたルール セット Microsoft_DefaultRuleSet_1.1 を使用できます。
 
- :::image type="content" source="../media/waf-front-door-create-portal/managed2.png" alt-text="[Create a W A F policy]\(W A F ポリシーの作成\) ページのスクリーンショット。[確認と作成] ボタンのほか、サブスクリプション、リソース グループ、ポリシー名の各リスト ボックスが表示されています。" border="false":::
+規則グループ内の個々の規則を無効にするには、その規則グループ内の規則を展開し、規則番号の前の **チェック ボックス** をオンにして、上のタブの **[無効]** を選択します。 規則セット内の個々の規則のアクションの種類を変更するには、規則番号の前にあるチェック ボックスをオンにして、上のタブの **[Change action]\(アクションの変更\)** を選択します。
+
+ :::image type="content" source="../media/waf-front-door-create-portal/managed2.png" alt-text="[Managed rules]\(管理されているルール\) ページのスクリーンショット。ルール セット、ルール グループ、ルールのほか、[有効]、[無効]、[アクションを変更する] の各ボタンが表示されています。1 つのルールのチェック ボックスがオンになっています。" border="false":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

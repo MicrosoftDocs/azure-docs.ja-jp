@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: Zhchia
 ms.openlocfilehash: 91ae51b9a2785dbc40c55fa58b26763916e8d16c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101644580"
 ---
 # <a name="tutorial-configure-tic-tac-mobile-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Tic-Tac Mobile を構成する

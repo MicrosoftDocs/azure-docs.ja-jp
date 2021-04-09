@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/11/2020
 ms.author: zhchia
 ms.openlocfilehash: c9d19624d90b1228b2a44caeff7d103af3172ed9
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97516334"
 ---
 # <a name="tutorial-configure-contentful-for-automatic-user-provisioning"></a>チュートリアル:Contentful を構成して自動ユーザー プロビジョニングに対応させる

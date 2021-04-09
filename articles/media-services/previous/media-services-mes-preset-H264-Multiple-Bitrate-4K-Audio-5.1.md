@@ -1,7 +1,7 @@
 ---
 title: 264 Multiple Bitrate 4K Audio 5.1 | Microsoft Docs
 description: このトピックでは、**264 Multiple Bitrate 4K Audio 5.1** タスク プリセットの概要を説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: e91dbb9a9448796e484be34172c2ec0ee41047e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 764a92b4fe0e247f07e7f0024e9de5731b0134ee
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266852"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103013195"
 ---
 # <a name="h264-multiple-bitrate-4k-audio-51"></a>H264 Multiple Bitrate 4K Audio 5.1
 

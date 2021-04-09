@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.date: 06/17/2019
 ms.author: alkohli
 ms.openlocfilehash: 4b53cf607bdf60c785c7324d9ede526a0983b7e6
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97605277"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Azure Data Box Disk でデータのアップロードに関する問題をトラブルシューティングするためのログを理解する
@@ -30,7 +30,7 @@ ms.locfileid: "97605277"
 
 エラー ログの構造は詳細ログと同じですが、エラー ログでは成功した操作が除外されます。
 
-## <a name="download-logs"></a>ログのダウンロード
+## <a name="download-logs"></a>ログをダウンロードする
 
 アップロード ログを検索するには、次の手順を行います。
 
@@ -181,6 +181,6 @@ ms.locfileid: "97605277"
 |`DiskRenamed` |これらのファイルは Azure の名前付け規則に準拠していなかったため、名前が変更されました。 `BlobPath` フィールドで新しい名前を確認してください。 |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Data Box Disk の問題に関するサポート チケットを開きます](data-box-disk-contact-microsoft-support.md)。

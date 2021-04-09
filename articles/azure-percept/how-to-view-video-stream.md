@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
 ms.openlocfilehash: 5f77e99dc5c34867fef2b0ac47c709824fa4477d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102096005"
 ---
 # <a name="view-your-azure-percept-dks-rtsp-video-stream"></a>Azure Percept DK の RTSP ビデオ ストリームを表示する

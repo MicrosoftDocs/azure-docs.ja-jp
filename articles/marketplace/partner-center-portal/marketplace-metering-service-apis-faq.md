@@ -8,10 +8,10 @@ ms.date: 06/01/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: ddec23f695396b8322d51da62158a97456096ae8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87320002"
 ---
 # <a name="marketplace-metered-billing-apis---faq"></a>マーケットプレースの従量制課金 API - FAQ
@@ -80,7 +80,7 @@ SaaS サブスクリプションが削除された後で Marketplace プラッ�
 
 ### <a name="are-the-start-and-end-dates-of-saas-subscription-term-and-overage-usage-emission-connected"></a>SaaS サブスクリプション期間の開始日および終了日と、超過分使用状況の出力は接続されていますか?
 
-超過分イベントは、*サブスクライブ済み*状態の既存の SaaS サブスクリプションに対して、いつでも生成できます。 課金プランで定義されているポリシーに基づいて使用状況イベントを生成するのは、発行元の責任です。 超過分は、SaaS サブスクリプション期間で定義されている日付に基づいて計算する必要があります。 
+超過分イベントは、*サブスクライブ済み* 状態の既存の SaaS サブスクリプションに対して、いつでも生成できます。 課金プランで定義されているポリシーに基づいて使用状況イベントを生成するのは、発行元の責任です。 超過分は、SaaS サブスクリプション期間で定義されている日付に基づいて計算する必要があります。 
 
 たとえば、ある発行元が定義している SaaS プランでは、毎月 1000 メールまでは $100 の定額であり、1000 メールを超えるとカスタム ディメンションによってすべてのメールに $1 が請求されます。
 

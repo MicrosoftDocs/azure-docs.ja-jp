@@ -6,16 +6,16 @@ author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 2/16/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 021abce5c6cd83257ad65f529833848d8f14f534
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 02b47d7797eaebf6049099729ea51554a61a765e
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751125"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495440"
 ---
 ## <a name="prerequisites"></a>前提条件
 開始する前に、必ず次のことを行ってください。
@@ -23,7 +23,7 @@ ms.locfileid: "101751125"
 - アクティブなサブスクリプションがある Azure アカウントを作成します。 詳細については、[アカウントの無料作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)に関するページを参照してください。
 - [Android Studio](https://developer.android.com/studio) をインストールします。Android Studio は、依存関係をインストールするためのクイックスタート用の Android アプリケーションを作成するために使用します。
 - Azure Communication Services リソースを作成します。 詳細については、[Azure Communication リソースの作成](../../create-communication-resource.md)に関するページを参照してください。 このクイックスタート用に、自分のリソースの **エンドポイントを記録する** 必要があります。
-- **2 人** の Communication Services ユーザーを作成し、これらのユーザーに対して[ユーザー アクセス トークン](../../access-tokens.md)を発行します。 スコープは必ず **chat** に設定し、**トークン文字列と userId 文字列をメモしてください**。 このクイックスタートでは、最初の参加者でスレッドを作成した後、そのスレッドに 2 人目の参加者を追加します。
+- **2 人** の Communication Services ユーザーを作成し、これらのユーザーに対して [ユーザー アクセス トークン](../../access-tokens.md)を発行します。 スコープは必ず **chat** に設定し、**トークン文字列と userId 文字列をメモしてください**。 このクイックスタートでは、最初の参加者でスレッドを作成した後、そのスレッドに 2 人目の参加者を追加します。
 
 ## <a name="setting-up"></a>設定
 
@@ -39,11 +39,11 @@ ms.locfileid: "101751125"
 Gradle を使用して、必要な Communication Services の依存関係をインストールします。 コマンド ラインから、`ChatQuickstart` プロジェクトのルート ディレクトリ内に移動します。 アプリの build.gradle ファイルを開き、`ChatQuickstart` ターゲットに次の依存関係を追加します。
 
 ```
-implementation 'com.azure.android:azure-communication-common:1.0.0-beta.6'
-implementation 'com.azure.android:azure-communication-chat:1.0.0-beta.6'
+implementation 'com.azure.android:azure-communication-common:1.0.0-beta.7'
+implementation 'com.azure.android:azure-communication-chat:1.0.0-beta.7'
 ```
 
-#### <a name="exclude-meta-files-in-packaging-options"></a>パッケージ化オプションでメタ ファイルを除外する
+#### <a name="exclude-meta-files-in-packaging-options-in-root-buildgradle"></a>ルートの build.gradle 内のパッケージ化オプションでメタ ファイルを除外する
 ```
 android {
    ...
@@ -61,6 +61,17 @@ android {
 }
 ```
 
+#### <a name="add-a-maven-resource-in-root-buildgradle"></a>ルートの build.gradle に maven リソースを追加する
+```
+allprojects {
+    repositories {
+        ...
+        maven {
+            url 'https://trouterpublicpackages.z13.web.core.windows.net'
+        }
+    }
+```
+
 Android Studio で [sync now]\(今すぐ同期\) をクリックします。
 
 #### <a name="alternative-to-install-libraries-through-maven"></a>(代替方法) Maven を使用してライブラリをインストールするには
@@ -70,7 +81,7 @@ Android Studio で [sync now]\(今すぐ同期\) をクリックします。
 <dependency>
   <groupId>com.azure.android</groupId>
   <artifactId>azure-communication-chat</artifactId>
-  <version>1.0.0-beta.6</version>
+  <version>1.0.0-beta.7</version>
 </dependency>
 ```
 
@@ -90,7 +101,7 @@ import com.azure.android.communication.common.*;
     private String second_user_id = "<second_user_id>";
     private String threadId = "<thread_id>";
     private String chatMessageId = "<chat_message_id>";
-    private final String sdkVersion = "1.0.0-beta.6";
+    private final String sdkVersion = "1.0.0-beta.7";
     private static final String SDK_NAME = "azure-communication-com.azure.android.communication.chat";
     private static final String TAG = "--------------Chat Quickstart App-------------";
 
@@ -177,7 +188,7 @@ String id = "<user_id>";
 // The display name for the thread participant.
 String displayName = "initial participant";
 participants.add(new ChatParticipant()
-        .setId(id)
+        .setCommunicationIdentifier(new CommunicationIdentifierModel().setCommunicationUser(new CommunicationUserIdentifierModel().setId(id)))
         .setDisplayName(displayName)
 );
 
@@ -268,7 +279,10 @@ threadClient.sendChatMessage(threadId, message, new Callback<String>() {
 participants = new ArrayList<>();
 // The display name for the thread participant.
 displayName = "a new participant";
-participants.add(new ChatParticipant().setId(second_user_id).setDisplayName(secondUserDisplayName));
+participants.add(new ChatParticipant().setCommunicationIdentifier(
+          new CommunicationIdentifierModel().setCommunicationUser(
+              new CommunicationUserIdentifierModel().setId(second_user_id)
+          )).setDisplayName(secondUserDisplayName));
 // The model to pass to the add method.
 AddChatParticipantsRequest addParticipantsRequest = new AddChatParticipantsRequest()
   .setParticipants(participants);
@@ -376,7 +390,8 @@ void listChatParticipantsNext(String nextLink, AsyncPagedDataCollection<ChatPart
 コメント `<REMOVE A USER>` を、次のコードに置き換えます。
 
 ```java
-threadClient.removeChatParticipant(threadId, second_user_id, new Callback<Void>() {
+CommunicationIdentifierModel communicationIdentifierModel = new CommunicationIdentifierModel().setCommunicationUser(new CommunicationUserIdentifierModel().setId(second_user_id));
+threadClient.removeChatParticipant(threadId, communicationIdentifierModel, new Callback<Void>() {
     @Override
     public void onSuccess(Void result, okhttp3.Response response) {
         // Take further action.

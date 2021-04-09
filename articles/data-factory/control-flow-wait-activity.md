@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: 9271723e68e5edd6805f0197bca9cdefc3c5e921
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100388330"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>Azure Data Factory での wait アクティビティの実行
@@ -38,7 +38,7 @@ ms.locfileid: "100388330"
 -------- | ----------- | -------------- | --------
 name | `Wait` アクティビティの名前。 | String | はい
 type | **Wait** に設定する必要があります。 | String | はい
-waitTimeInSeconds | パイプラインが処理を続行するまでの待ち時間 (秒数)。 | 整数 | はい
+waitTimeInSeconds | パイプラインが処理を続行するまでの待ち時間 (秒数)。 | Integer | はい
 
 ## <a name="example"></a>例
 

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 67940db973f494cd4a12c2f16db528e0b113d656
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91449210"
 ---
 # <a name="how-requests-are-matched-to-a-routing-rule"></a>ルーティング規則に対する要求の照合方法
@@ -38,7 +38,7 @@ Front Door のルーティング規則の構成は、大きく分けて「左側
 要求の処理方法の決定は、キャッシュが有効として設定されているか、または特定のルートのものでないかによって下されます。 そのため、要求へのキャッシュ応答が存在しない場合は、構成されたバックエンド プール内の適切なバックエンドに当該要求が転送されます。
 
 ## <a name="route-matching"></a>ルートの照合
-このセクションは、Front Door のルーティング規則への照合方法に焦点を当てます。 基本的な概念は、まず「左側」のみを見て、**もっとも一致率が高いもの**を常に照合するということです。  まず HTTP プロトコル、フロント エンドのホスト、Path の順で照合します。
+このセクションは、Front Door のルーティング規則への照合方法に焦点を当てます。 基本的な概念は、まず「左側」のみを見て、**もっとも一致率が高いもの** を常に照合するということです。  まず HTTP プロトコル、フロント エンドのホスト、Path の順で照合します。
 
 ### <a name="frontend-host-matching"></a>フロント エンド ホストの照合
 フロント エンドのホストを照合するときは、次に定義するロジックを使用します。

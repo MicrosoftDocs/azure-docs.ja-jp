@@ -5,15 +5,15 @@ author: boris-bazilevskiy
 manager: nmurav
 services: azure-communication-services
 ms.author: bobazile
-ms.date: 02/09/2021
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 06029590a2fbca66cd3a672af3f93d6a842ba0b2
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: d5e4920dcc422e848266f35c8a59175b5149b924
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651028"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103492746"
 ---
 # <a name="telephony-concepts"></a>テレフォニーの概念
 

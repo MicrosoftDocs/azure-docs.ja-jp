@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: cbc7c82803115f71db233be94d62a857ba050b63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86050210"
 ---
 #### <a name="to-download-hotfixes"></a>修正プログラムをダウンロードするには
@@ -20,7 +20,7 @@ ms.locfileid: "86050210"
 
     ![カタログのインストール](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
 
-3. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号 (**4037264** など) を入力して、 **[検索]** をクリックします。
+3. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号 (**4037264** など) を入力して、**[検索]** をクリックします。
    
     "**Cumulative Software Bundle Update 5.0 for StorSimple 8000 Series**" のような修正プログラムの一覧が表示されます。
    
@@ -38,7 +38,7 @@ ms.locfileid: "86050210"
 
 通常モードの修正プログラムをインストールして確認するには、次の手順を実行します。 Azure Portal を使用して既にインストールしてある場合は、[メンテナンス モードの修正プログラムのインストールと確認](#to-install-and-verify-maintenance-mode-hotfixes)に進みます。
 
-1. 修正プログラムをインストールするには、StorSimple デバイスのシリアル コンソールで Windows PowerShell インターフェイスにアクセスします。 詳細については、[PuTTy を使用してシリアル コンソールに接続する方法](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)に関するセクションを参照してください。 コマンド プロンプトで **Enter**キーを押します。
+1. 修正プログラムをインストールするには、StorSimple デバイスのシリアル コンソールで Windows PowerShell インターフェイスにアクセスします。 詳細については、[PuTTy を使用してシリアル コンソールに接続する方法](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)に関するセクションを参照してください。 コマンド プロンプトで **Enter** キーを押します。
 2. オプション 1 の **[Log in with full access]\(フル アクセスによるログイン\)** を選択します。 まず、パッシブ コントローラーに修正プログラムをインストールすることをお勧めします。
 3. 修正プログラムをインストールするには、コマンド プロンプトで次のように入力します。
    

@@ -4,10 +4,10 @@ description: Live Video Analytics on IoT Edge を使用して、クラウドに�
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.openlocfilehash: 0351f10d9fac3ad7e3b4fdd5fd549eb7c0023694
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99490897"
 ---
 # <a name="playback-of-recordings"></a>記録の再生 

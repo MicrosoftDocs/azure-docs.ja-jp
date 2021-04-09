@@ -13,10 +13,10 @@ adobe-target-activity: DocsExp-A/B-384740-MongoDB-2.8.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./connect-mongodb-account-experimental
 ms.openlocfilehash: b3e10931307914f1471b8a6fbffd38953ee4717b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101659479"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Azure Cosmos DB への MongoDB アプリケーションの接続

@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: d1a0a6ad5b45af2157b960f8990574e47d10eeb2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2dbb491e77f132daf7b432f27705eba9e3e3cd3c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718422"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036964"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>CI/CD ツールを使用して Azure Stream Analytics ジョブのビルド、テスト、デプロイを自動化する
 
@@ -122,6 +122,9 @@ azure-streamanalytics-cicd addtestcase -project <projectFullPath> [-testConfigPa
 |---|---|
 | `-project` | Visual Studio Code プロジェクトの **asaproj.json** ファイルまたは Visual Studio プロジェクトの **<プロジェクト名>.asaproj** のパス。 |
 | `-testConfigPath` | テスト構成ファイルのパス。 指定しなかった場合は、現在 **asaproj.json** ファイルが置かれているディレクトリの **\test** でファイルが検索されます。既定のファイル名は **testConfig.json** です。 新しいファイルが存在しない場合は作成されます。 |
+
+> [!NOTE]
+> 生成された **testConfig.json** ファイルの `Script` 値は、コンテキストを与える目的でのみ使用され、テスト ロジックでは使用されません。 
 
 #### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 

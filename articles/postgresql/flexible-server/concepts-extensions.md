@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: 7e9268f69b0ec8d06cd86fe5aec19a46b20a3a76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/05/2021
+ms.openlocfilehash: d223d2c6a83b1389cd70344efdb48c357dda4ac4
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710585"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454589"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーの PostgreSQL 拡張機能
 
@@ -53,6 +53,7 @@ Postgres バージョン 12 を搭載した Azure Database for PostgreSQL - フ�
 > |[ltree](https://www.postgresql.org/docs/12/ltree.html)                        | 1.1             | 階層ツリー状の構造体のデータ型|
 > |[pageinspect](https://www.postgresql.org/docs/12/pageinspect.html)                        | 1.7             | 低レベルでデータベース ページの内容を検査する|
 > |[pg_buffercache](https://www.postgresql.org/docs/12/pgbuffercache.html)               | 1.3             | 共有バッファー キャッシュを確認する|
+> |[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36)                        | 1.2             | PostgreSQL のジョブ スケジューラ|
 > |[pg_freespacemap](https://www.postgresql.org/docs/12/pgfreespacemap.html)               | 1.2             | 空き領域マップ (FSM) を確認する|
 > |[pg_prewarm](https://www.postgresql.org/docs/12/pgprewarm.html)                   | 1.2             | 関係データをプレウォームする|
 > |[pg_stat_statements](https://www.postgresql.org/docs/12/pgstatstatements.html)           | 1.7             | 実行されたすべての SQL ステートメントの実行統計情報を追跡する|
@@ -102,6 +103,7 @@ Postgres バージョン 11 を搭載した Azure Database for PostgreSQL - フ�
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | 階層ツリー状の構造体のデータ型|
 > |[pageinspect](https://www.postgresql.org/docs/11/pageinspect.html)                        | 1.7             | 低レベルでデータベース ページの内容を検査する|
 > |[pg_buffercache](https://www.postgresql.org/docs/11/pgbuffercache.html)               | 1.3             | 共有バッファー キャッシュを確認する|
+> |[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36)                        | 1.2             | PostgreSQL のジョブ スケジューラ|
 > |[pg_freespacemap](https://www.postgresql.org/docs/11/pgfreespacemap.html)               | 1.2             | 空き領域マップ (FSM) を確認する|
 > |[pg_prewarm](https://www.postgresql.org/docs/11/pgprewarm.html)                   | 1.2             | 関係データをプレウォームする|
 > |[pg_stat_statements](https://www.postgresql.org/docs/11/pgstatstatements.html)           | 1.6             | 実行されたすべての SQL ステートメントの実行統計情報を追跡する|
@@ -130,6 +132,27 @@ Postgres バージョン 11 を搭載した Azure Database for PostgreSQL - フ�
 
 これらの 2 つの拡張機能を使用する予定がある場合は、[VNet 統合](concepts-networking.md)でサーバーをデプロイすることをお勧めします。 既定では、VNET 統合によって、VNET 内のサーバー間の接続が許可されます。 [VNet ネットワーク セキュリティ グループ](../../virtual-network/manage-network-security-group.md)を使用してアクセスをカスタマイズすることもできます。
 
+## <a name="pg_cron"></a>pg_cron
+
+[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36) は、PostgreSQL のための cron ベースの簡単なジョブ スケジューラであり、拡張機能としてデータベース内で実行されます。 PostgreSQL データベース内でメンテナンス作業を定期的に実行する目的で pg_cron 拡張機能を使用できます。 たとえば、テーブルを定期的に消去したり、古いデータ ジョブを削除したりできます。
+
+`pg_cron` では、複数のジョブを並行して実行できますが、一度に実行できるジョブのインスタンスは 1 つだけです。 2 回目の実行が初回の完了前になった場合、2 回目の実行がキューに入り、初回実行の完了直後に開始されます。 それによってジョブ実行が厳密に予定と同じ回数になり、同時に実行されることがありません。
+
+次に例をいくつか示します。
+
+土曜日午前 3:30 (GMT) に古いデータを削除するには
+```
+SELECT cron.schedule('30 3 * * 6', $$DELETE FROM events WHERE event_time < now() - interval '1 week'$$);
+```
+毎日午前 10:00 (GMT) にバキュームを実行するには
+```
+SELECT cron.schedule('0 10 * * *', 'VACUUM');
+```
+
+pg_cron からの全タスクのスケジュールを解除するには
+```
+SELECT cron.unschedule(jobid) FROM cron.job;
+```
 
 ## <a name="pg_prewarm"></a>pg_prewarm
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: a0dcf1a5475032b5f76bff8a7ba20ffb9e295987
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92449039"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-glassfrog"></a>チュートリアル: Azure Active Directory と GlassFrog の統合
@@ -41,7 +41,7 @@ GlassFrog と Azure AD の統合を構成するには、次のものが必要で
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* GlassFrog では、 **SP** によって開始される SSO がサポートされます
+* GlassFrog では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-glassfrog-from-the-gallery"></a>ギャラリーからの GlassFrog の追加
 
@@ -61,13 +61,13 @@ Azure AD への GlassFrog の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **GlassFrog** 」と入力し、結果パネルで **[GlassFrog]** を選び、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**GlassFrog**」と入力し、結果パネルで **[GlassFrog]** を選び、**[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果一覧の GlassFrog](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、GlassFrog で Azure AD シングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、GlassFrog で Azure AD シングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと GlassFrog 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 GlassFrog で Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ GlassFrog で Azure AD シングル サインオンを構成してテストす�
 
 GlassFrog で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **GlassFrog** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **GlassFrog** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -140,7 +140,7 @@ GlassFrog で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -152,7 +152,7 @@ GlassFrog で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に GlassFrog へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[GlassFrog]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[GlassFrog]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

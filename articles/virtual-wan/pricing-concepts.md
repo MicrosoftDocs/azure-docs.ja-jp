@@ -10,10 +10,10 @@ ms.date: 12/08/2020
 ms.author: reyandap
 ms.custom: references_pricing
 ms.openlocfilehash: 13451291544f704000ab61d41ed5014fa69298e4
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100517690"
 ---
 # <a name="about-virtual-wan-pricing"></a>Virtual WAN の価格について

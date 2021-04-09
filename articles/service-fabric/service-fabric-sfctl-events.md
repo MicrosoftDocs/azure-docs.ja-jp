@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 635bddef1a98d6ed2b112662d8c9c44fe65e9e32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "76906092"
 ---
 # <a name="sfctl-events"></a>sfctl イベント
@@ -19,7 +19,7 @@ EventStore システム サービスを追加するには、6.4 以降を実行�
 
 ## <a name="commands"></a>コマンド
 
-|command|説明|
+|コマンド|説明|
 | --- | --- |
 | all-applications-list | すべてのアプリケーション関連のイベントを取得します。 |
 | all-nodes-list | すべてのノード関連のイベントを取得します。 |

@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 78a543fabadcc0d4e1766af1bc5c65aac0dadebe
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91358927"
 ---
 # <a name="track-the-progress-of-data-science-projects"></a>データ サイエンス プロジェクトの進行状況の追跡
@@ -36,15 +36,15 @@ Azure DevOps でダッシュボードとウィジェットの作成方法とカ�
 
 - **カウントダウン** タイルには、現在のスプリントに保持される日数が表示されます。 
 
-- 2 つの**コード タイル**には、過去 7 日間の 2 つのプロジェクト リポジトリのコミット数が表示されます。 
+- 2 つの **コード タイル** には、過去 7 日間の 2 つのプロジェクト リポジトリのコミット数が表示されます。 
 
-- **TDSP Customer Project の作業項目**には、すべての作業項目のクエリの結果とその状態が表示されます。 
+- **TDSP Customer Project の作業項目** には、すべての作業項目のクエリの結果とその状態が表示されます。 
 
 - **累積フローダイアグラム** (CFD) には、終了した作業項目とアクティブな作業項目の数が表示されます。
 
-- **バーンダウン チャート**には、スプリントの残りの時間に対してまだ完了しているない作業が示されます。
+- **バーンダウン チャート** には、スプリントの残りの時間に対してまだ完了しているない作業が示されます。
 
-- **バーンアップ チャート**には、スプリントの作業量の合計と比較して、完了した作業が示されます。
+- **バーンアップ チャート** には、スプリントの作業量の合計と比較して、完了した作業が示されます。
 
 ![Azure DevOps ダッシュボードの例を示すスクリーンショット。](./media/track-progress/dashboard.png)
 

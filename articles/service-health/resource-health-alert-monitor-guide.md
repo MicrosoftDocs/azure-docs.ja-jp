@@ -4,10 +4,10 @@ description: Azure リソースが利用不可になったときに通知する�
 ms.topic: conceptual
 ms.date: 6/23/2020
 ms.openlocfilehash: e48c400e5be3516b08496db7a4cb6a19e45d6c97
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100594626"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Azure portal を使用してリソースの正常性アラートを構成する

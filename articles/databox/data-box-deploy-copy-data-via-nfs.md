@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: alkohli
 ms.openlocfilehash: d53a619dc6ca5fb0f43f6097664f50bf22943928
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97678884"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>チュートリアル:Azure Data Box に NFS 経由でデータをコピーする

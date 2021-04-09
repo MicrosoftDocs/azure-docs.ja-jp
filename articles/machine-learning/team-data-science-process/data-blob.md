@@ -12,14 +12,14 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 5a088d5918a957036b905db9136f9b16e5f0527e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93307162"
 ---
-# <a name="process-azure-blob-data-with-advanced-analytics"></a><a name="heading"></a>Azure  BLOB データを高度な分析を使用して処理する
-このドキュメントでは、データの探索および Azure Blob Storage に保存されたデータからの特徴の生成について説明します。 
+# <a name="process-azure-blob-data-with-advanced-analytics"></a><a name="heading"></a>高度な分析を使用して Azure BLOB データを処理する
+このドキュメントでは、データの探索および Azure BLOB ストレージに保存されたデータからの特徴の生成について説明します。 
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>Pandas データ フレームにデータを読み込む
 データセットを探索および操作するには、データを BLOB ソースからローカル ファイルにダウンロードする必要があります。このローカル ファイルは、Pandas データ フレームに読み込むことができます。 この手順に必要な操作は次のとおりです。

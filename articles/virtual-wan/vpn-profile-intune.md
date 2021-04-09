@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/04/2021
 ms.author: cherylmc
 ms.openlocfilehash: ca4aa9244fdaf57927caf86f82b1a26d5678b8ca
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99576853"
 ---
 # <a name="create-custom-intune-profiles-to-deploy-user-vpn-client-profiles"></a>カスタム Intune プロファイルを作成してユーザー VPN クライアント プロファイルをデプロイする

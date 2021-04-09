@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/23/2020
 ms.openlocfilehash: 178c339f6f47569160a9a748794678c610f35734
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87171639"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-postgresql"></a>PostgreSQL での認証に Azure Active Directory を使用する
@@ -137,11 +137,11 @@ psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgre
 
 接続時の重要な考慮事項:
 
-* `user@tenant.onmicrosoft.com` は、接続に使用しようとしている Azure AD ユーザーまたはグループの名前です。
-* Azure AD ユーザー/グループ名の後には常にサーバー名を追加してください (`@mydb` など)。
-* Azure AD ユーザーまたはグループ名の正確なスペルを使用するようにしてください。
-* Azure AD ユーザーおよびグループ名は大文字と小文字が区別されます。
-* グループとして接続する場合は、グループ名のみ (`GroupName@mydb` など) を使用します。
+* `user@tenant.onmicrosoft.com` は、接続に使用しようとしている Azure AD ユーザーまたはグループの名前です
+* Azure AD ユーザー/グループ名の後には常にサーバー名を付加してください (`@mydb` など)
+* Azure AD ユーザーまたはグループ名の正確なスペルを使用するようにしてください
+* Azure AD ユーザーおよびグループの名前では、大文字と小文字が区別されます
+* グループとして接続する場合は、グループ名のみ (`GroupName@mydb` など) を使用します
 * 名前にスペースが含まれている場合は、各スペースの前に `\` を使用してそれをエスケープします。
 
 これで、Azure AD 認証を使用して PostgreSQL サーバーに対して認証されました。

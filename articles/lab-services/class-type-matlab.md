@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 137959f51b08dceee150962f77110ee2ac1dc193
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85445000"
 ---
 # <a name="setup-a-lab-to-teach-matlab"></a>MATLAB を教えるためのラボを設定する
@@ -77,7 +77,7 @@ MathWorks の Web サイトから ISO イメージをダウンロードするこ
 2. [https://www.mathworks.com/downloads](https://www.mathworks.com/downloads) に移動します。
 3. インストールする MATLAB のリリースを選択します。
 4. [Related links]\(関連リンク\) の下にある [Get {version}.iso image]\({version}.iso イメージを入手する\) リンクをクリックします。{version} は R2020a などです。
-5. Windows 用の青い**リリースのダウンロード** リンクをクリックします。
+5. Windows 用の青い **リリースのダウンロード** リンクをクリックします。
 
 ### <a name="run-installer"></a>インストーラーを実行する
 

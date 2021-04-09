@@ -4,14 +4,14 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 091e4dc0759ce1b227349d5d1b6b08b9eda66ee0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 72050ff4887642ba16d52948c1c1253ca01443c0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017349"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102473805"
 ---
-* 変換作業は VM の再起動を伴うので、既に設定されているメンテナンス期間中に VM の移行をスケジュールしてください。 
+* 変換作業によって VM が再起動するので、既に設定されているメンテナンス期間中に VM の移行をスケジュールしてください。 
 
 * 一度行った変換を元に戻すことはできません。 
 

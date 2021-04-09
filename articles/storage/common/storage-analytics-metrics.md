@@ -10,10 +10,10 @@ ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
 ms.openlocfilehash: d900ffa4481ba2b6deb21a8325f3f8def8084f84
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101714733"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics のメトリック (クラシック)
@@ -28,7 +28,7 @@ Azure Storage では、Storage Analytics を利用し、ストレージ サー�
  新しいストレージ アカウントでは、Storage Analytics Metrics が既定で有効になっています。 メトリックは、PowerShell を使用するか Azure CLI を使用して [Azure portal](https://portal.azure.com/) で構成することができます。 ステップ バイ ステップ ガイダンスについては、[Azure Storage Analytics メトリックを有効にして管理する (クラシック)](./manage-storage-analytics-logs.md) に関する記事を参照してください。 また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。 サービスごとに Storage Analytics を有効にするには、サービス プロパティの設定操作を行います。  
 
 > [!NOTE]
-> Storage Analytics メトリックは、Azure Blob Storage、Azure Queue ストレージ、Azure Table ストレージ、Azure Files でお使いいただけます。
+> Storage Analytics メトリックは、Azure Blob ストレージ、Azure Queue ストレージ、Azure Table ストレージ、Azure Files でお使いいただけます。
 > Storage Analytics メトリックはクラシック メトリックになりました。 Microsoft では、Storage Analytics メトリックの代わりに、[Azure Monitor のストレージ メトリック](../blobs/monitor-blob-storage.md)の使用をお勧めしています。
 
 ## <a name="transaction-metrics"></a>トランザクション メトリック  

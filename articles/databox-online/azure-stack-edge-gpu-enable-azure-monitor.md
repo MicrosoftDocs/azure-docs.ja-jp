@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/02/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 199ec8e2f1e8eb74d971286a4fc6180eb8b72f2a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c2f66895fccd14dcffd8c5570f1d5f46933090aa
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100595979"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102439189"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスで Azure Monitor を有効にする
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Azure Stack Edge Pro GPU デバイス上のコンテナーの監視は、複数のコンピューティング アプリケーションを実行している場合に特に重要です。 Azure Monitor を使用すると、デバイスで実行されている Kubernetes クラスターからコンテナー ログとメモリおよびプロセッサ メトリックを収集できます。
 

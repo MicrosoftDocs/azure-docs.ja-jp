@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 17677ea89b04659de66b9bda35975b96ff33473a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368334"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740785"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>チュートリアル:Front Door カスタム ドメインで HTTPS を構成する
 
@@ -59,7 +59,7 @@ Azure Front Door で管理された証明書を使用する場合、HTTPS 機能
 
 カスタム ドメインで HTTPS を有効にするには、次の手順のようにします。
 
-1. [Azure portal](https://portal.azure.com) で、 **Front Door** プロファイルを参照します。
+1. [Azure portal](https://portal.azure.com) で、**Front Door** プロファイルを参照します。
 
 2. フロントエンド ホストのリストで、カスタム ドメインを含めるために HTTPS を有効にするカスタム ドメインを選択します。
 
@@ -84,7 +84,7 @@ Azure Front Door で管理された証明書を使用する場合、HTTPS 機能
 > [!WARNING]
 > Azure Front Door では、現在、Front Door 構成と同じサブスクリプションの Key Vault アカウントのみがサポートされています。 Front Door とは異なるサブスクリプションの Key Vault を選択すると、エラーが発生します。
 
-2. Azure Key Vault 証明書: 証明書が既にある場合は、Azure Key Vault アカウントに直接アップロードできます。または、Azure Key Vault と統合されているパートナー CA の 1 つから、Azure Key Vault を使用して新しい証明書を直接作成できます。 証明書は、 **シークレット** ではなく **証明書** オブジェクトとしてアップロードします。
+2. Azure Key Vault 証明書: 証明書が既にある場合は、Azure Key Vault アカウントに直接アップロードできます。または、Azure Key Vault と統合されているパートナー CA の 1 つから、Azure Key Vault を使用して新しい証明書を直接作成できます。 証明書は、**シークレット** ではなく **証明書** オブジェクトとしてアップロードします。
 
 > [!NOTE]
 > 独自の TLS/SSL 証明書については、Front Door は EC 暗号化アルゴリズムを使用した証明書をサポートしていません。
@@ -108,7 +108,7 @@ Azure Key Vault アカウント内の証明書にアクセスするには、Azur
 
 1. キー コンテナー アカウントで、[設定] で **[アクセス ポリシー]** 、 **[新規追加]** の順に選択して新しいポリシーを作成します。
 
-2. **[プリンシパルの選択]** で、 **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** を検索し、 **[Microsoft.Azure.Frontdoor]** を選びます。 **[選択]** をクリックします。
+2. **[プリンシパルの選択]** で、**ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** を検索し、 **[Microsoft.Azure.Frontdoor]** を選びます。 **[選択]** をクリックします。
 
 3. **[シークレットのアクセス許可]** で **[取得]** を選択して、Front Door に証明書の取得を許可します。
 
@@ -133,12 +133,7 @@ Azure Key Vault アカウント内の証明書にアクセスするには、Azur
     Azure Front Door では以下の情報が一覧表示されます。 
     - サブスクリプション ID に対するキー コンテナー アカウント。 
     - 選択したキー コンテナーの下の証明書 (シークレット)。 
-    - 利用可能な証明書バージョン。 
-
-> [!NOTE]
-> 証明書のバージョンを空白のままにすると、次のようになります。
-> - 証明書の最新バージョンが選択される。
-> - キー コンテナーで新しいバージョンの証明書が利用可能になると、自動的にローテーションが行われて証明書が最新バージョンになる。
+    - 利用可能な証明書バージョン。
  
 5. 独自の証明書を使用する場合には、ドメインの検証は必要ありません。 「[伝達を待機する](#wait-for-propagation)」に進んでください。
 
@@ -153,9 +148,9 @@ CNAME レコードでカスタム エンドポイントにマップされた使�
 
 独自の証明書を使用している場合には、ドメインの検証は必要ありません。
 
-CNAME レコードは、次の形式にする必要があります。ここで *Name* はカスタム ドメイン名で、 *Value* は Front Door の既定の .azurefd.net ホスト名です。
+CNAME レコードは、次の形式にする必要があります。ここで *Name* はカスタム ドメイン名で、*Value* は Front Door の既定の .azurefd.net ホスト名です。
 
-| 名前            | 種類  | 値                 |
+| 名前            | Type  | 値                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
@@ -252,7 +247,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ### <a name="disable-the-https-feature"></a>HTTPS 機能を無効にする 
 
-1. [Azure portal](https://portal.azure.com) で、 **Azure Front Door** 構成を参照します。
+1. [Azure portal](https://portal.azure.com) で、**Azure Front Door** 構成を参照します。
 
 2. フロントエンド ホストのリストで、HTTPS を無効にするカスタム ドメインをクリックします。
 
@@ -280,7 +275,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 * ドメインを検証する。
 * カスタム ドメインの HTTPS を有効にする。
 
-Front Door の geo フィルタリング ポリシーを設定する方法については、次のチュートリアルに進んでください。
+Front Door のジオフィルタリング ポリシーを設定する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [geo フィルタリング ポリシーを設定する](front-door-geo-filtering.md)

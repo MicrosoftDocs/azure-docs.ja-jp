@@ -4,10 +4,10 @@ description: Azure Data Box を使用して、DPM および MABS からオフラ
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.openlocfilehash: 1cfd9131099ad6a8ccd3d43e93f3d97641514f03
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96752551"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>DPM および MABS の Azure Data Box を使用したオフライン シード処理 (プレビュー)
@@ -42,7 +42,7 @@ Azure Data Box に基づくオフライン バックアップには、[Azure Imp
 | \<= 7.2 TB | [Azure Data Box Disk](../databox/data-box-disk-overview.md) |
 | > 7.2 TB かつ <= 80 TB\*\* | [Azure Data Box (100 TB)](../databox/data-box-overview.md) |
 
-\* 一般的な圧縮率は 10% から 20% の間です <br>
+\* 一般的な圧縮率は 10% から 20% の間で変化します <br>
 \*\* 1 つのデータ ソースの初期バックアップ データが 80 TB を超えると予想される場合は、[SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com) にご連絡ください。
 
 > [!IMPORTANT]
@@ -112,11 +112,11 @@ DPM または MABS サーバーはシステム コンテキストで動作する
 
 1. DPM または MABS サーバーで、[新しい保護グループを作成する](/system-center/dpm/create-dpm-protection-groups)手順に従います。 既存の保護グループにオンライン保護を追加する場合は、既存の保護グループを右クリックし、 **[オンライン保護の追加]** を選択して、**手順 8** から開始します。
 2. **[グループ メンバーの選択]** ページで、バックアップするコンピューターとソースを指定します。
-3. **[データ保護方法の選択]** ページで、短期および長期バックアップを処理する方法を指定します。 必ず、 **[オンライン保護を利用する]** を選択してください。
+3. **[データの保護方法の選択]** ページで、短期および長期のバックアップの処理方法を指定します。 必ず、 **[オンライン保護を利用する]** を選択してください。
 
    ![新しい保護グループを作成する](./media/offline-backup-azure-data-box-dpm-mabs/create-new-protection-group.png)
 
-4. **[短期的な目標の選択]** ページで、ディスクで短期的なストレージにバックアップする方法を指定します。
+4. **[短期的な目標値の選択]** ページで、ディスク上の短期記憶域へのバックアップ方法を指定します。
 5. **[ディスク割り当ての確認]** ページで、保護グループに割り当てられる記憶域プールのディスク領域を確認します。
 6. **[レプリカの作成方法の選択]** ページで、 **[自動でネットワーク経由]** を選択します。
 7. **[整合性チェック オプションの選択]** ページで、整合性チェックを自動化する方法を選択します。
@@ -124,7 +124,7 @@ DPM または MABS サーバーはシステム コンテキストで動作する
 
     ![オンライン保護データの指定](./media/offline-backup-azure-data-box-dpm-mabs/specify-online-protection-data.png)
 
-9. **[オンライン バックアップ スケジュールの指定]** ページで、Azure への増分バックアップを行う頻度を指定します。
+9. **[オンライン バックアップ スケジュールの指定]** ページで、Azure への増分バックアップの頻度を指定します。
 10. **[オンライン保持ポリシーの指定]** ページでは、毎日、毎週、毎月、毎年のバックアップから作成される回復ポイントを Azure に保持する方法を指定します。
 11. ウィザードの **[オンライン レプリケーションの選択]** 画面で、 **[Microsoft 所有のディスクを使用して転送]** オプションを選び、 **[次へ]** を選択します。
 
@@ -191,9 +191,9 @@ DPM または MABS サーバーはシステム コンテキストで動作する
 
 ## <a name="post-backup-steps"></a>バックアップ後の手順
 
-Azure Data Box Disk へのデータ バックアップが成功したら、これらの手順に従います。
+Azure Data Box Disk へのデータのバックアップに成功したら、これらの手順に従います。
 
-- [こちらの記事](../databox/data-box-disk-deploy-picked-up.md)の手順に従って、Azure Data Box Disk を Azure に発送します。 Azure Data Box の 100 TB デバイスを使用した場合は、[これらの手順](../databox/data-box-deploy-picked-up.md)に従って Azure Data Box を Azure に発送してください。
+- [こちらの記事](../databox/data-box-disk-deploy-picked-up.md)の手順に従って、Azure Data Box Disk を Azure に発送します。 Azure Data Box 100 TB デバイスを使用した場合は、[これらの手順](../databox/data-box-deploy-picked-up.md)に従って、Azure Data Box を Azure に発送します。
 - Azure portal で [Data Box ジョブを監視](../databox/data-box-disk-deploy-upload-verify.md)します。 Azure Data Box ジョブが "*完了*" になると、DPM または MABS サーバーによって、次回のスケジュールされたバックアップ時に、ストレージ アカウントから Recovery Services コンテナーにデータが自動的に移動されます。 その後、回復ポイントが正常に作成されると、そのバックアップ ジョブは "*完了したジョブ*" としてマークされます。
 
   > [!NOTE]
@@ -213,7 +213,7 @@ DPM サーバー上の Microsoft Azure Backup (MAB) エージェントによっ�
 
 ### <a name="verify-if-the-issue-is-caused-by-this-specific-root-cause"></a>問題がこの特定の根本原因によって発生しているかどうかを確認する
 
-確実にエラーの原因が上記の[問題](#issue)であることを確かめるには、次のいずれかの手順を行います。
+エラーが確実に上記の[問題](#issue)が原因で発生していることを確認するには、次のいずれかの手順を行います。
 
 #### <a name="step-1"></a>ステップ 1
 
@@ -221,9 +221,9 @@ DPM サーバー上の Microsoft Azure Backup (MAB) エージェントによっ�
 
 ![Azure Recovery Services エージェント](./media/offline-backup-azure-data-box-dpm-mabs/azure-recovery-services-agent.png)
 
-#### <a name="step-2"></a>ステップ 2
+#### <a name="step-2"></a>手順 2.
 
-1. インストール パスにある **Temp** フォルダーを開きます (既定の temp フォルダーのパスは *C:\Program Files\Microsoft Azure Recovery Services Agent\Temp* です)。*CBUICurr* ファイルを探し、そのファイルを開きます。
+1. インストール パスの **Temp** フォルダーを開きます (既定の一時フォルダーのパスは、*C:\Program Files\Microsoft Azure Recovery Services Agent\Temp* です)。*CBUICurr* ファイルを見つけて、そのファイルを開きます。
 2. *CBUICurr* ファイルで、最後の行までスクロールし、エラーの原因が "Unable to create an Azure AD application credential in customer's account. 例外:Update to existing credential with KeyId \<some guid> isn't allowed (お客様のアカウントには Azure AD アプリケーション資格情報を作成できません。例外: KeyId が <some guid> の既存の資格情報を更新することはできません)" であるかどうかを確認します。
 
 ### <a name="workaround"></a>回避策
@@ -244,12 +244,12 @@ DPM サーバー上の Microsoft Azure Backup (MAB) エージェントによっ�
 
 1. **[Manage computer certificate application]\(コンピューター証明書の管理アプリケーション\)**  >  **[個人用]** タブの順に開き、`CB_AzureADCertforOfflineSeeding_<ResourceId>` という名前の証明書を探します。
 2. 上記の証明書を選択し、 **[すべてのタスク]** を右クリックして、秘密キーなしの .cer 形式で **[エクスポート]** します。
-3. **ポイント 2** に記載されている Azure オフライン バックアップ アプリケーションにアクセスします。 **[設定]**  >  **[キー]**  >  **[公開キーのアップロード]** で、前の手順でエクスポートされた証明書をアップロードします。
+3. **ポイント 2** に記載されている Azure オフライン バックアップ アプリケーションにアクセスします。 **[設定]**  >  **[キー]**  >  **[公開キーのアップロード]** で、上の手順でエクスポートされた証明書をアップロードします。
 
    ![公開キーをアップロードする](./media/offline-backup-azure-data-box-dpm-mabs/upload-public-keys.png)
 
 4. サーバーで、 **[ファイル名を指定して実行]** ウィンドウに「**regedit**」と入力して、レジストリを開きます。
-5. レジストリ *Computer\HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider* に移動します。 **[CloudBackupProvider]** を右クリックして、`AzureADAppCertThumbprint_<Azure User Id>` という名前の新しい文字列値を追加します。
+5. レジストリ *Computer\HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider* に移動します。 **CloudBackupProvider** を右クリックし、`AzureADAppCertThumbprint_<Azure User Id>` という名前の新しい文字列値を追加します。
 
     >[!NOTE]
     > Azure ユーザー ID を取得するには、次のいずれかの操作を実行します。

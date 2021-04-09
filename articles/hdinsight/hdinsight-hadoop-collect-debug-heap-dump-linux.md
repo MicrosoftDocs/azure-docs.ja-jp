@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 824ba2c3316ccb34b59a9e435b9a6e582f137090
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: fe5b2a1f083e246ea61854c9cbe03932e6655fdb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945925"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866592"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Linux ベースの HDInsight で Apache Hadoop サービスのヒープ ダンプを有効にする
 
@@ -82,15 +82,15 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
 2. 左側の一覧を使用して、変更するサービス領域を選択します。 たとえば、 **[HDFS]** です。 中央の領域で、 **[Configs]** タブを選択します。
 
-    ![HDFS Configs タブが選択されている Ambari Web の画像](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-service-config-tab.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-service-config-tab.png" alt-text="HDFS Configs タブが選択されている Ambari Web の画像":::
 
 3. **[フィルター]** エントリに「**opts**」と入力します。 このテキストを含む項目のみが表示されます。
 
-    ![Apache Ambari 構成のフィルター処理された一覧](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png" alt-text="Apache Ambari 構成のフィルター処理された一覧":::
 
 4. ヒープ ダンプを有効にするサービスの **\*\_OPTS** エントリを検索し、有効にするオプションを追加します。 次の図では、`-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` を **HADOOP\_NAMENODE\_OPTS** エントリに追加しました。
 
-    ![Apache Ambari の hadoop-namenode-opts](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png" alt-text="Apache Ambari の hadoop-namenode-opts":::
 
    > [!NOTE]  
    > マップまたは削減の子プロセスのヒープ ダンプが有効になっている場合は、**mapreduce.admin.map.child.java.opts** と **mapreduce.admin.reduce.child.java.opts** というフィールドを探します。
@@ -99,17 +99,17 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
 5. 変更が適用されると、**再起動が必要** であることを示すアイコンが 1 つ以上のサービスの横に表示されます。
 
-    ![再起動が必要アイコンと [再起動] ボタン](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/restart-required-icon.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/restart-required-icon.png" alt-text="再起動が必要アイコンと [再起動] ボタン":::
 
-6. 再起動が必要な各サービスを選択し、 **[サービス アクション]** ボタンを使用して **[メンテナンス モードの有効化]** を選択します。 メンテナンス モードは、再起動したときに、このサービスからアラートが生成されないようにします。
+6. 再起動が必要な各サービスを選択し、**[サービス アクション]** ボタンを使用して **[メンテナンス モードの有効化]** を選択します。 メンテナンス モードは、再起動したときに、このサービスからアラートが生成されないようにします。
 
-    ![HDI の [メンテナンス モードの有効化] メニュー](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png" alt-text="HDI の [メンテナンス モードの有効化] メニュー":::
 
 7. メンテナンス モードを有効にしたら、サービスの **[再起動]** ボタンを使用して **[すべてを再起動]** を選択します。
 
-    ![Apache Ambari の [すべてを再起動] エントリ](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
+    :::image type="content" source="./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png" alt-text="Apache Ambari の [すべてを再起動] エントリ":::
 
    > [!NOTE]  
    > **[再起動]** ボタンのエントリは、サービスによって異なる場合があります。
 
-8. サービスが再開したら、 **[サービス アクション]** ボタンを使用して **[メンテナンス モードの無効化]** を選択します。 これにより、Ambari はサービスのアラートの監視を再開します。
+8. サービスが再開したら、**[サービス アクション]** ボタンを使用して **[メンテナンス モードの無効化]** を選択します。 これにより、Ambari はサービスのアラートの監視を再開します。

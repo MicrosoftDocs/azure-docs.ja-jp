@@ -14,10 +14,10 @@ ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: fce963bd9ffdc6f768d7b3de4a9e4870add06136
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100104248"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>方法: アプリケーションにアプリ ロールを追加してトークンで受け取る
@@ -60,7 +60,7 @@ Azure portal のユーザー インターフェイスを使用してアプリ �
 
     :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-create-context-pane.png" alt-text="Azure portal の [アプリの登録] のアプリ ロールによって作成されるコンテキスト ペイン":::
 
-    | フィールド | [説明] | 例 |
+    | フィールド | 説明 | 例 |
     |-------|-------------|---------|
     | **表示名** | 管理者の同意やアプリの割り当て時に表示されるアプリのロールの表示名です。 この値にはスペースを含めることができます。 | `Survey Writer` |
     | **Allowed member types (許可されるメンバーの種類)** | このアプリのロールをユーザー、アプリケーション、またはその両方に割り当てることができるかどうかを指定します。<br/><br/>`applications` から使用できる場合、アプリ ロールは、アプリの登録の **[管理]** セクション > **[API のアクセス許可] > [アクセス許可の追加] > [自分の API] > [API を選択する] > [アプリケーションの許可]** の下にアプリケーションのアクセス許可として表示されます。 | `Users/Groups` |

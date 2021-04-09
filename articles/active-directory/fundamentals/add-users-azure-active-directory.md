@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 11/12/2019
+ms.date: 03/05/2021
 ms.author: ajburnle
-ms.reviewer: jeffsta
+ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de529a8ffb0c72854904717c71dbc322c919f1a8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 36455b3f6395216bd1ed26c8bd193f0e3ca10b5b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996697"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594599"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーを追加または削除する
 
@@ -74,6 +74,9 @@ Azure Active Directory (クラウド) と Windows Server Active Directory (オ�
 
 Azure Active Directory ポータルを使用して、既存のユーザーを削除できます。
 
+>[!Note]
+>組織内のユーザーを削除するには、グローバル管理者またはユーザー管理者のロールが割り当てられている必要があります。 グローバル管理者は、他の管理者を含むすべてのユーザーを削除できます。 ユーザー管理者は、管理者以外のユーザー、ヘルプデスク管理者、およびその他のユーザー管理者を削除できます。 詳細については、[Azure AD での管理者ロールのアクセス許可](../roles/permissions-reference.md)に関する記事を参照してください。
+
 ユーザーを削除するには、次の手順に従います。
 
 1. 組織のユーザー管理者アカウントを使用して [Azure portal](https://portal.azure.com/) にサインインします。
@@ -91,7 +94,7 @@ Azure Active Directory ポータルを使用して、既存のユーザーを削
 ユーザーが削除されると、そのユーザーによって使用されていたライセンスは、他のユーザーが使用できるようになります。
 
 >[!Note]
->権限ソースが Windows Server Active Directory であるユーザーの ID、連絡先情報、または仕事情報を更新するには、Windows Server Active Directory を使用する必要があります。 次の同期のサイクルの完了を待機すると、更新の完了による変更が反映されています。
+>権限ソースが Windows Server Active Directory であるユーザーの ID、連絡先情報、または仕事情報を更新するには、Windows Server Active Directory を使用する必要があります。 更新を完了した後、次の同期サイクルが完了するのを待ってから変更を確認する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,10 +8,10 @@ ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: e5a395f71ed1b1ab06d97b8aa6d83278d59d15c0
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101091954"
 ---
 # <a name="azure-security-baseline-for-azure-hpc-cache"></a>Azure HPC Cache 用の Azure セキュリティ ベースライン

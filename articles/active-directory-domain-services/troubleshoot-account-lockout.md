@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: 7967347fa63c657ba6211328bdd1d55512358521
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 3341f290a5a5bb169b6e70ea22459a2afafedbbc
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618775"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103198952"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインでアカウントがロックアウトされる問題を解決する
 
@@ -83,6 +83,23 @@ AADDomainServicesAccountManagement
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```
+
+**注:**
+
+4776 および 4740 の "ソース ワークステーション:" のイベント詳細が空の場合があります。 これは、他のデバイスからのネットワーク ログオンで不正なパスワードが発生したためです。
+たとえば、認証を AAD DS に転送できる RADIUS サーバーがある場合です。 DC バックエンドに対する RDP 有効化を確認するには、netlogon ログを構成します。
+
+03/04 19:07:29 [LOGON] [10752] contoso: SamLogon: Transitive Network logon of contoso\Nagappan.Veerappan from  (via LOB11-RADIUS) Entered 
+
+03/04 19:07:29 [LOGON] [10752] contoso: SamLogon: Transitive Network logon of contoso\Nagappan.Veerappan from  (via LOB11-RADIUS) Returns 0xC000006A
+
+03/04 19:07:35 [LOGON] [10753] contoso: SamLogon: Transitive Network logon of contoso\Nagappan.Veerappan from  (via LOB11-RADIUS) Entered 
+
+03/04 19:07:35 [LOGON] [10753] contoso: SamLogon: Transitive Network logon of contoso\Nagappan.Veerappan from  (via LOB11-RADIUS) Returns 0xC000006A
+
+NSG からバックエンドへの DC に対する RDP を有効にして、診断キャプチャ ( netlogon) を構成します。 https://docs.microsoft.com/azure/active-directory-domain-services/alert-nsg#inbound-security-rules 既定の NSG がすでに変更されている場合は、PSlet の方法に従って有効にしてください https://docs.microsoft.com/azure/active-directory-domain-services/network-considerations#port-3389---management-using-remote-desktop
+
+任意のサーバーで Netlogon ログを有効にするには: https://docs.microsoft.com/troubleshoot/windows-client/windows-security/enable-debug-logging-netlogon-service
 
 ## <a name="next-steps"></a>次のステップ
 

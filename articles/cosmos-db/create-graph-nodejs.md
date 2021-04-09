@@ -10,10 +10,10 @@ ms.date: 06/05/2019
 ms.author: chrande
 ms.custom: devx-track-js
 ms.openlocfilehash: 0b88456bd245f79c38d7829dca76de702f768c06
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93360141"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>クイック スタート:Azure Cosmos DB Gremlin API アカウントを使用して Node.js アプリケーションをビルドする
@@ -96,7 +96,7 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 
     ```
 
-  構成はすべて、 *config.js* に含まれています。これは [次のセクション](#update-your-connection-string)で編集します。
+  構成はすべて、*config.js* に含まれています。これは [次のセクション](#update-your-connection-string)で編集します。
 
 * さまざまな Gremlin 操作を実行する一連の関数が定義されています。 その一例を次に示します。
 

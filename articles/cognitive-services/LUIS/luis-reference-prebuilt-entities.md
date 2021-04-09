@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/20/2020
-ms.openlocfilehash: 7a4654b8f389ad18010bb4ad211103f2816a18ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb3c74a2176ee7fcac53afb5185e8c62e66f4dfb
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542004"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798801"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>LUIS モデルにおけるカルチャごとのエンティティ
 
@@ -40,7 +40,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 |韓国語|[ko-KR](#korean-entity-support)||
 |Portuguese|[pt-BR (ブラジル)](#portuguese-brazil-entity-support)||
 |スペイン語|[es-ES (スペイン)](#spanish-spain-entity-support)、[es-MX (メキシコ)](#spanish-mexico-entity-support)||
-|トルコ語|[turkish](#turkish-entity-support)|トルコ語では、あらかじめ構築されたエンティティはサポートされていません|
+|トルコ語|[turkish](#turkish-entity-support)||
 
 ## <a name="prediction-endpoint-runtime"></a>予測エンドポイントのランタイム
 
@@ -268,6 +268,8 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 [温度](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    V2、V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
+KeyPhrase は、ポルトガル語 (ブラジル) - ```pt-BR``` のすべてのサブカルチャーで使用できるわけではありません。
+
 ## <a name="spanish-spain-entity-support"></a>スペイン語 (スペイン) のエンティティのサポート
 
 次のエンティティがサポートされています。
@@ -314,34 +316,25 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 
 「[非推奨のエンティティ](luis-reference-prebuilt-deprecated.md)」の注をご覧ください
 
-KeyPhrase は、ポルトガル語 (ブラジル) - ```pt-BR``` のすべてのサブカルチャーで使用できるわけではありません。
-
 ## <a name="turkish-entity-support"></a>トルコ語のエンティティのサポート
 
-**トルコ語では、あらかじめ構築されたエンティティのサポートはありません。**
-
-<!--
-
-| Prebuilt entity | tr-tr |
+| 事前構築済みのエンティティ | tr-tr |
 | --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    -   |
-[Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (ex: penny)  |    -   |
+[Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (例: penny)  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    -   |
-[Dimension](luis-reference-prebuilt-dimension.md):<br>volume<br>area<br>weight<br>information (ex: bit/byte)<br>length (ex: meter)<br>speed (ex: mile per hour)  |    -   |
+[Dimension](luis-reference-prebuilt-dimension.md):<br>ボリューム<br>area<br>weight<br>information (例: bit/byte)<br>length (例: meter)<br>speed (例: mile per hour)  |    -   |
 [Email](luis-reference-prebuilt-email.md)   |    -   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
 [Number](luis-reference-prebuilt-number.md)   |    -   |
 [Ordinal](luis-reference-prebuilt-ordinal.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    -   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    -   |
-[Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    -   |
+[温度](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    -   |
 [URL](luis-reference-prebuilt-url.md)   |    -   |
 
+<!---
 See notes on [Deprecated prebuilt entities](luis-reference-prebuilt-deprecated.md)
-
-
 KeyPhrase is not available.
 -->
 

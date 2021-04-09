@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
 ms.openlocfilehash: 13f45c96a830110bd0f4a2d4a2b422921d7a2e31
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94654458"
 ---
 # <a name="set-up-azure-cli-for-azure-hpc-cache"></a>Azure HPC Cache 向けに Azure CLI を設定する

@@ -308,6 +308,48 @@
       href: partner-center-portal/downloads-dashboard.md
     - name: '[評価とレビュー] ダッシュボード'
       href: partner-center-portal/ratings-reviews.md
+    - name: プログラムによる分析へのアクセス
+      items:
+        - name: 作業開始
+          href: analytics-get-started.md
+        - name: プログラムによるアクセスの前提条件
+          href: analytics-prerequisites.md
+        - name: プログラムによるアクセスのパラダイム
+          href: analytics-programmatic-access.md
+        - name: 最初の API 呼び出しを作成する
+          href: analytics-make-your-first-api-call.md
+        - name: システム クエリの一覧
+          href: analytics-system-queries.md
+        - name: サンプル クエリ
+          href: analytics-sample-queries.md
+        - name: サンプル アプリケーション
+          href: analytics-sample-application.md
+        - name: カスタム クエリの仕様
+          href: analytics-custom-query-specification.md
+        - name: プログラムによる分析に関する FAQ
+          href: analytics-programmatic-faq.md
+        - name: Analytics API リファレンス
+          items:
+            - name: API の一覧
+              href: analytics-available-apis.md
+            - name: すべてのデータセットを取得する
+              href: analytics-api-get-all-datasets.md
+            - name: レポート クエリの取得 API
+              href: analytics-api-get-report-queries.md
+            - name: レポート クエリの削除 API
+              href: analytics-api-delete-report-queries.md
+            - name: レポート クエリの試行 API
+              href: analytics-api-try-report-queries.md
+            - name: レポートの取得 API
+              href: analytics-api-get-report.md
+            - name: レポートの更新 API
+              href: analytics-api-update-report.md
+            - name: レポートの削除 API
+              href: analytics-api-delete-report.md
+            - name: レポート実行の一時停止 API
+              href: analytics-api-pause-report-executions.md
+            - name: レポート実行の再開 API
+              href: analytics-api-resume-report-executions.md
     - name: 従量制課金の異常を管理する
       href: anomaly-detection.md
     - name: Analytics の一般的な質問

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
 ms.openlocfilehash: 1cdfc6dc3ac74997743512ee07f9293699e3ad10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87309292"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Azure Diagnostics と Azure Application Insights の統合を使用して Azure Cloud Services での問題に関するアラートを設定する
@@ -80,23 +80,23 @@ EventLogs
 
 ## <a name="create-an-alert"></a>アラートを作成する
 
-Application Insights リソース内のナビゲーション メニューで **[アラート]** に移動し、 **[新しいアラート ルール]** を選択します。
+Application Insights リソース内のナビゲーション メニューで **[アラート]** に移動し、**[新しいアラート ルール]** を選択します。
 
 ![[ルールの作成] のスクリーン ショット](./media/proactive-cloud-services/001.png)
 
-**[ルールの作成]** ウィンドウで、 **[アラートの条件を定義します]** セクションの **[条件の追加]** をクリックし、 **[カスタム ログ検索]** をクリックします。
+**[ルールの作成]** ウィンドウで、**[アラートの条件を定義します]** セクションの **[条件の追加]** をクリックし、**[カスタム ログ検索]** をクリックします。
 
 ![アラートの条件定義のスクリーン ショット](./media/proactive-cloud-services/002.png)
 
 **[検索クエリ]** ボックスに、前の手順で準備したクエリの組み合わせを貼り付けます。
 
-次に、 **[しきい値]** ボックスに進み、その値を [0] に設定します。 必要に応じて、 **[期間]** フィールドと **[頻度]** フィールドを調整できます。
+次に、**[しきい値]** ボックスに進み、その値を [0] に設定します。 必要に応じて、**[期間]** フィールドと **[頻度]** フィールドを調整できます。
 **[Done]** をクリックします。
 
 ![シグナル ロジック クエリの構成のスクリーン ショット](./media/proactive-cloud-services/003.png)
 
-**[アラートの詳細を定義します]** セクションで、アラート ルールの **[名前]** と **[説明]** を指定し、 **[重大度]** を設定します。
-さらに、 **[ルールの作成時に有効にする]** ボタンが **[はい]** に設定されていることを確認します。
+**[アラートの詳細を定義します]** セクションで、アラート ルールの **[名前]** と **[説明]** を指定し、**[重大度]** を設定します。
+さらに、**[ルールの作成時に有効にする]** ボタンが **[はい]** に設定されていることを確認します。
 
 ![アラートの詳細のスクリーン ショット](./media/proactive-cloud-services/004.png)
 
@@ -105,7 +105,7 @@ Application Insights リソース内のナビゲーション メニューで **[
 
 ![アクション グループのスクリーン ショット](./media/proactive-cloud-services/005.png)
 
-アクション グループを定義したら、変更内容を確認し、 **[アラート ルールの作成]** をクリックします。
+アクション グループを定義したら、変更内容を確認し、**[アラート ルールの作成]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

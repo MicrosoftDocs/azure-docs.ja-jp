@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 09/10/2020
 ms.author: alkohli
 ms.openlocfilehash: bb70946fda4fad7a42fd885a2515cb0d82698eca
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92124678"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box と Azure Data Box Heavy に関連する問題のトラブルシューティング
@@ -104,7 +104,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 - ローカル Web UI の [接続とコピー] ページで、エラー ファイルをダウンロードして確認し、問題があるフォルダーの名前を特定します。 
 - ディレクトリまたはコンテナーの名前を変更して、Azure の名前付け規則に準拠していることを確認します。
 
-詳細については、 [ディレクトリ](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) と[コンテナー](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)の Azure の名前付け規則に関する記事を参照してください。
+詳細については、[ディレクトリ](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)と[コンテナー](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)の Azure の名前付け規則に関する記事を参照してください。
 
 ## <a name="container-or-share-size-limit-errors"></a>コンテナーまたは共有のサイズ制限のエラー
 
@@ -157,7 +157,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 **推奨される解決方法:**
 
 - 容量固定の VHD のみをアップロードしてマネージド ディスクを作成していることを確認します。
-- VHDX ファイル、**動的**および**差分** VHD はサポートされていません。
+- VHDX ファイル、**動的** および **差分** VHD はサポートされていません。
 
 ### <a name="error_directory_disallowed_for_type"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
 

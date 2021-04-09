@@ -8,14 +8,16 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4b2068c3944f9e7616b0666c7bafcafc68ee0cd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5fc7b6b480056b56a2776cebd0fa87a5b96f9f0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79471287"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103201669"
 ---
 # <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>Kubernetes に IoT Edge をインストールする方法 (プレビュー)
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 IoT Edge を Kubernetes と統合し、それを回復性があり、可用性が高いインフラストラクチャ層として利用できます。 高レベルの IoT Edge ソリューション内でこのサポートが適合する場所を示します。
 
@@ -24,8 +26,8 @@ IoT Edge を Kubernetes と統合し、それを回復性があり、可用性�
 >[!TIP]
 >この統合の優れたメンタル モデルは、Linux や Windows に加えて IoT Edge アプリケーションを実行できる別の運用環境として Kubernetes を考えることです。
 
-## <a name="architecture"></a>Architecture 
-Kubernetes では、IoT Edge によって、エッジ ワークロードのデプロイに*カスタム リソース定義* (CRD) が提供されます。 IoT Edge Agent では、クラウドにより管理される目的の状態とローカル クラスターの状態を調整する *CRD コントローラー*のロールが想定されます。
+## <a name="architecture"></a>アーキテクチャ 
+Kubernetes では、IoT Edge によって、エッジ ワークロードのデプロイに *カスタム リソース定義* (CRD) が提供されます。 IoT Edge Agent では、クラウドにより管理される目的の状態とローカル クラスターの状態を調整する *CRD コントローラー* のロールが想定されます。
 
 モジュールの有効期間は Kubernetes スケジューラーによって管理されます。このスケジューラーはモジュールの可用性を管理し、その配置を選択します。 IoT Edge は一番上で実行されるエッジ アプリケーション プラットフォームを管理し、IoT Hub に指定されている目的の状態とエッジ クラスターでの状態と継続的に照合します。 アプリケーション モデルはそれでも、IoT Edge のモジュールとルートを基礎とするおなじみのモデルです。 IoT Edge エージェント コントローラーでは、ポッド、デプロイ、サービスなど、Kubernetes ネイティブのコンストラクトへの "*自動*" 変換 IoT Edge のアプリケーション モデルが実行されます。
 

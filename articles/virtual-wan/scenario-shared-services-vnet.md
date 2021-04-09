@@ -1,22 +1,22 @@
 ---
-title: シナリオ:共有サービスの VNet へのルート
+title: 'シナリオ: 共有サービスの VNet へのルート'
 titleSuffix: Azure Virtual WAN
 description: ルーティングのシナリオ - すべての VNet とブランチがアクセスする必要がある、ワークロードを持つ共有サービス VNet にアクセスするためのルートを設定します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 03c71664769f1518ba80d36867c71ef35b2ca026
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8e0d05d2cb960e760809ab35a8f9e4ca04acf250
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461466"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102442963"
 ---
-# <a name="scenario-route-to-shared-services-vnets"></a>シナリオ:共有サービスの VNet へのルート
+# <a name="scenario-route-to-shared-services-vnets"></a>シナリオ: 共有サービスの VNet へのルート
 
 Virtual WAN の仮想ハブ ルーティングを使用する場合、多くのシナリオを利用できます。 このシナリオの目標は、すべての VNet とブランチ (VPN/ER/P2S) がアクセスする必要がある、ワークロードを持つ **共有サービス** VNet にアクセスするためのルートを設定することです。 このような共有ワークロードの例には、ドメイン コントローラーやファイル共有などのサービスが含まれる Virtual Machines や、[Azure プライベート エンドポイント](../private-link/private-endpoint-overview.md)経由で内部公開される Azure サービスなどがあります。
 
@@ -30,9 +30,9 @@ Virtual WAN の仮想ハブ ルーティングを使用する場合、多くの�
 
 | ソース             | 移動先:   |*分離された VNet*|*共有 VNet*|*ブランチ*|
 |---|---|---|---|---|
-|**分離された VNet**|&#8594;|        | 直接 | 直接 |
-|**共有 VNet**  |&#8594;| 直接 | 直接 | 直接 |
-|**ブランチ**      |&#8594;| 直接 | 直接 | 直接 |
+|**分離された VNet**| ->|        | 直接 | 直接 |
+|**共有 VNet**  |->| 直接 | 直接 | 直接 |
+|**ブランチ**      |->| 直接 | 直接 | 直接 |
 
 前の表の各マスは、仮想 WAN 接続 (フローの "ソース" 側、行ヘッダー) が宛先 (フローの "ターゲット" 側、斜体の列ヘッダー) と通信するかどうかを示しています。 このシナリオでは、ファイアウォールもネットワーク仮想アプライアンスも存在しないため、通信は仮想 WAN を介して直接行われます (そのため、表では "直接" という単語が使用されています)。
 
@@ -43,14 +43,14 @@ VNet は、この **RT_SHARED** ルート テーブルに関連付けられま�
 その結果、最終的な設計は次のようになります。
 
 * 分離された仮想ネットワーク:
-  * 関連付けられたルート テーブル: **RT_SHARED**
+  * 関連付けられたルート テーブル:**RT_SHARED**
   * ルート テーブルへの伝達: **[Default]**
 * 共有サービス仮想ネットワーク:
   * 関連付けられたルート テーブル: **[Default]**
-  * ルート テーブルへの伝達: **RT_SHARED** と **Default**
+  * ルート テーブルへの伝達:**RT_SHARED** と **Default**
 * ブランチ:
   * 関連付けられたルート テーブル: **[Default]**
-  * ルート テーブルへの伝達: **RT_SHARED** と **Default**
+  * ルート テーブルへの伝達:**RT_SHARED** と **Default**
 
 > [!NOTE]
 > 仮想 WAN が複数のリージョンにデプロイされる場合、すべてのハブで **RT_SHARED** ルート テーブルを作成する必要があります。また、共有サービス VNet とブランチの各接続からのルートを、伝達ラベルを利用し、各仮想ハブのルート テーブルに伝達する必要があります。
@@ -65,17 +65,17 @@ VNet は、この **RT_SHARED** ルート テーブルに関連付けられま�
 2. カスタム ルート テーブルを作成します。 この例では、ルート テーブルを **RT_SHARED** と呼んでいます。 ルート テーブルを作成する手順については、「[仮想ハブのルーティングを構成する方法](how-to-virtual-hub-routing.md)」を参照してください。 ガイドラインとして、次の値を使用します。
 
    * **関連付け**
-     * **共有サービス VNet 以外の Vnet *では、分離する Vnet を選択します。*** これで、これらのすべての Vnet (共有サービス VNet を除く) が、RT_SHARED ルート テーブルのルートに基づいて宛先に到達することができます。
+     * **共有サービス VNet "*以外*" の Vnet** では、分離する Vnet を選択します。 これで、これらのすべての Vnet (共有サービス VNet を除く) が、RT_SHARED ルート テーブルのルートに基づいて宛先に到達することができます。
 
    * **伝達**
       * **ブランチ** では、既に選択している他のルート テーブルに加えて、ルートをこのルート テーブルに伝達します。 この手順により、RT_SHARED ルート テーブルは、すべてのブランチ接続 (VPN/ER/ユーザー VPN) からのルートを取得します。
-      * **Vnet** では、 **共有サービス VNet** を選択します。 この手順により、RT_SHARED ルート テーブルは、共有サービス VNet 接続からのルートを取得します。
+      * **Vnet** では、**共有サービス VNet** を選択します。 この手順により、RT_SHARED ルート テーブルは、共有サービス VNet 接続からのルートを取得します。
 
 結果的に、次の図に示すようなルーティング構成になります。
 
-   :::image type="content" source="./media/routing-scenarios/shared-service-vnet/shared-services.png" alt-text="共有サービス VNet" lightbox="./media/routing-scenarios/shared-service-vnet/shared-services.png":::
+   :::image type="content" source="./media/routing-scenarios/shared-service-vnet/shared-services.png" alt-text="共有サービス VNet の図。" lightbox="./media/routing-scenarios/shared-service-vnet/shared-services.png":::
 
 ## <a name="next-steps"></a>次のステップ
 
-* Virtual WAN の詳細については、[FAQ](virtual-wan-faq.md) を参照してください。
-* 仮想ハブのルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。
+* ARM テンプレートを使用して構成するには、「[クイックスタート: ARM テンプレートを使用して共有サービス VNet にルーティングする](quickstart-route-shared-services-vnet-template.md)」を参照してください。
+* 仮想ハブ ルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。

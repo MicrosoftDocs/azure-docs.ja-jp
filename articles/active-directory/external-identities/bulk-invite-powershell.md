@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e047f11cc243ab1a36a8c61dd1b229d9e115115
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92892487"
 ---
 # <a name="tutorial-use-powershell-to-bulk-invite-azure-ad-b2b-collaboration-users"></a>チュートリアル:PowerShell を使用して Azure AD B2B コラボレーション ユーザーを一括で招待する
@@ -95,7 +95,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 
 ## <a name="send-bulk-invitations"></a>招待状を一括送信する
 
-招待メールを送信するには、次の PowerShell スクリプトを実行します ( **c:\bulkinvite\invitations.csv** は CSV ファイルのパスです)。
+招待メールを送信するには、次の PowerShell スクリプトを実行します (**c:\bulkinvite\invitations.csv** は CSV ファイルのパスです)。
 
 ```powershell
 $invitations = import-csv c:\bulkinvite\invitations.csv
@@ -126,7 +126,7 @@ foreach ($email in $invitations)
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-招待したユーザーが表示されていることを確認します。 *emailaddress* #EXT#\@*domain* 形式のユーザー プリンシパル名 (UPN) になっています。 たとえば、 *lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com* では、contoso.onmicrosoft.com が招待状を送信した組織になります。
+招待したユーザーが表示されていることを確認します。*emailaddress*#EXT#\@*domain* 形式のユーザー プリンシパル名 (UPN) になっています。 たとえば、*lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com* では、contoso.onmicrosoft.com が招待状を送信した組織になります。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

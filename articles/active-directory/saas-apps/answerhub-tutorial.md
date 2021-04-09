@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 284ec65955de60f41d7bb0f97bf608faba3d4b79
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97672595"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>チュートリアル: Azure Active Directory と AnswerHub の統合
@@ -185,7 +185,7 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **作成** を選択します。
+    d. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

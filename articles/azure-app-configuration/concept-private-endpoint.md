@@ -8,10 +8,10 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.openlocfilehash: 6cadadfb3623d05dd3ae3851acd5eaca13860023
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96929845"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Azure App Configuration でのプライベート エンドポイントの使用

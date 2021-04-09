@@ -4,10 +4,10 @@ description: Azure Service Fabric アプリケーションで Service Fabric Rel
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: f12db76f324d07c178b49150d4e574476e7d9929
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98784327"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric の Reliable Collections のガイドラインと推奨事項

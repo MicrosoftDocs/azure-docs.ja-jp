@@ -1,17 +1,17 @@
 ---
 title: Device Update for Azure IoT Hub のクライアント エラー コード | Microsoft Docs
 description: このドキュメントでは、さまざまなデバイス更新コンポーネントのクライアント エラー コードの表を示します。
-author: lichris
+author: chrisjlin
 ms.author: lichris
 ms.date: 2/18/2021
 ms.topic: reference
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 5251d0cb09e40305d1efd89c31d3af0fa36ad385
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: dbdddc7cee0c3664a83501ba619a38e1cc44e1f3
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678608"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200334"
 ---
 # <a name="device-update-for-iot-hub-error-codes"></a>Device Update for IoT Hub のエラー コード
 
@@ -59,26 +59,19 @@ PnP インターフェイスでは、多くの場合、`ExtendedResultCode` が�
 ## <a name="delivery-optimization-agent"></a>配信最適化エージェント
 次の表は、デバイス更新クライアントの配信最適化 (DO) コンポーネントに関連するエラー コードの一覧です。 DO コンポーネントは、更新プログラムのコンテンツを IoT デバイスにダウンロードする役割を担います。
 
-DO エラー コードは、API 呼び出しへの応答としてスローされた例外を調べると取得できます。
+DO エラー コードは、API 呼び出しへの応答としてスローされた例外を調べると取得できます。 すべてのエラー コードは、0x80D0 プレフィックスによって識別できます。
 
 | エラー コード  | 文字列エラー                       | 種類                 | 説明 |
 |-------------|------------------------------------|----------------------|-------------|
 | 0x80D01001L | OM_E_NO_SERVICE                    | 該当なし                  | 配信最適化がサービスを提供できませんでした |
 | 0x80D02002L | DO_E_DOWNLOAD_NO_PROGRESS          | ジョブのダウンロード         | 指定された期間内にファイルのダウンロードが進行しませんでした |
-| 0x80D02003L | DO_E_JOB_NOT_FOUND                 | ジョブのダウンロード         | ジョブが見つかりませんでした |
-| 0x80D02005L | DO_E_NO_DOWNLOADS                  | ジョブのダウンロード         | 現在、ダウンロードは存在しません |
-| 0x80D0200CL | DO_E_JOB_TOO_OLD                   | ジョブのダウンロード         | ジョブが完了していないか、最大期間のしきい値に達する前に取り消されました |
 | 0x80D02011L | DO_E_UNKNOWN_PROPERTY_ID           | ジョブのダウンロード         | SetProperty() または GetProperty() が、不明なプロパティ ID で呼び出されました |
 | 0x80D02012L | DO_E_READ_ONLY_PROPERTY            | ジョブのダウンロード         | 読み取り専用プロパティで SetProperty() を呼び出すことができません |
 | 0x80D02013L | DO_E_INVALID_STATE                 | ジョブのダウンロード         | 要求されたアクションは、現在の状態では許可されません。 ジョブが取り消されたか、転送が完了している可能性があります。 現在の状態は読み取り専用です。 |
 | 0x80D02018L | DO_E_FILE_DOWNLOADSINK_UNSPECIFIED | ジョブのダウンロード         | ダウンロード シンク (ローカル ファイルまたはストリーム インターフェイス) が指定されていないため、ダウンロードを開始できません |
 | 0x80D02200L | DO_E_DOWNLOAD_NO_URI               | IDODownload インターフェイス| URI を指定せずにダウンロードが開始されました |
 | 0x80D03805L | DO_E_BLOCKED_BY_NO_NETWORK         | 一時的な問題 | ネットワーク接続が失われたため、ダウンロードが一時停止されました |
-| 0x80D05001L | DO_E_HTTP_BLOCKSIZE_MISMATCH       | HTTP                 | HTTP サーバーが、要求された値と等しくないデータ サイズの応答を返しました |
-| 0x80D05002L | DO_E_HTTP_CERT_VALIDATION          | HTTP                 | HTTP サーバー証明書の検証に失敗しました |
-| 0x80D05010L | DO_E_INVALID_RANGE                 | HTTP                 | 指定されたバイト範囲は無効です |
-| 0x80D05011L | DO_E_INSUFFICIENT_RANGE_SUPPORT    | HTTP                 | 必要な HTTP プロトコルがサーバーでサポートされていません。 配信の最適化 (DO) では、範囲プロトコル ヘッダーがサーバーでサポートされている必要があります |
-| 0x80D05012L | DO_E_OVERLAPPING_RANGES            | HTTP                 | バイト範囲の一覧に、重複する範囲が含まれています。これはサポートされていません |
+
 ## <a name="device-update-content-service"></a>デバイス更新コンテンツサービス
 次の表は、デバイス更新サービスのコンテンツ サービス コンポーネントに関連するエラー コードの一覧です。 コンテンツ サービス コンポーネントは、更新コンテンツのインポートを処理します。
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 85585b771d9c0ed7c6fcdba9cfef7b589a987c8c
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 020ba74948a062d23d61272ee912eb3364180f1e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429264"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102618000"
 ---
 # <a name="microsoft-azure-attestation"></a>Microsoft Azure Attestation 
 
@@ -80,8 +80,8 @@ Azure Attestation の[ビジネス継続性とディザスター リカバリー
 - Azure Attestation BCDR により、シームレスなフェールオーバーが提供されます。お客様は、回復のための手順を別途実行する必要はありません
 - 当該リージョンの [Azure Traffic Manager](../traffic-manager/index.yml) が正常性プローブの機能低下を検出し、エンドポイントをペアのリージョンに切り替えます
 - 既存の接続は機能せず、内部サーバー エラーまたはタイムアウトの問題が発生します
-- すべてのコントロール プレーン操作がブロックされます。 お客様は、プライマリ リージョンでの構成証明プロバイダーの作成やポリシーの更新を行うことができなくなります
-- 証明呼び出しを含むすべてのデータ プレーン操作は、プライマリ リージョンで引き続き動作します
+- すべてのコントロール プレーン操作がブロックされます。 お客様は、プライマリ リージョンで構成証明プロバイダーを作成できなくなります
+- 証明呼び出しやポリシーの構成を含む、すべてのデータ プレーン操作は、セカンダリ リージョンによって提供されます。 お客様は、プライマリ リージョンに対応する元の URI でデータ プレーン操作を続行できます
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Attestation の基本的な概念](basic-concepts.md)について学習する

@@ -2,13 +2,13 @@
 title: ストリーミング イベントをキャプチャする - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs でイベントのストリーミングをキャプチャするキャプチャ機能の概要を示します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 32741fdd98ec79c38568ff5a6c4fa476f27d794b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.date: 02/16/2021
+ms.openlocfilehash: 9f0ec1223c06b908a9aa9f3ac5c5b19ead2fe962
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912618"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "100595964"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Azure Event Hubs で Azure Blob Storage または Azure Data Lake Storage にイベントをキャプチャする
 Azure Event Hubs を利用すると、Event Hubs のストリーミング データをご自分で選択した Gen 1 または Gen 2 の [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) アカウントまたは [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) アカウントに自動的に配信できます。その際、時間やサイズの間隔を柔軟に指定できます。 Capture の設定は手軽で、実行に伴う管理コストは生じません。また、Event Hubs の[スループット単位](event-hubs-scalability.md#throughput-units)に応じて自動的にスケールします。 Event Hubs Capture はストリーミング データを Azure に読み込む最も簡単な方法であり、これを利用すれば、データのキャプチャではなくデータの処理に注力できるようになります。
@@ -79,13 +79,7 @@ Azure Blob Storage へのネイティブ サポートを使用できるため、
 
 [Apache Drill: Azure Blob Storage プラグイン][Apache Drill: Azure Blob Storage Plugin]
 
-キャプチャされたファイルに簡単にクエリするには、コンテナーを使用して Apache Drill を有効にした状態で VM を作成および実行して Azure Blob Storage にアクセスできます。
-
-https://github.com/yorek/apache-drill-azure-blob
-
-完全なエンド ツー エンドのサンプルを大規模なストリーミング リポジトリで入手できます。
-
-[大規模なストリーミング: Event Hubs Capture]
+キャプチャされたファイルに簡単にクエリするには、コンテナーを使用して Apache Drill を有効にした状態で VM を作成および実行して Azure Blob Storage にアクセスできます。 次の例を参照してください: [Event Hubs Capture を使用した大規模なストリーミング](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-capture)。
 
 ### <a name="use-apache-spark"></a>Apache Spark を使用する
 
@@ -160,4 +154,4 @@ Azure portal および Azure Resource Manager テンプレートを使用して�
 [HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage
 [Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html
 [Apache Drill: Azure Blob Storage Plugin]:https://drill.apache.org/docs/azure-blob-storage-plugin/
-[大規模なストリーミング: Event Hubs Capture]:https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture
+[Streaming at Scale: Event Hubs Capture]:https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture

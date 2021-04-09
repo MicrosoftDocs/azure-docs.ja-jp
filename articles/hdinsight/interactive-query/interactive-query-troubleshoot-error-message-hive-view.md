@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/30/2019
 ms.openlocfilehash: c60e06e8f37e7aed0d0a0df661690a2b1f32dbd5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98930994"
 ---
-# <a name="scenario-query-error-message-not-displayed-in-apache-hive-view-in-azure-hdinsight"></a>シナリオ:Azure HDInsight の Apache Hive ビューにクエリのエラー メッセージが表示されない
+# <a name="scenario-query-error-message-not-displayed-in-apache-hive-view-in-azure-hdinsight"></a>シナリオ: Azure HDInsight の Apache Hive ビューにクエリのエラー メッセージが表示されない
 
 この記事では、Azure HDInsight クラスターで Interactive Query コンポーネントを使用するときのトラブルシューティングの手順と問題の可能な解決策について説明します。
 
@@ -27,7 +27,7 @@ Apache Hive ビューのクエリのエラー メッセージが次のように�
 
 クエリ エラーのエラー メッセージが大きすぎて、Hive ビューのメイン ページに表示できないことがあります。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
 Hive_view の右上にある [通知] タブで、完全なスタックトレースとエラー メッセージを確認します。
 

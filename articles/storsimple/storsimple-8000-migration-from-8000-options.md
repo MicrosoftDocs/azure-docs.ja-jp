@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: alkohli
 ms.openlocfilehash: 4839f8211e678f5fc2fb3572c7eaa545fbee6c6c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94961194"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>StorSimple 8000 シリーズからデータを移行するためのオプション

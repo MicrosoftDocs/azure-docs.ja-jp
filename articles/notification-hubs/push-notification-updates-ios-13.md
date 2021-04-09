@@ -10,10 +10,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: df8560bec3671a9f05628ee6ed8ea95c31e9b16f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88998052"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>Azure Notification Hubs の更新内容 (iOS 13 関連)
@@ -24,7 +24,7 @@ ms.locfileid: "88998052"
 
 ### <a name="apns-push-type"></a>APNS プッシュの種類
 
-Apple では、開発者が APNS API の新しい `apns-push-type` ヘッダーを介して通知をアラートまたはバックグラウンド通知として指定することを要求しています。 [Apple のドキュメント](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)によると、次のとおりです。"このヘッダーの値は、通知のペイロードの内容を正確に反映している必要があります。 不一致がある場合、または必要なシステムにヘッダーがない場合は、APN によってエラーが返されるか、通知の配信が遅延されるか、通知が完全に削除されます。"
+Apple では、開発者が APNS API の新しい `apns-push-type` ヘッダーを介して通知をアラートまたはバックグラウンド通知として指定することを要求しています。 [Apple のドキュメント](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)によると、"このヘッダーの値は、通知のペイロードの内容を正確に反映している必要があります。 不一致がある場合、または必要なシステムにヘッダーがない場合は、APN によってエラーが返されるか、通知の配信が遅延されるか、通知が完全に削除されます。"
 
 開発者は、Azure Notification Hubs を介して通知を送信するアプリケーションで、このヘッダーを設定する必要があります。 技術的な制限により、お客様は、この属性を含む要求で APNS 資格情報に対してトークンベースの認証を使用する必要があります。 APNS 資格情報に証明書ベースの認証を使用している場合は、トークンベースの認証を使用するように切り替える必要があります。
 

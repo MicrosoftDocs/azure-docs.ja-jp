@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 05138011822b15363b12f2c860f4f459972201a7
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 04712429732bd710ea3a00071a53f035086a7054
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92449763"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651815"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>チュートリアル: Azure Active Directory と Getabstract の統合
 
@@ -44,9 +44,9 @@ Getabstract と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Getabstract では、 **SP** Initiated SSO と **IDP** Initiated SSO がサポートされます
+* Getabstract では、**SP** Initiated SSO と **IDP** Initiated SSO がサポートされます
 
-* Getabstract では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Getabstract では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 
 ## <a name="adding-getabstract-from-the-gallery"></a>ギャラリーからの Getabstract の追加
@@ -67,13 +67,13 @@ Azure AD への Getabstract の統合を構成するには、管理対象の Saa
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Getabstract** 」と入力し、結果パネルで **[Getabstract]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Getabstract**」と入力し、結果パネルで **[Getabstract]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Getabstract](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Getabstract で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Getabstract で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Getabstract 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Getabstract で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -91,7 +91,7 @@ Getabstract で Azure AD のシングル サインオンを構成してテスト
 
 Getabstract で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Getabstract** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Getabstract** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -166,9 +166,9 @@ Getabstract で Azure AD シングル サインオンを構成するには、次
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -179,7 +179,7 @@ Getabstract で Azure AD シングル サインオンを構成するには、次
 
 このセクションでは、Britta Simon に Getabstract へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Getabstract]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Getabstract]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

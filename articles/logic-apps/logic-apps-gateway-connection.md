@@ -7,10 +7,10 @@ ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 01/20/2021
 ms.openlocfilehash: 356e63bb0a749ad0f41d886e75971e9b05c7f9dc
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99218996"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps からオンプレミスのデータ ソースに接続する

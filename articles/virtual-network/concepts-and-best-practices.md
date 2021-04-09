@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
 ms.openlocfilehash: 0a9945a58aa6ec49ad58f3a0a0d03ea75e30f6d8
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98223620"
 ---
 # <a name="azure-virtual-network-concepts-and-best-practices"></a>Azure Virtual Network の概念とベスト プラクティス

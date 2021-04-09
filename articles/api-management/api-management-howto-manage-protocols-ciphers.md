@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: apimpm
 ms.openlocfilehash: 043a3d0b63dfc74f587b58b3c2ac42f1a084cc4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86250313"
 ---
 # <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Azure API Management でプロトコルと暗号を管理する
@@ -35,7 +35,7 @@ Azure API Management では、3DES 暗号と同様にクライアントとバッ
 
 ## <a name="how-to-manage-tls-protocols-and-3des-cipher"></a>TLS プロトコルと 3DES 暗号を管理する方法
 
-1. Azure portal で **API Management インスタンス**に移動します。
+1. Azure portal で **API Management インスタンス** に移動します。
 2. メニューから **[プロトコル設定]** を選択します。  
 3. プロトコルまたは暗号を有効または無効にします。
 4. **[保存]** をクリックします。 変更は 1 時間以内に適用されます。  

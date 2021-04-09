@@ -8,10 +8,10 @@ ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
 ms.openlocfilehash: a4553ceee482fb232e9ab56deca650be93f9dc6b
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102218045"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Azure CLI のサンプル スクリプト - ロジック アプリを作成する

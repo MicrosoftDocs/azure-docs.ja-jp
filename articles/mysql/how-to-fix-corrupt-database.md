@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.openlocfilehash: 21e4189e56f704129710da5b1d39613c4e1b1df5
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91766883"
 ---
 # <a name="troubleshoot-database-corruption-in-azure-database-for-mysql"></a>Azure Database for MySQL でデータベースの破損をトラブルシューティングする

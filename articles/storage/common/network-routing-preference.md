@@ -1,26 +1,26 @@
 ---
-title: ネットワークのルーティング優先設定を構成する (プレビュー)
+title: ネットワーク ルーティング設定
 titleSuffix: Azure Storage
-description: Azure ストレージ アカウントに対してネットワークのルーティング優先設定 (プレビュー) を構成して、インターネット経由でクライアントからアカウントにネットワーク トラフィックをルーティングする方法を指定します。
+description: ネットワークのルーティング優先設定を使用すると、インターネット経由でクライアントからアカウントにネットワーク トラフィックをルーティングする方法を指定できます。
 services: storage
-author: santoshc
+author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.author: santoshc
-ms.reviewer: tamram
+ms.date: 02/11/2021
+ms.author: normesta
+ms.reviewer: santoshc
 ms.subservice: common
 ms.custom: references_regions
-ms.openlocfilehash: 601c8dfb4b4e2f16da5c560f67e2d251a5d3072a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bf2270fe6f71dfe5be31db8e82f6c44696f28074
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362745"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601493"
 ---
-# <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Azure Storage に対してネットワークのルーティング優先設定を構成する (プレビュー)
+# <a name="network-routing-preference-for-azure-storage"></a>Azure Storage のネットワーク ルーティング優先設定
 
-Azure ストレージ アカウントに対してネットワークの[ルーティング優先設定](../../virtual-network/routing-preference-overview.md) (プレビュー) を構成し、インターネット経由でクライアントからアカウントにネットワーク トラフィックをルーティングする方法を指定することができます。 既定では、インターネットからのトラフィックは、[Microsoft グローバル ネットワーク](../../networking/microsoft-global-network.md)経由で、ストレージ アカウントのパブリック エンドポイントにルーティングされます。 Azure Storage には、ストレージ アカウントへのトラフィックのルーティング方法を構成するための追加オプションが用意されています。
+Azure ストレージ アカウントに対してネットワークの[ルーティング優先設定](../../virtual-network/routing-preference-overview.md)を構成し、インターネット経由でクライアントからアカウントにネットワーク トラフィックをルーティングする方法を指定することができます。 既定では、インターネットからのトラフィックは、[Microsoft グローバル ネットワーク](../../networking/microsoft-global-network.md)経由で、ストレージ アカウントのパブリック エンドポイントにルーティングされます。 Azure Storage には、ストレージ アカウントへのトラフィックのルーティング方法を構成するための追加オプションが用意されています。
 
 ルーティング優先設定の構成を使用すると、Premium ネットワークのパフォーマンスやコストに応じて、トラフィックを柔軟に最適化できます。 ルーティング優先設定を構成するときは、ストレージ アカウントのパブリック エンドポイントにトラフィックが送信される既定の方法を指定します。 また、ストレージ アカウント用にルート固有のエンドポイントを公開することもできます。
 
@@ -37,9 +37,11 @@ Azure ストレージ アカウントに対してネットワークの[ルーテ
 
 ![Azure Storage のルーティング オプションの概要](media/network-routing-preference/routing-options-diagram.png)
 
-Azure でのルーティング優先設定の詳細については、「[ルーティング優先設定とは (プレビュー)](../../virtual-network/routing-preference-overview.md)」を参照してください。
+Azure でのルーティング優先設定の詳細については、「[ルーティング優先設定とは](../../virtual-network/routing-preference-overview.md)」を参照してください。
 
 ## <a name="routing-configuration"></a>ルーティング構成
+
+ルーティング優先設定とルート固有のエンドポイントを構成する手順の詳細については、「[Azure Storage に対してネットワークのルーティング優先設定を構成する](configure-network-routing-preference.md)」を参照してください。
 
 ストレージ アカウントのパブリック エンドポイントに対する既定のルーティング優先設定として、Microsoft グローバル ネットワーク ルーティングとインターネット ルーティングのどちらかを選択できます。 既定のルーティング優先設定は、Azure の外部にあるクライアントからのすべてのトラフィックに適用され、Azure Data Lake Storage Gen2、Blob Storage、Azure Files、および静的 Web サイトのエンドポイントに影響します。 ルーティング優先設定の構成は、Azure キューまたは Azure テーブルではサポートされていません。
 
@@ -65,7 +67,7 @@ Azure でのルーティング優先設定の詳細については、「[ルー�
 
 公開されたルート固有のエンドポイントの接続文字列は、[Azure portal](https://portal.azure.com) でコピーできます。 これらの接続文字列は、既存のすべての Azure Storage SDK と API で共有キー承認用に使用できます。
 
-## <a name="about-the-preview"></a>プレビューについて
+## <a name="regional-availability"></a>リージョン別の提供状況
 
 Azure Storage のルーティング優先設定は、次のリージョンで利用できます。
 
@@ -100,16 +102,17 @@ Azure Storage のルーティング優先設定は、次のリージョンで利
 - オーストラリア東部 
 - オーストラリア南東部 
 
-Azure Storage のルーティング優先設定のプレビューには、次の既知の問題が影響します。
+Azure Storage のルーティング優先設定には、次の既知の問題が影響します。
 
 - Microsoft グローバル ネットワーク用のルート固有エンドポイントに対するアクセス要求は、HTTP エラー 404 またはそれと同等のエラーで失敗します。 Microsoft グローバル ネットワーク経由のルーティングは、パブリック エンドポイントに対する既定のルーティング優先設定として設定されている場合、想定どおりに動作します。
 
 ## <a name="pricing-and-billing"></a>価格と課金
 
-価格と課金の詳細については、「[ルーティング優先設定とは (プレビュー)](../../virtual-network/routing-preference-overview.md#pricing)」の「**価格**」セクションを参照してください。
+価格と課金の詳細については、「[ルーティング優先設定とは](../../virtual-network/routing-preference-overview.md#pricing)」の「**価格**」セクションを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ルーティング優先設定とは (プレビュー)](../../virtual-network/routing-preference-overview.md)
+- [ルーティング設定とは](../../virtual-network/routing-preference-overview.md)
+- [ネットワーク ルーティング設定の構成](configure-network-routing-preference.md)
 - [Azure Storage ファイアウォールおよび仮想ネットワークを構成する](storage-network-security.md)
 - [BLOB ストレージのセキュリティに関する推奨事項](../blobs/security-recommendations.md)

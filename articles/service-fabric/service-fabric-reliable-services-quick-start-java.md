@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-javai
 ms.openlocfilehash: f67957d711958febdb01dfad0b3c44a92cb0bcfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91535238"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Java で Reliable Services の使用を開始する
@@ -39,7 +39,7 @@ Reliable Services の使用を開始するには、いくつかの基本的な�
 $ yo azuresfjava
 ```
 
-指示に従って、**信頼性の高いステートレス サービス**を作成します。 このチュートリアルでは、アプリケーションに "HelloWorldApplication" という名前を付け、サービスに "HelloWorld" という名前を付けます。 結果には、`HelloWorldApplication` と `HelloWorld` のディレクトリが含まれます。
+指示に従って、**信頼性の高いステートレス サービス** を作成します。 このチュートリアルでは、アプリケーションに "HelloWorldApplication" という名前を付け、サービスに "HelloWorld" という名前を付けます。 結果には、`HelloWorldApplication` と `HelloWorld` のディレクトリが含まれます。
 
 ```bash
 HelloWorldApplication/
@@ -193,7 +193,7 @@ ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddRelia
 
 Reliable Collection にはカスタム型を含むすべての Java 型を格納できます。ただし次の点にご注意ください。
 
-* Service Fabric がノード全体で状態を*レプリケート*して状態の可用性を高め、Reliable HashMap が各レプリカでデータをローカル ディスクに保存します。 これは、Reliable HashMap で保存されるすべてのデータは*シリアル化可能である*必要があることを意味します。 
+* Service Fabric がノード全体で状態を *レプリケート* して状態の可用性を高め、Reliable HashMap が各レプリカでデータをローカル ディスクに保存します。 これは、Reliable HashMap で保存されるすべてのデータは *シリアル化可能である* 必要があることを意味します。 
 * Reliable HashMap でトランザクションをコミットすると、可用性を高めるためにオブジェクトがレプリケートされます。 Reliable HashMap に格納されるオブジェクトは、サービスのローカル メモリに保持されます。 これは、オブジェクトへのローカルな参照があることを意味します。
   
    トランザクションの Reliable Collection を更新せずに、これらのオブジェクトのローカル インスタンスを変更しないようにしてください。 オブジェクトのローカル インスタンスの変更は自動的にレプリケートされないためです。 オブジェクトをディクショナリに再挿入するか、ディクショナリで *update* メソッドのいずれかを使用する必要があります。
@@ -221,7 +221,7 @@ return map.computeAsync(tx, "counter", (k, v) -> {
 
 Reliable HashMap での操作は非同期です。 Reliable Collection での書き込み操作では、データをレプリケートしてディスクに保持するために I/O 操作が実行されるためです。
 
-Reliable HashMap の操作は *トランザクション*であるため、複数の Reliable HashMap と操作で状態の整合性を維持できます。 たとえば、1 つのトランザクション内で、ある Reliable Dictionary から作業項目を取得し、その項目に対して操作を実行した後、結果を別の Reliable HashMap に保存することもできます。 これはアトミック操作として扱われので、操作全体が成功するか、操作全体がロールバックされることが保証されます。 項目をデキューしたが、結果を保存する前にエラーが発生した場合は、トランザクション全体がロールバックされ、項目は処理のためにキューに残ります。
+Reliable HashMap の操作は *トランザクション* であるため、複数の Reliable HashMap と操作で状態の整合性を維持できます。 たとえば、1 つのトランザクション内で、ある Reliable Dictionary から作業項目を取得し、その項目に対して操作を実行した後、結果を別の Reliable HashMap に保存することもできます。 これはアトミック操作として扱われので、操作全体が成功するか、操作全体がロールバックされることが保証されます。 項目をデキューしたが、結果を保存する前にエラーが発生した場合は、トランザクション全体がロールバックされ、項目は処理のためにキューに残ります。
 
 
 ## <a name="build-the-application"></a>アプリケーションのビルド

@@ -8,10 +8,10 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
 ms.openlocfilehash: 9939130782594c03a497d98ce6cd9b33b28eadec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101718405"
 ---
 # <a name="create-and-delete-managed-private-endpoints-in-an-azure-stream-analytics-cluster"></a>Azure Stream Analytics クラスターでマネージド プライベート エンドポイントを作成および削除する

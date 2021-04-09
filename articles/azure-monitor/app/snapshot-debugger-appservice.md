@@ -6,16 +6,20 @@ author: cweining
 ms.author: cweining
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 421f80493a9cb88e8bbbddc06aa9a24042b64b17
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 5a637a6f355be32f82878a52a30c77d020190651
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695468"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102211619"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Azure App Service で .NET アプリでスナップショット デバッガーを有効にする
 
-スナップショット デバッガーは、現在、Windows サービス プランの Azure App Service で実行されている ASP.NET アプリと ASP.NET Core アプリで機能します。 スナップショット デバッガーを使用する場合は、Basic サービス レベル以上でアプリケーションを実行することをお勧めします。 ほとんどのアプリケーションの場合、Free および Shared サービス レベルでは、スナップショットを保存するための十分なメモリまたはディスク領域がありません。
+スナップショット デバッガーは、現在、Windows サービス プランの Azure App Service で実行されている ASP.NET アプリと ASP.NET Core アプリでサポートされています。
+
+スナップショット デバッガーを使用する場合は、Basic サービス レベル以上でアプリケーションを実行することをお勧めします。
+
+ほとんどのアプリケーションの場合、Free および Shared サービス レベルでは、スナップショットを保存するための十分なメモリまたはディスク領域がありません。
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> スナップショット デバッガーを有効にする
 アプリでスナップショット デバッガーを有効にするには、次の手順に従います。
@@ -28,7 +32,10 @@ ms.locfileid: "97695468"
 * [オンプレミスの仮想マシンまたは物理マシン](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
 > [!NOTE]
-> プレビュー版の .NET Core を使用している場合、またはアプリケーションで、依存アセンブリを介して直接または間接的に Application Insights SDK が参照されている場合は、最初に[他の環境用のスナップショット デバッガーを有効にする](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)ための手順に従って、[Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリケーションに含めた後、下の手順の残りの部分を完了します。 
+> プレビュー版の .NET Core を使用している場合、またはアプリケーションで、依存アセンブリを介して直接または間接的に Application Insights SDK が参照されている場合は、[他の環境用のスナップショット デバッガーを有効にする](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)ための手順に従って、[Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリケーションに含めた後、下の手順の残りの部分を完了します。 
+>
+> Application Insights スナップショット デバッガーのコード不要のインストールは、.NET Core サポート ポリシーに従います。
+> サポートされているランタイムの詳細については、[.Net Core サポート ポリシー](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)に関するページを参照してください。
 
 スナップショット デバッガーは App Services ランタイムの一部としてプレインストールされますが、App Service アプリのスナップショットを取得するには、スナップショット デバッガーを有効にする必要があります。
 
@@ -46,6 +53,16 @@ ms.locfileid: "97695468"
 4. スナップショット デバッガーは、App Services のアプリ設定を使用して有効になりました。
 
     ![スナップショット デバッガーのアプリ設定][snapshot-debugger-app-setting]
+
+## <a name="enable-snapshot-debugger-for-other-clouds"></a>他のクラウドに対してスナップショット デバッガーを有効にする
+
+現在、エンドポイントの変更が必要なリージョンは [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) と [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide) のみであり、Application Insights の接続文字列が利用されます。
+
+|接続文字列プロパティ    | 米国政府のクラウド | China Cloud |   
+|---------------|---------------------|-------------|
+|SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
+
+その他の接続のオーバーライドの詳細については、[Application Insights のドキュメント](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides)を参照してください。
 
 ## <a name="disable-snapshot-debugger"></a>スナップショット デバッガーを無効にする
 

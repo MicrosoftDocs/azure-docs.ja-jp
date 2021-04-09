@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
 ms.openlocfilehash: 96b41c27b282bdc05dafa8c69398a11e8dbf3b1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91779658"
 ---
 "*感情分析 v3* " コンテナーを実行するには、次の `docker run` コマンドを実行します。 次のプレースホルダーを実際の値に置き換えてください。
@@ -34,7 +34,7 @@ ApiKey={API_KEY}
 
 このコマンドは、次の操作を行います。
 
-* コンテナー イメージから*感情分析*コンテナーを実行します。
+* コンテナー イメージから *感情分析* コンテナーを実行します。
 * 1 つの CPU コアと 8 ギガバイト (GB) のメモリを割り当てます。
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます
 * コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。

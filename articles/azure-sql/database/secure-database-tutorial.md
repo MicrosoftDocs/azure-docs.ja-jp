@@ -11,10 +11,10 @@ ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
 ms.openlocfilehash: 8cdf95dd3c0e801896328136b15e4bd4efe53005
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102563814"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>チュートリアル:Azure SQL Database 内のデータベースをセキュリティで保護する

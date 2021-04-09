@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.author: victorh
 ms.openlocfilehash: c53b35351108717c7b597e052a66e9902be5ec6c
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93394528"
 ---
 # <a name="create-ip-groups"></a>IP グループの作成

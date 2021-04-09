@@ -25,6 +25,8 @@
       href: tutorial-respond-threats-playbook.md
 - name: 概念
   items:
+    - name: エンティティを使用したデータの分類
+      href: entities-in-azure-sentinel.md
     - name: アクセスを管理する
       items:
         - name: Azure Sentinel のアクセス許可
@@ -33,18 +35,20 @@
           href: resource-context-rbac.md
     - name: 高度なマルチステージ攻撃の検出
       href: fusion.md
-    - name: 独自の機械学習プラットフォームを使用する
-      href: bring-your-own-ml.md
-    - name: ワークスペースおよびテナント全体での Azure Sentinel の拡張
-      href: extend-sentinel-across-workspaces-tenants.md
     - name: UEBA を使用した高度な脅威の特定
       href: identify-threats-with-entity-behavior-analytics.md
     - name: 脅威インテリジェンスの Azure Sentinel へのインポート
       href: import-threat-intelligence.md
+    - name: 独自の機械学習プラットフォームを使用する
+      href: bring-your-own-ml.md
     - name: Microsoft 365 Defender と Azure Sentinel の統合
       href: microsoft-365-defender-sentinel-integration.md
     - name: ウォッチリストで外部データを使用する
       href: watchlists.md
+    - name: ロールを使用したアクセス許可の割り当て
+      href: roles.md
+    - name: ワークスペースおよびテナント全体での Azure Sentinel の拡張
+      href: extend-sentinel-across-workspaces-tenants.md
     - name: 複数のテーブルにわたってデータを正規化する
       href: normalization.md
     - name: セキュリティ
@@ -62,40 +66,46 @@
               href: connect-aws.md
             - name: Azure Active Directory
               href: connect-azure-active-directory.md
-            - name: Office 365 (Teams も対象)
-              href: connect-office-365.md
-            - name: Dynamics 365 (新規)
-              href: connect-dynamics-365.md
-            - name: Cloud App Security
-              href: connect-cloud-app-security.md
             - name: '[Azure Activity Log (Azure アクティビティ ログ)]'
               href: connect-azure-activity.md
             - name: Azure AD Identity Protection
               href: connect-azure-ad-identity-protection.md
-            - name: Azure Information Protection
-              href: connect-azure-information-protection.md
-            - name: Microsoft 365 Defender
-              href: connect-microsoft-365-defender.md
-            - name: Microsoft Defender for Endpoint (旧称 MDATP)
-              href: connect-microsoft-defender-advanced-threat-protection.md
-            - name: Microsoft Defender for Identity (旧称 Azure ATP)
-              href: connect-azure-atp.md
-            - name: Microsoft Defender for Office 365 (旧称 Office 365 ATP)
-              href: connect-office-365-advanced-threat-protection.md
             - name: ASC からの Azure Defender アラート
               href: connect-azure-security-center.md
-            - name: IoT 用 Azure Defender (旧称 ASC)
-              href: connect-asc-iot.md
             - name: Azure DDoS Protection
               href: connect-azure-ddos-protection.md
             - name: Azure Firewall
               href: connect-azure-firewall.md
-            - name: Azure Web アプリケーション ファイアウォール (WAF)
-              href: connect-azure-waf.md
+            - name: Azure Information Protection
+              href: connect-azure-information-protection.md
+            - name: Azure Key Vault
+              href: connect-azure-key-vault.md
+            - name: Azure Kubernetes Service (AKS)
+              href: connect-azure-kubernetes-service.md
             - name: Azure SQL データベース ログ
               href: connect-azure-sql-logs.md
+            - name: Azure Web アプリケーション ファイアウォール (WAF)
+              href: connect-azure-waf.md
+            - name: Defender for IoT (旧称 ASC for IoT)
+              href: connect-asc-iot.md
             - name: ドメイン ネーム サーバー
               href: connect-dns.md
+            - name: Dynamics 365 (新規)
+              href: connect-dynamics-365.md
+            - name: Microsoft 365 Defender
+              href: connect-microsoft-365-defender.md
+              expanded: true
+              items:
+                - name: Cloud App Security
+                  href: connect-cloud-app-security.md
+                - name: Microsoft Defender for Endpoint (旧称 MDATP)
+                  href: connect-microsoft-defender-advanced-threat-protection.md
+                - name: Microsoft Defender for Identity (旧称 Azure ATP)
+                  href: connect-azure-atp.md
+                - name: Microsoft Defender for Office 365 (旧称 Office 365 ATP)
+                  href: connect-office-365-advanced-threat-protection.md
+            - name: Office 365 (Teams も対象)
+              href: connect-office-365.md
             - name: Windows ファイアウォール
               href: connect-windows-firewall.md
             - name: Windows セキュリティ イベント
@@ -242,12 +252,16 @@
           href: monitor-data-connector-health.md
     - name: ユーザーとエンティティの動作分析の有効化
       href: enable-entity-behavior-analytics.md
+    - name: データ フィールドをエンティティにマップする
+      href: map-data-fields-to-entities.md
     - name: 複数のテナントの管理 (MSSP)
       href: multiple-tenants-service-providers.md
     - name: 複数のワークスペースでインシデントを操作する
       href: multiple-workspace-view.md
     - name: カスタマー マネージド キー (CMK) の設定
       href: customer-managed-keys.md
+    - name: アラートのカスタム詳細を表示する
+      href: surface-custom-details-in-alerts.md
     - name: アラートからのインシデントの作成
       href: create-incidents-from-alerts.md
     - name: インシデント メトリックを使用して SOC をより適切に管理する
@@ -265,10 +279,10 @@
           href: livestream.md
     - name: Azure Sentinel の削除
       href: offboard.md
-    - name: 高度な RBAC を実装する
-      items: null
 - name: リファレンス
   items:
+    - name: 上位の Azure Sentinel ブック
+      href: top-workbooks.md
     - name: Azure RBAC ロール
       items:
         - name: すべての Azure ロール
@@ -285,6 +299,8 @@
           href: watchlist-with-rest-api.md
     - name: Azure Sentinel Logic Apps コネクタ
       href: /connectors/azuresentinel/
+    - name: エンティティのリファレンス
+      href: entities-reference.md
     - name: ネットワーク正規化スキーマ
       href: normalization-schema.md
     - name: データ ソース スキーマ リファレンス

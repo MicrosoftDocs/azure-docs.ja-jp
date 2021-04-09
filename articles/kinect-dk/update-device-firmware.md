@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect、ファームウェア、更新、復旧
 ms.openlocfilehash: 71557798a584635356cc47fd7c4a0309df4d018a
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94356228"
 ---
 # <a name="update-azure-kinect-dk-firmware"></a>Azure Kinect DK ファームウェアを更新する
@@ -27,7 +27,7 @@ Azure Kinect DK では、ファームウェアは自動的に更新されませ�
 3. (SDK のインストール場所)\tools\SDK にあるインストール場所に、以下があります。
 
     - AzureKinectFirmwareTool.exe
-    - ファームウェア フォルダーのファームウェア .bin ファイル ( *AzureKinectDK_Fw_1.5.926614.bin* など)。
+    - ファームウェア フォルダーのファームウェア .bin ファイル (*AzureKinectDK_Fw_1.5.926614.bin* など)。
 
 4. デバイスをホスト PC に接続し、さらに電源を入れます。
 

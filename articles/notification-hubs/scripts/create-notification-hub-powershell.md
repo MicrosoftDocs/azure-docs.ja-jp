@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: dimazaid
 ms.openlocfilehash: 857210efdc5740defcde4187b7b04cce55215325
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87071619"
 ---
 # <a name="use-powershell-to-create-an-azure-notification-hub"></a>PowerShell を使用して Azure 通知ハブを作成する
@@ -29,7 +29,7 @@ ms.locfileid: "87071619"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション** - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料のアカウント](https://azure.microsoft.com/free/)を作成してください。
+* **Azure サブスクリプション** - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料のアカウント](https://azure.microsoft.com/free/)を作成してください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -47,7 +47,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 
 このスクリプトでは以下のコマンドを使用します。
 
-| command | メモ |
+| コマンド | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzNotificationHubsNamespace](/powershell/module/az.notificationhubs/new-aznotificationhubsnamespace) | 通知ハブの名前空間を作成します。 |

@@ -4,10 +4,10 @@ description: この記事では、Azure portal と Azure DevTest Labs を使用�
 ms.topic: article
 ms.date: 10/12/2020
 ms.openlocfilehash: 9fa33a59dd35bfe3469f30f2349f8a08c45bd5e3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92058345"
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボの作成
@@ -31,7 +31,7 @@ Azure DevTest Labs におけるラボとは、Virtual Machines (VM) などのリ
 **[Create a DevTest Labs]\(DevTest Labs の作成\)** ページで、次の設定を入力します。
 
 > [!TIP]
-> 各ページの下部に、**自動化用のテンプレートをダウンロード**できるリンクが表示されます。
+> 各ページの下部に、**自動化用のテンプレートをダウンロード** できるリンクが表示されます。
 
 ### <a name="basic-settings"></a>[基本設定]
 
@@ -44,8 +44,8 @@ Azure DevTest Labs におけるラボとは、Virtual Machines (VM) などのリ
 |名前|説明|
 |---|---|
 |**サブスクリプション** | 必須です。 ラボに関連付ける **[サブスクリプション]** を選択します。|
-|**リソース グループ**| 必須です。 ラボの**リソース グループの名前**を入力します。 新しいものが存在しない場合は作成します。|
-|**ラボ名**| 必須です。 ラボの**名前**を入力します。|
+|**リソース グループ**| 必須です。 ラボの **リソース グループの名前** を入力します。 新しいものが存在しない場合は作成します。|
+|**ラボ名**| 必須です。 ラボの **名前** を入力します。|
 |**場所**|必須です。 ラボを格納する場所を選択します。|
 |**パブリックな環境**| [パブリックな環境の構成と使用](devtest-lab-configure-use-public-environments.md)に関するページを参照してください。
 

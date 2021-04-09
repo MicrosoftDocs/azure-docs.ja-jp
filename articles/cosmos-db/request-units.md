@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/23/2020
 ms.custom: seo-nov-2020
 ms.openlocfilehash: 23401885580a3883dc49eccc97c17bbedd9080ab
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96187325"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット

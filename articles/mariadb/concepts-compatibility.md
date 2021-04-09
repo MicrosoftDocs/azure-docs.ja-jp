@@ -3,14 +3,14 @@ title: ドライバーとツールの互換性 - Azure Database for MariaDB
 description: この記事では、Azure Database for MariaDB と互換性がある MariaDB ドライバーと管理ツールについて説明します。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: e1d544004d4361d11b40d8016f38f8bdd01bf5c5
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 49fd2c8da3ba0a44f4901bc6c7a2241e9e20df4d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98659871"
 ---
 # <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>Azure Database for MariaDB と互換性がある MariaDB ドライバーと管理ツール

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8399f7101697af429b8c073c101dbfea203e98ea
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87025593"
 ---
 # <a name="what-is-a-device-identity"></a>デバイス ID とは
@@ -73,12 +73,12 @@ Azure AD 参加済みまたはハイブリッド Azure AD 参加済みのデバ�
 
 ## <a name="device-security"></a>デバイスのセキュリティ
 
-- **Azure AD 登録済みデバイス**では、エンド ユーザーが管理するアカウントが使用されます。このアカウントは、Microsoft アカウントであるか、または次の 1 つ以上の方法で保護される、ローカル管理の別の資格情報です。
+- **Azure AD 登録済みデバイス** では、エンド ユーザーが管理するアカウントが使用されます。このアカウントは、Microsoft アカウントであるか、または次の 1 つ以上の方法で保護される、ローカル管理の別の資格情報です。
    - Password
    - PIN
    - Pattern
    - Windows Hello
-- **Azure AD 参加済みデバイス、またはハイブリッド Azure AD 参加済みデバイス**では、次の 1 つ以上の方法で保護される、Azure AD の組織アカウントが使用されます。
+- **Azure AD 参加済みデバイス、またはハイブリッド Azure AD 参加済みデバイス** では、次の 1 つ以上の方法で保護される、Azure AD の組織アカウントが使用されます。
    - Password
    - Windows Hello for Business
 

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: a08876cde9fac64c3a361b469049b4e33678a86f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 6a3049709c6c094f722a8132ee4c4b2051e24d95
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098147"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102616691"
 ---
 # <a name="azure-percept-security-overview"></a>Azure Percept セキュリティの概要
 
@@ -37,7 +37,7 @@ Azure Percept デバイスでは、信頼のハードウェアルートを使用
 
 ### <a name="iot-edge"></a>IoT Edge
 
-Azure Percept DK では、トランスポート層セキュリティ (TLS) プロトコルを使用して、セキュリティが強化された Azure Percept Studio  と、その他の Azure サービスに接続します。 Azure Percept DK は Azure IoT Edge に対応したデバイスです。 IoT Edge ランタイムは、デバイスを IoT Edge デバイスに変えるプログラムのコレクションです。 これらの IoT Edge ランタイム コンポーネントを使用することにより、IoT Edge デバイスは、エッジで実行するコードを受信し、結果を通信できます。 Azure Percept DK では、Docker コンテナーを利用してホスト オペレーティング システムとエッジ対応アプリケーションから IoT Edge ワークロードを分離します。 Azure IoT Edge セキュリティ フレームワークについて詳しくは、[IoT Edge セキュリティ マネージャー](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager?view=iotedge-2018-06)に関する記事をご覧ください。
+Azure Percept DK では、トランスポート層セキュリティ (TLS) プロトコルを使用して、セキュリティが強化された Azure Percept Studio  と、その他の Azure サービスに接続します。 Azure Percept DK は Azure IoT Edge に対応したデバイスです。 IoT Edge ランタイムは、デバイスを IoT Edge デバイスに変えるプログラムのコレクションです。 これらの IoT Edge ランタイム コンポーネントを使用することにより、IoT Edge デバイスは、エッジで実行するコードを受信し、結果を通信できます。 Azure Percept DK では、Docker コンテナーを利用してホスト オペレーティング システムとエッジ対応アプリケーションから IoT Edge ワークロードを分離します。 Azure IoT Edge セキュリティ フレームワークについて詳しくは、[IoT Edge セキュリティ マネージャー](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager)に関する記事をご覧ください。
 
 ### <a name="device-update-for-iot-hub"></a>Device Update for IoT Hub
 
@@ -57,7 +57,7 @@ Device Update for IoT Hub を使用すると、Azure Percept デバイスでの�
 |*.auth.azureperceptdk.azure.net|   443|    Azure DK SOM の認証と承認|
 |*.auth.projectsantacruz.azure.net| 443|    Azure DK SOM の認証と承認|
 
-さらに、[Azure IoT Edge で使用される接続](https://docs.microsoft.com/azure/iot-edge/production-checklist?view=iotedge-2018-06#allow-connections-from-iot-edge-devices)の一覧を確認します。
+さらに、[Azure IoT Edge で使用される接続](https://docs.microsoft.com/azure/iot-edge/production-checklist#allow-connections-from-iot-edge-devices)の一覧を確認します。
 
 <!---
 ## Additional Recommendations for Deployment to Production

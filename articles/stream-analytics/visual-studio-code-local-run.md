@@ -7,10 +7,10 @@ ms.author: sujie
 ms.date: 11/10/2019
 ms.topic: how-to
 ms.openlocfilehash: bbd83fb3ef3225fc19c48bb4c5962d6559cf32f8
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97708451"
 ---
 # <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>Visual Studio Code を使用してサンプル データで Stream Analytics クエリをローカルでテストする

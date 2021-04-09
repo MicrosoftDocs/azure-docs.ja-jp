@@ -9,10 +9,10 @@ ms.date: 02/18/2021
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 7151c110fd50f7485aa0b130832aace4f3143ad9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101750272"
 ---
 - 現在、この機能は Premium SSD でのみサポートされています。

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/28/2017
 ms.custom: devx-track-js
 ms.openlocfilehash: e9695a268d1c6ec43a737afd36536e4ec2a41a41
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98012480"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure Stream Analytics の JavaScript ユーザー定義集計

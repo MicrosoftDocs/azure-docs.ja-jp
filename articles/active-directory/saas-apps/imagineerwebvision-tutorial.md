@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 7184456d91def51215970daf17f0d741d538b576
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92460310"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-imagineer-webvision"></a>チュートリアル: Azure Active Directory と Imagineer WebVision の統合
@@ -41,7 +41,7 @@ Azure AD と Imagineer WebVision の統合を構成するには、次のもの�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Imagineer WebVision では、 **SP** によって開始される SSO がサポートされます
+* Imagineer WebVision では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-imagineer-webvision-from-the-gallery"></a>ギャラリーからの Imagineer WebVision の追加
 
@@ -61,13 +61,13 @@ Azure AD への Imagineer WebVision の統合を構成するには、ギャラ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Imagineer WebVision** 」と入力し、結果パネルから **[Imagineer WebVision]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Imagineer WebVision**」と入力し、結果パネルから **[Imagineer WebVision]** を選択してから、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Imagineer WebVision](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** という名前のテスト ユーザーに基づいて、Imagineer WebVision で Azure AD シングル サインオンを構成してテストします。
+このセクションでは、**Britta Simon** という名前のテスト ユーザーに基づいて、Imagineer WebVision で Azure AD シングル サインオンを構成してテストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Imagineer WebVision 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Imagineer WebVision で Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ Imagineer WebVision で Azure AD シングル サインオンを構成してテ�
 
 Imagineer WebVision で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **Imagineer WebVision** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Imagineer WebVision** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -114,7 +114,7 @@ Imagineer WebVision で Azure AD シングル サインオンを構成するに�
 
 ### <a name="configure-imagineer-webvision-single-sign-on"></a>Imagineer WebVision シングル サインオンの構成
 
-**Imagineer WebVision** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Imagineer WebVision サポート チーム](mailto:support@itgny.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Imagineer WebVision** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Imagineer WebVision サポート チーム](mailto:support@itgny.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -132,7 +132,7 @@ Imagineer WebVision で Azure AD シングル サインオンを構成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -144,11 +144,11 @@ Imagineer WebVision で Azure AD シングル サインオンを構成するに�
 
 このセクションでは、Britta Simon に Imagineer WebVision へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Imagineer WebVision]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Imagineer WebVision]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、 **[Imagineer WebVision]** を選択します。
+2. アプリケーションの一覧で、**[Imagineer WebVision]** を選択します。
 
     ![アプリケーションの一覧の [Imagineer WebVision] リンク](common/all-applications.png)
 

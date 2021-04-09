@@ -3,14 +3,14 @@ title: ファイアウォール規則の管理 - Azure portal - Azure Database f
 description: Azure portal を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: a708326db1a782cf3ded5f9108e1b87c6d53fe20
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 895c8e51e16cb0b82ebf3edcf954dabe62b08ff4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98665057"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理
@@ -20,7 +20,7 @@ ms.locfileid: "98665057"
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Azure Portal でサーバーレベルのファイアウォール規則を作成する
 
-1. MariaDB サーバー ページの [設定] で、 **[接続のセキュリティ]** をクリックして Azure Database for MariaDB の [接続のセキュリティ] ページを開きます。
+1. MariaDB サーバー ページの [設定] で、**[接続のセキュリティ]** をクリックして Azure Database for MariaDB の [接続のセキュリティ] ページを開きます。
 
    ![Azure Portal - [接続のセキュリティ] のクリック](./media/howto-manage-firewall-portal/1-connection-security.png)
 
@@ -41,10 +41,10 @@ ms.locfileid: "98665057"
    ![Azure Portal - [保存] のクリック](./media/howto-manage-firewall-portal/5-save-firewall-rule.png)
 
 ## <a name="connecting-from-azure"></a>Azure からの接続
-Azure からアプリケーションが Azure Database for MariaDB サーバーに接続できるようにするには、Azure 接続を有効にする必要があります。 たとえば、Azure Web Apps アプリケーションや Azure VM で実行されるアプリケーションをホストしたり、Azure Data Factory データ管理ゲートウェイから接続したりするためです。 ファイアウォール規則でこれらの接続を有効にするために、リソースが同じ仮想ネットワーク (VNet) またはリソース グループに存在する必要はありません。 Azure からアプリケーションがデータベース サーバーに接続しようとした場合、ファイアウォールは、Azure の接続が許可されていることを確認します。 これらの種類の接続を有効にするには、いくつかの方法があります。 開始アドレスと終了アドレスが 0.0.0.0 であるファイアウォール設定は、これらの接続が許可されていることを示します。 あるいは、ポータルの **[接続のセキュリティ]** ウィンドウから **[Azure サービスへのアクセスを許可]** オプションを **[オン]** に設定し、 **[保存]** をクリックすることもできます。 接続試行が許可されていない場合、この要求は Azure Database for MariaDB サーバーに到達しません。
+Azure からアプリケーションが Azure Database for MariaDB サーバーに接続できるようにするには、Azure 接続を有効にする必要があります。 たとえば、Azure Web Apps アプリケーションや Azure VM で実行されるアプリケーションをホストしたり、Azure Data Factory データ管理ゲートウェイから接続したりするためです。 ファイアウォール規則でこれらの接続を有効にするために、リソースが同じ仮想ネットワーク (VNet) またはリソース グループに存在する必要はありません。 Azure からアプリケーションがデータベース サーバーに接続しようとした場合、ファイアウォールは、Azure の接続が許可されていることを確認します。 これらの種類の接続を有効にするには、いくつかの方法があります。 開始アドレスと終了アドレスが 0.0.0.0 であるファイアウォール設定は、これらの接続が許可されていることを示します。 あるいは、ポータルの **[接続のセキュリティ]** ウィンドウから **[Azure サービスへのアクセスを許可]** オプションを **[オン]** に設定し、**[保存]** をクリックすることもできます。 接続試行が許可されていない場合、この要求は Azure Database for MariaDB サーバーに到達しません。
 
 > [!IMPORTANT]
-> このオプションは、ファイアウォールを構成して、他のお客様のサブスクリプションからの接続を含むすべての接続を許可します。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
+> このオプションでは、他のお客様のサブスクリプションからの接続を含む、Azure からのすべての接続を許可するようにファイアウォールを構成します。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
 > 
 
 ## <a name="manage-existing-firewall-rules-in-the-azure-portal"></a>Azure portal での既存のファイアウォール規則の管理

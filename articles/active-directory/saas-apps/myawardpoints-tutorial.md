@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: f2328bd51712089f706c8491007f9f51eba52337
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92508096"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Azure Active Directory と Award Points Top Sub/Top Team の統合
@@ -41,7 +41,7 @@ Azure AD と My Award Points Top Sub/Top Team の統合を構成するには、�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* My Award Points Top Sub/Top Team では、 **SP** Initiated SSO がサポートされます
+* My Award Points Top Sub/Top Team では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-my-award-points-top-subtop-team-from-the-gallery"></a>ギャラリーからの My Award Points Top Sub/Top Team の追加
 
@@ -61,13 +61,13 @@ Azure AD への My Award Points Top Sub/Top Team の統合を構成するには�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **My Award Points Top Sub/Top Team** 」と入力し、結果パネルで **[My Award Points Top Sub/Top Team]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**My Award Points Top Sub/Top Team**」と入力し、結果パネルで **[My Award Points Top Sub/Top Team]** を選択してから、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果リストの My Award Points Top Sub/Top Team](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Award Points Top Sub/Top Team で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Award Points Top Sub/Top Team で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンが機能するには、Azure AD ユーザーと Award Points Top Sub/Top Team の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 Award Points Top Sub/Top Team で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ Award Points Top Sub/Top Team で Azure AD のシングル サインオンを構
 
 My Award Points Top Sub/Top Team での Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **My Award Points Top Sub/Top Team** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **My Award Points Top Sub/Top Team** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -99,7 +99,7 @@ My Award Points Top Sub/Top Team での Azure AD シングル サインオンを
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    ![My Award Points Top Sub/Top Team Domain and URLs (My Award Points Top Sub/Top Team のドメインと URL のシングル サインオン情報](common/sp-signonurl.png)
+    ![[My Award Points Top Sub/Top Team Domain and URLs] (My Award Points Top Sub/Top Team のドメインと URL] のシングル サインオン情報](common/sp-signonurl.png)
 
     **[サインオン URL]** ボックスに、`https://microsoftrr.performnet.com/biwv1auth/Shibboleth.sso/Login?providerId=<Azure AD Identifier>` という形式で URL を入力します。
 
@@ -143,9 +143,9 @@ My Award Points Top Sub/Top Team での Azure AD シングル サインオンを
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -156,11 +156,11 @@ My Award Points Top Sub/Top Team での Azure AD シングル サインオンを
 
 このセクションでは、Britta Simon に Award Points Top Sub/Top Team へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[My Award Points Top Sub/Top Team]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[My Award Points Top Sub/Top Team]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、 **[My Award Points Top Sub/Top Team]** を選択します。
+2. アプリケーションの一覧で、**[My Award Points Top Sub/Top Team]** を選択します。
 
     ![アプリケーションの一覧の [My Award Points Top Sub/Top Team] リンク](common/all-applications.png)
 

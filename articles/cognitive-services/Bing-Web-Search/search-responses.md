@@ -12,16 +12,16 @@ ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 3dda95312a0b9191ddc11de62959f308ee19fff4
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94380982"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Search API の応答の構造と答えの種類  
 
 > [!WARNING]
-> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、 [こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
 > Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
 > 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
@@ -227,9 +227,9 @@ news 回答と newsarticle について詳しくは、[News Search API](../bing-
 
 ユーザーが数式または単位変換クエリを入力した場合、応答には [Computation](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#computation) 回答が格納されます。 `computation` 回答には、正規化された式とその結果が格納されます。
 
-単位変換クエリとは、ある単位を別の単位に変換するクエリをいいます。 たとえば、" *How many feet in 10 meters? (10 メートルは何フィート?)* " や " *How many tablespoons in a 1/4 cup? (1/4 カップは大さじ何杯?)* " といったクエリが考えられます。
+単位変換クエリとは、ある単位を別の単位に変換するクエリをいいます。 たとえば、"*How many feet in 10 meters? (10 メートルは何フィート?)* " や "*How many tablespoons in a 1/4 cup? (1/4 カップは大さじ何杯?)* " といったクエリが考えられます。
 
-次に示したのは、" *How many feet in 10 meters? (10 メートルは何フィート?)* " に対する `computation` 回答です。
+次に示したのは、"*How many feet in 10 meters? (10 メートルは何フィート?)* " に対する `computation` 回答です。
 
 ```json
 "computation": {
@@ -333,7 +333,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 ## <a name="timezone-answer"></a>timeZone 回答
 
-ユーザーが時刻または日付のクエリを入力した場合、応答には [TimeZone](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) 回答が格納されます。 この回答は、暗黙的なクエリと明示的なクエリをサポートします。 " *What time is it? (何時?)* " など暗黙的なクエリは、ユーザーの位置情報に基づくローカル時刻を返します。 " *What time is it in Seattle? (シアトルでは何時?)* " など明示的なクエリは、ワシントン州シアトルのローカル時刻を返します。
+ユーザーが時刻または日付のクエリを入力した場合、応答には [TimeZone](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) 回答が格納されます。 この回答は、暗黙的なクエリと明示的なクエリをサポートします。 "*What time is it? (何時?)* " など暗黙的なクエリは、ユーザーの位置情報に基づくローカル時刻を返します。 "*What time is it in Seattle? (シアトルでは何時?)* " など明示的なクエリは、ワシントン州シアトルのローカル時刻を返します。
 
 `timeZone` 回答からは、場所の名前、指定された場所における現在の UTC 日時、UTC オフセットが得られます。 その場所の境界が複数のタイム ゾーンにまたがっている場合、回答には、その境界内のすべてのタイム ゾーンにおける現在の UTC 日時が格納されます。 たとえばフロリダ州は 2 つのタイム ゾーンにまたがっているため、回答には、両方のタイム ゾーンのローカル日時が格納されます。  
 
@@ -424,7 +424,7 @@ Query: What time is it in the U.S.
 
 ## <a name="spellsuggestion-answer"></a>SpellSuggestion 回答
 
-検索の対象がユーザーの意図と異なる可能性があると Bing が判断した場合、応答には [SpellSuggestions](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) オブジェクトが含まれます。 たとえばユーザーが「 *carlos pen* 」を検索した場合、Bing は (過去に他のユーザーが行った *carlos pen* の検索に基づき) ユーザーが本当に検索したいのは Carlos Pena であると判断します。 スペル応答の例を次に示します。
+検索の対象がユーザーの意図と異なる可能性があると Bing が判断した場合、応答には [SpellSuggestions](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) オブジェクトが含まれます。 たとえばユーザーが「*carlos pen*」を検索した場合、Bing は (過去に他のユーザーが行った *carlos pen* の検索に基づき) ユーザーが本当に検索したいのは Carlos Pena であると判断します。 スペル応答の例を次に示します。
 
 ```json
 "spellSuggestions": {

@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 4/15/2020
 ms.openlocfilehash: 62bd5d2e70d3a66998907305fecee4dcc87cdb23
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102451729"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure Data Factory 内で SQL Server Integration Services (SSIS) と共に Azure SQL Managed Instance を使用する
@@ -51,7 +51,7 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
 
             Azure-SSIS IR からの受信トラフィックを許可するための **SQL Managed Instance の受信要件**。
 
-            | トランスポート プロトコル | source | 発信元ポート範囲 | 到着地 | Destination port range |
+            | トランスポート プロトコル | source | 発信元ポート範囲 | 宛先 | Destination port range |
             |---|---|---|---|---|
             |TCP|Azure クラウド サービス タグ|*|VirtualNetwork|3342|
 
@@ -63,13 +63,13 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
 
             1. Azure-SSIS IR からの受信トラフィックを許可するための **SQL Managed Instance の受信要件**。
 
-                | トランスポート プロトコル | source | 発信元ポート範囲 | 到着地 |Destination port range |
+                | トランスポート プロトコル | source | 発信元ポート範囲 | 宛先 |Destination port range |
                 |---|---|---|---|---|
                 |TCP|Azure-SSIS IR の静的 IP アドレス <br> 詳細については、[Azure-SSIS IR への独自のパブリック IP の使用](join-azure-ssis-integration-runtime-virtual-network.md#publicIP)に関するページをご覧ください。|*|VirtualNetwork|3342|
 
              1. SQL Managed Instance への送信トラフィックを許可するための **Azure-SSIS IR の送信要件**。
 
-                | トランスポート プロトコル | source | 発信元ポート範囲 | 到着地 |Destination port range |
+                | トランスポート プロトコル | source | 発信元ポート範囲 | 宛先 |Destination port range |
                 |---|---|---|---|---|
                 |TCP|VirtualNetwork|*|[SQL Managed Instance のパブリック エンドポイント IP アドレス](../azure-sql/managed-instance/management-endpoint-find-ip-address.md)|3342|
 
@@ -100,13 +100,13 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
     1. ネットワーク セキュリティ グループ (NSG) ルールに基づいてトラフィックを許可して、SQL Managed Instance と Azure-SSIS IR 間のトラフィックと、Azure-SSIS IR が必要とするトラフィックを許可します。
         1. Azure-SSIS IR からの受信トラフィックを許可するための **SQL Managed Instance の受信要件**。
 
-            | トランスポート プロトコル | source | 発信元ポート範囲 | 到着地 | Destination port range | 説明 |
+            | トランスポート プロトコル | source | 発信元ポート範囲 | 宛先 | Destination port range | 説明 |
             |---|---|---|---|---|---|
             |TCP|VirtualNetwork|*|VirtualNetwork|1433、11000 ～ 11999|SQL Database のサーバー接続ポリシーが **[リダイレクト]** ではなく **[プロキシ]** に設定されている場合、ポート 1433 のみが必要です。|
 
         1. SQL Managed Instance への送信トラフィックと、Azure-SSIS IR で必要とされる他のトラフィックを許可するための **Azure-SSIS IR の送信要件**。
 
-        | トランスポート プロトコル | source | 発信元ポート範囲 | 到着地 | Destination port range | 説明 |
+        | トランスポート プロトコル | source | 発信元ポート範囲 | 宛先 | Destination port range | 説明 |
         |---|---|---|---|---|---|
         | TCP | VirtualNetwork | * | VirtualNetwork | 1433、11000 ～ 11999 |SQL Managed Instance への送信トラフィックを許可します。 接続ポリシーが **[リダイレクト]** ではなく **[プロキシ]** に設定されている場合、ポート 1433 のみが必要です。 |
         | TCP | VirtualNetwork | * | AzureCloud | 443 | 仮想ネットワークの Azure-SSIS IR のノードはこのポートを使って、Azure Storage や Azure Event Hubs などの Azure サービスにアクセスします。 |
@@ -116,7 +116,7 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
 
         1. Azure-SSIS IR に必要なトラフィックを許可するための、**Azure-SSIS IR の受信要件**。
 
-        | トランスポート プロトコル | source | 発信元ポート範囲 | 到着地 | Destination port range | 説明 |
+        | トランスポート プロトコル | source | 発信元ポート範囲 | 宛先 | Destination port range | 説明 |
         |---|---|---|---|---|---|
         | TCP | BatchNodeManagement | * | VirtualNetwork | 29876、29877 (IR を Resource Manager 仮想ネットワークに参加させる場合) <br/><br/>10100、20100、30100 (IR をクラシック仮想ネットワークに参加させる場合)| Data Factory サービスはこれらのポートを使って、仮想ネットワークの Azure-SSIS IR のノードと通信します。 <br/><br/> サブネットレベルの NSG を作成するかどうかにかかわらず、Azure-SSIS IR をホストする仮想マシンにアタッチされているネットワーク インターフェイス カード (NIC) のレベルで、Data Factory は NSG を常に構成します。 Data Factory の IP アドレスから指定したポートで受信したトラフィックのみが、その NIC レベルの NSG によって許可されます。 サブネット レベルでインターネット トラフィックに対してこれらのポートを開いている場合でも、Data Factory の IP アドレスではない IP アドレスからのトラフィックは NIC レベルでブロックされます。 |
         | TCP | CorpNetSaw | * | VirtualNetwork | 3389 | (省略可能) このルールは、Microsoft サポーターがお客様に対して、高度なトラブルシューティングのために開くように依頼した場合にのみ必要になり、トラブルシューティングの直後に閉じることができます。 **CorpNetSaw** サービス タグでは、Microsoft 企業ネットワーク上のセキュリティで保護されたアクセス ワークステーションでのみ、リモート デスクトップの使用が許可されます。 このサービス タグはポータルから選択することはできず、Azure PowerShell または Azure CLI 経由でのみ使用できます。 <br/><br/> NIC レベルの NSG では、ポート 3389 が既定で開かれ、サブネット レベルの NSG ではポート 3389 を制御できます。一方、保護のために各 IR ノードの Windows ファイアウォール規則では既定で、Azure-SSIS IR によってポート 3389 の送信が禁止されています。 |

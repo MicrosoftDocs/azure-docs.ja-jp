@@ -11,10 +11,10 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96023825"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
@@ -22,7 +22,7 @@ ms.locfileid: "96023825"
 Microsoft Genomics サービス MSGEN の使用時に直面する可能性がある一般的な問題のトラブルシューティングのヒントをいくつか以下に示します。
 
  トラブルシューティングに関連しない FAQ については、[よく寄せられる質問](frequently-asked-questions-genomics.md)のページを参照してください。
-## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>手順 1:ワークフローに関連付けられたエラー コードを見つける
+## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>手順 1: ワークフローに関連付けられたエラー コードを見つける
 
 次を行うことによって、ワークフローに関連付けられたエラー メッセージを見つけることができます。
 
@@ -92,14 +92,14 @@ msgen status -w 1001 -f "config.txt"
 トラブルシューティングでは、standardoutput.txt の内容を調べて、表示されるすべてのエラー メッセージを書き留めます。
 
 
-## <a name="step-2-try-recommended-steps-for-common-errors"></a>手順 2:一般的なエラーについて推奨される手順を試す
+## <a name="step-2-try-recommended-steps-for-common-errors"></a>手順 2: 一般的なエラーについて推奨される手順を試す
 
 このセクションでは、Microsoft Genomics サービス (msgen) による一般的なエラー出力と、それらを解決するために使用できる方法について簡単に説明します。 
 
 Microsoft Genomics サービス (msgen) では、次の 2 種類のエラーがスローされる可能性があります。
 
-1. 内部サービス エラー:パラメーターや入力ファイルを修正しても解決できない可能性があるサービス内部のエラー。 ワークフローを再送信すると、これらのエラーが修正される可能性があります。
-2. 入力エラー:正しい引数を使用するか、ファイル形式を修正して解決できるエラー。
+1. 内部サービス エラー: パラメーターや入力ファイルを修正して解決されない可能性があるサービス内部のエラー。 ワークフローを再送信すると、これらのエラーが修正される可能性があります。
+2. 入力エラー: 正しい引数を使用するか、ファイル形式を修正して解決できるエラー。
 
 ### <a name="1-internal-service-errors"></a>1.内部サービス エラー
 
@@ -107,7 +107,7 @@ Microsoft Genomics サービス (msgen) では、次の 2 種類のエラーが�
 
 | エラー メッセージ                                                                                                                            | 推奨されるトラブルシューティングの手順                                                                                                                                   |
 |------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| An internal error occurred. Try resubmitting the workflow. If you see this error again, contact Microsoft Genomics support for assistance\(内部エラーが発生しました。ワークフローを再送信してみてください。このエラーが再度表示される場合は、Microsoft Genomics サポートにお問い合わせください\) | ワークフローを再送信します。 問題が解決しない場合は、サポート [チケット](file-support-ticket-genomics.md )を作成して、Microsoft Genomics サポートにお問い合わせください。 |
+| 内部エラーが発生しました。 Try resubmitting the workflow. If you see this error again, contact Microsoft Genomics support for assistance\(内部エラーが発生しました。ワークフローを再送信してみてください。このエラーが再度表示される場合は、Microsoft Genomics サポートにお問い合わせください\) | ワークフローを再送信します。 問題が解決しない場合は、サポート [チケット](file-support-ticket-genomics.md )を作成して、Microsoft Genomics サポートにお問い合わせください。 |
 
 ### <a name="2-input-errors"></a>2.入力エラー
 
@@ -125,7 +125,7 @@ Microsoft Genomics サービス (msgen) では、次の 2 種類のエラーが�
 | BAM          | 206        |   Unable to read BAM file [File_name]. Header of file was corrupt.\(BAM ファイル [File_name] を読み取ることができません。ファイルのヘッダーが破損しています。\)                                                                                      | BAM ファイルの形式を確認してください。  正しく書式設定されたファイルを使用して、ワークフローを送信します。                                                                            |
 | BAM          | 207        |  Unable to read BAM file [File_name]. File truncated near offset [offset].\(BAM ファイル [File_name] を読み取ることができません。ファイルはオフセット [offset] 付近で切り詰められています。\)                                                                                       | BAM ファイルの形式を確認してください。  正しく書式設定されたファイルを使用して、ワークフローを送信します。                                                                            |
 | BAM          | 208        |   Invalid BAM file. The ReadID [Read_Id] has no sequence in file [File_name].\(BAM ファイルが無効です。ファイル [File_name] 内の ReadID [Read_Id] にシーケンスがありません。\)                                                                                      | BAM ファイルの形式を確認してください。  正しく書式設定されたファイルを使用して、ワークフローを送信します。                                                                             |
-| FASTQ        | 該当なし        |  Unable to read FASTQ file. [File_name] doesn't end with a newline.\(FASTQ ファイルを読み取ることができません。[File_name] が改行で終わっていません。\)                                                                                     | FASTQ ファイルの形式を修正して、ワークフローを再送信します。                                                                           |
+| FASTQ        | 300        |  Unable to read FASTQ file. [File_name] doesn't end with a newline.\(FASTQ ファイルを読み取ることができません。[File_name] が改行で終わっていません。\)                                                                                     | FASTQ ファイルの形式を修正して、ワークフローを再送信します。                                                                           |
 | FASTQ        | 301        |   Unable to read FASTQ file [File_name]. FASTQ record is larger than buffer size at offset: [_offset]\(FASTQ ファイル [File_name] を読み取ることができません。FASTQ レコードがオフセット: [_offset] でバッファー サイズより大きくなっています\)                                                                                      | FASTQ ファイルの形式を修正して、ワークフローを再送信します。                                                                         |
 | FASTQ        | 302        |     FASTQ Syntax error. File [File_name] has a blank line.\(FASTQ 構文エラー。ファイル [File_name] には空白行があります。\)                                                                                    | FASTQ ファイルの形式を修正して、ワークフローを再送信します。                                                                         |
 | FASTQ        | 303        |       FASTQ Syntax error. File[File_name] has an invalid starting character at offset: [_offset],  line type: [line_type], character: [_char]\(FASTQ 構文エラー。ファイル [File_name] には、オフセット: [_offset]、行タイプ: [line_type]、文字: [_char] に無効な開始文字があります\)                                                                                  | FASTQ ファイルの形式を修正して、ワークフローを再送信します。                                                                         |
@@ -136,7 +136,7 @@ Microsoft Genomics サービス (msgen) では、次の 2 種類のエラーが�
 | FASTQ        | 308        |  FASTQ read error. Reads of both ends responded differently. Did you choose the correct FASTQ files?\(FASTQ 読み取りエラー。両端の読み取りの応答が異なります。正しい FASTQ ファイルを選択しましたか?\)                                                                                       | FASTQ ファイルの形式を修正して、ワークフローを再送信します。                                                                         |
 |        |       |                                                                                        |                                                                           |
 
-## <a name="step-3-contact-microsoft-genomics-support"></a>手順 3:Microsoft Genomics サポートに問い合わせる
+## <a name="step-3-contact-microsoft-genomics-support"></a>手順 3: Microsoft Genomics サポートに問い合わせる
 
 ジョブのエラーが解決しない場合や、その他の質問がある場合は、Azure Portal の Microsoft Genomics サポートに問い合わせてください。 サポート要求を送信する方法の詳細については、[こちら](file-support-ticket-genomics.md)を参照してください。
 

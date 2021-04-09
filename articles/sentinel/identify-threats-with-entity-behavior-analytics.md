@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 458c801e1434832bf65da669ca89cb5c5eebe2e8
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: bf7a17d96d31fd4214d5465a5739acc9ce9a9d53
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807565"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "102455503"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel のユーザーとエンティティの行動分析 (UEBA) を使用して高度な脅威を特定する
 
@@ -68,41 +68,9 @@ Azure Sentinel は、セキュリティ アナリストが、ユーザーのベ�
 
 この動作の例については、[Microsoft Cloud App Security](https://techcommunity.microsoft.com/t5/microsoft-security-and/prioritize-user-investigations-in-cloud-app-security/ba-p/700136) で行動分析がどのように使用されているかを参照してください。
 
-## <a name="entities-in-azure-sentinel"></a>Azure Sentinel のエンティティ
+## <a name="entity-pages"></a>エンティティ ページ
 
-### <a name="entity-identifiers"></a>エンティティ識別子
-
-アラートには、Azure Sentinel に送信された時点で、データ要素が含まれています。それらは Azure Sentinel によって識別され、ユーザー アカウント、ホスト、IP アドレスなどのエンティティとして分類されます。 ときによって、エンティティに関する十分な情報がアラートに含まれていない場合に、この識別が困難になることがあります。
-
-たとえば、ユーザー アカウントは複数の方法で識別できます。Azure AD アカウントの数値識別子 (GUID) またはユーザー プリンシパル名 (UPN) 値を使用する方法や、ユーザー名と NT ドメイン名を組み合わせて使用する方法です。 データ ソースが異なる場合、同じユーザーが異なる方法で識別されることがあり得ます。 そのため、Azure Sentinel においては、可能な場合は常に、それらの識別子を単一のエンティティにマージして正しく識別できるようにしています。
-
-ただし、いずれかのリソース プロバイダーによって作成されたアラートでエンティティを十分に識別できない場合があります (たとえば、ドメイン名のコンテキストがないユーザー名など)。 このような場合、ユーザー エンティティを同じユーザー アカウントの他のインスタンスとマージすることはできません。これは別個のエンティティとして識別されます。それら 2 つのエンティティは、統合されず分離されたままになります。
-
-この発生リスクを最小限に抑えるために、使用しているすべてのアラート プロバイダーについて、生成されるアラート内でエンティティが正しく識別されることを確実にする必要があります。 さらに、ユーザー アカウント エンティティを Azure Active Directory と同期することで、統合ディレクトリを作成してユーザー アカウント エンティティをマージできるようになります。
-
-現在、次の種類のエンティティが Azure Sentinel で識別されます。
-
-- ユーザー アカウント (Account)
-- Host
-- IP アドレス (IP)
-- マルウェア
-- ファイル
-- Process
-- クラウド アプリケーション (CloudApplication)
-- ドメイン名 (DNS)
-- Azure リソース
-- ファイル (FileHash)
-- レジストリ キー
-- レジストリ値
-- セキュリティ グループ
-- URL
-- IoT デバイス
-- Mailbox
-- メール クラスター
-- メール メッセージ
-- 送信メール
-
-### <a name="entity-pages"></a>エンティティ ページ
+[Azure Sentinel のエンティティ](entities-in-azure-sentinel.md)に関する詳細と、[サポートされているエンティティと識別子](entities-reference.md)の完全一覧をご覧ください。
 
 検索、アラート、または調査で何らかのエンティティ (現在はユーザーとホストに制限されています) を検出した場合は、そのエンティティを選択して **エンティティ ページ** に移動できます。これは、そのエンティティに関する役立つ情報が豊富に含まれているデータシートです。 このページで見つけることができる情報の種類には、そのエンティティについての基本的な事実、このエンティティに関連した注目すべきイベントのタイムライン、そのエンティティの行動に関する分析情報が含まれます。
  
@@ -131,20 +99,23 @@ Azure Sentinel は、セキュリティ アナリストが、ユーザーのベ�
  
 ### <a name="entity-insights"></a>エンティティ分析情報
  
-エンティティ分析情報は、アナリストがより効率的かつ効果的に調査できるようにするために Microsoft のセキュリティ研究者によって定義されたクエリです。 この分析情報はエンティティ ページの一部として表示され、ホストとユーザーに関する重要なセキュリティ情報を表形式データとグラフの両方の形式で提供します。 ここに情報が表示されるため、Log Analytics に迂回する必要はありません。 この分析情報には、サインイン、グループの追加、異常なイベントなどに関連したデータや、異常な行動を検出するための高度な ML アルゴリズムが含まれています。 この分析情報は、次のデータの種類に基づいてます。
-- syslog
-- SecurityEvent
-- [監査ログ]
-- サインイン ログ
-- オフィスのアクティビティ
-- 行動分析 (UEBA) 
- 
+エンティティ分析情報は、アナリストがより効率的かつ効果的に調査できるようにするために Microsoft のセキュリティ研究者によって定義されたクエリです。 この分析情報はエンティティ ページの一部として表示され、ホストとユーザーに関する重要なセキュリティ情報を表形式データとグラフの両方の形式で提供します。 ここに情報が表示されるため、Log Analytics に迂回する必要はありません。 この分析情報には、サインイン、グループの追加、異常なイベントなどに関連したデータや、異常な行動を検出するための高度な ML アルゴリズムが含まれています。 
+
+この分析情報は、次のデータ ソースに基づいています。
+- Syslog (Linux)
+- SecurityEvent (Windows)
+- AuditLogs (Azure AD)
+- SigninLogs (Azure AD)
+- OfficeActivity (Office 365)
+- BehaviorAnalytics (Azure Sentinel UEBA)
+- Heartbeat (Azure Monitor Agent)
+- CommonSecurityLog (Azure Sentinel)
+
 ### <a name="how-to-use-entity-pages"></a>エンティティ ページを使用する方法
 
 エンティティ ページは、複数の使用シナリオの一部になるように設計されており、インシデント管理、調査グラフ、ブックマークから、または Azure Sentinel のメイン メニューの **[エンティティの行動分析]** の下のエンティティ検索ページから直接アクセスできます。
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="エンティティ ページのユース ケース":::
-
 
 ## <a name="data-schema"></a>データ スキーマ
 

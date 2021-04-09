@@ -14,10 +14,10 @@ ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 316b513f761aa422f87c83658e6c50efec25efb4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94961143"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>StorSimple 5000-7000 シリーズのデータを移行するためのオプション 
@@ -63,13 +63,13 @@ Cohesity を使用すると、現在の StorSimple 5000–7000 から Azure の 
 
 Nasuni によって StorSimple 5000-7000 をご使用のお客様は、そのデータを Azure に簡単に移行して保持することができます。  Nasuni は最新の Azure ベースの NAS ストレージ ソリューションであり、クラウドの経済性とスケールにより、お客様にオンプレミス ソリューションに想定されるパフォーマンスとセキュリティを提供します。  ハイ パフォーマンスのファイル ストレージに加えて、Nasuni と Azure はバックアップと DR を処理する一方で、一元的なファイル ストレージ管理によって世界中でのデータの共有とコラボレーションを可能にします。 
 
-Nasuni では簡単に移行できます ‐ 今すぐ開始しましょう https://info.nasuni.com/nasuni-storsimple-migration
+Nasuni では簡単に移行できます ‐ 今すぐ開始しましょうhttps://info.nasuni.com/nasuni-storsimple-migration
 
 #### <a name="migrate-to-talon-fast"></a>Talon FAST に移行する
 
 StorSimple 5000-7000 をお使いのお客様は、Talon にすることで、StorSimple プラットフォームで得られていたメリット (無制限のクラウド リソースでサポートされた小さいオンサイト フットプリント) を、いっそう優れた機能で引き続き利用できます。  Talon FAST ソリューションでは、お客様はデータを移行して Azure に保持できますが、さらに小さいソフトウェア専用のオンサイト フットプリントが用意され、グローバル ファイル ロック、グローバル名前空間、マルチサイト コラボレーションなどのベネフィットが加わっています。  Talon は、世界中のお客様と協力して、そのオンプレミスのファイル サーバーのワークロードを、ユーザー ワークフローまたはエクスペリエンスを損なうことなく、統合された Azure ベースのフットプリントに移行するための有数の Azure エコシステム ソリューションです。  
 
-クラウド統合エンタープライズに発展する方法の詳細については、 https://www.talonstorage.com/alliances/microsoft-storsimple を参照してください。
+クラウド統合エンタープライズに発展する方法の詳細については、https://www.talonstorage.com/alliances/microsoft-storsimple を参照してください。
 
 
 ## <a name="migration---frequently-asked-questions"></a>移行 - よく寄せられる質問
@@ -96,7 +96,7 @@ A. サービスは動作し続ける可能性がありますが、Microsoft で�
 A. StorSimple 5000-7000 シリーズのユーザーは、それぞれのシナリオに応じて、次の移行オプションを使用できます。 
 
  - **8000 シリーズへのアップグレード**: このオプションは、StorSimple プラットフォームを使用し続ける場合に使用します。 
- - **Azure File Sync に移行**: このオプションは、Azure ネイティブ形式に切り替える場合に使用します。 Azure File Sync を使用すると、ファイル共有を一元管理できます。 
+ - **Azure File Sync に移行**:このオプションは、Azure ネイティブ形式に切り替える場合に使用します。 Azure File Sync を使用すると、ファイル共有を一元管理できます。 
 
 ここで紹介していない移行オプションについては、Microsoft サポートにお問い合わせください。
 

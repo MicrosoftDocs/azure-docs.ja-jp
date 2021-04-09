@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.openlocfilehash: 0623f47528d0530838f62c28cf5546e1e66c187b
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102508267"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis-preview"></a>Azure Cache for Redis のゾーン冗長を有効にする (プレビュー)

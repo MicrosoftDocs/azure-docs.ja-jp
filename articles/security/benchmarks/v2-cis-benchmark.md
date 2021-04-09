@@ -8,10 +8,10 @@ ms.date: 02/02/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 680c423f11abcf48cf01632cd39f9c320e28ef8b
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99525163"
 ---
 # <a name="mapping-of-azure-security-benchmark-v2-and-cis-microsoft-azure-foundations-benchmark"></a>Azure セキュリティ ベンチマーク V2 と CIS Microsoft Azure Foundations Benchmark のマッピング

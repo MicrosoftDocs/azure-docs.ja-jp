@@ -4,10 +4,10 @@ description: パートナー ID を関連付けて、Azure Lighthouse を通じ�
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.openlocfilehash: 4c18aae38570ab3fd84df7d45fb18e35404158be
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100372095"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>パートナー ID をリンクして、委任されたリソースに対する影響を追跡する 

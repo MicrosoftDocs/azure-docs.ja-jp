@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 09b801c48bf2998a2d8926009cae76287c1ac9b6
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: aeea2905b6bae094c92bd8b5d46523225c745494
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342268"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595642"
 ---
 # <a name="datetimediff-azure-cosmos-db"></a>DateTimeDiff (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,17 +45,17 @@ DateTimeDiff (<DateTimePart> , <StartDate> , <EndDate>)
 *StartDate*  
     形式 `YYYY-MM-DDThh:mm:ss.fffffffZ` による UTC の日付と時刻の ISO 8601 文字列値。内訳は以下のとおりです。
   
-  |Format|説明|
-  |-|-|
-  |YYYY|4 桁の年|
-  |mm|2 桁の月 (例: 01 = 1 月)|
-  |DD|2 桁の日付 (01 から 31)|
-  |T|時間要素の開始を表します|
-  |hh|2 桁の時間 (00 から 23)|
-  |mm|2 桁の分 (00 から 59)|
-  |ss|2 桁の秒 (00 から 59)|
-  |.fffffff|秒の 7 桁の小数部|
-  |Z|UTC (協定世界時) 指定子||
+|Format|説明|
+|-|-|
+|YYYY|4 桁の年|
+|mm|2 桁の月 (例: 01 = 1 月)|
+|DD|2 桁の日付 (01 から 31)|
+|T|時間要素の開始を表します|
+|hh|2 桁の時間 (00 から 23)|
+|mm|2 桁の分 (00 から 59)|
+|ss|2 桁の秒 (00 から 59)|
+|.fffffff|秒の 7 桁の小数部|
+|Z|UTC (協定世界時) 指定子|
   
   ISO 8601 形式の詳細については、「[ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)」を参照してください
 

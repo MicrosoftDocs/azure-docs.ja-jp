@@ -7,16 +7,19 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 8884663b3f0e861e62f48c3aab680f0f31e74428
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 8f57c63868d6f70094cf040a92c0124b46477758
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098385"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490196"
 ---
 # <a name="introduction-to-azure-percept-audio"></a>Azure Percept Audio の概要
 
 Azure Percept Audio は、音声 AI 機能を Azure Percept DK に追加するアクセサリ デバイスです。 これには、事前に構成された音声プロセッサと 4 つのマイクの線形配列が含まれています。これにより、Azure Cognitive Services を使用して音声コマンド、キーワード認識、および遠距離音声をローカルのリスニング デバイスに適用できます。 Azure Percept Audio を使用すると、デバイス製造元は Azure Percept DK のビジョン機能を、新しいスマート音声アクティブ化デバイスからさらに拡張できます。 Azure Percept DK、Azure Percept Studio、およびその他の Azure エッジ管理サービスに追加設定なしで統合されています。 [Microsoft オンライン ストア](https://go.microsoft.com/fwlink/p/?LinkId=2155270)で購入できます。
+
+> [!div class="nextstepaction"]
+> [今すぐ購入](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
 :::image type="content" source="./media/overview-azure-percept-audio/percept-audio.png" alt-text="Azure Percept Audio デバイス。":::
 
@@ -36,26 +39,13 @@ Azure Percept Audio は、ハイブリッド エッジ クラウド方式で、A
 
 この処理は次のように実行されます。 
 
-- Azure Percept Audio: ビーム フォーミングとエコー キャンセルを実行します。また、受信オーディオを処理して音声を最適化し、DK に送信します。  
+- Azure Percept Audio: 音声をキャプチャして変換し、DK およびオーディオ ジャックに送信します。
 
-- Azure Percept DK: 音声スタックがキーワード スポッティングを実行します。  
+- Azure Percept DK: 音声スタックがビーム フォーミングとエコー キャンセルを実行します。また、受信オーディオを処理して音声用に最適化します。 次に、キーワード認識を実行します。
 
 - クラウド: 自然言語のコマンドと語句、キーワードの検証、再トレーニングを処理します。 
 
 - Offline: デバイスがオフラインの場合は、キーワードを検出し、インターネット接続ステータスのテレメトリをキャプチャします。 クラウドでのキーワードの検証を実行できない場合は、キーワード スポッティングで誤許可率が高くなる可能性があります。 
-
-<!---
-
-## How it works
-
-Azure Percept Audio passes the audio input to the Azure Percept DK carrier board in a hybrid edge-cloud manner. Specifically,
-
-- The Azure Percept Audio device: processes the incoming speech input to the clearest format by executing beam forming and echo cancellation befor sending the input to the Azure Percept DK. 
-- The Azure Percept DK uses edge processing to perform keyword spotting and then sends the relevant inputs to Azure speech services.
-- Cloud: Processing of natural language commands and phrases, in addition to keyword verification and retraining.
-- Offline: If the device is offline it will detect the keyword and capture telemetry that there is no internet connection at the time of the command. It will not be able to weed out false accepts since it cannot perform keyword verification.
-
--->
 
 ## <a name="getting-started"></a>作業の開始
 
@@ -65,7 +55,7 @@ Azure Percept Audio passes the audio input to the Azure Percept DK carrier board
 
 ## <a name="build-a-no-code-prototype"></a>コードなしのプロトタイプをビルドする
 
-Azure Percept の音声アシスタント テンプレートを使用して、接客、医療、在庫、自動車などのシナリオで、[コードなしの音声ソリューション](./tutorial-no-code-speech.md)を構築します。
+Azure Percept の音声アシスタント テンプレートを使用して、接客、医療、在庫、自動車のシナリオに対して、[Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) で[コードなしの音声ソリューション](./tutorial-no-code-speech.md)を構築します。
 
 ### <a name="manage-your-no-code-speech-solution"></a>コードなしの音声ソリューションを管理する
 
@@ -80,4 +70,5 @@ Azure Percept の音声アシスタント テンプレートを使用して、�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Microsoft のオンライン ストア](https://go.microsoft.com/fwlink/p/?LinkId=2155270)で Azure Percept Audio デバイスを注文します。
+> [!div class="nextstepaction"]
+> [Microsoft のオンライン ストアで Azure Percept Audio デバイスを購入する](https://go.microsoft.com/fwlink/p/?LinkId=2155270)

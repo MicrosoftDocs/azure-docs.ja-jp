@@ -8,10 +8,10 @@ ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: aea2196671a136145671b977a6d925849b635b73
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92018697"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>チュートリアル:サーバー管理者とユーザー ロールを構成する
@@ -50,7 +50,7 @@ SSMS からサーバーに接続するには、まずサーバー名が必要で
 
 残りのタスクについては、SSMS を使用してサーバーに接続し、サーバーを管理します。
 
-1. SSMS の**オブジェクト エクスプローラー**で、 **[接続]**  >  **[Analysis Services]** の順にクリックします。
+1. SSMS の **オブジェクト エクスプローラー** で、 **[接続]**  >  **[Analysis Services]** の順にクリックします。
 
     ![接続する](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
 
@@ -61,7 +61,7 @@ SSMS からサーバーに接続するには、まずサーバー名が必要で
     > [!TIP]
     > [Active Directory - MFA サポートで汎用] を選択することをお勧めします。 この種類の認証は、[対話型ではない多要素認証](../../azure-sql/database/authentication-mfa-ssms-overview.md)をサポートします。 
 
-3. **オブジェクト エクスプローラー**で、サーバー オブジェクトを展開して表示します。 右クリックして、サーバーのプロパティを表示します。
+3. **オブジェクト エクスプローラー** で、サーバー オブジェクトを展開して表示します。 右クリックして、サーバーのプロパティを表示します。
    
     ![SSMS でのオブジェクト エクスプローラー](./media/analysis-services-tutorial-roles/aas-connect-ssms-objexp.png)
 
@@ -69,7 +69,7 @@ SSMS からサーバーに接続するには、まずサーバー名が必要で
 
 このタスクでは、Azure AD のユーザーまたはグループ アカウントをサーバー管理者ロールに追加します。 セキュリティ グループを指定する場合は、`obj:groupid@tenantid` を使用してください。
 
-1. **オブジェクト エクスプローラー**でサーバー名を右クリックし、 **[プロパティ]** をクリックします。 
+1. **オブジェクト エクスプローラー** でサーバー名を右クリックし、 **[プロパティ]** をクリックします。 
 2. **[分析サーバーのプロパティ]** ウィンドウで、 **[セキュリティ]**  >  **[追加]** の順にクリックします。
 3. **[ユーザーまたはグループを選択します]** ウィンドウで、Azure AD にユーザーまたはグループ アカウントを入力し、 **[追加]** をクリックします。 
    
@@ -78,13 +78,13 @@ SSMS からサーバーに接続するには、まずサーバー名が必要で
 4. **[OK]** をクリックし、 **[分析サーバーのプロパティ]** を閉じます。
 
     > [!TIP]
-    > また、ポータルで **Analysis Services 管理者**を使用してサーバー管理者を追加することもできます。 
+    > また、ポータルで **Analysis Services 管理者** を使用してサーバー管理者を追加することもできます。 
 
 ## <a name="add-a-user-to-the-model-database-administrator-role"></a>モデル データベース管理者ロールにユーザーを追加する
 
 このタスクでは、モデルに既に存在する Internet Sales Administrator ロールにユーザーまたはグループ アカウントを追加します。 このロールには、adventureworks サンプル モデル データベースのフル コントロール (管理者) アクセス許可があります。 このタスクでは、作成されたスクリプトで [CreateOrReplace](/analysis-services/tmsl/createorreplace-command-tmsl) TMSL コマンドを使用します。
 
-1. **オブジェクト エクスプローラー**で、 **[データベース]**  >  **[adventureworks]**  >  **[ロール]** を展開します。 
+1. **オブジェクト エクスプローラー** で、 **[データベース]**  >  **[adventureworks]**  >  **[ロール]** を展開します。 
 2. **Internet Sales Administrator** を右クリックし、 **[ロールをスクリプト化]**  >  **[作成または置換]**  >  **[新しいクエリ エディター ウィンドウ]** をクリックします。
 
     ![新しいクエリ エディター ウィンドウ](./media/analysis-services-tutorial-roles/aas-add-db-admin.png)
@@ -98,9 +98,9 @@ SSMS からサーバーに接続するには、まずサーバー名が必要で
 
 ## <a name="add-a-new-model-database-role-and-add-a-user-or-group"></a>新しいモデル データベース ロールを追加し、ユーザーまたはグループを追加する
 
-このタスクでは、TMSL スクリプトで [Create](/analysis-services/tmsl/create-command-tmsl) コマンドを使用して新しい Internet Sales Global ロールを作成し、そのロールに対して*読み取り*アクセス許可を指定し、Azure AD のユーザーまたはグループ アカウントを追加します。
+このタスクでは、TMSL スクリプトで [Create](/analysis-services/tmsl/create-command-tmsl) コマンドを使用して新しい Internet Sales Global ロールを作成し、そのロールに対して *読み取り* アクセス許可を指定し、Azure AD のユーザーまたはグループ アカウントを追加します。
 
-1. **オブジェクト エクスプローラー**で **[adventureworks]** を右クリックし、 **[新しいクエリ]**  >  **[XMLA]** の順にクリックします。 
+1. **オブジェクト エクスプローラー** で **[adventureworks]** を右クリックし、 **[新しいクエリ]**  >  **[XMLA]** の順にクリックします。 
 2. 次の TMSL スクリプトをコピーしてクエリ エディターに貼り付けます。
 
     ```JSON
@@ -129,7 +129,7 @@ SSMS からサーバーに接続するには、まずサーバー名が必要で
 
 ## <a name="verify-your-changes"></a>変更を確認する
 
-1. **オブジェクト エクスプローラー**でサーバー名をクリックし、 **[更新]** をクリックするか、**F5** キーを押します。
+1. **オブジェクト エクスプローラー** でサーバー名をクリックし、 **[更新]** をクリックするか、**F5** キーを押します。
 2. **[データベース]**  >  **[adventureworks]**  >  **[ロール]** を展開します。 前のタスクで追加したユーザー アカウントと新しいロールの変更が表示されていることを確認します。   
 
     ![オブジェクト エクスプローラーで確認する](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)

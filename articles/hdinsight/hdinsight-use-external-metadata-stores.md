@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 08/06/2020
-ms.openlocfilehash: d36c8f1f592bbe714a9e31cad8131523049f29ad
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a3bfcfbe59ccc15278b30470c6a060a9c1dd609c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931351"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871746"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight での外部メタデータ ストアの使用
 
@@ -18,7 +18,7 @@ HDInsight を使用すると、外部データ ストアを使用してデータ
 
 HDInsight の Apache Hive metastore は、Apache Hadoop アーキテクチャの不可欠な部分です。 メタストアは、中央のスキーマ リポジトリです。 メタストアは、Apache Spark、Interactive Query (LLAP)、Presto、Apache Pig などの他のビッグ データ アクセス ツールから使用されます。 HDInsight は、Azure SQL Database を Hive metastore として使用します。
 
-![HDInsight Hive メタデータ ストアのアーキテクチャ](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png" alt-text="HDInsight Hive メタデータ ストアのアーキテクチャ" border="false":::
 
 HDInsight クラスター用の metastore をセットアップできる方法は 2 つあります。
 
@@ -56,7 +56,7 @@ HDInsight では、カスタム metastore もサポートします。運用ク�
 
 * クラスターと外部メタストアは、同じリージョン内でホストされる必要があります。
 
-![HDInsight Hive メタデータ ストアのユース ケース](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png" alt-text="HDInsight Hive メタデータ ストアのユース ケース" border="false":::
 
 ### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>カスタム metastore 用の Azure SQL Database を作成および構成する
 
@@ -66,15 +66,15 @@ HDInsight クラスター用のカスタム Hive メタストアを設定する�
 
 SQL ストアのプライベート エンドポイントは、`outbound` ResourceProviderConnection を使用して作成されたクラスターでのみサポートされます。 詳細については、こちらの[ドキュメント](./hdinsight-private-link.md)を参照してください。
 
-![[サーバー ファイアウォールの設定] ボタン](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png" alt-text="[サーバー ファイアウォールの設定] ボタン":::
 
-![Azure サービスへのアクセスを許可](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png" alt-text="Azure サービスへのアクセスを許可":::
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>クラスターの作成時にカスタム metastore を選択する
 
 いつでもクラスターを以前に作成した Azure SQL Database にポイントできます。 ポータルを使用したクラスターの作成の場合、オプションは **[ストレージ] > [metastore の設定]** から指定します。
 
-![Azure Portal の HDInsight Hive メタデータ ストア](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png" alt-text="Azure Portal の HDInsight Hive メタデータ ストア":::
 
 ## <a name="hive-metastore-guidelines"></a>Hive メタストアのガイドライン
 

@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 12f134a11b6d0a561a8b53156c927906afe2874a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87910609"
 ---
 # <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>クイック スタート:Azure portal でディレクトリにゲスト ユーザーを追加する
@@ -54,7 +54,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    - **グループ**: 1 つまたは複数の既存のグループにゲスト ユーザーを追加するか、後で追加することができます。
    - **ディレクトリ ロール**: ユーザーに Azure AD 管理アクセス許可が必要な場合は、Azure AD ロールに追加することができます。 
 
-6. **[招待]** を選択して、招待をゲスト ユーザーに自動的に送信します。 右上隅に**ユーザーが正常に招待された**ことを示す通知が表示します。 
+6. **[招待]** を選択して、招待をゲスト ユーザーに自動的に送信します。 右上隅に **ユーザーが正常に招待された** ことを示す通知が表示します。 
 7.  招待を送信すると、ユーザー アカウントがディレクトリにゲストとして自動的に追加されます。
 
 ## <a name="assign-an-app-to-the-guest-user"></a>ゲスト ユーザーにアプリを割り当てる

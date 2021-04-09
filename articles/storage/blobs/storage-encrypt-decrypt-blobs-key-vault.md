@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/04/2019
+ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ddc9dbf77c04ea95e5b873c45de4c0df109514c7
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c2daed4a8df89ed176749900dc75eb231c00af87
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544447"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049272"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>チュートリアル - Azure Key Vault を使用して BLOB を暗号化および復号化する
 
@@ -49,7 +49,7 @@ Azure Storage のクライアント側暗号化の概要については、「[Mi
 
 ## <a name="set-up-your-azure-key-vault"></a>Azure Key Vault のセットアップ
 
-このチュートリアルを続けるために実行する必要のある手順の概要が、チュートリアル「[クイックスタート:.NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う](../../key-vault/secrets/quick-create-net.md)」で説明されています。
+このチュートリアルを続行するには、次の手順を実行する必要があります。これらは、[.NET Web アプリを使用した Azure Key Vault のシークレットの設定と取得に関するクイックスタート](../../key-vault/secrets/quick-create-net.md)で説明されています。
 
 * Key Vault を作成します。
 * キーやシークレットを Key Vault に追加します。
@@ -90,6 +90,12 @@ App.Config に AppSettings を追加します。
 
 次の `using` ディレクティブを追加し、プロジェクトに System.Configuration への参照を追加します。
 
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Configuration;
@@ -101,10 +107,17 @@ using Microsoft.Azure.KeyVault;
 using System.Threading;
 using System.IO;
 ```
+---
 
 ## <a name="add-a-method-to-get-a-token-to-your-console-application"></a>コンソール アプリケーションにトークンを取得するメソッドを追加します。
 
 次のメソッドは、Key Vault へのアクセスを認証する必要がある Key Vault クラスによって使用されます。
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 private async static Task<string> GetToken(string authority, string resource, string scope)
@@ -121,10 +134,17 @@ private async static Task<string> GetToken(string authority, string resource, st
     return result.AccessToken;
 }
 ```
+---
 
 ## <a name="access-azure-storage-and-key-vault-in-your-program"></a>プログラムでの Azure Storage および Key Vault へのアクセス
 
 Main() メソッド内に、次のコードを追加します。
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 // This is standard code to interact with Blob storage.
@@ -141,6 +161,7 @@ contain.CreateIfNotExists();
 // This is where the GetToken method from above is used.
 KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 ```
+---
 
 > [!NOTE]
 > Key Vault のオブジェクト モデル
@@ -149,13 +170,19 @@ KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 > 
 > Key Vault クライアントは REST API とやり取りして、Key Vault に含まれる 2 種類のものの JSON Web キーとシークレットを認識します。
 > 
-> Key Vault 拡張機能は、Azure Storage のクライアント側暗号化用に特に作成されたクラスです。 Key Resolver の概念に基づくキー用のインターフェイス (IKey) とクラスを含みます。 IKey には 2 種類の実装RSAKey と SymmetricKey があり、これらを知っておく必要があります。 現在はたまたま Key Vault に含まれるものと一緒に存在していますが、これらは独立したクラスです (したがって、Key Vault クライアントによって取得されたキーとシークレットは IKey を実装していません)。
+> Key Vault 拡張機能は、Azure Storage のクライアント側暗号化用に特に作成されたクラスです。 Key Resolver の概念に基づくキー用のインターフェイス (IKey) とクラスを含みます。 IKey には 2 種類の実装 RSAKey と SymmetricKey があり、これらを知っておく必要があります。 現在はたまたま Key Vault に含まれるものと一緒に存在していますが、これらは独立したクラスです (したがって、Key Vault クライアントによって取得されたキーとシークレットは IKey を実装していません)。
 > 
 > 
 
 ## <a name="encrypt-blob-and-upload"></a>BLOB の暗号化とアップロード
 
 次のコードを追加して BLOB を暗号化し、Azure ストレージ アカウントにアップロードします。 **ResolveKeyAsync** メソッドは IKey を返します。
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 // Retrieve the key that you created previously.
@@ -175,9 +202,11 @@ CloudBlockBlob blob = contain.GetBlockBlobReference("MyFile.txt");
 using (var stream = System.IO.File.OpenRead(@"C:\Temp\MyFile.txt"))
     blob.UploadFromStream(stream, stream.Length, null, options, null);
 ```
+---
 
 > [!NOTE]
 > BlobEncryptionPolicy コンストラクターを見ると、キーおよびリゾルバーを受け付けられることがわかります。 現在リゾルバーは既定のキーをサポートしていないため、暗号化にリゾルバーを使用できないことに注意してください。
+
 
 ## <a name="decrypt-blob-and-download"></a>BLOB の復号化とダウンロード
 
@@ -186,6 +215,12 @@ Resolver クラスを使用すると、復号化に役立ちます。 暗号化�
 RSA キーの秘密キーは Key Vault に残っているので、復号化を行うには、CEK を含む BLOB メタデータから暗号化されたキーを復号化のために Key Vault に送信します。
 
 アップロードした BLOB を復号化するには、以下を追加します。
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 // In this case, we will not pass a key and only pass the resolver because
@@ -196,15 +231,16 @@ BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = polic
 using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
     blob.DownloadToStream(np, null, options, null);
 ```
+---
 
 > [!NOTE]
-> キー管理を容易にするリゾルバーとして、他にAggregateKeyResolver および CachingKeyResolver の 2 つがあります。
+> キー管理を容易にするリゾルバーとして、他に AggregateKeyResolver および CachingKeyResolver の 2 つがあります。
 
 ## <a name="use-key-vault-secrets"></a>Key Vault シークレットの使用
 
 シークレットは基本的に対称キーなので、クライアント側暗号化でシークレットを使用するには SymmetricKey クラスを使用します。 ただし、前に説明したように、Key Vault のシークレットは SymmetricKey に対して正確にマップしていません。 いくつかの点について理解しておく必要があります。
 
-* SymmetricKey のキーは固定長の128、192、256、384、または 512 ビットである必要があります。
+* SymmetricKey のキーは、128、192、256、384、または 512 ビットの固定長でなければなりません。
 * SymmetricKey のキーは Base64 でエンコードされている必要があります。
 * SymmetricKey として使用される Key Vault シークレットは、Key Vault でのコンテンツ タイプが "application/octet-stream" でなければなりません。
 
@@ -226,13 +262,18 @@ $secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'TestSecret
 
 コンソール アプリケーションでは、前と同じ呼び出しを使用して、このシークレットを SymmetricKey として取得できます。
 
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+現在、Microsoft では、Azure Storage クライアント ライブラリのバージョン 12.x を反映したコード スニペットの作成に取り組んでいます。 詳細については、「[Azure Storage v12 クライアント ライブラリの発表](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)」をご覧ください。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 ```csharp
 SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
     "https://contosokeyvault.vault.azure.net/secrets/TestSecret2/",
     CancellationToken.None).GetAwaiter().GetResult();
 ```
-
-これで終了です。 機能を有効にご活用ください。
+---
 
 ## <a name="next-steps"></a>次のステップ
 

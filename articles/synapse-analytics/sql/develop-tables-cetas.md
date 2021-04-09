@@ -10,10 +10,10 @@ ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 23b74c06ebd45092b9efe36a870eeac7f6fb828a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101677558"
 ---
 # <a name="cetas-with-synapse-sql"></a>Synapse SQL での CETAS

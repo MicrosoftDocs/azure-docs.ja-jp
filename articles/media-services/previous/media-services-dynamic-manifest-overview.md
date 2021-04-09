@@ -3,7 +3,7 @@ title: フィルターと動的マニフェスト | Microsoft Docs
 description: このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。 Media Services では、動的マニフェストを作成してこの選択型ストリーミングをアーカイブします。
 services: media-services
 documentationcenter: ''
-author: cenkdin
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ff102765-8cee-4c08-a6da-b603db9e2054
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 96f0c4d4ea7c32e2b58807204ef45b75feae7132
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 002a7c61d6760decf65016870739ab62b15d5c72
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727330"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103013688"
 ---
 # <a name="filters-and-dynamic-manifests"></a>フィルターと動的マニフェスト
 

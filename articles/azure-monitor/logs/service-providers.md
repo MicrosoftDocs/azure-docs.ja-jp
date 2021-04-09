@@ -1,17 +1,16 @@
 ---
 title: サービス プロバイダー向けの Azure Monitor ログ | Microsoft Doc
 description: Azure Monitor ログは、マネージド サービス プロバイダー (MSP)、大企業、独立系ソフトウェア ベンダー (ISV)、およびホスティング サービス プロバイダーが、顧客のオンプレミス型またはクラウド型インフラストラクチャのサーバーを管理および監視するのに役立ちます。
-ms.subservice: logs
 ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 5f69de583dea14be3c7ce3ab6779af549e95de75
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5f1421da10c4748dd78e4c6790568285fa646979
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604155"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102047113"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>サービス プロバイダー向けの Azure Monitor ログ
 
@@ -48,7 +47,7 @@ Log Analytics ワークスペースに関するサービス プロバイダー�
 
 分散アーキテクチャの短所は次のとおりです。
 
-* Azure Monitor ブックなどのツールを使用して顧客の全テナントを対象にデータを一元的に視覚化して分析すると、特に 50 個以上のワークスペースでデータを分析しているときに、処理速度が低下する可能性があります。
+* Azure Monitor ブックなどのツールを使用して[顧客の全テナント](cross-workspace-query.md)を対象にデータを一元的に視覚化して分析すると、特に 50 個以上のワークスペースでデータを分析しているときに、処理速度が低下する場合があります。
 * 顧客が Azure の委任されたリソース管理をオンボードしていない場合、サービス プロバイダーの管理者は顧客のディレクトリにプロビジョニングされている必要があり、一度に多数の顧客のテナントをサービス プロバイダーが管理することが困難になります。
 
 ### <a name="2-central---logs-are-stored-in-a-workspace-located-in-the-service-provider-tenant"></a>2.中央 - ログは、サービス プロバイダーのテナントに置かれているワークスペースに格納されます
@@ -85,7 +84,7 @@ Log Analytics ワークスペースに関するサービス プロバイダー�
 
 * [PowerShell](../logs/powershell-workspace-configuration.md) を使用してワークスペースの作成を自動化する
 
-* [アラート](../platform/alerts-overview.md) を使用して既存のシステムと統合する
+* [アラート](../alerts/alerts-overview.md) を使用して既存のシステムと統合する
 
 * [Power BI](../visualize/powerbi.md) を使用して概要レポートを作成する
 

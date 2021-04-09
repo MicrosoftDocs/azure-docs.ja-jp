@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: daf243b75fbe8b5207c1f1c8eec342874c354043
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92519930"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yardione"></a>チュートリアル: Azure Active Directory と YardiOne の統合
@@ -41,9 +41,9 @@ Azure AD と YardiOne の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* YardiOne では、 **SP** によって開始される SSO がサポートされます
+* YardiOne では、**SP** によって開始される SSO がサポートされます
 
-* YardiOne では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* YardiOne では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-yardione-from-the-gallery"></a>ギャラリーからの YardiOne の追加
 
@@ -63,13 +63,13 @@ Azure AD への YardiOne の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **YardiOne** 」と入力し、結果パネルから **[YardiOne]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**YardiOne**」と入力し、結果パネルから **[YardiOne]** を選択してから、**[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果一覧の YardiOne](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、YardiOne で Azure AD シングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、YardiOne で Azure AD シングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと YardiOne 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 YardiOne で Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -87,7 +87,7 @@ YardiOne で Azure AD シングル サインオンを構成してテストする
 
 YardiOne で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **YardiOne** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **YardiOne** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -116,7 +116,7 @@ YardiOne で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="configure-yardione-single-sign-on"></a>YardiOne のシングル サインオンの構成
 
-**YardiOne** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [YardiOne サポート チーム](https://clientcentral.yardi.com/)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**YardiOne** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [YardiOne サポート チーム](https://clientcentral.yardi.com/)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -134,7 +134,7 @@ YardiOne で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -146,11 +146,11 @@ YardiOne で Azure AD シングル サインオンを構成するには、次の
 
 このセクションでは、Britta Simon に YardiOne へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[YardiOne]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[YardiOne]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、 **[YardiOne]** を選択します。
+2. アプリケーションの一覧で、**[YardiOne]** を選択します。
 
     ![アプリケーションの一覧の [YardiOne] リンク](common/all-applications.png)
 

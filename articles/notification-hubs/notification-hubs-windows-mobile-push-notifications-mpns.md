@@ -19,13 +19,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: e91d250b8cc9b80f2c97910c7fa972af32fa9104
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88998341"
 ---
-# <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>チュートリアル:Notification Hubs を使用して Windows Phone アプリにプッシュ通知を送信する
+# <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>チュートリアル: Notification Hubs を使用して Windows Phone アプリにプッシュ通知を送信する
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -56,7 +56,7 @@ ms.locfileid: "88998341"
 
 ### <a name="configure-windows-phone-mpns-settings"></a>Windows Phone (MPNS) の設定を構成する
 
-1. **[通知設定]** で、 **[Windows Phone (MPNS)]** を選択します。
+1. **[通知設定]** で、**[Windows Phone (MPNS)]** を選択します。
 2. **[Enable authentication push]\(認証プッシュを有効にする)** を選択します。
 3. ツールバーの **[保存]** を選択します。
 
@@ -125,7 +125,7 @@ ms.locfileid: "88998341"
    > [!NOTE]
    > このチュートリアルでは、トースト通知がデバイスに送信されます。 タイル通知を送信する場合は、チャネルの `BindToShellTile` メソッドを呼び出す必要があります。 トースト通知とタイル通知の両方をサポートするには、`BindToShellTile` と `BindToShellToast` の両方を呼び出します。
 
-6. ソリューション エクスプローラーで **[プロパティ]** を展開して `WMAppManifest.xml` ファイルを開き、 **[機能]** タブで **ID_CAP_PUSH_NOTIFICATION** 機能がオンであることを確認します。 これで、アプリはプッシュ通知を受信できます。
+6. ソリューション エクスプローラーで **[プロパティ]** を展開して `WMAppManifest.xml` ファイルを開き、**[機能]** タブで **ID_CAP_PUSH_NOTIFICATION** 機能がオンであることを確認します。 これで、アプリはプッシュ通知を受信できます。
 
     ![Visual Studio - Windows Phone App Capabilities][14]
 7. `F5` キーを押してアプリケーションを実行します。 登録メッセージがアプリに表示されます。
@@ -142,10 +142,10 @@ ms.locfileid: "88998341"
     ![[テスト送信] ボタン](./media/notification-hubs-windows-phone-get-started/test-send-button.png)
 3. **[テスト送信]** ウィンドウで、次の手順を実行します。
 
-    1. **[プラットフォーム]** として、 **[Windows Phone]** を選択します。
-    2. **通知の種類** として、 **[トースト]** を選択します。
+    1. **[プラットフォーム]** として、**[Windows Phone]** を選択します。
+    2. **通知の種類** として、**[トースト]** を選択します。
     3. **[送信]** を選択します。
-    4. ウィンドウの一番下の一覧にある**結果**を確認します。
+    4. ウィンドウの一番下の一覧にある **結果** を確認します。
 
         ![[テスト送信] ウィンドウ](./media/notification-hubs-windows-phone-get-started/test-send-window.png)
 4. Windows Phone エミュレーターまたは Windows Phone で、通知メッセージが表示されることを確認します。

@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 0cc874b4df7052c76fa58388bc982b8ffe3acc23
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92142917"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>IoT Hub モジュール ID とモジュール ツイン (C) の概要
@@ -52,7 +52,7 @@ ms.locfileid: "92142917"
 
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>IoT Hub でデバイス ID とモジュール ID を作成する
 
-このセクションでは、IoT ハブの ID レジストリにデバイス ID とモジュール ID を作成する C アプリを作成します。 IoT ハブに接続するデバイスまたはモジュールは、あらかじめ ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイド](iot-hub-devguide-identity-registry.md)の **ID レジストリ**に関するセクションをご覧ください。 このコンソール アプリを実行すると、デバイスとモジュール両方に対して一意のデバイス ID とキーが生成されます。 デバイスとモジュールは、IoT ハブに device-to-cloud メッセージを送信するときにこれらの値を使用して自分自身を識別します。 ID には大文字と小文字の区別があります。
+このセクションでは、IoT ハブの ID レジストリにデバイス ID とモジュール ID を作成する C アプリを作成します。 IoT ハブに接続するデバイスまたはモジュールは、あらかじめ ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイド](iot-hub-devguide-identity-registry.md)の **ID レジストリ** に関するセクションをご覧ください。 このコンソール アプリを実行すると、デバイスとモジュール両方に対して一意のデバイス ID とキーが生成されます。 デバイスとモジュールは、IoT ハブに device-to-cloud メッセージを送信するときにこれらの値を使用して自分自身を識別します。 ID には大文字と小文字の区別があります。
 
 次のコードを C ファイルに追加します。
 

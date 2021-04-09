@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: d806d8a04dc1bd8547808d20c77bfec310f7dd06
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95992998"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array のジョブを表示する
@@ -51,7 +51,7 @@ ms.locfileid: "95992998"
 2. ジョブの表形式の一覧からジョブを選択します。
    
     ![ジョブ ブレード](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
-3. ページの下部にある **[詳細]** をクリックします。
+3. ページの下部にある [**詳細**] をクリックします。
 4. **[詳細]** ダイアログ ボックスで、状態、詳細、および時間の統計情報を表示することができます。 次の図に **[バックアップ ジョブの詳細]** ダイアログ ボックスの例を示します。
    
     ![Job details](./media/storsimple-virtual-array-manage-jobs/ova-jobs-details.png)

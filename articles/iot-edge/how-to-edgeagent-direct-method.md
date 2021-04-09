@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 42c79526288fb7e05959ac60cddc6f468656ffd4
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 52cd7817594c5c2a1d4e3a4ca9c56891df594cd6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972545"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103201107"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>組み込みのダイレクト メソッドを使用して edgeAgent と通信する
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 IoT Edge エージェント モジュールに含まれているダイレクト メソッドを使用して IoT Edge デプロイを監視および管理します。 ダイレクト メソッドはデバイスに実装され、その後クラウドから呼び出すことができます。 IoT Edge エージェントには、IoT Edge デバイスをリモートで監視および管理できるようにするダイレクト メソッドが含まれています。
 

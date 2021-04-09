@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
 ms.openlocfilehash: 3a0b645acd7c21ff0416c748cdd2caf7041be508
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101730815"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>合成音声テクノロジの責任あるデプロイのためのガイドライン

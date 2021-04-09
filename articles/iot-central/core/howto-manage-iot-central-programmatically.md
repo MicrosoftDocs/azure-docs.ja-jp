@@ -5,14 +5,14 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/19/2020
+ms.date: 12/23/2020
 ms.topic: how-to
-ms.openlocfilehash: 773793c7681890098fea1a37cc5b9912c0ecb75c
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 2feb4d85e7be4076eef8b2796d15b622f6b17c3a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122996"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104658303"
 ---
 # <a name="manage-iot-central-programmatically"></a>プログラムによる IoT Central の管理
 
@@ -36,6 +36,8 @@ SDK リポジトリとパッケージ インストール コマンドを次の�
 ## <a name="samples"></a>サンプル
 
 [Azure IoT Central ARM SDK サンプル](/samples/azure-samples/azure-iot-central-arm-sdk-samples/azure-iot-central-arm-sdk-samples/) リポジトリには、Azure IoT Central アプリケーションの作成、更新、一覧表示、および削除を行う方法を示す複数のプログラミング言語のコード サンプルがあります。
+
+[!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

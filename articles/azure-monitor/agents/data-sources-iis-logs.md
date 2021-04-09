@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor で Log Analytics エージェントを使用して IIS ログを収集する
 description: インターネット インフォメーション サービス (IIS) は、Azure Monitor が収集できるログ ファイル内にユーザー アクティビティを格納します。  この記事では、IIS ログの収集を構成する方法、および Azure Monitor で作成されるレコードの詳細について説明します。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/13/2020
-ms.openlocfilehash: 96eab2d93ae0212568f8ef23e32a35016cb17248
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/26/2021
+ms.openlocfilehash: 484e49219b94f5974661b1e76f533236666ebcfb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732056"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050734"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Azure Monitor で Log Analytics エージェントを使用して IIS ログを収集する
 インターネット インフォメーション サービス (IIS) では、Log Analytics エージェントが収集して [Azure Monitor ログ](../data-platform.md)に格納できるログ ファイル内に、ユーザー アクティビティが格納されます。
@@ -26,7 +25,7 @@ Azure Monitor は IIS によって作成されたログ ファイルからエン
 
 Azure Monitor は W3C 形式で格納された IIS ログ ファイルのみをサポートし、カスタム フィールドや IIS 詳細ログはサポートしていません。 ログは NCSA または IIS のネイティブ形式では収集されません。
 
-Azure Monitor の IIS ログは、Log Analytics エージェントの [[詳細設定] メニュー](../agents/agent-data-sources.md#configuring-data-sources)から構成します。  必要な構成は、 **[Collect W3C format IIS log files]** (W3C 形式の IIS ログ ファイルを収集する) を選択することのみです。
+Azure Monitor の IIS ログは、Log Analytics エージェントの [[エージェントの構成] メニュー](../agents/agent-data-sources.md#configuring-data-sources)から構成します。  必要な構成は、 **[Collect W3C format IIS log files]** (W3C 形式の IIS ログ ファイルを収集する) を選択することのみです。
 
 
 ## <a name="data-collection"></a>データ コレクション

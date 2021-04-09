@@ -3,17 +3,17 @@ title: Power BI アプリを使用して Azure のコストを分析する
 description: この記事では、Azure Cost Management Power BI アプリをインストールして使用する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 1/29/2021
+ms.date: 02/19/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: d3439f5a86c445898d95191a32496b5f0c86be0b
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: b08ff57f964ef7bc3712c930c222a10ed0f89ef4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070159"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045100"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Enterprise Agreement (EA) 用の Azure Cost Management Power BI アプリを使用してコストを分析する
 
@@ -36,24 +36,23 @@ Azure Cost Management Power BI アプリは現在、[マイクロソフト エ�
 アプリをインストールするには:
 
 1. [Azure Cost Management Power BI アプリ](https://aka.ms/costmgmt/ACMApp)を開きます。
-2. [Power BI AppSource] ページで、 **[今すぐ入手]** を選択します。
-3. **[続行]** を選択して、使用条件とプライバシー ポリシーに同意します。
-4. **[この Power BI アプリをインストールしますか]** ボックスで、 **[インストール]** を選択します。
-5. 必要に応じて、ワークスペースを作成して **[続行]** を選択します。
-6. インストールが完了すると、新しいアプリの準備ができたことを示す通知が表示されます。
-7. **[アプリへ移動]** を選択します。
-8. **[新しいアプリを開始する]** の **[データを接続]** の下で、 **[接続]** を選択します。  
-  ![新しいアプリを開始する - 接続](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
-9. 表示されるダイアログで、**BillingProfileIdOrEnrollmentNumber** の EA 登録番号を入力します。 取得するデータの月数を指定します。 既定の **[範囲]** 値である **[Enrollment Number]\(登録番号\)** のままにして、 **[次へ]** を選択します。  
-  ![EA 登録情報を入力する](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
-10. 次のダイアログでは、Azure に接続し、予約インスタンスの推奨事項に必要なデータを取得します。 "*構成された既定値のままにして*"、 **[サインイン]** を選択します。  
-  ![既定値が表示されている [Connect to Azure Cost Management App]\(Azure Cost Management アプリに接続する\) ダイアログ ボックスを示すスクリーンショット。](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
-11. 最後のインストール手順では、EA 登録に接続し、[エンタープライズ管理者](../manage/understand-ea-roles.md)アカウントが必要です。 **[サインイン]** を選択して、お客様の EA 登録で認証します。 この手順では、Power BI でデータ更新操作も開始します。  
-  ![EA 登録に接続する](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
+1. [Power BI AppSource] ページで、 **[今すぐ入手]** を選択します。
+1. **[続行]** を選択して、使用条件とプライバシー ポリシーに同意します。
+1. **[この Power BI アプリをインストールしますか]** ボックスで、 **[インストール]** を選択します。
+1. 必要に応じて、ワークスペースを作成して **[続行]** を選択します。
+1. インストールが完了すると、新しいアプリの準備ができたことを示す通知が表示されます。
+1. インストールしたアプリを選択します。
+1. [作業の開始] ページで、 **[データを接続]** を選択します。
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-your-data.png" alt-text="[データを接続] リンクが強調表示されたスクリーンショット。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-your-data.png" :::
+1. 表示されるダイアログで、**BillingProfileIdOrEnrollmentNumber** の EA 登録番号を入力します。 取得するデータの月数を指定します。 既定の **[範囲]** 値である **[Enrollment Number]\(登録番号\)** のままにして、 **[次へ]** を選択します。  
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png" alt-text="E A 登録情報を入力する場所を示すスクリーンショット。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png" :::
+1. 次のダイアログで Azure に接続し、データを取得します。 "*構成された既定値のままにして*"、 **[サインインして続行する]** を選択します。  
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" alt-text="既定値が表示されている [Connect to Azure Cost Management App]\(Azure Cost Management アプリに接続する\) ダイアログ ボックスを示すスクリーンショット。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" :::
+1. 最後のインストール手順では、EA 登録に接続し、[エンタープライズ管理者](../manage/understand-ea-roles.md)アカウントが必要です。 すべて既定値のままにします。 **[サインインして接続する]** を選択します。  
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" alt-text="接続に使用する既定値が表示されている [Connect to Azure Cost Management App]\(Azure Cost Management アプリに接続する\) ダイアログ ボックスを示すスクリーンショット。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" :::
+1. EA 登録で認証するよう求められます。 Power BI を使用して認証します。 認証が完了すると、Power BI のデータ更新が開始されます。
     > [!NOTE]
     > データ更新処理が完了するまでにかなりの時間がかかることがあります。 この長さは、指定された月数と同期に必要なデータの量によって異なります。
-12. データ更新の状態を確認するには、ワークスペースの **[Datasets]\(データセット\)** タブを選択します。 [最新の情報に更新済み] タイムスタンプの横を確認します。 更新中の場合は、更新が進行中であることを示すインジケーターが表示されます。  
-  ![データを更新する](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/data-refresh2.png)
 
 データの更新が完了したら、Azure Cost Management アプリを選択して、事前に作成されたレポートを表示します。
 
@@ -78,11 +77,11 @@ Azure Cost Management Power BI アプリは現在、[マイクロソフト エ�
 
 **[Windows Server AHB Usage]/(Windows Server AHB 使用量/)** - このレポートには、Azure ハイブリッド特典が有効になっている仮想マシンの数が表示されます。 また、仮想マシンによって使用されるコア/vCPU の数も表示されます。
 
-![Azure ハイブリッド特典の完全なレポート](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png" alt-text="Azure ハイブリッド特典の詳細なレポートを示すスクリーンショット。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png" :::
 
 このレポートでは、ハイブリッド特典が **有効になっているが**、vCPU が 8 つ "_未満_" の Windows VM も識別されます。 また、vCPU が 8 つ "_以上_" あり、ハイブリッド特典が **有効になっていない** 場合も表示されます。 この情報は、ハイブリッド特典を最大限に活用するのに役立ちます。 最もコストのかかる仮想マシンに特典を適用して、削減可能なコストを最大化します。
 
-![Azure ハイブリッド特典 – vCPU が 8 つ未満および vCPU が有効になっていない](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png" alt-text="Azure ハイブリッド特典レポートの vCPU が 8 つ未満およびハイブリッド特典が有効になっていない vCPU の領域を示すスクリーンショット。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png" :::
 
 **[RI Chargeback]\(RI チャージバック\)** - このレポートは、リージョン、サブスクリプション、リソース グループ、またはリソースごとに、予約インスタンス (RI) 特典がどこでどの程度適用されるかを把握するのに役立ちます。 このレポートでは、償却された使用状況データを使用してビューが表示されます。
 
@@ -105,7 +104,7 @@ _chargetype_ にフィルターを適用して、RI 過小使用データを表�
 
 レポートを使用するには、ドリルダウン フィルターを選択します。
 
-![VM RI カバレッジ レポート– ドリルダウンを選択する](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-drill-down2.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-drill-down2.png" alt-text="VM RI カバレッジ レポートのドリルダウンの選択オプションを示すスクリーンショット。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-drill-down2.png" :::
 
 分析するリージョンを選択します。 次に、インスタンス サイズの柔軟性グループなどを選択します。
 
@@ -118,7 +117,7 @@ _chargetype_ にフィルターを適用して、RI 過小使用データを表�
 
 _[Normalized Size]\(正規化されたサイズ\)_ と _[Recommended Quantity Normalized]\(推奨される正規化数量\)_ の値は、インスタンス サイズの柔軟性グループの最小サイズに購入を正規化するのに役立ちます。 この情報は、インスタンス サイズの柔軟性グループのすべてのサイズに対して予約を 1 つのみ購入する場合に役立ちます。
 
-![RI の推奨事項](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-recomendations.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-recommendations.png" alt-text="RI の推奨事項レポートを示すスクリーンショット。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-recommendations.png" :::
 
 **[VM RI Coverage (single recommendation)]\(VM RI カバレッジ (1 つの推奨事項)\)** - このレポートは、選択した期間のオンデマンドの VM 使用量と RI の VM 使用量に分割されます。 サブスクリプション スコープでの VM RI の購入に関する推奨事項を示します。
 
@@ -151,7 +150,7 @@ Data source error: {"error":{"code":"ModelRefresh_ShortMessage_ProcessingError",
 
 Cost Management に再接続し、 **[範囲]** 値を `Enrollment Number` に設定します。 組織の登録番号を入力するのではなく、次の図に示すように正確に「`Enrollment Number`」と入力します。
 
-![EA 登録情報を入力する](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number-troubleshoot.png" alt-text="登録番号の既定のテキストを変更してはいけないことを示すスクリーンショット。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number-troubleshoot.png" :::
 
 ### <a name="budgetamount-error"></a>BudgetAmount エラー
 
@@ -166,12 +165,11 @@ Data source error: The 'budgetAmount' column does not exist in the rowset. Table
 
 #### <a name="cause"></a>原因
 
-このエラーは、基になるメタデータのバグが原因で発生します。 この問題が発生するのは、Azure portal 内の **[コスト管理] > [予算]** で使用できる予算がないためです。 バグ修正プログラムは、Power BI Desktop と Power BI サービスにデプロイするプロセスにあります。 
+このエラーは、基になるメタデータのバグが原因で発生します。 この問題が発生するのは、Azure portal 内の **[コスト管理] > [予算]** で使用できる予算がないためです。 バグ修正プログラムは、Power BI Desktop と Power BI サービスにデプロイするプロセスにあります。
 
 #### <a name="solution"></a>解決策
 
 - バグが修正されるまでは、Azure portal 内で課金アカウントまたは EA 登録レベルでテスト予算を追加することで、この問題を回避できます。 テスト予算により、Power BI との接続がブロック解除されます。 予算の作成方法の詳細については、「[チュートリアル: Azure の予算を作成して管理する](tutorial-acm-create-budgets.md)」を参照してください。
-
 
 ### <a name="invalid-credentials-for-azureblob-error"></a>AzureBlob の無効な資格情報エラー
 
@@ -183,15 +181,14 @@ Failed to update data source credentials: The credentials provided for the Azure
 
 #### <a name="cause"></a>原因
 
-このエラーは、AutoFitComboMeter BLOB 接続の認証方法を変更した場合に発生します。
+このエラーは、データ ソース接続の認証方法を変更した場合に発生します。
 
 #### <a name="solution"></a>解決策
 
 1. 対象のデータに接続します。
 1. EA 登録と月数を入力した後、認証方法に既定値の **[匿名]** をそのまま使用し、プライバシー レベルの設定に **[なし]** を使用します。  
-  ![[匿名] と [なし] の各値が入力されている [Connect to Azure Cost Management App]\(Azure Cost Management アプリに接続する\) ダイアログ ボックスを示すスクリーンショット。](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
+  :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png" alt-text="[匿名] と [なし] の各値が入力されている [Connect to Azure Cost Management App]\(Azure Cost Management アプリに接続する\) ダイアログ ボックスを示すスクリーンショット。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png" :::
 1. 次のページで、認証方法に **[OAuth2]** を設定し、プライバシー レベルに **[なし]** を設定します。 次に、サインインしてお客様の登録で認証します。 この手順により、Power BI データの更新操作も開始されます。
-
 
 ## <a name="data-reference"></a>データ参照
 

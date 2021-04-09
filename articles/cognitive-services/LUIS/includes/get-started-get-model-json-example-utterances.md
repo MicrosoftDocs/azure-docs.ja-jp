@@ -9,10 +9,10 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
 ms.openlocfilehash: 1f2b14bf2d41a56f8af4e7262f3d5e462b875788
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91534648"
 ---
 発話の例は、特定の形式に従っています。

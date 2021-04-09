@@ -12,10 +12,10 @@ ms.reviewer: ozge
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f569fdac19c4f765828d24f4d6615fdd7bafef8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89010904"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>共有キーによる承認を使用して REST API 操作を呼び出す
@@ -26,7 +26,7 @@ ms.locfileid: "89010904"
 
 このサンプル アプリケーションは、ストレージ アカウントの BLOB コンテナーを一覧表示します。 この記事のコードを試すには、次のものが必要です。
 
-- **Azure 開発**ワークロードと共に [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) をインストールします。
+- **Azure 開発** ワークロードと共に [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) をインストールします。
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -66,7 +66,7 @@ REST API への呼び出しは、クライアントが作成する要求およ�
 
 **要求メソッド**: GET。 この動詞は、要求オブジェクトのプロパティとして指定する HTTP メソッドです。 この動詞の他の値としては、呼び出す API に応じて HEAD、PUT、DELETE などがあります。
 
-**要求 URI**: `https://myaccount.blob.core.windows.net/?comp=list`。  この要求 URI は、BLOB ストレージ アカウント エンドポイント `https://myaccount.blob.core.windows.net` とリソース文字列 `/?comp=list` から作成されています。
+**要求 URI**: `https://myaccount.blob.core.windows.net/?comp=list`。  この要求 URI は、BLOB ストレージ アカウント エンドポイント `https://myaccount.blob.core.windows.net` とリソース文字列 `/?comp=list` から作成されています。
 
 [URI パラメーター](/rest/api/storageservices/List-Containers2#uri-parameters): ListContainers を呼び出すときに使うことができる追加のクエリ パラメーターがあります。 そのうちの 2 つは、呼び出しの *timeout* (タイムアウト、秒単位) と、フィルター処理に使われる *prefix* (プレフィックス) です。
 
@@ -78,15 +78,15 @@ REST API への呼び出しは、クライアントが作成する要求およ�
 /?comp=list&timeout=60&maxresults=100
 ```
 
-[要求ヘッダー](/rest/api/storageservices/List-Containers2#request-headers) **:** このセクションには、必須および省略可能な要求ヘッダーの一覧が示されています。 必須のヘッダーは、*Authorization* ヘッダー、*x-ms-date* (要求の UTC 時刻を含みます)、*x-ms-version* (使う REST API のバージョンを指定します) の 3 つです。 ヘッダーに *x-ms-client-request-id* を含めるかどうかは自由です。このフィールドには任意の値を設定できます。ログが有効になっていると、この値がストレージ分析ログに書き込まれます。
+[要求ヘッダー](/rest/api/storageservices/List-Containers2#request-headers)**:** このセクションには、必須および省略可能な要求ヘッダーの一覧が示されています。 必須のヘッダーは、*Authorization* ヘッダー、*x-ms-date* (要求の UTC 時刻を含みます)、*x-ms-version* (使う REST API のバージョンを指定します) の 3 つです。 ヘッダーに *x-ms-client-request-id* を含めるかどうかは自由です。このフィールドには任意の値を設定できます。ログが有効になっていると、この値がストレージ分析ログに書き込まれます。
 
-[要求本文](/rest/api/storageservices/List-Containers2#request-body) **:** ListContainers には要求本文はありません。 要求本文は、BLOB をアップロードするときにすべての PUT 操作で使われます。また、SetContainerAccessPolicy では、保存されているアクセス ポリシーの XML リストを送信して適用できます。 保存されているアクセス ポリシーについては、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」をご覧ください。
+[要求本文](/rest/api/storageservices/List-Containers2#request-body)**:** ListContainers には要求本文はありません。 要求本文は、BLOB をアップロードするときにすべての PUT 操作で使われます。また、SetContainerAccessPolicy では、保存されているアクセス ポリシーの XML リストを送信して適用できます。 保存されているアクセス ポリシーについては、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」をご覧ください。
 
-[応答の状態コード](/rest/api/storageservices/List-Containers2#status-code) **:** 知っておく必要があるすべての状態コードについて説明されています。 この例では、HTTP 状態コード 200 は正常です。 HTTP 状態コードの完全な一覧については、「[Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)」(状態コードの定義) をご覧ください。 ストレージ REST API に固有のエラー コードについては、「[REST API の一般的なエラー コード](/rest/api/storageservices/common-rest-api-error-codes)」をご覧ください。
+[応答状態コード](/rest/api/storageservices/List-Containers2#status-code)**:** 知っておく必要があるすべての状態コードについて説明されています。 この例では、HTTP 状態コード 200 は正常です。 HTTP 状態コードの完全な一覧については、「[Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)」(状態コードの定義) をご覧ください。 ストレージ REST API に固有のエラー コードについては、「[REST API の一般的なエラー コード](/rest/api/storageservices/common-rest-api-error-codes)」をご覧ください。
 
-[応答ヘッダー](/rest/api/storageservices/List-Containers2#response-headers) **:** *コンテンツ タイプ*、*x-ms-request-id* (渡した要求 ID)、*x-ms-version* (使われた Blob service のバージョン)、*Date* (UTC、要求が行われた日時) が含まれます。
+[応答ヘッダー](/rest/api/storageservices/List-Containers2#response-headers) **:** これには、*コンテンツ タイプ*、*x-ms-request-id* (渡した要求 ID)、*x-ms-version* (使用された Blob service のバージョン)、*Date* (UTC、要求が行われた日時) が含まれます。
 
-[応答本文](/rest/api/storageservices/List-Containers2#response-body):このフィールドは、要求されたデータを提供する XML 構造体です。 この例では、応答はコンテナーのリストとそのプロパティです。
+[応答本文](/rest/api/storageservices/List-Containers2#response-body): このフィールドは、要求されたデータを提供する XML 構造体です。 この例では、応答はコンテナーのリストとそのプロパティです。
 
 ## <a name="creating-the-rest-request"></a>REST 要求の作成
 
@@ -103,10 +103,10 @@ HttpRequestMessage オブジェクトである要求を作成するには、Prog
 
 次のような基本情報が必要です。
 
-- ListContainers の場合、**メソッド**は `GET` です。 この値は、要求をインスタンス化するときに設定されます。
-- **リソース**は呼び出されている API を示す URI のクエリ部分であり、値は `/?comp=list` です。 前述のように、リソースは、[ListContainers API](/rest/api/storageservices/List-Containers2) に関する情報を示す参照ドキュメントのページにあります。
+- ListContainers の場合、**メソッド** は `GET` です。 この値は、要求をインスタンス化するときに設定されます。
+- **リソース** は呼び出されている API を示す URI のクエリ部分であり、値は `/?comp=list` です。 前述のように、リソースは、[ListContainers API](/rest/api/storageservices/List-Containers2) に関する情報を示す参照ドキュメントのページにあります。
 - URI は、そのストレージ アカウントの Blob サービス エンドポイントを作成してリソースを連結することにより、作成されます。 **要求の URI** の最終的な値は、`http://contosorest.blob.core.windows.net/?comp=list` です。
-- ListContainers の場合、**要求本文**は null であり、余分な**ヘッダー**はありません。
+- ListContainers の場合、**要求本文** は null であり、余分な **ヘッダー** はありません。
 
 他の API では、*ifMatch* などの他のパラメーターを渡すことがあります。 IfMatch を使う場合の例は、PutBlob を呼び出すときです。 この場合、ifMatch には eTag を設定し、指定した eTag が BLOB の現在の eTag と一致する場合にのみ、BLOB を更新します。 eTag を取得した後で他のユーザーが BLOB を更新している場合、変更はオーバーライドされません。
 
@@ -280,30 +280,30 @@ Content-Length: 1511
 Authorization="SharedKey <storage account name>:<signature>"  
 ```
 
-signature フィールドはハッシュ ベースのメッセージ認証コード (HMAC) であり、要求から作成され、SHA256 アルゴリズムを使って計算された後、Base64 エンコードを使ってエンコードされます。 よろしいでしょうか (頑張ってください、"*正規化*" という言葉さえまだ耳にしていないのですから)。
+signature フィールドはハッシュ ベースのメッセージ認証コード (HMAC) であり、要求から作成され、SHA256 アルゴリズムを使って計算された後、Base64 エンコードを使ってエンコードされます。 よろしいでしょうか  (頑張ってください、"*正規化*" という言葉さえまだ耳にしていないのですから)。
 
 次のコード スニペットは、共有キー シグネチャ文字列の形式を示しています。
 
 ```csharp  
 StringToSign = VERB + "\n" +  
-               Content-Encoding + "\n" +  
-               Content-Language + "\n" +  
-               Content-Length + "\n" +  
-               Content-MD5 + "\n" +  
-               Content-Type + "\n" +  
-               Date + "\n" +  
-               If-Modified-Since + "\n" +  
-               If-Match + "\n" +  
-               If-None-Match + "\n" +  
-               If-Unmodified-Since + "\n" +  
-               Range + "\n" +  
-               CanonicalizedHeaders +  
-               CanonicalizedResource;  
+               Content-Encoding + "\n" +  
+               Content-Language + "\n" +  
+               Content-Length + "\n" +  
+               Content-MD5 + "\n" +  
+               Content-Type + "\n" +  
+               Date + "\n" +  
+               If-Modified-Since + "\n" +  
+               If-Match + "\n" +  
+               If-None-Match + "\n" +  
+               If-Unmodified-Since + "\n" +  
+               Range + "\n" +  
+               CanonicalizedHeaders +  
+               CanonicalizedResource;  
 ```
 
 これらのフィールドの大部分はほとんど使われません。 Blob Storage の場合、VERB、md5、コンテンツの長さ、正規化されたヘッダー、および正規化されたリソースを指定します。 それ以外は空白のままでかまいません (ただし、空白であることがわかるように、`\n` を入れておきます)。
 
-CanonicalizedHeaders および CanonicalizedResource とは何でしょうか。 よい質問です。 実際、正規化 (canonicalized) とはどのような意味でしょうか。 Microsoft Word では、canonicalized は単語として認識すらされません。 [Wikipedia での正規化の説明](https://en.wikipedia.org/wiki/Canonicalization)は次のようなものです。"*コンピューター サイエンスでは、正規化 (canonicalization、standardization、normalization など) とは、複数の方法で表現できるデータを 1 つの "標準的な" つまり正規の形式に変換する処理のことです。* " つまり、項目のリスト (正規化されたヘッダーの場合のヘッダーなど) を取得して、必要な形式に標準化することです。 基本的に、Microsoft で決定されている形式に一致させる必要があります。
+CanonicalizedHeaders および CanonicalizedResource とは何でしょうか。 よい質問です。 実際、正規化 (canonicalized) とはどのような意味でしょうか。 Microsoft Word では、canonicalized は単語として認識すらされません。 [Wikipedia での正規化の説明](https://en.wikipedia.org/wiki/Canonicalization)は次のようなものです。"*コンピューター サイエンスでは、正規化 (canonicalization、standardization、normalization など) とは、複数の方法で表現できるデータを 1 つの "標準的な" つまり正規の形式に変換する処理のことです。*" つまり、項目のリスト (正規化されたヘッダーの場合のヘッダーなど) を取得して、必要な形式に標準化することです。 基本的に、Microsoft で決定されている形式に一致させる必要があります。
 
 それでは 2 つの正規化されたフィールドについて説明します。これらは Authorization ヘッダーを作成するために必要なものです。
 
@@ -432,7 +432,7 @@ Authorization ヘッダーは、応答を送信する前に要求ヘッダーに
 
 これには、ストレージ サービス REST API を呼び出す要求の作成に使うことができるクラスを組み立てるために必要なものがすべて含まれます。
 
-## <a name="example-list-blobs"></a>例:BLOB を一覧表示する
+## <a name="example-list-blobs"></a>例: BLOB を一覧表示する
 
 コンテナー *container-1* の List Blobs 操作を呼び出すように、コードを変更する方法を見てみましょう。 このコードは、コンテナーを一覧表示するコードとほぼ同じであり、唯一の違いは URI と応答を解析する方法です。
 
@@ -570,7 +570,7 @@ Content-Length: 1135
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Blob service の REST API](/rest/api/storageservices/blob-service-rest-api)
-- [ファイル サービスの REST API](/rest/api/storageservices/file-service-rest-api)
-- [キュー サービスの REST API](/rest/api/storageservices/queue-service-rest-api)
-- [Table service の REST API](/rest/api/storageservices/table-service-rest-api)
+- [Blob サービス REST API](/rest/api/storageservices/blob-service-rest-api)
+- [File サービス REST API](/rest/api/storageservices/file-service-rest-api)
+- [Queue サービス REST API](/rest/api/storageservices/queue-service-rest-api)
+- [Table サービス REST API](/rest/api/storageservices/table-service-rest-api)

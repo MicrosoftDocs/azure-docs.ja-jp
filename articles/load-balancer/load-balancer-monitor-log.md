@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
 ms.openlocfilehash: 36937ace82d2bd8d4317f90a375042de10fe719f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101709820"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Azure Standard Load Balancer 用の Azure Monitor のログ

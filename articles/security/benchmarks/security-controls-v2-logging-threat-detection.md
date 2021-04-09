@@ -8,10 +8,10 @@ ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: a274ec1aab3f530700f89ef810fa667fdf4d08e6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102042982"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>セキュリティ コントロール V2:ログと脅威検出
@@ -50,7 +50,7 @@ Azure Security Center の組み込みの脅威検出機能を使用します。�
 
 - [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-- [アプリケーションのセキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [アプリケーション セキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
 - [脅威インテリジェンス](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
@@ -87,7 +87,7 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 - [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-- [アプリケーションのセキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
+- [アプリケーション セキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [脅威インテリジェンス](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
@@ -123,7 +123,7 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 - [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-- [アプリケーションのセキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [アプリケーション セキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
 - [脅威インテリジェンス](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 

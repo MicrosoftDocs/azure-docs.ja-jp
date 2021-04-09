@@ -4,12 +4,12 @@ description: Azure Container Registry を使用して、マルチアーキテク
 ms.topic: article
 ms.date: 02/07/2021
 ms.custom: ''
-ms.openlocfilehash: f8467cd3108ae4faea9ecb4c9d9ae339f476c311
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 520518a275e0a9d191ae770e560a0e6e8278eae2
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100012279"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802456"
 ---
 # <a name="multi-architecture-images-in-your-azure-container-registry"></a>Azure Container Registry のマルチアーキテクチャ イメージ
 
@@ -165,7 +165,7 @@ steps:
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines.md) を使用して、さまざまなアーキテクチャのコンテナー イメージを構築します。
+* [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) を使用して、さまざまなアーキテクチャのコンテナー イメージを構築します。
 * 試験段階の Docker [buildx](https://docs.docker.com/buildx/working-with-buildx/) プラグインを使用したマルチプラットフォーム イメージの構築について確認します。
 
 <!-- LINKS - external -->

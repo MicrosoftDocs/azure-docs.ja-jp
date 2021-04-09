@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.openlocfilehash: ae283785b4d4dc80c6b9b6c3997aaf82c9ff0f2f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102178713"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>クイックスタート: Azure CLI を使用して Azure Attestation を設定する

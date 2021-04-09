@@ -6,16 +6,16 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 42d4a722be25eec4b3e27012350346018fdba0f3
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: d695758849fd4f7e6f595820221f6b8606fe7cf1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754115"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096192"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate アプライアンスのアーキテクチャ
 
-この記事では、Azure Migrate アプライアンスのアーキテクチャとプロセスについて説明します。 Azure Migrate アプライアンスは、オンプレミスに展開された軽量のアプライアンスで、Azure に移行するための VM と物理サーバーを検出します。 
+この記事では、Azure Migrate アプライアンスのアーキテクチャとプロセスについて説明します。 Azure Migrate アプライアンスは、オンプレミスに展開された軽量のアプライアンスで、Azure に移行するための VM と物理サーバーを検出します。
 
 ## <a name="deployment-scenarios"></a>デプロイメント シナリオ
 
@@ -23,73 +23,50 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 
 **シナリオ** | **ツール** | **用途** 
 --- | --- | ---
-**VMware VM の評価** | Azure Migrate:Server Assessment | VMware VM を検出する。<br/><br/> マシンのアプリと依存関係を検出する。<br/><br/> マシン メタデータとパフォーマンス メタデータを収集して Azure に送信する。
-**VMware VM の移行 (エージェントレス)** | Azure Migrate:Server Migration | VMware VM を検出する<br/><br/>  [エージェントレス移行](server-migrate-overview.md)で VMware VM をレプリケートする。
-**Hyper-V VM の評価** | Azure Migrate:Server Assessment | Hyper-V VM を検出する。<br/><br/> マシン メタデータとパフォーマンス メタデータを収集して Azure に送信する。
-**物理マシン** |  Azure Migrate:Server Assessment |  物理サーバーを検出する。<br/><br/> マシン メタデータとパフォーマンス メタデータを収集して Azure に送信する。
+**VMware 環境で実行されているサーバーの検出と評価** | Azure Migrate:Server Assessment | VMware 環境で実行されているサーバーを検出します<br/><br/> インストールされているアプリケーションの検出、エージェントレスの依存関係分析、SQL Server インスタンスとデータベースの検出を実行します。<br/><br/> 評価のためにサーバーの構成とパフォーマンスのメタデータを収集します。
+**VMware 環境で実行されているサーバーのエージェントレス移行** | Azure Migrate:Server Migration | VMware 環境で実行されているサーバーを検出します。<br/><br/> エージェントをインストールせずにサーバーをレプリケートします。
+**Hyper-V 環境で実行されているサーバーの検出と評価** | Azure Migrate:Server Assessment | Hyper-V 環境で実行されているサーバーを検出します。<br/><br/> 評価のためにサーバーの構成とパフォーマンスのメタデータを収集します。
+**オンプレミスの物理または仮想化されたサーバーの検出と評価** |  Azure Migrate:Server Assessment |  オンプレミスの物理または仮想化されたサーバーを検出します。<br/><br/> 評価のためにサーバーの構成とパフォーマンスのメタデータを収集します。
 
-## <a name="appliance-components"></a>アプライアンスのコンポーネント
+## <a name="deployment-methods"></a>デプロイ方法
 
-アプライアンスには多数のコンポーネントがあります。
+このアプライアンスは、次のいくつかの方法を使用してデプロイできます。
 
-- **管理アプリ**:これは、アプライアンスの展開中にユーザーが入力する Web アプリです。 Azure への移行用にマシンを評価するときに使用されます。
-- **検出エージェント**:このエージェントは、マシン構成データを収集します。 Azure への移行用にマシンを評価するときに使用されます。 
-- **コレクター エージェント**:このエージェントはパフォーマンス データを収集します。 Azure への移行用にマシンを評価するときに使用されます。
-- **DRA エージェント**:VM のレプリケーションを調整し、レプリケートされたマシンと Azure 間の通信を調整します。 エージェントレスの移行を使用して VMware VM を Azure にレプリケートする場合にのみ使用されます。
-- **ゲートウェイ**: レプリケートされたデータを Azure に送信します。 エージェントレスの移行を使用して VMware VM を Azure にレプリケートする場合にのみ使用されます。
-- **自動更新サービス**:アプライアンス コンポーネントを更新します (24 時間ごとに実行されます)。
+- アプライアンスは、VMware または Hyper-V 環境で実行されているサーバー用のテンプレート ([VMware の場合は OVA テンプレート](how-to-set-up-appliance-vmware.md)、[Hyper-V の場合は VHD](how-to-set-up-appliance-hyper-v.md)) を使用してデプロイできます。
+- テンプレートを使用しない場合は、[PowerShell インストーラー スクリプト](deploy-appliance-script.md)を使って VMware または Hyper-V 環境用のアプライアンスをデプロイできます。
+- Azure Government では、PowerShell インストーラー スクリプトを使用してアプライアンスをデプロイする必要があります。 デプロイの手順については、[こちら](deploy-appliance-script-government.md)を参照してください。
+- オンプレミスまたはその他のクラウドの物理あるいは仮想化されたサーバーの場合は、常に PowerShell インストーラー スクリプトを使用してアプライアンスをデプロイします。デプロイの手順については、[こちら](how-to-set-up-appliance-physical.md)を参照してください。
+- ダウンロード リンクは、以下の表にあります。
 
+## <a name="appliance-services"></a>アプライアンス サービス
 
+アプライアンスには次のサービスがあります。
 
-## <a name="appliance-deployment"></a>アプライアンスのデプロイ
+- **アプライアンス構成マネージャー**: これは Web アプリケーションであり、サーバーの検出と評価を開始するためにソースの詳細を構成できます。 
+- **検出エージェント**: このエージェントにより、オンプレミスの評価として作成するために使用できるサーバー構成メタデータが収集されます。
+- **評価エージェント**: このエージェントにより、パフォーマンスベースの評価を作成するために使用できるサーバー パフォーマンス メタデータが収集されます。
+- **自動更新サービス**: このサービスにより、アプライアンス上で実行されているすべてのエージェントが最新の状態に保たれます。 24 時間ごとに自動的に実行されます。
+- **DRA エージェント**: サーバーのレプリケーションを調整し、レプリケートされたサーバーと Azure との間の通信をコーディネートします。 エージェントレス移行を使用してサーバーを Azure にレプリケートする場合にのみ使用されます。
+- **ゲートウェイ**: レプリケートされたデータを Azure に送信します。 エージェントレス移行を使用してサーバーを Azure にレプリケートする場合にのみ使用されます。
+- **SQL 検出および評価エージェント**: SQL Server インスタンスおよびデータベースの構成とパフォーマンスのメタデータを Azure に送信します。
 
-- Azure Migrate アプライアンスは、[Hyper-V](how-to-set-up-appliance-hyper-v.md) または [VMware](how-to-set-up-appliance-vmware.md) 用のテンプレートを使用するか、[VMware/Hyper-V](deploy-appliance-script.md) または[物理サーバー](how-to-set-up-appliance-physical.md)の PowerShell スクリプト インストーラーを使用して設定できます。 
-- アプライアンスのサポート要件と展開の前提条件の概要については、[アプライアンスのサポート マトリックス](migrate-appliance.md)を参照してください。
+> [!Note]
+> 最後の 3 つのサービスは、VMware 環境で実行されているサーバーの検出と評価に使用されるアプライアンスでのみ使用できます。<br/> VMware 環境で実行されている SQL Server インスタンスとデータベースの検出および評価は、現在プレビュー段階にあります。 この機能を試すには、[**このリンク**](https://aka.ms/AzureMigrate/SQL)を使用して、**オーストラリア東部** リージョンにプロジェクトを作成します。 オーストラリア東部に既にプロジェクトがあり、この機能を試したい場合は、ポータルでこれらの [**前提条件**](how-to-discover-sql-existing-project.md)が完了していることを確認してください。
 
-
-## <a name="appliance-registration"></a>アプライアンスの登録
-
-アプライアンスのセットアップ中に、Azure Migrate にアプライアンスを登録すると、表にまとめられている操作が実行されます。
-
-**操作** | **詳細** | **アクセス許可**
---- | --- | ---
-**ソース プロバイダーの登録** | これらのリソース プロバイダーは、アプライアンスのセットアップ時に選択した次のサブスクリプションに登録されます。Microsoft.OffAzure、Microsoft.Migrate、および Microsoft.KeyVault。<br/><br/> リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。 | リソースプロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
-**Azure AD アプリ通信を作成する** | Azure Migrate によって、アプライアンス上で実行されているエージェントと Azure 上で実行されているそれぞれのサービスとの間の通信 (認証と承認) に使用される Azure Active Directory (Azure AD) アプリが作成されます。<br/><br/> このアプリには、任意のリソースに対して Azure Resource Manager 呼び出しや Azure RBAC アクセスを行うための特権はありません。 | Azure Migrate でアプリを作成するには、[これらのアクセス許可](./tutorial-discover-vmware.md#prepare-an-azure-user-account)が必要です。
-**Azure AD アプリの作成 - Key Vault** | このアプリは、VMware VM を Azure にエージェントレスで移行する場合にのみ作成されます。<br/><br/> エージェントレス移行の目的でユーザーのサブスクリプション内に作成されたキー コンテナーにアクセスするためにのみ使用されます。<br/><br/> アプライアンスから検出が開始されると、(顧客のテナント内で作成された) Azure キー コンテナーで Azure RBAC アクセスが可能になります。 | Azure Migrate でアプリを作成するには、[これらのアクセス許可](./tutorial-discover-vmware.md#prepare-an-azure-user-account)が必要です。
-
-
-
-## <a name="collected-data"></a>収集されるデータ
-
-すべての展開シナリオでクライアントによって収集されるデータの概要については、[アプライアンスのサポート マトリックス](migrate-appliance.md)を参照してください。
 
 ## <a name="discovery-and-collection-process"></a>検出と収集のプロセス
 
-![Architecture](./media/migrate-appliance-architecture/architecture1.png)
+:::image type="content" source="./media/migrate-appliance-architecture/architecture1.png" alt-text="アプライアンス アーキテクチャ":::
 
-アプライアンスは、次のプロセスを使用して、vCenter サーバーおよび Hyper-V ホスト/クラスターと通信します。
+アプライアンスと検出ソースの間で、次のプロセスを使用して通信が行われます。
 
-1. **検出を開始する**:
-    - Hyper-V アプライアンスで検出を開始すると、WinRM ポート 5985 (HTTP) で Hyper-V ホストとの通信が行われます。
-    - VMware アプライアンスで検出を開始すると、既定では TCP ポート 443 で vCenter サーバーとの通信が行われます。 vCenter サーバーが別のポートでリッスンしている場合は、それをアプライアンス Web アプリで構成できます。
-2. **メタデータとパフォーマンス データを収集する**:
-    - アプライアンスは、Common Information Model (CIM) セッションを使用して、ポート 5985 で Hyper-V ホストから Hyper-V VM のデータを収集します。
-    - アプライアンスは、既定ではポート 443 を使用して通信を行い、vCenter サーバーから VMware VM のデータを収集します。
-3. **データを送信する**:アプライアンスは、SSL ポート 443 を介して、収集したデータを Azure Migrate Server Assessment と Azure Migrate Server Migration に送信します。 アプライアンスは、インターネット経由または ExpressRoute 経由で Azure に接続できます (Microsoft ピアリングが必要です)。
-    - パフォーマンス データの場合、アプライアンスはリアルタイムの使用状況データを収集します。
-        - パフォーマンス データは、各パフォーマンス メトリックについて、VMware では 20 秒ごとに収集され、Hyper-V では 30 秒ごとに収集されます。
-        - 収集されたデータは、10 分間に 1 つのデータ ポイントを作成するためにロールアップされます。
-        - ピーク時の使用率の値は、すべての 20 または 30 秒のデータ ポイントから選択され、評価計算のために Azure に送信されます。
-        - 評価のプロパティで指定されたパーセンタイル値 (50/90/95/99) に基づいて、10 分間のポイントが昇順に並べ替えられ、適切なパーセンタイル値を使用して評価が計算されます。
-    - Server Migration の場合、アプライアンスは VM データの収集を開始し、それを Azure にレプリケートします。
-4. **評価および移行する**:これで、Azure Migrate Server Assessment を使用して、アプライアンスによって収集されたメタデータから評価を作成できます。 また、Azure Migrate Server Migration を使用して VMware VM の移行を開始し、エージェントレスの VM レプリケーションを調整することもできます。
-
-## <a name="appliance-upgrades"></a>アプライアンスのアップグレード
-
-アプライアンスで実行されている Azure Migrate エージェントが更新されると、アプライアンスがアップグレードされます。 アプライアンスでは既定で自動更新が有効になっているため、これは自動的に行われます。 エージェントを手動で更新するために、この既定の設定を変更できます。
-
-レジストリで自動更新をオフにするには、HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance の "AutoUpdate" キーを 0 (ダブルワード) に設定します。
-
+**処理** | **VMware アプライアンス** | **Hyper-V アプライアンス** | **物理アプライアンス**
+---|---|---|---
+**検出の開始** | 既定では、アプライアンスと vCenter サーバーの通信は TCP ポート 443 で行われます。 vCenter サーバーが別のポートでリッスンしている場合は、それをアプライアンス構成マネージャーで構成できます。 | アプライアンスと Hyper-V ホストとの通信は、WinRM ポート 5985 (HTTP) で行われます。 | アプライアンスと Windows サーバーの通信は WinRM ポート 5985 (HTTP) を介して、Linux サーバーとはポート 22 (TCP) を介して行われます。
+**構成とパフォーマンスのメタデータの収集** | アプライアンスからポート 443 (既定のポート) または vCenter Server がリッスンしているその他のポートで接続することによって、vCenter Server で実行されているサーバーのメタデータが vSphere API を使用して収集されます。 | アプライアンスとポート 5985 のホストとの Common Information Model (CIM) セッションを使用して、Hyper-V ホスト上で実行されているサーバーのメタデータが収集されます。| アプライアンスとポート 5985 のサーバーとの Common Information Model (CIM) セッションを使用して Windows サーバーから、およびポート 22 での SSH 接続を使用して Linux サーバーから、メタデータが収集されます。
+**検出データの送信** | アプライアンスから SSL ポート 443 を介して、収集されたデータが Azure Migrate: Server Assessment と Azure Migrate: Server Migration に送信されます。<br/><br/> アプライアンスは、インターネット経由または ExpressRoute 経由で Azure に接続できます (Microsoft ピアリングが必要です)。 | アプライアンスから SSL ポート 443 を介して、収集されたデータが Azure Migrate: Server Assessment に送信されます。<br/><br/> アプライアンスは、インターネット経由または ExpressRoute 経由で Azure に接続できます (Microsoft ピアリングが必要です)。| アプライアンスから SSL ポート 443 を介して、収集されたデータが Azure Migrate: Server Assessment に送信されます。<br/><br/> アプライアンスは、インターネット経由または ExpressRoute 経由で Azure に接続できます (Microsoft ピアリングが必要です)。
+**データ収集の頻度** | 構成メタデータは 30 分ごとに収集され、送信されます。 <br/><br/> パフォーマンス メタデータは 20 秒ごとに収集され、10 分ごとに集計されてデータ ポイントが Azure に送信されます。 <br/><br/> ソフトウェア インベントリ データは、12 時間ごとに Azure に送信されます。 <br/><br/> エージェントレスの依存関係データは 5 分ごとに収集され、アプライアンス上で集計されて、6 時間ごとに Azure に送信されます。 <br/><br/> SQL Server 構成データは 24 時間ごとに更新され、パフォーマンス データは 30 秒ごとにキャプチャされます。| 構成メタデータは 30 分ごとに収集され、送信されます。 <br/><br/> パフォーマンス メタデータは 30 秒ごとに収集され、10 分ごとに集計されてデータ ポイントが Azure に送信されます。|  構成メタデータは 30 分ごとに収集され、送信されます。 <br/><br/> パフォーマンス メタデータは 5 分ごとに収集され、10 分ごとに集計されてデータ ポイントが Azure に送信されます。
+**評価と移行** | Azure Migrate:Server Assessment ツールを使用して、アプライアンスによって収集されたメタデータから評価を作成できます。<br/><br/>また、Azure Migrate: Server Migration ツールを使用して、VMware 環境で実行しているサーバーの移行を開始し、エージェントレスのサーバー レプリケーションを調整することもできます。| Azure Migrate: Server Assessment ツールを使用して、アプライアンスによって収集されたメタデータから評価を作成できます。 | Azure Migrate: Server Assessment ツールを使用して、アプライアンスによって収集されたメタデータから評価を作成できます。
 
 ## <a name="next-steps"></a>次のステップ
 

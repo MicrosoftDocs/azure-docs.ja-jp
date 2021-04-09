@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fa502f5ca95b1726da7f00f987b35be362ae865a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 04f793f78cef938c31e7a30aad5569a54eb461a1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021760"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104613109"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>クイック スタート:Azure CLI を使用して BLOB を作成、ダウンロード、一覧表示する
 
@@ -145,7 +145,7 @@ az storage blob download \
 
 ## <a name="data-transfer-with-azcopy"></a>AzCopy でのデータ転送
 
-AzCopy コマンド ライン ユーティリティは、Azure Storage に対する高速かつスクリプトで制御可能なデータ転送を実現します。 Blob Storage や Azure Files との間のデータ転送に AzCopy を使用できます。 最新バージョンである AzCopy v10 の詳細については、「[AzCopy を使ってみる](../common/storage-use-azcopy-v10.md)」を参照してください。 Blob Storage での AzCopy v10 の使用については、「[AzCopy と Blob Storage でデータを転送する](../common/storage-use-azcopy-blobs.md)」を参照してください。
+AzCopy コマンド ライン ユーティリティは、Azure Storage に対する高速かつスクリプトで制御可能なデータ転送を実現します。 Blob Storage や Azure Files との間のデータ転送に AzCopy を使用できます。 最新バージョンである AzCopy v10 の詳細については、「[AzCopy を使ってみる](../common/storage-use-azcopy-v10.md)」を参照してください。 Blob Storage での AzCopy v10 の使用については、「[AzCopy と Blob Storage でデータを転送する](../common/storage-use-azcopy-v10.md#transfer-data)」を参照してください。
 
 次の例では、AzCopy を使用してローカル ファイルを BLOB にアップロードします。 サンプルの値は忘れずに実際の値に置き換えてください。
 

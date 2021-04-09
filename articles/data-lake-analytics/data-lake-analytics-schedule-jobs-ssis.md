@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 07/17/2018
 ms.openlocfilehash: b080b433f5af49e970faba02003fb68e21a08365
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92221453"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>SQL Server Integration Services (SSIS) を使用した U-SQL ジョブのスケジュール設定
@@ -45,13 +45,13 @@ Azure Data Lake Analytics タスク エディターで、**SourceType** を **Di
 
 ## <a name="scenario-2-use-u-sql-files-in-azure-data-lake-store"></a>シナリオ 2: Azure Data Lake Store 内の U-SQL ファイルを使用する
 
-Azure Feature Pack の **Azure Data Lake Store ファイル システム タスク**を使用すると、Azure Data Lake Store 内の U-SQL ファイルも使用できます。 このアプローチを使用すると、クラウドに格納されているスクリプトを使用することができます。
+Azure Feature Pack の **Azure Data Lake Store ファイル システム タスク** を使用すると、Azure Data Lake Store 内の U-SQL ファイルも使用できます。 このアプローチを使用すると、クラウドに格納されているスクリプトを使用することができます。
 
 次の手順に従って、Azure Data Lake Store ファイル システム タスクと Azure Data Lake Analytics タスク間の接続を設定します。
 
 ### <a name="set-task-control-flow"></a>タスク制御フローを設定する
 
-SSIS パッケージのデザイン ビューで、**Azure Data Lake Store ファイル システム タスク**、**Foreach ループ コンテナー**、およびその Foreach ループ コンテナー内の **Azure Data Lake Analytics タスク**を追加します。 Azure Data Lake Store ファイル システム タスクは、お使いの ADLS アカウントで U-SQL ファイルを一時フォルダーにダウンロードするのに役立ちます。 Foreach ループ コンテナーと Azure Data Lake Analytics タスクは、一時フォルダー配下のすべての U-SQL ファイルを U-SQL ジョブとして Azure Data Lake Analytics アカウントに送信するのに役立ちます。
+SSIS パッケージのデザイン ビューで、**Azure Data Lake Store ファイル システム タスク**、**Foreach ループ コンテナー**、およびその Foreach ループ コンテナー内の **Azure Data Lake Analytics タスク** を追加します。 Azure Data Lake Store ファイル システム タスクは、お使いの ADLS アカウントで U-SQL ファイルを一時フォルダーにダウンロードするのに役立ちます。 Foreach ループ コンテナーと Azure Data Lake Analytics タスクは、一時フォルダー配下のすべての U-SQL ファイルを U-SQL ジョブとして Azure Data Lake Analytics アカウントに送信するのに役立ちます。
 
 ![Foreach ループ コンテナーに追加される Azure Data Lake Store ファイル システム タスクを示す図。](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-data-lake-store.png)
 
@@ -112,7 +112,7 @@ Azure Data Lake Store ファイル システム タスクの詳細について�
 
 ## <a name="scenario-3-use-u-sql-files-in-azure-blob-storage"></a>シナリオ 3: Azure Blob Storage 内の U-SQL ファイルを使用する
 
-Azure Feature Pack の **Azure BLOB のダウンロード タスク**を使用すると、Azure Blob Storage 内の U-SQL ファイルを使用することができます。 このアプローチを使用すると、クラウドでスクリプトを使用することができます。
+Azure Feature Pack の **Azure BLOB のダウンロード タスク** を使用すると、Azure Blob Storage 内の U-SQL ファイルを使用することができます。 このアプローチを使用すると、クラウドでスクリプトを使用することができます。
 
 手順は「[シナリオ 2: Azure Data Lake Store 内の U-SQL ファイルを使用する](#scenario-2-use-u-sql-files-in-azure-data-lake-store)」と同じです。 Azure Data Lake Store ファイル システム タスクを Azure BLOB のダウンロード タスクに変更します。 Azure BLOB のダウンロード タスクの詳細については、[こちら](/sql/integration-services/control-flow/azure-blob-download-task)を参照してください。
 
@@ -140,21 +140,21 @@ Azure Feature Pack の **Azure BLOB のダウンロード タスク**を使用�
 
 ## <a name="scenario-5-use-u-sql-statement-in-ssis-variable"></a>シナリオ 5: SSIS 変数で U-SQL ステートメントを使用する
 
-U-SQL ステートメントを動的に生成する必要がある場合があります。 **SSIS 変数**と **SSIS 式**、およびスクリプト タスクのようなその他の SSIS タスクを使用すると、U-SQL ステートメントを動的に生成することができます。
+U-SQL ステートメントを動的に生成する必要がある場合があります。 **SSIS 変数** と **SSIS 式**、およびスクリプト タスクのようなその他の SSIS タスクを使用すると、U-SQL ステートメントを動的に生成することができます。
 
 1. 最上位のメニュー項目 **[SSIS] > [変数]** から、変数ツール ウィンドウを開きます。
 
-2. SSIS 変数を追加して値を直接設定するか、**式**を使用して値を生成します。
+2. SSIS 変数を追加して値を直接設定するか、**式** を使用して値を生成します。
 
-3. **Azure Data Lake Analytics タスク**を追加して、以下を行います。
-    1. **[SourceType]** を**変数**に設定します。
+3. **Azure Data Lake Analytics タスク** を追加して、以下を行います。
+    1. **[SourceType]** を **変数** に設定します。
     2. **[SourceVariable]** を今作成した SSIS 変数に設定します。
 
 4. Azure Data Lake Analytics タスクのその他の構成を完了します。
 
 ## <a name="scenario-6-pass-parameters-to-u-sql-script"></a>シナリオ 6: U-SQL スクリプトにパラメーターを渡す
 
-U-SQL スクリプト内の U-SQL 変数の値を動的に設定する必要がある場合があります。 このシナリオでは、Azure Data Lake Analytics タスクの**パラメーター マッピング**機能が役立ちます。 通常は、2 つの一般的なユーザー ケースがあります。
+U-SQL スクリプト内の U-SQL 変数の値を動的に設定する必要がある場合があります。 このシナリオでは、Azure Data Lake Analytics タスクの **パラメーター マッピング** 機能が役立ちます。 通常は、2 つの一般的なユーザー ケースがあります。
 
 - 現在の日時に基づいて入力と出力のファイル パス変数を動的に設定します。
 - ストアド プロシージャのパラメーターを設定します。

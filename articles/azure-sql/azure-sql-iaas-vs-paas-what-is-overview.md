@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: 7f267b4909817e89444883403bef6662771332ad
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: ea097119111d5dbd5eba3c11aba549d201186e3f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550880"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592185"
 ---
 # <a name="what-is-azure-sql"></a>Azure SQL とは 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -32,11 +32,11 @@ Azure SQL は使い慣れた SQL Server エンジンに基づいて構築され�
 
 ビジネス要件に適したオプションを判断するために、各製品が Microsoft のどの Azure SQL データ プラットフォームに適しているかについて学ぶことができます。 この記事を参照することで、コスト削減と管理の最小化のいずれを優先するかに関係なく、最大の関心事項であるビジネス要件に適したアプローチを判断できます。
 
-
 Azure SQL を初めて使用する場合は、[Azure SQL ビデオ シリーズ](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)の "*Azure SQL の概要*" に関するビデオをご覧ください。
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
 
-
+> [!TIP]
+> Azure SQL を改善するために、 [アンケートにご協力ください。](https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456)
 
 ## <a name="overview"></a>概要
 
@@ -76,7 +76,7 @@ Azure は絶えずデータの脅威を監視します。 Azure SQL を使用す
 
 Azure では、ホストされるサービス ([PaaS](https://azure.microsoft.com/overview/what-is-paas/))、またはホストされるインフラストラクチャ ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)) として、SQL Server のワークロードを実行することができます。 PaaS 内には、複数の製品オプションと、各オプション内のサービス レベルがあります。 PaaS か IaaS かを決定するときにたずねる必要がある重要な質問は、データベースの管理、修正プログラムの適用、バックアップの実行を自分で行うか、これらの操作を Azure に委任するかということです。
 
-### <a name="azure-sql-database"></a>Azure SQL Database 
+### <a name="azure-sql-database"></a>Azure SQL データベース
 
 [Azure SQL Database](database/sql-database-paas-overview.md) は、Azure でホストされるリレーショナル DBaaS (サービスとしてのデータベース) であり、*サービスとしてのプラットフォーム (PaaS)* の業界カテゴリに分類されます。 
 - 最新のクラウド アプリケーションで、最新の安定した SQL Server 機能を使用する必要があり、開発とマーケティングに時間の制約がある場合に最適です。 
@@ -111,7 +111,7 @@ Azure SQL Database には、次のデプロイの選択肢があります。
 
 ### <a name="comparison-table"></a>比較表
 
-| Azure SQL Database  | Azure SQL Managed Instance | Azure VM 上の SQL Server |
+| Azure SQL データベース | Azure SQL Managed Instance | Azure VM 上の SQL Server |
 | :--- | :--- | :--- |
 |ほとんどのオンプレミス データベース レベルの機能をサポートしています。 最もよく使用される SQL Server 機能を利用できます。<br/>99.995% の可用性を保証。<br/>組み込みのバックアップ、修正プログラムの適用、回復。<br/>最新の安定版データベース エンジン バージョン。<br/>個々のデータベースに必要なリソース (CPU/ストレージ) を割り当てる機能。<br/>組み込みの高度なインテリジェンスとセキュリティ。<br/>オンラインでのリソース (CPU/ストレージ) の変更。| ほとんどすべてのオンプレミス インスタンス レベルおよびデータベース レベルの機能をサポートしています。 SQL Server との高い互換性。<br/>99.99% の可用性を保証。<br/>組み込みのバックアップ、修正プログラムの適用、回復。<br/>最新の安定版データベース エンジン バージョン。<br/>SQL Server からの移行が簡単。<br/>Azure Virtual Network 内のプライベート IP アドレス。<br/>組み込みの高度なインテリジェンスとセキュリティ。<br/>オンラインでのリソース (CPU/ストレージ) の変更。| SQL Server エンジンを完全に制御できます。 すべてのオンプレミス機能をサポートしています。<br/>最大 99.99% の可用性。<br/>オンプレミスの SQL Server の対応するバージョンと完全に一致。<br/>固定された、既知のデータベース エンジン バージョン。<br/>SQL Server からの移行が簡単。<br/>Azure Virtual Network 内のプライベート IP アドレス。<br/>SQL Server が配置されているホストでアプリケーションまたはサービスをデプロイできます。|
 |SQL Server からの移行が難しい可能性があります。<br/>一部の SQL Server 機能は使用できません。<br/>正確なメンテナンス時間の保証はありません (ただし、ほぼ透過的です)。<br/>データベース互換性レベルをのみを使用して、SQL Server バージョンとの互換性を実現できます。<br/>[Azure Private Link](database/private-endpoint-overview.md) を使用したプライベート IP アドレスのサポート。|利用できない最小限の数の SQL Server 機能がまだあります。<br/>正確なメンテナンス時間の保証はありません (ただし、ほぼ透過的です)。<br/>データベース互換性レベルをのみを使用して、SQL Server バージョンとの互換性を実現できます。|バックアップと修正プログラムを管理する必要があります。<br>高可用性ソリューションを独自に実装する必要があります。<br/>リソース (CPU/ストレージ) の変更中にダウンタイムが発生|

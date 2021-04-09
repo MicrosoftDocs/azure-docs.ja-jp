@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 05/09/2017
 ms.openlocfilehash: f92aadc8ccf18dd91b5dd4b35285f60b174e4cf7
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92220076"
 ---
 # <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics の U-SQL カタログを使用する
@@ -104,7 +104,7 @@ OUTPUT @res
     USING Outputters.Csv();
 ```
 
-## <a name="create-tables"></a>テーブルの作成
+## <a name="create-tables"></a>テーブルを作成する
 リレーショナル データベースのテーブルと同様に、U-SQL では、定義済みのスキーマでテーブルを作成したり、テーブルを作成して、そのテーブルを設定するクエリからスキーマを推測したりすることができます (CREATE TABLE AS SELECT または CTAS ともいう)。
 
 次のスクリプトを使用して、1 つのデータベースと 2 つのテーブルを作成します。

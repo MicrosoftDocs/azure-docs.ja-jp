@@ -12,10 +12,10 @@ ms.date: 10/13/2020
 ms.author: v-demjoh
 keywords: 意図認識
 ms.openlocfilehash: 215b25e440b8cad76e0656e47d32b184edf4ac66
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95018703"
 ---
 # <a name="what-is-intent-recognition"></a>意図認識とは

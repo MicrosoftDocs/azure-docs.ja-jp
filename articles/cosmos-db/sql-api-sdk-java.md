@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 12/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 59acbc545e6bb37ebd090ec458d98586de882133
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: f18458d0c2ce857ba71463a14844414e631a73ad
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696289"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595704"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,14 +43,14 @@ ms.locfileid: "97696289"
 > これは Azure Cosmos DB 用の最新の Java SDK では "*ありません*"。 プロジェクトには [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) を使用することを検討してください。 アップグレードするには、[Azure Cosmos DB Java SDK v4 への移行](migrate-java-v4-sdk.md)に関するガイド、および[ Reactor と RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) に関するガイドの手順に従ってください。 
 >
 
-| |  |
+| | リンク |
 |---|---|
 |**SDK のダウンロード**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**API ドキュメント**|[Java API リファレンス ドキュメント](/java/api/com.microsoft.azure.documentdb)|
 |**SDK への協力**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**開始するには**|[Java SDK の開始](./create-sql-api-java.md)|
 |**Web アプリ チュートリアル**|[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-java-application.md)|
-|**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
+|**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](/java/azure/jdk/)|
 
 ## <a name="release-notes"></a>リリース ノート
 

@@ -1,16 +1,16 @@
 ---
-author: PatrickFarley
+author: laujan
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
-ms.author: pafarley
-ms.openlocfilehash: 7cf3d86eeea9d1b0f5fcbb757d3597e21cbcc369
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.author: lajanuar
+ms.openlocfilehash: 324fde5198fe3469e3979cf5cd102715118a49aa
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98901047"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103467323"
 ---
 Form Recognizer は、次の要件を満たす入力ドキュメントを処理します。
 

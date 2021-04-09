@@ -9,18 +9,23 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1f346e1b737075fa79dc1146152125a6c5a3ec1a
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 8f019c8f3c560fdfdc0c8e5992389c253c9b0d74
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704685"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463376"
 ---
-# <a name="tutorial-develop-c-iot-edge-modules-for-windows-devices"></a>チュートリアル:Windows デバイス用の C IoT Edge モジュールを開発する
+# <a name="tutorial-develop-c-iot-edge-modules-using-windows-containers"></a>チュートリアル: Windows コンテナーを使用して C の IoT Edge モジュールを開発する
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 この記事では、Visual Studio を使用して C コードを開発し、Azure IoT Edge を実行している Windows デバイスに展開する方法について説明します。
 
-Azure IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、センサー データをフィルター処理する IoT Edge モジュールを作成および展開する方法について説明します。 
+>[!NOTE]
+>IoT Edge 1.1 LTS は、Windows コンテナーをサポートする最後のリリース チャネルです。 バージョン 1.2 以降では、Windows コンテナーはサポートされません。 Windows デバイスで IoT Edge を実行するには、[IoT Edge for Linux on Windows](iot-edge-for-linux-on-windows.md) の使用またはこちらへの移行を検討してください。
+
+Azure IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、センサー データをフィルター処理する IoT Edge モジュールを作成および展開する方法について説明します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -37,18 +42,18 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、Visual Studio 2019 を使用して C でモジュールを開発し、それを Windows デバイスに展開する方法について説明します。 Linux デバイス用のモジュールを開発する場合は、[Linux デバイス用の C IoT Edge モジュールの開発](tutorial-csharp-module.md)に関するチュートリアルに移動してください。
+このチュートリアルでは、Visual Studio 2019 を使用して C でモジュールを開発し、それを Windows デバイスに展開する方法について説明します。 Linux コンテナーを使用してモジュールを開発する場合は、「[Linux コンテナーを使用して C の IoT Edge モジュールを開発する](tutorial-csharp-module.md)」を参照してください。
 
-C モジュールを開発し、Windows デバイスに展開する際のオプションについては、次の表を参照してください。
+Windows コンテナーを使用して C モジュールを開発してデプロイする際のオプションについては、次の表を参照してください。
 
 | C | Visual&nbsp;Studio&nbsp;Code | Visual Studio 2017&nbsp;および&nbsp;2019 |
 | -- | ------------------ | :------------------: |
 | Windows AMD64 |  | ![Visual Studio で WinAMD64 用の C モジュールを開発する](./media/tutorial-c-module/green-check.png) |
 
-このチュートリアルを開始する前に、チュートリアル「[Windows デバイス用の IoT Edge モジュールを開発する](tutorial-develop-for-windows.md)」の手順に従って開発環境を設定します。 これを完了すると、環境には次の前提条件が含まれます。
+このチュートリアルを開始する前に、チュートリアル「[Windows コンテナーを使用して IoT Edge モジュールを開発する](tutorial-develop-for-windows.md)」の手順に従って開発環境を設定します。 これを完了すると、環境には次の前提条件が含まれます。
 
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
-* [Azure IoT Edge を実行している Windows デバイス](quickstart.md)。
+* [Azure IoT Edge を実行している Windows デバイス](how-to-install-iot-edge-windows-on-windows.md)。
 * コンテナー レジストリ ([Azure Container Registry](../container-registry/index.yml) など)。
 * [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) 拡張機能で構成された [Visual Studio 2019](/visualstudio/install/install-visual-studio)。
 * Windows コンテナーを実行するように構成された [Docker Desktop](https://docs.docker.com/docker-for-windows/install/)。

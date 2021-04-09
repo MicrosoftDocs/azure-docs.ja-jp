@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: inhenkel
 ms.openlocfilehash: ad464eb1c0b6dec694c7c40868a0f95fcfeaf6e8
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98891490"
 ---
 # <a name="media-services-architectures"></a>Media Services アーキテクチャ

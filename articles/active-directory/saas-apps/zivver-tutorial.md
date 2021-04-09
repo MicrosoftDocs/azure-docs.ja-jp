@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.openlocfilehash: d500270d579558a88cc4e5127ee7946b58bddda1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92894721"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zivver"></a>チュートリアル: Azure Active Directory と ZIVVER の統合
@@ -41,7 +41,7 @@ Azure AD と ZIVVER の統合を構成するには、次のものが必要です
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* ZIVVER では、 **IDP** によって開始される SSO がサポートされます
+* ZIVVER では、**IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-zivver-from-the-gallery"></a>ギャラリーからの ZIVVER の追加
 
@@ -61,13 +61,13 @@ Azure AD への ZIVVER の統合を構成するには、ギャラリーから管
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **ZIVVER** 」と入力し、結果ウィンドウで **[ZIVVER]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**ZIVVER**」と入力し、結果ウィンドウで **[ZIVVER]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の ZIVVER](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、ZIVVER で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、ZIVVER で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと ZIVVER 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 ZIVVER で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -85,7 +85,7 @@ ZIVVER で Azure AD のシングル サインオンを構成してテストす�
 
 ZIVVER で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **ZIVVER** アプリケーション統合ページで、 **[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **ZIVVER** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -103,13 +103,13 @@ ZIVVER で Azure AD シングル サインオンを構成するには、次の�
 
     **[識別子]** テキスト ボックスに、`https://app.zivver.com/SAML/Zivver` という URL を入力します。
 
-5. ZIVVER アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 ZIVVER アプリケーションでは、 **nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+5. ZIVVER アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 ZIVVER アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、**[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes]\(ユーザー属性\) を示しています。](common/edit-attribute.png)
 
 6. その他に、ZIVVER アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | Name | 名前空間 | ソース属性|
+    | 名前 | 名前空間 | ソース属性|
     | ---------------| --------------- |
     | ZivverAccountKey | https:\//zivver.com/SAML/Attributes | user.objectid |
 
@@ -132,7 +132,7 @@ ZIVVER で Azure AD シングル サインオンを構成するには、次の�
 
     f. **[保存]** をクリックします。
 
-7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして **フェデレーション メタデータ XML** をダウンロードします。次に、 **コピー** アイコンをクリックして、要件に適した特定のオプションの **アプリのフェデレーション メタデータ URL** をコピーして、コンピューターに保存します。
+7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして **フェデレーション メタデータ XML** をダウンロードします。次に、**コピー** アイコンをクリックして、要件に適した特定のオプションの **アプリのフェデレーション メタデータ URL** をコピーして、コンピューターに保存します。
 
     ![証明書 URL のダウンロードのリンク](./media/zivver-tutorial/metadataxmlurl.png)
 
@@ -178,7 +178,7 @@ ZIVVER で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -190,7 +190,7 @@ ZIVVER で Azure AD シングル サインオンを構成するには、次の�
 
 このセクションでは、Britta Simon に ZIVVER へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[ZIVVER]** の順に選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[ZIVVER]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

@@ -10,14 +10,16 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: a00e5d262724f4799f8b7b91a54e4b2710f4ce2b
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: aa8c4abf57308ca3da05db6ecede7a330af04bdb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008079"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103463546"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>クイックスタート: 初めての IoT Edge モジュールを Windows デバイスにデプロイする (プレビュー)
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 このクイックスタートで、コンテナー化されたコードを Linux on Windows IoT Edge デバイスにデプロイして、Azure IoT Edge を試してみましょう。 IoT Edge を使用すると、ご利用のデバイス上のコードをリモートで管理できるため、より多くのワークロードをエッジに送信できます。 Azure IoT Edge for Linux on Windows を使うことがいかに簡単かを知っていただくために、このクイックスタートにはご自身のデバイスを使用することをお勧めします。
 
@@ -51,9 +53,16 @@ Azure CLI の環境を準備します。
 
 ご自身の IoT Edge デバイスが次の要件を満たしていることを確認します。
 
-* Windows PC またはサーバーのバージョン 1809 以降
-* 4 GB 以上のメモリ (8 GB のメモリを推奨)
-* 10 GB の空きディスク容量
+* エディション
+  * Windows 10 バージョン 1809 以降、ビルド 17763 以降
+    * Professional、Enterprise、IoT Enterprise
+  * Windows Server 2019 ビルド 17763 以降
+
+  
+* ハードウェア要件
+  * 最小空きメモリ容量: 2 GB
+  * 最小空きディスク領域:10 GB
+
 
 >[!NOTE]
 >このクイックスタートでは、Windows Admin Center を使用して、IoT Edge for Linux on Windows 用のデプロイを作成します。 PowerShell を使用することもできます。 PowerShell を使用してデプロイを作成する場合は、[Windows デバイスに Azure IoT Edge for Linux をインストールしてプロビジョニングする方法](how-to-install-iot-edge-on-windows.md)に関する攻略ガイドの手順に従ってください。
@@ -108,7 +117,7 @@ IoT Edge for Linux on Windows を自分のデバイスにインストールし�
 
 ![IoT Edge ランタイムを起動する手順を示す図。](./media/quickstart/start-runtime.png)
 
-1. [Windows Admin Center をダウンロード](https://aka.ms/WACDownloadEFLOW)します。
+1. [Windows Admin Center をダウンロード](https://aka.ms/wacdownload)します。
 
 1. インストール ウィザードのプロンプトに従って、Windows Admin Center を自分のデバイスで設定します。
 

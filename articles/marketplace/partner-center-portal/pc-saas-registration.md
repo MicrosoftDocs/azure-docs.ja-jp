@@ -8,10 +8,10 @@ ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 39a0830806d2d9c7358d175cae703e9c81c45b02
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93130019"
 ---
 # <a name="register-a-saas-application"></a>SaaS アプリケーションを登録する
@@ -33,19 +33,19 @@ Azure AD (Active Directory) の詳細については、[認証の概要](../../a
     ![SaaS AD のアプリ登録](./media/saas-offer-app-registration-v1.png)
 
 4. 作成\' ページで、アプリケーションの登録情報を入力します。
-    -   **Name** :わかりやすいアプリケーション名を入力します
-    -   **アプリケーションの種類** :  
+    -   **Name**:わかりやすいアプリケーション名を入力します
+    -   **アプリケーションの種類**:  
         
         セキュリティで保護されたサーバーにインストールされている [クライアント アプリケーション](../../active-directory/develop/developer-glossary.md#client-application)と [リソースおよび API アプリケーション](../../active-directory/develop/developer-glossary.md#resource-server)については、 **[Web アプリ/API]** を選択します。 OAuth のコンフィデンシャル [Web クライアント](../../active-directory/develop/developer-glossary.md#web-client)と、パブリック [ユーザーエージェントベース クライアント](../../active-directory/develop/developer-glossary.md#user-agent-based-client)の場合には、この設定を使用します。
         同じアプリケーションでクライアントとリソース/API を両方とも公開することもできます。
 
         Web アプリケーションの具体的な例については、[Azure AD 開発者向けガイド](../../active-directory/develop/index.yml)の[開始](../../active-directory/develop/quickstart-create-new-tenant.md)セクションで利用できるクイックスタート ガイド付きセットアップを確認してください。
 
-5. 完了したら、 **[登録]** をクリックします。  Azure AD によって、新しいアプリケーションに一意の " *アプリケーション ID* " が割り当てられます。 API にアクセスする 1 つのアプリだけをシングル テナントとして登録することをお勧めします。
+5. 完了したら、 **[登録]** をクリックします。  Azure AD によって、新しいアプリケーションに一意の "*アプリケーション ID*" が割り当てられます。 API にアクセスする 1 つのアプリだけをシングル テナントとして登録することをお勧めします。
 
 6. クライアント シークレットを作成するには、 **[証明書とシークレット]** ページに移動し、 **[+ 新しいクライアント シークレット]** をクリックします。  シークレット値は、コードで使用するため、必ずコピーしてください。
 
-**Azure AD アプリ ID** は自分の公開元 ID に関連付けられているため、自分のすべてのプランで同じ " *アプリ ID* " が使用されるようにしてください。
+**Azure AD アプリ ID** は自分の公開元 ID に関連付けられているため、自分のすべてのプランで同じ "*アプリ ID*" が使用されるようにしてください。
 
 >[!Note]
 >公開元がパートナー センターに 2 つの異なるアカウントを持っている場合は、2 つの異なる Azure AD アプリ ID を使用する必要があります。  パートナー センターの各パートナー アカウントでは、このアカウントを使用して公開されるすべての SaaS プランに対して、一意の Azure AD アプリ ID を使用する必要があります。

@@ -8,10 +8,10 @@ ms.date: 10/30/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
 ms.openlocfilehash: 6ff3d985bb24ec852bb5c6cfaedf295fd79a8247
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98120361"
 ---
 # <a name="troubleshoot-synapse-studio-connectivity-with-powershell"></a>PowerShell を使用した Synapse Studio 接続のトラブルシューティング

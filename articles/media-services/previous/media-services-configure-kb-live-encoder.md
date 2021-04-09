@@ -3,7 +3,7 @@ title: Haivision KB エンコーダーを構成して、単一ビットレート
 description: このトピックでは、Haivision KB エンコーダーを構成して、ライブ エンコードで有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。
 services: media-services
 documentationcenter: ''
-author: dbgeorge
+author: IngridAtMicrosoft
 manager: vsood
 editor: ''
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
-ms.openlocfilehash: ab73b22e927ad1bbcc8a07173e1548157de03cdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 20c75672bc7198fb028278dc5432cc6a77e3766e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89258097"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103016867"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Haivision KB エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
 
@@ -72,9 +72,9 @@ ms.locfileid: "89258097"
 
 ## <a name="configuration-steps"></a>構成の手順
 1.  Haivision KB のユーザー インターフェイスにログインします。
-2.  チャネル コントロール センターの**メニュー ボタン**をクリックし、 **[Add Channel]\(チャネルの追加\)** を選びます  
+2.  チャネル コントロール センターの **メニュー ボタン** をクリックし、 **[Add Channel]\(チャネルの追加\)** を選びます  
     ![スクリーンショット 2017-08-14 午前 9.15.09](./media/media-services-configure-kb-live-encoder/step2.png)
-3.  [Name]\(名前\) フィールドに**チャネル名**を入力し、[Next]\(次へ\) をクリックします。  
+3.  [Name]\(名前\) フィールドに **チャネル名** を入力し、[Next]\(次へ\) をクリックします。  
     ![スクリーンショット 2017-08-14 午前 9.19.07](./media/media-services-configure-kb-live-encoder/step3.png)
 4.  **[Input Source]\(入力ソース\)** ドロップダウンから **[Channel Input Source]\(チャネル入力ソース\)** を選び、[Next]\(次へ\) をクリックします。
     ![スクリーンショット 2017-08-14 午前 9.20.44](./media/media-services-configure-kb-live-encoder/step4.png)
@@ -85,7 +85,7 @@ ms.locfileid: "89258097"
 7.  **[Channel Output]\(チャネル出力\)** ウィンドウで、Azure ストリームの情報を設定します。 **[Server]\(サーバー\)** 領域の初期チャネル設定から **[RTMP]** のリンクを貼り付けます。 **[Output Name]\(出力名\)** 領域に、チャネルの名前を入力します。 [Stream Name Template]\(ストリーム名テンプレート\) 領域で、テンプレート RTMPStreamName_%video_bitrate% を使ってストリームの名前を設定します。
     ![スクリーンショット 2017-08-14 午前 9.33.17](./media/media-services-configure-kb-live-encoder/step7.png)
 8.  [Next]\(次へ\)、[Done]\(完了\) の順にクリックします。
-9.  **再生ボタン**をクリックしてエンコーダー チャネルを開始します。  
+9.  **再生ボタン** をクリックしてエンコーダー チャネルを開始します。  
     ![Haivision KB.png](./media/media-services-configure-kb-live-encoder/step9.png)
 
 ## <a name="test-playback"></a>再生をテストする

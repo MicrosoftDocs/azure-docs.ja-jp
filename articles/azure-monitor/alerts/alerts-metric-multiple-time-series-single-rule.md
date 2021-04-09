@@ -6,10 +6,10 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 01/11/2021
 ms.openlocfilehash: bc3e77b560a94b45acf1ae696551dbefbabbdf0a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102038205"
 ---
 # <a name="monitor-multiple-time-series-in-a-single-metric-alert-rule"></a>1 つのメトリック アラート ルールで複数の時系列を監視する

@@ -4,10 +4,10 @@ description: この記事では、Azure Functions を使用したメッセージ
 ms.topic: article
 ms.date: 12/12/2020
 ms.openlocfilehash: 4db151f54a2ad236ba937b005ba6a1fd3edd5967
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97663494"
 ---
 # <a name="message-replication-tasks-and-applications"></a>メッセージ レプリケーションのタスクとアプリケーション

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: fc488cecb762ff13bcb2999bb06521ebb70b44fb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f11b31ba698c193029834caada2e5c4cf3ef2902
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946587"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866643"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大規模な抽出、変換、および読み込み (ETL)
 
@@ -18,7 +18,7 @@ ms.locfileid: "98946587"
 
 ETL プロセスでの HDInsight の使用は、次のパイプラインにまとめられます。
 
-![大規模な HDInsight ETL の概要](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
+:::image type="content" source="./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png" alt-text="大規模な HDInsight ETL の概要" border="false":::
 
 次のセクションで、ETL の各フェーズとその関連コンポーネントについて説明します。
 

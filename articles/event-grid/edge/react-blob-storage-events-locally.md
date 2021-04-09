@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96005063"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>チュートリアル:IoT Edge で Blob Storage イベントに対応する (プレビュー)
@@ -324,7 +324,7 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
 
 サポートされているイベント プロパティと、その種類および説明の一覧を次に示します。 
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | subject | string | 発行元が定義したイベントの対象のパス。 |
@@ -337,7 +337,7 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | api | string | イベントのトリガーとなった操作。 次のいずれかの値を指定できます。 <ul><li>BlobCreated: 使用できる値は、`PutBlob` と `PutBlockList` です</li><li>BlobDeleted: 使用できる値は、`DeleteBlob`、`DeleteAfterUpload`、および `AutoDelete` です。 <p>DeleteAfterUpload の必要なプロパティが true に設定されているために BLOB が自動的に削除されると、`DeleteAfterUpload` イベントが生成されます。 </p><p>deleteAfterMinutes の必要なプロパティ値の期限が過ぎたために BLOB が自動的に削除されると、`AutoDelete` イベントが生成されます。</p></li></ul>|
 | clientRequestId | string | ストレージ API 操作に対するクライアントで提供された要求 ID です。 この ID は、ログの "client-request-id" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、クライアント要求で "x-ms-client-request-id" ヘッダーを使って提供できます。 詳細については、[ログの形式](/rest/api/storageservices/storage-analytics-log-format)に関するページを参照してください。 |

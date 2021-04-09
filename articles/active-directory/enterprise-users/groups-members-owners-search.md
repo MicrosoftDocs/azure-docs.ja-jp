@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d78a2a4e0f14d99a7a1ecada915857f59422bb58
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96547374"
 ---
 # <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Azure Active Directory でグループとメンバーを検索する (プレビュー)
@@ -36,12 +36,12 @@ ms.locfileid: "96547374"
 
 プレビューに簡単に参加できるようになりました。
 
-  1. [Azure AD ポータル](https://portal.azure.com)にサインインし、 **[グループ]** を選択します。
+  1. [Azure AD ポータル](https://portal.azure.com)にサインインし、**[グループ]** を選択します。
   2. [グループ - すべてのグループ] ページで、ページの上部にあるバナーを選択して、プレビューに参加します。
 
-また、 **[すべてのグループ]** ページで **[プレビュー情報]** を選択して、最新の機能と機能強化を確認することもできます。 プレビューに参加した後、機能強化され、プレビューの一部である、すべてのグループ ページでプレビュー タグが表示されます。 このプレビューの一部として、すべてのグループ ページが更新されているわけではありません。
+また、**[すべてのグループ]** ページで **[プレビュー情報]** を選択して、最新の機能と機能強化を確認することもできます。 プレビューに参加した後、機能強化され、プレビューの一部である、すべてのグループ ページでプレビュー タグが表示されます。 このプレビューの一部として、すべてのグループ ページが更新されているわけではありません。
 
-問題が発生している場合は、 **[すべてのグループ]** ページの上部にあるバナーを選択して、従来のエクスペリエンスに戻すことができます。 Microsoft ではエクスペリエンスの向上のため、皆様からのフィードバックをお待ちしております。
+問題が発生している場合は、**[すべてのグループ]** ページの上部にあるバナーを選択して、従来のエクスペリエンスに戻すことができます。 Microsoft ではエクスペリエンスの向上のため、皆様からのフィードバックをお待ちしております。
 
 ## <a name="group-search-and-sorting"></a>グループの検索と並べ替え
 

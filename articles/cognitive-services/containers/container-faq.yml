@@ -8,14 +8,14 @@ metadata:
   manager: nitinme
   ms.service: cognitive-services
   ms.topic: conceptual
-  ms.date: 02/04/2021
+  ms.date: 03/02/2021
   ms.author: aahi
-  ms.openlocfilehash: 3f51bc00d4df0723a40ff97847a14cba3e939e9d
-  ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+  ms.openlocfilehash: 2adab9ab076a23260656f973e959bb14314ae8c1
+  ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/14/2021
-  ms.locfileid: "100473489"
+  ms.lasthandoff: 03/20/2021
+  ms.locfileid: "102035474"
 title: Azure Cognitive Services コンテナーについてよくあるご質問 (FAQ)
 summary: ''
 sections:
@@ -104,28 +104,7 @@ sections:
         * [Azure Cognitive Services](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
         * [Microsoft Cognitive](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
   - question: 請求のしくみを教えてください。
-    answer: >
-      Cognitive Services クラウドと同様に、お客様の使用量に基づいて料金が請求されます。 コンテナーは、Azure に測定データを送信するように構成する必要があります。構成後、トランザクションに対して適宜課金されます。 ホステッド サービスとオンプレミス サービスの間で使用されるリソースは、料金が階層化された単一クォータに追加されます。集計は両方の使用量に対して行われます。 詳細については、対応するサービスの料金ページを参照してください。
-
-
-      * [Anomaly Detector](../anomaly-Detector/anomaly-detector-container-howto.md#billing)
-
-      * [Computer Vision](../computer-vision/computer-vision-how-to-install-containers.md#billing)
-
-      * [Face](../face/face-how-to-install-containers.md#billing)
-
-      * [Form Recognizer](../form-recognizer/form-recognizer-container-howto.md#billing)
-
-      * [Language Understanding (LUIS)](../luis/luis-container-howto.md#billing)
-
-      * [Speech Service API](../speech-service/speech-container-howto.md#billing)
-
-      * [Text Analytics](../text-analytics/how-tos/text-analytics-how-to-install-containers.md#billing)
-
-
-      > [!IMPORTANT]
-
-      > Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に計測サービスに課金情報を伝えられるようにする必要があります。 Cognitive Services のコンテナーから Microsoft に顧客データが送信されることはありません。
+    answer: "Cognitive Services クラウドと同様に、お客様の使用量に基づいて料金が請求されます。 コンテナーは、Azure に測定データを送信するように構成する必要があります。構成後、トランザクションに対して適宜課金されます。 ホステッド サービスとオンプレミス サービスの間で使用されるリソースは、料金が階層化された単一クォータに追加されます。集計は両方の使用量に対して行われます。 詳細については、対応するサービスの料金ページを参照してください。\n\n* [Anomaly Detector](../anomaly-Detector/anomaly-detector-container-howto.md#billing)\n* [Computer Vision](../computer-vision/computer-vision-how-to-install-containers.md#billing)\n* [Face](../face/face-how-to-install-containers.md#billing)\n* [Form Recognizer](../form-recognizer/form-recognizer-container-howto.md#billing)\n* [Language Understanding (LUIS)](../luis/luis-container-howto.md#billing)\n* [Speech Service API](../speech-service/speech-container-howto.md#billing)\n* [Text Analytics](../text-analytics/how-tos/text-analytics-how-to-install-containers.md#billing)\n\n> [!IMPORTANT]\n> Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に計測サービスに課金情報のみを伝えられるようにする必要があります。 Cognitive Services のコンテナーから Microsoft に顧客データが送信されることはありません。\n\nコンテナーが計測のために伝える情報の例を次に示します。\n\n\n```json \n\"usageRequestBody\": {\n  \"id\": \"customer_subscriptionID\",\n  \"apiType\": \"textanalytics\",\n  \"containerType\": \"keyphrase\",\n  \"containerVersion\": \"1.1.00864.0001\",\n  \"containerId\": \"dep--keyphrase-\",\n  \"meter\": {\n    \"name\": \"CognitiveServices.TextAnalytics.Container.BatchScoring\",\n    \"quantity\": 10.0\n  }\n  ```\n"
   - question: コンテナーの現在のサポート保証はどのようになっていますか?
     answer: >
       プレビューには保証がありません。 Microsoft が企業向けソフトウェアに与える標準保証は、コンテナーが一般公開 (GA) として正式に告知されたときに適用されます。

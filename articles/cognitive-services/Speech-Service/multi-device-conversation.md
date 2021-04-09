@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
 ms.openlocfilehash: 7b38bc390b28788003c2de757f45e8ecdfd5c89a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98932422"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>マルチデバイスの会話とは (プレビュー)
@@ -37,7 +37,7 @@ ms.locfileid: "98932422"
 ## <a name="key-features"></a>主要な機能
 
 - **リアルタイムの文字起こし** – すべてのユーザーが会話のトランスクリプトを受信するので、テキストをリアルタイムでフォローしたり、後で読むために保存したりできます。
-- **リアルタイムの翻訳** – テキスト翻訳の[サポート言語](language-support.md#text-languages)が 70 を超えており、ユーザーは会話を希望の言語に翻訳することができます。
+- **リアルタイムの翻訳** – テキスト翻訳の [サポート言語](language-support.md#text-languages)が 70 を超えており、ユーザーは会話を希望の言語に翻訳することができます。
 - **読みやすいトランスクリプト** – 句読点や文の区切り記号により、文字起こしや翻訳のフォローが簡単です。
 - **音声入力またはテキスト入力** – 各ユーザーは、参加者が選択した言語で有効になっている言語サポート機能に応じてお使いのデバイスで話したり入力したりすることができます。 [言語のサポート](language-support.md#speech-to-text)に関するページを参照してください。
 - **メッセージ リレー** - マルチデバイスの会話サービスは、1 つのクライアントによって送信されたメッセージを他のすべてのクライアントにそれぞれが選択した言語で配信します。

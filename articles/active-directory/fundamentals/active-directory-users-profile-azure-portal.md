@@ -13,10 +13,10 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 27896bac6f5436fb6717e4bc1ab0a1f9381904ad
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92370918"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのプロファイル情報を追加または更新する
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) を使用して、プロファイル画像、�
 ## <a name="to-add-or-change-profile-information"></a>プロファイル情報を追加または変更する
 1. [Azure portal](https://portal.azure.com/) に組織のユーザー管理者としてサインインします。
 
-2. **[Azure Active Directory]** 、 **[ユーザー]** の順に選択し、ユーザーを選択します。 たとえば、 _Alain Charon_ を選びます。
+2. **[Azure Active Directory]**、**[ユーザー]** の順に選択し、ユーザーを選択します。 たとえば、_Alain Charon_ を選びます。
 
     **[Alain Charon - Profile]** \(Alain Charon - プロファイル\) ページが表示されます。
 

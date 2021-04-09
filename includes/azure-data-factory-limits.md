@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/16/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: 1e8d13e7cf302c486bab291ef6482216122b62a3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 10aa9b06af439fe701c53ef736ec691167560f95
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94680799"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109122"
 ---
 Azure Data Factory は、お客様のサブスクリプションが互いのワークロードから保護されるように、次の既定の制限が設定されているマルチテナント サービスです。 サブスクリプションの上限まで制限を引き上げるには、サポートにお問い合わせください。
 
@@ -56,9 +56,9 @@ Azure Data Factory は、お客様のサブスクリプションが互いのワ�
 
 | リージョン グループ | リージョン |
 | -------- | ------ |
-| リージョン グループ 1 | 米国中部、米国東部、東 US2、北ヨーロッパ、西ヨーロッパ、米国西部、米国西部 2 |
+| リージョン グループ 1 | 米国中部、米国東部、米国東部 2、北ヨーロッパ、西ヨーロッパ、米国西部、米国西部 2 |
 | リージョン グループ 2 | オーストラリア東部、オーストラリア南東部、ブラジル南部、インド中部、東日本、米国中北部、米国中南部、東南アジア、米国中西部 |
-| リージョン グループ 3 | カナダ中部、東アジア、フランス中部、韓国中部、英国南部 |
+| リージョン グループ 3 | 他の地域 |
 
 <sup>3</sup> パイプライン、データ セット、およびリンクされたサービス オブジェクトは、ワークロードの論理的なグループ化を表します。 これらのオブジェクトの制限は、Azure Data Factory で移動したり処理したりできるデータ量には関係ありません。 Data Factory は、数ペタバイトのデータ処理までスケーリングできるように設計されています。
 

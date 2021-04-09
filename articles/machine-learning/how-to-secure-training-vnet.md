@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 9a937336e1628add54ab5f52cdd6ef475d463f7d
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 81a6a6aeb826ba4a61fd4f0a4abdb63fe3674bc4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515990"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103573729"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning トレーニング環境をセキュリティで保護する
 
@@ -38,7 +38,7 @@ ms.locfileid: "100515990"
 
 ## <a name="prerequisites"></a>前提条件
 
-+ 一般的な仮想ネットワークのシナリオと全体的な仮想ネットワーク アーキテクチャを理解するには、[ネットワーク セキュリティの概要](how-to-network-security-overview.md)に関する記事を参照してください。
++ 一般的な仮想ネットワークのシナリオと全体的な仮想ネットワーク アーキテクチャについては、[ネットワーク セキュリティの概要](how-to-network-security-overview.md)に関するページを参照してください。
 
 + コンピューティング リソースで使用する既存の仮想ネットワークとサブネット。
 
@@ -74,7 +74,7 @@ ms.locfileid: "100515990"
 > * 1 つのロード バランサー
 > 
 > クラスターの場合、クラスターが 0 ノードにスケールダウンするたびに、これらのリソースは削除 (および再作成) されます。しかし、インスタンスの場合は、インスタンスが完全に削除されるまで、リソースは保持されます (停止してもリソースは削除されません)。 
-> これらのリソースは、サブスクリプションの[リソース クォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)によって制限されます。 仮想ネットワーク リソース グループがロックされている場合、コンピューティング クラスターやインスタンスの削除が失敗します。 コンピューティング クラスターやインスタンスが削除されるまで、ロード バランサーを削除することはできません。
+> これらのリソースは、サブスクリプションの[リソース クォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)によって制限されます。 仮想ネットワーク リソース グループがロックされている場合、コンピューティング クラスターやインスタンスの削除が失敗します。 コンピューティング クラスターやインスタンスが削除されるまで、ロード バランサーを削除することはできません。 また、ネットワーク セキュリティ グループの作成を禁止する Azure ポリシーがないことも確認してください。
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a>必須ポート
@@ -83,7 +83,7 @@ ms.locfileid: "100515990"
 
 Batch サービスにより、VM にアタッチされたネットワーク インターフェイス (NIC) レベルでネットワーク セキュリティ グループ (NSG) が追加されます。 これらの NSG によって自動的に、次のトラフィックを許可するためのインバウンド規則とアウトバウンド規則が構成されます。
 
-- __BatchNodeManagement__ の __サービス タグ__ からのポート 29876 と 29877 で受信するインバウンド TCP トラフィック。
+- __BatchNodeManagement__ の __サービス タグ__ からのポート 29876 と 29877 で受信するインバウンド TCP トラフィック。 これらのポートを介するトラフィックは暗号化され、スケジューラ/ノードの通信用に Azure Batch によって使用されます。
 
     ![BatchNodeManagement サービス タグを使用したインバウンド規則](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
 
@@ -93,7 +93,7 @@ Batch サービスにより、VM にアタッチされたネットワーク イ�
 
 - インターネットに向かう全ポートのアウトバウンド トラフィック。
 
-- コンピューティング インスタンスの場合は、__AzureMachineLearning__ の __サービス タグ__ からの、ポート 44224 で受信するインバウンド TCP トラフィック。
+- コンピューティング インスタンスの場合は、__AzureMachineLearning__ の __サービス タグ__ からの、ポート 44224 で受信するインバウンド TCP トラフィック。 このポートを介するトラフィックは暗号化され、コンピューティング インスタンスで実行されているアプリケーションと通信するために Azure Machine Learning によって使用されます。
 
 > [!IMPORTANT]
 > Batch によって構成された NSG のインバウンド規則またはアウトバウンド規則を変更したり追加したりする際は注意が必要です。 NSG によってコンピューティング ノードとの通信が拒否された場合は、コンピューティング サービスによってコンピューティング ノードの状態が使用不可に設定されます。
@@ -163,15 +163,15 @@ Azure Machine Learning コンピューティングで[強制トンネリング](
 
 * [Virtual Network NAT](../virtual-network/nat-overview.md) を使用する。 NAT ゲートウェイにより、お使いの仮想ネットワーク内の 1 つ以上のサブネットからの送信インターネット接続が提供されます。 詳細については、「[NAT ゲートウェイ リソースを使用した仮想ネットワークの設計](../virtual-network/nat-gateway-resource.md)」を参照してください。
 
-* コンピューティング リソースを含むサブネットに[ユーザー定義ルート (UDR)](../virtual-network/virtual-networks-udr-overview.md) を追加します。 自分のリソースが存在するリージョンで Azure Batch サービスによって使用される IP アドレスごとに、UDR を確立します。 これらの UDR により、Batch サービスが、タスクをスケジュールする目的でプールのコンピューティング ノードと通信できるようになります。 コンピューティング インスタンスへのアクセスに必要なため Azure Machine Learning service の IP アドレスも追加します。 Azure Machine Learning service の IP アドレスを追加する場合は、__プライマリとセカンダリ__ の両方の Azure リージョンに IP を追加する必要があります。 ワークスペースが配置されているプライマリ リージョン。
+* コンピューティング リソースを含むサブネットに[ユーザー定義ルート (UDR)](../virtual-network/virtual-networks-udr-overview.md) を追加します。 自分のリソースが存在するリージョンで Azure Batch サービスによって使用される IP アドレスごとに、UDR を確立します。 これらの UDR により、Batch サービスが、タスクをスケジュールする目的でプールのコンピューティング ノードと通信できるようになります。 コンピューティング インスタンスへのアクセスに必要なため、Azure Machine Learning service の IP アドレスも追加します。 Azure Machine Learning service の IP アドレスを追加する場合は、__プライマリとセカンダリ__ の両方の Azure リージョンに IP を追加する必要があります。 プライマリ リージョンは、ワークスペースが配置されているところです。
 
-    セカンダリ リージョンを検索するには、「[Azure のペアになっているリージョンを使用したビジネス継続性とディザスター リカバリー](../best-practices-availability-paired-regions.md#azure-regional-pairs)」を参照してください。 たとえば、Azure Machine Learning service が米国東部 2 にある場合、セカンダリ リージョンは米国中部です。 
+    セカンダリ リージョンを見つけるには、[Azure のペアになっているリージョンを使用したビジネス継続性とディザスター リカバリー](../best-practices-availability-paired-regions.md#azure-regional-pairs)に関するページを参照してください。 たとえば、Azure Machine Learning service が米国東部 2 にある場合、セカンダリ リージョンは米国中部です。 
 
     Batch サービスと Azure Machine Learning service の IP アドレスの一覧を取得するには、次のいずれかの方法を使用します。
 
     * [Azure の IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)をダウンロードし、`BatchNodeManagement.<region>` と `AzureMachineLearning.<region>` のファイルを検索する。ここで、`<region>` は Azure リージョンです。
 
-    * [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) を使用して情報をダウンロードする。 次の例では、IP アドレス情報をダウンロードし、米国東部 2 リージョン (プライマリ) と米国中部リージョン (セカンダリ) の情報を除外します。
+    * [Azure CLI](/cli/azure/install-azure-cli) を使用して情報をダウンロードする。 次の例では、IP アドレス情報をダウンロードし、米国東部 2 リージョン (プライマリ) と米国中部リージョン (セカンダリ) の情報を除外します。
 
         ```azurecli-interactive
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
@@ -321,9 +321,11 @@ VM または HDInsight クラスターをお客様の Azure Machine Learning の
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事は、全 4 パートからなる仮想ネットワーク シリーズのパート 3 です。 仮想ネットワークをセキュリティで保護する方法については、記事の残りの部分を参照してください。
+この記事は、全 5 パートからなる仮想ネットワーク シリーズのパート 3 です。 仮想ネットワークをセキュリティで保護する方法については、記事の残りの部分を参照してください。
 
 * [パート 1: 仮想ネットワークの概要](how-to-network-security-overview.md)
 * [パート 2: ワークスペース リソースをセキュリティで保護する](how-to-secure-workspace-vnet.md)
 * [パート 4: 推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
-* [パート 5: Studio の機能を有効にする](how-to-enable-studio-virtual-network.md)
+* [パート 5: スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
+
+名前の解決については、[カスタム DNS](how-to-custom-dns.md) の使用に関する記事も参照してください。

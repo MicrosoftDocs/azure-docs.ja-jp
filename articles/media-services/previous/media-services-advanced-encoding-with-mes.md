@@ -3,7 +3,7 @@ title: MES プリセットをカスタマイズして高度なエンコードを
 description: このトピックでは、Media Encoder Standard のタスク プリセットをカスタマイズして、高度なエンコードを実行する方法を紹介します。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 2a4ade25-e600-4bce-a66e-e29cf4a38369
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
+ms.date: 3/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9713a2ad10d1edc9a79d475ed58a99b3b24b6483
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 345fd56e5ff069ea222661a4820e75d96a9e2395
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696042"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103014504"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>MES プリセットをカスタマイズして高度なエンコードを実行する
 

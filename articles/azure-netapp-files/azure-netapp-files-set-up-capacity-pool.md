@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: b-juche
 ms.openlocfilehash: 2b52ad50854092cddd7b9e79cbeebd4a83017081
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91325414"
 ---
 # <a name="set-up-a-capacity-pool"></a>容量プールを設定する
@@ -59,7 +59,7 @@ ms.locfileid: "91325414"
      QoS の種類の詳細については、[ストレージの階層](azure-netapp-files-understand-storage-hierarchy.md)および[パフォーマンスに関する考慮事項](azure-netapp-files-performance-considerations.md)に関する記事を参照してください。  
 
      > [!IMPORTANT] 
-     > **QoS の種類**は、永続的に **[手動]** に設定されています。 自動 QoS を使用するように手動 QoS 容量プールを変換することはできません。 ただし、手動 QoS を使用するように自動 QoS 容量プールを変換することはできます。 [手動 QoS の使用を目的とした容量プールの変更](manage-manual-qos-capacity-pool.md#change-to-qos)に関する記事を参照してください。   
+     > **QoS の種類** は、永続的に **[手動]** に設定されています。 自動 QoS を使用するように手動 QoS 容量プールを変換することはできません。 ただし、手動 QoS を使用するように自動 QoS 容量プールを変換することはできます。 [手動 QoS の使用を目的とした容量プールの変更](manage-manual-qos-capacity-pool.md#change-to-qos)に関する記事を参照してください。   
      > 容量プールに手動の種類の QoS を使用するには、登録が必要です。 「[手動 QoS 容量プールを管理する](manage-manual-qos-capacity-pool.md#register-the-feature)」を参照してください。 
 
     ![新しい容量プール](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)

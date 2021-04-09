@@ -6,19 +6,21 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: keferna
 ms.author: keferna
-ms.date: 12/07/2020
-ms.openlocfilehash: c71c13701d064110be0ef976920c0cc01f2fa308
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 03/08/2021
+ms.openlocfilehash: e583d39e2eed1b08dfeb17cafc1e12c583176d7b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879766"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103493035"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースの利用可能な地域と通貨のサポート
 
 ## <a name="supported-geographic-locations"></a>サポートされている地理的な場所
 
 コマーシャル マーケットプレース オファリングは、顧客の請求先住所で定義されている 141 の地域で購入でき、トランザクションは 17 の通貨で行うことができます。 次の表は、サポートされている地理的な場所、その [ISO 3166 の 2 桁のアルファ コード](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)、割り当てられている通貨の一覧です。
+
+CSP は、パートナー センターのプランをエンドユーザーの通貨で購入して、同じ通貨で請求できるようにすることができます。 詳細については、[こちらの FAQ](https://partner.microsoft.com/resources/detail/eu-efta-change-of-partner-billing-currency-faq-pdf) を参照してください。
 
 |   国/地域名               |   ISO-2   |   Currency</br>(すべてのオファーの種類)  |    通貨</br>(コンサルティング サービス オファーのみ)    |
 |-------------------------------------|-----------|--------------|---------------------------------------------|

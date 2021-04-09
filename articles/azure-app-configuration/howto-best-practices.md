@@ -12,10 +12,10 @@ ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 33661eafee6b180819b18d9a9a980eff1e2aeceb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371551"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure App Configuration のベスト プラクティス

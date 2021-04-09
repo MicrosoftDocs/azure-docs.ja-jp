@@ -5,13 +5,13 @@ ms.service: data-factory
 ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
-ms.date: 08/31/2020
-ms.openlocfilehash: fb9439bc37fcecf1cb5299a09916ebe21c5bc1cb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/15/2021
+ms.openlocfilehash: 3110ce8cb97379fd4690903ec769cc1dfc7f1326
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393821"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103492763"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Data Factory のグローバル パラメーター
 
@@ -21,7 +21,7 @@ ms.locfileid: "100393821"
 
 ## <a name="creating-global-parameters"></a>グローバル パラメーターの作成
 
-グローバル パラメーターを作成するには、 *[管理]* セクションの *[グローバル パラメーター]* タブに移動します。 **[新規]** を選択して作成サイド ナビゲーションを開きます。
+グローバル パラメーターを作成するには、 **[管理]** セクションの *[グローバル パラメーター]* タブに移動します。 **[新規]** を選択して作成サイド ナビゲーションを開きます。
 
 ![グローバルパラメーターを作成するために選択した [新規] ボタンを強調表示しているスクリーンショット。](media/author-global-parameters/create-global-parameter-1.png)
 
@@ -46,7 +46,13 @@ ms.locfileid: "100393821"
 * ARM テンプレートにグローバル パラメーターを含める
 * PowerShell スクリプトを使用してグローバル パラメーターをデプロイする
 
-ほとんどのユース ケースでは、ARM テンプレートにグローバル パラメーターを含めることをお勧めします。 これは、[CI/CD ドキュメント](continuous-integration-deployment.md)に記載されているソリューションとネイティブに統合されます。グローバル パラメーターは、環境によって変わることが多いため、既定で ARM テンプレート パラメーターとして追加されます。 管理ハブから有効にして、ARM テンプレートにグローバル パラメーターを含めることができます。
+ほとんどのユース ケースでは、ARM テンプレートにグローバル パラメーターを含めることをお勧めします。 これは、[CI/CD ドキュメント](continuous-integration-deployment.md)に記載されているソリューションとネイティブに統合されます。グローバル パラメーターは、環境によって変わることが多いため、既定で ARM テンプレート パラメーターとして追加されます。 **管理** ハブから有効にして、ARM テンプレートにグローバル パラメーターを含めることができます。
+
+> [!NOTE]
+> **ARM テンプレートに含める** 構成は、"Git モード" でのみ使用できます。 現在は "ライブ モード" または "Data Factory" モードのため、これは無効です。 
+
+> [!WARNING]
+>パラメーター名に '-' を使用することはできません。 エラーコード "{"code":"BadRequest","message":"ErrorCode=InvalidTemplate,ErrorMessage=The expression >'pipeline().globalParameters.myparam-dbtest-url' is not valid: .....}" が表示されます。 ただし、パラメーター名に ‘_’ を使用することはできます。
 
 ![ARM テンプレートに含める](media/author-global-parameters/include-arm-template.png)
 

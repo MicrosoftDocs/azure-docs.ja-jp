@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/05/2020
+ms.date: 03/04/2021
 ms.author: kenwith
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 8f5a4d3695722aae14b73bf6bba5f2e38593e08d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 0334f52b87071c8f363a0dfcc793170316747096
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255799"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198508"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Azure AD で属性マッピングの式を記述するためのリファレンス
 
-SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。
+SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトに似た式を記述する必要があります。
 
 ## <a name="syntax-overview"></a>構文の概要
 
@@ -38,7 +38,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 ## <a name="list-of-functions"></a>関数の一覧
 
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>Append
@@ -53,6 +53,19 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 | --- | --- | --- | --- |
 | **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **suffix** |必須 |String |source 値の末尾に追加する文字列。 |
+
+
+### <a name="append-constant-suffix-to-user-name"></a>ユーザー名に定数のサフィックスを追加する
+例: Salesforce Sandbox を使用している場合は、ユーザー名を同期する前に、すべてのユーザー名に追加のサフィックスを追加する必要があります。
+
+**式:**  
+`Append([userPrincipalName], ".test")`
+
+**サンプル入力/出力:** 
+
+* **入力**: (userPrincipalName): "John.Doe@contoso.com"
+* **出力**:  "John.Doe@contoso.com.test"
+
 
 ---
 ### <a name="bitand"></a>BitAnd
@@ -69,8 +82,8 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
-| **value1** |必須 |num |value2 と共に AND で処理する数値|
-| **value2** |必須 |num |value1 と共に AND で処理する数値|
+| **value1** |必須 |num |value2 と AND で処理する数値|
+| **value2** |必須 |num |value1 と AND で処理する数値|
 
 **例:** 
 `BitAnd(&HF, &HF7)`
@@ -107,6 +120,19 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 | --- | --- | --- | --- |
 | **source1  … sourceN** | 必須 | String |必須、回数は可変。 通常は、source オブジェクトの属性の名前。 |
 | **defaultValue** | 省略可能 | String | すべてのソース値が NULL の場合に使用される既定値。 空の文字列 ("") を指定できます。
+
+### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>NULL でない場合はフロー メール値、それ以外の場合は userPrincipalName
+例: メール属性が存在する場合は、それをフローすることをお勧めします。 存在しない場合、代わりに userPrincipalName の値をフローしてください。
+
+**式:**  
+`Coalesce([mail],[userPrincipalName])`
+
+**サンプル入力/出力:** 
+
+* **入力** (mail):NULL
+* **入力** (userPrincipalName): "John.Doe@contoso.com"
+* **出力**:  "John.Doe@contoso.com"
+
 
 ---
 ### <a name="converttobase64"></a>ConvertToBase64
@@ -192,7 +218,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 ---
 ### <a name="formatdatetime"></a>FormatDateTime
-**関数:** FormatDateTime(source, inputFormat, outputFormat)
+**関数:** FormatDateTime(source, dateTimeStyles, inputFormat, outputFormat)
 
 **説明:** 1 つの形式の日付文字列を受け取り、別の形式に変換します。
 
@@ -201,8 +227,24 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
+| **dateTimeStyles** | 省略可能 | String | これを使用して、いくつかの日時解析メソッドによる文字列の解析をカスタマイズする形式指定オプションを指定します。 サポートされる値については、[DateTimeStyles のドキュメント](/dotnet/api/system.globalization.datetimestyles)を参照してください。空のままにすると、使用される既定値は DateTimeStyles.RoundtripKind、DateTimeStyles.AllowLeadingWhite、DateTimeStyles.AllowTrailingWhite です  |
 | **inputFormat** |必須 |String |有効な形式の source 値。 サポートされている形式については、[/dotnet/standard/base-types/custom-date-and-time-format-strings](/dotnet/standard/base-types/custom-date-and-time-format-strings) を参照してください。 |
 | **outputFormat** |必須 |String |出力日付の形式。 |
+
+
+
+### <a name="output-date-as-a-string-in-a-certain-format"></a>特定の形式の文字列として日付を出力する
+例: ServiceNow などの SaaS アプリケーションに特定の形式で日付を送信する場合があります。 次の式を使用することを検討してください。 
+
+**Expression:** 
+
+`FormatDateTime([extensionAttribute1], , "yyyyMMddHHmmss.fZ", "yyyy-MM-dd")`
+
+**サンプル入力/出力:**
+
+* **入力** (extensionAttribute1):"20150123105347.1Z"
+* **出力**:"2015-01-23"
+
 
 ---
 ### <a name="guid"></a>Guid
@@ -391,6 +433,18 @@ string に含まれる文字数が numChars で指定した数より少ない場
 | --- | --- | --- | --- |
 | **source** |必須 |String | 通常は、名または姓の属性です。 |
 
+
+### <a name="remove-diacritics-from-a-string"></a>文字列から分音記号を削除する
+例: アクセント記号を含む文字を、アクセント記号を含まない同等の文字に置換する必要があります。
+
+**Expression:** NormalizeDiacritics([givenName])
+
+**サンプル入力/出力:** 
+
+* **入力** (givenName):"Zoë"
+* **出力**:"Zoe"
+
+
 ---
 ### <a name="not"></a>Not
 **関数:** Not(source)
@@ -417,10 +471,10 @@ string に含まれる文字数が numChars で指定した数より少ない場
 
 **例:**
 * Workday の例: *2020-12-31-08:00* 形式の Workday の *ContractEndDate* 属性を、AD の *accountExpires* フィールドにマップする場合に、この関数を使用して、ロケールに合わせてタイムゾーン オフセットを変更する方法をここで示します。 
-  `NumFromDate(Join("", FormatDateTime([ContractEndDate], "yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
+  `NumFromDate(Join("", FormatDateTime([ContractEndDate], ,"yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
 
 * SuccessFactors の例: *M/d/yyyy hh:mm:ss tt* 形式の SuccessFactors の *endDate* 属性を、AD の *accountExpires* フィールドにマップする場合に、この関数を使用して、ロケールに合わせてタイムゾーン オフセットを変更する方法をここで示します。
-  `NumFromDate(Join("",FormatDateTime([endDate],"M/d/yyyy hh:mm:ss tt","yyyy-MM-dd"),"T23:59:59-08:00"))`
+  `NumFromDate(Join("",FormatDateTime([endDate], ,"M/d/yyyy hh:mm:ss tt","yyyy-MM-dd"),"T23:59:59-08:00"))`
 
 
 ---
@@ -473,6 +527,19 @@ string に含まれる文字数が numChars で指定した数より少ない場
 | **replacementAttributeName** |省略可能 |String |置換値に使用する属性の名前 |
 | **template** |省略可能 |String |**template** の値を指定した場合、template 内で **oldValue** が検索され、**source** の値で置換されます。 |
 
+### <a name="replace-characters-using-a-regular-expression"></a>正規表現を使用して文字を置換します
+例: 正規表現の値と一致する文字を見つけて削除する必要があります。
+
+**Expression:** 
+
+Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
+
+**サンプル入力/出力:**
+
+* **INPUT** (mailNickname: "john_doe72"
+* **出力**:"72"
+
+
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
 **関数:** SelectUniqueValue(uniqueValueRule1, uniqueValueRule2, uniqueValueRule3, …)
@@ -481,7 +548,7 @@ string に含まれる文字数が numChars で指定した数より少ない場
 
 
  - これは最上位の関数であり、入れ子にはできません。
- - この関数は、照合の優先順位を持つ属性には適用できません。   
+ - この関数は、照合の優先順位を持つ属性には適用できません。     
  - この関数は、エントリの作成に使用されることだけを目的としたものです。 属性で使用するときは、 **[Apply Mapping]\(マッピングの適用\)** プロパティを **[オブジェクトの作成中のみ]** に設定します。
  - この関数は現在、"Workday から Active Directory へのユーザー プロビジョニング" と "SuccessFactors から Active Directory へのユーザー プロビジョニング" でのみサポートされています。 他のプロビジョニング アプリでは使用できません。 
 
@@ -491,6 +558,28 @@ string に含まれる文字数が numChars で指定した数より少ない場
 | 名前 | 必須/繰り返し | Type | Notes |
 | --- | --- | --- | --- |
 | **uniqueValueRule1  … uniqueValueRuleN** |2 つ以上必要であり、上限はありません |String | 評価する一意値生成ルールの一覧。 |
+
+### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>userPrincipalName (UPN) 属性用に一意の値を生成する
+例: ユーザーの名、ミドル ネーム、姓を基にして UPN 属性の値を生成し、値を UPN 属性に割り当てる前に、対象の AD ディレクトリで値が一意であることを確認する必要があります。
+
+**Expression:** 
+
+```ad-attr-mapping-expr
+    SelectUniqueValue( 
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com"),
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
+    )
+```
+
+**サンプル入力/出力:**
+
+* **入力** (PreferredFirstName):"John"
+* **入力** (PreferredLastName):"Smith"
+* **出力**: John.Smith@contoso.com の UPN 値がディレクトリにまだ存在しない場合は "John.Smith@contoso.com"
+* **出力**: John.Smith@contoso.com の UPN 値がディレクトリに既に存在する場合は "J.Smith@contoso.com"
+* **出力**: 上記の 2 つの UPN 値がディレクトリに既に存在する場合は "Jo.Smith@contoso.com"
+
 
 
 ---
@@ -517,6 +606,17 @@ string に含まれる文字数が numChars で指定した数より少ない場
 | --- | --- | --- | --- |
 | **source** |必須 |String |**source** 値。 |
 | **delimiter** |必須 |String |文字列の分割に使用される文字を指定します (例: ",") |
+
+### <a name="split-a-string-into-a-multi-valued-array"></a>文字列を複数値の配列に分割します
+例: コンマ区切りの一覧になっている文字列を受け取り、Salesforce の PermissionSets 属性などの複数値の属性にプラグインできる配列に分割する必要があります。 この例では、アクセス許可セットの一覧が、Azure AD の extensionAttribute5 に格納されています。
+
+**Expression:** Split([extensionAttribute5], ",")
+
+**サンプル入力/出力:** 
+
+* **INPUT** (extensionAttribute5):
+* **OUTPUT**:  ["PermissionSetOne", "PermissionSetTwo"]
+
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
@@ -545,6 +645,18 @@ string に含まれる文字数が numChars で指定した数より少ない場
 | **key** |必須 |String |**source** 値と比較する **key**。 |
 | **value** |必須 |String |key と一致する **source** の置換値。 |
 
+### <a name="replace-a-value-based-on-predefined-set-of-options"></a>定義済みのオプション セットに基づいて値を置換する
+例: Azure AD に格納されている都道府県コードに基づいて、ユーザーのタイム ゾーンを定義する必要があります。 都道府県コードが定義済みオプションのいずれにも一致しない場合は、既定値 "Australia/Sydney" を使用します。
+
+**式:**  
+`Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
+
+**サンプル入力/出力:**
+
+* **入力** (state):"QLD"
+* **出力**:"Australia/Brisbane"
+
+
 ---
 ### <a name="tolower"></a>ToLower
 **関数:** ToLower(source, culture)
@@ -557,6 +669,18 @@ string に含まれる文字数が numChars で指定した数より少ない場
 | --- | --- | --- | --- |
 | **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **culture** |省略可能 |String |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
+
+### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>生成された userPrincipalName (UPN) の値を小文字に変換します
+例: PreferredFirstName および PreferredLastName のソース フィールドを連結して、すべての文字を小文字に変換することで、UPN 値を生成する場合があります。 
+
+`ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
+
+**サンプル入力/出力:**
+
+* **入力** (PreferredFirstName):"John"
+* **入力** (PreferredLastName):"Smith"
+* **出力**: "john.smith@contoso.com"
+
 
 ---
 ### <a name="toupper"></a>ToUpper
@@ -601,6 +725,8 @@ string に含まれる単語の数が指定より少ないか、区切り記号�
 ---
 
 ## <a name="examples"></a>例
+ここでは、式関数の使用例をさらに詳しく説明します。 
+
 ### <a name="strip-known-domain-name"></a>既知のドメイン名をストリップする
 ユーザーの電子メールから既知のドメイン名をストリップして、ユーザー名を取得する必要があります。 たとえば、ドメインが "contoso.com" の場合は、次の式を使用することができます。
 
@@ -612,16 +738,6 @@ string に含まれる単語の数が指定より少ないか、区切り記号�
 * **入力** (mail): "john.doe@contoso.com"
 * **出力**: "john.doe"
 
-### <a name="append-constant-suffix-to-user-name"></a>ユーザー名に定数のサフィックスを追加する
-Salesforce Sandbox を使用している場合は、ユーザー名を同期する前に、すべてのユーザー名に追加のサフィックスを追加する必要があります。
-
-**式:**  
-`Append([userPrincipalName], ".test")`
-
-**サンプル入力/出力:** 
-
-* **入力**: (userPrincipalName): "John.Doe@contoso.com"
-* **出力**:  "John.Doe@contoso.com.test"
 
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>姓の一部と名の一部を連結することでユーザー エイリアスを生成する
 ユーザーの名の最初の 3 文字とユーザーの姓の最初の 5 文字を取得することでユーザー エイリアスを生成する必要があります。
@@ -635,105 +751,6 @@ Salesforce Sandbox を使用している場合は、ユーザー名を同期す�
 * **入力** (surname):"Doe"
 * **出力**:"JohDoe"
 
-### <a name="remove-diacritics-from-a-string"></a>文字列から分音記号を削除する
-アクセント記号を含む文字を、アクセント記号を含まない同等の文字に置換する必要があります。
-
-**Expression:** NormalizeDiacritics([givenName])
-
-**サンプル入力/出力:** 
-
-* **入力** (givenName):"Zoë"
-* **出力**:"Zoe"
-
-### <a name="split-a-string-into-a-multi-valued-array"></a>文字列を複数値の配列に分割します
-コンマ区切りの一覧になっている文字列を受け取り、Salesforce の PermissionSets 属性などの複数値の属性にプラグインできる配列に分割する必要があります。 この例では、アクセス許可セットの一覧が、Azure AD の extensionAttribute5 に格納されています。
-
-**Expression:** Split([extensionAttribute5], ",")
-
-**サンプル入力/出力:** 
-
-* **INPUT** (extensionAttribute5):
-* **OUTPUT**:  ["PermissionSetOne", "PermissionSetTwo"]
-
-### <a name="output-date-as-a-string-in-a-certain-format"></a>特定の形式の文字列として日付を出力する
-SaaS アプリケーションに特定の形式で日付を送信します。 たとえば、ServiceNow 向けに日付の書式を設定します。
-
-**Expression:** 
-
-`FormatDateTime([extensionAttribute1], "yyyyMMddHHmmss.fZ", "yyyy-MM-dd")`
-
-**サンプル入力/出力:**
-
-* **入力** (extensionAttribute1):"20150123105347.1Z"
-* **出力**:"2015-01-23"
-
-### <a name="replace-a-value-based-on-predefined-set-of-options"></a>定義済みのオプション セットに基づいて値を置換する
-
-Azure AD に格納されている都道府県コードに基づいて、ユーザーのタイム ゾーンを定義する必要があります。 都道府県コードが定義済みオプションのいずれにも一致しない場合は、既定値 "Australia/Sydney" を使用します。
-
-**式:**  
-`Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
-
-**サンプル入力/出力:**
-
-* **入力** (state):"QLD"
-* **出力**:"Australia/Brisbane"
-
-### <a name="replace-characters-using-a-regular-expression"></a>正規表現を使用して文字を置換します
-正規表現の値と一致する文字を見つけて削除する必要があります。
-
-**Expression:** 
-
-Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
-
-**サンプル入力/出力:**
-
-* **INPUT** (mailNickname: "john_doe72"
-* **出力**:"72"
-
-### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>生成された userPrincipalName (UPN) の値を小文字に変換します
-次の例では、PreferredFirstName および PreferredLastName ソース フィールドを連結することで UPN 値が生成され、ToLower 関数は、すべての文字を小文字に変換するために、生成された文字列で機能します。 
-
-`ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
-
-**サンプル入力/出力:**
-
-* **入力** (PreferredFirstName):"John"
-* **入力** (PreferredLastName):"Smith"
-* **出力**: "john.smith@contoso.com"
-
-### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>userPrincipalName (UPN) 属性用に一意の値を生成する
-ユーザーの名、ミドル ネーム、姓を基にして UPN 属性の値を生成し、値を UPN 属性に割り当てる前に、対象の AD ディレクトリで値が一意であることを確認する必要があります。
-
-**Expression:** 
-
-```ad-attr-mapping-expr
-    SelectUniqueValue( 
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com"),
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
-    )
-```
-
-**サンプル入力/出力:**
-
-* **入力** (PreferredFirstName):"John"
-* **入力** (PreferredLastName):"Smith"
-* **出力**: John.Smith@contoso.com の UPN 値がディレクトリにまだ存在しない場合は "John.Smith@contoso.com"
-* **出力**: John.Smith@contoso.com の UPN 値がディレクトリに既に存在する場合は "J.Smith@contoso.com"
-* **出力**: 上記の 2 つの UPN 値がディレクトリに既に存在する場合は "Jo.Smith@contoso.com"
-
-### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>NULL でない場合はフロー メール値、それ以外の場合は userPrincipalName
-メール属性が存在する場合は、それをフローすることをおすすめします。 存在しない場合、代わりに userPrincipalName の値をフローしてください。
-
-**式:**  
-`Coalesce([mail],[userPrincipalName])`
-
-**サンプル入力/出力:** 
-
-* **入力** (mail):NULL
-* **入力** (userPrincipalName): "John.Doe@contoso.com"
-* **出力**:  "John.Doe@contoso.com"
 
 ## <a name="related-articles"></a>関連記事
 * [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)

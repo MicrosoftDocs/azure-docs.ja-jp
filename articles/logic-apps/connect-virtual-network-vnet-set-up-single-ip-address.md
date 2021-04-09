@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: e88c4bf05d88007a6e19b568f1bc1085e24b0325
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102211058"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Azure Logic Apps で 1 つまたは複数の統合サービス環境に対して単一の IP アドレスを設定する
@@ -49,7 +49,7 @@ Azure Logic Apps を使用する場合は、[Azure 仮想ネットワーク](../
 
    ![送信トラフィックの送信用ルールを設定する](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-rule-to-route-table.png)
 
-   | プロパティ | [値] | 説明 |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **ルート名** | <*一意のルート名*> | ルート テーブル内のルートの一意の名前 |
    | **アドレス プレフィックス** | <*送信先アドレス*> | 送信トラフィックの送信先システムのアドレス プレフィックス。 このアドレスに必ず、[クラスレス ドメイン間ルーティング (CIDR) 表記](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)を使用してください。 この例では、このアドレス プレフィックスは SFTP サーバー用です。これについては、「[ネットワーク ルールを設定する](#set-up-network-rule)」セクションで説明しています。 |
@@ -73,7 +73,7 @@ Azure Logic Apps を使用する場合は、[Azure 仮想ネットワーク](../
 
    **ネットワーク ルール コレクションのプロパティ**
 
-   | プロパティ | [値] | 説明 |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **名前** | <*ネットワーク ルール コレクション名*> | ネットワーク ルール コレクションの名前 |
    | **優先順位** | <*優先順位のレベル*> | ルール コレクションを実行するために使用する優先順位。 詳細については、「[Azure Firewall の概念をいくつか教えてください。](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts)」を参照してください。 |
@@ -82,7 +82,7 @@ Azure Logic Apps を使用する場合は、[Azure 仮想ネットワーク](../
 
    **ネットワーク ルールのプロパティ**
 
-   | プロパティ | [値] | 説明 |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **名前** | <*ネットワーク ルール名*> | ネットワーク ルールの名前 |
    | **プロトコル** | <*接続プロトコル*> | 使用する接続プロトコル。 たとえば、NSG ルールを使用している場合は、 **[TCP]** だけではなく、 **[TCP]** と **[UDP]** の両方を選択します。 |

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: c72330792e508361830c1bf391f85eefe78bdd1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87283981"
 ---
 # <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>Azure Logic Apps を使用して SharePoint リソースを監視および管理する
@@ -47,9 +47,9 @@ SharePoint から応答を取得し、その出力を他のアクションが使
 
 * SharePoint アカウントにアクセスするロジック アプリ。 SharePoint トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 SharePoint アクションを使用するには、トリガーでロジック アプリを起動します。たとえば Salesforce アカウントがある場合は Salesforce トリガーを使用できます。
 
-  たとえば、**レコードが作成されたとき**という Salesforce トリガーを使用して、ロジック アプリを開始できます。 
+  たとえば、**レコードが作成されたとき** という Salesforce トリガーを使用して、ロジック アプリを開始できます。 
   このトリガーは、Salesforce で潜在顧客などの新しいレコードが作成されるたびに起動されます。 
-  このトリガーの次に SharePoint の**ファイルの作成**アクションを実行することができます。 この場合、新しいレコードが作成されると、ロジック アプリはその新しいレコードに関する情報使用して SharePoint にファイルを作成します。
+  このトリガーの次に SharePoint の **ファイルの作成** アクションを実行することができます。 この場合、新しいレコードが作成されると、ロジック アプリはその新しいレコードに関する情報使用して SharePoint にファイルを作成します。
 
 ## <a name="connect-to-sharepoint"></a>SharePoint に接続する
 

@@ -1,7 +1,7 @@
 ---
 title: H264 Single Bitrate 720p Audio 5.1 | Microsoft Docs
 description: このトピックでは、**H264 Single Bitrate 720p Audio 5.1** タスク プリセットの概要を説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: b73b9fd13c432348d1f9adcc3b30ae7420eca9b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 5252483f46c4880655581b4ffe2c943c39064c25
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261616"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103009931"
 ---
 # <a name="h264-single-bitrate-720p-audio-51"></a>H264 Single Bitrate 720p Audio 5.1
 

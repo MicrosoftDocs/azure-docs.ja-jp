@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.custom: ''
 ms.openlocfilehash: 84a818109e6681b8d0e18de4d2d7969310582818
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96922395"
 ---
 # <a name="set-resource-location-in-arm-template"></a>ARM テンプレートでリソースの場所を設定する

@@ -3,14 +3,14 @@ title: レンダリングの機能
 description: Azure Batch の標準の機能は、レンダリングのワークロードとアプリの実行に使用されます。 Batch には、レンダリングのワークロードをサポートする特定の機能が含まれています。
 author: mscurrell
 ms.author: markscu
-ms.date: 02/01/2021
+ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: c748c51311a70cd3b4fc6d435e97a33d709467b9
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a2e2cfb71999bd5ab83591448342d4bac1dabdd5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429804"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103496339"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch Rendering の機能
 
@@ -27,6 +27,9 @@ Azure Batch の標準の機能は、レンダリングのワークロードと�
 ほとんどのレンダリング アプリケーションでは、ライセンス サーバーから取得されるライセンスが必要になります。 既存のオンプレミス ライセンス サーバーがある場合は、プールとライセンス サーバーの両方を同じ[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)に配置する必要があります。 Batch プールとライセンス サーバー VM が同じ仮想ネットワーク上にあれば、Azure VM でライセンス サーバーを実行することもできます。
 
 ## <a name="batch-pools-using-rendering-vm-images"></a>レンダリング VM イメージを使用した Batch プール
+
+> [!IMPORTANT]
+> レンダリング VM イメージと従量課金ライセンスは、[非推奨となっており、2024 年 2 月 29 日に廃止されます](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/)。 レンダリングにバッチを使用するには、[カスタム VM イメージと標準アプリケーション ライセンスを使用してください](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing)。
 
 ### <a name="rendering-application-installation"></a>レンダリング アプリケーションのインストール
 

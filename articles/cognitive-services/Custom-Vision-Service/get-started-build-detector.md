@@ -13,10 +13,10 @@ ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 画像認識、画像認識アプリ、Custom Vision
 ms.openlocfilehash: 5ecd5fee565a8d31e0ff05f3b234771446242d02
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99221297"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>クイックスタート: クイックスタート: Custom Vision の Web サイトでオブジェクト検出器を構築する

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/24/2020
 ms.author: Zhchia
 ms.openlocfilehash: 0479e470f5d2f3880062c45a5e14981f8a4c1e56
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98743544"
 ---
 # <a name="tutorial-configure-mondaycom-for-automatic-user-provisioning"></a>チュートリアル:monday.com を構成し、自動ユーザー プロビジョニングに対応させる

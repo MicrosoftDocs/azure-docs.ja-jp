@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
 ms.openlocfilehash: 2b072107275fba1ff83ab3ddac63ed8bf7766356
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100389112"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>チュートリアル:Bing 地図から Web アプリを移行する
@@ -77,7 +77,7 @@ JavaScript フレームワークを開発に使用している場合は、次の
 | GeoJSON サポート          | ✓                                                                                      |
 | GeoXML サポート           | ✓ [空間 IO モジュール](how-to-use-spatial-io-module.md)                                                                                     |
 | Well-Known Text サポート  | ✓                                                                                      |
-| カスタム マップ スタイル        | 一部サポート                                                                                |
+| カスタム マップ スタイル        | Partial                                                                                |
 
 Azure Maps には、その機能を拡張する [Web SDK 用のオープンソース モジュール](open-source-projects.md#open-web-sdk-modules)が他にも数多く存在します。
 

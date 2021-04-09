@@ -12,10 +12,10 @@ ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2d4c538a9292698fecc8b44c055ab201748e292c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85202995"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C のカスタム ポリシーで検証技術プロファイルを定義する
@@ -47,13 +47,13 @@ ms.locfileid: "85202995"
 
 **ValidationTechnicalProfiles** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | Description |
+| 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1:n | 参照元の技術プロファイルの出力要求の一部またはすべてを検証するために使用する技術プロファイル。 |
 
 **ValidationTechnicalProfile** 要素には、次の属性が含まれています。
 
-| 属性 | Required | Description |
+| 属性 | 必須 | Description |
 | --------- | -------- | ----------- |
 | ReferenceId | はい | ポリシーまたは親ポリシーで既に定義されている技術プロファイルの識別子。 |
 |ContinueOnError|いいえ| この検証技術プロファイルでエラーが発生した場合に後続の検証技術プロファイルの検証を続行するかどうかを示します。 有効な値: `true` または `false` (既定値。以降の検証プロファイルの処理が停止され、エラーが返されます)。 |
@@ -67,7 +67,7 @@ ms.locfileid: "85202995"
 
 **Precondition** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | `Type` | はい | 前提条件に対して実行するチェックまたはクエリの種類。 指定した要求がユーザーの現在の要求セット内に存在する場合にアクションが実行されるようにするには、`ClaimsExist` を指定する必要があります。または、指定した要求が存在し、その値が指定値と等しい場合にアクションが実行されるようにするには、`ClaimEquals` を指定する必要があります。 |
 | `ExecuteActionsIf` | はい | テストが true または false の場合に前提条件のアクションを実行するかどうかを示します。 |

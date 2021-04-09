@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 40529df5195a29fbf2ff4887311932c2ffbf471d
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96029897"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Azure Service Bus キューを使用する .NET 多層アプリケーション
@@ -63,7 +63,7 @@ Service Bus には、ブローカー メッセージングをサポートする�
 
 ### <a name="create-the-project"></a>プロジェクトを作成する
 
-1. 管理者特権で Visual Studio を起動します。**Visual Studio** のプログラム アイコンを右クリックし、**[管理者として実行]** をクリックしてください。 Azure コンピューティング エミュレーター (後ほどこの記事で解説) を使用するには、管理者特権で Visual Studio を開始する必要があります。
+1. 管理者特権で Visual Studio を起動します。**Visual Studio** のプログラム アイコンを右クリックし、**[管理者として実行]** をクリックしてください。 Azure Compute Emulator (後ほどこの記事で解説) を使用するには、管理者特権で Visual Studio を開始する必要があります。
    
    Visual Studio で、**[ファイル]** メニューの **[新規作成]** をクリックした後、**[プロジェクト]** をクリックします。
 2. **[インストールされたテンプレート]** の **[Visual C#]** で **[クラウド]** をクリックし、**[Azure クラウド サービス]** をクリックします。 プロジェクトの名前を "**MultiTierApp**" にします。 次に、 **[OK]** をクリックします
@@ -338,11 +338,11 @@ Service Bus には、ブローカー メッセージングをサポートする�
     Trace.WriteLine(order.Customer + ": " + order.Product, "ProcessingMessage");
     receivedMessage.Complete();
     ```
-14. これでアプリケーションが完成しました。 ソリューション エクスプローラーで、MultiTierApp のプロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択して F5 キーを押すと、完全なアプリケーションをテストできます。 メッセージ数が増えないことに注意してください。これは、worker ロールがキューの項目を処理し、完了としてマークしているためです。 Azure コンピューティング エミュレーターのUI を表示すると、worker ロールのトレース出力を確認できます。 これを実行するには、タスク バーの通知領域のエミュレーター アイコンを右クリックし、**[Show Compute Emulator UI (コンピューティング エミュレーター UI の表示)]** をクリックします。
+14. これでアプリケーションが完成しました。 ソリューション エクスプローラーで、MultiTierApp のプロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択して F5 キーを押すと、完全なアプリケーションをテストできます。 メッセージ数が増えないことに注意してください。これは、worker ロールがキューの項目を処理し、完了としてマークしているためです。 Azure Compute Emulator のUI を表示すると、worker ロールのトレース出力を確認できます。 これを実行するには、タスク バーの通知領域のエミュレーター アイコンを右クリックし、**[Show Compute Emulator UI (Compute Emulator UI の表示)]** をクリックします。
     
-    ![エミュレーター アイコンをクリックしたときに表示される内容のスクリーンショット。 [Show Compute Emulator UI]\(コンピューティング エミュレーター UI の表示\) がオプションの一覧に表示されます。][19]
+    ![エミュレーター アイコンをクリックしたときに表示される内容のスクリーンショット。 [Show Compute Emulator UI]\(Compute Emulator UI の表示\) がオプションの一覧に表示されます。][19]
     
-    ![[Microsoft Azure Compute Emulator (Express)]\(Microsoft Azure コンピューティング エミュレーター (Express)\) ダイアログ ボックスのスクリーンショット。][20]
+    ![[Microsoft Azure Compute Emulator (Express)]\(Microsoft Azure Compute Emulator (Express)\) ダイアログ ボックスのスクリーンショット。][20]
 
 ## <a name="next-steps"></a>次の手順
 Service Bus の詳細については、次のリソースを参照してください。  

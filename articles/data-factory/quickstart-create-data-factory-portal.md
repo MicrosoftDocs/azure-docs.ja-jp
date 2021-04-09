@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: quickstart
 ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: e7d4770af38081353fc58eec9957f50e2b6a7348
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8b33005b7f0d08e6da963457813b012199d89f5f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372792"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655102"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>クイック スタート:Azure Data Factory UI を使用してデータ ファクトリを作成する 
 
@@ -35,11 +35,12 @@ ms.locfileid: "100372792"
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-1. [Azure Portal](https://portal.azure.com)にアクセスします。 
-1. Azure Portal メニューから **[リソースの作成]** を選択します。
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。 
+1. Azure portal メニューから **[リソースの作成]** を選択します。
 1. **[統合]** を選択し、 **[Data Factory]** を選択します。 
    
-   ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="[新規] ペインでの Data Factory の選択。":::
+
 1. **[Create Data Factory]\(データ ファクトリの作成\)** ページの **[基本]** タブで、データ ファクトリを作成する Azure **サブスクリプション** を選択します。
 1. **[リソース グループ]** で、次の手順のいずれかを行います。
 
@@ -55,8 +56,8 @@ ms.locfileid: "100372792"
  
 1. **[名前]** に「**ADFTutorialDataFactory**」と入力します。
    Azure データ ファクトリの名前は *グローバルに一意* にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更して ( **&lt;yourname&gt;ADFTutorialDataFactory** など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
-  
-   ![名前が使用できないときのエラー](./media/doc-common-process/name-not-available-error.png)
+
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="重複する名前に関する、新しい Data Factory のエラーメッセージ。":::
 
 1. **[バージョン]** で、 **[V2]** を選択します。
 
@@ -66,7 +67,7 @@ ms.locfileid: "100372792"
 
 1. **[作成と監視]** タイルを選択して、別のブラウザー タブで Azure Data Factory ユーザー インターフェイス (UI) アプリケーションを起動します。
    
-   ![[作成と監視] タイルが表示された、データ ファクトリのホーム ページ](./media/doc-common-process/data-factory-home-page.png)
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[作成と監視] タイルが含まれた Azure Data Factory のホーム ページ。":::
    
    > [!NOTE]
    > Web ブラウザーが "承認中" でスタックしていることがわかったら、 **[サードバーティの Cookie とサイト データをブロックする]** チェック ボックスをオフにします。 または、オンにしたまま、**login.microsoftonline.com** の例外を作成してから、アプリを再度開いてみてください。
@@ -79,7 +80,7 @@ ms.locfileid: "100372792"
 
 1. [リンクされたサービス] ページの **[+ 新規]** を選択して、リンクされたサービスを新規作成します。
 
-   ![新規のリンクされたサービス](./media/doc-common-process/new-linked-service.png)
+   :::image type="content" source="./media/doc-common-process/new-linked-service.png" alt-text="新しいリンクされたサービス。":::
    
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ページで **[Azure Blob Storage]** を選択し、 **[続行]** を選択します。 
 
@@ -93,7 +94,7 @@ ms.locfileid: "100372792"
 
    d. **[作成]** を選択して、リンクされたサービスを保存します。 
 
-      ![リンクされたサービス](./media/quickstart-create-data-factory-portal/linked-service.png)
+      :::image type="content" source="./media/quickstart-create-data-factory-portal/linked-service.png" alt-text="リンクされたサービス。":::
 
 
 ## <a name="create-datasets"></a>データセットを作成する
@@ -109,13 +110,13 @@ ms.locfileid: "100372792"
 
 1. **+** (正符号) ボタンを選択し、 **[データセット]** を選択します。
 
-   ![データセットを作成するためのメニュー](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/new-dataset-menu.png" alt-text="データセットを作成するためのメニュー。":::
 
 1. **[新しいデータ セット]** ページで **[Azure Blob Storage]** を選択し、 **[続行]** を選択します。 
 
 1. **[形式の選択]** ページで、データの形式の種類を選択して、 **[続行]** を選択します。 この場合、コンテンツを解析せずに、ファイルをそのままコピーする場合は **[バイナリ]** を選択します。
 
-   ![形式の選択](./media/quickstart-create-data-factory-portal/select-format.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/select-format.png" alt-text="形式の選択。":::   
    
 1. **[プロパティの設定]** ページで、次の手順を行います。
 
@@ -129,7 +130,8 @@ ms.locfileid: "100372792"
     
     e. **[OK]** を選択します。   
 
-    ![InputDataset のプロパティを設定する](./media/quickstart-create-data-factory-portal/set-properties-for-inputdataset.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/set-properties-for-inputdataset.png" alt-text="InputDataset のプロパティを設定する。":::
+
 1. この手順を繰り返して、出力データセットを作成します。  
 
     a. **+** (正符号) ボタンを選択し、 **[データセット]** を選択します。
@@ -144,7 +146,7 @@ ms.locfileid: "100372792"
 
     f. **[OK]** を選択します。   
 
-    ![OutputDataset のプロパティを設定する](./media/quickstart-create-data-factory-portal/set-properties-for-outputdataset.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/set-properties-for-outputdataset.png" alt-text="OutputDataset のプロパティを設定する。":::    
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する 
 この手順では、入力データセットと出力データセットを使用するコピー アクティビティを持つパイプラインを作成および検証します。 コピー アクティビティにより、入力データセットの設定で指定されたファイルから、出力データセットの設定で指定されたファイルにデータがコピーされます。 入力データセットで、ファイル名を指定せず、フォルダーのみを指定すると、コピー アクティビティはソース フォルダーのすべてのファイルをターゲットにコピーします。 
@@ -155,7 +157,7 @@ ms.locfileid: "100372792"
 
 1. **[アクティビティ]** ツールボックスで **[Move & Transform]\(移動と変換\)** を展開します。 **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[データのコピー]** アクティビティをドラッグします。 **[アクティビティ]** ツールボックスで、アクティビティを検索することもできます。 **[名前]** に「**CopyFromBlobToBlob**」と指定します。
 
-   ![[データのコピー] アクティビティを作成する](./media/quickstart-create-data-factory-portal/copy-activity.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/copy-activity.png" alt-text="[データのコピー] アクティビティの作成。":::   
 
 1. コピー アクティビティの設定で **[ソース]** タブに切り替えて、 **[Source Dataset]\(ソース データセット\)** で **[InputDataset]** を選択します。
 
@@ -163,7 +165,7 @@ ms.locfileid: "100372792"
 
 1. キャンバスの上にあるパイプライン ツール バーの **[検証]** をクリックして、パイプライン設定を検証します。 パイプラインが正常に検証されたことを確認します。 検証の出力を閉じるには、右上隅にある [検証] ボタンを選択します。 
 
-   ![パイプラインを検証する](./media/quickstart-create-data-factory-portal/pipeline-validate.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/pipeline-validate.png"   alt-text="パイプラインを検証する。":::
 
 ## <a name="debug-the-pipeline"></a>パイプラインのデバッグ
 この手順では、パイプラインを Data Factory にデプロイする前にデバッグします。 
@@ -172,7 +174,7 @@ ms.locfileid: "100372792"
     
 1. 一番下にあるパイプラインの設定の **[出力]** タブにパイプラインの実行の状態が表示されることを確認します。 
  
-    ![パイプラインの実行の出力](./media/quickstart-create-data-factory-portal/pipeline-output.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/pipeline-output.png" alt-text="パイプラインの実行の出力":::
 
 1. **adftutorial** コンテナーの **output** フォルダーに出力ファイルがあることを確認します。 output フォルダーが存在しない場合は、Data Factory サービスによって自動的に作成されます。 
 
@@ -181,7 +183,7 @@ ms.locfileid: "100372792"
 
 1. パイプラインをトリガーする前に、エンティティを Data Factory に発行する必要があります。 発行するには、上部にある **[すべて発行]** を選択します。 
 
-    ![すべて発行](./media/quickstart-create-data-factory-portal/publish-all.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/publish-all.png" alt-text="すべて発行。":::    
 
 1. パイプラインを手動でトリガーするには、パイプライン ツール バーの **[トリガーの追加]** を選択し、 **[Trigger Now]\(今すぐトリガー\)** を選択します。 **[Pipeline Run]\(パイプラインの実行\)** ページで **[OK]** を選択します。
 
@@ -189,12 +191,12 @@ ms.locfileid: "100372792"
 
 1. 左側で **[監視]** タブに切り替えます。 **[最新の情報に更新]** ボタンを使用して、一覧を更新します。
 
-   ![パイプラインの実行を監視するタブ](./media/quickstart-create-data-factory-portal/monitor-trigger-now-pipeline.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/monitor-trigger-now-pipeline.png" alt-text="パイプラインの実行を監視するタブ"::: 
 1. **[CopyPipeline]** リンクを選択します。コピー アクティビティの実行の状態が、このページに表示されます。 
 
 1. コピー操作の詳細を確認するには、 **[詳細]** (眼鏡アイコン) リンクを選択します。 プロパティの詳細については、[コピー アクティビティの概要](copy-activity-overview.md)に関するページを参照してください。 
 
-   ![コピー操作の詳細](./media/quickstart-create-data-factory-portal/copy-operation-details.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/copy-operation-details.png" alt-text="コピー操作の詳細。":::
 1. **output** フォルダーに新しいファイルが表示されていることを確認します。 
 1. **[すべてのパイプラインの実行]** リンクを選択すると、 **[アクティビティの実行]** ビューから **[パイプラインの実行]** ビューに戻ることができます。 
 
@@ -213,7 +215,7 @@ ms.locfileid: "100372792"
 
 1. **[新しいトリガー]** ページで、 **[アクティブ化済み]** チェック ボックスをオンにし、 **[OK]** を選択します。 
 
-   ![新しいトリガーの設定](./media/quickstart-create-data-factory-portal/trigger-settings-next.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/trigger-settings-next.png" alt-text="新しいトリガーの設定。":::   
 1. 警告メッセージを確認し、 **[OK]** を選択します。
 
 1. **[すべて発行]** をクリックして、変更を Data Factory に発行します。 

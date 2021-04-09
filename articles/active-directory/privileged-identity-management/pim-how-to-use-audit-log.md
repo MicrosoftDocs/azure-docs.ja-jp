@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8481c562ecbab1f26e877e55a5a9454695ddf4c0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92370833"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールの監査履歴を表示する
@@ -131,10 +131,10 @@ Azure AD ロールの監査履歴を表示するには、次の手順に従い�
 
 1. 監査イベントの **[詳細]** ペインの **[ターゲット]** タブに、要求者 (ロールをアクティブにしているユーザー) を表示できます。 Azure AD のロールには、次の 2 つのターゲットの種類があります。
 
-    - ロール ( **Type** = Role)
-    - 要求者 ( **Type** = User)
+    - ロール (**Type** = Role)
+    - 要求者 (**Type** = User)
 
-通常、承認イベントのすぐ上にある監査ログ イベントは、 **開始者 (アクター)** が要求者である "ロールへのメンバーの追加が完了しました" のイベントです。 ほとんどの場合、監査の観点から承認要求で要求者を検索する必要はありません。
+通常、承認イベントのすぐ上にある監査ログ イベントは、**開始者 (アクター)** が要求者である "ロールへのメンバーの追加が完了しました" のイベントです。 ほとんどの場合、監査の観点から承認要求で要求者を検索する必要はありません。
 
 ---
 

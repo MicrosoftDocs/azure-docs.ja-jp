@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: ea7524b32b7637aa7c36308f8b869aa5207c08a2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b73e7f8c13f621bc359a2ae79a725829420a3ecc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334414"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102455597"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB の Advanced Threat Protection (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,9 +34,9 @@ Azure Cosmos DB の Advanced Threat Protection は、通常と異なる潜在的
 
 Azure Cosmos DB の Advanced Threat Protection では、データベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティが検出されます。 現在、これにより次のアラートがトリガーされる場合があります。
 
-- **通常と異なる場所からのアクセス** :このアラートは、だれかが通常とは異なる地理的な場所から Azure Cosmos DB エンドポイントに接続したことで Azure Cosmos アカウントへのアクセス パターンに変化が生じたときにトリガーされます。 このアラートによって、正当なアクション、つまり新しいアプリケーションや開発者によるメンテナンス操作が検出されることがあります。 また、元従業員、外部の攻撃者などからの悪意のあるアクションが検出されることもあります。
+- **通常と異なる場所からのアクセス**:このアラートは、だれかが通常とは異なる地理的な場所から Azure Cosmos DB エンドポイントに接続したことで Azure Cosmos アカウントへのアクセス パターンに変化が生じたときにトリガーされます。 このアラートによって、正当なアクション、つまり新しいアプリケーションや開発者によるメンテナンス操作が検出されることがあります。 また、元従業員、外部の攻撃者などからの悪意のあるアクションが検出されることもあります。
 
-- **通常と異なるデータの抽出** : このアラートは、クライアントが Azure Cosmos DB アカウントから通常とは異なる量のデータを抽出しているときにトリガーされます。 これは、データ流出が発生し、アカウントに格納されているすべてのデータが外部データ ストアに転送されている可能性があることを示します。
+- **通常と異なるデータの抽出**: このアラートは、クライアントが Azure Cosmos DB アカウントから通常とは異なる量のデータを抽出しているときにトリガーされます。 これは、データ流出が発生し、アカウントに格納されているすべてのデータが外部データ ストアに転送されている可能性があることを示します。
 
 
 
@@ -68,9 +68,9 @@ Rest API のコマンドを使用して、特定の Azure Cosmos DB アカウン
 
 次の PowerShell コマンドレットを使用します。
 
-* [Advanced Threat Protection を有効にする](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
-* [Advanced Threat Protection を取得する](/powershell/module/az.security/get-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
-* [Advanced Threat Protection を無効にする](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
+* [Advanced Threat Protection を有効にする](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+* [Advanced Threat Protection を取得する](/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+* [Advanced Threat Protection を無効にする](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
 ### <a name="arm-template"></a>[ARM テンプレート](#tab/arm-template)
 
@@ -81,7 +81,7 @@ Azure Resource Manager (ARM) テンプレートを使用して、Advanced Threat
 
 Azure Policy を使用して、Cosmos DB の Advanced Threat Protection を有効にします。
 
-1. Azure の **ポリシー - 定義** ページを開き、 **Deploy Advanced Threat Protection for Cosmos DB\(Cosmos DB の Azure Advanced Threat Protection をデプロイする\)** ポリシーを探します。
+1. Azure の **ポリシー - 定義** ページを開き、**Deploy Advanced Threat Protection for Cosmos DB\(Cosmos DB の Azure Advanced Threat Protection をデプロイする\)** ポリシーを探します。
 
     :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="ポリシーを探す"::: 
 

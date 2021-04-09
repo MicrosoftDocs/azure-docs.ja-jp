@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/01/2021
-ms.openlocfilehash: 4782e6c0ed866c467051fc1811a60df0010a3db1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c1d4c9be1f76e62be3c17d4dec22479db003b77a
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743649"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102608259"
 ---
 # <a name="pre-certification-checklist-for-iot-edge-modules"></a>IoT Edge モジュールの認定前チェックリスト
 
@@ -74,6 +74,7 @@ Edge モジュールが、Azure で作成された Edge デバイスにデプロ
 - リード管理の接続文字列が存在する。
 - プライバシー ポリシーが存在する
 - 使用条件が存在する
+- サポートされている IoT Edge デバイス リンクを [Azure IoT デバイス カタログ](https://devicecatalog.azure.com/devices?certificationBadgeTypes=IoTEdgeCompatible)から追加する 
 
 ## <a name="next-steps"></a>次のステップ
 

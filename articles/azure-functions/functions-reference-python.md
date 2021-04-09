@@ -4,12 +4,12 @@ description: Python を使用して関数を開発する方法について説明
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 0829ef9a6b63866c2527e521ed7edf48a3249392
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 3eb3b3b015f401e872a879c46ec6f8c69df5f87f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044257"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102455418"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -51,7 +51,7 @@ def main(req: azure.functions.HttpRequest) -> str:
     return f'Hello, {user}!'
 ```
 
-[azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true) パッケージに含まれる Python の注釈を使用すると、入力と出力がご利用のメソッドにバインドされます。
+[azure.functions.*](/python/api/azure-functions/azure.functions) パッケージに含まれる Python の注釈を使用すると、入力と出力がご利用のメソッドにバインドされます。
 
 ## <a name="alternate-entry-point"></a>代替エントリ ポイント
 
@@ -199,7 +199,7 @@ def main(req: func.HttpRequest,
 
 出力バインディングの値として関数の戻り値を使用するには、バインディングの `name` プロパティを `function.json` 内の `$return` に設定する必要があります。
 
-複数の出力を生成するには、[`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) インターフェイスによって提供される `set()` メソッドを使用して、バインディングに値を割り当てます。 たとえば、次の関数を使用すると、キューにメッセージをプッシュすることに加え、HTTP 応答を返すこともできます。
+複数の出力を生成するには、[`azure.functions.Out`](/python/api/azure-functions/azure.functions.out) インターフェイスによって提供される `set()` メソッドを使用して、バインディングに値を割り当てます。 たとえば、次の関数を使用すると、キューにメッセージをプッシュすることに加え、HTTP 応答を返すこともできます。
 
 ```json
 {
@@ -306,7 +306,7 @@ Python 関数アプリのスケーリングとパフォーマンスのベスト 
 
 ## <a name="context"></a>Context
 
-実行中に関数の呼び出しコンテキストを取得するには、そのシグニチャに [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) 引数を含めます。
+実行中に関数の呼び出しコンテキストを取得するには、そのシグニチャに [`context`](/python/api/azure-functions/azure.functions.context) 引数を含めます。
 
 次に例を示します。
 
@@ -319,7 +319,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-[**コンテキスト**](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) クラスには次の文字列属性が含まれています。
+[**コンテキスト**](/python/api/azure-functions/azure.functions.context) クラスには次の文字列属性が含まれています。
 
 `function_directory` 関数が実行されるディレクトリです。
 
@@ -640,7 +640,7 @@ CORS は、Python 関数アプリでは完全にサポートされています�
 
 詳細については、次のリソースを参照してください。
 
-* [Azure Functions パッケージ API のドキュメント](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true)
+* [Azure Functions パッケージ API のドキュメント](/python/api/azure-functions/azure.functions)
 * [Azure Functions のベスト プラクティス](functions-best-practices.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 * [Blob Storage のバインド](functions-bindings-storage-blob.md)
@@ -651,5 +651,5 @@ CORS は、Python 関数アプリでは完全にサポートされています�
 [問題がある場合は、お知らせください。](https://aka.ms/python-functions-ref-survey)
 
 
-[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python&preserve-view=true
-[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python&preserve-view=true
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse

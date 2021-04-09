@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b447873df882847f052125254ea52b5ae6ab9ec4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d41d7d45fd11f2dc26fc50182a7649b23cd21196
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644869"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008758"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>カスタム承認ワークフローをセルフサービス サインアップに追加する
 
@@ -105,7 +105,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ //Sent for Google, Facebook, and Email One Time Passcode identity providers 
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -156,7 +156,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your access request is already processing. You'll be notified when your request has been approved.",
-    "code": "CONTOSO-APPROVAL-PENDING"
 }
 ```
 
@@ -168,7 +167,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your sign up request has been denied. Please contact an administrator if you believe this is an error",
-    "code": "CONTOSO-APPROVAL-DENIED"
 }
 ```
 
@@ -182,7 +180,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ // Sent for Google, Facebook, and Email One Time Passcode identity providers 
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -244,7 +242,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your account is now waiting for approval. You'll be notified when your request has been approved.",
-    "code": "CONTOSO-APPROVAL-REQUESTED"
 }
 ```
 
@@ -256,7 +253,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your sign up request has been denied. Please contact an administrator if you believe this is an error",
-    "code": "CONTOSO-APPROVAL-AUTO-DENIED"
 }
 ```
 
@@ -268,12 +264,12 @@ Content-type: application/json
 
 手動による承認を取得した後、カスタム承認システムでは [Microsoft Graph](/graph/use-the-api) を使用して[ユーザー](/graph/azuread-users-concept-overview) アカウントを作成します。 承認システムがユーザー アカウントをプロビジョニングする方法は、ユーザーによって使用された ID プロバイダーによって異なります。
 
-### <a name="for-a-federated-google-or-facebook-user"></a>Google または Facebook のフェデレーション ユーザーの場合
+### <a name="for-a-federated-google-or-facebook-user-and-email-one-time-passcode"></a>Google または Facebook のフェデレーション ユーザーおよび電子メール ワンタイム パスコードの場合
 
 > [!IMPORTANT]
-> この方法を使用するには、承認システムは、`identities`、`identities[0]`、および `identities[0].issuer` が存在し、 `identities[0].issuer` が 'facebook' または 'google' に一致することを明示的に確認する必要があります。
+> この方法を使用するには、承認システムは、`identities`、`identities[0]`、および `identities[0].issuer` が存在し、`identities[0].issuer` が 'facebook'、'google'、または 'mail' に一致することを明示的に確認する必要があります。
 
-ユーザーが Google または Facebook アカウントを使用してサインインした場合は、[ユーザー作成 API](/graph/api/user-post-users?tabs=http) を使用できます。
+ユーザーが Google アカウント、Facebook アカウント、または電子メール ワンタイム パスコードを使用してサインインした場合は、[ユーザー作成 API](/graph/api/user-post-users?tabs=http) を使用できます。
 
 1. 承認システムはユーザー フローから HTTP 要求を受信します。
 
@@ -331,9 +327,9 @@ Content-type: application/json
 | \<otherBuiltInAttribute>                            | いいえ       | `displayName`、`city` などの他の組み込み属性。 パラメーター名は、API コネクタによって送信されるパラメーターと同じです。                            |
 | \<extension\_\{extensions-app-id}\_CustomAttribute> | いいえ       | ユーザーに関するカスタム属性。 パラメーター名は、API コネクタによって送信されるパラメーターと同じです。                                                            |
 
-### <a name="for-a-federated-azure-active-directory-user"></a>フェデレーション Azure Active Directory ユーザーの場合
+### <a name="for-a-federated-azure-active-directory-user-or-microsoft-account-user"></a>Azure Active Directory のフェデレーション ユーザーまたは Microsoft アカウント ユーザーの場合
 
-ユーザーがフェデレーション Azure Active Directory アカウントを使用してサインインする場合は、[招待 API](/graph/api/invitation-post) を使用してユーザーを作成し、必要に応じて[ユーザー更新 API](/graph/api/user-update) を使用してユーザーに追加の属性を割り当てる必要があります。
+ユーザーがフェデレーション Azure Active Directory アカウントまたは Microsoft アカウントを使用してサインインする場合は、[招待 API](/graph/api/invitation-post) を使用してユーザーを作成し、必要に応じて[ユーザー更新 API](/graph/api/user-update) を使用してユーザーに追加の属性を割り当てる必要があります。
 
 1. 承認システムはユーザー フローから HTTP 要求を受信します。
 

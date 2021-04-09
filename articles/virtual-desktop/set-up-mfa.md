@@ -7,10 +7,10 @@ ms.date: 12/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 00aba5d169a05eab25dcc63ca813955e71d09598
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97092382"
 ---
 # <a name="enable-azure-multifactor-authentication-for-windows-virtual-desktop"></a>Windows Virtual Desktop 向け Azure 多要素認証の有効化

@@ -7,15 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/15/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 88244ec3ba4bbebe7d6096fa3ac49bd4f1b8f661
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.custom: b2c-support
+ms.openlocfilehash: 3a5afcd8c0ef0c31353cd2369ead332675c9877f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108622"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453123"
 ---
 # <a name="localization-element"></a>Localization 要素
 
@@ -102,7 +103,7 @@ ms.locfileid: "97108622"
 
 **LocalizedCollection** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | Description |
+| 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | Item | 0:n | ユーザーが要求についてユーザー インターフェイスで選択可能なオプション (ドロップダウン リストの値など) を定義します。 |
 
@@ -146,7 +147,7 @@ ms.locfileid: "97108622"
 
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ElementType | はい | 指定できる値[ClaimsProvider](#claimsprovider)、[ClaimType](#claimtype)、[ErrorMessage](#errormessage)、[GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype)、[Predicate](#predicate)、[InputValidation](#inputvalidation)、または [UxElement](#uxelement)。   | 
+| ElementType | はい | 指定できる値: [ClaimsProvider](#claimsprovider)、[ClaimType](#claimtype)、[ErrorMessage](#errormessage)、[GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype)、[FormatLocalizedStringTransformationClaimType](#formatlocalizedstringtransformationclaimtype)、[Predicate](#predicate)、[InputValidation](#inputvalidation)、または [UxElement](#uxelement)。   | 
 | ElementId | はい | **ElementType** が `ClaimType`、`Predicate`、または `InputValidation` に設定されている場合、この要素には ClaimsSchema セクションで定義済みの要求の種類への参照が含まれます。 |
 | StringId | はい | **ElementType** が `ClaimType` に設定されている場合、この要素には要求の種類の属性への参照が含まれます。 指定できる値: `DisplayName`、`AdminHelpText`、または `PatternHelpText`。 `DisplayName` 値は、要求の表示名を設定するために使用されます。 `AdminHelpText` 値は、要求ユーザーのヘルプ テキスト名を設定するために使用されます。 `PatternHelpText` 値は、要求パターンのヘルプ テキストを設定するために使用されます。 **ElementType** が `UxElement` に設定されている場合、この要素にはユーザー インターフェイス要素の属性への参照が含まれます。 **ElementType** が `ErrorMessage` に設定されている場合、この要素はエラー メッセージの識別子を指定します。 `UxElement` 識別子の完全な一覧については、「[ローカライズ文字列 ID](localization-string-ids.md)」を参照してください。|
 
@@ -231,6 +232,31 @@ ErrorMessage 値は、システム エラー メッセージのいずれかを�
 
 ```xml
 <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
+```
+
+### <a name="formatlocalizedstringtransformationclaimtype"></a>FormatLocalizedStringTransformationClaimType
+
+FormatLocalizedStringTransformationClaimType 値は、ローカライズされた文字列に要求を書式設定するために使用されます。 詳細については、[FormatLocalizedString 要求変換](string-transformations.md#formatlocalizedstring)に関する記事を参照してください。
+
+
+```xml
+<ClaimsTransformation Id="SetResponseMessageForEmailAlreadyExists" TransformationMethod="FormatLocalizedString">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="stringFormatId" DataType="string" Value="ResponseMessge_EmailExists" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+次の例は、FormatLocalizedStringTransformationClaimType 要求変換の文字列形式をローカライズする方法を示しています。
+
+```xml
+<LocalizedString ElementType="FormatLocalizedStringTransformationClaimType" StringId="ResponseMessge_EmailExists">The email '{0}' is already an account in this organization. Click Next to sign in with that account.</LocalizedString>
 ```
 
 ### <a name="getlocalizedstringstransformationclaimtype"></a>GetLocalizedStringsTransformationClaimType
@@ -335,7 +361,7 @@ UxElement 値は、ユーザー インターフェイス要素のいずれかを
 
 ### <a name="displaycontrol"></a>DisplayControl
 
-DisplayControl 値は、[表示コントロール](display-controls.md) ユーザー インターフェイス要素のいずれかをローカライズするために使用されます。 次の例は、送信と確認のボタンをローカライズする方法を示しています。 
+DisplayControl 値は、[表示コントロール](display-controls.md) ユーザー インターフェイス要素のいずれかをローカライズするために使用されます。 有効にすると、表示コントロール localizedStrings は、一部の *UxElement* StringID (**ver_but_send**、**ver_but_edit**、**ver_but_resend**、**ver_but_verify** など) よりも **優先** されます。 次の例は、送信と確認のボタンをローカライズする方法を示しています。 
 
 ```xml
 <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>

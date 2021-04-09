@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
 ms.openlocfilehash: 42476e2689cc503edc19e8e299a01ce922f1bf42
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98789197"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>チュートリアル:Azure Data Box のエクスポート注文を作成する
@@ -141,7 +141,7 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
 
     - **[キー コンテナー]** で、ドロップダウン リストから既存のキー コンテナーを選択できます。
 
-      ![[Azure Key Vault からのキーの選択] 画面](./media/data-box-deploy-export-ordered/customer-managed-key-03.png)
+      ![[Select key from Azure Key Vault]\(Azure Key Vault からのキーの選択\) 画面](./media/data-box-deploy-export-ordered/customer-managed-key-03.png)
 
     - **[新規作成]** を選択して、新しいキー コンテナーを作成することもできます。 **[キー コンテナーの作成]** 画面で、リソース グループとキー コンテナーの名前を入力します。 **[論理的な削除]** と **[消去保護]** が有効になっていることを確認します。 他のすべての既定値をそのまま使用し、 **[確認および作成]** を選択します。
 
@@ -161,7 +161,7 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
 
       キーがキー コンテナーに作成されると通知されます。
 
-14. 使用するキーの **[バージョン]** を選択して、 **[選択]** を選択します。
+14. 使用するキーの **バージョン** を選択し、 **[選択]** を選択します。
 
       ![キー コンテナーで作成された新しいキー](./media/data-box-deploy-export-ordered/customer-managed-key-08.png)
 
@@ -179,11 +179,11 @@ Azure Data Box は、Azure から特定の場所にデータを移動できる�
 
 15. このリソースへのアクセスを管理するために使用するユーザー ID を選択します。 **[Select a user identity]\(ユーザー ID を選択する\)** を選択します。 右側のパネルで、使用するサブスクリプションとマネージド ID を選択します。 次に **[選択]** を選択します。
 
-    ユーザー割り当てマネージド ID は、複数のリソースを管理するために使用できるスタンドアロンの Azure リソースです。 詳細については、「[マネージド ID の種類](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。  
+    ユーザー割り当てマネージド ID は、複数のリソースを管理するために使用できるスタンドアロンの Azure リソースです。 詳細については、[マネージド ID の種類](../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。  
 
     新しいマネージド ID を作成する必要がある場合は、「[Azure portal を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除したり、それにロールを割り当てたりする](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)」のガイダンスに従ってください。
     
-    ![ユーザー ID を選択する](./media/data-box-deploy-export-ordered/customer-managed-key-10.png)
+    ![[Select a user identity]\(ユーザー ID を選択する\)](./media/data-box-deploy-export-ordered/customer-managed-key-10.png)
 
     ユーザー ID が **[暗号化の種類]** の設定に表示されます。
 

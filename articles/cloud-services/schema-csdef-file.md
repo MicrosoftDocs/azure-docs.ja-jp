@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: b98534b049698ea95c6738ce3404dd5ef8ff7a28
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102502266"
 ---
 # <a name="azure-cloud-services-classic-definition-schema-csdef-file"></a>Azure Cloud Services (クラシック) 定義スキーマ (.csdef ファイル)

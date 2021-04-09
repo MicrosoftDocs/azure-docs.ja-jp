@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: b27ff631ce13d70d15a6fd2b6dd5ad5bccaf5450
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 473ba69fa30542dfa41dfc5f19002ac36b56b482
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021913"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674956"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でデータ ソースをデータ プロファイリングする方法
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 ## <a name="introduction"></a>はじめに
 

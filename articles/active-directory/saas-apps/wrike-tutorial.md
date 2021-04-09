@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 0c7bfb84d3d37220d9c1a5c7d7e24325d597945d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92894991"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wrike"></a>チュートリアル: Azure Active Directory と Wrike の統合
@@ -41,9 +41,9 @@ Wrike と Azure AD の統合を構成するには、次のものが必要です�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Wrike では、 **SP** Initiated SSO と **IDP** Initiated SSO がサポートされます
+* Wrike では、**SP** Initiated SSO と **IDP** Initiated SSO がサポートされます
 
-* Wrike では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Wrike では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-wrike-from-the-gallery"></a>ギャラリーからの Wrike の追加
 
@@ -63,13 +63,13 @@ Azure AD への Wrike の統合を構成するには、ギャラリーからマ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Wrike** 」と入力し、結果パネルで **Wrike** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Wrike**」と入力し、結果パネルで **Wrike** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Wrike](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Wrike で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Wrike で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Wrike 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Wrike で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -87,7 +87,7 @@ Wrike で Azure AD のシングル サインオンを構成してテストする
 
 Wrike で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Wrike** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Wrike** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -99,7 +99,7 @@ Wrike で Azure AD シングル サインオンを構成するには、次の手
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **IDP** 開始モードでアプリケーションを構成する場合は、アプリケーションが Azure と既に統合されているため、 **[基本的な SAML 構成]** セクションで実行する必要がある手順はありません。
+4. **IDP** 開始モードでアプリケーションを構成する場合は、アプリケーションが Azure と既に統合されているため、**[基本的な SAML 構成]** セクションで実行する必要がある手順はありません。
 
     ![[基本的な SAML 構成] を示すスクリーンショット。](common/preintegrated.png)
 
@@ -143,7 +143,7 @@ Wrike で Azure AD シングル サインオンを構成するには、次の手
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -155,7 +155,7 @@ Wrike で Azure AD シングル サインオンを構成するには、次の手
 
 このセクションでは、Britta Simon に Wrike へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Wrike]** の順に選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[Wrike]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

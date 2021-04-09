@@ -8,10 +8,10 @@ author: djpmsft
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
 ms.openlocfilehash: 8c0e4db2bc686fff2bd718f45c63a0fc26f6cd55
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100375393"
 ---
 # <a name="templates"></a>テンプレート

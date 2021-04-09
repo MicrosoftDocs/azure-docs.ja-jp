@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 01/19/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: d210da4b653a20dd273dfce723f0bf9d5dbf743b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101737819"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Shared Access Signature による Service Bus のアクセスの制御

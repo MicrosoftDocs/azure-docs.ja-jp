@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:TeamViewer を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
+title: 'チュートリアル: TeamViewer を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
 description: Azure AD から TeamViewer に対してユーザー アカウントを自動的にプロビジョニング、またはプロビジョニング解除する方法を説明します。
 services: active-directory
 author: Zhchia
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: Zhchia
 ms.openlocfilehash: 0362f0d69581c252170b4f37f8564caa7acd3d29
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96182242"
 ---
-# <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>チュートリアル:TeamViewer を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>チュートリアル: TeamViewer を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、自動ユーザー プロビジョニングを構成するために TeamViewer と Azure Active Directory (Azure AD) の両方で行う必要がある手順について説明します。 構成すると、Azure AD では、Azure AD プロビジョニング サービスを使用して、[TeamViewer](https://www.teamviewer.com/buy-now/) に対するユーザーとグループのプロビジョニングおよびプロビジョニング解除が自動的に行われます。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。 
 
@@ -58,7 +58,7 @@ ms.locfileid: "96182242"
 
     ![TeamViewer トークン名](./media/teamviewer-provisioning-tutorial/tokenname.png)
 
-4. **[Token]\(トークン\)** をコピーし、 **[OK]** をクリックします。 この値は、Azure portal の TeamViewer アプリケーションの **[Secret Token]\(シークレット トークン\)** フィールドに入力されます。
+4. **[Token]\(トークン\)** をコピーし、**[OK]** をクリックします。 この値は、Azure portal の TeamViewer アプリケーションの **[Secret Token]\(シークレット トークン\)** フィールドに入力されます。
 
     ![TeamViewer トークン](./media/teamviewer-provisioning-tutorial/token.png)
 
@@ -119,7 +119,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-11. TeamViewer に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+11. TeamViewer に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 

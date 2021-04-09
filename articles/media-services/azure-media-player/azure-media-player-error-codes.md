@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: error-reference
 ms.date: 04/20/2020
-ms.openlocfilehash: 13d804ec39c3d7753d4ee04962a88d4451fb04d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89f063ab50cfd880552e80a77ba798e4d06de5b3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81725904"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709582"
 ---
 # <a name="error-codes"></a>エラー コード #
 
@@ -93,10 +93,10 @@ ms.locfileid: "81725904"
 
 表示されるユーザー メッセージは、エラー コードのビット 27 から 20 に基づきます。
 
-- MEDIA_ERR_ABORTED (1) -"You aborted the video playback" \(ビデオの再生を中止しました\)
+- MEDIA_ERR_ABORTED (1) - "You aborted the video playback" \(ビデオの再生を中止しました\)
 - MEDIA_ERR_NETWORK (2) - "ネットワーク エラーのためにビデオのダウンロードが途中で失敗しました。"
 - MEDIA_ERR_DECODE (3) - "ビデオが破損しているか、ブラウザーがサポートしていない機能をビデオが使用しているため、ビデオの再生が中断しました。"
-- MEDIA_ERR_SRC_NOT_SUPPORTED (4)-"ビデオを読み込めませんでした。サーバーまたはネットワークの障害のためか、あるいはフォーマットがサポートされていません。"
+- MEDIA_ERR_SRC_NOT_SUPPORTED (4) - "ビデオを読み込めませんでした。サーバーまたはネットワークの障害のためか、あるいはフォーマットがサポートされていません。"
 - MEDIA_ERR_ENCRYPTED (5) - "The video is encrypted and we do not have the keys to decrypt it." \(ビデオが暗号化されています。暗号化を解除するためのキーがありません。\)
 - SRC_PLAYER_MISMATCH (6) - "No compatible source was found for this video." \(このビデオと互換性のあるソースが見つかりませんでした。\)
 - MEDIA_ERR_UNKNOWN (0xFF) - "不明なエラーが発生しました。"

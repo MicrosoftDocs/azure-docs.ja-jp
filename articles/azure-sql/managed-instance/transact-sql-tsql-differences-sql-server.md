@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 1/12/2021
+ms.date: 3/16/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: a182ca3ba70b9faa1ba67fdb6c91a4eaf8e766ef
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1afd5a0e24e144169280e683321b5843e9766136
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691197"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103601374"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -252,7 +252,7 @@ SQL Managed Instance はファイルにアクセスできないため、暗号�
 次のオプションは既定で設定されており、変更することはできません。
 
 - `MULTI_USER`
-- `ENABLE_BROKER ON`
+- `ENABLE_BROKER`
 - `AUTO_CLOSE OFF`
 
 次のオプションは変更できません。
@@ -466,11 +466,17 @@ RESTORE ステートメントについては、[RESTORE ステートメント](/
 
 ### <a name="service-broker"></a>Service Broker
 
-クロス インスタンス Service Broker はサポートされていません。
+クロス インスタンス Service Broker メッセージ交換は、Azure SQL Managed Instance 間でのみサポートされます。
 
-- `sys.routes`:前提条件として sys.routes からアドレスを選択する必要があります。 アドレスは、各ルートで LOCAL である必要があります。 [sys.routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql) をご覧ください。
-- `CREATE ROUTE`:`LOCAL` 以外の `ADDRESS` で `CREATE ROUTE` を使用することはできません。 [CREATE ROUTE](/sql/t-sql/statements/create-route-transact-sql) をご覧ください。
-- `ALTER ROUTE`:`LOCAL` 以外の `ADDRESS` で `ALTER ROUTE` を使用することはできません。 [ALTER ROUTE](/sql/t-sql/statements/alter-route-transact-sql) をご覧ください。 
+- `CREATE ROUTE`: `CREATE ROUTE` を `LOCAL` 以外の `ADDRESS` または別の Azure SQL Managed Instance の DNS 名で使用することはできません。
+- `ALTER ROUTE`: `ALTER ROUTE` を `LOCAL` 以外の `ADDRESS` または別の Azure SQL Managed Instance の DNS 名で使用することはできません。
+
+トランスポート セキュリティはサポートされていますが、ダイアログ セキュリティはサポートされていません。
+- `CREATE REMOTE SERVICE BINDING` はサポートされていません。
+
+Service Broker は既定で有効になっており、無効にできません。 次の ALTER DATABASE オプションはサポートされていません。
+- `ENABLE_BROKER`
+- `DISABLE_BROKER`
 
 ### <a name="stored-procedures-functions-and-triggers"></a>ストアド プロシージャ、関数、トリガー
 

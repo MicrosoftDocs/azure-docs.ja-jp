@@ -8,10 +8,10 @@ ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 5bd7ffda508980a9a56d86037887fc53a0fed640
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102202945"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-cli"></a>Private Link を使用してプライベート アクセスを有効にする (プレビュー):Azure CLI

@@ -8,10 +8,10 @@ ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: a9b2e8148586ec58ea6a7a033099e726920857b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84987938"
 ---
 # <a name="url-path-based-routing-overview"></a>URL パス ベースのルーティングの概要
@@ -64,7 +64,7 @@ urlPathMap 要素は、パス パターンのバックエンド サーバー プ
 
 ### <a name="pathpattern"></a>PathPattern
 
-PathPattern は照合するパス パターンの一覧です。 それぞれ / で始まる必要があり、"*" が許可されるのは末尾の "/" の後だけです。 パス照合に渡される文字列の最初の ? または # の後にテキストは含まれず、これらの文字はここでは許可されません。 それ以外の場合、URL で許可される文字はすべて PathPattern で許可されます。
+PathPattern は照合するパス パターンの一覧です。 それぞれ / で始まる必要があり、"*" が許可されるのは末尾の "/" の後だけです。 パス照合に渡される文字列の最初の ?  または # の後にテキストは含まれず、これらの文字はここでは許可されません。 それ以外の場合、URL で許可される文字はすべて PathPattern で許可されます。
 
 Application Gateway v1 と v2 のいずれをデプロイしているかによって、サポートされるパターンは異なります。
 
@@ -76,9 +76,9 @@ Application Gateway v1 と v2 のいずれをデプロイしているかによ�
 |---------|---------|
 |`/images/*`     |はい|
 |`/images*`     |はい|
-|`/images/*.jpg`     |いいえ|
-|`/*.jpg`     |いいえ|
-|`/Repos/*/Comments/*`     |いいえ|
+|`/images/*.jpg`     |no|
+|`/*.jpg`     |no|
+|`/Repos/*/Comments/*`     |no|
 |`/CurrentUser/Comments/*`     |はい|
 
 #### <a name="v2"></a>v2
@@ -89,9 +89,9 @@ Application Gateway v1 と v2 のいずれをデプロイしているかによ�
 |---------|---------|
 |`/images/*`     |はい|
 |`/images*`     |はい|
-|`/images/*.jpg`     |いいえ|
-|`/*.jpg`     |いいえ|
-|`/Repos/*/Comments/*`     |いいえ|
+|`/images/*.jpg`     |no|
+|`/*.jpg`     |no|
+|`/Repos/*/Comments/*`     |no|
 |`/CurrentUser/Comments/*`     |はい|
 
 詳しくは、「 [Resource Manager template using URL-based routing (URL ベースのルーティングを使用した Resource Manager テンプレート)](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing) 」をご覧ください。

@@ -10,10 +10,10 @@ ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro R so I can use it to transfer data to Azure.
 ms.openlocfilehash: 11c1d76b5784587f234455f81595778897569eb1
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99594352"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-r"></a>チュートリアル:Azure Stack Edge Pro R のネットワークを構成する
@@ -121,7 +121,7 @@ ms.locfileid: "99594352"
     **[次へ: Web プロキシ]** を選択して、Web プロキシを構成します。  
 
   
-## <a name="configure-web-proxy"></a>Web プロキシの
+## <a name="configure-web-proxy"></a>Web プロキシを構成する
 
 これはオプション構成です。
 

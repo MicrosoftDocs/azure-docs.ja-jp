@@ -7,10 +7,10 @@ ms.date: 10/12/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: fd8f9e4a3ef63cd97f96af3d4f96a2bb65c3cd09
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91951861"
 ---
 # <a name="host-pool-load-balancing-methods"></a>ホスト プールの負荷分散方法

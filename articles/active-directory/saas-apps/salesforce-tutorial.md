@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 02/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 625058b131ef5cb6180873806185a3202a766118
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 0f800d2d42d0d8815021f1582b04750d87aa5abc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675566"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651437"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Salesforce の統合
 
@@ -37,11 +37,11 @@ ms.locfileid: "92675566"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Salesforce では、 **SP** によって開始される SSO がサポートされます
+* Salesforce では、**SP** Initiated SSO がサポートされます。
 
-* Salesforce では、 [**自動化された** ユーザー プロビジョニングとプロビジョニング解除](salesforce-provisioning-tutorial.md) (推奨) がサポートされます
+* Salesforce では、[**自動化された** ユーザー プロビジョニングとプロビジョニング解除](salesforce-provisioning-tutorial.md) (推奨) がサポートされます。
 
-* Salesforce では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Salesforce では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
 * Salesforce Mobile アプリケーションを Azure AD と共に構成して SSO を有効にできるようになりました。 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
@@ -53,7 +53,7 @@ Azure AD への Salesforce の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Salesforce** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Salesforce**」と入力します。
 1. 結果パネルで **[Salesforce]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-salesforce"></a>Salesforce の Azure AD SSO の構成とテスト
@@ -80,27 +80,27 @@ Salesforce に対して Azure AD SSO を構成してテストするには、次�
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
-
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して値を入力します。
+    
+    a. **[識別子]** ボックスに、次の形式で値を入力します。
 
     エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
 
     開発者アカウント: `https://<subdomain>-dev-ed.my.salesforce.com`
-    
+
     b. **[応答 URL]** ボックスに、次のパターンを使用して値を入力します。
 
     エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
 
     開発者アカウント: `https://<subdomain>-dev-ed.my.salesforce.com`
 
-    c. **[識別子]** ボックスに、次の形式で値を入力します。
+    c. **[サインオン URL]** ボックスに、次のパターンを使用して値を入力します。
 
     エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
 
     開発者アカウント: `https://<subdomain>-dev-ed.my.salesforce.com`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Salesforce クライアント サポート チーム](https://help.salesforce.com/support)に問い合わせてください。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Salesforce クライアント サポート チーム](https://help.salesforce.com/support)に問い合わせてください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -173,7 +173,7 @@ Salesforce に対して Azure AD SSO を構成してテストするには、次�
 
     ![シングル サインオンの構成 (ファイルの選択)](./media/salesforce-tutorial/xmlchoose.png)
 
-1. **[SAML シングル サインオンの設定]** ページでは、フィールドは自動的に入力されます。 **[User Provisioning Enabled]\(ユーザー プロビジョニングは有効です\)** を選択し、 **[Save]\(保存\)** をクリックしてください。
+1. **[SAML Single Sign-On Settings]\(SAML シングル サインオンの設定\)** ページでは、各フィールドが自動的に設定されます。SAML JIT を使用する場合は、 **[User Provisioning Enabled]\(ユーザー プロビジョニングは有効です\)** を選択し、 **[SAML Identity Type]\(SAML ID の種類\)** として **[Assertion contains the Federation ID from the User object]\(アサーションにはユーザー オブジェクトからのフェデレーション ID が含まれます\)** を選択します。それ以外の場合は、 **[User Provisioning Enabled]\(ユーザー プロビジョニングは有効です\)** の選択を解除し、 **[SAML Identity Type]\(SAML ID の種類\)** として **[Assertion contains the User's Salesforce username]\(アサーションにユーザーの Salesforce ユーザー名が含まれています\)** を選択します。 **[保存]** をクリックします。
 
     ![シングル サインオンの構成 (ユーザー プロビジョニングは有効です)](./media/salesforce-tutorial/salesforcexml.png)
 
@@ -185,12 +185,12 @@ Salesforce に対して Azure AD SSO を構成してテストするには、次�
 
     ![シングル サインオンの構成 (認証の構成)](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
-1. **[Authentication Configuration]\(認証の構成\)** セクションで、SAML SSO 構成の **[Authentication Service]\(認証サービス\)** として **[AzureSSO]** をオンにし、 **[Save]\(保存\)** をクリックします。
+1. **[Authentication Configuration]\(認証の構成\)** セクションで、SAML SSO 構成の **[Authentication Service]\(認証サービス\)** として **[Login Page]\(ログインページ\)** と **[Azure AD SSO]** をオンにし、 **[Save]\(保存\)** をクリックします。
 
-    ![シングル サインオンの構成 (認証サービス)](./media/salesforce-tutorial/sf-auth-config.png)
+    ![シングル サインオンの構成 (認証サービス)](./media/salesforce-tutorial/authentication.png)
 
     > [!NOTE]
-    > 複数の認証サービスを選択した場合、ユーザーが Salesforce 環境へのシングル サインオンを開始すると、サインインに使用する認証サービスを選択するよう要求されます。 このメッセージが表示されないようにするには、 **その他すべての認証サービスをオフのままに** しておいてください。
+    > 複数の認証サービスを選択した場合、ユーザーが Salesforce 環境へのシングル サインオンを開始すると、サインインに使用する認証サービスを選択するよう要求されます。 このメッセージが表示されないようにするには、**その他すべての認証サービスをオフのままに** しておいてください。
 
 ### <a name="create-salesforce-test-user"></a>Salesforce テスト ユーザーの作成
 
@@ -200,11 +200,11 @@ Salesforce に対して Azure AD SSO を構成してテストするには、次�
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Salesforce のサインオン URL にリダイレクトされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Salesforce のサインオン URL にリダイレクトされます。 
 
-2. Salesforce のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* Salesforce のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネル上で [Salesforce] タイルをクリックすると、SSO を設定した Salesforce に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Salesforce] タイルをクリックすると、SSO を設定した Salesforce に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="test-sso-for-salesforce-mobile"></a>Salesforce (モバイル) の SSO をテストする
 

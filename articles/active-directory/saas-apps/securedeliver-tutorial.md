@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 02ed110cee4c1657089156cf3f78ccbf1f96b756
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92673222"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secure-deliver"></a>チュートリアル: Azure Active Directory と SECURE DELIVER の統合
@@ -41,7 +41,7 @@ Azure AD と SECURE DELIVER の統合を構成するには、次のものが必�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* SECURE DELIVER では、 **SP** によって開始される SSO がサポートされます
+* SECURE DELIVER では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-secure-deliver-from-the-gallery"></a>ギャラリーからの SECURE DELIVER の追加
 
@@ -61,13 +61,13 @@ Azure AD への SECURE DELIVER の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **SECURE DELIVER** 」と入力し、結果パネルで **[SECURE DELIVER]** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**SECURE DELIVER**」と入力し、結果パネルで **[SECURE DELIVER]** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の SECURE DELIVER](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、SECURE DELIVER で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、SECURE DELIVER で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと SECURE DELIVER 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 SECURE DELIVERで Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -142,7 +142,7 @@ SECURE DELIVER で Azure AD シングル サインオンを構成するには、
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 

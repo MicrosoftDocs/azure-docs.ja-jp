@@ -4,10 +4,10 @@ description: Azure Site Recovery サービスを使用して Azure Stack VM の 
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.openlocfilehash: 36e11bfe5354644f9ef6603ffe20cb2e86074323
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96016908"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM を Azure にレプリケートする

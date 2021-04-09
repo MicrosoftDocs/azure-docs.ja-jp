@@ -4,10 +4,10 @@ description: この記事では、Container insights を使用して Kubernetes 
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.openlocfilehash: 865a21e8c54d2cf569e04534fab6ec14f5519f34
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102124314"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-container-insights"></a>Container insights を使用して Kubernetes クラスターのパフォーマンスを監視する

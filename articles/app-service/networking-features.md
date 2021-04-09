@@ -210,7 +210,7 @@ App Service のゲートウェイが必要な VNet 統合機能を使用する�
 
 詳細については、[App Service VNet 統合][vnetintegration]に関する記事を参照してください。
 
-### <a name="app-service-environment"></a>App Service 環境 
+### <a name="app-service-environment"></a>App Service Environment 
 
 App Service Environment (ASE) は、仮想ネットワーク内で実行される Azure App Service のシングルテナント デプロイです。 この機能には、次のようなケースがあります。
 

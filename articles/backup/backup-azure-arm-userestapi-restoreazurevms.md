@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
 ms.openlocfilehash: da6b4cd6134f0cd1fd3d6e04e814bbf8aec9b07d
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102452154"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API を使用して Azure 仮想マシンを復元する
@@ -31,7 +31,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="responses"></a>Responses
 
-|名前  |種類  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       [OK]  |
 
@@ -144,7 +144,7 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|名前  |種類  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |202 Accepted     |         |     承認済み    |
 
@@ -216,7 +216,7 @@ X-Powered-By: ASP.NET
 
 Azure VM バックアップからのディスクの復元をトリガーする場合、要求本文のコンポーネントは次のとおりです。
 
-|名前  |種類  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -278,7 +278,7 @@ Azure VM バックアップからのディスクの復元をトリガーする�
 
 Azure VM バックアップからのディスク交換をトリガーする場合、要求本文のコンポーネントは次のとおりです。
 
-|名前  |種類  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 

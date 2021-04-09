@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f082ec896bf0542b63c8c1d0257679681334050
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85358669"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>SQL によって委任された管理者のアクセス許可を使用した Azure AD Connect のインストール
@@ -41,7 +41,7 @@ Azure AD Connect 管理者|Azure AD Connect をインストールし、カスタ
 帯域外でデータベースをプロビジョニングし、データベース所有者アクセス許可で Azure AD Connect をインストールするには、次の手順に従います。
 
 >[!NOTE]
->必須ではありませんが、データベースを作成するときは、Latin1_General_CI_AS 照合順序を選択することを**強くお勧めします**。
+>必須ではありませんが、データベースを作成するときは、Latin1_General_CI_AS 照合順序を選択することを **強くお勧めします**。
 
 
 1. SQL 管理者に、大文字と小文字を区別しない照合順序 **(Latin1_General_CI_AS)** で ADSync データベースを作成してもらいます。  データベースの名前は **ADSync** にします。  Azure AD Connect のインストール時に、復旧モデル、互換性レベル、およびコンテインメントの種類が正しい値に更新されます。  ただし、照合順序は、SQL 管理者が正しく設定する必要があります。これを行わないと、Azure AD Connect によってインストールがブロックされます。  復旧するには、SA はデータベースを削除して、再作成する必要があります。

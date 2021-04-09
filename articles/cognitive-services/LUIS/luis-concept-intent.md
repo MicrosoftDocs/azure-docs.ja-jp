@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.openlocfilehash: bf5ab7361c84fb787366c7c361829e52362fe427
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95025910"
 ---
 # <a name="intents-in-your-luis-app"></a>LUIS アプリにおける意図
@@ -25,7 +25,7 @@ ms.locfileid: "95025910"
 旅行アプリの意図   |   発話の例   |
 ------|------|
  BookFlight     |   "来週のリオへの便を予約して" <br/> "24 日に飛行機でリオに行きたい" <br/> "次の日曜日、リオデジャネイロへの航空券が必要だ"    |
- Greeting     |   "やあ" <br/>"こんにちは" <br/>"おはようございます"  |
+ Greeting     |   "やあ" <br/>"Hello" <br/>"おはようございます"  |
  CheckWeather | "ボストンの天気はどうですか" <br/> "今週末の天気予報を教えてください" |
  なし         | "クッキーのレシピが知りたい"<br>"レイカーズは勝った?" |
 
@@ -49,7 +49,7 @@ ms.locfileid: "95025910"
 
 <a name="how-do-intents-relate-to-entities"></a>
 
-ユーザーの _意図_ によって、checkweather() 関数の呼び出しなど、クライアント アプリケーションでアクションをトリガーする場合に、意図を作成します。 次に、アクションの実行に必要なパラメーターを表すエンティティを作成します。
+ユーザーの "_意図_" によって、checkweather() 関数の呼び出しなど、クライアント アプリケーションでアクションをトリガーする場合に、意図を作成します。 次に、アクションの実行に必要なパラメーターを表すエンティティを作成します。
 
 |Intent   | Entity | 発話の例   |
 |------------------|------------------------------|------------------------------|

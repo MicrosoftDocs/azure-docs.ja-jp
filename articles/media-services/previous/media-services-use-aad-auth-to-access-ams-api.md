@@ -3,7 +3,7 @@ title: Azure Active Directory 認証を使用した Azure Media Services API へ
 description: Azure Active Directory (Azure AD) を使用して Azure Media Services API へのアクセスを認証するための手順と概念を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
-ms.author: juliako
-ms.openlocfilehash: a26359c46caa8085384313f1c385c5740abc0b32
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 3688f0f9266844ce584f3f2d2e1a7c39ed3e4f70
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694539"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103009017"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD 認証を使用した Azure Media Services API へのアクセス 
 

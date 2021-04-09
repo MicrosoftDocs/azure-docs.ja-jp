@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0be7805493e5acc41254c57ca912b5a2ecf02dae
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c725e7b4e7af33181cb616d2bce2ae19521a5e7d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931461"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871879"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Hadoop HDFS のトラブルシューティング
 
@@ -101,7 +101,7 @@ Caused by: com.microsoft.azure.storage.StorageException: The request body is too
 
 HDInsight クラスター上の HBase では、Azure Storage に書き込むときに既定のブロック サイズは 256 KB です。 HBase API または REST API では問題ありませんが、`hadoop` または `hdfs dfs` コマンドライン ユーティリティを使うとエラーになります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 `fs.azure.write.request.size` を使ってさらに大きいブロック サイズを指定します。 この変更は、`-D` パラメーターを使うことで、利用状況に応じて指定できます。 `hadoop` コマンドでこのパラメーターを使う例を次に示します。
 
@@ -116,7 +116,7 @@ Apache Ambari を使うことで、`fs.azure.write.request.size` の値をグロ
 3. **[Filter... (フィルター...)]** フィールドに「`fs.azure.write.request.size`」と入力します。
 4. 値を 262144 (256 KB) から新しい値に変更します。 たとえば、4194304 (4 MB) に変更します。
 
-    ![Ambari Web UI で値を変更する画像](./media/hdinsight-troubleshoot-hdfs/hbase-change-block-write-size.png)
+    :::image type="content" source="./media/hdinsight-troubleshoot-hdfs/hbase-change-block-write-size.png" alt-text="Ambari Web UI で値を変更する画像" border="false":::
 
 Ambari の使用について詳しくは、「[Apache Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」をご覧ください。
 

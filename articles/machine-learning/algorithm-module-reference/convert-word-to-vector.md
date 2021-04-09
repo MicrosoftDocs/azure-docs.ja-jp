@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
 ms.openlocfilehash: 5fad3e4862b0c40c9edd00a5b9d47b245e529396
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91536734"
 ---
 # <a name="convert-word-to-vector-module"></a>Convert Word to Vector モジュール
@@ -126,7 +126,7 @@ campus|-0.281835|0.29312|0.106966|-0.031385|0.100777|-0.061452|...|0.05978
 infinite|-0.263074|0.245753|0.07058|-0.164666|0.162857|-0.027345|...|-0.0525
 loop|-0.391421|0.52366|0.141503|-0.105423|0.084503|-0.018424|...|-0.0521
 
-この例では、**Word2Vec の戦略**には既定の **Gensim Word2Vec** を使用し、**トレーニング アルゴリズム**は **Skip-gram** です。 **単語埋め込みの長さ**は 100 なので、100 個の埋め込み列があります。
+この例では、**Word2Vec の戦略** には既定の **Gensim Word2Vec** を使用し、**トレーニング アルゴリズム** は **Skip-gram** です。 **単語埋め込みの長さ** は 100 なので、100 個の埋め込み列があります。
 
 ## <a name="technical-notes"></a>テクニカル ノート
 

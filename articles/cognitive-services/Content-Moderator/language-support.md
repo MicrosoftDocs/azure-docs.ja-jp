@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 043e61f498417b74831cd49f046f78b02e907964
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "84310310"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Content Moderator API の言語サポート
 
 > [!NOTE]
-> **language** パラメーターについては、`eng` を割り当てるか、パラメーターを空のままにして、コンピューター支援による**分類**応答を表示します (プレビュー機能)。 **この機能でサポートされているのは英語のみです**。
+> **language** パラメーターについては、`eng` を割り当てるか、パラメーターを空のままにして、コンピューター支援による **分類** 応答を表示します (プレビュー機能)。 **この機能でサポートされているのは英語のみです**。
 >
-> **不適切用語**の検出については、この記事の一覧に示したサポート対象言語の [ISO 639-3 コード](http://www-01.sil.org/iso639-3/codes.asp)を使用するか、空のままにします。
+> **不適切用語** の検出については、この記事の一覧に示したサポート対象言語の [ISO 639-3 コード](http://www-01.sil.org/iso639-3/codes.asp)を使用するか、空のままにします。
 
 
 | 言語検出 | 不適切な表現   | OCR    | 自動修正     |

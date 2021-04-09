@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: damendo
 ms.openlocfilehash: 6e330d2595487366ff7b8979490cb8a897f89520
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102503149"
 ---
 # <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Azure Network Watcher の有効なセキュリティ規則ビューの概要

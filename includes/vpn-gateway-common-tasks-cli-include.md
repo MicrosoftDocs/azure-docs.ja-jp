@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file, devx-track-azurecli
 ms.openlocfilehash: 923620c1c9719d857cc848507a4c5507f528d34e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95561029"
 ---
 ### <a name="to-view-local-network-gateways"></a>ローカル ネットワーク ゲートウェイを表示するには
@@ -29,7 +29,7 @@ az network local-gateway list --resource-group TestRG1
 
 ### <a name="to-verify-the-shared-key-values"></a>共有キーの値を確認するには
 
-共有キーの値が VPN デバイスの構成に使用したものと同じ値であることを確認します。 異なる場合は、デバイスの値を使用して接続をもう一度実行するか、返された値でデバイスを更新します。 値は一致する必要があります。 共有キーを表示するには、[az network vpn-connection-list](/cli/azure/network/vpn-connection) を使用します。
+共有キーの値が VPN デバイスの構成に使用したものと同じ値であることを確認します。 異なる場合は、デバイスの値を使用して接続をもう一度実行するか、返された値でデバイスを更新します。 値が一致する必要があります。 共有キーを表示するには、[az network vpn-connection-list](/cli/azure/network/vpn-connection) を使用します。
 
 ```azurecli
 az network vpn-connection shared-key show --connection-name VNet1toSite2 --resource-group TestRG1

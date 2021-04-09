@@ -9,10 +9,10 @@ ms.date: 10/08/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: ac7fc5af21f11699331d41a074e88ae757170664
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91975996"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-azure-cli"></a>チュートリアル:Microsoft ピアリングにルート フィルターを構成する:Azure CLI
@@ -36,7 +36,7 @@ Microsoft 365 サービス (Exchange Online、SharePoint Online、Skype for Busi
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > - BGP コミュニティ値を取得する。
-> - ルート フィルターとフィルター規則を作成する。
+> - ルート フィルターとフィルターのルールを作成する。
 > - ExpressRoute 回線にルート フィルターを関連付ける。
 
 ### <a name="about-route-filters"></a><a name="about"></a>ルート フィルターについて
@@ -65,7 +65,7 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Azure アカウントにサインインしてサブスクリプションを選択する
 
-構成を始めるには、Azure アカウントにサインインします。 "使ってみる" を使用している場合は、自動的にサインインされ、ログイン手順をスキップできます。 接続については、次の例を参照してください。
+構成を始めるには、Azure アカウントにサインインします。 "試してみる" を使用している場合は、自動的にサインインされ、ログイン手順をスキップできます。 接続については、次の例を参照してください。
 
 ```azurecli
 az login

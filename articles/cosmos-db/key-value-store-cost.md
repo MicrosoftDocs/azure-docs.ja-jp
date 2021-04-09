@@ -9,10 +9,10 @@ ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 9354ae0a22ef2e8ab4ee6a57563d3f3c4c8e4547
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93339305"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>キー値ストアとしての Azure Cosmos DB - コストの概要
@@ -41,8 +41,8 @@ Azure Cosmos DB のパフォーマンスは、[要求ユニット](request-units
 
 |アイテムのサイズ|100 万回の読み取りのコスト|100 万回の書き込みのコスト|
 |-------------|-------|--------|
-|1 KB|0\.022 ドル|0\.111 ドル|
-|100 KB|0\.222 ドル|1\.111 ドル|
+|1 KB|0.022 ドル|0.111 ドル|
+|100 KB|0.222 ドル|1.111 ドル|
 
 
 基本的な BLOB またはオブジェクト ストア サービスの多くでは、読み取りトランザクション 100 万回につき 0.40 ドル、書き込みトランザクション 100 万回につき 5 ドルが課金されます。 最適な方法で使用した場合は、Cosmos DB では他のソリューションと比べて最大で 98% のコストを削減できます (1 KB のトランザクションの場合)。

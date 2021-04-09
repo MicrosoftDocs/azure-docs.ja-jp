@@ -9,10 +9,10 @@ ms.date: 02/10/2021
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 014b4d09a991ae4d0bb31ec0b9adee0c9e3b3553
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100361011"
 ---
 # <a name="tutorial-move-encrypted-azure-vms-across-regions"></a>チュートリアル:暗号化された Azure VM をリージョン間で移動する

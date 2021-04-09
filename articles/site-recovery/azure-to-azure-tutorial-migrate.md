@@ -9,10 +9,10 @@ ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
 ms.openlocfilehash: 076adbfd4cecf7dae9ffc490e911fcb7ffce48e6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93394834"
 ---
 # <a name="move-vms-to-another-azure-region"></a>VM を別の Azure リージョンに移動する
@@ -103,7 +103,7 @@ ms.locfileid: "93394834"
 1. **[Recovery Services コンテナー]** で、 **[ContosoVMVault]** 、 **[レプリケートされたアイテム]** 、 **[+ 複製]** の順に選択します。
 1. ドロップダウンで、 **[Azure Virtual Machines]** を選択します。
 1. **[ソースの場所]** で、現在 VM が実行されているソースの Azure リージョンを選択します。
-1. Resource Manager デプロイ モデルを選択します。 次に、 **ソース サブスクリプション** と **ソース リソース グループ** を選択します。
+1. Resource Manager デプロイ モデルを選択します。 次に、**ソース サブスクリプション** と **ソース リソース グループ** を選択します。
 1. **[OK]** を選択して設定を保存します。
 
 ### <a name="enable-replication-for-azure-vms-and-start-copying-the-data"></a>Azure VM のレプリケーションを有効にしてデータのコピーを開始する

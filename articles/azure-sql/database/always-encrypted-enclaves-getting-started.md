@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: d9c2bec575f2c7a948f3eb6e65be6a735a3c03e8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 809ac72977b670faff984ad39effb1c70767e141
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733816"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120948"
 ---
 # <a name="tutorial-getting-started-with-always-encrypted-with-secure-enclaves-in-azure-sql-database"></a>チュートリアル:セキュリティで保護されたエンクレーブが設定された Always Encrypted の使用を Azure SQL Database で開始する
 
@@ -71,40 +71,45 @@ SSMS をダウンロードする方法については、「[SQL Server Managemen
 SSMS の必要な最小バージョンは 18.8 です。
 
 
-## <a name="step-1-create-a-server-and-a-dc-series-database"></a>手順 1: サーバーと DC シリーズ データベースを作成する
+## <a name="step-1-create-and-configure-a-server-and-a-dc-series-database"></a>手順 1: サーバーと DC シリーズ データベースを作成、構成する
 
- この手順では、DC シリーズのハードウェア構成を使用して、新しい Azure SQL Database 論理サーバーと新しいデータベースを作成します。 Azure SQL Database のセキュリティで保護されたエンクレーブが設定された Always Encrypted では、DC シリーズのハードウェア構成でサポートされている Intel SGX エンクレーブが使用されます。 詳細については、「[DC シリーズ](service-tiers-vcore.md#dc-series)」を参照してください。
+この手順では、セキュア エンクレーブによる Always Encrypted に必要な DC シリーズのハードウェア世代を使用して、新しい Azure SQL Database 論理サーバーと新しいデータベースを作成します。 詳細については、「[DC シリーズ](service-tiers-vcore.md#dc-series)」を参照してください。
 
-1. PowerShell コンソールを開き、Azure にサインインします。 必要に応じて、このチュートリアルに使用する[サブスクリプションに切り替えます](/powershell/azure/manage-subscriptions-azureps)。
+1. PowerShell コンソールを開き、必要なバージョンの Az をインポートします。
+
+  ```PowerShell
+  Import-Module "Az" -MinimumVersion "4.5.0"
+  ```
+  
+2. Azure にサインインします。 必要に応じて、このチュートリアルに使用する[サブスクリプションに切り替えます](/powershell/azure/manage-subscriptions-azureps)。
 
   ```PowerShell
   Connect-AzAccount
-  $subscriptionId = <your subscription ID>
-  Set-AzContext -Subscription $serverSubscriptionId
+  $subscriptionId = "<your subscription ID>"
+  Set-AzContext -Subscription $subscriptionId
   ```
 
-2. データベース サーバーを格納するリソース グループを作成します。 
-
-  ```powershell
-  $serverResourceGroupName = "<server resource group name>"
-  $serverLocation = "<Azure region that supports DC-series in SQL Database>"
-  New-AzResourceGroup -Name $serverResourceGroupName -Location $serverLocation 
-  ```
+3. 新しいリソース グループを作成する。 
 
   > [!IMPORTANT]
-  > リソース グループは、DC シリーズのハードウェア構成がサポートされているリージョンに作成する必要があります。 現在サポートされているリージョンの一覧については、[DC シリーズの提供状況](service-tiers-vcore.md#dc-series-1)に関するページを参照してください。
-
-3. データベース サーバーを作成します。 プロンプトが表示されたら、サーバー管理者名とパスワードを入力します。
+  > リソース グループは、DC シリーズのハードウェア世代と Microsoft Azure Attestation の両方をサポートするリージョン (場所) に作成する必要があります。 DC シリーズをサポートするリージョンの一覧については、[DC シリーズの提供リージョン](service-tiers-vcore.md#dc-series-1)に関する記述を参照してください。 Microsoft Azure Attestation が提供されるリージョンは、[こちら](https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation)でご覧いただけます。
 
   ```powershell
-  $serverName = "<server name>" 
-  New-AzSqlServer -ServerName $serverName -ResourceGroupName $serverResourceGroupName -Location $serverLocation
+  $resourceGroupName = "<your new resource group name>"
+  $location = "<Azure region supporting DC-series and Microsoft Azure Attestation>"
+  New-AzResourceGroup -Name $resourceGroupName -Location $location
   ```
 
-4. 指定された IP 範囲からのアクセスを許可するサーバー ファイアウォール規則を作成します。
+4. Azure SQL 論理サーバーを作成します。 プロンプトが表示されたら、サーバー管理者名とパスワードを入力します。 管理者の名前とパスワードを忘れないようにしてください。後でサーバーに接続するときに必要になります。
+
+  ```powershell
+  $serverName = "<your server name>" 
+  New-AzSqlServer -ServerName $serverName -ResourceGroupName $resourceGroupName -Location $location 
+  ```
+
+5. 指定された IP 範囲からのアクセスを許可するサーバー ファイアウォール規則を作成します。
   
   ```powershell
-  # The ip address range that you want to allow to access your server
   $startIp = "<start of IP range>"
   $endIp = "<end of IP range>"
   $serverFirewallRule = New-AzSqlServerFirewallRule -ResourceGroupName $resourceGroupName `
@@ -112,21 +117,11 @@ SSMS の必要な最小バージョンは 18.8 です。
     -FirewallRuleName "AllowedIPs" -StartIpAddress $startIp -EndIpAddress $endIp
   ```
 
-5. マネージド システム ID をサーバーに割り当てます。 これは、Microsoft Azure Attestation へのアクセスをサーバーに許可するために後で必要になります。
-
-  ```powershell
-  Set-AzSqlServer -ServerName $serverName -ResourceGroupName $serverResourceGroupName -AssignIdentity 
-  ```
-
-6. サーバーに割り当てられた ID のオブジェクト ID を取得します。 取得したオブジェクト ID を保存します。 この ID は後のセクションで必要になります。
-
-  > [!NOTE]
-  > 新しく割り当てられたマネージド システム ID が Azure Active Directory に反映されるまでに数秒かかることがあります。 以下のスクリプトで空の結果が返された場合は、再試行してください。
+6. マネージド システム ID をサーバーに割り当てます。 
 
   ```PowerShell
-  $server = Get-AzSqlServer -ServerName $serverName -ResourceGroupName $serverResourceGroupName 
+  $server = Set-AzSqlServer -ServerName $serverName -ResourceGroupName $resourceGroupName -AssignIdentity
   $serverObjectId = $server.Identity.PrincipalId
-  $serverObjectId
   ```
 
 7. DC シリーズ データベースを作成します。
@@ -136,12 +131,26 @@ SSMS の必要な最小バージョンは 18.8 です。
   $edition = "GeneralPurpose"
   $vCore = 2
   $generation = "DC"
-  New-AzSqlDatabase -ResourceGroupName $serverResourceGroupName -ServerName $serverName -DatabaseName $databaseName -Edition $edition -Vcore $vCore -ComputeGeneration $generation
+  New-AzSqlDatabase -ResourceGroupName $resourceGroupName `
+    -ServerName $serverName `
+    -DatabaseName $databaseName `
+    -Edition $edition `
+    -Vcore $vCore `
+    -ComputeGeneration $generation
   ```
 
-## <a name="step-2-configure-an-attestation-provider"></a>手順 2:構成証明プロバイダーを構成する
+8. サーバーとデータベースに関する情報を取得して保存します。 この情報は、このセクションの手順 4. で使用した管理者の名前とパスワードと共に、この後のセクションで必要になります。
 
-この手順では、Microsoft Azure Attestation で構成証明プロバイダーを作成して構成します。 これは、データベース サーバーのセキュリティで保護されたエンクレーブの構成証明を行うために必要となります。
+  ```powershell
+  Write-Host 
+  Write-Host "Fully qualified server name: $($server.FullyQualifiedDomainName)" 
+  Write-Host "Server Object Id: $serverObjectId"
+  Write-Host "Database name: $databaseName"
+  ```
+  
+## <a name="step-2-configure-an-attestation-provider"></a>手順 2:構成証明プロバイダーを構成する 
+
+この手順では、Microsoft Azure Attestation で構成証明プロバイダーを作成して構成します。 これは、データベースが使用するセキュア エンクレーブの構成証明を行うために必要となります。
 
 1. 次の構成証明ポリシーをコピーし、そのポリシーをテキストファイル (txt) に保存します。 次のポリシーについては、「[構成証明プロバイダーを作成して構成する](always-encrypted-enclaves-configure-attestation.md#create-and-configure-an-attestation-provider)」を参照してください。
 
@@ -157,60 +166,60 @@ SSMS の必要な最小バージョンは 18.8 です。
   };
   ```
 
-2. `Az.Accounts` と `Az.Attestation` の必要なバージョンをインポートします。  
+2. 必要なバージョンの `Az.Attestation` をインポートします。  
 
   ```powershell
-  Import-Module "Az.Accounts" -MinimumVersion "1.9.2"
   Import-Module "Az.Attestation" -MinimumVersion "0.1.8"
   ```
-
-3. 構成証明プロバイダー用のリソース グループを作成します。
-
-  ```powershell
-  $attestationLocation = $serverLocation
-  $attestationResourceGroupName = "<attestation provider resource group name>"
-  New-AzResourceGroup -Name $attestationResourceGroupName -Location $location  
-  ```
-
-4. 構成証明プロバイダーを作成します。 
+  
+3. 構成証明プロバイダーを作成します。 
 
   ```powershell
-  $attestationProviderName = "<attestation provider name>" 
-  New-AzAttestation -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName -Location $attestationLocation
+  $attestationProviderName = "<your attestation provider name>" 
+  New-AzAttestation -Name $attestationProviderName -ResourceGroupName $resourceGroupName -Location $location
   ```
 
-5. 構成証明ポリシーを構成します。
+4. 構成証明ポリシーを構成します。
   
   ```powershell
-  $policyFile = "<the pathname of the file from step 1 in this section"
+  $policyFile = "<the pathname of the file from step 1 in this section>"
   $teeType = "SgxEnclave"
   $policyFormat = "Text"
   $policy=Get-Content -path $policyFile -Raw
-  Set-AzAttestationPolicy -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName -Tee $teeType -Policy $policy -PolicyFormat  $policyFormat
+  Set-AzAttestationPolicy -Name $attestationProviderName `
+    -ResourceGroupName $resourceGroupName `
+    -Tee $teeType `
+    -Policy $policy `
+    -PolicyFormat  $policyFormat
   ```
 
-6. 作成した構成証明プロバイダーへのアクセスを Azure SQL 論理サーバーに許可します。 この手順では、前にサーバーに割り当てたマネージド サービス ID のオブジェクト ID を使用します。
+5. 作成した構成証明プロバイダーへのアクセスを Azure SQL 論理サーバーに許可します。 この手順では、前にサーバーに割り当てたマネージド サービス ID のオブジェクト ID を使用します。
 
   ```powershell
-  New-AzRoleAssignment -ObjectId $serverObjectId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName  
+  New-AzRoleAssignment -ObjectId $serverObjectId `
+    -RoleDefinitionName "Attestation Reader" `
+    -ResourceName $attestationProviderName `
+    -ResourceType "Microsoft.Attestation/attestationProviders" `
+    -ResourceGroupName $resourceGroupName  
   ```
 
-7. 構成証明 URL を取得します。
+6. SGX エンクレーブ用に構成した構成証明ポリシーを指す構成証明 URL を取得します。 この URL は後で必要になるので保存しておいてください。
 
   ```powershell
-  $attestationProvider = Get-AzAttestation -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName 
+  $attestationProvider = Get-AzAttestation -Name $attestationProviderName -ResourceGroupName $resourceGroupName 
   $attestationUrl = $attestationProvider.AttestUri + “/attest/SgxEnclave”
-  Write-Host "Your attestation URL is: " $attestationUrl 
+  Write-Host
+  Write-Host "Your attestation URL is: $attestationUrl"
   ```
-
-8.  SGX エンクレーブ用に構成した構成証明ポリシーを指す、取得した構成証明 URL を保存します。 この情報は後で必要になります。 この構成証明 URL は、`https://contososqlattestation.uks.attest.azure.net/attest/SgxEnclave` のようになります。
+  
+  この構成証明 URL は、`https://contososqlattestation.uks.attest.azure.net/attest/SgxEnclave` のようになります。
 
 ## <a name="step-3-populate-your-database"></a>手順 3: データベースを設定する
 
 この手順では、テーブルを作成し、後で暗号化してクエリを実行するデータを設定します。
 
 1. SSMS を開き、データベース接続で Always Encrypted を **有効にせずに**、作成した Azure SQL 論理サーバーの **ContosoHR** データベースに接続します。
-    1. **[サーバーに接続]** ダイアログで、サーバー名 (例: *myserver123.database.windows.net*) を指定し、先ほど構成したユーザー名とパスワードを入力します。
+    1. **[サーバーに接続]** ダイアログで、サーバーの完全修飾名 (例: *myserver123.database.windows.net*) を指定し、サーバーの作成時に指定した管理者のユーザー名とパスワードを入力します。
     2. **[オプション >>]** をクリックし、 **[接続プロパティ]** タブを選択します。(既定の master データベースではなく) 必ず **ContosoHR** データベースを選択します。 
     3. **[Always Encrypted]** タブを選択します。
     4. **[Always Encrypted を有効にする (列の暗号化)]** チェック ボックスがオンになって **いない** ことを確認します。
@@ -292,7 +301,7 @@ SSMS の必要な最小バージョンは 18.8 です。
 
 1. 新しい SSMS インスタンスを開き、データベース接続で Always Encrypted を **有効にして** データベースに接続します。
     1. SSMS の新しいインスタンスを開始します。
-    2. **[サーバーへの接続]** ダイアログで、サーバーの名前を指定し、認証方法を選択して、資格情報を指定します。
+    2. **[サーバーに接続]** ダイアログで、サーバーの完全修飾名 (例: *myserver123.database.windows.net*) を指定し、サーバーの作成時に指定した管理者のユーザー名とパスワードを入力します。
     3. **[オプション >>]** をクリックし、 **[接続プロパティ]** タブを選択します。(既定の master データベースではなく) 必ず **ContosoHR** データベースを選択します。 
     4. **[Always Encrypted]** タブを選択します。
     5. **[Always Encrypted を有効にする (列の暗号化)]** チェック ボックスがオンになっていることを確認します。

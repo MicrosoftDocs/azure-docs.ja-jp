@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と InsideView の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と InsideView の統合 | Microsoft Docs'
 description: このチュートリアルでは、Azure Active Directory と InsideView の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
 ms.openlocfilehash: b8f12b6d55cb11c0cfeda5331072127ea4a696bc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92460106"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-insideview"></a>チュートリアル:Azure Active Directory と InsideView の統合
+# <a name="tutorial-azure-active-directory-integration-with-insideview"></a>チュートリアル: Azure Active Directory と InsideView の統合
 
 このチュートリアルでは、InsideView と Azure Active Directory (Azure AD) を統合する方法について説明します。
 この統合には、次の利点があります。
@@ -60,7 +60,7 @@ Azure AD への InsideView の統合を設定するには、ギャラリーか�
 
     ![[新しいアプリケーション] を選択する](common/add-new-app.png)
 
-4. 検索ボックスに「 **InsideView** 」と入力します。 検索結果で **[InsideView]** を選択し、 **[追加]** を選択します。
+4. 検索ボックスに「**InsideView**」と入力します。 検索結果で **[InsideView]** を選択し、**[追加]** を選択します。
 
     ![[検索結果]](common/search-new-app.png)
 
@@ -84,7 +84,7 @@ InsideView に対する Azure AD シングル サインオンを構成および�
 
 InsideView に対する Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の InsideView アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の InsideView アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![[シングル サインオン] の選択](common/select-sso.png)
 
@@ -92,7 +92,7 @@ InsideView に対する Azure AD シングル サインオンを構成するに�
 
     ![シングル サインオン方式の選択](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **編集** アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**編集** アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
 
     ![[編集] アイコン](common/edit-urls.png)
 
@@ -125,7 +125,7 @@ InsideView に対する Azure AD シングル サインオンを構成するに�
 
 1. 新しい Web ブラウザー ウィンドウで、InsideView 企業サイトに管理者としてサインインします。
 
-1. ウィンドウ上部で **[Admin]\(管理\)** 、 **[SingleSignOn Settings]\(シングル サインオンの設定\)** 、 **[Add SAML]\(SAML の追加\)** の順に選択します。
+1. ウィンドウ上部で **[Admin]\(管理\)**、**[SingleSignOn Settings]\(シングル サインオンの設定\)**、**[Add SAML]\(SAML の追加\)** の順に選択します。
    
    ![SAML シングル サインオンの設定](./media/insideview-tutorial/ic794135.png "SAML シングル サインオンの設定")
 
@@ -139,13 +139,13 @@ InsideView に対する Azure AD シングル サインオンを構成するに�
 
     1. Azure portal からダウンロードした未加工の証明書を開きます。 証明書の内容をクリップボードにコピーしてから、その内容を **[STS Certificate]\(STS 証明書\)** ボックスに貼り付けます。
 
-    1. **[Crm User Id Mapping]\(Crm ユーザー ID マッピング\)** ボックスに、「 **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** 」と入力します。
+    1. **[Crm User Id Mapping]\(Crm ユーザー ID マッピング\)** ボックスに、「**`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`**」と入力します。
 
-    1. **[Crm Email Mapping]\(Crm メール マッピング\)** ボックスに、「 **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** 」と入力します。
+    1. **[Crm Email Mapping]\(Crm メール マッピング\)** ボックスに、「**`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`**」と入力します。
 
-    1. **[Crm First Name Mapping]\(Crm 名マッピング\)** ボックスに、「 **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** 」と入力します。
+    1. **[Crm First Name Mapping]\(Crm 名マッピング\)** ボックスに、「**`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`**」と入力します。
 
-    1. **[Crm lastName Mapping]\(Crm 姓マッピング\)** ボックスに、「 **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** 」と入力します。  
+    1. **[Crm lastName Mapping]\(Crm 姓マッピング\)** ボックスに、「**`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`**」と入力します。  
 
     1. **[保存]** を選択します。
 
@@ -165,9 +165,9 @@ InsideView に対する Azure AD シングル サインオンを構成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    1. **[名前]** ボックスに「 **BrittaSimon** 」と入力します。
+    1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    1. **[ユーザー名]** ボックスに「 **BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します (例: BrittaSimon@contoso.com)。
+    1. **[ユーザー名]** ボックスに「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します (例: BrittaSimon@contoso.com)。
 
     1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
 
@@ -177,11 +177,11 @@ InsideView に対する Azure AD シングル サインオンを構成するに�
 
 このセクションでは、Britta Simon に InsideView へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[InsideView]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[InsideView]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、 **[InsideView]** を選択します。
+2. アプリケーションの一覧で、**[InsideView]** を選択します。
 
     ![アプリケーションの一覧](common/all-applications.png)
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 89230b6aca9e225c28a1efd0b99476b35f4d8db0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f160948a06d8a3175158e0100345ee2a330048c
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439550"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634718"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>ファイルの整合性の監視 (FIM) を使用してベースラインを比較する
 
@@ -62,23 +62,22 @@ FIM ベースラインは、オペレーティング システムとサポート
 > [!NOTE]
 > さまざまなオペレーティング システムのバージョンでサポートされているレジストリ設定の詳細については、[グループ ポリシー設定リファレンスのスプレッドシート](https://www.microsoft.com/download/confirmation.aspx?id=25250)を参照してください。
 
-*レジストリのベースラインを監視するように FIM を構成するには、次の手順に従います。*
+レジストリのベースラインを監視するように FIM を構成するには、次の手順に従います。
 
-1. **[変更履歴用の Windows レジストリを追加する]** ウィンドウの **[Windows レジストリ キー]** テキスト ボックスに、レジストリ キーを入力します。
+1. **[変更履歴用の Windows レジストリを追加する]** ウィンドウの **[Windows レジストリ キー]** テキスト ボックスに、次のレジストリ キーを入力します。
 
-    <code>
-
+    ```
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
-    </code>
+    ```
 
-      ![レジストリに対する FIM を有効にする](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
+    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png" alt-text="レジストリに対する FIM を有効にする":::
 
 ## <a name="track-changes-to-windows-files"></a>Windows ファイルに対する変更の追跡
 
-1. **[Windows ファイル変更を追跡するための追加]** ウィンドウの **[パスの入力]** テキスト ボックスに、追跡するファイルが含まれているフォルダーを入力します。次の図の例では、**Contoso の Web アプリ**は **ContosWebApp** フォルダー構造内の D:\ ドライブにあります。  
+1. **[Windows ファイル変更を追跡するための追加]** ウィンドウの **[パスの入力]** テキスト ボックスに、追跡するファイルが含まれているフォルダーを入力します。次の図の例では、**Contoso の Web アプリ** は **ContosWebApp** フォルダー構造内の D:\ ドライブにあります。  
 1. 設定クラスの名前を入力し、再帰を有効にして、ワイルドカード (*) サフィックスで最上位のフォルダーを指定することで、カスタムの Windows ファイルのエントリを作成します。
 
-    ![ファイルに対する FIM を有効にする](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
+    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png" alt-text="ファイルに対する FIM を有効にする":::
 
 ## <a name="retrieve-change-data"></a>変更データの取得
 

@@ -1,44 +1,32 @@
 ---
 title: セキュリティ ポリシーの操作 | Microsoft Docs
 description: この記事では、Azure Security Center でセキュリティ ポリシーを操作する方法について説明します。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
-ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 19128f0372f9a5bda0d16155167a507eccaf436a
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 6ecedc20cf6924a82b6b4640d3caa75bc5958de0
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986610"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101326"
 ---
 # <a name="manage-security-policies"></a>セキュリティ ポリシーの管理
 
 この記事では、セキュリティ ポリシーの構成方法と、それの Security Center での表示方法について説明します。 
 
-## <a name="introduction-to-security-policies"></a>セキュリティ ポリシーの概要
+## <a name="who-can-edit-security-policies"></a>セキュリティ ポリシーを編集できるユーザーは誰ですか。
 
-セキュリティ ポリシーは、ワークロードの必要な構成を定義し、会社や規制当局のセキュリティ要件に確実に準拠できるようにします。
+REST API 経由または Windows PowerShell を使用して、Azure Policy ポータルからセキュリティ ポリシーを編集できます。
 
-Azure Security Center では、選択したポリシーに基づいてセキュリティに関する推奨事項が作成されます。 Security Center のポリシーは、Azure Policy で作成されたポリシー イニシアティブに基づいています。 [Azure Policy](../governance/policy/overview.md) を使用して、ポリシーを管理したり、管理グループや複数のサブスクリプションでポリシーを設定したりできます。
+Security Center では Azure ロールベースのアクセス制御 (Azure RBAC) が使用されています。RBAC が提供する組み込みのロールは、Azure ユーザー、グループ、およびサービスに割り当てることができます。 ユーザーが Security Center を開くと、アクセスできるリソースに関する情報のみが表示されます。 これは、リソースのサブスクリプションに対して、"*所有者*"、"*共同作成者*"、または "*閲覧者*" のロールがユーザーに割り当てられていることを意味します。 次の 2 つの固有の Security Center ロールもあります。
 
-Security Center では、セキュリティ ポリシーを操作するための次のオプションが提供されます。
-
-* **組み込みの既定のポリシーの表示と編集** - Security Center を有効にすると、"Azure セキュリティ ベンチマーク" という名前のイニシアチブが、Security Center のすべての登録済みサブスクリプションに自動的に割り当てられます。 このイニシアティブをカスタマイズするために、イニシアティブ内の個々のポリシーを有効または無効にすることができます。 [組み込みのセキュリティ ポリシー](./policy-reference.md)の一覧を参照して、すぐに使用できるオプションを確認してください。
-
-* **独自のカスタム ポリシーの追加** - サブスクリプションに適用されているセキュリティ イニシアティブをカスタマイズする場合は、Security Center で行うことができます。 作成したポリシーにマシンが従っていない場合は、推奨事項が提供されます。 カスタム ポリシーを作成して割り当てる手順については、[カスタム セキュリティ ポリシーの使用](custom-security-policies.md)に関する記事をご覧ください。
-
-* **規制コンプライアンス ポリシーの追加** - Security Center の規制コンプライアンス ダッシュボードには、特定の標準または規制 (Azure CIS、NIST SP 800-53 R4、SWIFT CSP CSCF-v2020 など) のコンテキストにおける環境内のすべての評価の状態が表示されます。 詳細については、[規制コンプライアンスの向上](security-center-compliance-dashboard.md)に関する記事をご覧ください。
-
+- **セキュリティ閲覧者**: 推奨事項、アラート、ポリシー、正常性などの Security Center 項目を表示する権利を持っています。 変更は行えません。
+- **セキュリティ管理者**:*セキュリティ閲覧者* と同じ表示権利を持っています。 セキュリティポリシーを更新し、アラートを無視することもできます。
 
 ## <a name="manage-your-security-policies"></a>セキュリティ ポリシーの管理
 
@@ -59,14 +47,13 @@ Security Center でセキュリティ ポリシーを表示するには:
     > [!NOTE]
     > 既定のポリシーの横に "MG 継承済み" というラベルがある場合、そのポリシーが管理グループに割り当てられており、表示しているサブスクリプションに継承されていることを意味します。
 
-
 1. このページで使用可能なオプションから選択します。
 
-    1. 業界のポリシーを使用するには、 **[標準をさらに追加]** を選択します。 詳細については、[動的コンプライアンス パッケージへの更新](update-regulatory-compliance-packages.md)に関する記事をご覧ください。
+    1. 業界標準を使用するには、 **[標準をさらに追加]** を選択します。 詳細については、「[規制コンプライアンス ダッシュボードで標準セットをカスタイマイズする](update-regulatory-compliance-packages.md)」を参照してください。
 
-    1. カスタム イニシアティブを割り当てて管理するには、 **[カスタム イニシアティブの追加]** を選択します。 詳細については、[カスタム セキュリティ ポリシーの使用](custom-security-policies.md)に関する記事をご覧ください。
+    1. カスタム イニシアティブを割り当てて管理するには、 **[カスタム イニシアティブの追加]** を選択します。 詳細については、[カスタム セキュリティ イニシアチブおよびポリシーの使用](custom-security-policies.md)に関する記事をご覧ください。
 
-    1. 既定のポリシーを表示して編集するには、 **[有効なポリシーの表示]** を選択し、下記の説明に従って操作を進めます。 
+    1. 既定のイニシアチブを表示して編集するには、 **[有効なポリシーの表示]** を選択し、下記の説明に従って操作を進めます。 
 
         :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="[有効なポリシー] 画面":::
 
@@ -80,16 +67,6 @@ Security Center でセキュリティ ポリシーを表示するには:
 
        > [!NOTE]
        > 割り当てられているポリシーを確認すると、複数の割り当てが表示され、各割り当てのそれぞれの構成を参照できます。
-
-
-## <a name="who-can-edit-security-policies"></a>セキュリティ ポリシーを編集できるユーザーは誰ですか。
-
-REST API 経由または Windows PowerShell を使用して、Azure Policy ポータルからセキュリティ ポリシーを編集できます。
-
-Security Center では Azure ロールベースのアクセス制御 (Azure RBAC) が使用されています。RBAC が提供する組み込みのロールは、Azure ユーザー、グループ、およびサービスに割り当てることができます。 ユーザーが Security Center を開くと、アクセスできるリソースに関する情報のみが表示されます。 これは、リソースのサブスクリプションに対して、"*所有者*"、"*共同作成者*"、または "*閲覧者*" のロールがユーザーに割り当てられていることを意味します。 次の 2 つの固有の Security Center ロールもあります。
-
-- **セキュリティ閲覧者**: 推奨事項、アラート、ポリシー、正常性などの Security Center 項目を表示する権利を持っています。 変更は行えません。
-- **セキュリティ管理者**:*セキュリティ閲覧者* と同じ表示権利を持っています。 セキュリティポリシーを更新し、アラートを無視することもできます。
 
 
 ## <a name="disable-security-policies-and-disable-recommendations"></a>セキュリティ ポリシーと推奨事項の無効化
@@ -129,7 +106,7 @@ Security Center の規制コンプライアンス ツールで適用した規制
 ## <a name="next-steps"></a>次のステップ
 このページでは、セキュリティ ポリシーについて説明しました。 関連情報については、次のページを参照してください。
 
-- [PowerShell を使用してポリシーを設定する方法を確認する](../governance/policy/assign-policy-powershell.md) - 
-- [Azure Policy でセキュリティ ポリシーを編集する方法を確認する](../governance/policy/tutorials/create-and-manage.md) - 
+- [PowerShell を使用してポリシーを設定する方法を確認する](../governance/policy/assign-policy-powershell.md)
+- [Azure Policy でセキュリティ ポリシーを編集する方法を確認する](../governance/policy/tutorials/create-and-manage.md)
 - [Azure Policy を使用して、サブスクリプションまたは管理グループにポリシーを設定する方法を確認する](../governance/policy/overview.md)
 - [管理グループ内のすべてのサブスクリプションで Security Center を有効にする方法を確認する](onboard-management-group.md)

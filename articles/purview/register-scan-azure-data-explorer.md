@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/9/2020
 ms.openlocfilehash: 7adc7f568fb82692f2c96f610575076e397bd99c
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98896114"
 ---
 # <a name="register-and-scan-azure-data-explorer"></a>Azure Data Explorer の登録とスキャン
@@ -24,7 +24,7 @@ Azure Data Explorer では、フル スキャンと増分スキャンがサポ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[Azure Purview アカウントの作成](create-catalog-portal.md)に関するクイックスタートを参照してください。
+- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[クイック スタート: Azure Purview アカウントの作成](create-catalog-portal.md)に関する記事を参照してください。
 - Azure Purview データ ソース管理者である必要があります
 
 ## <a name="setting-up-authentication-for-a-scan"></a>スキャンでの認証の設定
@@ -51,12 +51,12 @@ Azure Data Explorer の認証を設定する方法は 1 つだけです。
 サービス プリンシパルのアプリケーション ID とシークレットを取得する必要があります。
 
 1. [Azure portal](https://portal.azure.com) でサービス プリンシパルに移動します
-1. **[アプリケーション (クライアント) ID]** の値を **[概要]** から、および **[クライアント シークレット]** の値を **[証明書とシークレット]** からコピーします。
+1. **[概要]** から **[アプリケーション (クライアント) ID]** 、 **[証明書とシークレット]** から **[クライアント シークレット]** の値をコピーします。
 1. お使いのキー コンテナーに移動する
-1. **[設定] > [シークレット]** を選択します
+1. **[設定] > [シークレット]** の順に選択します。
 1. **[生成/インポート]** を選択し、サービス プリンシパルの **クライアント シークレット** として任意の **名前** と **値** を入力します
-1. **[作成]** を選択して完了します
-1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります
+1. **[作成]** を選択して完了します。
+1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
 1. 最後に、サービス プリンシパルを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
 
 #### <a name="granting-the-service-principal-access-to-your-azure-data-explorer-instance"></a>サービス プリンシパルに Azure Data Explorer インスタンスへのアクセス権を付与する
@@ -72,7 +72,7 @@ Azure Data Explorer の認証を設定する方法は 1 つだけです。
 新しい Azure Data Explorer (Kusto) アカウントをデータ カタログに登録するには、次の手順を実行します。
 
 1. Purview アカウントに移動します
-1. 左側のナビゲーションで **[ソース]** を選択します
+1. 左側のナビゲーションで **[ソース]** を選択します。
 1. **[登録]** を選択します
 1. **[ソースの登録]** で、 **[Azure Data Explorer]** を選択します
 1. **[続行]** を選択します
@@ -94,4 +94,4 @@ Azure Data Explorer の認証を設定する方法は 1 つだけです。
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Purview データ カタログを参照する](how-to-browse-catalog.md)
-- [Azure Purview Data Catalog を検索する](how-to-search-catalog.md)
+- [Azure Purview データ カタログを検索する](how-to-search-catalog.md)

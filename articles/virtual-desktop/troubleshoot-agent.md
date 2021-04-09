@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 1500a635d5177ed8899cdc3f1364e57a8525892c
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: b0fc5bd16aaa455ce3f6d634ce35e9a389a6f13b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099950"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732583"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Windows Virtual Desktop エージェントに関する一般的な問題をトラブルシューティングする
 
@@ -21,6 +21,14 @@ Windows Virtual Desktop エージェントでは、次の複数の要因のた�
    - セッション ホストへの接続を中断させる、エージェントのインストール中のインストールに関する問題。
 
 この記事では、これらの一般的なシナリオの解決策と、接続に関する問題に対処する方法について説明します。
+
+>[!NOTE]
+>セッションの接続性と Windows Virtual Desktop エージェントに関連する問題のトラブルシューティングについては、 **[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** でイベント ログを確認することをお勧めします。 問題を特定するために、次のいずれかのソースがあるイベントを探してください。
+>
+>- WVD-Agent
+>- WVD-Agent-Updater
+>- RDAgentBootLoader
+>- MsiInstaller
 
 ## <a name="error-the-rdagentbootloader-andor-remote-desktop-agent-loader-has-stopped-running"></a>エラー:RDAgentBootLoader またはリモート デスクトップ エージェント ローダー、あるいはその両方が動作を停止した
 
@@ -63,9 +71,9 @@ Windows Virtual Desktop エージェントでは、次の複数の要因のた�
    > [!div class="mx-imgBorder"]
    > ![IsRegistered 1 のスクリーンショット](media/isregistered-registry.png)
 
-## <a name="error-agent-cannot-connect-to-broker-with-invalid_form-or-not_found-url"></a>エラー:エージェントが INVALID_FORM または NOT_FOUND. URL でブローカーに接続できない URL
+## <a name="error-agent-cannot-connect-to-broker-with-invalid_form"></a>エラー: エージェントを INVALID_FORM ブローカーに接続できない
 
-**[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** の順に移動します。 ID 3277 のイベント (説明では **INVALID_FORM** または **NOT_FOUND. URL** と示されます) が表示されている場合は、エージェントとブローカーの間の通信で何かの問題が発生しました。 エージェントはブローカーに接続できないため、特定の URL に到達できません。 これは、ファイアウォールまたは DNS の設定が原因である可能性があります。
+**[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** の順に移動します。 ID 3277 のイベント (説明では "INVALID_FORM" と示されます) が表示されている場合は、エージェントとブローカーの間の通信で何かの問題が発生しました。 特定のファイアウォールまたは DNS の設定が原因で、エージェントをブローカーに接続できないか、特定の URL へのアクセスを有効にできません。
 
 この問題を解決するには、BrokerURI と BrokerURIGlobal に到達できることを確認します。
 1. レジストリ エディターを開きます。 
@@ -100,13 +108,43 @@ Windows Virtual Desktop エージェントでは、次の複数の要因のた�
 8. ネットワークによってこれらの URL がブロックされている場合は、必要な URL のブロックを解除する必要があります。 詳細については、「[必要な URL リスト](safe-url-list.md)」を参照してください。
 9. これで問題が解決されない場合は、エージェントからブローカーへの接続をブロックする、暗号化されたグループ ポリシーが存在しないことを確認します。 Windows Virtual Desktop では、[Azure Front Door](../frontdoor/front-door-faq.MD#what-are-the-current-cipher-suites-supported-by-azure-front-door) と同じ TLS 1.2 暗号化を使用します。 詳細については、「[接続のセキュリティ](network-connectivity.md#connection-security)」を参照してください。
 
-## <a name="error-3703-or-3019"></a>エラー:3703 または 3019
+## <a name="error-3703"></a>エラー: 3703
 
-**[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** の順に移動します。 ID 3703 のイベント (説明では **RD Gateway Url: is not accessible** (RD ゲートウェイ URL にアクセスできません) と示されます) または ID 3019 の任意のイベントが表示されている場合は、エージェントがゲートウェイ URL または Web ソケット トランスポート URL に到達できません。 セッション ホストに正常に接続し、これらのエンドポイントへのネットワーク トラフィックを許可して制限をバイパスするには、「[必要な URL リスト](safe-url-list.md)」にある URL のブロックを解除する必要があります。 また、ファイアウォールまたはプロキシの設定によってこれらの URL がブロックされていないことも確認してください。 これらの URL のブロックの解除は、Windows Virtual Desktop を使用するために必要です。
+**[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** の順に移動します。 ID 3703 のイベント (説明では "RD Gateway Url: is not accessible" (RD ゲートウェイ URL にアクセスできません) と示されます) が表示されている場合は、エージェントのゲートウェイ URL へのアクセスを有効にできません。 セッション ホストに正常に接続し、これらのエンドポイントへのネットワーク トラフィックを許可して制限をバイパスするには、「[必要な URL リスト](safe-url-list.md)」にある URL のブロックを解除する必要があります。 また、ファイアウォールまたはプロキシの設定によってこれらの URL がブロックされていないことも確認してください。 これらの URL のブロックの解除は、Windows Virtual Desktop を使用するために必要です。
 
 この問題を解決するには、ファイアウォールまたは DNS の設定によってこれらの URL がブロックされていないことを確認します。
 1. [Azure Firewall を使用して Windows Virtual Desktop のデプロイを保護](../firewall/protect-windows-virtual-desktop.md)します。
 2. [Azure Firewall の DNS 設定](../firewall/dns-settings.md)を構成します。
+
+## <a name="error-3019"></a>エラー: 3019
+
+**[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** の順に移動します。 ID 3019 のイベントが表示されている場合は、エージェントの Web ソケット トランスポートの URL へのアクセスを有効にできないことを意味します。 セッション ホストに正常に接続し、ネットワーク トラフィックを許可してこれらの制限をバイパスするには、「[必要な URL リスト](safe-url-list.md)」にリストされている URL のブロックを解除する必要があります。 Azure ネットワーク チームと協力して、ファイアウォール、プロキシ、DNS 設定でそれらの URL がブロックされていないことを確認してください。 また、ネットワーク トレース ログを確認して、Windows Virtual Desktop サービスがブロックされている場所を特定することもできます。 この特定の問題に対するサポート リクエストを開く場合は、必ずネットワーク トレース ログをリクエストに添付してください。
+
+## <a name="error-installationhealthcheckfailedexception"></a>エラー: InstallationHealthCheckFailedException
+
+**[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** の順に移動します。 ID 3277 のイベント (説明では "InstallationHealthCheckFailedException" と示されます) が表示されている場合は、ターミナル サーバーによってスタック リスナーのレジストリ キーが切り替えられたため、そのスタック リスナーが機能していないことを意味します。
+
+この問題を解決するには、次の手順を実行します。
+1. [スタック リスナーが動作](#error-stack-listener-isnt-working-on-windows-10-2004-vm)していることを確認します。
+2. スタック リスナーが動作していない場合は、[手動でスタック コンポーネントをアンインストールして再インストール](#error-vms-are-stuck-in-unavailable-or-upgrading-state)してください。
+
+## <a name="error-endpoint_not_found"></a>エラー: ENDPOINT_NOT_FOUND
+
+**[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** の順に移動します。 ID 3277 のイベント (説明では "ENDPOINT_NOT_FOUND" と示されます) が表示されている場合は、ブローカーで接続を確立するエンドポイントを見つけることができなかったことを意味します。 この接続の問題は、次のいずれか 1 つが原因で発生することがあります。
+
+- ホスト プールに VM がない
+- ホスト プール内の VM がアクティブでない
+- ホスト プール内のすべての VM がセッションの上限を超えている
+- ホスト プール内のどの VM でも、エージェント サービスが実行されていない
+
+この問題を解決するには、次の手順を実行します。
+
+1. VM の電源が入っており、かつホスト プールから削除されていないことを確認します。
+2. VM がセッションの上限を超えていないことを確認します。
+3. [エージェント サービスが実行](#error-the-rdagentbootloader-andor-remote-desktop-agent-loader-has-stopped-running)されていて、かつ[スタック リスナーが動作](#error-stack-listener-isnt-working-on-windows-10-2004-vm)していることを確認します。
+4. [エージェントをブローカーに接続できる](#error-agent-cannot-connect-to-broker-with-invalid_form)ことを確認します。
+5. [VM に有効な登録トークンが](#error-invalid_registration_token)あることを確認します。
+6. [VM 登録トークンの有効期限が切れていない](faq.md#how-often-should-i-turn-my-vms-on-to-prevent-registration-issues)ことを確認します。 
 
 ## <a name="error-installmsiexception"></a>エラー:InstallMsiException
 
@@ -176,11 +214,17 @@ Windows Virtual Desktop エージェントでは、次の複数の要因のた�
 8. **[ClusterSettings]** で、**SessionDirectoryListener** を見つけ、そのデータ値が **rdp-sxs...** であることを確認します。
 9. **SessionDirectoryListener** が **rdp-sxs...** に設定されていない場合は、[エージェントとブート ローダーのアンインストール](#step-1-uninstall-all-agent-boot-loader-and-stack-component-programs)のセクションの手順に従って、最初にエージェント、ブート ローダー、スタック コンポーネントをアンインストールし、次に [エージェントとブート ローダーを再インストールする](#step-4-reinstall-the-agent-and-boot-loader)必要があります。 これにより、サイドバイサイド スタックが再インストールされます。
 
-## <a name="error-users-keep-getting-disconnected-from-session-hosts"></a>エラー:ユーザーがセッション ホストから切断されたままになる
+## <a name="error-heartbeat-issue-where-users-keep-getting-disconnected-from-session-hosts"></a>エラー: ユーザーがセッション ホストから切断されたままになるハートビートの問題
 
-**[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** の順に移動します。 ID 0 のイベント (説明では **CheckSessionHostDomainIsReachableAsync** と示されます) が表示されているか、またはユーザーがそのセッション ホストから切断されたままになる場合は、サーバーが Windows Virtual Desktop サービスからハートビートを受信していません。
+サーバーで Windows Virtual Desktop サービスからのハートビートが収集されていない場合は、ハートビートのしきい値を変更する必要があります。 次のシナリオが 1 つ以上当てはまる場合は、このセクションの手順に従ってください。
 
-この問題を解決するには、ハートビートのしきい値を変更します。
+- **CheckSessionHostDomainIsReachableAsync** エラーを受け取っている
+- **ConnectionBrokenMissedHeartbeatThresholdExceeded** エラーを受け取っている
+- **ConnectionEstablished:UnexpectedNetworkDisconnect** エラーを受け取っている
+- ユーザー クライアントが切断された状態のままである
+- ユーザーがそれらのセッション ホストから切断されたままである
+
+ハートビートのしきい値を変更するには、次のようにします。
 1. 管理者としてコマンド プロンプトを開きます。
 2. **qwinsta** コマンドを入力して実行します。
 3. **rdp-tcp** と **rdp-sxs** の 2 つのスタック コンポーネントが表示されます。 
@@ -194,6 +238,9 @@ Windows Virtual Desktop エージェントでは、次の複数の要因のた�
    - HeartbeatDropCount: 60 
 8. VM を再起動する。
 
+>[!NOTE]
+>ハートビートのしきい値を変更しても問題が解決しない場合は、Azure ネットワーク チームに問い合わせる必要がある潜在的なネットワークの問題が発生している可能性があります。
+
 ## <a name="error-downloadmsiexception"></a>エラー:DownloadMsiException
 
 **[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** の順に移動します。 ID 3277 のイベント (説明では **DownloadMsiException** と示されます) が表示されている場合は、ディスク上に RDAgent 用の十分な領域がありません。
@@ -201,6 +248,11 @@ Windows Virtual Desktop エージェントでは、次の複数の要因のた�
 この問題を解決するには、次を実行してディスク上の領域を確保します。
    - ユーザーが使用しなくなったファイルを削除する
    - VM のストレージ容量を増やす
+
+## <a name="error-agent-fails-to-update-with-missingmethodexception"></a>エラー: MissingMethodException によりエージェントを更新できない
+
+**[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** の順に移動します。 ID 3389 のイベント (説明では "MissingMethodException: Method not found" (MissingMethodException: メソッドが見つからない) と示されます) が表示されている場合は、Windows Virtual Desktop エージェントが正常に更新されず、以前のバージョンに戻されていることを意味します。 これは、VM に現在インストールされている .NET Framework のバージョン番号が 4.7.2 よりも低いことが原因である可能性があります。 この問題を解決するには、[.NET Framework のドキュメント](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2)に記載されているインストール手順に従って、.NET をバージョン 4.7.2 以降にアップグレードする必要があります。
+
 
 ## <a name="error-vms-are-stuck-in-unavailable-or-upgrading-state"></a>エラー:VM が [使用不可] または [アップグレード中] 状態でスタックしている
 
@@ -210,7 +262,7 @@ Windows Virtual Desktop エージェントでは、次の複数の要因のた�
 Get-AzWvdSessionHost -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> | Select-Object *
 ```
 
-ホスト プール内の 1 つまたは複数のセッション ホストに対して表示されている状態が常に **[使用不可]** または **[アップグレード中]** である場合は、エージェントまたはスタックのインストールが失敗している可能性があります。
+ホスト プール内の 1 つまたは複数のセッション ホストに対して表示されている状態が常に "使用不可" または "アップグレード中" である場合は、エージェントやスタックが正しくインストールされなかった可能性があります。
 
 この問題を解決するには、サイドバイサイド スタックを再インストールします。
 1. コマンド プロンプトを管理者として開きます。
@@ -253,7 +305,7 @@ VM の名前が既に登録されており、重複している可能性があ�
 この問題を解決するには、次の手順を実行します。
 1. 「[ホスト プールからセッション ホストを削除する](#step-2-remove-the-session-host-from-the-host-pool)」セクションの手順に従います。
 2. [別の VM を作成](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal)します。 この VM には一意の名前を選択するようにしてください。
-3. Azure portal (https://portal.azure.com) に移動し、VM が存在していたホスト プールの **[概要]** ページを開きます。 
+3. [Azure portal](https://portal.azure.com) に移動し、VM が存在していたホスト プールの **[概要]** ページを開きます。 
 4. **[セッション ホスト]** タブを開き、すべてのセッション ホストがそのホスト プール内にあることを確認します。
 5. セッション ホストの状態が **[使用可能]** と表示されるまで 5 ～ 10 分待ちます。
 
@@ -269,6 +321,7 @@ VM の名前が既に登録されており、重複している可能性があ�
 - VM がセッション ホストの一覧に表示されていない
 - [サービス] ウィンドウに **[リモート デスクトップ エージェント ローダー]** が表示されない
 - タスク マネージャーに **RdAgentBootLoader** コンポーネントが表示されない
+- カスタム イメージ VM で **接続ブローカーで設定を検証できなかった** エラーを受け取っている
 - この記事の手順によって問題が解決されなかった
 
 ### <a name="step-1-uninstall-all-agent-boot-loader-and-stack-component-programs"></a>手順 1:すべてのエージェント、ブート ローダー、スタック コンポーネント プログラムをアンインストールする
@@ -319,12 +372,12 @@ VM をホスト プールとサービスに再登録するために使用され�
 ### <a name="step-4-reinstall-the-agent-and-boot-loader"></a>手順 4:エージェントとブート ローダーを再インストールする
 
 エージェントとブート ローダーの最新バージョンを再インストールすると、サイドバイサイド スタックと Geneva 監視エージェントも自動的にインストールされます。 エージェントとブート ローダーを再インストールするには、次の手順を実行します。
-1. 管理者として VM にサインインし、[仮想マシンの登録](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)に関するページの手順に従って、**Windows Virtual Desktop エージェント** と **Windows Virtual Desktop エージェント ブートローダー** をダウンロードします。
+1. 管理者として VM にサインインし、VM が実行されている Windows のバージョンに応じて、適切なバージョンのエージェント インストーラーをデプロイに使用します。 Windows 10 の VM がある場合は、[仮想マシンの登録](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)に関するページの手順に従って、**Windows Virtual Desktop エージェント** と **Windows Virtual Desktop エージェント ブートローダー** をダウンロードします。 Windows 7 の VM がある場合は、[仮想マシンの登録](deploy-windows-7-virtual-machine.md#configure-a-windows-7-virtual-machine)に関するページの手順 13 と 14 に従って、**Windows Virtual Desktop エージェント** と **Windows Virtual Desktop エージェント マネージャー** をダウンロードします。
 
    > [!div class="mx-imgBorder"]
    > ![エージェントとブートローダーのダウンロード ページのスクリーンショット](media/download-agent.png)
 
-2. ダウンロードしたエージェントおよびブート ローダー インストーラーを右クリックします。
+2. ダウンロードしたエージェントとブート ローダーのインストーラーを右クリックします。
 3. **[プロパティ]** を選択します。
 4. **[Unblock]\(ブロック解除\)** を選択します。
 5. **[OK]** を選択します。

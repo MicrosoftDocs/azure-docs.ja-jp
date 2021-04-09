@@ -4,10 +4,10 @@ description: この記事では、Azure VMware Solution を使用して仮想マ
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 688d91bc181e1479f5090a10af4b3b262d7ddb7f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92779613"
 ---
 # <a name="complete-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Azure VMware Solution を使用して仮想マシンのディザスター リカバリーを完了する
@@ -38,7 +38,7 @@ VMware HCX には、レプリケーション ポリシーのきめ細かい制�
 
 ## <a name="protect-vms"></a>VM の保護
 
-1. ソース サイトで **vSphere クライアント** にログインし、 **HCX プラグイン** にアクセスします。
+1. ソース サイトで **vSphere クライアント** にログインし、**HCX プラグイン** にアクセスします。
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/hcx-vsphere.png" alt-text="vSphere の HCX オプション" border="true":::
 
@@ -50,7 +50,7 @@ VMware HCX には、レプリケーション ポリシーのきめ細かい制�
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machines.png" alt-text="VM の保護のウィンドウ" border="true":::
 
-1. 必要に応じて、 **既定のレプリケーション** オプションを選択します。
+1. 必要に応じて、**既定のレプリケーション** オプションを選択します。
 
    - **Enable Compression (圧縮を有効にする):** 低スループットのシナリオにお勧めします。
 
@@ -111,7 +111,7 @@ VMware HCX には、レプリケーション ポリシーのきめ細かい制�
 
 ## <a name="recover-vms"></a>VM の復旧
 
-1. Azure VMware Solution のプライベート クラウドであるリモート サイトで **vSphere クライアント** にログインし、 **HCX プラグイン** にアクセスします。
+1. Azure VMware Solution のプライベート クラウドであるリモート サイトで **vSphere クライアント** にログインし、**HCX プラグイン** にアクセスします。
 
    復旧シナリオでは、VM のグループがこの例に使用されます。
 
@@ -127,7 +127,7 @@ VMware HCX には、レプリケーション ポリシーのきめ細かい制�
 
 ## <a name="complete-a-reverse-replication-on-vms"></a>VM でのレプリケーションの反転の完了
 
-1. Azure VMware Solution のプライベート クラウドで **vSphere クライアント** にログインし、 **HCX プラグイン** にアクセスします。
+1. Azure VMware Solution のプライベート クラウドで **vSphere クライアント** にログインし、**HCX プラグイン** にアクセスします。
    
    >[!NOTE]
    > レプリケーションの反転を開始する前に、ソース サイトで元の VM の電源がオフになっていることを確認します。 VM の電源がオフになっていないと操作は失敗します。

@@ -4,10 +4,10 @@ description: Recovery Services コンテナー内のバックアップされた 
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.openlocfilehash: a025de7bfb9db037b2008d69be7782feabb482f3
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94562323"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Azure CLI を使用して Azure ファイル共有を復元する

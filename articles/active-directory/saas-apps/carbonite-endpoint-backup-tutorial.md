@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.openlocfilehash: ff19275270e5b6572fb7d637b88c4736a3aa6ea0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456485"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>チュートリアル:Carbonite Endpoint Backup と Azure Active Directory の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Carbonite Endpoint Backup では、 **SP および IDP** で開始される SSO がサポートされます
+* Carbonite Endpoint Backup では、**SP および IDP** で開始される SSO がサポートされます
 
 ## <a name="adding-carbonite-endpoint-backup-from-the-gallery"></a>ギャラリーからの Carbonite Endpoint Backup の追加
 
@@ -49,7 +49,7 @@ Azure AD への Carbonite Endpoint Backup の統合を構成するには、ギ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Carbonite Endpoint Backup** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Carbonite Endpoint Backup**」と入力します。
 1. 結果ウィンドウで **[Carbonite Endpoint Backup]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -117,7 +117,7 @@ Carbonite Endpoint Backup で Azure AD SSO を構成してテストするには�
 
 ### <a name="configure-carbonite-endpoint-backup-sso"></a>Carbonite Endpoint Backup SSO の構成
 
-1. Carbonite Endpoint Backup 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして、 **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
+1. Carbonite Endpoint Backup 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして、**My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 

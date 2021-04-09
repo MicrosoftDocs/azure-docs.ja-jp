@@ -12,10 +12,10 @@ ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: dc9123735ef65bec89e99a14d25cba881be306fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91297472"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Azure Database Migration Service を使用して移行アクティビティを監視する
@@ -92,7 +92,7 @@ ms.locfileid: "91297472"
       <td>リンクをクリックすると、エラーの詳細が表示されます。</td>
     </tr>
     <tr>
-      <td rowspan="1" class="duration"><strong>Duration</strong></td>
+      <td rowspan="1" class="duration"><strong>期間</strong></td>
       <td>該当なし</td>
       <td>移行アクティビティが初期化されてから移行が完了するまで、または移行が失敗するまでの合計時間。</td>
     </tr>
@@ -132,7 +132,7 @@ ms.locfileid: "91297472"
 | フィールド名        | 説明       |
 | ------------- | ------------- |
 | **状態 - 同期中**      | 継続的同期が実行されています。 |
-| **挿入**      | ターゲットに適用された行に含まれている CDC 挿入の数。      |
+| **[挿入]**      | ターゲットに適用された行に含まれている CDC 挿入の数。      |
 | **アップデート** | ターゲットに適用された行に含まれている CDC 更新の数。      |
 | **削除**      | ターゲットに適用された行に含まれている CDC 削除の数。 |
 | **適用の合計**      | ターゲットに適用された行に含まれている CDC の更新、挿入、削除の総数。 |

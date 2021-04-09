@@ -1,24 +1,14 @@
 ---
 title: Linux C エージェントをインストールおよびデプロイする
 description: Defender for IoT の C ベースのセキュリティ エージェントを Linux にインストールおよびデプロイする方法について説明します
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/23/2019
-ms.author: mlottner
-ms.openlocfilehash: 6d3f96ed60ca784402b6d24eea7234f37c4fb959
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 6f59db7ff24412c66a6a4898b14272ea9540fdd2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449783"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104778816"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>Linux 用の Defender for IoT の C ベースのセキュリティ エージェントをデプロイする
 
@@ -35,7 +25,7 @@ ms.locfileid: "102449783"
 
 1. セキュリティ エージェントをデプロイするには、インストール先のマシンでのローカル管理者権限が必要です (sudo)。
 
-1. デバイスの[セキュリティ モジュールを作成](quickstart-create-security-twin.md)します。
+1. デバイスの [Defender for IoT マイクロ エージェントを作成](quickstart-create-security-twin.md)します。
 
 ## <a name="installation"></a>インストール
 

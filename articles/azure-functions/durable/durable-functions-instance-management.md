@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 16fecf5ce0d4551125ded4ba05fcbc41530efaf1
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 7329962d547fcb0635e3a9af3d80e562da59f7f2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430566"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103199787"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Azure における Durable Functions でのインスタンスの管理
 
@@ -202,6 +202,9 @@ func durable start-new --function-name HelloWorld --input @counter-data.json --t
   * **[失敗]** : インスタンスがエラーで失敗しました。
   * **[中止]** : インスタンスが突然停止されました。
 * **履歴**: オーケストレーションの実行履歴。 このフィールドにデータが設定されるのは、`showHistory` を `true` に設定した場合のみです。
+
+> [!NOTE]
+> すべてのスケジュールされたタスクが完了し、_かつ_ オーケストレーターが返されるまで、オーケストレーターは `Completed` とマークされません。 つまり、オーケストレーターが `Completed` とマークされるためには、`return` ステートメントに到達するだけでは不十分です。 これは、`WhenAny` が使用されている場合に特に関係があります。これらのオーケストレーターは、スケジュールされたすべてのタスクが実行される前に`return`することがよくあります。
 
 このメソッドは、インスタンスが存在しない場合は `null` (.NET)、`undefined` (JavaScript)、または `None` (Python) を返します。
 

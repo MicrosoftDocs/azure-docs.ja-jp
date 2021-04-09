@@ -4,10 +4,10 @@ description: Azure DevTest Labs がエンタープライズ環境に適切に組
 ms.topic: article
 ms.date: 06/2/2020
 ms.openlocfilehash: 9c28cf9eebd8a39a2edce48e4fb8b96dc7608d80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87288031"
 ---
 # <a name="deliver-a-proof-of-concept"></a>概念実証を提供する 
@@ -37,8 +37,8 @@ Azure DevTest Labs を企業の環境にうまく組み込むための要件は�
 
 DevTest Labs でパイロットや概念実証を適切に遂行するには、いくつかの前提条件があります。 
 
-* **Azure サブスクリプション**:企業は多くの場合、Azure へのアクセスが可能になる[マイクロソフト エンタープライズ契約](https://azure.microsoft.com/pricing/purchase-options/enterprise-agreement/)を既に結んでおり、既存または新規のサブスクリプションを DevTest Labs に使用することができます。 または、企業はパイロットの期間中に [Visual Studio サブスクリプション](https://azure.microsoft.com/pricing/member-offers/visual-studio-subscriptions/)を使用することもできます (無料の Azure クレジットを利用)。 これらのオプションのいずれも使用できない場合、企業は[無料の Azure アカウント](https://azure.microsoft.com/free/search/?&OCID=AID719825_SEM_g4lyBqgB&lnkd=Bing_Azure_Brand&msclkid=ecc4275a31b61375749e7a5322c20de8&dclid=CMGW5-m78-ICFaLt4QodmUwGtQ)を作成して使用できます。 マイクロソフトエンタープライズ契約を結んでいる場合は、[Enterprise Dev/Test サブスクリプション](https://azure.microsoft.com/offers/ms-azr-0148p/)を使用して、Windows 10/Windows 8.1 クライアント オペレーティング システムにアクセスし、開発とテストのワークロードを割引料金で利用できます。 
-* **Azure Active Directory テナント**:ユーザーの管理 (ユーザーの追加やラボ所有者の追加など) を可能にするには、対象のユーザーがパイロット用の Azure サブスクリプションで使用される [Azure Active Directory テナント](https://azure.microsoft.com/services/active-directory/)に属している必要があります。 通常、企業はユーザーがクラウドでオンプレミスの ID を使用できるように[ハイブリッド ID](../active-directory/hybrid/whatis-hybrid-identity.md) を設定しますが、DevTest Labs パイロットではその必要はありません。 
+* **Azure サブスクリプション**: 企業は多くの場合、Azure へのアクセスが可能になる [マイクロソフト エンタープライズ契約](https://azure.microsoft.com/pricing/purchase-options/enterprise-agreement/)を既に結んでおり、既存または新規のサブスクリプションを DevTest Labs に使用することができます。 または、企業はパイロットの期間中に [Visual Studio サブスクリプション](https://azure.microsoft.com/pricing/member-offers/visual-studio-subscriptions/)を使用することもできます (無料の Azure クレジットを利用)。 これらのオプションのいずれも使用できない場合、企業は[無料の Azure アカウント](https://azure.microsoft.com/free/search/?&OCID=AID719825_SEM_g4lyBqgB&lnkd=Bing_Azure_Brand&msclkid=ecc4275a31b61375749e7a5322c20de8&dclid=CMGW5-m78-ICFaLt4QodmUwGtQ)を作成して使用できます。 マイクロソフトエンタープライズ契約を結んでいる場合は、[Enterprise Dev/Test サブスクリプション](https://azure.microsoft.com/offers/ms-azr-0148p/)を使用して、Windows 10/Windows 8.1 クライアント オペレーティング システムにアクセスし、開発とテストのワークロードを割引料金で利用できます。 
+* **Azure Active Directory テナント**: ユーザーの管理 (ユーザーの追加やラボ所有者の追加など) を可能にするには、対象のユーザーがパイロット用の Azure サブスクリプションで使用される [Azure Active Directory テナント](https://azure.microsoft.com/services/active-directory/)に属している必要があります。 通常、企業はユーザーがクラウドでオンプレミスの ID を使用できるように[ハイブリッド ID](../active-directory/hybrid/whatis-hybrid-identity.md) を設定しますが、DevTest Labs パイロットではその必要はありません。 
 
 ## <a name="scoping-of-the-pilot"></a>パイロットの範囲の設定 
 
@@ -114,10 +114,10 @@ DevTest Labs でパイロットや概念実証を適切に遂行するには、�
 
 完全な DevTest Labs ソリューションをリリースする前に、計画と設計に関するいくつかの重要な決定を行う必要があります。 この意思決定には、概念実証での経験が役立ちます。 追加で検討が必要な事項は次のとおりです。 
 
-* **サブスクリプション トポロジ**:Azure のリソースに関するエンタープライズ レベルの要件が、[1 つのサブスクリプションで利用可能なクォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)を超えることがあります。 これにより、当初のサブスクリプションの制限を引き上げるために、複数の Azure サブスクリプションやサービス要求が必要となります。 サブスクリプション間でリソースを分配する方法を事前に決めておくことが重要です。 リソースを後から別のサブスクリプションに移動するのは難しいため、このときに役立つのは[サブスクリプション決定ガイド](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)です。 たとえば、ラボを作成後に別のサブスクリプションに移動することはできません。  
-* **ネットワーク トポロジ**: DevTest Labs によって自動的に作成される[既定のネットワーク インフラストラクチャ](../app-service/networking-features.md)では、エンタープライズ ユーザーの要件と制約が十分に満たされない可能性があります。 [Azure ExpressRoute が仮想ネットワークに接続](/azure/architecture/reference-architectures/hybrid-networking/)されていたり、サブスクリプション間の接続に[ハブ アンド スポーク](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)が使用されていたり、オンプレミスの接続を確保するためだけに[強制的なルーティング](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)が行われていたりすることがよくあります。 DevTest Labs では、既存の仮想ネットワークをラボに接続して、ラボで新しい仮想マシンを作成するときに使用することができます。 
+* **サブスクリプション トポロジ**: Azure のリソースに関するエンタープライズ レベルの要件が、[1 つのサブスクリプションで利用可能なクォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)を超えることがあります。 これにより、当初のサブスクリプションの制限を引き上げるために、複数の Azure サブスクリプションやサービス要求が必要となります。 サブスクリプション間でリソースを分配する方法を事前に決めておくことが重要です。 リソースを後から別のサブスクリプションに移動するのは難しいため、このときに役立つのは[サブスクリプション決定ガイド](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)です。 たとえば、ラボを作成後に別のサブスクリプションに移動することはできません。  
+* **ネットワーク トポロジ**: DevTest Labs によって自動的に作成される [既定のネットワーク インフラストラクチャ](../app-service/networking-features.md)では、エンタープライズ ユーザーの要件と制約が十分に満たされない可能性があります。 [Azure ExpressRoute が仮想ネットワークに接続](/azure/architecture/reference-architectures/hybrid-networking/)されていたり、サブスクリプション間の接続に[ハブ アンド スポーク](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)が使用されていたり、オンプレミスの接続を確保するためだけに[強制的なルーティング](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)が行われていたりすることがよくあります。 DevTest Labs では、既存の仮想ネットワークをラボに接続して、ラボで新しい仮想マシンを作成するときに使用することができます。 
 * **仮想マシンのリモート アクセス**: DevTest Labs 内の仮想マシンにリモートでアクセスする方法は多数あります。 最も簡単な方法は、パブリック IP または共有パブリック IP を使用することです。 これらは、[ラボで使用できる設定](devtest-lab-shared-ip.md)です。 これらのオプションでは十分でない場合は、リモート アクセス ゲートウェイを使用することもできます。 このオプションは [DevTest Labs の企業向け参照アーキテクチャ](devtest-lab-reference-architecture.md)で示されており、詳細については、「[リモート デスクトップ ゲートウェイを使用するように Azure DevTest Labs でラボを構成します](configure-lab-remote-desktop-gateway.md)」を参照してください。 企業で ExpressRoute またはサイト間 VPN を使用して、ラボをオンプレミス ネットワークに接続することもできます。 このオプションにより、インターネットに公開されていないプライベート IP アドレスに基づいて、仮想マシンにリモート デスクトップまたは SSH で直接接続することができます。 
-* **アクセス許可の処理**:DevTest Labs で一般に使用される 2 つの主要なアクセス許可は、[所有者とラボ ユーザー](devtest-lab-add-devtest-user.md)です。 DevTest Labs を広くロールアウトする前に、ラボの各アクセス レベルの管理を誰に託すかを決めることが重要です。 一般的なモデルでは、予算所有者 (チーム リーダーなど) がラボ所有者になり、チーム メンバーがラボ ユーザーとなります。 このモデルにより、予算の責任者である人物 (チーム リーダー) は、ポリシー設定を調整し、チームが予算を超過しないようにすることができます。  
+* **アクセス許可の取り扱い**: DevTest Labs で一般に使用される 2 つの主要なアクセス許可は、[所有者とラボ ユーザー](devtest-lab-add-devtest-user.md)です。 DevTest Labs を広くロールアウトする前に、ラボの各アクセス レベルの管理を誰に託すかを決めることが重要です。 一般的なモデルでは、予算所有者 (チーム リーダーなど) がラボ所有者になり、チーム メンバーがラボ ユーザーとなります。 このモデルにより、予算の責任者である人物 (チーム リーダー) は、ポリシー設定を調整し、チームが予算を超過しないようにすることができます。  
 
 ## <a name="completing-the-proof-of-concept"></a>概念実証の完了 
 

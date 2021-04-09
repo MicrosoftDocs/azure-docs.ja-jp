@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4faa7837a75bab6dfab651862754cd92394c5137
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 91be2f8641a061d009962cdcd03a8d56048594da
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585917"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594506"
 ---
 # <a name="how-to-create-alerts-for-change-tracking-and-inventory"></a>変更履歴とインベントリのアラートを作成する方法
 
@@ -50,11 +50,11 @@ Azure Monitor のアラートに詳しくない場合は、事前に「[Microsof
 
 3. **[アクション]** で、アクションを指定する名前 (**電子メール通知** など) を入力します。
 
-4. **[アクションの種類]** には、適切な種類 (**メール、SMS、プッシュ、音声** など) を選択します。
+4. **[アクションの種類]** には、適切な種類 (**メール、SMS メッセージ、プッシュ、音声** など) を選択します。
 
-5. **[詳細の編集]** を選択します。
+5. 鉛筆アイコンを選択してアクションの詳細を編集します。
 
-6. アクションの種類のペインに入力します。 たとえば、**メール、SMS、プッシュ、音声** を使用している場合は、アクション名を入力し、 **[電子メール]** チェックボックスをオンにして、有効なメール アドレスを入力し、 **[OK]** を選択します。
+6. アクションの種類のペインに入力します。 たとえば、**メール、SMS メッセージ、プッシュ、音声** を使用して電子メールを送る場合は、アクション名を入力し、 **[電子メール]** チェックボックスをオンにして、有効なメール アドレスを入力し、 **[OK]** を選択します。
 
     ![電子メール アクション グループの構成](./media/configure-alerts/configure-email-action-group.png)
 

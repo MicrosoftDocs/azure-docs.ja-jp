@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
 ms.openlocfilehash: 19a335d17ee0aa5ff9f989556656f5cf20d2b1a9
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91567827"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>REST API を使用して Azure Recovery Services コンテナーの構成を更新する
@@ -43,7 +43,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 'GET' 操作に対する正常な応答は次のようになります。
 
-|名前  |Type  |説明  |
+|名前  |種類  |説明  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | [OK]        |
 
@@ -83,7 +83,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 詳細については、[REST API のドキュメント](/rest/api/backup/backupresourcevaultconfigs/update#request-body)を参照してください
 
-|名前  |必須  |Type  |説明  |
+|名前  |必須  |種類  |説明  |
 |---------|---------|---------|---------|
 |eTag     |         |   String      |  省略可能な eTag       |
 |location     |  true       |String         |   リソースの場所      |
@@ -107,7 +107,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 'PATCH' 操作に対する正常な応答は次のようになります。
 
-|名前  |Type  |説明  |
+|名前  |種類  |説明  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | [OK]        |
 

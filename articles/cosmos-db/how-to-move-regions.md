@@ -9,10 +9,10 @@ ms.custom: subject-moving-resources
 ms.date: 09/12/2020
 ms.author: mjbrown
 ms.openlocfilehash: 29b5c5d3cf55cd11fe505c0d9ab9b894dc2ad267
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93342030"
 ---
 # <a name="move-an-azure-cosmos-db-account-to-another-region"></a>Azure Cosmos DB アカウントを別のリージョンに移動する

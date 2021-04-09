@@ -5,10 +5,10 @@ ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: 635392212027c73e5aa954eb671be31228796a0d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96185132"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Visual Studio を使用して関数を Azure Storage に接続する
@@ -37,7 +37,7 @@ ms.locfileid: "96185132"
 
     ![アプリケーション設定を編集する](media/functions-add-output-binding-storage-queue-vs/edit-app-settings.png)
 
-1. **[AzureWebJobsStorage]** で、 **[リモート]** の文字列値を **[ローカル]** にコピーし、 **[OK]** を選択します。 
+1. **[AzureWebJobsStorage]** で、**[リモート]** の文字列値を **[ローカル]** にコピーし、**[OK]** を選択します。 
 
 接続に `AzureWebJobsStorage` 設定を使用するストレージ バインドは、ローカルで実行しているときに Queue storage に接続できるようになりました。
 
@@ -45,7 +45,7 @@ ms.locfileid: "96185132"
 
 Queue storage の出力バインドを使用しているため、このプロジェクトを実行する前に Storage のバインド拡張機能をインストールしておく必要があります。 HTTP トリガーとタイマー トリガーを除き、バインドは拡張機能パッケージとして実装されます。 
 
-1. **[ツール]** メニューで、 **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順に選択します。 
+1. **[ツール]** メニューで、**[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順に選択します。 
 
 1. コンソールで次の [Install-Package](/nuget/tools/ps-ref-install-package) コマンドを実行して、ストレージ拡張機能をインストールします。
 
@@ -73,13 +73,13 @@ Queue storage の出力バインドを使用しているため、このプロジ
 
 ## <a name="examine-the-output-queue"></a>出力キューを確認する
 
-1. Visual Studio の **[表示]** メニューで、 **[Cloud Explorer]** を選択します。
+1. Visual Studio の **[表示]** メニューで、**[Cloud Explorer]** を選択します。
 
 1. **Cloud Explorer** で、Azure サブスクリプションと **ストレージ アカウント** を展開してから、関数で使用されているストレージ アカウントを展開します。 ストレージ アカウント名を思い出せない場合は、*local.settings.json* ファイルの `AzureWebJobsStorage` 接続文字列設定を確認してください。  
 
 1. **[キュー]** ノードを展開し、**outqueue** という名前のキューをダブルクリックして、Visual Studio でキューの内容を表示します。 
 
-   このキューには、HTTP によってトリガーされる関数を実行したときにキューの出力バインディングが作成されたというメッセージが含まれます。 *Azure* の既定の `name` 値で関数を呼び出した場合、キュー メッセージは *Name passed to the function: Azure* です。
+   このキューには、HTTP によってトリガーされる関数を実行したときにキューの出力バインディングが作成されたというメッセージが含まれます。 *Azure* の既定の `name` 値で関数を呼び出した場合、キュー メッセージは「*Name passed to the function: Azure*」(関数に渡された名前: Azure) になります。
 
     ![Azure Storage Explorer に表示されたキュー メッセージ](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 
@@ -89,7 +89,7 @@ Queue storage の出力バインドを使用しているため、このプロジ
 
 ## <a name="redeploy-and-verify-the-updated-app"></a>更新したアプリを再デプロイして検証する
 
-1. **ソリューション エクスプローラー** で、プロジェクトを右クリックして **[発行]** を選択し、 **[発行]** を選択してプロジェクトを Azure に再発行します。
+1. **ソリューション エクスプローラー** で、プロジェクトを右クリックして **[発行]** を選択し、**[発行]** を選択してプロジェクトを Azure に再発行します。
 
 1. デプロイが完了したら、もう一度ブラウザーを使用して、再デプロイされた関数をテストすることができます。 前のように、URL にクエリ文字列 `&name=<yourname>` を追加します。
 
@@ -109,4 +109,4 @@ HTTP によってトリガーされる関数を、ストレージ キューに�
 > [Application Insights との統合を有効にする](configure-monitoring.md#add-to-an-existing-function-app)
 
 [Azure Storage Explorer]: https://storageexplorer.com/
-[前のクイックスタートの記事]: functions-create-your-first-function-visual-studio.md
+[前のクイックスタート記事]: functions-create-your-first-function-visual-studio.md

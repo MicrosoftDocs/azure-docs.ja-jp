@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
 ms.openlocfilehash: b9bf27ccb390ee41306215a90fccb01747077837
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454237"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-edx-for-business-saml-integration"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と edX for Business SAML Integration の統合
@@ -38,8 +38,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
-* edX for Business SAML Integration では、 **SP** Initiated SSO がサポートされます
-* edX for Business SAML Integration では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* edX for Business SAML Integration では、**SP** Initiated SSO がサポートされます
+* edX for Business SAML Integration では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 * edX for Business SAML Integration を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
@@ -54,7 +54,7 @@ Azure AD への edX for Business SAML Integration の統合を構成するには
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **edX for Business SAML Integration** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**edX for Business SAML Integration**」と入力します。
 1. 結果のパネルから **[edX for Business SAML Integration]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -133,7 +133,7 @@ edX for Business SAML Integration で Azure AD SSO を構成してテストす�
 
 ## <a name="configure-edx-for-business-saml-integration-sso"></a>edX for Business SAML Integration SSO の構成
 
-**edX for Business SAML Integration** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [edX for Business SAML Integration サポート チーム](mailto:api-support@edx.org)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**edX for Business SAML Integration** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [edX for Business SAML Integration サポート チーム](mailto:api-support@edx.org)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-edx-for-business-saml-integration-test-user"></a>edX for Business SAML Integration のテスト ユーザーの作成
 

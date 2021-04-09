@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: f801d25a0d0f70daaaac1ade3e8966cf5f53affc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ac5b1df5ff246623b73dbc41d18216396e6ed7ef
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672754"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102549857"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Azure Synapse Analytics ワークスペースで Azure Monitor を使用する
 
@@ -171,7 +171,7 @@ Azure Monitor 診断設定を使用すると、診断ログを複数の異なる
 1. 設定に名前を付け、 **[Log Analytics への送信]** を選択して、 **[Log Analytics ワークスペース]** からワークスペースを選択します。
 
     > [!NOTE]
-    > Azure ログ テーブルには 500 個を超える列を含めることができないため、"_リソース固有モード_" を選択することを **強くお勧めします**。 詳細については、[Log Analytics の既知の制限](../../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics)に関するセクションを参照してください。
+    > Azure ログ テーブルには 500 個を超える列を含めることができないため、"_リソース固有モード_" を選択することを **強くお勧めします**。 詳細については、[Azure Diagnostics のログ リファレンス](/azure-monitor/reference/tables/azurediagnostics#additionalfields-column)に関するページを参照してください。
 
 1. **[保存]** を選択します。
 

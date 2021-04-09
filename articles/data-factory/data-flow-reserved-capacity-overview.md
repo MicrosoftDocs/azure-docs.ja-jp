@@ -6,16 +6,16 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.date: 02/05/2021
-ms.openlocfilehash: c4d6ebc8d57857deeb2a5cc71867484bd3519ea6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 26a4692603d8e8a80a52ea77bdd56617131cea5d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699693"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104593902"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-data-factory-data-flows"></a>予約容量を使用してリソースのコストを節約する - Azure Data Factory データ フロー
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 コンピューティング リソースの予約を確約することで、Azure Data Factory データ フローのコストを従量課金制の料金よりも節約できます。 予約容量では、ADF データ フローの 1 年間または 3 年間の使用を確約することで、コンピューティング コストの大幅な割引を受けることができます。 予約容量を購入するには、Azure リージョン、コンピューティングの種類、コアの数量、期間を指定する必要があります。
 

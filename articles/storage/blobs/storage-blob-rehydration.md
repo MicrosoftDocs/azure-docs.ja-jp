@@ -4,17 +4,17 @@ description: BLOB データにアクセスできるように、アーカイブ �
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/08/2021
+ms.date: 03/11/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 5a89e5a9eca653a2d15e5b09605b78bc18d76b8f
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 2f0ddca9cbd7d85909b1d86e68b92fa1d847476d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165673"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103225083"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>アーカイブ層から BLOB データをリハイドレートする
 
@@ -29,6 +29,10 @@ BLOB はアーカイブ アクセス層に含まれていますが、オフラ�
 
 [!INCLUDE [storage-blob-rehydration](../../../includes/storage-blob-rehydrate-include.md)]
 
+### <a name="lifecycle-management"></a>ライフサイクル管理
+
+BLOB をリハイドレートしても、`Last-Modified` 時間は変わりません。 [ライフサイクル管理](storage-lifecycle-management-concepts.md)機能を使用すると、BLOB がリハイドレートされ、その後、`Last-Modified` 時間がポリシーに設定されたしきい値を超えたために、ライフサイクル管理ポリシーによって BLOB がアーカイブに戻されるというシナリオが生じることがあります。 このシナリオを回避するには、" *[アーカイブ済み BLOB をオンライン層にコピーする](#copy-an-archived-blob-to-an-online-tier)* " 方法を使用します。 このコピー方法では、`Last-Modified` 時間が更新された BLOB の新しいインスタンスが作成されるため、ライフサイクル管理ポリシーがトリガーされません。
+
 ## <a name="monitor-rehydration-progress"></a>リハイドレートの進行状況を監視する
 
 リハイドレート中に、BLOB のプロパティの取得操作を使用して **アーカイブ ステータス** 属性をチェックし、層変更がいつ完了したかを確認します。 ステータスは、変更先の層に応じて "rehydrate-pending-to-hot" または "rehydrate-pending-to-cool" になります。 完了すると、アーカイブ ステータス プロパティが削除され、BLOB の **アクセス層** プロパティに新しい階層としてホット層またはクール層が反映されます。
@@ -42,7 +46,7 @@ BLOB はアーカイブ アクセス層に含まれていますが、オフラ�
 > [!IMPORTANT]
 > コピー先でコピーが正常に完了するまでは、コピー元 BLOB を削除しないでください。 コピー元 BLOB が削除された場合、コピー先 BLOB はコピーを完了できず、空になります。 *x-ms-copy-status* を確認して、コピー操作の状態を確認することができます。
 
-アーカイブ BLOB は、同じストレージ アカウント内のオンラインの移動先の層にのみコピーできます。 アーカイブ BLOB を別のアーカイブ BLOB にコピーすることはサポートされていません。 次の表は CopyBlob の機能をまとめたものです。
+アーカイブ BLOB は、同じストレージ アカウント内のオンラインの移動先の層にのみコピーできます。 アーカイブ BLOB を別のアーカイブ BLOB にコピーすることはサポートされていません。 次の表に、**BLOB のコピー** 操作の機能を示します。
 
 |                                           | **ホット層のコピー元**   | **クール層のコピー元** | **アーカイブ層のコピー元**    |
 | ----------------------------------------- | --------------------- | -------------------- | ------------------- |

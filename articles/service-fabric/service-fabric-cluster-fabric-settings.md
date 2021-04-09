@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターの設定を変更する
 description: この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 34a63a86bc10a787ef077b9067c3fba5a9e4da25
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 78d83faea802862d3cd6d1b1a9cf9f1016245065
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919784"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103232054"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -130,7 +130,7 @@ ms.locfileid: "98919784"
 |EnableTelemetry |ブール値、既定値は true | 動的 |テレメトリを有効または無効にします。 |
 |FailuresOnlyHttpTelemetry | ブール値、既定値は false | 動的 | HTTP テレメトリのキャプチャが有効な場合、失敗した要求のみがキャプチャされます。 これは、テレメトリ用に生成されるイベント数を減らすために役立ちます。 |
 |HttpTelemetryCapturePercentage | int、既定値は 50 | 動的 | HTTP テレメトリのキャプチャが有効な場合、ランダムな割合の要求のみがキャプチャされます。 これは、テレメトリ用に生成されるイベント数を減らすために役立ちます。 |
-|MaxDiskQuotaInMB |int、既定値は 65536 | 動的 |Windows Fabric のログ ファイルのディスク クォータ (MB)。 |
+|MaxDiskQuotaInMB |int、既定値は 65536 | 動的 |Windows および Linux Fabric のログ ファイルのディスク クォータ (MB)。 |
 |ProducerInstances |String | 動的 |DCA プロデューサー インスタンスのリスト。 |
 
 ## <a name="dnsservice"></a>DnsService
@@ -349,6 +349,7 @@ ms.locfileid: "98919784"
 |DisableContainers|ブール値、既定値は FALSE|静的|コンテナーを無効にするための構成 - 使用されなくなった構成である DisableContainerServiceStartOnContainerActivatorOpen の代わりに使用します |
 |DisableDockerRequestRetry|ブール値、既定値は FALSE |動的| 既定では、SF は、送信される各 http 要求のタイムアウトを "DockerRequestTimeout" として DD (docker デーモン) と通信します。 DD がこの期間内に応答しない場合、SF は、最上位レベルの操作にまだ残り時間があれば要求を再送信します。  hyperv コンテナーと共に使用します。DD がコンテナーを起動または非アクティブ化するのに時間がかかることがあります。 そのような場合、DD 要求が SF パースペクティブからタイムアウトし、SF は操作を再試行します。 これは DD にさらに圧力をかけるように見えることがあります。 この構成により、この再試行が無効になり、DD が応答するまで待機します。 |
 |DnsServerListTwoIps | ブール値、既定値は FALSE | 静的 | このフラグは、断続的な解決の問題を軽減するために、ローカル DNS サーバーを 2 回追加します。 |
+| DockerTerminateOnLastHandleClosed | ブール値、既定値は FALSE | 静的 | 既定では、FabricHost が (SkipDockerProcessManagement == false に基づいて) 'dockerd' を管理している場合、この設定は、FabricHost または dockerd のいずれかがクラッシュしたときの動作を構成します。 `true` に設定すると、いずれかのプロセスがクラッシュした場合に、実行中のすべてのコンテナーが HCS によって強制的に終了されます。 `false` に設定すると、コンテナーは引き続き実行されます。 注: 8.0 より前のバージョンでは、この動作は意図せず `false` と同じでした。 ここでの既定の設定の `true` は、クリーンアップ ロジックがこれらのプロセスの再起動時に有効になるように、既定で行われると予測されるものです。 |
 | DoNotInjectLocalDnsServer | ブール値、既定値は FALSE | 静的 | ランタイムがコンテナーの DNS サーバーとしてローカル IP を挿入しないようにします。 |
 |EnableActivateNoWindow| ブール値、既定値は FALSE|動的| アクティブ化されたプロセスは、コンソールを使用せずに、バックグラウンドで作成されます。 |
 |EnableContainerServiceDebugMode|ブール値、既定値は TRUE|静的|Docker コンテナーのログを有効または無効にします。  Windows のみ。|

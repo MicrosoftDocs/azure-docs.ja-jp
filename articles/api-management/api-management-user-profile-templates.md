@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1aef238ec0b947dda1417b567b343ae9d92754d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86249514"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API Management のユーザー プロファイル テンプレート
@@ -105,7 +105,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  [プロファイル](#Profile)、[アプリケーション](#Applications)、および[サブスクリプション](#Subscriptions) テンプレートは、同じデータ モデルを共有し、同じテンプレート データを受信します。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`firstName`|string|現在のユーザーの名。|  
 |`lastName`|string|現在のユーザーの姓。|  
@@ -287,7 +287,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
                 <a href="#" class="btn-link" id="regenerateSecondary_{{subscription.id}}" data-bind="click: regenerateKey, text: regenerateKeyLabel">{% localized "SubscriptionListStrings|WebDevelopersRegenerateLink" %}</a>  
               </div>  
             </div>  
-            <div class="clearfix"> </div>  
+            <div class="clearfix"> </div>  
           </div>  
           <!-- /ko -->  
           {% endif %}  
@@ -326,7 +326,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  [プロファイル](#Profile)、[アプリケーション](#Applications)、および[サブスクリプション](#Subscriptions) テンプレートは、同じデータ モデルを共有し、同じテンプレート データを受信します。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`firstName`|string|現在のユーザーの名。|  
 |`lastName`|string|現在のユーザーの姓。|  
@@ -489,7 +489,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  [プロファイル](#Profile)、[アプリケーション](#Applications)、および[サブスクリプション](#Subscriptions) テンプレートは、同じデータ モデルを共有し、同じテンプレート データを受信します。  
   
-|プロパティ|種類|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`firstName`|string|現在のユーザーの名。|  
 |`lastName`|string|現在のユーザーの姓。|  

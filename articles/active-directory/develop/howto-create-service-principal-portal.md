@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 8a4a4153261b93b3b17641e8561962c274570bd0
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 6adc3a8af90f6f05f640de97b8fa74c8d40e0329
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100104214"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175548"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -45,7 +45,7 @@ Azure portal を使用してサービス プリンシパルを直接作成する
 1. 左側のウィンドウで、 **[ユーザー設定]** を選択します。
 1. **[アプリの登録]** 設定を確認します。 この値は、管理者だけが設定できます。 **[はい]** に設定されている場合は、Azure AD テナント内のすべてのユーザーがアプリを登録できます。
 
-アプリの登録の設定が **[いいえ]** に設定されている場合は、管理者ロールを持つユーザーのみが、これらの種類のアプリケーションを登録できます。 使用可能な管理者ロールと各ロールに与えられている Azure AD での具体的なアクセス許可については、[利用可能なロール](../roles/permissions-reference.md#available-roles)と[ロールのアクセス許可](../roles/permissions-reference.md#role-permissions)に関するページを参照してください。 アカウントにユーザー ロールが割り当てられているが、アプリの登録の設定が管理者ユーザーに制限されている場合は、アプリの登録のすべての側面について作成と管理が可能な管理者ロールの 1 つを、登録を行うユーザーに割り当てるか、ユーザーがアプリを登録できるようにするよう、管理者に依頼してください。
+アプリの登録の設定が **[いいえ]** に設定されている場合は、管理者ロールを持つユーザーのみが、これらの種類のアプリケーションを登録できます。 使用可能な管理者ロールと各ロールに与えられている Azure AD での具体的なアクセス許可については、[Azure AD の組み込みロール](../roles/permissions-reference.md#all-roles)に関するページを参照してください。 アカウントにユーザー ロールが割り当てられているが、アプリの登録の設定が管理者ユーザーに制限されている場合は、アプリの登録のすべての側面について作成と管理が可能な管理者ロールの 1 つを、登録を行うユーザーに割り当てるか、ユーザーがアプリを登録できるようにするよう、管理者に依頼してください。
 
 ### <a name="check-azure-subscription-permissions"></a>Azure サブスクリプションのアクセス許可を確認する
 
@@ -84,6 +84,9 @@ Azure サブスクリプションで AD アプリにロールを割り当てる�
    ![アプリケーションの名前を入力する](./media/howto-create-service-principal-portal/create-app.png)
 
 Azure AD アプリケーションとサービス プリンシパルが作成されました。
+
+> [!NOTE]
+> Azure AD に同じ名前の複数のアプリケーションを登録することはできますが、その場合、アプリケーションのアプリケーション (クライアント) ID は異なっている必要があります。
 
 ## <a name="assign-a-role-to-the-application"></a>アプリケーションにロールを割り当てる
 

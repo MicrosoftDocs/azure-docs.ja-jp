@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: f4fa1e64e00f2ae027d80960072da7d73d3a89cb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 713559a747b58e65d04c8310755baedc93db929e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946829"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104863158"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight のエンタープライズ セキュリティの概要
 
@@ -66,7 +66,7 @@ Azure コンプライアンス認証は、正式な認定資格を含むさま�
 
 次の図は、主要なシステム セキュリティ領域と、それぞれで使用できるセキュリティ ソリューションをまとめたものです。 また、どのセキュリティ領域がお客様の責任となり、 どの領域がサービス プロバイダーである HDInsight の責任になるかも示しています。
 
-![HDInsight の共有責任図](./media/hdinsight-security-overview/hdinsight-shared-responsibility.png)
+:::image type="content" source="./media/hdinsight-security-overview/hdinsight-shared-responsibility.png" alt-text="HDInsight の共有責任図" border="false":::
 
 次の表に、セキュリティ ソリューションの種類ごとにリソースへのリンクを示します。
 

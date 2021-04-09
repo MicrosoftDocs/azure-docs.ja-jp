@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: c5a0b2d21f7d42b8ce96f72d58e5d0a8ab0c572c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ee984de22052076618728fbacfc31b73c18c073a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943943"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864688"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>R Tools for Visual Studio からのジョブの送信
 
@@ -22,9 +22,9 @@ RTVS は、[R インタラクティブ ウィンドウ](/visualstudio/rtvs/inter
 
 1. [R Tools for Visual Studio](/visualstudio/rtvs/installing-r-tools-for-visual-studio) をインストールします。
 
-    ![Visual Studio 2017 での RTVS のインストール](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
+    :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png" alt-text="Visual Studio 2017 での RTVS のインストール" border="true":::
 
-2. *[データ サイエンスと分析のアプリケーション]* ワークロードを選択し、 **[R 言語サポート]** 、 **[R 開発ツールのランタイム サポート]** 、 **[Microsoft R Client ]** の各オプションを選択します。
+2. *[データ サイエンスと分析のアプリケーション]* ワークロードを選択し、**[R 言語サポート]**、**[R 開発ツールのランタイム サポート]**、**[Microsoft R Client ]** の各オプションを選択します。
 
 3. SSH 認証のための公開キーと秘密キーを用意します。
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
@@ -34,14 +34,14 @@ RTVS は、[R インタラクティブ ウィンドウ](/visualstudio/rtvs/inter
 5. ローカル クライアントから HDInsight クラスターに対して `RevoScaleR` 関数を実行するための計算コンテキストを提供する、[PuTTY](https://www.putty.org/) をインストールします。
 
 6. Visual Studio 環境にデータ サイエンスの設定を適用して、R Tools のワークスペースに新しいレイアウトを提供するオプションがあります。
-   1. 現在の Visual Studio 設定を保存するには、 **[ツール] > [設定のインポートとエクスポート]** コマンドを使用し、 **[選択された環境設定をエクスポート]** を選択してファイル名を指定します。 それらの設定を復元するには、同じコマンドを使用し、 **[選択された環境設定をインポート]** を選択します。
+   1. 現在の Visual Studio 設定を保存するには、**[ツール] > [設定のインポートとエクスポート]** コマンドを使用し、**[選択された環境設定をエクスポート]** を選択してファイル名を指定します。 それらの設定を復元するには、同じコマンドを使用し、**[選択された環境設定をインポート]** を選択します。
 
-   2. **[R Tools]** メニュー項目に移動して、 **[データ サイエンスの設定...]** を選択します。
+   2. **[R Tools]** メニュー項目に移動して、**[データ サイエンスの設定...]** を選択します。
 
-       ![Visual Studio データ サイエンスの設定](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
+       :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png" alt-text="Visual Studio データ サイエンスの設定" border="true":::
 
       > [!NOTE]  
-      > 手順 1 のアプローチを使用して、 **[データ サイエンスの設定]** コマンドを繰り返さずに、パーソナライズされたデータ サイエンティストのレイアウトを保存および復元することもできます。
+      > 手順 1 のアプローチを使用して、**[データ サイエンスの設定]** コマンドを繰り返さずに、パーソナライズされたデータ サイエンティストのレイアウトを保存および復元することもできます。
 
 ## <a name="execute-local-r-methods"></a>ローカル R メソッドを実行する
 
@@ -53,11 +53,11 @@ RTVS は、[R インタラクティブ ウィンドウ](/visualstudio/rtvs/inter
 6. ファイルの先頭から、R Ctrl + Enter キーを押して、1 回に 1 行ずつを R インタラクティブ ウィンドウに送信します。 一部の行では、パッケージをインストールするために時間がかかる場合があります。
     * または、Ctrl + A キー を押して R ファイルのすべての行を選択した後で、Ctrl + Enter キー を押してすべて実行するか、ツール バーで [Execute Interactive]\(対話型で実行\) アイコンを選択します。
 
-        ![Visual Studio の対話型実行](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
+        :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png" alt-text="Visual Studio の対話型実行" border="true":::
 
 7. スクリプトのすべての行を実行すると、次のような出力が表示されます。
 
-    ![Visual Studio のワークスペース R ツール](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
+    :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png" alt-text="Visual Studio のワークスペース R ツール" border="true":::
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>HDInsight ML Services クラスターにジョブを送信する
 
@@ -93,7 +93,7 @@ PuTTY が搭載された Windows コンピューターから Microsoft ML Server
     rxSetComputeContext(mySparkCluster)
     ```
 
-   ![Apache Spark のコンテキストの設定](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
+   :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png" alt-text="Apache Spark のコンテキストの設定" border="true":::
 
 1. [R インタラクティブ] ウィンドウで次のコマンドを実行します。
 
@@ -105,22 +105,23 @@ PuTTY が搭載された Windows コンピューターから Microsoft ML Server
 
     次のような出力が表示されます。
 
-    ![正常に実行された rx コマンド](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png) a
+    :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png" alt-text="正常に実行された rx コマンド" border="true":::
+a
 1. `rxHadoopCopy` によって、サンプル データ フォルダーの `people.json` ファイルが新しく作成された `/user/RevoShare/newUser` フォルダーに正常にコピーされたことを確認します。
 
     1. Azure の HDInsight ML Services クラスターのウィンドウで、左側のメニューから **[ストレージ アカウント]** を選択します。
 
-        ![Azure HDInsight のストレージ アカウント](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
+        :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png" alt-text="Azure HDInsight のストレージ アカウント" border="true":::
 
     2. クラスターの既定のストレージ アカウントを選択し、コンテナー/ディレクトリ名をメモします。
 
     3. ストレージ アカウントのウィンドウの左側のメニューで **[コンテナー]** を選択します。
 
-        ![Azure HDInsight のストレージ コンテナー](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
+        :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png" alt-text="Azure HDInsight のストレージ コンテナー" border="true":::
 
-    4. クラスターのコンテナー名を選択し、 **[user]** フォルダーを参照して (一覧の一番下の *[さらに読み込む]* のクリックが必要な場合があります)、 *[RevoShare]* 、 **[newUser]** の順に選択します。 `newUser` フォルダーに `people.json` ファイルが表示されます。
+    4. クラスターのコンテナー名を選択し、**[user]** フォルダーを参照して (一覧の一番下の *[さらに読み込む]* のクリックが必要な場合があります)、*[RevoShare]*、**[newUser]** の順に選択します。 `newUser` フォルダーに `people.json` ファイルが表示されます。
 
-        ![HDInsight のコピーされたファイル フォルダーの場所](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
+        :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png" alt-text="HDInsight のコピーされたファイル フォルダーの場所" border="true":::
 
 1. 現在の Apache Spark コンテキストの使用が完了したら、コンテキストを停止する必要があります。 複数のコンテキストを同時に実行することはできません。
 

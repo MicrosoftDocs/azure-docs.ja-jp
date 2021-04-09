@@ -4,10 +4,10 @@ description: この記事では、マネージド ID が有効になった Servi
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: c7560294fbf6d122396b6a5a8ffd3ee93bc89048
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97507457"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>Service Fabric アプリケーションのマネージド ID に Azure リソースへのアクセス権を付与する

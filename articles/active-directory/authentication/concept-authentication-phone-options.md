@@ -11,10 +11,10 @@ author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a5e8b933f617d767f017f73fb6778a45b5a1ce3
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98725591"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory の認証方法 - 電話オプション

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: f61d99a61cb50886d70489b586d948bfa751e196
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: eb1d59ae41b04be60dec90aaee4b2305b6d39ca6
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576776"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095852"
 ---
 # <a name="glossary-insights-on-your-data-in-azure-purview"></a>Azure Purview でのデータに関する用語集の分析情報
 
@@ -54,19 +54,27 @@ Azure Purview では、用語集の用語を作成して資産に添付するこ
 
 1. **[分析情報]** :::image type="icon" source="media/glossary-insights/ico-insights.png" border="false"::: 領域で、 **[用語集]** を選択して Purview の **[用語集の分析情報]** レポートを表示します。
 
-**[用語集の分析情報]** ページには、次の領域が表示されます。
-1. 用語集の用語とカタログ ユーザーを示す **[High level KPIs]\(高レベルの KPI\)**
+**[用語集の分析情報]** を使用すると、ビジネス ユーザーは、自分の組織にための明確に定義された用語集を維持するための重要な情報を得ることができます。
 
-2. **[Top glossary terms and count of assets]\(上位の用語集の用語と資産の数\)** 。上位 5 つの用語集の用語と、それらに添付された資産が表示されます。 その他の資産はすべて、グラフ内の "その他" カテゴリに分類されます。
+1. このレポートは、**高レベルの KPI** から始まります。ここには、ご使用の Purview アカウントの **_[用語の合計]_ *、* _[アセットなしの承認済みの用語]_ *、* _[期限切れのアセット付きの用語]_** が表示されます。 これらの値はそれぞれ、用語集の正常性を識別するのに役立ちます。
 
-3. **[Glossary terms by term status]\(用語の状態別の用語集の用語\)** 。"ドラフト"、"承認済み"、"アラート"、"期限切れ" などの状態別の用語集の用語の分布が表示されます。 
+   :::image type="content" source="./media/glossary-insights/glossary-kpi.png" alt-text="用語集の分析情報 KPI の表示"::: 
 
-1. 状態を示すグラフのスライスをポイントするかクリックして、その状態にある用語の数に注目します。
 
-1. **[Distribution of roles by number of users]\(ユーザー数別のロールの分布\)** 。Purview でのロールごとのユーザー数別のロールの分布が示されます。
+2. (上に表示されている) **[用語のスナップショット]** セクションには、アセット付き用語とアセットなし用語に対する用語の状態が、**_[下書き]_ *_、_* _[承認済み]_ *_、_* _[アラート]_ *_、_* _[期限切れ]_** として示されます。
 
-   :::image type="content" source="./media/glossary-insights/glossary-insights1.png" alt-text="用語集の分析情報を表示する":::
+3. **[詳細を表示]** をクリックすると、さまざまな状態の用語名と、**_[スチュワード]_ *_ と _* _[エキスパート]_** の詳細が表示されます。 
+
+   :::image type="content" source="./media/glossary-insights/glossary-view-more.png" alt-text="アセット付きとアセットなしの用語のスナップショット":::  
+
+4. "**アセット付きの承認済み用語**" の [詳細を表示] をクリックすると、分析情報によって_ *用語集**の用語の詳細ページが表示され、そこからアタッチされた用語を使用してアセットのリストにさらに移動できます。 
+
+   :::image type="content" source="./media/glossary-insights/navigate-to-glossary-detail.png" alt-text="用語集に対する分析情報"::: 
+
+4. 用語集の分析情報ページで、不足している情報の種類ごとの **不完全な用語** の分布を表示します。 グラフには、**_定義が不足している_ *_、_* _エキスパートが不足している_ *_、_* _スチュワードが不足している_ *_、_* _複数のフィールドが不足している_** 用語の数が表示されます。
+
+1. 情報が不足している用語を表示するには、_*不完全な用語** から **[詳細を表示]** をクリックします。 用語集の用語の詳細ページに移動して、不足している情報を入力し、用語集の用語を完全にすることができます。
 
 ## <a name="next-steps"></a>次のステップ
 
-[資産の分析情報](./asset-insights.md)を通して Azure Purview の分析情報レポートの詳細について学習する
+[用語集](./how-to-create-import-export-glossary.md)を使用して用語集の用語を作成する方法について学習する

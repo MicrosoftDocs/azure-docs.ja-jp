@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18
 ms.openlocfilehash: e1b50675bef0f883ff617b3098a742d3491b3c13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89484302"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Azure App Service へのアクティブな DNS 名の移行
@@ -117,7 +117,7 @@ DNS の伝播が始まるとすぐに、DNS クエリが App Service アプリ�
 
 Azure でのアクティブなカスタム ドメインは、サブスクリプション間または同じサブスクリプション内で移行できます。 ただし、ダウンタイムを伴わない移行にはソース アプリが必要であり、特定の時点で同じカスタム ドメインにターゲット アプリが割り当てられます。 そのため、2 つのアプリが同じ展開単位 (内部的には、Web スペースとして知られています) には展開されないようにする必要があります。 1 つのドメイン名は、展開単位ごとに 1 つのアプリにのみ割り当てできます。
 
-FTP/S URL `<deployment-unit>.ftp.azurewebsites.windows.net` のドメイン名を確認することで、アプリの展開単位がわかります。 ソース アプリとターゲット アプリ間で展開単位が必ず異なることを確認してください。 アプリの展開単位は、それ自体が含まれている [App Service プラン](overview-hosting-plans.md)によって決まります。 プランを作成するときに Azure によってランダムに選択され、変更することはできません。 Azure では、[同じリソース グループ*かつ*同じリージョン内に作成する](app-service-plan-manage.md#create-an-app-service-plan)場合、2 つのプランが同じ展開単位内にあることだけを確認し、異なる展開単位にプランがあることを確認するロジックは用意されていません。 異なる展開単位にプランを作成する唯一の方法は、別の展開単位を取得するまで、新しいリソース グループまたはリージョン内にプランを作成し続けることです。
+FTP/S URL `<deployment-unit>.ftp.azurewebsites.windows.net` のドメイン名を確認することで、アプリの展開単位がわかります。 ソース アプリとターゲット アプリ間で展開単位が必ず異なることを確認してください。 アプリの展開単位は、それ自体が含まれている [App Service プラン](overview-hosting-plans.md)によって決まります。 プランを作成するときに Azure によってランダムに選択され、変更することはできません。 Azure では、[同じリソース グループ *かつ* 同じリージョン内に作成する](app-service-plan-manage.md#create-an-app-service-plan)場合、2 つのプランが同じ展開単位内にあることだけを確認し、異なる展開単位にプランがあることを確認するロジックは用意されていません。 異なる展開単位にプランを作成する唯一の方法は、別の展開単位を取得するまで、新しいリソース グループまたはリージョン内にプランを作成し続けることです。
 
 ## <a name="next-steps"></a>次のステップ
 

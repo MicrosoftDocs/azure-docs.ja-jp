@@ -1,26 +1,19 @@
 ---
 title: Linux 用の Log Analytics 仮想マシン拡張機能
 description: 仮想マシン拡張機能を使用して、Linux 仮想マシンに Log Analytics エージェントをデプロイします。
-services: virtual-machines-linux
-documentationcenter: ''
-author: axayjo
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: c7bbf210-7d71-4a37-ba47-9c74567a9ea6
-ms.service: virtual-machines-linux
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: linux
 ms.date: 02/18/2020
-ms.author: akjosh
-ms.openlocfilehash: f75ad90a562a39f940e1006a2e4d9123eff2b47c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 3ac6937d83bd2d21fefc09878408a54aa0eb41f1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202183"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102559088"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Linux 用の Log Analytics 仮想マシン拡張機能
 
@@ -37,14 +30,14 @@ Azure Monitor ログは、クラウドとオンプレミスの資産全体にま
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-サポートされる Linux ディストリビューションの詳細については、[Azure Monitor エージェントの概要](../../azure-monitor/platform/agents-overview.md#supported-operating-systems)に関する記事をご覧ください。
+サポートされる Linux ディストリビューションの詳細については、[Azure Monitor エージェントの概要](../../azure-monitor/agents/agents-overview.md#supported-operating-systems)に関する記事をご覧ください。
 
 ### <a name="agent-and-vm-extension-version"></a>エージェントおよび VM 拡張機能のバージョン
 次の表は、Log Analytics VM 拡張機能と Log Analytics エージェント バンドルのバージョンのマッピングをリリースごとに示しています。 Log Analytics エージェント バンドルのバージョンのリリース ノートへのリンクが含まれます。 リリース ノートには、特定のエージェント リリースでのバグ修正と利用可能な新機能の詳細が記載されています。  
 
 | Log Analytics Linux VM 拡張機能のバージョン | Log Analytics Agent バンドルのバージョン | 
 |--------------------------------|--------------------------|
-| 1.13.33 | <bpt id="p1">[</bpt>1.13.33<ept id="p1">](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.33-0)</ept> |
+| 1.13.33 | [1.13.33](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.33-0) |
 | 1.13.27 | [1.13.27](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.27-0) |
 | 1.13.15 | [1.13.9-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.9-0) |
 | 1.12.25 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
@@ -76,7 +69,7 @@ Linux 用の Log Analytics Agent 拡張機能では、ターゲットの仮想�
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
-次の JSON は、Log Analytics Agent 拡張機能のスキーマを示しています。 この拡張機能では、ターゲット Log Analytics ワークスペースのワークスペース ID とワークスペース キーが必要です (これらの値は Azure Portal の [Log Analytics ワークスペース](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key)で確認できます)。 ワークスペース キーは機密データとして取り扱う必要があるため、保護された設定構成に格納される必要があります。 Azure VM 拡張機能の保護された設定データは暗号化され、ターゲットの仮想マシンでのみ、暗号化が解除されます。 **workspaceId** と **workspaceKey** の大文字と小文字は区別されることに注意してください。
+次の JSON は、Log Analytics Agent 拡張機能のスキーマを示しています。 この拡張機能では、ターゲット Log Analytics ワークスペースのワークスペース ID とワークスペース キーが必要です (これらの値は Azure Portal の [Log Analytics ワークスペース](../../azure-monitor/vm/quick-collect-linux-computer.md#obtain-workspace-id-and-key)で確認できます)。 ワークスペース キーは機密データとして取り扱う必要があるため、保護された設定構成に格納される必要があります。 Azure VM 拡張機能の保護された設定データは暗号化され、ターゲットの仮想マシンでのみ、暗号化が解除されます。 **workspaceId** と **workspaceKey** の大文字と小文字は区別されることに注意してください。
 
 ```json
 {
@@ -221,7 +214,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 53 | 構成パラメーターが不足しているか正しくないため、この拡張機能は失敗しました | 正しくない処理に関する詳細情報を出力とログで確認します。 さらに、ワークスペース ID が正しいこと、およびコンピューターがインターネットに接続されていることを確認します。 |
 | 55 | Azure Monitor サービスに接続できない、必要なパッケージが見つからない、または dpkg パッケージ マネージャーがロックされています| システムがインターネットにアクセスしていること、または有効な HTTP プロキシが指定されていることを確認します。 さらに、ワークスペース ID が正しいこと、および curl ユーティリティと tar ユーティリティがインストールされていることを確認します。 |
 
-その他のトラブルシューティング情報については、[Log Analytics エージェントのトラブルシューティング](../../azure-monitor/platform/vmext-troubleshoot.md)に関する記事を参照してください。
+その他のトラブルシューティング情報については、[Log Analytics エージェントのトラブルシューティング](../../azure-monitor/visualize/vmext-troubleshoot.md)に関する記事を参照してください。
 
 ### <a name="support"></a>サポート
 

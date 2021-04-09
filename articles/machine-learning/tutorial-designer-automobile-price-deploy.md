@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: e93f912915303ce903a32ceba4f079593657a4ac
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: ec563371ab505113117707f56c31f506f7fdf377
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576060"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659525"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>チュートリアル:デザイナーで機械学習モデルをデプロイする
 
@@ -42,7 +42,7 @@ ms.locfileid: "99576060"
 
 1. パイプライン キャンバス上で **[Create inference pipeline]\(推論パイプラインの作成\)**  >  **[Real-time inference pipeline]\(リアルタイム推論パイプライン\)** の順に選択します。
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png"alt-text="パイプラインの作成ボタンへのアクセス方法を示すスクリーンショット":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png" alt-text="パイプラインの作成ボタンへのアクセス方法を示すスクリーンショット":::
 
     これでパイプラインは次のようになっているはずです。 
 
@@ -97,7 +97,7 @@ AKS サービスのプロビジョニングが完了したら、リアルタイ�
 
 1. 作成した AKS クラスターを選択します。
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="新しいリアルタイム エンドポイントの設定方法を示すスクリーンショット":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png" alt-text="新しいリアルタイム エンドポイントの設定方法を示すスクリーンショット":::
 
     リアルタイム エンドポイントの **[詳細]** 設定を変更することもできます。
     
@@ -137,6 +137,22 @@ AKS サービスのプロビジョニングが完了したら、リアルタイ�
 1. エンドポイントをテストするには、 **[テスト]** タブに移動します。ここでは、テスト データを入力し、 **[テスト]** を選択して、エンドポイントの出力を確認します。
 
 Web サービスの使用方法の詳細については、[Web サービスとしてデプロイされたモデルの使用](how-to-consume-web-service.md)に関するページを参照してください
+
+## <a name="limitations"></a>制限事項
+
+トレーニング パイプラインに何らかの変更を加える場合は、トレーニング パイプラインを再送信し、推論パイプラインを **更新** して、推論パイプラインを再度実行する必要があります。
+
+推論パイプラインではトレーニング済みのモデルのみが更新され、データ変換は更新されないことに注意してください。
+
+更新された変換を推論パイプラインで使用するには、変換モジュールの変換出力をデータセットとして登録する必要があります。
+
+![変換データセットの登録方法を示すスクリーンショット](./media/tutorial-designer-automobile-price-deploy/register-transformation-dataset.png)
+
+次に、推論パイプラインの **TD-** モジュールを、登録したデータセットに手動で置き換えます。
+
+![変換モジュールの置換方法を示すスクリーンショット](./media/tutorial-designer-automobile-price-deploy/replace-td-module.png)
+
+その後、更新されたモデルおよび変換と共に推論パイプラインを送信し、デプロイできます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

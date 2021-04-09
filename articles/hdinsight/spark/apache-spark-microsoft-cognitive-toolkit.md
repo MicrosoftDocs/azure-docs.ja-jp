@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: cddbc4b6a5c7a2c787c8305fdf703e34543746f8
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6be70f448cec7cf6db2b8152565ad8102d3a3294
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929963"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868751"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit ディープ ラーニング モデルを使用する
 
@@ -73,7 +73,7 @@ Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit を使用�
 
 1. Jupyter Notebook で、右上隅にある **[アップロード]** を選択し、ダウンロードに移動して `CNTK_model_scoring_on_Spark_walkthrough.ipynb` ファイルを選びます。
 
-    ![Jupyter Notebook を Azure HDInsight Spark クラスターにアップロードする](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "Jupyter Notebook を Azure HDInsight Spark クラスターにアップロードする")
+    :::image type="content" source="./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png " alt-text="Jupyter Notebook を Azure HDInsight Spark クラスターにアップロードする" border="true":::
 
 1. もう一度 **[アップロード]** を選択します。
 
@@ -81,13 +81,13 @@ Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit を使用�
 
 ## <a name="see-also"></a>参照
 
-* [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
+* [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
 
-* [Apache Spark と BI: HDInsight の Spark と BI ツールを使用して対話型データ分析を実行する](apache-spark-use-bi-tools.md)
+* [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
 * [Apache Spark と Machine Learning: HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark と Machine Learning: HDInsight 上で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
 * [HDInsight での Apache Spark を使用した Application Insight テレメトリ データ分析](apache-spark-analyze-application-insight-logs.md)
 

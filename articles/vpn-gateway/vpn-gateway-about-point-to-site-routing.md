@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/07/2020
 ms.author: cherylmc
 ms.openlocfilehash: 0b9b8ba555cddd56c49c750709e69ec180291c95
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91827164"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>ポイント対サイト VPN ルーティングについて
@@ -56,7 +56,7 @@ ms.locfileid: "91827164"
 
 Windows を使用しているクライアントは直接ピアリングされた VNet にアクセスできますが、VNet ピアリングまたはネットワーク トポロジが変更された場合は VPN クライアントをもう一度ダウンロードする必要があります。 Windows 以外のクライアントは、直接ピアリングされた VNet にアクセスできます。 アクセスは推移的ではなく、直接ピアリングされた VNet のみに限定されます。
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple.jpg" alt-text="分離された VNet ルーティング" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple.jpg" alt-text="ピアリングされた複数の VNet" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple.jpg":::
 
 ### <a name="address-space"></a>アドレス空間:
 
@@ -86,7 +86,7 @@ Windows を使用しているクライアントは直接ピアリングされた
 
 Windows、または別のサポート対象 OS を使用しているクライアントから、VNet1 にのみアクセスできます。 その他の VNet にアクセスするには、BGP を使用する必要があります。
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple-s2s.jpg" alt-text="分離された VNet ルーティング" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple-s2s.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple-s2s.jpg" alt-text="複数の VNet と S2S" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple-s2s.jpg":::
 
 ### <a name="address-space"></a>アドレス空間
 
@@ -114,7 +114,7 @@ Windows、または別のサポート対象 OS を使用しているクライア
 
 Windows、または別のサポートさ対象 OS を使用しているクライアントから、サイト間 VPN を使用して接続されているすべての VNet にアクセスできますが、接続されている VNet へのルートを Windows クライアントに手動で追加する必要があります。
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple-bgp.jpg" alt-text="分離された VNet ルーティング" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple-bgp.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple-bgp.jpg" alt-text="複数の VNet と S2S (BGP)" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple-bgp.jpg":::
 
 ### <a name="address-space"></a>アドレス空間
 
@@ -142,7 +142,7 @@ Windows、または別のサポートさ対象 OS を使用しているクライ
 
 Windows クライアントと Windows 以外のクライアントは VNet1 にのみアクセスできます。
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/branch-office.jpg" alt-text="分離された VNet ルーティング" lightbox="./media/vpn-gateway-about-point-to-site-routing/branch-office.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/branch-office.jpg" alt-text="1 つの VNet とブランチ オフィスを含むルーティング" lightbox="./media/vpn-gateway-about-point-to-site-routing/branch-office.jpg":::
 
 ### <a name="address-space"></a>アドレス空間
 
@@ -168,7 +168,7 @@ Windows クライアントと Windows 以外のクライアントは VNet1 に�
 
 Windows クライアントは VNet とブランチ オフィス (Site1) にアクセスできますが、Site1 へのルートをクライアントに手動で追加する必要があります。 Windows 以外のクライアントは、VNet とオンプレミスのブランチ オフィスにアクセスできます。
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/branch-bgp.jpg" alt-text="分離された VNet ルーティング" lightbox="./media/vpn-gateway-about-point-to-site-routing/branch-bgp.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/branch-bgp.jpg" alt-text="1 つの VNet とブランチ オフィスを含むルーティング - BGP" lightbox="./media/vpn-gateway-about-point-to-site-routing/branch-bgp.jpg":::
 
 ### <a name="address-space"></a>アドレス空間
 
@@ -195,7 +195,7 @@ Windows クライアントは VNet とブランチ オフィス (Site1) にア�
 
 すべてのクライアントが VNet1 にのみアクセスできます。
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multi-branch.jpg" alt-text="分離された VNet ルーティング" lightbox="./media/vpn-gateway-about-point-to-site-routing/multi-branch.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multi-branch.jpg" alt-text="複数の VNet S2S とブランチ オフィスを示す図" lightbox="./media/vpn-gateway-about-point-to-site-routing/multi-branch.jpg":::
 
 ### <a name="address-space"></a>アドレス空間
 
@@ -225,7 +225,7 @@ Windows クライアントは VNet とブランチ オフィス (Site1) にア�
 
 Windows を使用しているクライアントは、サイト間 VPN 接続を使用して接続されている VNet とサイトにアクセスできますが、VNet2、VNet3、Site1 へのルートをクライアントに手動で追加する必要があります。 Windows 以外のクライアントは、手動で介入しなくても、サイト間 VPN 接続を使用して接続されている VNet とサイトにアクセスできます。 アクセスは推移的であり、クライアントは、接続されているすべての VNet とサイト (オンプレミス) のリソースにアクセスできます。
 
-:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multi-branch-bgp.jpg" alt-text="分離された VNet ルーティング" lightbox="./media/vpn-gateway-about-point-to-site-routing/multi-branch-bgp.jpg":::
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multi-branch-bgp.jpg" alt-text="複数の VNet S2S とブランチ オフィス" lightbox="./media/vpn-gateway-about-point-to-site-routing/multi-branch-bgp.jpg":::
 
 ### <a name="address-space"></a>アドレス空間
 

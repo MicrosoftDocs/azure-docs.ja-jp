@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeedes
 ms.openlocfilehash: 422b22c265b6df353b86ff19db7c42f86bce8835
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92453892"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-euromonitor-passport"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Euromonitor Passport の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Euromonitor Passport では、 **SP と IDP** によって開始される SSO がサポートされます
+* Euromonitor Passport では、**SP と IDP** によって開始される SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -52,7 +52,7 @@ Azure AD への Euromonitor Passport の統合を構成するには、ギャラ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Euromonitor Passport** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Euromonitor Passport**」と入力します。
 1. 結果のパネルから **[Euromonitor Passport]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-euromonitor-passport"></a>Euromonitor Passport の Azure AD シングル サインオンの構成とテスト
@@ -80,7 +80,7 @@ Euromonitor Passport に対する Azure AD SSO を構成してテストするに
 
 1. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
 
-1. **SP** 開始モードでアプリケーションを構成する場合は、 [Euromonitor Passport サポート チーム](mailto:passport.support@euromonitor.com)からサインオン URL を入手する必要があります。 Euromonitor Passport サポート チームからサインオン URL を入手したら、 **[追加の URL を設定します]** をクリックして、次の手順を実行します。
+1. **SP** 開始モードでアプリケーションを構成する場合は、[Euromonitor Passport サポート チーム](mailto:passport.support@euromonitor.com)からサインオン URL を入手する必要があります。 Euromonitor Passport サポート チームからサインオン URL を入手したら、 **[追加の URL を設定します]** をクリックして、次の手順を実行します。
 
     Euromonitor Passport サポート チームから入手したサインオン URL の値を [サインオン URL] ボックスに貼り付けます。
 
@@ -135,7 +135,7 @@ Euromonitor Passport に対する Azure AD SSO を構成してテストするに
 
 ## <a name="configure-euromonitor-passport-sso"></a>Euromonitor Passport の SSO の構成
 
-**Euromonitor Passport** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Euromonitor Passport サポート チーム](mailto:passport.support@euromonitor.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Euromonitor Passport** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Euromonitor Passport サポート チーム](mailto:passport.support@euromonitor.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-euromonitor-passport-test-user"></a>Euromonitor Passport のテスト ユーザーの作成
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 708c70a5144e4e38dd5de9524711c80ef28cd839
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 9302bde13a303dda2107900dc0c10cc180669a18
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100092130"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650730"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Text Analytics REST API を呼び出す方法
 
@@ -37,7 +37,7 @@ Text Analytics API を使用する前に、アプリケーションのキーと�
 
 ## <a name="change-your-pricing-tier"></a>価格レベルを変更する 
 
-S0 から S4 の価格レベルを使用している既存の Text Analytics リソースがある場合は、Standard (S) [価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)を使用するようにそれを更新できます。
+S0 から S4 の価格レベルを使用している既存の Text Analytics リソースがある場合は、Standard (S) [価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)を使用するように更新する必要があります。 S0 から S4 の価格レベルは廃止されます。 リソースの価格を更新するには、次のようにします。
 
 1. [Azure portal](https://portal.azure.com/) で Text Analytics リソースに移動します。
 2. 左側のナビゲーション メニューから、 **[価格レベル]** を選択します。 これは **[リソース管理]** の下にあります。 

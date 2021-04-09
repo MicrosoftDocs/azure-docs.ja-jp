@@ -9,13 +9,13 @@ ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
-ms.date: 11/06/2020
-ms.openlocfilehash: a9dfd185af012314ddc481b598f181b6760640ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/19/2021
+ms.openlocfilehash: 9205301cb77941e4ea7ca026710d44ba82f6a937
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690942"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103563846"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>移行ガイド:SQL Server から SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -58,6 +58,8 @@ SQL Server を Azure SQL Database に移行するには、次の前提条件が�
 検出フェーズで使用できるツールの詳細については、「[データ移行のシナリオで利用できるサービスとツール](../../../dms/dms-tools-matrix.md)」を参照してください。 
 
 ### <a name="assess"></a>アクセス 
+
+[!INCLUDE [assess-estate-with-azure-migrate](../../../../includes/azure-migrate-to-assess-sql-data-estate.md)]
 
 データ ソースが検出された後、Azure SQL Database に移行できるオンプレミスの SQL Server データベースを評価して、移行の阻害要素や互換性の問題を明らかにします。 
 
@@ -181,9 +183,6 @@ Azure SQL Database への移行を高速化するには、次の推奨事項を�
 1. **テスト環境を設定する**: テスト環境には、ソース データベースとターゲット データベースのコピーが含まれている必要があります。 必ずテスト環境を分離してください。
 1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行してから、結果を分析します。
 1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行し、結果を分析して比較します。
-
-   > [!NOTE]
-   > 移行後の検証テストの開発と実行を支援するために、パートナーの [QuerySurge](https://www.querysurge.com/company/partners/microsoft) から入手できる Data Quality Solution を検討してください。 
 
 
 ## <a name="leverage-advanced-features"></a>高度な機能を活用する 

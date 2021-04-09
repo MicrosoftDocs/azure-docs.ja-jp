@@ -7,10 +7,10 @@ ms.date: 06/29/2018
 ms.custom: devx-track-java
 ms.author: pepogors
 ms.openlocfilehash: cc65deb924a9f3367c2ea1d7c71544743ccf2697
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87327363"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Visual Studio Code を使用して Java Service Fabric アプリケーションを開発する
@@ -37,13 +37,13 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
 ## <a name="open-the-application-in-vs-code"></a>VS Code でアプリケーションを開く
 
-VS Code を開きます。  **アクティビティ バー**の [エクスプローラー] アイコンをクリックし、 **[フォルダーを開く]** をクリックするか、 **[ファイル]、[フォルダーを開く]** の順にクリックします。 リポジトリを複製したフォルダーの *./service-fabric-java-quickstart/Voting* ディレクトリに移動し、 **[OK]** をクリックします。 このワークスペースには、以下のスクリーンショットと同じファイルが含まれています。
+VS Code を開きます。  **アクティビティ バー** の [エクスプローラー] アイコンをクリックし、 **[フォルダーを開く]** をクリックするか、 **[ファイル]、[フォルダーを開く]** の順にクリックします。 リポジトリを複製したフォルダーの *./service-fabric-java-quickstart/Voting* ディレクトリに移動し、 **[OK]** をクリックします。 このワークスペースには、以下のスクリーンショットと同じファイルが含まれています。
 
 ![ワークスペースの Java Voting アプリケーション](./media/service-fabric-develop-java-applications-with-vs-code/java-voting-application.png)
 
 ## <a name="build-the-application"></a>アプリケーションのビルド
 
-1. (Ctrl + Shift + P キー) を押して VS Code で**コマンド パレット**を開きます。
+1. (Ctrl + Shift + P キー) を押して VS Code で **コマンド パレット** を開きます。
 2. **[Service Fabric:Build Application]\(Service Fabric: アプリケーションのビルド\)** コマンドを探して選択します。 ビルドの出力は統合ターミナルに送信されます。
 
    ![VS Code の [Build Application]\(アプリケーションのビルド\) コマンド](./media/service-fabric-develop-java-applications-with-vs-code/sf-build-application.png)
@@ -54,7 +54,7 @@ VS Code を開きます。  **アクティビティ バー**の [エクスプロ
 > [!IMPORTANT]
 > ローカル クラスターへの Java アプリケーションのデプロイは、Windows マシンではサポートされていません。
 
-1. **コマンド パレット**から **[Service Fabric:Deploy Application (Localhost)]\(Service Fabric: アプリケーションのデプロイ (Localhost)\)** コマンドを選択します。 インストール プロセスの出力は統合ターミナルに送信されます。
+1. **コマンド パレット** から **[Service Fabric:Deploy Application (Localhost)]\(Service Fabric: アプリケーションのデプロイ (Localhost)\)** コマンドを選択します。 インストール プロセスの出力は統合ターミナルに送信されます。
 
    ![VS Code の [Deploy Application]\(アプリケーションのデプロイ) コマンド](./media/service-fabric-develop-java-applications-with-vs-code/sf-deploy-application.png)
 
@@ -66,7 +66,7 @@ VS Code を開きます。  **アクティビティ バー**の [エクスプロ
 
    ![ブラウザーの Voting アプリケーション](./media/service-fabric-develop-java-applications-with-vs-code/voting-sample-in-browser.png)
 
-5. クラスターからアプリケーションを削除するには、次を選択します: **[Service Fabric: Remove Application]\(Service Fabric: アプリケーションの削除\)** コマンド (**コマンド パレット**から)。 アンインストール プロセスの出力は統合ターミナルに送信されます。 Service Fabric Explorer を使用して、アプリケーションがローカル クラスターから削除されたことを確認できます。
+5. クラスターからアプリケーションを削除するには、次を選択します: **[Service Fabric: Remove Application]\(Service Fabric: アプリケーションの削除\)** コマンド (**コマンド パレット** から)。 アンインストール プロセスの出力は統合ターミナルに送信されます。 Service Fabric Explorer を使用して、アプリケーションがローカル クラスターから削除されたことを確認できます。
 
 ## <a name="debug-the-application"></a>アプリケーションのデバッグ
 VS Code でアプリケーションをデバッグする場合、ローカル クラスター上でアプリケーションを実行する必要があります。 ブレークポイントをコードに追加することができます。
@@ -89,7 +89,7 @@ VS Code でアプリケーションをデバッグする場合、ローカル �
          <StatefulService MinReplicaSetSize="1" ServiceTypeName="VotingDataServiceType" TargetReplicaSetSize="1">
    ```
 
-3. VS Code で**アクティビティ バー**の [デバッグ] アイコンをクリックして、デバッガー ビューを開きます。 デバッガー ビューの上部にある歯車アイコンをクリックし、ドロップダウン メニューから **[Java]** を選択します。 launch.json ファイルが開きます。 
+3. VS Code で **アクティビティ バー** の [デバッグ] アイコンをクリックして、デバッガー ビューを開きます。 デバッガー ビューの上部にある歯車アイコンをクリックし、ドロップダウン メニューから **[Java]** を選択します。 launch.json ファイルが開きます。 
 
    ![VS Code ワークスペースの [デバッグ] アイコン](./media/service-fabric-develop-java-applications-with-vs-code/debug-icon-workspace.png)
 
@@ -107,7 +107,7 @@ VS Code でアプリケーションをデバッグする場合、ローカル �
 
    > [!IMPORTANT]
    > 実行可能なコード行にブレークポイントを設定します。 たとえば、メソッドの宣言、`try` ステートメント、または `catch` ステートメントに設定されているブレークポイントは、デバッガーで無視されます。
-2. デバッグを開始するには、**アクティビティ バー**の [デバッグ] アイコンをクリックし、デバッグ メニューから **[Debug (Attach)]\(デバッグ (アタッチ)\)** を選択し、実行ボタン (緑色の矢印) をクリックします。
+2. デバッグを開始するには、**アクティビティ バー** の [デバッグ] アイコンをクリックし、デバッグ メニューから **[Debug (Attach)]\(デバッグ (アタッチ)\)** を選択し、実行ボタン (緑色の矢印) をクリックします。
 
    ![[Debug (Attach)]\(デバッグ (アタッチ)\) の構成](./media/service-fabric-develop-java-applications-with-vs-code/debug-attach-java.png)
 

@@ -7,20 +7,20 @@ ms.date: 11/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b567efe2541bb33c905def73bb78398799b4ed69
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 1a58a2f69b9c6c6742c4b9daf32dd0e13341aac1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920544"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742145"
 ---
-# <a name="device-model-repository"></a>デバイス モデル リポジトリ
+# <a name="device-models-repository"></a>デバイス モデル リポジトリ
 
 デバイス モデル リポジトリ (DMR) を使用すると、デバイス ビルダーは IoT プラグ アンド プレイ デバイス モデルを管理および共有できます。 デバイス モデルは、[Digital Twins モデリング言語 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) を使用して定義された JSON LD ドキュメントです。
 
 DMR によって、デバイス ツイン モデル識別子 (DTMI) に基づいて DTDL インターフェイスをフォルダー構造に格納するパターンが定義されます。 DTMI を相対パスに変換することで、DMR 内のインターフェイスを特定できます。 たとえば、`dtmi:com:example:Thermostat;1` DTMI は `/dtmi/com/example/thermostat-1.json` に変換されます。
 
-## <a name="public-device-model-repository"></a>パブリック デバイス モデル リポジトリ
+## <a name="public-device-models-repository"></a>パブリック デバイス モデル リポジトリ
 
 Microsoft によって、これらの特性を持つパブリック DMR がホストされます:
 
@@ -28,7 +28,7 @@ Microsoft によって、これらの特性を持つパブリック DMR がホ�
 - 不変性。  公開後、インターフェイスを更新することはできません。
 - ハイパースケール。 Microsoft は、デバイス モデルを公開して使用できる、安全でスケーラブルなエンドポイントを作成するために必要なインフラストラクチャを提供しています。
 
-## <a name="custom-device-model-repository"></a>カスタム デバイス モデル リポジトリ
+## <a name="custom-device-models-repository"></a>カスタム デバイス モデル リポジトリ
 
 ローカル ファイル システムやカスタム HTTP Web サーバーなどの任意のストレージ メディア内で同じ DMR パターンを使用して、カスタム DMR を作成します。 DMR にアクセスするために使用するベース URL を変更して、パブリック DMR と同じ方法でカスタム DMR からデバイス モデルを取得できます。
 
@@ -39,7 +39,7 @@ Microsoft によって、これらの特性を持つパブリック DMR がホ�
 
 モデル リポジトリに格納されているパブリック デバイス モデルは、すべてのユーザーがアプリケーション内で使用および統合することができます。 パブリック デバイス モデルを使用すると、オープンなエコシステムでデバイス ビルダーおよびソリューション開発者が、IoT プラグ アンド プレイ デバイス モデルを共有したり、再利用したりすることができます。
 
-モデル リポジトリにモデルを公開してパブリックにする方法については、「[モデルを公開する](#publish-a-model)」のセクションを参照してください。
+モデル リポジトリにモデルを公開してパブリックにする方法については、「[モデルを公開する](#publish-a-model)」セクションを参照してください。
 
 ユーザーは、公式の [GitHub リポジトリ](https://github.com/Azure/iot-plugandplay-models)からパブリック インターフェイスを参照、検索、表示できます。
 

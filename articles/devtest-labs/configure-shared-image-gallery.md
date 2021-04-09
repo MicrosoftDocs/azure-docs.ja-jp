@@ -4,10 +4,10 @@ description: Azure DevTest Labs で、ラボのリソースの作成時に、共
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: febcff640efc29eb4916250366641635f9d8721e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98788423"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Azure DevTest Labs での共有イメージ ギャラリーの構成

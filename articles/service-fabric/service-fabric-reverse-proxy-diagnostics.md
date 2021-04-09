@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: kavyako
 ms.openlocfilehash: bbc1fe5a76ecb5720bc49e0a082d5e9151b403d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75645465"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>リバース プロキシの要求処理の監視と診断
@@ -77,7 +77,7 @@ Service Fabric リリース 5.7 以降、リバース プロキシ イベント�
     
     一致するサービス エンドポイントが見つからなかったため、リバース プロキシから 404 が返される例を次に示します。
     主なペイロード エントリは次のとおりです。
-   * **processRequestPhase**:エラーが発生したときに要求が処理中のフェーズを示します。たとえば、***TryGetEndpoint*** は 転送先のサービス エンドポイントを取得中であることを示します。 
+   * **processRequestPhase**: エラーが発生したときに要求が処理中のフェーズを示します。たとえば、**_TryGetEndpoint_** は 転送先のサービス エンドポイントを取得中であることを示します。 
    * **errorDetails**:エンドポイント検索条件を列挙します。 この例では、listenerName に = **FrontEndListener** が指定されていますが、レプリカ エンドポイント リストには、**OldListener** というリスナーしか含まれていないことがわかります。
     
      ```

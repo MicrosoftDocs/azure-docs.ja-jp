@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 4e2531d511193586ef4605cc3732968b6db28d9f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7ab67602ebba2ae5446ecc0052ef4b03bba1e1bf
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600494"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952985"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Windows 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -19,7 +19,7 @@ Azure Monitor の Windows 用 Log Analytics エージェントで発生する可
 どの手順でも解決しない場合は、以下のサポート チャネルもご利用いただけます。
 
 * Premier サポート ベネフィットをお持ちのお客様は、[Premier](https://premier.microsoft.com/) でサポート要求を開くことができます。
-* Azure サポート契約のお客様は、[Azure portal](https://manage.windowsazure.com/?getsupport=true) でサポート要求を開くことができます。
+* Azure サポート契約のお客様は、[Azure portal](https://azure.microsoft.com/support/options/) でサポート要求を開くことができます。
 * Log Analytics のフィードバック ページ ([https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback)) で、提出されたアイデアやバグを確認したり、新しく登録します。 
 
 ## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics のトラブルシューティング ツール

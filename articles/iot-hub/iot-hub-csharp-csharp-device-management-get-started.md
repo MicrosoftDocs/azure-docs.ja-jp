@@ -11,10 +11,10 @@ ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
 ms.openlocfilehash: 5760c574e64a3b3b4a1df12092cff44374790a90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89018401"
 ---
 # <a name="get-started-with-device-management-net"></a>デバイス管理の開始 (.NET)
@@ -69,7 +69,7 @@ ms.locfileid: "89018401"
 
     ![New Visual C# Windows Classic Desktop project](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-configure.png)
 
-1. **ソリューション エクスプローラー**で **TriggerReboot** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
+1. **ソリューション エクスプローラー** で **TriggerReboot** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 
 1. **[参照]** を選択し、**Microsoft.Azure.Devices** を探して選択します。 **[インストール]** を選択し、**Microsoft.Azure.Devices** パッケージをインストールします。
 

@@ -6,13 +6,13 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 16dda6fc4637f052514a0e78a0804bf4702ed20b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85336650"
 ---
-# <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>クイック スタート:Ruby で Service Bus キューを使用する方法
+# <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>クイックスタート: Ruby で Service Bus キューを使用する方法
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
@@ -21,12 +21,12 @@ ms.locfileid: "85336650"
 ## <a name="prerequisites"></a>前提条件
 1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
 2. 「[Azure portal を使用して Service Bus キューを作成する](service-bus-quickstart-portal.md)」の手順に従ってください。
-    1. Service Bus **キュー**の**概要**をお読みください。 
-    2. Service Bus **名前空間**を作成します。 
-    3. **接続文字列**を取得します。 
+    1. Service Bus **キュー** の **概要** をお読みください。 
+    2. Service Bus **名前空間** を作成します。 
+    3. **接続文字列** を取得します。 
 
         > [!NOTE]
-        > このチュートリアルでは、Ruby を使用して Service Bus 名前空間で**キュー**を作成します。 
+        > このチュートリアルでは、Ruby を使用して Service Bus 名前空間で **キュー** を作成します。 
 
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 

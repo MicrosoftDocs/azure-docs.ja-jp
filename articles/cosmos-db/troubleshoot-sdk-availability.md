@@ -3,17 +3,17 @@ title: 複数リージョン環境での Azure Cosmos SDK の可用性の診断�
 description: 複数リージョン環境で操作する場合の Azure Cosmos SDK の可用性の動作について、詳しく説明します。
 author: ealsur
 ms.service: cosmos-db
-ms.date: 02/16/2021
+ms.date: 02/18/2021
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 34c6e7ad8473f02f2772c84ea63aee2a41b97306
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 0720eb01920e39a9bee27e4d00d97acba55b0ad5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559701"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661428"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>複数リージョン環境での Azure Cosmos SDK の可用性の診断とトラブルシューティング
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,17 @@ ms.locfileid: "100559701"
 | 複数の書き込みリージョン | プライマリ リージョン  | プライマリ リージョン  |
 
 > [!NOTE]
-> プライマリ リージョンとは、[Azure Cosmos アカウント リージョン一覧](distribute-data-globally.md)の最初のリージョンを指します
+> プライマリ リージョンとは、[Azure Cosmos アカウントのリージョン一覧](distribute-data-globally.md)にある最初のリージョンを指します。
+> リージョンの優先設定として指定された値が既存のどの Azure リージョンとも一致しない場合、それらは無視されます。 それらが既存のリージョンと一致していても、アカウントがそれにレプリケートされていない場合、クライアントは、一致する次の優先リージョンまたはプライマリ リージョンに接続します。
+
+> [!WARNING]
+> このドキュメントで説明されているフェールオーバーと可用性ロジックは、クライアント構成で無効にできますが、これは、ユーザー アプリケーションで可用性エラー自体が処理される場合を除き、推奨されません。 これは、次のようにして実現できます。
+>
+> * .NET V2 SDK で [ConnectionPolicy.EnableEndpointRediscovery](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.enableendpointdiscovery) プロパティを false に設定する。
+> * .NET V3 SDK で [CosmosClientOptions.LimitToEndpoint](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.limittoendpoint) プロパティを true に設定する。
+> * Java V4 SDK で [CosmosClientBuilder.endpointDiscoveryEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.endpointdiscoveryenabled) メソッドを false に設定する。
+> * Python SDK で [CosmosClient.enable_endpoint_discovery](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) パラメーターを false に設定する。
+> * JS SDK で [CosmosClientOptions.ConnectionPolicy.enableEndpointDiscovery](/javascript/api/@azure/cosmos/connectionpolicy#enableEndpointDiscovery) パラメーターを false に設定する。
 
 通常の状況下では、SDK クライアントは優先リージョン (リージョンの優先設定が設定されている場合) またはプライマリ リージョン (優先設定が設定されていない場合) に接続され、以下のいずれかのシナリオが発生しない限り、操作はそのリージョンに限定されます。
 
@@ -59,7 +69,7 @@ ms.locfileid: "100559701"
 
 ## <a name="removing-a-region-from-the-account"></a><a id="remove-region"></a>アカウントからのリージョンの削除
 
-Azure Cosmos アカウントからリージョンを削除すると、アカウントをアクティブに使用している SDK クライアントでは、バックエンドの応答コードを介してリージョンの削除が検出されます。 次に、クライアントによってリージョンのエンドポイントは使用不可とマークされます。 クライアントによって現在の操作が再試行され、以降のすべての操作は優先順に次のリージョンに永続的にルーティングされます。
+Azure Cosmos アカウントからリージョンを削除すると、アカウントをアクティブに使用している SDK クライアントでは、バックエンドの応答コードを介してリージョンの削除が検出されます。 次に、クライアントによってリージョンのエンドポイントは使用不可とマークされます。 クライアントによって現在の操作が再試行され、以降のすべての操作は優先順に次のリージョンに永続的にルーティングされます。 優先設定一覧にエントリが 1 つしかなかった (または空だった) が、アカウントに他の使用可能なリージョンがある場合は、アカウント一覧内の次のリージョンにルーティングされます。
 
 ## <a name="adding-a-region-to-an-account"></a>アカウントへのリージョンの追加
 

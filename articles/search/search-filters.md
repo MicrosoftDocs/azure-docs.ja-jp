@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a5c8f835d44896a452a945614332dcbc25ca8bb8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ba538f4753c2365406bd88286b6d54cff1a9e9ea
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694429"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104800824"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure Cognitive Search のフィルター 
 
@@ -130,7 +130,6 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 Follow up with these articles for comprehensive guidance on specific use cases:
 
 + [Facet filters](search-filters-facets.md)
-+ [Language filters](search-filters-language.md)
 + [Security trimming](search-security-trimming-for-azure-search.md) 
 
 ## Field requirements for filtering

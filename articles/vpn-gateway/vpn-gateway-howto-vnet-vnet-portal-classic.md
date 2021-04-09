@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: cherylmc
 ms.openlocfilehash: 0d81e0474d898ffee7f128c0bcea61f077c3d758
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92103222"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet 間の接続の構成 (クラシック)
@@ -38,7 +38,7 @@ VPN Gateway を使用したクラシック デプロイ モデルでの仮想ネ
 
 接続する VNet は、サブスクリプションやリージョンが異なっていてもかまいません。 マルチサイト構成と VNet 対 VNet 通信を組み合わせることができます。 そのため、クロスプレミス接続と仮想ネットワーク間接続とを組み合わせたネットワーク トポロジを確立することができます。
 
-:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png" alt-text="従来の VNet 間アーキテクチャを示す図":::
+:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png" alt-text="接続を示す図":::
 
 ### <a name="why-connect-virtual-networks"></a><a name="why"></a>仮想ネットワークを接続する理由
 
@@ -173,7 +173,7 @@ Azure では、各ローカル ネットワーク サイトで指定されてい
 
 ## <a name="update-local-sites"></a><a name="updatelocal"></a>ローカル サイトの更新
 
-両方の VNet に対して仮想ネットワーク ゲートウェイを作成したら、 **VPN ゲートウェイの IP アドレス** についてローカル サイトのプロパティを調整する必要があります。
+両方の VNet に対して仮想ネットワーク ゲートウェイを作成したら、**VPN ゲートウェイの IP アドレス** についてローカル サイトのプロパティを調整する必要があります。
 
 |VNet の名前|接続されているサイト|ゲートウェイ IP アドレス|
 |:--- |:--- |:--- |
@@ -246,6 +246,6 @@ TestVNet4 について、手順を繰り返します。
 * VNet のすべての VPN トンネル (P2S VPN を含む) は、VPN ゲートウェイ上の使用可能な帯域幅を共有し、Azure 内の同じ VPN ゲートウェイ アップタイム SLA を共有します。
 * VNet 間のトラフィックは、Azure バックボーン経由で送信できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 接続を確認します。 「[VPN Gateway 接続の確認](vpn-gateway-verify-connection-resource-manager.md)」を参照してください。

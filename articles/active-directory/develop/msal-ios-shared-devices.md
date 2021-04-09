@@ -1,7 +1,7 @@
 ---
 title: iOS デバイスの共有デバイス モード
 titleSuffix: Microsoft identity platform | Azure
-description: Firstline Worker (現場の最前線で働く従業員) が iOS デバイスを共有できるようにする共有デバイス モードを有効にする方法について説明します
+description: 現場担当者が iOS デバイスを共有できるようにする共有デバイス モードを有効にする方法について説明します
 services: active-directory
 author: brandwe
 manager: CelesteDG
@@ -13,19 +13,19 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: a97e14bcb68629f5f175a4913146187949af08be
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: c67c5d7b46c04e7f1aea020127ee798878c43d60
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561065"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578789"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>iOS デバイスの共有デバイス モード
 
 >[!IMPORTANT]
 > この機能[!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
-小売店員、航空機乗組員、フィールド サービス ワーカーなどの Firstline Worker (現場の最前線で働く従業員) は多くの場合、共有モバイル デバイスを使用して作業を行います。 これらの共有デバイスでは、ユーザーが意図的か否かにかかわらず、パスワードや PIN を共有して、共有デバイス上の顧客データやビジネス データにアクセスする場合に、セキュリティ上のリスクをもたらす可能性があります。
+小売店員、航空機乗組員、フィールド サービス ワーカーなどの現場担当者は多くの場合、共有モバイル デバイスを使用して作業を行います。 これらの共有デバイスでは、ユーザーが意図的か否かにかかわらず、パスワードや PIN を共有して、共有デバイス上の顧客データやビジネス データにアクセスする場合に、セキュリティ上のリスクをもたらす可能性があります。
 
 共有デバイス モードを使用すると、iOS 13 以上のデバイスを従業員で、より容易にかつ安全に共有できるようになります。 従業員はサインインし、顧客情報にすばやくアクセスできます。 自分のシフトまたはタスクが完了したら、デバイスからサインアウトでき、そのデバイスは直ちに次の従業員が使用できるよう準備が整います。
 
@@ -95,7 +95,7 @@ ms.locfileid: "94561065"
 
 ### <a name="detect-shared-device-mode"></a>共有デバイス モードを検出する
 
-共有デバイス モードの検出は、アプリケーションに重要です。 アプリケーションが共有デバイスで使用されている場合、多くのアプリケーションで、ユーザー エクスペリエンス (UX) を変更する必要があります。 たとえば、アプリケーションに "サインアップ" 機能がある場合があります。これは、Firstline Worker (現場の最前線で働く従業員) は、既にアカウントを持っている可能性があるため、適していません。 また、共有デバイス モードになっている場合は、アプリケーションのデータ処理に特別なセキュリティを追加することもできます。
+共有デバイス モードの検出は、アプリケーションに重要です。 アプリケーションが共有デバイスで使用されている場合、多くのアプリケーションで、ユーザー エクスペリエンス (UX) を変更する必要があります。 たとえば、アプリケーションに "サインアップ" 機能がある場合があります。これは、現場担当者は、既にアカウントを持っている可能性があるため、適していません。 また、共有デバイス モードになっている場合は、アプリケーションのデータ処理に特別なセキュリティを追加することもできます。
 
 `MSALPublicClientApplication` で `getDeviceInformationWithParameters:completionBlock:` API を使用すると、共有デバイス モードのデバイスでアプリが実行しているかどうかを特定できます。
 
@@ -230,6 +230,6 @@ signoutParameters.signoutFromBrowser = YES; // Only needed for Public Preview.
 
 ## <a name="next-steps"></a>次のステップ
 
-共有デバイス モードの動作を確認するために、GitHub の次のコード サンプルに、共有デバイス モードのiOS デバイスで Firstline Worker アプリを実行する例が含まれています。
+共有デバイス モードの動作を確認するために、GitHub の次のコード サンプルに、共有デバイス モードの iOS デバイスで Frontline Worker アプリを実行する例が含まれています。
 
 [MSAL iOS Swift Microsoft Graph API サンプル](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc)

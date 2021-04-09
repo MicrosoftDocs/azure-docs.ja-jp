@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 01/11/2021
 ms.author: rolyon
 ms.openlocfilehash: dec5888127ed1fc291bec244a44cfb71e343e3bb
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100556835"
 ---
 # <a name="assign-a-user-as-an-administrator-of-an-azure-subscription"></a>Azure サブスクリプションの管理者としてユーザーを割り当てる

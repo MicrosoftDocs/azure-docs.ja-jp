@@ -8,10 +8,10 @@ author: mksuni
 ms.author: sumuth
 ms.date: 12/08/2020
 ms.openlocfilehash: ee3b1f7db8bdafb1233b32579e032e8c864c37a9
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97364532"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-postgresql--flexible-server"></a>Azure Database for PostgreSQL フレキシブル サーバーの接続とクエリの概要

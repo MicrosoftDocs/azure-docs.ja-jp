@@ -10,10 +10,10 @@ ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f0e89fdfba852fc056cf48efd1b92daabb272cf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89568253"
 ---
 # <a name="process-change-feed-in-azure-blob-storage"></a>Azure Blob Storage の変更フィードを処理する
@@ -79,7 +79,7 @@ public void showEventData(List<BlobChangeFeedEvent> changeFeedEvents)
 
 ## <a name="resume-reading-records-from-a-saved-position"></a>保存位置からレコードの読み取りを再開する
 
-変更フィードに自分の読み取り位置を保存してから、後でレコードの反復処理を再開するように選択できます。 読み取り位置を保存するには、変更フィード カーソルを取得します。 カーソルは**文字列**であり、アプリケーションでは、アプリケーションの設計に適した方法でその文字列を保存できます (たとえば、ファイルまたはデータベースへ)。
+変更フィードに自分の読み取り位置を保存してから、後でレコードの反復処理を再開するように選択できます。 読み取り位置を保存するには、変更フィード カーソルを取得します。 カーソルは **文字列** であり、アプリケーションでは、アプリケーションの設計に適した方法でその文字列を保存できます (たとえば、ファイルまたはデータベースへ)。
 
 この例では、変更フィード内のすべてのレコードを反復処理し、それらをリストに追加し、カーソルを保存します。 リストとカーソルは呼び出し元に返されます。 
 

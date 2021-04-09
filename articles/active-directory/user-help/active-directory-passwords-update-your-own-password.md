@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 09/10/2020
 ms.author: curtand
 ms.openlocfilehash: c47d573dab3e72a956f6f0b9d09a1dafadf0225c
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91827760"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>セキュリティ情報を使用し、職場または学校のパスワードをリセットする
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) アカウントにアクセスできない場�
 
 1. **[パスワードの入力]** 画面で、 **[パスワードを忘れた場合]** を選択します。
 
-2. **[アカウントの復元]** 画面で、職場または学校の**ユーザー ID** (電子メール アドレスなど) を入力します。その後、画面に表示された文字を入力して自分がロボットではないことを証明し、 **[次へ]** を選択します。
+2. **[アカウントの復元]** 画面で、職場または学校の **ユーザー ID** (電子メール アドレスなど) を入力します。その後、画面に表示された文字を入力して自分がロボットではないことを証明し、 **[次へ]** を選択します。
 
    ![[アカウントの復元] 画面](media/security-info/security-info-back-into-acct.png)
 

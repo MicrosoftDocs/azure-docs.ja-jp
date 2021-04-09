@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: ramamill
 ms.openlocfilehash: dba585fbadca479c146ad42ac1bc5aa9d5349f49
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93186707"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>VMware Deployment Planner のコスト見積もりを確認する 
@@ -52,9 +52,9 @@ Azure のコンピューティング、ストレージ、ネットワークな�
 ### <a name="overall-dr-cost-by-components"></a>Overall DR cost by components (コンポーネントごとの総 DR コスト)
 最初のセクションには、コンポーネントごとの総 DR コストと状態ごとの DR コストが表示されます。 
 
-**コンピューティング** :DR のニーズに応じて Azure で実行される IaaS VM のコストです。 DR ドリル (テスト フェールオーバー) 時に Azure Site Recovery によって作成される VM のほか、Azure 上で実行される VM が対象となります (SQL Server Always On 可用性グループやドメイン コントローラー/ドメイン ネーム サーバーなど)。
+**コンピューティング**:DR のニーズに応じて Azure で実行される IaaS VM のコストです。 DR ドリル (テスト フェールオーバー) 時に Azure Site Recovery によって作成される VM のほか、Azure 上で実行される VM が対象となります (SQL Server Always On 可用性グループやドメイン コントローラー/ドメイン ネーム サーバーなど)。
 
-**ストレージ** : DR のニーズに応じて消費される Azure Storage のコストです。 レプリケーションや DR ドリル時に使用されるストレージの消費が対象となります。
+**ストレージ**: DR のニーズに応じて消費される Azure Storage のコストです。 レプリケーションや DR ドリル時に使用されるストレージの消費が対象となります。
 [ネットワーク]\: DR のニーズに対して発生する ExpressRoute とサイト間 VPN のコストです。 
 
 **[ASR license]\(ASR ライセンス\)** :すべての適合 VM に関する Azure Site Recovery のライセンス コストです。 Detailed cost analysis (詳細コスト分析) テーブルに VM を手動で入力した場合、その VM に関して生じる Azure Site Recovery のライセンス コストも対象となります。
@@ -73,7 +73,7 @@ DR コストの合計は、レプリケーションと DR ドリルという 2 �
 ### <a name="site-to-azure-network"></a>Site to Azure network (サイトと Azure 間のネットワーク)
 実際の要件に応じた設定を選択してください。 
 
-**ExpressRoute** :差分レプリケーションに必要なネットワーク帯域幅に合った、最寄りの ExpressRoute プランが既定で選択されます。 プランは、実際の要件に応じて変更することができます。
+**ExpressRoute**:差分レプリケーションに必要なネットワーク帯域幅に合った、最寄りの ExpressRoute プランが既定で選択されます。 プランは、実際の要件に応じて変更することができます。
 
 **[VPN Gateway]** : ご利用の環境に存在する場合、VPN Gateway を選択します。 既定では NA になります。
 
@@ -90,7 +90,7 @@ Azure の料金総額に対して何らかの割引を受ける資格のある A
 
 ### <a name="settings"></a>設定 
 
-**Currency** :レポートの生成に使用される通貨。 [Cost duration]\(コスト期間\): すべてのコストは、月または年単位で表示できます。 
+**Currency**:レポートの生成に使用される通貨。 [Cost duration]\(コスト期間\): すべてのコストは、月または年単位で表示できます。 
 
 ## <a name="detailed-cost-analysis-table"></a>[Detailed cost analysis]\(詳細コスト分析\) テーブル
 ![[Detailed cost analysis]\(詳細コスト分析\)](media/site-recovery-hyper-v-deployment-planner-cost-estimation/detailed-cost-analysis-h2a.png) このテーブルには、適合 VM ごとのコスト明細が一覧表示されます。 プロファイリングの対象外となった VM の Azure DR コストは、このテーブルに手動で VM を追加することで見積もることができます。 新しいディザスター リカバリー デプロイに必要な Azure のコストを、詳細なプロファイリングを実行せずに見積もる必要がある場合に役立ちます。

@@ -9,12 +9,13 @@ ms.subservice: synapse-link
 ms.date: 03/02/2021
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: cb2cadadacd914bfa5473b512255c1ab0f856150
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.custom: cosmos-db
+ms.openlocfilehash: a03a96f34861b84754de9d9ee4180100b58fcd37
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666312"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869227"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>Azure Cosmos DB 用の Azure Synapse Link でサポートされる機能
 

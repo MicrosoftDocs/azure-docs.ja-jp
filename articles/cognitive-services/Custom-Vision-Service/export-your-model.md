@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: be28a10f8a96d21d64d08cfacee4543c065168ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "85391759"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>モバイル デバイスで使用するためにモデルをエクスポートする
@@ -43,7 +43,7 @@ Custom Vision Service は次のエクスポートに対応しています。
 
 既存のモデルのドメインは次の手順で変換します。
 
-1. [Custom Vision の Web サイト](https://customvision.ai)で、 __[ホーム]__ アイコンを選択し、プロジェクトを一覧表示します。
+1. [Custom Vision の Web サイト](https://customvision.ai)で、__[ホーム]__ アイコンを選択し、プロジェクトを一覧表示します。
 
     ![ホーム アイコンとプロジェクト一覧の画像](./media/export-your-model/projects-list.png)
 
@@ -54,24 +54,24 @@ Custom Vision Service は次のエクスポートに対応しています。
 1. __[ドメイン]__ セクションで、__コンパクト__ ドメインの 1 つを選択します。 __[変更の保存]__ を選択して変更を保存します。 
 
     > [!NOTE]
-    > Vision AI Dev Kit の場合は、プロジェクトを __[General (Compact)]\(汎用 (コンパクト)\)__ ドメインで作成する必要があります。また、 **[Export Capabilities]\(エクスポート機能\)** セクションの **[Vision AI Dev Kit]** オプションを指定する必要があります。
+    > Vision AI Dev Kit の場合は、プロジェクトを __[General (Compact)]\(汎用 (コンパクト)\)__ ドメインで作成する必要があります。また、**[Export Capabilities]\(エクスポート機能\)** セクションの **[Vision AI Dev Kit]** オプションを指定する必要があります。
 
     ![ドメイン選択の画像](./media/export-your-model/domains.png)
 
-1. ページの上部から、 __[Train]\(トレーニングする\)__ を選択し、新しいドメインを使用して再トレーニングします。
+1. ページの上部から、__[Train]\(トレーニングする\)__ を選択し、新しいドメインを使用して再トレーニングします。
 
 ## <a name="export-your-model"></a>モデルをエクスポートする
 
 再トレーニング後にモデルをエクスポートするには、次の手順を使用します。
 
-1. **[パフォーマンス]** タブに移動し、 __[エクスポート]__ を選択します。 
+1. **[パフォーマンス]** タブに移動し、__[エクスポート]__ を選択します。 
 
     ![エクスポート アイコンの画像](./media/export-your-model/export.png)
 
     > [!TIP]
-    > __[エクスポート]__ エントリがない場合、選択されているイテレーションでコンパクト ドメインが使用されていません。 このページの __[イテレーション]__ セクションを利用し、コンパクト ドメインを使用しているイテレーションを選択し、 __[エクスポート]__ を選択してください。
+    > __[エクスポート]__ エントリがない場合、選択されているイテレーションでコンパクト ドメインが使用されていません。 このページの __[イテレーション]__ セクションを利用し、コンパクト ドメインを使用しているイテレーションを選択し、__[エクスポート]__ を選択してください。
 
-1. 目的のエクスポート形式を選択し、 __[エクスポート]__ を選択してモデルをダウンロードします。
+1. 目的のエクスポート形式を選択し、__[エクスポート]__ を選択してモデルをダウンロードします。
 
 ## <a name="next-steps"></a>次のステップ
 

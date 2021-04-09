@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: c7a24dbe93bf0096e327804be07acc3f67d2f03b
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 3a678f6280b5f2d0fd372e75bfbeb6eb2e9b1577
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985758"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "100634296"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>アクティブ geo レプリケーションの作成と使用 - Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,6 +25,9 @@ ms.locfileid: "94985758"
 
 > [!NOTE]
 > アクティブ geo レプリケーションは、 Azure SQL Managed Instance ではサポートされていません。 SQL Managed Instance の地理的なフェールオーバーについては、[自動フェールオーバー グループ](auto-failover-group-overview.md)を使用します。
+
+> [!NOTE]
+> アクティブ geo レプリケーションを使用して Azure Germany から SQL データベースを移行するには、「[アクティブ geo レプリケーションを使用した SQL Database の移行](../../germany/germany-migration-databases.md#migrate-sql-database-using-active-geo-replication)」を参照してください。
 
 アクティブ geo レプリケーションはビジネス継続性ソリューションとして設計されています。このソリューションを使用すれば、地域災害または大規模な機能停止が発生した場合にディザスター リカバリーをアプリケーションで迅速に実行することができます。 geo レプリケーションを有効にすると、アプリケーションは別の Azure リージョンにあるセカンダリ データベースへのフェールオーバーを開始できます。 同じリージョン内または異なるリージョン内で最大 4 つのセカンダリがサポートされています。また、セカンダリを使用して読み取り専用アクセスのクエリを行うこともできます。 フェールオーバーはアプリケーションまたはユーザーによって手動で開始される必要があります。 フェールオーバー後、新しいプライマリには別の接続エンドポイントが設定されます。
 
@@ -292,6 +295,9 @@ RPO に関する遅延を監視するには、プライマリ データベース
 | [Replication Links - List By Database](/rest/api/sql/replicationlinks/listbydatabase) | geo レプリケーション パートナーシップで指定されたデータベースのすべてのレプリケーション リンクを取得します。 sys.geo_replication_links カタログ ビューで表示可能な情報を取得します。 |
 | [Delete Replication Link](/rest/api/sql/replicationlinks/delete) | データベース レプリケーション リンクを削除します。 フェールオーバー中には実行できません。 |
 |  | |
+
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

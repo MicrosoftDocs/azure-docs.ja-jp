@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: tisande
 ms.openlocfilehash: c0d953c8d99582f63744d51b505852b5c44bc409
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96551077"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB の集計関数

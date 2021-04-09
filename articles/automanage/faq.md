@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: deanwe
 ms.openlocfilehash: 0b4e116210cf68dc672122ad4ddc98f85067f3b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101688010"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Azure Automanage for VMs に関してよく寄せられる質問

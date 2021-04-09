@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 3ae81a9c05f0c88a52db6409bf870ee0427f09db
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 37f6a779e7dd83a6aa61de9850ad3b49b57393f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696071"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103010454"
 ---
 # <a name="register-and-scan-oracle-source-preview"></a>Oracle ソースを登録してスキャンする (プレビュー)
 
@@ -31,7 +31,7 @@ Oracle ソースでは Oracle データベースからメタデータを抽出�
 
 3.  セルフホステッド統合ランタイム コンピューターに \"Visual C++ 再頒布可能パッケージ 2012 Update 4\" がインストールされていることを確認します。 まだインストールしていない場合は、[こちら](https://www.microsoft.com/download/details.aspx?id=30679)からダウンロードしてください。
 
-4.  セルフホステッド統合ランタイムが実行されている仮想マシンに、'oracle.jdbc.driver.OracleDriver\' という名前の Oracle JDBC ドライバーを手動でダウンロードする必要があります。
+4.  セルフホステッド統合ランタイムが実行されている仮想マシンに、[こちら](https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html)から Oracle JDBC ドライバーを手動でダウンロードする必要があります。
 
     > [!Note] 
     > このドライバーは、VM 内のすべてのアカウントからアクセスできる必要があります。 それをユーザー アカウントにインストールしないでください。

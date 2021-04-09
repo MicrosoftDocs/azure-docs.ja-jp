@@ -16,12 +16,12 @@ ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d04a2941888592ffa37acfe6cba52a33fda528
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2774c63d34de3de951aa8076b56d203b976158ec
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365512"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102548752"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management の Azure AD ロールのための PowerShell
 
@@ -54,7 +54,7 @@ ms.locfileid: "92365512"
     ![Azure AD 組織のプロパティで組織 ID を検索する](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> 次のセクションでは、使用を開始するのに役立つ簡単な例を紹介しています。 次のコマンドレットに関する詳細なドキュメントについては、[https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) を参照してください。 ただし、providerID パラメーターの "azureResources" を "aadRoles" に置き換える必要があります。 また、Azure AD 組織のテナント ID を resourceId パラメーターとして使用する必要もあります。
+> 次のセクションでは、使用を開始するのに役立つ簡単な例を紹介しています。 次のコマンドレットに関する詳細なドキュメントについては、[https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management) を参照してください。 ただし、providerID パラメーターの "azureResources" を "aadRoles" に置き換える必要があります。 また、Azure AD 組織のテナント ID を resourceId パラメーターとして使用する必要もあります。
 
 ## <a name="retrieving-role-definitions"></a>ロール定義の取得
 

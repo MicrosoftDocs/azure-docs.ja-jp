@@ -1,6 +1,6 @@
 ---
-title: Azure Defender for SQL の使用方法
-description: Azure Security Center のオプションの Azure Defender for SQL プランを使用する方法について説明します
+title: Azure Defender for SQL の設定方法
+description: Azure Security Center のオプションの Azure Defender for SQL プランを有効にする方法について説明します
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: 96af34b5b68fca5ab8061c8c99f03bee094dc175
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b82f0ca0624fcbd64f1c23f87f8f21f96d8e4d4c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590379"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100578"
 ---
-# <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender for SQL servers on machines 
+# <a name="enable-azure-defender-for-sql-servers-on-machines"></a>Azure Defender for SQL servers on machines を有効にする 
 
 この Azure Defender プランにより、データベースへのアクセスやデータベースの悪用を試みる、異常で有害と考えられる不自然な動作が検出されます。
 
@@ -31,7 +31,7 @@ ms.locfileid: "100590379"
 |側面|詳細|
 |----|:----|
 |リリース状態:|一般提供 (GA)|
-|価格:|**Azure Defender for SQL servers on machines** は、[価格ページ](security-center-pricing.md)に記載されているように課金されます|
+|価格:|**Azure Defender for SQL servers on machines** は、[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)に記載されているように課金されます|
 |保護される SQL のバージョン:|Azure SQL Server (Microsoft サポートの対象となるすべてのバージョン)|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![いいえ](./media/icons/no-icon.png) China Gov、その他の Gov|
 |||
@@ -40,11 +40,10 @@ ms.locfileid: "100590379"
 
 このプランを有効にするには:
 
-* SQL サーバーのホストで Log Analytics エージェントをプロビジョニングします。 これにより、Azure への接続が提供されます。
+[手順 1. SQL サーバーのホストで Log Analytics エージェントをプロビジョニングする:](#step-1-provision-the-log-analytics-agent-on-your-sql-servers-host)
 
-* Security Center の [価格と設定] ページで、オプションのプランを有効にします。
+[手順 2. Security Center の価格と設定ページで、オプションのプランを有効にする:](#step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page)
 
-これらの両方について以下に説明します。
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>手順 1. SQL サーバーのホストで Log Analytics エージェントをプロビジョニングする
 
@@ -81,31 +80,6 @@ ms.locfileid: "100590379"
 1. 必要に応じて、セキュリティ アラートのメール通知を構成します。 
     Security Center アラートの生成時にメール通知を受け取る受信者の一覧を設定できます。 メールには、Azure Security Center におけるアラートの直接リンクと関連するすべての詳細が含まれます。 詳細については、[セキュリティ アラートの電子メール通知のセットアップ](security-center-provide-security-contact-details.md)に関する記事を参照してください。
 
-
-
-## <a name="explore-vulnerability-assessment-reports"></a>脆弱性評価レポートについて調べる
-
-脆弱性評価サービスは、1 週間に 1 回データベースをスキャンします。 スキャンは、サービスを有効にした曜日と同じ曜日に実行されます。
-
-脆弱性評価ダッシュボードには、すべてのデータベースにおける評価結果の概要、正常なデータベースと異常なデータベースの概要、およびリスク分散による失敗したチェックの概要が表示されます。
-
-脆弱性評価の結果は、Security Center から直接表示することができます。
-
-1. Security Center のサイドバーから **[推奨事項]** ページを開き、レコメンデーション **[Vulnerabilities on your SQL servers on machines should be remediated (Preview)] (マシン上の SQL サーバーの脆弱性を修復する必要があります (プレビュー))** を選択します。 詳細については、「[Security Center の推奨事項](security-center-recommendations.md)」を参照してください。 
-
-    :::image type="content" source="./media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png" alt-text="マシン上の SQL サーバーの脆弱性評価の結果を修復する必要がある (プレビュー)":::
-
-    このレコメンデーションの詳細ビューが表示されます。
-
-    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="レコメンデーションの詳細ビュー":::
-
-1. 詳細を表示するには、次のようにドリルダウンします。
-
-    * スキャンされたリソース (データベース) の概要と、テスト済みのセキュリティ チェックの一覧を表示するには、目的のサーバーを選択します。
-
-    * 特定の SQL データベースごとにグループ化された脆弱性の概要を表示するには、目的のデータベースを選択します。
-
-    各ビューでは、セキュリティ チェックが **重要度** 順に表示されます。 特定のセキュリティ チェックをクリックすると詳細ウィンドウが表示され、**説明**、**修復方法**、およびその他の関連情報 (**影響** や **ベンチマーク** など) が表示されます。
 
 ## <a name="azure-defender-for-sql-alerts"></a>Azure Defender for SQL のアラート
 普段は見られない、潜在的に有害な SQL マシンへのアクセスが試行されると、あるいは SQL マシンの悪用が試行されると、アラートが生成されます。 これらのイベントにより、[アラートのリファレンス ページ](alerts-reference.md#alerts-sql-db-and-warehouse)に記載されているアラートがトリガーされる場合があります。

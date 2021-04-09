@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 03/30/2018
-ms.openlocfilehash: b6a834ede381ee319d3ff7678f49febd11e34a5d
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 8ff7b2940ca9ce3e5dc5913c0e676a32857771e7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102559772"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046880"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
@@ -245,7 +245,7 @@ waagent --version
 
 ```bash
 WALinuxAgent-2.2.17 running on ubuntu 16.04
-Python: 3.5.2
+Python: 3.6.0
 Goal state agent: 2.2.18
 ```
 

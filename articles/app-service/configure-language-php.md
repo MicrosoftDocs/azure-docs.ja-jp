@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: afac8273b5729bcf5470be471145214426dc7dab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90055301"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>Azure App Service 向けの PHP アプリを構成する
@@ -99,7 +99,7 @@ kuduscript --node --scriptType bash --suppressPrompt
 # ----------
 ```
 
-`Deployment` セクションの*末尾*に必要なツールの実行に必要なコード セクションを追加します。
+`Deployment` セクションの *末尾* に必要なツールの実行に必要なコード セクションを追加します。
 
 ```bash
 # 4. Use composer
@@ -147,7 +147,7 @@ kuduscript --node --scriptType bash --suppressPrompt
 # ----------
 ```
 
-このセクションは、`npm install --production` の実行で終わります。 `Deployment` セクションの*末尾*に必要なツールの実行に必要なコード セクションを追加します。
+このセクションは、`npm install --production` の実行で終わります。 `Deployment` セクションの *末尾* に必要なツールの実行に必要なコード セクションを追加します。
 
 - [Bower](#bower)
 - [Gulp](#gulp)

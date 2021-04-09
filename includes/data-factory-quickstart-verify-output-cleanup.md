@@ -5,10 +5,10 @@ ms.date: 11/09/2018
 author: linda33wj
 ms.author: jingwang
 ms.openlocfilehash: 34848b638ff0c7f7b9d1a2f3e5894339f8310ccc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96013364"
 ---
 ## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する

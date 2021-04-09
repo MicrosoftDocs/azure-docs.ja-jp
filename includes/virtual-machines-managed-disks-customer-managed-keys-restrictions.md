@@ -9,10 +9,10 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 75acbb30c2bf811b7ae72d6939b9f164554fdd32
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98859856"
 ---
 - 2,048 ビット、3,072 ビットおよび 4,096 ビットのサイズの[ソフトウェアと HSM の RSA キー](../articles/key-vault/keys/about-keys.md)のみがサポートされており、その他のキーまたはサイズはサポートされていません。

@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25db7104e565a987f3be9e2d6f3b239cf1884ae4
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5c096b26f31bdf92bb5ab91c8dad7876f228ff14
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932338"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103462798"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>チュートリアル:カスタム IoT Edge モジュールの作成とデプロイ
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 この記事では、リーフ IoT デバイスからメッセージを受信し、機械学習モデルを使用してデータを実行し、分析情報を IoT Hub に転送する 3 つの IoT Edge モジュールを作成します。
 

@@ -3,20 +3,20 @@ title: Azure Media Services でサムネイル スプライトを生成する | 
 description: このトピックでは、Azure Media Services でサムネイル スプライトを生成する方法を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 08/31/2020
-ms.author: juliako
-ms.openlocfilehash: 1d05e73bc9aa51bf20121790de94b1b6d0e26615
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: ce66b6f605b10f65ec8a98d14c682928c7b21321
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268572"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103012243"
 ---
 # <a name="generate-a-thumbnail-sprite"></a>サムネイル スプライトを生成する
 

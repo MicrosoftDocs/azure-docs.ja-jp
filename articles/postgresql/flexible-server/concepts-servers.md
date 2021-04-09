@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 5cd4454d5b77d18940f6693a25a691a01f4fedec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90932471"
 ---
 # <a name="servers---azure-database-for-postgresql---flexible-server"></a>サーバー - Azure Database for PostgreSQL - フレキシブル サーバー
@@ -71,5 +71,5 @@ Postgres の管理対象サービスとして、Azure Database for PostgreSQL �
 ## <a name="next-steps"></a>次のステップ
 
 - サービスの概要については、[Azure Database for PostgreSQL の概要](overview.md)に関するページをご覧ください。
-- **構成**に基づく特定のリソースのクォータと制限については、[コンピューティングとストレージのオプション](concepts-compute-storage.md)に関するページを参照してください。
+- **構成** に基づく特定のリソースのクォータと制限については、[コンピューティングとストレージのオプション](concepts-compute-storage.md)に関するページを参照してください。
 - [Azure Portal](howto-configure-server-parameters-using-portal.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) でサーバー パラメーターを表示および編集します。

@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: b2ac4bbf1457144d23a91c4e83b554b3ee806119
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87337230"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Azure IoT Central でルールに対する Webhook アクションを作成する
@@ -111,7 +111,7 @@ Webhook を使用すると、IoT Central アプリを他のアプリケーショ
 
 ## <a name="data-format-change-notice"></a>データ形式の変更に関する通知
 
-**2020 年 4 月 3 日**より前に作成および保存された Webhook が 1 つ以上ある場合、その Webhook を削除して新しい Webhook を作成する必要があります。 これは、古い Webhook では、今後非推奨となる古いペイロード形式が使用されているためです。
+**2020 年 4 月 3 日** より前に作成および保存された Webhook が 1 つ以上ある場合、その Webhook を削除して新しい Webhook を作成する必要があります。 これは、古い Webhook では、今後非推奨となる古いペイロード形式が使用されているためです。
 
 ### <a name="webhook-payload-format-deprecated-as-of-3-april-2020"></a>Webhook ペイロード (2020 年 4 月 3 日時点で非推奨となった形式)
 

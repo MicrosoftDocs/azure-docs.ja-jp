@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/21/2021
 ms.author: alkohli
 ms.openlocfilehash: 1a0fc569b7d552101c1e0bd1a065b2a91ebfa3c4
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102439614"
 ---
 # <a name="kubernetes-networking-in-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスでの Kubernetes ネットワーク

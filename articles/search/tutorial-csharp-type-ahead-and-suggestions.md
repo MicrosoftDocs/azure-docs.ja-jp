@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/22/2021
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 06c0b25bcf64cfce01b4144550ef69da8c96ee0e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98785856"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用してオートコンプリートと検索候補を追加する

@@ -3,12 +3,12 @@ title: リソースの種類別の移動操作のサポート
 description: 新しいリソース グループまたはサブスクリプションに移動できる Azure リソースの種類を一覧表示します。
 ms.topic: conceptual
 ms.date: 01/11/2021
-ms.openlocfilehash: fe8f6705fdce1a692dd8a969cfc4b3b21d2d2a11
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ae59bcc65f296a10c68b88f5f6a1ecbc923f8856
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072107"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232598"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 
@@ -321,11 +321,11 @@ ms.locfileid: "98072107"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | classicadministrators | いいえ | × |
-> | dataaliases | いいえ | × |
-> | denyassignments | いいえ | × |
+> | classicadministrators | いいえ | いいえ |
+> | dataaliases | いいえ | いいえ |
+> | denyassignments | いいえ | いいえ |
 > | elevateaccess | いいえ | いいえ |
-> | findorphanroleassignments | いいえ | × |
+> | findorphanroleassignments | いいえ | いいえ |
 > | locks | いいえ | いいえ |
 > | 権限 | いいえ | いいえ |
 > | policyassignments | いいえ | いいえ |
@@ -364,7 +364,7 @@ ms.locfileid: "98072107"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | b2cdirectories | はい | はい |
-> | b2ctenants | × | いいえ |
+> | b2ctenants | いいえ | いいえ |
 
 ## <a name="microsoftazuredata"></a>Microsoft.AzureData
 
@@ -422,14 +422,14 @@ ms.locfileid: "98072107"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | mapapis | いいえ | × |
+> | mapapis | いいえ | いいえ |
 
 ## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | biztalk | × | × |
+> | biztalk | いいえ | いいえ |
 
 ## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 
@@ -438,7 +438,7 @@ ms.locfileid: "98072107"
 > | ------------- | ----------- | ---------- |
 > | blockchainmembers | いいえ | いいえ |
 > | cordamembers | いいえ | いいえ |
-> | watchers | × | いいえ |
+> | watchers | いいえ | いいえ |
 
 ## <a name="microsoftblockchaintokens"></a>Microsoft.BlockchainTokens
 
@@ -761,7 +761,7 @@ ms.locfileid: "98072107"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | workspaces | × | いいえ |
+> | workspaces | いいえ | いいえ |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 
@@ -769,14 +769,14 @@ ms.locfileid: "98072107"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | catalogs | はい | はい |
-> | datacatalogs | × | いいえ |
+> | datacatalogs | いいえ | いいえ |
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | connectionmanagers | いいえ | × |
+> | connectionmanagers | いいえ | いいえ |
 
 ## <a name="microsoftdataexchange"></a>Microsoft.DataExchange
 
@@ -858,7 +858,7 @@ ms.locfileid: "98072107"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | flexibleServers | はい | はい |
+> | flexibleServers | いいえ | いいえ |
 > | servergroups | いいえ | いいえ |
 > | servers | はい | はい |
 > | serversv2 | はい | はい |
@@ -892,7 +892,7 @@ ms.locfileid: "98072107"
 > | ------------- | ----------- | ---------- |
 > | elasticpools | いいえ | いいえ |
 > | elasticpools/iothubtenants | いいえ | いいえ |
-> | iothubs | はい | ○ |
+> | iothubs | はい | はい |
 > | provisioningservices | はい | はい |
 
 ## <a name="microsoftdevops"></a>Microsoft.DevOps
@@ -914,11 +914,11 @@ ms.locfileid: "98072107"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | labcenters | いいえ | × |
-> | labs | はい | × |
+> | labcenters | いいえ | いいえ |
+> | labs | はい | いいえ |
 > | labs/environments | はい | はい |
 > | labs/servicerunners | はい | はい |
-> | labs/virtualmachines | はい | × |
+> | labs/virtualmachines | はい | いいえ |
 > | schedules | はい | はい |
 
 ## <a name="microsoftdigitaltwins"></a>Microsoft.DigitalTwins
@@ -926,7 +926,7 @@ ms.locfileid: "98072107"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | digitaltwinsinstances | × | いいえ |
+> | digitaltwinsinstances | いいえ | いいえ |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
@@ -942,9 +942,9 @@ ms.locfileid: "98072107"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | domains | はい | はい |
-> | generatessorequest | いいえ | × |
-> | topleveldomains | いいえ | × |
-> | validatedomainregistrationinformation | いいえ | × |
+> | generatessorequest | いいえ | いいえ |
+> | topleveldomains | いいえ | いいえ |
+> | validatedomainregistrationinformation | いいえ | いいえ |
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
@@ -962,7 +962,7 @@ ms.locfileid: "98072107"
 > | eventsubscriptions | いいえ - 個別に移動できませんが、サブスクライブしたリソースで自動的に移動されます。 | いいえ - 個別に移動できませんが、サブスクライブしたリソースで自動的に移動されます。 |
 > | extensiontopics | いいえ | いいえ |
 > | partnernamespaces | はい | はい |
-> | partnerregistrations | × | いいえ |
+> | partnerregistrations | いいえ | いいえ |
 > | partnertopics | はい | はい |
 > | systemtopics | はい | はい |
 > | topics | はい | はい |
@@ -975,14 +975,14 @@ ms.locfileid: "98072107"
 > | ------------- | ----------- | ---------- |
 > | clusters | はい | はい |
 > | namespaces | はい | はい |
-> | sku | いいえ | × |
+> | sku | いいえ | いいえ |
 
 ## <a name="microsoftexperimentation"></a>Microsoft.Experimentation
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | experimentworkspaces | × | いいえ |
+> | experimentworkspaces | いいえ | いいえ |
 
 ## <a name="microsoftfalcon"></a>Microsoft.Falcon
 
@@ -996,17 +996,17 @@ ms.locfileid: "98072107"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | featureproviders | いいえ | × |
-> | features | いいえ | × |
-> | providers | いいえ | × |
-> | subscriptionfeatureregistrations | いいえ | × |
+> | featureproviders | いいえ | いいえ |
+> | features | いいえ | いいえ |
+> | providers | いいえ | いいえ |
+> | subscriptionfeatureregistrations | いいえ | いいえ |
 
 ## <a name="microsoftgenomics"></a>Microsoft.Genomics
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | accounts | × | いいえ |
+> | accounts | いいえ | いいえ |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
@@ -1014,7 +1014,7 @@ ms.locfileid: "98072107"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | automanagedaccounts | いいえ | いいえ |
-> | automanagedvmconfigurationprofiles | × | いいえ |
+> | automanagedvmconfigurationprofiles | いいえ | いいえ |
 > | guestconfigurationassignments | いいえ | いいえ |
 > | software | いいえ | いいえ |
 > | softwareupdateprofile | いいえ | いいえ |
@@ -1025,15 +1025,15 @@ ms.locfileid: "98072107"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | hanainstances | いいえ | × |
-> | sapmonitors | いいえ | × |
+> | hanainstances | いいえ | いいえ |
+> | sapmonitors | いいえ | いいえ |
 
 ## <a name="microsofthardwaresecuritymodules"></a>Microsoft.HardwareSecurityModules
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | dedicatedhsms | × | いいえ |
+> | dedicatedhsms | いいえ | いいえ |
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
@@ -1104,37 +1104,37 @@ ms.locfileid: "98072107"
 > | activitylogalerts | いいえ | いいえ |
 > | alertrules | はい | はい |
 > | autoscalesettings | はい | はい |
-> | baseline | × | いいえ |
+> | baseline | いいえ | いいえ |
 > | components | はい | はい |
-> | datacollectionrules | × | いいえ |
+> | datacollectionrules | いいえ | いいえ |
 > | diagnosticsettings | いいえ | いいえ |
-> | diagnosticsettingscategories | × | いいえ |
-> | eventcategories | × | いいえ |
-> | eventtypes | × | いいえ |
-> | extendeddiagnosticsettings | × | いいえ |
-> | guestdiagnosticsettings | × | いいえ |
-> | listmigrationdate | × | いいえ |
-> | logdefinitions | × | いいえ |
-> | logprofiles | × | いいえ |
-> | logs | × | いいえ |
-> | metricalerts | × | いいえ |
-> | metricbaselines | × | いいえ |
-> | metricbatch | × | いいえ |
+> | diagnosticsettingscategories | いいえ | いいえ |
+> | eventcategories | いいえ | いいえ |
+> | eventtypes | いいえ | いいえ |
+> | extendeddiagnosticsettings | いいえ | いいえ |
+> | guestdiagnosticsettings | いいえ | いいえ |
+> | listmigrationdate | いいえ | いいえ |
+> | logdefinitions | いいえ | いいえ |
+> | logprofiles | いいえ | いいえ |
+> | logs | いいえ | いいえ |
+> | metricalerts | いいえ | いいえ |
+> | metricbaselines | いいえ | いいえ |
+> | metricbatch | いいえ | いいえ |
 > | metricdefinitions | いいえ | いいえ |
 > | metricnamespaces | いいえ | いいえ |
 > | metrics | いいえ | いいえ |
-> | migratealertrules | × | いいえ |
-> | migratetonewpricingmodel | × | いいえ |
-> | myworkbooks | × | いいえ |
-> | notificationgroups | × | いいえ |
+> | migratealertrules | いいえ | いいえ |
+> | migratetonewpricingmodel | いいえ | いいえ |
+> | myworkbooks | いいえ | いいえ |
+> | notificationgroups | いいえ | いいえ |
 > | privatelinkscopes | いいえ | いいえ |
-> | rollbacktolegacypricingmodel | × | いいえ |
+> | rollbacktolegacypricingmodel | いいえ | いいえ |
 > | scheduledqueryrules | はい | はい |
 > | トポロジ | いいえ | いいえ |
-> | トランザクション | × | いいえ |
-> | vminsightsonboardingstatuses | × | いいえ |
-> | webtests | ○ | はい |
-> | webtests / gettestresultfile | × | いいえ |
+> | トランザクション | いいえ | いいえ |
+> | vminsightsonboardingstatuses | いいえ | いいえ |
+> | webtests | はい | はい |
+> | webtests / gettestresultfile | いいえ | いいえ |
 > | Workbooks | はい | はい |
 > | workbooktemplates | はい | はい |
 

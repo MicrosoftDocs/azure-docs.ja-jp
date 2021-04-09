@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: a77b6472ea91a6ba4b6e31d1b7739aae236a1783
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92636155"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>チュートリアル:Azure Active Directory と Work.com の統合
@@ -41,7 +41,7 @@ Work.com と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Work.com では、 **SP** によって開始される SSO がサポートされます
+* Work.com では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-workcom-from-the-gallery"></a>ギャラリーからの Work.com の追加
 
@@ -61,13 +61,13 @@ Azure AD への Work.com の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Work.com** 」と入力し、結果パネルで **[Work.com]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Work.com**」と入力し、結果パネルで **[Work.com]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの Work.com](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Work.com で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Work.com で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Work.com 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Work.com で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -135,7 +135,7 @@ Work.com で Azure AD シングル サインオンを構成するには、次の
    
     ![[Administer]\(管理\) ペインの [Domain Management]\(ドメインの管理\) から [My Domain]\(マイ ドメイン\) が選択されていることを示すスクリーンショット。](./media/work-com-tutorial/ic767825.png "[マイ ドメイン]")
 
-4. ドメインが正しく設定されていることを確認するには、“ **ステップ 4 ユーザーへのデプロイ** ” で “ **マイ ドメインの設定** ” を確認します。
+4. ドメインが正しく設定されていることを確認するには、“**ステップ 4 ユーザーへのデプロイ**” で “**マイ ドメインの設定**” を確認します。
    
     ![ユーザーにデプロイされたドメイン](./media/work-com-tutorial/ic784377.png "ユーザーにデプロイされたドメイン")
 
@@ -212,7 +212,7 @@ Work.com で Azure AD シングル サインオンを構成するには、次の
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -270,17 +270,17 @@ Azure Active Directory ユーザーがサインインできるように、Azure 
    
     ![[User Edit]\(ユーザーの編集\)](./media/work-com-tutorial/ic794118.png "ユーザーの編集")
    
-    a. **[First Name]\(名\)** ボックスに、ユーザーの **名** ( **Britta** ) を入力します。
+    a. **[First Name]\(名\)** ボックスに、ユーザーの **名** (**Britta**) を入力します。
     
-    b. **[Last Name]\(姓\)** ボックスに、ユーザーの **姓** ( **Simon** ) を入力します。
+    b. **[Last Name]\(姓\)** ボックスに、ユーザーの **姓** (**Simon**) を入力します。
     
-    c. **[Alias]\(エイリアス\)** ボックスに、ユーザーの **名前** ( **BrittaS** ) を入力します。
+    c. **[Alias]\(エイリアス\)** ボックスに、ユーザーの **名前** (**BrittaS**) を入力します。
     
     d. **[Email]\(メール\)** ボックスに、ユーザーの **メール アドレス** (Brittasimon@contoso.com) を入力します。
     
     e. **[User Name]\(ユーザー名\)** ボックスに、ユーザーのユーザー名 (Brittasimon@contoso.com など) を入力します。
     
-    f. **[Nick Name]\(ニック ネーム\)** ボックスに、ユーザーの **ニック ネーム** ( **Simon** ) を入力します。
+    f. **[Nick Name]\(ニック ネーム\)** ボックスに、ユーザーの **ニック ネーム** (**Simon**) を入力します。
     
     g. **[Role]\(役割\)** 、 **[User License]\(ユーザー ライセンス\)** 、 **[Profile]\(プロファイル\)** を選択します。
     

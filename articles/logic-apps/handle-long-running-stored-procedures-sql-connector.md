@@ -7,10 +7,10 @@ ms.reviewer: camerost, logicappspm
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.openlocfilehash: f5b04c563dc81497f591788dc4890d379c0f898f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93102740"
 ---
 # <a name="handle-stored-procedure-timeouts-in-the-sql-connector-for-azure-logic-apps"></a>Azure Logic Apps での SQL コネクタのストアド プロシージャのタイムアウトを処理する
@@ -48,7 +48,7 @@ END
 
 ## <a name="job-agent-for-azure-sql-database"></a>Azure SQL Database のジョブ エージェント
 
-[Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) に対してストアド プロシージャを実行できるジョブを作成するには、[Azure エラスティック ジョブ エージェント](../azure-sql/database/elastic-jobs-overview.md)を使用します。 Azure portal でジョブ エージェントを作成します。 この方法では、エージェントによって使用されるデータベース ( *エージェント データベース* とも呼ばれる) にいくつかのストアド プロシージャが追加されます。 次に、ターゲット データベースでストアド プロシージャを実行し、完了したら出力をキャプチャするジョブを作成できます。
+[Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) に対してストアド プロシージャを実行できるジョブを作成するには、[Azure エラスティック ジョブ エージェント](../azure-sql/database/elastic-jobs-overview.md)を使用します。 Azure portal でジョブ エージェントを作成します。 この方法では、エージェントによって使用されるデータベース (*エージェント データベース* とも呼ばれる) にいくつかのストアド プロシージャが追加されます。 次に、ターゲット データベースでストアド プロシージャを実行し、完了したら出力をキャプチャするジョブを作成できます。
 
 ジョブを作成する前に、[Azure エラスティック ジョブ エージェントに関する完全なドキュメント](../azure-sql/database/elastic-jobs-overview.md)で説明されているように、アクセス許可、グループ、およびターゲットを設定する必要があります。 また、次のセクションで説明するように、対象のデータベースにサポート テーブルを作成する必要があります。
 
@@ -154,11 +154,11 @@ EXEC jobs.sp_add_job
 
 ### <a name="start-the-job-and-pass-the-parameters"></a>ジョブを開始しパラメーターを渡す
 
-ジョブを開始するには、でパススルー ネイティブ クエリを使用して、 [**SQL クエリ** アクションを実行](/connectors/sql/#execute-a-sql-query-(v2))し、ジョブのパラメーターを状態テーブルにすぐにプッシュします。 ターゲット テーブルの `jobid` 属性に入力を提供するために、Logic Apps は前のアクションからのテーブル出力を反復処理する **For each** ループを追加します。 各ジョブの実行 ID に対して、動的データ出力の `ResultSets JobExecutionId` を使用する **行挿入** アクションを実行して、ジョブのパラメーターを追加してアンパックし、対象のストアド プロシージャに渡します。
+ジョブを開始するには、でパススルー ネイティブ クエリを使用して、[**SQL クエリ** アクションを実行](/connectors/sql/#execute-a-sql-query-(v2))し、ジョブのパラメーターを状態テーブルにすぐにプッシュします。 ターゲット テーブルの `jobid` 属性に入力を提供するために、Logic Apps は前のアクションからのテーブル出力を反復処理する **For each** ループを追加します。 各ジョブの実行 ID に対して、動的データ出力の `ResultSets JobExecutionId` を使用する **行挿入** アクションを実行して、ジョブのパラメーターを追加してアンパックし、対象のストアド プロシージャに渡します。
 
 ![ジョブを開始し、ストアド プロシージャにパラメーターを渡すために使用するアクションを示すスクリーンショット。](media/handle-long-running-stored-procedures-sql-connector/start-job-actions.png)
 
-ジョブが完了すると、ジョブによって `LongRunningState` テーブルが更新されます。これにより、 [**項目が変更されたとき** のトリガー](/connectors/sql/#when-an-item-is-modified-(v2))を使用して結果を簡単にトリガーできるようになります。 出力が不要な場合、または出力テーブルを監視するトリガーが既にある場合は、この部分をスキップできます。
+ジョブが完了すると、ジョブによって `LongRunningState` テーブルが更新されます。これにより、[**項目が変更されたとき** のトリガー](/connectors/sql/#when-an-item-is-modified-(v2))を使用して結果を簡単にトリガーできるようになります。 出力が不要な場合、または出力テーブルを監視するトリガーが既にある場合は、この部分をスキップできます。
 
 ![項目が変更されたときの SQL トリガーを示すスクリーンショット。](media/handle-long-running-stored-procedures-sql-connector/trigger-on-results-after-job-completes.png)
 

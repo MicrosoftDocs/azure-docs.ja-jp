@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 6af0f2b5221a737687578e939c14cecf3be14509
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88932918"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Azure Cognitive Search での OData コレクション フィルターの概要
 
-Azure Cognitive Search でコレクションのフィールドの[フィルター処理を行う](query-odata-filter-orderby-syntax.md)には、[`any` および `all` 演算子](search-query-odata-collection-operators.md)を**ラムダ式**と共に使用します。 ラムダ式は**範囲変数**を参照するブール式です。 `any` および `all` 演算子はほとんどのプログラミング言語の `for` ループに似ており、範囲変数がループ変数、ラムダ式がループ本体の役割を果たします。 範囲変数は、ループの反復処理の間、コレクションの "現在" の値になります。
+Azure Cognitive Search でコレクションのフィールドの [フィルター処理を行う](query-odata-filter-orderby-syntax.md)には、[`any` および `all` 演算子](search-query-odata-collection-operators.md)を **ラムダ式** と共に使用します。 ラムダ式は **範囲変数** を参照するブール式です。 `any` および `all` 演算子はほとんどのプログラミング言語の `for` ループに似ており、範囲変数がループ変数、ラムダ式がループ本体の役割を果たします。 範囲変数は、ループの反復処理の間、コレクションの "現在" の値になります。
 
 少なくとも、概念的にはそのように動作します。 実際には、Azure Cognitive Search は、`for` ループの動作とはまったく異なる方法でフィルターを実装します。 この違いがユーザーには認識されないのが理想ですが、特定の状況ではそうなりません。 最終的な結果として、ラムダ式を作成するときに従う必要がある規則があります。
 
@@ -41,14 +41,14 @@ Azure Cognitive Search でコレクションのフィールドの[フィルタ�
 コレクションのすべての種類に対してフィルターのすべての機能がサポートされていないことについては、3 つの基になる理由があります。
 
 1. 特定のデータ型では、特定の演算子のみがサポートされています。 たとえば、`lt` や `gt` などを使ってブール値 `true` と `false` を比較しても意味がありません。
-1. Azure Cognitive Search は、型 `Collection(Edm.ComplexType)` のフィールドに対する**相関検索**をサポートしていません。
+1. Azure Cognitive Search は、型 `Collection(Edm.ComplexType)` のフィールドに対する **相関検索** をサポートしていません。
 1. Azure Cognitive Search は、逆インデックスを使用して、すべての種類のデータ (コレクションを含む) に対するフィルターを実行します。
 
 最初の理由は、単に、OData 言語と EDM 型システムの定義方法の結果によるものです。 後の 2 つについては、この記事の残りの部分で詳しく説明します。
 
 ## <a name="correlated-versus-uncorrelated-search"></a>相関検索と非相関検索
 
-複合オブジェクトのコレクションに対して複数のフィルター条件を適用するとき、条件は " *、コレクション内の各オブジェクト*" に適用されるため、条件は**相関**されます。 たとえば、次のフィルターでは、料金が 100 未満のデラックス ルームが 1 室以上あるホテルが返されます。
+複合オブジェクトのコレクションに対して複数のフィルター条件を適用するとき、条件は "*、コレクション内の各オブジェクト*" に適用されるため、条件は **相関** されます。 たとえば、次のフィルターでは、料金が 100 未満のデラックス ルームが 1 室以上あるホテルが返されます。
 
 ```odata-filter-expr
     Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 100)
@@ -107,7 +107,7 @@ Azure Cognitive Search でコレクションのフィールドの[フィルタ�
 | suite | 1 |
 | view | 1 |
 
-したがって、基本的に "部屋の `Type` が 'Deluxe Room' と等しく、**その同じ部屋**の `BaseRate` が 100 未満であるドキュメントと一致する" ことを示す上記のフィルターとは異なり、検索クエリでは "`Rooms/Type` に語句 'deluxe' が含まれ、`Rooms/Description` に語句 'city view' が含まれるドキュメントと一致する" ことが示されます。 後者の場合、フィールドを相関できる個別の部屋の概念はありません。
+したがって、基本的に "部屋の `Type` が 'Deluxe Room' と等しく、**その同じ部屋** の `BaseRate` が 100 未満であるドキュメントと一致する" ことを示す上記のフィルターとは異なり、検索クエリでは "`Rooms/Type` に語句 'deluxe' が含まれ、`Rooms/Description` に語句 'city view' が含まれるドキュメントと一致する" ことが示されます。 後者の場合、フィールドを相関できる個別の部屋の概念はありません。
 
 > [!NOTE]
 > 相関検索に対するサポートが Azure Cognitive Search に追加されることを希望する場合は、[このユーザーの声の項目](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections)に投票してください。
@@ -140,16 +140,16 @@ Azure Cognitive Search でコレクションのフィールドの[フィルタ�
 }
 ```
 
-`seasons` フィールドの値は**逆インデックス**と呼ばれる構造に格納され、次のようになります。
+`seasons` フィールドの値は **逆インデックス** と呼ばれる構造に格納され、次のようになります。
 
-| 期間 | ドキュメント ID |
+| 項目 | ドキュメント ID |
 | --- | --- |
 | spring | 1、2 |
 | summer | 1 |
 | fall | 1、2 |
 | winter | 2、3 |
 
-このデータ構造は、次のような 1 つの質問に対して非常に高速に回答するように設計されています: 特定の語句はどのドキュメントに含まれているか。 この質問に答える処理は、コレクションのループというより、単純な等値チェックに近いものです。 実際、文字列コレクションの場合に、Azure Cognitive Search が `any` に対するラムダ式の内部の比較演算子として `eq` のみを許可するのはこのためです。
+このデータ構造は、特定の語句はどのドキュメントに含まれているか、という 1 つの質問に対して非常に高速に回答するように設計されています。 この質問に答える処理は、コレクションのループというより、単純な等値チェックに近いものです。 実際、文字列コレクションの場合に、Azure Cognitive Search が `any` に対するラムダ式の内部の比較演算子として `eq` のみを許可するのはこのためです。
 
 このような等価性を踏まえて、次に、`or` を使用して同じ範囲変数でどのように複数の等価性チェックを組み合わせることができるかを見てみましょう。 それは、代数と[量指定子の分配則](https://en.wikipedia.org/wiki/Existential_quantification#Negation)に従って動作します。 次の式
 
@@ -186,7 +186,7 @@ Azure Cognitive Search でコレクションのフィールドの[フィルタ�
 >
 > `all` には逆の規則が適用されます。
 
-`lt`、`gt`、`le`、`ge` の各演算子がサポートされるデータ型のコレクションをフィルター処理するときは、さまざまな式が許可されます (`Collection(Edm.Int32)` など)。 具体的には、基になる比較式が `and` を使って**範囲比較**に結合されている限り、`any` において`and` だけでなく `or` を使うことができ、それがさらに `or` を使って結合されます。 ブール式のこの構造は[選言標準形 (DNF)](https://en.wikipedia.org/wiki/Disjunctive_normal_form) と呼ばれ、"ORs of ANDs" としても知られています。 逆に、これらのデータ型に対する `all` のラムダ式は、[連言標準形 (CNF)](https://en.wikipedia.org/wiki/Conjunctive_normal_form) ("ANDs of ORs" としても知られます) になっている必要があります。 Azure Cognitive Search は、文字列に対する高速な用語参照と同様に逆インデックスを使用して効率的に実行できるため、このような範囲の比較を許可します。
+`lt`、`gt`、`le`、`ge` の各演算子がサポートされるデータ型のコレクションをフィルター処理するときは、さまざまな式が許可されます (`Collection(Edm.Int32)` など)。 具体的には、基になる比較式が `and` を使って **範囲比較** に結合されている限り、`any` において`and` だけでなく `or` を使うことができ、それがさらに `or` を使って結合されます。 ブール式のこの構造は[選言標準形 (DNF)](https://en.wikipedia.org/wiki/Disjunctive_normal_form) と呼ばれ、"ORs of ANDs" としても知られています。 逆に、これらのデータ型に対する `all` のラムダ式は、[連言標準形 (CNF)](https://en.wikipedia.org/wiki/Conjunctive_normal_form) ("ANDs of ORs" としても知られます) になっている必要があります。 Azure Cognitive Search は、文字列に対する高速な用語参照と同様に逆インデックスを使用して効率的に実行できるため、このような範囲の比較を許可します。
 
 まとめると、ラムダ式で許可されることの経験則は次のようになります。
 

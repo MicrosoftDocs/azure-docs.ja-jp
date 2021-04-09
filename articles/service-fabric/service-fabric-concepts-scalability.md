@@ -7,10 +7,10 @@ ms.date: 08/26/2019
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 87ac89edc1c9996afc03e7c2bd6743202fdfcb52
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98786193"
 ---
 # <a name="scaling-in-service-fabric"></a>Service Fabric での拡大縮小

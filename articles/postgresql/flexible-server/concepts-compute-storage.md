@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: a3c8c8b2316a206ba837c0b32fd699dc0ed1eeea
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 02/19/2021
+ms.openlocfilehash: b76b6ff788d3d7f44db33af96944d528282f0ac7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519390"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712217"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーのコンピューティングとストレージのオプション
 
@@ -119,6 +119,9 @@ IOPS は VM の種類によっても制限されることに注意してくだ�
 |E64s_v3             |18,000 IOPS                               |120|240|500 |1100|2300 |5000 |7500 |7500 |16000 |18000 |
 
 \* のマークが付いている場合、IOPS は選択した VM の種類によって制限されます。 それ以外の場合、IOPS は選択したストレージ サイズによって制限されます。
+
+>[!NOTE]
+> ディスク レベルのバーストにより、メトリックに高い IOPS が示される場合があります。 詳細については、[ドキュメント](https://docs.microsoft.com/azure/virtual-machines/disk-bursting#disk-level-bursting)を参照してください。 
 
 ### <a name="maximum-io-bandwidth-mibsec-for-your-configuration"></a>構成の最大 I/O 帯域幅 (MiB/秒)
 

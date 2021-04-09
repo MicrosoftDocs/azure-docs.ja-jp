@@ -1,6 +1,6 @@
 ---
 title: テンプレートを使用して Azure Service Bus 名前空間トピックを作成する
-description: クイック スタート:Azure Resource Manager テンプレートを使用したトピックとサブスクリプションを含んだ Service Bus 名前空間の作成
+description: 'クイックスタート: Azure Resource Manager テンプレートを使用したトピックとサブスクリプションを含んだ Service Bus 名前空間の作成'
 documentationcenter: .net
 author: spelluru
 ms.topic: quickstart
@@ -9,19 +9,19 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: 706432c039bc38e9799828ae752d6ad0c92ffde3
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97704607"
 ---
-# <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用したトピックとサブスクリプションを含んだ Service Bus 名前空間の作成
+# <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>クイックスタート: Azure Resource Manager テンプレートを使用したトピックとサブスクリプションを含んだ Service Bus 名前空間の作成
 
 この記事では、Azure Resource Manager テンプレートを使用して、Service Bus 名前空間と、その名前空間内のトピックとサブスクリプションを作成する方法について説明します。 この記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを指定する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
 テンプレートの作成の詳細については、「 [Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」を参照してください。
 
-完全なテンプレートについては、 [Service Bus の名前空間にトピックとサブスクリプションを追加する][Service Bus namespace with topic and subscription] テンプレートを参照してください。
+完全なテンプレートについては、[Service Bus の名前空間にトピックとサブスクリプションを追加する][Service Bus namespace with topic and subscription]テンプレートを参照してください。
 
 > [!NOTE]
 > 次の Azure Resource Manager テンプレートは、ダウンロードしてデプロイすることができます。

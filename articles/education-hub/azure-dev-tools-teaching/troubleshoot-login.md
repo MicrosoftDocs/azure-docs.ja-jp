@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 276ab2cc1d79235c00ce1bb50ff9b648bb1de6ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87094598"
 ---
 # <a name="troubleshooting-student-login-issues"></a>学生のログインに関する問題のトラブルシューティング
@@ -39,16 +39,16 @@ Azure Dev Tools for Teaching にアクセスするには、ユーザーが Micro
 
 1. **[Microsoft にサインインする方法の管理]** をクリックします。 本人確認を求めるメッセージが表示されます。 セキュリティ コードがメールで送信されます。
 
-    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in.png" alt-text="サインインのエラー メッセージ。" border="false":::
+    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in.png" alt-text="サインインを管理します。" border="false":::
 
 1. メールで送信されたセキュリティ コードを入力します。
 
-    :::image type="content" source="media/troubleshoot-accounts/sign-in-enter-code.png" alt-text="サインインのエラー メッセージ。" border="false":::
+    :::image type="content" source="media/troubleshoot-accounts/sign-in-enter-code.png" alt-text="サインイン コードを入力します。" border="false":::
 
 1. アカウントに **[メールを追加]** をクリックし、大学のメール アドレスを入力します。
 次にサインインするときに、大学のメール アドレスを使用して Azure Dev Tools for Teaching にアクセスできるようになります。
 
-    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in-add-email.png" alt-text="サインインのエラー メッセージ。" border="false":::
+    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in-add-email.png" alt-text="Microsoft にサインインする方法を管理します。" border="false":::
 
 ## <a name="next-steps"></a>次のステップ
 - [FAQ](program-faq.md)

@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
 ms.openlocfilehash: fc9da5c9bc6c9f1b5afd0dbcd74b19d13fe42222
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102032060"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS ポータルの Azure への移行

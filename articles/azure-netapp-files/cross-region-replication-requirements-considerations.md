@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: b-juche
 ms.openlocfilehash: ed03e20f7a1a24d1a38e023b958959fdc6fdc326
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100579345"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>リージョン間レプリケーションを使用するための要件と考慮事項 

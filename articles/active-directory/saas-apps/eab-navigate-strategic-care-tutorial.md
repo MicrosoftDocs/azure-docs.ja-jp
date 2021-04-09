@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: jeedes
 ms.openlocfilehash: d443f1f85caf53a40d5cd80b4f9438427d18a4fa
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454509"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate-strategic-care"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と EAB Navigate Strategic Care の統合
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* EAB Navigate Strategic Care では、 **SP** Initiated SSO がサポートされます
+* EAB Navigate Strategic Care では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-eab-navigate-strategic-care-from-the-gallery"></a>ギャラリーからの EAB Navigate Strategic Care の追加
 
@@ -49,7 +49,7 @@ Azure AD への EAB Navigate Strategic Care の統合を構成するには、ギ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **EAB Navigate Strategic Care** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**EAB Navigate Strategic Care**」と入力します。
 1. 結果パネルで **[EAB Navigate Strategic Care]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -119,7 +119,7 @@ EAB Navigate Strategic Care に対する Azure AD SSO を構成してテスト�
 
 ## <a name="configure-eab-navigate-strategic-care-sso"></a>EAB Navigate Strategic Care SSO の構成
 
-**EAB Navigate Strategic Care** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [EAB Navigate Strategic Care サポート チーム](mailto:tech@gradesfirst.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**EAB Navigate Strategic Care** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [EAB Navigate Strategic Care サポート チーム](mailto:tech@gradesfirst.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-eab-navigate-strategic-care-test-user"></a>EAB Navigate Strategic Care のテスト ユーザーの作成
 

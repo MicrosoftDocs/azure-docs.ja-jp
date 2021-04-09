@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: jeedes
 ms.openlocfilehash: cdaa6a9601452100ab90ef8b0f2191002f256b74
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95025463"
 ---
 # <a name="fortigate-azure-virtual-machine-deployment-guide"></a>FortiGate Azure 仮想マシン デプロイ ガイド

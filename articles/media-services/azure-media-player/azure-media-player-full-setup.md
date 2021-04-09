@@ -7,12 +7,12 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: b6b239f44311424db2e80c59e2aba639ae3c0000
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: e6ec59e3cb8d285652935b42493c820a7379eeb8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797446"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104956079"
 ---
 # <a name="azure-media-player-full-setup"></a>Azure Media Player のフル セットアップ #
 
@@ -93,7 +93,7 @@ HTML5 ビデオの場合と同様に、属性、設定、ソース、トラッ�
                // add an event listener
               this.addEventListener('ended', function() {
                 console.log('Finished!');
-            }
+            });
           }
     );
     myPlayer.src([{
