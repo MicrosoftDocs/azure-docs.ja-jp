@@ -314,7 +314,7 @@ dependsOn | このプロパティを使用して、アクティビティの依�
 このパイプラインの作成に関する完全なチュートリアルについては、「[Quickstart: create a data factory (クイック スタート: データ ファクトリを作成する)](quickstart-create-data-factory-powershell.md)」を参照してください。
 
 ## <a name="sample-transformation-pipeline"></a>変換パイプラインのサンプル
-次のサンプル パイプラインでは、**HDInsightHive** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、 [HDInsight Hive アクティビティ](transform-data-using-hadoop-hive.md) が、Azure HDInsight Hadoop クラスターで Hive スクリプト ファイルを実行して、Azure BLOB ストレージからデータを変換します。
+次のサンプル パイプラインでは、**HDInsightHive** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、 [HDInsight Hive アクティビティ](transform-data-using-hadoop-hive.md) が、Azure HDInsight Hadoop クラスターで Hive スクリプト ファイルを実行して、Azure Blob Storage からデータを変換します。
 
 ```json
 {
