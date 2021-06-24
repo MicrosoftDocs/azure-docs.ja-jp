@@ -164,11 +164,11 @@ VM に接続したら、マシンのセットアップ ウィザードを完了�
     詳細については、[sysprep (システムの準備) の概要](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)に関するページを参照してください。
 1.  コマンドが完了すると、VM はシャットダウンされます。 **VM は再起動しないでください**。
 
-## <a name="upload-the-vhd-to-azure-blob-storage"></a>Azure BLOB ストレージに VHD をアップロードする
+## <a name="upload-the-vhd-to-azure-blob-storage"></a>Azure Blob Storage に VHD をアップロードする
 
 VHD を使用して、一般化されたイメージを Azure Stack Edge 上に作成できるようになりました。 
 
-1. Azure BLOB ストレージに VHD をアップロードします。 [Azure Storage Explorer を使用して VHD をアップロードする](../devtest-labs/devtest-lab-upload-vhd-using-storage-explorer.md)ことに関するページの詳細な手順を参照してください。
+1. Azure Blob Storage に VHD をアップロードします。 [Azure Storage Explorer を使用して VHD をアップロードする](../devtest-labs/devtest-lab-upload-vhd-using-storage-explorer.md)ことに関するページの詳細な手順を参照してください。
 1. アップロードが完了したら、アップロードされたイメージを使用して VM イメージや VM を作成できます。 
 
 <!-- this should be added to deploy VM articles - If you experience any issues creating VMs from your new image, you can use VM console access to help troubleshoot. For information on console access, see [link].-->
