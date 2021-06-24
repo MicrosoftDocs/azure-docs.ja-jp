@@ -41,7 +41,7 @@ ms.locfileid: "104783423"
 
 * **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 * **Azure Storage アカウント**。 BLOB ストレージを **ソース** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」を参照してください。
-* **Azure SQL データベース**。 データベースを **シンク** データ ストアとして使用します。 Azure SQL Database のデータベースがない場合の作成手順については、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事を参照してください。
+* **Azure SQL Database**。 データベースを **シンク** データ ストアとして使用します。 Azure SQL Database のデータベースがない場合の作成手順については、[Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関する記事を参照してください。
 
 ### <a name="create-blob-table"></a>BLOB テーブルを作成する
 
