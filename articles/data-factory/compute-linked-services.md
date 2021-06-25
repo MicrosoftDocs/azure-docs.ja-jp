@@ -104,7 +104,7 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 > [!IMPORTANT]
 > HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB ストレージに **既定のコンテナー** を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスを処理する必要があるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。 
 >
-> 実行するアクティビティが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 形式になります。 Azure Blob Storage 内のコンテナーを削除するには、[Microsoft Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
+> 実行するアクティビティが多いほど、Azure Blob Storage 内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 形式になります。 Azure Blob Storage 内のコンテナーを削除するには、[Microsoft Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
 
 #### <a name="properties"></a>Properties
 
