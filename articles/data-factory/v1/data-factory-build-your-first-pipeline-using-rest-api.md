@@ -128,7 +128,7 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 * オンデマンド HDInsight クラスターの代わりに、 **独自の HDInsight クラスター** を使用できます。 詳細については、 [HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) に関するセクションを参照してください。
 * HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB ストレージに **既定のコンテナー** を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。
 
-    処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、"adf **データ ファクトリ名**-**リンクされたサービス名**-日時スタンプ" というパターンに従います。 Azure Blob Storage 内のコンテナーを削除するには、 [Microsoft Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
+    処理されるスライスが多いほど、Azure Blob Storage 内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、"adf **データ ファクトリ名**-**リンクされたサービス名**-日時スタンプ" というパターンに従います。 Azure Blob Storage 内のコンテナーを削除するには、 [Microsoft Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
 
 詳細については、 [オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) に関するセクションを参照してください。
 
@@ -377,7 +377,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 この手順では、Hive 処理の入力データと出力データを表すデータセットを作成します。 これらのデータセットは、このチュートリアルで前に作成した **StorageLinkedService** を参照します。 このリンクされたサービスは Azure ストレージ アカウントを指し、データセットは入力データと出力データを保持するストレージのコンテナー、フォルダー、ファイル名を指定します。
 
 ### <a name="create-input-dataset"></a>入力データセットの作成
-この手順では、Azure BLOB ストレージに格納される入力データを表す入力データセットを作成します。
+この手順では、Azure Blob Storage に格納される入力データを表す入力データセットを作成します。
 
 1. コマンドを **cmd** という名前の変数に割り当てます。
 
@@ -396,7 +396,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
     ```
 
 ### <a name="create-output-dataset"></a>出力データセットの作成
-この手順では、Azure BLOB ストレージに格納される出力データを表す出力データセットを作成します。
+この手順では、Azure Blob Storage に格納される出力データを表す出力データセットを作成します。
 
 1. コマンドを **cmd** という名前の変数に割り当てます。
 
