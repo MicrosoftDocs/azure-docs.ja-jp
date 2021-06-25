@@ -82,7 +82,7 @@ POST https://localhost:7071/api/analyze-form
 > [!div class="mx-imgBorder"]
 > ![Azure Storage Explorer で pdf ドキュメントが選択されています](media/cognitive-search-skill-form/form-sas.png)
 
-Azure BLOB ストレージにないリモート ドキュメントを分析する場合は、`"formUrl"` フィールドに URL を貼り付け、`"formSasToken"` フィールドは空白のままにします。
+Azure Blob Storage にないリモート ドキュメントを分析する場合は、`"formUrl"` フィールドに URL を貼り付け、`"formSasToken"` フィールドは空白のままにします。
 
 > [!NOTE]
 > スキルがスキルセットに統合されると、 Cognitive Search によって URL とトークンが提供されます。
