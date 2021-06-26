@@ -56,9 +56,9 @@ CRM システムをコマーシャル マーケットプレース オファー�
 
 また、正しいデータを探していることを確認してください。 リード ターゲットに送信するリード データの説明については、「[リード データについて](partner-center-portal/commercial-marketplace-get-customer-leads.md)」を参照してください。
 
-#### <a name="i-configured-azure-blob-storage-as-my-lead-destination-but-why-dont-i-see-the-lead"></a>リードのターゲットとして Azure BLOB ストレージを構成したのですが、リードが表示されないのはなぜですか?
+#### <a name="i-configured-azure-blob-storage-as-my-lead-destination-but-why-dont-i-see-the-lead"></a>リードのターゲットとして Azure Blob Storage を構成したのですが、リードが表示されないのはなぜですか?
 
-Azure BLOB ストレージはリードのターゲットとしてサポートされなくなったため、オファーによって生成された潜在顧客は失われています。 他のいずれかの[リードのターゲット オプション](partner-center-portal/commercial-marketplace-get-customer-leads.md)に切り替えてください。 
+Azure Blob Storage はリードのターゲットとしてサポートされなくなったため、オファーによって生成された潜在顧客は失われています。 他のいずれかの[リードのターゲット オプション](partner-center-portal/commercial-marketplace-get-customer-leads.md)に切り替えてください。 
 
 #### <a name="i-received-an-email-from-the-commercial-marketplace-but-why-cant-i-find-the-lead-in-my-crm"></a>コマーシャル マーケットプレースからの電子メールを受信したのですが、CRM でリードを確認できないのはなぜですか?
 
