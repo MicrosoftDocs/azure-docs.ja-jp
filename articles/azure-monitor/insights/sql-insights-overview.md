@@ -37,7 +37,7 @@ SQL insights では、次のバージョンの SQL Server がサポートされ�
 - SQL Server 2012 以降
 
 SQL insights では、次の環境で実行されている SQL Server がサポートされます。
-- Azure SQL データベース
+- Azure SQL Database
 - Azure SQL Managed Instance
 - Azure Virtual Machines の SQL Server ([SQL 仮想マシン](../../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) プロバイダーに登録されている仮想マシンで実行されている SQL Server)
 - Azure VM ([SQL 仮想マシン](../../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) プロバイダーに登録されていない仮想マシンで実行されている SQL Server)
