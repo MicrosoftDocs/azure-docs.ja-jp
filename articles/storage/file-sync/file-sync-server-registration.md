@@ -1,6 +1,6 @@
 ---
 title: Azure File Sync に登録されたサーバーの管理 | Microsoft Docs
-description: Azure ファイル同期のストレージ同期サービスへの Windows Server の登録と登録解除の方法について説明します。
+description: Azure File Sync のストレージ同期サービスへの Windows Server の登録と登録解除の方法について説明します。
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -15,7 +15,7 @@ ms.lasthandoff: 04/20/2021
 ms.locfileid: "107796381"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Azure File Sync に登録されたサーバーの管理
-Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
+Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
 
 この記事では、サーバーをトレージ同期サービスに登録して管理する方法について説明します。 Azure File Sync をエンドツーエンドでデプロイする方法の詳細については、[Azure File Sync をデプロイする方法](file-sync-deployment-guide.md)に関するページを参照してください。
 
@@ -26,7 +26,7 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
 サーバーをストレージ同期サービスに登録するには、まず必要な前提条件を満たすようにサーバーを準備する必要があります。
 
 * サーバーでは、サポートされているバージョンの Windows Server を実行している必要があります。 詳細については、[Azure File Sync のシステム要件との相互運用性](file-sync-planning.md#windows-file-server-considerations)に関する記事を参照してください。
-* ストレージ同期サービスがデプロイされていること。 ストレージ同期サービスのデプロイ方法の詳細については、「[How to deploy Azure File Sync](file-sync-deployment-guide.md)」(Azure ファイル同期をデプロイする方法) を参照してください。
+* ストレージ同期サービスがデプロイされていること。 ストレージ同期サービスのデプロイ方法の詳細については、「[How to deploy Azure File Sync](file-sync-deployment-guide.md)」(Azure File Sync をデプロイする方法) を参照してください。
 * サーバーがインターネットに接続され、Azure にアクセスできること。
 * サーバー マネージャーの UI を使用して、管理者の [IE セキュリティ強化の構成] を無効にします。
     
@@ -60,23 +60,23 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
 ### <a name="register-a-server-with-storage-sync-service"></a>サーバーをストレージ同期サービスに登録する
 Azure File Sync の "*同期グループ*" で、サーバーを "*サーバー エンドポイント*" として使用するには、"*ストレージ同期サービス*" にサーバーを登録しておく必要があります。 サーバーを登録できるストレージ同期サービスは、一度に 1 つに限られます。
 
-#### <a name="install-the-azure-file-sync-agent"></a>Azure File Sync エージェントをインストールする
-1. [Azure ファイル同期エージェントをダウンロード](https://go.microsoft.com/fwlink/?linkid=858257)します。
-2. Azure ファイル同期エージェントのインストーラーを起動します。
+#### <a name="install-the-azure-file-sync-agent"></a>Azure File Sync Agent をインストールする
+1. [Azure File Sync Agent をダウンロード](https://go.microsoft.com/fwlink/?linkid=858257)します。
+2. Azure File Sync Agent のインストーラーを起動します。
     
-    ![Azure ファイル同期エージェントのインストーラーで最初に表示されるウィンドウ](media/storage-sync-files-server-registration/install-afs-agent-1.png)
+    ![Azure File Sync Agent のインストーラーで最初に表示されるウィンドウ](media/storage-sync-files-server-registration/install-afs-agent-1.png)
 
-3. 必ず、Microsoft Update による Azure ファイル同期エージェントの更新を有効にします。 サーバー パッケージの重要なセキュリティ修正プログラムと機能強化は Microsoft Update を介して提供されるため、有効にすることが重要です。
+3. 必ず、Microsoft Update による Azure File Sync Agent の更新を有効にします。 サーバー パッケージの重要なセキュリティ修正プログラムと機能強化は Microsoft Update を介して提供されるため、有効にすることが重要です。
 
-    ![Azure ファイル同期エージェントのインストーラーの [Microsoft Update] ウィンドウで、Microsoft Update が有効であることを確認する](media/storage-sync-files-server-registration/install-afs-agent-2.png)
+    ![Azure File Sync Agent のインストーラーの [Microsoft Update] ウィンドウで、Microsoft Update が有効であることを確認する](media/storage-sync-files-server-registration/install-afs-agent-2.png)
 
 4. サーバーがまだ登録されていない場合、インストールの完了すぐにサーバーの登録 UI が表示されます。
 
 > [!Important]  
-> サーバーがフェールオーバー クラスターのメンバーである場合、クラスターのすべてのノードに Azure ファイル同期エージェントをインストールする必要があります。
+> サーバーがフェールオーバー クラスターのメンバーである場合、クラスターのすべてのノードに Azure File Sync Agent をインストールする必要があります。
 
 #### <a name="register-the-server-using-the-server-registration-ui"></a>サーバーの登録 UI を使用してサーバーを登録する
-1. Azure File Sync エージェントのインストールが完了した直後にサーバーの登録 UI が開始されない場合は、`C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe` を実行して手動で開始することができます。
+1. Azure File Sync  Agent のインストールが完了した直後にサーバーの登録 UI が開始されない場合は、`C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe` を実行して手動で開始することができます。
 2. *[サインイン]* をクリックして Azure サブスクリプションにアクセスします。 
 
     ![[サーバーの登録] UI のダイアログの表示](media/storage-sync-files-server-registration/server-registration-ui-1.png)
