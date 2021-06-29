@@ -16,7 +16,7 @@ ms.lasthandoff: 04/20/2021
 ms.locfileid: "107795958"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
-Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
+Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
 
 この記事では、サポートされているバージョンの Azure File Sync エージェントのリリース ノートについて取り上げます。
 
@@ -47,7 +47,7 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
 | V3 リリース | 3.1.0.0 - 3.4.0.0 | 該当なし | サポートされていません - エージェント バージョンは 2019 年 8 月 19 日に有効期限が切れました |
 | GA 前のエージェント | 1.1.0.0 - 3.0.13.0 | 該当なし | サポートされていません - エージェント バージョンは 2018 年 10 月 1 日に有効期限が切れました |
 
-### <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
+### <a name="azure-file-sync-agent-update-policy"></a>Azure File Sync Agent の更新ポリシー
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
 ## <a name="agent-version-12000"></a>エージェント バージョン 12.0.0.0
