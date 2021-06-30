@@ -94,7 +94,7 @@ items:
               - name: Azure Data Lake Storage Gen 2
                 href: register-scan-adls-gen2.md
                 displayName: Register and scan Azure Data Lake Storage Gen 2 ADLS
-              - name: Azure SQL データベース
+              - name: Azure SQL Database
                 href: register-scan-azure-sql-database.md
                 displayName: Register and scan Azure SQL DB
               - name: Azure SQL Database Managed Instance
