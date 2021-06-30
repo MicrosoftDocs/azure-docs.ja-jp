@@ -22,7 +22,7 @@ ms.locfileid: "98249654"
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database 用語集
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
 
-## <a name="azure-sql-database"></a>Azure SQL データベース
+## <a name="azure-sql-database"></a>Azure SQL Database
 
 |Context|期間|詳細情報|
 |:---|:---|:---|
