@@ -140,7 +140,7 @@ Azure Stream Analytics は、Azure SQL Database および Azure Synapse Analytic
 
 #### <a name="azure-sql-database"></a>[Azure SQL Database](#tab/azure-sql)
 
-前のセクションで説明したように、包含データベース ユーザーを作成し、ポータルで Azure サービスへのアクセス許可を付与すると、Stream Analytics ジョブには、マネージド ID を介して Azure SQL データベース リソースに **接続する** ためのマネージド ID からのアクセス許可が付与されます。 **SELECT** および **INSERT** のアクセス許可を Stream Analytics ジョブに付与することをお勧めします。これらは後で Stream Analytics ワークフローで必要になるためです。 **SELECT** のアクセス許可により、ジョブは Azure SQL データベース内のテーブルへの接続をテストできます。 **INSERT** のアクセス許可により、入力と Azure SQL データベースの出力を構成した後に、エンドツーエンドの Stream Analytics クエリをテストできます。
+前のセクションで説明したように、包含データベース ユーザーを作成し、ポータルで Azure サービスへのアクセス許可を付与すると、Stream Analytics ジョブには、マネージド ID を介して Azure SQL Database リソースに **接続する** ためのマネージド ID からのアクセス許可が付与されます。 **SELECT** および **INSERT** のアクセス許可を Stream Analytics ジョブに付与することをお勧めします。これらは後で Stream Analytics ワークフローで必要になるためです。 **SELECT** のアクセス許可により、ジョブは Azure SQL Database 内のテーブルへの接続をテストできます。 **INSERT** のアクセス許可により、入力と Azure SQL Database の出力を構成した後に、エンドツーエンドの Stream Analytics クエリをテストできます。
 
 #### <a name="azure-synapse-analytics"></a>[Azure Synapse Analytics](#tab/azure-synapse)
 
