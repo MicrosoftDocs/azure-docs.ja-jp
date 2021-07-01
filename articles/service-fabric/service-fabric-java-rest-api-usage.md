@@ -40,16 +40,16 @@ AutoRest ツールを使って Service Fabric Java クライアント コード�
     npm install -g autorest
     ```
 
-3. ローカル コンピューターで [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs) リポジトリをフォークして複製し、お使いのコンピューターのターミナルから複製した場所に移動します。
+3. ローカル コンピューターで [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs) リポジトリをフォークしてクローンし、お使いのコンピューターのターミナルからクローンした場所に移動します。
 
 
-4. 複製したリポジトリで下記の場所に移動します。
+4. クローンしたリポジトリで下記の場所に移動します。
     ```bash
     cd specification\servicefabric\data-plane\Microsoft.ServiceFabric\stable\6.0
     ```
 
     > [!NOTE]
-    > クラスターのバージョンが 6.0.* ではない場合は、安定したフォルダーの適切なディレクトリに移動します。
+    > クラスターのバージョンが 6.0.* ではない場合は、stable フォルダーの適切なディレクトリに移動します。
     >   
 
 5. 次の autorest コマンドを実行して、Java クライアント コードを生成します。
