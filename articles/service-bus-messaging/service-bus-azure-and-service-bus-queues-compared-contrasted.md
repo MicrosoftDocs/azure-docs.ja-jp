@@ -176,7 +176,7 @@ Storage キューと Service Bus キューの機能セットは、多少異な�
 
 ### <a name="additional-information"></a>関連情報
 * どちらのキュー テクノロジでも、すべての要求を認証する必要があります。 匿名アクセスを使用するパブリック キューはサポートされていません。 [SAS](service-bus-sas.md) を使用すると、書き込み専用 SAS、読み取り専用 SAS、フルアクセス SAS を発行することで、このシナリオに対応できます。
-* Storage キューによって提供される認証方式では、対称キーの使用が必要です。 このキーは、SHA-256 アルゴリズムで計算され、**Base64** 文字列としてエンコードされたハッシュベース メッセージ認証コード (HMAC) です。 各プロトコルの詳細情報については、「[Azure ストレージ サービスの認証](/rest/api/storageservices/fileservices/Authentication-for-the-Azure-Storage-Services)」をご覧ください。 Service Bus キューでは、対称キーを使用する類似のモデルをサポートします。 詳細については、「[Service Bus での共有アクセス署名認証](service-bus-sas.md)」をご覧ください。
+* Storage キューによって提供される認証方式では、対称キーの使用が必要です。 このキーは、SHA-256 アルゴリズムで計算され、**Base64** 文字列としてエンコードされたハッシュベース メッセージ認証コード (HMAC) です。 各プロトコルの詳細情報については、「[Azure Storage サービスの認証](/rest/api/storageservices/fileservices/Authentication-for-the-Azure-Storage-Services)」をご覧ください。 Service Bus キューでは、対称キーを使用する類似のモデルをサポートします。 詳細については、「[Service Bus での共有アクセス署名認証](service-bus-sas.md)」をご覧ください。
 
 ## <a name="conclusion"></a>まとめ
 2 つのテクノロジをより深く理解することにより、使用するキュー テクノロジとその状況について、より多くの十分な情報を得たうえでの決定を行うことができます。 Storage キューまたは Service Bus キューを使用する状況についての判断は明らかに多数の要因に依存します。 それらの要因がアプリケーションとそのアーキテクチャの個々のニーズに大きく依存している場合もあります。 
