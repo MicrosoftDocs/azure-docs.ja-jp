@@ -121,4 +121,4 @@ Azure Storage は Azure AD 認証をネイティブにサポートするため�
 このチュートリアルでは、Linux VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする方法を説明しました。  Azure Storage の詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure ストレージ](../../storage/common/storage-introduction.md)
+> [Azure Storage](../../storage/common/storage-introduction.md)
