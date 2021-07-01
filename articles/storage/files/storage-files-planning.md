@@ -132,5 +132,5 @@ Azure Defender for Azure Storage (以前の Advanced Threat Protection for Azure
 ## <a name="next-steps"></a>次のステップ
 * [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
 * [Azure Files のデプロイ方法](./storage-how-to-create-file-share.md)
-* [Azure ファイル同期のデプロイ方法](storage-sync-files-deployment-guide.md)
+* [Azure File Sync のデプロイ方法](storage-sync-files-deployment-guide.md)
 * [シナリオに適した移行ガイドを見つけるには、移行の概要に関する記事をご覧ください。](storage-files-migration-overview.md)
