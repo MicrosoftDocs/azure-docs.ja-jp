@@ -91,7 +91,7 @@ ms.locfileid: "75979373"
 
 #### <a name="check-container-access-level"></a>コンテナーのアクセス レベルを確認する
 
-1. Azure ストレージ エクスプローラーを開きます。 Explorer ウィンドウで、Azure サブスクリプションがまだ展開されていない場合は展開します。
+1.Azure Storage Explorer を開きます。 Explorer ウィンドウで、Azure サブスクリプションがまだ展開されていない場合は展開します。
 
 1. **[ストレージ アカウント]** > {*自分のストレージ アカウント*} > **[BLOB コンテナー]** の順に展開します。 BLOB コンテナーを選択します。
 
