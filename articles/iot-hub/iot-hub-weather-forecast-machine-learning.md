@@ -240,7 +240,7 @@ Stream Analytics (ストリーム解析) ジョブで、左ペインの **Overvi
 クライアント アプリケーションを実行して、IoT Hub に対する気温と湿度のデータの収集と送信を開始します。 IoT Hub が受信するメッセージごとに、Stream Analytics ジョブは天気予報の Web サービスを呼び出して降水確率を生成します。 結果は Azure Blob Storage に保存されます。 Azure Storage Explorer を使用して、この結果を表示することができます。
 
 1. [Microsoft Azure Storage Explorer をダウンロードしてインストールします](https://storageexplorer.com/)。
-1. Azure ストレージ エクスプローラーを開きます。
+1. Azure Storage Explorer を開きます。
 1. Azure アカウントにサインインします。
 1. サブスクリプションを選択します。
 1. Azure サブスクリプション > **[Storage Accounts (ストレージ アカウント)]** > 自分のストレージ アカウント > **[Blob Containers (BLOB コンテナー)]** > 自分のコンテナーの順に選択します。
