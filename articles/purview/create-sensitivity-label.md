@@ -60,7 +60,7 @@ Azure Purview では、次のデータ型に対して秘密度ラベルがサポ
 
 |データ型  |変換元  |
 |---------|---------|
-|ファイルの自動ラベル付け     |      - Azure Blob ストレージ  </br>- Azure Data Lake Storage Gen 1 および Gen 2  |
+|ファイルの自動ラベル付け     |      - Azure Blob Storage  </br>- Azure Data Lake Storage Gen 1 および Gen 2  |
 |データベースの列の自動ラベル付け     |  - SQL Server </br>- Azure SQL データベース </br>- Azure SQL Database Managed Instance   <br> - Azure Synapse  <br> - Azure Cosmos DB <br><br>詳細については、以下の「[SQL データベースの列のラベル付け](#labeling-for-sql-database-columns)」を参照してください。  |
 | | |
 
