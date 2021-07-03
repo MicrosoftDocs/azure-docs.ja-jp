@@ -90,7 +90,7 @@ Azure Data Lake Storage Gen1 には、HDFS と POSIX スタイルのアクセス
 
 Azure Data Lake Storage Gen2 は、最新のストレージ製品です。 これによって、Azure Blob Storage に直接統合された Hadoop 互換ファイル システム エンドポイントに、Azure Data Lake Storage Gen1 の第 1 世代からのコア機能が統合されます。 この機能強化は、通常はオンプレミスのファイル システムにのみ関連付けされている信頼性とパフォーマンスに、オブジェクト ストレージのスケールとコスト上のメリットを結合したものです。
 
-Azure Data Lake Storage Gen 2 は、[Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) に基づいて構築され、ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。 ファイル システム セマンティクス、ファイル レベルのセキュリティおよびスケールなど、[Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) に由来する機能は、[Azure Blob ストレージ](../../storage/blobs/storage-blobs-introduction.md)の低コストの階層型記憶域、高可用性/ディザスター リカバリー機能、および SDK/ツール エコシステムと組み合わされています。 Data Lake Storage Gen2 では、すべてのオブジェクト ストレージの品質を備えたまま、分析ワークロード用に最適化されたファイル システム インターフェイスの利点が追加されています。
+Azure Data Lake Storage Gen 2 は、[Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) に基づいて構築され、ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。 ファイル システム セマンティクス、ファイル レベルのセキュリティおよびスケールなど、[Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) に由来する機能は、[Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md)の低コストの階層型記憶域、高可用性/ディザスター リカバリー機能、および SDK/ツール エコシステムと組み合わされています。 Data Lake Storage Gen2 では、すべてのオブジェクト ストレージの品質を備えたまま、分析ワークロード用に最適化されたファイル システム インターフェイスの利点が追加されています。
 
 Data Lake Storage Gen2 の基本的な機能は、パフォーマンスの高いデータ アクセスのために、オブジェクト/ファイルをディレクトリの階層に編成した Blob ストレージ サービスに、[階層構造の名前空間](../../storage/blobs/data-lake-storage-namespace.md)を追加することです。  階層構造により、ディレクトリの名前変更や削除などの操作は、ディレクトリ名のプレフィックスを共有するすべてのオブジェクトを列挙して処理するのではなく、ディレクトリ上の単一のアトミック メタデータの操作になります。
 
@@ -100,7 +100,7 @@ Data Lake Storage Gen2 の基本的な機能は、パフォーマンスの高い
 
 - **POSIX アクセス許可のスーパーセット**:Data Lake Gen2 のセキュリティ モデルは、ACL および POSIX のアクセス許可に加え、Data Lake Storage Gen2 固有の追加設定を完全サポートしています。 設定は、管理ツールを通じて構成することもできますし、Hive や Spark などのフレームワークを通じて構成することもできます。
 
-- **コスト効率**:Data Lake Storage Gen2 は、低コストのストレージ容量とトランザクションを備えています。 ライフサイクル全体を通してデータが移行されるにつれて、[Azure Blob ストレージ ライフサイクル](../../storage/blobs/storage-lifecycle-management-concepts.md)などの組み込み機能を使用してコストを最小限に抑えるために課金レートが変化します。
+- **コスト効率**:Data Lake Storage Gen2 は、低コストのストレージ容量とトランザクションを備えています。 ライフサイクル全体を通してデータが移行されるにつれて、[Azure Blob Storage ライフサイクル](../../storage/blobs/storage-lifecycle-management-concepts.md)などの組み込み機能を使用してコストを最小限に抑えるために課金レートが変化します。
 
 - **BLOB ストレージ ツール、フレームワーク、およびアプリの操作**:Data Lake Storage Gen2 では、BLOB ストレージ用に今日存在するさまざまなツール、フレームワーク、およびアプリケーションを継続的に利用できます。
 
