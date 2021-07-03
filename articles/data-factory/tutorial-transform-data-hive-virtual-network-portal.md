@@ -63,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
        state
    FROM hivesampletable
    ```
-2. Azure BLOB ストレージで、**adftutorial** という名前のコンテナーを作成します (存在しない場合)。
+2. Azure Blob Storage で、**adftutorial** という名前のコンテナーを作成します (存在しない場合)。
 3. **hivescripts** という名前のフォルダーを作成します。
 4. **hivescript.hql** ファイルを **hivescripts** サブフォルダーにアップロードします。
 
