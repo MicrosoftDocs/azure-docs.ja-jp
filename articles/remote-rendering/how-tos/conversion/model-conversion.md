@@ -36,7 +36,7 @@ Azure Remote Rendering を使用すると、非常に複雑なモデルをレン
     - リンクされたストレージ アカウントから (ストレージ アカウントをリンクするには、[アカウントの作成](../create-an-account.md#link-storage-accounts)に関するページの「ストレージ アカウントのリンク」の手順を参照してください)
     - または、*Shared Access Signature (SAS)* を提供します。
 
-すべてのモデル データ (入力と出力) は、ユーザーが指定した Azure Blob ストレージに格納されます。 Azure Remote Rendering を使用すると、資産管理を完全に制御できます。
+すべてのモデル データ (入力と出力) は、ユーザーが指定した Azure Blob Storage に格納されます。 Azure Remote Rendering を使用すると、資産管理を完全に制御できます。
 
 ## <a name="pricing"></a>価格
 
