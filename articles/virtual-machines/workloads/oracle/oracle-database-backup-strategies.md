@@ -74,13 +74,13 @@ Azure Backup では、コンテナーのストレージが自動的に処理さ�
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-Azure Blob ストレージは、大量の非構造化データを格納するために使用される、非常にコスト効率に優れ、耐久性が高く、安全なクラウドベースのストレージ サービスであり、Oracle Database バックアップに使用するのに最適なメディアです。 Azure Blob ストレージは、NFS v3.0 プロトコルまたは Blobfuse (Linux FUSE) を使用して、Azure Linux VM にマウントできます。
+Azure Blob Storage は、大量の非構造化データを格納するために使用される、非常にコスト効率に優れ、耐久性が高く、安全なクラウドベースのストレージ サービスであり、Oracle Database バックアップに使用するのに最適なメディアです。 Azure Blob Storage は、NFS v3.0 プロトコルまたは Blobfuse (Linux FUSE) を使用して、Azure Linux VM にマウントできます。
 
 #### <a name="azure-blob-blobfuse"></a>Azure Blob Blobfuse
 
-[Blobfuse](../../../storage/blobs/storage-how-to-mount-container-linux.md) は、Azure Blob ストレージによってサポートされる仮想ファイルシステムを提供するために開発されたオープンソース プロジェクトです。 libfuse オープンソース ライブラリを使用して Linux FUSE カーネル モジュールと通信し、Azure Storage Blob REST API を使用してファイルシステム操作を実装します。 Blobfuse は現在、Ubuntu および Centos/RedHat ディストリビューションで使用できます。 [CSI ドライバー](https://github.com/kubernetes-sigs/blob-csi-driver)を使用して Kubernetes で使用することもできます。 
+[Blobfuse](../../../storage/blobs/storage-how-to-mount-container-linux.md) は、Azure Blob Storage によってサポートされる仮想ファイルシステムを提供するために開発されたオープンソース プロジェクトです。 libfuse オープンソース ライブラリを使用して Linux FUSE カーネル モジュールと通信し、Azure Storage Blob REST API を使用してファイルシステム操作を実装します。 Blobfuse は現在、Ubuntu および Centos/RedHat ディストリビューションで使用できます。 [CSI ドライバー](https://github.com/kubernetes-sigs/blob-csi-driver)を使用して Kubernetes で使用することもできます。 
 
-すべての Azure リージョンで広く普及しており、汎用の v1 および v2 や Azure Data Lake Store Gen2 を含むすべての種類のストレージ アカウントで動作しますが、Blobfuse で提供されるパフォーマンスは、SMB や NFS などの代替プロトコルよりも低いことが明らかになっています。 データベース バックアップ メディアとしての適合性を確保するには、SMB または [NFS](../../../storage/blobs/storage-how-to-mount-container-linux.md) プロトコルを使用して Azure Blob ストレージをマウントすることをお勧めします。 
+すべての Azure リージョンで広く普及しており、汎用の v1 および v2 や Azure Data Lake Store Gen2 を含むすべての種類のストレージ アカウントで動作しますが、Blobfuse で提供されるパフォーマンスは、SMB や NFS などの代替プロトコルよりも低いことが明らかになっています。 データベース バックアップ メディアとしての適合性を確保するには、SMB または [NFS](../../../storage/blobs/storage-how-to-mount-container-linux.md) プロトコルを使用して Azure Blob Storage をマウントすることをお勧めします。 
 
 #### <a name="azure-blob-nfs-v30-preview"></a>Azure Blob NFS v3.0 (プレビュー)
 
