@@ -68,7 +68,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         main()
     ```
 1. *&lt;storageAccountName&gt;* を Azure ストレージ アカウントの名前に置き換えます。 その後、ファイルを保存します。 
-1. Azure BLOB ストレージで、**adftutorial** という名前のコンテナーを作成します (存在しない場合)。 
+1. Azure Blob Storage で、**adftutorial** という名前のコンテナーを作成します (存在しない場合)。 
 1. **spark** という名前のフォルダーを作成します。
 1. **spark** フォルダーの下に、**script** という名前のサブフォルダーを作成します。 
 1. **WordCount_Spark.py** ファイルを **script** サブフォルダーにアップロードします。 
