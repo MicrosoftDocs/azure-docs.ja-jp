@@ -58,7 +58,7 @@ ms.locfileid: "104783372"
 
 ## <a name="copy-data-and-transform-with-azure-databricks-hourly"></a>データをコピーし、 Azure Databricks で 1 時間ごとに変換する
 
-このシナリオでは、1 時間ごとのスケジュールでデータを AWS S3 から Azure Blob ストレージにコピーし、 Azure Databricks でデータを変換します。
+このシナリオでは、1 時間ごとのスケジュールでデータを AWS S3 から Azure Blob Storage にコピーし、 Azure Databricks でデータを変換します。
 
 シナリオを実現させるには、次の項目を含むパイプラインを作成する必要があります:
 
