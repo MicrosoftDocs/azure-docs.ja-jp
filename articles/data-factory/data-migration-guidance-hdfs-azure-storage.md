@@ -138,7 +138,7 @@ HDFS から Azure Blob Storage にデータを移行するために、次のパ�
 ### <a name="additional-references"></a>その他の参照情報
 
 - [HDFS コネクタ](./connector-hdfs.md)
-- [Azure BLOB ストレージ コネクタ](./connector-azure-blob-storage.md)
+- [Azure Blob Storage コネクタ](./connector-azure-blob-storage.md)
 - [Azure Data Lake Storage Gen2 コネクタ](./connector-azure-data-lake-storage.md)
 - [コピー アクティビティのパフォーマンスとチューニングに関するガイド](./copy-activity-performance.md)
 - [セルフホステッド統合ランタイムを作成して構成する](./create-self-hosted-integration-runtime.md)
