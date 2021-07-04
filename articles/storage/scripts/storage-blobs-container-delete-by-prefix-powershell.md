@@ -19,7 +19,7 @@ ms.locfileid: "89072954"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>コンテナー名のプレフィックスに基づいたコンテナーの削除
 
-このスクリプトでは、コンテナー名のプレフィックスに基づいて Azure Blob ストレージ内のコンテナーを削除します。
+このスクリプトでは、コンテナー名のプレフィックスに基づいて Azure Blob Storage 内のコンテナーを削除します。
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
