@@ -71,12 +71,12 @@ AzCopy ディレクトリをご自分のパスに追加しないことを選択�
 | ストレージの種類 | 現在サポートされている認証方法 |
 |--|--|
 |**Blob Storage** | Azure AD および SAS |
-|**BLOB ストレージ (階層型名前空間)** | Azure AD および SAS |
+|**Blob Storage (階層型名前空間)** | Azure AD および SAS |
 |**File Storage** | SAS のみ |
 
 #### <a name="option-1-use-azure-active-directory"></a>オプション 1: Azure Active Directory を使用する
 
-このオプションは、BLOB ストレージでのみ使用できます。 Azure Active Directory を使用すると、各コマンドに SAS トークンを追加する代わりに、資格情報を 1 回入力するだけで済みます。  
+このオプションは、Blob Storage でのみ使用できます。 Azure Active Directory を使用すると、各コマンドに SAS トークンを追加する代わりに、資格情報を 1 回入力するだけで済みます。  
 
 > [!NOTE]
 > 現在のリリースでは、ストレージ アカウント間で BLOB をコピーする場合は、各ソース URL に SAS トークンを追加する必要があります。 コピー先 URL からのみ、SAS トークンを省略できます。 例については、「[ストレージ アカウント間で BLOB をコピーする](#transfer-data)」をご覧ください。
