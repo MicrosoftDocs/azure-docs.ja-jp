@@ -73,7 +73,7 @@ ms.locfileid: "102438269"
 
 ## <a name="next-steps"></a>次のステップ
 
-このドキュメントでは、Security Center でレコメンデーションを修復する方法について説明しました。 セキュリティ センターの詳細については、次のページを参照してください。
+このドキュメントでは、Security Center でレコメンデーションを修復する方法について説明しました。 Security Center の詳細については、次のページを参照してください。
 
 * [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) - Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています
 * [セキュリティ ポリシー、イニシアティブ、および推奨事項とは](security-policy-concept.md)
