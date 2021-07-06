@@ -81,7 +81,7 @@ NSG はアプリケーション層検査も、認証済みのアクセス制御�
 
 #### <a name="asc-just-in-time-vm-access"></a>ASC Just In Time VM アクセス
 
-[Azure セキュリティ センター (ASC)](../../security-center/security-center-introduction.md) は、VM の NSG を管理し、適切な Azure ロール ベースのアクセス制御 ([Azure RBAC](../../role-based-access-control/overview.md)) のアクセス許可を持つユーザーがアクセスを要求するまで、VM へのアクセスをロックします。 ユーザーが正常に承認されると、ASC は、選択されたポートに対して指定された時間にわたってアクセスできるように NSG を変更します。 時間切れになると、NSG は、前のセキュリティで保護された状態に戻ります。
+[Azure Security Center (ASC)](../../security-center/security-center-introduction.md) は、VM の NSG を管理し、適切な Azure ロール ベースのアクセス制御 ([Azure RBAC](../../role-based-access-control/overview.md)) のアクセス許可を持つユーザーがアクセスを要求するまで、VM へのアクセスをロックします。 ユーザーが正常に承認されると、ASC は、選択されたポートに対して指定された時間にわたってアクセスできるように NSG を変更します。 時間切れになると、NSG は、前のセキュリティで保護された状態に戻ります。
 
 詳細情報:
 
