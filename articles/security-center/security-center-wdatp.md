@@ -142,4 +142,4 @@ Microsoft 以外のエンドポイント ソリューションからの切り替
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Security Center でサポートされている機能とプラットフォーム](security-center-os-coverage.md)
-- [Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md):推奨事項を Azure リソースの保護に活かす方法について説明します。
+- [Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md):推奨事項を Azure リソースの保護に活かす方法について説明します。
