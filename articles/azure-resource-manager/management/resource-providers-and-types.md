@@ -315,7 +315,7 @@ West US
 
 ## <a name="next-steps"></a>次のステップ
 
-* リソース マネージャーのテンプレートの作成の詳細については、 [Azure リソース マネージャーのテンプレートの作成](../templates/template-syntax.md)に関するページを参照してください。 
+* リソース マネージャーのテンプレートの作成の詳細については、 [Azure Resource Manager のテンプレートの作成](../templates/template-syntax.md)に関するページを参照してください。 
 * リソース プロバイダーのテンプレートのスキーマを表示するには、「[テンプレート リファレンス](/azure/templates/)」を参照してください。
 * リソース プロバイダーを Azure サービスにマップされるリストについては、「[Resource providers for Azure services](azure-services-resource-providers.md)」 (Azure サービスのリソースプロバイダー) を参照してください。
 * リソース プロバイダーの操作を表示するには、「[Azure REST API](/rest/api/)」を参照してください。
