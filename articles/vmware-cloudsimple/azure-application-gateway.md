@@ -41,7 +41,7 @@ Azure Application Gateway を使用して、CloudSimple プライベート ク�
 
 1. [前提条件が満たされていることを確認する](#1-verify-prerequisites)
 2. [Azure 仮想接続をプライベート クラウドに接続する](#2-connect-your-azure-virtual-network-to-your-private-cloud)
-3. [Azure アプリケーション ゲートウェイをデプロイする](#3-deploy-an-azure-application-gateway)
+3. [Azure Application Gateway をデプロイする](#3-deploy-an-azure-application-gateway)
 4. [プライベート クラウド内で Web サーバー VM プールを作成および構成する](#4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud)
 
 ## <a name="1-verify-prerequisites"></a>1. 前提条件を確認する
@@ -65,7 +65,7 @@ Azure 仮想ネットワークをプライベート クラウドに接続する�
 
 4. [コピーしたピアリング情報を使用して、仮想ネットワークを ExpressRoute 回線にリンクします](virtual-network-connection.md)。
 
-## <a name="3-deploy-an-azure-application-gateway"></a>3. Azure アプリケーション ゲートウェイをデプロイする
+## <a name="3-deploy-an-azure-application-gateway"></a>3. Azure Application Gateway をデプロイする
 
 これを行うための詳細な手順は、「[Azure portal を使用してパス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する](../application-gateway/create-url-route-portal.md)」で確認できます。 必要な手順の概要は次のとおりです。
 
