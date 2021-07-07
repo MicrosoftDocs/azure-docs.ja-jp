@@ -24,7 +24,7 @@ ms.locfileid: "102522208"
 
 この記事では、Azure Resource Manager テンプレートを使用して Azure Machine Learning ワークスペースを作成するさまざまな方法について説明します。 Resource Manager テンプレートを使用すると、1 つの調整された操作でリソースを簡単に作成できます。 テンプレートは、デプロイに必要なリソースを定義する JSON ドキュメントです。 デプロイ パラメーターを指定することもできます。 パラメーターは、テンプレートの使用時に入力値を指定するために使用します。
 
-詳細については、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)」を参照してください。
+詳細については、「[Azure Resource Manager のテンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -74,7 +74,7 @@ ms.locfileid: "102522208"
 
 テンプレートの詳細については、次の記事を参照してください。
 
-* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
+* [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)
 * [Microsoft.MachineLearningServices resource types (Microsoft.MachineLearningServices リソースの種類)](/azure/templates/microsoft.machinelearningservices/allversions)
 
