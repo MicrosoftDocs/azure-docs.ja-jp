@@ -429,7 +429,7 @@ Standard ストレージ アカウントの制限について詳しくは、[Sta
 
 [!INCLUDE [azure-virtual-machines-limits](../../../includes/azure-virtual-machines-limits.md)]
 
-### <a name="virtual-machines-limits---azure-resource-manager"></a>Virtual Machines の制限 - Azure リソース マネージャー
+### <a name="virtual-machines-limits---azure-resource-manager"></a>Virtual Machines の制限 - Azure Resource Manager
 
 次の制限は、Azure Resource Manager と Azure リソース グループを使用するときに適用されます。
 
