@@ -23,7 +23,7 @@ ms.locfileid: "106275857"
 
 ## <a name="overview"></a>概要
 
-このガイドでは、Microsoft Azure Queue ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Ruby Azure API を使用して記述されています。 キュー メッセージの **挿入**、**ピーク**、**取得**、**削除** と、**キューの作成と削除** の各シナリオについて説明します。
+このガイドでは、Microsoft Azure Queue Storage サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Ruby Azure API を使用して記述されています。 キュー メッセージの **挿入**、**ピーク**、**取得**、**削除** と、**キューの作成と削除** の各シナリオについて説明します。
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
