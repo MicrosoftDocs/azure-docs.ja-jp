@@ -145,10 +145,10 @@ Azure Resource Manager を使用して作成された仮想マシン、仮想ネ
 
 これまでに作成した自動化やスクリプトはすべて、Azure Service Management モードで作成された既存の仮想マシンや仮想ネットワークに使用できます。 ただし、Resource Manager モードで同じリソースを作成するためには、新しいスキーマを使用できるようにスクリプトを更新する必要があります。
 
-**Azure リソース マネージャーのテンプレートの例はどこで入手できますか。**
+**Azure Resource Manager のテンプレートの例はどこで入手できますか。**
 
 [Azure Resource Manager のクイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)に関するページで、広範囲にわたるスターター テンプレートが提供されています。
 
 ## <a name="next-steps"></a>次のステップ
 
-* テンプレートをデプロイするためのコマンドについては、「 [Azure Resource Manager テンプレートを使用したアプリケーションのデプロイに関するページ](../templates/deploy-powershell.md)」を参照してください。
+* テンプレートをデプロイするためのコマンドについては、「[Azure Resource Manager テンプレートを使用したアプリケーションのデプロイに関するページ](../templates/deploy-powershell.md)」を参照してください。
