@@ -16,7 +16,7 @@ ms.locfileid: "91355739"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway の機能
 
-[Azure アプリケーション ゲートウェイ](overview.md)は、アプリケーションに対するトラフィックを管理できる Web トラフィック ロードバランサーです。
+[Azure Application Gateway](overview.md) は、アプリケーションに対するトラフィックを管理できる Web トラフィック ロードバランサーです。
 
 ![Application Gateway の概念](media/overview/figure1-720.png)
 
