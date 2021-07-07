@@ -29,7 +29,7 @@ Visual Studio では、インフラストラクチャとコードを Azure に�
 
     ![Create project](./media/create-visual-studio-deployment-project/name-project.png)
 
-1. Azure リソース マネージャーにデプロイするテンプレートを選択します。 デプロイするプロジェクトの種類に応じて、さまざまなオプションがあります。 この記事では、 **[Web アプリ]** テンプレートを選択し、 **[OK]** を選択します。
+1. Azure Resource Manager にデプロイするテンプレートを選択します。 デプロイするプロジェクトの種類に応じて、さまざまなオプションがあります。 この記事では、 **[Web アプリ]** テンプレートを選択し、 **[OK]** を選択します。
 
     ![テンプレートの選択](./media/create-visual-studio-deployment-project/select-project.png)
 
@@ -51,7 +51,7 @@ Visual Studio では、インフラストラクチャとコードを Azure に�
 
 ## <a name="customize-resource-manager-template"></a>Resource Manager テンプレートをカスタマイズする
 
-デプロイ プロジェクトをカスタマイズするには、デプロイするリソースが記述されている Resource Manager テンプレートを変更します。 リソース マネージャーのテンプレートの要素の詳細については、「 [Azure リソース マネージャーのテンプレートの作成](template-syntax.md)」を参照してください。
+デプロイ プロジェクトをカスタマイズするには、デプロイするリソースが記述されている Resource Manager テンプレートを変更します。 リソース マネージャーのテンプレートの要素の詳細については、「[Azure Resource Manager のテンプレートの作成](template-syntax.md)」を参照してください。
 
 1. テンプレートで作業するには、**WebSite.json** を開きます。
 
