@@ -42,7 +42,7 @@ Azure Table Storage では、Azure のフルスタック監視サービスであ
 
 ## <a name="monitoring-data"></a>データの監視
 
-Azure Table ストレージでは、他の Azure リソースと同じ種類の監視データが収集されます。これについては、[Azure リソースの監視データ](../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)に関するページを参照してください。 
+Azure Table Storage では、他の Azure リソースと同じ種類の監視データが収集されます。これについては、[Azure リソースの監視データ](../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)に関するページを参照してください。 
 
 Azure Table Storage によって作成されるメトリックとログの詳細については、「[Azure Table Storage 監視データのリファレンス](monitor-table-storage-reference.md)」を参照してください。
 
