@@ -2,18 +2,18 @@
   href: index.yml
 - name: 概要
   items:
-    - name: アプリケーション ゲートウェイについて
+    - name: Application Gateway について
       href: overview.md
 - name: クイックスタート
   expanded: true
   items:
-    - name: アプリケーション ゲートウェイの作成 - ポータル
+    - name: Application Gateway の作成 - ポータル
       href: quick-create-portal.md
-    - name: アプリケーション ゲートウェイの作成 - PowerShell
+    - name: Application Gateway の作成 - PowerShell
       href: quick-create-powershell.md
-    - name: アプリケーション ゲートウェイの作成 - Azure CLI
+    - name: Application Gateway の作成 - Azure CLI
       href: quick-create-cli.md
-    - name: アプリケーション ゲートウェイの作成 - ARM テンプレート
+    - name: Application Gateway の作成 - ARM テンプレート
       displayName: Resource Manager
       href: quick-create-template.md
 - name: チュートリアル
