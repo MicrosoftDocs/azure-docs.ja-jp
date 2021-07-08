@@ -249,9 +249,9 @@ Parameters        :
 ## <a name="next-steps"></a>次のステップ
 Azure Resource Manager テンプレートをデプロイする基本のワークフローとコマンドが表示されました。 詳細については、次のリンクを参照してください。
 
-* [Azure リソース マネージャーの概要][Azure Resource Manager overview]
+* [Azure Resource Manager の概要][Azure Resource Manager overview]
 * [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ][Deploy resources with Azure Resource Manager templates]
-* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
+* [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
 * [Microsoft.ServiceBus のリソースの種類](/azure/templates/microsoft.servicebus/allversions)
 
 [Azure Resource Manager overview]: ../azure-resource-manager/management/overview.md
