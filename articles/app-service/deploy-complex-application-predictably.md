@@ -1,6 +1,6 @@
 ---
 title: ARM で予測したアプリを展開する
-description: Azure リソース管理テンプレートと PowerShell スクリプトを使用して、複数の Azure App Service アプリを 1 つのユニットとして予測どおりにデプロイする方法について説明します。
+description: Azure Resource Manager テンプレートと PowerShell スクリプトを使用して、複数の Azure App Service アプリを 1 つのユニットとして予測どおりにデプロイする方法について説明します。
 ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
@@ -28,8 +28,8 @@ ms.locfileid: "104951472"
 ## <a name="tools-you-will-use"></a>使用するツール
 このチュートリアルでは、次のツールを使用します。 ここはツールについて包括的に説明するための場所ではないため、簡単な説明と詳細情報へのリンクを紹介するにとどめて、エンド ツー エンドのシナリオに準拠します。 
 
-### <a name="azure-resource-manager-templates-json"></a>Azure リソース マネージャー テンプレート (JSON)
-たとえば、Azure App Service でアプリを作成するたびに、Azure Resource Manager では、JSON テンプレートを使用して、リソース グループ全体とコンポーネント リソースが作成されます。 [Azure Marketplace](../marketplace/index.yml) の複雑なテンプレートには、データベース、ストレージ アカウント、App Service プラン、アプリ自体、アラート ルール、アプリ設定、自動スケールの設定などを含めることができます。また、これらのすべてのテンプレートは、PowerShell を介して利用できます。 Azure リソース マネージャー テンプレートの詳細については、 [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
+### <a name="azure-resource-manager-templates-json"></a>Azure Resource Manager テンプレート (JSON)
+たとえば、Azure App Service でアプリを作成するたびに、Azure Resource Manager では、JSON テンプレートを使用して、リソース グループ全体とコンポーネント リソースが作成されます。 [Azure Marketplace](../marketplace/index.yml) の複雑なテンプレートには、データベース、ストレージ アカウント、App Service プラン、アプリ自体、アラート ルール、アプリ設定、自動スケールの設定などを含めることができます。また、これらのすべてのテンプレートは、PowerShell を介して利用できます。 Azure Resource Manager テンプレートの詳細については、 [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>Azure SDK 2.6 for Visual Studio
 最新の SDK では、JSON エディターにおけるリソース マネージャー テンプレートのサポートが強化されました。 これを使用すると、リソース グループ テンプレートを一からすばやく作成したり、既存の JSON テンプレート (ダウンロードしたギャラリー テンプレートなど) を開いて変更したりできます。また、パラメーター ファイルを設定したり、Azure リソース グループのソリューションから直接リソース グループをデプロイしたりすることもできます。
@@ -37,9 +37,9 @@ ms.locfileid: "104951472"
 詳細については、 [Azure SDK 2.6 for Visual Studio](https://azure.microsoft.com/blog/2015/04/29/announcing-the-azure-sdk-2-6-for-net/)に関するページをご覧ください。
 
 ### <a name="azure-powershell-080-or-later"></a>Azure PowerShell 0.8.0 以降
-Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モジュールに加えて Azure リソース マネージャー モジュールが含まれています。 この新しいモジュールを使用して、リソース グループをデプロイするスクリプトを作成できます。
+Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モジュールに加えて Azure Resource Manager モジュールが含まれています。 この新しいモジュールを使用して、リソース グループをデプロイするスクリプトを作成できます。
 
-詳細については、 [Azure リソース マネージャーでの Windows PowerShell の使用](../azure-resource-manager/management/manage-resources-powershell.md)
+詳細については、 [Azure Resource Manager での Windows PowerShell の使用](../azure-resource-manager/management/manage-resources-powershell.md)
 
 ### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 この[プレビュー ツール](https://resources.azure.com)を使用して、サブスクリプション内のすべてのリソース グループの JSON 定義と個々のリソースを調べることができます。 このツールでは、リソースの JSON 定義の編集、リソースの階層全体の削除、新しいリソースの作成を実行できます。  このツールですぐに利用できる情報は、特定の種類のリソースに設定する必要のあるプロパティ、適切な値などを示すため、テンプレートの作成に非常に役立ちます。[Azure Portal](https://portal.azure.com/) でリソース グループを作成し、エクスプローラー ツールで JSON 定義を調べてリソース グループのテンプレート化に利用できます。
@@ -68,7 +68,7 @@ Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モ
    
    ![リソース グループで使用可能なリソースが示されています。](./media/app-service-deploy-complex-application-predictably/gettemplate-4-portalresourcegroupclicked.png)
 
-このわずか数分間に、2 つのマイクロサービス アプリケーションが完全にデプロイされ、コンポーネント、依存関係、設定、データベース、継続的な発行が、Azure リソース マネージャーで自動化されたオーケストレーションによって設定されることを確認しました。 これはすべて、次の 2 つで行われました。
+このわずか数分間に、2 つのマイクロサービス アプリケーションが完全にデプロイされ、コンポーネント、依存関係、設定、データベース、継続的な発行が、Azure Resource Manager で自動化されたオーケストレーションによって設定されることを確認しました。 これはすべて、次の 2 つで行われました。
 
 * [Azure にデプロイ] ボタン
 * リポジトリのルートにある azuredeploy.json
@@ -114,13 +114,13 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 
 * パラメーターの使用により、作成されたリソースは互いに一貫性を持つように名前が付けられ、構成されます。
 * SQL Server リソースには、入れ子になったリソースが 2 つあり、それぞれで `type` に異なる値が設定されています。
-* データベースとファイアウォール規則が定義されている、`“resources”: […]` 内で入れ子になったリソースには、ルート レベルの SQL Server リソースのリソース ID を指定する `dependsOn` 要素があります。 これは、Azure リソース マネージャーに対して、"このリソースを作成する前に、その他のリソースが既に存在する必要があり、その他のリソースがテンプレートで定義されている場合は、そのリソースを最初に作成すること" を指示します。
+* データベースとファイアウォール規則が定義されている、`“resources”: […]` 内で入れ子になったリソースには、ルート レベルの SQL Server リソースのリソース ID を指定する `dependsOn` 要素があります。 これは、Azure Resource Manager に対して、"このリソースを作成する前に、その他のリソースが既に存在する必要があり、その他のリソースがテンプレートで定義されている場合は、そのリソースを最初に作成すること" を指示します。
   
   > [!NOTE]
-  > `resourceId()`関数の使用方法の詳細については、「[Azure リソース マネージャーのテンプレートの関数](../azure-resource-manager/templates/template-functions-resource.md#resourceid)」を参照してください。
+  > `resourceId()`関数の使用方法の詳細については、「[Azure Resource Manager のテンプレートの関数](../azure-resource-manager/templates/template-functions-resource.md#resourceid)」を参照してください。
   > 
   > 
-* `dependsOn` 要素のおかげで、Azure リソース マネージャーでは、並行して作成できるリソースと順番に作成する必要があるリソースを認識できます。 
+* `dependsOn` 要素のおかげで、Azure Resource Manager では、並行して作成できるリソースと順番に作成する必要があるリソースを認識できます。 
 
 #### <a name="app-service-app"></a>App Service アプリ
 次に、少し複雑な実際のアプリ自体を見てみましょう。 [JSON アウトライン] で [variables('apiSiteName')] アプリをクリックして、その JSON コードを強調表示します。 さらに興味深くなっていることに気が付きます。 このために、機能を 1 つずつ説明します。
@@ -153,7 +153,7 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 > 
 
 ##### <a name="source-control"></a>ソース管理
-ソース管理の設定は、入れ子になったリソースとしても定義されます。 Azure リソース マネージャーは、このリソースを使用して継続的な発行 (後で `IsManualIntegration` の注意点をご確認ください) を構成し、さらに、JSON ファイルの処理中にアプリケーション コードのデプロイメントを自動的に開始します。
+ソース管理の設定は、入れ子になったリソースとしても定義されます。 Azure Resource Manager は、このリソースを使用して継続的な発行 (後で `IsManualIntegration` の注意点をご確認ください) を構成し、さらに、JSON ファイルの処理中にアプリケーション コードのデプロイメントを自動的に開始します。
 
 ![ソース管理の設定が、JSON コードで入れ子になったリソースとしてどのように定義されているかが示されています。](./media/app-service-deploy-complex-application-predictably/examinejson-8-webappsourcecontrol.png)
 
@@ -245,16 +245,16 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 最後のコマンドレット `New-AzureResourceGroup`で、実際にアクションが実行されます。 これまでの内容から、ツールを利用すれば、クラウド アプリケーションを予測どおりにデプロイするのは比較的簡単です。 同じパラメーター ファイルを使用して同じテンプレートでコマンドレットを実行するたびに、同じ結果が得られます。
 
 ## <a name="summary"></a>まとめ
-DevOps では、反復性と予測可能性が、マイクロサービスで構成される拡張性の高いアプリケーションのデプロイメントに成功するための鍵になります。 このチュートリアルでは、Azure リソース マネージャーのテンプレートを使用して、2 つのマイクロサービス アプリケーションを 1 つのリソース グループとして Azure にデプロイしました。 Azure のアプリケーションをテンプレートに変換するために必要な知識を習得することで、そのアプリケーションを予測どおりにプロビジョニングしてデプロイできるようになることを願っています。 
+DevOps では、反復性と予測可能性が、マイクロサービスで構成される拡張性の高いアプリケーションのデプロイメントに成功するための鍵になります。 このチュートリアルでは、Azure Resource Manager のテンプレートを使用して、2 つのマイクロサービス アプリケーションを 1 つのリソース グループとして Azure にデプロイしました。 Azure のアプリケーションをテンプレートに変換するために必要な知識を習得することで、そのアプリケーションを予測どおりにプロビジョニングしてデプロイできるようになることを願っています。 
 
 <a name="resources"></a>
 
 ## <a name="more-resources"></a>その他のリソース
-* [Azure リソース マネージャー テンプレートの言語](../azure-resource-manager/templates/template-syntax.md)
-* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
+* [Azure Resource Manager テンプレートの言語](../azure-resource-manager/templates/template-syntax.md)
+* [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager テンプレートの関数](../azure-resource-manager/templates/template-functions.md)
-* [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)
-* [Azure リソース マネージャーでの Windows PowerShell の使用](../azure-resource-manager/management/manage-resources-powershell.md)
+* [Azure Resource Manager のテンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)
+* [Azure Resource Manager での Windows PowerShell の使用](../azure-resource-manager/management/manage-resources-powershell.md)
 * [Azure でのリソース グループのデプロイのトラブルシューティング](../azure-resource-manager/templates/common-deployment-errors.md)
 
 ## <a name="next-steps"></a>次のステップ
