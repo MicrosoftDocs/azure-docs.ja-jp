@@ -180,34 +180,6 @@ Azure Storage では、サブスクリプションおよびリージョンあた
 > [!NOTE]
 > [無料試用版サブスクリプション](https://azure.microsoft.com/offers/ms-azr-0044p)は、制限およびクォータ引き上げの適用対象外です。 無料試用版をお持ちの場合は、[従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)サブスクリプションにアップグレードしてください。 詳細については、[Azure 無料試用版の従量課金制へのアップグレード](../cost-management-billing/manage/upgrade-azure-subscription.md)と [Azure 無料アカウントに関する FAQ](https://azure.microsoft.com/free/free-account-faq) に関するページを参照してください。
 
-## <a name="private-endpoint-and-private-dns-quota-increases"></a>プライベート エンドポイントとプライベート DNS クォータの引き上げ
-
-1 つのサブスクリプションで作成できるプライベート エンドポイントとプライベート DNS ゾーンの数には制限があります。
-
-Azure Machine Learning の場合、(お客様の) サブスクリプションでリソースが作成されますが、Microsoft が所有するサブスクリプションでリソースが作成されるシナリオがいくつかあります。
-
- 次のシナリオでは、場合によっては Microsoft が所有するサブスクリプションでクォータの割り当てを依頼する必要があります。
-
-* カスタマーマネージド キー (CMK) を使用する Azure Private Link 対応ワークスペース
-* Private Link 対応の Azure Kubernetes Service クラスターのワークスペースへのアタッチ
-
-このようなシナリオの許容を依頼するには、次の手順を実行します。
-
-1. [Azure サポート リクエストを作成し](../azure-portal/supportability/how-to-create-azure-support-request.md#create-a-support-request)、 __[基本]__ セクションで次のオプションを選択します。
-
-    | フィールド | 選択 |
-    | ----- | ----- |
-    | 問題の種類 | **テクニカル** |
-    | サービス | **使用中のサービス**。 次に、ドロップダウン リストで __[Machine Learning]__ を選択します。 |
-    | 問題の種類 | **ワークスペースの構成とセキュリティ** |
-    | 問題のサブタイプ | **プライベート エンドポイントとプライベート DNS ゾーンの許容依頼** |
-
-2. __[詳細]__ セクションで、 __[説明]__ フィールドを使用して、使用する予定の Azure リージョンとシナリオを指定します。 複数のサブスクリプションについてクォータの引き上げを依頼する必要がある場合は、このフィールドにサブスクリプション ID を列挙します。
-
-3. __[作成]__ を選択してリクエストを作成します。
-
-:::image type="content" source="media/how-to-manage-quotas/quota-increase-private-endpoint.png" alt-text="プライベート エンドポイントとプライベート DNS のクォータの引き上げ依頼のスクリーンショット。":::
-
 ## <a name="next-steps"></a>次のステップ
 
 + [Azure Machine Learning のコストを計画して管理する](concept-plan-manage-cost.md)
