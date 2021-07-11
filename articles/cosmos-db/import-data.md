@@ -288,7 +288,7 @@ dt.exe /s:DynamoDB /s.ConnectionString:ServiceURL=https://dynamodb.us-east-1.ama
 
 ## <a name="import-from-azure-blob-storage"></a><a id="BlobImport"></a>Azure Blob Storage からのインポート
 
-JSON ファイル、MongoDB のエクスポート ファイル、および CSV ファイル ソースのインポーター オプションを使用すると、Azure BLOB ストレージから 1 つ以上のファイルをインポートできます。 BLOB コンテナーの URL とアカウント キーを指定した後に、正規表現を使用してインポートするファイルを選択してください。
+JSON ファイル、MongoDB のエクスポート ファイル、および CSV ファイル ソースのインポーター オプションを使用すると、Azure Blob Storage から 1 つ以上のファイルをインポートできます。 BLOB コンテナーの URL とアカウント キーを指定した後に、正規表現を使用してインポートするファイルを選択してください。
 
 :::image type="content" source="./media/import-data/blobsource.png" alt-text="BLOB ファイル ソース オプションのスクリーンショット":::
 
@@ -502,7 +502,7 @@ Azure Cosmos DB シーケンシャル レコード インポーターには、�
 
 ## <a name="export-to-json-file"></a>JSON ファイルへのエクスポート
 
-Azure Cosmos DB JSON エクスポーターを使用すると、使用可能な任意のソース オプションを、JSON ドキュメントの配列が含まれた JSON ファイルにエクスポートできます。 エクスポートはツールによって自動的に処理されます。 また、その結果生成される移行コマンドを表示し、自分でコマンドを実行することもできます。 結果の JSON ファイルは、ローカルまたは Azure BLOB ストレージに保存できます。
+Azure Cosmos DB JSON エクスポーターを使用すると、使用可能な任意のソース オプションを、JSON ドキュメントの配列が含まれた JSON ファイルにエクスポートできます。 エクスポートはツールによって自動的に処理されます。 また、その結果生成される移行コマンドを表示し、自分でコマンドを実行することもできます。 結果の JSON ファイルは、ローカルまたは Azure Blob Storage に保存できます。
 
 :::image type="content" source="./media/import-data/jsontarget.png" alt-text="Azure Cosmos DB JSON ローカル ファイル エクスポート オプションのスクリーンショット":::
 
