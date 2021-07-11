@@ -359,7 +359,7 @@ NTFS でフォーマットされたディスクを使用した単一インスタ
 
 [Azure Managed Disks](../../managed-disks-overview.md) の使用を強くお勧めします。 また、Oracle Database デプロイの場合には [Azure Premium Storage または Azure Ultra Disk](../../disks-types.md) の使用も強くお勧めします。
 
-ネットワーク ドライブまたは Azure ファイル サービスのようなリモート共有は、Oracle Database ファイルに対してはサポートされていません。 詳細については、次を参照してください。
+ネットワーク ドライブまたは Azure File サービスのようなリモート共有は、Oracle Database ファイルに対してはサポートされていません。 詳細については、次を参照してください。
 
 - [Microsoft Azure File サービスの概要](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
