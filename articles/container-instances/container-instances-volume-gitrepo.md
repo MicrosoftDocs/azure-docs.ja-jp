@@ -1,6 +1,6 @@
 ---
 title: gitRepo ボリュームをコンテナー グループにマウントする
-description: gitRepo ボリュームをマウントし、Git リポジトリの複製をコンテナー インスタンスに作成する方法について説明します。
+description: gitRepo ボリュームをマウントし、Git リポジトリのクローンをコンテナー インスタンスに作成する方法について説明します。
 ms.topic: article
 ms.date: 06/15/2018
 ms.openlocfilehash: 7c1249e3120dd680c52bf74fb045bedf5202b9f2
@@ -12,28 +12,28 @@ ms.locfileid: "107763723"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Azure Container Instances に gitRepo ボリュームをマウントする
 
-*gitRepo ボリューム* をマウントし、Git リポジトリの複製をコンテナー インスタンスに作成する方法について説明します。
+*gitRepo ボリューム* をマウントし、Git リポジトリのクローンをコンテナー インスタンスに作成する方法について説明します。
 
 > [!NOTE]
 > *gitRepo* ボリュームのマウントは現在、Linux コンテナーに限定されています。 Microsoft ではすべての機能を Windows コンテナーに取り入れるように取り組んでいますが、現在のプラットフォームの違いは、[概要](container-instances-overview.md#linux-and-windows-containers)に関するページで確認できます。
 
 ## <a name="gitrepo-volume"></a>gitRepo ボリューム
 
-*gitRepo* ボリュームはディレクトリをマウントし、コンテナーの起動時、指定の Git リポジトリの複製をそのディレクトリに作成します。 コンテナー インスタンスで *gitRepo* ボリュームを使用することで、そのためのコードを自分のアプリケーションに追加する必要がなくなります。
+*gitRepo* ボリュームはディレクトリをマウントし、コンテナーの起動時、指定の Git リポジトリのクローンをそのディレクトリに作成します。 コンテナー インスタンスで *gitRepo* ボリュームを使用することで、そのためのコードを自分のアプリケーションに追加する必要がなくなります。
 
 *gitRepo* ボリュームをマウントするとき、次の 3 つのプロパティを設定し、ボリュームを構成できます。
 
 | プロパティ | 必須 | 説明 |
 | -------- | -------- | ----------- |
-| `repository` | はい | 完全 URL。複製を作成する Git リポジトリの `http://` または `https://` も含まれます。|
-| `directory` | いいえ | リポジトリの複製を作成するディレクトリ。 パスには "`..`" を含めることができません。  "`.`" を指定すると、リポジトリの複製がボリュームのディレクトリに作成されます。 指定しない場合、ボリューム ディレクトリ内の指定の下位ディレクトリに Git リポジトリの複製が作成されます。 |
-| `revision` | いいえ | 複製を作成するリビジョンのコミット ハッシュ。 指定しない場合、`HEAD` リビジョンが複製されます。 |
+| `repository` | はい | 完全 URL。クローンを作成する Git リポジトリの `http://` または `https://` も含まれます。|
+| `directory` | いいえ | リポジトリのクローンを作成するディレクトリ。 パスには "`..`" を含めることができません。  "`.`" を指定すると、リポジトリのクローンがボリュームのディレクトリに作成されます。 指定しない場合、ボリューム ディレクトリ内の指定の下位ディレクトリに Git リポジトリのクローンが作成されます。 |
+| `revision` | いいえ | クローンを作成するリビジョンのコミット ハッシュ。 指定しない場合、`HEAD` リビジョンがクローンされます。 |
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>gitRepo ボリュームのマウント:Azure CLI
 
-[Azure CLI](/cli/azure) を使用してコンテナー インスタンスをデプロイするときに gitRepo ボリュームをマウントするには、[az container create][az-container-create] コマンドに `--gitrepo-url` および `--gitrepo-mount-path` パラメーターを指定します。 必要に応じて、複製先となるボリューム内のディレクトリ (`--gitrepo-dir`) と複製されるリビジョンのコミット ハッシュ (`--gitrepo-revision`) を指定することもできます。
+[Azure CLI](/cli/azure) を使用してコンテナー インスタンスをデプロイするときに gitRepo ボリュームをマウントするには、[az container create][az-container-create] コマンドに `--gitrepo-url` および `--gitrepo-mount-path` パラメーターを指定します。 必要に応じて、クローン先となるボリューム内のディレクトリ (`--gitrepo-dir`) とクローンされるリビジョンのコミット ハッシュ (`--gitrepo-revision`) を指定することもできます。
 
-この例のコマンドでは、Microsoft [aci-helloworld][aci-helloworld] サンプル アプリケーションがコンテナー インスタンス内の `/mnt/aci-helloworld` に複製されます。
+この例のコマンドでは、Microsoft [aci-helloworld][aci-helloworld] サンプル アプリケーションがコンテナー インスタンス内の `/mnt/aci-helloworld` にクローンされます。
 
 ```azurecli-interactive
 az container create \
@@ -65,12 +65,12 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 
 [Azure Resource Manager テンプレート](/azure/templates/microsoft.containerinstance/containergroups)を使ってコンテナー インスタンスをデプロイするときに gitRepo ボリュームをマウントするには、最初にテンプレートのコンテナー グループの `properties` セクションにある `volumes` 配列を設定します。 次に、*gitRepo* ボリュームをマウントするコンテナー グループ内の各コンテナーに対して、コンテナー定義の `properties` セクションで `volumeMounts` 配列を設定します。
 
-たとえば、次の Resource Manager テンプレートでは、1 つのコンテナーから構成されるコンテナー グループが作成されます。 このコンテナーによって、*gitRepo* ボリューム ブロックにより指定される 2 つの GitHub リポジトリが複製されます。 2 つ目のボリュームには、複製先のディレクトリを指定する追加プロパティと複製する特定のリビジョンのコミット ハッシュが含まれています。
+たとえば、次の Resource Manager テンプレートでは、1 つのコンテナーから構成されるコンテナー グループが作成されます。 このコンテナーによって、*gitRepo* ボリューム ブロックにより指定される 2 つの GitHub リポジトリがクローンされます。 2 つ目のボリュームには、クローン先のディレクトリを指定する追加プロパティとクローンする特定のリビジョンのコミット ハッシュが含まれています。
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json -->
 [!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
 
-先のテンプレートに定義されていた 2 つの複製リポジトリのディレクトリ構造は結果的に次のようになります。
+先のテンプレートに定義されていた 2 つのクローンリポジトリのディレクトリ構造は結果的に次のようになります。
 
 ```
 /mnt/repo1/aci-helloworld
