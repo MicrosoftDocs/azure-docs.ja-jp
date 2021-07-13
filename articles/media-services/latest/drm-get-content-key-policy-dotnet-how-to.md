@@ -29,7 +29,7 @@ v3 API の主要な設計原則の 1 つは、API の安全性の向上です。
  
 ## <a name="download"></a>ダウンロード 
 
-次のコマンドを使って、.NET サンプルが含まれる GitHub リポジトリを、ご利用のコンピューターに複製します。  
+次のコマンドを使って、.NET サンプルが含まれる GitHub リポジトリを、ご利用のコンピューターにクローンします。  
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
