@@ -172,7 +172,7 @@ Azure Cosmos DB Emulator を使用している場合は、[こちらの記事か
 
 このチュートリアルの手順を実行する時間がない場合や、コード サンプルをダウンロードするだけの場合は、[GitHub](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer) から入手できます。
 
-プロジェクトを複製したら、[Program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/main/src/Program.cs#L25) 内の必要な資格情報を必ず更新してください。
+プロジェクトをクローンしたら、[Program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/main/src/Program.cs#L25) 内の必要な資格情報を必ず更新してください。
 
 サンプルを実行するには、リポジトリ ディレクトリに変更し、`dotnet` を使用します。
 
