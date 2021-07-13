@@ -29,7 +29,7 @@ ms.locfileid: "107365911"
 > - [Python](create-sql-api-python.md)
 > - [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-このクイックスタートでは、Azure portal から Azure Cosmos DB のSQL API アカウントを作成して管理し、また GitHub から複製された Node.js アプリを使用します。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能により、ドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
+このクイックスタートでは、Azure portal から Azure Cosmos DB のSQL API アカウントを作成して管理し、また GitHub からクローンされた Node.js アプリを使用します。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能により、ドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。
 
 ## <a name="walkthrough-video"></a>チュートリアル ビデオ
 
@@ -86,11 +86,11 @@ Azure portal でデータ エクスプローラー ツールを使用してデ�
 
 [!INCLUDE [cosmos-db-create-sql-api-query-data](../../includes/cosmos-db-create-sql-api-query-data.md)]
 
-## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
+## <a name="clone-the-sample-application"></a>サンプル アプリケーションのクローン
 
-ここで、GitHub から Node.js アプリの複製を作成し、接続文字列を設定して実行します。
+ここで、GitHub から Node.js アプリのクローンを作成し、接続文字列を設定して実行します。
 
-1. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
+1. 次のコマンドを実行して、サンプル レポジトリをクローンします。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
    ```bash
    git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started.git
