@@ -11,7 +11,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/30/2021
 ms.locfileid: "88944385"
 ---
-## <a name="clone-the-repository"></a>リポジトリの複製
+## <a name="clone-the-repository"></a>リポジトリのクローン
 
 お使いの GitHub アカウントにリポジトリを作成したら、次のコマンドを使用して、プロジェクトをお使いのローカル コンピューターにクローンします。
 
