@@ -31,7 +31,7 @@ VM を作成したときに、Resource Manager テンプレートを保存し、
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>GitHub リポジトリのクローン URL と個人用アクセス トークンの取得
 
 1. アーティファクトまたは Resource Manager テンプレートの定義を含む GitHub リポジトリのホーム ページに移動します。
-2. **[クローンまたはダウンロード]** を選択します。
+2. **[Clone or download]\(クローンまたはダウンロード\)** を選択します。
 3. **[HTTPS clone URL]** ボタンをクリックして、URL をクリップボードにコピーします。 後で使用するために URL を保存します。
 4. GitHub の右上隅にあるプロファイル画像を選択し、 **[Settings]** を選択します。
 5. **[Personal settings]\(個人設定\)** メニューの左側で、 **[Personal access tokens]\(個人用アクセス トークン\)** を選択します。
@@ -67,14 +67,14 @@ VM を作成したときに、Resource Manager テンプレートを保存し、
 
     ![リポジトリの追加ボタン](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. 2 番目の **[レポジトリ]** ページで、以下の情報を指定します。
-   1. **名前**。 リポジトリの名前を入力します。
-   2. **[Git クローン URL]** : GitHub または Azure DevOps Services から先ほどコピーした Git HTTPS クローン URL を入力します。
-   3. **[ブランチ]** : 定義を取得するには、ブランチを入力します。
-   4. **[個人用アクセス トークン]** : GitHub または Azure DevOps Services から先ほど取得した個人用アクセス トークンを入力します。
-   5. **[フォルダー パス]** : アーティファクトまたは Resource Manager テンプレートの定義を含む、複製 URL を基準としたフォルダー パスを少なくとも 1 つ入力します。 サブディレクトリを指定するときは、フォルダー パスにスラッシュを含めてください。
+   1. **[Name]\(名前\)**。 リポジトリの名前を入力します。
+   2. **[Git clone URL]** : GitHub または Azure DevOps Services から先ほどコピーした Git HTTPS クローン URL を入力します。
+   3. **[Branch]** : 定義を取得するには、ブランチを入力します。
+   4. **[personal access token]\(個人用アクセス トークン)** : GitHub または Azure DevOps Services から先ほど取得した個人用アクセス トークンを入力します。
+   5. **[Folder paths]\(フォルダー パス)** : アーティファクトまたは Resource Manager テンプレートの定義を含む、クローン URL を基準としたフォルダー パスを少なくとも 1 つ入力します。 サブディレクトリを指定するときは、フォルダー パスにスラッシュを含めてください。
 
       ![[リポジトリ] 領域](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
-6. **[保存]** を選択します。
+6. **[Save]\(保存)** を選択します。
 
 ### <a name="related-blog-posts"></a>関連するブログ記事
 * [DevTest Labs でアーティファクトの失敗のトラブルシューティングを行う](devtest-lab-troubleshoot-artifact-failure.md)
