@@ -24,7 +24,7 @@ Azure Machine Learning は、作業を追跡するために Git リポジトリ�
 
 ジョブを Azure Machine Learning に送信するとき、ソース ファイルがローカル git リポジトリに格納されていれば、リポジトリに関する情報がトレーニング プロセスの一部として追跡されます。
 
-Azure Machine Learning は、ローカル git リポジトリにある情報を追跡するため、特定の中央リポジトリには関連付けられません。 リポジトリは、GitHub、GitLab、Bitbucket、Azure DevOps、または他の任意の git 互換サービスから複製できます。
+Azure Machine Learning は、ローカル git リポジトリにある情報を追跡するため、特定の中央リポジトリには関連付けられません。 リポジトリは、GitHub、GitLab、Bitbucket、Azure DevOps、または他の任意の git 互換サービスからクローンできます。
 
 > [!TIP]
 > グラフィカル ユーザーインターフェイスを使用して Git と対話するには、Visual Studio Code を使用します。 Visual Studio Code を使用して Azure Machine Learning リモート コンピューティング インスタンスに接続するには、「[Visual Studio Code で Azure Machine Learning コンピューティング インスタンスに接続する (プレビュー)](how-to-set-up-vs-code-remote.md)」を参照してください。
@@ -40,7 +40,7 @@ Azure Machine Learning では、ワークスペース内のすべてのユーザ
 
 認証可能なすべての Git リポジトリ (GitHub、Azure Repos、BitBucket など) をクローンできます。
 
-複製の詳細については、[Git CLI の使用方法](https://guides.github.com/introduction/git-handbook/)に関するガイドを参照してください。
+クローンの詳細については、[Git CLI の使用方法](https://guides.github.com/introduction/git-handbook/)に関するガイドを参照してください。
 
 ## <a name="authenticate-your-git-account-with-ssh"></a>SSH を使用して Git アカウントを認証する
 ### <a name="generate-a-new-ssh-key"></a>新しい SSH キーを生成する
@@ -98,7 +98,7 @@ cat ~/.ssh/id_rsa.pub
 
 + [BitBucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2)。 **手順 4** から開始します。
 
-### <a name="clone-the-git-repository-with-ssh"></a>SSH を使用して Git リポジトリを複製する
+### <a name="clone-the-git-repository-with-ssh"></a>SSH を使用して Git リポジトリをクローンする
 
 1) SSH Git クローン URL を Git リポジトリからコピーします。
 
@@ -122,7 +122,7 @@ SSH では、サーバーの SSH フィンガープリントが表示され、�
 
 SSH は、不明なホストに接続するときにこのフィンガープリントを表示して、[中間者攻撃](/previous-versions/windows/it-pro/windows-2000-server/cc959354(v=technet.10))から保護します。 ホストのフィンガープリントを受け入れると、フィンガープリントが変更されない限り、SSH によって再度メッセージが表示されることはありません。
 
-3) 接続を続行するかどうかを確認するメッセージが表示されたら、「`yes`」と入力します。 Git はリポジトリを複製し、以降の Git コマンドで SSH と接続するように元のリモートを設定します。
+3) 接続を続行するかどうかを確認するメッセージが表示されたら、「`yes`」と入力します。 Git はリポジトリをクローンし、以降の Git コマンドで SSH と接続するように元のリモートを設定します。
 
 ## <a name="track-code-that-comes-from-git-repositories"></a>Git リポジトリから取得したコードを追跡する
 
@@ -130,8 +130,8 @@ Python SDK または Machine Learning CLI からトレーニング実行を送�
 
 | プロパティ | 値の取得に使用される Git コマンド | 説明 |
 | ----- | ----- | ----- |
-| `azureml.git.repository_uri` | `git ls-remote --get-url` | リポジトリの複製元の URI。 |
-| `mlflow.source.git.repoURL` | `git ls-remote --get-url` | リポジトリの複製元の URI。 |
+| `azureml.git.repository_uri` | `git ls-remote --get-url` | リポジトリのクローン元の URI。 |
+| `mlflow.source.git.repoURL` | `git ls-remote --get-url` | リポジトリのクローン元の URI。 |
 | `azureml.git.branch` | `git symbolic-ref --short HEAD` | 実行が送信されたときのアクティブなブランチ。 |
 | `mlflow.source.git.branch` | `git symbolic-ref --short HEAD` | 実行が送信されたときのアクティブなブランチ。 |
 | `azureml.git.commit` | `git rev-parse HEAD` | 実行するために送信されたコードのコミット ハッシュ。 |
