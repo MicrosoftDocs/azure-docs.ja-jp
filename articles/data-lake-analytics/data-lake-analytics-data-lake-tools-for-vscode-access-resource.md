@@ -175,7 +175,7 @@ Azure サブスクリプションの展開。 **U-SQL データベース** ノ�
 
    ![Data Lake エクスプ ローラーのファイル ノードのショートカット メニューのコマンド](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-extract.png)
 
-## <a name="integrate-with-azure-blob-storage-from-the-explorer"></a>エクスプローラーから Azure BLOB ストレージ と統合する
+## <a name="integrate-with-azure-blob-storage-from-the-explorer"></a>エクスプローラーから Azure Blob Storage と統合する
 
 BLOB ストレージの参照:
 
