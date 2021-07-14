@@ -15,7 +15,7 @@ ms.locfileid: "96029993"
 
 ### <a name="get-sample-code"></a>サンプル コードを取得する
 
-このチュートリアルは、[前のチュートリアル](../articles/container-registry/container-registry-tutorial-quick-task.md)の手順を既に完了し、サンプル リポジトリをフォークおよび複製していることを前提としています。 完了していない場合は、先に進む前に、前のチュートリアルの「[前提条件](../articles/container-registry/container-registry-tutorial-quick-task.md#prerequisites)」セクションの手順を行ってください。
+このチュートリアルは、[前のチュートリアル](../articles/container-registry/container-registry-tutorial-quick-task.md)の手順を既に完了し、サンプル リポジトリをフォークおよびクローンしていることを前提としています。 完了していない場合は、先に進む前に、前のチュートリアルの「[前提条件](../articles/container-registry/container-registry-tutorial-quick-task.md#prerequisites)」セクションの手順を行ってください。
 
 ### <a name="container-registry"></a>コンテナー レジストリ
 
