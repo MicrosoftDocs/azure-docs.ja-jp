@@ -33,7 +33,7 @@ ms.locfileid: "96452256"
 - [Data Science Virtual Machine](#dsvm)
 
 > [!NOTE]
-> リポジトリを複製すると、**tutorials** フォルダー内にチュートリアル ノートブック、**how-to-use-azureml** フォルダー内に機能固有のノートブックがあることがわかります。
+> リポジトリをクローンすると、**tutorials** フォルダー内にチュートリアル ノートブック、**how-to-use-azureml** フォルダー内に機能固有のノートブックがあることがわかります。
 
 <a name="notebookvm"></a>
 ## <a name="get-samples-on-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスでサンプルを取得する
@@ -53,7 +53,7 @@ ms.locfileid: "96452256"
 <a name="dsvm"></a>
 ## <a name="get-samples-on-dsvm"></a>DSVM 上でサンプルを入手する
 
-データ サイエンス仮想マシン (DSVM) とは、データ サイエンスの実行専用に構築されたカスタマイズ済み VM イメージです。 [DSVM を作成する](how-to-configure-environment.md#dsvm)と、SDK と Notebook サーバーがユーザーのためにインストールされて構成されます。 ただし、その場合も、ワークスペースの作成とサンプル リポジトリの複製は必要になります。
+データ サイエンス仮想マシン (DSVM) とは、データ サイエンスの実行専用に構築されたカスタマイズ済み VM イメージです。 [DSVM を作成する](how-to-configure-environment.md#dsvm)と、SDK と Notebook サーバーがユーザーのためにインストールされて構成されます。 ただし、その場合も、ワークスペースの作成とサンプル リポジトリのクローンは必要になります。
 
 [!INCLUDE [aml-dsvm-server](../../includes/aml-dsvm-server.md)]
 
