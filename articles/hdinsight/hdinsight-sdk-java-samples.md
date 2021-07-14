@@ -38,7 +38,7 @@ ms.locfileid: "98931895"
 * [Azure Data Lake Storage Gen2 での Spark クラスターの作成](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateHadoopClusterWithAdlsGen2Sample.java)
 * [Enterprise セキュリティ パッケージ (ESP) での Spark クラスターの作成](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateEspClusterSample.java)
 
-これらの Java サンプルは、[hdinsight-java-sdk-samples](https://github.com/Azure-Samples/hdinsight-java-sdk-samples) GitHub リポジトリを複製することで入手できます。
+これらの Java サンプルは、[hdinsight-java-sdk-samples](https://github.com/Azure-Samples/hdinsight-java-sdk-samples) GitHub リポジトリをクローンすることで入手できます。
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
