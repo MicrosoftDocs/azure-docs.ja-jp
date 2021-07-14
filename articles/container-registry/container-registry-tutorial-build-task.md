@@ -182,7 +182,7 @@ Run ID: ca6 was successful after 27s
 
 手動実行によるタスクのテストが済んだので、次に、ソース コードを変更して自動的にトリガーします。
 
-最初に、[リポジトリ][sample-repo]のローカルな複製が含まれるディレクトリにいることを確認します。
+最初に、[リポジトリ][sample-repo]のローカルなクローンが含まれるディレクトリにいることを確認します。
 
 ```console
 cd acr-build-helloworld-node
