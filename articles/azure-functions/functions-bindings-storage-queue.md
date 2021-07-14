@@ -80,11 +80,11 @@ Functions 1.x アプリでは、[Microsoft.Azure.WebJobs](https://www.nuget.org/
 
 |プロパティ  |Default | 説明 |
 |---------|---------|---------|
-|maxPollingInterval|00:00:01|キューのポーリングの最大間隔。 最小は 00:00:00.100 (100 ミリ秒) であり、最大 00:01:00 (1 分) まで増分されます。  Functions 2.x 以降では、データ型は `TimeSpan`であり、バージョン 1.x ではミリ秒単位です。|
+|maxPollingInterval|00:00:01|キューのポーリングの最大間隔。 最小は 00:00:00.100 (100 ミリ秒) であり、最大`maxPollingInterval`まで増加されます。`maxPollingInterval`のデフォルト値は00:01:00（1分）です。`maxPollingInterval`は00：00：00.100（100ミリ秒）以下に設定することができません。Functions 2.x 以降では、データ型は `TimeSpan`であり、バージョン 1.x ではミリ秒単位です。|
 |visibilityTimeout|00:00:00|メッセージの処理が失敗したときの再試行間隔。 |
 |batchSize|16|Functions ランタイムが同時に取得して並列で処理するキュー メッセージの数。 処理中のメッセージの数が `newBatchThreshold` まで減少すると、ランタイムは は別のバッチを取得し、そのメッセージの処理を開始します。 そのため、1 つの関数につき同時に処理されるメッセージの最大数は、`batchSize` に `newBatchThreshold` を加えた値です。 この制限は、キューによってトリガーされる各関数に個別に適用されます。 <br><br>1 つのキューで受信した複数のメッセージの並列実行を回避したい場合は、`batchSize` を 1 に設定します。 ただし、この設定では、関数アプリが単一の仮想マシン (VM) で実行されている限り、コンカレンシーは実現しません。 この関数アプリを複数の VM にスケール アウトすると、各 VM では、キューによってトリガーされる関数ごとに 1 つのインスタンスを実行できます。<br><br>最大の `batchSize` は 32 です。 |
 |maxDequeueCount|5|有害キューに移動する前に、メッセージの処理を試行する回数。|
-|newBatchThreshold|batchSize/2|同時に処理されているメッセージの数がこの数まで減少すると、ランタイムは別のバッチを取得します。|
+|newBatchThreshold|N*batchSize/2|同時に処理されているメッセージの数がこの数まで減少すると、ランタイムは別のバッチを取得します。<br><br>`N`は、App Service PlanまたはPremium Planで実行しているときに使用可能なvCPUの数を表します。Consumption Planの場合は`1`です。|
 |messageEncoding|base64| この設定は、[バージョン 5.0.0 以降の拡張機能](#storage-extension-5x-and-higher)でのみ使用できます。 これは、メッセージのエンコード形式を表します。 有効値は `base64` または `none` です。|
 
 ## <a name="next-steps"></a>次のステップ
