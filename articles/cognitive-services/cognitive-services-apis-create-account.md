@@ -68,7 +68,7 @@ Azure Cognitive Services は、開発者が直接的な人工知能 (AI) また�
 | **サブスクリプション** | 使用できる Azure サブスクリプションのいずれかを選択します。 |
 | **リソース グループ** | Cognitive Services リソースを含むことになる Azure リソース グループ。 新しいグループを作成することも、既存のグループに追加することもできます。 |
 | **リージョン** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
-| **名前** | Cognitive Sservices リソースのわかりやすい名前。 例: *MyCognitiveServicesResource*。 |
+| **名前** | Cognitive Services リソースのわかりやすい名前。 例: *MyCognitiveServicesResource*。 |
 | **価格レベル** | Cognitive Services アカウントのコストは、選択しているオプションと使用量によって異なります。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
 
 <!--![Multi-service resource creation screen](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)-->
