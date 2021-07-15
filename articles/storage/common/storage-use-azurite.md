@@ -26,7 +26,7 @@ Azurite をローカル システムにインストールして実行するに�
   1. [Azurite Visual Studio Code の拡張機能をインストールして実行する](#install-and-run-the-azurite-visual-studio-code-extension)
   1. [NPM を使用して Azurite をインストールして実行する](#install-and-run-azurite-by-using-npm)
   1. [Azurite Docker イメージをインストールして実行する](#install-and-run-the-azurite-docker-image)
-  1. [GitHub リポジトリから Azurite を複製、ビルド、および実行する](#clone-build-and-run-azurite-from-the-github-repository)
+  1. [GitHub リポジトリから Azurite をクローン、ビルド、および実行する](#clone-build-and-run-azurite-from-the-github-repository)
 
 ## <a name="install-and-run-the-azurite-visual-studio-code-extension"></a>Azurite Visual Studio Code の拡張機能をインストールして実行する
 
@@ -113,15 +113,15 @@ docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite \
 
 起動時に Azurite を構成する方法の詳細については、「[コマンド ライン オプション](#command-line-options)」を参照してください。
 
-## <a name="clone-build-and-run-azurite-from-the-github-repository"></a>GitHub リポジトリから Azurite を複製、ビルド、および実行する
+## <a name="clone-build-and-run-azurite-from-the-github-repository"></a>GitHub リポジトリから Azurite をクローン、ビルド、および実行する
 
-このインストール方法では、[Git](https://git-scm.com/) がインストールされている必要があります。 次のコンソール コマンドを使用して、Azurite プロジェクト用の [GitHub リポジトリ](https://github.com/azure/azurite)を複製します。
+このインストール方法では、[Git](https://git-scm.com/) がインストールされている必要があります。 次のコンソール コマンドを使用して、Azurite プロジェクト用の [GitHub リポジトリ](https://github.com/azure/azurite)をクローンします。
 
 ```console
 git clone https://github.com/Azure/Azurite.git
 ```
 
-ソースコードを複製した後、複製されたリポジトリのルートから次のコマンドを実行して、Azurite をビルドおよびインストールします。
+ソースコードをクローンした後、クローンされたリポジトリのルートから次のコマンドを実行して、Azurite をビルドおよびインストールします。
 
 ```console
 npm install
