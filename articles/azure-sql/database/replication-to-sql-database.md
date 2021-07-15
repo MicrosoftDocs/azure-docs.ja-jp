@@ -52,7 +52,7 @@ Azure SQL Database のすべての機能を使用するには、最新バージ�
 
 さまざまな[レプリケーションの種類](/sql/relational-databases/replication/types-of-replication)があります。
 
-| レプリケーション | Azure SQL データベース | Azure SQL Managed Instance |
+| レプリケーション | Azure SQL Database | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
 | [**標準トランザクション**](/sql/relational-databases/replication/transactional/transactional-replication) | はい (サブスクライバーとしてのみ) | はい | 
 | [**スナップショット**](/sql/relational-databases/replication/snapshot-replication) | はい (サブスクライバーとしてのみ) | はい|
