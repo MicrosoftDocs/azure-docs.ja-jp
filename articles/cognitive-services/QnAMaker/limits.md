@@ -90,7 +90,7 @@ URL ページから QnA を抽出するためにクロールできるディー�
 * メタデータ値でサポートされる文字: `:` と `|` を除くすべての文字
 * ファイル名の長さ: 200
 * サポートされるファイル形式: ".tsv"、".pdf"、".txt"、".docx"、".xlsx"
-* 代替の質問の最大数: 該当なし
+* 代替の質問の最大数: 300
 * 質問と回答のペアの最大数: 選択した **[Azure Cognitive Search レベル](../../search/search-limits-quotas-capacity.md#document-limits)** によって異なります。 質問と回答のペアは、Azure Cognitive Search インデックスのドキュメントにマップされます。
 * URL/HTML ページ: 100 万文字
 
