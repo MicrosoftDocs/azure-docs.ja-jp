@@ -63,9 +63,9 @@ Mac を使用している場合は、**無料の** [Visual Studio for Mac](https
 
 [!INCLUDE [cosmos-db-create-sql-api-query-data](../../includes/cosmos-db-create-sql-api-query-data.md)]
 
-## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
+## <a name="clone-the-sample-application"></a>サンプル アプリケーションのクローン
 
-ここでは、GitHub から Xamarin SQL API アプリを複製し、コードを確認した後、API キーを入手して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。
+ここでは、GitHub から Xamarin SQL API アプリをクローンし、コードを確認した後、API キーを入手して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。
 
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
@@ -79,7 +79,7 @@ Mac を使用している場合は、**無料の** [Visual Studio for Mac](https
     cd "C:\git-samples"
     ```
 
-3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
+3. 次のコマンドを実行して、サンプル レポジトリをクローンします。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-xamarin-getting-started.git
